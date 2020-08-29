@@ -2,60 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4A592567F4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Aug 2020 15:44:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 93D8D256806
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Aug 2020 16:07:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F10C287F9C;
-	Sat, 29 Aug 2020 13:44:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F024888094;
+	Sat, 29 Aug 2020 14:06:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char A0 hex):
+	Reply-To: hashimyreem78@gmail.com\240
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7eJsXLB+Su9u; Sat, 29 Aug 2020 13:44:44 +0000 (UTC)
+	with ESMTP id LZ6HwhOA+wyu; Sat, 29 Aug 2020 14:06:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6567A87F44;
-	Sat, 29 Aug 2020 13:44:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5B85A87D48;
+	Sat, 29 Aug 2020 14:06:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 247631BF3F9
- for <devel@linuxdriverproject.org>; Sat, 29 Aug 2020 13:44:42 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BAC181BF38B
+ for <devel@linuxdriverproject.org>; Sat, 29 Aug 2020 14:06:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1ED7785F2F
- for <devel@linuxdriverproject.org>; Sat, 29 Aug 2020 13:44:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AD5C620377
+ for <devel@linuxdriverproject.org>; Sat, 29 Aug 2020 14:06:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char A0 hex):
+ Reply-To: <hashimyreem78@gmail.com\240>
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F5mi9t-T6l17 for <devel@linuxdriverproject.org>;
- Sat, 29 Aug 2020 13:44:40 +0000 (UTC)
-X-Greylist: delayed 00:48:04 by SQLgrey-1.7.6
-Received: from myserver1.myonline.co.nz (myserver1.myonline.co.nz
- [103.250.233.220])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5CDC785F2B
- for <devel@linuxdriverproject.org>; Sat, 29 Aug 2020 13:44:40 +0000 (UTC)
-Received: from [::1] (port=52600 helo=myserver1.myonline.co.nz)
- by myserver1.myonline.co.nz with esmtpa (Exim 4.93)
- (envelope-from <smtp@nzbuilders.co.nz>)
- id 1kC0N1-004nLo-Bg; Sun, 30 Aug 2020 00:54:11 +1200
+ with ESMTP id VMl6DypBn1Y0 for <devel@linuxdriverproject.org>;
+ Sat, 29 Aug 2020 14:06:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sv02.lumiere-net.com (ms01.exeo-japan.co.jp [122.217.186.27])
+ by silver.osuosl.org (Postfix) with ESMTP id 43B322036D
+ for <devel@driverdev.osuosl.org>; Sat, 29 Aug 2020 14:06:56 +0000 (UTC)
+Received: from User (unknown [168.63.212.242])
+ by sv02.lumiere-net.com (Postfix) with ESMTP id 87EAC6A78F7;
+ Sat, 29 Aug 2020 12:17:47 +0900 (JST)
+From: "Hello"<meetingterrace@exeo-japan.co.jp>
+Subject: Hello friend  29/08/2020.
+Date: Sat, 29 Aug 2020 03:17:51 -0000
 MIME-Version: 1.0
-Date: Sun, 30 Aug 2020 00:54:11 +1200
-From: Charity Loan <smtp@nzbuilders.co.nz>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200829031748.87EAC6A78F7@sv02.lumiere-net.com>
 To: undisclosed-recipients:;
-Subject: Loan offer @ 1.95%
-User-Agent: Roundcube Webmail/1.4.6
-Message-ID: <af0b8f6fa4aefbb38b067e92c45d9499@nzbuilders.co.nz>
-X-Sender: smtp@nzbuilders.co.nz
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - myserver1.myonline.co.nz
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - nzbuilders.co.nz
-X-Get-Message-Sender-Via: myserver1.myonline.co.nz: authenticated_id:
- smtp@nzbuilders.co.nz
-X-Authenticated-Sender: myserver1.myonline.co.nz: smtp@nzbuilders.co.nz
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,22 +60,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ronan.owen.agent@bk.ru
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: hashimyreem78@gmail.com 
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-We are offering loan at 51% off Prime Lending Rate @ 1.95% Collateral
-and Non-Collateral Loans for your business start-up. If you are
-interested, please revert back for application. Thanks as we wait to
-wipe your debts.
-
-Marketing Team
-Charity Loans
-
-Mr. Ronan Owen (follow up agent)
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TXkgbmFtZSBpcyBSZWVtIEhhc2hpbXksIHRoZSBFbWlyYXRlcyBNaW5pc3RlciBvZiBTdGF0ZSBh
+bmQgTWFuYWdpbmcgRGlyZWN0b3Igb2YgdGhlIFVuaXRlZCBBcmFiIEVtaXJhdGVzIChEdWJhaSkg
+V29ybGQgRXhwbyAyMDIwIENvbW1pdHRlZSB3aGljaCBoYXMgYmVlbiBwb3N0cG9uZWQgdG8gMXN0
+IE9jdG9iZXIgMjAyMSCWIKAzMXN0IE1hcmNoIDIwMjIgYmVjYXVzZSBvZiB0aGUgQ292aWQtMTkg
+cGFuZGVtaWMuCqAKSSBhbSB3cml0aW5nIHRvIHlvdSB0byBtYW5hZ2UgdGhlIGZ1bmRzIEkgcmVj
+ZWl2ZWQgYXMgZmluYW5jaWFsIGdyYXRpZmljYXRpb24gZnJvbSBzb21lIGZvcmVpZ24gY29tcGFu
+aWVzIEkgYXNzaXN0ZWQgdG8gcGFydGljaXBhdGUgaW4gdGhlIGNvbWluZyBldmVudC6gVGhlIGFt
+b3VudCBpcyAkNDQsNzYyLDkwNi4wMCBVbml0ZWQgU3RhdGVzIGRvbGxhcnMuIApJIGNhbiBub3Qg
+cGVyc29uYWxseSBtYW5hZ2UgdGhlIGZ1bmQgaW4gbXkgY291bnRyeaBiZWNhdXNlIG9mIHJlc3Ry
+aWN0aW9uIG9uIG1hcnJpZWQgTXVzbGltIHdvbWVuLqBGb3IgdGhpcyByZWFzb24sIGFuIGFncmVl
+bWVudCB3YXMgcmVhY2hlZCB3aXRoIGEgY29uc3VsdGluZyBmaXJtIHRvIGtlZXAgdGhlIGZ1bmRz
+IHdpdGggYSBmaW5hbmNpYWwgaW5zdGl0dXRpb24gcGVuZGluZyB3aGVuIEkgaGF2ZSBhIHRydXN0
+ZWQgaW52ZXN0bWVudCBwYXJ0bmVyIHdpdGggY2FwYWNpdHkgdG8gbWFuYWdlIHRoZSBmdW5kLiAK
+SWYgeW91IGFyZSBpbnRlcmVzdGVkIHRvIHBhcnRuZXIgd2l0aCBtZSBhbmQgbWFuYWdlIHRoZSBm
+dW5kLCBJIHdpbGwgZGlyZWN0IHlvdSB0byB0aGUgY29uc3VsdGluZyBmaXJtIGZvciBmdXJ0aGVy
+IGRpc2N1c3Npb24gb24gaG93IHRoZSBmdW5kIHdpbGwgYmUgcHJvY2Vzc2VkIHRvIHlvdXIgY291
+bnRyeSBsZWdpdGltYXRlbHkgZm9yIGludmVzdG1lbnQgcHVycG9zZXMuIFRoZSBmdW5kIGlzIGZy
+ZWUgZnJvbSBhbnkgY3JpbWluYWwgYWN0aXZpdHkuoAoKCgpNeSBSZWdhcmRzLApSZWVtIEhhc2hp
+bXkuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
+IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
+ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
+bAo=
