@@ -1,57 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E922257FFA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 19:56:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ED9E25814C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 20:46:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5952B85F32;
-	Mon, 31 Aug 2020 17:56:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 97E85869FE;
+	Mon, 31 Aug 2020 18:46:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Guvkg-4lh5N4; Mon, 31 Aug 2020 17:56:55 +0000 (UTC)
+	with ESMTP id zcnIA9pRIMAB; Mon, 31 Aug 2020 18:46:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 191A485EC2;
-	Mon, 31 Aug 2020 17:56:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F3FF585A67;
+	Mon, 31 Aug 2020 18:46:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 726B11BF34E
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 17:56:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AC1151BF3C2
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 18:46:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6CA7586760
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 17:56:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A81D685F46
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 18:46:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X9e2Gwv3Ns84 for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 17:56:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 528F58674A
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 17:56:52 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5C8042064B;
- Mon, 31 Aug 2020 17:56:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598896612;
- bh=ERddwSmbW2NDx5hhDfjr7bYktdj7MbTDA/T+l3ouxuA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ed2/ahwDFtWyuYHg7VAwF7L4DHDXj3ep2TYL4IqTyA/werP9qDfP9UPDItciQdFSJ
- TZtQ+DXRAo5LNwOxxzS6GKp2uY6rO2En7+lzNV9UIB4g+OoUwcC1WZMIaxYOP20FLi
- kxHHt/EEok389WReTP+xDrG4KEb+Fa6CAjJj9DP4=
-Date: Mon, 31 Aug 2020 19:56:59 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: antoniprzybylik <antoni.przybylik@wp.pl>
-Subject: Re: [PATCH] staging: gdm724x: fixed two macros by adding brackets
-Message-ID: <20200831175659.GA2556308@kroah.com>
-References: <20200831160332.8507-1-antoni.przybylik@wp.pl>
+ with ESMTP id okE4p-FM4h_o for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 18:46:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B4AAC85F44
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 18:46:38 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 8B083ADD5;
+ Mon, 31 Aug 2020 18:46:36 +0000 (UTC)
+Message-ID: <6071c2947095db72f5357f30f932dfa66442294a.camel@suse.de>
+Subject: Re: [PATCH v2 28/47] staging: vchi: Get rid of vchiq_shim's message
+ callback
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Jacopo Mondi <jacopo@jmondi.org>
+Date: Mon, 31 Aug 2020 20:46:33 +0200
+In-Reply-To: <20200828143103.2ljdrxk4py35ecu6@uno.localdomain>
+References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
+ <20200629150945.10720-29-nsaenzjulienne@suse.de>
+ <20200828143103.2ljdrxk4py35ecu6@uno.localdomain>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200831160332.8507-1-antoni.przybylik@wp.pl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,67 +59,90 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, dave.stevenson@raspberrypi.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ naush@raspberrypi.com, laurent.pinchart@ideasonboard.com,
+ kernel-list@raspberrypi.com, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 31, 2020 at 06:03:32PM +0200, antoniprzybylik wrote:
-> Added brackets to two macros.
+Hi Jacopo, sorry if I'm a little late with my replies but I'm on vacation. I'll
+be back Sept 7th, but wanted to reply since I don't want to stop your work.
 
-That says _what_ you did, but not _why_ you did it.
-
-Why did you do it?  What does this fix?
-
-Does it make sense to do this?
-
-And why these two macros?  Be specific please.
-
+On Fri, 2020-08-28 at 16:31 +0200, Jacopo Mondi wrote:
+> Hi Nicolas,
 > 
-> Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
-> ---
->  drivers/staging/gdm724x/gdm_tty.c   | 3 +--
->  drivers/staging/gdm724x/netlink_k.c | 2 +-
->  2 files changed, 2 insertions(+), 3 deletions(-)
+>    I'm working on a v2 of the bcm2835-isp support which was sent along
+> with UNICAM v4l2 driver and some misc changes you have collected in
+> this series. Reference to v1:
+> https://lore.kernel.org/linux-media/20200504092611.9798-1-laurent.pinchart@ideasonboard.com/
 > 
-> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
-> index 6e813693a766..5cd94347bf78 100644
-> --- a/drivers/staging/gdm724x/gdm_tty.c
-> +++ b/drivers/staging/gdm724x/gdm_tty.c
-> @@ -27,7 +27,7 @@
->  
->  #define MUX_TX_MAX_SIZE 2048
->  
-> -#define GDM_TTY_READY(gdm) (gdm && gdm->tty_dev && gdm->port.count)
-> +#define GDM_TTY_READY(gdm) ((gdm) && (gdm)->tty_dev && (gdm)->port.count)
->  
->  static struct tty_driver *gdm_driver[TTY_MAX_COUNT];
->  static struct gdm *gdm_table[TTY_MAX_COUNT][GDM_TTY_MINOR];
-> @@ -323,4 +323,3 @@ void unregister_lte_tty_driver(void)
->  		}
->  	}
->  }
-> -
+> On Mon, Jun 29, 2020 at 05:09:26PM +0200, Nicolas Saenz Julienne wrote:
+> > As vchiq_shim's callback does nothing aside from pushing messages into
+> > the service's queue, let's bypass it and jump directly to the service's
+> > callbacks, letting them choose whether to use the message queue.
+> 
+> I admit this patch caused me some pain, as after a few days chasing
+> why the ISP got stuck in importing buffers into the VPU through the vc-sm-cma
+> driver I realized that this patch removed a significant part of the
+> process..
 
-You also deleted a line without saying so :(
+Sorry for the pain, I made my best to keep the downstream code in mind, and
+also to keep the amount of functional changes needed in the services minimal.
+That said, getting rid of VCHI is, IMO, a necessary step towards making VCHIQ
+upstreamable.
 
-> diff --git a/drivers/staging/gdm724x/netlink_k.c b/drivers/staging/gdm724x/netlink_k.c
-> index 7902e52a699b..399b7b4b536f 100644
-> --- a/drivers/staging/gdm724x/netlink_k.c
-> +++ b/drivers/staging/gdm724x/netlink_k.c
-> @@ -20,7 +20,7 @@ static DEFINE_MUTEX(netlink_mutex);
->  #define ND_NLMSG_DATA(nlh)	((void *)((char *)NLMSG_DATA(nlh) + \
->  						  ND_IFINDEX_LEN))
->  #define ND_NLMSG_S_LEN(len)	(len + ND_IFINDEX_LEN)
-> -#define ND_NLMSG_R_LEN(nlh)	(nlh->nlmsg_len - ND_IFINDEX_LEN)
-> +#define ND_NLMSG_R_LEN(nlh)	((nlh)->nlmsg_len - ND_IFINDEX_LEN)
+> > It turns out most services don't need to use the message queue, which
+> > makes for simpler code in the end.
+> > 
+> > -
+> > -	if (reason == VCHIQ_MESSAGE_AVAILABLE)
+> > -		vchiq_msg_queue_push(service->handle, header);
+> 
+> This one '-.-
+> 
+> I wonder if this was intentional and it is expected all services now
+> handle the message queue (it seems so according to your commit
+> message).
 
-Does that really make sense to change?
+Indeed, it was intentional. Upstream services (mmal & audio) don't need it and
+IIRC vchiq's ioctl interface has it's own queue implementation. So I figured it
+would be best to keep its usage optional.
 
-thanks,
+> Fair enough, I could add in the vc-sma-cma callback a call to
+> vchiq_msg_queue_push() but I wonder if it wouldn't be better to do so
+> in vchiq_core.c:parse_rx_slots(), just before calling the service's
+> callback, so that this has not to be re-implemented in all services.
+> 
+> What would you suggest ?
 
-greg k-h
+Actually, in hindsight my suggestion would be to get rid of the vchiq message
+queue altogether[1], keeping VCHIQ as simple as possible is a must if we want
+to get it upstream, and since vc-sma-cma is the only queue user there is little
+benefit to having a generic implementation. Let the service do it's own custom
+queueing and just force all services to release the messages when they see fit.
+It'll make for a simpler VCHIQ usage.
+
+> And by the way I see mmal-vchiq.c:service_callback() releasing
+> messages but never pushing them to the queue. Is this intended as well ?
+
+Yes, sorry, it's pretty confusing. That call, vchiq_release_message(), has
+nothing to do with the queue. It's the call that really gets the core to
+release the message from its slot and the only mandatory thing to do after
+receiving a message.
+
+All in all VCHIQ isn't documented an pretty cryptic in its design. I don't
+claim to be an expert. So feel free to contradict me anytime, I'll be happy to
+work out something that fits all of us.
+
+Regards,
+Nicolas
+
+[1] Here I mean vchiq_msg_queue_push() & vchiq_msg_hold()
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
