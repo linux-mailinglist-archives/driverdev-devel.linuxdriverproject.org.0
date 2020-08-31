@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1450A257CAE
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:31:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E8BB257CB7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:31:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 61FA287B96;
-	Mon, 31 Aug 2020 15:31:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 41F9387BEE;
+	Mon, 31 Aug 2020 15:31:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m8KDvV897MQs; Mon, 31 Aug 2020 15:31:27 +0000 (UTC)
+	with ESMTP id f4mj4GR-m+5I; Mon, 31 Aug 2020 15:31:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B8D35868F7;
-	Mon, 31 Aug 2020 15:31:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C150287B77;
+	Mon, 31 Aug 2020 15:31:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7183B1BF41E
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:31:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 70D281BF41E
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:31:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6646120418
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:31:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6E23485EAC
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:31:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3+35o4-VPG+l for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 15:31:21 +0000 (UTC)
+ with ESMTP id 8p7P-nglus8l for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 15:31:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id B95CF20012
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:31:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D8FCD85E98
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:31:39 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B98302083E;
- Mon, 31 Aug 2020 15:31:20 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 08567214DB;
+ Mon, 31 Aug 2020 15:31:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598887881;
- bh=FTjms7RAStT6C6sTV5fyF/nplxmW+bXYc9VNgjwOUWA=;
+ s=default; t=1598887899;
+ bh=GgYEUat4iC8wr6OouJqSNb+FzDajrjBsokpFliM5aSk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=y2cqTzv0CYHZBRfa4mBEEBCPD5yubbs0BZvDRjLcAA6sohOd5gmaA66vI5YcrpuKe
- 9BC9wMr/vuiov9+Xc4Vx9f9W4EFANWg7Y5pr7ord97spY3jJ7Kygjon1hgwT0qwBdG
- O+nXEzxSLgj/L046b5ZRYlWW1ctBYCfGVTF6YLmU=
+ b=ITszLHoKNngoUhQwitbROwn5kBUTpX7HSWWVH/EW/lo1Z6NYpqqgZDE/AhW/wWEn9
+ yF3/AWM5UEufjh0MYj1XPWIldulsEXrtvn0P8NTO1QqqZU5P46/WPytti7NT9jQi8A
+ D6tvw7ri4bzJvc5CCuf48gQD97uMIX+Z3ddNDthY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 02/11] speakup: Fix wait_for_xmitr for ttyio case
-Date: Mon, 31 Aug 2020 11:31:08 -0400
-Message-Id: <20200831153117.1024537-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 2/9] speakup: Fix wait_for_xmitr for ttyio case
+Date: Mon, 31 Aug 2020 11:31:29 -0400
+Message-Id: <20200831153136.1024676-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200831153117.1024537-1-sashal@kernel.org>
-References: <20200831153117.1024537-1-sashal@kernel.org>
+In-Reply-To: <20200831153136.1024676-1-sashal@kernel.org>
+References: <20200831153136.1024676-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -100,10 +100,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  5 files changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index 177a2988641c1..403b01d66367e 100644
+index 9cfc8142a3187..f9ec8f1ac73be 100644
 --- a/drivers/staging/speakup/serialio.c
 +++ b/drivers/staging/speakup/serialio.c
-@@ -32,6 +32,7 @@ static void spk_serial_tiocmset(unsigned int set, unsigned int clear);
+@@ -31,6 +31,7 @@ static void spk_serial_tiocmset(unsigned int set, unsigned int clear);
  static unsigned char spk_serial_in(void);
  static unsigned char spk_serial_in_nowait(void);
  static void spk_serial_flush_buffer(void);
@@ -111,7 +111,7 @@ index 177a2988641c1..403b01d66367e 100644
  
  struct spk_io_ops spk_serial_io_ops = {
  	.synth_out = spk_serial_out,
-@@ -40,6 +41,7 @@ struct spk_io_ops spk_serial_io_ops = {
+@@ -39,6 +40,7 @@ struct spk_io_ops spk_serial_io_ops = {
  	.synth_in = spk_serial_in,
  	.synth_in_nowait = spk_serial_in_nowait,
  	.flush_buffer = spk_serial_flush_buffer,
@@ -119,7 +119,7 @@ index 177a2988641c1..403b01d66367e 100644
  };
  EXPORT_SYMBOL_GPL(spk_serial_io_ops);
  
-@@ -211,7 +213,7 @@ void spk_stop_serial_interrupt(void)
+@@ -210,7 +212,7 @@ void spk_stop_serial_interrupt(void)
  }
  EXPORT_SYMBOL_GPL(spk_stop_serial_interrupt);
  
@@ -128,7 +128,7 @@ index 177a2988641c1..403b01d66367e 100644
  {
  	int tmout = SPK_XMITR_TIMEOUT;
  
-@@ -280,7 +282,7 @@ static void spk_serial_flush_buffer(void)
+@@ -279,7 +281,7 @@ static void spk_serial_flush_buffer(void)
  
  static int spk_serial_out(struct spk_synth *in_synth, const char ch)
  {
@@ -137,7 +137,7 @@ index 177a2988641c1..403b01d66367e 100644
  		outb_p(ch, speakup_info.port_tts);
  		return 1;
  	}
-@@ -295,7 +297,7 @@ const char *spk_serial_synth_immediate(struct spk_synth *synth,
+@@ -294,7 +296,7 @@ const char *spk_serial_synth_immediate(struct spk_synth *synth,
  	while ((ch = *buff)) {
  		if (ch == '\n')
  			ch = synth->procspeech;
@@ -147,10 +147,10 @@ index 177a2988641c1..403b01d66367e 100644
  		else
  			return buff;
 diff --git a/drivers/staging/speakup/spk_priv.h b/drivers/staging/speakup/spk_priv.h
-index 796ffcca43c18..de1ed6c5018f6 100644
+index 046040ac074c6..8466c4c81ea84 100644
 --- a/drivers/staging/speakup/spk_priv.h
 +++ b/drivers/staging/speakup/spk_priv.h
-@@ -36,7 +36,6 @@
+@@ -45,7 +45,6 @@
  
  const struct old_serial_port *spk_serial_init(int index);
  void spk_stop_serial_interrupt(void);
@@ -159,10 +159,10 @@ index 796ffcca43c18..de1ed6c5018f6 100644
  void spk_ttyio_release(void);
  void spk_ttyio_register_ldisc(void);
 diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-index 93742dbdee77b..07948755cf9ed 100644
+index 71edd3cfe6844..59cd966932c82 100644
 --- a/drivers/staging/speakup/spk_ttyio.c
 +++ b/drivers/staging/speakup/spk_ttyio.c
-@@ -116,6 +116,7 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear);
+@@ -115,6 +115,7 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear);
  static unsigned char spk_ttyio_in(void);
  static unsigned char spk_ttyio_in_nowait(void);
  static void spk_ttyio_flush_buffer(void);
@@ -170,7 +170,7 @@ index 93742dbdee77b..07948755cf9ed 100644
  
  struct spk_io_ops spk_ttyio_ops = {
  	.synth_out = spk_ttyio_out,
-@@ -125,6 +126,7 @@ struct spk_io_ops spk_ttyio_ops = {
+@@ -123,6 +124,7 @@ struct spk_io_ops spk_ttyio_ops = {
  	.synth_in = spk_ttyio_in,
  	.synth_in_nowait = spk_ttyio_in_nowait,
  	.flush_buffer = spk_ttyio_flush_buffer,
@@ -178,7 +178,7 @@ index 93742dbdee77b..07948755cf9ed 100644
  };
  EXPORT_SYMBOL_GPL(spk_ttyio_ops);
  
-@@ -283,6 +285,11 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear)
+@@ -264,6 +266,11 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear)
  	mutex_unlock(&speakup_tty_mutex);
  }
  
@@ -191,10 +191,10 @@ index 93742dbdee77b..07948755cf9ed 100644
  {
  	struct spk_ldisc_data *ldisc_data = speakup_tty->disc_data;
 diff --git a/drivers/staging/speakup/spk_types.h b/drivers/staging/speakup/spk_types.h
-index a2fc72c298944..f2d3bd72c2c19 100644
+index c50de6035a9aa..bfbc09f760a94 100644
 --- a/drivers/staging/speakup/spk_types.h
 +++ b/drivers/staging/speakup/spk_types.h
-@@ -157,6 +157,7 @@ struct spk_io_ops {
+@@ -156,6 +156,7 @@ struct spk_io_ops {
  	unsigned char (*synth_in)(void);
  	unsigned char (*synth_in_nowait)(void);
  	void (*flush_buffer)(void);
@@ -203,10 +203,10 @@ index a2fc72c298944..f2d3bd72c2c19 100644
  
  struct spk_synth {
 diff --git a/drivers/staging/speakup/synth.c b/drivers/staging/speakup/synth.c
-index 3568bfb89912c..ac47dbac72075 100644
+index a1ca68c765792..7a137f8a5063c 100644
 --- a/drivers/staging/speakup/synth.c
 +++ b/drivers/staging/speakup/synth.c
-@@ -159,7 +159,7 @@ int spk_synth_is_alive_restart(struct spk_synth *synth)
+@@ -142,7 +142,7 @@ int spk_synth_is_alive_restart(struct spk_synth *synth)
  {
  	if (synth->alive)
  		return 1;
