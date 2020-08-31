@@ -2,71 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CB5B257860
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 13:28:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E998257A65
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 15:29:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 49EB5878ED;
-	Mon, 31 Aug 2020 11:28:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 74AEA87A62;
+	Mon, 31 Aug 2020 13:29:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2+mKRVoAcmMx; Mon, 31 Aug 2020 11:28:30 +0000 (UTC)
+	with ESMTP id lWD9aOvKhXYz; Mon, 31 Aug 2020 13:29:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 79B4E8798F;
-	Mon, 31 Aug 2020 11:28:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0851787A11;
+	Mon, 31 Aug 2020 13:29:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 05F661BF477
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 11:28:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 550D41BF302
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 13:28:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 028CE8640E
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 11:28:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 51CC184587
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 13:28:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nfuMXSGrAMnv for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 11:28:25 +0000 (UTC)
+ with ESMTP id 6cHjkP4Wiet0 for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 13:28:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ua1-f68.google.com (mail-ua1-f68.google.com
- [209.85.222.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6DE6F84DBD
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 11:28:25 +0000 (UTC)
-Received: by mail-ua1-f68.google.com with SMTP id s29so1887506uae.1
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 04:28:25 -0700 (PDT)
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C6E4484578
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 13:28:54 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id x12so4695806qtp.1
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 06:28:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=rNe9DIgXAZRBYyRXVk2L0bjf37ggS/ySO4N7/MxSntU=;
- b=DcgyW7B6aYSZlD+0XhKcOW6rW56/Cl2u3CCzYYDSu11m89iJaBzltTeHoZQg+8Aiza
- XLS5x6pWkWjiX9xbA/oAS10sxYKYRkwywrnIJ31a2MfHCEv+d8r/tMgxlnYVdzjJCYvS
- 1alSol10W9Lrecw3iurg25InCKrfyI9DFWLERpDId5jMhugfTxv6TTNqRhYzpVJJ8bZI
- /fp1//Jyb9oMhgmjeS7hBI7Br3LN/C2d1PHjTIKYG1B17eb7AHKV2ViwrJYerSiNl9JR
- seS6+LywPqhPDERtJjDC/yilvpjFE5PdYsQdkOqex8orf8IpF/XbQ82JiH1y6vwnbbyd
- eqzQ==
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=o69Nac3LLMj5CDhyPqLcnP7WGq46U4gQb9HzFdG/MvE=;
+ b=dGZjKog7uhJ10Hx92Szn03pULWVYkpf7Z+o3dPcWDqibEAAbm/EhMhGGBk+DTtloAO
+ GGrHZL9faVzFqSj/O+hw/8kkHffHNQsUWoUQHOtVKlmc0Ni8Y2AsCpVccCg+McWXvrPy
+ ZKphzuz9Qpq2A3E9dFBzCdM3pFV5joTtnx7+WXKEBEe17vqVfaKaGALuXZSOqW2yxlYS
+ lxs8LWvsFh2bQj4cBokKU9vDcnI7yyjU+nj6hNBObgdebgq0AYqvih29CAa8V7jOUo5l
+ 2inIqNimMTNQHPZc8e0v2Wtb6MtTPSUWoEvWwQs/1+/hdUntFIZCt0zvq606Ekk0+xf+
+ twCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=rNe9DIgXAZRBYyRXVk2L0bjf37ggS/ySO4N7/MxSntU=;
- b=Pxqy/qXUQYqR7u2qbjSRowQTxGBq1jphQIagXnzCv8RHSeXZvbbRMpOcUM7/UhCKpp
- SnkwK1lSCSmbypdwHEaKB0AX4kRy24WO9q2fzgIVHnR1s5mY6SdemyV4eK5dqTWG0Jrv
- k4gISslpZtgrOPNZfyGCpc/QMGh1tlU9APU5TPlO/kZkdZZrt1VIkhZqZ7lFgizl6KD2
- fnxL4tyEE2G+L0rIuEw43kZv/YC0ATdyuHS4cESBVQx+ebqzU4IUqiWbhzH7dOqpCn9i
- bGe6kkxWOtweSrkBmH8zDtNAkJraJa9K7xiqqDcHALVm2L4LL9JllTcbGwjihirGsGS1
- KnVg==
-X-Gm-Message-State: AOAM5322OLdKxrDo9aSoInPYDlENR77PL9lApUQjx4O1vatQyCezXp7f
- 85nYVZ4gGVs8NyPIGgrrZaNbKDxu2NPbrhyfHXg=
-X-Google-Smtp-Source: ABdhPJzedYq0bvzZmPIEHYGUL1+d4J3R0h+VMs+nc5wmS+M/12BYeDSImis/DQrP43zPfsal8Untz60kDoUQYhbeHoI=
-X-Received: by 2002:a9f:220a:: with SMTP id 10mr367064uad.73.1598873304071;
- Mon, 31 Aug 2020 04:28:24 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=o69Nac3LLMj5CDhyPqLcnP7WGq46U4gQb9HzFdG/MvE=;
+ b=b0e45UiDVWP63F5eeHe2Vgg9z8YfM9SomxEDACmJTmPbcnC7XC9pnLjOpQ6tUCfbCB
+ serrkUH2qZek/yuQyL9iItgJfNWupFZYf7iLAEJHHGk2j90GOXwFlfeLZ7WrF0M64Tgl
+ gPdHxoWCTqaP+zlIPn6p6PTZrHpFB3R9DdOT4B0PbSAZjJorEDOIiQfudsKdEFg3iktS
+ 8hrgW4zTsvSNUJgjTld0xruLdYTjPeahBPrqaEv9CY5VDvpxfybnLakhKG15iTbSQdp8
+ TmD84ON2z04jrH5fbOULmRUIYgBIqCxRl+MjOjxrgRqdMK3Kk39pQb69lq6Z2xc4EfYz
+ W0EQ==
+X-Gm-Message-State: AOAM532WrbR6t6jNbvphQH9p3YPC3QZBO+ldOQohqiFD056NoNUM2AqB
+ bIxr9vMtz7DeErq1TLUgabXHa1ONE3M2vVksmvM=
+X-Google-Smtp-Source: ABdhPJwTFSiHahm3o5ErCNVDLMAHAbqY/gcm/j2QvEhnXbOIzGlMlfhm7c3nSP/0THni2bBQrZlMWoVhtj11v7fjHYw=
+X-Received: by 2002:aed:2be2:: with SMTP id e89mr1267817qtd.298.1598880533509; 
+ Mon, 31 Aug 2020 06:28:53 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:ab0:59a6:0:0:0:0:0 with HTTP; Mon, 31 Aug 2020 04:28:23
+Received: by 2002:a0c:9088:0:0:0:0:0 with HTTP; Mon, 31 Aug 2020 06:28:52
  -0700 (PDT)
-From: "Miss.Aisha Gaddafi" <sheratonhotels01@gmail.com>
-Date: Mon, 31 Aug 2020 04:28:23 -0700
-Message-ID: <CAGGx3m_i04_we=hV=EhTgD_dfFupOz5jfqeyWTcogrve+gi1Uw@mail.gmail.com>
-Subject: URGENT BUSINESS PROPOSAL
+From: Miss Maris Avis <marie.avis11@gmail.com>
+Date: Mon, 31 Aug 2020 13:28:52 +0000
+X-Google-Sender-Auth: Lp5dY6VBzSh9_uvXRrOdBmPrOnY
+Message-ID: <CAHeMND74gvswhr8n6PM-B6m0+kki=hqUKViD-A3Y_g7VjTw13g@mail.gmail.com>
+Subject: Hello
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -80,38 +80,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: aishsgaddafi00@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: marie_avis12@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCiBEZWFyZXN0IE9uZSwKCkkgYW0gTWlzcyBBaXNoYSBHYWRkYWZpLCBvbmUgb2YgdGhlIGRh
-dWdodGVycyBvZiB0aGUgZW1iYXR0bGVkCnByZXNpZGVudCBvZiBMaWJ5YSwgSSBhbSBjdXJyZW50
-bHkgcmVzaWRpbmcgaW4gb25lIG9mIHRoZSBBZnJpY2FuCkNvdW50cmllcywgdW5mb3J0dW5hdGVs
-eSBhcyBhIHJlZnVnZWUuIEF0IHRoZSBtZWFudGltZSwgbXkgZmFtaWx5IGlzCnRoZSB0YXJnZXQg
-b2YgV2VzdGVybiBuYXRpb25zIGxlZCBieSBOYXRvIHdobyB3YW50cyB0byBkZXN0cm95IG15CmZh
-dGhlciBhdCBhbGwgY29zdHMuIE91ciBpbnZlc3RtZW50cyBhbmQgYmFuayBhY2NvdW50cyBpbiBz
-ZXZlcmFsCmNvdW50cmllcyBhcmUgdGhlaXIgdGFyZ2V0cyB0byBmcmVlemUuCgpJIGhhdmUgYmVl
-biBjb21taXNzaW9uZWQgdG8gY29udGFjdCBhbiBpbnRlcmVzdGVkIGZvcmVpZ24KaW52ZXN0b3Iv
-cGFydG5lciB3aG8gd2lsbCBiZSBhYmxlIHRvIHRha2UKYWJzb2x1dGUgY29udHJvbCBvZiBwYXJ0
-IG9mIHRoZSB2YXN0IGNhc2ggYXZhaWxhYmxlIHRvIHByaXZhdGUgYWNjb3VudAp3aXRoIG15IGxh
-dGUgYnJvdGhlciB3aG8gd2FzIGtpbGxlZCBieSBOQVRPIGFpciBzdHJpa2UsIGZvciBhIHBvc3Np
-YmxlCmludmVzdG1lbnQgaW4geW91ciBjb3VudHJ5LgoKSWYgdGhpcyB0cmFuc2FjdGlvbiBpbnRl
-cmVzdCB5b3UsIHlvdSBkb27igJl0IGhhdmUgdG8gZGlzY2xvc2UgaXQgdG8gYW55CmJvZHkgYmVj
-YXVzZSBvZiB3aGF0IGlzIGdvaW5nIHdpdGggbXkgZW50aXJlIGZhbWlseSwgaWYgdGhlIHVuaXRl
-ZApuYXRpb24gaGFwcGVucyB0byBrbm93IHRoaXMgYWNjb3VudCwgdGhleSB3aWxsIGZyZWV6aW5n
-IGl0IGFzIHRoZXkKZnJlZXplIG90aGVycyBzbyBrZWVwIHRoaXMgdHJhbnNhY3Rpb24gZm9yIHlv
-dXJzZWxmIG9ubHkgdW50aWwgd2UKZmluYWxpemUgaXQuCkkgd2FudCB0byB0cmFuc2ZlciB0aGlz
-IG1vbmV5IGludG8geW91ciBhY2NvdW50IGltbWVkaWF0ZWx5IGZvciBvbndhcmQKaW52ZXN0bWVu
-dCBpbiB5b3VyIGNvdW50cnkgYmVjYXVzZSBJIGRvbuKAmXQgd2FudCB0aGUgdW5pdGVkIG5hdGlv
-biB0bwprbm93IGFib3V0IHRoaXMgYWNjb3VudC4KClRoZXJlZm9yZSBpZiB5b3UgYXJlIGNhcGFi
-bGUgb2YgcnVubmluZyBhbiBlc3RhYmxpc2htZW50IGFuZCBjYW4KbWFpbnRhaW4gdGhlIGhpZ2gg
-bGV2ZWwgb2Ygc2VjcmVjeSByZXF1aXJlZCBpbiB0aGlzIHByb2plY3QsIGtpbmRseQpyZXNwb25k
-IHdpdGggdGhlIGZvbGxvd2luZyBpbmZvcm1hdGlvbiBmb3IgZGV0YWlscyBvZiB0aGUKcHJvamVj
-dC5QbGVhc2UKCjEuIFlvdXIgZnVsbCBuYW1lcyBhbmQgYWRkcmVzcwoyLiBZb3VyIHByaXZhdGUg
-dGVsZXBob25lIGFuZCBmYXggbnVtYmVycwozLiBZb3VyIHByaXZhdGUgZW1haWwgYWRkcmVzcwo0
-LiBBZ2UgYW5kIHByb2Zlc3Npb24KCkJlc3QgUmVnYXJkCk1pc3MuQWlzaGEgR2FkZGFmaQpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
-IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
-ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+My Dear,
+
+My name is Miss Marie Avis the only daughter of Mr. Gabriel Avis, my
+Father was dealing in Cocoa and Timber in this country before his
+death,  It is my pleasure to contact you for a business venture which
+I intend to establish in your country. Though I have not met with you
+before but I believe one has to risk confiding before you can succeed
+sometimes in life.
+
+I can confide in you for my brighter future since you are a human
+being like me. There is this huge amount of Ten Million five hundred
+thousand United States dollars. ($10.500.000.00) which my late Father
+kept for me in a suspense account with one of the bank here in Abidjan
+Cote d'Ivoire before he was assassinated by unknown persons, Now I
+have decided to invest these money in your country or anywhere safe
+enough for me.
+
+I want you to help me claim this fund from the bank and have it
+transfer into your personal account in your country for investment
+purposes in your country in these areas:
+
+1). Telecommunication
+2). The transport Industry
+3). Five Star Hotel
+4). Tourism
+5). Real Estate
+
+If you can be of assistance to me I will be pleased to offer you 20%
+of the total fund.
+
+I await your soonest response.
+
+Respectfully yours,
+Miss Marie Evis
+Tel: +225597438528
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
