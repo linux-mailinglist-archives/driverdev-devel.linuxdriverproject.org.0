@@ -2,58 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FB7F257CBF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:33:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7ACC8257E4B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 18:11:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D6C4A87C10;
-	Mon, 31 Aug 2020 15:33:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6B93886F82;
+	Mon, 31 Aug 2020 16:11:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0jrdhQQZpy8S; Mon, 31 Aug 2020 15:33:42 +0000 (UTC)
+	with ESMTP id QgtNWhkbAvrA; Mon, 31 Aug 2020 16:11:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 42BA687BA6;
-	Mon, 31 Aug 2020 15:33:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E1F4686F7A;
+	Mon, 31 Aug 2020 16:11:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 91AEA1BF41E
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:33:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7B4041BF2A3
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 16:11:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 88D4387BB8
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:33:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7708186F78
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 16:11:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p+gxNLv3t8lp for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 15:33:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 69C0F87BA6
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:33:38 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BCD47207EA;
- Mon, 31 Aug 2020 15:33:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598888018;
- bh=otuaNmTFeR1cZEWlvlrN8JZo+5WGyGy52K7YN8szaGA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=t7ji3dYkdFx/lhVBpAlgWVNUumcb97mLLmaULWc2HZF1SCNV+0vn8gB6/EX3Jesa0
- TYQo9Cyw2WEX/5MQHBMHAI1qxLB9wZhvSOyYytxc0kSFEyY4+z712lYwzwrugn2wO7
- r7awxU3mYrzFJXQB8ajSViBM8MuzGSlq9+NdMu7k=
-Date: Mon, 31 Aug 2020 17:33:45 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Sasha Levin <sashal@kernel.org>
-Subject: Re: [PATCH AUTOSEL 5.8 07/42] speakup: Fix wait_for_xmitr for ttyio
- case
-Message-ID: <20200831153345.GA2525965@kroah.com>
-References: <20200831152934.1023912-1-sashal@kernel.org>
- <20200831152934.1023912-7-sashal@kernel.org>
+ with ESMTP id vk7ucRX6sNaB for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 16:11:10 +0000 (UTC)
+X-Greylist: delayed 00:06:39 by SQLgrey-1.7.6
+Received: from mx4.wp.pl (mx4.wp.pl [212.77.101.12])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C546D86F77
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 16:11:09 +0000 (UTC)
+Received: (wp-smtpd smtp.wp.pl 6944 invoked from network);
+ 31 Aug 2020 18:04:25 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
+ t=1598889865; bh=Wso2RTwzDw3uAYjb34dIRt37gGCLNnOWKMz9bQ3PYPY=;
+ h=From:To:Cc:Subject;
+ b=d3UfzPiWnYREinUtTS7/DhxIJrPfO/T7mFpQz549+xt2YNW2ndVRIIwSzBFt7H4/L
+ pyX2vv/mEHLZh5uxrnCPIN1zgxn2gcIkpACIuLpJv+fCZZCcr7rRUs4e6zXVCuiQt2
+ slH+1P4XoO8buUcBZn76z/c4flISxDtBXt0c1gYg=
+Received: from 188.146.234.2.nat.umts.dynamic.t-mobile.pl (HELO localhost)
+ (antoni.przybylik@wp.pl@[188.146.234.2])
+ (envelope-sender <antoni.przybylik@wp.pl>)
+ by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+ for <gregkh@linuxfoundation.org>; 31 Aug 2020 18:04:25 +0200
+From: antoniprzybylik <antoni.przybylik@wp.pl>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: gdm724x: fixed two macros by adding brackets
+Date: Mon, 31 Aug 2020 18:03:32 +0200
+Message-Id: <20200831160332.8507-1-antoni.przybylik@wp.pl>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200831152934.1023912-7-sashal@kernel.org>
+X-WP-DKIM-Status: good (id: wp.pl)                                      
+X-WP-MailID: 72389e197ba179900ee91c9ac8f34ac3
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000000 [oXN8]                               
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,42 +67,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Samuel Thibault <samuel.thibault@ens-lyon.org>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ antoniprzybylik <antoni.przybylik@wp.pl>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 31, 2020 at 11:28:59AM -0400, Sasha Levin wrote:
-> From: Samuel Thibault <samuel.thibault@ens-lyon.org>
-> 
-> [ Upstream commit 2b86d9b8ec6efb86fc5ea44f2d49b1df17f699a1 ]
-> 
-> This was missed while introducing the tty-based serial access.
-> 
-> The only remaining use of wait_for_xmitr with tty-based access is in
-> spk_synth_is_alive_restart to check whether the synth can be restarted.
-> With tty-based this is up to the tty layer to cope with the buffering
-> etc. so we can just say yes.
-> 
-> Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
-> Link: https://lore.kernel.org/r/20200804160637.x3iycau5izywbgzl@function
-> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Signed-off-by: Sasha Levin <sashal@kernel.org>
-> ---
->  drivers/staging/speakup/serialio.c  | 8 +++++---
->  drivers/staging/speakup/spk_priv.h  | 1 -
->  drivers/staging/speakup/spk_ttyio.c | 7 +++++++
->  drivers/staging/speakup/spk_types.h | 1 +
->  drivers/staging/speakup/synth.c     | 2 +-
->  5 files changed, 14 insertions(+), 5 deletions(-)
+Added brackets to two macros.
 
-Not needed for 5.8 or older, sorry, this was a 5.9-rc1+ issue only.
+Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
+---
+ drivers/staging/gdm724x/gdm_tty.c   | 3 +--
+ drivers/staging/gdm724x/netlink_k.c | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+index 6e813693a766..5cd94347bf78 100644
+--- a/drivers/staging/gdm724x/gdm_tty.c
++++ b/drivers/staging/gdm724x/gdm_tty.c
+@@ -27,7 +27,7 @@
+ 
+ #define MUX_TX_MAX_SIZE 2048
+ 
+-#define GDM_TTY_READY(gdm) (gdm && gdm->tty_dev && gdm->port.count)
++#define GDM_TTY_READY(gdm) ((gdm) && (gdm)->tty_dev && (gdm)->port.count)
+ 
+ static struct tty_driver *gdm_driver[TTY_MAX_COUNT];
+ static struct gdm *gdm_table[TTY_MAX_COUNT][GDM_TTY_MINOR];
+@@ -323,4 +323,3 @@ void unregister_lte_tty_driver(void)
+ 		}
+ 	}
+ }
+-
+diff --git a/drivers/staging/gdm724x/netlink_k.c b/drivers/staging/gdm724x/netlink_k.c
+index 7902e52a699b..399b7b4b536f 100644
+--- a/drivers/staging/gdm724x/netlink_k.c
++++ b/drivers/staging/gdm724x/netlink_k.c
+@@ -20,7 +20,7 @@ static DEFINE_MUTEX(netlink_mutex);
+ #define ND_NLMSG_DATA(nlh)	((void *)((char *)NLMSG_DATA(nlh) + \
+ 						  ND_IFINDEX_LEN))
+ #define ND_NLMSG_S_LEN(len)	(len + ND_IFINDEX_LEN)
+-#define ND_NLMSG_R_LEN(nlh)	(nlh->nlmsg_len - ND_IFINDEX_LEN)
++#define ND_NLMSG_R_LEN(nlh)	((nlh)->nlmsg_len - ND_IFINDEX_LEN)
+ #define ND_NLMSG_IFIDX(nlh)	NLMSG_DATA(nlh)
+ #define ND_MAX_MSG_LEN		(1024 * 32)
+ 
+-- 
+2.28.0
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
