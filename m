@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB531257C7C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:30:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1450A257CAE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:31:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 763FB87B9B;
-	Mon, 31 Aug 2020 15:30:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 61FA287B96;
+	Mon, 31 Aug 2020 15:31:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X1V6lnnzfGPV; Mon, 31 Aug 2020 15:30:51 +0000 (UTC)
+	with ESMTP id m8KDvV897MQs; Mon, 31 Aug 2020 15:31:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C860387B4C;
-	Mon, 31 Aug 2020 15:30:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B8D35868F7;
+	Mon, 31 Aug 2020 15:31:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D22041BF41E
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:30:47 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7183B1BF41E
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:31:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CF11585EA4
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:30:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6646120418
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:31:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1jylkr2qdazt for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 15:30:47 +0000 (UTC)
+ with ESMTP id 3+35o4-VPG+l for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 15:31:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 38EA085E95
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:30:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id B95CF20012
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:31:21 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 52F252145D;
- Mon, 31 Aug 2020 15:30:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B98302083E;
+ Mon, 31 Aug 2020 15:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598887847;
- bh=KOKs6DLELiTNDSW+vA4LE72OhUUhWzSoLmABcj8gaHc=;
+ s=default; t=1598887881;
+ bh=FTjms7RAStT6C6sTV5fyF/nplxmW+bXYc9VNgjwOUWA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=2saVy1KauxdoyeJK7eHxKUxFMF3xxxwu1YmaZ+vgohVpzzqynVZdkSmrfbm2XRWL2
- 74G1Q40ljef+84K63YiMEKPTCCzcVC8A4mXzEvWLcOBSTvOP/q9I15WvTGlI09x1PO
- aMNZsiOo2xiAGPOQwL7Q8slq8DwHA74aUseKeb3E=
+ b=y2cqTzv0CYHZBRfa4mBEEBCPD5yubbs0BZvDRjLcAA6sohOd5gmaA66vI5YcrpuKe
+ 9BC9wMr/vuiov9+Xc4Vx9f9W4EFANWg7Y5pr7ord97spY3jJ7Kygjon1hgwT0qwBdG
+ O+nXEzxSLgj/L046b5ZRYlWW1ctBYCfGVTF6YLmU=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 04/23] speakup: Fix wait_for_xmitr for ttyio case
-Date: Mon, 31 Aug 2020 11:30:20 -0400
-Message-Id: <20200831153039.1024302-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 02/11] speakup: Fix wait_for_xmitr for ttyio case
+Date: Mon, 31 Aug 2020 11:31:08 -0400
+Message-Id: <20200831153117.1024537-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200831153039.1024302-1-sashal@kernel.org>
-References: <20200831153039.1024302-1-sashal@kernel.org>
+In-Reply-To: <20200831153117.1024537-1-sashal@kernel.org>
+References: <20200831153117.1024537-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -147,7 +147,7 @@ index 177a2988641c1..403b01d66367e 100644
  		else
  			return buff;
 diff --git a/drivers/staging/speakup/spk_priv.h b/drivers/staging/speakup/spk_priv.h
-index ac6a74883af47..e9e3460634da2 100644
+index 796ffcca43c18..de1ed6c5018f6 100644
 --- a/drivers/staging/speakup/spk_priv.h
 +++ b/drivers/staging/speakup/spk_priv.h
 @@ -36,7 +36,6 @@
@@ -159,7 +159,7 @@ index ac6a74883af47..e9e3460634da2 100644
  void spk_ttyio_release(void);
  void spk_ttyio_register_ldisc(void);
 diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-index 5a9eff08cb960..b79361b6dc3a6 100644
+index 93742dbdee77b..07948755cf9ed 100644
 --- a/drivers/staging/speakup/spk_ttyio.c
 +++ b/drivers/staging/speakup/spk_ttyio.c
 @@ -116,6 +116,7 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear);
@@ -178,7 +178,7 @@ index 5a9eff08cb960..b79361b6dc3a6 100644
  };
  EXPORT_SYMBOL_GPL(spk_ttyio_ops);
  
-@@ -286,6 +288,11 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear)
+@@ -283,6 +285,11 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear)
  	mutex_unlock(&speakup_tty_mutex);
  }
  
