@@ -2,56 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88DAE257C13
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:17:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61AD5257C57
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 17:29:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4597585E07;
-	Mon, 31 Aug 2020 15:17:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 21E0C85E27;
+	Mon, 31 Aug 2020 15:29:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ThxH64Pu95Rj; Mon, 31 Aug 2020 15:17:36 +0000 (UTC)
+	with ESMTP id MjMFwKxTKHLz; Mon, 31 Aug 2020 15:29:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C083485E03;
-	Mon, 31 Aug 2020 15:17:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7A1D185427;
+	Mon, 31 Aug 2020 15:29:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9B3221BF41E
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:17:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E915F1BF41E
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:29:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9825D87AC9
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:17:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DE70F20514
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 15:29:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JFmHvvMwuE5V for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 15:17:32 +0000 (UTC)
+ with ESMTP id pkWJFhvufcTD for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 15:29:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1E5FA87A8E
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:17:32 +0000 (UTC)
-Received: from e123331-lin.nice.arm.com (adsl-83.46.190.3.tellas.gr
- [46.190.3.83])
+ by silver.osuosl.org (Postfix) with ESMTPS id C7C3120418
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 15:29:46 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0280D20E65;
- Mon, 31 Aug 2020 15:17:27 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B2A5120866;
+ Mon, 31 Aug 2020 15:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598887051;
- bh=aexLTaeJK4i+xGqf+XieaLyn1A/zgNr75WyclVW344E=;
+ s=default; t=1598887786;
+ bh=zZZ10f8uPvc1QHqSP9kMTaXdSgL84DFd9nNUxAUyLMc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lpC4mJZ563bRTtJ4KRmZPKzPBz/Sg/xOKaqBo18wZi/G4v5TeH2uYIW/titegpYvc
- ccEmAPOfX2PTwg3ufni/ekqVA1xOiNmC6d5W6YNoBj94Ss6zt0lXHyJaSRQ8/aVY9d
- weRsrLcBiOyZ9o91t2K6Ig9n1SlRZdTFwA4swUoQ=
-From: Ard Biesheuvel <ardb@kernel.org>
-To: linux-crypto@vger.kernel.org
-Subject: [PATCH v3 7/7] crypto: arc4 - mark ecb(arc4) skcipher as obsolete
-Date: Mon, 31 Aug 2020 18:16:49 +0300
-Message-Id: <20200831151649.21969-8-ardb@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200831151649.21969-1-ardb@kernel.org>
-References: <20200831151649.21969-1-ardb@kernel.org>
+ b=imdniHmsqPM7doJvjVKZ2t0TnJ1xEwpeIqSrA4idF4oo7PVn9djVHh9sPSeiY+tnl
+ Pq0aOByLjAk2RT1avtchU5GGbwUDiBgyyLACDnNkBD+jSuZMHBmROfx1VC4FZ80eNo
+ SnyWb9OPtKJV+xMABCM1n9x7Z3PwUl+YEjhaRhlU=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.8 07/42] speakup: Fix wait_for_xmitr for ttyio case
+Date: Mon, 31 Aug 2020 11:28:59 -0400
+Message-Id: <20200831152934.1023912-7-sashal@kernel.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200831152934.1023912-1-sashal@kernel.org>
+References: <20200831152934.1023912-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,115 +68,155 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-nfs@vger.kernel.org,
- Herbert Xu <herbert@gondor.apana.org.au>, Arnd Bergmann <arnd@arndb.de>,
- Eric Biggers <ebiggers@google.com>, Ard Biesheuvel <ardb@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S. Miller" <davem@davemloft.net>,
- "J. Bruce Fields" <bfields@fieldses.org>, Chuck Lever <chuck.lever@oracle.com>,
- netdev@vger.kernel.org, Anna Schumaker <anna.schumaker@netapp.com>,
- Trond Myklebust <trond.myklebust@hammerspace.com>
-MIME-Version: 1.0
+Cc: Sasha Levin <sashal@kernel.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>, devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cryptographic algorithms may have a lifespan that is significantly
-shorter than Linux's, and so we need to start phasing out algorithms
-that are known to be broken, and are no longer fit for general use.
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
 
-RC4 (or arc4) is a good example here: there are a few areas where its
-use is still somewhat acceptable, e.g., for interoperability with legacy
-wifi hardware that can only use WEP or TKIP data encryption, but that
-should not imply that, for instance, use of RC4 based EAP-TLS by the WPA
-supplicant for negotiating TKIP keys is equally acceptable, or that RC4
-should remain available as a general purpose cryptographic transform for
-all in-kernel and user space clients.
+[ Upstream commit 2b86d9b8ec6efb86fc5ea44f2d49b1df17f699a1 ]
 
-Now that all in-kernel users that need to retain support have moved to
-the arc4 library interface, and the known users of ecb(arc4) via the
-socket API (iwd [0] and libell [1][2]) have been updated to switch to a
-local implementation, we can take the next step, and mark the ecb(arc4)
-skcipher as obsolete, and only provide it if the socket API is enabled in
-the first place, as well as provide the option to disable all algorithms
-that have been marked as obsolete.
+This was missed while introducing the tty-based serial access.
 
-[0] https://git.kernel.org/pub/scm/network/wireless/iwd.git/commit/?id=1db8a85a60c64523
-[1] https://git.kernel.org/pub/scm/libs/ell/ell.git/commit/?id=53482ce421b727c2
-[2] https://git.kernel.org/pub/scm/libs/ell/ell.git/commit/?id=7f6a137809d42f6b
+The only remaining use of wait_for_xmitr with tty-based access is in
+spk_synth_is_alive_restart to check whether the synth can be restarted.
+With tty-based this is up to the tty layer to cope with the buffering
+etc. so we can just say yes.
 
-Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Link: https://lore.kernel.org/r/20200804160637.x3iycau5izywbgzl@function
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- crypto/Kconfig | 10 ++++++++++
- crypto/arc4.c  | 10 ++++++++++
- 2 files changed, 20 insertions(+)
+ drivers/staging/speakup/serialio.c  | 8 +++++---
+ drivers/staging/speakup/spk_priv.h  | 1 -
+ drivers/staging/speakup/spk_ttyio.c | 7 +++++++
+ drivers/staging/speakup/spk_types.h | 1 +
+ drivers/staging/speakup/synth.c     | 2 +-
+ 5 files changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/crypto/Kconfig b/crypto/Kconfig
-index 1b57419fa2e7..e85d8a059489 100644
---- a/crypto/Kconfig
-+++ b/crypto/Kconfig
-@@ -1199,6 +1199,7 @@ config CRYPTO_ANUBIS
+diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
+index 177a2988641c1..403b01d66367e 100644
+--- a/drivers/staging/speakup/serialio.c
++++ b/drivers/staging/speakup/serialio.c
+@@ -32,6 +32,7 @@ static void spk_serial_tiocmset(unsigned int set, unsigned int clear);
+ static unsigned char spk_serial_in(void);
+ static unsigned char spk_serial_in_nowait(void);
+ static void spk_serial_flush_buffer(void);
++static int spk_serial_wait_for_xmitr(struct spk_synth *in_synth);
  
- config CRYPTO_ARC4
- 	tristate "ARC4 cipher algorithm"
-+	depends on CRYPTO_USER_API_ENABLE_OBSOLETE
- 	select CRYPTO_SKCIPHER
- 	select CRYPTO_LIB_ARC4
- 	help
-@@ -1881,6 +1882,15 @@ config CRYPTO_USER_API_AEAD
- 	  This option enables the user-spaces interface for AEAD
- 	  cipher algorithms.
+ struct spk_io_ops spk_serial_io_ops = {
+ 	.synth_out = spk_serial_out,
+@@ -40,6 +41,7 @@ struct spk_io_ops spk_serial_io_ops = {
+ 	.synth_in = spk_serial_in,
+ 	.synth_in_nowait = spk_serial_in_nowait,
+ 	.flush_buffer = spk_serial_flush_buffer,
++	.wait_for_xmitr = spk_serial_wait_for_xmitr,
+ };
+ EXPORT_SYMBOL_GPL(spk_serial_io_ops);
  
-+config CRYPTO_USER_API_ENABLE_OBSOLETE
-+	bool "Enable obsolete cryptographic algorithms for userspace"
-+	depends on CRYPTO_USER_API
-+	default y
-+	help
-+	  Allow obsolete cryptographic algorithms to be selected that have
-+	  already been phased out from internal use by the kernel, and are
-+	  only useful for userspace clients that still rely on them.
-+
- config CRYPTO_STATS
- 	bool "Crypto usage statistics for User-space"
- 	depends on CRYPTO_USER
-diff --git a/crypto/arc4.c b/crypto/arc4.c
-index aa79571dbd49..923aa7a6cd60 100644
---- a/crypto/arc4.c
-+++ b/crypto/arc4.c
-@@ -12,6 +12,7 @@
- #include <crypto/internal/skcipher.h>
- #include <linux/init.h>
- #include <linux/module.h>
-+#include <linux/sched.h>
+@@ -211,7 +213,7 @@ void spk_stop_serial_interrupt(void)
+ }
+ EXPORT_SYMBOL_GPL(spk_stop_serial_interrupt);
  
- static int crypto_arc4_setkey(struct crypto_skcipher *tfm, const u8 *in_key,
- 			      unsigned int key_len)
-@@ -39,6 +40,14 @@ static int crypto_arc4_crypt(struct skcipher_request *req)
- 	return err;
+-int spk_wait_for_xmitr(struct spk_synth *in_synth)
++static int spk_serial_wait_for_xmitr(struct spk_synth *in_synth)
+ {
+ 	int tmout = SPK_XMITR_TIMEOUT;
+ 
+@@ -280,7 +282,7 @@ static void spk_serial_flush_buffer(void)
+ 
+ static int spk_serial_out(struct spk_synth *in_synth, const char ch)
+ {
+-	if (in_synth->alive && spk_wait_for_xmitr(in_synth)) {
++	if (in_synth->alive && spk_serial_wait_for_xmitr(in_synth)) {
+ 		outb_p(ch, speakup_info.port_tts);
+ 		return 1;
+ 	}
+@@ -295,7 +297,7 @@ const char *spk_serial_synth_immediate(struct spk_synth *synth,
+ 	while ((ch = *buff)) {
+ 		if (ch == '\n')
+ 			ch = synth->procspeech;
+-		if (spk_wait_for_xmitr(synth))
++		if (spk_serial_wait_for_xmitr(synth))
+ 			outb(ch, speakup_info.port_tts);
+ 		else
+ 			return buff;
+diff --git a/drivers/staging/speakup/spk_priv.h b/drivers/staging/speakup/spk_priv.h
+index c75b408387947..0f4bcbe5ddb93 100644
+--- a/drivers/staging/speakup/spk_priv.h
++++ b/drivers/staging/speakup/spk_priv.h
+@@ -34,7 +34,6 @@
+ 
+ const struct old_serial_port *spk_serial_init(int index);
+ void spk_stop_serial_interrupt(void);
+-int spk_wait_for_xmitr(struct spk_synth *in_synth);
+ void spk_serial_release(void);
+ void spk_ttyio_release(void);
+ void spk_ttyio_register_ldisc(void);
+diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
+index 9b95f77f92657..a831ff64f8ba5 100644
+--- a/drivers/staging/speakup/spk_ttyio.c
++++ b/drivers/staging/speakup/spk_ttyio.c
+@@ -116,6 +116,7 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear);
+ static unsigned char spk_ttyio_in(void);
+ static unsigned char spk_ttyio_in_nowait(void);
+ static void spk_ttyio_flush_buffer(void);
++static int spk_ttyio_wait_for_xmitr(struct spk_synth *in_synth);
+ 
+ struct spk_io_ops spk_ttyio_ops = {
+ 	.synth_out = spk_ttyio_out,
+@@ -125,6 +126,7 @@ struct spk_io_ops spk_ttyio_ops = {
+ 	.synth_in = spk_ttyio_in,
+ 	.synth_in_nowait = spk_ttyio_in_nowait,
+ 	.flush_buffer = spk_ttyio_flush_buffer,
++	.wait_for_xmitr = spk_ttyio_wait_for_xmitr,
+ };
+ EXPORT_SYMBOL_GPL(spk_ttyio_ops);
+ 
+@@ -286,6 +288,11 @@ static void spk_ttyio_tiocmset(unsigned int set, unsigned int clear)
+ 	mutex_unlock(&speakup_tty_mutex);
  }
  
-+static int crypto_arc4_init(struct crypto_skcipher *tfm)
++static int spk_ttyio_wait_for_xmitr(struct spk_synth *in_synth)
 +{
-+	pr_warn_ratelimited("\"%s\" (%ld) uses obsolete ecb(arc4) skcipher\n",
-+			    current->comm, (unsigned long)current->pid);
-+
-+	return 0;
++	return 1;
 +}
 +
- static struct skcipher_alg arc4_alg = {
- 	/*
- 	 * For legacy reasons, this is named "ecb(arc4)", not "arc4".
-@@ -55,6 +64,7 @@ static struct skcipher_alg arc4_alg = {
- 	.setkey			=	crypto_arc4_setkey,
- 	.encrypt		=	crypto_arc4_crypt,
- 	.decrypt		=	crypto_arc4_crypt,
-+	.init			=	crypto_arc4_init,
+ static unsigned char ttyio_in(int timeout)
+ {
+ 	struct spk_ldisc_data *ldisc_data = speakup_tty->disc_data;
+diff --git a/drivers/staging/speakup/spk_types.h b/drivers/staging/speakup/spk_types.h
+index d3272c6d199aa..7398f1196e103 100644
+--- a/drivers/staging/speakup/spk_types.h
++++ b/drivers/staging/speakup/spk_types.h
+@@ -158,6 +158,7 @@ struct spk_io_ops {
+ 	unsigned char (*synth_in)(void);
+ 	unsigned char (*synth_in_nowait)(void);
+ 	void (*flush_buffer)(void);
++	int (*wait_for_xmitr)(struct spk_synth *synth);
  };
  
- static int __init arc4_init(void)
+ struct spk_synth {
+diff --git a/drivers/staging/speakup/synth.c b/drivers/staging/speakup/synth.c
+index 3568bfb89912c..ac47dbac72075 100644
+--- a/drivers/staging/speakup/synth.c
++++ b/drivers/staging/speakup/synth.c
+@@ -159,7 +159,7 @@ int spk_synth_is_alive_restart(struct spk_synth *synth)
+ {
+ 	if (synth->alive)
+ 		return 1;
+-	if (spk_wait_for_xmitr(synth) > 0) {
++	if (synth->io_ops->wait_for_xmitr(synth) > 0) {
+ 		/* restart */
+ 		synth->alive = 1;
+ 		synth_printf("%s", synth->init);
 -- 
-2.17.1
+2.25.1
 
 _______________________________________________
 devel mailing list
