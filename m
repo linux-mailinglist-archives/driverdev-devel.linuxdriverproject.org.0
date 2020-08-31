@@ -1,51 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4ED9E25814C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Aug 2020 20:46:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8D6B25841F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Sep 2020 00:34:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 97E85869FE;
-	Mon, 31 Aug 2020 18:46:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 909BF22DDB;
+	Mon, 31 Aug 2020 22:34:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zcnIA9pRIMAB; Mon, 31 Aug 2020 18:46:41 +0000 (UTC)
+	with ESMTP id BZY-ElJBjrIn; Mon, 31 Aug 2020 22:34:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F3FF585A67;
-	Mon, 31 Aug 2020 18:46:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F0FB4228AE;
+	Mon, 31 Aug 2020 22:33:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AC1151BF3C2
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 18:46:39 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A9D111BF30A
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 22:33:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A81D685F46
- for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 18:46:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9DB4C228AE
+ for <devel@linuxdriverproject.org>; Mon, 31 Aug 2020 22:33:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id okE4p-FM4h_o for <devel@linuxdriverproject.org>;
- Mon, 31 Aug 2020 18:46:39 +0000 (UTC)
+ with ESMTP id TTddqYCoulXx for <devel@linuxdriverproject.org>;
+ Mon, 31 Aug 2020 22:33:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B4AAC85F44
- for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 18:46:38 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 8B083ADD5;
- Mon, 31 Aug 2020 18:46:36 +0000 (UTC)
-Message-ID: <6071c2947095db72f5357f30f932dfa66442294a.camel@suse.de>
-Subject: Re: [PATCH v2 28/47] staging: vchi: Get rid of vchiq_shim's message
- callback
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Jacopo Mondi <jacopo@jmondi.org>
-Date: Mon, 31 Aug 2020 20:46:33 +0200
-In-Reply-To: <20200828143103.2ljdrxk4py35ecu6@uno.localdomain>
-References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
- <20200629150945.10720-29-nsaenzjulienne@suse.de>
- <20200828143103.2ljdrxk4py35ecu6@uno.localdomain>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0959D1FE41
+ for <devel@driverdev.osuosl.org>; Mon, 31 Aug 2020 22:33:50 +0000 (UTC)
+IronPort-SDR: aZz393HhBMs/mngSyNDmeShGQG2sa7aS8Tx1bbEzuWtBkBBlMKf7TbBoZwaaymHA3FU2csdeQo
+ onEaikN3++aw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9730"; a="154471293"
+X-IronPort-AV: E=Sophos;i="5.76,376,1592895600"; d="scan'208";a="154471293"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Aug 2020 15:33:49 -0700
+IronPort-SDR: UbHwRyxa1uq4An91UJodVY35CVJTMxl6ex8+bfuqNURlWc4chjnWD/ivW66tVSYc3Hsuplq3KO
+ 6xtsoQpUKTSA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,376,1592895600"; d="scan'208";a="297082521"
+Received: from lkp-server02.sh.intel.com (HELO 713faec3b0e5) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 31 Aug 2020 15:33:48 -0700
+Received: from kbuild by 713faec3b0e5 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kCsN1-0000E6-Hy; Mon, 31 Aug 2020 22:33:47 +0000
+Date: Tue, 01 Sep 2020 06:33:34 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ c96711e138444d37d6d8b3f0fa7f09e4917cd326
+Message-ID: <5f4d7abe.66YzoDfi8A0SgAJc%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,90 +69,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, dave.stevenson@raspberrypi.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- naush@raspberrypi.com, laurent.pinchart@ideasonboard.com,
- kernel-list@raspberrypi.com, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Jacopo, sorry if I'm a little late with my replies but I'm on vacation. I'll
-be back Sept 7th, but wanted to reply since I don't want to stop your work.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
+branch HEAD: c96711e138444d37d6d8b3f0fa7f09e4917cd326  Merge tag 'iio-fixes-for-5.9a' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
 
-On Fri, 2020-08-28 at 16:31 +0200, Jacopo Mondi wrote:
-> Hi Nicolas,
-> 
->    I'm working on a v2 of the bcm2835-isp support which was sent along
-> with UNICAM v4l2 driver and some misc changes you have collected in
-> this series. Reference to v1:
-> https://lore.kernel.org/linux-media/20200504092611.9798-1-laurent.pinchart@ideasonboard.com/
-> 
-> On Mon, Jun 29, 2020 at 05:09:26PM +0200, Nicolas Saenz Julienne wrote:
-> > As vchiq_shim's callback does nothing aside from pushing messages into
-> > the service's queue, let's bypass it and jump directly to the service's
-> > callbacks, letting them choose whether to use the message queue.
-> 
-> I admit this patch caused me some pain, as after a few days chasing
-> why the ISP got stuck in importing buffers into the VPU through the vc-sm-cma
-> driver I realized that this patch removed a significant part of the
-> process..
+elapsed time: 724m
 
-Sorry for the pain, I made my best to keep the downstream code in mind, and
-also to keep the amount of functional changes needed in the services minimal.
-That said, getting rid of VCHI is, IMO, a necessary step towards making VCHIQ
-upstreamable.
+configs tested: 92
+configs skipped: 8
 
-> > It turns out most services don't need to use the message queue, which
-> > makes for simpler code in the end.
-> > 
-> > -
-> > -	if (reason == VCHIQ_MESSAGE_AVAILABLE)
-> > -		vchiq_msg_queue_push(service->handle, header);
-> 
-> This one '-.-
-> 
-> I wonder if this was intentional and it is expected all services now
-> handle the message queue (it seems so according to your commit
-> message).
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Indeed, it was intentional. Upstream services (mmal & audio) don't need it and
-IIRC vchiq's ioctl interface has it's own queue implementation. So I figured it
-would be best to keep its usage optional.
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arc                      axs103_smp_defconfig
+mips                          rb532_defconfig
+arm                           viper_defconfig
+m68k                            q40_defconfig
+arm                       cns3420vb_defconfig
+alpha                            allyesconfig
+mips                        omega2p_defconfig
+h8300                            alldefconfig
+arm                             pxa_defconfig
+arm                           omap1_defconfig
+arm                         mv78xx0_defconfig
+mips                         tb0287_defconfig
+arm                         socfpga_defconfig
+sh                           se7751_defconfig
+um                             i386_defconfig
+m68k                        stmark2_defconfig
+m68k                             allyesconfig
+mips                  cavium_octeon_defconfig
+mips                       rbtx49xx_defconfig
+mips                          ath25_defconfig
+arm                         nhk8815_defconfig
+sh                           se7722_defconfig
+arm                          exynos_defconfig
+sh                              ul2_defconfig
+arm                        clps711x_defconfig
+nds32                             allnoconfig
+parisc                generic-64bit_defconfig
+xtensa                              defconfig
+arm                              alldefconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+i386                 randconfig-a001-20200831
+i386                 randconfig-a002-20200831
+i386                 randconfig-a004-20200831
+i386                 randconfig-a006-20200831
+i386                 randconfig-a005-20200831
+i386                 randconfig-a003-20200831
+x86_64               randconfig-a012-20200831
+x86_64               randconfig-a015-20200831
+x86_64               randconfig-a014-20200831
+x86_64               randconfig-a011-20200831
+x86_64               randconfig-a016-20200831
+x86_64               randconfig-a013-20200831
+i386                 randconfig-a013-20200831
+i386                 randconfig-a011-20200831
+i386                 randconfig-a012-20200831
+i386                 randconfig-a015-20200831
+i386                 randconfig-a016-20200831
+i386                 randconfig-a014-20200831
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
-> Fair enough, I could add in the vc-sma-cma callback a call to
-> vchiq_msg_queue_push() but I wonder if it wouldn't be better to do so
-> in vchiq_core.c:parse_rx_slots(), just before calling the service's
-> callback, so that this has not to be re-implemented in all services.
-> 
-> What would you suggest ?
-
-Actually, in hindsight my suggestion would be to get rid of the vchiq message
-queue altogether[1], keeping VCHIQ as simple as possible is a must if we want
-to get it upstream, and since vc-sma-cma is the only queue user there is little
-benefit to having a generic implementation. Let the service do it's own custom
-queueing and just force all services to release the messages when they see fit.
-It'll make for a simpler VCHIQ usage.
-
-> And by the way I see mmal-vchiq.c:service_callback() releasing
-> messages but never pushing them to the queue. Is this intended as well ?
-
-Yes, sorry, it's pretty confusing. That call, vchiq_release_message(), has
-nothing to do with the queue. It's the call that really gets the core to
-release the message from its slot and the only mandatory thing to do after
-receiving a message.
-
-All in all VCHIQ isn't documented an pretty cryptic in its design. I don't
-claim to be an expert. So feel free to contradict me anytime, I'll be happy to
-work out something that fits all of us.
-
-Regards,
-Nicolas
-
-[1] Here I mean vchiq_msg_queue_push() & vchiq_msg_hold()
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
