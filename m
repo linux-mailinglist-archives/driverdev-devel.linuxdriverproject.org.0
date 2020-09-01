@@ -2,63 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB13B25A001
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Sep 2020 22:31:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FEB625A031
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Sep 2020 22:49:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CA5BC2740C;
-	Tue,  1 Sep 2020 20:31:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8A1F720502;
+	Tue,  1 Sep 2020 20:49:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YaRpwkWpg7pv; Tue,  1 Sep 2020 20:31:50 +0000 (UTC)
+	with ESMTP id 8bIGR-1S+i-1; Tue,  1 Sep 2020 20:49:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6FEA220467;
-	Tue,  1 Sep 2020 20:31:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0BF631FE32;
+	Tue,  1 Sep 2020 20:49:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 353E51BF384
- for <devel@linuxdriverproject.org>; Tue,  1 Sep 2020 20:31:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 93FDD1BF384
+ for <devel@linuxdriverproject.org>; Tue,  1 Sep 2020 20:49:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2D3478672B
- for <devel@linuxdriverproject.org>; Tue,  1 Sep 2020 20:31:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7E90E20242
+ for <devel@linuxdriverproject.org>; Tue,  1 Sep 2020 20:49:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LrMiJS6tZRuj for <devel@linuxdriverproject.org>;
- Tue,  1 Sep 2020 20:31:42 +0000 (UTC)
+ with ESMTP id zAFFfVC3oOlj for <devel@linuxdriverproject.org>;
+ Tue,  1 Sep 2020 20:49:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx3.wp.pl (mx3.wp.pl [212.77.101.10])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 34F0186722
- for <devel@driverdev.osuosl.org>; Tue,  1 Sep 2020 20:31:41 +0000 (UTC)
-Received: (wp-smtpd smtp.wp.pl 4693 invoked from network);
- 1 Sep 2020 22:31:38 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
- t=1598992298; bh=8yqYvUMKqSXk/Clt3FRpjdGUhFpqCSV3vm/nqSmI+Xs=;
- h=Subject:To:From:Cc;
- b=fqhlyouj79/pAIYv7HLX7zrxmo9deFClN1Jp4M+0doIQoSuFEKr5UVitfOKUJSclt
- WHRwjK1q933XXxeD0SQCINErmXVLbx3Dz8c5PZLm1swF46HRcoNmxkKMZIo9ADBMEQ
- ydwOXd99/k0QUkUbaVkyHii2PrH81z6Iu5yof3jI=
-Received: from 188.146.102.178.nat.umts.dynamic.t-mobile.pl (HELO
- [192.168.1.110]) (antoni.przybylik@wp.pl@[188.146.102.178])
- (envelope-sender <antoni.przybylik@wp.pl>)
- by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
- for <devel@driverdev.osuosl.org>; 1 Sep 2020 22:31:38 +0200
-Subject: Re: [PATCH] staging: gdm724x: gdm_tty: replaced macro with a function
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <20200901161846.111486-1-antoni.przybylik@wp.pl>
- <20200901175024.GA1509755@kroah.com>
-From: "antoni.przybylik@wp.pl" <antoni.przybylik@wp.pl>
-Message-ID: <4cf3447d-0dfa-8072-d168-698400d177c7@wp.pl>
-Date: Tue, 1 Sep 2020 22:31:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+Received: from mx2.synapse.ne.jp (mx2.synapse.ne.jp [202.208.174.113])
+ by silver.osuosl.org (Postfix) with ESMTP id 1882C1FE32
+ for <devel@driverdev.osuosl.org>; Tue,  1 Sep 2020 20:49:07 +0000 (UTC)
+Received: from plus04070.office.synapse.ne.jp (plus04070.office.synapse.ne.jp
+ [202.208.176.170]) by mx2.synapse.ne.jp with smtp
+ id 0fc9_7030_7b598fef_2e00_4462_aeea_160ee791b2b0;
+ Wed, 02 Sep 2020 05:46:29 +0900
+Received: from User (unknown [13.69.129.118])
+ by plus04070.office.synapse.ne.jp (Postfix) with ESMTPA id 430FF211B2;
+ Wed,  2 Sep 2020 05:44:54 +0900 (JST)
+From: "Hon. Ms. Reem"<otsubo@minami.ac.jp>
+Subject: The Project
+Date: Tue, 1 Sep 2020 20:46:14 -0000
 MIME-Version: 1.0
-In-Reply-To: <20200901175024.GA1509755@kroah.com>
-Content-Language: en-US
-X-WP-MailID: ea52d949d95c05dd253d4b49b44ccb41
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 000000B [gYNU]                               
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200901204454.430FF211B2@plus04070.office.synapse.ne.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,55 +59,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Reply-To: honreemebrahimal-hashimi@yandex.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 01.09.2020 19:50, Greg KH wrote:
+Hello,    
 
-> On Tue, Sep 01, 2020 at 06:18:46PM +0200, Antoni Przybylik wrote:
->> This approach is more elegant and prevents some problems related to
->> macros such as operator precedence in expanded expression.
->>
->> Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
->> ---
->>   drivers/staging/gdm724x/gdm_tty.c | 15 +++++++++------
->>   1 file changed, 9 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
->> index 6e813693a766..a7db0672e81d 100644
->> --- a/drivers/staging/gdm724x/gdm_tty.c
->> +++ b/drivers/staging/gdm724x/gdm_tty.c
->> @@ -27,8 +27,6 @@
->>   
->>   #define MUX_TX_MAX_SIZE 2048
->>   
->> -#define GDM_TTY_READY(gdm) (gdm && gdm->tty_dev && gdm->port.count)
->> -
->>   static struct tty_driver *gdm_driver[TTY_MAX_COUNT];
->>   static struct gdm *gdm_table[TTY_MAX_COUNT][GDM_TTY_MINOR];
->>   static DEFINE_MUTEX(gdm_table_lock);
->> @@ -36,6 +34,11 @@ static DEFINE_MUTEX(gdm_table_lock);
->>   static const char *DRIVER_STRING[TTY_MAX_COUNT] = {"GCTATC", "GCTDM"};
->>   static char *DEVICE_STRING[TTY_MAX_COUNT] = {"GCT-ATC", "GCT-DM"};
->>   
->> +static int gdm_tty_ready(gdm *gdm)
->> +{
->> +	return (gdm && gdm->tty_dev && gdm->port.count);
->> +}
-> You obviously did not even build this patch, which is a bit rude, don't
-> you think?
->
-> :(
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of 
 
-I'm stupid. I misconfigured the kernel. I fixed this bug and sent a new 
-patch.
-Linux configuration script is horrible...
+State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) 
 
-Antoni Przybylik
+colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" 
 
+from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+
+The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam 
+
+Government within  2013/2014, however, We don't want our government to know about the fund. If this 
+
+proposal interests you, let me know, by sending me an email and I will send to you detailed 
+
+information on how this business would be successfully transacted. Be informed that nobody knows 
+
+about the secret of this fund except us, and we know how to carry out the entire transaction. So I 
+
+am compelled to ask, that you will stand on our behalf and receive this fund into any account that 
+
+is solely controlled by you.
+
+We will compensate you with 30% of the total amount involved as gratification for being our partner 
+
+in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
+
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
