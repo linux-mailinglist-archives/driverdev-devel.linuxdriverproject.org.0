@@ -2,57 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38E4E25B0C6
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:10:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8780625B0C8
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:11:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD67887292;
-	Wed,  2 Sep 2020 16:10:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3780C8728A;
+	Wed,  2 Sep 2020 16:10:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jTXMl0L2OEIT; Wed,  2 Sep 2020 16:10:55 +0000 (UTC)
+	with ESMTP id N0ljxgxsU4DD; Wed,  2 Sep 2020 16:10:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 57AFA8728A;
-	Wed,  2 Sep 2020 16:10:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8EE9787273;
+	Wed,  2 Sep 2020 16:10:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E70A61BF3D4
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:10:47 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B4B4D1BF3D4
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:10:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E3FCD8487A
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:10:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AEF89857C2
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:10:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3MP7Ph7QdHeQ for <devel@linuxdriverproject.org>;
+ with ESMTP id Qe3B6DIelfou for <devel@linuxdriverproject.org>;
  Wed,  2 Sep 2020 16:10:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 823A78464B
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BF81A8506D
  for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 16:10:46 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c3.dynamic.kabel-deutschland.de
  [95.90.213.195])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 003EC215A4;
- Wed,  2 Sep 2020 16:10:45 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1DFD221707;
+ Wed,  2 Sep 2020 16:10:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1599063046;
- bh=r+4c7QB4p852T49gME2IZW5IZmsU3UjeY+WL8JYG9rM=;
- h=From:To:Cc:Subject:Date:From;
- b=oF+zgOpExWFjUPBjQpLHZmYeyUxq0A2NGClPsw04AmB6f2T3o7JdNDh+2W0cor0jZ
- zILiWkwoNqmYPbjpi+ZExncPr4ZzmA0VvNk6ZJwJZTbfqIAH3LxgcuU1xQN9ER21/I
- pl0IQy/E6U+hnNVRWbLDRDVlR5xg8wshEElF+dWE=
+ bh=1rYSiFR3IJ0WRBD3O988H5WFm4sGhmAqjZGJZ9WwYjU=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=1TRjuZhLRoasadr80vwGc4GRSVQ1QvS0v6W4Dgk1RZzI7z5txpN/jowIENK2J2Ooj
+ MrXzTtWGl/p2cpJWNZm2LX9GSWPtPb9LKfcnscdcKFrIVjZ6pdTSorwhLR84fh5zBk
+ YaoIbaaltd97p4knZRLUBmVOKhjZJIPZ7BQGjlv0=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1kDVLP-000t9h-K8; Wed, 02 Sep 2020 18:10:43 +0200
+ id 1kDVLQ-000tAk-9i; Wed, 02 Sep 2020 18:10:44 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH 00/38] media sparse/smatch warn fixes
-Date: Wed,  2 Sep 2020 18:10:03 +0200
-Message-Id: <cover.1599062230.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 24/38] media: atomisp: fix casts at atomisp_compat_ioctl32.c
+Date: Wed,  2 Sep 2020 18:10:27 +0200
+Message-Id: <56c880b7f36d594104649135644355efeee45f48.1599062230.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <cover.1599062230.git.mchehab+huawei@kernel.org>
+References: <cover.1599062230.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -66,195 +68,361 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sean Young <sean@mess.org>, Takashi Iwai <tiwai@suse.de>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Hans Verkuil <hverkuil@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- John Hubbard <jhubbard@nvidia.com>, Michel Lespinasse <walken@google.com>,
- devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@chromium.org>,
+Cc: devel@driverdev.osuosl.org,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Vandana BN <bnvandana@gmail.com>, Antti Palosaari <crope@iki.fi>,
- Andy Gross <agross@kernel.org>, Allen Pais <allen.lkml@gmail.com>,
- linux-media@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
- linux-arm-msm@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Forest Crossman <cyrozap@gmail.com>, linux-kernel@vger.kernel.org,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Colin Ian King <colin.king@canonical.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Romain Perier <romain.perier@gmail.com>, Mike Rapoport <rppt@kernel.org>
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-While I was lately relying on Jenkins to report smatch/sparse issues,
-I discovered this week that the reports were missing such warnings
+There are several warnings reported by sparse with regards to wrong
+typecasts:
 
-I got it fixed already at builder.linuxtv.org, but there are several new
-warnings that got added over time.
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:73:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:73:13:     expected void *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:73:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:247:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:247:13:     expected unsigned int [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:247:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:248:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:248:13:     expected unsigned int [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:248:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:249:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:249:13:     expected unsigned int [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:249:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:250:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:250:13:     expected unsigned int [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:250:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:282:30:  warning: incorrect type in argument 2 (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:282:30:     expected void const *from
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:282:30:     got struct atomisp_3a_statistics [noderef] __user *kp
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:308:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:308:13:     expected unsigned int [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:308:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:327:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:327:13:     expected void [noderef] __user *effective_width
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:327:13:     got unsigned int [usertype] *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:348:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:348:13:     expected void [noderef] __user *effective_width
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:348:13:     got unsigned int [usertype] *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:372:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:372:13:     expected unsigned int [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:372:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:433:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:433:13:     expected struct v4l2_framebuffer *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:433:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:462:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:462:13:     expected void [noderef] __user *frame
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:462:13:     got struct v4l2_framebuffer *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:496:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:496:13:     expected unsigned short *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:496:13:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:511:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:511:13:     expected void [noderef] __user *calb_grp_values
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:511:13:     got unsigned short *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:630:21:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:630:21:     expected unsigned short [usertype] *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:630:21:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:715:27:  warning: cast removes address space '__user' of expression
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:715:27:  warning: incorrect type in initializer (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:715:27:     expected struct <noident> [noderef] __user *karg
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:715:27:     got void *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:721:39:  warning: cast removes address space '__user' of expression
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:725:21:  warning: incorrect type in argument 1 (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:725:21:     expected void const volatile [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:725:21:     got unsigned int [usertype] *src
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:725:43:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:725:43:     expected void *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:725:43:     got void [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:741:21:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:741:21:     expected struct atomisp_shading_table *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:741:21:     got struct atomisp_shading_table [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:747:21:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:747:21:     expected struct atomisp_morph_table *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:747:21:     got struct atomisp_morph_table [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:753:21:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:753:21:     expected struct atomisp_dis_coefficients *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:753:21:     got struct atomisp_dis_coefficients [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:760:14:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:760:14:     expected struct atomisp_dvs_6axis_config *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:760:14:     got struct atomisp_dvs_6axis_config [noderef] __user *
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:817:13:  warning: incorrect type in assignment (different address spaces)
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:817:13:     expected struct atomisp_sensor_ae_bracketing_lut_entry *__pu_val
+    drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:817:13:     got void [noderef] __user *
 
-This series is meant to solve the ones that are reported on x86_64
-without pre-building the smatch database.
+Use the same strategies used at v4l2-compat32.c, in order to
+solve them and avoid warnings.
 
-It should allow receiving cleaner error reports.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ .../atomisp/pci/atomisp_compat_ioctl32.c      | 84 +++++++++++--------
+ 1 file changed, 48 insertions(+), 36 deletions(-)
 
-While most of the patches are meant to shut up the static analizers,
-some contain real bug fixes.
-
-Mauro Carvalho Chehab (38):
-  media: tda10086: cleanup symbol_rate setting logic
-  media: v4l2-ioctl: avoid memory leaks on some time32 compat functions
-  media: qt1010: fix usage of unititialized value
-  media: av7110_v4l: avoid a typecast
-  media: wl128x: get rid of a potential spectre issue
-  media: venus: place extern venus_fw_debug on a header file
-  media: tda10021: avoid casts when using symbol_rate
-  media: serial_ir: use the right type for a dma address
-  media: vivid: move the detection part out of vivid_create_instance
-  media: vivid: place the logic which disables ioctl on a separate
-    function
-  media: vivid: move set_capabilities logic to a separate function
-  media: vivid: place dt timings init code on a separate function
-  media: vivid: move the create queues to a separate function
-  media: vivid: move the devnode creation logic to a separate function
-  media: vivid: fix error path
-  media: videobuf-dma-sg: number of pages should be unsigned long
-  media: cx25821-alsa: number of pages should be unsigned long
-  media: cx23885-alsa: number of pages should be unsigned long
-  media: cx88-alsa: number of pages should be unsigned long
-  media: saa7134-alsa.c: number of pages should be unsigned long
-  media: dvb-ttusb-budget: don't use stack for USB transfers
-  media: dvb-ttusb-budget: cleanup printk logic
-  media: saa7134: avoid a shift overflow
-  media: atomisp: fix casts at atomisp_compat_ioctl32.c
-  media: atomisp: get rid of some unused code
-  media: atomisp: cleanup ifdefs from ia_css_debug.c
-  media: atomisp: get rid of version-dependent globals
-  media: atomisp: get rid of isys_dma.h and isys_dma_local.h
-  media: atomisp: get rid of ibuf_ctrl abstraction
-  media: atomisp: don't check for ISP version for includes
-  media: atomisp: unify INPUT error return type
-  media: atomisp: de-duplicate names at *_input_system_global.h
-  media: atomisp: reorder functions at pixelgen_private.h
-  media: atomisp: remove compile-time tests from input_system_global.h
-  media: atomisp: fix some bad indents
-  media: atomisp: csi_rx.c: add a missing includes
-  media: atomisp: atomisp_gmin_platform: check before use
-  media: atomisp: cleanup isys_irq headers
-
- drivers/media/dvb-frontends/tda10021.c        |  38 +-
- drivers/media/dvb-frontends/tda10086.c        |  22 +-
- drivers/media/pci/cx23885/cx23885-alsa.c      |   7 +-
- drivers/media/pci/cx23885/cx23885.h           |   4 +-
- drivers/media/pci/cx25821/cx25821-alsa.c      |  11 +-
- drivers/media/pci/cx88/cx88-alsa.c            |  13 +-
- drivers/media/pci/saa7134/saa7134-alsa.c      |   7 +-
- drivers/media/pci/saa7134/saa7134-tvaudio.c   |   3 +-
- drivers/media/pci/saa7134/saa7134.h           |   2 +-
- drivers/media/pci/ttpci/av7110_v4l.c          |   4 +-
- drivers/media/platform/qcom/venus/core.h      |   2 +
- drivers/media/platform/qcom/venus/dbgfs.c     |   2 -
- drivers/media/radio/wl128x/fmdrv_common.c     |  16 +-
- drivers/media/rc/serial_ir.c                  |   2 +-
- drivers/media/test-drivers/vivid/vivid-core.c | 645 ++++++------
- drivers/media/tuners/qt1010.c                 |  25 +-
- .../media/usb/ttusb-budget/dvb-ttusb-budget.c | 197 ++--
- drivers/media/v4l2-core/v4l2-ioctl.c          |  48 +-
- drivers/media/v4l2-core/videobuf-dma-sg.c     |  22 +-
- drivers/staging/media/atomisp/Makefile        |  12 +-
- .../atomisp/pci/atomisp_compat_ioctl32.c      |  84 +-
- .../media/atomisp/pci/atomisp_gmin_platform.c |   5 +-
- .../atomisp/pci/css_2401_system/host/csi_rx.c |   1 +
- .../pci/css_2401_system/host/ibuf_ctrl.c      |   1 +
- .../css_2401_system/host/ibuf_ctrl_local.h    |   1 +
- .../css_2401_system/host/ibuf_ctrl_private.h  | 268 -----
- .../pci/css_2401_system/host/isys_dma.c       |  10 +-
- .../pci/css_2401_system/host/isys_dma_local.h |  21 -
- .../css_2401_system/host/isys_dma_private.h   |  12 +-
- .../pci/css_2401_system/host/isys_irq.c       |   3 +-
- .../pci/css_2401_system/host/isys_irq_local.h |   4 +-
- .../css_2401_system/host/isys_irq_private.h   |  12 +-
- .../css_2401_system/host/pixelgen_private.h   |  73 +-
- .../pci/css_2401_system/ibuf_ctrl_global.h    |   6 +-
- .../pci/css_2401_system/isys_irq_global.h     |   4 +-
- .../pci/css_2401_system/pixelgen_global.h     |   8 +-
- .../host/input_formatter.c                    |   2 +-
- .../hive_isp_css_common/host/input_system.c   |  70 +-
- .../hive_isp_css_include/host/csi_rx_public.h |   4 +-
- .../host/ibuf_ctrl_public.h                   |  94 --
- .../host/isys_dma_public.h                    |   8 +-
- .../host/isys_irq_public.h                    |  29 +-
- .../hive_isp_css_include/host/isys_public.h   |   4 +-
- .../host/pixelgen_public.h                    |   4 +-
- .../pci/hive_isp_css_include/ibuf_ctrl.h      |  47 -
- .../pci/hive_isp_css_include/isys_dma.h       |  47 -
- .../pci/hive_isp_css_include/isys_irq.h       |  16 +-
- drivers/staging/media/atomisp/pci/hmm/hmm.c   |   6 +-
- .../staging/media/atomisp/pci/ia_css_mipi.h   |   2 -
- .../staging/media/atomisp/pci/ia_css_stream.h |   4 +-
- .../media/atomisp/pci/input_system_global.h   |  29 +-
- .../kernels/ctc/ctc_1.0/ia_css_ctc_param.h    |   7 -
- .../ctc/ctc_1.0/ia_css_ctc_table.host.c       | 145 ---
- .../kernels/gc/gc_1.0/ia_css_gc_table.host.c  | 144 ---
- .../kernels/gc/gc_2/ia_css_gc2_table.host.c   |  53 -
- .../isp/kernels/raw/raw_1.0/ia_css_raw.host.c |   4 +-
- .../kernels/xnr/xnr_1.0/ia_css_xnr_param.h    |   7 -
- .../xnr/xnr_1.0/ia_css_xnr_table.host.c       |  31 -
- .../atomisp/pci/isp2400_input_system_global.h |  21 +-
- .../atomisp/pci/isp2400_input_system_local.h  |  17 +-
- .../atomisp/pci/isp2400_input_system_public.h |  26 +-
- .../media/atomisp/pci/isp2400_system_global.h |  16 -
- .../atomisp/pci/isp2401_input_system_global.h |  30 +-
- .../atomisp/pci/isp2401_input_system_local.h  |   3 -
- .../pci/isp2401_input_system_private.h        | 224 ++++-
- .../media/atomisp/pci/isp2401_system_global.h |  19 -
- .../atomisp/pci/runtime/binary/src/binary.c   | 919 +++++++++---------
- .../runtime/bufq/interface/ia_css_bufq_comm.h |  10 -
- .../media/atomisp/pci/runtime/bufq/src/bufq.c |  26 +-
- .../runtime/debug/interface/ia_css_debug.h    |   6 -
- .../pci/runtime/debug/src/ia_css_debug.c      | 193 +---
- .../atomisp/pci/runtime/ifmtr/src/ifmtr.c     |   2 +-
- .../pci/runtime/inputfifo/src/inputfifo.c     |  10 -
- .../pci/runtime/isys/interface/ia_css_isys.h  |  18 +-
- .../runtime/isys/interface/ia_css_isys_comm.h |   4 +-
- .../pci/runtime/isys/src/csi_rx_rmgr.c        |   2 +-
- .../pci/runtime/isys/src/isys_dma_rmgr.c      |   2 +-
- .../atomisp/pci/runtime/isys/src/isys_init.c  |  20 +-
- .../runtime/isys/src/isys_stream2mmio_rmgr.c  |   2 +-
- .../media/atomisp/pci/runtime/isys/src/rx.c   |  24 +-
- .../pci/runtime/isys/src/virtual_isys.c       |  58 +-
- .../pipeline/interface/ia_css_pipeline.h      |   2 +-
- .../pci/runtime/pipeline/src/pipeline.c       |   4 +-
- drivers/staging/media/atomisp/pci/sh_css.c    | 296 ++----
- .../staging/media/atomisp/pci/sh_css_defs.h   |   4 -
- .../staging/media/atomisp/pci/sh_css_hrt.c    |   4 -
- .../media/atomisp/pci/sh_css_internal.h       |  36 +-
- .../staging/media/atomisp/pci/sh_css_mipi.c   |  34 +-
- .../media/atomisp/pci/sh_css_param_shading.c  |   2 +-
- .../staging/media/atomisp/pci/sh_css_params.c | 538 ----------
- .../media/atomisp/pci/sh_css_properties.c     |  10 -
- drivers/staging/media/atomisp/pci/sh_css_sp.c |  39 +-
- drivers/staging/media/atomisp/pci/sh_css_sp.h |   8 +-
- .../staging/media/atomisp/pci/sh_css_struct.h |   2 -
- .../staging/media/atomisp/pci/system_global.h |  23 -
- include/media/videobuf-dma-sg.h               |   2 +-
- 96 files changed, 1708 insertions(+), 3300 deletions(-)
- delete mode 100644 drivers/staging/media/atomisp/pci/css_2401_system/host/ibuf_ctrl_private.h
- delete mode 100644 drivers/staging/media/atomisp/pci/css_2401_system/host/isys_dma_local.h
- delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/host/ibuf_ctrl_public.h
- delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/ibuf_ctrl.h
- delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/isys_dma.h
- delete mode 100644 drivers/staging/media/atomisp/pci/isp2400_system_global.h
- delete mode 100644 drivers/staging/media/atomisp/pci/isp2401_system_global.h
-
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c b/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
+index fa5918270614..e5553df5bad4 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
+@@ -25,16 +25,26 @@
+ #include "atomisp_ioctl.h"
+ #include "atomisp_compat_ioctl32.h"
+ 
+-/* Macro borrowed from v4l2-compat-ioctl32.c */
++/* Macros borrowed from v4l2-compat-ioctl32.c */
++
++#define get_user_cast(__x, __ptr)					\
++({									\
++	get_user(__x, (typeof(*__ptr) __user *)(__ptr));		\
++})
++
++#define put_user_force(__x, __ptr)					\
++({									\
++	put_user((typeof(*__x) __force *)(__x), __ptr);			\
++})
++
+ /* Use the same argument order as copy_in_user */
+-#define assign_in_user(to, from)				\
+-({								\
+-	typeof(*from) __assign_tmp;				\
+-								\
+-	get_user(__assign_tmp, from) || put_user(__assign_tmp, to);	\
++#define assign_in_user(to, from)					\
++({									\
++	typeof(*from) __assign_tmp;					\
++									\
++	get_user_cast(__assign_tmp, from) || put_user(__assign_tmp, to);\
+ })
+ 
+-
+ static int get_atomisp_histogram32(struct atomisp_histogram __user *kp,
+ 				   struct atomisp_histogram32 __user *up)
+ {
+@@ -64,13 +74,13 @@ static int put_atomisp_histogram32(struct atomisp_histogram __user *kp,
+ }
+ 
+ static int get_v4l2_framebuffer32(struct v4l2_framebuffer __user *kp,
+-					struct v4l2_framebuffer32 __user *up)
++				  struct v4l2_framebuffer32 __user *up)
+ {
+ 	compat_uptr_t tmp;
+ 
+ 	if (!access_ok(up, sizeof(struct v4l2_framebuffer32)) ||
+ 	    get_user(tmp, &up->base) ||
+-	    put_user(compat_ptr(tmp), &kp->base) ||
++	    put_user_force(compat_ptr(tmp), &kp->base) ||
+ 	    assign_in_user(&kp->capability, &up->capability) ||
+ 	    assign_in_user(&kp->flags, &up->flags) ||
+ 	    copy_in_user(&kp->fmt, &up->fmt, sizeof(kp->fmt)))
+@@ -244,10 +254,10 @@ static int get_atomisp_dvs_6axis_config32(struct atomisp_dvs_6axis_config __user
+ 	    get_user(ycoords_y, &up->ycoords_y) ||
+ 	    get_user(xcoords_uv, &up->xcoords_uv) ||
+ 	    get_user(ycoords_uv, &up->ycoords_uv) ||
+-	    put_user(compat_ptr(xcoords_y), &kp->xcoords_y) ||
+-	    put_user(compat_ptr(ycoords_y), &kp->ycoords_y) ||
+-	    put_user(compat_ptr(xcoords_uv), &kp->xcoords_uv) ||
+-	    put_user(compat_ptr(ycoords_uv), &kp->ycoords_uv))
++	    put_user_force(compat_ptr(xcoords_y), &kp->xcoords_y) ||
++	    put_user_force(compat_ptr(ycoords_y), &kp->ycoords_y) ||
++	    put_user_force(compat_ptr(xcoords_uv), &kp->xcoords_uv) ||
++	    put_user_force(compat_ptr(ycoords_uv), &kp->ycoords_uv))
+ 		return -EFAULT;
+ 
+ 	return 0;
+@@ -279,7 +289,7 @@ static int put_atomisp_3a_statistics32(struct atomisp_3a_statistics __user *kp,
+ 	void __user *rgby_data;
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_3a_statistics32)) ||
+-	    copy_to_user(up, kp, sizeof(struct atomisp_grid_info)) ||
++	    copy_in_user(up, kp, sizeof(struct atomisp_grid_info)) ||
+ 	    get_user(rgby_data, &kp->rgby_data) ||
+ 	    put_user(ptr_to_compat(rgby_data), &up->rgby_data) ||
+ 	    get_user(data, &kp->data) ||
+@@ -305,7 +315,7 @@ static int get_atomisp_metadata_stat32(struct atomisp_metadata __user *kp,
+ 	    assign_in_user(&kp->stride, &up->stride) ||
+ 	    assign_in_user(&kp->exp_id, &up->exp_id) ||
+ 	    get_user(effective_width, &up->effective_width) ||
+-	    put_user(compat_ptr(effective_width), &kp->effective_width))
++	    put_user_force(compat_ptr(effective_width), &kp->effective_width))
+ 		return -EFAULT;
+ 
+ 	return 0;
+@@ -315,7 +325,7 @@ static int put_atomisp_metadata_stat32(struct atomisp_metadata __user *kp,
+ 				struct atomisp_metadata32 __user *up)
+ {
+ 	void __user *data;
+-	void __user *effective_width;
++	void *effective_width;
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_metadata32)) ||
+ 	    get_user(data, &kp->data) ||
+@@ -325,7 +335,8 @@ static int put_atomisp_metadata_stat32(struct atomisp_metadata __user *kp,
+ 	    assign_in_user(&up->stride, &kp->stride) ||
+ 	    assign_in_user(&up->exp_id, &kp->exp_id) ||
+ 	    get_user(effective_width, &kp->effective_width) ||
+-	    put_user(ptr_to_compat(effective_width), &up->effective_width))
++	    put_user(ptr_to_compat((void __user *)effective_width),
++				   &up->effective_width))
+ 		return -EFAULT;
+ 
+ 	return 0;
+@@ -336,7 +347,7 @@ put_atomisp_metadata_by_type_stat32(struct atomisp_metadata_with_type __user *kp
+ 				    struct atomisp_metadata_with_type32 __user *up)
+ {
+ 	void __user *data;
+-	void __user *effective_width;
++	u32 *effective_width;
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_metadata_with_type32)) ||
+ 	    get_user(data, &kp->data) ||
+@@ -346,7 +357,7 @@ put_atomisp_metadata_by_type_stat32(struct atomisp_metadata_with_type __user *kp
+ 	    assign_in_user(&up->stride, &kp->stride) ||
+ 	    assign_in_user(&up->exp_id, &kp->exp_id) ||
+ 	    get_user(effective_width, &kp->effective_width) ||
+-	    put_user(ptr_to_compat(effective_width),
++	    put_user(ptr_to_compat((void __user *)effective_width),
+ 		     &up->effective_width) ||
+ 	    assign_in_user(&up->type, &kp->type))
+ 		return -EFAULT;
+@@ -369,7 +380,7 @@ get_atomisp_metadata_by_type_stat32(struct atomisp_metadata_with_type __user *kp
+ 	    assign_in_user(&kp->stride, &up->stride) ||
+ 	    assign_in_user(&kp->exp_id, &up->exp_id) ||
+ 	    get_user(effective_width, &up->effective_width) ||
+-	    put_user(compat_ptr(effective_width), &kp->effective_width) ||
++	    put_user_force(compat_ptr(effective_width), &kp->effective_width) ||
+ 	    assign_in_user(&kp->type, &up->type))
+ 		return -EFAULT;
+ 
+@@ -430,7 +441,7 @@ static int get_atomisp_overlay32(struct atomisp_overlay __user *kp,
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_overlay32)) ||
+ 	    get_user(frame, &up->frame) ||
+-	    put_user(compat_ptr(frame), &kp->frame) ||
++	    put_user_force(compat_ptr(frame), &kp->frame) ||
+ 	    assign_in_user(&kp->bg_y, &up->bg_y) ||
+ 	    assign_in_user(&kp->bg_u, &up->bg_u) ||
+ 	    assign_in_user(&kp->bg_v, &up->bg_v) ||
+@@ -456,11 +467,11 @@ static int get_atomisp_overlay32(struct atomisp_overlay __user *kp,
+ static int put_atomisp_overlay32(struct atomisp_overlay __user *kp,
+ 				 struct atomisp_overlay32 __user *up)
+ {
+-	void __user *frame;
++	void *frame;
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_overlay32)) ||
+ 	    get_user(frame, &kp->frame) ||
+-	    put_user(ptr_to_compat(frame), &up->frame) ||
++	    put_user(ptr_to_compat((void __user *)frame), &up->frame) ||
+ 	    assign_in_user(&up->bg_y, &kp->bg_y) ||
+ 	    assign_in_user(&up->bg_u, &kp->bg_u) ||
+ 	    assign_in_user(&up->bg_v, &kp->bg_v) ||
+@@ -493,7 +504,7 @@ get_atomisp_calibration_group32(struct atomisp_calibration_group __user *kp,
+ 	    assign_in_user(&kp->size, &up->size) ||
+ 	    assign_in_user(&kp->type, &up->type) ||
+ 	    get_user(calb_grp_values, &up->calb_grp_values) ||
+-	    put_user(compat_ptr(calb_grp_values), &kp->calb_grp_values))
++	    put_user_force(compat_ptr(calb_grp_values), &kp->calb_grp_values))
+ 		return -EFAULT;
+ 
+ 	return 0;
+@@ -503,13 +514,14 @@ static int
+ put_atomisp_calibration_group32(struct atomisp_calibration_group __user *kp,
+ 				struct atomisp_calibration_group32 __user *up)
+ {
+-	void __user *calb_grp_values;
++	void *calb_grp_values;
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_calibration_group32)) ||
+ 	    assign_in_user(&up->size, &kp->size) ||
+ 	    assign_in_user(&up->type, &kp->type) ||
+ 	    get_user(calb_grp_values, &kp->calb_grp_values) ||
+-	    put_user(ptr_to_compat(calb_grp_values), &up->calb_grp_values))
++	    put_user(ptr_to_compat((void __user *)calb_grp_values),
++		     &up->calb_grp_values))
+ 		return -EFAULT;
+ 
+ 	return 0;
+@@ -523,7 +535,7 @@ static int get_atomisp_acc_fw_load32(struct atomisp_acc_fw_load __user *kp,
+ 	if (!access_ok(up, sizeof(struct atomisp_acc_fw_load32)) ||
+ 	    assign_in_user(&kp->size, &up->size) ||
+ 	    assign_in_user(&kp->fw_handle, &up->fw_handle) ||
+-	    get_user(data, &up->data) ||
++	    get_user_cast(data, &up->data) ||
+ 	    put_user(compat_ptr(data), &kp->data))
+ 		return -EFAULT;
+ 
+@@ -627,7 +639,7 @@ static int get_atomisp_shading_table32(struct atomisp_shading_table __user *kp,
+ 		compat_uptr_t tmp;
+ 
+ 		if (get_user(tmp, &up->data[n]) ||
+-		    put_user(compat_ptr(tmp), &kp->data[n]))
++		    put_user_force(compat_ptr(tmp), &kp->data[n]))
+ 			return -EFAULT;
+ 	}
+ 	return 0;
+@@ -712,17 +724,17 @@ static int get_atomisp_parameters32(struct atomisp_parameters __user *kp,
+ 		struct atomisp_morph_table morph_table;
+ 		struct atomisp_dis_coefficients dvs2_coefs;
+ 		struct atomisp_dvs_6axis_config dvs_6axis_config;
+-	} __user *karg = (void *)(kp + 1);
++	} __user *karg = (void __user *)(kp + 1);
+ 
+ 	if (!access_ok(up, sizeof(struct atomisp_parameters32)))
+ 		return -EFAULT;
+ 
+ 	while (n >= 0) {
+-		compat_uptr_t *src = (compat_uptr_t *)up + n;
++		compat_uptr_t __user *src = (compat_uptr_t __user *)up + n;
+ 		void * __user *dst = (void * __user *)kp + n;
+ 		compat_uptr_t tmp;
+ 
+-		if (get_user(tmp, src) || put_user(compat_ptr(tmp), dst))
++		if (get_user_cast(tmp, src) || put_user_force(compat_ptr(tmp), dst))
+ 			return -EFAULT;
+ 		n--;
+ 	}
+@@ -738,26 +750,26 @@ static int get_atomisp_parameters32(struct atomisp_parameters __user *kp,
+ 	/* handle shading table */
+ 	if (stp && (get_atomisp_shading_table32(&karg->shading_table,
+ 						compat_ptr(stp)) ||
+-		    put_user(&karg->shading_table, &kp->shading_table)))
++		    put_user_force(&karg->shading_table, &kp->shading_table)))
+ 		return -EFAULT;
+ 
+ 	/* handle morph table */
+ 	if (mtp && (get_atomisp_morph_table32(&karg->morph_table,
+ 					      compat_ptr(mtp)) ||
+-		    put_user(&karg->morph_table, &kp->morph_table)))
++		    put_user_force(&karg->morph_table, &kp->morph_table)))
+ 		return -EFAULT;
+ 
+ 	/* handle dvs2 coefficients */
+ 	if (dcp && (get_atomisp_dis_coefficients32(&karg->dvs2_coefs,
+ 						   compat_ptr(dcp)) ||
+-		    put_user(&karg->dvs2_coefs, &kp->dvs2_coefs)))
++		    put_user_force(&karg->dvs2_coefs, &kp->dvs2_coefs)))
+ 		return -EFAULT;
+ 
+ 	/* handle dvs 6axis configuration */
+ 	if (dscp &&
+ 	    (get_atomisp_dvs_6axis_config32(&karg->dvs_6axis_config,
+ 					    compat_ptr(dscp)) ||
+-	     put_user(&karg->dvs_6axis_config, &kp->dvs_6axis_config)))
++	     put_user_force(&karg->dvs_6axis_config, &kp->dvs_6axis_config)))
+ 		return -EFAULT;
+ 
+ 	return 0;
+@@ -814,7 +826,7 @@ get_atomisp_sensor_ae_bracketing_lut(struct atomisp_sensor_ae_bracketing_lut __u
+ 	if (!access_ok(up, sizeof(struct atomisp_sensor_ae_bracketing_lut32)) ||
+ 	    assign_in_user(&kp->lut_size, &up->lut_size) ||
+ 	    get_user(lut, &up->lut) ||
+-	    put_user(compat_ptr(lut), &kp->lut))
++	    put_user_force(compat_ptr(lut), &kp->lut))
+ 		return -EFAULT;
+ 
+ 	return 0;
 -- 
 2.26.2
-
 
 _______________________________________________
 devel mailing list
