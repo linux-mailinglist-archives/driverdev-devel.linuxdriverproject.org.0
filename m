@@ -1,53 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADB8F25B46F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 21:31:28 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A252F25B509
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 22:05:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A21F386961;
-	Wed,  2 Sep 2020 19:31:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 082C086B59;
+	Wed,  2 Sep 2020 20:05:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oLkoWBT0KB7I; Wed,  2 Sep 2020 19:31:25 +0000 (UTC)
+	with ESMTP id EKtDCU-g-MG6; Wed,  2 Sep 2020 20:05:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8211386221;
-	Wed,  2 Sep 2020 19:31:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 174A386B15;
+	Wed,  2 Sep 2020 20:05:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C25E21BF23F
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 19:31:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 93BB51BF47F
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 20:05:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AB09F23504
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 19:31:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7EFA120385
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 20:05:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CAYuwtQKh85G for <devel@linuxdriverproject.org>;
- Wed,  2 Sep 2020 19:31:17 +0000 (UTC)
-X-Greylist: delayed 00:08:56 by SQLgrey-1.7.6
-Received: from mail-40133.protonmail.ch (mail-40133.protonmail.ch
- [185.70.40.133])
- by silver.osuosl.org (Postfix) with ESMTPS id 7DCF923492
- for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 19:31:17 +0000 (UTC)
-Date: Wed, 02 Sep 2020 19:22:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bryanbrattlof.com;
- s=protonmail2; t=1599074538;
- bh=lC9yM5F2xA3iUzmvU7i6jZrbqpUBJ2c8bvsh7D8BVD4=;
- h=Date:To:From:Cc:Reply-To:Subject:From;
- b=WBEFxwcK4zd35J4iPHhB7yMusADtlm9QyDdVaU80lDW/H1qLqwUka9GaxdyK6bmp7
- Kw5/H8ECdxdFxS8CzSoQYUYxA5zPX415EGQmgjhketD9HKETX/sfv818Bbf5XCsYgl
- Edg9wVm9hYP6xtc2GPdJENse+w2OAZNY6GwTXj4BWnufW9WvV7WBZNWhAxNkAss/JG
- ee2J1EPdvgyamUI9cuaJtR8fxYn9JpwXIjiczeKUE7JPO1FiuOadGfVe4kT47jbsbh
- AYDs7VO5mhzUzmDF+MOXwEYXa1VC2TAr2wSBQm5u2mSj3kJhjutdiADDDQN/aSTcOy
- t2q4Vkdy93BpQ==
-To: Marcus Wolf <linux@wolf-entwicklungen.de>
-From: Bryan Brattlof <hello@bryanbrattlof.com>
-Subject: [PATCH] staging: pi433: break long lines
-Message-ID: <87y2lsrnl8.fsf@bryanbrattlof.com>
+ with ESMTP id mgrfYZSYAJvy for <devel@linuxdriverproject.org>;
+ Wed,  2 Sep 2020 20:05:42 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx.digital-image.com (unknown [203.142.215.252])
+ by silver.osuosl.org (Postfix) with ESMTP id DCF6320357
+ for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 20:05:41 +0000 (UTC)
+Received: from User (unknown [168.63.212.242])
+ by mx.digital-image.com (Postfix) with ESMTPA id AA23B2152D0A;
+ Wed,  2 Sep 2020 22:58:37 +0900 (JST)
+From: "Attention"<murayama@digital-image.com>
+Subject: Attention Beneficiary.
+Date: Wed, 2 Sep 2020 13:58:40 -0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200902200545.7EFA120385@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,73 +55,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Bryan Brattlof <hello@bryanbrattlof.com>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- trivial@kernel.org, linux-kernel@vger.kernel.org,
- Nishad Kamdar <nishadkamdar@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: heaveygarywbc@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-scripts/checkpatch.pl is warning about some lines exceeding 100
-charecters. This will cleanup the warnings.
-
-Signed-off-by: Bryan Brattlof <hello@bryanbrattlof.com>
----
- drivers/staging/pi433/pi433_if.h | 26 ++++++++++++++++++--------
- 1 file changed, 18 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/pi433/pi433_if.h b/drivers/staging/pi433/pi433_if.h
-index 16c5b7fba249..d5c1521192c1 100644
---- a/drivers/staging/pi433/pi433_if.h
-+++ b/drivers/staging/pi433/pi433_if.h
-@@ -117,9 +117,15 @@ struct pi433_rx_cfg {
- 
- 	/* packet format */
- 	enum option_on_off	enable_sync;
--	enum option_on_off	enable_length_byte;	  /* should be used in combination with sync, only */
--	enum address_filtering	enable_address_filtering; /* operational with sync, only */
--	enum option_on_off	enable_crc;		  /* only operational, if sync on and fixed length or length byte is used */
-+
-+	/* should be used in combination with sync, only */
-+	enum option_on_off	enable_length_byte;
-+
-+	/* operational with sync, only */
-+	enum address_filtering	enable_address_filtering;
-+
-+	/* only operational, if sync on and fixed length or length byte is used */
-+	enum option_on_off	enable_crc;
- 
- 	__u8			sync_length;
- 	__u8			fixed_message_length;
-@@ -130,12 +136,16 @@ struct pi433_rx_cfg {
- 	__u8			broadcast_address;
- };
- 
--#define PI433_IOC_MAGIC			'r'
-+#define PI433_IOC_MAGIC	'r'
- 
--#define PI433_IOC_RD_TX_CFG	_IOR(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR, char[sizeof(struct pi433_tx_cfg)])
--#define PI433_IOC_WR_TX_CFG	_IOW(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR, char[sizeof(struct pi433_tx_cfg)])
-+#define PI433_IOC_RD_TX_CFG                                             \
-+	_IOR(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR, char[sizeof(struct pi433_tx_cfg)])
-+#define PI433_IOC_WR_TX_CFG                                             \
-+	_IOW(PI433_IOC_MAGIC, PI433_TX_CFG_IOCTL_NR, char[sizeof(struct pi433_tx_cfg)])
- 
--#define PI433_IOC_RD_RX_CFG	_IOR(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR, char[sizeof(struct pi433_rx_cfg)])
--#define PI433_IOC_WR_RX_CFG	_IOW(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR, char[sizeof(struct pi433_rx_cfg)])
-+#define PI433_IOC_RD_RX_CFG                                             \
-+	_IOR(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR, char[sizeof(struct pi433_rx_cfg)])
-+#define PI433_IOC_WR_RX_CFG                                             \
-+	_IOW(PI433_IOC_MAGIC, PI433_RX_CFG_IOCTL_NR, char[sizeof(struct pi433_rx_cfg)])
- 
- #endif /* PI433_H */
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QXR0ZW50aW9uIEJlbmVmaWNpYXJ5LAoKQmUgaW5mb3JtZWQgdGhhdCB3aGlsZSBhdWRpdGluZyB0
+aGUgc2Vjb25kIHF1YXJ0ZXIgb2Ygb3ZlcmR1ZSBQYXltZW50IGxpc3QgdG8gYXBwcm92ZWQgYmVu
+ZWZpY2lhcmllcyBpbiBvdXIgcmVjb3JkcyBhcyBjb21waWxlZCBhbmQgYXBwcm92ZWQgYnkgdGhl
+IHdvcmxkIGJhbmsgdG8gY3VzaGlvbiB0aGUgZWZmZWN0IG9mIHRoZSBjb3ZpZC0xOSBwYW5kZW1p
+YyBvbiBwZW9wbGUgZm9yIHNvbWUgcmVhc29uIGhhdmUgbm90IHJlY2VpdmVkIHRoZWlyIGZ1bmRz
+IGZyb20gZGlmZmVyZW50IGZpbmFuY2lhbCBpbnN0aXR1dGlvbnMuIAoKWW91ciBlbWFpbCBpZCBp
+cyBmb3VuZCB0byBiZSBhbW9uZyB0aGUgbGlzdCBvZiB1bnBhaWQgYmVuZWZpY2lhcmllcy4KoEhv
+d2V2ZXIsIHdlIHJlY2VpdmVkIGFuIGVtYWlsIG1lc3NhZ2UgZnJvbSBvbmUgKE1ycy5OYW5jeSBF
+bm5pcykgd2hvIGNsYWltcyB0byBiZSB5b3VyIG5leHQgb2Yga2luIHdpdGggYXV0aG9yaXR5IHRv
+IHJlY2VpdmUgeW91ciBwYXltZW50IGFmdGVyIHNldmVyYWwgYXR0ZW1wdHMgd2VyZSBtYWRlIHRv
+IHJlYWNoIHlvdS4gClNoZSBoYXMgc3VibWl0dGVkIGhlciBpbmZvcm1hdGlvbiB0byByZWNlaXZl
+IHlvdXIgcGF5bWVudCB3aGljaCBoYXMgYmVlbiBjcmVkaXRlZCB0byBhbiBBVE0gZGViaXQgY2Fy
+ZC4gCldlIGRlY2lkZWQgdG8gbWFrZSB0aGlzIGxhc3QgY29udGFjdCB3aXRoIHlvdSB0byB2ZXJp
+ZnkgdGhlIGF1dGhlbnRpY2l0eSBvZiBNcnMuTmFuY3kgRW5uaXMnIGNsYWltIG9uIHlvdXIgYmVo
+YWxmLiAKSWYgeW91IGRpZCBub3QgYXV0aG9yaXplIGhlciB0byByZWNlaXZlIHlvdXIgcGF5bWVu
+dCwgd2UgYWR2aXNlZCB5b3UgdG8gY29udGFjdCB0aGUgQVRNIENvdW5zZWxsb3IgT2ZmaWNlIERh
+dmlkIEtpc3JobmVyIG9uIDx3YmMuZHZka2lyc2huZXJAZ21haWwuY29tPiBpbW1lZGlhdGVseSB3
+aXRoIHlvdXIgaW5mb3JtYXRpb24gZm9yIHRoZSBkZWxpdmVyeSBvZiB5b3VyIEFUTSBkZWJpdCBD
+YXJkLgoKSW5mb3JtYXRpb24gcmVxdWlyZWQgZnJvbSB5b3UgYXJlOwoKWW91ciBGdWxsIE5hbWVz
+OgoKQ29udGFjdCBBZGRyZXNzOgoKTW9iaWxlIFBob25lOgpZb3VyIGRvY3VtZW50IG9mIHBlcnNv
+bmFsIGlkZW50aWZpY2F0aW9uLgqgCgpZb3VycyBTaW5jZXJlbHksCgpEYXZpZCBLaXJzaG5lci0K
+QVRNIENvdW5zZWxsb3IgT2ZmaWNlLgoKCldvcmxkIEJhbmsgQ291bnNlbGxvciBPZmZpY2UuCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxp
+bmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGlu
+dXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
