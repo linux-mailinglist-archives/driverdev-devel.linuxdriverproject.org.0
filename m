@@ -1,61 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91F4D25B0C5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:10:55 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9FFF25B124
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:16:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4523D87275;
-	Wed,  2 Sep 2020 16:10:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 214E986A46;
+	Wed,  2 Sep 2020 16:16:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mMhJsMHHu2-x; Wed,  2 Sep 2020 16:10:53 +0000 (UTC)
+	with ESMTP id rn0XNR3aX-os; Wed,  2 Sep 2020 16:16:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C29E98726F;
-	Wed,  2 Sep 2020 16:10:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0F9C386A17;
+	Wed,  2 Sep 2020 16:16:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B0A481BF983
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:10:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BC7131BF3D4
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:16:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A76048717B
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:10:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B96BC86948
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:16:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lzpkRJyIJjrD for <devel@linuxdriverproject.org>;
- Wed,  2 Sep 2020 16:10:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 18D9887100
- for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 16:10:47 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c3.dynamic.kabel-deutschland.de
- [95.90.213.195])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC9EF221EF;
- Wed,  2 Sep 2020 16:10:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599063046;
- bh=J4JeDFYvwI7/t1R2PxhAwt3okUEpHkNnAbNmW1c47hA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=K9QP46W0wA2chHgniI6PTlNOKaxlUNhqnuFbzy8KfjuQIjFLWPnvAQVBhEFx2Grko
- JIv1YedwyWgOvWD600mc4Is4h4cgQnneDkHS4w4YF2tEQO219/wDIgvXKG3xGoCnS5
- xT4/BxTXJhZU/2yryqoa2P6VqHPuh/CR/2n+b5q4=
-Received: from mchehab by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1kDVLQ-000tBR-Tb; Wed, 02 Sep 2020 18:10:44 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Subject: [PATCH 38/38] media: atomisp: cleanup isys_irq headers
-Date: Wed,  2 Sep 2020 18:10:41 +0200
-Message-Id: <652f59eef30ccd3dc12d8c3c61c632f24100d607.1599062230.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1599062230.git.mchehab+huawei@kernel.org>
-References: <cover.1599062230.git.mchehab+huawei@kernel.org>
+ with ESMTP id VVYT8vSDY4NY for <devel@linuxdriverproject.org>;
+ Wed,  2 Sep 2020 16:16:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx3.wp.pl (mx3.wp.pl [212.77.101.9])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id ED78E86937
+ for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 16:16:23 +0000 (UTC)
+Received: (wp-smtpd smtp.wp.pl 12462 invoked from network);
+ 2 Sep 2020 18:16:20 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
+ t=1599063380; bh=TtJS+HIXNquG/4RotPjKkCWhjDhR7eI0A8TOlVPI5TE=;
+ h=From:To:Cc:Subject;
+ b=nQ4KIhzmDDfe4a/FvrHXxX3BvSkcD1f0JOrSU2NzeRDhYMzWYtozjemW9vO+aF26X
+ NYOsP0Ovy5kM6pPXCagjhWLy7AFu4C4yW7MK9SoHc0M35Zl+QFTe+jWeDqP5rCfOok
+ Tj2dW2HGeJQFpTCGFM/4g+M5bqg2yHHaH3rG6Y74=
+Received: from 188.146.102.178.nat.umts.dynamic.t-mobile.pl (HELO localhost)
+ (antoni.przybylik@wp.pl@[188.146.102.178])
+ (envelope-sender <antoni.przybylik@wp.pl>)
+ by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+ for <gregkh@linuxfoundation.org>; 2 Sep 2020 18:16:20 +0200
+From: Antoni Przybylik <antoni.przybylik@wp.pl>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2 1/2] staging: gdm724x: gdm_tty: replaced macro with a
+ function
+Date: Wed,  2 Sep 2020 18:16:16 +0200
+Message-Id: <20200902161616.64638-1-antoni.przybylik@wp.pl>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
+X-WP-DKIM-Status: good (id: wp.pl)                                      
+X-WP-MailID: a67d8e816817753c22be7aa74a62fbd1
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0100004 [sdei]                               
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,150 +68,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Antoni Przybylik <antoni.przybylik@wp.pl>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Don't need to declare those functions with extern:
-	drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h:51:35:  warning: function 'isys_irqc_state_dump' with external linkage has definition
-	drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h:68:35:  warning: function 'isys_irqc_reg_store' with external linkage has definition
-	drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h:85:39:  warning: function 'isys_irqc_reg_load' with external linkage has definition
-	drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq.c:31:35:  warning: function 'isys_irqc_status_enable' with external linkage has definition
+This approach is more elegant and prevents some problems related to
+macros such as operator precedence in expanded expression.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
 ---
- .../pci/css_2401_system/host/isys_irq.c       |  3 +--
- .../css_2401_system/host/isys_irq_private.h   |  8 +++---
- .../host/isys_irq_public.h                    | 25 ++++++++-----------
- .../pci/hive_isp_css_include/isys_irq.h       | 12 ---------
- 4 files changed, 15 insertions(+), 33 deletions(-)
+ drivers/staging/gdm724x/gdm_tty.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq.c b/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq.c
-index 99576af4713c..b6135c4b6eea 100644
---- a/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq.c
-+++ b/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq.c
-@@ -28,8 +28,7 @@
- #endif
+diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+index 6e813693a766..34a13d98c029 100644
+--- a/drivers/staging/gdm724x/gdm_tty.c
++++ b/drivers/staging/gdm724x/gdm_tty.c
+@@ -27,8 +27,6 @@
  
- /* Public interface */
--STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_status_enable(
--    const isys_irq_ID_t	isys_irqc_id)
-+void isys_irqc_status_enable(const isys_irq_ID_t	isys_irqc_id)
- {
- 	assert(isys_irqc_id < N_ISYS_IRQ_ID);
+ #define MUX_TX_MAX_SIZE 2048
  
-diff --git a/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h b/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h
-index 1e96f0267ac0..fb168c25bdfc 100644
---- a/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h
-+++ b/drivers/staging/media/atomisp/pci/css_2401_system/host/isys_irq_private.h
-@@ -29,7 +29,7 @@
- * @brief Get the isys irq status.
- * Refer to "isys_irq.h" for details.
- */
--STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_state_get(
-+void isys_irqc_state_get(
-     const isys_irq_ID_t	isys_irqc_id,
-     isys_irqc_state_t *state)
- {
-@@ -48,7 +48,7 @@ STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_state_get(
- * @brief Dump the isys irq status.
- * Refer to "isys_irq.h" for details.
- */
--STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_state_dump(
-+void isys_irqc_state_dump(
-     const isys_irq_ID_t	isys_irqc_id,
-     const isys_irqc_state_t *state)
- {
-@@ -65,7 +65,7 @@ STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_state_dump(
-  + -------------------------------------------------------*/
- 
- /* Support functions */
--STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_reg_store(
-+void isys_irqc_reg_store(
-     const isys_irq_ID_t	isys_irqc_id,
-     const unsigned int	reg_idx,
-     const hrt_data	value)
-@@ -82,7 +82,7 @@ STORAGE_CLASS_ISYS2401_IRQ_C void isys_irqc_reg_store(
- 	ia_css_device_store_uint32(reg_addr, value);
- }
- 
--STORAGE_CLASS_ISYS2401_IRQ_C hrt_data isys_irqc_reg_load(
-+hrt_data isys_irqc_reg_load(
-     const isys_irq_ID_t	isys_irqc_id,
-     const unsigned int	reg_idx)
- {
-diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_include/host/isys_irq_public.h b/drivers/staging/media/atomisp/pci/hive_isp_css_include/host/isys_irq_public.h
-index cd738f4b65a0..736cbc4e3705 100644
---- a/drivers/staging/media/atomisp/pci/hive_isp_css_include/host/isys_irq_public.h
-+++ b/drivers/staging/media/atomisp/pci/hive_isp_css_include/host/isys_irq_public.h
-@@ -21,25 +21,20 @@
- 
- #if defined(ISP2401)
- 
--STORAGE_CLASS_ISYS2401_IRQ_H void isys_irqc_state_get(
--    const isys_irq_ID_t	isys_irqc_id,
--    isys_irqc_state_t	*state);
-+void isys_irqc_state_get(const isys_irq_ID_t	isys_irqc_id,
-+			 isys_irqc_state_t	*state);
- 
--STORAGE_CLASS_ISYS2401_IRQ_H void isys_irqc_state_dump(
--    const isys_irq_ID_t	isys_irqc_id,
--    const isys_irqc_state_t *state);
-+void isys_irqc_state_dump(const isys_irq_ID_t	isys_irqc_id,
-+			  const isys_irqc_state_t *state);
- 
--STORAGE_CLASS_ISYS2401_IRQ_H void isys_irqc_reg_store(
--    const isys_irq_ID_t	isys_irqc_id,
--    const unsigned int	reg_idx,
--    const hrt_data		value);
-+void isys_irqc_reg_store(const isys_irq_ID_t	isys_irqc_id,
-+			 const unsigned int	reg_idx,
-+			 const hrt_data		value);
- 
--STORAGE_CLASS_ISYS2401_IRQ_H hrt_data isys_irqc_reg_load(
--    const isys_irq_ID_t	isys_irqc_id,
--    const unsigned int	reg_idx);
-+hrt_data isys_irqc_reg_load(const isys_irq_ID_t	isys_irqc_id,
-+			    const unsigned int	reg_idx);
- 
--STORAGE_CLASS_ISYS2401_IRQ_H void isys_irqc_status_enable(
--    const isys_irq_ID_t	isys_irqc_id);
-+void isys_irqc_status_enable(const isys_irq_ID_t isys_irqc_id);
- 
- #endif /* defined(ISP2401) */
- 
-diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_include/isys_irq.h b/drivers/staging/media/atomisp/pci/hive_isp_css_include/isys_irq.h
-index 06bc9e1450ec..001c55ea970b 100644
---- a/drivers/staging/media/atomisp/pci/hive_isp_css_include/isys_irq.h
-+++ b/drivers/staging/media/atomisp/pci/hive_isp_css_include/isys_irq.h
-@@ -21,20 +21,8 @@
- 
- #if defined(ISP2401)
- 
--#ifndef __INLINE_ISYS2401_IRQ__
+-#define GDM_TTY_READY(gdm) (gdm && gdm->tty_dev && gdm->port.count)
 -
--#define STORAGE_CLASS_ISYS2401_IRQ_H extern
--#define STORAGE_CLASS_ISYS2401_IRQ_C extern
- #include "isys_irq_public.h"
+ static struct tty_driver *gdm_driver[TTY_MAX_COUNT];
+ static struct gdm *gdm_table[TTY_MAX_COUNT][GDM_TTY_MINOR];
+ static DEFINE_MUTEX(gdm_table_lock);
+@@ -36,6 +34,11 @@ static DEFINE_MUTEX(gdm_table_lock);
+ static const char *DRIVER_STRING[TTY_MAX_COUNT] = {"GCTATC", "GCTDM"};
+ static char *DEVICE_STRING[TTY_MAX_COUNT] = {"GCT-ATC", "GCT-DM"};
  
--#else  /* __INLINE_ISYS2401_IRQ__ */
--
--#define STORAGE_CLASS_ISYS2401_IRQ_H static inline
--#define STORAGE_CLASS_ISYS2401_IRQ_C static inline
--#include "isys_irq_private.h"
--
--#endif /* __INLINE_ISYS2401_IRQ__ */
--
- #endif /* defined(ISP2401) */
++inline int gdm_tty_ready(struct gdm *gdm)
++{
++	return (gdm && gdm->tty_dev && gdm->port.count);
++}
++
+ static void gdm_port_destruct(struct tty_port *port)
+ {
+ 	struct gdm *gdm = container_of(port, struct gdm, port);
+@@ -119,7 +122,7 @@ static int gdm_tty_recv_complete(void *data,
+ {
+ 	struct gdm *gdm = tty_dev->gdm[index];
  
- #endif	/* __IA_CSS_ISYS_IRQ_H__ */
+-	if (!GDM_TTY_READY(gdm)) {
++	if (!gdm_tty_ready(gdm)) {
+ 		if (complete == RECV_PACKET_PROCESS_COMPLETE)
+ 			gdm->tty_dev->recv_func(gdm->tty_dev->priv_dev,
+ 						gdm_tty_recv_complete);
+@@ -146,7 +149,7 @@ static void gdm_tty_send_complete(void *arg)
+ {
+ 	struct gdm *gdm = arg;
+ 
+-	if (!GDM_TTY_READY(gdm))
++	if (!gdm_tty_ready(gdm))
+ 		return;
+ 
+ 	tty_port_tty_wakeup(&gdm->port);
+@@ -160,7 +163,7 @@ static int gdm_tty_write(struct tty_struct *tty, const unsigned char *buf,
+ 	int sent_len = 0;
+ 	int sending_len = 0;
+ 
+-	if (!GDM_TTY_READY(gdm))
++	if (!gdm_tty_ready(gdm))
+ 		return -ENODEV;
+ 
+ 	if (!len)
+@@ -187,7 +190,7 @@ static int gdm_tty_write_room(struct tty_struct *tty)
+ {
+ 	struct gdm *gdm = tty->driver_data;
+ 
+-	if (!GDM_TTY_READY(gdm))
++	if (!gdm_tty_ready(gdm))
+ 		return -ENODEV;
+ 
+ 	return WRITE_SIZE;
 -- 
-2.26.2
+2.28.0
 
 _______________________________________________
 devel mailing list
