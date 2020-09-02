@@ -1,53 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9335625B258
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:59:07 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9C1825B2AA
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 19:07:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 870532D8B7;
-	Wed,  2 Sep 2020 16:59:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C82AB86ACF;
+	Wed,  2 Sep 2020 17:07:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9oM7szhvbzqi; Wed,  2 Sep 2020 16:59:04 +0000 (UTC)
+	with ESMTP id xEmQluCt7ld4; Wed,  2 Sep 2020 17:07:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0CD8922F05;
-	Wed,  2 Sep 2020 16:59:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9326086AAA;
+	Wed,  2 Sep 2020 17:07:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E938F1BF30C
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:58:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2EAA71BF847
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 17:07:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E3C9B86F6B
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:58:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2B3308703D
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 17:07:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dF39CVUuJy0K for <devel@linuxdriverproject.org>;
- Wed,  2 Sep 2020 16:58:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EB75D86F66
- for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 16:58:57 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1kDW60-0000nm-OI; Wed, 02 Sep 2020 16:58:52 +0000
-From: Colin King <colin.king@canonical.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linus Walleij <linus.walleij@linaro.org>, linux-media@vger.kernel.org,
- devel@driverdev.osuosl.org
-Subject: [PATCH][next] staging: media: atomisp: fix memory leak of object flash
-Date: Wed,  2 Sep 2020 17:58:52 +0100
-Message-Id: <20200902165852.201155-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.27.0
+ with ESMTP id 1mkw5oaSt2fy for <devel@linuxdriverproject.org>;
+ Wed,  2 Sep 2020 17:07:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx4.wp.pl (mx4.wp.pl [212.77.101.12])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0886987034
+ for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 17:07:18 +0000 (UTC)
+Received: (wp-smtpd smtp.wp.pl 26334 invoked from network);
+ 2 Sep 2020 19:07:15 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
+ t=1599066435; bh=xLtgJOPrL3YCDxm2GC4sjGv1t6OcXxeRsL5vC9/BygE=;
+ h=Subject:To:Cc:From;
+ b=aMnt9GgTmjxjQ055lVFx4ljD8w3szBanRD+4tgF+j5h/xuyEZmEQeAK5JR4LGIEPd
+ 8vUC47ZduHt0I9C6YYEeZLI0VwglgyHcbuBIa0LLq0BE9jqeSStO32tHpJJAJKA82i
+ msxD3ye6EV/H0FZHJtRsM+QAHkUnNtZHi/Sf1a3U=
+Received: from 188.146.102.178.nat.umts.dynamic.t-mobile.pl (HELO
+ [192.168.1.110]) (antoni.przybylik@wp.pl@[188.146.102.178])
+ (envelope-sender <antoni.przybylik@wp.pl>)
+ by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+ for <linux-kernel@vger.kernel.org>; 2 Sep 2020 19:07:15 +0200
+Subject: Re: [PATCH v2 2/2] staging: gdm724x: gdm_tty: replaced macro with a
+ function
+To: Randy Dunlap <rdunlap@infradead.org>
+References: <20200902161627.64686-1-antoni.przybylik@wp.pl>
+ <14c3b5c1-a5d8-3843-6538-5f76c4b8d6df@infradead.org>
+From: "antoni.przybylik@wp.pl" <antoni.przybylik@wp.pl>
+Message-ID: <eb24f7d2-0460-dd3b-1ab3-a9748fa193fe@wp.pl>
+Date: Wed, 2 Sep 2020 19:07:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <14c3b5c1-a5d8-3843-6538-5f76c4b8d6df@infradead.org>
+Content-Language: en-US
+X-WP-MailID: 1a2205470018b49782a34339a2a5f8d5
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 000000B [gRN0]                               
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,90 +72,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On 02.09.2020 18:21, Randy Dunlap wrote:
+> On 9/2/20 9:16 AM, Antoni Przybylik wrote:
+>> Changed return type to bool and removed inline specifier. Also added
+>>   static specifier.
+> why remove the inline specifier?
 
-In the case where the call to lm3554_platform_data_func returns an
-error there is a memory leak on the error return path of object
-flash.  Fix this by adding an error return path that will free
-flash and rename labels fail2 to fail3 and fail1 to fail2.
+Greg KH wrote to me:
 
-Fixes: 9289cdf39992 ("staging: media: atomisp: Convert to GPIO descriptors")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- .../media/atomisp/i2c/atomisp-lm3554.c        | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+And really, no need to make it inline, just make it a normal function
+and the compiler will inline it if needed.
 
-diff --git a/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c b/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-index 7ca7378b1859..5516c98f63bc 100644
---- a/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-+++ b/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-@@ -843,8 +843,10 @@ static int lm3554_probe(struct i2c_client *client)
- 		return -ENOMEM;
- 
- 	flash->pdata = lm3554_platform_data_func(client);
--	if (IS_ERR(flash->pdata))
--		return PTR_ERR(flash->pdata);
-+	if (IS_ERR(flash->pdata)) {
-+		err = PTR_ERR(flash->pdata);
-+		goto fail1;
-+	}
- 
- 	v4l2_i2c_subdev_init(&flash->sd, client, &lm3554_ops);
- 	flash->sd.internal_ops = &lm3554_internal_ops;
-@@ -856,7 +858,7 @@ static int lm3554_probe(struct i2c_client *client)
- 				   ARRAY_SIZE(lm3554_controls));
- 	if (ret) {
- 		dev_err(&client->dev, "error initialize a ctrl_handler.\n");
--		goto fail2;
-+		goto fail3;
- 	}
- 
- 	for (i = 0; i < ARRAY_SIZE(lm3554_controls); i++)
-@@ -865,14 +867,14 @@ static int lm3554_probe(struct i2c_client *client)
- 
- 	if (flash->ctrl_handler.error) {
- 		dev_err(&client->dev, "ctrl_handler error.\n");
--		goto fail2;
-+		goto fail3;
- 	}
- 
- 	flash->sd.ctrl_handler = &flash->ctrl_handler;
- 	err = media_entity_pads_init(&flash->sd.entity, 0, NULL);
- 	if (err) {
- 		dev_err(&client->dev, "error initialize a media entity.\n");
--		goto fail1;
-+		goto fail2;
- 	}
- 
- 	flash->sd.entity.function = MEDIA_ENT_F_FLASH;
-@@ -884,14 +886,15 @@ static int lm3554_probe(struct i2c_client *client)
- 	err = lm3554_gpio_init(client);
- 	if (err) {
- 		dev_err(&client->dev, "gpio request/direction_output fail");
--		goto fail2;
-+		goto fail3;
- 	}
- 	return atomisp_register_i2c_module(&flash->sd, NULL, LED_FLASH);
--fail2:
-+fail3:
- 	media_entity_cleanup(&flash->sd.entity);
- 	v4l2_ctrl_handler_free(&flash->ctrl_handler);
--fail1:
-+fail2:
- 	v4l2_device_unregister_subdev(&flash->sd);
-+fail1:
- 	kfree(flash);
- 
- 	return err;
--- 
-2.27.0
-
+> thanks.
+>
+>> Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
+>> ---
+>>   drivers/staging/gdm724x/gdm_tty.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+>> index 34a13d98c029..179fc9b9400b 100644
+>> --- a/drivers/staging/gdm724x/gdm_tty.c
+>> +++ b/drivers/staging/gdm724x/gdm_tty.c
+>> @@ -34,7 +34,7 @@ static DEFINE_MUTEX(gdm_table_lock);
+>>   static const char *DRIVER_STRING[TTY_MAX_COUNT] = {"GCTATC", "GCTDM"};
+>>   static char *DEVICE_STRING[TTY_MAX_COUNT] = {"GCT-ATC", "GCT-DM"};
+>>   
+>> -inline int gdm_tty_ready(struct gdm *gdm)
+>> +static bool gdm_tty_ready(struct gdm *gdm)
+>>   {
+>>   	return (gdm && gdm->tty_dev && gdm->port.count);
+>>   }
+>>
+>
+Antoni Przybylik
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
