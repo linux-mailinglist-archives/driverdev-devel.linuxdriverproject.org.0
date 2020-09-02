@@ -1,61 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF06D25B135
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:16:53 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8C3425B171
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Sep 2020 18:21:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E7112309D;
-	Wed,  2 Sep 2020 16:16:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E4A9686A90;
+	Wed,  2 Sep 2020 16:21:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tKutn-7xlj2j; Wed,  2 Sep 2020 16:16:50 +0000 (UTC)
+	with ESMTP id 863NnUfSLjgo; Wed,  2 Sep 2020 16:21:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2280D228E2;
-	Wed,  2 Sep 2020 16:16:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BAE1A86A47;
+	Wed,  2 Sep 2020 16:21:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 171121BF3D4
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:16:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B3F331BF3D4
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:21:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 13DCE8717B
- for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:16:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ABDF8228E7
+ for <devel@linuxdriverproject.org>; Wed,  2 Sep 2020 16:21:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jcce570kAgQY for <devel@linuxdriverproject.org>;
- Wed,  2 Sep 2020 16:16:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx3.wp.pl (mx3.wp.pl [212.77.101.9])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1D2D6871A0
- for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 16:16:39 +0000 (UTC)
-Received: (wp-smtpd smtp.wp.pl 628 invoked from network);
- 2 Sep 2020 18:16:36 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
- t=1599063396; bh=fCRMYNQmfFvrAJR8Oni60wZOyAz0/8t7DxsWGn6A+RU=;
- h=From:To:Cc:Subject;
- b=l/NCsyz62EM4EDtcZZXnEXJt+wOYXEZRm40mwglleSzpJGKSpos8xbj6g1hi7ZnAS
- 1BL5g0Vn2XguZjdaqj0T9h216rUDA0pV16KKYKaVPQE5V3egVHE9ppzq2cjGS6DHoh
- H2J5bbmL3WUecKqFxndvtEFk4e+W4vjbYNuMo5WQ=
-Received: from 188.146.102.178.nat.umts.dynamic.t-mobile.pl (HELO localhost)
- (antoni.przybylik@wp.pl@[188.146.102.178])
- (envelope-sender <antoni.przybylik@wp.pl>)
- by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
- for <gregkh@linuxfoundation.org>; 2 Sep 2020 18:16:36 +0200
-From: Antoni Przybylik <antoni.przybylik@wp.pl>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 2/2] staging: gdm724x: gdm_tty: replaced macro with a
+ with ESMTP id cTQb7AtEOJ5T for <devel@linuxdriverproject.org>;
+ Wed,  2 Sep 2020 16:21:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by silver.osuosl.org (Postfix) with ESMTPS id B4CFD228E2
+ for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 16:21:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=g7CwtEKfB8taAJKHOl+B6Vy77KBez7Wj8qfNT2rp9Q8=; b=icEHl0iwQMQYNoukIz5Ou1aSLu
+ cIXyBjtpqAND+i1q+6USzF61JoghiwGPI1sXjsx2XZgtc3DqBNrAgZqsWeDiVP4MqZq/tWvtvWkHA
+ fRImhcbj1e8OJB5uT3Sb/jppb92jUTTRYmXoXgIY1f/UPMz8h7z/g6+lbUxYsiPc9e7YmjRkHpfK/
+ 6zpw2RSeST1hgiMoxYxS0GeuWcwGIpqdoguHgeAH23e+Ys8oMJ9/EqpzaX0Dw2Ytl9GYW8DZa9NKL
+ eHuH7HEgil7yPzifbQ3D06FxGGVL8fSe1GVuFHcdJ2brhvdoTA3r1Rvu21A4S/h+alq1k2xgKfk5s
+ EShTcTEg==;
+Received: from [2601:1c0:6280:3f0::19c2]
+ by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kDVVY-0006fb-ST; Wed, 02 Sep 2020 16:21:13 +0000
+Subject: Re: [PATCH v2 2/2] staging: gdm724x: gdm_tty: replaced macro with a
  function
-Date: Wed,  2 Sep 2020 18:16:27 +0200
-Message-Id: <20200902161627.64686-1-antoni.przybylik@wp.pl>
-X-Mailer: git-send-email 2.28.0
+To: Antoni Przybylik <antoni.przybylik@wp.pl>, gregkh@linuxfoundation.org
+References: <20200902161627.64686-1-antoni.przybylik@wp.pl>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <14c3b5c1-a5d8-3843-6538-5f76c4b8d6df@infradead.org>
+Date: Wed, 2 Sep 2020 09:21:10 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-X-WP-DKIM-Status: good (id: wp.pl)                                      
-X-WP-MailID: bd263fd383ace842bc314464e6a3863f
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000002 [UTGx]                               
+In-Reply-To: <20200902161627.64686-1-antoni.przybylik@wp.pl>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,36 +68,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Antoni Przybylik <antoni.przybylik@wp.pl>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Changed return type to bool and removed inline specifier. Also added
- static specifier.
+On 9/2/20 9:16 AM, Antoni Przybylik wrote:
+> Changed return type to bool and removed inline specifier. Also added
+>  static specifier.
 
-Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
----
- drivers/staging/gdm724x/gdm_tty.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+why remove the inline specifier?
+thanks.
 
-diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
-index 34a13d98c029..179fc9b9400b 100644
---- a/drivers/staging/gdm724x/gdm_tty.c
-+++ b/drivers/staging/gdm724x/gdm_tty.c
-@@ -34,7 +34,7 @@ static DEFINE_MUTEX(gdm_table_lock);
- static const char *DRIVER_STRING[TTY_MAX_COUNT] = {"GCTATC", "GCTDM"};
- static char *DEVICE_STRING[TTY_MAX_COUNT] = {"GCT-ATC", "GCT-DM"};
- 
--inline int gdm_tty_ready(struct gdm *gdm)
-+static bool gdm_tty_ready(struct gdm *gdm)
- {
- 	return (gdm && gdm->tty_dev && gdm->port.count);
- }
+> Signed-off-by: Antoni Przybylik <antoni.przybylik@wp.pl>
+> ---
+>  drivers/staging/gdm724x/gdm_tty.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+> index 34a13d98c029..179fc9b9400b 100644
+> --- a/drivers/staging/gdm724x/gdm_tty.c
+> +++ b/drivers/staging/gdm724x/gdm_tty.c
+> @@ -34,7 +34,7 @@ static DEFINE_MUTEX(gdm_table_lock);
+>  static const char *DRIVER_STRING[TTY_MAX_COUNT] = {"GCTATC", "GCTDM"};
+>  static char *DEVICE_STRING[TTY_MAX_COUNT] = {"GCT-ATC", "GCT-DM"};
+>  
+> -inline int gdm_tty_ready(struct gdm *gdm)
+> +static bool gdm_tty_ready(struct gdm *gdm)
+>  {
+>  	return (gdm && gdm->tty_dev && gdm->port.count);
+>  }
+> 
+
+
 -- 
-2.28.0
+~Randy
 
 _______________________________________________
 devel mailing list
