@@ -1,47 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23D6D25B984
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Sep 2020 06:05:36 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DE1A25B9D0
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Sep 2020 06:37:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6505D2043F;
-	Thu,  3 Sep 2020 04:05:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DCBDB86B47;
+	Thu,  3 Sep 2020 04:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V1o4Xy+0Ijup; Thu,  3 Sep 2020 04:05:32 +0000 (UTC)
+	with ESMTP id El3TO6yM0Mu4; Thu,  3 Sep 2020 04:37:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BDF6320436;
-	Thu,  3 Sep 2020 04:05:29 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8EF8D86B17;
+	Thu,  3 Sep 2020 04:37:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 25D581BF3F6
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Sep 2020 04:05:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 17F301BF34D
+ for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 04:37:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1187C20437
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Sep 2020 04:05:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 100E8872D8
+ for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 04:37:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EOb74o7Lmnx0
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Sep 2020 04:05:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from 4tutu.xyz (4tutu.xyz [106.75.239.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 5A57920436
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Sep 2020 04:05:24 +0000 (UTC)
-From: "Ms. Melvida Bullock"<info@melvidabullock.org>
-Subject: INVESTMENT FUNDING:
-Date: Wed, 2 Sep 2020 21:05:22 -0700
+ with ESMTP id jux7SuQfWfSE for <devel@linuxdriverproject.org>;
+ Thu,  3 Sep 2020 04:37:36 +0000 (UTC)
+X-Greylist: delayed 00:24:26 by SQLgrey-1.7.6
+Received: from gateway21.websitewelcome.com (gateway21.websitewelcome.com
+ [192.185.45.212])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2B90C872A1
+ for <devel@driverdev.osuosl.org>; Thu,  3 Sep 2020 04:37:36 +0000 (UTC)
+Received: from cm17.websitewelcome.com (cm17.websitewelcome.com [100.42.49.20])
+ by gateway21.websitewelcome.com (Postfix) with ESMTP id 22EB5400C688E
+ for <devel@driverdev.osuosl.org>; Wed,  2 Sep 2020 23:13:09 -0500 (CDT)
+Received: from gator4044.hostgator.com ([192.185.4.55]) by cmsmtp with SMTP
+ id DgcXkAm0SdbRzDgcXkx7EX; Wed, 02 Sep 2020 23:13:09 -0500
+X-Authority-Reason: nr=8
+Received: from xinfeng by gator4044.hostgator.com with local (Exim 4.93)
+ (envelope-from <info@controlypotencia.com>)
+ id 1kDgcC-002f0o-B9; Wed, 02 Sep 2020 23:12:48 -0500
+Received: from 45.86.203.218 ([45.86.203.218]) (proxying for 45.86.203.218)
+ (SquirrelMail authenticated user joyce@xinfeng.com.au)
+ by webmail.xinfeng.com.au with HTTP; Wed, 2 Sep 2020 23:12:48 -0500
+Message-ID: <c647e2f72cbd49ed10fc2093704cf83e.squirrel@webmail.xinfeng.com.au>
+Date: Wed, 2 Sep 2020 23:12:48 -0500
+Subject: Nutzen Sie diese Gelegenheit
+From: "Ying Chongan" <info@controlypotencia.com>
+User-Agent: SquirrelMail/1.5.2 [SVN]
 MIME-Version: 1.0
-X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200903040525.1187C20437@silver.osuosl.org>
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4044.hostgator.com
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [32890 501] / [47 12]
+X-AntiAbuse: Sender Address Domain - controlypotencia.com
+X-BWhitelist: no
+X-Source-IP: 
+X-Source-L: No
+X-Exim-ID: 1kDgcC-002f0o-B9
+X-Source: /usr/local/cpanel/3rdparty/php/73/bin/php-cgi
+X-Source-Args: /usr/local/cpanel/3rdparty/php/73/bin/php-cgi
+ /usr/local/cpanel/base/3rdparty/squirrelmail/src/compose.php 
+X-Source-Dir: /usr/local/cpanel/base/3rdparty/squirrelmail/src
+X-Source-Sender: 
+X-Source-Auth: xinfeng
+X-Email-Count: 318
+X-Source-Cap: eGluZmVuZzt4aW5mZW5nO2dhdG9yNDA0NC5ob3N0Z2F0b3IuY29t
+X-Local-Domain: no
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,51 +81,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: melvbullockzone123@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: yingchongan@zohomail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Sir/Ma
+Sch=F6ne Gr=FC=DFe,
 
+Ich habe Ihre Antwort-E-Mail zu meinem Investitionsvorschlag noch nicht
+erhalten.
 
+Wir bieten ein schnelles Darlehen zu einem niedrigen Zinssatz an. Wenn Sie
+interessiert sind, antworten Sie bitte an yingchongan@gmail.com, um
+weitere Informationen zu erhalten.
 
-How are you doing. Kindly permit me to share this information with you. It is quiet impressive.
+Mit freundlichen Gr=FC=DFen: Ying Chongan
 
-Our company is expanding its global presence by investing in projects 
-outside Gulf region/ Europe / Asia in the form of debt finance. I strongly believe you have a project or projects that requires funding. We are here to partner with you to achieve your goal.
-
-
-
-1. Minimum Funding Amount: 1 Million USD
-
-2. Maximum Funding Amount: 100 Billion USD
-
-3. Placement Opens to: Entrepreneurs, Corporations and Investors
-
-4. Funding Type:Debt Funding(100%)
-
-5. ROI(Return on Investment): 4%
-
-6. Duration of Loan: Up to 10 years - Renewable tenure
-
-7. We finance 100% of the total project cost
-
-8. We finance both ongoing and fresh projects.
-
-
-
-Details of our activities will be shared with you as soon as you get back to me.
-
-
-
-Best regards,
-
-
-Broker: Ms Melvida...
-
-Email: melvbullockzone123@gmail.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
