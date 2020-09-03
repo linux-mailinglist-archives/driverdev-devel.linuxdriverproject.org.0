@@ -1,49 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48A3725CC7C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Sep 2020 23:42:34 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56D0825CC7A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Sep 2020 23:42:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BCAEB86E28;
-	Thu,  3 Sep 2020 21:42:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 79CE12E16F;
+	Thu,  3 Sep 2020 21:42:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZrXU9vZvIeLQ; Thu,  3 Sep 2020 21:42:32 +0000 (UTC)
+	with ESMTP id 8VjbS+sLzPVp; Thu,  3 Sep 2020 21:42:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D811086E19;
-	Thu,  3 Sep 2020 21:42:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 5A97F2E15F;
+	Thu,  3 Sep 2020 21:42:03 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BBBBF1BF417
- for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:42:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 174091BF417
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  3 Sep 2020 21:41:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B8B1786DEA
- for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:42:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0E56886DE8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  3 Sep 2020 21:41:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8XeHNKvLjJyI for <devel@linuxdriverproject.org>;
- Thu,  3 Sep 2020 21:42:02 +0000 (UTC)
+ with ESMTP id fN9pCOZLYupS
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  3 Sep 2020 21:41:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.datco.ir (mail.datco.org [84.241.38.221])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DBC1B86DE8
- for <devel@driverdev.osuosl.org>; Thu,  3 Sep 2020 21:42:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F23D886DDD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  3 Sep 2020 21:41:57 +0000 (UTC)
 Received: from User ([103.99.1.140] RDNS failed) by mail.datco.ir with
- Microsoft SMTPSVC(6.0.3790.4675); Fri, 4 Sep 2020 01:20:03 +0430
+ Microsoft SMTPSVC(6.0.3790.4675); Fri, 4 Sep 2020 01:21:13 +0430
 From: "Euro-Millions"<info@euro-millions.com>
 Subject: Congratulation: You're a winner!
-Date: Thu, 3 Sep 2020 13:50:01 -0700
+Date: Thu, 3 Sep 2020 13:51:11 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <SRV131TZ14eBa1kg3Am00000143@mail.datco.ir>
-X-OriginalArrivalTime: 03 Sep 2020 20:50:03.0434 (UTC)
- FILETIME=[CC2B48A0:01D68233]
+Message-ID: <SRV1iGXix4A2DreBBsQ00000159@mail.datco.ir>
+X-OriginalArrivalTime: 03 Sep 2020 20:51:13.0467 (UTC)
+ FILETIME=[F5E978B0:01D68233]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
