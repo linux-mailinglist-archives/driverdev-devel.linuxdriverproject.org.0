@@ -2,35 +2,35 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FAB325CC7B
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Sep 2020 23:42:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48A3725CC7C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Sep 2020 23:42:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CF77C86DF1;
-	Thu,  3 Sep 2020 21:42:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BCAEB86E28;
+	Thu,  3 Sep 2020 21:42:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M-pnihrkpyyk; Thu,  3 Sep 2020 21:42:30 +0000 (UTC)
+	with ESMTP id ZrXU9vZvIeLQ; Thu,  3 Sep 2020 21:42:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 284F986DDD;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D811086E19;
 	Thu,  3 Sep 2020 21:42:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A6A5D1BF417
- for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:42:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BBBBF1BF417
+ for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:42:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A3A6686DF7
- for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:42:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B8B1786DEA
+ for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:42:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iL25HXZdmro1 for <devel@linuxdriverproject.org>;
- Thu,  3 Sep 2020 21:42:00 +0000 (UTC)
+ with ESMTP id 8XeHNKvLjJyI for <devel@linuxdriverproject.org>;
+ Thu,  3 Sep 2020 21:42:02 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.datco.ir (mail.datco.org [84.241.38.221])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9365B86DE8
- for <devel@linuxdriverproject.org>; Thu,  3 Sep 2020 21:41:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DBC1B86DE8
+ for <devel@driverdev.osuosl.org>; Thu,  3 Sep 2020 21:42:01 +0000 (UTC)
 Received: from User ([103.99.1.140] RDNS failed) by mail.datco.ir with
  Microsoft SMTPSVC(6.0.3790.4675); Fri, 4 Sep 2020 01:20:03 +0430
 From: "Euro-Millions"<info@euro-millions.com>
