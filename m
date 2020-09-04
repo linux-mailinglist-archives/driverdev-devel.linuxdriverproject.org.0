@@ -1,45 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB5D125E288
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Sep 2020 22:18:16 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7371B25E28A
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Sep 2020 22:18:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 097AD8701C;
-	Fri,  4 Sep 2020 20:18:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3D0412E1F1;
+	Fri,  4 Sep 2020 20:18:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mF5hjmjmXwvO; Fri,  4 Sep 2020 20:18:14 +0000 (UTC)
+	with ESMTP id a2tERp9GPCAE; Fri,  4 Sep 2020 20:18:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1784086FD2;
-	Fri,  4 Sep 2020 20:18:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 11F942E1E8;
+	Fri,  4 Sep 2020 20:18:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 822211BF283
- for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 811171BF283
+ for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7B90D86F40
- for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7AE4986F28
+ for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w-x1JKdln3FX for <devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 20:18:09 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id IQ4JTgyhuO9v for <devel@linuxdriverproject.org>;
+ Fri,  4 Sep 2020 20:18:03 +0000 (UTC)
+X-Greylist: delayed 00:16:32 by SQLgrey-1.7.6
 Received: from dmz.c-home.cz (gw.c-home.cz [89.24.150.100])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BE2F086936
- for <devel@driverdev.osuosl.org>; Fri,  4 Sep 2020 20:18:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id ACE4186936
+ for <devel@driverdev.osuosl.org>; Fri,  4 Sep 2020 20:18:02 +0000 (UTC)
 Received: from ubuntu1804.c-home.cz (unifi.c-home.cz [192.168.1.239])
- by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 084K1EdD002405;
- Fri, 4 Sep 2020 22:01:29 +0200 (CEST)
+ by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 084K1EdE002405;
+ Fri, 4 Sep 2020 22:01:30 +0200 (CEST)
 From: Martin Cerveny <m.cerveny@computer.org>
 To: devicetree@vger.kernel.org
-Subject: [PATCH 5/6] media: allwinner,
- sun4i-a10-video-engine: Add V3s compatible
-Date: Fri,  4 Sep 2020 22:01:11 +0200
-Message-Id: <20200904200112.5563-6-m.cerveny@computer.org>
+Subject: [PATCH 6/6] ARM: dts: sun8i: v3s: Add video engine node
+Date: Fri,  4 Sep 2020 22:01:12 +0200
+Message-Id: <20200904200112.5563-7-m.cerveny@computer.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200904200112.5563-1-m.cerveny@computer.org>
 References: <20200904200112.5563-1-m.cerveny@computer.org>
@@ -68,25 +67,35 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Allwinner V3s SoC contains video engine. Add compatible for it.
+Allwinner V3S SoC has a video engine.
+Add a node for it.
 
 Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
 ---
- .../bindings/media/allwinner,sun4i-a10-video-engine.yaml         | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/sun8i-v3s.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml b/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
-index 4cc1a670c..08515c18c 100644
---- a/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
-+++ b/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
-@@ -18,6 +18,7 @@ properties:
-       - allwinner,sun7i-a20-video-engine
-       - allwinner,sun8i-a33-video-engine
-       - allwinner,sun8i-h3-video-engine
-+      - allwinner,sun8i-v3s-video-engine
-       - allwinner,sun50i-a64-video-engine
-       - allwinner,sun50i-h5-video-engine
-       - allwinner,sun50i-h6-video-engine
+diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+index 3f18866fb..3fb01dc1a 100644
+--- a/arch/arm/boot/dts/sun8i-v3s.dtsi
++++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+@@ -195,6 +195,16 @@
+ 			};
+ 		};
+ 
++		video-codec@1c0e000 {
++			compatible = "allwinner,sun8i-v3s-video-engine";
++			reg = <0x01c0e000 0x1000>;
++			clocks = <&ccu CLK_BUS_VE>, <&ccu CLK_VE>,
++				 <&ccu CLK_DRAM_VE>;
++			clock-names = "ahb", "mod", "ram";
++			resets = <&ccu RST_BUS_VE>;
++			interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>;
++			allwinner,sram = <&ve_sram 1>;
++		};
+ 
+ 		mmc0: mmc@1c0f000 {
+ 			compatible = "allwinner,sun7i-a20-mmc";
 -- 
 2.17.1
 
