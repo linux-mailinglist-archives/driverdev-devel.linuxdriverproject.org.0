@@ -1,45 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8AD925E291
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Sep 2020 22:18:29 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC03725E292
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Sep 2020 22:18:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 211CF2013C;
-	Fri,  4 Sep 2020 20:18:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2402C875A1;
+	Fri,  4 Sep 2020 20:18:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W2Jwi+jDIWHI; Fri,  4 Sep 2020 20:18:19 +0000 (UTC)
+	with ESMTP id aP2+EKUqA8ko; Fri,  4 Sep 2020 20:18:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 788F32E1F3;
-	Fri,  4 Sep 2020 20:18:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5E8558759E;
+	Fri,  4 Sep 2020 20:18:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D7F571BF283
- for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3B0F61BF283
+ for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D4A6586936
- for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 23EE58448B
+ for <devel@linuxdriverproject.org>; Fri,  4 Sep 2020 20:18:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fk6GnqdLqrq2 for <devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 20:18:05 +0000 (UTC)
+ with ESMTP id XsA_PnE2wJxj for <devel@linuxdriverproject.org>;
+ Fri,  4 Sep 2020 20:18:26 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from dmz.c-home.cz (gw.c-home.cz [89.24.150.100])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 308C186DD3
- for <devel@driverdev.osuosl.org>; Fri,  4 Sep 2020 20:18:04 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 51A1380EC2
+ for <devel@driverdev.osuosl.org>; Fri,  4 Sep 2020 20:18:26 +0000 (UTC)
 Received: from ubuntu1804.c-home.cz (unifi.c-home.cz [192.168.1.239])
- by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 084K1Ed8002405;
- Fri, 4 Sep 2020 22:01:19 +0200 (CEST)
+ by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 084K1Ed9002405;
+ Fri, 4 Sep 2020 22:01:26 +0200 (CEST)
 From: Martin Cerveny <m.cerveny@computer.org>
 To: devicetree@vger.kernel.org
-Subject: [PATCH 0/6] ARM: dts: sun8i: v3s: Enable video decoder
-Date: Fri,  4 Sep 2020 22:01:06 +0200
-Message-Id: <20200904200112.5563-1-m.cerveny@computer.org>
+Subject: [PATCH 1/6] media: cedrus: Register all codecs as capability
+Date: Fri,  4 Sep 2020 22:01:07 +0200
+Message-Id: <20200904200112.5563-2-m.cerveny@computer.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200904200112.5563-1-m.cerveny@computer.org>
+References: <20200904200112.5563-1-m.cerveny@computer.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,32 +67,110 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-First patch extends cedrus capability to all decoders
-because V3s missing MPEG2 decoder.
+All codecs should have capabilities.
+For example "Allwinner V3s" does not support "MPEG2".
 
-Next two patches add system control node (SRAM C1) and 
-next three patches add support for Cedrus VPU.
+Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
+---
+ drivers/staging/media/sunxi/cedrus/cedrus.c    | 18 +++++++++++++++++-
+ drivers/staging/media/sunxi/cedrus/cedrus.h    |  2 ++
+ .../staging/media/sunxi/cedrus/cedrus_video.c  |  2 ++
+ 3 files changed, 21 insertions(+), 1 deletion(-)
 
-Best regards,
-Martin
-
-Martin Cerveny (6):
-  media: cedrus: Register all codecs as capability
-  dt-bindings: sram: allwinner,sun4i-a10-system-control: Add V3s
-    compatibles
-  ARM: dts: sun8i: v3s: Add node for system control
-  media: cedrus: Add support for V3s
-  media: allwinner,sun4i-a10-video-engine: Add V3s compatible
-  ARM: dts: sun8i: v3s: Add video engine node
-
- .../allwinner,sun4i-a10-video-engine.yaml     |  1 +
- .../allwinner,sun4i-a10-system-control.yaml   |  6 ++++
- arch/arm/boot/dts/sun8i-v3s.dtsi              | 33 +++++++++++++++++++
- drivers/staging/media/sunxi/cedrus/cedrus.c   | 28 +++++++++++++++-
- drivers/staging/media/sunxi/cedrus/cedrus.h   |  2 ++
- .../staging/media/sunxi/cedrus/cedrus_video.c |  2 ++
- 6 files changed, 71 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
+index bc27f9430..3fd9fd810 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
+@@ -474,42 +474,58 @@ static int cedrus_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct cedrus_variant sun4i_a10_cedrus_variant = {
++	.capabilities	= CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC,
+ 	.mod_rate	= 320000000,
+ };
+ 
+ static const struct cedrus_variant sun5i_a13_cedrus_variant = {
++	.capabilities	= CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC,
+ 	.mod_rate	= 320000000,
+ };
+ 
+ static const struct cedrus_variant sun7i_a20_cedrus_variant = {
++	.capabilities	= CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC,
+ 	.mod_rate	= 320000000,
+ };
+ 
+ static const struct cedrus_variant sun8i_a33_cedrus_variant = {
+-	.capabilities	= CEDRUS_CAPABILITY_UNTILED,
++	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
++			  CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC,
+ 	.mod_rate	= 320000000,
+ };
+ 
+ static const struct cedrus_variant sun8i_h3_cedrus_variant = {
+ 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
++			  CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC |
+ 			  CEDRUS_CAPABILITY_H265_DEC,
+ 	.mod_rate	= 402000000,
+ };
+ 
+ static const struct cedrus_variant sun50i_a64_cedrus_variant = {
+ 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
++			  CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC |
+ 			  CEDRUS_CAPABILITY_H265_DEC,
+ 	.mod_rate	= 402000000,
+ };
+ 
+ static const struct cedrus_variant sun50i_h5_cedrus_variant = {
+ 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
++			  CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC |
+ 			  CEDRUS_CAPABILITY_H265_DEC,
+ 	.mod_rate	= 402000000,
+ };
+ 
+ static const struct cedrus_variant sun50i_h6_cedrus_variant = {
+ 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
++			  CEDRUS_CAPABILITY_MPEG2_DEC |
++			  CEDRUS_CAPABILITY_H264_DEC |
+ 			  CEDRUS_CAPABILITY_H265_DEC,
+ 	.quirks		= CEDRUS_QUIRK_NO_DMA_OFFSET,
+ 	.mod_rate	= 600000000,
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
+index 96765555a..b6032f40c 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus.h
++++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+@@ -28,6 +28,8 @@
+ 
+ #define CEDRUS_CAPABILITY_UNTILED	BIT(0)
+ #define CEDRUS_CAPABILITY_H265_DEC	BIT(1)
++#define CEDRUS_CAPABILITY_H264_DEC	BIT(2)
++#define CEDRUS_CAPABILITY_MPEG2_DEC	BIT(3)
+ 
+ #define CEDRUS_QUIRK_NO_DMA_OFFSET	BIT(0)
+ 
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index 16d82309e..cb4aca5be 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -38,10 +38,12 @@ static struct cedrus_format cedrus_formats[] = {
+ 	{
+ 		.pixelformat	= V4L2_PIX_FMT_MPEG2_SLICE,
+ 		.directions	= CEDRUS_DECODE_SRC,
++		.capabilities	= CEDRUS_CAPABILITY_MPEG2_DEC,
+ 	},
+ 	{
+ 		.pixelformat	= V4L2_PIX_FMT_H264_SLICE,
+ 		.directions	= CEDRUS_DECODE_SRC,
++		.capabilities	= CEDRUS_CAPABILITY_H264_DEC,
+ 	},
+ 	{
+ 		.pixelformat	= V4L2_PIX_FMT_HEVC_SLICE,
 -- 
 2.17.1
 
