@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0076325E21F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Sep 2020 21:45:10 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 657F225E2C0
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Sep 2020 22:30:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8042786FE9;
-	Fri,  4 Sep 2020 19:45:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A001875CE;
+	Fri,  4 Sep 2020 20:30:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KVR5OpmtHZNl; Fri,  4 Sep 2020 19:45:08 +0000 (UTC)
+	with ESMTP id Kjhm9z6KVZrg; Fri,  4 Sep 2020 20:30:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8EB2186EA6;
-	Fri,  4 Sep 2020 19:45:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 763CC875C4;
+	Fri,  4 Sep 2020 20:30:08 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A9F21BF9AF
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 35C271BF283
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 19:45:06 +0000 (UTC)
+ Fri,  4 Sep 2020 20:30:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 359A786EA6
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2B377875C6
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 19:45:06 +0000 (UTC)
+ Fri,  4 Sep 2020 20:30:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zAAjR9g50IOd
+ with ESMTP id XNsg1568exPK
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 19:45:05 +0000 (UTC)
-X-Greylist: delayed 00:18:53 by SQLgrey-1.7.6
-Received: from dtc-mta-out.120202.dattaweb.com
- (dtc-mta-out.120202.dattaweb.com [200.58.120.202])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 204DB864F3
+ Fri,  4 Sep 2020 20:30:06 +0000 (UTC)
+X-Greylist: delayed 00:20:00 by SQLgrey-1.7.6
+Received: from smht-116-28.dattaweb.com (smht-116-28.dattaweb.com
+ [200.58.116.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CFB8C875A1
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 19:45:05 +0000 (UTC)
-Received: from smarthost01-ded.dattaweb.com (localhost [127.0.0.1])
- by smarthost01-ded.dattaweb.com (Postfix) with ESMTPS id 558DD49F81
+ Fri,  4 Sep 2020 20:30:05 +0000 (UTC)
+Received: from smarthost03-ded.dattaweb.com (localhost [127.0.0.1])
+ by smarthost03-ded.dattaweb.com (Postfix) with ESMTPS id 738193A3AF
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 16:26:08 -0300 (-03)
+ Fri,  4 Sep 2020 16:51:44 -0300 (-03)
 Received: from vps-1129754-x.dattaweb.com (vps-1129754-x.dattaweb.com
  [138.219.41.188])
- by smarthost01-ded.dattaweb.com (Postfix) with ESMTPS id 3DDCF604FC
+ by smarthost03-ded.dattaweb.com (Postfix) with ESMTPS id 5B3001800D394
  for <driverdev-devel@linuxdriverproject.org>;
- Fri,  4 Sep 2020 16:26:08 -0300 (-03)
+ Fri,  4 Sep 2020 16:51:44 -0300 (-03)
 Received: from [173.208.232.37] (helo=User)
  by vps-1129754-x.dattaweb.com with esmtpa (Exim 4.87_1)
  (envelope-from <raywandyg@gmail.com>)
- id 1kEHLZ-0000Tq-Bo; Fri, 04 Sep 2020 16:26:06 -0300
+ id 1kEHkK-0007CV-Nd; Fri, 04 Sep 2020 16:51:41 -0300
 From: "Mr.P. Vermeulen"<raywandyg@gmail.com>
 Subject: working together
-Date: Fri, 4 Sep 2020 12:26:00 -0700
+Date: Fri, 4 Sep 2020 12:51:35 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
@@ -65,7 +65,7 @@ X-AntiAbuse: Primary Hostname - vps-1129754-x.dattaweb.com
 X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [502 502] / [502 502]
 X-AntiAbuse: Sender Address Domain - gmail.com
-Message-Id: <20200904192608.558DD49F81@smarthost01-ded.dattaweb.com>
+Message-Id: <20200904195144.738193A3AF@smarthost03-ded.dattaweb.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
