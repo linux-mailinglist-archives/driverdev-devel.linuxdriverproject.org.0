@@ -1,61 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0065D25ED01
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Sep 2020 08:12:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AF1325EDF5
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Sep 2020 15:28:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8B1D0867F7;
-	Sun,  6 Sep 2020 06:12:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E43E870BF;
+	Sun,  6 Sep 2020 13:28:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5arPnY2ud0rT; Sun,  6 Sep 2020 06:12:26 +0000 (UTC)
+	with ESMTP id mXLK4pDESZ3I; Sun,  6 Sep 2020 13:28:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CA566867CE;
-	Sun,  6 Sep 2020 06:12:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 83B208702B;
+	Sun,  6 Sep 2020 13:28:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9ECE41BF5D7
- for <devel@linuxdriverproject.org>; Sun,  6 Sep 2020 06:12:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 37D851BF331
+ for <devel@linuxdriverproject.org>; Sun,  6 Sep 2020 13:27:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 514922039E
- for <devel@linuxdriverproject.org>; Sun,  6 Sep 2020 06:12:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2ED1920335
+ for <devel@linuxdriverproject.org>; Sun,  6 Sep 2020 13:27:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RL9qA2fqxaRF for <devel@linuxdriverproject.org>;
- Sun,  6 Sep 2020 06:12:20 +0000 (UTC)
+ with ESMTP id yC+h2qwku0b7 for <devel@linuxdriverproject.org>;
+ Sun,  6 Sep 2020 13:27:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id A96562038B
- for <devel@driverdev.osuosl.org>; Sun,  6 Sep 2020 06:12:20 +0000 (UTC)
-IronPort-SDR: XijME4Onli7vPevTYcDFJvVzqyo1jBz+15I3RT3SmmHdnDjZgURLR13CK36Yv5eiyyRMGuz5YB
- 98DTpnQrSTtw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9735"; a="155296680"
-X-IronPort-AV: E=Sophos;i="5.76,396,1592895600"; d="scan'208";a="155296680"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2020 23:12:20 -0700
-IronPort-SDR: EWJwr4VGmGsyoQKR85FWZTjCPwzWn6x/zTMRvtr1Ms0QXEilmij5wfKDxMrKmuIUJ9ZrqNKjZ+
- j9VBChH/fkcQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,396,1592895600"; d="scan'208";a="447947264"
-Received: from lkp-server01.sh.intel.com (HELO 4b5d6de90563) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 05 Sep 2020 23:12:18 -0700
-Received: from kbuild by 4b5d6de90563 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kEnuU-00008U-1J; Sun, 06 Sep 2020 06:12:18 +0000
-Date: Sun, 06 Sep 2020 14:12:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- 76f50ad9b1503bc5bd2eb80c1e97149cbbf1d3f1
-Message-ID: <5f547dbe.1djVMjUDPppUEuL+%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
+ [209.85.208.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8D51920117
+ for <devel@driverdev.osuosl.org>; Sun,  6 Sep 2020 13:27:56 +0000 (UTC)
+Received: by mail-lj1-f193.google.com with SMTP id k25so441221ljk.0
+ for <devel@driverdev.osuosl.org>; Sun, 06 Sep 2020 06:27:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o9X2quCT3ijRZbfEg1lBDRxkIX0ndQZpXitZWRbnil4=;
+ b=a3xN9/vEhqSkTymr7qjQlPOQeFnCLASezuSHqkwv8HH1ND3Z3EpFQxbFbASRaNolJq
+ kQBpsEKe32xsLDG1rPZzIYqgsh7pbpnjtCsa+8Yx/GvBfsUzX09rvaIsADacDbxH0u3J
+ zMugpdzVAseTcZm+YKs1D86xsA2ynVvJjTFTRnMZPK9l+e01H+hWcH1o47qDsQamz4oM
+ liGr32QxprkkXSbH15BezBZAbmtlizKcN3fiv7+IpAKipENAqri75fZYj+3u+MalZPgo
+ PlmVBS34n0xmcr8vzQXFl6RByJVL0OicuyG0jfN1T2fwcV7wwMlDw+bNuhZz63PLdE7a
+ UWIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o9X2quCT3ijRZbfEg1lBDRxkIX0ndQZpXitZWRbnil4=;
+ b=Elpt1TYmmen5wG/tASilMmcgiayYu0JQybyeL5GKes+5+62xHhFlwO+tbH93l6GpDY
+ fd0ZnBt8U3oFsbObBMsgUrRgEAB+cSfRgXthzeI/9jn/VvHs9P00/XPuXDK83nybj82+
+ pmZ6SGdXJgiuuWDqoDCtcSkF8nJ2pHXwI9h4oV6lG+pc3wzaBx4xpTm2xY/EgUdL8k3h
+ oz5vBzNvIsSeAffmUC5dFneri2rFIewLAZ0sWz1zvWeSlE+jnwK3oY8W9crR/+xa7YlA
+ aj/qdZb+28pAxdd+gMoWy7cf7MlZws20tBdAm7zRijWUkIYahXA/d4+KtBv71dB2s1ta
+ XQ5Q==
+X-Gm-Message-State: AOAM532YW5Nzda6ftOnlUQlTlq802mdpizxZahFOA5InaaX3dUItyq7I
+ Ug3To2Z29ZfGy3sPzrOAg+M=
+X-Google-Smtp-Source: ABdhPJxi6jKv3UU4V74z8BpHT0legfyJ6m4liwDjnUs26TCqWbf+zXKSGEFe/8+C6okzWB2llg7JkA==
+X-Received: by 2002:a2e:7c18:: with SMTP id x24mr8025546ljc.402.1599398874492; 
+ Sun, 06 Sep 2020 06:27:54 -0700 (PDT)
+Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
+ by smtp.gmail.com with ESMTPSA id k10sm4219247lja.112.2020.09.06.06.27.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 06 Sep 2020 06:27:53 -0700 (PDT)
+Received: (nullmailer pid 556475 invoked by uid 1000);
+ Sun, 06 Sep 2020 13:33:01 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging: r8188eu: replace enum
+ rtw_ieee80211_spectrum_mgmt_actioncode with
+ ieee80211_spectrum_mgmt_actioncode
+Date: Sun,  6 Sep 2020 16:32:37 +0300
+Message-Id: <20200906133236.556427-1-insafonov@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -69,124 +87,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Peilin Ye <yepeilin.cs@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
-branch HEAD: 76f50ad9b1503bc5bd2eb80c1e97149cbbf1d3f1  staging: tegra-vde: fix common struct sg_table related issues
+Enum rtw_ieee80211_spectrum_mgmt_actioncode is a duplication
+of ieee80211_spectrum_mgmt_actioncode from include/linux/ieee80211.h.
 
-elapsed time: 723m
-
-configs tested: 94
-configs skipped: 4
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm64                            allyesconfig
-arm64                               defconfig
-nds32                            alldefconfig
-mips                     cu1000-neo_defconfig
-arc                            hsdk_defconfig
-mips                        jmr3927_defconfig
-arm                       aspeed_g4_defconfig
-sh                   sh7724_generic_defconfig
-powerpc                    adder875_defconfig
-sh                            titan_defconfig
-mips                          rb532_defconfig
-ia64                      gensparse_defconfig
-arm                            zeus_defconfig
-arm                        clps711x_defconfig
-sh                     sh7710voipgw_defconfig
-arm                           sunxi_defconfig
-arm                            qcom_defconfig
-sh                          sdk7786_defconfig
-m68k                         amcore_defconfig
-mips                        bcm47xx_defconfig
-sh                         ecovec24_defconfig
-mips                       lemote2f_defconfig
-arm                          iop32x_defconfig
-riscv                          rv32_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a005-20200906
-i386                 randconfig-a006-20200906
-i386                 randconfig-a004-20200906
-i386                 randconfig-a002-20200906
-i386                 randconfig-a003-20200906
-i386                 randconfig-a001-20200906
-x86_64               randconfig-a013-20200906
-x86_64               randconfig-a011-20200906
-x86_64               randconfig-a016-20200906
-x86_64               randconfig-a012-20200906
-x86_64               randconfig-a015-20200906
-x86_64               randconfig-a014-20200906
-i386                 randconfig-a016-20200906
-i386                 randconfig-a015-20200906
-i386                 randconfig-a011-20200906
-i386                 randconfig-a013-20200906
-i386                 randconfig-a014-20200906
-i386                 randconfig-a012-20200906
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a006-20200906
-x86_64               randconfig-a004-20200906
-x86_64               randconfig-a003-20200906
-x86_64               randconfig-a005-20200906
-x86_64               randconfig-a001-20200906
-x86_64               randconfig-a002-20200906
-
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 10 +++++-----
+ drivers/staging/rtl8188eu/include/ieee80211.h | 10 ----------
+ 2 files changed, 5 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 98b1ba2e489f..0eaf81e83ddc 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -3546,12 +3546,12 @@ static unsigned int on_action_spct(struct adapter *padapter,
+ 
+ 	action = frame_body[1];
+ 	switch (action) {
+-	case RTW_WLAN_ACTION_SPCT_MSR_REQ:
+-	case RTW_WLAN_ACTION_SPCT_MSR_RPRT:
+-	case RTW_WLAN_ACTION_SPCT_TPC_REQ:
+-	case RTW_WLAN_ACTION_SPCT_TPC_RPRT:
++	case WLAN_ACTION_SPCT_MSR_REQ:
++	case WLAN_ACTION_SPCT_MSR_RPRT:
++	case WLAN_ACTION_SPCT_TPC_REQ:
++	case WLAN_ACTION_SPCT_TPC_RPRT:
+ 		break;
+-	case RTW_WLAN_ACTION_SPCT_CHL_SWITCH:
++	case WLAN_ACTION_SPCT_CHL_SWITCH:
+ 		break;
+ 	default:
+ 		break;
+diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
+index 83218e7ec0a9..cb6940d2aeab 100644
+--- a/drivers/staging/rtl8188eu/include/ieee80211.h
++++ b/drivers/staging/rtl8188eu/include/ieee80211.h
+@@ -526,16 +526,6 @@ enum rtw_ieee80211_category {
+ 	RTW_WLAN_CATEGORY_P2P = 0x7f,/* P2P action frames */
+ };
+ 
+-/* SPECTRUM_MGMT action code */
+-enum rtw_ieee80211_spectrum_mgmt_actioncode {
+-	RTW_WLAN_ACTION_SPCT_MSR_REQ = 0,
+-	RTW_WLAN_ACTION_SPCT_MSR_RPRT = 1,
+-	RTW_WLAN_ACTION_SPCT_TPC_REQ = 2,
+-	RTW_WLAN_ACTION_SPCT_TPC_RPRT = 3,
+-	RTW_WLAN_ACTION_SPCT_CHL_SWITCH = 4,
+-	RTW_WLAN_ACTION_SPCT_EXT_CHL_SWITCH = 5,
+-};
+-
+ enum _PUBLIC_ACTION {
+ 	ACT_PUBLIC_BSSCOEXIST = 0, /*  20/40 BSS Coexistence */
+ 	ACT_PUBLIC_DSE_ENABLE = 1,
+-- 
+2.26.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
