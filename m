@@ -1,52 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2A7325FCD7
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Sep 2020 17:19:13 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F0C32602FE
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Sep 2020 19:41:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 50985870F6;
-	Mon,  7 Sep 2020 15:19:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9744885F95;
+	Mon,  7 Sep 2020 17:41:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ynRGbPkJ6+LS; Mon,  7 Sep 2020 15:19:11 +0000 (UTC)
+	with ESMTP id kxrdC8wfCrsy; Mon,  7 Sep 2020 17:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA63D86F76;
-	Mon,  7 Sep 2020 15:19:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A7418858D3;
+	Mon,  7 Sep 2020 17:41:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 334801BF378
- for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 15:19:09 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4DD881BF2A9
+ for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 17:41:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2D9F486F7C
- for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 15:19:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4988385F7B
+ for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 17:41:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gp8Vp6USAWhl for <devel@linuxdriverproject.org>;
- Mon,  7 Sep 2020 15:19:08 +0000 (UTC)
+ with ESMTP id oY2NjVzhW5OH for <devel@linuxdriverproject.org>;
+ Mon,  7 Sep 2020 17:41:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2655F86F76
- for <devel@driverdev.osuosl.org>; Mon,  7 Sep 2020 15:19:08 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 2B8CEB6FB;
- Mon,  7 Sep 2020 15:19:07 +0000 (UTC)
-Message-ID: <d23837ac7e077625ffbb8d34bf3c8f999c338f0e.camel@suse.de>
-Subject: Re: [PATCH v11 07/11] device-mapping: Introduce DMA range map,
- supplanting dma_pfn_offset
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Christoph Hellwig <hch@lst.de>, Jim Quinlan <james.quinlan@broadcom.com>
-Date: Mon, 07 Sep 2020 17:18:59 +0200
-In-Reply-To: <20200901082429.GA1440@lst.de>
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 820E7858D3
+ for <devel@driverdev.osuosl.org>; Mon,  7 Sep 2020 17:41:28 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id t10so16622070wrv.1
+ for <devel@driverdev.osuosl.org>; Mon, 07 Sep 2020 10:41:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=rHGYVkxYS60WZk1ycaZTu9OulhwPL+8esbweerGpy7k=;
+ b=AZ96zjGbG7a7wuUVpaDPYj8JXPMt7b7qf/ra3PxzflA4NgXh4nUdl2R7vpKoP4j8It
+ RlsiisM7HzGncdjr6TGL1uAS/Wmdi/aO9JjQjL/jz7GNWM9a5NK+deM1OoTwJ21JSmYw
+ ptximW6JwBhi/guwRqtMIYLzZYMBs6K8ztM/Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=rHGYVkxYS60WZk1ycaZTu9OulhwPL+8esbweerGpy7k=;
+ b=lV+fLshMk9e9bfiaubA3sMoU8WeE+uuui7qFHiMtIL8I6GqMaaRh3vMAMqszGKb9nJ
+ TnsHZHAEFYYafwm4e6S/oXPHOSL748v2LVzNPOF5xGP9c+trS/YSbgWE83FGaeV5TzFz
+ ycKm0zR8Q4r+CreY33KHwy9ZTKuKP0GosFij0Gm8Yi95xA1oGjiz2GvfSwtMjiSiqv4v
+ BPbNuqR6i5Pzq8vD+/y/9PMdapdBGn2OuV2Cv4CRR/KBnVVZw69ZeRrYsgf1Mwx0I6Jh
+ /Whv5jeJSO0QGwRr/VqHEteZg/2MD/VSBFK67qurguPl4mixSwysafxpfOXRLlLiCeAD
+ /Ttw==
+X-Gm-Message-State: AOAM531BbZ2yUtkWGFXG336bMt2Oo5f1WCO9BUU62OecLL6NzCy+NUBq
+ gOHQJ2G9wWBdfa/JUmuSCJW/8Udyb3WRwiu7Qz+DBw==
+X-Google-Smtp-Source: ABdhPJyFFWW1gj/q6K14EJPZRWoqSxb/LSs8EMxgY5O2pZAvlYCEPsYis0BRj0ezhvc4FPix6FqGDt89laPjR1P95cY=
+X-Received: by 2002:adf:fcc7:: with SMTP id f7mr22326510wrs.274.1599500486569; 
+ Mon, 07 Sep 2020 10:41:26 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200824193036.6033-1-james.quinlan@broadcom.com>
  <20200824193036.6033-8-james.quinlan@broadcom.com>
- <20200901082429.GA1440@lst.de>
-User-Agent: Evolution 3.36.5 
-MIME-Version: 1.0
+ <20200902215314.GA881878@ubuntu-n2-xlarge-x86>
+ <CA+-6iNzc38OAL7TGxobpODKXOD1CW-VFNU0rK9Z043QfR3MfsQ@mail.gmail.com>
+ <20200902223852.GA1786990@ubuntu-n2-xlarge-x86>
+ <6922bc0b-1849-2f2f-ec2f-fe9f0124dcfc@gmail.com>
+ <20200903005240.GA1118@Ryzen-9-3900X.localdomain>
+ <CA+-6iNyv_sFJOxDi5OcYNWe=ovLnOnrZNsWFQk5b-bzQzA8T_Q@mail.gmail.com>
+ <34aa0d6094e7d6fb3492d2cda0fec8ecc04790ed.camel@suse.de>
+In-Reply-To: <34aa0d6094e7d6fb3492d2cda0fec8ecc04790ed.camel@suse.de>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Mon, 7 Sep 2020 13:40:46 -0400
+Message-ID: <CA+-6iNyJ3ey0zPKj9nh8uL3AwTBhJqgD01wc=7G4NF35NXmV1Q@mail.gmail.com>
+Subject: Re: [PATCH v11 07/11] device-mapping: Introduce DMA range map,
+ supplanting dma_pfn_offset
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,117 +87,174 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Rich Felker <dalias@libc.org>,
  "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
- linux-pci@vger.kernel.org, Hanjun Guo <guohanjun@huawei.com>,
- "open list:REMOTE PROCESSOR
- \(REMOTEPROC\) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Julien Grall <julien.grall@arm.com>, "H.
- Peter Anvin" <hpa@zytor.com>, Will Deacon <will@kernel.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, "open
- list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
- Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- Russell King <linux@armlinux.org.uk>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
- Ingo Molnar <mingo@redhat.com>, bcm-kernel-feedback-list@broadcom.com,
- Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
- Ohad Ben-Cohen <ohad@wizery.com>, "open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE" <devicetree@vger.kernel.org>, Maxime Ripard <mripard@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
+ <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR REMOTEPROC SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
  "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Julien Grall <julien.grall@arm.com>, "H. Peter Anvin" <hpa@zytor.com>,
+ Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Frank Rowand <frowand.list@gmail.com>,
+ "maintainer:X86 ARCHITECTURE 32-BIT AND 64-BIT" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:ACPI FOR ARM64 ACPI/arm64" <linux-acpi@vger.kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Dan Williams <dan.j.williams@intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
  Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Nathan Chancellor <natechancellor@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
  Felipe Balbi <balbi@kernel.org>, Saravana Kannan <saravanak@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "open list:USB
- SUBSYSTEM" <linux-usb@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
  open list <linux-kernel@vger.kernel.org>,
  Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
  "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
  Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
  Sudeep Holla <sudeep.holla@arm.com>,
  "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Content-Type: multipart/mixed; boundary="===============7414378088424642059=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Mon, Sep 7, 2020 at 11:01 AM Nicolas Saenz Julienne
+<nsaenzjulienne@suse.de> wrote:
+>
+> Hi Jim, sorry I'm a little late to the party, but was on vacation.
+>
+> On Thu, 2020-09-03 at 13:32 -0400, Jim Quinlan wrote:
+> > On Wed, Sep 2, 2020 at 8:52 PM Nathan Chancellor
+> > <natechancellor@gmail.com> wrote:
+> > > On Wed, Sep 02, 2020 at 05:36:29PM -0700, Florian Fainelli wrote:
+> > > >
+> > > > On 9/2/2020 3:38 PM, Nathan Chancellor wrote:
+> > > > [snip]
+> > > > > > Hello Nathan,
+> > > > > >
+> > > > > > Can you tell me how much memory your RPI has and if all of it is
+> > > > >
+> > > > > This is the 4GB version.
+> > > > >
+> > > > > > accessible by the PCIe device?  Could you also please include the DTS
+> > > > > > of the PCIe node?  IIRC, the RPI firmware does some mangling of the
+> > > > > > PCIe DT before Linux boots -- could you describe what is going on
+> > > > > > there?
+> > > > >
+> > > > > Unfortunately, I am not familiar with how to get this information. If
+> > > > > you could provide some instructions for how to do so, I am more than
+> > > > > happy to. I am not very knowleagable about the inner working of the Pi,
+> > > > > I mainly use it as a test platform for making sure that LLVM does not
+> > > > > cause problems on real devices.
+> > > >
+> > > > Can you bring the dtc application to your Pi root filesystem, and if so, can
+> > > > you run the following:
+> > > >
+> > > > dtc -I fs -O dtb /proc/device-tree -f > /tmp/device.dtb
+> > >
+> > > Sure, the result is attached.
+> > >
+> > > > or cat /sys/firmware/fdt > device.dtb
+> > > >
+> > > > and attach the resulting file?
+> > > >
+> > > > > > Finally, can you attach the text of the full boot log?
+> > > > >
+> > > > > I have attached a working and broken boot log. Thank you for the quick
+> > > > > response!
+> > > >
+> > > > Is it possible for you to rebuild your kernel with CONFIG_MMC_DEBUG by any
+> > > > chance?
+> > >
+> > > Of course. A new log is attached with the debug output from that config.
+> >
+> > Hi Nicolas,
+> >
+> > Can you please help us out here?  It appears that your commit
+>
+> It's dma_offset_from_dma_addr() that's causing trouble. It goes over all the
+> dma regions and, if no region matches the phys address range, it returns 0.
+> This isn't acceptable as is. In the past, we used to pass the offset
+> nonetheless, which would make the phys address grow out of the dma memory area
+> and fail the dma_capable() test.
+>
+> For example, RPi4 devices attached to the old interconnect see phys [0x0
+> 0x3fffffff] at [0xc0000000 0xffffffff]. So say you're trying to convert
+> physical address 0xfa000000, you'll get 0 from dma_offset_from_phys_addr()
+> (since your dma range only covers the first GB) to then test if 0xfa000000 is
+> dma_capable(), which it is, but for the wrong reasons. Causing DMA issues
+> further down the line.
+>
+> I don't have a proper suggestion on how to solve this but here's the solution I
+> used:
+>
+> diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+> index 4c4646761afe..40fe3c97f2be 100644
+> --- a/include/linux/dma-mapping.h
+> +++ b/include/linux/dma-mapping.h
+> @@ -217,11 +217,19 @@ static inline u64 dma_offset_from_phys_addr(struct device *dev,
+>  {
+>         const struct bus_dma_region *m = dev->dma_range_map;
+>
+> -       if (m)
+> +       if (m) {
+>                 for (; m->size; m++)
+>                         if (paddr >= m->cpu_start &&
+>                             paddr - m->cpu_start < m->size)
+>                                 return m->offset;
+> +
+> +               /*
+> +                * The physical address doesn't fit any of the DMA regions,
+> +                * return an impossible to fulfill offset.
+> +                */
+> +               return -(1ULL << 46);
+> +       }
+> +
+>         return 0;
+>  }
+Hi Nicolas,
 
---===============7414378088424642059==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-7ynDZbhKR8WXoCauQUzC"
+Thanks for looking into this.  The concern I have with your solution
+is that returning an arbitrarily large offset might overlap with an
+improbable but valid usage.  AFAIK there is nothing that disallows
+mapping a device to anywhere within the 64bit range of PCIe space,
+including up to say 0xffffffffffffffff.
 
-
---=-7ynDZbhKR8WXoCauQUzC
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Christoph, a small fix to your fixes:
-
-On Tue, 2020-09-01 at 10:24 +0200, Christoph Hellwig wrote:
-> I've applied this to the dma-mapping tree.
->=20
-> I had to resolve a conflict in drivers/of/address.c with a recent
-> mainline commit.  I also applied the minor tweaks Andy pointed out
-> plus a few more style changes.  A real change is that I changed the
-> prototype for dma_copy_dma_range_map to require less boilerplate code.
-
-diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-index 0b5f8d62f251..4cd012817af6 100644
---- a/drivers/usb/core/usb.c
-+++ b/drivers/usb/core/usb.c
-@@ -610,7 +610,7 @@ struct usb_device *usb_alloc_dev(struct usb_device *par=
-ent,
-         * mask for the entire HCD, so don't do that.
-         */
-        dev->dev.dma_mask =3D bus->sysdev->dma_mask;
--       if (!dma_copy_dma_range_map(&dev->dev, bus->sysdev))
-+       if (dma_copy_dma_range_map(&dev->dev, bus->sysdev))
-                dev_err(&dev->dev, "failed to copy DMA map\n");
-        set_dev_node(&dev->dev, dev_to_node(bus->sysdev));
-        dev->state =3D USB_STATE_ATTACHED;
+As an alternative perhaps changing dma_capable() so that if the
+dma_range_map is present then it validates that both ends of the
+prospective DMA region get "hits" on one of the offset regions in the
+map.  Christoph, if you are okay with this I can quickly post a patch.
 
 Regards,
-Nicolas
+Jim Quinlan
+Broadcom STB
 
 
---=-7ynDZbhKR8WXoCauQUzC
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl9WT2MACgkQlfZmHno8
-x/5q5Qf+OmaWcIzrt/lcS25wejqy5pTxhDjSytNTrN8Gxzv5pMXBnbZRXkBlG2Is
-+0Q8A2byliMTtdy3KKax7cglRDXrgoWj+uae9Fv3bYkr7OFvpRfNguEU0kzibabA
-Mse73yBnaRQZZfRZplvez4tTYp8LYF2KBT70V6o9YJmHqyK/XMs5YolSDE4YUdxj
-GdSH5FGrBoPWhtgMMANzJu9aozbAG1SE1cpHQT/CSQ8ihRiFiaVCzpDEQKFnKdhg
-0QYUajzkg8sN3fKFIBr2gQbwgblg9K2A2YRjAYPiuCerOqQ5RGtv8cu/m6E045Sh
-aC6pJKqrIwYTwc2vFS/xwQnFpMYcYA==
-=oOCe
------END PGP SIGNATURE-----
-
---=-7ynDZbhKR8WXoCauQUzC--
-
-
---===============7414378088424642059==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+>
+> I didn't catch this on my previous tests as I was using a newer bcm2711 SoC
+> revision which expanded emmc2's DMA capabilities (can do 32 bit DMA as opposed
+> to 30 bit).
+>
+> Regards,
+> Nicolas
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============7414378088424642059==--
-
