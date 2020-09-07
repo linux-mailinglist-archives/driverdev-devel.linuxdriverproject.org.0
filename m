@@ -1,58 +1,106 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F45225F6CC
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Sep 2020 11:45:17 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D311820500;
-	Mon,  7 Sep 2020 09:45:14 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qIONBNUQRV+b; Mon,  7 Sep 2020 09:45:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4B8AD204E0;
-	Mon,  7 Sep 2020 09:45:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D22C71BF477
- for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 09:45:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7340A25F77F
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Sep 2020 12:15:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CE894866AB
- for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 09:45:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7D54186764;
+	Mon,  7 Sep 2020 10:15:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id f88srU7mx+00; Mon,  7 Sep 2020 10:15:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3604986746;
+	Mon,  7 Sep 2020 10:15:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D9F981BF2FD
+ for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 10:15:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D69C785EB8
+ for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 10:15:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e8hyNi12h9g7 for <devel@linuxdriverproject.org>;
- Mon,  7 Sep 2020 09:45:06 +0000 (UTC)
+ with ESMTP id CqNAfvhO_U5b for <devel@linuxdriverproject.org>;
+ Mon,  7 Sep 2020 10:15:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AE2C186693
- for <devel@driverdev.osuosl.org>; Mon,  7 Sep 2020 09:45:06 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A2F072075A;
- Mon,  7 Sep 2020 09:45:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599471906;
- bh=ae1s3vXkWrrOVQ13ofT0E0q9L+z+T0mPJ5tiyHOU1ho=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=f86/c0rVNMSJRGV1Po1CPZE0xesrpD5CMp4eSOXQf3mGTyASDvEvNZkRUVbtvc+ks
- U2dBzCI5R6GqOeOy1C8+B5AhTBDTJ8au1Puj/Ze60u+W2sS1MWU8GAueLIt/dZie7O
- r2LivmV0NFkU1Kwy7x3+x3wHwmADoPFX55KmbHY0=
-Date: Mon, 7 Sep 2020 11:45:20 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Naveen Panwar <naveen.panwar27@gmail.com>
-Subject: Re: [PATCH] drivers: staging: ralink-gdma: fixing codestyle related
- changes
-Message-ID: <20200907094520.GA1632129@kroah.com>
-References: <20200907093503.27725-1-naveen.panwar27@gmail.com>
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2067.outbound.protection.outlook.com [40.107.223.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C799285EAF
+ for <devel@driverdev.osuosl.org>; Mon,  7 Sep 2020 10:15:42 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KBeO0sZHKNoVzq29xn4Bhgzp9yXEfC1l+UEyiHf/qsc8P/FblfNoVV8aT+gwfhgpKp5EJ/HVfx4EiJVvyxXwBqlpN59/d0HTPJ3uNZLDXNawh3M82wFyx1SUncvVaGo0foQsb3xJcKtuRULVZtniEOUUTdprHGnIqbnx0RhQMngVQVWg/+AjQzopM7Rzbs8J5dYn85K8hJiOAOWxoh3tS730I7xWDHBBYIJ8OFB+c0tMepO5FDcVFedLp6Q/xcjtpjL6QE6QO9310G9aogr/yUSv4Y4IWDd0tjyuW4qNVhXuiDZKTCFDynCFrRPckuzZTbWYsNlT43oMDZCItaCnqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=scuCA7KFfCLOkLlGi6SkfHMG+rrexR9taSYwPDYhb38=;
+ b=POaIJOjRzzLO0REhksTT70dnBeCD47LgoV7TEDjBcMHB8sXbUBj4aVWnTUE4ZSw2+ti01/gHw2f0gprvnx9UAOwxiePiQDDTBthnVmX+k54cyMqR3qpJtALJ1zHIhYsETacM5xa8xcftdHpoK9aXo/PRelT6NoHyzLaTgwNVhcht4mDsrTl6AdChSNYuxSAizKQ14RCBtnzViKkX1KiDqRksSpFhTpiDBj1DvpUVg6881FPRox4fhYFu3fMq0UCkW8awLcQEc3y+CLkZc8iZfCv65kJGKAa9+U5++33fIMydPNIM3QZgpxatul1b6ag9quBkXT7Gqk6t0L3QrMhXPw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=scuCA7KFfCLOkLlGi6SkfHMG+rrexR9taSYwPDYhb38=;
+ b=ca/24v9RcHUJCdJrWyJavJkmrSVnDB0ys7C9R9VypQzZAAk29ssBvxJOcoHSO+RmI5YbJyBF3KzYSSpc1svWl+DziMD1URA2xOfzyuORSxVuRdjGanO9zgYvb8HGq6BkykIVtyE0J95AjbwPySBJYPsRDafLIFq+NW8wZSSN8ac=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=silabs.com;
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SN6PR11MB2606.namprd11.prod.outlook.com (2603:10b6:805:55::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.17; Mon, 7 Sep
+ 2020 10:15:39 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::85c9:1aa9:aeab:3fa6]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::85c9:1aa9:aeab:3fa6%4]) with mapi id 15.20.3348.019; Mon, 7 Sep 2020
+ 10:15:39 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: devel@driverdev.osuosl.org,
+	linux-wireless@vger.kernel.org
+Subject: [PATCH 00/31] staging: wfx: fix last items of the TODO list
+Date: Mon,  7 Sep 2020 12:14:50 +0200
+Message-Id: <20200907101521.66082-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.28.0
+X-ClientProxiedBy: PR0P264CA0109.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:100:19::25) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200907093503.27725-1-naveen.panwar27@gmail.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.silabs.com (37.71.187.125) by
+ PR0P264CA0109.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:19::25) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3348.16 via Frontend Transport; Mon, 7 Sep 2020 10:15:37 +0000
+X-Mailer: git-send-email 2.28.0
+X-Originating-IP: [37.71.187.125]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f8a4d3a3-f51c-4395-6db3-08d85316f820
+X-MS-TrafficTypeDiagnostic: SN6PR11MB2606:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <SN6PR11MB26064953EF86D8A14D55369193280@SN6PR11MB2606.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1850;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 3jsVrigSibZsyzgntpe58Y9onb/MjTL88EUEBQAxbLlKDOwiRKicHkiRjEsaKOuSgXlvsMrwy/TJVUl4wHRT9eD4HRvs+sWSfVY6wNNgS5ybGwC6FmNRYmwmh8/jSfFAB6velzera3fOiFS/P7VYJgzX6vZmpqXQFmhJ6QIAusiOSkPoeKdG96ctN+rPitSJDgYfCU0pPtL43ImB74JQa6hbPWjtcShSNoxQpqt6fIzdfU+uG48ys+7Sx2Gy1TZzxmuHD5VMq8dUOHShoe6xlwcSa7ZT00fkRnKGjbktpU1BPX8BBYhnpXotc51do5H3
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(376002)(346002)(366004)(136003)(39850400004)(66946007)(4326008)(5660300002)(2616005)(66476007)(316002)(956004)(478600001)(6666004)(54906003)(52116002)(2906002)(66556008)(1076003)(36756003)(8676002)(86362001)(6486002)(8936002)(7696005)(66574015)(83380400001)(26005)(107886003)(16526019)(186003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: GZk2FmOEjXdi5d5qRPjuuCTrOd69f3ytJxR+0Y9S/W7cpPN92kSZ6kQxuVlMIl60BHnNdxaX/wzezUt/94r6ktquwUPbq156fkbpS9IVwmaVy3l/Vv6cc+JJp37iJAlHkH9EcTWLnSeJzZfKeBZya/RCoVXyCyOR8MoPOb2W/VwIyFudmo59ld2a82OeLzE60D1V3uSh5GIkkehkGtRtd1Tf2GSM0E39lp5JyvSjBR7G1Fi245F3sX0ZUQI+kWs58dlgWvquo1Jq8X83tOi4PeCJE6vgimWLcdlzDffcLEpeRumdnf+LqWI7EMeDJ/FiprNOMCZSnYm5n43RN1z9imyC1JUat5QHn0FTCtUPDcIXiATwk0J0Gr/oeJb9kL7+1rbm3GuiDcJovIc4+PGBVdjwcS3uvfvQRf/JGR4RDPNqB3t+kNcU/SCBgaAaaR0PTtPfkotkdGiwieqguCwdLwlCtEQIjMYp/5Q4pRwF1Qail2vKlo2+hMKJ6k/WsBGJzj1ocX0Vd2p2OMCGqyPFvkt15cZsTFNpHdKyLwYPvftV8EMOdMREjYKe7LsncMfkj85zQTU3KvINFaLrwCMFQi5RI1gOiZGIdpgryMAJT4en2H3/RBX9bmSwmpyp/sqzV8U4CmjLlIM1rLuY5AU5iA==
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f8a4d3a3-f51c-4395-6db3-08d85316f820
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Sep 2020 10:15:39.2414 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uBOeXiRju5ljNS6i/Z6rz4YAjelYBLM8aaLNAsOPQ6eq5ixoe78WOc9LEjXb1EhfMexcnhNdorsIDR5l5Xnv4w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2606
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,132 +113,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: lokeshvutla@ti.com, mpe@ellerman.id.au, devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Sep 07, 2020 at 03:05:03PM +0530, Naveen Panwar wrote:
-> Fixing the codestyle related changes in the ralink-gdma driver
-> 
-> Signed-off-by: Naveen Panwar <naveen.panwar27@gmail.com>
-> ---
->  drivers/staging/ralink-gdma/ralink-gdma.c | 23 ++++++++++++-----------
->  1 file changed, 12 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
-> index eabf1093328e..8e3b4a699322 100644
-> --- a/drivers/staging/ralink-gdma/ralink-gdma.c
-> +++ b/drivers/staging/ralink-gdma/ralink-gdma.c
-> @@ -122,6 +122,7 @@ struct gdma_dma_dev {
->  	struct gdma_data *data;
->  	void __iomem *base;
->  	struct tasklet_struct task;
-> +
->  	volatile unsigned long chan_issued;
->  	atomic_t cnt;
->  
-> @@ -135,8 +136,8 @@ struct gdma_data {
->  	int (*start_transfer)(struct gdma_dmaengine_chan *chan);
->  };
->  
-> -static struct gdma_dma_dev *gdma_dma_chan_get_dev(
-> -	struct gdma_dmaengine_chan *chan)
-> +static struct gdma_dma_dev *gdma_dma_chan_get_dev
-> +	(struct gdma_dmaengine_chan *chan)
->  {
->  	return container_of(chan->vchan.chan.device, struct gdma_dma_dev,
->  		ddev);
-> @@ -510,10 +511,10 @@ static void gdma_dma_issue_pending(struct dma_chan *c)
->  	spin_unlock_irqrestore(&chan->vchan.lock, flags);
->  }
->  
-> -static struct dma_async_tx_descriptor *gdma_dma_prep_slave_sg(
-> -		struct dma_chan *c, struct scatterlist *sgl,
-> -		unsigned int sg_len, enum dma_transfer_direction direction,
-> -		unsigned long flags, void *context)
-> +static struct dma_async_tx_descriptor *gdma_dma_prep_slave_sg
-> +	(struct dma_chan *c, struct scatterlist *sgl,
-> +	unsigned int sg_len, enum dma_transfer_direction direction,
-> +	unsigned long flags, void *context)
->  {
->  	struct gdma_dmaengine_chan *chan = to_gdma_dma_chan(c);
->  	struct gdma_dma_desc *desc;
-> @@ -558,9 +559,9 @@ static struct dma_async_tx_descriptor *gdma_dma_prep_slave_sg(
->  	return NULL;
->  }
->  
-> -static struct dma_async_tx_descriptor *gdma_dma_prep_dma_memcpy(
-> -		struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
-> -		size_t len, unsigned long flags)
-> +static struct dma_async_tx_descriptor *gdma_dma_prep_dma_memcpy
-> +	(struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
-> +	size_t len, unsigned long flags)
->  {
->  	struct gdma_dmaengine_chan *chan = to_gdma_dma_chan(c);
->  	struct gdma_dma_desc *desc;
-> @@ -601,8 +602,8 @@ static struct dma_async_tx_descriptor *gdma_dma_prep_dma_memcpy(
->  	return vchan_tx_prep(&chan->vchan, &desc->vdesc, flags);
->  }
->  
-> -static struct dma_async_tx_descriptor *gdma_dma_prep_dma_cyclic(
-> -	struct dma_chan *c, dma_addr_t buf_addr, size_t buf_len,
-> +static struct dma_async_tx_descriptor *gdma_dma_prep_dma_cyclic
-> +	(struct dma_chan *c, dma_addr_t buf_addr, size_t buf_len,
->  	size_t period_len, enum dma_transfer_direction direction,
->  	unsigned long flags)
->  {
-> -- 
-> 2.17.1
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
-Hi,
-
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKSGVs
+bG8gZm9sa3MsCgpUaGlzIFBSIGZpeGVzIG1vc3Qgb2YgdGhlIGl0ZW1zIG9mIHRoZSBUT0RPIGxp
+c3QgYXNzb2NpYXRlZCB0byB0aGUgd2Z4IGRyaXZlci4KTm9ybWFsbHksIG15IG5leHQgUFIgd2ls
+bCBhc2sgdG8gbW92ZSB0aGUgd2Z4IGRyaXZlciBvdXQgb2YgdGhlIHN0YWdpbmcKYXJlYS4KCkrD
+qXLDtG1lIFBvdWlsbGVyICgzMSk6CiAgc3RhZ2luZzogd2Z4OiBpbXByb3ZlIHJlYWRhYmlsaXR5
+IG9mIGFzc29jaWF0aW9uIHByb2Nlc3NpbmcKICBzdGFnaW5nOiB3Zng6IHJlbG9jYXRlIHdmeF9q
+b2luKCkgYmVzaWRlIHdmeF9qb2luX2ZpbmFsaXplKCkKICBzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5
+IGhpZl9zZXRfYXNzb2NpYXRpb25fbW9kZSgpCiAgc3RhZ2luZzogd2Z4OiBrZWVwIEFQSSBlcnJv
+ciBsaXN0IHVwLXRvLWRhdGUKICBzdGFnaW5nOiB3Zng6IGRyb3AgJ3NlY3VyZSBsaW5rJyBmZWF0
+dXJlCiAgc3RhZ2luZzogd2Z4OiBkcm9wIG11bHRpY2FzdCBmaWx0ZXJpbmcKICBzdGFnaW5nOiB3
+Zng6IGRyb3AgdXNlbGVzcyBmdW5jdGlvbgogIHN0YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIGVu
+dW0gaGlmX2JlYWNvbgogIHN0YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIHVuaW9uIGhpZl9jb21t
+YW5kc19pZHMKICBzdGFnaW5nOiB3Zng6IGRyb3AgdXNlbGVzcyBzdHJ1Y3QgaGlmX3Jlc2V0X2Zs
+YWdzCiAgc3RhZ2luZzogd2Z4OiBkcm9wIHVzZWxlc3Mgc3RydWN0IGhpZl9pZV9mbGFncwogIHN0
+YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIHN0cnVjdCBoaWZfam9pbl9mbGFncwogIHN0YWdpbmc6
+IHdmeDogZHJvcCB1c2VsZXNzIHN0cnVjdCBoaWZfYnNzX2ZsYWdzCiAgc3RhZ2luZzogd2Z4OiBk
+cm9wIHVzZWxlc3Mgc3RydWN0IGhpZl9tYXBfbGlua19mbGFncwogIHN0YWdpbmc6IHdmeDogZHJv
+cCB1c2VsZXNzIHN0cnVjdCBoaWZfc3VzcGVuZF9yZXN1bWVfZmxhZ3MKICBzdGFnaW5nOiB3Zng6
+IGRyb3AgdXNlbGVzcyBzdHJ1Y3QgaGlmX3BtX21vZGUKICBzdGFnaW5nOiB3Zng6IGRyb3AgdXNl
+bGVzcyBzdHJ1Y3QgaGlmX3J4X2ZsYWdzCiAgc3RhZ2luZzogd2Z4OiBkcm9wIHVzZWxlc3Mgc3Ry
+dWN0IGhpZl90eF9yZXN1bHRfZmxhZ3MKICBzdGFnaW5nOiB3Zng6IGRyb3AgdXNlbGVzcyBzdHJ1
+Y3RzIG9ubHkgdXNlZCBpbiBoaWZfcmVxX3R4CiAgc3RhZ2luZzogd2Z4OiBkcm9wIHVzZWxlc3Mg
+c3RyaWN0cyBvbmx5IHVzZWQgaW4gaGlmX3JlcV9zdGFydF9zY2FuX2FsdAogIHN0YWdpbmc6IHdm
+eDogZHJvcCB1c2VsZXNzIHN0cnVjdHMgb25seSB1c2VkIGluIGhpZl9pbmRfc3RhcnR1cAogIHN0
+YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIHVuaW9uIGhpZl9wcml2YWN5X2tleV9kYXRhCiAgc3Rh
+Z2luZzogd2Z4OiBkcm9wIHVzZWxlc3MgdW5pb24gaGlmX2V2ZW50X2RhdGEKICBzdGFnaW5nOiB3
+Zng6IGRyb3AgdXNlbGVzcyB1bmlvbiBoaWZfaW5kaWNhdGlvbl9kYXRhCiAgc3RhZ2luZzogd2Z4
+OiBkcm9wIHN0cnVjdCBoaWZfaWVfdGx2CiAgc3RhZ2luZzogd2Z4OiBkcm9wIG1hY3JvIEFQSV9T
+U0lEX1NJWkUKICBzdGFnaW5nOiB3Zng6IGZpeCBuYW1pbmcgb2YgaGlmX3R4X3JhdGVfcmV0cnlf
+cG9saWN5CiAgc3RhZ2luZzogd2Z4OiBmaXggc3BhY2VzCiAgc3RhZ2luZzogd2Z4OiB1bmlmb3Jt
+aXplIG5hbWluZyBydWxlcyBpbiBoaWZfdHhfbWliLmMKICBzdGFnaW5nOiB3Zng6IGRyb3AgYXN5
+bmMgZmllbGQgZnJvbSBzdHJ1Y3QgaGlmX2NtZAogIHN0YWdpbmc6IHdmeDogdXBkYXRlIFRPRE8g
+bGlzdAoKIGRyaXZlcnMvc3RhZ2luZy93ZngvVE9ETyAgICAgICAgICAgICAgfCAgMTkgLS0KIGRy
+aXZlcnMvc3RhZ2luZy93ZngvYmguYyAgICAgICAgICAgICAgfCAgNDggKy0tLS0KIGRyaXZlcnMv
+c3RhZ2luZy93ZngvZGF0YV9yeC5jICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvc3RhZ2luZy93
+ZngvZGF0YV90eC5jICAgICAgICAgfCAgNDIgKystLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlm
+X2FwaV9jbWQuaCAgICAgfCAyNTQgKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMv
+c3RhZ2luZy93ZngvaGlmX2FwaV9nZW5lcmFsLmggfCAxMjkgKystLS0tLS0tLS0tLQogZHJpdmVy
+cy9zdGFnaW5nL3dmeC9oaWZfYXBpX21pYi5oICAgICB8ICA0OCArLS0tLQogZHJpdmVycy9zdGFn
+aW5nL3dmeC9oaWZfcnguYyAgICAgICAgICB8ICA0NSArKy0tLQogZHJpdmVycy9zdGFnaW5nL3dm
+eC9oaWZfdHguYyAgICAgICAgICB8IDEwOSArKy0tLS0tLS0tLQogZHJpdmVycy9zdGFnaW5nL3dm
+eC9oaWZfdHguaCAgICAgICAgICB8ICAgNyAtCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eF9t
+aWIuYyAgICAgIHwgMTIyICsrKy0tLS0tLS0tLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4
+X21pYi5oICAgICAgfCAgMTEgKy0KIGRyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5jICAgICAgICAg
+ICAgfCAgMTcgKy0KIGRyaXZlcnMvc3RhZ2luZy93Zngvc2VjdXJlX2xpbmsuaCAgICAgfCAgNTkg
+LS0tLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jICAgICAgICAgICAgIHwgMjI5ICsrKysr
+KysrKystLS0tLS0tLS0tLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5oICAgICAgICAgICAg
+IHwgICAyIC0KIGRyaXZlcnMvc3RhZ2luZy93Zngvd2Z4LmggICAgICAgICAgICAgfCAgIDUgLQog
+MTcgZmlsZXMgY2hhbmdlZCwgMjgwIGluc2VydGlvbnMoKyksIDg2OCBkZWxldGlvbnMoLSkKIGRl
+bGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L3NlY3VyZV9saW5rLmgKCi0tIAoy
+LjI4LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
