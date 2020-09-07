@@ -1,108 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBF2B25F797
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Sep 2020 12:16:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D20B25F7A0
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Sep 2020 12:17:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA09085F0B;
-	Mon,  7 Sep 2020 10:16:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B68858675C;
+	Mon,  7 Sep 2020 10:17:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vl0RKKvPpS1x; Mon,  7 Sep 2020 10:16:50 +0000 (UTC)
+	with ESMTP id p6c5vXMweIZK; Mon,  7 Sep 2020 10:17:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C90485F11;
-	Mon,  7 Sep 2020 10:16:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2A00686752;
+	Mon,  7 Sep 2020 10:17:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4AAD51BF964
- for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 10:16:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B8C881BF2FD
+ for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 10:17:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3D774204EF
- for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 10:16:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B15EA204EF
+ for <devel@linuxdriverproject.org>; Mon,  7 Sep 2020 10:17:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fv9tPfUYADCY for <devel@linuxdriverproject.org>;
- Mon,  7 Sep 2020 10:16:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2068.outbound.protection.outlook.com [40.107.93.68])
- by silver.osuosl.org (Postfix) with ESMTPS id AF6CC20528
- for <devel@driverdev.osuosl.org>; Mon,  7 Sep 2020 10:16:33 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QJL/69MjgTqEiOWEuSGE9GMSJ/5cJKf1Xd6M9TaGj/m0qEjA5LWEVY+OHt4FuFRpeMEnogL7VjiL1/JJjcr29EZbFp2wspTA52LmWObvx6fgj6w8DJCO0lXA3DqD2Q6YPAbQnKkgeIgGmmYBiBYWbU2QPWq+JLAo1mr18FBg5EoBg34GyLxnpgVqEVK3aB/VJkId/JhhQ4cwJLm6Jk03pYir58F+4IBCoYDJjUrXUzDqvecoRXk1uaYEHlz6xercK01CIfllTfyirJXP3u8GAJAkBawnuMzlF72nL4qFCjezflD+HVaO7HqNhqR3kSKMT5nKedIiWDXMFttngcVfMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=44rGh7c9rRoaEPUVjEwmOUdbMciPK9yliP3dmgUdb1A=;
- b=iBOra6ZT8eePmYG/hvZ5RU+o6hwX1mMayY2qGRYJ2oB725tbLM+tX8OSydt2BcQoLl1yXmdRUXbdfISBH2TuWCLYLxS8+Dpp8wrXUF8dcD/gqaxNGma+XD/NPRbT4snc7zT/mSDUvuveQmRijjvUWNaik9r+Dm+TL2gYFYQrUmew14jy19pdQ8PY1xzn7N+CxohOwKcj9h/Hb2raerzCQPpwWgT7Zvdd/Jb0InC16Y+ixXaXeecLINfXHuo0IfxEQRM/KoTCc/6sR4J/y5mvsKZ/oryTDhhHCjmvsm9JJ+wU6PB9B2/7TN8hDSK7J+A1yBSNtkyhnrCfOckA6isFLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=44rGh7c9rRoaEPUVjEwmOUdbMciPK9yliP3dmgUdb1A=;
- b=eJYeuPK5jPpXni8h10jmhrMeTnIfaidzbFj8Ges1BaM6d7jsiFKVSqG/yT7BM7JmkvuHTzPzmotalJNHsx8cRMxy610ZGFlTpbh5qtGiOVc1LprRVkIh8mquCDogPJy4XNahgbInqR0msDsFHquAFaAWjd4dVq+y7hCrnTFHN6M=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SN6PR11MB2720.namprd11.prod.outlook.com (2603:10b6:805:56::27)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.15; Mon, 7 Sep
- 2020 10:16:32 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::85c9:1aa9:aeab:3fa6]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::85c9:1aa9:aeab:3fa6%4]) with mapi id 15.20.3348.019; Mon, 7 Sep 2020
- 10:16:32 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 29/31] staging: wfx: uniformize naming rules in hif_tx_mib.c
-Date: Mon,  7 Sep 2020 12:15:19 +0200
-Message-Id: <20200907101521.66082-30-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200907101521.66082-1-Jerome.Pouiller@silabs.com>
-References: <20200907101521.66082-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: PR0P264CA0109.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:19::25) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
+ with ESMTP id 0LciwDeqNest for <devel@linuxdriverproject.org>;
+ Mon,  7 Sep 2020 10:17:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from lb1-smtp-cloud8.xs4all.net (lb1-smtp-cloud8.xs4all.net
+ [194.109.24.21])
+ by silver.osuosl.org (Postfix) with ESMTPS id E880A2012F
+ for <devel@driverdev.osuosl.org>; Mon,  7 Sep 2020 10:17:36 +0000 (UTC)
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id FEDLktozZgJnQFEDMkcAgg; Mon, 07 Sep 2020 12:17:34 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1599473854; bh=HgbncFYAzk/LirXAJ2xU3kPm9hShrC3K8k0R1FKZBag=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=OIZC81IMuhwqFKUNoBTQKdWY+UP4jp8/nZPMcg1TbTvkPRBkNKpPVjQdEDsILM/1U
+ N5vlSp5f2+jBagHguCCl8ygvXW1G5C/r7jqkmJQMyyd+IC6R0qbIcGTC6qVPvqYNAR
+ gPfBVkRL/QmI4c1IIjIuCRvuUCx7bFs0ITqrYLkoMdYO6RyGQNdzCD3rW6hkA0m4Lx
+ pqOBkjlbeK4i0rTyk0xnFGUYqCW8PaygVm7wvgq9XfAOYoV+ErPfwf1ssWs3P4BVZ1
+ S0l3704zui3deYbXCWGEv66L+Sa3UKTI4Mpy+auBZBWzlo8v+6RynmwWmjYRC1G3vF
+ kkrrEwRN9UGvg==
+Subject: Re: [PATCH 00/38] media sparse/smatch warn fixes
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+References: <cover.1599062230.git.mchehab+huawei@kernel.org>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <5ced9e99-c3d9-e81f-db17-e13f33ed70e5@xs4all.nl>
+Date: Mon, 7 Sep 2020 12:17:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.silabs.com (37.71.187.125) by
- PR0P264CA0109.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:19::25) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3348.16 via Frontend Transport; Mon, 7 Sep 2020 10:16:30 +0000
-X-Mailer: git-send-email 2.28.0
-X-Originating-IP: [37.71.187.125]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3a8912fb-c26f-4a3a-463d-08d8531717cd
-X-MS-TrafficTypeDiagnostic: SN6PR11MB2720:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SN6PR11MB27201177022FD88574DF95F893280@SN6PR11MB2720.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: fvK8FiUBEdm6rOQCjm1y7ugpcwlVP6tQdI0RmS5vpnNkbNtWp9DkNcW4PXcq1xVG8ZrpyAQvAUdv5IghHd4bFWC2BmEwRivKZUdx/hmxIrIbWSAYNDHWWfKJqkXmbiT0OpknUanW9Mm46ZSkcSuPDGyz/Rvee/0wc3kXCe1j7oqius+yPCq9ZSUOv4gcaJwmk9sqNVzIlhP0A1B97cLO+bXEAIF1vtewl9QhFcEo10dNXlWKJ5UE0TUa+pAl/ae+XazuGD+W1cVn2sMmF2vzzJtkhAN94fDhW0blph+bS6k+d3AkBiREbqhSp5eoK4hsqF2qxe0dZY9TtOcxsgGLKg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(376002)(366004)(39850400004)(136003)(346002)(396003)(66946007)(66556008)(66476007)(54906003)(26005)(186003)(16526019)(66574015)(83380400001)(107886003)(6486002)(8676002)(956004)(2616005)(2906002)(316002)(86362001)(8936002)(478600001)(4326008)(7696005)(36756003)(52116002)(6666004)(1076003)(5660300002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: uhkgbAaTNXPZpi4mw9NV0t9j2FPJ8f3GopfvHvXyvqf41Qikh1UbDK7KzAVjq5QcLzJu6ChMIlJr5vH8xkgBseYYvWpP/EGIyaRDG+RwnxvW5KMDygcvgNDHfqmkMjckcOpg9Z+Sy1Hg/QIh6/o6l22nvAlOQw1nGjl1qDkwQfvpEN6CfJAOfrdAx+moTMZrAb1Xqfne6wogvWJBE+71VZjbxC8bjyHc9SpqtrRJHp7DBhk3Ti4P/rxW24cHi9U6EtkypJsHizN5SVBiv0BYFrSEcxxEp9fjbIiFTcK2CmUZQK1nogQsrhEyYK6xdeQu73Q77adVRkFAcKHH74ANA94VScBvVclskK6eKOm5VBGpV94x/HIsXLxb+j7ZqyyyZeELmOpQfyEZmRHwldWX8vAbGP4xEX9mDenVg7HeVAo5ByIDNBKREOvXoCuz3kxz83Lf1f5IkoEY9UHIXM7v4KEiPVGKSoglBuFumuA9R4++iTda9+qqSrTNpcwewVwJUEoHMqwUOijCeHJX4GmCEW4X5ibsfGUT9uBhqR6fdtDBBQvtX+6jVeavGr23JldNRkm9z24O0dOeAI6bPKLNvWj9lD7C4ouB0vhpLaju4R3F7+S0Q5/CQdiHoL+cPVE7g1lEXo0wUeTbH/EinGeVbw==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3a8912fb-c26f-4a3a-463d-08d8531717cd
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Sep 2020 10:16:32.3276 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LzBVzyIvCRdHLrukSex/tQ67PyBnRRjCi3sUMGc33ceDFRaZ+OGqmCrO2wh4wl17OFzPl+Q/mKShir2q0nVC7Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2720
+In-Reply-To: <cover.1599062230.git.mchehab+huawei@kernel.org>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfOc6uePBCSHhyIyCiqDkng0D9SBU74ntHiDAyiBpwbwiPXns6jguVb2g4Yt6hvx4lTRj4RgBM4IbW6MyVr6PembmE5RwzGsuGoc7cTCRDZb6V8gMooxA
+ EZlGkIsmIqfeIxltkTPpGt390a/cyTC4DCt/FC1zzFb+uFR8T7zdiaR9P1+pQ9d/r0NYKYirzqDYRlCRjZdprBEtIgiEO9pCkTTEZd5M4S2+jew7iQU5KuGP
+ p755uCKj7M4THjQkj4Aq2kmBPsL6EhnfkLbJMSJ6mnMpx2Dha0u4BFjDYZzC2PPcducBWrhScvuDKHrlX5GfmEb/MwbMa38M0bz4za5A1vQxUTb6/n5lMNkE
+ nbbbMygQw37lKUXlShZGbu0DR9viqI9z+9E9qbKUTPM375eWTE3sctetTr96Dp11wnHOhyHjyYgZZmih4DoPlHjsgLvfSd/8szDYRldVZzVjumql0EPaWf0z
+ JHP9zbJulruaA72Q3dD9TAXAR1YwMK4UhP6EAiPa/M1Sfrl7OZZQMySnmk+Ka71w6FjDDvXoO7xtgzNvEfEDE4zxzpTzXUNLEO6N4zm82GN/g2+2jDPcObLo
+ TMCbV7bgA5eUQQf1h4kRLGScaoVp22A+7y/sBLcRha0VAu7okgpZYfaQmJBeRN75gOu69VV4qZRBkR/MIzGUxnNM2xMD77FeW3iqQnPCNGfxq/rw/rWNzGea
+ u2/cYPnOyfQVl2Dh+HUs9WxN+g6b1dS6o8r3/xb41Osk+qasE8UlLLDo1815ogLizDJEy1HRC57yAmlkPqo8E12wFBdmAKxBQHkKP/BznwYYkX2xe49RhTDi
+ bMUceJa98gLo1iYayGEdfaD2ITQ1V88vfi3EoTsqA8vYkSseWmd5jgcCV/7FS4QRsEthYkAnK1BSFSSncPpZ746DGVt40KDmT15eWzCdQxlGV8Soo6L5arh7
+ xfzH32ilsgG1c2KKRSRhelR9L+EWyBcIMPtltmyaGhRzoZlnAZtAMCuQ3qeEct2LW0z5Im5oQBm2NWGKLlDy/RUj4c8cfsmSo8IIWTq/1gwyrfEAwyEGW3JF
+ WrslmCQiEgQAS0wR67beYHCv0jVibzB0pVr5raa3ob1SUklcVfUTachqVLuRG6kqaMxbTI9rmGiKrRy91glOINh7ETdWacM0I+1KQxVb9Fdv27lRKGTMFnpA
+ P+rjPo66gFubD63ljV9FhJupctUq4mwSMRfODM8Pkhgsa0yNV07fis4+tPICUTLwVYHFCC59axC3eoM0CvN1Yw==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,104 +79,205 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+Cc: Sean Young <sean@mess.org>, Takashi Iwai <tiwai@suse.de>,
+ Stanimir Varbanov <stanimir.varbanov@linaro.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ John Hubbard <jhubbard@nvidia.com>, Michel Lespinasse <walken@google.com>,
+ devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@chromium.org>,
+ Vandana BN <bnvandana@gmail.com>, Antti Palosaari <crope@iki.fi>,
+ Andy Gross <agross@kernel.org>, Allen Pais <allen.lkml@gmail.com>,
+ linux-media@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ linux-arm-msm@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Forest Crossman <cyrozap@gmail.com>, linux-kernel@vger.kernel.org,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Romain Perier <romain.perier@gmail.com>, Mike Rapoport <rppt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKaGlm
-X3R4X21pYi5jIGNvbnRhaW5zIGZ1bmN0aW9ucyB0aGF0IGZvcm1hdCBkYXRhIHRvIGJlIHNlbnQg
-dG8gdGhlCmhhcmR3YXJlLiBJbiB0aGlzIGZpbGUsIHNvbWV0aW1lIHRoZSBzdHJ1Y3QgdG8gYmUg
-c2VudCBpcyBuYW1lZCAnYXJnJywKc29tZXRpbWUgJ3ZhbCcuIEluIHNvbWUgb3RoZXIgZnVuY3Rp
-b24gJ3ZhbCcgaXMgdXNlZCBmb3IgdGhlIGFyZ3VtZW50IG9mCnRoZSBmdW5jdGlvbi4KClRoaXMg
-cGF0Y2ggdW5pZm9ybWl6ZSB0aGUgdGhpbmdzIGFuZCBjaG9vc2UgdG8gY2FsbCBhbGwgdGhlIGRh
-dGEgaW4KZGVzdGluYXRpb24gdG8gdGhlIGhhcmR3YXJlICdhcmcnIChub3RlIHRoaXMgY2hvaWNl
-IGlzIG9ubHkgZGljdGF0ZWQgYnkKdGhlIG51bWJlciBvZiBsaW5lcyB0byBjaGFuZ2UgaW4gdGhl
-IGNvZGUpCgpTaWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVy
-QHNpbGFicy5jb20+Ci0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHhfbWliLmMgfCA1MCAr
-KysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDI1IGluc2Vy
-dGlvbnMoKyksIDI1IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93
-ZngvaGlmX3R4X21pYi5jIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHhfbWliLmMKaW5kZXgg
-MmViMmEyMDg5MGM3Li5jMzc1YjkwNTJhMDcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93
-ZngvaGlmX3R4X21pYi5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4X21pYi5jCkBA
-IC0yOSw3ICsyOSw3IEBAIGludCBoaWZfc2V0X2JlYWNvbl93YWtldXBfcGVyaW9kKHN0cnVjdCB3
-ZnhfdmlmICp3dmlmLAogCQkJCSB1bnNpZ25lZCBpbnQgZHRpbV9pbnRlcnZhbCwKIAkJCQkgdW5z
-aWduZWQgaW50IGxpc3Rlbl9pbnRlcnZhbCkKIHsKLQlzdHJ1Y3QgaGlmX21pYl9iZWFjb25fd2Fr
-ZV91cF9wZXJpb2QgdmFsID0geworCXN0cnVjdCBoaWZfbWliX2JlYWNvbl93YWtlX3VwX3Blcmlv
-ZCBhcmcgPSB7CiAJCS53YWtldXBfcGVyaW9kX21pbiA9IGR0aW1faW50ZXJ2YWwsCiAJCS5yZWNl
-aXZlX2R0aW0gPSAwLAogCQkud2FrZXVwX3BlcmlvZF9tYXggPSBsaXN0ZW5faW50ZXJ2YWwsCkBA
-IC0zOSw3ICszOSw3IEBAIGludCBoaWZfc2V0X2JlYWNvbl93YWtldXBfcGVyaW9kKHN0cnVjdCB3
-ZnhfdmlmICp3dmlmLAogCQlyZXR1cm4gLUVJTlZBTDsKIAlyZXR1cm4gaGlmX3dyaXRlX21pYih3
-dmlmLT53ZGV2LCB3dmlmLT5pZCwKIAkJCSAgICAgSElGX01JQl9JRF9CRUFDT05fV0FLRVVQX1BF
-UklPRCwKLQkJCSAgICAgJnZhbCwgc2l6ZW9mKHZhbCkpOworCQkJICAgICAmYXJnLCBzaXplb2Yo
-YXJnKSk7CiB9CiAKIGludCBoaWZfc2V0X3JjcGlfcnNzaV90aHJlc2hvbGQoc3RydWN0IHdmeF92
-aWYgKnd2aWYsCkBAIC05MiwzMSArOTIsMzEgQEAgaW50IGhpZl9zZXRfbWFjYWRkcihzdHJ1Y3Qg
-d2Z4X3ZpZiAqd3ZpZiwgdTggKm1hYykKIGludCBoaWZfc2V0X3J4X2ZpbHRlcihzdHJ1Y3Qgd2Z4
-X3ZpZiAqd3ZpZiwKIAkJICAgICAgYm9vbCBmaWx0ZXJfYnNzaWQsIGJvb2wgZmlsdGVyX3ByYnJl
-cSkKIHsKLQlzdHJ1Y3QgaGlmX21pYl9yeF9maWx0ZXIgdmFsID0geyB9OworCXN0cnVjdCBoaWZf
-bWliX3J4X2ZpbHRlciBhcmcgPSB7IH07CiAKIAlpZiAoZmlsdGVyX2Jzc2lkKQotCQl2YWwuYnNz
-aWRfZmlsdGVyID0gMTsKKwkJYXJnLmJzc2lkX2ZpbHRlciA9IDE7CiAJaWYgKCFmaWx0ZXJfcHJi
-cmVxKQotCQl2YWwuZndkX3Byb2JlX3JlcSA9IDE7CisJCWFyZy5md2RfcHJvYmVfcmVxID0gMTsK
-IAlyZXR1cm4gaGlmX3dyaXRlX21pYih3dmlmLT53ZGV2LCB3dmlmLT5pZCwgSElGX01JQl9JRF9S
-WF9GSUxURVIsCi0JCQkgICAgICZ2YWwsIHNpemVvZih2YWwpKTsKKwkJCSAgICAgJmFyZywgc2l6
-ZW9mKGFyZykpOwogfQogCiBpbnQgaGlmX3NldF9iZWFjb25fZmlsdGVyX3RhYmxlKHN0cnVjdCB3
-ZnhfdmlmICp3dmlmLCBpbnQgdGJsX2xlbiwKIAkJCQljb25zdCBzdHJ1Y3QgaGlmX2llX3RhYmxl
-X2VudHJ5ICp0YmwpCiB7CiAJaW50IHJldDsKLQlzdHJ1Y3QgaGlmX21pYl9iY25fZmlsdGVyX3Rh
-YmxlICp2YWw7Ci0JaW50IGJ1Zl9sZW4gPSBzdHJ1Y3Rfc2l6ZSh2YWwsIGllX3RhYmxlLCB0Ymxf
-bGVuKTsKKwlzdHJ1Y3QgaGlmX21pYl9iY25fZmlsdGVyX3RhYmxlICphcmc7CisJaW50IGJ1Zl9s
-ZW4gPSBzdHJ1Y3Rfc2l6ZShhcmcsIGllX3RhYmxlLCB0YmxfbGVuKTsKIAotCXZhbCA9IGt6YWxs
-b2MoYnVmX2xlbiwgR0ZQX0tFUk5FTCk7Ci0JaWYgKCF2YWwpCisJYXJnID0ga3phbGxvYyhidWZf
-bGVuLCBHRlBfS0VSTkVMKTsKKwlpZiAoIWFyZykKIAkJcmV0dXJuIC1FTk9NRU07Ci0JdmFsLT5u
-dW1fb2ZfaW5mb19lbG10cyA9IGNwdV90b19sZTMyKHRibF9sZW4pOwotCW1lbWNweSh2YWwtPmll
-X3RhYmxlLCB0YmwsIGZsZXhfYXJyYXlfc2l6ZSh2YWwsIGllX3RhYmxlLCB0YmxfbGVuKSk7CisJ
-YXJnLT5udW1fb2ZfaW5mb19lbG10cyA9IGNwdV90b19sZTMyKHRibF9sZW4pOworCW1lbWNweShh
-cmctPmllX3RhYmxlLCB0YmwsIGZsZXhfYXJyYXlfc2l6ZShhcmcsIGllX3RhYmxlLCB0YmxfbGVu
-KSk7CiAJcmV0ID0gaGlmX3dyaXRlX21pYih3dmlmLT53ZGV2LCB3dmlmLT5pZCwKLQkJCSAgICBI
-SUZfTUlCX0lEX0JFQUNPTl9GSUxURVJfVEFCTEUsIHZhbCwgYnVmX2xlbik7Ci0Ja2ZyZWUodmFs
-KTsKKwkJCSAgICBISUZfTUlCX0lEX0JFQUNPTl9GSUxURVJfVEFCTEUsIGFyZywgYnVmX2xlbik7
-CisJa2ZyZWUoYXJnKTsKIAlyZXR1cm4gcmV0OwogfQogCkBAIC0xMzQsMTMgKzEzNCwxMyBAQCBp
-bnQgaGlmX2JlYWNvbl9maWx0ZXJfY29udHJvbChzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwKIAogaW50
-IGhpZl9zZXRfb3BlcmF0aW9uYWxfbW9kZShzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgZW51bSBoaWZf
-b3BfcG93ZXJfbW9kZSBtb2RlKQogewotCXN0cnVjdCBoaWZfbWliX2dsX29wZXJhdGlvbmFsX3Bv
-d2VyX21vZGUgdmFsID0geworCXN0cnVjdCBoaWZfbWliX2dsX29wZXJhdGlvbmFsX3Bvd2VyX21v
-ZGUgYXJnID0gewogCQkucG93ZXJfbW9kZSA9IG1vZGUsCiAJCS53dXBfaW5kX2FjdGl2YXRpb24g
-PSAxLAogCX07CiAKIAlyZXR1cm4gaGlmX3dyaXRlX21pYih3ZGV2LCAtMSwgSElGX01JQl9JRF9H
-TF9PUEVSQVRJT05BTF9QT1dFUl9NT0RFLAotCQkJICAgICAmdmFsLCBzaXplb2YodmFsKSk7CisJ
-CQkgICAgICZhcmcsIHNpemVvZihhcmcpKTsKIH0KIAogaW50IGhpZl9zZXRfdGVtcGxhdGVfZnJh
-bWUoc3RydWN0IHdmeF92aWYgKnd2aWYsIHN0cnVjdCBza19idWZmICpza2IsCkBAIC0xNjEsMzYg
-KzE2MSwzNiBAQCBpbnQgaGlmX3NldF90ZW1wbGF0ZV9mcmFtZShzdHJ1Y3Qgd2Z4X3ZpZiAqd3Zp
-Ziwgc3RydWN0IHNrX2J1ZmYgKnNrYiwKIAogaW50IGhpZl9zZXRfbWZwKHN0cnVjdCB3Znhfdmlm
-ICp3dmlmLCBib29sIGNhcGFibGUsIGJvb2wgcmVxdWlyZWQpCiB7Ci0Jc3RydWN0IGhpZl9taWJf
-cHJvdGVjdGVkX21nbXRfcG9saWN5IHZhbCA9IHsgfTsKKwlzdHJ1Y3QgaGlmX21pYl9wcm90ZWN0
-ZWRfbWdtdF9wb2xpY3kgYXJnID0geyB9OwogCiAJV0FSTihyZXF1aXJlZCAmJiAhY2FwYWJsZSwg
-ImluY29oZXJlbnQgYXJndW1lbnRzIik7CiAJaWYgKGNhcGFibGUpIHsKLQkJdmFsLnBtZl9lbmFi
-bGUgPSAxOwotCQl2YWwuaG9zdF9lbmNfYXV0aF9mcmFtZXMgPSAxOworCQlhcmcucG1mX2VuYWJs
-ZSA9IDE7CisJCWFyZy5ob3N0X2VuY19hdXRoX2ZyYW1lcyA9IDE7CiAJfQogCWlmICghcmVxdWly
-ZWQpCi0JCXZhbC51bnBtZl9hbGxvd2VkID0gMTsKKwkJYXJnLnVucG1mX2FsbG93ZWQgPSAxOwog
-CXJldHVybiBoaWZfd3JpdGVfbWliKHd2aWYtPndkZXYsIHd2aWYtPmlkLAogCQkJICAgICBISUZf
-TUlCX0lEX1BST1RFQ1RFRF9NR01UX1BPTElDWSwKLQkJCSAgICAgJnZhbCwgc2l6ZW9mKHZhbCkp
-OworCQkJICAgICAmYXJnLCBzaXplb2YoYXJnKSk7CiB9CiAKIGludCBoaWZfc2V0X2Jsb2NrX2Fj
-a19wb2xpY3koc3RydWN0IHdmeF92aWYgKnd2aWYsCiAJCQkgICAgIHU4IHR4X3RpZF9wb2xpY3ks
-IHU4IHJ4X3RpZF9wb2xpY3kpCiB7Ci0Jc3RydWN0IGhpZl9taWJfYmxvY2tfYWNrX3BvbGljeSB2
-YWwgPSB7CisJc3RydWN0IGhpZl9taWJfYmxvY2tfYWNrX3BvbGljeSBhcmcgPSB7CiAJCS5ibG9j
-a19hY2tfdHhfdGlkX3BvbGljeSA9IHR4X3RpZF9wb2xpY3ksCiAJCS5ibG9ja19hY2tfcnhfdGlk
-X3BvbGljeSA9IHJ4X3RpZF9wb2xpY3ksCiAJfTsKIAogCXJldHVybiBoaWZfd3JpdGVfbWliKHd2
-aWYtPndkZXYsIHd2aWYtPmlkLCBISUZfTUlCX0lEX0JMT0NLX0FDS19QT0xJQ1ksCi0JCQkgICAg
-ICZ2YWwsIHNpemVvZih2YWwpKTsKKwkJCSAgICAgJmFyZywgc2l6ZW9mKGFyZykpOwogfQogCiBp
-bnQgaGlmX3NldF9hc3NvY2lhdGlvbl9tb2RlKHN0cnVjdCB3ZnhfdmlmICp3dmlmLCBpbnQgYW1w
-ZHVfZGVuc2l0eSwKIAkJCSAgICAgYm9vbCBncmVlbmZpZWxkLCBib29sIHNob3J0X3ByZWFtYmxl
-KQogewotCXN0cnVjdCBoaWZfbWliX3NldF9hc3NvY2lhdGlvbl9tb2RlIHZhbCA9IHsKKwlzdHJ1
-Y3QgaGlmX21pYl9zZXRfYXNzb2NpYXRpb25fbW9kZSBhcmcgPSB7CiAJCS5wcmVhbWJ0eXBlX3Vz
-ZSA9IDEsCiAJCS5tb2RlID0gMSwKIAkJLnNwYWNpbmcgPSAxLApAQCAtMjAwLDcgKzIwMCw3IEBA
-IGludCBoaWZfc2V0X2Fzc29jaWF0aW9uX21vZGUoc3RydWN0IHdmeF92aWYgKnd2aWYsIGludCBh
-bXBkdV9kZW5zaXR5LAogCX07CiAKIAlyZXR1cm4gaGlmX3dyaXRlX21pYih3dmlmLT53ZGV2LCB3
-dmlmLT5pZCwKLQkJCSAgICAgSElGX01JQl9JRF9TRVRfQVNTT0NJQVRJT05fTU9ERSwgJnZhbCwg
-c2l6ZW9mKHZhbCkpOworCQkJICAgICBISUZfTUlCX0lEX1NFVF9BU1NPQ0lBVElPTl9NT0RFLCAm
-YXJnLCBzaXplb2YoYXJnKSk7CiB9CiAKIGludCBoaWZfc2V0X3R4X3JhdGVfcmV0cnlfcG9saWN5
-KHN0cnVjdCB3ZnhfdmlmICp3dmlmLAotLSAKMi4yOC4wCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On 02/09/2020 18:10, Mauro Carvalho Chehab wrote:
+> While I was lately relying on Jenkins to report smatch/sparse issues,
+> I discovered this week that the reports were missing such warnings
+> 
+> I got it fixed already at builder.linuxtv.org, but there are several new
+> warnings that got added over time.
+> 
+> This series is meant to solve the ones that are reported on x86_64
+> without pre-building the smatch database.
+> 
+> It should allow receiving cleaner error reports.
+> 
+> While most of the patches are meant to shut up the static analizers,
+> some contain real bug fixes.
+> 
+> Mauro Carvalho Chehab (38):
+>   media: tda10086: cleanup symbol_rate setting logic
+>   media: v4l2-ioctl: avoid memory leaks on some time32 compat functions
+>   media: qt1010: fix usage of unititialized value
+>   media: av7110_v4l: avoid a typecast
+>   media: wl128x: get rid of a potential spectre issue
+>   media: venus: place extern venus_fw_debug on a header file
+>   media: tda10021: avoid casts when using symbol_rate
+>   media: serial_ir: use the right type for a dma address
+>   media: vivid: move the detection part out of vivid_create_instance
+>   media: vivid: place the logic which disables ioctl on a separate
+>     function
+>   media: vivid: move set_capabilities logic to a separate function
+>   media: vivid: place dt timings init code on a separate function
+>   media: vivid: move the create queues to a separate function
+>   media: vivid: move the devnode creation logic to a separate function
+>   media: vivid: fix error path
+
+For these vivid patches and after fixing the "unused variable 'i'" warning
+as reported by the kernel test robot:
+
+Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+
+Thank you for working on this!
+
+Regards,
+
+	Hans
+
+>   media: videobuf-dma-sg: number of pages should be unsigned long
+>   media: cx25821-alsa: number of pages should be unsigned long
+>   media: cx23885-alsa: number of pages should be unsigned long
+>   media: cx88-alsa: number of pages should be unsigned long
+>   media: saa7134-alsa.c: number of pages should be unsigned long
+>   media: dvb-ttusb-budget: don't use stack for USB transfers
+>   media: dvb-ttusb-budget: cleanup printk logic
+>   media: saa7134: avoid a shift overflow
+>   media: atomisp: fix casts at atomisp_compat_ioctl32.c
+>   media: atomisp: get rid of some unused code
+>   media: atomisp: cleanup ifdefs from ia_css_debug.c
+>   media: atomisp: get rid of version-dependent globals
+>   media: atomisp: get rid of isys_dma.h and isys_dma_local.h
+>   media: atomisp: get rid of ibuf_ctrl abstraction
+>   media: atomisp: don't check for ISP version for includes
+>   media: atomisp: unify INPUT error return type
+>   media: atomisp: de-duplicate names at *_input_system_global.h
+>   media: atomisp: reorder functions at pixelgen_private.h
+>   media: atomisp: remove compile-time tests from input_system_global.h
+>   media: atomisp: fix some bad indents
+>   media: atomisp: csi_rx.c: add a missing includes
+>   media: atomisp: atomisp_gmin_platform: check before use
+>   media: atomisp: cleanup isys_irq headers
+> 
+>  drivers/media/dvb-frontends/tda10021.c        |  38 +-
+>  drivers/media/dvb-frontends/tda10086.c        |  22 +-
+>  drivers/media/pci/cx23885/cx23885-alsa.c      |   7 +-
+>  drivers/media/pci/cx23885/cx23885.h           |   4 +-
+>  drivers/media/pci/cx25821/cx25821-alsa.c      |  11 +-
+>  drivers/media/pci/cx88/cx88-alsa.c            |  13 +-
+>  drivers/media/pci/saa7134/saa7134-alsa.c      |   7 +-
+>  drivers/media/pci/saa7134/saa7134-tvaudio.c   |   3 +-
+>  drivers/media/pci/saa7134/saa7134.h           |   2 +-
+>  drivers/media/pci/ttpci/av7110_v4l.c          |   4 +-
+>  drivers/media/platform/qcom/venus/core.h      |   2 +
+>  drivers/media/platform/qcom/venus/dbgfs.c     |   2 -
+>  drivers/media/radio/wl128x/fmdrv_common.c     |  16 +-
+>  drivers/media/rc/serial_ir.c                  |   2 +-
+>  drivers/media/test-drivers/vivid/vivid-core.c | 645 ++++++------
+>  drivers/media/tuners/qt1010.c                 |  25 +-
+>  .../media/usb/ttusb-budget/dvb-ttusb-budget.c | 197 ++--
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |  48 +-
+>  drivers/media/v4l2-core/videobuf-dma-sg.c     |  22 +-
+>  drivers/staging/media/atomisp/Makefile        |  12 +-
+>  .../atomisp/pci/atomisp_compat_ioctl32.c      |  84 +-
+>  .../media/atomisp/pci/atomisp_gmin_platform.c |   5 +-
+>  .../atomisp/pci/css_2401_system/host/csi_rx.c |   1 +
+>  .../pci/css_2401_system/host/ibuf_ctrl.c      |   1 +
+>  .../css_2401_system/host/ibuf_ctrl_local.h    |   1 +
+>  .../css_2401_system/host/ibuf_ctrl_private.h  | 268 -----
+>  .../pci/css_2401_system/host/isys_dma.c       |  10 +-
+>  .../pci/css_2401_system/host/isys_dma_local.h |  21 -
+>  .../css_2401_system/host/isys_dma_private.h   |  12 +-
+>  .../pci/css_2401_system/host/isys_irq.c       |   3 +-
+>  .../pci/css_2401_system/host/isys_irq_local.h |   4 +-
+>  .../css_2401_system/host/isys_irq_private.h   |  12 +-
+>  .../css_2401_system/host/pixelgen_private.h   |  73 +-
+>  .../pci/css_2401_system/ibuf_ctrl_global.h    |   6 +-
+>  .../pci/css_2401_system/isys_irq_global.h     |   4 +-
+>  .../pci/css_2401_system/pixelgen_global.h     |   8 +-
+>  .../host/input_formatter.c                    |   2 +-
+>  .../hive_isp_css_common/host/input_system.c   |  70 +-
+>  .../hive_isp_css_include/host/csi_rx_public.h |   4 +-
+>  .../host/ibuf_ctrl_public.h                   |  94 --
+>  .../host/isys_dma_public.h                    |   8 +-
+>  .../host/isys_irq_public.h                    |  29 +-
+>  .../hive_isp_css_include/host/isys_public.h   |   4 +-
+>  .../host/pixelgen_public.h                    |   4 +-
+>  .../pci/hive_isp_css_include/ibuf_ctrl.h      |  47 -
+>  .../pci/hive_isp_css_include/isys_dma.h       |  47 -
+>  .../pci/hive_isp_css_include/isys_irq.h       |  16 +-
+>  drivers/staging/media/atomisp/pci/hmm/hmm.c   |   6 +-
+>  .../staging/media/atomisp/pci/ia_css_mipi.h   |   2 -
+>  .../staging/media/atomisp/pci/ia_css_stream.h |   4 +-
+>  .../media/atomisp/pci/input_system_global.h   |  29 +-
+>  .../kernels/ctc/ctc_1.0/ia_css_ctc_param.h    |   7 -
+>  .../ctc/ctc_1.0/ia_css_ctc_table.host.c       | 145 ---
+>  .../kernels/gc/gc_1.0/ia_css_gc_table.host.c  | 144 ---
+>  .../kernels/gc/gc_2/ia_css_gc2_table.host.c   |  53 -
+>  .../isp/kernels/raw/raw_1.0/ia_css_raw.host.c |   4 +-
+>  .../kernels/xnr/xnr_1.0/ia_css_xnr_param.h    |   7 -
+>  .../xnr/xnr_1.0/ia_css_xnr_table.host.c       |  31 -
+>  .../atomisp/pci/isp2400_input_system_global.h |  21 +-
+>  .../atomisp/pci/isp2400_input_system_local.h  |  17 +-
+>  .../atomisp/pci/isp2400_input_system_public.h |  26 +-
+>  .../media/atomisp/pci/isp2400_system_global.h |  16 -
+>  .../atomisp/pci/isp2401_input_system_global.h |  30 +-
+>  .../atomisp/pci/isp2401_input_system_local.h  |   3 -
+>  .../pci/isp2401_input_system_private.h        | 224 ++++-
+>  .../media/atomisp/pci/isp2401_system_global.h |  19 -
+>  .../atomisp/pci/runtime/binary/src/binary.c   | 919 +++++++++---------
+>  .../runtime/bufq/interface/ia_css_bufq_comm.h |  10 -
+>  .../media/atomisp/pci/runtime/bufq/src/bufq.c |  26 +-
+>  .../runtime/debug/interface/ia_css_debug.h    |   6 -
+>  .../pci/runtime/debug/src/ia_css_debug.c      | 193 +---
+>  .../atomisp/pci/runtime/ifmtr/src/ifmtr.c     |   2 +-
+>  .../pci/runtime/inputfifo/src/inputfifo.c     |  10 -
+>  .../pci/runtime/isys/interface/ia_css_isys.h  |  18 +-
+>  .../runtime/isys/interface/ia_css_isys_comm.h |   4 +-
+>  .../pci/runtime/isys/src/csi_rx_rmgr.c        |   2 +-
+>  .../pci/runtime/isys/src/isys_dma_rmgr.c      |   2 +-
+>  .../atomisp/pci/runtime/isys/src/isys_init.c  |  20 +-
+>  .../runtime/isys/src/isys_stream2mmio_rmgr.c  |   2 +-
+>  .../media/atomisp/pci/runtime/isys/src/rx.c   |  24 +-
+>  .../pci/runtime/isys/src/virtual_isys.c       |  58 +-
+>  .../pipeline/interface/ia_css_pipeline.h      |   2 +-
+>  .../pci/runtime/pipeline/src/pipeline.c       |   4 +-
+>  drivers/staging/media/atomisp/pci/sh_css.c    | 296 ++----
+>  .../staging/media/atomisp/pci/sh_css_defs.h   |   4 -
+>  .../staging/media/atomisp/pci/sh_css_hrt.c    |   4 -
+>  .../media/atomisp/pci/sh_css_internal.h       |  36 +-
+>  .../staging/media/atomisp/pci/sh_css_mipi.c   |  34 +-
+>  .../media/atomisp/pci/sh_css_param_shading.c  |   2 +-
+>  .../staging/media/atomisp/pci/sh_css_params.c | 538 ----------
+>  .../media/atomisp/pci/sh_css_properties.c     |  10 -
+>  drivers/staging/media/atomisp/pci/sh_css_sp.c |  39 +-
+>  drivers/staging/media/atomisp/pci/sh_css_sp.h |   8 +-
+>  .../staging/media/atomisp/pci/sh_css_struct.h |   2 -
+>  .../staging/media/atomisp/pci/system_global.h |  23 -
+>  include/media/videobuf-dma-sg.h               |   2 +-
+>  96 files changed, 1708 insertions(+), 3300 deletions(-)
+>  delete mode 100644 drivers/staging/media/atomisp/pci/css_2401_system/host/ibuf_ctrl_private.h
+>  delete mode 100644 drivers/staging/media/atomisp/pci/css_2401_system/host/isys_dma_local.h
+>  delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/host/ibuf_ctrl_public.h
+>  delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/ibuf_ctrl.h
+>  delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/isys_dma.h
+>  delete mode 100644 drivers/staging/media/atomisp/pci/isp2400_system_global.h
+>  delete mode 100644 drivers/staging/media/atomisp/pci/isp2401_system_global.h
+> 
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
