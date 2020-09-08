@@ -1,46 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78165260BF9
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Sep 2020 09:29:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5249B260C07
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Sep 2020 09:32:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 01DF086549;
-	Tue,  8 Sep 2020 07:29:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B17BA272F5;
+	Tue,  8 Sep 2020 07:32:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mPOCaM5Gc7dA; Tue,  8 Sep 2020 07:29:44 +0000 (UTC)
+	with ESMTP id jCyco-4MQcaA; Tue,  8 Sep 2020 07:32:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 986CE84D0F;
-	Tue,  8 Sep 2020 07:29:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5D5E023355;
+	Tue,  8 Sep 2020 07:32:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 37D1F1BF2EF
- for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 07:29:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 71C581BF2EF
+ for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 07:32:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 335FB855F1
- for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 07:29:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6D888871EC
+ for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 07:32:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1eQ4MMUI+Yhz for <devel@linuxdriverproject.org>;
- Tue,  8 Sep 2020 07:29:39 +0000 (UTC)
+ with ESMTP id M5SMe2K9Yhr6 for <devel@linuxdriverproject.org>;
+ Tue,  8 Sep 2020 07:32:06 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8BEA48555A
- for <devel@driverdev.osuosl.org>; Tue,  8 Sep 2020 07:29:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8411B87087
+ for <devel@driverdev.osuosl.org>; Tue,  8 Sep 2020 07:32:06 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 3D94368AFE; Tue,  8 Sep 2020 09:29:35 +0200 (CEST)
-Date: Tue, 8 Sep 2020 09:29:35 +0200
+ id 3E66068AFE; Tue,  8 Sep 2020 09:32:03 +0200 (CEST)
+Date: Tue, 8 Sep 2020 09:32:03 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Subject: Re: [PATCH v11 07/11] device-mapping: Introduce DMA range map,
  supplanting dma_pfn_offset
-Message-ID: <20200908072935.GA15119@lst.de>
-References: <20200824193036.6033-8-james.quinlan@broadcom.com>
- <20200902215314.GA881878@ubuntu-n2-xlarge-x86>
+Message-ID: <20200908073203.GA15176@lst.de>
+References: <20200902215314.GA881878@ubuntu-n2-xlarge-x86>
  <CA+-6iNzc38OAL7TGxobpODKXOD1CW-VFNU0rK9Z043QfR3MfsQ@mail.gmail.com>
  <20200902223852.GA1786990@ubuntu-n2-xlarge-x86>
  <6922bc0b-1849-2f2f-ec2f-fe9f0124dcfc@gmail.com>
@@ -49,9 +48,10 @@ References: <20200824193036.6033-8-james.quinlan@broadcom.com>
  <34aa0d6094e7d6fb3492d2cda0fec8ecc04790ed.camel@suse.de>
  <CA+-6iNyJ3ey0zPKj9nh8uL3AwTBhJqgD01wc=7G4NF35NXmV1Q@mail.gmail.com>
  <b4761ade39af346eebec917ca2a415c09681542a.camel@suse.de>
+ <20200908072935.GA15119@lst.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <b4761ade39af346eebec917ca2a415c09681542a.camel@suse.de>
+In-Reply-To: <20200908072935.GA15119@lst.de>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -115,17 +115,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-FYI, this is what I'd do relative to the patch on the dma-ranges
-branch.  In fact realizing this makes me want to refactor things a bit
-so that the new code can entirely live in the dma-direct code, but please
-test this first:
+On Tue, Sep 08, 2020 at 09:29:35AM +0200, Christoph Hellwig wrote:
+> FYI, this is what I'd do relative to the patch on the dma-ranges
+> branch.  In fact realizing this makes me want to refactor things a bit
+> so that the new code can entirely live in the dma-direct code, but please
+> test this first:
 
+And of course this isn't going to work for arm devices without any
+range, so let's try this instead:
 
 diff --git a/arch/arm/include/asm/dma-mapping.h b/arch/arm/include/asm/dma-mapping.h
-index c21893f683b585..072fc42349874d 100644
+index c21893f683b585..e913e04d2be8b9 100644
 --- a/arch/arm/include/asm/dma-mapping.h
 +++ b/arch/arm/include/asm/dma-mapping.h
-@@ -35,21 +35,16 @@ static inline const struct dma_map_ops *get_arch_dma_ops(struct bus_type *bus)
+@@ -35,21 +35,20 @@ static inline const struct dma_map_ops *get_arch_dma_ops(struct bus_type *bus)
  #ifndef __arch_pfn_to_dma
  static inline dma_addr_t pfn_to_dma(struct device *dev, unsigned long pfn)
  {
@@ -137,7 +140,9 @@ index c21893f683b585..072fc42349874d 100644
 -	return (dma_addr_t)__pfn_to_bus(pfn);
 +	if (!dev)
 +		return (dma_addr_t)__pfn_to_bus(pfn);
-+	return translate_phys_to_dma(dev, PFN_PHYS(pfn));
++	if (dev->dma_range_map)
++		return translate_phys_to_dma(dev, PFN_PHYS(pfn));
++	return (dma_addr_t)PFN_PHYS(pfn);
  }
  
  static inline unsigned long dma_to_pfn(struct device *dev, dma_addr_t addr)
@@ -149,7 +154,9 @@ index c21893f683b585..072fc42349874d 100644
 -	return pfn;
 +	if (!dev)
 +		return __bus_to_pfn(addr);
-+	return PFN_DOWN(translate_dma_to_phys(dev, addr));
++	if (dev->dma_range_map)
++		return PFN_DOWN(translate_dma_to_phys(dev, addr));
++	return PFN_DOWN(addr);
  }
  
  static inline void *dma_to_virt(struct device *dev, dma_addr_t addr)
