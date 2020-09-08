@@ -1,57 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6A0526117F
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Sep 2020 14:41:16 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6096A261400
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Sep 2020 17:59:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9AA3020505;
-	Tue,  8 Sep 2020 12:41:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2105A87355;
+	Tue,  8 Sep 2020 15:59:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jF-EZCiWaz9S; Tue,  8 Sep 2020 12:41:13 +0000 (UTC)
+	with ESMTP id AdRjKEyEbjlA; Tue,  8 Sep 2020 15:59:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3A12F204AB;
-	Tue,  8 Sep 2020 12:41:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 82B748731D;
+	Tue,  8 Sep 2020 15:59:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C32C51BF330
- for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 12:41:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B98221BF232
+ for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 15:59:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BF77986A0E
- for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 12:41:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B4D998731D
+ for <devel@linuxdriverproject.org>; Tue,  8 Sep 2020 15:59:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zvq1Z4lJdGni for <devel@linuxdriverproject.org>;
- Tue,  8 Sep 2020 12:41:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5B18E86A01
- for <devel@driverdev.osuosl.org>; Tue,  8 Sep 2020 12:41:06 +0000 (UTC)
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 7CB5F68B05; Tue,  8 Sep 2020 14:41:01 +0200 (CEST)
-Date: Tue, 8 Sep 2020 14:41:00 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v11 07/11] device-mapping: Introduce DMA range map,
- supplanting dma_pfn_offset
-Message-ID: <20200908124100.GA32476@lst.de>
-References: <6922bc0b-1849-2f2f-ec2f-fe9f0124dcfc@gmail.com>
+ with ESMTP id rGQlPVBfLw0H for <devel@linuxdriverproject.org>;
+ Tue,  8 Sep 2020 15:59:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2968A872EF
+ for <devel@driverdev.osuosl.org>; Tue,  8 Sep 2020 15:59:32 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id a9so17715438wmm.2
+ for <devel@driverdev.osuosl.org>; Tue, 08 Sep 2020 08:59:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vFCX2Fx3/ZhVK+MHCzMslsFFLX+ZTpr5SFfq/bucSTE=;
+ b=L5de6DTjHrhWW1tiuojsLRMbF1lQE8xkIQS2sgiAFfGUDk0a4nZGsy6DA9vpTUVrVD
+ TWVAYMaDdAikQ0XGrZ1rPYMiKq3E7QNXbmvaNEIuDe/676WFyyXuw8aAeCfxKpNvmcIR
+ oOMvGXhP0YdPyjRGvHhGSzPFVfvoPyjAc9RkM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vFCX2Fx3/ZhVK+MHCzMslsFFLX+ZTpr5SFfq/bucSTE=;
+ b=VJBnqE78XFHm8JfJyceJ4duquOSdue/bREeSiOChBfNtFc+BY42DtZhhUX7lYdMAFs
+ I2JrrFHoeJ3fmewsCt8i2W3srpnOOfZTCW2PlwOVZQuCq4QS9MaLYOPcJ+jIdEhWSUGR
+ 4vd/7vmd/zfiSUFNtZHN4IguKhAXYDmaP0XsjmTMqTzPmNQ6FrbK4cISLXrKQP/Niy4P
+ U5AJ6AlxnSXUUEec/7kl7N8pGaka48vdkpBoOe2J5TQP+sB0dzyj0eiUXS22gI44VwZ+
+ 2lJuZF5MYkBz5roCSqdQ1S0X+XEoxX8M8Y6sRQeoBk5Iz9YWu3mV02ZQBBOQPDJLIeVY
+ 1kDQ==
+X-Gm-Message-State: AOAM531uuVJ85a6K/pfAfZcxDxRQZvG2jidFevw6g4sZ9AcSTt7Urjoc
+ s1u+A3Y86bvN+98SJEKtgkPYzfjTIYocnFYAb0awGQ==
+X-Google-Smtp-Source: ABdhPJwa1zAsXIysL/taf1Rf3+uFmxTFm5hzgWcGRQOlEC+E6qstK5Gdi4LiSkkqsjOISYSAvkgu7aDZT9q2XbYuB4E=
+X-Received: by 2002:a1c:bad5:: with SMTP id k204mr192855wmf.111.1599580770266; 
+ Tue, 08 Sep 2020 08:59:30 -0700 (PDT)
+MIME-Version: 1.0
+References: <CA+-6iNzc38OAL7TGxobpODKXOD1CW-VFNU0rK9Z043QfR3MfsQ@mail.gmail.com>
+ <20200902223852.GA1786990@ubuntu-n2-xlarge-x86>
+ <6922bc0b-1849-2f2f-ec2f-fe9f0124dcfc@gmail.com>
  <20200903005240.GA1118@Ryzen-9-3900X.localdomain>
  <CA+-6iNyv_sFJOxDi5OcYNWe=ovLnOnrZNsWFQk5b-bzQzA8T_Q@mail.gmail.com>
  <34aa0d6094e7d6fb3492d2cda0fec8ecc04790ed.camel@suse.de>
  <CA+-6iNyJ3ey0zPKj9nh8uL3AwTBhJqgD01wc=7G4NF35NXmV1Q@mail.gmail.com>
  <b4761ade39af346eebec917ca2a415c09681542a.camel@suse.de>
- <20200908072935.GA15119@lst.de> <20200908073203.GA15176@lst.de>
- <20200908094345.GA20959@lst.de>
- <e4c672bc5237f6efb415efb77353b018d191b5ae.camel@suse.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e4c672bc5237f6efb415efb77353b018d191b5ae.camel@suse.de>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+ <20200908072935.GA15119@lst.de>
+ <20200908073203.GA15176@lst.de> <20200908094345.GA20959@lst.de>
+In-Reply-To: <20200908094345.GA20959@lst.de>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Tue, 8 Sep 2020 11:59:18 -0400
+Message-ID: <CA+-6iNwsLgpPG+-A8gnrnWxPZuc932PgF_L0ByRQjGz_0=bsbQ@mail.gmail.com>
+Subject: Re: [PATCH v11 07/11] device-mapping: Introduce DMA range map,
+ supplanting dma_pfn_offset
+To: Christoph Hellwig <hch@lst.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,7 +94,7 @@ Cc: Rich Felker <dalias@libc.org>,
  <linux-remoteproc@vger.kernel.org>,
  "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
  Julien Grall <julien.grall@arm.com>, "H. Peter Anvin" <hpa@zytor.com>,
- Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Will Deacon <will@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
  "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Florian Fainelli <f.fainelli@gmail.com>,
@@ -88,12 +110,10 @@ Cc: Rich Felker <dalias@libc.org>,
  Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
  Ohad Ben-Cohen <ohad@wizery.com>,
  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
- <devicetree@vger.kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Dan Williams <dan.j.williams@intel.com>, Maxime Ripard <mripard@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>,
+ <devicetree@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Borislav Petkov <bp@alien8.de>, Yong Deng <yong.deng@magewell.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
  Nathan Chancellor <natechancellor@gmail.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
@@ -105,31 +125,29 @@ Cc: Rich Felker <dalias@libc.org>,
  Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
  "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
  Thomas Gleixner <tglx@linutronix.de>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Jim Quinlan <james.quinlan@broadcom.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sudeep Holla <sudeep.holla@arm.com>,
  "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
- Robin Murphy <robin.murphy@arm.com>
+ Robin Murphy <robin.murphy@arm.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 08, 2020 at 01:20:56PM +0200, Nicolas Saenz Julienne wrote:
-> On Tue, 2020-09-08 at 11:43 +0200, Christoph Hellwig wrote:
-> > And because I like replying to myself so much, here is a link to the
-> > version with the arm cleanup patch applied.  Unlike the previous two
-> > attempts this has at least survived very basic sanity testing:
-> > 
-> > http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/dma-ranges.2
-> > 
-> > Note that we'll still need to sort out the arm/keystone warnings from
-> > the original patch.  Do we have anyone on the CC list who knows that
-> > platform a little better to figure out if the ifdef solution would work?
-> 
-> Had to do the following to boot without errors:
+On Tue, Sep 8, 2020 at 5:43 AM Christoph Hellwig <hch@lst.de> wrote:
+>
+> And because I like replying to myself so much, here is a link to the
+> version with the arm cleanup patch applied.  Unlike the previous two
+> attempts this has at least survived very basic sanity testing:
+>
+> http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/dma-ranges.2
+>
+Tested-by: Jim Quinlan <james.quinlan@broadcom.com>
 
-I've folded in.  That being said the whole RPi4 setup confuses the
-heck out of me.  I wonder what thing was smoked to come up with it..
+> Note that we'll still need to sort out the arm/keystone warnings from
+> the original patch.  Do we have anyone on the CC list who knows that
+> platform a little better to figure out if the ifdef solution would work?
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
