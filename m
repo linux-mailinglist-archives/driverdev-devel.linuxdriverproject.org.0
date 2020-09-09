@@ -1,77 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2113E2636E5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Sep 2020 21:54:22 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4F1A622E94;
-	Wed,  9 Sep 2020 19:54:19 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0P2iFCuF3QUT; Wed,  9 Sep 2020 19:54:18 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CF32722011;
-	Wed,  9 Sep 2020 19:54:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 22D161BF4DA
- for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 19:54:12 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 125FD26370D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Sep 2020 22:07:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1EA0C86519
- for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 19:54:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C94A786DE5;
+	Wed,  9 Sep 2020 20:07:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0x-WSfG1_g_D; Wed,  9 Sep 2020 20:07:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 972FB86519;
+	Wed,  9 Sep 2020 20:07:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C27601BF40A
+ for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 20:07:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id BAF8887224
+ for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 20:07:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9qzioi1m-7Ha for <devel@linuxdriverproject.org>;
- Wed,  9 Sep 2020 19:54:10 +0000 (UTC)
+ with ESMTP id ux-KFLUBaMOh for <devel@linuxdriverproject.org>;
+ Wed,  9 Sep 2020 20:07:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F290A864D0
- for <devel@driverdev.osuosl.org>; Wed,  9 Sep 2020 19:54:09 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id c18so4226265wrm.9
- for <devel@driverdev.osuosl.org>; Wed, 09 Sep 2020 12:54:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gePgmXiNRPCVJ7mr+8A/94pjRWAsRsYeShr8lQ1UsyY=;
- b=tI0b1b8FnXwzjGlrjKqZgjkGXTrYiNy9g7Nt08zfZAo0Ua3JhotY+JPzQXWqr5/19e
- pr+lNZd6acc1pzfoQi3xMdjy+5HWodUMwuJAa3NtE5pbefCCQsrwVD4Sc6GBXgr/Y9to
- oTuZRdh55ZxIWv6CQfwqUGdZy630v+jNOgd6uA4Dff3eXRTwRS+3WJwT41z1Js92Xn5r
- xW6qh3tJg7qf/u+W+I4YnJQEq7BSJGt12EcAtEM9OhVQbT0q56y7cQaX7GQhkWfo4bON
- x36nLxP6SlSvHR8XoP8OID81QTELHJatCd1zfs2JadPr3uR9UIBGnTsqtACfvXlgrSuX
- A+0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gePgmXiNRPCVJ7mr+8A/94pjRWAsRsYeShr8lQ1UsyY=;
- b=aJJ7cvjqhHI8ImtyrjH+rJ69aL/qizsCkeBBDEHxcyAX5YVisoWiuVANQ8z65A8VIQ
- oZqaXjX0U2wu/nNM2ITMmanxWlFp9mQleXBRRulHfM11e+OBKmednnx8+pcjWQfK5wPZ
- VW1X3xo69k2zrEr203nVx8xDN/ZkMcQvcgDIULE1Nc1zz2CfnGkYyZNE43+9o1M8k3kp
- sfeNEPZsTbvtKgcaQ0OZuY3AvHQm+peyrxKERVkn2dNinnZXKP6vrBzdeT/FT4BWfyMW
- hjE9pw9uu65TPDXf65dFJXMRpZ2XwzQZhd2oCXU9Ot4ptvfrxfSAEqYXLtkJVXEquDGt
- HKtA==
-X-Gm-Message-State: AOAM533YvHaXd56jPfYpkKlmd8b8EAjpi2Fb2CkwvPfL6RcGFBROgfv1
- 8ynKCs4FqHIOdZVSObKe/+M=
-X-Google-Smtp-Source: ABdhPJyDYjFH86wdYbV1UuramIP8zVcuwm3IHRFWB8ood813vDAm/dfqJwqb+LH1zuL1Tf+4WiIVwA==
-X-Received: by 2002:adf:f34f:: with SMTP id e15mr5223399wrp.387.1599681248462; 
- Wed, 09 Sep 2020 12:54:08 -0700 (PDT)
-Received: from localhost.localdomain
- (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
- by smtp.gmail.com with ESMTPSA id q18sm5715431wre.78.2020.09.09.12.54.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Sep 2020 12:54:07 -0700 (PDT)
-From: Alex Dewar <alex.dewar90@gmail.com>
-To: 
-Subject: [PATCH] staging: media: atomisp: Use kvfree_sensitive in a few places
-Date: Wed,  9 Sep 2020 20:53:50 +0100
-Message-Id: <20200909195403.225084-1-alex.dewar90@gmail.com>
-X-Mailer: git-send-email 2.28.0
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2AF9787221
+ for <devel@driverdev.osuosl.org>; Wed,  9 Sep 2020 20:07:02 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 089K0VEN064584;
+ Wed, 9 Sep 2020 20:07:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=4fIHZo7kla+jpKFYIjRot223Usuv7Tlceok1GZMsMRM=;
+ b=DASL1Xano1yoVJYBqgYgfKew8/2gtYS4ofAqK7VLC22+DPsbGqtlR8bLHRfKjr1HGHeC
+ EsqXwSPED9kvu1OfMoKj/DaC+jjirfG0Iwl2dGnzyj7aEoWEWZULmJxWfEfOYqzyPfI6
+ diURE//T8aDgLBxQjGA8T0kGz6ctVbLxFYNFvLUoxyWgOeh8kfswHsarlVltnBsvSLxB
+ jjWyxONEdyMUDJNq18Zm9FnPO6o5sSvrW8j+1jcvpe+3/Ep74HzQjXfjaS7qwK9NGlRd
+ I9EjUbucs4Bkwf5Tu0wf3aSwwHP3H2L4kjnsOZqZcvYLsR+U3t7igPgQm5+I9CZ49NqA +A== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 33c2mm41yb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 09 Sep 2020 20:07:01 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 089K6PS2151930;
+ Wed, 9 Sep 2020 20:07:00 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 33cmkyfh1e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Sep 2020 20:07:00 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 089K6wEd004866;
+ Wed, 9 Sep 2020 20:06:58 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 09 Sep 2020 13:06:58 -0700
+Date: Wed, 9 Sep 2020 23:06:51 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Alex Dewar <alex.dewar90@gmail.com>
+Subject: Re: [PATCH] staging: media: atomisp: Use kvfree_sensitive in a few
+ places
+Message-ID: <20200909200651.GB12635@kadam>
+References: <20200909195403.225084-1-alex.dewar90@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200909195403.225084-1-alex.dewar90@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9739
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ phishscore=0 suspectscore=2
+ spamscore=0 mlxlogscore=999 adultscore=0 malwarescore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009090179
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9739
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ priorityscore=1501
+ phishscore=0 adultscore=0 bulkscore=0 clxscore=1015 mlxlogscore=999
+ malwarescore=0 suspectscore=2 lowpriorityscore=0 spamscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009090178
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,91 +100,50 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Alex Dewar <alex.dewar90@gmail.com>, linux-media@vger.kernel.org
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In the file pci/sh_css_params.c, there are a number of places where
-memset+kvfree is used, where kvfree_sensitive could be used instead. Fix
-these occurrences.
+On Wed, Sep 09, 2020 at 08:53:50PM +0100, Alex Dewar wrote:
+> In the file pci/sh_css_params.c, there are a number of places where
+> memset+kvfree is used, where kvfree_sensitive could be used instead. Fix
+> these occurrences.
 
-Issue identified with Coccinelle.
+This doesn't say *why* the commit is doing it.  There are two reasons:
+The worry with these is that the compiler could optimize away the memset
+because it sees the kfree().  Second using kvfree_sensitive() is more
+clear and readable.
 
-Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
----
- .../staging/media/atomisp/pci/sh_css_params.c | 19 +++++++------------
- 1 file changed, 7 insertions(+), 12 deletions(-)
+> 
+> Issue identified with Coccinelle.
+> 
+> Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
+> ---
+>  .../staging/media/atomisp/pci/sh_css_params.c | 19 +++++++------------
+>  1 file changed, 7 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/staging/media/atomisp/pci/sh_css_params.c b/drivers/staging/media/atomisp/pci/sh_css_params.c
+> index 2c67c23b3700..d1b5d6608d52 100644
+> --- a/drivers/staging/media/atomisp/pci/sh_css_params.c
+> +++ b/drivers/staging/media/atomisp/pci/sh_css_params.c
+> @@ -4378,8 +4378,7 @@ ia_css_3a_statistics_free(struct ia_css_3a_statistics *me)
+>  	if (me) {
+>  		kvfree(me->rgby_data);
+>  		kvfree(me->data);
+> -		memset(me, 0, sizeof(struct ia_css_3a_statistics));
+> -		kvfree(me);
+> +		kvfree_sensitive(me, sizeof(struct ia_css_3a_statistics));
 
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_params.c b/drivers/staging/media/atomisp/pci/sh_css_params.c
-index 2c67c23b3700..d1b5d6608d52 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_params.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css_params.c
-@@ -4378,8 +4378,7 @@ ia_css_3a_statistics_free(struct ia_css_3a_statistics *me)
- 	if (me) {
- 		kvfree(me->rgby_data);
- 		kvfree(me->data);
--		memset(me, 0, sizeof(struct ia_css_3a_statistics));
--		kvfree(me);
-+		kvfree_sensitive(me, sizeof(struct ia_css_3a_statistics));
- 	}
- }
- 
-@@ -4417,8 +4416,7 @@ ia_css_dvs_statistics_free(struct ia_css_dvs_statistics *me)
- 	if (me) {
- 		kvfree(me->hor_proj);
- 		kvfree(me->ver_proj);
--		memset(me, 0, sizeof(struct ia_css_dvs_statistics));
--		kvfree(me);
-+		kvfree_sensitive(me, sizeof(struct ia_css_dvs_statistics));
- 	}
- }
- 
-@@ -4459,8 +4457,7 @@ ia_css_dvs_coefficients_free(struct ia_css_dvs_coefficients *me)
- 	if (me) {
- 		kvfree(me->hor_coefs);
- 		kvfree(me->ver_coefs);
--		memset(me, 0, sizeof(struct ia_css_dvs_coefficients));
--		kvfree(me);
-+		kvfree_sensitive(me, sizeof(struct ia_css_dvs_coefficients));
- 	}
- }
- 
-@@ -4551,8 +4548,7 @@ ia_css_dvs2_statistics_free(struct ia_css_dvs2_statistics *me)
- 		kvfree(me->ver_prod.odd_imag);
- 		kvfree(me->ver_prod.even_real);
- 		kvfree(me->ver_prod.even_imag);
--		memset(me, 0, sizeof(struct ia_css_dvs2_statistics));
--		kvfree(me);
-+		kvfree_sensitive(me, sizeof(struct ia_css_dvs2_statistics));
- 	}
- }
- 
-@@ -4635,8 +4631,7 @@ ia_css_dvs2_coefficients_free(struct ia_css_dvs2_coefficients *me)
- 		kvfree(me->ver_coefs.odd_imag);
- 		kvfree(me->ver_coefs.even_real);
- 		kvfree(me->ver_coefs.even_imag);
--		memset(me, 0, sizeof(struct ia_css_dvs2_coefficients));
--		kvfree(me);
-+		kvfree_sensitive(me, sizeof(struct ia_css_dvs2_coefficients));
- 	}
- }
- 
-@@ -4710,8 +4705,8 @@ ia_css_dvs2_6axis_config_free(struct ia_css_dvs_6axis_config *dvs_6axis_config)
- 		kvfree(dvs_6axis_config->ycoords_y);
- 		kvfree(dvs_6axis_config->xcoords_uv);
- 		kvfree(dvs_6axis_config->ycoords_uv);
--		memset(dvs_6axis_config, 0, sizeof(struct ia_css_dvs_6axis_config));
--		kvfree(dvs_6axis_config);
-+		kvfree_sensitive(dvs_6axis_config,
-+				 sizeof(struct ia_css_dvs_6axis_config));
- 	}
- }
- 
--- 
-2.28.0
+I don't think ia_css_3a_statistics are sensitive at all.  What we're
+trying to protect are things like passwords.  Just delete the memset.
+
+Looking below, I don't think any of these are sensitive so just delete
+all the memsets.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
