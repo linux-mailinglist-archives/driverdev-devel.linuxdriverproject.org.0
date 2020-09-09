@@ -1,98 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB0C22624EA
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Sep 2020 04:11:48 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 037DF262569
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Sep 2020 04:53:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1086386E22;
-	Wed,  9 Sep 2020 02:11:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B8C2986D31;
+	Wed,  9 Sep 2020 02:53:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LL9JLOve2SLK; Wed,  9 Sep 2020 02:11:46 +0000 (UTC)
+	with ESMTP id efUCBNIm2qN5; Wed,  9 Sep 2020 02:53:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 085CA86E1F;
-	Wed,  9 Sep 2020 02:11:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5839B86CBE;
+	Wed,  9 Sep 2020 02:53:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 175931BF317
- for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 02:11:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 620BD1BF317
+ for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 02:53:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 107A686E1F
- for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 02:11:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5191686CC4
+ for <devel@linuxdriverproject.org>; Wed,  9 Sep 2020 02:53:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t1DOgvdj8iLs for <devel@linuxdriverproject.org>;
- Wed,  9 Sep 2020 02:11:42 +0000 (UTC)
+ with ESMTP id VVDiDBWND9R3 for <devel@linuxdriverproject.org>;
+ Wed,  9 Sep 2020 02:53:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6696F8560B
- for <devel@driverdev.osuosl.org>; Wed,  9 Sep 2020 02:11:42 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0892AS5c094075;
- Wed, 9 Sep 2020 02:11:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=corp-2020-01-29;
- bh=vtum29krzlUsLIvRnyVxjLuvhWBtLTr/qnU9AvnGbCE=;
- b=xBu1bvtfDZ9503xniraz9muXI2Eg0qhYCYcOf6RobuyNUO3o1Po7XLCiySpH1j3NqLzx
- 2jgXXHktcetcwXVddyuNr8Y2tEFe3S1Fic84p/c7b/8cWZhzNvssHJn72rt+zNyDQI3g
- W6nGbDQrnBPjzFv3JHhmeBC2Lng7TyLH4twd3n8hvyY34Y8B6srBiufkC1dha4TbTt8U
- iYM7VJ+79F4uaHjvVJydS3mD7NcVtBky/+GEZFGwxEWNcRrsg0F0s6PbT0Xh+BU3JioS
- 8YO2a/M76MlnuYxeGIlhqTuBmwNwX5juOavRg+aCtHeGvwObjWNA43YKkCVKSbI3nWmM bw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 33c2mkxvtd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 09 Sep 2020 02:11:40 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 089252Ah095301;
- Wed, 9 Sep 2020 02:09:40 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 33cmk53euj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 09 Sep 2020 02:09:40 +0000
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 08929Zlw022818;
- Wed, 9 Sep 2020 02:09:35 GMT
-Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 08 Sep 2020 19:09:35 -0700
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linuxppc-dev@lists.ozlabs.org, linux-ide@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-hwmon@vger.kernel.org,
- Joe Perches <joe@perches.com>, oprofile-list@lists.sf.net,
- linux-fsdevel@vger.kernel.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, drbd-dev@tron.linbit.com,
- intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-input@vger.kernel.org, linux-nfs@vger.kernel.org,
- netdev@vger.kernel.org, reiserfs-devel@vger.kernel.org,
- linux-bcache@vger.kernel.org, Jiri Kosina <trivial@kernel.org>
-Subject: Re: [PATCH 00/29] treewide: Convert comma separated statements
-Date: Tue,  8 Sep 2020 22:09:14 -0400
-Message-Id: <159961731707.5787.13988542229153933257.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <cover.1598331148.git.joe@perches.com>
-References: <cover.1598331148.git.joe@perches.com>
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9914786CBE
+ for <devel@driverdev.osuosl.org>; Wed,  9 Sep 2020 02:53:28 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id n3so631562pjq.1
+ for <devel@driverdev.osuosl.org>; Tue, 08 Sep 2020 19:53:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=bWiHpTWwoxfuhyD+uhvF0nLSotcxfKz0far+cCmt6Yo=;
+ b=dTzjc4CMACS4xN6pVJFG+zJ76PbQJV9+sdnUEAcj1wGXVjgekjWXN1R1jEXTJSotGm
+ 7rBrKG1qyT7Sgz6Exq+6W5kw52mMslgDvtqISJEXui7eILOc35G+AuiuB0EQIVFwbPib
+ bk9ljPeZz5bP8glC4FOkH8PtIS2LNj0MixzruhZuiBvR4ACBu3KQbIYF8KsvNkJaBpdq
+ xnGxG/RXijXkRxGJGEFEqOTm3iJu5npcnfXYdaGoUagydNNcJy05uTHlsb5fPAWSDp9b
+ Rf4J9gKCyukIMZ8J/vibopmslFH8lZfInM7gef8SLS8zjqvTLJDnQXAESuTuTCea4cj+
+ BBrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=bWiHpTWwoxfuhyD+uhvF0nLSotcxfKz0far+cCmt6Yo=;
+ b=uCvM1hMC8YJGhCZU3H92V9pbIKQyWDdflPwDz4I6pGxguBYxlhCGbPxV/OLnP73J//
+ icOI3Re+ghmwXYBLwqUv1dMPV9Id4YtCGAvLABpAtnwFoC7i/jN1gOOr5UO+bbDJBIOi
+ k3qYBttZDbafNov7FK3gkR/O0KMkkVMGxycAMwi6LKk+ZA2ujYgcqYI88ogfrQQwj/md
+ mlhanBVH2h16QP8gVQmysoNlFe/tSxoDwuQliYzjvAWf41sDWomIYCmOuOt8SgQB0+8u
+ S80/Zh/XgfqcKW6bDqU30OwZXgtLBXN2AySLgXzWzOe/lRiRQ2li3fpqo5SSFkxtkcil
+ HknQ==
+X-Gm-Message-State: AOAM533wLG7j+FTj8UH25aYSUNSBgKSLT5apvLrQjrSAI59+IC3UHi1v
+ bwt0JnA7fzE9ZqN4gKZMKSM=
+X-Google-Smtp-Source: ABdhPJxlhccHjtgYykpkHW6hlQo9sCVwV0/dT/Wu6e4b3YoDvUK41j2g3hN8jZSy3DjveoyyMdT0Xg==
+X-Received: by 2002:a17:90a:e80f:: with SMTP id
+ i15mr1574159pjy.62.1599620008192; 
+ Tue, 08 Sep 2020 19:53:28 -0700 (PDT)
+Received: from localhost (89.208.244.139.16clouds.com. [89.208.244.139])
+ by smtp.gmail.com with ESMTPSA id t24sm510755pgo.51.2020.09.08.19.53.27
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 08 Sep 2020 19:53:27 -0700 (PDT)
+Date: Wed, 9 Sep 2020 10:53:25 +0800
+From: Dejin Zheng <zhengdejin5@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [driver-core:driver-core-testing 29/33]
+ include/linux/platform_device.h:75:40: error: unknown type name
+ 'irq_handler_t'
+Message-ID: <20200909025325.GA29218@nuc8i5>
+References: <202009080432.5YpVmPhM%lkp@intel.com>
+ <20200908113754.GA1453813@kroah.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9738
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0 phishscore=0
- mlxlogscore=999 bulkscore=0 adultscore=0 mlxscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009090018
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9738
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- priorityscore=1501
- phishscore=0 adultscore=0 bulkscore=0 clxscore=1011 mlxlogscore=999
- malwarescore=0 suspectscore=0 lowpriorityscore=0 spamscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009090018
+Content-Disposition: inline
+In-Reply-To: <20200908113754.GA1453813@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,94 +90,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-ia64@vger.kernel.org,
- linux-scsi@vger.kernel.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-doc@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
- linux-alpha@vger.kernel.org, sparclinux@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 24 Aug 2020 21:55:57 -0700, Joe Perches wrote:
-
-> There are many comma separated statements in the kernel.
-> See:https://lore.kernel.org/lkml/alpine.DEB.2.22.394.2008201856110.2524@hadrien/
+On Tue, Sep 08, 2020 at 01:37:54PM +0200, Greg Kroah-Hartman wrote:
+> On Tue, Sep 08, 2020 at 04:21:36AM +0800, kernel test robot wrote:
+> > tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+> > head:   fa802fde315b87157f6d7c5dfe5d926bdb97d6e4
+> > commit: 4f4e9ddba1225e2dcdd08ac91f1e82aaca51f2b8 [29/33] drivers: provide devm_platform_request_irq()
+> > config: h8300-randconfig-r014-20200907 (attached as .config)
+> > compiler: h8300-linux-gcc (GCC) 9.3.0
+> > reproduce (this is a W=1 build):
+> >         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+> >         chmod +x ~/bin/make.cross
+> >         git checkout 4f4e9ddba1225e2dcdd08ac91f1e82aaca51f2b8
+> >         # save the attached .config to linux build tree
+> >         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross ARCH=h8300 
 > 
-> Convert the comma separated statements that are in if/do/while blocks
-> to use braces and semicolons.
+> I'm going to drop this patch, and the follow-up patch for this, from my
+> trees.  Maybe the prototype for this function should go in a different
+> .h file to resolve these types of build issues?
+>
+I'm so sorry for that, Greg, you are right, This problem will be caused
+due to the loop containing the header file <linux/interrupt.h>, so I will
+send a new patch and put this function to a different header file. 
+
+Sorry!
+
+BR,
+Dejin
+
+> thanks,
 > 
-> Many comma separated statements still exist but those are changes for
-> another day.
-> 
-> [...]
-
-Applied to 5.10/scsi-queue, thanks!
-
-[01/29] coding-style.rst: Avoid comma statements
-        (no commit info)
-[02/29] alpha: Avoid comma separated statements
-        (no commit info)
-[03/29] ia64: Avoid comma separated statements
-        (no commit info)
-[04/29] sparc: Avoid comma separated statements
-        (no commit info)
-[05/29] ata: Avoid comma separated statements
-        (no commit info)
-[06/29] drbd: Avoid comma separated statements
-        (no commit info)
-[07/29] lp: Avoid comma separated statements
-        (no commit info)
-[08/29] dma-buf: Avoid comma separated statements
-        (no commit info)
-[09/29] drm/gma500: Avoid comma separated statements
-        (no commit info)
-[10/29] drm/i915: Avoid comma separated statements
-        (no commit info)
-[11/29] hwmon: (scmi-hwmon): Avoid comma separated statements
-        (no commit info)
-[12/29] Input: MT - Avoid comma separated statements
-        (no commit info)
-[13/29] bcache: Avoid comma separated statements
-        (no commit info)
-[14/29] media: Avoid comma separated statements
-        (no commit info)
-[15/29] mtd: Avoid comma separated statements
-        (no commit info)
-[16/29] 8390: Avoid comma separated statements
-        (no commit info)
-[17/29] fs_enet: Avoid comma separated statements
-        (no commit info)
-[18/29] wan: sbni: Avoid comma separated statements
-        (no commit info)
-[19/29] s390/tty3270: Avoid comma separated statements
-        (no commit info)
-[20/29] scsi: arm: Avoid comma separated statements
-        https://git.kernel.org/mkp/scsi/c/a08a07326510
-[21/29] media: atomisp: Avoid comma separated statements
-        (no commit info)
-[22/29] video: fbdev: Avoid comma separated statements
-        (no commit info)
-[23/29] fuse: Avoid comma separated statements
-        (no commit info)
-[24/29] reiserfs: Avoid comma separated statements
-        (no commit info)
-[25/29] lib/zlib: Avoid comma separated statements
-        (no commit info)
-[26/29] lib: zstd: Avoid comma separated statements
-        (no commit info)
-[27/29] ipv6: fib6: Avoid comma separated statements
-        (no commit info)
-[28/29] sunrpc: Avoid comma separated statements
-        (no commit info)
-[29/29] tools: Avoid comma separated statements
-        (no commit info)
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
