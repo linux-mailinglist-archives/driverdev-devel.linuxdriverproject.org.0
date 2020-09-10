@@ -1,71 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C823F264630
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Sep 2020 14:39:38 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1598B2646AC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Sep 2020 15:16:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 560AE875B9;
-	Thu, 10 Sep 2020 12:39:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DC07187154;
+	Thu, 10 Sep 2020 13:16:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HC5KY4xUi+-v; Thu, 10 Sep 2020 12:39:36 +0000 (UTC)
+	with ESMTP id qxLoHsJfzsps; Thu, 10 Sep 2020 13:16:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8A9058759C;
-	Thu, 10 Sep 2020 12:39:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6D7F98713F;
+	Thu, 10 Sep 2020 13:16:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 21E071BF32D
- for <devel@linuxdriverproject.org>; Thu, 10 Sep 2020 12:39:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CD56F1BF41D
+ for <devel@linuxdriverproject.org>; Thu, 10 Sep 2020 13:16:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 18D7A2045B
- for <devel@linuxdriverproject.org>; Thu, 10 Sep 2020 12:39:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C9D48875FD
+ for <devel@linuxdriverproject.org>; Thu, 10 Sep 2020 13:16:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NpWQBUfHVIr1 for <devel@linuxdriverproject.org>;
- Thu, 10 Sep 2020 12:39:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic312-20.consmr.mail.bf2.yahoo.com
- (sonic312-20.consmr.mail.bf2.yahoo.com [74.6.128.82])
- by silver.osuosl.org (Postfix) with ESMTPS id 7140C2043A
- for <devel@driverdev.osuosl.org>; Thu, 10 Sep 2020 12:39:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1599741570; bh=Ew1DJHOsk7BZt20DqCb4/iIE3OrqFz5pbNT3ZO6573E=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=t6ocEUVNE9c8gEm80BCM8h0v52dzDZTdoMxYVe9K21lFFJ2cB22mjzXWDrcsMYk1Dz5mgB4B55BNuBI275oXBRZ+QmFGarUeW/eL3I1pWz0CYb8v+QFEM40XNwB+VQ4OzZ1//lOBlte71SwB6vLkRU3aFKA1Yi05mgJrw9tR4gz2QehzPip0nFnvYKLIgwEyFvxR4nMc/tRKg1tE0UkcAZBE4Plgs5+VYEFr/mas3NgYs5gcHDqfNQXEfrY/i2rv0BpH4AthldXGGNCGV5QjHeaBxcVSiGYSfsBBQ2OnGXPWgDpt5FapiiPTikZSMrSrJgtIfwkJWwlMu5KJVljHgA==
-X-YMail-OSG: 6XewLcQVM1l9fisXoNPlaKzVxNXTMgm5pQ31Xo7lj1mJ3bX2O5EA2BK_xjQH8QB
- v0Y4R1k6rnc54_LhCjoOo4zstvt3oMuSoieFHKadTC0Xv4GCX.rJ8ZU7cf94pP.Dlg3a2.7s8xV7
- ZEWRSKKZwjhoqecUhE.QVrQEbE4u32g_3HR2jZaY8NmW1s.39yHcaC.4NsXwE0Jk9wYeAadNPiil
- B5k4Yg26t.7HkwGO7R0KPUrpRSpMmymDyLB1zGtA.VkFRxDx76P1fQcIVy1rklNJd3VmrdkrYaHc
- kE60hmUeUttUHlP2n3YNFMlXs7EFGKyLyf8hPCIsS_8Cko7kUHlAKAqUDxUK9t2SdiM6WTg7Xw.M
- 8I.VjwpoU.EJejIhx3nEEClxdCYCc3zuWUJfsSciNXngIA.VBfXVzhnT3Nkzj8U0Ffmnjs8cZlpQ
- 5tt4t9EBo1iIPP9NyX1f1bo4qTWWKmx7JLO9YSBFbl3D30KAR0ir97mY6SzMw0lumUV5MW4yD9ca
- jwEEZl1r2HyjQNspbnI5RQUKYB4tcls.fxVzQ5PAWAdsJZJNjEhgU_fLFqOJ7LL6YP.j8mB16bSq
- c6XkiLTJSHZvbjBlhJKjyULR3_HulboOoCJdAMwMwfo6DDVqjOvbS.8w9M_wDZdNNU7tk7GAuXg2
- bLBQTW39J1Hx5_s3BhNAu6xqs5aFsvOAEw7RqL.O9cqsUAi8op3YiffuTvBy9KVawzr.3oEL1rfY
- 2vZhopuVCty9X_mZ9uVswvN5pPXtgrH_URSFwcFTefQRJd0am9keEGz4EdPtWXt8VDEw1kfGnefx
- FXqzLhNEx7sKy5sFPVgmoDPhsXfAswGwySRPf9.IHattahgD8TnLL2PDrB58sm67tGzFZZiboHe8
- Em3KBkD6QfWJ70LCj_QS65ij7MSg.._L8Nb4ASo6NPr04vOBrc8CAoZ0IAlrTuUKl9RoZNSnJQjj
- E9814pfBUzrLihWfKraOODyOcVYuWnWoW7xNc1Ba25xjb5Otw8xypO1emHKSr6.t3wVfqSliXkgb
- 8b4hXFpGOmdCZl8wn0W_nfXGM8h4AQYRjSmj2t5tqoW8g5fZSwyaFtg09RsICaY0Vb171Nckg3PH
- TlhHCN3t5QHOQIgLptu0RN6gR1627dZ.1sZw_b04eovNdOPhJQ74awdz1oVD9D.t9wiK0FfEeKsr
- uQ8g_ZFRth0gmxjzsx_Iu_sBn_E8R8VOFL8LCrzjS63tbFQXlbU3xz5gdUwt67Ey5vB.imi4V0HM
- WdHuOn4reWjO6lrMmdTaW3WHR.3KcwlkmtusSs_65CkrZJx0wGMEzelx35a71055exILfgAWuFjN
- sVU..dbAYtWVNAA5VT9fUmKxpIfcp6xp4LSN.Nnq2i7iueMEtIgWM5CMmqVDnenmiNT0qE3lpq4F
- BXqmWF_890BWZZVFGdtmRWt3Hh6sr0kCq_f7gyxQLC2Ct2tJspO0-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic312.consmr.mail.bf2.yahoo.com with HTTP; Thu, 10 Sep 2020 12:39:30 +0000
-Date: Thu, 10 Sep 2020 12:39:29 +0000 (UTC)
-From: Crystal Gloria  <haapyjoy0@yahoo.com>
-Message-ID: <1687907446.631210.1599741569655@mail.yahoo.com>
-Subject: Hi,
+ with ESMTP id jwmkAec73f94 for <devel@linuxdriverproject.org>;
+ Thu, 10 Sep 2020 13:16:10 +0000 (UTC)
+X-Greylist: delayed 00:07:12 by SQLgrey-1.7.6
+Received: from new1-smtp.messagingengine.com (new1-smtp.messagingengine.com
+ [66.111.4.221])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E0A67875E6
+ for <devel@driverdev.osuosl.org>; Thu, 10 Sep 2020 13:16:09 +0000 (UTC)
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 4992F580350;
+ Thu, 10 Sep 2020 09:08:55 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Thu, 10 Sep 2020 09:08:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=VVbErVHSRW+XcgK4T8+BuU5pymU
+ mplYyEZNHTIBduJU=; b=TzjtPyhybN+p+jKYBxNS47cUtOeaBbzh5z8yB4wB9zp
+ gtHTdpq/S8Q3A8UFakUE0o2kY5E0QLtOImFJ7cIOBEo5vKWLsXDqmyOptIyECEGY
+ XganJjqI2GViX3bBwz9pkJijYqzuxZVdxdPszCCXYG4fVP1DGS/eXHAK+2NKubv3
+ 5woBKgXPWjqv/5bJ0CyL7+LsQUJgFbq4+DE5KvUFIM2bREDsTRoUucdxlIBAROPK
+ VQu7LsjS2QRB5qzkw+0Q5PXPxF+WeCKrRKB4Aw7fmWqsaA0sN2rRhjtg3+IP1sfW
+ NxtCRikYOsU3W76LpwK7w9PrsCQR8+fW4z85Qxjv+Yg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=VVbErV
+ HSRW+XcgK4T8+BuU5pymUmplYyEZNHTIBduJU=; b=CFsumIWwHqz7pddDS4wW/j
+ EfA7CVxNE5uqOFCUe9wHYmebDXuQcMhX482xh/eklo6CwQCqaun6NSAstG0Cdnso
+ 1AFK3Os8llPbhgt7GioGMGd5M3eK0ZEt5JIyjZ2PB14F4REFNcOl/0ImkXJI8hKJ
+ WYYJEBxONZXYI047gZVAo9fxNf0MEp8YfGpcnQDkuCh6ew2FWPkOMNrde/xmddwB
+ sg9tQpYJ7zu4AcpOfO9ePsQzqQVuTg0GRDVI1buz1LL5Xp88MXDLvUZ/CodHOnIT
+ c7DrPpRZUDgbu4UtsqcEdISZoKHvk8K9Ab6sEpbFrbZGffWAHEcg1SCKpSkqLV4g
+ ==
+X-ME-Sender: <xms:ZSVaX480wwkzElWwqCu6ReOpu7uzFsRaTHs2-G2SohhMPwQFGUli8A>
+ <xme:ZSVaXwv3H0cC2OB5biB8E3hBxPohTVz3WCtN8dfDXyZxlJoBIQjNA1ZrTORKEbwtQ
+ BDClSu4EnaALM7UDwE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedrudehjedgheegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+ vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+ htvghrnhepveegudetkeethfetgffgtdekkefghefhffefgeduleehgeehieeuveefgedv
+ ieegnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkphepledtrdekledrieekrd
+ ejieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehm
+ rgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:ZSVaX-BpFEB6LuTSO_QNaL8RlXnvCVnMCkerFGZRumuCsONxxVzo2g>
+ <xmx:ZSVaX4fAM7-dysg1vEVlBbKhBptf8LfDA-zdShkgY0KYfmIHXMu5jw>
+ <xmx:ZSVaX9MHurJXo01CffBXED4Xqr84flaRjRp3AKL73g6c72rJkmgVkw>
+ <xmx:ZyVaX2iKMZ9hdwM6gGWjGw8MFR9saxLqQ7ZADt82ZfOz_mEMdoYzOA>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 969FC328006C;
+ Thu, 10 Sep 2020 09:08:53 -0400 (EDT)
+Date: Thu, 10 Sep 2020 15:08:52 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Martin Cerveny <M.Cerveny@computer.org>
+Subject: Re: [PATCH 0/6] ARM: dts: sun8i: v3s: Enable video decoder
+Message-ID: <20200910130852.2bfodnkoapbtosjx@gilmour.lan>
+References: <20200904200112.5563-1-m.cerveny@computer.org>
+ <20200908062327.7o4abjnosvghtafy@gilmour.lan>
+ <alpine.GSO.2.00.2009081840380.6717@dmz.c-home.cz>
 MIME-Version: 1.0
-References: <1687907446.631210.1599741569655.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16583 YMailNodin Mozilla/5.0 (Windows NT 6.1)
- AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36
+In-Reply-To: <alpine.GSO.2.00.2009081840380.6717@dmz.c-home.cz>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,14 +99,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: crystalgloria3@yahoo.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Rob Herring <robh+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============6466296332518986571=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpIaSwKCkhvd8KgYXJlwqB5b3XCoGRvaW5nwqBEaWTCoHlvdcKgcmVjZWl2ZcKgdGhlwqBtZXNz
-YWdlwqBpwqBzZW50CnlvdS5mcm9twqBDcnlzdGFsIEdsb3JpYQp0aGFua3MsCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApk
-ZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJw
-cm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+
+--===============6466296332518986571==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="whzuaxinuaqfn32l"
+Content-Disposition: inline
+
+
+--whzuaxinuaqfn32l
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Sep 08, 2020 at 06:44:06PM +0200, Martin Cerveny wrote:
+> Hello.
+>=20
+> On Tue, 8 Sep 2020, Maxime Ripard wrote:
+> > On Fri, Sep 04, 2020 at 10:01:06PM +0200, Martin Cerveny wrote:
+> > > First patch extends cedrus capability to all decoders
+> > > because V3s missing MPEG2 decoder.
+> > >=20
+> > > Next two patches add system control node (SRAM C1) and
+> > > next three patches add support for Cedrus VPU.
+> >=20
+> > How was it tested?
+>=20
+> On V3s with LCD and bootlin raw v4l2 api test:
+> - https://github.com/mcerveny/linux/tree/v3s_videocodec_v3
+> - https://github.com/mcerveny/v4l2-request-test
+
+Thanks. Can you put it in your cover letter in your next version?
+
+Maxime
+
+--whzuaxinuaqfn32l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX1olZAAKCRDj7w1vZxhR
+xQqYAQCb1N/Hpp3mZzTdhwal+tCqm8yNLlEGiLL41icRvYH6VwD9H8A1QtVsUhs/
+MR5gRpuKZU6k8lUJtoLJWMCUWuFVbQk=
+=dhw8
+-----END PGP SIGNATURE-----
+
+--whzuaxinuaqfn32l--
+
+--===============6466296332518986571==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6466296332518986571==--
