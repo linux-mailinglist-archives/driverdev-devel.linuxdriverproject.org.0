@@ -2,61 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AB71265892
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Sep 2020 07:06:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 103222659BE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Sep 2020 08:58:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D3EC1871F6;
-	Fri, 11 Sep 2020 05:06:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 63584871C1;
+	Fri, 11 Sep 2020 06:58:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TxyRGYP3nAuV; Fri, 11 Sep 2020 05:06:03 +0000 (UTC)
+	with ESMTP id v4WTTxDCri0K; Fri, 11 Sep 2020 06:58:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3F5D186E77;
-	Fri, 11 Sep 2020 05:06:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 803B086D01;
+	Fri, 11 Sep 2020 06:58:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 247471BF859
- for <devel@linuxdriverproject.org>; Fri, 11 Sep 2020 05:05:59 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 340641BF84C
+ for <devel@linuxdriverproject.org>; Fri, 11 Sep 2020 06:58:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1F9428778E
- for <devel@linuxdriverproject.org>; Fri, 11 Sep 2020 05:05:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2BF5587729
+ for <devel@linuxdriverproject.org>; Fri, 11 Sep 2020 06:58:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZBheLXYHb8lm for <devel@linuxdriverproject.org>;
- Fri, 11 Sep 2020 05:05:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3BD0287789
- for <devel@driverdev.osuosl.org>; Fri, 11 Sep 2020 05:05:58 +0000 (UTC)
-IronPort-SDR: GXk7IcPvQn7A3oFpU5QLy5k23VhJyk/gEYeHUJjB/Jhp3sDT/69eJASY7mK9Ufk/J2Vk/6xMyT
- fGJkz0TpTmaw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9740"; a="159638045"
-X-IronPort-AV: E=Sophos;i="5.76,414,1592895600"; d="scan'208";a="159638045"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 22:05:57 -0700
-IronPort-SDR: ewte2Q4orCVH7CSuQe6dVV2bJ0e7t1j7JFPyd/FknlQ/zbca3i6Kb74ndB5xZ0me2z29L08MFm
- ARECvRtc30XA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,414,1592895600"; d="scan'208";a="337383961"
-Received: from lkp-server01.sh.intel.com (HELO a75722977aa5) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 10 Sep 2020 22:05:56 -0700
-Received: from kbuild by a75722977aa5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kGbFz-000037-FJ; Fri, 11 Sep 2020 05:05:55 +0000
-Date: Fri, 11 Sep 2020 13:05:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-linus] BUILD SUCCESS
- baaabecfc80fad255f866563b53b8c7a3eec176e
-Message-ID: <5f5b058a.OS+yLw04Gy851d8Z%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id VOCl1UOtmPbv for <devel@linuxdriverproject.org>;
+ Fri, 11 Sep 2020 06:58:12 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from fornost.hmeau.com (helcar.hmeau.com [216.24.177.18])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E8BB386791
+ for <devel@driverdev.osuosl.org>; Fri, 11 Sep 2020 06:58:11 +0000 (UTC)
+Received: from gwarestrin.arnor.me.apana.org.au ([192.168.0.7])
+ by fornost.hmeau.com with smtp (Exim 4.92 #5 (Debian))
+ id 1kGd0F-0007u4-89; Fri, 11 Sep 2020 16:57:48 +1000
+Received: by gwarestrin.arnor.me.apana.org.au (sSMTP sendmail emulation);
+ Fri, 11 Sep 2020 16:57:47 +1000
+Date: Fri, 11 Sep 2020 16:57:47 +1000
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: Ard Biesheuvel <ardb@kernel.org>
+Subject: Re: [PATCH v3 0/7] crypto: mark ecb(arc4) skcipher as obsolete
+Message-ID: <20200911065747.GF32150@gondor.apana.org.au>
+References: <20200831151649.21969-1-ardb@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200831151649.21969-1-ardb@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,234 +58,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, linux-nfs@vger.kernel.org,
+ Arnd Bergmann <arnd@arndb.de>, "David S. Miller" <davem@davemloft.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Eric Biggers <ebiggers@google.com>,
+ Trond Myklebust <trond.myklebust@hammerspace.com>,
+ "J. Bruce Fields" <bfields@fieldses.org>, Chuck Lever <chuck.lever@oracle.com>,
+ linux-crypto@vger.kernel.org, netdev@vger.kernel.org,
+ Anna Schumaker <anna.schumaker@netapp.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-linus
-branch HEAD: baaabecfc80fad255f866563b53b8c7a3eec176e  test_firmware: Test platform fw loading on non-EFI systems
+On Mon, Aug 31, 2020 at 06:16:42PM +0300, Ard Biesheuvel wrote:
+> RC4 hasn't aged very well, and is a poor fit for the skcipher API so it
+> would be good if we could get rid of the ecb(arc4) drivers in the kernel
+> at some point in the future. This prevents new users from creeping in, and
+> allows us to improve the skcipher API without having to care too much about
+> obsolete algorithms that may be difficult to support going forward.
+> 
+> So let's get rid of any remaining in-kernel users, either by switching them
+> to the arc4 library API (for cases which simply cannot change algorithms,
+> e.g., WEP), or dropping the code entirely. Also remove the remaining h/w
+> accelerated implementations, and mark the generic s/w implementation as
+> obsolete in Kconfig.
+> 
+> Changes since v2:
+> - depend on CRYPTO_USER_API not CRYPTO_USER
+> - rename CRYPTO_USER_ENABLE_OBSOLETE to CRYPTO_USER_API_ENABLE_OBSOLETE for
+>   clarity
+> 
+> Changes since RFC [0]:
+> - keep ecb(arc4) generic C implementation, and the associated test vectors,
+>   but print a warning about ecb(arc4) being obsolete so we can identify
+>   remaining users
+> - add a Kconfig option to en/disable obsolete algorithms that are only kept
+>   around to prevent breaking users that rely on it via the socket interface
+> - add a patch to clean up some bogus Kconfig dependencies
+> - add acks to patches #1, #2 and #3
+> 
+> [0] https://lore.kernel.org/driverdev-devel/20200702101947.682-1-ardb@kernel.org/
+> 
+> Cc: Herbert Xu <herbert@gondor.apana.org.au>
+> Cc: "David S. Miller" <davem@davemloft.net>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Trond Myklebust <trond.myklebust@hammerspace.com>
+> Cc: Anna Schumaker <anna.schumaker@netapp.com>
+> Cc: "J. Bruce Fields" <bfields@fieldses.org>
+> Cc: Chuck Lever <chuck.lever@oracle.com>
+> Cc: Eric Biggers <ebiggers@google.com>
+> Cc: Arnd Bergmann <arnd@arndb.de>
+> Cc: linux-crypto@vger.kernel.org
+> Cc: netdev@vger.kernel.org
+> Cc: devel@driverdev.osuosl.org
+> Cc: linux-nfs@vger.kernel.org
+> 
+> Ard Biesheuvel (7):
+>   staging/rtl8192e: switch to RC4 library interface
+>   staging/rtl8192u: switch to RC4 library interface
+>   SUNRPC: remove RC4-HMAC-MD5 support from KerberosV
+>   crypto: n2 - remove ecb(arc4) support
+>   crypto: bcm-iproc - remove ecb(arc4) support
+>   net: wireless: drop bogus CRYPTO_xxx Kconfig selects
+>   crypto: arc4 - mark ecb(arc4) skcipher as obsolete
+> 
+>  crypto/Kconfig                                |  10 +
+>  crypto/arc4.c                                 |  10 +
+>  drivers/crypto/bcm/cipher.c                   |  96 +-----
+>  drivers/crypto/bcm/cipher.h                   |   1 -
+>  drivers/crypto/bcm/spu.c                      |  23 +-
+>  drivers/crypto/bcm/spu.h                      |   1 -
+>  drivers/crypto/bcm/spu2.c                     |  12 +-
+>  drivers/crypto/bcm/spu2.h                     |   1 -
+>  drivers/crypto/n2_core.c                      |  46 ---
+>  drivers/net/wireless/intel/ipw2x00/Kconfig    |   4 -
+>  drivers/net/wireless/intersil/hostap/Kconfig  |   4 -
+>  drivers/staging/rtl8192e/Kconfig              |   4 +-
+>  drivers/staging/rtl8192e/rtllib_crypt_tkip.c  |  70 +----
+>  drivers/staging/rtl8192e/rtllib_crypt_wep.c   |  72 +----
+>  drivers/staging/rtl8192u/Kconfig              |   1 +
+>  .../rtl8192u/ieee80211/ieee80211_crypt_tkip.c |  81 +----
+>  .../rtl8192u/ieee80211/ieee80211_crypt_wep.c  |  64 +---
+>  include/linux/sunrpc/gss_krb5.h               |  11 -
+>  include/linux/sunrpc/gss_krb5_enctypes.h      |   9 +-
+>  net/sunrpc/Kconfig                            |   1 -
+>  net/sunrpc/auth_gss/gss_krb5_crypto.c         | 276 ------------------
+>  net/sunrpc/auth_gss/gss_krb5_mech.c           |  95 ------
+>  net/sunrpc/auth_gss/gss_krb5_seal.c           |   1 -
+>  net/sunrpc/auth_gss/gss_krb5_seqnum.c         |  87 ------
+>  net/sunrpc/auth_gss/gss_krb5_unseal.c         |   1 -
+>  net/sunrpc/auth_gss/gss_krb5_wrap.c           |  65 +----
+>  26 files changed, 97 insertions(+), 949 deletions(-)
 
-elapsed time: 725m
-
-configs tested: 204
-configs skipped: 14
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-mips                        qi_lb60_defconfig
-mips                           rs90_defconfig
-mips                       lemote2f_defconfig
-riscv                          rv32_defconfig
-arm                           efm32_defconfig
-ia64                             allmodconfig
-mips                 pnx8335_stb225_defconfig
-arm                         palmz72_defconfig
-powerpc                 mpc832x_rdb_defconfig
-arm                            lart_defconfig
-powerpc                      ppc64e_defconfig
-arm                           omap1_defconfig
-powerpc                      acadia_defconfig
-arm                        trizeps4_defconfig
-arm                     davinci_all_defconfig
-sh                         apsh4a3a_defconfig
-arc                 nsimosci_hs_smp_defconfig
-arm                       cns3420vb_defconfig
-sparc64                             defconfig
-arm                             pxa_defconfig
-mips                           ip28_defconfig
-openrisc                         alldefconfig
-arc                     haps_hs_smp_defconfig
-arm                          prima2_defconfig
-mips                      pistachio_defconfig
-arm                       aspeed_g4_defconfig
-mips                         tb0226_defconfig
-mips                          ath79_defconfig
-arm                      integrator_defconfig
-mips                           ip22_defconfig
-mips                            e55_defconfig
-powerpc                     ksi8560_defconfig
-ia64                             alldefconfig
-sh                          lboxre2_defconfig
-mips                        workpad_defconfig
-mips                           gcw0_defconfig
-sh                          sdk7780_defconfig
-openrisc                    or1ksim_defconfig
-arm                          imote2_defconfig
-mips                      pic32mzda_defconfig
-riscv                            alldefconfig
-arm                           h5000_defconfig
-xtensa                           allyesconfig
-arm                       omap2plus_defconfig
-h8300                    h8300h-sim_defconfig
-mips                            gpr_defconfig
-mips                         bigsur_defconfig
-mips                          malta_defconfig
-arm                            xcep_defconfig
-sh                        sh7785lcr_defconfig
-sh                        sh7757lcr_defconfig
-arm                         axm55xx_defconfig
-sh                        edosk7760_defconfig
-arc                         haps_hs_defconfig
-arm                          simpad_defconfig
-arm                         ebsa110_defconfig
-powerpc                    adder875_defconfig
-powerpc                     asp8347_defconfig
-arm                         s3c2410_defconfig
-mips                     cu1830-neo_defconfig
-arm                         lubbock_defconfig
-s390                             alldefconfig
-mips                          ath25_defconfig
-h8300                     edosk2674_defconfig
-powerpc                   bluestone_defconfig
-powerpc                 mpc837x_mds_defconfig
-arm                            u300_defconfig
-xtensa                           alldefconfig
-c6x                        evmc6457_defconfig
-m68k                            q40_defconfig
-arm                           u8500_defconfig
-arc                          axs101_defconfig
-nios2                         3c120_defconfig
-powerpc                     powernv_defconfig
-sh                ecovec24-romimage_defconfig
-ia64                            zx1_defconfig
-powerpc                 mpc8272_ads_defconfig
-sparc                               defconfig
-sh                               allmodconfig
-powerpc                mpc7448_hpc2_defconfig
-m68k                                defconfig
-powerpc                     pseries_defconfig
-arm                      pxa255-idp_defconfig
-arm                         mv78xx0_defconfig
-arm                          ixp4xx_defconfig
-c6x                        evmc6472_defconfig
-arm                          lpd270_defconfig
-powerpc                     ep8248e_defconfig
-powerpc                     taishan_defconfig
-mips                      loongson3_defconfig
-microblaze                    nommu_defconfig
-arc                          axs103_defconfig
-xtensa                generic_kc705_defconfig
-arm                         s5pv210_defconfig
-arm                              alldefconfig
-s390                       zfcpdump_defconfig
-powerpc                  storcenter_defconfig
-powerpc64                        alldefconfig
-mips                         cobalt_defconfig
-mips                         rt305x_defconfig
-sh                          kfr2r09_defconfig
-arc                        nsim_700_defconfig
-arm                        mvebu_v7_defconfig
-arm                           h3600_defconfig
-powerpc                     rainier_defconfig
-sh                        apsh4ad0a_defconfig
-arm                        multi_v5_defconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-x86_64               randconfig-a004-20200910
-x86_64               randconfig-a006-20200910
-x86_64               randconfig-a003-20200910
-x86_64               randconfig-a002-20200910
-x86_64               randconfig-a005-20200910
-x86_64               randconfig-a001-20200910
-i386                 randconfig-a004-20200909
-i386                 randconfig-a005-20200909
-i386                 randconfig-a006-20200909
-i386                 randconfig-a002-20200909
-i386                 randconfig-a001-20200909
-i386                 randconfig-a003-20200909
-i386                 randconfig-a004-20200911
-i386                 randconfig-a006-20200911
-i386                 randconfig-a001-20200911
-i386                 randconfig-a003-20200911
-i386                 randconfig-a002-20200911
-i386                 randconfig-a005-20200911
-i386                 randconfig-a004-20200910
-i386                 randconfig-a006-20200910
-i386                 randconfig-a001-20200910
-i386                 randconfig-a003-20200910
-i386                 randconfig-a002-20200910
-i386                 randconfig-a005-20200910
-x86_64               randconfig-a014-20200911
-x86_64               randconfig-a011-20200911
-x86_64               randconfig-a012-20200911
-x86_64               randconfig-a016-20200911
-x86_64               randconfig-a015-20200911
-x86_64               randconfig-a013-20200911
-i386                 randconfig-a016-20200909
-i386                 randconfig-a015-20200909
-i386                 randconfig-a011-20200909
-i386                 randconfig-a013-20200909
-i386                 randconfig-a014-20200909
-i386                 randconfig-a012-20200909
-i386                 randconfig-a015-20200911
-i386                 randconfig-a014-20200911
-i386                 randconfig-a011-20200911
-i386                 randconfig-a013-20200911
-i386                 randconfig-a016-20200911
-i386                 randconfig-a012-20200911
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a004-20200911
-x86_64               randconfig-a006-20200911
-x86_64               randconfig-a003-20200911
-x86_64               randconfig-a002-20200911
-x86_64               randconfig-a005-20200911
-x86_64               randconfig-a001-20200911
-x86_64               randconfig-a013-20200909
-x86_64               randconfig-a016-20200909
-x86_64               randconfig-a011-20200909
-x86_64               randconfig-a012-20200909
-x86_64               randconfig-a015-20200909
-x86_64               randconfig-a014-20200909
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+All applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
