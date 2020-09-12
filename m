@@ -1,85 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B49FC267B04
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Sep 2020 16:47:37 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09080267BC2
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Sep 2020 20:31:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E18E2042E;
-	Sat, 12 Sep 2020 14:47:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A0B0861F6;
+	Sat, 12 Sep 2020 18:31:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bFAzsE9Sx0DP; Sat, 12 Sep 2020 14:47:34 +0000 (UTC)
+	with ESMTP id BfhLTOSg9_mg; Sat, 12 Sep 2020 18:31:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 01500203C7;
-	Sat, 12 Sep 2020 14:47:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5438085FA0;
+	Sat, 12 Sep 2020 18:31:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DD5CB1BF36E
- for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 14:47:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 109081BF3D6
+ for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 18:31:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B73E9203A7
- for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 14:47:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 00BFF20440
+ for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 18:31:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mEv54tE0wIxy for <devel@linuxdriverproject.org>;
- Sat, 12 Sep 2020 14:47:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [205.139.110.61])
- by silver.osuosl.org (Postfix) with ESMTPS id AF9F820360
- for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 14:47:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599922048;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=vhedvMNzaUEDcUuhwo/iLfGVABBNwD7Ffu7xTey6+9c=;
- b=CcQLWQ4NB+iNNaAAZAO9VXyDnP17GcB4uHtJuPHnjcokV41AVw+mFDy/HcSWd0GowFHiZj
- LWkUbcFTpGkMY92CrR13ZNzo1gY1RxssIbZNPj5a0aM3MKYqCh6DSNfXHPOAyWX4PozgKq
- 7Y1sMokoqaIODSF8ntAI8EjwZ974cog=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-332-or2Bj-LQPY-XZwLaK_JlvQ-1; Sat, 12 Sep 2020 10:47:26 -0400
-X-MC-Unique: or2Bj-LQPY-XZwLaK_JlvQ-1
-Received: by mail-qt1-f197.google.com with SMTP id f5so8714237qtk.11
- for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 07:47:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=vhedvMNzaUEDcUuhwo/iLfGVABBNwD7Ffu7xTey6+9c=;
- b=pi9jjzM3eONEY3rCNUduBc7sUuvBokY94XjPHBTDippiT/S477jnwY6Cg5WkSL3WPk
- 1X8FYr1WPI/BeEXJolm8BeYBsL8uiFNJycQh++/WUrfXQRMgj8puceITI0i8mi/0xGaB
- vyGK4JffPRj9+g8bErOJozS3FwLTP0BbhU8PSlfIlm9fgcSaOcGz1e9o6jYU1Fm4kKsS
- gOhsSsSHw20S4oEbdxA2oifGAareT/xDv+mL8CD4djFTfh+YfM/7YWqHY9vgxcGrl5rZ
- TspWt+VAAUEatrdIbNbuWWYFrIpfk0jnuRY5tiO0ZVjvjnJjJQGabgJ/tCypJNnpqFhb
- FpSg==
-X-Gm-Message-State: AOAM531vR8dDU+7TzopsLMuCJ6Jp9refFIbEynLJckQkpTtWQFTgfeiY
- 5vGkZGOCXUH8ym5qLsSsqShrolK0T1WLkzuINjJUpuj2vJg/JBprhldJUY6dgJFtHozrrZHSedq
- r8bVyHP8eY1iziNB9+U5CQg==
-X-Received: by 2002:a0c:e989:: with SMTP id z9mr6441210qvn.81.1599922045828;
- Sat, 12 Sep 2020 07:47:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwly9+TI3qlwz43wKPoJau1E8RyrgfhK9Hk6G2EG0hVy9Xgse6md8eIDmPt0UBEDtJtU63ziQ==
-X-Received: by 2002:a0c:e989:: with SMTP id z9mr6441201qvn.81.1599922045640;
- Sat, 12 Sep 2020 07:47:25 -0700 (PDT)
-Received: from trix.remote.csb (075-142-250-213.res.spectrum.com.
- [75.142.250.213])
- by smtp.gmail.com with ESMTPSA id u2sm7425387qkf.61.2020.09.12.07.47.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Sep 2020 07:47:25 -0700 (PDT)
-From: trix@redhat.com
-To: jerome.pouiller@silabs.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: wfx: simplify virt_addr_valid call
-Date: Sat, 12 Sep 2020 07:47:19 -0700
-Message-Id: <20200912144719.13929-1-trix@redhat.com>
-X-Mailer: git-send-email 2.18.1
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
-X-Mimecast-Spam-Score: 0.0
-X-Mimecast-Originator: redhat.com
+ with ESMTP id ABZPFIFxD6BN for <devel@linuxdriverproject.org>;
+ Sat, 12 Sep 2020 18:31:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0208.hostedemail.com
+ [216.40.44.208])
+ by silver.osuosl.org (Postfix) with ESMTPS id 87146203CC
+ for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 18:31:11 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave03.hostedemail.com (Postfix) with ESMTP id 9F9AE181CA087
+ for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 18:22:13 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 2D7D0100E7B40;
+ Sat, 12 Sep 2020 18:22:11 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3354:3622:3865:3867:3868:3872:4321:5007:7514:7904:10004:10400:10848:11026:11232:11657:11658:11914:12043:12114:12297:12438:12555:12740:12760:12895:13439:14181:14659:14721:21080:21451:21627:21990:30012:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:22, LUA_SUMMARY:none
+X-HE-Tag: copy82_03013a6270f9
+X-Filterd-Recvd-Size: 3020
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf12.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 12 Sep 2020 18:22:09 +0000 (UTC)
+Message-ID: <f5fdb27843143dfefb1a1a416dab63931fef6d41.camel@perches.com>
+Subject: Re: [PATCH 1/5] staging: rtl8723bs: refactor cckrates{only}_included
+From: Joe Perches <joe@perches.com>
+To: Michael Straube <straube.linux@gmail.com>, gregkh@linuxfoundation.org
+Date: Sat, 12 Sep 2020 11:22:08 -0700
+In-Reply-To: <20200912084520.8383-1-straube.linux@gmail.com>
+References: <20200912084520.8383-1-straube.linux@gmail.com>
+User-Agent: Evolution 3.36.4-0ubuntu1 
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,41 +73,94 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Tom Rix <trix@redhat.com>,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Tom Rix <trix@redhat.com>
+On Sat, 2020-09-12 at 10:45 +0200, Michael Straube wrote:
+> Refactor cckrates_included() and cckratesonly_included() to simplify
+> the code and improve readability.
+> 
+> Signed-off-by: Michael Straube <straube.linux@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+> index a5790a648a5b..4e0d86b2e2e0 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+> @@ -56,11 +56,12 @@ static u8 rtw_basic_rate_ofdm[3] = {
+>  
+>  int cckrates_included(unsigned char *rate, int ratelen)
+>  {
+> -	int	i;
+> +	int i;
+>  
+>  	for (i = 0; i < ratelen; i++) {
+> -		if  ((((rate[i]) & 0x7f) == 2)	|| (((rate[i]) & 0x7f) == 4) ||
+> -		     (((rate[i]) & 0x7f) == 11)  || (((rate[i]) & 0x7f) == 22))
+> +		u8 r = rate[i] & 0x7f;
+> +
+> +		if (r == 2 || r == 4 || r == 11 || r == 22)
+>  			return true;
+>  	}
+>  
+> @@ -69,11 +70,12 @@ int cckrates_included(unsigned char *rate, int ratelen)
+>  
+>  int cckratesonly_included(unsigned char *rate, int ratelen)
+>  {
+> -	int	i;
+> +	int i;
+>  
+>  	for (i = 0; i < ratelen; i++) {
+> -		if  ((((rate[i]) & 0x7f) != 2) && (((rate[i]) & 0x7f) != 4) &&
+> -		     (((rate[i]) & 0x7f) != 11)  && (((rate[i]) & 0x7f) != 22))
+> +		u8 r = rate[i] & 0x7f;
+> +
+> +		if (r != 2 && r != 4 && r != 11 && r != 22)
+>  			return false;
 
-Reviewing sram_write_dma_safe(), there are two
-identical calls to virt_addr_valid().  The second
-call can be simplified by a comparison of variables
-set from the first call.
+It would be simpler to add and use an inline like:
 
-Signed-off-by: Tom Rix <trix@redhat.com>
----
- drivers/staging/wfx/fwio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+static bool is_cckrate(unsigned char rate)
+{
+	rate &= 0x7f;
+	return rate == 2 || rate == 4 || rate == 11 || rate == 22;
+}
 
-diff --git a/drivers/staging/wfx/fwio.c b/drivers/staging/wfx/fwio.c
-index 22d3b684f04f..c99adb0c99f1 100644
---- a/drivers/staging/wfx/fwio.c
-+++ b/drivers/staging/wfx/fwio.c
-@@ -94,7 +94,7 @@ static int sram_write_dma_safe(struct wfx_dev *wdev, u32 addr, const u8 *buf,
- 		tmp = buf;
- 	}
- 	ret = sram_buf_write(wdev, addr, tmp, len);
--	if (!virt_addr_valid(buf))
-+	if (tmp != buf)
- 		kfree(tmp);
- 	return ret;
- }
--- 
-2.18.1
+so these could be
+
+bool cckrates_included(unsigned char *rate, int ratelen)
+{
+	int i;
+
+	for (i = 0; i < ratelen; i++) {
+		if (is_cckrate(rate[i])
+			return true;
+	}
+
+	return false;
+}
+
+bool cckratesonly_included(unsigned char *rate, int ratelen)
+{
+	int i;
+
+	if (i <= 0)
+		return false;
+
+	for (i = 0; i < ratelen; i++) {
+		if (!is_cckrate(rate[i])
+			return false;
+	}
+
+	return true;
+}
+
 
 _______________________________________________
 devel mailing list
