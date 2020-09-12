@@ -1,49 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77CFE267797
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Sep 2020 05:50:01 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 885992678EF
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Sep 2020 10:49:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AA82187BD1;
-	Sat, 12 Sep 2020 03:49:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 34E4B87822;
+	Sat, 12 Sep 2020 08:49:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7X-WGZyKarIW; Sat, 12 Sep 2020 03:49:58 +0000 (UTC)
+	with ESMTP id XiXZ0dL5lwH2; Sat, 12 Sep 2020 08:49:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8C03D87B49;
-	Sat, 12 Sep 2020 03:49:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A0C0F87807;
+	Sat, 12 Sep 2020 08:49:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6D0BE1BF32E
- for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 03:49:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E570F1BF393
+ for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 08:49:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6974687446
- for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 03:49:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DBBE92046D
+ for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 08:49:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xLoeQYtvrRZF for <devel@linuxdriverproject.org>;
- Sat, 12 Sep 2020 03:49:53 +0000 (UTC)
-X-Greylist: delayed 00:05:14 by SQLgrey-1.7.6
-Received: from amgros.dk (unknown [87.54.42.4])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3B03B8743E
- for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 03:49:41 +0000 (UTC)
-Received: from User ([156.96.56.37]) by amgros.dk with Microsoft
- SMTPSVC(7.5.7601.17514); Sat, 12 Sep 2020 05:42:07 +0200
-From: "HSBC London Office"<fwalhsb@financier.com>
-Subject: Bank Alert In Respect To Your Fund  
-Date: Fri, 11 Sep 2020 18:42:54 -0700
+ with ESMTP id RAtLmIfku98E for <devel@linuxdriverproject.org>;
+ Sat, 12 Sep 2020 08:49:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ej1-f67.google.com (mail-ej1-f67.google.com
+ [209.85.218.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id F1AA6203F9
+ for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 08:49:26 +0000 (UTC)
+Received: by mail-ej1-f67.google.com with SMTP id e23so16597803eja.3
+ for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 01:49:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+ljUzMs8hxOXKcFecnEmF5YKOxx89w9DLQIqWCR+XFY=;
+ b=DFTo6aEK2WUdfjkVbQRQ3/lSdn+hB1O61rbQcZ3aLxT8v5mTDx2aZh7aRicyojuTEP
+ /sl5REGbHoZ1OdHH4RDOfIQ1Tz/ov1JqsA7Z7VpP60k0q6VjjyA+67pxDm/XmVj55JZh
+ OxwPOSbq/zCRO9ZRnoa0+jiusn99TRy7NAy9W1/2fM1wQIXA4isyUsiikAhXqke0NB3k
+ JY8LF4MLZNcnQHjf0HW36QYPkOo7LqZSC+P+u+t9bD2m2wz8kskLiHr/NjwvFG1glTAs
+ JWmfh1l5PoUz/24u4g3Lr2dT3ur39CsDaKxj+7ha5hhiuV+wgWjtQm5Ss8ochZsHZX/E
+ /AnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+ljUzMs8hxOXKcFecnEmF5YKOxx89w9DLQIqWCR+XFY=;
+ b=HGKClrZCqMcRPSntmVRgPXMAR883tVWjnEn3PQKdl3sRAiwwxMOCiYzcFG3Ac3T2dT
+ Kbv2jSu+TcJzDkscPvJ5aQVbwC3eT5jN0FoDYVj7+CZBCndoui56WZASvWJkXKFLkui0
+ KCzl0bd9H/R80QUnOAYrq31IyVjPiWr5KkQmYjoRDAcda+BXeb/8MkYa5KLL1p2qa72K
+ 261ECUC+ji6oqD3gSdMXTVClFtaSze7VyBB6U+7U6AMFteBPzZH6RHWjmImFPqi7hGtM
+ htMtD/2+9AeFCdrAKqB+NnOHURvI1dmd7RFDSppGHDYqlij7FO9alm5ksMrLYWGsbGzY
+ woqQ==
+X-Gm-Message-State: AOAM5330i1Q1gRet7l9/DEPj6QjAoWEr+M23fkDNKYRTya4WAN0GxQFC
+ mbBwH4r+fBimacDOmWeMcO8=
+X-Google-Smtp-Source: ABdhPJzFtLkIWlH9oU/3K1AGg0yB9buSI2pqabwNT9Fk+0mrF0ELl2FDuzFdJU2q+CLbiQQBNSBVbg==
+X-Received: by 2002:a17:906:3bca:: with SMTP id
+ v10mr5240607ejf.57.1599900565258; 
+ Sat, 12 Sep 2020 01:49:25 -0700 (PDT)
+Received: from localhost.localdomain
+ (ipservice-092-219-207-039.092.219.pools.vodafone-ip.de. [92.219.207.39])
+ by smtp.gmail.com with ESMTPSA id s23sm4009598edt.10.2020.09.12.01.49.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 12 Sep 2020 01:49:24 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/5] staging: rtl8723bs: refactor cckrates{only}_included
+Date: Sat, 12 Sep 2020 10:45:16 +0200
+Message-Id: <20200912084520.8383-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <AMGROSWEB05lJLZaxMf0000128b@amgros.dk>
-X-OriginalArrivalTime: 12 Sep 2020 03:42:11.0601 (UTC)
- FILETIME=[B29C2010:01D688B6]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,31 +85,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: henrybanko1970@yahoo.co.jp
+Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-HSBC BANK PLC LONDON.(REGISTERED NO.1026167). 
-ADDRESS: 8 CANADA SQUARE, CANARY WHARF, LONDON E14 5HQ, UK.
+Refactor cckrates_included() and cckratesonly_included() to simplify
+the code and improve readability.
 
-Attn: Beneficiary,
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-We write to inform you that Series of meetings have been held with the Secretary General of United Nations,U.S Department of State and Africa Union Organization this ended last week.
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index a5790a648a5b..4e0d86b2e2e0 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -56,11 +56,12 @@ static u8 rtw_basic_rate_ofdm[3] = {
+ 
+ int cckrates_included(unsigned char *rate, int ratelen)
+ {
+-	int	i;
++	int i;
+ 
+ 	for (i = 0; i < ratelen; i++) {
+-		if  ((((rate[i]) & 0x7f) == 2)	|| (((rate[i]) & 0x7f) == 4) ||
+-		     (((rate[i]) & 0x7f) == 11)  || (((rate[i]) & 0x7f) == 22))
++		u8 r = rate[i] & 0x7f;
++
++		if (r == 2 || r == 4 || r == 11 || r == 22)
+ 			return true;
+ 	}
+ 
+@@ -69,11 +70,12 @@ int cckrates_included(unsigned char *rate, int ratelen)
+ 
+ int cckratesonly_included(unsigned char *rate, int ratelen)
+ {
+-	int	i;
++	int i;
+ 
+ 	for (i = 0; i < ratelen; i++) {
+-		if  ((((rate[i]) & 0x7f) != 2) && (((rate[i]) & 0x7f) != 4) &&
+-		     (((rate[i]) & 0x7f) != 11)  && (((rate[i]) & 0x7f) != 22))
++		u8 r = rate[i] & 0x7f;
++
++		if (r != 2 && r != 4 && r != 11 && r != 22)
+ 			return false;
+ 	}
+ 
+-- 
+2.28.0
 
-During the meeting we discovered that you have not receive your funds due to past corrupt Government Officials who almost held the funds to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to defraud you, which has led to unnecessary delay in releasing the funds to you.
-
-The United Nations/ U.S. Department of State and Africa Union Organization have successfully passed a payment mandate to our bank, to clear all over due Contract funds, Lottery winnings and Inheritance funds owed to you and other individuals/organizations who have been found not to have receive their long overdue payment.
-
-A woman by name (MRS: CINDY MAY A CITIZEN OF USA) came to our office with an application stating that you gave her the power of attorney to be the beneficiary of your Outstanding funds. She made us to believe that you are dead and that she is your next of kin. We decided to send you email through this address hoping to find out if you are dead or alive and also to find out if you at any time gave her the power of attorney to represent you but we decided to contact you before we can take any action because of the sensitivity nature of the transaction and the amount of money that is involved:
-
-For immediate release of your $21.5M to you legally as the legal recipient if you did not authorize Cindy May, you are required to send YOUR FULL NAME, CURRENT ADDRESS, CELL PHONE AND FAX NUMBER if any for onward proceeding on how you are going to receive the said funds legally without any problem either now or in future. Treat as urgent.
-
-Yours Sincerely,
-
-Mr. Noel Quinn
-HSBC Chief Executive Officer .
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
