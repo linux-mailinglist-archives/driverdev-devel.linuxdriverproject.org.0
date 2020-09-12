@@ -1,44 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62B76267ADC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Sep 2020 16:31:27 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5BC0267ADB
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Sep 2020 16:31:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 514B1203F7;
-	Sat, 12 Sep 2020 14:31:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 532C886DE0;
+	Sat, 12 Sep 2020 14:31:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BUMtB84bZNZk; Sat, 12 Sep 2020 14:31:23 +0000 (UTC)
+	with ESMTP id UqCWZyNJKJtb; Sat, 12 Sep 2020 14:31:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 371932039A;
-	Sat, 12 Sep 2020 14:31:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4846B86E56;
+	Sat, 12 Sep 2020 14:31:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D3D511BF36E
- for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 14:31:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 685BC1BF36E
+ for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 14:31:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CE9D3864C3
- for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 14:31:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5FE2286FBC
+ for <devel@linuxdriverproject.org>; Sat, 12 Sep 2020 14:31:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AzZFc5UeX58U for <devel@linuxdriverproject.org>;
+ with ESMTP id yZQdOpD6rgr4 for <devel@linuxdriverproject.org>;
  Sat, 12 Sep 2020 14:31:12 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from dmz.c-home.cz (gw.c-home.cz [89.24.150.100])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ADDA486449
+ by hemlock.osuosl.org (Postfix) with ESMTP id 97431875B0
  for <devel@driverdev.osuosl.org>; Sat, 12 Sep 2020 14:31:11 +0000 (UTC)
 Received: from ubuntu1804.c-home.cz (unifi.c-home.cz [192.168.1.239])
- by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 08CEUtN3007223;
- Sat, 12 Sep 2020 16:31:01 +0200 (CEST)
+ by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 08CEUtN4007223;
+ Sat, 12 Sep 2020 16:31:02 +0200 (CEST)
 From: Martin Cerveny <m.cerveny@computer.org>
 To: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH v2 4/6] media: cedrus: Add support for V3s
-Date: Sat, 12 Sep 2020 16:30:50 +0200
-Message-Id: <20200912143052.30952-5-m.cerveny@computer.org>
+Subject: [PATCH v2 5/6] dt-bindings: media: cedrus: Add V3s compatible
+Date: Sat, 12 Sep 2020 16:30:51 +0200
+Message-Id: <20200912143052.30952-6-m.cerveny@computer.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200912143052.30952-1-m.cerveny@computer.org>
 References: <20200912143052.30952-1-m.cerveny@computer.org>
@@ -67,42 +67,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-V3s video engine runs at lower speed and support video decoder
-for H.264 and JPEG/MJPEG only.
+Allwinner V3s SoC contains video engine. Add compatible for it.
 
 Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
 ---
- drivers/staging/media/sunxi/cedrus/cedrus.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ .../bindings/media/allwinner,sun4i-a10-video-engine.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
-index ae7e154eca9f..79ec5e07b416 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
-@@ -511,6 +511,12 @@ static const struct cedrus_variant sun8i_h3_cedrus_variant = {
- 	.mod_rate	= 402000000,
- };
- 
-+static const struct cedrus_variant sun8i_v3s_cedrus_variant = {
-+	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
-+			  CEDRUS_CAPABILITY_H264_DEC,
-+	.mod_rate	= 297000000,
-+};
-+
- static const struct cedrus_variant sun50i_a64_cedrus_variant = {
- 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
- 			  CEDRUS_CAPABILITY_MPEG2_DEC |
-@@ -557,6 +563,10 @@ static const struct of_device_id cedrus_dt_match[] = {
- 		.compatible = "allwinner,sun8i-h3-video-engine",
- 		.data = &sun8i_h3_cedrus_variant,
- 	},
-+	{
-+		.compatible = "allwinner,sun8i-v3s-video-engine",
-+		.data = &sun8i_v3s_cedrus_variant,
-+	},
- 	{
- 		.compatible = "allwinner,sun50i-a64-video-engine",
- 		.data = &sun50i_a64_cedrus_variant,
+diff --git a/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml b/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
+index 4cc1a670c986..08515c18cbb7 100644
+--- a/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
++++ b/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
+@@ -18,6 +18,7 @@ properties:
+       - allwinner,sun7i-a20-video-engine
+       - allwinner,sun8i-a33-video-engine
+       - allwinner,sun8i-h3-video-engine
++      - allwinner,sun8i-v3s-video-engine
+       - allwinner,sun50i-a64-video-engine
+       - allwinner,sun50i-h5-video-engine
+       - allwinner,sun50i-h6-video-engine
 -- 
 2.17.1
 
