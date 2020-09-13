@@ -1,104 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B18D3267E94
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 10:24:18 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A555267E8D
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 10:19:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2D70C86C39;
-	Sun, 13 Sep 2020 08:24:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1EC40203E2;
+	Sun, 13 Sep 2020 08:19:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jodj+85si4qe; Sun, 13 Sep 2020 08:24:15 +0000 (UTC)
+	with ESMTP id 0JW-ekVaH5LI; Sun, 13 Sep 2020 08:19:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0081086BF8;
-	Sun, 13 Sep 2020 08:24:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 813392043B;
+	Sun, 13 Sep 2020 08:19:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 68F011BF5A9
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 08:24:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AFB7D1BF5A9
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 08:19:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 64D9F85550
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 08:24:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9EAE3203E2
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 08:19:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fDW1HahKyzx1 for <devel@linuxdriverproject.org>;
- Sun, 13 Sep 2020 08:24:10 +0000 (UTC)
-X-Greylist: delayed 01:18:39 by SQLgrey-1.7.6
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2123.outbound.protection.outlook.com [40.107.243.123])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2B6FC854FC
- for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 08:24:10 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZaSmTQnM7z+xPPl7ncduBMAGpAkybvw2YW1m/AW5rcHdxuavhCWb+9YBRWOtDxNl6HQP85VFWIKvreSfq6NskzDKySCDQqHUv/VE7IPoGJHhN8OF8TvOJMFRkxhY+uVpOtsjxlEW/Luq2LloQazni0ffqdmmJ9oAZ0gMDRzU1h1rD9a2UU/l+eKfnJj6H05O2XEt9bqEk5h0TWtNssH8d2AdX2L4gsYtbnMtrxDQOWM3RI+9YwTdIer1QbiNU7T0AdZeyrfPQI9Ob8gSLU55oypBqjMWS/Kr91ZlY7tjOiL9pzhQucDokkDjXHWQ09vfqA+IhVjrMDeNTrlfkTYuhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hjdIf9P32dVOtcLTf1H3N4ZSDfQMyRUHiVcRDpJc1SQ=;
- b=nkki04mUdIjpCmbFujpLW3bPX/SBLfoIrDQEwOFXPKW1+FnA7zpMlz/XsNez6ATxPm515fqlSC8O7GCLfo2R9Ew/IIx57hqtejSHlhKOh1MBf18rkGxNXx4QwAeYP19zZUoI3DWN+/cHBJODt0WDbgn+JUy0tERgDecDYXBULI9UAc1WjTqKjMJe0gREYZOuJgi4SKAp9K8IVIuVyDzLzuRCfVxCMBCCZl2rgA16WaYqH+JipYj1EaO+UFtv0NsNbbN8J7VvRLmNyC/2LSdjLqlxj854NwejforA9d8YoHUUfHKNsxkWNsUlNDxXOphOp8tUzVBcSYO0xZjkvLAW7A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=learner.manipal.edu; dmarc=pass action=none
- header.from=learner.manipal.edu; dkim=pass header.d=learner.manipal.edu;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=learnermanipal.onmicrosoft.com; s=selector2-learnermanipal-onmicrosoft-com; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hjdIf9P32dVOtcLTf1H3N4ZSDfQMyRUHiVcRDpJc1SQ=;
- b=L58oGT08Bs9yBwg7plHodLmjEvycdrf/ckDr9x59C95oGsIsa5QmxT4d+H+CT1/otJ9xvizQCvX2HPehrwHZ9EilcC9DjsV2n8u9d/omqKi4+lh7U9ibBdh/oYumICpOFH38ekzmv7iuvLRwVxgmbFH3qFveocwHei6WGxmMR1g=
-Authentication-Results: linuxfoundation.org; dkim=none (message not signed)
- header.d=none;linuxfoundation.org; dmarc=none action=none
- header.from=learner.manipal.edu;
-Received: from BL0PR01MB4338.prod.exchangelabs.com (2603:10b6:208:37::12) by
- MN2PR01MB5886.prod.exchangelabs.com (2603:10b6:208:188::23) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3370.16; Sun, 13 Sep 2020 06:50:01 +0000
-Received: from BL0PR01MB4338.prod.exchangelabs.com
- ([fe80::1951:3615:4c27:fb9b]) by BL0PR01MB4338.prod.exchangelabs.com
- ([fe80::1951:3615:4c27:fb9b%6]) with mapi id 15.20.3370.017; Sun, 13 Sep 2020
- 06:50:01 +0000
-Message-ID: <230f781dcaadfc797a016cc6036d63efe6542062.camel@learner.manipal.edu>
-Subject: [RESEND PATCH] staging: rtl8188eu: Fix else after return WARNING
- (checkpatch)
-From: Sohom Datta <sohom.datta@learner.manipal.edu>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Sun, 13 Sep 2020 12:19:50 +0530
-User-Agent: Evolution 3.36.5 
-X-ClientProxiedBy: BM1PR01CA0102.INDPRD01.PROD.OUTLOOK.COM (2603:1096:b00::18)
- To BL0PR01MB4338.prod.exchangelabs.com
- (2603:10b6:208:37::12)
+ with ESMTP id wLTZnz51Cbr8 for <devel@linuxdriverproject.org>;
+ Sun, 13 Sep 2020 08:19:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ej1-f66.google.com (mail-ej1-f66.google.com
+ [209.85.218.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7FED5203B8
+ for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 08:19:46 +0000 (UTC)
+Received: by mail-ej1-f66.google.com with SMTP id r7so18971230ejs.11
+ for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 01:19:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JTKNL3SAmNHKeei1RZzkVvOMmOlCapOPSJPDjjnYcso=;
+ b=gt3G012Fk9LsL8CBSfPNsHZSvpO7B2EiWQ3Urw2pp8MvAVpChF2/+f2uh2WJzoDug8
+ oAA6HDYFyXo+43hr3C0/JuHLIOU8BjJVvQPWqqwpntS7LaVywo/fV1Uv/6vFVTJJ+s2+
+ QCclrN0G2AGKJPEp4RR+G1lzeNXkPjJg964+QAtc5oMageZU7PBobhvuwQewWNbaYFLN
+ k/YqUogC6hNkZdwCorn0QxNUQkYJktWksXB0TdJXt/8rIa3uIReIeVR1s1vmcfwfbyre
+ D1oO+N7FBEdSYxx6wQ2tgFD5gT3feQ+m0LSWXpbblKZIVi4t6dRJT8Fod+yarCEjcv3O
+ 0hww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JTKNL3SAmNHKeei1RZzkVvOMmOlCapOPSJPDjjnYcso=;
+ b=tlWiYL0fGHMX4ykwRyKuTA3NvnoJlp99lukQaJnUEFsvcVMAio1KSEWUAetM4B6r9J
+ qiSa0CUlsa2OMzVPMRpR+jjAv3v+kXPen42PClqYwd1CZ5egs66v9gd2+LCe/yWF2ChW
+ 7PHu0y2NkUqMGA9OMfW5nOuyPa/uEXi3YnBW80Hs/2h5du2lseC4bpDKs/EUFd6TfTfl
+ VpfEuhbrIesn8EXBAh2Ug22yRwSV1q8Mm21BiaIcopjc6y5GOWppcx5YWVBz/io2q1RI
+ AgfqDmdOwCzgrVJkJVZ0wtzXXX+ERZa5PfXziBfwnERcOKHkhh05AeKStpHreikTAE4q
+ K5Kw==
+X-Gm-Message-State: AOAM533Irp8tJr12Eixtn5JbgCtfu2L6LzEVHAoi7KFJQS7XxKcyzOAa
+ KLJXWHnyVHY0/QW4swz0TfA=
+X-Google-Smtp-Source: ABdhPJypyUpgAp8jm8ENIIoF0lNg+ji5zjKNJqUavIkE6xyq4R8JfjD2bwaHFXdKICqbBNNssXpK5g==
+X-Received: by 2002:a17:906:4a51:: with SMTP id
+ a17mr9172003ejv.381.1599985184917; 
+ Sun, 13 Sep 2020 01:19:44 -0700 (PDT)
+Received: from [192.168.178.22]
+ (dslb-002-204-143-192.002.204.pools.vodafone-ip.de. [2.204.143.192])
+ by smtp.gmail.com with ESMTPSA id dm22sm6455855edb.49.2020.09.13.01.19.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 13 Sep 2020 01:19:44 -0700 (PDT)
+Subject: Re: [PATCH 1/5] staging: rtl8723bs: refactor cckrates{only}_included
+To: Joe Perches <joe@perches.com>, gregkh@linuxfoundation.org
+References: <20200912084520.8383-1-straube.linux@gmail.com>
+ <f5fdb27843143dfefb1a1a416dab63931fef6d41.camel@perches.com>
+From: Michael Straube <straube.linux@gmail.com>
+Message-ID: <30b4b012-61ed-18e4-4c0f-bc9f247f2dbf@gmail.com>
+Date: Sun, 13 Sep 2020 10:16:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from sohom-E480 (223.191.54.119) by
- BM1PR01CA0102.INDPRD01.PROD.OUTLOOK.COM (2603:1096:b00::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3370.16 via Frontend Transport; Sun, 13 Sep 2020 06:49:57 +0000
-X-Originating-IP: [223.191.54.119]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8e2c4409-7b77-4550-f65d-08d857b13c76
-X-MS-TrafficTypeDiagnostic: MN2PR01MB5886:
-X-Microsoft-Antispam-PRVS: <MN2PR01MB5886EA795840ADEED632D0CAA7220@MN2PR01MB5886.prod.exchangelabs.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2276;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Ue48ayXtszTTkYR7NDJ1el51gq1sbkglzVk0EOu7Sk3Ugf7qaeZGUMEAqNS2Qwy6mZDcIgKIniWZqTsgmeSy/PSjIJKAkomUAWDH30vOlwNsWwxYoGCqQf6Tp57RT6xJk7DoTjngCkSmYe3FWBkp2XFy+CK3TRLqzuRS3Vf4fZWIG2IomeEq8L95cbSnoXApDO2spPUw7RyeYGC4hqqwg4pMKSQHrrZKGY1wcl4wvKVCFj+E0lcaOcupeV5r/7d8MCM3Rez3SOz0DUdhcaF8mdM/Th/53wdtei2a69zwMvJ1SQk8Sc1cxlP3e9AXogcBgmme8NHpTBe5Uo9t89xL7g==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR01MB4338.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(136003)(376002)(366004)(39860400002)(346002)(396003)(6666004)(316002)(83380400001)(52116002)(786003)(8936002)(2906002)(4326008)(75432002)(44832011)(6496006)(478600001)(16526019)(8676002)(66476007)(66556008)(5660300002)(6486002)(26005)(66946007)(186003)(2616005)(6916009)(956004)(86362001)(53546011);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: FnfoCFOVPzh6r+w1v/bHMg2G3qQ+GvMzIXH4ed2buTWbaXqnpF/5CeDf5Dj4LwNzvssqkEeffQDbKCW48br6GPoImJpUwed13FgAvZB6uSxBavJ/+8Cj8FeXNT0Ybj4Wg2vmHSPvgzC7bjOL9KOZo3GZejt08amDrE0NS6A6PwAXrYMF9wRYOnkSRSQVzi9CGYtBbRrCZDponAdcrJx2MUjR6H3V085ufjcp89K4GqvZvGQiRS8ASeRirbcqHugmNLfuL9aTfVnufr2H3VNNx8OhiGnYxvzEiyf5pMk1oDkqZi+bYR3AfMlivGWdUEEvU/T42USbvhGn7XBinSY7xQ9qi/qJ23iLugu+v27UDU7lesAw1J+iAHp9khJL0vgPFPEVn+qXPeJx9J3CbnJ65REJZu064PqxhGRJzkbuNfq+Uy5tkPmm3I7WeSFHJF/PZlQQt21rvkathE7xiORMIuOZsvHOMKtAtCWwHC4uR2K87GJ05TB7Rchhyc+2+70/SDEM/XqazmBFHchWm1P2WsnxTDfML8EZziFmd2MeAMgsBWG0cHdThq+bpl7ojAuuNnz0Hl+x3IP7zYQ4CVBOmvOI4cUm8xr6wUAvcu4TAI/H2YPub59A/8cL7fdCMP+UZym/sIAEmDY93atUuReprg==
-X-OriginatorOrg: learner.manipal.edu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8e2c4409-7b77-4550-f65d-08d857b13c76
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR01MB4338.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2020 06:50:01.0571 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 29bebd42-f1ff-4c3d-9688-067e3460dc1f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: tk59OXOEs2hdI+zhwPjGP+xKCmjdqJswOxBdrBj4eesGvMa7Awo62j22CmA8eHBjPAlvl3cgzSQSmrdxxvROkdhD3wofHaXFkGJXB/WGajY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR01MB5886
+In-Reply-To: <f5fdb27843143dfefb1a1a416dab63931fef6d41.camel@perches.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,54 +91,108 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry Finger <Larry.Finger@lwfinger.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From 4c8c8f3ff7f4d711daea4ac3bb987fcecc7ef1ed Mon Sep 17 00:00:00 2001
-From: Sohom <sohom.datta@learner.manipal.edu>
-Date: Sat, 12 Sep 2020 18:04:56 +0530
-Subject: [RESEND PATCH] staging: rtl8188eu: Fix else after return WARNING
- (checkpatch)
 
-Fixed:
-WARNING: else is not generally useful after a break or return
-1636: FILE: ./rtw_recv.c:1636:
-+           return false;
-+       else
 
-Separated the return statement into a separate block since
-it doesn't seem to depend on the SN_LESS explicity being false.
+On 2020-09-12 20:22, Joe Perches wrote:
+> On Sat, 2020-09-12 at 10:45 +0200, Michael Straube wrote:
+>> Refactor cckrates_included() and cckratesonly_included() to simplify
+>> the code and improve readability.
+>>
+>> Signed-off-by: Michael Straube <straube.linux@gmail.com>
+>> ---
+>>   drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 14 ++++++++------
+>>   1 file changed, 8 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+>> index a5790a648a5b..4e0d86b2e2e0 100644
+>> --- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+>> +++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+>> @@ -56,11 +56,12 @@ static u8 rtw_basic_rate_ofdm[3] = {
+>>   
+>>   int cckrates_included(unsigned char *rate, int ratelen)
+>>   {
+>> -	int	i;
+>> +	int i;
+>>   
+>>   	for (i = 0; i < ratelen; i++) {
+>> -		if  ((((rate[i]) & 0x7f) == 2)	|| (((rate[i]) & 0x7f) == 4) ||
+>> -		     (((rate[i]) & 0x7f) == 11)  || (((rate[i]) & 0x7f) == 22))
+>> +		u8 r = rate[i] & 0x7f;
+>> +
+>> +		if (r == 2 || r == 4 || r == 11 || r == 22)
+>>   			return true;
+>>   	}
+>>   
+>> @@ -69,11 +70,12 @@ int cckrates_included(unsigned char *rate, int ratelen)
+>>   
+>>   int cckratesonly_included(unsigned char *rate, int ratelen)
+>>   {
+>> -	int	i;
+>> +	int i;
+>>   
+>>   	for (i = 0; i < ratelen; i++) {
+>> -		if  ((((rate[i]) & 0x7f) != 2) && (((rate[i]) & 0x7f) != 4) &&
+>> -		     (((rate[i]) & 0x7f) != 11)  && (((rate[i]) & 0x7f) != 22))
+>> +		u8 r = rate[i] & 0x7f;
+>> +
+>> +		if (r != 2 && r != 4 && r != 11 && r != 22)
+>>   			return false;
+> 
+> It would be simpler to add and use an inline like:
+> 
+> static bool is_cckrate(unsigned char rate)
+> {
+> 	rate &= 0x7f;
+> 	return rate == 2 || rate == 4 || rate == 11 || rate == 22;
+> }
+> 
+> so these could be
+> 
+> bool cckrates_included(unsigned char *rate, int ratelen)
+> {
+> 	int i;
+> 
+> 	for (i = 0; i < ratelen; i++) {
+> 		if (is_cckrate(rate[i])
+> 			return true;
+> 	}
+> 
+> 	return false;
+> }
+> 
+> bool cckratesonly_included(unsigned char *rate, int ratelen)
+> {
+> 	int i;
+> 
+> 	if (i <= 0)
+> 		return false;
+> 
+> 	for (i = 0; i < ratelen; i++) {
+> 		if (!is_cckrate(rate[i])
+> 			return false;
+> 	}
+> 
+> 	return true;
+> }
+> 
+> 
 
-Signed-off-by: Sohom <sohom.datta@learner.manipal.edu>
----
- drivers/staging/rtl8188eu/core/rtw_recv.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+I've just seen that there are already rtw_is_cckrates_included and rtw_is_cckratesonly_included
+in rtw_ieee80211.c that can be used here.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 5fe7a0458dd2..5e81134ffb6d 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -1629,10 +1629,11 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
- 		hdr = list_entry(plist, struct recv_frame, list);
- 		pnextattrib = &hdr->attrib;
- 
-+		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
-+			return false;
-+
- 		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num))
- 			plist = plist->next;
--		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
--			return false;
- 		else
- 			break;
- 	}
--- 
-2.28.0
+I will send another series removing the functions from rtw_wlan_util.c and use the ones from
+rtw_ieee80211.c.
 
+So please don't merge this series, thanks.
+
+Michael
 
 _______________________________________________
 devel mailing list
