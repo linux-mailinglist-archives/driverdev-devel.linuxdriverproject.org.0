@@ -1,58 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7CAA26804C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 18:33:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5E7126819E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Sep 2020 00:13:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 49568868C1;
-	Sun, 13 Sep 2020 16:33:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 58F5387100;
+	Sun, 13 Sep 2020 22:13:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HY7jyGUgQRyO; Sun, 13 Sep 2020 16:33:48 +0000 (UTC)
+	with ESMTP id WQkD73wZ1pNE; Sun, 13 Sep 2020 22:13:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4D417866E6;
-	Sun, 13 Sep 2020 16:33:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 51A3C87082;
+	Sun, 13 Sep 2020 22:13:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6B0931BF59E
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:33:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1F2751BF3F3
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 22:13:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 621F520369
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:33:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0778920498
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 22:13:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0TQ90C5tX0zu for <devel@linuxdriverproject.org>;
- Sun, 13 Sep 2020 16:33:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 8E0B41FD21
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:33:33 +0000 (UTC)
-Subject: Re: [GIT PULL] Staging/IIO driver fixes for 5.9-rc5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600014813;
- bh=UF/1u/Hb44Uy60ai6q8/KrA78xDD1LOyJcvA+7mjIaI=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=fnVbbiQyUFTJIyaOHkTn2ZZTM8xJ0NscAX39G3ehWt9al9SwBQNuaQH8K49/zKtj/
- 44H2RquEF/atDarpEnHxaW+QNTzsL+CpmnlS04a9wmlBTl1mGWPdd8+fHCufsNzcRI
- Rx37KifFSKyeedc+GpXpywz//1MSEphhzo75eNzE=
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20200913083918.GA906881@kroah.com>
-References: <20200913083918.GA906881@kroah.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20200913083918.GA906881@kroah.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
- tags/staging-5.9-rc5
-X-PR-Tracked-Commit-Id: a139ffa40f0c24b753838b8ef3dcf6ad10eb7854
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 6c7247f6258b2dba353c885a1b00d795a380cc85
-Message-Id: <160001481310.6953.15482507862553138944.pr-tracker-bot@kernel.org>
-Date: Sun, 13 Sep 2020 16:33:33 +0000
-To: Greg KH <gregkh@linuxfoundation.org>
+ with ESMTP id OVw6A5UFYBh7 for <devel@linuxdriverproject.org>;
+ Sun, 13 Sep 2020 22:13:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail1.milil.com.bd (unknown [120.50.19.106])
+ by silver.osuosl.org (Postfix) with ESMTPS id BDA0720384
+ for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 22:13:40 +0000 (UTC)
+Received: from User (unknown [120.50.19.100])
+ by mail.milil.com.bd (Postfix) with SMTP id 173EE2A203CA;
+ Mon, 14 Sep 2020 03:56:53 +0600 (BDT)
+From: "Hon. Ms. Reem"<hr@milil.com.bd>
+Subject: Project
+Date: Sun, 13 Sep 2020 22:13:32 -0000
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200913221343.0778920498@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,28 +55,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
- devel@linuxdriverproject.org
-MIME-Version: 1.0
+Reply-To: honreemebrahimal-hashimi@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pull request you sent on Sun, 13 Sep 2020 10:39:18 +0200:
+Hello,    
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.9-rc5
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/6c7247f6258b2dba353c885a1b00d795a380cc85
+The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
 
-Thank you!
+We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
