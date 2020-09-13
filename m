@@ -2,107 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6896D267FAC
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 15:31:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5F2C268039
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 18:25:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 959DE869F0;
-	Sun, 13 Sep 2020 13:31:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 09373868F2;
+	Sun, 13 Sep 2020 16:25:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GSiciizdSZxV; Sun, 13 Sep 2020 13:31:26 +0000 (UTC)
+	with ESMTP id hCO0muSNPMSF; Sun, 13 Sep 2020 16:25:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6C85D868F9;
-	Sun, 13 Sep 2020 13:31:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC828868CC;
+	Sun, 13 Sep 2020 16:25:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9B87A1BF366
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 13:31:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B194F1BF59E
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:25:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 78FB320394
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 13:31:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AE87B85070
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:25:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ncF8KYdJFuDn for <devel@linuxdriverproject.org>;
- Sun, 13 Sep 2020 13:31:21 +0000 (UTC)
-X-Greylist: delayed 06:07:47 by SQLgrey-1.7.6
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2091.outbound.protection.outlook.com [40.107.94.91])
- by silver.osuosl.org (Postfix) with ESMTPS id D9F4720379
- for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 13:31:20 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=S1wKQx14PCQCt1uy7mccOEYlXooz6GQf98QnFGeEoWZfpoVK5HiXotXZB1T4KfwT7TS4HLWIKIl8T+taIUZWMlE4RuWzoBSP3lNEAZZ0ofps1UZu2vBO7lwr9prlxMh+oJkiARV0UIroBGHyl5M5PEOxfcqT//iqWkVGO5XlB3gAsxPy6XxuGqcYHDl+/Y8gwxU0DnYKO71qjybk+2rQKfWz1eiUawbn1/jbh62r2ejLo171JdguthHrvGbOnzpzBfZgpw9mOpAvr+RvbGZbWnIb7lRVE1BgRx/eJatJidaCr+Zf7XT5+atf6yD2ghpm1UTQ7suyTBdDvhRSATWlSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=f95mgtcsXCIuKJ3JIfUIAvDmN+zAvLktj65OgufucJ4=;
- b=mQOk3rKJ7E/0/5sNltRLQyN3/36JFPNWD1OR48ef80VMegYsfv2CYVhGpuDNuTtuCm0nfRog3FiwG9Pi6B5xz9DtA6Su/KGZC8HQ6klA+K8p29Nj8nUhOCfmVZi5RDo5SdOS9AHwM4eivBG7f9DIs0Vrqz0zFhkgzaGlN6fbdThd8KB2qmfB2GVjP2lkXRZjYZmfC/AS260OGPuzyhoRYnKtOgyj0Q+rlMRwaGSf3lOL66mHRQV6Bew4Ux7F4LutIqZWKROFM9UKyaV/xvJihyK8IE8vMyQa6kF6t+dMPgA4cP4ttpWgflZA45sicRceF1QattvE1f2L5UtcSeZvnA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=learner.manipal.edu; dmarc=pass action=none
- header.from=learner.manipal.edu; dkim=pass header.d=learner.manipal.edu;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=learnermanipal.onmicrosoft.com; s=selector2-learnermanipal-onmicrosoft-com; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=f95mgtcsXCIuKJ3JIfUIAvDmN+zAvLktj65OgufucJ4=;
- b=DL/W075iCgDKYZkRPoZ+l0cxrVozFk2bB6kV18TS0Isfn+1ParvgT/gSzosfRx1qw4NZqxkG8C5ehmlID34zU7EIT+dpsoAcIQpJ12QGHwD0CH+pc/jtlKwJ4XPZ6MedEkf2p3k4XOxYBjaiIUXsH0LD4c43endjCNGNDp7WQ+M=
-Authentication-Results: lwfinger.net; dkim=none (message not signed)
- header.d=none;lwfinger.net; dmarc=none action=none
- header.from=learner.manipal.edu;
-Received: from BYAPR01MB4344.prod.exchangelabs.com (2603:10b6:a03:a0::13) by
- BYAPR01MB5288.prod.exchangelabs.com (2603:10b6:a03:91::19) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3370.17; Sun, 13 Sep 2020 13:15:34 +0000
-Received: from BYAPR01MB4344.prod.exchangelabs.com
- ([fe80::e167:aa58:7a0d:dfb7]) by BYAPR01MB4344.prod.exchangelabs.com
- ([fe80::e167:aa58:7a0d:dfb7%6]) with mapi id 15.20.3370.018; Sun, 13 Sep 2020
- 13:15:34 +0000
-From: Sohom <sohom.datta@learner.manipal.edu>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [RESEND(2) PATCH] staging: rtl8188eu: Fix else after return WARNING
- (checkpatch)
-Date: Sun, 13 Sep 2020 18:24:39 +0530
-Message-Id: <20200913125439.25036-1-sohom.datta@learner.manipal.edu>
+ with ESMTP id vrZwiGXaqqPt for <devel@linuxdriverproject.org>;
+ Sun, 13 Sep 2020 16:25:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
+ [209.85.208.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C2A9A84FC9
+ for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 16:25:40 +0000 (UTC)
+Received: by mail-ed1-f68.google.com with SMTP id a12so15204313eds.13
+ for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 09:25:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iJKJB6zX9XOaPugcfbZ/srCTJvZAJAvg0+wka4cvIMM=;
+ b=Rqq2uW2bITTnA60MJmjJx6HRrP56zQ66+ZcWH+1uBierD6N3ddSOxA36uRPYOf4W0m
+ wc04Gp3zW+4G08sb+CkpFlEYuIZbhFP9vALFM28zcCDWrmDgsyGd3azJZpaDdFY3pruu
+ k5tF9/B934Ej5Qjxxh/t3ygVrP4BuezhZaYimcM+u6IPpIuxIYrMRkPtKxPkk1yp6mSF
+ auPFl3YFMVMkplIFpaFWIhkJI0rcpH/V4r6uAGmJGQ/HXDQgyCAGSB843dgxD/+MY8sL
+ CJ9AJmaI9qr2wgBxdGxS1dnXAIqn3A7NW8Bi97tUuflYacZoCPASlUCHKd+5gAzXb9ST
+ TSjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iJKJB6zX9XOaPugcfbZ/srCTJvZAJAvg0+wka4cvIMM=;
+ b=WasrLFQSPsoPgxH4G0WQ7rKTf90l/8QLR8Gvj13ArrDIKmHeYElG+XfOLbYqh+BbGw
+ un5r367zbg7J3jR9fAupD/LPiSC6DNGNbNI4SXt72lE3Ze8QH05cADg58qvkgOG5MKsK
+ X6hvi3yzGDvQqwaOL0laM8Jpy0uSo2/GXwZZTvs7JPUoCSe6LMO/IOwkhCsaimDV80Rh
+ QJLBptX7UC3NBfyX4qk8a7Ntn0Z6dRcQ0Oohen5mZ0hoKDgqJGfQS8pUn31NANEEuEJf
+ sL8smpnro4yvvabax6vg7VA4A5ihlngClIwB9a4mu6iBN+6bKYB2yLHgNsk9l7MWqWsQ
+ 7tLQ==
+X-Gm-Message-State: AOAM533BXda0R2DcNUhq0PheqAJtmWKjvV7iJ8YzHAUO3QqvFXgTvyON
+ H3zQZLDY4J137J8NQn6/f+k=
+X-Google-Smtp-Source: ABdhPJxp9tV3oj6RzynqOBx3JEx7NY3drYT+vpbjf3SUFqz6QrO1OespSAjQblNz/IMLJ1xigf9Jug==
+X-Received: by 2002:a05:6402:10d3:: with SMTP id
+ p19mr13808570edu.380.1600014338977; 
+ Sun, 13 Sep 2020 09:25:38 -0700 (PDT)
+Received: from localhost.localdomain
+ (ipservice-092-219-207-100.092.219.pools.vodafone-ip.de. [92.219.207.100])
+ by smtp.gmail.com with ESMTPSA id w19sm7163505edt.22.2020.09.13.09.25.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 13 Sep 2020 09:25:38 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/2] staging: rtl8723bs: remove cckrates{only}_included()
+Date: Sun, 13 Sep 2020 18:22:05 +0200
+Message-Id: <20200913162206.19477-1-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.28.0
-X-ClientProxiedBy: BM1PR01CA0124.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:b00:40::18) To BYAPR01MB4344.prod.exchangelabs.com
- (2603:10b6:a03:a0::13)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost.localdomain (223.191.54.47) by
- BM1PR01CA0124.INDPRD01.PROD.OUTLOOK.COM (2603:1096:b00:40::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3370.16 via Frontend Transport; Sun, 13 Sep 2020 13:15:31 +0000
-X-Mailer: git-send-email 2.28.0
-X-Originating-IP: [223.191.54.47]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 4ce2e268-fe0c-4bda-0a12-08d857e718af
-X-MS-TrafficTypeDiagnostic: BYAPR01MB5288:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BYAPR01MB5288867EA8B7F83E015D377CA7220@BYAPR01MB5288.prod.exchangelabs.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2276;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: d4JBzMFNP6ugno8MzApfSpNS3w2ph43QnNBnDkGCYKgOL+oPPyKH9ofz1fm4fv6j1U4H1QjHd6ltWWW1AO9EfdJxTE0JnxHXhgHGmsLEogHdhESnwkxI7Nc2eD72mOi1SPqNkIuRJL/9YbfWQKVHN6NPzyIrnD85WzSIxZnVKfigkAUKWXnsGr+CyTLFo4WDMy/aI92HNwfiV4vYawZV1/J/6acBae0pm8BkNeaHqOnX5FQ6uPhVAifVWnHjHQ7dBMT+9bNbOVhTqVRSo/PiZJec3XcG7efP+MlU7SuzU5V0YI3dqcw7Y7MbJ33Pl6ZMkFobJr+AjXUcPkU9T23EUIMoYcURTvPdlsjRP7/dOV1BZUWH1ShtyScAMDcnvlOR
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR01MB4344.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(376002)(346002)(136003)(396003)(39850400004)(366004)(1076003)(26005)(8936002)(83380400001)(16526019)(186003)(2906002)(956004)(6486002)(110136005)(786003)(478600001)(316002)(2616005)(8676002)(5660300002)(52116002)(75432002)(6512007)(4326008)(86362001)(107886003)(66556008)(6506007)(66476007)(66946007)(69590400008);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: wKm3fmDkvhADkVOawtM/LbMSnHABAZDYdJhnMu5e49A3TuX+H6zu3LHAPvZBEQMrZn7qBiB8lOPjOQJMnI28qbcNa9vmq2zmpUe8E0WzymfV02Dp68LNDOLpJj6gE5hfB5Nqn2G0G3gfTnz71lUUMGqYj/Z2kcT1/YbiKEJKvZMtpm+cP5O6HXq8qAKNardTfEoQ7qAx36nFOjzqYsKkYlCddz01+ETybntvApp9cRx8G9/F8GWqu/DStBnBH12GIsT5H4UbCtAbP6rR7bI6lUnQ9jisDf3fqWrSeqNadE1tbnhzWc6AWp/J8W0KAapFRGnB0pVp7d9TuDueCfQvM/SToyEdZvAAMv0UQsgvvV2n3LZl3R4D34jw88x/GtEOqnArIWZEr3S+/NliFKaMoTLaUT98tMi9xQvqQRM8VRjJYoxfB2y4nLIpzvCR+dSt1mmUlnA1nUvR1C2qI7VjzhIvvjnn/iTCKtg0BFZYIW5S6f9sEQII52BhPS1p1Zh+zt5GoFVHDGCvG0K0h8Yh3souAVGlCtDMlbOo+M1TNoYMzkEtGz7/8R4w4sgi/wbTYEu3N2KTj4C32Kw5Rt9QsQKCTG7tq9ohvkx0SbSHyMbhVu+/NYBw5/mxz2R4KV7q+fk+i02JmS7cmiw2yQjE6w==
-X-OriginatorOrg: learner.manipal.edu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4ce2e268-fe0c-4bda-0a12-08d857e718af
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR01MB4344.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2020 13:15:34.1668 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 29bebd42-f1ff-4c3d-9688-067e3460dc1f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: bvCQTREoMxr2P8YSaOhGydcLyTYVCaboj8zWGD6t5Px2eHO3RnnEnnIBhhxSpMFPjRW9uTZ0at31mFEx2K/uWp+G3kry1SkDQXZvRmP0snI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR01MB5288
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,44 +85,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sohom <sohom.datta@learner.manipal.edu>
+Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed:
-WARNING: else is not generally useful after a break or return
-1636: FILE: ./rtw_recv.c:1636:
-+           return false;
-+       else
+In rtw_ieee80211.c there are rtw_is_cckrates_included() and
+rtw_is_cckratesonly_included() which have the same functionality as
+cckrates_included() and cckrates_only_included() defined in
+rtw_wlan_util.c. Remove the functions from rtw_wlan_util.c and use
+those from rtw_ieee80211.c. Remove the now unused variable ratelen.
 
-Separated the return statement into a separate block since
-it doesn't seem to depend on the SN_LESS explicity being false.
-
-Signed-off-by: Sohom <sohom.datta@learner.manipal.edu>
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_recv.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ .../staging/rtl8723bs/core/rtw_wlan_util.c    | 34 ++-----------------
+ .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  2 --
+ 2 files changed, 3 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 5fe7a0458dd2..5e81134ffb6d 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -1629,10 +1629,11 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
- 		hdr = list_entry(plist, struct recv_frame, list);
- 		pnextattrib = &hdr->attrib;
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index a5790a648a5b..6cb779bc9410 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -54,32 +54,6 @@ static u8 rtw_basic_rate_ofdm[3] = {
+ 	IEEE80211_OFDM_RATE_24MB | IEEE80211_BASIC_RATE_MASK
+ };
  
-+		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
-+			return false;
-+
- 		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num))
- 			plist = plist->next;
--		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+-int cckrates_included(unsigned char *rate, int ratelen)
+-{
+-	int	i;
+-
+-	for (i = 0; i < ratelen; i++) {
+-		if  ((((rate[i]) & 0x7f) == 2)	|| (((rate[i]) & 0x7f) == 4) ||
+-		     (((rate[i]) & 0x7f) == 11)  || (((rate[i]) & 0x7f) == 22))
+-			return true;
+-	}
+-
+-	return false;
+-}
+-
+-int cckratesonly_included(unsigned char *rate, int ratelen)
+-{
+-	int	i;
+-
+-	for (i = 0; i < ratelen; i++) {
+-		if  ((((rate[i]) & 0x7f) != 2) && (((rate[i]) & 0x7f) != 4) &&
+-		     (((rate[i]) & 0x7f) != 11)  && (((rate[i]) & 0x7f) != 22))
 -			return false;
+-	}
+-
+-	return true;
+-}
+-
+ u8 networktype_to_raid_ex(struct adapter *adapter, struct sta_info *psta)
+ {
+ 	u8 raid, cur_rf_type, rf_type = RF_1T1R;
+@@ -1740,15 +1714,13 @@ void update_capinfo(struct adapter *Adapter, u16 updateCap)
+ 
+ void update_wireless_mode(struct adapter *padapter)
+ {
+-	int ratelen, network_type = 0;
++	int network_type = 0;
+ 	u32 SIFS_Timer;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+ 	struct wlan_bssid_ex		*cur_network = &(pmlmeinfo->network);
+ 	unsigned char 		*rate = cur_network->SupportedRates;
+ 
+-	ratelen = rtw_get_rateset_len(cur_network->SupportedRates);
+-
+ 	if ((pmlmeinfo->HT_info_enable) && (pmlmeinfo->HT_caps_enable))
+ 		pmlmeinfo->HT_enable = 1;
+ 
+@@ -1765,9 +1737,9 @@ void update_wireless_mode(struct adapter *padapter)
+ 		else if (pmlmeinfo->HT_enable)
+ 			network_type = WIRELESS_11_24N;
+ 
+-		if ((cckratesonly_included(rate, ratelen)) == true)
++		if (rtw_is_cckratesonly_included(rate))
+ 			network_type |= WIRELESS_11B;
+-		else if ((cckrates_included(rate, ratelen)) == true)
++		else if (rtw_is_cckrates_included(rate))
+ 			network_type |= WIRELESS_11BG;
  		else
- 			break;
- 	}
+ 			network_type |= WIRELESS_11G;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+index 14583799039f..1567831caf91 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+@@ -716,8 +716,6 @@ void sa_query_timer_hdl(struct timer_list *t);
+ 		DBG_871X("%s set_sa_query_timer(%p, %d)\n", __func__, (mlmeext), (ms)); \
+ 		_set_timer(&(mlmeext)->sa_query_timer, (ms)); \
+ 	} while (0)
+-extern int cckrates_included(unsigned char *rate, int ratelen);
+-extern int cckratesonly_included(unsigned char *rate, int ratelen);
+ 
+ extern void process_addba_req(struct adapter *padapter, u8 *paddba_req, u8 *addr);
+ 
 -- 
 2.28.0
 
