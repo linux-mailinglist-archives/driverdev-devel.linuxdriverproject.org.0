@@ -1,62 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A5F12681BB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Sep 2020 00:43:09 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD8B826835F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Sep 2020 06:09:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 79FDE204F9;
-	Sun, 13 Sep 2020 22:43:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E19AB8718C;
+	Mon, 14 Sep 2020 04:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sDNEgUlq9M0Z; Sun, 13 Sep 2020 22:43:04 +0000 (UTC)
+	with ESMTP id aDvIs1bmZzyY; Mon, 14 Sep 2020 04:09:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5EC2C204AE;
-	Sun, 13 Sep 2020 22:42:59 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 58ECE87167;
+	Mon, 14 Sep 2020 04:09:03 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2AC171BF3F3
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 22:42:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A4081BF3CB;
+ Mon, 14 Sep 2020 04:09:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 272C185621
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 22:42:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5154187167;
+ Mon, 14 Sep 2020 04:09:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ktXwcNEDKLnW for <devel@linuxdriverproject.org>;
- Sun, 13 Sep 2020 22:42:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B02708560C
- for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 22:42:55 +0000 (UTC)
-IronPort-SDR: Mopao7utEVdExpoXN3hHWhx2UrpHxYh1qiO+rNahWFjosAlxDu33sUraA2TaZ5Ntne8RgmwqyU
- satsTVG9UEVA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9743"; a="220558631"
-X-IronPort-AV: E=Sophos;i="5.76,423,1592895600"; d="scan'208";a="220558631"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Sep 2020 15:42:54 -0700
-IronPort-SDR: 26yx1Jg55b9Myjb0DyHLo45DK1aF9i9Z9xW1Iz07xoGI3mL0uLBWYxHgC22ip4VVb3EEqqU1df
- t/Ki2xsT9fTA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,423,1592895600"; d="scan'208";a="506137571"
-Received: from lkp-server01.sh.intel.com (HELO a75722977aa5) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 13 Sep 2020 15:42:53 -0700
-Received: from kbuild by a75722977aa5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kHahw-0000vG-Qz; Sun, 13 Sep 2020 22:42:52 +0000
-Date: Mon, 14 Sep 2020 06:42:07 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 978620cc4f5577c5139da9d8377849aeac46687a
-Message-ID: <5f5ea03f.99cRJcjpkvbolDrA%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id eh7qVMMTiR1f; Mon, 14 Sep 2020 04:08:58 +0000 (UTC)
+X-Greylist: delayed 08:19:31 by SQLgrey-1.7.6
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from web.crytrex.com (web.crytrex.com [185.221.172.127])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0DDF087166;
+ Mon, 14 Sep 2020 04:08:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cryptocap.it; s=default; h=Content-Transfer-Encoding:Content-Type:
+ Message-ID:Reply-To:Subject:To:From:Date:MIME-Version:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=H/n7uX5A820w9Roh7v+0h/WFbqZKS125d0c6aMTkFWw=; b=m1XQpLHYbOQf5T8TDGHkqAs/cD
+ IrL0torlDYq9FEZMC6uoHa10OQXwxEu5SbxlwBZEV+gomEPVnQ7Sndqq+XLu2fPoHlAE82s3p8Hgs
+ QwAs3ilQ3LFFqhhbCYjLzvC3evXAHgy1VIAwmnpyPRBTWtp5CDkDMH5WZF2v3EoS87NC7ojC6BFrl
+ 1m3h9qUM31KzZWU31/4eNKuSHYrToighy2+Qp3BS6faJDuyd25fmANDHIXy8w9roQU6S6gHIy9i2b
+ SG62c9vbKS3YlLWMuQ8ew6GhVFEZmX/jYLcLKpxT7gX2nZ9MrDVP3fPPl0AC7TD6SoRFlWGR0x6e6
+ VxpgUVIg==;
+Received: from [::1] (port=52520 helo=web.crytrex.com)
+ by web.crytrex.com with esmtpa (Exim 4.93)
+ (envelope-from <support@cryptocap.it>)
+ id 1kHXoP-0003eb-DU; Sun, 13 Sep 2020 21:37:21 +0200
 MIME-Version: 1.0
+Date: Sun, 13 Sep 2020 21:37:20 +0200
+From: Greg Marume <support@cryptocap.it>
+To: undisclosed-recipients:;
+Subject: YOUR PAYMENT ARRANGEMENT
+User-Agent: Roundcube Webmail/1.4.7
+Message-ID: <36b2951fba9947ea86dea4aa04ec7d4c@cryptocap.it>
+X-Sender: support@cryptocap.it
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - web.crytrex.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - cryptocap.it
+X-Get-Message-Sender-Via: web.crytrex.com: authenticated_id:
+ support@cryptocap.it
+X-Authenticated-Sender: web.crytrex.com: support@cryptocap.it
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,184 +79,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: s197811@vivaldi.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 978620cc4f5577c5139da9d8377849aeac46687a  staging: regulator: hi6421v600-regulator: Remove unused including <linux/version.h>
 
-elapsed time: 724m
 
-configs tested: 154
-configs skipped: 2
+-- 
+FEDERAL REPUBLIC OF NIGERIA
+COMMITTEE ON FOREIGN PAYMENT
+(RESOLUTION PANEL ON CONTRACT PAYMENT)
+ABUJA-NIGERIA
+http://www.nassnig.org
+Our Ref: FGN /SNT/STB Your ref:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I, The Senate Representative ,Federal Republic of Nigeria , DR GREG 
+MARUME
+(GCFR)
+and the Governor of Central Bank Of Nigeria , Mr. EMEIFELE in
+Conjunction with the EFCC Director , MR MAGU, held a meeting
+last week concerning contract payment , both foreign and local 
+contractors
+and some inheritance funds.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                          moxart_defconfig
-sh                          r7780mp_defconfig
-ia64                                defconfig
-powerpc                     kmeter1_defconfig
-arm                  colibri_pxa300_defconfig
-nds32                               defconfig
-parisc                generic-64bit_defconfig
-powerpc                     tqm8555_defconfig
-powerpc                 mpc85xx_cds_defconfig
-arm                              alldefconfig
-arm                     eseries_pxa_defconfig
-arc                 nsimosci_hs_smp_defconfig
-ia64                             alldefconfig
-arm                          gemini_defconfig
-mips                          malta_defconfig
-arm                         s3c2410_defconfig
-powerpc                      ppc44x_defconfig
-alpha                            alldefconfig
-mips                      malta_kvm_defconfig
-sh                             espt_defconfig
-arm                   milbeaut_m10v_defconfig
-riscv                               defconfig
-h8300                               defconfig
-arm                            zeus_defconfig
-um                           x86_64_defconfig
-m68k                       m5208evb_defconfig
-arc                           tb10x_defconfig
-riscv                             allnoconfig
-mips                        nlm_xlp_defconfig
-arm                         hackkit_defconfig
-powerpc                 mpc834x_itx_defconfig
-mips                     cu1000-neo_defconfig
-arm                        neponset_defconfig
-microblaze                          defconfig
-arc                          axs101_defconfig
-powerpc                      pasemi_defconfig
-arc                    vdk_hs38_smp_defconfig
-mips                           rs90_defconfig
-sparc                       sparc32_defconfig
-arc                                 defconfig
-arm                        shmobile_defconfig
-parisc                              defconfig
-arm                          tango4_defconfig
-h8300                            alldefconfig
-arc                          axs103_defconfig
-powerpc                 xes_mpc85xx_defconfig
-x86_64                              defconfig
-powerpc                       eiger_defconfig
-mips                        nlm_xlr_defconfig
-xtensa                    xip_kc705_defconfig
-mips                        jmr3927_defconfig
-mips                         tb0226_defconfig
-mips                         cobalt_defconfig
-powerpc                  mpc866_ads_defconfig
-powerpc                      ppc40x_defconfig
-xtensa                              defconfig
-parisc                           allyesconfig
-parisc                           alldefconfig
-mips                  maltasmvp_eva_defconfig
-powerpc                 linkstation_defconfig
-mips                          rb532_defconfig
-arm                            u300_defconfig
-arm                          pxa3xx_defconfig
-mips                          rm200_defconfig
-arm                          iop32x_defconfig
-arm                         cm_x300_defconfig
-xtensa                generic_kc705_defconfig
-arm                         lpc18xx_defconfig
-c6x                              allyesconfig
-mips                      loongson3_defconfig
-sh                      rts7751r2d1_defconfig
-powerpc                 mpc8313_rdb_defconfig
-arm                       cns3420vb_defconfig
-arm                         assabet_defconfig
-mips                       bmips_be_defconfig
-sh                           se7705_defconfig
-mips                       capcella_defconfig
-arm                         lpc32xx_defconfig
-mips                malta_kvm_guest_defconfig
-powerpc                    amigaone_defconfig
-mips                 pnx8335_stb225_defconfig
-sh                          r7785rp_defconfig
-powerpc                      arches_defconfig
-sh                           se7750_defconfig
-sh                           se7751_defconfig
-arm                            xcep_defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-s390                             allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20200913
-i386                 randconfig-a006-20200913
-i386                 randconfig-a003-20200913
-i386                 randconfig-a001-20200913
-i386                 randconfig-a002-20200913
-i386                 randconfig-a005-20200913
-x86_64               randconfig-a014-20200913
-x86_64               randconfig-a011-20200913
-x86_64               randconfig-a012-20200913
-x86_64               randconfig-a016-20200913
-x86_64               randconfig-a015-20200913
-x86_64               randconfig-a013-20200913
-i386                 randconfig-a015-20200913
-i386                 randconfig-a014-20200913
-i386                 randconfig-a011-20200913
-i386                 randconfig-a013-20200913
-i386                 randconfig-a016-20200913
-i386                 randconfig-a012-20200913
-i386                 randconfig-a015-20200914
-i386                 randconfig-a014-20200914
-i386                 randconfig-a011-20200914
-i386                 randconfig-a013-20200914
-i386                 randconfig-a016-20200914
-i386                 randconfig-a012-20200914
-riscv                            allyesconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
+On going through contractors file yesterday, we discovered that your 
+file
+was dumped untreated, so at this juncture, we apologize for the delay of
+your contract payment and please stop communicating with any office now 
+and
+attention to the appointed office below for you to receive your payment
+accordingly.
 
-clang tested configs:
-x86_64               randconfig-a006-20200913
-x86_64               randconfig-a004-20200913
-x86_64               randconfig-a003-20200913
-x86_64               randconfig-a002-20200913
-x86_64               randconfig-a005-20200913
-x86_64               randconfig-a001-20200913
+However,I wish to inform you now that your outstanding contract payment 
+is
+($15,000,000. fifteen Million United States dollars).
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Now you?re new Payment Reference No.-35460021, Allocation No: 674632
+Password No: 339331 , Pin Code No: 55674 and your Certificate of Merit
+Payment
+No : 103 , CBN Released Code No: 0763; Immediate Telex confirmation No:
+-1114433 ; Secret Code No: XXTN013, Having received these vital payment
+number , therefore You are qualified now to received and confirm Your 
+payment with
+the Federal Government of Nigeria immediately within the next week.
+
+We the entire members of the house of senate are using this urgent 
+medium to
+
+advise you to make payment of your GNAB fee of $350 without any further
+delay. Be rest assured that our appointment to handle and take care of 
+the
+movement of the fund will not be in vain as we are giving you 100% 
+guarantee
+
+to deliver the work as soon as your western union information reach us 
+at
+our house email addresses it is not less than 24hours that the order was
+placed.
+Note that your fund will be free to move from the bank without any delay 
+if
+you get the governments non assessment bonds (GNAB) which is $350 only 
+to
+make sure that no government monitor or agent can access the fund during 
+the
+
+delivery remittance. You have to get the gnab written on your name and
+stamped before the fund credit to your bank account.
+This was why we have not approved or sign off the bonds of your transfer
+registry today as the bank insists on the GNAB.
+Based on these explanations, you are hereby advised to send payment
+information of $350 through our direct email address on or before ten
+working days.as the closing date placed.
+This gnab will show that the transaction was made through the full 
+capacity
+of the government and will not be queried for certain circumstance. Use 
+the
+information bellow for the payment of the $350 GNAB requirements:
+Receiver name: Mr IGBOKWE TIMOTHY
+location: Lagos- Nigeria.
+Text question---gnab,
+Answer----final
+Bear in mind that this is the final stage of this transfer.
+As soon as this is done, it will take only 24hours for the fund to be
+credited in your designated bank account, you will be contacted by your 
+Bank
+herself.
+Best Regards.
+DR GREG MARUME
+Senate Representative
+(Federal Republic of Nigeria)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
