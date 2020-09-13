@@ -1,79 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E52A026803A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 18:25:48 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7CAA26804C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Sep 2020 18:33:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0741B87184;
-	Sun, 13 Sep 2020 16:25:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 49568868C1;
+	Sun, 13 Sep 2020 16:33:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wyvwAjRUxMWf; Sun, 13 Sep 2020 16:25:45 +0000 (UTC)
+	with ESMTP id HY7jyGUgQRyO; Sun, 13 Sep 2020 16:33:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 350938714A;
-	Sun, 13 Sep 2020 16:25:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4D417866E6;
+	Sun, 13 Sep 2020 16:33:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CDEC91BF59E
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:25:42 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B0931BF59E
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:33:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CABAC87144
- for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:25:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 621F520369
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:33:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8jSVkPmm4SRT for <devel@linuxdriverproject.org>;
- Sun, 13 Sep 2020 16:25:42 +0000 (UTC)
+ with ESMTP id 0TQ90C5tX0zu for <devel@linuxdriverproject.org>;
+ Sun, 13 Sep 2020 16:33:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
- [209.85.208.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C8B9287141
- for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 16:25:41 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id j2so4501772eds.9
- for <devel@driverdev.osuosl.org>; Sun, 13 Sep 2020 09:25:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=h3zCmgxorbQQmGIZIsq6TgsZ3TNFWxay30dLGKDvyQo=;
- b=KhMFRZ9YRS4UjN4jRA/2rdCl8MKC2fzGsFZuAtLIh2rXnvVaTjwnpId4hbKagB01MR
- rcF65+LTAHOJhUH60Vkw23rrOLqAW3ZcmGSYIAZN1sx/9n4pIsltKZ13eZVVBZVxJZMY
- FLi/hBOd7DrcLzTLvJCmrXQqe0OHa7Xur//F5ojWqnmr28gS8TM+xIWo09mZoev7+OoT
- ENuhrDiUkvTIeAno2iW1Wi5OD/TglhObymR8j4wmyFDiblYJ1EU0jvFrhNyqRrYN9jLs
- KE6GSM59MyZQLjU/PF7EU63Rwzu45l8C752GDFfc31ytxpQZ30+/Ws85jeEJRroYPEy8
- LisA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=h3zCmgxorbQQmGIZIsq6TgsZ3TNFWxay30dLGKDvyQo=;
- b=XhBxUByGNgLj0D5ru+CycavvyR50XiN3/TBgCGNAV1Ct5Wyb1XqlG7o5aVhc9vWrOK
- djr9oUqQsSg96KcxNCzWBNdSDm1x9/+lVwEY+zIM9wBh8AGUwGibyIT+plAVnbyT/sIY
- 1Anx+5vFXWlUHksF4QB/W8VLZkHgJjt4HptydVUQodaNPAlK7akxoiijX3fO+KWVvCTi
- 2RIPq3ZHUQESey9s+gwfL4zZ7+/j9MvbMcaNk4CSAIlj3xMvAbBxolZ5mZrbpTiLJtxR
- v6p/9Ro1vUMT5aYeCSf00cedl2cApDWPxg5aeKejBOphfj4CCvVNnfG3/t7BC8zHWQ5D
- YTGA==
-X-Gm-Message-State: AOAM533xWNGT7rGbOW6QNVJMVzUENpsfilsuko5VGXE5GM9TZFjBUyv/
- ZaGr6PAEbcFkBJFbzMJyApsqo+qI4sY=
-X-Google-Smtp-Source: ABdhPJxNpX5Be7RNrtUkOOK5UyxwDgZBIQpgUbEbitlrdEcVOKwvw/UP8hjgSP+F2BeV4iRNRBfk8A==
-X-Received: by 2002:a50:fb18:: with SMTP id d24mr13482556edq.149.1600014340198; 
- Sun, 13 Sep 2020 09:25:40 -0700 (PDT)
-Received: from localhost.localdomain
- (ipservice-092-219-207-100.092.219.pools.vodafone-ip.de. [92.219.207.100])
- by smtp.gmail.com with ESMTPSA id w19sm7163505edt.22.2020.09.13.09.25.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 13 Sep 2020 09:25:39 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 2/2] staging: rtl8723bs: remove 5 GHz code
-Date: Sun, 13 Sep 2020 18:22:06 +0200
-Message-Id: <20200913162206.19477-2-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200913162206.19477-1-straube.linux@gmail.com>
-References: <20200913162206.19477-1-straube.linux@gmail.com>
-MIME-Version: 1.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8E0B41FD21
+ for <devel@linuxdriverproject.org>; Sun, 13 Sep 2020 16:33:33 +0000 (UTC)
+Subject: Re: [GIT PULL] Staging/IIO driver fixes for 5.9-rc5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600014813;
+ bh=UF/1u/Hb44Uy60ai6q8/KrA78xDD1LOyJcvA+7mjIaI=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=fnVbbiQyUFTJIyaOHkTn2ZZTM8xJ0NscAX39G3ehWt9al9SwBQNuaQH8K49/zKtj/
+ 44H2RquEF/atDarpEnHxaW+QNTzsL+CpmnlS04a9wmlBTl1mGWPdd8+fHCufsNzcRI
+ Rx37KifFSKyeedc+GpXpywz//1MSEphhzo75eNzE=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20200913083918.GA906881@kroah.com>
+References: <20200913083918.GA906881@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20200913083918.GA906881@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.9-rc5
+X-PR-Tracked-Commit-Id: a139ffa40f0c24b753838b8ef3dcf6ad10eb7854
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 6c7247f6258b2dba353c885a1b00d795a380cc85
+Message-Id: <160001481310.6953.15482507862553138944.pr-tracker-bot@kernel.org>
+Date: Sun, 13 Sep 2020 16:33:33 +0000
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,70 +65,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
- linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Acoording to the TODO code valid only for 5 GHz should be removed.
+The pull request you sent on Sun, 13 Sep 2020 10:39:18 +0200:
 
-- find and remove remaining code valid only for 5 GHz. Most of the obvious
-  ones have been removed, but things like channel > 14 still exist.
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.9-rc5
 
-Remove code path only valid for channels > 14.
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/6c7247f6258b2dba353c885a1b00d795a380cc85
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
----
- .../staging/rtl8723bs/core/rtw_wlan_util.c    | 31 +++++++------------
- 1 file changed, 11 insertions(+), 20 deletions(-)
+Thank you!
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-index 6cb779bc9410..372ce17c3569 100644
---- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-@@ -1724,26 +1724,17 @@ void update_wireless_mode(struct adapter *padapter)
- 	if ((pmlmeinfo->HT_info_enable) && (pmlmeinfo->HT_caps_enable))
- 		pmlmeinfo->HT_enable = 1;
- 
--	if (pmlmeext->cur_channel > 14) {
--		if (pmlmeinfo->VHT_enable)
--			network_type = WIRELESS_11AC;
--		else if (pmlmeinfo->HT_enable)
--			network_type = WIRELESS_11_5N;
--
--		network_type |= WIRELESS_11A;
--	} else {
--		if (pmlmeinfo->VHT_enable)
--			network_type = WIRELESS_11AC;
--		else if (pmlmeinfo->HT_enable)
--			network_type = WIRELESS_11_24N;
--
--		if (rtw_is_cckratesonly_included(rate))
--			network_type |= WIRELESS_11B;
--		else if (rtw_is_cckrates_included(rate))
--			network_type |= WIRELESS_11BG;
--		else
--			network_type |= WIRELESS_11G;
--	}
-+	if (pmlmeinfo->VHT_enable)
-+		network_type = WIRELESS_11AC;
-+	else if (pmlmeinfo->HT_enable)
-+		network_type = WIRELESS_11_24N;
-+
-+	if (rtw_is_cckratesonly_included(rate))
-+		network_type |= WIRELESS_11B;
-+	else if (rtw_is_cckrates_included(rate))
-+		network_type |= WIRELESS_11BG;
-+	else
-+		network_type |= WIRELESS_11G;
- 
- 	pmlmeext->cur_wireless_mode = network_type & padapter->registrypriv.wireless_mode;
- 
 -- 
-2.28.0
-
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/prtracker.html
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
