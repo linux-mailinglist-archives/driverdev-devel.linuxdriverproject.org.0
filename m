@@ -1,68 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E59422692F5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Sep 2020 19:21:03 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B16AD269447
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Sep 2020 20:00:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 12FC48725D;
-	Mon, 14 Sep 2020 17:21:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E13178677D;
+	Mon, 14 Sep 2020 18:00:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r31tV2j9SFsn; Mon, 14 Sep 2020 17:21:00 +0000 (UTC)
+	with ESMTP id FKG31SCq3v-I; Mon, 14 Sep 2020 18:00:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D4FFC871EB;
-	Mon, 14 Sep 2020 17:20:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4120086774;
+	Mon, 14 Sep 2020 18:00:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C22EE1BF86C
- for <devel@linuxdriverproject.org>; Mon, 14 Sep 2020 17:20:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3806D1BF3DD
+ for <devel@linuxdriverproject.org>; Mon, 14 Sep 2020 18:00:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B244C2044F
- for <devel@linuxdriverproject.org>; Mon, 14 Sep 2020 17:20:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1FDCB2044F
+ for <devel@linuxdriverproject.org>; Mon, 14 Sep 2020 18:00:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1boaveoM-TlC for <devel@linuxdriverproject.org>;
- Mon, 14 Sep 2020 17:20:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0024.hostedemail.com
- [216.40.44.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 4F37A203C8
- for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 17:20:56 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave08.hostedemail.com (Postfix) with ESMTP id EC3501800C845
- for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 16:42:54 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id 7633B100E8465;
- Mon, 14 Sep 2020 16:42:52 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:960:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2828:2898:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3868:3870:3871:3872:3874:4321:4605:5007:6119:7576:7904:9010:9545:10004:10400:10967:11026:11232:11657:11658:11914:12043:12296:12297:12438:12555:12740:12760:12895:13161:13229:13255:13439:13848:14096:14097:14181:14659:14721:21080:21451:21627:21660:21740:21990:30041:30054:30070:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:11, LUA_SUMMARY:none
-X-HE-Tag: twig87_0f068782710a
-X-Filterd-Recvd-Size: 3560
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf16.hostedemail.com (Postfix) with ESMTPA;
- Mon, 14 Sep 2020 16:42:50 +0000 (UTC)
-Message-ID: <8c95d3d02dbdd36a048280cb8d9e8f171c3b4959.camel@perches.com>
-Subject: Re: [RESEND PATCH] staging: rtl8188eu: Fix else after return
- WARNING (checkpatch)
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Sohom Datta
- <sohom.datta@learner.manipal.edu>
-Date: Mon, 14 Sep 2020 09:42:49 -0700
-In-Reply-To: <20200914145755.GD4282@kadam>
-References: <230f781dcaadfc797a016cc6036d63efe6542062.camel@learner.manipal.edu>
- <20200914145755.GD4282@kadam>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id g9dLcU7MW0cO for <devel@linuxdriverproject.org>;
+ Mon, 14 Sep 2020 18:00:12 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id A999120425
+ for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 18:00:12 +0000 (UTC)
+IronPort-SDR: /9Wf1ekX2mB71rOr2yA86ib/RGQE6N8msuPIDV13MQhShVckvA46ACG3b0K7NKDHZjpT+PzPLQ
+ Pk7fuLvDvytw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9744"; a="138639627"
+X-IronPort-AV: E=Sophos;i="5.76,427,1592895600"; d="scan'208";a="138639627"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2020 11:00:06 -0700
+IronPort-SDR: yQr+v4uviVnLgrXv4LTpUwPo9MH0t03NqmAILd6Fv5CP9I3YlVctmYvNS0rtJ4GbKvSEeLU8SB
+ u3q8q/poIpDA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,427,1592895600"; d="scan'208";a="301837850"
+Received: from lkp-server01.sh.intel.com (HELO a75722977aa5) ([10.239.97.150])
+ by orsmga003.jf.intel.com with ESMTP; 14 Sep 2020 11:00:05 -0700
+Received: from kbuild by a75722977aa5 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kHslo-00018o-NL; Mon, 14 Sep 2020 18:00:04 +0000
+Date: Tue, 15 Sep 2020 01:59:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-next] BUILD SUCCESS
+ 1622d35453132a1acd6d650175f9f45e4bcf553e
+Message-ID: <5f5faf73.9jfhZp5XnJuNmjvc%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,86 +69,205 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-09-14 at 17:57 +0300, Dan Carpenter wrote:
-> On Sun, Sep 13, 2020 at 12:19:50PM +0530, Sohom Datta wrote:
-> > > From 4c8c8f3ff7f4d711daea4ac3bb987fcecc7ef1ed Mon Sep 17 00:00:00 2001
-> > From: Sohom <sohom.datta@learner.manipal.edu>
-> > Date: Sat, 12 Sep 2020 18:04:56 +0530
-> > Subject: [RESEND PATCH] staging: rtl8188eu: Fix else after return WARNING
-> >  (checkpatch)
-> > 
-> > Fixed:
-> > WARNING: else is not generally useful after a break or return
-> > 1636: FILE: ./rtw_recv.c:1636:
-> > +           return false;
-> > +       else
-> > 
-> > Separated the return statement into a separate block since
-> > it doesn't seem to depend on the SN_LESS explicity being false.
-> > 
-> > Signed-off-by: Sohom <sohom.datta@learner.manipal.edu>
-> > ---
-> >  drivers/staging/rtl8188eu/core/rtw_recv.c | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-> > index 5fe7a0458dd2..5e81134ffb6d 100644
-> > --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-> > +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-> > @@ -1629,10 +1629,11 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
-> >  		hdr = list_entry(plist, struct recv_frame, list);
-> >  		pnextattrib = &hdr->attrib;
-> >  
-> > +		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
-> > +			return false;
-> > +
-> >  		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num))
-> >  			plist = plist->next;
-> > -		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
-> > -			return false;
-> >  		else
-> >  			break;
-> >  	}
-> 
-> Checkpatch is just wrong here.  Ignore it when it's wrong.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
+branch HEAD: 1622d35453132a1acd6d650175f9f45e4bcf553e  Merge 5.9-rc5 into staging-next
 
-It's not "wrong" here.  It's making a suggestion.
+elapsed time: 722m
 
-Perhaps read the SN_EQUAL and SN_LESS macros.
+configs tested: 175
+configs skipped: 2
 
-a and b are both u16's here.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-drivers/staging/rtl8188eu/include/rtw_recv.h:#define SN_LESS(a, b)              (((a - b) & 0x800) != 0)
-drivers/staging/rtl8188eu/include/rtw_recv.h:#define SN_EQUAL(a, b)     (a == b)
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+nios2                         3c120_defconfig
+mips                  maltasmvp_eva_defconfig
+arm                     am200epdkit_defconfig
+arm                         vf610m4_defconfig
+sh                            shmin_defconfig
+mips                          ath79_defconfig
+sh                                  defconfig
+sh                           se7724_defconfig
+arm                            pleb_defconfig
+m68k                        m5272c3_defconfig
+m68k                        stmark2_defconfig
+arm                              alldefconfig
+arc                     haps_hs_smp_defconfig
+powerpc                       holly_defconfig
+arm                          badge4_defconfig
+arm                            zeus_defconfig
+um                           x86_64_defconfig
+m68k                       m5208evb_defconfig
+arc                           tb10x_defconfig
+riscv                             allnoconfig
+mips                        nlm_xlp_defconfig
+powerpc                    klondike_defconfig
+powerpc                      bamboo_defconfig
+mips                        jmr3927_defconfig
+mips                    maltaup_xpa_defconfig
+arm                          tango4_defconfig
+sh                        dreamcast_defconfig
+powerpc                 xes_mpc85xx_defconfig
+x86_64                              defconfig
+powerpc                       eiger_defconfig
+mips                        nlm_xlr_defconfig
+arm                          pxa3xx_defconfig
+m68k                        m5307c3_defconfig
+powerpc                      mgcoge_defconfig
+sparc                               defconfig
+arm                         nhk8815_defconfig
+sh                           se7722_defconfig
+powerpc                     ep8248e_defconfig
+sparc                       sparc64_defconfig
+ia64                         bigsur_defconfig
+sh                          r7785rp_defconfig
+arc                            hsdk_defconfig
+arm                           spitz_defconfig
+mips                         cobalt_defconfig
+c6x                        evmc6678_defconfig
+arm                         s3c6400_defconfig
+m68k                        mvme147_defconfig
+xtensa                              defconfig
+m68k                          hp300_defconfig
+powerpc                      obs600_defconfig
+riscv                            alldefconfig
+arm                        multi_v5_defconfig
+arm                         cm_x300_defconfig
+xtensa                generic_kc705_defconfig
+arm                         lpc18xx_defconfig
+c6x                              allyesconfig
+mips                      loongson3_defconfig
+sh                   sh7724_generic_defconfig
+powerpc64                           defconfig
+arm                         lubbock_defconfig
+arm                         palmz72_defconfig
+arm                           sunxi_defconfig
+arm                         ebsa110_defconfig
+arm                        cerfcube_defconfig
+arc                        nsimosci_defconfig
+powerpc                 mpc85xx_cds_defconfig
+powerpc                          allmodconfig
+powerpc                  mpc866_ads_defconfig
+m68k                             alldefconfig
+mips                           jazz_defconfig
+arm                              zx_defconfig
+mips                      bmips_stb_defconfig
+c6x                                 defconfig
+powerpc                    mvme5100_defconfig
+powerpc                 mpc8540_ads_defconfig
+arm                   milbeaut_m10v_defconfig
+i386                                defconfig
+ia64                             alldefconfig
+arm                          imote2_defconfig
+mips                   sb1250_swarm_defconfig
+sh                               allmodconfig
+arm                       versatile_defconfig
+mips                          ath25_defconfig
+powerpc                      pcm030_defconfig
+arm                          gemini_defconfig
+xtensa                          iss_defconfig
+xtensa                           alldefconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20200914
+x86_64               randconfig-a006-20200914
+x86_64               randconfig-a003-20200914
+x86_64               randconfig-a002-20200914
+x86_64               randconfig-a001-20200914
+x86_64               randconfig-a005-20200914
+i386                 randconfig-a004-20200913
+i386                 randconfig-a006-20200913
+i386                 randconfig-a003-20200913
+i386                 randconfig-a001-20200913
+i386                 randconfig-a002-20200913
+i386                 randconfig-a005-20200913
+i386                 randconfig-a004-20200914
+i386                 randconfig-a006-20200914
+i386                 randconfig-a001-20200914
+i386                 randconfig-a003-20200914
+i386                 randconfig-a002-20200914
+i386                 randconfig-a005-20200914
+x86_64               randconfig-a014-20200913
+x86_64               randconfig-a011-20200913
+x86_64               randconfig-a012-20200913
+x86_64               randconfig-a016-20200913
+x86_64               randconfig-a015-20200913
+x86_64               randconfig-a013-20200913
+i386                 randconfig-a015-20200913
+i386                 randconfig-a014-20200913
+i386                 randconfig-a011-20200913
+i386                 randconfig-a013-20200913
+i386                 randconfig-a016-20200913
+i386                 randconfig-a012-20200913
+i386                 randconfig-a015-20200914
+i386                 randconfig-a014-20200914
+i386                 randconfig-a011-20200914
+i386                 randconfig-a013-20200914
+i386                 randconfig-a016-20200914
+i386                 randconfig-a012-20200914
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
-Reordering works, perhaps it's just a question of
-whether it's the most likely result of the test.
+clang tested configs:
+x86_64               randconfig-a006-20200913
+x86_64               randconfig-a004-20200913
+x86_64               randconfig-a003-20200913
+x86_64               randconfig-a002-20200913
+x86_64               randconfig-a005-20200913
+x86_64               randconfig-a001-20200913
+x86_64               randconfig-a014-20200914
+x86_64               randconfig-a011-20200914
+x86_64               randconfig-a016-20200914
+x86_64               randconfig-a012-20200914
+x86_64               randconfig-a015-20200914
+x86_64               randconfig-a013-20200914
 
-This is in a while loop.
-
-If the expected test is really the most likely that
-SN_LESS is true, then perhaps this loop could be
-something like:
-
-		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num)) {
-			plist = plist->next;
-			continue;
-		}
-		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
-			return false;
-		break;
-	}
-
-The real question is whether or not that's more readable.
-
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
