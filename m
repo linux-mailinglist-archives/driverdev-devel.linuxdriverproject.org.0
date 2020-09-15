@@ -1,61 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62BAE269A31
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 02:09:56 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4B58269A51
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 02:18:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E2A0485F18;
-	Tue, 15 Sep 2020 00:09:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4AB5C20459;
+	Tue, 15 Sep 2020 00:18:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AnVZ7_GjTfFm; Tue, 15 Sep 2020 00:09:53 +0000 (UTC)
+	with ESMTP id zBmg6caE+auQ; Tue, 15 Sep 2020 00:18:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 97D6A85EA5;
-	Tue, 15 Sep 2020 00:09:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 139D520430;
+	Tue, 15 Sep 2020 00:18:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6D4AF1BF968
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:09:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C1AE01BF968
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6A50185168
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:09:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B92A885D21
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BxJxjDGEaUcu for <devel@linuxdriverproject.org>;
- Tue, 15 Sep 2020 00:09:50 +0000 (UTC)
+ with ESMTP id otKM3uEDyZ+x for <devel@linuxdriverproject.org>;
+ Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 88F4E856CB
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 00:09:38 +0000 (UTC)
-IronPort-SDR: cj/18uwbowvzOo472q4Hdy1oGMsBLcYvYEUTnitTwQp2JcnYAgO7QH2Xhz0vKBRYXIBiUa8m2/
- YU2HtzQgSawA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9744"; a="156609278"
-X-IronPort-AV: E=Sophos;i="5.76,427,1592895600"; d="scan'208";a="156609278"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Sep 2020 17:09:38 -0700
-IronPort-SDR: oDFZ+OApgvr2mDqHnulMUp5i0r2jQDN9hRWM8XRhbSbf0EKU9euN5j4Hy2ILyZT+4o0WJFNjwk
- O+QWPX32uy7w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,427,1592895600"; d="scan'208";a="506541689"
-Received: from lkp-server01.sh.intel.com (HELO a75722977aa5) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 14 Sep 2020 17:09:36 -0700
-Received: from kbuild by a75722977aa5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kHyXQ-0001F5-9Z; Tue, 15 Sep 2020 00:09:36 +0000
-Date: Tue, 15 Sep 2020 08:08:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- a14cd9f8d188f8488d723e11095240710f368c4b
-Message-ID: <5f600603.M9q8Vl2oqAlRbzJT%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 065C385C56
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id r9so2178792ioa.2
+ for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 17:18:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MzGmDzzjMGRgvfVFgDwfx6ad7ejBUYi+ZapK1NYg/6M=;
+ b=PXonXvA1hrw4+waEQbI3TBhVYqBei3TzTYxRwdjmoZL2oyVs7WG2X+gV921cUIEjua
+ 42FI7EcU6EA59xKC+ioqJbD6szSBomN1mYXh0lnZ8StF99qOg9JTwuCWz8tEtruwibTH
+ wwvBNFbI8LloKxFmtm8yZ2fijZBEQObWveRBUIs3XrK5W3Y1P0Id/DBSthmz1S8Inr6Y
+ gfF3XJUPImvctdJhhzzg1FrPhETOLthgTzT5CpmXKmOMckw+KmPIiK7KK0Nqjrg/2aV6
+ R0KkKLEDPIuUrVkzMS2oRAPdWa9Mc3R0/wUsTL8tIALRecsoq/qOtMMD7UBGmrQlLL0r
+ Hd4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MzGmDzzjMGRgvfVFgDwfx6ad7ejBUYi+ZapK1NYg/6M=;
+ b=hYmkiE2limzus4YiC0EvXmmHMZORyWRsKrQBrTidkXGM4OPsubnAdK+bnp64rW8C5G
+ vZ/p1iA675E9fF0DZAscD+8dt9ysQHYtqDNoOsTfvyvmvKYs5NNq06lXgvt4Vo7nete3
+ NPwd1FqCvQODRHxFcVxXF3Wh0gxTuG+MKpRVk6rLo/YVK7IHHfkbbvGVY2C1j+U2uFF5
+ s3gOlAp5aqbVOQQmJuZh1qMXJYXj8nkzae4rb7fmcYyYz2LohHmL8Ltkn5TxffhmXB3G
+ K+L4QpdY5hyUURGhx/5itXjGKoUC0lMXERNmhvQqn9/KMo2UXemHQcxnJt+QHi7zKJ9j
+ ZIsg==
+X-Gm-Message-State: AOAM531m0PCE2Jv/TEEiK1/+LZzWr0ohcMbYeOYC3T3X5wgMssdnBue8
+ CvEK3+6XTPJazSW99xYrG5c=
+X-Google-Smtp-Source: ABdhPJxzykrgWjLUZOVn7PzAbwA/sVS46SDOici23G0yyIjXt9iq4zZv1iAeWlcKmjUL/mnbW4umEg==
+X-Received: by 2002:a5d:9355:: with SMTP id i21mr5781062ioo.199.1600129113386; 
+ Mon, 14 Sep 2020 17:18:33 -0700 (PDT)
+Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
+ [73.242.81.227])
+ by smtp.gmail.com with ESMTPSA id l131sm6728975ioa.31.2020.09.14.17.18.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Sep 2020 17:18:33 -0700 (PDT)
+From: Ross Schmidt <ross.schm.dev@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/3] staging: rtl8723bs: os_dep: fixed trailing statements
+Date: Mon, 14 Sep 2020 19:17:29 -0500
+Message-Id: <20200915001731.28986-1-ross.schm.dev@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -69,153 +84,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Ross Schmidt <ross.schm.dev@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_cleanup
-branch HEAD: a14cd9f8d188f8488d723e11095240710f368c4b  debugfs: remove return value of debugfs_create_devm_seqfile()
+Fixed a coding style issue by moving trailing statements to new lines in
+sdio_ops_linux.c to fix checkpatch errors.
 
-elapsed time: 724m
-
-configs tested: 123
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                          sdk7786_defconfig
-powerpc                          g5_defconfig
-arm                           tegra_defconfig
-openrisc                 simple_smp_defconfig
-powerpc                        icon_defconfig
-m68k                         amcore_defconfig
-mips                    maltaup_xpa_defconfig
-mips                       rbtx49xx_defconfig
-powerpc                   currituck_defconfig
-riscv                          rv32_defconfig
-arm                        clps711x_defconfig
-arm                          iop32x_defconfig
-powerpc                         wii_defconfig
-arm                         lpc32xx_defconfig
-arm                          pxa3xx_defconfig
-sh                                  defconfig
-m68k                        m5307c3_defconfig
-powerpc                      mgcoge_defconfig
-sparc                               defconfig
-arm                         nhk8815_defconfig
-arm                           efm32_defconfig
-sh                          polaris_defconfig
-arm                           stm32_defconfig
-arm                       spear13xx_defconfig
-powerpc                 mpc8315_rdb_defconfig
-arm                         cm_x300_defconfig
-xtensa                generic_kc705_defconfig
-arm                         lpc18xx_defconfig
-c6x                              allyesconfig
-mips                      loongson3_defconfig
-m68k                          hp300_defconfig
-powerpc                  mpc866_ads_defconfig
-m68k                             alldefconfig
-mips                           jazz_defconfig
-arm                              zx_defconfig
-mips                      bmips_stb_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20200913
-i386                 randconfig-a006-20200913
-i386                 randconfig-a003-20200913
-i386                 randconfig-a001-20200913
-i386                 randconfig-a002-20200913
-i386                 randconfig-a005-20200913
-i386                 randconfig-a004-20200914
-i386                 randconfig-a006-20200914
-i386                 randconfig-a001-20200914
-i386                 randconfig-a003-20200914
-i386                 randconfig-a002-20200914
-i386                 randconfig-a005-20200914
-x86_64               randconfig-a004-20200914
-x86_64               randconfig-a006-20200914
-x86_64               randconfig-a003-20200914
-x86_64               randconfig-a002-20200914
-x86_64               randconfig-a001-20200914
-x86_64               randconfig-a005-20200914
-x86_64               randconfig-a014-20200913
-x86_64               randconfig-a011-20200913
-x86_64               randconfig-a012-20200913
-x86_64               randconfig-a016-20200913
-x86_64               randconfig-a015-20200913
-x86_64               randconfig-a013-20200913
-i386                 randconfig-a015-20200913
-i386                 randconfig-a014-20200913
-i386                 randconfig-a011-20200913
-i386                 randconfig-a013-20200913
-i386                 randconfig-a016-20200913
-i386                 randconfig-a012-20200913
-i386                 randconfig-a015-20200914
-i386                 randconfig-a014-20200914
-i386                 randconfig-a011-20200914
-i386                 randconfig-a013-20200914
-i386                 randconfig-a016-20200914
-i386                 randconfig-a012-20200914
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a014-20200914
-x86_64               randconfig-a011-20200914
-x86_64               randconfig-a016-20200914
-x86_64               randconfig-a012-20200914
-x86_64               randconfig-a015-20200914
-x86_64               randconfig-a013-20200914
-
+Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
+index 50b89340465b..bc8cef5589b8 100644
+--- a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
+@@ -264,9 +264,11 @@ u32 sd_read32(struct intf_hdl *pintfhdl, u32 addr, s32 *err)
+ 
+ 		*err = 0;
+ 		for (i = 0; i < SD_IO_TRY_CNT; i++) {
+-			if (claim_needed) sdio_claim_host(func);
++			if (claim_needed)
++				sdio_claim_host(func);
+ 			v = sdio_readl(func, addr, err);
+-			if (claim_needed) sdio_release_host(func);
++			if (claim_needed)
++				sdio_release_host(func);
+ 
+ 			if (*err == 0) {
+ 				rtw_reset_continual_io_error(psdiodev);
+@@ -355,9 +357,11 @@ void sd_write32(struct intf_hdl *pintfhdl, u32 addr, u32 v, s32 *err)
+ 
+ 		*err = 0;
+ 		for (i = 0; i < SD_IO_TRY_CNT; i++) {
+-			if (claim_needed) sdio_claim_host(func);
++			if (claim_needed)
++				sdio_claim_host(func);
+ 			sdio_writel(func, v, addr, err);
+-			if (claim_needed) sdio_release_host(func);
++			if (claim_needed)
++				sdio_release_host(func);
+ 			if (*err == 0) {
+ 				rtw_reset_continual_io_error(psdiodev);
+ 				break;
+-- 
+2.26.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
