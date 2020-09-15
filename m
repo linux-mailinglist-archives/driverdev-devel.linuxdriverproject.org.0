@@ -1,79 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36EEE269A54
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 02:18:58 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FEEE269BE1
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 04:30:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BDE3E2043E;
-	Tue, 15 Sep 2020 00:18:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0B428864A0;
+	Tue, 15 Sep 2020 02:30:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jSN7Oinf4wBp; Tue, 15 Sep 2020 00:18:50 +0000 (UTC)
+	with ESMTP id 7feai2Lkd5rU; Tue, 15 Sep 2020 02:30:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EB0B420420;
-	Tue, 15 Sep 2020 00:18:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B7AA386462;
+	Tue, 15 Sep 2020 02:30:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 626431BF968
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:46 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B4EBC1BF329
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 02:30:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5F88986FEB
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B182185F87
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 02:30:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J6-L2Oca8JCM for <devel@linuxdriverproject.org>;
- Tue, 15 Sep 2020 00:18:45 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f195.google.com (mail-il1-f195.google.com
- [209.85.166.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A9DDE86FE6
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 00:18:45 +0000 (UTC)
-Received: by mail-il1-f195.google.com with SMTP id y9so1370552ilq.2
- for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 17:18:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=MmoIpKO9u8/MGDcv7dF5sCcIl2ECWGlhyePRw59SR0Q=;
- b=J7DLiPFL3r6NJdNp3jhIVDQM55D8MabLMgsUsrlLgYfVTGM4MhuoTpOT4K4UsJHsMI
- qqk+kPwMuegh2q6clarPqE/A47FtzuSm7IjHxeHN0qrEVFr9Cw5wUlB2Kl4yxscp+chk
- O4gvbwyNhKiyuwV5GQP/uhUB38/YXaL5IAOMt0qmXOEdEpE+9p5pU/RztTdP5lMTc5YB
- uJc9uKq9ZJoh17mmY4MSjZTEg8p6p0kpW3/llUESADRAibPVl9r0nak2ZEQJoIJO3swb
- cU0vo812xo1WGm6UxZP6C63U1ddxEJtYuonVj6eEuNQHPH6EoDWVGkQgR50SrUk+nvTh
- yJ8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=MmoIpKO9u8/MGDcv7dF5sCcIl2ECWGlhyePRw59SR0Q=;
- b=nWbrK128chFe1ZtmPNsUTHOZpghq2VVV+PFgxx9hc0KfWNQZGUFZObC/j94JzrdxGR
- cOkKQyf2WgQybRzqlbP7eQdFDYANS27S1/37u9CDZvI2H3O/VCoCJWt6Qz8W8yMBAgYV
- 2YpJNeucjSlGcC3WI+wGdj5oJrS83pphVk0koFeuBcEdCF9UEjfKdKlJzbnSLlWql7kd
- uUfZmjELxvcRBsBbMIQi+GIuVj9aK0OBQGUQCMc6yguCGP/RzLmMClA5hD+5gRpIiBmT
- QKYHhJPhl2Bi3GpSuyHFgGan4iyzkhbQIwWfzNL7+NelMNVsO8GJ/rWzkgJhP7V5Qiic
- vPog==
-X-Gm-Message-State: AOAM5302QM6jH7gZ7ccbMIUsejnKPhnd7d0yzzT4cqIcNN8jrex2DRXR
- CxA1REU7nAfarAwTTal3m9w=
-X-Google-Smtp-Source: ABdhPJy/kANWeCVpULaUnfWIQE5veCGUnONI8giikde+74OVSeOm1ekE6xKEi4Ao4jAtFw/NUfAD5Q==
-X-Received: by 2002:a92:db42:: with SMTP id w2mr2167037ilq.247.1600129125034; 
- Mon, 14 Sep 2020 17:18:45 -0700 (PDT)
-Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
- [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id l131sm6728975ioa.31.2020.09.14.17.18.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 17:18:44 -0700 (PDT)
-From: Ross Schmidt <ross.schm.dev@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 3/3] staging: rtl8723bs: os_dep: fixed spacing around
+ with ESMTP id jxhml7bzGzZg for <devel@linuxdriverproject.org>;
+ Tue, 15 Sep 2020 02:30:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0158.hostedemail.com
+ [216.40.44.158])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E39F385EE9
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 02:30:05 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay05.hostedemail.com (Postfix) with ESMTP id A2F8618029122;
+ Tue, 15 Sep 2020 02:30:04 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:960:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3873:3874:4321:5007:7903:8603:10004:10400:10848:11026:11232:11658:11914:12296:12297:12740:12760:12895:13069:13071:13161:13229:13255:13311:13357:13439:14180:14659:14721:21080:21433:21451:21627:21939:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:18, LUA_SUMMARY:none
+X-HE-Tag: coil86_0f0b38c2710d
+X-Filterd-Recvd-Size: 1720
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf15.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 15 Sep 2020 02:30:03 +0000 (UTC)
+Message-ID: <00e6faaceed28ceb81777a63caffc512885a6efb.camel@perches.com>
+Subject: Re: [PATCH 3/3] staging: rtl8723bs: os_dep: fixed spacing around
  operators issue
-Date: Mon, 14 Sep 2020 19:17:31 -0500
-Message-Id: <20200915001731.28986-3-ross.schm.dev@gmail.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200915001731.28986-1-ross.schm.dev@gmail.com>
+From: Joe Perches <joe@perches.com>
+To: Ross Schmidt <ross.schm.dev@gmail.com>, gregkh@linuxfoundation.org
+Date: Mon, 14 Sep 2020 19:30:02 -0700
+In-Reply-To: <20200915001731.28986-3-ross.schm.dev@gmail.com>
 References: <20200915001731.28986-1-ross.schm.dev@gmail.com>
+ <20200915001731.28986-3-ross.schm.dev@gmail.com>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -87,74 +71,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Ross Schmidt <ross.schm.dev@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a coding style issue by adding spaces around operators in
-sdio_ops_linux.c to fix checkpatch checks.
+On Mon, 2020-09-14 at 19:17 -0500, Ross Schmidt wrote:
+> Fixed a coding style issue by adding spaces around operators in
+> sdio_ops_linux.c to fix checkpatch checks.
 
-Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
----
- .../staging/rtl8723bs/os_dep/sdio_ops_linux.c    | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+Hello Ross.
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
-index 87fc87662075..079da433d811 100644
---- a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
-@@ -84,9 +84,9 @@ s32 _sd_cmd52_read(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pdata)
- 	func = psdio->func;
- 
- 	for (i = 0; i < cnt; i++) {
--		pdata[i] = sdio_readb(func, addr+i, &err);
-+		pdata[i] = sdio_readb(func, addr + i, &err);
- 		if (err) {
--			DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x\n", __func__, err, addr+i);
-+			DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x\n", __func__, err, addr + i);
- 			break;
- 		}
- 	}
-@@ -154,9 +154,10 @@ s32 _sd_cmd52_write(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pdata)
- 	func = psdio->func;
- 
- 	for (i = 0; i < cnt; i++) {
--		sdio_writeb(func, pdata[i], addr+i, &err);
-+		sdio_writeb(func, pdata[i], addr + i, &err);
- 		if (err) {
--			DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x val = 0x%02x\n", __func__, err, addr+i, pdata[i]);
-+			DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x val = 0x%02x\n", __func__,
-+				 err, addr + i, pdata[i]);
- 			break;
- 		}
- 	}
-@@ -423,7 +424,7 @@ s32 _sd_read(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, void *pdata)
- 		u8 *pbuf = pdata;
- 
- 		for (i = 0; i < cnt; i++) {
--			*(pbuf+i) = sdio_readb(func, addr+i, &err);
-+			*(pbuf + i) = sdio_readb(func, addr + i, &err);
- 
- 			if (err) {
- 				DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x\n", __func__, err, addr);
-@@ -524,9 +525,10 @@ s32 _sd_write(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, void *pdata)
- 		u8 *pbuf = pdata;
- 
- 		for (i = 0; i < cnt; i++) {
--			sdio_writeb(func, *(pbuf+i), addr+i, &err);
-+			sdio_writeb(func, *(pbuf + i), addr + i, &err);
- 			if (err) {
--				DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x val = 0x%02x\n", __func__, err, addr, *(pbuf+i));
-+				DBG_871X(KERN_ERR "%s: FAIL!(%d) addr = 0x%05x val = 0x%02x\n",
-+					 __func__, err, addr, *(pbuf + i));
- 				break;
- 			}
- 		}
--- 
-2.26.2
+If you want to do more than fix whitespace,
+please look at the #define for DBG_871X.
+
+All the uses with a KERN_<LEVEL> are broken
+and should be modified as _dbgdump is just
+printk and DRIVER_PREFIX is "RTL8723BS: "
+so the KERN_<LEVEL> after the DRIVER_PREFIX.
+
+That's just broken.
+
+	#define DBG_871X(...)     do {\
+		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+	} while (0)
+
+Realistically, the DBG_871X macro family should just
+use pr_debug and all the KERN_<LEVEL> uses should be
+removed.
+
+The define and uses of RT_TRACE should also just be
+converted to use pr_debug or some other function
+to perhaps reduce overall object size
+
 
 _______________________________________________
 devel mailing list
