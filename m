@@ -1,72 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DC3726A701
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 16:26:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4612B26A8C6
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 17:25:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DD39E866E6;
-	Tue, 15 Sep 2020 14:26:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E72F487215;
+	Tue, 15 Sep 2020 15:25:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EYTUqmJTDF9c; Tue, 15 Sep 2020 14:26:30 +0000 (UTC)
+	with ESMTP id LwWMRmmgg+HR; Tue, 15 Sep 2020 15:25:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 63D918589A;
-	Tue, 15 Sep 2020 14:26:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 14E5087147;
+	Tue, 15 Sep 2020 15:25:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CE0B31BF36F
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 14:26:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 527951BF350
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 15:25:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C3555203DA
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 14:26:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4DE6584E5D
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 15:25:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kvCzniyY-S7a for <devel@linuxdriverproject.org>;
- Tue, 15 Sep 2020 14:26:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic311-13.consmr.mail.bf2.yahoo.com
- (sonic311-13.consmr.mail.bf2.yahoo.com [74.6.131.123])
- by silver.osuosl.org (Postfix) with ESMTPS id 9874420373
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 14:26:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1600179983; bh=LrG6joet+jnXjhqLk1gWkN2Y7rlRt1B1GDReYP48q1E=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=RvtDmJd9nxovqMS9u2OYuwcgn1pufB+WnI+yUPJoOpCdATI5ZC8EN9/ijfdUmb9w4YAV/Wcy+VFyGiVKNc5FWFIl6ZDKrIOIcabZcSbO+4aNXnZEKUaOpQDA/qT/+huMLFT3Xk80NRwqUnN3JE+pt+a5KG6FUS7cyR5TEfQ6Xxk/1bx4xWRj8ZbE1f35vi4qnlaTlteaNgFvkBenakLDnxXJjJFPIoMhFgvK4rBRyC3gt3lWiIajfrzSm9qRqXYa/Kgd5iFeIzCnwbmjluftdCJVLBTDZaLkG9kKaajd7rfFKxorF6mUw3sKAKnJY7kwnl5hx/WpYk2+EiE1U/mAKg==
-X-YMail-OSG: 2mJVeXQVM1lLYAgjWnpHLKsMJXgsMCfPn9LOYlRa.VRHvMAaZV9cGBNeVxopqJ1
- yQ0btP21GX4C6GjaYSFRhzQDRR8U.7ppOUGlXZdBRdjtE8jakQ6xxQC.3YZbvKI46MOy0CH9Z5Ze
- Lel284xHa49HVPbOFfFnnsC1BSqPtl7CNwsLVCfHmzhGsI_CK5zSd_ZC8kETjaYGdQZTMKGBwYw.
- bCxsUYFKT.t.g0M7mJ.tAy3mz4.ZpCJ0DvlhAW1PyXtGkT7ICM9oduSuTE34tAeuyyLdHi5ZOouH
- v98jrCVmRpRv.Ie6tM.d5Krrdusyena4_40WN3JuCPrutqhQhgrvWMf1IfAf26GdzwM9yAnZkLBS
- SlxmbeoxduHmKIlgnzZBk_ErvFMI9H3OdEUj08A5Ik8GW8yl5jau3Q7rDSigu47eZzpjnH945xV_
- VQZWj9FEv6N6la1ZyOjnkcVDPoFN5wAG6Xfkl20sdVkLIW1Zy2rqY4mZJtlgXwB99q_Y8zjTrkAH
- 5UKZFhFL4pQ_e8RbxyxwVTuQjFtZDNjcnGjyW2EGtCuDVywRL.2h4N4tCkyiS8E2H2x9gdRTNNn.
- .YBDBbhB7ZU.jQrLBJElzpX2cHpDjjNeoLmRQz5jIDXkEU5R5uWHHlLRm0vFBAUxGhFmUixGv7FD
- zpPUsReoHtCWxhB4VB9SNxCHz.30f5ixGW12CbeLjY6.HVLLBavyhOfeUnv5CqMmgWwA66W27Fcs
- WlLj0MG0injBoLAQGC.T987CtDVCjP.7GcPe5v_oo7gDogrh_JYeOIKYdaMTLdpl856SeuZ_suT8
- iBSgH5I1yf_1EYqqMhxzywOk_B.B1COLlcJpGSHBQZ0KClgRnEqiRbRQ2j8gWnNjxjYtyBcu0Zyt
- AppluDS9LXAg6lB53ESBlMYbO5Isa95wV.T0JusnQ1pVylnhYUJ_IUvLOzqUbNwyF6uEuai2Q48w
- ZMfcYQNz9826QfoZ.Erv4oOZgQ_xliOlshFkP9yTDIoWfe3rqZsADvOSmHrE_jyv72K5AJmNKpk5
- grp7m7Unl8AXpFKU5EOrHwpaFmWlRWrRF9YGIuk5MVIFZhSe4uhwrZ4qPAuspAB0GypY2tUsvaiu
- 09ByqbMylb0XAjgOLXFbS4DQkum5m5LMfoTgcD0R_bCOfqa3G8HXx71BYhzkSqkJY6uutqXM.dvW
- hmynqjIS4DK6sIPGBZwBsCm0k7CcF6vK.ij7ck.q8IDc__F2w7EVn23fmVnyc33_9yDXMtPspe9.
- 1K3RTMFUvKNUnekxzu.euQ4Lb8.wS5mJXfEU8WtNR_v14JoUA24VJC7qWyAvWvK5iumSrUeik_lN
- r.PUoM7O29bmRiWV8YqruCmQolF4AJXVdTZhtjW7V1vttawkjPKdDGN.baAGpHIj7R60rNsB5RYm
- ReUSm2HLhDpeAh.9Nw3i22vLICL2WPTVDZDHmnEyOKFDGnb0JfRuf2m6bNuNt
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic311.consmr.mail.bf2.yahoo.com with HTTP; Tue, 15 Sep 2020 14:26:23 +0000
-Date: Tue, 15 Sep 2020 14:26:19 +0000 (UTC)
-From: Bintuo Deme <deme.bintuo@yahoo.com>
-Message-ID: <1396067427.2349597.1600179979698@mail.yahoo.com>
-Subject: Von Bintou
+ with ESMTP id Ij-ruMJcEtCm for <devel@linuxdriverproject.org>;
+ Tue, 15 Sep 2020 15:25:47 +0000 (UTC)
+X-Greylist: delayed 22:34:52 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0210.hostedemail.com
+ [216.40.44.210])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A84F84E49
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 15:25:47 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay03.hostedemail.com (Postfix) with ESMTP id BC27E837EC2D;
+ Tue, 15 Sep 2020 15:25:45 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:960:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1543:1593:1594:1605:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2828:2898:3138:3139:3140:3141:3142:3622:3865:3866:3867:3868:3870:3871:3872:3874:4250:4321:4605:5007:6117:6119:7576:7903:7904:9010:9545:10004:10400:10848:10967:11026:11232:11657:11658:11914:12043:12296:12297:12438:12555:12740:12760:12895:13161:13229:13255:13439:13848:14096:14097:14181:14659:14721:21080:21451:21627:21660:21740:21990:30012:30041:30054:30070:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:2, LUA_SUMMARY:none
+X-HE-Tag: whip01_5b0304527112
+X-Filterd-Recvd-Size: 4885
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf17.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 15 Sep 2020 15:25:44 +0000 (UTC)
+Message-ID: <2f037e34bc5a32af66b2a306cc93dde2338cb960.camel@perches.com>
+Subject: Re: [RESEND PATCH] staging: rtl8188eu: Fix else after return
+ WARNING (checkpatch)
+From: Joe Perches <joe@perches.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, Sebastian Arriola
+ <sebdeveloper6952@gmail.com>
+Date: Tue, 15 Sep 2020 08:25:41 -0700
+In-Reply-To: <20200915112028.GG4282@kadam>
+References: <230f781dcaadfc797a016cc6036d63efe6542062.camel@learner.manipal.edu>
+ <20200914145755.GD4282@kadam>
+ <8c95d3d02dbdd36a048280cb8d9e8f171c3b4959.camel@perches.com>
+ <20200915112028.GG4282@kadam>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-References: <1396067427.2349597.1600179979698.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16583 YMailNodin Mozilla/5.0 (Windows NT 6.1;
- ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.119
- Safari/537.36
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,80 +74,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: bintou_deme2011@aol.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sohom Datta <sohom.datta@learner.manipal.edu>, linux-kernel@vger.kernel.org,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpWb246wqBCaW50b3XCoERlbWUKTGllYnN0ZSwKR3V0ZW7CoFRhZ8KgdW5kwqB2aWVsZW7CoERh
-bmvCoGbDvHLCoElocmXCoEF1Zm1lcmtzYW1rZWl0LsKgQml0dGXCoGljaMKgbcO2Y2h0ZSzCoGRh
-c3PCoFNpZcKgbWVpbmXCoEUtTWFpbMKgc29yZ2bDpGx0aWfCoGxlc2VuwqB1bmTCoG1pcsKgYmVp
-wqBkZXLCoEJlYXJiZWl0dW5nwqBkaWVzZXPCoFByb2pla3RzwqBiZWhpbGZsaWNowqBzaW5kLsKg
-SWNowqBiaW7CoE1pc3PCoEJpbnRvdcKgRGVtZcKgdW5kwqBpY2jCoHNjaHJlaWJlwqBkZW3DvHRp
-ZyzCoHVtwqBJaHJlwqBQYXJ0bmVyc2NoYWZ0wqB1bmTCoFVudGVyc3TDvHR6dW5nwqBiZWnCoGRl
-csKgw5xiZXJ0cmFndW5nwqB1bmTCoEludmVzdGl0aW9uwqBtZWluZXLCoEVyYnNjaGFmdHNmb25k
-c8KgaW7CoEjDtmhlwqB2b27CoDYuNTAwLjAwMCwwMMKgVVNEwqAoc2VjaHPCoE1pbGxpb25lbsKg
-ZsO8bmZodW5kZXJ0dGF1c2VuZMKgVVMtRG9sbGFyKcKgenXCoGVyYml0dGVuLMKgZGllwqBtZWlu
-wqB2ZXJzdG9yYmVuZXLCoGdlbGllYnRlcsKgVmF0ZXLCoHZvcsKgc2VpbmVtwqBUb2TCoGJlacKg
-ZWluZXLCoEJhbmvCoGhpbnRlcmxlZ3TCoGhhdC4KCkljaMKgbcO2Y2h0ZcKgSWhuZW7CoHZlcnNp
-Y2hlcm4swqBkYXNzwqBkaWVzZXLCoEZvbmRzwqB2b27CoG1laW5lbcKgdmVyc3RvcmJlbmVuwqBW
-YXRlcsKgbGVnYWzCoGVyd29yYmVuwqB3dXJkZcKgdW5kwqBrZWluZW7CoGtyaW1pbmVsbGVuwqBI
-aW50ZXJncnVuZMKgaGF0LsKgTWVpbsKgVmF0ZXLCoGhhdMKgZGllc2VuwqBGb25kc8KgbGVnYWzC
-oGR1cmNowqBlaW7CoGxlZ2l0aW1lc8KgR2VzY2jDpGZ0wqBlcndvcmJlbizCoGJldm9ywqBlcsKg
-d8OkaHJlbmTCoHNlaW5lcsKgR2VzY2jDpGZ0c3JlaXNlwqB6dcKgVG9kZcKgdmVyZ2lmdGV0wqB3
-dXJkZS7CoERlcsKgVG9kwqBtZWluZXPCoFZhdGVyc8Kgd3VyZGXCoHZlcm11dGxpY2jCoHZvbsKg
-c2VpbmVuwqBWZXJ3YW5kdGVuwqBnZXBsYW50LMKgZGllwqB3w6RocmVuZMKgZGllc2VywqBaZWl0
-wqBzZWluZXLCoEdlc2Now6RmdHNyZWlzZcKgbWl0wqBpaG3CoHJlaXN0ZW4uwqBEZW5uwqBuYWNo
-wqAzwqBNb25hdGVuwqBkZXPCoFRvZGVzwqBtZWluZXPCoFZhdGVyc8KgYmVnYW5uZW7CoHNlaW5l
-wqBWZXJ3YW5kdGVuLMKgYWxsZcKgR3J1bmRzdMO8Y2tlwqBtZWluZXPCoHZlcnN0b3JiZW5lbsKg
-VmF0ZXJzwqB6dcKgYmVhbnNwcnVjaGVuwqB1bmTCoHp1wqB2ZXJrYXVmZW4uCgpEaWXCoFZlcndh
-bmR0ZW7CoG1laW5lc8KgdmVyc3RvcmJlbmVuwqBWYXRlcnPCoHdpc3NlbsKgbmljaHRzwqB2b27C
-oGRlbsKgVVPCoCTCoDYuNTAwLjAwMCwwMMKgKHNlY2hzwqBNaWxsaW9uZW7CoGbDvG5maHVuZGVy
-dHRhdXNlbmTCoFVTLURvbGxhcikswqBkaWXCoG1laW7CoHZlcnN0b3JiZW5lcsKgVmF0ZXLCoGJl
-acKgZGVywqBCYW5rwqBoaW50ZXJsZWd0wqBoYXQswqB1bmTCoG1laW7CoHZlcnN0b3JiZW5lcsKg
-VmF0ZXLCoGhhdMKgbWlywqB2b3LCoHNlaW5lbcKgVG9kwqBoZWltbGljaMKgZ2VzYWd0LMKgZGFz
-c8KgaWNowqBpbsKgZWluZW3CoExhbmTCoGVpbmVuwqBhdXNsw6RuZGlzY2hlbsKgUGFydG5lcsKg
-c3VjaGVuwqBzb2xswqBtZWluZXLCoFdhaGwswqB3b8KgaWNowqBkaWVzZXPCoEdlbGTCoGbDvHLC
-oG1laW5lwqBlaWdlbmVuwqBad2Vja2XCoMO8YmVyd2Vpc2VuwqB3ZXJkZS4KCkJpdHRlwqBoZWxm
-ZW7CoFNpZcKgbWlyLMKgZGllc2VzwqBHZWxkwqBmw7xywqBnZXNjaMOkZnRsaWNoZcKgWndlY2tl
-wqBpbsKgSWhyZW3CoExhbmTCoGF1ZsKgSWhywqBLb250b8KgenXCoMO8YmVyd2Vpc2VuLsKgSWNo
-wqBoYWJlwqBkaWVzZcKgRW50c2NoZWlkdW5nwqBnZXRyb2ZmZW4swqB3ZWlswqBpY2jCoHZpZWxl
-wqBEZW3DvHRpZ3VuZ2VuwqB2b27CoGRlbsKgVmVyd2FuZHRlbsKgbWVpbmVzwqB2ZXJzdG9yYmVu
-ZW7CoFZhdGVyc8KgZXJsaXR0ZW7CoGhhYmUuwqBHZWdlbnfDpHJ0aWfCoGhhdHRlwqBpY2jCoEtv
-bW11bmlrYXRpb27CoG1pdMKgZGVtwqBEaXJla3RvcsKgZGVywqBCYW5rLMKgYmVpwqBkZXLCoG1l
-aW7CoHZlcnN0b3JiZW5lcsKgVmF0ZXLCoGRpZXNlc8KgR2VsZMKgZWluZ2V6YWhsdMKgaGF0LsKg
-SWNowqBoYWJlwqBkZW3CoERpcmVrdG9ywqBkZXLCoEJhbmvCoGRpZcKgRHJpbmdsaWNoa2VpdMKg
-ZXJrbMOkcnQswqBkaWXCoGVyZm9yZGVybGljaMKgaXN0LMKgdW3CoHNpY2hlcnp1c3RlbGxlbizC
-oGRhc3PCoGRlcsKgRm9uZHPCoGluc8KgQXVzbGFuZMKgdHJhbnNmZXJpZXJ0wqB3aXJkLMKgZGFt
-aXTCoGljaMKgZGllc2VzwqBMYW5kwqB6dcKgbWVpbmVywqBTaWNoZXJoZWl0wqB2ZXJsYXNzZW7C
-oGthbm4uwqBEZXLCoERpcmVrdG9ywqBkZXLCoEJhbmvCoGhhdMKgbWlywqB2ZXJzaWNoZXJ0LMKg
-ZGFzc8KgZGVywqBGb25kc8Kgw7xiZXJ0cmFnZW7CoHdpcmQswqBzb2JhbGTCoGljaMKgamVtYW5k
-ZW7CoHZvcnN0ZWxsZSzCoGRlcsKgZWhybGljaMKgaXN0LMKgZGVuwqBGb25kc8KgaW7CoG1laW5l
-bcKgTmFtZW7CoHp1wqBkaWVzZW3CoFp3ZWNrwqB6dcKgZXJoYWx0ZW4uCgpCaXR0ZcKgc2VpZW7C
-oFNpZcKgdmVyc2ljaGVydCzCoGRhc3PCoGRpZcKgQmFua8KgZGVuwqBHZWxkYmV0cmFnwqBhdWbC
-oElocsKgS29udG/CoMO8YmVyd2Vpc2VuwqB3aXJkwqB1bmTCoGVzwqBrZWluwqBQcm9ibGVtwqBn
-aWJ0LsKgRGllc2XCoFRyYW5zYWt0aW9uwqBpc3TCoDEwMCXCoHJpc2lrb2ZyZWnCoHVuZMKgbGVn
-aXRpbS7CoEljaMKgYmluwqBiZXJlaXQswqBJaG5lbsKgMzAlwqBkZXPCoEdlc2FtdGJldHJhZ3PC
-oGFsc8KgQXVzZ2xlaWNowqBmw7xywqBJaHJlwqBCZW3DvGh1bmdlbsKgL8KgQmVpdHLDpGdlwqBu
-YWNowqBkZXLCoGVyZm9sZ3JlaWNoZW7CoMOcYmVyd2Vpc3VuZ8KgZGllc2VzwqBGb25kc8KgYXVm
-wqBJaHLCoEtvbnRvwqBhbnp1YmlldGVuLsKgU2llwqB3ZXJkZW7CoG1pcsKgYXVjaMKgaGVsZmVu
-LMKgMTAlwqBmw7xywqBXb2hsdMOkdGlna2VpdHNvcmdhbmlzYXRpb25lbsKgdW5kwqBtdXR0ZXJs
-b3NlwqBCYWJ5c8KgaW7CoElocmVtwqBMYW5kwqB6dcKgc3BlbmRlbi4KCkljaMKgbcO2Y2h0ZcKg
-bnVyLMKgZGFzc8KgU2llwqBmw7xywqBtaWNowqBhbHPCoG1laW7CoGF1c2zDpG5kaXNjaGVywqBQ
-YXJ0bmVywqBhdWZ0cmV0ZW4swqBkYW1pdMKgZGllwqBCYW5rwqBkaWVzZW7CoEZvbmRzwqBhdWbC
-oElocsKgS29udG/CoMO8YmVyd2Vpc3QswqBkYW1pdMKgaWNowqBpbsKgZGllc2VtwqBMYW5kwqBs
-ZWJlbsKga2Fubi7CoEJpdHRlLMKgaWNowqB3ZXJkZcKgSWhyZcKgZHJpbmdlbmRlwqBIaWxmZcKg
-d2VnZW7CoG1laW5lc8KgZ2VnZW53w6RydGlnZW7CoFp1c3RhbmRzwqBqZXR6dMKgYnJhdWNoZW4u
-wqBXZW5uwqBTaWXCoHNpY2jCoGJlcmVpdMKgZXJrbMOkcmVuLMKgbWl0wqBtaXLCoGluwqBCZXp1
-Z8KgYXVmwqBkaWVzZW7CoFp3ZWNrwqB6dXNhbW1lbnp1YXJiZWl0ZW4swqBnZWJlbsKgU2llwqBt
-aXLCoGJpdHRlwqBJaHLCoEludGVyZXNzZSzCoGluZGVtwqBTaWXCoG1pcsKgYW50d29ydGVuLMKg
-ZGFtaXTCoGljaMKgSWhuZW7CoGRpZcKgZXJmb3JkZXJsaWNoZW7CoEluZm9ybWF0aW9uZW7CoHVu
-ZMKgRWluemVsaGVpdGVuwqB6dXLCoHdlaXRlcmVuwqBWb3JnZWhlbnN3ZWlzZcKgZ2ViZW7CoGth
-bm4uwqBJY2jCoGJpZXRlwqBJaG5lbsKgMzAlwqBkZXPCoEdlbGRlc8KgZsO8csKgSWhyZcKgSGls
-ZmXCoGFuwqB1bmTCoFVudGVyc3TDvHR6dW5nLMKgdW3CoGRhbWl0wqB1bXp1Z2VoZW4uCgpJaHJl
-wqBkcmluZ2VuZGXCoEFudHdvcnTCoHdpcmTCoGdlc2Now6R0enQuCkZyZXVuZGxpY2hlwqBHcsO8
-w59lCkJpbnRvdcKgRGVtZQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
-dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cml2ZXJkZXYtZGV2ZWwK
+On Tue, 2020-09-15 at 14:20 +0300, Dan Carpenter wrote:
+> On Mon, Sep 14, 2020 at 09:42:49AM -0700, Joe Perches wrote:
+> > On Mon, 2020-09-14 at 17:57 +0300, Dan Carpenter wrote:
+> > > On Sun, Sep 13, 2020 at 12:19:50PM +0530, Sohom Datta wrote:
+> > > > > From 4c8c8f3ff7f4d711daea4ac3bb987fcecc7ef1ed Mon Sep 17 00:00:00 2001
+> > > > From: Sohom <sohom.datta@learner.manipal.edu>
+> > > > Date: Sat, 12 Sep 2020 18:04:56 +0530
+> > > > Subject: [RESEND PATCH] staging: rtl8188eu: Fix else after return WARNING
+> > > >  (checkpatch)
+> > > > 
+> > > > Fixed:
+> > > > WARNING: else is not generally useful after a break or return
+> > > > 1636: FILE: ./rtw_recv.c:1636:
+> > > > +           return false;
+> > > > +       else
+> > > > 
+> > > > Separated the return statement into a separate block since
+> > > > it doesn't seem to depend on the SN_LESS explicity being false.
+> > > > 
+> > > > Signed-off-by: Sohom <sohom.datta@learner.manipal.edu>
+> > > > ---
+> > > >  drivers/staging/rtl8188eu/core/rtw_recv.c | 5 +++--
+> > > >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+> > > > index 5fe7a0458dd2..5e81134ffb6d 100644
+> > > > --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
+> > > > +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+> > > > @@ -1629,10 +1629,11 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
+> > > >  		hdr = list_entry(plist, struct recv_frame, list);
+> > > >  		pnextattrib = &hdr->attrib;
+> > > >  
+> > > > +		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+> > > > +			return false;
+> > > > +
+> > > >  		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num))
+> > > >  			plist = plist->next;
+> > > > -		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+> > > > -			return false;
+> > > >  		else
+> > > >  			break;
+> > > >  	}
+> > > 
+> > > Checkpatch is just wrong here.  Ignore it when it's wrong.
+> > 
+> > It's not "wrong" here.  It's making a suggestion.
+> > 
+> > Perhaps read the SN_EQUAL and SN_LESS macros.
+> > 
+> > a and b are both u16's here.
+> > 
+> > drivers/staging/rtl8188eu/include/rtw_recv.h:#define SN_LESS(a, b)              (((a - b) & 0x800) != 0)
+> > drivers/staging/rtl8188eu/include/rtw_recv.h:#define SN_EQUAL(a, b)     (a == b)
+> > 
+> > Reordering works, perhaps it's just a question of
+> > whether it's the most likely result of the test.
+> > 
+> > This is in a while loop.
+> > 
+> > If the expected test is really the most likely that
+> > SN_LESS is true, then perhaps this loop could be
+> > something like:
+> > 
+> > 		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num)) {
+> > 			plist = plist->next;
+> > 			continue;
+> > 		}
+> > 		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+> > 			return false;
+> > 		break;
+> > 	}
+> > 
+> > The real question is whether or not that's more readable.
+> > 
+> 
+> It's not clear to me that any of these are more readable than the other.
+> 
+> I see that someone broke the staging/rtl8712 version of this driver in
+> June.  See commit 98fe05e21a6e ("staging: rtl8712: Remove unnecesary
+> else after return statement.").  That patch went through LKML instead of
+> going through the driver-devel list...  :/
+
+That's sad.
+
+Then another question is whether either is more prone
+to unintentional breakage by novice code readers being
+guided by brainless scripts...
+
+A bit of a pity as the original intent of the checkpatch
+test was somewhat useful.  Maybe it's outlived its value
+though when used with -f files.
+
+There aren't many of these left in the kernel.
+
+Maybe it should be changed to work only on patches.
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
