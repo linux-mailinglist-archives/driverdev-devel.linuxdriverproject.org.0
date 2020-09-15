@@ -1,67 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1F1926A48D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 14:01:42 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31B8026A48C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 14:01:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 56E36204F4;
-	Tue, 15 Sep 2020 12:01:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CDE0A871D8;
+	Tue, 15 Sep 2020 12:01:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xz17dPJOb3LQ; Tue, 15 Sep 2020 12:01:39 +0000 (UTC)
+	with ESMTP id J1ZhhFK+Tv5M; Tue, 15 Sep 2020 12:01:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4FEC7204DD;
-	Tue, 15 Sep 2020 12:01:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 61516870A0;
+	Tue, 15 Sep 2020 12:01:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8F5AD1BF3BD
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 12:01:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D10E1BF3BD
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 12:01:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8BE258584A
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 12:01:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7721D86690
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 12:01:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1MI31yg2_VHX for <devel@linuxdriverproject.org>;
- Tue, 15 Sep 2020 12:01:31 +0000 (UTC)
+ with ESMTP id R3lNSl3ErwZH for <devel@linuxdriverproject.org>;
+ Tue, 15 Sep 2020 12:01:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
  [148.163.135.77])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 576068583F
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 12:01:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DA27E86180
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 12:01:33 +0000 (UTC)
 Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
  by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 08FBrORs015681; Tue, 15 Sep 2020 08:01:30 -0400
+ 08FBrORt015681; Tue, 15 Sep 2020 08:01:33 -0400
 Received: from nwd2mta3.analog.com ([137.71.173.56])
- by mx0a-00128a01.pphosted.com with ESMTP id 33gu85284x-1
+ by mx0a-00128a01.pphosted.com with ESMTP id 33gu852856-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 15 Sep 2020 08:01:30 -0400
-Received: from ASHBMBX9.ad.analog.com (ashbmbx9.ad.analog.com [10.64.17.10])
- by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 08FC1TSX051497
- (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL); 
- Tue, 15 Sep 2020 08:01:29 -0400
-Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
- ASHBMBX9.ad.analog.com (10.64.17.10) with Microsoft SMTP Server
+ Tue, 15 Sep 2020 08:01:33 -0400
+Received: from SCSQMBX11.ad.analog.com (scsqmbx11.ad.analog.com [10.77.17.10])
+ by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 08FC1VcB051521
+ (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128
+ verify=FAIL); Tue, 15 Sep 2020 08:01:32 -0400
+Received: from SCSQCASHYB7.ad.analog.com (10.77.17.133) by
+ SCSQMBX11.ad.analog.com (10.77.17.10) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Tue, 15 Sep 2020 08:01:37 -0400
-Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
- ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
+ 15.1.1779.2; Tue, 15 Sep 2020 05:01:40 -0700
+Received: from SCSQMBX10.ad.analog.com (10.77.17.5) by
+ SCSQCASHYB7.ad.analog.com (10.77.17.133) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Tue, 15 Sep 2020 08:01:37 -0400
-Received: from zeus.spd.analog.com (10.66.68.11) by ASHBMBX8.ad.analog.com
- (10.64.17.5) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
- Transport; Tue, 15 Sep 2020 08:01:37 -0400
+ 15.1.1779.2; Tue, 15 Sep 2020 05:01:39 -0700
+Received: from zeus.spd.analog.com (10.66.68.11) by SCSQMBX10.ad.analog.com
+ (10.77.17.5) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
+ Transport; Tue, 15 Sep 2020 05:01:39 -0700
 Received: from nsa.sphairon.box ([10.44.3.98])
- by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 08FC1K9s004525;
- Tue, 15 Sep 2020 08:01:24 -0400
+ by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 08FC1K9t004525;
+ Tue, 15 Sep 2020 08:01:26 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <linux-iio@vger.kernel.org>, <devel@driverdev.osuosl.org>
-Subject: [PATCH v2 01/10] iio: adis16201: Use Managed device functions
-Date: Tue, 15 Sep 2020 14:02:49 +0200
-Message-ID: <20200915120258.161587-2-nuno.sa@analog.com>
+Subject: [PATCH v2 02/10] iio: adis16209: Use Managed device functions
+Date: Tue, 15 Sep 2020 14:02:50 +0200
+Message-ID: <20200915120258.161587-3-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915120258.161587-1-nuno.sa@analog.com>
 References: <20200915120258.161587-1-nuno.sa@analog.com>
@@ -107,31 +107,31 @@ cmUsIGRyb3AgdGhlIGAucmVtb3ZlYCBjYWxsYmFjayBieSBmdXJ0aGVyIHVzaW5nIGRldm0KZnVu
 Y3Rpb25zLgoKU2lnbmVkLW9mZi1ieTogTnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4KLS0t
 CgpDaGFuZ2VzIGluIHYyOgoqIEZ1cnRoZXIgdXNlIGRldm0gZnVuY3Rpb25zIHRvIGtlZXAgY2xl
 YW51cCBvcmRlciBhbmQgdG8gZHJvcCBgLnJlbW92ZWAuCgogZHJpdmVycy9paW8vYWNjZWwvYWRp
-czE2MjAxLmMgfCAyNiArKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQs
-IDMgaW5zZXJ0aW9ucygrKSwgMjMgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9p
-aW8vYWNjZWwvYWRpczE2MjAxLmMgYi9kcml2ZXJzL2lpby9hY2NlbC9hZGlzMTYyMDEuYwppbmRl
-eCA1OWEyNGMzNTVhMWEuLmY5NTVjY2NiM2U3NyAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8vYWNj
-ZWwvYWRpczE2MjAxLmMKKysrIGIvZHJpdmVycy9paW8vYWNjZWwvYWRpczE2MjAxLmMKQEAgLTI4
-MSwzNCArMjgxLDE1IEBAIHN0YXRpYyBpbnQgYWRpczE2MjAxX3Byb2JlKHN0cnVjdCBzcGlfZGV2
-aWNlICpzcGkpCiAJaWYgKHJldCkKIAkJcmV0dXJuIHJldDsKIAotCXJldCA9IGFkaXNfc2V0dXBf
-YnVmZmVyX2FuZF90cmlnZ2VyKHN0LCBpbmRpb19kZXYsIE5VTEwpOworCXJldCA9IGRldm1fYWRp
-c19zZXR1cF9idWZmZXJfYW5kX3RyaWdnZXIoc3QsIGluZGlvX2RldiwgTlVMTCk7CiAJaWYgKHJl
-dCkKIAkJcmV0dXJuIHJldDsKIAogCXJldCA9IGFkaXNfaW5pdGlhbF9zdGFydHVwKHN0KTsKIAlp
-ZiAocmV0KQotCQlnb3RvIGVycm9yX2NsZWFudXBfYnVmZmVyX3RyaWdnZXI7Ci0KLQlyZXQgPSBp
-aW9fZGV2aWNlX3JlZ2lzdGVyKGluZGlvX2Rldik7Ci0JaWYgKHJldCA8IDApCi0JCWdvdG8gZXJy
-b3JfY2xlYW51cF9idWZmZXJfdHJpZ2dlcjsKLQotCXJldHVybiAwOwotCi1lcnJvcl9jbGVhbnVw
-X2J1ZmZlcl90cmlnZ2VyOgotCWFkaXNfY2xlYW51cF9idWZmZXJfYW5kX3RyaWdnZXIoc3QsIGlu
-ZGlvX2Rldik7Ci0JcmV0dXJuIHJldDsKLX0KLQotc3RhdGljIGludCBhZGlzMTYyMDFfcmVtb3Zl
-KHN0cnVjdCBzcGlfZGV2aWNlICpzcGkpCi17Ci0Jc3RydWN0IGlpb19kZXYgKmluZGlvX2RldiA9
-IHNwaV9nZXRfZHJ2ZGF0YShzcGkpOwotCXN0cnVjdCBhZGlzICpzdCA9IGlpb19wcml2KGluZGlv
-X2Rldik7Ci0KLQlpaW9fZGV2aWNlX3VucmVnaXN0ZXIoaW5kaW9fZGV2KTsKLQlhZGlzX2NsZWFu
-dXBfYnVmZmVyX2FuZF90cmlnZ2VyKHN0LCBpbmRpb19kZXYpOworCQlyZXR1cm4gcmV0OwogCi0J
-cmV0dXJuIDA7CisJcmV0dXJuIGRldm1faWlvX2RldmljZV9yZWdpc3Rlcigmc3BpLT5kZXYsIGlu
-ZGlvX2Rldik7CiB9CiAKIHN0YXRpYyBzdHJ1Y3Qgc3BpX2RyaXZlciBhZGlzMTYyMDFfZHJpdmVy
-ID0gewpAQCAtMzE2LDcgKzI5Nyw2IEBAIHN0YXRpYyBzdHJ1Y3Qgc3BpX2RyaXZlciBhZGlzMTYy
-MDFfZHJpdmVyID0gewogCQkubmFtZSA9ICJhZGlzMTYyMDEiLAogCX0sCiAJLnByb2JlID0gYWRp
-czE2MjAxX3Byb2JlLAotCS5yZW1vdmUgPSBhZGlzMTYyMDFfcmVtb3ZlLAogfTsKIG1vZHVsZV9z
-cGlfZHJpdmVyKGFkaXMxNjIwMV9kcml2ZXIpOwogCi0tIAoyLjI4LjAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
-bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+czE2MjA5LmMgfCAyNSArKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwg
+MyBpbnNlcnRpb25zKCspLCAyMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2lp
+by9hY2NlbC9hZGlzMTYyMDkuYyBiL2RyaXZlcnMvaWlvL2FjY2VsL2FkaXMxNjIwOS5jCmluZGV4
+IDNkNTUzOGUyZjc2ZS4uNGE4NDFhZWM2MjY4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9hY2Nl
+bC9hZGlzMTYyMDkuYworKysgYi9kcml2ZXJzL2lpby9hY2NlbC9hZGlzMTYyMDkuYwpAQCAtMjkx
+LDMzICsyOTEsMTUgQEAgc3RhdGljIGludCBhZGlzMTYyMDlfcHJvYmUoc3RydWN0IHNwaV9kZXZp
+Y2UgKnNwaSkKIAlpZiAocmV0KQogCQlyZXR1cm4gcmV0OwogCi0JcmV0ID0gYWRpc19zZXR1cF9i
+dWZmZXJfYW5kX3RyaWdnZXIoc3QsIGluZGlvX2RldiwgTlVMTCk7CisJcmV0ID0gZGV2bV9hZGlz
+X3NldHVwX2J1ZmZlcl9hbmRfdHJpZ2dlcihzdCwgaW5kaW9fZGV2LCBOVUxMKTsKIAlpZiAocmV0
+KQogCQlyZXR1cm4gcmV0OwogCiAJcmV0ID0gYWRpc19pbml0aWFsX3N0YXJ0dXAoc3QpOwogCWlm
+IChyZXQpCi0JCWdvdG8gZXJyb3JfY2xlYW51cF9idWZmZXJfdHJpZ2dlcjsKLQlyZXQgPSBpaW9f
+ZGV2aWNlX3JlZ2lzdGVyKGluZGlvX2Rldik7Ci0JaWYgKHJldCkKLQkJZ290byBlcnJvcl9jbGVh
+bnVwX2J1ZmZlcl90cmlnZ2VyOwotCi0JcmV0dXJuIDA7Ci0KLWVycm9yX2NsZWFudXBfYnVmZmVy
+X3RyaWdnZXI6Ci0JYWRpc19jbGVhbnVwX2J1ZmZlcl9hbmRfdHJpZ2dlcihzdCwgaW5kaW9fZGV2
+KTsKLQlyZXR1cm4gcmV0OwotfQotCi1zdGF0aWMgaW50IGFkaXMxNjIwOV9yZW1vdmUoc3RydWN0
+IHNwaV9kZXZpY2UgKnNwaSkKLXsKLQlzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2ID0gc3BpX2dl
+dF9kcnZkYXRhKHNwaSk7Ci0Jc3RydWN0IGFkaXMgKnN0ID0gaWlvX3ByaXYoaW5kaW9fZGV2KTsK
+LQotCWlpb19kZXZpY2VfdW5yZWdpc3RlcihpbmRpb19kZXYpOwotCWFkaXNfY2xlYW51cF9idWZm
+ZXJfYW5kX3RyaWdnZXIoc3QsIGluZGlvX2Rldik7CisJCXJldHVybiByZXQ7CiAKLQlyZXR1cm4g
+MDsKKwlyZXR1cm4gZGV2bV9paW9fZGV2aWNlX3JlZ2lzdGVyKCZzcGktPmRldiwgaW5kaW9fZGV2
+KTsKIH0KIAogc3RhdGljIHN0cnVjdCBzcGlfZHJpdmVyIGFkaXMxNjIwOV9kcml2ZXIgPSB7CkBA
+IC0zMjUsNyArMzA3LDYgQEAgc3RhdGljIHN0cnVjdCBzcGlfZHJpdmVyIGFkaXMxNjIwOV9kcml2
+ZXIgPSB7CiAJCS5uYW1lID0gImFkaXMxNjIwOSIsCiAJfSwKIAkucHJvYmUgPSBhZGlzMTYyMDlf
+cHJvYmUsCi0JLnJlbW92ZSA9IGFkaXMxNjIwOV9yZW1vdmUsCiB9OwogbW9kdWxlX3NwaV9kcml2
+ZXIoYWRpczE2MjA5X2RyaXZlcik7CiAKLS0gCjIuMjguMAoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
