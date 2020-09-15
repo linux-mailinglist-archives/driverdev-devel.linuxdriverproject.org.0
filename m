@@ -2,75 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4B58269A51
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 02:18:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37B6D269A53
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 02:18:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4AB5C20459;
-	Tue, 15 Sep 2020 00:18:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A5DCB20474;
+	Tue, 15 Sep 2020 00:18:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zBmg6caE+auQ; Tue, 15 Sep 2020 00:18:42 +0000 (UTC)
+	with ESMTP id 4XGRAt63QS3f; Tue, 15 Sep 2020 00:18:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 139D520430;
-	Tue, 15 Sep 2020 00:18:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C034A20466;
+	Tue, 15 Sep 2020 00:18:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C1AE01BF968
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 589DC1BF968
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B92A885D21
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 557B885D21
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 00:18:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id otKM3uEDyZ+x for <devel@linuxdriverproject.org>;
- Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
+ with ESMTP id rZ7T9wzlymlc for <devel@linuxdriverproject.org>;
+ Tue, 15 Sep 2020 00:18:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 065C385C56
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 00:18:34 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id r9so2178792ioa.2
- for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 17:18:33 -0700 (PDT)
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B670A85C56
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 00:18:42 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id y74so2093114iof.12
+ for <devel@driverdev.osuosl.org>; Mon, 14 Sep 2020 17:18:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MzGmDzzjMGRgvfVFgDwfx6ad7ejBUYi+ZapK1NYg/6M=;
- b=PXonXvA1hrw4+waEQbI3TBhVYqBei3TzTYxRwdjmoZL2oyVs7WG2X+gV921cUIEjua
- 42FI7EcU6EA59xKC+ioqJbD6szSBomN1mYXh0lnZ8StF99qOg9JTwuCWz8tEtruwibTH
- wwvBNFbI8LloKxFmtm8yZ2fijZBEQObWveRBUIs3XrK5W3Y1P0Id/DBSthmz1S8Inr6Y
- gfF3XJUPImvctdJhhzzg1FrPhETOLthgTzT5CpmXKmOMckw+KmPIiK7KK0Nqjrg/2aV6
- R0KkKLEDPIuUrVkzMS2oRAPdWa9Mc3R0/wUsTL8tIALRecsoq/qOtMMD7UBGmrQlLL0r
- Hd4g==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=MVXFq86Wzjq/2JiJKgUy5nszyPP/+FNZubjrZtz+U0E=;
+ b=CiM5tvdCNkr0lm6UjCHD4rwh1bsdj1Z2cmrZ42EMj7BgLAg4dJTnRvapCjD+QP4nbo
+ u0f277kQ1FudohbdLVuySFkP+AuXgs4G5PDVXkV6MVdadFlK3cQMg2cjVRsI+4ylMkDG
+ ITYdnUrpjxmrADi5urho9PCP2Yh17TZXSN+dpy88jzkAA4Q86Z9FY46NZP+ACdh1VYQz
+ +NoPYf5mDUcP5NqbO/Df3xzqtXxDXA0MTWVOGqFP01CvPRZvYNmk7mtTKnnHpm2Z0zZF
+ jlQdjYwdmiWKgyMoT8wZSRDCaYIQAEJzSufWoqCA1Sg/xqTFTNNr+hulYLsLB/xfONxD
+ +SkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MzGmDzzjMGRgvfVFgDwfx6ad7ejBUYi+ZapK1NYg/6M=;
- b=hYmkiE2limzus4YiC0EvXmmHMZORyWRsKrQBrTidkXGM4OPsubnAdK+bnp64rW8C5G
- vZ/p1iA675E9fF0DZAscD+8dt9ysQHYtqDNoOsTfvyvmvKYs5NNq06lXgvt4Vo7nete3
- NPwd1FqCvQODRHxFcVxXF3Wh0gxTuG+MKpRVk6rLo/YVK7IHHfkbbvGVY2C1j+U2uFF5
- s3gOlAp5aqbVOQQmJuZh1qMXJYXj8nkzae4rb7fmcYyYz2LohHmL8Ltkn5TxffhmXB3G
- K+L4QpdY5hyUURGhx/5itXjGKoUC0lMXERNmhvQqn9/KMo2UXemHQcxnJt+QHi7zKJ9j
- ZIsg==
-X-Gm-Message-State: AOAM531m0PCE2Jv/TEEiK1/+LZzWr0ohcMbYeOYC3T3X5wgMssdnBue8
- CvEK3+6XTPJazSW99xYrG5c=
-X-Google-Smtp-Source: ABdhPJxzykrgWjLUZOVn7PzAbwA/sVS46SDOici23G0yyIjXt9iq4zZv1iAeWlcKmjUL/mnbW4umEg==
-X-Received: by 2002:a5d:9355:: with SMTP id i21mr5781062ioo.199.1600129113386; 
- Mon, 14 Sep 2020 17:18:33 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=MVXFq86Wzjq/2JiJKgUy5nszyPP/+FNZubjrZtz+U0E=;
+ b=DR7AED7MXNwAxbdMfbDwMrPkJrDHxmG8yQVVs5ZwPl31E/tNW+P7DMLKv2aGbFJj7V
+ MIplFDzgCSwuG+xRQGD8Tb4OowJk5yvhmD4y5ODimqsM38lYuRvX+r5AmGNhxGDHiqVc
+ 2ZfArr0pP2LEVsjXDIcWpAfIZPgnpLMt5a8dPRiUEfDRAjE+HtG/OITsEzA+lFS+UkD4
+ 48XCXDkLWvUske8DWH3KoetetRpkOw8s+xiEBLq37eBW4ANiSVKNeaQ32p6h/ZBB9TPO
+ KIxWfsPz/hIpkTD8HLcgAk3RWOmfe0Qz9QPjTi4plb7EVlLTNSoHKcbsuUpD8/42Q4M1
+ Djlw==
+X-Gm-Message-State: AOAM5331SxY2Llvr2ksaaigAVbZ9PDj5ondno/I1tXfI8bs/pufSfwhY
+ 7zls+Saxlcq9Dnrh0rL3O9w=
+X-Google-Smtp-Source: ABdhPJxuXc88y9/0sq8TNKqREs2kXFcAs2Xcnn82Xd+G37iawrl8PvEdH7vF+UakPDUyyT6ItiXXJA==
+X-Received: by 2002:a5e:9809:: with SMTP id s9mr13458565ioj.171.1600129122054; 
+ Mon, 14 Sep 2020 17:18:42 -0700 (PDT)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id l131sm6728975ioa.31.2020.09.14.17.18.32
+ by smtp.gmail.com with ESMTPSA id l131sm6728975ioa.31.2020.09.14.17.18.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 17:18:33 -0700 (PDT)
+ Mon, 14 Sep 2020 17:18:41 -0700 (PDT)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/3] staging: rtl8723bs: os_dep: fixed trailing statements
-Date: Mon, 14 Sep 2020 19:17:29 -0500
-Message-Id: <20200915001731.28986-1-ross.schm.dev@gmail.com>
+Subject: [PATCH 2/3] staging: rtl8723bs: os_dep: fixed bracing issue
+Date: Mon, 14 Sep 2020 19:17:30 -0500
+Message-Id: <20200915001731.28986-2-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200915001731.28986-1-ross.schm.dev@gmail.com>
+References: <20200915001731.28986-1-ross.schm.dev@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,46 +93,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a coding style issue by moving trailing statements to new lines in
-sdio_ops_linux.c to fix checkpatch errors.
+Fixed a coding style issue by removing unnecessary braces in
+sdio_ops_linux.c to fix checkpatch warnings.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
-index 50b89340465b..bc8cef5589b8 100644
+index bc8cef5589b8..87fc87662075 100644
 --- a/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/sdio_ops_linux.c
-@@ -264,9 +264,11 @@ u32 sd_read32(struct intf_hdl *pintfhdl, u32 addr, s32 *err)
- 
- 		*err = 0;
- 		for (i = 0; i < SD_IO_TRY_CNT; i++) {
--			if (claim_needed) sdio_claim_host(func);
-+			if (claim_needed)
-+				sdio_claim_host(func);
- 			v = sdio_readl(func, addr, err);
--			if (claim_needed) sdio_release_host(func);
-+			if (claim_needed)
-+				sdio_release_host(func);
- 
- 			if (*err == 0) {
- 				rtw_reset_continual_io_error(psdiodev);
-@@ -355,9 +357,11 @@ void sd_write32(struct intf_hdl *pintfhdl, u32 addr, u32 v, s32 *err)
- 
- 		*err = 0;
- 		for (i = 0; i < SD_IO_TRY_CNT; i++) {
--			if (claim_needed) sdio_claim_host(func);
-+			if (claim_needed)
-+				sdio_claim_host(func);
- 			sdio_writel(func, v, addr, err);
--			if (claim_needed) sdio_release_host(func);
-+			if (claim_needed)
-+				sdio_release_host(func);
- 			if (*err == 0) {
- 				rtw_reset_continual_io_error(psdiodev);
+@@ -275,9 +275,8 @@ u32 sd_read32(struct intf_hdl *pintfhdl, u32 addr, s32 *err)
  				break;
+ 			} else {
+ 				DBG_871X(KERN_ERR "%s: (%d) addr = 0x%05x, val = 0x%x, try_cnt =%d\n", __func__, *err, addr, v, i);
+-				if ((-ESHUTDOWN == *err) || (-ENODEV == *err)) {
++				if ((-ESHUTDOWN == *err) || (-ENODEV == *err))
+ 					padapter->bSurpriseRemoved = true;
+-				}
+ 
+ 				if (rtw_inc_and_chk_continual_io_error(psdiodev) == true) {
+ 					padapter->bSurpriseRemoved = true;
+@@ -367,9 +366,8 @@ void sd_write32(struct intf_hdl *pintfhdl, u32 addr, u32 v, s32 *err)
+ 				break;
+ 			} else {
+ 				DBG_871X(KERN_ERR "%s: (%d) addr = 0x%05x, val = 0x%x, try_cnt =%d\n", __func__, *err, addr, v, i);
+-				if ((-ESHUTDOWN == *err) || (-ENODEV == *err)) {
++				if ((-ESHUTDOWN == *err) || (-ENODEV == *err))
+ 					padapter->bSurpriseRemoved = true;
+-				}
+ 
+ 				if (rtw_inc_and_chk_continual_io_error(psdiodev) == true) {
+ 					padapter->bSurpriseRemoved = true;
+@@ -436,9 +434,9 @@ s32 _sd_read(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, void *pdata)
+ 	}
+ 
+ 	err = sdio_memcpy_fromio(func, pdata, addr, cnt);
+-	if (err) {
++	if (err)
+ 		DBG_871X(KERN_ERR "%s: FAIL(%d)! ADDR =%#x Size =%d\n", __func__, err, addr, cnt);
+-	}
++
+ 	return err;
+ }
+ 
+@@ -538,9 +536,9 @@ s32 _sd_write(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, void *pdata)
+ 
+ 	size = cnt;
+ 	err = sdio_memcpy_toio(func, addr, pdata, size);
+-	if (err) {
++	if (err)
+ 		DBG_871X(KERN_ERR "%s: FAIL(%d)! ADDR =%#x Size =%d(%d)\n", __func__, err, addr, cnt, size);
+-	}
++
+ 	return err;
+ }
+ 
 -- 
 2.26.2
 
