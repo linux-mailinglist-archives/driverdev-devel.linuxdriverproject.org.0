@@ -1,60 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7744D26A321
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 12:28:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A40A8844AA;
-	Tue, 15 Sep 2020 10:28:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gYQeIWquKvSW; Tue, 15 Sep 2020 10:28:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D8E6086371;
-	Tue, 15 Sep 2020 10:28:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BFC131BF275
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 10:28:23 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EBCD26A3F5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Sep 2020 13:15:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BAC4C84B39
- for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 10:28:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 80E04866A8;
+	Tue, 15 Sep 2020 11:15:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vgESSGr48i0a; Tue, 15 Sep 2020 11:15:18 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1510D864C1;
+	Tue, 15 Sep 2020 11:15:17 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 35B851BF846
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 11:15:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 31DAE87151
+ for <devel@linuxdriverproject.org>; Tue, 15 Sep 2020 11:15:14 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uH75Gi1RROyc for <devel@linuxdriverproject.org>;
- Tue, 15 Sep 2020 10:28:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (lhrrgout.huawei.com [185.176.76.210])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CDE4D84B22
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 10:28:21 +0000 (UTC)
-Received: from lhreml710-chm.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id 50A6A5F90C7D798A3D2D;
- Tue, 15 Sep 2020 11:28:19 +0100 (IST)
-Received: from localhost (10.52.121.217) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1913.5; Tue, 15 Sep
- 2020 11:28:18 +0100
-Date: Tue, 15 Sep 2020 11:26:41 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: "Sa, Nuno" <Nuno.Sa@analog.com>
-Subject: Re: [PATCH 10/10] iio: adis: Drop non Managed device functions
-Message-ID: <20200915112641.00002137@Huawei.com>
-In-Reply-To: <CY4PR03MB2631DD532FE132207FCE3E9799200@CY4PR03MB2631.namprd03.prod.outlook.com>
+ with ESMTP id LhH1EXBEUNup for <devel@linuxdriverproject.org>;
+ Tue, 15 Sep 2020 11:15:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
+ [148.163.135.77])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6E2078714E
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 11:15:13 +0000 (UTC)
+Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
+ by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 08F9FOcu025466; Tue, 15 Sep 2020 05:32:23 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+ by mx0a-00128a01.pphosted.com with ESMTP id 33h7pr8daf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 15 Sep 2020 05:32:23 -0400
+Received: from SCSQMBX11.ad.analog.com (scsqmbx11.ad.analog.com [10.77.17.10])
+ by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 08F9WLCg047091
+ (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128
+ verify=FAIL); Tue, 15 Sep 2020 05:32:22 -0400
+Received: from SCSQMBX11.ad.analog.com (10.77.17.10) by
+ SCSQMBX11.ad.analog.com (10.77.17.10) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1779.2; Tue, 15 Sep 2020 02:32:30 -0700
+Received: from zeus.spd.analog.com (10.66.68.11) by SCSQMBX11.ad.analog.com
+ (10.77.17.10) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
+ Transport; Tue, 15 Sep 2020 02:32:30 -0700
+Received: from nsa.sphairon.box ([10.44.3.98])
+ by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 08F9W7vk027664;
+ Tue, 15 Sep 2020 05:32:17 -0400
+From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
+To: <linux-iio@vger.kernel.org>, <devel@driverdev.osuosl.org>
+Subject: [PATCH 05/10] iio: adis16400: Use Managed device functions
+Date: Tue, 15 Sep 2020 11:33:40 +0200
+Message-ID: <20200915093345.85614-6-nuno.sa@analog.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200915093345.85614-1-nuno.sa@analog.com>
 References: <20200915093345.85614-1-nuno.sa@analog.com>
- <20200915093345.85614-11-nuno.sa@analog.com>
- <20200915111015.00004707@Huawei.com>
- <CY4PR03MB2631DD532FE132207FCE3E9799200@CY4PR03MB2631.namprd03.prod.outlook.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-X-Originating-IP: [10.52.121.217]
-X-ClientProxiedBy: lhreml736-chm.china.huawei.com (10.201.108.87) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
+X-ADIRoutedOnPrem: True
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
+ definitions=2020-09-15_05:2020-09-15,
+ 2020-09-15 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0
+ priorityscore=1501 mlxscore=0 adultscore=0 suspectscore=0
+ lowpriorityscore=0 spamscore=0 malwarescore=0 impostorscore=0 phishscore=0
+ mlxlogscore=918 clxscore=1015 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2006250000 definitions=main-2009150086
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,378 +84,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, Lars-Peter
- Clausen <lars@metafoo.de>, "Hennerich, Michael" <Michael.Hennerich@analog.com>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Bogdan,
- Dragos" <Dragos.Bogdan@analog.com>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Hartmut Knaack <knaack.h@gmx.de>, "Ardelean,
- Alexandru" <alexandru.Ardelean@analog.com>,
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Dragos Bogdan <dragos.bogdan@analog.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>,
+ Alexandru Ardelean --dry-run <alexandru.ardelean@analog.com>,
  Jonathan Cameron <jic23@kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 15 Sep 2020 10:20:20 +0000
-"Sa, Nuno" <Nuno.Sa@analog.com> wrote:
-
-> > -----Original Message-----
-> > From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-> > Sent: Tuesday, September 15, 2020 12:10 PM
-> > To: Sa, Nuno <Nuno.Sa@analog.com>
-> > Cc: linux-iio@vger.kernel.org; devel@driverdev.osuosl.org; Lars-Peter
-> > Clausen <lars@metafoo.de>; Hennerich, Michael
-> > <Michael.Hennerich@analog.com>; Jonathan Cameron <jic23@kernel.org>;
-> > Hartmut Knaack <knaack.h@gmx.de>; Peter Meerwald-Stadler
-> > <pmeerw@pmeerw.net>; Bogdan, Dragos <Dragos.Bogdan@analog.com>;
-> > Greg Kroah-Hartman <gregkh@linuxfoundation.org>; Ardelean, Alexandru
-> > <alexandru.Ardelean@analog.com>
-> > Subject: Re: [PATCH 10/10] iio: adis: Drop non Managed device functions
-> > =
-
-> > [External]
-> > =
-
-> > On Tue, 15 Sep 2020 11:33:45 +0200
-> > Nuno S=E1 <nuno.sa@analog.com> wrote:
-> >   =
-
-> > > Drop `adis_setup_buffer_and_trigger()`. All users were updated to use
-> > > the devm version of this function. This avoids having almost the same
-> > > code repeated.
-> > >
-> > > Signed-off-by: Nuno S=E1 <nuno.sa@analog.com>  =
-
-> > =
-
-> > Good to see this cleanup, as long as we tidy up the few issues in the
-> > earlier patches.
-> > =
-
-> > Note I think I only commented on first instance of each thing to fix.
-> > Please carry them through all the patches.
-> > =
-
-> > Thanks,
-> > =
-
-> > Jonathan  =
-
-> =
-
-> So, I did thought about further cleaning the probe functions in order to =
-get
-> rid of the remove function but it felt like a different series to me. Any=
-ways, since
-> it's fine with you to include those changes here I will send a v2.
-
-Understood.  Could have been separate, but it feels like trying to use devm
-throughout is a good enough theme per patch to combine them.  This is parti=
-cularly
-true as you'd need to do 3 series if you wanted to separate this out withou=
-t the
-ordering issues.
-
-1) Devm stuff before this particular function in probe.
-2) This series
-3) Devm stuff after the particular function in probe.
-
-Definitely easier to do in one go and still easily reviewed individual patc=
-hes!
-
-Jonathan
-
-> =
-
-> - Nuno S=E1
->  =
-
-> > > ---
-> > >  drivers/iio/imu/adis_buffer.c  | 64 +++-----------------------------=
---
-> > >  drivers/iio/imu/adis_trigger.c | 60 -------------------------------
-> > >  include/linux/iio/imu/adis.h   | 27 --------------
-> > >  3 files changed, 4 insertions(+), 147 deletions(-)
-> > >
-> > > diff --git a/drivers/iio/imu/adis_buffer.c b/drivers/iio/imu/adis_buf=
-fer.c
-> > > index 5b4225ee09b9..df6144285470 100644
-> > > --- a/drivers/iio/imu/adis_buffer.c
-> > > +++ b/drivers/iio/imu/adis_buffer.c
-> > > @@ -169,48 +169,6 @@ static void adis_buffer_cleanup(void *arg)
-> > >  	kfree(adis->xfer);
-> > >  }
-> > >
-> > > -/**
-> > > - * adis_setup_buffer_and_trigger() - Sets up buffer and trigger for =
-the  =
-
-> > adis device  =
-
-> > > - * @adis: The adis device.
-> > > - * @indio_dev: The IIO device.
-> > > - * @trigger_handler: Optional trigger handler, may be NULL.
-> > > - *
-> > > - * Returns 0 on success, a negative error code otherwise.
-> > > - *
-> > > - * This function sets up the buffer and trigger for a adis devices. =
- If
-> > > - * 'trigger_handler' is NULL the default trigger handler will be use=
-d. The
-> > > - * default trigger handler will simply read the registers assigned t=
-o the
-> > > - * currently active channels.
-> > > - *
-> > > - * adis_cleanup_buffer_and_trigger() should be called to free the  =
-
-> > resources  =
-
-> > > - * allocated by this function.
-> > > - */
-> > > -int adis_setup_buffer_and_trigger(struct adis *adis, struct iio_dev  =
-
-> > *indio_dev,  =
-
-> > > -	irqreturn_t (*trigger_handler)(int, void *))
-> > > -{
-> > > -	int ret;
-> > > -
-> > > -	if (!trigger_handler)
-> > > -		trigger_handler =3D adis_trigger_handler;
-> > > -
-> > > -	ret =3D iio_triggered_buffer_setup(indio_dev,  =
-
-> > &iio_pollfunc_store_time,  =
-
-> > > -		trigger_handler, NULL);
-> > > -	if (ret)
-> > > -		return ret;
-> > > -
-> > > -	if (adis->spi->irq) {
-> > > -		ret =3D adis_probe_trigger(adis, indio_dev);
-> > > -		if (ret)
-> > > -			goto error_buffer_cleanup;
-> > > -	}
-> > > -	return 0;
-> > > -
-> > > -error_buffer_cleanup:
-> > > -	iio_triggered_buffer_cleanup(indio_dev);
-> > > -	return ret;
-> > > -}
-> > > -EXPORT_SYMBOL_GPL(adis_setup_buffer_and_trigger);
-> > > -
-> > >  /**
-> > >   * devm_adis_setup_buffer_and_trigger() - Sets up buffer and trigger=
- for
-> > >   *					  the managed adis device
-> > > @@ -220,7 +178,10 @@  =
-
-> > EXPORT_SYMBOL_GPL(adis_setup_buffer_and_trigger);  =
-
-> > >   *
-> > >   * Returns 0 on success, a negative error code otherwise.
-> > >   *
-> > > - * This function perfoms exactly the same as  =
-
-> > adis_setup_buffer_and_trigger()  =
-
-> > > + * This function sets up the buffer and trigger for a adis devices. =
- If
-> > > + * 'trigger_handler' is NULL the default trigger handler will be use=
-d. The
-> > > + * default trigger handler will simply read the registers assigned t=
-o the
-> > > + * currently active channels.
-> > >   */
-> > >  int
-> > >  devm_adis_setup_buffer_and_trigger(struct adis *adis, struct iio_dev=
-  =
-
-> > *indio_dev,  =
-
-> > > @@ -248,20 +209,3 @@ devm_adis_setup_buffer_and_trigger(struct adis  =
-
-> > *adis, struct iio_dev *indio_dev,  =
-
-> > >  }
-> > >  EXPORT_SYMBOL_GPL(devm_adis_setup_buffer_and_trigger);
-> > >
-> > > -/**
-> > > - * adis_cleanup_buffer_and_trigger() - Free buffer and trigger resou=
-rces
-> > > - * @adis: The adis device.
-> > > - * @indio_dev: The IIO device.
-> > > - *
-> > > - * Frees resources allocated by adis_setup_buffer_and_trigger()
-> > > - */
-> > > -void adis_cleanup_buffer_and_trigger(struct adis *adis,
-> > > -	struct iio_dev *indio_dev)
-> > > -{
-> > > -	if (adis->spi->irq)
-> > > -		adis_remove_trigger(adis);
-> > > -	kfree(adis->buffer);
-> > > -	kfree(adis->xfer);
-> > > -	iio_triggered_buffer_cleanup(indio_dev);
-> > > -}
-> > > -EXPORT_SYMBOL_GPL(adis_cleanup_buffer_and_trigger);
-> > > diff --git a/drivers/iio/imu/adis_trigger.c b/drivers/iio/imu/adis_tr=
-igger.c
-> > > index 8afe71947c00..64e0ba51cb18 100644
-> > > --- a/drivers/iio/imu/adis_trigger.c
-> > > +++ b/drivers/iio/imu/adis_trigger.c
-> > > @@ -55,53 +55,6 @@ static int adis_validate_irq_flag(struct adis *adi=
-s)
-> > >
-> > >  	return 0;
-> > >  }
-> > > -/**
-> > > - * adis_probe_trigger() - Sets up trigger for a adis device
-> > > - * @adis: The adis device
-> > > - * @indio_dev: The IIO device
-> > > - *
-> > > - * Returns 0 on success or a negative error code
-> > > - *
-> > > - * adis_remove_trigger() should be used to free the trigger.
-> > > - */
-> > > -int adis_probe_trigger(struct adis *adis, struct iio_dev *indio_dev)
-> > > -{
-> > > -	int ret;
-> > > -
-> > > -	adis->trig =3D iio_trigger_alloc("%s-dev%d", indio_dev->name,
-> > > -					indio_dev->id);
-> > > -	if (adis->trig =3D=3D NULL)
-> > > -		return -ENOMEM;
-> > > -
-> > > -	adis_trigger_setup(adis);
-> > > -
-> > > -	ret =3D adis_validate_irq_flag(adis);
-> > > -	if (ret)
-> > > -		return ret;
-> > > -
-> > > -	ret =3D request_irq(adis->spi->irq,
-> > > -			  &iio_trigger_generic_data_rdy_poll,
-> > > -			  adis->irq_flag,
-> > > -			  indio_dev->name,
-> > > -			  adis->trig);
-> > > -	if (ret)
-> > > -		goto error_free_trig;
-> > > -
-> > > -	ret =3D iio_trigger_register(adis->trig);
-> > > -
-> > > -	indio_dev->trig =3D iio_trigger_get(adis->trig);
-> > > -	if (ret)
-> > > -		goto error_free_irq;
-> > > -
-> > > -	return 0;
-> > > -
-> > > -error_free_irq:
-> > > -	free_irq(adis->spi->irq, adis->trig);
-> > > -error_free_trig:
-> > > -	iio_trigger_free(adis->trig);
-> > > -	return ret;
-> > > -}
-> > > -EXPORT_SYMBOL_GPL(adis_probe_trigger);
-> > >
-> > >  /**
-> > >   * devm_adis_probe_trigger() - Sets up trigger for a managed adis de=
-vice
-> > > @@ -137,16 +90,3 @@ int devm_adis_probe_trigger(struct adis *adis,  =
-
-> > struct iio_dev *indio_dev)  =
-
-> > >  }
-> > >  EXPORT_SYMBOL_GPL(devm_adis_probe_trigger);
-> > >
-> > > -/**
-> > > - * adis_remove_trigger() - Remove trigger for a adis devices
-> > > - * @adis: The adis device
-> > > - *
-> > > - * Removes the trigger previously registered with adis_probe_trigger=
-().
-> > > - */
-> > > -void adis_remove_trigger(struct adis *adis)
-> > > -{
-> > > -	iio_trigger_unregister(adis->trig);
-> > > -	free_irq(adis->spi->irq, adis->trig);
-> > > -	iio_trigger_free(adis->trig);
-> > > -}
-> > > -EXPORT_SYMBOL_GPL(adis_remove_trigger);
-> > > diff --git a/include/linux/iio/imu/adis.h b/include/linux/iio/imu/adi=
-s.h
-> > > index 2df67448f0d1..01ba691da2f3 100644
-> > > --- a/include/linux/iio/imu/adis.h
-> > > +++ b/include/linux/iio/imu/adis.h
-> > > @@ -517,14 +517,8 @@ struct adis_burst {
-> > >  int
-> > >  devm_adis_setup_buffer_and_trigger(struct adis *adis, struct iio_dev=
-  =
-
-> > *indio_dev,  =
-
-> > >  				   irq_handler_t trigger_handler);
-> > > -int adis_setup_buffer_and_trigger(struct adis *adis,
-> > > -	struct iio_dev *indio_dev, irqreturn_t (*trigger_handler)(int, void=
-  =
-
-> > *));  =
-
-> > > -void adis_cleanup_buffer_and_trigger(struct adis *adis,
-> > > -	struct iio_dev *indio_dev);
-> > >
-> > >  int devm_adis_probe_trigger(struct adis *adis, struct iio_dev *indio=
-_dev);
-> > > -int adis_probe_trigger(struct adis *adis, struct iio_dev *indio_dev);
-> > > -void adis_remove_trigger(struct adis *adis);
-> > >
-> > >  int adis_update_scan_mode(struct iio_dev *indio_dev,
-> > >  	const unsigned long *scan_mask);
-> > > @@ -538,33 +532,12 @@ devm_adis_setup_buffer_and_trigger(struct adis  =
-
-> > *adis, struct iio_dev *indio_dev,  =
-
-> > >  	return 0;
-> > >  }
-> > >
-> > > -static inline int adis_setup_buffer_and_trigger(struct adis *adis,
-> > > -	struct iio_dev *indio_dev, irqreturn_t (*trigger_handler)(int, void=
- *))
-> > > -{
-> > > -	return 0;
-> > > -}
-> > > -
-> > > -static inline void adis_cleanup_buffer_and_trigger(struct adis *adis,
-> > > -	struct iio_dev *indio_dev)
-> > > -{
-> > > -}
-> > > -
-> > >  static inline int devm_adis_probe_trigger(struct adis *adis,
-> > >  					  struct iio_dev *indio_dev)
-> > >  {
-> > >  	return 0;
-> > >  }
-> > >
-> > > -static inline int adis_probe_trigger(struct adis *adis,
-> > > -	struct iio_dev *indio_dev)
-> > > -{
-> > > -	return 0;
-> > > -}
-> > > -
-> > > -static inline void adis_remove_trigger(struct adis *adis)
-> > > -{
-> > > -}
-> > > -
-> > >  #define adis_update_scan_mode NULL
-> > >
-> > >  #endif /* CONFIG_IIO_BUFFER */  =
-
-> >   =
-
-> =
-
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+VXNlIHRoZSBhZGlzIG1hbmFnZWQgZGV2aWNlIGZ1bmN0aW9ucyB0byBzZXR1cCB0aGUgYnVmZmVy
+IGFuZCB0aGUgdHJpZ2dlci4KVGhlIHVsdGltYXRlIGdvYWwgd2lsbCBiZSB0byBjb21wbGV0ZWx5
+IGRyb3AgdGhlIG5vbiBkZXZtIHZlcnNpb24gZnJvbQp0aGUgbGliLgoKU2lnbmVkLW9mZi1ieTog
+TnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4KLS0tCiBkcml2ZXJzL2lpby9pbXUvYWRpczE2
+NDAwLmMgfCAxNSArKysrLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMo
+KyksIDExIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9hZGlzMTY0
+MDAuYyBiL2RyaXZlcnMvaWlvL2ltdS9hZGlzMTY0MDAuYwppbmRleCAxZWJlM2U1MGQzZTYuLjdi
+ZjRiMDA2NTAyMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8vaW11L2FkaXMxNjQwMC5jCisrKyBi
+L2RyaXZlcnMvaWlvL2ltdS9hZGlzMTY0MDAuYwpAQCAtMTIwMSwzNyArMTIwMSwzMCBAQCBzdGF0
+aWMgaW50IGFkaXMxNjQwMF9wcm9iZShzdHJ1Y3Qgc3BpX2RldmljZSAqc3BpKQogCWlmIChyZXQp
+CiAJCXJldHVybiByZXQ7CiAKLQlyZXQgPSBhZGlzX3NldHVwX2J1ZmZlcl9hbmRfdHJpZ2dlcigm
+c3QtPmFkaXMsIGluZGlvX2RldiwKLQkJCWFkaXMxNjQwMF90cmlnZ2VyX2hhbmRsZXIpOworCXJl
+dCA9IGRldm1fYWRpc19zZXR1cF9idWZmZXJfYW5kX3RyaWdnZXIoJnN0LT5hZGlzLCBpbmRpb19k
+ZXYsIGFkaXMxNjQwMF90cmlnZ2VyX2hhbmRsZXIpOwogCWlmIChyZXQpCiAJCXJldHVybiByZXQ7
+CiAKIAkvKiBHZXQgdGhlIGRldmljZSBpbnRvIGEgc2FuZSBpbml0aWFsIHN0YXRlICovCiAJcmV0
+ID0gYWRpczE2NDAwX2luaXRpYWxfc2V0dXAoaW5kaW9fZGV2KTsKIAlpZiAocmV0KQotCQlnb3Rv
+IGVycm9yX2NsZWFudXBfYnVmZmVyOworCQlyZXR1cm4gcmV0OworCiAJcmV0ID0gaWlvX2Rldmlj
+ZV9yZWdpc3RlcihpbmRpb19kZXYpOwogCWlmIChyZXQpCi0JCWdvdG8gZXJyb3JfY2xlYW51cF9i
+dWZmZXI7CisJCXJldHVybiByZXQ7CiAKIAlhZGlzMTY0MDBfZGVidWdmc19pbml0KGluZGlvX2Rl
+dik7CiAJcmV0dXJuIDA7Ci0KLWVycm9yX2NsZWFudXBfYnVmZmVyOgotCWFkaXNfY2xlYW51cF9i
+dWZmZXJfYW5kX3RyaWdnZXIoJnN0LT5hZGlzLCBpbmRpb19kZXYpOwotCXJldHVybiByZXQ7CiB9
+CiAKIHN0YXRpYyBpbnQgYWRpczE2NDAwX3JlbW92ZShzdHJ1Y3Qgc3BpX2RldmljZSAqc3BpKQog
+ewogCXN0cnVjdCBpaW9fZGV2ICppbmRpb19kZXYgPSBzcGlfZ2V0X2RydmRhdGEoc3BpKTsKLQlz
+dHJ1Y3QgYWRpczE2NDAwX3N0YXRlICpzdCA9IGlpb19wcml2KGluZGlvX2Rldik7CiAKIAlpaW9f
+ZGV2aWNlX3VucmVnaXN0ZXIoaW5kaW9fZGV2KTsKIAlhZGlzMTY0MDBfc3RvcF9kZXZpY2UoaW5k
+aW9fZGV2KTsKIAotCWFkaXNfY2xlYW51cF9idWZmZXJfYW5kX3RyaWdnZXIoJnN0LT5hZGlzLCBp
+bmRpb19kZXYpOwotCiAJcmV0dXJuIDA7CiB9CiAKLS0gCjIuMjguMAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
