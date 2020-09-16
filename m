@@ -1,105 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5594C26C2A8
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 14:22:19 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6286526CE33
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 23:37:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 352FF86F8E;
-	Wed, 16 Sep 2020 12:22:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D1ABE2E148;
+	Wed, 16 Sep 2020 21:37:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uNcohNLFATkh; Wed, 16 Sep 2020 12:22:16 +0000 (UTC)
+	with ESMTP id u64HHTax0Dty; Wed, 16 Sep 2020 21:37:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A41D986F89;
-	Wed, 16 Sep 2020 12:22:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 421112E138;
+	Wed, 16 Sep 2020 21:36:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A05BD1BF57C
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 12:22:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BD6F61BF2A1
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 21:36:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 80C3727236
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 12:22:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 973262E135
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 21:36:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n8MxdSQvv4gz for <devel@linuxdriverproject.org>;
- Wed, 16 Sep 2020 12:22:13 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2062.outbound.protection.outlook.com [40.107.92.62])
- by silver.osuosl.org (Postfix) with ESMTPS id F4055207A2
- for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 12:22:12 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KxLZvgTmE1E1RLaMQwAprpwOdCOqUoKEH5NLQzJ6JibMCsATbtXiarYTKU2HqjOZ1mPjv1rRDF+YwAAHmaRHgrqmuj0xGadvEoh2ovCvpHa8OEux4QCmEEzFPur9Htjp0OPaEMA9s2s4sDikyWw8XkLyxBGeSHFYlDBzN1FAd+MKZ4Rt5ABWKD65s5FC1HGOMriq0zRXd0iRT0nCNpiBq0wwI6g+YHEo25U9cdGtDjX6sNaNNEjLef/PRBYCq09aF36FLg/FcFJAIpebhrM6mQtvu+S5YxIsZUCMTPJ+eGXRcToO1Ri83hjkErqlSb7OawzwCSL4h+z6SE0idjpmOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JmH9Wz8imxjwzf1kaGZypWoqt4KooDDmfKzPFbbxp6I=;
- b=KtyggLE1LDiWm6ZbxSRZpYY4ZsL+UtO4Tr6G5F0FOBJZi+b7NmVy2sO4IZtqaGdua4KTiAv+aHbj+2h5rmEVWzSNgYDkmSrKDLzm9xWU7yMlnhfMyESVLQ5Dpho0JkQd/8l6qtKi/V4El1N1CGeAnjtzDAQcAjOColDUTrfPo+LJ3Olw1feubSCCZGgAsclx3x/w/XO7M8XC3p8/v3UokT/4Ed71D4R5RrJ8m7CCEN824TYGi1tK3PPuvX/Klyi5v6nOu3NMWci6nUo7Yo/+f51nCNEdsJ7lbQJcv7DJlELluLCBTxZL3cQkTdmeMvxPzdueMo3ASCCMLm0DJo3OLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JmH9Wz8imxjwzf1kaGZypWoqt4KooDDmfKzPFbbxp6I=;
- b=P1khrP8ifSlhn0cSGrWR4wLapWSKGqUaV/LRgapnHEmMA+MTwOcpv9S8Tk0iGuijgNeNaKC2aCVgX5+mT+SmGmGja3PZgRR/uj3+czTOecTf0rMMI3cPsRkrmXYGcfIjEfgiLYP35o80VpYYJ0jK7yNKlsXxz2jLzVpHEflZevQ=
-Authentication-Results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SN6PR11MB3359.namprd11.prod.outlook.com (2603:10b6:805:c5::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3370.16; Wed, 16 Sep
- 2020 12:22:10 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::85c9:1aa9:aeab:3fa6]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::85c9:1aa9:aeab:3fa6%4]) with mapi id 15.20.3370.019; Wed, 16 Sep 2020
- 12:22:10 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: trix@redhat.com, Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: wfx: simplify virt_addr_valid call
-Date: Wed, 16 Sep 2020 14:22:06 +0200
-Message-ID: <3114902.a6trr6AKoC@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <20200916111159.GA923212@kroah.com>
-References: <20200912144719.13929-1-trix@redhat.com>
- <20200916111159.GA923212@kroah.com>
-X-ClientProxiedBy: SN1PR12CA0105.namprd12.prod.outlook.com
- (2603:10b6:802:21::40) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.localnet (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
- SN1PR12CA0105.namprd12.prod.outlook.com (2603:10b6:802:21::40) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3391.14 via Frontend Transport; Wed, 16 Sep 2020 12:22:09 +0000
-X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3881a9ef-69b7-43ca-76df-08d85a3b22ac
-X-MS-TrafficTypeDiagnostic: SN6PR11MB3359:
-X-Microsoft-Antispam-PRVS: <SN6PR11MB335924B20ACD9356288A16A193210@SN6PR11MB3359.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:785;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: TDAvPZZBEAUyAgVnDRzGpZflONqFqTIbvReOElDU/2qs7NwMBbIyGZVThF+5iHpx6iXxd+IIto+yd4etLJvj++gMeqbFEiTEIUicMVJH8ISztWnTpsNMtjJHm8u1g97S/o6VcT4FBLCH1lgXSG/6j86PUE3o87Pe8Sv1px/s62SdhLyEi/T7z+XZmbMTsH6teldFMNonRvnnaEAoSSndceO/Eq0+nImC0f89ZTPky3P0ymtBH1qfGP7N86pcA7ZH8oTnbs/DMghqbpmTaAmNA0dTZGr4IK3+SgLrwFA1KHw3avMTF+asTyscExq8vuIx+A+Rsdnu21CSVjuWzJ7os1SRQuEIsl0xZ+MaM1euheMaM6pcbnujDRvXWab+06Ljs2oxPg+bWtNvghAnPpVM3s/+4eFCXg3ARuH9YCnA0yw=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(366004)(376002)(346002)(136003)(39850400004)(186003)(4326008)(16526019)(66476007)(66946007)(478600001)(6486002)(8936002)(86362001)(316002)(52116002)(6512007)(36916002)(9686003)(66574015)(66556008)(83380400001)(6916009)(8676002)(5660300002)(6506007)(6666004)(2906002)(33716001)(39026012);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: wSZl/4H69ZNUogUswu01mJIRGXUS8031eERVkJknC6IORlWlb6x7Iz0wLK/zuPT3ApSq5qYbAgKBuLemFGNLQ3NcjRbMyWm2c3NfWOhbU5+E0+DWkT0RzIAStmkcSU0pKKKrSBS9twgYGN1AZClLMMS6v9hw31GWDWGplTtnAzqtOx6DqQNadWvJq6IcBlNKDfeZRnUZl396dF5FB9ovEzlNNhnQOk/lldlJmF0jwrOkQmykiG3I7tsnD7+u/7m4PyoA14xVPSX+HiPHwfeeNftZzLSTGlbX0cIucIzZY/FrBQVsMFKd041QUyjKSgnpsPBnOnGq5ZqNR0utpuBCfjAVP6c+0ubFqoYK82SDRxvV+D19XB99TXpZGvleW9f8rD0WOZyGFdKx1nap75iOeX9VPx08MeR9er7oTBcN4L7R8HjRjb3CWQAOR3+blkWrp65PgpUemSjI0r4XKgfHv8FhiVMpIMYFB8vMY/LYb1EXUMao36imusMrSGjqLtbyTdvMwbBknfG/UzteJ2cG6s/sCzsPKRPQSQHsdrOPQ3ZxkQS4fE9IkH3YCr45HpTcUwsevd1hW+4ZSc67faDeWYbHbtVed7q1zOAw6jViQQFnAvbuWW/cldUC+KdeDS+7WxHEXWBtbDr+afDvJH7h6trA+9Pzz+LsbubOz2JRNc6UHFBBLS0qXPRgnaEeS1Fui82WhH39wfAzKwArsjiAPw==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3881a9ef-69b7-43ca-76df-08d85a3b22ac
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2020 12:22:10.7091 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: nzdVv5YOKFtpiMkcsWRBpv3GYyk5krMsI4vji59FvX2XIKuhewRBcI34x867QW01Q0vTZdCcShQAOngpv/m8Kg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3359
+ with ESMTP id GEm7N6O-fkKw for <devel@linuxdriverproject.org>;
+ Wed, 16 Sep 2020 21:36:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id AA9532E12F
+ for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 21:36:44 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id k18so15876wmj.5
+ for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 14:36:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=DkLL2YcdJ/sevukmjrqlbiwi8ZtlT0dnWh1KxnS9t+0=;
+ b=gpkUopcdF1K5rI99nhCgD8iNMA7sLJ5Fsfe7TZtOQKgbAq0oRvD5Kbr0kEmube1nfp
+ oyGqUh83C2eLpvHTHJlNxCuNlPtvbNCXtNRZwTy9X4UGCRWkKn2p/u0dgpRPiOINS/z3
+ sMtCZQ8XTHZ/NWAwQELyEVePHieOllJnTaAEDhzfhxyxP1a8aGJGqg5dvdbRy81J0UFF
+ hxnFO5QgRRGpErx1qxJ6U0UPv299vUbChYCwCpgj0xsqbyr5VsPc8GrMgQo8KA4NvLSj
+ 3TlSC2qHGk1qNMM02Bh8DqdsOWAlwxaUJYGZJ19Kqz4nrEaynrMTkWCV1jFng1nTlPO5
+ yrPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=DkLL2YcdJ/sevukmjrqlbiwi8ZtlT0dnWh1KxnS9t+0=;
+ b=KIcWXjFP/YKDr2sZcgPKDkgiaMMfJ88Oe8lxdOtcLbniOUMT86+rt+DTww5AIIfHoL
+ /UIpiV4jY1MdC5V9nWJ+8zIhE0VKFEt+apfE6M+T+7+ggckUax6KOkjGgGOVkNgp91IA
+ dXz2X8ZlYsprrH2Nxw9zr0YIfZrPLDGNfZTDAjMTqOR6rkp/7eAC0go8nN5QI2dW5Ixp
+ DHtJM+sB5KhekTPg3LmGHASnL+hlcsyaA3Mcp8OEPGj3Dln08sq7COX/FQ2P8e8jaP9Z
+ B9JfrArflmf3r+Bj6mVF0YmPQamwqx5vPGA/MrV+RjLxepYnWi8bQ9/q9Fro7Heheogt
+ JbSg==
+X-Gm-Message-State: AOAM533LCsI9hIXRVysI/fy9aCfzqB8R4AjSXBFhjf7M9hKWTnek587O
+ gfpH+74WirNjTDQAD9AOZXs=
+X-Google-Smtp-Source: ABdhPJwj9YBoMxtR7aV85J/1Jt6Yq7cL2GvZZbhzW6F9bxy9iWHid9CBJiHQV0ChGajPXAYXW9JC5Q==
+X-Received: by 2002:a1c:6484:: with SMTP id y126mr6668050wmb.177.1600292202860; 
+ Wed, 16 Sep 2020 14:36:42 -0700 (PDT)
+Received: from djrscally-MIIX-510-12ISK.home ([2.29.208.34])
+ by smtp.gmail.com with ESMTPSA id k84sm7224818wmf.6.2020.09.16.14.36.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Sep 2020 14:36:42 -0700 (PDT)
+From: Daniel Scally <djrscally@gmail.com>
+To: yong.zhi@intel.com, sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
+ tian.shu.qiu@intel.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
+ davem@davemloft.net, robh@kernel.org
+Subject: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device via
+ software nodes on ACPI platforms
+Date: Wed, 16 Sep 2020 22:36:18 +0100
+Message-Id: <20200916213618.8003-1-djrscally@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,52 +83,661 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, jorhand@linux.microsoft.com,
+ kieran.bingham@ideasonboard.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, kitakar@gmail.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wednesday 16 September 2020 13:11:59 CEST Greg KH wrote:
-> On Sat, Sep 12, 2020 at 07:47:19AM -0700, trix@redhat.com wrote:
-> > From: Tom Rix <trix@redhat.com>
-> >
-> > Reviewing sram_write_dma_safe(), there are two
-> > identical calls to virt_addr_valid().  The second
-> > call can be simplified by a comparison of variables
-> > set from the first call.
-> >
-> > Signed-off-by: Tom Rix <trix@redhat.com>
-> > ---
-> >  drivers/staging/wfx/fwio.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/wfx/fwio.c b/drivers/staging/wfx/fwio.c
-> > index 22d3b684f04f..c99adb0c99f1 100644
-> > --- a/drivers/staging/wfx/fwio.c
-> > +++ b/drivers/staging/wfx/fwio.c
-> > @@ -94,7 +94,7 @@ static int sram_write_dma_safe(struct wfx_dev *wdev, =
-u32 addr, const u8 *buf,
-> >               tmp =3D buf;
-> >       }
-> >       ret =3D sram_buf_write(wdev, addr, tmp, len);
-> > -     if (!virt_addr_valid(buf))
-> > +     if (tmp !=3D buf)
-> >               kfree(tmp);
-> >       return ret;
-> >  }
-> =
+Currently on ACPI platforms, sensors that are intended to be connected to
+a CIO2 device for use with the ipu3-cio2 driver lack the necessary
+connection information in firmware. This patch adds a module to parse the
+connection properties from the SSDB buffer in DSDT and build the connection
+using software nodes.
 
-> Jerome, any thoughts?
+The ipu3-cio2 driver itself is modified to insert the cio2-bridge module
+after all sensors that have created a device link between themselves and
+the CIO2 have probed. Sensors wishing to use this bridge will need to add
+a device link between themselves and the CIO2 device as part of their own
+.probe() call.
 
-Looks correct.
+Suggested-by: Jordan Hand <jorhand@linux.microsoft.com>
 
-Reviewed-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+Signed-off-by: Daniel Scally <djrscally@gmail.com>
+---
+This module's born out of efforts by the linux-surface github community
+to get functioning webcams on Microsoft Surface and similar platforms. it
+is dependent on this patch (which implements the software node graph family
+of functions):
 
--- =
+https://lore.kernel.org/linux-media/20200915232827.3416-1-djrscally@gmail.com/
 
-J=E9r=F4me Pouiller
+I wanted to raise this as an RFC as although I don't think it's ready for
+integration it has some things that I'd like feedback on, in particular the
+method I chose to make the module be auto-inserted. A more ideal method would
+have been to have the driver be an ACPI driver for the INT343E device, but each
+of the the devices we've tested this on that dev has status 0 and so the module
+won't bind to it. The device links method seems a little clunky, but does work,
+and I think I have done the conditional processing correctly so that ipu3-cio2
+continues to work on non-ACPI platforms.
 
+ MAINTAINERS                              |   6 +
+ drivers/media/pci/intel/ipu3/ipu3-cio2.c |  67 +++-
+ drivers/staging/media/ipu3/Kconfig       |  15 +
+ drivers/staging/media/ipu3/Makefile      |   1 +
+ drivers/staging/media/ipu3/cio2-bridge.c | 448 +++++++++++++++++++++++
+ 5 files changed, 534 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/staging/media/ipu3/cio2-bridge.c
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b5cfab015bd6..55b0b9888bc0 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -9152,6 +9152,12 @@ S:	Maintained
+ W:	http://www.adaptec.com/
+ F:	drivers/scsi/ips*
+ 
++IPU3 CIO2 Bridge Driver
++M:	Daniel Scally <djrscally@gmail.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	drivers/staging/media/ipu3/cio2-bridge.c
++
+ IPVS
+ M:	Wensong Zhang <wensong@linux-vs.org>
+ M:	Simon Horman <horms@verge.net.au>
+diff --git a/drivers/media/pci/intel/ipu3/ipu3-cio2.c b/drivers/media/pci/intel/ipu3/ipu3-cio2.c
+index 92f5eadf2c99..fd941d2c7581 100644
+--- a/drivers/media/pci/intel/ipu3/ipu3-cio2.c
++++ b/drivers/media/pci/intel/ipu3/ipu3-cio2.c
+@@ -1719,6 +1719,59 @@ static void cio2_queues_exit(struct cio2_device *cio2)
+ 		cio2_queue_exit(cio2, &cio2->queue[i]);
+ }
+ 
++static int cio2_probe_can_progress(struct pci_dev *pci_dev)
++{
++	void *sensor;
++
++	/*
++	 * On ACPI platforms, we need to probe _after_ sensors wishing to connect
++	 * to cio2 have added a device link. If there are no consumers yet, then
++	 * we need to defer. The .sync_state() callback will then be called after
++	 * all linked sensors have probed
++	 */
++
++	if (IS_ENABLED(CONFIG_ACPI)) {
++		sensor = (struct device *)list_first_entry_or_null(
++								&pci_dev->dev.links.consumers,
++								struct dev_links_info,
++								consumers);
++
++		if (!sensor)
++			return -EPROBE_DEFER;
++	}
++
++	return 0;
++}
++
++void cio2_sync_state(struct device *dev)
++{
++	struct cio2_device *cio2;
++	int ret = 0;
++
++	if (IS_ENABLED(CONFIG_ACPI)) {
++		cio2 = dev_get_drvdata(dev);
++
++		if (!cio2) {
++			dev_err(dev, "Failed to retrieve driver data\n");
++			return;
++		}
++
++		/* insert the bridge driver to connect sensors via software nodes */
++		ret = request_module("cio2-bridge");
++
++		if (ret)
++			dev_err(dev, "Failed to insert cio2-bridge\n");
++
++		ret = cio2_parse_firmware(cio2);
++
++		if (ret) {
++			v4l2_async_notifier_unregister(&cio2->notifier);
++			v4l2_async_notifier_cleanup(&cio2->notifier);
++			cio2_queues_exit(cio2);
++		}
++	}
++}
++
+ /**************** PCI interface ****************/
+ 
+ static int cio2_pci_config_setup(struct pci_dev *dev)
+@@ -1746,6 +1799,11 @@ static int cio2_pci_probe(struct pci_dev *pci_dev,
+ 	void __iomem *const *iomap;
+ 	int r;
+ 
++	r = cio2_probe_can_progress(pci_dev);
++
++	if (r)
++		return -EPROBE_DEFER;
++
+ 	cio2 = devm_kzalloc(&pci_dev->dev, sizeof(*cio2), GFP_KERNEL);
+ 	if (!cio2)
+ 		return -ENOMEM;
+@@ -1821,9 +1879,11 @@ static int cio2_pci_probe(struct pci_dev *pci_dev,
+ 	v4l2_async_notifier_init(&cio2->notifier);
+ 
+ 	/* Register notifier for subdevices we care */
+-	r = cio2_parse_firmware(cio2);
+-	if (r)
+-		goto fail_clean_notifier;
++	if (!IS_ENABLED(CONFIG_ACPI)) {
++		r = cio2_parse_firmware(cio2);
++		if (r)
++			goto fail_clean_notifier;
++	}
+ 
+ 	r = devm_request_irq(&pci_dev->dev, pci_dev->irq, cio2_irq,
+ 			     IRQF_SHARED, CIO2_NAME, cio2);
+@@ -2052,6 +2112,7 @@ static struct pci_driver cio2_pci_driver = {
+ 	.remove = cio2_pci_remove,
+ 	.driver = {
+ 		.pm = &cio2_pm_ops,
++		.sync_state = cio2_sync_state
+ 	},
+ };
+ 
+diff --git a/drivers/staging/media/ipu3/Kconfig b/drivers/staging/media/ipu3/Kconfig
+index 3e9640523e50..08842fd8c0da 100644
+--- a/drivers/staging/media/ipu3/Kconfig
++++ b/drivers/staging/media/ipu3/Kconfig
+@@ -14,3 +14,18 @@ config VIDEO_IPU3_IMGU
+ 
+ 	  Say Y or M here if you have a Skylake/Kaby Lake SoC with a MIPI
+ 	  camera. The module will be called ipu3-imgu.
++
++config VIDEO_CIO2_BRIDGE
++	tristate "IPU3 CIO2 Sensor Bridge Driver"
++	depends on PCI && VIDEO_V4L2
++	depends on ACPI
++	depends on X86
++	help
++	  This module provides a bridge connecting sensors (I.E. cameras) to
++	  the CIO2 device infrastructure via software nodes built from information
++	  parsed from the SSDB buffer.
++
++	  Say Y or M here if your platform's cameras use IPU3 with connections
++	  that should be defined in ACPI. The module will be called cio2-bridge.
++
++	  If in doubt, say N here.
+\ No newline at end of file
+diff --git a/drivers/staging/media/ipu3/Makefile b/drivers/staging/media/ipu3/Makefile
+index 9def80ef28f3..12dff56dbb9e 100644
+--- a/drivers/staging/media/ipu3/Makefile
++++ b/drivers/staging/media/ipu3/Makefile
+@@ -10,3 +10,4 @@ ipu3-imgu-objs += \
+ 		ipu3-css.o ipu3-v4l2.o ipu3.o
+ 
+ obj-$(CONFIG_VIDEO_IPU3_IMGU) += ipu3-imgu.o
++obj-$(CONFIG_VIDEO_CIO2_BRIDGE) += cio2-bridge.o
+\ No newline at end of file
+diff --git a/drivers/staging/media/ipu3/cio2-bridge.c b/drivers/staging/media/ipu3/cio2-bridge.c
+new file mode 100644
+index 000000000000..5115aeeb35a1
+--- /dev/null
++++ b/drivers/staging/media/ipu3/cio2-bridge.c
+@@ -0,0 +1,448 @@
++// SPDX-License-Identifier: GPL-2.0
++#include <linux/acpi.h>
++#include <acpi/acpi_bus.h>
++#include <linux/device.h>
++#include <linux/i2c.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/pci.h>
++#include <media/v4l2-subdev.h>
++
++#include <linux/fwnode.h>
++#include <linux/kref.h>
++
++static void cio2_bridge_exit(void);
++static int cio2_bridge_init(void);
++
++#define MAX_CONNECTED_DEVICES			4
++#define SWNODE_SENSOR_HID			0
++#define SWNODE_SENSOR_PORT			1
++#define SWNODE_SENSOR_ENDPOINT			2
++#define SWNODE_CIO2_PORT			3
++#define SWNODE_CIO2_ENDPOINT			4
++#define SWNODE_NULL_TERMINATOR			5
++
++#define CIO2_HID				"INT343E"
++#define CIO2_PCI_ID				0x9d32
++
++#define ENDPOINT_SENSOR				0
++#define ENDPOINT_CIO2				1
++
++#define NODE_HID(_HID)				\
++((const struct software_node) {			\
++	_HID,					\
++})
++
++#define NODE_PORT(_PORT, _HID_NODE)		\
++((const struct software_node) {			\
++	_PORT,					\
++	_HID_NODE,				\
++})
++
++#define NODE_ENDPOINT(_EP, _PORT, _PROPS)	\
++((const struct software_node) {			\
++	_EP,					\
++	_PORT,					\
++	_PROPS,					\
++})
++
++#define PROPERTY_ENTRY_NULL			\
++((const struct property_entry) { })
++#define SOFTWARE_NODE_NULL			\
++((const struct software_node) { })
++
++/*
++ * Extend this array with ACPI Hardware ID's of devices known to be
++ * working
++ */
++
++static char *supported_devices[] = {
++	"INT33BE",
++	"OVTI2680",
++	"OVTI5648",
++};
++
++/*
++ * software_node needs const char * names. Can't snprintf a const char *,
++ * so instead we need an array of them and use the port num from SSDB as
++ * an index.
++ */
++
++const char *port_names[] = {
++	"port0", "port1", "port2", "port3", "port4",
++	"port5", "port6", "port7", "port8", "port9"
++};
++
++struct software_node cio2_hid_node = { CIO2_HID, };
++
++struct sensor {
++	struct device *dev;
++	struct software_node swnodes[5];
++	struct property_entry sensor_props[6];
++	struct property_entry cio2_props[3];
++	struct fwnode_handle *fwnode;
++};
++
++struct cio2_bridge {
++	int n_sensors;
++	struct sensor sensors[MAX_CONNECTED_DEVICES];
++	struct pci_dev *cio2;
++	struct fwnode_handle *cio2_fwnode;
++};
++
++struct cio2_bridge bridge = { 0, };
++
++static const struct property_entry remote_endpoints[] = {
++	PROPERTY_ENTRY_REF("remote-endpoint", /* Sensor 0, Sensor Property */
++			   &bridge.sensors[0].swnodes[SWNODE_CIO2_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint", /* Sensor 0, CIO2 Property */
++			   &bridge.sensors[0].swnodes[SWNODE_SENSOR_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint",
++			   &bridge.sensors[1].swnodes[SWNODE_CIO2_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint",
++			   &bridge.sensors[1].swnodes[SWNODE_SENSOR_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint",
++			   &bridge.sensors[2].swnodes[SWNODE_CIO2_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint",
++			   &bridge.sensors[2].swnodes[SWNODE_SENSOR_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint",
++			   &bridge.sensors[3].swnodes[SWNODE_CIO2_ENDPOINT]),
++	PROPERTY_ENTRY_REF("remote-endpoint",
++			   &bridge.sensors[3].swnodes[SWNODE_SENSOR_ENDPOINT]),
++	{ }
++};
++
++/* Data representation as it is in ACPI SSDB buffer */
++struct sensor_bios_data_packed {
++	u8 version;
++	u8 sku;
++	u8 guid_csi2[16];
++	u8 devfunction;
++	u8 bus;
++	u32 dphylinkenfuses;
++	u32 clockdiv;
++	u8 link;
++	u8 lanes;
++	u32 csiparams[10];
++	u32 maxlanespeed;
++	u8 sensorcalibfileidx;
++	u8 sensorcalibfileidxInMBZ[3];
++	u8 romtype;
++	u8 vcmtype;
++	u8 platforminfo;
++	u8 platformsubinfo;
++	u8 flash;
++	u8 privacyled;
++	u8 degree;
++	u8 mipilinkdefined;
++	u32 mclkspeed;
++	u8 controllogicid;
++	u8 reserved1[3];
++	u8 mclkport;
++	u8 reserved2[13];
++} __attribute__((__packed__));
++
++/* Fields needed by bridge driver */
++struct sensor_bios_data {
++	struct device *dev;
++	u8 link;
++	u8 lanes;
++	u32 mclkspeed;
++};
++
++static int read_acpi_block(struct device *dev, char *id, void *data, u32 size)
++{
++	union acpi_object *obj;
++	struct acpi_buffer buffer = { ACPI_ALLOCATE_BUFFER, NULL };
++	struct acpi_handle *dev_handle = ACPI_HANDLE(dev);
++	int status;
++	u32 buffer_length;
++
++	status = acpi_evaluate_object(dev_handle, id, NULL, &buffer);
++	if (!ACPI_SUCCESS(status))
++		return -ENODEV;
++
++	obj = (union acpi_object *)buffer.pointer;
++	if (!obj || obj->type != ACPI_TYPE_BUFFER) {
++		dev_err(dev, "Could't read acpi buffer\n");
++		status = -ENODEV;
++		goto err;
++	}
++
++	if (obj->buffer.length > size) {
++		dev_err(dev, "Given buffer is too small\n");
++		status = -ENODEV;
++		goto err;
++	}
++
++	memcpy(data, obj->buffer.pointer, min(size, obj->buffer.length));
++	buffer_length = obj->buffer.length;
++	kfree(buffer.pointer);
++
++	return buffer_length;
++err:
++	kfree(buffer.pointer);
++	return status;
++}
++
++static int get_acpi_ssdb_sensor_data(struct device *dev,
++				     struct sensor_bios_data *sensor)
++{
++	struct sensor_bios_data_packed sensor_data;
++	int ret = read_acpi_block(dev, "SSDB", &sensor_data,
++				  sizeof(sensor_data));
++
++	if (ret < 0) {
++		dev_err(dev, "Failed to fetch SSDB data\n");
++		return ret;
++	}
++
++	sensor->link = sensor_data.link;
++	sensor->lanes = sensor_data.lanes;
++	sensor->mclkspeed = sensor_data.mclkspeed;
++
++	return 0;
++}
++
++static int create_endpoint_properties(struct device *dev,
++				      struct sensor_bios_data *ssdb,
++				      struct property_entry *sensor_props,
++				      struct property_entry *cio2_props)
++{
++		u32 *data_lanes;
++		int i;
++
++		data_lanes = devm_kmalloc(dev, sizeof(u32) * (int)ssdb->lanes,
++					  GFP_KERNEL);
++
++		if (!data_lanes) {
++			dev_err(dev,
++				"Couldn't allocate memory for data lanes array\n");
++			return -ENOMEM;
++		}
++
++		for (i = 0; i < (int)ssdb->lanes; i++)
++			data_lanes[i] = (u32)i + 1;
++
++		sensor_props[0] = PROPERTY_ENTRY_U32("clock-frequency",
++						     ssdb->mclkspeed);
++		sensor_props[1] = PROPERTY_ENTRY_U32("bus-type", 5);
++		sensor_props[2] = PROPERTY_ENTRY_U32("clock-lanes", 0);
++		sensor_props[3] = PROPERTY_ENTRY_U32_ARRAY_LEN("data-lanes",
++							       data_lanes,
++							       (int)ssdb->lanes);
++		sensor_props[4] = remote_endpoints[(bridge.n_sensors * 2) + ENDPOINT_SENSOR];
++		sensor_props[5] = PROPERTY_ENTRY_NULL;
++
++		cio2_props[0] = PROPERTY_ENTRY_U32_ARRAY_LEN("data-lanes",
++							     data_lanes,
++							     (int)ssdb->lanes);
++		cio2_props[1] = remote_endpoints[(bridge.n_sensors * 2) + ENDPOINT_CIO2];
++		cio2_props[2] = PROPERTY_ENTRY_NULL;
++
++		return 0;
++}
++
++static int connect_supported_devices(void)
++{
++	struct acpi_device *adev;
++	struct device *dev;
++	struct sensor_bios_data ssdb;
++	struct sensor *sensor;
++	struct property_entry *sensor_props;
++	struct property_entry *cio2_props;
++	struct fwnode_handle *fwnode;
++	struct software_node *nodes;
++	struct v4l2_subdev *sd;
++	int i, ret;
++
++	for (i = 0; i < ARRAY_SIZE(supported_devices); i++) {
++		adev = acpi_dev_get_first_match_dev(supported_devices[i],
++						    NULL, -1);
++
++		if (!adev)
++			continue;
++
++		dev = bus_find_device_by_acpi_dev(&i2c_bus_type, adev);
++
++		if (!dev) {
++			pr_info("ACPI match for %s, but it has no i2c device\n",
++				supported_devices[i]);
++			continue;
++		}
++
++		if (!dev->driver_data) {
++			pr_info("ACPI match for %s, but it has no driver\n",
++				supported_devices[i]);
++			continue;
++		} else {
++			pr_info("Found supported device %s\n",
++				supported_devices[i]);
++		}
++
++		sensor = &bridge.sensors[bridge.n_sensors];
++		/*
++		 * Store sensor's existing fwnode so that it can be restored if
++		 * this module is removed.
++		 */
++		sensor->fwnode = fwnode_handle_get(dev->fwnode);
++
++		get_acpi_ssdb_sensor_data(dev, &ssdb);
++
++		nodes = sensor->swnodes;
++		sensor_props = sensor->sensor_props;
++		cio2_props = sensor->cio2_props;
++		fwnode = sensor->fwnode;
++
++		ret = create_endpoint_properties(dev, &ssdb, sensor_props,
++						 cio2_props);
++
++		if (ret)
++			return ret;
++
++		/* build the software nodes */
++
++		nodes[SWNODE_SENSOR_HID] = NODE_HID(supported_devices[i]);
++		nodes[SWNODE_SENSOR_PORT] = NODE_PORT("port0",
++						      &nodes[SWNODE_SENSOR_HID]);
++		nodes[SWNODE_SENSOR_ENDPOINT] = NODE_ENDPOINT("endpoint0",
++							      &nodes[SWNODE_SENSOR_PORT],
++							      sensor_props);
++		nodes[SWNODE_CIO2_PORT] = NODE_PORT(port_names[(int)ssdb.link],
++						    &cio2_hid_node);
++		nodes[SWNODE_CIO2_ENDPOINT] = NODE_ENDPOINT("endpoint0",
++							    &nodes[SWNODE_CIO2_PORT],
++							    cio2_props);
++		nodes[SWNODE_NULL_TERMINATOR]   = SOFTWARE_NODE_NULL;
++
++		ret = software_node_register_nodes(nodes);
++		if (ret) {
++			dev_err(dev,
++				"Failed to register software nodes for %s\n",
++				supported_devices[i]);
++			return ret;
++		}
++
++		fwnode = software_node_fwnode(&nodes[SWNODE_SENSOR_HID]);
++		if (!fwnode) {
++			dev_err(dev,
++				"Failed to get software node for %s\n",
++				supported_devices[i]);
++			return ret;
++		}
++
++		fwnode->secondary = ERR_PTR(-ENODEV);
++		dev->fwnode = fwnode;
++
++		/*
++		 * The device should by this point has driver_data set to an
++		 * instance of struct v4l2_subdev; set the fwnode for that too.
++		 */
++
++		sd = dev_get_drvdata(dev);
++		sd->fwnode = fwnode;
++
++		sensor->dev = dev;
++		bridge.n_sensors++;
++	}
++
++	return 0;
++}
++
++static int cio2_bridge_init(void)
++{
++	struct fwnode_handle *fwnode;
++	int ret;
++
++	ret = software_node_register(&cio2_hid_node);
++
++	if (ret < 0) {
++		pr_err("Failed to register the CIO2 HID node\n");
++		return -EINVAL;
++	}
++
++	ret = connect_supported_devices();
++
++	if ((ret < 0) || (bridge.n_sensors <= 0)) {
++		pr_err("cio2_bridge: Failed to connect any devices\n");
++		goto out;
++	} else {
++		pr_info("Found %d supported devices\n", bridge.n_sensors);
++	}
++
++	bridge.cio2 = pci_get_device(PCI_VENDOR_ID_INTEL, CIO2_PCI_ID, NULL);
++	if (!bridge.cio2) {
++		ret = -ENODEV;
++		goto out;
++	}
++
++	fwnode = software_node_fwnode(&cio2_hid_node);
++	if (!fwnode) {
++		pr_err("Error getting fwnode from cio2 software_node\n");
++		ret = -ENODEV;
++		goto out;
++	}
++
++	/*
++	 * We store the pci_dev's existing fwnode, beccause in the event we
++	 * want to reload (I.E. rmmod and insmod) this module we need to give
++	 * the device its original fwnode back to prevent problems down the
++	 * line
++	 */
++
++	bridge.cio2_fwnode = fwnode_handle_get(bridge.cio2->dev.fwnode);
++
++	fwnode->secondary = ERR_PTR(-ENODEV);
++	bridge.cio2->dev.fwnode = fwnode;
++
++	return 0;
++out:
++	cio2_bridge_exit();
++	return ret;
++}
++
++static int cio2_bridge_unregister_sensors(void)
++{
++	int i, j;
++	struct sensor *sensor;
++
++	for (i = 0; i < bridge.n_sensors; i++) {
++		sensor = &bridge.sensors[i];
++
++		/* give the sensor its original fwnode back */
++		sensor->dev->fwnode = sensor->fwnode;
++		fwnode_handle_put(sensor->fwnode);
++		put_device(sensor->dev);
++
++		for (j = 4; j >= 0; j--)
++			software_node_unregister(&sensor->swnodes[j]);
++	}
++
++	return 0;
++}
++
++static void cio2_bridge_exit(void)
++{
++	int ret;
++
++	/* Give the pci_dev its original fwnode back */
++	if (bridge.cio2) {
++		bridge.cio2->dev.fwnode = bridge.cio2_fwnode;
++		fwnode_handle_put(bridge.cio2_fwnode);
++		pci_dev_put(bridge.cio2);
++	}
++
++	ret = cio2_bridge_unregister_sensors();
++
++	if (ret)
++		pr_err("An error occurred unregistering the sensors\n");
++
++	software_node_unregister(&cio2_hid_node);
++}
++
++module_init(cio2_bridge_init);
++module_exit(cio2_bridge_exit);
++
++MODULE_DESCRIPTION("A bridge driver to connect sensors to CIO2 infrastructure.");
++MODULE_LICENSE("GPL v2");
++MODULE_ALIAS("acpi*:INT343E:*");
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
