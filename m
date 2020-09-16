@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A087626BCA7
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:21:09 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2107C26BCC7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:22:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F47886A37;
-	Wed, 16 Sep 2020 06:21:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6E23727256;
+	Wed, 16 Sep 2020 06:22:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id th2FI2uPPwOd; Wed, 16 Sep 2020 06:21:06 +0000 (UTC)
+	with ESMTP id cdpS0qDaiM71; Wed, 16 Sep 2020 06:22:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4CD3786A27;
-	Wed, 16 Sep 2020 06:21:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F332B20010;
+	Wed, 16 Sep 2020 06:22:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2B94F1BF866
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:21:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F47C1BF866
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:22:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 277F486A0F
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:21:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 889FF864B8
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:22:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BalUK4-a-1Hl for <devel@linuxdriverproject.org>;
- Wed, 16 Sep 2020 06:21:04 +0000 (UTC)
+ with ESMTP id XLroXUU470ed for <devel@linuxdriverproject.org>;
+ Wed, 16 Sep 2020 06:22:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7CFCA86A0E
- for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:21:04 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id n14so3358302pff.6
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:21:04 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D0B8486416
+ for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:22:34 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id f1so2631967plo.13
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:22:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=pH8plMqCs4BKRun7PXE/GJgRTDLTG9OclBrOcJ14YFc=;
- b=Ed60iFLeTkILuRQX8iFcKWve3oMuEIw5WDcw6qCrl8JthN8eLdJS4yz7XX+3L9T8Gr
- n005yVFy3hSzad0SKfSpEkVdQ5AoUUE2eg5W8APqw64ucr+Dzdo3ia/wHmJ81T0u7g/u
- LwBw8KcPKNl72uRcK6fqyTNVxaJFw8gXKW1YtyhY7gdshWCN00PQqKcp1rnub3mEI9I9
- PwZAf+Es1fv/pYN9gCCjg1rAG8aBo4cMUk3aY0lmUVDzEEIOkUwJ2bvdnd9hUgYqA0tp
- /jJ9NfH2lMla4RmdB0cedNTljUSPMCnaqx7ZzrjsjHXzW+HSWzCytRDJ0ZCDO3RZZyEr
- 6QWA==
+ bh=3u+/e+GVaTMgytHZfUTcAguGcbD5fnB/jR8v11HQAQE=;
+ b=gVI33U5lFI+jKa0UdI6M0hjiXF5YVWc0iLdNayK+dwi/ug1qKtafS7VkuK17h424PV
+ wXphLKt7cTvkCd62UdFLzaV2jHH7TrzXXraYXhVaqNnxgHP8EmDec+1Tszib/TIMABQm
+ KTaB3OOcS6xZVcaQ5HwY/dJNYVWylYN1gwxAMqukqvDbiNFjKUSiHCw5aXLnRk+1gkZC
+ if/5fNByXq7f7hvf1Nb88fLyO2B2chOJw5jiaPhuSQt0hxDkuicPqzwDn8VeO6UPBne1
+ war9RLvt6XuqUCKEi7EVEVAhjC505yhwq02JBdvHJy9maL3e6O341xblgND9ds8VYW20
+ ixDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=pH8plMqCs4BKRun7PXE/GJgRTDLTG9OclBrOcJ14YFc=;
- b=k7/EqlAy7l7EnT61tScg7C0Sj1tZJCqr9nSJbKYTnO3B/y9Xe/5DItyT2JwFrcOwZU
- 3USdS3j/ZnGEvyXRW3oe1Noop11gAzGlgyY32b9yXZ6cZlVro0aRk5H4VUMPeH7PC25b
- lgMmeliPlChyrGvSG/iW7ekOeDmRc678pANW1P97OQTTLuHCNYtrncHz7jPhJKcZVCjJ
- qsQuVOTjbyuFAf6dba85uvAwIIgNR9P/fc2OVdX5fLCrqENZjrFm1j+EyCc85JXOrKY1
- fqvlHim7xp7YsJdhvdlVvAEt2yxOhtaF+Wc/qD716VDxMfUaDHnQ24/YRQF2n2+KsCvA
- Frfg==
-X-Gm-Message-State: AOAM533YB1NZ1RcHtxCz9wpx7HUFYzayXK6TW7BM8BbymqAzKCmIg50Z
- Lz+n4WyK3AlJkkI93HhZvgw=
-X-Google-Smtp-Source: ABdhPJzHUDuzVneZ41G+6tlqunzr7GPucyL6AKCBU2uWP+a2ExucjVaqaBiXHjEcu9k3wNeADBB93w==
-X-Received: by 2002:a63:580c:: with SMTP id m12mr16044140pgb.99.1600237264065; 
- Tue, 15 Sep 2020 23:21:04 -0700 (PDT)
+ bh=3u+/e+GVaTMgytHZfUTcAguGcbD5fnB/jR8v11HQAQE=;
+ b=Nt0LePx2cH2ArD41y4rHFVdmz2y1CLt/5pUdmD+oWxmqiQjP7Rs43r36k+EiWDBhQv
+ HU8RauQZUIDgCej2RQpI9zymm0KowOaJxLLC6CiX6zakZGuYF35+YGg4rbwc+qRwShTv
+ +1h3pRistisDcSqyKqslarwzY+G2i8Mn/u+PPChRgXjMiPF73r/7jY9gaTC/55yPIEnM
+ fjCckRMRbVbTnUUM8L2hjZdnE3IsG9o+jkAB4GcHUIDzttio721hQLBPrIbWfJ+C3FUJ
+ YyM8UEy8gjdxByWq2UuycZr9viZLCE9YDyyuWUe/OwkdKOuYVPWWwbaBlur4WZ6drjnQ
+ vJ7g==
+X-Gm-Message-State: AOAM530XN9RRwB9sMj4/mskaFocxuYCI7v23cWycFLy2nVVZn9Q5F9zp
+ o4JJXzn6pTN5A9I3Cr6B7ME=
+X-Google-Smtp-Source: ABdhPJyrTWxhAAZ7X/sTU2d3HR0Scy9kC3wTWBynWpUeOG1kdqTxiIhecT6geVifLMEcfi5qm7BlPg==
+X-Received: by 2002:a17:90b:1988:: with SMTP id
+ mv8mr2689739pjb.23.1600237354465; 
+ Tue, 15 Sep 2020 23:22:34 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.195.121])
- by smtp.gmail.com with ESMTPSA id e123sm15966374pfh.167.2020.09.15.23.21.01
+ by smtp.gmail.com with ESMTPSA id 137sm16369269pfu.149.2020.09.15.23.22.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2020 23:21:03 -0700 (PDT)
+ Tue, 15 Sep 2020 23:22:33 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8192e: convert tasklets to use new
+Subject: [PATCH] staging: rtl8188eu: convert tasklets to use new
  tasklet_setup() API
-Date: Wed, 16 Sep 2020 11:50:54 +0530
-Message-Id: <20200916062054.58084-1-allen.lkml@gmail.com>
+Date: Wed, 16 Sep 2020 11:52:24 +0530
+Message-Id: <20200916062224.58203-1-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -85,7 +86,7 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Romain Perier <romain.perier@gmail.com>,
- Allen Pais <apais@linux.microsoft.com>
+ Allen Pais <apais@linux.microsoft.com>, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -101,101 +102,96 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 27 ++++++++++----------
- drivers/staging/rtl8192e/rtllib_softmac.c    |  6 ++---
- 2 files changed, 16 insertions(+), 17 deletions(-)
+ drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c    | 3 +--
+ drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c    | 3 +--
+ drivers/staging/rtl8188eu/include/rtl8188e_recv.h | 2 +-
+ drivers/staging/rtl8188eu/include/rtl8188e_xmit.h | 2 +-
+ drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c  | 8 ++++----
+ 5 files changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index fac58eebf263..663675efcfe4 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -82,8 +82,8 @@ static int _rtl92e_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
- static void _rtl92e_tx_cmd(struct net_device *dev, struct sk_buff *skb);
- static short _rtl92e_tx(struct net_device *dev, struct sk_buff *skb);
- static short _rtl92e_pci_initdescring(struct net_device *dev);
--static void _rtl92e_irq_tx_tasklet(unsigned long data);
--static void _rtl92e_irq_rx_tasklet(unsigned long data);
-+static void _rtl92e_irq_tx_tasklet(struct tasklet_struct *t);
-+static void _rtl92e_irq_rx_tasklet(struct tasklet_struct *t);
- static void _rtl92e_cancel_deferred_work(struct r8192_priv *priv);
- static int _rtl92e_up(struct net_device *dev, bool is_silent_reset);
- static int _rtl92e_try_up(struct net_device *dev);
-@@ -517,9 +517,10 @@ static int _rtl92e_handle_assoc_response(struct net_device *dev,
- 	return 0;
- }
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c b/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c
+index 7badfc2e45df..25f46b2f4920 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188eu_recv.c
+@@ -22,8 +22,7 @@ int rtw_hal_init_recv_priv(struct adapter *padapter)
+ 	int i, res = _SUCCESS;
+ 	struct recv_buf *precvbuf;
  
--static void _rtl92e_prepare_beacon(unsigned long data)
-+static void _rtl92e_prepare_beacon(struct tasklet_struct *t)
+-	tasklet_init(&precvpriv->recv_tasklet, rtl8188eu_recv_tasklet,
+-		     (unsigned long)padapter);
++	tasklet_setup(&precvpriv->recv_tasklet, rtl8188eu_recv_tasklet);
+ 
+ 	/* init recv_buf */
+ 	_rtw_init_queue(&precvpriv->free_recv_buf_queue);
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
+index 7d315bd438d4..52023551ab30 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
+@@ -17,8 +17,7 @@ s32 rtw_hal_init_xmit_priv(struct adapter *adapt)
  {
--	struct r8192_priv *priv = (struct r8192_priv *)data;
-+	struct r8192_priv *priv = from_tasklet(priv, t,
-+					       irq_prepare_beacon_tasklet);
- 	struct net_device *dev = priv->rtllib->dev;
- 	struct sk_buff *pskb = NULL, *pnewskb = NULL;
- 	struct cb_desc *tcb_desc = NULL;
-@@ -1009,12 +1010,10 @@ static void _rtl92e_init_priv_task(struct net_device *dev)
- 			      (void *)rtl92e_hw_wakeup_wq, dev);
- 	INIT_DELAYED_WORK_RSL(&priv->rtllib->hw_sleep_wq,
- 			      (void *)rtl92e_hw_sleep_wq, dev);
--	tasklet_init(&priv->irq_rx_tasklet, _rtl92e_irq_rx_tasklet,
--		     (unsigned long)priv);
--	tasklet_init(&priv->irq_tx_tasklet, _rtl92e_irq_tx_tasklet,
--		     (unsigned long)priv);
--	tasklet_init(&priv->irq_prepare_beacon_tasklet, _rtl92e_prepare_beacon,
--		     (unsigned long)priv);
-+	tasklet_setup(&priv->irq_rx_tasklet, _rtl92e_irq_rx_tasklet);
-+	tasklet_setup(&priv->irq_tx_tasklet, _rtl92e_irq_tx_tasklet);
-+	tasklet_setup(&priv->irq_prepare_beacon_tasklet,
-+		      _rtl92e_prepare_beacon);
+ 	struct xmit_priv *pxmitpriv = &adapt->xmitpriv;
+ 
+-	tasklet_init(&pxmitpriv->xmit_tasklet, rtl8188eu_xmit_tasklet,
+-		     (unsigned long)adapt);
++	tasklet_setup(&pxmitpriv->xmit_tasklet, rtl8188eu_xmit_tasklet);
+ 	return _SUCCESS;
  }
  
- static short _rtl92e_get_channel_map(struct net_device *dev)
-@@ -2109,16 +2108,16 @@ static void _rtl92e_tx_resume(struct net_device *dev)
+diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_recv.h b/drivers/staging/rtl8188eu/include/rtl8188e_recv.h
+index 23251ffa8404..fea1119c426e 100644
+--- a/drivers/staging/rtl8188eu/include/rtl8188e_recv.h
++++ b/drivers/staging/rtl8188eu/include/rtl8188e_recv.h
+@@ -43,7 +43,7 @@ enum rx_packet_type {
+ };
+ 
+ #define INTERRUPT_MSG_FORMAT_LEN 60
+-void rtl8188eu_recv_tasklet(unsigned long priv);
++void rtl8188eu_recv_tasklet(struct tasklet_struct *t);
+ void rtl8188e_process_phy_info(struct adapter *padapter,
+ 			       struct recv_frame *prframe);
+ void update_recvframe_phyinfo_88e(struct recv_frame *fra, struct phy_stat *phy);
+diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
+index 85efa41c8350..354480678270 100644
+--- a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
++++ b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
+@@ -147,7 +147,7 @@ void rtl8188e_fill_fake_txdesc(struct adapter *padapter, u8 *pDesc,
+ s32 rtl8188eu_init_xmit_priv(struct adapter *padapter);
+ s32 rtl8188eu_xmit_buf_handler(struct adapter *padapter);
+ #define hal_xmit_handler rtl8188eu_xmit_buf_handler
+-void rtl8188eu_xmit_tasklet(unsigned long priv);
++void rtl8188eu_xmit_tasklet(struct tasklet_struct *t);
+ bool rtl8188eu_xmitframe_complete(struct adapter *padapter,
+ 				  struct xmit_priv *pxmitpriv);
+ 
+diff --git a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+index a80c7f3b86d1..6926443bba4e 100644
+--- a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
++++ b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+@@ -773,10 +773,10 @@ void usb_write_port_cancel(struct adapter *padapter)
  	}
  }
  
--static void _rtl92e_irq_tx_tasklet(unsigned long data)
-+static void _rtl92e_irq_tx_tasklet(struct tasklet_struct *t)
+-void rtl8188eu_recv_tasklet(unsigned long priv)
++void rtl8188eu_recv_tasklet(struct tasklet_struct *t)
  {
--	struct r8192_priv *priv = (struct r8192_priv *)data;
-+	struct r8192_priv *priv = from_tasklet(priv, t, irq_tx_tasklet);
+ 	struct sk_buff *pskb;
+-	struct adapter *adapt = (struct adapter *)priv;
++	struct adapter *adapt = from_tasklet(adapt, t, recvpriv.recv_tasklet);
+ 	struct recv_priv *precvpriv = &adapt->recvpriv;
  
- 	_rtl92e_tx_resume(priv->rtllib->dev);
+ 	while (NULL != (pskb = skb_dequeue(&precvpriv->rx_skb_queue))) {
+@@ -792,9 +792,9 @@ void rtl8188eu_recv_tasklet(unsigned long priv)
+ 	}
  }
  
--static void _rtl92e_irq_rx_tasklet(unsigned long data)
-+static void _rtl92e_irq_rx_tasklet(struct tasklet_struct *t)
+-void rtl8188eu_xmit_tasklet(unsigned long priv)
++void rtl8188eu_xmit_tasklet(struct tasklet_struct *t)
  {
--	struct r8192_priv *priv = (struct r8192_priv *)data;
-+	struct r8192_priv *priv = from_tasklet(priv, t, irq_rx_tasklet);
+-	struct adapter *adapt = (struct adapter *)priv;
++	struct adapter *adapt = from_tasklet(adapt, t, xmitpriv.xmit_tasklet);
+ 	struct xmit_priv *pxmitpriv = &adapt->xmitpriv;
  
- 	_rtl92e_rx_normal(priv->rtllib->dev);
- 
-diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
-index 6e2f620afd14..2c752ba5a802 100644
---- a/drivers/staging/rtl8192e/rtllib_softmac.c
-+++ b/drivers/staging/rtl8192e/rtllib_softmac.c
-@@ -2044,9 +2044,9 @@ static short rtllib_sta_ps_sleep(struct rtllib_device *ieee, u64 *time)
- 
- }
- 
--static inline void rtllib_sta_ps(unsigned long data)
-+static inline void rtllib_sta_ps(struct tasklet_struct *t)
- {
--	struct rtllib_device *ieee = (struct rtllib_device *)data;
-+	struct rtllib_device *ieee = from_tasklet(ieee, t, ps_task);
- 	u64 time;
- 	short sleep;
- 	unsigned long flags, flags2;
-@@ -3028,7 +3028,7 @@ void rtllib_softmac_init(struct rtllib_device *ieee)
- 	spin_lock_init(&ieee->mgmt_tx_lock);
- 	spin_lock_init(&ieee->beacon_lock);
- 
--	tasklet_init(&ieee->ps_task, rtllib_sta_ps, (unsigned long)ieee);
-+	tasklet_setup(&ieee->ps_task, rtllib_sta_ps);
- 
- }
- 
+ 	if (check_fwstate(&adapt->mlmepriv, _FW_UNDER_SURVEY))
 -- 
 2.25.1
 
