@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE0B326BC99
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:19:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A087626BCA7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:21:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 681BD271F5;
-	Wed, 16 Sep 2020 06:19:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F47886A37;
+	Wed, 16 Sep 2020 06:21:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 86thgZ34LpWz; Wed, 16 Sep 2020 06:19:57 +0000 (UTC)
+	with ESMTP id th2FI2uPPwOd; Wed, 16 Sep 2020 06:21:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EF0C923730;
-	Wed, 16 Sep 2020 06:19:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4CD3786A27;
+	Wed, 16 Sep 2020 06:21:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A6201BF866
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:19:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B94F1BF866
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:21:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 86F958630A
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:19:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 277F486A0F
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:21:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pL5hjTAfTgOX for <devel@linuxdriverproject.org>;
- Wed, 16 Sep 2020 06:19:49 +0000 (UTC)
+ with ESMTP id BalUK4-a-1Hl for <devel@linuxdriverproject.org>;
+ Wed, 16 Sep 2020 06:21:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BAD2586018
- for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:19:49 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id q4so1024879pjh.5
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:19:49 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7CFCA86A0E
+ for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:21:04 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id n14so3358302pff.6
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:21:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8A/CE219YrxtF0Ttixypil82sDKwj/DFlGx4NJANIr4=;
- b=S2GciSZGLv8fa0rpCsdhuxbtpwyLWpRLWdFujcbkD2tU1xyaoXQce91bIRqZtDX176
- plsR2/gv215adjoToGJwPHlX2IIJUomB1RWy3HVNdUhwZ/ILHLDfh8eX9cFpBuftUPba
- GX5jKjRSWEKhT5b9CyndE14NwNUXUDWNe5uN9hTVYjNl+NkODi3tA3lxFxhtp149hp9B
- 3S12wnLJUS5c0ZljXCB2GGRgr9l0S3QOLfVfT509NgtS7QUalq2UMeUiS7J95m22RsKX
- lJHs/jGCUrn6MVdWeDSxbUc8JPZIOS9qmZwtICCDyd/I2thttrdCq8bQOaKgByiuoY2M
- 7KNg==
+ bh=pH8plMqCs4BKRun7PXE/GJgRTDLTG9OclBrOcJ14YFc=;
+ b=Ed60iFLeTkILuRQX8iFcKWve3oMuEIw5WDcw6qCrl8JthN8eLdJS4yz7XX+3L9T8Gr
+ n005yVFy3hSzad0SKfSpEkVdQ5AoUUE2eg5W8APqw64ucr+Dzdo3ia/wHmJ81T0u7g/u
+ LwBw8KcPKNl72uRcK6fqyTNVxaJFw8gXKW1YtyhY7gdshWCN00PQqKcp1rnub3mEI9I9
+ PwZAf+Es1fv/pYN9gCCjg1rAG8aBo4cMUk3aY0lmUVDzEEIOkUwJ2bvdnd9hUgYqA0tp
+ /jJ9NfH2lMla4RmdB0cedNTljUSPMCnaqx7ZzrjsjHXzW+HSWzCytRDJ0ZCDO3RZZyEr
+ 6QWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8A/CE219YrxtF0Ttixypil82sDKwj/DFlGx4NJANIr4=;
- b=t+41xsjjCJfuaXw/B53fNLuHLkEz2/M1Npls9uLAylKIZ5QC/d/SuomfGBq8ZhxwV2
- vA3WNlFSU05CT1E+71W7tGd+p9izSSMDwYTCi9aiTtjsXMZqDgEz5Di/DE7lrNR5vTFS
- AMcO+tgvxzwPvHhduSBpM6grddgUxd4umstodUlV9WZ/50lO/iKctPdZbLbckzaIL4Es
- Qeg+pDD2cp4gZso4Z6KGoMDBitcAE2G/GY56xy9ltWuw2ncDyUuPMmo7wXzUJ8Q74+zO
- hvbJ3Wi763ZqJ9RcEbqR3V3FSGUiTVMASJWgzXJIjFcs8shIwTcXPLA9bSW21ll1d8BE
- FVDw==
-X-Gm-Message-State: AOAM532oXBC525pkGwfc6CYjuuv3IdZr3C07Tb3y1jQzHNl0+T1Uc5QT
- pCBeXLrFyUHClGSjzU9he/I=
-X-Google-Smtp-Source: ABdhPJwCMKuICztjbWNNc91pbuHCjWVfW9LPilMAIdDo36WBoNDiKAc7xRjs7N/zEGjVb1PGJzI4pg==
-X-Received: by 2002:a17:902:be11:b029:d1:bb21:4c9c with SMTP id
- r17-20020a170902be11b02900d1bb214c9cmr19068503pls.8.1600237189411; 
- Tue, 15 Sep 2020 23:19:49 -0700 (PDT)
+ bh=pH8plMqCs4BKRun7PXE/GJgRTDLTG9OclBrOcJ14YFc=;
+ b=k7/EqlAy7l7EnT61tScg7C0Sj1tZJCqr9nSJbKYTnO3B/y9Xe/5DItyT2JwFrcOwZU
+ 3USdS3j/ZnGEvyXRW3oe1Noop11gAzGlgyY32b9yXZ6cZlVro0aRk5H4VUMPeH7PC25b
+ lgMmeliPlChyrGvSG/iW7ekOeDmRc678pANW1P97OQTTLuHCNYtrncHz7jPhJKcZVCjJ
+ qsQuVOTjbyuFAf6dba85uvAwIIgNR9P/fc2OVdX5fLCrqENZjrFm1j+EyCc85JXOrKY1
+ fqvlHim7xp7YsJdhvdlVvAEt2yxOhtaF+Wc/qD716VDxMfUaDHnQ24/YRQF2n2+KsCvA
+ Frfg==
+X-Gm-Message-State: AOAM533YB1NZ1RcHtxCz9wpx7HUFYzayXK6TW7BM8BbymqAzKCmIg50Z
+ Lz+n4WyK3AlJkkI93HhZvgw=
+X-Google-Smtp-Source: ABdhPJzHUDuzVneZ41G+6tlqunzr7GPucyL6AKCBU2uWP+a2ExucjVaqaBiXHjEcu9k3wNeADBB93w==
+X-Received: by 2002:a63:580c:: with SMTP id m12mr16044140pgb.99.1600237264065; 
+ Tue, 15 Sep 2020 23:21:04 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.195.121])
- by smtp.gmail.com with ESMTPSA id w203sm15401717pfc.97.2020.09.15.23.19.47
+ by smtp.gmail.com with ESMTPSA id e123sm15966374pfh.167.2020.09.15.23.21.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2020 23:19:48 -0700 (PDT)
+ Tue, 15 Sep 2020 23:21:03 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8192: convert tasklets to use new tasklet_setup()
- API
-Date: Wed, 16 Sep 2020 11:49:39 +0530
-Message-Id: <20200916061939.57976-1-allen.lkml@gmail.com>
+Subject: [PATCH] staging: rtl8192e: convert tasklets to use new
+ tasklet_setup() API
+Date: Wed, 16 Sep 2020 11:50:54 +0530
+Message-Id: <20200916062054.58084-1-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -102,69 +101,100 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 6 +++---
- drivers/staging/rtl8192u/r8192U_core.c                 | 9 ++++-----
- 2 files changed, 7 insertions(+), 8 deletions(-)
+ drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 27 ++++++++++----------
+ drivers/staging/rtl8192e/rtllib_softmac.c    |  6 ++---
+ 2 files changed, 16 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index d8eb907ff301..690b664df8fa 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -1687,9 +1687,9 @@ static short ieee80211_sta_ps_sleep(struct ieee80211_device *ieee, u32 *time_h,
- 	return 1;
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+index fac58eebf263..663675efcfe4 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
+@@ -82,8 +82,8 @@ static int _rtl92e_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
+ static void _rtl92e_tx_cmd(struct net_device *dev, struct sk_buff *skb);
+ static short _rtl92e_tx(struct net_device *dev, struct sk_buff *skb);
+ static short _rtl92e_pci_initdescring(struct net_device *dev);
+-static void _rtl92e_irq_tx_tasklet(unsigned long data);
+-static void _rtl92e_irq_rx_tasklet(unsigned long data);
++static void _rtl92e_irq_tx_tasklet(struct tasklet_struct *t);
++static void _rtl92e_irq_rx_tasklet(struct tasklet_struct *t);
+ static void _rtl92e_cancel_deferred_work(struct r8192_priv *priv);
+ static int _rtl92e_up(struct net_device *dev, bool is_silent_reset);
+ static int _rtl92e_try_up(struct net_device *dev);
+@@ -517,9 +517,10 @@ static int _rtl92e_handle_assoc_response(struct net_device *dev,
+ 	return 0;
  }
  
--static inline void ieee80211_sta_ps(unsigned long data)
-+static inline void ieee80211_sta_ps(struct tasklet_struct *t)
+-static void _rtl92e_prepare_beacon(unsigned long data)
++static void _rtl92e_prepare_beacon(struct tasklet_struct *t)
  {
--	struct ieee80211_device *ieee = (struct ieee80211_device *)data;
-+	struct ieee80211_device *ieee = from_tasklet(ieee, t, ps_task);
- 	u32 th, tl;
- 	short sleep;
- 
-@@ -2598,7 +2598,7 @@ void ieee80211_softmac_init(struct ieee80211_device *ieee)
- 	spin_lock_init(&ieee->mgmt_tx_lock);
- 	spin_lock_init(&ieee->beacon_lock);
- 
--	tasklet_init(&ieee->ps_task, ieee80211_sta_ps, (unsigned long)ieee);
-+	tasklet_setup(&ieee->ps_task, ieee80211_sta_ps);
- }
- 
- void ieee80211_softmac_free(struct ieee80211_device *ieee)
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index 6ec65187bef9..27dc181c4c9b 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -2193,7 +2193,7 @@ static void rtl8192_init_priv_lock(struct r8192_priv *priv)
- 
- static void rtl819x_watchdog_wqcallback(struct work_struct *work);
- 
--static void rtl8192_irq_rx_tasklet(unsigned long data);
-+static void rtl8192_irq_rx_tasklet(struct tasklet_struct *t);
- /* init tasklet and wait_queue here. only 2.6 above kernel is considered */
- #define DRV_NAME "wlan0"
- static void rtl8192_init_priv_task(struct net_device *dev)
-@@ -2214,8 +2214,7 @@ static void rtl8192_init_priv_task(struct net_device *dev)
- 			  InitialGainOperateWorkItemCallBack);
- 	INIT_WORK(&priv->qos_activate, rtl8192_qos_activate);
- 
--	tasklet_init(&priv->irq_rx_tasklet, rtl8192_irq_rx_tasklet,
+-	struct r8192_priv *priv = (struct r8192_priv *)data;
++	struct r8192_priv *priv = from_tasklet(priv, t,
++					       irq_prepare_beacon_tasklet);
+ 	struct net_device *dev = priv->rtllib->dev;
+ 	struct sk_buff *pskb = NULL, *pnewskb = NULL;
+ 	struct cb_desc *tcb_desc = NULL;
+@@ -1009,12 +1010,10 @@ static void _rtl92e_init_priv_task(struct net_device *dev)
+ 			      (void *)rtl92e_hw_wakeup_wq, dev);
+ 	INIT_DELAYED_WORK_RSL(&priv->rtllib->hw_sleep_wq,
+ 			      (void *)rtl92e_hw_sleep_wq, dev);
+-	tasklet_init(&priv->irq_rx_tasklet, _rtl92e_irq_rx_tasklet,
 -		     (unsigned long)priv);
-+	tasklet_setup(&priv->irq_rx_tasklet, rtl8192_irq_rx_tasklet);
+-	tasklet_init(&priv->irq_tx_tasklet, _rtl92e_irq_tx_tasklet,
+-		     (unsigned long)priv);
+-	tasklet_init(&priv->irq_prepare_beacon_tasklet, _rtl92e_prepare_beacon,
+-		     (unsigned long)priv);
++	tasklet_setup(&priv->irq_rx_tasklet, _rtl92e_irq_rx_tasklet);
++	tasklet_setup(&priv->irq_tx_tasklet, _rtl92e_irq_tx_tasklet);
++	tasklet_setup(&priv->irq_prepare_beacon_tasklet,
++		      _rtl92e_prepare_beacon);
  }
  
- static void rtl8192_get_eeprom_size(struct net_device *dev)
-@@ -4647,9 +4646,9 @@ static void rtl8192_rx_cmd(struct sk_buff *skb)
+ static short _rtl92e_get_channel_map(struct net_device *dev)
+@@ -2109,16 +2108,16 @@ static void _rtl92e_tx_resume(struct net_device *dev)
  	}
  }
  
--static void rtl8192_irq_rx_tasklet(unsigned long data)
-+static void rtl8192_irq_rx_tasklet(struct tasklet_struct *t)
+-static void _rtl92e_irq_tx_tasklet(unsigned long data)
++static void _rtl92e_irq_tx_tasklet(struct tasklet_struct *t)
+ {
+-	struct r8192_priv *priv = (struct r8192_priv *)data;
++	struct r8192_priv *priv = from_tasklet(priv, t, irq_tx_tasklet);
+ 
+ 	_rtl92e_tx_resume(priv->rtllib->dev);
+ }
+ 
+-static void _rtl92e_irq_rx_tasklet(unsigned long data)
++static void _rtl92e_irq_rx_tasklet(struct tasklet_struct *t)
  {
 -	struct r8192_priv *priv = (struct r8192_priv *)data;
 +	struct r8192_priv *priv = from_tasklet(priv, t, irq_rx_tasklet);
- 	struct sk_buff *skb;
- 	struct rtl8192_rx_info *info;
+ 
+ 	_rtl92e_rx_normal(priv->rtllib->dev);
+ 
+diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
+index 6e2f620afd14..2c752ba5a802 100644
+--- a/drivers/staging/rtl8192e/rtllib_softmac.c
++++ b/drivers/staging/rtl8192e/rtllib_softmac.c
+@@ -2044,9 +2044,9 @@ static short rtllib_sta_ps_sleep(struct rtllib_device *ieee, u64 *time)
+ 
+ }
+ 
+-static inline void rtllib_sta_ps(unsigned long data)
++static inline void rtllib_sta_ps(struct tasklet_struct *t)
+ {
+-	struct rtllib_device *ieee = (struct rtllib_device *)data;
++	struct rtllib_device *ieee = from_tasklet(ieee, t, ps_task);
+ 	u64 time;
+ 	short sleep;
+ 	unsigned long flags, flags2;
+@@ -3028,7 +3028,7 @@ void rtllib_softmac_init(struct rtllib_device *ieee)
+ 	spin_lock_init(&ieee->mgmt_tx_lock);
+ 	spin_lock_init(&ieee->beacon_lock);
+ 
+-	tasklet_init(&ieee->ps_task, rtllib_sta_ps, (unsigned long)ieee);
++	tasklet_setup(&ieee->ps_task, rtllib_sta_ps);
+ 
+ }
  
 -- 
 2.25.1
