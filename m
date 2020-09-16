@@ -1,77 +1,108 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBA3826BD7F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:46:48 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48DDB26C0D0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 11:39:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 93A7B8735E;
-	Wed, 16 Sep 2020 06:46:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B701186A2B;
+	Wed, 16 Sep 2020 09:39:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KHsCXQzzcbvP; Wed, 16 Sep 2020 06:46:47 +0000 (UTC)
+	with ESMTP id hRNQXTKEj2yq; Wed, 16 Sep 2020 09:39:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1D29E8700C;
-	Wed, 16 Sep 2020 06:46:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 07916869DE;
+	Wed, 16 Sep 2020 09:39:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4CE991BF866
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:46:45 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3DF9D1BF40B
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 09:39:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 49E5486DE7
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:46:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3099D2046F
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 09:39:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fCBb-kAxmDbp for <devel@linuxdriverproject.org>;
- Wed, 16 Sep 2020 06:46:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 30C5486DE5
- for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:46:44 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id s12so5602089wrw.11
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:46:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SduHCxumOV30pv0kJgOz7AcNyZQkbMerAs718ngKRBs=;
- b=kBc3XUzQFlZlYgAWK4mG7We4Qx69LOsW7Zo/Ovj+9dpI2gZj2FKoqwEBA6Il422B/z
- F2N9qCJRyibxJTtREj1DHmbst7kN+o2oZXz0fb6eApVm77+5E+oBT4k7iJjyYGIcGnZl
- zKcJBc1TarxiIezq63sXGbxiqryRHUa5hG0VYW8wYpjfsrqzIOUGowZfjJgdZCfqOD5g
- uB7fn6gV+Ap5FXCQuBZbLaHUIEdKsQmhci1eJVAjXuI45cOy0nI+S3zQDikfWSTnLRK3
- p9AeTtYak1mT9qmHPfxbVTjEL/CV2hHzgKdWKyJL/r/VqRDTrN2xSYCg9cgBaw3EQDtX
- NUIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SduHCxumOV30pv0kJgOz7AcNyZQkbMerAs718ngKRBs=;
- b=IqbuVuqsaZUkO2jOxaFnHRWhFkx3mlMv123b7gUFH5b1pA/O01ft/Jhzkyilipp/4g
- //3a6ZDkiVi/T3ikUtt0XEP+aLt9iiUnY7gGdJudruznUbve50S+g14pP1LyUptD69LX
- gNdeizsVvWyvvksFfkWrKAZF79NcbUCdOPzVUoZoXM1fHQotsjfJypxLYj+uo7zCrW3L
- 7JJObL9+skrUW+xKkCV+/TSmD46AAAY0cc9XQpc/Xap9zygr/0Fy3WJgE+a4J5oH0L2E
- uxF2Fr+Zk1lzy7Wx88yXFXCSvCP5ulF6+IFHQg4OPWD1cy9ziaSmgXE4sg0IG9RN5GKk
- ID/Q==
-X-Gm-Message-State: AOAM532dVkBf+ufJSeq3SGSOYMUjvm7kbF42isThRNSxCrQyCX+G/pnZ
- W2RcE5Uuznb2rNqiO5+858c=
-X-Google-Smtp-Source: ABdhPJx7xFQkvZxPc5SEpIbioJ8uZZ2T6fh3tCrRBUVb2oqHreQHNiOUVf25BLJ07NydX69W9rodqg==
-X-Received: by 2002:adf:f508:: with SMTP id q8mr23876724wro.233.1600238802635; 
- Tue, 15 Sep 2020 23:46:42 -0700 (PDT)
-Received: from localhost.localdomain
- (dslb-178-006-252-168.178.006.pools.vodafone-ip.de. [178.6.252.168])
- by smtp.gmail.com with ESMTPSA id s67sm3455477wmf.38.2020.09.15.23.46.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2020 23:46:42 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: clean up blank line style issues
-Date: Wed, 16 Sep 2020 08:42:57 +0200
-Message-Id: <20200916064257.14902-1-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.28.0
+ with ESMTP id wJQ-valzsE07 for <devel@linuxdriverproject.org>;
+ Wed, 16 Sep 2020 09:39:07 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2101.outbound.protection.outlook.com [40.107.93.101])
+ by silver.osuosl.org (Postfix) with ESMTPS id E06462083F
+ for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 09:39:06 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fC8Y/pH8neYKAThE7fd9P7rHFyuGvGSOZ71o5tRMxvzwklRjA6NJmQMoN7sDZS1K1jRHIRtvS/WMb1W+gIDRsAENmKXXIHCLHacF6vsEksvLMmixZtRNi9CZoX1TtYj8aR9TwF+X/dYprCkr817sOwkKgDEskQV3vSupihI4xmkZp+ZLhRMVP+SQLoV6czCd0f3ob8+9o/NsJjy4EQcf8Bhhl88gTrmNUQ+GBVPHkUmvmHP1ntPOBh+ip1S+wT4V93udKNW1XrvWTd3Nu/BhY7qPgKUT/QYh5KZjxV0pOtvUpVS+/zE64uMu4CBPYgzJMAfR2C9tQdIHxtR1/Qt9pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CIoE/htBsA6fTejMxQzuVVxCxAW9gdkskMDSoebDosA=;
+ b=QPUY1Vm5tZk/Mh+0+oZ4Jivgo1jgK2TEOSnjFSvTOflkh90JesUkcAjac7Z0sMLmo9B3NOiH85ipl0rkJiEmzTFE6J1P0fqWOlFWdfBi0a2wD1TK2JQYRI5Hvxg8FR5stmASbGTN4yI4qq+LOyIr0iS9PdPW0mQaQHN1CzmBnnSa1WdXMQ1O3j84iCiibf+ap+HA6s2LvRC4ncYl1WUT05FZRzyZNq9fyUNZRUJgL+mOXCCZxHzaFyAScYHIW+HsmsT/FFcWppXbPPBCJ4c0ICgxhBJaV+iqkZ0+2PJ63jIdnZKkxxXA1LCglC3bhUikgFWGKhTTD5PvX5dVxL3iWw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CIoE/htBsA6fTejMxQzuVVxCxAW9gdkskMDSoebDosA=;
+ b=IhHIJ7y+/MOESQrQQVmYhmqK8TVpKCe/0NHy7YPRNHgjcFYCntEQPI8v6fSXOrQFC0VU9zkvF2miXdT6KMJ7AIgH5N0OO/o9bLfb/C8aZ5e7twQzKJVIfK7Z01BQh1Y+pDxx1O9LfcP3vwmLFxhUQJRmgT8HB/kEDEfeg0k1Izg=
+Authentication-Results: analogixsemi.com; dkim=none (message not signed)
+ header.d=none;analogixsemi.com; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BYAPR04MB4648.namprd04.prod.outlook.com (2603:10b6:a03:59::25)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3391.11; Wed, 16 Sep
+ 2020 09:23:16 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::1dc0:7d4b:9820:e68]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::3c04:982f:7d75:779e%7]) with mapi id 15.20.3370.019; Wed, 16 Sep 2020
+ 09:23:16 +0000
+Date: Wed, 16 Sep 2020 17:16:47 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>, Nicolas Boichat <drinkcat@google.com>,
+ Sam Ravnborg <sam@ravnborg.org>
+Subject: [PATCH v15 0/2] Add initial support for slimport anx7625
+Message-ID: <cover.1600239656.git.xji@analogixsemi.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-ClientProxiedBy: HKAPR03CA0017.apcprd03.prod.outlook.com
+ (2603:1096:203:c8::22) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-user (114.247.245.146) by
+ HKAPR03CA0017.apcprd03.prod.outlook.com (2603:1096:203:c8::22) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3391.6 via Frontend Transport; Wed, 16 Sep 2020 09:23:15 +0000
+X-Originating-IP: [114.247.245.146]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e2c37a11-779b-4bd8-eb55-08d85a222459
+X-MS-TrafficTypeDiagnostic: BYAPR04MB4648:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BYAPR04MB464855BC30C35F327B8A4C22C7210@BYAPR04MB4648.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: hFSHUz4UQj0b77ug/fFhK8TrdkwWCp7lVXs9+FcpVdcSfEI8rYWYsZZXLSI5vUzJtysSKEyzhL22Fwv+4N5frLCZBqDPHNnN8bEi6HF9MNEQJtLrpUeEHsNV/8Tr/2ZXI3jDoefVUzE2antXg0k+qIdH5B/zgP8kBkuDpJv7uPx6/s4FBTO6k0ZmrR53yfab2NQAy5XvCbRqQvCW8mXiqucqsPtbv1duwtJ5RRmYAc/1qKGdDq6xx9K2EFe/DDuHH+R7myapZSDb7i9ni2Sa4ft+dKUiC1MNUpz23kWaweAbMP5YujVFxJo/0ZDTJpa7
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(346002)(136003)(366004)(39840400004)(396003)(26005)(66946007)(110136005)(2616005)(956004)(478600001)(4326008)(107886003)(6486002)(66556008)(66476007)(8676002)(6496006)(7416002)(86362001)(16526019)(52116002)(186003)(83380400001)(6666004)(54906003)(316002)(8936002)(5660300002)(2906002)(36756003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: aAo03JpSj6/m4XorsoLdR8lVn1P15sgJpOMFCxbj1ThyyjzAPlV5rZnCwkLX4m/PvpcWomCp8VhqiubtZFYPwtrMBeHs8A1XmvXA773a3hIxgXOPZxdNoJcC5bBiQlIWGOiMfz4QMdHJaX1eF1Bwi4xAOlEdIn07GCGAqGZyJqX6bFNIFlle09WfQtvFSU/OSy7jBSIglsh4io9ht3xPS5lHUWYWPCpuJrsLKb4cvIeuMpYEf0iMiueW3QURuVWwm2XS7IoyLyJYNA4T4196EbDhGGg3L83Ta9N+8L/u/W9bsR+FSbtVaykOeUM3nzkeNaXnQkauJmXj0GwBN3OkCw2HfNy3zt9uBTtL1EV2uejwvRMnXDJusD1p/IO7jqUn0l7HskmA7FcIPjOZd+/AamHGf4tQzwQoaTIFEhfdsix+ET0zTGkqnirXRO3HkJ+eLeZEURq3NYTLU0JPN1eaE2D1AT9q5i3tgN5tnaHwu8pOc9ChAGJbuOtFiUIQJn3PdE9DH41ArwKNfJu09rn2xMiTQzKW+ZZCuHmXBUwa1h/VpnWnhQMN/SHyH4qH3T1/5leNIFwrSdsGVzjWyBvZnLXOY+ugGrZSFdUgTaQzIZrLaPBT+EFxqUsyOWm6ZzIPmD6WLU4WuAY5eu9ccxHm/g==
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e2c37a11-779b-4bd8-eb55-08d85a222459
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2020 09:23:16.0157 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DnNf3Qo3qjkJ7NDvyBa0rKY8B5DY1lRqf8Gc16R1FDmNtVdd2HE9cru3t9uQ2yZB56QYja7kFMNb51BAK3YdmA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4648
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,166 +115,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add missing and remove unnecessary blank lines to clear the following
-checkpatch issues.
+Hi all,
 
-WARNING: Missing a blank line after declarations
-CHECK: Please use a blank line after function/struct/union/enum declarations
-CHECK: Blank lines aren't necessary before a close brace '}'
-CHECK: Please don't use multiple blank lines
+The following series add support for the Slimport ANX7625 transmitter, a
+ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_security.c     | 6 +-----
- drivers/staging/rtl8188eu/hal/odm.c               | 1 -
- drivers/staging/rtl8188eu/hal/rf.c                | 1 +
- drivers/staging/rtl8188eu/include/osdep_service.h | 1 +
- drivers/staging/rtl8188eu/include/rtl8188e_xmit.h | 1 +
- drivers/staging/rtl8188eu/include/rtw_recv.h      | 2 ++
- drivers/staging/rtl8188eu/include/wifi.h          | 1 +
- drivers/staging/rtl8188eu/os_dep/ioctl_linux.c    | 1 +
- 8 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
-index 78a8ac60bf3d..d2d562550eb7 100644
---- a/drivers/staging/rtl8188eu/core/rtw_security.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_security.c
-@@ -371,8 +371,6 @@ void rtw_seccalctkipmic(u8 *key, u8 *header, u8 *data, u32 data_len, u8 *mic_cod
- 	rtw_secgetmic(&micdata, mic_code);
- }
- 
--
--
- /* macros for extraction/creation of unsigned char/unsigned short values  */
- #define RotR1(v16)   ((((v16) >> 1) & 0x7FFF) ^ (((v16) & 1) << 15))
- #define   Lo8(v16)   ((u8)((v16)       & 0x00FF))
-@@ -662,7 +660,6 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, struct recv_frame *precvframe)
- 	u8	crc[4];
- 	struct arc4context mycontext;
- 	int			length;
--
- 	u8	*pframe, *payload, *iv, *prwskey;
- 	union pn48 dot11txpn;
- 	struct	sta_info		*stainfo;
-@@ -670,7 +667,6 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, struct recv_frame *precvframe)
- 	struct	security_priv	*psecuritypriv = &padapter->securitypriv;
- 	u32		res = _SUCCESS;
- 
--
- 	pframe = (unsigned char *)precvframe->pkt->data;
- 
- 	/* 4 start to decrypt recvframe */
-@@ -728,7 +724,6 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, struct recv_frame *precvframe)
- 
- /* 3			===== AES related ===== */
- 
--
- #define MAX_MSG_SIZE	2048
- /*****************************/
- /******** SBOX Table *********/
-@@ -1519,6 +1514,7 @@ const u8 Td4s[256] = {
- 	0x17U, 0x2bU, 0x04U, 0x7eU, 0xbaU, 0x77U, 0xd6U, 0x26U,
- 	0xe1U, 0x69U, 0x14U, 0x63U, 0x55U, 0x21U, 0x0cU, 0x7dU,
- };
-+
- const u8 rcons[] = {
- 	0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36
- 	/* for 128-bit blocks, Rijndael never uses more than 10 rcon values */
-diff --git a/drivers/staging/rtl8188eu/hal/odm.c b/drivers/staging/rtl8188eu/hal/odm.c
-index 28974808839d..edc278e5744f 100644
---- a/drivers/staging/rtl8188eu/hal/odm.c
-+++ b/drivers/staging/rtl8188eu/hal/odm.c
-@@ -969,7 +969,6 @@ void ODM_TXPowerTrackingCheck(struct odm_dm_struct *pDM_Odm)
- 
- 	rtl88eu_dm_txpower_tracking_callback_thermalmeter(Adapter);
- 	pDM_Odm->RFCalibrateInfo.TM_Trigger = 0;
--
- }
- 
- /* 3============================================================ */
-diff --git a/drivers/staging/rtl8188eu/hal/rf.c b/drivers/staging/rtl8188eu/hal/rf.c
-index 6702f263c770..aab0f54a75fc 100644
---- a/drivers/staging/rtl8188eu/hal/rf.c
-+++ b/drivers/staging/rtl8188eu/hal/rf.c
-@@ -138,6 +138,7 @@ static void getpowerbase88e(struct adapter *adapt, u8 *pwr_level_ofdm,
- 		     (powerbase1 << 8) | powerbase1;
- 	*mcs_base = powerbase1;
- }
-+
- static void get_rx_power_val_by_reg(struct adapter *adapt, u8 channel,
- 				    u8 index, u32 *powerbase0, u32 *powerbase1,
- 				    u32 *out_val)
-diff --git a/drivers/staging/rtl8188eu/include/osdep_service.h b/drivers/staging/rtl8188eu/include/osdep_service.h
-index b44d602e954a..56e937b26407 100644
---- a/drivers/staging/rtl8188eu/include/osdep_service.h
-+++ b/drivers/staging/rtl8188eu/include/osdep_service.h
-@@ -69,6 +69,7 @@ void _rtw_init_queue(struct __queue *pqueue);
- struct rtw_netdev_priv_indicator {
- 	void *priv;
- };
-+
- struct net_device *rtw_alloc_etherdev_with_old_priv(void *old_priv);
- 
- static inline struct adapter *rtw_netdev_priv(struct net_device *netdev)
-diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-index 85efa41c8350..04efbc824fb1 100644
---- a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-+++ b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-@@ -94,6 +94,7 @@ enum TXDESC_SC {
- 	SC_LOWER = 0x02,
- 	SC_DUPLICATE = 0x03
- };
-+
- /* OFFSET 20 */
- #define SGI			BIT(6)
- #define USB_TXAGG_NUM_SHT	24
-diff --git a/drivers/staging/rtl8188eu/include/rtw_recv.h b/drivers/staging/rtl8188eu/include/rtw_recv.h
-index b281b9e7fcea..e20bab41708a 100644
---- a/drivers/staging/rtl8188eu/include/rtw_recv.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_recv.h
-@@ -62,7 +62,9 @@ struct signal_stat {
- 	u32	total_num;		/* num of valid elements */
- 	u32	total_val;		/* sum of valid elements */
- };
-+
- #define MAX_PATH_NUM_92CS		3
-+
- struct phy_info {
- 	u8	RxPWDBAll;
- 	u8	SignalQuality;	 /*  in 0-100 index. */
-diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl8188eu/include/wifi.h
-index 217be809b937..118e215dd6b1 100644
---- a/drivers/staging/rtl8188eu/include/wifi.h
-+++ b/drivers/staging/rtl8188eu/include/wifi.h
-@@ -331,6 +331,7 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
- 	else
- 		return false;
- }
-+
- /*-----------------------------------------------------------------------------
- 			Below is for the security related definition
- ------------------------------------------------------------------------------*/
-diff --git a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-index 77ecf4fe8382..d10a078c5b49 100644
---- a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-@@ -124,6 +124,7 @@ static char *translate_scan(struct adapter *padapter,
- 
- 	if (p && ht_ielen > 0) {
- 		struct ieee80211_ht_cap *pht_capie;
-+
- 		ht_cap = true;
- 
- 		pht_capie = (struct ieee80211_ht_cap *)(p + 2);
+This is the v15 version, any mistakes, please let me know, I will fix it in
+the next series.
+
+Change history:
+v15: Fix comments from Sam and Hsin-Yi Wang
+ - Remove connector
+ - Allocate memory for edid at ".get_edid()"
+
+v14: Fix comments from Sam and Nicolas
+ - Check flags at drm_bridge_attach
+ - Use panel_bridge instead of drm_panel
+ - Fix not correct return value
+
+v13: Fix comments from Launrent Pinchart and Rob Herring
+ - Picked up Rob's Reviewed-By
+ - Add .detect and .get_edid interface in bridge funcs.
+
+v12: Fix comments from Hsin-Yi Wang
+ - Rebase the code on kernel 5.7, fix DRM interface not match issue.
+
+v11: Fix comments from Rob Herring
+ - Update commit message.
+ - Remove unused label.
+
+v10: Fix comments from Rob Herring, Daniel.
+ - Fix dt_binding_check warning.
+ - Update description.
+
+v9: Fix comments from Sam, Nicolas, Daniel
+ - Remove extcon interface.
+ - Remove DPI support.
+ - Fix dt_binding_check complains.
+ - Code clean up and update description.
+
+v8: Fix comments from Nicolas.
+ - Fix several coding format.
+ - Update description.
+
+v7:
+ - Fix critical timing(eg:odd hfp/hbp) in "mode_fixup" interface,
+   enhance MIPI RX tolerance by setting register MIPI_DIGITAL_ADJ_1 to 0x3D.
+
+
+
+Xin Ji (2):
+  dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter DT schema
+  drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP
+
+ .../bindings/display/bridge/analogix,anx7625.yaml  |   95 +
+ drivers/gpu/drm/bridge/analogix/Kconfig            |    9 +
+ drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 1848 ++++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  390 +++++
+ 5 files changed, 2343 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+
 -- 
-2.28.0
+2.7.4
 
 _______________________________________________
 devel mailing list
