@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8AB526BCEA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:25:13 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F22CF86DD9;
-	Wed, 16 Sep 2020 06:25:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P38Pcv35RfNS; Wed, 16 Sep 2020 06:25:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B187F86E00;
-	Wed, 16 Sep 2020 06:25:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2C0241BF866
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:25:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2223626BCEE
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Sep 2020 08:26:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 279D8872F1
- for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:25:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5237787361;
+	Wed, 16 Sep 2020 06:26:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dOZGbSYcjYHy; Wed, 16 Sep 2020 06:26:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B549E87330;
+	Wed, 16 Sep 2020 06:26:06 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B685E1BF866
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:26:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 89FAC2043F
+ for <devel@linuxdriverproject.org>; Wed, 16 Sep 2020 06:26:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tqPb1BMvmwGp for <devel@linuxdriverproject.org>;
- Wed, 16 Sep 2020 06:25:08 +0000 (UTC)
+ with ESMTP id AglBZ4GR1Y4b for <devel@linuxdriverproject.org>;
+ Wed, 16 Sep 2020 06:26:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A3273872D6
- for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:25:08 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id f18so3350469pfa.10
- for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:25:08 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2912D258A5
+ for <devel@driverdev.osuosl.org>; Wed, 16 Sep 2020 06:26:03 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id s65so3345941pgb.0
+ for <devel@driverdev.osuosl.org>; Tue, 15 Sep 2020 23:26:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ZNSr8kArHomwEmXyQMZ8m2wVVOEsXmtflZVah/U22eA=;
- b=XjbEXwi7kWo8ksL/KYztc3gtwyGg6clfqey2SnFF36xYfa9Ba6FCE7EAQ+5x08N3RJ
- yfNklFfK2rJBrhaUP4XLJ0LlVK1YI80n7hTz9vG5ffwvQohWLztZYlAVrRtHQh7nM2Pt
- 8dgKex8IZhmRh/1ZZLbXq7LuWmgNoGDJ7sDmnWwKi7TmcazFmU8MFlkz8mraF0gIcxF8
- pszCnYn0NINI+HsUIPTnDc6enj7OjARyBycwofsmP4fBLEfhab2968mSOliCWbR9caVA
- S3KLET1+dvhj32EHPMA94tM+cxZ3K2kUUn9nm8Jo7pRXG4J2NStQ5qr5wToYwaIrO1kO
- +nEg==
+ bh=jjy+QJ3h651Fp4xX7YDm7hndulBnH95OcaoR+nq32zI=;
+ b=gAwwAS+sGiJjBlt2zTxiVZPTc3B3TUF7BvC/Tiq6rw+l9hnE6g0SeoKxyLUznyWejB
+ yuuxgwm2tzJL8l/Ezbh+Fh5KBexgVnQGEaB62CUIIrgOK1nwHYmw970dEtvoHFooOyWP
+ R+VUC3qhhqbGImkDbxLdlOLJZWUSNwG/Uxc7xCQoDxpSkCYFjp/jnYbs1uUN8QHjED3H
+ w8VMU+OmiF4cNorJvetPsqavGicS7QLwZ2EcKMep8+vYElVmam3kyXFmuVFqhvZ1cgxk
+ b4MTueJQScqmoEj6bb+qXmKCpW64FZtLjlx/B8kP62sVpEeKhJ9TxTGaJ1Jiaz9xasSY
+ SHEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ZNSr8kArHomwEmXyQMZ8m2wVVOEsXmtflZVah/U22eA=;
- b=Gg2DSdzxD1pL5WVDCKDo9uAv52a+V4MGboOVGCxKBMK3chXADTJILZhosKyXelNwpo
- glcZRf87lUsADqLaDd+FC+2KxWSVCvzU5IajDtSVGm0DnjhW1uhnISI0JoqdgOgiqXfy
- sviFJcxkWa9cQKr7wnKXdDGGZT1sucN3KJKtm5umkLW5lJW3iyBVEphQ8NdqknSYjP3+
- MdmLheubbKfnBKI1lXB6381coOxsnVhwV4sngMDnHZ75yVJpcgx3W0zjoOrFbU7e0lbf
- KN8WL3SqxdqbR2YnXtw99vtgWrzYSTAtNXXio9NF8lxEnaWKQ6IGqHIpS2vIduaKkRjx
- 4ZZw==
-X-Gm-Message-State: AOAM532OYSRsZUZopo4o9rLXgi1n+oxKJzs8pl3c8KzM8ihNFIxVon5r
- WXnHNygCdxboeTJUxXFM7dA=
-X-Google-Smtp-Source: ABdhPJyLlS29g13+SWOBJJTJlwldIQ/BSnedz73ejOv0l6QSwRc+FYcJ3NBK7P4auBAyC2dUsTIkwA==
-X-Received: by 2002:a63:4656:: with SMTP id v22mr1389454pgk.116.1600237508280; 
- Tue, 15 Sep 2020 23:25:08 -0700 (PDT)
+ bh=jjy+QJ3h651Fp4xX7YDm7hndulBnH95OcaoR+nq32zI=;
+ b=P35Pywm46XBbmr+/MP7/+Zbot8tvIQU2R3K5iDaEPpqr5IZ8Dj+XGJyjg5L8JGu2iJ
+ 4NeZqaS2m7M7H1479NtPfanZDjlkQliaXyKcY+fYC8dcAOUMtaPiqAfV9zFv5a2T2KXX
+ PUwSpmlkURlcLZDZjFaYpjQZhwBKqhUTVE3w+aYOppEueAq0uE3Q0iDOFHRyU7YiXZzw
+ quYfSjEDvzMKvidVFaAFZfV3SpBXSEbsfOP6IQWLvZ0PXrJok/J6Crfej1nMkj2oZcfk
+ 57hnVcT41SNksfz5KDm7N5JAHSoP1s3kxKSRyFtmqEyknCS20xqhOWIDHEdTxEGjJmUg
+ b16w==
+X-Gm-Message-State: AOAM533RXLrf0NU/pRgMaSJkMYivDHgObHZI1QNwI+OxmbqUpiKdfxBE
+ CMBgHvjfhyTvnC4WrEdc3XE=
+X-Google-Smtp-Source: ABdhPJx1FSF/yd3z00cebca/eNV+MrJz8ryAVHpFSWX1NLzi35zlXlnFugd9oRfyhf9zm3LxxkQNZw==
+X-Received: by 2002:a62:d44e:0:b029:13c:1611:652f with SMTP id
+ u14-20020a62d44e0000b029013c1611652fmr21113300pfl.15.1600237562732; 
+ Tue, 15 Sep 2020 23:26:02 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.195.121])
- by smtp.gmail.com with ESMTPSA id l188sm12875352pfl.200.2020.09.15.23.25.06
+ by smtp.gmail.com with ESMTPSA id u22sm13250363pgi.85.2020.09.15.23.26.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2020 23:25:07 -0700 (PDT)
+ Tue, 15 Sep 2020 23:26:02 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: mt7621-dma: convert tasklets to use new
- tasklet_setup() API
-Date: Wed, 16 Sep 2020 11:54:59 +0530
-Message-Id: <20200916062459.58426-1-allen.lkml@gmail.com>
+Subject: [PATCH] staging: ks7010: convert tasklets to use new tasklet_setup()
+ API
+Date: Wed, 16 Sep 2020 11:55:53 +0530
+Message-Id: <20200916062553.58532-1-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -84,8 +85,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, matthias.bgg@gmail.com,
- Romain Perier <romain.perier@gmail.com>,
+Cc: devel@driverdev.osuosl.org, Romain Perier <romain.perier@gmail.com>,
  Allen Pais <apais@linux.microsoft.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -102,34 +102,60 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/staging/mt7621-dma/mtk-hsdma.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/ks7010/ks7010_sdio.c | 6 +++---
+ drivers/staging/ks7010/ks_hostif.c   | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index 14592ed9ce98..354536783e1c 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -533,9 +533,9 @@ static void mtk_hsdma_rx(struct mtk_hsdam_engine *hsdma)
- 	mtk_hsdma_chan_done(hsdma, chan);
+diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
+index 6b2660c94f4e..78dc8beeae98 100644
+--- a/drivers/staging/ks7010/ks7010_sdio.c
++++ b/drivers/staging/ks7010/ks7010_sdio.c
+@@ -405,9 +405,9 @@ int ks_wlan_hw_tx(struct ks_wlan_private *priv, void *p, unsigned long size,
+ 	return result;
  }
  
--static void mtk_hsdma_tasklet(unsigned long arg)
-+static void mtk_hsdma_tasklet(struct tasklet_struct *t)
+-static void rx_event_task(unsigned long dev)
++static void rx_event_task(struct tasklet_struct *t)
  {
--	struct mtk_hsdam_engine *hsdma = (struct mtk_hsdam_engine *)arg;
-+	struct mtk_hsdam_engine *hsdma = from_tasklet(hsdma, t, task);
+-	struct ks_wlan_private *priv = (struct ks_wlan_private *)dev;
++	struct ks_wlan_private *priv = from_tasklet(priv, t, rx_bh_task);
+ 	struct rx_device_buffer *rp;
  
- 	mtk_hsdma_rx(hsdma);
- 	mtk_hsdma_tx(hsdma);
-@@ -670,7 +670,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 	hsdma->base = base + HSDMA_BASE_OFFSET;
--	tasklet_init(&hsdma->task, mtk_hsdma_tasklet, (unsigned long)hsdma);
-+	tasklet_setup(&hsdma->task, mtk_hsdma_tasklet);
+ 	if (rxq_has_space(priv) && priv->dev_state >= DEVICE_STATE_BOOT) {
+@@ -618,7 +618,7 @@ static int trx_device_init(struct ks_wlan_private *priv)
+ 	spin_lock_init(&priv->tx_dev.tx_dev_lock);
+ 	spin_lock_init(&priv->rx_dev.rx_dev_lock);
  
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0)
+-	tasklet_init(&priv->rx_bh_task, rx_event_task, (unsigned long)priv);
++	tasklet_setup(&priv->rx_bh_task, rx_event_task);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index eaaf6a5440a9..8bc3b7d8d3d5 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -2205,9 +2205,9 @@ static void hostif_sme_execute(struct ks_wlan_private *priv, int event)
+ }
+ 
+ static
+-void hostif_sme_task(unsigned long dev)
++void hostif_sme_task(struct tasklet_struct *t)
+ {
+-	struct ks_wlan_private *priv = (struct ks_wlan_private *)dev;
++	struct ks_wlan_private *priv = from_tasklet(priv, t, sme_task);
+ 
+ 	if (priv->dev_state < DEVICE_STATE_BOOT)
+ 		return;
+@@ -2258,7 +2258,7 @@ static inline void hostif_sme_init(struct ks_wlan_private *priv)
+ 	priv->sme_i.qtail = 0;
+ 	spin_lock_init(&priv->sme_i.sme_spin);
+ 	priv->sme_i.sme_flag = 0;
+-	tasklet_init(&priv->sme_task, hostif_sme_task, (unsigned long)priv);
++	tasklet_setup(&priv->sme_task, hostif_sme_task);
+ }
+ 
+ static inline void hostif_wpa_init(struct ks_wlan_private *priv)
 -- 
 2.25.1
 
