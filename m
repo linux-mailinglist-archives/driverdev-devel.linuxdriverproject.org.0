@@ -1,91 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B814A26E0D9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 18:37:17 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D3EC26E401
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 20:40:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 22BF587156;
-	Thu, 17 Sep 2020 16:37:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CC44E2E159;
+	Thu, 17 Sep 2020 18:40:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ajuoCZ7oorQ0; Thu, 17 Sep 2020 16:37:15 +0000 (UTC)
+	with ESMTP id TTYGuMlXiFvt; Thu, 17 Sep 2020 18:40:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CCB168714A;
-	Thu, 17 Sep 2020 16:37:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 39F1720402;
+	Thu, 17 Sep 2020 18:40:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 84F3C1BF37C
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 16:37:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BAAD91BF47A
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 18:40:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E70587917
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 16:37:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8E71020402
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 18:40:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gviPew65rla7 for <devel@linuxdriverproject.org>;
- Thu, 17 Sep 2020 16:37:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from wnew1-smtp.messagingengine.com (wnew1-smtp.messagingengine.com
- [64.147.123.26])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 60C7E87666
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 16:37:09 +0000 (UTC)
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailnew.west.internal (Postfix) with ESMTP id EC4FE51A;
- Thu, 17 Sep 2020 12:37:06 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 17 Sep 2020 12:37:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=h7SdjkeO3jNCS/5ABpoNoHTBuVI
- Z3+T7KqCv1t/PuWo=; b=iunaG6uxOLgrPGy5e1t5auTmohTM2aMxt+pmo9zphB0
- +QetciHJjVU67aEz6qt+EDLFGLhFeV6zFqRYlE6y4GBcxbHarrdRZc2SC3SJepEl
- v9KQg0skJ3vnwHL1mssEcPvwTEsKYy4cuga4XHo0bCeXrF+bW7SUEg6iwPy58amA
- G+tgIQUgGF5f49lnM0/pZ5KyOOquD37Mfboopf/DGhsL+ZtQG7LD8QJp8ktUJuG/
- i4QSbWtrJJZNNuKuREq7QHCW2j5LsIeQMBYA2PccxKliGGAmW7cvDyHZw8tiM4LW
- a65xwzLRfFpleP+aoLWhKFgvppMe3KodNMx8vRKxgDA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=h7Sdjk
- eO3jNCS/5ABpoNoHTBuVIZ3+T7KqCv1t/PuWo=; b=frqEve+JtHqY12AuwrEwxh
- HnX+5Y92mJ/21XRmYMhsqQ2L0DeFx/k1Zhdek1+NP7BFjW+hDLa2871RTY2zB8NT
- VsQyo6NkhsUH2Xr83oM4b3days2UrCrVATFTepf5led3mI8bkO1fE8apAZLdnFj1
- yua9J2eu109zOm7EPKWw/gENPmzmkz4W3ysbGMsgQaJmuUNN/weDdsubl/m2obc5
- /O0nFJi+k/orbJWdKsWG1Tlh9Lwe/eqOTdvDTHGKXvXvTG+ipvf5ejYmNOAGoQZw
- 1xJ4LM3L3saUutpggCGyiU8ea0JtilO1dDHYkzjYX99ivfMWBub0EHr87roR40KQ
- ==
-X-ME-Sender: <xms:sJBjX-IKEuWTVO7Qio1L6WurpElaajG3D7Ydfq3_KtuK2mHVqWKOug>
- <xme:sJBjX2LKwwoUCoP1ddG7z47ayNpCf3sFd_629ZIJ0Cc5PfawthFNliWbYkZSnZlkj
- WFVGWcamJ0oury_Xf8>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrtdeggddutdehucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
- htvghrnhepleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieeh
- gedunecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:sJBjX-uP6QI4ZALAlssAnYzInWG63vVmd-Bq9khQJlvdySn1NwAjvw>
- <xmx:sJBjXzbVRtCyuBwP07l_AEduK8w922Rx1VgF9lxaybUAD1So8YyEzA>
- <xmx:sJBjX1YQw-84on2q8v0dku-kcJw-qsIqc-8SK-NjfskYHQwqI0AJyg>
- <xmx:spBjXyRkBp7WnVSGxiez1mEWwAdlOjDICJUmX_uKGwXllvIRETSfx3W5pog>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 241163280065;
- Thu, 17 Sep 2020 12:37:04 -0400 (EDT)
-Date: Thu, 17 Sep 2020 18:37:01 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH 0/5] ARM: dts: sun8i: r40: Enable video decoder
-Message-ID: <20200917163701.vmxbxpaztm4kyduf@gilmour.lan>
-References: <20200825173523.1289379-1-jernej.skrabec@siol.net>
- <20200827151914.copcle3xjn3ek6p4@gilmour.lan>
- <e9d108ee-29c8-7a34-16c0-f9fb2b788f25@xs4all.nl>
+ with ESMTP id LssIIl7cjzgy for <devel@linuxdriverproject.org>;
+ Thu, 17 Sep 2020 18:40:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic310-14.consmr.mail.bf2.yahoo.com
+ (sonic310-14.consmr.mail.bf2.yahoo.com [74.6.135.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8F9DB20390
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 18:40:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1600368003; bh=8gloWBfBOVIhTwRoB2OlBVoguM9wbxYIkS+Wgfn/ndg=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=hF0cOG3e6ou9s5fnBJL+TO3hM09BQ4RtrX1eVNx4jAOX1O3v3CQ3vx1mKxTWjRn1OSWOn38psM+HjBk7wI+Q+eeVrthdmgQeSgm/9IetPDAp89LKcfEWK+3mGib8WkMpH7AzSSv3a+9gLErxXX/6HEdaMiWwaZn2RFt8H9d796ikBZRq4GngAQWHIfsNaySYPNSlfdt0HpKu1Cpt8BsFx8yGPYvCHNaW4dkLc+w3e6aZYa3qHrTwNRdXUytzIh1CDY+1czwK1PlUbPZEECIASp15Kos5mwPs6am6s7PaDj53rxIJfmLV+NU2CMEdEkkLSdXO9tcgEe214Kw6n82/MQ==
+X-YMail-OSG: OBZ3pLAVM1mQF0zZ_Fr5EWkrluH9ZD_a3Gb8UEqj3YokIyn8lzW4U5rt.Om3T.N
+ yWs4zsBJ59pR0DIMAGAQSSC5yb0_iIHrvRKssu_V7zGSx8KIlQNKCD9cOd8V2pQrDaXbXdaZQVbz
+ wkc387fhnNfvXxoRN7trLFlpkbkY0h9u_whNAHwHT6kVb98Cc3Pp4hW0TsqZL.skA016pFHsVfMq
+ Km2ZmzrbhLaihmb6AOf63gMpN.kuccgyqOQyl5ERyRBQIKH7VYz.TIYfOheUGNZP.7ztE_ymNtdV
+ 7CzvOCI_5UjMNh5JU80ZSwM0ymTu6Q3dKjz3SrOq1WMxBEU49rV5N_R7PAO.ANBaPSRO5O9gxMn6
+ ZuB3ahPbSYPGOFcWaXAkafekleao6WRaIO8aTr5oyqhAgmwdnV.n_rm0jXebluAdbvXPF4.Jg_HW
+ HWiSu3sMq4niLt.BnV381MEchbH.gzZpPOcP4lIHNbT1EdYxf_KPWdI8z5NQnHjomqvjfsNaaSza
+ YFxOppOs5F_3rLjZG_zgsk2khWNQiviDACpyK4OTAKPsnhkPXdT6Io_Z4.hlKYFm5UM736OhiKHi
+ pkdc3.eJmmgYI5fywO9cM4Lsg9yp0_wTW0r5BZe8Pe1JxS1kQFKfLRq6YFAYLybTPC4qaFRhKFC.
+ SVEpQcNx9jX38srnNEDV_QIY1oa9WDVjSNpGGf_8ksTDni._rrlLpnFr0ZwAHSc8HZY_vsd.vpKV
+ efRjOAd4KTtDOA8O.nRuRrf.0jlVN50yTrpGQSPN2zcfmjgidjposRsA_ukTSi8Vb910iso7DUNp
+ 2Te2bKWqu_omOSeE.q.SM68yKzpYNE3N36xQVab4hEDiCfzSPqi.zooCvKSDhEjKMhTE32OmzV1d
+ 4kHStRFi1d8EQKliWWFSf3pNGOLMsmA4o8Us1j0Tv_6xIvlZaLlHEcBeXgdSv516SkAYNSFItrqF
+ XKAshVqOON6Aw26q1PBPECwPBWdb5799_fWV7B9PpmvXLXffE9ICUOHVqljvA8fYlCrfyrK9GfEM
+ 3LjEaFTVfo9BuxZkn03m94qPT695mY6_.r__tp2w5gIxxInye4yu5xwPwrwv8_s9VjP__l8H63M8
+ 60OV7W6A0AAVOC9TJWSoBJfnncnC2DPZLGhZhNEUFrr7bjGh7KYR9VPhQ8OaAHa4UQRe0.QD0qEF
+ wuZtZCHCMWcPW.ls5HhR6a7Qj3_818dGJQ5WAzjypw4jbQIkD9vr66fKBjr7WJ7biaNxGjy3Fwn3
+ 7gWwKhg0T1cE22DeykU3IpGHqEduTlx3wktTGdlwVDldDuVoVVMGtwELJSTjIUuvlY06W__r_QGU
+ vTAYHoS0nSy.AhOTpejygV8j_EsMU.flTaqoThbgw_xvFXVGs_jZ8eZdjVLxjiz8x_3AbQ5gUakC
+ aMlYJxw95zE40jZi2M2RmoM6sNGJeWzz14I8IZGI6qISyD0w633s-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic310.consmr.mail.bf2.yahoo.com with HTTP; Thu, 17 Sep 2020 18:40:03 +0000
+Date: Thu, 17 Sep 2020 18:39:59 +0000 (UTC)
+From: Jane Lilly <oukhgnbv@yahoo.com>
+Message-ID: <1447275039.3309761.1600367999029@mail.yahoo.com>
+Subject: Offer for humanitarian work in your country
 MIME-Version: 1.0
-In-Reply-To: <e9d108ee-29c8-7a34-16c0-f9fb2b788f25@xs4all.nl>
+References: <1447275039.3309761.1600367999029.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16583 YMailNodin Mozilla/5.0 (Windows NT 6.3; Win64;
+ x64; rv:81.0) Gecko/20100101 Firefox/81.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,72 +78,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Jernej Skrabec <jernej.skrabec@siol.net>, gregkh@linuxfoundation.org,
- linux-sunxi@googlegroups.com, linux-kernel@vger.kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, robh+dt@kernel.org,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============8256686088883074729=="
+Reply-To: jane.lilly84@aol.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============8256686088883074729==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="wnnnti5ad3adpfz3"
-Content-Disposition: inline
 
+HELLO, 
+My name is Mrs. Jane from America, I read about you from a reliable web site and i will love to employ you into humanitarian work in your country, I'm ready to donate some money for you to carry out the work in your country. Please reply with your private email address so that i will give you further details and tell you about myself.
 
---wnnnti5ad3adpfz3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Sep 17, 2020 at 10:33:39AM +0200, Hans Verkuil wrote:
-> Hi Maxime,
->=20
-> On 27/08/2020 17:19, Maxime Ripard wrote:
-> > On Tue, Aug 25, 2020 at 07:35:18PM +0200, Jernej Skrabec wrote:
-> >> Allwinner R40 SoC contains video engine very similar to that in A33.
-> >>
-> >> First two patches add system controller nodes and the rest of them
-> >> add support for Cedrus VPU.
-> >>
-> >> Please take a look.
-> >=20
-> > Applied all 5 patches, thanks
->=20
-> Just to confirm: you've taken patches 3 and 4 as well? If so, then I
-> can mark them as done in patchwork.
-
-Uh... Yeah, I did, but they were definitely not mine to take... I'm
-sorry, I'll drop them and you can merge totally merge them :)
-
-Maxime
-
---wnnnti5ad3adpfz3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX2OQrQAKCRDj7w1vZxhR
-xWGiAP44ziQw20tV2YoN0wiBPi77hkH/koRrpfYtnYTwmUEV6AD/euikZFS19Mu7
-DfzMBKBAPCIolO1Cbon5d/3aOTFhmQA=
-=eTc6
------END PGP SIGNATURE-----
-
---wnnnti5ad3adpfz3--
-
---===============8256686088883074729==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Yours Sincerely
+Mrs. Jane
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============8256686088883074729==--
