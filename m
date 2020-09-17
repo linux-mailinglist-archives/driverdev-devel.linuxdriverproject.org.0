@@ -2,77 +2,108 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E46326DDC0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 16:14:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 31D1C26DDEB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 16:19:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3190A878F4;
-	Thu, 17 Sep 2020 14:14:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1FF49878D8;
+	Thu, 17 Sep 2020 14:19:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M8vx3vi7M9em; Thu, 17 Sep 2020 14:14:24 +0000 (UTC)
+	with ESMTP id BttcQUHtuBfq; Thu, 17 Sep 2020 14:19:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD840878E7;
-	Thu, 17 Sep 2020 14:14:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 69EF287845;
+	Thu, 17 Sep 2020 14:19:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BCE301BF399
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 14:14:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 586A21BF399
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 14:19:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B956187627
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 14:14:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4438E20415
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 14:19:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id khC26iZXaNib for <devel@linuxdriverproject.org>;
- Thu, 17 Sep 2020 14:14:19 +0000 (UTC)
+ with ESMTP id aIf3aWeSujlp for <devel@linuxdriverproject.org>;
+ Thu, 17 Sep 2020 14:19:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1DF6087626
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 14:14:19 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id l126so1295913pfd.5
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 07:14:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4unBKDTxzRQRPQZlJUn6A2Soath9XJxD61TMB7PnRfc=;
- b=GFS3galhGl4pGXPAIFLaGVY3InSJNn9hCDP3n2QvcYIax+EGhdNUkMF7zkwhdzReoH
- cb3O56eEVi8dIF+YPK/zBXhJ9V5DtYg2RgBY1deepye5Gm2NNXsYfFh92WhGB/acfIXW
- UD8asOTuv+0Ndipo5Uy3hghSHxuqylYjw8tyAsP5vQdWlUBM28Dk3hFpOdGfDNxBAzJO
- 7/JmyDR7aKS2qouff8Lo1aq64RHqhmyHFoohyWZVCFGxSr1dMNAKhlnmfnHHLRxcetyH
- ww3vWCzYf5ZgObokCoVQGFdalgDY6f64rE0Vsy9+UUgrLXUCnd3/f0rG8tP+vbDIhfKx
- vRUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4unBKDTxzRQRPQZlJUn6A2Soath9XJxD61TMB7PnRfc=;
- b=XNhMiT+a//mExCgUVLjr5HspcbMAScmeFihRm0aYWR7rUqacAYB40MR+6ZKSe+6An0
- 5XOSROhD3HsPn3N3e180lq795bjO22+C95daqA0G1cAQ6d0sQt+Mpefot39mDsm6Z2Cp
- bvgJIU6iowDngpz4SmvAoP9D24qvnG/Vp8Fy//F/Xt+FI+SbLl4sthjEbnmQZQvnsmGE
- 0Vv5mzY7UAbVqgAzwaPgOffUYHedfh55TCoHGv0Ru6QKxFFlZpHCzzy4huaUirrli/Ya
- nHIKlOwT9iYfzoV5SfIvT4PZaY4PGt6KFvSWiaGc2Kh1vQROtK9KFzUCchfF3m/U2DyJ
- Rvdg==
-X-Gm-Message-State: AOAM532kVxy97vmuRW3kj1PzYZ0M/GfV7fVRQtEJ8d79cW3LVv6RXHG0
- 9Nx3TXi3xUBOdrC1xx0HV+o94XxmP4ZEhJzzRPw=
-X-Google-Smtp-Source: ABdhPJy5qeqotttBdV66/aTb7EtTkcWg7OUAGeLKW75rGS3vVMXitZ6o4V8b0Zq8/QxW2yHX8Om9DwlIoFrEfBI51K4=
-X-Received: by 2002:a63:ec4c:: with SMTP id r12mr22049725pgj.74.1600352058607; 
- Thu, 17 Sep 2020 07:14:18 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200916213618.8003-1-djrscally@gmail.com>
- <20200917103343.GW26842@paasikivi.fi.intel.com>
- <8133a57d-ab4c-dccd-4325-9b10e7805648@gmail.com>
- <20200917124514.GK3956970@smile.fi.intel.com>
- <fea9d85a-7be9-0270-bd59-8e479a836ae6@gmail.com>
-In-Reply-To: <fea9d85a-7be9-0270-bd59-8e479a836ae6@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 17 Sep 2020 17:14:00 +0300
-Message-ID: <CAHp75VcWZMThc6BPNiqvvEUVUbShV-7+Xn11E6J7UwMLfnszpg@mail.gmail.com>
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
+ [213.167.242.64])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1EB9E2035B
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 14:19:42 +0000 (UTC)
+Received: from [192.168.0.20]
+ (cpc89244-aztw30-2-0-cust3082.18-1.cable.virginm.net [86.31.172.11])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6BF722DB;
+ Thu, 17 Sep 2020 16:19:39 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1600352380;
+ bh=WayqFIgIoOwyQDT/Yw5Ed6wMyOkb0L1RhOVZVSJedFE=;
+ h=Reply-To:Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=Ie/TFlIHINpPI3kwf850hZiSNsBCH8mI5CamuFK6/mXJYDMakgz58lJF1EBRSQ/GZ
+ 15hkUCW4UCA9jS+CXnYzf+qggBGAJKM+FsBbl7x9u88SPrrnh9UjmOizfNYowvlS0Z
+ lBN3/+ft+Vp8el2x9b366x0FRTbjP4mdjFt+bqhg=
 Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
  via software nodes on ACPI platforms
-To: Dan Scally <djrscally@gmail.com>, Hans de Goede <hdegoede@redhat.com>, 
- Mark Gross <mgross@linux.intel.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+References: <20200916213618.8003-1-djrscally@gmail.com>
+ <20200917075356.GA3333802@kroah.com>
+ <d97fb93f-5258-b654-3063-863e81ae7298@gmail.com>
+ <53787a36-4473-9336-6719-270930db2735@ideasonboard.com>
+ <CAHp75VcjSZC7BG9ckFTogTK0xXog9tev8i3w=P0iN4JRQY05XQ@mail.gmail.com>
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
+ 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
+ WZw01QYHU/GUV/zHJSFk
+Organization: Ideas on Board
+Message-ID: <f48ec4c5-0674-2e43-cbd8-f5dcc4bf5b15@ideasonboard.com>
+Date: Thu, 17 Sep 2020 15:19:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <CAHp75VcjSZC7BG9ckFTogTK0xXog9tev8i3w=P0iN4JRQY05XQ@mail.gmail.com>
+Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,14 +116,13 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: kieran.bingham@ideasonboard.com
 Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Rob Herring <robh@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- jorhand@linux.microsoft.com,
+ Rob Herring <robh@kernel.org>, jorhand@linux.microsoft.com,
  Linux Media Mailing List <linux-media@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Greg KH <gregkh@linuxfoundation.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- kieran.bingham@ideasonboard.com, Tsuchiya Yuto <kitakar@gmail.com>,
+ Dan Scally <djrscally@gmail.com>, Tsuchiya Yuto <kitakar@gmail.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  "David S. Miller" <davem@davemloft.net>, Tian Shu Qiu <tian.shu.qiu@intel.com>,
@@ -102,59 +132,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Sep 17, 2020 at 4:53 PM Dan Scally <djrscally@gmail.com> wrote:
->
-> Hi Andy, thanks for input (as always)
+Hi Andy,
 
-You're welcome! I'm really impressed by your activity in this area.
+On 17/09/2020 15:08, Andy Shevchenko wrote:
+> On Thu, Sep 17, 2020 at 4:31 PM Kieran Bingham
+> <kieran.bingham@ideasonboard.com> wrote:
+>> On 17/09/2020 10:47, Dan Scally wrote:
+>>> On 17/09/2020 08:53, Greg KH wrote:
+>>>> On Wed, Sep 16, 2020 at 10:36:18PM +0100, Daniel Scally wrote:
+> 
+>>>>>  drivers/staging/media/ipu3/Kconfig       |  15 +
+>>>>>  drivers/staging/media/ipu3/Makefile      |   1 +
+>>>>>  drivers/staging/media/ipu3/cio2-bridge.c | 448 +++++++++++++++++++++++
+>>>> Why does this have to be in drivers/staging/ at all?  Why not spend the
+>>>> time to fix it up properly and get it merged correctly?  It's a very
+>>>> small driver, and should be smaller, so it should not be a lot of work
+>>>> to do.  And it would be faster to do that than to take it through
+>>>> staging...
+>>> I was just under the impression that that was the process to be honest,
+>>> if that's not right I'll just move it directly to drivers/media/ipu3
+>>
+>> The IPU3 driver is still in staging (unless I've missed something), so I
+>> think this cio2-bridge should stay with it.
+> 
+> You missed something.
+> https://elixir.bootlin.com/linux/v5.9-rc5/source/drivers/media/pci/intel
+> 
+> IPU3 from Freescale (IIRC) is a different story.
 
-> On 17/09/2020 13:45, Andy Shevchenko wrote:
-> > On Thu, Sep 17, 2020 at 11:52:28AM +0100, Dan Scally wrote:
-> >> On 17/09/2020 11:33, Sakari Ailus wrote:
+Ayee, ok so we have 'half' the driver for IPU3 out of staging.
 
-To the point of placement, I think this should go under
-drivers/platform/x86 (Adding Hans and Mark, who can express their
-opinions).
+From my understanding, the IPU3 consists of two components, the CIO2
+(CSI2 capture), and the IMGU (the ISP).
 
-...
+- drivers/media/pci/intel/ipu3
 
-> > Ah, I think you misinterpreted the meaning of above. The above is a switch how
-> > camera device appears either as PCI or an ACPI. So, it effectively means you
-> > should *not* have any relation for this HID until you find a platform where the
-> > device is for real enumerated via ACPI.
-> >
-> Ah, ok. So that was never going to work. Thanks. That does raise another
-> question; we have had some testers report failure, which turns out to be
-> because on their platforms the definition of their cameras in ACPI is
-> never translated into an i2c_client so the cio2-bridge doesn't bind.
-> Those have a similar conditional in the _STA method, see CAM1 in this
-> DSDT for example:
-> https://raw.githubusercontent.com/linux-surface/acpidumps/master/surface_go/dsdt.dsl.
-> Is there anything we can do to enable those cameras to be discovered too?
+This is indeed the CIO2 component (config VIDEO_IPU3_CIO2), and that is
+the part that this bridge relates to, so in fact this cio2-bridge should
+probably go there indeed. No need to go through staging.
 
-It means that this
+The files remaining at:
 
-...
+- drivers/staging/media/ipu3
 
-> >>>> +#define PROPERTY_ENTRY_NULL                       \
-> >>>> +((const struct property_entry) { })
-> >>> Alignment. Same appears to apply to other macros (please indent).
-> >> Yep
-> >>>> +#define SOFTWARE_NODE_NULL                        \
-> >>>> +((const struct software_node) { })
-> > Why?!
-> >
-> It felt ugly to have the other definitions be macros and not this one,
-> but I can change it.
+are in fact also for the IPU3 but the ISP component (VIDEO_IPU3_IMGU).
 
-My point is that those macros are simply redundant. The point is to
-have a terminator record (all 0:s in the last entry of an array) which
-is usually being achieved by allocating memory with kcalloc() which
-does implicitly this for you.
+I'm sorry for the confusion, I knew that the ISP was still in staging, I
+hadn't realised the CSI2 receiver (CIO2) was not.
+
+>> Hopefully with more users of the IPU3 brought in by this cio2-bridge,
+>> that will help gather momentum to get the IPU3 developments required
+>> completed and moved into drivers/media.
 
 -- 
-With Best Regards,
-Andy Shevchenko
+Regards
+--
+Kieran
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
