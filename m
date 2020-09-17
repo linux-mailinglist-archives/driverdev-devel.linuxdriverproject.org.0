@@ -2,61 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B55626E464
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 20:47:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F9F726E6FB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 22:58:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 53A1E876AC;
-	Thu, 17 Sep 2020 18:47:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0C8688761E;
+	Thu, 17 Sep 2020 20:58:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iwQdvqY8zypf; Thu, 17 Sep 2020 18:47:34 +0000 (UTC)
+	with ESMTP id 0Ird5gz1TZde; Thu, 17 Sep 2020 20:58:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B6583874F4;
-	Thu, 17 Sep 2020 18:47:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 727E587620;
+	Thu, 17 Sep 2020 20:58:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 13DF31BF47A
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 18:47:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 174B81BF37B
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 20:58:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0FFE1874F4
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 18:47:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1433F86CE6
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 20:58:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sMFrpAf12lnO for <devel@linuxdriverproject.org>;
- Thu, 17 Sep 2020 18:47:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0FAEF874E7
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 18:47:30 +0000 (UTC)
-IronPort-SDR: t1XlJ8GCN8wFmPdtJJRRykthVUN3YlJOiN77B3pPdJhXxS1AOqdisgLOFKsYa96FWklaEyVjTY
- JnKg9PhJLkFw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="139774996"
-X-IronPort-AV: E=Sophos;i="5.77,271,1596524400"; d="scan'208";a="139774996"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Sep 2020 11:47:30 -0700
-IronPort-SDR: d3+tZQkRdrVYjX1jaUnbrOROgtkcV47LLN6teHcWDjznbokbZcyiNgwb/cp/ZWI1qe6l694mwF
- 94lKrcNlWySg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,271,1596524400"; d="scan'208";a="336518896"
-Received: from lkp-server01.sh.intel.com (HELO a05db971c861) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 17 Sep 2020 11:47:29 -0700
-Received: from kbuild by a05db971c861 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kIywK-00006C-Eg; Thu, 17 Sep 2020 18:47:28 +0000
-Date: Fri, 18 Sep 2020 02:46:49 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- b85300173d027131ced9a654c506785f15cfdd6f
-Message-ID: <5f63af19.l6B4rDqmBWVFqKCz%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id jvMfEViJDtFb for <devel@linuxdriverproject.org>;
+ Thu, 17 Sep 2020 20:58:36 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescoc.es (unknown [146.255.98.48])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5417B86CC1
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 20:58:36 +0000 (UTC)
+Received: from 131.red-95-120-15.dynamicip.rima-tde.net
+ (133.red-83-43-205.dynamicip.rima-tde.net [83.43.205.133])
+ by mail.foescoc.es (Postfix) with ESMTPSA id D813C90E00E
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 22:58:33 +0200 (CEST)
 MIME-Version: 1.0
+From: "FOESCO" <info@formacionesfoesco.es>
+To: devel@driverdev.osuosl.org
+Subject: FOESCO Informa
+X-Mailer: Smart_Send_3_1_6
+Date: Thu, 17 Sep 2020 22:58:43 +0200
+Message-ID: <59364081696402755420585@DESKTOP-MFVDD89>
+X-PPP-Message-ID: <20200917205834.20705.51387@mail.foescoc.es>
+X-PPP-Vhost: formacionesfoesco.es
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,144 +56,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info@formacionesfoesco.es
+Content-Type: multipart/mixed; boundary="===============2315943077523543120=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: b85300173d027131ced9a654c506785f15cfdd6f  driver core: force NOIO allocations during unplug
+--===============2315943077523543120==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-elapsed time: 724m
+Buenos d=EDas
 
-configs tested: 113
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Soy Alex Pons, director de FOESCO (Formaci=F3n Estatal Continua).
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-mips                        omega2p_defconfig
-arm                         lubbock_defconfig
-arm                           spitz_defconfig
-powerpc                        warp_defconfig
-sh                        dreamcast_defconfig
-parisc                           allyesconfig
-m68k                          hp300_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                 mpc832x_mds_defconfig
-arm                            u300_defconfig
-m68k                             allyesconfig
-s390                          debug_defconfig
-sh                          polaris_defconfig
-powerpc                     asp8347_defconfig
-arm                        mini2440_defconfig
-mips                    maltaup_xpa_defconfig
-arm                        mvebu_v7_defconfig
-powerpc                       eiger_defconfig
-powerpc                     tqm8548_defconfig
-sh                         ecovec24_defconfig
-arm                       imx_v4_v5_defconfig
-m68k                             alldefconfig
-arm                         vf610m4_defconfig
-arm                          collie_defconfig
-arm                           efm32_defconfig
-arm                             mxs_defconfig
-arc                            hsdk_defconfig
-arm                           u8500_defconfig
-arm                      integrator_defconfig
-mips                     decstation_defconfig
-powerpc                   lite5200b_defconfig
-sh                           sh2007_defconfig
-sh                        sh7757lcr_defconfig
-powerpc                  iss476-smp_defconfig
-arm                       omap2plus_defconfig
-sh                           se7712_defconfig
-powerpc                      katmai_defconfig
-arm                         lpc18xx_defconfig
-mips                           rs90_defconfig
-arm                        vexpress_defconfig
-parisc                generic-32bit_defconfig
-riscv                             allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20200917
-i386                 randconfig-a006-20200917
-i386                 randconfig-a003-20200917
-i386                 randconfig-a001-20200917
-i386                 randconfig-a002-20200917
-i386                 randconfig-a005-20200917
-x86_64               randconfig-a014-20200917
-x86_64               randconfig-a011-20200917
-x86_64               randconfig-a016-20200917
-x86_64               randconfig-a012-20200917
-x86_64               randconfig-a015-20200917
-x86_64               randconfig-a013-20200917
-i386                 randconfig-a015-20200917
-i386                 randconfig-a014-20200917
-i386                 randconfig-a011-20200917
-i386                 randconfig-a013-20200917
-i386                 randconfig-a016-20200917
-i386                 randconfig-a012-20200917
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+Llegadas estas fechas y como cada a=F1o, recordamos a todas las empresas Es=
+pa=F1olas su derecho a consumir el Cr=E9dito de Formaci=F3n del que dispone=
+n para la formaci=F3n de sus empleados, antes de su caducidad a final de a=
+=F1o.
 
-clang tested configs:
-x86_64               randconfig-a006-20200917
-x86_64               randconfig-a004-20200917
-x86_64               randconfig-a003-20200917
-x86_64               randconfig-a002-20200917
-x86_64               randconfig-a001-20200917
-x86_64               randconfig-a005-20200917
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Actualmente se encuentra abierto el plazo de inscripci=F3n para la Convocat=
+oria SEPTIEMBRE 2020 de Cursos Bonificables con cargo al Cr=E9dito de Forma=
+ci=F3n 2020.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Quedamos a la espera de vuestra respuesta.
+
+
+Saludos cordiales.
+
+
+Alex Pons
+Director FOESCO.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B200592AA
+www.foesco.com
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Antes de imprimir este e-mail piense bien si es necesario hacerlo. Before p=
+rinting this e-mail please think twice if you really need it. FOESCO Tfno: =
+910 382 880 Email: cursos@foesco.com. La informaci=F3n transmitida en este =
+mensaje est=E1 dirigida solamente a las personas o entidades que figuran en=
+ el encabezamiento y contiene informaci=F3n confidencial, por lo que, si us=
+ted lo recibiera por error, por favor destr=FAyalo sin copiarlo, usarlo ni =
+distribuirlo, comunic=E1ndolo inmediatamente al emisor del mensaje. De conf=
+ormidad con lo dispuesto en el Reglamento Europeo del 2016/679, del 27 de A=
+bril de 2016, FOESCO le informa que los datos por usted suministrados ser=
+=E1n tratados con las medidas de seguridad conformes a la normativa vigente=
+ que se requiere. Dichos datos ser=E1n empleados con fines de gesti=F3n. Pa=
+ra el ejercicio de sus derechos de transparencia, informaci=F3n, acceso, re=
+ctificaci=F3n, supresi=F3n o derecho al olvido, limitaci=F3n del tratamient=
+o , portabilidad de datos y oposici=F3n de sus datos de car=E1cter personal=
+ deber=E1 dirigirse a la direcci=F3n del Responsable del tratamiento a C/ L=
+AGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PULSANDO AQUI" <mailto:bajas@f=
+oesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR" o a traves de la direcci=
+=F3n de correo electr=F3nico: bajas@foesco.com <mailto:bajas@foesco.com=3FS=
+ubject=3DBAJA%20CORREOS>
+
+--===============2315943077523543120==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============2315943077523543120==--
