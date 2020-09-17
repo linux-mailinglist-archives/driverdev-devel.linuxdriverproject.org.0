@@ -2,90 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D562C26D7BD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 11:34:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B47BD26D807
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 11:48:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6FEBB87880;
-	Thu, 17 Sep 2020 09:34:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0A7FA87880;
+	Thu, 17 Sep 2020 09:48:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ssko1Su7CC9H; Thu, 17 Sep 2020 09:34:43 +0000 (UTC)
+	with ESMTP id tvmr6iEVUsTg; Thu, 17 Sep 2020 09:47:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E8F6E87851;
-	Thu, 17 Sep 2020 09:34:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DC7E987871;
+	Thu, 17 Sep 2020 09:47:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 89ECF1BF371
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 09:34:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 809C71BF371
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 09:47:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 829FF8784E
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 09:34:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7C7B78759F
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 09:47:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CpXsFeX8rLmV for <devel@linuxdriverproject.org>;
- Thu, 17 Sep 2020 09:34:35 +0000 (UTC)
+ with ESMTP id sPxzrGNd3IwO for <devel@linuxdriverproject.org>;
+ Thu, 17 Sep 2020 09:47:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 998D687663
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 09:34:35 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08H9Sted141913;
- Thu, 17 Sep 2020 09:34:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=Dy7JruLml6rY7Iqh6Jkr3cah1a1fXKQ4/Pi1EOyI9xo=;
- b=bCFpGSJq2UuA0b05cxwX7UyGOvAQQGiJ73XLvXmsdWaXViwvWKFqGC9uzFgOqa+CwTt2
- iX0WzU5AmBpDkmcPtnIHjzf8fbxpjANXsU3MTWlC96fRwVDfHZT1jtclZP+vmIoaOE7N
- xWUi3/OnxSEUUPlWsyYH/3OsDxCLX7LxVJDolnrmBaBmW13vsWwbjiHoYIIOu5nDRSe2
- ivXSdPAUSM0L8Gzt089PeDcBxyr16kZhJWyTRClc94HalSntYqnzKKS7Z/G5QKbo3E2c
- eMc07JxBEXRF5qfxz61gJEXaDDVOAWYXJ0w1CJ5ux2N/vBYvpIKQTD8WK6uThmgNRP95 ZQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 33gp9mg2kw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 17 Sep 2020 09:34:27 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08H9U3Jg022844;
- Thu, 17 Sep 2020 09:34:27 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 33khpms1pj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 17 Sep 2020 09:34:27 +0000
-Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08H9YHg2029130;
- Thu, 17 Sep 2020 09:34:17 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 17 Sep 2020 09:34:16 +0000
-Date: Thu, 17 Sep 2020 12:34:07 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Daniel Scally <djrscally@gmail.com>
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 157248759A
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 09:47:54 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id z1so1351689wrt.3
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 02:47:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=+21h7WWE02g3sqRq3YceAb1XLwDXFpUAkBcKRFMr60o=;
+ b=u/v9w6RMlGrhrilAkGraaso4LIVuCQ90u4jyPoPe/KHwIBuhIuPOHbcJMuwH/FAu33
+ D3a7YzthB5tVg9xxq39kS8+DSg45IuuJ22ZXCvOBJLw3axWlkjXvm+Vhau+l3ZW1YJhF
+ dWAw5tAVpAJvl/HwpvWNn+XgxtpezngNWL+AKmAnmpxST94ZRsHvziMijg9uev6xwW/H
+ UlfdSnd8I+YWBff0F0k4l8e02MXrpg9XezAAOg5qjWnoYp73Svy+C+Z0vb16QDxjVE51
+ GskFXa4cgE4wUAL5BcaQiBSF9k60cXiptyKLonJ004KuEoeRta/CT9rGCNijEF8JUBaO
+ VcPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=+21h7WWE02g3sqRq3YceAb1XLwDXFpUAkBcKRFMr60o=;
+ b=BD4JIYWK86QPO3qOMUUPrM8lR4oWdn5QNxuK+oGVKXZwNgVDCsQQTdcmGgsG6Dlr/a
+ RPLNxycRCJiqLwSxn4y1+r+JPO8R4Zn8XbILndwrL1FIx+3zs3cZAJDJcjsOM2FzhCoz
+ BgCIhyNfVqvIAkaf5IjxOV6+YS5gl9aadkRbCcf33tIJzZ7PmhJj+BkLUiglUEkURlTt
+ KJnQi6UYMhHMbBYxkNq/PLLfwkAXCijLspfIbEDV57usENGkfZjpC5VQKUwOlCKGtC/B
+ z1G/EDKWUdvNdcti9GRTzY3SpvvyPfCePtj6WFKWWoPBbSu2UCa2+lgkLPMDjn8KgAIx
+ 3+Gg==
+X-Gm-Message-State: AOAM530gFjtCx+xG3epSgSkkFuw+dW4GLULdfNGZqh7QlGV2Z3SeeEpS
+ tXhh5OItyDOaRkmfDLiO61s=
+X-Google-Smtp-Source: ABdhPJx+TyVZiNJNF0m8nS4tbkghLiqWTfxJDhvaY3z2Hg0WH7CQqi1q7913Vy4NLkXqzeo4bfhBtw==
+X-Received: by 2002:a5d:444b:: with SMTP id x11mr31020423wrr.402.1600336072333; 
+ Thu, 17 Sep 2020 02:47:52 -0700 (PDT)
+Received: from [192.168.1.211] ([2.29.208.34])
+ by smtp.gmail.com with ESMTPSA id u126sm12783303wmu.9.2020.09.17.02.47.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Sep 2020 02:47:51 -0700 (PDT)
 Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
  via software nodes on ACPI platforms
-Message-ID: <20200917093407.GK4282@kadam>
+To: Greg KH <gregkh@linuxfoundation.org>
 References: <20200916213618.8003-1-djrscally@gmail.com>
+ <20200917075356.GA3333802@kroah.com>
+From: Dan Scally <djrscally@gmail.com>
+Message-ID: <d97fb93f-5258-b654-3063-863e81ae7298@gmail.com>
+Date: Thu, 17 Sep 2020 10:47:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200916213618.8003-1-djrscally@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9746
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- suspectscore=8
- mlxlogscore=999 phishscore=0 mlxscore=0 adultscore=0 spamscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009170072
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9746
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxlogscore=999
- adultscore=0 malwarescore=0 clxscore=1011 lowpriorityscore=0 phishscore=0
- spamscore=0 priorityscore=1501 suspectscore=8 impostorscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009170072
+In-Reply-To: <20200917075356.GA3333802@kroah.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,773 +91,236 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, robh@kernel.org, jorhand@linux.microsoft.com,
- linux-media@vger.kernel.org, gregkh@linuxfoundation.org,
- kieran.bingham@ideasonboard.com, linux-kernel@vger.kernel.org,
- kitakar@gmail.com, sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
- mchehab@kernel.org, davem@davemloft.net, tian.shu.qiu@intel.com,
- yong.zhi@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-media@vger.kernel.org, kieran.bingham@ideasonboard.com,
+ linux-kernel@vger.kernel.org, kitakar@gmail.com, sakari.ailus@linux.intel.com,
+ bingbu.cao@intel.com, mchehab@kernel.org, davem@davemloft.net,
+ tian.shu.qiu@intel.com, yong.zhi@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 16, 2020 at 10:36:18PM +0100, Daniel Scally wrote:
-> diff --git a/drivers/media/pci/intel/ipu3/ipu3-cio2.c b/drivers/media/pci/intel/ipu3/ipu3-cio2.c
-> index 92f5eadf2c99..fd941d2c7581 100644
-> --- a/drivers/media/pci/intel/ipu3/ipu3-cio2.c
-> +++ b/drivers/media/pci/intel/ipu3/ipu3-cio2.c
-> @@ -1719,6 +1719,59 @@ static void cio2_queues_exit(struct cio2_device *cio2)
->  		cio2_queue_exit(cio2, &cio2->queue[i]);
->  }
->  
-> +static int cio2_probe_can_progress(struct pci_dev *pci_dev)
-> +{
-> +	void *sensor;
-> +
-> +	/*
-> +	 * On ACPI platforms, we need to probe _after_ sensors wishing to connect
-> +	 * to cio2 have added a device link. If there are no consumers yet, then
-> +	 * we need to defer. The .sync_state() callback will then be called after
-> +	 * all linked sensors have probed
-> +	 */
-> +
-> +	if (IS_ENABLED(CONFIG_ACPI)) {
-
-Reverse this condition.
-
-	if (!IS_ENABLED(CONFIG_ACPI))
-		return 0;
-
-
-> +		sensor = (struct device *)list_first_entry_or_null(
-> +								&pci_dev->dev.links.consumers,
-> +								struct dev_links_info,
-> +								consumers);
-> +
-> +		if (!sensor)
-> +			return -EPROBE_DEFER;
-
-Get rid of the cast.
-
-	if (list_empty(&pci_dev->dev.links.consumers))
-		return -EPROBE_DEFER;
-
-	return 0;
-
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +void cio2_sync_state(struct device *dev)
-> +{
-> +	struct cio2_device *cio2;
-> +	int ret = 0;
-
-Delete the initialization.
-
-> +
-> +	if (IS_ENABLED(CONFIG_ACPI)) {
-
-Reverse.
-
-> +		cio2 = dev_get_drvdata(dev);
-> +
-> +		if (!cio2) {
-
-Delete the blank line between the call and the test.  They're part of
-the same step.  "cio2" can't be NULL anyway, so delete the test.
-
-> +			dev_err(dev, "Failed to retrieve driver data\n");
-> +			return;
-> +		}
-> +
-> +		/* insert the bridge driver to connect sensors via software nodes */
-> +		ret = request_module("cio2-bridge");
-> +
-> +		if (ret)
-> +			dev_err(dev, "Failed to insert cio2-bridge\n");
-> +
-> +		ret = cio2_parse_firmware(cio2);
-> +
-> +		if (ret) {
-> +			v4l2_async_notifier_unregister(&cio2->notifier);
-> +			v4l2_async_notifier_cleanup(&cio2->notifier);
-> +			cio2_queues_exit(cio2);
-> +		}
-> +	}
-> +}
-> +
->  /**************** PCI interface ****************/
->  
->  static int cio2_pci_config_setup(struct pci_dev *dev)
-> @@ -1746,6 +1799,11 @@ static int cio2_pci_probe(struct pci_dev *pci_dev,
->  	void __iomem *const *iomap;
->  	int r;
->  
-> +	r = cio2_probe_can_progress(pci_dev);
-> +
-> +	if (r)
-> +		return -EPROBE_DEFER;
-> +
->  	cio2 = devm_kzalloc(&pci_dev->dev, sizeof(*cio2), GFP_KERNEL);
->  	if (!cio2)
->  		return -ENOMEM;
-> @@ -1821,9 +1879,11 @@ static int cio2_pci_probe(struct pci_dev *pci_dev,
->  	v4l2_async_notifier_init(&cio2->notifier);
->  
->  	/* Register notifier for subdevices we care */
-> -	r = cio2_parse_firmware(cio2);
-> -	if (r)
-> -		goto fail_clean_notifier;
-> +	if (!IS_ENABLED(CONFIG_ACPI)) {
-> +		r = cio2_parse_firmware(cio2);
-> +		if (r)
-> +			goto fail_clean_notifier;
-> +	}
->  
->  	r = devm_request_irq(&pci_dev->dev, pci_dev->irq, cio2_irq,
->  			     IRQF_SHARED, CIO2_NAME, cio2);
-> @@ -2052,6 +2112,7 @@ static struct pci_driver cio2_pci_driver = {
->  	.remove = cio2_pci_remove,
->  	.driver = {
->  		.pm = &cio2_pm_ops,
-> +		.sync_state = cio2_sync_state
->  	},
->  };
->  
-> diff --git a/drivers/staging/media/ipu3/Kconfig b/drivers/staging/media/ipu3/Kconfig
-> index 3e9640523e50..08842fd8c0da 100644
-> --- a/drivers/staging/media/ipu3/Kconfig
-> +++ b/drivers/staging/media/ipu3/Kconfig
-> @@ -14,3 +14,18 @@ config VIDEO_IPU3_IMGU
->  
->  	  Say Y or M here if you have a Skylake/Kaby Lake SoC with a MIPI
->  	  camera. The module will be called ipu3-imgu.
-> +
-> +config VIDEO_CIO2_BRIDGE
-> +	tristate "IPU3 CIO2 Sensor Bridge Driver"
-> +	depends on PCI && VIDEO_V4L2
-> +	depends on ACPI
-> +	depends on X86
-> +	help
-> +	  This module provides a bridge connecting sensors (I.E. cameras) to
-> +	  the CIO2 device infrastructure via software nodes built from information
-> +	  parsed from the SSDB buffer.
-> +
-> +	  Say Y or M here if your platform's cameras use IPU3 with connections
-> +	  that should be defined in ACPI. The module will be called cio2-bridge.
-> +
-> +	  If in doubt, say N here.
-> \ No newline at end of file
-> diff --git a/drivers/staging/media/ipu3/Makefile b/drivers/staging/media/ipu3/Makefile
-> index 9def80ef28f3..12dff56dbb9e 100644
-> --- a/drivers/staging/media/ipu3/Makefile
-> +++ b/drivers/staging/media/ipu3/Makefile
-> @@ -10,3 +10,4 @@ ipu3-imgu-objs += \
->  		ipu3-css.o ipu3-v4l2.o ipu3.o
->  
->  obj-$(CONFIG_VIDEO_IPU3_IMGU) += ipu3-imgu.o
-> +obj-$(CONFIG_VIDEO_CIO2_BRIDGE) += cio2-bridge.o
-> \ No newline at end of file
-> diff --git a/drivers/staging/media/ipu3/cio2-bridge.c b/drivers/staging/media/ipu3/cio2-bridge.c
-> new file mode 100644
-> index 000000000000..5115aeeb35a1
-> --- /dev/null
-> +++ b/drivers/staging/media/ipu3/cio2-bridge.c
-> @@ -0,0 +1,448 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +#include <linux/acpi.h>
-> +#include <acpi/acpi_bus.h>
-> +#include <linux/device.h>
-> +#include <linux/i2c.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/pci.h>
-> +#include <media/v4l2-subdev.h>
-> +
-> +#include <linux/fwnode.h>
-> +#include <linux/kref.h>
-> +
-> +static void cio2_bridge_exit(void);
-> +static int cio2_bridge_init(void);
-> +
-> +#define MAX_CONNECTED_DEVICES			4
-> +#define SWNODE_SENSOR_HID			0
-> +#define SWNODE_SENSOR_PORT			1
-> +#define SWNODE_SENSOR_ENDPOINT			2
-> +#define SWNODE_CIO2_PORT			3
-> +#define SWNODE_CIO2_ENDPOINT			4
-> +#define SWNODE_NULL_TERMINATOR			5
-> +
-> +#define CIO2_HID				"INT343E"
-> +#define CIO2_PCI_ID				0x9d32
-> +
-> +#define ENDPOINT_SENSOR				0
-> +#define ENDPOINT_CIO2				1
-> +
-> +#define NODE_HID(_HID)				\
-> +((const struct software_node) {			\
-> +	_HID,					\
-> +})
-> +
-> +#define NODE_PORT(_PORT, _HID_NODE)		\
-> +((const struct software_node) {			\
-> +	_PORT,					\
-> +	_HID_NODE,				\
-> +})
-> +
-> +#define NODE_ENDPOINT(_EP, _PORT, _PROPS)	\
-> +((const struct software_node) {			\
-> +	_EP,					\
-> +	_PORT,					\
-> +	_PROPS,					\
-> +})
-> +
-> +#define PROPERTY_ENTRY_NULL			\
-> +((const struct property_entry) { })
-> +#define SOFTWARE_NODE_NULL			\
-> +((const struct software_node) { })
-> +
-> +/*
-> + * Extend this array with ACPI Hardware ID's of devices known to be
-> + * working
-> + */
-> +
-> +static char *supported_devices[] = {
-> +	"INT33BE",
-> +	"OVTI2680",
-> +	"OVTI5648",
-> +};
-> +
-> +/*
-> + * software_node needs const char * names. Can't snprintf a const char *,
-> + * so instead we need an array of them and use the port num from SSDB as
-> + * an index.
-> + */
-> +
-> +const char *port_names[] = {
-> +	"port0", "port1", "port2", "port3", "port4",
-> +	"port5", "port6", "port7", "port8", "port9"
-> +};
-> +
-> +struct software_node cio2_hid_node = { CIO2_HID, };
-> +
-> +struct sensor {
-> +	struct device *dev;
-> +	struct software_node swnodes[5];
-> +	struct property_entry sensor_props[6];
-> +	struct property_entry cio2_props[3];
-> +	struct fwnode_handle *fwnode;
-> +};
-> +
-> +struct cio2_bridge {
-> +	int n_sensors;
-> +	struct sensor sensors[MAX_CONNECTED_DEVICES];
-> +	struct pci_dev *cio2;
-> +	struct fwnode_handle *cio2_fwnode;
-> +};
-> +
-> +struct cio2_bridge bridge = { 0, };
-> +
-> +static const struct property_entry remote_endpoints[] = {
-> +	PROPERTY_ENTRY_REF("remote-endpoint", /* Sensor 0, Sensor Property */
-> +			   &bridge.sensors[0].swnodes[SWNODE_CIO2_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint", /* Sensor 0, CIO2 Property */
-> +			   &bridge.sensors[0].swnodes[SWNODE_SENSOR_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint",
-> +			   &bridge.sensors[1].swnodes[SWNODE_CIO2_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint",
-> +			   &bridge.sensors[1].swnodes[SWNODE_SENSOR_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint",
-> +			   &bridge.sensors[2].swnodes[SWNODE_CIO2_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint",
-> +			   &bridge.sensors[2].swnodes[SWNODE_SENSOR_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint",
-> +			   &bridge.sensors[3].swnodes[SWNODE_CIO2_ENDPOINT]),
-> +	PROPERTY_ENTRY_REF("remote-endpoint",
-> +			   &bridge.sensors[3].swnodes[SWNODE_SENSOR_ENDPOINT]),
-> +	{ }
-> +};
-> +
-> +/* Data representation as it is in ACPI SSDB buffer */
-> +struct sensor_bios_data_packed {
-> +	u8 version;
-> +	u8 sku;
-> +	u8 guid_csi2[16];
-> +	u8 devfunction;
-> +	u8 bus;
-> +	u32 dphylinkenfuses;
-> +	u32 clockdiv;
-> +	u8 link;
-> +	u8 lanes;
-> +	u32 csiparams[10];
-> +	u32 maxlanespeed;
-> +	u8 sensorcalibfileidx;
-> +	u8 sensorcalibfileidxInMBZ[3];
-> +	u8 romtype;
-> +	u8 vcmtype;
-> +	u8 platforminfo;
-> +	u8 platformsubinfo;
-> +	u8 flash;
-> +	u8 privacyled;
-> +	u8 degree;
-> +	u8 mipilinkdefined;
-> +	u32 mclkspeed;
-> +	u8 controllogicid;
-> +	u8 reserved1[3];
-> +	u8 mclkport;
-> +	u8 reserved2[13];
-> +} __attribute__((__packed__));
-> +
-> +/* Fields needed by bridge driver */
-> +struct sensor_bios_data {
-> +	struct device *dev;
-> +	u8 link;
-> +	u8 lanes;
-> +	u32 mclkspeed;
-> +};
-> +
-> +static int read_acpi_block(struct device *dev, char *id, void *data, u32 size)
-> +{
-> +	union acpi_object *obj;
-> +	struct acpi_buffer buffer = { ACPI_ALLOCATE_BUFFER, NULL };
-> +	struct acpi_handle *dev_handle = ACPI_HANDLE(dev);
-> +	int status;
-> +	u32 buffer_length;
-> +
-> +	status = acpi_evaluate_object(dev_handle, id, NULL, &buffer);
-> +	if (!ACPI_SUCCESS(status))
-> +		return -ENODEV;
-> +
-> +	obj = (union acpi_object *)buffer.pointer;
-> +	if (!obj || obj->type != ACPI_TYPE_BUFFER) {
-> +		dev_err(dev, "Could't read acpi buffer\n");
-> +		status = -ENODEV;
-> +		goto err;
-> +	}
-> +
-> +	if (obj->buffer.length > size) {
-> +		dev_err(dev, "Given buffer is too small\n");
-> +		status = -ENODEV;
-> +		goto err;
-> +	}
-> +
-> +	memcpy(data, obj->buffer.pointer, min(size, obj->buffer.length));
-
-The min() is not required because we checked the length earlier.
-
-> +	buffer_length = obj->buffer.length;
-
-No need for the "buffer_length" variable.
-
-> +	kfree(buffer.pointer);
-> +
-> +	return buffer_length;
-> +err:
-> +	kfree(buffer.pointer);
-> +	return status;
-> +}
-> +
-> +static int get_acpi_ssdb_sensor_data(struct device *dev,
-> +				     struct sensor_bios_data *sensor)
-> +{
-> +	struct sensor_bios_data_packed sensor_data;
-> +	int ret = read_acpi_block(dev, "SSDB", &sensor_data,
-> +				  sizeof(sensor_data));
-
-Don't put functions which can fail into the declaration block.
-
-> +
-> +	if (ret < 0) {
-> +		dev_err(dev, "Failed to fetch SSDB data\n");
-> +		return ret;
-> +	}
-> +
-> +	sensor->link = sensor_data.link;
-> +	sensor->lanes = sensor_data.lanes;
-> +	sensor->mclkspeed = sensor_data.mclkspeed;
-> +
-> +	return 0;
-> +}
-> +
-> +static int create_endpoint_properties(struct device *dev,
-> +				      struct sensor_bios_data *ssdb,
-> +				      struct property_entry *sensor_props,
-> +				      struct property_entry *cio2_props)
-> +{
-> +		u32 *data_lanes;
-> +		int i;
-
-Indented too far.
-
-> +
-> +		data_lanes = devm_kmalloc(dev, sizeof(u32) * (int)ssdb->lanes,
-
-No need for the cast.  Use devm_kmalloc_array().
-
-> +					  GFP_KERNEL);
-> +
-> +		if (!data_lanes) {
-> +			dev_err(dev,
-> +				"Couldn't allocate memory for data lanes array\n");
-
-Delete the error message (checkpatch.pl --strict).
-
-> +			return -ENOMEM;
-> +		}
-> +
-> +		for (i = 0; i < (int)ssdb->lanes; i++)
-
-Delete the cast.
-
-> +			data_lanes[i] = (u32)i + 1;
-
-Delete the cast.
-
-> +
-> +		sensor_props[0] = PROPERTY_ENTRY_U32("clock-frequency",
-> +						     ssdb->mclkspeed);
-> +		sensor_props[1] = PROPERTY_ENTRY_U32("bus-type", 5);
-> +		sensor_props[2] = PROPERTY_ENTRY_U32("clock-lanes", 0);
-> +		sensor_props[3] = PROPERTY_ENTRY_U32_ARRAY_LEN("data-lanes",
-> +							       data_lanes,
-> +							       (int)ssdb->lanes);
-> +		sensor_props[4] = remote_endpoints[(bridge.n_sensors * 2) + ENDPOINT_SENSOR];
-> +		sensor_props[5] = PROPERTY_ENTRY_NULL;
-> +
-> +		cio2_props[0] = PROPERTY_ENTRY_U32_ARRAY_LEN("data-lanes",
-> +							     data_lanes,
-> +							     (int)ssdb->lanes);
-> +		cio2_props[1] = remote_endpoints[(bridge.n_sensors * 2) + ENDPOINT_CIO2];
-> +		cio2_props[2] = PROPERTY_ENTRY_NULL;
-> +
-> +		return 0;
-> +}
-> +
-> +static int connect_supported_devices(void)
-> +{
-> +	struct acpi_device *adev;
-> +	struct device *dev;
-> +	struct sensor_bios_data ssdb;
-> +	struct sensor *sensor;
-> +	struct property_entry *sensor_props;
-> +	struct property_entry *cio2_props;
-> +	struct fwnode_handle *fwnode;
-> +	struct software_node *nodes;
-> +	struct v4l2_subdev *sd;
-> +	int i, ret;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(supported_devices); i++) {
-> +		adev = acpi_dev_get_first_match_dev(supported_devices[i],
-> +						    NULL, -1);
-> +
-> +		if (!adev)
-> +			continue;
-> +
-> +		dev = bus_find_device_by_acpi_dev(&i2c_bus_type, adev);
-> +
-> +		if (!dev) {
-> +			pr_info("ACPI match for %s, but it has no i2c device\n",
-> +				supported_devices[i]);
-> +			continue;
-> +		}
-> +
-> +		if (!dev->driver_data) {
-> +			pr_info("ACPI match for %s, but it has no driver\n",
-> +				supported_devices[i]);
-
-put_device(dev);
-
-> +			continue;
-> +		} else {
-> +			pr_info("Found supported device %s\n",
-> +				supported_devices[i]);
-> +		}
-> +
-> +		sensor = &bridge.sensors[bridge.n_sensors];
-> +		/*
-> +		 * Store sensor's existing fwnode so that it can be restored if
-> +		 * this module is removed.
-> +		 */
-> +		sensor->fwnode = fwnode_handle_get(dev->fwnode);
-> +
-> +		get_acpi_ssdb_sensor_data(dev, &ssdb);
-> +
-> +		nodes = sensor->swnodes;
-> +		sensor_props = sensor->sensor_props;
-> +		cio2_props = sensor->cio2_props;
-> +		fwnode = sensor->fwnode;
-> +
-> +		ret = create_endpoint_properties(dev, &ssdb, sensor_props,
-> +						 cio2_props);
-> +
-> +		if (ret)
-> +			return ret;
-> +
-> +		/* build the software nodes */
-> +
-> +		nodes[SWNODE_SENSOR_HID] = NODE_HID(supported_devices[i]);
-> +		nodes[SWNODE_SENSOR_PORT] = NODE_PORT("port0",
-> +						      &nodes[SWNODE_SENSOR_HID]);
-> +		nodes[SWNODE_SENSOR_ENDPOINT] = NODE_ENDPOINT("endpoint0",
-> +							      &nodes[SWNODE_SENSOR_PORT],
-> +							      sensor_props);
-> +		nodes[SWNODE_CIO2_PORT] = NODE_PORT(port_names[(int)ssdb.link],
-> +						    &cio2_hid_node);
-> +		nodes[SWNODE_CIO2_ENDPOINT] = NODE_ENDPOINT("endpoint0",
-> +							    &nodes[SWNODE_CIO2_PORT],
-> +							    cio2_props);
-> +		nodes[SWNODE_NULL_TERMINATOR]   = SOFTWARE_NODE_NULL;
-> +
-> +		ret = software_node_register_nodes(nodes);
-> +		if (ret) {
-> +			dev_err(dev,
-> +				"Failed to register software nodes for %s\n",
-> +				supported_devices[i]);
-> +			return ret;
-> +		}
-> +
-> +		fwnode = software_node_fwnode(&nodes[SWNODE_SENSOR_HID]);
-> +		if (!fwnode) {
-> +			dev_err(dev,
-> +				"Failed to get software node for %s\n",
-> +				supported_devices[i]);
-> +			return ret;
-
-
-"ret" is zero here.  return -ENODEV;?
-
-> +		}
-> +
-> +		fwnode->secondary = ERR_PTR(-ENODEV);
-> +		dev->fwnode = fwnode;
-> +
-> +		/*
-> +		 * The device should by this point has driver_data set to an
-> +		 * instance of struct v4l2_subdev; set the fwnode for that too.
-> +		 */
-> +
-> +		sd = dev_get_drvdata(dev);
-> +		sd->fwnode = fwnode;
-> +
-> +		sensor->dev = dev;
-> +		bridge.n_sensors++;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int cio2_bridge_init(void)
-> +{
-> +	struct fwnode_handle *fwnode;
-> +	int ret;
-> +
-> +	ret = software_node_register(&cio2_hid_node);
-> +
-> +	if (ret < 0) {
-> +		pr_err("Failed to register the CIO2 HID node\n");
-> +		return -EINVAL;
-
-Propagate the error code from software_node_register().
-
-> +	}
-> +
-> +	ret = connect_supported_devices();
-> +
-> +	if ((ret < 0) || (bridge.n_sensors <= 0)) {
-> +		pr_err("cio2_bridge: Failed to connect any devices\n");
-> +		goto out;
-
-If (bridge.n_sensors <= 0) is true then we need to set ret = -EINVAL
-or something.  Really .n_sensors can't be negative.
-
-The name "out" is a crappy label name because it doesn't say what the
-goto does.  When I scroll down then it turns out that "goto out;" calls
-a free_everything() function.  That kind of error handling is always
-buggy.
-
-There are several typical bugs.  1) Something leaks because the error
-handling style is too complicated to be audited.  2)  Dereferencing
-uninitialized pointers.  3)  Undoing something which hasn't been done.
-
-I believe that in this case one bug is with the handling of the
-bridge.cio2_fwnode.  We "restore" it back to the original state
-as soon as we have a non-NULL bridge.cio2 instead of waiting until we
-have stored the original state.
-
-The best way to do error handling is this.
-
-Every function cleans up after itself.  The connect_supported_devices()
-function is a bit special because it's a loop.  I would would write it
-so that if it fails then it cleans up the partial loop iteration and
-then at the end it cleans up all the failed loop iterations.
-
-	for (i = 0; i < ARRAY_SIZE(supported_devices); i++) {
-		a = frob();
-		if (!a)
-			goto unwind;
-		b = frob();
-		if (!b) {
-			free(a);
-			goto unwind;
-		}
-		...
-	}
-
-	return 0;
-
-unwind:
-	for (i = 0; i < bridge.n_sensors; i++) {
-		free(b);
-		free(a);
-	}
-	bridge.n_sensors = 0;
-
-	return ret;
-
-The problem with cio2_bridge_unregister_sensors() is that it doesn't
-clean up partial iterations through the loop.  (Missing calls to
-put_device(dev)).
-
-Loops are complicated but the rest is simple.  1) Every allocation
-function needs a matching cleanup function.  2) Use good label names
-which say what the goto does.  3)  The goto should free the most recent
-successful allocation.
-
-	a = frob();
-	if (!a)
-		return -ENOMEM;
-
-	b = frob();
-	if (!b) {
-		ret = -ENOMEM;
-		goto free_a;
-	}
-
-	c = frob();
-	if (!c) {
-		ret = -ENOMEM;
-		goto free_b;
-	}
-
-	return 0;
-
-free_b:
-	free(b);
-free_a:
-	free(a);
-
-	return ret;
-
-The free function doesn't have any if statements.
-
-void free_function()
-{
-	free(c);
-	free(b);
-	free(a);
-}
-
-The reviewer only needs to keep track of the most recent allocation
-and verify that the goto free_foo matches what should be freed.  This
-system means the code is auditable (no leaks), you never free anything
-which wasn't allocated.
-
-> +	} else {
-> +		pr_info("Found %d supported devices\n", bridge.n_sensors);
-> +	}
-> +
-> +	bridge.cio2 = pci_get_device(PCI_VENDOR_ID_INTEL, CIO2_PCI_ID, NULL);
-> +	if (!bridge.cio2) {
-> +		ret = -ENODEV;
-> +		goto out;
-> +	}
-> +
-> +	fwnode = software_node_fwnode(&cio2_hid_node);
-> +	if (!fwnode) {
-> +		pr_err("Error getting fwnode from cio2 software_node\n");
-> +		ret = -ENODEV;
-> +		goto out;
-> +	}
-> +
-> +	/*
-> +	 * We store the pci_dev's existing fwnode, beccause in the event we
-> +	 * want to reload (I.E. rmmod and insmod) this module we need to give
-> +	 * the device its original fwnode back to prevent problems down the
-> +	 * line
-> +	 */
-> +
-> +	bridge.cio2_fwnode = fwnode_handle_get(bridge.cio2->dev.fwnode);
-> +
-> +	fwnode->secondary = ERR_PTR(-ENODEV);
-> +	bridge.cio2->dev.fwnode = fwnode;
-> +
-> +	return 0;
-> +out:
-> +	cio2_bridge_exit();
-> +	return ret;
-> +}
-> +
-> +static int cio2_bridge_unregister_sensors(void)
-
-Make this a void function.
-
-regards,
-dan carpenter
-
-> +{
-> +	int i, j;
-> +	struct sensor *sensor;
-> +
-> +	for (i = 0; i < bridge.n_sensors; i++) {
-> +		sensor = &bridge.sensors[i];
-> +
-> +		/* give the sensor its original fwnode back */
-> +		sensor->dev->fwnode = sensor->fwnode;
-> +		fwnode_handle_put(sensor->fwnode);
-> +		put_device(sensor->dev);
-> +
-> +		for (j = 4; j >= 0; j--)
-> +			software_node_unregister(&sensor->swnodes[j]);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void cio2_bridge_exit(void)
-> +{
-> +	int ret;
-> +
-> +	/* Give the pci_dev its original fwnode back */
-> +	if (bridge.cio2) {
-> +		bridge.cio2->dev.fwnode = bridge.cio2_fwnode;
-> +		fwnode_handle_put(bridge.cio2_fwnode);
-> +		pci_dev_put(bridge.cio2);
-> +	}
-> +
-> +	ret = cio2_bridge_unregister_sensors();
-> +
-> +	if (ret)
-> +		pr_err("An error occurred unregistering the sensors\n");
-> +
-> +	software_node_unregister(&cio2_hid_node);
-> +}
-> +
-> +module_init(cio2_bridge_init);
-> +module_exit(cio2_bridge_exit);
-> +
-> +MODULE_DESCRIPTION("A bridge driver to connect sensors to CIO2 infrastructure.");
-> +MODULE_LICENSE("GPL v2");
-> +MODULE_ALIAS("acpi*:INT343E:*");
-> -- 
-> 2.17.1
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGkgR3JlZyAtIHRoYW5rcyBmb3IgdGhlIGNvbW1lbnRzLCBhcHByZWNpYXRlIGl0IChzb3JyeSB0
+aGVyZSdzIHNvIG1hbnksCkknbSBuZXcgdG8gYm90aCBDIGFuZCBrZXJuZWwgd29yaykKCk9uIDE3
+LzA5LzIwMjAgMDg6NTMsIEdyZWcgS0ggd3JvdGU6Cj4gT24gV2VkLCBTZXAgMTYsIDIwMjAgYXQg
+MTA6MzY6MThQTSArMDEwMCwgRGFuaWVsIFNjYWxseSB3cm90ZToKPj4gIE1BSU5UQUlORVJTICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDYgKwo+PiAgZHJpdmVycy9tZWRpYS9wY2kv
+aW50ZWwvaXB1My9pcHUzLWNpbzIuYyB8ICA2NyArKystCj4gc3RhZ2luZyBkcml2ZXJzIHNob3Vs
+ZCBiZSBzZWxmLWNvbnRhaW5lZCwgYW5kIG5vdCBtb2RpZnkgc3R1ZmYgb3V0c2lkZQo+IG9mIGRy
+aXZlcnMvc3RhZ2luZy8KPgo+PiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2lwdTMvS2NvbmZpZyAg
+ICAgICB8ICAxNSArCj4+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaXB1My9NYWtlZmlsZSAgICAg
+IHwgICAxICsKPj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9pcHUzL2NpbzItYnJpZGdlLmMgfCA0
+NDggKysrKysrKysrKysrKysrKysrKysrKysKPiBXaHkgZG9lcyB0aGlzIGhhdmUgdG8gYmUgaW4g
+ZHJpdmVycy9zdGFnaW5nLyBhdCBhbGw/ICBXaHkgbm90IHNwZW5kIHRoZQo+IHRpbWUgdG8gZml4
+IGl0IHVwIHByb3Blcmx5IGFuZCBnZXQgaXQgbWVyZ2VkIGNvcnJlY3RseT8gIEl0J3MgYSB2ZXJ5
+Cj4gc21hbGwgZHJpdmVyLCBhbmQgc2hvdWxkIGJlIHNtYWxsZXIsIHNvIGl0IHNob3VsZCBub3Qg
+YmUgYSBsb3Qgb2Ygd29yawo+IHRvIGRvLiAgQW5kIGl0IHdvdWxkIGJlIGZhc3RlciB0byBkbyB0
+aGF0IHRoYW4gdG8gdGFrZSBpdCB0aHJvdWdoCj4gc3RhZ2luZy4uLgpJIHdhcyBqdXN0IHVuZGVy
+IHRoZSBpbXByZXNzaW9uIHRoYXQgdGhhdCB3YXMgdGhlIHByb2Nlc3MgdG8gYmUgaG9uZXN0LApp
+ZiB0aGF0J3Mgbm90IHJpZ2h0IEknbGwganVzdCBtb3ZlIGl0IGRpcmVjdGx5IHRvIGRyaXZlcnMv
+bWVkaWEvaXB1Mwo+PiAgNSBmaWxlcyBjaGFuZ2VkLCA1MzQgaW5zZXJ0aW9ucygrKSwgMyBkZWxl
+dGlvbnMoLSkKPj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaXB1
+My9jaW8yLWJyaWRnZS5jCj4+Cj4+IGRpZmYgLS1naXQgYS9NQUlOVEFJTkVSUyBiL01BSU5UQUlO
+RVJTCj4+IGluZGV4IGI1Y2ZhYjAxNWJkNi4uNTViMGI5ODg4YmMwIDEwMDY0NAo+PiAtLS0gYS9N
+QUlOVEFJTkVSUwo+PiArKysgYi9NQUlOVEFJTkVSUwo+PiBAQCAtOTE1Miw2ICs5MTUyLDEyIEBA
+IFM6CU1haW50YWluZWQKPj4gIFc6CWh0dHA6Ly93d3cuYWRhcHRlYy5jb20vCj4+ICBGOglkcml2
+ZXJzL3Njc2kvaXBzKgo+PiAgCj4+ICtJUFUzIENJTzIgQnJpZGdlIERyaXZlcgo+PiArTToJRGFu
+aWVsIFNjYWxseSA8ZGpyc2NhbGx5QGdtYWlsLmNvbT4KPj4gK0w6CWxpbnV4LW1lZGlhQHZnZXIu
+a2VybmVsLm9yZwo+PiArUzoJTWFpbnRhaW5lZAo+PiArRjoJZHJpdmVycy9zdGFnaW5nL21lZGlh
+L2lwdTMvY2lvMi1icmlkZ2UuYwo+PiArCj4+ICBJUFZTCj4+ICBNOglXZW5zb25nIFpoYW5nIDx3
+ZW5zb25nQGxpbnV4LXZzLm9yZz4KPj4gIE06CVNpbW9uIEhvcm1hbiA8aG9ybXNAdmVyZ2UubmV0
+LmF1Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wY2kvaW50ZWwvaXB1My9pcHUzLWNp
+bzIuYyBiL2RyaXZlcnMvbWVkaWEvcGNpL2ludGVsL2lwdTMvaXB1My1jaW8yLmMKPj4gaW5kZXgg
+OTJmNWVhZGYyYzk5Li5mZDk0MWQyYzc1ODEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbWVkaWEv
+cGNpL2ludGVsL2lwdTMvaXB1My1jaW8yLmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9wY2kvaW50
+ZWwvaXB1My9pcHUzLWNpbzIuYwo+PiBAQCAtMTcxOSw2ICsxNzE5LDU5IEBAIHN0YXRpYyB2b2lk
+IGNpbzJfcXVldWVzX2V4aXQoc3RydWN0IGNpbzJfZGV2aWNlICpjaW8yKQo+PiAgCQljaW8yX3F1
+ZXVlX2V4aXQoY2lvMiwgJmNpbzItPnF1ZXVlW2ldKTsKPj4gIH0KPj4gIAo+PiArc3RhdGljIGlu
+dCBjaW8yX3Byb2JlX2Nhbl9wcm9ncmVzcyhzdHJ1Y3QgcGNpX2RldiAqcGNpX2RldikKPj4gK3sK
+Pj4gKwl2b2lkICpzZW5zb3I7Cj4gVGhpcyBpcyBhIGh1Z2UgZmxhZyB0aGF0IHNvbWV0aGluZyBp
+cyB3cm9uZywgd2h5IHZvaWQ/Cj4KPj4gKwo+PiArCS8qCj4+ICsJICogT24gQUNQSSBwbGF0Zm9y
+bXMsIHdlIG5lZWQgdG8gcHJvYmUgX2FmdGVyXyBzZW5zb3JzIHdpc2hpbmcgdG8gY29ubmVjdAo+
+PiArCSAqIHRvIGNpbzIgaGF2ZSBhZGRlZCBhIGRldmljZSBsaW5rLiBJZiB0aGVyZSBhcmUgbm8g
+Y29uc3VtZXJzIHlldCwgdGhlbgo+PiArCSAqIHdlIG5lZWQgdG8gZGVmZXIuIFRoZSAuc3luY19z
+dGF0ZSgpIGNhbGxiYWNrIHdpbGwgdGhlbiBiZSBjYWxsZWQgYWZ0ZXIKPj4gKwkgKiBhbGwgbGlu
+a2VkIHNlbnNvcnMgaGF2ZSBwcm9iZWQKPj4gKwkgKi8KPj4gKwo+PiArCWlmIChJU19FTkFCTEVE
+KENPTkZJR19BQ1BJKSkgewo+PiArCQlzZW5zb3IgPSAoc3RydWN0IGRldmljZSAqKWxpc3RfZmly
+c3RfZW50cnlfb3JfbnVsbCgKPiBBbmQgeW91IGNhc3QgaXQ/Pz8gIE5vdCByaWdodCBhdCBhbGwu
+CgpZZWFoIHNvcnJ5OyBtaXN1bmRlcnN0b29kIGVudGlyZWx5IGhvdyB0aGF0IHdhcyBzdXBwb3Nl
+ZCB0byB3b3JrLiBGcm9tCnRoZSBmb2xsb3dpbmcgY29tbWVudCwgdGhpcyBwcm9iYWJseSBuZWVk
+cyByZS1pbXBsZW1lbnRpbmcgYXMKbGlzdF9mb3JfZWFjaF9lbnRyeSBhbnl3YXkKCj4KPj4gKwkJ
+CQkJCQkJJnBjaV9kZXYtPmRldi5saW5rcy5jb25zdW1lcnMsCj4+ICsJCQkJCQkJCXN0cnVjdCBk
+ZXZfbGlua3NfaW5mbywKPj4gKwkJCQkJCQkJY29uc3VtZXJzKTsKPiBIb3cgZG8geW91ICJrbm93
+IiB0aGlzIGlzIHRoZSBmaXJzdCBsaW5rPyAgVGhpcyBmZWVscyByZWFsbHkgcmVhbGx5Cj4gd3Jv
+bmcgYW5kIHZlcnkgZnJhZ2lsZS4KPgo+PiArCj4+ICsJCWlmICghc2Vuc29yKQo+PiArCQkJcmV0
+dXJuIC1FUFJPQkVfREVGRVI7Cj4gU28gYW55IHJhbmRvbSB2YWx1ZSB3aWxsIHdvcms/ICBJIGRv
+dWJ0IGl0IDopClNvIHRoZSBpbnRlbnRpb24gd2FzIGp1c3QgdG8gY2hlY2sgdGhhdCB0aGVyZSBp
+cyBfYV8gbGlua2VkIGRldmljZSwKd2hpY2ggSSBoYWQgYmVlbiBhc3N1bWluZyB3b3VsZCBiZSBh
+IHNlbnNvciB0aGF0IHdhbnRlZCB0byB1c2UgdGhlIGNpbzIKZGV2aWNlLiBUaGF0J3MgcHJvYmFi
+bHkgbm90IHZlcnkgc21hcnQgaW4gcmV0cm9zcGVjdDsgSSBoYWRuJ3QKY29uc2lkZXJlZCBvdGhl
+ciBub25lLW1lIHBpZWNlcyBvZiBjb2RlIGxpbmtpbmcgaW4uIEkgZ3Vlc3MgYSBiZXR0ZXIKYXBw
+cm9hY2ggd291bGQgYmUgdG8gY2hlY2sgYWxsIHRoZSBsaW5rZWQgZGV2aWNlcyB3aXRoIGxpc3Rf
+ZWFjaF9lbnRyeQphbmQgZGV0ZXJtaW5lIGlmIGF0IGxlYXN0IG9uZSBvZiB0aGVtIGlzIGEgc2Vu
+c29yLgo+Cj4+ICsJfQo+PiArCj4+ICsJcmV0dXJuIDA7Cj4+ICt9Cj4+ICsKPj4gK3ZvaWQgY2lv
+Ml9zeW5jX3N0YXRlKHN0cnVjdCBkZXZpY2UgKmRldikKPj4gK3sKPj4gKwlzdHJ1Y3QgY2lvMl9k
+ZXZpY2UgKmNpbzI7Cj4+ICsJaW50IHJldCA9IDA7Cj4+ICsKPj4gKwlpZiAoSVNfRU5BQkxFRChD
+T05GSUdfQUNQSSkpIHsKPj4gKwkJY2lvMiA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+PiArCj4+
+ICsJCWlmICghY2lvMikgewo+PiArCQkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gcmV0cmlldmUg
+ZHJpdmVyIGRhdGFcbiIpOwo+IEhvdyBjYW4gdGhpcyBmYWlsPwpZZWFoIEkgZ3Vlc3MgaWYgdGhl
+IGNpbzJfcGNpX3Byb2JlKCkgbmV2ZXIgbWFkZSBpdCB0byBzZXR0aW5nIGRyaXZlcgpkYXRhIHRo
+ZW4gdGhlIHN5bmNfc3RhdGUoKSBzaG91bGRuJ3QgZ2V0IGNhbGxlZDsgdGhhbmtzLgo+Cj4+ICsJ
+CQlyZXR1cm47Cj4gTm8gZXJyb3IgdmFsdWU/ClRoZSBwcm90b3R5cGUgZm9yIHN5bmNfc3RhdGUg
+Y2FsbGJhY2tzIGlzIHRvIHJldHVybiB2b2lkLCBzbyBteQp1bmRlcnN0YW5kaW5nIGlzIGl0IGNh
+bid0IHJldHVybiBhbiBlcnJvciB2YWx1ZS7CoCBJIGd1ZXNzIGEgYmV0dGVyIHRoaW5nCnRvIGRv
+IG1pZ2h0IGJlIGNhbGwgYW5vdGhlciBmdW5jdGlvbiBwZXJmb3JtaW5nIGNsZWFudXAgYW5kIHVu
+bG9hZGluZwp0aGUgZHJpdmVyIGJlZm9yZSB0aGUgcmV0dXJuIG9yIHNvbWV0aGluZyBhbG9uZyB0
+aG9zZSBsaW5lcyB0aG91Z2guCj4KPj4gKwkJfQo+PiArCj4+ICsJCS8qIGluc2VydCB0aGUgYnJp
+ZGdlIGRyaXZlciB0byBjb25uZWN0IHNlbnNvcnMgdmlhIHNvZnR3YXJlIG5vZGVzICovCj4+ICsJ
+CXJldCA9IHJlcXVlc3RfbW9kdWxlKCJjaW8yLWJyaWRnZSIpOwo+PiArCj4+ICsJCWlmIChyZXQp
+Cj4+ICsJCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBpbnNlcnQgY2lvMi1icmlkZ2VcbiIpOwo+
+IFlldCB5b3Uga2VlcCBvbiBpbiB0aGUgZnVuY3Rpb24/Pz8KPj4gKwo+PiArCQlyZXQgPSBjaW8y
+X3BhcnNlX2Zpcm13YXJlKGNpbzIpOwo+PiArCj4+ICsJCWlmIChyZXQpIHsKPj4gKwkJCXY0bDJf
+YXN5bmNfbm90aWZpZXJfdW5yZWdpc3RlcigmY2lvMi0+bm90aWZpZXIpOwo+PiArCQkJdjRsMl9h
+c3luY19ub3RpZmllcl9jbGVhbnVwKCZjaW8yLT5ub3RpZmllcik7Cj4+ICsJCQljaW8yX3F1ZXVl
+c19leGl0KGNpbzIpOwo+IEJ1dCB5b3UgY2xlYW4gdXAgYWZ0ZXIgdGhpcyBlcnJvcj8KPgpJZiB0
+aGUgYnJpZGdlIGRvZXNuJ3Qgd29yaywgdGhlIGNpbzJfcGFyc2VfZmlybXdhcmUoKSBjYWxsIHNo
+b3VsZCBiZWhhdmUKYXMgaXQgZG9lcyBub3cgb24gdGhlc2UgcGxhdGZvcm1zIC0gSS5FLiBqdXN0
+IG5vdCBjb25uZWN0IGFueXRoaW5nLiBJZgpmZWx0IG9rIGZvciB0aGF0IHRvIGhhcHBlbiwgYnV0
+IEkgY2FuIGhhdmUgaXQgcGVyZm9ybSBjbGVhbnVwIGF0IHRoaXMKcG9pbnQgaWYgdGhhdCdzIGEg
+YmV0dGVyIGFwcHJvYWNoLgo+PiArCQl9Cj4+ICsJfQo+IEFuZCBhZ2FpbiwgZG8gbm90IHRlbGwg
+YW55b25lPwo+Cj4gRmVlbHMgcmVhbGx5IHdyb25nLi4uCkkgdGhpbmsgcmV0dXJuIHR5cGUgdm9p
+ZCBwcmV2ZW50cyB0aGF0LCBidXQgSSBjb3VsZCBiZSBjb21wbGV0ZWx5IHdyb25nCmFib3V0IHRo
+YXQuCj4+ICt9Cj4+ICsKPj4gIC8qKioqKioqKioqKioqKioqIFBDSSBpbnRlcmZhY2UgKioqKioq
+KioqKioqKioqKi8KPj4gIAo+PiAgc3RhdGljIGludCBjaW8yX3BjaV9jb25maWdfc2V0dXAoc3Ry
+dWN0IHBjaV9kZXYgKmRldikKPj4gQEAgLTE3NDYsNiArMTc5OSwxMSBAQCBzdGF0aWMgaW50IGNp
+bzJfcGNpX3Byb2JlKHN0cnVjdCBwY2lfZGV2ICpwY2lfZGV2LAo+PiAgCXZvaWQgX19pb21lbSAq
+Y29uc3QgKmlvbWFwOwo+PiAgCWludCByOwo+PiAgCj4+ICsJciA9IGNpbzJfcHJvYmVfY2FuX3By
+b2dyZXNzKHBjaV9kZXYpOwo+PiArCj4+ICsJaWYgKHIpCj4+ICsJCXJldHVybiAtRVBST0JFX0RF
+RkVSOwo+PiArCj4+ICAJY2lvMiA9IGRldm1fa3phbGxvYygmcGNpX2Rldi0+ZGV2LCBzaXplb2Yo
+KmNpbzIpLCBHRlBfS0VSTkVMKTsKPj4gIAlpZiAoIWNpbzIpCj4+ICAJCXJldHVybiAtRU5PTUVN
+Owo+PiBAQCAtMTgyMSw5ICsxODc5LDExIEBAIHN0YXRpYyBpbnQgY2lvMl9wY2lfcHJvYmUoc3Ry
+dWN0IHBjaV9kZXYgKnBjaV9kZXYsCj4+ICAJdjRsMl9hc3luY19ub3RpZmllcl9pbml0KCZjaW8y
+LT5ub3RpZmllcik7Cj4+ICAKPj4gIAkvKiBSZWdpc3RlciBub3RpZmllciBmb3Igc3ViZGV2aWNl
+cyB3ZSBjYXJlICovCj4+IC0JciA9IGNpbzJfcGFyc2VfZmlybXdhcmUoY2lvMik7Cj4+IC0JaWYg
+KHIpCj4+IC0JCWdvdG8gZmFpbF9jbGVhbl9ub3RpZmllcjsKPj4gKwlpZiAoIUlTX0VOQUJMRUQo
+Q09ORklHX0FDUEkpKSB7Cj4+ICsJCXIgPSBjaW8yX3BhcnNlX2Zpcm13YXJlKGNpbzIpOwo+PiAr
+CQlpZiAocikKPj4gKwkJCWdvdG8gZmFpbF9jbGVhbl9ub3RpZmllcjsKPj4gKwl9Cj4+ICAKPj4g
+IAlyID0gZGV2bV9yZXF1ZXN0X2lycSgmcGNpX2Rldi0+ZGV2LCBwY2lfZGV2LT5pcnEsIGNpbzJf
+aXJxLAo+PiAgCQkJICAgICBJUlFGX1NIQVJFRCwgQ0lPMl9OQU1FLCBjaW8yKTsKPj4gQEAgLTIw
+NTIsNiArMjExMiw3IEBAIHN0YXRpYyBzdHJ1Y3QgcGNpX2RyaXZlciBjaW8yX3BjaV9kcml2ZXIg
+PSB7Cj4+ICAJLnJlbW92ZSA9IGNpbzJfcGNpX3JlbW92ZSwKPj4gIAkuZHJpdmVyID0gewo+PiAg
+CQkucG0gPSAmY2lvMl9wbV9vcHMsCj4+ICsJCS5zeW5jX3N0YXRlID0gY2lvMl9zeW5jX3N0YXRl
+Cj4+ICAJfSwKPj4gIH07Cj4+ICAKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRp
+YS9pcHUzL0tjb25maWcgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaXB1My9LY29uZmlnCj4+IGlu
+ZGV4IDNlOTY0MDUyM2U1MC4uMDg4NDJmZDhjMGRhIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3N0
+YWdpbmcvbWVkaWEvaXB1My9LY29uZmlnCj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9p
+cHUzL0tjb25maWcKPj4gQEAgLTE0LDMgKzE0LDE4IEBAIGNvbmZpZyBWSURFT19JUFUzX0lNR1UK
+Pj4gIAo+PiAgCSAgU2F5IFkgb3IgTSBoZXJlIGlmIHlvdSBoYXZlIGEgU2t5bGFrZS9LYWJ5IExh
+a2UgU29DIHdpdGggYSBNSVBJCj4+ICAJICBjYW1lcmEuIFRoZSBtb2R1bGUgd2lsbCBiZSBjYWxs
+ZWQgaXB1My1pbWd1Lgo+PiArCj4+ICtjb25maWcgVklERU9fQ0lPMl9CUklER0UKPj4gKwl0cmlz
+dGF0ZSAiSVBVMyBDSU8yIFNlbnNvciBCcmlkZ2UgRHJpdmVyIgo+PiArCWRlcGVuZHMgb24gUENJ
+ICYmIFZJREVPX1Y0TDIKPj4gKwlkZXBlbmRzIG9uIEFDUEkKPj4gKwlkZXBlbmRzIG9uIFg4Ngo+
+IFdoeSB4ODY/Cj4KPiBXaHkgbm90IENPTkZJR19URVNUPwpYODYgYmVjYXVzZSBhcyBmYXIgYXMg
+SSBrbm93IHRoaXMgaXMgYWxyZWFkeSB3b3JraW5nIHByb3Blcmx5IG9uIG90aGVyCnBsYXRmb3Jt
+cywgc28gd291bGRuJ3QgYmUgbmVlZGVkLiBOb3Qgc3VyZSB3aGF0IENPTkZJR19URVNUIGlzIGZv
+cjsgc29ycnkuCj4+ICsJaGVscAo+PiArCSAgVGhpcyBtb2R1bGUgcHJvdmlkZXMgYSBicmlkZ2Ug
+Y29ubmVjdGluZyBzZW5zb3JzIChJLkUuIGNhbWVyYXMpIHRvCj4+ICsJICB0aGUgQ0lPMiBkZXZp
+Y2UgaW5mcmFzdHJ1Y3R1cmUgdmlhIHNvZnR3YXJlIG5vZGVzIGJ1aWx0IGZyb20gaW5mb3JtYXRp
+b24KPj4gKwkgIHBhcnNlZCBmcm9tIHRoZSBTU0RCIGJ1ZmZlci4KPj4gKwo+PiArCSAgU2F5IFkg
+b3IgTSBoZXJlIGlmIHlvdXIgcGxhdGZvcm0ncyBjYW1lcmFzIHVzZSBJUFUzIHdpdGggY29ubmVj
+dGlvbnMKPj4gKwkgIHRoYXQgc2hvdWxkIGJlIGRlZmluZWQgaW4gQUNQSS4gVGhlIG1vZHVsZSB3
+aWxsIGJlIGNhbGxlZCBjaW8yLWJyaWRnZS4KPj4gKwo+PiArCSAgSWYgaW4gZG91YnQsIHNheSBO
+IGhlcmUuCj4+IFwgTm8gbmV3bGluZSBhdCBlbmQgb2YgZmlsZQo+PiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9zdGFnaW5nL21lZGlhL2lwdTMvTWFrZWZpbGUgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aXB1My9NYWtlZmlsZQo+PiBpbmRleCA5ZGVmODBlZjI4ZjMuLjEyZGZmNTZkYmI5ZSAxMDA2NDQK
+Pj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2lwdTMvTWFrZWZpbGUKPj4gKysrIGIvZHJp
+dmVycy9zdGFnaW5nL21lZGlhL2lwdTMvTWFrZWZpbGUKPj4gQEAgLTEwLDMgKzEwLDQgQEAgaXB1
+My1pbWd1LW9ianMgKz0gXAo+PiAgCQlpcHUzLWNzcy5vIGlwdTMtdjRsMi5vIGlwdTMubwo+PiAg
+Cj4+ICBvYmotJChDT05GSUdfVklERU9fSVBVM19JTUdVKSArPSBpcHUzLWltZ3Uubwo+PiArb2Jq
+LSQoQ09ORklHX1ZJREVPX0NJTzJfQlJJREdFKSArPSBjaW8yLWJyaWRnZS5vCj4+IFwgTm8gbmV3
+bGluZSBhdCBlbmQgb2YgZmlsZQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlh
+L2lwdTMvY2lvMi1icmlkZ2UuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9pcHUzL2NpbzItYnJp
+ZGdlLmMKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAwMDAwMDAwLi41MTE1
+YWVlYjM1YTEKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aXB1My9jaW8yLWJyaWRnZS5jCj4+IEBAIC0wLDAgKzEsNDQ4IEBACj4+ICsvLyBTUERYLUxpY2Vu
+c2UtSWRlbnRpZmllcjogR1BMLTIuMAo+PiArI2luY2x1ZGUgPGxpbnV4L2FjcGkuaD4KPj4gKyNp
+bmNsdWRlIDxhY3BpL2FjcGlfYnVzLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvZGV2aWNlLmg+Cj4+
+ICsjaW5jbHVkZSA8bGludXgvaTJjLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+
+ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvcGNpLmg+Cj4+
+ICsjaW5jbHVkZSA8bWVkaWEvdjRsMi1zdWJkZXYuaD4KPj4gKwo+PiArI2luY2x1ZGUgPGxpbnV4
+L2Z3bm9kZS5oPgo+PiArI2luY2x1ZGUgPGxpbnV4L2tyZWYuaD4KPiBXaHkga3JlZi5oPwpPb3Bz
+OyBhIGxlZnRvdmVyIGZyb20gZGVidWdnaW5nIHNvbWUgcmVmZXJlbmNlIGNvdW50IGlzc3VlcyBp
+biB0aGUKZWFybGllciBkYXlzIC0gSSdsbCB0YWtlIHRoYXQgb3V0Lgo+PiArCj4+ICtzdGF0aWMg
+dm9pZCBjaW8yX2JyaWRnZV9leGl0KHZvaWQpOwo+PiArc3RhdGljIGludCBjaW8yX2JyaWRnZV9p
+bml0KHZvaWQpOwo+PiArCj4+ICsjZGVmaW5lIE1BWF9DT05ORUNURURfREVWSUNFUwkJCTQKPj4g
+KyNkZWZpbmUgU1dOT0RFX1NFTlNPUl9ISUQJCQkwCj4+ICsjZGVmaW5lIFNXTk9ERV9TRU5TT1Jf
+UE9SVAkJCTEKPj4gKyNkZWZpbmUgU1dOT0RFX1NFTlNPUl9FTkRQT0lOVAkJCTIKPj4gKyNkZWZp
+bmUgU1dOT0RFX0NJTzJfUE9SVAkJCTMKPj4gKyNkZWZpbmUgU1dOT0RFX0NJTzJfRU5EUE9JTlQJ
+CQk0Cj4+ICsjZGVmaW5lIFNXTk9ERV9OVUxMX1RFUk1JTkFUT1IJCQk1Cj4+ICsKPj4gKyNkZWZp
+bmUgQ0lPMl9ISUQJCQkJIklOVDM0M0UiCj4+ICsjZGVmaW5lIENJTzJfUENJX0lECQkJCTB4OWQz
+Mgo+PiArCj4+ICsjZGVmaW5lIEVORFBPSU5UX1NFTlNPUgkJCQkwCj4+ICsjZGVmaW5lIEVORFBP
+SU5UX0NJTzIJCQkJMQo+PiArCj4+ICsjZGVmaW5lIE5PREVfSElEKF9ISUQpCQkJCVwKPj4gKygo
+Y29uc3Qgc3RydWN0IHNvZnR3YXJlX25vZGUpIHsJCQlcCj4+ICsJX0hJRCwJCQkJCVwKPj4gK30p
+Cj4+ICsKPj4gKyNkZWZpbmUgTk9ERV9QT1JUKF9QT1JULCBfSElEX05PREUpCQlcCj4+ICsoKGNv
+bnN0IHN0cnVjdCBzb2Z0d2FyZV9ub2RlKSB7CQkJXAo+PiArCV9QT1JULAkJCQkJXAo+PiArCV9I
+SURfTk9ERSwJCQkJXAo+PiArfSkKPj4gKwo+PiArI2RlZmluZSBOT0RFX0VORFBPSU5UKF9FUCwg
+X1BPUlQsIF9QUk9QUykJXAo+PiArKChjb25zdCBzdHJ1Y3Qgc29mdHdhcmVfbm9kZSkgewkJCVwK
+Pj4gKwlfRVAsCQkJCQlcCj4+ICsJX1BPUlQsCQkJCQlcCj4+ICsJX1BST1BTLAkJCQkJXAo+PiAr
+fSkKPj4gKwo+PiArI2RlZmluZSBQUk9QRVJUWV9FTlRSWV9OVUxMCQkJXAo+PiArKChjb25zdCBz
+dHJ1Y3QgcHJvcGVydHlfZW50cnkpIHsgfSkKPj4gKyNkZWZpbmUgU09GVFdBUkVfTk9ERV9OVUxM
+CQkJXAo+PiArKChjb25zdCBzdHJ1Y3Qgc29mdHdhcmVfbm9kZSkgeyB9KQo+PiArCj4+ICsvKgo+
+PiArICogRXh0ZW5kIHRoaXMgYXJyYXkgd2l0aCBBQ1BJIEhhcmR3YXJlIElEJ3Mgb2YgZGV2aWNl
+cyBrbm93biB0byBiZQo+PiArICogd29ya2luZwo+PiArICovCj4+ICsKPj4gK3N0YXRpYyBjaGFy
+ICpzdXBwb3J0ZWRfZGV2aWNlc1tdID0gewo+PiArCSJJTlQzM0JFIiwKPj4gKwkiT1ZUSTI2ODAi
+LAo+PiArCSJPVlRJNTY0OCIsCj4+ICt9Owo+PiArCj4+ICsvKgo+PiArICogc29mdHdhcmVfbm9k
+ZSBuZWVkcyBjb25zdCBjaGFyICogbmFtZXMuIENhbid0IHNucHJpbnRmIGEgY29uc3QgY2hhciAq
+LAo+PiArICogc28gaW5zdGVhZCB3ZSBuZWVkIGFuIGFycmF5IG9mIHRoZW0gYW5kIHVzZSB0aGUg
+cG9ydCBudW0gZnJvbSBTU0RCIGFzCj4+ICsgKiBhbiBpbmRleC4KPj4gKyAqLwo+PiArCj4+ICtj
+b25zdCBjaGFyICpwb3J0X25hbWVzW10gPSB7Cj4+ICsJInBvcnQwIiwgInBvcnQxIiwgInBvcnQy
+IiwgInBvcnQzIiwgInBvcnQ0IiwKPj4gKwkicG9ydDUiLCAicG9ydDYiLCAicG9ydDciLCAicG9y
+dDgiLCAicG9ydDkiCj4+ICt9Owo+PiArCj4+ICtzdHJ1Y3Qgc29mdHdhcmVfbm9kZSBjaW8yX2hp
+ZF9ub2RlID0geyBDSU8yX0hJRCwgfTsKPj4gKwo+PiArc3RydWN0IHNlbnNvciB7Cj4+ICsJc3Ry
+dWN0IGRldmljZSAqZGV2Owo+PiArCXN0cnVjdCBzb2Z0d2FyZV9ub2RlIHN3bm9kZXNbNV07Cj4+
+ICsJc3RydWN0IHByb3BlcnR5X2VudHJ5IHNlbnNvcl9wcm9wc1s2XTsKPj4gKwlzdHJ1Y3QgcHJv
+cGVydHlfZW50cnkgY2lvMl9wcm9wc1szXTsKPj4gKwlzdHJ1Y3QgZndub2RlX2hhbmRsZSAqZndu
+b2RlOwo+PiArfTsKPj4gKwo+PiArc3RydWN0IGNpbzJfYnJpZGdlIHsKPj4gKwlpbnQgbl9zZW5z
+b3JzOwo+PiArCXN0cnVjdCBzZW5zb3Igc2Vuc29yc1tNQVhfQ09OTkVDVEVEX0RFVklDRVNdOwo+
+PiArCXN0cnVjdCBwY2lfZGV2ICpjaW8yOwo+PiArCXN0cnVjdCBmd25vZGVfaGFuZGxlICpjaW8y
+X2Z3bm9kZTsKPj4gK307Cj4+ICsKPj4gK3N0cnVjdCBjaW8yX2JyaWRnZSBicmlkZ2UgPSB7IDAs
+IH07Cj4+ICsKPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgcHJvcGVydHlfZW50cnkgcmVtb3RlX2Vu
+ZHBvaW50c1tdID0gewo+PiArCVBST1BFUlRZX0VOVFJZX1JFRigicmVtb3RlLWVuZHBvaW50Iiwg
+LyogU2Vuc29yIDAsIFNlbnNvciBQcm9wZXJ0eSAqLwo+PiArCQkJICAgJmJyaWRnZS5zZW5zb3Jz
+WzBdLnN3bm9kZXNbU1dOT0RFX0NJTzJfRU5EUE9JTlRdKSwKPj4gKwlQUk9QRVJUWV9FTlRSWV9S
+RUYoInJlbW90ZS1lbmRwb2ludCIsIC8qIFNlbnNvciAwLCBDSU8yIFByb3BlcnR5ICovCj4+ICsJ
+CQkgICAmYnJpZGdlLnNlbnNvcnNbMF0uc3dub2Rlc1tTV05PREVfU0VOU09SX0VORFBPSU5UXSks
+Cj4+ICsJUFJPUEVSVFlfRU5UUllfUkVGKCJyZW1vdGUtZW5kcG9pbnQiLAo+PiArCQkJICAgJmJy
+aWRnZS5zZW5zb3JzWzFdLnN3bm9kZXNbU1dOT0RFX0NJTzJfRU5EUE9JTlRdKSwKPj4gKwlQUk9Q
+RVJUWV9FTlRSWV9SRUYoInJlbW90ZS1lbmRwb2ludCIsCj4+ICsJCQkgICAmYnJpZGdlLnNlbnNv
+cnNbMV0uc3dub2Rlc1tTV05PREVfU0VOU09SX0VORFBPSU5UXSksCj4+ICsJUFJPUEVSVFlfRU5U
+UllfUkVGKCJyZW1vdGUtZW5kcG9pbnQiLAo+PiArCQkJICAgJmJyaWRnZS5zZW5zb3JzWzJdLnN3
+bm9kZXNbU1dOT0RFX0NJTzJfRU5EUE9JTlRdKSwKPj4gKwlQUk9QRVJUWV9FTlRSWV9SRUYoInJl
+bW90ZS1lbmRwb2ludCIsCj4+ICsJCQkgICAmYnJpZGdlLnNlbnNvcnNbMl0uc3dub2Rlc1tTV05P
+REVfU0VOU09SX0VORFBPSU5UXSksCj4+ICsJUFJPUEVSVFlfRU5UUllfUkVGKCJyZW1vdGUtZW5k
+cG9pbnQiLAo+PiArCQkJICAgJmJyaWRnZS5zZW5zb3JzWzNdLnN3bm9kZXNbU1dOT0RFX0NJTzJf
+RU5EUE9JTlRdKSwKPj4gKwlQUk9QRVJUWV9FTlRSWV9SRUYoInJlbW90ZS1lbmRwb2ludCIsCj4+
+ICsJCQkgICAmYnJpZGdlLnNlbnNvcnNbM10uc3dub2Rlc1tTV05PREVfU0VOU09SX0VORFBPSU5U
+XSksCj4+ICsJeyB9Cj4+ICt9Owo+PiArCj4+ICsvKiBEYXRhIHJlcHJlc2VudGF0aW9uIGFzIGl0
+IGlzIGluIEFDUEkgU1NEQiBidWZmZXIgKi8KPj4gK3N0cnVjdCBzZW5zb3JfYmlvc19kYXRhX3Bh
+Y2tlZCB7Cj4+ICsJdTggdmVyc2lvbjsKPj4gKwl1OCBza3U7Cj4+ICsJdTggZ3VpZF9jc2kyWzE2
+XTsKPj4gKwl1OCBkZXZmdW5jdGlvbjsKPj4gKwl1OCBidXM7Cj4+ICsJdTMyIGRwaHlsaW5rZW5m
+dXNlczsKPj4gKwl1MzIgY2xvY2tkaXY7Cj4+ICsJdTggbGluazsKPj4gKwl1OCBsYW5lczsKPj4g
+Kwl1MzIgY3NpcGFyYW1zWzEwXTsKPj4gKwl1MzIgbWF4bGFuZXNwZWVkOwo+PiArCXU4IHNlbnNv
+cmNhbGliZmlsZWlkeDsKPj4gKwl1OCBzZW5zb3JjYWxpYmZpbGVpZHhJbk1CWlszXTsKPj4gKwl1
+OCByb210eXBlOwo+PiArCXU4IHZjbXR5cGU7Cj4+ICsJdTggcGxhdGZvcm1pbmZvOwo+PiArCXU4
+IHBsYXRmb3Jtc3ViaW5mbzsKPj4gKwl1OCBmbGFzaDsKPj4gKwl1OCBwcml2YWN5bGVkOwo+PiAr
+CXU4IGRlZ3JlZTsKPj4gKwl1OCBtaXBpbGlua2RlZmluZWQ7Cj4+ICsJdTMyIG1jbGtzcGVlZDsK
+Pj4gKwl1OCBjb250cm9sbG9naWNpZDsKPj4gKwl1OCByZXNlcnZlZDFbM107Cj4+ICsJdTggbWNs
+a3BvcnQ7Cj4+ICsJdTggcmVzZXJ2ZWQyWzEzXTsKPj4gK30gX19hdHRyaWJ1dGVfXygoX19wYWNr
+ZWRfXykpOwo+IEVuZGlhbiBpc3N1ZXM/Pz8KPgo+IFRoaXMgZG9lc24ndCBsb29rICJwYWNrZWQi
+IHRvIG1lLCBkaWQgeW91IGNoZWNrIGl0Pwo+Cj4gSSd2ZSBzdG9wcGVkIGhlcmUsIHNvcnJ5LCBy
+YW4gb3V0IG9mIHRpbWUuLi4KPgpJIGRpZG4ndCAtIEknbGwgZG8gdGhhdC4gSSBhcHByZWNpYXRl
+IHlvdSBzcGVuZGluZyB0aGUgdGltZSBhdCBhbGwgLQp0aGFua3MsIGFuZCBzb3JyeSBpdCdzIGJl
+ZW4gc28gbWVzc3khCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
+Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
+cmRldi1kZXZlbAo=
