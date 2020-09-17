@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44A1A26D949
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6938726D94A
 	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 12:42:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 710B586FEC;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 309098787E;
 	Thu, 17 Sep 2020 10:42:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pj4PyO7p-n-M; Thu, 17 Sep 2020 10:42:27 +0000 (UTC)
+	with ESMTP id 5PdGHyvJvU7M; Thu, 17 Sep 2020 10:42:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 62C0C86FF2;
-	Thu, 17 Sep 2020 10:42:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2A79F875D7;
+	Thu, 17 Sep 2020 10:42:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 33F3A1BF387
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 84A731BF387
  for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 10:42:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2ECAB875E2
+ by whitealder.osuosl.org (Postfix) with ESMTP id 802AD87849
  for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 10:42:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pTf0jZpk2OmZ for <devel@linuxdriverproject.org>;
+ with ESMTP id A0dMALAp5Wou for <devel@linuxdriverproject.org>;
  Thu, 17 Sep 2020 10:42:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9AF4887400
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D2B1B875D7
  for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 10:42:22 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5d2.dynamic.kabel-deutschland.de
  [95.90.213.210])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 02092221E3;
+ by mail.kernel.org (Postfix) with ESMTPSA id 17328221E8;
  Thu, 17 Sep 2020 10:42:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1600339342;
- bh=l8+mYv084D4frOVuw6OrW0ntYZbpPSfoQqaxrT6lcCY=;
+ bh=UOCbT6+TUWASYZtIXMGZ4YnAf+brsQ2Q0q2Y64sRld8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Jv7YW6NGNBqfYcj0bEnYGgszSVaxcjX9SrEZYLacnezvfTO7yrB+HK1nheaZgiAkZ
- djs+DNTgguP7ry7pzcWtyc3JOv3C4gkSBq6glxLE8emVHGFUiJyCLjQnAeSKn1LNPg
- hsS7hkRpMUi3whOrR5oKSTepXW6k77q8ojgKyEU0=
+ b=XzOz6CGQWbjHWoSTNtZwc1lOlcCR91JP3KIaQ+HpXs0TG12bcSB3JS8tc6bhHcIdo
+ li8GLcCTCcK31oJ4NADV3ZbQPQ77fJW+DmuO0Cm4Zc9Q6flMvIx1pTvllW9Z6bVacd
+ A2l4QdfSfdwJL7WIpfUXPODmnQ7rpp5eDB3TaggE=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1kIrMp-005WZf-Rt; Thu, 17 Sep 2020 12:42:19 +0200
+ id 1kIrMp-005WZi-TK; Thu, 17 Sep 2020 12:42:19 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Greg KH <gregkh@linuxfoundation.org>
-Subject: [PATCH v4 7/8] staging: hikey9xx: phy-hi3670-usb3: change some DT
- properties
-Date: Thu, 17 Sep 2020 12:42:11 +0200
-Message-Id: <da128b9943bcb6a3d44a9512cedc7fa7a4aedee6.1600338981.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v4 8/8] staging: hikey9xx: convert phy-kirin970-usb3.txt to
+ yaml
+Date: Thu, 17 Sep 2020 12:42:12 +0200
+Message-Id: <03535ba996b3d82d522ce9c529bc2ce8e1d8d531.1600338981.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1600338981.git.mchehab+huawei@kernel.org>
 References: <cover.1600338981.git.mchehab+huawei@kernel.org>
@@ -78,43 +78,125 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Do some changes at the DT properties in order to make it
-follow the phy-hi3660-usb3 example and to simplify
-usb3-phy-tx-vboost-lvl name.
+Use the new YAML for this physical layer.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/phy-hi3670-usb3.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/hikey9xx/phy-hi3670-usb3.txt  | 25 -------
+ drivers/staging/hikey9xx/phy-hi3670-usb3.yaml | 72 +++++++++++++++++++
+ 2 files changed, 72 insertions(+), 25 deletions(-)
+ delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.txt
+ create mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
 
-diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.c b/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-index cb0bfcbbfbfa..42dbc20a0b9a 100644
---- a/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-+++ b/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-@@ -627,18 +627,18 @@ static int hi3670_phy_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->sctrl);
- 	}
- 
--	priv->usb31misc = syscon_regmap_lookup_by_phandle(dev->of_node,
--							  "hisilicon,usb31-misc-syscon");
-+	/* node of hi3670 phy is a sub-node of usb3_otg_bc */
-+	priv->usb31misc = syscon_node_to_regmap(dev->parent->of_node);
- 	if (IS_ERR(priv->usb31misc)) {
--		dev_err(dev, "no hisilicon,usb31-misc-syscon\n");
-+		dev_err(dev, "no hisilicon,usb3-otg-bc-syscon\n");
- 		return PTR_ERR(priv->usb31misc);
- 	}
- 
--	if (of_property_read_u32(dev->of_node, "eye-diagram-param",
-+	if (of_property_read_u32(dev->of_node, "hisilicon,eye-diagram-param",
- 				 &priv->eye_diagram_param))
- 		priv->eye_diagram_param = KIRIN970_USB_DEFAULT_PHY_PARAM;
- 
--	if (of_property_read_u32(dev->of_node, "usb3-phy-tx-vboost-lvl",
-+	if (of_property_read_u32(dev->of_node, "hisilicon,tx-vboost-lvl",
- 				 &priv->tx_vboost_lvl))
- 		priv->eye_diagram_param = KIRIN970_USB_DEFAULT_PHY_VBOOST;
- 
+diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.txt b/drivers/staging/hikey9xx/phy-hi3670-usb3.txt
+deleted file mode 100644
+index 2fb27cb8beaf..000000000000
+--- a/drivers/staging/hikey9xx/phy-hi3670-usb3.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-Hisilicon Kirin970 usb PHY
+------------------------
+-
+-Required properties:
+-- compatible: should be "hisilicon,hi3670-usb-phy"
+-- #phy-cells: must be 0
+-- hisilicon,pericrg-syscon: phandle of syscon used to control phy.
+-- hisilicon,pctrl-syscon: phandle of syscon used to control phy.
+-- hisilicon,sctrl-syscon: phandle of syscon used to control phy.
+-- hisilicon,usb31-misc-syscon: phandle of syscon used to control phy.
+-- eye-diagram-param: parameter set for phy
+-- usb3-phy-tx-vboost-lvl: parameter set for phy
+-Refer to phy/phy-bindings.txt for the generic PHY binding properties
+-
+-Example:
+-	usb_phy: usbphy {
+-		compatible = "hisilicon,hi3670-usb-phy";
+-		#phy-cells = <0>;
+-		hisilicon,pericrg-syscon = <&crg_ctrl>;
+-		hisilicon,pctrl-syscon = <&pctrl>;
+-		hisilicon,sctrl-syscon = <&sctrl>;
+-		hisilicon,usb31-misc-syscon = <&usb31_misc>;
+-		eye-diagram-param = <0xFDFEE4>;
+-		usb3-phy-tx-vboost-lvl = <0x5>;
+-	};
+diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.yaml b/drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+new file mode 100644
+index 000000000000..125a5d6546ae
+--- /dev/null
++++ b/drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+@@ -0,0 +1,72 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/hisilicon,hi3670-usb3.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Hisilicon Kirin970 USB PHY
++
++maintainers:
++  - Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
++description: |+
++  Bindings for USB3 PHY on HiSilicon Kirin 970.
++
++properties:
++  compatible:
++    const: hisilicon,hi3670-usb-phy
++
++  "#phy-cells":
++    const: 0
++
++  hisilicon,pericrg-syscon:
++    $ref: '/schemas/types.yaml#/definitions/phandle'
++    description: phandle of syscon used to control iso refclk.
++
++  hisilicon,pctrl-syscon:
++    $ref: '/schemas/types.yaml#/definitions/phandle'
++    description: phandle of syscon used to control usb tcxo.
++
++  hisilicon,sctrl-syscon:
++    $ref: '/schemas/types.yaml#/definitions/phandle'
++    description: phandle of syscon used to control phy deep sleep.
++
++  hisilicon,eye-diagram-param:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Eye diagram for phy.
++
++  hisilicon,tx-vboost-lvl:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: TX level vboost for phy.
++
++required:
++  - compatible
++  - hisilicon,pericrg-syscon
++  - hisilicon,pctrl-syscon
++  - hisilicon,sctrl-syscon
++  - hisilicon,eye-diagram-param
++  - hisilicon,tx-vboost-lvl
++  - "#phy-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      usb3_otg_bc: usb3_otg_bc@ff200000 {
++        compatible = "syscon", "simple-mfd";
++        reg = <0x0 0xff200000 0x0 0x1000>;
++
++        usb_phy {
++          compatible = "hisilicon,hi3670-usb-phy";
++          #phy-cells = <0>;
++          hisilicon,pericrg-syscon = <&crg_ctrl>;
++          hisilicon,pctrl-syscon = <&pctrl>;
++          hisilicon,sctrl-syscon = <&sctrl>;
++          hisilicon,eye-diagram-param = <0xfdfee4>;
++          hisilicon,tx-vboost-lvl = <0x5>;
++        };
++      };
++    };
 -- 
 2.26.2
 
