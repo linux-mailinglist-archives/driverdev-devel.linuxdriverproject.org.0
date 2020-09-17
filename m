@@ -1,62 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6938726D94A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 12:42:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E121A26D997
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 12:52:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 309098787E;
-	Thu, 17 Sep 2020 10:42:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8CD8F2E191;
+	Thu, 17 Sep 2020 10:52:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5PdGHyvJvU7M; Thu, 17 Sep 2020 10:42:27 +0000 (UTC)
+	with ESMTP id MAn7n13F-pZ0; Thu, 17 Sep 2020 10:52:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2A79F875D7;
-	Thu, 17 Sep 2020 10:42:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4CDE2E181;
+	Thu, 17 Sep 2020 10:52:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 84A731BF387
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 10:42:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6DF3C1BF387
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 10:52:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 802AD87849
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 10:42:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id EFDF087555
+ for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 10:51:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A0dMALAp5Wou for <devel@linuxdriverproject.org>;
- Thu, 17 Sep 2020 10:42:22 +0000 (UTC)
+ with ESMTP id PCW9l7RYQ1-s for <devel@linuxdriverproject.org>;
+ Thu, 17 Sep 2020 10:51:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D2B1B875D7
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 10:42:22 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5d2.dynamic.kabel-deutschland.de
- [95.90.213.210])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 17328221E8;
- Thu, 17 Sep 2020 10:42:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600339342;
- bh=UOCbT6+TUWASYZtIXMGZ4YnAf+brsQ2Q0q2Y64sRld8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=XzOz6CGQWbjHWoSTNtZwc1lOlcCR91JP3KIaQ+HpXs0TG12bcSB3JS8tc6bhHcIdo
- li8GLcCTCcK31oJ4NADV3ZbQPQ77fJW+DmuO0Cm4Zc9Q6flMvIx1pTvllW9Z6bVacd
- A2l4QdfSfdwJL7WIpfUXPODmnQ7rpp5eDB3TaggE=
-Received: from mchehab by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1kIrMp-005WZi-TK; Thu, 17 Sep 2020 12:42:19 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: [PATCH v4 8/8] staging: hikey9xx: convert phy-kirin970-usb3.txt to
- yaml
-Date: Thu, 17 Sep 2020 12:42:12 +0200
-Message-Id: <03535ba996b3d82d522ce9c529bc2ce8e1d8d531.1600338981.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1600338981.git.mchehab+huawei@kernel.org>
-References: <cover.1600338981.git.mchehab+huawei@kernel.org>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5ACE48754A
+ for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 10:51:57 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08HAmPgZ173583;
+ Thu, 17 Sep 2020 10:51:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=128JYvB1/lmV8xI78ndvYWC8FeCoUJpVcSljx9SrvpM=;
+ b=BgicA9ehoRykkgTkNpjKAwj/XN7TtpnaePV4WmuvWeT2mqC1TRh6WLVaL4T8NkFQQLvt
+ oAhaYrwk4G5HijzeIMZKgAPUwxsa8yEASN/XkHzKjdFoDrFXVdEGBdF8Ka0YjHoDflaV
+ bWGkroDeTkLZHB66X2EjxXxmXIcs7Z4PeGegZMXYUigmZcH7YTmvjSGMdZ0PNHRdzESg
+ DjLdDhR5axaXvG4fM6ZOaiXT6Da5JvJZHvFDVLyM3xqQ9RUfQSnEhiDwxhqdKeHREg89
+ K7Zkac9PX+layGgGUWIlkGmma6sR54e/C46HhAbN9FRdIsvb0rxrba9Xlme32YHUefKg rw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 33j91dt402-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 17 Sep 2020 10:51:53 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08HAinTl095421;
+ Thu, 17 Sep 2020 10:49:53 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 33h893gq3a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 17 Sep 2020 10:49:53 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08HAnp23028997;
+ Thu, 17 Sep 2020 10:49:51 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 17 Sep 2020 10:49:50 +0000
+Date: Thu, 17 Sep 2020 13:49:41 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
+ via software nodes on ACPI platforms
+Message-ID: <20200917104941.GP4282@kadam>
+References: <20200916213618.8003-1-djrscally@gmail.com>
+ <20200917103343.GW26842@paasikivi.fi.intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200917103343.GW26842@paasikivi.fi.intel.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9746
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ spamscore=0 adultscore=0
+ suspectscore=0 mlxscore=0 bulkscore=0 mlxlogscore=999 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009170082
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9746
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ impostorscore=0
+ priorityscore=1501 malwarescore=0 suspectscore=0 mlxlogscore=999
+ clxscore=1015 adultscore=0 lowpriorityscore=0 spamscore=0 mlxscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009170083
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,136 +99,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Manivannan Sadhasivam <mani@kernel.org>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
- John Stultz <john.stultz@linaro.org>, mauro.chehab@huawei.com
+Cc: devel@driverdev.osuosl.org, robh@kernel.org, mchehab@kernel.org,
+ jorhand@linux.microsoft.com, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, kieran.bingham@ideasonboard.com,
+ Daniel Scally <djrscally@gmail.com>, kitakar@gmail.com, yong.zhi@intel.com,
+ bingbu.cao@intel.com, andriy.shevchenko@linux.intel.com, davem@davemloft.net,
+ tian.shu.qiu@intel.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use the new YAML for this physical layer.
+On Thu, Sep 17, 2020 at 01:33:43PM +0300, Sakari Ailus wrote:
+> > +static int connect_supported_devices(void)
+> > +{
+> > +	struct acpi_device *adev;
+> > +	struct device *dev;
+> > +	struct sensor_bios_data ssdb;
+> > +	struct sensor *sensor;
+> > +	struct property_entry *sensor_props;
+> > +	struct property_entry *cio2_props;
+> > +	struct fwnode_handle *fwnode;
+> > +	struct software_node *nodes;
+> > +	struct v4l2_subdev *sd;
+> > +	int i, ret;
+> 
+> unsigned int i
+> 
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- drivers/staging/hikey9xx/phy-hi3670-usb3.txt  | 25 -------
- drivers/staging/hikey9xx/phy-hi3670-usb3.yaml | 72 +++++++++++++++++++
- 2 files changed, 72 insertions(+), 25 deletions(-)
- delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.txt
- create mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+Why?
 
-diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.txt b/drivers/staging/hikey9xx/phy-hi3670-usb3.txt
-deleted file mode 100644
-index 2fb27cb8beaf..000000000000
---- a/drivers/staging/hikey9xx/phy-hi3670-usb3.txt
-+++ /dev/null
-@@ -1,25 +0,0 @@
--Hisilicon Kirin970 usb PHY
-------------------------
--
--Required properties:
--- compatible: should be "hisilicon,hi3670-usb-phy"
--- #phy-cells: must be 0
--- hisilicon,pericrg-syscon: phandle of syscon used to control phy.
--- hisilicon,pctrl-syscon: phandle of syscon used to control phy.
--- hisilicon,sctrl-syscon: phandle of syscon used to control phy.
--- hisilicon,usb31-misc-syscon: phandle of syscon used to control phy.
--- eye-diagram-param: parameter set for phy
--- usb3-phy-tx-vboost-lvl: parameter set for phy
--Refer to phy/phy-bindings.txt for the generic PHY binding properties
--
--Example:
--	usb_phy: usbphy {
--		compatible = "hisilicon,hi3670-usb-phy";
--		#phy-cells = <0>;
--		hisilicon,pericrg-syscon = <&crg_ctrl>;
--		hisilicon,pctrl-syscon = <&pctrl>;
--		hisilicon,sctrl-syscon = <&sctrl>;
--		hisilicon,usb31-misc-syscon = <&usb31_misc>;
--		eye-diagram-param = <0xFDFEE4>;
--		usb3-phy-tx-vboost-lvl = <0x5>;
--	};
-diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.yaml b/drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
-new file mode 100644
-index 000000000000..125a5d6546ae
---- /dev/null
-+++ b/drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
-@@ -0,0 +1,72 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/hisilicon,hi3670-usb3.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Hisilicon Kirin970 USB PHY
-+
-+maintainers:
-+  - Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-+description: |+
-+  Bindings for USB3 PHY on HiSilicon Kirin 970.
-+
-+properties:
-+  compatible:
-+    const: hisilicon,hi3670-usb-phy
-+
-+  "#phy-cells":
-+    const: 0
-+
-+  hisilicon,pericrg-syscon:
-+    $ref: '/schemas/types.yaml#/definitions/phandle'
-+    description: phandle of syscon used to control iso refclk.
-+
-+  hisilicon,pctrl-syscon:
-+    $ref: '/schemas/types.yaml#/definitions/phandle'
-+    description: phandle of syscon used to control usb tcxo.
-+
-+  hisilicon,sctrl-syscon:
-+    $ref: '/schemas/types.yaml#/definitions/phandle'
-+    description: phandle of syscon used to control phy deep sleep.
-+
-+  hisilicon,eye-diagram-param:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: Eye diagram for phy.
-+
-+  hisilicon,tx-vboost-lvl:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: TX level vboost for phy.
-+
-+required:
-+  - compatible
-+  - hisilicon,pericrg-syscon
-+  - hisilicon,pctrl-syscon
-+  - hisilicon,sctrl-syscon
-+  - hisilicon,eye-diagram-param
-+  - hisilicon,tx-vboost-lvl
-+  - "#phy-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      usb3_otg_bc: usb3_otg_bc@ff200000 {
-+        compatible = "syscon", "simple-mfd";
-+        reg = <0x0 0xff200000 0x0 0x1000>;
-+
-+        usb_phy {
-+          compatible = "hisilicon,hi3670-usb-phy";
-+          #phy-cells = <0>;
-+          hisilicon,pericrg-syscon = <&crg_ctrl>;
-+          hisilicon,pctrl-syscon = <&pctrl>;
-+          hisilicon,sctrl-syscon = <&sctrl>;
-+          hisilicon,eye-diagram-param = <0xfdfee4>;
-+          hisilicon,tx-vboost-lvl = <0x5>;
-+        };
-+      };
-+    };
--- 
-2.26.2
+For list iterators then "int i;" is best...  For sizes then unsigned is
+sometimes best.  Or if it's part of the hardware spec or network spec
+unsigned is best.  Otherwise unsigned variables cause a ton of bugs.
+They're not as intuitive as signed variables.  Imagine if there is an
+error in this loop and you want to unwind.  With a signed variable you
+can do:
+
+	while (--i >= 0)
+		cleanup(&bridge.sensors[i]);
+
+There are very few times where raising the type maximum from 2 billion
+to 4 billion fixes anything.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
