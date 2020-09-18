@@ -1,52 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABB9926FD97
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 14:55:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1412926FDCC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 15:07:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C30CC2E1F6;
-	Fri, 18 Sep 2020 12:55:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 284F687695;
+	Fri, 18 Sep 2020 13:07:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tERdaogA4ca9; Fri, 18 Sep 2020 12:55:10 +0000 (UTC)
+	with ESMTP id 0eBt8qbLHMOc; Fri, 18 Sep 2020 13:07:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1AB7E2E1F5;
-	Fri, 18 Sep 2020 12:55:07 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 102AC87668;
+	Fri, 18 Sep 2020 13:07:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2A6421BF3FF
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 12:55:04 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 213801BF3AF
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 13:07:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2717C877DA
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 12:55:04 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1D814872ED
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 13:07:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QqRhWIrq1DfH
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 12:55:03 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp4.enternet.hu (smtp4.enternet.hu [62.112.192.37])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DD97A877B4
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 12:55:02 +0000 (UTC)
-Received: from [109.61.11.16] (helo=webmail.enternet.hu)
- by smtp.enternet.hu with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
- (Exim 4) id 1kHlkI-000HsC-P8; Mon, 14 Sep 2020 12:30:02 +0200
+ with ESMTP id MNV_GxbBByzG for <devel@linuxdriverproject.org>;
+ Fri, 18 Sep 2020 13:07:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 95F1B872E8
+ for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 13:07:47 +0000 (UTC)
+IronPort-SDR: liy/7eUAczna/D0ok5LTEmPTvsy1+gmsjlEdY+3Ix5d77oNgiLxZjaX3UoCmp8HfhohWwMGVGO
+ pj+ardKPj5xA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="178017216"
+X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="178017216"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2020 06:07:46 -0700
+IronPort-SDR: TTP3YG+cKXV9ElsL7dzw2WsGVKrYrvWw02TGzy1AIner1bX77kh534VhNkH57FNcGHx5Fq0hsk
+ Q/wM0fO89XGw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="336797326"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by orsmga008.jf.intel.com with ESMTP; 18 Sep 2020 06:07:42 -0700
+Received: from andy by smile with local (Exim 4.94)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1kJG71-00HaOc-8n; Fri, 18 Sep 2020 16:07:39 +0300
+Date: Fri, 18 Sep 2020 16:07:39 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
+ via software nodes on ACPI platforms
+Message-ID: <20200918130739.GA3956970@smile.fi.intel.com>
+References: <20200916213618.8003-1-djrscally@gmail.com>
+ <20200917103343.GW26842@paasikivi.fi.intel.com>
+ <8133a57d-ab4c-dccd-4325-9b10e7805648@gmail.com>
+ <20200917124514.GK3956970@smile.fi.intel.com>
+ <20200918075157.GF26842@paasikivi.fi.intel.com>
 MIME-Version: 1.0
-Date: Mon, 14 Sep 2020 12:30:10 +0200
-From: vicky Bindra <vickybindrasvgp@gmail.com>
-To: undisclosed-recipients:;
-Subject: You have been selected as a winner for Master Card Lottery promo 2020
-Mail-Reply-To: vickybindrasgp@gmail.com
-Message-ID: <033366e624ad0f0c1b4a5242419e5a8f@gmail.com>
-X-Sender: vickybindrasvgp@gmail.com
-User-Agent: Roundcube Webmail/1.3.7
+Content-Disposition: inline
+In-Reply-To: <20200918075157.GF26842@paasikivi.fi.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,72 +76,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: vickybindrasgp@gmail.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, robh@kernel.org, jorhand@linux.microsoft.com,
+ linux-media@vger.kernel.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, kieran.bingham@ideasonboard.com,
+ Dan Scally <djrscally@gmail.com>, kitakar@gmail.com, bingbu.cao@intel.com,
+ mchehab@kernel.org, davem@davemloft.net, tian.shu.qiu@intel.com,
+ yong.zhi@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpNYXN0ZXJDYXJkwq4vIE1lZ2FMb3R0ZXJ5Ck1hc3RlckNhcmTCrk9mZmljZTogMjAwMCBQdXJj
-aGFzZSBTdHJlZXQKUHVyY2hhc2UsIE5ZIDEwNTc3IFUuUy5BLgpQUkVTSURFTlQgJiBDRU86IEFq
-YXkgQmFuZ2EKCk1BU1RFUkNBUkTCrklOVEVSTkFUSU9OQUwgTE9UVEVSWSBQUk9NTwpUSUNLRVQg
-TlVNQkVSOiAwODE2IDU3MDEgNDcwClJFR0lTVFJBVElPTiBOTzogOTAyNzY0MApJTlNVUkFOQ0Ug
-Tk86IE1TVEM0MTE0VEFYCkNMRUFSQU5DRSBOTzogMjg0NTYKQU1PVU5UIFdPTjogJDksNTAwLCAw
-MDAuMDAKCkRlYXIgTWFzdGVyQ2FyZCBXaW5uZXIsLApXaXRoIHV0bW9zdCBmZWxpY2l0YXRpb24s
-IEkgYW0gcGxlYXNlZCB0byBhbm5vdW5jZSB0byB5b3UgdGhlIG9mZmljaWFsIApwdWJsaWNhdGlv
-biBvZiByZXN1bHRzIG9mIHRoZSBFLW1haWwgRWxlY3Ryb25pYyBPbmxpbmUgU3dlZXBzdGFrZXMg
-Ck9yZ2FuaXplZCBieSBNYXN0ZXJDYXJkIGluIGNvbmp1bmN0aW9uIHdpdGggTWljcm9zb2Z0IElu
-dGVybmF0aW9uYWwgCk1hc3RlckNhcmTCriBDcmVkaXQgQ2FyZCBMb3R0ZXJ5IFByb21vIGhlbGQg
-b24gMTAgSnVseSAgMjAyMCB3aGVyZSB5b3UgCih0aHJvdWdoIGFuIGVsZWN0cm9uaWMgZW1haWwg
-ZGF0YWJhc2UgcmFuZG9tIHNlbGVjdGlvbikgZW1lcmdlZCBhcyBvbmUgCm9mIHRoZSBsdWNreSB0
-d2VudHkgKDIwKSB3aW5uZXJzLiBZb3UgaGF2ZSB0aGVyZWZvcmUsIGJlZW4gYXBwcm92ZWQgYnkg
-Ck1hc3RlckNhcmTCri8gVmlzYSBDYXJkIEludGVybmF0aW9uYWwgdG8gcmVjZWl2ZSAkOSw1MDAs
-IDAwMC4wMCAoTmluZSAKTWlsbGlvbiBGaXZlIEh1bmRyZWQgVGhvdXNhbmQgVVMgRG9sbGFycylp
-biBjcmVkaXQgY2FyZCwgY3JlZGl0ZWQgdG8gCk1hc3RlckNhcmQgTm8uIDUyODMgMDQyMSAwMDI1
-IDM2MjEgYW5kIFdpdGggUmVnLk5vLiBNQ0lNSjogNTE0OC80MTc4LgoKQmUgYWxzbyBpbmZvcm1l
-ZCB0aGF0IHlvdXIgcHJpemUoTWFzdGVyQ2FyZCBOby4gNTI4MzA0MjEwMDI1MzYyMSkgaGFzIApi
-ZWVuIGluc3VyZWQgYW5kIGNyZWRpdGVkIHdpdGggdGhlIHRvdGFsIHN1bSB3b24gYW5kIHJlYWR5
-IGZvciBwYXkgb3V0IAphbmQgZGVsaXZlcnkgdG8geW91ciBkZXNpZ25hdGVkIGhvbWUgYWRkcmVz
-cyB3aGljaCB5b3UgYXJlIHRvIHByb3ZpZGUgdG8gCnlvdXIgY2xhaW0gYWRtaW5pc3RyYXRvci4g
-WW91IHdpbGwgYmUgYWJsZSB0byBtYWtlIHdpdGhkcmF3YWwgYXQgYW55IEFUTSAKcG9pbnQgb3Ig
-Y3JlZGl0IGNhcmQgZmFjaWxpdHkgaW4geW91ciBjb3VudHJ5LgoKRnVydGhlcm1vcmUsIHlvdXIg
-d2lubmluZyBwcml6ZSBkZWxpdmVyeSBsb2dpc3RpY3Mgd2lsbCBiZSBzdXBlcmludGVuZGVkIApi
-eSBvdXIgcmVnaW9uYWwgcmVwcmVzZW50YXRpdmUgb2ZmaWNlIGluIFJlcHVibGljIG9mIEJlbmlu
-IGFzIHdhcyAKaW5kaWNhdGVkIGluIHlvdXIgd2lubmluZyBjb3Vwb24gc2xpcC4KClRvIHByb2Nl
-c3MgeW91ciB3aW5uaW5nIHByaXplIGRlbGl2ZXJ5LCBwbGVhc2UgY29udGFjdCBvdXIgRm9yZWln
-biAKUGF5bWVudCBCdXJlYXUgT2ZmaWNlciBlbGVjdHJvbmljYWxseSBieSBuZWF0bHkgZmlsbGlu
-ZyB0aGUgdmVyaWZpY2F0aW9uIApkZXRhaWxzIGJlbG93OgoKKDEpICAgWW91ciBIb21lIEFkZHJl
-c3M6CigyKSAgIFlvdXIgQ29udGFjdCBUZWxlcGhvbmUvTW9iaWxlIE51bWJlcjoKKDMpICAgWW91
-ciBOYXRpb25hbGl0eS9Db3VudHJ5OgooNCkgICBZb3VyIEZ1bGwgTmFtZXM6Cig1KSAgIE9jY3Vw
-YXRpb246Cig2KSAgIEFnZS9HZW5kZXI6Cig3KSAgIE1hcml0YWwgU3RhdHVzOgooOCkgICBQcml2
-YXRlIEVtYWlsIEFkZHJlc3M6Cig5KSAgIEV2ZXIgV29uIEFuIE9ubGluZSBMb3R0ZXJ5PwooMTAp
-ICBIb3cgRG8gWW91IEZlZWwgQXMgQSBXaW5uZXI/CigxMSkgIFJFR0lTVFJBVElPTiBOTzogOTAy
-NzY0MAooMTIpICBNYXN0ZXJDYXJkIE5vOiA1MjgzIDA0MjEgMDAyNSAzNjIxCuKApuKApuKApuKA
-puKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKA
-puKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKA
-puKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApgpT
-ZW5kIHZlcmlmaWNhdGlvbiBkZXRhaWxzIHRvOgpWaWNreSBCaW5kcmE6IFByZXNpZGVudCwgTWlk
-ZGxlIEVhc3QgJiBOb3J0aCBBZnJpY2EgTWFzdGVyQ2FyZCBFeGVjdXRpdmUgCkJvYXJkLgpFbWFp
-bDogUmVwbHktVG8gdmlja3liaW5kcmFzdmdwQGdtYWlsLmNvbSwgdmlja3liaW5kcmFzZ3BAZ21h
-aWwuY29tCgpOT1RFISEhIEZvciBzZWN1cml0eSByZWFzb25zLCB5b3UgYXJlIGFkdmlzZWQgdG8g
-a2VlcCB5b3VyIHdpbm5pbmcgCmluZm9ybWF0aW9uIGNvbmZpZGVudGlhbCB0aWxsIHlvdXIgY2xh
-aW1zIGFyZSBwcm9jZXNzZWQgYW5kIHlvdXIgbW9uZXkgCnJlbWl0dGVkIHRvIHlvdS4gVGhpcyBp
-cyBwYXJ0IG9mIG91ciBwcmVjYXV0aW9uYXJ5IG1lYXN1cmUgdG8gYXZvaWQgCmRvdWJsZSBjbGFp
-bWluZyBhbmQgdW53YXJyYW50ZWQgYWJ1c2Ugb2YgdGhpcyBwcm9ncmFtIGJ5IHNvbWUgCnVuc2Ny
-dXB1bG91cyBlbGVtZW50cy4gUGxlYXNlIGJlIFdBUk5FRCEhISEK4oCm4oCm4oCm4oCm4oCm4oCm
-4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm
-4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm
-4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCmCkNvbmdyYXR1
-bGF0aW9ucyBmcm9tIHRoZSBTdGFmZnMgJiBNZW1iZXJzIG9mIE1hc3RlckNhcmQgSW50ZXJuYXRp
-b25hbC4KCgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgCk1hbGhvdHJhIFJhZ2h1LAogICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
-ICAgUHJlc2lkZW50LCBNaWRkbGUgRWFzdCAmIE5vcnRoIEFmcmljYSBNYXN0ZXJDYXJkIEV4ZWN1
-dGl2ZSBCb2FyZC4KQWpheSBCYW5nYSwKClByZXNpZGVudCBhbmQgQ2hpZWYgRXhlY3V0aXZlIE9m
-ZmljZXIsCk1hc3RlckNhcmTCriBJbnRlcm5hdGlvbmFsLgoowqkyMDIwKU1hc3RlckNhcmTCriBJ
-bnRlcm5hdGlvbmFsLgpNYXN0ZXJDYXJkIFN3ZWVwc3Rha2VzIGluIFJldHJvc3BlY3Q6CgpDaGVl
-cnMgJiBDb25ncmF0dWxhdGlvbnMsIFN0YXkgU2FmZSBhbmQgZm9sbG93IHRoZSBHb3Zlcm5tZW50
-IGFkdmlzZSBvbiAKQ292aWQgMTkgUGFuZGVtaWMuCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
-cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Fri, Sep 18, 2020 at 10:51:57AM +0300, Sakari Ailus wrote:
+> On Thu, Sep 17, 2020 at 03:45:14PM +0300, Andy Shevchenko wrote:
+> > On Thu, Sep 17, 2020 at 11:52:28AM +0100, Dan Scally wrote:
+> > > On 17/09/2020 11:33, Sakari Ailus wrote:
+> > > > a module and not enlarge everyone's kernel, and the initialisation would at
+> > > > the same time take place before the rest of what the CIO2 driver does in
+> > > > probe.
+> > > I thought of that as well, but wasn't sure which was preferable. I can
+> > > compress it into the CIO2 driver though sure.
+> > 
+> > Sakari, I tend to agree with Dan and have the board file separated from the
+> > driver and even framework.
+> 
+> And it'll be linked to the kernel binary then I suppose?
+
+Solely depends to your Kconfig dependencies and declaration.
+
+From code perspective you may do it before enumeration of the certain device or
+after with reprobe.
+
+> I don't have a strong opinion either way, just thought that this will
+> affect anyone using x86 machines, whether or not they have IPU3. I guess it
+> could be compiled in if the ipu3-cio2 driver is enabled?
+
+Of course!
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
