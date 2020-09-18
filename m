@@ -1,67 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3D3D26F762
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 09:52:10 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8455826F7AF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 10:06:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7B7258762B;
-	Fri, 18 Sep 2020 07:52:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1DB3620411;
+	Fri, 18 Sep 2020 08:06:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YtyuxIWsUz91; Fri, 18 Sep 2020 07:52:08 +0000 (UTC)
+	with ESMTP id GgyjfM487Wtn; Fri, 18 Sep 2020 08:06:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4367387637;
-	Fri, 18 Sep 2020 07:52:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0540F2E1F5;
+	Fri, 18 Sep 2020 08:05:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 521701BF23C
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 07:52:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D30CC1BF3FC
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 08:05:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4ECDC872CC
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 07:52:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CF91C877C3
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 08:05:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oGsZA7VajSzA for <devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 07:52:04 +0000 (UTC)
+ with ESMTP id X6i1oXDmjQnD for <devel@linuxdriverproject.org>;
+ Fri, 18 Sep 2020 08:05:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 98DD1872C1
- for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 07:52:04 +0000 (UTC)
-IronPort-SDR: NNsaGVvUaJHKREG1+5B1l1L9qCvr9IvPBJZCbaUh0OKtwj++ANYKMIHxRJgj1PEjUdWECGa9x4
- 82eZ5bDKrhxA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="224047894"
-X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="224047894"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Sep 2020 00:52:03 -0700
-IronPort-SDR: aGLIl3MOuejeYag5/MQZNdd9G1WZcYWhHIhn1M+ibBYwpU2kvnetFLi7rJn/wOLZSe9oYFqUbF
- 4IZrxTeb95zA==
-X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="287874902"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Sep 2020 00:51:59 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id AB1B320815; Fri, 18 Sep 2020 10:51:57 +0300 (EEST)
-Date: Fri, 18 Sep 2020 10:51:57 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2B93687626
+ for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 08:05:54 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08I83mvt192647;
+ Fri, 18 Sep 2020 08:05:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=FwzhrR6pIZT+ddO5HaCmr7glfRurUVeHrfqvesMmzJA=;
+ b=OjUABHgStFfv1CkX6AQwRtXJUXjBH0AkIeV0zBZrDu+Ryz3eHaqiUi/wTGLWwAkme4mi
+ Jntda+uCcBDcdtGph54CcMENWADtFDlzI3Gwhc0Tk3xa7jUT8b/NjeodkN0R8FroMrfE
+ V4EfxU8H8Iy0WzyNA1kXqrKPdAJdloMYv7syCm4A9hoNw5w0muNaqUd+VKI4hVFgRqbA
+ Ed47cP7Ix/k8LBfO/yKP74fMVey4y3SUtAiPNs8MvxUZArrfMmStHdLzWhRQ0iBLJiyT
+ 7Rp4JFt4gdusisIY4wJYD5zP/SneygwYvq2ic56xV0W4BZ1Hr3xQUQVDwTo6BCWUKTIt 9A== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 33gnrrdnx4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 18 Sep 2020 08:05:48 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08I80tFr079657;
+ Fri, 18 Sep 2020 08:03:48 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 33megaxe6x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Sep 2020 08:03:48 +0000
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08I83iix026517;
+ Fri, 18 Sep 2020 08:03:44 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 18 Sep 2020 08:03:44 +0000
+Date: Fri, 18 Sep 2020 11:03:35 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Daniel Scally <djrscally@gmail.com>
 Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
  via software nodes on ACPI platforms
-Message-ID: <20200918075157.GF26842@paasikivi.fi.intel.com>
+Message-ID: <20200918080335.GT4282@kadam>
 References: <20200916213618.8003-1-djrscally@gmail.com>
- <20200917103343.GW26842@paasikivi.fi.intel.com>
- <8133a57d-ab4c-dccd-4325-9b10e7805648@gmail.com>
- <20200917124514.GK3956970@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200917124514.GK3956970@smile.fi.intel.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200916213618.8003-1-djrscally@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9747
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0 spamscore=0
+ mlxlogscore=999 adultscore=0 bulkscore=0 phishscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009180067
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9747
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ spamscore=0
+ lowpriorityscore=0 malwarescore=0 mlxscore=0 bulkscore=0 suspectscore=0
+ clxscore=1015 mlxlogscore=999 adultscore=0 priorityscore=1501
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009180067
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,8 +100,8 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, robh@kernel.org, jorhand@linux.microsoft.com,
  linux-media@vger.kernel.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, kieran.bingham@ideasonboard.com,
- Dan Scally <djrscally@gmail.com>, kitakar@gmail.com, bingbu.cao@intel.com,
+ kieran.bingham@ideasonboard.com, linux-kernel@vger.kernel.org,
+ kitakar@gmail.com, sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
  mchehab@kernel.org, davem@davemloft.net, tian.shu.qiu@intel.com,
  yong.zhi@intel.com
 Content-Type: text/plain; charset="us-ascii"
@@ -85,28 +109,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Andy,
+I ran Smatch over the code and it spotted an off by one.
 
-On Thu, Sep 17, 2020 at 03:45:14PM +0300, Andy Shevchenko wrote:
-> On Thu, Sep 17, 2020 at 11:52:28AM +0100, Dan Scally wrote:
-> > On 17/09/2020 11:33, Sakari Ailus wrote:
-> > > a module and not enlarge everyone's kernel, and the initialisation would at
-> > > the same time take place before the rest of what the CIO2 driver does in
-> > > probe.
-> > I thought of that as well, but wasn't sure which was preferable. I can
-> > compress it into the CIO2 driver though sure.
-> 
-> Sakari, I tend to agree with Dan and have the board file separated from the
-> driver and even framework.
+On Wed, Sep 16, 2020 at 10:36:18PM +0100, Daniel Scally wrote:
+> +#define MAX_CONNECTED_DEVICES			4
+> +#define SWNODE_SENSOR_HID			0
+> +#define SWNODE_SENSOR_PORT			1
+> +#define SWNODE_SENSOR_ENDPOINT			2
+> +#define SWNODE_CIO2_PORT			3
+> +#define SWNODE_CIO2_ENDPOINT			4
+> +#define SWNODE_NULL_TERMINATOR			5
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-And it'll be linked to the kernel binary then I suppose?
+> +struct sensor {
+> +	struct device *dev;
+> +	struct software_node swnodes[5];
+                             ^^^^^^^^^^
+This needs to be 6 instead of 5 to prevent memory corruption.
 
-I don't have a strong opinion either way, just thought that this will
-affect anyone using x86 machines, whether or not they have IPU3. I guess it
-could be compiled in if the ipu3-cio2 driver is enabled?
+> +	struct property_entry sensor_props[6];
+> +	struct property_entry cio2_props[3];
+> +	struct fwnode_handle *fwnode;
+> +};
 
--- 
-Sakari Ailus
+
+> +		nodes[SWNODE_NULL_TERMINATOR]   = SOFTWARE_NODE_NULL;
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Here.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
