@@ -1,65 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E153226F602
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 08:41:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 61A6E2E1C2;
-	Fri, 18 Sep 2020 06:40:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w4bzo-qOL57a; Fri, 18 Sep 2020 06:40:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 361C52E1C0;
-	Fri, 18 Sep 2020 06:40:55 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CBA351BF9BA
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 06:40:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B3D3D26F762
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 09:52:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BC379871D2
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 06:40:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7B7258762B;
+	Fri, 18 Sep 2020 07:52:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YtyuxIWsUz91; Fri, 18 Sep 2020 07:52:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4367387637;
+	Fri, 18 Sep 2020 07:52:07 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 521701BF23C
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 07:52:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4ECDC872CC
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 07:52:05 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TBi2e6b9VgOj for <devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 06:40:51 +0000 (UTC)
+ with ESMTP id oGsZA7VajSzA for <devel@linuxdriverproject.org>;
+ Fri, 18 Sep 2020 07:52:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0EAA0871CE
- for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 06:40:51 +0000 (UTC)
-IronPort-SDR: NaldM6EfdWhdPkVAo9LGqI0Cs0OYvxtV92WuK7ExpUmnS9arqsMYrqoMTumlgpZsHax9b9n2XJ
- sx0f4DxXTr6g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="157262662"
-X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="157262662"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 98DD1872C1
+ for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 07:52:04 +0000 (UTC)
+IronPort-SDR: NNsaGVvUaJHKREG1+5B1l1L9qCvr9IvPBJZCbaUh0OKtwj++ANYKMIHxRJgj1PEjUdWECGa9x4
+ 82eZ5bDKrhxA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="224047894"
+X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="224047894"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Sep 2020 23:40:49 -0700
-IronPort-SDR: /eF7IF2j1x7n1JHSe18rHooFEKh3iBpe6c6o7ZFey4vATigNWf85BIqU9ZIQAdLQ+RY6897kLT
- EThJEbfk+/aA==
-X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="307770713"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2020 00:52:03 -0700
+IronPort-SDR: aGLIl3MOuejeYag5/MQZNdd9G1WZcYWhHIhn1M+ibBYwpU2kvnetFLi7rJn/wOLZSe9oYFqUbF
+ 4IZrxTeb95zA==
+X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="287874902"
 Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Sep 2020 23:40:45 -0700
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2020 00:51:59 -0700
 Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 25BDB20815; Fri, 18 Sep 2020 09:40:43 +0300 (EEST)
-Date: Fri, 18 Sep 2020 09:40:43 +0300
+ id AB1B320815; Fri, 18 Sep 2020 10:51:57 +0300 (EEST)
+Date: Fri, 18 Sep 2020 10:51:57 +0300
 From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
  via software nodes on ACPI platforms
-Message-ID: <20200918064043.GE26842@paasikivi.fi.intel.com>
+Message-ID: <20200918075157.GF26842@paasikivi.fi.intel.com>
 References: <20200916213618.8003-1-djrscally@gmail.com>
  <20200917103343.GW26842@paasikivi.fi.intel.com>
- <20200917104941.GP4282@kadam>
+ <8133a57d-ab4c-dccd-4325-9b10e7805648@gmail.com>
+ <20200917124514.GK3956970@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200917104941.GP4282@kadam>
+In-Reply-To: <20200917124514.GK3956970@smile.fi.intel.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -73,59 +74,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, robh@kernel.org, mchehab@kernel.org,
- jorhand@linux.microsoft.com, gregkh@linuxfoundation.org,
+Cc: devel@driverdev.osuosl.org, robh@kernel.org, jorhand@linux.microsoft.com,
+ linux-media@vger.kernel.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org, kieran.bingham@ideasonboard.com,
- Daniel Scally <djrscally@gmail.com>, kitakar@gmail.com, yong.zhi@intel.com,
- bingbu.cao@intel.com, andriy.shevchenko@linux.intel.com, davem@davemloft.net,
- tian.shu.qiu@intel.com, linux-media@vger.kernel.org
+ Dan Scally <djrscally@gmail.com>, kitakar@gmail.com, bingbu.cao@intel.com,
+ mchehab@kernel.org, davem@davemloft.net, tian.shu.qiu@intel.com,
+ yong.zhi@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Dan,
+Hi Andy,
 
-On Thu, Sep 17, 2020 at 01:49:41PM +0300, Dan Carpenter wrote:
-> On Thu, Sep 17, 2020 at 01:33:43PM +0300, Sakari Ailus wrote:
-> > > +static int connect_supported_devices(void)
-> > > +{
-> > > +	struct acpi_device *adev;
-> > > +	struct device *dev;
-> > > +	struct sensor_bios_data ssdb;
-> > > +	struct sensor *sensor;
-> > > +	struct property_entry *sensor_props;
-> > > +	struct property_entry *cio2_props;
-> > > +	struct fwnode_handle *fwnode;
-> > > +	struct software_node *nodes;
-> > > +	struct v4l2_subdev *sd;
-> > > +	int i, ret;
-> > 
-> > unsigned int i
-> > 
+On Thu, Sep 17, 2020 at 03:45:14PM +0300, Andy Shevchenko wrote:
+> On Thu, Sep 17, 2020 at 11:52:28AM +0100, Dan Scally wrote:
+> > On 17/09/2020 11:33, Sakari Ailus wrote:
+> > > a module and not enlarge everyone's kernel, and the initialisation would at
+> > > the same time take place before the rest of what the CIO2 driver does in
+> > > probe.
+> > I thought of that as well, but wasn't sure which was preferable. I can
+> > compress it into the CIO2 driver though sure.
 > 
-> Why?
-> 
-> For list iterators then "int i;" is best...  For sizes then unsigned is
-> sometimes best.  Or if it's part of the hardware spec or network spec
-> unsigned is best.  Otherwise unsigned variables cause a ton of bugs.
-> They're not as intuitive as signed variables.  Imagine if there is an
-> error in this loop and you want to unwind.  With a signed variable you
-> can do:
-> 
-> 	while (--i >= 0)
-> 		cleanup(&bridge.sensors[i]);
-> 
-> There are very few times where raising the type maximum from 2 billion
-> to 4 billion fixes anything.
+> Sakari, I tend to agree with Dan and have the board file separated from the
+> driver and even framework.
 
-There's simply no need for the negative integers here. Sizes (as it's a
-size here) are unsigned, too, so you'd be comparing signed and unsigned
-numbers later in the function.
+And it'll be linked to the kernel binary then I suppose?
+
+I don't have a strong opinion either way, just thought that this will
+affect anyone using x86 machines, whether or not they have IPU3. I guess it
+could be compiled in if the ipu3-cio2 driver is enabled?
 
 -- 
-Regards,
-
 Sakari Ailus
 _______________________________________________
 devel mailing list
