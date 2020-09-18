@@ -1,66 +1,109 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78F9F26F9AC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 11:55:32 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3C2626FA7D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 12:21:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2B594877E6;
-	Fri, 18 Sep 2020 09:55:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 719772E200;
+	Fri, 18 Sep 2020 10:21:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BZMllJus7ngW; Fri, 18 Sep 2020 09:55:30 +0000 (UTC)
+	with ESMTP id tlTuP3o7-3ge; Fri, 18 Sep 2020 10:21:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A00A9877E3;
-	Fri, 18 Sep 2020 09:55:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B24622E1F8;
+	Fri, 18 Sep 2020 10:21:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0C3331BF2A3
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 09:55:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BEEB51BF29E
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 10:21:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 08AC88750A
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 09:55:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BB7888769B
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 10:21:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Tj0HQ6G8kJQB for <devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 09:55:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CAB2F8769B
- for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 09:55:25 +0000 (UTC)
-Received: from threadripper.lan ([149.172.98.151]) by mrelayeu.kundenserver.de
- (mreue109 [212.227.15.145]) with ESMTPA (Nemesis) id
- 1MaIvT-1jwVgJ12Yv-00WBGu; Fri, 18 Sep 2020 11:54:54 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: linux-rpi-kernel@lists.infradead.org,
-	nsaenzjulienne@suse.de
-Subject: [PATCH 5/5] staging: vchiq: convert compat await_completion
-Date: Fri, 18 Sep 2020 11:54:41 +0200
-Message-Id: <20200918095441.1446041-6-arnd@arndb.de>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20200918095441.1446041-1-arnd@arndb.de>
-References: <20200918095441.1446041-1-arnd@arndb.de>
+ with ESMTP id Ucn2WWQlYzhh for <devel@linuxdriverproject.org>;
+ Fri, 18 Sep 2020 10:21:11 +0000 (UTC)
+X-Greylist: delayed 00:14:43 by SQLgrey-1.7.6
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com
+ (mail-eopbgr770118.outbound.protection.outlook.com [40.107.77.118])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7D38187683
+ for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 10:21:11 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WHz2evpO/gCC2D965Mnj0TmsqFd0dvnfXhDgECkwu1YoAhhMk2UgiPS1HWsmuev+GzyfqWbKrlP5SrJBb3b1TN8HBNQEvPt8EcS5wXL0afzvv6jsNHpFrI9xPNGYZE0ab08JGRdi1pTWJv2dHjVy82WzLO8OVvI2L+vXo98LI7eGrR6LcYONsIcldtk9ZtRtTzzvBZl3X1TkavTNnUw+FlTRxPP9wjsro4bkoyBi6MIiPhhntdisGJ83F4ukhrvutN/T9Wcxhu1OtUfOXh/OPtsultXgDsviS5ZJDloobgMjkeNYhNzznVJsTyBNL7m4sZWFFHUWwaRgNoofy9ZbrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3GOa9I9E5Rw+i2I7d+2eRbuch8sNPGq3arZ2d5/rK7c=;
+ b=XLDvDfUqWFv1XLcOwPXgjSl/TurAIenMhzXp5Gu30EhMxe5XAjxzzeBENm63UDOmUEkCoZdokUf+lzfxE7RVHXTPE7IYBx1/QQtvRHLv11o0Kgzh7BYKOhqlPzQXbSB90cckEzMAdVb+8Gdmc/Y0HHj60qNkER/6ed1wbOSQCQZfPpdn2bqbtIfGpy/ycFfdUvtRUzhGnnL/qykD9Q18Py+Z5m8mceFzABP/60i+2ftmflxHjc1VFLaPE7SoTq732PcAqXUQ0gaVvIFYabmUWM9vYjru1qNHnhCqo5Lw4i+XKajwTLznOM2MugO8+tEQonygCyusZ8m1vmA1HJmTVg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3GOa9I9E5Rw+i2I7d+2eRbuch8sNPGq3arZ2d5/rK7c=;
+ b=aDkx7s/jqUg3892r1s83NZmh0M3oN59GPtOLMYowotukFLRYKzmsn+6IAtplX0Xi11wgj4f/IplSRuB9umYM+C+e18ZwMit/v06N49EOodJ0kkYLITIIEyP9uEGS5icmenkNL94B99ISVw2z70M+HdRoAVbcX8mfo7sSKxYbeHA=
+Authentication-Results: analogixsemi.com; dkim=none (message not signed)
+ header.d=none;analogixsemi.com; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BYAPR04MB5624.namprd04.prod.outlook.com (2603:10b6:a03:10c::26)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3391.14; Fri, 18 Sep
+ 2020 10:06:25 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::1dc0:7d4b:9820:e68]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::3c04:982f:7d75:779e%7]) with mapi id 15.20.3370.019; Fri, 18 Sep 2020
+ 10:06:25 +0000
+Date: Fri, 18 Sep 2020 18:06:17 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v16 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
+ DP
+Message-ID: <20200918100617.GA13792@pc-user>
+References: <536a274e38d994817c6d0c118f7f8553e74f73c9.1600324895.git.xji@analogixsemi.com>
+ <20200918084534.GV4282@kadam>
+Content-Disposition: inline
+In-Reply-To: <20200918084534.GV4282@kadam>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-ClientProxiedBy: HK2PR06CA0011.apcprd06.prod.outlook.com
+ (2603:1096:202:2e::23) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:wKKXkp3hvdPm2VYsPUfZCLaujAKGHtD3wJ+tamSfbaHgV17ruMe
- W7b119tJpDaGaXBcolWb1km/UKlqSUd5jLuzi2B3wil2alz5C+LAPzAzCIMnN+8TBXdVVyd
- tvZDNMGKuISSvgyTTdf0Ago+gGQDTdFlvZUSxRIB6lHszqTctrMKTI9xdKnbgt66g3gvXUR
- 3QKuiyGo90kJpLTgx80DQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sbPO7rjmmXc=:JXfnVcGnmS7i044wxSmUmW
- +wNPD6q/McBSPFvRgJVCvk0FWP8SbYkSe9hukOjeGxyfEJUaIC6A5exTJ9xjmqSgneFOgA3ID
- XwQv0GPwQMgS2oAaBViUdNa/jiqVKjUiDxwwBLp6GC7EzqHoeA7Ggz//81gkjIiptoc3c2+sJ
- bXi4B9Mh0HHtDzMqCWhO45BYcLJR3mT1ctEGFKd6u66g/ZLURdTB4LQ39e3q/v4OZqN1HBIpz
- dvyX31JVTPqRKRrvGpj0qJv9bdmQuuMzsio5l2vluUj0LBK9LJNm/yhYV3lEQgw1sbqJrO0P9
- NeIJq3ubpNcAx/3UDa4fRydIIjgAn7MoOFuJBWqSmU1PXS5Jc69JD4N+/CAGiZF/4aquM1X5k
- QcCGXsOa/v1I8I0CaOdFkIxDvkixgQth+8VEKGECUBG93hFu6oyL2WaJTgjPVe34MvTGBUSoG
- AY8f8cP+rQku8QWNUw3znB9k7TZYHsplpL4NWW9CchSQe5tPzv7CzFXblfISiSN6Ma1shDEYi
- D6WERC5npMETgw0dgOqG3qBJuCJT5ZPrKp6m1HdXfgkyDrctF+heRqbkn8ISO1a+C6mG67Ln/
- O9ljq3faEtdZryPouMUVl79Gh2MoajQv9UCdNUdYayzIOvRQp4D2/WVb5in91nryMhtd0IPoz
- 72v5+YbFY0zgkxI/6FxextU9qXBuPetzxgzTlkxYpkbLLpbUNWXSaVIEb4hYx2pdRZumUB4Q8
- ldtbmNAOT11n1CMJWCzQldutLNRswzNC+ZOVfuKt/91CEtOBe5Y+usF5N2JVtrgH0d/qxYUOR
- aNZTs11QGxNSKOf1QLEs8FLWoEZ5r1ct5OUFMUlMrbh+BDhZuOtnO2pWR25rvnBk2+YcJxc
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-user (114.247.245.146) by
+ HK2PR06CA0011.apcprd06.prod.outlook.com (2603:1096:202:2e::23) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3391.11 via Frontend Transport; Fri, 18 Sep 2020 10:06:24 +0000
+X-Originating-IP: [114.247.245.146]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 6ca03eeb-434e-4b80-420f-08d85bba802a
+X-MS-TrafficTypeDiagnostic: BYAPR04MB5624:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BYAPR04MB5624EB1792AEA71F1C91FF42C73F0@BYAPR04MB5624.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:16;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZHnc0GZw6OEkh1Bcyl+bQKlwwJhVsSZnGTaI9KVgGg2r60HuYUEJFbP2DGt11k6HhVqzC3TSim386dmr651DnW4vvPvXyoif8JYf53WHLRdZqGS2G32ZGGfBNATuf31U9wohg8sDGQYx9FT7Bugxdzsl0nbCi/VTcq4rSHsUYBAPpeKbUNwV5NU5pAcr8Fo/XE1ae3A1ZpNHP7ZXdzfCLzgdBFwsc0Wzy+o/bqeL/6IOZjiVZnTSBhnc2pNh4IJiOhjS/NXKVgXT02lGkqKz5v7ReToILifiuX/3jAggVs1LbYtuJfHxinTtX5mCI9pEr+dMt87rycF2iIM4D+dK1RWUB175HnjkkS2L1BYAshD2gRoRTShIgmFTqTIKQ0UgE3v+FmxF2ns2iCe1kE0nlg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(346002)(39850400004)(396003)(366004)(136003)(55016002)(2906002)(6666004)(16526019)(52116002)(26005)(66946007)(33716001)(4326008)(107886003)(6496006)(83380400001)(86362001)(1076003)(186003)(8936002)(33656002)(8676002)(956004)(7416002)(316002)(54906003)(478600001)(5660300002)(66556008)(66476007)(6916009)(9686003)(966005);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: gghywm3lHwOK+s/LdQD7evvtXXMQ2YHvVxHGf3Pjw0U3rkbJomwELxkfMq/9pE4AHDZc5ybflXOvA8lffeBQpURDpcM+bJpnUDqvQK3d2ayBuyzl6w6TbGXe4v9FYrKFYi9VppTH+ERc30nUv4CYMlXEnmUSzLI31EwsgUc9vWNBTXiOr5/i8ZInXrReHo382e58zDMOAOY8DlIANPom0M5tnU9e304LRcj56zgWneW74b4aj4zqF86CuxnW/lQvpjneer/M/E19S3OVu9j2CwPStL1xvQxstX8lnLaYz+aukvpYp/g50ogftWtLUklG8wy2Vh/4zwDrJ1ScqNEjzGcqBFjXNQ+7YflqsK4qst0EUcsmDp1HowD3sWf+clurmiM5cGW0w11bevVlUZ8c0ba0jzRe0g2LKMOTliTsQrggGbZhqfSyR0iTFhAUm0gMajkBsViKt5Uftwz6nzwezRE6gEQaU+uCTtLV2Picy3wzKYRUX1D0kecCrK9eSij/dGy9Q+BoWABq/HSjuii5R6BGlm4OwuyLvR0CL6cd9z93tS+5mG4njmUjHfoVbLEVIi+gk3IRbuEy5PnjOjFDYGDA9ezhTbyOJGcemghshefPF2b4EKktxZD+LpoIo3efkv9Pa6iFLXQ8NHR1RSnwRQ==
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6ca03eeb-434e-4b80-420f-08d85bba802a
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Sep 2020 10:06:24.9753 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LNP2mMyYRP7p84Yb6EEHgpxaftVfKLm+8mBrOWaetCdB92QvgsHJPkGfeGM+cXYWOL0Omim2tqMP53ruO1khYw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5624
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,586 +116,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, stefan.wahren@i2se.com,
- Arnd Bergmann <arnd@arndb.de>, gregkh@linuxfoundation.org,
- marcgonzalez@google.com, linux-kernel@vger.kernel.org, hch@lst.de,
- bcm-kernel-feedback-list@broadcom.com, jamal.k.shareef@gmail.com,
- inf.braun@fau.de, linux-arm-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Jonas Karlman <jonas@kwiboo.se>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Sheng Pan <span@analogixsemi.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Split out the ioctl implementation for VCHIQ_IOC_QUEUE_BULK_TRANSMIT
-into a separate function so it can be shared with the compat
-implementation.
+On Fri, Sep 18, 2020 at 11:45:34AM +0300, Dan Carpenter wrote:
+> Hi Xin,
+> 
+> url:    https://github.com/0day-ci/linux/commits/Xin-Ji/Add-initial-support-for-slimport-anx7625/20200917-163238
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git 5925fa68fe8244651b3f78a88c4af99190a88f0d
+> config: mips-randconfig-m031-20200917 (attached as .config)
+> compiler: mips-linux-gcc (GCC) 9.3.0
+> 
+> If you fix the issue, kindly add following tag as appropriate
+> Reported-by: kernel test robot <lkp@intel.com>
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Hi Dan, OK, I'll fix it right now.
+Thanks,
+Xin
+> 
+> smatch warnings:
+> drivers/gpu/drm/bridge/analogix/anx7625.c:1289 anx7625_get_edid() warn: possible memory leak of 'edid'
+> 
+> # https://github.com/0day-ci/linux/commit/667ee517c70d2bedafe5bfa0dc5f13fc60d5133d
+> git remote add linux-review https://github.com/0day-ci/linux
+> git fetch --no-tags linux-review Xin-Ji/Add-initial-support-for-slimport-anx7625/20200917-163238
+> git checkout 667ee517c70d2bedafe5bfa0dc5f13fc60d5133d
+> vim +/edid +1289 drivers/gpu/drm/bridge/analogix/anx7625.c
+> 
+> 667ee517c70d2be Xin Ji 2020-09-17  1264  static struct edid *anx7625_get_edid(struct anx7625_data *ctx)
+> 667ee517c70d2be Xin Ji 2020-09-17  1265  {
+> 667ee517c70d2be Xin Ji 2020-09-17  1266  	struct device *dev = &ctx->client->dev;
+> 667ee517c70d2be Xin Ji 2020-09-17  1267  	struct s_edid_data *p_edid = &ctx->slimport_edid_p;
+> 667ee517c70d2be Xin Ji 2020-09-17  1268  	int edid_num;
+> 667ee517c70d2be Xin Ji 2020-09-17  1269  	u8 *edid;
+> 667ee517c70d2be Xin Ji 2020-09-17  1270  
+> 667ee517c70d2be Xin Ji 2020-09-17  1271  	edid = kmalloc(FOUR_BLOCK_SIZE, GFP_KERNEL);
+> 667ee517c70d2be Xin Ji 2020-09-17  1272  	if (!edid) {
+> 667ee517c70d2be Xin Ji 2020-09-17  1273  		DRM_DEV_ERROR(dev, "Fail to allocate buffer\n");
+> 667ee517c70d2be Xin Ji 2020-09-17  1274  		return NULL;
+> 667ee517c70d2be Xin Ji 2020-09-17  1275  	}
+> 667ee517c70d2be Xin Ji 2020-09-17  1276  
+> 667ee517c70d2be Xin Ji 2020-09-17  1277  	if (ctx->slimport_edid_p.edid_block_num > 0) {
+> 667ee517c70d2be Xin Ji 2020-09-17  1278  		memcpy(edid, ctx->slimport_edid_p.edid_raw_data,
+> 667ee517c70d2be Xin Ji 2020-09-17  1279  		       FOUR_BLOCK_SIZE);
+> 667ee517c70d2be Xin Ji 2020-09-17  1280  		return (struct edid *)edid;
+> 667ee517c70d2be Xin Ji 2020-09-17  1281  	}
+> 667ee517c70d2be Xin Ji 2020-09-17  1282  
+> 667ee517c70d2be Xin Ji 2020-09-17  1283  	anx7625_low_power_mode_check(ctx, 1);
+> 667ee517c70d2be Xin Ji 2020-09-17  1284  	edid_num = sp_tx_edid_read(ctx, p_edid->edid_raw_data);
+> 667ee517c70d2be Xin Ji 2020-09-17  1285  	anx7625_low_power_mode_check(ctx, 0);
+> 667ee517c70d2be Xin Ji 2020-09-17  1286  
+> 667ee517c70d2be Xin Ji 2020-09-17  1287  	if (edid_num < 1) {
+> 667ee517c70d2be Xin Ji 2020-09-17  1288  		DRM_DEV_ERROR(dev, "Fail to read EDID: %d\n", edid_num);
+> 667ee517c70d2be Xin Ji 2020-09-17 @1289  		return NULL;
+> 
+> kfree(edid); before returning.
+> 
+> 667ee517c70d2be Xin Ji 2020-09-17  1290  	}
+> 667ee517c70d2be Xin Ji 2020-09-17  1291  
+> 667ee517c70d2be Xin Ji 2020-09-17  1292  	p_edid->edid_block_num = edid_num;
+> 667ee517c70d2be Xin Ji 2020-09-17  1293  
+> 667ee517c70d2be Xin Ji 2020-09-17  1294  	memcpy(edid, ctx->slimport_edid_p.edid_raw_data, FOUR_BLOCK_SIZE);
+> 667ee517c70d2be Xin Ji 2020-09-17  1295  	return (struct edid *)edid;
+> 667ee517c70d2be Xin Ji 2020-09-17  1296  }
+> 
+> ---
+> 0-DAY CI Kernel Test Service, Intel Corporation
+> https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
-This one is the trickiest conversion, as the compat implementation
-is already quite different from the native one. By using a common
-handler, the behavior is changed to be the same again: The
-indirect __user pointer accesses are now handled through helper
-functions that check for compat mode internally.
-
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- .../interface/vchiq_arm/vchiq_arm.c           | 496 ++++++++----------
- 1 file changed, 205 insertions(+), 291 deletions(-)
-
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index 50af7f4a1b7c..bb0cc9cb96e9 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -1027,6 +1027,193 @@ static int vchiq_irq_queue_bulk_tx_rx(struct vchiq_instance *instance,
- 	return 0;
- }
- 
-+static inline int vchiq_get_user_ptr(void __user **buf, void __user *ubuf, int index)
-+{
-+	compat_uptr_t ptr32;
-+	int ret;
-+
-+	if (in_compat_syscall()) {
-+		compat_uptr_t __user *uptr = ubuf;
-+		ret = get_user(ptr32, &uptr[index]);
-+		*buf = compat_ptr(ptr32);
-+	} else {
-+		void __user *__user *uptr = ubuf;
-+		ret = get_user(buf, &uptr[index]);
-+	}
-+	return ret;
-+}
-+
-+struct vchiq_completion_data32 {
-+	enum vchiq_reason reason;
-+	compat_uptr_t header;
-+	compat_uptr_t service_userdata;
-+	compat_uptr_t bulk_userdata;
-+};
-+
-+static int vchiq_put_completion(struct vchiq_completion_data __user *buf,
-+				struct vchiq_completion_data *completion,
-+				int index)
-+{
-+	struct vchiq_completion_data32 __user *buf32 = (void __user *)buf;
-+
-+	if (in_compat_syscall()) {
-+		struct vchiq_completion_data32 tmp = {
-+			.reason		  = buf->reason,
-+			.header		  = ptr_to_compat(buf->header),
-+			.service_userdata = ptr_to_compat(buf->service_userdata),
-+			.bulk_userdata	  = ptr_to_compat(buf->bulk_userdata),
-+		};
-+		if (copy_to_user(&buf32[index], &tmp, sizeof(tmp)))
-+			return -EFAULT;
-+	} else {
-+		if (copy_to_user(&buf[index], completion, sizeof(*completion)))
-+			return -EFAULT;
-+	}
-+
-+	return 0;
-+}
-+
-+static int vchiq_ioc_await_completion(struct vchiq_instance *instance,
-+				      struct vchiq_await_completion *args,
-+				      int __user *msgbufcountp)
-+{
-+	int msgbufcount;
-+	int remove;
-+	int ret;
-+
-+	DEBUG_INITIALISE(g_state.local)
-+
-+	DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+	if (!instance->connected) {
-+		return -ENOTCONN;
-+	}
-+
-+	mutex_lock(&instance->completion_mutex);
-+
-+	DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+	while ((instance->completion_remove ==
-+		instance->completion_insert)
-+		&& !instance->closing) {
-+		int rc;
-+
-+		DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+		mutex_unlock(&instance->completion_mutex);
-+		rc = wait_for_completion_interruptible(
-+					&instance->insert_event);
-+		mutex_lock(&instance->completion_mutex);
-+		if (rc) {
-+			DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+			vchiq_log_info(vchiq_arm_log_level,
-+				"AWAIT_COMPLETION interrupted");
-+			ret = -EINTR;
-+			goto out;
-+		}
-+	}
-+	DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+
-+	msgbufcount = args->msgbufcount;
-+	remove = instance->completion_remove;
-+
-+	for (ret = 0; ret < args->count; ret++) {
-+		struct vchiq_completion_data *completion;
-+		struct vchiq_service *service;
-+		struct user_service *user_service;
-+		struct vchiq_header *header;
-+
-+		if (remove == instance->completion_insert)
-+			break;
-+
-+		completion = &instance->completions[
-+			remove & (MAX_COMPLETIONS - 1)];
-+
-+		/*
-+		 * A read memory barrier is needed to stop
-+		 * prefetch of a stale completion record
-+		 */
-+		rmb();
-+
-+		service = completion->service_userdata;
-+		user_service = service->base.userdata;
-+		completion->service_userdata = user_service->userdata;
-+
-+		header = completion->header;
-+		if (header) {
-+			void __user *msgbuf;
-+			int msglen;
-+
-+			msglen = header->size + sizeof(struct vchiq_header);
-+			/* This must be a VCHIQ-style service */
-+			if (args->msgbufsize < msglen) {
-+				vchiq_log_error(vchiq_arm_log_level,
-+					"header %pK: msgbufsize %x < msglen %x",
-+					header, args->msgbufsize, msglen);
-+				WARN(1, "invalid message size\n");
-+				if (ret == 0)
-+					ret = -EMSGSIZE;
-+				break;
-+			}
-+			if (msgbufcount <= 0)
-+				/* Stall here for lack of a
-+				** buffer for the message. */
-+				break;
-+			/* Get the pointer from user space */
-+			msgbufcount--;
-+			if (vchiq_get_user_ptr(&msgbuf, &args->msgbufs,
-+						msgbufcount)) {
-+				if (ret == 0)
-+					ret = -EFAULT;
-+				break;
-+			}
-+
-+			/* Copy the message to user space */
-+			if (copy_to_user(msgbuf, header, msglen)) {
-+				if (ret == 0)
-+					ret = -EFAULT;
-+				break;
-+			}
-+
-+			/* Now it has been copied, the message
-+			** can be released. */
-+			vchiq_release_message(service->handle, header);
-+
-+			/* The completion must point to the
-+			** msgbuf. */
-+			completion->header =
-+				(struct vchiq_header __force *)msgbuf;
-+		}
-+
-+		if ((completion->reason == VCHIQ_SERVICE_CLOSED) &&
-+		    !instance->use_close_delivered)
-+			unlock_service(service);
-+
-+		if (vchiq_put_completion(args->buf, completion, ret)) {
-+			if (ret == 0)
-+				ret = -EFAULT;
-+			break;
-+		}
-+
-+		/*
-+		 * Ensure that the above copy has completed
-+		 * before advancing the remove pointer.
-+		 */
-+		mb();
-+		remove++;
-+		instance->completion_remove = remove;
-+	}
-+
-+	if (msgbufcount != args->msgbufcount) {
-+		if (put_user(msgbufcount, msgbufcountp))
-+			ret = -EFAULT;
-+	}
-+out:
-+	if (ret)
-+		complete(&instance->remove_event);
-+	mutex_unlock(&instance->completion_mutex);
-+	DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+
-+	return ret;
-+}
-+
- /****************************************************************************
- *
- *   vchiq_ioctl
-@@ -1041,8 +1228,6 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 	long ret = 0;
- 	int i, rc;
- 
--	DEBUG_INITIALISE(g_state.local)
--
- 	vchiq_log_trace(vchiq_arm_log_level,
- 		"%s - instance %pK, cmd %s, arg %lx",
- 		__func__, instance,
-@@ -1225,163 +1410,16 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 
- 	case VCHIQ_IOC_AWAIT_COMPLETION: {
- 		struct vchiq_await_completion args;
-+		struct vchiq_await_completion __user *argp;
- 
--		DEBUG_TRACE(AWAIT_COMPLETION_LINE);
--		if (!instance->connected) {
--			ret = -ENOTCONN;
--			break;
--		}
--
--		if (copy_from_user(&args, (const void __user *)arg,
--			sizeof(args))) {
-+		argp = (void __user *)arg;
-+		if (copy_from_user(&args, argp, sizeof(args))) {
- 			ret = -EFAULT;
- 			break;
- 		}
- 
--		mutex_lock(&instance->completion_mutex);
--
--		DEBUG_TRACE(AWAIT_COMPLETION_LINE);
--		while ((instance->completion_remove ==
--			instance->completion_insert)
--			&& !instance->closing) {
--			int rc;
--
--			DEBUG_TRACE(AWAIT_COMPLETION_LINE);
--			mutex_unlock(&instance->completion_mutex);
--			rc = wait_for_completion_interruptible(
--						&instance->insert_event);
--			mutex_lock(&instance->completion_mutex);
--			if (rc) {
--				DEBUG_TRACE(AWAIT_COMPLETION_LINE);
--				vchiq_log_info(vchiq_arm_log_level,
--					"AWAIT_COMPLETION interrupted");
--				ret = -EINTR;
--				break;
--			}
--		}
--		DEBUG_TRACE(AWAIT_COMPLETION_LINE);
--
--		if (ret == 0) {
--			int msgbufcount = args.msgbufcount;
--			int remove = instance->completion_remove;
--
--			for (ret = 0; ret < args.count; ret++) {
--				struct vchiq_completion_data *completion;
--				struct vchiq_service *service;
--				struct user_service *user_service;
--				struct vchiq_header *header;
--
--				if (remove == instance->completion_insert)
--					break;
--
--				completion = &instance->completions[
--					remove & (MAX_COMPLETIONS - 1)];
--
--				/*
--				 * A read memory barrier is needed to stop
--				 * prefetch of a stale completion record
--				 */
--				rmb();
--
--				service = completion->service_userdata;
--				user_service = service->base.userdata;
--				completion->service_userdata =
--					user_service->userdata;
--
--				header = completion->header;
--				if (header) {
--					void __user *msgbuf;
--					int msglen;
--
--					msglen = header->size +
--						sizeof(struct vchiq_header);
--					/* This must be a VCHIQ-style service */
--					if (args.msgbufsize < msglen) {
--						vchiq_log_error(
--							vchiq_arm_log_level,
--							"header %pK: msgbufsize %x < msglen %x",
--							header, args.msgbufsize,
--							msglen);
--						WARN(1, "invalid message "
--							"size\n");
--						if (ret == 0)
--							ret = -EMSGSIZE;
--						break;
--					}
--					if (msgbufcount <= 0)
--						/* Stall here for lack of a
--						** buffer for the message. */
--						break;
--					/* Get the pointer from user space */
--					msgbufcount--;
--					if (copy_from_user(&msgbuf,
--						(const void __user *)
--						&args.msgbufs[msgbufcount],
--						sizeof(msgbuf))) {
--						if (ret == 0)
--							ret = -EFAULT;
--						break;
--					}
--
--					/* Copy the message to user space */
--					if (copy_to_user(msgbuf, header,
--						msglen)) {
--						if (ret == 0)
--							ret = -EFAULT;
--						break;
--					}
--
--					/* Now it has been copied, the message
--					** can be released. */
--					vchiq_release_message(service->handle,
--						header);
--
--					/* The completion must point to the
--					** msgbuf. */
--					completion->header =
--						(struct vchiq_header __force *)
--						msgbuf;
--				}
--
--				if ((completion->reason ==
--					VCHIQ_SERVICE_CLOSED) &&
--					!instance->use_close_delivered)
--					unlock_service(service);
--
--				if (copy_to_user((void __user *)(
--					(size_t)args.buf + ret *
--					sizeof(struct vchiq_completion_data)),
--					completion,
--					sizeof(struct vchiq_completion_data))) {
--						if (ret == 0)
--							ret = -EFAULT;
--					break;
--				}
--
--				/*
--				 * Ensure that the above copy has completed
--				 * before advancing the remove pointer.
--				 */
--				mb();
--				remove++;
--				instance->completion_remove = remove;
--			}
--
--			if (msgbufcount != args.msgbufcount) {
--				if (copy_to_user((void __user *)
--					&((struct vchiq_await_completion *)arg)
--						->msgbufcount,
--					&msgbufcount,
--					sizeof(msgbufcount))) {
--					ret = -EFAULT;
--				}
--			}
--		}
--
--		if (ret)
--			complete(&instance->remove_event);
--		mutex_unlock(&instance->completion_mutex);
--		DEBUG_TRACE(AWAIT_COMPLETION_LINE);
-+		ret = vchiq_ioc_await_completion(instance, &args,
-+						 &argp->msgbufcount);
- 	} break;
- 
- 	case VCHIQ_IOC_DEQUEUE_MESSAGE: {
-@@ -1661,13 +1699,6 @@ vchiq_compat_ioctl_queue_bulk(struct file *file,
- 					  dir, &argp->mode);
- }
- 
--struct vchiq_completion_data32 {
--	enum vchiq_reason reason;
--	compat_uptr_t header;
--	compat_uptr_t service_userdata;
--	compat_uptr_t bulk_userdata;
--};
--
- struct vchiq_await_completion32 {
- 	unsigned int count;
- 	compat_uptr_t buf;
-@@ -1682,141 +1713,24 @@ struct vchiq_await_completion32 {
- static long
- vchiq_compat_ioctl_await_completion(struct file *file,
- 				    unsigned int cmd,
--				    unsigned long arg)
-+				    struct vchiq_await_completion32 *argp)
- {
--	struct vchiq_await_completion __user *args;
--	struct vchiq_completion_data __user *completion;
--	struct vchiq_completion_data completiontemp;
-+	struct vchiq_await_completion args;
- 	struct vchiq_await_completion32 args32;
--	struct vchiq_completion_data32 completion32;
--	unsigned int __user *msgbufcount32;
--	unsigned int msgbufcount_native;
--	compat_uptr_t msgbuf32;
--	void __user *msgbuf;
--	void * __user *msgbufptr;
--	long ret;
--
--	args = compat_alloc_user_space(sizeof(*args) +
--				       sizeof(*completion) +
--				       sizeof(*msgbufptr));
--	if (!args)
--		return -EFAULT;
--
--	completion = (struct vchiq_completion_data __user *)(args + 1);
--	msgbufptr = (void * __user *)(completion + 1);
--
--	if (copy_from_user(&args32,
--			   (struct vchiq_completion_data32 __user *)arg,
--			   sizeof(args32)))
--		return -EFAULT;
--
--	if (put_user(args32.count, &args->count) ||
--	    put_user(compat_ptr(args32.buf), &args->buf) ||
--	    put_user(args32.msgbufsize, &args->msgbufsize) ||
--	    put_user(args32.msgbufcount, &args->msgbufcount) ||
--	    put_user(compat_ptr(args32.msgbufs), &args->msgbufs))
--		return -EFAULT;
--
--	/* These are simple cases, so just fall into the native handler */
--	if (!args32.count || !args32.buf || !args32.msgbufcount)
--		return vchiq_ioctl(file,
--				   VCHIQ_IOC_AWAIT_COMPLETION,
--				   (unsigned long)args);
--
--	/*
--	 * These are the more complex cases.  Typical applications of this
--	 * ioctl will use a very large count, with a very large msgbufcount.
--	 * Since the native ioctl can asynchronously fill in the returned
--	 * buffers and the application can in theory begin processing messages
--	 * even before the ioctl returns, a bit of a trick is used here.
--	 *
--	 * By forcing both count and msgbufcount to be 1, it forces the native
--	 * ioctl to only claim at most 1 message is available.   This tricks
--	 * the calling application into thinking only 1 message was actually
--	 * available in the queue so like all good applications it will retry
--	 * waiting until all the required messages are received.
--	 *
--	 * This trick has been tested and proven to work with vchiq_test,
--	 * Minecraft_PI, the "hello pi" examples, and various other
--	 * applications that are included in Raspbian.
--	 */
--
--	if (copy_from_user(&msgbuf32,
--			   compat_ptr(args32.msgbufs) +
--			   (sizeof(compat_uptr_t) *
--			   (args32.msgbufcount - 1)),
--			   sizeof(msgbuf32)))
--		return -EFAULT;
--
--	msgbuf = compat_ptr(msgbuf32);
- 
--	if (copy_to_user(msgbufptr,
--			 &msgbuf,
--			 sizeof(msgbuf)))
--		return -EFAULT;
--
--	if (copy_to_user(&args->msgbufs,
--			 &msgbufptr,
--			 sizeof(msgbufptr)))
--		return -EFAULT;
--
--	if (put_user(1U, &args->count) ||
--	    put_user(completion, &args->buf) ||
--	    put_user(1U, &args->msgbufcount))
--		return -EFAULT;
--
--	ret = vchiq_ioctl(file,
--			  VCHIQ_IOC_AWAIT_COMPLETION,
--			  (unsigned long)args);
--
--	/*
--	 * An return value of 0 here means that no messages where available
--	 * in the message queue.  In this case the native ioctl does not
--	 * return any data to the application at all.  Not even to update
--	 * msgbufcount.  This functionality needs to be kept here for
--	 * compatibility.
--	 *
--	 * Of course, < 0 means that an error occurred and no data is being
--	 * returned.
--	 *
--	 * Since count and msgbufcount was forced to 1, that means
--	 * the only other possible return value is 1. Meaning that 1 message
--	 * was available, so that multiple message case does not need to be
--	 * handled here.
--	 */
--	if (ret <= 0)
--		return ret;
--
--	if (copy_from_user(&completiontemp, completion, sizeof(*completion)))
--		return -EFAULT;
--
--	completion32.reason = completiontemp.reason;
--	completion32.header = ptr_to_compat(completiontemp.header);
--	completion32.service_userdata =
--		ptr_to_compat(completiontemp.service_userdata);
--	completion32.bulk_userdata =
--		ptr_to_compat(completiontemp.bulk_userdata);
--
--	if (copy_to_user(compat_ptr(args32.buf),
--			 &completion32,
--			 sizeof(completion32)))
--		return -EFAULT;
--
--	if (get_user(msgbufcount_native, &args->msgbufcount))
-+	if (copy_from_user(&args32, argp, sizeof(args32)))
- 		return -EFAULT;
- 
--	if (!msgbufcount_native)
--		args32.msgbufcount--;
--
--	msgbufcount32 =
--		&((struct vchiq_await_completion32 __user *)arg)->msgbufcount;
--
--	if (copy_to_user(msgbufcount32,
--			 &args32.msgbufcount,
--			 sizeof(args32.msgbufcount)))
--		return -EFAULT;
-+	args = (struct vchiq_await_completion) {
-+		.count		= args32.count,
-+		.buf		= compat_ptr(args32.buf),
-+		.msgbufsize	= args32.msgbufsize,
-+		.msgbufcount	= args32.msgbufcount,
-+		.msgbufs	= compat_ptr(args32.msgbufs),
-+	};
- 
--	return 1;
-+	return vchiq_ioc_await_completion(file->private_data, &args,
-+					  &argp->msgbufcount);
- }
- 
- struct vchiq_dequeue_message32 {
-@@ -1893,7 +1807,7 @@ vchiq_compat_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 	case VCHIQ_IOC_QUEUE_BULK_RECEIVE32:
- 		return vchiq_compat_ioctl_queue_bulk(file, cmd, argp);
- 	case VCHIQ_IOC_AWAIT_COMPLETION32:
--		return vchiq_compat_ioctl_await_completion(file, cmd, arg);
-+		return vchiq_compat_ioctl_await_completion(file, cmd, argp);
- 	case VCHIQ_IOC_DEQUEUE_MESSAGE32:
- 		return vchiq_compat_ioctl_dequeue_message(file, cmd, argp);
- 	case VCHIQ_IOC_GET_CONFIG32:
--- 
-2.27.0
 
 _______________________________________________
 devel mailing list
