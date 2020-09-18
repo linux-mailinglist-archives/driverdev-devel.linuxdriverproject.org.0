@@ -1,62 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0592226EC5B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 04:14:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B473526F53C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 06:56:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2CD808775F;
-	Fri, 18 Sep 2020 02:14:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CFB8687297;
+	Fri, 18 Sep 2020 04:56:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nmcFpeABfShx; Fri, 18 Sep 2020 02:14:12 +0000 (UTC)
+	with ESMTP id AD9D8pvGrFYx; Fri, 18 Sep 2020 04:56:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 65B858772D;
-	Fri, 18 Sep 2020 02:14:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8454587278;
+	Fri, 18 Sep 2020 04:56:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DD3BD1BF30B
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 02:14:10 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 28A8B1BF30A
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 04:56:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DA07287404
- for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 02:14:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 254DB87278
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 04:56:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nKO4+jfV48aD for <devel@linuxdriverproject.org>;
- Fri, 18 Sep 2020 02:14:08 +0000 (UTC)
+ with ESMTP id 3cDA_9Jf3UZ0 for <devel@linuxdriverproject.org>;
+ Fri, 18 Sep 2020 04:56:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 24701873D7
- for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 02:14:08 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 408B323787;
- Fri, 18 Sep 2020 02:14:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600395247;
- bh=/bcd0jQMlT29A2Sh5lZOPbG+3Nq5bj6MKELIeujLM9E=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lRv7s5EgAoptQtTcB6JDSTMpU+MYBfI5XgwyzJLUtieWqWx7NcEvSKnuPuPgwRLPp
- FogaqRxMv61pPsbeXkqaSELT61DmXQzaFKqgYPkNKZVBpeVm1NEAfVR04RJ9FmLm4l
- LAayilYviK8S6s21FjLULHfrM/K55dsGISVGHtxg=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 090/127] staging:r8188eu: avoid skb_clone for
- amsdu to msdu conversion
-Date: Thu, 17 Sep 2020 22:11:43 -0400
-Message-Id: <20200918021220.2066485-90-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200918021220.2066485-1-sashal@kernel.org>
-References: <20200918021220.2066485-1-sashal@kernel.org>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2815386D22
+ for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 04:56:32 +0000 (UTC)
+IronPort-SDR: SY1Yo4QsefVK3bb73l8Cu49boioZAUfr3voAZWO4gyUP0l4Z98zyMerfOFlHtnv3jHQJEMWTRC
+ Y+yc95y9ZaXg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="159915613"
+X-IronPort-AV: E=Sophos;i="5.77,273,1596524400"; d="scan'208";a="159915613"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Sep 2020 21:56:30 -0700
+IronPort-SDR: lzr2ZK77j6Z2tjQF6BAiFKc36LIIunk4ykWRc/zToUzxWPqamUMagH8ilOCiev775hmdzPbHSZ
+ 3du3O24AlTQw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,273,1596524400"; d="scan'208";a="410170402"
+Received: from lkp-server01.sh.intel.com (HELO a05db971c861) ([10.239.97.150])
+ by fmsmga001.fm.intel.com with ESMTP; 17 Sep 2020 21:56:28 -0700
+Received: from kbuild by a05db971c861 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kJ8Rg-0000QZ-78; Fri, 18 Sep 2020 04:56:28 +0000
+Date: Fri, 18 Sep 2020 12:55:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 8436f932d84b1d53d2f4a2fa88c7aacdb0313265
+Message-ID: <5f643dd8.1puC1Q30Hd/xjwJn%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,64 +69,135 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Ivan Safonov <insafonov@gmail.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Ivan Safonov <insafonov@gmail.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 8436f932d84b1d53d2f4a2fa88c7aacdb0313265  staging: hikey9xx: convert phy-kirin970-usb3.txt to yaml
 
-[ Upstream commit 628cbd971a927abe6388d44320e351c337b331e4 ]
+elapsed time: 722m
 
-skb clones use same data buffer,
-so tail of one skb is corrupted by beginning of next skb.
+configs tested: 105
+configs skipped: 2
 
-Signed-off-by: Ivan Safonov <insafonov@gmail.com>
-Link: https://lore.kernel.org/r/20200423191404.12028-1-insafonov@gmail.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+xtensa                           allyesconfig
+powerpc                  mpc866_ads_defconfig
+arc                    vdk_hs38_smp_defconfig
+powerpc                        cell_defconfig
+mips                        nlm_xlp_defconfig
+sh                          rsk7269_defconfig
+powerpc                      ppc6xx_defconfig
+arc                             nps_defconfig
+arm                           h5000_defconfig
+mips                        bcm47xx_defconfig
+arm                        neponset_defconfig
+powerpc                    gamecube_defconfig
+xtensa                          iss_defconfig
+mips                      loongson3_defconfig
+mips                         cobalt_defconfig
+powerpc                       maple_defconfig
+sh                          sdk7780_defconfig
+powerpc                     sbc8548_defconfig
+mips                       capcella_defconfig
+powerpc                 mpc837x_rdb_defconfig
+sh                      rts7751r2d1_defconfig
+powerpc                     pq2fads_defconfig
+um                           x86_64_defconfig
+powerpc                     rainier_defconfig
+sh                              ul2_defconfig
+ia64                      gensparse_defconfig
+openrisc                         alldefconfig
+sh                   sh7724_generic_defconfig
+sh                               j2_defconfig
+powerpc                       ppc64_defconfig
+arm                          iop32x_defconfig
+m68k                        m5272c3_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20200917
+i386                 randconfig-a006-20200917
+i386                 randconfig-a003-20200917
+i386                 randconfig-a001-20200917
+i386                 randconfig-a002-20200917
+i386                 randconfig-a005-20200917
+x86_64               randconfig-a014-20200917
+x86_64               randconfig-a011-20200917
+x86_64               randconfig-a016-20200917
+x86_64               randconfig-a012-20200917
+x86_64               randconfig-a015-20200917
+x86_64               randconfig-a013-20200917
+i386                 randconfig-a015-20200917
+i386                 randconfig-a014-20200917
+i386                 randconfig-a011-20200917
+i386                 randconfig-a013-20200917
+i386                 randconfig-a016-20200917
+i386                 randconfig-a012-20200917
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a006-20200917
+x86_64               randconfig-a004-20200917
+x86_64               randconfig-a003-20200917
+x86_64               randconfig-a002-20200917
+x86_64               randconfig-a001-20200917
+x86_64               randconfig-a005-20200917
+
 ---
- drivers/staging/rtl8188eu/core/rtw_recv.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index afb9dadc1cfe9..77685bae21eda 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -1541,21 +1541,14 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
- 
- 		/* Allocate new skb for releasing to upper layer */
- 		sub_skb = dev_alloc_skb(nSubframe_Length + 12);
--		if (sub_skb) {
--			skb_reserve(sub_skb, 12);
--			skb_put_data(sub_skb, pdata, nSubframe_Length);
--		} else {
--			sub_skb = skb_clone(prframe->pkt, GFP_ATOMIC);
--			if (sub_skb) {
--				sub_skb->data = pdata;
--				sub_skb->len = nSubframe_Length;
--				skb_set_tail_pointer(sub_skb, nSubframe_Length);
--			} else {
--				DBG_88E("skb_clone() Fail!!! , nr_subframes=%d\n", nr_subframes);
--				break;
--			}
-+		if (!sub_skb) {
-+			DBG_88E("dev_alloc_skb() Fail!!! , nr_subframes=%d\n", nr_subframes);
-+			break;
- 		}
- 
-+		skb_reserve(sub_skb, 12);
-+		skb_put_data(sub_skb, pdata, nSubframe_Length);
-+
- 		subframes[nr_subframes++] = sub_skb;
- 
- 		if (nr_subframes >= MAX_SUBFRAME_COUNT) {
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
