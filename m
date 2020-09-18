@@ -2,87 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1AE226E75A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Sep 2020 23:25:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DCAE26E9EE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Sep 2020 02:28:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F6E08727D;
-	Thu, 17 Sep 2020 21:25:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B5258712C;
+	Fri, 18 Sep 2020 00:28:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r3D_EAfOYlzq; Thu, 17 Sep 2020 21:25:13 +0000 (UTC)
+	with ESMTP id D3kUX_1TVfWA; Fri, 18 Sep 2020 00:28:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C56B887261;
-	Thu, 17 Sep 2020 21:25:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7BA3C870F7;
+	Fri, 18 Sep 2020 00:28:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A0891BF35E
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 21:25:10 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A56F41BF9B9
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 00:28:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 952A120432
- for <devel@linuxdriverproject.org>; Thu, 17 Sep 2020 21:25:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9859D870F7
+ for <devel@linuxdriverproject.org>; Fri, 18 Sep 2020 00:28:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pCgpFO3SVvue for <devel@linuxdriverproject.org>;
- Thu, 17 Sep 2020 21:25:07 +0000 (UTC)
+ with ESMTP id GmEW5i6zl72d for <devel@linuxdriverproject.org>;
+ Fri, 18 Sep 2020 00:28:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 4B5402E1B1
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 21:25:07 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id d4so3319327wmd.5
- for <devel@driverdev.osuosl.org>; Thu, 17 Sep 2020 14:25:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=int6IPu+Ne/qM9mU8wvD7H8uWFzoTOCi2HL6/Vd5TOA=;
- b=j1XdSqhDjoXl7V9YkEudgyoz6Qq1UeDe7d6SNxWgxi2AJ4fNrOeXjqBPQPU+7tQtr9
- U5C95Vx8PSD9Qr5+8Y62NA4Hk0b4IC+fArfp4ogiQojZ++b+s6ubHVLa3m0SSbVtdh7Q
- wOzj/hhuZyckYEky3xQMeWLNF9zgDeCpefna7UUDiiRUPX5uprQu8TxOaZk9AJOLMxjG
- SPZpi9IQ5Fyk91MWzUQxjV/GC55uTSeKCv6IgzcOUZTZL4kOhgBxNBI/lqyNixTBLOve
- AxIJ0YduNJtg+fMWaMf5KMpuJgHUabK4aIcRYqWEhyxsnuRsAUdI9vpoIDNY5elTAHSZ
- XiRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=int6IPu+Ne/qM9mU8wvD7H8uWFzoTOCi2HL6/Vd5TOA=;
- b=nn91uBYWC4QOTU4HSSJUEp0Hvdny4KRM1SwFpMYha715Po5YrtrsHGmgpu6Ww4PEiq
- t1Fca7ht+fra5MSJdFGjiPiM7hNoMyEiuYIiPxqUqaZxFcx20ZpcjsbFIaZYXgU0bOBX
- i82sHLR9TtvL5YmkmlIx27+AYg2nPu0eL8hinDq3apfOps9P/DbmkTv1E7ZpD/wkqGA8
- YnMdeeqHAk1ByPfdT1daKD8TwEXclrZqVdMIur6OED/LewMI37j/4extNucNz0ZsUhqe
- VX97wgw4PWBrCOak3RqNbkvjboBSBeTroyocvirykBTbn0ogFV4Xx/xJMBYVj0oc2cJI
- FFmw==
-X-Gm-Message-State: AOAM532R+ca7MihjoVUsUVIySBkaAfrz3iJxeKhj5cd3rRpYqyRrrZGq
- 3GplX3PN7pH8QvKfFImyaUM=
-X-Google-Smtp-Source: ABdhPJzvOGira0U3RA3uqlmppGoplowp5YeQvfqeSk3cXRt/7w48OcuJMt/JfLXejLhs3nvtha8gMA==
-X-Received: by 2002:a1c:e0d4:: with SMTP id x203mr12964887wmg.91.1600377905538; 
- Thu, 17 Sep 2020 14:25:05 -0700 (PDT)
-Received: from [192.168.1.158] ([2.29.208.34])
- by smtp.gmail.com with ESMTPSA id i15sm1201529wrb.91.2020.09.17.14.25.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Sep 2020 14:25:04 -0700 (PDT)
-Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
- via software nodes on ACPI platforms
-To: Andy Shevchenko <andy.shevchenko@gmail.com>,
- Hans de Goede <hdegoede@redhat.com>, Mark Gross <mgross@linux.intel.com>
-References: <20200916213618.8003-1-djrscally@gmail.com>
- <20200917103343.GW26842@paasikivi.fi.intel.com>
- <8133a57d-ab4c-dccd-4325-9b10e7805648@gmail.com>
- <20200917124514.GK3956970@smile.fi.intel.com>
- <fea9d85a-7be9-0270-bd59-8e479a836ae6@gmail.com>
- <CAHp75VcWZMThc6BPNiqvvEUVUbShV-7+Xn11E6J7UwMLfnszpg@mail.gmail.com>
-From: Daniel Scally <djrscally@gmail.com>
-Message-ID: <b85ec736-6e02-4dd8-d7ce-b71c673e2b05@gmail.com>
-Date: Thu, 17 Sep 2020 22:25:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5084087065
+ for <devel@driverdev.osuosl.org>; Fri, 18 Sep 2020 00:28:14 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 56DC829C66E
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Maxime Ripard <mripard@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chen-Yu Tsai <wens@csie.org>
+Subject: [PATCH v2] media: cedrus: Propagate OUTPUT resolution to CAPTURE
+Date: Thu, 17 Sep 2020 20:27:51 -0400
+Message-Id: <20200918002751.373984-1-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <CAHp75VcWZMThc6BPNiqvvEUVUbShV-7+Xn11E6J7UwMLfnszpg@mail.gmail.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,58 +56,95 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Rob Herring <robh@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- jorhand@linux.microsoft.com,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- kieran.bingham@ideasonboard.com, Tsuchiya Yuto <kitakar@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Tian Shu Qiu <tian.shu.qiu@intel.com>,
- Yong Zhi <yong.zhi@intel.com>
+Cc: Ondrej Jirman <megous@megous.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 17/09/2020 15:14, Andy Shevchenko wrote:
-> On Thu, Sep 17, 2020 at 4:53 PM Dan Scally <djrscally@gmail.com> wrote:
->> Hi Andy, thanks for input (as always)
-> You're welcome! I'm really impressed by your activity in this area.
-Thanks - it's pretty fun so far
->>> Ah, I think you misinterpreted the meaning of above. The above is a switch how
->>> camera device appears either as PCI or an ACPI. So, it effectively means you
->>> should *not* have any relation for this HID until you find a platform where the
->>> device is for real enumerated via ACPI.
->>>
->> Ah, ok. So that was never going to work. Thanks. That does raise another
->> question; we have had some testers report failure, which turns out to be
->> because on their platforms the definition of their cameras in ACPI is
->> never translated into an i2c_client so the cio2-bridge doesn't bind.
->> Those have a similar conditional in the _STA method, see CAM1 in this
->> DSDT for example:
->> https://raw.githubusercontent.com/linux-surface/acpidumps/master/surface_go/dsdt.dsl.
->> Is there anything we can do to enable those cameras to be discovered too?
-> It means that this
-Is the rest of this comment missing?
->>>>>> +#define PROPERTY_ENTRY_NULL                       \
->>>>>> +((const struct property_entry) { })
->>>>> Alignment. Same appears to apply to other macros (please indent).
->>>> Yep
->>>>>> +#define SOFTWARE_NODE_NULL                        \
->>>>>> +((const struct software_node) { })
->>> Why?!
->>>
->> It felt ugly to have the other definitions be macros and not this one,
->> but I can change it.
-> My point is that those macros are simply redundant. The point is to
-> have a terminator record (all 0:s in the last entry of an array) which
-> is usually being achieved by allocating memory with kcalloc() which
-> does implicitly this for you.
-Ah I see. TIL - thanks, I'll make that change too.
+As per spec, the CAPTURE resolution should be automatically set based on
+the OTUPUT resolution. This patch properly propagate width/height to the
+capture when the OUTPUT format is set and override the user provided
+width/height with configured OUTPUT resolution when the CAPTURE fmt is
+updated.
+
+This also prevents userspace from selecting a CAPTURE resolution that is
+too small, avoiding kernel oops.
+
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Tested-by: Ondrej Jirman <megous@megous.com>
+---
+ .../staging/media/sunxi/cedrus/cedrus_video.c | 29 +++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index 16d82309e7b6..667b86dde1ee 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -247,6 +247,8 @@ static int cedrus_try_fmt_vid_cap(struct file *file, void *priv,
+ 		return -EINVAL;
+ 
+ 	pix_fmt->pixelformat = fmt->pixelformat;
++	pix_fmt->width = ctx->src_fmt.width;
++	pix_fmt->height = ctx->src_fmt.height;
+ 	cedrus_prepare_format(pix_fmt);
+ 
+ 	return 0;
+@@ -296,10 +298,30 @@ static int cedrus_s_fmt_vid_out(struct file *file, void *priv,
+ {
+ 	struct cedrus_ctx *ctx = cedrus_file2ctx(file);
+ 	struct vb2_queue *vq;
++	struct vb2_queue *peer_vq;
+ 	int ret;
+ 
++	ret = cedrus_try_fmt_vid_out(file, priv, f);
++	if (ret)
++		return ret;
++
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (vb2_is_busy(vq))
++	/*
++	 * In order to support dynamic resolution change,
++	 * the decoder admits a resolution change, as long
++	 * as the pixelformat remains. Can't be done if streaming.
++	 */
++	if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
++	    f->fmt.pix.pixelformat != ctx->src_fmt.pixelformat))
++		return -EBUSY;
++	/*
++	 * Since format change on the OUTPUT queue will reset
++	 * the CAPTURE queue, we can't allow doing so
++	 * when the CAPTURE queue has buffers allocated.
++	 */
++	peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
++				  V4L2_BUF_TYPE_VIDEO_CAPTURE);
++	if (vb2_is_busy(peer_vq))
+ 		return -EBUSY;
+ 
+ 	ret = cedrus_try_fmt_vid_out(file, priv, f);
+@@ -319,11 +341,14 @@ static int cedrus_s_fmt_vid_out(struct file *file, void *priv,
+ 		break;
+ 	}
+ 
+-	/* Propagate colorspace information to capture. */
++	/* Propagate format information to capture. */
+ 	ctx->dst_fmt.colorspace = f->fmt.pix.colorspace;
+ 	ctx->dst_fmt.xfer_func = f->fmt.pix.xfer_func;
+ 	ctx->dst_fmt.ycbcr_enc = f->fmt.pix.ycbcr_enc;
+ 	ctx->dst_fmt.quantization = f->fmt.pix.quantization;
++	ctx->dst_fmt.width = ctx->src_fmt.width;
++	ctx->dst_fmt.height = ctx->src_fmt.height;
++	cedrus_prepare_format(&ctx->dst_fmt);
+ 
+ 	return 0;
+ }
+-- 
+2.26.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
