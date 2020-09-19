@@ -1,66 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28EF5270FA9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Sep 2020 18:53:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B12D86C94;
-	Sat, 19 Sep 2020 16:53:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 264qxjnRJ5LV; Sat, 19 Sep 2020 16:53:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2154886B4E;
-	Sat, 19 Sep 2020 16:53:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D24D51BF45A
- for <devel@linuxdriverproject.org>; Sat, 19 Sep 2020 16:53:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 497C227103E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Sep 2020 21:31:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C832720413
- for <devel@linuxdriverproject.org>; Sat, 19 Sep 2020 16:53:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 119CB204E5;
+	Sat, 19 Sep 2020 19:31:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PxNCr6kNf93m; Sat, 19 Sep 2020 19:31:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id D3B682049A;
+	Sat, 19 Sep 2020 19:31:31 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 76F031BF303
+ for <devel@linuxdriverproject.org>; Sat, 19 Sep 2020 19:31:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6E7F18671F
+ for <devel@linuxdriverproject.org>; Sat, 19 Sep 2020 19:31:28 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KtbBkQcf1hhw for <devel@linuxdriverproject.org>;
- Sat, 19 Sep 2020 16:53:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0236.hostedemail.com
- [216.40.44.236])
- by silver.osuosl.org (Postfix) with ESMTPS id D6F9620358
- for <devel@driverdev.osuosl.org>; Sat, 19 Sep 2020 16:53:21 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave05.hostedemail.com (Postfix) with ESMTP id 873831801AB7F
- for <devel@driverdev.osuosl.org>; Sat, 19 Sep 2020 16:15:17 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay04.hostedemail.com (Postfix) with ESMTP id B7670180A7FF9;
- Sat, 19 Sep 2020 16:15:10 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3350:3622:3867:3868:3870:4321:5007:8957:10004:10400:11026:11232:11473:11658:11914:12043:12297:12555:12740:12760:12895:13069:13161:13229:13311:13357:13439:14659:21080:21627:30054:30070:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: trip10_4805ed327135
-X-Filterd-Recvd-Size: 1523
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf13.hostedemail.com (Postfix) with ESMTPA;
- Sat, 19 Sep 2020 16:15:09 +0000 (UTC)
-Message-ID: <6c07f1238d48cef82668defcd9cba0e4ccdf4177.camel@perches.com>
-Subject: Re: [PATCH 1/3] staging: rtl8192u: clean up blank line style issues
-From: Joe Perches <joe@perches.com>
-To: Michael Straube <straube.linux@gmail.com>, gregkh@linuxfoundation.org
-Date: Sat, 19 Sep 2020 09:15:08 -0700
-In-Reply-To: <20200919150823.16923-1-straube.linux@gmail.com>
-References: <20200919150823.16923-1-straube.linux@gmail.com>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id W8mMhXAsMVpj for <devel@linuxdriverproject.org>;
+ Sat, 19 Sep 2020 19:31:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 706D0866DA
+ for <devel@driverdev.osuosl.org>; Sat, 19 Sep 2020 19:31:27 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id z9so8725794wmk.1
+ for <devel@driverdev.osuosl.org>; Sat, 19 Sep 2020 12:31:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:cc:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-transfer-encoding:content-language;
+ bh=UOl7aJgZVOco43pM0FR5gPug/eBppWzmQE1Qt2hPsAY=;
+ b=SAR0t0Mj+t6LJOUepzhwcvAdBYiCPJWGjidXih0mxT/g+e3HpjDn+rHLzEtKVjbxW/
+ U3eKWcHtoLlmBxL0VfxZEGGwU6kak1+ICOcHK/ET7oWeNI54c6+j2fMN2r0tkSfZFh1j
+ TrwhSwDu7L7ecAblHecFDbynutj3x1Rhjh7AzcjoAFvurffDnvFqnkjDpJpWQCnozpp2
+ wtJ58uf6U8uH8fyZvud81B3jgbTUU7RX/OHlDfLrxQQCcVU1dERHDuz2Y8twvucivKPL
+ 9sq77/VxiElGMOKb4uf5Es3JXwLn3ugDaix0Uo4H7Ry8agI+9dfLEVWnqT+28qlFjvUh
+ mB4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=UOl7aJgZVOco43pM0FR5gPug/eBppWzmQE1Qt2hPsAY=;
+ b=jrVcuSINN0ex5+C04IL50xha9pXiRlnb5bJVNmDPPjDGMpvoQt9gWPN/QznbVI3BMF
+ FoP76xpqb+6AWONWP9/UbrWKYGAZs0buhubuS4mKueTIUlcBhok8gFZYvCx5cqjBnLxP
+ 7ph09T0XjPHNcZP2xX5zS1xVqLxEiig48BdDiD/b7s65Gl6hoXOXSt7gmNDJotBSR2eP
+ SMG8ZnFH0/M1IEQpS603fK5794F739dDf1F0v6SSm3jAGjTu60e+CEE0jSkP6KQtnyO0
+ 7wiFKMU3dq8Fmr/qTq23UerwEE+FaUOGYgL+xDib0FiQW0vgmeXSz3CDlNLEjEFbD7w9
+ oG1Q==
+X-Gm-Message-State: AOAM532ctF0KP7mt+drE9VZIBteqTKv9r4Z2+gwdJ7In2HMbnpLTJ0gb
+ xxDQRSQK4KdO/kfB9Ri+cFA=
+X-Google-Smtp-Source: ABdhPJwJ20Z3JMpNdgnVFQm9slja9W33AF/EopSX3S7Pe3V4UVomGGyQAntmfyCVsKyY+zUqaBXruA==
+X-Received: by 2002:a1c:32c6:: with SMTP id y189mr21360900wmy.51.1600543885768; 
+ Sat, 19 Sep 2020 12:31:25 -0700 (PDT)
+Received: from [192.168.43.148] (92.40.169.140.threembb.co.uk. [92.40.169.140])
+ by smtp.gmail.com with ESMTPSA id w14sm12516740wrk.95.2020.09.19.12.31.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 19 Sep 2020 12:31:24 -0700 (PDT)
+Subject: Re: [PATCH] staging: media: atomisp: Don't do unnecessary zeroing of
+ memory
+References: <20200909204807.36501-1-alex.dewar90@gmail.com>
+From: Alex Dewar <alex.dewar90@gmail.com>
+Message-ID: <6e70df97-808a-6d23-c24e-4b7c905cccda@gmail.com>
+Date: Sat, 19 Sep 2020 20:31:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <20200909204807.36501-1-alex.dewar90@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,34 +88,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, 2020-09-19 at 17:08 +0200, Michael Straube wrote:
-> Add missing and remove unnecessary blank lines to clear checkpatch
-> issues.
-
-unrelated trivia:
-
-> diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-[]
-> @@ -26,6 +26,7 @@ Major Change History:
->  static u32 edca_setting_DL[HT_IOT_PEER_MAX] = {
->  	0x5e4322, 0x5e4322, 0x5e4322, 0x604322, 0x00a44f, 0x5ea44f
->  };
-> +
->  static u32 edca_setting_UL[HT_IOT_PEER_MAX] = {
->  	0x5e4322, 0x00a44f, 0x5e4322, 0x604322, 0x5ea44f, 0x5ea44f
->  };
-
-These could be static const
-
-Here and in drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-and drivers/staging/rtl8723bs/hal/odm_EdcaTurboCheck.c
-
+On 2020-09-09 21:48, Alex Dewar wrote:
+> In a few places in pci/sh_css_params.c, memset is used to zero memory
+> immediately before it is freed. As none of these structs appear to
+> contain sensitive information, just remove the calls to memset.
+Friendly ping?
+>
+> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
+> ---
+>   drivers/staging/media/atomisp/pci/sh_css_params.c | 6 ------
+>   1 file changed, 6 deletions(-)
+>
+> diff --git a/drivers/staging/media/atomisp/pci/sh_css_params.c b/drivers/staging/media/atomisp/pci/sh_css_params.c
+> index 2c67c23b3700..24fc497bd491 100644
+> --- a/drivers/staging/media/atomisp/pci/sh_css_params.c
+> +++ b/drivers/staging/media/atomisp/pci/sh_css_params.c
+> @@ -4378,7 +4378,6 @@ ia_css_3a_statistics_free(struct ia_css_3a_statistics *me)
+>   	if (me) {
+>   		kvfree(me->rgby_data);
+>   		kvfree(me->data);
+> -		memset(me, 0, sizeof(struct ia_css_3a_statistics));
+>   		kvfree(me);
+>   	}
+>   }
+> @@ -4417,7 +4416,6 @@ ia_css_dvs_statistics_free(struct ia_css_dvs_statistics *me)
+>   	if (me) {
+>   		kvfree(me->hor_proj);
+>   		kvfree(me->ver_proj);
+> -		memset(me, 0, sizeof(struct ia_css_dvs_statistics));
+>   		kvfree(me);
+>   	}
+>   }
+> @@ -4459,7 +4457,6 @@ ia_css_dvs_coefficients_free(struct ia_css_dvs_coefficients *me)
+>   	if (me) {
+>   		kvfree(me->hor_coefs);
+>   		kvfree(me->ver_coefs);
+> -		memset(me, 0, sizeof(struct ia_css_dvs_coefficients));
+>   		kvfree(me);
+>   	}
+>   }
+> @@ -4551,7 +4548,6 @@ ia_css_dvs2_statistics_free(struct ia_css_dvs2_statistics *me)
+>   		kvfree(me->ver_prod.odd_imag);
+>   		kvfree(me->ver_prod.even_real);
+>   		kvfree(me->ver_prod.even_imag);
+> -		memset(me, 0, sizeof(struct ia_css_dvs2_statistics));
+>   		kvfree(me);
+>   	}
+>   }
+> @@ -4635,7 +4631,6 @@ ia_css_dvs2_coefficients_free(struct ia_css_dvs2_coefficients *me)
+>   		kvfree(me->ver_coefs.odd_imag);
+>   		kvfree(me->ver_coefs.even_real);
+>   		kvfree(me->ver_coefs.even_imag);
+> -		memset(me, 0, sizeof(struct ia_css_dvs2_coefficients));
+>   		kvfree(me);
+>   	}
+>   }
+> @@ -4710,7 +4705,6 @@ ia_css_dvs2_6axis_config_free(struct ia_css_dvs_6axis_config *dvs_6axis_config)
+>   		kvfree(dvs_6axis_config->ycoords_y);
+>   		kvfree(dvs_6axis_config->xcoords_uv);
+>   		kvfree(dvs_6axis_config->ycoords_uv);
+> -		memset(dvs_6axis_config, 0, sizeof(struct ia_css_dvs_6axis_config));
+>   		kvfree(dvs_6axis_config);
+>   	}
+>   }
 
 _______________________________________________
 devel mailing list
