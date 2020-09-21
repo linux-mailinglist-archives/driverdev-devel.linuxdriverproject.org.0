@@ -2,74 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDAED272018
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:20:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8ADA27201C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:20:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BB083871D6;
-	Mon, 21 Sep 2020 10:20:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 487A5871F3;
+	Mon, 21 Sep 2020 10:20:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J7GxODxDF-L8; Mon, 21 Sep 2020 10:20:39 +0000 (UTC)
+	with ESMTP id fYDOtLJfaiyO; Mon, 21 Sep 2020 10:20:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 467BA871C6;
-	Mon, 21 Sep 2020 10:20:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8009871DF;
+	Mon, 21 Sep 2020 10:20:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 590671BF3F4
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:20:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 128191BF3F4
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:20:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 562798683A
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:20:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0F5F885F98
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:20:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FAMieycb5L13 for <devel@linuxdriverproject.org>;
- Mon, 21 Sep 2020 10:20:36 +0000 (UTC)
+ with ESMTP id OfZfzelFOrWP for <devel@linuxdriverproject.org>;
+ Mon, 21 Sep 2020 10:20:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8D03586819
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:20:36 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id x14so12095644wrl.12
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 03:20:36 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A220485F90
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:20:37 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id s12so12107432wrw.11
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 03:20:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=Z5xy1HmEK3Cb2cGuOZNBEue37qSrHj+Vnq/OwfaPORg=;
- b=I5VTjG3a3ViBXraLZbIZjAF4w3IjxazcKPBR8RM9zZISWgHD9OAAW/k6SSohJYhPNG
- A5YpvNK36e4G+9BFnfqnxMw1ClkJlY0mfrV41zlhv06gFtYecYAE+trrq+eIDf77q/X6
- yJ9A8CxIZkIE7MofTCSiuH14CNxFd1GOFLd0QPPHX1l5Pz9e9RJSOfW1EZPYdHwFYh3n
- /85ZsSW7M2mpjF8Yzi14whkUIf8DbmA6nOCwjNK9GhrXL+3c8xwcyiWIXyZxS1B26ilp
- /1uB7h0HAi7DX/gQsZce7RHc+1uONcDNT/4FfiDSZ1HxaKtJR1mEhMWmguiXrcYTJARi
- o/UA==
+ bh=0BzTczQmHpS8t1I+BEXhbnRvatw/mGTEVui5t5Npsm8=;
+ b=MaGfrgp7PHlwm0A3ZkZ8h7GGR0RRi37Yiy+yOd5x5uXY0+HcDxdjSml1+xef0vvkdj
+ tS3sXina++U+mHFVDNOpo4FxR+MKEuxMpMHJCiPfbi1M9UFYsGR2tGbxTmGawX8YfVhT
+ nKo7z8pNaOdCKG8B5Pn2VUl1tuxJoxxgNGxHZwnWbKtFj7m98v8TJRBs8RYcvOAKLS4p
+ ZnFF3w70EHp62lTH+unebW+knQa6DFB/0HfzeJgPprU7N5ZJ4dLwia0vADFLPrzISADS
+ v+H8iUci900i8d5403aBVru8s47NLPmFzKenxG9h0uSNpOTIPTAGXRKSOvcH4eFpMICM
+ bhmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=Z5xy1HmEK3Cb2cGuOZNBEue37qSrHj+Vnq/OwfaPORg=;
- b=ii1YFY8ECcSjQDEEPPWo+h69PmelTCkVWVGORAVVvjXzNn+jAntOCBYrR0yzCh9Rmv
- WoTPRRPM4zqxOM+veRTNwIgmMwCufcXQ8W7xupyuCpNbtqadEKEn5/3OwqI0SfOVcMSN
- 9ey41ITmnGPBpcOPArkkjI7mwN7UOstecLTtsdo7ny7h4AVoxtQRVtwhCwR2GBWuuLzk
- /Od9/AHJCSv7UtiwqTKLOxCwx+mHCD23gYpeI2JQUxv+Rk209dfAPX06PYmOdaeA3kgS
- A3qUZYOzJuRezqYrK2rPt46iz9g8nd5ar6rpK8y0ETahOypVzSrT33faFXC8R+UUiaNX
- FsjA==
-X-Gm-Message-State: AOAM5327mJtFE2ZPd0QfkIcJbM81B8Cf9s2eN46PibZmUOZN1JyzHD1J
- HfSBcDJxeHe54j3/Mz901Nq2/g==
-X-Google-Smtp-Source: ABdhPJxN1Spb10RxJRxY4y67Y7+C7S5d68x0Ru3WpjlUuQNHdi07Ix7g79gisaT5NE8Ke2Dq5/yb2Q==
-X-Received: by 2002:adf:f78f:: with SMTP id q15mr43195277wrp.206.1600683635053; 
+ bh=0BzTczQmHpS8t1I+BEXhbnRvatw/mGTEVui5t5Npsm8=;
+ b=V8dIAvQOwIr0Gu5WfScYdyD/Ye/MTbI1qLGIBAZLAthDXGw39Yb1ZNPiztQaeTuW0h
+ BulHgqM37VUC3v/4qHTnck5uS49w9ZFcMJum3L3unuA6aeY/rpiWO8d7NwsYYIw3F1B/
+ LJNGsviaA6XEopce20koQfY29infi72XGZl6FelMSgVa9jls94SnlKIGt5Ulf6tvhQLf
+ kNX9VG0hMR4335235ex8dXmsEREKq38Xx1EHolzFtNjl1XXOWktteQV7oD0e0zEKqS6G
+ oCZpzLqCedkZ6uj6pb7vAiiA9hSzVrlW1WqTLCWOEKVBwz4vu0ackWK567wLrlJ/4o7U
+ JG0w==
+X-Gm-Message-State: AOAM532mwh9wMRaPO5Qt2tmoi61fgoM7pGS6EXuH5AKl+pojXhkV6l3n
+ ojYnDTLMZNkUrgFwQh2dkwH2YUVNTnM1Zg==
+X-Google-Smtp-Source: ABdhPJxO38VZN2Eb0UXu4Mfek/wdnnRWiA/oi1U24WVDHA8DvtyjmmeYlDpoZllXQtDhZEg5Bs/1qQ==
+X-Received: by 2002:adf:f508:: with SMTP id q8mr49455553wro.233.1600683635970; 
  Mon, 21 Sep 2020 03:20:35 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id l17sm18804629wme.11.2020.09.21.03.20.34
+ by smtp.googlemail.com with ESMTPSA id l17sm18804629wme.11.2020.09.21.03.20.35
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 21 Sep 2020 03:20:34 -0700 (PDT)
+ Mon, 21 Sep 2020 03:20:35 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, laurent.pinchart@skynet.be, mchehab@kernel.org
-Subject: [PATCH RFT/RFC 03/49] staging: media: zoran: datasheet is no longer
- available from zoran.com
-Date: Mon, 21 Sep 2020 10:19:38 +0000
-Message-Id: <1600683624-5863-4-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC 04/49] staging: media: zoran: Documentation: fix typo
+Date: Mon, 21 Sep 2020 10:19:39 +0000
+Message-Id: <1600683624-5863-5-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
 References: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
@@ -93,27 +92,35 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Simply remove this broken reference
+Fix some typo in doc.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran_device.c | 3 ---
- 1 file changed, 3 deletions(-)
+ Documentation/media/v4l-drivers/zoran.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-index 04162be80420..79da964c678b 100644
---- a/drivers/staging/media/zoran/zoran_device.c
-+++ b/drivers/staging/media/zoran/zoran_device.c
-@@ -265,9 +265,6 @@ jpeg_codec_reset (struct zoran *zr)
-  *   Set the registers for the size we have specified. Don't bother
-  *   trying to understand this without the ZR36057 manual in front of
-  *   you [AC].
-- *
-- *   PS: The manual is free for download in .pdf format from
-- *   www.zoran.com - nicely done those folks.
-  */
+diff --git a/Documentation/media/v4l-drivers/zoran.rst b/Documentation/media/v4l-drivers/zoran.rst
+index a0586514cd8a..2b82b9a47a71 100644
+--- a/Documentation/media/v4l-drivers/zoran.rst
++++ b/Documentation/media/v4l-drivers/zoran.rst
+@@ -119,7 +119,7 @@ Pinnacle/Miro DC10+
+ * Analog Devices adv7176 TV encoder
  
- static void
+ Drivers to use: videodev, i2c-core, i2c-algo-bit,
+-videocodec, sa7110, adv7175, zr36060, zr36067
++videocodec, saa7110, adv7175, zr36060, zr36067
+ 
+ Inputs/outputs: Composite, S-video and Internal
+ 
+@@ -280,7 +280,7 @@ Samsung ks0127 TV decoder
+ What the TV encoder can do an what not
+ --------------------------------------
+ 
+-The TV encoder are doing the "same" as the decoder, but in the oder direction.
++The TV encoder are doing the "same" as the decoder, but in the other direction.
+ You feed them digital data and the generate a Composite or SVHS signal.
+ For information about the colorsystems and TV norm take a look in the
+ TV decoder section.
 -- 
 2.26.2
 
