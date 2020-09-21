@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5658272038
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:21:41 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24B7427202B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:21:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6E248868CA;
-	Mon, 21 Sep 2020 10:21:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB0D0871DD;
+	Mon, 21 Sep 2020 10:21:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ufDgf0kARWif; Mon, 21 Sep 2020 10:21:39 +0000 (UTC)
+	with ESMTP id 8uKN13tGsGJV; Mon, 21 Sep 2020 10:21:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1FDC886819;
-	Mon, 21 Sep 2020 10:21:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 431E2871E6;
+	Mon, 21 Sep 2020 10:21:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 806311BF962
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 155DD1BF3F4
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7C84685EA5
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0CEFC85F90
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A4lRU92yvRbv for <devel@linuxdriverproject.org>;
+ with ESMTP id kbE_ISSlTS-W for <devel@linuxdriverproject.org>;
  Mon, 21 Sep 2020 10:21:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E8C3E85FD5
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:21:04 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id x14so12097222wrl.12
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 03:21:04 -0700 (PDT)
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1941485FAD
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:21:06 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id l9so12024618wme.3
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 03:21:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=fZV35x1Iz2E43SPidCPc9QQFeH1eHhufPHV6/Pg1brc=;
- b=tduwWF0NtI3cn20DkNi9IESemUfiGeLBLMBfv0DPvHLkobph7WNzojhd59us8p09ZB
- zjK7P5nC4xgxT5ywKK7G3V0K6G2nDZfWvqGsMTmwT4XFLRcwBvTs5NEXzr3+oq9aJePj
- PThFY0Zyv9HP4Oaf/fb00JGfj19WkQXnS0Y/NP2m4PtU9gs6d9GJLawogoqLfUZw7hVb
- fEi5SS4XNtT83PnqsbU/q5pXWnjUzvq5euMg+rdyB1fqMzq1DEFnkfA7+uVg5yOvDPjL
- ER6SBAHKGXt5Qi++YmjJ3KlbprPmuQKQPaZ5mz+QFiGVDQxfpL0+FBN5TiogzU7bZ7ta
- vzpQ==
+ bh=OuktUbzogSgMnm6tl68bM64IlyF+ws6MaXPokPAQRHg=;
+ b=JCcu8rOSnPInqXXKrkjuF8aGuowsFaGAbtpYyb+vQHU7NqPENDa9PW1qv8sAfKG1f3
+ 7ntQVJJZGoBUND9z+U/AAht1eWh5G/xaHd+Ojy86mTkXkHqGrfpq7cQIUJHHomFT7ait
+ tQhT432OntImygVT+KMUCebXRrIC9w2Ex4czSug9xHx6W3wOUR4Ef7v3Q+7KZVsJJVQw
+ whoqxIl+7pkUT/u242X0EMAD1q4tcn6lHU5Uoh+PWv4P0ZhaV9iJ9lZ2XHdY3BJoTpDY
+ G0O6Ocfbz+qG86kxfAb2iXxcQs+zspSw5+4QSCm5c8SIZiGLBT/rd2BjisiuKUO605hA
+ OZkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=fZV35x1Iz2E43SPidCPc9QQFeH1eHhufPHV6/Pg1brc=;
- b=X5xiUolJZuF4XC/c/wBunkVl46E3ShqYmtrE78ez6vDKxSyqeqRrElJyku72w6lxQU
- 9JfO+mhbFGlP/c/ySC1QfhI06SPY0JtWs0SzU+QVmKeD/sZ9CzW8e/9W6ja5iVw6y5yy
- 9U4Ca3QnVPM/SKcfkVosuG23anph6xqXQivNNw0DmZWNk7tv/6z9bKlarsMFYDTVTUvS
- +cIuwTSjJGsbT+5Fg0qAzfjS3rQIzq7RfnFuoh8ci4wc2geZW8UhwBv91SZndgF0pUsk
- KJdCqVTFg4U7qkeX0tQenNCWYPr1ZCmhSeB6kGXrQO4ZBza72JelgDiLSQ2Qu8UP/Tf5
- WSdw==
-X-Gm-Message-State: AOAM532Um7k7yvD8zjKrTwM6DfQzd138b6zxwFYYrFZvOcEap0m4lQPn
- l09R9F+sr3LXPUX3Icl2TiA6Xg==
-X-Google-Smtp-Source: ABdhPJzkPKV30xQ7dnOo7B95UCRnoif+Ufxh0naKl1mhkBaiRw4uyZ9JrUV/tYWZKK0s6aP/1XkYSQ==
-X-Received: by 2002:adf:9405:: with SMTP id 5mr28243515wrq.51.1600683663492;
- Mon, 21 Sep 2020 03:21:03 -0700 (PDT)
+ bh=OuktUbzogSgMnm6tl68bM64IlyF+ws6MaXPokPAQRHg=;
+ b=csRnhUaDeV3lSQ/THkU7zcRhPzhXSN6/QU2FhsKIk5znIhMFQ8688wdNOiebJM24xa
+ YYRQUdnagmL2xkmWKIlDr6LU9LZijK5lyO15oxIA2EGk7JmXrctlmpfQv+PMGT791DwQ
+ YLGShnucNGjbWT/pRmPbB0jOLHo+2X3mz6P7O5GwrkZOIaw3mzn6BjYt8P72JlQJjKHS
+ YQ9pzidrdrFW9/20jgscdKit8o0kOns0TCEd2eyjfsEOEE2tRblro7BBVAaEDPstJSJl
+ oQ4fy1AhHK0JFjgJJcPOfdhu/bRd6x+HJHh4AFxI9/ZmstXAOAODrOl5wkMi2l6S1smC
+ R+TQ==
+X-Gm-Message-State: AOAM5331chFnDUvE7NQsR1bAuMT2sA4cfXhbhyOcdRkFL8JwytU6B3kL
+ Ya+xruRmY46Ecl1pCABXv/3ECBlCa5wexA==
+X-Google-Smtp-Source: ABdhPJz9qluklEwv8ciov73f9EFAyhxDpwQwXye4ZaFDhhVRjgzehOstV5sBL1dsX8CAEJIsF5SddQ==
+X-Received: by 2002:a05:600c:220f:: with SMTP id
+ z15mr16339258wml.87.1600683664607; 
+ Mon, 21 Sep 2020 03:21:04 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id l17sm18804629wme.11.2020.09.21.03.21.02
+ by smtp.googlemail.com with ESMTPSA id l17sm18804629wme.11.2020.09.21.03.21.03
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 21 Sep 2020 03:21:02 -0700 (PDT)
+ Mon, 21 Sep 2020 03:21:03 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, laurent.pinchart@skynet.be, mchehab@kernel.org
-Subject: [PATCH RFT/RFC 33/49] staging: media: zoran: add stat_com buffer
-Date: Mon, 21 Sep 2020 10:20:08 +0000
-Message-Id: <1600683624-5863-34-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC 34/49] staging: media: zoran: constify struct tvnorm
+Date: Mon, 21 Sep 2020 10:20:09 +0000
+Message-Id: <1600683624-5863-35-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
 References: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
@@ -92,71 +93,169 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch adds the allocation of the stat_com buffer which be used
-later.
+The structure tvnorm could be consified.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran.h      |  2 ++
- drivers/staging/media/zoran/zoran_card.c | 11 ++++++++++-
- 2 files changed, 12 insertions(+), 1 deletion(-)
+ drivers/staging/media/zoran/videocodec.h   |  2 +-
+ drivers/staging/media/zoran/zoran.h        |  4 ++--
+ drivers/staging/media/zoran/zoran_card.c   | 24 +++++++++++-----------
+ drivers/staging/media/zoran/zoran_device.c |  4 ++--
+ drivers/staging/media/zoran/zr36016.c      |  4 ++--
+ drivers/staging/media/zoran/zr36050.c      |  4 ++--
+ drivers/staging/media/zoran/zr36060.c      |  2 +-
+ 7 files changed, 22 insertions(+), 22 deletions(-)
 
+diff --git a/drivers/staging/media/zoran/videocodec.h b/drivers/staging/media/zoran/videocodec.h
+index 553af4ad431e..a049f3c2c68a 100644
+--- a/drivers/staging/media/zoran/videocodec.h
++++ b/drivers/staging/media/zoran/videocodec.h
+@@ -256,7 +256,7 @@ struct videocodec {
+ 	// set compression or decompression (or freeze, stop, standby, etc)
+ 	int (*set_mode)(struct videocodec *codec, int mode);
+ 	// setup picture size and norm (for the codec's video frontend)
+-	int (*set_video)(struct videocodec *codec, struct tvnorm *norm,
++	int (*set_video)(struct videocodec *codec, const struct tvnorm *norm,
+ 			 struct vfe_settings *cap, struct vfe_polarity *pol);
+ 	// other control commands, also mmap setup etc.
+ 	int (*control)(struct videocodec *codec, int type, int size, void *data);
 diff --git a/drivers/staging/media/zoran/zoran.h b/drivers/staging/media/zoran/zoran.h
-index 87ca324f6ec2..c73b7e7fd5e1 100644
+index c73b7e7fd5e1..727ba67afd56 100644
 --- a/drivers/staging/media/zoran/zoran.h
 +++ b/drivers/staging/media/zoran/zoran.h
-@@ -357,6 +357,8 @@ struct zoran {
- 	wait_queue_head_t test_q;
+@@ -227,7 +227,7 @@ struct card_info {
+ 	} input[BUZ_MAX_INPUT];
  
- 	dma_addr_t p_sc;
-+	__le32 *stat_comb;
-+	dma_addr_t p_scb;
- };
+ 	v4l2_std_id norms;
+-	struct tvnorm *tvn[3];	/* supported TV norms */
++	const struct tvnorm *tvn[3];	/* supported TV norms */
  
- static inline struct zoran *to_zoran(struct v4l2_device *v4l2_dev)
+ 	u32 jpeg_int;		/* JPEG interrupt */
+ 	u32 vsync_int;		/* VSYNC interrupt */
+@@ -266,7 +266,7 @@ struct zoran {
+ 	u8 initialized;		/* flag if zoran has been correctly initialized */
+ 	int user;		/* number of current users */
+ 	struct card_info card;
+-	struct tvnorm *timing;
++	const struct tvnorm *timing;
+ 
+ 	unsigned short id;	/* number of this device */
+ 	char name[32];		/* name of this device */
 diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index 36305aaabd7d..b841f532e6bb 100644
+index b841f532e6bb..176ce8a355ba 100644
 --- a/drivers/staging/media/zoran/zoran_card.c
 +++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -944,6 +944,12 @@ static int zr36057_init(struct zoran *zr)
- 	for (j = 0; j < BUZ_NUM_STAT_COM; j++)
- 		zr->stat_com[j] = cpu_to_le32(1); /* mark as unavailable to zr36057 */
+@@ -277,24 +277,24 @@ static char *codecid_to_modulename(u16 codecid)
+ //      u16 Wt, Wa, HStart, HSyncStart, Ht, Ha, VStart;
+ // };
  
-+	zr->stat_comb = dma_alloc_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32) * 2, &zr->p_scb, GFP_KERNEL);
-+	if (!zr->stat_comb) {
-+		err = -ENOMEM;
-+		goto exit_statcom;
-+	}
-+
- 	/* Now add the template and register the device unit. */
- 	*zr->video_dev = zoran_template;
- 	zr->video_dev->v4l2_dev = &zr->v4l2_dev;
-@@ -957,7 +963,7 @@ static int zr36057_init(struct zoran *zr)
- 	zr->video_dev->vfl_dir = VFL_DIR_M2M;
- 	err = video_register_device(zr->video_dev, VFL_TYPE_VIDEO, video_nr[zr->id]);
- 	if (err < 0)
--		goto exit_statcom;
-+		goto exit_statcomb;
- 	video_set_drvdata(zr->video_dev, zr);
+-static struct tvnorm f50sqpixel = { 944, 768, 83, 880, 625, 576, 16 };
+-static struct tvnorm f60sqpixel = { 780, 640, 51, 716, 525, 480, 12 };
+-static struct tvnorm f50ccir601 = { 864, 720, 75, 804, 625, 576, 18 };
+-static struct tvnorm f60ccir601 = { 858, 720, 57, 788, 525, 480, 16 };
++static const struct tvnorm f50sqpixel = { 944, 768, 83, 880, 625, 576, 16 };
++static const struct tvnorm f60sqpixel = { 780, 640, 51, 716, 525, 480, 12 };
++static const struct tvnorm f50ccir601 = { 864, 720, 75, 804, 625, 576, 18 };
++static const struct tvnorm f60ccir601 = { 858, 720, 57, 788, 525, 480, 16 };
  
- 	zoran_init_hardware(zr);
-@@ -972,6 +978,8 @@ static int zr36057_init(struct zoran *zr)
- 	zr->initialized = 1;
- 	return 0;
+-static struct tvnorm f50ccir601_lml33 = { 864, 720, 75 + 34, 804, 625, 576, 18 };
+-static struct tvnorm f60ccir601_lml33 = { 858, 720, 57 + 34, 788, 525, 480, 16 };
++static const struct tvnorm f50ccir601_lml33 = { 864, 720, 75 + 34, 804, 625, 576, 18 };
++static const struct tvnorm f60ccir601_lml33 = { 858, 720, 57 + 34, 788, 525, 480, 16 };
  
-+exit_statcomb:
-+	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32) * 2, zr->stat_comb, zr->p_scb);
- exit_statcom:
- 	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32), zr->stat_com, zr->p_sc);
- exit_video:
-@@ -1003,6 +1011,7 @@ static void zoran_remove(struct pci_dev *pdev)
- 	pci_free_irq(zr->pci_dev, 0, zr);
- 	/* unmap and free memory */
- 	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32), zr->stat_com, zr->p_sc);
-+	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32) * 2, zr->stat_comb, zr->p_scb);
- 	pci_release_regions(pdev);
- 	pci_disable_device(zr->pci_dev);
- 	video_unregister_device(zr->video_dev);
+ /* The DC10 (57/16/50) uses VActive as HSync, so HStart must be 0 */
+-static struct tvnorm f50sqpixel_dc10 = { 944, 768, 0, 880, 625, 576, 0 };
+-static struct tvnorm f60sqpixel_dc10 = { 780, 640, 0, 716, 525, 480, 12 };
++static const struct tvnorm f50sqpixel_dc10 = { 944, 768, 0, 880, 625, 576, 0 };
++static const struct tvnorm f60sqpixel_dc10 = { 780, 640, 0, 716, 525, 480, 12 };
+ 
+ /*
+  * FIXME: I cannot swap U and V in saa7114, so i do one pixel left shift in zoran (75 -> 74)
+  * (Maxim Yevtyushkin <max@linuxmedialabs.com>)
+  */
+-static struct tvnorm f50ccir601_lm33r10 = { 864, 720, 74 + 54, 804, 625, 576, 18 };
+-static struct tvnorm f60ccir601_lm33r10 = { 858, 720, 56 + 54, 788, 525, 480, 16 };
++static const struct tvnorm f50ccir601_lm33r10 = { 864, 720, 74 + 54, 804, 625, 576, 18 };
++static const struct tvnorm f60ccir601_lm33r10 = { 858, 720, 56 + 54, 788, 525, 480, 16 };
+ 
+ /*
+  * FIXME: The ks0127 seem incapable of swapping U and V, too, which is why I copy Maxim's left
+@@ -303,8 +303,8 @@ static struct tvnorm f60ccir601_lm33r10 = { 858, 720, 56 + 54, 788, 525, 480, 16
+  * Christer's driver used the unshifted norms, though...
+  * /Sam
+  */
+-static struct tvnorm f50ccir601_avs6eyes = { 864, 720, 74, 804, 625, 576, 18 };
+-static struct tvnorm f60ccir601_avs6eyes = { 858, 720, 56, 788, 525, 480, 16 };
++static const struct tvnorm f50ccir601_avs6eyes = { 864, 720, 74, 804, 625, 576, 18 };
++static const struct tvnorm f60ccir601_avs6eyes = { 858, 720, 56, 788, 525, 480, 16 };
+ 
+ static const unsigned short vpx3220_addrs[] = { 0x43, 0x47, I2C_CLIENT_END };
+ static const unsigned short saa7110_addrs[] = { 0x4e, 0x4f, I2C_CLIENT_END };
+diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+index 82d522c1a528..9558bafdde7d 100644
+--- a/drivers/staging/media/zoran/zoran_device.c
++++ b/drivers/staging/media/zoran/zoran_device.c
+@@ -292,7 +292,7 @@ static void zr36057_adjust_vfe(struct zoran *zr, enum zoran_codec_mode mode)
+ static void zr36057_set_vfe(struct zoran *zr, int video_width, int video_height,
+ 			    const struct zoran_format *format)
+ {
+-	struct tvnorm *tvn;
++	const struct tvnorm *tvn;
+ 	unsigned int HStart, HEnd, VStart, VEnd;
+ 	unsigned int DispMode;
+ 	unsigned int VidWinWid, VidWinHt;
+@@ -510,7 +510,7 @@ static void init_jpeg_queue(struct zoran *zr)
+ 
+ static void zr36057_set_jpg(struct zoran *zr, enum zoran_codec_mode mode)
+ {
+-	struct tvnorm *tvn;
++	const struct tvnorm *tvn;
+ 	u32 reg;
+ 
+ 	tvn = zr->timing;
+diff --git a/drivers/staging/media/zoran/zr36016.c b/drivers/staging/media/zoran/zr36016.c
+index a8190005bc4d..046cffb92f5f 100644
+--- a/drivers/staging/media/zoran/zr36016.c
++++ b/drivers/staging/media/zoran/zr36016.c
+@@ -238,8 +238,8 @@ static int zr36016_set_mode(struct videocodec *codec, int mode)
+ }
+ 
+ /* set picture size */
+-static int zr36016_set_video(struct videocodec *codec, struct tvnorm *norm,
+-		   struct vfe_settings *cap, struct vfe_polarity *pol)
++static int zr36016_set_video(struct videocodec *codec, const struct tvnorm *norm,
++			     struct vfe_settings *cap, struct vfe_polarity *pol)
+ {
+ 	struct zr36016 *ptr = (struct zr36016 *)codec->data;
+ 
+diff --git a/drivers/staging/media/zoran/zr36050.c b/drivers/staging/media/zoran/zr36050.c
+index f551631c18cd..348b9f0ab74c 100644
+--- a/drivers/staging/media/zoran/zr36050.c
++++ b/drivers/staging/media/zoran/zr36050.c
+@@ -554,8 +554,8 @@ static int zr36050_set_mode(struct videocodec *codec, int mode)
+ }
+ 
+ /* set picture size (norm is ignored as the codec doesn't know about it) */
+-static int zr36050_set_video(struct videocodec *codec, struct tvnorm *norm,
+-		   struct vfe_settings *cap, struct vfe_polarity *pol)
++static int zr36050_set_video(struct videocodec *codec, const struct tvnorm *norm,
++			     struct vfe_settings *cap, struct vfe_polarity *pol)
+ {
+ 	struct zr36050 *ptr = (struct zr36050 *)codec->data;
+ 	int size;
+diff --git a/drivers/staging/media/zoran/zr36060.c b/drivers/staging/media/zoran/zr36060.c
+index 0a0916f5f8cd..773de0e64daf 100644
+--- a/drivers/staging/media/zoran/zr36060.c
++++ b/drivers/staging/media/zoran/zr36060.c
+@@ -477,7 +477,7 @@ static int zr36060_set_mode(struct videocodec *codec, int mode)
+ }
+ 
+ /* set picture size (norm is ignored as the codec doesn't know about it) */
+-static int zr36060_set_video(struct videocodec *codec, struct tvnorm *norm,
++static int zr36060_set_video(struct videocodec *codec, const struct tvnorm *norm,
+ 			     struct vfe_settings *cap, struct vfe_polarity *pol)
+ {
+ 	struct zr36060 *ptr = (struct zr36060 *)codec->data;
 -- 
 2.26.2
 
