@@ -2,55 +2,91 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C44F8272168
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:42:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 69F0F2721AB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 13:00:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6C4428688F;
-	Mon, 21 Sep 2020 10:42:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3AC2A86856;
+	Mon, 21 Sep 2020 11:00:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X-r2NMAByFOz; Mon, 21 Sep 2020 10:42:51 +0000 (UTC)
+	with ESMTP id 7bvvzWqulPzo; Mon, 21 Sep 2020 11:00:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6C5A78682F;
-	Mon, 21 Sep 2020 10:42:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1C4B986806;
+	Mon, 21 Sep 2020 11:00:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 882E41BF34C
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:42:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0560E1BF34C
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 11:00:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8491A8682F
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:42:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CB2C42048C
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 11:00:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xwCI9U-FyE4R for <devel@linuxdriverproject.org>;
- Mon, 21 Sep 2020 10:42:47 +0000 (UTC)
+ with ESMTP id qezXBqXS6iVy for <devel@linuxdriverproject.org>;
+ Mon, 21 Sep 2020 10:59:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4F5C486819
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:42:47 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 1AE7F8EA4FB39AF6CF93;
- Mon, 21 Sep 2020 18:42:43 +0800 (CST)
-Received: from [10.174.177.116] (10.174.177.116) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 21 Sep 2020 18:42:39 +0800
-Subject: Re: [PATCH -next] binder: simplify the return expression of
- binder_mmap
-To: Christian Brauner <christian.brauner@ubuntu.com>
-References: <20200921082423.2590938-1-liushixin2@huawei.com>
- <20200921080830.vrki7dcm64l46ppb@wittgenstein>
-From: Liu Shixin <liushixin2@huawei.com>
-Message-ID: <b156861c-785e-c657-076d-d62a848d04db@huawei.com>
-Date: Mon, 21 Sep 2020 18:42:39 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by silver.osuosl.org (Postfix) with ESMTPS id A356720408
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:59:59 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08LAx6PW096803;
+ Mon, 21 Sep 2020 10:59:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=mizNCetwIsKZgA064lowgkb/h+Rqt5ZeNuJvt1Lw/Qc=;
+ b=De0GAbH2NmtT4kjSmbOfXRmbcK0O9EsiFRi3I7mhfvRujwArTig5lMsYA9lZomhpvzV9
+ x5jjtyBhMC4O9iAUZfJ7Z6KyHw7TxwfTNjWgMjasC/LLM+B7oLzuANt3uFlILzG/R0Oc
+ nPGnVTWjgIqWdBWzWNeS7Xwf3J1wXY95nJWulN6gbUBDNl62ueBZl+PdbrAg5xEfGEh8
+ Jsq2N3yqZ/AyCfIdFWkL9nWWTN2VWt9OK5d/Dq1viYsPedKIe8vUnANov4Me0VxsOIMn
+ oij6sA/ZVtbDQ5RBUarGf1xVLr7C5/qJEt3jRTTwaEgqgBH4reN/DKj6GgAG7tP8Sy5M 2Q== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 33n9xkmx2f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Mon, 21 Sep 2020 10:59:57 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08LAtK6W139782;
+ Mon, 21 Sep 2020 10:59:56 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 33nuwvxuq9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 21 Sep 2020 10:59:56 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 08LAxruR032760;
+ Mon, 21 Sep 2020 10:59:54 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 21 Sep 2020 03:59:53 -0700
+Date: Mon, 21 Sep 2020 13:59:45 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Corentin Labbe <clabbe@baylibre.com>
+Subject: Re: [PATCH RFT/RFC 37/49] staging: media: zoran: add fallthrough
+ keyword
+Message-ID: <20200921105945.GC4282@kadam>
+References: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
+ <1600683624-5863-38-git-send-email-clabbe@baylibre.com>
 MIME-Version: 1.0
-In-Reply-To: <20200921080830.vrki7dcm64l46ppb@wittgenstein>
-X-Originating-IP: [10.174.177.116]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <1600683624-5863-38-git-send-email-clabbe@baylibre.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9750
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxscore=0 adultscore=0
+ bulkscore=0 mlxlogscore=999 phishscore=0 suspectscore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009210081
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9750
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 malwarescore=0
+ suspectscore=0 priorityscore=1501 adultscore=0 spamscore=0 clxscore=1011
+ mlxlogscore=999 bulkscore=0 mlxscore=0 phishscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009210081
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,82 +99,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Suren Baghdasaryan <surenb@google.com>, Hridya
- Valsaraju <hridya@google.com>,
- =?UTF-8?Q?Arve_Hj=c3=b8nnev=c3=a5g?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, laurent.pinchart@skynet.be, mchehab@kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020/9/21 16:08, Christian Brauner wrote:
+On Mon, Sep 21, 2020 at 10:20:12AM +0000, Corentin Labbe wrote:
+> This patch adds fallthrough keyword where appropriate.
+> 
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+>  drivers/staging/media/zoran/zoran_device.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+> index 9558bafdde7d..7634d94f9359 100644
+> --- a/drivers/staging/media/zoran/zoran_device.c
+> +++ b/drivers/staging/media/zoran/zoran_device.c
+> @@ -268,7 +268,9 @@ static void zr36057_adjust_vfe(struct zoran *zr, enum zoran_codec_mode mode)
+>  		btwrite(reg, ZR36057_VFEHCR);
+>  		break;
+>  	case BUZ_MODE_MOTION_COMPRESS:
+> +		fallthrough;
+>  	case BUZ_MODE_IDLE:
+> +		fallthrough;
+>  	default:
 
-> On Mon, Sep 21, 2020 at 04:24:23PM +0800, Liu Shixin wrote:
->> Simplify the return expression.
->>
->> Signed-off-by: Liu Shixin <liushixin2@huawei.com>
->> ---
-> Why not is all I can really say. :) But if this is about simplifying you
-> could get rid of the "ret" and "failure string" variables, and the goto
-> in that function completely by doing sm like this (__completely
-> untested__):
+Hopefully, we don't need fallthrough labels for empty switch statements
+like this?
 
-Thanks for your advice. I will modify and test it.
-
-Regards,
-Liu Shixin
-
->
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index f936530a19b0..26f4dc81b008 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -5182,9 +5182,7 @@ static const struct vm_operations_struct binder_vm_ops = {
->
->  static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
->  {
-> -       int ret;
->         struct binder_proc *proc = filp->private_data;
-> -       const char *failure_string;
->
->         if (proc->tsk != current->group_leader)
->                 return -EINVAL;
-> @@ -5196,9 +5194,9 @@ static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
->                      (unsigned long)pgprot_val(vma->vm_page_prot));
->
->         if (vma->vm_flags & FORBIDDEN_MMAP_FLAGS) {
-> -               ret = -EPERM;
-> -               failure_string = "bad vm_flags";
-> -               goto err_bad_arg;
-> +               pr_err("%s: %d %lx-%lx %s failed %d\n", __func__,
-> +                               proc->pid, vma->vm_start, vma->vm_end, "bad vm_flags", -EPERM);
-> +               return -EPERM;
->         }
->         vma->vm_flags |= VM_DONTCOPY | VM_MIXEDMAP;
->         vma->vm_flags &= ~VM_MAYWRITE;
-> @@ -5206,15 +5204,7 @@ static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
->         vma->vm_ops = &binder_vm_ops;
->         vma->vm_private_data = proc;
->
-> -       ret = binder_alloc_mmap_handler(&proc->alloc, vma);
-> -       if (ret)
-> -               return ret;
-> -       return 0;
-> -
-> -err_bad_arg:
-> -       pr_err("%s: %d %lx-%lx %s failed %d\n", __func__,
-> -              proc->pid, vma->vm_start, vma->vm_end, failure_string, ret);
-> -       return ret;
-> +       return binder_alloc_mmap_handler(&proc->alloc, vma);
->  }
->
-> Christian
-> .
->
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
