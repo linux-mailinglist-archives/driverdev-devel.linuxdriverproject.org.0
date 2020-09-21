@@ -1,53 +1,88 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46C4F27225A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 13:25:26 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6A4D2725A4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 15:34:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F0F9E871EE;
-	Mon, 21 Sep 2020 11:25:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21AFB20532;
+	Mon, 21 Sep 2020 13:34:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bmw1rungKZmq; Mon, 21 Sep 2020 11:25:23 +0000 (UTC)
+	with ESMTP id j5g7z8VuCPJk; Mon, 21 Sep 2020 13:34:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6097A871D8;
-	Mon, 21 Sep 2020 11:25:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 449412051C;
+	Mon, 21 Sep 2020 13:34:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 166B71BF3EF
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 11:25:22 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 751CA1BF376
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 13:34:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 104C186812
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 11:25:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6AD5886084
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 13:34:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id niHbCGx1KJz4 for <devel@linuxdriverproject.org>;
- Mon, 21 Sep 2020 11:25:20 +0000 (UTC)
+ with ESMTP id M5EUsczVDY-G for <devel@linuxdriverproject.org>;
+ Mon, 21 Sep 2020 13:34:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BFE55867DA
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 11:25:20 +0000 (UTC)
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 3FAAD3016D65BB5E18EA;
- Mon, 21 Sep 2020 19:25:18 +0800 (CST)
-Received: from huawei.com (10.175.113.32) by DGGEMS410-HUB.china.huawei.com
- (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Mon, 21 Sep 2020
- 19:25:10 +0800
-From: Liu Shixin <liushixin2@huawei.com>
-To: Christian Brauner <christian@brauner.io>
-Subject: [PATCH -next] binder: simplify the return expression of binder_mmap
-Date: Mon, 21 Sep 2020 19:47:34 +0800
-Message-ID: <20200921114734.3272769-1-liushixin2@huawei.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200921080830.vrki7dcm64l46ppb@wittgenstein>
-References: <20200921080830.vrki7dcm64l46ppb@wittgenstein>
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A5FD185624
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 13:34:00 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id k18so12708436wmj.5
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 06:34:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=PSlR6UEl0k2mghvqxd0Ilre5cll+vxg1D9fFnWV554k=;
+ b=rgQgX6qUkRAi0UCi/mtfzJqE/csdkBuY4H2g5YPpJn3xtwt1X7JxJAi+3wprjmcKZC
+ aHgWow6pFeJQzhXjl/ZYmeOsOU/iyCw+Dw9oySAPctYk3EBKE9TcRi0YY/BFKbFKPTpU
+ 9u0XpcCHQcywy13FSP0L39aabKU5+xvApYqLigXc/mXSJ9fg+4W3AFZdCFiB1/RUEjO4
+ RkGZfN3RixKgV1NxUKprEFYmKv/xzIDZ9oV9zuRM6Nutj8UcYbgKSMvNxHRHAmTEwFRn
+ EyzXLbQpI6jLExIj44MTLDNuUW695bYoYRdiNGO5lYb/Sx0k8GF95BtkGQo/YQmvoRQ7
+ Rdww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=PSlR6UEl0k2mghvqxd0Ilre5cll+vxg1D9fFnWV554k=;
+ b=FcqV99iSrdEFy6qW+O9WLNOLYN/ImMzZYVJBkT9HD08AXTa6tbOvGZWlQPWgABzCUc
+ OkbI3s+pvGXHwP8Hi9k9EZ92nUd9ea76CwxTOGvhr/02hidVg4tmlOE8GVa5Rwba6zas
+ QBmkHbr5HUe3gwOmEOXMIKa+FTwmxIXnBlgAgyGsc6jOxDobj8TpwklG7P+sbZcZgapR
+ DBwpLvPRmoOv9Gr+baZjbukvAdiyNt+kO0ddM+mNCuWqIaFqjm+q1CHGbKDidjWxG6sP
+ 2agg2WBJ5rQkfIZinhLpzYmZW5lhu45G8lavn5Jaq9Ev3oyzL1eS0OwHb0DSkQ6H9xEm
+ YLeQ==
+X-Gm-Message-State: AOAM530UaZ/zR3miA9FtB5advOULqr0dyfVuhkr/0Nh0U+Tw3peNoukv
+ VVQmVrrVQBLEsNyOCbmbvJg=
+X-Google-Smtp-Source: ABdhPJxs7SLQzpL7shi76iakBUBJaNASPqq5USxGQbR2ll5qMDRJbC8+U5kFag9gl1ppteY3tamIVA==
+X-Received: by 2002:a1c:9a0c:: with SMTP id c12mr30789130wme.85.1600695239140; 
+ Mon, 21 Sep 2020 06:33:59 -0700 (PDT)
+Received: from [192.168.1.211] ([2.29.208.34])
+ by smtp.gmail.com with ESMTPSA id d9sm13017803wmb.30.2020.09.21.06.33.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Sep 2020 06:33:58 -0700 (PDT)
+Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
+ via software nodes on ACPI platforms
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+References: <20200916213618.8003-1-djrscally@gmail.com>
+ <20200917103343.GW26842@paasikivi.fi.intel.com>
+ <8133a57d-ab4c-dccd-4325-9b10e7805648@gmail.com>
+ <20200917124514.GK3956970@smile.fi.intel.com>
+ <20200918075157.GF26842@paasikivi.fi.intel.com>
+ <20200918130739.GA3956970@smile.fi.intel.com>
+From: Dan Scally <djrscally@gmail.com>
+Message-ID: <66e33cd5-6c1e-310a-61e8-6cde720ffa19@gmail.com>
+Date: Mon, 21 Sep 2020 14:33:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.32]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200918130739.GA3956970@smile.fi.intel.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,70 +95,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Liu Shixin <liushixin2@huawei.com>,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Suren
- Baghdasaryan <surenb@google.com>, Hridya Valsaraju <hridya@google.com>,
- =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>
+Cc: devel@driverdev.osuosl.org, robh@kernel.org, jorhand@linux.microsoft.com,
+ linux-media@vger.kernel.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, kieran.bingham@ideasonboard.com,
+ kitakar@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ davem@davemloft.net, tian.shu.qiu@intel.com, yong.zhi@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Simplify the return expression.
+On 18/09/2020 14:07, Andy Shevchenko wrote:
+> On Fri, Sep 18, 2020 at 10:51:57AM +0300, Sakari Ailus wrote:
+>> On Thu, Sep 17, 2020 at 03:45:14PM +0300, Andy Shevchenko wrote:
+>>> On Thu, Sep 17, 2020 at 11:52:28AM +0100, Dan Scally wrote:
+>>>> On 17/09/2020 11:33, Sakari Ailus wrote:
+>>>>> a module and not enlarge everyone's kernel, and the initialisation would at
+>>>>> the same time take place before the rest of what the CIO2 driver does in
+>>>>> probe.
+>>>> I thought of that as well, but wasn't sure which was preferable. I can
+>>>> compress it into the CIO2 driver though sure.
+>>> Sakari, I tend to agree with Dan and have the board file separated from the
+>>> driver and even framework.
+>> And it'll be linked to the kernel binary then I suppose?
+> Solely depends to your Kconfig dependencies and declaration.
+>
+> From code perspective you may do it before enumeration of the certain device or
+> after with reprobe.
+>
+>> I don't have a strong opinion either way, just thought that this will
+>> affect anyone using x86 machines, whether or not they have IPU3. I guess it
+>> could be compiled in if the ipu3-cio2 driver is enabled?
+> Of course!
 
-Signed-off-by: Liu Shixin <liushixin2@huawei.com>
----
- drivers/android/binder.c | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
+Apologies both - my inexperience is showing here: I thought you couldn't
+make it compile into the kernel where it's dependent on another piece of
+code that's configured to be a module? In my case, ipu3-cio2 plus some
+other dependencies are configured as modules; VIDEO_DEV and VIDEO_V4L2
+notably. Is that not right?
 
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 37a505c41dec..49c0700816a5 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -5180,9 +5180,7 @@ static const struct vm_operations_struct binder_vm_ops = {
- 
- static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
- {
--	int ret;
- 	struct binder_proc *proc = filp->private_data;
--	const char *failure_string;
- 
- 	if (proc->tsk != current->group_leader)
- 		return -EINVAL;
-@@ -5194,9 +5192,9 @@ static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
- 		     (unsigned long)pgprot_val(vma->vm_page_prot));
- 
- 	if (vma->vm_flags & FORBIDDEN_MMAP_FLAGS) {
--		ret = -EPERM;
--		failure_string = "bad vm_flags";
--		goto err_bad_arg;
-+		pr_err("%s: %d %lx-%lx %s failed %d\n", __func__,
-+		       proc->pid, vma->vm_start, vma->vm_end, "bad vm_flags", -EPERM);
-+		return -EPERM;
- 	}
- 	vma->vm_flags |= VM_DONTCOPY | VM_MIXEDMAP;
- 	vma->vm_flags &= ~VM_MAYWRITE;
-@@ -5204,15 +5202,7 @@ static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
- 	vma->vm_ops = &binder_vm_ops;
- 	vma->vm_private_data = proc;
- 
--	ret = binder_alloc_mmap_handler(&proc->alloc, vma);
--	if (ret)
--		return ret;
--	return 0;
--
--err_bad_arg:
--	pr_err("%s: %d %lx-%lx %s failed %d\n", __func__,
--	       proc->pid, vma->vm_start, vma->vm_end, failure_string, ret);
--	return ret;
-+	return binder_alloc_mmap_handler(&proc->alloc, vma);
- }
- 
- static int binder_open(struct inode *nodp, struct file *filp)
--- 
-2.25.1
+
+It would probably make the probe() ordering issues easier if it could be
+compiled in, since I could just rely on late_initcall() in that case and
+I guess that should work.
 
 _______________________________________________
 devel mailing list
