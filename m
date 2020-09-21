@@ -2,73 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE349272030
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:21:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C5658272038
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 12:21:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6746B86856;
-	Mon, 21 Sep 2020 10:21:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6E248868CA;
+	Mon, 21 Sep 2020 10:21:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vlWSBz0zhIhr; Mon, 21 Sep 2020 10:21:28 +0000 (UTC)
+	with ESMTP id ufDgf0kARWif; Mon, 21 Sep 2020 10:21:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EEE68868CC;
-	Mon, 21 Sep 2020 10:21:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1FDC886819;
+	Mon, 21 Sep 2020 10:21:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 011751BF3F4
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 806311BF962
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F07D785FC1
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7C84685EA5
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 10:21:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jv_vPqiy9Lci for <devel@linuxdriverproject.org>;
- Mon, 21 Sep 2020 10:21:08 +0000 (UTC)
+ with ESMTP id A4lRU92yvRbv for <devel@linuxdriverproject.org>;
+ Mon, 21 Sep 2020 10:21:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
  [209.85.221.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0D07285F9B
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E8C3E85FD5
  for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 10:21:04 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id c18so12124671wrm.9
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 03:21:03 -0700 (PDT)
+Received: by mail-wr1-f66.google.com with SMTP id x14so12097222wrl.12
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 03:21:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=UDXBjt8jfu/oMGNat+F4S9FWffFRkNYldF9fojbA7xU=;
- b=o+JBpv0kgXUgHSjx+7mwoy9hBdUZxyTnq88Z4pn5acM1mUZcgFy3Vf49rvzEVzeR4t
- 6PCl/uBUIYl3AXto4vLB4dnsY09c7oLxzwJa05cAqiugtodeTRdbHyhXSAGrGIHsiESP
- +lysMoTF/HyZGBxFAxsCjZvAuEvLXviGGJPXj2vxaOsxJbj71NQVEs5CuXXacXv0PV2B
- FTF6+MefhdS9Ro5JYYxpp+xjWlc7NWxow8mE3GGbdMej/DFhO5RFQCRIhDGzt9pnKSxV
- gS42EYx7MYaNVgUEGs4XkVeFH5FnE5oRtC5dvsvuW9GnHOK1jN2VfLMJX/UuuoGpTiOo
- kmjA==
+ bh=fZV35x1Iz2E43SPidCPc9QQFeH1eHhufPHV6/Pg1brc=;
+ b=tduwWF0NtI3cn20DkNi9IESemUfiGeLBLMBfv0DPvHLkobph7WNzojhd59us8p09ZB
+ zjK7P5nC4xgxT5ywKK7G3V0K6G2nDZfWvqGsMTmwT4XFLRcwBvTs5NEXzr3+oq9aJePj
+ PThFY0Zyv9HP4Oaf/fb00JGfj19WkQXnS0Y/NP2m4PtU9gs6d9GJLawogoqLfUZw7hVb
+ fEi5SS4XNtT83PnqsbU/q5pXWnjUzvq5euMg+rdyB1fqMzq1DEFnkfA7+uVg5yOvDPjL
+ ER6SBAHKGXt5Qi++YmjJ3KlbprPmuQKQPaZ5mz+QFiGVDQxfpL0+FBN5TiogzU7bZ7ta
+ vzpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=UDXBjt8jfu/oMGNat+F4S9FWffFRkNYldF9fojbA7xU=;
- b=EHlOYzcPy+X13D2xz7Ql5/Zg99ovCqy7V90GoWe8BibezH0AE8ontlVRopqRMx97qF
- iTWa6h3zNj8lhBUg2kjZsiQbQxUGRcPlTQsr9VuYCxbNSrh/s1qrUn+n0Q+erBHD7Pns
- jsDnqmpf14X7vxthJkD/9wicoENoVtwd5Z+sXkZsOVVGzlsd6JJ4MAh9tmnCjUQpSxwp
- y6qJ01zX75V83fRQ+31LPVj1IBiVe+f5HE0quCq2sTP+nX5a36Ui0J8bM28yTNyzAiR/
- F3PtQoaRTnTEsLiIvVeEPWXXL/xq12rwggd9b3TnzKKyLL8nqxh4IJ237eU7Q9VTThBR
- CDrg==
-X-Gm-Message-State: AOAM532zSOYw/+jufT8uaMHyjB28mcqUy2nGsSNZr/2om52/GSLSf0LS
- CNBdiOsAmZ9aalo68MWCwFMEfh0eOEbnHQ==
-X-Google-Smtp-Source: ABdhPJyERdYp2AsyAKmPFvJF44cYROI3W+/g17UZsOuGZCzLex69SCmZaq065/gaT2X6isrvK4RBOA==
-X-Received: by 2002:a5d:56cd:: with SMTP id m13mr50724441wrw.261.1600683662637; 
- Mon, 21 Sep 2020 03:21:02 -0700 (PDT)
+ bh=fZV35x1Iz2E43SPidCPc9QQFeH1eHhufPHV6/Pg1brc=;
+ b=X5xiUolJZuF4XC/c/wBunkVl46E3ShqYmtrE78ez6vDKxSyqeqRrElJyku72w6lxQU
+ 9JfO+mhbFGlP/c/ySC1QfhI06SPY0JtWs0SzU+QVmKeD/sZ9CzW8e/9W6ja5iVw6y5yy
+ 9U4Ca3QnVPM/SKcfkVosuG23anph6xqXQivNNw0DmZWNk7tv/6z9bKlarsMFYDTVTUvS
+ +cIuwTSjJGsbT+5Fg0qAzfjS3rQIzq7RfnFuoh8ci4wc2geZW8UhwBv91SZndgF0pUsk
+ KJdCqVTFg4U7qkeX0tQenNCWYPr1ZCmhSeB6kGXrQO4ZBza72JelgDiLSQ2Qu8UP/Tf5
+ WSdw==
+X-Gm-Message-State: AOAM532Um7k7yvD8zjKrTwM6DfQzd138b6zxwFYYrFZvOcEap0m4lQPn
+ l09R9F+sr3LXPUX3Icl2TiA6Xg==
+X-Google-Smtp-Source: ABdhPJzkPKV30xQ7dnOo7B95UCRnoif+Ufxh0naKl1mhkBaiRw4uyZ9JrUV/tYWZKK0s6aP/1XkYSQ==
+X-Received: by 2002:adf:9405:: with SMTP id 5mr28243515wrq.51.1600683663492;
+ Mon, 21 Sep 2020 03:21:03 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id l17sm18804629wme.11.2020.09.21.03.21.01
+ by smtp.googlemail.com with ESMTPSA id l17sm18804629wme.11.2020.09.21.03.21.02
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
  Mon, 21 Sep 2020 03:21:02 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, laurent.pinchart@skynet.be, mchehab@kernel.org
-Subject: [PATCH RFT/RFC 32/49] staging: media: zoran: use devm_ioremap
-Date: Mon, 21 Sep 2020 10:20:07 +0000
-Message-Id: <1600683624-5863-33-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC 33/49] staging: media: zoran: add stat_com buffer
+Date: Mon, 21 Sep 2020 10:20:08 +0000
+Message-Id: <1600683624-5863-34-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
 References: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
@@ -92,52 +92,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Using devm_ioremap simplify code.
+This patch adds the allocation of the stat_com buffer which be used
+later.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran_card.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/staging/media/zoran/zoran.h      |  2 ++
+ drivers/staging/media/zoran/zoran_card.c | 11 ++++++++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/staging/media/zoran/zoran.h b/drivers/staging/media/zoran/zoran.h
+index 87ca324f6ec2..c73b7e7fd5e1 100644
+--- a/drivers/staging/media/zoran/zoran.h
++++ b/drivers/staging/media/zoran/zoran.h
+@@ -357,6 +357,8 @@ struct zoran {
+ 	wait_queue_head_t test_q;
+ 
+ 	dma_addr_t p_sc;
++	__le32 *stat_comb;
++	dma_addr_t p_scb;
+ };
+ 
+ static inline struct zoran *to_zoran(struct v4l2_device *v4l2_dev)
 diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index ed4ecf92c040..36305aaabd7d 100644
+index 36305aaabd7d..b841f532e6bb 100644
 --- a/drivers/staging/media/zoran/zoran_card.c
 +++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -1003,7 +1003,6 @@ static void zoran_remove(struct pci_dev *pdev)
+@@ -944,6 +944,12 @@ static int zr36057_init(struct zoran *zr)
+ 	for (j = 0; j < BUZ_NUM_STAT_COM; j++)
+ 		zr->stat_com[j] = cpu_to_le32(1); /* mark as unavailable to zr36057 */
+ 
++	zr->stat_comb = dma_alloc_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32) * 2, &zr->p_scb, GFP_KERNEL);
++	if (!zr->stat_comb) {
++		err = -ENOMEM;
++		goto exit_statcom;
++	}
++
+ 	/* Now add the template and register the device unit. */
+ 	*zr->video_dev = zoran_template;
+ 	zr->video_dev->v4l2_dev = &zr->v4l2_dev;
+@@ -957,7 +963,7 @@ static int zr36057_init(struct zoran *zr)
+ 	zr->video_dev->vfl_dir = VFL_DIR_M2M;
+ 	err = video_register_device(zr->video_dev, VFL_TYPE_VIDEO, video_nr[zr->id]);
+ 	if (err < 0)
+-		goto exit_statcom;
++		goto exit_statcomb;
+ 	video_set_drvdata(zr->video_dev, zr);
+ 
+ 	zoran_init_hardware(zr);
+@@ -972,6 +978,8 @@ static int zr36057_init(struct zoran *zr)
+ 	zr->initialized = 1;
+ 	return 0;
+ 
++exit_statcomb:
++	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32) * 2, zr->stat_comb, zr->p_scb);
+ exit_statcom:
+ 	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32), zr->stat_com, zr->p_sc);
+ exit_video:
+@@ -1003,6 +1011,7 @@ static void zoran_remove(struct pci_dev *pdev)
  	pci_free_irq(zr->pci_dev, 0, zr);
  	/* unmap and free memory */
  	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32), zr->stat_com, zr->p_sc);
--	iounmap(zr->zr36057_mem);
++	dma_free_coherent(&zr->pci_dev->dev, BUZ_NUM_STAT_COM * sizeof(u32) * 2, zr->stat_comb, zr->p_scb);
  	pci_release_regions(pdev);
  	pci_disable_device(zr->pci_dev);
  	video_unregister_device(zr->video_dev);
-@@ -1156,7 +1155,7 @@ static int zoran_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto zr_unreg;
- 
--	zr->zr36057_mem = pci_ioremap_bar(zr->pci_dev, 0);
-+	zr->zr36057_mem = devm_ioremap(&pdev->dev, pci_resource_start(pdev, 0), pci_resource_len(pdev, 0));
- 	if (!zr->zr36057_mem) {
- 		pci_err(pdev, "%s() - ioremap failed\n", __func__);
- 		goto zr_pci_release;
-@@ -1172,7 +1171,7 @@ static int zoran_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		} else {
- 			pci_err(pdev, "%s - cannot assign IRQ, error code %d\n", __func__, result);
- 		}
--		goto zr_unmap;
-+		goto zr_pci_release;
- 	}
- 
- 	/* set PCI latency timer */
-@@ -1273,8 +1272,6 @@ static int zoran_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- zr_free_irq:
- 	btwrite(0, ZR36057_SPGPPCR);
- 	pci_free_irq(zr->pci_dev, 0, zr);
--zr_unmap:
--	iounmap(zr->zr36057_mem);
- zr_pci_release:
- 	pci_release_regions(pdev);
- zr_unreg:
 -- 
 2.26.2
 
