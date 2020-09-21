@@ -1,83 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC678273551
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 23:55:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44D5D27355A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Sep 2020 23:56:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0E7C52150A;
-	Mon, 21 Sep 2020 21:55:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 007F88592F;
+	Mon, 21 Sep 2020 21:56:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B+LblfpElK4Q; Mon, 21 Sep 2020 21:55:43 +0000 (UTC)
+	with ESMTP id fa0j4Mh7Ytqr; Mon, 21 Sep 2020 21:56:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7EBDF20C41;
-	Mon, 21 Sep 2020 21:55:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D53E858BF;
+	Mon, 21 Sep 2020 21:56:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 82C101BF336
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 21:55:38 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 69FC31BF336
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 21:56:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 74692207A2
- for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 21:55:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 664F785888
+ for <devel@linuxdriverproject.org>; Mon, 21 Sep 2020 21:56:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UxFKvexIFOFU for <devel@linuxdriverproject.org>;
- Mon, 21 Sep 2020 21:55:37 +0000 (UTC)
+ with ESMTP id 8e0CTZMfd1yn for <devel@linuxdriverproject.org>;
+ Mon, 21 Sep 2020 21:56:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 77B032079A
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 21:55:37 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id g4so14558305wrs.5
- for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 14:55:37 -0700 (PDT)
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 94BCE85886
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 21:56:28 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id l9so1053479wme.3
+ for <devel@driverdev.osuosl.org>; Mon, 21 Sep 2020 14:56:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=t6IkKnXa5tIfj0pEtiHch/id+y7KfUWCLs3pBM4+7Bw=;
- b=PINJawvQ9e9dquFTGr3zZx+5fm9L2BiwpAHxL74wVdUTWTQ89n3Kvz10/lWMYxqiY2
- xBYnD7L8FxZ7/R4caI6NUzLRu/mjXbSxlQ72Hg7c9skBQon3JaNsZZ/dZ+iUT7oUPUae
- P4zBqty9tOvDZEI/SBo72+1RWJPm9O/4e1ijPOi/4NA2qPOCP1C1B9VMaaLMzLo4nMFp
- 6l/zp3Nl6a4SrEDiRFVU4FKXHIOl0+CeAbivhoM38DO6prMPg0bVyjEJpxCIfai6RV6L
- LBwSDQNcgoa/J4ukll6YHth/9asvcPFtlOsUUa42kCDDOtBAJCqq+8exPpT/Egr2rBQH
- pU1g==
+ bh=jWDoQRsOrsy1ykH1KPmy1+vKMaQziG+C5VVRexrwgCo=;
+ b=sGK1TOheGHfrAsQ3ERBM3fntXI8KjxRS1dFamE/qx9Cf2nMJnjTDTEOutmjZHzCVx8
+ aiSrx+nR739BMnCTbNoJxqC8GgyGvHt4KZkEkzq+f8QojUUtfU0H2H7UXwEanK7tR/M/
+ +q7Xxy1H5j9evBS7jrajpIhV1iYX6t7pCjFGArV0a81le7LqZjIaddv2Ixj1NcWOHUc0
+ ozQg2fJYw+fPsD/N53cP6t4Bbgptks+dlyZjmMy2L+t0rdgU+uAJZYL8ec/JVqDylfUE
+ NFEIPU66DpA5fwvdB2vgyvAZF3FWyKJKLIZ25p+fqWWQbwi9G1OPat1SK137ybYwvGWG
+ hBig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=t6IkKnXa5tIfj0pEtiHch/id+y7KfUWCLs3pBM4+7Bw=;
- b=Ya+7qVG1NMk8+SnqBIB5sObXkwWD9c0KS2D3VPHoS126K9Bbn3xIoZ1xQgzK1FkN3Q
- XAcgDFTPIrjSL4AqiQepCU+J+VaBVxyB831hBnnkZy98VffyxK+X74eWZFv+rfaiO4n8
- 2pFBZK9ADXjXGLrsuUgkV6CFq3ox2p4pvD3Uz7NoaWQmTCY9CD9/qGgptrrCx9wgxhxH
- NtB97gSlA7PuI/1bEOsyIapjcE2ZD/T87pRDhMWXKdYF4E/ss9fylj7ghP7eeaHMBZGA
- CqtqwrQMwPpxMaVIh98IlJICyXx8KhPF7Wfdj4ia9DyI8eNGihvhhm2fXi2YK8elXusF
- puUQ==
-X-Gm-Message-State: AOAM5314Su2DzK2lYbmzp3cd+JrD70flBdsrCjFcBOIQ9whcAwJ11vt6
- UUtqOCU0KjAlk+0hiLBJzkU=
-X-Google-Smtp-Source: ABdhPJwWDNjkSOFG5QNhQ+EcOhRxbhHygXIASP2+2Z2iIZMH8zrj0Y480HY7ngQKNF4hGEBQ7ZqT6A==
-X-Received: by 2002:adf:ef4f:: with SMTP id c15mr1994655wrp.390.1600725335846; 
- Mon, 21 Sep 2020 14:55:35 -0700 (PDT)
+ bh=jWDoQRsOrsy1ykH1KPmy1+vKMaQziG+C5VVRexrwgCo=;
+ b=In6A73Vpw0UIxBnDM1YGgIQivSoD+Ltw7RAsdCV3pDoXAbBq6lFNAYf2H+cCIr5uol
+ hHimnPBSY9xD/6n475Mj6YZEhHc9E8WCc3fFoLeDTV3oE1oWD8+wr7urX1WQe0xuwL5i
+ UtIT4AcG4lPTgxiBqiZFXU4YDFrv6IT5tOtt2fDlZODTC+j7b+Ys4xN1GUNKgmz6rORv
+ FaYCut3ac1zgS/kZDZ73bcMJKl3g9kQ5e0gi1C8kihOLRtoGERciDYf9ho/TPDRICJDQ
+ C6q012DMhzxWq6r53lIpLW4WEggU205GvLTsaTRANuYrl1wFhscxMJ3SFigoVh9ygsr6
+ UxDA==
+X-Gm-Message-State: AOAM532TwjkwXOECy8Q1T43sktgL0sGjWGtIeZVPxUXlnIkIVKyRh5E3
+ YF6q8PqnuP8GD58/fuIbJPY=
+X-Google-Smtp-Source: ABdhPJxcwQlOBHjwWBu+fwCPOpLzt1KKBak4JbdBtQskwnLJci0jZFHKRyBIFeWRYF40GmkYeyqiWQ==
+X-Received: by 2002:a1c:bcd6:: with SMTP id m205mr1337357wmf.68.1600725387086; 
+ Mon, 21 Sep 2020 14:56:27 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
- by smtp.gmail.com with ESMTPSA id t124sm1282200wmg.31.2020.09.21.14.55.35
+ by smtp.gmail.com with ESMTPSA id t124sm1282200wmg.31.2020.09.21.14.56.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2020 14:55:35 -0700 (PDT)
+ Mon, 21 Sep 2020 14:56:26 -0700 (PDT)
 From: Alex Dewar <alex.dewar90@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Alex Dewar <alex.dewar90@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
  Linus Walleij <linus.walleij@linaro.org>,
- Dan Carpenter <dan.carpenter@oracle.com>, Alan Cox <alan@linux.intel.com>,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND 4/5] staging: media: atomisp: Don't abort on error in
- module exit path
-Date: Mon, 21 Sep 2020 22:53:57 +0100
-Message-Id: <20200921215359.45003-5-alex.dewar90@gmail.com>
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Alan Cox <alan@linux.intel.com>, linux-media@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH RESEND 5/5] staging: media: atomisp: Fix bool-related style
+ issues
+Date: Mon, 21 Sep 2020 22:53:59 +0100
+Message-Id: <20200921215359.45003-6-alex.dewar90@gmail.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200921215359.45003-1-alex.dewar90@gmail.com>
 References: <20200921215359.45003-1-alex.dewar90@gmail.com>
@@ -99,73 +100,141 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The function lm3554_remove() checks for the return code for
-lm3554_gpio_uninit() even though this is on the exit path and exits the
-function, leaving the variable flash unfreed. Instead, print a warning and
-free flash unconditionally.
+Address the following issues:
+ * unnecessary comparison to true/false
+ * use of 0/1 instead of bool values
+ * unnecessary conversion to bool
+
+These were fixed using the following Coccinelle scripts:
+ * scripts/coccinelle/misc/bool{init,conv,return}.cocci
+
+Build-tested with allmodconfig.
 
 Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
 ---
- .../staging/media/atomisp/i2c/atomisp-lm3554.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ .../staging/media/atomisp/pci/atomisp_cmd.c   |  5 ++---
+ drivers/staging/media/atomisp/pci/sh_css.c    | 20 +++++++++----------
+ .../media/atomisp/pci/sh_css_firmware.c       |  2 +-
+ 3 files changed, 13 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c b/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-index d78014847e67..d446ee8e93db 100644
---- a/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-+++ b/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-@@ -782,7 +782,7 @@ static int lm3554_gpio_init(struct i2c_client *client)
- 	return 0;
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 9f25f13c3255..592ea990d4ca 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -654,8 +654,7 @@ bool atomisp_buffers_queued(struct atomisp_sub_device *asd)
+ 	return asd->video_out_capture.buffers_in_css ||
+ 	       asd->video_out_vf.buffers_in_css ||
+ 	       asd->video_out_preview.buffers_in_css ||
+-	       asd->video_out_video_capture.buffers_in_css ?
+-	       true : false;
++	       asd->video_out_video_capture.buffers_in_css;
  }
  
--static int lm3554_gpio_uninit(struct i2c_client *client)
-+static void lm3554_gpio_uninit(struct i2c_client *client)
- {
- 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
- 	struct lm3554 *flash = to_lm3554(sd);
-@@ -791,13 +791,13 @@ static int lm3554_gpio_uninit(struct i2c_client *client)
+ /* ISP2401 */
+@@ -6549,7 +6548,7 @@ int atomisp_enable_dz_capt_pipe(struct atomisp_sub_device *asd,
+ 	if (!enable)
+ 		return -EINVAL;
  
- 	ret = gpiod_direction_output(pdata->gpio_strobe, 0);
- 	if (ret < 0)
--		return ret;
-+		dev_err(&client->dev,
-+			"gpio request/direction_output fail for gpio_strobe");
+-	value = *enable > 0 ? true : false;
++	value = *enable > 0;
  
- 	ret = gpiod_direction_output(pdata->gpio_reset, 0);
- 	if (ret < 0)
--		return ret;
--
+ 	atomisp_en_dz_capt_pipe(asd, value);
+ 
+diff --git a/drivers/staging/media/atomisp/pci/sh_css.c b/drivers/staging/media/atomisp/pci/sh_css.c
+index 3e9366b20af0..c50b5fba7b86 100644
+--- a/drivers/staging/media/atomisp/pci/sh_css.c
++++ b/drivers/staging/media/atomisp/pci/sh_css.c
+@@ -3681,7 +3681,7 @@ static int create_host_video_pipeline(struct ia_css_pipe *pipe)
+ 		struct ia_css_frame *tmp_out_frame = NULL;
+ 
+ 		for (i = 0; i < num_yuv_scaler; i++) {
+-			if (is_output_stage[i] == true) {
++			if (is_output_stage[i]) {
+ 				tmp_out_frame = out_frame;
+ 			} else {
+ 				tmp_out_frame = NULL;
+@@ -4421,7 +4421,7 @@ ia_css_pipe_dequeue_buffer(struct ia_css_pipe *pipe,
+ 			case IA_CSS_BUFFER_TYPE_INPUT_FRAME:
+ 			case IA_CSS_BUFFER_TYPE_OUTPUT_FRAME:
+ 			case IA_CSS_BUFFER_TYPE_SEC_OUTPUT_FRAME:
+-				if ((pipe) && (pipe->stop_requested == true)) {
++				if (pipe && pipe->stop_requested) {
+ #if !defined(ISP2401)
+ 					/* free mipi frames only for old input system
+ 					 * for 2401 it is done in ia_css_stream_destroy call
+@@ -4782,7 +4782,7 @@ sh_css_pipe_start(struct ia_css_stream *stream) {
+ 
+ 	pipe_id = pipe->mode;
+ 
+-	if (stream->started == true)
++	if (stream->started)
+ 	{
+ 		IA_CSS_WARNING("Cannot start stream that is already started");
+ 		IA_CSS_LEAVE_ERR(err);
+@@ -5919,7 +5919,7 @@ static bool need_capture_pp(
+ 
+ 	if (IS_ISP2401) {
+ 		/* ldc and capture_pp are not supported in the same pipeline */
+-		if (need_capt_ldc(pipe) == true)
++		if (need_capt_ldc(pipe))
+ 			return false;
+ 	}
+ 
+@@ -6135,8 +6135,8 @@ static int load_primary_binaries(
+ 			IA_CSS_LEAVE_ERR_PRIVATE(err);
+ 			return err;
+ 		}
+-		need_pp = 0;
+-		need_ldc = 0;
++		need_pp = false;
++		need_ldc = false;
+ 	}
+ 
+ 	/* we build up the pipeline starting at the end */
+@@ -9496,10 +9496,10 @@ ia_css_stream_create(const struct ia_css_stream_config *stream_config,
+ 					IA_CSS_PIPE_MODE_VIDEO, false);
+ 		acc_pipe = find_pipe(pipes, num_pipes,
+ 					IA_CSS_PIPE_MODE_ACC, false);
+-		if (acc_pipe && num_pipes == 2 && curr_stream->cont_capt == true)
++		if (acc_pipe && num_pipes == 2 && curr_stream->cont_capt)
+ 			curr_stream->cont_capt =
+ 			    false; /* preview + QoS case will not need cont_capt switch */
+-		if (curr_stream->cont_capt == true) {
++		if (curr_stream->cont_capt) {
+ 			capture_pipe = find_pipe(pipes, num_pipes,
+ 						    IA_CSS_PIPE_MODE_CAPTURE, false);
+ 			if (!capture_pipe) {
+@@ -9521,7 +9521,7 @@ ia_css_stream_create(const struct ia_css_stream_config *stream_config,
+ 			preview_pipe->pipe_settings.preview.copy_pipe = copy_pipe;
+ 			copy_pipe->stream = curr_stream;
+ 		}
+-		if (preview_pipe && (curr_stream->cont_capt == true)) {
++		if (preview_pipe && curr_stream->cont_capt) {
+ 			preview_pipe->pipe_settings.preview.capture_pipe = capture_pipe;
+ 		}
+ 		if (video_pipe && !video_pipe->pipe_settings.video.copy_pipe) {
+@@ -9532,7 +9532,7 @@ ia_css_stream_create(const struct ia_css_stream_config *stream_config,
+ 			video_pipe->pipe_settings.video.copy_pipe = copy_pipe;
+ 			copy_pipe->stream = curr_stream;
+ 		}
+-		if (video_pipe && (curr_stream->cont_capt == true)) {
++		if (video_pipe && curr_stream->cont_capt) {
+ 			video_pipe->pipe_settings.video.capture_pipe = capture_pipe;
+ 		}
+ 		if (preview_pipe && acc_pipe) {
+diff --git a/drivers/staging/media/atomisp/pci/sh_css_firmware.c b/drivers/staging/media/atomisp/pci/sh_css_firmware.c
+index 244c7c7780a3..db25e39bea88 100644
+--- a/drivers/staging/media/atomisp/pci/sh_css_firmware.c
++++ b/drivers/staging/media/atomisp/pci/sh_css_firmware.c
+@@ -207,7 +207,7 @@ sh_css_check_firmware_version(struct device *dev, const char *fw_data)
+ 	}
+ 
+ 	/* For now, let's just accept a wrong version, even if wrong */
 -	return 0;
-+		dev_err(&client->dev,
-+			"gpio request/direction_output fail for gpio_reset");
++	return false;
  }
  
- static void *lm3554_platform_data_func(struct i2c_client *client)
-@@ -907,7 +907,6 @@ static int lm3554_remove(struct i2c_client *client)
- {
- 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
- 	struct lm3554 *flash = to_lm3554(sd);
--	int ret;
- 
- 	media_entity_cleanup(&flash->sd.entity);
- 	v4l2_ctrl_handler_free(&flash->ctrl_handler);
-@@ -917,16 +916,11 @@ static int lm3554_remove(struct i2c_client *client)
- 
- 	del_timer_sync(&flash->flash_off_delay);
- 
--	ret = lm3554_gpio_uninit(client);
--	if (ret < 0)
--		goto fail;
-+	lm3554_gpio_uninit(client);
- 
- 	kfree(flash);
- 
- 	return 0;
--fail:
--	dev_err(&client->dev, "gpio request/direction_output fail");
--	return ret;
- }
- 
- static const struct dev_pm_ops lm3554_pm_ops = {
+ static const char * const fw_type_name[] = {
 -- 
 2.28.0
 
