@@ -2,86 +2,91 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96650273E26
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Sep 2020 11:10:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BBB0A273E5A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Sep 2020 11:17:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 965A6228BD;
-	Tue, 22 Sep 2020 09:10:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C0C8E22882;
+	Tue, 22 Sep 2020 09:17:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8L3N89CVCAiB; Tue, 22 Sep 2020 09:09:58 +0000 (UTC)
+	with ESMTP id EVPKqTfYvQpa; Tue, 22 Sep 2020 09:17:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 720B3228A7;
-	Tue, 22 Sep 2020 09:09:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A5D3822865;
+	Tue, 22 Sep 2020 09:17:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2A10C1BF25F
- for <devel@linuxdriverproject.org>; Tue, 22 Sep 2020 09:09:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 336FF1BF25F
+ for <devel@linuxdriverproject.org>; Tue, 22 Sep 2020 09:17:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 20EA822843
- for <devel@linuxdriverproject.org>; Tue, 22 Sep 2020 09:09:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2AC7887228
+ for <devel@linuxdriverproject.org>; Tue, 22 Sep 2020 09:17:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kimp19V284oB for <devel@linuxdriverproject.org>;
- Tue, 22 Sep 2020 09:09:46 +0000 (UTC)
+ with ESMTP id UTbsXPV2BJH8 for <devel@linuxdriverproject.org>;
+ Tue, 22 Sep 2020 09:17:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 49FDE2263C
- for <devel@driverdev.osuosl.org>; Tue, 22 Sep 2020 09:09:46 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id c18so16178577wrm.9
- for <devel@driverdev.osuosl.org>; Tue, 22 Sep 2020 02:09:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=9Aesl8jwzB6h2AKl/DvTFdtB5ZWXuEURqgA0oOLGpZk=;
- b=VDVoXwPdoJzIDGxF1A9mAviiE0oyBHXTdSoaOLdOMRkoDxY/8EjbP/M/hoDlL05FOf
- iFKH0tIHHDHVnRiat7g7bcA+Hoq0o+i12qc6vh8Knf8/jUbDjMSJkvxWGJH6g6syZpNa
- YaQ0gxbJt9hsUsnMU7pEiPT/Cnx5LkQmCtXqSrP5mbYBaTJD98ohQ1d4tpvWixkjkLX1
- ehV98iaRuyhb5MiUaXUokNCajML3S57KeHYcpXzEfmOcg5RVJ6V6KStH7goxfbWjRtFf
- BnVmZiDA2d+8Uk5zcsrA9Pnn17BqWXFesH/HX/BaB9yggxlSnhSEVVPPr47B0hqC4K+r
- c1BQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9Aesl8jwzB6h2AKl/DvTFdtB5ZWXuEURqgA0oOLGpZk=;
- b=YkxKM+ysREVF6zQTekbeL4EIxlQcCFAy0e4PRU8uba9FH79nU4z9yeMM4u5qp9GCeD
- OiDaFZejst96ItTymumcv/jFSYZgSFW4l75bxTLYeXlVShl8YeDjEe1CmN/M3Dt/6QIs
- bTb/ZLJwsoBgbSuCkKEA0A09tZVkzYEvZnCS2oJ8T9lOwLuvdibsLbFDyAm/G2i4DFRI
- cbtw6KGAgb/aGyM0J2OMUic1KnoBNqZgD1b/nb34SQ8ER8OkXDg1+qDJS9peLHlwvjrP
- Bi//GzCzmt3Q970hR1V7taZBCIugjQ7c4od7/aEnVg7eshh/TrkH41crTscPk37i5eM7
- IOuA==
-X-Gm-Message-State: AOAM530g7/LS09LQfm20I4RES7zB5Kh/fZICOlOIcyZ59r0qjXIMm+AQ
- bMxfkgb+v4F4JsS/HlK79QU=
-X-Google-Smtp-Source: ABdhPJwwHB5mrPn87uWKoQZJjdNbWKBVf+VGCOSSjlZlRj5745cpIvJcM1poRmEQGc01rJ3g7/LCRw==
-X-Received: by 2002:adf:e391:: with SMTP id e17mr3947261wrm.289.1600765784834; 
- Tue, 22 Sep 2020 02:09:44 -0700 (PDT)
-Received: from localhost.localdomain
- (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
- by smtp.gmail.com with ESMTPSA id u186sm3659332wmu.34.2020.09.22.02.09.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Sep 2020 02:09:44 -0700 (PDT)
-From: Alex Dewar <alex.dewar90@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Alex Dewar <alex.dewar90@gmail.com>,
- Dan Carpenter <dan.carpenter@oracle.com>, Alan Cox <alan@linux.intel.com>,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH REBASE 3/3] staging: media: atomisp: Don't abort on error in
- module exit path
-Date: Tue, 22 Sep 2020 10:09:10 +0100
-Message-Id: <20200922090914.20702-4-alex.dewar90@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200922090914.20702-1-alex.dewar90@gmail.com>
-References: <21f18dc2-a1bc-0a37-0336-fc35170a40e9@gmail.com>
- <20200922090914.20702-1-alex.dewar90@gmail.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EEA388710C
+ for <devel@driverdev.osuosl.org>; Tue, 22 Sep 2020 09:17:22 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08M9F9Bv058619;
+ Tue, 22 Sep 2020 09:17:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=0LlcmxUgv23UmLo9kyhfbOkV0pFyrGTGgW1VdjwNSd4=;
+ b=dTQbnJI6UN0bN/BwmreesITbFiCsz3PgN3opYy6YmGmla1B8XM02BDPYf6pyJyxpjhoy
+ Ie9XX0T44dfmJKiK/B7ANDTYMOEqWl5UAxNGs4qTqK6CkPnIz669nzPdP257xkTBzp9o
+ a2sNw0KRPP7g5BkBrXw3rh5RD63Y013y0hEO2ayOLffOQZmkV6OFEFEpexkr66J8bYmL
+ EO+joaP1Vck0URLRVJtJVbm/7ZSzmf69/CTXRJM3jHa72dh+Lg3fi2Pndh9LYn4/ZeDr
+ XnJ5JRdx15xoop8ugb6aye6BxQ4wMJEZ7P00Jgh/usHBYmS5VOF9Ev7qLR6ffkI03wDI 0g== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 33q5rga2ny-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 22 Sep 2020 09:17:21 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08M9FqbA139159;
+ Tue, 22 Sep 2020 09:17:21 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 33nuw3bvpx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 22 Sep 2020 09:17:20 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 08M9HH2C009085;
+ Tue, 22 Sep 2020 09:17:18 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 22 Sep 2020 02:17:17 -0700
+Date: Tue, 22 Sep 2020 12:17:09 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
+Subject: Re: [PATCH v6 5/8] clk: clock-wizard: Add support for fractional
+ support
+Message-ID: <20200922091709.GD4282@kadam>
+References: <1598621996-31040-1-git-send-email-shubhrajyoti.datta@xilinx.com>
+ <1598621996-31040-6-git-send-email-shubhrajyoti.datta@xilinx.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1598621996-31040-6-git-send-email-shubhrajyoti.datta@xilinx.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9751
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ phishscore=0 malwarescore=0
+ mlxscore=0 suspectscore=0 adultscore=0 mlxlogscore=999 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009220078
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9751
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ impostorscore=0
+ clxscore=1011 suspectscore=0 phishscore=0 malwarescore=0
+ priorityscore=1501 mlxlogscore=999 adultscore=0 bulkscore=0 mlxscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009220078
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,82 +99,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, sboyd@kernel.org,
+ gregkh@linuxfoundation.org, mturquette@baylibre.com,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The function lm3554_remove() checks for the return code for
-lm3554_gpio_uninit() even though this is on the exit path and exits the
-function, leaving the variable flash unfreed. Instead, print a warning and
-free flash unconditionally.
+On Fri, Aug 28, 2020 at 07:09:53PM +0530, Shubhrajyoti Datta wrote:
+> +
+> +	/* Check status register */
+> +	err= readl_poll_timeout(divider->base + WZRD_DR_STATUS_REG_OFFSET, value,
+> +				value & WZRD_DR_LOCK_BIT_MASK,
+> +				WZRD_USEC_POLL, WZRD_TIMEOUT_POLL);
 
-Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
----
- .../staging/media/atomisp/i2c/atomisp-lm3554.c  | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
+Checkpatch will catch the missing space in "err= readl_".
 
-diff --git a/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c b/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-index 5e895586e80a..84c47c1f9eb4 100644
---- a/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-+++ b/drivers/staging/media/atomisp/i2c/atomisp-lm3554.c
-@@ -794,7 +794,7 @@ static int lm3554_gpio_init(struct i2c_client *client)
- 	return ret;
- }
- 
--static int lm3554_gpio_uninit(struct i2c_client *client)
-+static void lm3554_gpio_uninit(struct i2c_client *client)
- {
- 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
- 	struct lm3554 *flash = to_lm3554(sd);
-@@ -803,15 +803,16 @@ static int lm3554_gpio_uninit(struct i2c_client *client)
- 
- 	ret = gpio_direction_output(pdata->gpio_strobe, 0);
- 	if (ret < 0)
--		return ret;
-+		dev_err(&client->dev,
-+			"gpio request/direction_output fail for gpio_strobe");
- 
- 	ret = gpio_direction_output(pdata->gpio_reset, 0);
- 	if (ret < 0)
--		return ret;
-+		dev_err(&client->dev,
-+			"gpio request/direction_output fail for gpio_reset");
- 
- 	gpio_free(pdata->gpio_strobe);
- 	gpio_free(pdata->gpio_reset);
--	return 0;
- }
- 
- static void *lm3554_platform_data_func(struct i2c_client *client)
-@@ -918,7 +919,6 @@ static int lm3554_remove(struct i2c_client *client)
- {
- 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
- 	struct lm3554 *flash = to_lm3554(sd);
--	int ret;
- 
- 	media_entity_cleanup(&flash->sd.entity);
- 	v4l2_ctrl_handler_free(&flash->ctrl_handler);
-@@ -928,16 +928,11 @@ static int lm3554_remove(struct i2c_client *client)
- 
- 	del_timer_sync(&flash->flash_off_delay);
- 
--	ret = lm3554_gpio_uninit(client);
--	if (ret < 0)
--		goto fail;
-+	lm3554_gpio_uninit(client);
- 
- 	kfree(flash);
- 
- 	return 0;
--fail:
--	dev_err(&client->dev, "gpio request/direction_output fail");
--	return ret;
- }
- 
- static const struct dev_pm_ops lm3554_pm_ops = {
--- 
-2.28.0
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
