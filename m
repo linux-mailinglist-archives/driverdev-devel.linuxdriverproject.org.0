@@ -1,57 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D006275067
-	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Sep 2020 07:44:28 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECC2327526C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Sep 2020 09:48:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AD529872FE;
-	Wed, 23 Sep 2020 05:44:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B55F323018;
+	Wed, 23 Sep 2020 07:48:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iKy3AZ041BSB; Wed, 23 Sep 2020 05:44:25 +0000 (UTC)
+	with ESMTP id M2kdS1arE9V1; Wed, 23 Sep 2020 07:47:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 30872872E1;
-	Wed, 23 Sep 2020 05:44:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9CA1C22EE7;
+	Wed, 23 Sep 2020 07:47:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 19D2E1BF400
- for <devel@linuxdriverproject.org>; Wed, 23 Sep 2020 05:44:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EC25A1BF4D6
+ for <devel@linuxdriverproject.org>; Wed, 23 Sep 2020 07:47:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 111908608B
- for <devel@linuxdriverproject.org>; Wed, 23 Sep 2020 05:44:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E8FAB85FFC
+ for <devel@linuxdriverproject.org>; Wed, 23 Sep 2020 07:47:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eZN+KzJr3BKk for <devel@linuxdriverproject.org>;
- Wed, 23 Sep 2020 05:44:21 +0000 (UTC)
+ with ESMTP id P9nES5i5b3a3 for <devel@linuxdriverproject.org>;
+ Wed, 23 Sep 2020 07:47:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D06B28401E
- for <devel@driverdev.osuosl.org>; Wed, 23 Sep 2020 05:44:21 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 13C9C21D91;
- Wed, 23 Sep 2020 05:44:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600839861;
- bh=PNVSGZ/IrHXOOxQ05RfPzXNQcUDkA7tZrXhQqZ54p+Q=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hrMrcdGWIv/lLOd/1R9KnmbvSryjwks5+bZOkxbcvfQUhWPVId4unyS6AkYskHMPa
- OLm2HGJX7vEN+N+/XDWPMBdA7MeZ+PJ2n9qFxAXxFIygSIO5cGHMD+OW9W2Fb7mVhb
- qQaoU5HKuj0ZOVUAaaVCtnpU4UAJ8LpUbG8bNQvo=
-Date: Wed, 23 Sep 2020 07:44:40 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 1/2] staging: vchiq: fix __user annotations
-Message-ID: <20200923054440.GA2619878@kroah.com>
-References: <20200922202208.1861595-1-arnd@arndb.de>
+Received: from hermes.cta.br (hermes.cta.br [161.24.235.5])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 04FAF84F8B
+ for <devel@driverdev.osuosl.org>; Wed, 23 Sep 2020 07:47:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hermes.cta.br (Postfix) with ESMTP id 78E8E1702EF4;
+ Wed, 23 Sep 2020 04:39:05 -0300 (-03)
+Received: from hermes.cta.br ([127.0.0.1])
+ by localhost (hermes.cta.br [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id UCrKbPdObbL9; Wed, 23 Sep 2020 04:39:04 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by hermes.cta.br (Postfix) with ESMTP id 57EAE1506D0F;
+ Wed, 23 Sep 2020 02:56:57 -0300 (-03)
+DKIM-Filter: OpenDKIM Filter v2.10.3 hermes.cta.br 57EAE1506D0F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cta.br;
+ s=50824260-A46F-11E8-B5E3-16F5207DEC71; t=1600840618;
+ bh=PEgy+RpcsckcVXxslQn6d+tc//P81+6V7lvSU9dRFp0=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=Bj9maw6tM9YrkUaMokl76B/QGA/fv/NhQjUO1CdHpZr63/0WglIZVUcRU2/u9jMl7
+ sa4vMVoamHZLN2qIUdqckCcE42he4E71Wck+KXHzSun9CmfP6ziVP/mspSRvs8Mszj
+ YXUNrQXgiptmZYpvjzPghNCqWi5ZI69yuqAEZ1jL+N94cjrFqVM23Y9mLT9DzCgdle
+ BCveoRIWfhrojnY++uIGsMudj4REi1z/FOpHUaTpKi7D5YnSWrNnQrvKEjE/HzMqcR
+ xqnH+0SnT/D0/LsIYBmVjf6DpQTKcZp6D5ZCz9ygI39cbhTejKUMRMrgzPMEStw1/6
+ uwe/FOmFqmOKw==
+X-Virus-Scanned: amavisd-new at cta.br
+Received: from hermes.cta.br ([127.0.0.1])
+ by localhost (hermes.cta.br [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id kAfRUYzNv7G6; Wed, 23 Sep 2020 02:56:57 -0300 (-03)
+Received: from [10.120.212.214] (unknown [105.12.3.179])
+ by hermes.cta.br (Postfix) with ESMTPSA id A4316162A758;
+ Wed, 23 Sep 2020 01:48:40 -0300 (-03)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200922202208.1861595-1-arnd@arndb.de>
+Content-Description: Mail message body
+Subject: spende von 2,000,000 euro
+To: Recipients <scco@cta.br>
+From: ''Tayeb souami'' <scco@cta.br>
+Date: Wed, 23 Sep 2020 06:51:00 +0200
+Message-Id: <20200923044840.A4316162A758@hermes.cta.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,64 +77,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Marcelo Diop-Gonzalez <marcgonzalez@google.com>,
- linux-kernel@vger.kernel.org, Nachammai Karuppiah <nachukannan@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- Jamal Shareef <jamal.k.shareef@gmail.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Tayebsouam.spende@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVHVlLCBTZXAgMjIsIDIwMjAgYXQgMTA6MjE6NDNQTSArMDIwMCwgQXJuZCBCZXJnbWFubiB3
-cm90ZToKPiBNeSBlYXJsaWVyIHBhdGNoZXMgY2F1c2VkIHNvbWUgbmV3IHNwYXJzZSB3YXJuaW5n
-cywgYnV0IGl0IHR1cm5zIG91dAo+IHRoYXQgYSBudW1iZXIgb2YgdGhvc2UgYXJlIGFjdHVhbCBi
-dWdzLCBvciBhdCBsZWFzdCBzdXNwaWNvdXMgY29kZS4KPiAKPiBBZGRpbmcgX191c2VyIGFubm90
-YXRpb25zIHRvIHRoZSBkYXRhIHN0cnVjdHVyZXMgdGhhdCBhcmUgZGVmaW5lZCBpbgo+IHVhcGkg
-aGVhZGVycyBoZWxwcyBhdm9pZCB0aGUgbmV3IHdhcm5pbmdzLCBidXQgdGhhdCBjYXVzZXMgYSBk
-aWZmZXJlbnQKPiBzZXQgb2Ygd2FybmluZ3MgdG8gc2hvdyB1cCwgYXMgc29tZSBvZiB0aGVzZSBz
-dHJ1Y3R1cmVzIGFyZSB1c2VkIGJvdGgKPiBpbnNpZGUgb2YgdGhlIGtlcm5lbCBhbmQgYXQgdGhl
-IHVzZXIgaW50ZXJmYWNlIGJ1dCBzdG9yaW5nIHBvaW50ZXJzIHRvCj4gZGlmZmVyZW50IHRoaW5n
-cyB0aGVyZS4KPiAKPiBEdXBsaWNhdGluZyB0aGUgdmNoaXFfc2VydmljZV9wYXJhbXMgYW5kIHZj
-aGlxX2NvbXBsZXRpb25fZGF0YSBzdHJ1Y3R1cmVzCj4gaW4gdHVybiB0YWtlcyBjYXJlIG9mIG1v
-c3Qgb2YgdGhvc2UsIGFuZCB0aGVuIGl0IHR1cm5zIG91dCB0aGF0IHRoZXJlCj4gaXMgYSAnZGF0
-YScgcG9pbnRlciB0aGF0IGNhbiBiZSBhbnkgb2YgYSBfX3VzZXIgYWRkcmVzcywgYSBkbWRfYWRk
-cl90Cj4gYW5kIGEga2VybmVsIHBvaW50ZXIgaW4gdm1hbGxvYyBzcGFjZSBhdCB0aW1lcy4KPiAK
-PiBJJ20gdHJ5aW5nIHRvIGFubm90YXRlIHRoZXNlIGFzIGJlc3QgSSBjYW4gd2l0aG91dCBjaGFu
-Z2luZyBiZWhhdmlvciwKPiBidXQgdGhlcmUgc3RpbGwgc2VlbXMgdG8gYmUgYSBzZXJpb3VzIGJ1
-ZyB3aGVuIHVzZXIgc3BhY2UgcGFzc2VzCj4gYSB2YWxpZCB2bWFsbG9jIHNwYWNlIGFkZHJlc3Mg
-aW5zdGVhZCBvZiBhIHVzZXIgcG9pbnRlci4gQWRkaW5nCj4gY29tbWVudHMgaW4gdGhlIGNvZGUg
-dGhlcmUsIGFuZCBsZWF2aW5nIHRoZSB3YXJuaW5ncyBpbiBwbGFjZSB0aGF0Cj4gc2VlbSB0byBj
-b3JyZXNwb25kIHRvIGFjdHVhbCBidWdzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFybmQgQmVyZ21h
-bm4gPGFybmRAYXJuZGIuZGU+Cj4gLS0tCj4gIC4uLi9pbmNsdWRlL2xpbnV4L3Jhc3BiZXJyeXBp
-L3ZjaGlxLmggICAgICAgICB8IDExICsrLQo+ICAuLi4vaW50ZXJmYWNlL3ZjaGlxX2FybS92Y2hp
-cV8yODM1X2FybS5jICAgICAgfCAgMiArLQo+ICAuLi4vaW50ZXJmYWNlL3ZjaGlxX2FybS92Y2hp
-cV9hcm0uYyAgICAgICAgICAgfCA5NSArKysrKysrKysrKystLS0tLS0tCj4gIC4uLi9pbnRlcmZh
-Y2UvdmNoaXFfYXJtL3ZjaGlxX2NvcmUuYyAgICAgICAgICB8IDE5ICsrLS0KPiAgLi4uL2ludGVy
-ZmFjZS92Y2hpcV9hcm0vdmNoaXFfY29yZS5oICAgICAgICAgIHwgMTAgKy0KPiAgLi4uL2ludGVy
-ZmFjZS92Y2hpcV9hcm0vdmNoaXFfaW9jdGwuaCAgICAgICAgIHwgMjkgKysrKy0tCj4gIDYgZmls
-ZXMgY2hhbmdlZCwgMTA2IGluc2VydGlvbnMoKyksIDYwIGRlbGV0aW9ucygtKQoKVGhpcyBwYXRj
-aCBzZXJpZXMgYnJlYWtzIHRoZSBidWlsZCBmb3IgbWU6Cgpkcml2ZXJzL3N0YWdpbmcvdmMwNF9z
-ZXJ2aWNlcy9iY20yODM1LWF1ZGlvL2JjbTI4MzUtdmNoaXEuYzogSW4gZnVuY3Rpb24g4oCYdmNf
-dmNoaV9hdWRpb19pbml04oCZOgpkcml2ZXJzL3N0YWdpbmcvdmMwNF9zZXJ2aWNlcy9iY20yODM1
-LWF1ZGlvL2JjbTI4MzUtdmNoaXEuYzoxMjU6OTogZXJyb3I6IHZhcmlhYmxlIOKAmHBhcmFtCuKA
-mSBoYXMgaW5pdGlhbGl6ZXIgYnV0IGluY29tcGxldGUgdHlwZQogIDEyNSB8ICBzdHJ1Y3QgdmNo
-aXFfc2VydmljZV9wYXJhbXMgcGFyYW1zID0gewogICAgICB8ICAgICAgICAgXn5+fn5+fn5+fn5+
-fn5+fn5+fn4KZHJpdmVycy9zdGFnaW5nL3ZjMDRfc2VydmljZXMvYmNtMjgzNS1hdWRpby9iY20y
-ODM1LXZjaGlxLmM6MTI2OjQ6IGVycm9yOiDigJhzdHJ1Y3QgdmNoaXFfc2VydmljZV9wYXJhbXPi
-gJkgaGFzIG5vIG1lbWJlciBuYW1lZCDigJh2ZXJzaW9u4oCZCiAgMTI2IHwgICAudmVyc2lvbiAg
-PSBWQ19BVURJT1NFUlZfVkVSLAogICAgICB8ICAgIF5+fn5+fn4KSW4gZmlsZSBpbmNsdWRlZCBm
-cm9tIGRyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtYXVkaW8vYmNtMjgzNS12
-Y2hpcS5jOjg6CmRyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZpY2VzL2JjbTI4MzUtYXVkaW8vdmNf
-dmNoaV9hdWRpb3NlcnZfZGVmcy5oOjg6MjY6IHdhcm5pbmc6IGV4Y2VzcyBlbGVtZW50cyBpbiBz
-dHJ1Y3QgaW5pdGlhbGl6ZXIKICAgIDggfCAjZGVmaW5lIFZDX0FVRElPU0VSVl9WRVIgMgogICAg
-ICB8ICAgICAgICAgICAgICAgICAgICAgICAgICBeCmRyaXZlcnMvc3RhZ2luZy92YzA0X3NlcnZp
-Y2VzL2JjbTI4MzUtYXVkaW8vYmNtMjgzNS12Y2hpcS5jOjEyNjoxNTogbm90ZTogaW4gZXhwYW5z
-aW9uIG9mIG1hY3JvIOKAmFZDX0FVRElPU0VSVl9WRVLigJkKICAxMjYgfCAgIC52ZXJzaW9uICA9
-IFZDX0FVRElPU0VSVl9WRVIsCiAgICAgIHwgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+
-CgoKYW5kIHNvIG9uLi4uCgpDYXJlIHRvIHRyeSBhIHYyPwoKdGhhbmtzLAoKZ3JlZyBrLWgKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51
-eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hallo mein lieber Freund
+                                  Mein Name ist Tayeb Souami aus New Jersey=
+ in Amerika und ich habe den America Lottery Jackpot von 315 Millionen Euro=
+ gewonnen. Ich habe mich entschlossen, die Summe von 2.000.000 Euro an f=FC=
+nf gl=FCckliche Personen zu spenden, und Sie wurden als einer der Beg=FCnst=
+igten ausgew=E4hlt. Bitte klicken Sie auf diesen Link, um mehr =FCber meine=
+n Gewinn zu erfahren.
+
+
+UHR MICH HIER: https://www.youtube.com/watch?v=3DZ6ui8ZDQ6Ks
+
+Bitte kontaktieren Sie mich =FCber diese E-Mail: Tayebsouam.spende@gmail.com
+
+
+Ich hoffe, Sie und Ihre Familie gl=FCcklich zu machen.
+
+Gr=FC=DFe
+Herr Tayeb Souami
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
