@@ -1,59 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDA742777CC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Sep 2020 19:29:15 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3C9A277836
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Sep 2020 20:04:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 12C3C2E0FA;
-	Thu, 24 Sep 2020 17:29:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 69B4686BAF;
+	Thu, 24 Sep 2020 18:04:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 395yklph2a3j; Thu, 24 Sep 2020 17:29:13 +0000 (UTC)
+	with ESMTP id uIjmc3oyObIX; Thu, 24 Sep 2020 18:04:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CEAA322E20;
-	Thu, 24 Sep 2020 17:29:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DFF1186A83;
+	Thu, 24 Sep 2020 18:04:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2D0521BF859
- for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 17:29:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ACB141BF859
+ for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 18:04:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 29C70869B9
- for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 17:29:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A39AD86AAB
+ for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 18:04:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FLfffE14EVEr for <devel@linuxdriverproject.org>;
- Thu, 24 Sep 2020 17:29:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 95F6E869C9
- for <devel@driverdev.osuosl.org>; Thu, 24 Sep 2020 17:29:06 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A515F238A1;
- Thu, 24 Sep 2020 17:29:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600968546;
- bh=EgHvoK5O8OM1wJYXIt7SsQoaYrj43DPOJHTVtzGAAXs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=twuflN/niLRnVOY3qvybHXhGHKznfT/l5Nhr21+m8WEYXmeWhADvFqwF7vWVhknlF
- MGTymZQswDqRXI4AOC7B2Y1IN4s2M0dKtpzg0BaPbIYK6U+SmG+Vd91x00ncEwmd/I
- KXzF0nuadOJU12+UtclqGK3SlkDC2OQjjC5+XimM=
-Date: Thu, 24 Sep 2020 19:29:22 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Srinivasan Raju <srini.raju@purelifi.com>
-Subject: Re: [PATCH] staging: Initial driver submission for pureLiFi devices
-Message-ID: <20200924172922.GA1188119@kroah.com>
-References: <20200924151910.21693-1-srini.raju@purelifi.com>
- <20200924153636.GA1171035@kroah.com>
- <CWLP265MB19727D19DE7D0498EEB2B1E4E0390@CWLP265MB1972.GBRP265.PROD.OUTLOOK.COM>
+ with ESMTP id t9PnygmbiIms for <devel@linuxdriverproject.org>;
+ Thu, 24 Sep 2020 18:04:03 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C00D886890
+ for <devel@driverdev.osuosl.org>; Thu, 24 Sep 2020 18:04:02 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id s13so307293wmh.4
+ for <devel@driverdev.osuosl.org>; Thu, 24 Sep 2020 11:04:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=NZUqV6Bvzd8cGlLiOqTGcuZ1Yef+3Qfd3N7B6yq5MdA=;
+ b=HB2Z7wdE+cy1f1BINbMce7aOoq/uiu1TMnlcSs9JQDre4pgVVzO6fdURIEYL6hrLNo
+ 5/wIatPv3/aPCtjtNm033NNIiRbiqrOnzOENMUWs1pt0zSxlB7K2+EQD3a7BhmZb0/jI
+ SC0/Yv55lCa605Gfww5F6gCt2rf6u6qGyc5WltCIuGLVIloM+iIFih7Znq7Znz0gVNwg
+ 9gpmacAJRU7YnapRhXS/qASNua3g9xSm1/LOgoj9CznLwjPNN/duVoIRAWZOWELTwSZU
+ qrw8Mk1WbhDZW3G11MFQo2cq4Xpu0Yj5oaANHWvCZAsLR/YsBGeqtTymAHIApAEUtvqL
+ 1ZPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=NZUqV6Bvzd8cGlLiOqTGcuZ1Yef+3Qfd3N7B6yq5MdA=;
+ b=aKQXmPrp3ZQgaZ3Um0qGSIb9rsvxTAqUVwFwIfiO41Rd943N1q7ltocUUExcMxWVtb
+ QRVQmLMcOEgy3+D8+eTksZENSiGzDRl0e1L8GGd6DC6MZ1pSh+ceke3hMFWH9Fm8OgXl
+ ctxcGQPtWJG7Khka91apEg2Rc2PXpYKMEbVTwndnihKdyVRL0TRErum/6xrK/AAY6jY2
+ vOjVGLGJcWVPvsvGDFttBDPNDRqktlaH9oR0uurVxkGbpnyxCX/TtzCmm8+xQTlK8CGo
+ WKZAww+SrMDhYbGmvcyVln+GBmV1gpJ6FnxYpE93+PJVZPM75IODadHotwD6/UtkhHhx
+ 74gQ==
+X-Gm-Message-State: AOAM530xi0p1hY8zI+lrOQPL/jHQXHfJqFdk9zGwiEBNmJcshIjswZvQ
+ yT2C5yk1ZbwgdvkVnGFhUqP34g==
+X-Google-Smtp-Source: ABdhPJxgdbm5WtFN36J7bm9N5ZXswxOvraqE3+QPtP6NridZqs70Eg1VUO0GwuKYSQ84Q+b1z4edDw==
+X-Received: by 2002:a1c:a987:: with SMTP id s129mr406580wme.38.1600970641058; 
+ Thu, 24 Sep 2020 11:04:01 -0700 (PDT)
+Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
+ by smtp.googlemail.com with ESMTPSA id n66sm94350wmb.35.2020.09.24.11.03.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Sep 2020 11:04:00 -0700 (PDT)
+Date: Thu, 24 Sep 2020 20:03:58 +0200
+From: LABBE Corentin <clabbe@baylibre.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH RFT/RFC 37/49] staging: media: zoran: add fallthrough
+ keyword
+Message-ID: <20200924180358.GA26916@Red>
+References: <1600683624-5863-1-git-send-email-clabbe@baylibre.com>
+ <1600683624-5863-38-git-send-email-clabbe@baylibre.com>
+ <20200921105945.GC4282@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CWLP265MB19727D19DE7D0498EEB2B1E4E0390@CWLP265MB1972.GBRP265.PROD.OUTLOOK.COM>
+In-Reply-To: <20200921105945.GC4282@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,51 +89,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Rob Herring <robh@kernel.org>, information <info@purelifi.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Mostafa Afgani <mostafa.afgani@purelifi.com>,
- open list <linux-kernel@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, laurent.pinchart@skynet.be, mchehab@kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Sep 24, 2020 at 05:24:14PM +0000, Srinivasan Raju wrote:
+On Mon, Sep 21, 2020 at 01:59:45PM +0300, Dan Carpenter wrote:
+> On Mon, Sep 21, 2020 at 10:20:12AM +0000, Corentin Labbe wrote:
+> > This patch adds fallthrough keyword where appropriate.
+> > 
+> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> > ---
+> >  drivers/staging/media/zoran/zoran_device.c | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> > 
+> > diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+> > index 9558bafdde7d..7634d94f9359 100644
+> > --- a/drivers/staging/media/zoran/zoran_device.c
+> > +++ b/drivers/staging/media/zoran/zoran_device.c
+> > @@ -268,7 +268,9 @@ static void zr36057_adjust_vfe(struct zoran *zr, enum zoran_codec_mode mode)
+> >  		btwrite(reg, ZR36057_VFEHCR);
+> >  		break;
+> >  	case BUZ_MODE_MOTION_COMPRESS:
+> > +		fallthrough;
+> >  	case BUZ_MODE_IDLE:
+> > +		fallthrough;
+> >  	default:
 > 
-> >> --- /dev/null
-> >> +++ b/drivers/staging/purelifi/TODO
-> >> @@ -0,0 +1,5 @@
-> >> +TODO:
-> >> +     - checkpatch.pl cleanups
-> >> +
-> >> +Please send any patches or complaints about this driver to pureLiFi Ltd
-> >> +<info@purelifi.com>
+> Hopefully, we don't need fallthrough labels for empty switch statements
+> like this?
 > 
-> >Why not just do these fixups on your own right now and submit it to the
-> >"real" part of the kernel?  That should take what, a day or so max?
-> >Just sending stuff to staging because you don't want to do coding style
-> >cleanups feels very odd.  It takes much more work and energy to do it
-> >this way than to just do it right the first time and get it merged to
-> >the networking subsystem, right?
-> 
-> >So why do you want to send it to staging?
-> 
-> Thanks for the comments Greg, This is my first kernel patch, I was under  
-> the impression that the staging area is the place to start for any new "Driver" code
-> We will do the fixes and send an updated patch
 
-No, staging is for things that people do not care about and want others
-to help clean up and get merged properly :)
+I have removed this patch and nothing warn about fallthrough missing.
+But this is strange, if I have added them, it is because something (checkpatch ?) complained.
 
-There's nothing in the "how to submit a driver/patch" documentation that
-mentions that it has to go through staging first, does it?  If so, that
-needs to be changed...
+Anyway, nothing complains now, it is cleaner without them.
 
-thanks,
-
-greg k-h
+Thanks
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
