@@ -2,108 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 038152768D7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Sep 2020 08:23:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD22C276E86
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Sep 2020 12:20:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ECE79874C4;
-	Thu, 24 Sep 2020 06:23:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 50BF2874D4;
+	Thu, 24 Sep 2020 10:20:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UME0P8K4smWx; Thu, 24 Sep 2020 06:23:23 +0000 (UTC)
+	with ESMTP id k9yVkuLfHcV0; Thu, 24 Sep 2020 10:20:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 52E0D87463;
-	Thu, 24 Sep 2020 06:23:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A9459874B2;
+	Thu, 24 Sep 2020 10:20:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2011B1BF85D
- for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 06:23:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6EDF61BF2C0
+ for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 10:20:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1C5408698D
- for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 06:23:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6B4B086A00
+ for <devel@linuxdriverproject.org>; Thu, 24 Sep 2020 10:20:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1c0-kz6Adt7l for <devel@linuxdriverproject.org>;
- Thu, 24 Sep 2020 06:23:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2064.outbound.protection.outlook.com [40.107.243.64])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D835286969
- for <devel@driverdev.osuosl.org>; Thu, 24 Sep 2020 06:23:18 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kaIzW7I4pA8et9YemuZFbGjOlpQmznCBNHpeBUuyc9hM2usC80NrtnBkq37gJ+LAjawSIjZFX1PT+XgMaKYxHzpy203F0DM3cf/VdWVG54+33nmYxF/Pz31ojXBf1I7/P9karK5L8keRiXyWb30z6+EnqhKkkQjOf6tGVHtCf6sOXv0xBqFjZ2Dv3ojZch6mOk+f+DgzxcwGtOmPEF25aV5yn/qJaLkmnHnq4lHDHzvkki4mbEnsAt/KO3BgVWmnIfYx5pD0K6TN4i2jbIk4S+btGLUfqsJob7W3xZ1Aa3jDBs5io47qZlaFOqZVwQEtLLa53AufwDs/Fmypk8fzlA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=20cgK2nF83bMWnXKIDliznycd7AmNID2AR2OUIDxoPo=;
- b=lAccIMdVMNmT4rBJSuhOauLfIxMREFvUYS51nsrLcShuZw1Izt9CZAnlpHNiTQYD/fd6/UPjoY3Mn7oBHVUwKHm/CvhW8ZyWYLa84xbb5LnOURlsToRF/nQAkiD+WnCRhMm6TDweZCeHKXshJCFgUnieF4cj8bj1KdOC1AU+gV58gmMic77ASVwkn83cXDaib2bRJpwZZsSWHCowk+2AhhDnGMmzZq8Juzc5FjDLTb9sz6eeVohEQJJPDVzv5o7HWZd/cIkpRScT1rghs+ZZlbsPUX7fyGd8rWpiJn+joV/nYUilIIYfOrG8xLs2W1uXrmxCKq72HY9clYT2QCucuA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
- dkim=pass header.d=xilinx.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=20cgK2nF83bMWnXKIDliznycd7AmNID2AR2OUIDxoPo=;
- b=YtB/+3oI0WiPL5nD1xZLC2VoRWUc6Ci7ZCsZDXS4pBjP+aOb+eoiaZwiB8g3qOqfilfBFiLTcB0Ly7kI2Ns0Z6NxS3agIvhIhiydxDXdZihMFM4mJb21bSTqBDcBvqccoSxvqycCYYtaJseCSlSBeyaBgvz7WX03DbO1HdbY3Z4=
-Received: from BYAPR02MB5863.namprd02.prod.outlook.com (2603:10b6:a03:128::14)
- by BYAPR02MB3927.namprd02.prod.outlook.com (2603:10b6:a02:f3::33)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3412.20; Thu, 24 Sep
- 2020 06:23:12 +0000
-Received: from BYAPR02MB5863.namprd02.prod.outlook.com
- ([fe80::7dba:90:1155:1bd]) by BYAPR02MB5863.namprd02.prod.outlook.com
- ([fe80::7dba:90:1155:1bd%3]) with mapi id 15.20.3391.024; Thu, 24 Sep 2020
- 06:23:12 +0000
-From: Shubhrajyoti Datta <shubhraj@xilinx.com>
-To: Stephen Boyd <sboyd@kernel.org>, "linux-clk@vger.kernel.org"
- <linux-clk@vger.kernel.org>
-Subject: RE: [PATCH v6 5/8] clk: clock-wizard: Add support for fractional
- support
-Thread-Topic: [PATCH v6 5/8] clk: clock-wizard: Add support for fractional
- support
-Thread-Index: AQHWfUDOGI6eaIPWs0K4G5m1xbgT36lzvsEAgAJmejA=
-Date: Thu, 24 Sep 2020 06:23:11 +0000
-Message-ID: <BYAPR02MB5863905CA4E7F129C9E2FF3FAA390@BYAPR02MB5863.namprd02.prod.outlook.com>
-References: <1598621996-31040-1-git-send-email-shubhrajyoti.datta@xilinx.com>
- <1598621996-31040-6-git-send-email-shubhrajyoti.datta@xilinx.com>
- <160072305811.310579.18192761455478284239@swboyd.mtv.corp.google.com>
-In-Reply-To: <160072305811.310579.18192761455478284239@swboyd.mtv.corp.google.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-TNEF-Correlator: 
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=xilinx.com;
-x-originating-ip: [124.123.161.174]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 1ea99489-da37-49b2-6060-08d860525017
-x-ms-traffictypediagnostic: BYAPR02MB3927:
-x-microsoft-antispam-prvs: <BYAPR02MB39277596C931064984658F8FAA390@BYAPR02MB3927.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 9yQb8aCpLln+y1+40ti7TR7OZ5K1e/AygTCFs7v/LNyaftQr55iB/YpA/RhDS5hBgSgzurIMIMZUFJSNk1yOJqKjQ73mPfFamP1kRSnE9kmerCpB3l2mtMdS5UlByL8fHaUT4OSMp8dko5MFJQd2Enfv4rVLkVqYRtFpXeSOqBU4ny8usO2s6tlll+h4eIznbFwCz57ulAKrKbtVZO1zdKl9rigUKldcJf448OyKQtrRiS9iKoHi7NkBhArnzakLGl/18VdKpiyny2nVxvpgf0xgk+wfErcaf47T9tO6BCRCkCkcFxpH89syL5JKI84ilKV9rHLktycRo5hS7XdnHw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR02MB5863.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(366004)(346002)(136003)(376002)(39860400002)(4326008)(186003)(76116006)(86362001)(71200400001)(66446008)(478600001)(52536014)(26005)(55016002)(9686003)(66946007)(33656002)(53546011)(6506007)(64756008)(66476007)(7696005)(83380400001)(8936002)(66556008)(54906003)(316002)(5660300002)(8676002)(2906002)(110136005);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: +RB7KKOqe1z9m7txposmGnLt1B0hIS9GDnt4SdFnDgzZNcBNO4yvFg0Wys90Yv9fQD6buBTYwtGerok4Ok7b4eRCI5N7dX0l8qUL6URmGyNpqZ/AABasDTuieV87f6MUn4Aks3GM1fpyUPlhep7vLxRDqiiIAXHFWaGTrQi74Sotado7NNm4nr4c82X+ifecIJBK5SPhHN+qY3DNFZmdo7OMzy7q23676rM9SpJyLsxmYOaNpvlSq9OpgOHUCPJ/bnlNhRHLgefia4yIbjZpTKzGsI+HHi9ZISL+9tS06dlINPClbpokvKUjabTAE+PYB3cTc5mIvfKoF3OUHaFLS1mznqeUaCJL6m/Z6aI4fuGzjarWHos6wsOzWP7I2idwiLXfrYl8/nqT1CkerMe9ZTPYX+yJQ7GJOcLq+2AYDb/JpwOtK6ERFII9/k/toBUONt+fzNZU+/p84PqHEZK2GCGC4R0OLXae2mMrCgCy4NWhPtMu1BzZQ4Geb3rkgsIJLn0FT8uExopgTwCrrOluiN6UQ4vkvftFFyjVoS+VGojbh1v7JXTO5cmxhTcCOR59jtS2mkOCJW82qM49Fc+c+KEBCJIoyXHDl0PABqrgI1GoIpbpGQMPgXPsl+tPLHUnD6MNdKqf5ipmYgzn2f3Hcw==
-x-ms-exchange-transport-forked: True
+ with ESMTP id 7y6MjWQHtW6D for <devel@linuxdriverproject.org>;
+ Thu, 24 Sep 2020 10:20:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AEE9D869ED
+ for <devel@driverdev.osuosl.org>; Thu, 24 Sep 2020 10:20:51 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id t7so1450586pjd.3
+ for <devel@driverdev.osuosl.org>; Thu, 24 Sep 2020 03:20:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DDW0cijJSG8mG5hnjrtVKr5ql/AKoiRr42pPo1oe7J0=;
+ b=png7TEaT9JTulJLXSeEtIicwnhjXOR2MpLBeDM9CINl9FSBpFL8I5a7YVsfwjmx18e
+ h7JHkWx3q4xLTHdJiZVDuOcn7Z2GVzhNKJ2m9lwYWgCAd7jQ1RDKtix/nDKOwHPTaQrQ
+ 1GrAGuqoV3khYx4QTzvcCDb0HUPtmPVSfdnDmuB1jykdh5cZHEk0VsUj2aAYBx2N+VTH
+ JZsCkI7RWWs2pT1chDRQeemsgaoUrPV8uRC3jy4RhtQfQXduVDz9+mh9lmCIE+9AemET
+ kVWJ7dQ7rF8y3ZQ3BZ4yxjcbZnZYESGGnBUd/+LT3bHXGm/ghHpnz+Yv5FCzFP4kKwaB
+ aK1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DDW0cijJSG8mG5hnjrtVKr5ql/AKoiRr42pPo1oe7J0=;
+ b=CFEIEIBzWpSAG8ZplHJrIhcbNOeImRc8ZETKac+LmkI1Dys5yAjY8+pQnxdne8sP9E
+ pkliSRhSLDx4Fbvoxle8QOWy06y5CBwoNUYVU3LZPJ0PCEsuccX4Y+XpTMWDdY3fi1ZL
+ M+SP3JCeRY5cQijh8bculd9rbHhUI92mh2Koes5LDUbm+qK18telPZI1daDkcgEc6iEz
+ f4usON06+sXsEecAc9vDi5GVFFJalM1GQ/7InCy8qrCzV8tVDzNE29UYvWQna0Ku+JXo
+ B1Dj5BKsbwgtdHVlMTof09zWT5JXA+/jkMnSjmF2TFK33DT7sKRGNVP38GeoqJAkoLOP
+ iUew==
+X-Gm-Message-State: AOAM531dEYeX+GYDO7nwjMu8o1S3Febot9mKd1uAllwmckXMmk1jCEgJ
+ SDTcHKMxCkypfC0RhT9IFDDJ2E35zczPPxH1
+X-Google-Smtp-Source: ABdhPJzVQEnr2gHdgTDv8QoOM0eeMSIF++4bVh2EncAuTRY0YyzDuK0ktquYxouo12BxGQph+36+cA==
+X-Received: by 2002:a17:902:fe88:b029:d2:2a16:254 with SMTP id
+ x8-20020a170902fe88b02900d22a160254mr3998235plm.23.1600942850800; 
+ Thu, 24 Sep 2020 03:20:50 -0700 (PDT)
+Received: from localhost ([2001:e42:102:1532:160:16:113:140])
+ by smtp.gmail.com with ESMTPSA id l14sm1935673pjy.1.2020.09.24.03.20.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Sep 2020 03:20:49 -0700 (PDT)
+From: Coiby Xu <coiby.xu@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH 1/3] [PATCH] staging: greybus: fix warnings about endianness
+ detected by sparse
+Date: Thu, 24 Sep 2020 18:20:37 +0800
+Message-Id: <20200924102039.43895-1-coiby.xu@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR02MB5863.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1ea99489-da37-49b2-6060-08d860525017
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Sep 2020 06:23:11.8090 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oy+IftFpu5HsT6wBJEZxlHfmcOo7nlalTzTZrAAsZBhGmdZt/lR3sG6Wuea51WSllaWDw5qa55UWSzEJEBcFqQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB3927
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,293 +85,157 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>
+Cc: Alex Elder <elder@kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
+ "moderated list:GREYBUS SUBSYSTEM" <greybus-dev@lists.linaro.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi ,
-Thanks for the review.
+This patch fix the following warnings from sparse,
 
-> -----Original Message-----
-> From: Stephen Boyd <sboyd@kernel.org>
-> Sent: Tuesday, September 22, 2020 2:48 AM
-> To: Shubhrajyoti Datta <shubhraj@xilinx.com>; linux-clk@vger.kernel.org
-> Cc: devicetree@vger.kernel.org; linux-kernel@vger.kernel.org;
-> devel@driverdev.osuosl.org; robh+dt@kernel.org;
-> gregkh@linuxfoundation.org; mturquette@baylibre.com; Shubhrajyoti
-> Datta <shubhraj@xilinx.com>
-> Subject: Re: [PATCH v6 5/8] clk: clock-wizard: Add support for fractional
-> support
-> 
-> Quoting Shubhrajyoti Datta (2020-08-28 06:39:53)
-> > Currently the set rate granularity is to integral divisors.
-> > Add support for the fractional divisors.
-> > Only the first output0 is fractional in the hardware.
-> >
-> > Signed-off-by: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
-> 
-> Getting closer.
-> 
-> > diff --git a/drivers/clk/clk-xlnx-clock-wizard.c
-> > b/drivers/clk/clk-xlnx-clock-wizard.c
-> > index 8dfcec8..1af59a4 100644
-> > --- a/drivers/clk/clk-xlnx-clock-wizard.c
-> > +++ b/drivers/clk/clk-xlnx-clock-wizard.c
-> > @@ -185,6 +191,134 @@ static const struct clk_ops
-> clk_wzrd_clk_divider_ops = {
-> >         .recalc_rate = clk_wzrd_recalc_rate,  };
-> >
-> > +static unsigned long clk_wzrd_recalc_ratef(struct clk_hw *hw,
-> > +                                          unsigned long parent_rate)
-> > +{
-> > +       unsigned int val;
-> > +       u32 div, frac;
-> > +       struct clk_wzrd_divider *divider = to_clk_wzrd_divider(hw);
-> > +       void __iomem *div_addr = divider->base + divider->offset;
-> > +
-> > +       val = readl(div_addr);
-> > +       div = val & div_mask(divider->width);
-> > +       frac = (val >> WZRD_CLKOUT_FRAC_SHIFT) &
-> > + WZRD_CLKOUT_FRAC_MASK;
-> > +
-> > +       return ((parent_rate * 1000) / ((div * 1000) + frac));
-> 
-> Please remove extra parenthesis. And is this mult_frac()?
-> 
-Will fix
-> > +}
-> > +
-> > +static int clk_wzrd_dynamic_reconfig_f(struct clk_hw *hw, unsigned long
-> rate,
-> > +                                      unsigned long parent_rate) {
-> > +       int err;
-> > +       u32 value, pre;
-> > +       unsigned long rate_div, f, clockout0_div;
-> > +       struct clk_wzrd_divider *divider = to_clk_wzrd_divider(hw);
-> > +       void __iomem *div_addr = divider->base + divider->offset;
-> > +
-> > +       rate_div = ((parent_rate * 1000) / rate);
-> > +       clockout0_div = rate_div / 1000;
-> > +
-> > +       pre = DIV_ROUND_CLOSEST((parent_rate * 1000), rate);
-> > +       f = (u32)(pre - (clockout0_div * 1000));
-> > +       f = f & WZRD_CLKOUT_FRAC_MASK;
-> > +
-> > +       value = ((f << WZRD_CLKOUT_DIVIDE_WIDTH) | (clockout0_div &
-> > +                       WZRD_CLKOUT_DIVIDE_MASK));
-> 
-> Please split this to multiple lines.
-Will fix
-> 
-> > +
-> > +       /* Set divisor and clear phase offset */
-> > +       writel(value, div_addr);
-> > +       writel(0x0, div_addr + WZRD_DR_DIV_TO_PHASE_OFFSET);
-> > +
-> > +       /* Check status register */
-> > +       err= readl_poll_timeout(divider->base +
-> WZRD_DR_STATUS_REG_OFFSET, value,
-> > +                               value & WZRD_DR_LOCK_BIT_MASK,
-> > +                               WZRD_USEC_POLL, WZRD_TIMEOUT_POLL);
-> > +       if (err)
-> > +               return err;
-> > +
-> > +       /* Initiate reconfiguration */
-> > +       writel(WZRD_DR_BEGIN_DYNA_RECONF,
-> > +              divider->base + WZRD_DR_INIT_REG_OFFSET);
-> > +
-> > +       /* Check status register */
-> > +       err= readl_poll_timeout(divider->base +
-> WZRD_DR_STATUS_REG_OFFSET, value,
-> > +                               value & WZRD_DR_LOCK_BIT_MASK,
-> > +                               WZRD_USEC_POLL, WZRD_TIMEOUT_POLL);
-> > +
-> > +       return err;
-> 
-> Just return readl_poll_timeout() please.
-Will fix
-> 
-> > +}
-> > +
-> > +static long clk_wzrd_round_rate_f(struct clk_hw *hw, unsigned long
-> rate,
-> > +                                 unsigned long *prate) {
-> > +       return rate;
-> 
-> Can every rate be supported? This function is supposed to tell the clk
-> framework what rate will be achieved if we call clk_set_rate() with 'rate'
-> passed to this function. Almost always returning 'rate' is not the case.
-> 
+$ make C=2 drivers/staging/greybus/
+drivers/staging/greybus/audio_module.c:222:25: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_module.c:222:25:    expected restricted __le16 [usertype] data_cport
+drivers/staging/greybus/audio_module.c:222:25:    got unsigned short [usertype] intf_cport_id
+drivers/staging/greybus/audio_topology.c:460:40: warning: restricted __le32 degrades to integer
+drivers/staging/greybus/audio_topology.c:691:41: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:691:41:    expected unsigned int access
+drivers/staging/greybus/audio_topology.c:691:41:    got restricted __le32 [usertype] access
+drivers/staging/greybus/audio_topology.c:746:44: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:746:44:    expected unsigned int
+drivers/staging/greybus/audio_topology.c:746:44:    got restricted __le32
+drivers/staging/greybus/audio_topology.c:748:52: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:748:52:    expected unsigned int
+drivers/staging/greybus/audio_topology.c:748:52:    got restricted __le32
+drivers/staging/greybus/audio_topology.c:802:42: warning: restricted __le32 degrades to integer
+drivers/staging/greybus/audio_topology.c:805:50: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:805:50:    expected restricted __le32
+drivers/staging/greybus/audio_topology.c:805:50:    got unsigned int
+drivers/staging/greybus/audio_topology.c:814:50: warning: restricted __le32 degrades to integer
+drivers/staging/greybus/audio_topology.c:817:58: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:817:58:    expected restricted __le32
+drivers/staging/greybus/audio_topology.c:817:58:    got unsigned int
+drivers/staging/greybus/audio_topology.c:889:25: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:889:25:    expected unsigned int access
+drivers/staging/greybus/audio_topology.c:889:25:    got restricted __le32 [usertype] access
 
-We can support rate upto 3 decimal places to prevent truncation here we are 
-Returning rate.
-> >
-> > +
-> > +static const struct clk_ops clk_wzrd_clk_divider_ops_f = {
-> > +       .round_rate = clk_wzrd_round_rate_f,
-> > +       .set_rate = clk_wzrd_dynamic_reconfig_f,
-> > +       .recalc_rate = clk_wzrd_recalc_ratef, };
-> > +
-> > +static struct clk *clk_wzrd_register_divf(struct device *dev,
-> > +                                         const char *name,
-> > +                                         const char *parent_name,
-> > +                                         unsigned long flags,
-> > +                                         void __iomem *base, u16 offset,
-> > +                                         u8 shift, u8 width,
-> > +                                         u8 clk_divider_flags,
-> > +                                         const struct clk_div_table *table,
-> > +                                         spinlock_t *lock) {
-> > +       struct clk_wzrd_divider *div;
-> > +       struct clk_hw *hw;
-> > +       struct clk_init_data init;
-> > +       int ret;
-> > +
-> > +       if (clk_divider_flags & CLK_DIVIDER_HIWORD_MASK) {
-> 
-> Is this used? It's a rockchip specific flag mostly so probably not?
-> 
-> > +               if (width + shift > 16) {
-> > +                       pr_warn("divider value exceeds LOWORD field\n");
-> > +                       return ERR_PTR(-EINVAL);
-> > +               }
-> > +       }
-> > +
-> > +       /* allocate the divider */
-> 
-> Please remove useless comments like this.
-Will fix
-> 
-> > +       div = kzalloc(sizeof(*div), GFP_KERNEL);
-> > +       if (!div)
-> > +               return ERR_PTR(-ENOMEM);
-> > +
-> > +       init.name = name;
-> > +
-> > +       if (clk_divider_flags & CLK_DIVIDER_READ_ONLY)
-> 
-> Is this flag used?
-Will fix
-> 
-> > +               init.ops = &clk_divider_ro_ops;
-> > +       else
-> > +               init.ops = &clk_wzrd_clk_divider_ops_f;
-> > +
-> > +       init.flags = flags;
-> > +       init.parent_names = (parent_name ? &parent_name : NULL);
-> > +       init.num_parents = (parent_name ? 1 : 0);
-> 
-> Do you have cases where there isn't a parent? Hopefully not, so this can be
-> simplified.
-> 
-Will fix
-> >
-> > +       /* struct clk_divider assignments */
-> 
-> Drop this comment?
-Will fix
-> 
-> > +       div->base = base;
-> > +       div->offset = offset;
-> > +       div->shift = shift;
-> > +       div->width = width;
-> > +       div->flags = clk_divider_flags;
-> > +       div->lock = lock;
-> > +       div->hw.init = &init;
-> > +       div->table = table;
-> > +
-> > +       /* register the clock */
-> 
-> Drop this comment?
-Will fix
-> 
-> > +       hw = &div->hw;
-> > +       ret = clk_hw_register(dev, hw);
-> 
-> Any reason we can't use devm_clk_hw_register() here?
-> 
-Will do
-> > +       if (ret) {
-> > +               kfree(div);
-> > +               return ERR_PTR(ret);
-> > +       }
-> > +
-> > +       return hw->clk;
-> > +}
-> > +
-> >  static struct clk *clk_wzrd_register_divider(struct device *dev,
-> >                                              const char *name,
-> >                                              const char *parent_name,
-> > @@ -355,17 +489,13 @@ static int clk_wzrd_probe(struct
-> platform_device *pdev)
-> >                 goto err_disable_clk;
-> >         }
-> >
-> > -       /* we don't support fractional div/mul yet */
-> > -       reg = readl(clk_wzrd->base + WZRD_CLK_CFG_REG(0)) &
-> > -                   WZRD_CLKFBOUT_FRAC_EN;
-> > -       reg |= readl(clk_wzrd->base + WZRD_CLK_CFG_REG(2)) &
-> > -                    WZRD_CLKOUT0_FRAC_EN;
-> > -       if (reg)
-> > -               dev_warn(&pdev->dev, "fractional div/mul not supported\n");
-> > -
-> >         /* register multiplier */
-> >         reg = (readl(clk_wzrd->base + WZRD_CLK_CFG_REG(0)) &
-> >                      WZRD_CLKFBOUT_MULT_MASK) >>
-> > WZRD_CLKFBOUT_MULT_SHIFT;
-> > +       reg_f = (readl(clk_wzrd->base + WZRD_CLK_CFG_REG(0)) &
-> > +                    WZRD_CLKFBOUT_FRAC_MASK) >>
-> > + WZRD_CLKFBOUT_FRAC_SHIFT;
-> 
-> Use two lines please. Read into variable on one line, shift on another.
-> 
-Will fix
-> > +
-> > +       mult = ((reg * 1000) + reg_f);
-> 
-> Please remove extra parenthesis.
-> 
-> >         clk_name = kasprintf(GFP_KERNEL, "%s_mul", dev_name(&pdev-
-> >dev));
-> >         if (!clk_name) {
-> >                 ret = -ENOMEM;
-> > @@ -413,8 +543,18 @@ static int clk_wzrd_probe(struct platform_device
-> *pdev)
-> >                         ret = -EINVAL;
-> >                         goto err_rm_int_clks;
-> >                 }
-> > -               clk_wzrd->clkout[i] = clk_wzrd_register_divider(&pdev->dev,
-> > -                                                               clkout_name,
-> > +               if (!i)
-> > +                       clk_wzrd->clkout[i] = clk_wzrd_register_divf
-> > +                               (&pdev->dev, clkout_name,
-> > +                               clk_name, 0,
-> > +                               clk_wzrd->base, (WZRD_CLK_CFG_REG(2) + i * 12),
-> > +                               WZRD_CLKOUT_DIVIDE_SHIFT,
-> > +                               WZRD_CLKOUT_DIVIDE_WIDTH,
-> > +                               CLK_DIVIDER_ONE_BASED |
-> CLK_DIVIDER_ALLOW_ZERO,
-> > +                               NULL, &clkwzrd_lock);
-> > +               else
-> > +                       clk_wzrd->clkout[i] = clk_wzrd_register_divider
-> > +                               (&pdev->dev, clkout_name,
-> >                                 clk_name, 0,
-> >                                 clk_wzrd->base, (WZRD_CLK_CFG_REG(2) + i * 12),
-> >                                 WZRD_CLKOUT_DIVIDE_SHIFT,
-> >
-> 
-> I wonder if a do-while loop with flags set to ONE_BASED and ALLOW_ZERO
-> could work and then flags gets overwritten to be just DIVIDE_SHIFT? Then
-> we don't have to duplicate the registration line.
+Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
+---
+ drivers/staging/greybus/audio_module.c   |  6 +++---
+ drivers/staging/greybus/audio_topology.c | 18 +++++++++---------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-I did not understand this comment in one case I am registering  for the fractional operations
-In another we are using the integral operations
+diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
+index 16f60256adb2..c52c4f361b90 100644
+--- a/drivers/staging/greybus/audio_module.c
++++ b/drivers/staging/greybus/audio_module.c
+@@ -219,7 +219,7 @@ static int gb_audio_add_data_connection(struct gbaudio_module_info *gbmodule,
+ 
+ 	greybus_set_drvdata(bundle, gbmodule);
+ 	dai->id = 0;
+-	dai->data_cport = connection->intf_cport_id;
++	dai->data_cport = cpu_to_le16(connection->intf_cport_id);
+ 	dai->connection = connection;
+ 	list_add(&dai->list, &gbmodule->data_list);
+ 
+@@ -329,7 +329,7 @@ static int gb_audio_probe(struct gb_bundle *bundle,
+ 		if (ret) {
+ 			dev_err(dev,
+ 				"%d:Error while enabling %d:data connection\n",
+-				ret, dai->data_cport);
++				ret, le16_to_cpu(dai->data_cport));
+ 			goto disable_data_connection;
+ 		}
+ 	}
+@@ -451,7 +451,7 @@ static int gb_audio_resume(struct device *dev)
+ 		if (ret) {
+ 			dev_err(dev,
+ 				"%d:Error while enabling %d:data connection\n",
+-				ret, dai->data_cport);
++				ret, le16_to_cpu(dai->data_cport));
+ 			return ret;
+ 		}
+ 	}
+diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
+index 83b38ae8908c..56bf1a4f95ad 100644
+--- a/drivers/staging/greybus/audio_topology.c
++++ b/drivers/staging/greybus/audio_topology.c
+@@ -466,7 +466,7 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 		goto exit;
+ 
+ 	/* update ucontrol */
+-	if (gbvalue.value.integer_value[0] != val) {
++	if (gbvalue.value.integer_value[0] != cpu_to_le32(val)) {
+ 		for (wi = 0; wi < wlist->num_widgets; wi++) {
+ 			widget = wlist->widgets[wi];
+ 			snd_soc_dapm_mixer_update_power(widget->dapm, kcontrol,
+@@ -689,7 +689,7 @@ static int gbaudio_tplg_create_kcontrol(struct gbaudio_module_info *gb,
+ 				return -ENOMEM;
+ 			ctldata->ctl_id = ctl->id;
+ 			ctldata->data_cport = le16_to_cpu(ctl->data_cport);
+-			ctldata->access = ctl->access;
++			ctldata->access = le32_to_cpu(ctl->access);
+ 			ctldata->vcount = ctl->count_values;
+ 			ctldata->info = &ctl->info;
+ 			*kctl = (struct snd_kcontrol_new)
+@@ -744,10 +744,10 @@ static int gbcodec_enum_dapm_ctl_get(struct snd_kcontrol *kcontrol,
+ 		return ret;
+ 	}
+ 
+-	ucontrol->value.enumerated.item[0] = gbvalue.value.enumerated_item[0];
++	ucontrol->value.enumerated.item[0] = le32_to_cpu(gbvalue.value.enumerated_item[0]);
+ 	if (e->shift_l != e->shift_r)
+ 		ucontrol->value.enumerated.item[1] =
+-			gbvalue.value.enumerated_item[1];
++			le32_to_cpu(gbvalue.value.enumerated_item[1]);
+ 
+ 	return 0;
+ }
+@@ -801,10 +801,10 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	mask = e->mask << e->shift_l;
+ 
+ 	if (gbvalue.value.enumerated_item[0] !=
+-	    ucontrol->value.enumerated.item[0]) {
++	    cpu_to_le32(ucontrol->value.enumerated.item[0])) {
+ 		change = 1;
+ 		gbvalue.value.enumerated_item[0] =
+-			ucontrol->value.enumerated.item[0];
++			cpu_to_le32(ucontrol->value.enumerated.item[0]);
+ 	}
+ 
+ 	if (e->shift_l != e->shift_r) {
+@@ -813,10 +813,10 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 		val |= ucontrol->value.enumerated.item[1] << e->shift_r;
+ 		mask |= e->mask << e->shift_r;
+ 		if (gbvalue.value.enumerated_item[1] !=
+-		    ucontrol->value.enumerated.item[1]) {
++		    cpu_to_le32(ucontrol->value.enumerated.item[1])) {
+ 			change = 1;
+ 			gbvalue.value.enumerated_item[1] =
+-				ucontrol->value.enumerated.item[1];
++				cpu_to_le32(ucontrol->value.enumerated.item[1]);
+ 		}
+ 	}
+ 
+@@ -887,7 +887,7 @@ static int gbaudio_tplg_create_mixer_ctl(struct gbaudio_module_info *gb,
+ 		return -ENOMEM;
+ 	ctldata->ctl_id = ctl->id;
+ 	ctldata->data_cport = le16_to_cpu(ctl->data_cport);
+-	ctldata->access = ctl->access;
++	ctldata->access = le32_to_cpu(ctl->access);
+ 	ctldata->vcount = ctl->count_values;
+ 	ctldata->info = &ctl->info;
+ 	*kctl = (struct snd_kcontrol_new)
+-- 
+2.28.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
