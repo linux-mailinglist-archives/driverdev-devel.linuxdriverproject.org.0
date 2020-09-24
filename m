@@ -1,36 +1,36 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ACA1277D42
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 02:57:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D5D9F277D41
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 02:57:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5FBA186CA1;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0BEAD86A5C;
 	Fri, 25 Sep 2020 00:57:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ROSxXuiSSzhe; Fri, 25 Sep 2020 00:56:59 +0000 (UTC)
+	with ESMTP id hNV69ZDuLgaO; Fri, 25 Sep 2020 00:56:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3E8C186C8A;
-	Fri, 25 Sep 2020 00:56:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 51CD1860F6;
+	Fri, 25 Sep 2020 00:56:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 425301BF9BA
+ by ash.osuosl.org (Postfix) with ESMTP id 3B3791BF9B9
  for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 00:56:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3DD5E86C89
+ by whitealder.osuosl.org (Postfix) with ESMTP id 32D0186C8B
  for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 00:56:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PKJ-RVZY3NYZ for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 00:56:56 +0000 (UTC)
+ with ESMTP id OoQqv8bJr7wu for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 00:56:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.torrestir.pt (smtp.torrestir.pt [62.28.1.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CC7CF86C8A
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 00:56:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B4C1886C89
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 00:56:55 +0000 (UTC)
 X-Virus-Scanned: Debian amavisd-new at torrestir.pt
 Authentication-Results: mail.torrestir.pt;
  dmarc=none header.from=sit.skarzysko.pl
@@ -43,7 +43,7 @@ Subject: Spende.
 To: Recipients <kontakt@sit.skarzysko.pl>
 From: Andrew Clark<kontakt@sit.skarzysko.pl>
 Date: Fri, 25 Sep 2020 01:08:16 +0300
-Message-Id: <20200925005656.3DD5E86C89@whitealder.osuosl.org>
+Message-Id: <20200925005656.32D0186C8B@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
