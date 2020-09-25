@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C822227912E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:55:32 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C15792790ED
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:41:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DE45C86D77;
-	Fri, 25 Sep 2020 18:55:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 42E4A2E189;
+	Fri, 25 Sep 2020 18:41:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v_zraNcn_lUl; Fri, 25 Sep 2020 18:55:30 +0000 (UTC)
+	with ESMTP id 5uQ3PYwbOtPD; Fri, 25 Sep 2020 18:40:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 256E986D23;
-	Fri, 25 Sep 2020 18:55:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8EFA02E181;
+	Fri, 25 Sep 2020 18:40:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 755591BF330
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:55:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CA03D1BF330
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:40:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 71F7986D23
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:55:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C69C986237
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:40:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RZEODuhCdQuK for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 18:55:25 +0000 (UTC)
+ with ESMTP id 6Z62daTwnWaJ for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 18:40:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9A7FB86D22
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:55:25 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id v20so3847628oiv.3
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:55:25 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1E65F8610F
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:40:53 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id k8so4048341pfk.2
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:40:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=jsTMgeCDkQ7rQZQkBCr1xyL9bvrKdRsBGU8CcZUYgsg=;
- b=f2nPeEIrw9Q0qs/6gGT37vyz++mf0gfMQL+Gj6LvKefbU2TpXvuyGpZn4y7BnBMDk2
- qNPINUQ/WY+vwX9FvrTzxmh9dQkHx9QtORy5bCzdUkwr7BWZErEjGdNEMF7D8wkSQfrR
- nonImGmLUoq6qbCAF5RoCUnQl70Qzfx77x5+6Q85ip7fDxTjreMOiLVIMhPo8Xtrxz2t
- xpheNw74jdInCiR2Dlr3wAioe0bAprlRdWIjJr5qzKsx3Jp3fS7W3kVPsEf+MbWCMS3u
- D9Mfpum6dyXJ7nF9f12PLRLDHh7iMSYIo9bQcDX1pmNGHAeDrigpHcTQBa3aXOJHeE/5
- Xu/w==
+ bh=bT/+Sa6D+GAhAQMlD3pZwWZlV4j8Wl3G9tEqamihm64=;
+ b=tJ1zeP4o/+j1dNZ6f+ZWQXe+4IXDFZe59+v6ksLWbgmuH1u18pRcM94Wfv5r8sXtPu
+ 462ipFCTkhwpe67/QMtE+T1wU9XW0ZSMXVQEQPGXFdoWPVvDg+OuEDH6gwsfshT+uRlQ
+ D4zkBQ1ZC+iK1MQQnho3QkA5uAE0ooNhGKBnBbpwdiPHBbRt7kPcuh3CvZjZDm4iF590
+ cLHzZ9H1XbpMksjoDwCrrASSfdSP6TPMPeTg+yqnD7prrCNi1gesnk8DYhe3nhfUE9+p
+ ibkIJ48GIPaQBKa6oZQ3MRZpy3oBcJRjowDb54suSNBnh16Wb+FDXTkBxQvHITLwoPjw
+ cZug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=jsTMgeCDkQ7rQZQkBCr1xyL9bvrKdRsBGU8CcZUYgsg=;
- b=JCjunpktIywl1iJl0Nin3DSCJKVNsV6C3pXIp95NTTR2FY6WTs7U63U2/DBCeBZ0yQ
- rPPf1LVt9rQvmIPtHxo8yH0IFO2DsaUjJt1ElaiViXdknoM6pUOo4FjJO4avZ+8VOlv+
- Qy4DHrmgi4N4F7jh0GkFIahB4i0gujWF+Fe5bImggLmV95UxKqE6QdJ3827THVQlhMhF
- oHccqWPPews6r4TkSd/WX454E48sd52tk1ttgHC3j/v/35pmevaviZ5k/wZez/MYYusP
- jQhEC0s3vhX9Gkypvm1e1GeL82VRbJAKOAjt1e6BwwPmcSvlSeLgakX0d+N1pq2RyGDe
- kvlA==
-X-Gm-Message-State: AOAM5324PEoO2+rbASDg5htlIXnv9Ch+AZK9k+poqZ01ZHRnkc/YJ+nB
- YfTYwMA5ofa2u9811NubwAx3+eZOLzB3TA==
-X-Google-Smtp-Source: ABdhPJw1Ar0qSqAN56fzAZFKqFJyBO6B5DJGCSzobbQmIdtbFekrvjMzQnrxwlLGBQMXwK6hnz6W0Q==
-X-Received: by 2002:a17:90b:164e:: with SMTP id
- il14mr781288pjb.5.1601058790055; 
- Fri, 25 Sep 2020 11:33:10 -0700 (PDT)
+ bh=bT/+Sa6D+GAhAQMlD3pZwWZlV4j8Wl3G9tEqamihm64=;
+ b=BxeI+rlmJBBGs7vLzb2bEXZZcKxk083O+8Mdz0PjQiOq9N4y+Bagi+AjqssrSXEKBw
+ Qu+pSfwCLWqBdBawcecuI8BaJ5kEYoL3tGAy+9vE+23MWJjxlclbZKBK0Xm/rrYRSV8W
+ K4Xqn7a9PpEfHVXdxh0idbAYq4+UVlku3q2NKzZAAw2zNJrVCiduVEvr3LNBfp4yj6zS
+ 3LSxQF9WLyha8N18ayc7XQ/nFAjHBEXCbbNSeBeeDAB/rI78BMKTA06GVOClcFkYCzo+
+ TTqt04XiTjJnpus/oE1Etr5DomcE56uNDUbDwiyD1s7ZCxOvZfnxAUaxSa9qVh8Staia
+ gJWQ==
+X-Gm-Message-State: AOAM531CpMyqUwoQr9t3zCZGhVAXhr16o6UL20SRm51nSRtsVtIxE4ZT
+ 9P5/QGBjVaRil54rdaq4b+HmTQUKyXS1WA==
+X-Google-Smtp-Source: ABdhPJxsPtGvqhg/fJRIoMlGbdAtsJBJgmleaqtXgxyMZC8IB1n7q1jhfwdSjvfxBm/lSvkohGf84A==
+X-Received: by 2002:a17:902:b10b:b029:d1:e5e7:bdf8 with SMTP id
+ q11-20020a170902b10bb02900d1e5e7bdf8mr683397plr.43.1601058795915; 
+ Fri, 25 Sep 2020 11:33:15 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.33.04
+ by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.33.10
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 25 Sep 2020 11:33:09 -0700 (PDT)
+ Fri, 25 Sep 2020 11:33:15 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, mchehab@kernel.org, hverkuil@xs4all.nl,
  laurent.pinchart@ideasonboard.com
-Subject: [PATCH RFT/RFC v2 19/47] staging: media: zoran: move overlay_settings
- out of zoran_fh
-Date: Fri, 25 Sep 2020 18:30:29 +0000
-Message-Id: <1601058657-14042-20-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC v2 20/47] staging: media: zoran: Use video_drvdata to
+ get struct zoran
+Date: Fri, 25 Sep 2020 18:30:30 +0000
+Message-Id: <1601058657-14042-21-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
 References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
@@ -95,155 +95,158 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-We need to get rid of zoran_fh, so move the overlay_settings directly in the
-zoran structure.
+Using video_drvdata() is proper and shorter than using directly
+fh pointers.
+
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran.h        |  1 -
- drivers/staging/media/zoran/zoran_device.c |  8 ++---
- drivers/staging/media/zoran/zoran_driver.c | 40 +++++++++-------------
- 3 files changed, 21 insertions(+), 28 deletions(-)
+ drivers/staging/media/zoran/zoran_driver.c | 40 ++++++++--------------
+ 1 file changed, 14 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/staging/media/zoran/zoran.h b/drivers/staging/media/zoran/zoran.h
-index 7e6e03563a2a..e9fef23a720c 100644
---- a/drivers/staging/media/zoran/zoran.h
-+++ b/drivers/staging/media/zoran/zoran.h
-@@ -211,7 +211,6 @@ struct zoran_fh {
- 
- 	enum zoran_map_mode map_mode;		/* Flag which bufferset will map by next mmap() */
- 
--	struct zoran_overlay_settings overlay_settings;
- 	u32 *overlay_mask;			/* overlay mask */
- 	enum zoran_lock_activity overlay_active;/* feature currently in use? */
- 
-diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-index 672b8d927e0f..139cfc683b98 100644
---- a/drivers/staging/media/zoran/zoran_device.c
-+++ b/drivers/staging/media/zoran/zoran_device.c
-@@ -508,10 +508,10 @@ void write_overlay_mask(struct zoran_fh *fh, struct v4l2_clip *vp, int count)
- 			height += y;
- 			y = 0;
- 		}
--		if (x + width > fh->overlay_settings.width)
--			width = fh->overlay_settings.width - x;
--		if (y + height > fh->overlay_settings.height)
--			height = fh->overlay_settings.height - y;
-+		if (x + width > zr->overlay_settings.width)
-+			width = zr->overlay_settings.width - x;
-+		if (y + height > zr->overlay_settings.height)
-+			height = zr->overlay_settings.height - y;
- 
- 		/* ignore degenerate clips */
- 		if (height <= 0)
 diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
-index 27dcf899b723..3a59aa66436f 100644
+index 3a59aa66436f..518ba19e1e0a 100644
 --- a/drivers/staging/media/zoran/zoran_driver.c
 +++ b/drivers/staging/media/zoran/zoran_driver.c
-@@ -744,9 +744,7 @@ static void zoran_open_init_session(struct zoran_fh *fh)
- 	map_mode_raw(fh);
+@@ -1320,8 +1320,7 @@ static int zoran_set_input(struct zoran *zr, int input)
  
- 	/* take over the card's current settings */
--	fh->overlay_settings = zr->overlay_settings;
--	fh->overlay_settings.is_set = 0;
--	fh->overlay_settings.format = zr->overlay_settings.format;
-+	zr->overlay_settings.is_set = 0;
- 	fh->overlay_active = ZORAN_FREE;
+ static int zoran_querycap(struct file *file, void *__fh, struct v4l2_capability *cap)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
  
- 	/* buffers */
-@@ -1005,7 +1003,7 @@ static int setup_window(struct zoran_fh *fh, int x, int y, int width, int height
- 		return -EINVAL;
- 	}
+ 	strscpy(cap->card, ZR_DEVNAME(zr), sizeof(cap->card));
+ 	strscpy(cap->driver, "zoran", sizeof(cap->driver));
+@@ -1353,8 +1352,7 @@ static int zoran_enum_fmt(struct zoran *zr, struct v4l2_fmtdesc *fmt, int flag)
+ static int zoran_enum_fmt_vid_cap(struct file *file, void *__fh,
+ 				  struct v4l2_fmtdesc *f)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
  
--	if (!fh->overlay_settings.format) {
-+	if (!zr->overlay_settings.format) {
- 		pci_err(zr->pci_dev, "%s - no overlay format set\n", __func__);
- 		return -EINVAL;
- 	}
-@@ -1043,11 +1041,11 @@ static int setup_window(struct zoran_fh *fh, int x, int y, int width, int height
- 		return -EINVAL;
- 	}
+ 	return zoran_enum_fmt(zr, f, ZORAN_FORMAT_CAPTURE);
+ }
+@@ -1362,8 +1360,7 @@ static int zoran_enum_fmt_vid_cap(struct file *file, void *__fh,
+ static int zoran_enum_fmt_vid_out(struct file *file, void *__fh,
+ 				  struct v4l2_fmtdesc *f)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
  
--	fh->overlay_settings.x = x;
--	fh->overlay_settings.y = y;
--	fh->overlay_settings.width = width;
--	fh->overlay_settings.height = height;
--	fh->overlay_settings.clipcount = clipcount;
-+	zr->overlay_settings.x = x;
-+	zr->overlay_settings.y = y;
-+	zr->overlay_settings.width = width;
-+	zr->overlay_settings.height = height;
-+	zr->overlay_settings.clipcount = clipcount;
+ 	return zoran_enum_fmt(zr, f, ZORAN_FORMAT_PLAYBACK);
+ }
+@@ -1371,8 +1368,7 @@ static int zoran_enum_fmt_vid_out(struct file *file, void *__fh,
+ static int zoran_enum_fmt_vid_overlay(struct file *file, void *__fh,
+ 				      struct v4l2_fmtdesc *f)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
  
- 	/*
- 	 * If an overlay is running, we have to switch it off
-@@ -1069,7 +1067,7 @@ static int setup_window(struct zoran_fh *fh, int x, int y, int width, int height
- 	 */
- 	if (bitmap) {
- 		/* fake value - it just means we want clips */
--		fh->overlay_settings.clipcount = 1;
-+		zr->overlay_settings.clipcount = 1;
+ 	return zoran_enum_fmt(zr, f, ZORAN_FORMAT_OVERLAY);
+ }
+@@ -1424,8 +1420,7 @@ static int zoran_g_fmt_vid_cap(struct file *file, void *__fh,
+ static int zoran_g_fmt_vid_overlay(struct file *file, void *__fh,
+ 				   struct v4l2_format *fmt)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
  
- 		if (copy_from_user(fh->overlay_mask, bitmap,
- 				   (width * height + 7) / 8)) {
-@@ -1091,10 +1089,7 @@ static int setup_window(struct zoran_fh *fh, int x, int y, int width, int height
- 		vfree(vcp);
- 	}
+ 	fmt->fmt.win.w.left = zr->overlay_settings.x;
+ 	fmt->fmt.win.w.top = zr->overlay_settings.y;
+@@ -1442,8 +1437,7 @@ static int zoran_g_fmt_vid_overlay(struct file *file, void *__fh,
+ static int zoran_try_fmt_vid_overlay(struct file *file, void *__fh,
+ 				     struct v4l2_format *fmt)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
  
--	fh->overlay_settings.is_set = 1;
--	if (fh->overlay_active != ZORAN_FREE &&
--	    zr->overlay_active != ZORAN_FREE)
--		zr->overlay_settings = fh->overlay_settings;
-+	zr->overlay_settings.is_set = 1;
- 
- 	if (on)
- 		zr36057_overlay(zr, 1);
-@@ -1135,18 +1130,17 @@ static int setup_overlay(struct zoran_fh *fh, int on)
- 			zr36057_overlay(zr, 0);
- 		zr->overlay_mask = NULL;
- 	} else {
--		if (!zr->vbuf_base || !fh->overlay_settings.is_set) {
-+		if (!zr->vbuf_base || !zr->overlay_settings.is_set) {
- 			pci_err(zr->pci_dev, "%s - buffer or window not set\n", __func__);
- 			return -EINVAL;
- 		}
--		if (!fh->overlay_settings.format) {
-+		if (!zr->overlay_settings.format) {
- 			pci_err(zr->pci_dev, "%s - no overlay format set\n", __func__);
- 			return -EINVAL;
- 		}
- 		zr->overlay_active = fh->overlay_active = ZORAN_LOCKED;
- 		zr->v4l_overlay_active = 1;
- 		zr->overlay_mask = fh->overlay_mask;
--		zr->overlay_settings = fh->overlay_settings;
- 		if (!zr->v4l_memgrab_active)
- 			zr36057_overlay(zr, 1);
- 		/*
-@@ -1433,11 +1427,11 @@ static int zoran_g_fmt_vid_overlay(struct file *file, void *__fh,
+ 	if (fmt->fmt.win.w.width > BUZ_MAX_WIDTH)
+ 		fmt->fmt.win.w.width = BUZ_MAX_WIDTH;
+@@ -1647,8 +1641,8 @@ static int zoran_s_fmt_vid_out(struct file *file, void *__fh,
+ static int zoran_s_fmt_vid_cap(struct file *file, void *__fh,
+ 			       struct v4l2_format *fmt)
+ {
++	struct zoran *zr = video_drvdata(file);
  	struct zoran_fh *fh = __fh;
- 	struct zoran *zr = fh->zr;
+-	struct zoran *zr = fh->zr;
+ 	int i;
+ 	int res = 0;
  
--	fmt->fmt.win.w.left = fh->overlay_settings.x;
--	fmt->fmt.win.w.top = fh->overlay_settings.y;
--	fmt->fmt.win.w.width = fh->overlay_settings.width;
--	fmt->fmt.win.w.height = fh->overlay_settings.height;
--	if (fh->overlay_settings.width * 2 > BUZ_MAX_HEIGHT)
-+	fmt->fmt.win.w.left = zr->overlay_settings.x;
-+	fmt->fmt.win.w.top = zr->overlay_settings.y;
-+	fmt->fmt.win.w.width = zr->overlay_settings.width;
-+	fmt->fmt.win.w.height = zr->overlay_settings.height;
-+	if (zr->overlay_settings.width * 2 > BUZ_MAX_HEIGHT)
- 		fmt->fmt.win.field = V4L2_FIELD_INTERLACED;
- 	else
- 		fmt->fmt.win.field = V4L2_FIELD_TOP;
-@@ -1710,7 +1704,7 @@ static int zoran_g_fbuf(struct file *file, void *__fh,
- 	fb->fmt.width = zr->vbuf_width;
- 	fb->fmt.height = zr->vbuf_height;
- 	if (zr->overlay_settings.format)
--		fb->fmt.pixelformat = fh->overlay_settings.format->fourcc;
-+		fb->fmt.pixelformat = zr->overlay_settings.format->fourcc;
- 	fb->fmt.bytesperline = zr->vbuf_bytesperline;
- 	fb->fmt.colorspace = V4L2_COLORSPACE_SRGB;
- 	fb->fmt.field = V4L2_FIELD_INTERLACED;
+@@ -1696,8 +1690,7 @@ static int zoran_s_fmt_vid_cap(struct file *file, void *__fh,
+ static int zoran_g_fbuf(struct file *file, void *__fh,
+ 			struct v4l2_framebuffer *fb)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
+ 
+ 	memset(fb, 0, sizeof(*fb));
+ 	fb->base = zr->vbuf_base;
+@@ -1716,8 +1709,8 @@ static int zoran_g_fbuf(struct file *file, void *__fh,
+ static int zoran_s_fbuf(struct file *file, void *__fh,
+ 			const struct v4l2_framebuffer *fb)
+ {
++	struct zoran *zr = video_drvdata(file);
+ 	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
+ 	int i, res = 0;
+ 	__le32 printformat = __cpu_to_le32(fb->fmt.pixelformat);
+ 
+@@ -2049,8 +2042,7 @@ static int zoran_streamoff(struct file *file, void *__fh, enum v4l2_buf_type typ
+ 
+ static int zoran_g_std(struct file *file, void *__fh, v4l2_std_id *std)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
+ 
+ 	*std = zr->norm;
+ 	return 0;
+@@ -2058,8 +2050,7 @@ static int zoran_g_std(struct file *file, void *__fh, v4l2_std_id *std)
+ 
+ static int zoran_s_std(struct file *file, void *__fh, v4l2_std_id std)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
+ 	int res = 0;
+ 
+ 	res = zoran_set_norm(zr, std);
+@@ -2073,8 +2064,7 @@ static int zoran_s_std(struct file *file, void *__fh, v4l2_std_id std)
+ static int zoran_enum_input(struct file *file, void *__fh,
+ 			    struct v4l2_input *inp)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
+ 
+ 	if (inp->index >= zr->card.inputs)
+ 		return -EINVAL;
+@@ -2090,8 +2080,7 @@ static int zoran_enum_input(struct file *file, void *__fh,
+ 
+ static int zoran_g_input(struct file *file, void *__fh, unsigned int *input)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
+ 
+ 	*input = zr->input;
+ 
+@@ -2100,8 +2089,7 @@ static int zoran_g_input(struct file *file, void *__fh, unsigned int *input)
+ 
+ static int zoran_s_input(struct file *file, void *__fh, unsigned int input)
+ {
+-	struct zoran_fh *fh = __fh;
+-	struct zoran *zr = fh->zr;
++	struct zoran *zr = video_drvdata(file);
+ 	int res;
+ 
+ 	res = zoran_set_input(zr, input);
 -- 
 2.26.2
 
