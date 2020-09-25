@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABF752790EE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:41:23 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4ACE2790EB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:41:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5F08C86D1D;
-	Fri, 25 Sep 2020 18:41:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5AA6D86E61;
+	Fri, 25 Sep 2020 18:40:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AF44bGQ4Nllw; Fri, 25 Sep 2020 18:41:20 +0000 (UTC)
+	with ESMTP id EX19vgr-BTBl; Fri, 25 Sep 2020 18:40:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 99BF98648E;
-	Fri, 25 Sep 2020 18:41:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 795B786E56;
+	Fri, 25 Sep 2020 18:40:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A5B7B1BF330
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:41:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 212301BF330
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:40:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A25F78648E
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:41:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1E3F686237
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:40:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WAMJj_7gFXHk for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 18:41:17 +0000 (UTC)
+ with ESMTP id 3PbGX4YcXekh for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 18:40:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
  [209.85.215.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3847286237
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:41:17 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id 7so3303651pgm.11
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:41:17 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9C9878610F
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:40:55 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id 5so3331002pgf.5
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:40:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=D8qWzNWw/ylGv0AvYE/WmaDyWq/+0ija+R8teMBGwU0=;
- b=fpN+ajYgSkj7uSoxKOhaZSo2s3OPrfOIZzpgv85GTZMuOv+5VUjG3eXaVJcSX+fGTi
- NSgl6/UVPvgwWaR8skfGUzWcAJjGrRTgGNM7eC0utaO4WidKOxoGOUSaaktkJLB5G9sN
- 9Po7CBCY09/CSIeqqEGXk9Kps4L55hMx/v/H9TFli+C6uo1XJDjQ0dBLu2jc7iVzHr9w
- K8OQOtHka0RK2mLKs0Iyz6TTICMX1fHDLG3iXiiO1fjPbbbXzo97jibfRajOSXF84cTK
- UmsnRACKYCpLWTc2xORmdIe3+SOKVP/H1GjxIVo0gbiIUqfsIrelUOrPb6LBFdTLJNcm
- Wc3w==
+ bh=Z2ehdJwTg//k76wOiQFxYa7TSjOY+fUe32PPFRAEB40=;
+ b=Jc79CWO0HvaDRvbAGxsmInH8ME89szgSHjcyfeBoTv49SJDw/WX4YPUB70X4tKg1TW
+ Rr3bijRVGrW2p4s1lQi7HlsFufo7gkxMRQ9tSHJKoz/CWgJSOSvWsAmX+ih1HtRjBqNI
+ tFXOpCnzLANcCq+DPQMdxReXYEXPZRAb/yBMEpx7B9QfOXSUMyH5iy9GkZIKKY4HqTMl
+ z+qRHUXG0ipdSXjR/CAZALIlvhKrQO+lDCSs2ebDlMvI/zIH+e2tZ1CQ5E9avzLIG3ME
+ tuMx9Z3c1zc/xTyopDRkRLcN7t5UTXJMrCcDyHLRyuVCa99kcKYhX7pfTHYP2aoPFp+z
+ gP6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=D8qWzNWw/ylGv0AvYE/WmaDyWq/+0ija+R8teMBGwU0=;
- b=kSc5JaXqBUuAlg6uM9hl5OaMpkU2kcccEH1DliVMrMoTXeukhdoGbXKqI2qbNDymp3
- GW3nvrQ3jpCsoLwW6LOnIdPGxsACX6iyw/oJHdpJBHG4YlJV7gey1fBDaO/dnIKzjeNY
- 1mFsfZ8Qb5BG7trmokhHnGLk6IsTJDCneAJ8sC0kVirEqIA+QxH3zWmHzRH7nQIZIAak
- xVAhnZNgg9XHdSr/qxvs8t8fJiD/AshEJqFW7cNFDn1PAWewgC9Pu5pWVEASORz90oUW
- LJwrWWIlL87hSMo++nt7M2yFsm6LNPloSVnw8FjtpGP+iuMCUVoLAnyeQqSLHP4rTa9r
- nT0Q==
-X-Gm-Message-State: AOAM530bj2UG7uQplCyVqtojJ3c5F2iMo9fI1nCGdao9lID2IHdA9b5d
- JzfM7sRJah3l4zzAzzuucnhA2Dv22aA0Rg==
-X-Google-Smtp-Source: ABdhPJwzlm/EW0k1dN9gKCPbPnib2iHUnASrCFgy7qVgIF87UD01QjU3xqyGqdCUCVwA6NmHbiiSag==
-X-Received: by 2002:aa7:9f99:0:b029:13e:d13d:a134 with SMTP id
- z25-20020aa79f990000b029013ed13da134mr565916pfr.28.1601058877862; 
- Fri, 25 Sep 2020 11:34:37 -0700 (PDT)
+ bh=Z2ehdJwTg//k76wOiQFxYa7TSjOY+fUe32PPFRAEB40=;
+ b=TQFv0ESqpodknoekrND6kJ7zga4rexLnRtwnzcef2V+ANzB4UopB6rE6yepm1GzajD
+ iZ8AUQQmtjvmkJUDlak1dgA8xGZ6z7kgRDynQ8gYNOVfTKz1byJmTbTCsV4D2H/qsBTm
+ joOEzELo6b3u5N6Nf/N9lZal3oJ343bdHC3a4W1Q4eJLCM75Ig4s7frOtjCHWi7hauxV
+ bDHrk9vaEhif6UGySR4BcAgpmguTPZOH8Uq6Xl2OxbFs0+Y2UFv6DwutgWs1SDBigNQa
+ acBfGqXF8u6VamVCS8Gq3oMHh4s3O+51Feu5x0DJLwxI4dNlQWXoUW0KHbmiWgAp4Sgw
+ OvKQ==
+X-Gm-Message-State: AOAM532udLJyPoyugCCugYVfPPJCxZOyHMNn/JK6UoaWRh3PEmRJNzWE
+ CqQHfASbF3HC97lCPcvmMnlK7qvYDE07dQ==
+X-Google-Smtp-Source: ABdhPJzK4DtJhq4rllF1jMZgn6R2vGmQSbmXkAuBOZxqQ/CRxfj+erIK5UhpPfxHIFEWfKcPVuBMUQ==
+X-Received: by 2002:a63:c34b:: with SMTP id e11mr240955pgd.25.1601058883674;
+ Fri, 25 Sep 2020 11:34:43 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.34.32
+ by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.34.38
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 25 Sep 2020 11:34:37 -0700 (PDT)
+ Fri, 25 Sep 2020 11:34:43 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, mchehab@kernel.org, hverkuil@xs4all.nl,
  laurent.pinchart@ideasonboard.com
-Subject: [PATCH RFT/RFC v2 34/47] staging: media: zoran: constify codec_name
-Date: Fri, 25 Sep 2020 18:30:44 +0000
-Message-Id: <1601058657-14042-35-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC v2 35/47] staging: media: zoran: Add more check for
+ compliance
+Date: Fri, 25 Sep 2020 18:30:45 +0000
+Message-Id: <1601058657-14042-36-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
 References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
@@ -94,38 +94,63 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The codec_name could be const.
+The zoran driver miss some sanity checks, and this made v4l compliance
+happy.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran_card.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/media/zoran/zoran_driver.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index 79783cbb919a..49a1d9e084a8 100644
---- a/drivers/staging/media/zoran/zoran_card.c
-+++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -254,9 +254,9 @@ static void avs6eyes_init(struct zoran *zr)
- 	GPIO(zr, 7, mux & 4);   /* MUX S2 */
- }
- 
--static char *codecid_to_modulename(u16 codecid)
-+static const char *codecid_to_modulename(u16 codecid)
+diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
+index 60bbc8235cff..5ac832eca501 100644
+--- a/drivers/staging/media/zoran/zoran_driver.c
++++ b/drivers/staging/media/zoran/zoran_driver.c
+@@ -1092,6 +1092,11 @@ static int zoran_enum_fmt(struct zoran *zr, struct v4l2_fmtdesc *fmt, int flag)
  {
--	char *name = NULL;
-+	const char *name = NULL;
+ 	unsigned int num, i;
  
- 	switch (codecid) {
- 	case CODEC_TYPE_ZR36060:
-@@ -1102,7 +1102,7 @@ static int zoran_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	struct videocodec_master *master_vfe = NULL;
- 	struct videocodec_master *master_codec = NULL;
- 	int card_num;
--	char *codec_name, *vfe_name;
-+	const char *codec_name, *vfe_name;
- 	unsigned int nr;
++	if (fmt->index >= ARRAY_SIZE(zoran_formats))
++		return -EINVAL;
++	if (fmt->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
++		return -EINVAL;
++
+ 	for (num = i = 0; i < NUM_FORMATS; i++) {
+ 		if (zoran_formats[i].flags & flag && num++ == fmt->index) {
+ 			strscpy(fmt->description, zoran_formats[i].name,
+@@ -1255,6 +1260,12 @@ static int zoran_try_fmt_vid_cap(struct file *file, void *__fh,
+ 	if (i == NUM_FORMATS)
+ 		return -EINVAL;
  
- 	nr = zoran_num++;
++	fmt->fmt.pix.colorspace = zoran_formats[i].colorspace;
++	if (BUZ_MAX_HEIGHT < (fmt->fmt.pix.height * 2))
++		fmt->fmt.pix.field = V4L2_FIELD_INTERLACED;
++	else
++		fmt->fmt.pix.field = V4L2_FIELD_TOP;
++
+ 	bpp = DIV_ROUND_UP(zoran_formats[i].depth, 8);
+ 	v4l_bound_align_image(&fmt->fmt.pix.width, BUZ_MIN_WIDTH, BUZ_MAX_WIDTH, bpp == 2 ? 1 : 2,
+ 		&fmt->fmt.pix.height, BUZ_MIN_HEIGHT, BUZ_MAX_HEIGHT, 0, 0);
+@@ -1283,6 +1294,9 @@ static int zoran_s_fmt_vid_out(struct file *file, void *__fh,
+ 		return res;
+ 	}
+ 
++	if (!fmt->fmt.pix.height || !fmt->fmt.pix.width)
++		return -EINVAL;
++
+ 	settings = zr->jpg_settings;
+ 
+ 	/* we actually need to set 'real' parameters now */
+@@ -1872,6 +1886,9 @@ static int zoran_s_selection(struct file *file, void *__fh, struct v4l2_selectio
+ 	    sel->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+ 		return -EINVAL;
+ 
++	if (!sel->r.width || !sel->r.height)
++		return -EINVAL;
++
+ 	if (sel->target != V4L2_SEL_TGT_CROP)
+ 		return -EINVAL;
+ 
 -- 
 2.26.2
 
