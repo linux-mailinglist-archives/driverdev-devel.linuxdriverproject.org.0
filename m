@@ -1,80 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 294DD2794FD
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Sep 2020 01:47:50 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F03BD279530
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Sep 2020 01:52:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B9F0686EB0;
-	Fri, 25 Sep 2020 23:47:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 708232E1A9;
+	Fri, 25 Sep 2020 23:52:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8J5ap9THSTc5; Fri, 25 Sep 2020 23:47:46 +0000 (UTC)
+	with ESMTP id FSLljYPR0sQz; Fri, 25 Sep 2020 23:52:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 03AC486EA1;
-	Fri, 25 Sep 2020 23:47:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2892D2E195;
+	Fri, 25 Sep 2020 23:52:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CE9A51BF263
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 23:47:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AEFEC1BF263
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 23:52:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C656286E8F
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 23:47:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AB63A86CD4
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 23:52:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DdWAUJZNDTMK for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 23:47:43 +0000 (UTC)
+ with ESMTP id 08TaDhCeIxfI for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 23:52:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DAF3386DF2
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 23:47:42 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id a2so3902258otr.11
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 16:47:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linuxfoundation.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=7GKRgx1+J3D6WQ1h/+myxlWJJaGx1vz9Y6CYgKfy5Oc=;
- b=D0GJjSoFuiYKNBCKvGobJEjjtwgwcWUfjH8sr75923KX43QHs8Cvom5Q0fkDQEaq/s
- 8fHG81WQR6/KmQhnvtRxwlu9GKXrEnY19iome1tfjg2I5F2ZBixrGykaoYc2pCS+Pzui
- Vcf8vmdU5l6A5KLy4wopKc4F7UVqwD3t1/8YM=
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2C78286C93
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 23:52:42 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id bw23so283510pjb.2
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 16:52:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=iFWj9rVZ5vm/4L3J5z1Tcx/sVqL/m9WSz6V0j4oHet4=;
+ b=ZwESCWVlTO74iymvTUF8tSSMe7Du8J1LymeFeyKgcF5Q1zBF53EVpQ5hr4PUMZrcLn
+ 2MTLa2gMszA1aZyegsggpOof20L3i0ywKgrCqCg//Qd3p1zH0JzhVYh2t633VyopI2VY
+ u5Cmsfyzhhm/KZCqxkc+pm0llJHjFWXiH8tjU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=7GKRgx1+J3D6WQ1h/+myxlWJJaGx1vz9Y6CYgKfy5Oc=;
- b=mDfppJg/PZh0ddN6xe0HgD0l6V5I8xi6DWcR42blZGoeavYUiMKGIkgl+R2lxzMTME
- W+x3rScF5E9ms+hqbTeeVlLQix2RaFgTjmuRZn+0C9kV9rS5+JSS3qtMuZaTMyJ5GCvY
- P8JvnBmjqKaxvWcfM8TEbn0KViC2EbtNJ5B0nXHDBFeGrV4/EBPMyIPelm8OZNYpnrYP
- uLls7D0WrqDCPq7IO4OcTfbsVwtyryr2sYKzcurNAlDTKLhnJ733p4p2olByqqcXEY9w
- 2GPO7eYX/XMxgSWeKpk/RKq/opdQCNZHm4UIlbGizptxzdhsHSe5WUpFq0+4F+O/VI1t
- AS3A==
-X-Gm-Message-State: AOAM532hb+COIgGIxdGAUbyj3fSUFwgwLQY+NXOUHn5xj1wbQnFSynS/
- NbXx7VTMttrID8HhQY9u5B60EQ==
-X-Google-Smtp-Source: ABdhPJzvn0MwX5rvkrAEKWKB3JQh1HqrhH2nhrKCWVvslvZ8vOurJDN3L8sgaAs8iFHVK9izO8sbGA==
-X-Received: by 2002:a9d:4c0a:: with SMTP id l10mr1943745otf.166.1601077662022; 
- Fri, 25 Sep 2020 16:47:42 -0700 (PDT)
-Received: from shuah-t480s.internal (c-24-9-64-241.hsd1.co.comcast.net.
- [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id k3sm196219oof.6.2020.09.25.16.47.40
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=iFWj9rVZ5vm/4L3J5z1Tcx/sVqL/m9WSz6V0j4oHet4=;
+ b=dQ6dbAXKWuqHMfOVHbK6C7A+Mp8OFvbVJ8h33a1EMVEqUwwGsZTrB3uzX38ncalIC8
+ 9zjBi+lt29D75ixDpX9oNfmaeoc2wXe5jrUPcZGhStLnU98WlfLBYemvfpllsdWbDZQ2
+ o4lOIPbPkogNMfU6kJ/hFOpnHohLmC18wYT1IBLthbLpZIhDzbVehvM9F8rB4PuD9Bd4
+ XeiBtECWTh7HDfwm3qTtTTL1tIfXfKjVBInC3I65On/WVNUrqMWOYi8s4RScRqWWAPGm
+ FYcvheWblTaYtADlCMPBpsdfZptHjlMsBTM5Z9LSv0pOe2ZTy+mQR9r0SZb2YlcP2qd9
+ wGdw==
+X-Gm-Message-State: AOAM532JOufYqRpikKBH2n7jzFkx+iwjPv92sy19uN3LHV2kH8t1f/g6
+ 2RTwGQa5WYJIIOk96fSnBzZguw==
+X-Google-Smtp-Source: ABdhPJw0lmuwQ6bMq1NtGi1jhsCls+JQb9RaDs1Q7b5BS6raVGknvlA16kdtk/o2XDocG2Uwm2fbpg==
+X-Received: by 2002:a17:90b:889:: with SMTP id bj9mr22833pjb.101.1601077961848; 
+ Fri, 25 Sep 2020 16:52:41 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id n28sm3164670pgb.51.2020.09.25.16.52.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Sep 2020 16:47:41 -0700 (PDT)
-From: Shuah Khan <skhan@linuxfoundation.org>
-To: gregkh@linuxfoundation.org, arve@android.com, tkjos@android.com,
- maco@android.com, joel@joelfernandes.org, christian@brauner.io,
- hridya@google.com, surenb@google.com, keescook@chromium.org
-Subject: [PATCH 07/11] drivers/android/binder: convert stats,
- transaction_log to counter_atomic32
-Date: Fri, 25 Sep 2020 17:47:21 -0600
-Message-Id: <ab2cb30977ac35cc172d30306da25178b742c328.1601073127.git.skhan@linuxfoundation.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1601073127.git.skhan@linuxfoundation.org>
+ Fri, 25 Sep 2020 16:52:41 -0700 (PDT)
+Date: Fri, 25 Sep 2020 16:52:40 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Shuah Khan <skhan@linuxfoundation.org>
+Subject: Re: [PATCH 00/11] Introduce Simple atomic and non-atomic counters
+Message-ID: <202009251650.193E2AD@keescook>
 References: <cover.1601073127.git.skhan@linuxfoundation.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cover.1601073127.git.skhan@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,186 +82,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Shuah Khan <skhan@linuxfoundation.org>
+Cc: rafael@kernel.org, linux-kselftest@vger.kernel.org, joel@joelfernandes.org,
+ rric@kernel.org, shuah@kernel.org, devel@driverdev.osuosl.org, minyard@acm.org,
+ corbet@lwn.net, surenb@google.com, linux-doc@vger.kernel.org,
+ linux-acpi@vger.kernel.org, lenb@kernel.org, tkjos@android.com, arnd@arndb.de,
+ bp@alien8.de, openipmi-developer@lists.sourceforge.net, mchehab@kernel.org,
+ maco@android.com, christian@brauner.io, linux-edac@vger.kernel.org,
+ tony.luck@intel.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ arve@android.com, james.morse@arm.com, hridya@google.com,
+ johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-counter_atomic* is introduced to be used when a variable is used as
-a simple counter and doesn't guard object lifetimes. This clearly
-differentiates atomic_t usages that guard object lifetimes.
+On Fri, Sep 25, 2020 at 05:47:14PM -0600, Shuah Khan wrote:
+> -- Addressed Kees's comments:
+>    1. Non-atomic counters renamed to counter_simple32 and counter_simple64
+>       to clearly indicate size.
+>    2. Added warning for counter_simple* usage and it should be used only
+>       when there is no need for atomicity.
+>    3. Renamed counter_atomic to counter_atomic32 to clearly indicate size.
+>    4. Renamed counter_atomic_long to counter_atomic64 and it now uses
+>       atomic64_t ops and indicates size.
+>    5. Test updated for the API renames.
+>    6. Added helper functions for test results printing
+>    7. Verified that the test module compiles in kunit env. and test
+>       module can be loaded to run the test.
 
-counter_atomic* variables will wrap around to 0 when it overflows and
-should not be used to guard resource lifetimes, device usage and
-open counts that control state changes, and pm states.
+Thanks for all of this!
 
-stats tracks per-process binder statistics. Unsure if there is a chance
-of this overflowing, other than stats getting reset to 0. Convert it to
-use counter_atomic.
+>    8. Updated Documentation to reflect the intent to make the API
+>       restricted so it can never be used to guard object lifetimes
+>       and state management. I left _return ops for now, inc_return
+>       is necessary for now as per the discussion we had on this topic.
 
-binder_transaction_log:cur is used to keep track of the current log entry
-location. Overflow is handled in the code. Since it is used as a
-counter, convert it to use counter_atomic32.
+I still *really* do not want dec_return() to exist. That is asking for
+trouble. I'd prefer inc_return() not exist either, but I can live with
+it. ;)
 
-This conversion doesn't change the overflow wrap around behavior.
-
-Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
----
- drivers/android/binder.c          | 41 ++++++++++++++++---------------
- drivers/android/binder_internal.h |  3 ++-
- 2 files changed, 23 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index f936530a19b0..52175cd6a62b 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -66,6 +66,7 @@
- #include <linux/syscalls.h>
- #include <linux/task_work.h>
- #include <linux/sizes.h>
-+#include <linux/counters.h>
- 
- #include <uapi/linux/android/binder.h>
- #include <uapi/linux/android/binderfs.h>
-@@ -172,22 +173,22 @@ enum binder_stat_types {
- };
- 
- struct binder_stats {
--	atomic_t br[_IOC_NR(BR_FAILED_REPLY) + 1];
--	atomic_t bc[_IOC_NR(BC_REPLY_SG) + 1];
--	atomic_t obj_created[BINDER_STAT_COUNT];
--	atomic_t obj_deleted[BINDER_STAT_COUNT];
-+	struct counter_atomic32 br[_IOC_NR(BR_FAILED_REPLY) + 1];
-+	struct counter_atomic32 bc[_IOC_NR(BC_REPLY_SG) + 1];
-+	struct counter_atomic32 obj_created[BINDER_STAT_COUNT];
-+	struct counter_atomic32 obj_deleted[BINDER_STAT_COUNT];
- };
- 
- static struct binder_stats binder_stats;
- 
- static inline void binder_stats_deleted(enum binder_stat_types type)
- {
--	atomic_inc(&binder_stats.obj_deleted[type]);
-+	counter_atomic32_inc(&binder_stats.obj_deleted[type]);
- }
- 
- static inline void binder_stats_created(enum binder_stat_types type)
- {
--	atomic_inc(&binder_stats.obj_created[type]);
-+	counter_atomic32_inc(&binder_stats.obj_created[type]);
- }
- 
- struct binder_transaction_log binder_transaction_log;
-@@ -197,7 +198,7 @@ static struct binder_transaction_log_entry *binder_transaction_log_add(
- 	struct binder_transaction_log *log)
- {
- 	struct binder_transaction_log_entry *e;
--	unsigned int cur = atomic_inc_return(&log->cur);
-+	unsigned int cur = counter_atomic32_inc_return(&log->cur);
- 
- 	if (cur >= ARRAY_SIZE(log->entry))
- 		log->full = true;
-@@ -3615,9 +3616,9 @@ static int binder_thread_write(struct binder_proc *proc,
- 		ptr += sizeof(uint32_t);
- 		trace_binder_command(cmd);
- 		if (_IOC_NR(cmd) < ARRAY_SIZE(binder_stats.bc)) {
--			atomic_inc(&binder_stats.bc[_IOC_NR(cmd)]);
--			atomic_inc(&proc->stats.bc[_IOC_NR(cmd)]);
--			atomic_inc(&thread->stats.bc[_IOC_NR(cmd)]);
-+			counter_atomic32_inc(&binder_stats.bc[_IOC_NR(cmd)]);
-+			counter_atomic32_inc(&proc->stats.bc[_IOC_NR(cmd)]);
-+			counter_atomic32_inc(&thread->stats.bc[_IOC_NR(cmd)]);
- 		}
- 		switch (cmd) {
- 		case BC_INCREFS:
-@@ -4047,9 +4048,9 @@ static void binder_stat_br(struct binder_proc *proc,
- {
- 	trace_binder_return(cmd);
- 	if (_IOC_NR(cmd) < ARRAY_SIZE(binder_stats.br)) {
--		atomic_inc(&binder_stats.br[_IOC_NR(cmd)]);
--		atomic_inc(&proc->stats.br[_IOC_NR(cmd)]);
--		atomic_inc(&thread->stats.br[_IOC_NR(cmd)]);
-+		counter_atomic32_inc(&binder_stats.br[_IOC_NR(cmd)]);
-+		counter_atomic32_inc(&proc->stats.br[_IOC_NR(cmd)]);
-+		counter_atomic32_inc(&thread->stats.br[_IOC_NR(cmd)]);
- 	}
- }
- 
-@@ -5841,7 +5842,7 @@ static void print_binder_stats(struct seq_file *m, const char *prefix,
- 	BUILD_BUG_ON(ARRAY_SIZE(stats->bc) !=
- 		     ARRAY_SIZE(binder_command_strings));
- 	for (i = 0; i < ARRAY_SIZE(stats->bc); i++) {
--		int temp = atomic_read(&stats->bc[i]);
-+		int temp = counter_atomic32_read(&stats->bc[i]);
- 
- 		if (temp)
- 			seq_printf(m, "%s%s: %d\n", prefix,
-@@ -5851,7 +5852,7 @@ static void print_binder_stats(struct seq_file *m, const char *prefix,
- 	BUILD_BUG_ON(ARRAY_SIZE(stats->br) !=
- 		     ARRAY_SIZE(binder_return_strings));
- 	for (i = 0; i < ARRAY_SIZE(stats->br); i++) {
--		int temp = atomic_read(&stats->br[i]);
-+		int temp = counter_atomic32_read(&stats->br[i]);
- 
- 		if (temp)
- 			seq_printf(m, "%s%s: %d\n", prefix,
-@@ -5863,8 +5864,8 @@ static void print_binder_stats(struct seq_file *m, const char *prefix,
- 	BUILD_BUG_ON(ARRAY_SIZE(stats->obj_created) !=
- 		     ARRAY_SIZE(stats->obj_deleted));
- 	for (i = 0; i < ARRAY_SIZE(stats->obj_created); i++) {
--		int created = atomic_read(&stats->obj_created[i]);
--		int deleted = atomic_read(&stats->obj_deleted[i]);
-+		int created = counter_atomic32_read(&stats->obj_created[i]);
-+		int deleted = counter_atomic32_read(&stats->obj_deleted[i]);
- 
- 		if (created || deleted)
- 			seq_printf(m, "%s%s: active %d total %d\n",
-@@ -6054,7 +6055,7 @@ static void print_binder_transaction_log_entry(struct seq_file *m,
- int binder_transaction_log_show(struct seq_file *m, void *unused)
- {
- 	struct binder_transaction_log *log = m->private;
--	unsigned int log_cur = atomic_read(&log->cur);
-+	unsigned int log_cur = counter_atomic32_read(&log->cur);
- 	unsigned int count;
- 	unsigned int cur;
- 	int i;
-@@ -6124,8 +6125,8 @@ static int __init binder_init(void)
- 	if (ret)
- 		return ret;
- 
--	atomic_set(&binder_transaction_log.cur, ~0U);
--	atomic_set(&binder_transaction_log_failed.cur, ~0U);
-+	counter_atomic32_set(&binder_transaction_log.cur, ~0U);
-+	counter_atomic32_set(&binder_transaction_log_failed.cur, ~0U);
- 
- 	binder_debugfs_dir_entry_root = debugfs_create_dir("binder", NULL);
- 	if (binder_debugfs_dir_entry_root)
-diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-index 283d3cb9c16e..c77960c01430 100644
---- a/drivers/android/binder_internal.h
-+++ b/drivers/android/binder_internal.h
-@@ -12,6 +12,7 @@
- #include <linux/stddef.h>
- #include <linux/types.h>
- #include <linux/uidgid.h>
-+#include <linux/counters.h>
- 
- struct binder_context {
- 	struct binder_node *binder_context_mgr_node;
-@@ -136,7 +137,7 @@ struct binder_transaction_log_entry {
- };
- 
- struct binder_transaction_log {
--	atomic_t cur;
-+	struct counter_atomic32 cur;
- 	bool full;
- 	struct binder_transaction_log_entry entry[32];
- };
 -- 
-2.25.1
-
+Kees Cook
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
