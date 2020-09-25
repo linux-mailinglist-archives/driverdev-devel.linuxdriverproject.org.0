@@ -1,77 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF13B279130
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:55:45 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8900B2790DB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:38:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7DC9F87657;
-	Fri, 25 Sep 2020 18:55:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A495C86237;
+	Fri, 25 Sep 2020 18:38:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FcAcDPJEgk8y; Fri, 25 Sep 2020 18:55:44 +0000 (UTC)
+	with ESMTP id Jp1H74KwFdXZ; Fri, 25 Sep 2020 18:38:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 154D08764C;
-	Fri, 25 Sep 2020 18:55:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 26A9485F93;
+	Fri, 25 Sep 2020 18:38:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8BDB41BF330
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:55:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6DB8D1BF330
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:38:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8873C8764A
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:55:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6A99485FC9
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:38:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VVw5eYgQaX4x for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 18:55:38 +0000 (UTC)
+ with ESMTP id Cu-OziU7KeOh for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 18:38:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2126487648
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:55:38 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id w16so3853234oia.2
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:55:38 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3DFE985F93
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:38:52 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id k8so4042936pfk.2
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:38:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=FAfzGDJNkDiJ14AHNIUhDwhIpLlD543otONzFuTYMfQ=;
- b=a0nLcuL75ChtFYJRhumN1ud76X649BDWTKq7M0Gd+BIpr2RNTd5o4jWo19EmWG1JBm
- gz3NV6y8tPX4RQzO4bPJXXsX+b9LpGfEY4c9pmEKHWizMlcv+jD2UVZsbQpukekJTgEQ
- vGCScSxH2phHiGslb5eLX8xG0ZN62WZuMlto6N/RvygkecpgWfCt7t661H9ILknclCjf
- WC88KZ/qf7gEDn7SwjQGyy9UI6Jpl0hU7LTcQjYp2aZdI1VerBdZlkXZ24rVdtftE35u
- Vqsop8YbVd1b1XzkSFbApLryX5n1EDosG9uwizKMDf9/xouhSvp7a71yCo8EL4f5/D3F
- jniQ==
+ bh=Z5xy1HmEK3Cb2cGuOZNBEue37qSrHj+Vnq/OwfaPORg=;
+ b=sBlYShu+9vN6ayWh4BrzZFB3L8UBBVdI0bE+jUCCnUWfYdR0Dfg9rRQ+jLtIUsVd3W
+ NWIUbQROcUaoftLHhbGfzJi5Rg/eJtmLfrYcfS4X05/YqwKtVXCVikqj+/hQT6QBFoAg
+ ollSSj2k+OMDAnEUAMH1GJw2W/ijQHZGchwJj3jUIVyQL+rLR5y1CLy1+uJXBAy0AtP9
+ W+1E0pWNzJp23zMt2nAXk/J3tCSXHYpvKzZMeURXPZPxgk8RyCBHqU70Gd3CCoq76WRa
+ xlNgbHuw62gQekcuNM8L38Mq6kYGTZMHiIyOjyXSy5RTNjEqf8yBp2h/A9zLm2Roe+Rs
+ I29w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=FAfzGDJNkDiJ14AHNIUhDwhIpLlD543otONzFuTYMfQ=;
- b=M9qJmHHTve7CTctlxhbECDZI6dOmW20mwDXYp1mVKJpyRbDpISRgi7CvZBbG+ifcj1
- 1/xA2U6V62UVoETUIAjY2/9XunxsUqbX5nxx9MtQMNtLs1cZ2u1wo2S4M1ENPPpbzizD
- pe5ErwDG8eca95K8+nXfacXIYFnP4F/nf7ngCgA3oPMgCUP5Z3suovxVAoqx0vnw0yif
- DSxPTzPIL6rEu42ahl0yV35BgA6yoxe8oZEMFLD/7kP4Po3C8dy4tKygUqYz0foF5SDo
- FhTERkNWoU9DNxA1/d7MQ9st18fgWmrR2jAjopK7ibV8F75Lu6wyzhCW1sFJEHpxTb/r
- Hs0w==
-X-Gm-Message-State: AOAM530IwxJVY4OfX52tRPWr6MbOV66tS4g9z2TcJp7k35hoI0warpG5
- EwtvXMhXivhCXX8hD9VDFAs/0WgQiyx6oQ==
-X-Google-Smtp-Source: ABdhPJwkZ34moCQNFBf05TKwjoZbj7U936pTmdEFEjouvN6MxvXP/fKEn3S1UUhCffOvcSLabV7bNA==
-X-Received: by 2002:a17:90b:164e:: with SMTP id
- il14mr776001pjb.5.1601058689432; 
- Fri, 25 Sep 2020 11:31:29 -0700 (PDT)
+ bh=Z5xy1HmEK3Cb2cGuOZNBEue37qSrHj+Vnq/OwfaPORg=;
+ b=TMW2WDCtk7f8m7sYpzP1ve4nLnjrPXXA6wm+1fDu0DSyJh+h0ARjO6q/Wj04OrnOEO
+ 8axK9meOu02UTngsgazZEI5jHAijdBoLkWC6uv702MM6ccJfeWGKcagHOoErzhGqFrjr
+ JDMNrR3973N3D4+maUJtUzLaW2JOr0kqmKesGQQzlMLswbmUh7FMhnZhvME5aS+TbdMF
+ gY/rsUcFvgTCfH8jRAfJKO6z68K7lebC41kpPxdgXZo4QosKTop2YzGj+krFOcmeYXbj
+ MVtfVf9XOuszQJiVNV6WV9XKL6QAKVOCvZ45bFy9MnFxOx1Pk+McfxkZZW0YParwpU3j
+ TYrw==
+X-Gm-Message-State: AOAM533NUZkSyuKgeQXYqqlIICD/33MouNpWDuzepeB3YwM4E1xEHkZF
+ X+5eiYz8WTgmfjVw6NxDQ35OG1QzLr6eMw==
+X-Google-Smtp-Source: ABdhPJwdn4XhS1Fuqdi3Nmv5dQHDo9mWrn2Zwo9AuP7EkwR9dIm+/lhIaXMse5TDA/s6sztjt+48wg==
+X-Received: by 2002:a65:6104:: with SMTP id z4mr250114pgu.184.1601058695275;
+ Fri, 25 Sep 2020 11:31:35 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.31.24
+ by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.31.30
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 25 Sep 2020 11:31:28 -0700 (PDT)
+ Fri, 25 Sep 2020 11:31:34 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, mchehab@kernel.org, hverkuil@xs4all.nl,
  laurent.pinchart@ideasonboard.com
-Subject: [PATCH RFT/RFC v2 02/47] MAINTAINERS: change maintainer of the zoran
- driver
-Date: Fri, 25 Sep 2020 18:30:12 +0000
-Message-Id: <1601058657-14042-3-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC v2 03/47] staging: media: zoran: datasheet is no
+ longer available from zoran.com
+Date: Fri, 25 Sep 2020 18:30:13 +0000
+Message-Id: <1601058657-14042-4-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
 References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
@@ -95,136 +94,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add myself as maintainer.
+Simply remove this broken reference
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- Documentation/media/v4l-drivers/zoran.rst  | 22 +++++++---------------
- MAINTAINERS                                | 10 ++++++++++
- drivers/staging/media/zoran/zoran_card.c   |  5 -----
- drivers/staging/media/zoran/zoran_card.h   |  5 -----
- drivers/staging/media/zoran/zoran_device.c |  5 -----
- drivers/staging/media/zoran/zoran_device.h |  5 -----
- 6 files changed, 17 insertions(+), 35 deletions(-)
+ drivers/staging/media/zoran/zoran_device.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/Documentation/media/v4l-drivers/zoran.rst b/Documentation/media/v4l-drivers/zoran.rst
-index d2724a863d1d..a0586514cd8a 100644
---- a/Documentation/media/v4l-drivers/zoran.rst
-+++ b/Documentation/media/v4l-drivers/zoran.rst
-@@ -549,21 +549,13 @@ at high verbosity. See 'Contacting' on how to contact the developers.
- Maintainers/Contacting
- ----------------------
- 
--The driver is currently maintained by Laurent Pinchart and Ronald Bultje
--(<laurent.pinchart@skynet.be> and <rbultje@ronald.bitfreak.net>). For bug
--reports or questions, please contact the mailinglist instead of the developers
--individually. For user questions (i.e. bug reports or how-to questions), send
--an email to <mjpeg-users@lists.sf.net>, for developers (i.e. if you want to
--help programming), send an email to <mjpeg-developer@lists.sf.net>. See
--http://www.sf.net/projects/mjpeg/ for subscription information.
--
--For bug reports, be sure to include all the information as described in
--the section 'It hangs/crashes/fails/whatevers! Help!'. Please make sure
--you're using the latest version (http://mjpeg.sf.net/driver-zoran/).
--
--Previous maintainers/developers of this driver include Serguei Miridonov
--<mirsev@cicese.mx>, Wolfgang Scherr <scherr@net4you.net>, Dave Perks
--<dperks@ibm.net> and Rainer Johanni <Rainer@Johanni.de>.
-+Previous maintainers/developers of this driver are
-+- Laurent Pinchart <laurent.pinchart@skynet.be>
-+- Ronald Bultje rbultje@ronald.bitfreak.net
-+- Serguei Miridonov <mirsev@cicese.mx>
-+- Wolfgang Scherr <scherr@net4you.net>
-+- Dave Perks <dperks@ibm.net>
-+- Rainer Johanni <Rainer@Johanni.de>
- 
- Driver's License
- ----------------
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d3126fc2cca2..f2ece9826be3 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -19233,6 +19233,16 @@ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/dlemoal/zonefs.git
- F:	Documentation/filesystems/zonefs.rst
- F:	fs/zonefs/
- 
-+ZR36067 VIDEO FOR LINUX DRIVER
-+M:	Corentin Labbe <clabbe@baylibre.com>
-+L:	mjpeg-users@lists.sourceforge.net
-+L:	linux-media@vger.kernel.org
-+S:	Maintained
-+W:	http://mjpeg.sourceforge.net/driver-zoran/
-+Q:	https://patchwork.linuxtv.org/project/linux-media/list/
-+F:	drivers/staging/media/zoran/
-+F:	Documentation/media/v4l-drivers/zoran.rst
-+
- ZPOOL COMPRESSED PAGE STORAGE API
- M:	Dan Streetman <ddstreet@ieee.org>
- L:	linux-mm@kvack.org
-diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index ea10523194e8..d2f82894e8ee 100644
---- a/drivers/staging/media/zoran/zoran_card.c
-+++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -7,11 +7,6 @@
-  *
-  * Copyright (C) 2000 Serguei Miridonov <mirsev@cicese.mx>
-  *
-- * Currently maintained by:
-- *   Ronald Bultje    <rbultje@ronald.bitfreak.net>
-- *   Laurent Pinchart <laurent.pinchart@skynet.be>
-- *   Mailinglist      <mjpeg-users@lists.sf.net>
-- *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
-diff --git a/drivers/staging/media/zoran/zoran_card.h b/drivers/staging/media/zoran/zoran_card.h
-index 0cdb7d34926d..53ed511ce546 100644
---- a/drivers/staging/media/zoran/zoran_card.h
-+++ b/drivers/staging/media/zoran/zoran_card.h
-@@ -7,11 +7,6 @@
-  *
-  * Copyright (C) 2000 Serguei Miridonov <mirsev@cicese.mx>
-  *
-- * Currently maintained by:
-- *   Ronald Bultje    <rbultje@ronald.bitfreak.net>
-- *   Laurent Pinchart <laurent.pinchart@skynet.be>
-- *   Mailinglist      <mjpeg-users@lists.sf.net>
-- *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
 diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-index 22b27632762d..04162be80420 100644
+index 04162be80420..79da964c678b 100644
 --- a/drivers/staging/media/zoran/zoran_device.c
 +++ b/drivers/staging/media/zoran/zoran_device.c
-@@ -7,11 +7,6 @@
-  *
-  * Copyright (C) 2000 Serguei Miridonov <mirsev@cicese.mx>
-  *
-- * Currently maintained by:
-- *   Ronald Bultje    <rbultje@ronald.bitfreak.net>
-- *   Laurent Pinchart <laurent.pinchart@skynet.be>
-- *   Mailinglist      <mjpeg-users@lists.sf.net>
+@@ -265,9 +265,6 @@ jpeg_codec_reset (struct zoran *zr)
+  *   Set the registers for the size we have specified. Don't bother
+  *   trying to understand this without the ZR36057 manual in front of
+  *   you [AC].
 - *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
-diff --git a/drivers/staging/media/zoran/zoran_device.h b/drivers/staging/media/zoran/zoran_device.h
-index a507aaad4ebb..816d48b09be9 100644
---- a/drivers/staging/media/zoran/zoran_device.h
-+++ b/drivers/staging/media/zoran/zoran_device.h
-@@ -7,11 +7,6 @@
-  *
-  * Copyright (C) 2000 Serguei Miridonov <mirsev@cicese.mx>
-  *
-- * Currently maintained by:
-- *   Ronald Bultje    <rbultje@ronald.bitfreak.net>
-- *   Laurent Pinchart <laurent.pinchart@skynet.be>
-- *   Mailinglist      <mjpeg-users@lists.sf.net>
-- *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
+- *   PS: The manual is free for download in .pdf format from
+- *   www.zoran.com - nicely done those folks.
+  */
+ 
+ static void
 -- 
 2.26.2
 
