@@ -1,75 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B7BF2790D0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:38:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3B67886E55;
-	Fri, 25 Sep 2020 18:38:13 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7NrlSoBSd-9K; Fri, 25 Sep 2020 18:38:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7520286E59;
-	Fri, 25 Sep 2020 18:38:11 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D5B421BF330
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:38:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D1F5279132
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:56:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CF8D38763C
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:38:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F1E6F875E8;
+	Fri, 25 Sep 2020 18:56:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gpwFLfkr71tx; Fri, 25 Sep 2020 18:56:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 76C37874DF;
+	Fri, 25 Sep 2020 18:56:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C2921BF330
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:56:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 1328F2E17A
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:56:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MJ3WTkoNKEMX for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 18:38:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f195.google.com (mail-il1-f195.google.com
- [209.85.166.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 57B3487598
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:38:09 +0000 (UTC)
-Received: by mail-il1-f195.google.com with SMTP id x18so3292200ila.7
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:38:09 -0700 (PDT)
+ with ESMTP id wAOaz5hlYy+A for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 18:56:43 +0000 (UTC)
+X-Greylist: delayed 00:17:23 by SQLgrey-1.7.6
+Received: from mail-qv1-f67.google.com (mail-qv1-f67.google.com
+ [209.85.219.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 49B8D2E178
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:56:43 +0000 (UTC)
+Received: by mail-qv1-f67.google.com with SMTP id z18so1905433qvp.6
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:56:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=ni9H5s6lxVysOmGHLIY+1loUeP0ntGh2bLjI55hkPSU=;
- b=p0/0MtqLxzqxOW14ixw7GaBTJjATN+e+GLL1347olTxePReRnfh1tj6bsa0ZhF+XgO
- G9PYqPZYFJj6KRpD2bEvZ4eu9CJq/rNeJQco5f1bJ1OirK2ZMYqOJMK11Wpx76/m0neU
- NdQOmaeRTuJj1gLLgi1P0lfrHImPZxOptzVpIy35dgtA6We12gdKGXEodCyTctYQnhYn
- kVTLpXF7mHPqIiW9g3fnHCTICUUmiJ/A/xyY1V9cOEFy8VA+88Yy57UA7IogGu4+lxzn
- 1aYG6Px3+cSPAF4VaI4hXHIvztRtl4vliyEa84cj15a7zwE2h4cP8vvS9YE8ONVjlqlS
- fiYw==
+ bh=0rovwPvmS8/36q5dDn1a3LG+OYH5UJmxXVMPAQ9dEHM=;
+ b=Wz5VqyMaLoP5zv1xtjWwZaV6vWDxog4V2ZHjj255CjAVaZLn8qJ8vvFpJkq9dWw0Lf
+ +bsfKUhl7WDfo2ge/cGxIwsRXUbnWQi3+sm0oEoybpvIekZbAtdXDinF9nUnhXOkJGC2
+ +19IJXQGYR0Qt6J/DI6OVi1qprWDpczQ/5p3lqnmJJFSZ9wA+/v0Eujxl5gO6YxcHPnd
+ L5w9eSplFjaIPPOAt0AqdFh6L/y2OYVxmXSD2mAdhV09yeZXC/12KtLDxFD2L7lwFK7r
+ iESZNGZotJQ8/m3SzODjAncct4/mdvN9BqqLuPyYRrBEAEUTj0pn7AESyrBHRnslD989
+ 9b4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=ni9H5s6lxVysOmGHLIY+1loUeP0ntGh2bLjI55hkPSU=;
- b=lCTCsP0kpYe0RKXEIWyWnQ4p68vfXV7Q4ZF2ec0CYs5V9woU2+aUemWDzvjnxVXwrE
- dEA+M0RdyaRVWwF74EjfoCHJUBbZoFJ2TTPGc46spYv1U9Lcok+ElOByW48/wK8Nw0Oh
- ch4YcHwplg54yHRYlQRKrnnX2HBcIu+WU/cAN0oqlHHExkjgz6pYM6iozVMqNPG0XooN
- eOGgUHolcYBiB8oHOpgds3LvORNOI3+TbEVYKxiiHRcMFeJvOeuvFwEb7Su2cm+0OPnR
- RxfOVjCtET6dI7oL++DrWYQFYi084Ji4siKZavZXEZATWzKsEZWH0HZlV/89+souF6sC
- cdJw==
-X-Gm-Message-State: AOAM531ibPwTBB9x0b4qChQ+f3R+fLPYd40WkTlNj1NBz7YvySLBrHE3
- IhukhfwptctwnKUd3pGg87i0xm4I06kJWw==
-X-Google-Smtp-Source: ABdhPJwHuivyD+GJ9o1HaKo+iLk9tCzpRj85MBSaa9JVJGl0b1r0krrJw+eVCwpsa9BsOGPTCgEWCA==
-X-Received: by 2002:a63:fe03:: with SMTP id p3mr249218pgh.100.1601058754979;
- Fri, 25 Sep 2020 11:32:34 -0700 (PDT)
+ bh=0rovwPvmS8/36q5dDn1a3LG+OYH5UJmxXVMPAQ9dEHM=;
+ b=fEDnCr+8mp3w3/1TZ2J7DZ13iItwGTXM4kR1aYBu5H5bizkG85fttBN6XjV8upwYuN
+ MSFxVaS40Hl7+jGOW00pkswpPeNBkg4uNKEPPm/Sg/YZsyW7H5GidYSCctHDlOBKVJ+k
+ VGtd53tHByqg667Fv7TrmtceoypvbpccRYZsUOKD6RLfpBH6LTKswn0ZnNyx8zbQI+Ag
+ D7D++I9lNzUdaGXA39ph6CVvSDiLRYY4ZDvbvqFSxIrvXuqi8EM5uE6oXsUZznRMI7FF
+ BHbJp4+2tWcElhppPXpC6iNGz8FxYpaASM7mFDK7Wshhna0BHzhUZa2Pk/JN59FisaYk
+ iIWw==
+X-Gm-Message-State: AOAM533gNKGab79Rsdf0qmanXF68PXOYdOefGOLplGwPuKAZ/MswcExm
+ l/ZZAtS6iDp60d8cV7AqEpvAZQ1dK48SUA==
+X-Google-Smtp-Source: ABdhPJyRbga0YgMv8IgWmr4NsJM5lMVhcRN0dmA71ZT694prdtpkKXABq2k7yQvL7e18LNDETZviOA==
+X-Received: by 2002:a17:902:6941:b029:d0:cbe1:e76b with SMTP id
+ k1-20020a1709026941b02900d0cbe1e76bmr739118plt.18.1601058760861; 
+ Fri, 25 Sep 2020 11:32:40 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.32.29
+ by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.32.35
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 25 Sep 2020 11:32:34 -0700 (PDT)
+ Fri, 25 Sep 2020 11:32:40 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, mchehab@kernel.org, hverkuil@xs4all.nl,
  laurent.pinchart@ideasonboard.com
-Subject: [PATCH RFT/RFC v2 13/47] staging: media: zoran: use VFL_TYPE_VIDEO
-Date: Fri, 25 Sep 2020 18:30:23 +0000
-Message-Id: <1601058657-14042-14-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC v2 14/47] staging: media: zoran: use
+ v4l2_buffer_set_timestamp
+Date: Fri, 25 Sep 2020 18:30:24 +0000
+Message-Id: <1601058657-14042-15-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
 References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
@@ -93,26 +95,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The VFL_TYPE_GRABBER type was removed, so let's use the new type.
+The ns_to_timeval function is removed, so replace it with
+v4l2_buffer_set_timestamp().
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran_card.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/zoran/zoran_driver.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index 93a0817a3936..55315f67b3b9 100644
---- a/drivers/staging/media/zoran/zoran_card.c
-+++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -962,7 +962,7 @@ static int zr36057_init(struct zoran *zr)
- 	 * another day.
- 	 */
- 	zr->video_dev->vfl_dir = VFL_DIR_M2M;
--	err = video_register_device(zr->video_dev, VFL_TYPE_GRABBER, video_nr[zr->id]);
-+	err = video_register_device(zr->video_dev, VFL_TYPE_VIDEO, video_nr[zr->id]);
- 	if (err < 0)
- 		goto exit_free;
- 	video_set_drvdata(zr->video_dev, zr);
+diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
+index 0d6c58a4161e..e74fd6a62606 100644
+--- a/drivers/staging/media/zoran/zoran_driver.c
++++ b/drivers/staging/media/zoran/zoran_driver.c
+@@ -1197,7 +1197,7 @@ static int zoran_v4l2_buffer_status(struct zoran_fh *fh,
+ 		    fh->buffers.buffer[num].state == BUZ_STATE_USER) {
+ 			buf->sequence = fh->buffers.buffer[num].bs.seq;
+ 			buf->flags |= V4L2_BUF_FLAG_DONE;
+-			buf->timestamp = ns_to_timeval(fh->buffers.buffer[num].bs.ts);
++			v4l2_buffer_set_timestamp(buf, fh->buffers.buffer[num].bs.ts);
+ 		} else {
+ 			buf->flags |= V4L2_BUF_FLAG_QUEUED;
+ 		}
+@@ -1228,7 +1228,7 @@ static int zoran_v4l2_buffer_status(struct zoran_fh *fh,
+ 		if (fh->buffers.buffer[num].state == BUZ_STATE_DONE ||
+ 		    fh->buffers.buffer[num].state == BUZ_STATE_USER) {
+ 			buf->sequence = fh->buffers.buffer[num].bs.seq;
+-			buf->timestamp = ns_to_timeval(fh->buffers.buffer[num].bs.ts);
++			v4l2_buffer_set_timestamp(buf, fh->buffers.buffer[num].bs.ts);
+ 			buf->bytesused = fh->buffers.buffer[num].bs.length;
+ 			buf->flags |= V4L2_BUF_FLAG_DONE;
+ 		} else {
 -- 
 2.26.2
 
