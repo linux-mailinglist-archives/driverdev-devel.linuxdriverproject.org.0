@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D38AD279140
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 21:00:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1C0A2790FA
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 20:42:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 352102E18C;
-	Fri, 25 Sep 2020 19:00:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 785F82E191;
+	Fri, 25 Sep 2020 18:42:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pj77RlR-dRjJ; Fri, 25 Sep 2020 19:00:24 +0000 (UTC)
+	with ESMTP id rLXrVwsh85zG; Fri, 25 Sep 2020 18:42:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 57FBE2E187;
-	Fri, 25 Sep 2020 19:00:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 74FF92E17B;
+	Fri, 25 Sep 2020 18:42:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A1EAD1BF330
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 19:00:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 801A51BF330
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:42:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9EF8F86DC8
- for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 19:00:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7CB7D87644
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 18:42:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FH85yv5qQ43R for <devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 19:00:16 +0000 (UTC)
+ with ESMTP id NepErz5KhO2K for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 18:42:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vs1-f66.google.com (mail-vs1-f66.google.com
- [209.85.217.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4F4EA86DAD
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 19:00:16 +0000 (UTC)
-Received: by mail-vs1-f66.google.com with SMTP id a16so1981253vsp.12
- for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 12:00:16 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 093C286FC8
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 18:42:39 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id g29so3347308pgl.2
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 11:42:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=POQlelg/xj+ajAaOj4PD03MRs7Bfm1aqs/fM0Ig6DDo=;
- b=HZ7WmaWFu6gyAPyj5NWmh41xDV3/CpkYOtgcB7jszCJa0hm9iic6aPW9CPjTbBxvFd
- WFnAYLrjNrrEpeYp0xOnjPJTjFoAXvtTzy3gwJ7e5rkt5o7JLErPah8H7YyXs5gpkBFj
- +1V554dq4Tfm85SmleMHLQMugHakrEk0tIv7tOsTtfWy91ouqfyE9pbJqHD/AJkZ0xOL
- Ul9H64FMFc2zD+Sg1jgBDK6xPrNO7g9eg/v9RYpmQ8zUuhAKCBd72cUXGjmlP/kuGouD
- 5XGO/3H/YczRRGkfziDJr4q1Nr3c2asC7bbgPwiDwe0Urq9HNzx/4D+88Aj/OCENw9Wx
- BNOw==
+ bh=ilmDn91LW3u8nqKT07CUOhcD4W51+rQiqE8eqpt0HcI=;
+ b=HjCPwpVruGyqX0YXyuViN6wgxL+Kvf6UMMShAej/amwLNfHXdX302rXjgjUvuUzD0j
+ 0JAViXwLIz1DGDdUILPJXnICXDy88zQpXcz+skicRK1apWu9AXHv7MJQDvUNQ+Tcon3a
+ Kldb5l7tb83VTzCalIDCYQ/yq24zhxkoPZSLd4HtsVYz4zKTj+d9R5nnPLEIzeCyOSM9
+ eBeFeNdXP78FXqD/tRVrH7rHChva1lfPl9gwWap7TnOXsz2OEN0hLBTa7lCJs31CVt/K
+ a4QQAUEDBVgC9f4+gRxHjnRNRjAr7R9WIySNhXi+ycI71Aob3kw/p/Dt+WpA98n/kJnq
+ ht5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=POQlelg/xj+ajAaOj4PD03MRs7Bfm1aqs/fM0Ig6DDo=;
- b=ZSOsJf0rAR09MWupNxgQlTYu0SGVjCKSLKkam/9kn/0bDN+o4vckAAXMsmT/7AXUL9
- xTKQUAtjaZI1+d3pfRpHm+EMNsARCNSErZgYfhcQCwPqfn3xm4sU+AYWydgjoJIFNqYt
- Wc4n5BKXOhwwHRAyWoBHYH/shzhBL6XnJLU96QLZcbSi+sYVXDishnX7nxkIKdSebGJw
- xTMYsgukioZG1GPLgCqRkZpZ8/S1w/v5mA/5ox04e0qaWSolizapmKr41hnXe0itoHB2
- dQW3NqDozlZTueWLL7tVZ5RT4ye92AWQCWxuN8XyP6HALeE//Gk2abi/7hExBqUsUMdj
- OjLg==
-X-Gm-Message-State: AOAM533Cq9EVADolsKBG2cXeTm5nJYUtIOW9IEE8mfPS3osbeu1n14Se
- 5iP0Do/r+dX5Evg7hBolK+fcpNZ88/OjyA==
-X-Google-Smtp-Source: ABdhPJyIbzjFwuqqiH1rwqNSLTpS1uO836zFCs8h9iHlL8QqIvNDD/sKGQOQAttTN5kf1fKKRUkIdw==
-X-Received: by 2002:aa7:8e9a:0:b029:13e:d13d:a050 with SMTP id
- a26-20020aa78e9a0000b029013ed13da050mr587780pfr.22.1601058925212; 
- Fri, 25 Sep 2020 11:35:25 -0700 (PDT)
+ bh=ilmDn91LW3u8nqKT07CUOhcD4W51+rQiqE8eqpt0HcI=;
+ b=LXD7ihlpIIuGP7dOW7g91oqxFwNuLtP9RAG+gGeqU9stJvbrrZeNjwCtDbjlcVb6AC
+ 4nURAUEkbqI2g36BkoHgynJvRRv9Rx8mF2tSk9CUH3DO5Ul/mXfM8TAreO/SXiZqG5ig
+ mQAw1tgBroro7iRde4IWpxligjCFzTwNsHnGSZQejuqXzl3P43lmoxsiTJlG4nv8Kglo
+ bbjyc57YAdjHnCkmOOKy5lvxW9+gf3aqZK8rnN+4Fc0gFxwwONAiZkK9jkNXaq7DU6C5
+ CeMvMnD3Pd7n3r084E6pu6fqekjIgdouFkiCu2lvhuFUzq0bObKuwVA+n/GYtVF9Aj+V
+ XfJQ==
+X-Gm-Message-State: AOAM532yvh2qfo/hF/u1wOPOG3yDdC5mOw3XrSZ+pEKG8LACMaAUD1VE
+ yfkTe4N83VAUvRJ0yIS/vz09e37fHLld3g==
+X-Google-Smtp-Source: ABdhPJyUY4cOZlGnr0YOqOt3S3c5y52NsRI62sbyy3cf3OMhDLyMLTjAUaFrGsXPscSADi+qTnarvw==
+X-Received: by 2002:a63:2547:: with SMTP id l68mr219087pgl.241.1601058931025; 
+ Fri, 25 Sep 2020 11:35:31 -0700 (PDT)
 Received: from localhost.localdomain ([51.15.160.169])
- by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.35.19
+ by smtp.googlemail.com with ESMTPSA id r16sm2554546pjo.19.2020.09.25.11.35.25
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 25 Sep 2020 11:35:24 -0700 (PDT)
+ Fri, 25 Sep 2020 11:35:30 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: gregkh@linuxfoundation.org, mchehab@kernel.org, hverkuil@xs4all.nl,
  laurent.pinchart@ideasonboard.com
-Subject: [PATCH RFT/RFC v2 42/47] staging: media: zoran: remove test_interrupts
-Date: Fri, 25 Sep 2020 18:30:52 +0000
-Message-Id: <1601058657-14042-43-git-send-email-clabbe@baylibre.com>
+Subject: [PATCH RFT/RFC v2 43/47] staging: media: zoran: fix use of
+ buffer_size and sizeimage
+Date: Fri, 25 Sep 2020 18:30:53 +0000
+Message-Id: <1601058657-14042-44-git-send-email-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
 References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
@@ -94,115 +94,76 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The test_interrupts function is useless, remove it.
+buffer_size was not set when it should be.
+Furthermore, use it instead of recalculate it.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/zoran/zoran.h        |  3 ---
- drivers/staging/media/zoran/zoran_card.c   | 27 ----------------------
- drivers/staging/media/zoran/zoran_device.c | 16 -------------
- 3 files changed, 46 deletions(-)
+ drivers/staging/media/zoran/zoran_card.c   | 2 ++
+ drivers/staging/media/zoran/zoran_driver.c | 9 ++++++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/zoran/zoran.h b/drivers/staging/media/zoran/zoran.h
-index 0246635e0eac..fd27d1968e60 100644
---- a/drivers/staging/media/zoran/zoran.h
-+++ b/drivers/staging/media/zoran/zoran.h
-@@ -345,7 +345,6 @@ struct zoran {
- 	struct zoran_buffer_col jpg_buffers;	/* MJPEG buffers' info */
- 
- 	/* Additional stuff for testing */
--	int testing;
- 	int jpeg_error;
- 	int intr_counter_GIRQ1;
- 	int intr_counter_GIRQ0;
-@@ -372,8 +371,6 @@ struct zoran {
- 	int running;
- 	int buf_in_reserve;
- 
--	wait_queue_head_t test_q;
--
- 	dma_addr_t p_sc;
- 	__le32 *stat_comb;
- 	dma_addr_t p_scb;
 diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index 28a403257bb9..89fbc114c368 100644
+index 89fbc114c368..d7b3efa9e39f 100644
 --- a/drivers/staging/media/zoran/zoran_card.c
 +++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -858,31 +858,6 @@ void zoran_open_init_params(struct zoran *zr)
+@@ -857,6 +857,8 @@ void zoran_open_init_params(struct zoran *zr)
+ 	if (i)
  		pci_err(zr->pci_dev, "%s internal error\n", __func__);
  
++	zr->buffer_size = zr->v4l_settings.bytesperline * zr->v4l_settings.height;
++
  	clear_interrupt_counters(zr);
--	zr->testing = 0;
--}
--
--static void test_interrupts(struct zoran *zr)
--{
--	DEFINE_WAIT(wait);
--	int timeout, icr;
--
--	clear_interrupt_counters(zr);
--
--	zr->testing = 1;
--	icr = btread(ZR36057_ICR);
--	btwrite(0x78000000 | ZR36057_ICR_IntPinEn, ZR36057_ICR);
--	prepare_to_wait(&zr->test_q, &wait, TASK_INTERRUPTIBLE);
--	timeout = schedule_timeout(HZ);
--	finish_wait(&zr->test_q, &wait);
--	btwrite(0, ZR36057_ICR);
--	btwrite(0x78000000, ZR36057_ISR);
--	zr->testing = 0;
--	pci_info(zr->pci_dev, "Testing interrupts...\n");
--	if (timeout)
--		pci_info(zr->pci_dev, ": time spent: %d\n", 1 * HZ - timeout);
--	if (zr36067_debug > 1)
--		print_interrupts(zr);
--	btwrite(icr, ZR36057_ICR);
  }
  
- static int zr36057_init(struct zoran *zr)
-@@ -896,7 +871,6 @@ static int zr36057_init(struct zoran *zr)
+diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
+index 5dacbeac790b..021073ba08e6 100644
+--- a/drivers/staging/media/zoran/zoran_driver.c
++++ b/drivers/staging/media/zoran/zoran_driver.c
+@@ -407,6 +407,8 @@ static int zoran_v4l_set_format(struct zoran *zr, int width, int height,
  
- 	init_waitqueue_head(&zr->v4l_capq);
- 	init_waitqueue_head(&zr->jpg_capq);
--	init_waitqueue_head(&zr->test_q);
- 	zr->jpg_buffers.allocated = 0;
- 	zr->v4l_buffers.allocated = 0;
+ 	bpp = (format->depth + 7) / 8;
  
-@@ -977,7 +951,6 @@ static int zr36057_init(struct zoran *zr)
- 	zoran_init_hardware(zr);
- 	if (zr36067_debug > 2)
- 		detect_guest_activity(zr);
--	test_interrupts(zr);
- 	if (!pass_through) {
- 		decoder_call(zr, video, s_stream, 0);
- 		encoder_call(zr, video, s_routing, 2, 0, 0);
-diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-index fb318449d784..c090d7166caa 100644
---- a/drivers/staging/media/zoran/zoran_device.c
-+++ b/drivers/staging/media/zoran/zoran_device.c
-@@ -1109,22 +1109,6 @@ irqreturn_t zoran_irq(int irq, void *dev_id)
- 	struct zoran *zr = dev_id;
- 	unsigned long flags;
++	zr->buffer_size = height * width * bpp;
++
+ 	/* Check against available buffer size */
+ 	if (height * width * bpp > zr->buffer_size) {
+ 		pci_err(zr->pci_dev, "%s - video buffer size (%d kB) is too small\n",
+@@ -1100,7 +1102,7 @@ static int zoran_g_fmt_vid_out(struct file *file, void *__fh,
+ 	fmt->fmt.pix.width = zr->jpg_settings.img_width / zr->jpg_settings.HorDcm;
+ 	fmt->fmt.pix.height = zr->jpg_settings.img_height * 2 /
+ 		(zr->jpg_settings.VerDcm * zr->jpg_settings.TmpDcm);
+-	fmt->fmt.pix.sizeimage = zoran_v4l2_calc_bufsize(&zr->jpg_settings);
++	fmt->fmt.pix.sizeimage = zr->buffer_size;
+ 	fmt->fmt.pix.pixelformat = V4L2_PIX_FMT_MJPEG;
+ 	if (zr->jpg_settings.TmpDcm == 1)
+ 		fmt->fmt.pix.field = (zr->jpg_settings.odd_even ?
+@@ -1125,7 +1127,7 @@ static int zoran_g_fmt_vid_cap(struct file *file, void *__fh,
  
--	if (zr->testing) {
--		/* Testing interrupts */
--		spin_lock_irqsave(&zr->spinlock, flags);
--		while ((stat = count_reset_interrupt(zr))) {
--			if (count++ > 100) {
--				btand(~ZR36057_ICR_IntPinEn, ZR36057_ICR);
--				pci_err(zr->pci_dev, "IRQ lockup while testing, isr=0x%08x, cleared int mask\n",
--					stat);
--				wake_up_interruptible(&zr->test_q);
--			}
--		}
--		zr->last_isr = stat;
--		spin_unlock_irqrestore(&zr->spinlock, flags);
--		return IRQ_HANDLED;
--	}
--
- 	spin_lock_irqsave(&zr->spinlock, flags);
- 	while (1) {
- 		/* get/clear interrupt status bits */
+ 	fmt->fmt.pix.width = zr->v4l_settings.width;
+ 	fmt->fmt.pix.height = zr->v4l_settings.height;
+-	fmt->fmt.pix.sizeimage = zr->v4l_settings.bytesperline * zr->v4l_settings.height;
++	fmt->fmt.pix.sizeimage = zr->buffer_size;
+ 	fmt->fmt.pix.pixelformat = zr->v4l_settings.format->fourcc;
+ 	fmt->fmt.pix.colorspace = zr->v4l_settings.format->colorspace;
+ 	fmt->fmt.pix.bytesperline = zr->v4l_settings.bytesperline;
+@@ -1194,6 +1196,7 @@ static int zoran_try_fmt_vid_out(struct file *file, void *__fh,
+ 				V4L2_FIELD_TOP : V4L2_FIELD_BOTTOM);
+ 
+ 	fmt->fmt.pix.sizeimage = zoran_v4l2_calc_bufsize(&settings);
++	zr->buffer_size = fmt->fmt.pix.sizeimage;
+ 	fmt->fmt.pix.bytesperline = 0;
+ 	fmt->fmt.pix.colorspace = V4L2_COLORSPACE_SMPTE170M;
+ 	return res;
+@@ -1352,7 +1355,7 @@ static int zoran_s_fmt_vid_cap(struct file *file, void *__fh,
+ 
+ 	/* tell the user the results/missing stuff */
+ 	fmt->fmt.pix.bytesperline = zr->v4l_settings.bytesperline;
+-	fmt->fmt.pix.sizeimage = zr->v4l_settings.height * zr->v4l_settings.bytesperline;
++	fmt->fmt.pix.sizeimage = zr->buffer_size;
+ 	fmt->fmt.pix.colorspace = zr->v4l_settings.format->colorspace;
+ 	if (BUZ_MAX_HEIGHT < (zr->v4l_settings.height * 2))
+ 		fmt->fmt.pix.field = V4L2_FIELD_INTERLACED;
 -- 
 2.26.2
 
