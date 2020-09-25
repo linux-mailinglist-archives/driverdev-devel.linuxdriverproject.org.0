@@ -1,53 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41F5D277DA4
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 03:29:31 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3FD9C277FCF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Sep 2020 07:13:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ACAAD86C98;
-	Fri, 25 Sep 2020 01:29:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B136C2E147;
+	Fri, 25 Sep 2020 05:13:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2cCPeqvFndNY; Fri, 25 Sep 2020 01:29:29 +0000 (UTC)
+	with ESMTP id R3ys5Q55Xtqr; Fri, 25 Sep 2020 05:13:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A323386BAC;
-	Fri, 25 Sep 2020 01:29:28 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id B30532E138;
+	Fri, 25 Sep 2020 05:13:54 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 700E11BF361
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 01:29:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E390B1BF84C
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 05:13:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6CF9986879
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 01:29:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DFCCB864E6
+ for <devel@linuxdriverproject.org>; Fri, 25 Sep 2020 05:13:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dFNHJbrDIN-n
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 01:29:24 +0000 (UTC)
+ with ESMTP id is1nfImXrs0w for <devel@linuxdriverproject.org>;
+ Fri, 25 Sep 2020 05:13:50 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.torrestir.pt (smtp.torrestir.pt [62.28.1.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4208F86722
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Sep 2020 01:29:24 +0000 (UTC)
-X-Virus-Scanned: Debian amavisd-new at torrestir.pt
-Authentication-Results: mail.torrestir.pt;
- dmarc=none header.from=sit.skarzysko.pl
-Received: from [192.168.1.5] (unknown [178.151.250.143])
- by mail.torrestir.pt (Postfix) with ESMTPSA id 4By8Qh0Wrrz8xt7;
- Thu, 24 Sep 2020 23:11:39 +0100 (WEST)
+Received: from mail.hlgd.gob.ec (mail.hlgd.gob.ec [181.112.154.212])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B595286490
+ for <devel@driverdev.osuosl.org>; Fri, 25 Sep 2020 05:13:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.hlgd.gob.ec (Postfix) with ESMTP id A356D34C6CEE;
+ Thu, 24 Sep 2020 22:22:54 -0500 (-05)
+Received: from mail.hlgd.gob.ec ([127.0.0.1])
+ by localhost (mail.hlgd.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 8LPzp9A3jGXD; Thu, 24 Sep 2020 22:22:54 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.hlgd.gob.ec (Postfix) with ESMTP id 390A534C6CF5;
+ Thu, 24 Sep 2020 22:22:51 -0500 (-05)
+X-Virus-Scanned: amavisd-new at hlgd.gob.ec
+Received: from mail.hlgd.gob.ec ([127.0.0.1])
+ by localhost (mail.hlgd.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id JvhxaGtOMtzu; Thu, 24 Sep 2020 22:22:51 -0500 (-05)
+Received: from [10.123.39.92] (unknown [105.12.6.205])
+ by mail.hlgd.gob.ec (Postfix) with ESMTPSA id C6EEE34C6CDA;
+ Thu, 24 Sep 2020 22:22:38 -0500 (-05)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Spende.
-To: Recipients <kontakt@sit.skarzysko.pl>
-From: Andrew Clark<kontakt@sit.skarzysko.pl>
-Date: Fri, 25 Sep 2020 01:11:32 +0300
-Message-Id: <20200925012926.6CF9986879@fraxinus.osuosl.org>
+Subject: spende von 2,000,000 euro
+To: Recipients <vanessa.ramirez@hlgd.gob.ec>
+From: ''Tayeb souami'' < vanessa.ramirez@hlgd.gob.ec>
+Date: Fri, 25 Sep 2020 05:22:29 +0200
+Message-Id: <20200925032238.C6EEE34C6CDA@mail.hlgd.gob.ec>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,16 +66,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: andrewclark0051@yahoo.com
+Reply-To: Tayebsouam.spende@gmail.com
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dies ist eine pers=F6nliche E-Mail an Sie. Mein Name ist Andrew Clark, ein =
-Lottogewinner des EuroMillions-Jackpots. Ich spende Ihnen und Ihrer Familie=
- den Betrag von 950.000,00 Euro. Kontaktieren Sie mich unter meiner E-Mail-=
-Adresse: andrewclark0051@yahoo.com f=FCr Verzeichnisse und Anspr=FCche.
+
+Hallo mein lieber Freund
+Mein Name ist Tayeb Souami aus New Jersey in Amerika und ich habe den Ameri=
+ca Lottery Jackpot von 315 Millionen Euro gewonnen. Ich habe mich entschlos=
+sen, die Summe von 2.000.000 Euro an f=FCnf gl=FCckliche Personen zu spende=
+n, und Sie wurden als einer der Beg=FCnstigten ausgew=E4hlt. Bitte klicken =
+Sie auf diesen Link, um mehr =FCber meinen Gewinn zu erfahren.
+
+
+UHR MICH HIER: https://www.youtube.com/watch?v=3DZ6ui8ZDQ6Ks
+
+Bitte kontaktieren Sie mich =FCber diese E-Mail: Tayebsouam.spende@gmail.com
+
+
+Ich hoffe, Sie und Ihre Familie gl=FCcklich zu machen.
+
+Gr=FC=DFe
+Herr Tayeb Souami
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
