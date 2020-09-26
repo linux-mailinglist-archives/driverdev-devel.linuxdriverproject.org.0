@@ -1,72 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 094C427983E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Sep 2020 12:12:14 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE46F2798B3
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Sep 2020 13:26:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FBF586B2C;
-	Sat, 26 Sep 2020 10:12:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 19DA88739B;
+	Sat, 26 Sep 2020 11:26:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G7pNM-d-lL5C; Sat, 26 Sep 2020 10:12:11 +0000 (UTC)
+	with ESMTP id Q5sxAm0az0wg; Sat, 26 Sep 2020 11:26:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E38EE86B34;
-	Sat, 26 Sep 2020 10:12:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3EB7187196;
+	Sat, 26 Sep 2020 11:26:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 222DD1BF5A3
- for <devel@linuxdriverproject.org>; Sat, 26 Sep 2020 10:12:09 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 631481BF588
+ for <devel@linuxdriverproject.org>; Sat, 26 Sep 2020 11:26:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1EA0B86CE1
- for <devel@linuxdriverproject.org>; Sat, 26 Sep 2020 10:12:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 601258641E
+ for <devel@linuxdriverproject.org>; Sat, 26 Sep 2020 11:26:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wzzkDaFcOaAV for <devel@linuxdriverproject.org>;
- Sat, 26 Sep 2020 10:12:05 +0000 (UTC)
+ with ESMTP id 7Bu1rSp8Jdab for <devel@linuxdriverproject.org>;
+ Sat, 26 Sep 2020 11:26:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from eu-smtp-delivery-151.mimecast.com
- (eu-smtp-delivery-151.mimecast.com [207.82.80.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2463086C73
- for <devel@driverdev.osuosl.org>; Sat, 26 Sep 2020 10:12:04 +0000 (UTC)
-Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- uk-mta-64-PSRh-TBCNJOepc9cDIXbnQ-1; Sat, 26 Sep 2020 11:12:00 +0100
-X-MC-Unique: PSRh-TBCNJOepc9cDIXbnQ-1
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
- Server (TLS) id 15.0.1347.2; Sat, 26 Sep 2020 11:11:59 +0100
-Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
- AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
- Sat, 26 Sep 2020 11:11:59 +0100
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Coiby Xu' <coiby.xu@gmail.com>
-Subject: RE: [PATCH 3/3] [PATCH] staging: greybus: __u8 is sufficient for
- snd_ctl_elem_type_t and snd_ctl_elem_iface_t
-Thread-Topic: [PATCH 3/3] [PATCH] staging: greybus: __u8 is sufficient for
- snd_ctl_elem_type_t and snd_ctl_elem_iface_t
-Thread-Index: AQHWklx17fnZOC5vd0GG3zjgQ4eUS6l3nRcQgAG47oCAAV+6oA==
-Date: Sat, 26 Sep 2020 10:11:59 +0000
-Message-ID: <cd09e7c7abaa4700bf9a0245d5844c44@AcuMS.aculab.com>
-References: <20200924102039.43895-1-coiby.xu@gmail.com>
- <20200924102039.43895-3-coiby.xu@gmail.com>
- <0175c477851243baa8a92177667d6312@AcuMS.aculab.com>
- <20200925141125.vfm5sjnsfvxo2ras@Rk>
-In-Reply-To: <20200925141125.vfm5sjnsfvxo2ras@Rk>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+Received: from 4pipi.xyz (4pipi.xyz [106.75.240.186])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 19CB8863AE
+ for <devel@driverdev.osuosl.org>; Sat, 26 Sep 2020 11:26:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4pipi.xyz;
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=nami@4pipi.xyz; bh=UyyOhEuDwIZNb7v7AzBvydP5LV4=;
+ b=VxzEkAPFx8xqZVnPqUC52DoVBfHv50wXAx/Zi4WQrSxMxXQJ4nuCIolt9niU5BC0fVEITQX0dehZ
+ Fiiiedh2xhUDQ0v0rSHTaeObdhfbG7pPZ+sTNNnNsl+JyRPnr1sg2od8XByGLrBJj6kbCoq4OQ/I
+ EmyeItKOYhjVf60LUZE=
+From: "Patrick Cisse"<nami@4pipi.xyz>
+Subject: TRANSACTION
+Date: Sat, 26 Sep 2020 11:25:16 -0000
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200926112611.601258641E@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,59 +56,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "moderated list:SOUND" <alsa-devel@alsa-project.org>,
- Alex Elder <elder@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Takashi Iwai <tiwai@suse.com>,
- Johan Hovold <johan@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
- "moderated list:GREYBUS SUBSYSTEM" <greybus-dev@lists.linaro.org>,
- Jaroslav Kysela <perex@perex.cz>, open list <linux-kernel@vger.kernel.org>
+Reply-To: patrick27cisse@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Coiby Xu
-> Sent: 25 September 2020 15:11
-> 
-> On Thu, Sep 24, 2020 at 10:54:50AM +0000, David Laight wrote:
-> >From: Coiby Xu
-> >> Sent: 24 September 2020 11:21
-> >> Use __8 to replace int and remove the unnecessary __bitwise type attribute.
-> >>
-> >> Found by sparse,
-> >...
-> >> diff --git a/include/uapi/sound/asound.h b/include/uapi/sound/asound.h
-> >> index 535a7229e1d9..8e71a95644ab 100644
-> >> --- a/include/uapi/sound/asound.h
-> >> +++ b/include/uapi/sound/asound.h
-> >> @@ -950,7 +950,7 @@ struct snd_ctl_card_info {
-> >>  	unsigned char components[128];	/* card components / fine identification, delimited with one
-> >> space (AC97 etc..) */
-> >>  };
-> >>
-> >> -typedef int __bitwise snd_ctl_elem_type_t;
-> >> +typedef __u8 snd_ctl_elem_type_t;
-> >>  #define	SNDRV_CTL_ELEM_TYPE_NONE	((__force snd_ctl_elem_type_t) 0) /* invalid */
-> >>  #define	SNDRV_CTL_ELEM_TYPE_BOOLEAN	((__force snd_ctl_elem_type_t) 1) /* boolean type */
-> >>  #define	SNDRV_CTL_ELEM_TYPE_INTEGER	((__force snd_ctl_elem_type_t) 2) /* integer type */
-> >
-> >WTF is all that about anyway??
-> >What is wrong with:
-> >#define	SNDRV_CTL_ELEM_TYPE_NONE	0u /* invalid */
-> 
-> I'm sorry I don't quite understand you. Are you suggesting SNDRV_CTL_ELEM_TYPE_NONE
-> isn't needed in the first place?
 
-No, just remove all the casts from the constants.
-Are the types even used anywhere else?
+Dear Sir,
+ 
+May I humbly solicit your confidence Over This Transaction,   I decided to contact you after going to your profile , as I wish to repose my confidence on your discreteness and ability in transaction of this Nature. Let me start by introducing self properly to you, my Name is Mr. Patrick G. Cisse , I am the Regional Bank Manager of BOA CI , I came to know about you in my Private Search for a Reliable and Reputable foreigner to handle this Confidential Transaction.
 
-	David
+On the course of 2015/2016 Year Report, we discovered an excess profit of Seventeen Million One Hundred Thousand Us Dollars , [ $ 17,100,000.00 ] ; We have Since placed this fund on SUSPENSE ACCOUNT without any Beneficiary.
 
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-Registration No: 1397386 (Wales)
+As an officer of the bank,  I can't be directly Connected to this Fund for Security Reasons, that is why I am contacting you for us to work together as Partners to Receive the said Fund into your Account for INVESTMENT in your Country.
 
+The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
+
+
+Note: There is Practically No Risks Involved in this Transaction ,  it is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit for a Proper Wire to Your Account .If you Find this Proposal Suitable For you, get back For Full Details and Procedures .
+
+
+Best regards,
+
+Mr. Patrick Cisse
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
