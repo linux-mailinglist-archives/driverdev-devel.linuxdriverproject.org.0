@@ -1,68 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A90B279C96
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Sep 2020 23:16:37 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8205279EE4
+	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Sep 2020 08:39:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 38D2D204C0;
-	Sat, 26 Sep 2020 21:16:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 53098867D7;
+	Sun, 27 Sep 2020 06:39:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9GiGQp-hmrIX; Sat, 26 Sep 2020 21:16:33 +0000 (UTC)
+	with ESMTP id ZYjyBTTuUBlJ; Sun, 27 Sep 2020 06:39:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AC53F203AC;
-	Sat, 26 Sep 2020 21:16:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 704AF86092;
+	Sun, 27 Sep 2020 06:39:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A55C81BF487
- for <devel@linuxdriverproject.org>; Sat, 26 Sep 2020 21:16:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8BD7D1BF3EE
+ for <devel@linuxdriverproject.org>; Sun, 27 Sep 2020 06:39:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A258184F76
- for <devel@linuxdriverproject.org>; Sat, 26 Sep 2020 21:16:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 85FA086124
+ for <devel@linuxdriverproject.org>; Sun, 27 Sep 2020 06:39:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xo79AVVrsgZN for <devel@linuxdriverproject.org>;
- Sat, 26 Sep 2020 21:16:26 +0000 (UTC)
-X-Greylist: delayed 00:16:56 by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 713A982333
- for <devel@driverdev.osuosl.org>; Sat, 26 Sep 2020 21:16:26 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id k15so7578808wrn.10
- for <devel@driverdev.osuosl.org>; Sat, 26 Sep 2020 14:16:26 -0700 (PDT)
+ with ESMTP id XT6ShhF15fPK for <devel@linuxdriverproject.org>;
+ Sun, 27 Sep 2020 06:39:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E895386092
+ for <devel@driverdev.osuosl.org>; Sun, 27 Sep 2020 06:39:43 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id e18so1995847pgd.4
+ for <devel@driverdev.osuosl.org>; Sat, 26 Sep 2020 23:39:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MTiTHadi/nHgC5LvCcfwAGdh6E0z8YNmPT7uOrkAcuU=;
+ b=RUKwgJ5VnPoNDRaHVCTwOKF38tRZ3EMMJ/0ikPifFbEVl1UPetFrqyr8rTy14hfjcS
+ AU4j55odb5UgGctrVDVVqWxRwCvSln+a7wlPGOkDU7JTeDJon35x4J7Yb4Ao69zP5DGU
+ 1KpoUu9lwUeLtK10PS40VybPmto7vvHpN9IPsI4sJ2lS/8bfvQ60b/aVP8hy9ybL/x50
+ BfIvKaUEJjwIIrUjnI9PCb7bvhLnosE+zaJZyRVqVJMny5K7qfq9lPH+csJnPEMWCHTq
+ uYoDZs7gy04K4g56KPXuYDC/Hrp58elrdVA+TwnuQ7fl3s6v9/Q6NS5VtD9MCS9o3DwH
+ RGCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=+8Oh61VDkKJm8ATQ6jeOPbqJJMPXYpW1qx7rAsBes8k=;
- b=HVShcwWplL6TLG8eKzE9I2cbBGltgFRs+3nxwGZiKZps/gfx7DlelIcWZwq7m1JibS
- p77URUc/lhUruvm9wT7swRBAXtkgXzhRYjnJWBlEwpFZUr1iJEcyazVok7ankOAcBMMQ
- kcEuEyPYPAjuN8a9nrvPuJs6TROTVUfiCNgAtuFxaZwrzi5++fZluzev26ZlhXCRlEfc
- jrTvjEGhJEjcfLW72Uy5a8k6OdXENdQj+XIAtjIazlEpoMEsR+/JQ3OgXyltepxMOpJ6
- 07GlegFDGdOfX0C/RRx7rfWvsNh3+o4TQ2v5Y1tSFSM7KRIBhcZwJQKelboBGQvnF4bg
- KQWQ==
-X-Gm-Message-State: AOAM533JewpEq5BFCUahOTx1qGBNDXWEM+aapSyiWx+G6eGNQhJhC/US
- eIrkh1BVm8zYvxl0rFdGcAQgiMrtujTS8utSKyA=
-X-Google-Smtp-Source: ABdhPJy70ndEkfLf/+WblrSk/UwDwosqtjfmRLEbzIM2w+dXQYJKs0F5avEWRJwBwLIFK8CxgFh61A==
-X-Received: by 2002:a17:907:264c:: with SMTP id
- ar12mr9129730ejc.80.1601153552469; 
- Sat, 26 Sep 2020 13:52:32 -0700 (PDT)
-Received: from x1-carbon.localdomain
- (dynamic-2a01-0c22-a405-1400-4d77-6706-ca6f-bab0.c22.pool.telefonica.de.
- [2a01:c22:a405:1400:4d77:6706:ca6f:bab0])
- by smtp.gmail.com with ESMTPSA id p1sm5064178edx.4.2020.09.26.13.52.30
+ bh=MTiTHadi/nHgC5LvCcfwAGdh6E0z8YNmPT7uOrkAcuU=;
+ b=PJ2n+kaY/gYNkINb7aM5SZfnnN4L0HOVLI7VowvakbavJcBk4wI7IQa3DGYDyT1dSW
+ MOYiT6lxhCvnYJKUKKBnOeATCwiqikkooC5QSjzJccOOgX4pK22s8pDQX1vXUOnasYPu
+ OWQ13bzPI9ZJ5E9zSp4bPU8kYOxGXIqPyeq3bIH0+K/twsaHJD1figR9yiuA9FLFYOCF
+ 1EIHavk7xd90IRPP4POkhj8x8HVsqtKjxXBE/yVPhUJO+YcSB/iodrAKhhZTnw2UQjxi
+ 3iz6aLFwj3Hruvtqw6rlG/oQiHmGAmO5Q0FTCtYk4XttSEluyGXzJrZbJNZS91aXyM0w
+ aQfg==
+X-Gm-Message-State: AOAM53338ibDyMTH4PIlHDYGdBzsYlYDfM0o9GAhz0lxyQpbVPJII3jJ
+ JHclogKkbsTas8+plO9+wGc=
+X-Google-Smtp-Source: ABdhPJwE1IF/AzfvEKpfFlfzMsmPTo6wXC2N4AGL7zeIpPleIExsmgINrC/ivYJ+C01rr1JEPNP9MA==
+X-Received: by 2002:a63:fc41:: with SMTP id r1mr4846352pgk.179.1601188783643; 
+ Sat, 26 Sep 2020 23:39:43 -0700 (PDT)
+Received: from localhost.localdomain (cpe-70-95-82-187.san.res.rr.com.
+ [70.95.82.187])
+ by smtp.gmail.com with ESMTPSA id b20sm7748072pfb.198.2020.09.26.23.39.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2020 13:52:31 -0700 (PDT)
-From: gary@apache.org
-To: 
-Subject: [PATCH] staging: media: atomisp: clean up block comment style issues
-Date: Sat, 26 Sep 2020 22:50:58 +0200
-Message-Id: <20200926205103.189041-1-gary@apache.org>
-X-Mailer: git-send-email 2.26.2
+ Sat, 26 Sep 2020 23:39:43 -0700 (PDT)
+From: Ryan Kosta <ryanpkosta@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] fix double next comment in drivers/staging/nvec/nvec.c
+Date: Sat, 26 Sep 2020 23:39:37 -0700
+Message-Id: <20200927063937.14614-1-ryanpkosta@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,93 +84,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Gary Yao <gary@apache.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Ryan Kosta <ryanpkosta@gmail.com>,
+ linux-kernel@vger.kernel.org, marvin24@gmx.de, p.zabel@pengutronix.de,
+ linux-tegra@vger.kernel.org, ac100@lists.launchpad.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Gary Yao <gary@apache.org>
-
-Clean up block comment style issues to follow kernel coding style
-and clear checkpatch warnings.
-
-WARNING: Block comments use * on subsequent lines
-WARNING: Block comments use a trailing */ on a separate line
-
-Signed-off-by: Gary Yao <gary@apache.org>
+Signed-off-by: Ryan Kosta <ryanpkosta@gmail.com>
 ---
- .../pci/isp/modes/interface/isp_types.h       | 41 +++++++++++--------
- 1 file changed, 23 insertions(+), 18 deletions(-)
+ drivers/staging/nvec/nvec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/isp/modes/interface/isp_types.h b/drivers/staging/media/atomisp/pci/isp/modes/interface/isp_types.h
-index ae273c826808..d1c42c77fa50 100644
---- a/drivers/staging/media/atomisp/pci/isp/modes/interface/isp_types.h
-+++ b/drivers/staging/media/atomisp/pci/isp/modes/interface/isp_types.h
-@@ -1,26 +1,29 @@
- /* SPDX-License-Identifier: GPL-2.0 */
--/**
--Support for Intel Camera Imaging ISP subsystem.
--Copyright (c) 2010 - 2015, Intel Corporation.
--
--This program is free software; you can redistribute it and/or modify it
--under the terms and conditions of the GNU General Public License,
--version 2, as published by the Free Software Foundation.
--
--This program is distributed in the hope it will be useful, but WITHOUT
--ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
--FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
--more details.
--*/
-+/*
-+ * Support for Intel Camera Imaging ISP subsystem.
-+ * Copyright (c) 2010 - 2015, Intel Corporation.
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ */
- 
- #ifndef _ISP_TYPES_H_
- #define _ISP_TYPES_H_
- 
--/* Workaround: hivecc complains about "tag "sh_css_3a_output" already declared"
--   without this extra decl. */
-+/*
-+ * Workaround: hivecc complains about "tag "sh_css_3a_output" already declared"
-+ * without this extra decl.
-+ */
- struct ia_css_3a_output;
- 
--/* Input stream formats, these correspond to the MIPI formats and the way
-+/*
-+ * Input stream formats, these correspond to the MIPI formats and the way
-  * the CSS receiver sends these to the input formatter.
-  * The bit depth of each pixel element is stored in the global variable
-  * isp_bits_per_pixel.
-@@ -37,8 +40,10 @@ enum sh_stream_format {
- };
- 
- struct s_isp_frames {
--	/* global variables that are written to by either the SP or the host,
--	   every ISP binary needs these. */
-+	/*
-+	 * Global variables that are written to by either the SP or the host,
-+	 * every ISP binary needs these.
-+	 */
- 	/* output frame */
- 	char *xmem_base_addr_y;
- 	char *xmem_base_addr_uv;
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index 360ec040774..a80996b2f5c 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -289,7 +289,7 @@ EXPORT_SYMBOL(nvec_write_async);
+  * interrupt handlers.
+  *
+  * Returns: 0 on success, a negative error code on failure.
+- * The response message is returned in @msg. Shall be freed with
++ * The response message is returned in @msg. Shall be freed
+  * with nvec_msg_free() once no longer used.
+  *
+  */
 -- 
-2.26.2
+2.20.1
 
 _______________________________________________
 devel mailing list
