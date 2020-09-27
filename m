@@ -1,76 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 428B727A18A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Sep 2020 17:08:34 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BD0388503D;
-	Sun, 27 Sep 2020 15:08:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D8owBZfLKYDb; Sun, 27 Sep 2020 15:08:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7DECD84DDC;
-	Sun, 27 Sep 2020 15:08:31 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B03431BF408
- for <devel@linuxdriverproject.org>; Sun, 27 Sep 2020 15:08:29 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D98F27A1DD
+	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Sep 2020 18:35:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AA8728715F
- for <devel@linuxdriverproject.org>; Sun, 27 Sep 2020 15:08:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2CCC9871A5;
+	Sun, 27 Sep 2020 16:35:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KqCJfgqoriVA; Sun, 27 Sep 2020 16:35:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 971D38712F;
+	Sun, 27 Sep 2020 16:35:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E8E11BF404
+ for <devel@linuxdriverproject.org>; Sun, 27 Sep 2020 16:35:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 946FF8610B
+ for <devel@linuxdriverproject.org>; Sun, 27 Sep 2020 16:35:31 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id muwBqA93WBCg for <devel@linuxdriverproject.org>;
- Sun, 27 Sep 2020 15:08:28 +0000 (UTC)
+ with ESMTP id J0RTnNh8FrBm for <devel@linuxdriverproject.org>;
+ Sun, 27 Sep 2020 16:35:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E6B368710B
- for <devel@driverdev.osuosl.org>; Sun, 27 Sep 2020 15:08:28 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id o20so7024368pfp.11
- for <devel@driverdev.osuosl.org>; Sun, 27 Sep 2020 08:08:28 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D62FD860ED
+ for <devel@driverdev.osuosl.org>; Sun, 27 Sep 2020 16:35:30 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id g29so6189670pgl.2
+ for <devel@driverdev.osuosl.org>; Sun, 27 Sep 2020 09:35:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=5SVq0w/G+BJ0BoVyLc2hLMW/0QGne7FVXE/0ouMIQTk=;
- b=UAJHbXD4pUnwppm9iqHuRKXE1T9OvaMBWCBVDP3NGuqJaNxJty/AMalHQ4a0dsVH++
- Plru0DNUbaHjINH3PkT1yubbx+UnOCNSIkhP4g7w57FjlZOsmbLu5QESZTKkUaCy+ISo
- 3d4LXOyOkZn/zIfVkpgKSQ3VJQt45oZoWABEvCCHYhiTRXI2oEblHDqgdTQm+l11/pNU
- sNZ1XUp6OQ1pfpSP3RyoecxMipmqLcftJEXB62kmmwv/QHyXmR/9rJyT20tgAHIhTWT3
- 6nYBC1CskgWEPkNC/pmsIulyjTD+EWcJRMFdxdqAC0OFxZwjXHZcudLFskQaoP5fg4kR
- 2rRg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0C5Gjq9HDGphAUKTprSwLydq67owdjsJTm+aKkh5laY=;
+ b=KjaYB/5G2q2kbCuTFvEezBi7+X8RrHgnqaOl7utkH819j1wnF47zRahvsmttOVk4k+
+ PuqOqhWZBLffVp7cN0wDC8aj0EZCPtLzBc56N7B0V1ggr8637yuD0d3fz9eMwz3ijsGB
+ RkrVTGUNeScMSz0FbaZOY8PjCRcYnVvtTOOi1oNpAJd5fm5SmN5dQXmAHmzFYnEa8P8W
+ n53pxgi5XHRvrFR8IU1B6lQbUeC9ZrJpb+8oFx9F7ALq5p80sGCrpd/xvLpSK8il7NQ+
+ BSj0yfjhCCn6C4+fZkq2tCOlqutkjqD2h3PSw8N/Zy0JuOE0uaQnXEzbZnR23mB84Mzi
+ iK1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=5SVq0w/G+BJ0BoVyLc2hLMW/0QGne7FVXE/0ouMIQTk=;
- b=AR8uU963Qa5eV8NzZyspUGw77w1SqRbdXfCokQY5Z+KV95q1FsU45/NWp9wb4bu6dc
- I/qDlzu6W6Wd9Vz0m1YYppLEbaGehEhQcGGYoVEnDi80wkRbe6OaBuD5ZuX0RuQiwMqE
- 9ibzhcypzdlcuZ0ed2wg0sGJNoWTmNLB4WwtD7phoUe9oftjXTwvMpajDg8z1Rkp/SGK
- qrBMJWCOxKc9e1xxVPito5lfGg7Pr7dlJhS6t1tMFv6OMi5+pQ7XkfjT9eZyH3S+nJYw
- PV8zb59K62itKVJx/ymSxynp3RmCV2PEzJZIKekH0PuTuJzle+i2JJ08rb6ujkGlkFcE
- idPg==
-X-Gm-Message-State: AOAM531SIF/U+Pg+2hN1rdCZdB8jkEcgmlLZRBhu0UHHMz3UeXX3d9NW
- XnZ6z55sZdKT1kXieSswwyc=
-X-Google-Smtp-Source: ABdhPJzxBslQerYnkiihEyJMATnZ9dRB/0v/TFlZdW7LYCAdJkD2VYfoNnC1t/1jYTH/LH8AZpPCxw==
-X-Received: by 2002:a62:6147:0:b029:142:2501:34e8 with SMTP id
- v68-20020a6261470000b0290142250134e8mr7398794pfb.65.1601219308467; 
- Sun, 27 Sep 2020 08:08:28 -0700 (PDT)
-Received: from jordon-HP-15-Notebook-PC.domain.name ([122.167.144.166])
- by smtp.gmail.com with ESMTPSA id t9sm1384795pgp.90.2020.09.27.08.08.24
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 27 Sep 2020 08:08:27 -0700 (PDT)
-From: Souptick Joarder <jrdr.linux@gmail.com>
-To: mchehab@kernel.org, sakari.ailus@linux.intel.com,
- gregkh@linuxfoundation.org, daniel.m.jordan@oracle.com,
- akpm@linux-foundation.org, walken@google.com, gustavoars@kernel.org
-Subject: [PATCH] media: atomisp: Fixed error handling path
-Date: Sun, 27 Sep 2020 20:38:04 +0530
-Message-Id: <1601219284-13275-1-git-send-email-jrdr.linux@gmail.com>
-X-Mailer: git-send-email 1.9.1
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0C5Gjq9HDGphAUKTprSwLydq67owdjsJTm+aKkh5laY=;
+ b=JROhE17SeoQhghST9zyxHUIDK2C/lfgTwb8XtXzHR8uIyZs70OFjdkElkZLMLeEm5n
+ cAyFsym5g8PCjRGALA8uqASZ+OVq9RkO2tXhVeJMKM8Fbd22uK+8SHMKMkpIXWe26vSw
+ ox4yTaAii9MTAQOxxLHU0Ya4p2HIfoUQOVO65UnIiQFDLFHUxHZkqgjxoBRhwjplXPKf
+ y4/SugDS1XgaipYXQVYK9+q6llQCvg0UR/DYUkm5wyjOXnFS94kqCnLQDFfJkoDEsFBx
+ 9yKHohC9vaCWkm7PMblR4o96kcZq+Zbar6TjYwI0HJisdWc6d+LJzaazc4g1xttFOvgA
+ yQmQ==
+X-Gm-Message-State: AOAM531j4v6Nfg2VNlmoq0yQajO8S+T3R2VC/xE6Oa4UBCWmubj16ncN
+ INnR65Au5vbZCll/AYI6bXQ=
+X-Google-Smtp-Source: ABdhPJxi17BidG3zA7awFrVtAaRHMYW0KLI7H2kwkVNIrJNMAkLZF4LndDjyq4SfILAq4d4+5P7YTQ==
+X-Received: by 2002:a63:e94a:: with SMTP id q10mr6233305pgj.189.1601224530512; 
+ Sun, 27 Sep 2020 09:35:30 -0700 (PDT)
+Received: from localhost.localdomain (cpe-70-95-82-187.san.res.rr.com.
+ [70.95.82.187])
+ by smtp.gmail.com with ESMTPSA id u15sm4635313pjx.50.2020.09.27.09.35.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Sep 2020 09:35:29 -0700 (PDT)
+From: Ryan Kosta <ryanpkosta@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2] Staging: nvec: nvec: fix double next comment
+Date: Sun, 27 Sep 2020 09:35:04 -0700
+Message-Id: <20200927163504.7546-1-ryanpkosta@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,90 +84,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Hubbard <jhubbard@nvidia.com>,
- linux-kernel@vger.kernel.org, Souptick Joarder <jrdr.linux@gmail.com>,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Ryan Kosta <ryanpkosta@gmail.com>,
+ linux-kernel@vger.kernel.org, marvin24@gmx.de, p.zabel@pengutronix.de,
+ linux-tegra@vger.kernel.org, ac100@lists.launchpad.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Inside alloc_user_pages() based on flag value either pin_user_pages()
-or get_user_pages_fast() will be called. However, these API might fail.
+Changes since v1:
+ * Made commit message more clear
+ * Added description
+Note: previous patch named
+ "[PATCH] fix double next comment in drivers/staging/nvec/nvec.c"
+>8------------------------------------------------------8<
+Fixes a comment typo.
 
-But free_user_pages() called in error handling path doesn't bother
-about return value and will try to unpin bo->pgnr pages, which is
-incorrect.
-
-Fix this by passing the page_nr to free_user_pages(). If page_nr > 0
-pages will be unpinned based on bo->mem_type. This will also take care
-of non error handling path.
-
-Fixes: 14a638ab96c5 ("media: atomisp: use pin_user_pages() for memory
-allocation")
-Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: John Hubbard <jhubbard@nvidia.com>
-Cc: Ira Weiny <ira.weiny@intel.com>
-Cc: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Ryan Kosta <ryanpkosta@gmail.com>
 ---
- drivers/staging/media/atomisp/pci/hmm/hmm_bo.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ drivers/staging/nvec/nvec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-index f13af23..0168f98 100644
---- a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-+++ b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-@@ -857,16 +857,17 @@ static void free_private_pages(struct hmm_buffer_object *bo,
- 	kfree(bo->page_obj);
- }
- 
--static void free_user_pages(struct hmm_buffer_object *bo)
-+static void free_user_pages(struct hmm_buffer_object *bo,
-+			    unsigned int page_nr)
- {
- 	int i;
- 
- 	hmm_mem_stat.usr_size -= bo->pgnr;
- 
- 	if (bo->mem_type == HMM_BO_MEM_TYPE_PFN) {
--		unpin_user_pages(bo->pages, bo->pgnr);
-+		unpin_user_pages(bo->pages, page_nr);
- 	} else {
--		for (i = 0; i < bo->pgnr; i++)
-+		for (i = 0; i < page_nr; i++)
- 			put_page(bo->pages[i]);
- 	}
- 	kfree(bo->pages);
-@@ -942,6 +943,8 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
- 		dev_err(atomisp_dev,
- 			"get_user_pages err: bo->pgnr = %d, pgnr actually pinned = %d.\n",
- 			bo->pgnr, page_nr);
-+		if (page_nr < 0)
-+			page_nr = 0;
- 		goto out_of_mem;
- 	}
- 
-@@ -954,7 +957,7 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
- 
- out_of_mem:
- 
--	free_user_pages(bo);
-+	free_user_pages(bo, page_nr);
- 
- 	return -ENOMEM;
- }
-@@ -1037,7 +1040,7 @@ void hmm_bo_free_pages(struct hmm_buffer_object *bo)
- 	if (bo->type == HMM_BO_PRIVATE)
- 		free_private_pages(bo, &dynamic_pool, &reserved_pool);
- 	else if (bo->type == HMM_BO_USER)
--		free_user_pages(bo);
-+		free_user_pages(bo, bo->pgnr);
- 	else
- 		dev_err(atomisp_dev, "invalid buffer type.\n");
- 	mutex_unlock(&bo->mutex);
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index 360ec040774..a80996b2f5c 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -289,7 +289,7 @@ EXPORT_SYMBOL(nvec_write_async);
+  * interrupt handlers.
+  *
+  * Returns: 0 on success, a negative error code on failure.
+- * The response message is returned in @msg. Shall be freed with
++ * The response message is returned in @msg. Shall be freed
+  * with nvec_msg_free() once no longer used.
+  *
+  */
 -- 
-1.9.1
+2.20.1
 
 _______________________________________________
 devel mailing list
