@@ -2,40 +2,40 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56CA527B6C0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 22:56:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A964227B6BA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 22:54:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4B0CC86416;
-	Mon, 28 Sep 2020 20:56:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 163D986FA8;
+	Mon, 28 Sep 2020 20:54:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jEtpmosJ7KMx; Mon, 28 Sep 2020 20:56:52 +0000 (UTC)
+	with ESMTP id zw0xVeajEXXS; Mon, 28 Sep 2020 20:54:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BC0BC85C56;
-	Mon, 28 Sep 2020 20:56:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6FB6286F74;
+	Mon, 28 Sep 2020 20:54:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C06971BF355
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 20:56:49 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B11241BF355
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 20:54:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BC95E85722
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 20:56:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9406C20110
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 20:54:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bUwGu_gSkSa4 for <devel@linuxdriverproject.org>;
- Mon, 28 Sep 2020 20:56:48 +0000 (UTC)
+ with ESMTP id GqkGQmQsZs5y for <devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 20:54:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic301-22.consmr.mail.gq1.yahoo.com
- (sonic301-22.consmr.mail.gq1.yahoo.com [98.137.64.148])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C758785701
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 20:56:48 +0000 (UTC)
+Received: from sonic307-55.consmr.mail.gq1.yahoo.com
+ (sonic307-55.consmr.mail.gq1.yahoo.com [98.137.64.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2216720005
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 20:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
- t=1601326608; bh=GZprWnTl+eBHSNmQV5uJKps1Zts7hTFzMj6gKmT4ZWQ=;
+ t=1601326459; bh=GZprWnTl+eBHSNmQV5uJKps1Zts7hTFzMj6gKmT4ZWQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
- b=UXHoNzfiNABdM9eRF9uAgAF9znfr+ezde5Fy7z9Lfd3DdCTpaeuuYc1Ofwupq2D41Q/4MAiH6ayV/2nPMyXLkjcyVic24qj27idnc0qslJjoTsQh/BelQJs4TV0le/+bY9zOCQo2VyKH9SeT8ccMAajgp7Hr/op7DYi8PVEzOE+OCKjeMgeKXYdgdycbo+tnrZl/JK5FxN2PfkXUC2cZJWid/kfB125XbCcIKnwdvlbQgewl39h3nQ9yYZlyELf9/SOeihHmBlRe8UF20i6a3SvOho1xXfVQZsvEwEqF3vEad9VQK1u+ckRT9NHp0YS9bDSHB8YczIWP4EWruEwC8w==
+ b=o2IGsANB+ZE/fR9WgvZNUTouNRnT6lA/Iy/+Ce5PbS8H4XSreA++GKxRB2Iz+Nny2qPv7bMpFL8laHmwreggRV0wGcYrjPHppOiDgKnfY3vjk+lH3xV3OeBExW1W1fS+QprdHJY1DwPeNeEBplaP9ckG2+nfNLlcDM25KNE8YBRDtO/LQxXxp6s3AZdaJmfhe1b7/aRQMvuXUy03m6PcPWuInIUB8+ZMREwvVnCVW/Hqe0doy6Yd+D1lZcuSO741glCfYVwnIXkOw4PtNVEMuzK82y0omjRwaj1PmnmuS2LlQ6RgKDpY/g9W+lSWy8vgeyCNigOPC1AoRHkRKDZN1Q==
 X-YMail-OSG: qxLJVzQVM1lQSqYJ6MoZ3aW5WK957rVzm2ddGQEjg2ehiZR.ERUCkUBB.xK7sZ_
  aW2eDUJjsm7iLn.O1kaR2F2VNLlEWyBYNMs7XjZWS.CmuyZVSCAADky5dr4Po.yuNNklMNKoMqjp
  DkdZV2ujaWNXrGDYrd7pT6noQNS2ZAW70lt_0kEKbEMHe6SgWX3NIC3fDbo.KT7FYHsSpEwlZnI3
@@ -58,7 +58,7 @@ X-YMail-OSG: qxLJVzQVM1lQSqYJ6MoZ3aW5WK957rVzm2ddGQEjg2ehiZR.ERUCkUBB.xK7sZ_
  XtLCnfMftb45kcnRDZUtBDeTQauBa9KUMgLgg5W1pFAh8w6mpnObAej1lHMdELP7Yel73cKqs_V0
  MUBxL4IG2Pq9P1tyc7E8Kpor0i_3VChL8hOEumjCPgcXD
 Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic301.consmr.mail.gq1.yahoo.com with HTTP; Mon, 28 Sep 2020 20:56:48 +0000
+ sonic307.consmr.mail.gq1.yahoo.com with HTTP; Mon, 28 Sep 2020 20:54:19 +0000
 Received: by smtp419.mail.ir2.yahoo.com (VZM Hermes SMTP Server) with ESMTPA
  ID 1dcce5b8f69c9421ae96c4d2986bd734; 
  Mon, 28 Sep 2020 20:36:39 +0000 (UTC)
