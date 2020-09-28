@@ -1,59 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BE4027B2FB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 19:21:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3334D204F4;
-	Mon, 28 Sep 2020 17:21:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IDaJojx1Vsdd; Mon, 28 Sep 2020 17:21:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 79DBB20107;
-	Mon, 28 Sep 2020 17:21:18 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 20E411BF2BE
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 17:21:15 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6318727B4BC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 20:47:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1D861857C5
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 17:21:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6343F85701;
+	Mon, 28 Sep 2020 18:47:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3QJVIGpcTykQ; Mon, 28 Sep 2020 18:47:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6454A84E15;
+	Mon, 28 Sep 2020 18:47:26 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E4ED1BF362
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 18:47:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1B0EB86FB7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 18:47:24 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Slm338ydB7Ln for <devel@linuxdriverproject.org>;
- Mon, 28 Sep 2020 17:21:11 +0000 (UTC)
+ with ESMTP id ZyMBVQQPe4zm
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 18:47:23 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.actserv.ke (unknown [197.232.22.183])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1076B8578B
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 17:21:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 786A986F7A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 18:47:23 +0000 (UTC)
 Received: from localhost (mx2.actserv.ke [127.0.0.1])
- by mx2.actserv.ke (Postfix) with ESMTP id 366A540EB57;
- Mon, 28 Sep 2020 12:21:42 +0300 (EAT)
+ by mx2.actserv.ke (Postfix) with ESMTP id AAEED40ECB6;
+ Mon, 28 Sep 2020 12:22:05 +0300 (EAT)
 Received: from mx2.actserv.ke ([127.0.0.1])
  by localhost (mx2.actserv.ke [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 8QpncFF-pXiD; Mon, 28 Sep 2020 12:21:42 +0300 (EAT)
+ with ESMTP id 8VqpwGQGQwzg; Mon, 28 Sep 2020 12:22:05 +0300 (EAT)
 Received: from localhost (mx2.actserv.ke [127.0.0.1])
- by mx2.actserv.ke (Postfix) with ESMTP id 7B2813FE0CC;
- Mon, 28 Sep 2020 12:19:06 +0300 (EAT)
+ by mx2.actserv.ke (Postfix) with ESMTP id BE3D33F8DD9;
+ Mon, 28 Sep 2020 12:19:29 +0300 (EAT)
 X-Virus-Scanned: amavisd-new at actserv.ke
 Received: from mx2.actserv.ke ([127.0.0.1])
  by localhost (mx2.actserv.ke [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id FkSh5iu3IWdB; Mon, 28 Sep 2020 12:19:06 +0300 (EAT)
+ with ESMTP id 3kZiqCiMSN3I; Mon, 28 Sep 2020 12:19:29 +0300 (EAT)
 Received: from [192.168.1.2] (gw1.actserv.local [192.168.1.252])
- by mx2.actserv.ke (Postfix) with ESMTPS id 86C543FB88C;
- Mon, 28 Sep 2020 12:17:06 +0300 (EAT)
+ by mx2.actserv.ke (Postfix) with ESMTPS id EFB7F3F8317;
+ Mon, 28 Sep 2020 12:17:37 +0300 (EAT)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Paul McCann
 To: Recipients <dewiariani1981@ub.ac.id>
 From: dewiariani1981@ub.ac.id
-Date: Mon, 28 Sep 2020 10:16:56 +0100
-Message-Id: <20200928091706.86C543FB88C@mx2.actserv.ke>
+Date: Mon, 28 Sep 2020 10:17:30 +0100
+Message-Id: <20200928091738.EFB7F3F8317@mx2.actserv.ke>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
