@@ -1,80 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62B3B27B76F
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 00:41:56 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE83F27B771
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 00:42:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EA44C866A9;
-	Mon, 28 Sep 2020 22:41:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4B85987118;
+	Mon, 28 Sep 2020 22:42:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g3jwVs7NunTN; Mon, 28 Sep 2020 22:41:53 +0000 (UTC)
+	with ESMTP id RSiDhEQeiPkq; Mon, 28 Sep 2020 22:42:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D47C486508;
-	Mon, 28 Sep 2020 22:41:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BE6ED87108;
+	Mon, 28 Sep 2020 22:42:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E617D1BF278
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 22:41:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B2AA1BF278
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 22:42:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DEC0086519
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 22:41:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 374A585BD3
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 22:42:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pPFgqE+-Cknu for <devel@linuxdriverproject.org>;
- Mon, 28 Sep 2020 22:41:50 +0000 (UTC)
+ with ESMTP id uZtvsCrhPxHY for <devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 22:42:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
  [209.85.166.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2D97886508
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 22:41:50 +0000 (UTC)
-Received: by mail-il1-f194.google.com with SMTP id v13so779621ilc.7
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 15:41:50 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B55CA85BCF
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 22:42:49 +0000 (UTC)
+Received: by mail-il1-f194.google.com with SMTP id e5so2951787ilr.8
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 15:42:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linuxfoundation.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gaA/nbho2rHBM2XGAt+fqZDqrrCyGQoKDIGncDoowiY=;
- b=WpOlbRfAI9e8II+dnFUMmLCr028LWtZq3VDo3e7fgu588x0zs7KTTS1rPIT60wbAGy
- cFwY0h5dO4zkUJdnxSGUKs+097/h1H6C3mMVF+vw66IPMyv0pyTPefuI3b/L1Te3OJTD
- 5HSxT4otUXABTWMa/ya8prB3WhIkjEBLxYMM4=
+ bh=lfWeOnITWCeijLSuxzxiSIPC5xTsdC1wKnU7B3ZC5Lk=;
+ b=beQywzattpQ6h9VxrWUUjSXbW2NzdQ7tN01P6Fxu3w0DElSH99yNXq/oeDtcSOP/9X
+ EENXteBPokqZCQ4iUMEdnei6q+cCq5jNGrbY/ShMUDDnZsK5zrAkesLqvzbzRHGHUd2D
+ ZDoxf29bX/+HC/gfcdQn6A5JV5Bg+hGw1IFG0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=gaA/nbho2rHBM2XGAt+fqZDqrrCyGQoKDIGncDoowiY=;
- b=VEEh/3cNDyT07U8n5GlVRDR+R8Kz+DUx7613zClRegCrv26XIDGy35qXBMXi864Nzf
- yeiMdBwHi9XHpscVmKnLKRW8+y0EslgcyjHxyY/L7ntYs+H93p5Rrx97V1AcAe/fdos2
- 99oGXkmwgnNaqUvQXp/cYMhfgZgMCfqQLzn6+yyTRp3HwTqvmMRNDV8HNKDLAvxAvRO+
- 2mdt7JX9q+Z5Bv5Xln5oVKIGzT5DMJUvf+/24iFWIewxUiaZuehDce6VAeFHIGE+Bif6
- MTWSZsZ4a5f19NRv19AxDGLnlOgXt/tZ1MsqooIlVfWk8otzZtbovZ07XJDoYJrsMxmm
- NmTA==
-X-Gm-Message-State: AOAM533GyAPEiMLDTlYByNBOws7C3b6sjV2oMO7djwsy5puZe74aTFYz
- tCsgOAHh0h/aL50RlTSedt2Uqw==
-X-Google-Smtp-Source: ABdhPJy542a1CRGETx+C2//Kh61RETA39sKIv4QHpJwtOuYxcYdasZxM/JVddvpjSYaGDww7kJ0Sww==
-X-Received: by 2002:a92:8452:: with SMTP id l79mr459458ild.222.1601332909461; 
- Mon, 28 Sep 2020 15:41:49 -0700 (PDT)
+ bh=lfWeOnITWCeijLSuxzxiSIPC5xTsdC1wKnU7B3ZC5Lk=;
+ b=JEb0U2kBzlvpJdPcvYICob93BwEON4pr4FdKOIyR60bzEGfagLixMB77OofKi2IxWa
+ 6v7BX6WJhDiuh31bWYmds3L6Zs+hOyNwBsSIYzNoMssupGyZRJdkLAVM7if8Spw61leI
+ uC9rAfNeHLMxcfwQb/lkvdKz9qpJBiDrWPJZ8+2FEvCCM3Yoa2X6FH++4QQ3zCoNPpGK
+ LFoYHH1FII7KrP9IWqR32WcnxjSytuq0l1t2RvaCj1PXWiVszv/nVan5uYOkLvl7hsWx
+ 4z3ygmglBq5WvAfDzwoF6P0bPNHDs9yQM61o4+3I9cwt3gGWAOgtc7n/Mt0uDMFIDhCm
+ pyzw==
+X-Gm-Message-State: AOAM530MGRzvm1fLhVrbZ0IAV+1jpVc10cSKzQkalTrQ0exdTQvZEDgK
+ XK4dbWPf0iL8qC/GkJjsBp/Vhw==
+X-Google-Smtp-Source: ABdhPJwo+pvtsIEQwf41bcDHTqwQ2dD5eUFFFgp4elRZ673xZA4id8e/WXiXlaCwN8OjTLklnmPUJQ==
+X-Received: by 2002:a92:8591:: with SMTP id f139mr533509ilh.164.1601332969021; 
+ Mon, 28 Sep 2020 15:42:49 -0700 (PDT)
 Received: from [192.168.1.112] (c-24-9-64-241.hsd1.co.comcast.net.
  [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id j1sm1334685ilq.74.2020.09.28.15.41.47
+ by smtp.gmail.com with ESMTPSA id l9sm1317402ilf.65.2020.09.28.15.42.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Sep 2020 15:41:48 -0700 (PDT)
+ Mon, 28 Sep 2020 15:42:48 -0700 (PDT)
 Subject: Re: [PATCH 00/11] Introduce Simple atomic and non-atomic counters
 To: Kees Cook <keescook@chromium.org>
 References: <cover.1601073127.git.skhan@linuxfoundation.org>
- <202009260923.9A2606CFF6@keescook>
+ <202009260920.DC9C2743@keescook>
 From: Shuah Khan <skhan@linuxfoundation.org>
-Message-ID: <3929a023-eb7a-509c-50e1-ee72dca05191@linuxfoundation.org>
-Date: Mon, 28 Sep 2020 16:41:47 -0600
+Message-ID: <1aeccb4f-df7e-60bf-1d70-dfcff5bb6f87@linuxfoundation.org>
+Date: Mon, 28 Sep 2020 16:42:46 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <202009260923.9A2606CFF6@keescook>
+In-Reply-To: <202009260920.DC9C2743@keescook>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -102,29 +102,22 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 9/26/20 10:29 AM, Kees Cook wrote:
+On 9/26/20 10:22 AM, Kees Cook wrote:
 > On Fri, Sep 25, 2020 at 05:47:14PM -0600, Shuah Khan wrote:
->>     7. Verified that the test module compiles in kunit env. and test
->>        module can be loaded to run the test.
+>> This patch series is a result of discussion at the refcount_t BOF
+>> the Linux Plumbers Conference. In this discussion, we identified
+>> a need for looking closely and investigating atomic_t usages in
+>> the kernel when it is used strictly as a counter without it
+>> controlling object lifetimes and state changes.
 > 
-> I meant write it using KUnit interfaces (e.g. KUNIT_EXPECT*(),
-> kunit_test_suite(), etc):
-> https://www.kernel.org/doc/html/latest/dev-tools/kunit/
-> 
-> Though I see the docs are still not updated[1] to reflect the Kconfig
-> (CONFIG_foo_KUNIT_TEST) and file naming conventions (foo_kunit.c).
+> BTW, I realized the KSPP issue tracker hadn't broken this task out of
+> the refcount_t conversion issue[1] into a separate issue, so I've created
+> it now: https://github.com/KSPP/linux/issues/106
 > 
 
-I would like to be able to run this test outside Kunit env., hence the
-choice to go with a module and kselftest script. It makes it easier to
-test as part of my workflow as opposed to doing a kunit and build and
-running it that way.
+Cool. Thanks.
 
-I don't mind adding TEST_COUNTERS to kunit default configs though.
-
-thanks,
 -- Shuah
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
