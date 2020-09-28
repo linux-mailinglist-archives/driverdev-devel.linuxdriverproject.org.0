@@ -1,91 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7EF427AD2C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 13:49:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CD17F20131;
-	Mon, 28 Sep 2020 11:49:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ef06WJh0ebTj; Mon, 28 Sep 2020 11:49:18 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 94429203B0;
-	Mon, 28 Sep 2020 11:49:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AE36F1BF3C1
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 11:49:12 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 74ECD27AF53
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 15:45:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A9C018539A
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 11:49:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8AFA985775;
+	Mon, 28 Sep 2020 13:45:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oxTvS7iSGUBR; Mon, 28 Sep 2020 13:45:16 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B99C385722;
+	Mon, 28 Sep 2020 13:45:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6CB571BF352
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 13:45:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6922386F84
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 13:45:13 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4I-FjQewWMj3 for <devel@linuxdriverproject.org>;
- Mon, 28 Sep 2020 11:49:11 +0000 (UTC)
+ with ESMTP id 3dGHeMxzFiyC for <devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 13:45:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1836D851CC
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 11:49:11 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08SBk0Xe142655;
- Mon, 28 Sep 2020 11:49:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=6EGfoGt5aE9CLOcfa3rEsfoAnJl0dVpVezF4zUT6fHU=;
- b=OqTobTOCqaInJY3FBaTd8qUAJ5lBO7P+J4Yoy04RM4pxXNNuNusyE9fTT8i/UAOulU6M
- uzIv9CCIaa90XJcMORsoEhLzwHt6j8aKYDmyYSnKbwqosYD+3EbPOle1qfnN/n3PDq90
- BE5ImlJEyqyyDz4OGlMIvWolfswBdnBOFIDqgS4Xa0YC853rrBFix+8JmBozJSN5cojr
- NTrTjuedOQgUluqQDQwSS+vETi9smjTiFWm3OggMhJXbHArls9JC5Gdyx2ITXscFdVWQ
- kZ5neXsoNE6mLn9cCPE7jjom3SvX/+yFkhMY143qQNep4lO3Zy7YfdYGUcqKjabgSbTk Vw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2130.oracle.com with ESMTP id 33su5amk7j-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 28 Sep 2020 11:49:09 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08SBil6g148534;
- Mon, 28 Sep 2020 11:49:08 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 33tf7k7r05-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Sep 2020 11:49:08 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08SBn4vq004885;
- Mon, 28 Sep 2020 11:49:05 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 28 Sep 2020 04:49:04 -0700
-Date: Mon, 28 Sep 2020 14:48:57 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jing Xiangfeng <jingxiangfeng@huawei.com>
-Subject: Re: [PATCH] staging: most: don't access hdm_ch before checking it
- valid
-Message-ID: <20200928114857.GR4282@kadam>
-References: <20200928104838.189639-1-jingxiangfeng@huawei.com>
+Received: from lb2-smtp-cloud7.xs4all.net (lb2-smtp-cloud7.xs4all.net
+ [194.109.24.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4372186F77
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 13:45:09 +0000 (UTC)
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id MtShk6Xmzv4gEMtSkkRD0r; Mon, 28 Sep 2020 15:45:07 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1601300707; bh=OB302w6vKZ6uavQCRPx5TLqqDKXunsgCubaCk5DARMc=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=GvwADxaTQQS8XWJkY6WdtdhNEGCch26vkfAjwlk4IP5ZwJk+qaCmz0bGEOc9vTrds
+ WTQ8xUcoOdgMCrHkefsgJjC1jldYBJTgZrKLFVeL4sVRaOvcj1xqTvOFjxqIP5YsHZ
+ 4ZrTdP7bphTBckjm0oRV45rWTDAFvr3h/BV2lHBQQ/3K+lTB3bpHR2s9N/l51HbGfK
+ Q7nxOpLW75o70LyG0ARhh+gKgGZzh0G9xKIXAUM0DP/JqmDqIPHHdMl5SYxyY6xwqM
+ dlIe/fFDECEkXiI2/hqk6ShpkHB6IoL0hzhbYUGUOaUl6y2mxIhOQ2wPTBeVirU2gE
+ ZuqkIfycj6QiQ==
+Subject: Re: [PATCH RFT/RFC v2 00/47] staging: media: bring back zoran driver
+To: Corentin Labbe <clabbe@baylibre.com>, gregkh@linuxfoundation.org,
+ mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <34662073-bbf3-8eaf-47b4-c715337f4021@xs4all.nl>
+Date: Mon, 28 Sep 2020 15:45:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200928104838.189639-1-jingxiangfeng@huawei.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9757
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=999
- suspectscore=0 adultscore=0 malwarescore=0 phishscore=0 bulkscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009280096
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9757
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=0
- lowpriorityscore=0 spamscore=0 clxscore=1011 mlxscore=0 impostorscore=0
- malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009280096
+In-Reply-To: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfA6RDnaLaKpGkN7m8rTw8J0KzeWjvXoSwvOQK3i2MH+XrtEuZAtQ+mzbE/4D9ANG2OhB2flSOncYRmhhsllyPM5NaBriVjbKCnaQZC8puh+9yTwHmxVI
+ oRcVZnWPctqZMin0/UH1akXW+NYB+uI50P0cZo2i9wZIedV0bO8f+J52Q1parA2wmu2kWwRPVoa/qqmVS8RIRIful18uUPZSYtguY+PI9AELH+ERRz0A/1Ac
+ wN0E53GWb0rSdh0YeFAy9PVmnNwAXpCG33cIrldsR5Jen4mdAKaJdz3beY8SV261FkrLmh38VIql09gIp+D/V5gGuayxEBOSmozjhPWT2mqEr8AvtseM/9Xp
+ GSAOcOl2dvk5ZvTGCC8rsSVuxGs/voxL7zDccuDqM7TJSpEuTN6MZ3RNwLuXCsbY7S87T3zX
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,47 +73,195 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, keescook@chromium.org,
- gregkh@linuxfoundation.org, masahiroy@kernel.org, linux-kernel@vger.kernel.org,
- christian.gromm@microchip.com, tglx@linutronix.de
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Sep 28, 2020 at 06:48:38PM +0800, Jing Xiangfeng wrote:
-> In try_start_dim_transfer(), pointer hdm_ch is accessed before checking.
-> This may lead to a potential null pointer dereference. Fix this by
-> dereferencing hdm_ch after calling BUG_ON().
+Hi Corentin,
+
+On 25/09/2020 20:30, Corentin Labbe wrote:
+> Hello
 > 
-> Signed-off-by: Jing Xiangfeng <jingxiangfeng@huawei.com>
-> ---
->  drivers/staging/most/dim2/dim2.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> The zoran driver was removed in 5.3
+> The main reason of the removing was lack of motivation to convert it to
+> VB2
+> Since I need it, I worked on bringing it back.
 > 
-> diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-> index 509c8012d20b..ccd7cc7545e4 100644
-> --- a/drivers/staging/most/dim2/dim2.c
-> +++ b/drivers/staging/most/dim2/dim2.c
-> @@ -148,7 +148,7 @@ void dimcb_on_error(u8 error_id, const char *error_message)
->  static int try_start_dim_transfer(struct hdm_channel *hdm_ch)
->  {
->  	u16 buf_size;
-> -	struct list_head *head = &hdm_ch->pending_list;
+> So the plan to achieve it was:
+> - clean up the coding style.
+> - convert old usage/API
+> - clean unused code
+> - convert to VB2
+> 
+> I have tried to split a bit the VB2 patch (by adding/removing code in
+> another patch), but the result is unfortunately still a big patch.
+> 
+> The result of this serie is a working zoran driver.
+> Furthermore it is now compliant to v4l-compliance.
+> 
+> In the process some old (useless) feature (fbuf, overlay) was removed
+> for simplifying maintenance.
+> 
+> The zoran hardware support MJPEG decompression, but this feature is
+> temporarily disabled by this serie.
+> But basically, this feature was unusable, since the only tool which
+> permitted to use it was a mplayer option.
+> But this mplayer option no longer compile (probably since a long time)
+> and is such a hack (a copy of some private ffmpeg structure) that it is
+> unfixable.
+> Happily, when I started to work on zoran, a patch was posted on ffmpeg
+> ML which permit it to output non-raw video stream (and so MJPEG for
+> zoran case).
+> But the zoran hw does not like some part of JPEG header it receives, so
+> a filter need to be written.
+> Anyway, this disabling is not a regression, since this feature was not
+> usable since a long time.
+> 
+> Since the driver was in staging, I targeted staging, but probably the
+> driver is in a sufficient good shape to target media and bypass staging.
+> 
+> This driver is tested on a DC10+ (on x86). Tests on different hardware
+> are welcome.
+> 
+> I would like to thanks all people that helped me to achieve this (mostly
+> #v4l)
+> 
+> Regards
+> 
+> PS: this serie is resent a bit soon since linux-media didnt get some patch
+> and cover letter
 
-This is not a dereference, it's just pointer math.  In other words:
+Thank you very much for your hard work!
 
-	struct list_head *head = hdm_ch + offsetof(struct hdm_channel, pending_list);
+I've just posted a PR for this driver since it is in good enough shape to
+resurrect in staging.
 
-So the commit message is wrong because this cannot lead to a NULL
-dereference.  It's better to just delete the BUG_ON().  We don't really
-like BUG_ON().  Checkpatch will complain about them.  An Oops gives
-basically the same information as a BUG_ON() without completely killing
-the kernel so just dereferencing a NULL is preferable.  Finally, we can
-see from the callers that "hdm_ch" is never NULL.
+This means that starting with 5.10 this driver will once again be available.
 
-regards,
-dan carpenter
+There are some things that I would like to see fixed before moving it out
+of staging:
+
+1) Check the driver with checkpatch --strict: I noticed various warnings
+that would be good to fix. Let's have this cleaned up before moving it
+out of staging.
+
+2) I would like to see the output support fixed.
+
+3) I want to test with my zoran hardware before moving it out of staging.
+That said, it will be a few months before I can do that since I don't
+have access to the HW at the moment. It depends on when I travel to the
+Netherlands, and with the COVID-19 situation I have no idea when that
+will be. I hope December, but there is no guarantee.
+
+Since 3) will take 1-2 kernel cycles anyway, that will hopefully allow
+for enough time to tackle 1 and 2 while it is still in staging.
+
+Regards,
+
+	Hans
+
+> 
+> Changes since RFC1
+> - removed fallthough patch
+> - removed unsplit lines patch
+> - fixed line size in "Use DMA coherent for stat_com" patch
+> 
+> Corentin Labbe (47):
+>   staging: media: Revert "media: zoran: remove deprecated driver"
+>   MAINTAINERS: change maintainer of the zoran driver
+>   staging: media: zoran: datasheet is no longer available from zoran.com
+>   staging: media: zoran: Documentation: fix typo
+>   staging: media: zoran: fix checkpatch issue
+>   staging: media: zoran: do not forward declare zr36057_init_vfe
+>   staging: media: zoran: convert all error dprintk to pci_err/pr_err
+>   staging: media: zoran: convert dprintk warn
+>   staging: media: zoran: convert dprintk info to pci_info
+>   staging: media: zoran: convert dprintk debug
+>   staging: media: zoran: zoran_device.c: convert pr_x to pci_x
+>   staging: media: zoran: remove proc_fs
+>   staging: media: zoran: use VFL_TYPE_VIDEO
+>   staging: media: zoran: use v4l2_buffer_set_timestamp
+>   staging: media: zoran: do not print random guest 0
+>   staging: media: zoran: move buffer_size out of zoran_fh
+>   staging: media: zoran: move v4l_settings out of zoran_fh
+>   staging: media: zoran: move jpg_settings out of zoran_fh
+>   staging: media: zoran: move overlay_settings out of zoran_fh
+>   staging: media: zoran: Use video_drvdata to get struct zoran
+>   staging: media: zoran: Change zoran_v4l_set_format parameter from
+>     zoran_fh to zoran
+>   staging: media: zoran: remove overlay
+>   staging: media: zoran: Use DMA coherent for stat_com
+>   staging: media: zoran: use ZR_NORM
+>   staging: media: zoran: zoran does not support STD_ALL
+>   staging: media: zoran: convert irq to pci irq
+>   staging: media: zoran: convert zoran alloc to devm
+>   staging: media: zoran: convert mdelay to udelay
+>   staging: media: zoran: use devm for videocodec_master alloc
+>   staging: media: zoran: use pci_request_regions
+>   staging: media: zoran: use devm_ioremap
+>   staging: media: zoran: add stat_com buffer
+>   staging: media: zoran: constify struct tvnorm
+>   staging: media: zoran: constify codec_name
+>   staging: media: zoran: Add more check for compliance
+>   staging: media: zoran: Add vb_queue
+>   staging: media: zoran: disable output
+>   staging: media: zoran: device support only 32bit DMA address
+>   staging: media: zoran: enable makefile
+>   staging: media: zoran: remove framebuffer support
+>   staging: media: zoran: add vidioc_g_parm
+>   staging: media: zoran: remove test_interrupts
+>   staging: media: zoran: fix use of buffer_size and sizeimage
+>   staging: media: zoran: fix some compliance test
+>   staging: media: zoran: remove deprecated .vidioc_g_jpegcomp
+>   staging: media: zoran: convert to vb2
+>   staging: media: zoran: update TODO
+> 
+>  Documentation/media/v4l-drivers/zoran.rst  |  575 +++++++++
+>  MAINTAINERS                                |   10 +
+>  drivers/staging/media/Kconfig              |    2 +
+>  drivers/staging/media/Makefile             |    1 +
+>  drivers/staging/media/zoran/Kconfig        |   76 ++
+>  drivers/staging/media/zoran/Makefile       |    7 +
+>  drivers/staging/media/zoran/TODO           |   19 +
+>  drivers/staging/media/zoran/videocodec.c   |  330 +++++
+>  drivers/staging/media/zoran/videocodec.h   |  308 +++++
+>  drivers/staging/media/zoran/zoran.h        |  320 +++++
+>  drivers/staging/media/zoran/zoran_card.c   | 1333 ++++++++++++++++++++
+>  drivers/staging/media/zoran/zoran_card.h   |   30 +
+>  drivers/staging/media/zoran/zoran_device.c | 1013 +++++++++++++++
+>  drivers/staging/media/zoran/zoran_device.h |   64 +
+>  drivers/staging/media/zoran/zoran_driver.c | 1038 +++++++++++++++
+>  drivers/staging/media/zoran/zr36016.c      |  433 +++++++
+>  drivers/staging/media/zoran/zr36016.h      |   92 ++
+>  drivers/staging/media/zoran/zr36050.c      |  842 +++++++++++++
+>  drivers/staging/media/zoran/zr36050.h      |  163 +++
+>  drivers/staging/media/zoran/zr36057.h      |  154 +++
+>  drivers/staging/media/zoran/zr36060.c      |  872 +++++++++++++
+>  drivers/staging/media/zoran/zr36060.h      |  201 +++
+>  22 files changed, 7883 insertions(+)
+>  create mode 100644 Documentation/media/v4l-drivers/zoran.rst
+>  create mode 100644 drivers/staging/media/zoran/Kconfig
+>  create mode 100644 drivers/staging/media/zoran/Makefile
+>  create mode 100644 drivers/staging/media/zoran/TODO
+>  create mode 100644 drivers/staging/media/zoran/videocodec.c
+>  create mode 100644 drivers/staging/media/zoran/videocodec.h
+>  create mode 100644 drivers/staging/media/zoran/zoran.h
+>  create mode 100644 drivers/staging/media/zoran/zoran_card.c
+>  create mode 100644 drivers/staging/media/zoran/zoran_card.h
+>  create mode 100644 drivers/staging/media/zoran/zoran_device.c
+>  create mode 100644 drivers/staging/media/zoran/zoran_device.h
+>  create mode 100644 drivers/staging/media/zoran/zoran_driver.c
+>  create mode 100644 drivers/staging/media/zoran/zr36016.c
+>  create mode 100644 drivers/staging/media/zoran/zr36016.h
+>  create mode 100644 drivers/staging/media/zoran/zr36050.c
+>  create mode 100644 drivers/staging/media/zoran/zr36050.h
+>  create mode 100644 drivers/staging/media/zoran/zr36057.h
+>  create mode 100644 drivers/staging/media/zoran/zr36060.c
+>  create mode 100644 drivers/staging/media/zoran/zr36060.h
+> 
 
 _______________________________________________
 devel mailing list
