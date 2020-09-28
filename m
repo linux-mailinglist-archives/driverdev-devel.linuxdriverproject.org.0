@@ -2,82 +2,90 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04D4127AD00
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 13:38:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A7EF427AD2C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Sep 2020 13:49:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EB61D20130;
-	Mon, 28 Sep 2020 11:38:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CD17F20131;
+	Mon, 28 Sep 2020 11:49:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1TJZavR6ILFd; Mon, 28 Sep 2020 11:38:11 +0000 (UTC)
+	with ESMTP id Ef06WJh0ebTj; Mon, 28 Sep 2020 11:49:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E8002012D;
-	Mon, 28 Sep 2020 11:38:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 94429203B0;
+	Mon, 28 Sep 2020 11:49:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0BEB71BF3C1
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 11:38:06 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AE36F1BF3C1
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 11:49:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0252786FB7
- for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 11:38:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A9C018539A
+ for <devel@linuxdriverproject.org>; Mon, 28 Sep 2020 11:49:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H1aUARdhubaH for <devel@linuxdriverproject.org>;
- Mon, 28 Sep 2020 11:38:05 +0000 (UTC)
+ with ESMTP id 4I-FjQewWMj3 for <devel@linuxdriverproject.org>;
+ Mon, 28 Sep 2020 11:49:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F203486FFA
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 11:38:04 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id k10so934271wru.6
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 04:38:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:subject:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=/DSfl3PhmxyqK4cCLrMlHEsrYZk0SosXscE+a3oAY9s=;
- b=BKUXY08CAONse8WpQ7sUrmd1q/uBCMq1YsJ7kY2YHySsvfSynLm2E6t5oCMCNvBn2T
- V4kwJbsEvli/SsBH76PZ7yPrZZ+nOkqXa5wFpaDpSt3EVO95vRFKVDEcRupq1zSENVb0
- L6inXyTM8LbbJyYQgch0NOpYZ23Yfo2agilZtogNs3qd4r9kLZqk7pOsAVu9gJtAQOP0
- ec6FQQWIk+srdEQdJH3nEMM6XyGzZaHgBRDDrzcGVoiWMllGCbeEIwrOiMj/ceNymZ1A
- oJpP1+GJ2hKsSURadWl+NIetcMzZMmtoSLAgskc/RKuJlRNzarujyV7A2TAUGtFdZQLg
- aszw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=/DSfl3PhmxyqK4cCLrMlHEsrYZk0SosXscE+a3oAY9s=;
- b=M7gAL49lCMb5zetnUKKLcHCDCqWtXO9OYgk1Eto5MMBeJRBlT4n1LVP9TE3ypqf4FO
- eOAV4ijQpLa/zf4I7OUNjfAM4cZjSFRDEjJ25bMQEPNiCRgbbLDbS/V0+7k6KwH2BOP4
- tE526a/Oq64w7sBTdytve/G6YGGyMTp270du6DGqoww5lb8dlG6FybpM6dXMkrNQ5s0u
- zhF5w+SYflDCy5HZaQizGGUGetn9WGGMWOBh8R6ZhHxHzHnMA8TUtovewS3ACf9rWp/P
- wKpwf/FSecr+yusa7IthLF+WYOG93BHdnnIoC/uPkIEWTPtyyWrsX2guIKSMiIut/Ehy
- Ebmw==
-X-Gm-Message-State: AOAM531T3luofDn6P6AOJ52fYFIMe1uXEy0cOQnregCxiGM/y6XufTEb
- IYi0YnaFZyc0mXw9I9KlGQQ=
-X-Google-Smtp-Source: ABdhPJzqVbAgm8Mpq/f7Lw5cB88wTQXRr/O+Mg6pfxX0WJsJ3kspBzf3nQPqzm47Ga4SBXFb3SkYLA==
-X-Received: by 2002:adf:ec92:: with SMTP id z18mr1317347wrn.53.1601293077673; 
- Mon, 28 Sep 2020 04:37:57 -0700 (PDT)
-Received: from [192.168.1.211] ([95.144.134.217])
- by smtp.gmail.com with ESMTPSA id r14sm1028721wrn.56.2020.09.28.04.37.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Sep 2020 04:37:56 -0700 (PDT)
-From: Dan Scally <djrscally@gmail.com>
-Subject: Re: [RFC PATCH] Add bridge driver to connect sensors to CIO2 device
- via software nodes on ACPI platforms
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-References: <20200916213618.8003-1-djrscally@gmail.com>
- <20200917103343.GW26842@paasikivi.fi.intel.com>
-Message-ID: <060b458e-66ee-ab22-5c4c-c8e04affff7b@gmail.com>
-Date: Mon, 28 Sep 2020 12:37:55 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1836D851CC
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 11:49:11 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08SBk0Xe142655;
+ Mon, 28 Sep 2020 11:49:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=6EGfoGt5aE9CLOcfa3rEsfoAnJl0dVpVezF4zUT6fHU=;
+ b=OqTobTOCqaInJY3FBaTd8qUAJ5lBO7P+J4Yoy04RM4pxXNNuNusyE9fTT8i/UAOulU6M
+ uzIv9CCIaa90XJcMORsoEhLzwHt6j8aKYDmyYSnKbwqosYD+3EbPOle1qfnN/n3PDq90
+ BE5ImlJEyqyyDz4OGlMIvWolfswBdnBOFIDqgS4Xa0YC853rrBFix+8JmBozJSN5cojr
+ NTrTjuedOQgUluqQDQwSS+vETi9smjTiFWm3OggMhJXbHArls9JC5Gdyx2ITXscFdVWQ
+ kZ5neXsoNE6mLn9cCPE7jjom3SvX/+yFkhMY143qQNep4lO3Zy7YfdYGUcqKjabgSbTk Vw== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 33su5amk7j-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Mon, 28 Sep 2020 11:49:09 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08SBil6g148534;
+ Mon, 28 Sep 2020 11:49:08 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 33tf7k7r05-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 28 Sep 2020 11:49:08 +0000
+Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08SBn4vq004885;
+ Mon, 28 Sep 2020 11:49:05 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 28 Sep 2020 04:49:04 -0700
+Date: Mon, 28 Sep 2020 14:48:57 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jing Xiangfeng <jingxiangfeng@huawei.com>
+Subject: Re: [PATCH] staging: most: don't access hdm_ch before checking it
+ valid
+Message-ID: <20200928114857.GR4282@kadam>
+References: <20200928104838.189639-1-jingxiangfeng@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200917103343.GW26842@paasikivi.fi.intel.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200928104838.189639-1-jingxiangfeng@huawei.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9757
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999
+ suspectscore=0 adultscore=0 malwarescore=0 phishscore=0 bulkscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009280096
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9757
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=0
+ lowpriorityscore=0 spamscore=0 clxscore=1011 mlxscore=0 impostorscore=0
+ malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009280096
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,56 +98,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, robh@kernel.org,
- andriy.shevchenko@linux.intel.com, jorhand@linux.microsoft.com,
- linux-media@vger.kernel.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, kieran.bingham@ideasonboard.com,
- kitakar@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- davem@davemloft.net, tian.shu.qiu@intel.com, yong.zhi@intel.com
+Cc: devel@driverdev.osuosl.org, keescook@chromium.org,
+ gregkh@linuxfoundation.org, masahiroy@kernel.org, linux-kernel@vger.kernel.org,
+ christian.gromm@microchip.com, tglx@linutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 17/09/2020 11:33, Sakari Ailus wrote:
->> +		sensor_props[3] = PROPERTY_ENTRY_U32_ARRAY_LEN("data-lanes",
->> +							       data_lanes,
->> +							       (int)ssdb->lanes);
->> +		sensor_props[4] = remote_endpoints[(bridge.n_sensors * 2) + ENDPOINT_SENSOR];
->> +		sensor_props[5] = PROPERTY_ENTRY_NULL;
->> +
->> +		cio2_props[0] = PROPERTY_ENTRY_U32_ARRAY_LEN("data-lanes",
->> +							     data_lanes,
->> +							     (int)ssdb->lanes);
->> +		cio2_props[1] = remote_endpoints[(bridge.n_sensors * 2) + ENDPOINT_CIO2];
->> +		cio2_props[2] = PROPERTY_ENTRY_NULL;
-> I suppose the CSI-2 link frequency is generally encoded in drivers in this
-> case. A lot of drivers already check for those, could you add the
-> frequencies here as well (as they are known)?
+On Mon, Sep 28, 2020 at 06:48:38PM +0800, Jing Xiangfeng wrote:
+> In try_start_dim_transfer(), pointer hdm_ch is accessed before checking.
+> This may lead to a potential null pointer dereference. Fix this by
+> dereferencing hdm_ch after calling BUG_ON().
+> 
+> Signed-off-by: Jing Xiangfeng <jingxiangfeng@huawei.com>
+> ---
+>  drivers/staging/most/dim2/dim2.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
+> index 509c8012d20b..ccd7cc7545e4 100644
+> --- a/drivers/staging/most/dim2/dim2.c
+> +++ b/drivers/staging/most/dim2/dim2.c
+> @@ -148,7 +148,7 @@ void dimcb_on_error(u8 error_id, const char *error_message)
+>  static int try_start_dim_transfer(struct hdm_channel *hdm_ch)
+>  {
+>  	u16 buf_size;
+> -	struct list_head *head = &hdm_ch->pending_list;
 
-This one caused me some consternation; I mentioned in a previous email
-that I was overwriting the v4l2_subdev's fwnode directly because I
-couldn't reprobe() the devices after changing their fwnode. Turns out
-that's probably not ok, because as you point out there are some drivers
-that check for properties in firmware as part of their .probe() call, so
-they _have_ to be there for those to work (including ov5670, which is
-the canonical ipu3 driver in the kernel docs). imx258 and ov13858 are
-also affected, and I'm aware of at least one other driver in development
-that would be affected.
+This is not a dereference, it's just pointer math.  In other words:
 
+	struct list_head *head = hdm_ch + offsetof(struct hdm_channel, pending_list);
 
-The problem preventing the reprobe working is that i2c_device_match()
-relies on a device's fwnode having acpi_device_fwnode_ops to perform
-ACPI matching, so after giving the device our software nodes the
-matching just fails. I thrashed out a way to make the reprobe work, but
-I don't really like the solution so I wanted to talk about it. The long
-story short is; clone the driver but add an i2c_device_id matching the
-existing i2c_client's name, then use i2c_add_driver() to install it to
-the bus before calling device_reprobe(). This does work; it makes the
-devices reprobe cleanly at the end of cio2-bridge's init, but it feels a
-little bit hacky. Any thoughts? Or if it makes it easier to discuss, I
-can just post the v2 containing all the changes that people suggested
-after the v1, and showing how this reprobe would work.
+So the commit message is wrong because this cannot lead to a NULL
+dereference.  It's better to just delete the BUG_ON().  We don't really
+like BUG_ON().  Checkpatch will complain about them.  An Oops gives
+basically the same information as a BUG_ON() without completely killing
+the kernel so just dereferencing a NULL is preferable.  Finally, we can
+see from the callers that "hdm_ch" is never NULL.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
