@@ -2,74 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 222A427E67C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Sep 2020 12:23:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8AE927E88D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Sep 2020 14:29:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F114020445;
-	Wed, 30 Sep 2020 10:23:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 029DF204BA;
+	Wed, 30 Sep 2020 12:29:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id trGOKUexaYNV; Wed, 30 Sep 2020 10:23:04 +0000 (UTC)
+	with ESMTP id HrMzCdpPhIpY; Wed, 30 Sep 2020 12:29:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 02BB220489;
-	Wed, 30 Sep 2020 10:23:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CDC6203A9;
+	Wed, 30 Sep 2020 12:29:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BD6571BF36A
- for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 10:22:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F0D31BF5A1
+ for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 12:29:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B98C58512E
- for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 10:22:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 82AA020368
+ for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 12:29:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 26NZ28vdfjXm for <devel@linuxdriverproject.org>;
- Wed, 30 Sep 2020 10:22:58 +0000 (UTC)
+ with ESMTP id d2nPfU5sGMkG for <devel@linuxdriverproject.org>;
+ Wed, 30 Sep 2020 12:29:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.13])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 572A485124
- for <devel@driverdev.osuosl.org>; Wed, 30 Sep 2020 10:22:57 +0000 (UTC)
-Received: from mail-qk1-f181.google.com ([209.85.222.181]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.145]) with ESMTPSA (Nemesis)
- id 1Mgvj1-1ktqjb3ZXh-00hPwB for <devel@driverdev.osuosl.org>; Wed, 30 Sep
- 2020 12:22:55 +0200
-Received: by mail-qk1-f181.google.com with SMTP id v123so806680qkd.9
- for <devel@driverdev.osuosl.org>; Wed, 30 Sep 2020 03:22:54 -0700 (PDT)
-X-Gm-Message-State: AOAM532T/vf9mjx5ogcOcdBZt2tvnufUcYlPoapIOgtevqwLVrKsiti0
- WVFqELZQRrs65N83hfxEbfCntUS9qp3yKIRKHEE=
-X-Google-Smtp-Source: ABdhPJzbp1ree7OnLK3wvVArvoiDQadBs0pygzava7j+b3qT05utAOWO3J1rLFwcXA64KjCr9Zap1oKqinCzol0q+MY=
-X-Received: by 2002:a37:5d8:: with SMTP id 207mr1859009qkf.352.1601461373212; 
- Wed, 30 Sep 2020 03:22:53 -0700 (PDT)
+Received: from tvkgw2.sensyu.ne.jp (tvkgw2.sensyu.ne.jp [61.86.7.203])
+ by silver.osuosl.org (Postfix) with ESMTP id 842762035D
+ for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 12:29:20 +0000 (UTC)
+Received: from mxs03-r (mailgw10.kcn.ne.jp [61.86.15.230])
+ by tvkgw2.sensyu.ne.jp (Postfix) with ESMTP id BA9097DF35C
+ for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 07:59:16 +0900 (JST)
+X-matriXscan-loop-detect: c7ea84589d2df178bee37e050a4bab705167e3c4
+Received: from tvkmail2.sensyu.ne.jp ([61.86.6.216]) by mxs03-r with ESMTP;
+ Wed, 30 Sep 2020 05:51:40 +0900 (JST)
+Received: from info.rq1qw2wnpehe3goiu4jkwrclxg.mx.internal.cloudapp.net
+ (unknown [23.100.104.46])
+ by tvkmail2.sensyu.ne.jp (Postfix) with ESMTPA id 299C85A19FB;
+ Wed, 30 Sep 2020 05:51:40 +0900 (JST)
 MIME-Version: 1.0
-References: <20200930090238.GA621698@mwanda>
-In-Reply-To: <20200930090238.GA621698@mwanda>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 30 Sep 2020 12:22:37 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a1m3kaGK17A2ADgA7b9i7GeEYhX=xVoU=Yet8_T93Q2JA@mail.gmail.com>
-Message-ID: <CAK8P3a1m3kaGK17A2ADgA7b9i7GeEYhX=xVoU=Yet8_T93Q2JA@mail.gmail.com>
-Subject: Re: [PATCH] staging: vchiq: silence an uninitialized variable warning
-To: Dan Carpenter <dan.carpenter@oracle.com>
-X-Provags-ID: V03:K1:lSYo0OZqXLyz/DQW2pvj7suy6THUBY5LGDjG8/qxno/c0HzVR64
- 9dlANjFgbSf4CFLehlEeKfbGDG8MSuh/fXNO5FILSuMXZw8qn2itbCGY4WfS/y4h72t06b5
- RVDtYAUEphKH1/Zw3MIWYLXdfVQ3gIHKjXfslE+qVljx6NgzgQ9DsEfaM2L0MYi8y0ArSgP
- iZOZlNwrgmE2EY17tMMIg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Ycx1HRCb/Wc=:pGkIAaNX/eiTvAAn26GeNx
- t9sp8pYQY3DS7fdaZvkVAdK+rCF6FsjjkEkMCeol1svGUZvaAPhaCGYdvEBNZ+9C8+YOeB9xO
- kR58evvB+0hMRlNwbh6sMYU5oa+H6zmQJoEPs0XqsLBso7/c5jQNO7HZTRVA0kYSfuK3+mD5G
- xrpaWTo4fXvjbQ8z+gly2HrQahTlOkFSZ3q4lPmeqV89CcSYDAOhdFLj/R1nKclLYfrlKNeM6
- NWLTC5KmY4IkOGWfvFyHiZHQcyszKC3gMcDEtwRmErE0Z+AG5K5RuHvjK4oQ0M1kTBELpS8Z6
- VVg5Xue465I8IGzV2texv6+0GjxB2A8ZZw+SBggcU/6o7jrZBGOd2zJdK6JF+7p3n99UleMA/
- oNbJatEuqxEk8bngFlxJxBUe+SM+tyhAh6rx0QPkbTn7jY49t0N+XQzH8acoXijSF+eNcQu05
- UlKge5inaSMpymamPqRAKQLs2hutlmjoQRvhVWxMyK/kZ7octPwWAZViVKbFwZAnsfOUp3N0s
- OPNKpOCjkdBZcA/wnrniPHcDIW+JxVtsVzMsGt8tw1KSCtTh5vW6Qr8qRAmX8dOkdT3XGtoIy
- aS6cZ33yskCiOt8qg3z+VEJovE40uWj+nocDAViXBQgHnDlM6gzqnYa/tGDt9WCVEOSWp5FgB
- FagH7Q4hzWEDXEkBuHIrdS5nYZ9tG12FBJhiPdiRxOMXY+ABhCwZtHdgXcKnts/G5B8zmIth7
- Y2sQ5Nkh8fRNeIqDkZRoNcK0pZvI75VrwF8sl1u0ovO5r9/iCedgGkO9sbGbh3UyvQdvC5PM9
- YmX7zK6obTRgCOPkVr9BqkncmKqmQCQXikZImIUpjGv8GYzj3MvQAj+/yi9sBAffxyMdx3Msm
- M4qwMo9Dh/HNeBGjCogRkhP47Kp1DLudt7s4gfL+T6Rgi0a/yW8k+usK4YGbCQjS2eyQG5mrR
- 1NR2vhbP8XHOL3CD9kIgbabooXxWyZqXvCGtl6iaHWELoqw54tlEz
+Content-Description: Mail message body
+Subject: How Are You 
+To: Recipients <ri-ri23@sensyu.ne.jp>
+From: "MS. Reem Al-" <ri-ri23@sensyu.ne.jp>
+Date: Tue, 29 Sep 2020 20:51:39 +0000
+Message-ID: <3d5606d8.1601412700.359765.2917.2004f@mxs03-r>
+X-matriXscan-msec-AV: Clean
+X-matriXscan-Action: Approve
+X-matriXscan: Uncategorized
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,40 +63,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Linux ARM <linux-arm-kernel@lists.infradead.org>,
- driverdevel <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Marcelo Diop-Gonzalez <marcgonzalez@google.com>,
- kernel-janitors@vger.kernel.org,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- Jamal Shareef <jamal.k.shareef@gmail.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reply-To: reemhashimi2020@daum.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Sep 30, 2020 at 11:02 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> Smatch complains that "userdata" can be passed to vchiq_bulk_transfer()
-> without being initialized.  Smatch is correct, however, in that
-> situation the "userdata" is not used so it doesn't cause a problem.
-> Passing an uninitialized variable will trigger a UBSan warning at
-> runtime so this warning is worth silencing by setting "userdata" to
-> NULL.
->
-> Fixes: a4367cd2b231 ("staging: vchiq: convert compat bulk transfer")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
 
-The change looks fine, but I wonder if it's actually worse and the
-uninitialized pointer can end up getting copied back to user space
-in the completion.
+Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-In either case, thanks for the fix!
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
 
-Acked-by: Arnd Bergmann <arnd@arndb.de>
+If you can handle the fund in a good investment. reply on this email only: rhashimi109@daum.net     
+
+Regards,
+Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
