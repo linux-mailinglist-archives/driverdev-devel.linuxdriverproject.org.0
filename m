@@ -2,90 +2,87 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E46E327BEB8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 10:03:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F98B27C289
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 12:38:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6052E2052B;
-	Tue, 29 Sep 2020 08:03:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7EDD8207A8;
+	Tue, 29 Sep 2020 10:38:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CxBhpQa9irIx; Tue, 29 Sep 2020 08:03:27 +0000 (UTC)
+	with ESMTP id 7G1n9-bBOiK0; Tue, 29 Sep 2020 10:38:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DAB6A21080;
-	Tue, 29 Sep 2020 08:01:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C066720396;
+	Tue, 29 Sep 2020 10:38:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EE88D1BF32D
- for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 08:01:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DFD1D1BF232
+ for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 10:38:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EAD0F85DCA
- for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 08:01:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CCDBF867ED
+ for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 10:38:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q4xKW2FDF4Z1 for <devel@linuxdriverproject.org>;
- Tue, 29 Sep 2020 08:01:16 +0000 (UTC)
+ with ESMTP id 3Z6k6DjsDNte for <devel@linuxdriverproject.org>;
+ Tue, 29 Sep 2020 10:38:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5C5CA85DC4
- for <devel@driverdev.osuosl.org>; Tue, 29 Sep 2020 08:01:16 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08T7sSxD021216;
- Tue, 29 Sep 2020 08:01:15 GMT
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9F781867F1
+ for <devel@driverdev.osuosl.org>; Tue, 29 Sep 2020 10:38:04 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08TAY7xf066350;
+ Tue, 29 Sep 2020 10:38:03 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=fS3sbliVrTas/8VSegnyz4QBH86Z2DLuW1uqKlImwtk=;
- b=UKijo+cC2Ku0I41FnXqYiG8QlG6AwNpBQ/Erc9zLcjBZGWNhbgxCm0+ucWSWKzpbPXtt
- GrxbAYQyEGYeSpH58fSaPYTyL65vfHFLDYTpXxwgnXWFKfZufAID8F7oe85BAWZRsRbu
- su/DZdwoqs35cxASqaxTz7L6fi8eT9cvr3ST5+h61hrlVn/jJcmshxTiNnmnP4qHmrpa
- i1FcEmLZ+4Z3eOv682d6JU5oWdBPSdRnnayegXR7VFq37tt3J1ywh+L+vtCa7zgSwueO
- hS3FhbZK6Td62Gq2TaWs+NtzC1nTOCWodznJ4DbEW1sA458h/bAKkp/WN3piYpKqkwWY xw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 33swkks40t-1
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=5iEiG/S/k6MJ/gza4tpjk/4uBczt9qrY5Q6upheJUk4=;
+ b=Iq/gRea1qoLoGU6cnNWVdzTkTU9vLpIV7j3ysOVbeaix2hpLFQFYPUD5u9rvA90tyESz
+ 33boqc3aTOXTyTGwuzVsyD7hMqth7wcVQaSqK/IfXTvyMTYonuj7ENtHpNoLcKffxu8h
+ cXqHwvNbUBdFPD315BVKeBIBTN2zeEKL9xGyqXpF+hqW7poQu0JZWcs/wkoZE9HxuIDZ
+ FVy2Izbxmde9nH+KNVoRwi/TYpfTJTXMELiKdYMfZ15GUoF6KTVqYr9MkzjYUtCyEJsO
+ cXnhqt3RqaZMXFWCDVXbTvt9m9oABa1CB2dnFPkdQGCkyZIH6MMVy0i7aCGw4JdiLydi kA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2130.oracle.com with ESMTP id 33su5at1hf-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 29 Sep 2020 08:01:15 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08T7uPbb185869;
- Tue, 29 Sep 2020 08:01:15 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 33tfhx8dwc-1
+ Tue, 29 Sep 2020 10:38:02 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08TAZiZ7062718;
+ Tue, 29 Sep 2020 10:36:02 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 33tfjwexsn-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 29 Sep 2020 08:01:15 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08T81Er7000851;
- Tue, 29 Sep 2020 08:01:14 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 29 Sep 2020 01:01:13 -0700
-Date: Tue, 29 Sep 2020 11:01:07 +0300
+ Tue, 29 Sep 2020 10:36:02 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08TAZwI1000793;
+ Tue, 29 Sep 2020 10:35:58 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 29 Sep 2020 03:35:56 -0700
+Date: Tue, 29 Sep 2020 13:35:48 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jing Xiangfeng <jingxiangfeng@huawei.com>
-Subject: Re: [PATCH] staging: mfd: hi6421-spmi-pmic: Fix error return in
- hi6421_spmi_pmic_probe()
-Message-ID: <20200929080107.GX4282@kadam>
-References: <20200929074847.47124-1-jingxiangfeng@huawei.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+ Sebastian Arriola <sebdeveloper6952@gmail.com>
+Subject: [PATCH] staging: rtl8712: Fix enqueue_reorder_recvframe()
+Message-ID: <20200929103548.GA493135@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200929074847.47124-1-jingxiangfeng@huawei.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9758
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=999 bulkscore=0
- phishscore=0 malwarescore=0 adultscore=0 suspectscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009290073
+X-Mailer: git-send-email haha only kidding
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9758
  signatures=668680
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0 phishscore=0
- suspectscore=0 mlxlogscore=999 clxscore=1015 priorityscore=1501
- impostorscore=0 lowpriorityscore=0 bulkscore=0 spamscore=0 adultscore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009290073
+ definitions=main-2009290093
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9758
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=0
+ lowpriorityscore=0 spamscore=0 clxscore=1011 mlxscore=0 impostorscore=0
+ malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2009290093
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,40 +95,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mchehab+huawei@kernel.org, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ devel@driverdev.osuosl.org,
+ Cristiane Naves <cristianenavescardoso09@gmail.com>,
+ Kees Cook <keescook@chromium.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ivan Safonov <insafonov@gmail.com>, kernel-janitors@vger.kernel.org,
+ Pascal Terjan <pterjan@google.com>, Allen Pais <apais@linux.microsoft.com>,
+ Wambui Karuga <wambui.karugax@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 29, 2020 at 03:48:47PM +0800, Jing Xiangfeng wrote:
-> Fix to return error code -ENOMEM from the error handling case instead
-> of 0.
-> 
-> Signed-off-by: Jing Xiangfeng <jingxiangfeng@huawei.com>
-> ---
->  drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-> index 64b30d263c8d..4f34a5282970 100644
-> --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-> +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-> @@ -262,8 +262,10 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
->  	hi6421_spmi_pmic_irq_prc(pmic);
->  
->  	pmic->irqs = devm_kzalloc(dev, HISI_IRQ_NUM * sizeof(int), GFP_KERNEL);
-> -	if (!pmic->irqs)
-> +	if (!pmic->irqs) {
-> +		ret = -ENOMEM;
->  		goto irq_malloc;
+The logic of this function was accidentally broken by a checkpatch
+inspired cleanup.  I've modified the code to restore the original
+behavior and also make checkpatch happy.
 
-It shouldn't do a goto, it should just return directly.  The goto
-releases an IRQ which isn't acquired until later in the function.
+Fixes: 98fe05e21a6e ("staging: rtl8712: Remove unnecesary else after return statement.")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/staging/rtl8712/rtl8712_recv.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 978594c676eb..db5c7a487ab3 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -476,11 +476,14 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
+ 	while (!end_of_queue_search(phead, plist)) {
+ 		pnextrframe = container_of(plist, union recv_frame, u.list);
+ 		pnextattrib = &pnextrframe->u.hdr.attrib;
++
++		if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
++			return false;
++
+ 		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num))
+ 			plist = plist->next;
+-		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+-			return false;
+-		break;
++		else
++			break;
+ 	}
+ 	list_del_init(&(prframe->u.hdr.list));
+ 	list_add_tail(&(prframe->u.hdr.list), plist);
+-- 
+2.28.0
 
 _______________________________________________
 devel mailing list
