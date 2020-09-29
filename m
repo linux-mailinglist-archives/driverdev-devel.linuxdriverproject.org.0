@@ -1,92 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCE2C27BCE2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 08:14:45 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A049227BD23
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 08:32:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 397E42052C;
-	Tue, 29 Sep 2020 06:14:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4AD0887057;
+	Tue, 29 Sep 2020 06:32:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Na5xNOfE+yo4; Tue, 29 Sep 2020 06:14:43 +0000 (UTC)
+	with ESMTP id iOMWksUF54Zo; Tue, 29 Sep 2020 06:32:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 065EE20505;
-	Tue, 29 Sep 2020 06:14:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C03D0868E7;
+	Tue, 29 Sep 2020 06:32:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3936B1BF2E5
- for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:14:38 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8AD491BF2F9
+ for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:32:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 35AE386645
- for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:14:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 801378558A
+ for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:32:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c0T0-GL37rhv for <devel@linuxdriverproject.org>;
- Tue, 29 Sep 2020 06:14:37 +0000 (UTC)
+ with ESMTP id pN0UNzLC3Mhh for <devel@linuxdriverproject.org>;
+ Tue, 29 Sep 2020 06:32:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E18C5865C7
- for <devel@driverdev.osuosl.org>; Tue, 29 Sep 2020 06:14:36 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08T691sl176376;
- Tue, 29 Sep 2020 06:14:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=9YKm5YL49JsXLCHT2j8lyX56XnxN9WjhAprzJJapyXA=;
- b=u/ynRmdh1Yjv1unrYYUO3kGxz5npYztE9KiPZlZAlqHqZEMmidIGQcqhs8iaS3omg3K/
- NXPzdsJwi6mapH86xdg5brTgrsEdtv7DT7wHh+JM9XOWHjYOzXn1Fybr9m5Xk/jvBYhN
- aMExOWWchRBDD6tElMBVniSGDjrfEjeuDi8lAPXFddQUuTSettjn9rVYEZdWAKSc7+Xr
- akafsJ/tU4f1ZHmLsFszsNQxg2csBoI64pjz0pH11b9F9wW/Idq5RryzQ5B8C/+FKfyN
- oGQi4mf3c/sB+XFUluWIpKf5dlB5ssM28JJnEyXA3ZsxKPNLqwX9WtN1skODw8Ns5B71 ZQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 33sx9n0mmn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 29 Sep 2020 06:14:35 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 08T6Aq2S022830;
- Tue, 29 Sep 2020 06:14:35 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 33uv2dd32r-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 29 Sep 2020 06:14:34 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 08T6EXbF031722;
- Tue, 29 Sep 2020 06:14:33 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 28 Sep 2020 23:14:32 -0700
-Date: Tue, 29 Sep 2020 09:14:24 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH] media: atomisp: Fixed error handling path
-Message-ID: <20200929061424.GU4282@kadam>
-References: <1601219284-13275-1-git-send-email-jrdr.linux@gmail.com>
- <20200928083757.GA18329@kadam>
- <CAFqt6zZaf=+JcUuxKdoEj1vMs5MOsb1iYKStmwKiKLW8bbcnYQ@mail.gmail.com>
+Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
+ [209.85.208.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A29B185549
+ for <devel@driverdev.osuosl.org>; Tue, 29 Sep 2020 06:32:33 +0000 (UTC)
+Received: by mail-ed1-f68.google.com with SMTP id k14so5111714edo.1
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 23:32:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=k3M5ujbbZ1hfkRm2nDqqv+/JD+dL+jj2LWYrUL1PkHA=;
+ b=DwR+0DTh2zdf4kVcNAQKvS9+LQ+CTPhV26VvAYSBEggwEssnMv82TQgGSMySkJm4au
+ l3P2y8hyJmXkNRw0nj+heaJmcnITdn/IyaYz1FkJHVXVIZDq0g/8VfjCEilMou9bHGoZ
+ +uhYWcLv/XB6gDUIJAekVHHm2sXv5udYelzsUmr5S3qBXj990zeATl3NS8tTRdNo4SEs
+ ZgiGpp1d+oMeFIS6HHXG6afRlM16SdVL53J6gL2kXtzRR8WAOSszYJH0Z72+FhWJHSTG
+ rfvNFDcBAK4MKHBgfgA7wDsNKGFk3YGyyNkSxPdNoMbfwnGpsPW4kJtf5m0UxprD6AJO
+ /jxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=k3M5ujbbZ1hfkRm2nDqqv+/JD+dL+jj2LWYrUL1PkHA=;
+ b=Rr63HjcjXmUMLc5iRGF6+Qxdb0GL7uaZV1vxCJKgJ7fEf+HKqlYa1wAIajyYCrSuae
+ PUazBzDC95TEx7G2eu4pyyHI1cg22cC+DHxYqK/55/8dnbtJKtxGr9kJX1tR/YLyb8u4
+ BeRK7Ml0Fc/5U8QF+x+YCfSKW7OMuFIAIsHIoWb9tiPUX/t1IFUHChOXdTXvtitFCj7J
+ Pv3l1EKwoiDJ4RxNJkSb688zcBH5lXWPgM47AKtw5JrKOaxAeIFxPEuhVxt/tI0UFTB7
+ O7guszJ4xR3eV/cVezvLo21Nu3Y+cjeiBlKhKnBHUU9L+wcBqQi/HL2aaKnEBDKDouym
+ 7cgQ==
+X-Gm-Message-State: AOAM530IMqmfTSjRItX02BAuicTqvFuHZ5g0lXnMuyrDJ5yG7vsfkT7L
+ sU8tsFahZV5i/USNsGILlm8=
+X-Google-Smtp-Source: ABdhPJyoWxrwuCvX4juqD497cE1ktpBX529HxwiCBvIYClzUHmlqiC19i6K6WDcwOSSpaqGyCjbwXw==
+X-Received: by 2002:a05:6402:10c9:: with SMTP id
+ p9mr1618938edu.156.1601361151974; 
+ Mon, 28 Sep 2020 23:32:31 -0700 (PDT)
+Received: from localhost.localdomain
+ (ipservice-092-219-207-039.092.219.pools.vodafone-ip.de. [92.219.207.39])
+ by smtp.gmail.com with ESMTPSA id r8sm4730915edy.87.2020.09.28.23.32.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Sep 2020 23:32:31 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/8] staging: rtl8188eu: remove unused macros and definitions
+Date: Tue, 29 Sep 2020 08:28:40 +0200
+Message-Id: <20200929062847.23985-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAFqt6zZaf=+JcUuxKdoEj1vMs5MOsb1iYKStmwKiKLW8bbcnYQ@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9758
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- spamscore=0 adultscore=0
- suspectscore=2 malwarescore=0 bulkscore=0 mlxlogscore=999 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009290061
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9758
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=2
- phishscore=0 mlxscore=0 lowpriorityscore=0 adultscore=0 clxscore=1015
- spamscore=0 impostorscore=0 malwarescore=0 bulkscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2009290061
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,75 +85,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- mchehab@kernel.org, Greg KH <gregkh@linuxfoundation.org>,
- gustavoars@kernel.org, daniel.m.jordan@oracle.com,
- sakari.ailus@linux.intel.com, John Hubbard <jhubbard@nvidia.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Michel Lespinasse <walken@google.com>, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 29, 2020 at 07:34:39AM +0530, Souptick Joarder wrote:
-> Hi Dan,
-> 
-> 
-> On Mon, Sep 28, 2020 at 2:08 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
-> >
-> > On Sun, Sep 27, 2020 at 08:38:04PM +0530, Souptick Joarder wrote:
-> > > Inside alloc_user_pages() based on flag value either pin_user_pages()
-> > > or get_user_pages_fast() will be called. However, these API might fail.
-> > >
-> > > But free_user_pages() called in error handling path doesn't bother
-> > > about return value and will try to unpin bo->pgnr pages, which is
-> > > incorrect.
-> > >
-> > > Fix this by passing the page_nr to free_user_pages(). If page_nr > 0
-> > > pages will be unpinned based on bo->mem_type. This will also take care
-> > > of non error handling path.
-> > >
-> > > Fixes: 14a638ab96c5 ("media: atomisp: use pin_user_pages() for memory
-> > > allocation")
-> > > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> > > Cc: John Hubbard <jhubbard@nvidia.com>
-> > > Cc: Ira Weiny <ira.weiny@intel.com>
-> > > Cc: Dan Carpenter <dan.carpenter@oracle.com>
-> > > ---
-> > >  drivers/staging/media/atomisp/pci/hmm/hmm_bo.c | 13 ++++++++-----
-> > >  1 file changed, 8 insertions(+), 5 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-> > > index f13af23..0168f98 100644
-> > > --- a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-> > > +++ b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-> > > @@ -857,16 +857,17 @@ static void free_private_pages(struct hmm_buffer_object *bo,
-> > >       kfree(bo->page_obj);
-> > >  }
-> > >
-> > > -static void free_user_pages(struct hmm_buffer_object *bo)
-> > > +static void free_user_pages(struct hmm_buffer_object *bo,
-> > > +                         unsigned int page_nr)
-> > >  {
-> > >       int i;
-> > >
-> > >       hmm_mem_stat.usr_size -= bo->pgnr;
-> >                               ^^^^^^^^^^^
-> > This is still a problem.  It needs to be hmm_mem_stat.usr_size -= page_nr.
-> 
-> In failure path, it is hmm_mem_stat.usr_size += bo->pgnr.
-> I think, hmm_mem_stat.usr_size -= bo->pgnr is correct as per existing code.
-> Do you think that needs to be changed ?
-> 
+Removep unused macros and definitions from rtw_security.h leftover
+from previous cleanup patches.
 
-Yeah.  Crud.  I'm sorry.  You had it right.
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
+---
+ .../staging/rtl8188eu/include/rtw_security.h  | 58 -------------------
+ 1 file changed, 58 deletions(-)
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8188eu/include/rtw_security.h b/drivers/staging/rtl8188eu/include/rtw_security.h
+index 8ba02a7cea60..5f418003647b 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_security.h
++++ b/drivers/staging/rtl8188eu/include/rtw_security.h
+@@ -228,64 +228,6 @@ struct mic_data {
+ 	u32  nBytesInM;      /*  # bytes in M */
+ };
+ 
+-extern const u32 Te0[256];
+-extern const u32 Td0[256];
+-extern const u32 Td1[256];
+-extern const u32 Td2[256];
+-extern const u32 Td3[256];
+-extern const u32 Td4[256];
+-extern const u32 rcon[10];
+-extern const u8 Td4s[256];
+-extern const u8 rcons[10];
+-
+-#define RCON(i) (rcons[(i)] << 24)
+-
+-static inline u32 rotr(u32 val, int bits)
+-{
+-	return (val >> bits) | (val << (32 - bits));
+-}
+-
+-#define TE0(i) Te0[((i) >> 24) & 0xff]
+-#define TE1(i) rotr(Te0[((i) >> 16) & 0xff], 8)
+-#define TE2(i) rotr(Te0[((i) >> 8) & 0xff], 16)
+-#define TE3(i) rotr(Te0[(i) & 0xff], 24)
+-
+-/* ===== start - public domain SHA256 implementation ===== */
+-
+-/* This is based on SHA256 implementation in LibTomCrypt that was released into
+- * public domain by Tom St Denis.
+- */
+-
+-/* the K array */
+-static const unsigned long K[64] = {
+-	0x428a2f98UL, 0x71374491UL, 0xb5c0fbcfUL, 0xe9b5dba5UL, 0x3956c25bUL,
+-	0x59f111f1UL, 0x923f82a4UL, 0xab1c5ed5UL, 0xd807aa98UL, 0x12835b01UL,
+-	0x243185beUL, 0x550c7dc3UL, 0x72be5d74UL, 0x80deb1feUL, 0x9bdc06a7UL,
+-	0xc19bf174UL, 0xe49b69c1UL, 0xefbe4786UL, 0x0fc19dc6UL, 0x240ca1ccUL,
+-	0x2de92c6fUL, 0x4a7484aaUL, 0x5cb0a9dcUL, 0x76f988daUL, 0x983e5152UL,
+-	0xa831c66dUL, 0xb00327c8UL, 0xbf597fc7UL, 0xc6e00bf3UL, 0xd5a79147UL,
+-	0x06ca6351UL, 0x14292967UL, 0x27b70a85UL, 0x2e1b2138UL, 0x4d2c6dfcUL,
+-	0x53380d13UL, 0x650a7354UL, 0x766a0abbUL, 0x81c2c92eUL, 0x92722c85UL,
+-	0xa2bfe8a1UL, 0xa81a664bUL, 0xc24b8b70UL, 0xc76c51a3UL, 0xd192e819UL,
+-	0xd6990624UL, 0xf40e3585UL, 0x106aa070UL, 0x19a4c116UL, 0x1e376c08UL,
+-	0x2748774cUL, 0x34b0bcb5UL, 0x391c0cb3UL, 0x4ed8aa4aUL, 0x5b9cca4fUL,
+-	0x682e6ff3UL, 0x748f82eeUL, 0x78a5636fUL, 0x84c87814UL, 0x8cc70208UL,
+-	0x90befffaUL, 0xa4506cebUL, 0xbef9a3f7UL, 0xc67178f2UL
+-};
+-
+-/* Various logical functions */
+-#define RORc(x, y) \
+-	(((((unsigned long)(x) & 0xFFFFFFFFUL) >> (unsigned long)((y) & 31)) | \
+-	 ((unsigned long)(x) << (unsigned long)(32 - ((y) & 31)))) & 0xFFFFFFFFUL)
+-#define Ch(x, y, z)       (z ^ (x & (y ^ z)))
+-#define Maj(x, y, z)      (((x | y) & z) | (x & y))
+-#define S(x, n)         RORc((x), (n))
+-#define R(x, n)         (((x) & 0xFFFFFFFFUL) >> (n))
+-#define Sigma0(x)       (S(x, 2) ^ S(x, 13) ^ S(x, 22))
+-#define Sigma1(x)       (S(x, 6) ^ S(x, 11) ^ S(x, 25))
+-#define Gamma0(x)       (S(x, 7) ^ S(x, 18) ^ R(x, 3))
+-#define Gamma1(x)       (S(x, 17) ^ S(x, 19) ^ R(x, 10))
+-
+ void rtw_secmicsetkey(struct mic_data *pmicdata, u8 *key);
+ void rtw_secmicappendbyte(struct mic_data *pmicdata, u8 b);
+ void rtw_secmicappend(struct mic_data *pmicdata, u8 *src, u32 nBytes);
+-- 
+2.28.0
 
 _______________________________________________
 devel mailing list
