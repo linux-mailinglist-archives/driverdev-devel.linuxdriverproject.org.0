@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1397B27BD27
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 08:32:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F16C27BD32
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Sep 2020 08:33:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 693EF85DB1;
-	Tue, 29 Sep 2020 06:32:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 211432052B;
+	Tue, 29 Sep 2020 06:33:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gKR0ZP1nSJN7; Tue, 29 Sep 2020 06:32:45 +0000 (UTC)
+	with ESMTP id RjGmx36-ECAE; Tue, 29 Sep 2020 06:33:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F3E2C85C92;
-	Tue, 29 Sep 2020 06:32:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13FF72052F;
+	Tue, 29 Sep 2020 06:32:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A470D1BF2F9
- for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:32:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E39FE1BF981
+ for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:32:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A16AC869D8
- for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:32:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DB393866D4
+ for <devel@linuxdriverproject.org>; Tue, 29 Sep 2020 06:32:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r0a7i+9D20jO for <devel@linuxdriverproject.org>;
- Tue, 29 Sep 2020 06:32:38 +0000 (UTC)
+ with ESMTP id x2EeXQKze20r for <devel@linuxdriverproject.org>;
+ Tue, 29 Sep 2020 06:32:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
- [209.85.218.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A67BD86981
- for <devel@driverdev.osuosl.org>; Tue, 29 Sep 2020 06:32:38 +0000 (UTC)
-Received: by mail-ej1-f68.google.com with SMTP id o8so13349749ejb.10
- for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 23:32:38 -0700 (PDT)
+Received: from mail-ej1-f65.google.com (mail-ej1-f65.google.com
+ [209.85.218.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D7391866D9
+ for <devel@driverdev.osuosl.org>; Tue, 29 Sep 2020 06:32:39 +0000 (UTC)
+Received: by mail-ej1-f65.google.com with SMTP id lo4so13361655ejb.8
+ for <devel@driverdev.osuosl.org>; Mon, 28 Sep 2020 23:32:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yVwxc8ndQaD/53nLnA0xKVBBpacv1lNmzl4Zof5kji8=;
- b=DNNuRhInba/4/S9uXXATHAJ81HKmabpNb3dAB3tQsn++pIFuckakqaAb1Z2PSaY2Oy
- da+8xzUwwLUR3NrZkrY63+pEkQ9aqFaoO1le645QPgqBbmolggoek/nNDvRbnpx0EP4a
- 1L1VXJ2jdYujML50C+c89ExdedtZqN1F+U3MDpSjOPd9FlLl6XXUlQ4+YGbhR0lYi4dn
- D0n5si1oIfzGOspG7SGEO+SJPDeOKJDqEWwT2IrfO6fJENoOfheXTMzWSbPQ2il1updI
- ZtMShFQf6Wc33ibpoiEHNk+VKcT9uKSN9c6jzHLT/G2UvpRoDJoOmE+4CaI1BMXZ9zRQ
- 8giQ==
+ bh=ul2wZJxRqrBtE7LWlBmriygJxCT0ta6IFh4PpqbYxrU=;
+ b=jxS1on7tg/23h5fl7fBqBYc58LVwjeD7JelI3ofTe/RdU4jsAaiExT2v1P1/BWdnuv
+ Ug6YHxFdXuafQtgrEBgAblLPRDwUk2I63esavAcYhukmh1Z2P/2QewrksAnuhZoEgTJP
+ oliY7ntuyUgk0SXIV/5kbcXzYwiB9OAOm/4e0hjxPAqz43ukyKvtyqVq+ST1aqhf2Iip
+ Ytk+tXgk6F7GLH8tdHsfVljqjpaGoW2qol13MJXft6swO0UUSzL+8gDj+htD37JlqBjM
+ HUyt8D7QRUD/SaurizeT0OQeBUzDSB+T/nJbWL0Hy3OllmOgmi0Cl54Zhh8aVjAUzCkz
+ Ws1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=yVwxc8ndQaD/53nLnA0xKVBBpacv1lNmzl4Zof5kji8=;
- b=E31ItU7XjOUUr99PA+CGv5keCqmCwYV/JY4FHIVx6n/AabyMyyRXbXfkjd6ItpNBJj
- 6grCgIk9UpFqM9zvPi5j6fHFRzSzkyJf0cXH4qoEqYGRhU8s1wRQ4Wm1fQUM9gg2Hfqq
- xdDROD1GrjeQ2fYwVQEQcAbK2JJtX5Ck7iytztOjWWaqVJWdmq69p/ePWN9N6f+QeyiF
- WmJDUvjW8Ym/amidBvbIkUzcIoF0Wa3XFYBb4Be/5whd9bSiSOC4C9R6zrFtgC3H246m
- TpaYDPnOS3NnY8RqI35X5T519LcJeqeEqztD/ZJGwzCMG4MIcBdiso7Xf8yCpVySxSG6
- GFLw==
-X-Gm-Message-State: AOAM530wruxD3h509r7C+Hy+33YYYML49Ee8uxbkOxF/d52mrD6UmuqU
- +XJKNREwdddT3sJ1Vczy0XI=
-X-Google-Smtp-Source: ABdhPJzvk71Z74y6T2T8jE1SL01xsyTX5syZh5fRHQC2WrdsOix3QeHWXY83uDLkJJwMB7uOishRdw==
-X-Received: by 2002:a17:906:2290:: with SMTP id
- p16mr594848eja.104.1601361157269; 
- Mon, 28 Sep 2020 23:32:37 -0700 (PDT)
+ bh=ul2wZJxRqrBtE7LWlBmriygJxCT0ta6IFh4PpqbYxrU=;
+ b=TQ29Y80/80KrjC67PuKA/gs0CWS+BgmmmXOnO9LNntQWukrhBn7/0gdHV37ZCMYVq2
+ trq/q6RD0LlqGO3OOw+vNYiUFmLO9gt3i04ktGfIXHeRisv4AGc2xNhyoMSVUHLuNPG+
+ Tyy+0DqUiiF7DihmgWagfycZ+4xh3Huf1gYnUdMJBcfRkulcEWjiRILtzJ51/2hmtaRG
+ xnP0+wEeU5bEl0iNA9RFHpPkTEvrWcJNYze+jyYaKdS4rZvQZ26X2N0bx2u/2AQXjLT6
+ jf5DUuVR0QsbEzwu8IXyl1JMRARUl8nPn1XPkBoyuHcU5unVPIfo4p1U6yHW36rXOv5Z
+ Hpog==
+X-Gm-Message-State: AOAM533gEqALTDVI11IKO55dboJVUrGNjcF+uoM9Wwyq2mFcGPmUalwf
+ 9Jz/d6DZVFJZjfK4ocgsT3U=
+X-Google-Smtp-Source: ABdhPJyKnCwiKp5qH7fOKxr5pd+ReYdsVL3286y2BsZAmAauX3RG9Zmg4WRYDbTWOD6JhhDzdnwvEg==
+X-Received: by 2002:a17:906:bc92:: with SMTP id
+ lv18mr1514807ejb.479.1601361158461; 
+ Mon, 28 Sep 2020 23:32:38 -0700 (PDT)
 Received: from localhost.localdomain
  (ipservice-092-219-207-039.092.219.pools.vodafone-ip.de. [92.219.207.39])
- by smtp.gmail.com with ESMTPSA id r8sm4730915edy.87.2020.09.28.23.32.36
+ by smtp.gmail.com with ESMTPSA id r8sm4730915edy.87.2020.09.28.23.32.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Sep 2020 23:32:36 -0700 (PDT)
+ Mon, 28 Sep 2020 23:32:37 -0700 (PDT)
 From: Michael Straube <straube.linux@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 6/8] staging: rtl8188eu: remove cckrates{only}_included()
-Date: Tue, 29 Sep 2020 08:28:45 +0200
-Message-Id: <20200929062847.23985-6-straube.linux@gmail.com>
+Subject: [PATCH 7/8] staging: rtl8188eu: remove unused variable ratelen
+Date: Tue, 29 Sep 2020 08:28:46 +0200
+Message-Id: <20200929062847.23985-7-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200929062847.23985-1-straube.linux@gmail.com>
 References: <20200929062847.23985-1-straube.linux@gmail.com>
@@ -94,93 +94,82 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In rtw_ieee80211.c there are rtw_is_cckrates_included() and
-rtw_is_cckratesonly_included() which have the same functionality as
-cckrates_included() and cckrates_only_included() defined in
-rtw_wlan_util.c. Remove the functions from rtw_wlan_util.c and use
-those from rtw_ieee80211.c.
+After the removal of cckrates_included() and cckrates_only_included()
+from rtw_wlan_util.c the variable/parameter 'ratelen' is unused now.
+Remove it from update_wireless_mode() and judge_network_type().
 
 Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- .../staging/rtl8188eu/core/rtw_wlan_util.c    | 34 +++----------------
- .../staging/rtl8188eu/include/rtw_mlme_ext.h  |  3 --
- 2 files changed, 4 insertions(+), 33 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_wlan_util.c   | 6 ++----
+ drivers/staging/rtl8188eu/hal/usb_halinit.c      | 4 ++--
+ drivers/staging/rtl8188eu/include/rtw_mlme_ext.h | 2 +-
+ 3 files changed, 5 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-index efe1f1ba7acf..bf7dd13dde03 100644
+index bf7dd13dde03..8e8f1721b1a2 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
-@@ -53,32 +53,6 @@ static const u8 rtw_basic_rate_mix[7] = {
- 	IEEE80211_OFDM_RATE_24MB | IEEE80211_BASIC_RATE_MASK
- };
+@@ -76,7 +76,7 @@ unsigned char networktype_to_raid(unsigned char network_type)
+ 	}
+ }
  
--bool cckrates_included(unsigned char *rate, int ratelen)
--{
--	int i;
--
--	for (i = 0; i < ratelen; i++) {
--		u8 r = rate[i] & 0x7f;
--
--		if (r == 2 || r == 4 || r == 11 || r == 22)
--			return true;
--	}
--	return false;
--}
--
--bool cckratesonly_included(unsigned char *rate, int ratelen)
--{
--	int i;
--
--	for (i = 0; i < ratelen; i++) {
--		u8 r = rate[i] & 0x7f;
--
--		if (r != 2 && r != 4 && r != 11 && r != 22)
--			return false;
--	}
--	return true;
--}
--
- unsigned char networktype_to_raid(unsigned char network_type)
+-u8 judge_network_type(struct adapter *padapter, unsigned char *rate, int ratelen)
++u8 judge_network_type(struct adapter *padapter, unsigned char *rate)
  {
- 	switch (network_type) {
-@@ -111,9 +85,9 @@ u8 judge_network_type(struct adapter *padapter, unsigned char *rate, int ratelen
- 	if (pmlmeinfo->HT_enable)
- 		network_type = WIRELESS_11_24N;
+ 	u8 network_type = 0;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+@@ -1321,15 +1321,13 @@ void update_capinfo(struct adapter *Adapter, u16 updateCap)
  
--	if (cckratesonly_included(rate, ratelen))
-+	if (rtw_is_cckratesonly_included(rate))
- 		network_type |= WIRELESS_11B;
--	else if (cckrates_included(rate, ratelen))
-+	else if (rtw_is_cckrates_included(rate))
- 		network_type |= WIRELESS_11BG;
- 	else
- 		network_type |= WIRELESS_11G;
-@@ -1362,9 +1336,9 @@ void update_wireless_mode(struct adapter *padapter)
- 	if (pmlmeinfo->HT_enable)
- 		network_type = WIRELESS_11_24N;
+ void update_wireless_mode(struct adapter *padapter)
+ {
+-	int ratelen, network_type = 0;
++	int network_type = 0;
+ 	u32 SIFS_Timer;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+ 	struct wlan_bssid_ex *cur_network = &pmlmeinfo->network;
+ 	unsigned char *rate = cur_network->SupportedRates;
  
--	if (cckratesonly_included(rate, ratelen))
-+	if (rtw_is_cckratesonly_included(rate))
- 		network_type |= WIRELESS_11B;
--	else if (cckrates_included(rate, ratelen))
-+	else if (rtw_is_cckrates_included(rate))
- 		network_type |= WIRELESS_11BG;
- 	else
- 		network_type |= WIRELESS_11G;
+-	ratelen = rtw_get_rateset_len(cur_network->SupportedRates);
+-
+ 	if (pmlmeinfo->HT_info_enable && pmlmeinfo->HT_caps_enable)
+ 		pmlmeinfo->HT_enable = 1;
+ 
+diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+index 5e7bb22d7d01..abe58cf2de16 100644
+--- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
++++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+@@ -1893,7 +1893,7 @@ void UpdateHalRAMask8188EUsb(struct adapter *adapt, u32 mac_id, u8 rssi_level)
+ 	switch (mac_id) {
+ 	case 0:/*  for infra mode */
+ 		supportRateNum = rtw_get_rateset_len(cur_network->SupportedRates);
+-		networkType = judge_network_type(adapt, cur_network->SupportedRates, supportRateNum) & 0xf;
++		networkType = judge_network_type(adapt, cur_network->SupportedRates) & 0xf;
+ 		raid = networktype_to_raid(networkType);
+ 		mask = update_supported_rate(cur_network->SupportedRates, supportRateNum);
+ 		mask |= (pmlmeinfo->HT_enable) ? update_MSC_rate(&pmlmeinfo->HT_caps) : 0;
+@@ -1911,7 +1911,7 @@ void UpdateHalRAMask8188EUsb(struct adapter *adapt, u32 mac_id, u8 rssi_level)
+ 		break;
+ 	default: /* for each sta in IBSS */
+ 		supportRateNum = rtw_get_rateset_len(pmlmeinfo->FW_sta_info[mac_id].SupportedRates);
+-		networkType = judge_network_type(adapt, pmlmeinfo->FW_sta_info[mac_id].SupportedRates, supportRateNum) & 0xf;
++		networkType = judge_network_type(adapt, pmlmeinfo->FW_sta_info[mac_id].SupportedRates) & 0xf;
+ 		raid = networktype_to_raid(networkType);
+ 		mask = update_supported_rate(cur_network->SupportedRates, supportRateNum);
+ 
 diff --git a/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h b/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
-index 565bfe46256c..713e23229ef5 100644
+index 713e23229ef5..b11a6886a083 100644
 --- a/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
 +++ b/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
-@@ -568,9 +568,6 @@ void addba_timer_hdl(struct timer_list *t);
- 	mod_timer(&mlmeext->link_timer, jiffies +	\
- 		  msecs_to_jiffies(ms))
+@@ -448,7 +448,7 @@ void init_addba_retry_timer(struct adapter *adapt, struct sta_info *sta);
+ struct xmit_frame *alloc_mgtxmitframe(struct xmit_priv *pxmitpriv);
  
--bool cckrates_included(unsigned char *rate, int ratelen);
--bool cckratesonly_included(unsigned char *rate, int ratelen);
--
- void process_addba_req(struct adapter *padapter, u8 *paddba_req, u8 *addr);
- 
- void update_TSF(struct mlme_ext_priv *pmlmeext, u8 *pframe, uint len);
+ unsigned char networktype_to_raid(unsigned char network_type);
+-u8 judge_network_type(struct adapter *padapter, unsigned char *rate, int len);
++u8 judge_network_type(struct adapter *padapter, unsigned char *rate);
+ void get_rate_set(struct adapter *padapter, unsigned char *pbssrate, int *len);
+ void UpdateBrateTbl(struct adapter *padapter, u8 *mBratesOS);
+ void UpdateBrateTblForSoftAP(u8 *bssrateset, u32 bssratelen);
 -- 
 2.28.0
 
