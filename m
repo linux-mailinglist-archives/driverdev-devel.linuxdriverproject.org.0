@@ -2,60 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5C1127EC22
-	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Sep 2020 17:16:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C7A927EBAC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 30 Sep 2020 17:01:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F186285DDB;
-	Wed, 30 Sep 2020 15:16:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E93A85F10;
+	Wed, 30 Sep 2020 15:01:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fx6oC6ewn7EP; Wed, 30 Sep 2020 15:16:21 +0000 (UTC)
+	with ESMTP id rpq7ASuumod9; Wed, 30 Sep 2020 15:01:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA4C785108;
-	Wed, 30 Sep 2020 15:16:20 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 591F086151;
+	Wed, 30 Sep 2020 15:01:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B1D9C1BF2FE
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Sep 2020 15:16:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A03A11BF407
+ for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 15:01:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AE9458550D
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Sep 2020 15:16:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9D250860FD
+ for <devel@linuxdriverproject.org>; Wed, 30 Sep 2020 15:01:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nxjytcU4iPBG
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Sep 2020 15:16:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from tvkgw2.sensyu.ne.jp (tvkgw2.sensyu.ne.jp [61.86.7.203])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 29B8185108
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Sep 2020 15:16:17 +0000 (UTC)
-Received: from mxs01-r (mailgw8.kcn.ne.jp [61.86.15.228])
- by tvkgw2.sensyu.ne.jp (Postfix) with ESMTP id 670CB49CA93
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Sep 2020 07:10:40 +0900 (JST)
-X-matriXscan-loop-detect: 296898faf5b1e13524055f1f3128784eee029ce7
-Received: from tvkmail2.sensyu.ne.jp ([61.86.6.216]) by mxs01-r with ESMTP;
- Wed, 30 Sep 2020 05:52:02 +0900 (JST)
-Received: from info.rq1qw2wnpehe3goiu4jkwrclxg.mx.internal.cloudapp.net
- (unknown [23.100.104.46])
- by tvkmail2.sensyu.ne.jp (Postfix) with ESMTPA id 61B425A1A07;
- Wed, 30 Sep 2020 05:52:02 +0900 (JST)
+ with ESMTP id ejkP0CiKh86L for <devel@linuxdriverproject.org>;
+ Wed, 30 Sep 2020 15:01:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 66B95861C5
+ for <devel@driverdev.osuosl.org>; Wed, 30 Sep 2020 15:01:08 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5c4.dynamic.kabel-deutschland.de
+ [95.90.213.196])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id DC5A52076B;
+ Wed, 30 Sep 2020 15:01:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601478068;
+ bh=aE04Gn+SHVdidjsY0sHGoYsJR2y/ODqMgSn6wdS7TGg=;
+ h=From:To:Cc:Subject:Date:From;
+ b=dKL70A8wHqaVQtOnqtIR4clcWzMdcI+3oXKAghV5w578Y+XAHqAzE9JsPPOifAqf/
+ 4Mr5Qaw5T1zQGbcvOYAy2dnKqcXQbzmUmHSSSTBRLkeBOGvZ4Q5q1JIFnsm2bYcib8
+ DqTwM91Urf7FcKEC2DbzE2SY6VZ9qvr+NdMgUESg=
+Received: from mchehab by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1kNdbN-001Yhh-81; Wed, 30 Sep 2020 17:01:05 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Media Mailing List <linux-media@vger.kernel.org>
+Subject: [PATCH v2] media: atomisp: fixes a breakage due to a cleanup patch
+Date: Wed, 30 Sep 2020 17:01:03 +0200
+Message-Id: <9e5f813977bcc53a65bf719658ad73f933e6270e.1601478042.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: How Are You 
-To: Recipients <ri-ri23@sensyu.ne.jp>
-From: "MS. Reem Al-" <ri-ri23@sensyu.ne.jp>
-Date: Tue, 29 Sep 2020 20:52:02 +0000
-Message-ID: <3d5606d8.1601412722.587265.1a3b.1f744@mxs01-r>
-X-matriXscan-msec-AV: Clean
-X-matriXscan-Action: Approve
-X-matriXscan: Uncategorized
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,22 +66,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimi2020@daum.net
+Cc: devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
+ linux-kernel@vger.kernel.org, Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, mauro.chehab@huawei.com,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
+A temporary var needed for building with ISP2400 was removed
+by accident on a cleanup patch.
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+Fix the breakage.
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+Fixes: 852a53a02cf0 ("media: atomisp: get rid of unused vars")
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
 
-If you can handle the fund in a good investment. reply on this email only: rhashimi109@daum.net     
+v2: fixed a typo at comment: ISP2401 -> ISP2400
 
-Regards,
-Ms. Reem
+ drivers/staging/media/atomisp/pci/sh_css.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/pci/sh_css.c b/drivers/staging/media/atomisp/pci/sh_css.c
+index e8c5caf3dfe6..8e4e82a97098 100644
+--- a/drivers/staging/media/atomisp/pci/sh_css.c
++++ b/drivers/staging/media/atomisp/pci/sh_css.c
+@@ -1365,7 +1365,6 @@ start_binary(struct ia_css_pipe *pipe,
+ {
+ 	assert(pipe);
+ 	/* Acceleration uses firmware, the binary thus can be NULL */
+-	/* assert(binary != NULL); */
+ 
+ 	if (binary)
+ 		sh_css_metrics_start_binary(&binary->metrics);
+@@ -1381,7 +1380,7 @@ start_binary(struct ia_css_pipe *pipe,
+ #endif
+ 
+ #if !defined(ISP2401)
+-	if (stream->reconfigure_css_rx) {
++	if (pipe->stream->reconfigure_css_rx) {
+ 		ia_css_isys_rx_configure(&pipe->stream->csi_rx_config,
+ 					 pipe->stream->config.mode);
+ 		stream->reconfigure_css_rx = false;
+-- 
+2.26.2
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
