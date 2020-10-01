@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED44D27FBFE
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Oct 2020 10:55:49 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 664E387337;
-	Thu,  1 Oct 2020 08:55:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FWWwXGmE8mTe; Thu,  1 Oct 2020 08:55:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C6060866B3;
-	Thu,  1 Oct 2020 08:55:47 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1AF831BF4E6
- for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 08:55:46 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C687627FC0D
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Oct 2020 10:56:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 17C3A86C24
- for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 08:55:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D122686CF4;
+	Thu,  1 Oct 2020 08:56:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id E2YrTr-l-I4N; Thu,  1 Oct 2020 08:56:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CCA9D86B9E;
+	Thu,  1 Oct 2020 08:56:52 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BF6F21BF4E6
+ for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 08:56:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B9E0386B30
+ for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 08:56:50 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BwKhiv_zqPLF for <devel@linuxdriverproject.org>;
- Thu,  1 Oct 2020 08:55:45 +0000 (UTC)
+ with ESMTP id CpOhmxZat9z4 for <devel@linuxdriverproject.org>;
+ Thu,  1 Oct 2020 08:56:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A152B86B9E
- for <devel@driverdev.osuosl.org>; Thu,  1 Oct 2020 08:55:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9971186B0B
+ for <devel@driverdev.osuosl.org>; Thu,  1 Oct 2020 08:56:49 +0000 (UTC)
 Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
  bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8575320B1F;
- Thu,  1 Oct 2020 08:55:44 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9F09B20B1F;
+ Thu,  1 Oct 2020 08:56:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1601542545;
- bh=Lmndb/S6MK+pcARG47+loeLrbW8fJTcFCcXY6A/D8MI=;
+ s=default; t=1601542609;
+ bh=+J+qcQm1lylyAZj+XzZr4MSDB+AbjdvfaTxhoz7fEV0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PT5kCBVmlTTfqQjGqwWISToPHs5XIxehYOqt9yCdVdkg2vSTWZn9zrnbQkkeeoH/i
- hUg05924olZPl+P1ENWbTWFWDJYm1ad1HIwnTu9l0oU4dceQ5G5Kl7n0lKjxRzFFeT
- zg5Hga2Yyx5Fzo2o4mH8S4X7jJ6NJ1Arhuj1GxN0=
-Date: Thu, 1 Oct 2020 10:55:46 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Matthew Hanzelik <mrhanzelik@gmail.com>
-Subject: Re: [PATCH v2] Staging: nvec: Remove duplicate word in comment.
-Message-ID: <20201001085546.GA1824150@kroah.com>
-References: <CAF4OWHKYrcZzZp_YVf+mnGgjHUi7AKPA22s5q7vVfu371_8HTg@mail.gmail.com>
+ b=H+R048pzi27LF30Xg+VMXG6eoTkCkZicDUvSYvFPl8Zbvf8S4lTEIidwYFJ6vt6Qz
+ vXyYNfd4p89PTgO32X4jQi+pgznVI/vYqBQRbc38aZrYlrCSUhXdyPRUOXLc06IN/j
+ 7G+ehx7ExGqhtI9oyAotdN3IhJR1a4zL9QoMykmA=
+Date: Thu, 1 Oct 2020 10:56:50 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: vchiq: Fix list_for_each exit tests
+Message-ID: <20201001085650.GA1832570@kroah.com>
+References: <20200928091103.GC377727@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAF4OWHKYrcZzZp_YVf+mnGgjHUi7AKPA22s5q7vVfu371_8HTg@mail.gmail.com>
+In-Reply-To: <20200928091103.GC377727@mwanda>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,39 +64,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, marvin24@gmx.de
+Cc: Stefan Wahren <stefan.wahren@i2se.com>, devel@driverdev.osuosl.org,
+ Arnd Bergmann <arnd@arndb.de>, Marcelo Diop-Gonzalez <marcgonzalez@google.com>,
+ kernel-janitors@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org,
+ Jamal Shareef <jamal.k.shareef@gmail.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 29, 2020 at 11:39:53PM -0400, Matthew Hanzelik wrote:
-> Remove a duplicate word in a comment within nvec.c.
+On Mon, Sep 28, 2020 at 12:11:03PM +0300, Dan Carpenter wrote:
+> This code code here used to be list_for_each() and after the loop then
+> the "entry" pointer was non-NULL if we found the correct entry or NULL
+> if we couldn't find it.  Then we changed the code to use list_for_each_entry()
+> and so now the "entry" pointer is always non-NULL when we exit the loop.
 > 
-> Signed-off-by: Matthew Hanzelik <mrhanzelik@gmail.com>
-> ---
-> Changes in v2:
->  - Fix spelling mistake in commit.
-> ---
->  drivers/staging/nvec/nvec.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> I have introduced a new "found" variable to say if we found the correct
+> enty or not.  I fixed one test by making it an else statement because
+> that was more readable than testing "if (!found)".
 > 
-> diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-> index 360ec0407740..a80996b2f5ce 100644
-> --- a/drivers/staging/nvec/nvec.c
-> +++ b/drivers/staging/nvec/nvec.c
-> @@ -289,7 +289,7 @@ EXPORT_SYMBOL(nvec_write_async);
->   * interrupt handlers.
->   *
->   * Returns: 0 on success, a negative error code on failure.
-> - * The response message is returned in @msg. Shall be freed with
-> + * The response message is returned in @msg. Shall be freed
->   * with nvec_msg_free() once no longer used.
->   *
->   */
+> Fixes: 46e4b9ec4fa4 ("staging: vchiq_arm: use list_for_each_entry when accessing bulk_waiter_list")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+>  .../vc04_services/interface/vchiq_arm/vchiq_arm.c    | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
 
-Someone else sent this patch right before you did, sorry:
-	https://lore.kernel.org/r/20200927172855.9813-1-ryanpkosta@gmail.com
+This doesn't apply against my tree, what branch did you make it against?
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
