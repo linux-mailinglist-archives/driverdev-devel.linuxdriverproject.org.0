@@ -1,60 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D480C27FAAE
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Oct 2020 09:54:48 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9849C86CAF;
-	Thu,  1 Oct 2020 07:54:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z51BicHKhtFH; Thu,  1 Oct 2020 07:54:46 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 84ADC86C93;
-	Thu,  1 Oct 2020 07:54:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 040571BF2FC
- for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 07:54:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED44D27FBFE
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Oct 2020 10:55:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0066087302
- for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 07:54:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 664E387337;
+	Thu,  1 Oct 2020 08:55:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FWWwXGmE8mTe; Thu,  1 Oct 2020 08:55:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id C6060866B3;
+	Thu,  1 Oct 2020 08:55:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1AF831BF4E6
+ for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 08:55:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 17C3A86C24
+ for <devel@linuxdriverproject.org>; Thu,  1 Oct 2020 08:55:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mww9gj9-+pVZ for <devel@linuxdriverproject.org>;
- Thu,  1 Oct 2020 07:54:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id BwKhiv_zqPLF for <devel@linuxdriverproject.org>;
+ Thu,  1 Oct 2020 08:55:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 320B987301
- for <devel@driverdev.osuosl.org>; Thu,  1 Oct 2020 07:54:41 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5d2.dynamic.kabel-deutschland.de
- [95.90.213.210])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 209C221707;
- Thu,  1 Oct 2020 07:54:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A152B86B9E
+ for <devel@driverdev.osuosl.org>; Thu,  1 Oct 2020 08:55:45 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8575320B1F;
+ Thu,  1 Oct 2020 08:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1601538880;
- bh=KKNX+CUOdotCG/f7NnoLC+ebCjKw91cITKw8LfV7ljE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=jPKhCPpQAFcA3HJ6KciG3sDNi7p5PRBSqUW2HQmsVSbPOKDyU4xE3D0XXMNwcsslz
- Dq8/aeKSf44ITUSddqj5sTNotgwgpCWU7hwdEVChqR123ugDJmZs2nlJIHAhBVWVxC
- jB4ixnvH9n2t7Rqiz/JmRRh7IrSwZvXslbh5IQVU=
-Date: Thu, 1 Oct 2020 09:54:35 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Corentin Labbe <clabbe@baylibre.com>
-Subject: Re: [PATCH RFT/RFC v2 28/47] staging: media: zoran: convert mdelay
- to udelay
-Message-ID: <20201001095435.47c7d36c@coco.lan>
-In-Reply-To: <1601058657-14042-29-git-send-email-clabbe@baylibre.com>
-References: <1601058657-14042-1-git-send-email-clabbe@baylibre.com>
- <1601058657-14042-29-git-send-email-clabbe@baylibre.com>
-X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ s=default; t=1601542545;
+ bh=Lmndb/S6MK+pcARG47+loeLrbW8fJTcFCcXY6A/D8MI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=PT5kCBVmlTTfqQjGqwWISToPHs5XIxehYOqt9yCdVdkg2vSTWZn9zrnbQkkeeoH/i
+ hUg05924olZPl+P1ENWbTWFWDJYm1ad1HIwnTu9l0oU4dceQ5G5Kl7n0lKjxRzFFeT
+ zg5Hga2Yyx5Fzo2o4mH8S4X7jJ6NJ1Arhuj1GxN0=
+Date: Thu, 1 Oct 2020 10:55:46 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Matthew Hanzelik <mrhanzelik@gmail.com>
+Subject: Re: [PATCH v2] Staging: nvec: Remove duplicate word in comment.
+Message-ID: <20201001085546.GA1824150@kroah.com>
+References: <CAF4OWHKYrcZzZp_YVf+mnGgjHUi7AKPA22s5q7vVfu371_8HTg@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAF4OWHKYrcZzZp_YVf+mnGgjHUi7AKPA22s5q7vVfu371_8HTg@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,61 +64,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
- laurent.pinchart@ideasonboard.com, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, marvin24@gmx.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Fri, 25 Sep 2020 18:30:38 +0000
-Corentin Labbe <clabbe@baylibre.com> escreveu:
-
-> As asked by checkpath, let's use udelay.
+On Tue, Sep 29, 2020 at 11:39:53PM -0400, Matthew Hanzelik wrote:
+> Remove a duplicate word in a comment within nvec.c.
 > 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> Signed-off-by: Matthew Hanzelik <mrhanzelik@gmail.com>
 > ---
->  drivers/staging/media/zoran/zoran_device.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> Changes in v2:
+>  - Fix spelling mistake in commit.
+> ---
+>  drivers/staging/nvec/nvec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-> index 0ecb044f8e8f..4c9f6eafd130 100644
-> --- a/drivers/staging/media/zoran/zoran_device.c
-> +++ b/drivers/staging/media/zoran/zoran_device.c
-> @@ -1332,9 +1332,9 @@ void zoran_init_hardware(struct zoran *zr)
->  void zr36057_restart(struct zoran *zr)
->  {
->  	btwrite(0, ZR36057_SPGPPCR);
-> -	mdelay(1);
-> +	udelay(1000);
->  	btor(ZR36057_SPGPPCR_SoftReset, ZR36057_SPGPPCR);
-> -	mdelay(1);
-> +	udelay(1000);
+> diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+> index 360ec0407740..a80996b2f5ce 100644
+> --- a/drivers/staging/nvec/nvec.c
+> +++ b/drivers/staging/nvec/nvec.c
+> @@ -289,7 +289,7 @@ EXPORT_SYMBOL(nvec_write_async);
+>   * interrupt handlers.
+>   *
+>   * Returns: 0 on success, a negative error code on failure.
+> - * The response message is returned in @msg. Shall be freed with
+> + * The response message is returned in @msg. Shall be freed
+>   * with nvec_msg_free() once no longer used.
+>   *
+>   */
 
-Ok, this is still on staging, so I'm willing to accept it, but
-why aren't you using usleep_range() instead?
-
-mdelay/udelay should be used only when the delay time should
-be as precise as possible, as what they do is to keep the CPU
-busy during the wait time.
-
-I doubt that this is the case here. So, I would use,
-instead, something like:
-
-	usleep_range(1000, 2000)
-
-(assuming that 4ms is still a reasonable time for the soft
-reset to happen).
-
->  
->  	/* assert P_Reset */
->  	btwrite(0, ZR36057_JPC);
-
-
-
-Thanks,
-Mauro
+Someone else sent this patch right before you did, sorry:
+	https://lore.kernel.org/r/20200927172855.9813-1-ryanpkosta@gmail.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
