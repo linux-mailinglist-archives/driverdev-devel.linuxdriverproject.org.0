@@ -1,53 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF117281512
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Oct 2020 16:28:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B989F2818F0
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Oct 2020 19:15:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E4FF8873AA;
-	Fri,  2 Oct 2020 14:28:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5B116204F8;
+	Fri,  2 Oct 2020 17:15:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4IcmyMSgBZy5; Fri,  2 Oct 2020 14:28:28 +0000 (UTC)
+	with ESMTP id Ze5PyA52YvtN; Fri,  2 Oct 2020 17:15:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 26868872F4;
-	Fri,  2 Oct 2020 14:28:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BFFA620346;
+	Fri,  2 Oct 2020 17:15:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A61211BF311
- for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 14:28:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 09A771BF3BD
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 17:15:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9D83A86709
- for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 14:28:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D0E6D20346
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 17:15:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HLhkWCEUkjir for <devel@linuxdriverproject.org>;
- Fri,  2 Oct 2020 14:28:23 +0000 (UTC)
+ with ESMTP id o+1ganqpDtbQ for <devel@linuxdriverproject.org>;
+ Fri,  2 Oct 2020 17:15:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CACDA866E5
- for <devel@driverdev.osuosl.org>; Fri,  2 Oct 2020 14:28:23 +0000 (UTC)
-Received: from ip-109-40-130-93.web.vodafone.de ([109.40.130.93]
- helo=wittgenstein) by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <christian.brauner@ubuntu.com>)
- id 1kOM2h-0007bA-Bs; Fri, 02 Oct 2020 14:28:16 +0000
-Date: Fri, 2 Oct 2020 16:28:08 +0200
-From: Christian Brauner <christian.brauner@ubuntu.com>
-To: Liu Shixin <liushixin2@huawei.com>
-Subject: Re: [PATCH v3 -next] binder: simplify the return expression of
- binder_mmap
-Message-ID: <20201002142808.jxxtgfppj5e2v4f5@wittgenstein>
-References: <20200927123538.GA292831@kroah.com>
- <20200929015216.1829946-1-liushixin2@huawei.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200929015216.1829946-1-liushixin2@huawei.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id A1F3420031
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 17:15:15 +0000 (UTC)
+Subject: Re: [GIT PULL] IIO driver fixes for 5.9-rc8
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601658915;
+ bh=IQ8+CwZRCHjjb3KBjrwXQHDpQPOvigLbY4fuwdvzX4g=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=KZBXELYedK0XebXD7f+WQE15RpMIqT9U/uERlqO/cCkEYzFqhUIa/oLRSRqyA+YFh
+ bEZX1yc+0etn7sSLqSTce/ozpsfsFBuhFXtrE5UueVt9iIdYjxZo4JSM6hhX0paT0T
+ yH63lZBXjMiVqXlmjbBxTPGMk3QK0z3Dn04PIs08=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20201002142011.GA3499938@kroah.com>
+References: <20201002142011.GA3499938@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20201002142011.GA3499938@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.9-rc8
+X-PR-Tracked-Commit-Id: 52a035235ed5a1392fc264bd614eb96d1ac97a3d
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: cc8ad8fa844aeae64c10f002b97a7c56619f1f57
+Message-Id: <160165891532.31225.17534733155112020176.pr-tracker-bot@kernel.org>
+Date: Fri, 02 Oct 2020 17:15:15 +0000
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,25 +65,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Suren Baghdasaryan <surenb@google.com>, Hridya Valsaraju <hridya@google.com>,
- Arve =?utf-8?B?SGrDuG5uZXbDpWc=?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Sep 29, 2020 at 09:52:16AM +0800, Liu Shixin wrote:
-> Simplify the return expression.
-> 
-> Signed-off-by: Liu Shixin <liushixin2@huawei.com>
-> ---
+The pull request you sent on Fri, 2 Oct 2020 16:20:11 +0200:
 
-Thanks!
-Acked-by: Christian Brauner <christian.brauner@ubuntu.com>
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.9-rc8
+
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/cc8ad8fa844aeae64c10f002b97a7c56619f1f57
+
+Thank you!
+
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/prtracker.html
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
