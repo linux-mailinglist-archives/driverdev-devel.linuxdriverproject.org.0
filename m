@@ -1,54 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEAA3281074
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Oct 2020 12:16:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D65C2812DB
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Oct 2020 14:36:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DBCB886B72;
-	Fri,  2 Oct 2020 10:16:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 67ED186672;
+	Fri,  2 Oct 2020 12:36:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UkEGr+Q9O-zN; Fri,  2 Oct 2020 10:16:31 +0000 (UTC)
+	with ESMTP id 8UI87fXFGDSd; Fri,  2 Oct 2020 12:36:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6DC6886B1A;
-	Fri,  2 Oct 2020 10:16:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 331D386594;
+	Fri,  2 Oct 2020 12:36:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CE8421BF2FF
- for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 10:16:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 598421BF9B9
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 12:36:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CB08286538
- for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 10:16:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 543EC86594
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 12:36:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UviUbjmEzFrS for <devel@linuxdriverproject.org>;
- Fri,  2 Oct 2020 10:16:27 +0000 (UTC)
+ with ESMTP id FS_ffQAkh5Oi for <devel@linuxdriverproject.org>;
+ Fri,  2 Oct 2020 12:36:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DF1288652A
- for <devel@driverdev.osuosl.org>; Fri,  2 Oct 2020 10:16:26 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1kOI6u-0001yb-FW; Fri, 02 Oct 2020 10:16:20 +0000
-From: Colin King <colin.king@canonical.com>
-To: Corentin Labbe <clabbe@baylibre.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- mjpeg-users@lists.sourceforge.net, linux-media@vger.kernel.org,
- devel@driverdev.osuosl.org
-Subject: [PATCH][next] media: zoran: fix spelling mistake and make error
- message more meaningful
-Date: Fri,  2 Oct 2020 11:16:20 +0100
-Message-Id: <20201002101620.86156-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.27.0
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D3C8E8659E
+ for <devel@driverdev.osuosl.org>; Fri,  2 Oct 2020 12:36:26 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id m34so687281pgl.9
+ for <devel@driverdev.osuosl.org>; Fri, 02 Oct 2020 05:36:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UCR+QZlbJRR7G6SqK3i7yMDxf3forYLQPEv586WcD34=;
+ b=cvMQXLgIfIQVKKbm7XpVZ20pUznSPsFY1u5hfnIY4gZu0vPQGGzUh87ZCX1c+73fDf
+ ixu3YQ8A9F+GAIjQk5VMZRA4F9ii6uuiOnASzXQMHy44JidvXABapcbY6YPItZQ+xR+w
+ WEO+mWbLNTsPdES3eYPrrWaKZNfH33l1YMhnX6w/jpwnCkgc/ESN5tV59vBTBLnhutTi
+ chvLpNAJmLbKI/gh36HGacsXt3jtTclwj0ldwfOyzDyUKD2c8/UrM7J3r35Ds86xp7GX
+ vas+CLv1jsVEgeADXyQjSjg0J8kU7VvQKFggiKvQyYA08FNGY76k5jMV0TBE6MN8sU0D
+ Wylw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UCR+QZlbJRR7G6SqK3i7yMDxf3forYLQPEv586WcD34=;
+ b=NQPdw+0/PDVrUM9fxGq1+ntDnU9Af/WRnSOc6POOOSYuCmizxpj33z1ikgarHa/0tX
+ oTCn3vaPwRGwGmk3L0+CH4MU8Ys8IsGBuEFJzM7ZjFQCyE8J3A5SM1nyMzlpOY1wx2Me
+ JNx6hx1LfrmBSXvlJgodpLnKTqJxKfeJ8eBF1jp5aykbeibE266AViZtxuDv30ynvkSj
+ vIUqA7FmCtLV65JBqlh9Umxi8WxlhBoiqFjYGRDfAji2BWfgZUqGJ6iMkXs0G65touxo
+ ZhHXma+MN08gjP/zRkPkPdqnyyLlBeWimALpxGH7GWYbTPSeZrgxmzqa32yvEEvd3nbu
+ xWXg==
+X-Gm-Message-State: AOAM5305wbaaI8KHhiVpbzerZJLqC36zS23ggvZ9+Lld3mgqqE6tKZZS
+ vOLRCD2gydzdp/8jJgBGotsq+JqG2LqjvKSbzHA=
+X-Google-Smtp-Source: ABdhPJyU2SrYzqo6IL3nYImabX9nkk+Vdcl0PQbg0Hjn5KOazafdI7H8nftfjdcV2pFFBWXT2ugIBIWLr5n2uPTUoAA=
+X-Received: by 2002:a63:4c1d:: with SMTP id z29mr2020084pga.203.1601642186341; 
+ Fri, 02 Oct 2020 05:36:26 -0700 (PDT)
 MIME-Version: 1.0
+References: <490e5002c3fea266524c31e1a94853dca9c3286c.1601551027.git.mchehab+huawei@kernel.org>
+ <CAHp75Ve3B_YzC3JpswDv_8sYoMmvh58q4iWxfx2090Nfk3+_Fw@mail.gmail.com>
+ <20201001175547.1eb58b26@coco.lan>
+In-Reply-To: <20201001175547.1eb58b26@coco.lan>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Fri, 2 Oct 2020 15:36:07 +0300
+Message-ID: <CAHp75VdYWguPgpp2qgKG9=1Bt5gTZER_nuhBsXgy8yApo4RQug@mail.gmail.com>
+Subject: Re: [PATCH v3] media: atomisp: fixes build breakage for ISP2400 due
+ to a cleanup
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,38 +82,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On Thu, Oct 1, 2020 at 6:55 PM Mauro Carvalho Chehab
+<mchehab+huawei@kernel.org> wrote:
+> Em Thu, 1 Oct 2020 18:50:12 +0300
+> Andy Shevchenko <andy.shevchenko@gmail.com> escreveu:
+>
+> > On Thu, Oct 1, 2020 at 2:17 PM Mauro Carvalho Chehab
+> > <mchehab+huawei@kernel.org> wrote:
+> > >
+> > > A temporary var needed for building with ISP2400 was removed
+> > > by accident on a cleanup patch.
+> > >
+> > > Fix the breakage.
+> >
+> > Is this in any of your branches?
+>
+> I added v3 of the fixes today at the media tree master branch.
+>
+> If no merge issues happen, it should be at tomorrow's linux-next.
 
-There is a spelling mistake in a pci_err error message. Fix this and
-make the error message a little more meaningful.
+Fixes the issue to me, thanks!
+Tested-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/media/zoran/zoran_driver.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
-index 808196ea5b81..d9f8b21edf6a 100644
---- a/drivers/staging/media/zoran/zoran_driver.c
-+++ b/drivers/staging/media/zoran/zoran_driver.c
-@@ -666,7 +666,7 @@ static int zoran_g_selection(struct file *file, void *__fh, struct v4l2_selectio
- 
- 	if (sel->type != V4L2_BUF_TYPE_VIDEO_OUTPUT &&
- 	    sel->type != V4L2_BUF_TYPE_VIDEO_CAPTURE) {
--		pci_err(zr->pci_dev, "%s invalid combinaison\n", __func__);
-+		pci_err(zr->pci_dev, "%s invalid selection type combination\n", __func__);
- 		return -EINVAL;
- 	}
- 
 -- 
-2.27.0
-
+With Best Regards,
+Andy Shevchenko
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
