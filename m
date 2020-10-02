@@ -2,57 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F5A6280BBA
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Oct 2020 02:38:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B5ED280BBC
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Oct 2020 02:40:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3F1F18655C;
-	Fri,  2 Oct 2020 00:38:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1A6B85B73;
+	Fri,  2 Oct 2020 00:40:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VA0MbM1JVb9i; Fri,  2 Oct 2020 00:38:19 +0000 (UTC)
+	with ESMTP id Sqv36g6BvJuV; Fri,  2 Oct 2020 00:40:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CD4098651D;
-	Fri,  2 Oct 2020 00:38:18 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D760884578;
+	Fri,  2 Oct 2020 00:40:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E94951BF9B9
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Oct 2020 00:38:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A03FB1BF9B9
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 00:40:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E612C86BBF
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Oct 2020 00:38:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9A08F272E0
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 00:40:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aI34ZrTRZwQt
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Oct 2020 00:38:15 +0000 (UTC)
-X-Greylist: delayed 00:10:21 by SQLgrey-1.7.6
+ with ESMTP id DYhf-UHcvCng for <devel@linuxdriverproject.org>;
+ Fri,  2 Oct 2020 00:40:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from smtp-node6.yu.net (smtp-node6.yu.net [194.247.192.231])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4DE8E86BDC
- for <driverdev-devel@linuxdriverproject.org>;
- Fri,  2 Oct 2020 00:38:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 4F675204A9
+ for <devel@linuxdriverproject.org>; Fri,  2 Oct 2020 00:40:17 +0000 (UTC)
 Received: from [172.20.10.3] (unknown [105.160.105.75])
- by smtp-node6.yu.net (Postfix) with ESMTPSA id C62D380426;
- Fri,  2 Oct 2020 02:27:35 +0200 (CEST)
+ by smtp-node6.yu.net (Postfix) with ESMTPSA id 3749080411;
+ Fri,  2 Oct 2020 02:27:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=eunet.rs;
- s=eunet_rs; t=1601598468;
+ s=eunet_rs; t=1601598469;
  bh=JvrFpxcCL67Vi38z8MUUxD3CIeAnRlsjp4oSxD+GE+Y=;
  h=Subject:To:From:Date:Reply-To:From:Subject;
- b=mhbS2wyVoBPQ5jiZEGCRonNkXqyP2GvCbvvruwpPE2EQgXS5p7HJmz6DCi4/G0qSJ
- 5WLqKBzOcyRom8Ji2D/JgQ1HZasKwWZB+vGvNqV8WbkTcwu0F75ZoEhOH1JuoCap0s
- +GEEy3fWHGdYIzl18r5utrHYZKTPCb5h+MyNZwjw=
+ b=huF4GyVvnUjijOhKEfiE8GW9Emh+3YSuhLDb+YXJlNk6TzOiQ/Gu/NtZ54hjclJdY
+ 4LqFiD91gF4LcpVcUYJHZ/rFF4DQBskOOHL0PRx7857DD3Gfv+5fMx+Afby46q1s5Y
+ VRZM/5hjLkjxJTbAK4eL3K2G5hJd0ABMlJtBMRvo=
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Spende
 To: Recipients <nkosic@eunet.rs>
 From: Azim Hashim <nkosic@eunet.rs>
-Date: Thu, 01 Oct 2020 17:27:23 -0700
+Date: Thu, 01 Oct 2020 17:27:26 -0700
 X-Virus-Status: Clean
-Message-Id: <20201002003816.E612C86BBF@whitealder.osuosl.org>
+Message-Id: <20201002004017.9A08F272E0@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
