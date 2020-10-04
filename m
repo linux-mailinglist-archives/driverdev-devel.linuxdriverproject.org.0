@@ -2,79 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 884D72827C1
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Oct 2020 03:18:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0582282923
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Oct 2020 08:04:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3A2DF87077;
-	Sun,  4 Oct 2020 01:18:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8C37587066;
+	Sun,  4 Oct 2020 06:04:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UpvT7oqNk--q; Sun,  4 Oct 2020 01:18:15 +0000 (UTC)
+	with ESMTP id VYiOg5Mj-Gnm; Sun,  4 Oct 2020 06:04:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 940AA87004;
-	Sun,  4 Oct 2020 01:18:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 51A6087040;
+	Sun,  4 Oct 2020 06:04:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 11CA71BF95A
- for <devel@linuxdriverproject.org>; Sun,  4 Oct 2020 01:18:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 521C91BF3D0
+ for <devel@linuxdriverproject.org>; Sun,  4 Oct 2020 06:04:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id F285D87008
- for <devel@linuxdriverproject.org>; Sun,  4 Oct 2020 01:18:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3BD0720420
+ for <devel@linuxdriverproject.org>; Sun,  4 Oct 2020 06:04:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xw1Fvl9+f9Ka for <devel@linuxdriverproject.org>;
- Sun,  4 Oct 2020 01:18:02 +0000 (UTC)
+ with ESMTP id JnDyc+Ay4ANW for <devel@linuxdriverproject.org>;
+ Sun,  4 Oct 2020 06:04:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f41.google.com (mail-io1-f41.google.com
- [209.85.166.41])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BB6A686FF2
- for <devel@driverdev.osuosl.org>; Sun,  4 Oct 2020 01:18:02 +0000 (UTC)
-Received: by mail-io1-f41.google.com with SMTP id y13so5656383iow.4
- for <devel@driverdev.osuosl.org>; Sat, 03 Oct 2020 18:18:02 -0700 (PDT)
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4AE0A20412
+ for <devel@driverdev.osuosl.org>; Sun,  4 Oct 2020 06:04:35 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id m16so2155240ljo.6
+ for <devel@driverdev.osuosl.org>; Sat, 03 Oct 2020 23:04:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=c4wxiwbrXT2JhjMEyl9nKKHVccfo3Rywbz9tPs71DLc=;
- b=UakAZm6aVrAE6zwKh02vs9NxKRFRK9eWf89sNPv1hMOZOoR8wmUr0e0uk0OssmXehm
- ndbtBupUACcYakSV4/BKwu9aoS8jCaYJ2ffkpJUsBng/lqBfI5GrpMwayl+0Pbcgw+6f
- yquGHEadSCI1mUp8mHpTRWac7heSWqmIortfPS0KtmZCv7K3WlU5bJDYx1rxaJBei9x7
- jltYK0i/AwiM07spdZuZLLPs8UeWNeSGZKZL2g2cu0688N93tWeVvYIplYFRq3VYcXJ3
- 2ozR9VeW2veiSXmq1ner+frqW9b85QpsMl1F/thghxPklZq7olZWZx5zc+vJLq0iZ+KC
- GgzA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pkwHEUvvT9CYveZ0RPl2bYKL+9nPO/XwtWy0kGlFlV0=;
+ b=PwnGTnW7mg7ygJDJEX6tWdQ3vp+U/XKfJWVVKWKJykq/d34DEdq7cVh7So/9bJSxOG
+ wQLdpVTVL7BvSZk32RXlbRATQIKFwBZ+xrFVZ8JJwdCuwo7gl7Jb2qQFgW/w4t8ix+6f
+ KHJ82YPTwb/aTubPaAt6YiriaI1TR2jItFaHCoiDAf1Fd5uIjSH6+vwhnJbbZy5KeEin
+ IaS6sSZI4tGAFC8Vvn9KKbQWTg2mgxYLtDXOhobP+qjMT/xoVsvcEqpvPgeWcMIMOiYY
+ drutnqLld2vkMb9Qus8vedBsAox06L+dcGSOjRO0Lw4GJp+RFv5uJwhWuqtBddJpyl/A
+ wccg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=c4wxiwbrXT2JhjMEyl9nKKHVccfo3Rywbz9tPs71DLc=;
- b=fvGaW+H9XUvF8FWOLzXP+eH2lf1EcQgt2KKTFtPKi0HJD1afZWkKXm5HZ45GZiCoHB
- ZfHTx7RT0NMI1LrTWJhE4UZWLOIO/RRB3vWwEcJi57vK4acIKmMJ+HuQxQTQVpjvTEmR
- 40N42Vs/n0btj9VM8oIZNQra5hYnObTPMBIhrFG6NFtIWYlUfTRxmKbVR7aGVoaxBwlf
- PErRqCShgPncmAHd7XPCy2le3GkI/tqiHWbYhmSikbXCcPfKMzzHmp2iASlxD4Fg/OJx
- AI5sk5nTiZttY3cQkgwU9JV1d1Yd9pTiFUdmvkl/jD3cSa5Dz9ogfNDdToUjA873yKRu
- aRGA==
-X-Gm-Message-State: AOAM532IV8xVGd5djiwrK4rq6Gmsoow9u5Rsc1BZvBvBNfskNh7866Vv
- U1jtHg0QRqWaZfZkhYUWJWk=
-X-Google-Smtp-Source: ABdhPJyEKhMgm6AKqiDtWQIZ4R3X6X3B6bryr8VurOm3wMLYAQfsvrDIzJU/d9jvp+f5XmYYg9e/BQ==
-X-Received: by 2002:a05:6602:180f:: with SMTP id
- t15mr6490410ioh.4.1601774281986; 
- Sat, 03 Oct 2020 18:18:01 -0700 (PDT)
-Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
- [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id t64sm3575194ild.10.2020.10.03.18.18.01
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pkwHEUvvT9CYveZ0RPl2bYKL+9nPO/XwtWy0kGlFlV0=;
+ b=NwfEnpFgIW3RS8O0Qcz0jiqj/BRS5OfjF/C6FGYbNJyNxkQhbWCT49t+aOeYvyg/dI
+ jZxXWEMPPIKYg9JJHtAIAFkO+DpNaoiLeT/MoeSiBN2dlr7yAyBHm+9/ahI/sTjeBBXW
+ 09ykNS9qfrOdEwspts65EstTVVxiNKa0MGzz/bBSxFyK3fadNvGgHtDYmNN9HxRl8kEi
+ l4UUAZ2NsCdCfBbxYe77Uapf8r5UkRzyUf9Km0vV/u+3JfzllECwlTXGhYhoSKXgV/w9
+ lBaKL+jR0AAjhjcDhI+AyNxP2Gc9Y+9kpSZutedu7S4QE/ra2MGxtSdeR5b8Nq2twMTc
+ G7Hg==
+X-Gm-Message-State: AOAM533PjmDiI4VpwqBvGXO6lfxVA3KZk1JMGeP/QwV+jpegVLoPQgca
+ 59Fvp23JkqJ69Hr7jINw92g=
+X-Google-Smtp-Source: ABdhPJwbDVXzOQqaGuMPSQqvO/6paxEWEO2Y3Ict+a09ikvZf86s/2fkf/vI18YLCKBTpAMz6YVvbg==
+X-Received: by 2002:a05:651c:1352:: with SMTP id
+ j18mr2399111ljb.343.1601791473081; 
+ Sat, 03 Oct 2020 23:04:33 -0700 (PDT)
+Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
+ by smtp.gmail.com with ESMTPSA id d1sm2325443lfq.225.2020.10.03.23.04.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 03 Oct 2020 18:18:01 -0700 (PDT)
-From: Ross Schmidt <ross.schm.dev@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 8/8] staging: rtl8723bs: replace _cancel_timer with
- del_timer_sync
-Date: Sat,  3 Oct 2020 20:17:43 -0500
-Message-Id: <20201004011743.10750-8-ross.schm.dev@gmail.com>
+ Sat, 03 Oct 2020 23:04:32 -0700 (PDT)
+Received: (nullmailer pid 8963 invoked by uid 1000);
+ Sun, 04 Oct 2020 06:09:36 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging: r8188eu: remove unnecessary type casts (struct
+ wlan_bssid_ex *)
+Date: Sun,  4 Oct 2020 09:09:22 +0300
+Message-Id: <20201004060921.8908-1-insafonov@gmail.com>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201004011743.10750-1-ross.schm.dev@gmail.com>
-References: <20201004011743.10750-1-ross.schm.dev@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -88,131 +87,231 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Ross Schmidt <ross.schm.dev@gmail.com>
+Cc: devel@driverdev.osuosl.org, R Veera Kumar <vkor@vkten.in>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ivan Safonov <insafonov@gmail.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Andre Pinto <andrealmeidap1996@gmail.com>, linux-kernel@vger.kernel.org,
+ Julia Lawall <julia.lawall@inria.fr>,
+ Shreeya Patel <shreeya.patel23498@gmail.com>,
+ Peilin Ye <yepeilin.cs@gmail.com>, Soumyajit Deb <debsoumyajit100@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace _cancel_timer with API function del_timer_sync.
+Reduce line length, simplify refactoring.
 
-One instance of del_timer_sync is moved and an unnecessary pair of spin
-locks are removed.
-
-Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c         |  3 +--
- drivers/staging/rtl8723bs/core/rtw_mlme.c        | 16 ++--------------
- drivers/staging/rtl8723bs/hal/sdio_ops.c         |  3 +--
- .../rtl8723bs/include/osdep_service_linux.h      |  6 ------
- 4 files changed, 4 insertions(+), 24 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_ap.c       | 10 +++++-----
+ drivers/staging/rtl8188eu/core/rtw_cmd.c      |  4 ++--
+ drivers/staging/rtl8188eu/core/rtw_mlme.c     |  2 +-
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 20 +++++++++----------
+ .../staging/rtl8188eu/core/rtw_wlan_util.c    |  4 ++--
+ 5 files changed, 20 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 047ec5167f86..2abe205e3453 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -2034,7 +2034,6 @@ void rtw_joinbss_cmd_callback(struct adapter *padapter,  struct cmd_obj *pcmd)
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+index 41535441f82c..2078d87055bf 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ap.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+@@ -422,7 +422,7 @@ static void update_bmc_sta(struct adapter *padapter)
+ 	int i, supportRateNum = 0;
+ 	unsigned int tx_ra_bitmap = 0;
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+-	struct wlan_bssid_ex *pcur_network = (struct wlan_bssid_ex *)&pmlmepriv->cur_network.network;
++	struct wlan_bssid_ex *pcur_network = &pmlmepriv->cur_network.network;
+ 	struct sta_info *psta = rtw_get_bcmc_stainfo(padapter);
  
- void rtw_createbss_cmd_callback(struct adapter *padapter, struct cmd_obj *pcmd)
- {
--	u8 timer_cancelled;
- 	struct sta_info *psta = NULL;
- 	struct wlan_network *pwlan = NULL;
- 	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
-@@ -2049,7 +2048,7 @@ void rtw_createbss_cmd_callback(struct adapter *padapter, struct cmd_obj *pcmd)
- 		_set_timer(&pmlmepriv->assoc_timer, 1);
+ 	if (psta) {
+@@ -599,7 +599,7 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
+ 	struct registry_priv	 *pregpriv = &padapter->registrypriv;
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	struct security_priv *psecuritypriv = &padapter->securitypriv;
+-	struct wlan_bssid_ex *pnetwork = (struct wlan_bssid_ex *)&pmlmepriv->cur_network.network;
++	struct wlan_bssid_ex *pnetwork = &pmlmepriv->cur_network.network;
+ 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info	*pmlmeinfo = &pmlmeext->mlmext_info;
+ 	struct wlan_bssid_ex *pnetwork_mlmeext = &pmlmeinfo->network;
+@@ -711,7 +711,7 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
+ 	update_wireless_mode(padapter);
+ 
+ 	/* update capability after cur_wireless_mode updated */
+-	update_capinfo(padapter, rtw_get_capability((struct wlan_bssid_ex *)pnetwork));
++	update_capinfo(padapter, rtw_get_capability(pnetwork));
+ 
+ 	/* let pnetwork_mlmeext == pnetwork_mlme. */
+ 	memcpy(pnetwork_mlmeext, pnetwork, pnetwork->Length);
+@@ -745,7 +745,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+ 	struct registry_priv *pregistrypriv = &padapter->registrypriv;
+ 	struct security_priv *psecuritypriv = &padapter->securitypriv;
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+-	struct wlan_bssid_ex *pbss_network = (struct wlan_bssid_ex *)&pmlmepriv->cur_network.network;
++	struct wlan_bssid_ex *pbss_network = &pmlmepriv->cur_network.network;
+ 	u8 *ie = pbss_network->ies;
+ 
+ 	/* SSID */
+@@ -982,7 +982,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+ 		HT_info_handler(padapter, (struct ndis_802_11_var_ie *)pHT_info_ie);
  	}
  
--	_cancel_timer(&pmlmepriv->assoc_timer, &timer_cancelled);
-+	del_timer_sync(&pmlmepriv->assoc_timer);
+-	pbss_network->Length = get_wlan_bssid_ex_sz((struct wlan_bssid_ex  *)pbss_network);
++	pbss_network->Length = get_wlan_bssid_ex_sz(pbss_network);
  
- 	spin_lock_bh(&pmlmepriv->lock);
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index e65c5a870b46..9531ba54e95b 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -814,7 +814,6 @@ void rtw_survey_event_callback(struct adapter	*adapter, u8 *pbuf)
- 
- void rtw_surveydone_event_callback(struct adapter	*adapter, u8 *pbuf)
- {
--	u8 timer_cancelled = false;
- 	struct	mlme_priv *pmlmepriv = &(adapter->mlmepriv);
- 
- 	spin_lock_bh(&pmlmepriv->lock);
-@@ -827,22 +826,12 @@ void rtw_surveydone_event_callback(struct adapter	*adapter, u8 *pbuf)
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_surveydone_event_callback: fw_state:%x\n\n", get_fwstate(pmlmepriv)));
- 
- 	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY)) {
--		/* u8 timer_cancelled; */
--
--		timer_cancelled = true;
--		/* _cancel_timer(&pmlmepriv->scan_to_timer, &timer_cancelled); */
--
-+		del_timer_sync(&pmlmepriv->scan_to_timer);
- 		_clr_fwstate_(pmlmepriv, _FW_UNDER_SURVEY);
- 	} else {
- 
- 		RT_TRACE(_module_rtl871x_mlme_c_, _drv_err_, ("nic status =%x, survey done event comes too late!\n", get_fwstate(pmlmepriv)));
+ 	/* issue beacon to start bss network */
+ 	start_bss_network(padapter, (u8 *)pbss_network);
+diff --git a/drivers/staging/rtl8188eu/core/rtw_cmd.c b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+index a97d50081071..5c300865eeb3 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_cmd.c
++++ b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+@@ -330,7 +330,7 @@ u8 rtw_createbss_cmd(struct adapter  *padapter)
+ 	INIT_LIST_HEAD(&pcmd->list);
+ 	pcmd->cmdcode = _CreateBss_CMD_;
+ 	pcmd->parmbuf = (unsigned char *)pdev_network;
+-	pcmd->cmdsz = get_wlan_bssid_ex_sz((struct wlan_bssid_ex *)pdev_network);
++	pcmd->cmdsz = get_wlan_bssid_ex_sz(pdev_network);
+ 	pcmd->rsp = NULL;
+ 	pcmd->rspsz = 0;
+ 	pdev_network->Length = pcmd->cmdsz;
+@@ -387,7 +387,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+ 		}
  	}
--	spin_unlock_bh(&pmlmepriv->lock);
--
--	if (timer_cancelled)
--		_cancel_timer(&pmlmepriv->scan_to_timer, &timer_cancelled);
--
--	spin_lock_bh(&pmlmepriv->lock);
  
- 	rtw_set_signal_stat_timer(&adapter->recvpriv);
+-	psecnetwork = (struct wlan_bssid_ex *)&psecuritypriv->sec_bss;
++	psecnetwork = &psecuritypriv->sec_bss;
+ 	if (!psecnetwork) {
+ 		kfree(pcmd);
  
-@@ -1298,7 +1287,6 @@ static void rtw_joinbss_update_network(struct adapter *padapter, struct wlan_net
- void rtw_joinbss_event_prehandle(struct adapter *adapter, u8 *pbuf)
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+index 14be5a703615..9d12f92994b3 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+@@ -1815,7 +1815,7 @@ void rtw_update_registrypriv_dev_network(struct adapter *adapter)
+ 
+ 	sz = rtw_generate_ie(pregistrypriv);
+ 	pdev_network->ie_length = sz;
+-	pdev_network->Length = get_wlan_bssid_ex_sz((struct wlan_bssid_ex  *)pdev_network);
++	pdev_network->Length = get_wlan_bssid_ex_sz(pdev_network);
+ 
+ 	/* notes: translate ie_length & Length after assign the Length to cmdsz in createbss_cmd(); */
+ 	/* pdev_network->ie_length = cpu_to_le32(sz); */
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 5ca8a2b158d7..b3eddcb83cd0 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -1771,7 +1771,7 @@ static void issue_action_BSSCoexistPacket(struct adapter *padapter)
+ 
+ 			plist = plist->next;
+ 
+-			pbss_network = (struct wlan_bssid_ex *)&pnetwork->network;
++			pbss_network = &pnetwork->network;
+ 
+ 			p = rtw_get_ie(pbss_network->ies + _FIXED_IE_LENGTH_, _HT_CAPABILITY_IE_, &len, pbss_network->ie_length - _FIXED_IE_LENGTH_);
+ 			if (!p || len == 0) { /* non-HT */
+@@ -2131,7 +2131,7 @@ static u8 collect_bss_info(struct adapter *padapter,
+ 	bssid->Configuration.BeaconPeriod =
+ 		get_unaligned_le16(rtw_get_beacon_interval_from_ie(bssid->ies));
+ 
+-	val16 = rtw_get_capability((struct wlan_bssid_ex *)bssid);
++	val16 = rtw_get_capability(bssid);
+ 
+ 	if (val16 & BIT(0)) {
+ 		bssid->InfrastructureMode = Ndis802_11Infrastructure;
+@@ -2177,7 +2177,7 @@ static void start_create_ibss(struct adapter *padapter)
+ 	u8 join_type;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+-	struct wlan_bssid_ex *pnetwork = (struct wlan_bssid_ex *)(&pmlmeinfo->network);
++	struct wlan_bssid_ex *pnetwork = &pmlmeinfo->network;
+ 
+ 	pmlmeext->cur_channel = (u8)pnetwork->Configuration.DSConfig;
+ 	pmlmeinfo->bcn_interval = get_beacon_interval(pnetwork);
+@@ -2186,7 +2186,7 @@ static void start_create_ibss(struct adapter *padapter)
+ 	update_wireless_mode(padapter);
+ 
+ 	/* update capability */
+-	caps = rtw_get_capability((struct wlan_bssid_ex *)pnetwork);
++	caps = rtw_get_capability(pnetwork);
+ 	update_capinfo(padapter, caps);
+ 	if (caps & cap_IBSS) {/* adhoc master */
+ 		val8 = 0xcf;
+@@ -2228,7 +2228,7 @@ static void start_clnt_join(struct adapter *padapter)
+ 	u8 val8;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+-	struct wlan_bssid_ex *pnetwork = (struct wlan_bssid_ex *)(&pmlmeinfo->network);
++	struct wlan_bssid_ex *pnetwork = &pmlmeinfo->network;
+ 	int beacon_timeout;
+ 
+ 	pmlmeext->cur_channel = (u8)pnetwork->Configuration.DSConfig;
+@@ -2238,7 +2238,7 @@ static void start_clnt_join(struct adapter *padapter)
+ 	update_wireless_mode(padapter);
+ 
+ 	/* update capability */
+-	caps = rtw_get_capability((struct wlan_bssid_ex *)pnetwork);
++	caps = rtw_get_capability(pnetwork);
+ 	update_capinfo(padapter, caps);
+ 	if (caps & cap_ESS) {
+ 		Set_MSR(padapter, WIFI_FW_STATION_STATE);
+@@ -4193,7 +4193,7 @@ void report_survey_event(struct adapter *padapter,
+ 
+ 	psurvey_evt = (struct survey_event *)(pevtcmd + sizeof(struct C2HEvent_Header));
+ 
+-	if (collect_bss_info(padapter, precv_frame, (struct wlan_bssid_ex *)&psurvey_evt->bss) == _FAIL) {
++	if (collect_bss_info(padapter, precv_frame, &psurvey_evt->bss) == _FAIL) {
+ 		kfree(pcmd_obj);
+ 		kfree(pevtcmd);
+ 		return;
+@@ -4851,7 +4851,7 @@ u8 createbss_hdl(struct adapter *padapter, u8 *pbuf)
  {
- 	static u8 retry;
--	u8 timer_cancelled;
- 	struct sta_info *ptarget_sta = NULL, *pcur_sta = NULL;
- 	struct	sta_priv *pstapriv = &adapter->stapriv;
- 	struct	mlme_priv *pmlmepriv = &(adapter->mlmepriv);
-@@ -1392,7 +1380,7 @@ void rtw_joinbss_event_prehandle(struct adapter *adapter, u8 *pbuf)
- 			}
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+-	struct wlan_bssid_ex *pnetwork = (struct wlan_bssid_ex *)(&pmlmeinfo->network);
++	struct wlan_bssid_ex *pnetwork = &pmlmeinfo->network;
+ 	struct wlan_bssid_ex *pparm = (struct wlan_bssid_ex *)pbuf;
  
- 			/* s5. Cancel assoc_timer */
--			_cancel_timer(&pmlmepriv->assoc_timer, &timer_cancelled);
-+			del_timer_sync(&pmlmepriv->assoc_timer);
+ 	if (pparm->InfrastructureMode == Ndis802_11APMode) {
+@@ -4913,7 +4913,7 @@ u8 join_cmd_hdl(struct adapter *padapter, u8 *pbuf)
+ 	struct registry_priv *pregpriv = &padapter->registrypriv;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+-	struct wlan_bssid_ex *pnetwork = (struct wlan_bssid_ex *)(&pmlmeinfo->network);
++	struct wlan_bssid_ex *pnetwork = &pmlmeinfo->network;
+ 	struct wlan_bssid_ex *pparm = (struct wlan_bssid_ex *)pbuf;
+ 	u32 i;
  
- 			RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("Cancel assoc_timer\n"));
+@@ -5024,7 +5024,7 @@ u8 disconnect_hdl(struct adapter *padapter, unsigned char *pbuf)
+ 	struct disconnect_parm *param = (struct disconnect_parm *)pbuf;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+-	struct wlan_bssid_ex *pnetwork = (struct wlan_bssid_ex *)(&pmlmeinfo->network);
++	struct wlan_bssid_ex *pnetwork = &pmlmeinfo->network;
+ 	u8 val8;
  
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index 465f51b99d39..369f55d11519 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -945,8 +945,7 @@ void sd_int_dpc(struct adapter *adapter)
- 	if (hal->sdio_hisr & SDIO_HISR_CPWM1) {
- 		struct reportpwrstate_parm report;
+ 	if (is_client_associated_to_ap(padapter))
+diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
+index 8e8f1721b1a2..26f128836a5e 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c
+@@ -906,7 +906,7 @@ int rtw_check_bcn_info(struct adapter  *Adapter, u8 *pframe, u32 packet_len)
+ 	}
  
--		u8 bcancelled;
--		_cancel_timer(&(pwrctl->pwr_rpwm_timer), &bcancelled);
-+		del_timer_sync(&(pwrctl->pwr_rpwm_timer));
+ 	/* check encryption info */
+-	val16 = rtw_get_capability((struct wlan_bssid_ex *)bssid);
++	val16 = rtw_get_capability(bssid);
  
- 		report.state = SdioLocalCmd52Read1Byte(adapter, SDIO_REG_HCPWM1_8723B);
+ 	if (val16 & BIT(4))
+ 		bssid->Privacy = 1;
+@@ -1017,7 +1017,7 @@ unsigned int is_ap_in_tkip(struct adapter *padapter)
+ 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+ 	struct wlan_bssid_ex *cur_network = &pmlmeinfo->network;
  
-diff --git a/drivers/staging/rtl8723bs/include/osdep_service_linux.h b/drivers/staging/rtl8723bs/include/osdep_service_linux.h
-index 4a5bdb93e75d..498d5474010c 100644
---- a/drivers/staging/rtl8723bs/include/osdep_service_linux.h
-+++ b/drivers/staging/rtl8723bs/include/osdep_service_linux.h
-@@ -83,12 +83,6 @@ static inline void _set_timer(_timer *ptimer, u32 delay_time)
- 	mod_timer(ptimer, (jiffies + (delay_time * HZ / 1000)));
- }
+-	if (rtw_get_capability((struct wlan_bssid_ex *)cur_network) & WLAN_CAPABILITY_PRIVACY) {
++	if (rtw_get_capability(cur_network) & WLAN_CAPABILITY_PRIVACY) {
+ 		for (i = sizeof(struct ndis_802_11_fixed_ie); i < pmlmeinfo->network.ie_length;) {
+ 			pIE = (struct ndis_802_11_var_ie *)(pmlmeinfo->network.ies + i);
  
--static inline void _cancel_timer(_timer *ptimer, u8 *bcancelled)
--{
--	del_timer_sync(ptimer);
--	*bcancelled =  true;/* true == 1; false == 0 */
--}
--
- static inline void _init_workitem(_workitem *pwork, void *pfunc, void *cntx)
- {
- 	INIT_WORK(pwork, pfunc);
 -- 
 2.26.2
 
