@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 107732827BD
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B48912827BE
 	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Oct 2020 03:18:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 91EE285424;
+	by silver.osuosl.org (Postfix) with ESMTP id A959D2035E;
 	Sun,  4 Oct 2020 01:18:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0l-plKPRUF9q; Sun,  4 Oct 2020 01:18:08 +0000 (UTC)
+	with ESMTP id CIb4RjOJjCKt; Sun,  4 Oct 2020 01:18:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DC9D48545B;
-	Sun,  4 Oct 2020 01:18:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 870DB2033B;
+	Sun,  4 Oct 2020 01:18:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 352171BF954
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E12C51BF5A9
  for <devel@linuxdriverproject.org>; Sun,  4 Oct 2020 01:18:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 31BE986130
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DE73F85429
  for <devel@linuxdriverproject.org>; Sun,  4 Oct 2020 01:18:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xDzny3zCFhvt for <devel@linuxdriverproject.org>;
- Sun,  4 Oct 2020 01:17:59 +0000 (UTC)
+ with ESMTP id bJQFBzF_XhzK for <devel@linuxdriverproject.org>;
+ Sun,  4 Oct 2020 01:18:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 600B486094
- for <devel@driverdev.osuosl.org>; Sun,  4 Oct 2020 01:17:59 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id g7so5626450iov.13
- for <devel@driverdev.osuosl.org>; Sat, 03 Oct 2020 18:17:59 -0700 (PDT)
+Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
+ [209.85.166.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1969385424
+ for <devel@driverdev.osuosl.org>; Sun,  4 Oct 2020 01:18:00 +0000 (UTC)
+Received: by mail-il1-f193.google.com with SMTP id f15so4780859ilj.2
+ for <devel@driverdev.osuosl.org>; Sat, 03 Oct 2020 18:18:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NYqpElu1kFYTJh2MLTbd/IIRjPhEHNaagHMg3GXSek0=;
- b=umRnfVtkmnsvMffpKB8uYpxleLUwqrOcW/Rxy1xXq2AM8QvfgckOM8Ukw0PD1/LEh+
- EgZPFOTCC0+6Ck3D8X6dMEOfDVv+x81sBPU7F6sIGNFmnJRjbsGVOnaM2dsvokK0OeoS
- os09i2rkRH4NK50Xouvolw2cMd679evS/JxNOW8DuyFKyj1P8rVNtxMuaA37RGPee6sO
- ZitAAdN80Vy8AXyjzYVElJSjgYQhJU3gSueUK0gTjki+4Jppi8BwDo6ColZpLNDwYZZi
- Be8xNMbpm5+sJE2Z14FO70gm4zFdy1u9JMEOPaQGLJwlaxPU6b9gC3jD3ZI7lskoXcUK
- Q/Ew==
+ bh=hWcX8nDRcXPwQhru07wwR3wgE1gSI9bcbHDH0d1P4/g=;
+ b=TzY7lhBrpid96fdyXG+eaDEsQSwYcgfflWa2ms+ZOibe6+4+fXXOabZN8/j6jdIdoU
+ wxLZ6JLMeuySA2mCziILZQfb1a9HeQ1Fx0B5ztGm4YcRKE5aV9/e+hFVYfyHWekKxMl2
+ 6Y/QIEtj8UeSKGeI61MK/sYOwmWXcrDXQJ+z2RQ7weK4Kk7x08l+iTyvWFGc+jgdLE/O
+ NRd7jPYkNjy82g0qIw/4TEaI43g559GrvBD3mZbTyfZzazt1kT0G/A0u205MsY7zHpWA
+ de9X1B3KeGJh0f7lcc0y0l5rFYIHqqZ0J4uI+iZ7B66t2dDrtpizuM3PWQGUDntWk+XK
+ eOUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=NYqpElu1kFYTJh2MLTbd/IIRjPhEHNaagHMg3GXSek0=;
- b=LPf6LMd7s4KDQahXPUKWvs7IbwZb9yRtdi/n1Ami+aOefA2/Izxj1gazWqOQWUnCZ6
- afMVG/rRljjiSSb8JIJGsFpH0u7FgGdBVoutFuBLRBAqc3udBkZeNt23P26DVWXUVPhw
- o5tX/4T7Kv/aHMG+wSBRBT6TJhGAQd3U0XCtgQxaTv9r/gDEFdmjSrIPoGObbnCIyYvR
- juFPGjV7tNypoDp77LhwtNbL4nxdWrgwUli4xGN9iJiE0Rsol5iB48pNrrGBjNi0zLHV
- 2rY7xi6fxwcifUlMp0N+HxW2iq3r5LLG8h9xliK1G5qHIe8iIOJGqxGBE6/+UtgUocBR
- 285g==
-X-Gm-Message-State: AOAM530nMJHQosVgClJ79comMsn735QkkpuaqYTu9ON9DynXxzjjk3Ww
- JSzyJmi+a2dDEiIeqviinj0=
-X-Google-Smtp-Source: ABdhPJzzZm/fF5UBKvteZiHQOJLZubxL3vEMwbShXgXHXLOfaIqL1jT1oPcUeIBCrD+IM6IR2LXf0A==
-X-Received: by 2002:a5e:d716:: with SMTP id v22mr6616296iom.121.1601774278751; 
- Sat, 03 Oct 2020 18:17:58 -0700 (PDT)
+ bh=hWcX8nDRcXPwQhru07wwR3wgE1gSI9bcbHDH0d1P4/g=;
+ b=lgsHue5VxvInl65lfYqaZTV8ANQb0N/uZUf4+vPy0YNXNTb0dDsaMf6yA+JoeWiBUm
+ IEb295HkhoIXpIdc0JnSLsiDRY9AKGkzB/Cy43nISCBDuZn3pSnEPpBYflff6wgYZmPs
+ y231lehCPNTelEV3nTDP1Sev6keUOuBjSTqMMEa2Z9CSqR4MEps2s+4ojstOwv8lYC5Z
+ Ua8Od+mqymseVAZraQeMCDFIKGYu6ZivG7fYfSYK8AT18ICFPZCn6DT70BCwLedsI5fR
+ BDy8/QYEwVYD4nlGIjqCVp5wVUVDycLLGuG/X9Hw1qr2HU1NSKcKuBjRE6MzgAsRFfZ3
+ Y3dg==
+X-Gm-Message-State: AOAM532JeruuzKPHDmnx9L6pqjdrAAw86jbmnBaeyPLiAlcurI9JnxD1
+ MZpfUWqyD27CPpNUiG1hXoA=
+X-Google-Smtp-Source: ABdhPJxMGi5K5+kmnjtsmPs7QdeWOkjrJZfOEiMPen7xyRDKJMg3CAro/Vmi+ZkDYsNpCOflSXYQ+w==
+X-Received: by 2002:a92:d44f:: with SMTP id r15mr6964373ilm.236.1601774279419; 
+ Sat, 03 Oct 2020 18:17:59 -0700 (PDT)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
  by smtp.gmail.com with ESMTPSA id t64sm3575194ild.10.2020.10.03.18.17.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 03 Oct 2020 18:17:58 -0700 (PDT)
+ Sat, 03 Oct 2020 18:17:59 -0700 (PDT)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 3/8] staging: rtl8723bs: replace _RND8 with round_up()
-Date: Sat,  3 Oct 2020 20:17:38 -0500
-Message-Id: <20201004011743.10750-3-ross.schm.dev@gmail.com>
+Subject: [PATCH 4/8] staging: rtl8723bs: remove unused macros
+Date: Sat,  3 Oct 2020 20:17:39 -0500
+Message-Id: <20201004011743.10750-4-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201004011743.10750-1-ross.schm.dev@gmail.com>
 References: <20201004011743.10750-1-ross.schm.dev@gmail.com>
@@ -93,49 +93,86 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use round_up instead of inline _RND8.
+Remove several macros in osdep_service.h because they are not used.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c    |  2 +-
- drivers/staging/rtl8723bs/include/osdep_service.h | 11 -----------
- 2 files changed, 1 insertion(+), 12 deletions(-)
+ .../staging/rtl8723bs/include/osdep_service.h | 57 -------------------
+ 1 file changed, 57 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-index b9ccaad748ea..1fbf89cb72d0 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-@@ -369,7 +369,7 @@ static void rtl8723bs_recv_tasklet(struct tasklet_struct *t)
- 				}
- 			}
- 
--			pkt_offset = _RND8(pkt_offset);
-+			pkt_offset = round_up(pkt_offset, 8);
- 			precvbuf->pdata += pkt_offset;
- 			ptr = precvbuf->pdata;
- 			precvframe = NULL;
 diff --git a/drivers/staging/rtl8723bs/include/osdep_service.h b/drivers/staging/rtl8723bs/include/osdep_service.h
-index 8f0e5cbf485b..c5e9a4eebd27 100644
+index c5e9a4eebd27..da4aa3e71a4b 100644
 --- a/drivers/staging/rtl8723bs/include/osdep_service.h
 +++ b/drivers/staging/rtl8723bs/include/osdep_service.h
-@@ -132,17 +132,6 @@ static inline int rtw_bug_check(void *parg1, void *parg2, void *parg3, void *par
+@@ -151,68 +151,11 @@ extern void rtw_free_netdev(struct net_device * netdev);
+ /* Macros for handling unaligned memory accesses */
  
- #define _RND(sz, r) ((((sz)+((r)-1))/(r))*(r))
+ #define RTW_GET_BE16(a) ((u16) (((a)[0] << 8) | (a)[1]))
+-#define RTW_PUT_BE16(a, val)			\
+-	do {					\
+-		(a)[0] = ((u16) (val)) >> 8;	\
+-		(a)[1] = ((u16) (val)) & 0xff;	\
+-	} while (0)
  
--static inline u32 _RND8(u32 sz)
--{
+ #define RTW_GET_LE16(a) ((u16) (((a)[1] << 8) | (a)[0]))
+-#define RTW_PUT_LE16(a, val)			\
+-	do {					\
+-		(a)[1] = ((u16) (val)) >> 8;	\
+-		(a)[0] = ((u16) (val)) & 0xff;	\
+-	} while (0)
+ 
+ #define RTW_GET_BE24(a) ((((u32) (a)[0]) << 16) | (((u32) (a)[1]) << 8) | \
+ 			 ((u32) (a)[2]))
+-#define RTW_PUT_BE24(a, val)					\
+-	do {							\
+-		(a)[0] = (u8) ((((u32) (val)) >> 16) & 0xff);	\
+-		(a)[1] = (u8) ((((u32) (val)) >> 8) & 0xff);	\
+-		(a)[2] = (u8) (((u32) (val)) & 0xff);		\
+-	} while (0)
 -
--	u32 val;
+-#define RTW_GET_BE32(a) ((((u32) (a)[0]) << 24) | (((u32) (a)[1]) << 16) | \
+-			 (((u32) (a)[2]) << 8) | ((u32) (a)[3]))
+-#define RTW_PUT_BE32(a, val)					\
+-	do {							\
+-		(a)[0] = (u8) ((((u32) (val)) >> 24) & 0xff);	\
+-		(a)[1] = (u8) ((((u32) (val)) >> 16) & 0xff);	\
+-		(a)[2] = (u8) ((((u32) (val)) >> 8) & 0xff);	\
+-		(a)[3] = (u8) (((u32) (val)) & 0xff);		\
+-	} while (0)
 -
--	val = ((sz >> 3) + ((sz & 7) ? 1 : 0)) << 3;
+-#define RTW_GET_LE32(a) ((((u32) (a)[3]) << 24) | (((u32) (a)[2]) << 16) | \
+-			 (((u32) (a)[1]) << 8) | ((u32) (a)[0]))
+-#define RTW_PUT_LE32(a, val)					\
+-	do {							\
+-		(a)[3] = (u8) ((((u32) (val)) >> 24) & 0xff);	\
+-		(a)[2] = (u8) ((((u32) (val)) >> 16) & 0xff);	\
+-		(a)[1] = (u8) ((((u32) (val)) >> 8) & 0xff);	\
+-		(a)[0] = (u8) (((u32) (val)) & 0xff);		\
+-	} while (0)
 -
--	return val;
+-#define RTW_GET_BE64(a) ((((u64) (a)[0]) << 56) | (((u64) (a)[1]) << 48) | \
+-			 (((u64) (a)[2]) << 40) | (((u64) (a)[3]) << 32) | \
+-			 (((u64) (a)[4]) << 24) | (((u64) (a)[5]) << 16) | \
+-			 (((u64) (a)[6]) << 8) | ((u64) (a)[7]))
+-#define RTW_PUT_BE64(a, val)				\
+-	do {						\
+-		(a)[0] = (u8) (((u64) (val)) >> 56);	\
+-		(a)[1] = (u8) (((u64) (val)) >> 48);	\
+-		(a)[2] = (u8) (((u64) (val)) >> 40);	\
+-		(a)[3] = (u8) (((u64) (val)) >> 32);	\
+-		(a)[4] = (u8) (((u64) (val)) >> 24);	\
+-		(a)[5] = (u8) (((u64) (val)) >> 16);	\
+-		(a)[6] = (u8) (((u64) (val)) >> 8);	\
+-		(a)[7] = (u8) (((u64) (val)) & 0xff);	\
+-	} while (0)
 -
--}
--
- #ifndef MAC_FMT
- #define MAC_FMT "%pM"
- #endif
+-#define RTW_GET_LE64(a) ((((u64) (a)[7]) << 56) | (((u64) (a)[6]) << 48) | \
+-			 (((u64) (a)[5]) << 40) | (((u64) (a)[4]) << 32) | \
+-			 (((u64) (a)[3]) << 24) | (((u64) (a)[2]) << 16) | \
+-			 (((u64) (a)[1]) << 8) | ((u64) (a)[0]))
+ 
+ void rtw_buf_free(u8 **buf, u32 *buf_len);
+ void rtw_buf_update(u8 **buf, u32 *buf_len, u8 *src, u32 src_len);
 -- 
 2.26.2
 
