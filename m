@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A39F9284335
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Oct 2020 02:16:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34A622842C7
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Oct 2020 01:00:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A9780850E1;
-	Tue,  6 Oct 2020 00:16:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8154B85785;
+	Mon,  5 Oct 2020 23:00:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oQtfabLAhojm; Tue,  6 Oct 2020 00:16:07 +0000 (UTC)
+	with ESMTP id B2CSGeRNf0b4; Mon,  5 Oct 2020 23:00:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2AC1F850D6;
-	Tue,  6 Oct 2020 00:16:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E20BC855F6;
+	Mon,  5 Oct 2020 23:00:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 564251BF23C
- for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 00:16:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DE4941BF3A1
+ for <devel@linuxdriverproject.org>; Mon,  5 Oct 2020 23:00:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 532A7850D6
- for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 00:16:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C9658203B0
+ for <devel@linuxdriverproject.org>; Mon,  5 Oct 2020 23:00:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mhLcywrZ0lLV for <devel@linuxdriverproject.org>;
- Tue,  6 Oct 2020 00:16:00 +0000 (UTC)
+ with ESMTP id Lu8d7Gk3IWyn for <devel@linuxdriverproject.org>;
+ Mon,  5 Oct 2020 23:00:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CD8F685081
- for <devel@driverdev.osuosl.org>; Tue,  6 Oct 2020 00:15:57 +0000 (UTC)
-IronPort-SDR: ysaaHEV0BgHKKQLbhLizu/2rWv1pc1/ViovPE/dfGRhGLt0yiPC3XojIDqWU1vBEIN80g0n1CR
- laWBd3lrJJ1A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9765"; a="164427784"
-X-IronPort-AV: E=Sophos;i="5.77,341,1596524400"; d="scan'208";a="164427784"
+ by silver.osuosl.org (Postfix) with ESMTPS id 87C872040C
+ for <devel@driverdev.osuosl.org>; Mon,  5 Oct 2020 23:00:06 +0000 (UTC)
+IronPort-SDR: EHogu+klEjjW/DdvA9emg6FAkZxlH2lenJwB61trE2DAqNrjtjY3GLsR7NCEz38yFxL8VCGEEO
+ P/WMWzAd4gGA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9765"; a="164409424"
+X-IronPort-AV: E=Sophos;i="5.77,340,1596524400"; d="scan'208";a="164409424"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga102.jf.intel.com with ESMTP; 05 Oct 2020 17:08:40 -0700
-IronPort-SDR: JZTeY0dGqaHCGW/iMg/zGN/eiq4P0Plbx2ApDpUI2/mRoUYoaBcONcn932W6werOq9S6ePkbpq
- s2Niyjxvl1rg==
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP; 05 Oct 2020 15:59:59 -0700
+IronPort-SDR: EpeWifRNBb3WYcqrIbf0CzW696wsavgh9br3RVuXoj486ccknS8S6a+31j74MVrfMHZeftfQsy
+ Z1KW9exQFEpw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,341,1596524400"; d="scan'208";a="417616010"
+X-IronPort-AV: E=Sophos;i="5.77,340,1596524400"; d="scan'208";a="296609325"
 Received: from lkp-server02.sh.intel.com (HELO b5ae2f167493) ([10.239.97.151])
- by fmsmga001.fm.intel.com with ESMTP; 05 Oct 2020 14:00:53 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 05 Oct 2020 14:00:51 -0700
 Received: from kbuild by b5ae2f167493 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1kPXbD-0000ww-Ju; Mon, 05 Oct 2020 21:00:47 +0000
-Date: Tue, 06 Oct 2020 05:00:05 +0800
+ id 1kPXbD-0000wu-JZ; Mon, 05 Oct 2020 21:00:47 +0000
+Date: Tue, 06 Oct 2020 05:00:07 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- a944a1fb9a8286fb9e4bbd0180ebd53353c7f412
-Message-ID: <5f7b8955.MTD4nABLjk9MPHwV%lkp@intel.com>
+Subject: [staging:ion_removal] BUILD SUCCESS
+ f6ecd19b143570a06987d40b15d78f8ffcbe5d0c
+Message-ID: <5f7b8957.ufDc2QnMcqwO44GG%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -74,12 +74,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
-branch HEAD: a944a1fb9a8286fb9e4bbd0180ebd53353c7f412  Merge 5.9-rc8 into staging-next
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  ion_removal
+branch HEAD: f6ecd19b143570a06987d40b15d78f8ffcbe5d0c  staging: ion: remove from the tree
 
 elapsed time: 723m
 
-configs tested: 143
+configs tested: 173
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -101,6 +101,7 @@ riscv                          rv32_defconfig
 arc                        nsimosci_defconfig
 sh                          rsk7201_defconfig
 powerpc                           allnoconfig
+h8300                            allyesconfig
 sh                        sh7763rdp_defconfig
 powerpc                     sbc8548_defconfig
 mips                      maltasmvp_defconfig
@@ -110,6 +111,12 @@ powerpc                      katmai_defconfig
 mips                          ath79_defconfig
 powerpc                     skiroot_defconfig
 powerpc                     ksi8560_defconfig
+mips                           ip28_defconfig
+sh                   sh7724_generic_defconfig
+m68k                          atari_defconfig
+arc                            hsdk_defconfig
+mips                        qi_lb60_defconfig
+mips                      maltaaprp_defconfig
 arm                        shmobile_defconfig
 powerpc                    socrates_defconfig
 mips                        jmr3927_defconfig
@@ -121,10 +128,22 @@ arm                         axm55xx_defconfig
 arm                          moxart_defconfig
 mips                           xway_defconfig
 sh                              ul2_defconfig
+m68k                       m5475evb_defconfig
+sh                         apsh4a3a_defconfig
+mips                            ar7_defconfig
+powerpc                        warp_defconfig
+arm                        multi_v7_defconfig
+sh                        edosk7705_defconfig
 i386                             alldefconfig
 nds32                             allnoconfig
 microblaze                          defconfig
 powerpc                        icon_defconfig
+nds32                               defconfig
+m68k                          amiga_defconfig
+arm                       imx_v6_v7_defconfig
+powerpc                     tqm8555_defconfig
+ia64                         bigsur_defconfig
+ia64                             allyesconfig
 m68k                         apollo_defconfig
 arm                        spear6xx_defconfig
 mips                          malta_defconfig
@@ -137,12 +156,20 @@ powerpc                      makalu_defconfig
 arm                            zeus_defconfig
 mips                         tb0219_defconfig
 sh                             shx3_defconfig
+arm                        multi_v5_defconfig
+xtensa                           alldefconfig
 arm                       omap2plus_defconfig
 m68k                            q40_defconfig
 mips                     decstation_defconfig
 arm                           spitz_defconfig
 arm                            hisi_defconfig
 openrisc                    or1ksim_defconfig
+powerpc                         ps3_defconfig
+powerpc                  mpc885_ads_defconfig
+sh                          rsk7269_defconfig
+m68k                            mac_defconfig
+powerpc                     tqm8540_defconfig
+h8300                            alldefconfig
 powerpc                      walnut_defconfig
 sh                ecovec24-romimage_defconfig
 sh                          r7785rp_defconfig
@@ -165,22 +192,25 @@ arm                        spear3xx_defconfig
 riscv                    nommu_virt_defconfig
 arm                            dove_defconfig
 sh                           se7619_defconfig
+mips                  maltasmvp_eva_defconfig
+powerpc               mpc834x_itxgp_defconfig
+s390                             alldefconfig
+arm                           h5000_defconfig
+arm                      integrator_defconfig
+arm                         orion5x_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
-ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
 m68k                             allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
 c6x                              allyesconfig
-nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
 alpha                               defconfig
 alpha                            allyesconfig
 xtensa                           allyesconfig
-h8300                            allyesconfig
 arc                                 defconfig
 sh                               allmodconfig
 parisc                              defconfig
