@@ -1,91 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9EB4285156
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Oct 2020 20:04:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC3ED285168
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Oct 2020 20:13:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9FA1F855BD;
-	Tue,  6 Oct 2020 18:04:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 73F3C870E2;
+	Tue,  6 Oct 2020 18:13:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mV7dwPLVDkpE; Tue,  6 Oct 2020 18:04:25 +0000 (UTC)
+	with ESMTP id dNn+u5hh8Lme; Tue,  6 Oct 2020 18:13:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C41DE866D7;
-	Tue,  6 Oct 2020 18:04:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CBE32870E4;
+	Tue,  6 Oct 2020 18:13:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E8DEA1BF847
- for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 18:04:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F1B7D1BF3E1
+ for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 18:13:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E54F68503D
- for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 18:04:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EE7EB846AD
+ for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 18:13:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TQWpBCX2WHww for <devel@linuxdriverproject.org>;
- Tue,  6 Oct 2020 18:04:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EFC17855BD
- for <devel@driverdev.osuosl.org>; Tue,  6 Oct 2020 18:04:20 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 096I3oNb174234;
- Tue, 6 Oct 2020 18:04:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=f5rjVfTDVP3MQlOMoVnck8eGw480j7JEUZw/oFMWa8Q=;
- b=alYozzxTXUk3ny1uipjt6jMJ9ZcRvJJE55hKOStixZuAh8kvkTzUWrGhsSXEmm36giMk
- 8/ku5B6yRzU85K65aqX8m0KRMZzQ14puNveevCsFLrMKt2hdecBuYxoFoqRNyGd8KTeI
- qC6ujtwgQd1slBElZoA1LxCYKie0Liir+cJvwQDg1AamkgJcCrycAmOI2UZ3lz+ZOi29
- QpOOHXFS5tFyoSkyju4Eh24aG3yvpB9to2FpN5420sAiZyk83gAaI2JxaQrn561vaLdM
- /MH042qB5PxjoTJv4LmmoQEkWXTi+FetjBP96WUh87RPC8HCkqrb8IeP5z7OiOKEDv8t 8Q== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 33xhxmwfuv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 06 Oct 2020 18:04:20 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 096I0pKR125555;
- Tue, 6 Oct 2020 18:04:19 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 33y36ycjm3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 06 Oct 2020 18:04:19 +0000
-Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 096I4Hej002415;
- Tue, 6 Oct 2020 18:04:17 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 06 Oct 2020 11:04:16 -0700
-Date: Tue, 6 Oct 2020 21:04:10 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Leonid Kushnir <leonf008@gmail.com>
+ with ESMTP id TAygB6aSG-Nm for <devel@linuxdriverproject.org>;
+ Tue,  6 Oct 2020 18:13:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0172.hostedemail.com
+ [216.40.44.172])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 03318828FA
+ for <devel@driverdev.osuosl.org>; Tue,  6 Oct 2020 18:13:39 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay03.hostedemail.com (Postfix) with ESMTP id C308F837F24D;
+ Tue,  6 Oct 2020 18:13:37 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3874:4321:4823:5007:8660:10004:10226:10400:10848:11232:11658:11914:12297:12740:12760:12895:13019:13069:13148:13230:13311:13357:13439:14659:14721:21080:21451:21627:21939:21990:30012:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:62, LUA_SUMMARY:none
+X-HE-Tag: light72_11076f4271c8
+X-Filterd-Recvd-Size: 1709
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf03.hostedemail.com (Postfix) with ESMTPA;
+ Tue,  6 Oct 2020 18:13:35 +0000 (UTC)
+Message-ID: <9a065558a24de42395d1175798f05272b07311c2.camel@perches.com>
 Subject: Re: [PATCH 2/2] media: staging: atomisp: Removed else branch in
  function
-Message-ID: <20201006180410.GH4282@kadam>
-References: <20201006081721.GA35979@linux>
+From: Joe Perches <joe@perches.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, Leonid Kushnir
+ <leonf008@gmail.com>
+Date: Tue, 06 Oct 2020 11:13:34 -0700
+In-Reply-To: <20201006180410.GH4282@kadam>
+References: <20201006081721.GA35979@linux> <20201006180410.GH4282@kadam>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201006081721.GA35979@linux>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9765
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- adultscore=0
- bulkscore=0 spamscore=0 malwarescore=0 suspectscore=0 phishscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2010060116
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9765
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- malwarescore=0 bulkscore=0
- impostorscore=0 lowpriorityscore=0 suspectscore=0 phishscore=0
- mlxlogscore=999 adultscore=0 clxscore=1011 spamscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2010060117
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,63 +79,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 06, 2020 at 10:17:21AM +0200, Leonid Kushnir wrote:
-> This patch fixes the checkpatch.pl warning :
+On Tue, 2020-10-06 at 21:04 +0300, Dan Carpenter wrote:
+> Code should generally do "error handling" instead of "success handling".
+
+Maybe something to add to coding-style
+(in '6} Functions' maybe?)...
+
+> That way the success path is always indented one tab and the error path
+> is indented two tabs.  I like to say that the call and the error handling
+> are part of the same thing, but with success handling, it's like
+> do the call, do more stuff, go back to the error handling from the
+> earlier call.
+[]
+> Anyway, TLDR, please write it like this:
 > 
-> WARNING: else is not generally useful after a break or return
-> 
-> Expressions under 'else' branch in function 'gc0310_s_power' are
-> executed whenever the exppression in 'if' is False. Otherwise, return
-> from function occurs. Therefore, there is no need in 'else', and it has
-> been removed.
-> 
-> Signed-off-by: Leonid Kushnir <leonf008@gmail.com>
-> ---
->  drivers/staging/media/atomisp/i2c/atomisp-gc0310.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c b/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c
-> index 6be3ee1d93a5..8201c15b5769 100644
-> --- a/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c
-> +++ b/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c
-> @@ -874,11 +874,10 @@ static int gc0310_s_power(struct v4l2_subdev *sd, int on)
->  
->  	if (on == 0)
+> 	if (on == 0)
 >  		return power_down(sd);
-> -	else {
-> -		ret = power_up(sd);
-> -		if (!ret)
-> -			return gc0310_init(sd);
-> -	}
-> +	ret = power_up(sd);
-> +	if (!ret)
+> 
+> 	ret = power_up(sd);
+> 	if (ret)
+> 		return ret;
+> 
+> 	return gc0310_init(sd);
 
-Flip this check around as well.
+Much nicer, thanks for taking the time to write it.
 
-> +		return gc0310_init(sd);
-> +
->  	return ret;
 
-Code should generally do "error handling" instead of "success handling".
-That way the success path is always indented one tab and the error path
-is indented two tabs.  I like to say that the call and the error handling
-are part of the same thing, but with success handling, it's like
-do the call, do more stuff, go back to the error handling from the
-earlier call.
 
-Anyway, TLDR, please write it like this:
-
-	if (on == 0)
- 		return power_down(sd);
-
-	ret = power_up(sd);
-	if (ret)
-		return ret;
-
-	return gc0310_init(sd);
-
-regards,
-dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
