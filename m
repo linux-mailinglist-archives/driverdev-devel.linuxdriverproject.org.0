@@ -1,64 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC3ED285168
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Oct 2020 20:13:45 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A2E8285319
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Oct 2020 22:29:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 73F3C870E2;
-	Tue,  6 Oct 2020 18:13:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA941214EB;
+	Tue,  6 Oct 2020 20:29:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dNn+u5hh8Lme; Tue,  6 Oct 2020 18:13:43 +0000 (UTC)
+	with ESMTP id 0sGkr0kT7LDA; Tue,  6 Oct 2020 20:29:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CBE32870E4;
-	Tue,  6 Oct 2020 18:13:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 59D3C2107A;
+	Tue,  6 Oct 2020 20:29:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F1B7D1BF3E1
- for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 18:13:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 017501BF28E
+ for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 20:29:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EE7EB846AD
- for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 18:13:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F08FA864FB
+ for <devel@linuxdriverproject.org>; Tue,  6 Oct 2020 20:29:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TAygB6aSG-Nm for <devel@linuxdriverproject.org>;
- Tue,  6 Oct 2020 18:13:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0172.hostedemail.com
- [216.40.44.172])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 03318828FA
- for <devel@driverdev.osuosl.org>; Tue,  6 Oct 2020 18:13:39 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id C308F837F24D;
- Tue,  6 Oct 2020 18:13:37 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3874:4321:4823:5007:8660:10004:10226:10400:10848:11232:11658:11914:12297:12740:12760:12895:13019:13069:13148:13230:13311:13357:13439:14659:14721:21080:21451:21627:21939:21990:30012:30054:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:62, LUA_SUMMARY:none
-X-HE-Tag: light72_11076f4271c8
-X-Filterd-Recvd-Size: 1709
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf03.hostedemail.com (Postfix) with ESMTPA;
- Tue,  6 Oct 2020 18:13:35 +0000 (UTC)
-Message-ID: <9a065558a24de42395d1175798f05272b07311c2.camel@perches.com>
-Subject: Re: [PATCH 2/2] media: staging: atomisp: Removed else branch in
+ with ESMTP id FkQpS4LGHx6c for <devel@linuxdriverproject.org>;
+ Tue,  6 Oct 2020 20:29:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
+ [209.85.167.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3C4ED8669C
+ for <devel@driverdev.osuosl.org>; Tue,  6 Oct 2020 20:29:08 +0000 (UTC)
+Received: by mail-lf1-f68.google.com with SMTP id u8so16523257lff.1
+ for <devel@driverdev.osuosl.org>; Tue, 06 Oct 2020 13:29:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:cc:subject:message-id:mime-version:content-disposition;
+ bh=/mtugB3eJpyIDsDQWTsWaRCuOKG5/5/BmB1XvAxGCm0=;
+ b=qwzZOCKYimmfUnBsUrCcujD3ub16wyhUJUO3q+wsp3fNxdDZ/SuDHCnczA8zaUdmRK
+ YVevZqbZ7iIhQcfIhITdqrIAVR7BKpO7NnEIRQ5bsmhZ+U0w5gZNn598YVbIjw8Po6xr
+ pDZBsVsWYi7xmx/6ol0TAMUQVOf4F9f+VPY/uOnIlRQgG3kAJN2a3u725fx+DTiZ/+gs
+ JbQ0MbyVCBgKxB1+RB7oYRG1Hy8VMBktMllPU0RSTOaDQBWsrmg4bxN4A1zJyuShZVvL
+ c1XCDKf0LxFkrP5cRiY2Lj38YziSosvu8jVJiAK7PnC+00XQJB9zyHcmf6P4iBFiCckW
+ ANOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=/mtugB3eJpyIDsDQWTsWaRCuOKG5/5/BmB1XvAxGCm0=;
+ b=nTGsv6uKYpgGfIUdm0dGc+bI2p05zqxjgyRFqtPOdYjQmFaEzckvjAm1GDrX7kv5nJ
+ 9wiWwo5YCGD0RBu4V+rm6bxB4nOcx7vkxSPwIY89soC16F/znwkN+Piagx6l6SpLfl6L
+ 9qCIRNUCZkJGVmCC5jFzMWCw+7nvivMqXALFJSVWrarZJfly83fb8hYhAEUIpVQJ0q0V
+ TflRU3MOQUQyIKLDj/LOXqrdjlYrjUoQHVMVm9utm0FmjR6d2cncKXOGgsaaL2ZNBKYQ
+ KQUsjF1iv+mECq82Jjr0CIRBbheypgjkcxw9BvfaDekA32T1xI8E6uIePml/ApV34MVe
+ h14w==
+X-Gm-Message-State: AOAM530Iml4/LA64ZmLtHPFUfs2LMKZGKPTeVXBXVSu2SgCtknWH8fhV
+ 8d80I7mdjmDUuNYg0n5BEIE=
+X-Google-Smtp-Source: ABdhPJwEWZf0/uTKQvZhiTzZbFP7mYa2rbczBGdn9OD85tMXtLTfU+4xR+LGTugu57qmNkoQqFj/nQ==
+X-Received: by 2002:ac2:4154:: with SMTP id c20mr999157lfi.236.1602016146126; 
+ Tue, 06 Oct 2020 13:29:06 -0700 (PDT)
+Received: from linux ([185.17.130.128])
+ by smtp.gmail.com with ESMTPSA id m204sm4331lfd.307.2020.10.06.13.29.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Oct 2020 13:29:05 -0700 (PDT)
+Date: Tue, 6 Oct 2020 22:29:03 +0200
+From: Leonid Kushnir <leonf008@gmail.com>
+Subject: [PATCH 3/3] media: staging: atomisp: Corrected error handling in
  function
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Leonid Kushnir
- <leonf008@gmail.com>
-Date: Tue, 06 Oct 2020 11:13:34 -0700
-In-Reply-To: <20201006180410.GH4282@kadam>
-References: <20201006081721.GA35979@linux> <20201006180410.GH4282@kadam>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+Message-ID: <20201006202903.GA8346@linux>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,38 +84,45 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org, sakari.ailus@linux.intel.com, mchehab@kernel.org,
- linux-media@vger.kernel.org
+ leonf008@gmail.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2020-10-06 at 21:04 +0300, Dan Carpenter wrote:
-> Code should generally do "error handling" instead of "success handling".
+This patch fixes check of a result of 'power_up()' function call in
+function 'gc0310_s_power()' to do "error handling" instead of "success
+handling" as Dan Carpenter noted in his comment on the previous patch.
+Lines 'return gc0310_init(sd)' and 'return ret' are swapped, and direct
+value of 'ret' is checked in IF statement now.
 
-Maybe something to add to coding-style
-(in '6} Functions' maybe?)...
+Signed-off-by: Leonid Kushnir <leonf008@gmail.com>
+---
+ drivers/staging/media/atomisp/i2c/atomisp-gc0310.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-> That way the success path is always indented one tab and the error path
-> is indented two tabs.  I like to say that the call and the error handling
-> are part of the same thing, but with success handling, it's like
-> do the call, do more stuff, go back to the error handling from the
-> earlier call.
-[]
-> Anyway, TLDR, please write it like this:
-> 
-> 	if (on == 0)
->  		return power_down(sd);
-> 
-> 	ret = power_up(sd);
-> 	if (ret)
-> 		return ret;
-> 
-> 	return gc0310_init(sd);
-
-Much nicer, thanks for taking the time to write it.
-
-
+diff --git a/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c b/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c
+index 8201c15b5769..d170d0adfea4 100644
+--- a/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c
++++ b/drivers/staging/media/atomisp/i2c/atomisp-gc0310.c
+@@ -874,11 +874,12 @@ static int gc0310_s_power(struct v4l2_subdev *sd, int on)
+ 
+ 	if (on == 0)
+ 		return power_down(sd);
++
+ 	ret = power_up(sd);
+-	if (!ret)
+-		return gc0310_init(sd);
++	if (ret)
++		return ret;
+ 
+-	return ret;
++	return gc0310_init(sd);
+ }
+ 
+ /*
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
