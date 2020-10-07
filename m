@@ -1,57 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39F0D285DA0
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Oct 2020 12:54:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E847928610A
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Oct 2020 16:17:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E33BD22E20;
-	Wed,  7 Oct 2020 10:54:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 35CC486374;
+	Wed,  7 Oct 2020 14:17:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8iSs7FC9bP-S; Wed,  7 Oct 2020 10:54:35 +0000 (UTC)
+	with ESMTP id p-z5gcQuDWeo; Wed,  7 Oct 2020 14:17:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CC60222D33;
-	Wed,  7 Oct 2020 10:54:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 05B1D862FB;
+	Wed,  7 Oct 2020 14:17:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 898C91BF314
- for <devel@linuxdriverproject.org>; Wed,  7 Oct 2020 10:54:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7506C1BF337
+ for <devel@linuxdriverproject.org>; Wed,  7 Oct 2020 14:17:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 834FB871E9
- for <devel@linuxdriverproject.org>; Wed,  7 Oct 2020 10:54:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 71B6986A98
+ for <devel@linuxdriverproject.org>; Wed,  7 Oct 2020 14:17:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n3On-oyGAFxI for <devel@linuxdriverproject.org>;
- Wed,  7 Oct 2020 10:54:30 +0000 (UTC)
+ with ESMTP id 9BbVULBuGd1z for <devel@linuxdriverproject.org>;
+ Wed,  7 Oct 2020 14:17:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 04A31871D5
- for <devel@driverdev.osuosl.org>; Wed,  7 Oct 2020 10:54:30 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0DAC4212CC;
- Wed,  7 Oct 2020 10:54:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602068069;
- bh=wOytTXNCU8gtZ+ntCxQtyM7YOuGQFzHEkacmPvyiVVk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hBQtrv+04atIlx+6BcY4bd16tOCql3kl/BA+KjY/+fm2rBldCMlR7fAGLcRD4W6vN
- qhLpvXe5uMerVjjfMWrzrXuwYZzSunvxF+41BlVFnBozqFjp1oIkSx6dfxyqwYPnJP
- reqxG4DrtcZeO8eYZSwdOq0zCw7YZ6LpwouKpBZ0=
-Date: Wed, 7 Oct 2020 12:55:13 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH 0/7] wfx: move out from the staging area
-Message-ID: <20201007105513.GA1078344@kroah.com>
-References: <20201007101943.749898-1-Jerome.Pouiller@silabs.com>
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DC41F86A19
+ for <devel@driverdev.osuosl.org>; Wed,  7 Oct 2020 14:17:19 +0000 (UTC)
+Received: from threadripper.lan ([46.223.126.90]) by mrelayeu.kundenserver.de
+ (mreue109 [212.227.15.145]) with ESMTPA (Nemesis) id
+ 1M597q-1kP3n2444S-001Eed; Wed, 07 Oct 2020 16:17:05 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Subject: [PATCH] media: atomisp: stop compiling compat_ioctl32 code
+Date: Wed,  7 Oct 2020 16:16:39 +0200
+Message-Id: <20201007141702.655724-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201007101943.749898-1-Jerome.Pouiller@silabs.com>
+X-Provags-ID: V03:K1:Y8yolA+G5ABS7GY1qc04KI0g31bAJ4qFTOWrC7wB9JyqMFjVS39
+ ggTk2D4jUgQc5Vj/zfr03QPo9rC7xsWQryhUAkc4EMD+9QO0LaO307+WDqxh5zxPgn2RPWK
+ Wl8tk40ej/pMYPgpWEN0RRB9eobSSF8sWLrJ+83GE5Ze1uRnMQC6boJGXgxJsfZyp1/MFDV
+ WWcBPROsuVRl5H7sZjUnw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MTEbSjwluXQ=:bWkB9PicYlG4gxTxdFLtVA
+ JGHZQHMszSUGvpCliIMJPHiQgHJID1ohNsejHNqy+Fuqum8B9wxGeP3b0UzGjsRRZFJWPPg0I
+ hmj29ZfsOGli7iRbU5+RrwbLQtbvOxKK/Tp7LXLbPdGDdwg1uHNDDiAaN1/IV5pbbe32NRj74
+ s7wa1AorADScK51cQllqF0LRwTDZWmXmrpxodm07dW+ymvf01WQvb0U7YW0d1nkLq1uLfTUwv
+ bfozCgrPAKkwww928BsruKB9Rs8shu3VU0FdBigOps6O1ioqrYopJWSpIHwqyZ/pdVhep++6o
+ XD7ylMxdbGAEZdium6DRifZU6VHeldqiUdZH0bpiaNuVuHMb8cnpi3Lm/nft27H0bVgPO+qsw
+ 57lVp4bzNeVHmPoNcbVZmT/kpDD04ym8vVjYiHhURgR3z52Ml5YtR1kpDqpFoqqH0+jKR/eM9
+ rc3cvUSIZ0fDSLOB5vxzE9zld/8fFrCx850EEL+24jOCXe9rZnsMuBgfHubsB/Kdrs0N5Ds6k
+ MFDOZtT0Wi2DvzrC6hde7gCjmJFiNiEfBFp/3/yEVZYTJnqa/3HHPkpoVdZGuVg0PmtkxQLbu
+ 7mRcvLcmDaHdu3EvsWT26Of/bSBKc2VbCbxSg4b2UX9Ak6L9jrl4jrLgTXMCki8PnX8tUUofi
+ e7AInCix0kkkNxTgttzxd39uY0QbZyG4J4l8F1dj9FDpsulTiuqbbqk4L0w7Yp0xKMbJgt4a4
+ Qock1uVdrEPqgYRGWs4UdQ/qWJmsr0qvzPYgg/DuxOsKAEZhDQd6K0cQppL4CFm8p2GYy7uEX
+ 4y3fi7p1xc9nCAnNIWjhCCkIElkhUwW/D/oEyzllZ2iFja/uRFspUACvVUq+pcmyakBRGEC
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,61 +70,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Hans Verkuil <hverkuil@xs4all.nl>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Christoph Hellwig <hch@lst.de>, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 07, 2020 at 12:19:36PM +0200, Jerome Pouiller wrote:
-> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> =
+This is one of the last remaining users of compat_alloc_user_space()
+and copy_in_user(), which are in the process of getting removed.
 
-> I think the wfx driver is now mature enough to be accepted in the
-> drivers/net/wireless directory.
-> =
+As of commit 57e6b6f2303e ("media: atomisp_fops.c: disable
+atomisp_compat_ioctl32"), nothing in this file is actually getting used
+as the only reference has been stubbed out.
 
-> There is still one item on the TODO list. It is an idea to improve the ra=
-te
-> control in some particular cases[1]. However, the current performances of=
- the
-> driver seem to satisfy everyone. In add, the suggested change is large en=
-ough.
-> So, I would prefer to implement it only if it really solves an issue. I t=
-hink it
-> is not an obstacle to move the driver out of the staging area.
-> =
+Do the same thing here and stub out the implementation as well while
+leaving it in place, with a comment explaining the problem.
 
-> In order to comply with the last rules for the DT bindings, I have conver=
-ted the
-> documentation to yaml. I am moderately happy with the result. Especially,=
- for
-> the description of the binding. Any comments are welcome.
-> =
+Alternatively, the entire file could just be removed, since anyone
+willing to restore the functionality can equally well just look up
+the contents in the git history if needed.
 
-> The series also update the copyrights dates of the files. I don't know ex=
-actly
-> how this kind of changes should be sent. It's a bit weird to change all t=
-he
-> copyrights in one commit, but I do not see any better way.
-> =
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ .../staging/media/atomisp/pci/atomisp_compat_ioctl32.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-> I also include a few fixes I have found these last weeks.
-> =
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c b/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
+index e5553df5bad4..bc6ef902a520 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
+@@ -15,7 +15,15 @@
+  *
+  *
+  */
+-#ifdef CONFIG_COMPAT
++
++/*
++ * The compat code is disabled for now, as compat_alloc_user_space()
++ * is in the process of getting removed. The compat_ioctl implementation
++ * here was already disabled in commit 57e6b6f2303e ("media: atomisp_fops.c:
++ * disable atomisp_compat_ioctl32"), so this is all dead code, but it
++ * is left for reference as long as something like it is in fact needed.
++ */
++#if 0 /* #ifdef CONFIG_COMPAT */
+ #include <linux/compat.h>
+ 
+ #include <linux/videodev2.h>
+-- 
+2.27.0
 
-> [1] https://lore.kernel.org/lkml/3099559.gv3Q75KnN1@pc-42
-
-I'll take the first 6 patches here, the last one you should work with
-the wireless maintainers to get reviewed.
-
-Maybe that might want to wait until after 5.10-rc1 is out, with all of
-these changes in it, making it an easier move.
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
