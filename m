@@ -2,75 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29CFC287303
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Oct 2020 13:01:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F3632873AB
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Oct 2020 13:58:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E17C186C77;
-	Thu,  8 Oct 2020 11:01:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3F2E786C9D;
+	Thu,  8 Oct 2020 11:58:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F-awdM1vYJlD; Thu,  8 Oct 2020 11:01:29 +0000 (UTC)
+	with ESMTP id PSKtRy6VOBo7; Thu,  8 Oct 2020 11:58:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7FC1986C59;
-	Thu,  8 Oct 2020 11:01:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 75ECC86C8F;
+	Thu,  8 Oct 2020 11:58:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5589B1BF471
- for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 11:01:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 104961BF4D5
+ for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 11:58:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 49523272DE
- for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 11:01:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DCF7E272DE
+ for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 11:58:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rH5FIY62MgyB for <devel@linuxdriverproject.org>;
- Thu,  8 Oct 2020 11:01:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m42-4.mailgun.net (m42-4.mailgun.net [69.72.42.4])
- by silver.osuosl.org (Postfix) with ESMTPS id 103522E13B
- for <devel@driverdev.osuosl.org>; Thu,  8 Oct 2020 11:01:20 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1602154884; h=Content-Transfer-Encoding: Content-Type:
- MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=eJBexxd8ncXOiQfY+iAAWapiGqaBRPOkeIcaQjW/Sdw=;
- b=AVMVEQe5/n7mrE4TA3QoG2EsJVBt+4rWTLFz+ElIWbgG9oSKLvH/7fc6eEv6WNlcYGGJc/vI
- 71aPbWjs5uX603mwVpmRlXaF9O6HzA/Q8Inyj/95OJEZZKyxObi0KDBiWYqowFpgHiGL6LGy
- ZtZHq9Tyt8MsqLiaQ8kyzA3U5qY=
-X-Mailgun-Sending-Ip: 69.72.42.4
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n07.prod.us-west-2.postgun.com with SMTP id
- 5f7ef170f9168450ea2d4b0a (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 08 Oct 2020 11:01:04
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 4D714C433CA; Thu,  8 Oct 2020 11:01:04 +0000 (UTC)
-Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
- [88.114.240.156])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id C6B91C433CA;
- Thu,  8 Oct 2020 11:01:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org C6B91C433CA
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>
-Subject: Re: [PATCH 0/7] wfx: move out from the staging area
-References: <20201007101943.749898-1-Jerome.Pouiller@silabs.com>
- <20201007105513.GA1078344@kroah.com> <87ft6p2n0h.fsf@codeaurora.org>
- <16184307.3FagCOgvEJ@pc-42>
-Date: Thu, 08 Oct 2020 14:00:59 +0300
-In-Reply-To: <16184307.3FagCOgvEJ@pc-42> (=?utf-8?B?IkrDqXLDtG1l?=
- Pouiller"'s message of "Thu, 08 Oct 2020 12:10:08 +0200")
-Message-ID: <87tuv50yok.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+ with ESMTP id ZgdrgUVYqOha for <devel@linuxdriverproject.org>;
+ Thu,  8 Oct 2020 11:58:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id BC1E720414
+ for <devel@driverdev.osuosl.org>; Thu,  8 Oct 2020 11:58:17 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id r21so732999pgj.5
+ for <devel@driverdev.osuosl.org>; Thu, 08 Oct 2020 04:58:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VvcnSc1DqMYjLEjoaavtmK8GL39gy+fpkbY+Z2S7vvk=;
+ b=AmAzk9nCYrg4Au/9/ldFB6Wh8hqGW3mMMoXNx+MvFXW2gBCi6D9E1bBDsx7Xvr0GAX
+ 5v4LrfhDQQQiZuzvYqgPCgCFzAXCgGey4CuA2XYnL+LPPvDccKCAiCl/MJmJSbCeBWcL
+ 7Jm4Vi+Pd/aDyLhPnubfcSPOZLs5hyX+T4gf5ms2LaJqsPoeBqjmxz9yO4QwHeMTOxYk
+ bHXikeX2YsJYF5hjouFq7d/iw5JwebklXVex7fOJNXaBufR+/jy+ZcEkyBhqE74oRM4R
+ y9vVz/TdKa/unXWRsrDZLT7AJ3drEDRLI7aJXDRjLE0tpIVunqJTPIYyjspciiTrd5QA
+ zbnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VvcnSc1DqMYjLEjoaavtmK8GL39gy+fpkbY+Z2S7vvk=;
+ b=l5Oz4QnH4QvXnhpRpo1yW3SqcLKfVkdF1eZGlILVKPr6Y/diFC7GGuNkyPxpAP3wct
+ 1K03GpukoscGCwsTbusNzKriY8KAS5EETNlf7jzEF3IBSl0gZjehSJzifUYRY1noJ3Ic
+ OkCxlyIUnCeC9+LrMwksAEp+GZrUyocMUCffx+coNuFyo3w/BUx+HAYlIN7ZE7c8ESHM
+ 8LNWdH9Fv9nt5ZG2zgkVrfQaIGK7Bh663/6PbRcdM6RdZ6HEd8yKSC1Yq95S7IZwDXw+
+ HC+ZLh9XVbQdWRDQO0tYpngq6kRP/DqOvhnGIwKnrCOOIsi5G4LY2vfNv24ejXY3mXwP
+ rXSw==
+X-Gm-Message-State: AOAM533ggHNl9NJkRJ9dygwR8nLMoK9Xig59mjWzM3MIGr8wSCC5ohbq
+ d0m9BPwBoH7/IWiqZX8ZVIJDFJpu83+KSQ==
+X-Google-Smtp-Source: ABdhPJwojrCyPpcv7p7mFZJrdZYt4bb3JVERNrttTO1dQksidIwrGpQx6oe/7KpC+HMffR5pdIGcuA==
+X-Received: by 2002:a65:584a:: with SMTP id s10mr6848008pgr.89.1602158296766; 
+ Thu, 08 Oct 2020 04:58:16 -0700 (PDT)
+Received: from localhost ([2001:e42:102:1532:160:16:113:140])
+ by smtp.gmail.com with ESMTPSA id q8sm7145102pff.18.2020.10.08.04.58.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Oct 2020 04:58:15 -0700 (PDT)
+From: Coiby Xu <coiby.xu@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH v1 0/6] staging: qlge: Re-writing the debugging features
+Date: Thu,  8 Oct 2020 19:58:02 +0800
+Message-Id: <20201008115808.91850-1-coiby.xu@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -84,43 +83,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Benjamin Poirier <benjamin.poirier@gmail.com>,
+ Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6Cgo+
-IE9uIFRodXJzZGF5IDggT2N0b2JlciAyMDIwIDA5OjMwOjA2IENFU1QgS2FsbGUgVmFsbyB3cm90
-ZToKPiBbLi4uXQo+PiBZZXMsIHRoZSBkcml2ZXIgbmVlZHMgdG8gYmUgcmV2aWV3ZWQgaW4gbGlu
-dXgtd2lyZWxlc3MgbGlzdC4gSSByZWNvbW1lbmQKPj4gc3VibWl0dGluZyB0aGUgd2hvbGUgZHJp
-dmVyIGluIGEgcGF0Y2hzZXQgd2l0aCBvbmUgZmlsZSBwZXIgcGF0Y2gsIHdoaWNoCj4+IHNlZW1z
-IHRvIGJlIHRoZSBlYXNpZXN0IHdheSB0byByZXZpZXcgYSBmdWxsIGRyaXZlci4gVGhlIGZpbmFs
-IG1vdmUgd2lsbAo+PiBiZSBpbiBqdXN0IG9uZSBjb21taXQgbW92aW5nIHRoZSBkcml2ZXIsIGp1
-c3QgbGlrZSBwYXRjaCA3IGRvZXMgaGVyZS4gQXMKPj4gYW4gZXhhbXBsZSBzZWUgaG93IHdpbGMx
-MDAwIHJldmlldyB3YXMgZG9uZS4KPgo+IEkgc2VlLiBJIHN1cHBvc2UgaXQgaXMgc3RpbGwgYSBi
-aXQgY29tcGxpY2F0ZWQgdG8gcmV2aWV3PyBNYXliZSBJIGNvdWxkCj4gdHJ5IHRvIG1ha2UgdGhp
-bmdzIGVhc2llci4KPgo+IEZvciBteSBzdWJtaXNzaW9uIHRvIHN0YWdpbmcvIEkgaGFkIHRha2Vu
-IHRpbWUgdG8gc3BsaXQgdGhlIGRyaXZlciBpbiBhbgo+IHVuZGVyc3RhbmRhYmxlIHNlcmllcyBv
-ZiBwYXRjaGVzWzFdLiBJIHRoaW5rIGl0IHdhcyBlYXNpZXIgdG8gcmV2aWV3IHRoYW4KPiBqdXN0
-IHNlbmRpbmcgZmlsZXMgb25lIGJ5IG9uZS4gSSBjb3VsZCBkbyB0aGUgc2FtZSB0aGluZyBmb3Ig
-dGhlCj4gc3VibWlzc2lvbiB0byBsaW51eC13aXJlbGVzcy4gSXQgd291bGQgYXNrIG1lIGEgYml0
-IG9mIHdvcmsgYnV0LCBzaW5jZSBJCj4gYWxyZWFkeSBoYXZlIGEgdGVtcGxhdGUsIGl0IGlzIGNv
-bmNlaXZhYmxlLgo+Cj4gRG8geW91IHRoaW5rIGl0IGlzIHdvcnRoIGl0LCBvciBpdCB3b3VsZCBi
-ZSBhbiB1bm5lY2Vzc2FyeSBlZmZvcnQ/Cj4KPiBbMV0KPiBodHRwczovL2xvcmUua2VybmVsLm9y
-Zy9kcml2ZXJkZXYtZGV2ZWwvMjAxOTA5MTkxNDI1MjcuMzE3OTctMS1KZXJvbWUuUG91aWxsZXJA
-c2lsYWJzLmNvbS8KPiAgICAgIG9yIGNvbW1pdHMgYTdhOTFjYTVhMjNkXi4uNDAxMTViYmM0MGUy
-CgpJIGRvbid0IGtub3cgaG93IG90aGVycyB0aGluaywgYnV0IEkgcHJlZmVyIHRvIHJldmlldyBu
-ZXcgZHJpdmVycyAib25lCmZpbGUgcGVyIHBhdGNoIiBzdHlsZSBhcyBJIGdldCB0byBzZWUgdGhl
-IGJpZyBwaWN0dXJlIGVhc2lseS4gQW5kCmJlc2lkZXMsIHNwbGl0dGluZyB0aGUgZHJpdmVyIGxp
-a2UgdGhhdCB3b3VsZCBiZSBhIGh1Z2Ugam9iIGZvciB5b3UuIEkKZG9uJ3QgdGhpbmsgaXQncyB3
-b3J0aCB5b3VyIHRpbWUgaW4gdGhpcyBjYXNlLiBBbmQgbWFraW5nIGNoYW5nZXMgaW4gdGhlCmRy
-aXZlciBkdXJpbmcgcmV2aWV3IHByb2Nlc3MgYmVjb21lcyBldmVuIG1vcmUgY29tcGxleC4KCi0t
-IApodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtd2lyZWxlc3MvbGlz
-dC8KCmh0dHBzOi8vd2lyZWxlc3Mud2lraS5rZXJuZWwub3JnL2VuL2RldmVsb3BlcnMvZG9jdW1l
-bnRhdGlvbi9zdWJtaXR0aW5ncGF0Y2hlcwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+This patch set aims to avoid dumping registers, data structures and
+coredump to dmesg and also to reduce the code size of the qlge driver.
+
+As pointed out by Benjamin [1],
+
+> At 2000 lines, qlge_dbg.c alone is larger than some entire ethernet
+> drivers. Most of what it does is dump kernel data structures or pci
+> memory mapped registers to dmesg. There are better facilities for that.
+> My thinking is not simply to delete qlge_dbg.c but to replace it, making
+> sure that most of the same information is still available. For data
+> structures, crash or drgn can be used; possibly with a script for the
+> latter which formats the data. For pci registers, they should be
+> included in the ethtool register dump and a patch added to ethtool to
+> pretty print them. That's what other drivers like e1000e do. For the
+> "coredump", devlink health can be used.
+
+So the debugging features are re-written following Benjamin's advice,
+   - dump kernel data structures in drgn
+   - use devlink to do coredump which also includes device status and
+     general registers
+
+[1] https://lkml.org/lkml/2020/6/30/19
+
+Change since RFC:
+ - select NET_DEVLINK in Kconfig [Benjamin Poirier]
+ - Don't do a coredump when the interface is down [Shung-Hsi Yu]
+ - Remove stray newlines [Benjamin Poirier]
+ - force_coredump for devlink
+ - Remove mpi_core_to_log which will output the coredump to the kernel
+   ring buffer
+ - Put drgn script under Documentation [Benjamin Poirier]
+ - Rename qlge_health.* to qlge_devlink.*
+
+Coiby Xu (6):
+  staging: qlge: Initialize devlink health dump framework for the dlge
+    driver
+  staging: qlge: coredump via devlink health reporter
+  staging: qlge: support force_coredump option for devlink health dump
+  staging: qlge: remove mpi_core_to_log which sends coredump to the
+    kernel ring buffer
+  staging: qlge: clean up debugging code in the QL_ALL_DUMP ifdef land
+  staging: qlge: add documentation for debugging qlge
+
+ .../networking/device_drivers/index.rst       |   1 +
+ .../device_drivers/qlogic/index.rst           |  18 +
+ .../networking/device_drivers/qlogic/qlge.rst | 118 +++
+ MAINTAINERS                                   |   6 +
+ drivers/staging/qlge/Kconfig                  |   1 +
+ drivers/staging/qlge/Makefile                 |   2 +-
+ drivers/staging/qlge/qlge.h                   |  94 +--
+ drivers/staging/qlge/qlge_dbg.c               | 699 ------------------
+ drivers/staging/qlge/qlge_devlink.c           | 164 ++++
+ drivers/staging/qlge/qlge_devlink.h           |   8 +
+ drivers/staging/qlge/qlge_ethtool.c           |   3 -
+ drivers/staging/qlge/qlge_main.c              |  37 +-
+ drivers/staging/qlge/qlge_mpi.c               |   6 -
+ 13 files changed, 355 insertions(+), 802 deletions(-)
+ create mode 100644 Documentation/networking/device_drivers/qlogic/index.rst
+ create mode 100644 Documentation/networking/device_drivers/qlogic/qlge.rst
+ create mode 100644 drivers/staging/qlge/qlge_devlink.c
+ create mode 100644 drivers/staging/qlge/qlge_devlink.h
+
+--
+2.28.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
