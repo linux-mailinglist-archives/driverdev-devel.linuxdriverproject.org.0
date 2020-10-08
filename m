@@ -2,78 +2,85 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E4C52873B7
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Oct 2020 13:58:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B5E72873F6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Oct 2020 14:23:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 474B186EBC;
-	Thu,  8 Oct 2020 11:58:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8D63686C19;
+	Thu,  8 Oct 2020 12:23:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2FWIcknOHTAt; Thu,  8 Oct 2020 11:58:54 +0000 (UTC)
+	with ESMTP id FA2X+mDdMG28; Thu,  8 Oct 2020 12:23:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2D89386C59;
-	Thu,  8 Oct 2020 11:58:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 75C9D86B9E;
+	Thu,  8 Oct 2020 12:23:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7051F1BF4D5
- for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 11:58:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BEE81BF473
+ for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 12:23:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 649302E139
- for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 11:58:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4825A87458
+ for <devel@linuxdriverproject.org>; Thu,  8 Oct 2020 12:23:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ocFJuyFEwzFB for <devel@linuxdriverproject.org>;
- Thu,  8 Oct 2020 11:58:48 +0000 (UTC)
+ with ESMTP id XcMv54CKTJZr for <devel@linuxdriverproject.org>;
+ Thu,  8 Oct 2020 12:23:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by silver.osuosl.org (Postfix) with ESMTPS id E7451272DE
- for <devel@driverdev.osuosl.org>; Thu,  8 Oct 2020 11:58:47 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id h2so2643452pll.11
- for <devel@driverdev.osuosl.org>; Thu, 08 Oct 2020 04:58:47 -0700 (PDT)
+Received: from mail-vs1-f68.google.com (mail-vs1-f68.google.com
+ [209.85.217.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9FA07873CF
+ for <devel@driverdev.osuosl.org>; Thu,  8 Oct 2020 12:23:23 +0000 (UTC)
+Received: by mail-vs1-f68.google.com with SMTP id r1so1899378vsi.12
+ for <devel@driverdev.osuosl.org>; Thu, 08 Oct 2020 05:23:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=C16XrUr3EIZoC6wKnJOdQjSS5HIA0XhjmNmgGMQUzM4=;
- b=M6GmYwfbt/kjjUW6kp5B076qsmpCA6NAxj2aoMFmCLiqC6VWEhmwIkeTxTLjaR/BCj
- 3iR9bU/ra3dayF4z0WUFKWnNJ5peBgsjjppx5Uk9CZaKeMVGwGVpJGo9b8hx0tklIqdu
- prMZsWNqmRo/buzmThYSm4iKEsbYTH/EZtJ7WczGcl/Rbqdn7UPUo/dpNf4L6mLygsoI
- rGIeSL0ftAreMCxlS4OTBU8g9V1P958rcn5Bg8W3DD2z4CqsAZ43pbSi/vsdJU024AUt
- yxjl+fh02KHA9q0MpzJx5O73kisLHCxKK5bf2Mj5mnAJW70PhVt7Yi1612Y5722HdrAp
- hw6w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6yaLQlxNw70bRGmpr47sIPOg0JWUbIqHrAviNgxR9U8=;
+ b=ZV/udlGzIl/jBrUJkuN1KwkLbErRiww1AXfbdYjhu4aftSNTMtV4+PM1BRjHauZxfp
+ HbtfbtxaCjWO7kt3kz8IqDCxFVt6zufkjs0R5JcP1kz9I5bfIyMblsiuAEvsfk4IJitP
+ k7F6hH3KcaYkZgb85VTdANYMENGpTOqykJwHPOTx+/h7Lk61QKg66tm/uB+lty3qHwiW
+ GEqGpwFCwllORWVB21LnPAoTOZk+p4jhax1BUnlUQoHo1whWYCl7pItcKd+vz4XSCK5I
+ gNwxPHcFXodJUNDYPYp7haWTvUmJiATg0vIwrH1GHoNVL4t1C2nyWafuHOFtVW9XD5+C
+ tTzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=C16XrUr3EIZoC6wKnJOdQjSS5HIA0XhjmNmgGMQUzM4=;
- b=BuVB/xD3gk32d/WxoNUDU4WUC7UI/ShZK+EPR0bN1+h3eE+GQFeS+0xfXQ2CaJV0DR
- dxgjNdFhFi0LHKA1u04+wuIg4wtMRdimcEW+3U8cyxxQ0KkcYZHpJ5q3NPya3sS28Env
- fEs6b/uo2Mer2nTco6Vnit1MokY6ki2QyvnjXVCCNtA0aRNQEnsLVSQYXidatmRl5kJV
- e6hH6hNWOLXzQJFWG8qCfhpapcIBmPLFyXlrKd+Rn29OaxdZAuuQQIlhA6vpkA5dNyIO
- 1Cf4pgVrv87xGJ07h3gVeFoaV/cp/Yd1w/2c7djh2kcxp8kexJY0+PgV5jGAi2ZZg3Mz
- HMug==
-X-Gm-Message-State: AOAM530m2FspQhMyStGfsp6wlvI7xbAsSQiGjG1zLhMiLceq/BZ8FBz3
- 2iOw04XAhLLX/n1VknxoZnJ6oYZfZfDyQyxy
-X-Google-Smtp-Source: ABdhPJxBYQscTqQs3Usj08yzGOuKS+2JWwobVnEXIACwojWNpwWI5RwwKY4148y1cdC1Hg6PHssNQg==
-X-Received: by 2002:a17:902:aa04:b029:d3:8b4e:e5ef with SMTP id
- be4-20020a170902aa04b02900d38b4ee5efmr7380941plb.65.1602158327213; 
- Thu, 08 Oct 2020 04:58:47 -0700 (PDT)
-Received: from localhost ([2001:e42:102:1532:160:16:113:140])
- by smtp.gmail.com with ESMTPSA id 31sm7027555pgs.59.2020.10.08.04.58.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Oct 2020 04:58:46 -0700 (PDT)
-From: Coiby Xu <coiby.xu@gmail.com>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH v1 6/6] staging: qlge: add documentation for debugging qlge
-Date: Thu,  8 Oct 2020 19:58:08 +0800
-Message-Id: <20201008115808.91850-7-coiby.xu@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201008115808.91850-1-coiby.xu@gmail.com>
-References: <20201008115808.91850-1-coiby.xu@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6yaLQlxNw70bRGmpr47sIPOg0JWUbIqHrAviNgxR9U8=;
+ b=DjXq6YBr9+a5St9ze1nMrK+1K0C+yBdwe/Eh449DZkbu6nBl1tohF/hqjp/7wnlK6d
+ 8rZsoA3YmZw0iGB6oPmKqvt1jPjHDGRyx05LFufIJw/9PeWJF1d5271pCm1vkyE2FOT0
+ qHJNmYUuQeHy/88V0WEGi+qih1hj4MQPy3yV2zWV6d+EBtBMD9ljyRcvNa8UD33X0TuG
+ S/eE6uq3e8nv7zCfnRp2C1fPx6IBGpipdgGk0YMP5xr5m8fqWwq/CHNOPs6iUC6hUMR8
+ d90SrXLu1y3H9TzeHK9pf653AHOCYGYN6lZOd9ORMoJ6BJykDB8sCX68KFrPdv6drvn7
+ /Rnw==
+X-Gm-Message-State: AOAM530gQSTxiKe3o6n20Juua8g1minrvIKK/3k454fzMQgIl0VCHiTB
+ rCyv4m/aFotRV6l6/SncZFebcMGOZ3s=
+X-Google-Smtp-Source: ABdhPJwa//Cuxlg8J9hnKb2D4RLSjkuCxyHWwu5Oq+Qe+Yq7hHTRVeyD8Uwen+tq3LPd95bdvjg4iA==
+X-Received: by 2002:a05:6102:7a3:: with SMTP id
+ x3mr4452285vsg.12.1602159802162; 
+ Thu, 08 Oct 2020 05:23:22 -0700 (PDT)
+Received: from mail-vs1-f52.google.com (mail-vs1-f52.google.com.
+ [209.85.217.52])
+ by smtp.gmail.com with ESMTPSA id c17sm533466vke.38.2020.10.08.05.23.20
+ for <devel@driverdev.osuosl.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Oct 2020 05:23:21 -0700 (PDT)
+Received: by mail-vs1-f52.google.com with SMTP id s15so2943277vsm.0
+ for <devel@driverdev.osuosl.org>; Thu, 08 Oct 2020 05:23:20 -0700 (PDT)
+X-Received: by 2002:a67:d84:: with SMTP id 126mr4218029vsn.51.1602159800489;
+ Thu, 08 Oct 2020 05:23:20 -0700 (PDT)
 MIME-Version: 1.0
+References: <20201008115808.91850-1-coiby.xu@gmail.com>
+ <20201008115808.91850-2-coiby.xu@gmail.com>
+In-Reply-To: <20201008115808.91850-2-coiby.xu@gmail.com>
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+Date: Thu, 8 Oct 2020 08:22:44 -0400
+X-Gmail-Original-Message-ID: <CA+FuTSdEK+0nBCd5KAYpbEECmSvjoMEgcEOtM+ZKFF4QQKuAfw@mail.gmail.com>
+Message-ID: <CA+FuTSdEK+0nBCd5KAYpbEECmSvjoMEgcEOtM+ZKFF4QQKuAfw@mail.gmail.com>
+Subject: Re: [PATCH v1 1/6] staging: qlge: Initialize devlink health dump
+ framework for the dlge driver
+To: Coiby Xu <coiby.xu@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,209 +93,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jonathan Corbet <corbet@lwn.net>,
- "open list:NETWORKING \[GENERAL\]" <netdev@vger.kernel.org>,
- "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
+ <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
  Benjamin Poirier <benjamin.poirier@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+ "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Instructions and examples on kernel data structures dumping and coredump.
+On Thu, Oct 8, 2020 at 7:58 AM Coiby Xu <coiby.xu@gmail.com> wrote:
+>
+> Initialize devlink health dump framework for the dlge driver so the
+> coredump could be done via devlink.
+>
+> Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
 
-Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
----
- .../networking/device_drivers/index.rst       |   1 +
- .../device_drivers/qlogic/index.rst           |  18 +++
- .../networking/device_drivers/qlogic/qlge.rst | 118 ++++++++++++++++++
- MAINTAINERS                                   |   6 +
- 4 files changed, 143 insertions(+)
- create mode 100644 Documentation/networking/device_drivers/qlogic/index.rst
- create mode 100644 Documentation/networking/device_drivers/qlogic/qlge.rst
+> @@ -4556,6 +4559,13 @@ static int qlge_probe(struct pci_dev *pdev,
+>         struct ql_adapter *qdev = NULL;
+>         static int cards_found;
+>         int err = 0;
+> +       struct devlink *devlink;
+> +       struct qlge_devlink *ql_devlink;
+> +
+> +       devlink = devlink_alloc(&qlge_devlink_ops, sizeof(struct qlge_devlink));
+> +       if (!devlink)
+> +               return -ENOMEM;
+> +       ql_devlink = devlink_priv(devlink);
+>
+>         ndev = alloc_etherdev_mq(sizeof(struct ql_adapter),
+>                                  min(MAX_CPUS,
 
-diff --git a/Documentation/networking/device_drivers/index.rst b/Documentation/networking/device_drivers/index.rst
-index a3113ffd7a16..d8279de7bf25 100644
---- a/Documentation/networking/device_drivers/index.rst
-+++ b/Documentation/networking/device_drivers/index.rst
-@@ -15,6 +15,7 @@ Contents:
-    ethernet/index
-    fddi/index
-    hamradio/index
-+   qlogic/index
-    wan/index
-    wifi/index
- 
-diff --git a/Documentation/networking/device_drivers/qlogic/index.rst b/Documentation/networking/device_drivers/qlogic/index.rst
-new file mode 100644
-index 000000000000..ad05b04286e4
---- /dev/null
-+++ b/Documentation/networking/device_drivers/qlogic/index.rst
-@@ -0,0 +1,18 @@
-+.. SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+
-+QLogic QLGE Device Drivers
-+===============================================
-+
-+Contents:
-+
-+.. toctree::
-+   :maxdepth: 2
-+
-+   qlge
-+
-+.. only::  subproject and html
-+
-+   Indices
-+   =======
-+
-+   * :ref:`genindex`
-diff --git a/Documentation/networking/device_drivers/qlogic/qlge.rst b/Documentation/networking/device_drivers/qlogic/qlge.rst
-new file mode 100644
-index 000000000000..0b888253d152
---- /dev/null
-+++ b/Documentation/networking/device_drivers/qlogic/qlge.rst
-@@ -0,0 +1,118 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+=======================================
-+QLogic QLGE 10Gb Ethernet device driver
-+=======================================
-+
-+This driver use drgn and devlink for debugging.
-+
-+Dump kernel data structures in drgn
-+-----------------------------------
-+
-+To dump kernel data structures, the following Python script can be used
-+in drgn:
-+
-+.. code-block:: python
-+
-+	def align(x, a):
-+	    """the alignment a should be a power of 2
-+	    """
-+	    mask = a - 1
-+	    return (x+ mask) & ~mask
-+
-+	def struct_size(struct_type):
-+	    struct_str = "struct {}".format(struct_type)
-+	    return sizeof(Object(prog, struct_str, address=0x0))
-+
-+	def netdev_priv(netdevice):
-+	    NETDEV_ALIGN = 32
-+	    return netdevice.value_() + align(struct_size("net_device"), NETDEV_ALIGN)
-+
-+	name = 'xxx'
-+	qlge_device = None
-+	netdevices = prog['init_net'].dev_base_head.address_of_()
-+	for netdevice in list_for_each_entry("struct net_device", netdevices, "dev_list"):
-+	    if netdevice.name.string_().decode('ascii') == name:
-+	        print(netdevice.name)
-+
-+	ql_adapter = Object(prog, "struct ql_adapter", address=netdev_priv(qlge_device))
-+
-+The struct ql_adapter will be printed in drgn as follows,
-+
-+    >>> ql_adapter
-+    (struct ql_adapter){
-+            .ricb = (struct ricb){
-+                    .base_cq = (u8)0,
-+                    .flags = (u8)120,
-+                    .mask = (__le16)26637,
-+                    .hash_cq_id = (u8 [1024]){ 172, 142, 255, 255 },
-+                    .ipv6_hash_key = (__le32 [10]){},
-+                    .ipv4_hash_key = (__le32 [4]){},
-+            },
-+            .flags = (unsigned long)0,
-+            .wol = (u32)0,
-+            .nic_stats = (struct nic_stats){
-+                    .tx_pkts = (u64)0,
-+                    .tx_bytes = (u64)0,
-+                    .tx_mcast_pkts = (u64)0,
-+                    .tx_bcast_pkts = (u64)0,
-+                    .tx_ucast_pkts = (u64)0,
-+                    .tx_ctl_pkts = (u64)0,
-+                    .tx_pause_pkts = (u64)0,
-+                    ...
-+            },
-+            .active_vlans = (unsigned long [64]){
-+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52780853100545, 18446744073709551615,
-+                    18446619461681283072, 0, 42949673024, 2147483647,
-+            },
-+            .rx_ring = (struct rx_ring [17]){
-+                    {
-+                            .cqicb = (struct cqicb){
-+                                    .msix_vect = (u8)0,
-+                                    .reserved1 = (u8)0,
-+                                    .reserved2 = (u8)0,
-+                                    .flags = (u8)0,
-+                                    .len = (__le16)0,
-+                                    .rid = (__le16)0,
-+                                    ...
-+                            },
-+                            .cq_base = (void *)0x0,
-+                            .cq_base_dma = (dma_addr_t)0,
-+                    }
-+                    ...
-+            }
-+    }
-+
-+coredump via devlink
-+--------------------
-+
-+
-+And the coredump obtained via devlink in json format looks like,
-+
-+.. code:: shell
-+
-+	$ devlink health dump show DEVICE reporter coredump -p -j
-+	{
-+	    "Core Registers": {
-+	        "segment": 1,
-+	        "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
-+	    },
-+	    "Test Logic Regs": {
-+	        "segment": 2,
-+	        "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
-+	    },
-+	    "RMII Registers": {
-+	        "segment": 3,
-+	        "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
-+	    },
-+	    ...
-+	    "Sem Registers": {
-+	        "segment": 50,
-+	        "values": [ 0,0,0,0 ]
-+	    }
-+	}
-+
-+When the module parameter qlge_force_coredump is set to be true, the MPI
-+RISC reset before coredumping. So coredumping will much longer since
-+devlink tool has to wait for 5 secs for the resetting to be
-+finished.
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9ecb727f0a8f..d482078e3e88 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14411,6 +14411,12 @@ L:	netdev@vger.kernel.org
- S:	Supported
- F:	drivers/staging/qlge/
- 
-+QLOGIC QLGE 10Gb ETHERNET DRIVER
-+M:	Coiby Xu <coiby.xu@gmail.com>
-+L:	netdev@vger.kernel.org
-+S:	Maintained
-+F:	Documentation/networking/device_drivers/qlogic/qlge.rst
-+
- QM1D1B0004 MEDIA DRIVER
- M:	Akihiro Tsukada <tskd08@gmail.com>
- L:	linux-media@vger.kernel.org
--- 
-2.28.0
+need to goto devlink_free instead of return -ENOMEM here, too.
 
+> @@ -4614,6 +4624,16 @@ static int qlge_probe(struct pci_dev *pdev,
+>                 free_netdev(ndev);
+>                 return err;
+
+and here
+
+>         }
+> +
+> +       err = devlink_register(devlink, &pdev->dev);
+> +       if (err) {
+> +               goto devlink_free;
+> +       }
+> +
+> +       qlge_health_create_reporters(ql_devlink);
+> +       ql_devlink->qdev = qdev;
+> +       ql_devlink->ndev = ndev;
+> +       qdev->ql_devlink = ql_devlink;
+>         /* Start up the timer to trigger EEH if
+>          * the bus goes dead
+>          */
+> @@ -4624,6 +4644,10 @@ static int qlge_probe(struct pci_dev *pdev,
+>         atomic_set(&qdev->lb_count, 0);
+>         cards_found++;
+>         return 0;
+> +
+> +devlink_free:
+> +       devlink_free(devlink);
+> +       return err;
+>  }
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
