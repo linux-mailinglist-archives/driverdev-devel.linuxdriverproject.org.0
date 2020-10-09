@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3C30288E91
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 18:17:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EEB5288EAB
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 18:20:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7143D2E2DB;
-	Fri,  9 Oct 2020 16:17:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C58CF2E2CE;
+	Fri,  9 Oct 2020 16:20:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uVC1j9MswlGp; Fri,  9 Oct 2020 16:17:18 +0000 (UTC)
+	with ESMTP id VaDfdBL8GOf9; Fri,  9 Oct 2020 16:20:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 269C62E2D0;
-	Fri,  9 Oct 2020 16:17:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D8C512E2D0;
+	Fri,  9 Oct 2020 16:20:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D7FE21BF255
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 16:17:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 503E31BF255
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 16:20:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D3849877A2
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 16:17:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4B43E86F2B
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 16:20:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xIlGLZe0+Gvv for <devel@linuxdriverproject.org>;
- Fri,  9 Oct 2020 16:17:11 +0000 (UTC)
+ with ESMTP id rEl3fqoEIN74 for <devel@linuxdriverproject.org>;
+ Fri,  9 Oct 2020 16:20:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 532F1877A1
- for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 16:17:11 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id o8so4682718pll.4
- for <devel@driverdev.osuosl.org>; Fri, 09 Oct 2020 09:17:11 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AEFCF86C41
+ for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 16:20:39 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id 144so7282460pfb.4
+ for <devel@driverdev.osuosl.org>; Fri, 09 Oct 2020 09:20:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Bmx9gH8QKYILpVv8/AwBKiqUZ1W2aX/bT7meRLse05U=;
- b=cPgy8ppfUqoug6Hor5S2QVmhFZWHFrqJXMkkIlCfoLjsNgIXVupZCDSidSxzpRprlj
- rfjpDWTuGxujG0WGnuwCUd6DtrIqIe0Q4piEXyARszAGEaARe7MERlHX28vBE6rjBXwn
- wmM+lgmATC9rUzbL/+UIHkSlNXi/qBUfCT9r6Mi6QAD4XJCyy6XEmUsTKED84w+Y3gj3
- 8j/Y8BiwF6GBByc7N15bCx8BOlnz2THm/VCh31ARuX6A4D//SleD+C8Zo0UXPmgVQdBI
- mMt4n+Q+5NQjk4XxRrSDeY/BaUvWQymMw6xAi760bKR2bgDfqkEBy2f7SpGyHP+Vad6P
- l0PA==
+ bh=mP+aJbUAat0UV4esY+1JsE6q/zZ+Jt33VyknqBiKg6E=;
+ b=H8vtangYCZZ+rQo2KOQ7hhPSTvZztsIedGeLPsRZ1uamjVukb7XGoPTUeMIx+FIzRu
+ b6vFDbHC4nyU2AsQjT8sNUGWq2ZCcmSjFp3vw+lgMY5ATWNuQNZdAK2H/hjU8O3V9CtT
+ HallgOMsilAG0KHTairyYihZzET/881krznSKPcC/cjm0uz+ng1KI+JTtuj7oSJxuj/J
+ VzmK/OlUs+oT4QptXSWDbMgHNk0OIGU7ojpB9m7mwm31BM+AjreQhCPGeWr7sNZAzubO
+ wWfm3H2Ph4/Gno9/d/WoPQYybFh74inmjJDTI76qXPo42YHTlAuP7iv7pACAIj63B9Ds
+ CJvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Bmx9gH8QKYILpVv8/AwBKiqUZ1W2aX/bT7meRLse05U=;
- b=H4kvyZfiT8qLGx8OfaPOcQTOb+KBMIp2PP1Wc1cchXBRlbmK70MRm8T1NzYjkj9rU0
- 3zIHiYRglAkg5DeDPIn+CR+vRnzii5zcXawutOKZXEHzKtBjKm80LOKMuWi2fFbXeUXb
- uw1adREhIsOKfw7kd88NNZp58zGzNBbrNnxdzq1uR46R273+HUzX5M8NMruATdNKF6Ln
- 2yfYYsDVJFlgwDT3yf/29BP3PTA5GKQbkY0jiX+uCrGCQZwpHAKOuvKLXvnRKmzZs/+V
- RFaqhKU6Rr8IyCAINt7nirp7bHDFigUjaWf+TQ04IFyx2NcFJpGpa2zs7lXKvceAuHn7
- NqQA==
-X-Gm-Message-State: AOAM530kFo+iVFTFTLR56H5Euagbjg0kqTlGfLXUTNvlTAyG+y0gySgR
- kBFxxiX7DNQ2lFyUKpAwqNI=
-X-Google-Smtp-Source: ABdhPJxAPI/0Ac3xxOCN4zvAfkmbcnL5mU1jLjyIiq9aO2HXzi8cW2Uw5SZniELgmxOPso9AYka+6A==
-X-Received: by 2002:a17:902:21:b029:d2:564a:5dc6 with SMTP id
- 30-20020a1709020021b02900d2564a5dc6mr12808284pla.14.1602260230641; 
- Fri, 09 Oct 2020 09:17:10 -0700 (PDT)
+ bh=mP+aJbUAat0UV4esY+1JsE6q/zZ+Jt33VyknqBiKg6E=;
+ b=Ao5Dtd+k3b7eDloVps9Tjc+0jCtYaiz7NmaOWxz8LCpLFIHRjB58DNkwULBySOx5LP
+ ExFda0rrN3nZfMtFiv3TdANoY71sMLsHtACbU1eNHjowtoZgOfN4U8CRugVzTXNVA1mO
+ SJHXA+1sBo+n5LAAPJ4j4XdY41NhyFG5xQC0OVTMZQe8cuupdDeH6auMbXinNR6YEIkg
+ TYsUTqIDsHdPdEFufJ3hVUWWFx3HlP2FJNOqu4YASlw58LyXnEjZliu74KdWgAj4oi79
+ iLL+dm3KI32VAUjudxo1Fu6V8QNXqqQuK+7wKaFPHVLo7KM47gG3Mh+HGwC4VQs7Zpoj
+ X0pA==
+X-Gm-Message-State: AOAM531VKTzrrV7vWTyKmr3wSe+GomDm5hPCmgXhxDYhuNr4zon/5t46
+ kwMINubGj1XqmRyU2D/x4K1YIpQZZZ6h2oyPhq0=
+X-Google-Smtp-Source: ABdhPJyARPOvuTSwMuRPOKozcnKxADEWGnflnK+0e+Bke7F1X7H6ejWfNx6wuvsaN93e4Q1NYAr2Lw==
+X-Received: by 2002:a17:90a:1861:: with SMTP id
+ r88mr5337711pja.222.1602260439006; 
+ Fri, 09 Oct 2020 09:20:39 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.205.113])
- by smtp.gmail.com with ESMTPSA id s6sm9367662pfd.157.2020.10.09.09.17.06
+ by smtp.gmail.com with ESMTPSA id h31sm11163325pgh.71.2020.10.09.09.20.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Oct 2020 09:17:09 -0700 (PDT)
+ Fri, 09 Oct 2020 09:20:38 -0700 (PDT)
 From: Anant Thazhemadam <anant.thazhemadam@gmail.com>
 To: 
 Subject: [PATCH] staging: comedi: check validity of wMaxPacketSize of usb
  endpoints found
-Date: Fri,  9 Oct 2020 21:46:44 +0530
-Message-Id: <20201009161646.286286-1-anant.thazhemadam@gmail.com>
+Date: Fri,  9 Oct 2020 21:50:29 +0530
+Message-Id: <20201009162030.293781-1-anant.thazhemadam@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -143,7 +143,7 @@ index 65dc6c51037e..cb0a965d3c37 100644
  	if (!devpriv->ep_rx || !devpriv->ep_tx)
  		return -ENODEV;
  
-+	if(!usb_endpoint_maxp(devpriv->ep_rx) || !usb_endpoint_maxp(devpriv->ep_tx))
++	if (!usb_endpoint_maxp(devpriv->ep_rx) || !usb_endpoint_maxp(devpriv->ep_tx))
 +		return -EINVAL;
 +
  	return 0;
