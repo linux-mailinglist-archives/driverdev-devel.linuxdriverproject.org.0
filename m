@@ -1,53 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDB9A2888F9
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 14:39:53 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 70C18203F1;
-	Fri,  9 Oct 2020 12:39:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jKVpmHp4uUA7; Fri,  9 Oct 2020 12:39:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 852D82E285;
-	Fri,  9 Oct 2020 12:39:46 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 002521BF3AE
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 12:39:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88253288996
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 15:09:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F0DFD876F2
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 12:39:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3CB428771B;
+	Fri,  9 Oct 2020 13:09:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C3MYMRP7kPx9; Fri,  9 Oct 2020 13:09:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 261F3876BB;
+	Fri,  9 Oct 2020 13:09:12 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 372511BF282
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 13:09:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 339F786F8E
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 13:09:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AqSM9MhFrN8y for <devel@linuxdriverproject.org>;
- Fri,  9 Oct 2020 12:39:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 05910876EE
- for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 12:39:42 +0000 (UTC)
-Received: from ip5f5af0a0.dynamic.kabel-deutschland.de ([95.90.240.160]
- helo=wittgenstein) by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <christian.brauner@ubuntu.com>)
- id 1kQrgN-00089z-1h; Fri, 09 Oct 2020 12:39:35 +0000
-Date: Fri, 9 Oct 2020 14:39:34 +0200
-From: Christian Brauner <christian.brauner@ubuntu.com>
-To: Shuah Khan <skhan@linuxfoundation.org>
-Subject: Re: [PATCH v2 07/11] drivers/android/binder: convert stats,
- transaction_log to counter_atomic32
-Message-ID: <20201009123934.4524t6rj6pa4wd7z@wittgenstein>
-References: <cover.1602011710.git.skhan@linuxfoundation.org>
- <63482420f221c3483f6526bfc12fc99fe30a567d.1602011710.git.skhan@linuxfoundation.org>
+ with ESMTP id D2cGUeISGXkz for <devel@linuxdriverproject.org>;
+ Fri,  9 Oct 2020 13:09:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E63DA86F78
+ for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 13:09:08 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 014CE22248;
+ Fri,  9 Oct 2020 13:09:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602248948;
+ bh=ejH4/M/EizUhjeSZw6xoFj4GATeaO+40kyLfg+D7Q8o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=khDhoIxbNGatlrsao6AvN/CZSy94L5RPyguYmbW2i4V7GQ+5pyepbcw15TmnRBwMh
+ 2w5MkONXZXBC12hMx0tSMdh0oK+FRRlOPi87OnaWhnPKCmdFTtPl3VDFeSfVIzFtDd
+ S+6HoarwfUbtZKoMpAFwzSUv69iywjMeQ5kQuSIk=
+Date: Fri, 9 Oct 2020 15:09:54 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Alexander A Sverdlin <alexander.sverdlin@nokia.com>
+Subject: Re: [PATCH] staging: octeon: repair "fixed-link" support
+Message-ID: <20201009130954.GA538323@kroah.com>
+References: <20201009094739.5411-1-alexander.sverdlin@nokia.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <63482420f221c3483f6526bfc12fc99fe30a567d.1602011710.git.skhan@linuxfoundation.org>
+In-Reply-To: <20201009094739.5411-1-alexander.sverdlin@nokia.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,41 +64,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com, keescook@chromium.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, surenb@google.com,
- hridya@google.com, arve@android.com, joel@joelfernandes.org, maco@android.com,
- christian@brauner.io
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>, Ralf Baechle <ralf@linux-mips.org>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 06, 2020 at 02:44:38PM -0600, Shuah Khan wrote:
-> counter_atomic* is introduced to be used when a variable is used as
-> a simple counter and doesn't guard object lifetimes. This clearly
-> differentiates atomic_t usages that guard object lifetimes.
+On Fri, Oct 09, 2020 at 11:47:39AM +0200, Alexander A Sverdlin wrote:
+> From: Alexander Sverdlin <alexander.sverdlin@nokia.com>
 > 
-> counter_atomic* variables will wrap around to 0 when it overflows and
-> should not be used to guard resource lifetimes, device usage and
-> open counts that control state changes, and pm states.
+> The PHYs must be registered once in device probe function, not in device
+> open callback because it's only possible to register them once.
 > 
-> stats tracks per-process binder statistics. Unsure if there is a chance
-> of this overflowing, other than stats getting reset to 0. Convert it to
-> use counter_atomic.
-> 
-> binder_transaction_log:cur is used to keep track of the current log entry
-> location. Overflow is handled in the code. Since it is used as a
-> counter, convert it to use counter_atomic32.
-> 
-> This conversion doesn't change the overflow wrap around behavior.
-> 
-> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
-> Reviewed-by: Joel Fernandes (Google) <joel@joelfernandes.org>
-> Reviewed-by: Kees Cook <keescook@chromium.org>
-> ---
+> Fixes: a25e278020 ("staging: octeon: support fixed-link phys")
+> Signed-off-by: Alexander Sverdlin <alexander.sverdlin@nokia.com>
 
-Thanks!
-Reviewed-by: Christian Brauner <christian.brauner@ubuntu.com>
+Looks like it breaks the build, please fix up and test your patches when
+sending them out next time.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
