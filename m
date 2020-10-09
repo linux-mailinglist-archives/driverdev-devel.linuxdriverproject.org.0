@@ -2,71 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E1F12880BE
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 05:37:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F444288112
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 06:16:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 90E42875FE;
-	Fri,  9 Oct 2020 03:37:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E4150875FD;
+	Fri,  9 Oct 2020 04:16:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zuKyr4c0+d2h; Fri,  9 Oct 2020 03:37:47 +0000 (UTC)
+	with ESMTP id 4w2M7ICBca8l; Fri,  9 Oct 2020 04:16:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7076B87110;
-	Fri,  9 Oct 2020 03:37:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C2A378756D;
+	Fri,  9 Oct 2020 04:16:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5A9F31BF5A6
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C920B1BF334
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 04:16:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 576FC8769E
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C5AB8871A1
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 04:16:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ux78NcISxdls for <devel@linuxdriverproject.org>;
- Fri,  9 Oct 2020 03:37:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from cpvds521.sideink.com (cpvds521.sideink.com [209.95.54.60])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C0AE8876A3
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cartrackgps.net; s=default; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=fTUpDB5174n3wpl1O4j5Ajgw27YBqoLxnz7b3g8vHkE=; b=Ug5skimFj8eEjq2U7HrZIS4syh
- iqWdiquU5c3RU3T0wpZTik/WwmdiwwF3Tcqhbnc4FZqz9laF0vUXFcZ1QcGPyOEbW60NWJBBHr92j
- FCm5WbhDkrKnMAdYQ4xDWGOpBvO2zAvEo85OjUGIuUe4MmnSO/vz4afPpu165LAsHQ6FeiyEEfneH
- 3iCQzR+wNrXIbpcpM7v6pd8H+C5nvAapexpxjQqEhL0qCHZFGVZB5g8o/+S0QQ6x18FkBgv0wu0Oz
- HHP+6xo1J1MF12gxDXRc9LOb1t1FYgd5KLLJxCKYuxEBxHyA9zXSmpWu6sk8jz/FHwqHFW+RDTeCA
- ynD5qa3Q==;
-Received: from r167-63-95-149.dialup.adsl.anteldata.net.uy
- ([167.63.95.149]:45329 helo=cartrackgps.net)
- by cpvds521.sideink.com with esmtpsa (TLS1) tls
- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (Exim 4.93)
- (envelope-from <infoctg@cartrackgps.net>) id 1kQjDt-0000LH-HN
- for devel@linuxdriverproject.org; Fri, 09 Oct 2020 05:37:37 +0200
-From: CarTrackGPS.com<infoctg@cartrackgps.net>
-To: devel@linuxdriverproject.org
-Subject: Propuesta de GPS para Devel
-Date: 09 Oct 2020 00:38:06 -0300
-Message-ID: <20201009003805.5B5B6026CAC227D1@cartrackgps.net>
-MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - cpvds521.sideink.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - cartrackgps.net
-X-Get-Message-Sender-Via: cpvds521.sideink.com: authenticated_id:
- infoctg@cartrackgps.net
-X-Authenticated-Sender: cpvds521.sideink.com: infoctg@cartrackgps.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+ with ESMTP id syRAaVHobfdo for <devel@linuxdriverproject.org>;
+ Fri,  9 Oct 2020 04:16:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
+ [209.85.208.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B151A8719C
+ for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 04:16:36 +0000 (UTC)
+Received: by mail-ed1-f67.google.com with SMTP id v19so7961527edx.9
+ for <devel@driverdev.osuosl.org>; Thu, 08 Oct 2020 21:16:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=AfwAzZgxUctq+B9Xwm5LEy7q5lioBZycU4ewFeC4ZrU=;
+ b=YeuI3ZU/Q95zGksRh/xPkTQuaKMozCNBWHj+oL9M9Y/jIEAET0+TVTnhYDk17L2ESl
+ Po3EAv7LSh0BdfZTBahj4Xy1jjUYO1LgqavXAlxotKM6x+sABn4BgRaGhKgoKq7D/APk
+ FPr4i7RJkARmVt7oApHNvPtTRqrVTzYm6ZfV2QIAjAzQQiaRJdkfQoOGNNAYKyftMofW
+ wb7IZkuTzm4cW9umXnEb5EiXn4h5X6ibsIHURgefnDZfCJ4mTXNZpOmimAKfdGTTTi+a
+ tn/HA+9zLa2CEgg8sWAgZyRejGA8nWgbKoIoEZkA//EKEpMAi/lEmqsvvRmFjDDKi7ro
+ HHuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=AfwAzZgxUctq+B9Xwm5LEy7q5lioBZycU4ewFeC4ZrU=;
+ b=dRq5zDt/Y09Jkm6WmulXzICbg9H652/s5AbY0ZRyszTAGCk9JLYY0cCeF2GuM3yXeG
+ pGtL7k91EB9rmIx95AIR4nvaq8Z+r72O+zIrkDjSicPO77Dm5hDwDP3r8kNtRkX8cxcB
+ 64Oy3xDjMvnvvfCDWbDasn1pDWAdegqyIGaxzXhlTBhJzRGtVcjZOih0Q6Nn336sucvn
+ C3ezFrNq1k4g0JCfquC8/OCV/LI9UzOXJ+ewzLp9MGhI1K/ZVHOm/SwXNpRBVyavJc6D
+ MoNBTi7YSQfansgX1L8rNde7r7Jhc7rdYgCh4nQVeF4eSrVYx7G5WnRhJqAKHPH3cIAr
+ CLVw==
+X-Gm-Message-State: AOAM530V23fSCzYUXlCMrR0+LDX3FI1Hc4InhRoNjafuKnM7yS5R6aCR
+ zO3m6avwhMLwKzz2i30TERA=
+X-Google-Smtp-Source: ABdhPJyANwK4YJx0wVZaHj0CcX+4bLk3AB9hNGwkbJnRsWUmnv9UXC5XoaoqXKNU7nhJfS7T4UP/uw==
+X-Received: by 2002:a05:6402:10d5:: with SMTP id
+ p21mr12751645edu.14.1602216994860; 
+ Thu, 08 Oct 2020 21:16:34 -0700 (PDT)
+Received: from felia.fritz.box ([2001:16b8:2d6e:f600:80f1:4ea4:2130:b98])
+ by smtp.gmail.com with ESMTPSA id o11sm5415265edw.80.2020.10.08.21.16.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Oct 2020 21:16:34 -0700 (PDT)
+From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+To: Corentin Labbe <clabbe@baylibre.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ mjpeg-users@lists.sourceforge.net, linux-media@vger.kernel.org
+Subject: [PATCH] MAINTAINERS: rectify ZR36067 VIDEO FOR LINUX DRIVER section
+Date: Fri,  9 Oct 2020 06:16:21 +0200
+Message-Id: <20201009041621.17513-1-lukas.bulwahn@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,104 +83,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: "CarTrackGPS.com" <infoctg@cartrackgps.net>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org,
+ Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>, linux-kernel@vger.kernel.org,
+ Joe Perches <joe@perches.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>,
+ Pia Eichinger <pia.eichinger@st.oth-regensburg.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Estimado Devel,
+Commit 754f0f1ba8d9 ("media: MAINTAINERS: change maintainer of the zoran
+driver") added a new section in MAINTAINERS with an invalid file entry
+and at the wrong place for alphabetic ordering.
 
-Le saluda Mario de la empresa Car Track GPS y estamos buscando =
+Hence, ./scripts/get_maintainer.pl --self-test=patterns complains:
 
-distribuidores.
+  warning: no file matches  F:  Documentation/media/v4l-drivers/zoran.rst
 
-Somos desarrolladores de software GPS para localizaci=F3n de =
+Point the file entry to the right location and move the section to the
+right place in MAINTAINERS.
 
-veh=EDculos.
-Este mes ofrecemos equipos Hunter 3G y 4G, tambi=E9n el KIT =
+Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+---
+applies cleanly on next-20201008
 
-completo en 2 pagos.
+Corentin, please ack.
+Mauro, please pick this minor non-urgent cleanup patch into your -next tree.
 
-Tenga su propia Plataforma Web Dedicada desde 68 d=F3lares =
+ MAINTAINERS | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-mensuales. Sin l=EDmites, y sin costo por veh=EDculo.
-Adquiera el KIT BASICO con 5 equipos GPS desde 588 d=F3lares, env=EDo =
-
-incluido.-
-
-Desarrollamos dos nuevos equipos port=E1tiles de alta duraci=F3n de =
-
-bater=EDa. Sirven para rastreo de trailers, contenedores, =
-
-embarcaciones y tambi=E9n bienes. Prevenga el robo y recupere los =
-
-bienes colocando un equipo discreto dentro de una de las cajas de =
-
-mercader=EDa, o escondido dentro de un trailer. Los ladrones hoy no =
-
-escatiman esfuerzos y roban el trailer completo con toda la =
-
-carga.
-
-Con nuestra App en su tel=E9fono puede detener el veh=EDculo en caso =
-
-de robo, localizar en tiempo real, estimar distancia recorrida, =
-
-controlar combustible y saber qu=E9 hacen los choferes.
-
-La promoci=F3n le permitir=E1 tener su propia Plataforma Web a un =
-
-bajo costo. M=E1s de 200 empresas est=E1n ofreciendo servicios de =
-
-localizaci=F3n de veh=EDculos.
-Todos ellos comenzaron a trav=E9s nuestro KIT PROFESIONAL de GPS.
-Si le interesa comenzar un nuevo negocio y ofrecer localizaci=F3n =
-
-v=EDa web tome nota: no cobramos por veh=EDculo, el software es =
-
-ilimitado.
-
-Durante 30 d=EDas (hasta el 11/8/2020) ofrecemos un 10% de =
-
-descuento en la compra de nuestras soluciones de GPS.
-Este descuento le permitir=E1 adquirir nuestra soluci=F3n completa a =
-
-trav=E9s de una inversi=F3n m=E1s baja de lo que normalmente ofrecemos. =
-
-
-Tambi=E9n puede ofrecer el software a empresas que deseen tener su =
-
-propio sistema y obtener as=ED una ganancia sin tener que hacer =
-
-ninguna inversi=F3n.
-
-Nuestras soluciones permiten rastrear veh=EDculos o personas, con =
-
-bater=EDa interna, resistente al agua y a los golpes, alta =
-
-sensibilidad que permite rastrear en el interior de casas u =
-
-oficinas, muy bajo consumo y peque=F1o tama=F1o, bot=F3n de p=E1nico y =
-
-relay incluido sin costo.
-
-Solicite una propuesta comercial en espa=F1ol.
-Si gustan podemos programar una conferencia y hacer una video =
-
-llamada.
-
-Saludos cordiales,
-Lic. Mario de la Cruz
-Gerente Regional
-Whatsapp: +505 8641 5459
-www.cartrackgps.com
-
-Contamos con clientes en m=E1s de 100 pa=EDses y 20 a=F1os de =
-
-experiencia nos avalan.
-
-ID: 40664
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 239ae2425cf8..6879ca545677 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -19412,6 +19412,13 @@ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/dlemoal/zonefs.git
+ F:	Documentation/filesystems/zonefs.rst
+ F:	fs/zonefs/
+ 
++ZPOOL COMPRESSED PAGE STORAGE API
++M:	Dan Streetman <ddstreet@ieee.org>
++L:	linux-mm@kvack.org
++S:	Maintained
++F:	include/linux/zpool.h
++F:	mm/zpool.c
++
+ ZR36067 VIDEO FOR LINUX DRIVER
+ M:	Corentin Labbe <clabbe@baylibre.com>
+ L:	mjpeg-users@lists.sourceforge.net
+@@ -19419,16 +19426,9 @@ L:	linux-media@vger.kernel.org
+ S:	Maintained
+ W:	http://mjpeg.sourceforge.net/driver-zoran/
+ Q:	https://patchwork.linuxtv.org/project/linux-media/list/
+-F:	Documentation/media/v4l-drivers/zoran.rst
++F:	Documentation/driver-api/media/drivers/v4l-drivers/zoran.rst
+ F:	drivers/staging/media/zoran/
+ 
+-ZPOOL COMPRESSED PAGE STORAGE API
+-M:	Dan Streetman <ddstreet@ieee.org>
+-L:	linux-mm@kvack.org
+-S:	Maintained
+-F:	include/linux/zpool.h
+-F:	mm/zpool.c
+-
+ ZRAM COMPRESSED RAM BLOCK DEVICE DRVIER
+ M:	Minchan Kim <minchan@kernel.org>
+ M:	Nitin Gupta <ngupta@vflare.org>
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
