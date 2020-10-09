@@ -2,63 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A07D22880BD
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 05:37:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E1F12880BE
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 05:37:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9C792875F9;
-	Fri,  9 Oct 2020 03:37:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 90E42875FE;
+	Fri,  9 Oct 2020 03:37:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xjMC+Dk+6MSM; Fri,  9 Oct 2020 03:37:45 +0000 (UTC)
+	with ESMTP id zuKyr4c0+d2h; Fri,  9 Oct 2020 03:37:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A5D0F875D5;
-	Fri,  9 Oct 2020 03:37:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7076B87110;
+	Fri,  9 Oct 2020 03:37:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C6E2D1BF5A6
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5A9F31BF5A6
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C3D31876A4
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 576FC8769E
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5LgZS8gdfukf for <devel@linuxdriverproject.org>;
+ with ESMTP id Ux78NcISxdls for <devel@linuxdriverproject.org>;
  Fri,  9 Oct 2020 03:37:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from cpvds521.sideink.com (cpvds521.sideink.com [209.95.54.60])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 22DA08769E
- for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 03:37:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C0AE8876A3
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 03:37:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=cartrackgps.net; s=default; h=Content-Transfer-Encoding:Content-Type:
  MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=NHvII66HAU9hsxTc1NXbjZ8PkIwYRkskJLFleicv4+A=; b=gRNvL4GTAqDDGhfaafJ+awIaLZ
- +4ffP2s67axVgFxDDG2iQbYPvh3JhMO/SRt2xbFc8PLbRWXDJJjQUokrL69fMaMqzl3g50Yo+Y17S
- pTpoVdpA/JQ5zajPYrp2hRjcec0Cfwdi/nkeS2Xgz8WB1YeYuYUA3SiMfl49oxIXqDMd3iH1O7yY1
- OKi9d9AOM+4lr3v4DzdvGjCMBHbJ7jbAmA2wMwVBb5GefZA6bIND+/yt66YNGMHBW+oIyE5FbdXQV
- qtXeorU40VEfCAFGvL9WVJbrMnjVaHeXAPKgt4wW4kGKEM9C1Kf+0x7+0f8XshkyQkKzNZ9J8U875
- b2TFTRSA==;
+ bh=fTUpDB5174n3wpl1O4j5Ajgw27YBqoLxnz7b3g8vHkE=; b=Ug5skimFj8eEjq2U7HrZIS4syh
+ iqWdiquU5c3RU3T0wpZTik/WwmdiwwF3Tcqhbnc4FZqz9laF0vUXFcZ1QcGPyOEbW60NWJBBHr92j
+ FCm5WbhDkrKnMAdYQ4xDWGOpBvO2zAvEo85OjUGIuUe4MmnSO/vz4afPpu165LAsHQ6FeiyEEfneH
+ 3iCQzR+wNrXIbpcpM7v6pd8H+C5nvAapexpxjQqEhL0qCHZFGVZB5g8o/+S0QQ6x18FkBgv0wu0Oz
+ HHP+6xo1J1MF12gxDXRc9LOb1t1FYgd5KLLJxCKYuxEBxHyA9zXSmpWu6sk8jz/FHwqHFW+RDTeCA
+ ynD5qa3Q==;
 Received: from r167-63-95-149.dialup.adsl.anteldata.net.uy
- ([167.63.95.149]:45330 helo=cartrackgps.net)
+ ([167.63.95.149]:45329 helo=cartrackgps.net)
  by cpvds521.sideink.com with esmtpsa (TLS1) tls
  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (Exim 4.93)
- (envelope-from <infoctg@cartrackgps.net>) id 1kQjDs-0000LL-Ji
- for devel@driverdev.osuosl.org; Fri, 09 Oct 2020 05:37:37 +0200
+ (envelope-from <infoctg@cartrackgps.net>) id 1kQjDt-0000LH-HN
+ for devel@linuxdriverproject.org; Fri, 09 Oct 2020 05:37:37 +0200
 From: CarTrackGPS.com<infoctg@cartrackgps.net>
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 Subject: Propuesta de GPS para Devel
-Date: 09 Oct 2020 00:38:05 -0300
-Message-ID: <20201009003804.05C68B4C65EDFA9D@cartrackgps.net>
+Date: 09 Oct 2020 00:38:06 -0300
+Message-ID: <20201009003805.5B5B6026CAC227D1@cartrackgps.net>
 MIME-Version: 1.0
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - cpvds521.sideink.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - cartrackgps.net
 X-Get-Message-Sender-Via: cpvds521.sideink.com: authenticated_id:
@@ -176,7 +176,7 @@ Contamos con clientes en m=E1s de 100 pa=EDses y 20 a=F1os de =
 
 experiencia nos avalan.
 
-ID: 40663
+ID: 40664
 
 _______________________________________________
 devel mailing list
