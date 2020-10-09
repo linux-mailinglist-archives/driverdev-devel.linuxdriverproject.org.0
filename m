@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03F51289497
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 21:54:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E98C82894A0
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Oct 2020 21:54:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 466BE2E321;
-	Fri,  9 Oct 2020 19:54:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 96C2B2E2F0;
+	Fri,  9 Oct 2020 19:54:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y-hpUdQEgBiG; Fri,  9 Oct 2020 19:54:19 +0000 (UTC)
+	with ESMTP id wkkPNibAomTC; Fri,  9 Oct 2020 19:54:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3126920349;
-	Fri,  9 Oct 2020 19:53:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2BEFD2E2E2;
+	Fri,  9 Oct 2020 19:53:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BB2FA1BF2F3
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 19:53:03 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B4A01BF2F3
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 19:53:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B74FA871EC
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 19:53:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 57165877DF
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 19:53:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TMnBIlni1nNe for <devel@linuxdriverproject.org>;
- Fri,  9 Oct 2020 19:53:03 +0000 (UTC)
+ with ESMTP id 7I6AgEl94w6M for <devel@linuxdriverproject.org>;
+ Fri,  9 Oct 2020 19:53:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 330A8871D7
- for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 19:53:03 +0000 (UTC)
-IronPort-SDR: K2g8ddKxl0CGK4AmdC4V6NYK4Gdl3ue3DhwwD/LVzZdYs3cxa6Ma+O7CgOnJG0pE3NBNJJYlEN
- uI9VNi3yxASQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="250226236"
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="250226236"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C03CD877DE
+ for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 19:53:06 +0000 (UTC)
+IronPort-SDR: +RrQK3k7aB8egBblwLENxGbpnQmEzX8XyLigPPnd9oxxyQFH9NiMvi8xv7NljGAcmClTv/T/Wg
+ KFXSjQihfISA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="165643232"
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="165643232"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:53:02 -0700
-IronPort-SDR: bH2kRxXxeY8kuFBN5R8RneSpQbEQLW5eawptefbcIpm8xkU067aWcbaReXxx6/6TDXgDaxiIQ5
- 8lenxDucas2g==
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="519847131"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:53:06 -0700
+IronPort-SDR: +9tLMQNrOc9ZmtQe+NKSSXZyhjRooFfxfongQijBj4blQjg4c6+fJ/ZHkl3bUeAx7HZ0qDTuwd
+ uW08H1SVCXkg==
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="343972363"
 Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:53:02 -0700
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:53:05 -0700
 From: ira.weiny@intel.com
 To: Andrew Morton <akpm@linux-foundation.org>,
  Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>,
  Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
  Peter Zijlstra <peterz@infradead.org>
-Subject: [PATCH RFC PKS/PMEM 37/58] fs/ext2: Utilize new kmap_thread()
-Date: Fri,  9 Oct 2020 12:50:12 -0700
-Message-Id: <20201009195033.3208459-38-ira.weiny@intel.com>
+Subject: [PATCH RFC PKS/PMEM 38/58] fs/isofs: Utilize new kmap_thread()
+Date: Fri,  9 Oct 2020 12:50:13 -0700
+Message-Id: <20201009195033.3208459-39-ira.weiny@intel.com>
 X-Mailer: git-send-email 2.28.0.rc0.12.gb6a658bd00c9
 In-Reply-To: <20201009195033.3208459-1-ira.weiny@intel.com>
 References: <20201009195033.3208459-1-ira.weiny@intel.com>
@@ -91,7 +91,7 @@ Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
  linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
  netdev@vger.kernel.org, kexec@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- Jan Kara <jack@suse.com>, linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
  linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -100,42 +100,36 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Ira Weiny <ira.weiny@intel.com>
 
-These kmap() calls are localized to a single thread.  To avoid the over
-head of global PKRS update use the new kmap_thread() call instead.
+These kmap() calls are localized to a single thread.  To avoid the over head of
+global PKRS updates use the new kmap_thread() call.
 
-Cc: Jan Kara <jack@suse.com>
 Signed-off-by: Ira Weiny <ira.weiny@intel.com>
 ---
- fs/ext2/dir.c  | 2 +-
- fs/ext2/ext2.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ fs/isofs/compress.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/fs/ext2/dir.c b/fs/ext2/dir.c
-index f3194bf20733..abe97ba458c8 100644
---- a/fs/ext2/dir.c
-+++ b/fs/ext2/dir.c
-@@ -196,7 +196,7 @@ static struct page * ext2_get_page(struct inode *dir, unsigned long n,
- 	struct address_space *mapping = dir->i_mapping;
- 	struct page *page = read_mapping_page(mapping, n, NULL);
- 	if (!IS_ERR(page)) {
--		kmap(page);
-+		kmap_thread(page);
- 		if (unlikely(!PageChecked(page))) {
- 			if (PageError(page) || !ext2_check_page(page, quiet))
- 				goto fail;
-diff --git a/fs/ext2/ext2.h b/fs/ext2/ext2.h
-index 021ec8b42ac3..9bcb6714c255 100644
---- a/fs/ext2/ext2.h
-+++ b/fs/ext2/ext2.h
-@@ -749,7 +749,7 @@ extern struct ext2_dir_entry_2 * ext2_dotdot (struct inode *, struct page **);
- extern void ext2_set_link(struct inode *, struct ext2_dir_entry_2 *, struct page *, struct inode *, int);
- static inline void ext2_put_page(struct page *page)
- {
--	kunmap(page);
-+	kunmap_thread(page);
- 	put_page(page);
- }
+diff --git a/fs/isofs/compress.c b/fs/isofs/compress.c
+index bc12ac7e2312..ddd3fd99d2e1 100644
+--- a/fs/isofs/compress.c
++++ b/fs/isofs/compress.c
+@@ -344,7 +344,7 @@ static int zisofs_readpage(struct file *file, struct page *page)
+ 			pages[i] = grab_cache_page_nowait(mapping, index);
+ 		if (pages[i]) {
+ 			ClearPageError(pages[i]);
+-			kmap(pages[i]);
++			kmap_thread(pages[i]);
+ 		}
+ 	}
  
+@@ -356,7 +356,7 @@ static int zisofs_readpage(struct file *file, struct page *page)
+ 			flush_dcache_page(pages[i]);
+ 			if (i == full_page && err)
+ 				SetPageError(pages[i]);
+-			kunmap(pages[i]);
++			kunmap_thread(pages[i]);
+ 			unlock_page(pages[i]);
+ 			if (i != full_page)
+ 				put_page(pages[i]);
 -- 
 2.28.0.rc0.12.gb6a658bd00c9
 
