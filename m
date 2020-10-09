@@ -1,111 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5EC7289B7B
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 00:04:08 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1B07E878F1;
-	Fri,  9 Oct 2020 22:04:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W80Uz0OpgR3L; Fri,  9 Oct 2020 22:04:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE1C6878E1;
-	Fri,  9 Oct 2020 22:04:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 78AC81BF284
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 22:04:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B3F1289C81
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 01:56:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6C8FD2E2DD
- for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 22:04:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 32BB220130;
+	Fri,  9 Oct 2020 23:56:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6KgL4FPSOxu3; Fri,  9 Oct 2020 23:56:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 513B82042B;
+	Fri,  9 Oct 2020 23:56:40 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B1FA61BF36D
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 23:56:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AC28F87211
+ for <devel@linuxdriverproject.org>; Fri,  9 Oct 2020 23:56:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7kTMJVy+HTAp for <devel@linuxdriverproject.org>;
- Fri,  9 Oct 2020 22:03:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 359EB203A3
- for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 22:03:55 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id a72so619285wme.5
- for <devel@driverdev.osuosl.org>; Fri, 09 Oct 2020 15:03:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=6AdF7ImouyBo1v+UVVHbR2jrgxlTgfY49UnpKuJl2vo=;
- b=MAvLr2XnoBdtbc8e8cEo1YppoaD8vfmQyJEZKkS/CF5FMGYOCD9W7O0IZtWYq8ODgA
- hPrQ1FmqoKh8rvOQoL3cQ1KrqxgRTT0OnIwFAo1dmcJzppCqnka5FyN347HmibM8jSEz
- e9ww2l67YncgPsbvE8VuHqhkcOIRrbdxVqCNU=
+ with ESMTP id huCGDSXyoYzl for <devel@linuxdriverproject.org>;
+ Fri,  9 Oct 2020 23:56:18 +0000 (UTC)
+X-Greylist: delayed 00:31:18 by SQLgrey-1.7.6
+Received: from mail-yb1-f202.google.com (mail-yb1-f202.google.com
+ [209.85.219.202])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 92E2E871FF
+ for <devel@driverdev.osuosl.org>; Fri,  9 Oct 2020 23:56:18 +0000 (UTC)
+Received: by mail-yb1-f202.google.com with SMTP id v4so10699602ybk.5
+ for <devel@driverdev.osuosl.org>; Fri, 09 Oct 2020 16:56:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=sender:date:message-id:mime-version:subject:from:to:cc;
+ bh=OTHm9oO7gk347MFuW+OaDq2/vsm6e+aeSPuhn/LkcJw=;
+ b=Ku83pqzDHSiRYOrwEw/9LRjAXIFYt8qx5KWw2o53dxsZjBb21junI6XTHLqtqK8BiR
+ gnTnNU8zz2rQxMwEQql68FJCuS/uU3D0HhFGj/bEFtipb9lCGcTFW3empL9Nyo1PHXCT
+ D1dkMrmc32WHciqu2EnOSVP7iPd0y+qtFqi9g1P1PIqD3iqyvbXAXQ+rJExDCzYMECOl
+ C5nEn0GdUL0bEOn+PGWiGMcFUXPgG2zIQcGf4DaZRybHjF3LwOOibYcmUbdYxt9mFsGo
+ cBoxbwc19kEtojUjHFs0up80tozU9w3W9Si6Li3lVKSGT++V0gjwDtypkdJ735d+rtYN
+ YyJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :in-reply-to;
- bh=6AdF7ImouyBo1v+UVVHbR2jrgxlTgfY49UnpKuJl2vo=;
- b=qz1nbOV9czqBZVN3yGe0TQVaJUA3aOMrvOcQUeb14/Vjj+cfV2OWaDAApccH7oF0hY
- HTyHohgz4GFohc4T0rXRQyeIlBXNLuL7lkcmWiI330dYtesbM7gH5arjvz9ntlO3zfr/
- J7G/cKrzGdnJvwGLH31K14h/5IIDCtpKYj67x2XT9RiRohwr8AUYaGqvuhs1cxh/W/Q9
- lp9qh8mVLE0DFSq0Q1JOyz1Cg7eSEw8vx6VmQmu+9zIVv7wvsfOXxMQaVr9YWEGga/06
- SZV4AREe2FBAZiurG06LytDDKKNsXNqiX3hUZ908ji+kFwQa+/ScMtNrXbxW80+A+WKx
- UdpQ==
-X-Gm-Message-State: AOAM531owGVYysk9lh3iiQn13Zqcs5C/m7VNU89DkZFvYlDTFXnIFEB5
- 4EcEozotq1tRzVUb/n6Q7eRFnw==
-X-Google-Smtp-Source: ABdhPJzLUGH0qXD9MRJ9uaTqaSHXSKqVIytWPhW+Fv8l3CnjdOFUZRdjqAS25NTJ59jhdr8rs7Tm+A==
-X-Received: by 2002:a1c:a9d1:: with SMTP id s200mr4476wme.107.1602281034146;
- Fri, 09 Oct 2020 15:03:54 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id c18sm14231894wrq.5.2020.10.09.15.03.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Oct 2020 15:03:52 -0700 (PDT)
-Date: Sat, 10 Oct 2020 00:03:49 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: ira.weiny@intel.com
-Subject: Re: [PATCH RFC PKS/PMEM 09/58] drivers/gpu: Utilize new kmap_thread()
-Message-ID: <20201009220349.GQ438822@phenom.ffwll.local>
-Mail-Followup-To: ira.weiny@intel.com,
- Andrew Morton <akpm@linux-foundation.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Andy Lutomirski <luto@kernel.org>,
- Peter Zijlstra <peterz@infradead.org>,
- David Airlie <airlied@linux.ie>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>, x86@kernel.org,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Dan Williams <dan.j.williams@intel.com>,
- Fenghua Yu <fenghua.yu@intel.com>, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-nvdimm@lists.01.org,
- linux-fsdevel@vger.kernel.org, linux-mm@kvack.org,
- linux-kselftest@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- kvm@vger.kernel.org, netdev@vger.kernel.org, bpf@vger.kernel.org,
- kexec@lists.infradead.org, linux-bcache@vger.kernel.org,
- linux-mtd@lists.infradead.org, devel@driverdev.osuosl.org,
- linux-efi@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-scsi@vger.kernel.org, target-devel@vger.kernel.org,
- linux-nfs@vger.kernel.org, ceph-devel@vger.kernel.org,
- linux-ext4@vger.kernel.org, linux-aio@kvack.org,
- io-uring@vger.kernel.org, linux-erofs@lists.ozlabs.org,
- linux-um@lists.infradead.org, linux-ntfs-dev@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, linux-nilfs@vger.kernel.org,
- cluster-devel@redhat.com, ecryptfs@vger.kernel.org,
- linux-cifs@vger.kernel.org, linux-btrfs@vger.kernel.org,
- linux-afs@lists.infradead.org, linux-rdma@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, drbd-dev@lists.linbit.com,
- linux-block@vger.kernel.org, xen-devel@lists.xenproject.org,
- linux-cachefs@redhat.com, samba-technical@lists.samba.org,
- intel-wired-lan@lists.osuosl.org
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-10-ira.weiny@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201009195033.3208459-10-ira.weiny@intel.com>
-X-Operating-System: Linux phenom 5.7.0-1-amd64 
+ h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
+ :to:cc;
+ bh=OTHm9oO7gk347MFuW+OaDq2/vsm6e+aeSPuhn/LkcJw=;
+ b=iX4Y6TwRf87LUSmL4ISq6CweK8LIpta7mirhHnll+nLwVTSjXzOf6TCtPMb141ejJ9
+ tY14U/hHfDJwR2HXxZuPmqBTG4T7qNmL1VNiqdOv2PgcQY6Lhrz65icPAkQsaRJfwS6T
+ 5j/t9IEI+r2/NtUH0A+FHSH/7HaSxvTk4EF7RmUsApizCVKxKY1QmYt+v/0uJOqalexT
+ f7kb6LM/p4v0nnDibDLz2Jrjon16iIl2YWfBdZlZSS0dGUSsg61g8XW+eu0LSpBU1qJG
+ CnOUBeveXfmR352W4m5xAiOtaHKpf7d2RNcp8e4el13nsbr2cHmZF5sN/mE2aPf7i05U
+ +vYA==
+X-Gm-Message-State: AOAM530yQusK3Egup30V7gAOwvGAarynVSiNavuxQT516pGaAiUb55V7
+ wBBnNSYZ0VkTE0Dyc+CquJrYl346wA==
+X-Google-Smtp-Source: ABdhPJxoHQ5YjsNwPzIMb6FhZkvn+yojwMJAoOU/IxEqLpXJKjKG+lu1V1MGdGcoHGvYRMl9hbgQVuxs7g==
+X-Received: from ava-linux2.mtv.corp.google.com
+ ([2620:15c:211:0:cad3:ffff:feb3:bfed])
+ (user=tkjos job=sendgmr) by 2002:a25:c546:: with SMTP id
+ v67mr22651787ybe.74.1602285899380; 
+ Fri, 09 Oct 2020 16:24:59 -0700 (PDT)
+Date: Fri,  9 Oct 2020 16:24:55 -0700
+Message-Id: <20201009232455.4054810-1-tkjos@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.28.0.1011.ga647a8990f-goog
+Subject: [PATCH] binder: fix UAF when releasing todo list
+From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, gregkh@linuxfoundation.org, christian@brauner.io, 
+ arve@android.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+ maco@google.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,407 +83,117 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-kselftest@vger.kernel.org,
- samba-technical@lists.samba.org, Thomas Gleixner <tglx@linutronix.de>,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, linux-nilfs@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-nvdimm@lists.01.org,
- linux-rdma@vger.kernel.org, x86@kernel.org, ceph-devel@vger.kernel.org,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>, io-uring@vger.kernel.org,
- cluster-devel@redhat.com, David Airlie <airlied@linux.ie>,
- Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
- xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
- Fenghua Yu <fenghua.yu@intel.com>, linux-afs@lists.infradead.org,
- linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
- reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-bcache@vger.kernel.org, Borislav Petkov <bp@alien8.de>,
- Andy Lutomirski <luto@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
- bpf@vger.kernel.org, linux-cachefs@redhat.com, linux-nfs@vger.kernel.org,
- linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
- kexec@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, Daniel Vetter <daniel@ffwll.ch>,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Oct 09, 2020 at 12:49:44PM -0700, ira.weiny@intel.com wrote:
-> From: Ira Weiny <ira.weiny@intel.com>
-> 
-> These kmap() calls in the gpu stack are localized to a single thread.
-> To avoid the over head of global PKRS updates use the new kmap_thread()
-> call.
-> 
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
-> Signed-off-by: Ira Weiny <ira.weiny@intel.com>
+When releasing a thread todo list when tearing down
+a binder_proc, the following race was possible which
+could result in a use-after-free:
 
-I'm guessing the entire pile goes in through some other tree. If so:
+1.  Thread 1: enter binder_release_work from binder_thread_release
+2.  Thread 2: binder_update_ref_for_handle() -> binder_dec_node_ilocked()
+3.  Thread 2: dec nodeA --> 0 (will free node)
+4.  Thread 1: ACQ inner_proc_lock
+5.  Thread 2: block on inner_proc_lock
+6.  Thread 1: dequeue work (BINDER_WORK_NODE, part of nodeA)
+7.  Thread 1: REL inner_proc_lock
+8.  Thread 2: ACQ inner_proc_lock
+9.  Thread 2: todo list cleanup, but work was already dequeued
+10. Thread 2: free node
+11. Thread 2: REL inner_proc_lock
+12. Thread 1: deref w->type (UAF)
 
-Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+The problem was that for a BINDER_WORK_NODE, the binder_work element
+must not be accessed after releasing the inner_proc_lock while
+processing the todo list elements since another thread might be
+handling a deref on the node containing the binder_work element
+leading to the node being freed.
 
-If you want this to land through maintainer trees, then we need a
-per-driver split (since aside from amdgpu and radeon they're all different
-subtrees).
+Signed-off-by: Todd Kjos <tkjos@google.com>
+---
+ drivers/android/binder.c | 35 ++++++++++-------------------------
+ 1 file changed, 10 insertions(+), 25 deletions(-)
 
-btw the two kmap calls in drm you highlight in the cover letter should
-also be convertible to kmap_thread. We only hold vmalloc mappings for a
-longer time (or it'd be quite a driver bug). So if you want maybe throw
-those two as two additional patches on top, and we can do some careful
-review & testing for them.
--Daniel
-
-> ---
->  drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c              | 12 ++++++------
->  drivers/gpu/drm/gma500/gma_display.c                 |  4 ++--
->  drivers/gpu/drm/gma500/mmu.c                         | 10 +++++-----
->  drivers/gpu/drm/i915/gem/i915_gem_shmem.c            |  4 ++--
->  .../gpu/drm/i915/gem/selftests/i915_gem_context.c    |  4 ++--
->  drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c   |  8 ++++----
->  drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c         |  4 ++--
->  drivers/gpu/drm/i915/gt/intel_gtt.c                  |  4 ++--
->  drivers/gpu/drm/i915/gt/shmem_utils.c                |  4 ++--
->  drivers/gpu/drm/i915/i915_gem.c                      |  8 ++++----
->  drivers/gpu/drm/i915/i915_gpu_error.c                |  4 ++--
->  drivers/gpu/drm/i915/selftests/i915_perf.c           |  4 ++--
->  drivers/gpu/drm/radeon/radeon_ttm.c                  |  4 ++--
->  13 files changed, 37 insertions(+), 37 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-> index 978bae731398..bd564bccb7a3 100644
-> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-> @@ -2437,11 +2437,11 @@ static ssize_t amdgpu_ttm_gtt_read(struct file *f, char __user *buf,
->  
->  		page = adev->gart.pages[p];
->  		if (page) {
-> -			ptr = kmap(page);
-> +			ptr = kmap_thread(page);
->  			ptr += off;
->  
->  			r = copy_to_user(buf, ptr, cur_size);
-> -			kunmap(adev->gart.pages[p]);
-> +			kunmap_thread(adev->gart.pages[p]);
->  		} else
->  			r = clear_user(buf, cur_size);
->  
-> @@ -2507,9 +2507,9 @@ static ssize_t amdgpu_iomem_read(struct file *f, char __user *buf,
->  		if (p->mapping != adev->mman.bdev.dev_mapping)
->  			return -EPERM;
->  
-> -		ptr = kmap(p);
-> +		ptr = kmap_thread(p);
->  		r = copy_to_user(buf, ptr + off, bytes);
-> -		kunmap(p);
-> +		kunmap_thread(p);
->  		if (r)
->  			return -EFAULT;
->  
-> @@ -2558,9 +2558,9 @@ static ssize_t amdgpu_iomem_write(struct file *f, const char __user *buf,
->  		if (p->mapping != adev->mman.bdev.dev_mapping)
->  			return -EPERM;
->  
-> -		ptr = kmap(p);
-> +		ptr = kmap_thread(p);
->  		r = copy_from_user(ptr + off, buf, bytes);
-> -		kunmap(p);
-> +		kunmap_thread(p);
->  		if (r)
->  			return -EFAULT;
->  
-> diff --git a/drivers/gpu/drm/gma500/gma_display.c b/drivers/gpu/drm/gma500/gma_display.c
-> index 3df6d6e850f5..35f4e55c941f 100644
-> --- a/drivers/gpu/drm/gma500/gma_display.c
-> +++ b/drivers/gpu/drm/gma500/gma_display.c
-> @@ -400,9 +400,9 @@ int gma_crtc_cursor_set(struct drm_crtc *crtc,
->  		/* Copy the cursor to cursor mem */
->  		tmp_dst = dev_priv->vram_addr + cursor_gt->offset;
->  		for (i = 0; i < cursor_pages; i++) {
-> -			tmp_src = kmap(gt->pages[i]);
-> +			tmp_src = kmap_thread(gt->pages[i]);
->  			memcpy(tmp_dst, tmp_src, PAGE_SIZE);
-> -			kunmap(gt->pages[i]);
-> +			kunmap_thread(gt->pages[i]);
->  			tmp_dst += PAGE_SIZE;
->  		}
->  
-> diff --git a/drivers/gpu/drm/gma500/mmu.c b/drivers/gpu/drm/gma500/mmu.c
-> index 505044c9a673..fba7a3a461fd 100644
-> --- a/drivers/gpu/drm/gma500/mmu.c
-> +++ b/drivers/gpu/drm/gma500/mmu.c
-> @@ -192,20 +192,20 @@ struct psb_mmu_pd *psb_mmu_alloc_pd(struct psb_mmu_driver *driver,
->  		pd->invalid_pte = 0;
->  	}
->  
-> -	v = kmap(pd->dummy_pt);
-> +	v = kmap_thread(pd->dummy_pt);
->  	for (i = 0; i < (PAGE_SIZE / sizeof(uint32_t)); ++i)
->  		v[i] = pd->invalid_pte;
->  
-> -	kunmap(pd->dummy_pt);
-> +	kunmap_thread(pd->dummy_pt);
->  
-> -	v = kmap(pd->p);
-> +	v = kmap_thread(pd->p);
->  	for (i = 0; i < (PAGE_SIZE / sizeof(uint32_t)); ++i)
->  		v[i] = pd->invalid_pde;
->  
-> -	kunmap(pd->p);
-> +	kunmap_thread(pd->p);
->  
->  	clear_page(kmap(pd->dummy_page));
-> -	kunmap(pd->dummy_page);
-> +	kunmap_thread(pd->dummy_page);
->  
->  	pd->tables = vmalloc_user(sizeof(struct psb_mmu_pt *) * 1024);
->  	if (!pd->tables)
-> diff --git a/drivers/gpu/drm/i915/gem/i915_gem_shmem.c b/drivers/gpu/drm/i915/gem/i915_gem_shmem.c
-> index 38113d3c0138..274424795fb7 100644
-> --- a/drivers/gpu/drm/i915/gem/i915_gem_shmem.c
-> +++ b/drivers/gpu/drm/i915/gem/i915_gem_shmem.c
-> @@ -566,9 +566,9 @@ i915_gem_object_create_shmem_from_data(struct drm_i915_private *dev_priv,
->  		if (err < 0)
->  			goto fail;
->  
-> -		vaddr = kmap(page);
-> +		vaddr = kmap_thread(page);
->  		memcpy(vaddr, data, len);
-> -		kunmap(page);
-> +		kunmap_thread(page);
->  
->  		err = pagecache_write_end(file, file->f_mapping,
->  					  offset, len, len,
-> diff --git a/drivers/gpu/drm/i915/gem/selftests/i915_gem_context.c b/drivers/gpu/drm/i915/gem/selftests/i915_gem_context.c
-> index 7ffc3c751432..b466c677d007 100644
-> --- a/drivers/gpu/drm/i915/gem/selftests/i915_gem_context.c
-> +++ b/drivers/gpu/drm/i915/gem/selftests/i915_gem_context.c
-> @@ -1754,7 +1754,7 @@ static int check_scratch_page(struct i915_gem_context *ctx, u32 *out)
->  		return -EINVAL;
->  	}
->  
-> -	vaddr = kmap(page);
-> +	vaddr = kmap_thread(page);
->  	if (!vaddr) {
->  		pr_err("No (mappable) scratch page!\n");
->  		return -EINVAL;
-> @@ -1765,7 +1765,7 @@ static int check_scratch_page(struct i915_gem_context *ctx, u32 *out)
->  		pr_err("Inconsistent initial state of scratch page!\n");
->  		err = -EINVAL;
->  	}
-> -	kunmap(page);
-> +	kunmap_thread(page);
->  
->  	return err;
->  }
-> diff --git a/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c b/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c
-> index 9c7402ce5bf9..447df22e2e06 100644
-> --- a/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c
-> +++ b/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c
-> @@ -143,7 +143,7 @@ static int check_partial_mapping(struct drm_i915_gem_object *obj,
->  	intel_gt_flush_ggtt_writes(&to_i915(obj->base.dev)->gt);
->  
->  	p = i915_gem_object_get_page(obj, offset >> PAGE_SHIFT);
-> -	cpu = kmap(p) + offset_in_page(offset);
-> +	cpu = kmap_thread(p) + offset_in_page(offset);
->  	drm_clflush_virt_range(cpu, sizeof(*cpu));
->  	if (*cpu != (u32)page) {
->  		pr_err("Partial view for %lu [%u] (offset=%llu, size=%u [%llu, row size %u], fence=%d, tiling=%d, stride=%d) misalignment, expected write to page (%llu + %u [0x%llx]) of 0x%x, found 0x%x\n",
-> @@ -161,7 +161,7 @@ static int check_partial_mapping(struct drm_i915_gem_object *obj,
->  	}
->  	*cpu = 0;
->  	drm_clflush_virt_range(cpu, sizeof(*cpu));
-> -	kunmap(p);
-> +	kunmap_thread(p);
->  
->  out:
->  	__i915_vma_put(vma);
-> @@ -236,7 +236,7 @@ static int check_partial_mappings(struct drm_i915_gem_object *obj,
->  		intel_gt_flush_ggtt_writes(&to_i915(obj->base.dev)->gt);
->  
->  		p = i915_gem_object_get_page(obj, offset >> PAGE_SHIFT);
-> -		cpu = kmap(p) + offset_in_page(offset);
-> +		cpu = kmap_thread(p) + offset_in_page(offset);
->  		drm_clflush_virt_range(cpu, sizeof(*cpu));
->  		if (*cpu != (u32)page) {
->  			pr_err("Partial view for %lu [%u] (offset=%llu, size=%u [%llu, row size %u], fence=%d, tiling=%d, stride=%d) misalignment, expected write to page (%llu + %u [0x%llx]) of 0x%x, found 0x%x\n",
-> @@ -254,7 +254,7 @@ static int check_partial_mappings(struct drm_i915_gem_object *obj,
->  		}
->  		*cpu = 0;
->  		drm_clflush_virt_range(cpu, sizeof(*cpu));
-> -		kunmap(p);
-> +		kunmap_thread(p);
->  		if (err)
->  			return err;
->  
-> diff --git a/drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c b/drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c
-> index 7fb36b12fe7a..38da348282f1 100644
-> --- a/drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c
-> +++ b/drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c
-> @@ -731,7 +731,7 @@ static void swizzle_page(struct page *page)
->  	char *vaddr;
->  	int i;
->  
-> -	vaddr = kmap(page);
-> +	vaddr = kmap_thread(page);
->  
->  	for (i = 0; i < PAGE_SIZE; i += 128) {
->  		memcpy(temp, &vaddr[i], 64);
-> @@ -739,7 +739,7 @@ static void swizzle_page(struct page *page)
->  		memcpy(&vaddr[i + 64], temp, 64);
->  	}
->  
-> -	kunmap(page);
-> +	kunmap_thread(page);
->  }
->  
->  /**
-> diff --git a/drivers/gpu/drm/i915/gt/intel_gtt.c b/drivers/gpu/drm/i915/gt/intel_gtt.c
-> index 2a72cce63fd9..4cfb24e9ed62 100644
-> --- a/drivers/gpu/drm/i915/gt/intel_gtt.c
-> +++ b/drivers/gpu/drm/i915/gt/intel_gtt.c
-> @@ -312,9 +312,9 @@ static void poison_scratch_page(struct page *page, unsigned long size)
->  	do {
->  		void *vaddr;
->  
-> -		vaddr = kmap(page);
-> +		vaddr = kmap_thread(page);
->  		memset(vaddr, POISON_FREE, PAGE_SIZE);
-> -		kunmap(page);
-> +		kunmap_thread(page);
->  
->  		page = pfn_to_page(page_to_pfn(page) + 1);
->  		size -= PAGE_SIZE;
-> diff --git a/drivers/gpu/drm/i915/gt/shmem_utils.c b/drivers/gpu/drm/i915/gt/shmem_utils.c
-> index 43c7acbdc79d..a40d3130cebf 100644
-> --- a/drivers/gpu/drm/i915/gt/shmem_utils.c
-> +++ b/drivers/gpu/drm/i915/gt/shmem_utils.c
-> @@ -142,12 +142,12 @@ static int __shmem_rw(struct file *file, loff_t off,
->  		if (IS_ERR(page))
->  			return PTR_ERR(page);
->  
-> -		vaddr = kmap(page);
-> +		vaddr = kmap_thread(page);
->  		if (write)
->  			memcpy(vaddr + offset_in_page(off), ptr, this);
->  		else
->  			memcpy(ptr, vaddr + offset_in_page(off), this);
-> -		kunmap(page);
-> +		kunmap_thread(page);
->  		put_page(page);
->  
->  		len -= this;
-> diff --git a/drivers/gpu/drm/i915/i915_gem.c b/drivers/gpu/drm/i915/i915_gem.c
-> index 9aa3066cb75d..cae8300fd224 100644
-> --- a/drivers/gpu/drm/i915/i915_gem.c
-> +++ b/drivers/gpu/drm/i915/i915_gem.c
-> @@ -312,14 +312,14 @@ shmem_pread(struct page *page, int offset, int len, char __user *user_data,
->  	char *vaddr;
->  	int ret;
->  
-> -	vaddr = kmap(page);
-> +	vaddr = kmap_thread(page);
->  
->  	if (needs_clflush)
->  		drm_clflush_virt_range(vaddr + offset, len);
->  
->  	ret = __copy_to_user(user_data, vaddr + offset, len);
->  
-> -	kunmap(page);
-> +	kunmap_thread(page);
->  
->  	return ret ? -EFAULT : 0;
->  }
-> @@ -708,7 +708,7 @@ shmem_pwrite(struct page *page, int offset, int len, char __user *user_data,
->  	char *vaddr;
->  	int ret;
->  
-> -	vaddr = kmap(page);
-> +	vaddr = kmap_thread(page);
->  
->  	if (needs_clflush_before)
->  		drm_clflush_virt_range(vaddr + offset, len);
-> @@ -717,7 +717,7 @@ shmem_pwrite(struct page *page, int offset, int len, char __user *user_data,
->  	if (!ret && needs_clflush_after)
->  		drm_clflush_virt_range(vaddr + offset, len);
->  
-> -	kunmap(page);
-> +	kunmap_thread(page);
->  
->  	return ret ? -EFAULT : 0;
->  }
-> diff --git a/drivers/gpu/drm/i915/i915_gpu_error.c b/drivers/gpu/drm/i915/i915_gpu_error.c
-> index 3e6cbb0d1150..aecd469b6b6e 100644
-> --- a/drivers/gpu/drm/i915/i915_gpu_error.c
-> +++ b/drivers/gpu/drm/i915/i915_gpu_error.c
-> @@ -1058,9 +1058,9 @@ i915_vma_coredump_create(const struct intel_gt *gt,
->  
->  			drm_clflush_pages(&page, 1);
->  
-> -			s = kmap(page);
-> +			s = kmap_thread(page);
->  			ret = compress_page(compress, s, dst, false);
-> -			kunmap(page);
-> +			kunmap_thread(page);
->  
->  			drm_clflush_pages(&page, 1);
->  
-> diff --git a/drivers/gpu/drm/i915/selftests/i915_perf.c b/drivers/gpu/drm/i915/selftests/i915_perf.c
-> index c2d001d9c0ec..7f7ef2d056f4 100644
-> --- a/drivers/gpu/drm/i915/selftests/i915_perf.c
-> +++ b/drivers/gpu/drm/i915/selftests/i915_perf.c
-> @@ -307,7 +307,7 @@ static int live_noa_gpr(void *arg)
->  	}
->  
->  	/* Poison the ce->vm so we detect writes not to the GGTT gt->scratch */
-> -	scratch = kmap(ce->vm->scratch[0].base.page);
-> +	scratch = kmap_thread(ce->vm->scratch[0].base.page);
->  	memset(scratch, POISON_FREE, PAGE_SIZE);
->  
->  	rq = intel_context_create_request(ce);
-> @@ -405,7 +405,7 @@ static int live_noa_gpr(void *arg)
->  out_rq:
->  	i915_request_put(rq);
->  out_ce:
-> -	kunmap(ce->vm->scratch[0].base.page);
-> +	kunmap_thread(ce->vm->scratch[0].base.page);
->  	intel_context_put(ce);
->  out:
->  	stream_destroy(stream);
-> diff --git a/drivers/gpu/drm/radeon/radeon_ttm.c b/drivers/gpu/drm/radeon/radeon_ttm.c
-> index 004344dce140..0aba0cac51e1 100644
-> --- a/drivers/gpu/drm/radeon/radeon_ttm.c
-> +++ b/drivers/gpu/drm/radeon/radeon_ttm.c
-> @@ -1013,11 +1013,11 @@ static ssize_t radeon_ttm_gtt_read(struct file *f, char __user *buf,
->  
->  		page = rdev->gart.pages[p];
->  		if (page) {
-> -			ptr = kmap(page);
-> +			ptr = kmap_thread(page);
->  			ptr += off;
->  
->  			r = copy_to_user(buf, ptr, cur_size);
-> -			kunmap(rdev->gart.pages[p]);
-> +			kunmap_thread(rdev->gart.pages[p]);
->  		} else
->  			r = clear_user(buf, cur_size);
->  
-> -- 
-> 2.28.0.rc0.12.gb6a658bd00c9
-> 
-
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index f936530a19b0..e8a1db4a86ed 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -223,7 +223,7 @@ static struct binder_transaction_log_entry *binder_transaction_log_add(
+ struct binder_work {
+ 	struct list_head entry;
+ 
+-	enum {
++	enum binder_work_type {
+ 		BINDER_WORK_TRANSACTION = 1,
+ 		BINDER_WORK_TRANSACTION_COMPLETE,
+ 		BINDER_WORK_RETURN_ERROR,
+@@ -885,27 +885,6 @@ static struct binder_work *binder_dequeue_work_head_ilocked(
+ 	return w;
+ }
+ 
+-/**
+- * binder_dequeue_work_head() - Dequeues the item at head of list
+- * @proc:         binder_proc associated with list
+- * @list:         list to dequeue head
+- *
+- * Removes the head of the list if there are items on the list
+- *
+- * Return: pointer dequeued binder_work, NULL if list was empty
+- */
+-static struct binder_work *binder_dequeue_work_head(
+-					struct binder_proc *proc,
+-					struct list_head *list)
+-{
+-	struct binder_work *w;
+-
+-	binder_inner_proc_lock(proc);
+-	w = binder_dequeue_work_head_ilocked(list);
+-	binder_inner_proc_unlock(proc);
+-	return w;
+-}
+-
+ static void
+ binder_defer_work(struct binder_proc *proc, enum binder_deferred_state defer);
+ static void binder_free_thread(struct binder_thread *thread);
+@@ -4587,13 +4566,17 @@ static void binder_release_work(struct binder_proc *proc,
+ 				struct list_head *list)
+ {
+ 	struct binder_work *w;
++	enum binder_work_type wtype;
+ 
+ 	while (1) {
+-		w = binder_dequeue_work_head(proc, list);
++		binder_inner_proc_lock(proc);
++		w = binder_dequeue_work_head_ilocked(list);
++		wtype = w ? w->type : 0;
++		binder_inner_proc_unlock(proc);
+ 		if (!w)
+ 			return;
+ 
+-		switch (w->type) {
++		switch (wtype) {
+ 		case BINDER_WORK_TRANSACTION: {
+ 			struct binder_transaction *t;
+ 
+@@ -4627,9 +4610,11 @@ static void binder_release_work(struct binder_proc *proc,
+ 			kfree(death);
+ 			binder_stats_deleted(BINDER_STAT_DEATH);
+ 		} break;
++		case BINDER_WORK_NODE:
++			break;
+ 		default:
+ 			pr_err("unexpected work type, %d, not freed\n",
+-			       w->type);
++			       wtype);
+ 			break;
+ 		}
+ 	}
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.28.0.1011.ga647a8990f-goog
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
