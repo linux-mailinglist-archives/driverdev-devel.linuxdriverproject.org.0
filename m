@@ -1,82 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C00D728A002
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 12:24:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E41CC28A009
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 12:36:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0359020451;
-	Sat, 10 Oct 2020 10:24:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0F6CE870E0;
+	Sat, 10 Oct 2020 10:36:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s4zyemxgX8Kz; Sat, 10 Oct 2020 10:24:33 +0000 (UTC)
+	with ESMTP id h7BOh7n1Dz9d; Sat, 10 Oct 2020 10:36:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2EE202041E;
-	Sat, 10 Oct 2020 10:24:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63BB387043;
+	Sat, 10 Oct 2020 10:36:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9F5481BF283
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:24:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A0841BF283
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:36:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9B7A8876E3
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:24:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4416B87046
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:36:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bIuv3zro2-yb for <devel@linuxdriverproject.org>;
- Sat, 10 Oct 2020 10:24:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9F72B876E1
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 10:24:24 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id e7so71780pfn.12
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 03:24:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=kAgtV/zlQ7qrkVa4Spm7AsOCtZ54oLdUWPo/1FrLzu0=;
- b=Fd/AOEa+CbBqIC2iF30QdGq2192retCk+TPZgJaHBT+CQ9SHE2CaD6qffOm4of7NXa
- Jn6gkZ9sbB3uIwq+HN1lSc/FAvfLOzyueqUZHqH1W1dxUaWOgvrQhlJYpR9asIc8xNEs
- NNJlhWJFXdyOwWP3U/1znuX833V8Id7ks0VQFHOUhn71OesHFOZMN8xScQpbf4Q232cL
- 0IbU4m/k9zxnCEUXgthG2NtIuXGpbxmfgn8MdhvKlg1alnAfSaNULkiW3Lzuq9pl05LP
- +Vt4rd3xTqbW6Ht5w2s8Cx3beWjvs0BjgyYg7p0OuNNgv+5/pzFDGzZF17GmvqDjkmbx
- JhQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=kAgtV/zlQ7qrkVa4Spm7AsOCtZ54oLdUWPo/1FrLzu0=;
- b=S2Dq2mMxu7jPONrr82W6R9EomBLlWGOnmUdSZdvu4izYWuhUwCVf7SzMv2LsHqckVE
- KPzEt89WJVs33y0zN9U/EY1DeelBpWyj4MiCPEcnAzPdZs0NpDC5R9yTkREOeErG8SGb
- L9WZmGW9RyZxUN/oDsedW503VDCYWE4MOmbs0VV87MfibsUDbSwIkMbKAdcNM6CzUdw9
- dABqFO3314bF9JGqdzWy42TdSw3hQLSMmQlDjT9RuZTle0JnuDewm7UG8JB90Jtt44I/
- T1pGi4ChgmA/3JlZMNaBB2fgIaHinr91woF/6j5yYbUTKGLl2uZCTS/9+qNhLdQSqEq8
- 9DDA==
-X-Gm-Message-State: AOAM531pC51EfQogwRhHHmEaWELhcTLA61PTpb8/L/rXHuFr80KfXluC
- 4aM4zX0jsWOSLFx+e5h8Lvw=
-X-Google-Smtp-Source: ABdhPJwG1tv6wFNy3N3iskgS++slfqVQGNmRoe+3mCbntEk6+fX6eR6Nbu4g4GE2X+symJI6Uh/xNw==
-X-Received: by 2002:a63:5b5c:: with SMTP id l28mr6393033pgm.243.1602325464218; 
- Sat, 10 Oct 2020 03:24:24 -0700 (PDT)
-Received: from localhost ([2001:e42:102:1532:160:16:113:140])
- by smtp.gmail.com with ESMTPSA id jx17sm14821822pjb.10.2020.10.10.03.24.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Oct 2020 03:24:23 -0700 (PDT)
-From: Coiby Xu <coiby.xu@gmail.com>
-X-Google-Original-From: Coiby Xu <Coiby.Xu@gmail.com>
-Date: Sat, 10 Oct 2020 18:24:16 +0800
-To: Benjamin Poirier <benjamin.poirier@gmail.com>
-Subject: Re: [PATCH v1 1/6] staging: qlge: Initialize devlink health dump
- framework for the dlge driver
-Message-ID: <20201010102416.hvbgx3mgyadmu6ui@Rk>
-References: <20201008115808.91850-1-coiby.xu@gmail.com>
- <20201008115808.91850-2-coiby.xu@gmail.com>
- <20201010073514.GA14495@f3>
+ with ESMTP id qcj95E2pZtv1 for <devel@linuxdriverproject.org>;
+ Sat, 10 Oct 2020 10:36:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A208587043
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 10:36:39 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BC9082145D;
+ Sat, 10 Oct 2020 10:36:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602326199;
+ bh=j0TSYo+wdbpDZVAjxfjrxIVjno3BzV9rBoWhNlRLMsQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=r+fsp40bKSGqmoi6O9PC15qHKyIUNTSjoj2MHJ6xIfjV4QTIoOEql0hS/Xu0JDHFV
+ h/c0D1HsPh7Bm3DfLm0bEtCFsrMa/mT2OAbRFq9ZqydBa1uBQJw7ZwvaDlDG0EwlZu
+ GRgCTKHVMxmGZObCCjRutmM3rw6Yrsoprxk3tP/8=
+Date: Sat, 10 Oct 2020 12:37:23 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+Subject: Re: [PATCH v3] staging: comedi: check validity of wMaxPacketSize of
+ usb endpoints found
+Message-ID: <20201010103723.GA1456353@kroah.com>
+References: <20201010082933.5417-1-anant.thazhemadam@gmail.com>
+ <20201010093519.GA981987@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201010073514.GA14495@f3>
+In-Reply-To: <20201010093519.GA981987@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,95 +66,93 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
- <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
- "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org,
+ syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com,
+ Ian Abbott <abbotti@mev.co.uk>, linux-kernel-mentees@lists.linuxfoundation.org,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Oct 10, 2020 at 04:35:14PM +0900, Benjamin Poirier wrote:
->On 2020-10-08 19:58 +0800, Coiby Xu wrote:
->> Initialize devlink health dump framework for the dlge driver so the
->> coredump could be done via devlink.
->>
->> Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
->> ---
->>  drivers/staging/qlge/Kconfig        |  1 +
->>  drivers/staging/qlge/Makefile       |  2 +-
->>  drivers/staging/qlge/qlge.h         |  9 +++++++
->>  drivers/staging/qlge/qlge_devlink.c | 38 +++++++++++++++++++++++++++++
->>  drivers/staging/qlge/qlge_devlink.h |  8 ++++++
->>  drivers/staging/qlge/qlge_main.c    | 28 +++++++++++++++++++++
->>  6 files changed, 85 insertions(+), 1 deletion(-)
->>  create mode 100644 drivers/staging/qlge/qlge_devlink.c
->>  create mode 100644 drivers/staging/qlge/qlge_devlink.h
->>
->> diff --git a/drivers/staging/qlge/Kconfig b/drivers/staging/qlge/Kconfig
->> index a3cb25a3ab80..6d831ed67965 100644
->> --- a/drivers/staging/qlge/Kconfig
->> +++ b/drivers/staging/qlge/Kconfig
->> @@ -3,6 +3,7 @@
->>  config QLGE
->>  	tristate "QLogic QLGE 10Gb Ethernet Driver Support"
->>  	depends on ETHERNET && PCI
->> +	select NET_DEVLINK
->>  	help
->>  	This driver supports QLogic ISP8XXX 10Gb Ethernet cards.
->>
->> diff --git a/drivers/staging/qlge/Makefile b/drivers/staging/qlge/Makefile
->> index 1dc2568e820c..07c1898a512e 100644
->> --- a/drivers/staging/qlge/Makefile
->> +++ b/drivers/staging/qlge/Makefile
->> @@ -5,4 +5,4 @@
->>
->>  obj-$(CONFIG_QLGE) += qlge.o
->>
->> -qlge-objs := qlge_main.o qlge_dbg.o qlge_mpi.o qlge_ethtool.o
->> +qlge-objs := qlge_main.o qlge_dbg.o qlge_mpi.o qlge_ethtool.o qlge_devlink.o
->> diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
->> index b295990e361b..290e754450c5 100644
->> --- a/drivers/staging/qlge/qlge.h
->> +++ b/drivers/staging/qlge/qlge.h
->> @@ -2060,6 +2060,14 @@ struct nic_operations {
->>  	int (*port_initialize)(struct ql_adapter *qdev);
->>  };
->>
->> +
->> +
->> +struct qlge_devlink {
->> +        struct ql_adapter *qdev;
->> +        struct net_device *ndev;
->
->This member should be removed, it is unused throughout the rest of the
->series. Indeed, it's simple to use qdev->ndev and that's what
->qlge_reporter_coredump() does.
+On Sat, Oct 10, 2020 at 11:35:19AM +0200, Greg Kroah-Hartman wrote:
+> On Sat, Oct 10, 2020 at 01:59:32PM +0530, Anant Thazhemadam wrote:
+> > While finding usb endpoints in vmk80xx_find_usb_endpoints(), check if 
+> > wMaxPacketSize = 0 for the endpoints found.
+> > 
+> > Some devices have isochronous endpoints that have wMaxPacketSize = 0
+> > (as required by the USB-2 spec).
+> > However, since this doesn't apply here, wMaxPacketSize = 0 can be
+> > considered to be invalid.
+> > 
+> > Reported-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
+> > Tested-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
+> > Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+> > ---
+> > Changes in v3:
+> > 	* Correctly list version information
+> > 
+> > Changes in v2:
+> > 	* Fix coding style issue
+> > 
+> > The error (as detected by syzbot) is generated in 
+> > vmk80xx_write_packet() (which is called in vmk80xx_reset_device()) when
+> > it tries to assign devpriv->usb_tx_buf[0] = cmd.
+> > 
+> > This NULL pointer dereference issue arises because
+> > size = usb_endpoint_maxp(devpriv->ep_tx) = 0.
+> > 
+> > This can be traced back to vmk80xx_find_usb_endpoints(), where the usb 
+> > endpoints are found, and assigned accordingly.
+> > (For some more insight, in vmk80xx_find_usb_endpoints(), 
+> > if one of intf->cur_altsetting->iface_desc->endpoints' desc value = 0, 
+> > and consequently this endpoint is assigned to devpriv->ep_tx,
+> > this issue gets triggered.)
+> > 
+> > Checking if the wMaxPacketSize of an endpoint is invalid and returning
+> > an error value accordingly, seems to fix the error.
+> > 
+> > We could also alternatively perform this checking (if the size is 0 or not) 
+> > in vmk80xx_reset_device() itself, but it only seemed like covering up the issue
+> > at that place, rather than fixing it, so I wasn't sure that was any better.
+> > 
+> > However, if I'm not wrong, this might end up causing the probe to fail, and I'm 
+> > not sure if that's the right thing to do in cases like this, and if it isn't I'd
+> > like some input on what exactly is the required course of action in cases like this.
+> > 
+> >  drivers/staging/comedi/drivers/vmk80xx.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git a/drivers/staging/comedi/drivers/vmk80xx.c b/drivers/staging/comedi/drivers/vmk80xx.c
+> > index 65dc6c51037e..cb0a965d3c37 100644
+> > --- a/drivers/staging/comedi/drivers/vmk80xx.c
+> > +++ b/drivers/staging/comedi/drivers/vmk80xx.c
+> > @@ -667,6 +667,9 @@ static int vmk80xx_find_usb_endpoints(struct comedi_device *dev)
+> >  	if (!devpriv->ep_rx || !devpriv->ep_tx)
+> >  		return -ENODEV;
+> >  
+> > +	if (!usb_endpoint_maxp(devpriv->ep_rx) || !usb_endpoint_maxp(devpriv->ep_tx))
+> > +		return -EINVAL;
+> > +
+> >  	return 0;
+> >  }
+> 
+> Why not just rewrite vmk80xx_find_usb_endpoints() to use the
+> usb_find_common_endpoints() or other helper functions like
+> usb_find_bulk_in_endpoint() or others, so that this type of thing is
+> checked there?
+> 
+> Ah, wait, no, the packet size is not checked there, sorry, maybe that
+> will not help out here.  Is a bulk urb allowed to have a 0 size?  If
+> not, maybe we should just forbid that in the core?  Time to go read the
+> USB spec...
 
-It reminds me that I forgot to reply to one of your comments in RFC and
-sorry for that,
->> +
->> +
->> +struct qlge_devlink {
->> +        struct ql_adapter *qdev;
->> +        struct net_device *ndev;
->
->I don't have experience implementing devlink callbacks but looking at
->some other devlink users (mlx4, ionic, ice), all of them use devlink
->priv space for their main private structure. That would be struct
->ql_adapter in this case. Is there a good reason to stray from that
->pattern?
+That being said, this patch is correct, I'll go queue it up now so that
+it gets into 5.10-rc1.
 
-struct ql_adapter which is created via alloc_etherdev_mq is the
-private space of struct net_device so we can't use ql_adapter as the
-the devlink private space simultaneously. Thus struct qlge_devlink is
-required.
+thanks,
 
---
-Best regards,
-Coiby
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
