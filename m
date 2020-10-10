@@ -1,57 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C9B6289EC4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 08:58:41 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 19D5B87498;
-	Sat, 10 Oct 2020 06:58:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x8MexUcUEjpV; Sat, 10 Oct 2020 06:58:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BFA5F87535;
-	Sat, 10 Oct 2020 06:58:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7C9EE1BF84C
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 06:58:35 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FB7F289ECE
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 09:00:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7430686F9A
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 06:58:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A6D1B86FDE;
+	Sat, 10 Oct 2020 07:00:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cRzfV2EGUHjf; Sat, 10 Oct 2020 07:00:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1817886FEE;
+	Sat, 10 Oct 2020 07:00:13 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 955211BF84C
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 07:00:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 925C487773
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 07:00:11 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DSs_QR1QLo4d for <devel@linuxdriverproject.org>;
- Sat, 10 Oct 2020 06:58:34 +0000 (UTC)
+ with ESMTP id 5eSIsmCBcRXS for <devel@linuxdriverproject.org>;
+ Sat, 10 Oct 2020 07:00:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D70D386890
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 06:58:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0F9AA87498
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 07:00:11 +0000 (UTC)
 Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
  bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F2FE6207CD;
- Sat, 10 Oct 2020 06:58:33 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 34B76207E8;
+ Sat, 10 Oct 2020 07:00:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602313114;
- bh=OZvrNP1g3AcWq1a3Xh4gyOmlYF4z6XbRtdkILUqNeMY=;
+ s=default; t=1602313210;
+ bh=pe+4amqH5ukXnmBdCIgLvkVQzzJBofYyjsBk6c7UY18=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kdOvcxgikmBHqGn5PLskDAFX/EMKiePYlqJnwcIi44ka6E6VCQ0CPwvLfHs7BdamE
- VE6I/qGd4ftXQkXaaSP0yDYE1nh408T5Tns/+DrzGrrrhGdS3hugHZL3rwBt6B9IV5
- qyKxTSjsaeih3AW/+MiQv29gndnoqpIm+SKfzVvE=
-Date: Sat, 10 Oct 2020 08:58:31 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Tabot Kevin <tabot.kevin@gmail.com>
-Subject: Re: [PATCH] Fixed coding style issues raised by checkpatch.
-Message-ID: <20201010065831.GA132110@kroah.com>
-References: <20201010003200.GA1399@tabot>
+ b=CfnpH+QDa+0haYKPm4ZDZpqqK2ywi8pwQm5jJfbJgTcdnzRQZnH5/HJ6dDF7Q/MZA
+ pnRhMrdi9IBl6F8PjxY4qk5zBEOOFGlhBM+e7CGRPgw65vIW0nOHcWuBYcn1naZp5P
+ oAJed6uVvEeg4gOlEYdcsi5tsz0/ZLwAYkxq0yzw=
+Date: Sat, 10 Oct 2020 09:00:08 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+Subject: Re: [PATCH] staging: comedi: check validity of wMaxPacketSize of usb
+ endpoints found
+Message-ID: <20201010070007.GB132110@kroah.com>
+References: <20201009162030.293781-1-anant.thazhemadam@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201010003200.GA1399@tabot>
+In-Reply-To: <20201009162030.293781-1-anant.thazhemadam@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,86 +65,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Cc: devel@driverdev.osuosl.org,
+ syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com,
+ Ian Abbott <abbotti@mev.co.uk>, linux-kernel-mentees@lists.linuxfoundation.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Oct 10, 2020 at 01:32:00AM +0100, Tabot Kevin wrote:
-> This patch fixes the following:
-> - Made sure alignment matched open parenthesis.
+On Fri, Oct 09, 2020 at 09:50:29PM +0530, Anant Thazhemadam wrote:
+> While finding usb endpoints in vmk80xx_find_usb_endpoints(), check if 
+> wMaxPacketSize = 0 for the endpoints found.
 > 
-> Signed-off-by: Tabot Kevin <tabot.kevin@gmail.com>
+> Some devices have isochronous endpoints that have wMaxPacketSize = 0
+> (as required by the USB-2 spec).
+> However, since this doesn't apply here, wMaxPacketSize = 0 can be
+> considered to be invalid.
+> 
+> Reported-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
+> Tested-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
+> Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
 > ---
->  drivers/staging/greybus/audio_module.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
-> index c52c4f3..a243d60 100644
-> --- a/drivers/staging/greybus/audio_module.c
-> +++ b/drivers/staging/greybus/audio_module.c
-> @@ -175,8 +175,8 @@ static int gbaudio_codec_request_handler(struct gb_operation *op)
->  }
->  
->  static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
-> -				struct greybus_descriptor_cport *cport_desc,
-> -				struct gb_bundle *bundle)
-> +					struct greybus_descriptor_cport *cport_desc,
-> +					struct gb_bundle *bundle)
->  {
->  	struct gb_connection *connection;
->  
-> @@ -199,8 +199,8 @@ static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
->  }
->  
->  static int gb_audio_add_data_connection(struct gbaudio_module_info *gbmodule,
-> -				struct greybus_descriptor_cport *cport_desc,
-> -				struct gb_bundle *bundle)
-> +					struct greybus_descriptor_cport *cport_desc,
-> +					struct gb_bundle *bundle)
->  {
->  	struct gb_connection *connection;
->  	struct gbaudio_data_connection *dai;
-> -- 
-> 2.7.4
 
-Hi,
+You sent 2 patches with the same subject, which one is the "latest" one?
+Please always version your patches and put below the --- line what
+changed from the previous version, so that maintainers have a chance to
+know which to accept...
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Use the tool, scripts/get_maintainer.pl on the patch, to determine
-  what mailing list and developers and maintainers to cc.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+Can you fix this up and send a v3?
 
 thanks,
-
-greg k-h's patch email bot
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
