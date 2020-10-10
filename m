@@ -1,58 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BD5B289F92
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 11:34:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CE9B289FB9
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 12:00:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DF1932040B;
-	Sat, 10 Oct 2020 09:34:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BA72287844;
+	Sat, 10 Oct 2020 10:00:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mdaA2PcUNxYT; Sat, 10 Oct 2020 09:34:44 +0000 (UTC)
+	with ESMTP id R96XyKwl1RBM; Sat, 10 Oct 2020 10:00:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EEF6E203E2;
-	Sat, 10 Oct 2020 09:34:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 962438782C;
+	Sat, 10 Oct 2020 10:00:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5D0301BF82D
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 09:34:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F1A031BF82D
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:00:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 35022203D4
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 09:34:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EE1878701E
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:00:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TtWGtrtkMDMs for <devel@linuxdriverproject.org>;
- Sat, 10 Oct 2020 09:34:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 38A82203A5
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 09:34:36 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 36CFA208C7;
- Sat, 10 Oct 2020 09:34:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602322475;
- bh=8G56kfNsKN2o+qwV8vuB+SUXCDERhQbqnXbs1jkx5yc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YyfjRMFzoI8iBbEwupEs+h0rwJrqBDmuYxRIp40itCm9pFPhRx/M5C45rvN/IkzBl
- gPnOtJ++HEF4aCOQWyJf05y6ZPBk/dToQPjI4TNLuiT9VMOfmk843soS2P2BfFRnXs
- EleVu+VBEezmhC+6F+gREWOObJXDCuxhPmEkRxqk=
-Date: Sat, 10 Oct 2020 11:35:19 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Anant Thazhemadam <anant.thazhemadam@gmail.com>
-Subject: Re: [PATCH v3] staging: comedi: check validity of wMaxPacketSize of
- usb endpoints found
-Message-ID: <20201010093519.GA981987@kroah.com>
-References: <20201010082933.5417-1-anant.thazhemadam@gmail.com>
+ with ESMTP id WVGvqAxBDOum for <devel@linuxdriverproject.org>;
+ Sat, 10 Oct 2020 10:00:10 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DB94487019
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 10:00:10 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id i2so9387946pgh.7
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 03:00:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:date:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=I9AHl5bp5WPLKmxh/1O3ggN7nM3m0zYYXn5K7tm55Tg=;
+ b=Fzygsyj9HGxWtMq/RnjXUGsalngSdHOTFRRv+WAKcop2NmXGD03TrHiPfZHCHfeSDj
+ Efo2CQmVRt1E+BCn/R7xqsYlcdwDw3T+mQMHkfGT0IT7CRQAlRU3XJgDF34dSdmX68w/
+ 4x7yc0HAy/DoCMBsX1GUZHI+PjHFvqllqb08dR6dpWbH/bjA0dXsWlUMsA6ZLImftgI3
+ Q0cxevsy4k8VoUU73jYD0qOaJbwUu7MosYtF5W+8wZ3/FjLYF+0RmRrzq69YYPSjepIa
+ FGYGwVmkzWctVC9XNcpGzZepguKSNWe1WgEOqZ8GX9gBVWc+UfFJfVazbsBxcVyu4tdy
+ I0zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:date:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=I9AHl5bp5WPLKmxh/1O3ggN7nM3m0zYYXn5K7tm55Tg=;
+ b=gGTIY+PWJ7xxcnwGoVxTmppYZli3jF5+ogF8vy+8dyleV/XzABkGtem7WwBmj1Mplp
+ w/TgaVDrKBa9BxbZC+phdL2zWogm63GUI8n3OK+dulUDbDGJzY8v+n3PFz8VTv5s/xRH
+ 3joK3AqpG1V9vKErPnvwGhBnjwUhfzKDTo845oVaQP27Ws/w7tAQ/sYkxSlwdD2cO4EY
+ 94CvQcfXygJ0QAUPYkRN3W81BJAzqElAXpYk9TVrbIeAStCe1WVGc0w3Z6fZIFFBNXkQ
+ 9Kpwrs6rNGQrt045DnvGYcyNKLMH3boUNUvBj+ElFD4SXVYw4UnJRVRH/Pehgohvwr/R
+ rfuw==
+X-Gm-Message-State: AOAM531lv0JVtMFjo5ewAyh15GRLXWvwPmCuq+80iYEhHWvzSRtHWKVw
+ 3jIK/bwVTHi14d1niYtRZKw=
+X-Google-Smtp-Source: ABdhPJy99sRp2/6FtliyUxTv0c9pvD+eJMJ2dVrAf4fS97haV/vaZ/6lN2mDWGt7h8WXIc2rlbswyg==
+X-Received: by 2002:aa7:9358:0:b029:152:b349:8af7 with SMTP id
+ 24-20020aa793580000b0290152b3498af7mr15526536pfn.18.1602324010493; 
+ Sat, 10 Oct 2020 03:00:10 -0700 (PDT)
+Received: from localhost ([2001:e42:102:1532:160:16:113:140])
+ by smtp.gmail.com with ESMTPSA id b4sm6961319pjz.51.2020.10.10.03.00.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 10 Oct 2020 03:00:10 -0700 (PDT)
+From: Coiby Xu <coiby.xu@gmail.com>
+X-Google-Original-From: Coiby Xu <Coiby.Xu@gmail.com>
+Date: Sat, 10 Oct 2020 18:00:02 +0800
+To: Benjamin Poirier <benjamin.poirier@gmail.com>
+Subject: Re: [PATCH v1 5/6] staging: qlge: clean up debugging code in the
+ QL_ALL_DUMP ifdef land
+Message-ID: <20201010100002.6v54yiojnscnuxqv@Rk>
+References: <20201008115808.91850-1-coiby.xu@gmail.com>
+ <20201008115808.91850-6-coiby.xu@gmail.com>
+ <20201010080126.GC14495@f3>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201010082933.5417-1-anant.thazhemadam@gmail.com>
+In-Reply-To: <20201010080126.GC14495@f3>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,89 +90,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com,
- Ian Abbott <abbotti@mev.co.uk>, linux-kernel-mentees@lists.linuxfoundation.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
+ <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
+ "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Oct 10, 2020 at 01:59:32PM +0530, Anant Thazhemadam wrote:
-> While finding usb endpoints in vmk80xx_find_usb_endpoints(), check if 
-> wMaxPacketSize = 0 for the endpoints found.
-> 
-> Some devices have isochronous endpoints that have wMaxPacketSize = 0
-> (as required by the USB-2 spec).
-> However, since this doesn't apply here, wMaxPacketSize = 0 can be
-> considered to be invalid.
-> 
-> Reported-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
-> Tested-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
-> Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
-> ---
-> Changes in v3:
-> 	* Correctly list version information
-> 
-> Changes in v2:
-> 	* Fix coding style issue
-> 
-> The error (as detected by syzbot) is generated in 
-> vmk80xx_write_packet() (which is called in vmk80xx_reset_device()) when
-> it tries to assign devpriv->usb_tx_buf[0] = cmd.
-> 
-> This NULL pointer dereference issue arises because
-> size = usb_endpoint_maxp(devpriv->ep_tx) = 0.
-> 
-> This can be traced back to vmk80xx_find_usb_endpoints(), where the usb 
-> endpoints are found, and assigned accordingly.
-> (For some more insight, in vmk80xx_find_usb_endpoints(), 
-> if one of intf->cur_altsetting->iface_desc->endpoints' desc value = 0, 
-> and consequently this endpoint is assigned to devpriv->ep_tx,
-> this issue gets triggered.)
-> 
-> Checking if the wMaxPacketSize of an endpoint is invalid and returning
-> an error value accordingly, seems to fix the error.
-> 
-> We could also alternatively perform this checking (if the size is 0 or not) 
-> in vmk80xx_reset_device() itself, but it only seemed like covering up the issue
-> at that place, rather than fixing it, so I wasn't sure that was any better.
-> 
-> However, if I'm not wrong, this might end up causing the probe to fail, and I'm 
-> not sure if that's the right thing to do in cases like this, and if it isn't I'd
-> like some input on what exactly is the required course of action in cases like this.
-> 
->  drivers/staging/comedi/drivers/vmk80xx.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/staging/comedi/drivers/vmk80xx.c b/drivers/staging/comedi/drivers/vmk80xx.c
-> index 65dc6c51037e..cb0a965d3c37 100644
-> --- a/drivers/staging/comedi/drivers/vmk80xx.c
-> +++ b/drivers/staging/comedi/drivers/vmk80xx.c
-> @@ -667,6 +667,9 @@ static int vmk80xx_find_usb_endpoints(struct comedi_device *dev)
->  	if (!devpriv->ep_rx || !devpriv->ep_tx)
->  		return -ENODEV;
->  
-> +	if (!usb_endpoint_maxp(devpriv->ep_rx) || !usb_endpoint_maxp(devpriv->ep_tx))
-> +		return -EINVAL;
-> +
->  	return 0;
->  }
+On Sat, Oct 10, 2020 at 05:01:26PM +0900, Benjamin Poirier wrote:
+>On 2020-10-08 19:58 +0800, Coiby Xu wrote:
+>> The debugging code in the following ifdef land
+>>  - QL_ALL_DUMP
+>>  - QL_REG_DUMP
+>>  - QL_DEV_DUMP
+>>  - QL_CB_DUMP
+>>  - QL_IB_DUMP
+>>  - QL_OB_DUMP
+>>
+>> becomes unnecessary because,
+>>  - Device status and general registers can be obtained by ethtool.
+>>  - Coredump can be done via devlink health reporter.
+>>  - Structure related to the hardware (struct ql_adapter) can be obtained
+>>    by crash or drgn.
+>>
+>> Suggested-by: Benjamin Poirier <benjamin.poirier@gmail.com>
+>> Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
+>> ---
+>>  drivers/staging/qlge/qlge.h         |  82 ----
+>>  drivers/staging/qlge/qlge_dbg.c     | 688 ----------------------------
+>>  drivers/staging/qlge/qlge_ethtool.c |   2 -
+>>  drivers/staging/qlge/qlge_main.c    |   7 +-
+>
+>Please also update drivers/staging/qlge/TODO accordingly. There is still
+>a lot of debugging code IMO (the netif_printk statements - kernel
+>tracing can be used instead of those) but this patch is a substantial
+>improvement.
 
-Why not just rewrite vmk80xx_find_usb_endpoints() to use the
-usb_find_common_endpoints() or other helper functions like
-usb_find_bulk_in_endpoint() or others, so that this type of thing is
-checked there?
+Thank you for the reminding! To move qlge out of staging tree would be
+interesting exercise for me:)
 
-Ah, wait, no, the packet size is not checked there, sorry, maybe that
-will not help out here.  Is a bulk urb allowed to have a 0 size?  If
-not, maybe we should just forbid that in the core?  Time to go read the
-USB spec...
-
-thanks,
-
-greg k-h
+--
+Best regards,
+Coiby
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
