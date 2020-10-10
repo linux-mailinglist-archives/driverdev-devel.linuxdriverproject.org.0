@@ -2,58 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E41CC28A009
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 12:36:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DC6928A020
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 13:09:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0F6CE870E0;
-	Sat, 10 Oct 2020 10:36:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9241A87832;
+	Sat, 10 Oct 2020 11:09:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h7BOh7n1Dz9d; Sat, 10 Oct 2020 10:36:42 +0000 (UTC)
+	with ESMTP id 1PonmW0qj33C; Sat, 10 Oct 2020 11:09:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 63BB387043;
-	Sat, 10 Oct 2020 10:36:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D893287735;
+	Sat, 10 Oct 2020 11:09:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4A0841BF283
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:36:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 16ADF1BF27E
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 11:09:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4416B87046
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 10:36:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0DB0887802
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 11:09:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qcj95E2pZtv1 for <devel@linuxdriverproject.org>;
- Sat, 10 Oct 2020 10:36:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A208587043
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 10:36:39 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC9082145D;
- Sat, 10 Oct 2020 10:36:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602326199;
- bh=j0TSYo+wdbpDZVAjxfjrxIVjno3BzV9rBoWhNlRLMsQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=r+fsp40bKSGqmoi6O9PC15qHKyIUNTSjoj2MHJ6xIfjV4QTIoOEql0hS/Xu0JDHFV
- h/c0D1HsPh7Bm3DfLm0bEtCFsrMa/mT2OAbRFq9ZqydBa1uBQJw7ZwvaDlDG0EwlZu
- GRgCTKHVMxmGZObCCjRutmM3rw6Yrsoprxk3tP/8=
-Date: Sat, 10 Oct 2020 12:37:23 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Anant Thazhemadam <anant.thazhemadam@gmail.com>
-Subject: Re: [PATCH v3] staging: comedi: check validity of wMaxPacketSize of
- usb endpoints found
-Message-ID: <20201010103723.GA1456353@kroah.com>
-References: <20201010082933.5417-1-anant.thazhemadam@gmail.com>
- <20201010093519.GA981987@kroah.com>
+ with ESMTP id SXk-nu1LuUIy for <devel@linuxdriverproject.org>;
+ Sat, 10 Oct 2020 11:09:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 46F8387735
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 11:09:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=6cV+tWxBY2tCvh0w9RakejaDPboIY9tCeHrHg2GCiPA=; b=eBUno4bXjQVLTMDPOm+sW25Lwv
+ cowKD724NzwUh0wGoDX2eG2v9P5KJVKb8dHlTaXOU5VS9yonxo5dacyZ9QBDrEL6/NHu9yrFDVlul
+ uJaKEt4lT+vM8kcKN1F9biakAjn/UcusJA6djK/yyy9on5fKvTsxSO+3sp/2KlZsoUnoiEKzwrMB4
+ 7TSBcjnZnVEnKSgMC/MZVlM/dgfJ6XN++gsUwy/SxMYtctBJGqU5CSC+MXoSkcGbzs6L+g82bBhNO
+ Y/Lg46iD7UQGhyO+fwbJTDWyUte30Cln331o8ECV+9e4trlBM1tLfDi1pnpFFiEEQbQZdIxL/9tRX
+ HbGqIARQ==;
+Received: from j217100.upc-j.chello.nl ([24.132.217.100]
+ helo=noisy.programming.kicks-ass.net)
+ by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kRCkg-00026L-PN; Sat, 10 Oct 2020 11:09:27 +0000
+Received: from hirez.programming.kicks-ass.net
+ (hirez.programming.kicks-ass.net [192.168.1.225])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Client did not present a certificate)
+ by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 3BEED3003E5;
+ Sat, 10 Oct 2020 13:09:21 +0200 (CEST)
+Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
+ id 017E52010B5FA; Sat, 10 Oct 2020 13:09:20 +0200 (CEST)
+Date: Sat, 10 Oct 2020 13:09:20 +0200
+From: Peter Zijlstra <peterz@infradead.org>
+To: Kees Cook <keescook@chromium.org>
+Subject: Re: [PATCH v3 00/11] Introduce Simple atomic counters
+Message-ID: <20201010110920.GQ2628@hirez.programming.kicks-ass.net>
+References: <cover.1602209970.git.skhan@linuxfoundation.org>
+ <20201009193746.GA1073957@hirez.programming.kicks-ass.net>
+ <202010091255.246395A6@keescook>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201010093519.GA981987@kroah.com>
+In-Reply-To: <202010091255.246395A6@keescook>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,93 +76,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com,
- Ian Abbott <abbotti@mev.co.uk>, linux-kernel-mentees@lists.linuxfoundation.org,
- linux-kernel@vger.kernel.org
+Cc: rafael@kernel.org, Will Deacon <will@kernel.org>,
+ linux-kselftest@vger.kernel.org, joel@joelfernandes.org, rric@kernel.org,
+ shuah@kernel.org, devel@driverdev.osuosl.org, minyard@acm.org, corbet@lwn.net,
+ surenb@google.com, linux-doc@vger.kernel.org, linux-acpi@vger.kernel.org,
+ lenb@kernel.org, tkjos@android.com, arnd@arndb.de, bp@alien8.de,
+ Shuah Khan <skhan@linuxfoundation.org>,
+ openipmi-developer@lists.sourceforge.net, mchehab@kernel.org, maco@android.com,
+ christian@brauner.io, linux-edac@vger.kernel.org, tony.luck@intel.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, arve@android.com,
+ james.morse@arm.com, hridya@google.com, johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Oct 10, 2020 at 11:35:19AM +0200, Greg Kroah-Hartman wrote:
-> On Sat, Oct 10, 2020 at 01:59:32PM +0530, Anant Thazhemadam wrote:
-> > While finding usb endpoints in vmk80xx_find_usb_endpoints(), check if 
-> > wMaxPacketSize = 0 for the endpoints found.
+On Fri, Oct 09, 2020 at 01:45:43PM -0700, Kees Cook wrote:
+> On Fri, Oct 09, 2020 at 09:37:46PM +0200, Peter Zijlstra wrote:
+> > On Fri, Oct 09, 2020 at 09:55:55AM -0600, Shuah Khan wrote:
+> > > Simple atomic counters api provides interfaces for simple atomic counters
+> > > that just count, and don't guard resource lifetimes. The interfaces are
+> > > built on top of atomic_t api, providing a smaller subset of atomic_t
+> > > interfaces necessary to support simple counters.
 > > 
-> > Some devices have isochronous endpoints that have wMaxPacketSize = 0
-> > (as required by the USB-2 spec).
-> > However, since this doesn't apply here, wMaxPacketSize = 0 can be
-> > considered to be invalid.
-> > 
-> > Reported-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
-> > Tested-by: syzbot+009f546aa1370056b1c2@syzkaller.appspotmail.com
-> > Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
-> > ---
-> > Changes in v3:
-> > 	* Correctly list version information
-> > 
-> > Changes in v2:
-> > 	* Fix coding style issue
-> > 
-> > The error (as detected by syzbot) is generated in 
-> > vmk80xx_write_packet() (which is called in vmk80xx_reset_device()) when
-> > it tries to assign devpriv->usb_tx_buf[0] = cmd.
-> > 
-> > This NULL pointer dereference issue arises because
-> > size = usb_endpoint_maxp(devpriv->ep_tx) = 0.
-> > 
-> > This can be traced back to vmk80xx_find_usb_endpoints(), where the usb 
-> > endpoints are found, and assigned accordingly.
-> > (For some more insight, in vmk80xx_find_usb_endpoints(), 
-> > if one of intf->cur_altsetting->iface_desc->endpoints' desc value = 0, 
-> > and consequently this endpoint is assigned to devpriv->ep_tx,
-> > this issue gets triggered.)
-> > 
-> > Checking if the wMaxPacketSize of an endpoint is invalid and returning
-> > an error value accordingly, seems to fix the error.
-> > 
-> > We could also alternatively perform this checking (if the size is 0 or not) 
-> > in vmk80xx_reset_device() itself, but it only seemed like covering up the issue
-> > at that place, rather than fixing it, so I wasn't sure that was any better.
-> > 
-> > However, if I'm not wrong, this might end up causing the probe to fail, and I'm 
-> > not sure if that's the right thing to do in cases like this, and if it isn't I'd
-> > like some input on what exactly is the required course of action in cases like this.
-> > 
-> >  drivers/staging/comedi/drivers/vmk80xx.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/drivers/staging/comedi/drivers/vmk80xx.c b/drivers/staging/comedi/drivers/vmk80xx.c
-> > index 65dc6c51037e..cb0a965d3c37 100644
-> > --- a/drivers/staging/comedi/drivers/vmk80xx.c
-> > +++ b/drivers/staging/comedi/drivers/vmk80xx.c
-> > @@ -667,6 +667,9 @@ static int vmk80xx_find_usb_endpoints(struct comedi_device *dev)
-> >  	if (!devpriv->ep_rx || !devpriv->ep_tx)
-> >  		return -ENODEV;
-> >  
-> > +	if (!usb_endpoint_maxp(devpriv->ep_rx) || !usb_endpoint_maxp(devpriv->ep_tx))
-> > +		return -EINVAL;
-> > +
-> >  	return 0;
-> >  }
+> > To what actual purpose?!? AFACIT its pointless wrappery, it gets us
+> > nothing.
 > 
-> Why not just rewrite vmk80xx_find_usb_endpoints() to use the
-> usb_find_common_endpoints() or other helper functions like
-> usb_find_bulk_in_endpoint() or others, so that this type of thing is
-> checked there?
+> It's not pointless. There is value is separating types for behavioral
+> constraint to avoid flaws. atomic_t provides a native operation. We gained
+> refcount_t for the "must not wrap" type, and this gets us the other side
+> of that behavioral type, which is "wrapping is expected". Separating the
+> atomic_t uses allows for a clearer path to being able to reason about
+> code flow, whether it be a human or a static analyzer.
+
+refcount_t got us actual rutime exceptions that atomic_t doesn't. This
+propsal gets us nothing.
+
+atomic_t is very much expected to wrap.
+
+> The counter wrappers add nothing to the image size, and only serve to
+> confine the API to one that cannot be used for lifetime management.
+
+It doesn't add anything period. It doesn't get us new behaviour, it
+splits a 'can wrap' use-case from a 'can wrap' type. That's sodding
+pointless.
+
+Worse, it mixes 2 unrelated cases into one type, which just makes a
+mockery of things (all the inc_return users are not statistics, some
+might even mis-behave if they wrap).
+
+> Once conversions are done, we have a clean line between refcounting
+> and statistical atomics, which means we have a much lower chance of
+> introducing new flaws (and maybe we'll fix flaws during the conversion,
+> which we've certainly seen before when doing this stricter type/language
+> changes).
 > 
-> Ah, wait, no, the packet size is not checked there, sorry, maybe that
-> will not help out here.  Is a bulk urb allowed to have a 0 size?  If
-> not, maybe we should just forbid that in the core?  Time to go read the
-> USB spec...
+> I don't see why this is an objectionable goal.
 
-That being said, this patch is correct, I'll go queue it up now so that
-it gets into 5.10-rc1.
+People can and will always find a way to mess things up.
 
-thanks,
+Only add types when you get behavioural changes, otherwise it's
+pointless noise.
 
-greg k-h
+My NAK stands.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
