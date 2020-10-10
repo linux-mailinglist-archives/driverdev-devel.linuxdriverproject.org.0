@@ -2,77 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE9FE289E07
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 05:43:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C9B6289EC4
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 08:58:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A319D8710D;
-	Sat, 10 Oct 2020 03:43:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 19D5B87498;
+	Sat, 10 Oct 2020 06:58:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yKqypNqFmTHA; Sat, 10 Oct 2020 03:43:18 +0000 (UTC)
+	with ESMTP id x8MexUcUEjpV; Sat, 10 Oct 2020 06:58:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 54D3F86ECA;
-	Sat, 10 Oct 2020 03:43:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BFA5F87535;
+	Sat, 10 Oct 2020 06:58:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6C70A1BF3FB
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 03:43:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C9EE1BF84C
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 06:58:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 67D7586E0A
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 03:43:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7430686F9A
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 06:58:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vlTJcEc6lrk7; Sat, 10 Oct 2020 03:43:14 +0000 (UTC)
+ with ESMTP id DSs_QR1QLo4d for <devel@linuxdriverproject.org>;
+ Sat, 10 Oct 2020 06:58:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out01.mta.xmission.com (out01.mta.xmission.com [166.70.13.231])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BB30486E00;
- Sat, 10 Oct 2020 03:43:14 +0000 (UTC)
-Received: from in02.mta.xmission.com ([166.70.13.52])
- by out01.mta.xmission.com with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
- (envelope-from <ebiederm@xmission.com>)
- id 1kR5ma-003qSe-1R; Fri, 09 Oct 2020 21:42:56 -0600
-Received: from ip68-227-160-95.om.om.cox.net ([68.227.160.95]
- helo=x220.xmission.com) by in02.mta.xmission.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.87)
- (envelope-from <ebiederm@xmission.com>)
- id 1kR5mZ-0002tO-03; Fri, 09 Oct 2020 21:42:55 -0600
-From: ebiederm@xmission.com (Eric W. Biederman)
-To: ira.weiny@intel.com
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-52-ira.weiny@intel.com>
-Date: Fri, 09 Oct 2020 22:43:15 -0500
-In-Reply-To: <20201009195033.3208459-52-ira.weiny@intel.com> (ira weiny's
- message of "Fri, 9 Oct 2020 12:50:26 -0700")
-Message-ID: <87k0vysq3w.fsf@x220.int.ebiederm.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D70D386890
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 06:58:34 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F2FE6207CD;
+ Sat, 10 Oct 2020 06:58:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602313114;
+ bh=OZvrNP1g3AcWq1a3Xh4gyOmlYF4z6XbRtdkILUqNeMY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=kdOvcxgikmBHqGn5PLskDAFX/EMKiePYlqJnwcIi44ka6E6VCQ0CPwvLfHs7BdamE
+ VE6I/qGd4ftXQkXaaSP0yDYE1nh408T5Tns/+DrzGrrrhGdS3hugHZL3rwBt6B9IV5
+ qyKxTSjsaeih3AW/+MiQv29gndnoqpIm+SKfzVvE=
+Date: Sat, 10 Oct 2020 08:58:31 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Tabot Kevin <tabot.kevin@gmail.com>
+Subject: Re: [PATCH] Fixed coding style issues raised by checkpatch.
+Message-ID: <20201010065831.GA132110@kroah.com>
+References: <20201010003200.GA1399@tabot>
 MIME-Version: 1.0
-X-XM-SPF: eid=1kR5mZ-0002tO-03; ; ; mid=<87k0vysq3w.fsf@x220.int.ebiederm.org>;
- ; ; hst=in02.mta.xmission.com; ; ; ip=68.227.160.95; ; ;
- frm=ebiederm@xmission.com; ; ; spf=neutral
-X-XM-AID: U2FsdGVkX1+M6Nwc1eevosTTnX6IxBw6BnHTGm05YjI=
-X-SA-Exim-Connect-IP: 68.227.160.95
-X-SA-Exim-Mail-From: ebiederm@xmission.com
-X-Spam-DCC: XMission; sa05 1397; Body=1 Fuz1=1 Fuz2=1 
-X-Spam-Combo: *;ira.weiny@intel.com
-X-Spam-Relay-Country: 
-X-Spam-Timing: total 512 ms - load_scoreonly_sql: 0.07 (0.0%),
- signal_user_changed: 13 (2.5%), b_tie_ro: 11 (2.2%), parse: 1.72
- (0.3%), extract_message_metadata: 23 (4.4%), get_uri_detail_list: 2.3
- (0.5%), tests_pri_-1000: 25 (4.8%), tests_pri_-950: 1.65 (0.3%),
- tests_pri_-900: 1.39 (0.3%), tests_pri_-90: 81 (15.8%), check_bayes:
- 78 (15.3%), b_tokenize: 16 (3.2%), b_tok_get_all: 9 (1.8%),
- b_comp_prob: 2.3 (0.5%), b_tok_touch_all: 47 (9.1%), b_finish: 1.06
- (0.2%), tests_pri_0: 332 (64.8%), check_dkim_signature: 0.75 (0.1%),
- check_dkim_adsp: 18 (3.5%), poll_dns_idle: 0.34 (0.1%), tests_pri_10:
- 4.5 (0.9%), tests_pri_500: 25 (5.0%), rewrite_mail: 0.00 (0.0%)
-Subject: Re: [PATCH RFC PKS/PMEM 51/58] kernel: Utilize new kmap_thread()
-X-SA-Exim-Version: 4.2.1 (built Thu, 05 May 2016 13:38:54 -0600)
-X-SA-Exim-Scanned: Yes (on in02.mta.xmission.com)
+Content-Disposition: inline
+In-Reply-To: <20201010003200.GA1399@tabot>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,93 +64,86 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, samba-technical@lists.samba.org,
- Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- ceph-devel@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- io-uring@vger.kernel.org, cluster-devel@redhat.com,
- Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
- xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
- Fenghua Yu <fenghua.yu@intel.com>, linux-afs@lists.infradead.org,
- linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
- reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-bcache@vger.kernel.org, Borislav Petkov <bp@alien8.de>,
- Andy Lutomirski <luto@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
- Andrew Morton <akpm@linux-foundation.org>, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
- netdev@vger.kernel.org, kexec@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Vaibhav Agarwal <vaibhav.sr@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ira.weiny@intel.com writes:
-
-> From: Ira Weiny <ira.weiny@intel.com>
->
-> This kmap() call is localized to a single thread.  To avoid the over
-> head of global PKRS updates use the new kmap_thread() call.
-
-Acked-by: "Eric W. Biederman" <ebiederm@xmission.com>
-
->
-> Cc: Eric Biederman <ebiederm@xmission.com>
-> Signed-off-by: Ira Weiny <ira.weiny@intel.com>
+On Sat, Oct 10, 2020 at 01:32:00AM +0100, Tabot Kevin wrote:
+> This patch fixes the following:
+> - Made sure alignment matched open parenthesis.
+> 
+> Signed-off-by: Tabot Kevin <tabot.kevin@gmail.com>
 > ---
->  kernel/kexec_core.c | 8 ++++----
+>  drivers/staging/greybus/audio_module.c | 8 ++++----
 >  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/kernel/kexec_core.c b/kernel/kexec_core.c
-> index c19c0dad1ebe..272a9920c0d6 100644
-> --- a/kernel/kexec_core.c
-> +++ b/kernel/kexec_core.c
-> @@ -815,7 +815,7 @@ static int kimage_load_normal_segment(struct kimage *image,
->  		if (result < 0)
->  			goto out;
+> 
+> diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
+> index c52c4f3..a243d60 100644
+> --- a/drivers/staging/greybus/audio_module.c
+> +++ b/drivers/staging/greybus/audio_module.c
+> @@ -175,8 +175,8 @@ static int gbaudio_codec_request_handler(struct gb_operation *op)
+>  }
 >  
-> -		ptr = kmap(page);
-> +		ptr = kmap_thread(page);
->  		/* Start with a clear page */
->  		clear_page(ptr);
->  		ptr += maddr & ~PAGE_MASK;
-> @@ -828,7 +828,7 @@ static int kimage_load_normal_segment(struct kimage *image,
->  			memcpy(ptr, kbuf, uchunk);
->  		else
->  			result = copy_from_user(ptr, buf, uchunk);
-> -		kunmap(page);
-> +		kunmap_thread(page);
->  		if (result) {
->  			result = -EFAULT;
->  			goto out;
-> @@ -879,7 +879,7 @@ static int kimage_load_crash_segment(struct kimage *image,
->  			goto out;
->  		}
->  		arch_kexec_post_alloc_pages(page_address(page), 1, 0);
-> -		ptr = kmap(page);
-> +		ptr = kmap_thread(page);
->  		ptr += maddr & ~PAGE_MASK;
->  		mchunk = min_t(size_t, mbytes,
->  				PAGE_SIZE - (maddr & ~PAGE_MASK));
-> @@ -895,7 +895,7 @@ static int kimage_load_crash_segment(struct kimage *image,
->  		else
->  			result = copy_from_user(ptr, buf, uchunk);
->  		kexec_flush_icache_page(page);
-> -		kunmap(page);
-> +		kunmap_thread(page);
->  		arch_kexec_pre_free_pages(page_address(page), 1);
->  		if (result) {
->  			result = -EFAULT;
+>  static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
+> -				struct greybus_descriptor_cport *cport_desc,
+> -				struct gb_bundle *bundle)
+> +					struct greybus_descriptor_cport *cport_desc,
+> +					struct gb_bundle *bundle)
+>  {
+>  	struct gb_connection *connection;
+>  
+> @@ -199,8 +199,8 @@ static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
+>  }
+>  
+>  static int gb_audio_add_data_connection(struct gbaudio_module_info *gbmodule,
+> -				struct greybus_descriptor_cport *cport_desc,
+> -				struct gb_bundle *bundle)
+> +					struct greybus_descriptor_cport *cport_desc,
+> +					struct gb_bundle *bundle)
+>  {
+>  	struct gb_connection *connection;
+>  	struct gbaudio_data_connection *dai;
+> -- 
+> 2.7.4
+
+Hi,
+
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
+
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Use the tool, scripts/get_maintainer.pl on the patch, to determine
+  what mailing list and developers and maintainers to cc.
+
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
+
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
