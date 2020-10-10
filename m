@@ -1,82 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0085528A092
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 15:49:11 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 93078868BD;
-	Sat, 10 Oct 2020 13:49:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hRc57lP_7C_t; Sat, 10 Oct 2020 13:49:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2622D86978;
-	Sat, 10 Oct 2020 13:49:05 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 335C61BF271
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 13:49:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 74FBC28A094
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Oct 2020 15:56:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1FC102047D
- for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 13:49:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9098020494;
+	Sat, 10 Oct 2020 13:56:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oGWZu+bgmfmo; Sat, 10 Oct 2020 13:56:30 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 7612E2048B;
+	Sat, 10 Oct 2020 13:56:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DC5B01BF271
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 13:56:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id D8613875A9
+ for <devel@linuxdriverproject.org>; Sat, 10 Oct 2020 13:56:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sWamZs95VJlK for <devel@linuxdriverproject.org>;
- Sat, 10 Oct 2020 13:49:01 +0000 (UTC)
+ with ESMTP id BJylkC2Ubwcx for <devel@linuxdriverproject.org>;
+ Sat, 10 Oct 2020 13:56:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by silver.osuosl.org (Postfix) with ESMTPS id A273A203E2
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 13:49:01 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id k8so9393247pfk.2
- for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 06:49:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=kC9TWaG7yp5ewJLHtI5Tz3MDkqf7FFIgPPjwgWQ0j4I=;
- b=V5dlcnRgTj5UdC+szz9bftOxKaNSU7wBlGhTMz6V2WvyjNqR/IdptvTMgaAi08ICdz
- WsxnQQoK8yMMJNTpT8nBHcI0SRPEuAViyK0DU80Syo+U0pKWcTDuMTKv7x7h6RkyCpMA
- /qOCSn0lE8JFcIPr8J3MsxPoB3eBvWSLSdiIxA7gRvQ9sqFOXjwbYJq3OSnhaxJ9eROX
- 8zffhikWDK/hY0e/LWGUzLb9cWx8/XDVaXMV7fcOyzOYX7Ssv3llOTknlvGCS9N2N1wp
- LysOcPy3yMhgEkF22ssRV5wfVxR8Gx6qZki4m69us9f0XynPSW3tyJhvGKCQOogpijGi
- Aurg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=kC9TWaG7yp5ewJLHtI5Tz3MDkqf7FFIgPPjwgWQ0j4I=;
- b=nbRthIzEHfy+23AehFaI71t2hin/mVhAHTNqpcjLB/RADHqT1xKqk8EDPKIBdVNIut
- kX2K1AVe0KBSMFlqtvDS2dd7cYEC8vHfvNW4qbncGYN5TB1D3vTTDnkZxtir7C0Dip5R
- tes47/87opY5L7DQRJdKKtxZ5jJyiXQTlIJVaq1Xi5gzJHc0TPoLUXjADBDxMD6o1qpe
- y5T0z7yvcSZDP3cmsK39fIpjISUp20oPZzqVckQgctvi9NHeKDn7Y3ind9c/l711AJcB
- PfySLjXFS/lZW43xiggL/U5drmQ6SA/K/6O4ty3bFqPqHCtDf/JDXOCsBTO+e8112o6I
- 44vg==
-X-Gm-Message-State: AOAM533T55xy3W1piqsuI3vg447vPv2k+qbPuPSpOlGj/fF7qsfFoSLJ
- NjxqvVcoP6LZR88y04PcedA=
-X-Google-Smtp-Source: ABdhPJwQBpFJ3ZD+MYSjv81yJ9YaF1Uz9iMqM4xk8zmnBMZtggfc6h8sY59CITsoLlxlamjwS1v8tg==
-X-Received: by 2002:a17:90a:8007:: with SMTP id
- b7mr10168719pjn.84.1602337741209; 
- Sat, 10 Oct 2020 06:49:01 -0700 (PDT)
-Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
- by smtp.gmail.com with ESMTPSA id gl24sm7323884pjb.50.2020.10.10.06.48.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Oct 2020 06:49:00 -0700 (PDT)
-Date: Sat, 10 Oct 2020 22:48:55 +0900
-From: Benjamin Poirier <benjamin.poirier@gmail.com>
-To: Coiby Xu <coiby.xu@gmail.com>
-Subject: Re: [PATCH v1 1/6] staging: qlge: Initialize devlink health dump
- framework for the dlge driver
-Message-ID: <20201010134855.GB17351@f3>
-References: <20201008115808.91850-1-coiby.xu@gmail.com>
- <20201008115808.91850-2-coiby.xu@gmail.com>
- <20201010073514.GA14495@f3> <20201010102416.hvbgx3mgyadmu6ui@Rk>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 30AC787550
+ for <devel@driverdev.osuosl.org>; Sat, 10 Oct 2020 13:56:17 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09ADuDaE007956;
+ Sat, 10 Oct 2020 13:56:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2020-01-29;
+ bh=i12gKFPdJZF7+MNGak6f/dG0rwxLvrt1hj8h/auKFIM=;
+ b=i3B+00Fw5SbY6EVbiQNLLPR6tws9qmpxGO+ceQ9+WCQo8jZr+1wh0Str4khZHDYbkulQ
+ mUlfE9rcwyem83dZ3H332uHmzlnTMeaLtwzXfA6FaSzN10gsjUx2+RfsPNBQFWl1mNYN
+ PZken3BLB3B+Y/3eJqxhfr7GdnztnvxOWC0ZgKr9cubmax2akxHUIKIcpfnmPjCwhxfd
+ u3a3f7XlF7Gd+eUXeR6HZkAoIzd7opEhgJU+C5Ds2gtB3h8C8/RTUhEciREQXyCy5RJb
+ of+1wRTznOsjKJ+h3AW9op3aR1GCjCQQ1bWuRe9r28cZVQektraeeE2GKGPbdd6bLpWd zA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 3434wk8rfe-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Sat, 10 Oct 2020 13:56:13 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09ADpOqP125033;
+ Sat, 10 Oct 2020 13:54:12 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 34349jbcjx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 10 Oct 2020 13:54:12 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09ADsBhJ011167;
+ Sat, 10 Oct 2020 13:54:11 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 10 Oct 2020 06:54:10 -0700
+Date: Sat, 10 Oct 2020 16:54:03 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>
+Subject: Re: [PATCH 2/8] staging: wfx: check memory allocation
+Message-ID: <20201010135403.GT18329@kadam>
+References: <20201009171307.864608-1-Jerome.Pouiller@silabs.com>
+ <20201009171307.864608-3-Jerome.Pouiller@silabs.com>
+ <874kn31be2.fsf@codeaurora.org> <2852079.TFTgQsWz4P@pc-42>
+ <20201010131810.GS18329@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201010102416.hvbgx3mgyadmu6ui@Rk>
+In-Reply-To: <20201010131810.GS18329@kadam>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9769
+ signatures=668681
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ mlxlogscore=999 adultscore=0 phishscore=0 mlxscore=0 spamscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010100130
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9769
+ signatures=668681
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 mlxscore=0
+ malwarescore=0 phishscore=0 suspectscore=0 impostorscore=0 clxscore=1015
+ spamscore=0 priorityscore=1501 bulkscore=0 adultscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2010100131
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,107 +100,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
- <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
- "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020-10-10 18:24 +0800, Coiby Xu wrote:
-> On Sat, Oct 10, 2020 at 04:35:14PM +0900, Benjamin Poirier wrote:
-> > On 2020-10-08 19:58 +0800, Coiby Xu wrote:
-> > > Initialize devlink health dump framework for the dlge driver so the
-> > > coredump could be done via devlink.
-> > > 
-> > > Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
-> > > ---
-> > >  drivers/staging/qlge/Kconfig        |  1 +
-> > >  drivers/staging/qlge/Makefile       |  2 +-
-> > >  drivers/staging/qlge/qlge.h         |  9 +++++++
-> > >  drivers/staging/qlge/qlge_devlink.c | 38 +++++++++++++++++++++++++++++
-> > >  drivers/staging/qlge/qlge_devlink.h |  8 ++++++
-> > >  drivers/staging/qlge/qlge_main.c    | 28 +++++++++++++++++++++
-> > >  6 files changed, 85 insertions(+), 1 deletion(-)
-> > >  create mode 100644 drivers/staging/qlge/qlge_devlink.c
-> > >  create mode 100644 drivers/staging/qlge/qlge_devlink.h
-> > > 
-> > > diff --git a/drivers/staging/qlge/Kconfig b/drivers/staging/qlge/Kconfig
-> > > index a3cb25a3ab80..6d831ed67965 100644
-> > > --- a/drivers/staging/qlge/Kconfig
-> > > +++ b/drivers/staging/qlge/Kconfig
-> > > @@ -3,6 +3,7 @@
-> > >  config QLGE
-> > >  	tristate "QLogic QLGE 10Gb Ethernet Driver Support"
-> > >  	depends on ETHERNET && PCI
-> > > +	select NET_DEVLINK
-> > >  	help
-> > >  	This driver supports QLogic ISP8XXX 10Gb Ethernet cards.
-> > > 
-> > > diff --git a/drivers/staging/qlge/Makefile b/drivers/staging/qlge/Makefile
-> > > index 1dc2568e820c..07c1898a512e 100644
-> > > --- a/drivers/staging/qlge/Makefile
-> > > +++ b/drivers/staging/qlge/Makefile
-> > > @@ -5,4 +5,4 @@
-> > > 
-> > >  obj-$(CONFIG_QLGE) += qlge.o
-> > > 
-> > > -qlge-objs := qlge_main.o qlge_dbg.o qlge_mpi.o qlge_ethtool.o
-> > > +qlge-objs := qlge_main.o qlge_dbg.o qlge_mpi.o qlge_ethtool.o qlge_devlink.o
-> > > diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
-> > > index b295990e361b..290e754450c5 100644
-> > > --- a/drivers/staging/qlge/qlge.h
-> > > +++ b/drivers/staging/qlge/qlge.h
-> > > @@ -2060,6 +2060,14 @@ struct nic_operations {
-> > >  	int (*port_initialize)(struct ql_adapter *qdev);
-> > >  };
-> > > 
-> > > +
-> > > +
-> > > +struct qlge_devlink {
-> > > +        struct ql_adapter *qdev;
-> > > +        struct net_device *ndev;
-> > 
-> > This member should be removed, it is unused throughout the rest of the
-> > series. Indeed, it's simple to use qdev->ndev and that's what
-> > qlge_reporter_coredump() does.
-> 
-> It reminds me that I forgot to reply to one of your comments in RFC and
-> sorry for that,
-> > > +
-> > > +
-> > > +struct qlge_devlink {
-> > > +        struct ql_adapter *qdev;
-> > > +        struct net_device *ndev;
-> > 
-> > I don't have experience implementing devlink callbacks but looking at
-> > some other devlink users (mlx4, ionic, ice), all of them use devlink
-> > priv space for their main private structure. That would be struct
-> > ql_adapter in this case. Is there a good reason to stray from that
-> > pattern?
+On Sat, Oct 10, 2020 at 04:18:11PM +0300, Dan Carpenter wrote:
+> On Sat, Oct 10, 2020 at 02:07:13PM +0200, J=E9r=F4me Pouiller wrote:
+> > On Friday 9 October 2020 20:51:01 CEST Kalle Valo wrote:
+> > > CAUTION: This email originated from outside of the organization. Do n=
+ot click links or open attachments unless you recognize the sender and know=
+ the content is safe.
+> > > =
 
-Thanks for getting back to that comment.
+> > > =
 
-> 
-> struct ql_adapter which is created via alloc_etherdev_mq is the
-> private space of struct net_device so we can't use ql_adapter as the
-> the devlink private space simultaneously. Thus struct qlge_devlink is
-> required.
+> > > Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+> > > =
 
-Looking at those drivers (mlx4, ionic, ice), the usage of
-alloc_etherdev_mq() is not really an obstacle. Definitely, some members
-would need to be moved from ql_adapter to qlge_devlink to use that
-pattern.
+> > > > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > > >
+> > > > Smatch complains:
+> > > >
+> > > >    main.c:228 wfx_send_pdata_pds() warn: potential NULL parameter d=
+ereference 'tmp_buf'
+> > > >    227          tmp_buf =3D kmemdup(pds->data, pds->size, GFP_KERNE=
+L);
+> > > >    228          ret =3D wfx_send_pds(wdev, tmp_buf, pds->size);
+> > > >                                          ^^^^^^^
+> > > >    229          kfree(tmp_buf);
+> > > >
+> > > > Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > > > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > > > ---
+> > > >  drivers/staging/wfx/main.c | 8 +++++++-
+> > > >  1 file changed, 7 insertions(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/wfx/main.c b/drivers/staging/wfx/main.c
+> > > > index df11c091e094..a8dc2c033410 100644
+> > > > --- a/drivers/staging/wfx/main.c
+> > > > +++ b/drivers/staging/wfx/main.c
+> > > > @@ -222,12 +222,18 @@ static int wfx_send_pdata_pds(struct wfx_dev =
+*wdev)
+> > > >       if (ret) {
+> > > >               dev_err(wdev->dev, "can't load PDS file %s\n",
+> > > >                       wdev->pdata.file_pds);
+> > > > -             return ret;
+> > > > +             goto err1;
+> > > >       }
+> > > >       tmp_buf =3D kmemdup(pds->data, pds->size, GFP_KERNEL);
+> > > > +     if (!tmp_buf) {
+> > > > +             ret =3D -ENOMEM;
+> > > > +             goto err2;
+> > > > +     }
+> > > >       ret =3D wfx_send_pds(wdev, tmp_buf, pds->size);
+> > > >       kfree(tmp_buf);
+> > > > +err2:
+> > > >       release_firmware(pds);
+> > > > +err1:
+> > > >       return ret;
+> > > >  }
+> > > =
 
-I think, but didn't check in depth, that in those drivers, the devlink
-device is tied to the pci device and can exist independently of the
-netdev, at least in principle.
+> > > A minor style issue but using more descriptive error labels make the
+> > > code more readable and maintainable, especially in a bigger function.
+> > > For example, err2 could be called err_release_firmware.
+> > > =
 
-In any case, I see now that some other drivers (bnxt, liquidio) have a
-pattern similar to what you use so I guess that's acceptable too.
+> > > And actually err1 could be removed and the goto replaced with just
+> > > "return ret;". Then err2 could be renamed to a simple err.
+> > =
+
+> > It was the case in the initial code. However, I have preferred to not
+> > mix 'return' and 'goto' inside the same function. Probably a matter of
+> > taste.
+> >
+> =
+
+> Ideally you can read a function from top to bottom and understand with
+> out skipping around.  Imagine if novels were written like that "goto
+> bottom_of_page;" but then at the bottom it just said "Just kidding".
+> "return ret;" is more readable than "goto err;"
+
+More unasked for exposition:  "goto err;" is too vague.  It could be one
+of three things.  1)  Do nothing (like this code).  2)  Do something
+specific (choose a better name like goto unlock).  3) Do everything.
+Do everything code is the most buggy style of error handling.
+
+The common bug introduced by type 1 and 2 are "Forgot to set the error
+code" bugs.  Type 3 is a whole nother level of bugginess.  Too much bugs
+to explain.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
