@@ -1,64 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51F2E28BE57
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 18:45:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6CB428C164
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 21:21:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7D522226FC;
-	Mon, 12 Oct 2020 16:45:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AACE0874BB;
+	Mon, 12 Oct 2020 19:21:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CzhOLz7TjJJ9; Mon, 12 Oct 2020 16:45:13 +0000 (UTC)
+	with ESMTP id R6Kh5M1QsBoN; Mon, 12 Oct 2020 19:21:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C7EB2204FD;
-	Mon, 12 Oct 2020 16:45:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1D7D88724B;
+	Mon, 12 Oct 2020 19:21:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9D66D1BF31E
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 16:45:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 71BB41BF5DF
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 19:21:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6C8232150A
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 16:45:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6936986A89
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 19:21:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nPfauLcX8tn4; Mon, 12 Oct 2020 16:45:04 +0000 (UTC)
+ with ESMTP id 0d+PhkS1uuHX for <devel@linuxdriverproject.org>;
+ Mon, 12 Oct 2020 19:21:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by silver.osuosl.org (Postfix) with ESMTPS id 774452152C;
- Mon, 12 Oct 2020 16:45:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=l9dol8BjF52rFe8mzz85c9RZmeAYDZ2M1zPXpY3Bxec=; b=cjGmRDHB+K+xo1zaI46uR/JWZM
- mu6b6OfRoAYfgdNA5Kf5Iurex6D1FcBZ+mRQhj12vLi3isoy7f1JrMIQOIfa61TejqqWEwpL43yKb
- 2mAeiG7QIg8Vb+ajA0gepoKbc6o17WQEzV+UWJKTyQWQStoFHb/kNJEfYbWmPc27vxrcwV1GpTL/g
- cqcPit9vRB3f1Zs6upmREd44qhzYUWIO5sf13vXmWctx364S7GYQlJM4ZaGSBTPIwUKM8imQUHEl+
- YU7Gj26Vo02zH0C4u7a3/EscApIpoLOe+KQejmiwTcRHTR/bJWdX/slhogDIyA7BDVBafjowKFz4j
- 1dyYxPzg==;
-Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1kS0wA-0004gO-8Q; Mon, 12 Oct 2020 16:44:38 +0000
-Date: Mon, 12 Oct 2020 17:44:38 +0100
-From: Matthew Wilcox <willy@infradead.org>
-To: Dave Hansen <dave.hansen@intel.com>
-Subject: Re: [PATCH RFC PKS/PMEM 22/58] fs/f2fs: Utilize new kmap_thread()
-Message-ID: <20201012164438.GA20115@casper.infradead.org>
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-23-ira.weiny@intel.com>
- <20201009213434.GA839@sol.localdomain>
- <20201010003954.GW20115@casper.infradead.org>
- <20201010013036.GD1122@sol.localdomain>
- <20201012065635.GB2046448@iweiny-DESK2.sc.intel.com>
- <20201012161946.GA858@sol.localdomain>
- <5d621db9-23d4-e140-45eb-d7fca2093d2b@intel.com>
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E785786A74
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 19:21:16 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id m11so16790603otk.13
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 12:21:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=bDPx3gJbG2CpVJ6aCSdfBbWW1HjsWj+9+ilZev1TlOQ=;
+ b=RnlwTm0dKMHwLT3bFN/v8ZUMBOvDGcEtDlup3ClnHeV1THmTHD4t4TT0HvgRhaymJn
+ VGVo7uoyRAvh9FcrKoS+e2xf+X7n8D5G+9wOG8QD2vIupjBBG5cIGUqQvtpVD99SC3Rx
+ RyDbblB9crd3kcUNfeXrWULZw+F5hX9h4NTri/cn3pDSCexLEMk97754LYyhInDcoAIU
+ mvuvKJSh51rMXZkE0uItUjYc9hcb0/iMeVG5F/LlJ235xKXPEnTN0qQDM/on9Tx/QniR
+ xWzxnHchkFUN8VtS2FT1FnStSD+Y0Kfu0XTxlov9a8N0aunqeKLbqtKJUwH/O7Scg3af
+ tttg==
+X-Gm-Message-State: AOAM530K/SBq9KSKdXgUH5xkc+gDLPeuDXqpOG+nC8W7A4W1YaA8kE5P
+ 9wap6R398Cms2ibZZ9GW0Q==
+X-Google-Smtp-Source: ABdhPJw/4sppoLAPM1GFsYwKrqpR8AaTvfdRnnsfE2ptYh6DHCLhGTrUTKut0LsveqNvpS/12rG/Eg==
+X-Received: by 2002:a9d:6954:: with SMTP id p20mr18379195oto.189.1602530476200; 
+ Mon, 12 Oct 2020 12:21:16 -0700 (PDT)
+Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id m1sm9428947otq.30.2020.10.12.12.21.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2020 12:21:15 -0700 (PDT)
+Received: (nullmailer pid 1940143 invoked by uid 1000);
+ Mon, 12 Oct 2020 19:21:14 -0000
+Date: Mon, 12 Oct 2020 14:21:14 -0500
+From: Rob Herring <robh@kernel.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH 1/2] MAINTAINERS: fix broken doc refs due to yaml
+ conversion
+Message-ID: <20201012192114.GA1938842@bogus>
+References: <cover.1602245659.git.mchehab+huawei@kernel.org>
+ <ba7319ab47bc7e80a57667f700ab677ceaa3ca8c.1602245659.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <5d621db9-23d4-e140-45eb-d7fca2093d2b@intel.com>
+In-Reply-To: <ba7319ab47bc7e80a57667f700ab677ceaa3ca8c.1602245659.git.mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,50 +79,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
- Eric Biggers <ebiggers@kernel.org>, Ingo Molnar <mingo@redhat.com>,
- intel-wired-lan@lists.osuosl.org, kexec@lists.infradead.org,
- xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
- bpf@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
- Fenghua Yu <fenghua.yu@intel.com>, intel-gfx@lists.freedesktop.org,
- ecryptfs@vger.kernel.org, linux-um@lists.infradead.org,
- reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-bcache@vger.kernel.org, Borislav Petkov <bp@alien8.de>,
- Andy Lutomirski <luto@kernel.org>, Jaegeuk Kim <jaegeuk@kernel.org>,
- ceph-devel@vger.kernel.org, io-uring@vger.kernel.org, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
- netdev@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- samba-technical@lists.samba.org, linux-kernel@vger.kernel.org,
- cluster-devel@redhat.com, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>, linux-erofs@lists.ozlabs.org,
- linux-btrfs@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>, Stephen Boyd <sboyd@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 12, 2020 at 09:28:29AM -0700, Dave Hansen wrote:
-> kmap_atomic() is always preferred over kmap()/kmap_thread().
-> kmap_atomic() is _much_ more lightweight since its TLB invalidation is
-> always CPU-local and never broadcast.
+On Fri, Oct 09, 2020 at 02:15:30PM +0200, Mauro Carvalho Chehab wrote:
+> Several *.txt files got converted to yaml. Update their
+> references at MAINTAINERS file accordingly.
 > 
-> So, basically, unless you *must* sleep while the mapping is in place,
-> kmap_atomic() is preferred.
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  Documentation/devicetree/bindings/clock/hi6220-clock.txt | 2 +-
+>  MAINTAINERS                                              | 9 ++++-----
+>  .../devicetree/bindings/net/wireless/silabs,wfx.yaml     | 2 +-
+>  3 files changed, 6 insertions(+), 7 deletions(-)
 
-But kmap_atomic() disables preemption, so the _ideal_ interface would map
-it only locally, then on preemption make it global.  I don't even know
-if that _can_ be done.  But this email makes it seem like kmap_atomic()
-has no downsides.
+Doesn't apply for me.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
