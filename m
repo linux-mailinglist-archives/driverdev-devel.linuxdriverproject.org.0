@@ -1,110 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCF7D28B48F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 14:24:09 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CB2B28B5DD
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 15:17:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 290FF87492;
-	Mon, 12 Oct 2020 12:24:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 82F0F21511;
+	Mon, 12 Oct 2020 13:17:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id enSbGU7OkMco; Mon, 12 Oct 2020 12:24:07 +0000 (UTC)
+	with ESMTP id XLxbH1st3oMv; Mon, 12 Oct 2020 13:17:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A1FD587341;
-	Mon, 12 Oct 2020 12:24:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7E738214FD;
+	Mon, 12 Oct 2020 13:17:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 83DF61BF3F6
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 12:24:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AD2971BF23B
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 13:17:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8040C85A84
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 12:24:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9ECC586102
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 13:17:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QYngbro7ZE3A for <devel@linuxdriverproject.org>;
- Mon, 12 Oct 2020 12:24:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR05-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur05on2110.outbound.protection.outlook.com [40.107.21.110])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 27130859F4
- for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 12:24:04 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ErspcvCxU9H7AL9XBby/Fj+km1etRmRdKCo3boWSUjHN3/Que9KgKf3DOwCjb5siFfyQ68ELKnsB0Imm/hZLqMhHbsE8Sjdkvd93BPZYTkfvLJwduFjYSU89XUpmFpfu2yLaaF7IgXOxU4amFtt2oOwvq626F2LbruDY9P9oe4rn81Olg5J+DVrGrVJsYp58K9Cq4xcA2UAymIhbw1saaTxHVOeSgCzjcCrzeTv9DKZvQPNxlVU3umgZBjgXRFCbhAknT7IRVyniFdgdfTK70novrWftqcKD8K+9QvA8XcdP8M1M68CXxHSA8lIykDvkyVzLaUKht27FFDt2WC93vw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qtclSdYipEuZx3NL4olhHutdRYCsx1LE4x7YH/kTndM=;
- b=A+XfAuePDS20ypLX7/40vcOvjBusHL7JWE2I5t5W2yn4iXfOXqHojhhB4YINlfiaAaJFEQvNVrtVWtvBDCEP/y2MfgYXSEV1SqklaegsvYV3d13Kab5QQxU+hkrGijbpgjE0MObL5M79eO8PdxG7OtIrO7KvE1tBnS24HgOW72WPRx8iTAP6DzC92o6Q452Xq6j0F9h2CWExPFxHEyLN3x5tS3FfpKYp1SY/bjuHsGUM9rEFmtzU92zkhLXK/opAulr2mIQKF637XlDYB+f+bKiP39DKhkTNBRAgivMMU9wJe6DxfzRxRi1SxzduBb1ALcBmQf0bHrC4lY+HdGiI4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nokia.com; dmarc=pass action=none header.from=nokia.com;
- dkim=pass header.d=nokia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nokia.onmicrosoft.com; 
- s=selector1-nokia-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qtclSdYipEuZx3NL4olhHutdRYCsx1LE4x7YH/kTndM=;
- b=s3wlq9VETvnlJshRfRWUsqr2Qv2Nzv/wZ8KzPYeT4Om7Tre/BY9EhE4nhvF2SIrcRmDOhFLoOhCUZr9BzkEvDT57GDGeWXLTm6ykntUSkuGsGyaW2ckUts9BIGz+xWVKpQR6in0d73tOR+Hp6ZDNbqBHYlOcfEvcwpQ7BgnjbAY=
-Authentication-Results: davemloft.net; dkim=none (message not signed)
- header.d=none;davemloft.net; dmarc=none action=none header.from=nokia.com;
-Received: from AM0PR07MB4531.eurprd07.prod.outlook.com (2603:10a6:208:6e::15)
- by AM0PR07MB5425.eurprd07.prod.outlook.com (2603:10a6:208:10c::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.11; Mon, 12 Oct
- 2020 12:24:00 +0000
-Received: from AM0PR07MB4531.eurprd07.prod.outlook.com
- ([fe80::acf4:b5f7:b3b1:b50f]) by AM0PR07MB4531.eurprd07.prod.outlook.com
- ([fe80::acf4:b5f7:b3b1:b50f%5]) with mapi id 15.20.3477.019; Mon, 12 Oct 2020
- 12:24:00 +0000
-Subject: Re: [PATCH] stating: octeon: Drop on uncorrectable alignment or FCS
- error
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20201009094605.1525-1-alexander.sverdlin@nokia.com>
- <20201009094605.1525-2-alexander.sverdlin@nokia.com>
- <20201009122459.GP1042@kadam>
-From: Alexander Sverdlin <alexander.sverdlin@nokia.com>
-Message-ID: <49fae268-c88f-d4e8-6a03-60b69b060557@nokia.com>
-Date: Mon, 12 Oct 2020 14:23:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-In-Reply-To: <20201009122459.GP1042@kadam>
-Content-Language: en-US
-X-Originating-IP: [131.228.32.166]
-X-ClientProxiedBy: HE1PR07CA0013.eurprd07.prod.outlook.com
- (2603:10a6:7:67::23) To AM0PR07MB4531.eurprd07.prod.outlook.com
- (2603:10a6:208:6e::15)
+ with ESMTP id w-vobfYIuljv for <devel@linuxdriverproject.org>;
+ Mon, 12 Oct 2020 13:17:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8E676860FB
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 13:17:40 +0000 (UTC)
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 3E6A525B094AB20EDF90;
+ Mon, 12 Oct 2020 21:17:36 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.175.113.25) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 12 Oct 2020 21:17:29 +0800
+From: Jing Xiangfeng <jingxiangfeng@huawei.com>
+To: <TheSven73@gmail.com>, <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: fieldbus: anybuss: jump to correct label in an error
+ path
+Date: Mon, 12 Oct 2020 21:24:04 +0800
+Message-ID: <20201012132404.113031-1-jingxiangfeng@huawei.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from ulegcpsvhp1.emea.nsn-net.net (131.228.32.166) by
- HE1PR07CA0013.eurprd07.prod.outlook.com (2603:10a6:7:67::23) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3477.11 via Frontend Transport; Mon, 12 Oct 2020 12:23:59 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: d98a427d-1c30-400f-296d-08d86ea9b2f8
-X-MS-TrafficTypeDiagnostic: AM0PR07MB5425:
-X-Microsoft-Antispam-PRVS: <AM0PR07MB54254DD12666E645F0B97AE688070@AM0PR07MB5425.eurprd07.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: cmvBg7npGJsahhdJ4AOSIHy/QVDqSyneBluStNnwTY4Q1jlUQcZQv6Uw/OZ+lgTUlIkvrEbP1Rd+f24cF9Cj7CHm+A19vm6i2FF93DEts6QxVnSK5XSirh+lcRegatu/lOzA9FYdLh/k98G+JxSPSZ3Q+ezPAlT3++RjZfRV4A+wls3bm1EioHMVwA7lcMkclV5LgAT8/YhUToNNTxviAKOA5IsPCVIN0b1Ie/oweludeCaQW+QJJmxPPSbbhZ+OGZTpAHQLUQ9sLQjcBsZoiQ/+fUZooWIWqnveUnq/DpT9MUfBbznNzVDqHu8Zzpesr/LPD/cTTtCui2TlegnSzi1ngnr5ZF4j0BP3KOlBPee3l+1mfMRhNsF7A/v/Od+x
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM0PR07MB4531.eurprd07.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(346002)(396003)(136003)(39860400002)(366004)(376002)(8936002)(6512007)(2616005)(956004)(44832011)(186003)(16526019)(36756003)(52116002)(6916009)(6506007)(31696002)(31686004)(478600001)(53546011)(2906002)(86362001)(6666004)(66946007)(6486002)(4326008)(5660300002)(54906003)(316002)(8676002)(83380400001)(26005)(66556008)(66476007)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: lMM2nK2okQgJmBk2bPRIFr1dc0bgtjuL0KWLNo41rZoNxYC5UXEroXA08lVGWSIxJGsq8iCLIHB2CzgyGe3AtnyrFoHtAL29eNlyMtoHBKB6GjIlR6TUQEM5CsdGyGYpHoAKv+8vFJh5JYfeApItBB5VRFxz5OcgRk4IzOy0ddakofk1ji4BfrIdC3Cs3GASnozarnKX5GwKW4ZIx3U0OWdVoqR4lFKirYWUUOm6ifPbNYXjTRztIHvpzvTV1vMA9GC3Djh3hwiab49ys/Y+ArF4G8lOJkDcqEOoXXMkpQUB2ClOCvjSEpP8dtc1/SGhMFcE2ZttOy+hbJg6T4a8SiY1fG7+UcOd95u6TAyNBOLsPat/mz7YZXuriOHa4iiWKHLyovJA7a72GDMz6JWRcZQatyXJftc0KMoV+HKp5AY7qaZ0TbY1FcrRNlAGCbh7Yidb+tiRFhKCPrR+vsS2/QnPYZtNpdCv8OO8qufC50dwDfwkV/yx+P5iy5LPP71fS18dmS6GJn3Mpw4k8ETwA/168slGfrUYckQ2tf5jHFlbyHTLH8sCmuYr29ktiYB/F6fSGYRpfaDJ5afhto98kQCUZgRXhnnfkuZMAYjRiO1ES6wiVWv8acrFgVeV9uNEtc1OoQN/FALZnV/VHVLDMg==
-X-OriginatorOrg: nokia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d98a427d-1c30-400f-296d-08d86ea9b2f8
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR07MB4531.eurprd07.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2020 12:24:00.6390 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5d471751-9675-428d-917b-70f44f9630b0
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cCfGnFd8ykeDnGg6e29H4OZFUYPA/t1/rSf4xrIiPpl8QC/QUs/8aWJP1CpjStze9MY+ZFCIIxukDURSuP75vBQb1Mz+LpS4pGDclAdUabI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR07MB5425
+X-Originating-IP: [10.175.113.25]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,50 +59,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Aaro Koskinen <aaro.koskinen@iki.fi>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ralf Baechle <ralf@linux-mips.org>, netdev@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ jingxiangfeng@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Dan,
+In current code, controller_probe() misses to call ida_simple_remove()
+in an error path. Jump to correct label to fix it.
 
-On 09/10/2020 14:24, Dan Carpenter wrote:
-> On Fri, Oct 09, 2020 at 11:46:05AM +0200, Alexander A Sverdlin wrote:
->> --- a/drivers/staging/octeon/ethernet-rx.c
->> +++ b/drivers/staging/octeon/ethernet-rx.c
->> @@ -69,14 +69,16 @@ static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
->>  	else
->>  		port = work->word1.cn38xx.ipprt;
->>  
->> -	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64)) {
->> +	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64))
->>  		/*
->>  		 * Ignore length errors on min size packets. Some
->>  		 * equipment incorrectly pads packets to 64+4FCS
->>  		 * instead of 60+4FCS.  Note these packets still get
->>  		 * counted as frame errors.
->>  		 */
->> -	} else if (work->word2.snoip.err_code == 5 ||
->> +		return 0;
->> +
->> +	if (work->word2.snoip.err_code == 5 ||
->>  		   work->word2.snoip.err_code == 7) {
-> This line is indented to match the old code and it no longer matches.
-> (Please update the whitespace).
+Fixes: 17614978ed34 ("staging: fieldbus: anybus-s: support the Arcx anybus controller")
+Signed-off-by: Jing Xiangfeng <jingxiangfeng@huawei.com>
+---
+ drivers/staging/fieldbus/anybuss/arcx-anybus.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks to your comment I took a fresh look onto the patch and found a logic error
-in the change. Please ignore the whole patch for now.
- 
->>  		/*
->>  		 * We received a packet with either an alignment error
-
+diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+index 5b8d0bae9ff3..b5fded15e8a6 100644
+--- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
++++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+@@ -293,7 +293,7 @@ static int controller_probe(struct platform_device *pdev)
+ 	regulator = devm_regulator_register(dev, &can_power_desc, &config);
+ 	if (IS_ERR(regulator)) {
+ 		err = PTR_ERR(regulator);
+-		goto out_reset;
++		goto out_ida;
+ 	}
+ 	/* make controller info visible to userspace */
+ 	cd->class_dev = kzalloc(sizeof(*cd->class_dev), GFP_KERNEL);
 -- 
-Best regards,
-Alexander Sverdlin.
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
