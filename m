@@ -2,83 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 203E128B3F1
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 13:38:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A1AE28B42C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 13:54:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0723F207A4;
-	Mon, 12 Oct 2020 11:38:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0447B207A4;
+	Mon, 12 Oct 2020 11:53:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i-fI3w8hwAG8; Mon, 12 Oct 2020 11:38:52 +0000 (UTC)
+	with ESMTP id ROJYHBlXnp+i; Mon, 12 Oct 2020 11:53:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C1CEF20555;
-	Mon, 12 Oct 2020 11:38:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41C2C20555;
+	Mon, 12 Oct 2020 11:53:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E70B21BF3F7
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 11:38:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 864211BF3F7
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 11:53:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E39FA849BE
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 11:38:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7C584204D5
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 11:53:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 95C-3Y7zscq8 for <devel@linuxdriverproject.org>;
- Mon, 12 Oct 2020 11:38:48 +0000 (UTC)
+ with ESMTP id xgje2KUuZkKb for <devel@linuxdriverproject.org>;
+ Mon, 12 Oct 2020 11:53:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6466184974
- for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 11:38:48 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id h2so8405546pll.11
- for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 04:38:48 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id BC7DA20452
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 11:53:51 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id 1so2588922ple.2
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 04:53:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:date:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=uAr1u2AxKhyAhsPGz3HPtu7lWVnt+PlRnjUfOtRYD10=;
- b=eXjiSmybFzCfsLPApRdx4SqJd6Q3JXAdvU4MJPKZZ4ippGkNFfgFeYTZwyzfKdWC3N
- YY4Ee59ldzAAxxHe4aH1Td5dqVxdLDSGafdKsH+jgctwaG/tQBZccfYg2Xd7cpGdzQhy
- fkUUiKGWchxtaeuE8+U1v99g21gesrczOEHEht53nKBwa+fizLetc2lpleHUJ3jYOm1F
- QMF4HcPQ5uyXuV6Lge8N7UnvTP16iaUuhVuaaUhk4DU80tBdQTswwjokQViDioc3Pi/N
- 0n448WWUK9jaxfz/5wTa5GytQaRD4Yb4oY0mKvyOFaUUdJ0ABranwTEq/UXc10SqAA6R
- y3Hg==
+ bh=Fb1d8gmC83mgx6ZXccfV51mL2eDPuoS5rOP1jKZbgr0=;
+ b=WqRIRK1ILJUZ67z70QvMDBxN06fFvlwUdMAnAtrRsF1vPMIL52nvWTtO9rfNvOfdU4
+ c4oZuWaKIk/IlnERqKlzhGmiDtbVDYOdV1fdSQVzA6WfvnuXzBtUY3oBM3bKCuLiUNlm
+ wb+dROSaHcGVHWmWKRZYg9qnbiZB5vcXXcw+paU0XtrKDet/ZbtD0BTfiebCzZE3Vfm2
+ MLJ9cjShvdWMG4+T+yqYAKI1y0hSMPLCUk05PHD/Bc2d8W7xSKuqa3zDnvdY+VSN5aFH
+ PRFoObfPV/asfoDKDYQLEI9gLnEJZrKsg4L0BmXAkHnpxpP7YXYW6xU+OFXaOYsUs3eg
+ SNkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:date:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=uAr1u2AxKhyAhsPGz3HPtu7lWVnt+PlRnjUfOtRYD10=;
- b=GXp+9j7UEE/1F2oUVkqA1pttbPRcJAX3UBCshLIDdDuuEl3VQYwL4roP75K8n3ygS0
- cjooareZSnjc5sP3snGIfFySRAsDPTLgmZUE8LvlWxs+rHV72pzytZwGBD54k7LEXYoA
- AUlibqNlASh+DBAi/RogXdR7RSK4OAbEqkOmnu3GpPN1Vg05eN0XrMTqWTnx8n81BlXR
- TA0HDrHiiF8a/n1EmXyGpDC3Yj6iYAtx/6ibv6TOYIPhGy6nP0sCQ0MgCTFlBZpKybcW
- 6DjbXS+G9UBknmXTIya/0owVuKLpraTPfObWgFGZmfnmOrYhBF9PdMjDFoabeBPUCNzG
- 65PQ==
-X-Gm-Message-State: AOAM533Cope97H3tf01eU6JHIsMLjNPz80Ol3+PZXs+qkl4X9ApFahzp
- MkfMSacq9OUOzghPKIr0v7s=
-X-Google-Smtp-Source: ABdhPJxHiPbCY6AwdU1NepgLndb4Cc4E+OU455e+aeQtaXWusCq2n76TGY06FvHVFDAGFlriW9lX4w==
-X-Received: by 2002:a17:902:8698:b029:d3:b362:7342 with SMTP id
- g24-20020a1709028698b02900d3b3627342mr23245874plo.50.1602502728048; 
- Mon, 12 Oct 2020 04:38:48 -0700 (PDT)
+ bh=Fb1d8gmC83mgx6ZXccfV51mL2eDPuoS5rOP1jKZbgr0=;
+ b=IROKAVIztiQYPEgsaXpkGc6gaR7AKc3NqI/1R9mtk+Re65UnTFL2shPMMslGCI2IiN
+ IaJsRwKPk26mWTqqoeoUf2JKPy5HDwglbhJKtrlM15NjMVWceTMZTvfaD1AzKyzXA0ak
+ iAcZ1wqv3bPWDtMEs/lYNtj/WtvthPapwEwlUtnIPYMIrVo252D5tfplparGwLgJPyW/
+ dd39GsJiPzTN3pc8ozP4G1L1pr9pB/YXjt+Q7sfiLTIkEBWxy53y888xEh1PX2ZlD7kS
+ doG6L0fbspwlK8vnEhy8db48C6R2FcXfuOBc+cfYw+ZCcmuotxPlFi2kNKOYfC2ZU2mW
+ 0s6g==
+X-Gm-Message-State: AOAM532TSnUkRnu4rSrDyEbS5lOi8LbD/LJlADNq3701TOa88zymgu4s
+ UrNpp0rI3cK6p3KsKwHTsig=
+X-Google-Smtp-Source: ABdhPJxlO1TccaY9ka4oOYHIRdg81JvK1kUFDXWvaLfFg4GNc+QKlcsPPRGHb2yAxPpyrlh7CDA6BA==
+X-Received: by 2002:a17:902:7c0d:b029:d3:de09:a3 with SMTP id
+ x13-20020a1709027c0db02900d3de0900a3mr22968153pll.52.1602503631317; 
+ Mon, 12 Oct 2020 04:53:51 -0700 (PDT)
 Received: from localhost ([160.16.113.140])
- by smtp.gmail.com with ESMTPSA id v20sm14861383pjh.5.2020.10.12.04.38.47
+ by smtp.gmail.com with ESMTPSA id k25sm9638298pfi.42.2020.10.12.04.53.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 04:38:47 -0700 (PDT)
+ Mon, 12 Oct 2020 04:53:50 -0700 (PDT)
 From: Coiby Xu <coiby.xu@gmail.com>
 X-Google-Original-From: Coiby Xu <Coiby.Xu@gmail.com>
-Date: Mon, 12 Oct 2020 19:29:14 +0800
+Date: Mon, 12 Oct 2020 19:51:14 +0800
 To: Benjamin Poirier <benjamin.poirier@gmail.com>
-Subject: Re: [PATCH v1 5/6] staging: qlge: clean up debugging code in the
- QL_ALL_DUMP ifdef land
-Message-ID: <20201012112914.xrkwi53gqvg5l6lw@Rk>
+Subject: Re: [PATCH v1 2/6] staging: qlge: coredump via devlink health reporter
+Message-ID: <20201012115114.lyh33rvmm4rt7mej@Rk>
 References: <20201008115808.91850-1-coiby.xu@gmail.com>
- <20201008115808.91850-6-coiby.xu@gmail.com>
- <20201010080126.GC14495@f3> <20201010100002.6v54yiojnscnuxqv@Rk>
- <20201010134055.GA18693@f3>
+ <20201008115808.91850-3-coiby.xu@gmail.com>
+ <20201010074809.GB14495@f3> <20201010100258.px2go6nugsfbwoq7@Rk>
+ <20201010132230.GA17351@f3>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201010134055.GA18693@f3>
+In-Reply-To: <20201010132230.GA17351@f3>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,24 +100,49 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Oct 10, 2020 at 10:40:55PM +0900, Benjamin Poirier wrote:
->On 2020-10-10 18:00 +0800, Coiby Xu wrote:
+On Sat, Oct 10, 2020 at 10:22:30PM +0900, Benjamin Poirier wrote:
+>On 2020-10-10 18:02 +0800, Coiby Xu wrote:
 >[...]
+>> > > +	do {                                                           \
+>> > > +		err = fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
+>> > > +		if (err) {					       \
+>> > > +			kvfree(dump);                                  \
+>> > > +			return err;				       \
+>> > > +		}                                                      \
+>> > > +	} while (0)
+>> > > +
+>> > > +static int qlge_reporter_coredump(struct devlink_health_reporter *reporter,
+>> > > +				  struct devlink_fmsg *fmsg, void *priv_ctx,
+>> > > +				  struct netlink_ext_ack *extack)
+>> > > +{
+>> > > +	int err = 0;
+>> > > +
+>> > > +	struct qlge_devlink *dev = devlink_health_reporter_priv(reporter);
 >> >
->> > Please also update drivers/staging/qlge/TODO accordingly. There is still
->> > a lot of debugging code IMO (the netif_printk statements - kernel
->> > tracing can be used instead of those) but this patch is a substantial
->> > improvement.
+>> > Please name this variable ql_devlink, like in qlge_probe().
 >>
->> Thank you for the reminding! To move qlge out of staging tree would be
->> interesting exercise for me:)
+>> I happened to find the following text in drivers/staging/qlge/TODO
+>> > * in terms of namespace, the driver uses either qlge_, ql_ (used by
+>> >  other qlogic drivers, with clashes, ex: ql_sem_spinlock) or nothing (with
+>> >  clashes, ex: struct ob_mac_iocb_req). Rename everything to use the "qlge_"
+>> >  prefix.
 >
->If you would like to work more on the driver, I would highly suggest
->getting one or two adapters to be able to test your changes. They can be
->had for relatively cheap on ebay. Just search for "qle8142".
+>This comment applies to global identifiers, not local variables.
 
-Thank you for the info! Right now I don't have a desktop to install
-this kind of adapter. I'll get one after settling the plan for a desktop.
+Thank you for the explanation! Are you suggesting we should choose
+different naming styles so we better tell global identifiers from local
+variables?
+>
+>>
+>> So I will adopt qlge_ instead. Besides I prefer qlge_dl to ql_devlink.
+>
+>Up to you but personally, I think ql_devlink is better. In any case,
+>"dev" is too general and often used for struct net_device pointers
+>instead.
+
+Thank you for the suggestion. Another reason to use qlge_dl is many
+other network drivers supporting devlink interface also adopt this kind
+of style.
 
 --
 Best regards,
