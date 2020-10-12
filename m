@@ -2,96 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6606428AF37
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 09:41:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0958B28AFA0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Oct 2020 10:06:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E1442079A;
-	Mon, 12 Oct 2020 07:41:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7B7E6207A4;
+	Mon, 12 Oct 2020 08:06:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TmMrEO7acWKO; Mon, 12 Oct 2020 07:41:01 +0000 (UTC)
+	with ESMTP id lffq1JxBZyny; Mon, 12 Oct 2020 08:06:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4710D20778;
-	Mon, 12 Oct 2020 07:40:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D46BE20774;
+	Mon, 12 Oct 2020 08:06:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C71D91BF361
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 07:40:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AAB041BF2A4
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 08:06:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C2A2A85E9F
- for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 07:40:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A68BC86929
+ for <devel@linuxdriverproject.org>; Mon, 12 Oct 2020 08:06:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u5SO8yKiM7kW for <devel@linuxdriverproject.org>;
- Mon, 12 Oct 2020 07:40:54 +0000 (UTC)
+ with ESMTP id jiERvw4OOsJo for <devel@linuxdriverproject.org>;
+ Mon, 12 Oct 2020 08:06:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5FCA185E7C
- for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 07:40:54 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 3DEE1AC1D;
- Mon, 12 Oct 2020 07:40:52 +0000 (UTC)
-Subject: Re: [PATCH RFC PKS/PMEM 48/58] drivers/md: Utilize new kmap_thread()
-To: Ira Weiny <ira.weiny@intel.com>
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-49-ira.weiny@intel.com>
- <c802fbf4-f67a-b205-536d-9c71b440f9c8@suse.de>
- <20201012052817.GZ2046448@iweiny-DESK2.sc.intel.com>
-From: Coly Li <colyli@suse.de>
-Autocrypt: addr=colyli@suse.de; keydata=
- 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
-Message-ID: <026a7658-6c43-6510-a8b5-32f29de7b281@suse.de>
-Date: Mon, 12 Oct 2020 15:40:27 +0800
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
- Gecko/20100101 Thunderbird/68.12.1
+Received: from sonic307-1.consmr.mail.bf2.yahoo.com
+ (sonic307-1.consmr.mail.bf2.yahoo.com [74.6.134.40])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AE06E868CB
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 08:06:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1602489985; bh=bNGId1HCyfMKOMXY1ys5Lq0lO8K4cS8+apxiT+GArtM=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=FTJZ98JzXYkWtubhlNbXnZ/QjRoSu/dmmaoPwIm4c+zJiBFy2kO9IHwlbnLGC+kffkGkNTlUcH2INz3qF2ENvLutZs1A3Ujr9uKWv2NbKlcZOlJGk/FuU2pE+rSYzU1KFHkXrADu8TEVeAyOUj1ygVRxVd3bGrKX1cVUJ+DTAIIXxtsaYTH1IFPULWb5PjjHi72LuoiunmyU+41z7ZN0YdNdrcTFQ9YecgrQYNi6PFsuDSB5xXnVSzRVzBFSHefdfPm+hJvIW7YSQVHpfQsUZ+GYntYV+63Sz5lY3+ey4EAZGhB+0iYiTVoDrlf/LMys/kzq9x9bxsspiJ8mq88+Qg==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1602489985; bh=jS9ATd4i/4OYq6SyAEu0AvyErAvBgR4QystOKp0e+7+=;
+ h=Date:From:Subject;
+ b=qt9OXDsZCVK0kfPub552h/77oihLnXrs37GecztYI/RAJ1KHNvaoK9DAdA3aLffNBsbaxEAEkRG+N5Mg1x5hL4lsfhpCfPMMwcoxdPs+fFxgZecvDH18eL25mR0X+/a6F6SMZgWB2Ex5KBYnpyuHwLKZcPwm1IrJiqA4MR9sWOhrdDPbqtefyBcVNTAsrERo9EA0O42VZgxPB1stYWewFK1aJcDuX+b30NBjWSQaN1eErkpm9bcRf44UslUdMpsvI7iqEXDXptIrTGPmFi4xtkyyBn9lRHRonVPcFNtci98lEscyd8adACg3DIFN4YnOdcCJ5CAZDqwW3GxzJ7NeDA==
+X-YMail-OSG: VQcfascVM1kyzZekS8P6OHlF68moaRcsNy127FLdxmpAgcEI6.flPSSaCQODKFq
+ DYwlJ5sv34N8n9EpEIigGEUVdqGFZ83krcfFRli6JEpR7quBJ4u_xURGWKZW15dEiKcS_oPZ1ZRQ
+ 1adloOyAkseYP1W18z7nV7DbjIQcGtnQscEhQ9Ed18X1OyS05sZFFlAqUR6JcX6B.poql11SscbA
+ 5CpHqN.3FVrw1AJ13BR.giFTIFuCAWa.F4nTVo92l2h6EUnHQMkf6AONSuxblJoPUcXl8O_F1_Fk
+ YJEofrTasm8rURbKCPU996C9Bpv3AiOAMy5VxXczICVRiBNgZAhnPhoDQGVeqMJYTMF.Pt2BznRC
+ Ah.VUXYxLIsXa8550FQKNAkoMEfwilghZuvuqtfYl5lEIarOSzsFrL5WT.qD4LClbVPgfOed71uF
+ 9Cv3nOXGeEh4BygW8Pd0Ob_VnWU3AoZRZEkYvu63UDB8.NQjg7hFeGib1Yur7sR6nzw6YpuVI7hL
+ wcumit1o3D.li9CAaVuQuGgB7wp6y47qPQ11Bi19t6stFss9nWPfh.QEttQAV32T2BoaXuAh1EM.
+ OSrwwvxyL3TKsySeXA_teFfGJGH45_JnCI6J2WP3CnnXRzx2.bQUqICdZYayxfGkBRtUx0qqP1tO
+ v68JNI3n9zX5aJpJHxIAtWPB0PcHNayuJ7E9dC25zJg7ldPq.FyqTWsTqW_gOfMI.aITb_oRNkQp
+ EF9oSVvcilkjA3Asyf9M8g1dlsirBoStCb.tQ6A.boeBev6KYkNGH_zPr.Ci1Xft_.mZpqK2hJld
+ .HrHNQH7Z0kg7u2kkLiA8G7WGXEyyStgaOZQethi3SMxjaDTOrX3igGM2WYRUI3TIkPxYR0UvvFz
+ DSRlYL7McTWpf8dZf5xEKbvE1o3BRC82RSuuHbmX8fc5Va7i6HoDzxWyplD6Bbc4FsMxDQfZYsIq
+ FzUwrk2E_vBtI6w3MtvfFjkmAuMHc7dA0Cblh.3OtK_3A5K.BO34TiO0gTpas7PNgtykhm5.DnIS
+ s2QmBRfNhcIF91LH_KjfM1QXRy0J.1YVtohFAKNqCzqJaDVhh_7Hke4fmUvTfmgWBvW15aXRm8Uw
+ x2WhCSNiQo0BdJeqS6pQK1oRgh5Naa1t7351.p0gquJ2Xsu9yWm_GTdydUXWmYJkfZ1SQy.1iHeg
+ bgM2FAxbRoOyIZ2.2aKCLV3LWZzRyoLkPLT2L6ulcWG2WmVoF4f3TEWfhzKY1u6PifTbjewI5f9o
+ WOmvt_dynZsWBZr5macZgt2QbOADfcZJ9ukAi6D4XMadkver55f23yEFnAsFokTtROELChUEF8IY
+ qztvQgcpx5MgQM6ZpJWNKf5EVsuIlJpwwnsjOgB9XGfozI0Sv6BCVXT7JZk8cAYqxZvXoQ21g.zx
+ .bgMAm2548lFMBDijXYpVQfdFdDYNunYDDf2kFe_mvF7TXCpK
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic307.consmr.mail.bf2.yahoo.com with HTTP; Mon, 12 Oct 2020 08:06:25 +0000
+Date: Mon, 12 Oct 2020 08:06:22 +0000 (UTC)
+From: Bintou Deme <bintou_deme5811@yahoo.com>
+Message-ID: <332361961.348350.1602489982164@mail.yahoo.com>
+Subject: Von Bintou
 MIME-Version: 1.0
-In-Reply-To: <20201012052817.GZ2046448@iweiny-DESK2.sc.intel.com>
-Content-Language: en-US
+References: <332361961.348350.1602489982164.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16795 YMailNodin Mozilla/5.0 (Windows NT 6.1)
+ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,81 +82,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, samba-technical@lists.samba.org,
- Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- ceph-devel@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- io-uring@vger.kernel.org, cluster-devel@redhat.com,
- Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
- xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
- Kent Overstreet <kent.overstreet@gmail.com>, Fenghua Yu <fenghua.yu@intel.com>,
- linux-afs@lists.infradead.org, linux-um@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, reiserfs-devel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Andrew Morton <akpm@linux-foundation.org>, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
- netdev@vger.kernel.org, kexec@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: bintou_deme2011@aol.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020/10/12 13:28, Ira Weiny wrote:
-> On Sat, Oct 10, 2020 at 10:20:34AM +0800, Coly Li wrote:
->> On 2020/10/10 03:50, ira.weiny@intel.com wrote:
->>> From: Ira Weiny <ira.weiny@intel.com>
->>>
->>> These kmap() calls are localized to a single thread.  To avoid the over
->>> head of global PKRS updates use the new kmap_thread() call.
->>>
->>
->> Hi Ira,
->>
->> There were a number of options considered.
->>
->> 1) Attempt to change all the thread local kmap() calls to kmap_atomic()
->> 2) Introduce a flags parameter to kmap() to indicate if the mapping
->> should be global or not
->> 3) Change ~20-30 call sites to 'kmap_global()' to indicate that they
->> require a global mapping of the pages
->> 4) Change ~209 call sites to 'kmap_thread()' to indicate that the
->> mapping is to be used within that thread of execution only
->>
->>
->> I copied the above information from patch 00/58 to this message. The
->> idea behind kmap_thread() is fine to me, but as you said the new api is
->> very easy to be missed in new code (even for me). I would like to be
->> supportive to option 2) introduce a flag to kmap(), then we won't forget
->> the new thread-localized kmap method, and people won't ask why a
->> _thread() function is called but no kthread created.
-> 
-> Thanks for the feedback.
-> 
-> I'm going to hold off making any changes until others weigh in.  FWIW, I kind
-> of like option 2 as well.  But there is already kmap_atomic() so it seemed like
-> kmap_XXXX() was more in line with the current API.
-
-I understand it now, the idea is fine to me.
-
-Acked-by: Coly Li <colyli@suse.de>
-
-Thanks.
-
-Coly Li
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgpWb246IEJpbnRvdSBEZW1lCkxpZWJzdGUsCkd1dGVuIFRhZyB1bmQgdmllbGVuIERhbmsgZsO8
+ciBJaHJlIEF1Zm1lcmtzYW1rZWl0LiBCaXR0ZSBpY2ggbcO2Y2h0ZSwgZGFzcyBTaWUgbWVpbmUg
+RS1NYWlsIHNvcmdmw6RsdGlnIGxlc2VuIHVuZCBtaXIgYmVpIGRlciBCZWFyYmVpdHVuZyBkaWVz
+ZXMgUHJvamVrdHMgYmVoaWxmbGljaCBzaW5kLiBJY2ggYmluIE1pc3MgQmludG91IERlbWUgdW5k
+IGljaCBzY2hyZWliZSBkZW3DvHRpZywgdW0gSWhyZSBQYXJ0bmVyc2NoYWZ0IHVuZCBVbnRlcnN0
+w7x0enVuZyBiZWkgZGVyIMOcYmVydHJhZ3VuZyB1bmQgSW52ZXN0aXRpb24gbWVpbmVyIEVyYnNj
+aGFmdHNmb25kcyBpbiBIw7ZoZSB2b24gNi41MDAuMDAwLDAwIFVTRCAoc2VjaHMgTWlsbGlvbmVu
+IGbDvG5maHVuZGVydHRhdXNlbmQgVVMtRG9sbGFyKSB6dSBlcmJpdHRlbiwgZGllIG1laW4gdmVy
+c3RvcmJlbmVyIGdlbGllYnRlciBWYXRlciB2b3Igc2VpbmVtIFRvZCBiZWkgZWluZXIgQmFuayBo
+aW50ZXJsZWd0IGhhdC4KCkljaCBtw7ZjaHRlIElobmVuIHZlcnNpY2hlcm4sIGRhc3MgZGllc2Vy
+IEZvbmRzIHZvbiBtZWluZW0gdmVyc3RvcmJlbmVuIFZhdGVyIGxlZ2FsIGVyd29yYmVuIHd1cmRl
+IHVuZCBrZWluZW4ga3JpbWluZWxsZW4gSGludGVyZ3J1bmQgaGF0LiBNZWluIFZhdGVyIGhhdCBk
+aWVzZW4gRm9uZHMgbGVnYWwgZHVyY2ggZWluIGxlZ2l0aW1lcyBHZXNjaMOkZnQgZXJ3b3JiZW4s
+IGJldm9yIGVyIHfDpGhyZW5kIHNlaW5lciBHZXNjaMOkZnRzcmVpc2UgenUgVG9kZSB2ZXJnaWZ0
+ZXQgd3VyZGUuIERlciBUb2QgbWVpbmVzIFZhdGVycyB3dXJkZSB2ZXJtdXRsaWNoIHZvbiBzZWlu
+ZW4gVmVyd2FuZHRlbiBnZXBsYW50LCBkaWUgd8OkaHJlbmQgZGllc2VyIFplaXQgc2VpbmVyIEdl
+c2Now6RmdHNyZWlzZSBtaXQgaWhtIHJlaXN0ZW4uIERlbm4gbmFjaCAzIE1vbmF0ZW4gZGVzIFRv
+ZGVzIG1laW5lcyBWYXRlcnMgYmVnYW5uZW4gc2VpbmUgVmVyd2FuZHRlbiwgYWxsZSBHcnVuZHN0
+w7xja2UgbWVpbmVzIHZlcnN0b3JiZW5lbiBWYXRlcnMgenUgYmVhbnNwcnVjaGVuIHVuZCB6dSB2
+ZXJrYXVmZW4uCgpEaWUgVmVyd2FuZHRlbiBtZWluZXMgdmVyc3RvcmJlbmVuIFZhdGVycyB3aXNz
+ZW4gbmljaHRzIHZvbiBkZW4gVVMgJCA2LjUwMC4wMDAsMDAgKHNlY2hzIE1pbGxpb25lbiBmw7xu
+Zmh1bmRlcnR0YXVzZW5kIFVTLURvbGxhciksIGRpZSBtZWluIHZlcnN0b3JiZW5lciBWYXRlciBi
+ZWkgZGVyIEJhbmsgaGludGVybGVndCBoYXQsIHVuZCBtZWluIHZlcnN0b3JiZW5lciBWYXRlciBo
+YXQgbWlyIHZvciBzZWluZW0gVG9kIGhlaW1saWNoIGdlc2FndCwgZGFzcyBpY2ggaW4gZWluZW0g
+TGFuZCBlaW5lbiBhdXNsw6RuZGlzY2hlbiBQYXJ0bmVyIHN1Y2hlbiBzb2xsIG1laW5lciBXYWhs
+LCB3byBpY2ggZGllc2VzIEdlbGQgZsO8ciBtZWluZSBlaWdlbmVuIFp3ZWNrZSDDvGJlcndlaXNl
+biB3ZXJkZS4KCkJpdHRlIGhlbGZlbiBTaWUgbWlyLCBkaWVzZXMgR2VsZCBmw7xyIGdlc2Now6Rm
+dGxpY2hlIFp3ZWNrZSBpbiBJaHJlbSBMYW5kIGF1ZiBJaHIgS29udG8genUgw7xiZXJ3ZWlzZW4u
+IEljaCBoYWJlIGRpZXNlIEVudHNjaGVpZHVuZyBnZXRyb2ZmZW4sIHdlaWwgaWNoIHZpZWxlIERl
+bcO8dGlndW5nZW4gdm9uIGRlbiBWZXJ3YW5kdGVuIG1laW5lcyB2ZXJzdG9yYmVuZW4gVmF0ZXJz
+IGVybGl0dGVuIGhhYmUuIEdlZ2Vud8OkcnRpZyBoYXR0ZSBpY2ggS29tbXVuaWthdGlvbiBtaXQg
+ZGVtIERpcmVrdG9yIGRlciBCYW5rLCBiZWkgZGVyIG1laW4gdmVyc3RvcmJlbmVyIFZhdGVyIGRp
+ZXNlcyBHZWxkIGVpbmdlemFobHQgaGF0LiBJY2ggaGFiZSBkZW0gRGlyZWt0b3IgZGVyIEJhbmsg
+ZXJrbMOkcnQsIHdpZSBkcmluZ2VuZCBlcyBpc3QsIHNpY2hlcnp1c3RlbGxlbiwgZGFzcyBkZXIg
+Rm9uZHMgaW5zIEF1c2xhbmQgdHJhbnNmZXJpZXJ0IHdpcmQsIGRhbWl0IGljaCBkaWVzZXMgTGFu
+ZCB6dSBtZWluZXIgU2ljaGVyaGVpdCB2ZXJsYXNzZW4ga2Fubi4gRGVyIERpcmVrdG9yIGRlciBC
+YW5rIGhhdCBtaXIgdmVyc2ljaGVydCwgZGFzcyBkZXIgRm9uZHMgw7xiZXJ0cmFnZW4gd2lyZCwg
+c29iYWxkIGljaCBqZW1hbmRlbiB2b3JzdGVsbGUsIGRlciBlaHJsaWNoIGlzdCwgZGVuIEZvbmRz
+IGluIG1laW5lbSBOYW1lbiB6dSBkaWVzZW0gWndlY2sgenUgZXJoYWx0ZW4uCgpCaXR0ZSBzZWll
+biBTaWUgdmVyc2ljaGVydCwgZGFzcyBkaWUgQmFuayBkZW4gR2VsZGJldHJhZyBhdWYgSWhyIEtv
+bnRvIMO8YmVyd2Vpc2VuIHdpcmQgdW5kIGVzIGtlaW4gUHJvYmxlbSBnaWJ0LiBEaWVzZSBUcmFu
+c2FrdGlvbiBpc3QgMTAwJSByaXNpa29mcmVpIHVuZCBsZWdpdGltLiBJY2ggYmluIGJlcmVpdCwg
+SWhuZW4gMzAlIGRlcyBHZXNhbXRiZXRyYWdzIGFscyBBdXNnbGVpY2ggZsO8ciBJaHJlIEJlbcO8
+aHVuZ2VuIC8gQmVpdHLDpGdlIG5hY2ggZGVyIGVyZm9sZ3JlaWNoZW4gw5xiZXJ3ZWlzdW5nIGRp
+ZXNlcyBGb25kcyBhdWYgSWhyIEtvbnRvIGFuenViaWV0ZW4uIFNpZSB3ZXJkZW4gbWlyIGF1Y2gg
+aGVsZmVuLCAxMCUgZsO8ciBXb2hsdMOkdGlna2VpdHNvcmdhbmlzYXRpb25lbiB1bmQgbXV0dGVy
+bG9zZSBCYWJ5cyBpbiBJaHJlbSBMYW5kIHp1IHNwZW5kZW4uCgpJY2ggbcO2Y2h0ZSBudXIsIGRh
+c3MgU2llIGbDvHIgbWljaCBhbHMgbWVpbiBhdXNsw6RuZGlzY2hlciBQYXJ0bmVyIGF1ZnRyZXRl
+biwgZGFtaXQgZGllIEJhbmsgZGllc2VuIEZvbmRzIGF1ZiBJaHIgS29udG8gw7xiZXJ3ZWlzdCwg
+ZGFtaXQgaWNoIGluIGRpZXNlbSBMYW5kIGxlYmVuIGthbm4uIEJpdHRlLCBpY2ggd2VyZGUgSWhy
+ZSBkcmluZ2VuZGUgSGlsZmUgd2VnZW4gbWVpbmVzIGdlZ2Vud8OkcnRpZ2VuIFp1c3RhbmRzIGpl
+dHp0IGJyYXVjaGVuLiBXZW5uIFNpZSBzaWNoIGJlcmVpdCBlcmtsw6RyZW4sIG1pdCBtaXIgaW4g
+QmV6dWcgYXVmIGRpZXNlbiBad2VjayB6dXNhbW1lbnp1YXJiZWl0ZW4sIGdlYmVuIFNpZSBtaXIg
+Yml0dGUgSWhyIEludGVyZXNzZSwgaW5kZW0gU2llIG1pciBhbnR3b3J0ZW4sIGRhbWl0IGljaCBJ
+aG5lbiBkaWUgZXJmb3JkZXJsaWNoZW4gSW5mb3JtYXRpb25lbiB1bmQgRWluemVsaGVpdGVuIHp1
+ciB3ZWl0ZXJlbiBWb3JnZWhlbnN3ZWlzZSBnZWJlbiBrYW5uLiBJY2ggYmlldGUgSWhuZW4gMzAl
+IGRlcyBHZWxkZXMgZsO8ciBJaHJlIEhpbGZlIGFuIHVuZCBVbnRlcnN0w7x0enVuZywgdW0gZGFt
+aXQgdW16dWdlaGVuLgoKSWhyZSBkcmluZ2VuZGUgQW50d29ydCB3aXJkIGdlc2Now6R0enQuCkZy
+ZXVuZGxpY2hlIEdyw7zDn2UKQmludG91IERlbWUKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
