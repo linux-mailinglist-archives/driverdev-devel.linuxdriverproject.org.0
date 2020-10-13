@@ -1,50 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D529A28D521
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 22:02:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32F9D28D533
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 22:08:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 755D4873AE;
-	Tue, 13 Oct 2020 20:02:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0825F2E1A7;
+	Tue, 13 Oct 2020 20:08:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pvsmVgC3TVE6; Tue, 13 Oct 2020 20:02:41 +0000 (UTC)
+	with ESMTP id Y+g3+C2Wk9d7; Tue, 13 Oct 2020 20:08:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6061E873CE;
-	Tue, 13 Oct 2020 20:02:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ECAE12E197;
+	Tue, 13 Oct 2020 20:08:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 177661BF868
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 20:02:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C05781BF422
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 20:08:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 13A848769F
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 20:02:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B27002E191
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 20:08:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k_hsT3sHX_Lo; Tue, 13 Oct 2020 20:02:34 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ZenIV.linux.org.uk (zeniv.linux.org.uk [195.92.253.2])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A42FE8768E;
- Tue, 13 Oct 2020 20:02:34 +0000 (UTC)
-Received: from viro by ZenIV.linux.org.uk with local (Exim 4.92.3 #3 (Red Hat
- Linux)) id 1kSQUX-00H96b-NT; Tue, 13 Oct 2020 20:01:49 +0000
-Date: Tue, 13 Oct 2020 21:01:49 +0100
-From: Al Viro <viro@zeniv.linux.org.uk>
-To: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH RFC PKS/PMEM 33/58] fs/cramfs: Utilize new kmap_thread()
-Message-ID: <20201013200149.GI3576660@ZenIV.linux.org.uk>
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-34-ira.weiny@intel.com>
- <CAPcyv4gL3jfw4d+SJGPqAD3Dp4F_K=X3domuN4ndAA1FQDGcPg@mail.gmail.com>
- <20201013193643.GK20115@casper.infradead.org>
+ with ESMTP id WjEF8T10Daul for <devel@linuxdriverproject.org>;
+ Tue, 13 Oct 2020 20:08:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7D1322E18C
+ for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 20:08:28 +0000 (UTC)
+Received: from ip5f5af0a0.dynamic.kabel-deutschland.de ([95.90.240.160]
+ helo=wittgenstein) by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <christian.brauner@ubuntu.com>)
+ id 1kSQau-0000ZR-Ht; Tue, 13 Oct 2020 20:08:24 +0000
+Date: Tue, 13 Oct 2020 22:08:23 +0200
+From: Christian Brauner <christian.brauner@ubuntu.com>
+To: Todd Kjos <tkjos@google.com>
+Subject: Re: [PATCH] binder: fix UAF when releasing todo list
+Message-ID: <20201013200823.mxu7g6zsogmfjon4@wittgenstein>
+References: <20201009232455.4054810-1-tkjos@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201013193643.GK20115@casper.infradead.org>
+In-Reply-To: <20201009232455.4054810-1-tkjos@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,83 +58,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi <linux-efi@vger.kernel.org>,
- KVM list <kvm@vger.kernel.org>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Peter Zijlstra <peterz@infradead.org>, linux-mmc@vger.kernel.org,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
- Linux MM <linux-mm@kvack.org>, target-devel@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
- samba-technical@lists.samba.org, Dan Williams <dan.j.williams@intel.com>,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, linux-nilfs@vger.kernel.org,
- linux-scsi <linux-scsi@vger.kernel.org>,
- linux-nvdimm <linux-nvdimm@lists.01.org>,
- linux-rdma <linux-rdma@vger.kernel.org>, X86 ML <x86@kernel.org>,
- ceph-devel@vger.kernel.org, amd-gfx list <amd-gfx@lists.freedesktop.org>,
- io-uring@vger.kernel.org, cluster-devel@redhat.com,
- Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
- xen-devel <xen-devel@lists.xenproject.org>,
- linux-ext4 <linux-ext4@vger.kernel.org>, Fenghua Yu <fenghua.yu@intel.com>,
- linux-afs@lists.infradead.org, linux-um@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, reiserfs-devel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andrew Morton <akpm@linux-foundation.org>, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, Nicolas Pitre <nico@fluxnic.net>,
- linux-ntfs-dev@lists.sourceforge.net, Netdev <netdev@vger.kernel.org>,
- Kexec Mailing List <kexec@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>, bpf@vger.kernel.org,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- linux-btrfs <linux-btrfs@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, arve@android.com, maco@google.com,
+ joel@joelfernandes.org, kernel-team@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 13, 2020 at 08:36:43PM +0100, Matthew Wilcox wrote:
-
-> static inline void copy_to_highpage(struct page *to, void *vfrom, unsigned int size)
-> {
-> 	char *vto = kmap_atomic(to);
+On Fri, Oct 09, 2020 at 04:24:55PM -0700, Todd Kjos wrote:
+> When releasing a thread todo list when tearing down
+> a binder_proc, the following race was possible which
+> could result in a use-after-free:
 > 
-> 	memcpy(vto, vfrom, size);
-> 	kunmap_atomic(vto);
-> }
+> 1.  Thread 1: enter binder_release_work from binder_thread_release
+> 2.  Thread 2: binder_update_ref_for_handle() -> binder_dec_node_ilocked()
+> 3.  Thread 2: dec nodeA --> 0 (will free node)
+> 4.  Thread 1: ACQ inner_proc_lock
+> 5.  Thread 2: block on inner_proc_lock
+> 6.  Thread 1: dequeue work (BINDER_WORK_NODE, part of nodeA)
+> 7.  Thread 1: REL inner_proc_lock
+> 8.  Thread 2: ACQ inner_proc_lock
+> 9.  Thread 2: todo list cleanup, but work was already dequeued
+> 10. Thread 2: free node
+> 11. Thread 2: REL inner_proc_lock
+> 12. Thread 1: deref w->type (UAF)
 > 
-> in linux/highmem.h ?
+> The problem was that for a BINDER_WORK_NODE, the binder_work element
+> must not be accessed after releasing the inner_proc_lock while
+> processing the todo list elements since another thread might be
+> handling a deref on the node containing the binder_work element
+> leading to the node being freed.
+> 
+> Signed-off-by: Todd Kjos <tkjos@google.com>
+> ---
 
-You mean, like
-static void memcpy_from_page(char *to, struct page *page, size_t offset, size_t len)
-{
-        char *from = kmap_atomic(page);
-        memcpy(to, from + offset, len);
-        kunmap_atomic(from);
-}
-
-static void memcpy_to_page(struct page *page, size_t offset, const char *from, size_t len)
-{
-        char *to = kmap_atomic(page);
-        memcpy(to + offset, from, len);
-        kunmap_atomic(to);
-}
-
-static void memzero_page(struct page *page, size_t offset, size_t len)
-{
-        char *addr = kmap_atomic(page);
-        memset(addr + offset, 0, len);
-        kunmap_atomic(addr);
-}
-
-in lib/iov_iter.c?  FWIW, I don't like that "highpage" in the name and
-highmem.h as location - these make perfect sense regardless of highmem;
-they are normal memory operations with page + offset used instead of
-a pointer...
+Thanks!
+Acked-by: Christian Brauner <christian.brauner@ubuntu.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
