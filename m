@@ -1,112 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83BCD28C74C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 04:51:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A8F428CA89
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 10:53:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EADF8873A7;
-	Tue, 13 Oct 2020 02:51:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F155B2E0FF;
+	Tue, 13 Oct 2020 08:52:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tmLfOOnn0Nqf; Tue, 13 Oct 2020 02:51:56 +0000 (UTC)
+	with ESMTP id v63zj+bnyT2V; Tue, 13 Oct 2020 08:52:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6AA3286597;
-	Tue, 13 Oct 2020 02:51:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 656352E102;
+	Tue, 13 Oct 2020 08:52:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 70F021BF97F
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 02:51:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 22BE21BF33E
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 08:52:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6C8FE86B77
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 02:51:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1E01187ABF
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 08:52:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ouutgv44vU-b for <devel@linuxdriverproject.org>;
- Tue, 13 Oct 2020 02:51:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2090.outbound.protection.outlook.com [40.107.93.90])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 60F1186B57
- for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 02:51:51 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=daeeRnwDjLAmu0pcOMP9GlwbT2f+XtLpP8GzpHr9LoTHtuPIYEGbD7eXqXvs8p6duB25PFkhVZi8AzT706LCdcWg+LRnBbcrupPqjKNJS35uNUkmUXacz7z3GMAAOQzOQdTQ6RH/ofADiz35M2lBMapEinPVXJIZ92Fz8wg2ZarqXsjYXzHimeaM2zo9UcgUwDEoUw0EyAWhcXZhNBR3CJhCjqTakrFSkNA6igmpMpVTVUwigZC56GwpQ8U3iAOdV0loTGGBOvgn1IBJQldN8+t87vuiZjb/tIP0UADzGsfa3zRN43i0/+7pt/AzziAPjLGWK3F4fyMGTzO/erCyhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gnyUw0+kZp2F5/rBvE1awpW0hcBGcQqpycFu5IfY48Q=;
- b=Xz7cs6unRQNLPO3rPv4OuFmsSE43UkgJbamAV2MltGIcYbBe5dZvfNwe8ap+4LVLUjjpj1qyvwhogl5Y6FU6kzARn7lhRqySHMRz1/OsMLV89WcpPo+3CX37Bs9uMj35KiTeSKAHtC5b7/tt7fl2sAsis1MW6Qt32wqgCIgnjSaawFaFHjp0k/1+swEtrRxBJv/TwWTOfRzWzOjJu65pH/7wmJGLKhkPbe9Z911EQQXYS9i4HhPfr6gZw7W6+p7PwibRh5UG3zzgucgo1Ux2Tqhw+i5fdLexaYV9jQPwK8UDWwrb5sUZy+LBpCMqRo+TYiUe8powU8U0CopPjuK1Kg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gnyUw0+kZp2F5/rBvE1awpW0hcBGcQqpycFu5IfY48Q=;
- b=jxgr+1hyaEx2Qk9+IO0nRZOTM6oW8/JEW9fhaU3fC14oay+5efR9O/kld73cvVLaerClVDdr2pRz3wY5zmZPROEy4QqvU4nP3QLQm34iM1rZ4ZPqUAZBQngOwnQNl9k+ajyzvNQfP3rxUzNaffHJ5mcoZ4QDgDKzBEvbtgqlSBk=
-Authentication-Results: analogixsemi.com; dkim=none (message not signed)
- header.d=none;analogixsemi.com; dmarc=none action=none
- header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BY5PR04MB6802.namprd04.prod.outlook.com (2603:10b6:a03:22d::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3455.25; Tue, 13 Oct
- 2020 02:51:48 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::5585:3adc:f199:7d5a]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::5585:3adc:f199:7d5a%8]) with mapi id 15.20.3455.030; Tue, 13 Oct 2020
- 02:51:48 +0000
-Date: Tue, 13 Oct 2020 10:49:31 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: devel@driverdev.osuosl.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Andrzej Hajda <a.hajda@samsung.com>, Nicolas Boichat <drinkcat@google.com>,
- Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v17 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
- DP
-Message-ID: <20201013024931.GA2299@pc-user>
-References: <cover.1600423931.git.xji@analogixsemi.com>
- <528b76c1a4f7b6ea85371bfae4bde389aec4bb24.1600423932.git.xji@analogixsemi.com>
-Content-Disposition: inline
-In-Reply-To: <528b76c1a4f7b6ea85371bfae4bde389aec4bb24.1600423932.git.xji@analogixsemi.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Originating-IP: [114.247.245.146]
-X-ClientProxiedBy: HKAPR03CA0016.apcprd03.prod.outlook.com
- (2603:1096:203:c8::21) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+ with ESMTP id 4CIcnNJI8Vjl for <devel@linuxdriverproject.org>;
+ Tue, 13 Oct 2020 08:52:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9DCF587A65
+ for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 08:52:45 +0000 (UTC)
+Received: from coco.lan (ip5f5ad5b2.dynamic.kabel-deutschland.de
+ [95.90.213.178])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8B202208D5;
+ Tue, 13 Oct 2020 08:52:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602579165;
+ bh=aJgA6ExP0DSm6nBNCKO0momyiW8rATBh/N/tjVwFoX4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=ZywSp6g3fnrc+dDQMTMevQ8bcDbXccGRW63CJVA2KMFyTFl0jxAgzSVH8Aw8PNDz+
+ j3v4uCB0LjBf6Jn4L/HdYC8dTD5oBNRwMhesK4lvxwmxta4Z03kHimqRZ47PVUBLjb
+ Bthn3zxlJZejgxmGxKBjUTeAZMI9LPBgnxdP+pGQ=
+Date: Tue, 13 Oct 2020 10:52:39 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] MAINTAINERS: fix broken doc refs due to yaml
+ conversion
+Message-ID: <20201013105239.348efc0c@coco.lan>
+In-Reply-To: <20201012192114.GA1938842@bogus>
+References: <cover.1602245659.git.mchehab+huawei@kernel.org>
+ <ba7319ab47bc7e80a57667f700ab677ceaa3ca8c.1602245659.git.mchehab+huawei@kernel.org>
+ <20201012192114.GA1938842@bogus>
+X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-user (114.247.245.146) by
- HKAPR03CA0016.apcprd03.prod.outlook.com (2603:1096:203:c8::21) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.3477.11 via Frontend Transport; Tue, 13 Oct 2020 02:51:47 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: cd72c370-1034-4695-49cc-08d86f22edae
-X-MS-TrafficTypeDiagnostic: BY5PR04MB6802:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BY5PR04MB680280A6E00506FC9EFCB749C7040@BY5PR04MB6802.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3383;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: EqfH3hc77wLoBOGWyy1VQUzVY1TOdmxzMltY/MKPLh5dd+XJ9kp4KkhlyjFdMGCZ/Ls+ibDFQ3UcrqVLfwvYGzhLlK2MMcOIu/sqivEoMZZKu8pTSqJoPDCYnpuJX2+OvGtoUPIwLdDX7UU3uM+EnhhrE3/1QxuEGNvKEgpb2wkCHgkpbcy0L4ueYem9YRo4QuIpQiW20wty/P4OHmJjlzrpbmb3c+zw6LLCRH2f477tPRZcW4MzDPnwbKriWgXmw3LS82UeVc2orZdsvmHMNwRVaJE0KIVXGtsgrjWhyN+eaUEV1y9uKgZbzj/c7BXFsKIks29oBfBF4ZnV55PF+A==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(376002)(366004)(39840400004)(346002)(136003)(5660300002)(110136005)(6666004)(8936002)(956004)(16526019)(54906003)(7416002)(9686003)(52116002)(316002)(33716001)(55016002)(6496006)(186003)(33656002)(558084003)(26005)(86362001)(4326008)(8676002)(1076003)(66476007)(66946007)(107886003)(66556008)(2906002)(478600001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: xhXLLDpZE/XYYt2CJnDxLtOPAI1+4rk7VnJmvyOVY7e1mBu1bWl1uE6xFFN4vjksDIIu5nZ7A6JZJAQta+Z0L7443RZEcLmp4QW2x1ZvmVWgdrRUUQR+Q3VXyFFhPte3HhBp9xF0647YNZ0qRfwWOtWkaVGZdpWuRJ5l6EVplxqRZ6udJ2MfeEvaxpXwjaExb9rbP8fysuxo+JgoJ+0ZhWi7qi7prsSXi6DbdTGJHNHbhZKfbkiip2/JIxNYpnR/528xchFaB0SFGITHV/MIX16QJVXbiLbvI+viVXdW3UH4qXH1UOga5m9p4Vxr3IPeeBw/mM0fIcADKrYQ4+aiMQv3AbEbJBDyEwTXtytDqDhlgDoSm4HEDsLLIfc8oC547iNBrd0CvV+qQmR59IbkKnVaq4bOs/z+xRnbFPDhmls9rJ0RkaahGS7yiclNLdyvebCa6QbyQLhtlKjpn9YClQqxWAXTAgtTVZPsODQe/f87Z33btgz/rAdb9gg1qsIKMfM+DQyLIY4Xp79Kepm3rH6dEXf0TFwZQ2QYa3mxGYsP4O6FfK6Ncfc9psuVB+8zHS3iEV6Fj9z996gtmD9qY4pBNkLAAmddrlLOCxcF/feOPvHZGz2uINVRNwJ/eUOdFXluH+RhWTEcPxveknaXRQ==
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cd72c370-1034-4695-49cc-08d86f22edae
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2020 02:51:48.5116 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: g8ovZVo8cscZHzIncuMruPYbYp4IAk82bPnjbX2gHMONunkEdjkLvKO337nl0hSzs5naVENpnxdMM+tZJOgb2A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6802
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,22 +68,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
- Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
- Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>, Stephen Boyd <sboyd@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all, would you please help to review my latest patch v17, thanks very much!
+Em Mon, 12 Oct 2020 14:21:14 -0500
+Rob Herring <robh@kernel.org> escreveu:
 
-Best Regards,
-Xin
+> On Fri, Oct 09, 2020 at 02:15:30PM +0200, Mauro Carvalho Chehab wrote:
+> > Several *.txt files got converted to yaml. Update their
+> > references at MAINTAINERS file accordingly.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > ---
+> >  Documentation/devicetree/bindings/clock/hi6220-clock.txt | 2 +-
+> >  MAINTAINERS                                              | 9 ++++-----
+> >  .../devicetree/bindings/net/wireless/silabs,wfx.yaml     | 2 +-
+> >  3 files changed, 6 insertions(+), 7 deletions(-)  
+> 
+> Doesn't apply for me.
+
+It is based on the top of -next, so perhaps it depends on some other
+changes that aren't upstream yet and comes from other trees. 
+
+I could try to split it, but I guess the easiest way is
+to just push this one by the end of the merge window, together
+with the remaining patches I have left, fixing the other doc
+build issues.
+
+Would that work for you?
+
+Thanks,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
