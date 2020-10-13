@@ -1,82 +1,112 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 704F928C6B4
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 03:18:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EAB39873DE;
-	Tue, 13 Oct 2020 01:18:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UUoIgypGN4mZ; Tue, 13 Oct 2020 01:18:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E2C0286B7B;
-	Tue, 13 Oct 2020 01:18:18 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EF5BA1BF38D
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 83BCD28C74C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 04:51:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E87408796C
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EADF8873A7;
+	Tue, 13 Oct 2020 02:51:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tmLfOOnn0Nqf; Tue, 13 Oct 2020 02:51:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6AA3286597;
+	Tue, 13 Oct 2020 02:51:56 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 70F021BF97F
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 02:51:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6C8FE86B77
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 02:51:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5DVZ8ndeA+cZ for <devel@linuxdriverproject.org>;
- Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 404818795C
- for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id a200so15479034pfa.10
- for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 18:18:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=/9A0K1IzOHna1C0DxmV3XpbQqnDKqQQDF6op5A/lIOE=;
- b=Yo4t8KHitl7IijBwyBzbt+gmWaEcnfLB3k5bFe3RMkLOZGpv7uckNpQTdsfI1voSeo
- j/+15lQPSXGjI3uFic49xOYnjSCdFWRGO/fT1AtPB0eI6zk92pqx5ehhY4xJnk3rVALk
- ddkysd6k7Q3qCTPL299gXm2zoy8Kak3S5Qo60VN7TKbhWfirdSGdLmOYgPgv4y+qkCvd
- 50S6QKUxR8Ey/wFnaMDDtatK4M6BZ24Yq9Xg1iPO5LbguUw3ygoT9MF454psQy7MW2gC
- urQ1gJaKpQ8XbW/mk+PZh0gmOZTST/vFP1P7F3zPSmNF1ceNYj1OHrCi+hoMbfMfWtC9
- GRzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=/9A0K1IzOHna1C0DxmV3XpbQqnDKqQQDF6op5A/lIOE=;
- b=ScLdxJWOvTkBbB+2bsjmOxCu2Mf/qwnsgQ2M5jioT/z5Jms7z9X6ERy0AIQZSA40Fj
- 4B8oaEnOh2jyIrQKW9ca+82ipQzu/AvW16bWxXVoPg5eALmMSxqdIYANfrYum48YoAfe
- kW0cyG9yckRnXwsdVFoeZoLxFgKc8qaK7aYbGKW2HsqqyoqSNDqCBr3QVFuXXgQakEMd
- sfZCj2IHhopy5soTPpRBQelRmvebhb81MmnsBH7eywZLSmbVuYwyN138720ji/dqY6me
- Ddi5jZeiZjWk2DCnR1nNRc+xzceNiijf/m6uml4AJjFdHCg3YgsFRF1QIGnH1cgmncYr
- D0Rg==
-X-Gm-Message-State: AOAM533+viF8toK/09vuCM7MEJPULzJcoGFKfh+PBFIZXlXJQVNnyfei
- B8v/FX6yYDyktw/PAoSnE7c=
-X-Google-Smtp-Source: ABdhPJwm1/3VSrSwzuGk4/Zydbtvz11dFFE2Xj3zygfVfOXds4aeHb7HYdhqd+iRm1poALRR9DjznQ==
-X-Received: by 2002:a17:90b:17c4:: with SMTP id
- me4mr21967291pjb.91.1602551895798; 
- Mon, 12 Oct 2020 18:18:15 -0700 (PDT)
-Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
- by smtp.gmail.com with ESMTPSA id b6sm24476508pjq.42.2020.10.12.18.18.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 18:18:14 -0700 (PDT)
-Date: Tue, 13 Oct 2020 10:18:10 +0900
-From: Benjamin Poirier <benjamin.poirier@gmail.com>
-To: Coiby Xu <coiby.xu@gmail.com>
-Subject: Re: [PATCH v1 2/6] staging: qlge: coredump via devlink health reporter
-Message-ID: <20201013011810.GB41031@f3>
-References: <20201008115808.91850-1-coiby.xu@gmail.com>
- <20201008115808.91850-3-coiby.xu@gmail.com>
- <20201010074809.GB14495@f3> <20201010100258.px2go6nugsfbwoq7@Rk>
- <20201010132230.GA17351@f3> <20201012115114.lyh33rvmm4rt7mej@Rk>
-MIME-Version: 1.0
+ with ESMTP id ouutgv44vU-b for <devel@linuxdriverproject.org>;
+ Tue, 13 Oct 2020 02:51:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2090.outbound.protection.outlook.com [40.107.93.90])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 60F1186B57
+ for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 02:51:51 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=daeeRnwDjLAmu0pcOMP9GlwbT2f+XtLpP8GzpHr9LoTHtuPIYEGbD7eXqXvs8p6duB25PFkhVZi8AzT706LCdcWg+LRnBbcrupPqjKNJS35uNUkmUXacz7z3GMAAOQzOQdTQ6RH/ofADiz35M2lBMapEinPVXJIZ92Fz8wg2ZarqXsjYXzHimeaM2zo9UcgUwDEoUw0EyAWhcXZhNBR3CJhCjqTakrFSkNA6igmpMpVTVUwigZC56GwpQ8U3iAOdV0loTGGBOvgn1IBJQldN8+t87vuiZjb/tIP0UADzGsfa3zRN43i0/+7pt/AzziAPjLGWK3F4fyMGTzO/erCyhw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gnyUw0+kZp2F5/rBvE1awpW0hcBGcQqpycFu5IfY48Q=;
+ b=Xz7cs6unRQNLPO3rPv4OuFmsSE43UkgJbamAV2MltGIcYbBe5dZvfNwe8ap+4LVLUjjpj1qyvwhogl5Y6FU6kzARn7lhRqySHMRz1/OsMLV89WcpPo+3CX37Bs9uMj35KiTeSKAHtC5b7/tt7fl2sAsis1MW6Qt32wqgCIgnjSaawFaFHjp0k/1+swEtrRxBJv/TwWTOfRzWzOjJu65pH/7wmJGLKhkPbe9Z911EQQXYS9i4HhPfr6gZw7W6+p7PwibRh5UG3zzgucgo1Ux2Tqhw+i5fdLexaYV9jQPwK8UDWwrb5sUZy+LBpCMqRo+TYiUe8powU8U0CopPjuK1Kg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gnyUw0+kZp2F5/rBvE1awpW0hcBGcQqpycFu5IfY48Q=;
+ b=jxgr+1hyaEx2Qk9+IO0nRZOTM6oW8/JEW9fhaU3fC14oay+5efR9O/kld73cvVLaerClVDdr2pRz3wY5zmZPROEy4QqvU4nP3QLQm34iM1rZ4ZPqUAZBQngOwnQNl9k+ajyzvNQfP3rxUzNaffHJ5mcoZ4QDgDKzBEvbtgqlSBk=
+Authentication-Results: analogixsemi.com; dkim=none (message not signed)
+ header.d=none;analogixsemi.com; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BY5PR04MB6802.namprd04.prod.outlook.com (2603:10b6:a03:22d::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3455.25; Tue, 13 Oct
+ 2020 02:51:48 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5585:3adc:f199:7d5a]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5585:3adc:f199:7d5a%8]) with mapi id 15.20.3455.030; Tue, 13 Oct 2020
+ 02:51:48 +0000
+Date: Tue, 13 Oct 2020 10:49:31 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>, Nicolas Boichat <drinkcat@google.com>,
+ Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v17 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
+ DP
+Message-ID: <20201013024931.GA2299@pc-user>
+References: <cover.1600423931.git.xji@analogixsemi.com>
+ <528b76c1a4f7b6ea85371bfae4bde389aec4bb24.1600423932.git.xji@analogixsemi.com>
 Content-Disposition: inline
-In-Reply-To: <20201012115114.lyh33rvmm4rt7mej@Rk>
+In-Reply-To: <528b76c1a4f7b6ea85371bfae4bde389aec4bb24.1600423932.git.xji@analogixsemi.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [114.247.245.146]
+X-ClientProxiedBy: HKAPR03CA0016.apcprd03.prod.outlook.com
+ (2603:1096:203:c8::21) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-user (114.247.245.146) by
+ HKAPR03CA0016.apcprd03.prod.outlook.com (2603:1096:203:c8::21) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3477.11 via Frontend Transport; Tue, 13 Oct 2020 02:51:47 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: cd72c370-1034-4695-49cc-08d86f22edae
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6802:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BY5PR04MB680280A6E00506FC9EFCB749C7040@BY5PR04MB6802.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3383;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: EqfH3hc77wLoBOGWyy1VQUzVY1TOdmxzMltY/MKPLh5dd+XJ9kp4KkhlyjFdMGCZ/Ls+ibDFQ3UcrqVLfwvYGzhLlK2MMcOIu/sqivEoMZZKu8pTSqJoPDCYnpuJX2+OvGtoUPIwLdDX7UU3uM+EnhhrE3/1QxuEGNvKEgpb2wkCHgkpbcy0L4ueYem9YRo4QuIpQiW20wty/P4OHmJjlzrpbmb3c+zw6LLCRH2f477tPRZcW4MzDPnwbKriWgXmw3LS82UeVc2orZdsvmHMNwRVaJE0KIVXGtsgrjWhyN+eaUEV1y9uKgZbzj/c7BXFsKIks29oBfBF4ZnV55PF+A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(376002)(366004)(39840400004)(346002)(136003)(5660300002)(110136005)(6666004)(8936002)(956004)(16526019)(54906003)(7416002)(9686003)(52116002)(316002)(33716001)(55016002)(6496006)(186003)(33656002)(558084003)(26005)(86362001)(4326008)(8676002)(1076003)(66476007)(66946007)(107886003)(66556008)(2906002)(478600001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: xhXLLDpZE/XYYt2CJnDxLtOPAI1+4rk7VnJmvyOVY7e1mBu1bWl1uE6xFFN4vjksDIIu5nZ7A6JZJAQta+Z0L7443RZEcLmp4QW2x1ZvmVWgdrRUUQR+Q3VXyFFhPte3HhBp9xF0647YNZ0qRfwWOtWkaVGZdpWuRJ5l6EVplxqRZ6udJ2MfeEvaxpXwjaExb9rbP8fysuxo+JgoJ+0ZhWi7qi7prsSXi6DbdTGJHNHbhZKfbkiip2/JIxNYpnR/528xchFaB0SFGITHV/MIX16QJVXbiLbvI+viVXdW3UH4qXH1UOga5m9p4Vxr3IPeeBw/mM0fIcADKrYQ4+aiMQv3AbEbJBDyEwTXtytDqDhlgDoSm4HEDsLLIfc8oC547iNBrd0CvV+qQmR59IbkKnVaq4bOs/z+xRnbFPDhmls9rJ0RkaahGS7yiclNLdyvebCa6QbyQLhtlKjpn9YClQqxWAXTAgtTVZPsODQe/f87Z33btgz/rAdb9gg1qsIKMfM+DQyLIY4Xp79Kepm3rH6dEXf0TFwZQ2QYa3mxGYsP4O6FfK6Ncfc9psuVB+8zHS3iEV6Fj9z996gtmD9qY4pBNkLAAmddrlLOCxcF/feOPvHZGz2uINVRNwJ/eUOdFXluH+RhWTEcPxveknaXRQ==
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cd72c370-1034-4695-49cc-08d86f22edae
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2020 02:51:48.5116 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: g8ovZVo8cscZHzIncuMruPYbYp4IAk82bPnjbX2gHMONunkEdjkLvKO337nl0hSzs5naVENpnxdMM+tZJOgb2A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6802
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,75 +119,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
- <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
- "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020-10-12 19:51 +0800, Coiby Xu wrote:
-> On Sat, Oct 10, 2020 at 10:22:30PM +0900, Benjamin Poirier wrote:
-> > On 2020-10-10 18:02 +0800, Coiby Xu wrote:
-> > [...]
-> > > > > +	do {                                                           \
-> > > > > +		err = fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
-> > > > > +		if (err) {					       \
-> > > > > +			kvfree(dump);                                  \
-> > > > > +			return err;				       \
-> > > > > +		}                                                      \
-> > > > > +	} while (0)
-> > > > > +
-> > > > > +static int qlge_reporter_coredump(struct devlink_health_reporter *reporter,
-> > > > > +				  struct devlink_fmsg *fmsg, void *priv_ctx,
-> > > > > +				  struct netlink_ext_ack *extack)
-> > > > > +{
-> > > > > +	int err = 0;
-> > > > > +
-> > > > > +	struct qlge_devlink *dev = devlink_health_reporter_priv(reporter);
-> > > >
-> > > > Please name this variable ql_devlink, like in qlge_probe().
-> > > 
-> > > I happened to find the following text in drivers/staging/qlge/TODO
-> > > > * in terms of namespace, the driver uses either qlge_, ql_ (used by
-> > > >  other qlogic drivers, with clashes, ex: ql_sem_spinlock) or nothing (with
-> > > >  clashes, ex: struct ob_mac_iocb_req). Rename everything to use the "qlge_"
-> > > >  prefix.
-> > 
-> > This comment applies to global identifiers, not local variables.
-> 
-> Thank you for the explanation! Are you suggesting we should choose
-> different naming styles so we better tell global identifiers from local
-> variables?
+Hi all, would you please help to review my latest patch v17, thanks very much!
 
-That's not the main purpose IMO. Using a consistent prefix for global
-identifiers (ex. "qlge_") is to avoid clashes (two drivers using the
-same name, as in the examples above). Strictly speaking, it is not a
-problem for symbols with internal linkage (ex. static functions) or type
-definitions in local header files but it makes the code clearer because
-it shows immediately that this identifier was defined in the driver.
-
-For local variables, the name is more a matter of personal taste I think
-but it should be consistent within the driver and with other users of
-the same api, where applicable. A prefix is not needed but the name is
-sometimes a simpler version of a type name which includes a prefix.
-
-> > > So I will adopt qlge_ instead. Besides I prefer qlge_dl to ql_devlink.
-> > 
-> > Up to you but personally, I think ql_devlink is better. In any case,
-> > "dev" is too general and often used for struct net_device pointers
-> > instead.
-> 
-> Thank you for the suggestion. Another reason to use qlge_dl is many
-> other network drivers supporting devlink interface also adopt this kind
-> of style.
-
-Sounds good. On second thought I regretted suggesting ql_devlink. While
-local variable don't need any prefix; if they do have one, better not
-mix qlge_ and ql_.
+Best Regards,
+Xin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
