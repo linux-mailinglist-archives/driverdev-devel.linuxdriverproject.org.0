@@ -1,83 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A2AF28C667
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 02:37:16 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 704F928C6B4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 03:18:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 190E587A5C;
-	Tue, 13 Oct 2020 00:37:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EAB39873DE;
+	Tue, 13 Oct 2020 01:18:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C427teCwXsnK; Tue, 13 Oct 2020 00:37:13 +0000 (UTC)
+	with ESMTP id UUoIgypGN4mZ; Tue, 13 Oct 2020 01:18:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 93BE2879ED;
-	Tue, 13 Oct 2020 00:37:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E2C0286B7B;
+	Tue, 13 Oct 2020 01:18:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 35C961BF966
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 00:37:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EF5BA1BF38D
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3213E86D82
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 00:37:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E87408796C
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W6N7COiCpI7v for <devel@linuxdriverproject.org>;
- Tue, 13 Oct 2020 00:37:11 +0000 (UTC)
+ with ESMTP id 5DVZ8ndeA+cZ for <devel@linuxdriverproject.org>;
+ Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8E09B86D76
- for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 00:37:11 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id r10so16138782pgb.10
- for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 17:37:11 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 404818795C
+ for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 01:18:16 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id a200so15479034pfa.10
+ for <devel@driverdev.osuosl.org>; Mon, 12 Oct 2020 18:18:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=QguIN+MWkuVrUIVhlT/GAiMKd61MVStubKHegyevkY4=;
- b=D0WspYkOVRlf/Hh2i8c2GZGvwcGuLEh8tWt7/sei3VfZf1AYgafNswQFM17SofrqLn
- ssYcgESBEuHv6PEZY35YQnZoEWP87xauG7Jb7Rlo38BF3Gu9bJIoCCvyukfl8tqWvA7A
- UgnsYzdkIKn1aQbwuzroXgbd0BDwYHpgQMJYYnzAwtf2Al3zzoJ+VHh7ieZ8sjhwv1Nq
- bvLOWAWdECEm686SAqakuxQk2Pnd7E3mrVZXFidZ9k1jq/eOjIkuDGUXySuE7oX8Yl/X
- yPKGmR6n9tyD8wcFb+FbnTjJW+MhMcuRp720uJ/c0WDlWkHaa02doXiRR0E//F7f8djV
- CGmg==
+ bh=/9A0K1IzOHna1C0DxmV3XpbQqnDKqQQDF6op5A/lIOE=;
+ b=Yo4t8KHitl7IijBwyBzbt+gmWaEcnfLB3k5bFe3RMkLOZGpv7uckNpQTdsfI1voSeo
+ j/+15lQPSXGjI3uFic49xOYnjSCdFWRGO/fT1AtPB0eI6zk92pqx5ehhY4xJnk3rVALk
+ ddkysd6k7Q3qCTPL299gXm2zoy8Kak3S5Qo60VN7TKbhWfirdSGdLmOYgPgv4y+qkCvd
+ 50S6QKUxR8Ey/wFnaMDDtatK4M6BZ24Yq9Xg1iPO5LbguUw3ygoT9MF454psQy7MW2gC
+ urQ1gJaKpQ8XbW/mk+PZh0gmOZTST/vFP1P7F3zPSmNF1ceNYj1OHrCi+hoMbfMfWtC9
+ GRzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=QguIN+MWkuVrUIVhlT/GAiMKd61MVStubKHegyevkY4=;
- b=BdiMUnIuO1LEsG4spkG/rdiDq3XjB6jxLrkQG/UmuSaP240brXJI/0SxjcGq7OSnr7
- kGHCqsu/jvNLfDKJJi395fpOxd2CNxYlkr+ybWJl57Y3rsvRNfW69At1c7m/Y7181CKO
- svPrvvkUwAfMVQEMQIB/1wHaYuL6A8n/QIU4a+UWlB6wDSrp48RcyeKH+a1AtoU7DlHY
- SX1X4Q2+ZR5+875SPb8MSabkhCdc8AoYKoj0AYjQ5tki685MatJnoETGvFjd2+gRalON
- 9nRvsG6b8hg0stctD97BSAalJJcgtFw5vCUqFKZEO0+UJ+fYRXZA1v2P/WUfx2pXrGnG
- ZjiA==
-X-Gm-Message-State: AOAM533BI5TNejCn715jTKqH4r/mxUOjK0Crj9QZZ1iHpUZ3UoMDSQ/7
- GTsYTHigByhb97C2vUOK/fw=
-X-Google-Smtp-Source: ABdhPJzO6K9MfpinQIt3Psy5lJo6ln90V8vgi1VhpKO7OswUKj8pPFqLpr+v0wP3nkPo2aN4UVpvkQ==
-X-Received: by 2002:aa7:9358:0:b029:152:b349:8af8 with SMTP id
- 24-20020aa793580000b0290152b3498af8mr26858626pfn.9.1602549431129; 
- Mon, 12 Oct 2020 17:37:11 -0700 (PDT)
+ bh=/9A0K1IzOHna1C0DxmV3XpbQqnDKqQQDF6op5A/lIOE=;
+ b=ScLdxJWOvTkBbB+2bsjmOxCu2Mf/qwnsgQ2M5jioT/z5Jms7z9X6ERy0AIQZSA40Fj
+ 4B8oaEnOh2jyIrQKW9ca+82ipQzu/AvW16bWxXVoPg5eALmMSxqdIYANfrYum48YoAfe
+ kW0cyG9yckRnXwsdVFoeZoLxFgKc8qaK7aYbGKW2HsqqyoqSNDqCBr3QVFuXXgQakEMd
+ sfZCj2IHhopy5soTPpRBQelRmvebhb81MmnsBH7eywZLSmbVuYwyN138720ji/dqY6me
+ Ddi5jZeiZjWk2DCnR1nNRc+xzceNiijf/m6uml4AJjFdHCg3YgsFRF1QIGnH1cgmncYr
+ D0Rg==
+X-Gm-Message-State: AOAM533+viF8toK/09vuCM7MEJPULzJcoGFKfh+PBFIZXlXJQVNnyfei
+ B8v/FX6yYDyktw/PAoSnE7c=
+X-Google-Smtp-Source: ABdhPJwm1/3VSrSwzuGk4/Zydbtvz11dFFE2Xj3zygfVfOXds4aeHb7HYdhqd+iRm1poALRR9DjznQ==
+X-Received: by 2002:a17:90b:17c4:: with SMTP id
+ me4mr21967291pjb.91.1602551895798; 
+ Mon, 12 Oct 2020 18:18:15 -0700 (PDT)
 Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
- by smtp.gmail.com with ESMTPSA id b185sm20580852pgc.68.2020.10.12.17.37.08
+ by smtp.gmail.com with ESMTPSA id b6sm24476508pjq.42.2020.10.12.18.18.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 17:37:09 -0700 (PDT)
-Date: Tue, 13 Oct 2020 09:37:04 +0900
+ Mon, 12 Oct 2020 18:18:14 -0700 (PDT)
+Date: Tue, 13 Oct 2020 10:18:10 +0900
 From: Benjamin Poirier <benjamin.poirier@gmail.com>
 To: Coiby Xu <coiby.xu@gmail.com>
-Subject: Re: [PATCH v1 1/6] staging: qlge: Initialize devlink health dump
- framework for the dlge driver
-Message-ID: <20201013003704.GA41031@f3>
+Subject: Re: [PATCH v1 2/6] staging: qlge: coredump via devlink health reporter
+Message-ID: <20201013011810.GB41031@f3>
 References: <20201008115808.91850-1-coiby.xu@gmail.com>
- <20201008115808.91850-2-coiby.xu@gmail.com>
- <20201010073514.GA14495@f3> <20201010102416.hvbgx3mgyadmu6ui@Rk>
- <20201010134855.GB17351@f3> <20201012112406.6mxta2mapifkbeyw@Rk>
+ <20201008115808.91850-3-coiby.xu@gmail.com>
+ <20201010074809.GB14495@f3> <20201010100258.px2go6nugsfbwoq7@Rk>
+ <20201010132230.GA17351@f3> <20201012115114.lyh33rvmm4rt7mej@Rk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201012112406.6mxta2mapifkbeyw@Rk>
+In-Reply-To: <20201012115114.lyh33rvmm4rt7mej@Rk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,25 +99,65 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020-10-12 19:24 +0800, Coiby Xu wrote:
-[...]
-> > I think, but didn't check in depth, that in those drivers, the devlink
-> > device is tied to the pci device and can exist independently of the
-> > netdev, at least in principle.
+On 2020-10-12 19:51 +0800, Coiby Xu wrote:
+> On Sat, Oct 10, 2020 at 10:22:30PM +0900, Benjamin Poirier wrote:
+> > On 2020-10-10 18:02 +0800, Coiby Xu wrote:
+> > [...]
+> > > > > +	do {                                                           \
+> > > > > +		err = fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
+> > > > > +		if (err) {					       \
+> > > > > +			kvfree(dump);                                  \
+> > > > > +			return err;				       \
+> > > > > +		}                                                      \
+> > > > > +	} while (0)
+> > > > > +
+> > > > > +static int qlge_reporter_coredump(struct devlink_health_reporter *reporter,
+> > > > > +				  struct devlink_fmsg *fmsg, void *priv_ctx,
+> > > > > +				  struct netlink_ext_ack *extack)
+> > > > > +{
+> > > > > +	int err = 0;
+> > > > > +
+> > > > > +	struct qlge_devlink *dev = devlink_health_reporter_priv(reporter);
+> > > >
+> > > > Please name this variable ql_devlink, like in qlge_probe().
+> > > 
+> > > I happened to find the following text in drivers/staging/qlge/TODO
+> > > > * in terms of namespace, the driver uses either qlge_, ql_ (used by
+> > > >  other qlogic drivers, with clashes, ex: ql_sem_spinlock) or nothing (with
+> > > >  clashes, ex: struct ob_mac_iocb_req). Rename everything to use the "qlge_"
+> > > >  prefix.
 > > 
-> You are right. Take drivers/net/ethernet/mellanox/mlxsw as an example,
-> devlink reload would first first unregister_netdev and then
-> register_netdev but struct devlink stays put. But I have yet to
-> understand when unregister/register_netdev is needed.
+> > This comment applies to global identifiers, not local variables.
+> 
+> Thank you for the explanation! Are you suggesting we should choose
+> different naming styles so we better tell global identifiers from local
+> variables?
 
-Maybe it can be useful to manually recover if the hardware or driver
-gets in an erroneous state. I've used `modprobe -r qlge && modprobe
-qlge` for the same in the past.
+That's not the main purpose IMO. Using a consistent prefix for global
+identifiers (ex. "qlge_") is to avoid clashes (two drivers using the
+same name, as in the examples above). Strictly speaking, it is not a
+problem for symbols with internal linkage (ex. static functions) or type
+definitions in local header files but it makes the code clearer because
+it shows immediately that this identifier was defined in the driver.
 
-> Do we need to
-> add "devlink reload" for qlge?
+For local variables, the name is more a matter of personal taste I think
+but it should be consistent within the driver and with other users of
+the same api, where applicable. A prefix is not needed but the name is
+sometimes a simpler version of a type name which includes a prefix.
 
-Not for this patchset. That would be a new feature.
+> > > So I will adopt qlge_ instead. Besides I prefer qlge_dl to ql_devlink.
+> > 
+> > Up to you but personally, I think ql_devlink is better. In any case,
+> > "dev" is too general and often used for struct net_device pointers
+> > instead.
+> 
+> Thank you for the suggestion. Another reason to use qlge_dl is many
+> other network drivers supporting devlink interface also adopt this kind
+> of style.
+
+Sounds good. On second thought I regretted suggesting ql_devlink. While
+local variable don't need any prefix; if they do have one, better not
+mix qlge_ and ql_.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
