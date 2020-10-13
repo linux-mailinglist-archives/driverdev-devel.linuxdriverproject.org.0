@@ -1,72 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0AE228D299
-	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 18:49:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD1BB28D3CF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Oct 2020 20:42:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 00BB287B3B;
-	Tue, 13 Oct 2020 16:49:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4E07C87CAB;
+	Tue, 13 Oct 2020 18:42:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ig6736ikoZwP; Tue, 13 Oct 2020 16:49:40 +0000 (UTC)
+	with ESMTP id Ibu6l58bKDyG; Tue, 13 Oct 2020 18:42:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 72DC387958;
-	Tue, 13 Oct 2020 16:49:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ABCB887C83;
+	Tue, 13 Oct 2020 18:42:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D5DCF1BF3F7
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 16:49:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B896F1BF388
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 18:42:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CF55487AC8
- for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 16:49:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AD432204A9
+ for <devel@linuxdriverproject.org>; Tue, 13 Oct 2020 18:42:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vm-ZtRQmzZFn for <devel@linuxdriverproject.org>;
- Tue, 13 Oct 2020 16:49:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id ADF3A87958
- for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 16:49:37 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id q21so631306ota.8
- for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 09:49:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=t3HNao7Z7e7NuJhBeYuaJzFgEjzmb6YkqhZHsBnqQYs=;
- b=WQTergU3Qu0H/+KJw+UOpde8R7FZ+UorV9rEZAXNy8uXa7RHSrGUoyvm2mSusRMrQ4
- 7/SSI0ZzkCJeyo1DweiZuo/mBysKCWo8HxBjczawjTp8mnfsjMOXvCFjhYdHkISeGWwN
- 9EqfBAj87d0sbjUrnbGDMXFKIiq6ZsnwY39v0CulMzfYyv8KuLyQIZxcrfatwvHjfh9H
- 9ep57T6uBktcpAKD5ozu1zK38gKkRRKmCwViiGlcAtWlNaylGi1cvjtpjnxsceHUPcl1
- Rp6VdBSrKd6+mE5dOdO+Y1ata2fSizWIam3DqoWMd9s1TNKc50pBTmw9nNITgZxXQ4hD
- 6dpA==
-X-Gm-Message-State: AOAM532OcRgfUEVVn+ExFTZLvlNPAoT+LrT6ZOouZu9Dh+IjzGohKH+T
- P5oPLlxXyt96vLOlCdGiNw==
-X-Google-Smtp-Source: ABdhPJyH/mGcnXgbLGg8F+zEGrAXfo+6YioxMnkhPYtvGQU8P7FvyNa+0b5j5ZW/MgdzWOgEDxx/dg==
-X-Received: by 2002:a9d:66a:: with SMTP id 97mr390825otn.233.1602607776861;
- Tue, 13 Oct 2020 09:49:36 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id a16sm98061otk.39.2020.10.13.09.49.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2020 09:49:36 -0700 (PDT)
-Received: (nullmailer pid 3675125 invoked by uid 1000);
- Tue, 13 Oct 2020 16:49:35 -0000
-Date: Tue, 13 Oct 2020 11:49:35 -0500
-From: Rob Herring <robh@kernel.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH 01/23] dt-bindings: introduce silabs,wfx.yaml
-Message-ID: <20201013164935.GA3646933@bogus>
-References: <20201012104648.985256-1-Jerome.Pouiller@silabs.com>
- <20201012104648.985256-2-Jerome.Pouiller@silabs.com>
+ with ESMTP id fY85VnSDvHJv for <devel@linuxdriverproject.org>;
+ Tue, 13 Oct 2020 18:42:45 +0000 (UTC)
+X-Greylist: delayed 00:05:45 by SQLgrey-1.7.6
+Received: from pb-sasl-trial2.pobox.com (pb-sasl-trial2.pobox.com
+ [64.147.108.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2B8812046F
+ for <devel@driverdev.osuosl.org>; Tue, 13 Oct 2020 18:42:45 +0000 (UTC)
+Received: from pb-sasl-trial2.pobox.com (localhost.local [127.0.0.1])
+ by pb-sasl-trial2.pobox.com (Postfix) with ESMTP id B35092F08C;
+ Tue, 13 Oct 2020 14:36:58 -0400 (EDT)
+ (envelope-from nico@fluxnic.net)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=pobox.com; h=date:from:to
+ :cc:subject:in-reply-to:message-id:references:mime-version
+ :content-type; s=sasl; bh=1qdRcPgrMg9PaaTRWeHMHkWBgn4=; b=Epy+q5
+ ans9ahJwXxlQvxdjICPrBYTo3ECIn9AzWxzmuo835zX7Go5RA+la+QVdJswbYHqY
+ OA9uOWP+RHqwo1f/1Hjwskkbh9itwsmr5IKrZUme2Q4YRp5bQABuumhmd/Yh0NKM
+ sMhZUgbkZQs79wJJn2wtIPZ7EN0v5uRSG8bTQ=
+Received: from pb-smtp1.nyi.icgroup.com (pb-smtp1.pobox.com [10.90.30.53])
+ by pb-sasl-trial2.pobox.com (Postfix) with ESMTP id 7910C2F08B;
+ Tue, 13 Oct 2020 14:36:58 -0400 (EDT)
+ (envelope-from nico@fluxnic.net)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=fluxnic.net;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references:mime-version:content-type;
+ s=2016-12.pbsmtp; bh=/xoWviDLFg5PKRQ9rObRWDXVC++pmZtYhfbDb0DFq7E=;
+ b=v5OoWtflZD131TYsBl2A9g0L/PCRe2nu6sy2IJY2ys8stI3sGPGydjk9hbVpZeTUKIjemrnRhLwKFlAM+dXEIGXz5t0LfwSiRA8m7hrB4WLH79+9F2ww8ICEhYu0fLjFgoDc1lKWqG4ZKNRDYjtbn/p6CJBipu1Te7ZvLuk/HMw=
+Received: from yoda.home (unknown [24.203.50.76])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by pb-smtp1.pobox.com (Postfix) with ESMTPSA id CD98F955F4;
+ Tue, 13 Oct 2020 14:36:57 -0400 (EDT)
+ (envelope-from nico@fluxnic.net)
+Received: from xanadu.home (xanadu.home [192.168.2.2])
+ by yoda.home (Postfix) with ESMTPSA id CF7492DA0BC7;
+ Tue, 13 Oct 2020 14:36:56 -0400 (EDT)
+Date: Tue, 13 Oct 2020 14:36:56 -0400 (EDT)
+From: Nicolas Pitre <nico@fluxnic.net>
+To: Ira Weiny <ira.weiny@intel.com>
+Subject: Re: [PATCH RFC PKS/PMEM 33/58] fs/cramfs: Utilize new
+ kmap_thread()
+In-Reply-To: <20201009195033.3208459-34-ira.weiny@intel.com>
+Message-ID: <nycvar.YSQ.7.78.906.2010131436200.2184@knanqh.ubzr>
+References: <20201009195033.3208459-1-ira.weiny@intel.com>
+ <20201009195033.3208459-34-ira.weiny@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201012104648.985256-2-Jerome.Pouiller@silabs.com>
+X-Pobox-Relay-ID: 13301A02-0D83-11EB-84D0-D152C8D8090B-78420484!pb-smtp1.pobox.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,170 +82,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
+ linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-kselftest@vger.kernel.org, samba-technical@lists.samba.org,
+ Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
+ ceph-devel@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ io-uring@vger.kernel.org, cluster-devel@redhat.com,
+ Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
+ Fenghua Yu <fenghua.yu@intel.com>, linux-afs@lists.infradead.org,
+ linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
+ reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-bcache@vger.kernel.org, Borislav Petkov <bp@alien8.de>,
+ Andy Lutomirski <luto@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linux-cachefs@redhat.com,
+ linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
+ netdev@vger.kernel.org, kexec@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 12, 2020 at 12:46:26PM +0200, Jerome Pouiller wrote:
-> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> =
+On Fri, 9 Oct 2020, ira.weiny@intel.com wrote:
 
-> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> ---
->  .../bindings/net/wireless/silabs,wfx.yaml     | 125 ++++++++++++++++++
->  1 file changed, 125 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/wireless/silabs=
-,wfx.yaml
-> =
+> From: Ira Weiny <ira.weiny@intel.com>
+> 
+> The kmap() calls in this FS are localized to a single thread.  To avoid
+> the over head of global PKRS updates use the new kmap_thread() call.
+> 
+> Cc: Nicolas Pitre <nico@fluxnic.net>
+> Signed-off-by: Ira Weiny <ira.weiny@intel.com>
 
-> diff --git a/Documentation/devicetree/bindings/net/wireless/silabs,wfx.ya=
-ml b/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
-> new file mode 100644
-> index 000000000000..43b5630c0407
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
-> @@ -0,0 +1,125 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2020, Silicon Laboratories, Inc.
-> +%YAML 1.2
-> +---
-> +
-> +$id: http://devicetree.org/schemas/net/wireless/silabs,wfx.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Silicon Labs WFxxx devicetree bindings
-> +
-> +maintainers:
-> +  - J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> +
-> +description:
-> +  The WFxxx chip series can be connected via SPI or via SDIO.
+Acked-by: Nicolas Pitre <nico@fluxnic.net>
 
-What does this chip do? WiFi or some other wireless?
-
-> +
-> +  For SDIO':'
-> +
-> +    The driver is able to detect a WFxxx chip on SDIO bus by matching it=
-s Vendor
-> +    ID and Product ID. However, driver will only provide limited feature=
-s in
-> +    this case. Thus declaring WFxxx chip in device tree is recommended (=
-and may
-> +    become mandatory in the future).
-> +
-> +    In addition, it is recommended to declare a mmc-pwrseq on SDIO host =
-above
-> +    WFx. Without it, you may encounter issues with warm boot. The mmc-pw=
-rseq
-> +    should be compatible with mmc-pwrseq-simple. Please consult
-> +    Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt for more
-> +    information.
-> +
-> +  For SPI':'
-> +
-> +    In add of the properties below, please consult
-> +    Documentation/devicetree/bindings/spi/spi-controller.yaml for option=
-al SPI
-> +    related properties.
-> +
-> +  Note that in add of the properties below, the WFx driver also supports
-> +  `mac-address` and `local-mac-address` as described in
-> +  Documentation/devicetree/bindings/net/ethernet.txt
-
-Note what ethernet.txt contains... This should have a $ref to =
-
-ethernet-controller.yaml to express the above.
-
-You can add 'mac-address: true' if you want to be explicit about what =
-
-properties are used.
-
-> +
-> +properties:
-> +  compatible:
-> +    const: silabs,wf200
-
-blank line between each DT property.
-
-> +  reg:
-> +    description:
-> +      When used on SDIO bus, <reg> must be set to 1. When used on SPI bu=
-s, it is
-> +      the chip select address of the device as defined in the SPI devices
-> +      bindings.
-> +    maxItems: 1
-> +  spi-max-frequency:
-> +    description: (SPI only) Maximum SPI clocking speed of device in Hz.
-
-No need to redefine a common property.
-
-> +    maxItems: 1
-
-Not an array. Just need:
-
-spi-max-frequency: true
-
-> +  interrupts:
-> +    description: The interrupt line. Triggers IRQ_TYPE_LEVEL_HIGH and
-> +      IRQ_TYPE_EDGE_RISING are both supported by the chip and the driver=
-. When
-> +      SPI is used, this property is required. When SDIO is used, the "in=
--band"
-> +      interrupt provided by the SDIO bus is used unless an interrupt is =
-defined
-> +      in the Device Tree.
-> +    maxItems: 1
-> +  reset-gpios:
-> +    description: (SPI only) Phandle of gpio that will be used to reset c=
-hip
-> +      during probe. Without this property, you may encounter issues with=
- warm
-> +      boot. (For legacy purpose, the gpio in inverted when compatible =
-=3D=3D
-> +      "silabs,wfx-spi")
-> +
-> +      For SDIO, the reset gpio should declared using a mmc-pwrseq.
-> +    maxItems: 1
-> +  wakeup-gpios:
-> +    description: Phandle of gpio that will be used to wake-up chip. With=
-out this
-> +      property, driver will disable most of power saving features.
-> +    maxItems: 1
-> +  config-file:
-> +    description: Use an alternative file as PDS. Default is `wf200.pds`.=
- Only
-> +      necessary for development/debug purpose.
-
-'firmware-name' is typically what we'd use here. Though if just for =
-
-debug/dev, perhaps do a debugfs interface for this instead. As DT should =
-
-come from the firmware/bootloader, requiring changing the DT for =
-
-dev/debug is not the easiest workflow compared to doing something from =
-
-userspace.
-
-> +    maxItems: 1
-
-Looks like a string, not an array.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-
-Will need additionalProperties or unevaluatedProperties depending on =
-
-whether you list out properties from ethernet-controller.yaml or not.
-
-Rob
+>  fs/cramfs/inode.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/fs/cramfs/inode.c b/fs/cramfs/inode.c
+> index 912308600d39..003c014a42ed 100644
+> --- a/fs/cramfs/inode.c
+> +++ b/fs/cramfs/inode.c
+> @@ -247,8 +247,8 @@ static void *cramfs_blkdev_read(struct super_block *sb, unsigned int offset,
+>  		struct page *page = pages[i];
+>  
+>  		if (page) {
+> -			memcpy(data, kmap(page), PAGE_SIZE);
+> -			kunmap(page);
+> +			memcpy(data, kmap_thread(page), PAGE_SIZE);
+> +			kunmap_thread(page);
+>  			put_page(page);
+>  		} else
+>  			memset(data, 0, PAGE_SIZE);
+> @@ -826,7 +826,7 @@ static int cramfs_readpage(struct file *file, struct page *page)
+>  
+>  	maxblock = (inode->i_size + PAGE_SIZE - 1) >> PAGE_SHIFT;
+>  	bytes_filled = 0;
+> -	pgdata = kmap(page);
+> +	pgdata = kmap_thread(page);
+>  
+>  	if (page->index < maxblock) {
+>  		struct super_block *sb = inode->i_sb;
+> @@ -914,13 +914,13 @@ static int cramfs_readpage(struct file *file, struct page *page)
+>  
+>  	memset(pgdata + bytes_filled, 0, PAGE_SIZE - bytes_filled);
+>  	flush_dcache_page(page);
+> -	kunmap(page);
+> +	kunmap_thread(page);
+>  	SetPageUptodate(page);
+>  	unlock_page(page);
+>  	return 0;
+>  
+>  err:
+> -	kunmap(page);
+> +	kunmap_thread(page);
+>  	ClearPageUptodate(page);
+>  	SetPageError(page);
+>  	unlock_page(page);
+> -- 
+> 2.28.0.rc0.12.gb6a658bd00c9
+> 
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
