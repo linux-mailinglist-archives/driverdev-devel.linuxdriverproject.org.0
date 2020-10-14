@@ -1,92 +1,106 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D2CF28E104
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 15:09:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E89928E1A8
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 15:49:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4667088087;
-	Wed, 14 Oct 2020 13:09:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 841BA2E504;
+	Wed, 14 Oct 2020 13:49:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qMfd7GU6mMF6; Wed, 14 Oct 2020 13:09:01 +0000 (UTC)
+	with ESMTP id fcpMGLMGqhLv; Wed, 14 Oct 2020 13:49:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DEE098807C;
-	Wed, 14 Oct 2020 13:09:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 577732E4CB;
+	Wed, 14 Oct 2020 13:49:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A44261BF42E
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 13:08:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AA2B61BF42E
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 13:49:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A09DF87D7E
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 13:08:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A648D87508
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 13:49:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OFGm-plxW5mZ for <devel@linuxdriverproject.org>;
- Wed, 14 Oct 2020 13:08:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EE4A887D7C
- for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 13:08:58 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09ECsJ0p044174;
- Wed, 14 Oct 2020 13:08:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=q6thQZBRRq+1PTM392w9Mekv2vxKvbBynstiWkLboYI=;
- b=vl2LLDEYIu/tkteUj4gO/wWNsUoP4B3DDaePMhuxHydGPsJhz8HL1y3aayN+oRTMxkRf
- OB/OR51Yc9Q71vOOwnC0gr0z1ixvg1Mi11AYpVpcnVtB1GLeKUrwS67DzWpg1Lxee+2T
- n8YRyZdo//k7F3DSnzNG0G8UEF5/9X4mNQwtMgUOAlo+swpJ7NkqkzeHsh30Po91y+Mt
- 0rRZH0w5rFpi2EKWY8S7qHH2/38ta9tj3us4aS+JOYIdmPX3cpNVW4thyH3BeA1IRqQM
- GuDpxmYHngnUXzLQ6l0YrWzty+2ZRq2aDe3txvzcbX41q8716wWTmxp0fFr5umFyE8Ke Mg== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 3434wkqbde-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 14 Oct 2020 13:08:57 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09ECpZNm179520;
- Wed, 14 Oct 2020 13:08:56 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3020.oracle.com with ESMTP id 344by3knj4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 14 Oct 2020 13:08:56 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09ED8stV025276;
- Wed, 14 Oct 2020 13:08:54 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 14 Oct 2020 06:08:54 -0700
-Date: Wed, 14 Oct 2020 16:08:46 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Coiby Xu <coiby.xu@gmail.com>
-Subject: Re: [PATCH v2 2/7] staging: qlge: Initialize devlink health dump
- framework
-Message-ID: <20201014130846.GU1042@kadam>
-References: <20201014104306.63756-1-coiby.xu@gmail.com>
- <20201014104306.63756-3-coiby.xu@gmail.com>
+ with ESMTP id YUeo7GlmJVRn for <devel@linuxdriverproject.org>;
+ Wed, 14 Oct 2020 13:49:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10on2047.outbound.protection.outlook.com [40.107.94.47])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E3EF87031
+ for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 13:49:19 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Gy0d8pzoZPA36VqgKxYZ/tkkItq9vvVb4lZb6Iv0jn/EpM90u99z5yv2ZgayVSagMiOpp6CmX/ngXT/yDSzmvzb3VNmzKgOTdvsK1chueUFteJK0AuTz+tkDv6WPL1R9zmP1vTEWI1ar146I5+KSarypjAtGYij1JEO45DKfniU98JINgrnuPF0jn+qbZuVNEdRBvtm/qRAisQ166TIPQs8CIsqLnwW0gchFZHaXr69NvvX5Cu2dTOdlZw3+PAcb5vZq/ZEyXbcZXIViJh6i/PBSbEF8IFOWQpv9/1nxp6rg+pPxvoh4vyO7Ri4RLuJ+fY4kshGSaXAZTJwNJfpv4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Hpyv1JvntTb93c+qrvdeuKGsflEK1eadGjK9HigqFcA=;
+ b=LBHrXBPw/rdzuzLYjPdNBxBFuVvd89+jsoBrO94iR/RxyPG2io6ZX4Lo6rHYie1lSlR4WpcI90d4vOHnpo8ZkUmiQAeTbteyAgAJzv0kbcMQXAfzNnon/Zgp9z5zPzLGlAxgH9nWCYJKnzxrbDzsrlyeiJfFPQ7JqB6+q+bsEuhujEfdh9jk/0L3pC5vglhOhaFOZLzK+dSw+5fJBHuqemkCjv9wMKkYXr+KAzG6JSW3/jWrv8C5OH/uHqaqx7jLZZElMSqmSqdLc0IHxVNXmTBpuUM2efREbceBRNZISE9HLLw23s7O6Hq45A8XYzyIMwFu9oe8hm7PpSGuIULjDQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Hpyv1JvntTb93c+qrvdeuKGsflEK1eadGjK9HigqFcA=;
+ b=eC6cB5tl7DEdsLdX9Jiju+xZpjKRa6Q2FlWWDU3dYc7gW2PW/r/UIXjYY7baiaFXDi/su31Erk+iyGGa0jxJF4PgIu+Y8xmhlcHeG7U7RRJ6ZBfMLs5mnJ2R66MaGWKXr/pxphzYtHvPf/2YhQF6KLFkyi39wgherAVCP1jlOj4=
+Authentication-Results: kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=none action=none header.from=silabs.com;
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SN6PR11MB3357.namprd11.prod.outlook.com (2603:10b6:805:c2::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.21; Wed, 14 Oct
+ 2020 13:49:17 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::4f5:fbe5:44a7:cb8a]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::4f5:fbe5:44a7:cb8a%5]) with mapi id 15.20.3455.031; Wed, 14 Oct 2020
+ 13:49:17 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 01/23] dt-bindings: introduce silabs,wfx.yaml
+Date: Wed, 14 Oct 2020 15:49:12 +0200
+Message-ID: <3929101.dIHeVNgAIR@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <20201013164935.GA3646933@bogus>
+References: <20201012104648.985256-1-Jerome.Pouiller@silabs.com>
+ <20201012104648.985256-2-Jerome.Pouiller@silabs.com>
+ <20201013164935.GA3646933@bogus>
+X-Originating-IP: [82.67.86.106]
+X-ClientProxiedBy: DM6PR11CA0034.namprd11.prod.outlook.com
+ (2603:10b6:5:190::47) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201014104306.63756-3-coiby.xu@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9773
- signatures=668681
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- spamscore=0
- suspectscore=2 mlxscore=0 malwarescore=0 adultscore=0 bulkscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010140093
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9773
- signatures=668681
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 mlxscore=0
- malwarescore=0 phishscore=0 suspectscore=2 impostorscore=0 clxscore=1011
- spamscore=0 priorityscore=1501 bulkscore=0 adultscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010140093
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.localnet (82.67.86.106) by
+ DM6PR11CA0034.namprd11.prod.outlook.com (2603:10b6:5:190::47) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3477.21 via Frontend Transport; Wed, 14 Oct 2020 13:49:15 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c842df6f-3ce7-461c-a691-08d87047f189
+X-MS-TrafficTypeDiagnostic: SN6PR11MB3357:
+X-Microsoft-Antispam-PRVS: <SN6PR11MB3357B01F04F846FD90383B8893050@SN6PR11MB3357.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: NoWHYRlSMV6kNiBHbxmJXASGr9QjStsLpSTgoZd8/inB7u8zQl9Q/G45JTMSptZ1wjlaGIT1LWU8Rmmo7z2I1FIfEyzTYBLPRo7BlujmAmVD9ZONE24iulHVLu4EPQ62Mn6O8lNlAjOrwzto8mwOKZFQu127vLsvMihIkwdaK0hfFNAqqbI50IJ6HUiZhm8hN/GXrdoxpEIHhtMyYAwdj+ucdH3MOwza8l2Nuan1nj9JFz/ey+d7IvLe3mbsSQqv1cHufgvuk7rCwx6vF+PVYDV+2DkB7gRO9v3WzcUAhHs6fdIpJesxDn/rtnqNla4T6uKWS1j8zk15uan2w4Ak8g==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(396003)(136003)(376002)(346002)(39850400004)(66556008)(66946007)(66476007)(33716001)(6916009)(83380400001)(52116002)(86362001)(6486002)(8936002)(8676002)(5660300002)(6506007)(36916002)(4326008)(478600001)(956004)(316002)(26005)(6666004)(54906003)(6512007)(9686003)(16526019)(186003)(2906002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: qjPVWzeJAIz4IzX9zP/L/vNRRWvnL0QVtb3olsTy3tXQ0qpgDcfbhq9aiCgDpQmeMEnx5C18+ogdYIoTrOtV2oJsIFjo7oOBT5GRKUF5fPs/4XwPkuA9H1DoXfRo0Ni3yCryBUOs/ZEOERrd6anedXFdDkdlEVXIhOPEO9wah6AGCjUFXYHR8l3VC8u2gHS38WlW21vSMIa8R4Dx6BYUoJsem7OQX+UvtYzE0zlRKRi2WaMSlgF6uF+FOLfPqT4KK9yQ1N0NrDZEUUc1JyN4i1rBCr22YZQkTVyZsoC9ma3NL16fkT2/pwpTMpTvUeGbl4AHu/jDX97KANn1jfKEa+KlLJPZxqD3lCGa1qL8N/LceFwnW7ag8+5D3jgdM0OnrgG5QWst+4g56V9SI1BNK3ugN59ZNMvMZ+BnjCcqwixlD9msEC/+1tC86Gk2i75anBe5aUFra+HqAp7GT3ayfiUQE4hIpuj+Q+fBNWG6GuuiYFkAJ+VmFqOJsGXommnknl56GEFmB6vnX9ba/l9HeAUWChRP3ES2nkPdGBnMznu28ctvRJ/S7mHdzMFDO+XynALrbLZ8Uic/omagGgSRUVRxmqAbe7onzFJ6rza5i/n+iQfV+3XK3YIQbvgzgX54yHpC/Mu10YtO4TTXQ87gRA==
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c842df6f-3ce7-461c-a691-08d87047f189
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2020 13:49:17.3982 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4vNisfYkgmddN/Oj4dbNb9pijpnb4O6RtZUx4oQkUPpo69T/8DbZZQ7bjz/3gO+d+azLXPSJEDet1OEa1jFPeQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3357
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,134 +113,94 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER" <GR-Linux-NIC-Dev@marvell.com>,
- Manish Chopra <manishc@marvell.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
- Benjamin Poirier <benjamin.poirier@gmail.com>,
- "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 14, 2020 at 06:43:01PM +0800, Coiby Xu wrote:
->  static int qlge_probe(struct pci_dev *pdev,
->  		      const struct pci_device_id *pci_entry)
->  {
->  	struct net_device *ndev = NULL;
->  	struct qlge_adapter *qdev = NULL;
-> +	struct devlink *devlink;
->  	static int cards_found;
->  	int err = 0;
->  
-> -	ndev = alloc_etherdev_mq(sizeof(struct qlge_adapter),
-> +	devlink = devlink_alloc(&qlge_devlink_ops, sizeof(struct qlge_adapter));
-> +	if (!devlink)
-> +		return -ENOMEM;
-> +
-> +	qdev = devlink_priv(devlink);
-> +
-> +	ndev = alloc_etherdev_mq(sizeof(struct qlge_netdev_priv),
->  				 min(MAX_CPUS,
->  				     netif_get_num_default_rss_queues()));
->  	if (!ndev)
-> -		return -ENOMEM;
-> +		goto devlink_free;
->  
-> -	err = qlge_init_device(pdev, ndev, cards_found);
-> -	if (err < 0) {
-> -		free_netdev(ndev);
-> -		return err;
+On Tuesday 13 October 2020 18:49:35 CEST Rob Herring wrote:
+> On Mon, Oct 12, 2020 at 12:46:26PM +0200, Jerome Pouiller wrote:
+> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+[...]
+> > +  Note that in add of the properties below, the WFx driver also suppor=
+ts
+> > +  `mac-address` and `local-mac-address` as described in
+> > +  Documentation/devicetree/bindings/net/ethernet.txt
+> =
 
-In the old code, if qlge_init_device() fails then it frees "ndev".
+> Note what ethernet.txt contains... This should have a $ref to
+> ethernet-controller.yaml to express the above.
+> =
 
-> -	}
-> +	qdev->ndev = ndev;
-> +	err = qlge_init_device(pdev, qdev, cards_found);
-> +	if (err < 0)
-> +		goto devlink_free;
+> You can add 'mac-address: true' if you want to be explicit about what
+> properties are used.
 
-But the patch introduces a new resource leak.
+Here, only mac-address and local-mac-address are supported. So, would the
+code below do the job?
 
->  
-> -	qdev = netdev_priv(ndev);
->  	SET_NETDEV_DEV(ndev, &pdev->dev);
->  	ndev->hw_features = NETIF_F_SG |
->  		NETIF_F_IP_CSUM |
-> @@ -4611,8 +4619,14 @@ static int qlge_probe(struct pci_dev *pdev,
->  		qlge_release_all(pdev);
->  		pci_disable_device(pdev);
->  		free_netdev(ndev);
-> -		return err;
-> +		goto devlink_free;
->  	}
-> +
-> +	err = devlink_register(devlink, &pdev->dev);
-> +	if (err)
-> +		goto devlink_free;
-> +
-> +	qlge_health_create_reporters(qdev);
->  	/* Start up the timer to trigger EEH if
->  	 * the bus goes dead
->  	 */
-> @@ -4623,6 +4637,10 @@ static int qlge_probe(struct pci_dev *pdev,
->  	atomic_set(&qdev->lb_count, 0);
->  	cards_found++;
->  	return 0;
-> +
-> +devlink_free:
-> +	devlink_free(devlink);
-> +	return err;
->  }
+  local-mac-address:
+    $ref: ethernet-controller.yaml#/properties/local-mac-address
 
-The best way to write error handling code is keep tracke of the most
-recent allocation which was allocated successfully.
+  mac-address:
+    $ref: ethernet-controller.yaml#/properties/mac-address
 
-	one = alloc();
-	if (!one)
-		return -ENOMEM;  //  <-- nothing allocated successfully
 
-	two = alloc();
-	if (!two) {
-		ret = -ENOMEM;
-		goto free_one; // <-- one was allocated successfully
-                               // Notice that the label name says what
-			       // the goto does.
-	}
+[...]
+> > +  spi-max-frequency:
+> > +    description: (SPI only) Maximum SPI clocking speed of device in Hz.
+> =
 
-	three = alloc();
-	if (!three) {
-		ret = -ENOMEM;
-		goto free_two; // <-- two allocated, two freed.
-	}
+> No need to redefine a common property.
 
-	...
+When a property is specific to a bus, I would have like to explicitly
+say it. That's why I redefined the description.
 
-	return 0;
 
-free_two:
-	free(two);
-free_one:
-	free(one);
+[...]
+> > +  config-file:
+> > +    description: Use an alternative file as PDS. Default is `wf200.pds=
+`. Only
+> > +      necessary for development/debug purpose.
+> =
 
-	return ret;
+> 'firmware-name' is typically what we'd use here. Though if just for
+> debug/dev, perhaps do a debugfs interface for this instead. As DT should
+> come from the firmware/bootloader, requiring changing the DT for
+> dev/debug is not the easiest workflow compared to doing something from
+> userspace.
 
-In the old code qlge_probe() freed things before returning, and that's
-fine if there is only two allocations in the function but when there are
-three or more allocations, then use gotos to unwind.
+This file is not a firmware. It mainly contains data related to the
+antenna. At the beginning, this property has been added for
+development. With the time, I think it can be used to  have one disk
+image for several devices that differ only in antenna.
 
-Ideally there would be a ql_deinit_device() function to mirror the
-ql_init_device() function.  The ql_init_device() is staging quality
-code with leaks and bad label names.  It should be re-written to free
-things one step at a time instead of calling ql_release_all().
+I am going to remove the part about development/debug purpose.
 
-Anyway, let's not introduce new leaks at least.
 
-regards,
-dan carpenter
+[...]
+> Will need additionalProperties or unevaluatedProperties depending on
+> whether you list out properties from ethernet-controller.yaml or not.
+
+I think I need to specify "additionalProperties: true" since the user can
+also use properties defined for the SPI devices.
+
+In fact, I would like to write something like:
+
+    allOf:
+        $ref: spi-controller.yaml#/patternProperties/^.*@[0-9a-f]+$/propert=
+ies
+
+
+
+-- =
+
+J=E9r=F4me Pouiller
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
