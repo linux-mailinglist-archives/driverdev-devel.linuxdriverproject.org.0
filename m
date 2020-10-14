@@ -1,79 +1,106 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 772AC28DF39
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 12:44:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 252E728E048
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 14:06:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BC5E787FCF;
-	Wed, 14 Oct 2020 10:43:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C5A2C2E0F5;
+	Wed, 14 Oct 2020 12:06:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AyKdcPArBJd0; Wed, 14 Oct 2020 10:43:58 +0000 (UTC)
+	with ESMTP id eehaFgyKNINz; Wed, 14 Oct 2020 12:06:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C910587FBB;
-	Wed, 14 Oct 2020 10:43:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 664512E2D9;
+	Wed, 14 Oct 2020 12:06:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B31841BF575
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 10:43:54 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E423A1BF3EE
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 12:06:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AFFCE874E2
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 10:43:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CA3F42E25A
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 12:06:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9RNBkQayI+9v for <devel@linuxdriverproject.org>;
- Wed, 14 Oct 2020 10:43:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D8D1787FA5
- for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 10:43:53 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id j8so1416536pjy.5
- for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 03:43:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=W3D78JnB3JWvtlnY5Ql/e6WWsfNU7jwi9/AJtLMFZTY=;
- b=KapgrmEA/WHaS+v61nXXg+l4GfVSXCqX2Ug4wCHwGwPhucq6YR0P/xSpRHiqE1PCyu
- +PUTqZZwZZa1BXHCtcfw8trIw2476f8furqXqjE5liY/cKGJ7kl9q6l1+oV/One3NXUS
- uDapod6D+kFWsOGSSxPI9jPazns3y13nJCQb5XY1cGZqpqRrGvrgYK3dUtFVfeb2ShxV
- ftPdiXm+/cIuUL0mUDGS77D7XbIWSynYSg7KLfuw1QaslfKEmSYwoQUjM4kTGMKXAZGK
- xepG2P1DqNKNjbUlFBPq5gtGhORIEIt0LbrnCLCLfCVB+eT/GL6tCewXXGIDMfz7f/2O
- l6zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=W3D78JnB3JWvtlnY5Ql/e6WWsfNU7jwi9/AJtLMFZTY=;
- b=EMG/1irCJc2KM38MDbM9dJ4vo4reJXG9Ve/RToTIIE48+i8Hbm8fvru40yt4ORmeg3
- +MVImoRrUfFHu/2dzEuI6WyfOHk+qB1Dco8Gg+mtjdpbrDblV5JtnZ9U++DkR0VYLE1V
- ufun1pWa+0pyXbsBoMR30MBeUnS+lLX52zFqVlRKBZWvv3ZQtNduKNOXGP9S55fO+xG3
- rLF0hZ77XcsjPIepHus15b73vnfTcS19iqqq1vCWZLS3+OVKfQhczh3YXr8cQQMMmN0l
- +ApVX04QFM8uHiJcGxnbxu7sR/GhUUD3Ue3eDCyv4SNBjBxgjMLDU89PT7552NVBw8Va
- 6Hcw==
-X-Gm-Message-State: AOAM533TIaTYDpX7Uu3B2VcG6rNi6BptvcJ0y8+rlhak5l3kSZoMRVzp
- jTs6WIVBH6p8aPTeGHLPmWJjkdTT2AhrKk1w
-X-Google-Smtp-Source: ABdhPJw7jmQdaX7le3EDyRuKq9wreKdZDW3zZ7R69YsvFSt7oSLtjF+GN5ZoZvGZXMdOgFowRJ5D6w==
-X-Received: by 2002:a17:902:b60f:b029:d3:df34:31e6 with SMTP id
- b15-20020a170902b60fb02900d3df3431e6mr3568673pls.59.1602672233172; 
- Wed, 14 Oct 2020 03:43:53 -0700 (PDT)
-Received: from localhost ([2001:e42:102:1532:160:16:113:140])
- by smtp.gmail.com with ESMTPSA id i126sm2932209pfc.48.2020.10.14.03.43.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Oct 2020 03:43:52 -0700 (PDT)
-From: Coiby Xu <coiby.xu@gmail.com>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH v2 7/7] staging: qlge: add documentation for debugging qlge
-Date: Wed, 14 Oct 2020 18:43:06 +0800
-Message-Id: <20201014104306.63756-8-coiby.xu@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201014104306.63756-1-coiby.xu@gmail.com>
-References: <20201014104306.63756-1-coiby.xu@gmail.com>
+ with ESMTP id Gxkgg5ILB0nu for <devel@linuxdriverproject.org>;
+ Wed, 14 Oct 2020 12:06:27 +0000 (UTC)
+X-Greylist: delayed 00:14:03 by SQLgrey-1.7.6
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2081.outbound.protection.outlook.com [40.107.220.81])
+ by silver.osuosl.org (Postfix) with ESMTPS id EF102203F3
+ for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 12:06:26 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mDoo0l1yPEKMdqBZBarHotoXnAW+46J/ef95Ed6990p3yjk4muXrADDfano/69Dvz+MooMUF03g4iDlue9CzKkj4VzaptkdT4QKJYmwwYDvirmdkc5awgy+ee60ZydTBxc4GBW3b5K5vwh1sxMAKTFMIlxCfB6g3orr3fW6golrWASslxBzdhRzv6b5RWK7j6DM1pcUq7O0UlRH3J2nRV48dO1V962TM3HfU9Xh8Ru9feM81hSGQUEnPgYWiLIvx/iwB3ze1UTfO8yiy+oiVJeEyCQZy+uwwqgQOf08pDcFRxQwO9v4OZLPy4JBrB0jBBx3CFv2GxVOM7i2xteg6uw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=b+IPhP2Kmrei5f/LsFM+HorqoRrOj/FzsF13ggy24FU=;
+ b=Ene/I6oVQa2VOAGGs+aaeu3CBNJFJVZNHE6IKWtO2D0LayPwgeLGAsv/WPUh5RtqBjgHTEIwYx4mGwmnb1l5BmxGI6B1/nv8YwGYc4LybOkRCu558UpzZDyElU6WHJczVu0/AEJijMNd8QTLyaoaK32WCt4RJZb2fYE9x/SSl6pzl0YaXa1vniZFIJjR1SlUzlc8DhbMvPLEvCL0zedPn3DBbRLIO+3E7fhk6SxLKB3bBgx1iCMBoF59r2zlS/ehMHd87AOjZbqvS9mCSnIE0hOQWDIHS05iZ4kEOL7Dcn30DO5Hd/f3eVlgqLXch1HEh4K6hsJSHRoL6th3+VsR1A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=b+IPhP2Kmrei5f/LsFM+HorqoRrOj/FzsF13ggy24FU=;
+ b=gXFhIwg/2fMES5BojVs/UXMH197a1ZK02Coi3SMSuhS2OfxsqWURhKEcJ/850QCT9AApTNnhw1XqFM3Us90ORIPxRkAqzkhLh42xgUdqmox2NG7sLqSbNFXmYKuUf33qHpsSeyWh6vqclzCet+Qqgwfc8xpMJFSgB+4TIeNLfU8=
+Authentication-Results: kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=none action=none header.from=silabs.com;
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SN6PR11MB2893.namprd11.prod.outlook.com (2603:10b6:805:dc::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.21; Wed, 14 Oct
+ 2020 11:52:21 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::4f5:fbe5:44a7:cb8a]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::4f5:fbe5:44a7:cb8a%5]) with mapi id 15.20.3455.031; Wed, 14 Oct 2020
+ 11:52:21 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>
+Subject: Re: [PATCH 07/23] wfx: add bus_sdio.c
+Date: Wed, 14 Oct 2020 13:52:15 +0200
+Message-ID: <2628294.9EgBEFZmRI@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <20201013201156.g27gynu5bhvaubul@pali>
+References: <20201012104648.985256-1-Jerome.Pouiller@silabs.com>
+ <20201012104648.985256-8-Jerome.Pouiller@silabs.com>
+ <20201013201156.g27gynu5bhvaubul@pali>
+X-Originating-IP: [82.67.86.106]
+X-ClientProxiedBy: DM5PR07CA0100.namprd07.prod.outlook.com
+ (2603:10b6:4:ae::29) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.localnet (82.67.86.106) by
+ DM5PR07CA0100.namprd07.prod.outlook.com (2603:10b6:4:ae::29) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3477.21 via Frontend Transport; Wed, 14 Oct 2020 11:52:18 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 836a45e2-d48e-4431-2e80-08d870379b52
+X-MS-TrafficTypeDiagnostic: SN6PR11MB2893:
+X-Microsoft-Antispam-PRVS: <SN6PR11MB2893755A4059BC7942E7305D93050@SN6PR11MB2893.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: FiIC40Fy6cQHK1pF8DlSw0Lot9isxPUyhqp3ltJipnRP40YjH155KPGZ8fQn/y2Gzm687xL1HDX3RdbjrgAJUcSHvj/JoXvOh7JeA4ob8L7Y219hPYO6A+LGJ8dFEy+Sq12AzM9VDWSJl+pKBE2UqugR4v+8ylfxK/6SFP5ghuy1mx6fOeDt/D2Mx9kk5OCeFz4Ml/P4CJBQe7o9XMbNWTUlA24Dutvknqv2pPNtrpwcsF6JE7oe0il12OllqGSu16yH11QjAibsu3AJCsMronJQ2XgIQcWnyAbWaqQSmFRsc+GufboVNv80YiKxEemIWAbV3kOJfaaWqGskL7iQjx04xzgtDauo9PDipKelMol749wgRv56AMGTQjPcQSty
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(39850400004)(366004)(136003)(376002)(346002)(396003)(66556008)(66476007)(54906003)(8676002)(316002)(6506007)(6486002)(9686003)(66574015)(6512007)(6916009)(5660300002)(7416002)(8936002)(4326008)(86362001)(478600001)(52116002)(2906002)(66946007)(26005)(186003)(956004)(33716001)(36916002)(83380400001)(16526019)(6666004)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: 2445WES+e9wE0ygrPmUVFANfPe56hqfhoNSeiwmMq3P2dK32Cs34P9LBB1T5VtudGsxb4Zfb+3GWPogBxvUpBfd7980ULqOBNdHOA6ytEWCovdPbL9h/MO4bxi1LU3xQFnU5VcCoLAu8HWrdLyZkgAACYxHW9Nit2AjZDrPgpQcc25wTl7AESmQugWrejGWJVPSXmlDxy5fY1xPQ1LrAclIv83DZJ9zWIhdtQyEwenTl0ySjnU4Cjyw0e39xk3KRBsTs7U+witG0bvPkHhxYfwxqqQJxns2t+IAPs+soqwE1p1xfWsmQLt2iAUwexjPa9kVeQn+0fDO0bR9yb7ePAsDV8eSRsmDkGm/xbDmcgAhRrIqhOfHdHcRnuZ2o7W8nXteRuBfV9NrHXwd4FOuwwuKoBfHAybVXLtUJOYIFsAyOsZum7Sh5ahhdRtcF/lfjZ/Ek0Ze8IUvQzyx4eyx9GrTZsG81tgCpb3UbUqqH5c2A0GXnGDJvkKp/sXF3MBt2ZK1VmMyVZWkvopTDwm4SDOewoE38OHpddN7hHLXUVaw2TAi0Pki1N3MyL6mZrvaz/EU6wmEVX32Ifdthd+aRlC0B8CnrLA3P3m1DsgwfNd5ahsuEx58l98jWvFnsgjWh+j1DR9dAjoLhDSWl9Mc7yA==
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 836a45e2-d48e-4431-2e80-08d870379b52
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2020 11:52:20.8899 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: C1bpE0MFkrQ6bQMUGQXiTpoQCrIrD2UITrZf1Q24nhcIZkupPan2i8C0R1FMkeQo/vr4e4cN9VV5wKjqUoxaKg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2893
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,211 +113,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- Jonathan Corbet <corbet@lwn.net>,
- "open list:NETWORKING \[GENERAL\]" <netdev@vger.kernel.org>,
- "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- Shung-Hsi Yu <shung-hsi.yu@suse.com>, open list <linux-kernel@vger.kernel.org>,
- Benjamin Poirier <benjamin.poirier@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Instructions and examples on kernel data structures dumping and
-coredump.
+Hello Pali,
 
-Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
----
- .../networking/device_drivers/index.rst       |   1 +
- .../device_drivers/qlogic/index.rst           |  18 +++
- .../networking/device_drivers/qlogic/qlge.rst | 118 ++++++++++++++++++
- MAINTAINERS                                   |   6 +
- 4 files changed, 143 insertions(+)
- create mode 100644 Documentation/networking/device_drivers/qlogic/index.rst
- create mode 100644 Documentation/networking/device_drivers/qlogic/qlge.rst
+On Tuesday 13 October 2020 22:11:56 CEST Pali Roh=E1r wrote:
+> Hello!
+> =
 
-diff --git a/Documentation/networking/device_drivers/index.rst b/Documentation/networking/device_drivers/index.rst
-index a3113ffd7a16..d8279de7bf25 100644
---- a/Documentation/networking/device_drivers/index.rst
-+++ b/Documentation/networking/device_drivers/index.rst
-@@ -15,6 +15,7 @@ Contents:
-    ethernet/index
-    fddi/index
-    hamradio/index
-+   qlogic/index
-    wan/index
-    wifi/index
- 
-diff --git a/Documentation/networking/device_drivers/qlogic/index.rst b/Documentation/networking/device_drivers/qlogic/index.rst
-new file mode 100644
-index 000000000000..ad05b04286e4
---- /dev/null
-+++ b/Documentation/networking/device_drivers/qlogic/index.rst
-@@ -0,0 +1,18 @@
-+.. SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+
-+QLogic QLGE Device Drivers
-+===============================================
-+
-+Contents:
-+
-+.. toctree::
-+   :maxdepth: 2
-+
-+   qlge
-+
-+.. only::  subproject and html
-+
-+   Indices
-+   =======
-+
-+   * :ref:`genindex`
-diff --git a/Documentation/networking/device_drivers/qlogic/qlge.rst b/Documentation/networking/device_drivers/qlogic/qlge.rst
-new file mode 100644
-index 000000000000..0b888253d152
---- /dev/null
-+++ b/Documentation/networking/device_drivers/qlogic/qlge.rst
-@@ -0,0 +1,118 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+=======================================
-+QLogic QLGE 10Gb Ethernet device driver
-+=======================================
-+
-+This driver use drgn and devlink for debugging.
-+
-+Dump kernel data structures in drgn
-+-----------------------------------
-+
-+To dump kernel data structures, the following Python script can be used
-+in drgn:
-+
-+.. code-block:: python
-+
-+	def align(x, a):
-+	    """the alignment a should be a power of 2
-+	    """
-+	    mask = a - 1
-+	    return (x+ mask) & ~mask
-+
-+	def struct_size(struct_type):
-+	    struct_str = "struct {}".format(struct_type)
-+	    return sizeof(Object(prog, struct_str, address=0x0))
-+
-+	def netdev_priv(netdevice):
-+	    NETDEV_ALIGN = 32
-+	    return netdevice.value_() + align(struct_size("net_device"), NETDEV_ALIGN)
-+
-+	name = 'xxx'
-+	qlge_device = None
-+	netdevices = prog['init_net'].dev_base_head.address_of_()
-+	for netdevice in list_for_each_entry("struct net_device", netdevices, "dev_list"):
-+	    if netdevice.name.string_().decode('ascii') == name:
-+	        print(netdevice.name)
-+
-+	ql_adapter = Object(prog, "struct ql_adapter", address=netdev_priv(qlge_device))
-+
-+The struct ql_adapter will be printed in drgn as follows,
-+
-+    >>> ql_adapter
-+    (struct ql_adapter){
-+            .ricb = (struct ricb){
-+                    .base_cq = (u8)0,
-+                    .flags = (u8)120,
-+                    .mask = (__le16)26637,
-+                    .hash_cq_id = (u8 [1024]){ 172, 142, 255, 255 },
-+                    .ipv6_hash_key = (__le32 [10]){},
-+                    .ipv4_hash_key = (__le32 [4]){},
-+            },
-+            .flags = (unsigned long)0,
-+            .wol = (u32)0,
-+            .nic_stats = (struct nic_stats){
-+                    .tx_pkts = (u64)0,
-+                    .tx_bytes = (u64)0,
-+                    .tx_mcast_pkts = (u64)0,
-+                    .tx_bcast_pkts = (u64)0,
-+                    .tx_ucast_pkts = (u64)0,
-+                    .tx_ctl_pkts = (u64)0,
-+                    .tx_pause_pkts = (u64)0,
-+                    ...
-+            },
-+            .active_vlans = (unsigned long [64]){
-+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52780853100545, 18446744073709551615,
-+                    18446619461681283072, 0, 42949673024, 2147483647,
-+            },
-+            .rx_ring = (struct rx_ring [17]){
-+                    {
-+                            .cqicb = (struct cqicb){
-+                                    .msix_vect = (u8)0,
-+                                    .reserved1 = (u8)0,
-+                                    .reserved2 = (u8)0,
-+                                    .flags = (u8)0,
-+                                    .len = (__le16)0,
-+                                    .rid = (__le16)0,
-+                                    ...
-+                            },
-+                            .cq_base = (void *)0x0,
-+                            .cq_base_dma = (dma_addr_t)0,
-+                    }
-+                    ...
-+            }
-+    }
-+
-+coredump via devlink
-+--------------------
-+
-+
-+And the coredump obtained via devlink in json format looks like,
-+
-+.. code:: shell
-+
-+	$ devlink health dump show DEVICE reporter coredump -p -j
-+	{
-+	    "Core Registers": {
-+	        "segment": 1,
-+	        "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
-+	    },
-+	    "Test Logic Regs": {
-+	        "segment": 2,
-+	        "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
-+	    },
-+	    "RMII Registers": {
-+	        "segment": 3,
-+	        "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
-+	    },
-+	    ...
-+	    "Sem Registers": {
-+	        "segment": 50,
-+	        "values": [ 0,0,0,0 ]
-+	    }
-+	}
-+
-+When the module parameter qlge_force_coredump is set to be true, the MPI
-+RISC reset before coredumping. So coredumping will much longer since
-+devlink tool has to wait for 5 secs for the resetting to be
-+finished.
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 05d9b8c00eed..1def89b15913 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14413,6 +14413,12 @@ L:	netdev@vger.kernel.org
- S:	Supported
- F:	drivers/staging/qlge/
- 
-+QLOGIC QLGE 10Gb ETHERNET DRIVER
-+M:	Coiby Xu <coiby.xu@gmail.com>
-+L:	netdev@vger.kernel.org
-+S:	Maintained
-+F:	Documentation/networking/device_drivers/qlogic/qlge.rst
-+
- QM1D1B0004 MEDIA DRIVER
- M:	Akihiro Tsukada <tskd08@gmail.com>
- L:	linux-media@vger.kernel.org
--- 
-2.28.0
+> On Monday 12 October 2020 12:46:32 Jerome Pouiller wrote:
+> > +#define SDIO_VENDOR_ID_SILABS        0x0000
+> > +#define SDIO_DEVICE_ID_SILABS_WF200  0x1000
+> > +static const struct sdio_device_id wfx_sdio_ids[] =3D {
+> > +     { SDIO_DEVICE(SDIO_VENDOR_ID_SILABS, SDIO_DEVICE_ID_SILABS_WF200)=
+ },
+> =
+
+> Please move ids into common include file include/linux/mmc/sdio_ids.h
+> where are all SDIO ids. Now all drivers have ids defined in that file.
+> =
+
+> > +     // FIXME: ignore VID/PID and only rely on device tree
+> > +     // { SDIO_DEVICE(SDIO_ANY_ID, SDIO_ANY_ID) },
+> =
+
+> What is the reason for ignoring vendor and device ids?
+
+The device has a particularity, its VID/PID is 0000:1000 (as you can see
+above). This value is weird. The risk of collision with another device is
+high.
+
+So, maybe the device should be probed only if it appears in the DT. Since
+WF200 targets embedded platforms, I don't think it is a problem to rely on
+DT. You will find another FIXME further in the code about that:
+
++               dev_warn(&func->dev,
++                        "device is not declared in DT, features will be li=
+mited\n");
++               // FIXME: ignore VID/PID and only rely on device tree
++               // return -ENODEV;
+
+However, it wouldn't be usual way to manage SDIO devices (and it is the
+reason why the code is commented out).
+
+Anyway, if we choose to rely on the DT, should we also check the VID/PID?
+
+Personally, I am in favor to probe the device only if VID/PID match and if
+a DT node is found, even if it is not the usual way.
+
+-- =
+
+J=E9r=F4me Pouiller
+
 
 _______________________________________________
 devel mailing list
