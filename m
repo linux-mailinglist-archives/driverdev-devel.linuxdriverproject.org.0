@@ -1,106 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E89928E1A8
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 15:49:33 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7B1428E462
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 18:27:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 841BA2E504;
-	Wed, 14 Oct 2020 13:49:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 17A6287DBA;
+	Wed, 14 Oct 2020 16:27:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fcpMGLMGqhLv; Wed, 14 Oct 2020 13:49:29 +0000 (UTC)
+	with ESMTP id RvjgPHBZ7UYi; Wed, 14 Oct 2020 16:27:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 577732E4CB;
-	Wed, 14 Oct 2020 13:49:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2FA9587D91;
+	Wed, 14 Oct 2020 16:27:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AA2B61BF42E
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 13:49:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EBBCE1BF25B
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 16:27:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A648D87508
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 13:49:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E66DB87A08
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 16:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YUeo7GlmJVRn for <devel@linuxdriverproject.org>;
- Wed, 14 Oct 2020 13:49:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2047.outbound.protection.outlook.com [40.107.94.47])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E3EF87031
- for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 13:49:19 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Gy0d8pzoZPA36VqgKxYZ/tkkItq9vvVb4lZb6Iv0jn/EpM90u99z5yv2ZgayVSagMiOpp6CmX/ngXT/yDSzmvzb3VNmzKgOTdvsK1chueUFteJK0AuTz+tkDv6WPL1R9zmP1vTEWI1ar146I5+KSarypjAtGYij1JEO45DKfniU98JINgrnuPF0jn+qbZuVNEdRBvtm/qRAisQ166TIPQs8CIsqLnwW0gchFZHaXr69NvvX5Cu2dTOdlZw3+PAcb5vZq/ZEyXbcZXIViJh6i/PBSbEF8IFOWQpv9/1nxp6rg+pPxvoh4vyO7Ri4RLuJ+fY4kshGSaXAZTJwNJfpv4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Hpyv1JvntTb93c+qrvdeuKGsflEK1eadGjK9HigqFcA=;
- b=LBHrXBPw/rdzuzLYjPdNBxBFuVvd89+jsoBrO94iR/RxyPG2io6ZX4Lo6rHYie1lSlR4WpcI90d4vOHnpo8ZkUmiQAeTbteyAgAJzv0kbcMQXAfzNnon/Zgp9z5zPzLGlAxgH9nWCYJKnzxrbDzsrlyeiJfFPQ7JqB6+q+bsEuhujEfdh9jk/0L3pC5vglhOhaFOZLzK+dSw+5fJBHuqemkCjv9wMKkYXr+KAzG6JSW3/jWrv8C5OH/uHqaqx7jLZZElMSqmSqdLc0IHxVNXmTBpuUM2efREbceBRNZISE9HLLw23s7O6Hq45A8XYzyIMwFu9oe8hm7PpSGuIULjDQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Hpyv1JvntTb93c+qrvdeuKGsflEK1eadGjK9HigqFcA=;
- b=eC6cB5tl7DEdsLdX9Jiju+xZpjKRa6Q2FlWWDU3dYc7gW2PW/r/UIXjYY7baiaFXDi/su31Erk+iyGGa0jxJF4PgIu+Y8xmhlcHeG7U7RRJ6ZBfMLs5mnJ2R66MaGWKXr/pxphzYtHvPf/2YhQF6KLFkyi39wgherAVCP1jlOj4=
-Authentication-Results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SN6PR11MB3357.namprd11.prod.outlook.com (2603:10b6:805:c2::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.21; Wed, 14 Oct
- 2020 13:49:17 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::4f5:fbe5:44a7:cb8a]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::4f5:fbe5:44a7:cb8a%5]) with mapi id 15.20.3455.031; Wed, 14 Oct 2020
- 13:49:17 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 01/23] dt-bindings: introduce silabs,wfx.yaml
-Date: Wed, 14 Oct 2020 15:49:12 +0200
-Message-ID: <3929101.dIHeVNgAIR@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <20201013164935.GA3646933@bogus>
-References: <20201012104648.985256-1-Jerome.Pouiller@silabs.com>
- <20201012104648.985256-2-Jerome.Pouiller@silabs.com>
- <20201013164935.GA3646933@bogus>
-X-Originating-IP: [82.67.86.106]
-X-ClientProxiedBy: DM6PR11CA0034.namprd11.prod.outlook.com
- (2603:10b6:5:190::47) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
+ with ESMTP id dJyxim7-6Svh for <devel@linuxdriverproject.org>;
+ Wed, 14 Oct 2020 16:27:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E39A686C5A
+ for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 16:27:18 +0000 (UTC)
+Received: from [IPv6:2804:14c:483:7f66::1004] (unknown
+ [IPv6:2804:14c:483:7f66::1004])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: koike)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id D49421F45696;
+ Wed, 14 Oct 2020 17:27:11 +0100 (BST)
+Subject: Re: [PATCH v5 8/9] arm64: dts: rockchip: add isp0 node for rk3399
+To: Tomasz Figa <tfiga@chromium.org>
+References: <20200722155533.252844-1-helen.koike@collabora.com>
+ <20200722155533.252844-9-helen.koike@collabora.com>
+ <20200926130005.GC3781977@chromium.org>
+From: Helen Koike <helen.koike@collabora.com>
+Message-ID: <905118dd-f108-6bc0-4cf0-9544fab51690@collabora.com>
+Date: Wed, 14 Oct 2020 13:27:07 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.2
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.localnet (82.67.86.106) by
- DM6PR11CA0034.namprd11.prod.outlook.com (2603:10b6:5:190::47) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3477.21 via Frontend Transport; Wed, 14 Oct 2020 13:49:15 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c842df6f-3ce7-461c-a691-08d87047f189
-X-MS-TrafficTypeDiagnostic: SN6PR11MB3357:
-X-Microsoft-Antispam-PRVS: <SN6PR11MB3357B01F04F846FD90383B8893050@SN6PR11MB3357.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: NoWHYRlSMV6kNiBHbxmJXASGr9QjStsLpSTgoZd8/inB7u8zQl9Q/G45JTMSptZ1wjlaGIT1LWU8Rmmo7z2I1FIfEyzTYBLPRo7BlujmAmVD9ZONE24iulHVLu4EPQ62Mn6O8lNlAjOrwzto8mwOKZFQu127vLsvMihIkwdaK0hfFNAqqbI50IJ6HUiZhm8hN/GXrdoxpEIHhtMyYAwdj+ucdH3MOwza8l2Nuan1nj9JFz/ey+d7IvLe3mbsSQqv1cHufgvuk7rCwx6vF+PVYDV+2DkB7gRO9v3WzcUAhHs6fdIpJesxDn/rtnqNla4T6uKWS1j8zk15uan2w4Ak8g==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(396003)(136003)(376002)(346002)(39850400004)(66556008)(66946007)(66476007)(33716001)(6916009)(83380400001)(52116002)(86362001)(6486002)(8936002)(8676002)(5660300002)(6506007)(36916002)(4326008)(478600001)(956004)(316002)(26005)(6666004)(54906003)(6512007)(9686003)(16526019)(186003)(2906002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: qjPVWzeJAIz4IzX9zP/L/vNRRWvnL0QVtb3olsTy3tXQ0qpgDcfbhq9aiCgDpQmeMEnx5C18+ogdYIoTrOtV2oJsIFjo7oOBT5GRKUF5fPs/4XwPkuA9H1DoXfRo0Ni3yCryBUOs/ZEOERrd6anedXFdDkdlEVXIhOPEO9wah6AGCjUFXYHR8l3VC8u2gHS38WlW21vSMIa8R4Dx6BYUoJsem7OQX+UvtYzE0zlRKRi2WaMSlgF6uF+FOLfPqT4KK9yQ1N0NrDZEUUc1JyN4i1rBCr22YZQkTVyZsoC9ma3NL16fkT2/pwpTMpTvUeGbl4AHu/jDX97KANn1jfKEa+KlLJPZxqD3lCGa1qL8N/LceFwnW7ag8+5D3jgdM0OnrgG5QWst+4g56V9SI1BNK3ugN59ZNMvMZ+BnjCcqwixlD9msEC/+1tC86Gk2i75anBe5aUFra+HqAp7GT3ayfiUQE4hIpuj+Q+fBNWG6GuuiYFkAJ+VmFqOJsGXommnknl56GEFmB6vnX9ba/l9HeAUWChRP3ES2nkPdGBnMznu28ctvRJ/S7mHdzMFDO+XynALrbLZ8Uic/omagGgSRUVRxmqAbe7onzFJ6rza5i/n+iQfV+3XK3YIQbvgzgX54yHpC/Mu10YtO4TTXQ87gRA==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c842df6f-3ce7-461c-a691-08d87047f189
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2020 13:49:17.3982 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4vNisfYkgmddN/Oj4dbNb9pijpnb4O6RtZUx4oQkUPpo69T/8DbZZQ7bjz/3gO+d+azLXPSJEDet1OEa1jFPeQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3357
+In-Reply-To: <20200926130005.GC3781977@chromium.org>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,93 +63,95 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ eddie.cai.linux@gmail.com, dafna.hirschfeld@collabora.com, heiko@sntech.de,
+ zhengsq@rock-chips.com, linux-kernel@vger.kernel.org,
+ karthik.poduval@gmail.com, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, robin.murphy@arm.com,
+ mark.rutland@arm.com, kernel@collabora.com, ezequiel@collabora.com,
+ jbx6244@gmail.com, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tuesday 13 October 2020 18:49:35 CEST Rob Herring wrote:
-> On Mon, Oct 12, 2020 at 12:46:26PM +0200, Jerome Pouiller wrote:
-> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-[...]
-> > +  Note that in add of the properties below, the WFx driver also suppor=
-ts
-> > +  `mac-address` and `local-mac-address` as described in
-> > +  Documentation/devicetree/bindings/net/ethernet.txt
-> =
+Hi Tomasz,
 
-> Note what ethernet.txt contains... This should have a $ref to
-> ethernet-controller.yaml to express the above.
-> =
+On 9/26/20 10:00 AM, Tomasz Figa wrote:
+> Hi Helen,
+> 
+> On Wed, Jul 22, 2020 at 12:55:32PM -0300, Helen Koike wrote:
+>> From: Shunqian Zheng <zhengsq@rock-chips.com>
+>>
+>> RK3399 has two ISPs, but only isp0 was tested.
+>> Add isp0 node in rk3399 dtsi
+>>
+>> Verified with:
+>> make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+>>
+>> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+>> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+>> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+>>
+>> ---
+>>
+>> V4:
+>> - update clock names
+>>
+>> V3:
+>> - clean up clocks
+>>
+>> V2:
+>> - re-order power-domains property
+>>
+>> V1:
+>> This patch was originally part of this patchset:
+>>
+>>     https://patchwork.kernel.org/patch/10267431/
+>>
+>> The only difference is:
+>> - add phy properties
+>> - add ports
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 25 ++++++++++++++++++++++++
+>>  1 file changed, 25 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index dba9641947a3a..ed8ba75dbbce8 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -1721,6 +1721,31 @@ vopb_mmu: iommu@ff903f00 {
+>>  		status = "disabled";
+>>  	};
+>>  
+>> +	isp0: isp0@ff910000 {
+>> +		compatible = "rockchip,rk3399-cif-isp";
+>> +		reg = <0x0 0xff910000 0x0 0x4000>;
+>> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+>> +		clocks = <&cru SCLK_ISP0>,
+>> +			 <&cru ACLK_ISP0_WRAPPER>,
+>> +			 <&cru HCLK_ISP0_WRAPPER>;
+>> +		clock-names = "isp", "aclk", "hclk";
+>> +		iommus = <&isp0_mmu>;
+>> +		phys = <&mipi_dphy_rx0>;
+>> +		phy-names = "dphy";
+>> +		power-domains = <&power RK3399_PD_ISP0>;
+> 
+> Should this have status = "disabled" too? The mipi_dphy_rx0 node is
+> disabled by default too, so in the default configuration the driver
+> would always fail to probe.
 
-> You can add 'mac-address: true' if you want to be explicit about what
-> properties are used.
+I'm thinking what is the overall guideline here.
+Since isp and mipi_dphy are always present in the rk3399, shouldn't they always be enabled?
+Or since they are only useful if a sensor is present, we should let the dts of the board to
+enable it?
 
-Here, only mac-address and local-mac-address are supported. So, would the
-code below do the job?
+Thanks
+Helen
 
-  local-mac-address:
-    $ref: ethernet-controller.yaml#/properties/local-mac-address
-
-  mac-address:
-    $ref: ethernet-controller.yaml#/properties/mac-address
-
-
-[...]
-> > +  spi-max-frequency:
-> > +    description: (SPI only) Maximum SPI clocking speed of device in Hz.
-> =
-
-> No need to redefine a common property.
-
-When a property is specific to a bus, I would have like to explicitly
-say it. That's why I redefined the description.
-
-
-[...]
-> > +  config-file:
-> > +    description: Use an alternative file as PDS. Default is `wf200.pds=
-`. Only
-> > +      necessary for development/debug purpose.
-> =
-
-> 'firmware-name' is typically what we'd use here. Though if just for
-> debug/dev, perhaps do a debugfs interface for this instead. As DT should
-> come from the firmware/bootloader, requiring changing the DT for
-> dev/debug is not the easiest workflow compared to doing something from
-> userspace.
-
-This file is not a firmware. It mainly contains data related to the
-antenna. At the beginning, this property has been added for
-development. With the time, I think it can be used to  have one disk
-image for several devices that differ only in antenna.
-
-I am going to remove the part about development/debug purpose.
-
-
-[...]
-> Will need additionalProperties or unevaluatedProperties depending on
-> whether you list out properties from ethernet-controller.yaml or not.
-
-I think I need to specify "additionalProperties: true" since the user can
-also use properties defined for the SPI devices.
-
-In fact, I would like to write something like:
-
-    allOf:
-        $ref: spi-controller.yaml#/patternProperties/^.*@[0-9a-f]+$/propert=
-ies
-
-
-
--- =
-
-J=E9r=F4me Pouiller
-
-
+> 
+> Best regards,
+> Tomasz
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
