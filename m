@@ -1,71 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D8B028DCAA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 11:17:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B7E442E26F;
-	Wed, 14 Oct 2020 09:17:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lfZ3w2YAUI+f; Wed, 14 Oct 2020 09:17:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E5F32E277;
-	Wed, 14 Oct 2020 09:17:42 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A25CB1BF2BD
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 09:17:40 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E66528DF29
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Oct 2020 12:43:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9C7E987B85
- for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 09:17:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5E82187B70;
+	Wed, 14 Oct 2020 10:43:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id r0fIQc9hUj0h; Wed, 14 Oct 2020 10:43:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id BFD1587B6A;
+	Wed, 14 Oct 2020 10:43:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B7A11BF575
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 10:43:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id CB867874BB
+ for <devel@linuxdriverproject.org>; Wed, 14 Oct 2020 10:43:18 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z+Ju3VuO+8QN for <devel@linuxdriverproject.org>;
- Wed, 14 Oct 2020 09:17:39 +0000 (UTC)
+ with ESMTP id 1D8TZod9yowN for <devel@linuxdriverproject.org>;
+ Wed, 14 Oct 2020 10:43:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5735587582
- for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 09:17:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=oSoCzew+YknB0dx5EoXOzxp1GOMgWSJZPnYxGNWDbHw=; b=bbHVobEMV+gxKJvM2yym+cXIBq
- fr+AXG56PjCs1dnTUCUFhA1KXpxjWdj+INB1pvURTaabIE118jh6jK8Ie8/ARC+Pmgp45nmv/ifqS
- mqDWYvAzc8+sJ/BAxkz2sVSKdNFeujBFY8Ovj+C/cNykURt2cFMx2UNiPpfD9qHUfsCmiLFejXHxP
- emit1XplFzfQI+kL4BAibB+Bb6r/6UqlL6KbtRTBCtsFKGKALZpQ7G5AGARKpVFfX42onYfwZPB/b
- F0er87EC0E3DR0lqy3cCSF/VE4aSvCn+U9OI1AMBf4CG5GRBlyMf0BFwjrx22xyBB8UuD8IQ0wcrM
- uSW/YzsA==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kScuP-0000Ui-V4; Wed, 14 Oct 2020 09:17:22 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 46051304E03;
- Wed, 14 Oct 2020 11:17:20 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 21495201A8541; Wed, 14 Oct 2020 11:17:20 +0200 (CEST)
-Date: Wed, 14 Oct 2020 11:17:20 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Shuah Khan <skhan@linuxfoundation.org>
-Subject: Re: [PATCH v3 00/11] Introduce Simple atomic counters
-Message-ID: <20201014091720.GC2628@hirez.programming.kicks-ass.net>
-References: <cover.1602209970.git.skhan@linuxfoundation.org>
- <20201009193746.GA1073957@hirez.programming.kicks-ass.net>
- <202010091255.246395A6@keescook>
- <20201010110920.GQ2628@hirez.programming.kicks-ass.net>
- <6e1dd408-653e-817e-b659-23649259a929@linuxfoundation.org>
+Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
+ [209.85.216.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F135A874B6
+ for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 10:43:17 +0000 (UTC)
+Received: by mail-pj1-f65.google.com with SMTP id h4so1431934pjk.0
+ for <devel@driverdev.osuosl.org>; Wed, 14 Oct 2020 03:43:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TLlS80C3+IxXz+Inv9FiSZ2p7DJpQkNfvWuR9ezYtIU=;
+ b=fMuOhrH0AccXWVujZxlpWdXwZsc/c8buUEDYDG4ZLPMtl/Oe6xCGGnBWeM0MYWNXoq
+ Ip/JbZlKTQyG3McaSoIU9pEkmYeEtm0xWa6sJXII2YTdg8FufSi0NEVlJCTs1SNhwF3j
+ j2nkWKrypQoE+na4fD87RkjJypFZAP1VxDBhEGhotK0aOSmrcDfpWpyn7uI70AXbRvGk
+ bauqaxZu9eUulIv9nwBGY3vA+UDnqrWJ79Jxl2ITeEnJtSGFU6FT4jguBnEtcWX6fLaY
+ 1droOycAhxMg5QEO+8Vl/ZsHrnGdELdptvJQ9IDmZiKECOCCSNZsVUUJQqZ0fpMHrTip
+ dCPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TLlS80C3+IxXz+Inv9FiSZ2p7DJpQkNfvWuR9ezYtIU=;
+ b=bB4/EZRY6Alg8KISSk0j6HfVGsU2J2yG7qq8r3Cf1j06G6Yk1OGH4E/GKLyX+g5oCg
+ MP4Xk8ibnUHZIuzdn8Pt5cyvXpZB28kM05oq+/8ufPcn2PeSi4sSTvff9s81xRKMxWty
+ OB8ciJIm6MSxZOR9aXKdnbfBMMC5V4DY5PLVVcbyXOs6ZjZsWBK+PqTyYlaRp9gD0YcI
+ Lds3pasOx6/vzqxTg6IVxfUEPlYamq3xSMBXCn/K8EN2px/a+47B5bnQJAL0Q2tYoAwm
+ 7JXKEbBh0DimSUWTNCKntI46j8AB083adCkFqHgULzAaV1zbFRJNkWd3oomd7+9UqzZ0
+ Itqw==
+X-Gm-Message-State: AOAM5322TWKrbj87fouHwKIUG1sNI02LwV4E7z8zNev+rjVK0CusopUS
+ hHN873OBYe6ZGmutd5kYdsGWdPlHB3wj6VHq
+X-Google-Smtp-Source: ABdhPJx3SVxvRPT+7/Bjix7zziN668MSxpKiyLkWZpIHRVgqTjyAV6TRQBWL0TSZhaq3tRe8HAdSbg==
+X-Received: by 2002:a17:90b:1496:: with SMTP id
+ js22mr2973264pjb.20.1602672197276; 
+ Wed, 14 Oct 2020 03:43:17 -0700 (PDT)
+Received: from localhost ([2001:e42:102:1532:160:16:113:140])
+ by smtp.gmail.com with ESMTPSA id gd14sm2700856pjb.31.2020.10.14.03.43.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 14 Oct 2020 03:43:16 -0700 (PDT)
+From: Coiby Xu <coiby.xu@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH v2 0/7] staging: qlge: Re-writing the debugging features
+Date: Wed, 14 Oct 2020 18:42:59 +0800
+Message-Id: <20201014104306.63756-1-coiby.xu@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6e1dd408-653e-817e-b659-23649259a929@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,92 +84,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: rafael@kernel.org, Will Deacon <will@kernel.org>,
- linux-kselftest@vger.kernel.org, joel@joelfernandes.org, rric@kernel.org,
- shuah@kernel.org, devel@driverdev.osuosl.org, arnd@arndb.de, corbet@lwn.net,
- surenb@google.com, linux-doc@vger.kernel.org, linux-acpi@vger.kernel.org,
- lenb@kernel.org, tkjos@android.com, Kees Cook <keescook@chromium.org>,
- minyard@acm.org, bp@alien8.de, openipmi-developer@lists.sourceforge.net,
- mchehab@kernel.org, maco@android.com, christian@brauner.io,
- linux-edac@vger.kernel.org, tony.luck@intel.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, arve@android.com, james.morse@arm.com,
- hridya@google.com, johannes@sipsolutions.net
+Cc: Benjamin Poirier <benjamin.poirier@gmail.com>,
+ Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+ Shung-Hsi Yu <shung-hsi.yu@suse.com>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 13, 2020 at 08:12:20PM -0600, Shuah Khan wrote:
+This patch set aims to avoid dumping registers, data structures and
+coredump to dmesg and also to reduce the code size of the qlge driver.
 
-> They don't add any new behavior, As Kees mentioned they do give us a
-> way to clearly differentiate atomic usages that can wrap.
+As pointed out by Benjamin [1],
 
-No it doesn't! atomic_t can wrap, this thing can wrap, no distinction.
+> At 2000 lines, qlge_dbg.c alone is larger than some entire ethernet
+> drivers. Most of what it does is dump kernel data structures or pci
+> memory mapped registers to dmesg. There are better facilities for that.
+> My thinking is not simply to delete qlge_dbg.c but to replace it, making
+> sure that most of the same information is still available. For data
+> structures, crash or drgn can be used; possibly with a script for the
+> latter which formats the data. For pci registers, they should be
+> included in the ethtool register dump and a patch added to ethtool to
+> pretty print them. That's what other drivers like e1000e do. For the
+> "coredump", devlink health can be used.
 
-All it does is fragment the API and sow confusion. FOR NO BENEFIT.
+So the debugging features are re-written following Benjamin's advice,
+   - dump kernel data structures in drgn
+   - use devlink to do coredump which also includes device status and
+     general registers
 
-> > Worse, it mixes 2 unrelated cases into one type, which just makes a
-> > mockery of things (all the inc_return users are not statistics, some
-> > might even mis-behave if they wrap).
-> > 
-> 
-> You are right that all inc_return usages aren't statistics. There are
-> 3 distinct usages:
-> 
-> 1. Stats
-> 2. Cases where wrapping is fine
-> 3. Cases where wrapping could be a problem. In which case, this API
->    shouldn't be used.
+[1] https://lkml.org/lkml/2020/6/30/19
 
-And yet, afaict patch 4 is case 3...
+v1 -> v2
+- Call devlink_free when register_netdev fails [Willem de Bruijn]
+- "scripts/checkpatch.pl --strict" for changes [Dan Carpente]
+- Declares variables in "Reverse Christmas Tree" [Dan Carpente]
+- Use the sizeof() directly  [Dan Carpente]
+- Add SPDX-License-Identifier to qlge_devlink.{c,h}
+- Rename ql_* to qlge_* [Benjamin Poirier]
+- Update drivers/staging/qlge/TODO [Benjamin Poirier]
+- struct qlge_adapter is now used as the private data struct of
+  devlink instead of net_device [Benjamin Poirier]
 
-> There is no need to keep inc_return in this API as such. I included it
-> so it can be used for above cases 1 and 2, so the users don't have to
-> call inc() followed by read(). It can be left out of the API.
-> 
-> The atomic_t usages in the kernel fall into the following categories:
-> 
-> 1. Stats (tolerance for accuracy determines whether they need to be
->    atomic or not). RFC version included non-atomic API for cases
->    when lossiness is acceptable. All these cases use/need just init
->    and inc. There are two variations in this case:
-> 
->    a. No checks for wrapping. Use signed value.
->    b. No checks for wrapping, but return unsigned.
-> 
-> 2. Reference counters that release resource and rapping could result
->    in use-after-free type problems. There are two variations in this
->    case:
-> 
->    a. Increments and decrements aren't bounded.
->    b. Increments and decrements are bounded.
-> 
->    Currently tools that flag unsafe atomic_t usages that are candidates
->    for refcount_t conversions don't make a distinction between the two.
-> 
->    The second case, since increments and decrements are bounded, it is
->    safe to continue to use it. At the moment there is no good way to
->    tell them apart other than looking at each of these cases.
-> 
-> 3. Reference counters that manage/control states. Wrapping is a problem
->    in this case, as it could lead to undefined behavior. These cases
->    don't use test and free, use inc/dec. At the moment there is no good
->    way to tell them apart other than looking at each of these cases.
->    This is addressed by REFCOUNT_SATURATED case.
+RFC -> v1
+ - select NET_DEVLINK in Kconfig [Benjamin Poirier]
+ - Don't do a coredump when the interface is down [Shung-Hsi Yu]
+ - Remove stray newlines [Benjamin Poirier]
+ - force_coredump for devlink
+ - Remove mpi_core_to_log which will output the coredump to the kernel
+   ring buffer
+ - Put drgn script under Documentation [Benjamin Poirier]
+ - Rename qlge_health.* to qlge_devlink.*
 
-Wrong! The atomic usage in mutex doesn't fall in any of those
-categories.
+Coiby Xu (7):
+  staging: qlge: replace ql_* with qlge_* to avoid namespace clashes
+    with other qlogic drivers
+  staging: qlge: Initialize devlink health dump framework
+  staging: qlge: coredump via devlink health reporter
+  staging: qlge: support force_coredump option for devlink health dump
+  staging: qlge: remove mpi_core_to_log which sends coredump to the
+    kernel ring buffer
+  staging: qlge: clean up debugging code in the QL_ALL_DUMP ifdef land
+  staging: qlge: add documentation for debugging qlge
 
+ .../networking/device_drivers/index.rst       |    1 +
+ .../device_drivers/qlogic/index.rst           |   18 +
+ .../networking/device_drivers/qlogic/qlge.rst |  118 ++
+ MAINTAINERS                                   |    6 +
+ drivers/staging/qlge/Kconfig                  |    1 +
+ drivers/staging/qlge/Makefile                 |    2 +-
+ drivers/staging/qlge/TODO                     |   10 -
+ drivers/staging/qlge/qlge.h                   |  216 +--
+ drivers/staging/qlge/qlge_dbg.c               | 1650 +++++------------
+ drivers/staging/qlge/qlge_devlink.c           |  156 ++
+ drivers/staging/qlge/qlge_devlink.h           |    9 +
+ drivers/staging/qlge/qlge_ethtool.c           |  234 ++-
+ drivers/staging/qlge/qlge_main.c              | 1302 ++++++-------
+ drivers/staging/qlge/qlge_mpi.c               |  356 ++--
+ 14 files changed, 1802 insertions(+), 2277 deletions(-)
+ create mode 100644 Documentation/networking/device_drivers/qlogic/index.rst
+ create mode 100644 Documentation/networking/device_drivers/qlogic/qlge.rst
+ create mode 100644 drivers/staging/qlge/qlge_devlink.c
+ create mode 100644 drivers/staging/qlge/qlge_devlink.h
 
-The only thing you're all saying that makes sense is that unintentional
-wrapping can have bad consequences, the rest is pure confusion.
+--
+2.28.0
 
-Focus on the non-wrapping cases, _everything_ else is not going
-anywhere.
-
-So audit the kernel, find the cases that should not wrap, categorize and
-create APIs for them that trap the wrapping. But don't go around
-confusing things that don't need confusion.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
