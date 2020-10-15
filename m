@@ -1,59 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF9FB28F77B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Oct 2020 19:12:25 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CABEE290DC8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Oct 2020 00:35:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F53388475;
-	Thu, 15 Oct 2020 17:12:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 774022E8DB;
+	Fri, 16 Oct 2020 22:35:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5Gd9QDYgKXv2; Thu, 15 Oct 2020 17:12:23 +0000 (UTC)
+	with ESMTP id eb31J1K+e13g; Fri, 16 Oct 2020 22:35:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2826E87DD6;
-	Thu, 15 Oct 2020 17:12:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 42EB32E8D6;
+	Fri, 16 Oct 2020 22:35:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AB2761BF427
- for <devel@linuxdriverproject.org>; Thu, 15 Oct 2020 17:12:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9AB6E1BF316
+ for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 22:35:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A6C5988444
- for <devel@linuxdriverproject.org>; Thu, 15 Oct 2020 17:12:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 95707885C6
+ for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 22:35:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ewEJKjZgIGM4 for <devel@linuxdriverproject.org>;
- Thu, 15 Oct 2020 17:12:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4FD3287DD6
- for <devel@linuxdriverproject.org>; Thu, 15 Oct 2020 17:12:21 +0000 (UTC)
-Subject: Re: [GIT PULL] Staging/IIO driver update for 5.10-rc1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602781940;
- bh=f4gFtS/hg+fjIEa1gl55i+9wch5ncs1dyFgrX1syOrg=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=IKKaxf4xTmY7tCuy0wbd5kCZ2gUBjlrtQRiEAPOeKnFmZFDTbNk23ySo0+MZLBPfR
- WQWpmntYc1OVtn5jJqlyNZKs14jjyb5TiCiVZc0Ojysjf0UTjzOE0Uvd/i0j5zi4is
- +9sI5zRbt/9S9DrIGWHjRADRBKr234lILHNnoHxk=
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20201015122713.GA4021230@kroah.com>
-References: <20201015122713.GA4021230@kroah.com>
-X-PR-Tracked-List-Id: Linux Driver Project Developer List
- <driverdev-devel.linuxdriverproject.org>
-X-PR-Tracked-Message-Id: <20201015122713.GA4021230@kroah.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
- tags/staging-5.10-rc1
-X-PR-Tracked-Commit-Id: e1f13c879a7c21bd207dc6242455e8e3a1e88b40
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: ade7afe3e606f9f6ff0e6deefce140157f75540b
-Message-Id: <160278194076.2218.9925296435436817818.pr-tracker-bot@kernel.org>
-Date: Thu, 15 Oct 2020 17:12:20 +0000
-To: Greg KH <gregkh@linuxfoundation.org>
+ with ESMTP id LYW6FJ1iUPmI for <devel@linuxdriverproject.org>;
+ Fri, 16 Oct 2020 22:35:15 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.cs.ccu.edu.tw (mail.cs.ccu.edu.tw [140.123.101.188])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 15A83885CE
+ for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 22:35:14 +0000 (UTC)
+Received: from User (unknown [102.141.212.14])
+ by mail.cs.ccu.edu.tw (Postfix) with ESMTPA id 7378838BE3;
+ Fri, 16 Oct 2020 05:57:43 +0800 (CST)
+From: "Mikhail Fridman"<cmendes@fa.ulisboa.pt>
+Subject: Did You Get My Message This Time?
+Date: Thu, 15 Oct 2020 22:58:10 +0100
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Antivirus: Avast (VPS 201015-0, 10/15/2020), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20201016223517.95707885C6@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,28 +57,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
- devel@linuxdriverproject.org
-MIME-Version: 1.0
+Reply-To: fridmanmik1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pull request you sent on Thu, 15 Oct 2020 14:27:13 +0200:
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.10-rc1
+I, Mikhail Fridman have selected you specifically as one of my beneficiaries for my Charitable Donation of $5 Million Dollars, Email Me personally for more details
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/ade7afe3e606f9f6ff0e6deefce140157f75540b
+Check the link below for confirmation:
 
-Thank you!
+https://www.rt.com/business/343781-mikhail-fridman-will-charity/
+
+I await your earliest response for further directives.
+
+Best Regards,
+Mikhail Fridman.
 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+This email has been checked for viruses by Avast antivirus software.
+https://www.avast.com/antivirus
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
