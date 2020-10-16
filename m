@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89E3C2904A3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Oct 2020 14:03:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 48F898892E;
-	Fri, 16 Oct 2020 12:03:23 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mhtC2HCGV2I2; Fri, 16 Oct 2020 12:03:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 338C488935;
-	Fri, 16 Oct 2020 12:03:20 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 534861BF867
- for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 12:03:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id ECA4A2904B8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Oct 2020 14:05:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 474E42050B
- for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 12:03:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 78CE02E796;
+	Fri, 16 Oct 2020 12:05:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8CKu-1JksdAL; Fri, 16 Oct 2020 12:05:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 112102E78D;
+	Fri, 16 Oct 2020 12:05:35 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 926131BF3A4
+ for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 12:05:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8EAB18879F
+ for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 12:05:28 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fpvGjzdWe3Sc for <devel@linuxdriverproject.org>;
- Fri, 16 Oct 2020 12:03:14 +0000 (UTC)
+ with ESMTP id dSwvP_CCRZeS for <devel@linuxdriverproject.org>;
+ Fri, 16 Oct 2020 12:05:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by silver.osuosl.org (Postfix) with ESMTPS id AEE7820506
- for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 12:03:14 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id e7so1363592pfn.12
- for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 05:03:14 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 787028879D
+ for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 12:05:27 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id 10so1383221pfp.5
+ for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 05:05:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=x2GKJTo2qYsyHZMoxqFD1/J59i+y20zftI8/n7N//F0=;
- b=RmbZ2QKUprB3PBmJAZOZZfwjhQKeTGd75WF4P2jdtkzSHB7UJ59b249sN1RJsdxssq
- h6TL/AotkWcLakctndRkGIQpjdwfMBaKqusNShq0vKl4DAqPUaP/E98tpiHF55+pXzlA
- YwkQrr7OkDTRfow21Lyv/ZwllhlaDf/lCaLQ9WV95aHZC1f3rV7nt36fPRzY7mSFYf2/
- ivIN9mExJmCJGAiW3CpdHfGHimRV2xzfE323b8tIaTXSrQ0PYTlOsUT8YjLeMfOjlKky
- iZG7weTLGewxRhSUxela9k63qYFAMK2Medu5y1ZMGSQTj1aAmEAkKU8fRh2/AreRXIMf
- rcBw==
+ bh=qIgU8Plb5Hs46cFWHX9Gbtdd89uW5HBlBB0rZ1YZFlg=;
+ b=Q8jJiAPhYm/407VOToSm9Nu8DVPvMyM63t+fLFLP0YhChsutdYM1TvbMNMGfPLnS8e
+ rmI0DBy7197y40qusGvm4Nfp/ro2mqsFrr7vOP3CUmT6+uTrGRkWjrDclhgrHwujqdGO
+ xlvNlVv7EW7p+v/H9Y+sJ4aP7ihBPpUlCuAD5GvLhfkzAlCE4HM/3gRxps4QwGiiaq7b
+ suaQp3pzNyzyntqox3J9QxylOZnLBWRKY9wnOMDEkokpTZHVmzhDOMKW2bOkh+/DlEMe
+ E0D/S1NV6yBpUWz7ZFlym/H0TT90D6n7/ikzG3uvuVIeQ4/eYD+J1BDHI1IVD6Z5hPEN
+ fhNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=x2GKJTo2qYsyHZMoxqFD1/J59i+y20zftI8/n7N//F0=;
- b=FQ2STDEqvWk9TGZrt4DCJjl6X4qqSTcvxAVHIkxnSZ2S07YtW6WibbungoncGEqTqy
- aLlMlDUkg+xUWJIpzPCqRmLHXtfpqU97EHeFLPblXH4n4/Q8QpJUPP5KHklWbzx40gUf
- ayR8sSBwkafwpRgnSnoIlTiJmZLA7RuPaRQUOGLvs+Qs5kxtihgZrzAWIJXdaRSVr4ut
- YID02LUVGRZAuEO7Bwl4QUk38i0rNSP17DgNKjSLAcodZhnaLuxpzD0pjx0vg+OlxlW3
- 1lxP0WSfUCl9DznwqVPkr3pLiUeb2fHOo/5Q+Z9BkaNotN7F2ZDb89oSYkG4Ng+mb3cC
- q5Kg==
-X-Gm-Message-State: AOAM5302XPvvQbAaK6tBLxedraHuVdeydG8m7FYbzYd2yO05ZjTZ4qR4
- hqqo2DrvwE8e2PE07NeVRCHkDENwMOmMoyz/
-X-Google-Smtp-Source: ABdhPJwXAsxYVZ5Efyh6fsHCFxax3jlgu8lAuipqYii9srQrDlSAxoFyU7g5bQ3W2of2q+2us7y/dA==
-X-Received: by 2002:a63:5405:: with SMTP id i5mr2720197pgb.438.1602849793915; 
- Fri, 16 Oct 2020 05:03:13 -0700 (PDT)
+ bh=qIgU8Plb5Hs46cFWHX9Gbtdd89uW5HBlBB0rZ1YZFlg=;
+ b=do1xu26eq/buvb4cConYsVjacgBCSJiyQzMCBzw9GVfpxSceT5l8iKSg85YEbent/Q
+ x0tFPQ+HQ//Iq0sLY3O86bxe8FIU2dGMDrbzeI7uWLx8+iLH4N9JcbcqkYWP3JAanFpl
+ u7Mxis1c+DWRwOv4q8XqA4xKYPVdaRRglM3p+ZcZpu4+qdz+G5ICajrEOjjyVwXfj7X/
+ kswki6zokvzhrM+qyrMNcvl6I758EF0b9JJMJpH4ON1IDJHJGLurUolXgkhHz5lBlPwu
+ qNA1CBwVrkL/Di4aP8stGMZTq/SgfA9vzWR1IFQwd9GJR9s5qFYkm+wk0FtJIEYYiFWB
+ pNKQ==
+X-Gm-Message-State: AOAM5307cOQeU3MY+1LPpwHC/aCshJsvhgrB6JeINzFXMpZ1nGwSjRuf
+ MbrSyW5alb93DPkvz2bTo3Rc8eh9q7itsV1d
+X-Google-Smtp-Source: ABdhPJx4YgQUKDxWrW658qt080dTPpi/N6P2877g03FerOyS1Efpo35bR51xKc/8cFKjKMixK+ju6A==
+X-Received: by 2002:a63:2246:: with SMTP id t6mr2892831pgm.103.1602849926703; 
+ Fri, 16 Oct 2020 05:05:26 -0700 (PDT)
 Received: from localhost ([160.16.113.140])
- by smtp.gmail.com with ESMTPSA id js21sm2850802pjb.14.2020.10.16.05.03.13
+ by smtp.gmail.com with ESMTPSA id e19sm2701300pff.34.2020.10.16.05.05.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2020 05:03:13 -0700 (PDT)
+ Fri, 16 Oct 2020 05:05:26 -0700 (PDT)
 From: Coiby Xu <coiby.xu@gmail.com>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH v3 3/8] staging: qlge: re-write qlge_init_device
-Date: Fri, 16 Oct 2020 19:54:02 +0800
-Message-Id: <20201016115407.170821-4-coiby.xu@gmail.com>
+Subject: [PATCH v3 4/8] staging: qlge: coredump via devlink health reporter
+Date: Fri, 16 Oct 2020 19:54:03 +0800
+Message-Id: <20201016115407.170821-5-coiby.xu@gmail.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201016115407.170821-1-coiby.xu@gmail.com>
 References: <20201016115407.170821-1-coiby.xu@gmail.com>
@@ -98,119 +98,177 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Stop calling ql_release_all in qlge_init_device and free things one step
-at a time.
+    $ devlink health dump show DEVICE reporter coredump -p -j
+    {
+        "Core Registers": {
+            "segment": 1,
+            "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
+        },
+        "Test Logic Regs": {
+            "segment": 2,
+            "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
+        },
+        "RMII Registers": {
+            "segment": 3,
+            "values": [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
+        },
+        ...
+        "Sem Registers": {
+            "segment": 50,
+            "values": [ 0,0,0,0 ]
+        }
+    }
 
-Link: https://lore.kernel.org/patchwork/patch/1321092/#1516928
-Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
 Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
 ---
- drivers/staging/qlge/qlge_main.c | 32 ++++++++++++++++++++------------
- 1 file changed, 20 insertions(+), 12 deletions(-)
+ drivers/staging/qlge/qlge_devlink.c | 130 ++++++++++++++++++++++++++--
+ 1 file changed, 124 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index 888179fbf98c..c081aa1bb43d 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -4403,13 +4403,13 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 	err = pcie_set_readrq(pdev, 4096);
- 	if (err) {
- 		dev_err(&pdev->dev, "Set readrq failed.\n");
--		goto err_out1;
-+		goto err_disable_pci;
- 	}
+diff --git a/drivers/staging/qlge/qlge_devlink.c b/drivers/staging/qlge/qlge_devlink.c
+index d9c71f45211f..b75ec5bff26a 100644
+--- a/drivers/staging/qlge/qlge_devlink.c
++++ b/drivers/staging/qlge/qlge_devlink.c
+@@ -2,16 +2,134 @@
+ #include "qlge.h"
+ #include "qlge_devlink.h"
  
- 	err = pci_request_regions(pdev, DRV_NAME);
- 	if (err) {
- 		dev_err(&pdev->dev, "PCI region request failed.\n");
--		return err;
-+		goto err_disable_pci;
- 	}
- 
- 	pci_set_master(pdev);
-@@ -4425,7 +4425,7 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 
- 	if (err) {
- 		dev_err(&pdev->dev, "No usable DMA configuration.\n");
--		goto err_out2;
-+		goto err_release_pci;
- 	}
- 
- 	/* Set PCIe reset type for EEH to fundamental. */
-@@ -4436,7 +4436,7 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 	if (!qdev->reg_base) {
- 		dev_err(&pdev->dev, "Register mapping failed.\n");
- 		err = -ENOMEM;
--		goto err_out2;
-+		goto err_release_pci;
- 	}
- 
- 	qdev->doorbell_area_size = pci_resource_len(pdev, 3);
-@@ -4445,14 +4445,14 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 	if (!qdev->doorbell_area) {
- 		dev_err(&pdev->dev, "Doorbell register mapping failed.\n");
- 		err = -ENOMEM;
--		goto err_out2;
-+		goto err_iounmap_base;
- 	}
- 
- 	err = qlge_get_board_info(qdev);
- 	if (err) {
- 		dev_err(&pdev->dev, "Register access failed.\n");
- 		err = -EIO;
--		goto err_out2;
-+		goto err_iounmap_doorbell;
- 	}
- 	qdev->msg_enable = netif_msg_init(debug, default_msg);
- 	spin_lock_init(&qdev->stats_lock);
-@@ -4462,7 +4462,7 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 			vmalloc(sizeof(struct qlge_mpi_coredump));
- 		if (!qdev->mpi_coredump) {
- 			err = -ENOMEM;
--			goto err_out2;
-+			goto err_iounmap_doorbell;
- 		}
- 		if (qlge_force_coredump)
- 			set_bit(QL_FRC_COREDUMP, &qdev->flags);
-@@ -4471,7 +4471,7 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 	err = qdev->nic_ops->get_flash(qdev);
- 	if (err) {
- 		dev_err(&pdev->dev, "Invalid FLASH.\n");
--		goto err_out2;
-+		goto err_free_mpi_coredump;
- 	}
- 
- 	/* Keep local copy of current mac address. */
-@@ -4494,7 +4494,7 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 						  ndev->name);
- 	if (!qdev->workqueue) {
- 		err = -ENOMEM;
--		goto err_out2;
-+		goto err_free_mpi_coredump;
- 	}
- 
- 	INIT_DELAYED_WORK(&qdev->asic_reset_work, qlge_asic_reset_work);
-@@ -4512,10 +4512,18 @@ static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
- 			 DRV_NAME, DRV_VERSION);
- 	}
- 	return 0;
--err_out2:
--	qlge_release_all(pdev);
--err_out1:
+-static int
+-qlge_reporter_coredump(struct devlink_health_reporter *reporter,
+-		       struct devlink_fmsg *fmsg, void *priv_ctx,
+-		       struct netlink_ext_ack *extack)
++static int qlge_fill_seg_(struct devlink_fmsg *fmsg,
++			  struct mpi_coredump_segment_header *seg_header,
++			  u32 *reg_data)
+ {
+-	return 0;
++	int regs_num = (seg_header->seg_size
++			- sizeof(struct mpi_coredump_segment_header)) / sizeof(u32);
++	int err;
++	int i;
 +
-+err_free_mpi_coredump:
-+	vfree(qdev->mpi_coredump);
-+err_iounmap_doorbell:
-+	iounmap(qdev->doorbell_area);
-+err_iounmap_base:
-+	iounmap(qdev->reg_base);
-+err_release_pci:
-+	pci_release_regions(pdev);
-+err_disable_pci:
- 	pci_disable_device(pdev);
++	err = devlink_fmsg_pair_nest_start(fmsg, seg_header->description);
++	if (err)
++		return err;
++	err = devlink_fmsg_obj_nest_start(fmsg);
++	if (err)
++		return err;
++	err = devlink_fmsg_u32_pair_put(fmsg, "segment", seg_header->seg_num);
++	if (err)
++		return err;
++	err = devlink_fmsg_arr_pair_nest_start(fmsg, "values");
++	if (err)
++		return err;
++	for (i = 0; i < regs_num; i++) {
++		err = devlink_fmsg_u32_put(fmsg, *reg_data);
++		if (err)
++			return err;
++		reg_data++;
++	}
++	err = devlink_fmsg_obj_nest_end(fmsg);
++	if (err)
++		return err;
++	err = devlink_fmsg_arr_pair_nest_end(fmsg);
++	if (err)
++		return err;
++	err = devlink_fmsg_pair_nest_end(fmsg);
++	return err;
++}
 +
- 	return err;
++#define FILL_SEG(seg_hdr, seg_regs)			                    \
++	do {                                                                \
++		err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
++		if (err) {					            \
++			kvfree(dump);                                       \
++			return err;				            \
++		}                                                           \
++	} while (0)
++
++static int qlge_reporter_coredump(struct devlink_health_reporter *reporter,
++				  struct devlink_fmsg *fmsg, void *priv_ctx,
++				  struct netlink_ext_ack *extack)
++{
++	int err = 0;
++
++	struct qlge_adapter *qdev = devlink_health_reporter_priv(reporter);
++	struct qlge_mpi_coredump *dump;
++
++	if (!netif_running(qdev->ndev))
++		return 0;
++
++	dump = kvmalloc(sizeof(*dump), GFP_KERNEL);
++	if (!dump)
++		return -ENOMEM;
++
++	err = qlge_core_dump(qdev, dump);
++	if (err) {
++		kvfree(dump);
++		return err;
++	}
++
++	FILL_SEG(core_regs_seg_hdr, mpi_core_regs);
++	FILL_SEG(test_logic_regs_seg_hdr, test_logic_regs);
++	FILL_SEG(rmii_regs_seg_hdr, rmii_regs);
++	FILL_SEG(fcmac1_regs_seg_hdr, fcmac1_regs);
++	FILL_SEG(fcmac2_regs_seg_hdr, fcmac2_regs);
++	FILL_SEG(fc1_mbx_regs_seg_hdr, fc1_mbx_regs);
++	FILL_SEG(ide_regs_seg_hdr, ide_regs);
++	FILL_SEG(nic1_mbx_regs_seg_hdr, nic1_mbx_regs);
++	FILL_SEG(smbus_regs_seg_hdr, smbus_regs);
++	FILL_SEG(fc2_mbx_regs_seg_hdr, fc2_mbx_regs);
++	FILL_SEG(nic2_mbx_regs_seg_hdr, nic2_mbx_regs);
++	FILL_SEG(i2c_regs_seg_hdr, i2c_regs);
++	FILL_SEG(memc_regs_seg_hdr, memc_regs);
++	FILL_SEG(pbus_regs_seg_hdr, pbus_regs);
++	FILL_SEG(mde_regs_seg_hdr, mde_regs);
++	FILL_SEG(nic_regs_seg_hdr, nic_regs);
++	FILL_SEG(nic2_regs_seg_hdr, nic2_regs);
++	FILL_SEG(xgmac1_seg_hdr, xgmac1);
++	FILL_SEG(xgmac2_seg_hdr, xgmac2);
++	FILL_SEG(code_ram_seg_hdr, code_ram);
++	FILL_SEG(memc_ram_seg_hdr, memc_ram);
++	FILL_SEG(xaui_an_hdr, serdes_xaui_an);
++	FILL_SEG(xaui_hss_pcs_hdr, serdes_xaui_hss_pcs);
++	FILL_SEG(xfi_an_hdr, serdes_xfi_an);
++	FILL_SEG(xfi_train_hdr, serdes_xfi_train);
++	FILL_SEG(xfi_hss_pcs_hdr, serdes_xfi_hss_pcs);
++	FILL_SEG(xfi_hss_tx_hdr, serdes_xfi_hss_tx);
++	FILL_SEG(xfi_hss_rx_hdr, serdes_xfi_hss_rx);
++	FILL_SEG(xfi_hss_pll_hdr, serdes_xfi_hss_pll);
++
++	err = qlge_fill_seg_(fmsg, &dump->misc_nic_seg_hdr,
++			     (u32 *)&dump->misc_nic_info);
++	if (err) {
++		kvfree(dump);
++		return err;
++	}
++
++	FILL_SEG(intr_states_seg_hdr, intr_states);
++	FILL_SEG(cam_entries_seg_hdr, cam_entries);
++	FILL_SEG(nic_routing_words_seg_hdr, nic_routing_words);
++	FILL_SEG(ets_seg_hdr, ets);
++	FILL_SEG(probe_dump_seg_hdr, probe_dump);
++	FILL_SEG(routing_reg_seg_hdr, routing_regs);
++	FILL_SEG(mac_prot_reg_seg_hdr, mac_prot_regs);
++	FILL_SEG(xaui2_an_hdr, serdes2_xaui_an);
++	FILL_SEG(xaui2_hss_pcs_hdr, serdes2_xaui_hss_pcs);
++	FILL_SEG(xfi2_an_hdr, serdes2_xfi_an);
++	FILL_SEG(xfi2_train_hdr, serdes2_xfi_train);
++	FILL_SEG(xfi2_hss_pcs_hdr, serdes2_xfi_hss_pcs);
++	FILL_SEG(xfi2_hss_tx_hdr, serdes2_xfi_hss_tx);
++	FILL_SEG(xfi2_hss_rx_hdr, serdes2_xfi_hss_rx);
++	FILL_SEG(xfi2_hss_pll_hdr, serdes2_xfi_hss_pll);
++	FILL_SEG(sem_regs_seg_hdr, sem_regs);
++
++	kvfree(dump);
++	return err;
  }
+ 
+ static const struct devlink_health_reporter_ops qlge_reporter_ops = {
+-	.name = "dummy",
++	.name = "coredump",
+ 	.dump = qlge_reporter_coredump,
+ };
  
 -- 
 2.28.0
