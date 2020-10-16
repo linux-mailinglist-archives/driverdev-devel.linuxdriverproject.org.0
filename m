@@ -1,36 +1,36 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50B9728FE4F
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9BEF328FE50
 	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Oct 2020 08:28:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7946B88B56;
-	Fri, 16 Oct 2020 06:28:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21B932E3F2;
+	Fri, 16 Oct 2020 06:28:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WAy8THpeiDCo; Fri, 16 Oct 2020 06:28:38 +0000 (UTC)
+	with ESMTP id 2o5BIlZanSZe; Fri, 16 Oct 2020 06:28:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 26D8C88B40;
-	Fri, 16 Oct 2020 06:28:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 476DB20486;
+	Fri, 16 Oct 2020 06:28:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D113A1BF9C1
+ by ash.osuosl.org (Postfix) with ESMTP id C9DC41BF857
  for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 06:28:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C6BE788869
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C777E88879
  for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 06:28:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xBxXy4PXEwt8 for <devel@linuxdriverproject.org>;
+ with ESMTP id 8uLJsH9-Wkzm for <devel@linuxdriverproject.org>;
  Fri, 16 Oct 2020 06:28:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from cpanel.giganet.cl (cpanel.giganet.cl [190.96.78.139])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A27A588864
- for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 06:28:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5DED7887E5
+ for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 06:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=dplgrout.cl
  ; s=default;
  h=Content-Transfer-Encoding:Content-Type:Message-ID:Reply-To:
@@ -59,7 +59,7 @@ X-Sender: info@controlypotencia.com
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - cpanel.giganet.cl
-X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - controlypotencia.com
 X-Get-Message-Sender-Via: cpanel.giganet.cl: authenticated_id:
