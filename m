@@ -1,62 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CD2628FC2D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Oct 2020 03:06:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 63D748835A;
-	Fri, 16 Oct 2020 01:06:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MsfEpTVOAfrR; Fri, 16 Oct 2020 01:06:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BE509882D6;
-	Fri, 16 Oct 2020 01:06:29 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9AF801BF397
- for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 01:06:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 047D028FC48
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Oct 2020 03:50:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 97FBB8880F
- for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 01:06:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 503B388827;
+	Fri, 16 Oct 2020 01:50:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l--nGUDCcDtg; Fri, 16 Oct 2020 01:50:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A5FE8881B;
+	Fri, 16 Oct 2020 01:50:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 187AF1BF397
+ for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 01:50:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 12DCA88C08
+ for <devel@linuxdriverproject.org>; Fri, 16 Oct 2020 01:50:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EG7vyjq88cRH for <devel@linuxdriverproject.org>;
- Fri, 16 Oct 2020 01:06:26 +0000 (UTC)
+ with ESMTP id u0a5lqSyKJW9 for <devel@linuxdriverproject.org>;
+ Fri, 16 Oct 2020 01:50:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E4FB288806
- for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 01:06:25 +0000 (UTC)
-IronPort-SDR: zzktR3Q0B/dE7DPsQvfLJuphLBhph1RWdysXFwI4h3iT3IM9unziMelTFeIyuDulRjMA56PDm5
- aqtwVSDHPzrA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9775"; a="154306955"
-X-IronPort-AV: E=Sophos;i="5.77,380,1596524400"; d="scan'208";a="154306955"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Oct 2020 18:06:22 -0700
-IronPort-SDR: 14kOzG3b/uD9RCQNUdqH/TkBMAgQj6f21E920CPygCtaj0JObhzuEC6ljgulUR3cLgQ1kbBWmu
- SQ+8A5H0anuA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,380,1596524400"; d="scan'208";a="352025751"
-Received: from lkp-server01.sh.intel.com (HELO 5003fa193bf3) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 15 Oct 2020 18:06:21 -0700
-Received: from kbuild by 5003fa193bf3 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kTECK-0000Ar-F7; Fri, 16 Oct 2020 01:06:20 +0000
-Date: Fri, 16 Oct 2020 09:05:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- 278eb821e97cb90f918863bc3d19c497300893f7
-Message-ID: <5f88f1f2.gjxzDFLJlFAZhIRE%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
+ [209.85.166.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3183388B60
+ for <devel@driverdev.osuosl.org>; Fri, 16 Oct 2020 01:50:38 +0000 (UTC)
+Received: by mail-io1-f66.google.com with SMTP id 67so1813871iob.8
+ for <devel@driverdev.osuosl.org>; Thu, 15 Oct 2020 18:50:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=Lnz+3X498d+Pw84uYesLONlxmmcjlWUIkyxJu0l46jM=;
+ b=rm2viusRTPBp0TJU8pgk7dKrwSZHWURw3hbfsPPeR3W1h1/UsXUEwl1ioBQI2hRXd5
+ c+MohwMXmt+BxSgwzF7ygp+LFqAeVmopFAnrtD2hC99SzOgk93txz/QDDWzixmHAiYex
+ yg0pxm1zvDUy6H+HTvQcDRFnwDWirlfuAUEEUlgCv7BpcO11TnNbcC6MsW6JjiDtQGCe
+ 9F70JUoWqvtzUAv6ztft/mNvBHokjZsYMnllOqdn+P6eM9CEMk9sPtrumniDcjOUFVLr
+ qMp1+PMhFjR0XPP17eX3ddc24kmOY/CfbICHLgqVSsWO5CG1oqTDd4O07mx2XeSYKhT5
+ CK4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=Lnz+3X498d+Pw84uYesLONlxmmcjlWUIkyxJu0l46jM=;
+ b=HgtQlMVe6dTBW573uNOSVUXtHOkYmz7Tm2mKfm+PiNW0rbkZAI60t3FmdmLrTbGAG1
+ u+cFtEIDXwKmV80NJy0Xg48HYElWX++C5OEIDH/MyZBGyXcpkz/nBL0z8Hjtn1mtoq6D
+ NGrfCQFyN727irM+ChEBIG/+wrbgYOQ42xMac+IYEZecut+WDGDfj3M9lZjV69ybfpH3
+ NkiDvw3U0JhU1OGTPUL65Uds3J9XhZYHKELr3E8ElBPf3WZHzL1dTZE53V17AV0awCn1
+ xhsLxlmm32Gmhf388arRQCJPj0aAXQ8yHGUroj0QcOE+r4sz1erJdx5Rq8KyN3lF3sCu
+ +Fsg==
+X-Gm-Message-State: AOAM5302cDzmt+in7VbIg29WKdLmXU3FegJHQkz14BKhHOpBvMtYFFph
+ 1Sbd1YrR9Dcz39XNJtwnbX0=
+X-Google-Smtp-Source: ABdhPJw58WzznEotpeyXbMPb7MnVHRD71RKnqhwSc4tdNfgdfsbrRRLZ/GSpcwJWk/nqYlTFXz2iEA==
+X-Received: by 2002:a6b:9243:: with SMTP id u64mr711338iod.197.1602813037247; 
+ Thu, 15 Oct 2020 18:50:37 -0700 (PDT)
+Received: from ubuntu-m3-large-x86 ([2604:1380:45d1:2600::3])
+ by smtp.gmail.com with ESMTPSA id s17sm793793ioa.38.2020.10.15.18.50.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Oct 2020 18:50:36 -0700 (PDT)
+Date: Thu, 15 Oct 2020 18:50:34 -0700
+From: Nathan Chancellor <natechancellor@gmail.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 8/8] staging: wfx: improve robustness of wfx_get_hw_rate()
+Message-ID: <20201016015034.GA2122229@ubuntu-m3-large-x86>
+References: <20201009171307.864608-1-Jerome.Pouiller@silabs.com>
+ <20201009171307.864608-9-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201009171307.864608-9-Jerome.Pouiller@silabs.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,169 +87,91 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_cleanup
-branch HEAD: 278eb821e97cb90f918863bc3d19c497300893f7  debugfs: remove return value of debugfs_create_devm_seqfile()
+On Fri, Oct 09, 2020 at 07:13:07PM +0200, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> =
 
-elapsed time: 724m
+> Smatch complains:
+> =
 
-configs tested: 139
-configs skipped: 2
+>     data_tx.c:37 wfx_get_hw_rate() warn: constraint '(struct ieee80211_su=
+pported_band)->bitrates' overflow 'band->bitrates' 0 <=3D abs_rl '0-127' us=
+er_rl '' required =3D '(struct ieee80211_supported_band)->n_bitrates'
+>     23          struct ieee80211_supported_band *band;
+>     24
+>     25          if (rate->idx < 0)
+>     26                  return -1;
+>     27          if (rate->flags & IEEE80211_TX_RC_MCS) {
+>     28                  if (rate->idx > 7) {
+>     29                          WARN(1, "wrong rate->idx value: %d", rate=
+->idx);
+>     30                          return -1;
+>     31                  }
+>     32                  return rate->idx + 14;
+>     33          }
+>     34          // WFx only support 2GHz, else band information should be=
+ retrieved
+>     35          // from ieee80211_tx_info
+>     36          band =3D wdev->hw->wiphy->bands[NL80211_BAND_2GHZ];
+>     37          return band->bitrates[rate->idx].hw_value;
+> =
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> Add a simple check to make Smatch happy.
+> =
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                 mpc836x_rdk_defconfig
-sh                         apsh4a3a_defconfig
-arm                       cns3420vb_defconfig
-powerpc                         ps3_defconfig
-xtensa                generic_kc705_defconfig
-arc                        vdk_hs38_defconfig
-powerpc                      katmai_defconfig
-sparc                       sparc32_defconfig
-sh                           se7780_defconfig
-arm                          moxart_defconfig
-sh                               alldefconfig
-powerpc                     tqm5200_defconfig
-mips                      pic32mzda_defconfig
-m68k                          multi_defconfig
-powerpc                   motionpro_defconfig
-sh                               allmodconfig
-mips                          malta_defconfig
-arm                         lpc32xx_defconfig
-arm                          simpad_defconfig
-arm                         at91_dt_defconfig
-arm                            lart_defconfig
-parisc                generic-64bit_defconfig
-x86_64                           alldefconfig
-riscv                               defconfig
-riscv                    nommu_k210_defconfig
-mips                           ip28_defconfig
-i386                             alldefconfig
-powerpc                      pmac32_defconfig
-arm                      tct_hammer_defconfig
-powerpc                     kilauea_defconfig
-mips                        nlm_xlp_defconfig
-mips                         tb0287_defconfig
-powerpc                      mgcoge_defconfig
-arm                        vexpress_defconfig
-powerpc                     tqm8540_defconfig
-arm                         nhk8815_defconfig
-h8300                       h8s-sim_defconfig
-arm                           stm32_defconfig
-arm                           spitz_defconfig
-sh                  sh7785lcr_32bit_defconfig
-arc                        nsimosci_defconfig
-arm                       omap2plus_defconfig
-arm                            xcep_defconfig
-arm                        mini2440_defconfig
-xtensa                              defconfig
-arm                         shannon_defconfig
-powerpc                    sam440ep_defconfig
-m68k                        m5307c3_defconfig
-sh                             sh03_defconfig
-sh                        edosk7705_defconfig
-arm                           sama5_defconfig
-powerpc                 mpc8560_ads_defconfig
-arm                        magician_defconfig
-sh                            migor_defconfig
-arm                           viper_defconfig
-sh                     sh7710voipgw_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a004-20201015
-x86_64               randconfig-a002-20201015
-x86_64               randconfig-a006-20201015
-x86_64               randconfig-a001-20201015
-x86_64               randconfig-a005-20201015
-x86_64               randconfig-a003-20201015
-i386                 randconfig-a005-20201014
-i386                 randconfig-a006-20201014
-i386                 randconfig-a001-20201014
-i386                 randconfig-a003-20201014
-i386                 randconfig-a004-20201014
-i386                 randconfig-a002-20201014
-i386                 randconfig-a005-20201015
-i386                 randconfig-a006-20201015
-i386                 randconfig-a001-20201015
-i386                 randconfig-a003-20201015
-i386                 randconfig-a004-20201015
-i386                 randconfig-a002-20201015
-x86_64               randconfig-a016-20201014
-x86_64               randconfig-a012-20201014
-x86_64               randconfig-a015-20201014
-x86_64               randconfig-a013-20201014
-x86_64               randconfig-a014-20201014
-x86_64               randconfig-a011-20201014
-i386                 randconfig-a016-20201014
-i386                 randconfig-a013-20201014
-i386                 randconfig-a015-20201014
-i386                 randconfig-a011-20201014
-i386                 randconfig-a012-20201014
-i386                 randconfig-a014-20201014
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                            allmodconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> ---
+>  drivers/staging/wfx/data_tx.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> =
 
-clang tested configs:
-x86_64               randconfig-a004-20201014
-x86_64               randconfig-a002-20201014
-x86_64               randconfig-a006-20201014
-x86_64               randconfig-a001-20201014
-x86_64               randconfig-a005-20201014
-x86_64               randconfig-a003-20201014
+> diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+> index 8db0be08daf8..41f6a604a697 100644
+> --- a/drivers/staging/wfx/data_tx.c
+> +++ b/drivers/staging/wfx/data_tx.c
+> @@ -31,6 +31,10 @@ static int wfx_get_hw_rate(struct wfx_dev *wdev,
+>  		}
+>  		return rate->idx + 14;
+>  	}
+> +	if (rate->idx >=3D band->n_bitrates) {
+> +		WARN(1, "wrong rate->idx value: %d", rate->idx);
+> +		return -1;
+> +	}
+>  	// WFx only support 2GHz, else band information should be retrieved
+>  	// from ieee80211_tx_info
+>  	band =3D wdev->hw->wiphy->bands[NL80211_BAND_2GHZ];
+> -- =
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> 2.28.0
+> =
+
+
+This now causes a clang warning:
+
+drivers/staging/wfx/data_tx.c:34:19: warning: variable 'band' is uninitiali=
+zed when used here [-Wuninitialized]
+        if (rate->idx >=3D band->n_bitrates) {
+                         ^~~~
+drivers/staging/wfx/data_tx.c:23:39: note: initialize the variable 'band' t=
+o silence this warning
+        struct ieee80211_supported_band *band;
+                                             ^
+                                              =3D NULL
+1 warning generated.
+
+Cheers,
+Nathan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
