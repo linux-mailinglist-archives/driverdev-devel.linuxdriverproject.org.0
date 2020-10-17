@@ -1,76 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1A71291266
-	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Oct 2020 16:29:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 792F5204EA;
-	Sat, 17 Oct 2020 14:29:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OB2RIpqT0gLr; Sat, 17 Oct 2020 14:29:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 44D41204E1;
-	Sat, 17 Oct 2020 14:29:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2C4CA1BF35A
- for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 14:29:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C02D291268
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Oct 2020 16:29:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 245B985118
- for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 14:29:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E73F5876D5;
+	Sat, 17 Oct 2020 14:29:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PehfoBBvrRC5; Sat, 17 Oct 2020 14:29:39 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B8E27876CF;
+	Sat, 17 Oct 2020 14:29:38 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E92FC1BF35A
+ for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 14:29:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id E4F7687813
+ for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 14:29:36 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yn6Jd8JjuNe8 for <devel@linuxdriverproject.org>;
- Sat, 17 Oct 2020 14:29:15 +0000 (UTC)
+ with ESMTP id 9I+kmnIRbD0I for <devel@linuxdriverproject.org>;
+ Sat, 17 Oct 2020 14:29:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
  [209.85.128.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 54A9285102
- for <devel@driverdev.osuosl.org>; Sat, 17 Oct 2020 14:29:15 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id 13so6194283wmf.0
- for <devel@driverdev.osuosl.org>; Sat, 17 Oct 2020 07:29:15 -0700 (PDT)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EB292877FC
+ for <devel@driverdev.osuosl.org>; Sat, 17 Oct 2020 14:29:35 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id d81so6193920wmc.1
+ for <devel@driverdev.osuosl.org>; Sat, 17 Oct 2020 07:29:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YVQnjhnO3hPEHey+2a/NsTVt2kt0i3WZ2OmRQGb+eEU=;
- b=lPz4OrDNKkJKRGbxIKA86ZwUlRZGmluEv4tikHtZVh0Z/EQdien5qZyTMYb/73ZwEM
- la/V7M84Xe9V7Kc90euTFPV1Fs6TrEjr0y3OVmO60jU3/1yj57osqvVeIKP3UKZQTegn
- RtEMvOnw0UmHuH54peCQZymCg3LQXIIgLMbUAY0FjZ9g/Sg+BMAsOBatBmBpCFDZQp/z
- NAlSAe/mmm5ZXNoMxTRtcWU11TTt6VW0KyT5eooRv6PSKJ/0GsaUpLv9AN7v29Auhrd8
- BERIfdAzMKLweDxv4rEunjcledmnXGeC4bPAzGPNW/1P5yK0MB1nsP33iANR7j7fahzn
- VBow==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AhTAkXNg8my5roVt3jSaeXHe7VJ9U3uXiwwvjKdguwI=;
+ b=u3bVkEeryu4yoyRBIK95E6ZpRNKQMDD3Dpa+7It6UOZs0KJtv1xLfLRcgEgwOHLRA+
+ LeyVS5aCQ5QbUuHaJTQHgEKRFq+3AlSq7+XqB8tQoiaVrVZH7v7zbDmSmc/a0kZ2Rf4V
+ 19G7iMvIhTPaesN2/Obun7YkHweSRY3U6TybzDNz99CD0KvMl1t9AXn/7Lwi2Y+Lm/n4
+ RycmodJiDE5PEExd0I/AJqrXP3WMWlPi1pOLplkT+YXKfUkOSn2rL2btGDWG6sqf0qRB
+ qhQ+LGMa2LgULoz/3fe2XJ1VVQ10RA2pcDinSjeak0NEyO6g3qiwbM8uHMgoVsNvEeBb
+ Lnwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YVQnjhnO3hPEHey+2a/NsTVt2kt0i3WZ2OmRQGb+eEU=;
- b=Xri7PT/Wipm3Ib/VVB9HAlk4sLpPhUksvrtipV0MYJFAqpyXuwPP/VJGGSC119NHoc
- t2GVjkx0+6BALhVqlrty0JKIeaJIcJ5KerwLEWSHtu4APALzixw7EtdkY6hOxBG5/6Cq
- tjHI9UL0B0fw3UqDe67VWeN/sXsxUIxJf2fY8jVSwoUFkOSItSM1fTtyBe54sUyY6O3M
- 3ZyZT70gYXxo90XmfUBagVITYnUEq13zq0zD/lgXGG+QRVAMt3lmnfL1piv5VR3D5TWH
- OQkX1u8baP6EVtqJfD72jXOaA5tm6I1VXRNAJWMRiXiepuyMiHgrKrnezU0UiRxpWU8D
- mLMA==
-X-Gm-Message-State: AOAM532OfEODklzStltxWHMOZxXG1SF5QYGv6Ay3YjDmE0g42L2ipTly
- LxaRjFfFjPLHF1PKjR1GfIY=
-X-Google-Smtp-Source: ABdhPJyecMC7VKYn9/3RgFi8oaYY+8gX1km0A2OJxjhdLdLiHBiocHr5Hr6rQWe0HVVYhH2XtNtVnA==
-X-Received: by 2002:a1c:4b0f:: with SMTP id y15mr9123399wma.165.1602944953679; 
- Sat, 17 Oct 2020 07:29:13 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AhTAkXNg8my5roVt3jSaeXHe7VJ9U3uXiwwvjKdguwI=;
+ b=APW/e+AeP39mWsJH43I/SEpE09ZEZQdazV3KqaU7bhFkA0Uso8VRcfgyJLbyGlXuDd
+ vxgy5mvoYZ8Il+nzZV1OD4NJ/FQDKL1uKiqxo5cDUf5+FwvjZDJsGqFu+RIO3G7DO7Ph
+ Fcq0R67+zzCSKV6O23/nNzMRE5U2N1cLW0o2QKVE3frSAM4GeUw7aHMH3n/Qlq3WZ4d/
+ kYaoB1FpdcB3Plm6WcCh6JCXA5o6hV3S1TA2V20XoIO1PLOtPUg48YHlqqjfo2Am6rvV
+ jvjqFQjwWj6Hs76LXskjntkqNgJh3ad7SNPMJPoDmwcle56L6eq0sl0CnBR2fCTgEX0z
+ hEog==
+X-Gm-Message-State: AOAM531E82KWdFAXU+x3pu/Yeql6k2MRu4yXZ8Je7n2ME8MQ+bnOwc5b
+ eAcUYrSz4tpwWp15+rK0tHk=
+X-Google-Smtp-Source: ABdhPJz7VD1SHo2gupIa60LiZ1qC0cDQgbYIUx7544d4vuszHNvQtgGANWf8aQkMLhtN7iPJI960nw==
+X-Received: by 2002:a05:600c:230a:: with SMTP id
+ 10mr9050861wmo.151.1602944974299; 
+ Sat, 17 Oct 2020 07:29:34 -0700 (PDT)
 Received: from localhost.localdomain
  (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
- by smtp.gmail.com with ESMTPSA id n5sm9020860wrm.2.2020.10.17.07.29.12
+ by smtp.gmail.com with ESMTPSA id n5sm9020860wrm.2.2020.10.17.07.29.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 17 Oct 2020 07:29:13 -0700 (PDT)
+ Sat, 17 Oct 2020 07:29:33 -0700 (PDT)
 From: Alex Dewar <alex.dewar90@gmail.com>
 To: 
-Subject: [PATCH 2/2] staging: media: atomisp: Remove unused function
-Date: Sat, 17 Oct 2020 15:28:00 +0100
-Message-Id: <20201017142810.26967-1-alex.dewar90@gmail.com>
+Subject: [PATCH 1/2] staging: media: atomisp: Remove unnecessary if statement
+Date: Sat, 17 Oct 2020 15:28:02 +0100
+Message-Id: <20201017142810.26967-2-alex.dewar90@gmail.com>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201017142810.26967-1-alex.dewar90@gmail.com>
+References: <20201017142810.26967-1-alex.dewar90@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,66 +98,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The function ia_css_mipi_frame_specify() is not called from anywhere and
-the comment above its declaration states that it should be removed when
-there are no more users. So remove it.
+The bodies of the if and else sections are the same, so just remove the
+check.
 
 Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
 ---
- drivers/staging/media/atomisp/pci/ia_css_mipi.h | 17 -----------------
- drivers/staging/media/atomisp/pci/sh_css_mipi.c | 11 -----------
- 2 files changed, 28 deletions(-)
+ .../staging/media/atomisp/pci/atomisp_cmd.c   | 27 +++++--------------
+ 1 file changed, 6 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/ia_css_mipi.h b/drivers/staging/media/atomisp/pci/ia_css_mipi.h
-index 7b6d796d6ee0..9e50e1c619be 100644
---- a/drivers/staging/media/atomisp/pci/ia_css_mipi.h
-+++ b/drivers/staging/media/atomisp/pci/ia_css_mipi.h
-@@ -25,23 +25,6 @@
- #include "ia_css_stream_format.h"
- #include "ia_css_input_port.h"
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 592ea990d4ca..92ddce409d04 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -5407,27 +5407,12 @@ static int atomisp_set_fmt_to_isp(struct video_device *vdev,
+ 		return -EINVAL;
+ 	}
  
--/* Backward compatible for CSS API 2.0 only
-- * TO BE REMOVED when all drivers move to CSS API 2.1.
-- */
--/* @brief Specify a CSS MIPI frame buffer.
-- *
-- * @param[in]	size_mem_words	The frame size in memory words (32B).
-- * @param[in]	contiguous	Allocate memory physically contiguously or not.
-- * @return		The error code.
-- *
-- * \deprecated{Use ia_css_mipi_buffer_config instead.}
-- *
-- * Specifies a CSS MIPI frame buffer: size in memory words (32B).
-- */
--int
--ia_css_mipi_frame_specify(const unsigned int	size_mem_words,
--			  const bool contiguous);
--
- /* @brief Register size of a CSS MIPI frame for check during capturing.
-  *
-  * @param[in]	port	CSI-2 port this check is registered.
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_mipi.c b/drivers/staging/media/atomisp/pci/sh_css_mipi.c
-index d5ae7f0b5864..3f34cc81be87 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_mipi.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css_mipi.c
-@@ -33,17 +33,6 @@
- static u32
- ref_count_mipi_allocation[N_CSI_PORTS]; /* Initialized in mipi_init */
- 
--int
--ia_css_mipi_frame_specify(const unsigned int size_mem_words,
--			  const bool contiguous) {
--	int err = 0;
--
--	my_css.size_mem_words = size_mem_words;
--	(void)contiguous;
--
--	return err;
--}
--
- /*
-  * Check if a source port or TPG/PRBS ID is valid
-  */
+-	if (asd->continuous_mode->val &&
+-	    (configure_pp_input == atomisp_css_preview_configure_pp_input ||
+-	     configure_pp_input == atomisp_css_video_configure_pp_input)) {
+-		/* for isp 2.2, configure pp input is available for continuous
+-		 * mode */
+-		ret = configure_pp_input(asd, isp_sink_crop->width,
+-					 isp_sink_crop->height);
+-		if (ret) {
+-			dev_err(isp->dev, "configure_pp_input %ux%u\n",
+-				isp_sink_crop->width,
+-				isp_sink_crop->height);
+-			return -EINVAL;
+-		}
+-	} else {
+-		ret = configure_pp_input(asd, isp_sink_crop->width,
+-					 isp_sink_crop->height);
+-		if (ret) {
+-			dev_err(isp->dev, "configure_pp_input %ux%u\n",
+-				isp_sink_crop->width, isp_sink_crop->height);
+-			return -EINVAL;
+-		}
++	ret = configure_pp_input(asd, isp_sink_crop->width, isp_sink_crop->height);
++	if (ret) {
++		dev_err(isp->dev, "configure_pp_input %ux%u\n",
++			isp_sink_crop->width,
++			isp_sink_crop->height);
++		return -EINVAL;
+ 	}
+ 	if (asd->copy_mode)
+ 		ret = atomisp_css_copy_get_output_frame_info(asd, stream_index,
 -- 
 2.28.0
 
