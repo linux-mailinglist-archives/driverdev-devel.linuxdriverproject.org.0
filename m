@@ -1,44 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD99C291462
-	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Oct 2020 22:45:51 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E9E7291463
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Oct 2020 22:49:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 85B0920791;
-	Sat, 17 Oct 2020 20:45:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2B08B86C02;
+	Sat, 17 Oct 2020 20:49:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5sH+YHLDvsvp; Sat, 17 Oct 2020 20:45:47 +0000 (UTC)
+	with ESMTP id KCsspx0kDBYq; Sat, 17 Oct 2020 20:49:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 81B6D204EC;
-	Sat, 17 Oct 2020 20:45:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 35E5086BC2;
+	Sat, 17 Oct 2020 20:49:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 899CC1BF407
- for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 20:45:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 17F3E1BF407
+ for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 20:49:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 700F5204CA
- for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 20:45:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 116F287508
+ for <devel@linuxdriverproject.org>; Sat, 17 Oct 2020 20:49:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h4TPdOu7yIVz for <devel@linuxdriverproject.org>;
- Sat, 17 Oct 2020 20:45:40 +0000 (UTC)
+ with ESMTP id XSHfkuz0RwaO for <devel@linuxdriverproject.org>;
+ Sat, 17 Oct 2020 20:49:02 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
- by silver.osuosl.org (Postfix) with ESMTPS id 035B6204BE
- for <devel@driverdev.osuosl.org>; Sat, 17 Oct 2020 20:45:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 18F56874EB
+ for <devel@driverdev.osuosl.org>; Sat, 17 Oct 2020 20:49:02 +0000 (UTC)
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
  (envelope-from <andrew@lunn.ch>)
- id 1kTt54-002Bvk-Sq; Sat, 17 Oct 2020 22:45:34 +0200
-Date: Sat, 17 Oct 2020 22:45:34 +0200
+ id 1kTt8N-002Bx8-On; Sat, 17 Oct 2020 22:48:59 +0200
+Date: Sat, 17 Oct 2020 22:48:59 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Alexander A Sverdlin <alexander.sverdlin@nokia.com>
 Subject: Re: [PATCH v2 net] staging: octeon: repair "fixed-link" support
-Message-ID: <20201017204534.GS456889@lunn.ch>
+Message-ID: <20201017204859.GT456889@lunn.ch>
 References: <20201016101858.11374-1-alexander.sverdlin@nokia.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -64,6 +64,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+> --- a/drivers/staging/octeon/ethernet.c
+> +++ b/drivers/staging/octeon/ethernet.c
+> @@ -13,6 +13,7 @@
+>  #include <linux/phy.h>
+>  #include <linux/slab.h>
+>  #include <linux/interrupt.h>
+> +#include <linux/of_mdio.h>
+>  #include <linux/of_net.h>
+>  #include <linux/if_ether.h>
+>  #include <linux/if_vlan.h>
+> @@ -892,6 +893,14 @@ static int cvm_oct_probe(struct platform_device *pdev)
+>  				break;
+>  			}
+>  
 > +			if (priv->of_node && of_phy_is_fixed_link(priv->of_node)) {
 > +				if (of_phy_register_fixed_link(priv->of_node)) {
 > +					netdev_err(dev, "Failed to register fixed link for interface %d, port %d\n",
@@ -74,13 +88,14 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 > +
 >  			if (!dev->netdev_ops) {
 >  				free_netdev(dev);
+>  			} else if (register_netdev(dev) < 0) {
+> -- 
+> 2.10.2
 
-Setting dev->netdev_ops to NULL to indicate an error is pretty
-odd. But this is staging. How about cleaning this
-up. of_phy_register_fixed_link() returns an -errno which you should
-return.
+I would also expect a call to of_phy_deregister_fixed_link() somewhere
+in the driver.
 
-	Andrew
+   Andrew
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
