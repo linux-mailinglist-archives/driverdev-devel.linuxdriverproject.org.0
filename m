@@ -2,61 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CC4F291FF1
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 22:42:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8623D29204C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 23:50:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5DBA48722F;
-	Sun, 18 Oct 2020 20:42:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3F8FE86EB5;
+	Sun, 18 Oct 2020 21:50:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SqXInBR0A0VO; Sun, 18 Oct 2020 20:42:12 +0000 (UTC)
+	with ESMTP id KGv6AKrB84vU; Sun, 18 Oct 2020 21:50:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FA7A8720A;
-	Sun, 18 Oct 2020 20:42:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CB2168353B;
+	Sun, 18 Oct 2020 21:50:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 099AB1BF46A
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 20:42:10 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CFA731BF47D
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 21:50:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E91A6875FE
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 20:42:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CB41C876AF
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 21:50:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1WxcVrk46Bw8 for <devel@linuxdriverproject.org>;
- Sun, 18 Oct 2020 20:42:08 +0000 (UTC)
+ with ESMTP id XfYMjJBLHkwd for <devel@linuxdriverproject.org>;
+ Sun, 18 Oct 2020 21:50:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C901D87639
- for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 20:42:06 +0000 (UTC)
-IronPort-SDR: t5pB+0Yy2toGLEINTN3obqziLuU17d5r6xXkxfo/NrQyAcII/DEU+9TG+O4QOBA2vWwzt55utK
- enhk0+ke1Mqg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9778"; a="166148558"
-X-IronPort-AV: E=Sophos;i="5.77,392,1596524400"; d="scan'208";a="166148558"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2020 13:42:04 -0700
-IronPort-SDR: 1Ljgz2061l+ii0U/i+IYHdL45pVq14onWe7/jxj7Z3l6TlRy96f0IVHxE8tsY7P11OI349W2FA
- jRmzWoQ8gdkw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,392,1596524400"; d="scan'208";a="465295238"
-Received: from lkp-server01.sh.intel.com (HELO 0318c0cac2d8) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 18 Oct 2020 13:42:03 -0700
-Received: from kbuild by 0318c0cac2d8 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kUFVC-00009b-HO; Sun, 18 Oct 2020 20:42:02 +0000
-Date: Mon, 19 Oct 2020 04:41:29 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- a259a22338ed6906256a51a440d31ea086a0b90b
-Message-ID: <5f8ca879.WEX/pECUB9GGAmcd%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
+ [209.85.160.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 21D6B876AB
+ for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 21:50:13 +0000 (UTC)
+Received: by mail-qt1-f196.google.com with SMTP id t9so4993994qtp.9
+ for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 14:50:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LW7NtPMGJ2R8VOhKgzw6sjc10vh2YbY8kQEEkfju8fA=;
+ b=BT6sX70H+s8KhgIkqlKxOTyt7nLW9Zkkp/pWMqwoIwpRPwASphI99ISJJY/DrRq4YB
+ tuxxuQta89p2LltScao7kwUamcV10d6qq0/0GsMri9Y5uCbzF0DQIPVBZym6oh2w8IRp
+ jGv4FzahYM8UB3UvXODpIfq1ilK2uqq9Xd/9k1Vp0D25EYeZvsrsLMiSOVKbh0jHo8ly
+ ZwpyiDfjYzQI7omWM6lYTXWC4WxC4zXCwovEKbG2sVh0lXA3kgHlfvQ9kncK/jS7lzXB
+ WtZ4PQbPMGBo2Fvzsm14b4aTThFD0/Vsyl0CynTIq6qQwMl+W5yJA342KaaYBMt5xICG
+ NkkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LW7NtPMGJ2R8VOhKgzw6sjc10vh2YbY8kQEEkfju8fA=;
+ b=GTZVNJYgr4Rym3U3xQXkU1Lcabe+ZaSWbRZgC9qbROvEhLcfnYJxuHCmH4Ip9Iu5wV
+ 0jHRnkWjo7mqVuwgQcpQi6eXMgXetWLAJp00C+25VySdrFMzTebi4/AUHiD1Z3vWN6kh
+ CaY8/luLEkPpgkgmQLbbDp1Q9KSaIqUxjF9WAzmPA+abavwg8hXD5tvZf1LeE8oSUi7F
+ O74nRGIR9bC5yylDZWd015yHHRgFqowKLiQWeVKr6174v+PdesTQYsfXM3ZzAQWdBL/B
+ nMett+PQVmBSVsN8AuQ+mbvcDt8arWlPkJ9RS3sk98kxDNi14yCMNGuocJNYzitvfkx5
+ csEQ==
+X-Gm-Message-State: AOAM5323OQbH9kpChtESHU8LnhTbfem5Y0TU8wPTs9chv0fFOLNjLLQ8
+ YUvKns9iV0/WW6f248RGQfGCPqU8DQlWSTPQdVE=
+X-Google-Smtp-Source: ABdhPJw59Z9ZSI7YkUnrDX/NzYUwLZIQMERPV41io/elXdvNyA/Ph+eIMdFGNAEYy/TP8jUOuq9oIUb3paHWMlURueE=
+X-Received: by 2002:aed:2983:: with SMTP id o3mr12423656qtd.285.1603057812125; 
+ Sun, 18 Oct 2020 14:50:12 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200817091617.28119-1-allen.cryptic@gmail.com>
+In-Reply-To: <20200817091617.28119-1-allen.cryptic@gmail.com>
+From: Richard Weinberger <richard.weinberger@gmail.com>
+Date: Sun, 18 Oct 2020 23:50:00 +0200
+Message-ID: <CAFLxGvxsHD6zvTJSHeo2gaoRQfjUPZ6M=5BirOObHFjGqnzfew@mail.gmail.com>
+Subject: Re: [PATCH] arch: um: convert tasklets to use new tasklet_setup() API
+To: Allen Pais <allen.cryptic@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,123 +79,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ linux-atm-general@lists.sourceforge.net, manohar.vanga@gmail.com,
+ Dave Airlie <airlied@linux.ie>, Allen Pais <allen.lkml@gmail.com>,
+ linux-hyperv@vger.kernel.org,
+ DRI mailing list <dri-devel@lists.freedesktop.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ Anton Ivanov <anton.ivanov@cambridgegreys.com>, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
+ Maxim Levitsky <maximlevitsky@gmail.com>, Richard Weinberger <richard@nod.at>,
+ Helge Deller <deller@gmx.de>, jassisinghbrar@gmail.com, 3chas3@gmail.com,
+ intel-gfx@lists.freedesktop.org, kuba@kernel.org, mporter@kernel.crashing.org,
+ Jeff Dike <jdike@addtoit.com>, Kees Cook <keescook@chromium.org>,
+ Alex Dubov <oakad@yahoo.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ linux-input@vger.kernel.org, linux-um <linux-um@lists.infradead.org>,
+ linux-block@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ openipmi-developer@lists.sourceforge.net, mitch@sfgoth.com,
+ linux-arm-kernel@lists.infradead.org, Jens Axboe <axboe@kernel.dk>,
+ linux-parisc@vger.kernel.org, netdev@vger.kernel.org, martyn@welchs.me.uk,
+ dmitry.torokhov@gmail.com, linux-mmc@vger.kernel.org,
+ Sebastian Reichel <sre@kernel.org>,
+ "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, alex.bou9@gmail.com,
+ stefanr@s5r6.in-berlin.de, Daniel Vetter <daniel@ffwll.ch>,
+ linux-ntb@googlegroups.com, Romain Perier <romain.perier@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: a259a22338ed6906256a51a440d31ea086a0b90b  staging: qlge: remove extra blank lines
+On Mon, Aug 17, 2020 at 11:17 AM Allen Pais <allen.cryptic@gmail.com> wrote:
+>
+> From: Allen Pais <allen.lkml@gmail.com>
+>
+> In preparation for unconditionally passing the
+> struct tasklet_struct pointer to all tasklet
+> callbacks, switch to using the new tasklet_setup()
+> and from_tasklet() to pass the tasklet pointer explicitly.
+>
+> Signed-off-by: Romain Perier <romain.perier@gmail.com>
+> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+> ---
+>  arch/um/drivers/vector_kern.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-elapsed time: 724m
+Anton, can you please review this patch?
 
-configs tested: 93
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                            zeus_defconfig
-powerpc                    mvme5100_defconfig
-mips                        omega2p_defconfig
-powerpc                     sequoia_defconfig
-microblaze                      mmu_defconfig
-arc                        vdk_hs38_defconfig
-powerpc                 mpc8313_rdb_defconfig
-powerpc                     asp8347_defconfig
-mips                        nlm_xlr_defconfig
-powerpc                     skiroot_defconfig
-powerpc                     rainier_defconfig
-powerpc                 canyonlands_defconfig
-m68k                          multi_defconfig
-mips                     cu1830-neo_defconfig
-powerpc                 mpc8272_ads_defconfig
-powerpc                     tqm5200_defconfig
-powerpc                     ep8248e_defconfig
-parisc                generic-32bit_defconfig
-mips                         mpc30x_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a006-20201018
-i386                 randconfig-a005-20201018
-i386                 randconfig-a001-20201018
-i386                 randconfig-a003-20201018
-i386                 randconfig-a004-20201018
-i386                 randconfig-a002-20201018
-x86_64               randconfig-a016-20201018
-x86_64               randconfig-a015-20201018
-x86_64               randconfig-a012-20201018
-x86_64               randconfig-a013-20201018
-x86_64               randconfig-a011-20201018
-x86_64               randconfig-a014-20201018
-i386                 randconfig-a015-20201018
-i386                 randconfig-a013-20201018
-i386                 randconfig-a016-20201018
-i386                 randconfig-a012-20201018
-i386                 randconfig-a011-20201018
-i386                 randconfig-a014-20201018
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a004-20201018
-x86_64               randconfig-a002-20201018
-x86_64               randconfig-a006-20201018
-x86_64               randconfig-a003-20201018
-x86_64               randconfig-a005-20201018
-x86_64               randconfig-a001-20201018
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+-- 
+Thanks,
+//richard
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
