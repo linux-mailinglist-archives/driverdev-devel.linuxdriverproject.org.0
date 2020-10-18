@@ -1,66 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3236229192A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 21:07:03 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37431291939
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 21:13:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4A82B22CB0;
-	Sun, 18 Oct 2020 19:07:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D44AC8738F;
+	Sun, 18 Oct 2020 19:13:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id td1Jb9J0hiTG; Sun, 18 Oct 2020 19:06:59 +0000 (UTC)
+	with ESMTP id K6a9mP4rMPdq; Sun, 18 Oct 2020 19:13:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0211F22925;
-	Sun, 18 Oct 2020 19:06:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 131B487388;
+	Sun, 18 Oct 2020 19:13:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4BBD81BF568
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:06:54 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7268D1BF568
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:13:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 45275876B1
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:06:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6B2BA872B3
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:13:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yP5cYhdPKqZo for <devel@linuxdriverproject.org>;
- Sun, 18 Oct 2020 19:06:53 +0000 (UTC)
+ with ESMTP id fP6necvfqlw7 for <devel@linuxdriverproject.org>;
+ Sun, 18 Oct 2020 19:13:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0163.hostedemail.com
- [216.40.44.163])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 432A6876AD
- for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 19:06:53 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 20C1C18004562
- for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 19:06:52 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id 70CB3100E7B40;
- Sun, 18 Oct 2020 19:06:49 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:967:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2525:2553:2561:2564:2682:2685:2692:2828:2859:2905:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4250:4321:5007:6119:6742:6743:7903:8957:8985:9025:10004:10400:10848:11232:11658:11914:12043:12295:12297:12438:12555:12740:12760:12895:12986:13069:13072:13311:13357:13439:14096:14097:14181:14659:14721:14777:21080:21347:21433:21451:21627:21811:21819:30003:30012:30022:30034:30054:30083:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: year67_630d5f827230
-X-Filterd-Recvd-Size: 3209
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf09.hostedemail.com (Postfix) with ESMTPA;
- Sun, 18 Oct 2020 19:06:42 +0000 (UTC)
-Message-ID: <18981cad4ac27b4a22b2e38d40bd112432d4a4e7.camel@perches.com>
+Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
+ [96.44.175.130])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 369A88738F
+ for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 19:13:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 6E9191280300;
+ Sun, 18 Oct 2020 12:13:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
+ s=20151216; t=1603048418;
+ bh=z260bBy56dgN8y3lDRHRQeuKrIr1eALRZNoNPoXlSSo=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=QOZMzgTQH16i5avnDNVW0Ktw3okhOk0UWDzTWl7121p+F93A1Quw31cCRVLQH+SGW
+ zn7QBaZkwCTKpROUCnm6j2wnXTspVYtdUU68F1++PaWc9wHgdj5YeqG30CVReBaxSQ
+ 7zgTTXbB0BvsKBkgxIK2UI/Iu/DopS5PndAYThf8=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id JsjuUxZpqgrR; Sun, 18 Oct 2020 12:13:38 -0700 (PDT)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::c447])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 1ED2912802BA;
+ Sun, 18 Oct 2020 12:13:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
+ s=20151216; t=1603048418;
+ bh=z260bBy56dgN8y3lDRHRQeuKrIr1eALRZNoNPoXlSSo=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=QOZMzgTQH16i5avnDNVW0Ktw3okhOk0UWDzTWl7121p+F93A1Quw31cCRVLQH+SGW
+ zn7QBaZkwCTKpROUCnm6j2wnXTspVYtdUU68F1++PaWc9wHgdj5YeqG30CVReBaxSQ
+ 7zgTTXbB0BvsKBkgxIK2UI/Iu/DopS5PndAYThf8=
+Message-ID: <45efa7780c79972eae9ca9bdeb9f7edbab4f3643.camel@HansenPartnership.com>
 Subject: Re: [Ocfs2-devel] [RFC] treewide: cleanup unreachable breaks
-From: Joe Perches <joe@perches.com>
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
 To: Matthew Wilcox <willy@infradead.org>, trix@redhat.com
-Date: Sun, 18 Oct 2020 12:06:40 -0700
+Date: Sun, 18 Oct 2020 12:13:35 -0700
 In-Reply-To: <20201018185943.GM20115@casper.infradead.org>
 References: <20201017160928.12698-1-trix@redhat.com>
  <20201018185943.GM20115@casper.infradead.org>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -108,22 +115,23 @@ On Sun, 2020-10-18 at 19:59 +0100, Matthew Wilcox wrote:
 > > clang has a number of useful, new warnings see
 > > https://urldefense.com/v3/__https://clang.llvm.org/docs/DiagnosticsReference.html__;!!GqivPVa7Brio!Krxz78O3RKcB9JBMVo_F98FupVhj_jxX60ddN6tKGEbv_cnooXc1nnBmchm-e_O9ieGnyQ$ 
 > 
-> Please get your IT department to remove that stupidity.  If you can't,
-> please send email from a non-Red Hat email address.
+> Please get your IT department to remove that stupidity.  If you
+> can't, please send email from a non-Red Hat email address.
 
-I didn't get it this way, neither did lore.
-It's on your end.
+Actually, the problem is at Oracle's end somewhere in the ocfs2 list
+... if you could fix it, that would be great.  The usual real mailing
+lists didn't get this transformation
 
-https://lore.kernel.org/lkml/20201017160928.12698-1-trix@redhat.com/
+https://lore.kernel.org/bpf/20201017160928.12698-1-trix@redhat.com/
 
-> I don't understand why this is a useful warning to fix.
+but the ocfs2 list archive did:
 
-Precision in coding style intent and code minimization
-would be the biggest factors IMO.
+https://oss.oracle.com/pipermail/ocfs2-devel/2020-October/015330.html
 
-> What actual problem is caused by the code below?
+I bet Oracle IT has put some spam filter on the list that mangles URLs
+this way.
 
-Obviously none.
+James
 
 
 _______________________________________________
