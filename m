@@ -1,56 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6BF81291991
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 21:18:51 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62A22291997
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 21:19:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 02860873B0;
-	Sun, 18 Oct 2020 19:18:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4063586B38;
+	Sun, 18 Oct 2020 19:19:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EFeEOsTUe_kh; Sun, 18 Oct 2020 19:18:47 +0000 (UTC)
+	with ESMTP id zoWuTfXO9txb; Sun, 18 Oct 2020 19:19:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1621C873BF;
-	Sun, 18 Oct 2020 19:18:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 10A6F86B50;
+	Sun, 18 Oct 2020 19:18:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9B1B51BF568
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:18:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 988A31BF568
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:18:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9711D8779D
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:18:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 93CD522925
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:18:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qYUC0kKhHOhH for <devel@linuxdriverproject.org>;
- Sun, 18 Oct 2020 19:18:43 +0000 (UTC)
+ with ESMTP id wqYiGTOkP3+D for <devel@linuxdriverproject.org>;
+ Sun, 18 Oct 2020 19:18:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A50A58779C
- for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 19:18:43 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 317C022902
+ for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 19:18:56 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9633C222B9;
- Sun, 18 Oct 2020 19:18:42 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4256F222C8;
+ Sun, 18 Oct 2020 19:18:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603048723;
- bh=N5QeLT4lYf6VW3DsLZV3yTNIyO2Q9L2kglcl6ro5PDg=;
+ s=default; t=1603048735;
+ bh=lG9xer3NfKmY+nojdAzJLgz+78RX7Lcntov0YOqaR4U=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=tMdnw3boagkMJEYDFlds4XBJRtPuDZdKBiAhT71Cks6dKT4/qKp9RiG1H0ZWHdxHw
- +MLU3xhz3er/2KpecPu67FEjvtvZv93PsNBoQi0wx6nzszj8XG/AYi5IbY/12/vy/3
- UmYqm3XVeEpGBfSTNXWhU7cKb/ouy7Zky7l5VzIE=
+ b=KZ7v1SjpZUwcD6trz99EVs5kT/hhUHoryxDpyxOIoJ6GroPPLMbIfHSdTx4zKV+AB
+ GJdUtDDPqR/0H584CU1FvfpLyzj5t7Q23airRv1T9r+R8hSRZ86wc4/ZE2chbBY8hy
+ OeymDE7WB1C8vzBLdKfc60MEsqxj+w2stdGI7TCc=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.9 029/111] media: atomisp: fix memleak in
- ia_css_stream_create
-Date: Sun, 18 Oct 2020 15:16:45 -0400
-Message-Id: <20201018191807.4052726-29-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.9 039/111] staging: wfx: fix handling of MMIC error
+Date: Sun, 18 Oct 2020 15:16:55 -0400
+Message-Id: <20201018191807.4052726-39-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201018191807.4052726-1-sashal@kernel.org>
 References: <20201018191807.4052726-1-sashal@kernel.org>
@@ -69,47 +68,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Dinghao Liu <dinghao.liu@zju.edu.cn>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dinghao Liu <dinghao.liu@zju.edu.cn>
-
-[ Upstream commit c1bca5b5ced0cbd779d56f60cdbc9f5e6f6449fe ]
-
-When aspect_ratio_crop_init() fails, curr_stream needs
-to be freed just like what we've done in the following
-error paths. However, current code is returning directly
-and ends up leaking memory.
-
-Signed-off-by: Dinghao Liu <dinghao.liu@zju.edu.cn>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/staging/media/atomisp/pci/sh_css.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/atomisp/pci/sh_css.c b/drivers/staging/media/atomisp/pci/sh_css.c
-index a68cbb4995f0f..33a0f8ff82aa8 100644
---- a/drivers/staging/media/atomisp/pci/sh_css.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css.c
-@@ -9521,7 +9521,7 @@ ia_css_stream_create(const struct ia_css_stream_config *stream_config,
- 	if (err)
- 	{
- 		IA_CSS_LEAVE_ERR(err);
--		return err;
-+		goto ERR;
- 	}
- #endif
- 	for (i = 0; i < num_pipes; i++)
--- 
-2.25.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKWyBV
+cHN0cmVhbSBjb21taXQgOGQzNTBjMTRlZTVlYjYyZWNkNDBiMDk5MTI0OGJmYmNlNTExOTU0ZCBd
+CgpBcyBleHBlY3RlZCwgd2hlbiB0aGUgZGV2aWNlIGRldGVjdCBhIE1NSUMgZXJyb3IsIGl0IHJl
+dHVybnMgYSBzcGVjaWZpYwpzdGF0dXMuIEhvd2V2ZXIsIGl0IGFsc28gc3RyaXAgSVYgZnJvbSB0
+aGUgZnJhbWUgKGRvbid0IGFzayBtZSB3aHkpLgoKU28sIHdpdGggdGhlIGN1cnJlbnQgY29kZSwg
+bWFjODAyMTEgZGV0ZWN0cyBhIGNvcnJ1cHRlZCBmcmFtZSBhbmQgaXQKZHJvcHMgaXQgYmVmb3Jl
+IGl0IGhhbmRsZSB0aGUgTU1JQyBlcnJvci4gVGhlIGV4cGVjdGVkIGJlaGF2aW9yIHdvdWxkIGJl
+CnRvIGRldGVjdCBNTUlDIGVycm9yIHRoZW4gdG8gcmVuZWdvdGlhdGUgdGhlIEVBUCBzZXNzaW9u
+LgoKU28sIHRoaXMgcGF0Y2ggY29ycmVjdGx5IGluZm9ybXMgbWFjODAyMTEgdGhhdCBJViBpcyBu
+b3QgYXZhaWxhYmxlLiBTbywKbWFjODAyMTEgY29ycmVjdGx5IHRha2VzIGludG8gYWNjb3VudCB0
+aGUgTU1JQyBlcnJvci4KClNpZ25lZC1vZmYtYnk6IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUu
+cG91aWxsZXJAc2lsYWJzLmNvbT4KTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIw
+MTAwNzEwMTk0My43NDk4OTgtMi1KZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbQpTaWduZWQtb2Zm
+LWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgpTaWdu
+ZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9z
+dGFnaW5nL3dmeC9kYXRhX3J4LmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
+KyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFf
+cnguYyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV9yeC5jCmluZGV4IDZmYjA3ODg4MDc0MjYu
+LjgxYzM3ZWMwZjI4MzQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV9yeC5j
+CisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV9yeC5jCkBAIC00MSw3ICs0MSw3IEBAIHZv
+aWQgd2Z4X3J4X2NiKHN0cnVjdCB3ZnhfdmlmICp3dmlmLAogCW1lbXNldChoZHIsIDAsIHNpemVv
+ZigqaGRyKSk7CiAKIAlpZiAoYXJnLT5zdGF0dXMgPT0gSElGX1NUQVRVU19SWF9GQUlMX01JQykK
+LQkJaGRyLT5mbGFnIHw9IFJYX0ZMQUdfTU1JQ19FUlJPUjsKKwkJaGRyLT5mbGFnIHw9IFJYX0ZM
+QUdfTU1JQ19FUlJPUiB8IFJYX0ZMQUdfSVZfU1RSSVBQRUQ7CiAJZWxzZSBpZiAoYXJnLT5zdGF0
+dXMpCiAJCWdvdG8gZHJvcDsKIAotLSAKMi4yNS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
+ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
