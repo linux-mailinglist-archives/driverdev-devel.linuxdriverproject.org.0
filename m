@@ -1,84 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2C71291DD4
-	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 21:49:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69CE1291FAD
+	for <lists+driverdev-devel@lfdr.de>; Sun, 18 Oct 2020 22:06:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 18B7A22E94;
-	Sun, 18 Oct 2020 19:49:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E98F2871C1;
+	Sun, 18 Oct 2020 20:06:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1EvrFwqgZaVT; Sun, 18 Oct 2020 19:49:48 +0000 (UTC)
+	with ESMTP id PI_1tpGg7Kgg; Sun, 18 Oct 2020 20:06:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D924E22D24;
-	Sun, 18 Oct 2020 19:49:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D8B287184;
+	Sun, 18 Oct 2020 20:06:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 42ABC1BF568
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:49:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 68C341BF46A
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 20:06:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3547920399
- for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 19:49:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6113887184
+ for <devel@linuxdriverproject.org>; Sun, 18 Oct 2020 20:06:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fwqxdBhw-1Os for <devel@linuxdriverproject.org>;
- Sun, 18 Oct 2020 19:49:39 +0000 (UTC)
+ with ESMTP id ERJnv2S9QJcr for <devel@linuxdriverproject.org>;
+ Sun, 18 Oct 2020 20:06:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 8171020367
- for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 19:49:39 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id r10so137084plx.3
- for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 12:49:39 -0700 (PDT)
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2DB218717B
+ for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 20:06:44 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id c21so9169616ljn.13
+ for <devel@driverdev.osuosl.org>; Sun, 18 Oct 2020 13:06:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=XBjCi9n5sRXOHmjCnHoQMv9TMlv0+e+xdsqW9A8AbOo=;
- b=g57EGboQB/k2Ynwid67H8sfmdLRbBRB1fqV8z0u/EMJLAwAmAeX4MPxlpDlpqsW6OC
- gPXWiGhx1rg/R+uXRd2ELMMkMs0/b61BnrTy8obPxXSD2zX7TJ2EOUMBHGqsqIAbhfBi
- 3n/eO05OPG+gAsrPMv93UYznEZUwWpk3sKA01YUG1xKiUiZ2wq/GDbXBSUkXAlTZDqlU
- MLyfhc3CgyTVwK+4aSg3+FuzKijRI5PylIDu6vOCAfdIrjBcfwMFa8B6F72kzWKRB/5H
- 4TLw8B2mGM7ZaT+BJjIMBvf2X2DjsnEkzGyMp/J7hmsu/IOurL1t9RF4UbwGPiA9kTGY
- zV/Q==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2/yIw3iAR/1P5k0So8EgvrDXUbc+1qYmRQGCO4NWl/w=;
+ b=b69PazCEQHn7OPDdCs/gWBr8mjGJRM7gm6e07VMEpYBiGYaCSPVJiHlPxXRRGKoJiy
+ NTv8hkJrp1Zqjj34xJtZnTsNh/CVAspSmOO+SOLxdo9UWudTCfQKTYskkg1BBRQ8HpTp
+ hApFjixJXxApYqbYVhgmsV31broLa9pJhRIDdDXVyWoNPbALPLvwYGstE3fOJasPzg0s
+ 6xFodBWvZG7u2SG2IAL1u5/AXwhTOVmK9N7egCQs56PiXovVirJUU75LdpPOJCeWLyw9
+ VaTeOQ50i9m2ZSO5moOFj7rMEdBj94Pbjsm6SmZSRmlCnmjFxA/2vUNCDVofXhYhDVjK
+ aZNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=XBjCi9n5sRXOHmjCnHoQMv9TMlv0+e+xdsqW9A8AbOo=;
- b=poAHRTeM8dK25IM11kanJcetNT+6x9RLmA7AIhdKQWNMFzJLA3trtLLG/qWDdEsdTw
- SCf97c89NGfnV9lcQYzSas8rAFBETn00Pt/Cg59FbqANLVltsvwgu9nLgI1pa0/egf7c
- dSzfTomJT8CnsSX9uecYIDBo+R91YmtWLvlsH5oHlc/fYiDIZXL1/MwyhE+l2qc+n7Ay
- sFXNo/cApo4qTUEIBwHVxUPkX0qtL6LIrcmNZsai/iUeyEqe0OXyZBGiftBzuoIqGaUT
- 8TrdWDuMWWHsX6iW1YlrNSHFtnTyMO+1XF9lmYEjxI2JoeFm8dcr6zMVfPhyH7vC9lqw
- Ibsg==
-X-Gm-Message-State: AOAM530IV1D9LYLGEbnctQRqkU7Ebk1lTHcHiUIAzUdXxAqRmTrKZOmC
- Kuvy6+vpGcjTj30S7nB6lM8=
-X-Google-Smtp-Source: ABdhPJx+Wdr0JV+iMVpZNCpLySTTWd98vQlmjruOUSIX6CbKkGYxvMq23CrpeSMnz2QCLHscdW9Ybg==
-X-Received: by 2002:a17:902:8ec7:b029:d2:42fe:37de with SMTP id
- x7-20020a1709028ec7b02900d242fe37demr13758283plo.23.1603050579080; 
- Sun, 18 Oct 2020 12:49:39 -0700 (PDT)
-Received: from ubuntu204 ([103.108.75.206])
- by smtp.gmail.com with ESMTPSA id i25sm9351504pgi.9.2020.10.18.12.49.36
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2/yIw3iAR/1P5k0So8EgvrDXUbc+1qYmRQGCO4NWl/w=;
+ b=JEAQ6j+eiKreMBcM1rPv8eEdaTbQdNRuOwYVGPFrgmKgpTryv8A0TzTQEFyNcNE9v9
+ 9juM8drNT9dHkG7WCCaexz6tQZZyf+oOfPK59U8B4veDUlrssYXZGJoaYpmuFYQo/+sv
+ WYjbNB3KAIjAlZ4EQspyxMVyy0uUUXkiy1qnV/68IRHYeSTNe+SbioWfmUV3uXd8sKJk
+ X3s/2zAbdb6ZmLg3mYYZ8zSZnBkZp/KZYbLYOPgBKnZ7M4dAQDV3TzWlW5nS1AF8w5J/
+ VFlHAt8MeX4ppT0NM07NdTHXqrIoEldjuAS5QGYba2kw4qkpAZxCNw11FPb/0zQ0BXGJ
+ fXSA==
+X-Gm-Message-State: AOAM530yk2mznVosEm5qx8DWDZTWLRsVAPqZZ65fHKja2PLtpqodisFb
+ K9JoMgFof10NP73oxM0IICE=
+X-Google-Smtp-Source: ABdhPJxI8070+K/ZJqjo/lQBAaeG9lXgtxCzHV5F0lo2CGbRsBaXz+7QXfe3Rlh7v9IYpYGTHXrcTg==
+X-Received: by 2002:a2e:924d:: with SMTP id v13mr5477780ljg.375.1603051602303; 
+ Sun, 18 Oct 2020 13:06:42 -0700 (PDT)
+Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
+ by smtp.gmail.com with ESMTPSA id m19sm2878691lfl.38.2020.10.18.13.06.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Oct 2020 12:49:38 -0700 (PDT)
-Date: Mon, 19 Oct 2020 01:19:34 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ian Abbott <abbotti@mev.co.uk>,
- H Hartley Sweeten <hsweeten@visionengravers.com>,
- devel@driverdev.osuosl.org
-Subject: [PATCH 2/2] staging: comedi: combine split lines for improved
- readability
-Message-ID: <7c30530bad3aba50805fc6be39461e11c0580952.1603050372.git.mh12gx2825@gmail.com>
-References: <0fbce7fd820c72b6dd6dc8964d4bdaf433e39540.1603050372.git.mh12gx2825@gmail.com>
+ Sun, 18 Oct 2020 13:06:41 -0700 (PDT)
+Received: (nullmailer pid 40529 invoked by uid 1000);
+ Sun, 18 Oct 2020 20:12:07 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging: r8188eu: inline rtw_init_netdev_name()
+Date: Sun, 18 Oct 2020 23:11:33 +0300
+Message-Id: <20201018201132.40480-1-insafonov@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0fbce7fd820c72b6dd6dc8964d4bdaf433e39540.1603050372.git.mh12gx2825@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,45 +85,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mh12gx2825@gmail.com
+Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Instructions split on multiple lines can be combined on a single line
-for improved readability of the code.
+The rtw_init_netdev_name() is a small function
+that is used once and does not encapsulate any logic.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
 ---
- .../staging/comedi/drivers/tests/ni_routes_test.c    | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ drivers/staging/rtl8188eu/include/osdep_intf.h | 1 -
+ drivers/staging/rtl8188eu/os_dep/os_intfs.c    | 9 ---------
+ drivers/staging/rtl8188eu/os_dep/usb_intf.c    | 6 +++++-
+ 3 files changed, 5 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/tests/ni_routes_test.c b/drivers/staging/comedi/drivers/tests/ni_routes_test.c
-index 7db83cf5e4aa..a3b1be623861 100644
---- a/drivers/staging/comedi/drivers/tests/ni_routes_test.c
-+++ b/drivers/staging/comedi/drivers/tests/ni_routes_test.c
-@@ -499,14 +499,10 @@ void test_route_register_is_valid(void)
- 	const struct ni_route_tables *T = &private.routing_tables;
+diff --git a/drivers/staging/rtl8188eu/include/osdep_intf.h b/drivers/staging/rtl8188eu/include/osdep_intf.h
+index 07c32768f649..5ee4ed995025 100644
+--- a/drivers/staging/rtl8188eu/include/osdep_intf.h
++++ b/drivers/staging/rtl8188eu/include/osdep_intf.h
+@@ -23,7 +23,6 @@ void rtw_cancel_all_timer(struct adapter *padapter);
  
- 	init_pci_fake();
--	unittest(!route_register_is_valid(4, O(4), T),
--		 "check for bad source 4-->4\n");
--	unittest(!route_register_is_valid(0, O(1), T),
--		 "find first source\n");
--	unittest(!route_register_is_valid(4, O(6), T),
--		 "find middle source\n");
--	unittest(!route_register_is_valid(9, O(8), T),
--		 "find last source");
-+	unittest(!route_register_is_valid(4, O(4), T), "check for bad source 4-->4\n");
-+	unittest(!route_register_is_valid(0, O(1), T), "find first source\n");
-+	unittest(!route_register_is_valid(4, O(6), T), "find middle source\n");
-+	unittest(!route_register_is_valid(9, O(8), T), "find last source");
- }
+ int rtw_ioctl(struct net_device *dev, struct ifreq *rq, int cmd);
  
- void test_ni_check_trigger_arg(void)
+-int rtw_init_netdev_name(struct net_device *pnetdev, const char *ifname);
+ struct net_device *rtw_init_netdev(struct adapter *padapter);
+ u16 rtw_recv_select_queue(struct sk_buff *skb);
+ 
+diff --git a/drivers/staging/rtl8188eu/os_dep/os_intfs.c b/drivers/staging/rtl8188eu/os_dep/os_intfs.c
+index e291df87f620..c80d30f31869 100644
+--- a/drivers/staging/rtl8188eu/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8188eu/os_dep/os_intfs.c
+@@ -292,15 +292,6 @@ static const struct net_device_ops rtw_netdev_ops = {
+ 	.ndo_do_ioctl = rtw_ioctl,
+ };
+ 
+-int rtw_init_netdev_name(struct net_device *pnetdev, const char *ifname)
+-{
+-	if (dev_alloc_name(pnetdev, ifname) < 0)
+-		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("dev_alloc_name, fail!\n"));
+-
+-	netif_carrier_off(pnetdev);
+-	return 0;
+-}
+-
+ static const struct device_type wlan_type = {
+ 	.name = "wlan",
+ };
+diff --git a/drivers/staging/rtl8188eu/os_dep/usb_intf.c b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
+index 99bfc828672c..43ebd11b53fe 100644
+--- a/drivers/staging/rtl8188eu/os_dep/usb_intf.c
++++ b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
+@@ -390,7 +390,11 @@ static struct adapter *rtw_usb_if1_init(struct dvobj_priv *dvobj,
+ 		pr_debug("can't get autopm:\n");
+ 
+ 	/*  alloc dev name after read efuse. */
+-	rtw_init_netdev_name(pnetdev, padapter->registrypriv.ifname);
++	if (dev_alloc_name(pnetdev, padapter->registrypriv.ifname) < 0)
++		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("dev_alloc_name, fail!\n"));
++
++	netif_carrier_off(pnetdev);
++
+ 	rtw_macaddr_cfg(padapter->eeprompriv.mac_addr);
+ 	memcpy(pnetdev->dev_addr, padapter->eeprompriv.mac_addr, ETH_ALEN);
+ 	pr_debug("MAC Address from pnetdev->dev_addr =  %pM\n",
 -- 
-2.25.1
+2.26.2
 
 _______________________________________________
 devel mailing list
