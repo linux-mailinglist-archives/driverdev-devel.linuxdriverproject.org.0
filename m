@@ -1,56 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7289B2932F0
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 04:05:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6E26292A51
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Oct 2020 17:25:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0764886AD3;
-	Tue, 20 Oct 2020 02:05:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8DC8B87632;
+	Mon, 19 Oct 2020 15:25:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ni2gB_9amWET; Tue, 20 Oct 2020 02:05:30 +0000 (UTC)
+	with ESMTP id g7QCIos3Pp-T; Mon, 19 Oct 2020 15:25:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C99586A5D;
-	Tue, 20 Oct 2020 02:05:30 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 12F858741C;
+	Mon, 19 Oct 2020 15:25:00 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6EFB61BF3A0
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 02:05:28 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CC1D41BF3BB
+ for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 15:24:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6B9AB86A5D
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 02:05:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 70C7A2D9B5
+ for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 15:24:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NZWA62GV8hts
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 02:05:27 +0000 (UTC)
-X-Greylist: delayed 20:10:11 by SQLgrey-1.7.6
-Received: from codam.kmdns.net (codam.kmdns.net [46.162.16.110])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C94C786099
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 02:05:26 +0000 (UTC)
-Received: from User ([176.32.23.85]) (authenticated bits=0)
- by codam.kmdns.net (8.14.7/8.14.5) with ESMTP id 09J5r2qG010829;
- Mon, 19 Oct 2020 08:53:04 +0300 (EEST)
- (envelope-from arnold@kmdns.net)
-Message-Id: <202010190553.09J5r2qG010829@codam.kmdns.net>
-X-Authentication-Warning: codam.kmdns.net: Host [176.32.23.85] claimed to be
- User
-From: "L.  Wanczyk."<arnold@kmdns.net>
-Subject: DONATION .....                      110
-Date: Mon, 19 Oct 2020 07:52:16 -0700
+ with ESMTP id fzugY6qj+1iB for <devel@linuxdriverproject.org>;
+ Mon, 19 Oct 2020 15:24:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2FC0F2C35C
+ for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 15:24:56 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id j7so153805wrt.9
+ for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 08:24:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=q4pwiIyctly6h2xCWEgfDdmvxMbo+r9dziqXTIDAPzc=;
+ b=NtEQDVysM2i6LQ5TQlHUICl8vtLNHjgyb1G3/kEDxRNiTAnDlgrWggpQpBbbj3lzV3
+ p2q95j12gp5gSfqFlm76EvbvpEN+SWEvGvIsiFGnQkH/zIiW8yPjMd+Atd/m8eCzcmoP
+ 8gOU8Y5JmLeX6NOjuOBRbNWdp5pOyRh0TMW9cnNx7gyuWw3baCUDa2gDatfYSVOch7/T
+ 9l6AQQ9xPkKdrgdaVzQbsnWguWYYUpOB9DUZlPIntUfPZmNLnUT6KMf+XTf+7DZpJ+Pc
+ S/CSwAY6jLx7Z0IAgRlCjTczSOFvNOYgrMI3a/7J9UKj0CwGsuVkHMl8I+7Pgb3obusT
+ d2eQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=q4pwiIyctly6h2xCWEgfDdmvxMbo+r9dziqXTIDAPzc=;
+ b=qM4NJgIZsWELTudsmERipy6nssoZ67OOaHTydAiQuVnRwiydC/6XtDSi8On1bHWOHh
+ TUjneyM0IHUzNcFKc08fvLslKgINebDEQIaRXvdn23LCmlzFQn5i7KeKlH1/EwcHd3ME
+ SfWbLXeegBnobaXgBpj1cwI+9BXJd2A53qwbRslsLYduUOTtu4rxyU9HKFeLlttlOHcX
+ J6GXFc31W5Miv+dtcMODFOzkVDHRxwqSHZt8nskh8kyBI0M1eUgl76dOggkTG7LgGXAa
+ TRnDIm5WaLj8UF9+BrYW8kmYrHr/ppp7xk6dSu97KwuK5RhCXyUO5FuGMtkcrg1J236b
+ MiSQ==
+X-Gm-Message-State: AOAM532G2JErLYM/I0CePNp0Ilp92EC22ppwOcoZW9f0Rs3KBQn8q7wE
+ stJl1+gKivnp9kKrDhfyUoXE+KafJxvLEw==
+X-Google-Smtp-Source: ABdhPJw8nIOp8HYQw7A8kfQryEgv+Stoxkj+8RdGCvVomNHPCky5EPLP2eIRv/cojXBEMpsi4oVOWA==
+X-Received: by 2002:a5d:4a06:: with SMTP id m6mr27947wrq.209.1603121094331;
+ Mon, 19 Oct 2020 08:24:54 -0700 (PDT)
+Received: from tabot ([154.72.150.171])
+ by smtp.gmail.com with ESMTPSA id d3sm66798wrb.66.2020.10.19.08.24.53
+ (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+ Mon, 19 Oct 2020 08:24:53 -0700 (PDT)
+Date: Mon, 19 Oct 2020 16:24:51 +0100
+From: Tabot Kevin <tabot.kevin@gmail.com>
+To: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Subject: [PATCH] Fixed issues with alignment to open parenthesis.
+Message-ID: <20201019152451.GA3417@tabot>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1081
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-To: undisclosed-recipients:;
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,33 +83,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: maviswanczyko@aol.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+This patch fixes the following:
+- Made sure alignment matched open parenthesis.
 
-I'm Mrs. Mavis Wanczyk, the mega winner of $758 Million in Mega Millions
-Jackpot, I am donating to 5 random individuals if you get this email then
-your email was selected after a spin ball. I have spread most of my wealth
-over a number of charities and organizations. I have voluntarily decided to
-donate the sum of $ 10 Million USD to you as one of the selected , to verify
-my
-winnings via YouTube page below.
+Signed-off-by: Tabot Kevin <tabot.kevin@gmail.com>
+---
+ drivers/staging/greybus/audio_codec.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-WATCH ME HERE: https://www.youtube.com/watch?v=7kWnqvJM1mM
+diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
+index 494aa82..d61e79f 100644
+--- a/drivers/staging/greybus/audio_codec.c
++++ b/drivers/staging/greybus/audio_codec.c
+@@ -71,7 +71,7 @@ static int gbaudio_module_enable_tx(struct gbaudio_codec_info *codec,
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_register_cport(data->connection,
+-						i2s_port, cportid,
++							i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_TX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -161,7 +161,7 @@ static int gbaudio_module_disable_tx(struct gbaudio_module_info *module, int id)
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_unregister_cport(data->connection,
+-						i2s_port, cportid,
++							  i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_TX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -206,7 +206,7 @@ static int gbaudio_module_enable_rx(struct gbaudio_codec_info *codec,
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_register_cport(data->connection,
+-						i2s_port, cportid,
++							i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_RX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -296,7 +296,7 @@ static int gbaudio_module_disable_rx(struct gbaudio_module_info *module, int id)
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_unregister_cport(data->connection,
+-						i2s_port, cportid,
++							  i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_RX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -1057,7 +1057,6 @@ static int gbcodec_probe(struct snd_soc_component *comp)
+ static void gbcodec_remove(struct snd_soc_component *comp)
+ {
+ 	/* Empty function for now */
+-	return;
+ }
+ 
+ static int gbcodec_write(struct snd_soc_component *comp, unsigned int reg,
+-- 
+2.7.4
 
-THIS IS YOUR DONATION CODE: F207162
-Kindly send your direct telephone and fax number to enable me to reach you
-
-Reply with the DONATION CODE to this email: maviswanczykoo@aol.com
-
-Hope to make you and your family happy.
-
-Regards,
-Mrs. Mavis L. Wanczyk.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
