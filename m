@@ -2,107 +2,86 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE620292B17
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Oct 2020 18:06:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DC42292BE4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Oct 2020 18:51:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 11A7986E8A;
-	Mon, 19 Oct 2020 16:06:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BE02786CEF;
+	Mon, 19 Oct 2020 16:51:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qkFY9eX_BWma; Mon, 19 Oct 2020 16:06:31 +0000 (UTC)
+	with ESMTP id OlOfbz5LfkQi; Mon, 19 Oct 2020 16:51:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D23CA86E95;
-	Mon, 19 Oct 2020 16:06:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E61586CF5;
+	Mon, 19 Oct 2020 16:51:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 608C91BF2FF
- for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 16:06:28 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0BB731BF3D4
+ for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 16:51:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 55F742E00F
- for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 16:06:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 07E4286CEF
+ for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 16:51:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yh10uCOjxe-8 for <devel@linuxdriverproject.org>;
- Mon, 19 Oct 2020 16:06:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2060.outbound.protection.outlook.com [40.107.236.60])
- by silver.osuosl.org (Postfix) with ESMTPS id A16C62DEA1
- for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 16:06:27 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Vtu/45nKEnYXNC8dL7MYWMtkvw1aNwn5AxMg+3eWP7LERcIGwvKQeAVIYM8+Az2sxxSPdnjQGeUSCb3GdmKjs31WFO3wy9ZEk8VjNAejPd6v0mjsW9Cd3LCy1tGqplxaBIgu+nHpF/J6iwleyooavHpVSfxlanarMeEmkPTKLdxGEMZedKWywlnWuek9VFXYd36kRNd7NFGi9tSJzrmian7xCPK2oTotm+aqDoa0Idl9lbH1hmJiYewRZv1KIhUGebzeR6USE3P014O+7MEix+E8rrqU7O6SJJ6HohUB9BNgYhtpNxKZPYFtWaA04UZycY6c0dphNMtALguxG44PxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OrVmGnYd1sTf5Jfe5yYrsZWrEGpwvZpR3asYJu/1aNE=;
- b=CWvz7/Xp8uHldkTN/kSp4uFQcqCANDO2lOkz8sstl0w5ALr92r7tDqzRBUVtWQcGc6b3m+yeK6vEgMxm/u/uTWL+IiyAOPgYuh/cCa+5mg1LmEzlLjB0iQiX0f3nL9AO/F/Arz89hoJJyNvz6UWwaiNKVLRho2WiQJ+DOFUzjKtWmejiSdg06XmDNXzrdvVkDzPFEBjffs1ov/446tW5BOlPKCmMlWQnUdhctmgrgFr8+Md1DFwF/uoITZsEuiV2wlEvam63w1xbz0gqQowkzGnO8Txa+kxZBHyE56ls2Od2r2s9M8zyKdlhdqn9LEBjNQ7UnklrezewiuY7/6hDQQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OrVmGnYd1sTf5Jfe5yYrsZWrEGpwvZpR3asYJu/1aNE=;
- b=kES9jFkFWLjZLl1mA1+gznyL1yA9Zq5DMPTyBlyCZv8wg9S+z7gM8+xAym/gUAhZEvd6jX7Y6tnA8mfCNz5l4DTFzAVSldk2t9dUlFdU8ECh5XmtkJEluav3PAnjYZ8zxmf1lqJm/rDNfpI8wXV8xPyiBsKKIgLwdVy8PHVYhuM=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SA2PR11MB5129.namprd11.prod.outlook.com (2603:10b6:806:11f::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.27; Mon, 19 Oct
- 2020 16:06:26 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::4f5:fbe5:44a7:cb8a]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::4f5:fbe5:44a7:cb8a%5]) with mapi id 15.20.3477.028; Mon, 19 Oct 2020
- 16:06:26 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 2/2] staging: wfx: fix test on return value of
- gpiod_get_value()
-Date: Mon, 19 Oct 2020 18:06:04 +0200
-Message-Id: <20201019160604.1609180-2-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201019160604.1609180-1-Jerome.Pouiller@silabs.com>
-References: <20201019160604.1609180-1-Jerome.Pouiller@silabs.com>
-X-Originating-IP: [37.71.187.125]
-X-ClientProxiedBy: PR0P264CA0225.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1e::21) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.silabs.com (37.71.187.125) by
- PR0P264CA0225.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1e::21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3477.21 via Frontend Transport; Mon, 19 Oct 2020 16:06:24 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 686f16c5-60c3-4945-cf2d-08d87448ee87
-X-MS-TrafficTypeDiagnostic: SA2PR11MB5129:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SA2PR11MB512979DCE30A9789CF881E98931E0@SA2PR11MB5129.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:206;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: RakpDgJU9cOwW+mx2NQWfz5tCigeUJklOEK0FhYQEsdrxSv45StUjgQHHJqvafQQVCO2EP3qPodSd+8fLz09OnU+BGtsb3o7wZeWlDTHjVZFTU8C67wAjT8mpqhHHNC1+Y7fOA0Lm8PIH29HU9jNcI4e9tuByG0AC1xiX9b0ePqgHCVJ5qfgD/ZfJedaaLqC8+diWBgprfGJijSOqt+NaX8lbmpBdIT0FUVNeS3ZbGt8bnTKDkhpXmtLqXJKGKaIy8oh7MLUGsGhvn7kGkAuXlb9SadSYEcXZrm6kvrYVdDWK59ULOOzD3hOKgXJknmQ8ocnA1ykP/SOefxnAFTR5g==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(376002)(346002)(136003)(396003)(39850400004)(366004)(107886003)(26005)(8936002)(54906003)(186003)(6486002)(16526019)(316002)(478600001)(8676002)(52116002)(7696005)(6666004)(2906002)(4326008)(1076003)(36756003)(66574015)(956004)(66946007)(66476007)(4744005)(86362001)(2616005)(66556008)(5660300002)(83380400001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: Uj5FAja5K/gFPmFDRj9Kt4H5zfOLaKp+JONmpobPUoXSEAeIX5RfdKoLbVqcGq1YJb5w27j11tnpJXcvBJWLJ7GzZ9vA+qF9W0x/fHijVUl+u7q2VirXaBuQz9C2GM8oN7n267rKeRCLoj2KV2EQD2imU+C+VFyiMz/S+ELxgUuSFi6E0s6kuANXL/1BH7Feyz/Z/KSznUi6w1CFPb8KlmVMpKh0LjnKVRnADUI4HG6kIUSOPaJW04MkwWfl6wm9ipEGpxO22Q68btZGOodZbuFDT+7wWwUY9wEc7VKutW98+XsgcTKtIzBsr8gJ2MG/Y4H0C52FYvc5ikUyJeYcCamAQaQRFXn3z65bjPOoIyBehqfKLnlcNcSHNXTABeMv5wUE4xdDHHzII50GHK9jfnEmlK1t20Rwe23j/2rfC/Mzq/AkZ416HeuwycYkDNn3LEJpboeZzJ0pB1ujccnvo2mDr+Y8pX6P+lbDoIc7R43vVaFirO4cB0pLK2xy7V+7544qFAvwQcar8IjpTD2MGzR2/dZwvGyY9thamZy4V62WQeYU3p5hA6p1X2YNICo9rdCwYit9fZeonMS8NyTW5TuBM/NxUVcok/T7S4daJvewscgyHc++5/VpdcASswiUy8gGFAufdyHABRBzRrtIdA==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 686f16c5-60c3-4945-cf2d-08d87448ee87
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Oct 2020 16:06:26.5158 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: w9LV7wHm6DXIYACLpaOKRGFqSHCiEs4rFeFq7mbddphZuI6m3r1jdLGwVJCJMoZNDrO2R8HdDpOjLt8U53w2Gw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB5129
+ with ESMTP id e_tguXD6GzVg for <devel@linuxdriverproject.org>;
+ Mon, 19 Oct 2020 16:51:23 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5456D869EB
+ for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 16:51:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603126282;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=cBZ9UFopWvddrponmuXiWqW0rfQhlFg5Q+4GTd5bmAo=;
+ b=cru0fY5Nmo8SGXKc/HnjS6WE8x7LboAKwaxXCRQNOwoNU98tQ+2Si5VPGHcCKFodimZqXV
+ LyQwqpFuIUgJ40fecj1OvxSlR8wFiubqcEcj9QpU10YUZK1+rlLjLSxYHUz3ZOQON2sJ5w
+ alA4p6sHhrP2AJU4iKnxjM5/FVEXLsU=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-258-LYyJa73eOLagG77CV--nwg-1; Mon, 19 Oct 2020 12:51:18 -0400
+X-MC-Unique: LYyJa73eOLagG77CV--nwg-1
+Received: by mail-qv1-f71.google.com with SMTP id ec4so286864qvb.21
+ for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 09:51:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=cBZ9UFopWvddrponmuXiWqW0rfQhlFg5Q+4GTd5bmAo=;
+ b=nM5CUsJoAWZql11PrlBUq7YToiG3X09NrtQwivz6Mk2DTLsE85wpH7mT/k0VHF+1HO
+ hN88eydzSsBS9vxAWu/jTHOhx+FV1bPNgUdvmNSqiLJOdf21dSQMlLFdYUpQCI8Grogj
+ RXzRHI6ekIF9vvnmkyE4LIkWtKtG+742P5JTQTtAzrj4NuUHAl2fMIDYWn4tzmRF2EMb
+ mjy2mWWr3hv8PipL04Ku8U6fxSTlvdsEzJfPjAvOLcUjETjRvmrOoVTpAfJU4nwSYV6P
+ LuiYtvVrQbgsEO/At0eCtWLe4AB4SGwLHkFrFLT1AHqHomWK9NiOhbgdZL44Z6dOAzwF
+ BOPA==
+X-Gm-Message-State: AOAM5321B91OCkC68RJ8sGVyuEp5ZKW2vRwQgi40b3F6Di7XkCbLlU/7
+ jp9p3vtflTvMyvthtd5Rb22nenuJlG2hPPgxpusla9XowkXoUhi2cRGNRI83xOJ5yKduOuoM5BB
+ p6spL1fVy2mVYSdOemhpyWw==
+X-Received: by 2002:a05:622a:104:: with SMTP id
+ u4mr315304qtw.163.1603126277742; 
+ Mon, 19 Oct 2020 09:51:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbhcgQbY1OZQlcVsbQuE3XX8qH7dztlppht2P4xC4jw0d8uYlcSYrjBYxCxD+5Nytdis8Tqw==
+X-Received: by 2002:a05:622a:104:: with SMTP id
+ u4mr315280qtw.163.1603126277499; 
+ Mon, 19 Oct 2020 09:51:17 -0700 (PDT)
+Received: from trix.remote.csb (075-142-250-213.res.spectrum.com.
+ [75.142.250.213])
+ by smtp.gmail.com with ESMTPSA id s17sm171788qta.26.2020.10.19.09.51.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Oct 2020 09:51:16 -0700 (PDT)
+From: trix@redhat.com
+To: martyn@welchs.me.uk, manohar.vanga@gmail.com, gregkh@linuxfoundation.org,
+ arnd@arndb.de
+Subject: [PATCH] vme: remove unneeded break
+Date: Mon, 19 Oct 2020 09:51:12 -0700
+Message-Id: <20201019165112.29091-1-trix@redhat.com>
+X-Mailer: git-send-email 2.18.1
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,31 +94,139 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Tom Rix <trix@redhat.com>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVGhl
-IGNvbW1pdCA4NTIyZDYyZTZiY2EgKCJzdGFnaW5nOiB3Zng6IGdwaW9kX2dldF92YWx1ZSgpIGNh
-biByZXR1cm4gYW4KZXJyb3IiKSBoYXMgY2hhbmdlZCB0aGUgd2F5IHRoZSBkcml2ZXIgdGVzdCB0
-aGUgdmFsdWUgcmV0dXJuZWQgYnkKZ3Bpb2RfZ2V0X3ZhbHVlKCkuIFRoZSBuZXcgY29kZSB3YXMg
-d3JvbmcuCgpGaXhlczogODUyMmQ2MmU2YmNhICgic3RhZ2luZzogd2Z4OiBncGlvZF9nZXRfdmFs
-dWUoKSBjYW4gcmV0dXJuIGFuIGVycm9yIikKU2lnbmVkLW9mZi1ieTogSsOpcsO0bWUgUG91aWxs
-ZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgotLS0KIGRyaXZlcnMvc3RhZ2luZy93Zngv
-YmguYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigt
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93ZngvYmguYyBiL2RyaXZlcnMvc3RhZ2lu
-Zy93ZngvYmguYwppbmRleCAyZmZhNTg3YWVmYWEuLmVkNTNkMGI0NTU5MiAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9zdGFnaW5nL3dmeC9iaC5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvYmguYwpA
-QCAtMjEsNyArMjEsNyBAQCBzdGF0aWMgdm9pZCBkZXZpY2Vfd2FrZXVwKHN0cnVjdCB3ZnhfZGV2
-ICp3ZGV2KQogCiAJaWYgKCF3ZGV2LT5wZGF0YS5ncGlvX3dha2V1cCkKIAkJcmV0dXJuOwotCWlm
-IChncGlvZF9nZXRfdmFsdWVfY2Fuc2xlZXAod2Rldi0+cGRhdGEuZ3Bpb193YWtldXApID49IDAp
-CisJaWYgKGdwaW9kX2dldF92YWx1ZV9jYW5zbGVlcCh3ZGV2LT5wZGF0YS5ncGlvX3dha2V1cCkg
-PiAwKQogCQlyZXR1cm47CiAKIAlpZiAod2Z4X2FwaV9vbGRlcl90aGFuKHdkZXYsIDEsIDQpKSB7
-Ci0tIAoyLjI4LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+From: Tom Rix <trix@redhat.com>
+
+A break is not needed if it is preceded by a return or goto
+
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ drivers/vme/bridges/vme_tsi148.c | 7 -------
+ drivers/vme/vme.c                | 9 ---------
+ 2 files changed, 16 deletions(-)
+
+diff --git a/drivers/vme/bridges/vme_tsi148.c b/drivers/vme/bridges/vme_tsi148.c
+index 50ae26977a02..1227ea937059 100644
+--- a/drivers/vme/bridges/vme_tsi148.c
++++ b/drivers/vme/bridges/vme_tsi148.c
+@@ -506,7 +506,6 @@ static int tsi148_slave_set(struct vme_slave_resource *image, int enabled,
+ 	default:
+ 		dev_err(tsi148_bridge->parent, "Invalid address space\n");
+ 		return -EINVAL;
+-		break;
+ 	}
+ 
+ 	/* Convert 64-bit variables to 2x 32-bit variables */
+@@ -995,7 +994,6 @@ static int tsi148_master_set(struct vme_master_resource *image, int enabled,
+ 		dev_err(tsi148_bridge->parent, "Invalid address space\n");
+ 		retval = -EINVAL;
+ 		goto err_aspace;
+-		break;
+ 	}
+ 
+ 	temp_ctl &= ~(3<<4);
+@@ -1503,7 +1501,6 @@ static int tsi148_dma_set_vme_src_attributes(struct device *dev, __be32 *attr,
+ 	default:
+ 		dev_err(dev, "Invalid address space\n");
+ 		return -EINVAL;
+-		break;
+ 	}
+ 
+ 	if (cycle & VME_SUPER)
+@@ -1603,7 +1600,6 @@ static int tsi148_dma_set_vme_dest_attributes(struct device *dev, __be32 *attr,
+ 	default:
+ 		dev_err(dev, "Invalid address space\n");
+ 		return -EINVAL;
+-		break;
+ 	}
+ 
+ 	if (cycle & VME_SUPER)
+@@ -1701,7 +1697,6 @@ static int tsi148_dma_list_add(struct vme_dma_list *list,
+ 		dev_err(tsi148_bridge->parent, "Invalid source type\n");
+ 		retval = -EINVAL;
+ 		goto err_source;
+-		break;
+ 	}
+ 
+ 	/* Assume last link - this will be over-written by adding another */
+@@ -1738,7 +1733,6 @@ static int tsi148_dma_list_add(struct vme_dma_list *list,
+ 		dev_err(tsi148_bridge->parent, "Invalid destination type\n");
+ 		retval = -EINVAL;
+ 		goto err_dest;
+-		break;
+ 	}
+ 
+ 	/* Fill out count */
+@@ -1964,7 +1958,6 @@ static int tsi148_lm_set(struct vme_lm_resource *lm, unsigned long long lm_base,
+ 		mutex_unlock(&lm->mtx);
+ 		dev_err(tsi148_bridge->parent, "Invalid address space\n");
+ 		return -EINVAL;
+-		break;
+ 	}
+ 
+ 	if (cycle & VME_SUPER)
+diff --git a/drivers/vme/vme.c b/drivers/vme/vme.c
+index b398293980b6..e1a940e43327 100644
+--- a/drivers/vme/vme.c
++++ b/drivers/vme/vme.c
+@@ -52,23 +52,18 @@ static struct vme_bridge *find_bridge(struct vme_resource *resource)
+ 	case VME_MASTER:
+ 		return list_entry(resource->entry, struct vme_master_resource,
+ 			list)->parent;
+-		break;
+ 	case VME_SLAVE:
+ 		return list_entry(resource->entry, struct vme_slave_resource,
+ 			list)->parent;
+-		break;
+ 	case VME_DMA:
+ 		return list_entry(resource->entry, struct vme_dma_resource,
+ 			list)->parent;
+-		break;
+ 	case VME_LM:
+ 		return list_entry(resource->entry, struct vme_lm_resource,
+ 			list)->parent;
+-		break;
+ 	default:
+ 		printk(KERN_ERR "Unknown resource type\n");
+ 		return NULL;
+-		break;
+ 	}
+ }
+ 
+@@ -179,7 +174,6 @@ size_t vme_get_size(struct vme_resource *resource)
+ 			return 0;
+ 
+ 		return size;
+-		break;
+ 	case VME_SLAVE:
+ 		retval = vme_slave_get(resource, &enabled, &base, &size,
+ 			&buf_base, &aspace, &cycle);
+@@ -187,14 +181,11 @@ size_t vme_get_size(struct vme_resource *resource)
+ 			return 0;
+ 
+ 		return size;
+-		break;
+ 	case VME_DMA:
+ 		return 0;
+-		break;
+ 	default:
+ 		printk(KERN_ERR "Unknown resource type\n");
+ 		return 0;
+-		break;
+ 	}
+ }
+ EXPORT_SYMBOL(vme_get_size);
+-- 
+2.18.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
