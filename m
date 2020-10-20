@@ -1,43 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3295A294355
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 21:40:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17C3D29434A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 21:39:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CF5E22E220;
-	Tue, 20 Oct 2020 19:40:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C3B53873DA;
+	Tue, 20 Oct 2020 19:39:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6y7OC7uA3I6L; Tue, 20 Oct 2020 19:40:01 +0000 (UTC)
+	with ESMTP id pSVKy-x2t8O0; Tue, 20 Oct 2020 19:39:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5852F2E21B;
-	Tue, 20 Oct 2020 19:39:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 55271873CE;
+	Tue, 20 Oct 2020 19:39:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 88CC41BF37F
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 19:39:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 170E61BF37F
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 19:39:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7B9332E215
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 19:39:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 10CA386C5D
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 19:39:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oSCM6xwRv6Oa for <devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 19:39:42 +0000 (UTC)
+ with ESMTP id Qip5lalvT6o7 for <devel@linuxdriverproject.org>;
+ Tue, 20 Oct 2020 19:39:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by silver.osuosl.org (Postfix) with ESMTPS id 4FA122E204
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 19:39:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6099386C5C
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 19:39:44 +0000 (UTC)
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id 64CF51F44DB5
+ (Authenticated sender: koike) with ESMTPSA id 15D721F44DF2
 From: Helen Koike <helen.koike@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v6 8/9] arm64: dts: rockchip: add isp0 node for rk3399
-Date: Tue, 20 Oct 2020 16:38:49 -0300
-Message-Id: <20201020193850.1460644-9-helen.koike@collabora.com>
+Subject: [PATCH v6 9/9] arm64: dts: rockchip: add isp and sensors for Scarlet
+Date: Tue, 20 Oct 2020 16:38:50 -0300
+Message-Id: <20201020193850.1460644-10-helen.koike@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201020193850.1460644-1-helen.koike@collabora.com>
 References: <20201020193850.1460644-1-helen.koike@collabora.com>
@@ -65,63 +65,118 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Shunqian Zheng <zhengsq@rock-chips.com>
+From: Eddie Cai <eddie.cai.linux@gmail.com>
 
-RK3399 has two ISPs, but only isp0 was tested.
-Add isp0 node in rk3399 dtsi
+Enable ISP and camera sensor ov2685 and ov5695 for Scarlet Chromebook
 
 Verified with:
-make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+    make ARCH=arm64 dtbs_check
 
 Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
-
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 ---
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++++
+ 1 file changed, 74 insertions(+)
 
-Changes in v6:
-- Add status = "disabled" in the isp0 node
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 26 ++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index ada724b12f014..af5f8e2c5e64d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1723,6 +1723,32 @@ vopb_mmu: iommu@ff903f00 {
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+index 60cd1c18cd4e0..beee5fbb34437 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+@@ -296,6 +296,52 @@ camera: &i2c7 {
  
-+	isp0: isp0@ff910000 {
-+		compatible = "rockchip,rk3399-cif-isp";
-+		reg = <0x0 0xff910000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru SCLK_ISP0>,
-+			 <&cru ACLK_ISP0_WRAPPER>,
-+			 <&cru HCLK_ISP0_WRAPPER>;
-+		clock-names = "isp", "aclk", "hclk";
-+		iommus = <&isp0_mmu>;
-+		phys = <&mipi_dphy_rx0>;
-+		phy-names = "dphy";
-+		power-domains = <&power RK3399_PD_ISP0>;
-+		status = "disabled";
+ 	/* 24M mclk is shared between world and user cameras */
+ 	pinctrl-0 = <&i2c7_xfer &test_clkout1>;
 +
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
++	/* Rear-facing camera */
++	wcam: camera@36 {
++		compatible = "ovti,ov5695";
++		reg = <0x36>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&wcam_rst>;
 +
-+			port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
++		clocks = <&cru SCLK_TESTCLKOUT1>;
++		clock-names = "xvclk";
++
++		avdd-supply = <&pp2800_cam>;
++		dvdd-supply = <&pp1250_cam>;
++		dovdd-supply = <&pp1800_s0>;
++		reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
++
++		port {
++			wcam_out: endpoint {
++				remote-endpoint = <&mipi_in_wcam>;
++				data-lanes = <1 2>;
 +			};
 +		};
 +	};
 +
- 	isp0_mmu: iommu@ff914000 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
++	/* Front-facing camera */
++	ucam: camera@3c {
++		compatible = "ovti,ov2685";
++		reg = <0x3c>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&ucam_rst>;
++
++		clocks = <&cru SCLK_TESTCLKOUT1>;
++		clock-names = "xvclk";
++
++		avdd-supply = <&pp2800_cam>;
++		dovdd-supply = <&pp1800_s0>;
++		dvdd-supply = <&pp1800_s0>;
++		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
++
++		port {
++			ucam_out: endpoint {
++				remote-endpoint = <&mipi_in_ucam>;
++				data-lanes = <1>;
++			};
++		};
++	};
+ };
+ 
+ &cdn_dp {
+@@ -353,10 +399,38 @@ &io_domains {
+ 	gpio1830-supply = <&pp1800_s0>;		/* APIO4_VDD;  4c 4d */
+ };
+ 
++&isp0 {
++	status = "okay";
++
++	ports {
++		port@0 {
++			mipi_in_wcam: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&wcam_out>;
++				data-lanes = <1 2>;
++			};
++
++			mipi_in_ucam: endpoint@1 {
++				reg = <1>;
++				remote-endpoint = <&ucam_out>;
++				data-lanes = <1>;
++			};
++		};
++	};
++};
++
++&isp0_mmu {
++	status = "okay";
++};
++
+ &max98357a {
+ 	sdmode-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+ };
+ 
++&mipi_dphy_rx0 {
++	status = "okay";
++};
++
+ &mipi_dsi {
+ 	status = "okay";
+ 	clock-master;
 -- 
 2.28.0
 
