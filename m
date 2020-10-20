@@ -1,74 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64EE6294042
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 18:12:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88D1329406E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 18:24:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D4C3E87323;
-	Tue, 20 Oct 2020 16:12:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 39D8F86CA0;
+	Tue, 20 Oct 2020 16:24:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eHE2cDtHzeEn; Tue, 20 Oct 2020 16:12:34 +0000 (UTC)
+	with ESMTP id SStK3exqrlgQ; Tue, 20 Oct 2020 16:24:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D40CE872D5;
-	Tue, 20 Oct 2020 16:12:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F93186B5E;
+	Tue, 20 Oct 2020 16:24:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A252B1BF2CD
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 16:12:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 430F81BF2CD
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 16:23:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9EE9B86CC5
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 16:12:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3F2B587323
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 16:23:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1m901fStHAEy for <devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 16:12:30 +0000 (UTC)
+ with ESMTP id RiuNkKFF4WvW for <devel@linuxdriverproject.org>;
+ Tue, 20 Oct 2020 16:23:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AD78386CBE
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 16:12:30 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id l4so2201557ota.7
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 09:12:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=YpTMFQeEZb0rjpUuW6XXMOAXIdREE2jLBrSTZUeG4I8=;
- b=U1XUF5DhInl+St5txZvE2N429K3nu9ruKXD64YmX2X9+frCh1aWremcUA85iF2PIx1
- DLK9xaE52MkGJALcimxPhnvF3IBiGas67tyRMEO11rVkqq2lMq8YJzOqqG1pvEgcHaVM
- QrU6NGgqq+aY7T8Bl7fUpiQM4tFebDK9yMrhenwM6yX58MjiEYyAMTQQ7YrFTE6lxtUi
- OXaQRoagMEWU3zF0JrOSkFFMp+bcFDs4SvBOnhtj57cGNHe212D2YzYsy6WeE2rXyg0G
- y0Hx3T05Dcv4O0QwgqD0NlzZ/TXN5kk8ycpPqPu7i3n5fTgYQGkWxShdlqxNh00mY5GT
- nXkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=YpTMFQeEZb0rjpUuW6XXMOAXIdREE2jLBrSTZUeG4I8=;
- b=eGDOec7ohb4cSCIqRPreBIo7GqMxA2zdFlvD7CDQY3BieYKjMp7o/NquKM0F6/li43
- 8lmaGj8/UB48SNLGHuvwrkZGdfSAyzjAb2AUYvPGXXUekmDoMg/s5qZRG4mwMDHmJk2C
- BoTTyAYXw6hJjartSj/KhLCN+jOnKLkd/Oaj0t8jrmx9Xskj/3lH2AMi5V4B8kDgDjly
- /A3ZSHUc0JXKmH38wic9NAh2/UxvyA5DN8rP2PGyg70d0PHScj2xj0zppgp88vOEFgKg
- DyitbeF2rcdY/MpJQ0v8seyWEY0v5cxmrIumBWcQpb8QZmcqeSRQ/54hPGuku1QqHD3P
- 6TDg==
-X-Gm-Message-State: AOAM531GYH3TIfua5InIOysjXo0dDKpSsUlwq/N6aaEp/vtp1U1aFPL2
- Hb+kzbRwdk0G1fFdS6mCpGuPJVbac488AlWWWOCk7xh3gtW6BA==
-X-Google-Smtp-Source: ABdhPJwm/KewgGT5Q4WyxYXhPhUG/Zzq9WDofYxTVkmfKUiHImFkm6avmj6ccvMkFsJ3lYGD58oCWd/inLtq/UlBoG4=
-X-Received: by 2002:ab0:6f11:: with SMTP id r17mr1324840uah.15.1603206476961; 
- Tue, 20 Oct 2020 08:07:56 -0700 (PDT)
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 495F187300
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 16:23:57 +0000 (UTC)
+Received: from [IPv6:2003:c7:cf43:5b00:28a3:2f4e:277d:2227]
+ (p200300c7cf435b0028a32f4e277d2227.dip0.t-ipconnect.de
+ [IPv6:2003:c7:cf43:5b00:28a3:2f4e:277d:2227])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id C8B441F451DF;
+ Tue, 20 Oct 2020 17:23:54 +0100 (BST)
+Subject: Re: [PATCH] media: staging: rkisp1: rsz: make const array static,
+ makes object smaller
+To: Colin King <colin.king@canonical.com>,
+ Helen Koike <helen.koike@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org
+References: <20201020144655.53251-1-colin.king@canonical.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <07b92ab9-bade-623e-395d-89320d9f88f6@collabora.com>
+Date: Tue, 20 Oct 2020 18:23:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20201020125817.1632995-1-Jerome.Pouiller@silabs.com>
- <20201020125817.1632995-2-Jerome.Pouiller@silabs.com>
-In-Reply-To: <20201020125817.1632995-2-Jerome.Pouiller@silabs.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 20 Oct 2020 17:07:19 +0200
-Message-ID: <CAPDyKFp9pnK0T2xKaXcMUzpxO9OCD49Od=ML+gdQbNndrX0Bag@mail.gmail.com>
-Subject: Re: [PATCH v2 01/24] mmc: sdio: add SDIO IDs for Silabs WF200 chip
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+In-Reply-To: <20201020144655.53251-1-colin.king@canonical.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,42 +66,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, DTML <devicetree@vger.kernel.org>,
- netdev <netdev@vger.kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVHVlLCAyMCBPY3QgMjAyMCBhdCAxNDo1OCwgSmVyb21lIFBvdWlsbGVyCjxKZXJvbWUuUG91
-aWxsZXJAc2lsYWJzLmNvbT4gd3JvdGU6Cj4KPiBGcm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVy
-b21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBBZGQgU2lsYWJzIFNESU8gSUQgdG8gc2Rpb19p
-ZHMuaC4KPgo+IE5vdGUgdGhhdCB0aGUgdmFsdWVzIHVzZWQgYnkgU2lsYWJzIGFyZSB1bmNvbW1v
-bi4gQSBkcml2ZXIgY2Fubm90IGZ1bGx5Cj4gcmVseSBvbiB0aGUgU0RJTyBQblAuIEl0IHNob3Vs
-ZCBhbHNvIGNoZWNrIGlmIHRoZSBkZXZpY2UgaXMgZGVjbGFyZWQgaW4KPiB0aGUgRFQuCj4KPiBT
-aWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5j
-b20+CgpBY2tlZC1ieTogVWxmIEhhbnNzb24gPHVsZi5oYW5zc29uQGxpbmFyby5vcmc+CgpLaW5k
-IHJlZ2FyZHMKVWZmZQoKCj4gLS0tCj4gIGluY2x1ZGUvbGludXgvbW1jL3NkaW9faWRzLmggfCA1
-ICsrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQg
-YS9pbmNsdWRlL2xpbnV4L21tYy9zZGlvX2lkcy5oIGIvaW5jbHVkZS9saW51eC9tbWMvc2Rpb19p
-ZHMuaAo+IGluZGV4IDEyMDM2NjE5MzQ2Yy4uMjBhNDgxNjJmN2ZjIDEwMDY0NAo+IC0tLSBhL2lu
-Y2x1ZGUvbGludXgvbW1jL3NkaW9faWRzLmgKPiArKysgYi9pbmNsdWRlL2xpbnV4L21tYy9zZGlv
-X2lkcy5oCj4gQEAgLTI1LDYgKzI1LDExIEBACj4gICAqIFZlbmRvcnMgYW5kIGRldmljZXMuICBT
-b3J0IGtleTogdmVuZG9yIGZpcnN0LCBkZXZpY2UgbmV4dC4KPiAgICovCj4KPiArLy8gU2lsYWJz
-IGRvZXMgbm90IHVzZSBhIHJlbGlhYmxlIHZlbmRvciBJRC4gVG8gYXZvaWQgY29uZmxpY3RzLCB0
-aGUgZHJpdmVyCj4gKy8vIHdvbid0IHByb2JlIHRoZSBkZXZpY2UgaWYgaXQgaXMgbm90IGFsc28g
-ZGVjbGFyZWQgaW4gdGhlIERULgo+ICsjZGVmaW5lIFNESU9fVkVORE9SX0lEX1NJTEFCUyAgICAg
-ICAgICAgICAgICAgIDB4MDAwMAo+ICsjZGVmaW5lIFNESU9fREVWSUNFX0lEX1NJTEFCU19XRjIw
-MCAgICAgICAgICAgIDB4MTAwMAo+ICsKPiAgI2RlZmluZSBTRElPX1ZFTkRPUl9JRF9TVEUgICAg
-ICAgICAgICAgICAgICAgICAweDAwMjAKPiAgI2RlZmluZSBTRElPX0RFVklDRV9JRF9TVEVfQ1cx
-MjAwICAgICAgICAgICAgICAweDIyODAKPgo+IC0tCj4gMi4yOC4wCj4KX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
-QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
-Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi, thanks,
+
+Am 20.10.20 um 16:46 schrieb Colin King:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> Don't populate the const array dev_names on the stack but instead it
+> static. Makes the object code smaller by 15 bytes.
+> 
+> Before:
+>     text	   data	    bss	    dec	    hex	filename
+>    17091	   2648	     64	  19803	   4d5b	media/rkisp1/rkisp1-resizer.o
+> 
+> After:
+>     text	   data	    bss	    dec	    hex	filename
+>    17012	   2712	     64	  19788	   4d4c	media/rkisp1/rkisp1-resizer.o
+
+On the other hand the data segment is 64 bytes bigger.
+I don't know what is more important to save.
+Anyway, the rkisp1-capture.c does the same with the names
+so it is better to be consistent.
+
+Thanks,
+Dafna
+
+> 
+> (gcc version 10.2.0)
+> 
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>   drivers/staging/media/rkisp1/rkisp1-resizer.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> index 1687d82e6c68..7ca5b47c5bf5 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> @@ -763,8 +763,10 @@ static void rkisp1_rsz_unregister(struct rkisp1_resizer *rsz)
+>   
+>   static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
+>   {
+> -	const char * const dev_names[] = {RKISP1_RSZ_MP_DEV_NAME,
+> -					  RKISP1_RSZ_SP_DEV_NAME};
+> +	static const char * const dev_names[] = {
+> +		RKISP1_RSZ_MP_DEV_NAME,
+> +		RKISP1_RSZ_SP_DEV_NAME
+> +	};
+>   	struct media_pad *pads = rsz->pads;
+>   	struct v4l2_subdev *sd = &rsz->sd;
+>   	int ret;
+> 
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
