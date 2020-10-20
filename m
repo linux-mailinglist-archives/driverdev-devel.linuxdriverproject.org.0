@@ -1,84 +1,104 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71156293955
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 12:46:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 21558293D05
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 15:13:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 896E986D54;
-	Tue, 20 Oct 2020 10:46:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C4A9F86B71;
+	Tue, 20 Oct 2020 13:13:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ivc31cHKYwVT; Tue, 20 Oct 2020 10:46:31 +0000 (UTC)
+	with ESMTP id sqvWoJLeGNZE; Tue, 20 Oct 2020 13:13:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 770D0841DA;
-	Tue, 20 Oct 2020 10:46:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F36486B1D;
+	Tue, 20 Oct 2020 13:13:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4C62F1BF27A
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 10:46:28 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 789D61BF976
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 13:13:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 490C186578
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 10:46:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 74F5886ACE
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 13:13:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I1oDFbV+eamd for <devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 10:46:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7367581CEE
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 10:46:27 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id v22so598416ply.12
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 03:46:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=99HMp6xP6U4EJWWuPPlFUYXlX0aPrirULUMTBK3L+7w=;
- b=Ukk7kRSnCLP8kR6GWakro8s/kCSTUO+EOEMojB/CqNUL7rwIYrWohKeqDHCNGPo2II
- 4sYwaqOwqYqAomEfNgem/Q0vDWzcHLQkljClYM/dsTt/3xmPw4ozLNnGNuMSswRxuK3A
- CcywkGbBh3kDXsymKfeCg7Mi19zJnr7HgzePPgdMlRutNF56nbeNChy7wQuWQgitwFc/
- PAeC4fbA8C3dRvKdLG1v5C9l7xrbsa3oFf123gLqKF2phzcoruKLed69xVcFDj1F9Thj
- oFjBkxdAhqMm8P9Ael9hCcc09P2lZSUnor5vwfsTieLmFEy9u7BAI3SuIZfItG8VukPN
- EW6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=99HMp6xP6U4EJWWuPPlFUYXlX0aPrirULUMTBK3L+7w=;
- b=a4qbJ879nwyH/zj7IoDJ7210ZPvTIdpcngF/uPZT7ingSHgXedAubqkhHvXpw9zbxn
- oPBNihQ85ycsDYpbLyjSfQmfkBcIpFZ++1Kj62op9LKcXT0j3DGQDIrYR6OUQMG1xwFO
- SBABBNdJ4/Fcc/P7MNfAzkzWaBywezwBbh+g01X7q+RAOZESKFws+zTbvWIjSFa9b0x5
- xleWxRYtUtKwoCCO7ppUFZarWQjgSJVRiwguHy/DQqALMEOPnIfaGmbWYbzuovgM9tGQ
- dCFbQwuLPQYi4sQxS4CoEfNDRGtgmNnXGQWctBY+QXDc+WRqXtgqyaP5K9T0z84YCikW
- mbxA==
-X-Gm-Message-State: AOAM533zIlqviMI2fUAp6u3FTAY2NVpJsn7hZgPF38xnzMdQrOAsZ/rO
- f28gKF+a1TljAtOdiSVnVo/XoEhnEeRHFd3K
-X-Google-Smtp-Source: ABdhPJxXB7dN1+tlPvqmqbIJ9fH69L68cCgg46nTEHIsfaYY/ZQ2gGlxKAd5k25Xs8rQHBLJ4aZ2MA==
-X-Received: by 2002:a17:90a:d341:: with SMTP id
- i1mr2324630pjx.18.1603190787019; 
- Tue, 20 Oct 2020 03:46:27 -0700 (PDT)
-Received: from localhost ([2001:e42:102:1532:160:16:113:140])
- by smtp.gmail.com with ESMTPSA id n12sm1725170pjt.16.2020.10.20.03.46.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 03:46:26 -0700 (PDT)
-From: Coiby Xu <coiby.xu@gmail.com>
-X-Google-Original-From: Coiby Xu <Coiby.Xu@gmail.com>
-Date: Tue, 20 Oct 2020 18:46:06 +0800
-To: Shung-Hsi Yu <shung-hsi.yu@suse.com>
-Subject: Re: [PATCH v3 2/8] staging: qlge: Initialize devlink health dump
- framework
-Message-ID: <20201020104606.swblxgvfnjosafkk@Rk>
-References: <20201016115407.170821-1-coiby.xu@gmail.com>
- <20201016115407.170821-3-coiby.xu@gmail.com>
- <20201020085711.GM7183@syu-laptop>
- <20201020102741.GE23594@syu-laptop>
+ with ESMTP id F3YDgI3zcBgA for <devel@linuxdriverproject.org>;
+ Tue, 20 Oct 2020 13:13:01 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2040.outbound.protection.outlook.com [40.107.92.40])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6756586A97
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 13:13:01 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QRV6Mc8LJrVoH4STKGkv1ipYd9EdvLWv+vM6bR2VvAj52B0RERN4kZ3UAnVKj+EPPFdQlmJjV0eBAf7m/7H+Yx+pGTrZrOKCyzPVEXKXwIpPQiWPBm+8fGjx4H28nD6/y9jt05Pp+b5PDpRn3IQMeKKxJI/jUdycUWI/dJgFHEI4JjiqK72qH6wBAgXoVvPZPdwTn9qdsx+2EdnKWTTNUhIa5JS8kiExLDT2q1c8knPMAQGQCmANLmWY80mHrRyI36BUfrfvlODMOW1H/y1wR5q0mxGRBGBVn01wMy7JG6aLXlt+plWt2C31pPHLCxm2Da9km0KpcfXUnAPDX6O0Rg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jisMD4RBeMBeH6TohLpl6QBxVuJ/zLpf7GlVzw9oJCM=;
+ b=EeHq6bHjsxLGszTNaW2GHvlXStxmHwd89IAK866+vu8BcKmNFeUqEnD6Fqp4YmQUmSzPQOBtIQW3ADy8Z71GSo14SFmGyem/rq8CQPadQesxcYyh/ZBCiLmlVBevJEoNY2S26l0KACqufjeGiyj9k8LgolQmF2M0187+OtV4Exk5+wRa31ro/POjmlgYLfl9LC54b/fzrl8QW3m04bl0KauxI0jMpk6Akf9XRgI0f7DHQpAI1BvD+QmP1J5bPR/DEZ/Ob8W3xc3JxUdos3RRalGoSSXXmLEn8bfD07BTc8AbOdDuAteH91nv0giSFohg35yBj1gQRd5wBlDQmmenhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jisMD4RBeMBeH6TohLpl6QBxVuJ/zLpf7GlVzw9oJCM=;
+ b=jy7sMUxv1tTmmWc7fObPriVnkIwzQ/ozTBxZ87lux+tH0mJ+bGx9aa8/KdwfbbSDd1LuF5lXz2bG5vGYLaYqdcTUVvSrxeU2NeEh0Sq4WyXhkkWai3UDJBNGyKAJsZVjrpGLUeCD6y7dglZcpDrYxLi5Ke5Qfok64jUApyxnq1I=
+Authentication-Results: vger.kernel.org; dkim=none (message not signed)
+ header.d=none; vger.kernel.org; dmarc=none action=none header.from=silabs.com; 
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SN6PR11MB2656.namprd11.prod.outlook.com (2603:10b6:805:58::28)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.28; Tue, 20 Oct
+ 2020 12:58:40 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::4f5:fbe5:44a7:cb8a]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::4f5:fbe5:44a7:cb8a%5]) with mapi id 15.20.3477.028; Tue, 20 Oct 2020
+ 12:58:40 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: [PATCH v2 00/24] wfx: get out from the staging area
+Date: Tue, 20 Oct 2020 14:57:53 +0200
+Message-Id: <20201020125817.1632995-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.28.0
+X-Originating-IP: [37.71.187.125]
+X-ClientProxiedBy: PR3P192CA0026.EURP192.PROD.OUTLOOK.COM
+ (2603:10a6:102:56::31) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201020102741.GE23594@syu-laptop>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.silabs.com (37.71.187.125) by
+ PR3P192CA0026.EURP192.PROD.OUTLOOK.COM (2603:10a6:102:56::31) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3477.21 via Frontend Transport; Tue, 20 Oct 2020 12:58:37 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e93d4e67-7f3e-4074-0cfa-08d874f7dd6f
+X-MS-TrafficTypeDiagnostic: SN6PR11MB2656:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <SN6PR11MB265608EC3106B6660341BABC931F0@SN6PR11MB2656.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2399;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: bflOyLSxdFxQ2XbHDLpIjhIIljySNXH5zfvKsnF4uj6JkyHww3V8eWrPk08JfkFZLQjJ9h1G3My5lYBHUN4mg7t5zYbn01j5bGaDVVYI/1DT91P+2EWMsxTG96GW52e1u7bvUltd0cu4P+/3US3L78mJo0ylBeshY/bdJE8AhKu8zhr78PTmaueuPjwMTucHn74uz10XZudvH9g+OUPw3YSRvvxhIIzQDLj8BGRTyj8zNwxiWwL4hXwz9d5dDWtP6N/tWwGOzD5p4IoFo20EDvVmwzlKcJBfIVE6asQ+YwHzpbK5iA5TSbU1V/EYsn3sMGKv7kYYpvq4MEWDhwQmNPfx1hz+9CblFRK58qLbfMu0v2KqIp5PkczcCAzNzhDdxjPDQH8hH7LwOG4xDswFcA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(366004)(136003)(39830400003)(346002)(376002)(186003)(316002)(4326008)(107886003)(8676002)(86362001)(26005)(2906002)(7696005)(478600001)(16526019)(956004)(6486002)(966005)(52116002)(36756003)(8936002)(2616005)(54906003)(5660300002)(1076003)(7416002)(66574015)(6666004)(66556008)(66476007)(66946007)(83380400001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: avGXiwK5K05k1K3UsQA5XeB7nDebzuyaTm2Fe2/DVuWbcpeojovqaNq3Rjpj5ZQz0cJL+AfqnKrf8FESk3xQFxbEafznEQo1u2+wTkAZh1sJJDQfjds+JJWqkkFxYFh73FfMcoJ/VdPxQzptqn25l00u1MfC6BK/WIM3Y2ew261KbQsiTao5nO3otPWCxDIoMrC393edfp0rUlbGOjOpC3BboIw/wyS8yTfvJn/3v/lH6Gnb7GZmsWXXZw3efhQ/AWyIAsBxUFOYQdEfbmfxorDJdiwzQl8rIyXD07Z0Xe7WKI/3E1Rwx5Cel6J6rByMXUIGFIuMIh7mgjfaSf23MfR4qPIHX0GjXKSj+lkHk9ZH8T4DGQTrs4/NDNn373fwQKmYfpzMen/+QbUR3VI3fulH0N5rAEHH9eEfbIuGrE1OQMB5y8/1WS9CUY5lXTP0KNJkKdlMuGfwNttACXlv79YOr0NHfSfKtbR/fFVvjeXwyPWe7PvlD78pD+ZZrUW5R4SS3eBOhlCySvQHgLxiln6jhESzon5BKnRpmAKObiw/vQFeMbi3xWeWo7p6iGytfBuWUw7jLrJPue212Ru413E4sX5d7NLk0j8zOVyhI65b0k70PPOpYpUvvdOn5ZafY3m58rAWOp538VdkEEo8Sw==
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e93d4e67-7f3e-4074-0cfa-08d874f7dd6f
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2020 12:58:40.2646 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zHBTuiQFUXalCfUnYoA4P+kN9QsakDRkZu3icEFbfGANLxiy2cR36/wYPOvFKXeeyB3/WcL2K2DIZ9IPqSN1mw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2656
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,96 +111,177 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER" <GR-Linux-NIC-Dev@marvell.com>,
- Manish Chopra <manishc@marvell.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- open list <linux-kernel@vger.kernel.org>,
- Benjamin Poirier <benjamin.poirier@gmail.com>,
- "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
-
-Thank you for testing this patch!
-
-On Tue, Oct 20, 2020 at 06:27:41PM +0800, Shung-Hsi Yu wrote:
->On Tue, Oct 20, 2020 at 04:57:11PM +0800, Shung-Hsi Yu wrote:
->> Hi,
->>
->> This patch trigger the following KASAN error inside qlge_init_device().
->>
->> [...] general protection fault, probably for non-canonical address 0xdffffc000000004b: 0000 [#1] SMP DEBUG_PAGEALLOC KASAN PTI
->> [...] KASAN: null-ptr-deref in range [0x0000000000000258-0x000000000000025f]
->> [...] CPU: 0 PID: 438 Comm: systemd-udevd Tainted: G         C  E     5.9.0-kvmsmall+ #7
->> [...] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.13.0-48-
->> g...ilt.opensuse.org 04/01/2014
->> [...] RIP: 0010:qlge_get_8000_flash_params+0x377/0x6e0 [qlge]
->> [...] Code: 03 80 3c 02 00 0f 85 57 03 00 00 49 8b af 68 08 00 00 48 b8 00 00 00 00 00 fc ff df 48 8d bd 5f 02 00 00 48 89 fa 48 c1 ea 03 <0f> b6 04 02 48 89 fa 83 e2 07 38 d0 7f 08 84 c0 0f 85 c6 02 00 00
->> [...] RSP: 0018:ffffc90000f97788 EFLAGS: 00010207
->> [...] RAX: dffffc0000000000 RBX: 0000000000000000 RCX: 0000000000000000
->> [...] RDX: 000000000000004b RSI: ffffffffc08cb843 RDI: 000000000000025f
->> [...] R10: fffffbfff5f718a0 R11: 0000000000000001 R12: dffffc0000000000
->> [...] R13: ffff888111085d40 R14: ffff888111085d40 R15: ffff888111080280
->> [...] FS:  00007f315f5db280(0000) GS:ffff8881f5200000(0000) knlGS:0000000000000000
->> [...] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
->> [...] CR2: 000055bb25297170 CR3: 0000000110674000 CR4: 00000000000006f0
->> [...] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
->> [...] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
->> [...] Call Trace:
->> [...]  ? qlge_get_8012_flash_params+0x600/0x600 [qlge]
->> [...]  ? static_obj+0x8a/0xc0
->> [...]  ? lockdep_init_map_waits+0x26a/0x700
->> [...]  qlge_init_device+0x425/0x1000 [qlge]
->> [...]  ? debug_mutex_init+0x31/0x60
->> [...]  qlge_probe+0xfe/0x6c0 [qlge]
->> <snip>
->>
->> With qlge_get_8000_flash_params+0x377/0x6e0 corresponding to the following:
->>
->> 	if (qdev->flash.flash_params_8000.data_type1 == 2)
->> 		memcpy(mac_addr,
->> 		       qdev->flash.flash_params_8000.mac_addr1,
->> 		       qdev->ndev->addr_len); // <---- Here
->
->This is because qdev->ndev == 0.
->
->The reason is that before qlge_get_8000_flash_params() get called qdev is memset-ed inside qlge_init_device().
->
->static int qlge_init_device(struct pci_dev *pdev, struct qlge_adapter *qdev,
->				    int cards_found)
->	{
->	struct net_device *ndev = qdev->ndev;
->	int err = 0;
->
->	memset((void *)qdev, 0, sizeof(*qdev));
->
->	// ...
->
->	// qlge_get_8000_flash_params() get's called
->	err = qdev->nic_ops->get_flash(qdev);
->
->	// ...
->	}
->
-
-Thank you for reporting this issue and providing the fix. I was a bit
-confused after reading previous email because I dind't notice memset
-and the address of ((struct net_device *) 0)->addr_len is 0x026f
-which is outside the range reported by KASAN,
-
-> [...] KASAN: null-ptr-deref in range [0x0000000000000258-0x000000000000025f]
-
-
---
-Best regards,
-Coiby
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKSSB0
+aGluayB0aGUgd2Z4IGRyaXZlciBpcyBub3cgbWF0dXJlIGVub3VnaCB0byBiZSBhY2NlcHRlZCBp
+biB0aGUKZHJpdmVycy9uZXQvd2lyZWxlc3MgZGlyZWN0b3J5LgoKQXMgcmVxdWVzdGVkIGJ5IEth
+bGxlWzFdLCBJIHNlbmQgb25lIGZpbGUgcGVyIHBhdGNoLiBBdCB0aGUgZW5kLCBhbGwgdGhlCnBh
+dGNoZXMgKG9yIGF0IGxlYXN0IHRoZSBwYXRjaGVzIDMgdG8gMjQpIHdpbGwgYmUgc3F1YXNoZWQg
+KHRoZXJlZm9yZSwgSQpkaWRuJ3QgYm90aGVyIHRvIHdyaXRlIHJlYWwgY29tbWl0IG1lc3NhZ2Vz
+KS4KCkhlcmUgaXMgYSBkaWFncmFtIG9mIHRoZSBnbG9iYWwgYXJjaGl0ZWN0dXJlIHRoYXQgbWF5
+IGhlbHAgdG8gdW5kZXJzdGFuZAp0aGUgY29kZToKCiAgICAsLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLgogICAgfCAgICAgICAgICAgICAgICBtYWM4MDIxMSAgICAgICAgICAg
+IHwKICAgIGAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0nCiAgICAsLS0tLS0t
+LS0tLS0tKy0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLgogICAgfCAgICBzdGEgICAgIHwgICAgICAg
+ICAgIHwgICAgICAgICAgIHwKICAgIHwgICAgc2NhbiAgICB8ICAgICAgICAgICB8ICAgICAgICAg
+ICB8CiAgICB8ICAgIG1haW4gICAgfCAgICAgICAgICAgfCAgICAgICAgICAgfAogICAgKy0tLS0t
+LS0tLS0tLSsgIGRhdGFfdHggIHwgICAgICAgICAgIHwKICAgIHwgICAga2V5ICAgICB8ICAgICAg
+ICAgICB8ICBkYXRhX3J4ICB8CiAgICB8IGhpZl90eF9taWIgfCAgIHF1ZXVlICAgfCAgICAgICAg
+ICAgfAogICAgfCAgIGhpZl90eCAgIHwgICAgICAgICAgIHwgICAgICAgICAgIHwKICAgIHwgICBo
+aWZfcnggICB8ICAgICAgICAgICB8ICAgICAgICAgICB8CiAgICB8ICBoaWZfYXBpXyogfCAgICAg
+ICAgICAgfCAgICAgICAgICAgfAogICAgKy0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLSstLS0tLS0t
+LS0tLSstLS0tLS0tLS4KICAgIHwgICAgICAgICAgICAgICAgICBiaCAgICAgICAgICAgICAgICB8
+ICBmd2lvICB8CiAgICArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0t
+LS0tKwogICAgfCAgICAgICAgICAgICAgICAgICAgIGh3aW8gICAgICAgICAgICAgICAgICAgIHwK
+ICAgICstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCiAgICB8
+ICAgICAgICAgICAgICAgICAgIGJ1c19zZGlvICAgICAgICAgICAgICAgICAgfAogICAgfCAgICAg
+ICAgICAgICAgICAgICBidXNfc3BpICAgICAgICAgICAgICAgICAgIHwKICAgIGAtLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0nCiAgICAsLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLgogICAgfCAgICAgICAgICAgICAgICAgIHNw
+aSAvIHNkaW8gICAgICAgICAgICAgICAgIHwKICAgIGAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0nCgpSb3VnaGx5LCBJIGhhdmUgc2VudCB0aGUgZmlsZXMgZnJv
+bSB0aGUgYm90dG9tIHRvIHRoZSB0b3AuCgoKQmVsb3cgdGhlIGRpZmZlcmVuY2VzIHdpdGggdGhl
+IGZpbGVzIGZyb20gZHJpdmVycy9zdGFnaW5nL3dmeC86Cgp2MjoKICAtIGR0LWJpbmRpbmdzOiBJ
+bXByb3ZlIGRldmljZSBkZXNjcmlwdGlvbiBhbmQgYWRkIGxpbmsgdG8gdGhlIGRhdGFzaGVldAog
+ICAgICAoUm9iKQogIC0gZHQtYmluZGluZ3M6IEFkZCBibGFuayBsaW5lcyBiZXR3ZWVuIGVhY2gg
+RFQgcHJvcGVydHkgKFJvYikKICAtIGR0LWJpbmRpbmdzOiBFeHBsaWNpdGx5IG1lbnRpb24gbWFj
+LWFkZHJlc3MgYW5kIGxvY2FsLW1hYy1hZGRyZXNzIGFuZAogICAgICBhZGQgcmVmZXJlbmNlcyB0
+byBldGhlcm5ldC1jb250cm9sbGVyLnlhbWwgKFJvYikKICAtIGR0LWJpbmRpbmdzOiAiY29uZmln
+LWZpbGUiIGlzIG5vdCBmb3IgZGV2ZWxvcG1lbnQvZGVidWcgKFJvYikKICAtIGR0LWJpbmRpbmdz
+OiBSZW1vdmUgZGVzY3JpcHRpb24gb2YgInNwaS1tYXgtZnJlcXVlbmN5IiAoUm9iKQogIC0gZHQt
+YmluZGluZ3M6IFVzZSAiZm9sZGVkIHNjYWxhciIgc3ludGF4IGluc3RlYWQgb2YgZXNjYXBpbmcg
+dGhlIGNvbG9ucwogIC0gYnVzX3NkaW8uYzogQSBjb21wYXRpYmxlIG5vZGUgaW4gdGhlIERUIGlz
+IG5vdyBtYW5kYXRvcnkgdG8gcHJvYmUgdGhlCiAgICAgIGRldmljZS4gQWxzbyBjaGFuZ2UgZG9j
+dW1lbnRhdGlvbiBvZiBkdC1iaW5kaW5ncyBhY2NvcmRpbmdseSAoUGFsaSwKICAgICAgVWxmKQog
+IC0gYnVzX3NkaW8uYzogTW92ZSBTRElPIElEcyB0byBzZGlvX2lkcy5oIChQYWxpKQogIC0gYmgu
+YzogSW1wb3J0IHBhdGNoICJzdGFnaW5nOiB3Zng6IGZpeCB0ZXN0IG9uIHJldHVybiB2YWx1ZSBv
+ZgogICAgICBncGlvZF9nZXRfdmFsdWUoKSIgKE5hdGhhbikKICAtIGRhdGFfdHguYzogSW1wb3J0
+IHBhdGNoICJzdGFnaW5nOiB3Zng6IGZpeCB1c2Ugb2YgdW5pbml0aWFsaXplZAogICAgICBwb2lu
+dGVyIgogIC0gc3RhLmM6IEltcG9ydCBwYXRjaCAic3RhZ2luZzogd2Z4OiBtYWtlIGEgY29uc3Qg
+YXJyYXkgc3RhdGljLCBtYWtlcwogICAgICBvYmplY3Qgc21hbGxlciIgKENvbGluKQoKdjE6CiAg
+LSBEcm9wIHRoZSBmdW5jdGlvbiBuYW1lIGluIHRoZSB3YXJuaW5nIG1lc3NhZ2UgKEthbGxlKQog
+IC0gUmVwbGFjZSBnb3RvIGJ5IHJldHVybiBpbiB3Znhfc2VuZF9wZGF0YV9wZHMoKSAoS2FsbGUs
+IERhbikKICAtIEltcHJvdmUgZXJyb3IgbGFiZWwgaW4gd2Z4X3NlbmRfcGRhdGFfcGRzKCkgKEth
+bGxlKQoKClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzg3ZnQ2cDJuMGguZnNmQGNv
+ZGVhdXJvcmEub3JnLwoKSsOpcsO0bWUgUG91aWxsZXIgKDI0KToKICBtbWM6IHNkaW86IGFkZCBT
+RElPIElEcyBmb3IgU2lsYWJzIFdGMjAwIGNoaXAKICBkdC1iaW5kaW5nczogaW50cm9kdWNlIHNp
+bGFicyx3ZngueWFtbAogIHdmeDogYWRkIE1ha2VmaWxlL0tjb25maWcKICB3Zng6IGFkZCB3Zngu
+aAogIHdmeDogYWRkIG1haW4uYy9tYWluLmgKICB3Zng6IGFkZCBidXMuaAogIHdmeDogYWRkIGJ1
+c19zcGkuYwogIHdmeDogYWRkIGJ1c19zZGlvLmMKICB3Zng6IGFkZCBod2lvLmMvaHdpby5oCiAg
+d2Z4OiBhZGQgZndpby5jL2Z3aW8uaAogIHdmeDogYWRkIGJoLmMvYmguaAogIHdmeDogYWRkIGhp
+Zl9hcGlfKi5oCiAgd2Z4OiBhZGQgaGlmX3R4Ki5jL2hpZl90eCouaAogIHdmeDogYWRkIGtleS5j
+L2tleS5oCiAgd2Z4OiBhZGQgaGlmX3J4LmMvaGlmX3J4LmgKICB3Zng6IGFkZCBkYXRhX3J4LmMv
+ZGF0YV9yeC5oCiAgd2Z4OiBhZGQgcXVldWUuYy9xdWV1ZS5oCiAgd2Z4OiBhZGQgZGF0YV90eC5j
+L2RhdGFfdHguaAogIHdmeDogYWRkIHN0YS5jL3N0YS5oCiAgd2Z4OiBhZGQgc2Nhbi5jL3NjYW4u
+aAogIHdmeDogYWRkIGRlYnVnLmMvZGVidWcuaAogIHdmeDogYWRkIHRyYWNlcy5oCiAgd2Z4OiBy
+ZW1vdmUgZnJvbSB0aGUgc3RhZ2luZyBhcmVhCiAgd2Z4OiBnZXQgb3V0IGZyb20gdGhlIHN0YWdp
+bmcgYXJlYQoKIC4uLi9iaW5kaW5ncy9uZXQvd2lyZWxlc3Mvc2lsYWJzLHdmeC55YW1sICAgICB8
+IDYwICsrKysrKysrKysrLS0tLS0tLS0KIE1BSU5UQUlORVJTICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICB8ICAzICstCiBkcml2ZXJzL25ldC93aXJlbGVzcy9LY29uZmlnICAgICAg
+ICAgICAgICAgICAgfCAgMSArCiBkcml2ZXJzL25ldC93aXJlbGVzcy9NYWtlZmlsZSAgICAgICAg
+ICAgICAgICAgfCAgMSArCiBkcml2ZXJzL25ldC93aXJlbGVzcy9zaWxhYnMvS2NvbmZpZyAgICAg
+ICAgICAgfCAxOCArKysrKysKIGRyaXZlcnMvbmV0L3dpcmVsZXNzL3NpbGFicy9NYWtlZmlsZSAg
+ICAgICAgICB8ICAzICsKIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dmeC9LY29uZmlnICAgICAgICAg
+ICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvTWFrZWZpbGUgICAgICAgICAgICAg
+fCAgMAogLi4uL3tzdGFnaW5nID0+IG5ldC93aXJlbGVzcy9zaWxhYnN9L3dmeC9iaC5jIHwgIDIg
+Ky0KIC4uLi97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvYmguaCB8ICAwCiAu
+Li4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvYnVzLmggICAgICAgICAgICAgICAgfCAgMAogLi4uL3dp
+cmVsZXNzL3NpbGFic30vd2Z4L2J1c19zZGlvLmMgICAgICAgICAgIHwgMTkgKystLS0tCiAuLi4v
+d2lyZWxlc3Mvc2lsYWJzfS93ZngvYnVzX3NwaS5jICAgICAgICAgICAgfCAgMAogLi4uL3dpcmVs
+ZXNzL3NpbGFic30vd2Z4L2RhdGFfcnguYyAgICAgICAgICAgIHwgIDAKIC4uLi93aXJlbGVzcy9z
+aWxhYnN9L3dmeC9kYXRhX3J4LmggICAgICAgICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJz
+fS93ZngvZGF0YV90eC5jICAgICAgICAgICAgfCAxMCArKy0tCiAuLi4vd2lyZWxlc3Mvc2lsYWJz
+fS93ZngvZGF0YV90eC5oICAgICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNzL3NpbGFic30vd2Z4
+L2RlYnVnLmMgICAgICAgICAgICAgIHwgIDAKIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dmeC9kZWJ1
+Zy5oICAgICAgICAgICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvZndpby5jICAg
+ICAgICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNzL3NpbGFic30vd2Z4L2Z3aW8uaCAgICAgICAg
+ICAgICAgIHwgIDAKIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dmeC9oaWZfYXBpX2NtZC5oICAgICAg
+ICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvaGlmX2FwaV9nZW5lcmFsLmggICAgfCAg
+MAogLi4uL3dpcmVsZXNzL3NpbGFic30vd2Z4L2hpZl9hcGlfbWliLmggICAgICAgIHwgIDAKIC4u
+Li93aXJlbGVzcy9zaWxhYnN9L3dmeC9oaWZfcnguYyAgICAgICAgICAgICB8ICAwCiAuLi4vd2ly
+ZWxlc3Mvc2lsYWJzfS93ZngvaGlmX3J4LmggICAgICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNz
+L3NpbGFic30vd2Z4L2hpZl90eC5jICAgICAgICAgICAgIHwgIDAKIC4uLi93aXJlbGVzcy9zaWxh
+YnN9L3dmeC9oaWZfdHguaCAgICAgICAgICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93
+ZngvaGlmX3R4X21pYi5jICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNzL3NpbGFic30vd2Z4L2hp
+Zl90eF9taWIuaCAgICAgICAgIHwgIDAKIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dmeC9od2lvLmMg
+ICAgICAgICAgICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvaHdpby5oICAgICAg
+ICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNzL3NpbGFic30vd2Z4L2tleS5jICAgICAgICAgICAg
+ICAgIHwgIDAKIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dmeC9rZXkuaCAgICAgICAgICAgICAgICB8
+ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvbWFpbi5jICAgICAgICAgICAgICAgfCAgNyAr
+LS0KIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dmeC9tYWluLmggICAgICAgICAgICAgICB8ICAwCiAu
+Li4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvcXVldWUuYyAgICAgICAgICAgICAgfCAgMAogLi4uL3dp
+cmVsZXNzL3NpbGFic30vd2Z4L3F1ZXVlLmggICAgICAgICAgICAgIHwgIDAKIC4uLi93aXJlbGVz
+cy9zaWxhYnN9L3dmeC9zY2FuLmMgICAgICAgICAgICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2ls
+YWJzfS93Zngvc2Nhbi5oICAgICAgICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNzL3NpbGFic30v
+d2Z4L3N0YS5jICAgICAgICAgICAgICAgIHwgIDIgKy0KIC4uLi93aXJlbGVzcy9zaWxhYnN9L3dm
+eC9zdGEuaCAgICAgICAgICAgICAgICB8ICAwCiAuLi4vd2lyZWxlc3Mvc2lsYWJzfS93ZngvdHJh
+Y2VzLmggICAgICAgICAgICAgfCAgMAogLi4uL3dpcmVsZXNzL3NpbGFic30vd2Z4L3dmeC5oICAg
+ICAgICAgICAgICAgIHwgIDAKIGRyaXZlcnMvc3RhZ2luZy9LY29uZmlnICAgICAgICAgICAgICAg
+ICAgICAgICB8ICAyIC0KIGRyaXZlcnMvc3RhZ2luZy9NYWtlZmlsZSAgICAgICAgICAgICAgICAg
+ICAgICB8ICAxIC0KIGRyaXZlcnMvc3RhZ2luZy93ZngvVE9ETyAgICAgICAgICAgICAgICAgICAg
+ICB8ICA2IC0tCiBpbmNsdWRlL2xpbnV4L21tYy9zZGlvX2lkcy5oICAgICAgICAgICAgICAgICAg
+fCAgNSArKwogNDggZmlsZXMgY2hhbmdlZCwgNzggaW5zZXJ0aW9ucygrKSwgNjIgZGVsZXRpb25z
+KC0pCiByZW5hbWUge2RyaXZlcnMvc3RhZ2luZy93ZngvRG9jdW1lbnRhdGlvbiA9PiBEb2N1bWVu
+dGF0aW9ufS9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC93aXJlbGVzcy9zaWxhYnMsd2Z4LnlhbWwg
+KDc2JSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC93aXJlbGVzcy9zaWxhYnMvS2Nv
+bmZpZwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L3dpcmVsZXNzL3NpbGFicy9NYWtl
+ZmlsZQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4
+L0tjb25maWcgKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mv
+c2lsYWJzfS93ZngvTWFrZWZpbGUgKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2luZyA9PiBu
+ZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvYmguYyAoOTklKQogcmVuYW1lIGRyaXZlcnMve3N0YWdp
+bmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2JoLmggKDEwMCUpCiByZW5hbWUgZHJpdmVy
+cy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvYnVzLmggKDEwMCUpCiByZW5h
+bWUgZHJpdmVycy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvYnVzX3NkaW8u
+YyAoOTElKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30v
+d2Z4L2J1c19zcGkuYyAoMTAwJSkKIHJlbmFtZSBkcml2ZXJzL3tzdGFnaW5nID0+IG5ldC93aXJl
+bGVzcy9zaWxhYnN9L3dmeC9kYXRhX3J4LmMgKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2lu
+ZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvZGF0YV9yeC5oICgxMDAlKQogcmVuYW1lIGRy
+aXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2RhdGFfdHguYyAoOTkl
+KQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2Rh
+dGFfdHguaCAoMTAwJSkKIHJlbmFtZSBkcml2ZXJzL3tzdGFnaW5nID0+IG5ldC93aXJlbGVzcy9z
+aWxhYnN9L3dmeC9kZWJ1Zy5jICgxMDAlKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0
+L3dpcmVsZXNzL3NpbGFic30vd2Z4L2RlYnVnLmggKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3Rh
+Z2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvZndpby5jICgxMDAlKQogcmVuYW1lIGRy
+aXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2Z3aW8uaCAoMTAwJSkK
+IHJlbmFtZSBkcml2ZXJzL3tzdGFnaW5nID0+IG5ldC93aXJlbGVzcy9zaWxhYnN9L3dmeC9oaWZf
+YXBpX2NtZC5oICgxMDAlKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNz
+L3NpbGFic30vd2Z4L2hpZl9hcGlfZ2VuZXJhbC5oICgxMDAlKQogcmVuYW1lIGRyaXZlcnMve3N0
+YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2hpZl9hcGlfbWliLmggKDEwMCUpCiBy
+ZW5hbWUgZHJpdmVycy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvaGlmX3J4
+LmMgKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJz
+fS93ZngvaGlmX3J4LmggKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2luZyA9PiBuZXQvd2ly
+ZWxlc3Mvc2lsYWJzfS93ZngvaGlmX3R4LmMgKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2lu
+ZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvaGlmX3R4LmggKDEwMCUpCiByZW5hbWUgZHJp
+dmVycy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvaGlmX3R4X21pYi5jICgx
+MDAlKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4
+L2hpZl90eF9taWIuaCAoMTAwJSkKIHJlbmFtZSBkcml2ZXJzL3tzdGFnaW5nID0+IG5ldC93aXJl
+bGVzcy9zaWxhYnN9L3dmeC9od2lvLmMgKDEwMCUpCiByZW5hbWUgZHJpdmVycy97c3RhZ2luZyA9
+PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93ZngvaHdpby5oICgxMDAlKQogcmVuYW1lIGRyaXZlcnMv
+e3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2tleS5jICgxMDAlKQogcmVuYW1l
+IGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L2tleS5oICgxMDAl
+KQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L21h
+aW4uYyAoOTklKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFi
+c30vd2Z4L21haW4uaCAoMTAwJSkKIHJlbmFtZSBkcml2ZXJzL3tzdGFnaW5nID0+IG5ldC93aXJl
+bGVzcy9zaWxhYnN9L3dmeC9xdWV1ZS5jICgxMDAlKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcg
+PT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L3F1ZXVlLmggKDEwMCUpCiByZW5hbWUgZHJpdmVy
+cy97c3RhZ2luZyA9PiBuZXQvd2lyZWxlc3Mvc2lsYWJzfS93Zngvc2Nhbi5jICgxMDAlKQogcmVu
+YW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L3NjYW4uaCAo
+MTAwJSkKIHJlbmFtZSBkcml2ZXJzL3tzdGFnaW5nID0+IG5ldC93aXJlbGVzcy9zaWxhYnN9L3dm
+eC9zdGEuYyAoOTklKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dpcmVsZXNzL3Np
+bGFic30vd2Z4L3N0YS5oICgxMDAlKQogcmVuYW1lIGRyaXZlcnMve3N0YWdpbmcgPT4gbmV0L3dp
+cmVsZXNzL3NpbGFic30vd2Z4L3RyYWNlcy5oICgxMDAlKQogcmVuYW1lIGRyaXZlcnMve3N0YWdp
+bmcgPT4gbmV0L3dpcmVsZXNzL3NpbGFic30vd2Z4L3dmeC5oICgxMDAlKQogZGVsZXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvVE9ETwoKLS0gCjIuMjguMAoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
+dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
+b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
