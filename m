@@ -2,57 +2,45 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF00E294269
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 20:44:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1D4B29432D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 21:39:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3996D860C5;
-	Tue, 20 Oct 2020 18:44:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 808DF804B5;
+	Tue, 20 Oct 2020 19:39:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zvs61KjQXucG; Tue, 20 Oct 2020 18:44:11 +0000 (UTC)
+	with ESMTP id bZ9Kv6CUkmjl; Tue, 20 Oct 2020 19:39:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A4A48589C;
-	Tue, 20 Oct 2020 18:44:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C9A4F84542;
+	Tue, 20 Oct 2020 19:39:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 609D41BF33A
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 18:44:09 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D6FE91BF37F
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 19:39:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5503120456
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 18:44:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D3E0A86D6E
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 19:39:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pX6ERUGYXKZN for <devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 18:44:08 +0000 (UTC)
+ with ESMTP id Ffv5QNk2Aisx for <devel@linuxdriverproject.org>;
+ Tue, 20 Oct 2020 19:39:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by silver.osuosl.org (Postfix) with ESMTPS id 2AF7820421
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 18:44:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=FisEfntxRD16Mc2UH0UduZ4Jj0SVaufwZnhtyHdV9Pw=; b=AQupAPyUG0k5W7lneeKs9nvx+x
- bGynEHuIFEXEvoLfRuevtfLxeHZWXMIUZu8TCBrJYIMerXODBBK55cT4p+fkAPsbX8AgiNzn6b8rp
- a1T+06x6GzkyC+qMgCB7eBCe3Nb4LSAKeTzl+YLLvZ+qnc9BG7mzUahybecIuWrss0HeF0Mvrv4tg
- dTJRJsHEaYTXC0XZ/usvHGFw5u7hA266maVfxT1ENLOq+QssJ9kWMuy3lLhXFMlBNpplwsq0MbdhO
- M3bxJr5ostyJTMk3461VqiYiUiYRKa8b/0xuP/mAjAfit03TWBY0RhPQrfRZ9UPFXd6AAX9DCJrms
- x5JK0riw==;
-Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1kUwc8-0007NB-Qy; Tue, 20 Oct 2020 18:44:05 +0000
-Date: Tue, 20 Oct 2020 19:44:04 +0100
-From: Matthew Wilcox <willy@infradead.org>
-To: Elena Afanasova <eafanasova@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 3/3] staging/rtl8712: use BIT macro
-Message-ID: <20201020184404.GC20115@casper.infradead.org>
-References: <20201020182439.43314-1-eafanasova@gmail.com>
- <20201020182439.43314-3-eafanasova@gmail.com>
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0E47C86DAF
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 19:39:04 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: koike) with ESMTPSA id 29CE31F44D9D
+From: Helen Koike <helen.koike@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH v6 0/9] move Rockchip ISP bindings out of staging / add ISP DT
+ nodes for RK3399
+Date: Tue, 20 Oct 2020 16:38:41 -0300
+Message-Id: <20201020193850.1460644-1-helen.koike@collabora.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201020182439.43314-3-eafanasova@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,35 +53,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- outreachy-kernel@googlegroups.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ eddie.cai.linux@gmail.com, dafna.hirschfeld@collabora.com, heiko@sntech.de,
+ robin.murphy@arm.com, linux-kernel@vger.kernel.org, karthik.poduval@gmail.com,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ hverkuil-cisco@xs4all.nl, mark.rutland@arm.com, kernel@collabora.com,
+ zhengsq@rock-chips.com, jbx6244@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 20, 2020 at 11:24:39AM -0700, Elena Afanasova wrote:
-> Reported by checkpatch.pl
+Move the bindings out of drivers/staging and place them in
+Documentation/devicetree/bindings instead.
 
-Checkpatch is wrong.
+Also, add DT nodes for RK3399 and verify with make ARCH=arm64 dtbs_check
+and make ARCH=arm64 dt_binding_check.
 
-> +++ b/drivers/staging/rtl8712/rtl871x_recv.h
-> @@ -8,7 +8,7 @@
->  #define NR_RECVFRAME 256
->  
->  #define RXFRAME_ALIGN	8
-> -#define RXFRAME_ALIGN_SZ	(1 << RXFRAME_ALIGN)
-> +#define RXFRAME_ALIGN_SZ	BIT(RXFRAME_ALIGN)
->  
->  #define MAX_SUBFRAME_COUNT	64
->  
-> -- 
-> 2.25.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201020182439.43314-3-eafanasova%40gmail.com.
+Tested by verifying images streamed from Scarlet Chromebook
+
+Changes in v6:
+- [PATCH v6 5/9] media: staging: rkisp1: remove unecessary clocks
+  Define clocks in the top level, and use if/else schema to define how
+  many for each compatible as sugested by Rob Herring on
+  https://patchwork.linuxtv.org/project/linux-media/patch/20200722155533.252844-6-helen.koike@collabora.com/#122626
+- [PATCH v6 8/9] arm64: dts: rockchip: add isp0 node for rk3399
+  Add status = "disabled" in the isp0 node
+- Added Reviewed-by tags from Tomasz Figa
+- Added Acked-by tags from Rog Herring
+- No changes for other patches in the serie.
+
+Changes in v5:
+- Drop unit addresses in dt-bindings example for simplification and fix
+errors as suggested by Rob Herring in previous version
+- Fix typos
+- Re-write clock organization with if/then schema
+
+Changes in v4:
+- simplify clocks with "isp", "aclk" and "hclk" as suggested by
+Robin Murphy on https://patchwork.kernel.org/patch/11475007/
+
+Changes in v3:
+- dropped accepted patches
+- cleanup clocks
+- fix "no reg" error in dt-bindings parent@0 example
+- add linux-rockchip list in MAINTAINERS and reorder items
+- add Scarlet sensors dt nodes to the series
+
+Changes in v2:
+Add patches modifying bindings, as sugested by Johan Jonker in v1,
+before moving them out of staging.
+
+Eddie Cai (1):
+  arm64: dts: rockchip: add isp and sensors for Scarlet
+
+Helen Koike (7):
+  media: staging: dt-bindings: rkisp1: add missing required nodes
+  media: staging: dt-bindings: rkisp1: drop i2c unit address
+  media: staging: dt-bindings: rkisp1: re-order properties
+  media: staging: dt-bindings: rkisp1: drop parent unit address
+  media: staging: rkisp1: remove unecessary clocks
+  dt-bindings: media: rkisp1: move rockchip-isp1 bindings out of staging
+  media: MAINTAINERS: rkisp1: add path to dt-bindings
+
+Shunqian Zheng (1):
+  arm64: dts: rockchip: add isp0 node for rk3399
+
+ .../bindings/media/rockchip-isp1.yaml         | 81 ++++++++++++-------
+ MAINTAINERS                                   |  2 +
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 26 ++++++
+ drivers/staging/media/rkisp1/rkisp1-dev.c     |  8 +-
+ 5 files changed, 157 insertions(+), 34 deletions(-)
+ rename {drivers/staging/media/rkisp1/Documentation => Documentation}/devicetree/bindings/media/rockchip-isp1.yaml (81%)
+
+-- 
+2.28.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
