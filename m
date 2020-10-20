@@ -1,84 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98191293206
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 01:32:07 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 592F529329D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 03:08:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6761720437;
-	Mon, 19 Oct 2020 23:32:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C564D86BB8;
+	Tue, 20 Oct 2020 01:08:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dUcO3Hwz0OpA; Mon, 19 Oct 2020 23:32:04 +0000 (UTC)
+	with ESMTP id UnCfWrPS-Me8; Tue, 20 Oct 2020 01:08:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 921572E130;
-	Mon, 19 Oct 2020 23:31:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8CA0686B74;
+	Tue, 20 Oct 2020 01:08:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2D7DB1BF2FC
- for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 23:31:56 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 97FEC1BF32C
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 01:07:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0FBE420437
- for <devel@linuxdriverproject.org>; Mon, 19 Oct 2020 23:31:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 93E0886B43
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 01:07:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e4hX9oQkO4Ij for <devel@linuxdriverproject.org>;
- Mon, 19 Oct 2020 23:31:55 +0000 (UTC)
-X-Greylist: delayed 00:20:12 by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 112AD203C7
- for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 23:31:55 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id j18so31256pfa.0
- for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 16:31:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ with ESMTP id BNxMgnngXbOo for <devel@linuxdriverproject.org>;
+ Tue, 20 Oct 2020 01:07:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
+ [209.85.166.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D19EE86B3F
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 01:07:57 +0000 (UTC)
+Received: by mail-io1-f66.google.com with SMTP id b8so426916ioh.11
+ for <devel@driverdev.osuosl.org>; Mon, 19 Oct 2020 18:07:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=KZcwJitFojA7RhzeD/UU8gbzehCBdvf6g5ia0ZYCrq4=;
- b=R0THCPfeT+NjRv5n7wRuWr3+iQQVH5mYQugrcFEorv7jMlZOJpq4gWO8x2sltRZ1S3
- 8+uXkfK+0xraFRPc7RLEyC+L1Eqn+lwfgcQ60rCu3Ir6T0iqCUlHxkXPI8IxQxljNihW
- MxA7dERE+Fo0B6yhfEPLGm6gbjuMrGvt0ee7i4ozPAa6C0OwTV1SJBaz+sj8rzyyiIix
- DQ1LhxNguLsVQ2r9xWcmCur9QDHoeimXQtC/UVpN+4Yl8O9ZbpYKUwlrKFZtzYHwjpgZ
- iC+kREvCZvwgmOBCIm7DmgxG6/6ncKrp6QDCnbxkp/qIzrhuMyauJsg53LWTp//HSslk
- z+3Q==
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=p6oCxSl0NxHBGpRF0Csh1Ota/+f24EPc/qZsIIjTsdU=;
+ b=mU393MiUidI9lhYo7eRWYGH4kcEYs2KhAe5eGHziG6lNNA+UgmdmNSorh4u2iBcqzR
+ Q5cEbqS8JEFlKs79WKpq2wSp5UdONcPw6WMXA6KEwNPe6aEddElxw2wMmGA8rea5Qcn1
+ opc5cTGw311OWXelQ/A6z5jvuZfJDf9qxgqE3p+dm65DZRFQxK6Y+pArEusIeg/LNcjZ
+ Kj1EraDBaZfV+RAaa4yrgh85cX9wAHWyrk5OHDK4Qx7J5xwNw8VlCVnIAJEKJ4NSCvWy
+ 7qhb2lkMsA7XnBQVmzResc546/eZL0e+83Pc1UVLboD4RUc4svsQPnaNWsILGdVMlrIO
+ KmSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=KZcwJitFojA7RhzeD/UU8gbzehCBdvf6g5ia0ZYCrq4=;
- b=GExL4nIRHAe5AuGQoVa8yOkdrjJcwkIeeM7bfMW0TNZz6rzqBZGO+SjHVftzKSOgO8
- M1f4INKOWZxmBELNOi6gkiOEJTcQI+zPNoctAm7on2gnxuG3VWP46DKGHBFqwjBnANgb
- sEi2NrT1ZEQMpf/QBq6SpbqFxgtJs5dbym9UJaeLiFkZ6VoZ3DsNRF6BHSWLupvNI29p
- 7EurIjay4A0u6Gsep/ccE77a4/sBVM71JRkp9pFKnYGhucOSaNRA8/zKksVyr4LtmBNd
- 3X4Akb7AbRZ7QVZGsF3U+GhWE7OFbjzZZ/1glvhK69fGaHE0mOPjr6KlG2Bo2LeIuIpI
- 7//Q==
-X-Gm-Message-State: AOAM531zHdHWndljr03DBzZBDrrSLZQIhnawkFK27NUukCxGoNECJ8Qp
- kToR77DBbF1UsN2+BnEbTdOpZ7EU2QwH7A==
-X-Google-Smtp-Source: ABdhPJwE/qhLAedndnNRaUrUDMs331Onaq8Iz+VDEVRJN+4h4B5ckC67pNXDnvS9MRF/DxLJjNlnIQ==
-X-Received: by 2002:a6b:5019:: with SMTP id e25mr44377iob.123.1603148748578;
- Mon, 19 Oct 2020 16:05:48 -0700 (PDT)
-Received: from ziepe.ca
- (hlfxns017vw-156-34-48-30.dhcp-dynamic.fibreop.ns.bellaliant.net.
- [156.34.48.30])
- by smtp.gmail.com with ESMTPSA id u8sm7938ilm.36.2020.10.19.16.05.47
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=p6oCxSl0NxHBGpRF0Csh1Ota/+f24EPc/qZsIIjTsdU=;
+ b=GwfUs7IagMr1SniQBIGV8vxcjPQcLrvrpg/VZHifXuf+VtSA5W0EvrE4k+tViRYpgc
+ g1qLo+M+wxHU3OWPJFDdeYWEHYV6Wxq7rJElQwUaVz0SKvPX3q4VX+hUbGp/cvuWc1S9
+ nmNdD1NC4euXfRmNRAIVMGeqaMd+gjzqcqF85Ot9w0w+DB/Skf0w7IV825U9/bhqPtVt
+ EPiZAa2j/k0dhEnuJOj5Z1xMVmdTEUn60OCZg6Nmn1TWH3UzRLx2eDOpf6MdZZSaDk+y
+ MGmfQBVf+QWVT5DmJ1YCGlcVguQltdBDZgqrH5eUUEOvPrtLobNaGrRhiGkpChpdpPwG
+ i29g==
+X-Gm-Message-State: AOAM532iS+3z3uMaynjAs6uPIJ6UkaaW3cVPmb67BTMUDwGHlV3fq7AE
+ d1WUa6K7HGc2Dr0y6bJ3fdo=
+X-Google-Smtp-Source: ABdhPJw/gkp/YEp4mC5SU0UwrWcYSOqWSCeVCgimt0fr9KxWgSWFEoh2ANrwgq/8HwL7RR03j8xUSg==
+X-Received: by 2002:a02:3b54:: with SMTP id i20mr354726jaf.94.1603156077138;
+ Mon, 19 Oct 2020 18:07:57 -0700 (PDT)
+Received: from ubuntu-m3-large-x86 ([2604:1380:45d1:2600::3])
+ by smtp.gmail.com with ESMTPSA id 80sm313059ilv.13.2020.10.19.18.07.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2020 16:05:47 -0700 (PDT)
-Received: from jgg by mlx with local (Exim 4.94) (envelope-from <jgg@ziepe.ca>)
- id 1kUeDq-002hRf-LL; Mon, 19 Oct 2020 20:05:46 -0300
-Date: Mon, 19 Oct 2020 20:05:46 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Nick Desaulniers <ndesaulniers@google.com>
-Subject: Re: [RFC] treewide: cleanup unreachable breaks
-Message-ID: <20201019230546.GH36674@ziepe.ca>
-References: <20201017160928.12698-1-trix@redhat.com>
- <20201018054332.GB593954@kroah.com>
- <CAKwvOdkR_Ttfo7_JKUiZFVqr=Uh=4b05KCPCSuzwk=zaWtA2_Q@mail.gmail.com>
+ Mon, 19 Oct 2020 18:07:56 -0700 (PDT)
+Date: Mon, 19 Oct 2020 18:07:54 -0700
+From: Nathan Chancellor <natechancellor@gmail.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 1/2] staging: wfx: fix use of uninitialized pointer
+Message-ID: <20201020010754.GB1817488@ubuntu-m3-large-x86>
+References: <20201019160604.1609180-1-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAKwvOdkR_Ttfo7_JKUiZFVqr=Uh=4b05KCPCSuzwk=zaWtA2_Q@mail.gmail.com>
+In-Reply-To: <20201019160604.1609180-1-Jerome.Pouiller@silabs.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,72 +86,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org,
- clang-built-linux <clang-built-linux@googlegroups.com>,
- Greg KH <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org,
- Tom Rix <trix@redhat.com>, storagedev@microchip.com, linux-pci@vger.kernel.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- virtualization@lists.linux-foundation.org, keyrings@vger.kernel.org,
- linux-mtd@lists.infradead.org, ath10k@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, usb-storage@lists.one-eyed-alien.net,
- linux-watchdog@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm <linux-nvdimm@lists.01.org>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>, linux-acpi@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, industrypack-devel@lists.sourceforge.net,
- nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org,
- MPT-FusionLinux.pdl@broadcom.com, linux-media@vger.kernel.org,
- linux-serial@vger.kernel.org, linux-nfc@lists.01.org, linux-pm@vger.kernel.org,
- linux-can@vger.kernel.org, linux-block@vger.kernel.org,
- linux-gpio@vger.kernel.org, xen-devel@lists.xenproject.org,
- linux-amlogic@lists.infradead.org, openipmi-developer@lists.sourceforge.net,
- platform-driver-x86@vger.kernel.org, linux-integrity@vger.kernel.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-edac@vger.kernel.org,
- George Burgess <gbiv@google.com>, Network Development <netdev@vger.kernel.org>,
- linux-usb@vger.kernel.org, linux-wireless <linux-wireless@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, linux-security-module@vger.kernel.org,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
- <linux-crypto@vger.kernel.org>, patches@opensource.cirrus.com,
- bpf <bpf@vger.kernel.org>, ocfs2-devel@oss.oracle.com,
- linux-power@fi.rohmeurope.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 19, 2020 at 12:42:15PM -0700, Nick Desaulniers wrote:
-> On Sat, Oct 17, 2020 at 10:43 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Sat, Oct 17, 2020 at 09:09:28AM -0700, trix@redhat.com wrote:
-> > > From: Tom Rix <trix@redhat.com>
-> > >
-> > > This is a upcoming change to clean up a new warning treewide.
-> > > I am wondering if the change could be one mega patch (see below) or
-> > > normal patch per file about 100 patches or somewhere half way by collecting
-> > > early acks.
-> >
-> > Please break it up into one-patch-per-subsystem, like normal, and get it
-> > merged that way.
-> >
-> > Sending us a patch, without even a diffstat to review, isn't going to
-> > get you very far...
-> 
-> Tom,
-> If you're able to automate this cleanup, I suggest checking in a
-> script that can be run on a directory.  Then for each subsystem you
-> can say in your commit "I ran scripts/fix_whatever.py on this subdir."
->  Then others can help you drive the tree wide cleanup.  Then we can
-> enable -Wunreachable-code-break either by default, or W=2 right now
-> might be a good idea.
+On Mon, Oct 19, 2020 at 06:06:03PM +0200, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> =
 
-I remember using clang-modernize in the past to fix issues very
-similar to this, if clang machinery can generate the warning, can't
-something like clang-tidy directly generate the patch?
+> With -Wuninitialized, the compiler complains:
+> =
 
-You can send me a patch for drivers/infiniband/* as well
+> drivers/staging/wfx/data_tx.c:34:19: warning: variable 'band' is uninitia=
+lized when used here [-Wuninitialized]
+>     if (rate->idx >=3D band->n_bitrates) {
+>                          ^~~~
+> =
 
-Thanks,
-Jason
+> Reported-by: kernel test robot <lkp@intel.com>
+> Reported-by: Nathan Chancellor <natechancellor@gmail.com>
+> Fixes: 868fd970e187 ("staging: wfx: improve robustness of wfx_get_hw_rate=
+()")
+> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+
+Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
+
+> ---
+>  drivers/staging/wfx/data_tx.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> =
+
+> diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+> index 41f6a604a697..36b36ef39d05 100644
+> --- a/drivers/staging/wfx/data_tx.c
+> +++ b/drivers/staging/wfx/data_tx.c
+> @@ -31,13 +31,13 @@ static int wfx_get_hw_rate(struct wfx_dev *wdev,
+>  		}
+>  		return rate->idx + 14;
+>  	}
+> -	if (rate->idx >=3D band->n_bitrates) {
+> -		WARN(1, "wrong rate->idx value: %d", rate->idx);
+> -		return -1;
+> -	}
+>  	// WFx only support 2GHz, else band information should be retrieved
+>  	// from ieee80211_tx_info
+>  	band =3D wdev->hw->wiphy->bands[NL80211_BAND_2GHZ];
+> +	if (rate->idx >=3D band->n_bitrates) {
+> +		WARN(1, "wrong rate->idx value: %d", rate->idx);
+> +		return -1;
+> +	}
+>  	return band->bitrates[rate->idx].hw_value;
+>  }
+>  =
+
+> -- =
+
+> 2.28.0
+> =
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
