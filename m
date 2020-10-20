@@ -1,80 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91623293F8D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 17:27:07 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA942293F96
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Oct 2020 17:29:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BACA887341;
-	Tue, 20 Oct 2020 15:27:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 78BA586A6C;
+	Tue, 20 Oct 2020 15:29:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JQCvVOiQraPp; Tue, 20 Oct 2020 15:27:05 +0000 (UTC)
+	with ESMTP id cIPeeQA44Ndz; Tue, 20 Oct 2020 15:29:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E1915872EF;
-	Tue, 20 Oct 2020 15:27:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 36E38868B6;
+	Tue, 20 Oct 2020 15:29:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0A0811BF82F
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 15:27:02 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4EB7C1BF82F
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 15:29:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CE17B2E1DA
- for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 15:27:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4B0B6868B6
+ for <devel@linuxdriverproject.org>; Tue, 20 Oct 2020 15:29:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OXNn1D3FxMF9 for <devel@linuxdriverproject.org>;
- Tue, 20 Oct 2020 15:27:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
- [209.85.208.193])
- by silver.osuosl.org (Postfix) with ESMTPS id E440B2E1D4
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 15:27:00 +0000 (UTC)
-Received: by mail-lj1-f193.google.com with SMTP id m20so2472731ljj.5
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 08:27:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=Zeh27GzRmL8bPL9oQCB5ck5CEjhVPNog8LVAko3+L1c=;
- b=VkRmWZIVxZksp8YLlWRlb3EAWtNkOyEbd+ADeHDy4h61/4SfZruYbo+z4tN9CDCzLU
- I3woZVHaKjTwjo+8bzUc8WYFhE9bryxKtrbmgtJy31mMmgt2C3e9WNuZMfwwLnVWpYpJ
- xwm3OvkQubPrJGYzh1Yd/7pY5ezKXF8z1a38qpYU016pzgn6yrBA/fJEtn+crlhBZPHQ
- jpGaCgMKX6LsPsXl3PcWu40OhzlOsyKCqWrRmWonnoA2Iub5RdFeZrzXRNCrt8vB6tmX
- nc+gZaC/5O43vGR17vuQ/hDvgaiD/STlIlkDEmdB6Jv8xN6PzKt75QTDBD3TNEt5oX8y
- xJDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=Zeh27GzRmL8bPL9oQCB5ck5CEjhVPNog8LVAko3+L1c=;
- b=APNmpetiGXFB6abxvx4W1TMIF9SZV/0cB3UCdZXcpxmz05eKuwCVVL9pxy9Hxe1wwL
- e5m1MPES8+u17XTtWQCQweOlqdn0hxPFrlGc9nJ/0F6DeQdtiGsvh1SW/GLAEFVfg+2a
- K5IeK/+QZ3BBar9Y0FXl2IGGhv2ZriSEvKrTW+R4hfdyBTaQUaSnw3W95aa6Bb1qq3BL
- BdwdljWbf2vVMUZkicZy5zi8pA4BX21KP83yS3GfrUNYNvtPQP0QZtBBWvIc800nnEYy
- YjWJPxgxxEWZJ6w9QU88CgrzEFEDiTyISrLvqI75K9T6Ghscs+M+T13sk4AEithZBVwe
- PkYw==
-X-Gm-Message-State: AOAM533WMUvxSQMiRlgs4bpkQNgiw7f+TF/N7cK5BgSOWwbYtfiCfIN/
- aYkm7uO4Y/0v2KRvOkSvQ3o=
-X-Google-Smtp-Source: ABdhPJzAjbHin9jDCXbdGqowQUIWlKwEEke8GprqItrPraiYcVu/u+wHu5GtgtboGSrKPFAWE0k7XQ==
-X-Received: by 2002:a2e:7304:: with SMTP id o4mr1284890ljc.437.1603207619099; 
- Tue, 20 Oct 2020 08:26:59 -0700 (PDT)
-Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
- [37.145.186.126])
- by smtp.gmail.com with ESMTPSA id p7sm350369lfc.299.2020.10.20.08.26.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 08:26:58 -0700 (PDT)
-Message-ID: <db06e14584ad31f5a16e6600fa269543997cc28a.camel@gmail.com>
-Subject: Re: [PATCH] staging/rtl8192u/ieee80211: use __func__ macro
-From: Elena Afanasova <eafanasova@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Date: Tue, 20 Oct 2020 08:26:45 -0700
-In-Reply-To: <20201020151949.GA852005@kroah.com>
-References: <20201020150823.35734-1-eafanasova@gmail.com>
- <20201020151949.GA852005@kroah.com>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id 0QH9o2atdFLA for <devel@linuxdriverproject.org>;
+ Tue, 20 Oct 2020 15:29:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [207.82.80.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0CD6E86868
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 15:29:52 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-90-Cn_Z6BHWNUmFgv53TMgdvw-1; Tue, 20 Oct 2020 16:29:47 +0100
+X-MC-Unique: Cn_Z6BHWNUmFgv53TMgdvw-1
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Tue, 20 Oct 2020 16:29:46 +0100
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Tue, 20 Oct 2020 16:29:46 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Colin King' <colin.king@canonical.com>, Helen Koike
+ <helen.koike@collabora.com>, Dafna Hirschfeld
+ <dafna.hirschfeld@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+Subject: RE: [PATCH] media: staging: rkisp1: rsz: make const array static,
+ makes object smaller
+Thread-Topic: [PATCH] media: staging: rkisp1: rsz: make const array static,
+ makes object smaller
+Thread-Index: AQHWpu/g1aA4z1vvvE6vSt76+nNaDamgnL6w
+Date: Tue, 20 Oct 2020 15:29:46 +0000
+Message-ID: <d5663dec063440129bf6c373aa252d51@AcuMS.aculab.com>
+References: <20201020144655.53251-1-colin.king@canonical.com>
+In-Reply-To: <20201020144655.53251-1-colin.king@canonical.com>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,47 +81,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Cc: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2020-10-20 at 17:19 +0200, Greg KH wrote:
-> On Tue, Oct 20, 2020 at 08:08:23AM -0700, Elena Afanasova wrote:
-> > Replace function names with __func__ macro.
-> > Remove unnecessary characters in error messages.
-> > Reported by checkpatch.pl.
-> > 
-> > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> > ---
-> >  drivers/staging/rtl8192u/ieee80211/dot11d.c | 12 ++++++------
-> >  1 file changed, 6 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/staging/rtl8192u/ieee80211/dot11d.c
-> > b/drivers/staging/rtl8192u/ieee80211/dot11d.c
-> > index bc642076b96f..f972edcde8a0 100644
-> > --- a/drivers/staging/rtl8192u/ieee80211/dot11d.c
-> > +++ b/drivers/staging/rtl8192u/ieee80211/dot11d.c
-> > @@ -15,7 +15,7 @@ void rtl8192u_dot11d_init(struct ieee80211_device
-> > *ieee)
-> >  	memset(dot11d_info->max_tx_pwr_dbm_list, 0xFF,
-> > MAX_CHANNEL_NUMBER + 1);
-> >  	RESET_CIE_WATCHDOG(ieee);
-> >  
-> > -	netdev_info(ieee->dev, "rtl8192u_dot11d_init()\n");
-> > +	netdev_info(ieee->dev, "%s\n", __func__);
+From: Colin King
+> Sent: 20 October 2020 15:47
 > 
-> This is a pure debugging line, and should just be removed.  Can you
-> do
-> that as an add-on patch to this?
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> Don't populate the const array dev_names on the stack but instead it
+> static. Makes the object code smaller by 15 bytes.
+> 
+> Before:
+>    text	   data	    bss	    dec	    hex	filename
+>   17091	   2648	     64	  19803	   4d5b	media/rkisp1/rkisp1-resizer.o
+> 
+> After:
+>    text	   data	    bss	    dec	    hex	filename
+>   17012	   2712	     64	  19788	   4d4c	media/rkisp1/rkisp1-resizer.o
+> 
+> (gcc version 10.2.0)
+> 
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-resizer.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-
+> resizer.c
+> index 1687d82e6c68..7ca5b47c5bf5 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> @@ -763,8 +763,10 @@ static void rkisp1_rsz_unregister(struct rkisp1_resizer *rsz)
+> 
+>  static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
+>  {
+> -	const char * const dev_names[] = {RKISP1_RSZ_MP_DEV_NAME,
+> -					  RKISP1_RSZ_SP_DEV_NAME};
+> +	static const char * const dev_names[] = {
+> +		RKISP1_RSZ_MP_DEV_NAME,
+> +		RKISP1_RSZ_SP_DEV_NAME
+> +	};
+>  	struct media_pad *pads = rsz->pads;
+>  	struct v4l2_subdev *sd = &rsz->sd;
+>  	int ret;
 
-ok
-> 
-> thanks,
-> 
-> greg k-h
+Don't look at what that code is actually doing....
+It is rather horrid.
+rkisp1_rsz_register() is called for each entry in an array (twice).
+The array index is written into rsz->id.
+The value is then used to select one of the two strings.
+But rsz->id is actually an enum type.
 
+rkisp1_rsz_register() should probably just be called twice with some
+extra parameters.
+
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
