@@ -1,80 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18A2429506F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 18:11:25 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CAC82951F8
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 20:05:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CA62585F43;
-	Wed, 21 Oct 2020 16:11:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 31BDF874C8;
+	Wed, 21 Oct 2020 18:05:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CmJgpQoGI1X2; Wed, 21 Oct 2020 16:11:23 +0000 (UTC)
+	with ESMTP id 4avLKbCp0Wjo; Wed, 21 Oct 2020 18:05:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B25D785B3D;
-	Wed, 21 Oct 2020 16:11:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F21B8874BF;
+	Wed, 21 Oct 2020 18:05:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A66C51BF3D0
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 16:11:20 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F0BD1BF342
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 18:05:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A347086CD7
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 16:11:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 165A2868EF
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 18:05:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4TfTqtZn2Dsg for <devel@linuxdriverproject.org>;
- Wed, 21 Oct 2020 16:11:19 +0000 (UTC)
+ with ESMTP id MdJS4EbTpwPJ for <devel@linuxdriverproject.org>;
+ Wed, 21 Oct 2020 18:04:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A9588868DB
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 16:11:19 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id l18so1766998pgg.0
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 09:11:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Ec9niyVw8iqsOhEud1SjOEtKZWQ2FQb/n45NLI289hg=;
- b=jwxtPWKJ16TJW/pFxvlJk9updwEVK+OAVCUUX9kRegpFz0Ms+Sv8KFd/b6kPKSQxNg
- mVnJmlA3oK6951I/eEGjkJylIMrzRA9rjQvgOFGhdNXlgcml7Rq+G/tXRExXpj2N48lK
- 5YSp/cRKAp7/Ija4+0Ttg+inhDqhP6dqZKMvWv0C7kJF504YidnYb9x/x+Hhqb05bB3w
- rZ2lvI5BCqfWwayEj8ijNuj9QeNrOOC9TD1LMkRrDuSlvUlw4yYvWVazBPRlKl8ov+iU
- 9UUEVoE8clekU6YXLyEqZBZ5MN/+sgrsPgPhuynJ/+B8tqcC0bygO9uFYpbJtsZTrWmz
- wT9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Ec9niyVw8iqsOhEud1SjOEtKZWQ2FQb/n45NLI289hg=;
- b=neufFdILs8keA6YP76qDhhw5DT3IpckM5p5o0Gx/m/F2FYRManv4SGIpPM7BbWl9bJ
- bJuRLl9fw+0//4dWVMOFcLctpj+44/mbfFXeWZqQe9DHHzrZyZzHnpna0XHpv04DQTdA
- aUbINkaQktEWwh+4BtPiBalTHAvoVSXajFJ+eVYiFyEXaMUqRp+LPLO37HOo8i7T/HAY
- N5XS2+UY6Y2l49bIfirmjuGlxRCvXapkzeheABKKlQecCi8lvGhaSUW1c0ATQz3BM2rl
- gs6z1rEQyOF9LFfVOMQYlzb63iwUkJwoii1DyBDc+rQpnhKIArkvLnq/PaUmONnfujIn
- so6Q==
-X-Gm-Message-State: AOAM530h7IFk2wO4F5XGPICfy3oGHm9jMJudHySO+nqd0vgZrMHcOB27
- gdAcJxJ4ms6DcO3W1OKuYpU=
-X-Google-Smtp-Source: ABdhPJxD934GtQEd82RpsLDxWVZ1WxeRzpEaBqE2nvvSWn7CJ3R8gtjtAQN/kBV7HSjbwToglTjAiA==
-X-Received: by 2002:aa7:8421:0:b029:155:3229:69cc with SMTP id
- q1-20020aa784210000b0290155322969ccmr4306199pfn.36.1603296679369; 
- Wed, 21 Oct 2020 09:11:19 -0700 (PDT)
-Received: from ubuntu204 ([103.108.75.206])
- by smtp.gmail.com with ESMTPSA id il5sm238515pjb.4.2020.10.21.09.11.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Oct 2020 09:11:19 -0700 (PDT)
-Date: Wed, 21 Oct 2020 21:41:14 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org
-Subject: [PATCH v3 3/3] staging: kpc2000: Use BIT macro instead of bit masking
-Message-ID: <2269298ae71605b47fa43a2ebaee23d0ad4ed5a5.1603295576.git.mh12gx2825@gmail.com>
-References: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603295575.git.mh12gx2825@gmail.com>
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 19963868DE
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 18:04:58 +0000 (UTC)
+IronPort-SDR: ON6M2kaim8Ejkh6qYBy0GCJTW3Se09p61rihI1fi2oc8OSh4QEY0s+Hrx7FbjDaYbNkvIxbxRs
+ NLDBoiOy2rTQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9780"; a="164816410"
+X-IronPort-AV: E=Sophos;i="5.77,401,1596524400"; d="scan'208";a="164816410"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Oct 2020 11:04:56 -0700
+IronPort-SDR: mOf92Ujgq6ArVIuEBDaWbxejWaoYxumUr9d3SSNjpeGJM7LBtHm4BM8dkKx4jWBSt3RSUL1OFT
+ WApoHcWZLNSg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,401,1596524400"; d="scan'208";a="422878957"
+Received: from lkp-server02.sh.intel.com (HELO 911c2f167757) ([10.239.97.151])
+ by fmsmga001.fm.intel.com with ESMTP; 21 Oct 2020 11:04:54 -0700
+Received: from kbuild by 911c2f167757 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kVITl-000064-Od; Wed, 21 Oct 2020 18:04:53 +0000
+Date: Thu, 22 Oct 2020 02:04:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 52a9e20a186551945654c9ff5048a029fd3b00c1
+Message-ID: <5f907825.cwu0k/L46ywllUYZ%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603295575.git.mh12gx2825@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,57 +69,128 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mh12gx2825@gmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace bit masking by the BIT macro. This resolves the checkpatch issue
-"CHECK: Prefer using the BIT macro"
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 52a9e20a186551945654c9ff5048a029fd3b00c1  staging: qlge: remove extra blank lines
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+elapsed time: 724m
+
+configs tested: 98
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+nds32                            alldefconfig
+m68k                          hp300_defconfig
+arm                            lart_defconfig
+ia64                      gensparse_defconfig
+arm                          pxa168_defconfig
+powerpc                      obs600_defconfig
+mips                     loongson1b_defconfig
+arc                 nsimosci_hs_smp_defconfig
+powerpc                     mpc512x_defconfig
+sh                          rsk7264_defconfig
+mips                          rm200_defconfig
+powerpc                     ep8248e_defconfig
+arm                        magician_defconfig
+arm                            dove_defconfig
+mips                  cavium_octeon_defconfig
+sh                          polaris_defconfig
+arm                     am200epdkit_defconfig
+arm                         palmz72_defconfig
+mips                        nlm_xlr_defconfig
+arm                      integrator_defconfig
+arm                       mainstone_defconfig
+sh                             sh03_defconfig
+mips                  decstation_64_defconfig
+mips                         cobalt_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a001-20201021
+x86_64               randconfig-a002-20201021
+x86_64               randconfig-a003-20201021
+x86_64               randconfig-a006-20201021
+x86_64               randconfig-a005-20201021
+x86_64               randconfig-a004-20201021
+i386                 randconfig-a002-20201021
+i386                 randconfig-a005-20201021
+i386                 randconfig-a003-20201021
+i386                 randconfig-a001-20201021
+i386                 randconfig-a006-20201021
+i386                 randconfig-a004-20201021
+i386                 randconfig-a014-20201021
+i386                 randconfig-a015-20201021
+i386                 randconfig-a013-20201021
+i386                 randconfig-a012-20201021
+i386                 randconfig-a011-20201021
+i386                 randconfig-a016-20201021
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a011-20201021
+x86_64               randconfig-a013-20201021
+x86_64               randconfig-a016-20201021
+x86_64               randconfig-a015-20201021
+x86_64               randconfig-a012-20201021
+x86_64               randconfig-a014-20201021
+
 ---
-Changes since v2:
-   - Update patch description as suggested by Julia L.
-Changes since v1:
-   - Separate specific checkpatch issues into individual patches.
-   - Updated patch subject and description to be specific to the issue
-     being fixed.
-   - Introduced patch 3/3.
-   - Suggested by Vaishali T.
-
- drivers/staging/kpc2000/kpc2000/dma_common_defs.h | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-index 8bc78be3c259..613c4898f65e 100644
---- a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-+++ b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-@@ -8,13 +8,13 @@
- #define KPC_DMA_ENGINE_SIZE         0x0100
- #define ENGINE_CAP_PRESENT_MASK     0x1
- 
--#define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
--#define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
--#define KPC_DMA_CARD_IRQ_PENDING                (1 << 2)
--#define KPC_DMA_CARD_IRQ_MSI                    (1 << 3)
--#define KPC_DMA_CARD_USER_INTERRUPT_MODE        (1 << 4)
--#define KPC_DMA_CARD_USER_INTERRUPT_ACTIVE      (1 << 5)
--#define KPC_DMA_CARD_IRQ_MSIX_MODE              (1 << 6)
-+#define KPC_DMA_CARD_IRQ_ENABLE                 BIT(0)
-+#define KPC_DMA_CARD_IRQ_ACTIVE                 BIT(1)
-+#define KPC_DMA_CARD_IRQ_PENDING                BIT(2)
-+#define KPC_DMA_CARD_IRQ_MSI                    BIT(3)
-+#define KPC_DMA_CARD_USER_INTERRUPT_MODE        BIT(4)
-+#define KPC_DMA_CARD_USER_INTERRUPT_ACTIVE      BIT(5)
-+#define KPC_DMA_CARD_IRQ_MSIX_MODE              BIT(6)
- #define KPC_DMA_CARD_MAX_PAYLOAD_SIZE_MASK      0x0700
- #define KPC_DMA_CARD_MAX_READ_REQUEST_SIZE_MASK 0x7000
- #define KPC_DMA_CARD_S2C_INTERRUPT_STATUS_MASK  0x00FF0000
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
