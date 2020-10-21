@@ -2,80 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 625162947F0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 07:47:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC6D8294816
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 08:20:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C9226873DD;
-	Wed, 21 Oct 2020 05:47:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A26787216;
+	Wed, 21 Oct 2020 06:20:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qtsqq+miHsTl; Wed, 21 Oct 2020 05:47:18 +0000 (UTC)
+	with ESMTP id rYCezSM3s-yD; Wed, 21 Oct 2020 06:20:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A64A7873CF;
-	Wed, 21 Oct 2020 05:47:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E92A4871FF;
+	Wed, 21 Oct 2020 06:20:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 99EC91BF85D
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 05:47:14 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 18EF21BF82C
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 06:20:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9692A86388
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 05:47:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0780D86C51
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 06:20:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6V1leKvIdWrz for <devel@linuxdriverproject.org>;
- Wed, 21 Oct 2020 05:47:13 +0000 (UTC)
+ with ESMTP id Xs0CW3nIdbej for <devel@linuxdriverproject.org>;
+ Wed, 21 Oct 2020 06:20:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B97CE85766
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 05:47:13 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id o1so23449pjt.2
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 22:47:13 -0700 (PDT)
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2269986C46
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 06:20:36 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id a17so622389pju.1
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 23:20:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=G7JxtzX23zDEMuFtOmHqQIJbWHZnj8QOgC2EWtVDl6c=;
- b=piNBxIpWkwoQgJ+sBNjCvapRvnX5WkFhPGT8/vgbMoLNqaDACux3DlNcoKI1ATjjFn
- I40A4/qJQbLXDVERZGX5V/4Z4TOUkxVm9ErRIdBw1vwtoVf2QNSrjLH6xLwPAWa/WMEE
- OsZYOZWw9avDRaxRHyrT8bAqt3zuBBb/hoTj3j1UK7dMQghVieD5MLlWXmQLQDG+GHP1
- Mc/H6jqXN9UtMUKnIyOH7Ew+QY6okZfeuVZBz+k/J77cv5iRtErIvPW9+31X0rIbLHcl
- 7LUXgKEOsD1mDkIhey8UixDQw8Jww+yFgNW1PFI948tWByCLf6QKWn/ArSNocNTXkzvX
- O6Qg==
+ bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
+ b=NsvwSMzdZ7wU0dy9p74HVApYFLpZOlJAd1yl0CtEI5TS037ra9cJgnpw/rXsFiH7Ig
+ LcW2eMYDEHaXRmzRwivePCm05kXIigsdEJaCEtIhG9i6lWdBhb2Pvrm7aggNod8WFFNY
+ PeOtMPUm6pZcUKjc9Ql1y3E1/9qoA2mwL4pOHNjDzjhJ/9ZmU0KCVKkqz0uab6HxwPvg
+ IUGxIbD4wxC8Tq9utaF51hou4Ozhy4dWQMVKJZfE3a7S86+Uo7vK0SErFuVddv6Zyrlx
+ TiCxGCPNf9zZkk1kq2VV52+JqzAWDvFjWMKu9alsneKCSKMqaBBBOSMDqXPWtGY7gFQ5
+ 9pXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=G7JxtzX23zDEMuFtOmHqQIJbWHZnj8QOgC2EWtVDl6c=;
- b=fxyuylbjPwx/91R63VOu21N+zwqc+bbne5v6+EvFDMxiKJilc90go9vmzG7E5eJ6bH
- smTrsZ6hyddZj+M7ys9+PCokbs5Ags6drZ81DbOjjFOWJ+ildXrBdKq1HzuANYueJ4Ke
- BWnypWSa5/FmfaVXyKDCSXnoqUychKlXaJcTaHe+z6hvur9m4hbBZf64pgmxyirJetfl
- /5CyqChTfKBzU2lXyTO2qco4JBq18XoszD60Mpy11TKCCnNvHY2ICvhm/CLPDYRHd5ju
- yzVPoJJpx6SimTA+dygEUlkKMn4ujQMRwhduXf8NBUp7BezOg1wKRzMy1TC4e5f2ABRY
- Oeeg==
-X-Gm-Message-State: AOAM531xSZbo/D79uBjgGDn1BARULWtXLgZD4PnMY0Tnze9+W2K9xP7P
- IgC61jT06f3stKG+LMNz96vvIFcrrWk=
-X-Google-Smtp-Source: ABdhPJzLgqEZYvg4EfaN8CbflglGZrvWSLE7x3Jsu8jZPlv2JGHYui7RkCZMFtWBPkIsLsEIm9m75g==
-X-Received: by 2002:a17:90a:49c2:: with SMTP id
- l2mr1657450pjm.156.1603259233256; 
- Tue, 20 Oct 2020 22:47:13 -0700 (PDT)
+ bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
+ b=Mn8A0F9P62JRHScgsy7FHGO9J8lPqiuE9e3UqonBhI20vETM+gYvPTd24am0h3PLDS
+ StuL4+neIAQOnJAIPYANSNU8YrpRO9GMb52sJuS1GDJ/C3qDG3p+YDFRrIt6aNnpeUIH
+ rOazfB2S2wTh2/0NdyO18ff8JGIcoDjD7IfRQUi5jowm0hSe2J2Gl2wlpUUtZ+CjLPZZ
+ C8cEzI186YMYEuW3pRr1GPgYBRhdF4UqpVDtLjic4J+LyId2dGGgMlYXW8rgspUVjw7p
+ 7eszecoGhySJkWHXC56Bo+KmA9ZRi749BTMeP5Xp0/M6Oo3X5jUkKq6FYfUikEbLIzfa
+ rM8w==
+X-Gm-Message-State: AOAM531HcxLOLsP5BgMRADsFJS0rV1nQFv8W2yFlZkGYdHQs5W4vfqUL
+ 0bATl4gbQdl/8GIA1qx3hNgZj9PsHJ8=
+X-Google-Smtp-Source: ABdhPJyxi3hzI15g/UkKlwxieUbHu6WxvQWEQZS7zlV6/QNJcfNKXroTpB2LyBKgg9tjA4tG3C8szQ==
+X-Received: by 2002:a17:90a:d341:: with SMTP id
+ i1mr1846296pjx.18.1603261235703; 
+ Tue, 20 Oct 2020 23:20:35 -0700 (PDT)
 Received: from ubuntu204 ([103.108.75.206])
- by smtp.gmail.com with ESMTPSA id x29sm835748pfp.152.2020.10.20.22.47.10
+ by smtp.gmail.com with ESMTPSA id d2sm915229pjx.4.2020.10.20.23.20.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 22:47:12 -0700 (PDT)
-Date: Wed, 21 Oct 2020 11:17:08 +0530
+ Tue, 20 Oct 2020 23:20:35 -0700 (PDT)
+Date: Wed, 21 Oct 2020 11:50:30 +0530
 From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: kpc2000: resolve various
- code style issues
-Message-ID: <20201021054708.GA763329@ubuntu204>
-References: <bce6824343f7a10919be5130b5a6276ed186701c.1603248984.git.mh12gx2825@gmail.com>
- <CAK-LDb+pcG2djU67XVkd=M9O8eDOmr2qRkLpSs5+aQbKjTf46w@mail.gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 2/2] staging: kpc2000: kpc_dma: rename show function per
+ convention
+Message-ID: <20201021062030.GB763329@ubuntu204>
+References: <273abf291f47286a702d2a53445e7a6efcf9972b.1603256795.git.mh12gx2825@gmail.com>
+ <5d757cf6f97533b48aa471db6efc100acfb8f517.1603256795.git.mh12gx2825@gmail.com>
+ <20201021055031.GA975815@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAK-LDb+pcG2djU67XVkd=M9O8eDOmr2qRkLpSs5+aQbKjTf46w@mail.gmail.com>
+In-Reply-To: <20201021055031.GA975815@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,230 +89,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Outreachy <outreachy-kernel@googlegroups.com>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 21, 2020 at 10:11:52AM +0530, Vaishali Thakkar wrote:
-> On Wed, Oct 21, 2020 at 8:33 AM Deepak R Varma <mh12gx2825@gmail.com> wrote:
-> >
-> > Multiple issues reported by checkpatch script around lines exceeding 100
-> > columns, indentation of function parameters, extra blank lines. These
-> > code formatting changes improves the code readability.
-> 
-> Please send separate patches while fixing different checkpatch
-> warnings. It's a good idea to fix different warnings together if
-> it's for the same block of code but otherwise your patch should
-> handle one similar change at a time.
-> 
-Okay. Will change my old commit and resend the patch set.
-
-Thank you,
-Deepak.
-
+On Wed, Oct 21, 2020 at 07:50:31AM +0200, Greg Kroah-Hartman wrote:
+> On Wed, Oct 21, 2020 at 10:40:21AM +0530, Deepak R Varma wrote:
+> > Rename show_engine_regs to engine_regs_show as per the convention
+> > followed. Issue reported by checkpatch script.
+> > 
 > > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 > > ---
-> >  drivers/staging/kpc2000/kpc2000/cell_probe.c  | 71 ++++++++++++++-----
-> >  drivers/staging/kpc2000/kpc2000/core.c        |  3 +-
-> >  .../staging/kpc2000/kpc2000/dma_common_defs.h |  3 +-
-> >  3 files changed, 58 insertions(+), 19 deletions(-)
-> >
-> > diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> > index 738122afc2ae..e7e963d62699 100644
-> > --- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> > +++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> > @@ -30,9 +30,12 @@
-> >   *
-> >   */
-> >
-> > -#define KPC_OLD_DMA_CH_NUM(present, channel)   ((present) ? (0x8 | ((channel) & 0x7)) : 0)
-> > -#define KPC_OLD_S2C_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
-> > -#define KPC_OLD_C2S_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
-> > +#define KPC_OLD_DMA_CH_NUM(present, channel)   \
-> > +               ((present) ? (0x8 | ((channel) & 0x7)) : 0)
-> > +#define KPC_OLD_S2C_DMA_CH_NUM(cte)   \
-> > +               KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
-> > +#define KPC_OLD_C2S_DMA_CH_NUM(cte)   \
-> > +               KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
-> >
-> >  #define KP_CORE_ID_INVALID      0
-> >  #define KP_CORE_ID_I2C          3
-> > @@ -67,7 +70,8 @@ void  parse_core_table_entry_v0(struct core_table_entry *cte, const u64 read_val
-> >  static
-> >  void dbg_cte(struct kp2000_device *pcard, struct core_table_entry *cte)
-> >  {
-> > -       dev_dbg(&pcard->pdev->dev, "CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
-> > +       dev_dbg(&pcard->pdev->dev,
-> > +               "CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
-> >                 cte->type,
-> >                 cte->offset,
-> >                 cte->offset / 4096,
-> > @@ -107,7 +111,14 @@ static int probe_core_basic(unsigned int core_num, struct kp2000_device *pcard,
-> >                 .ddna              = pcard->ddna,
-> >         };
-> >
-> > -       dev_dbg(&pcard->pdev->dev, "Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
-> > +       dev_dbg(&pcard->pdev->dev,
-> > +               "Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
-> > +               cte.type,
-> > +               KPC_OLD_S2C_DMA_CH_NUM(cte),
-> > +               KPC_OLD_C2S_DMA_CH_NUM(cte),
-> > +               cte.offset,
-> > +               cte.length,
-> > +               cte.length / 8);
-> >
-> >         cell.platform_data = &core_pdata;
-> >         cell.pdata_size = sizeof(struct kpc_core_device_platdata);
-> > @@ -290,7 +301,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
-> >         struct kpc_uio_device *kudev;
-> >         int rv;
-> >
-> > -       dev_dbg(&pcard->pdev->dev, "Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
-> > +       dev_dbg(&pcard->pdev->dev,
-> > +               "Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
-> > +               cte.type,
-> > +               KPC_OLD_S2C_DMA_CH_NUM(cte),
-> > +               KPC_OLD_C2S_DMA_CH_NUM(cte),
-> > +               cte.offset,
-> > +               cte.length,
-> > +               cte.length / 8);
-> >
-> >         kudev = kzalloc(sizeof(*kudev), GFP_KERNEL);
-> >         if (!kudev)
-> > @@ -315,10 +333,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
-> >
-> >         kudev->uioinfo.mem[0].name = "uiomap";
-> >         kudev->uioinfo.mem[0].addr = pci_resource_start(pcard->pdev, REG_BAR) + cte.offset;
-> > -       kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1); // Round up to nearest PAGE_SIZE boundary
-> > +
-> > +       // Round up to nearest PAGE_SIZE boundary
-> > +       kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
-> >         kudev->uioinfo.mem[0].memtype = UIO_MEM_PHYS;
-> >
-> > -       kudev->dev = device_create(kpc_uio_class, &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d", kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
-> > +       kudev->dev = device_create(kpc_uio_class,
-> > +                                  &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d",
-> > +                                  kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
-> >         if (IS_ERR(kudev->dev)) {
-> >                 dev_err(&pcard->pdev->dev, "%s: device_create failed!\n",
-> >                         __func__);
-> > @@ -341,7 +363,9 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
-> >         return 0;
+> >  drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> > index 7698e5ef2a7c..b6d1afbd452d 100644
+> > --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> > +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> > @@ -50,7 +50,7 @@ static void kpc_dma_del_device(struct kpc_dma_device *ldev)
 > >  }
-> >
-> > -static int  create_dma_engine_core(struct kp2000_device *pcard, size_t engine_regs_offset, int engine_num, int irq_num)
-> > +static int  create_dma_engine_core(struct kp2000_device *pcard,
-> > +                                  size_t engine_regs_offset,
-> > +                                  int engine_num, int irq_num)
+> >  
+> >  /**********  SysFS Attributes **********/
+> > -static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *attr, char *buf)
+> > +static ssize_t  engine_regs_show(struct device *dev, struct device_attribute *attr, char *buf)
 > >  {
-> >         struct mfd_cell  cell = { .id = engine_num };
-> >         struct resource  resources[2];
-> > @@ -380,18 +404,28 @@ static int  kp2000_setup_dma_controller(struct kp2000_device *pcard)
-> >
-> >         // S2C Engines
-> >         for (i = 0 ; i < 32 ; i++) {
-> > -               capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
-> > +               capabilities_reg = readq(pcard->dma_bar_base +
-> > +                                        KPC_DMA_S2C_BASE_OFFSET +
-> > +                                        (KPC_DMA_ENGINE_SIZE * i));
-> > +
-> >                 if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
-> > -                       err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), i,  pcard->pdev->irq);
-> > +                       err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET +
-> > +                                                           (KPC_DMA_ENGINE_SIZE * i)),
-> > +                                                    i, pcard->pdev->irq);
-> >                         if (err)
-> >                                 goto err_out;
-> >                 }
-> >         }
-> >         // C2S Engines
-> >         for (i = 0 ; i < 32 ; i++) {
-> > -               capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
-> > +               capabilities_reg = readq(pcard->dma_bar_base +
-> > +                                        KPC_DMA_C2S_BASE_OFFSET +
-> > +                                        (KPC_DMA_ENGINE_SIZE * i));
-> > +
-> >                 if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
-> > -                       err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), 32 + i,  pcard->pdev->irq);
-> > +                       err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET +
-> > +                                                           (KPC_DMA_ENGINE_SIZE * i)),
-> > +                                                    32 + i,  pcard->pdev->irq);
-> >                         if (err)
-> >                                 goto err_out;
-> >                 }
-> > @@ -433,10 +467,15 @@ int  kp2000_probe_cores(struct kp2000_device *pcard)
-> >         // Then, iterate over the possible core types.
-> >         for (current_type_id = 1 ; current_type_id <= highest_core_id ; current_type_id++) {
-> >                 unsigned int core_num = 0;
-> > -               // Foreach core type, iterate the whole table and instantiate subdevices for each core.
-> > -               // Yes, this is O(n*m) but the actual runtime is small enough that it's an acceptable tradeoff.
-> > +               /*
-> > +                * Foreach core type, iterate the whole table and instantiate
-> > +                * subdevices for each core.
-> > +                * Yes, this is O(n*m) but the actual runtime is small enough
-> > +                * that it's an acceptable tradeoff.
-> > +                */
-> >                 for (i = 0 ; i < pcard->core_table_length ; i++) {
-> > -                       read_val = readq(pcard->sysinfo_regs_base + ((pcard->core_table_offset + i) * 8));
-> > +                       read_val = readq(pcard->sysinfo_regs_base +
-> > +                                        ((pcard->core_table_offset + i) * 8));
-> >                         parse_core_table_entry(&cte, read_val, pcard->core_table_rev);
-> >
-> >                         if (cte.type != current_type_id)
-> > diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-> > index 358d7b2f4ad1..6462a3059fb0 100644
-> > --- a/drivers/staging/kpc2000/kpc2000/core.c
-> > +++ b/drivers/staging/kpc2000/kpc2000/core.c
-> > @@ -124,6 +124,7 @@ static ssize_t cpld_reconfigure(struct device *dev,
-> >         writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
-> >         return count;
+> >  	struct kpc_dma_device *ldev;
+> >  	struct platform_device *pldev = to_platform_device(dev);
+> > @@ -80,7 +80,7 @@ static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *at
+> >  		ldev->desc_completed
+> >  	);
 > >  }
-> > +
-> >  static DEVICE_ATTR(cpld_reconfigure, 0220, NULL, cpld_reconfigure);
-> >
-> >  static ssize_t irq_mask_reg_show(struct device *dev,
-> > @@ -367,7 +368,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
-> >         dma_bar_phys_len = pci_resource_len(pcard->pdev, DMA_BAR);
-> >
-> >         pcard->dma_bar_base = ioremap(dma_bar_phys_addr,
-> > -                                             dma_bar_phys_len);
-> > +                                     dma_bar_phys_len);
-> >         if (!pcard->dma_bar_base) {
-> >                 dev_err(&pcard->pdev->dev,
-> >                         "probe: DMA_BAR could not remap memory to virtual space\n");
-> > diff --git a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-> > index 21450e3d408f..8bc78be3c259 100644
-> > --- a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-> > +++ b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-> > @@ -6,8 +6,7 @@
-> >  #define KPC_DMA_S2C_BASE_OFFSET     0x0000
-> >  #define KPC_DMA_C2S_BASE_OFFSET     0x2000
-> >  #define KPC_DMA_ENGINE_SIZE         0x0100
-> > -#define  ENGINE_CAP_PRESENT_MASK            0x1
-> > -
-> > +#define ENGINE_CAP_PRESENT_MASK     0x1
-> >
-> >  #define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
-> >  #define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
-> > --
-> > 2.25.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/bce6824343f7a10919be5130b5a6276ed186701c.1603248984.git.mh12gx2825%40gmail.com.
+> > -static DEVICE_ATTR(engine_regs, 0444, show_engine_regs, NULL);
+> > +static DEVICE_ATTR(engine_regs, 0444, engine_regs_show, NULL);
 > 
+> Shouldn't this just be using a DEVICE_ATTR_RO() macro instead?  Make
+> that change and the name will be fixed up at the same time.
 > 
+
+Thank you for the feedback. I will review what the mentioned macro does
+and how it can be implemented. Will send a revised patch with the change
+suggested.
+
+> And did checkpatch really complain about this?  What was the actual
+> message it produced?
+
+Yes, the WARNING message from checkpatch was:
+
+WARNING: Consider renaming function(s) 'show_engine_regs' to 'engine_regs_show'                     
++#82: FILE: drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c:82:                                     
++}    
+
+
 > 
-> -- 
-> Vaishali
+> thanks,
 > 
-> 
-> -- 
-> Vaishali
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
