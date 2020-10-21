@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 361592948E4
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 09:29:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D4A42948EC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 09:31:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5462984E15;
-	Wed, 21 Oct 2020 07:29:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 19FCE863C5;
+	Wed, 21 Oct 2020 07:31:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gf0NqoimYlwa; Wed, 21 Oct 2020 07:29:08 +0000 (UTC)
+	with ESMTP id muxvTHmIkXSC; Wed, 21 Oct 2020 07:31:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 00020862E4;
-	Wed, 21 Oct 2020 07:29:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 100E0863BB;
+	Wed, 21 Oct 2020 07:31:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 02B131BF5A9
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:29:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5A0091BF5A9
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:31:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F20E58698C
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:29:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5721E866F0
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:31:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 28ilRf0W66E9 for <devel@linuxdriverproject.org>;
- Wed, 21 Oct 2020 07:29:04 +0000 (UTC)
+ with ESMTP id MbNl79IF5rgT for <devel@linuxdriverproject.org>;
+ Wed, 21 Oct 2020 07:31:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E134B867BB
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 07:26:35 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id o9so757676plx.10
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EB30F87051
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 07:28:31 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id a17so706766pju.1
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 00:28:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:references:mime-version
+ h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
- b=ImpEFdgLXixlLzLml4OFWi3tiD4b5etcYjKTXQ9/BEsiMZDfj3TwF2jiAUuBKXamJy
- HTKyfXoiTzxXExZ1twGMTOEbkFxBARe3en9j39am2r369vbftwh8sbLRWOboxtLr/KGB
- VqiWp9mh+9Vdwf1h0LT32Zrcttgo+9E9hqdI0NTVx49vVDF7zjEJvLf6dbHC3FLDZt8W
- RxqlE51ZotTRieDPtagOkw1FscKQJmZFO8Da2maiBr3QZvWHj88Rofqs0KI84/a7GVBB
- 1gMYGVHudKRV82/h4D2vedmmcUvx3ECdcTcI0Yxnt2V3JG/hWpyhcsyQzaYLpJpLpVaf
- AFWw==
+ bh=vizHjsoWOdBTeDkMkLLYSpBXNJParGHvf8KFxFajKzc=;
+ b=WYrpjkyxK1dvw3MIMfmrLrKdLrF6BiXxYHc8lZ3x3K8vfpC3gAdLEC82qQM4WoQ2+a
+ k3ZssOfnWLPzl/tYXUVmwsYVVbfbCQQp2P2ZKCkfZILVzXAmQ9ES01niVRXOY2bqiAkH
+ UYJMJusBMQFtIHnz98UECk5gEUIeRNduY+U+sW/NnooVHlqwF2g8DPWd7slqnXAAkrnz
+ bhfk2iyaTECC3n2Tz8bDFvYWr2/7jhMkGgHfgt0hMYyX/hNysb6LmW4811XBv4yIUuoH
+ 63v4J0RE0hDOcNS9Dlh0I1vLLmlh66o32Om+02B8BbTKr7d9GZRm3BBXgfv6seSuauio
+ KVUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:references
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
- b=tvoXerJtWbdgbwlpJGYm1NflWoTplaRgKaeT3N/mEFOume+Xxc+LBbC/t60KL46Zft
- 3BsNs7Kza1fNcTEzZuKqvFEaS7vRSejnwqYQQJvg/FrmRrT4qdCCWiomtiQIo/iF7ApA
- HN2ptlOSWalFhV2jNIhBBkId+B6gTzNYNuGXkYvgvVDX6ZkfIWzHtpAxFPsadscvncW7
- hyODRWEpKLrkpMG2fINr7zoQibHgHQSpglwSRppScwkXwXcLufLByAdVHKmc+5+Hs5NZ
- agbH/Ty96y06E0cAEjCJUpRUb4+r5o6GJbo77+Z7IFkWjrqVoEzMz5B6LlJODz4GudTe
- dLSg==
-X-Gm-Message-State: AOAM532LOsyIhnUP98D/deKcq4fdM1HlBkNO8Q01Ips+bQOsaklZLqsu
- lcYPLqHPPTYHLxCGdFnvnL3f3pJkkCY=
-X-Google-Smtp-Source: ABdhPJzXKB8iEFbkiUvYIQeyCarXfAH+riBWgYUFaR6cC8sUxcq4xLUvseNFrE6sxPgx1Q36Sa+43A==
-X-Received: by 2002:a17:90a:fa03:: with SMTP id
- cm3mr2066210pjb.56.1603265195615; 
- Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
+ bh=vizHjsoWOdBTeDkMkLLYSpBXNJParGHvf8KFxFajKzc=;
+ b=CsWZccRoCdxhJHudknBe+iCSKP4bnaITGfyH2Q2Y3AYRmtDfTCz74f1Euh45Mg4kLo
+ EhaKyzP3qkFrM5BrBaTZXPH4TGGSZZSgMSI3vc1IjckP1yi3bXuMxJQBlOK33KVSeHij
+ BCGhjNyrjcvjYcTNploE13db/PjsNo30X8qEy6AW+nqmUk87OqWmuZPuWNRIJyELA1i5
+ VwWrgiT21IAEvLZ454iaFD8LXt9M73r14TQeRUNgKmIjdjPEGqdAOQ2J09lZ1ZvuUW/L
+ 7HjTuwjYybLfZjI4hehDAxhsYE93OY8+I39q01j3nj3ijGG1Zi8DtsoI7zlZZqrxfCns
+ XEIA==
+X-Gm-Message-State: AOAM533Jc7VoguH5mTSWUn7OVTrsQYVFqJu4SczGJKSS5IQBPKYHRRH8
+ jdjQHaXzqGkpsQQRS89zY4k=
+X-Google-Smtp-Source: ABdhPJwpjOzZfTxofkriX/AMucaRmlllyojh8M38XEcSufs0WACyuQgkxGVgVrg3eA432vX3VIM7Kg==
+X-Received: by 2002:a17:902:7c14:b029:d4:d894:7eed with SMTP id
+ x20-20020a1709027c14b02900d4d8947eedmr1962955pll.81.1603265311619; 
+ Wed, 21 Oct 2020 00:28:31 -0700 (PDT)
 Received: from ubuntu204 ([103.108.75.206])
- by smtp.gmail.com with ESMTPSA id e5sm1304006pfj.99.2020.10.21.00.26.33
+ by smtp.gmail.com with ESMTPSA id l82sm1321057pfd.102.2020.10.21.00.28.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
-Date: Wed, 21 Oct 2020 12:56:30 +0530
+ Wed, 21 Oct 2020 00:28:31 -0700 (PDT)
+Date: Wed, 21 Oct 2020 12:58:27 +0530
 From: Deepak R Varma <mh12gx2825@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org
-Subject: [PATCH v2 2/3] staging: kpc2000: re-indent code for better readability
-Message-ID: <29cf604e69435c1f0ef46397d0d8a1b62f32fa9b.1603264610.git.mh12gx2825@gmail.com>
+Subject: [PATCH v2 3/3] staging: kpc2000: Use BIT macro instead of bit masking
+Message-ID: <738b95793de3e9e9e693ba8336967241b9ccf034.1603264610.git.mh12gx2825@gmail.com>
 References: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -87,61 +87,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: mh12gx2825@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Re-indent code as per the coding style guidelines. The changes improve
-code readability. Issue reported by checkpatch script.
+Replace bit masking by BIT macro. This resolves checkpatch issue
+"CHECK: Prefer using the BIT macro"
 
 Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 ---
 Changes since v1:
-  - Separate specific checkpatch issues into individual patches.
-  - Update patch subject and description to specific issue being fixed.
-  - Introduced patch 3/3.
-  - Suggested by Vaishali T.
+   - Separate specific checkpatch issues into individual patches.
+   - Introduced patch 3/3.
+   - Suggested by Vaishali T.
 
- drivers/staging/kpc2000/kpc2000/core.c            | 3 ++-
- drivers/staging/kpc2000/kpc2000/dma_common_defs.h | 3 +--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/kpc2000/kpc2000/dma_common_defs.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index 358d7b2f4ad1..6462a3059fb0 100644
---- a/drivers/staging/kpc2000/kpc2000/core.c
-+++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -124,6 +124,7 @@ static ssize_t cpld_reconfigure(struct device *dev,
- 	writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
- 	return count;
- }
-+
- static DEVICE_ATTR(cpld_reconfigure, 0220, NULL, cpld_reconfigure);
- 
- static ssize_t irq_mask_reg_show(struct device *dev,
-@@ -367,7 +368,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
- 	dma_bar_phys_len = pci_resource_len(pcard->pdev, DMA_BAR);
- 
- 	pcard->dma_bar_base = ioremap(dma_bar_phys_addr,
--					      dma_bar_phys_len);
-+				      dma_bar_phys_len);
- 	if (!pcard->dma_bar_base) {
- 		dev_err(&pcard->pdev->dev,
- 			"probe: DMA_BAR could not remap memory to virtual space\n");
 diff --git a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-index 21450e3d408f..8bc78be3c259 100644
+index 8bc78be3c259..613c4898f65e 100644
 --- a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
 +++ b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-@@ -6,8 +6,7 @@
- #define KPC_DMA_S2C_BASE_OFFSET     0x0000
- #define KPC_DMA_C2S_BASE_OFFSET     0x2000
+@@ -8,13 +8,13 @@
  #define KPC_DMA_ENGINE_SIZE         0x0100
--#define  ENGINE_CAP_PRESENT_MASK            0x1
--
-+#define ENGINE_CAP_PRESENT_MASK     0x1
+ #define ENGINE_CAP_PRESENT_MASK     0x1
  
- #define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
- #define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
+-#define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
+-#define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
+-#define KPC_DMA_CARD_IRQ_PENDING                (1 << 2)
+-#define KPC_DMA_CARD_IRQ_MSI                    (1 << 3)
+-#define KPC_DMA_CARD_USER_INTERRUPT_MODE        (1 << 4)
+-#define KPC_DMA_CARD_USER_INTERRUPT_ACTIVE      (1 << 5)
+-#define KPC_DMA_CARD_IRQ_MSIX_MODE              (1 << 6)
++#define KPC_DMA_CARD_IRQ_ENABLE                 BIT(0)
++#define KPC_DMA_CARD_IRQ_ACTIVE                 BIT(1)
++#define KPC_DMA_CARD_IRQ_PENDING                BIT(2)
++#define KPC_DMA_CARD_IRQ_MSI                    BIT(3)
++#define KPC_DMA_CARD_USER_INTERRUPT_MODE        BIT(4)
++#define KPC_DMA_CARD_USER_INTERRUPT_ACTIVE      BIT(5)
++#define KPC_DMA_CARD_IRQ_MSIX_MODE              BIT(6)
+ #define KPC_DMA_CARD_MAX_PAYLOAD_SIZE_MASK      0x0700
+ #define KPC_DMA_CARD_MAX_READ_REQUEST_SIZE_MASK 0x7000
+ #define KPC_DMA_CARD_S2C_INTERRUPT_STATUS_MASK  0x00FF0000
 -- 
 2.25.1
 
