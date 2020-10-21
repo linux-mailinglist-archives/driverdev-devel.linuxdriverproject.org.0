@@ -1,82 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC6D8294816
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 08:20:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 361592948E4
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 09:29:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8A26787216;
-	Wed, 21 Oct 2020 06:20:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5462984E15;
+	Wed, 21 Oct 2020 07:29:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rYCezSM3s-yD; Wed, 21 Oct 2020 06:20:39 +0000 (UTC)
+	with ESMTP id gf0NqoimYlwa; Wed, 21 Oct 2020 07:29:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E92A4871FF;
-	Wed, 21 Oct 2020 06:20:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 00020862E4;
+	Wed, 21 Oct 2020 07:29:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 18EF21BF82C
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 06:20:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 02B131BF5A9
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:29:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0780D86C51
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 06:20:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F20E58698C
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:29:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xs0CW3nIdbej for <devel@linuxdriverproject.org>;
- Wed, 21 Oct 2020 06:20:36 +0000 (UTC)
+ with ESMTP id 28ilRf0W66E9 for <devel@linuxdriverproject.org>;
+ Wed, 21 Oct 2020 07:29:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2269986C46
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 06:20:36 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id a17so622389pju.1
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 23:20:36 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E134B867BB
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 07:26:35 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id o9so757676plx.10
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
+ h=date:from:to:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
- b=NsvwSMzdZ7wU0dy9p74HVApYFLpZOlJAd1yl0CtEI5TS037ra9cJgnpw/rXsFiH7Ig
- LcW2eMYDEHaXRmzRwivePCm05kXIigsdEJaCEtIhG9i6lWdBhb2Pvrm7aggNod8WFFNY
- PeOtMPUm6pZcUKjc9Ql1y3E1/9qoA2mwL4pOHNjDzjhJ/9ZmU0KCVKkqz0uab6HxwPvg
- IUGxIbD4wxC8Tq9utaF51hou4Ozhy4dWQMVKJZfE3a7S86+Uo7vK0SErFuVddv6Zyrlx
- TiCxGCPNf9zZkk1kq2VV52+JqzAWDvFjWMKu9alsneKCSKMqaBBBOSMDqXPWtGY7gFQ5
- 9pXw==
+ bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
+ b=ImpEFdgLXixlLzLml4OFWi3tiD4b5etcYjKTXQ9/BEsiMZDfj3TwF2jiAUuBKXamJy
+ HTKyfXoiTzxXExZ1twGMTOEbkFxBARe3en9j39am2r369vbftwh8sbLRWOboxtLr/KGB
+ VqiWp9mh+9Vdwf1h0LT32Zrcttgo+9E9hqdI0NTVx49vVDF7zjEJvLf6dbHC3FLDZt8W
+ RxqlE51ZotTRieDPtagOkw1FscKQJmZFO8Da2maiBr3QZvWHj88Rofqs0KI84/a7GVBB
+ 1gMYGVHudKRV82/h4D2vedmmcUvx3ECdcTcI0Yxnt2V3JG/hWpyhcsyQzaYLpJpLpVaf
+ AFWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ h=x-gm-message-state:date:from:to:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
- b=Mn8A0F9P62JRHScgsy7FHGO9J8lPqiuE9e3UqonBhI20vETM+gYvPTd24am0h3PLDS
- StuL4+neIAQOnJAIPYANSNU8YrpRO9GMb52sJuS1GDJ/C3qDG3p+YDFRrIt6aNnpeUIH
- rOazfB2S2wTh2/0NdyO18ff8JGIcoDjD7IfRQUi5jowm0hSe2J2Gl2wlpUUtZ+CjLPZZ
- C8cEzI186YMYEuW3pRr1GPgYBRhdF4UqpVDtLjic4J+LyId2dGGgMlYXW8rgspUVjw7p
- 7eszecoGhySJkWHXC56Bo+KmA9ZRi749BTMeP5Xp0/M6Oo3X5jUkKq6FYfUikEbLIzfa
- rM8w==
-X-Gm-Message-State: AOAM531HcxLOLsP5BgMRADsFJS0rV1nQFv8W2yFlZkGYdHQs5W4vfqUL
- 0bATl4gbQdl/8GIA1qx3hNgZj9PsHJ8=
-X-Google-Smtp-Source: ABdhPJyxi3hzI15g/UkKlwxieUbHu6WxvQWEQZS7zlV6/QNJcfNKXroTpB2LyBKgg9tjA4tG3C8szQ==
-X-Received: by 2002:a17:90a:d341:: with SMTP id
- i1mr1846296pjx.18.1603261235703; 
- Tue, 20 Oct 2020 23:20:35 -0700 (PDT)
+ bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
+ b=tvoXerJtWbdgbwlpJGYm1NflWoTplaRgKaeT3N/mEFOume+Xxc+LBbC/t60KL46Zft
+ 3BsNs7Kza1fNcTEzZuKqvFEaS7vRSejnwqYQQJvg/FrmRrT4qdCCWiomtiQIo/iF7ApA
+ HN2ptlOSWalFhV2jNIhBBkId+B6gTzNYNuGXkYvgvVDX6ZkfIWzHtpAxFPsadscvncW7
+ hyODRWEpKLrkpMG2fINr7zoQibHgHQSpglwSRppScwkXwXcLufLByAdVHKmc+5+Hs5NZ
+ agbH/Ty96y06E0cAEjCJUpRUb4+r5o6GJbo77+Z7IFkWjrqVoEzMz5B6LlJODz4GudTe
+ dLSg==
+X-Gm-Message-State: AOAM532LOsyIhnUP98D/deKcq4fdM1HlBkNO8Q01Ips+bQOsaklZLqsu
+ lcYPLqHPPTYHLxCGdFnvnL3f3pJkkCY=
+X-Google-Smtp-Source: ABdhPJzXKB8iEFbkiUvYIQeyCarXfAH+riBWgYUFaR6cC8sUxcq4xLUvseNFrE6sxPgx1Q36Sa+43A==
+X-Received: by 2002:a17:90a:fa03:: with SMTP id
+ cm3mr2066210pjb.56.1603265195615; 
+ Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
 Received: from ubuntu204 ([103.108.75.206])
- by smtp.gmail.com with ESMTPSA id d2sm915229pjx.4.2020.10.20.23.20.33
+ by smtp.gmail.com with ESMTPSA id e5sm1304006pfj.99.2020.10.21.00.26.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 23:20:35 -0700 (PDT)
-Date: Wed, 21 Oct 2020 11:50:30 +0530
+ Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
+Date: Wed, 21 Oct 2020 12:56:30 +0530
 From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 2/2] staging: kpc2000: kpc_dma: rename show function per
- convention
-Message-ID: <20201021062030.GB763329@ubuntu204>
-References: <273abf291f47286a702d2a53445e7a6efcf9972b.1603256795.git.mh12gx2825@gmail.com>
- <5d757cf6f97533b48aa471db6efc100acfb8f517.1603256795.git.mh12gx2825@gmail.com>
- <20201021055031.GA975815@kroah.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org
+Subject: [PATCH v2 2/3] staging: kpc2000: re-indent code for better readability
+Message-ID: <29cf604e69435c1f0ef46397d0d8a1b62f32fa9b.1603264610.git.mh12gx2825@gmail.com>
+References: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201021055031.GA975815@kroah.com>
+In-Reply-To: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,64 +87,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 21, 2020 at 07:50:31AM +0200, Greg Kroah-Hartman wrote:
-> On Wed, Oct 21, 2020 at 10:40:21AM +0530, Deepak R Varma wrote:
-> > Rename show_engine_regs to engine_regs_show as per the convention
-> > followed. Issue reported by checkpatch script.
-> > 
-> > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > ---
-> >  drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-> > index 7698e5ef2a7c..b6d1afbd452d 100644
-> > --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-> > +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-> > @@ -50,7 +50,7 @@ static void kpc_dma_del_device(struct kpc_dma_device *ldev)
-> >  }
-> >  
-> >  /**********  SysFS Attributes **********/
-> > -static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *attr, char *buf)
-> > +static ssize_t  engine_regs_show(struct device *dev, struct device_attribute *attr, char *buf)
-> >  {
-> >  	struct kpc_dma_device *ldev;
-> >  	struct platform_device *pldev = to_platform_device(dev);
-> > @@ -80,7 +80,7 @@ static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *at
-> >  		ldev->desc_completed
-> >  	);
-> >  }
-> > -static DEVICE_ATTR(engine_regs, 0444, show_engine_regs, NULL);
-> > +static DEVICE_ATTR(engine_regs, 0444, engine_regs_show, NULL);
-> 
-> Shouldn't this just be using a DEVICE_ATTR_RO() macro instead?  Make
-> that change and the name will be fixed up at the same time.
-> 
+Re-indent code as per the coding style guidelines. The changes improve
+code readability. Issue reported by checkpatch script.
 
-Thank you for the feedback. I will review what the mentioned macro does
-and how it can be implemented. Will send a revised patch with the change
-suggested.
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+Changes since v1:
+  - Separate specific checkpatch issues into individual patches.
+  - Update patch subject and description to specific issue being fixed.
+  - Introduced patch 3/3.
+  - Suggested by Vaishali T.
 
-> And did checkpatch really complain about this?  What was the actual
-> message it produced?
+ drivers/staging/kpc2000/kpc2000/core.c            | 3 ++-
+ drivers/staging/kpc2000/kpc2000/dma_common_defs.h | 3 +--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-Yes, the WARNING message from checkpatch was:
+diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
+index 358d7b2f4ad1..6462a3059fb0 100644
+--- a/drivers/staging/kpc2000/kpc2000/core.c
++++ b/drivers/staging/kpc2000/kpc2000/core.c
+@@ -124,6 +124,7 @@ static ssize_t cpld_reconfigure(struct device *dev,
+ 	writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
+ 	return count;
+ }
++
+ static DEVICE_ATTR(cpld_reconfigure, 0220, NULL, cpld_reconfigure);
+ 
+ static ssize_t irq_mask_reg_show(struct device *dev,
+@@ -367,7 +368,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
+ 	dma_bar_phys_len = pci_resource_len(pcard->pdev, DMA_BAR);
+ 
+ 	pcard->dma_bar_base = ioremap(dma_bar_phys_addr,
+-					      dma_bar_phys_len);
++				      dma_bar_phys_len);
+ 	if (!pcard->dma_bar_base) {
+ 		dev_err(&pcard->pdev->dev,
+ 			"probe: DMA_BAR could not remap memory to virtual space\n");
+diff --git a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
+index 21450e3d408f..8bc78be3c259 100644
+--- a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
++++ b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
+@@ -6,8 +6,7 @@
+ #define KPC_DMA_S2C_BASE_OFFSET     0x0000
+ #define KPC_DMA_C2S_BASE_OFFSET     0x2000
+ #define KPC_DMA_ENGINE_SIZE         0x0100
+-#define  ENGINE_CAP_PRESENT_MASK            0x1
+-
++#define ENGINE_CAP_PRESENT_MASK     0x1
+ 
+ #define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
+ #define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
+-- 
+2.25.1
 
-WARNING: Consider renaming function(s) 'show_engine_regs' to 'engine_regs_show'                     
-+#82: FILE: drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c:82:                                     
-+}    
-
-
-> 
-> thanks,
-> 
-> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
