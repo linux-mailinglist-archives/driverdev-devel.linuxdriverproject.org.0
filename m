@@ -1,81 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 426662948FA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 09:37:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 71CE3867CE;
-	Wed, 21 Oct 2020 07:37:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kHgb330vW37l; Wed, 21 Oct 2020 07:37:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1FE00868D9;
-	Wed, 21 Oct 2020 07:35:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5FDED1BF5A9
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:35:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E31872948F9
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 09:37:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5CC57863E3
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:35:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7241B86448;
+	Wed, 21 Oct 2020 07:37:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zely13bf0NAc; Wed, 21 Oct 2020 07:37:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1C85863FF;
+	Wed, 21 Oct 2020 07:37:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 68B0E1BF5A9
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:37:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 57F852EDEE
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 07:37:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WR3LaTYoykzf for <devel@linuxdriverproject.org>;
- Wed, 21 Oct 2020 07:35:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F1D19863C5
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 07:35:30 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id bf6so784498plb.4
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 00:35:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=5LfVEvRJtyCjDhqOkmhLUCyYIUG+eq91lMriaMW4Nbo=;
- b=sg/M2ZOC1GiSORG7urGWKDKbOb9OPPsPDnKCRhsKSV0taARzkdzWWfOR4doZ8ti35Z
- J0Q8g5/FbX6Xat8JXW7vZVyaIFaNwVxWIdqeYusTxNYQyZDUKz6uoaMpssC/2WDSAyIu
- 7DYHdRcH2uNbs6tj7Avs6I6hKy/PqW+xxgE/hF10TbD/FGMLq1HBMivdiJoe+na1VcGj
- Kha61Ox2d9iT9QVXNs4vBzFaOWqIqHvyux+F7Nr3mX1BVxlNg8cJB7X68NE1ztkzXc4z
- x3xk6woQHyH1KvyZ59FHPFinGr2U/SFx6z69IM+GwxWfBzGrSjbocOzAnkSl5Etl4Q4Y
- M5nQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=5LfVEvRJtyCjDhqOkmhLUCyYIUG+eq91lMriaMW4Nbo=;
- b=rlIFlQMbr4p7tXrQA5y3fWMGBfNlVFIEeGPO8W80+4g1+sgJy55MTaQv0QoqIvq9JD
- 8XP6XDK105pSXwAreViE8UNeQpew0089zIiRR8LuqYXVzP1z8yXYFj0ps42uhFJxVkSj
- juBgNACQMVr8vSB60WQajyWz+t7q3jbWfJOBmhs+jjQLFKfwpShtHqTeng9LxMmtcZoi
- cE2hRB6ICzcWbt+x2RvFdIP8f8OP7v6TZinrBR/1eHYdAdFo/EW+rp7pMFCgan8IQsF2
- eSyT0B25+UrRgI3vkG/PCFtUBTdTwAp/vdO+ytwWrqt/ZHrbAECklhjlG2C/9ooSQ7TN
- WaIg==
-X-Gm-Message-State: AOAM530jiYXWea3UGfqeoG8XMJq3Nyec/DA284Ydjy7JbsMe8VqBWixX
- SD2mn/g0+xc6xfuAC4y/t/k=
-X-Google-Smtp-Source: ABdhPJwdUZHuco6sWZQ4w7hYOBWqhY5AHzN/CLXE9qKGZ5S1lR3P5LfO8HG5lQTM/DlY7hw6EuleMA==
-X-Received: by 2002:a17:902:bcc9:b029:d3:c7de:5cfc with SMTP id
- o9-20020a170902bcc9b02900d3c7de5cfcmr2289425pls.19.1603265730650; 
- Wed, 21 Oct 2020 00:35:30 -0700 (PDT)
-Received: from ubuntu204 ([103.108.75.206])
- by smtp.gmail.com with ESMTPSA id e196sm1278833pfh.128.2020.10.21.00.35.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Oct 2020 00:35:30 -0700 (PDT)
-Date: Wed, 21 Oct 2020 13:05:25 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/2] staging: kpc2000: kpc_dma: rename show function per
- convention
-Message-ID: <8e02f6d8a4263971b90f73820fd855a31da3f8fc.1603264617.git.mh12gx2825@gmail.com>
-References: <c61a3c244bea516528e9ca4e909c30f16959c3aa.1603264617.git.mh12gx2825@gmail.com>
+ with ESMTP id 4QQJy2TNFp9C for <devel@linuxdriverproject.org>;
+ Wed, 21 Oct 2020 07:37:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.mineconomy.am (mail.mineconomy.am [91.221.229.132])
+ by silver.osuosl.org (Postfix) with ESMTPS id 825352EDE7
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 02:00:46 +0000 (UTC)
+Received: by mail.mineconomy.am (Postfix, from userid 1001)
+ id EB6C542A4C45; Wed, 21 Oct 2020 05:39:54 +0400 (+04)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mineconomy.am EB6C542A4C45
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mineconomy.am;
+ s=default; t=1603244423;
+ bh=4XVdlUuEVh5nEopcXZ4CDo4m2+IrMhKHS2iLPxLk870=;
+ h=Reply-To:From:Subject:Date:From;
+ b=WfKGPRiK+oGbNJSHCEG4yFQBrQru0qRELi55DefnEXCA49VVDU9USpkZu5DIoMHxf
+ q2dw7BbrY05M4WOKjvO//V01Bk5PZDfGjFa6T7u4JS0dK4T6UD0P/m0hZKNGSMIuDD
+ 5lxGXALeBcxAINEKDPsyDDA/Ds0ccctXx0poOnZo=
+Received: from User (unknown [91.221.229.132])
+ by mail.mineconomy.am (Postfix) with SMTP id B3EA742320A6;
+ Wed, 21 Oct 2020 05:39:36 +0400 (+04)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mineconomy.am B3EA742320A6
+From: "COCA COLA."<secretariat@mineconomy.am>
+Subject: [SPAM] COCA-COLA  LOTTERY ORGANIZATION
+Date: Wed, 21 Oct 2020 01:39:40 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <c61a3c244bea516528e9ca4e909c30f16959c3aa.1603264617.git.mh12gx2825@gmail.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Spam-Prev-Subject: COCA-COLA  LOTTERY ORGANIZATION
+Message-Id: <20201021014023.EB6C542A4C45@mail.mineconomy.am>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,49 +67,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mh12gx2825@gmail.com
+Reply-To: contactad000@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rename show_engine_regs show function to engine_regs_show as per the
-convention followed. The show function macro DEVICE_ATTR is replaced
-by DEVICE_ATTR_RO. Issue reported by checkpatch script.
+COCA-COLA LOTTERY ORGANIZATION
+TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
-Changes since v1:
-   - Replace DEVICE_ATTR by DEVICE_ATTR_RO as suggested by Greg.
+Greetings Winner,
 
- drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+If you are the correct owner of this email address? If yes then be glad this day as the result of the Coca-Cola lotto online e-mail address free-ticket winning draws of July 2020 ,held in United States of America has just been released and we are glad to announce to you that your email address won you the sweepstakes in the first category and you are entitled to claim the sum of One Million Two Hundred And Fifty Thousand United States Dollars(US$1,250,000.00). Your email address was entered for the online draw on this ticket No: 546-373-66773 and won on this Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
 
-diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-index 7698e5ef2a7c..aa9f96793e59 100644
---- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-+++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-@@ -50,7 +50,7 @@ static void kpc_dma_del_device(struct kpc_dma_device *ldev)
- }
- 
- /**********  SysFS Attributes **********/
--static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *attr, char *buf)
-+static ssize_t  engine_regs_show(struct device *dev, struct device_attribute *attr, char *buf)
- {
- 	struct kpc_dma_device *ldev;
- 	struct platform_device *pldev = to_platform_device(dev);
-@@ -80,7 +80,7 @@ static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *at
- 		ldev->desc_completed
- 	);
- }
--static DEVICE_ATTR(engine_regs, 0444, show_engine_regs, NULL);
-+static DEVICE_ATTR_RO(engine_regs);
- 
- static const struct attribute *ndd_attr_list[] = {
- 	&dev_attr_engine_regs.attr,
--- 
-2.25.1
+On how to receive your won prize of US$1.250,000.00M. (One Million Two Hundred And Fifty Thousand United States Dollars Only) to enable Mr.James Curtise ascertain you as the rightful winner and receiver of the US$1.250,000.00M.Make sure you include the below listed information in your contact email to him.
 
+Your complete official names, country of origin and country of residence/work, contact telephone and mobile numbers, amount won,lucky numbers, date of draw. OPTIONAL: - [Sex, age, occupation and job title].
+
+Just in case you are thinking of how you won without entering then know again that this very draw of the Coca-Cola Lottery Organization in which you have emerged as a winner was a free ticket online email address draws were thousands of email addresses was collected from almost all world wide websites and used for the online draws/sweepstakes and during winners selection your email address came out among the first ten which won you the lottery in the first winnings category and entitles you to claim the US$1,250,000.00 dollars.
+
+
+Yours Faithfully,
+Mr.James Curtise
+COCA-COLA  LOTTERY ORGANIZATION.
+Online Winning Notification Department.
+Tel: +1-403-607-1548
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
