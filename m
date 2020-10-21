@@ -1,66 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 094AB294778
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 06:42:18 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2E4C6873D5;
-	Wed, 21 Oct 2020 04:42:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K7dkIcCm5Vig; Wed, 21 Oct 2020 04:42:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0B16187158;
-	Wed, 21 Oct 2020 04:42:12 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 65E791BF315
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 04:42:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id EE4692947B0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Oct 2020 07:09:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5F12D86398
- for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 04:42:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 22F80860DE;
+	Wed, 21 Oct 2020 05:08:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8DOT-yaq2tLr; Wed, 21 Oct 2020 05:08:55 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 96E5886356;
+	Wed, 21 Oct 2020 05:08:53 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EBDC21BF85D
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 05:08:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id E3A72873B5
+ for <devel@linuxdriverproject.org>; Wed, 21 Oct 2020 05:08:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P2yWt3icDyIw for <devel@linuxdriverproject.org>;
- Wed, 21 Oct 2020 04:42:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from p3plsmtpa12-09.prod.phx3.secureserver.net
- (p3plsmtpa12-09.prod.phx3.secureserver.net [68.178.252.238])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 21FD9862BC
- for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 04:42:07 +0000 (UTC)
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
- by :SMTPAUTH: with ESMTPSA
- id V5wrkR9f5sQAgV5wrkc8BO; Tue, 20 Oct 2020 21:42:06 -0700
-X-CMAE-Analysis: v=2.3 cv=A9cSwJeG c=1 sm=1 tr=0
- a=DUWv+hUk7Cu2hlvKYqx6KA==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
- a=afefHYAZSVUA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8
- a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=fgv_Jtzw-SBM2wXiTwEA:9
- a=A8KqP780adTq3mWs:21 a=BF038GIJDjC65wxo:21 a=QEXdDO2ut3YA:10
- a=cDyXFGGuxjcA:10 a=_sbA2Q-Kp09kWB8D3iXc:22
-X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
-Received: by mail-oi1-f181.google.com with SMTP id u127so774041oib.6
- for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 21:42:05 -0700 (PDT)
-X-Gm-Message-State: AOAM531FNKfKC/kOR7MfMQ8vx7dh2hn1m8RHUyCyTM4ps8O5Y2jVlJ7+
- 3XbG8HXLD0iX9zVFelP7cbZxMMwYg0kRB063tcc=
-X-Google-Smtp-Source: ABdhPJyewzyCTQGMQiawuiQ7l8IUy4r+sLtOArXX9bwR36st4qvZWTfB1+gr8c3aw0bj9EVFuveJdYpwQCByGnQDXtk=
-X-Received: by 2002:aca:750c:: with SMTP id q12mr972959oic.174.1603255325333; 
- Tue, 20 Oct 2020 21:42:05 -0700 (PDT)
+ with ESMTP id o2qE+8aSEh7y for <devel@linuxdriverproject.org>;
+ Wed, 21 Oct 2020 05:08:50 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 390A5873D0
+ for <devel@driverdev.osuosl.org>; Wed, 21 Oct 2020 05:08:50 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id b23so770902pgb.3
+ for <devel@driverdev.osuosl.org>; Tue, 20 Oct 2020 22:08:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=b+KHAvp3X5Eh/wEAqouVvPKaON8S2Itae/m7a6dyU+8=;
+ b=Q3v94ZDIFQ6gNeHcR5H+z2ks2cAziMo1zAv8okbdaNcraqB9OJg0d6bBxlRkwHd/eT
+ DRdxbSOovEh7Wy4Le7kBIgUNu7YOcaFCOBYvL1E77nmLc9HRgR4VF4hOnxoK6mWgARpR
+ 6NN9HLeEnZieuY1P87rU93c7vPJmNoSUoHEtiHIvp5Sg3kYu+42Sd98gbLvsn3PsgFb/
+ /Wh4k7UfjKaH0EJFXPtxgMP6HVJPQHgHnUxWBl/HZyFJgWAuNCiKk3GU02ziEA6DmBqU
+ vqe2cmw/NpGMnUVQ6PzTVLSFqJw+I4Uom8BoyzTNesFCbp7FupdpF+aaCRDjzmnv+Rg/
+ K1vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=b+KHAvp3X5Eh/wEAqouVvPKaON8S2Itae/m7a6dyU+8=;
+ b=VMAbNIjJDuZGURipWgrTXmBHTw//hE9EC21NzT12gQ9syEM/zo7JRtnd5XZEJRpTsl
+ MfT9GeqfD2uMZsMHgWsN0pP7RXT7aP3KoQVyw6xjPWUWF6l3rs5XmvfPRV4kMo6n3uqr
+ QW17GxsbMwBnCpsK3zkUeqvOCW+MwoZNWi4GgjDJ+0aOjUZW2aEvZv3Mvbz7LAFntE4X
+ 6u1M37Ks5664QK2jw23hAbYCZqxl6GBpjNzuBHPIBvSzCNxytmtsBkAbqjTmIhbqunRr
+ busLDgYAhkC7RCkl392mwyBj1IIvaNfzk+hNB0Zlx880ahjLR/zdHZExNRQJCRfOADPT
+ Jouw==
+X-Gm-Message-State: AOAM533nwbw7AJRwR2wGzK7tgce1PJZUHB8l1ZXtjEhFIw3vgUDk/oTd
+ 1oM1PUQewUBSGZiTCMwW2DU=
+X-Google-Smtp-Source: ABdhPJwTJvJ29VTicl1+SlzUrYSgHvp2dcdszwoOv5I52q2Mtm7ul1+oxzKv6Jl77IEFKwSWrr7+iw==
+X-Received: by 2002:a63:4457:: with SMTP id t23mr1675307pgk.108.1603256929805; 
+ Tue, 20 Oct 2020 22:08:49 -0700 (PDT)
+Received: from ubuntu204 ([103.108.75.206])
+ by smtp.gmail.com with ESMTPSA id y14sm679717pfe.107.2020.10.20.22.08.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Oct 2020 22:08:49 -0700 (PDT)
+Date: Wed, 21 Oct 2020 10:38:44 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/2] staging: kpc2000: kpc_dma: rearrange lines exceeding 100
+ columns
+Message-ID: <273abf291f47286a702d2a53445e7a6efcf9972b.1603256795.git.mh12gx2825@gmail.com>
 MIME-Version: 1.0
-References: <bce6824343f7a10919be5130b5a6276ed186701c.1603248984.git.mh12gx2825@gmail.com>
-In-Reply-To: <bce6824343f7a10919be5130b5a6276ed186701c.1603248984.git.mh12gx2825@gmail.com>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Wed, 21 Oct 2020 10:11:52 +0530
-X-Gmail-Original-Message-ID: <CAK-LDb+pcG2djU67XVkd=M9O8eDOmr2qRkLpSs5+aQbKjTf46w@mail.gmail.com>
-Message-ID: <CAK-LDb+pcG2djU67XVkd=M9O8eDOmr2qRkLpSs5+aQbKjTf46w@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: kpc2000: resolve various
- code style issues
-To: Deepak R Varma <mh12gx2825@gmail.com>
-X-CMAE-Envelope: MS4wfBWDGLVhIbkGbbaxg9RBb5lo3LGrvVmGerdP2WhhybgWstgi5hs6HTy5biR4zDULDuYpTGIDGXx9+RVsyyBz7hjlC21PF+gfT/6sAaxLT+FVDYqLKWeP
- 9E4roJR5zqGyAe/a+DRnvsVPSpPPMgl7N+9bdnefkBkGuWROiQD4hRUXck/HZql0mg4WPGSolK9MfGOHENzuRK/cveM9u2Yh/so=
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,224 +84,214 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Outreachy <outreachy-kernel@googlegroups.com>
+Cc: mh12gx2825@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 21, 2020 at 8:33 AM Deepak R Varma <mh12gx2825@gmail.com> wrote:
->
-> Multiple issues reported by checkpatch script around lines exceeding 100
-> columns, indentation of function parameters, extra blank lines. These
-> code formatting changes improves the code readability.
+Reformat lines that exceed 100 column in length. Issue reported by
+checkpatch script.
 
-Please send separate patches while fixing different checkpatch
-warnings. It's a good idea to fix different warnings together if
-it's for the same block of code but otherwise your patch should
-handle one similar change at a time.
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/kpc2000/kpc_dma/dma.c         | 27 +++++++++---
+ drivers/staging/kpc2000/kpc_dma/fileops.c     | 44 +++++++++++++++----
+ .../staging/kpc2000/kpc_dma/kpc_dma_driver.c  |  9 ++--
+ 3 files changed, 63 insertions(+), 17 deletions(-)
 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/staging/kpc2000/kpc2000/cell_probe.c  | 71 ++++++++++++++-----
->  drivers/staging/kpc2000/kpc2000/core.c        |  3 +-
->  .../staging/kpc2000/kpc2000/dma_common_defs.h |  3 +-
->  3 files changed, 58 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> index 738122afc2ae..e7e963d62699 100644
-> --- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> +++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
-> @@ -30,9 +30,12 @@
->   *
->   */
->
-> -#define KPC_OLD_DMA_CH_NUM(present, channel)   ((present) ? (0x8 | ((channel) & 0x7)) : 0)
-> -#define KPC_OLD_S2C_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
-> -#define KPC_OLD_C2S_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
-> +#define KPC_OLD_DMA_CH_NUM(present, channel)   \
-> +               ((present) ? (0x8 | ((channel) & 0x7)) : 0)
-> +#define KPC_OLD_S2C_DMA_CH_NUM(cte)   \
-> +               KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
-> +#define KPC_OLD_C2S_DMA_CH_NUM(cte)   \
-> +               KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
->
->  #define KP_CORE_ID_INVALID      0
->  #define KP_CORE_ID_I2C          3
-> @@ -67,7 +70,8 @@ void  parse_core_table_entry_v0(struct core_table_entry *cte, const u64 read_val
->  static
->  void dbg_cte(struct kp2000_device *pcard, struct core_table_entry *cte)
->  {
-> -       dev_dbg(&pcard->pdev->dev, "CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
-> +       dev_dbg(&pcard->pdev->dev,
-> +               "CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
->                 cte->type,
->                 cte->offset,
->                 cte->offset / 4096,
-> @@ -107,7 +111,14 @@ static int probe_core_basic(unsigned int core_num, struct kp2000_device *pcard,
->                 .ddna              = pcard->ddna,
->         };
->
-> -       dev_dbg(&pcard->pdev->dev, "Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
-> +       dev_dbg(&pcard->pdev->dev,
-> +               "Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
-> +               cte.type,
-> +               KPC_OLD_S2C_DMA_CH_NUM(cte),
-> +               KPC_OLD_C2S_DMA_CH_NUM(cte),
-> +               cte.offset,
-> +               cte.length,
-> +               cte.length / 8);
->
->         cell.platform_data = &core_pdata;
->         cell.pdata_size = sizeof(struct kpc_core_device_platdata);
-> @@ -290,7 +301,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
->         struct kpc_uio_device *kudev;
->         int rv;
->
-> -       dev_dbg(&pcard->pdev->dev, "Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
-> +       dev_dbg(&pcard->pdev->dev,
-> +               "Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
-> +               cte.type,
-> +               KPC_OLD_S2C_DMA_CH_NUM(cte),
-> +               KPC_OLD_C2S_DMA_CH_NUM(cte),
-> +               cte.offset,
-> +               cte.length,
-> +               cte.length / 8);
->
->         kudev = kzalloc(sizeof(*kudev), GFP_KERNEL);
->         if (!kudev)
-> @@ -315,10 +333,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
->
->         kudev->uioinfo.mem[0].name = "uiomap";
->         kudev->uioinfo.mem[0].addr = pci_resource_start(pcard->pdev, REG_BAR) + cte.offset;
-> -       kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1); // Round up to nearest PAGE_SIZE boundary
-> +
-> +       // Round up to nearest PAGE_SIZE boundary
-> +       kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
->         kudev->uioinfo.mem[0].memtype = UIO_MEM_PHYS;
->
-> -       kudev->dev = device_create(kpc_uio_class, &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d", kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
-> +       kudev->dev = device_create(kpc_uio_class,
-> +                                  &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d",
-> +                                  kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
->         if (IS_ERR(kudev->dev)) {
->                 dev_err(&pcard->pdev->dev, "%s: device_create failed!\n",
->                         __func__);
-> @@ -341,7 +363,9 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
->         return 0;
->  }
->
-> -static int  create_dma_engine_core(struct kp2000_device *pcard, size_t engine_regs_offset, int engine_num, int irq_num)
-> +static int  create_dma_engine_core(struct kp2000_device *pcard,
-> +                                  size_t engine_regs_offset,
-> +                                  int engine_num, int irq_num)
->  {
->         struct mfd_cell  cell = { .id = engine_num };
->         struct resource  resources[2];
-> @@ -380,18 +404,28 @@ static int  kp2000_setup_dma_controller(struct kp2000_device *pcard)
->
->         // S2C Engines
->         for (i = 0 ; i < 32 ; i++) {
-> -               capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
-> +               capabilities_reg = readq(pcard->dma_bar_base +
-> +                                        KPC_DMA_S2C_BASE_OFFSET +
-> +                                        (KPC_DMA_ENGINE_SIZE * i));
-> +
->                 if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
-> -                       err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), i,  pcard->pdev->irq);
-> +                       err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET +
-> +                                                           (KPC_DMA_ENGINE_SIZE * i)),
-> +                                                    i, pcard->pdev->irq);
->                         if (err)
->                                 goto err_out;
->                 }
->         }
->         // C2S Engines
->         for (i = 0 ; i < 32 ; i++) {
-> -               capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
-> +               capabilities_reg = readq(pcard->dma_bar_base +
-> +                                        KPC_DMA_C2S_BASE_OFFSET +
-> +                                        (KPC_DMA_ENGINE_SIZE * i));
-> +
->                 if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
-> -                       err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), 32 + i,  pcard->pdev->irq);
-> +                       err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET +
-> +                                                           (KPC_DMA_ENGINE_SIZE * i)),
-> +                                                    32 + i,  pcard->pdev->irq);
->                         if (err)
->                                 goto err_out;
->                 }
-> @@ -433,10 +467,15 @@ int  kp2000_probe_cores(struct kp2000_device *pcard)
->         // Then, iterate over the possible core types.
->         for (current_type_id = 1 ; current_type_id <= highest_core_id ; current_type_id++) {
->                 unsigned int core_num = 0;
-> -               // Foreach core type, iterate the whole table and instantiate subdevices for each core.
-> -               // Yes, this is O(n*m) but the actual runtime is small enough that it's an acceptable tradeoff.
-> +               /*
-> +                * Foreach core type, iterate the whole table and instantiate
-> +                * subdevices for each core.
-> +                * Yes, this is O(n*m) but the actual runtime is small enough
-> +                * that it's an acceptable tradeoff.
-> +                */
->                 for (i = 0 ; i < pcard->core_table_length ; i++) {
-> -                       read_val = readq(pcard->sysinfo_regs_base + ((pcard->core_table_offset + i) * 8));
-> +                       read_val = readq(pcard->sysinfo_regs_base +
-> +                                        ((pcard->core_table_offset + i) * 8));
->                         parse_core_table_entry(&cte, read_val, pcard->core_table_rev);
->
->                         if (cte.type != current_type_id)
-> diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-> index 358d7b2f4ad1..6462a3059fb0 100644
-> --- a/drivers/staging/kpc2000/kpc2000/core.c
-> +++ b/drivers/staging/kpc2000/kpc2000/core.c
-> @@ -124,6 +124,7 @@ static ssize_t cpld_reconfigure(struct device *dev,
->         writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
->         return count;
->  }
-> +
->  static DEVICE_ATTR(cpld_reconfigure, 0220, NULL, cpld_reconfigure);
->
->  static ssize_t irq_mask_reg_show(struct device *dev,
-> @@ -367,7 +368,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
->         dma_bar_phys_len = pci_resource_len(pcard->pdev, DMA_BAR);
->
->         pcard->dma_bar_base = ioremap(dma_bar_phys_addr,
-> -                                             dma_bar_phys_len);
-> +                                     dma_bar_phys_len);
->         if (!pcard->dma_bar_base) {
->                 dev_err(&pcard->pdev->dev,
->                         "probe: DMA_BAR could not remap memory to virtual space\n");
-> diff --git a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-> index 21450e3d408f..8bc78be3c259 100644
-> --- a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-> +++ b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-> @@ -6,8 +6,7 @@
->  #define KPC_DMA_S2C_BASE_OFFSET     0x0000
->  #define KPC_DMA_C2S_BASE_OFFSET     0x2000
->  #define KPC_DMA_ENGINE_SIZE         0x0100
-> -#define  ENGINE_CAP_PRESENT_MASK            0x1
-> -
-> +#define ENGINE_CAP_PRESENT_MASK     0x1
->
->  #define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
->  #define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
-> --
-> 2.25.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/bce6824343f7a10919be5130b5a6276ed186701c.1603248984.git.mh12gx2825%40gmail.com.
-
-
-
+diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
+index 452a3f7c835d..b8d8294aa4c3 100644
+--- a/drivers/staging/kpc2000/kpc_dma/dma.c
++++ b/drivers/staging/kpc2000/kpc_dma/dma.c
+@@ -16,7 +16,8 @@ irqreturn_t  ndd_irq_handler(int irq, void *dev_id)
+ {
+ 	struct kpc_dma_device *ldev = (struct kpc_dma_device *)dev_id;
+ 
+-	if ((GetEngineControl(ldev) & ENG_CTL_IRQ_ACTIVE) || (ldev->desc_completed->MyDMAAddr != GetEngineCompletePtr(ldev)))
++	if ((GetEngineControl(ldev) & ENG_CTL_IRQ_ACTIVE) ||
++	    (ldev->desc_completed->MyDMAAddr != GetEngineCompletePtr(ldev)))
+ 		schedule_work(&ldev->irq_work);
+ 
+ 	return IRQ_HANDLED;
+@@ -39,7 +40,9 @@ void  ndd_irq_worker(struct work_struct *ws)
+ 	cur = eng->desc_completed;
+ 	do {
+ 		cur = cur->Next;
+-		dev_dbg(&eng->pldev->dev, "Handling completed descriptor %p (acd = %p)\n", cur, cur->acd);
++		dev_dbg(&eng->pldev->dev, "Handling completed descriptor %p (acd = %p)\n",
++			cur,
++			cur->acd);
+ 		BUG_ON(cur == eng->desc_next); // Ordering failure.
+ 
+ 		if (cur->DescControlFlags & DMA_DESC_CTL_SOP) {
+@@ -56,7 +59,9 @@ void  ndd_irq_worker(struct work_struct *ws)
+ 
+ 		if (cur->DescControlFlags & DMA_DESC_CTL_EOP) {
+ 			if (cur->acd)
+-				transfer_complete_cb(cur->acd, eng->accumulated_bytes, eng->accumulated_flags | ACD_FLAG_DONE);
++				transfer_complete_cb(cur->acd,
++						     eng->accumulated_bytes,
++						     eng->accumulated_flags | ACD_FLAG_DONE);
+ 		}
+ 
+ 		eng->desc_completed = cur;
+@@ -103,7 +108,10 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
+ 		eng->dir = DMA_TO_DEVICE;
+ 
+ 	eng->desc_pool_cnt = desc_cnt;
+-	eng->desc_pool = dma_pool_create("KPC DMA Descriptors", &eng->pldev->dev, sizeof(struct kpc_dma_descriptor), DMA_DESC_ALIGNMENT, 4096);
++	eng->desc_pool = dma_pool_create("KPC DMA Descriptors",
++					 &eng->pldev->dev,
++					 sizeof(struct kpc_dma_descriptor),
++					 DMA_DESC_ALIGNMENT, 4096);
+ 
+ 	eng->desc_pool_first = dma_pool_alloc(eng->desc_pool, GFP_KERNEL | GFP_DMA, &head_handle);
+ 	if (!eng->desc_pool_first) {
+@@ -141,7 +149,11 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
+ 	INIT_WORK(&eng->irq_work, ndd_irq_worker);
+ 
+ 	// Grab IRQ line
+-	rv = request_irq(eng->irq, ndd_irq_handler, IRQF_SHARED, KP_DRIVER_NAME_DMA_CONTROLLER, eng);
++	rv = request_irq(eng->irq,
++			 ndd_irq_handler,
++			 IRQF_SHARED,
++			 KP_DRIVER_NAME_DMA_CONTROLLER,
++			 eng);
+ 	if (rv) {
+ 		dev_err(&eng->pldev->dev, "%s: failed to request_irq: %d\n", __func__, rv);
+ 		return rv;
+@@ -195,7 +207,10 @@ void  stop_dma_engine(struct kpc_dma_device *eng)
+ 	}
+ 
+ 	// Clear any persistent bits just to make sure there is no residue from the reset
+-	SetClearEngineControl(eng, (ENG_CTL_IRQ_ACTIVE | ENG_CTL_DESC_COMPLETE | ENG_CTL_DESC_ALIGN_ERR | ENG_CTL_DESC_FETCH_ERR | ENG_CTL_SW_ABORT_ERR | ENG_CTL_DESC_CHAIN_END | ENG_CTL_DMA_WAITING_PERSIST), 0);
++	SetClearEngineControl(eng, (ENG_CTL_IRQ_ACTIVE | ENG_CTL_DESC_COMPLETE |
++				    ENG_CTL_DESC_ALIGN_ERR | ENG_CTL_DESC_FETCH_ERR |
++				    ENG_CTL_SW_ABORT_ERR | ENG_CTL_DESC_CHAIN_END |
++				    ENG_CTL_DMA_WAITING_PERSIST), 0);
+ 
+ 	// Reset performance counters
+ 
+diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+index e1c7c04f16fe..b929987844ff 100644
+--- a/drivers/staging/kpc2000/kpc_dma/fileops.c
++++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+@@ -76,7 +76,11 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 
+ 	// Lock the user buffer pages in memory, and hold on to the page pointers (for the sglist)
+ 	mmap_read_lock(current->mm);      /*  get memory map semaphore */
+-	rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
++	rv = pin_user_pages(iov_base,
++			    acd->page_count,
++			    FOLL_TOUCH | FOLL_WRITE,
++			    acd->user_pages,
++			    NULL);
+ 	mmap_read_unlock(current->mm);        /*  release the semaphore */
+ 	if (rv != acd->page_count) {
+ 		nr_pages = rv;
+@@ -89,16 +93,25 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 	nr_pages = acd->page_count;
+ 
+ 	// Allocate and setup the sg_table (scatterlist entries)
+-	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
++	rv = sg_alloc_table_from_pages(&acd->sgt,
++				       acd->user_pages,
++				       acd->page_count,
++				       iov_base & (PAGE_SIZE - 1),
++				       iov_len, GFP_KERNEL);
+ 	if (rv) {
+ 		dev_err(&priv->ldev->pldev->dev, "Couldn't alloc sg_table (%d)\n", rv);
+ 		goto unpin_pages;
+ 	}
+ 
+ 	// Setup the DMA mapping for all the sg entries
+-	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
++	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev,
++					     acd->sgt.sgl,
++					     acd->sgt.nents,
++					     ldev->dir);
+ 	if (acd->mapped_entry_count <= 0) {
+-		dev_err(&priv->ldev->pldev->dev, "Couldn't dma_map_sg (%d)\n", acd->mapped_entry_count);
++		dev_err(&priv->ldev->pldev->dev,
++			"Couldn't dma_map_sg (%d)\n",
++			acd->mapped_entry_count);
+ 		goto free_table;
+ 	}
+ 
+@@ -111,14 +124,26 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 
+ 	// Figoure out how many descriptors are available and return an error if there aren't enough
+ 	num_descrs_avail = count_descriptors_available(ldev);
+-	dev_dbg(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
++	dev_dbg(&priv->ldev->pldev->dev,
++		"    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d\n",
++		acd->mapped_entry_count,
++		desc_needed,
++		num_descrs_avail);
+ 	if (desc_needed >= ldev->desc_pool_cnt) {
+-		dev_warn(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    TOO MANY to ever complete!\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
++		dev_warn(&priv->ldev->pldev->dev,
++			 "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    TOO MANY to ever complete!\n",
++			 acd->mapped_entry_count,
++			 desc_needed,
++			 num_descrs_avail);
+ 		rv = -EAGAIN;
+ 		goto err_descr_too_many;
+ 	}
+ 	if (desc_needed > num_descrs_avail) {
+-		dev_warn(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    Too many to complete right now.\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
++		dev_warn(&priv->ldev->pldev->dev,
++			 "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    Too many to complete right now.\n",
++			 acd->mapped_entry_count,
++			 desc_needed,
++			 num_descrs_avail);
+ 		rv = -EMSGSIZE;
+ 		goto err_descr_too_many;
+ 	}
+@@ -163,7 +188,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
+ 				desc->acd = acd;
+ 
+-			dev_dbg(&priv->ldev->pldev->dev, "  Filled descriptor %p (acd = %p)\n", desc, desc->acd);
++			dev_dbg(&priv->ldev->pldev->dev,
++				"  Filled descriptor %p (acd = %p)\n",
++				desc,
++				desc->acd);
+ 
+ 			ldev->desc_next = desc->Next;
+ 			desc = desc->Next;
+diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+index 624d47bae4d1..7698e5ef2a7c 100644
+--- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
++++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+@@ -138,7 +138,8 @@ int  kpc_dma_probe(struct platform_device *pldev)
+ 
+ 	// Setup miscdev struct
+ 	dev = MKDEV(assigned_major_num, pldev->id);
+-	ldev->kpc_dma_dev = device_create(kpc_dma_class, &pldev->dev, dev, ldev, "kpc_dma%d", pldev->id);
++	ldev->kpc_dma_dev = device_create(kpc_dma_class, &pldev->dev,
++					  dev, ldev, "kpc_dma%d", pldev->id);
+ 	if (IS_ERR(ldev->kpc_dma_dev)) {
+ 		rv = PTR_ERR(ldev->kpc_dma_dev);
+ 		dev_err(&ldev->pldev->dev, "%s: device_create failed: %d\n", __func__, rv);
+@@ -205,9 +206,11 @@ int __init kpc_dma_driver_init(void)
+ {
+ 	int err;
+ 
+-	err = __register_chrdev(KPC_DMA_CHAR_MAJOR, 0, KPC_DMA_NUM_MINORS, "kpc_dma", &kpc_dma_fops);
++	err = __register_chrdev(KPC_DMA_CHAR_MAJOR, 0,
++				KPC_DMA_NUM_MINORS, "kpc_dma", &kpc_dma_fops);
+ 	if (err < 0) {
+-		pr_err("Can't allocate a major number (%d) for kpc_dma (err = %d)\n", KPC_DMA_CHAR_MAJOR, err);
++		pr_err("Can't allocate a major number (%d) for kpc_dma (err = %d)\n",
++		       KPC_DMA_CHAR_MAJOR, err);
+ 		goto fail_chrdev_register;
+ 	}
+ 	assigned_major_num = err;
 -- 
-Vaishali
+2.25.1
 
-
--- 
-Vaishali
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
