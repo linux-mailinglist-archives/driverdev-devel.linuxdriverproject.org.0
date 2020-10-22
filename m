@@ -1,90 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0CBD2958AC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Oct 2020 08:56:57 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ED5F295904
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Oct 2020 09:26:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D7451871D5;
-	Thu, 22 Oct 2020 06:56:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 73D0786D41;
+	Thu, 22 Oct 2020 07:26:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yi1hQuVFptEg; Thu, 22 Oct 2020 06:56:55 +0000 (UTC)
+	with ESMTP id oRv9h-tjgCWW; Thu, 22 Oct 2020 07:26:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6F7878710D;
-	Thu, 22 Oct 2020 06:56:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A6F2486CF8;
+	Thu, 22 Oct 2020 07:26:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B7C091BF83E
- for <devel@linuxdriverproject.org>; Thu, 22 Oct 2020 06:56:52 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 825F81BF302
+ for <devel@linuxdriverproject.org>; Thu, 22 Oct 2020 07:26:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 99E012049E
- for <devel@linuxdriverproject.org>; Thu, 22 Oct 2020 06:56:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7EB31876A3
+ for <devel@linuxdriverproject.org>; Thu, 22 Oct 2020 07:26:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wQYUz3JedQXD for <devel@linuxdriverproject.org>;
- Thu, 22 Oct 2020 06:56:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com
- [66.111.4.26])
- by silver.osuosl.org (Postfix) with ESMTPS id 4888C2049B
- for <devel@driverdev.osuosl.org>; Thu, 22 Oct 2020 06:56:49 +0000 (UTC)
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id EF65F5C00CB;
- Thu, 22 Oct 2020 02:56:48 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Thu, 22 Oct 2020 02:56:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=PNqJSiLFvYPB2J9r+0yH7DHREwS
- OjzwcypCGVmkzdqI=; b=mPKVnE1aQzXYRWl+CVqd+opRTlc/eQhSv+M4rnoX2g7
- XjpzlsEHZlz2PYXnjjtmj4jYoB1l+BL2iyK8iADEXasN4QQ1UicT5uU5OYh2jcS2
- OwzDXBcxAifPWAQ8Is/ScBJ4JEZ1x+4nGU3z/skJkPHHdK91pLV5l31S/dWUvOjf
- FNRa8yolLFuDyJNKLdsY8yZY7EUkiDFwVlzZ9paE1IiBuFqtx8chN9uGZa4GZZMk
- 2pbuJRdhXGndVLCB6JUwhzeXFVjIvyfvhEU1IdJK+Pk79kq/FbGL33T8N8LEXoiY
- P/FcD2vlC28NRV7CGAtq5809O+9sbgWzXFtvc6+v6oQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=PNqJSi
- LFvYPB2J9r+0yH7DHREwSOjzwcypCGVmkzdqI=; b=HrnE3W9OG76YL5alhpMBHf
- kWsmR9zC1WNQDYlrCJYI4xA1uCkleZs7ry9RpFS2bSn/C+4K1V5gTKYu/4Or2C3M
- kVlx4zbnrLNGWajAmwgI2D1XTarn1+5rfIAFOBSUtlS5+QK4xjU22H4eoZDHqp5Q
- uLNuR+OY5gY0/1Xk9+B0aSMprxG8EKTsla8ZEb4P1X3/b+YkAVkHBG41h5cZt2dY
- 1PNEb79JowcRYMVC6JFlucV+wbrLw0EJMg8gw4XrtSSat4StegL17u1l6aX7p8Rj
- xJfHqIgvweXLkAydYMHR+n/wjeaYvrR0qxDOaWY3tetFr8+rYkePrt9wlrwfuOsA
- ==
-X-ME-Sender: <xms:Ly2RX8lTT687s_8p7TFbRliFXqj1bzyWQxiIbwh6o4bdKuYyvBI6CQ>
- <xme:Ly2RX71eT718tye3QV2WdwF7EgVanDyTsK16adUxs-FwFxnnXIL56A6ou5mupfUP8
- XbNPXwWtZAn30J2_7o>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrjeeigdduuddvucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
- htvghrnhepleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieeh
- gedunecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:Ly2RX6p8hR0lmuaFBQCs5pHCnZx04FT3VjnAW8tq7RjcXvOTdL-joQ>
- <xmx:Ly2RX4k8ch1Da2XdVyHv0uC8iBbN_-mrri0XEBAK1E1dbJNyY10M9Q>
- <xmx:Ly2RX62glgQ6BAs4MkoBJ0B_rOUdkoYCA9FFj1MDCr8Kz3uDQoi6tw>
- <xmx:MC2RXzkS8m9Y3gGLIn1_px4xeFlRs2qHdAkRzRDAxJErWhPfumslTQ>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 8137C328005D;
- Thu, 22 Oct 2020 02:56:47 -0400 (EDT)
-Date: Thu, 22 Oct 2020 08:56:45 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Jernej Skrabec <jernej.skrabec@siol.net>
-Subject: Re: [PATCH] media: cedrus: h264: Fix check for presence of scaling
- matrix
-Message-ID: <20201022065645.qlveci5f3nywxha7@gilmour.lan>
-References: <20201021203325.543189-1-jernej.skrabec@siol.net>
+ with ESMTP id iMRyIUhmyUl1 for <devel@linuxdriverproject.org>;
+ Thu, 22 Oct 2020 07:26:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com
+ [209.85.214.181])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0486E87402
+ for <devel@driverdev.osuosl.org>; Thu, 22 Oct 2020 07:26:04 +0000 (UTC)
+Received: by mail-pl1-f181.google.com with SMTP id y1so484114plp.6
+ for <devel@driverdev.osuosl.org>; Thu, 22 Oct 2020 00:26:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=PBCvy90ncT+97kjyi1X2cC+3BdeIsVMpeFXDBOs/ylI=;
+ b=obXnUa5wNOn6br/a0W4wgb55oSsXL1n4TOLoHQhiS4Nz3A2AnDLc06YcTQztdSo4pW
+ v3XONQs8w1Wt2CA6+06dqMGY2S45NB3bRo12uOIKSyXv+5g5CUCCI1u/rVLJR6vUUqj3
+ 1XEenr88C7KSF1mH/zE+VLzRSGAilcK+xk+JqAp9rLBL50c6yvf+l2QA2NF4712ODrh3
+ Kw0ni5sKbPnIJrestD6gaXZqal5Mvim93Uoc9sYTH/J3ojwwH29U3X0haCYauGvf/nSz
+ cncIDLNtjgPWQMh47xKFZR7Nu/PSVLEjfvJ124ojxcaj7VFvk6ht1pX98xA9FTYSOxRV
+ td0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=PBCvy90ncT+97kjyi1X2cC+3BdeIsVMpeFXDBOs/ylI=;
+ b=B0EjZDFK+HKd9Dm+FmVLEG62IR1aH0QTb+oN67ONEVgIQoZtfWNjEV0Lm5XdCozS8V
+ G1H+DRD5P7ARkLyx5vOCqYMIU3AYK/i541rxw/pFwPvF/ostF2pDGeEoQSLwCicWYDFj
+ FIUOKnYLNjKGcgaJrGHPCIwjxZy5o2/jzcS8ZyBR3MeAMNy8sZ9ADJEqvku0MVWxbm9m
+ PyeFaT45S7zyIVmvEnimjM3nr83ha6BHG68p0N9lH9xfoYDKdScVwn+Y2O73F8LGBm8R
+ iPZwY4brNdjJvLBWBRLmIqvmT9plFRE1UKlkfTDBe2fWA4i+nxa/IMXy4J9wPC1qiitl
+ kmvQ==
+X-Gm-Message-State: AOAM533iHD96IJotDMybV41XishNyD5g7al3HvJtKAMwqbHzS8jQf9Jd
+ JC33kP3CGYDrxpIPUcD2p68=
+X-Google-Smtp-Source: ABdhPJznhhIc0TWEi0UzCgBtY67TR59uwMJFcOCLTrjEPOVtP1k847ZFY0yCa2zHqwwnkWfT8XVfyA==
+X-Received: by 2002:a17:90a:c293:: with SMTP id
+ f19mr1220115pjt.2.1603351563608; 
+ Thu, 22 Oct 2020 00:26:03 -0700 (PDT)
+Received: from ubuntu204 ([103.108.75.206])
+ by smtp.gmail.com with ESMTPSA id z5sm956703pjn.2.2020.10.22.00.25.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 Oct 2020 00:26:03 -0700 (PDT)
+Date: Thu, 22 Oct 2020 12:55:34 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] Clean up query: greybus/audio_manager_module.c
+Message-ID: <20201022072534.GA384774@ubuntu204>
+References: <20201022033701.GA329478@ubuntu204>
+ <20201022052931.GA6093@kroah.com>
 MIME-Version: 1.0
-In-Reply-To: <20201021203325.543189-1-jernej.skrabec@siol.net>
+Content-Disposition: inline
+In-Reply-To: <20201022052931.GA6093@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,61 +87,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, hverkuil-cisco@xs4all.nl,
- mchehab@kernel.org, ezequiel@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============3582878034783367069=="
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+ mgreer@animalcreek.com, vaibhav.sr@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Thu, Oct 22, 2020 at 07:29:31AM +0200, Greg KH wrote:
+> On Thu, Oct 22, 2020 at 09:07:01AM +0530, Deepak R Varma wrote:
+> > Hello,
+> > I am reviewing the file: drivers/staging/greybus/audio_manager_module.c
+> > and have found that there are several gb_audio_module_*_show functions
+> > that accept "struct gb_audio_manager_module_attribute * " as a function
+> > parameter. However, this parameter is not used and should not be
+> > necessary. Would you suggest cleaning up such functions.
+> 
+> Try removing it and see why it is really needed to be there :)
 
---===============3582878034783367069==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="5mrqutjgwcuzyi5g"
-Content-Disposition: inline
+Thank you Greg. I tried that and realised that the internal show
+function signature definition will mismatch. It will not be a straight
+forward change for the clean up sake.
 
+I got my answer. Thanks again.
+Deepak.
 
---5mrqutjgwcuzyi5g
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Oct 21, 2020 at 10:33:25PM +0200, Jernej Skrabec wrote:
-> If scaling matrix control is present, VPU should not use default matrix.
-> Fix that.
->=20
-> Fixes: b3a23db0e2f8 ("media: cedrus: Use H264_SCALING_MATRIX only when re=
-quired")
-> Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-
-Acked-by: Maxime Ripard <mripard@kernel.org>
-
-Thanks!
-Maxime
-
---5mrqutjgwcuzyi5g
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX5EtLQAKCRDj7w1vZxhR
-xccJAQCC3HCMwcTjw8ZfEDoRQ5Uqjqs8jc4UM2rG8IqFxxZ4FwEAtKqu+HD414Eh
-2lB5Qp9uLH6IGrGdDlU4Z6Z14gjTUwE=
-=vcWn
------END PGP SIGNATURE-----
-
---5mrqutjgwcuzyi5g--
-
---===============3582878034783367069==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> 
+> good luck!
+> 
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3582878034783367069==--
