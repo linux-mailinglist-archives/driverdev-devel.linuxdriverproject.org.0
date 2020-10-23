@@ -2,58 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DA832986A4
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Oct 2020 06:56:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A451298800
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Oct 2020 09:10:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 609398634C;
-	Mon, 26 Oct 2020 05:56:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F0A986149;
+	Mon, 26 Oct 2020 08:10:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZKCNsVZarVLF; Mon, 26 Oct 2020 05:56:53 +0000 (UTC)
+	with ESMTP id 9AtwAb9FBn7l; Mon, 26 Oct 2020 08:10:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 624DA860C1;
-	Mon, 26 Oct 2020 05:56:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EEAF285FC1;
+	Mon, 26 Oct 2020 08:10:34 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 606571BF2C4
- for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 05:56:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F2E871BF375
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 26 Oct 2020 08:10:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 584912D3FC
- for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 05:56:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EE18E866AC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 26 Oct 2020 08:10:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2yPrZlyVZpdu for <devel@linuxdriverproject.org>;
- Mon, 26 Oct 2020 05:56:49 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id B626727515
- for <devel@driverdev.osuosl.org>; Mon, 26 Oct 2020 05:56:49 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9CE6822247;
- Mon, 26 Oct 2020 05:56:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603691809;
- bh=68L4RzffTGlRheVxmrno1nftMutervn0FgxBx87UdGs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ycLePGxeJm5aIaVBee6QuXxcmKkn0QeZp6bPdwrYCpafjS/UkN48IAnZ/7qAHLlzd
- KFqUCJs38sGr5jKOO4OJ7tZrkWplnEWhINlWOANRV1lbis88O4kIaWPe4piXP4LtoA
- Q+HtMyNWeI0nISta+F7ZsWn13O+NbV7g2xOPlXfs=
-Date: Mon, 26 Oct 2020 06:57:17 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Subject: Re: [PATCH v2 1/2] staging: kpc2000: kpc_dma: rearrange lines
- exceeding 100 columns
-Message-ID: <20201026055717.GB779791@kroah.com>
-References: <c61a3c244bea516528e9ca4e909c30f16959c3aa.1603264617.git.mh12gx2825@gmail.com>
- <20201026040453.GC5074@my--box>
+ with ESMTP id EwkSI+at8bCJ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 26 Oct 2020 08:10:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from dfrolov-f2b.plesk.space (dfrolov-f2b.plesk.space
+ [159.89.106.162])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4BAF2866A7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 26 Oct 2020 08:10:32 +0000 (UTC)
+Received: from User (188-207-104-215.mobile.kpn.net [188.207.104.215])
+ by dfrolov-f2b.plesk.space (Postfix) with ESMTPA id 06E2C5E52E8;
+ Fri, 23 Oct 2020 15:26:04 +0000 (UTC)
+From: "Mr Petrus Vermeulen"<raywandyg@gmail.com>
+Subject: URGENT INVESTMENT
+Date: Fri, 23 Oct 2020 17:26:09 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201026040453.GC5074@my--box>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+Message-Id: <20201026081032.EE18E866AC@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,25 +60,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Reply-To: ptrsvermeulen@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 26, 2020 at 09:34:53AM +0530, Deepak R Varma wrote:
-> On Wed, Oct 21, 2020 at 01:01:07PM +0530, Deepak R Varma wrote:
-> 
-> Hello,
-> Requesting a review / ack of this patch.
+Greeting ,I'm Petrus Vermeulen , it pleases me to bring to your notice that my principal's family wishes to make huge financial investment in your home country on areas of oil and gas, real estate, tourism and hotel, manufacturing and production company, agriculture, fishing, Mining & Trading of natural resources such as crude oil, coal, graphite, coke, refinery, energy etc.
 
-As I said in my previous email, to the outreachy list, if I have not
-applied something, it needs to be resent, if you still think it is
-needed.
+He needs a capable, trust worthy and understanding business partner. Highly confidential and trusted partner to manage funds in proxy. ($ 300 Million USD) for investment purposes. Must be a dedicated and honest business person
 
-thanks,
+Please, I will provide more details about the transaction if you are
+Willing to handle such project and also let you know your entitlement for the solicited role
+I shall be expecting your quick reply.  ptrsvermeulen@gmail.com
 
-greg k-h
+Best Regards
+Petrus 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
