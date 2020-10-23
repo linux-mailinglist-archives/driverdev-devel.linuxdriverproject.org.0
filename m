@@ -1,58 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C8BC296E15
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Oct 2020 13:58:37 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C95A12970BB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Oct 2020 15:37:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D511C8738B;
-	Fri, 23 Oct 2020 11:58:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AD45986DBB;
+	Fri, 23 Oct 2020 13:37:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qnblkOvSNkAj; Fri, 23 Oct 2020 11:58:35 +0000 (UTC)
+	with ESMTP id 3-ZPz51qe4x7; Fri, 23 Oct 2020 13:37:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DAB248723E;
-	Fri, 23 Oct 2020 11:58:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5C1C686E66;
+	Fri, 23 Oct 2020 13:37:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3C7401BF3B0
- for <devel@linuxdriverproject.org>; Fri, 23 Oct 2020 11:58:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C5C2F1BF383
+ for <devel@linuxdriverproject.org>; Fri, 23 Oct 2020 13:37:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3079A87865
- for <devel@linuxdriverproject.org>; Fri, 23 Oct 2020 11:58:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BD0CA87886
+ for <devel@linuxdriverproject.org>; Fri, 23 Oct 2020 13:37:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nswTzlm7JFgu for <devel@linuxdriverproject.org>;
- Fri, 23 Oct 2020 11:58:32 +0000 (UTC)
+ with ESMTP id RTX3NjUcfS9I for <devel@linuxdriverproject.org>;
+ Fri, 23 Oct 2020 13:37:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8526787835
- for <devel@driverdev.osuosl.org>; Fri, 23 Oct 2020 11:58:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=a43uQivSqcpgtBeNtkCDgWJNs/iVWYVhNy3CrkGeFSQ=; b=GKvx4ShSPC/2wFxB6AcKPueFi3
- lkzngVb6jyR4s7900S2bZt7bi5e3F1jIVLIP38fI5j446QCOwZtG6c+93yGj8Nq8V3e5+cf00K80T
- 5uIpn+Iky0HoSN89QlGes0CZjm1Z5MY9TReQdbjq2zrErYJd8Jupa7wipQa9TCFFweDTXACPIsyQp
- SejhuoxGLUm6Z/FK9dEcPXnssu7Uxj/7B27ZuIjoXNbCrYD0hBpsg9fRnzt5JnvQlVXX2hKLDBK9/
- 2BDvcC2jjoBASqH6sfp+G1Pp1V0ZCQo37QVy8/bJg1qPUCcPVWjg3QjVbq2y6jiks1ShyRuyc/t64
- PWsATsLA==;
-Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1kVviG-0008OK-Dj; Fri, 23 Oct 2020 11:58:28 +0000
-Date: Fri, 23 Oct 2020 12:58:28 +0100
-From: Matthew Wilcox <willy@infradead.org>
-To: Elena Afanasova <eafanasova@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging/rtl8192e: replace kmalloc
- with kzalloc
-Message-ID: <20201023115828.GZ20115@casper.infradead.org>
-References: <20201023100317.4473-1-eafanasova@gmail.com>
+Received: from mail-vs1-f65.google.com (mail-vs1-f65.google.com
+ [209.85.217.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1DC7D87885
+ for <devel@driverdev.osuosl.org>; Fri, 23 Oct 2020 13:37:24 +0000 (UTC)
+Received: by mail-vs1-f65.google.com with SMTP id e3so860111vsr.8
+ for <devel@driverdev.osuosl.org>; Fri, 23 Oct 2020 06:37:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Zc7t+lOzY7cTGJnijbB9ZWGm7Y121IIAMh0AQlwU3pA=;
+ b=YdHU1o5OjK8fiIdbmhMO+IyNC8TEW8YOMBNOvHEY2cYnrBk8/gyhlYYIjqHjd0NJ7N
+ Q6JBWCM+gB37AP1jOXbf9Qs6KcHuJqiJ3/FVRG29uZZ8jNuBpdaQ5Kmh+w25khqb98O7
+ fuaszBb44mle10AmhDlAgsLQDc7XXCO0ws3mJyf5n05zELyfTPtRGhaM1i8oM7amc2Fc
+ DjnSs/nDUeaxSyqWD/mF0nMOPxn1l7Z028HeK7L9fJPPANXe3r3b8yJt+YSKnXOTX5eS
+ GLq4LFVkP1G723OStpmTnkAxGBLBZSlWGC7QGzkxDC4GiKD75t2DgvwWH/qbfNQK0Ovd
+ dYUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Zc7t+lOzY7cTGJnijbB9ZWGm7Y121IIAMh0AQlwU3pA=;
+ b=BgNJOqTY9OMZsvmXQHIyKbCOU4l8AsHysjN1rEIY84PplPhq9LsvYYJnNytK/Rqmyp
+ diAUVT+vg0jtjlDvZzEZYXxRJJ6vHUhQ9Y99dhNEssFxv+Y9hKjRsRGCyosoLFoeD3ci
+ gXsU7Rsh8Pu/grmFx1LW/StnplAG3SRnD1F0bHECDuG7WrYgW+DOhzkLYNcEttKWtT4D
+ Bl5kZGxguEhhu/BxZ1dmHRHdlWGTyg2YtKPzOcidxzVvzuKwYDafz/Dy5Y9jKu9fJyHO
+ JpI1YT+rMcmaRbBtZOZ++Xq3A3en2rv0WoPrtFUwSKHCNtuPJCw9MxBoBzfQvmVhBZ6J
+ Es+w==
+X-Gm-Message-State: AOAM531vb8JyS6rauunfsd1zQss/eLHLLdTUgWrW52TPkC+TPfGE552i
+ lYoriMGryftwDPThRIHho88t735071+Tb92gkqI=
+X-Google-Smtp-Source: ABdhPJzARGEDC4xlej7yvuuABhHcmbQVxvjDThXOHqDeOTG4DEZsLZNb6d3iTK/9tJ5SYw2WGPPvdSR0KQcyvZVXMYk=
+X-Received: by 2002:a67:cc2:: with SMTP id 185mr1422202vsm.42.1603460243020;
+ Fri, 23 Oct 2020 06:37:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201023100317.4473-1-eafanasova@gmail.com>
+References: <20201012132404.113031-1-jingxiangfeng@huawei.com>
+In-Reply-To: <20201012132404.113031-1-jingxiangfeng@huawei.com>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Fri, 23 Oct 2020 09:37:12 -0400
+Message-ID: <CAGngYiXY95R5=fUPQ2aBXOQsPXrkp8E4TTmU_75pQZN9OuiUUA@mail.gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: anybuss: jump to correct label in an
+ error path
+To: Jing Xiangfeng <jingxiangfeng@huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,20 +80,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- outreachy-kernel@googlegroups.com
+Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Oct 23, 2020 at 03:03:17AM -0700, Elena Afanasova wrote:
-> -	txb = kmalloc(sizeof(struct rtllib_txb) + (sizeof(u8 *) * nr_frags),
-> -		      gfp_mask);
-> +	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags), gfp_mask);
+Hi Jing, thank you for your patch.
 
-This would be a good opportunity to use struct_size().
+Reviewed-by: Sven Van Asbroeck <TheSven73@gmail.com>
 
+On Mon, Oct 12, 2020 at 9:17 AM Jing Xiangfeng <jingxiangfeng@huawei.com> wrote:
+>
+> In current code, controller_probe() misses to call ida_simple_remove()
+> in an error path. Jump to correct label to fix it.
+>
+> Fixes: 17614978ed34 ("staging: fieldbus: anybus-s: support the Arcx anybus controller")
+> Signed-off-by: Jing Xiangfeng <jingxiangfeng@huawei.com>
+> ---
+>  drivers/staging/fieldbus/anybuss/arcx-anybus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/fieldbus/anybuss/arcx-anybus.c b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+> index 5b8d0bae9ff3..b5fded15e8a6 100644
+> --- a/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+> +++ b/drivers/staging/fieldbus/anybuss/arcx-anybus.c
+> @@ -293,7 +293,7 @@ static int controller_probe(struct platform_device *pdev)
+>         regulator = devm_regulator_register(dev, &can_power_desc, &config);
+>         if (IS_ERR(regulator)) {
+>                 err = PTR_ERR(regulator);
+> -               goto out_reset;
+> +               goto out_ida;
+>         }
+>         /* make controller info visible to userspace */
+>         cd->class_dev = kzalloc(sizeof(*cd->class_dev), GFP_KERNEL);
+> --
+> 2.17.1
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
