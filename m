@@ -2,52 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF6E32979C9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 24 Oct 2020 01:56:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD5EE297A27
+	for <lists+driverdev-devel@lfdr.de>; Sat, 24 Oct 2020 03:19:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E96B8775A;
-	Fri, 23 Oct 2020 23:56:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6506F87791;
+	Sat, 24 Oct 2020 01:19:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ER52N6kZ+YO0; Fri, 23 Oct 2020 23:56:42 +0000 (UTC)
+	with ESMTP id Qe+U3qVBAdEb; Sat, 24 Oct 2020 01:19:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 70979875AA;
-	Fri, 23 Oct 2020 23:56:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B303787790;
+	Sat, 24 Oct 2020 01:19:23 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1814F1BF5EA
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 34A1F1BF5DB
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Oct 2020 23:56:39 +0000 (UTC)
+ Sat, 24 Oct 2020 01:19:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 12A9F8772D
+ by hemlock.osuosl.org (Postfix) with ESMTP id 318A787790
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Oct 2020 23:56:39 +0000 (UTC)
+ Sat, 24 Oct 2020 01:19:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P-kpWCGumkMR
+ with ESMTP id ZyFzILCrS+g2
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Oct 2020 23:56:38 +0000 (UTC)
+ Sat, 24 Oct 2020 01:19:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from srv01.znettelecom.net (unknown [187.0.30.10])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C3452876B8
+Received: from dfrolov-f2b.plesk.space (dfrolov-f2b.plesk.space
+ [159.89.106.162])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 987A587789
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Oct 2020 23:56:38 +0000 (UTC)
-Received: from [103.99.1.172] (helo=User)
- by srv01.znettelecom.net with esmtpa (Exim 4.92.2)
- (envelope-from <nina@vizenhosting.com>)
- id 1kW6uZ-00084x-CW; Fri, 23 Oct 2020 21:55:56 -0200
-From: "Nicholas Toms"<nina@vizenhosting.com>
-Subject: Low-Cost Loans for SMEs & Investment Funding.
-Date: Fri, 23 Oct 2020 16:55:54 -0700
+ Sat, 24 Oct 2020 01:19:21 +0000 (UTC)
+Received: from User (89-200-14-32.mobile.kpn.net [89.200.14.32])
+ by dfrolov-f2b.plesk.space (Postfix) with ESMTPA id F05BF5DF29F;
+ Fri, 23 Oct 2020 06:47:57 +0000 (UTC)
+From: "Mr Petrus Vermeulen"<raywandyg@gmail.com>
+Subject: URGENT INVESTMENT
+Date: Fri, 23 Oct 2020 08:48:01 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <E1kW6uZ-00084x-CW@srv01.znettelecom.net>
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+Message-Id: <20201024011922.318A787790@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,22 +60,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: tomsnicholas@yahoo.com
+Reply-To: ptrsvermeulen@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear 
+Greeting ,I'm Petrus Vermeulen , it pleases me to bring to your notice that my principal's family wishes to make huge financial investment in your home country on areas of oil and gas, real estate, tourism and hotel, manufacturing and production company, agriculture, fishing, Mining & Trading of natural resources such as crude oil, coal, graphite, coke, refinery, energy etc.
 
-My name is Nicholas Toms, an investment portfolio manager with ACLL . We offer the right loan Investment funding with low 
-interest to finance your business or project ranging from US$1M to US$2BIllion.
+He needs a capable, trust worthy and understanding business partner. Highly confidential and trusted partner to manage funds in proxy. ($ 300 Million USD) for investment purposes. Must be a dedicated and honest business person
 
-Kindly contact me for more details as I am open to questions.
+Please, I will provide more details about the transaction if you are
+Willing to handle such project and also let you know your entitlement for the solicited role
+I shall be expecting your quick reply.  ptrsvermeulen@gmail.com
 
-
-Sincerely,
-Nicholas Toms
+Best Regards
+Petrus 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
