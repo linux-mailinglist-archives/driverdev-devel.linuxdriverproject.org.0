@@ -2,44 +2,90 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17A40297E0E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 24 Oct 2020 21:05:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2642A297E64
+	for <lists+driverdev-devel@lfdr.de>; Sat, 24 Oct 2020 22:22:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0377886EB3;
-	Sat, 24 Oct 2020 19:05:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 42FB086BB1;
+	Sat, 24 Oct 2020 20:22:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4LOgRdodLrgr; Sat, 24 Oct 2020 19:05:54 +0000 (UTC)
+	with ESMTP id GyKf0KkLkhwK; Sat, 24 Oct 2020 20:22:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D0B4486D88;
-	Sat, 24 Oct 2020 19:05:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6CA43860FC;
+	Sat, 24 Oct 2020 20:22:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 168301BF369
- for <devel@linuxdriverproject.org>; Sat, 24 Oct 2020 19:05:51 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D614C1BF337
+ for <devel@linuxdriverproject.org>; Sat, 24 Oct 2020 20:22:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0F54086D88
- for <devel@linuxdriverproject.org>; Sat, 24 Oct 2020 19:05:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CD5F02045C
+ for <devel@linuxdriverproject.org>; Sat, 24 Oct 2020 20:22:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ja6_wK96KG_p for <devel@linuxdriverproject.org>;
- Sat, 24 Oct 2020 19:05:47 +0000 (UTC)
-X-Greylist: delayed 00:09:52 by SQLgrey-1.7.6
-Received: from mail.innovationalpublishers.com (unknown [115.124.127.125])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 00E4886D3C
- for <devel@linuxdriverproject.org>; Sat, 24 Oct 2020 19:05:46 +0000 (UTC)
-Received: from ([127.0.0.1]) with MailEnable ESMTPA;
- Sun, 25 Oct 2020 00:25:37 +0530
+ with ESMTP id VdN7ACmf34l8 for <devel@linuxdriverproject.org>;
+ Sat, 24 Oct 2020 20:22:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from wout1-smtp.messagingengine.com (wout1-smtp.messagingengine.com
+ [64.147.123.24])
+ by silver.osuosl.org (Postfix) with ESMTPS id DA411203AA
+ for <devel@driverdev.osuosl.org>; Sat, 24 Oct 2020 20:22:33 +0000 (UTC)
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id 3DD56B4F;
+ Sat, 24 Oct 2020 16:22:32 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Sat, 24 Oct 2020 16:22:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dottedmag.net;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=fm3; bh=RZ0r5y+RlgVeXNPBut1dC9muMR
+ +w/SiJbchRBb1L8DA=; b=MPlow2Z+cOnu1qp1pfXA39nIA+CqUdoVmFh6jbHc1l
+ W9MzMQVTOb///fiFrTmlyGNRZBlbwEGWV3/opgyIAZFwyMTuq7+Fdp/gIbgIisL6
+ 8yBT4ipBkC66gbaef7j3Nj0079pioOHT9EZEEfrvbRO6fb22zI7S7Bfehy0+0Pre
+ ul1Ug3ZnU2mYJMS6sozFYYiDMUFcfmJg5U3VLqsBqSUmv/GBsh41H756fdSAa/Wy
+ 0Xo3+qsa76s8E4dPdP6nlPDB60D8gHEd/wFNtQdER47ykXSGYvtcLrEj6IyOYw7O
+ 7Uxt8SQLcN4qWq2HVN8bu5a4vlf3iU3azGtOFIHY48gw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=RZ0r5y+RlgVeXNPBu
+ t1dC9muMR+w/SiJbchRBb1L8DA=; b=ThM9WwqOC7SoNG2u/GbXSNGLNnWqYPNSn
+ SfbWN4v0j2wBPf3gSYfJlbr4oIcu9TzL7OD8fxOtL/lHVb/ThUHBcb21pPuU+9GF
+ PZ8deCjWMN1WARkgNB/+rxwwWv+9LbMUAScyGkprQ6c1OLrrUZ7n7Ddnsi7P3fLV
+ lZSoBZzPCNTHAdqVl9ESCaLNWWk1r5C+s0w+mR4zeo+CUaV2U6K2Ms46tGGS0kLa
+ 2d2LSsk3RtmWOM5Mn25uKSGCzxgpbVTNooQtC+2ZUAG9tqnfRuCb4nRL2mQRqBur
+ SMsEGQFlsVSTqYxeCOBXCYCzjqpHg9MH001D0LXLwWcP6PFEq0wDw==
+X-ME-Sender: <xms:B42UX-TkRtV5FeTFov0bQMaTHsKWgbhHhMs4kngK3aoFOS6vQ_uiXg>
+ <xme:B42UXzxp-oKeR1NfM-XJvr87jLshP4HL7VA3eDr3dIQONA5Njb700D0D6lweVrYfS
+ 2cXBP99D2eRg1rUXA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrkedvgddugeelucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgggfestdekredtre
+ dttdenucfhrhhomhepofhishhhrgcuifhushgrrhhovhcuoeguohhtthgvughmrghgsegu
+ ohhtthgvughmrghgrdhnvghtqeenucggtffrrghtthgvrhhnpeehteegvdfhffelkefhud
+ ehtdfhgeekgfejgedtiefhfeekffeludduieevueelgfenucfkphepledvrddvhedurdef
+ gedrvddvkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpeguohhtthgvughmrghgseguohhtthgvughmrghgrdhnvght
+X-ME-Proxy: <xmx:B42UX70O28Eu36_QdheONNEskZ45Ih-dLE5JQNEpBL23dHXRoXzsqg>
+ <xmx:B42UX6CAohpt2cqtIk_B8Lgpc6vIC-jCd9W2yr6Rvt4v4xWqYDIhJg>
+ <xmx:B42UX3hIhObJI_NQsr2SHb68mG9d4DzF3GAqnpSkyHzd_vcP_3VTpg>
+ <xmx:B42UX3JmArhkzHtM9ChAPND76qZmvcCcjJEOfTTzCkn4ECLPQdWPxg>
+Received: from newton.malta.dottedmag.net (c34-228.i07-9.onvol.net
+ [92.251.34.228])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 4C7C7306467E;
+ Sat, 24 Oct 2020 16:22:31 -0400 (EDT)
+Received: by newton.malta.dottedmag.net (Postfix, from userid 501)
+ id C195842704AE; Sat, 24 Oct 2020 22:22:28 +0200 (CEST)
+From: Misha Gusarov <dottedmag@dottedmag.net>
+To: gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org
+Subject: [PATCH] staging: gdm724x: Clarify naming of packet_type<->tty index
+ symbols
+Date: Sat, 24 Oct 2020 22:22:21 +0200
+Message-Id: <20201024202221.60726-1-dottedmag@dottedmag.net>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: You watch porn alot....
-To: devel@linuxdriverproject.org
-From: "Frank Moss" <sales@adarshenterprise.com>
-Date: Sat, 24 Oct 2020 11:55:37 -0700
-Message-Id: <20201024190551.0F54086D88@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,44 +98,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ceo.president014@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Misha Gusarov <dottedmag@dottedmag.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SSB3aWxsIGJlIGRpcmVjdC4gWW91IHdhdGNoIGFkdWx0IGNvbnRlbnQgb2Z0ZW4sIGFuZCBJIGNh
-dWdodCB5b3UgbWFzdHVyYmF0aW5nLiBXZSBhbGwgZG8gaXQgZnJvbSB0aW1lIHRvIHRpbWUuIEhv
-dyBJIGRpZCB0aGlzPyBZb3VyIHJvdXRlciB3YXMgdnVsbmVyYWJsZS4gSSB3YXMgYWJsZSB0byBp
-bmplY3Qgc29tZSBjb2RlIGludG8gdGhlIGZpcm13YXJlLCBhbmQgZXZlcnkgZGV2aWNlIGNvbm5l
-Y3RlZCBvbiB0aGUgbmV0d29yaywgaW5jbHVkaW5nIHBob25lcywgd2FzIGNvbXByb21pc2VkLiBU
-aGVuIEkgc2V0IGV2ZXJ5IGRldmljZSBhdmFpbGFibGUgdG8gcmVjb3JkIHdpdGggdGhlIGNhbWVy
-YSBvbmx5IHdoZW4geW91IHdhdGNoIGFkdWx0IGNvbnRlbnQuIEkgYWxzbyBnb3QgeW91ciBjb250
-YWN0IGxpc3RzLCBwaG9uZSBudW1iZXJzLCBlbWFpbHMsIHNvY2lhbCBtZWRpYSBjb250YWN0cywg
-YW5kIGhlcmUgaXMgdGhlIGRlYWwuIElmIHlvdSBkb27igJl0IHBheSBtZSAkOTUwIHdvcnRoIGlu
-IEJpdGNvaW4sIEkgd2lsbCBzZW5kIHlvdXIgbWFzdHVyYmF0aW9uIHZpZGVvIGFuZCBzZWFyY2gg
-aGlzdG9yeSB0byBhbGwgeW91ciBjb250YWN0cyBhbmQgc29jaWFsIG1lZGlhLgoKQml0Y29pbiBB
-ZGRyZXNzOiAxOU52S29UWktRTktSamNTdExrN0FFd2RyYnh2eDY5SkxmCgpBbW91bnQ6IDAuMDcz
-IEJUQyAoQXBwcm94aW1hdGVseSkKCkNvcHkgdGhlIGFkZHJlc3MgcGVyZmVjdGx5IHdpdGggbm8g
-bWlzdGFrZXMuCgoKUXVpY2sgdGlwISBZb3UgY2FuIGJ1eSBCaXRjb2luIGZyb20gUGF4ZnVsLCBM
-b2NhbGJpdGNvaW4sIENvaW5iYXNlLCBMdW5vIG9yIENoYW5nZWxseS4gVXNlIGdvb2dsZSB0byBm
-aW5kIGl0LiBBbHNvLCBzZWFyY2ggZm9yIHdoYXQgaXMg4oCcTm8gRmFw4oCdIGFuZCByZWFkIGFi
-b3V0IHRoZSBiZW5lZml0cyBvZiBubyBQTU8uIFdhdGNoaW5nIGRpcnR5IHBvcm4gaXMgYSB3YXN0
-ZSBvZiB0aW1lLCBlbmVyZ3kgYW5kIG1pbmVyYWxzIGZyb20gdGhlIGJvZHkuIEkgaG9wZSB5b3Ug
-d2lsbCB0aGluayBhYm91dCB0aGlzIHZlcnkgc2VyaW91c2x5LgpJbiBjYXNlIHlvdSBhcmUgd29u
-ZGVyaW5nIHdoeSB5b3VyIGFudGktdmlydXNlcyB3ZXJlIG5vdCB0cmlnZ2VyZWQsIGl0cyBiZWNh
-dXNlIG15IGNvZGUgaXMgbm90IHNldCB0byBzdGVhbCBwYXNzd29yZHMsIFBJTiBjb2RlcyBhbmQg
-b3RoZXIgc2Vuc2l0aXZlIGRldGFpbHMuIFRoZSBvbmx5IGZ1bmN0aW9uIGlzIHRvIHJlY29yZCB3
-aXRoIHRoZSBjYW1lcmFzIChpbiBzaWxlbnQgbW9kZSkgYW5kIGdyYWIgdGhlIGNvbnRhY3RzLiBJ
-IGtub3cgeW91IGhhdmUgdGhhdCBhbW91bnQgb2YgbW9uZXkgdGhhdCBpcyByZXF1ZXN0ZWQuIFNv
-IGRvbuKAmXQgd29ycnkgYWJvdXQgeW91ciBwYXNzd29yZHMgYW5kIGJhbmsgYWNjb3VudHMuIApI
-b3dldmVyLCBmb3IgeW91ciBtZW50YWwgcGVhY2UsIGdvIGFoZWFkIGFuZCBjaGFuZ2UgdGhlbS4g
-CgpZb3UgaGF2ZSBvbmUgd2VlayAoNyBkYXlzKSB0byBzZW5kIHRoZSBwYXltZW50LiBXaGVuIGNv
-aW5zIGFyZSBzdWJtaXR0ZWQsIHRoZSB2aWRlbyB3aXRoIHlvdSBkb2luZ+KApi4oeW91IGtub3cg
-d2hhdCkgd2lsbCBiZSBkZXN0cm95ZWQgYW5kIHlvdSB3aWxsIG5ldmVyIGhlYXIgZnJvbSBtZS4K
-TmV4dCB0aW1lIHlvdSBjb3ZlciB5b3VyIGNhbWVyYXMsIHNvbWVib2R5IG1heSB3YXRjaCBpdCEg
-TGltaXQgeW91cnNlbGYgdG8gb25lIHRpbWUgcGVyIG1vbnRoIGlzIHlvdSBjYW7igJl0IGdvIGNv
-bXBsZXRlbHkgTm9GYXAuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+This driver was using "packet_type" for packet types and for
+the mapping of TTY indices to packet types.
+
+Fix the confusion by renaming the symbols.
+
+Fixes sparse warning:
+
+drivers/staging/gdm724x/gdm_mux.c:146:24: warning: symbol 'packet_type' shadows an earlier one
+
+Signed-off-by: Misha Gusarov <dottedmag@dottedmag.net>
+---
+ drivers/staging/gdm724x/gdm_mux.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
+index 0678f344fafb..9b12619671a1 100644
+--- a/drivers/staging/gdm724x/gdm_mux.c
++++ b/drivers/staging/gdm724x/gdm_mux.c
+@@ -16,7 +16,7 @@
+ 
+ #include "gdm_mux.h"
+ 
+-static u16 packet_type[TTY_MAX_COUNT] = {0xF011, 0xF010};
++static u16 packet_type_for_tty_index[TTY_MAX_COUNT] = {0xF011, 0xF010};
+ 
+ #define USB_DEVICE_CDC_DATA(vid, pid) \
+ 	.match_flags = \
+@@ -38,12 +38,12 @@ static const struct usb_device_id id_table[] = {
+ 
+ MODULE_DEVICE_TABLE(usb, id_table);
+ 
+-static int packet_type_to_index(u16 packetType)
++static int packet_type_to_tty_index(u16 packet_type)
+ {
+ 	int i;
+ 
+ 	for (i = 0; i < TTY_MAX_COUNT; i++) {
+-		if (packet_type[i] == packetType)
++		if (packet_type_for_tty_index[i] == packet_type)
+ 			return i;
+ 	}
+ 
+@@ -170,7 +170,7 @@ static int up_to_host(struct mux_rx *r)
+ 			break;
+ 		}
+ 
+-		index = packet_type_to_index(packet_type);
++		index = packet_type_to_tty_index(packet_type);
+ 		if (index < 0) {
+ 			pr_err("invalid index %d\n", index);
+ 			break;
+@@ -372,7 +372,7 @@ static int gdm_mux_send(void *priv_dev, void *data, int len, int tty_index,
+ 	mux_header->start_flag = __cpu_to_le32(START_FLAG);
+ 	mux_header->seq_num = __cpu_to_le32(seq_num++);
+ 	mux_header->payload_size = __cpu_to_le32((u32)len);
+-	mux_header->packet_type = __cpu_to_le16(packet_type[tty_index]);
++	mux_header->packet_type = __cpu_to_le16(packet_type_for_tty_index[tty_index]);
+ 
+ 	memcpy(t->buf + MUX_HEADER_SIZE, data, len);
+ 	memset(t->buf + MUX_HEADER_SIZE + len, 0,
+-- 
+2.28.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
