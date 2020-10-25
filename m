@@ -1,77 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65A162982F7
-	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Oct 2020 18:54:55 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53AEA298317
+	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Oct 2020 19:30:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E61438684D;
-	Sun, 25 Oct 2020 17:54:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6AAF421519;
+	Sun, 25 Oct 2020 18:30:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N0MTYDoFb6EY; Sun, 25 Oct 2020 17:54:52 +0000 (UTC)
+	with ESMTP id qowhDd4DHufq; Sun, 25 Oct 2020 18:30:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 74F9B86789;
-	Sun, 25 Oct 2020 17:54:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA22C20488;
+	Sun, 25 Oct 2020 18:30:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 00D0D1BF473
- for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 17:54:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DCB1D1BF42D
+ for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 18:30:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F182A860FF
- for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 17:54:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D95388719C
+ for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 18:30:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lCwAThEuZbmm for <devel@linuxdriverproject.org>;
- Sun, 25 Oct 2020 17:54:47 +0000 (UTC)
+ with ESMTP id dihfUj69PoZH for <devel@linuxdriverproject.org>;
+ Sun, 25 Oct 2020 18:30:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9080B860FD
- for <devel@driverdev.osuosl.org>; Sun, 25 Oct 2020 17:54:47 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id h6so8924707lfj.3
- for <devel@driverdev.osuosl.org>; Sun, 25 Oct 2020 10:54:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:user-agent:mime-version
- :content-transfer-encoding;
- bh=Ia5mKQW6kRwT+5DPNWXNNRRRvEqWXjifJg3gF7jPs7k=;
- b=CFwlA2uCYi47hpHH4+kCTfsEcqMtjBssTPqoHAwjH9KlhhUqzxrnogltTbexUHZlbG
- w0+CzgacqBrZG61q0bZNkaeUHWRGwXBueS7Fu7+/JH8UArjd359GrFUrv643OKH9d39D
- NPyRgXeAxl3J2tW6FTxPSPqAcqe8ad+WsgQ/hRxeZbtC9PmufgRxAiuuHSrZpI25zfZX
- ilgM8s1MZp7A7Sx5wxjdDWdpa5Ecrxs46c9I+Ac8+2GN2jucW7yL4LIlTlL0DFl1c3zp
- fThqnk48ajWZgNQMn/fmcnA61j2jBp+2xw20Hkdnl1vNcL/pn2NcaLLPUkjc53jx/Sdk
- mA/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
- :mime-version:content-transfer-encoding;
- bh=Ia5mKQW6kRwT+5DPNWXNNRRRvEqWXjifJg3gF7jPs7k=;
- b=QTcT0ia1iRofqxq4NtMFylHcc6zf7R/B1ji62AVYQJwHt+YDkyWHg/FGkd9N11pTr5
- eepRe/O1TPiVYOhRhvHTQQ3ppIZZFlloNE+/tstFJP/I4Mn9w3DkNYUByevTGctd245D
- 8xZWTsztTzFeecY5+qBwbmyg6hUjVPnq/hAQcQI1e0CqUg39SnyfNUbRgPiw8/SpMqyf
- wx9t5gugn2JEb39AErB6M267gDrYtRCzS8lJmvD046Ad+rouv3GIsMNkahbdpzBegpVN
- pzQrtiRxImYdPgK/BiOxg6qASWTZCTKgy+NmJ/dZO2cu6rURvBiBEhVcq0IsEbHoKMCd
- 06ng==
-X-Gm-Message-State: AOAM53343hVs6fcEgvRxxk2m0gFMDYSPR6ejcuo9VHD1gM9/j2D59vKv
- 5xMi5x+QTwh6UveuQNkUoBI=
-X-Google-Smtp-Source: ABdhPJwjKaFW00rHi2muGQJnbJwyezQZuDm54Vp0uz8bVb80iIEaN7phyG2BwjFy1It7AtfCF7J41w==
-X-Received: by 2002:a19:589:: with SMTP id 131mr3972541lff.229.1603648485573; 
- Sun, 25 Oct 2020 10:54:45 -0700 (PDT)
-Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru.
- [37.145.186.126])
- by smtp.gmail.com with ESMTPSA id t10sm208469lfc.258.2020.10.25.10.54.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Oct 2020 10:54:44 -0700 (PDT)
-Message-ID: <43e637becf35f98a952c38ee1a5b690798c62c75.camel@gmail.com>
-Subject: [PATCH v3] staging: rtl8192u: ieee80211: replace kmalloc/memset
- with kzalloc
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Date: Sun, 25 Oct 2020 10:54:31 -0700
-User-Agent: Evolution 3.36.4-0ubuntu1 
+Received: from mail3-relais-sop.national.inria.fr
+ (mail3-relais-sop.national.inria.fr [192.134.164.104])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 82BE58719A
+ for <devel@driverdev.osuosl.org>; Sun, 25 Oct 2020 18:30:21 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.77,416,1596492000"; d="scan'208";a="362719124"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+ by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Oct 2020 19:30:18 +0100
+Date: Sun, 25 Oct 2020 19:30:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Elena Afanasova <eafanasova@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: rtl8192u: ieee80211:
+ replace kmalloc/memset with kzalloc
+In-Reply-To: <43e637becf35f98a952c38ee1a5b690798c62c75.camel@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2010251929380.2714@hadrien>
+References: <43e637becf35f98a952c38ee1a5b690798c62c75.camel@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,49 +59,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace kmalloc + memset 0 by a call to kzalloc which zeroes memory too.
-Found with Coccinelle.
-
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
----
-Changes in v3:
-        - use array_size()
-Changes in v2:
-        - correct the subject line
-        - correct the commit message
-
- drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-index 63a561ab4a76..53ce97aae206 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-@@ -227,13 +227,10 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
- {
- 	struct ieee80211_txb *txb;
- 	int i;
--	txb = kmalloc(
--		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
--		gfp_mask);
-+	txb = kzalloc(sizeof(*txb) + array_size(sizeof(u8 *), nr_frags), gfp_mask);
- 	if (!txb)
- 		return NULL;
- 
--	memset(txb, 0, sizeof(struct ieee80211_txb));
- 	txb->nr_frags = nr_frags;
- 	txb->frag_size = __cpu_to_le16(txb_size);
- 
--- 
-2.25.1
 
 
+On Sun, 25 Oct 2020, Elena Afanasova wrote:
+
+> Replace kmalloc + memset 0 by a call to kzalloc which zeroes memory too.
+> Found with Coccinelle.
+>
+> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+> ---
+> Changes in v3:
+>         - use array_size()
+> Changes in v2:
+>         - correct the subject line
+>         - correct the commit message
+>
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> index 63a561ab4a76..53ce97aae206 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+> @@ -227,13 +227,10 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
+>  {
+>  	struct ieee80211_txb *txb;
+>  	int i;
+> -	txb = kmalloc(
+> -		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
+> -		gfp_mask);
+> +	txb = kzalloc(sizeof(*txb) + array_size(sizeof(u8 *), nr_frags), gfp_mask);
+
+There is no need to exceed 80 characters here.
+
+julia
+
+>  	if (!txb)
+>  		return NULL;
+>
+> -	memset(txb, 0, sizeof(struct ieee80211_txb));
+>  	txb->nr_frags = nr_frags;
+>  	txb->frag_size = __cpu_to_le16(txb_size);
+>
+> --
+> 2.25.1
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/43e637becf35f98a952c38ee1a5b690798c62c75.camel%40gmail.com.
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
