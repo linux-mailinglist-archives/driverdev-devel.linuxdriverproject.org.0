@@ -1,62 +1,193 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A52E2983AD
-	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Oct 2020 22:28:54 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EB3E2983C0
+	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Oct 2020 22:50:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C49F886911;
-	Sun, 25 Oct 2020 21:28:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 76CF02309D;
+	Sun, 25 Oct 2020 21:50:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pp4MCsWgmBI3; Sun, 25 Oct 2020 21:28:52 +0000 (UTC)
+	with ESMTP id 0S5dWylroI1l; Sun, 25 Oct 2020 21:50:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82B18867B9;
-	Sun, 25 Oct 2020 21:28:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9B73720344;
+	Sun, 25 Oct 2020 21:50:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 96F761BF392
- for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 21:28:49 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A64651BF36C
+ for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 21:50:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 93994871A5
- for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 21:28:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A1669868C0
+ for <devel@linuxdriverproject.org>; Sun, 25 Oct 2020 21:50:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3sLOAQc453uO for <devel@linuxdriverproject.org>;
- Sun, 25 Oct 2020 21:28:48 +0000 (UTC)
+ with ESMTP id 1um9_dWyr53M for <devel@linuxdriverproject.org>;
+ Sun, 25 Oct 2020 21:50:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 574C887123
- for <devel@driverdev.osuosl.org>; Sun, 25 Oct 2020 21:28:48 +0000 (UTC)
-IronPort-SDR: 55V7mbr6o6uh1unJVkt+FELUaEgT5+b1cRkDPrv9Lxwlrs5jdU3Uv55nq3CI921iHgdbUVSqeo
- ClXU/Dxsh6GQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9785"; a="229490546"
-X-IronPort-AV: E=Sophos;i="5.77,417,1596524400"; d="scan'208";a="229490546"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Oct 2020 14:28:46 -0700
-IronPort-SDR: D+PgTZ4w2M+68qosO9z1FY8poSXHOpCOK1A0zldidZWEzGmvcrqKLsn1NR7aiTfKKRL+AInqCq
- 4ILHTGzsL2tw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,417,1596524400"; d="scan'208";a="467698155"
-Received: from lkp-server01.sh.intel.com (HELO cda15bb6d7bd) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 25 Oct 2020 14:28:45 -0700
-Received: from kbuild by cda15bb6d7bd with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kWnZE-00013o-HY; Sun, 25 Oct 2020 21:28:44 +0000
-Date: Mon, 26 Oct 2020 05:28:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 119cf262a5235d9060c3f596c277c828533d18e6
-Message-ID: <5f95edfb.rfEZT+qq5RXgBsjN%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from sonic316-21.consmr.mail.ne1.yahoo.com
+ (sonic316-21.consmr.mail.ne1.yahoo.com [66.163.187.147])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 15563854E5
+ for <devel@driverdev.osuosl.org>; Sun, 25 Oct 2020 21:50:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1603662612; bh=W7fdacp3Ju6kB+CT9szC55syQTOMy2ZT5iUqksx3d5M=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=tURkTdv28bpVu4bpNtqiLHRSI1ErRLwOFdgYlfTLzE8UH8ZE622WvwVFF/TLUJSCEYcpymEi8UhEsoZ8scaXRMacLEsoRKX1PuxxlMePY4gcB4Cvl8H/Fp8RW+DjFe+FdVL6IvLh+y0nCPsendrwn1463FbFNi7WMhCQaLhrclsmN4LFIDBHjxpWBy4C/uk9g5aw8tup5t790GgI3x9JWG8lcG8i/EVSojc7toihdh2UT+D/6VQTBDmvBrTVRwRjaGKgmFXAxHA2kxhiExWHAbFejVov1P0hl0nRYDiDYaoOjPtOYhH9fFGmoPeyvZMZz8+W5+Dn165Enx8e/D8/3g==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1603662612; bh=Dva0VRVm1u4thA+kPGM/JafpelopJcYQQsFQADhv5x5=;
+ h=Date:From:Subject;
+ b=dKIW+CcdKHcMm07WM5Pj+sRagEsoaZQVVKTO+lY3x4GnypJSTq7/a7ymF9kpqxD608h1HMhU2NVWkNuyl7Ns18jFAWd+bwmc6dQTyWjXeiTNzyj7bbs3VJbudrC2lEOyP8JuwIqsZXjHRkOdtfWDk5iTX8id3khysdm4s0dDM6jxekVzgsjR/JJP3lXvnUceP3DTZcAuNtiQXN3zuxcbzbDsac8Y3yYA9PQX9++v7Hmlfh7YmhCGRdYwlL63hU60SeTaG5j2q658F4lJRJPnC8s8BiaF0/lJmpwYf9lirvvOcHU4rtMo5YbrEDCHaHyf9MNndN82158KWQeHEjEQdg==
+X-YMail-OSG: _oc7cH0VM1m9wQTPk1_Cu4g2ADVQbjXW_oP_NPZtaRTs5Kq9lE7HfRPWApy.HSd
+ T9.9TVBjmMEEBWQoYHCarEi9SXF8Su78oaL46usiktxMcFFZhkKicsfaJfl3ARoQDBYLxb.t.ALA
+ 3USx7VCfMrrOogZ9tNRCjEkMn6tg2mjvNhpFubuhRCNQuQsrHsq4a7x.n4Gxn4xzv9s.w3Bqo2Hf
+ o008ihaId8.3GYrnEkK1nU7u3AYbxjiclME9_Npy10EhzT8v4KPOOWSqX3sz2HiVr_eo_R8KgB0X
+ I5bYef6IGgH5bv7_a8Sw05akIYY_i1BjxGZl2un7KKsUxLV3lzXGpGZLAATz6aVTNIn3ZQo7LVeQ
+ jVYMMxMZM4TzRhKRI44TnrVPF8y.AUHAYkVYJheWxoM5FMOfqKArgQTfstRuWRyF3wdXmpo2Otlt
+ OFr2iX8rnhmgHJ7dUXkaVyDmYJAgmhoAUykmyYUMGdkqYnfXKtDLLTBnSMes8X8vEsQvKpjyILYu
+ T33IL3MmxFzUSG_sNfPRrWyopRX2si944EClEvJ2A_brGZidAeDQsdfXpFAgWKERk8Hcd2JqfOjk
+ tTPZ3PoF8u64BTTI9Imp4atyDFOBerhBb8xWQEjGf3dojyuIUVIB4j0rOeOLSzJRtEnfk9sffOw.
+ kZy_uP4lh4CKw5LNP4khUARunQ4mgxhzLE0o3fBXuyj48N4Ds_qiTCjL78eE9NPQB2qT9taEvr6F
+ 3L.frlA9Hb8l2yQyTsphW_0U020zbta2GiIsSw7DFh7RQCCsz_xpwnl1llg8mHYGpQYAJ62NQ2GP
+ ut4NhA8o.3RDFAYY3D.lC6g0AyDX84tR_l2rwMxKUEJEIxR4QMNMO79y5uSvstNxeAIac05sdLVI
+ 22si248j7LBUlwH2Odc7MT4712GH6HFAiFXFtT7YyWzC5ewGjLx.4GdscxPt6QWtnnPHAEs9wZcO
+ UP3G1xEU.zKRGvFLJCX_xm7IYpdVlsxZ..rwEhrdYE1e00y4NgRVDyP8fVsIuhmdUp5CkpmcFwqV
+ bpWBAwSOCK8TNOGg9gRBTh2rVAjQZcFXGmXkfHS4lMBA7OsEIsKavhqJFqyejqJb1T4wCDMJ1k1p
+ ZZex8L8PvZdVNm4LIWF5Eg5aU0phfMYvN6OWDe8BfNlqt1iZ.6q9XqQtXd.tXGAAIV51ySv4yvlJ
+ f56LneVJaTR_40hpoGVSrQVcPyiGP6hTcPpQKA71JcD4v0jnnZmhnr_ek3Afm2hBkOUClhHz8fgi
+ sxjS_mPyzWUSFZDIR6oQZcNvp1UpeJLw.kbYw.xuTrXhjf.jPDAJtRk7YGcf9HF2Pafwibo.sNlC
+ 4D9UUzdg4NQgMWmuMXQwnvuiBvcVJmPANDdAtQDuxKNPxSOSf82E3al4Rm2MyHfu7q1KlI0qdVfL
+ GPhk4yEyH7HRqrQ47OGwKeN5earqWc2SrD0qhs4_FK2Bic_3xn0E4Q50a1Hd.Mb_uKR6xmFPynpZ
+ cOXBgmSl2QRptViT3VXVCsLEp0a3RU50fX4UlXVuDmkPd1TuhvydLzWR3oBYLsQWFDfs_LnxH6IH
+ PAHQXFOlCdv1Dq535qyZt8X80vgrrT2uszbwDJReTQbk4v0KDUz93xdvWwlO_yjcWRXp0dGkvD0n
+ bWC45NkVD4NFkHRmVITpMKV5Pbo2bJxo2LqPGwCRtZqptUZ.qGY4VSWX9GQ9_qInwhywX0HIAkFi
+ OIKWxlikBtnjlEBCZ3G1o4CV16QlML5voY.Iv3ogzqsuNh78S9lyvmPS9W17x8LJRNbVR8HGIA.7
+ .a9JB55upJhQMU5Vy5lJb0dwUIV4ui.OoUS8Rre9fE6LElMCx.LjYckGwXYKleQ.o9WeVoNknULY
+ 5XkFK0KxzC64nv_ALmSBMFF7eAs3Aa5YBmpyHQGCo29M4tax1RKmV_30e86CIPUuT_9dVCKIMvJ5
+ kyJpfCa50c8ix2ZedDHU70feFaE_mvY_MPZYEMmissjL6j.58HWJtsbMj0rdtYdugYmISUzBXCQ4
+ Wq4ab49Ylgqrl0LgvNlxGdkHDQGWL_UQ7LBZz4LrSBkjEnLK5zcPi8bkUeQbHxgJ1FrmIetudcJZ
+ jbjtVxx.f6FYowS7.Q2ZXkSa7b0a7_j5wtR_efCuwEr.P34wMd97S2u9jdSwUXzO6Rnyuyv87uM0
+ 7gzYsmQCr2r15LthOkwL3thHTOqxkJyxEyMqd4.I2PKsJPf8udcQDqOWv0DTPcPDfp_mIVWPflIv
+ k7KZCpDT7HpQ6rphyYri6QU4r7R0W9XHBX88QcMoJ91YGioaTBmsumdnGaMnj033xgbEYhBfLu_O
+ 8kY1SW0aixeckG37hkcY6yhw4_Kv.08MZnu9Wbr3wKuT3O9F7AvoCQezeRT_nVNZ.XJbgkGJzTQ9
+ ZKYWShzOIVVEAqTt87oCkVJ_6D5bBZ4t7x0oNUIlo2IjpOr9Pg50TcIU5nSmQwzCo99xswnNxgik
+ xlfe._XcJ6y2PDkeNUN.qjw3EdgPqe9zBNGKbMu3d4G1FQM867u.gNakI4Z3jsJEVk89NGcjoRsc
+ tfxcAukYm6TpsxDQEzE_WttdeLhPGXg7AVzFLZf31z_ded9d9kWG4v8hZEeP4oZv6pCOH1olx6EX
+ DsMjTnRoWr5zSSz6Gc9ZtHfUIv13k8PeizR.BmFX2ZyYbVvVHve4UDCPRpMeaZameyP02Fr80tdT
+ M0jssi3KVIOO2Krg0spLioLyU2nj1X0Z_gBoIB2wR81RsaIzz1OzyhP7iQTuJQ.X71WH0pU..ZyW
+ UdaXMfk8ZMzSjNQ_waRIhWvg7poYGY.OP3fNvDsKjRH73S.b3jiLFKrTB6iWq_2UZJcvBCVqkCo4
+ YynrZNDO4z7XSzq16aNgk3UxC0.gf250VbIEp0b74mOfnWm4.NOiQscJPNyQ3gkgoRekAsrs32uX
+ 14oCHd7qVSPRER7leoYM7ZFgSpS4GWQNb.s3rB9aQra5nHA3lZkPawiSQP8XNgQR2jzomwTaBGQT
+ R7bnzj1MXcNTwYb88AVv2yZlGxsoTty0EryTvQbRLPKrADln1ttNxG9sH9kIinM6nVafoNtlQ8hl
+ CYF_Uhg5cM6yTxyurlgPm1ZsoSwxzJZ9sluaX.pixolVbdbA7dP_7yU3E20Ar9HY6y7PKWXRY_ip
+ IKZjUrAPY9FFf08W0tw.4JgJqYG_2YboeNcd91hdUfOgfaXZjuk9e_pIXAcM0Ccm7gr2USsu_IBM
+ 8JYJYfc2VYNcaFO2YJyVEXcVgBdgLCg.Wks619z.7zyQytw8ipWHjHjsGOXWkRaDK_bYThcIgrXI
+ RgZjYHjFGMRlc0Rc.OBmvo.ov0_bk2lTosgNxqEcGgGXmFQ_x.dCRptCZzG86erq3dQxHfjHmoHx
+ cFPlaSefk424RrU_AbhJlbN0MssREKAN7eqattKJxLWLjoyWGGrAPXtLprJwIrtNsXTzdZxpxh7K
+ 9rVub2PrjRKK2mQgQ.Fr8p2RwEKU2CXO1O5NL1XRU6FtunrxsuqgsiAHpWoNFUDTi0Oul46eU4m6
+ c9I53Kyin3uXi_hnXKFrVLOKjCq5zTc5xp2HuDlCLLF_Un.7Bsv_3ZIXOpy_YCygg7gYZ0P.eK5v
+ I5ZqV0NKmfLpnYScV_VGMtJeU5OVdAh1Ck7YkFdX5sVOOIXUCWdk1AQc4vjXN_rcLwo5QLwWSn1G
+ 2G6iszSelbneFWXgM_shXsHknau2QyooqKYHQ4HhNZ8j4hlSWhIQRw2I2X5ZkrbdPq.GOgVQCNl1
+ KLRZAecYZRT76VPzreTgU41A8.y52N4Kg7pookotvXoMaPbex2iFlPFkItuxIEGTnLICTzCiz8tQ
+ ySc1UCYZ1k6P2eEqyIggXZXnPdoMXy4XQrzGuPm421exGtm51iKAScoJUjQjxEJQaQFx_wZvDnhN
+ zgcTOWOEuflGzHshy9TjoabcdIwUyIc5O2BBqzZtIcLL8Scp8isdN07QF.zChQGG74ZsfVIweIU_
+ Ejp0TIJTthiMAYt6pH66782ulgUVrCNlKscjcR0bW4qR9Dy5yJqooDizwh_0XDBPyP8qqBUSR2Ft
+ xCBLrAYIkFRx7K1HatvCNcpEuwFZWwncWU.eRM_oH5jd.ChmAz2XYX.3XLtGS7YRK5HQ67iEDz1e
+ ayEz5gOQ2c0lwDAo9rKgn7iJT0o_6i7WhMZAcn2Lwya9wKbQdcdnaMKRq.8fQxVvX.PBt9.jZkWK
+ OJ2xKTjoUraa39UQwjCeWfcRpDa3cBEABIg5PfYqobJqa9_FojPDrKmScxUvntsYRXNQDM5Flcpc
+ ftwYoT9kPNvJ2258jdgsw4CnWJhGYAZ.Rg8zlE8p3vMdMb943ofTIKVW9cnLG2COJpJA1AgTSd9E
+ oiZMZqX3InDQg.m_fbYYMHqBlVfn1vugHZVhO140sbrLmY6cFESib_6F02P4BKoNktNrdf2eDB95
+ T1Puf2EgZOQiKEPFvj0yMON3Zt_mV18hWTXhVcj_AEBvazjMBfq4Drq5nMfZ8OwYqXkGwwQAUuYk
+ tLpdmtht1I1u_E6rZ3QU7RI018jtGP4JmJU6dU4.FVFI6uFcCvNTrtmNixtBKXifiq12hhqMF3BD
+ QMoTaPP52pvSiv4SpICtkopIroBBJJNcP_KH7z5DeyLTesQ8.hyx9mJUIk8xdvpOrNMBVKnBGx.J
+ 8T_WVmtGhHKQgv3ESmUEac9A4g3Me1CfhoDETlMIE.CG7o6Gu9kU9AbhkO_nzBASTVbUsNwI_ZdS
+ O6SphMbTuONRTur3plZnhT0KwbmB6sXyaAudlHvSYt0a_LKIOcL15yN2Ee_zDqSYjjITvDOQAbXZ
+ nOXVU1uztVnV4r.2x3nOak2yAvpB9hkFFiPRs5I16tOM8GFbjyTl2GwT4RLuj5QzHyS9EJ_QZF8O
+ ZcEen.CpOPZ_6wJktwyQ6mJdORaO2Bb58J2Hnbdve.9T7zwKkrR8UTTuoRL2QxYcgRtn7tf0lBt_
+ 2ebPhmlAEg7WtRURbItJLU5MX690V0bZjNRleuCqmOGjzKehNX5MLNFfn.FSdXZqqsqtDzI5ckUw
+ GyfmTOkx8nMZH5gC7oFgiPZnd.xNe_r9GGDXbe0ICc9yP5hS1OC5Dbxar_RwihafjY8jnQ3vSoWP
+ HWnhyRYyqngpA8xob53l4m7i66LwoNeWQ87u7.bxtENL_kjbsxjYGTMUa0tDtdu8Zle_9vtJV_GV
+ WmjGeEoRsF7Wb3QwvlJU23x6BLdQLO1dzwhhy6yriqh3OeROjkRLAJMU1DK7PucwXizjlD4MJGTZ
+ pj4V7jRyqWvP2czKBELZlxDdZVF4lNCn80Dgr5w1ySyWOJ90KtaVx7OR3h8I3cc0_hW25UdJsylV
+ .LDYwrDHQh5xCMOkvLKtkQRfvQdYlz3vBLigsIwnVyJ4iltqsr3_KvnSsstXGTTRHUrbAw0bOhxR
+ Tm5h_OWEP3aBP0fM.rMbzYl5tz2Kf_47unD_28nAqyecGre7QlbNT6KVt3RQRROu7TFYMZ4HrNpi
+ EepwHhrNL5rXspOPAqKc7jjcwopZKZ2zlMmjPDJoAjyE8auG5twZ1Odb6Aa1PZzjZJsfIEOMQ9bg
+ oWbA1VpOJ5O10gwDgmhjBjGBSg4WbgkLL5ujqIqKKmXkEdmHzrX0uV6Jw5gMcmQcPbBdan4LhOaW
+ 7X7dwhsvKxp7aGh1FNTy_ucMZrsWnZWfYfyRZa8rNrf1CeQPI0zALIVn_za.CAwbY_BG8oO_2diY
+ ULRqBiOh.DYdSEoxPI85sxGMJtb6wllugvFw9TuWbliW0jpYhm2pOIodCeDP4jzqHOCCMzQVLDh8
+ 1W5fwbP0hge.dJ7TkRZhcnLpEmORmw3xiNYtd.OkRF0cebHJfDzdFUeYa7APSuy8c_U9yorbMcsE
+ 4D86YhD9._kTVwxglB5T15nHl.ApXddNUAnrhIyd1ZAhgaLIdFj1Ceety_AksLs_e5wJgvmd7Mrw
+ JE0SfjvfpMKlJSNYE66D_bEfXMbg7s1Y4inO_3nXSrJMBEo9Io904eF0W3m2fqv7Nkynygdft.fs
+ wN72pMG_zDhTPslcvivOKQhzenZmTXFAb2obMAwmtza06MbDN_wwiPhq2FSd4OICQC0CVu8twW6o
+ JDDNXKUMxBlIvak_ijsst25Rcn5CQLvwp9YBqqhQy1E1RUHxdFZ4AZSclcDZ62N0Lir.VSknKOfZ
+ X3hC0KwsXqquPn5t6pCYBkbbI42fGJCxmlklMN1TfOf78fJi0mk3Y_uvGL84ZE_G.shEJ_Ghm2ZF
+ qpwn52Ww_wN9e0AEQ6oDikbVGQGYWJvZvWc1V_aqae0OdBAKl5.0RuMLaPggYRcLQXghLpRZl.sF
+ SNFL.jyIL7axukoBxXHfsuKWWK4u5GUKVYac1Hui5Qz9SapLcsFl6dXvTH0Ej.5tx9hs468r4km_
+ tJCoRt2ysYWB6eCbBYSemZenYaWP8lfDdVMw7.BWumtip5YYKFycXofnnxd33TUMmDdpqvop6LPM
+ yoQeH8OTQM7sJYufES.ikSlIVemKlA8uUAtaRnZei7FbzO2bQYIB1YOE5RazXXZJ7_O73rNZMPQ6
+ V0NfTNIK5mnqeiVfAtI.erKP7ZnwX.69h6RJRRurSCW.DyUW.BHlxLX1YeoO_iSTW4r82wNSCruA
+ AA4uRndLvQu9hI3o8kV7DlBvQaMYfnN5pmPZaWpZFETFF3eEzzAD1ZSGsLNdY0lqNk9u1UApTu.x
+ 0XiG_81wMK1dPBLZ71VZx7mb5Iz92wRUuM0wnw8gZGQ2FshrXYp_.De29i_Gt67dDSz_Zd3neu6O
+ gkIVuhabyxHPNbDguJTC0RdQ3KeaOi0JDMh6KkHyRskv1xwIAlxSdLUxlxun3Tx6bUl8kmBlkabR
+ K9eGagjj.WTKukZb.8c7AAjhZOtYoZentVafjgMtJFLTqBmZ5Qnje3Q.kA5dUZQog8SO_kD5q2kW
+ iYSVVoik2mxl2zc.IT2mbYucAdqUGsgtzrHzqvdY2pmyo29u.ej4a8aFkI9w1d7oiYvU.ftudKYV
+ cC3HvLGNM2ttsPVYCfbI0JacvLIFGwjDovZH5vadDSEeU_nag2KNA6hpe5HdJzP47BG9AGD6try0
+ U2ljJw1IpVkzlQufPnXhwyvJ0RL2ZVvVYV9Nv5vx.jKuSH6hILgn8UXAgdU6ku.WlT9cMkea2rYe
+ 7.IQA63r82hyFDlmMAom0o2ceIh_5YgJJzjlphmGpEwNbAIOL5HVWv6rfSD2Bl3hkz0fkqaJ32Of
+ w2qQoNWaZS16dKHpCVa4VTWszXig_EqykLx9LlaSKajFOkyGck36vcUeVLcUELVmE9TJau3.YN7S
+ nlWt89gK2VWDWWF2CBHP5AR8.ggF82esjE9XKwdVYM8mU7gdv1wMPYtTHMwu1FXueJFMJlqIq23E
+ mnvyrPmlBWRGYmMuGq_obD4W5Cj68.ocdsZuIujt8C8J7dXhLhdD53DCd20wxpFZYoXaMkKLt4mF
+ a8zxAQOjm2Hbx.bhPIYFavbJlAG4FDawHrIUbrM_xaGFumpTUm5A743D3iXjzvoER7Tx45IIaRbm
+ ICDIgiIgNMhkBju3wu3gW1lHlWSUAWntBLQ46gYGy6Ss4hg2gV0aDhnfokzbOdKGeXhn4bYBhOtx
+ Q7jhxA5HHgTOLWh8oF18urqymWgvz9oO8luX8d_ub.aztu6fJeU.OjqcV7yHqEoXnzZCL2sQ_Ran
+ YLe117FMA5VU9MGKr.kK8o5p0TSYxOFYtk8aY.CIc_5EUtHLB3iYhJp_50D1VwxmElJOeSp1__4v
+ y_zXcn2jRXar2ENylWNbcyH0ck9iVLxola24Ht.m2fbHw8J6R2NDCFlqocFp7_2THZYZBq4hip2F
+ _BOyGABQV3U0g5AOYNC4hggIgxVw5FnCVnoqVsGZEt3dXlc4Qns13S5gKatB6FKP87rWp6fusaOx
+ B6LcLf7LnBvCK1mZbdG6aEeXZeTmfTi2WfYx9G_fwgfRvAVZyQG_CmwmvrJmrLfySPoTCI2BieZc
+ d0uSsyJHQ0aCG5Udm_5N3c4yy_Ku54PcbsD.oTnYhskDPqs_wKQ7kp5ekJEcbHU1xUEsXwchNu4f
+ Ky9aJMr1Q5vxVO.8vIa7_di3geNiA3hvSal5DuoIPpNt0eD9TzCA46267cdE6xThCRjbahyQu.Jx
+ r9b26c.zzZ6KvnZlUMNgusXzX2gDI_JYh0cZvpJ1obm5T.bB74s1AXuvAcAUTr.TPgTHY9eVG66B
+ 5UwLbn2NubphpG2KMBVVHkrvAhN54tYnVoeP_ASPsegLOBHErzmh7kyNosvBzPPRiXzhwVQ1NoD1
+ 9l2wG3OF.sZFButOXiS2m2FsOE74H9sMx2rGAJdUh9oIO8CMxw3gRfjukAtobUJm1wR36E1WMmEt
+ vGvybz750ypGlABQhTdSBz70gnBDYyPMZxFK5_lTmAjAawasHAlaP7K4YFc08BZifxWT_LT8B5on
+ BAyQbrQg980uuW0hpla4zYBqHwqmMo1ZqQ4y.Co81yxJKOCn2N4ML2j1V5XZ2ObekugOzcC_BuWW
+ Fxhn3MgibIvJXHa0kZWUtER5OxGHcVm_FL3ygXPu4j_FS0slVcB098wVoawnGNVjq7O3Wok5JES8
+ ftMVJ_mU3Hjkvq8pDUrhZ6ZznTO.Uy3z1aJzT4LDV791j1.lZB2EXDPAAYev9oIfKJnLFe9h0INC
+ BUPKnl7H5LF9W2BoW82NJZnaVKECnRPLAnTGdF3QhTetaACqwuD6_vtyXUfJQg.3WxVzDeAOUsKy
+ _lj0ctWMHxJ3kfuKdtJA2qVlWP_ZcNHQz2VCDwascjFlAStbz__0SiyT39KnWdsVXbdkIVUlKQl4
+ vS2Rretk65flyXMjACNJGTk27PTp6nLG.8LUKGor6GHuGhjsDBQ16.___LMYx.47UPpL48fyrG33
+ yJ0y9YAR3d0.22Yotwg1Mfpj1UrvetOIV83Jg_AtapBns0qm8TSrNGIfAaVT3H2WHVxwDcWn6f3x
+ ldjKIeiiyIXHUZVf8SH0n7PYT6_.TnTDL_2ceA8FE_Rc0dNW7smpcVp5umUXZgcmwkXeA1gXaCaj
+ RF5xOzSZsGsLp1pTXK2OsnzWf9mLERWVAQXVXm77eC.Be5WPhlCyBNGn9RrKHrIt0FKsFTtWDabn
+ hkB.aneoboilAlvJQtQ7m9h9aJS2pNw7AsxCokS8ZkeGf54EWLmqx__2a2b0YLJsX.LjPcqX7Sw.
+ jTynDc90rnV0hBII0NBiws4bGAub_KUk9VpjdC0D0tpUcxPuspQIGNQjgn94MiXHd.Llc8ZAlqym
+ RCPMnF5CocP03.bkRClAqbhqRT5m8GtHnlt7kq7C9usH2M2bT9PKJjwI0JCH2cNA1Enr6KQfLbTI
+ f8qFQmb76tIv24ZLrtQ0aftO064VGIlTeicfW_HNPlQGNNmOXC1XnPLww3mbQocrjZrdAFB95FHt
+ mgr54iBXKzmCxcOhWN8lcUf6YU699J3E2Dj3sPbkuUs1olR7grXJ.ncwUJlTe0UtdUbRsh3SOyyR
+ uE0RtYyWLx.vtN5wLKMhcQoQYpyVcBwuPIUBCFCteDOwZ0AwKBzhs5gOB9c2u.jMsdnbPmZMxucd
+ cNC.AfA7dceB7yeu.TUwyeJlaYHqTuS0HxT5utpTOo_zsNe4_PqNKH.FXghJ_k0jJY.OXuPYqk24
+ 6cY_wbVyCSHCRYCO.pmK0LIuAE8d5glCn8ZC0EJw9sxhbg2g9VGLVQcRNUTn.WJI5GSF4g9naC14
+ cTEoVz7Tn5UQpmCFFiovTMIbHJgC6W6UB0O7_scszyVHevIr6iSjiZ1XX0m2rX41hsadMDmWcjML
+ ca9mcNsPKzVfyOdRbVY_J4PemIdBIZJXojnjBLAQRV7LrC_PzxvlpFIoZpccMNsdaohgHtHc0Ukn
+ 1xb2vJMwArlTTQyvpFQnGXHMJtfKQsKzSbT9yybzRkAgdmosDgKYvwZsQBX4iOskUzaJruJKJULY
+ a0EslZuIbGcORJSkLe8bxYVMOtBpurQAxTLiRvTA0oJsQwFACBjn.b8jR.tGiqetohXU8P.Sw4M1
+ 8bMhmy2vMMWWsyHko8kEa4jgXVt8OF6ImOT6eakudWRBHDWdbZCHredK54WwcmMk7RFWdUjMdy7Y
+ UITR4KkWtj2YMiAmhrmb7UTYDNp0VJe4DauBSHRPlBE_vUtFbgghBSbrURiYxv0oY2NE.V7H62aD
+ M_oLymnVAsbvJGb7MejKPzWvTaM2XSyHcGBmjHQeIS8vAXeMFYKjda8Por36cGS99v8hCj6OAheR
+ MwM4O4x_Epzgk2FQW7DvxeABBuk.ktkDsj6X_A.OFKBtlLKXWSNSQm_fhcMNmpAKa_xKXGO4U52y
+ ybPqqwAno9HJDdMFfYgpVnfKBd.GEtx.S0Gzw0ZpIZYQiu.I7yWUqtww-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic316.consmr.mail.ne1.yahoo.com with HTTP; Sun, 25 Oct 2020 21:50:12 +0000
+Date: Sun, 25 Oct 2020 21:50:07 +0000 (UTC)
+From: Mohamed Aziz <jhgdfpoowea1@yahoo.com>
+Message-ID: <1260537896.3200459.1603662607007@mail.yahoo.com>
+Subject: Greetings,
 MIME-Version: 1.0
+References: <1260537896.3200459.1603662607007.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16868 YMailNodin Mozilla/5.0 (Windows NT 6.1;
+ rv:47.0) Gecko/20100101 Firefox/47.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,126 +200,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mrmohamedaziz494@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 119cf262a5235d9060c3f596c277c828533d18e6  staging: r8188eu: inline rtw_init_netdev_name()
-
-elapsed time: 722m
-
-configs tested: 95
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                 mpc834x_itx_defconfig
-arc                         haps_hs_defconfig
-sh                            titan_defconfig
-sparc64                             defconfig
-arm                       spear13xx_defconfig
-sh                          sdk7780_defconfig
-mips                        maltaup_defconfig
-mips                        jmr3927_defconfig
-s390                             alldefconfig
-arm                        multi_v7_defconfig
-arm                         shannon_defconfig
-parisc                           alldefconfig
-arc                      axs103_smp_defconfig
-c6x                                 defconfig
-mips                          ath25_defconfig
-powerpc                      pasemi_defconfig
-m68k                            q40_defconfig
-arm                      tct_hammer_defconfig
-c6x                         dsk6455_defconfig
-arm                         vf610m4_defconfig
-sh                           sh2007_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a001-20201025
-x86_64               randconfig-a003-20201025
-x86_64               randconfig-a002-20201025
-x86_64               randconfig-a006-20201025
-x86_64               randconfig-a005-20201025
-x86_64               randconfig-a004-20201025
-i386                 randconfig-a002-20201025
-i386                 randconfig-a003-20201025
-i386                 randconfig-a005-20201025
-i386                 randconfig-a001-20201025
-i386                 randconfig-a006-20201025
-i386                 randconfig-a004-20201025
-i386                 randconfig-a016-20201025
-i386                 randconfig-a015-20201025
-i386                 randconfig-a014-20201025
-i386                 randconfig-a013-20201025
-i386                 randconfig-a012-20201025
-i386                 randconfig-a011-20201025
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a011-20201025
-x86_64               randconfig-a013-20201025
-x86_64               randconfig-a016-20201025
-x86_64               randconfig-a015-20201025
-x86_64               randconfig-a012-20201025
-x86_64               randconfig-a014-20201025
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgpHcmVldGluZ3MsCgpQbGVhc2UgYWNjZXB0IG15IGFwb2xvZ3kgZm9yIHNlbmRpbmcgeW91IHRo
+aXMgbGV0dGVyIHdpdGhvdXQgbXV0dWFsIGNvbnNlbnQuIEJ1dCB0aGUgdXJnZW5jeSBsZWQgdG8g
+dGhpcyBtZXNzYWdlIHRvIHlvdSwgYW5kIEkgd2lsbCBhcHByZWNpYXRlIHlvdXIgbm9kZSBvbiB0
+aGlzIGJ1c2luZXNzIGRlYWwgd2hpY2ggd2lsbCBiZSBvZiBhIGdyZWF0IG9wcG9ydHVuaXR5IGZv
+ciB1cyB0byBzaGFyZSBvdXIgY29tcGFueeKAmXMgaWRlYXMgYW5kIHN0cmF0ZWdpZXMgdG8gYnVp
+bGQgdXAgdGhpcyBidXNpbmVzcyByZWxhdGlvbnNoaXAuCgpNeSBuYW1lIGlzIE1yLiBNb2hhbWVk
+IEF6aXouIEkgYW0gd29ya2luZyB3aXRoIG9uZSBvZiB0aGUgcHJpbWUgYmFua3MgaGVyZSBpbiBC
+dXJraW5hIEZhc28uIEhlcmUgaW4gdGhpcyBiYW5rIGV4aXN0ZWQgYSBkb3JtYW50IGFjY291bnQg
+Zm9yIG1hbnkgeWVhcnMsIHdoaWNoIGJlbG9uZyB0byBvbmUgb2Ygb3VyIGxhdGUgZm9yZWlnbiBj
+dXN0b21lciBNci4gTW9pc2VzIFNhYmEgTWFzcmkgZnJvbSBNZXhpY28uCgpZb3UgY2FuIGdldCBt
+b3JlIGluZm9ybWF0aW9uJ3MgYXMgcmVnYXJkcyB0byB0aGlzIG9uIGJlbG93IHdlYnNpdGU6IGh0
+dHA6Ly93d3cueW5ldG5ld3MuY29tL2FydGljbGVzLzAsNzM0MCxMLTM4MzI1NTYsMDAuaHRtbAoK
+V2hlbiBJIGRpc2NvdmVyZWQgdGhhdCB0aGVyZSBoYWQgYmVlbiBuZWl0aGVyIGRlcG9zaXRzIG5v
+ciB3aXRoZHJhd2FscyBmcm9tIHRoaXMgYWNjb3VudCBmb3IgdGhpcyBsb25nIHBlcmlvZCwgSSBk
+ZWNpZGVkIHRvIGNhcnJ5IG91dCBhIHN5c3RlbSBpbnZlc3RpZ2F0aW9uIGFuZCBkaXNjb3ZlcmVk
+IHRoYXQgbm9uZSBvZiB0aGUgZmFtaWx5IG1lbWJlciBvciByZWxhdGlvbnMgb2YgdGhlIGxhdGUg
+cGVyc29uIGFyZSBhd2FyZSBvZiB0aGlzIGFjY291bnQsIHdoaWNoIG1lYW5zIG5vYm9keSB3aWxs
+IGNvbWUgdG8gdGFrZSBpdC4KClRoZSBhbW91bnQgaW4gdGhpcyBhY2NvdW50IHN0YW5kcyBhdCAk
+MTgsMzAwLCAwMDAuMDAgKEVpZ2h0ZWVuIE1pbGxpb24gVGhyZWUgSHVuZHJlZCBUaG91c2FuZCBV
+U0EgRG9sbGFycykuIEkgd2FudCBhIGZvcmVpZ24gYWNjb3VudCB3aGVyZSB0aGUgYmFuayB3aWxs
+IHRyYW5zZmVyIHRoaXMgZnVuZCwgSSB3aWxsIGZyb250IHlvdSBpbiB0aGUgYmFuayBhcyB0aGUg
+TmV4dCBvZiBLaW4gdG8gdGhlIGxhdGUgY3VzdG9tZXIgYW5kIGJhY2sgeW91IHVwIHdpdGggcmVs
+ZXZhbnQgaW5mb3JtYXRpb24uCgpXaGF0IHRoZSBiYW5rIG5lZWQgaXMgcHJvb2YgYW5kIGluZm9y
+bWF0aW9uIGFib3V0IHRoZSBsYXRlIGN1c3RvbWVyIHdoaWNoIEkgd2lsbCBhc3Npc3QgeW91IG9u
+LiBoaXMgaXMgYSBnZW51aW5lLCByaXNrIGZyZWUgYW5kIGxlZ2FsIGJ1c2luZXNzIHRyYW5zYWN0
+aW9uLCBBbGwgZGV0YWlscyBzaGFsbCBiZSBzZW50IHRvIHlvdSBvbmNlIEkgaGVhciBmcm9tIHlv
+dS4KClRoZSBpbmZvcm1hdGlvbiBhcyBjb250YWluZWQgaGVyZWluIGJlIGFjY29yZGVkIHRoZSBu
+ZWNlc3NhcnkgYXR0ZW50aW9uLCB1cmdlbmN5IGFzIHdlbGwgYXMgdGhlIHNlY3JlY3kgaXQgZGVz
+ZXJ2ZXMuCgpJZiB5b3UgYXJlIHJlYWxseSBzdXJlIG9mIHlvdXIgaW50ZWdyaXR5LCB0cnVzdHdv
+cnRoeSBhbmQgY29uZmlkZW50aWFsaXR5IHJlcGx5IGJhY2sgdG8gbWUgdXJnZW50bHkuCgpCZXN0
+IHJlZ2FyZHMsCk1yLiBNb2hhbWVkIEF6aXoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
