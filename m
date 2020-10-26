@@ -1,91 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28D66298924
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Oct 2020 10:09:03 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 34B1886665;
-	Mon, 26 Oct 2020 09:09:01 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DK-s9RUoz26x; Mon, 26 Oct 2020 09:09:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A92FD865C7;
-	Mon, 26 Oct 2020 09:08:59 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8BA901BF42C
- for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 09:08:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A6D129899C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Oct 2020 10:45:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 819F22DE3B
- for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 09:08:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 68C8B2E0F5;
+	Mon, 26 Oct 2020 09:45:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RFSsgLXNMQUR; Mon, 26 Oct 2020 09:45:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id D142D2E0EB;
+	Mon, 26 Oct 2020 09:45:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0EE801BF48B
+ for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 09:45:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0B92E86135
+ for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 09:45:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zJ0OEVqZ0vOB for <devel@linuxdriverproject.org>;
- Mon, 26 Oct 2020 09:08:57 +0000 (UTC)
+ with ESMTP id QUUQxoAYmf8Q for <devel@linuxdriverproject.org>;
+ Mon, 26 Oct 2020 09:45:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by silver.osuosl.org (Postfix) with ESMTPS id B17A82DE2A
- for <devel@driverdev.osuosl.org>; Mon, 26 Oct 2020 09:08:57 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09Q957fx128948;
- Mon, 26 Oct 2020 09:08:55 GMT
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 88F3F860DE
+ for <devel@driverdev.osuosl.org>; Mon, 26 Oct 2020 09:45:42 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09Q9SQe3023049;
+ Mon, 26 Oct 2020 09:45:42 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2020-01-29;
- bh=V0XBhr62d3yB2ow/8epJVq6sJrShVQFJ62CzoC49SpE=;
- b=F7k9I/keCOQ8zHB1oCV2Ao2nvmx5s97QwfpdSfeUzWpPwP84OmS528yTCHc5OwCjcdD+
- osl1mr+RA88MacFbX6uAIp0Ue9um6tqwqjl+zp0ApGrgudauF3+R43oBugIuC2Cai8vP
- q5J8nfH/6OFCta0zIntMyVc/+hueCdlvYTVUtBblKY7+Uou5RUINlDQj5b3dfwQdboow
- ZRkZheu14MBbQF35ndo7UgUqOBoOvXN9/p6+O2YP3TzP4zE743SeOz0aubvwYpuxG4vu
- E8zcVPt2e4Ea+zIECB4BymKnba+YDfqnYEe9D8oyJnufRZSsrwO2n0wtoWcdmujP1ftZ lg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2130.oracle.com with ESMTP id 34c9sakt8g-1
+ bh=uqhrAdg3TfmevqiVljqGouwdkFT25FCvvNohZL1rOVU=;
+ b=V2N+/FzKrkMVsGNKfi49L6L0b6p8fc/w9VfnIOU63WO1qTzZQ7iQvpNhq9x9xOmv5LeQ
+ eT2XXmFlmub//oQ0g+2plryU12hCGtTIGFMVyoWbBGvrgo/fznMvADg3yJ99nqo2PBQl
+ RL7VZX4adNzry4htFbWEofT4uVMPzzfVa7VQZVV3C1TLIC0U+OD2Gf1Csjxw1AjYV0I1
+ OMSKiNbgOgp915qcZjR1S9+COtTQ8pP4ZHxgylqJkeyYjx2BB4V559h1LBoNTZOEJG8x
+ Irlk2C1eO+gloJPTsU3IVfUu3YPEEDCA4W25/ULZJDIXBDLmYkf+sDNeDO4uDEfGSDnK Vw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 34dgm3sd0y-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 26 Oct 2020 09:08:54 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09Q95t9x069871;
- Mon, 26 Oct 2020 09:08:54 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 34cx5vspsm-1
+ Mon, 26 Oct 2020 09:45:41 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09Q9VEgD083368;
+ Mon, 26 Oct 2020 09:43:41 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 34cx6um208-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 26 Oct 2020 09:08:54 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09Q98rWR009374;
- Mon, 26 Oct 2020 09:08:53 GMT
+ Mon, 26 Oct 2020 09:43:41 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09Q9hdGp003086;
+ Mon, 26 Oct 2020 09:43:40 GMT
 Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 26 Oct 2020 02:08:52 -0700
-Date: Mon, 26 Oct 2020 12:08:46 +0300
+ with ESMTP ; Mon, 26 Oct 2020 02:43:38 -0700
+Date: Mon, 26 Oct 2020 12:43:33 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Elena Afanasova <eafanasova@gmail.com>
-Subject: Re: [PATCH v2] staging: rtl8192u: ieee80211: replace kmalloc/memset
+Subject: Re: [PATCH v3] staging: rtl8192u: ieee80211: replace kmalloc/memset
  with kzalloc
-Message-ID: <20201026090846.GE1042@kadam>
-References: <b0d792de290fd492ac77cfa574150d67d3b6276c.camel@gmail.com>
+Message-ID: <20201026094333.GJ1042@kadam>
+References: <43e637becf35f98a952c38ee1a5b690798c62c75.camel@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <b0d792de290fd492ac77cfa574150d67d3b6276c.camel@gmail.com>
+In-Reply-To: <43e637becf35f98a952c38ee1a5b690798c62c75.camel@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9785
  signatures=668682
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxscore=0 mlxlogscore=999
- suspectscore=0 bulkscore=0 malwarescore=0 spamscore=0 phishscore=0
+ phishscore=0 spamscore=0
+ bulkscore=0 malwarescore=0 mlxlogscore=747 mlxscore=0 suspectscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010260066
+ definitions=main-2010260068
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9785
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- impostorscore=0
- mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 spamscore=0 phishscore=0 clxscore=1011 suspectscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010260066
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 impostorscore=0
+ adultscore=0 bulkscore=0 spamscore=0 phishscore=0 mlxlogscore=764
+ suspectscore=0 clxscore=1015 mlxscore=0 malwarescore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2010260068
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,40 +105,22 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Oct 23, 2020 at 11:47:05AM -0700, Elena Afanasova wrote:
+On Sun, Oct 25, 2020 at 10:54:31AM -0700, Elena Afanasova wrote:
 > Replace kmalloc + memset 0 by a call to kzalloc which zeroes memory too.
 > Found with Coccinelle.
 > 
 > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 > ---
-> Changes in v2:
-> 	- correct the subject line
-> 	- correct the commit message
-> 
->  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> index 63a561ab4a76..fb8483c499b3 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> @@ -227,13 +227,10 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
->  {
->  	struct ieee80211_txb *txb;
->  	int i;
-> -	txb = kmalloc(
-> -		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
-> -		gfp_mask);
-> +	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags), gfp_mask);
+> Changes in v3:
+>         - use array_size()
 
-Add a blank line.  It's tough know where the line is between where is
-between the "one thing per patch" but this is probably within the scope.
-Generally if there is a white space cleanup on the same line you are
-modifying then you should clean it up.  Use the struct_size() macro.
+struct_size() is more correct than array_size().  If there were really
+a danger from array overflows then array_size() would not prevent it
+100%.
 
-This patch means that we now memset() more memory than before.  It's
-probably a small slow down.  I guess I can't be too happy about a slow
-down...  Let's just leave it as-is.
+There should probably be a static checker warning for when people do
+"expr + array_size()".  If you're looking for something to write, that's
+an idea you could implement with Coccinelle or Smatch.
 
 regards,
 dan carpenter
