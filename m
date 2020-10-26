@@ -1,91 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E662299318
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Oct 2020 17:57:52 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D7F2C86890;
-	Mon, 26 Oct 2020 16:57:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c9aThJHDuif6; Mon, 26 Oct 2020 16:57:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 12BCD86655;
-	Mon, 26 Oct 2020 16:57:49 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E17D51BF41F
- for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 16:57:46 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60B35299338
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Oct 2020 18:00:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DD81B8700E
- for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 16:57:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3F7B587176;
+	Mon, 26 Oct 2020 17:00:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bc4+VrhAJZNH; Mon, 26 Oct 2020 17:00:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B38087044;
+	Mon, 26 Oct 2020 17:00:51 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A529A1BF41F
+ for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 17:00:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id A1E96861B2
+ for <devel@linuxdriverproject.org>; Mon, 26 Oct 2020 17:00:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kRPR559D8nt0 for <devel@linuxdriverproject.org>;
- Mon, 26 Oct 2020 16:57:46 +0000 (UTC)
+ with ESMTP id nrqk8K0uOxD0 for <devel@linuxdriverproject.org>;
+ Mon, 26 Oct 2020 17:00:47 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from new3-smtp.messagingengine.com (new3-smtp.messagingengine.com
  [66.111.4.229])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5F59086FFE
- for <devel@driverdev.osuosl.org>; Mon, 26 Oct 2020 16:57:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9780181B72
+ for <devel@driverdev.osuosl.org>; Mon, 26 Oct 2020 17:00:47 +0000 (UTC)
 Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 722705805DA;
- Mon, 26 Oct 2020 12:57:45 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Mon, 26 Oct 2020 12:57:45 -0400
+ by mailnew.nyi.internal (Postfix) with ESMTP id 8D8D75805DF;
+ Mon, 26 Oct 2020 13:00:46 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Mon, 26 Oct 2020 13:00:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
  date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=R5DxJpEpfR/FW79xd59XCA8dEJT
- OWvdcJkuzuv1Y+Lo=; b=oPS/JxyZNriqi1c8Sf05/35fbdqIlBB2+FPamOVKJPK
- p1x97j3MTQ/AIm5e6noJUgWC8rNBfsD0HWDqTdNz1WoaR6vhJ6CFPQXMxXa1a5fQ
- PdYCFq5VqNa4tVNm0zMIp4pYT9I6XwmjiDhRDOwLk4xmuJaD8SCD+7JjSDELOkk0
- WZX3pdhLX+C4wZ/RqSyuJbPg451Z8WLr2V67I2vOIAi+1nCEuHyYlD89UGRullt9
- 79uC/wA0AfKiQfyR36cuN/3WzToQkiD2+GYD0122pe0WZMQVkcFU6kXJaYPIEY5t
- HyW04HXXoSU+Xt4xAd2n03AyaNnLLuX7agP4uU8Fm1g==
+ :content-type:in-reply-to; s=fm1; bh=C2vT4YWldJbuxSY1g9g5EETM2zW
+ xr1fwz0Zt7cC50Ks=; b=UGqDC3y+c6CfUFj4e9uOe+gGA5WC6bYlniMNyOZlum1
+ wHmoClQJc/d7CmU9FK+UXbnPe7TJMsjr4BUaJaKxK91Eiqcjeqk3yO2zFnGSOoLw
+ qnJ/vCgRiaD9qAggPd6LYaEwJvE5c+fmrXu1N5y1atHiK7MtSB5/EWgy1hg20LwO
+ AHAO5AtrcqYUaJ+hE86VVDZHlCZNRg4sVaOFUvC3DjM5iCG12GfECe7pposwYO05
+ zvgek4ktJK4x/qnwRSvx/uXBvIkqH5eRG7YnFUAkPbdEUy8bl93lxDXw5nlEJ/d3
+ nvNA+zqL3GtrWfHTDENwjDdHM4rhSX2znpOtv7uMmAQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=R5DxJp
- EpfR/FW79xd59XCA8dEJTOWvdcJkuzuv1Y+Lo=; b=LtW8O5nYQDn/QftakgDoy6
- T1uepHHybQ3S1azm4ffT315YUyZGcgJ7ADQVXluRgEwPMidbiSI3E0mIRS/BdS6s
- U1f5BICLLE7RAc1bM2BaXXMJJLkiaxjFREYm5ad2/R/OQgA8qFRgN3bzqLEC9PtF
- hCsfUdywcRLG+Bpx/SU6fhJqokYxFk/eBk4rZzvQWu/rUsllmvgon7odUqcfnfYx
- JlPXFaYeMtNsGDgJs/Pxghii4lwCKSyMYgWIUnyveOJdmu3+SgCQvOM01aUuWaQ3
- etBIkwMR4I8Cngy89I5HvEjOU4h6SaWcjTJImX5bsbT6rQ+6HlMEw5f8nMdKZIUQ
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=C2vT4Y
+ WldJbuxSY1g9g5EETM2zWxr1fwz0Zt7cC50Ks=; b=LZYxVdBt+VytNDBZwg3ILL
+ uBCamcXGvYcz8uSMfYZZLmpvb3HlqiK0Vpvj78yQAak6O2oOy6W47TftHp8FD4aQ
+ eX8e0EIngTvm6ZUNugrDSQFa+/gy5KZAyfol+56hLYUftd9eBBFQmU+xxGdvvep4
+ Y4ygSJJl9Dx9CjGZyoGgUACpfge4x2KlxthOBzinlEOGCuw226EGawqxSuvIm7K9
+ YG7i7sPF69qvA0R3NTTEFqEbcQBrTWphcZaQaoodFi6wOPj5Bp+mmsG/ViRpeM/w
+ p/m0bVE2MwH1gO0wOFqrWf9ozw31AyK2QprdiydFhTvM+sCOUnSVunTDvnnUB6Sw
  ==
-X-ME-Sender: <xms:CQCXX5LIcTHeiTSK2yjkNj-V_b4RrdcRgiKqi-0-UOst-XfzPVaNOQ>
- <xme:CQCXX1KuMxLUHAXvzgg2stZEh4UxCwP1dCYBtkkoJC-yCy6Rf3Lqam6PCxLjDRSpf
- kvAFlVSgMg--I5x7W4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrkeejgdehlecutefuodetggdotefrodftvf
+X-ME-Sender: <xms:uwCXX-ILvrkKYZU_q3XlYxh8EhtZviUsPUAc0yAZVq_qdjy8sAccwg>
+ <xme:uwCXX2I35gzBUB-w07WupOXqO-PmMnwUQLvTjJZatJ6UeMx2Ai6PkWsLhES6R-gYn
+ 7Vq1PSxyi2opHhzEHg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrkeejgdeitdcutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihimhgv
+ fjughrpeffhffvuffkfhggtggujgesghdtreertddtudenucfhrhhomhepofgrgihimhgv
  ucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrghtth
- gvrhhnpeelkeeghefhuddtleejgfeljeffheffgfeijefhgfeufefhtdevteegheeiheeg
- udenucfkphepledtrdekledrieekrdejieenucevlhhushhtvghrufhiiigvpedunecurf
+ gvrhhnpeduvdduhfekkeehgffftefflefgffdtheffudffgeevteffheeuiedvvdejvdfg
+ veenucfkphepledtrdekledrieekrdejieenucevlhhushhtvghrufhiiigvpedtnecurf
  grrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:CQCXXxs9l_WpAqziDzWTVFwjm3y1jlWO2qd7GrOnMJReI98XjbI7cA>
- <xmx:CQCXX6ayEnYqQ6PQ9O0_ndryjaAVvUovVr2TtSSHXgXYqN3IkHrgGg>
- <xmx:CQCXXwb5wvNPRZzQO0SBPiDEeq-dzT1ZsY1LKr0DlnhESSfZF3hBqw>
- <xmx:CQCXX9SQ4TwIth8QwPEBLkpDP4rNnGyAWnThQwe8WI8azr9j7AFJdA>
+X-ME-Proxy: <xmx:uwCXX-v4f1VoDPQ0qKwBjnaoVDGoD4vBy9dPkPXoBBTN8i9Qojd05A>
+ <xmx:uwCXXzaKp-iYeJd-w-56B1hgT8la6bqH58zehO8jV5km6zqwphvYEA>
+ <xmx:uwCXX1Yhjg86n5kkEHXaMmnsdD2dYkOqapxIzpIGb9ec8HQUc3Gusg>
+ <xmx:vgCXXySnKFYtW-gQXpz9FmU-tCdCSJGlJj8hHYtXogExLdLvDjxe9w>
 Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
  [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id EF22D3064684;
- Mon, 26 Oct 2020 12:57:44 -0400 (EDT)
-Date: Mon, 26 Oct 2020 17:57:43 +0100
+ by mail.messagingengine.com (Postfix) with ESMTPA id 065263280063;
+ Mon, 26 Oct 2020 13:00:42 -0400 (EDT)
+Date: Mon, 26 Oct 2020 18:00:41 +0100
 From: Maxime Ripard <maxime@cerno.tech>
 To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH 14/14] media: sunxi: sun8i-a83t-mipi-csi2: Avoid using
- the (unsolicited) interrupt
-Message-ID: <20201026165743.mhbt6tf27pf7pkuk@gilmour.lan>
+Subject: Re: [PATCH 12/14] media: sunxi: Add support for the A83T MIPI CSI-2
+ controller
+Message-ID: <20201026170041.qsjzxlurufuuhcsq@gilmour.lan>
 References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
- <20201023174546.504028-15-paul.kocialkowski@bootlin.com>
+ <20201023174546.504028-13-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
-In-Reply-To: <20201023174546.504028-15-paul.kocialkowski@bootlin.com>
+In-Reply-To: <20201023174546.504028-13-paul.kocialkowski@bootlin.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,50 +110,74 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Hans Verkuil <hans.verkuil@cisco.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============5488306367095604028=="
+Content-Type: multipart/mixed; boundary="===============6602481625395535785=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============5488306367095604028==
+--===============6602481625395535785==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xc2pnay3bnlgphdg"
+	protocol="application/pgp-signature"; boundary="fifha5mo6q7tep5s"
 Content-Disposition: inline
 
 
---xc2pnay3bnlgphdg
-Content-Type: text/plain; charset=us-ascii
+--fifha5mo6q7tep5s
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Oct 23, 2020 at 07:45:46PM +0200, Paul Kocialkowski wrote:
-> The A83T MIPI CSI-2 apparently produces interrupts regardless of the mask
-> registers, for example when a transmission error occurs.
+On Fri, Oct 23, 2020 at 07:45:44PM +0200, Paul Kocialkowski wrote:
+> The A83T supports MIPI CSI-2 with a composite controller, covering both t=
+he
+> protocol logic and the D-PHY implementation. This controller seems to be =
+found
+> on the A83T only and probably was abandonned since.
 >=20
-> This generates quite a flood when unsolicited interrupts are received on
-> each received frame. As a result, disable the interrupt for now since
-> we are not currently using it for error reporting.
+> This implementation splits the protocol and D-PHY registers and uses the =
+PHY
+> framework internally. The D-PHY is not registered as a standalone PHY dri=
+ver
+> since it cannot be used with any other controller.
 >=20
-> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> There are a few notable points about the controller:
+> - The initialisation sequence involes writing specific magic init values =
+that
+>   do not seem to make any particular sense given the concerned register f=
+ields.
+> - Interrupts appear to be hitting regardless of the interrupt mask regist=
+ers,
+>   which can cause a serious flood when transmission errors occur.
 
-This should be merged into the driver patch
+Ah, so it's a separate driver too.
+
+> This work is based on the first version of the driver submitted by
+> K=E9vin L'h=F4pital, which was adapted to mainline from the Allwinner BSP.
+> This version integrates MIPI CSI-2 support as a standalone V4L2 subdev
+> instead of merging it in the sun6i-csi driver.
+>=20
+> It was tested on a Banana Pi M3 board with an OV8865 sensor in a 4-lane
+> configuration.
+
+Co-developped-by and SoB from Kevin?
+
+Looking at the driver, the same comments from the v3s apply there
 
 Maxime
 
---xc2pnay3bnlgphdg
+--fifha5mo6q7tep5s
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX5cABwAKCRDj7w1vZxhR
-xU+pAQDalV1qN1k6i35AidOm2HFNWPOBNI8mjj4eoTlsU/J3cgEAz+Q8O1TIRjWw
-Rl9dTMXuupxebAMgby+v5I3QWitE8QI=
-=23gw
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX5cAuQAKCRDj7w1vZxhR
+xQA7AQCD+RWN+ye76Hyh+RC2HCeFniYs1GUZ+zYbJ4AwNgCE9QEA3lh5d35xT4LL
+Q85GQqjRb2oIKo8G2euZT7n4hqW5hwY=
+=3VJd
 -----END PGP SIGNATURE-----
 
---xc2pnay3bnlgphdg--
+--fifha5mo6q7tep5s--
 
---===============5488306367095604028==
+--===============6602481625395535785==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -164,4 +188,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============5488306367095604028==--
+--===============6602481625395535785==--
