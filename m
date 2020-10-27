@@ -1,91 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAE3229AAFE
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 12:37:15 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DB3E29AB0B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 12:41:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 61D818727E;
-	Tue, 27 Oct 2020 11:37:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A00A120027;
+	Tue, 27 Oct 2020 11:41:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xMafyKAw4BCv; Tue, 27 Oct 2020 11:37:14 +0000 (UTC)
+	with ESMTP id HPi41XB4s0yg; Tue, 27 Oct 2020 11:41:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D28E187186;
-	Tue, 27 Oct 2020 11:37:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 746AD2044C;
+	Tue, 27 Oct 2020 11:41:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6CF961BF859
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 11:37:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 804801BF859
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 11:41:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 694E58718E
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 11:37:11 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7CD2B87061
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 11:41:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nj-D2CjIMmRD for <devel@linuxdriverproject.org>;
- Tue, 27 Oct 2020 11:37:10 +0000 (UTC)
+ with ESMTP id ov-r1SzxR5WL for <devel@linuxdriverproject.org>;
+ Tue, 27 Oct 2020 11:41:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6DE6C87186
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 11:37:10 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RBTYfE107093;
- Tue, 27 Oct 2020 11:37:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=aouPZYz7RHmgR1uBUCoJ/MlA+M3+3yydiD3bS8FR5Us=;
- b=rEVHArto74ziLYsECKdwjKOPZYyjz2vjtnFyN3cmBTYiWMjkriqJfwiHZQ5ydoDq+GNt
- eLfSGw6dcwFNiEoi+s56Kw9G3Ws+iXiDbl4Vyy7inhNYVmkGPiwc4GFjmT+Blks9h+9S
- qgpsuBs3Mev3n0ZDzTbZ/QjU8llDXh35e9YD+CdT8g6I5OnEsw5qhm8KXg4AgMRca6+x
- fPatnE4xKmCg4Fl1wYmWc9T3joGUlSpc1N+2cpmWEECeG7gWGecGi6IWEtkASWlGOAQ2
- JnB3tzMHwUVxr+QCOvF+76qDxkNqFBtSPcL3uzN6kFpSThIdHxf+EmyzFRFZA7ACzwPK tQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2130.oracle.com with ESMTP id 34c9sashwq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 27 Oct 2020 11:37:09 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RBUV61047945;
- Tue, 27 Oct 2020 11:37:09 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 34cwum97p2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 27 Oct 2020 11:37:09 +0000
-Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09RBb80h029465;
- Tue, 27 Oct 2020 11:37:08 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 27 Oct 2020 04:37:07 -0700
-Date: Tue, 27 Oct 2020 14:37:02 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Elena Afanasova <eafanasova@gmail.com>
-Subject: Re: [PATCH] staging/rtl8192u/ieee80211: fix line length exceeds 100
- columns
-Message-ID: <20201027113702.GU1042@kadam>
-References: <20201020151111.35848-1-eafanasova@gmail.com>
+Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
+ [209.85.218.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AF6038705B
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 11:41:20 +0000 (UTC)
+Received: by mail-ej1-f68.google.com with SMTP id z5so1742021ejw.7
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 04:41:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3/wYkEIdKWYXJ7kNDamm5GXkJZDwOHBhS+XfxKLG6sk=;
+ b=ZE7fjC60eVK2+kr06vcefzy9RmoNTZcsHKV/KcIS6zz5AJjM7kmzqFfDhYl+n9sPtj
+ xrtYoR8dzAX+4eUyA93br1d0Xu0FdJZLEObXbCbbst19zu9lAKDsZWk3B8KmbadfqnrV
+ vEnMrEwT8bNzLNnoT9vHPfglClE2cgpNys1Qrwo7EjutP2Tn3GWYfJX3FZNHtSGmkd7r
+ ICLG3PVyzffsJXC4rp1gqEpuNk1ZuuqivtQmYfaIt/8oD/fGWIXyIizoUrSrvC7ms1pg
+ aFpauqvX1U5M0eMintF53Q3Wq7Mfzkb1a7uQraYuv1YIRERmmQO2oB37UCKjBUHuB/Sb
+ hTBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3/wYkEIdKWYXJ7kNDamm5GXkJZDwOHBhS+XfxKLG6sk=;
+ b=Gz52ppGmbEFE4lCrXk57KRJ8wcjmHAkHgtflnRkGn71Dh55OL8vCEKSBKgkkHTkxKL
+ LZjlb7On3O/DGyS0MLrkF46Cd0jt9TZirZupEKvQ1x/d7HnG+IIe6QPLSgLoRPdIGrxF
+ kHic8mEfvuUf4Xvz7lhfC8AhyMnRL4qpOBO5sPIIi7Qg6PwYfvVF3i2jPpcMTyCEl+p3
+ ixjWp2QSOaYHa6J8PJ8xLKbDx8iBt4Up3tpJ6NquMqplj95UMJOdHECw8hd6cYiRsa8b
+ QwY2rdWmvtUFSmGsS9MINT0x25UAX+o0o+buhGHXxF/GkdqXYmY3N799PryulfvVCSHp
+ RQWw==
+X-Gm-Message-State: AOAM5334IYHj9nSZYndVphEKcTdaV2NMYMTwJo5T4YgxeJuUZOnYVBc6
+ oOETnYUYvi7HX2Jjyp3k7Fk=
+X-Google-Smtp-Source: ABdhPJxrYIvtub/cBlTtMWYQK0FXvqTA9bAYHcnyNyQ2oGvgq9XLPhZtMF549IQ1auqT0MlzRQSqig==
+X-Received: by 2002:a17:906:1e45:: with SMTP id
+ i5mr1886739ejj.203.1603798879087; 
+ Tue, 27 Oct 2020 04:41:19 -0700 (PDT)
+Received: from localhost.localdomain
+ (dslb-002-204-140-230.002.204.pools.vodafone-ip.de. [2.204.140.230])
+ by smtp.gmail.com with ESMTPSA id l12sm804848edt.46.2020.10.27.04.41.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Oct 2020 04:41:18 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8188eu: remove commented defines
+Date: Tue, 27 Oct 2020 12:40:43 +0100
+Message-Id: <20201027114043.22318-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201020151111.35848-1-eafanasova@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- mlxscore=0 bulkscore=0
- spamscore=0 adultscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010270076
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- impostorscore=0
- mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 spamscore=0 phishscore=0 clxscore=1015 suspectscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010270076
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,41 +85,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- outreachy-kernel@googlegroups.com
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 20, 2020 at 08:11:11AM -0700, Elena Afanasova wrote:
-> Reported by checkpatch.pl.
+Remove commented defines from ioctl_linux.c. They are included from
+include/uapi/linux/wireless.h. Also clears a checkpatch warning.
 
-The commit message should be considered like an separate thing from the
-subject.  On my email client, I normally read either just the subject or
-just the commit message.  It looks something like this:
+WARNING: Block comments use * on subsequent lines
 
-https://lore.kernel.org/driverdev-devel/20201020151748.35937-1-eafanasova@gmail.com/T/#t
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
+---
+ drivers/staging/rtl8188eu/os_dep/ioctl_linux.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-Do you see the subject?  It's far away from the commit message.
-
-Here is how I would write this commit message:
-
-Subject: [PATCH] Staging: rtl8192u: split up long lines
-
-Checkpatch complains that these lines are over 100 characters so let's
-split them up.
-
-Some people care about verb tenses or whatever but most maintainers
-don't.  I don't.  I only care about if I can basically see what you
-are changing and why.  This patch doesn't affect runtime, but if it
-did, then I would like some comments about what the bug looks like to
-the user.  Basically if I can understand the commit message then it's
-fine, and obviously "Reported by checkpatch.pl" is not sufficient to
-understand what's going on.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
+index 6ac904ceb95e..6f42f13a71fa 100644
+--- a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
+@@ -906,17 +906,6 @@ static int rtw_wx_get_range(struct net_device *dev,
+ /*  If the driver doesn't provide this capability to network manager, */
+ /*  the WPA/WPA2 routers can't be chosen in the network manager. */
+ 
+-/*
+-#define IW_SCAN_CAPA_NONE		0x00
+-#define IW_SCAN_CAPA_ESSID		0x01
+-#define IW_SCAN_CAPA_BSSID		0x02
+-#define IW_SCAN_CAPA_CHANNEL		0x04
+-#define IW_SCAN_CAPA_MODE		0x08
+-#define IW_SCAN_CAPA_RATE		0x10
+-#define IW_SCAN_CAPA_TYPE		0x20
+-#define IW_SCAN_CAPA_TIME		0x40
+-*/
+-
+ 	range->enc_capa = IW_ENC_CAPA_WPA | IW_ENC_CAPA_WPA2 |
+ 			  IW_ENC_CAPA_CIPHER_TKIP | IW_ENC_CAPA_CIPHER_CCMP;
+ 
+-- 
+2.29.0
 
 _______________________________________________
 devel mailing list
