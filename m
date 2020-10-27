@@ -2,45 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAFFF29CBB2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 23:03:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 065B229CC49
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 23:56:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8BE07204B9;
-	Tue, 27 Oct 2020 22:03:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F3524204BA;
+	Tue, 27 Oct 2020 22:56:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X9x3Sf3v-q5g; Tue, 27 Oct 2020 22:03:25 +0000 (UTC)
+	with ESMTP id donZGoKLsBBW; Tue, 27 Oct 2020 22:56:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D08F3203AF;
-	Tue, 27 Oct 2020 22:03:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 711C32038F;
+	Tue, 27 Oct 2020 22:56:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D4A061BF41E
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 22:03:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 203441BF404
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 22:56:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BC759203F9
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 22:03:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1A16086A46
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 22:56:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eMzoeWRZEuc3 for <devel@linuxdriverproject.org>;
- Tue, 27 Oct 2020 22:03:20 +0000 (UTC)
+ with ESMTP id FkV8sAOXee6h for <devel@linuxdriverproject.org>;
+ Tue, 27 Oct 2020 22:56:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from homelesstubs.co.uk (unknown [185.216.76.148])
- by silver.osuosl.org (Postfix) with ESMTPS id 07D0C203AF
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 22:03:20 +0000 (UTC)
-Received: from [192.168.100.12] (unknown [36.37.140.47])
- by homelesstubs.co.uk (Postfix) with ESMTPSA id 4AA8C1006C97;
- Tue, 27 Oct 2020 18:46:02 +0000 (UTC)
+Received: from deliver.lifedesignmethod.jp (deliver.lifedesignmethod.jp
+ [49.212.166.237])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1810C86A1A
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 22:56:01 +0000 (UTC)
+Received: from User (144.red-88-20-106.staticip.rima-tde.net [88.20.106.144])
+ by deliver.lifedesignmethod.jp (Postfix) with ESMTPA id AFD0D787335; 
+ Wed, 28 Oct 2020 07:35:04 +0900 (JST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 deliver.lifedesignmethod.jp AFD0D787335
+From: "max"<rkuofungx1@gmail.com>
+Subject: Benachrichtigung der Gewinner !!!.
+Date: Tue, 27 Oct 2020 15:35:16 -0700
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: GOOD DAY
-To: Recipients <dean@homelesstubs.co.uk>
-From: Sov Chan <dean@homelesstubs.co.uk>
-Date: Wed, 28 Oct 2020 01:45:57 +0700
-Message-Id: <20201027220320.BC759203F9@silver.osuosl.org>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20201027225603.1A16086A46@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,28 +57,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sovchan@aol.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: infocodesl@aol.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-
-My name is Mr. Sov, a Bank Officer, I occupy the position of an accountant in our branch office here. It is with good spirit of heart I opened up this great opportunity to you.
-
-A deceased client of mine, an oil dealer CEO/a textile company owner, business man and also own a gold Mining Company/sales, who bears the same name as yours, died along with his family in Ocean earthquake and tsunami disaster many years ago.
-
-Our late Client had a fixed deposit huge sum left behind before he met his end. I contacted you so that I can present you as my late client next of kin, so that the money can be transferred to your account, and we will share the funds equally, 50/50% to both parties.
-
-Contact me for more details
-
-Regards,
-Mr.Sov
-
-Regards,
-Mr.Sov
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QmVuYWNocmljaHRpZ3VuZyBkZXIgR2V3aW5uZXIgISEhLgoKSWhyZSBFLU1haWwtSUQgaGF0IIAg
+MTUwLjAwMCwwMCBFdXJvIChlaW4gaHVuZGVydGb8bmZ6aWd0YXVzZW5kIEV1cm8pIGluIExvdHRv
+TWF4IEludGVybmF0aW9uYWwgQ2hhcml0eSBwcm9ncmFtLlJlZiBXZWxsIFNwIGdld29ubmVuCi8x
+NzkvMC0zOS80NC80LTA3L0VTLkx1Y2t5IE5vLjkgLyA0NC8xNS8yNyAvIDQ5LkZvciBXZWl0ZXJl
+IEluZm9ybWF0aW9uZW4gdW5kIEFudHJhZ3N2ZXJmYWhyZW4gLCBiZW51dHplbiBTaWUgYml0dGUg
+dW5zZXIgQWdlbnQgdW50ZW4gaW4gVmVyYmluZHVuZzsKCk5hdGlvbmFsIFBvc3QtQ29kZSBBZ2Vu
+Y3kuUy5MCk1yLkphaW1lIFNhbmNoZXoKRS1tYWlsOiBpbmZvY29kZXNsQGFvbC5jb20KCgpNaXQg
+SWhyZW4gdm9sbHN05G5kaWdlbiBOYW1lbiwgQWRyZXNzZSwgQWx0ZXIsIEJlcnVmLCBUZWxlZm9u
+bnVtbWVybiBTZW5kZW4gU2llIElocmUgQW50d29ydCBhdWYgZGllc2UgRS1NYWlsOiAgaW5mb2Nv
+ZGVzbEBhb2wuY29tCkhpbndlaXM6IERpZXMgaXN0IGVpbmUgaW50ZXJuYXRpb25hbGUgTG90dGVy
+aWUtUHJvZ3JhbW0uIERpZXNlciBFaW50cmFnIHd1cmRlIGF1dG9tYXRpc2NoIGF1cyBkZW0gRW5n
+bGlzY2hlbiBpbnMgRGV1dHNjaGxhbmQg/GJlcnNldHp0LgoKSGVyemxpY2hlbiBHbPxja3d1bnNj
+aCAhCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
+IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
+ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
+bAo=
