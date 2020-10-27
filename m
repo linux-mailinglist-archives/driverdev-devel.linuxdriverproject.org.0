@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F33AB299DDB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 01:10:31 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B3C1299DF5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 01:11:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 946622045E;
-	Tue, 27 Oct 2020 00:10:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 741EB87118;
+	Tue, 27 Oct 2020 00:11:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X4g7ifiF3TAO; Tue, 27 Oct 2020 00:10:27 +0000 (UTC)
+	with ESMTP id 2mdFpQ+UFg4K; Tue, 27 Oct 2020 00:11:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7CFA71FF98;
-	Tue, 27 Oct 2020 00:10:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D9F698700A;
+	Tue, 27 Oct 2020 00:11:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0F6DE1BF27C
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 00:10:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C039A1BF27C
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 00:11:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0C10E864DF
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 00:10:23 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BBD52864DF
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 00:11:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G7p-YxuiUxQ6 for <devel@linuxdriverproject.org>;
- Tue, 27 Oct 2020 00:10:21 +0000 (UTC)
+ with ESMTP id 07Emb1rL9gpN for <devel@linuxdriverproject.org>;
+ Tue, 27 Oct 2020 00:11:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A749786382
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 00:10:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 55F4386382
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 00:11:07 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 88EFF221F8;
- Tue, 27 Oct 2020 00:10:20 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 455E920754;
+ Tue, 27 Oct 2020 00:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603757421;
- bh=ZODP1nIE2OjC2ZptfpiokPd7+rZyu16TGrn5HsmzT7Y=;
+ s=default; t=1603757467;
+ bh=fmXlvOS/ZhRVqFcxNW5uxaNcztefrwmdmlTY1LYyxLw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=x3oIXiwQxAtPxK7/tx+1qkftfTJcvpgfCoRLxIIv3ppe6ZeSX5tJx0n2DhSui49w9
- 95kAR0qMzSP23VM1vE2MoTHsKsVo0xSiFJq0zExrp7A6Qt5GO7qM7kglVd5OwmaBlV
- bfSYVfOfuo67Bw9O+9Q+eeguWtrjypTjGvL5mSDQ=
+ b=MDChSLVG59MItmIS8f9cavSlBAiWih1Bwy+UgiUEg3Suq0+8iXeyDta+DgP7hVlhM
+ ROYTuyUaPRXTiaFGQaMtKjzlT0RPr0E8A50B1om+A46px49aJECkS7IThC22CHRijC
+ lfE6S/tYT2gEt4nPhkfq1gmTrGzJ2CN17t+ieHiY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 29/46] bus/fsl_mc: Do not rely on caller to
+Subject: [PATCH AUTOSEL 4.9 19/30] bus/fsl_mc: Do not rely on caller to
  provide non NULL mc_io
-Date: Mon, 26 Oct 2020 20:09:28 -0400
-Message-Id: <20201027000946.1026923-29-sashal@kernel.org>
+Date: Mon, 26 Oct 2020 20:10:33 -0400
+Message-Id: <20201027001044.1027349-19-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201027000946.1026923-1-sashal@kernel.org>
-References: <20201027000946.1026923-1-sashal@kernel.org>
+In-Reply-To: <20201027001044.1027349-1-sashal@kernel.org>
+References: <20201027001044.1027349-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -96,10 +96,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/fsl-mc/bus/mc-io.c b/drivers/staging/fsl-mc/bus/mc-io.c
-index f65c23ce83f16..deec2d04c2dd9 100644
+index 798c965fe2033..3fa6774946fae 100644
 --- a/drivers/staging/fsl-mc/bus/mc-io.c
 +++ b/drivers/staging/fsl-mc/bus/mc-io.c
-@@ -166,7 +166,12 @@ int __must_check fsl_create_mc_io(struct device *dev,
+@@ -167,7 +167,12 @@ int __must_check fsl_create_mc_io(struct device *dev,
   */
  void fsl_destroy_mc_io(struct fsl_mc_io *mc_io)
  {
