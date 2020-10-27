@@ -1,92 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 878EE29ADF6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 14:52:44 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 387FA29C6CF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 19:28:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 05D7C20502;
-	Tue, 27 Oct 2020 13:52:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 38DE68618F;
+	Tue, 27 Oct 2020 18:28:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id agnfZ6AISVyx; Tue, 27 Oct 2020 13:52:42 +0000 (UTC)
+	with ESMTP id RtuDiqURCA_T; Tue, 27 Oct 2020 18:28:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1435A20353;
-	Tue, 27 Oct 2020 13:52:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 42487862A9;
+	Tue, 27 Oct 2020 18:28:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CC1EC1BF328
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 13:52:38 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B24131BF82D
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 18:28:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B94B62044C
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 13:52:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AE9DB86278
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 18:28:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mDlPUWVB-lu5 for <devel@linuxdriverproject.org>;
- Tue, 27 Oct 2020 13:52:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by silver.osuosl.org (Postfix) with ESMTPS id 830C320353
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 13:52:37 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RDnCGM180411;
- Tue, 27 Oct 2020 13:52:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=6J5GN4d5P1+bocAuEidN1XpSs96xBvmmrRX7NOOyVS4=;
- b=HkLdyw2l/iH/vE37I/zk6srJmKIzDiLfMKEUvrbxGmwhixxeyfQiXAL6t7TcNZ4yVfI/
- 51jLJkBSggOcS11LiNgm2oIFGkx/g+I+xPyQP6APkJZ8QrLS0jVUDYMKj89Te8rIlv2L
- 1sIebBJCBJnMtj+uXHy/Vm/Miw1eWhqWHnd+y3e+NhSwaOOq0ekcQy2EoftsU66NKFfu
- OkjrlW0nJ73yyAdckggOrzA94Fs7BcW/shE4mtZTD9clMTdMgvDsQltkkHdyzOzcKCEN
- MvaRkAguEaAqY+tBbFHj6yC0COv29TTwcp1XHQ7TFgFwbNqKgQYCq1jTHFIa06Ywohp9 3Q== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 34c9sat6ub-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 27 Oct 2020 13:52:36 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RDoJJW118430;
- Tue, 27 Oct 2020 13:50:35 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 34cx1qraa9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 27 Oct 2020 13:50:35 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09RDoY0W011464;
- Tue, 27 Oct 2020 13:50:34 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 27 Oct 2020 06:50:33 -0700
-Date: Tue, 27 Oct 2020 16:50:28 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: rtl8192e, rtl8192u: use correct notation to
- define pointer
-Message-ID: <20201027135028.GZ1042@kadam>
-References: <20201026121435.GA782465@LEGION>
- <20201027112303.GA405023@kroah.com>
+ with ESMTP id U_i0yMYIiPco for <devel@linuxdriverproject.org>;
+ Tue, 27 Oct 2020 18:28:17 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
+ [66.111.4.224])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7EF1E8618F
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 18:28:17 +0000 (UTC)
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 2A9F25803DD;
+ Tue, 27 Oct 2020 14:28:16 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Tue, 27 Oct 2020 14:28:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=dSgnQIa3tA1J3WQvwUkryDJy17/
+ cH7uUtmKx14vRB74=; b=XUmOhwucqRqwCMBBJ5y53w/bh0MvJJmlNvX3vSsqwMI
+ qeEcHNVJ3rB7rfqcict3X+E3gqDjDvKhDcTS6tlKTVvrolSfRmXLVvl67z/3+Sr2
+ 24kdLLi8flG6sqlsxonszl63zyQ+ISrb82gG4+0iro95IjGI6FdT2b69DnTk3SA5
+ ku+o8UbKvVyK85gF1z2AyM7ujnVAd0r1bnm9LwQu+rWzpYeraHObxiImqoSixZmw
+ wwru3O5JhbezMWnS4njh2PUEzVhcfWOPic2H0mPuIkaNYjkhImGLupHVb6j/kIsS
+ HA1QmZmKTaXkcUChdV7/Tkz9XU6/Hwk7IoMM6Ef+0OQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=dSgnQI
+ a3tA1J3WQvwUkryDJy17/cH7uUtmKx14vRB74=; b=dVg5tdUTdLWWDtOyTUFtBn
+ OYQeP2fmPeQJLXBsZgySH0cjE8fjTZArR3+woJpzcdhJcZMrzxX5i9x8687Ssk2V
+ C1SEhEAWVfuK4XiO/cGEcAGUP2/1ODuzL/2aevPhnM3rzy3+CpptIzWbiroAPN3j
+ nCjL3a+9iR6cAHLle/VlOAVZdnzWgbfV5euJquIfE2rjyC7iuCNa1iy2Yo28GXyh
+ h18aMjgxI6gwt1PLEWlhXSHP33McwFU5udoahj+dc2equNrMhSxa0qdD7xeLrE8I
+ +dGqU9bGEhhjU7ml8arlOwKGcnNymqkOpbMLaxKHMq49FoxP5xSqaXUPrrFjT65g
+ ==
+X-ME-Sender: <xms:vWaYX-pssDg_l0Bp5o_BD_020W7obaCpS33U-SOfjrgLDey2xIVcJQ>
+ <xme:vWaYX8q3pkDyJ21ahQD5QcZxShwRp3frYkZTvlbOYrVF7c1-V4lrnbcB6fe2h2WEK
+ Yk0iyFD5wuwfvzFsAk>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrkeelgdduudefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+ vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+ htvghrnheptdfggfelgeehieeuieegfefgueduudefheffhfejleekheefjeevveegueel
+ ueefnecuffhomhgrihhnpehlihhnuhigqdhsuhhngihirdhorhhgnecukfhppeeltddrke
+ elrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhf
+ rhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:vWaYXzMVtOHfPSziFsp7l0nRhHMO_WiGp-EkSFV-VpaLtauKj95w4Q>
+ <xmx:vWaYX95EoO5Jc5m248cqkLuS8bkcduV82yQ21IEcRDVTlDVGGVv9ag>
+ <xmx:vWaYX96KCNUbXVAmysj-8ek_NHL1sWd2Ac4oSjp5Z29JXRGbkY60FQ>
+ <xmx:wGaYX6xrrSUc7PUFjfVYgzxB0GVeKfWyF-ReVj64MM0GyCFfW6mQAA>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 20FBB3280067;
+ Tue, 27 Oct 2020 14:28:13 -0400 (EDT)
+Date: Tue, 27 Oct 2020 19:28:11 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH 02/14] phy: allwinner: phy-sun6i-mipi-dphy: Support D-PHY
+ Rx mode for MIPI CSI-2
+Message-ID: <20201027182811.j6372vdmls5yvhri@gilmour.lan>
+References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
+ <20201023174546.504028-3-paul.kocialkowski@bootlin.com>
+ <20201026153857.iwkn4iusi2jy2yf4@gilmour.lan>
+ <20201027092326.GB168350@aptenodytes>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201027112303.GA405023@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- phishscore=0 bulkscore=0
- suspectscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010270087
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- impostorscore=0
- mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 spamscore=0 phishscore=0 clxscore=1011 suspectscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010270087
+In-Reply-To: <20201027092326.GB168350@aptenodytes>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,75 +101,220 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Muhammad Usama Anjum <musamaanjum@gmail.com>,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hans.verkuil@cisco.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============6810311661907237984=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 27, 2020 at 12:23:03PM +0100, Greg KH wrote:
-> On Mon, Oct 26, 2020 at 05:14:35PM +0500, Muhammad Usama Anjum wrote:
-> > Use pointer notation instead of using array notation as info_element is
-> > a pointer not array.
-> > 
-> > Warnings from sparse:
-> > drivers/staging/rtl8192u/ieee80211/ieee80211.h:1013:51: warning: array of flexible structures
-> > drivers/staging/rtl8192u/ieee80211/ieee80211.h:985:51: warning: array of flexible structures
-> > drivers/staging/rtl8192u/ieee80211/ieee80211.h:963:51: warning: array of flexible structures
-> > drivers/staging/rtl8192u/ieee80211/ieee80211.h:996:51: warning: array of flexible structures
-> > drivers/staging/rtl8192u/ieee80211/ieee80211.h:974:51: warning: array of flexible structures
-> > 
-> > drivers/staging/rtl8192e/rtllib.h:832:48: warning: array of flexible structures
-> > drivers/staging/rtl8192e/rtllib.h:851:48: warning: array of flexible structures
-> > drivers/staging/rtl8192e/rtllib.h:805:48: warning: array of flexible structures
-> > drivers/staging/rtl8192e/rtllib.h:843:48: warning: array of flexible structures
-> > drivers/staging/rtl8192e/rtllib.h:821:48: warning: array of flexible structures
-> > 
-> > Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
-> > ---
-> >  drivers/staging/rtl8192e/rtllib.h              | 10 +++++-----
-> >  drivers/staging/rtl8192u/ieee80211/ieee80211.h | 12 ++++++------
-> >  2 files changed, 11 insertions(+), 11 deletions(-)
-> > 
-> > diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
-> > index b84f00b8d18b..1dab9c3d08a8 100644
-> > --- a/drivers/staging/rtl8192e/rtllib.h
-> > +++ b/drivers/staging/rtl8192e/rtllib.h
-> > @@ -802,7 +802,7 @@ struct rtllib_authentication {
-> >  	__le16 transaction;
-> >  	__le16 status;
-> >  	/*challenge*/
-> > -	struct rtllib_info_element info_element[];
-> > +	struct rtllib_info_element *info_element;
-> >  } __packed;
-> 
-> Are you sure these changes are correct?  This isn't just a list of
-> structures after this at the end of the structure?
 
-Definitely the patch will break things at runtime.  I was surprised that
-it compiles, but it does.
+--===============6810311661907237984==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="uqnhruvnsc2qrfvt"
+Content-Disposition: inline
 
-> 
-> Please look at commit 5979afa2c4d1 ("staging: Replace zero-length array
-> with flexible-array member") which made most of these flexible arrays.
-> 
-> This is not a pointer, it really is an array, I think sparse is really
-> wrong here, be careful.
 
-It's an interesting warning message.  Sparse is correct that the code
-looks strange.  If there were ever two or more elements in the array
-then the code would break.  But since the code only uses a max of one
-element then it's fine.
+--uqnhruvnsc2qrfvt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I guess the question is does this warning ever catch bugs in real life?
-It seems like that the kind of bug which would be caught in testing so
-static analysis is not going to be useful.
 
-regards,
-dan carpenter
+Hi,
+
+On Tue, Oct 27, 2020 at 10:23:26AM +0100, Paul Kocialkowski wrote:
+> On Mon 26 Oct 20, 16:38, Maxime Ripard wrote:
+> > On Fri, Oct 23, 2020 at 07:45:34PM +0200, Paul Kocialkowski wrote:
+> > > The Allwinner A31 D-PHY supports both Rx and Tx modes. While the latt=
+er
+> > > is already supported and used for MIPI DSI this adds support for the
+> > > former, to be used with MIPI CSI-2.
+> > >=20
+> > > This implementation is inspired by the Allwinner BSP implementation.
+> >=20
+> > Mentionning which BSP you took this from would be helpful
+>=20
+> Sure! It's from the Github repo linked from https://linux-sunxi.org/V3s.
+> Would you like that I mention this URL explicitly or would it be enough to
+> mention "Allwinner's V3s Linux SDK" as they seem to call it?
+
+Yeah, that would be great
+> > > +static int sun6i_dphy_rx_power_on(struct sun6i_dphy *dphy)
+> > > +{
+> > > +	/* Physical clock rate is actually half of symbol rate with DDR. */
+> > > +	unsigned long mipi_symbol_rate =3D dphy->config.hs_clk_rate;
+> > > +	unsigned long dphy_clk_rate;
+> > > +	unsigned int rx_dly;
+> > > +	unsigned int lprst_dly;
+> > > +	u32 value;
+> > > +
+> > > +	dphy_clk_rate =3D clk_get_rate(dphy->mod_clk);
+> > > +	if (!dphy_clk_rate)
+> > > +		return -1;
+> >=20
+> > Returning -1 is weird here?
+>=20
+> What do you think would be a more appropriate error code to return?
+> It looks like some other drivers return -EINVAL when that happens (but ma=
+ny
+> don't do the check).
+
+Yeah, EINVAL at least is better than ENOPERM=20
+
+> > > +
+> > > +	/* Hardcoded timing parameters from the Allwinner BSP. */
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME0_REG,
+> > > +		     SUN6I_DPHY_RX_TIME0_HS_RX_SYNC(255) |
+> > > +		     SUN6I_DPHY_RX_TIME0_HS_RX_CLK_MISS(255) |
+> > > +		     SUN6I_DPHY_RX_TIME0_LP_RX(255));
+> > > +
+> > > +	/*
+> > > +	 * Formula from the Allwinner BSP, with hardcoded coefficients
+> > > +	 * (probably internal divider/multiplier).
+> > > +	 */
+> > > +	rx_dly =3D 8 * (unsigned int)(dphy_clk_rate / (mipi_symbol_rate / 8=
+));
+> > > +
+> > > +	/*
+> > > +	 * The Allwinner BSP has an alternative formula for LP_RX_ULPS_WP:
+> > > +	 * lp_ulps_wp_cnt =3D lp_ulps_wp_ms * lp_clk / 1000
+> > > +	 * but does not use it and hardcodes 255 instead.
+> > > +	 */
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME1_REG,
+> > > +		     SUN6I_DPHY_RX_TIME1_RX_DLY(rx_dly) |
+> > > +		     SUN6I_DPHY_RX_TIME1_LP_RX_ULPS_WP(255));
+> > > +
+> > > +	/* HS_RX_ANA0 value is hardcoded in the Allwinner BSP. */
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME2_REG,
+> > > +		     SUN6I_DPHY_RX_TIME2_HS_RX_ANA0(4));
+> > > +
+> > > +	/*
+> > > +	 * Formula from the Allwinner BSP, with hardcoded coefficients
+> > > +	 * (probably internal divider/multiplier).
+> > > +	 */
+> > > +	lprst_dly =3D 4 * (unsigned int)(dphy_clk_rate / (mipi_symbol_rate =
+/ 2));
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME3_REG,
+> > > +		     SUN6I_DPHY_RX_TIME3_LPRST_DLY(lprst_dly));
+> > > +
+> > > +	/* Analog parameters are hardcoded in the Allwinner BSP. */
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA0_REG,
+> > > +		     SUN6I_DPHY_ANA0_REG_PWS |
+> > > +		     SUN6I_DPHY_ANA0_REG_SLV(7) |
+> > > +		     SUN6I_DPHY_ANA0_REG_SFB(2));
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA1_REG,
+> > > +		     SUN6I_DPHY_ANA1_REG_SVTT(4));
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA4_REG,
+> > > +		     SUN6I_DPHY_ANA4_REG_DMPLVC |
+> > > +		     SUN6I_DPHY_ANA4_REG_DMPLVD(1));
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA2_REG,
+> > > +		     SUN6I_DPHY_ANA2_REG_ENIB);
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA3_REG,
+> > > +		     SUN6I_DPHY_ANA3_EN_LDOR |
+> > > +		     SUN6I_DPHY_ANA3_EN_LDOC |
+> > > +		     SUN6I_DPHY_ANA3_EN_LDOD);
+> > > +
+> > > +	/*
+> > > +	 * Delay comes from the Allwinner BSP, likely for internal regulator
+> > > +	 * ramp-up.
+> > > +	 */
+> > > +	udelay(3);
+> > > +
+> > > +	value =3D SUN6I_DPHY_RX_CTL_EN_DBC | SUN6I_DPHY_RX_CTL_RX_CLK_FORCE;
+> > > +
+> > > +	/*
+> > > +	 * Rx data lane force-enable bits are used as regular RX enable by =
+the
+> > > +	 * Allwinner BSP.
+> > > +	 */
+> > > +	if (dphy->config.lanes >=3D 1)
+> > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D0_FORCE;
+> > > +	if (dphy->config.lanes >=3D 2)
+> > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D1_FORCE;
+> > > +	if (dphy->config.lanes >=3D 3)
+> > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D2_FORCE;
+> > > +	if (dphy->config.lanes =3D=3D 4)
+> > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D3_FORCE;
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_CTL_REG, value);
+> > > +
+> > > +	regmap_write(dphy->regs, SUN6I_DPHY_GCTL_REG,
+> > > +		     SUN6I_DPHY_GCTL_LANE_NUM(dphy->config.lanes) |
+> > > +		     SUN6I_DPHY_GCTL_EN);
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > > +static int sun6i_dphy_power_on(struct phy *phy)
+> > > +{
+> > > +	struct sun6i_dphy *dphy =3D phy_get_drvdata(phy);
+> > > +
+> > > +	switch (dphy->submode) {
+> > > +	case PHY_MIPI_DPHY_SUBMODE_TX:
+> > > +		return sun6i_dphy_tx_power_on(dphy);
+> > > +	case PHY_MIPI_DPHY_SUBMODE_RX:
+> > > +		return sun6i_dphy_rx_power_on(dphy);
+> > > +	default:
+> > > +		return -EINVAL;
+> > > +	}
+> > > +}
+> > > +
+> >=20
+> > Can one call power_on before set_mode?
+>=20
+> I didn't find anything indicating this is illegal. What would happen here=
+ is
+> that the D-PHY would be configured to PHY_MIPI_DPHY_SUBMODE_TX (submode =
+=3D=3D 0)
+> at power-on if set_mode is not called before.
+>=20
+> I think it's fair to expect that it's too late to change the mode once th=
+e PHY
+> was powered on. Maybe we should return -EBUSY on set_mode when power on w=
+as
+> already requested?
+
+Or maybe we can just clarify it in the framework/function documentation
+
+Maxime
+
+--uqnhruvnsc2qrfvt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX5hmuwAKCRDj7w1vZxhR
+xeyQAQD8UUtAF93oDhvysOz/Nj17EEhOoBwmmzBNGTtdCLRtUgD9EsftZeY/+IOA
+Kzp6yDaCvfPfojb2leh+z+S5NCYPxQ4=
+=HLIM
+-----END PGP SIGNATURE-----
+
+--uqnhruvnsc2qrfvt--
+
+--===============6810311661907237984==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6810311661907237984==--
