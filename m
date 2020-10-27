@@ -1,77 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A52629CD8D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Oct 2020 03:19:25 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7EC829CDBB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Oct 2020 04:49:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 827B4868BB;
-	Wed, 28 Oct 2020 02:19:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E51E82E168;
+	Wed, 28 Oct 2020 03:49:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pHS_noZk2bqU; Wed, 28 Oct 2020 02:19:22 +0000 (UTC)
+	with ESMTP id hrxWdBwOEUoT; Wed, 28 Oct 2020 03:49:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 97C1B851FB;
-	Wed, 28 Oct 2020 02:19:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F7C4204DB;
+	Wed, 28 Oct 2020 03:49:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 367551BF34A
- for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 02:19:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C9BA1BF38C
+ for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 03:49:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 32A178731A
- for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 02:19:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1417F8744F
+ for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 03:49:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W7Zkz66z9E1o for <devel@linuxdriverproject.org>;
- Wed, 28 Oct 2020 02:19:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3579D87099
- for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 02:19:18 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id l8so1642018wmg.3
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 19:19:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WVHMlW22zmaanqCjAj9gyZ0CY+vafwHwsjZbqglXk8k=;
- b=veFAPiZyFsSmJXmi9irDlTKHloisSwa7nr74nI3pF16WZtERGK+wWWsdI7u0BJsyXG
- wUOO9LJuBTKZVBYdZzhsrcojGMaXo5HTNVZBhQsc7o3qKXmJdK+Rh2ckoIrAjlysz8Co
- wgqmU18bR7AkKkt+hSBFArJq7PhcX/yJryJhN33JFo2iU/7Noz/USuwmkidqDWqxwb/z
- lrPnnHPES12W9CiSIw/KCxcRrCwjLN/j8bf3VqNZPrtn+eN5v3PeaGv9F7fKXvGzm86L
- WyM6Uq5zLG/m+imwGYKh5+8jQe/Kc/MA2M6psKtrPMzFh+8xs2mBBgsNS40Tcs9jyXKC
- YPjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WVHMlW22zmaanqCjAj9gyZ0CY+vafwHwsjZbqglXk8k=;
- b=eLY5AWzsBWw5AatMc6/I97LZ4gXKxOOh7kpA/p6vejIlQxd+ocjGiX6QPI+3FVGHmi
- C38i5PMFcy8FJyqryPM6I+SRXInhb9LPGha67Ik0Qjq2GmvsdVjNaXF5d1rUcSpxyhjm
- 8OtX9VkixR01h2gFk6SUEM/UuUhrfmZWO7wNVYXVbr4XUgad6arJhFoA2yJebVmQZqRy
- f6fVauW/ge0W6R+LmtDddmi9NLmEMiWyBddQD6opKJblzgn5T9kqTJKpKcyO/hcD74A/
- sytondc6yzkzU5jE+gGb8pOsHLjBoIjhllAMB5rbkvQ7OLoSWSlZyXtVrhmoh8ikWzDB
- y2iQ==
-X-Gm-Message-State: AOAM531pOYegop+JDW/pd4xfp/D8wM0KJEqbk5fIIOiVzGWIGFs3le8K
- cqA/cOrUvFraO7ISpdLrVmo=
-X-Google-Smtp-Source: ABdhPJyKz5guLKOqCVYJSQrDJXqIRFVuywXz7JzPFuyH4l9n5f6+308R+xigyx6rhdERKFPKBz98Og==
-X-Received: by 2002:a1c:1b53:: with SMTP id b80mr5643874wmb.16.1603851556467; 
- Tue, 27 Oct 2020 19:19:16 -0700 (PDT)
-Received: from localhost.localdomain ([109.175.166.67])
- by smtp.googlemail.com with ESMTPSA id o3sm4540177wru.15.2020.10.27.19.19.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2020 19:19:15 -0700 (PDT)
-From: Manuel Palenzuela <manuelpalenzuelamerino@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: rtl8723bs: core: rtw_cmd: Fixed multiple brace
- coding style issues
-Date: Wed, 28 Oct 2020 02:17:16 +0000
-Message-Id: <20201028021716.622-1-manuelpalenzuelamerino@gmail.com>
-X-Mailer: git-send-email 2.26.2
+ with ESMTP id eUCSuphUuial for <devel@linuxdriverproject.org>;
+ Wed, 28 Oct 2020 03:49:42 +0000 (UTC)
+X-Greylist: delayed 03:55:31 by SQLgrey-1.7.6
+Received: from WIN-UT23E419NLN.home (mail1.afroze.com [124.29.202.41])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D46F587401
+ for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 03:49:41 +0000 (UTC)
+dkim-signature: v=1; c=relaxed/relaxed;
+ h=reply-to:from:subject:date:mime-version:content-type:content-transfer-encoding:message-id;
+ d=afroze.com; s=default; a=rsa-sha256;
+ bh=nbNbzwR/4YdmhsIZR8iJT4Bj2T9r8fs8I73qSRc4SL8=;
+ b=Soj5DbovBu94IZSsuNmxP1zMG7gPr3ons0O38UBd3QiKbJxeAlR73gdmuSaU0zmtw
+ Md2DDZ0t8+dAkCsrsMqdCDnW/waJgxEQVlQKWT12t+bXuEmWjuCHLk0e2U9GUZmKDq8
+ ocAU2wm4p80N3tUQaNk0T2p9C6B+2kSp3ZqcJvY=;
+Received: from User ([156.96.56.75]) by home with
+ MailEnable ESMTP; Wed, 28 Oct 2020 04:21:21 +0500
+From: "Ichwan Raden"<stkraden@afroze.com>
+Subject: From Raden Mas.,
+Date: Tue, 27 Oct 2020 16:21:27 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <F8FB9B02623D4F249BC94D456B3454ED.MAI@home>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,126 +61,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Manuel Palenzuela <manuelpalenzuelamerino@gmail.com>
+Reply-To: stkraden@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed multiple brace coding style issues in rtw_cmd.c
+Peace Be Unto You
 
-Signed-off-by: Manuel Palenzuela <manuelpalenzuelamerino@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 27 ++++++++----------------
- 1 file changed, 9 insertions(+), 18 deletions(-)
+I am Ichwan Raden Mas, the project Engineer with Al Shafar General Contracting (ASGC) a Construction Company here in Abu Dhabi U.A.E, 
+some  years back my organization awarded contracts to some foreign firms and this contract was over inflated over a period
+ of years to the tune of eight million  five hundred thousand America dollars in order for me to benefit from this contract.
+  However the original contractors have been paid their contract sum and the accrued balance which is eight million five hundred thousand America dollars 
+have been lying in a suspense account in one of the Bank in awaiting remittance.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 3ac286bbfc4e..4cf09d947d32 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -229,9 +229,8 @@ void _rtw_free_evt_priv(struct	evt_priv *pevtpriv)
- 
- 	while (!rtw_cbuf_empty(pevtpriv->c2h_queue)) {
- 		void *c2h = rtw_cbuf_pop(pevtpriv->c2h_queue);
--		if (c2h && c2h != (void *)pevtpriv) {
-+		if (c2h && c2h != (void *)pevtpriv)
- 			kfree(c2h);
--		}
- 	}
- 	kfree(pevtpriv->c2h_queue);
- 
-@@ -339,9 +338,8 @@ int rtw_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
- 	int res = _FAIL;
- 	struct adapter *padapter = pcmdpriv->padapter;
- 
--	if (cmd_obj == NULL) {
-+	if (cmd_obj == NULL)
- 		goto exit;
--	}
- 
- 	cmd_obj->padapter = padapter;
- 
-@@ -543,9 +541,8 @@ int rtw_cmd_thread(void *context)
- 
- 		if (pcmd->cmdcode == GEN_CMD_CODE(_Set_Drv_Extra)) {
- 			extra_parm = (struct drvextra_cmd_parm *)pcmd->parmbuf;
--			if (extra_parm->pbuf && extra_parm->size > 0) {
-+			if (extra_parm->pbuf && extra_parm->size > 0)
- 				kfree(extra_parm->pbuf);
--			}
- 		}
- 
- 		rtw_free_cmd_obj(pcmd);
-@@ -571,9 +568,8 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
- 	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 
--	if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
- 		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SCAN, 1);
--	}
- 
- 	ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
- 	if (ph2c == NULL)
-@@ -826,9 +822,8 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	/*  If not,  we have to copy the connecting AP's MAC address to it so that */
- 	/*  the driver just has the bssid information for PMKIDList searching. */
- 
--	if (pmlmepriv->assoc_by_bssid == false) {
-+	if (pmlmepriv->assoc_by_bssid == false)
- 		memcpy(&pmlmepriv->assoc_bssid[0], &pnetwork->network.MacAddress[0], ETH_ALEN);
--	}
- 
- 	psecnetwork->IELength = rtw_restruct_sec_ie(padapter, &pnetwork->network.IEs[0], &psecnetwork->IEs[0], pnetwork->network.IELength);
- 
-@@ -1349,9 +1344,8 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
- 
- 				/* DBG_871X("Set TrafficTransitionCount to %d\n", pmlmepriv->LinkDetectInfo.TrafficTransitionCount); */
- 
--				if (pmlmepriv->LinkDetectInfo.TrafficTransitionCount > 30/*TrafficTransitionLevel*/) {
-+				if (pmlmepriv->LinkDetectInfo.TrafficTransitionCount > 30/*TrafficTransitionLevel*/)
- 					pmlmepriv->LinkDetectInfo.TrafficTransitionCount = 30;
--				}
- 			}
- 		} else {
- 			/* DBG_871X("(+)Tx = %d, Rx = %d\n", pmlmepriv->LinkDetectInfo.NumTxOkInPeriod, pmlmepriv->LinkDetectInfo.NumRxUnicastOkInPeriod); */
-@@ -1405,9 +1399,8 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter)
- 	struct mlme_priv *pmlmepriv;
- 	pmlmepriv = &(padapter->mlmepriv);
- 
--	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
-+	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
- 		expire_timeout_chk(padapter);
--	}
- 
- 	/* for debug purpose */
- 	_linked_info_dump(padapter);
-@@ -1606,9 +1599,8 @@ static void rtw_lps_change_dtim_hdl(struct adapter *padapter, u8 dtim)
- 
- static void rtw_dm_ra_mask_hdl(struct adapter *padapter, struct sta_info *psta)
- {
--	if (psta) {
-+	if (psta)
- 		set_sta_rate(padapter, psta);
--	}
- }
- 
- u8 rtw_dm_ra_mask_wk_cmd(struct adapter *padapter, u8 *psta)
-@@ -1977,9 +1969,8 @@ u8 rtw_drvextra_cmd_hdl(struct adapter *padapter, unsigned char *pbuf)
- 		break;
- 	}
- 
--	if (pdrvextra_cmd->pbuf && pdrvextra_cmd->size > 0) {
-+	if (pdrvextra_cmd->pbuf && pdrvextra_cmd->size > 0)
- 		kfree(pdrvextra_cmd->pbuf);
--	}
- 
- 	return H2C_SUCCESS;
- }
--- 
-2.26.2
+I wish to have a deal with you as regards to this unpaid fund as all datas are correct and it is my duty to recommend the transfer of these funds to the company's contract
+ review board therefore I use this opportunity to write you based on the instructions received three days ago from the to submit the list of payment the company's 
+reports/expenditures and audited reports of revenues before the end of next week.
 
+If you AGREE with my offer, I want you to send to me now your
+
+FULL NAME:
+FULL ADDRESS :
+and a DIRECT TELEPHONE NUMBER:
+
+and this business will commence without delay as I will proceed to fix your name on the payment list instantly for approval before the end of next week.
+
+I hope you do not reject this offer as I await your reply soon.
+
+Thank You
+
+Ichwan Raden Mas
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
