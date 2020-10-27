@@ -1,63 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB4D729A844
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 10:51:48 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5478786712;
-	Tue, 27 Oct 2020 09:51:47 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jdni95+B+JUI; Tue, 27 Oct 2020 09:51:46 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBD5D866DA;
-	Tue, 27 Oct 2020 09:51:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A20781BF2FB
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 09:51:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A11529A854
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 10:52:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9E3EE8562D
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 09:51:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F1F0585653;
+	Tue, 27 Oct 2020 09:52:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V-T4g3EiXcbc; Tue, 27 Oct 2020 09:52:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D59D68577A;
+	Tue, 27 Oct 2020 09:52:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E34731BF2FB
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 09:52:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id ACDC420433
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 09:52:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xnzi1ggxE9M6 for <devel@linuxdriverproject.org>;
- Tue, 27 Oct 2020 09:51:42 +0000 (UTC)
+ with ESMTP id bxSwITm1L-oW for <devel@linuxdriverproject.org>;
+ Tue, 27 Oct 2020 09:52:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E34F885643
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 09:51:42 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5af.dynamic.kabel-deutschland.de
- [95.90.213.175])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9E7ED24179;
- Tue, 27 Oct 2020 09:51:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603792301;
- bh=P+4hgRaJiwOFtFWPGSIkLjccBO+KlAPIlwaQSCUk+mg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=g0Ax6670SZ19vUkEx2aYgLdaGXKJns0PZJ68PGsxL4ckZYt3b2Bs9FMmz7ZbfE3Ai
- RFsYVwmxse0VTPFOONVXWL6cmw5f0DFlHj7NG02GA8WP5i1caXBPm04VQMyxv4Xlnf
- Ibjri8PIGP+1TbQ/wAagk3zuaAm1gliT8GBtQeZM=
-Received: from mchehab by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1kXLdj-003FFB-Gk; Tue, 27 Oct 2020 10:51:39 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Jonathan Corbet <corbet@lwn.net>
-Subject: [PATCH v3 17/32] MAINTAINERS: fix broken doc refs due to yaml
- conversion
-Date: Tue, 27 Oct 2020 10:51:21 +0100
-Message-Id: <3b58afec5195d4ea505ea9b3f74d53f7abed4e6f.1603791716.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1603791716.git.mchehab+huawei@kernel.org>
-References: <cover.1603791716.git.mchehab+huawei@kernel.org>
+Received: from relay7-d.mail.gandi.net (relay7-d.mail.gandi.net
+ [217.70.183.200])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9F96A2042A
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 09:52:29 +0000 (UTC)
+X-Originating-IP: 93.29.109.196
+Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 34CAC20010;
+ Tue, 27 Oct 2020 09:52:22 +0000 (UTC)
+Date: Tue, 27 Oct 2020 10:52:21 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH 07/14] dt-bindings: media: i2c: Add A31 MIPI CSI-2
+ bindings documentation
+Message-ID: <20201027095221.GE168350@aptenodytes>
+References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
+ <20201023174546.504028-8-paul.kocialkowski@bootlin.com>
+ <20201026161450.gr3dqpltxw2ccc3s@gilmour.lan>
 MIME-Version: 1.0
+In-Reply-To: <20201026161450.gr3dqpltxw2ccc3s@gilmour.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,105 +61,271 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- linux-clk@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hans.verkuil@cisco.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============6682350185294756833=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Several *.txt files got converted to yaml. Update their
-references at MAINTAINERS file accordingly.
 
-Acked-by: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- Documentation/devicetree/bindings/clock/hi6220-clock.txt | 2 +-
- MAINTAINERS                                              | 9 ++++-----
- .../devicetree/bindings/net/wireless/silabs,wfx.yaml     | 2 +-
- 3 files changed, 6 insertions(+), 7 deletions(-)
+--===============6682350185294756833==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ILuaRSyQpoVaJ1HG"
+Content-Disposition: inline
 
-diff --git a/Documentation/devicetree/bindings/clock/hi6220-clock.txt b/Documentation/devicetree/bindings/clock/hi6220-clock.txt
-index ef3deb7b86ea..17ac4a3dd26a 100644
---- a/Documentation/devicetree/bindings/clock/hi6220-clock.txt
-+++ b/Documentation/devicetree/bindings/clock/hi6220-clock.txt
-@@ -4,7 +4,7 @@ Clock control registers reside in different Hi6220 system controllers,
- please refer the following document to know more about the binding rules
- for these system controllers:
- 
--Documentation/devicetree/bindings/arm/hisilicon/hisilicon.txt
-+Documentation/devicetree/bindings/arm/hisilicon/hisilicon.yaml
- 
- Required Properties:
- 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e73636b75f29..4511501cd59c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -978,7 +978,7 @@ M:	Michael Hennerich <Michael.Hennerich@analog.com>
- L:	linux-iio@vger.kernel.org
- S:	Supported
- W:	http://ez.analog.com/community/linux-device-drivers
--F:	Documentation/devicetree/bindings/iio/adc/adi,ad7768-1.txt
-+F:	Documentation/devicetree/bindings/iio/adc/adi,ad7768-1.yaml
- F:	drivers/iio/adc/ad7768-1.c
- 
- ANALOG DEVICES INC AD7780 DRIVER
-@@ -3860,7 +3860,7 @@ M:	Roger Quadros <rogerq@ti.com>
- L:	linux-usb@vger.kernel.org
- S:	Maintained
- T:	git git://git.kernel.org/pub/scm/linux/kernel/git/peter.chen/usb.git
--F:	Documentation/devicetree/bindings/usb/cdns-usb3.txt
-+F:	Documentation/devicetree/bindings/usb/cdns,usb3.yaml
- F:	drivers/usb/cdns3/
- 
- CADET FM/AM RADIO RECEIVER DRIVER
-@@ -7920,7 +7920,7 @@ HISILICON LPC BUS DRIVER
- M:	john.garry@huawei.com
- S:	Maintained
- W:	http://www.hisilicon.com
--F:	Documentation/devicetree/bindings/arm/hisilicon/hisilicon-low-pin-count.txt
-+F:	Documentation/devicetree/bindings/arm/hisilicon/low-pin-count.yaml
- F:	drivers/bus/hisi_lpc.c
- 
- HISILICON NETWORK SUBSYSTEM 3 DRIVER (HNS3)
-@@ -14902,7 +14902,6 @@ RENESAS ETHERNET DRIVERS
- R:	Sergei Shtylyov <sergei.shtylyov@gmail.com>
- L:	netdev@vger.kernel.org
- L:	linux-renesas-soc@vger.kernel.org
--F:	Documentation/devicetree/bindings/net/renesas,*.txt
- F:	Documentation/devicetree/bindings/net/renesas,*.yaml
- F:	drivers/net/ethernet/renesas/
- F:	include/linux/sh_eth.h
-@@ -18106,7 +18105,7 @@ M:	Yu Chen <chenyu56@huawei.com>
- M:	Binghui Wang <wangbinghui@hisilicon.com>
- L:	linux-usb@vger.kernel.org
- S:	Maintained
--F:	Documentation/devicetree/bindings/phy/phy-hi3660-usb3.txt
-+F:	Documentation/devicetree/bindings/phy/hisilicon,hi3660-usb3.yaml
- F:	drivers/phy/hisilicon/phy-hi3660-usb3.c
- 
- USB ISP116X DRIVER
-diff --git a/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml b/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
-index 43b5630c0407..510edd12ed19 100644
---- a/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
-+++ b/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
-@@ -24,7 +24,7 @@ description:
-     In addition, it is recommended to declare a mmc-pwrseq on SDIO host above
-     WFx. Without it, you may encounter issues with warm boot. The mmc-pwrseq
-     should be compatible with mmc-pwrseq-simple. Please consult
--    Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.txt for more
-+    Documentation/devicetree/bindings/mmc/mmc-pwrseq-simple.yaml for more
-     information.
- 
-   For SPI':'
--- 
-2.26.2
+
+--ILuaRSyQpoVaJ1HG
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Mon 26 Oct 20, 17:14, Maxime Ripard wrote:
+> i2c? :)
+
+Oops, good catch!
+=20
+> On Fri, Oct 23, 2020 at 07:45:39PM +0200, Paul Kocialkowski wrote:
+> > This introduces YAML bindings documentation for the A31 MIPI CSI-2
+> > controller.
+> >=20
+> > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > ---
+> >  .../media/allwinner,sun6i-a31-mipi-csi2.yaml  | 168 ++++++++++++++++++
+> >  1 file changed, 168 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/allwinner,s=
+un6i-a31-mipi-csi2.yaml
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/media/allwinner,sun6i-a3=
+1-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/allwinner,sun6i-=
+a31-mipi-csi2.yaml
+> > new file mode 100644
+> > index 000000000000..9adc0bc27033
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/allwinner,sun6i-a31-mipi-=
+csi2.yaml
+> > @@ -0,0 +1,168 @@
+> > +# SPDX-License-Identifier: GPL-2.0
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/media/allwinner,sun6i-a31-mipi-csi2=
+=2Eyaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Allwinner A31 MIPI CSI-2 Device Tree Bindings
+> > +
+> > +maintainers:
+> > +  - Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > +
+> > +properties:
+> > +  compatible:
+> > +    oneOf:
+> > +      - const: allwinner,sun6i-a31-mipi-csi2
+> > +      - items:
+> > +          - const: allwinner,sun8i-v3s-mipi-csi2
+> > +          - const: allwinner,sun6i-a31-mipi-csi2
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: Bus Clock
+> > +      - description: Module Clock
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: bus
+> > +      - const: mod
+> > +
+> > +  phys:
+> > +    items:
+> > +      - description: MIPI D-PHY
+> > +
+> > +  phy-names:
+> > +    items:
+> > +      - const: dphy
+> > +
+> > +  resets:
+> > +    maxItems: 1
+> > +
+> > +  # See ./video-interfaces.txt for details
+> > +  ports:
+> > +    type: object
+> > +
+> > +    properties:
+> > +      port@0:
+> > +        type: object
+> > +        description: Input port, connect to a MIPI CSI-2 sensor
+> > +
+> > +        properties:
+> > +          reg:
+> > +            const: 0
+> > +
+> > +          endpoint:
+> > +            type: object
+> > +
+> > +            properties:
+> > +              remote-endpoint: true
+> > +
+> > +              bus-type:
+> > +                const: 4
+> > +
+> > +              clock-lanes:
+> > +                maxItems: 1
+> > +
+> > +              data-lanes:
+> > +                minItems: 1
+> > +                maxItems: 4
+> > +
+> > +            required:
+> > +              - bus-type
+> > +              - data-lanes
+> > +              - remote-endpoint
+> > +
+> > +            additionalProperties: false
+> > +
+> > +        required:
+> > +          - endpoint
+> > +
+> > +        additionalProperties: false
+> > +
+> > +      port@1:
+> > +        type: object
+> > +        description: Output port, connect to a CSI controller
+> > +
+> > +        properties:
+> > +          reg:
+> > +            const: 1
+> > +
+> > +          endpoint:
+> > +            type: object
+> > +
+> > +            properties:
+> > +              remote-endpoint: true
+> > +
+> > +              bus-type:
+> > +                const: 4
+>=20
+> That one seems a bit weird. If the input and output ports are using the
+> same format, what is that "bridge" supposed to be doing?
+
+Fair enough. What this represents is the internal link (likely a FIFO) betw=
+een
+the two controllers. It is definitely not a MIPI CSI-2 bus but there's no
+mbus type for an internal link (probably because it's not a bus after all).
+
+Note that on the CSI controller side, we need the bus-type to be set to 4 f=
+or it
+to properly select the MIPI CSI-2 input. So it just felt more logical to ha=
+ve
+the same on the other side of the endpoint. On the other hand, we can just
+remove it on the MIPI CSI-2 controller side since it won't check it and hav=
+e it
+fallback to the unknown mbus type.
+
+But that would make the types inconsistent on the two sides of the link.
+I don't think V4L2 will complain about it at the moment, but it would also =
+make
+sense that it does eventually.
+
+What do you think?
+
+> > +            additionalProperties: false
+> > +
+> > +        required:
+> > +          - endpoint
+> > +
+> > +        additionalProperties: false
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - clocks
+> > +  - clock-names
+> > +  - resets
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/clock/sun8i-v3s-ccu.h>
+> > +    #include <dt-bindings/reset/sun8i-v3s-ccu.h>
+> > +
+> > +    mipi_csi2: mipi-csi2@1cb1000 {
+>=20
+> The unit name should be pretty standard, with the list here:
+>=20
+> https://github.com/devicetree-org/devicetree-specification/blob/master/so=
+urce/chapter2-devicetree-basics.rst#generic-names-recommendation
+>=20
+> there's nothing really standing out for us in that list, but given that
+> there's dsi, we should stick with csi
+
+Then what really surprises me is that the CSI controllers are called "camer=
+a",
+not "csi". If "camera" is supposed to cover both image sensor and camera se=
+nsor
+interfaces, it would probably fit MIPI CSI-2 as well.
+
+I see lots of names with -controller for controllers with specific devices
+attached, like "nand-controller" or "lcd-controller". Maybe using
+"camera-controller" for the CSI and MIPI CSI-2 controllers would make the m=
+ost
+sense, while keeping "camera" for the actual image sensors.
+
+What do you think?
+
+Cheers,
+
+Paul
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--ILuaRSyQpoVaJ1HG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+X7dUACgkQ3cLmz3+f
+v9HIzgf/VU3frpGzprIvTeXBh32se5uXZB/3cj0cUb++7oXeTXSc/db0LOwDu7jo
+/UyfvdYNUhuUMMOPT/ltm0ObonZzOv4GkAl0rjQYccWmwqAhi9/m/ac++ub7WjUk
+yv159tAbN+dorR6X2Q548Y8JKAYXBM/of0RVIs0ms/J8rnBkozXBv89gxTiIxrnH
+3swwmgsFAYEklUApRcIUcgSdsbxyRu10JTQ7vlmimb5/4Z3mEmOXGe7SkxKREFym
+fGumuTIXAWceJ0NLAXkUw3XxHku1Xczzmj78crBFvE0L8fUDKAoMFOG96oQqbI5t
+GlF0jyE3FZO/rbmGafQtSqE/B9JOFw==
+=CWwJ
+-----END PGP SIGNATURE-----
+
+--ILuaRSyQpoVaJ1HG--
+
+--===============6682350185294756833==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6682350185294756833==--
