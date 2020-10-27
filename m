@@ -1,93 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D8BEC29C73D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 19:31:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66FC129C745
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Oct 2020 19:34:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4013C87368;
-	Tue, 27 Oct 2020 18:31:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 18CFF8698E;
+	Tue, 27 Oct 2020 18:34:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x0cVhIsPOp+2; Tue, 27 Oct 2020 18:31:19 +0000 (UTC)
+	with ESMTP id 4rnyyMAE18iE; Tue, 27 Oct 2020 18:34:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B686287356;
-	Tue, 27 Oct 2020 18:31:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 218BE8695F;
+	Tue, 27 Oct 2020 18:34:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8EEB51BF82D
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 18:31:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C34951BF82D
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 18:34:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7299820535
- for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 18:31:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BF9E685FA2
+ for <devel@linuxdriverproject.org>; Tue, 27 Oct 2020 18:34:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oau5KS+CEDfO for <devel@linuxdriverproject.org>;
- Tue, 27 Oct 2020 18:31:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
- [66.111.4.224])
- by silver.osuosl.org (Postfix) with ESMTPS id 08F1220130
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 18:31:13 +0000 (UTC)
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 06047580124;
- Tue, 27 Oct 2020 14:31:12 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Tue, 27 Oct 2020 14:31:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=cqEApD9bNAy57QPWXCIsEAVmHi2
- EXCNHlS0Cgqo2X94=; b=rGRlQhRMZctKbHoVVx7plOw8460fHGVy1rIkJERfJ68
- m0cXpO/1m8ioFGbSZ7Mmn00NDt1zy90g8BP1UAK5Ka5vr/YjsxFRSK+ZVW5V17/t
- DWf/Fp4dCIQS75RyU2y5acJKC5m5XJnh8b6mf+AqeKljwaKYjy1kDYpkdPSIgDAL
- LpGug3ba/FFM50oDljluDoOxpQtfXOZbWqd4zz/8rfWdVkFU9NsGJ1h2sxekf5Af
- WFGKueFomjp7kv/PtPee8B/YPGHsD1rcQ4YP3OvoFrTJGt7dqxaK3mng0ijZST+c
- GVOXnQkR39yy0nJZAVciAAEkXRMCSCaw1A2RqAKNDOQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=cqEApD
- 9bNAy57QPWXCIsEAVmHi2EXCNHlS0Cgqo2X94=; b=Mf1sZYH1Q4Y47ymBY8cIAm
- sklnWxwyr0GmYNvLkDvmBIcQjXalpF5Aae12XQ23sAhMZxOV1YjQfTSmomZMVBSq
- Jrz5yrnEvhzG4hleuOElgzcWL7orU+QpbWa6bNMnB2sgplx3BfWAdS3KUBFLqo7V
- dGb5sylsqJlMSAKZ6GcNEfHkSlKtbDozGEoGi7pkVaNkVDymIvrmuIU4c8qQ/iyT
- IcgbtapixtbbUSdN4AYFMWYVNcOjgHNVHtLoba2RTR08BiEzJNYPmC5NacgGxYra
- nLvZoI6U6vh88Tf8yeoTpxCFmVIOt+sxpbSWtoccHo41nXmEE4PGCribreRdhkOg
- ==
-X-ME-Sender: <xms:bWeYXyEvWHkoH8N7oxrKcKrrUwz2zIslRKm9l42PBgutsRUoAiCZsg>
- <xme:bWeYXzXTRT3oQLN1LBb69LBOB-DHHIQib2IDyUq7LI0-7Fu6pC9VcY_n5ZL-Toh5S
- 5ezrsUiOFuXo4sqiPs>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrkeelgdduudegucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddunecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
- htvghrnhepuddvudfhkeekhefgffetffelgffftdehffduffegveetffehueeivddvjedv
- gfevnecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:bWeYX8LjuHT6zzcPG3QYfU6NXVKvSyy_o-KTQJLejLG7I39Th13Fsw>
- <xmx:bWeYX8GxFEfznQP79ChKgKymqtY9_GOrgcomWC1tAiCO0Oj9CDCgbg>
- <xmx:bWeYX4XZslNOPLdBYlD66gatRCrP1K4szL9126ZdXJpp6WM-DxSSeQ>
- <xmx:b2eYXzaabuwTpmdV64CRNDea6aQtU9pSxhpjfq6n6Lh0O-XYZpEEtQ>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id E385B3064683;
- Tue, 27 Oct 2020 14:31:08 -0400 (EDT)
-Date: Tue, 27 Oct 2020 19:31:07 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH 05/14] media: sun6i-csi: Only configure the interface
- data width for parallel
-Message-ID: <20201027183107.sofqfbmgg5aancmr@gilmour.lan>
-References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
- <20201023174546.504028-6-paul.kocialkowski@bootlin.com>
- <20201026160035.sr6kifrpkev773o6@gilmour.lan>
- <20201027093119.GD168350@aptenodytes>
+ with ESMTP id DTcZETgx43Sq for <devel@linuxdriverproject.org>;
+ Tue, 27 Oct 2020 18:34:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 541C685F8C
+ for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 18:34:32 +0000 (UTC)
+IronPort-SDR: +iPQGj+29iOVGFVg7FRRIOxLRRUOzLv3O3UW/Rw1pH2ikgRBfuNn/nY+tmnQy5D7w29TBOXPmU
+ RZAHq0oUiGZA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9787"; a="167359806"
+X-IronPort-AV: E=Sophos;i="5.77,424,1596524400"; d="scan'208";a="167359806"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Oct 2020 11:34:31 -0700
+IronPort-SDR: vgtnt8CiSaTvsJIy8iJpInEC0MBPC17kzslofU29En0MGQrjsQHz+6gXAsq14pPU1tj+ka2qVl
+ DNwSf3ISx5jQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,424,1596524400"; d="scan'208";a="535909362"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga005.jf.intel.com with ESMTP; 27 Oct 2020 11:34:29 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id 17CCA178; Tue, 27 Oct 2020 20:34:27 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sven Van Asbroeck <TheSven73@gmail.com>, devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: [PATCH v2] staging: fieldbus: Use %pM format specifier for MAC
+ addresses
+Date: Tue, 27 Oct 2020 20:34:27 +0200
+Message-Id: <20201027183427.25736-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <20201027093119.GD168350@aptenodytes>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,166 +70,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?utf-8?B?S8OpdmluIEwnaMO0cGl0YWw=?= <kevin.lhopital@bootlin.com>,
- Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
- Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
- Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Hans Verkuil <hans.verkuil@cisco.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0822994607868469755=="
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Convert to %pM instead of using custom code.
 
---===============0822994607868469755==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xds6nfzydlmcpk4h"
-Content-Disposition: inline
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+v2: dropped struct removal (Sven), rebased on top of v5.10-rc1
+ drivers/staging/fieldbus/anybuss/hms-profinet.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-
---xds6nfzydlmcpk4h
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Oct 27, 2020 at 10:31:19AM +0100, Paul Kocialkowski wrote:
-> Hi,
->=20
-> On Mon 26 Oct 20, 17:00, Maxime Ripard wrote:
-> > On Fri, Oct 23, 2020 at 07:45:37PM +0200, Paul Kocialkowski wrote:
-> > > Bits related to the interface data width do not have any effect when
-> > > the CSI controller is taking input from the MIPI CSI-2 controller.
-> >=20
-> > I guess it would be clearer to mention that the data width is only
-> > applicable for parallel here.
->=20
-> Understood, will change the wording in the next version.
->=20
-> > > In prevision of adding support for this case, set these bits
-> > > conditionally so there is no ambiguity.
-> > >=20
-> > > Co-developed-by: K=E9vin L'h=F4pital <kevin.lhopital@bootlin.com>
-> > > Signed-off-by: K=E9vin L'h=F4pital <kevin.lhopital@bootlin.com>
-> > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > ---
-> > >  .../platform/sunxi/sun6i-csi/sun6i_csi.c      | 42 +++++++++++------=
---
-> > >  1 file changed, 25 insertions(+), 17 deletions(-)
-> > >=20
-> > > diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c b/dri=
-vers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
-> > > index 5d2389a5cd17..a876a05ea3c7 100644
-> > > --- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
-> > > +++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
-> > > @@ -378,8 +378,13 @@ static void sun6i_csi_setup_bus(struct sun6i_csi=
-_dev *sdev)
-> > >  	unsigned char bus_width;
-> > >  	u32 flags;
-> > >  	u32 cfg;
-> > > +	bool input_parallel =3D false;
-> > >  	bool input_interlaced =3D false;
-> > > =20
-> > > +	if (endpoint->bus_type =3D=3D V4L2_MBUS_PARALLEL ||
-> > > +	    endpoint->bus_type =3D=3D V4L2_MBUS_BT656)
-> > > +		input_parallel =3D true;
-> > > +
-> > >  	if (csi->config.field =3D=3D V4L2_FIELD_INTERLACED
-> > >  	    || csi->config.field =3D=3D V4L2_FIELD_INTERLACED_TB
-> > >  	    || csi->config.field =3D=3D V4L2_FIELD_INTERLACED_BT)
-> > > @@ -395,6 +400,26 @@ static void sun6i_csi_setup_bus(struct sun6i_csi=
-_dev *sdev)
-> > >  		 CSI_IF_CFG_HREF_POL_MASK | CSI_IF_CFG_FIELD_MASK |
-> > >  		 CSI_IF_CFG_SRC_TYPE_MASK);
-> > > =20
-> > > +	if (input_parallel) {
-> > > +		switch (bus_width) {
-> > > +		case 8:
-> > > +			cfg |=3D CSI_IF_CFG_IF_DATA_WIDTH_8BIT;
-> > > +			break;
-> > > +		case 10:
-> > > +			cfg |=3D CSI_IF_CFG_IF_DATA_WIDTH_10BIT;
-> > > +			break;
-> > > +		case 12:
-> > > +			cfg |=3D CSI_IF_CFG_IF_DATA_WIDTH_12BIT;
-> > > +			break;
-> > > +		case 16: /* No need to configure DATA_WIDTH for 16bit */
-> > > +			break;
-> > > +		default:
-> > > +			dev_warn(sdev->dev, "Unsupported bus width: %u\n",
-> > > +				 bus_width);
-> > > +			break;
-> > > +		}
-> > > +	}
-> > > +
-> > >  	if (input_interlaced)
-> > >  		cfg |=3D CSI_IF_CFG_SRC_TYPE_INTERLACED;
-> > >  	else
-> > > @@ -440,23 +465,6 @@ static void sun6i_csi_setup_bus(struct sun6i_csi=
-_dev *sdev)
-> > >  		break;
-> > >  	}
-> > > =20
-> > > -	switch (bus_width) {
-> > > -	case 8:
-> > > -		cfg |=3D CSI_IF_CFG_IF_DATA_WIDTH_8BIT;
-> > > -		break;
-> > > -	case 10:
-> > > -		cfg |=3D CSI_IF_CFG_IF_DATA_WIDTH_10BIT;
-> > > -		break;
-> > > -	case 12:
-> > > -		cfg |=3D CSI_IF_CFG_IF_DATA_WIDTH_12BIT;
-> > > -		break;
-> > > -	case 16: /* No need to configure DATA_WIDTH for 16bit */
-> > > -		break;
-> > > -	default:
-> > > -		dev_warn(sdev->dev, "Unsupported bus width: %u\n", bus_width);
-> > > -		break;
-> > > -	}
-> > > -
-> >=20
-> > Is there any reason to move it around?
->=20
-> The main reason is cosmetics: input_parallel is introduced to match the a=
-lready
-> existing input_interlaced variable, so it made sense to me to have both o=
-f these
-> conditionals one after the other instead of spreading them randomly.
->=20
-> I can mention this in the commit log if you prefer.
-
-Yeah, that would great
-
-Maxime
-
---xds6nfzydlmcpk4h
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX5hnawAKCRDj7w1vZxhR
-xeemAPwI5/422bQUijrQXWpjRvLHcHc8Q+YVMP+kEvDRE9063QEAzaVJVId2nV7e
-pZYcb1nc2gvw1YyI1tTwdOxrxLcuhAM=
-=lTGY
------END PGP SIGNATURE-----
-
---xds6nfzydlmcpk4h--
-
---===============0822994607868469755==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/staging/fieldbus/anybuss/hms-profinet.c b/drivers/staging/fieldbus/anybuss/hms-profinet.c
+index 31c43a0a5776..eca7d97b8e85 100644
+--- a/drivers/staging/fieldbus/anybuss/hms-profinet.c
++++ b/drivers/staging/fieldbus/anybuss/hms-profinet.c
+@@ -66,10 +66,7 @@ static int profi_id_get(struct fieldbus_dev *fbdev, char *buf,
+ 			       sizeof(response));
+ 	if (ret < 0)
+ 		return ret;
+-	return snprintf(buf, max_size, "%02X:%02X:%02X:%02X:%02X:%02X\n",
+-		response.addr[0], response.addr[1],
+-		response.addr[2], response.addr[3],
+-		response.addr[4], response.addr[5]);
++	return snprintf(buf, max_size, "%pM\n", response.addr);
+ }
+ 
+ static bool profi_enable_get(struct fieldbus_dev *fbdev)
+-- 
+2.28.0
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0822994607868469755==--
