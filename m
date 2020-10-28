@@ -1,81 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A240C29CDE0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Oct 2020 05:42:42 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DDB129CE49
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Oct 2020 06:56:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 73673869AC;
-	Wed, 28 Oct 2020 04:42:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 913238743E;
+	Wed, 28 Oct 2020 05:56:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U0ZFj43CoJ_5; Wed, 28 Oct 2020 04:42:40 +0000 (UTC)
+	with ESMTP id fR08W0ccAYjR; Wed, 28 Oct 2020 05:56:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6DD7D8692E;
-	Wed, 28 Oct 2020 04:42:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DF044873B4;
+	Wed, 28 Oct 2020 05:56:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 33C051BF39C
- for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 04:42:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 376011BF333
+ for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 05:56:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2986F8731A
- for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 04:42:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3156787059
+ for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 05:56:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z1Tiru1W6uEa for <devel@linuxdriverproject.org>;
- Wed, 28 Oct 2020 04:42:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
- [209.85.218.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4CF3987311
- for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 04:42:36 +0000 (UTC)
-Received: by mail-ej1-f68.google.com with SMTP id z5so5329921ejw.7
- for <devel@driverdev.osuosl.org>; Tue, 27 Oct 2020 21:42:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=+6fUclNsrtm5gMXmrEHSQ5gd6ZSjUYsqvc8uCaTtZP0=;
- b=fU9AFtJP9N9ZrEkU32WW+ZW2hKYhgxdDWveN+vqd0EA9koblqxwLbEL1SGmEJRjgbr
- A3OclRlUTb68Dr0/FZWDZP8u8/W9vYBAjQXLNsl4QN5NaDo279ETxSQ72fIkwo7lOw+m
- JBHli4x7ihkigeBqgyY6l2oeWmRE3yXwlWvyIiUkYPmxyLl7LgToDG0Tlleff8ZCQD+/
- giA0UimlRXh8AzOxecDoMDnFTjfPEFu92uteMrHOyGq60Y2UXDMoPQsPTmnNH5GpqF9T
- FgK+aRg6lASTLTqTFixV3a5kHSIZXUfi3hgpLRX+pOxOHyeNzovThMTEz3lBq8QeU0iN
- Dwsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=+6fUclNsrtm5gMXmrEHSQ5gd6ZSjUYsqvc8uCaTtZP0=;
- b=J/YYAdEt80RYOezdy9cPPU0uFKbg2+30HPYTuaTblQgiRt+vvnX2c6J3F6AL2Ra/p7
- xDnYMULj8Dd/7bFrtm201W9E9Qxez4HLO26JiB5fV3y8VP6ezPGw/u4jc3RLIIFrcq2i
- bXrNMMhll1hmjJZZkthXt6hFTtQewWpoHmsOBhHAUzngx/cUSnt0IdZZd9lPKQo75I+M
- SPrUuKkkQMoShmEMZ3vrEB72LrIu3E5himWadHrn68vYoSbLqSpiNggfYpqPw6W1BXtf
- tAVmbz6ivtS9Qyk7wtCP37K1A1Wa5Myza7s/53u0qVIB7g8f+M715KQHXaiTWqExcAYQ
- hpKg==
-X-Gm-Message-State: AOAM531+F/TRxIliEV53/hjCxe6Y0yGrH9KgNfzryZkcbSTsJqRz/0Gf
- KRtlbGzj1FshvHczzi4jM1w=
-X-Google-Smtp-Source: ABdhPJx7nHQSeOffaFW7QGp1T0qmSUpnn1BwR3U0hx5uKJ38CFWJ/R5YTJQOq4Nu6fLxSIqc/y3Qhg==
-X-Received: by 2002:a17:906:1804:: with SMTP id
- v4mr5876544eje.201.1603860154714; 
- Tue, 27 Oct 2020 21:42:34 -0700 (PDT)
-Received: from ltop.local ([2a02:a03f:b7fe:f700:14ec:85cd:eb33:2a5c])
- by smtp.gmail.com with ESMTPSA id v14sm2104156ejh.6.2020.10.27.21.42.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2020 21:42:34 -0700 (PDT)
-Date: Wed, 28 Oct 2020 05:42:32 +0100
-From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: rtl8192e, rtl8192u: use correct notation to
- define pointer
-Message-ID: <20201028044232.qtzsnrrh7xgdzsoc@ltop.local>
-References: <20201026121435.GA782465@LEGION>
- <20201027112303.GA405023@kroah.com>
+ with ESMTP id BVAiGC-MLepU for <devel@linuxdriverproject.org>;
+ Wed, 28 Oct 2020 05:56:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4E68D86EA3
+ for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 05:56:35 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F1488222C8;
+ Wed, 28 Oct 2020 05:56:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603864594;
+ bh=gRejF2ll8OEp5JTX3hs4nwNi7qpEZn/Ri8YOjZpq59M=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=HSv007bm95x5QYWP2rdBK3O70AiNEpllgLGxddLb29tAlYw/MwPmZMaP8gQT09sIW
+ 4Od2e/41WSGCU56q5846xm5tFjxJlYx0iX8CivFB0oYNXbeVVYLgJXg3ua7lbj3p/F
+ GnSxbDckG+k8EaOMN3SpouOl41IyXx8tOKxQF0wY=
+Date: Wed, 28 Oct 2020 06:56:28 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Subject: Re: [RFC] wimax: move out to staging
+Message-ID: <20201028055628.GB244117@kroah.com>
+References: <20201027212448.454129-1-arnd@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201027112303.GA405023@kroah.com>
+In-Reply-To: <20201027212448.454129-1-arnd@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,31 +64,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Muhammad Usama Anjum <musamaanjum@gmail.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
+ linux-doc@vger.kernel.org, netdev@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>, linux-kernel@vger.kernel.org,
+ Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Johannes Berg <johannes@sipsolutions.net>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 27, 2020 at 12:23:03PM +0100, Greg KH wrote:
+On Tue, Oct 27, 2020 at 10:20:13PM +0100, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
 > 
-> Are you sure these changes are correct?  This isn't just a list of
-> structures after this at the end of the structure?
+> There are no known users of this driver as of October 2020, and it will
+> be removed unless someone turns out to still need it in future releases.
 > 
-> Please look at commit 5979afa2c4d1 ("staging: Replace zero-length array
-> with flexible-array member") which made most of these flexible arrays.
+> According to https://en.wikipedia.org/wiki/List_of_WiMAX_networks, there
+> have been many public wimax networks, but it appears that these entries
+> are all stale, after everyone has migrated to LTE or discontinued their
+> service altogether.
 > 
-> This is not a pointer, it really is an array, I think sparse is really
-> wrong here, be careful.
+> NetworkManager appears to have dropped userspace support in 2015
+> https://bugzilla.gnome.org/show_bug.cgi?id=747846, the
+> www.linuxwimax.org
+> site had already shut down earlier.
+> 
+> WiMax is apparently still being deployed on airport campus networks
+> ("AeroMACS"), but in a frequency band that was not supported by the old
+> Intel 2400m (used in Sandy Bridge laptops and earlier), which is the
+> only driver using the kernel's wimax stack.
+> 
+> Move all files into drivers/staging/wimax, including the uapi header
+> files and documentation, to make it easier to remove it when it gets
+> to that. Only minimal changes are made to the source files, in order
+> to make it possible to port patches across the move.
+> 
+> Also remove the MAINTAINERS entry that refers to a broken mailing
+> list and website.
+> 
+> Suggested-by: Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Sparse's warning is not about changing the definition of this member
-as if it was the argument of a function. It's about how can you use
-an array of structure when this structure has a flexible member.
-It's a recent warning, added purposely to catch this.
-See https://lore.kernel.org/r/CAHk-=wgJZ05ap8VQdzWDWJVWVtZiOYTc6cnNB8gNeQzEnfm-tw@mail.gmail.com
+Is this ok for me to take through the staging tree?  If so, I need an
+ack from the networking maintainers.
 
--- Luc
+If not, feel free to send it through the networking tree and add:
+
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
