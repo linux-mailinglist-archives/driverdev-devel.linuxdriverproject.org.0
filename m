@@ -1,51 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A86829CFDE
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Oct 2020 13:16:33 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7231D29D000
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Oct 2020 14:20:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B2BD48747D;
-	Wed, 28 Oct 2020 12:16:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7CD2286A11;
+	Wed, 28 Oct 2020 13:20:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zEpeRfNFEjwH; Wed, 28 Oct 2020 12:16:30 +0000 (UTC)
+	with ESMTP id sBCnA2OMEeq8; Wed, 28 Oct 2020 13:20:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 20E5E873A7;
-	Wed, 28 Oct 2020 12:16:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D95D386896;
+	Wed, 28 Oct 2020 13:20:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 461D71BF85D
- for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 12:16:28 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 36AB41BF857
+ for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 13:20:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0CA21204FF
- for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 12:16:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 327FE86746
+ for <devel@linuxdriverproject.org>; Wed, 28 Oct 2020 13:20:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5gAKNrs5NcuA for <devel@linuxdriverproject.org>;
- Wed, 28 Oct 2020 12:16:26 +0000 (UTC)
+ with ESMTP id M++iWxQZy733 for <devel@linuxdriverproject.org>;
+ Wed, 28 Oct 2020 13:20:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by silver.osuosl.org (Postfix) with ESMTPS id 0B84320394
- for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 12:16:25 +0000 (UTC)
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CLnc80h2PzLq9W;
- Wed, 28 Oct 2020 20:16:24 +0800 (CST)
-Received: from huawei.com (10.90.53.225) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 20:16:18 +0800
-From: Zhang Qilong <zhangqilong3@huawei.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH -next] staging: rtl8192u: fix wrong judgement in rtl8192_rx_isr
-Date: Wed, 28 Oct 2020 20:26:48 +0800
-Message-ID: <20201028122648.47959-1-zhangqilong3@huawei.com>
-X-Mailer: git-send-email 2.26.0.106.g9fadedd
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EBA2B8664E
+ for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 13:20:39 +0000 (UTC)
+Received: from mail-lj1-f172.google.com (mail-lj1-f172.google.com
+ [209.85.208.172])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F378E24745
+ for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 13:20:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603891239;
+ bh=+zcA/6pTJEiqhEIB6b9u13iGz/vyrIiNkbw5+OfR3RU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=G8BbRQyz/59LYY1N42cxCAJhwL18YtebLWmX5CIxnlOO5I2ajUNwDm2lyKa9cslSa
+ vQY7OdvwsOhagPj5BoHEV4HJ3tuxYWcLqCNhIwoKiuqVpk4NL3i1jX9p2cUUbEdOPy
+ KA+YZ6F+a9vywgLP/ys9YSb7KiyrzgLubZq7l5gU=
+Received: by mail-lj1-f172.google.com with SMTP id m20so6286728ljj.5
+ for <devel@driverdev.osuosl.org>; Wed, 28 Oct 2020 06:20:38 -0700 (PDT)
+X-Gm-Message-State: AOAM533mAMwyRKMW/8CldHKvAk+qxAiUewfe/LBNQe/RrgJjDKVrC3me
+ Qh7FzIzxWbd4z6lzsBz7H3OHMyGaMHZ3GZdv9Pw=
+X-Google-Smtp-Source: ABdhPJwPj+jJVO+NGNXNwzAOQ7QC4CMa7GE7JJfMww785BE/4plVH+2GBu818TRJNl+lheV7rkZknd5yyXXDquGphqE=
+X-Received: by 2002:a2e:b8c8:: with SMTP id s8mr3141184ljp.189.1603891237138; 
+ Wed, 28 Oct 2020 06:20:37 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.90.53.225]
-X-CFilter-Loop: Reflected
+References: <20201027212448.454129-1-arnd@kernel.org>
+ <20201028103456.GB1042@kadam>
+In-Reply-To: <20201028103456.GB1042@kadam>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Wed, 28 Oct 2020 14:20:20 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a03Oi-hKh9Db95K_ou_Lk5svWAo5HV8ZgxuktJi2RWS2A@mail.gmail.com>
+Message-ID: <CAK8P3a03Oi-hKh9Db95K_ou_Lk5svWAo5HV8ZgxuktJi2RWS2A@mail.gmail.com>
+Subject: Re: [RFC] wimax: move out to staging
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,44 +73,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: driverdevel <devel@driverdev.osuosl.org>,
+ "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jonathan Corbet <corbet@lwn.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>,
+ Networking <netdev@vger.kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The 'EPERM' cannot appear in the previous path, we
-should use '-EPERM' to check it. For example:
+On Wed, Oct 28, 2020 at 11:34 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> On Tue, Oct 27, 2020 at 10:20:13PM +0100, Arnd Bergmann wrote:
+> > From: Arnd Bergmann <arnd@arndb.de>
+> >
+> > There are no known users of this driver as of October 2020, and it will
+> > be removed unless someone turns out to still need it in future releases.
+> >
+> > According to https://en.wikipedia.org/wiki/List_of_WiMAX_networks, there
+> > have been many public wimax networks, but it appears that these entries
+> > are all stale, after everyone has migrated to LTE or discontinued their
+> > service altogether.
+>
+> Wimax is still pretty common in Africa.  But you have to buy an outdoor
+> antenae with all the software on it and an ethernet cable into your
+> house.
 
-Call trace:
-->rtl8192_rx_isr
-    ->usb_submit_urb
-       ->usb_hcd_submit_urb
-           ->rh_urb_enqueue
-	       ->rh_queue_status
-	           ->usb_hcd_link_urb_to_ep
+Ah, good to know, thanks for the information. I'll include that when
+I resend the patch, which I have to do anyway to avoid a small
+regression. I did a look at a couple of African ISPs that seemed to
+all have discontinued service, but I suppose I should have looked
+more carefully.
 
-Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
----
- drivers/staging/rtl8192u/r8192U_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+>  I don't know what software the antennaes are using.  Probably
+> Linux but with an out of tree kernel module is my guess.
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index 27dc181c4c9b..93676af98629 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -867,7 +867,7 @@ static void rtl8192_rx_isr(struct urb *urb)
- 	urb->context = skb;
- 	skb_queue_tail(&priv->rx_queue, skb);
- 	err = usb_submit_urb(urb, GFP_ATOMIC);
--	if (err && err != EPERM)
-+	if (err && err != -EPERM)
- 		netdev_err(dev,
- 			   "can not submit rxurb, err is %x, URB status is %x\n",
- 			   err, urb->status);
--- 
-2.17.1
+Right, it seems very unlikely that they would be using the old
+Intel drivers, and it's also unlikely that they are updating those
+boxes to new kernels. I found a firmware image for Huawei
+BM623m, which runs a proprietary kernel module for the wimax
+stack on an MT7108 (arm926) phone chip running a
+linux-2.6.26.8-rt16 kernel.
 
+       Arnd
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
