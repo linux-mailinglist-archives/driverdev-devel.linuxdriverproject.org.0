@@ -1,66 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 916E629E9DD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 12:01:34 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8EEB29EA0E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 12:09:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8D83686B66;
-	Thu, 29 Oct 2020 11:01:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C47E1875A5;
+	Thu, 29 Oct 2020 11:09:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BpqxZfaHYz35; Thu, 29 Oct 2020 11:01:32 +0000 (UTC)
+	with ESMTP id pU3YszSCnzXq; Thu, 29 Oct 2020 11:09:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7BD94866EF;
-	Thu, 29 Oct 2020 11:01:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0928987595;
+	Thu, 29 Oct 2020 11:09:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DE99B1BF989
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 11:01:29 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6550E1BF4DB
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 11:09:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D5B8B8681D
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 11:01:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 501792266C
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 11:09:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dUCzNFRXpU5i for <devel@linuxdriverproject.org>;
- Thu, 29 Oct 2020 11:01:29 +0000 (UTC)
+ with ESMTP id KxQ3SgcJnD9V for <devel@linuxdriverproject.org>;
+ Thu, 29 Oct 2020 11:09:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2CC8C866EF
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 11:01:29 +0000 (UTC)
-IronPort-SDR: Qle4mCWqoLE31POUsUXdWSz73xwTyY7vBau76IaujJLt2foUmhvmJ1b4pjZbK8tTByrv9LLHjs
- 0WjskCMMfSBg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9788"; a="232594168"
-X-IronPort-AV: E=Sophos;i="5.77,429,1596524400"; d="scan'208";a="232594168"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2020 04:01:28 -0700
-IronPort-SDR: eMaa5xi5SHl0QoC9tv13+Piq3djYIamYBMiQaFbl1c/iOE5i39IJaOdhqdXBa/iKUZAh9QJeOC
- 2O+Mnu2m0A+w==
-X-IronPort-AV: E=Sophos;i="5.77,429,1596524400"; d="scan'208";a="526694084"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2020 04:01:26 -0700
-Received: from andy by smile with local (Exim 4.94)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1kY5hN-001C1w-7i; Thu, 29 Oct 2020 13:02:29 +0200
-Date: Thu, 29 Oct 2020 13:02:29 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Sven Van Asbroeck <thesven73@gmail.com>
-Subject: Re: [PATCH v2] staging: fieldbus: Use %pM format specifier for MAC
- addresses
-Message-ID: <20201029110229.GG4077@smile.fi.intel.com>
-References: <20201027183427.25736-1-andriy.shevchenko@linux.intel.com>
- <CAGngYiUbgkCy_ar1P4+V_=Ndx2yyOQ__MWXwDkksATsi6KUn6Q@mail.gmail.com>
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id EA72A204C4
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 11:09:24 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id 133so2033738pfx.11
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 04:09:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TqDb9D/f2X2CP3Fkvj1zCMZxt9qstXFPqe7a7lWneE8=;
+ b=Grnvl7CuBCAfvlzWxd3nbOUHfAwhikzkCx+olXgx09UATM/lpavPXOFURMYdII+Ni8
+ tTg/3gWdwS96cnUsRcgJK93WEVVTIhY1POEo+rkE1oQd+L3u5lT/B4VqJzFpUB2Q7Esa
+ Qs8l9rBv6JeHKkO583uLHywraQXmMpEaIl8MLX35eSm5DMIPP3RoiU2IvCKAGHzlXppa
+ ZXfN1UhY+3fRNdtCPXpqAT9Vbwc+13M2dBUUujp8EHeUF6eogNyeXw+iC5P5QUrSXG7k
+ WF9m0cecYHoqkSs/o4qIRYkaOzQvu3oKKc0FxFanrj/zcNKFO9EtLBWLH07wLKlExmjB
+ 840g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TqDb9D/f2X2CP3Fkvj1zCMZxt9qstXFPqe7a7lWneE8=;
+ b=spZtc5OdYhUZqMVWhAXjioCxzv/C2Xp/alWrrbMeG3tj262t96lL/SYveQPdkPgoWW
+ 1cFqO6VgBUVd+u/3+og6U7gsLqOgqjV5Hc/yXa5w0vxpIU1uUaApafYWpa+JPXLOnVj1
+ KW/mEX0rDzzuijM/y1EAoZIGSfT/xYKdUdepl60d39jZOQjpLKKT1ydvxsKxTCzgbdmk
+ KJZPlCYEDztEAflbZ2YZQZPcYYDviAE/hsP/wQ24Y5beQZ7PHjNgjhob6OdItqBkrIlg
+ jA6zeUsv5wTQoj1Y5vofI3MzV3FqJO9oKdKmF7fqI6pHQfoFskZtPRvE68YMfeD09sCq
+ xl/Q==
+X-Gm-Message-State: AOAM530OeJ7V+6YgyrhBgZzOabrzaRRFZcI2Jw6+4OfIhUA4No0vTqLa
+ kSKdayJw7mQMHI4fCFPQo7I=
+X-Google-Smtp-Source: ABdhPJymO3U8DMeuTV/Y/5ltTePE+K+hLbGfL/aHp/YOMaxhbrrFDMPELIQGjjuCvFUevmwZ01jXcw==
+X-Received: by 2002:a17:90a:34cd:: with SMTP id
+ m13mr3930815pjf.201.1603969764443; 
+ Thu, 29 Oct 2020 04:09:24 -0700 (PDT)
+Received: from localhost.localdomain (sau-465d4-or.servercontrol.com.au.
+ [43.250.207.1])
+ by smtp.gmail.com with ESMTPSA id e5sm3021697pjd.0.2020.10.29.04.09.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Oct 2020 04:09:23 -0700 (PDT)
+From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
+ straube.linux@gmail.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] drivers: staging: rtl8188eu: Fix spelling in two comments i.e
+ defalut to default
+Date: Thu, 29 Oct 2020 16:36:00 +0530
+Message-Id: <20201029110600.3091-1-unixbhaskar@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAGngYiUbgkCy_ar1P4+V_=Ndx2yyOQ__MWXwDkksATsi6KUn6Q@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,32 +88,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Oct 28, 2020 at 07:39:58PM -0400, Sven Van Asbroeck wrote:
-> On Tue, Oct 27, 2020 at 2:34 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> >
-> > +       return snprintf(buf, max_size, "%pM\n", response.addr);
-> 
-> Judging from a few Outreachy patches that have hit my inbox, snprintf() is
-> considered unsafe in a sysfs_get callback. It should be replaced by
-> scnprintf() or even better, sysfs_emit(), which was recently introduced
-> to address sprintf-variant issues in sysfs callbacks.
+Fixed two spelling in two different comments.
 
-It's already applied, I think you can send a follow up for above,
-which is good point, but not the scope of the patch (although
-they might have been unified together).
+s/defalut/default/p
 
--- 
-With Best Regards,
-Andy Shevchenko
+Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+---
+ Greg, I have included the driver name as you suggested.
 
+ drivers/staging/rtl8188eu/hal/rtl8188e_dm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
+index 1af919ff6d93..391c59490718 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
+@@ -52,7 +52,7 @@ static void Init_ODM_ComInfo_88E(struct adapter *Adapter)
+ 	 * The base index =
+ 	 * 12. +((12-n)/2)dB 13~?? = decrease tx pwr by -((n-12)/2)dB
+ 	 */
+-	dm_odm->BbSwingIdxOfdm = 12; /*  Set defalut value as index 12. */
++	dm_odm->BbSwingIdxOfdm = 12; /*  Set default value as index 12. */
+ 	dm_odm->BbSwingIdxOfdmCurrent = 12;
+ 	dm_odm->BbSwingFlagOfdm = false;
+
+@@ -109,7 +109,7 @@ static void Update_ODM_ComInfo_88E(struct adapter *Adapter)
+ 	 * The base index =
+ 	 * 12. +((12-n)/2)dB 13~?? = decrease tx pwr by -((n-12)/2)dB
+ 	 */
+-	dm_odm->BbSwingIdxOfdm = 12; /*  Set defalut value as index 12. */
++	dm_odm->BbSwingIdxOfdm = 12; /*  Set default value as index 12. */
+ 	dm_odm->BbSwingIdxOfdmCurrent = 12;
+ 	dm_odm->BbSwingFlagOfdm = false;
+
+--
+2.26.2
 
 _______________________________________________
 devel mailing list
