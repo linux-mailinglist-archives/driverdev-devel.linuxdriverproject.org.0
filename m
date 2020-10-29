@@ -1,114 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5CA629F185
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 17:32:07 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B37FC29F5CE
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 21:04:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 985A3228F1;
-	Thu, 29 Oct 2020 16:32:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8882886C99;
+	Thu, 29 Oct 2020 20:04:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ev2QAXJTvfpT; Thu, 29 Oct 2020 16:32:05 +0000 (UTC)
+	with ESMTP id wvZEAY5PKYTA; Thu, 29 Oct 2020 20:04:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BDF402270C;
-	Thu, 29 Oct 2020 16:32:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EF28E86C0C;
+	Thu, 29 Oct 2020 20:04:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8C1231BF5B5
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 16:31:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 33E891BF28F
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 20:04:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 88D7486B88
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 16:31:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 30BAD85C11
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 20:04:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DBeU0bGOQT7g for <devel@linuxdriverproject.org>;
- Thu, 29 Oct 2020 16:31:58 +0000 (UTC)
-X-Greylist: delayed 02:17:40 by SQLgrey-1.7.6
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2061.outbound.protection.outlook.com [40.107.223.61])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 63C2086B85
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 16:31:56 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nKYEfQi3c7SBlWtaDQ2CBiOXymhPbxQPzIBHW7YyXdq0uZbN2M+QxEn4EcrDUWm5VR4DHt/q5YFpOavsA5JTocMTsJsE12qEInWaErSWEF5S3eIXA+ySxdt41g5kMb6sf3aJzL5wPj4ASzOTwYA+I76LOSiTDPvmgTM326PVwTLejup3YqbRB+FYKURwREy3/QHPoH+JNraOABXZohv2LiRXTXXiB3t1/VNpDHPB8lsmQEPmI060U0QPCAo92R3fCkMzgM/TO0jRlwKrxKiCx9zGymsMhE+AmQ+pWzwhRSZYs5ow7G+hoBi9VyKMAuBadH4DL+MLLMkDzNuasJ8AdA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nXrdRTTPtu0hlZta0KsrFYFsx6zNG3RfVAsyDMv+iMw=;
- b=hcjiivV3AVZ5+LM807t9A1dPLVgtrD+cQDhEI0ptDGUo7fhz6ZPa5SCRr1tUQwemQPRuqvtIb7i2FGDz3b3yUy1ye+jPukLMW3/2pthrt3DFa1uLdQ/EYtHwpovhs5osOTODpD9PRZyyhJBZbOrUtUkAd88oL23JgjsrO3t1XO+WvJrLJYyeC8IbwSJluLDP/hbDplLTr6Cm7D1rvUchzgAxglKQ1pp/MJjuHG4mVT1XEmCForSrHsNvmKobX7N/OiuJIN7RXqmsvRzR/bnFJDbBwScH2mHkujwcfl+O1tcs5KRuRALk42FWFV9Bh6zskHE8gZ7Ypdy4QUx3PQe1kA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=alum.wpi.edu; dmarc=pass action=none header.from=alum.wpi.edu;
- dkim=pass header.d=alum.wpi.edu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alum.wpi.edu;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nXrdRTTPtu0hlZta0KsrFYFsx6zNG3RfVAsyDMv+iMw=;
- b=DVr9N2f0rwPSGYpsFjEC6ZE0KWlJ+YnqH+z45zo+cswK+gn5OtDCq0JtXz2uF8rQc3j6AmE1VuwqUSw8ZRP7TdJ3xwgF7flYwyIJaMqywI8gaK4AgFSQrswWoeedHHjc2mNZrbYKU/wE76ncm+OV1HuMkzJOBTODuxJYz1nNoK8=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=alum.wpi.edu;
-Received: from CY4PR22MB0392.namprd22.prod.outlook.com (2603:10b6:903:b7::19)
- by CY4PR22MB0104.namprd22.prod.outlook.com (2603:10b6:903:d::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.25; Thu, 29 Oct
- 2020 13:58:23 +0000
-Received: from CY4PR22MB0392.namprd22.prod.outlook.com
- ([fe80::20c0:ced7:76fc:f46d]) by CY4PR22MB0392.namprd22.prod.outlook.com
- ([fe80::20c0:ced7:76fc:f46d%11]) with mapi id 15.20.3499.019; Thu, 29 Oct
- 2020 13:58:22 +0000
-X-Gm-Message-State: AOAM531ZEn/opIDzsM/wA+ZCQJymrPD5Y0Zx8gBbO1t0zzOIb1tNSesQ
- vdF3vqNfd8zbMCQhXPXRmsAoeS7jIjtyvri+D7U=
-X-Google-Smtp-Source: ABdhPJxS1+nQ8y66RWllXcFX6CpqmyK7l2EbhZtOSMNl2unbaBg48zmMdW8653aM7TdJTlzeWlKOjkguHOz01SQbn4Y=
-X-Received: by 2002:a05:6214:1588:: with SMTP id
- m8mr4556655qvw.18.1603979549503; 
- Thu, 29 Oct 2020 06:52:29 -0700 (PDT)
-From: "Brian O'Keefe" <bokeefe@alum.wpi.edu>
-Date: Thu, 29 Oct 2020 09:52:16 -0400
-X-Gmail-Original-Message-ID: <CABtq2xReyqg1wJM7W1d=KWRNTNN0Q6HCgJMWcQ6DH=SmKcxQRg@mail.gmail.com>
-Message-ID: <CABtq2xReyqg1wJM7W1d=KWRNTNN0Q6HCgJMWcQ6DH=SmKcxQRg@mail.gmail.com>
-Subject: [PATCH] staging: rtl8723bs: Add 024c:0627 to the list of SDIO
- device-ids
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans de Goede <hdegoede@redhat.com>, 
- Larry Finger <Larry.Finger@lwfinger.net>
-X-Originating-IP: [209.85.214.181]
-X-ClientProxiedBy: CO2PR04CA0198.namprd04.prod.outlook.com
- (2603:10b6:104:5::28) To CY4PR22MB0392.namprd22.prod.outlook.com
- (2603:10b6:903:b7::19)
+ with ESMTP id zJWROc09WqdP for <devel@linuxdriverproject.org>;
+ Thu, 29 Oct 2020 20:04:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5847584E1A
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 20:04:29 +0000 (UTC)
+Received: from mail-oo1-f41.google.com (mail-oo1-f41.google.com
+ [209.85.161.41])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A1DC62087D
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 20:04:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604001868;
+ bh=AOvWudq0ZqsWRnN/qXnDh5LtmEQC83i+z8hhzYFp75c=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=E9pSr6O/G6YE5XFNmqJqljbHx3wSzq6bVnhYgluqrf/H7wEGt4aAL9MLa6Ef2g5bE
+ 4w5Ruk1xZvDR0sd7whf/fLVhUkTVh6Yvbg+wvF3ZK42Y28B6ivLMgvYklEgjEcZcBs
+ SnRh+ePJ2S1j6tL012nn1pFY9GPKgLLRWuNt5q28=
+Received: by mail-oo1-f41.google.com with SMTP id c25so1022294ooe.13
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 13:04:28 -0700 (PDT)
+X-Gm-Message-State: AOAM532N4ymDoJymhhUwRW7+YFgKCVXPBw9QqG43VKcyJ03FqEliUCGn
+ 64nNHUjQRzZBoxylSTSDNtOX3NIsWOlbUMGT9A==
+X-Google-Smtp-Source: ABdhPJzY69332/TXD/GEbGo1Phdkm8uP9368uPwVctCb5SZBvuiMltO4sKY7UEYa7BklecuGbw5fafj/oTXoXLnSFpE=
+X-Received: by 2002:a4a:dcc8:: with SMTP id h8mr4529803oou.81.1604001867553;
+ Thu, 29 Oct 2020 13:04:27 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from mail-pl1-f181.google.com (209.85.214.181) by
- CO2PR04CA0198.namprd04.prod.outlook.com (2603:10b6:104:5::28) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3499.18 via Frontend Transport; Thu, 29 Oct 2020 13:58:22 +0000
-Received: by mail-pl1-f181.google.com with SMTP id j5so1332578plk.7 for
- <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 06:58:22 -0700 (PDT)
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 92d455de-f20b-48e8-047b-08d87c12b2e3
-X-MS-TrafficTypeDiagnostic: CY4PR22MB0104:
-X-Microsoft-Antispam-PRVS: <CY4PR22MB0104076546271D5067F0068290140@CY4PR22MB0104.namprd22.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: SwjFN5MlnXFdVwRCGl3b9D8+mE2Ntj9IOhN4zP9ozThTMHPauBi1qo1QIlFuSqFJ9rNrOZjBGiy8/tXtO+qT3u/CENJYfJ8lxNiSuPjAklcl3nNLvAVNkEPydc23WGCHBSDLAFY/FnH80wb+AyWCTNXLPHjB9a7PYCp9yrkWzAJBTU1LRQo4/f9P6TVaJQYt/v8p/relrcp+Q8BPMssWMpdpVWH65aZqtgSaCLANzcKG703K+0x+8zb/lE2Aw2FyqrPOXchPXwbRJwLPJXCSWTeZ9P65qqe+rUNpo4UpFP2nX3zdy1fShX8EgbLZWKNKlImfuk6yFH9jaZht2k+jNg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY4PR22MB0392.namprd22.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(346002)(376002)(366004)(39850400004)(136003)(396003)(110136005)(66476007)(42186006)(66946007)(55446002)(75432002)(2906002)(86362001)(9686003)(66556008)(186003)(4326008)(6666004)(316002)(52116002)(8676002)(478600001)(4744005)(26005)(107886003)(786003)(5660300002)(8936002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: Rn47Ecu+5vrkNM79/3b2IsomguD3sY1m2Qe5mhiWTus/KkhotnQILY9yvQT7IES6HDXcvM4C36KOibyzL6yOaOP1Lo5BRIblq5iEBYjbmCiPEg6TSujHfT7A3D/sEP2j5J6iXSJsGau4aif4EDa/2qQ98R0xYn4bulTL7UUqWNWckEE/e0fSzDQpjOXDaGhvgUrdunMTHyzXY2pCnqu/3LAuRgGgZDk3Vr6SOtIpQadPz0SVj5M8sh6AcKG6eGsrXmvp6AeNZqZaYC2MnTvCSH9s45egyJPRMoqA7mvc6Me6bSDyaalFxaKNvX2ncBemuE4hCgpCzNM9pGxwaR30YHhOJfc29iHef6mf0FK/R+1JCpHMufxuX93MOFqOcihAtKSFtsHsOyTImOrXpQJquh+8KJyRb8esO/TQHsq5HRxYmhwD6kvBARaALlcgMaPuxXjk03weTIjpcWJQK1SMI2IkVVcq+Xc0WEZfkTCytjj7LuJ4ZcXXBcp9cihiheBI6auNdCmGmwOfZV1Ft9yYQ5yI2c8ReVIjgPahNYycIz1Onu8toUpuPrJuOyvFDLvC7baYQE8PpA8+w/Uh2trNaYZDl4Hd7jDo/3v+F6iesuwWjUzhgG3BrVraP9L84p0i9JlzR3AquRsZTJtEjmK6Wg==
-X-OriginatorOrg: alum.wpi.edu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 92d455de-f20b-48e8-047b-08d87c12b2e3
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR22MB0392.namprd22.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Oct 2020 13:58:22.7262 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46a737af-4f36-4dda-ae69-041afc96eaef
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: tGandzlHR35gP/fer3LWDQhzTVWhdj/QqO2+CkbJswTXYfb6aLCFIXX7oh00XyG0T6lo/YUDiU/zmv37vKa6kA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR22MB0104
+References: <20201020193850.1460644-1-helen.koike@collabora.com>
+ <20201020193850.1460644-6-helen.koike@collabora.com>
+In-Reply-To: <20201020193850.1460644-6-helen.koike@collabora.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 29 Oct 2020 15:04:16 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqK3xhPHscbB+waDqEjKeRoeZ0MNu88fp70g9CSC02Qopw@mail.gmail.com>
+Message-ID: <CAL_JsqK3xhPHscbB+waDqEjKeRoeZ0MNu88fp70g9CSC02Qopw@mail.gmail.com>
+Subject: Re: [PATCH v6 5/9] media: staging: rkisp1: remove unecessary clocks
+To: Helen Koike <helen.koike@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,35 +73,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-wireless@vger.kernel.org
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ "heiko@sntech.de" <heiko@sntech.de>, Robin Murphy <robin.murphy@arm.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ karthik.poduval@gmail.com,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mark Rutland <mark.rutland@arm.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add 024c:0627 to the list of SDIO device-ids, based on hardware found in
-the wild. This hardware exists on at least some Acer SW1-011 tablets.
+On Tue, Oct 20, 2020 at 2:39 PM Helen Koike <helen.koike@collabora.com> wrote:
+>
+> aclk_isp_wrap is a child of aclk_isp, and hclk_isp_wrap is a child of
+> hclk_isp, thus we can remove parents from the list.
+>
+> Also, for the isp0, we only need the ISP clock, ACLK and HCLK.
+> In the future we'll need a pixel clock for RK3288 and RK3399, and a JPEG
+> clock for RK3288.
+>
+> So with the goal to cleanup the dt-bindings and remove it from staging,
+> simplify clock names to isp, aclk and hclk.
+>
+> Assigned clocks are meant to refer to the full path in the clock tree,
+> i.e. the leaf in the tree.
+> For instance, in RK3399, the clock responsible for ACLK (ISP AXI CLOCK)
+> is aclk_isp0_wrapper.
+>
+> For reference, this is the isp clock topology on RK3399:
+>
+>  xin24m
+>     pll_npll
+>        npll
+>           clk_isp1
+>           clk_isp0
+>     pll_cpll
+>        cpll
+>           aclk_isp1
+>              aclk_isp1_noc
+>              hclk_isp1
+>                 aclk_isp1_wrapper
+>                 hclk_isp1_noc
+>           aclk_isp0
+>              hclk_isp1_wrapper
+>              aclk_isp0_wrapper
+>              aclk_isp0_noc
+>              hclk_isp0
+>                 hclk_isp0_wrapper
+>                 hclk_isp0_noc
+>  pclkin_isp1_wrapper
+>
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+>
+> ---
+>
+> Changes in V6:
+> - Define clocks in the top level, and use if/else schema to define how
+>   many for each compatible as sugested by Rob Herring on
+>   https://patchwork.linuxtv.org/project/linux-media/patch/20200722155533.252844-6-helen.koike@collabora.com/#122626
+> ---
+>  .../bindings/media/rockchip-isp1.yaml         | 44 +++++++++++++------
+>  drivers/staging/media/rkisp1/rkisp1-dev.c     |  8 ++--
+>  2 files changed, 33 insertions(+), 19 deletions(-)
 
-Signed-off-by: Brian O'Keefe <bokeefe@alum.wpi.edu>
----
- drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-index 5b1392deb0a7..7256d55fcc1b 100644
---- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-+++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-@@ -21,6 +21,7 @@ static const struct sdio_device_id sdio_ids[] =
-        { SDIO_DEVICE(0x024c, 0x0525), },
-        { SDIO_DEVICE(0x024c, 0x0623), },
-        { SDIO_DEVICE(0x024c, 0x0626), },
-+       { SDIO_DEVICE(0x024c, 0x0627), },
-        { SDIO_DEVICE(0x024c, 0xb723), },
-        { /* end: all zeroes */                         },
- };
---
-2.25.1
+Reviewed-by: Rob Herring <robh@kernel.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
