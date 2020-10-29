@@ -1,53 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB36329E8F3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 11:29:22 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 60A4F29E8F7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 11:29:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F361C226F3;
-	Thu, 29 Oct 2020 10:29:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B8744854F7;
+	Thu, 29 Oct 2020 10:29:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ePORaHNMQiUj; Thu, 29 Oct 2020 10:29:19 +0000 (UTC)
+	with ESMTP id 455rfP9uGKbp; Thu, 29 Oct 2020 10:29:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C5CF921543;
-	Thu, 29 Oct 2020 10:29:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CA6BD84FC9;
+	Thu, 29 Oct 2020 10:29:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2836D1BF41A
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 10:29:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AD8761BF41A
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 10:29:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1FD0721543
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 10:29:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AA97586987
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 10:29:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id me3rnQIcuj4I for <devel@linuxdriverproject.org>;
- Thu, 29 Oct 2020 10:29:14 +0000 (UTC)
+ with ESMTP id Kq3YwrbhLrGJ for <devel@linuxdriverproject.org>;
+ Thu, 29 Oct 2020 10:29:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id C550021537
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 10:29:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 48D28869B6
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 10:29:29 +0000 (UTC)
 Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
  bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7466F20782;
- Thu, 29 Oct 2020 10:29:13 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E2E6F20782;
+ Thu, 29 Oct 2020 10:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603967354;
- bh=Tm90lS175FOlMzUHrCOla4NWfMoRabc/XtwGP38934s=;
+ s=default; t=1603967368;
+ bh=eDNouMwfAkiromxxzvTEEY8/dwiXpUUMsSqp2SyTwYg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=c+F9Ceb6vj5MVQVxuwPlZpmgEF0aL6DWXUB724MzjUWBua7+BnSaXtdFvQ7LAFGQi
- cIzicanGk9L1kDvINZFNQSNRl3/ELngkXO+Cxxr1jmgnHtxAwzXQ1lb3QfwA2eNen5
- nq24yTexr+k9QoLIHRfzGRxiT+UCC6NWNIghdCBE=
-Date: Thu, 29 Oct 2020 11:30:03 +0100
+ b=cRFnAUykbUa9YQUUF+cV72CvZM04bkeA5y2+5gY+ApFOFbxmgULMnhi46FL2Bhju/
+ 0/KTyBigOe8biQUv6iAigLUSdBiTEejzY7HO8O0cV/9D7GxH+jEGrzqzrfoFQhlTY4
+ KKPfCZR7Kqc9Dp3R+E4mXPUbczInzJ0qHmZZwAA0=
+Date: Thu, 29 Oct 2020 11:30:18 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 Subject: Re: [PATCH] drivers: staging: Fix spelling in comments
-Message-ID: <20201029103003.GA3763875@kroah.com>
+Message-ID: <20201029103018.GB3763875@kroah.com>
 References: <20201029100759.21668-1-unixbhaskar@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -77,18 +77,9 @@ On Thu, Oct 29, 2020 at 03:37:59PM +0530, Bhaskar Chowdhury wrote:
 > s/defalut/default/p
 > 
 > This is in linux-next.
-> 
-> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/hal/rtl8188e_dm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Please put the driver name in the subject line, like other patches for
-this file do.
+No need for this line, it doesn't make any sense here, right?
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
