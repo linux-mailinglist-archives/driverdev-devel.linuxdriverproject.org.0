@@ -1,81 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4C5C29EB57
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 13:10:56 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 99D6829EB40
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 13:07:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7C2C6875CF;
-	Thu, 29 Oct 2020 12:10:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9399A86BA3;
+	Thu, 29 Oct 2020 12:07:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EMbtrjOtQW0c; Thu, 29 Oct 2020 12:10:54 +0000 (UTC)
+	with ESMTP id eYbRsn-5321w; Thu, 29 Oct 2020 12:07:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E2C9F8739C;
-	Thu, 29 Oct 2020 12:10:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2BACC85F7E;
+	Thu, 29 Oct 2020 12:07:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 64CA51BF3E1
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:10:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 794DE1BF3E1
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:07:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5DC9986C2C
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:10:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7093D86B15
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:07:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kWnRK0n1ovQW for <devel@linuxdriverproject.org>;
- Thu, 29 Oct 2020 12:10:51 +0000 (UTC)
+ with ESMTP id H8jDmahuUFMQ for <devel@linuxdriverproject.org>;
+ Thu, 29 Oct 2020 12:07:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B4C7086B15
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 12:10:51 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id t14so2185554pgg.1
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 05:10:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=g3zwufxytovsv4kTwRU+SnKdZVRbVzOWxEcKZCYZJzA=;
- b=qMPSaiNsNNw1cLS/+knNFxPSAew/E3ROh1Rj3BJT2ujT/W6pNbKKGjfL5qh75gWxLW
- dzFRoWfhf3GYOnbEomh0cdRia4e24Fsrie4SI+r2ydiJ3ndOMY4sZm0puPCaBh+Q+CLS
- jkpraxFWJGESt8U57TNgsvwZqjdgM6NpcHi7xC3sxIHyKA/2LLIccSD441m1yS1RgTZ1
- syi9r1TBjFqSnDHRfcQHRhj6dmgZwATX7x+npojGAh1rxS9XLtBpJXS6CgyuMLW6iEag
- w/CDn5gA05HJLjKG5JSH9O3yo4m7HiSHcQ84WXhiew6sRuHV3MjNGU4VB2kFWGifJNBt
- 4P6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=g3zwufxytovsv4kTwRU+SnKdZVRbVzOWxEcKZCYZJzA=;
- b=YWqPwOQuPBSueWDidir59UtZjlQHp2G0T8VKy8EyXZgOXu62PYO87qG+DAFp01FsN1
- npnSiNDT0BOCZmbludE8jvXbQ9jUdF+FHn0Yc5dklOr3Z2iScfNBuwwo4lipT+CuaulM
- WBIOTfPcwDBloYCqeih1Y94FPa7Pi3OYR7kJgtWKg7ftE75ODGItWdz5t3yDwfkkybrE
- xdKCBkemPv+907I0r0MPxk1y3rqA+mqGl3uZ2ACLYke/ANIMc5LbyFA7E7+jt0w7n4cR
- 32y13mUEMgIOmUaiPo5KcCoqo0uzAwkbN3UhGjxKDYuXjVavhQJr2idTi26FrIq1pPkc
- QXtQ==
-X-Gm-Message-State: AOAM533piCKzkE52qzRpjdtKzYyPWyV17aGEZhgX1S53YiNTcKpO1ZyG
- 0iJ8Z7n0x0YXo0bxXjmZB7w=
-X-Google-Smtp-Source: ABdhPJx/V53I2aR34hRM5gw1I0M+6niOr2UOg5NebdJphF9Ww4O/OwCYFcBKYY1A1+in6Sg0d/FIDg==
-X-Received: by 2002:a17:90a:7e4:: with SMTP id
- m91mr4322725pjm.47.1603973451313; 
- Thu, 29 Oct 2020 05:10:51 -0700 (PDT)
-Received: from localhost.localdomain (sau-465d4-or.servercontrol.com.au.
- [43.250.207.1])
- by smtp.gmail.com with ESMTPSA id d10sm2528713pgk.74.2020.10.29.05.10.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Oct 2020 05:10:50 -0700 (PDT)
-From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
- straube.linux@gmail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH V2] drivers: staging: rtl8188eu: Fix spelling in two comments
- i.e defalut to default
-Date: Thu, 29 Oct 2020 17:37:25 +0530
-Message-Id: <20201029120725.11666-1-unixbhaskar@gmail.com>
-X-Mailer: git-send-email 2.26.2
+Received: from cpvds521.sideink.com (cpvds521.sideink.com [209.95.54.60])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C048B862F4
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 12:07:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cartrackgps.net; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=WLhRR6UpGJCehLfZiC6iWEepZT/z6qc1Ob8P5AhUoJg=; b=R2Ush8tyWdPRASy/PNqfT/9qJQ
+ LULzcXxyo60uixud2FjvyAChhdfVa3I6NYNaTUc67NDWZDlV7l0Z6AkZHD52+zxl+8AhKympImvbK
+ fxLYnzyp0mjyK9Sjom3AScmSq73or7A32wV5sglHQEJdZZiFv5oZsCSZ+5qy8DTigv5qYFNzPhP99
+ Ry8Uh6zjWHaSyF1OYwk5vp3b4UKDHRMzCKofjCgoL09G/3Gu0P2rXDhYSVClOLZ5v0pN/SjUL586U
+ FK0pT/8xvy/EyLQ4o35y/WVvdGtotKhFZ5Jtq6bzRjv6XfONBR2JOflHgkQonB5ZPw8D8c6kXJsjh
+ 9g78UsSw==;
+Received: from r167-61-172-106.dialup.adsl.anteldata.net.uy
+ ([167.61.172.106]:4306 helo=cartrackgps.net)
+ by cpvds521.sideink.com with esmtpsa (TLS1) tls
+ TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (Exim 4.93)
+ (envelope-from <infoctg@cartrackgps.net>) id 1kY6iQ-0000Vc-9i
+ for devel@driverdev.osuosl.org; Thu, 29 Oct 2020 13:07:38 +0100
+From: CarTrack GPS<infoctg@cartrackgps.net>
+To: devel@driverdev.osuosl.org
+Subject: Propuesta de GPS a Devel
+Date: 29 Oct 2020 09:08:34 -0300
+Message-ID: <20201029090833.EF12CEDC56A28840@cartrackgps.net>
 MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - cpvds521.sideink.com
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - cartrackgps.net
+X-Get-Message-Sender-Via: cpvds521.sideink.com: authenticated_id:
+ infoctg@cartrackgps.net
+X-Authenticated-Sender: cpvds521.sideink.com: infoctg@cartrackgps.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,45 +79,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: CarTrack GPS <infoctg@cartrackgps.net>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed two spelling in two different comments.
+Estimado Devel,
 
-s/defalut/default/p
+Le saluda Mario de la empresa Car Track GPS y estamos buscando =
 
-Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
----
- drivers/staging/rtl8188eu/hal/rtl8188e_dm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+distribuidores.
+Somos desarrolladores de software GPS para localizaci=F3n de =
 
-diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-index 1af919ff6d93..391c59490718 100644
---- a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-+++ b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-@@ -52,7 +52,7 @@ static void Init_ODM_ComInfo_88E(struct adapter *Adapter)
- 	 * The base index =
- 	 * 12. +((12-n)/2)dB 13~?? = decrease tx pwr by -((n-12)/2)dB
- 	 */
--	dm_odm->BbSwingIdxOfdm = 12; /*  Set defalut value as index 12. */
-+	dm_odm->BbSwingIdxOfdm = 12; /*  Set default value as index 12. */
- 	dm_odm->BbSwingIdxOfdmCurrent = 12;
- 	dm_odm->BbSwingFlagOfdm = false;
+veh=EDculos.
 
-@@ -109,7 +109,7 @@ static void Update_ODM_ComInfo_88E(struct adapter *Adapter)
- 	 * The base index =
- 	 * 12. +((12-n)/2)dB 13~?? = decrease tx pwr by -((n-12)/2)dB
- 	 */
--	dm_odm->BbSwingIdxOfdm = 12; /*  Set defalut value as index 12. */
-+	dm_odm->BbSwingIdxOfdm = 12; /*  Set default value as index 12. */
- 	dm_odm->BbSwingIdxOfdmCurrent = 12;
- 	dm_odm->BbSwingFlagOfdm = false;
+Este mes ofrecemos equipos Hunter 3G y 4G, tambi=E9n el KIT =
 
---
-2.26.2
+completo en 2 pagos.
+Tambi=E9n puede ofrecer el Software a empresas que quieran tener su =
+
+propio Sistema y as=ED obtener una ganancia sin tener que realizar =
+
+una inversi=F3n.
+
+Desarrollamos 2 nuevos equipos port=E1tiles de alta duraci=F3n de =
+
+bater=EDa. Sirven para rastreo de trailers, contenedores, =
+
+embarcaciones y tambi=E9n bienes. Prevenga el robo y recupere los =
+
+bienes colocando un equipo discreto dentro de una de las cajas de =
+
+mercader=EDa, o escondido dentro de un trailer. Los ladrones hoy no =
+
+escatiman esfuerzos y roban el trailer completo con toda la =
+
+carga.
+
+Con nuestra App en su tel=E9fono puede detener el veh=EDculo en caso =
+
+de robo, localizar en tiempo real, estimar distancia recorrida, =
+
+controlar combustible y saber qu=E9 hacen los choferes.
+
+La promoci=F3n le permitir=E1 tener su propia Plataforma Web a un =
+
+bajo costo. M=E1s de 200 empresas est=E1n ofreciendo servicios de =
+
+localizaci=F3n de veh=EDculos.
+Todos ellos comenzaron a trav=E9s nuestro KIT PROFESIONAL de GPS.
+Si le interesa comenzar un nuevo negocio y ofrecer localizaci=F3n =
+
+v=EDa web tome nota: no cobramos por veh=EDculo, el software es =
+
+ilimitado.
+
+Durante 30 d=EDas (hasta el 11/28/2020) ofrecemos un 10% de =
+
+descuento en la compra de nuestras soluciones de GPS.
+Este descuento le permitir=E1 adquirir nuestra soluci=F3n completa a =
+
+trav=E9s de una inversi=F3n m=E1s baja de lo que normalmente ofrecemos. =
+
+
+Nuestras soluciones permiten rastrear veh=EDculos o personas, con =
+
+bater=EDa interna, resistente al agua y a los golpes, alta =
+
+sensibilidad que permite rastrear en el interior de casas u =
+
+oficinas, muy bajo consumo y peque=F1o tama=F1o, bot=F3n de p=E1nico y =
+
+relay incluido sin costo.
+
+Solicite el nuevo cat=E1logo y propuesta comercial en espa=F1ol.
+Si gustan podemos programar una conferencia y hacer una video =
+
+llamada.
+
+Saludos cordiales,
+Lic. Mario de la Cruz
+Gerente Regional
+Whatsapp: +505 8641 5459
+www.cartrackgps.com
+
+Tenemos clientes en m=E1s de 100 pa=EDses y 20 a=F1os de experiencia =
+
+nos avalan.
+
+ID: 71383
 
 _______________________________________________
 devel mailing list
