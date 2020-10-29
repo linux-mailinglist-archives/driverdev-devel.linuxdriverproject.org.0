@@ -1,75 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C870529EB3B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 13:04:29 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C4C5C29EB57
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Oct 2020 13:10:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 41201862F4;
-	Thu, 29 Oct 2020 12:04:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7C2C6875CF;
+	Thu, 29 Oct 2020 12:10:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aqXuFrszLO6B; Thu, 29 Oct 2020 12:04:27 +0000 (UTC)
+	with ESMTP id EMbtrjOtQW0c; Thu, 29 Oct 2020 12:10:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C9B5F85DBB;
-	Thu, 29 Oct 2020 12:04:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E2C9F8739C;
+	Thu, 29 Oct 2020 12:10:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CE8A31BF3D2
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:04:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 64CA51BF3E1
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:10:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CB2C58484B
- for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:04:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5DC9986C2C
+ for <devel@linuxdriverproject.org>; Thu, 29 Oct 2020 12:10:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZPw40upcMWtt for <devel@linuxdriverproject.org>;
- Thu, 29 Oct 2020 12:04:24 +0000 (UTC)
+ with ESMTP id kWnRK0n1ovQW for <devel@linuxdriverproject.org>;
+ Thu, 29 Oct 2020 12:10:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EFF2F844FB
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 12:04:23 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id e2so2176686wme.1
- for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 05:04:23 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B4C7086B15
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 12:10:51 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id t14so2185554pgg.1
+ for <devel@driverdev.osuosl.org>; Thu, 29 Oct 2020 05:10:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=/fBEwjdUnJetUpnGDQAmLObEbyNOiNUb8MREdQ0fM5Y=;
- b=F0jRz+malxZMdZurANKSbPQLjBRgPIMu32fGJrJT4SMfWEMZqnrsSevt/MVVUntbiu
- Rg9WVRh0NfdZk/8Zw85JD9SPg7qkz+EYs5k361RT8tPT4O40pvDdURcRu29XWHC4F6lb
- Ikmm64nW3+IKdpwjRdxuukpKgCEeyrKCe3qrB+qwoeofjCozErXjJYC7/lYggDgxJLl9
- 46KDS0wcjh3fzldPKh2AfakkEWGm7xZdG9O3vB5s9rPNetoSf7la2UaWL0l8/K5DQlTR
- eInIeTXJVtcu90dQzOIHgb7hVX/edsokD1nbi/qd6iDgMlxgnrZq9reGKWLWF70qJ9Ck
- ht6Q==
+ bh=g3zwufxytovsv4kTwRU+SnKdZVRbVzOWxEcKZCYZJzA=;
+ b=qMPSaiNsNNw1cLS/+knNFxPSAew/E3ROh1Rj3BJT2ujT/W6pNbKKGjfL5qh75gWxLW
+ dzFRoWfhf3GYOnbEomh0cdRia4e24Fsrie4SI+r2ydiJ3ndOMY4sZm0puPCaBh+Q+CLS
+ jkpraxFWJGESt8U57TNgsvwZqjdgM6NpcHi7xC3sxIHyKA/2LLIccSD441m1yS1RgTZ1
+ syi9r1TBjFqSnDHRfcQHRhj6dmgZwATX7x+npojGAh1rxS9XLtBpJXS6CgyuMLW6iEag
+ w/CDn5gA05HJLjKG5JSH9O3yo4m7HiSHcQ84WXhiew6sRuHV3MjNGU4VB2kFWGifJNBt
+ 4P6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=/fBEwjdUnJetUpnGDQAmLObEbyNOiNUb8MREdQ0fM5Y=;
- b=mAt4uWEe9thD373gCaBVYK85jJaobPLQrNiq0XiYzoQI+eYN6hGPz2wyr+aA/y38VN
- g+5LumtgbgcYAJ3AImnrax6trRGwnWC6D+oHRikw58LwzKC1AZfw4zLmazUy2OARRmWO
- 2sZC1ye+qoUn1BXrK/ln7sy8chSoJgd+2YaEenQX4PDGy6NYako2uET4SNYkV04+tE1o
- OsFaYZR+rUFkefkJhfrax4047VwMCZFi+feD3hxb1aa3WrmdPEpcGPTNJSn5UFH/0alA
- SECdGtFAdm1WSvOLfBe0BkLQF3j7iAR9wKL7T1kMnwnbenxlpxZwXPDHgvRDntFbe8sX
- PbHA==
-X-Gm-Message-State: AOAM531m+lcA66AzUlrZB8sHAIQ1Bzg8AZsj0u1g5tgL6ghnv5EVNQdv
- YVqXSm3n70CNJJk8x2Lep30=
-X-Google-Smtp-Source: ABdhPJyUNWoEn05cWcwLgOHPOMr7TIlKg16tY9g6oExp0v6KDfsq/ZM+MpdTp04ObHhlP33k6Z2Fmw==
-X-Received: by 2002:a7b:c00b:: with SMTP id c11mr4012526wmb.96.1603973062311; 
- Thu, 29 Oct 2020 05:04:22 -0700 (PDT)
-Received: from localhost.localdomain ([109.175.166.67])
- by smtp.googlemail.com with ESMTPSA id i33sm4987218wri.79.2020.10.29.05.04.21
+ bh=g3zwufxytovsv4kTwRU+SnKdZVRbVzOWxEcKZCYZJzA=;
+ b=YWqPwOQuPBSueWDidir59UtZjlQHp2G0T8VKy8EyXZgOXu62PYO87qG+DAFp01FsN1
+ npnSiNDT0BOCZmbludE8jvXbQ9jUdF+FHn0Yc5dklOr3Z2iScfNBuwwo4lipT+CuaulM
+ WBIOTfPcwDBloYCqeih1Y94FPa7Pi3OYR7kJgtWKg7ftE75ODGItWdz5t3yDwfkkybrE
+ xdKCBkemPv+907I0r0MPxk1y3rqA+mqGl3uZ2ACLYke/ANIMc5LbyFA7E7+jt0w7n4cR
+ 32y13mUEMgIOmUaiPo5KcCoqo0uzAwkbN3UhGjxKDYuXjVavhQJr2idTi26FrIq1pPkc
+ QXtQ==
+X-Gm-Message-State: AOAM533piCKzkE52qzRpjdtKzYyPWyV17aGEZhgX1S53YiNTcKpO1ZyG
+ 0iJ8Z7n0x0YXo0bxXjmZB7w=
+X-Google-Smtp-Source: ABdhPJx/V53I2aR34hRM5gw1I0M+6niOr2UOg5NebdJphF9Ww4O/OwCYFcBKYY1A1+in6Sg0d/FIDg==
+X-Received: by 2002:a17:90a:7e4:: with SMTP id
+ m91mr4322725pjm.47.1603973451313; 
+ Thu, 29 Oct 2020 05:10:51 -0700 (PDT)
+Received: from localhost.localdomain (sau-465d4-or.servercontrol.com.au.
+ [43.250.207.1])
+ by smtp.gmail.com with ESMTPSA id d10sm2528713pgk.74.2020.10.29.05.10.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Oct 2020 05:04:21 -0700 (PDT)
-From: Manuel Palenzuela <manuelpalenzuelamerino@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: rtl8723bs: core: rtw_cmd: Fixed four if-statement
- coding style issues
-Date: Thu, 29 Oct 2020 12:02:28 +0000
-Message-Id: <20201029120228.7029-1-manuelpalenzuelamerino@gmail.com>
+ Thu, 29 Oct 2020 05:10:50 -0700 (PDT)
+From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
+ straube.linux@gmail.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH V2] drivers: staging: rtl8188eu: Fix spelling in two comments
+ i.e defalut to default
+Date: Thu, 29 Oct 2020 17:37:25 +0530
+Message-Id: <20201029120725.11666-1-unixbhaskar@gmail.com>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -84,62 +88,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Manuel Palenzuela <manuelpalenzuelamerino@gmail.com>
+Cc: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed four cases where the if-statement coding style wasn't following
-the guidelines.
+Fixed two spelling in two different comments.
 
-Signed-off-by: Manuel Palenzuela <manuelpalenzuelamerino@gmail.com>
+s/defalut/default/p
+
+Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8188eu/hal/rtl8188e_dm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 4cf09d947d32..55142faa2213 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -344,7 +344,7 @@ int rtw_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
- 	cmd_obj->padapter = padapter;
- 
- 	res = rtw_cmd_filter(pcmdpriv, cmd_obj);
--	if (_FAIL == res) {
-+	if (res == _FAIL) {
- 		rtw_free_cmd_obj(cmd_obj);
- 		goto exit;
- 	}
-@@ -460,7 +460,7 @@ int rtw_cmd_thread(void *context)
- 
- 		cmd_start_time = jiffies;
- 
--		if (_FAIL == rtw_cmd_filter(pcmdpriv, pcmd)) {
-+		if (rtw_cmd_filter(pcmdpriv, pcmd) == _FAIL) {
- 			pcmd->res = H2C_DROPPED;
- 			goto post_process;
- 		}
-@@ -908,7 +908,7 @@ u8 rtw_disassoc_cmd(struct adapter *padapter, u32 deauth_timeout_ms, bool enqueu
- 		res = rtw_enqueue_cmd(cmdpriv, cmdobj);
- 	} else {
- 		/* no need to enqueue, do the cmd hdl directly and free cmd parameter */
--		if (H2C_SUCCESS != disconnect_hdl(padapter, (u8 *)param))
-+		if (disconnect_hdl(padapter, (u8 *)param) != H2C_SUCCESS)
- 			res = _FAIL;
- 		kfree(param);
- 	}
-@@ -1249,7 +1249,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
- 		res = rtw_enqueue_cmd(pcmdpriv, pcmdobj);
- 	} else {
- 		/* no need to enqueue, do the cmd hdl directly and free cmd parameter */
--		if (H2C_SUCCESS != set_chplan_hdl(padapter, (unsigned char *)setChannelPlan_param))
-+		if (set_chplan_hdl(padapter, (unsigned char *)setChannelPlan_param) != H2C_SUCCESS)
- 			res = _FAIL;
- 
- 		kfree(setChannelPlan_param);
--- 
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
+index 1af919ff6d93..391c59490718 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
+@@ -52,7 +52,7 @@ static void Init_ODM_ComInfo_88E(struct adapter *Adapter)
+ 	 * The base index =
+ 	 * 12. +((12-n)/2)dB 13~?? = decrease tx pwr by -((n-12)/2)dB
+ 	 */
+-	dm_odm->BbSwingIdxOfdm = 12; /*  Set defalut value as index 12. */
++	dm_odm->BbSwingIdxOfdm = 12; /*  Set default value as index 12. */
+ 	dm_odm->BbSwingIdxOfdmCurrent = 12;
+ 	dm_odm->BbSwingFlagOfdm = false;
+
+@@ -109,7 +109,7 @@ static void Update_ODM_ComInfo_88E(struct adapter *Adapter)
+ 	 * The base index =
+ 	 * 12. +((12-n)/2)dB 13~?? = decrease tx pwr by -((n-12)/2)dB
+ 	 */
+-	dm_odm->BbSwingIdxOfdm = 12; /*  Set defalut value as index 12. */
++	dm_odm->BbSwingIdxOfdm = 12; /*  Set default value as index 12. */
+ 	dm_odm->BbSwingIdxOfdmCurrent = 12;
+ 	dm_odm->BbSwingFlagOfdm = false;
+
+--
 2.26.2
 
 _______________________________________________
