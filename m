@@ -1,72 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E17022A0B34
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Oct 2020 17:33:45 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7DF22A0C24
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Oct 2020 18:09:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3D4D28689B;
-	Fri, 30 Oct 2020 16:33:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1DB2E84808;
+	Fri, 30 Oct 2020 17:09:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a8fmqxhTjfwI; Fri, 30 Oct 2020 16:33:43 +0000 (UTC)
+	with ESMTP id okKMaJcc8LcG; Fri, 30 Oct 2020 17:09:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B2D5C86851;
-	Fri, 30 Oct 2020 16:33:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 97642847D1;
+	Fri, 30 Oct 2020 17:09:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E42561BF280
- for <devel@linuxdriverproject.org>; Fri, 30 Oct 2020 16:33:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DC3DD1BF33B
+ for <devel@linuxdriverproject.org>; Fri, 30 Oct 2020 17:09:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C47DB8731C
- for <devel@linuxdriverproject.org>; Fri, 30 Oct 2020 16:33:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D81E387443
+ for <devel@linuxdriverproject.org>; Fri, 30 Oct 2020 17:09:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iuiYdWbFLYwo for <devel@linuxdriverproject.org>;
- Fri, 30 Oct 2020 16:33:39 +0000 (UTC)
+ with ESMTP id 8D2boLF-XLaQ for <devel@linuxdriverproject.org>;
+ Fri, 30 Oct 2020 17:09:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BADDD8730D
- for <devel@driverdev.osuosl.org>; Fri, 30 Oct 2020 16:33:39 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id s21so7277078oij.0
- for <devel@driverdev.osuosl.org>; Fri, 30 Oct 2020 09:33:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=MwY/vQiiKvOTnY+5d4Wh+IuN2OSwrlDI1QDv3JPHT60=;
- b=oLUyWNS5uSUJgyqZ7YceSScMQRW2by0pmbUmszvWCduIaDFIB1pdsmyF70C199J7Hl
- uXlXZPxgvEBfK3BZBIXodtist+aWTy01J/o9N++pyBFjMfbZtw4eMjnMNB7FxaESvMai
- iJf+IqYXNh1X+NbSjmw4QmP4El4UsnEka+sSUD8YIjbzWxU6DQcNqufFSFcwGkQA2zFc
- lBoR7uY9ymNqM0hblQb8dxhCX8gG0hOTvmFSe7E0bznEbkHXri8R1y3CPyCD3TfF65VH
- 7R6gkj861qiWxMFGAEYWeS7llO/zhlWZXIY6Pf1osp39sPugGE/gQFi0ZgozIWX/NAM7
- eimA==
-X-Gm-Message-State: AOAM533x9wNAabAnpjQdUyajOCR4Se68kBOPHkUA4ZSYkwCHoBOO4zzJ
- ZWgFBzUsr+Y7xXNs5Y0YWQ==
-X-Google-Smtp-Source: ABdhPJy1NHaacIWHlnsek2tAF8Q1rBIIxcawIvq0Pez4qO1EJ2wmCFxJGI5JBYbP/xiW+nLe4IG4XA==
-X-Received: by 2002:aca:d401:: with SMTP id l1mr702570oig.96.1604075618577;
- Fri, 30 Oct 2020 09:33:38 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id h135sm1509717oib.23.2020.10.30.09.33.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2020 09:33:37 -0700 (PDT)
-Received: (nullmailer pid 3958664 invoked by uid 1000);
- Fri, 30 Oct 2020 16:33:36 -0000
-Date: Fri, 30 Oct 2020 11:33:36 -0500
-From: Rob Herring <robh@kernel.org>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EA42D87412
+ for <devel@driverdev.osuosl.org>; Fri, 30 Oct 2020 17:09:21 +0000 (UTC)
+IronPort-SDR: 90JBKAyXP7UuJDG6L1AbubJpOMvIULte3Gjc1EXZRLsVk0Um/gJm4JKSrF+eGpF+IXHbzFf/iX
+ 9kBuDQa3Za0g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="230273800"
+X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="230273800"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 10:09:21 -0700
+IronPort-SDR: 6h5zoX1GNtDsFP168aRhb7ecrZm42MbqsdR6+dcvvw9DtrFgwg5TWb3DCHAzA2dG/vHH52nasm
+ +LhisbIbvj7Q==
+X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="304817359"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 10:09:16 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id DA78F21FB9; Fri, 30 Oct 2020 18:56:40 +0200 (EET)
+Date: Fri, 30 Oct 2020 18:56:40 +0200
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
 To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Subject: Re: [PATCH 07/14] dt-bindings: media: i2c: Add A31 MIPI CSI-2
  bindings documentation
-Message-ID: <20201030163336.GA3909744@bogus>
+Message-ID: <20201030165640.GU26150@paasikivi.fi.intel.com>
 References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
  <20201023174546.504028-8-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20201023174546.504028-8-paul.kocialkowski@bootlin.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,15 +79,16 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
  Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
  Hans Verkuil <hverkuil@xs4all.nl>, linux-sunxi@googlegroups.com,
- Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Hans Verkuil <hans.verkuil@cisco.com>,
+ Rob Herring <robh+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Yong Deng <yong.deng@magewell.com>, Hans Verkuil <hans.verkuil@cisco.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+
+Hi Paul,
 
 On Fri, Oct 23, 2020 at 07:45:39PM +0200, Paul Kocialkowski wrote:
 > This introduces YAML bindings documentation for the A31 MIPI CSI-2
@@ -113,9 +107,6 @@ On Fri, Oct 23, 2020 at 07:45:39PM +0200, Paul Kocialkowski wrote:
 > +++ b/Documentation/devicetree/bindings/media/allwinner,sun6i-a31-mipi-csi2.yaml
 > @@ -0,0 +1,168 @@
 > +# SPDX-License-Identifier: GPL-2.0
-
-Dual license new bindings.
-
 > +%YAML 1.2
 > +---
 > +$id: http://devicetree.org/schemas/media/allwinner,sun6i-a31-mipi-csi2.yaml#
@@ -185,6 +176,10 @@ Dual license new bindings.
 > +
 > +              clock-lanes:
 > +                maxItems: 1
+
+You can drop bus-type and clock-lanes (assuming no lane remapping is
+supported by the hardware).
+
 > +
 > +              data-lanes:
 > +                minItems: 1
@@ -218,6 +213,9 @@ Dual license new bindings.
 > +
 > +              bus-type:
 > +                const: 4
+
+Same here.
+
 > +
 > +            additionalProperties: false
 > +
@@ -243,10 +241,6 @@ Dual license new bindings.
 > +    #include <dt-bindings/reset/sun8i-v3s-ccu.h>
 > +
 > +    mipi_csi2: mipi-csi2@1cb1000 {
-
-I agree with using 'csi' here as that is at least aligned with 'dsi' 
-meaning the host side of the protocol. We've not been consistent here...
-
 > +        compatible = "allwinner,sun8i-v3s-mipi-csi2",
 > +                     "allwinner,sun6i-a31-mipi-csi2";
 > +        reg = <0x01cb1000 0x1000>;
@@ -287,9 +281,11 @@ meaning the host side of the protocol. We've not been consistent here...
 > +    };
 > +
 > +...
-> -- 
-> 2.28.0
-> 
+
+-- 
+Kind regards,
+
+Sakari Ailus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
