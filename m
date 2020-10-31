@@ -1,47 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A2012A1B12
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 23:47:22 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 17FBC87543;
-	Sat, 31 Oct 2020 22:47:21 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RsRmwZbpNyk9; Sat, 31 Oct 2020 22:47:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0E4F687083;
-	Sat, 31 Oct 2020 22:47:20 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D33DD1BF25B
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 22:47:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 150892A1B2D
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 00:13:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D00EF86451
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 22:47:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4B4DC86D79;
+	Sat, 31 Oct 2020 23:13:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5DwbE7zGuzHL; Sat, 31 Oct 2020 23:13:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0870486D31;
+	Sat, 31 Oct 2020 23:13:42 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 526851BF286
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 23:13:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 49A5C86776
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 23:13:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RjYkPulamRwE for <devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 22:47:17 +0000 (UTC)
+ with ESMTP id M3ptwroNItQ1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 23:13:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from antispam.hanyang.ac.kr (antispam2.hanyang.ac.kr
  [166.104.177.104])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9E264865E0
- for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 22:47:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 99621860CD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 23:13:38 +0000 (UTC)
 Received: from hmail.hanyang.ac.kr ( [166.104.177.105])
  by antispam.hanyang.ac.kr (DEEPSoft WBlock.s.h 5.04.559)
- with ESMTP id 6889919594900763856
- for <devel@driverdev.osuosl.org>; Sun, 1 Nov 2020 07:47:14 +0900
+ with ESMTP id 6889926376654147902
+ for <driverdev-devel@linuxdriverproject.org>; Sun, 1 Nov 2020 08:13:36 +0900
 Received: from User ( [80.82.64.253]) by hmail.hanyang.ac.kr (psmtpd 5.50.0278)
- with ESMTP id 6889919594900763856
- for devel@driverdev.osuosl.org; Sun, 1 Nov 2020 07:47:09 +0900
+ with ESMTP id 6889926376654147902
+ for driverdev-devel@linuxdriverproject.org; Sun, 1 Nov 2020 08:13:28 +0900
 From: "COCA COLA."<susb@hanyang.ac.kr>
 Subject: COCA-COLA  LOTTERY ORGANIZATION.
-Date: Sat, 31 Oct 2020 15:47:09 -0700
+Date: Sat, 31 Oct 2020 16:13:27 -0700
 MIME-Version: 1.0
 X-WB-RES: 0: str=0001.0A682F16.5F9DA20A.004E, ss=4, sh, re=0.000, recu=0.000,
  reip=0.000, cl=4, cld=1, fgs=12
@@ -49,7 +53,7 @@ X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: 6889919594900763856
+Message-ID: 6889926376654147902
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
