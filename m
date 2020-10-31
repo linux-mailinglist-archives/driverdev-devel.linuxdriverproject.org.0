@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C2F32A11E4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 01:20:48 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E56AF2A11E8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 01:26:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 22F8386FA5;
-	Sat, 31 Oct 2020 00:20:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A849887124;
+	Sat, 31 Oct 2020 00:26:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z03c_2QnOcjS; Sat, 31 Oct 2020 00:20:46 +0000 (UTC)
+	with ESMTP id qwyO8jR6cxKd; Sat, 31 Oct 2020 00:26:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B6E6E85660;
-	Sat, 31 Oct 2020 00:20:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0FC1A8703C;
+	Sat, 31 Oct 2020 00:26:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E2ECD1BF9C1
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 00:20:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2C8691BF9C1
+ for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 00:26:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF06786F9E
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 00:20:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 29073871C3
+ for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 00:26:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vq+Yv0A84gy2 for <devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 00:20:42 +0000 (UTC)
+ with ESMTP id eeOHMka2vOgQ for <devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 00:26:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CFFC186F9B
- for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 00:20:42 +0000 (UTC)
-IronPort-SDR: ScMKzzGfNj21PypnwjcPRoo0/aVmCEvMre9EPxo/+MqXSd4INnKNUEpgfjo0OgRqX4j4ZKu+fj
- 3WUVUGBZIDsA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="147967252"
-X-IronPort-AV: E=Sophos;i="5.77,435,1596524400"; d="scan'208";a="147967252"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 50A61871C0
+ for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 00:26:44 +0000 (UTC)
+IronPort-SDR: FhTLMLa90HaDTt5zNPfT8JkFE/Zm7MApLxcWsELgNRTRImNRO7UoAvJaLC5wGpDPBuXHEMCrpg
+ q6OHidcI1z5g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="232860930"
+X-IronPort-AV: E=Sophos;i="5.77,435,1596524400"; d="scan'208";a="232860930"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2020 17:20:42 -0700
-IronPort-SDR: A432aum4EeTPX+mWirR1N23kyNxIvThPF1vF1qTnYYoiM+wM7YwzEwVRRdzE8Mxbx14zHAUsc1
- F9bWB4d428WQ==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 17:26:43 -0700
+IronPort-SDR: sCiEfL6rp+bEgXnufzSSoM6n39Te2l/u5S/ZWLiKQiqpNWsxiUJ1Pt07gwBKZOwvhGwEC9O8nw
+ sQWya9/fA6Pg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,435,1596524400"; d="scan'208";a="304906488"
+X-IronPort-AV: E=Sophos;i="5.77,435,1596524400"; d="scan'208";a="537250506"
 Received: from lkp-server02.sh.intel.com (HELO fcc9f8859912) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 30 Oct 2020 17:20:41 -0700
+ by orsmga005.jf.intel.com with ESMTP; 30 Oct 2020 17:26:41 -0700
 Received: from kbuild by fcc9f8859912 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1kYedM-0000Lc-RT; Sat, 31 Oct 2020 00:20:40 +0000
-Date: Sat, 31 Oct 2020 08:20:27 +0800
+ id 1kYejB-0000Ll-4n; Sat, 31 Oct 2020 00:26:41 +0000
+Date: Sat, 31 Oct 2020 08:26:34 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-linus] BUILD SUCCESS
- 2fcce37a3d2f2f3d7fa36aad2b71cbaca135ffd4
-Message-ID: <5f9cadcb.2+xijU3WBGX6ApV5%lkp@intel.com>
+Subject: [staging:staging-next] BUILD SUCCESS
+ c699e02d83c9877a552ef2d4a89f804fb025112e
+Message-ID: <5f9caf3a.5chE6op8bB++nALg%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -75,12 +75,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-linus
-branch HEAD: 2fcce37a3d2f2f3d7fa36aad2b71cbaca135ffd4  scripts: get_abi.pl: assume ReST format by default
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
+branch HEAD: c699e02d83c9877a552ef2d4a89f804fb025112e  Merge tag 'wimax-staging' of git://git.kernel.org:/pub/scm/linux/kernel/git/arnd/playground into staging-next
 
 elapsed time: 724m
 
-configs tested: 138
+configs tested: 154
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -89,13 +89,22 @@ More configs may be tested in the coming days.
 gcc tested configs:
 arm                                 defconfig
 arm64                            allyesconfig
+arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-arm64                               defconfig
 arm                         shannon_defconfig
 parisc                           alldefconfig
 h8300                    h8300h-sim_defconfig
 mips                      maltasmvp_defconfig
+arc                                 defconfig
+sh                          r7785rp_defconfig
+arm                          ep93xx_defconfig
+arc                     nsimosci_hs_defconfig
+h8300                     edosk2674_defconfig
+powerpc                    klondike_defconfig
+sh                             espt_defconfig
+m68k                         amcore_defconfig
+arm                         s3c2410_defconfig
 i386                             alldefconfig
 sh                           se7722_defconfig
 powerpc                 mpc834x_itx_defconfig
@@ -108,17 +117,21 @@ xtensa                  nommu_kc705_defconfig
 mips                           mtx1_defconfig
 sh                             shx3_defconfig
 mips                      loongson3_defconfig
-arc                     nsimosci_hs_defconfig
+arm                       imx_v4_v5_defconfig
+mips                         tb0219_defconfig
+s390                             allyesconfig
+arm                            xcep_defconfig
+powerpc                      ppc6xx_defconfig
 parisc                generic-64bit_defconfig
 powerpc                     asp8347_defconfig
 mips                        jmr3927_defconfig
 sh                          rsk7201_defconfig
-arm                         hackkit_defconfig
-openrisc                            defconfig
-arm                            hisi_defconfig
-h8300                               defconfig
-powerpc                     stx_gp3_defconfig
-arm                              alldefconfig
+nios2                               defconfig
+powerpc                   motionpro_defconfig
+arm                     eseries_pxa_defconfig
+sh                          r7780mp_defconfig
+arm                           omap1_defconfig
+powerpc                     kilauea_defconfig
 sh                           se7712_defconfig
 sparc                       sparc64_defconfig
 sh                           se7780_defconfig
@@ -131,13 +144,19 @@ arm                           efm32_defconfig
 mips                malta_kvm_guest_defconfig
 mips                           ip22_defconfig
 powerpc                 mpc837x_rdb_defconfig
+riscv                            alldefconfig
+sh                          sdk7786_defconfig
+arm                        cerfcube_defconfig
+sh                            hp6xx_defconfig
+alpha                               defconfig
+mips                         tb0226_defconfig
+sh                        dreamcast_defconfig
 arm                           corgi_defconfig
 sh                          kfr2r09_defconfig
-arm                      tct_hammer_defconfig
 powerpc                     sequoia_defconfig
 xtensa                  audio_kc705_defconfig
 mips                      maltaaprp_defconfig
-nios2                               defconfig
+arm                      tct_hammer_defconfig
 powerpc                       maple_defconfig
 m68k                        m5307c3_defconfig
 m68k                       m5208evb_defconfig
@@ -169,14 +188,11 @@ c6x                              allyesconfig
 nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
-alpha                               defconfig
 alpha                            allyesconfig
 xtensa                           allyesconfig
 h8300                            allyesconfig
-arc                                 defconfig
 sh                               allmodconfig
 parisc                              defconfig
-s390                             allyesconfig
 parisc                           allyesconfig
 s390                                defconfig
 i386                             allyesconfig
