@@ -1,58 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D05962A20B6
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 19:09:06 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 970562A20CE
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 19:47:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7D66F8687A;
-	Sun,  1 Nov 2020 18:09:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 29DED2046F;
+	Sun,  1 Nov 2020 18:47:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GOKamrWvLb+g; Sun,  1 Nov 2020 18:09:04 +0000 (UTC)
+	with ESMTP id 7ydO1gFj9mkW; Sun,  1 Nov 2020 18:47:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9649F867F7;
-	Sun,  1 Nov 2020 18:09:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2931920370;
+	Sun,  1 Nov 2020 18:47:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5CC331BF3E8
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 18:09:01 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D36E1BF33C
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 18:47:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 596C587283
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 18:09:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6A3E686D6F
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 18:47:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M0Wi3LocoygI for <devel@linuxdriverproject.org>;
- Sun,  1 Nov 2020 18:09:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0486A87282
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 18:09:01 +0000 (UTC)
-Subject: Re: [GIT PULL] Staging driver fixes for 5.10-rc2
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604254140;
- bh=lkY3DCaNZbN3pSBsRWPg6dP7MwaEAA0OdS6R54o5+8E=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=aDx5E6Pk5+V4xREqZxSUVQ0tlrxY7eGATo1P6Vkl9ACByd7Re7Qw5LEK+7yShh3k1
- 2TCmKSraQd4Q6X50jmh7SorvlW9BeJcuPYYnubh2NXyrwcv+9XZFMcTEWMVPEIgwbF
- qSzW2txgixZi4nbC1M2pqWUZ67MgCQpWXId/AxnI=
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20201101130921.GA4115310@kroah.com>
-References: <20201101130921.GA4115310@kroah.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20201101130921.GA4115310@kroah.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
- tags/staging-5.10-rc2
-X-PR-Tracked-Commit-Id: 7e97e4cbf30026b49b0145c3bfe06087958382c5
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 2376cca02d73a67ab28f03aa787777b74c3b0230
-Message-Id: <160425414064.10555.3823876563045716017.pr-tracker-bot@kernel.org>
-Date: Sun, 01 Nov 2020 18:09:00 +0000
-To: Greg KH <gregkh@linuxfoundation.org>
+ with ESMTP id 7-xSMJ0b5OsJ for <devel@linuxdriverproject.org>;
+ Sun,  1 Nov 2020 18:47:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.vitalaxia.com (unknown [195.110.34.91])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7238086D17
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 18:47:24 +0000 (UTC)
+Received: from User ([103.99.1.172]) by vitalaxia.com with MailEnable ESMTP;
+ Sat, 31 Oct 2020 01:31:45 +0100
+From: "Nicholas Toms"<m.meissonnet@uni-vers.net>
+Subject: Low-Cost Loans for SMEs & Investment Funding.
+Date: Fri, 30 Oct 2020 17:31:43 -0700
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <8E8B74F6D0B242E7A731922460D02E2D.MAI@vitalaxia.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,28 +54,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
- devel@linuxdriverproject.org
-MIME-Version: 1.0
+Reply-To: tomsnicholas@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pull request you sent on Sun, 1 Nov 2020 14:09:21 +0100:
+Dear 
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.10-rc2
+My name is Nicholas Toms, an investment portfolio manager with ACLL . We offer the right loan Investment funding with low 
+interest to finance your business or project ranging from US$1M to US$2BIllion.
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/2376cca02d73a67ab28f03aa787777b74c3b0230
+Kindly contact me for more details as I am open to questions.
 
-Thank you!
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+Sincerely,
+Nicholas Toms
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
