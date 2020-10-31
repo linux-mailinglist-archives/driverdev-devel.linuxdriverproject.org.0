@@ -1,44 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 175FB2A1360
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 05:04:55 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D2232A136C
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 05:48:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9A8E987204;
-	Sat, 31 Oct 2020 04:04:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B141D2E257;
+	Sat, 31 Oct 2020 04:48:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CnYcMDreFrzF; Sat, 31 Oct 2020 04:04:53 +0000 (UTC)
+	with ESMTP id rnJGgHWjZeKS; Sat, 31 Oct 2020 04:48:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 67506871C3;
-	Sat, 31 Oct 2020 04:04:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 4D1B72D002;
+	Sat, 31 Oct 2020 04:48:13 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DAFB51BF5A5
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 04:04:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C11B1BF2F8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 04:48:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D24D587270
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 04:04:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 552688770D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 04:48:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id osAGLRX5b6F2 for <devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 04:04:49 +0000 (UTC)
+ with ESMTP id dVeLAazP61SB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 04:48:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from on.cine21.com (unknown [115.71.12.197])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6B49B870EF
- for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 04:04:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D5E998768D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 04:48:09 +0000 (UTC)
 Received: from [80.82.64.115] ([80.82.64.115]) 
  by on.cine21.com ([192.168.0.23]) 
- with ESMTP id 1604117034.74827.140047996716800.on for <>; 
- Sat, 31 Oct 2020 13:03:52 +0900 (KST) 
+ with ESMTP id 1604119656.584456.140049433966336.on for <>; 
+ Sat, 31 Oct 2020 13:47:35 +0900 (KST) 
 From: "COCA-COLA"<webmaster@cine21.com>
 Subject: COCA-COLA  LOTTERY ORGANIZATION.
 X-TERRACE-DUMMYSUBJECT: Terrace Spam system *
-Date: Fri, 30 Oct 2020 21:04:07 -0700
+Date: Fri, 30 Oct 2020 21:47:50 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
@@ -46,8 +50,8 @@ X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-TERRACE-SPAMMARK: NO       (SR:3.00)                     
  (by Terrace)                                                   
-X-TERRACE-SID: 1604117034.74827.140047996716800.on
-Message-Id: <20201031040450.D24D587270@fraxinus.osuosl.org>
+X-TERRACE-SID: 1604119656.584456.140049433966336.on
+Message-Id: <20201031044811.552688770D@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
