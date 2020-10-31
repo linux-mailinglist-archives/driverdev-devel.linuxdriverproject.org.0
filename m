@@ -2,71 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E7972A12F1
-	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 03:39:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 175FB2A1360
+	for <lists+driverdev-devel@lfdr.de>; Sat, 31 Oct 2020 05:04:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ED02F873E6;
-	Sat, 31 Oct 2020 02:39:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9A8E987204;
+	Sat, 31 Oct 2020 04:04:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IUmgu0C8yVAB; Sat, 31 Oct 2020 02:39:16 +0000 (UTC)
+	with ESMTP id CnYcMDreFrzF; Sat, 31 Oct 2020 04:04:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 76F2B86EB0;
-	Sat, 31 Oct 2020 02:39:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 67506871C3;
+	Sat, 31 Oct 2020 04:04:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7F66F1BF36B
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 02:39:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DAFB51BF5A5
+ for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 04:04:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 70C4C2E24B
- for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 02:39:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D24D587270
+ for <devel@linuxdriverproject.org>; Sat, 31 Oct 2020 04:04:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z6sKQztA9f9z for <devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 02:39:11 +0000 (UTC)
+ with ESMTP id osAGLRX5b6F2 for <devel@linuxdriverproject.org>;
+ Sat, 31 Oct 2020 04:04:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from server.msgroupspa.com (unknown [185.149.113.111])
- by silver.osuosl.org (Postfix) with ESMTPS id 3F64A2E22E
- for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 02:39:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=msgroupspa.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- Message-ID:Reply-To:Subject:To:From:Date:MIME-Version:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=gOeEglh1DIJatPKqyvOsPs4e0Zw8Lzg9wwjnNfQdiM8=; b=nK3IDYT+DT+afspoRk1vnh030x
- JBANriWCpwGFqkJTHXsxgXz4zPu7XOm+ROYW+1LhSp6Xws1Wm9Gxv0Soi++3fpbt9358vEM1Vilpv
- 5xlCNIs/Y8Yak5vs3SvhE9OTE/TC6Vf04ze0iphAaRgUliWRhAsWS8s68bwFyUv4tdChHxOH/JwR2
- Vv+jWIv637j1UH3aZ6QLvXZrjdEmRucUTVxZtH4VnCDjrc4XZi9EwE5rzVsYDmyiNG+eYB+1QY+/8
- bPWWeacOm9DyYRD9g3bLyiVv0uincEH4/sdJ6fuUSabQfGsi095GX6rsmNCONVo4/rhE4INecsjOZ
- 9QdrBN4A==;
-Received: from [::1] (port=55352 helo=server.msgroupspa.com)
- by server.msgroupspa.com with esmtpa (Exim 4.93)
- (envelope-from <no-reply@msgroupspa.com>)
- id 1kYPRU-0006Ky-OT; Fri, 30 Oct 2020 16:07:24 +0800
+Received: from on.cine21.com (unknown [115.71.12.197])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6B49B870EF
+ for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 04:04:49 +0000 (UTC)
+Received: from [80.82.64.115] ([80.82.64.115]) 
+ by on.cine21.com ([192.168.0.23]) 
+ with ESMTP id 1604117034.74827.140047996716800.on for <>; 
+ Sat, 31 Oct 2020 13:03:52 +0900 (KST) 
+From: "COCA-COLA"<webmaster@cine21.com>
+Subject: COCA-COLA  LOTTERY ORGANIZATION.
+X-TERRACE-DUMMYSUBJECT: Terrace Spam system *
+Date: Fri, 30 Oct 2020 21:04:07 -0700
 MIME-Version: 1.0
-Date: Fri, 30 Oct 2020 16:07:24 +0800
-From: "Mr. John Galvan" <no-reply@msgroupspa.com>
-To: undisclosed-recipients:;
-Subject: Hello/Hallo
-User-Agent: Roundcube Webmail/1.4.8
-Message-ID: <8970d4ac30f8022b0ae628d9b69a2d43@msgroupspa.com>
-X-Sender: no-reply@msgroupspa.com
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server.msgroupspa.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - msgroupspa.com
-X-Get-Message-Sender-Via: server.msgroupspa.com: authenticated_id:
- no-reply@msgroupspa.com
-X-Authenticated-Sender: server.msgroupspa.com: no-reply@msgroupspa.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-TERRACE-SPAMMARK: NO       (SR:3.00)                     
+ (by Terrace)                                                   
+X-TERRACE-SID: 1604117034.74827.140047996716800.on
+Message-Id: <20201031040450.D24D587270@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,33 +60,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: galvan.johnny@outlook.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: mrcjames001@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgotLSAKU2lyL01hZGFtLAoKSSBoYXZlIGFjY2VzcyB0byB2ZXJ5IHZpdGFsIGluZm9ybWF0aW9u
-IHRoYXQgY2FuIGJlIHVzZWQgdG8gbW92ZSBhIGh1Z2UgCmFtb3VudCBvZiBtb25leS4gSSBoYXZl
-IGRvbmUgbXkgaG9tZXdvcmsgdmVyeSB3ZWxsIGFuZCBJIGhhdmUgdGhlIAptYWNoaW5lcmllcyBp
-biBwbGFjZSB0byBnZXQgaXQgZG9uZSBzaW5jZSBJIGFtIHN0aWxsIGluIGFjdGl2ZSBzZXJ2aWNl
-LiAKSWYgaXQgd2FzIHBvc3NpYmxlIGZvciBtZSB0byBkbyBpdCBhbG9uZSBJIHdvdWxkIG5vdCBo
-YXZlIGJvdGhlcmVkIApjb250YWN0aW5nIHlvdS4gVWx0aW1hdGVseSBJIG5lZWQgYW4gaG9uZXN0
-IGZvcmVpZ25lciB0byBwbGF5IGFuIAppbXBvcnRhbnQgcm9sZSBpbiB0aGUgY29tcGxldGlvbiBv
-ZiB0aGlzIGJ1c2luZXNzIHRyYW5zYWN0aW9uLiBTZW5kIApyZXNwb25kcyB0byB0aGlzIGVtYWls
-OsKgZ2FsdmFuLmpvaG5ueUBvdXRsb29rLmNvbQoKUmVnYXJkcywKSm9obiBHYWx2YW4KCi0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LQoKU2lyIC8gTWFkYW0sCgpJY2ggaGFiZSBadWdhbmcgenUgc2VociB3aWNodGlnZW4gSW5mb3Jt
-YXRpb25lbiwgbWl0IGRlbmVuIGljaCBlaW5lIApncm/Dn2UgTWVuZ2UgR2VsZCBiZXdlZ2VuIGth
-bm4uIEljaCBoYWJlIG1laW5lIEhhdXNhdWZnYWJlbiBzZWhyIGd1dCAKZ2VtYWNodCB1bmQgaWNo
-IGhhYmUgZGllIE1hc2NoaW5lbiwgdW0gc2llIHp1IGVybGVkaWdlbiwgZGEgaWNoIGltbWVyIApu
-b2NoIGltIGFrdGl2ZW4gRGllbnN0IGJpbi4gV2VubiBlcyBtaXIgbcO2Z2xpY2ggZ2V3ZXNlbiB3
-w6RyZSwgZXMgYWxsZWluZSAKenUgdHVuLCBow6R0dGUgaWNoIG1pY2ggbmljaHQgZGFydW0gZ2Vr
-w7xtbWVydCwgU2llIHp1IGtvbnRha3RpZXJlbi4gCkxldHp0ZW5kbGljaCBicmF1Y2hlIGljaCBl
-aW5lbiBlaHJsaWNoZW4gQXVzbMOkbmRlciwgZGVyIGVpbmUgd2ljaHRpZ2UgClJvbGxlIGJlaW0g
-QWJzY2hsdXNzIGRpZXNlcyBHZXNjaMOkZnRzdm9yZ2FuZ3Mgc3BpZWx0LiBTZW5kZW4gU2llIApB
-bnR3b3J0ZW4gYXVmIGRpZXNlIEUtTWFpbDogZ2FsdmFuLmpvaG5ueUBvdXRsb29rLmNvbQoKR3LD
-vMOfZSwKSm9obiBHYWx2YW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcK
-aHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpdmVyZGV2LWRldmVsCg==
+COCA-COLA LOTTERY ORGANIZATION
+TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
+
+Greetings Winner,
+
+If you are the correct owner of this email address? If yes then be glad this day as the result of the Coca-Cola lotto online e-mail address free-ticket winning draws of July 2020 ,held in United States of America has just been released and we are glad to announce to you that your email address won you the sweepstakes in the first category and you are entitled to claim the sum of One Million Two Hundred And Fifty Thousand United States Dollars(US$1,250,000.00). Your email address was entered for the online draw on this ticket No: 546-373-66773 and won on this Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
+
+On how to receive your won prize of US$1.250,000.00M. (One Million Two Hundred And Fifty Thousand United States Dollars Only) to enable Mr.James Curtise ascertain you as the rightful winner and receiver of the US$1.250,000.00M.Make sure you include the below listed information in your contact email to him.
+
+Your complete official names, country of origin and country of residence/work, contact telephone and mobile numbers, amount won,lucky numbers, date of draw. OPTIONAL: - [Sex, age, occupation and job title].
+
+Just in case you are thinking of how you won without entering then know again that this very draw of the Coca-Cola Lottery Organization in which you have emerged as a winner was a free ticket online email address draws were thousands of email addresses was collected from almost all world wide websites and used for the online draws/sweepstakes and during winners selection your email address came out among the first ten which won you the lottery in the first winnings category and entitles you to claim the US$1,250,000.00 dollars.
+
+
+Yours Faithfully,
+Mr.James Curtise
+COCA-COLA  LOTTERY ORGANIZATION.
+Online Winning Notification Department.
+Tel: +1-403-607-1548
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
