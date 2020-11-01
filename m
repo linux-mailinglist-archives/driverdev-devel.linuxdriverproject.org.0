@@ -1,49 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60DCA2A1DA0
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 12:39:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9587F86B12;
-	Sun,  1 Nov 2020 11:39:53 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qI1cJFW_TW5z; Sun,  1 Nov 2020 11:39:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 618E7863E1;
-	Sun,  1 Nov 2020 11:39:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9E3AE1BF41D
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 11:39:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D4952A1DA1
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 12:39:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 84F2B20362
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 11:39:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 49D84203E7;
+	Sun,  1 Nov 2020 11:39:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XxYBrm-7VQQ1; Sun,  1 Nov 2020 11:39:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id A859A20379;
+	Sun,  1 Nov 2020 11:39:53 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D6391BF41D
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 11:39:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1831386542
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 11:39:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hfguauEg-OO9 for <devel@linuxdriverproject.org>;
- Sun,  1 Nov 2020 11:39:48 +0000 (UTC)
-X-Greylist: delayed 00:45:03 by SQLgrey-1.7.6
+ with ESMTP id bg3N-txu73MP for <devel@linuxdriverproject.org>;
+ Sun,  1 Nov 2020 11:39:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from gloria.sntech.de (gloria.sntech.de [185.11.138.130])
- by silver.osuosl.org (Postfix) with ESMTPS id 682862035E
- for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 11:39:48 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 47487863E1
+ for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 11:39:50 +0000 (UTC)
 Received: from p57b773f8.dip0.t-ipconnect.de ([87.183.115.248]
  helo=phil.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kZB0P-00032L-1l; Sun, 01 Nov 2020 11:54:37 +0100
+ id 1kZB13-00032r-5V; Sun, 01 Nov 2020 11:55:17 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: linux-media@vger.kernel.org, Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v6 8/9] arm64: dts: rockchip: add isp0 node for rk3399
-Date: Sun, 01 Nov 2020 11:54:36 +0100
-Message-ID: <25468331.GQUMHoxoIT@phil>
-In-Reply-To: <20201020193850.1460644-9-helen.koike@collabora.com>
+Subject: Re: [PATCH v6 9/9] arm64: dts: rockchip: add isp and sensors for
+ Scarlet
+Date: Sun, 01 Nov 2020 11:55:16 +0100
+Message-ID: <14722083.QWuEjnDerj@phil>
+In-Reply-To: <20201020193850.1460644-10-helen.koike@collabora.com>
 References: <20201020193850.1460644-1-helen.koike@collabora.com>
- <20201020193850.1460644-9-helen.koike@collabora.com>
+ <20201020193850.1460644-10-helen.koike@collabora.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,18 +69,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Am Dienstag, 20. Oktober 2020, 21:38:49 CET schrieb Helen Koike:
-> From: Shunqian Zheng <zhengsq@rock-chips.com>
+Am Dienstag, 20. Oktober 2020, 21:38:50 CET schrieb Helen Koike:
+> From: Eddie Cai <eddie.cai.linux@gmail.com>
 > 
-> RK3399 has two ISPs, but only isp0 was tested.
-> Add isp0 node in rk3399 dtsi
+> Enable ISP and camera sensor ov2685 and ov5695 for Scarlet Chromebook
 > 
 > Verified with:
-> make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+>     make ARCH=arm64 dtbs_check
 > 
 > Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
+> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
 > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+
 
 looks good, and I'd like to apply this one after the drivers/media-patches
 of this series got applied.
@@ -88,54 +91,106 @@ of this series got applied.
 Thanks
 Heiko
 
-
-
-> 
 > ---
+>  .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++++
+>  1 file changed, 74 insertions(+)
 > 
-> Changes in v6:
-> - Add status = "disabled" in the isp0 node
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 26 ++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index ada724b12f014..af5f8e2c5e64d 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1723,6 +1723,32 @@ vopb_mmu: iommu@ff903f00 {
->  		status = "disabled";
->  	};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+> index 60cd1c18cd4e0..beee5fbb34437 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+> @@ -296,6 +296,52 @@ camera: &i2c7 {
 >  
-> +	isp0: isp0@ff910000 {
-> +		compatible = "rockchip,rk3399-cif-isp";
-> +		reg = <0x0 0xff910000 0x0 0x4000>;
-> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks = <&cru SCLK_ISP0>,
-> +			 <&cru ACLK_ISP0_WRAPPER>,
-> +			 <&cru HCLK_ISP0_WRAPPER>;
-> +		clock-names = "isp", "aclk", "hclk";
-> +		iommus = <&isp0_mmu>;
-> +		phys = <&mipi_dphy_rx0>;
-> +		phy-names = "dphy";
-> +		power-domains = <&power RK3399_PD_ISP0>;
-> +		status = "disabled";
+>  	/* 24M mclk is shared between world and user cameras */
+>  	pinctrl-0 = <&i2c7_xfer &test_clkout1>;
 > +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
+> +	/* Rear-facing camera */
+> +	wcam: camera@36 {
+> +		compatible = "ovti,ov5695";
+> +		reg = <0x36>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wcam_rst>;
 > +
-> +			port@0 {
-> +				reg = <0>;
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
+> +		clocks = <&cru SCLK_TESTCLKOUT1>;
+> +		clock-names = "xvclk";
+> +
+> +		avdd-supply = <&pp2800_cam>;
+> +		dvdd-supply = <&pp1250_cam>;
+> +		dovdd-supply = <&pp1800_s0>;
+> +		reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
+> +
+> +		port {
+> +			wcam_out: endpoint {
+> +				remote-endpoint = <&mipi_in_wcam>;
+> +				data-lanes = <1 2>;
 > +			};
 > +		};
 > +	};
 > +
->  	isp0_mmu: iommu@ff914000 {
->  		compatible = "rockchip,iommu";
->  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+> +	/* Front-facing camera */
+> +	ucam: camera@3c {
+> +		compatible = "ovti,ov2685";
+> +		reg = <0x3c>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ucam_rst>;
+> +
+> +		clocks = <&cru SCLK_TESTCLKOUT1>;
+> +		clock-names = "xvclk";
+> +
+> +		avdd-supply = <&pp2800_cam>;
+> +		dovdd-supply = <&pp1800_s0>;
+> +		dvdd-supply = <&pp1800_s0>;
+> +		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+> +
+> +		port {
+> +			ucam_out: endpoint {
+> +				remote-endpoint = <&mipi_in_ucam>;
+> +				data-lanes = <1>;
+> +			};
+> +		};
+> +	};
+>  };
+>  
+>  &cdn_dp {
+> @@ -353,10 +399,38 @@ &io_domains {
+>  	gpio1830-supply = <&pp1800_s0>;		/* APIO4_VDD;  4c 4d */
+>  };
+>  
+> +&isp0 {
+> +	status = "okay";
+> +
+> +	ports {
+> +		port@0 {
+> +			mipi_in_wcam: endpoint@0 {
+> +				reg = <0>;
+> +				remote-endpoint = <&wcam_out>;
+> +				data-lanes = <1 2>;
+> +			};
+> +
+> +			mipi_in_ucam: endpoint@1 {
+> +				reg = <1>;
+> +				remote-endpoint = <&ucam_out>;
+> +				data-lanes = <1>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&isp0_mmu {
+> +	status = "okay";
+> +};
+> +
+>  &max98357a {
+>  	sdmode-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+>  };
+>  
+> +&mipi_dphy_rx0 {
+> +	status = "okay";
+> +};
+> +
+>  &mipi_dsi {
+>  	status = "okay";
+>  	clock-master;
 > 
 
 
