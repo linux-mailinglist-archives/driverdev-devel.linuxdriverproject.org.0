@@ -1,59 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 150892A1B2D
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 00:13:45 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4B4DC86D79;
-	Sat, 31 Oct 2020 23:13:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5DwbE7zGuzHL; Sat, 31 Oct 2020 23:13:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0870486D31;
-	Sat, 31 Oct 2020 23:13:42 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 526851BF286
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 23:13:40 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B21DA2A1B8B
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 01:45:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 49A5C86776
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 23:13:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DCD8E87092;
+	Sun,  1 Nov 2020 00:45:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lsp8YgzzZqZ1; Sun,  1 Nov 2020 00:45:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6857087052;
+	Sun,  1 Nov 2020 00:45:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 174081BF25B
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 00:45:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 13B9087686
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 00:45:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M3ptwroNItQ1
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 23:13:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from antispam.hanyang.ac.kr (antispam2.hanyang.ac.kr
- [166.104.177.104])
- by whitealder.osuosl.org (Postfix) with ESMTP id 99621860CD
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 31 Oct 2020 23:13:38 +0000 (UTC)
-Received: from hmail.hanyang.ac.kr ( [166.104.177.105])
- by antispam.hanyang.ac.kr (DEEPSoft WBlock.s.h 5.04.559)
- with ESMTP id 6889926376654147902
- for <driverdev-devel@linuxdriverproject.org>; Sun, 1 Nov 2020 08:13:36 +0900
-Received: from User ( [80.82.64.253]) by hmail.hanyang.ac.kr (psmtpd 5.50.0278)
- with ESMTP id 6889926376654147902
- for driverdev-devel@linuxdriverproject.org; Sun, 1 Nov 2020 08:13:28 +0900
-From: "COCA COLA."<susb@hanyang.ac.kr>
-Subject: COCA-COLA  LOTTERY ORGANIZATION.
-Date: Sat, 31 Oct 2020 16:13:27 -0700
+ with ESMTP id GBIb2p6LCvdD for <devel@linuxdriverproject.org>;
+ Sun,  1 Nov 2020 00:45:16 +0000 (UTC)
+X-Greylist: delayed 00:18:47 by SQLgrey-1.7.6
+Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
+ [209.85.167.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0190A87685
+ for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 00:45:15 +0000 (UTC)
+Received: by mail-lf1-f68.google.com with SMTP id h6so12731341lfj.3
+ for <devel@driverdev.osuosl.org>; Sat, 31 Oct 2020 17:45:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=somia-fi.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Gb/J6pBTC+U79s+Too2NVqGf5ftZkxTHSHF78mWqzDw=;
+ b=TfVWvTb/uUJdxfYW5VobHdQCqYzSpD0QO5ICYOXPUCi2HuCQQfDPZCbq3lh28+m51J
+ fd9Mn1hrHDigXVGxmvtZpPLYqn/bzyH0/wdgFErf/uioNrgL3SDAjVZzEZ54MPN3RKL1
+ JXgi91z/mXWVCmqEbhjThxZ9Mba19sXp5F7kY2Wx1j7CFNFX+KA+6tpBvrMazHhilixP
+ uuY3BZoRQhNijCHeHBb3eL/gwmgS8bI8l0cp1Zv1s2xXVfF/ZTV6o6twxI37ImVnmHpj
+ d5MHfBobFZP5dIVgCLkyYwHcXqo/I6aNgH4uATWkqKBZjJhQBwHKzhLMRIvZJa347N58
+ Icow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Gb/J6pBTC+U79s+Too2NVqGf5ftZkxTHSHF78mWqzDw=;
+ b=k7LhZov+Z5m644QxKpqlOKW9OyewRZk9MLFXSInyJzmXojpnWrgCNCq7KG+J69bieg
+ cJGpOXLYgS5raMKGOB8FYkYOWJCE1qYO3G5VgryrjDVNzerBALNXpg2uzN8ouY+MZeqb
+ LEdBn/fPZTgKfxbZ+ZVX6Cv2zOEK4EsKuoRglPzt4gp/85Q1Q8LIwru3BXqLI7ETfK05
+ jnu4z0fE/83waP9q++UonCNkmtslQ9Ny2Ex+qC65j6ZNDoPWEZIjx8NOZ4cWVq9IJ/yB
+ 7lUV8g6MW9ayhEOHU/movFi1iMeRYQXoA98W7bLPaS3VyWBuYy2eGvVMpiPUKw1pBzS4
+ J5CQ==
+X-Gm-Message-State: AOAM5316gOSIBVibMA/hOtW65RGUtOfiYJcK5p8c/xnzV/YHJIIaUHF2
+ 9Nl337DGMf2UUIdGoym4eL7p8d07Z7ElSPje3M1/MA==
+X-Google-Smtp-Source: ABdhPJwBwAVgFbijYR3dZ2iWYVxrgF40gZwx2I+/lofd5+mwhGbetATjbiVxg/P0XNgHr+ckI0Tgrw==
+X-Received: by 2002:a05:651c:510:: with SMTP id
+ o16mr3766337ljp.409.1604190040276; 
+ Sat, 31 Oct 2020 17:20:40 -0700 (PDT)
+Received: from localhost.localdomain (cable-hki-50dc37-152.dhcp.inet.fi.
+ [80.220.55.152])
+ by smtp.gmail.com with ESMTPSA id s18sm1165065lfc.284.2020.10.31.17.20.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 31 Oct 2020 17:20:39 -0700 (PDT)
+From: Hassan Shahbazi <hassan.shahbazi@somia.fi>
+X-Google-Original-From: Hassan Shahbazi <hassan@ninchat.com>
+To: linus.walleij@linaro.org
+Subject: [PATCH] staging: fbtft: fb_watterott: fix usleep_range is preferred
+ over udelay
+Date: Sun,  1 Nov 2020 02:20:10 +0200
+Message-Id: <20201101002010.278537-1-hassan@ninchat.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-WB-RES: 0: str=0001.0A682F16.5F9DA20A.004E, ss=4, sh, re=0.000, recu=0.000,
- reip=0.000, cl=4, cld=1, fgs=12
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: 6889926376654147902
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,32 +88,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: contactad000@gmail.com
+Cc: devel@driverdev.osuosl.org, Hassan Shahbazi <hassan@ninchat.com>,
+ linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-COCA-COLA LOTTERY ORGANIZATION
-TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
+Fix the checkpath.pl issue on fb_watterott.c. write_vmem and
+write_vmem_8bit functions are within non-atomic context and can
+safely use usleep_range.
+see Documentation/timers/timers-howto.txt
 
-Greetings Winner,
+Signed-off-by: Hassan Shahbazi <hassan@ninchat.com>
+---
+ drivers/staging/fbtft/fb_watterott.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-If you are the correct owner of this email address? If yes then be glad this day as the result of the Coca-Cola lotto online e-mail address free-ticket winning draws of July 2020 ,held in United States of America has just been released and we are glad to announce to you that your email address won you the sweepstakes in the first category and you are entitled to claim the sum of One Million Two Hundred And Fifty Thousand United States Dollars(US$1,250,000.00). Your email address was entered for the online draw on this ticket No: 546-373-66773 and won on this Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
-
-On how to receive your won prize of US$1.250,000.00M. (One Million Two Hundred And Fifty Thousand United States Dollars Only) to enable Mr.James Curtise ascertain you as the rightful winner and receiver of the US$1.250,000.00M.Make sure you include the below listed information in your contact email to him.
-
-Your complete official names, country of origin and country of residence/work, contact telephone and mobile numbers, amount won,lucky numbers, date of draw. OPTIONAL: - [Sex, age, occupation and job title].
-
-Just in case you are thinking of how you won without entering then know again that this very draw of the Coca-Cola Lottery Organization in which you have emerged as a winner was a free ticket online email address draws were thousands of email addresses was collected from almost all world wide websites and used for the online draws/sweepstakes and during winners selection your email address came out among the first ten which won you the lottery in the first winnings category and entitles you to claim the US$1,250,000.00 dollars.
-
-
-Yours Faithfully,
-Mr.James Curtise
-COCA-COLA  LOTTERY ORGANIZATION.
-Online Winning Notification Department.
-Tel: +1-403-607-1548
-
+diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+index 76b25df376b8..afcc86a17995 100644
+--- a/drivers/staging/fbtft/fb_watterott.c
++++ b/drivers/staging/fbtft/fb_watterott.c
+@@ -84,7 +84,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 			par->txbuf.buf, 10 + par->info->fix.line_length);
+ 		if (ret < 0)
+ 			return ret;
+-		udelay(300);
++		usleep_range(300, 310);
+ 	}
+ 
+ 	return 0;
+@@ -124,7 +124,7 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
+ 			par->txbuf.buf, 10 + par->info->var.xres);
+ 		if (ret < 0)
+ 			return ret;
+-		udelay(700);
++		usleep_range(700, 710);
+ 	}
+ 
+ 	return 0;
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
