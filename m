@@ -1,51 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D4952A1DA1
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 12:39:59 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 49D84203E7;
-	Sun,  1 Nov 2020 11:39:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XxYBrm-7VQQ1; Sun,  1 Nov 2020 11:39:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A859A20379;
-	Sun,  1 Nov 2020 11:39:53 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1D6391BF41D
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 11:39:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA9EB2A1E34
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 14:08:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1831386542
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 11:39:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6992B87A63;
+	Sun,  1 Nov 2020 13:08:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nCnxMu4rk8TV; Sun,  1 Nov 2020 13:08:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 62C3887A72;
+	Sun,  1 Nov 2020 13:08:42 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 955C41BF285
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 13:08:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 91B228676C
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 13:08:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bg3N-txu73MP for <devel@linuxdriverproject.org>;
- Sun,  1 Nov 2020 11:39:50 +0000 (UTC)
+ with ESMTP id zcOjYS-r11D3 for <devel@linuxdriverproject.org>;
+ Sun,  1 Nov 2020 13:08:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from gloria.sntech.de (gloria.sntech.de [185.11.138.130])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 47487863E1
- for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 11:39:50 +0000 (UTC)
-Received: from p57b773f8.dip0.t-ipconnect.de ([87.183.115.248]
- helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kZB13-00032r-5V; Sun, 01 Nov 2020 11:55:17 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-media@vger.kernel.org, Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v6 9/9] arm64: dts: rockchip: add isp and sensors for
- Scarlet
-Date: Sun, 01 Nov 2020 11:55:16 +0100
-Message-ID: <14722083.QWuEjnDerj@phil>
-In-Reply-To: <20201020193850.1460644-10-helen.koike@collabora.com>
-References: <20201020193850.1460644-1-helen.koike@collabora.com>
- <20201020193850.1460644-10-helen.koike@collabora.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4CEB186731
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 13:08:39 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 757FD208B6;
+ Sun,  1 Nov 2020 13:08:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604236119;
+ bh=xuPt7xRSZgxYbAIJjWopt6d6RBzug/vvyxWqA/RixRQ=;
+ h=Date:From:To:Cc:Subject:From;
+ b=hR9F5nDU1OLiGo5DORUNgQrrJji9lxLFn3A84QvlNedJBmgDBMRNJV24VUc/aKtyH
+ OWyQIGSA1eHrVJl4BvzomdUY9ZBTHBSFfiBSLhzaIlDKtot5fTYtRoaUy8GoMOi8GL
+ 2XlMyBaJSTMITHNM4whaPHgjcT2NDym3LQCtvIWQ=
+Date: Sun, 1 Nov 2020 14:09:21 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging driver fixes for 5.10-rc2
+Message-ID: <20201101130921.GA4115310@kroah.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,144 +64,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- eddie.cai.linux@gmail.com, dafna.hirschfeld@collabora.com,
- robin.murphy@arm.com, linux-kernel@vger.kernel.org, karthik.poduval@gmail.com,
- linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
- hverkuil-cisco@xs4all.nl, mark.rutland@arm.com, kernel@collabora.com,
- zhengsq@rock-chips.com, jbx6244@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Am Dienstag, 20. Oktober 2020, 21:38:50 CET schrieb Helen Koike:
-> From: Eddie Cai <eddie.cai.linux@gmail.com>
-> 
-> Enable ISP and camera sensor ov2685 and ov5695 for Scarlet Chromebook
-> 
-> Verified with:
->     make ARCH=arm64 dtbs_check
-> 
-> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-> Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
-> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+The following changes since commit 3650b228f83adda7e5ee532e2b90429c03f7b9ec:
 
+  Linux 5.10-rc1 (2020-10-25 15:14:11 -0700)
 
-looks good, and I'd like to apply this one after the drivers/media-patches
-of this series got applied.
+are available in the Git repository at:
 
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/sta=
+ging-5.10-rc2
 
-Thanks
-Heiko
+for you to fetch changes up to 7e97e4cbf30026b49b0145c3bfe06087958382c5:
 
-> ---
->  .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++++
->  1 file changed, 74 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-> index 60cd1c18cd4e0..beee5fbb34437 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-> @@ -296,6 +296,52 @@ camera: &i2c7 {
->  
->  	/* 24M mclk is shared between world and user cameras */
->  	pinctrl-0 = <&i2c7_xfer &test_clkout1>;
-> +
-> +	/* Rear-facing camera */
-> +	wcam: camera@36 {
-> +		compatible = "ovti,ov5695";
-> +		reg = <0x36>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wcam_rst>;
-> +
-> +		clocks = <&cru SCLK_TESTCLKOUT1>;
-> +		clock-names = "xvclk";
-> +
-> +		avdd-supply = <&pp2800_cam>;
-> +		dvdd-supply = <&pp1250_cam>;
-> +		dovdd-supply = <&pp1800_s0>;
-> +		reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
-> +
-> +		port {
-> +			wcam_out: endpoint {
-> +				remote-endpoint = <&mipi_in_wcam>;
-> +				data-lanes = <1 2>;
-> +			};
-> +		};
-> +	};
-> +
-> +	/* Front-facing camera */
-> +	ucam: camera@3c {
-> +		compatible = "ovti,ov2685";
-> +		reg = <0x3c>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&ucam_rst>;
-> +
-> +		clocks = <&cru SCLK_TESTCLKOUT1>;
-> +		clock-names = "xvclk";
-> +
-> +		avdd-supply = <&pp2800_cam>;
-> +		dovdd-supply = <&pp1800_s0>;
-> +		dvdd-supply = <&pp1800_s0>;
-> +		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
-> +
-> +		port {
-> +			ucam_out: endpoint {
-> +				remote-endpoint = <&mipi_in_ucam>;
-> +				data-lanes = <1>;
-> +			};
-> +		};
-> +	};
->  };
->  
->  &cdn_dp {
-> @@ -353,10 +399,38 @@ &io_domains {
->  	gpio1830-supply = <&pp1800_s0>;		/* APIO4_VDD;  4c 4d */
->  };
->  
-> +&isp0 {
-> +	status = "okay";
-> +
-> +	ports {
-> +		port@0 {
-> +			mipi_in_wcam: endpoint@0 {
-> +				reg = <0>;
-> +				remote-endpoint = <&wcam_out>;
-> +				data-lanes = <1 2>;
-> +			};
-> +
-> +			mipi_in_ucam: endpoint@1 {
-> +				reg = <1>;
-> +				remote-endpoint = <&ucam_out>;
-> +				data-lanes = <1>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&isp0_mmu {
-> +	status = "okay";
-> +};
-> +
->  &max98357a {
->  	sdmode-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
->  };
->  
-> +&mipi_dphy_rx0 {
-> +	status = "okay";
-> +};
-> +
->  &mipi_dsi {
->  	status = "okay";
->  	clock-master;
-> 
+  staging: fieldbus: anybuss: jump to correct label in an error path (2020-=
+10-27 13:24:51 +0100)
 
+----------------------------------------------------------------
+Staging driver fixes for 5.10-rc2
 
+Here are some small staging driver fixes for issues that have been
+reported in 5.10-rc1:
+  - octeon driver fixes
+  - wfx driver fixes
+  - memory leak fix in vchiq driver
+  - fieldbus driver bugfix
+  - comedi driver bugfix
 
+All of these have been in linux-next with no reported issues
 
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Alexander Sverdlin (2):
+      staging: octeon: repair "fixed-link" support
+      staging: octeon: Drop on uncorrectable alignment or FCS error
+
+Ian Abbott (1):
+      staging: comedi: cb_pcidas: Allow 2-channel commands for AO subdevice
+
+Jing Xiangfeng (1):
+      staging: fieldbus: anybuss: jump to correct label in an error path
+
+J=E9r=F4me Pouiller (2):
+      staging: wfx: fix use of uninitialized pointer
+      staging: wfx: fix test on return value of gpiod_get_value()
+
+Seung-Woo Kim (1):
+      staging: mmal-vchiq: Fix memory leak for vchiq_instance
+
+ drivers/staging/comedi/drivers/cb_pcidas.c         |  1 +
+ drivers/staging/fieldbus/anybuss/arcx-anybus.c     |  2 +-
+ drivers/staging/octeon/ethernet-mdio.c             |  6 ----
+ drivers/staging/octeon/ethernet-rx.c               | 34 ++++++++++++------=
+----
+ drivers/staging/octeon/ethernet.c                  |  9 ++++++
+ .../staging/vc04_services/vchiq-mmal/mmal-vchiq.c  | 19 +++++++++---
+ drivers/staging/wfx/bh.c                           |  2 +-
+ drivers/staging/wfx/data_tx.c                      |  6 ++--
+ 8 files changed, 49 insertions(+), 30 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
