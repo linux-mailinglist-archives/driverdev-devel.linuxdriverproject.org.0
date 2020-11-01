@@ -1,54 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 010FF2A1BBE
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 04:15:53 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 676AE2A1C77
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 07:40:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D126386E24;
-	Sun,  1 Nov 2020 03:15:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 965862E111;
+	Sun,  1 Nov 2020 06:40:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VsmgGIbkqP_L; Sun,  1 Nov 2020 03:15:51 +0000 (UTC)
+	with ESMTP id YAoWM3WScZ-J; Sun,  1 Nov 2020 06:40:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 476AD86E78;
-	Sun,  1 Nov 2020 03:15:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0094A2047D;
+	Sun,  1 Nov 2020 06:39:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3CEBB1BF873
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 03:14:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B7B8F1BF406
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 06:39:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3142C866EA
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 03:14:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B03EB877B8
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 06:39:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WOYTXYIUV7vn for <devel@linuxdriverproject.org>;
- Sun,  1 Nov 2020 03:14:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.foescocursos.es (unknown [146.255.98.148])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 72CF286E9D
- for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 03:14:15 +0000 (UTC)
-Received: from 131.red-95-120-15.dynamicip.rima-tde.net
- (133.red-83-43-205.dynamicip.rima-tde.net [83.43.205.133])
- by mail.foescocursos.es (Postfix) with ESMTPSA id E0F8274A5B6
- for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 04:14:11 +0100 (CET)
-Authentication-Results: mail.foescocursos.es;
- spf=pass (sender IP is 83.43.205.133) smtp.mailfrom=info1@foescoformacion.es
- smtp.helo=131.red-95-120-15.dynamicip.rima-tde.net
-Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
+ with ESMTP id dLe3mz4fGR+A for <devel@linuxdriverproject.org>;
+ Sun,  1 Nov 2020 06:39:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
+ [66.111.4.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4E548876FB
+ for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 06:39:54 +0000 (UTC)
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 657205C00D2;
+ Sun,  1 Nov 2020 01:39:53 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Sun, 01 Nov 2020 01:39:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm2; bh=7Zy0X9cj7Iuwxadae5N9eX4bb1H
+ i9Y8mnSqXOcU/JUk=; b=qi/OP1CXEcnqt48j+cMmSklPmbsXQ9Lc+7KQ3yaLluh
+ z95VcVTsbXMgDCMF1pGz5nQPEyD5x21tsHMaQwv+FkHySGW9mOd0HH5zUwqpxG1N
+ GXs6LVzjpwFPrQ2KuFYoW0AjYsQvC6H4cLoAasNGBsjPOJ73IY6cDUNYRMyAP46x
+ feJcnPf9krddAndxwAWzabn1pgoQbf5K2dkurDxy8qlewPT/ebvM62KdN+ot+N1H
+ whVo0ipOsTchQWXgLOdQAvFt/U55TGunAYfixVUvxHXGhpoQhUvDViQR8Zc9mM0M
+ g7giKmjjoe+fb5GaMbuBw0ssMrMfdgTbHrX8GR6+b2w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=7Zy0X9
+ cj7Iuwxadae5N9eX4bb1Hi9Y8mnSqXOcU/JUk=; b=oMHJDuYDI618yXvuYWeUbh
+ NRSpJm/JZTExp8Ldc9f1DVK54AGxsPN5OR8gykt3GO64tCw7U4QapbRAK9g6FZHv
+ J7SoS75pWkdy4tVJg7Nb/eoCErPhoZI6Ix4FXJI+lxi3+yPWgswl5/1X6BccYRzq
+ RuTtzfh8LF22peFtiig86cVrB2W0bTh1MbfmXZUa/RcnYlWvG9j++YkI7vgWpOWw
+ FneXFITo5bPzd/hRFDIiNNF2+UcjfFJLgMTBw9/rzjltnnYCJPGrPkbhXAbOxCYa
+ J1t2dGx2mMysK6NVEd9iaadPNxJyusi+lJ2K2IvImc60XIKnwJihxthFuaTZZWZQ
+ ==
+X-ME-Sender: <xms:NlieX_pLMI9e84s7pWZYL6oQxr77CJ22cOyr3tFp9A8u-J83lC54fw>
+ <xme:NlieX5oRQXoEtVdaBLXff3hewe8gcyidDe00V8CLGP_03ITcpdO8StBS42t2zFogG
+ uV2YwT1gr54Lw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrleekgdeliecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghgucfm
+ jfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepveeuheejgf
+ ffgfeivddukedvkedtleelleeghfeljeeiueeggeevueduudekvdetnecukfhppeekfedr
+ keeirdejgedrieegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+ hfrhhomhepghhrvghgsehkrhhorghhrdgtohhm
+X-ME-Proxy: <xmx:NlieX8My3UDK1FU4lESxjYtH74C_B9C2Fqw20PzJRIdl0zo5qALhuw>
+ <xmx:NlieXy47cYTTolVAmk8P28r46e-HN-CI-P-wuwzmQU_HY09BVGnsFg>
+ <xmx:NlieX-5KDc5UkSqK3AbTH0cInFmtBjKDhr9xbbrIVBJigQXJyLprQg>
+ <xmx:OVieX52WP77hziVEKRQYWkOGSx3H-eYTp1l2y_OlDxBLb5sUkTPG2w>
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 441463064680;
+ Sun,  1 Nov 2020 01:39:50 -0500 (EST)
+Date: Sun, 1 Nov 2020 07:39:48 +0100
+From: Greg KH <greg@kroah.com>
+To: Hassan Shahbazi <hassan.shahbazi@somia.fi>
+Subject: Re: [PATCH] staging: fbtft: fb_watterott: fix usleep_range is
+ preferred over udelay
+Message-ID: <20201101063948.GB432418@kroah.com>
+References: <20201101002010.278537-1-hassan@ninchat.com>
 MIME-Version: 1.0
-From: "FOESCO" <info1@foescoformacion.es>
-To: devel@driverdev.osuosl.org
-Subject: =?Windows-1252?Q?Formaci=F3n_Bonificable_(=DAltimo_plazo_de_inscr?=
- =?Windows-1252?Q?ipci=F3n_2020)?=
-X-Mailer: Smart_Send_3_1_6
-Date: Sun, 1 Nov 2020 04:14:18 +0100
-Message-ID: <59364081696402863615681@DESKTOP-MFVDD89>
-X-PPP-Message-ID: <20201101031412.23679.9514@mail.foescocursos.es>
-X-PPP-Vhost: foescoformacion.es
+Content-Disposition: inline
+In-Reply-To: <20201101002010.278537-1-hassan@ninchat.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,81 +97,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info1@foescoformacion.es
-Content-Type: multipart/mixed; boundary="===============1167928070471541227=="
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ linus.walleij@linaro.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Hassan Shahbazi <hassan@ninchat.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============1167928070471541227==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+On Sun, Nov 01, 2020 at 02:20:10AM +0200, Hassan Shahbazi wrote:
+> Fix the checkpath.pl issue on fb_watterott.c. write_vmem and
+> write_vmem_8bit functions are within non-atomic context and can
+> safely use usleep_range.
+> see Documentation/timers/timers-howto.txt
+> 
+> Signed-off-by: Hassan Shahbazi <hassan@ninchat.com>
+> ---
+>  drivers/staging/fbtft/fb_watterott.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+> index 76b25df376b8..afcc86a17995 100644
+> --- a/drivers/staging/fbtft/fb_watterott.c
+> +++ b/drivers/staging/fbtft/fb_watterott.c
+> @@ -84,7 +84,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+>  			par->txbuf.buf, 10 + par->info->fix.line_length);
+>  		if (ret < 0)
+>  			return ret;
+> -		udelay(300);
+> +		usleep_range(300, 310);
+>  	}
+>  
+>  	return 0;
+> @@ -124,7 +124,7 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
+>  			par->txbuf.buf, 10 + par->info->var.xres);
+>  		if (ret < 0)
+>  			return ret;
+> -		udelay(700);
+> +		usleep_range(700, 710);
 
-Buenos d=EDas
+How do you know that these ranges are ok?  Are you able to test these
+changes with real hardware?
 
+thanks,
 
-
-Os informamos que se encuentra abierto el plazo de inscripci=F3n para la "=
-=DALTIMA CONVOCATORIA 2020" de Cursos Bonificables para empleados en activo=
- y en ERTE.
-
-Los cursos son 100% Bonificables con cargo al Cr=E9dito de Formaci=F3n 2020=
-, si vuestra empresa todav=EDa dispone de Cr=E9dito de Formaci=F3n 2020 est=
-a es la =FAltima oportunidad para poder consumirlo.
-
-
-Dese=E1is que os mandemos la informaci=F3n=3F
-
-
-Quedamos a la espera de vuestra respuesta.
-
-
-Saludos cordiales.
-
-
-Alex Pons
-Director FOESCO.
-
-FOESCO Formaci=F3n Estatal Continua.
-Entidad Organizadora: B200592AA
-www.foesco.com
-e-mail:     cursos@foesco.net
-Tel:     910 323 794
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. Before p=
-rinting this e-mail please think twice if you really need it. FOESCO Tfno: =
-910 382 880 Email: cursos@foesco.com. La informaci=F3n transmitida en este =
-mensaje est=E1 dirigida solamente a las personas o entidades que figuran en=
- el encabezamiento y contiene informaci=F3n confidencial, por lo que, si us=
-ted lo recibiera por error, por favor destr=FAyalo sin copiarlo, usarlo ni =
-distribuirlo, comunic=E1ndolo inmediatamente al emisor del mensaje. De conf=
-ormidad con lo dispuesto en el Reglamento Europeo del 2016/679, del 27 de A=
-bril de 2016, FOESCO le informa que los datos por usted suministrados ser=
-=E1n tratados con las medidas de seguridad conformes a la normativa vigente=
- que se requiere. Dichos datos ser=E1n empleados con fines de gesti=F3n. Pa=
-ra el ejercicio de sus derechos de transparencia, informaci=F3n, acceso, re=
-ctificaci=F3n, supresi=F3n o derecho al olvido, limitaci=F3n del tratamient=
-o , portabilidad de datos y oposici=F3n de sus datos de car=E1cter personal=
- deber=E1 dirigirse a la direcci=F3n del Responsable del tratamiento a C/ L=
-AGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PULSANDO AQUI" <mailto:bajas@f=
-oesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR" o a traves de la direcci=
-=F3n de correo electr=F3nico: bajas@foesco.com <mailto:bajas@foesco.com=3FS=
-ubject=3DBAJA%20CORREOS>
-
---===============1167928070471541227==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1167928070471541227==--
