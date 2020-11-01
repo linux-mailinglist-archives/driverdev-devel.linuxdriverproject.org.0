@@ -2,55 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6DA62A1F22
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 16:34:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3E462A2030
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Nov 2020 18:14:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D8DE87621;
-	Sun,  1 Nov 2020 15:34:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 767A787642;
+	Sun,  1 Nov 2020 17:14:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YRfaaU6m-WA1; Sun,  1 Nov 2020 15:34:25 +0000 (UTC)
+	with ESMTP id rqgL1lOZbrUm; Sun,  1 Nov 2020 17:14:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B2A2F873A3;
-	Sun,  1 Nov 2020 15:34:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D3405875EF;
+	Sun,  1 Nov 2020 17:14:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BC5281BF263
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 15:34:22 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 141D81BF3E3
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 17:13:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B7F5786FA3
- for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 15:34:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D385E2012F
+ for <devel@linuxdriverproject.org>; Sun,  1 Nov 2020 17:13:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tOVdnJ2s2LEJ for <devel@linuxdriverproject.org>;
- Sun,  1 Nov 2020 15:34:22 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from server5.gtabd.com (server5.gtabd.com [203.191.33.74])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A21A086F01
- for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 15:34:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=simple; d=server5.gtabd.com; h=
- reply-to:from:subject:date:mime-version:content-type
- :content-transfer-encoding; s=dkim1; bh=qEzdMniUV0NAd7bT47pT2YMk
- y6I=; b=To1p20xpNK8+7v/FN0I+xWZwxe55XghbGykXIHBmDsBdepAyHJ4EeFzB
- 3kxJndJZtcPG9NeH80SxS3EjHpAbnniUX5Ybt1YlFgCJ1hf+ZzN51Mwd3b2rDKBN
- +A67KDCoBylHzAXh0P3rakExy8DMVLKGhFTBgr7inwVwMtQ3LqI=
-Received: (qmail 4786 invoked by uid 89); 1 Nov 2020 15:33:56 -0000
-Received: by simscan 1.4.0 ppid: 3703, pid: 4767, t: 0.9674s
- scanners: attach: 1.4.0 clamav: 0.101.2/m:59/d:25975
-Received: from unknown (HELO User) (04098700@agranidoer.com@51.140.114.72)
- by server5.gtabd.com with ESMTPA; 1 Nov 2020 15:33:55 -0000
-From: "Hello"<04098700@agranidoer.com>
-Subject: Hello friend  01/11/2020
-Date: Sun, 1 Nov 2020 15:33:53 -0000
+ with ESMTP id wqlbwgY6-0Ri for <devel@linuxdriverproject.org>;
+ Sun,  1 Nov 2020 17:13:57 +0000 (UTC)
+X-Greylist: delayed 01:56:27 by SQLgrey-1.7.6
+Received: from hyperion.omega.org.uk (unknown [178.62.7.235])
+ by silver.osuosl.org (Postfix) with ESMTP id 77D1620116
+ for <devel@driverdev.osuosl.org>; Sun,  1 Nov 2020 17:13:57 +0000 (UTC)
+Received: from User (unknown [178.62.23.243])
+ by hyperion.omega.org.uk (Postfix) with SMTP id 7330342A1F;
+ Sun,  1 Nov 2020 09:18:37 -0500 (EST)
+From: "Did You Received My Previous Email?"<wraylemke@compuserve.com>
+Subject: Pls Reply To My Previous Email.   
+Date: Sun, 1 Nov 2020 06:33:32 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20201101153422.B7F5786FA3@fraxinus.osuosl.org>
+X-Mailer: Microsoft Outlook Express 5.50.4522.1200
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4522.1200
+Message-Id: <20201101171358.D385E2012F@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,20 +55,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimy1978@gmail.com
+Reply-To: bkurnaz205@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee which has been postponed to October 2021 to March 2022 because of the Covid-19 pandemic.
-I am writing to you to manage the funds I received as financial gratification from various foreign companies I assisted to receive a participation approval to the coming event. The amount is $44,762,906.00 United States dollars. But I can not personally manage the fund in my country because of the sensitive nature of my office and the certain restriction on married Muslim women.
+Good morning,
+
+      I am Ms Birgul Kurnaz from Turkey, I am the head of operations in Charge of Foreign Contact Portfolio matters with Exxon Mobil
+Corporation Turkey. Did you received the email I sent you before? Please reply is urgent for business. If you did not received it let me know so that I can resendit to you again.
+
+
+Thank you very much.
+
+Ms Birgul Kurnaz.
  
-For this reason, an agreement was reached with a consulting firm to direct the various financial gifts into an open beneficiary account in my name with a bank where it will be possible for me to instruct the transfer of ownership right to a third party for investment purpose; which is the reason I am contacting you to receive the fund and manage it as my investment partner. Note that the fund is NOT connected to any criminal or terrorist activity.
-On your indication of interest with your information to include your name, your phone number and contact mailing address; I will instruct the consulting firm to process the fund from the bank to your country for investment purposes.
- 
-Regards.
-Reem Hashimy.
+DWLFRKDFYEVILBUYEYQEFBTLMKZMNFJWEKYFNW
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
