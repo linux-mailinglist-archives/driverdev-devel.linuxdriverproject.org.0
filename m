@@ -1,62 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC1F72A2850
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Nov 2020 11:31:58 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D03792A28DB
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Nov 2020 12:16:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2555D87387;
-	Mon,  2 Nov 2020 10:31:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B08B87100;
+	Mon,  2 Nov 2020 11:16:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T-sIETydAX9D; Mon,  2 Nov 2020 10:31:56 +0000 (UTC)
+	with ESMTP id v85Ai7lC7DsD; Mon,  2 Nov 2020 11:16:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D943A871FB;
-	Mon,  2 Nov 2020 10:31:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0861086F9E;
+	Mon,  2 Nov 2020 11:16:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A1DE01BF278
- for <devel@linuxdriverproject.org>; Mon,  2 Nov 2020 10:31:53 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B7E191BF3C1
+ for <devel@linuxdriverproject.org>; Mon,  2 Nov 2020 11:16:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9B59286738
- for <devel@linuxdriverproject.org>; Mon,  2 Nov 2020 10:31:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6F6512002F
+ for <devel@linuxdriverproject.org>; Mon,  2 Nov 2020 11:16:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1YEDCSaPm2JJ for <devel@linuxdriverproject.org>;
- Mon,  2 Nov 2020 10:31:52 +0000 (UTC)
-X-Greylist: delayed 00:06:24 by SQLgrey-1.7.6
-Received: from smtp114.iad3a.emailsrvr.com (smtp114.iad3a.emailsrvr.com
- [173.203.187.114])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BF00C86712
- for <devel@driverdev.osuosl.org>; Mon,  2 Nov 2020 10:31:52 +0000 (UTC)
+ with ESMTP id roJTPOxoIZ9R for <devel@linuxdriverproject.org>;
+ Mon,  2 Nov 2020 11:16:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp68.ord1c.emailsrvr.com (smtp68.ord1c.emailsrvr.com
+ [108.166.43.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2132B20028
+ for <devel@driverdev.osuosl.org>; Mon,  2 Nov 2020 11:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1604312727;
- bh=1iPAZQdymRK4SMK3HljywvaZpxIg/V54cJQz7Xq3clc=;
- h=Subject:To:From:Date:From;
- b=LdDLn21RTRd75avsOEC78Rdy1cZHBfqoiUy1jHCZwO+gGwkI738bZi9SG6mQhHnOQ
- AkKKXvcRiZJH7j/UKF82rW5vINE/aAsR3+RgDqzWWBH/QkzGl4verYdAMnea0W5P1x
- M0CmJ1MaMo1t6qa04gNWrJ1qSqISGQLAH0D9n00k=
+ s=20190130-41we5z8j; t=1604315767;
+ bh=Tqv+WVAfnjUdwhKNPWC+9CN5pYHyP1K9/lY6oNs3Zyg=;
+ h=Subject:From:To:Date:From;
+ b=j8n7s7YYBCr6NLP294i9dLoTXZWsKeRhZ4dLtn8+htOcqCdl+KInmxaXbvOXvqmt/
+ PNBEtvc2jJ9r8buqdbiz1sRkKAOSoQT4fqiLiNLxW9Swsn+tb4ICCf7ZX4ZtNKWIEc
+ XhVEU2M+Ga45dYXMu3Yq8pFVNqVcdRkHYlPQ+VZY=
 X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp23.relay.iad3a.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 8730324EDF; 
- Mon,  2 Nov 2020 05:25:26 -0500 (EST)
+Received: by smtp25.relay.ord1c.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id CA354201A8; 
+ Mon,  2 Nov 2020 06:16:06 -0500 (EST)
 Subject: Re: [PATCH] staging: comedi: cb_pcidas: reinstate delay removed from
  trimpot setting
+From: Ian Abbott <abbotti@mev.co.uk>
 To: devel@driverdev.osuosl.org
 References: <20201029141833.126856-1-abbotti@mev.co.uk>
-From: Ian Abbott <abbotti@mev.co.uk>
+ <3d7cf15a-c389-ec2c-5e29-8838e8466790@mev.co.uk>
 Organization: MEV Ltd.
-Message-ID: <3d7cf15a-c389-ec2c-5e29-8838e8466790@mev.co.uk>
-Date: Mon, 2 Nov 2020 10:25:25 +0000
+Message-ID: <f28af317-08a7-8218-d2a6-0cdd9e681873@mev.co.uk>
+Date: Mon, 2 Nov 2020 11:16:05 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201029141833.126856-1-abbotti@mev.co.uk>
+In-Reply-To: <3d7cf15a-c389-ec2c-5e29-8838e8466790@mev.co.uk>
 Content-Language: en-GB
-X-Classification-ID: 860e8a4e-d374-4e47-a4e7-608e1eb206c8-1-1
+X-Classification-ID: c7816c9c-6293-4188-b215-3375f81bf324-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,41 +71,44 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 29/10/2020 14:18, Ian Abbott wrote:
-> Commit eddd2a4c675c ("staging: comedi: cb_pcidas: refactor
-> write_calibration_bitstream()") inadvertently removed one of the
-> `udelay(1)` calls when writing to the calibration register in
-> `cb_pcidas_calib_write()`.  Reinstate the delay.  It may seem strange
-> that the delay is placed before the register write, but this function is
-> called in a loop so the extra delay can make a difference.
-> 
-> This _might_ solve reported issues reading analog inputs on a
-> PCIe-DAS1602/16 card where the analog input values "were scaled in a
-> strange way that didn't make sense".  On the same hardware running a
-> system with a 3.13 kernel, and then a system with a 4.4 kernel, but with
-> the same application software, the system with the 3.13 kernel was fine,
-> but the one with the 4.4 kernel exhibited the problem.  Of the 90
-> changes to the driver between those kernel versions, this change looked
-> like the most likely culprit.
-
-Actually, I've realized that this patch will have no effect on the 
-PCIe-DAS1602/16 card because it uses a different driver - cb_pcimdas, 
-not cb_pcidas.
-
-Greg, you might as well drop this patch if you haven't already applied 
-it, since it was only a hunch that it fixed a problem.
-
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
--=( registered in England & Wales.  Regd. number: 02862268.  )=-
--=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
--=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gMDIvMTEvMjAyMCAxMDoyNSwgSWFuIEFiYm90dCB3cm90ZToKPiBPbiAyOS8xMC8yMDIwIDE0
+OjE4LCBJYW4gQWJib3R0IHdyb3RlOgo+PiBDb21taXQgZWRkZDJhNGM2NzVjICgic3RhZ2luZzog
+Y29tZWRpOiBjYl9wY2lkYXM6IHJlZmFjdG9yCj4+IHdyaXRlX2NhbGlicmF0aW9uX2JpdHN0cmVh
+bSgpIikgaW5hZHZlcnRlbnRseSByZW1vdmVkIG9uZSBvZiB0aGUKPj4gYHVkZWxheSgxKWAgY2Fs
+bHMgd2hlbiB3cml0aW5nIHRvIHRoZSBjYWxpYnJhdGlvbiByZWdpc3RlciBpbgo+PiBgY2JfcGNp
+ZGFzX2NhbGliX3dyaXRlKClgLsKgIFJlaW5zdGF0ZSB0aGUgZGVsYXkuwqAgSXQgbWF5IHNlZW0g
+c3RyYW5nZQo+PiB0aGF0IHRoZSBkZWxheSBpcyBwbGFjZWQgYmVmb3JlIHRoZSByZWdpc3RlciB3
+cml0ZSwgYnV0IHRoaXMgZnVuY3Rpb24gaXMKPj4gY2FsbGVkIGluIGEgbG9vcCBzbyB0aGUgZXh0
+cmEgZGVsYXkgY2FuIG1ha2UgYSBkaWZmZXJlbmNlLgo+Pgo+PiBUaGlzIF9taWdodF8gc29sdmUg
+cmVwb3J0ZWQgaXNzdWVzIHJlYWRpbmcgYW5hbG9nIGlucHV0cyBvbiBhCj4+IFBDSWUtREFTMTYw
+Mi8xNiBjYXJkIHdoZXJlIHRoZSBhbmFsb2cgaW5wdXQgdmFsdWVzICJ3ZXJlIHNjYWxlZCBpbiBh
+Cj4+IHN0cmFuZ2Ugd2F5IHRoYXQgZGlkbid0IG1ha2Ugc2Vuc2UiLsKgIE9uIHRoZSBzYW1lIGhh
+cmR3YXJlIHJ1bm5pbmcgYQo+PiBzeXN0ZW0gd2l0aCBhIDMuMTMga2VybmVsLCBhbmQgdGhlbiBh
+IHN5c3RlbSB3aXRoIGEgNC40IGtlcm5lbCwgYnV0IHdpdGgKPj4gdGhlIHNhbWUgYXBwbGljYXRp
+b24gc29mdHdhcmUsIHRoZSBzeXN0ZW0gd2l0aCB0aGUgMy4xMyBrZXJuZWwgd2FzIGZpbmUsCj4+
+IGJ1dCB0aGUgb25lIHdpdGggdGhlIDQuNCBrZXJuZWwgZXhoaWJpdGVkIHRoZSBwcm9ibGVtLsKg
+IE9mIHRoZSA5MAo+PiBjaGFuZ2VzIHRvIHRoZSBkcml2ZXIgYmV0d2VlbiB0aG9zZSBrZXJuZWwg
+dmVyc2lvbnMsIHRoaXMgY2hhbmdlIGxvb2tlZAo+PiBsaWtlIHRoZSBtb3N0IGxpa2VseSBjdWxw
+cml0Lgo+IAo+IEFjdHVhbGx5LCBJJ3ZlIHJlYWxpemVkIHRoYXQgdGhpcyBwYXRjaCB3aWxsIGhh
+dmUgbm8gZWZmZWN0IG9uIHRoZSAKPiBQQ0llLURBUzE2MDIvMTYgY2FyZCBiZWNhdXNlIGl0IHVz
+ZXMgYSBkaWZmZXJlbnQgZHJpdmVyIC0gY2JfcGNpbWRhcywgCj4gbm90IGNiX3BjaWRhcy4KCkJ1
+dCB0aGF0J3MgYWxzbyBjb25mdXNpbmcgYmVjYXVzZSBQQ0llLURBUzE2MDIvMTYgd2FzIG5vdCBz
+dXBwb3J0ZWQgCnVudGlsIHRoZSAzLjE5IGtlcm5lbCEgIEkga25vdyB0aGUgcmVwb3J0ZWQgaGFz
+IGJvdGggUENJLURBUzE2MDIvMTYgYW5kIApQQ0llLURBUzE2MDIvMTYgY2FyZHMgKHN1cHBvcnRl
+ZCBieSBjYl9wY2lkYXMgYW5kIGNiX3BjaW1kYXMgCnJlc3BlY3RpdmVseSksIHNvIHRoZXJlIGNv
+dWxkIGhhdmUgYmVlbiBzb21lIG1peC11cCBpbiB0aGUgcmVwb3J0aW5nLgoKPiAKPiBHcmVnLCB5
+b3UgbWlnaHQgYXMgd2VsbCBkcm9wIHRoaXMgcGF0Y2ggaWYgeW91IGhhdmVuJ3QgYWxyZWFkeSBh
+cHBsaWVkIAo+IGl0LCBzaW5jZSBpdCB3YXMgb25seSBhIGh1bmNoIHRoYXQgaXQgZml4ZWQgYSBw
+cm9ibGVtLgo+IAoKCi0tIAotPSggSWFuIEFiYm90dCA8YWJib3R0aUBtZXYuY28udWs+IHx8IE1F
+ViBMdGQuIGlzIGEgY29tcGFueSAgKT0tCi09KCByZWdpc3RlcmVkIGluIEVuZ2xhbmQgJiBXYWxl
+cy4gIFJlZ2QuIG51bWJlcjogMDI4NjIyNjguICApPS0KLT0oIFJlZ2QuIGFkZHIuOiBTMTEgJiAx
+MiBCdWlsZGluZyA2NywgRXVyb3BhIEJ1c2luZXNzIFBhcmssICk9LQotPSggQmlyZCBIYWxsIExh
+bmUsIFNUT0NLUE9SVCwgU0szIDBYQSwgVUsuIHx8IHd3dy5tZXYuY28udWsgKT0tCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
+dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
+ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
