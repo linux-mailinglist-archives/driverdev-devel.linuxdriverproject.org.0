@@ -1,61 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83EA72A2E55
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Nov 2020 16:30:57 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 992A92A2ED7
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Nov 2020 16:58:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D83DC86516;
-	Mon,  2 Nov 2020 15:30:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0D4D187360;
+	Mon,  2 Nov 2020 15:58:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ks7C51510Y3P; Mon,  2 Nov 2020 15:30:55 +0000 (UTC)
+	with ESMTP id o32bpRaQKi77; Mon,  2 Nov 2020 15:58:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4304686432;
-	Mon,  2 Nov 2020 15:30:54 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7956F872F8;
+	Mon,  2 Nov 2020 15:58:25 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F2D321BF32B
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Nov 2020 15:30:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 77CBE1BF32B
+ for <devel@linuxdriverproject.org>; Mon,  2 Nov 2020 15:58:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DAB072010F
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Nov 2020 15:30:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 632592041D
+ for <devel@linuxdriverproject.org>; Mon,  2 Nov 2020 15:58:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i4PkEOACZObL
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Nov 2020 15:30:50 +0000 (UTC)
+ with ESMTP id dA-C3oquXYRt for <devel@linuxdriverproject.org>;
+ Mon,  2 Nov 2020 15:58:22 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id C98F320035
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Nov 2020 15:30:50 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B9D8D2231B;
- Mon,  2 Nov 2020 15:30:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604331050;
- bh=1gKkkjY0WlZxxwYymKE81IEG3cS6lB6h5Oa8CHLUWas=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=0hTcc3UXFr5Y21XYWrWoZsyDIrMdI1PXZlmq797X/7oI5O7nXRBYrn8KbjBRvTT8c
- ImeaTbYDIIvftA8Ug3p1HOa73o6Eyh1SuOObWjRb+sE6OJOBCTiVGX8VPW3E9aTHAn
- owXxa8XEMS0wg3kZLDujZuVj9E5tNITzR7P1lS4Q=
-Date: Mon, 2 Nov 2020 16:31:45 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian Gromm <christian.gromm@microchip.com>
-Subject: Re: [PATCH] drivers: most: add ALSA sound driver
-Message-ID: <20201102153145.GA1034326@kroah.com>
-References: <1604330043-5517-1-git-send-email-christian.gromm@microchip.com>
+Received: from m42-4.mailgun.net (m42-4.mailgun.net [69.72.42.4])
+ by silver.osuosl.org (Postfix) with ESMTPS id AA6CA203DE
+ for <devel@driverdev.osuosl.org>; Mon,  2 Nov 2020 15:58:20 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1604332702; h=Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
+ To: From: Sender; bh=kP87ryMp5ujlGNQxxe2/b+S1KvTJacb5RVmVXpD9rUg=;
+ b=tU0v7VMdCldb8rXNqgSeAo4gCg8tk0CO89P5TXkH2T86jqZI2s0pgRxIoO8ZgkSt7ivnPtcs
+ sFnZV0YcyluSj23cNOK8ZL7Ns8PS7D4AXv99UN2dljezMPeeoRWZTvz5+Ud7fjOfWLcNwaFN
+ 46hZEMa5sC0p6qkUfI3YRYKffOU=
+X-Mailgun-Sending-Ip: 69.72.42.4
+X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n03.prod.us-east-1.postgun.com with SMTP id
+ 5fa02c99b79ce7b2cdf97962 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 02 Nov 2020 15:58:17
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 9F494C43385; Mon,  2 Nov 2020 15:58:16 +0000 (UTC)
+Received: from x230.qca.qualcomm.com (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 7C085C433C9;
+ Mon,  2 Nov 2020 15:58:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 7C085C433C9
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>
+Subject: Re: [PATCH 01/23] dt-bindings: introduce silabs,wfx.yaml
+References: <20201012104648.985256-1-Jerome.Pouiller@silabs.com>
+ <20201012104648.985256-2-Jerome.Pouiller@silabs.com>
+ <20201013164935.GA3646933@bogus> <3929101.dIHeVNgAIR@pc-42>
+Date: Mon, 02 Nov 2020 17:58:11 +0200
+In-Reply-To: <3929101.dIHeVNgAIR@pc-42> (=?utf-8?B?IkrDqXLDtG1l?=
+ Pouiller"'s message of "Wed, 14 Oct 2020 15:49:12 +0200")
+Message-ID: <87imanpx7w.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1604330043-5517-1-git-send-email-christian.gromm@microchip.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,193 +84,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org, linux-sound@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Nov 02, 2020 at 04:14:03PM +0100, Christian Gromm wrote:
-> This patch moves the ALSA sound driver out of the staging area and adds it
-> to the stable part of the MOST driver. Modifications to the Makefiles and
-> Kconfigs are done accordingly to not break the build.
-> 
-> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-> ---
->  drivers/most/Kconfig                |  10 +
->  drivers/most/Makefile               |   1 +
->  drivers/most/most_snd.c             | 753 ++++++++++++++++++++++++++++++++++++
->  drivers/staging/most/Kconfig        |   2 -
->  drivers/staging/most/Makefile       |   1 -
->  drivers/staging/most/sound/Kconfig  |  14 -
->  drivers/staging/most/sound/Makefile |   4 -
->  drivers/staging/most/sound/sound.c  | 753 ------------------------------------
->  8 files changed, 764 insertions(+), 774 deletions(-)
->  create mode 100644 drivers/most/most_snd.c
->  delete mode 100644 drivers/staging/most/sound/Kconfig
->  delete mode 100644 drivers/staging/most/sound/Makefile
->  delete mode 100644 drivers/staging/most/sound/sound.c
-> 
-> diff --git a/drivers/most/Kconfig b/drivers/most/Kconfig
-> index ebfe84e..4b8145b 100644
-> --- a/drivers/most/Kconfig
-> +++ b/drivers/most/Kconfig
-> @@ -32,4 +32,14 @@ config MOST_CDEV
->  
->  	  To compile this driver as a module, choose M here: the
->  	  module will be called most_cdev.
-> +
-> +config MOST_SND
-> +	tristate "Sound"
-> +	depends on SND
-> +	select SND_PCM
-> +	help
-> +	  Say Y here if you want to commumicate via ALSA/sound devices.
-> +
-> +	  To compile this driver as a module, choose M here: the
-> +	  module will be called most_sound.
->  endif
-> diff --git a/drivers/most/Makefile b/drivers/most/Makefile
-> index 8b53ca4..60db6cd 100644
-> --- a/drivers/most/Makefile
-> +++ b/drivers/most/Makefile
-> @@ -5,3 +5,4 @@ most_core-y :=	core.o \
->  
->  obj-$(CONFIG_MOST_USB_HDM) += most_usb.o
->  obj-$(CONFIG_MOST_CDEV) += most_cdev.o
-> +obj-$(CONFIG_MOST_SND) += most_snd.o
-> diff --git a/drivers/most/most_snd.c b/drivers/most/most_snd.c
-> new file mode 100644
-> index 0000000..8a449ab
-> --- /dev/null
-> +++ b/drivers/most/most_snd.c
-> @@ -0,0 +1,753 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * sound.c - Sound component for Mostcore
-> + *
-> + * Copyright (C) 2015 Microchip Technology Germany II GmbH & Co. KG
-> + */
-> +
-> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-> +
-> +#include <linux/module.h>
-> +#include <linux/printk.h>
-> +#include <linux/kernel.h>
-> +#include <linux/slab.h>
-> +#include <linux/init.h>
-> +#include <sound/core.h>
-> +#include <sound/pcm.h>
-> +#include <sound/pcm_params.h>
-> +#include <linux/sched.h>
-> +#include <linux/kthread.h>
-> +#include <linux/most.h>
-> +
-> +#define DRIVER_NAME "sound"
-> +#define STRING_SIZE	80
-> +
-> +static struct most_component comp;
-> +
-> +/**
-> + * struct channel - private structure to keep channel specific data
-> + * @substream: stores the substream structure
-> + * @iface: interface for which the channel belongs to
-> + * @cfg: channel configuration
-> + * @card: registered sound card
-> + * @list: list for private use
-> + * @id: channel index
-> + * @period_pos: current period position (ring buffer)
-> + * @buffer_pos: current buffer position (ring buffer)
-> + * @is_stream_running: identifies whether a stream is running or not
-> + * @opened: set when the stream is opened
-> + * @playback_task: playback thread
-> + * @playback_waitq: waitq used by playback thread
-> + */
-> +struct channel {
-> +	struct snd_pcm_substream *substream;
-> +	struct snd_pcm_hardware pcm_hardware;
-> +	struct most_interface *iface;
-> +	struct most_channel_config *cfg;
-> +	struct snd_card *card;
-> +	struct list_head list;
-> +	int id;
-> +	unsigned int period_pos;
-> +	unsigned int buffer_pos;
-> +	bool is_stream_running;
-> +	struct task_struct *playback_task;
-> +	wait_queue_head_t playback_waitq;
-> +	void (*copy_fn)(void *alsa, void *most, unsigned int bytes);
-> +};
-> +
-> +struct sound_adapter {
-> +	struct list_head dev_list;
-> +	struct most_interface *iface;
-> +	struct snd_card *card;
-> +	struct list_head list;
-> +	bool registered;
-> +	int pcm_dev_idx;
-> +};
-> +
-> +static struct list_head adpt_list;
-> +
-> +#define MOST_PCM_INFO (SNDRV_PCM_INFO_MMAP | \
-> +		       SNDRV_PCM_INFO_MMAP_VALID | \
-> +		       SNDRV_PCM_INFO_BATCH | \
-> +		       SNDRV_PCM_INFO_INTERLEAVED | \
-> +		       SNDRV_PCM_INFO_BLOCK_TRANSFER)
-> +
-> +#define swap16(val) ( \
-> +	(((u16)(val) << 8) & (u16)0xFF00) | \
-> +	(((u16)(val) >> 8) & (u16)0x00FF))
-> +
-> +#define swap32(val) ( \
-> +	(((u32)(val) << 24) & (u32)0xFF000000) | \
-> +	(((u32)(val) <<  8) & (u32)0x00FF0000) | \
-> +	(((u32)(val) >>  8) & (u32)0x0000FF00) | \
-> +	(((u32)(val) >> 24) & (u32)0x000000FF))
-
-Doesn't swab16() and swab32() work for this?  I don't think you need to
-reimplement these.
-
-> +
-> +static void swap_copy16(u16 *dest, const u16 *source, unsigned int bytes)
-> +{
-> +	unsigned int i = 0;
-> +
-> +	while (i < (bytes / 2)) {
-> +		dest[i] = swap16(source[i]);
-> +		i++;
-> +	}
-> +}
-> +
-> +static void swap_copy24(u8 *dest, const u8 *source, unsigned int bytes)
-> +{
-> +	unsigned int i = 0;
-> +
-> +	while (i < bytes - 2) {
-> +		dest[i] = source[i + 2];
-> +		dest[i + 1] = source[i + 1];
-> +		dest[i + 2] = source[i];
-> +		i += 3;
-> +	}
-> +}
-> +
-> +static void swap_copy32(u32 *dest, const u32 *source, unsigned int bytes)
-> +{
-> +	unsigned int i = 0;
-> +
-> +	while (i < bytes / 4) {
-> +		dest[i] = swap32(source[i]);
-> +		i++;
-> +	}
-> +}
-
-Same for the above, don't we have functions for this?
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6Cgo+
+IE9uIFR1ZXNkYXkgMTMgT2N0b2JlciAyMDIwIDE4OjQ5OjM1IENFU1QgUm9iIEhlcnJpbmcgd3Jv
+dGU6Cj4+IE9uIE1vbiwgT2N0IDEyLCAyMDIwIGF0IDEyOjQ2OjI2UE0gKzAyMDAsIEplcm9tZSBQ
+b3VpbGxlciB3cm90ZToKPj4gPiBGcm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWls
+bGVyQHNpbGFicy5jb20+Cj4gWy4uLl0KPj4gPiArICBOb3RlIHRoYXQgaW4gYWRkIG9mIHRoZSBw
+cm9wZXJ0aWVzIGJlbG93LCB0aGUgV0Z4IGRyaXZlciBhbHNvIHN1cHBvcnRzCj4+ID4gKyAgYG1h
+Yy1hZGRyZXNzYCBhbmQgYGxvY2FsLW1hYy1hZGRyZXNzYCBhcyBkZXNjcmliZWQgaW4KPj4gPiAr
+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L2V0aGVybmV0LnR4dAo+PiAK
+Pj4gTm90ZSB3aGF0IGV0aGVybmV0LnR4dCBjb250YWlucy4uLiBUaGlzIHNob3VsZCBoYXZlIGEg
+JHJlZiB0bwo+PiBldGhlcm5ldC1jb250cm9sbGVyLnlhbWwgdG8gZXhwcmVzcyB0aGUgYWJvdmUu
+Cj4+IAo+PiBZb3UgY2FuIGFkZCAnbWFjLWFkZHJlc3M6IHRydWUnIGlmIHlvdSB3YW50IHRvIGJl
+IGV4cGxpY2l0IGFib3V0IHdoYXQKPj4gcHJvcGVydGllcyBhcmUgdXNlZC4KPgo+IEhlcmUsIG9u
+bHkgbWFjLWFkZHJlc3MgYW5kIGxvY2FsLW1hYy1hZGRyZXNzIGFyZSBzdXBwb3J0ZWQuIFNvLCB3
+b3VsZCB0aGUKPiBjb2RlIGJlbG93IGRvIHRoZSBqb2I/Cj4KPiAgIGxvY2FsLW1hYy1hZGRyZXNz
+Ogo+ICAgICAkcmVmOiBldGhlcm5ldC1jb250cm9sbGVyLnlhbWwjL3Byb3BlcnRpZXMvbG9jYWwt
+bWFjLWFkZHJlc3MKPgo+ICAgbWFjLWFkZHJlc3M6Cj4gICAgICRyZWY6IGV0aGVybmV0LWNvbnRy
+b2xsZXIueWFtbCMvcHJvcGVydGllcy9tYWMtYWRkcmVzcwo+Cj4KPiBbLi4uXQo+PiA+ICsgIHNw
+aS1tYXgtZnJlcXVlbmN5Ogo+PiA+ICsgICAgZGVzY3JpcHRpb246IChTUEkgb25seSkgTWF4aW11
+bSBTUEkgY2xvY2tpbmcgc3BlZWQgb2YgZGV2aWNlIGluIEh6Lgo+PiAKPj4gTm8gbmVlZCB0byBy
+ZWRlZmluZSBhIGNvbW1vbiBwcm9wZXJ0eS4KPgo+IFdoZW4gYSBwcm9wZXJ0eSBpcyBzcGVjaWZp
+YyB0byBhIGJ1cywgSSB3b3VsZCBoYXZlIGxpa2UgdG8gZXhwbGljaXRseQo+IHNheSBpdC4gVGhh
+dCdzIHdoeSBJIHJlZGVmaW5lZCB0aGUgZGVzY3JpcHRpb24uCj4KPgo+IFsuLi5dCj4+ID4gKyAg
+Y29uZmlnLWZpbGU6Cj4+ID4gKyAgICBkZXNjcmlwdGlvbjogVXNlIGFuIGFsdGVybmF0aXZlIGZp
+bGUgYXMgUERTLiBEZWZhdWx0IGlzIGB3ZjIwMC5wZHNgLiBPbmx5Cj4+ID4gKyAgICAgIG5lY2Vz
+c2FyeSBmb3IgZGV2ZWxvcG1lbnQvZGVidWcgcHVycG9zZS4KPj4gCj4+ICdmaXJtd2FyZS1uYW1l
+JyBpcyB0eXBpY2FsbHkgd2hhdCB3ZSdkIHVzZSBoZXJlLiBUaG91Z2ggaWYganVzdCBmb3IKPj4g
+ZGVidWcvZGV2LCBwZXJoYXBzIGRvIGEgZGVidWdmcyBpbnRlcmZhY2UgZm9yIHRoaXMgaW5zdGVh
+ZC4gQXMgRFQgc2hvdWxkCj4+IGNvbWUgZnJvbSB0aGUgZmlybXdhcmUvYm9vdGxvYWRlciwgcmVx
+dWlyaW5nIGNoYW5naW5nIHRoZSBEVCBmb3IKPj4gZGV2L2RlYnVnIGlzIG5vdCB0aGUgZWFzaWVz
+dCB3b3JrZmxvdyBjb21wYXJlZCB0byBkb2luZyBzb21ldGhpbmcgZnJvbQo+PiB1c2Vyc3BhY2Uu
+Cj4KPiBUaGlzIGZpbGUgaXMgbm90IGEgZmlybXdhcmUuIEl0IG1haW5seSBjb250YWlucyBkYXRh
+IHJlbGF0ZWQgdG8gdGhlCj4gYW50ZW5uYS4gQXQgdGhlIGJlZ2lubmluZywgdGhpcyBwcm9wZXJ0
+eSBoYXMgYmVlbiBhZGRlZCBmb3IKPiBkZXZlbG9wbWVudC4gV2l0aCB0aGUgdGltZSwgSSB0aGlu
+ayBpdCBjYW4gYmUgdXNlZCB0byAgaGF2ZSBvbmUgZGlzawo+IGltYWdlIGZvciBzZXZlcmFsIGRl
+dmljZXMgdGhhdCBkaWZmZXIgb25seSBpbiBhbnRlbm5hLgo+Cj4gSSBhbSBnb2luZyB0byByZW1v
+dmUgdGhlIHBhcnQgYWJvdXQgZGV2ZWxvcG1lbnQvZGVidWcgcHVycG9zZS4KCmNvbmZpZy1maWxl
+IGRvZXNuJ3Qgc291bmQgcmlnaHQgZWl0aGVyLiBTbyB3aGF0IGtpbmQgb2YgZGF0YSBpcyB0aGlz
+LApjYWxpYnJhdGlvbiBkYXRhIG9yIHdoYXQ/CgotLSAKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVs
+Lm9yZy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3QvCgpodHRwczovL3dpcmVsZXNzLndpa2ku
+a2VybmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3VibWl0dGluZ3BhdGNoZXMK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
+bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
+aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
