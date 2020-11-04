@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19FF32A71FC
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:25 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAD052A7200
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C84CB86762;
-	Wed,  4 Nov 2020 23:45:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8495A20413;
+	Wed,  4 Nov 2020 23:45:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hoiaaPFOq1u6; Wed,  4 Nov 2020 23:45:23 +0000 (UTC)
+	with ESMTP id 3SZ7oE-X31ZM; Wed,  4 Nov 2020 23:45:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3C6C4851E5;
-	Wed,  4 Nov 2020 23:45:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2E5E3203B4;
+	Wed,  4 Nov 2020 23:45:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3B4041BF2B7
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 973541BF97F
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 34E0A85802
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8EAF0857C2
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m3lD+Kes1c45 for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 23:45:17 +0000 (UTC)
+ with ESMTP id xBJgKfRVgg-g for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:45:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
  [209.85.208.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EF38B857D0
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:15 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id m8so341387ljj.0
- for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:15 -0800 (PST)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6671985B9D
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:17 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id m8so341437ljj.0
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=DgpC9O7p/OAbvh12N5zLQDhJcy20uIqx4wfuP8pHu74=;
- b=ghbtZSMEyXcmLVB3hLpNnX5/udQFezvG/2hSl1wmkaCE3ebcGcvcSojmt2uCoR5gkT
- nXNSJesVEBCqcR7j9rDF/7IRD5BXGLxC6r6i0a9/l9IoCV78c6W9ahrYAQQaDq8AUKQ8
- mSAA1G0RputJJmFKqqHTKOKFlyCGOx6zK5kcZehKi8tGvx87G59fw9no+H91R0P+WOsS
- Dxg9Mm5ZtB9BVHzsE0hjR4RUN0Kuxjyu1hia/dVcDBx7jbnDgbEpVnXmLHTlHg5FKNED
- zbXuhDkgiic8O6NBhvHxVT0SaHnKF/Jg6AcW9fYaOyOYtj6g2kx1C/d23xvmU2TogHgj
- Psyg==
+ bh=YgLGCQXpeJZfFmnY68KfLbg6dxMT669Npx+3tSC26GM=;
+ b=dk0U6+f2C7VUHqKjoUYB2aK076wm5BwTdxiZCbd3uUa2zyQ/d9CMUV1ZZ2KQnMlzTd
+ LOTeSud3rh7assb6Ia+jQ7NJHowfjFWLm6fMk9pZ+9uxzOyB1LBVVTUpMvxx0PKMn4/5
+ 9N4ZLclTjASGE17Rz3h91aI4xowOgbChE1arhBHxVL0uhW3EC9qdqOO10uz3RCXLN7Wj
+ 3BJqQEe5hU+a6BCLXRJrugoDEN2jIeHOloGArD48l5Td7waZukBXuXzTJmJf1x3367PS
+ dXyJ9COq9Dw6zJnHxnS+Vr6bxEFd07O7yswItLDV0bQTaYIIwskDu0ONAT/mi5jC57qF
+ lxnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=DgpC9O7p/OAbvh12N5zLQDhJcy20uIqx4wfuP8pHu74=;
- b=WEFKGxUEKCzVhR8I14Lk7vXRkvb1afZZs8wtUb7wvIAReiHAFtR8B/ZUGH7VBKaUY2
- 2T3OZW7YqThObVLsGMNkkL9Ohf4FKeMDW9P0fI2lOn9dI6TZ/Gv0v6aEz12fwjW/kIQG
- 831mVWZ9qlDnU2RfG5cWGMZjINcVixorKLeFbfiiZ44qy/ZYBXPGad/oHZcdo1/G5Lu+
- 7bDmtqXOB1bp2biPBTZ/Rz7KCqIVqM+NZwIAJhCoXQzEeGnRxgK4Zv7RFIqCCUBTUq7x
- aALKbSPcl2yDr+yRV75H1B+Aw4a5di2T8/6N49XrRjcQuu11Mh6c2Xtczdsj9TjKP0ci
- ggKA==
-X-Gm-Message-State: AOAM533DB7QS4jkdgH49u8EAyhs+I7DxhbwYQwXF51ua0nSTPoUL7FmP
- nxRN/uvj7P4Fm0x/uy9P71o=
-X-Google-Smtp-Source: ABdhPJy08/f9Nhc8TmMhOuQfKj8d3M/5mqEeMTx5szZf2O3+2Ayf51uokSeK1yXKThLP7IivwNirNA==
-X-Received: by 2002:a2e:9a10:: with SMTP id o16mr126990lji.67.1604533514181;
- Wed, 04 Nov 2020 15:45:14 -0800 (PST)
+ bh=YgLGCQXpeJZfFmnY68KfLbg6dxMT669Npx+3tSC26GM=;
+ b=qviTgXGXkd5/ZdyYppZQVJKiNcVprrAxKAv9oo9NLavRkuP0NaWWZcc2M98YUBcmxL
+ 8XWEVDXaYRC04JOJPEw/4tCFltST/IcvN6DqJ5zpBlA6OCxqLmFERlx6Q0fHk/75/TGE
+ kn4kkPizS8MH3PPjOxmvjVU/kXbglUcX7JafmOphpgw4CB17B+x/TLB9pR9XLxykfJAn
+ 5gyXB+xayZQK3ygVjpi5czd0k1JJ/Y9wlQiEcPzf27vsM5qF0rQjWtyilvMxYrAS75V3
+ BdzNzrd+YwD4JQxF2bRfoAtBqCdqem0tjiuRfBqmaQamnxH379fOHAlBmgzYAznyeS/T
+ 05vg==
+X-Gm-Message-State: AOAM532FA7Njb6WL6Fc2M91e5ZuYwzBq/NeopKyTAdwn62wEW2YxufLa
+ Hp785ZKWH245qtqLtII0cJ4=
+X-Google-Smtp-Source: ABdhPJygW7zhBUwueiGc0u5rCNdcAaQu9G8QeXXpn9e/yoz5YItRyw+RW6puxRSf6SsG6DlthKdyjg==
+X-Received: by 2002:a2e:819a:: with SMTP id e26mr134454ljg.469.1604533515613; 
+ Wed, 04 Nov 2020 15:45:15 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
  [109.252.192.83])
- by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.12
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 15:45:13 -0800 (PST)
+ Wed, 04 Nov 2020 15:45:15 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
@@ -80,10 +80,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Marek Szyprowski <m.szyprowski@samsung.com>,
  Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: [PATCH v1 13/30] drm/tegra: gr2d: Support OPP and SoC core voltage
+Subject: [PATCH v1 14/30] drm/tegra: gr3d: Support OPP and SoC core voltage
  scaling
-Date: Thu,  5 Nov 2020 02:44:10 +0300
-Message-Id: <20201104234427.26477-14-digetx@gmail.com>
+Date: Thu,  5 Nov 2020 02:44:11 +0300
+Message-Id: <20201104234427.26477-15-digetx@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201104234427.26477-1-digetx@gmail.com>
 References: <20201104234427.26477-1-digetx@gmail.com>
@@ -110,35 +110,35 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add OPP and SoC core voltage scaling support to the GR2D driver.
+Add OPP and SoC core voltage scaling support to the GR3D driver.
 This is required for enabling system-wide DVFS on Tegra SoCs.
 
 Tested-by: Peter Geis <pgwipeout@gmail.com>
 Tested-by: Nicolas Chauvet <kwizart@gmail.com>
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/gpu/drm/tegra/gr2d.c | 136 +++++++++++++++++++++++++++++++++++
+ drivers/gpu/drm/tegra/gr3d.c | 136 +++++++++++++++++++++++++++++++++++
  1 file changed, 136 insertions(+)
 
-diff --git a/drivers/gpu/drm/tegra/gr2d.c b/drivers/gpu/drm/tegra/gr2d.c
-index f30aa86e4c9f..6d8f9419d908 100644
---- a/drivers/gpu/drm/tegra/gr2d.c
-+++ b/drivers/gpu/drm/tegra/gr2d.c
-@@ -7,6 +7,9 @@
- #include <linux/iommu.h>
- #include <linux/module.h>
+diff --git a/drivers/gpu/drm/tegra/gr3d.c b/drivers/gpu/drm/tegra/gr3d.c
+index b0b8154e8104..0c6efc55f9bc 100644
+--- a/drivers/gpu/drm/tegra/gr3d.c
++++ b/drivers/gpu/drm/tegra/gr3d.c
+@@ -11,7 +11,9 @@
  #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/reset.h>
 +#include <linux/pm_opp.h>
-+
+ 
 +#include <soc/tegra/fuse.h>
+ #include <soc/tegra/pmc.h>
  
  #include "drm.h"
- #include "gem.h"
-@@ -185,6 +188,135 @@ static const u32 gr2d_addr_regs[] = {
- 	GR2D_VA_BASE_ADDR_SB,
+@@ -278,6 +280,135 @@ static const u32 gr3d_addr_regs[] = {
+ 	GR3D_GLOBAL_SAMP23SURFADDR(15),
  };
  
-+static int gr2d_init_opp_state(struct device *dev, struct gr2d *gr2d)
++static int gr3d_init_opp_state(struct device *dev, struct gr3d *gr3d)
 +{
 +	struct dev_pm_opp *opp;
 +	unsigned long rate;
@@ -154,7 +154,7 @@ index f30aa86e4c9f..6d8f9419d908 100644
 +	 * Clock rate should be pre-initialized (i.e. it's non-zero) either
 +	 * by clock driver or by assigned clocks in a device-tree.
 +	 */
-+	rate = clk_get_rate(gr2d->clk);
++	rate = clk_get_rate(gr3d->clk);
 +
 +	/* find suitable OPP for the clock rate supportable by SoC speedo ID */
 +	opp = dev_pm_opp_find_freq_ceil(dev, &rate);
@@ -191,7 +191,7 @@ index f30aa86e4c9f..6d8f9419d908 100644
 +	return 0;
 +}
 +
-+static void gr2d_deinit_opp_table(void *data)
++static void gr3d_deinit_opp_table(void *data)
 +{
 +	struct device *dev = data;
 +	struct opp_table *opp_table;
@@ -203,7 +203,7 @@ index f30aa86e4c9f..6d8f9419d908 100644
 +	dev_pm_opp_put_opp_table(opp_table);
 +}
 +
-+static int devm_gr2d_init_opp_table(struct device *dev, struct gr2d *gr2d)
++static int devm_gr3d_init_opp_table(struct device *dev, struct gr3d *gr3d)
 +{
 +	struct opp_table *opp_table, *hw_opp_table;
 +	const char *rname = "core";
@@ -220,7 +220,7 @@ index f30aa86e4c9f..6d8f9419d908 100644
 +		return dev_err_probe(dev, PTR_ERR(opp_table),
 +				     "failed to prepare OPP table\n");
 +
-+	if (gr2d->soc->version == 0x20)
++	if (gr3d->soc->version == 0x20)
 +		hw_version = BIT(tegra_sku_info.soc_process_id);
 +	else
 +		hw_version = BIT(tegra_sku_info.soc_speedo_id);
@@ -244,12 +244,12 @@ index f30aa86e4c9f..6d8f9419d908 100644
 +			goto put_hw;
 +		}
 +
-+		err = gr2d_init_opp_state(dev, gr2d);
++		err = gr3d_init_opp_state(dev, gr3d);
 +		if (err)
 +			goto remove_table;
 +	}
 +
-+	err = devm_add_action(dev, gr2d_deinit_opp_table, dev);
++	err = devm_add_action(dev, gr3d_deinit_opp_table, dev);
 +	if (err)
 +		goto remove_table;
 +
@@ -267,20 +267,21 @@ index f30aa86e4c9f..6d8f9419d908 100644
 +	return err;
 +}
 +
- static int gr2d_probe(struct platform_device *pdev)
+ static int gr3d_probe(struct platform_device *pdev)
  {
- 	struct device *dev = &pdev->dev;
-@@ -209,6 +341,10 @@ static int gr2d_probe(struct platform_device *pdev)
- 		return PTR_ERR(gr2d->clk);
+ 	struct device_node *np = pdev->dev.of_node;
+@@ -302,6 +433,11 @@ static int gr3d_probe(struct platform_device *pdev)
+ 		return PTR_ERR(gr3d->clk);
  	}
  
-+	err = devm_gr2d_init_opp_table(dev, gr2d);
++	err = devm_gr3d_init_opp_table(&pdev->dev, gr3d);
 +	if (err)
-+		return dev_err_probe(dev, err, "failed to initialize OPP\n");
++		return dev_err_probe(&pdev->dev, err,
++				     "failed to initialize OPP\n");
 +
- 	err = clk_prepare_enable(gr2d->clk);
- 	if (err) {
- 		dev_err(dev, "cannot turn on clock\n");
+ 	gr3d->rst = devm_reset_control_get(&pdev->dev, "3d");
+ 	if (IS_ERR(gr3d->rst)) {
+ 		dev_err(&pdev->dev, "cannot get reset\n");
 -- 
 2.27.0
 
