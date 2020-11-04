@@ -1,51 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F0C12A62B2
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:56:33 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C49102A62FB
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 12:11:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7A8C787514;
-	Wed,  4 Nov 2020 10:56:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4057386422;
+	Wed,  4 Nov 2020 11:11:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1WJwrTa8iyUq; Wed,  4 Nov 2020 10:56:31 +0000 (UTC)
+	with ESMTP id EJ3jSOC0PBuk; Wed,  4 Nov 2020 11:11:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EAE4D87422;
-	Wed,  4 Nov 2020 10:56:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D04E86440;
+	Wed,  4 Nov 2020 11:11:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3875B1BF844
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:56:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 025A01BF5DD
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 11:11:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3411085C9D
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:56:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F2EA686422
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 11:11:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gYRaIbxPJdV6 for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 10:56:28 +0000 (UTC)
+ with ESMTP id LJ3IbbBLAjUI for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 11:11:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay11.mail.gandi.net (relay11.mail.gandi.net [217.70.178.231])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E896485C97
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:56:27 +0000 (UTC)
+Received: from relay7-d.mail.gandi.net (relay7-d.mail.gandi.net
+ [217.70.183.200])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D8E7686403
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 11:11:44 +0000 (UTC)
+X-Originating-IP: 93.29.109.196
 Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay11.mail.gandi.net (Postfix) with ESMTPSA id EB48C100004;
- Wed,  4 Nov 2020 10:56:19 +0000 (UTC)
-Date: Wed, 4 Nov 2020 11:56:19 +0100
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 809622000D;
+ Wed,  4 Nov 2020 11:11:37 +0000 (UTC)
+Date: Wed, 4 Nov 2020 12:11:37 +0100
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 04/14] media: sun6i-csi: Fix the image storage bpp for
- 10/12-bit Bayer formats
-Message-ID: <20201104105619.GG285779@aptenodytes>
+Subject: Re: [PATCH 00/14] Allwinner MIPI CSI-2 support for A31/V3s/A83T
+Message-ID: <20201104111137.GH285779@aptenodytes>
 References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
- <20201023174546.504028-5-paul.kocialkowski@bootlin.com>
- <60fc4f85-e08f-fec6-5687-005add5cbeed@collabora.com>
+ <d15d724b-6af7-3e51-1316-7bdde5a42c60@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <60fc4f85-e08f-fec6-5687-005add5cbeed@collabora.com>
+In-Reply-To: <d15d724b-6af7-3e51-1316-7bdde5a42c60@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,136 +61,262 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
  Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?utf-8?B?S8OpdmluIEwnaMO0cGl0YWw=?= <kevin.lhopital@bootlin.com>,
- linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
- Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, linux-sunxi@googlegroups.com,
+ Rob Herring <robh+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Yong Deng <yong.deng@magewell.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
  Hans Verkuil <hans.verkuil@cisco.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============8641497148154001966=="
+Content-Type: multipart/mixed; boundary="===============1802692919439204589=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============8641497148154001966==
+--===============1802692919439204589==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="c7hkjup166d4FzgN"
+	protocol="application/pgp-signature"; boundary="+Z7/5fzWRHDJ0o7Q"
 Content-Disposition: inline
 
 
---c7hkjup166d4FzgN
+--+Z7/5fzWRHDJ0o7Q
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Hi Helen,
 
-On Fri 30 Oct 20, 19:45, Helen Koike wrote:
+On Fri 30 Oct 20, 19:44, Helen Koike wrote:
 > Hi Paul,
 >=20
+> I have some comments through the series, I hope this helps.
+
+Thanks for your comments :)
+
 > On 10/23/20 2:45 PM, Paul Kocialkowski wrote:
-> > Both 10 and 12-bit Bayer formats are stored aligned as 16-bit values
-> > in memory, not unaligned 10 or 12 bits.
+> > This series introduces support for MIPI CSI-2, with the A31 controller =
+that is
+> > found on most SoCs (A31, V3s and probably V5) as well as the A83T-speci=
+fic
+> > controller. While the former uses the same MIPI D-PHY that is already s=
+upported
+> > for DSI, the latter embeds its own D-PHY.
 > >=20
-> > Since the current code for retreiving the bpp is used only to
-> > calculate the memory storage size of the picture (which is what
-> > pixel formats describe, unlike media bus formats), fix it there.
+> > In order to distinguish the use of the D-PHY between Rx mode (for MIPI =
+CSI-2)
+> > and Tx mode (for MIPI DSI), a submode is introduced for D-PHY in the PH=
+Y API.
+> > This allows adding Rx support in the A31 D-PHY driver.
 > >=20
-> > Fixes: 5cc7522d8965 ("media: sun6i: Add support for Allwinner CSI V3s")
-> > Co-developed-by: K=C3=A9vin L'h=C3=B4pital <kevin.lhopital@bootlin.com>
-> > Signed-off-by: K=C3=A9vin L'h=C3=B4pital <kevin.lhopital@bootlin.com>
-> > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > ---
-> >  .../platform/sunxi/sun6i-csi/sun6i_csi.h      | 20 +++++++++----------
-> >  1 file changed, 10 insertions(+), 10 deletions(-)
+> > A few changes and fixes are applied to the A31 CSI controller driver, i=
+n order
+> > to support the MIPI CSI-2 use-case.
 > >=20
-> > diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h b/drive=
-rs/media/platform/sunxi/sun6i-csi/sun6i_csi.h
-> > index c626821aaedb..7f2be70ae641 100644
-> > --- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h
-> > +++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h
-> > @@ -86,7 +86,7 @@ void sun6i_csi_update_buf_addr(struct sun6i_csi *csi,=
- dma_addr_t addr);
-> >   */
-> >  void sun6i_csi_set_stream(struct sun6i_csi *csi, bool enable);
-> > =20
-> > -/* get bpp form v4l2 pixformat */
-> > +/* get memory storage bpp from v4l2 pixformat */
-> >  static inline int sun6i_csi_get_bpp(unsigned int pixformat)
-> >  {
-> >  	switch (pixformat) {
-> > @@ -96,15 +96,6 @@ static inline int sun6i_csi_get_bpp(unsigned int pix=
-format)
-> >  	case V4L2_PIX_FMT_SRGGB8:
-> >  	case V4L2_PIX_FMT_JPEG:
-> >  		return 8;
-> > -	case V4L2_PIX_FMT_SBGGR10:
-> > -	case V4L2_PIX_FMT_SGBRG10:
-> > -	case V4L2_PIX_FMT_SGRBG10:
-> > -	case V4L2_PIX_FMT_SRGGB10:
-> > -		return 10;
-> > -	case V4L2_PIX_FMT_SBGGR12:
-> > -	case V4L2_PIX_FMT_SGBRG12:
-> > -	case V4L2_PIX_FMT_SGRBG12:
-> > -	case V4L2_PIX_FMT_SRGGB12:
-> >  	case V4L2_PIX_FMT_HM12:
-> >  	case V4L2_PIX_FMT_NV12:
-> >  	case V4L2_PIX_FMT_NV21:
-> > @@ -121,6 +112,15 @@ static inline int sun6i_csi_get_bpp(unsigned int p=
-ixformat)
-> >  	case V4L2_PIX_FMT_RGB565:
-> >  	case V4L2_PIX_FMT_RGB565X:
-> >  		return 16;
-> > +	case V4L2_PIX_FMT_SBGGR10:
-> > +	case V4L2_PIX_FMT_SGBRG10:
-> > +	case V4L2_PIX_FMT_SGRBG10:
-> > +	case V4L2_PIX_FMT_SRGGB10:
-> > +	case V4L2_PIX_FMT_SBGGR12:
-> > +	case V4L2_PIX_FMT_SGBRG12:
-> > +	case V4L2_PIX_FMT_SGRBG12:
-> > +	case V4L2_PIX_FMT_SRGGB12:
-> > +		return 16;
-> >  	case V4L2_PIX_FMT_RGB24:
-> >  	case V4L2_PIX_FMT_BGR24:
-> >  		return 24;
+> > Follows is the V4L2 device topology representing the interactions betwe=
+en
+> > the MIPI CSI-2 sensor, the MIPI CSI-2 controller (which controls the D-=
+PHY)
+> > and the CSI controller:
+> > - entity 1: sun6i-csi (1 pad, 1 link)
+> >             type Node subtype V4L flags 0
+> >             device node name /dev/video0
+> > 	pad0: Sink
+> > 		<- "sun6i-mipi-csi2":1 [ENABLED,IMMUTABLE]
 > >=20
+> > - entity 5: sun6i-mipi-csi2 (2 pads, 2 links)
+> >             type V4L2 subdev subtype Unknown flags 0
+> > 	pad0: Sink
+> > 		<- "ov5648 0-0036":0 [ENABLED,IMMUTABLE]
+> > 	pad1: Source
+> > 		-> "sun6i-csi":0 [ENABLED,IMMUTABLE]
+> >=20
+> > - entity 8: ov5648 0-0036 (1 pad, 1 link)
+> >             type V4L2 subdev subtype Sensor flags 0
+> >             device node name /dev/v4l-subdev0
 >=20
-> Instead of updating this table, how about using v4l2_format_info() instea=
-d?
+> Question: I noticed is that sun6i-mipi-csi2 doesn't expose a node under /=
+dev/, but the sensor
+> exposes it. Probably because it uses V4L2_SUBDEV_FL_HAS_DEVNODE and sun6i=
+-csi() calls
+> v4l2_device_register_subdev_nodes().
+>=20
+> I find this weird from a userspace pov, since usually we don't mix manual=
+ and auto propagation
+> of the configs, so I started wondering if sun6i-csi driver should be call=
+ing
+> v4l2_device_register_subdev_nodes() in the first place.
 
-Yes that would be a very good thing to do indeed!
+I must admit that I didn't really pay attention to that, but since
+sun6i-mipi-csi2 is basically a bridge driver, it doesn't make sense to apply
+manual configuration to it. It is actually designed to forward most subdev =
+ops
+to its own subdev so configuring it manually would actually result in
+configuring the sensor.
 
-Thanks,
+XXX
+
+> Also, sun6i-csi doesn't seem to be used by any board dts (it's declared o=
+n the dtsi, but I
+> didn't find any dts enabling it), so I wonder if it would be a bad thing =
+if we update it.
+>
+> > 	pad0: Source
+> > 		[fmt:SBGGR8_1X8/640x480@1/30 field:none colorspace:raw xfer:none ycbc=
+r:601 quantization:full-range]
+> > 		-> "sun6i-mipi-csi2":0 [ENABLED,IMMUTABLE]
+>=20
+> If I understand correctly, this is very similar to ipu3:
+>     sensor->bus->dma_engine
+>=20
+> in the case of ipu3-cio2:
+>     sensor->ipu3-csi2->ipu3-cio2
+>=20
+> in this case:
+>     ov5648->sun6i-mipi-csi2->sun6i-csi
+
+Yes this is the correct picture.
+
+> On thing that is confusing me is the name csi2 with csi (that makes me th=
+ink of csi
+> version one, which is not the case), I would rename it to sun6i-video (or=
+ maybe
+> it is just me who gets confused).
+
+So the CSI name comes from the Allwinner litterature and implementation for=
+ that
+controller. Since it supports parallel input on its own, it does in fact su=
+pport
+parallel CSI. The DMA engine part alone from that controller is also used f=
+or
+MIPI CSI-2, so in this case the name looses its relevance.
+
+> I know this driver is already upstream and not part of this series, but o=
+n the other hand it
+> doesn't seem to be used.
+
+Personally I don't find a rename to be necessary and while I agree that
+nothing would apparently prevent us from renaming it, I would prefer to keep
+the naming in line with Allwinner's litterature.
+
+> On another note, I always wonder if we should expose the bus in the topol=
+ogy, I'm not
+> sure if it provides any useful API or information for userspace, and you =
+could have
+> a cleaner code (maybe code could be under phy subsystem). But at the same=
+ time, it
+> seems this is a pattern on v4l2.
+>=20
+> I'd like to hear what others think on the above.
+
+My view on this is that we are dealing with two distinct controllers here,
+one that acts as a DMA engine and one that acts as a bridge. As a result, t=
+wo
+chained subdevs looks like the most appropriate representation to me.
+
+Using the PHY subsystem would probably be abusing the framework since the
+MIPI CSI-2 controller is not a PHY (and we do have a D-PHY driver for the D=
+-PHY
+part that uses the PHY API already).
+
+So tl;dr I don't agree that it would be cleaner.
+
+Cheers,
 
 Paul
+
+> > Happy reviewing!
+> >=20
+> > Paul Kocialkowski (14):
+> >   phy: Distinguish between Rx and Tx for MIPI D-PHY with submodes
+> >   phy: allwinner: phy-sun6i-mipi-dphy: Support D-PHY Rx mode for MIPI
+> >     CSI-2
+> >   media: sun6i-csi: Support an optional dedicated memory pool
+> >   media: sun6i-csi: Fix the image storage bpp for 10/12-bit Bayer
+> >     formats
+> >   media: sun6i-csi: Only configure the interface data width for parallel
+> >   media: sun6i-csi: Support feeding from the MIPI CSI-2 controller
+> >   dt-bindings: media: i2c: Add A31 MIPI CSI-2 bindings documentation
+> >   media: sunxi: Add support for the A31 MIPI CSI-2 controller
+> >   ARM: dts: sun8i: v3s: Add CSI0 camera interface node
+> >   ARM: dts: sun8i: v3s: Add MIPI D-PHY and MIPI CSI-2 interface nodes
+> >   dt-bindings: media: i2c: Add A83T MIPI CSI-2 bindings documentation
+> >   media: sunxi: Add support for the A83T MIPI CSI-2 controller
+> >   ARM: dts: sun8i: a83t: Add MIPI CSI-2 controller node
+> >   media: sunxi: sun8i-a83t-mipi-csi2: Avoid using the (unsolicited)
+> >     interrupt
+> >=20
+> >  .../media/allwinner,sun6i-a31-mipi-csi2.yaml  | 168 +++++
+> >  .../media/allwinner,sun8i-a83t-mipi-csi2.yaml | 158 +++++
+> >  arch/arm/boot/dts/sun8i-a83t.dtsi             |  26 +
+> >  arch/arm/boot/dts/sun8i-v3s.dtsi              |  62 ++
+> >  drivers/media/platform/sunxi/Kconfig          |   2 +
+> >  drivers/media/platform/sunxi/Makefile         |   2 +
+> >  .../platform/sunxi/sun6i-csi/sun6i_csi.c      |  54 +-
+> >  .../platform/sunxi/sun6i-csi/sun6i_csi.h      |  20 +-
+> >  .../platform/sunxi/sun6i-mipi-csi2/Kconfig    |  11 +
+> >  .../platform/sunxi/sun6i-mipi-csi2/Makefile   |   4 +
+> >  .../sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c   | 635 +++++++++++++++++
+> >  .../sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.h   | 116 +++
+> >  .../sunxi/sun8i-a83t-mipi-csi2/Kconfig        |  11 +
+> >  .../sunxi/sun8i-a83t-mipi-csi2/Makefile       |   4 +
+> >  .../sun8i-a83t-mipi-csi2/sun8i_a83t_dphy.c    |  92 +++
+> >  .../sun8i-a83t-mipi-csi2/sun8i_a83t_dphy.h    |  39 ++
+> >  .../sun8i_a83t_mipi_csi2.c                    | 660 ++++++++++++++++++
+> >  .../sun8i_a83t_mipi_csi2.h                    | 196 ++++++
+> >  drivers/phy/allwinner/phy-sun6i-mipi-dphy.c   | 164 ++++-
+> >  drivers/staging/media/rkisp1/rkisp1-isp.c     |   3 +-
+> >  include/linux/phy/phy-mipi-dphy.h             |  13 +
+> >  21 files changed, 2408 insertions(+), 32 deletions(-)
+> >  create mode 100644 Documentation/devicetree/bindings/media/allwinner,s=
+un6i-a31-mipi-csi2.yaml
+> >  create mode 100644 Documentation/devicetree/bindings/media/allwinner,s=
+un8i-a83t-mipi-csi2.yaml
+> >  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig
+> >  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/Makefi=
+le
+> >  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_=
+mipi_csi2.c
+> >  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_=
+mipi_csi2.h
+> >  create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/K=
+config
+> >  create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/M=
+akefile
+> >  create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/s=
+un8i_a83t_dphy.c
+> >  create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/s=
+un8i_a83t_dphy.h
+> >  create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/s=
+un8i_a83t_mipi_csi2.c
+> >  create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/s=
+un8i_a83t_mipi_csi2.h
+> >=20
 
 --=20
 Paul Kocialkowski, Bootlin
 Embedded Linux and kernel engineering
 https://bootlin.com
 
---c7hkjup166d4FzgN
+--+Z7/5fzWRHDJ0o7Q
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+iiNMACgkQ3cLmz3+f
-v9HFXAf+N1l+y0ROoaUymhgezNhzMtVA6+rT/3K27Nviyx+yotMuLRVQx9kOrRIu
-NyOl92AbK3YHZoeBs3MG7x9K83Hg8jecHQfyWqXew7gsI5tzSwpkeUWJ4p3+BK3y
-Nr5TAxlDgeGKsys/03OBVp2MPBQEuh3CG+vx+g6VV0/j/xu7sRpt1HvK+loqHDnr
-pzTVenulCZlv5wpaO++e9qBlAJWT/dZ30dP89kjzmHg1ojS4gOwPK3n6urzvYYOL
-HyRYUKHCTMrAqiA3Oc8NshO3drPft1zmByfbbbcwi1tSFJGwHX4le2ai6uJzME6M
-mkdcnTQlloff4Y+k5HOQZpsbJtWchw==
-=kPUg
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+ijGgACgkQ3cLmz3+f
+v9GBXwgAjVuRycsMuOMUzhHXri4G20BBgDZQMfdouy8RuJ/ZhfBzwTDSLxJO2Yik
+fwYmb9vlc5aUBafplFZ0F2AkBQI65FwJqXzgMWpiwWEcUKtRtUe429qFHIWuRfx2
+wapYJfBawJOFQ9Zk4NXVeqefDQbdtgZolYMomLE0cCo97s/hEdLXGbrIM0EpiU7a
+rczQRZ475D6c5haWlEZnQQxlaMDN6n2TjGzlSGyOc7n+AEj4uRAkWqObmZTmbl4x
+nGjsfkL2pgdPTZcSYt/mOMMMzudkzCpmH6a2ugwYWdWF3u0Sudl9Op5fV9qVaxgr
+JPOflqUjlhq3MUJLNEfVaHyPzfsOOw==
+=jv1S
 -----END PGP SIGNATURE-----
 
---c7hkjup166d4FzgN--
+--+Z7/5fzWRHDJ0o7Q--
 
---===============8641497148154001966==
+--===============1802692919439204589==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -201,4 +327,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============8641497148154001966==--
+--===============1802692919439204589==--
