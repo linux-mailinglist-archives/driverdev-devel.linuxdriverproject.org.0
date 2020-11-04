@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB59C2A71EF
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:04 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 13B3F85AC7;
-	Wed,  4 Nov 2020 23:45:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W2f0oMYkP1rF; Wed,  4 Nov 2020 23:45:01 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 745C98442F;
-	Wed,  4 Nov 2020 23:45:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8E5EE1BF2B7
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:44:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F2E42A71F0
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 85EB2856CB
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:44:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 03151859BE;
+	Wed,  4 Nov 2020 23:45:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FN66T1hBgepH; Wed,  4 Nov 2020 23:45:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 584BE856CB;
+	Wed,  4 Nov 2020 23:45:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C95131BF2B7
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id C529084B7E
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sA7epZdYyXTV for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 23:44:58 +0000 (UTC)
+ with ESMTP id zzk8V3yNWU67 for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:44:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2EE3C84896
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:44:58 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id s30so177299lfc.4
- for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:44:58 -0800 (PST)
+Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
+ [209.85.208.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7CF668442F
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:44:59 +0000 (UTC)
+Received: by mail-lj1-f193.google.com with SMTP id t13so276395ljk.12
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:44:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=mSwbQjJ1cVy439QSgrXK9AcLY7148KkOFvsAqpIxmwg=;
- b=QtXKfweBRlsbGOAlYxZXOz/lYCy8unSAvDGjjvWSh/sezRhvIb291EkMy/Az42Eo7e
- TAfz8YALCyTQ46RYjcz1KHr1bxx3QIW42M38LghlqXeAJIOhgwnXDJ2w5PFdGxUrDaJa
- CgbvRUnmn+hP+Q9Jgoz/cIcjn3sh+vTzr920aJr959sxIfklRYfD0wQYr1mK7xUjvoYi
- X2ev0EAqFLOjT7G0Gaih9PQ6buZ2mt73AMYcrCt1Dn2Wa1sOYP2Wywby9BlcF6QCpkRM
- Ts50hSUFzQvXaYS6FgwlN+Yz+9QeF79aJ602AxxMXZAJiSKQWJJzQ4tzPEnhrIo8A+OP
- CRyg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=YM5IiBSxM0x10e+Au9qpNGPC4fBnjpf0BFdkUuSd19o=;
+ b=lVcUqzf4bACnjosNBHshwKvloxF1mXmh47Jx+tv5SOw3pbcF5MewYXF2PB/avaGI70
+ vQJq32tRmP2XPmPN+x69w89RTcvLM305K0t5/8gnq90BjT7LO494irREBwHTquD1oSOp
+ MR5CN4fovrz4pzkyzp0PaspM5y8oMZxNFeB8gslG+P+IZgNjFaL4yf1zeIhqoK+5owom
+ LKXVk/rIA3l92z9ZoOn/8SQ+nc3Up9VpkX9oU+cQ2Ho8ccmdajqKcqIPL9LaPxQguChN
+ UxuOOhhmNyTW8RnPu0w3dFY1qJ71LnPOFHgjMdZmODW6bZUq1ow8R47S8wm2f/wv7rkQ
+ 4nSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=mSwbQjJ1cVy439QSgrXK9AcLY7148KkOFvsAqpIxmwg=;
- b=j60/rRAPH94z2J+RJOoDlGks1W5nKXhQCGNU9JM36D1bEXQugilz4PCZlCMrYo4Z4b
- PW/XCj/exrhaRDBdplyB7UBdhTMZxkSqth5P+bB6CbsuSaKj8rr/5wUb9BYVzE87Fc5S
- CPbVMuKBLLgM5cxpqwwmnkR1EGTPIuQI3bg03fikPqFx5DcASbTxU9bFzsDXGEnlXTZy
- Au8HnkEhn+3gTxwPT0UkRkwTb5XZ2iKpiBXcZKnfZiB5LO2Abn8FnCbjon+yoKOk+59L
- 5hZ2gRZ0c2zTe6IjRIFSRyWKmdXWmBZ2EJTkroCf8yd1TTxKWGlNKarPViLC92Cu0P0b
- /cow==
-X-Gm-Message-State: AOAM532OVqvg3gC8mCoXRINFXYolu4+lr0rrgRObEU2zLW3KVhi7doos
- UP/DQ90t3tsHYI6Djn6cNDQ=
-X-Google-Smtp-Source: ABdhPJyAnR4d+zZoZfcUMnF37/CdTyI5a7cshqFtJeUxmjjzKi7K0NU+QmIwz6qwfyOY2SPBqOSB8Q==
-X-Received: by 2002:a19:c8c1:: with SMTP id y184mr46637lff.598.1604533495960; 
- Wed, 04 Nov 2020 15:44:55 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=YM5IiBSxM0x10e+Au9qpNGPC4fBnjpf0BFdkUuSd19o=;
+ b=LvSxkr/ijHuEUyXjZLNTYCqZF/vp6c0A+WJLPfUsLBoe4eF/r/oyHaD4FTwhqn6GiU
+ 3wfWxA9Q5EffEz0/HHzqVp0FQxJBaIr4T3uYsNZe54pihLD7uiGYbmii/mLlyIc97/eN
+ TMTR4Ea7KR2XpYBnoF3YvtgNi19mAO6YXrNq4Fgg00+RkZexwd5xWK13nqtA43Uqgynv
+ 6C2ZGSayuRLbgKpYD8bSShUizwhFKsUMoEaARQVe09WwzIgfYXuDy8DMQkOMmIqVb0AR
+ DWfyhK77Or409+Sg6gCPk4FcRXDWFUHl+diwsCfn3wUxQzQ1RXbH/Zv7PqSjr0KZE66r
+ SUeg==
+X-Gm-Message-State: AOAM5336sckHr1BxGdW+A29pTsOprwzHQO4NL0k1WQSnKAq1GRVQ2lma
+ ECfru2fFkr1qgQ6OViT7HLU=
+X-Google-Smtp-Source: ABdhPJwmfo2F3w3VqauMbdw79G3wwAW+IEPO2zeUaLvIq9m5Iy9Czxc99+HDdNQyXZjk5AradNM/vg==
+X-Received: by 2002:a2e:9a98:: with SMTP id p24mr132196lji.418.1604533497375; 
+ Wed, 04 Nov 2020 15:44:57 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
  [109.252.192.83])
- by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.44.54
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.44.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 15:44:55 -0800 (PST)
+ Wed, 04 Nov 2020 15:44:56 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
@@ -80,11 +80,13 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Marek Szyprowski <m.szyprowski@samsung.com>,
  Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA Tegra20/30
- SoCs
-Date: Thu,  5 Nov 2020 02:43:57 +0300
-Message-Id: <20201104234427.26477-1-digetx@gmail.com>
+Subject: [PATCH v1 01/30] dt-bindings: host1x: Document OPP and voltage
+ regulator properties
+Date: Thu,  5 Nov 2020 02:43:58 +0300
+Message-Id: <20201104234427.26477-2-digetx@gmail.com>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20201104234427.26477-1-digetx@gmail.com>
+References: <20201104234427.26477-1-digetx@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -108,119 +110,235 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Introduce core voltage scaling for NVIDIA Tegra20/30 SoCs, which reduces
-power consumption and heating of the Tegra chips. Tegra SoC has multiple
-hardware units which belong to a core power domain of the SoC and share
-the core voltage. The voltage must be selected in accordance to a minimum
-requirement of every core hardware unit.
+Document new DVFS OPP table and voltage regulator properties of the
+Host1x bus and devices sitting on the bus.
 
-The minimum core voltage requirement depends on:
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+---
+ .../display/tegra/nvidia,tegra20-host1x.txt   | 56 +++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-  1. Clock enable state of a hardware unit.
-  2. Clock frequency.
-  3. Unit's internal idling/active state.
-
-This series is tested on Acer A500 (T20), AC100 (T20), Nexus 7 (T30) and
-Ouya (T30) devices. I also added voltage scaling to the Ventana (T20) and
-Cardhu (T30) boards which are tested by NVIDIA's CI farm. Tegra30 is now up
-to 5C cooler on Nexus 7 and stays cool on Ouya (instead of becoming burning
-hot) while system is idling. It should be possible to improve this further
-by implementing a more advanced power management features for the kernel
-drivers.
-
-The DVFS support is opt-in for all boards, meaning that older DTBs will
-continue to work like they did it before this series. It should be possible
-to easily add the core voltage scaling support for Tegra114+ SoCs based on
-this grounding work later on, if anyone will want to implement it.
-
-WARNING(!) This series is made on top of the memory interconnect patches
-           which are currently under review [1]. The Tegra EMC driver
-           and devicetree-related patches need to be applied on top of
-           the ICC series.
-
-[1] https://patchwork.ozlabs.org/project/linux-tegra/list/?series=212196
-
-Dmitry Osipenko (30):
-  dt-bindings: host1x: Document OPP and voltage regulator properties
-  dt-bindings: mmc: tegra: Document OPP and voltage regulator properties
-  dt-bindings: pwm: tegra: Document OPP and voltage regulator properties
-  media: dt: bindings: tegra-vde: Document OPP and voltage regulator
-    properties
-  dt-binding: usb: ci-hdrc-usb2:  Document OPP and voltage regulator
-    properties
-  dt-bindings: usb: tegra-ehci: Document OPP and voltage regulator
-    properties
-  soc/tegra: Add sync state API
-  soc/tegra: regulators: Support Tegra SoC device sync state API
-  soc/tegra: regulators: Fix lockup when voltage-spread is out of range
-  regulator: Allow skipping disabled regulators in
-    regulator_check_consumers()
-  drm/tegra: dc: Support OPP and SoC core voltage scaling
-  drm/tegra: gr2d: Correct swapped device-tree compatibles
-  drm/tegra: gr2d: Support OPP and SoC core voltage scaling
-  drm/tegra: gr3d: Support OPP and SoC core voltage scaling
-  drm/tegra: hdmi: Support OPP and SoC core voltage scaling
-  gpu: host1x: Support OPP and SoC core voltage scaling
-  mmc: sdhci-tegra: Support OPP and core voltage scaling
-  pwm: tegra: Support OPP and core voltage scaling
-  media: staging: tegra-vde: Support OPP and SoC core voltage scaling
-  usb: chipidea: tegra: Support OPP and SoC core voltage scaling
-  usb: host: ehci-tegra: Support OPP and SoC core voltage scaling
-  memory: tegra20-emc: Support Tegra SoC device state syncing
-  memory: tegra30-emc: Support Tegra SoC device state syncing
-  ARM: tegra: Add OPP tables for Tegra20 peripheral devices
-  ARM: tegra: Add OPP tables for Tegra30 peripheral devices
-  ARM: tegra: ventana: Add voltage supplies to DVFS-capable devices
-  ARM: tegra: paz00: Add voltage supplies to DVFS-capable devices
-  ARM: tegra: acer-a500: Add voltage supplies to DVFS-capable devices
-  ARM: tegra: cardhu-a04: Add voltage supplies to DVFS-capable devices
-  ARM: tegra: nexus7: Add voltage supplies to DVFS-capable devices
-
- .../display/tegra/nvidia,tegra20-host1x.txt   |  56 +++
- .../bindings/media/nvidia,tegra-vde.txt       |  12 +
- .../bindings/mmc/nvidia,tegra20-sdhci.txt     |  12 +
- .../bindings/pwm/nvidia,tegra20-pwm.txt       |  13 +
- .../devicetree/bindings/usb/ci-hdrc-usb2.txt  |   4 +
- .../bindings/usb/nvidia,tegra20-ehci.txt      |   2 +
- .../boot/dts/tegra20-acer-a500-picasso.dts    |  30 +-
- arch/arm/boot/dts/tegra20-paz00.dts           |  40 +-
- .../arm/boot/dts/tegra20-peripherals-opp.dtsi | 386 ++++++++++++++++
- arch/arm/boot/dts/tegra20-ventana.dts         |  65 ++-
- arch/arm/boot/dts/tegra20.dtsi                |  14 +
- .../tegra30-asus-nexus7-grouper-common.dtsi   |  23 +
- arch/arm/boot/dts/tegra30-cardhu-a04.dts      |  44 ++
- .../arm/boot/dts/tegra30-peripherals-opp.dtsi | 415 ++++++++++++++++++
- arch/arm/boot/dts/tegra30.dtsi                |  13 +
- drivers/gpu/drm/tegra/Kconfig                 |   1 +
- drivers/gpu/drm/tegra/dc.c                    | 138 +++++-
- drivers/gpu/drm/tegra/dc.h                    |   5 +
- drivers/gpu/drm/tegra/gr2d.c                  | 140 +++++-
- drivers/gpu/drm/tegra/gr3d.c                  | 136 ++++++
- drivers/gpu/drm/tegra/hdmi.c                  |  63 ++-
- drivers/gpu/host1x/Kconfig                    |   1 +
- drivers/gpu/host1x/dev.c                      |  87 ++++
- drivers/memory/tegra/tegra20-emc.c            |   8 +-
- drivers/memory/tegra/tegra30-emc.c            |   8 +-
- drivers/mmc/host/Kconfig                      |   1 +
- drivers/mmc/host/sdhci-tegra.c                |  70 ++-
- drivers/pwm/Kconfig                           |   1 +
- drivers/pwm/pwm-tegra.c                       |  84 +++-
- drivers/regulator/core.c                      |  12 +-
- .../soc/samsung/exynos-regulator-coupler.c    |   2 +-
- drivers/soc/tegra/common.c                    | 152 ++++++-
- drivers/soc/tegra/regulators-tegra20.c        |  25 +-
- drivers/soc/tegra/regulators-tegra30.c        |  30 +-
- drivers/staging/media/tegra-vde/Kconfig       |   1 +
- drivers/staging/media/tegra-vde/vde.c         | 127 ++++++
- drivers/staging/media/tegra-vde/vde.h         |   1 +
- drivers/usb/chipidea/Kconfig                  |   1 +
- drivers/usb/chipidea/ci_hdrc_tegra.c          |  79 ++++
- drivers/usb/host/Kconfig                      |   1 +
- drivers/usb/host/ehci-tegra.c                 |  79 ++++
- include/linux/regulator/coupler.h             |   6 +-
- include/soc/tegra/common.h                    |  22 +
- 43 files changed, 2360 insertions(+), 50 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-host1x.txt b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-host1x.txt
+index 34d993338453..0593c8df70bb 100644
+--- a/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-host1x.txt
++++ b/Documentation/devicetree/bindings/display/tegra/nvidia,tegra20-host1x.txt
+@@ -20,6 +20,18 @@ Required properties:
+ - reset-names: Must include the following entries:
+   - host1x
+ 
++Optional properties:
++- operating-points-v2: See ../bindings/opp/opp.txt for details.
++- core-supply: Phandle of voltage regulator of the SoC "core" power domain.
++
++For each opp entry in 'operating-points-v2' table of host1x and its modules:
++- opp-supported-hw: One bitfield indicating:
++	On Tegra20: SoC process ID mask
++	On Tegra30+: SoC speedo ID mask
++
++	A bitwise AND is performed against the value and if any bit
++	matches, the OPP gets enabled.
++
+ Each host1x client module having to perform DMA through the Memory Controller
+ should have the interconnect endpoints set to the Memory Client and External
+ Memory respectively.
+@@ -45,6 +57,8 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
+ 
+ - vi: video input
+ 
+@@ -128,6 +142,8 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - epp: encoder pre-processor
+ 
+@@ -147,6 +163,8 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - isp: image signal processor
+ 
+@@ -166,6 +184,7 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - gr2d: 2D graphics engine
+ 
+@@ -185,6 +204,8 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - gr3d: 3D graphics engine
+ 
+@@ -209,6 +230,8 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - dc: display controller
+ 
+@@ -241,6 +264,8 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - hdmi: High Definition Multimedia Interface
+ 
+@@ -267,6 +292,8 @@ of the following host1x client modules:
+   - nvidia,hpd-gpio: specifies a GPIO used for hotplug detection
+   - nvidia,edid: supplies a binary EDID blob
+   - nvidia,panel: phandle of a display panel
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - tvo: TV encoder output
+ 
+@@ -277,6 +304,10 @@ of the following host1x client modules:
+   - clocks: Must contain one entry, for the module clock.
+     See ../clocks/clock-bindings.txt for details.
+ 
++  Optional properties:
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
++
+ - dsi: display serial interface
+ 
+   Required properties:
+@@ -305,6 +336,8 @@ of the following host1x client modules:
+   - nvidia,panel: phandle of a display panel
+   - nvidia,ganged-mode: contains a phandle to a second DSI controller to gang
+     up with in order to support up to 8 data lanes
++  - operating-points-v2: See ../bindings/opp/opp.txt for details.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ - sor: serial output resource
+ 
+@@ -394,6 +427,7 @@ of the following host1x client modules:
+   - interconnect-names: Must include name of the interconnect path for each
+     interconnect entry. Consult TRM documentation for information about
+     available memory clients, see MEMORY CONTROLLER section.
++  - core-supply: Phandle of voltage regulator of the SoC "core" power domain.
+ 
+ Example:
+ 
+@@ -408,6 +442,8 @@ Example:
+ 		clocks = <&tegra_car TEGRA20_CLK_HOST1X>;
+ 		resets = <&tegra_car 28>;
+ 		reset-names = "host1x";
++		operating-points-v2 = <&dvfs_opp_table>;
++		core-supply = <&vdd_core>;
+ 
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+@@ -421,6 +457,8 @@ Example:
+ 			clocks = <&tegra_car TEGRA20_CLK_MPE>;
+ 			resets = <&tegra_car 60>;
+ 			reset-names = "mpe";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 
+ 		vi@54080000 {
+@@ -429,6 +467,8 @@ Example:
+ 			interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
+ 			assigned-clocks = <&tegra_car TEGRA210_CLK_VI>;
+ 			assigned-clock-parents = <&tegra_car TEGRA210_CLK_PLL_C4_OUT0>;
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 
+ 			clocks = <&tegra_car TEGRA210_CLK_VI>;
+ 			power-domains = <&pd_venc>;
+@@ -510,6 +550,8 @@ Example:
+ 			clocks = <&tegra_car TEGRA20_CLK_EPP>;
+ 			resets = <&tegra_car 19>;
+ 			reset-names = "epp";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 
+ 		isp {
+@@ -528,6 +570,8 @@ Example:
+ 			clocks = <&tegra_car TEGRA20_CLK_GR2D>;
+ 			resets = <&tegra_car 21>;
+ 			reset-names = "2d";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 
+ 		gr3d {
+@@ -536,6 +580,8 @@ Example:
+ 			clocks = <&tegra_car TEGRA20_CLK_GR3D>;
+ 			resets = <&tegra_car 24>;
+ 			reset-names = "3d";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 
+ 		dc@54200000 {
+@@ -547,6 +593,8 @@ Example:
+ 			clock-names = "dc", "parent";
+ 			resets = <&tegra_car 27>;
+ 			reset-names = "dc";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 
+ 			interconnects = <&mc TEGRA20_MC_DISPLAY0A &emc>,
+ 					<&mc TEGRA20_MC_DISPLAY0B &emc>,
+@@ -571,6 +619,8 @@ Example:
+ 			clock-names = "dc", "parent";
+ 			resets = <&tegra_car 26>;
+ 			reset-names = "dc";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 
+ 			interconnects = <&mc TEGRA20_MC_DISPLAY0AB &emc>,
+ 					<&mc TEGRA20_MC_DISPLAY0BB &emc>,
+@@ -596,6 +646,8 @@ Example:
+ 			resets = <&tegra_car 51>;
+ 			reset-names = "hdmi";
+ 			status = "disabled";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 
+ 		tvo {
+@@ -604,6 +656,8 @@ Example:
+ 			interrupts = <0 76 0x04>;
+ 			clocks = <&tegra_car TEGRA20_CLK_TVO>;
+ 			status = "disabled";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 
+ 		dsi {
+@@ -615,6 +669,8 @@ Example:
+ 			resets = <&tegra_car 48>;
+ 			reset-names = "dsi";
+ 			status = "disabled";
++			operating-points-v2 = <&dvfs_opp_table>;
++			core-supply = <&vdd_core>;
+ 		};
+ 	};
+ 
 -- 
 2.27.0
 
