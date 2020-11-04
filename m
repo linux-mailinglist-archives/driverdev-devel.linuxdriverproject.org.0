@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2A232A7201
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:33 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 269312A7205
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D7A286E1A;
-	Wed,  4 Nov 2020 23:45:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD904857D0;
+	Wed,  4 Nov 2020 23:45:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UixcPoggVpVD; Wed,  4 Nov 2020 23:45:32 +0000 (UTC)
+	with ESMTP id 4Bw19SZrPlHH; Wed,  4 Nov 2020 23:45:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 18D768507C;
-	Wed,  4 Nov 2020 23:45:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 514D185722;
+	Wed,  4 Nov 2020 23:45:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 185041BF2B7
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:28 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4C5011BF2B7
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 14872851E5
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 48B148551F
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bNRZybI5LJWT for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 23:45:27 +0000 (UTC)
+ with ESMTP id WczXxWVU50Ke for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:45:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
- [209.85.167.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 29E5986E1A
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:27 +0000 (UTC)
-Received: by mail-lf1-f67.google.com with SMTP id l2so200921lfk.0
- for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:27 -0800 (PST)
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 78046854C2
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:28 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id d24so287128ljg.10
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=hseyDhQkuoob9NOtoHbLkM9cTffwFSs3xCd4YpkHTrw=;
- b=Vgs9vcRA5MoYdjcDWn5jAmzh9koLFkm8n3kxp4ZaWDmqaxezO16uXx+POVve50XLv6
- Brk82aXVk8Ij6FjVZVP0eHSnwT52sTgvE/OiY/n7PgxCXTZdymbdD49Zn5jZks+RIF25
- zeNuKaG+2PB76p4DG10Sx6jAlvXcP12CX5VDX8f2ytUae1qjeB1Ct6/6xtZlCTN3McIO
- SoePQx2v0ZriIswLrgIAG9aFzQz81hKDwWKO/xPaaKaoeP5OX7IsA7kWqj1qLBwq1o7P
- fOqksQJtYotkXuwnXWjQoPNQfKtuT7fe4Ou24BKTBQm7a+aobGhtKwVp3lF/QqrtjJQb
- PbFg==
+ bh=q04sc3lZzk/7Y2Vrk729DLPvzmihTnah64pqG8qeyNY=;
+ b=TONR2+QYbapieLnDTf0Jk1QPqXZDWAjT9sIbfsQFU3S1ETVVTGWoJK1Ebv6MvCDAxu
+ iFk8mmpyuk40cSTU2xGCAu0IvpyN9KggSBaUQ0HHUcphlkxTbwyPOPgcJyrtemqawCUZ
+ IzkDtKXECzbZCA4IZob2ibn2+8dNPZTXjcCGMnrjW2yoErdNbjFSO1mXDS+eEXyo3O1Q
+ MiuzyQ7fZ3tJFl2zUxr54tAVzMmTWH5TTg40i9bJj1HAViKxiTpO4EWYns9q1Jeg+pQs
+ KLY3Dznjpa3LVkpFr2X2vcRQjrEZceJCA+H2N4jXkG7kOszuNZZdKNm3I1X6sEtQCAK/
+ tPBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hseyDhQkuoob9NOtoHbLkM9cTffwFSs3xCd4YpkHTrw=;
- b=aXTzr7916ikXT5i0m2hT+ODhi2btvb4vOts7eDr/C1RJOl1iCBd6JJgZbF/regLYqR
- iFUJn3nRcISA7Xssob5olD7aCSJX3MNkk+z3l21bpo9tpWwSrFoE8wEr2B1PJOUv9OlS
- noT/oiGWUWyjbmr6fQ2qwKc5F5JiFJ+mWm7rZhBM11SKfzAV1vqGRrgJGYIrP3W4plDs
- /xaT24z7hgzm8XScvIGSke93d+bkpplL0ims2Gbqw/pmndhCMKlDZXH/MsOConbISAP+
- FnnAwTb3eeLhzl0XmRQgv3IxYldB7WPY2qO4Ip4OkTuI9dw5Cd7diJCY9e0OYY1P1VMT
- jU7A==
-X-Gm-Message-State: AOAM530BBw/PrIpEWAoswJdHvESobk/1tWkD5IEI5ID5k7n5X4mttjmO
- 73MFlsJCgUhymxpzJYc5Rbc=
-X-Google-Smtp-Source: ABdhPJyjht5wRoGeIdpBggRhGgNRXmUvQ3GKs49s3x6UJiZufCXAe3x9qoE2tlabYR9VyRWx6gLTtg==
-X-Received: by 2002:a19:6912:: with SMTP id e18mr39627lfc.427.1604533525432;
- Wed, 04 Nov 2020 15:45:25 -0800 (PST)
+ bh=q04sc3lZzk/7Y2Vrk729DLPvzmihTnah64pqG8qeyNY=;
+ b=FABAp1F9r4pTL7cc5CrmsO9MFUAVOjMfzydEIeSXhr/ipSJNDBbutumE+wuoLF2Dl+
+ 0EJns3V3VBuyjH+1yCZtvpWTO2/wRafTEdSBrZ2Q9E0n2LweOSdVMyt27VmqYsjIloYh
+ 12V/ECErvuZBQFteumWxrBIYLypPAiSGrfTN/mbxzESuZB4FG9IuhT4D2UmIAie8Y9mg
+ d8HVNzTopsg2Mg2CNnU6ucXJPh+GhMzx/LXLRIQSOtdmV+urePpwCE2U6VHudjouyt9e
+ R0ytwkKhUXK5MBPmUryvBKOPej2K0cLJFixCnrOrRHD1hZdG6idDxsJD/Q+3f9oPBR4M
+ UeIw==
+X-Gm-Message-State: AOAM533LPYBTScSJE73Ed5u8p1sMfoiTYZZaHLT9XjhcyV3abEoa9oO8
+ /SlkSMAaZszocRnA5Su8sbc=
+X-Google-Smtp-Source: ABdhPJy4JvIN2UzMvC1UGoXxnZuYWhG4YhonA0JFk9Z9oJ2zbTum5L2HXCOgLCmGf47Q0qaQDlrH3A==
+X-Received: by 2002:a2e:a41b:: with SMTP id p27mr161088ljn.30.1604533526786;
+ Wed, 04 Nov 2020 15:45:26 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
  [109.252.192.83])
- by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.24
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 15:45:24 -0800 (PST)
+ Wed, 04 Nov 2020 15:45:26 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
@@ -80,10 +80,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Marek Szyprowski <m.szyprowski@samsung.com>,
  Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: [PATCH v1 21/30] usb: host: ehci-tegra: Support OPP and SoC core
- voltage scaling
-Date: Thu,  5 Nov 2020 02:44:18 +0300
-Message-Id: <20201104234427.26477-22-digetx@gmail.com>
+Subject: [PATCH v1 22/30] memory: tegra20-emc: Support Tegra SoC device state
+ syncing
+Date: Thu,  5 Nov 2020 02:44:19 +0300
+Message-Id: <20201104234427.26477-23-digetx@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201104234427.26477-1-digetx@gmail.com>
 References: <20201104234427.26477-1-digetx@gmail.com>
@@ -110,134 +110,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add initial OPP and SoC core voltage scaling support to the Tegra EHCI
-driver. This is required for enabling system-wide DVFS on older Tegra
-SoCs.
+Sync driver state using the Tegra SoC device state syncing API, telling
+to regulators voltage coupler that EMC state is ready for DVFS. This is
+required for enabling system-wide DVFS on Tegra20.
 
-Tested-by: Peter Geis <pgwipeout@gmail.com>
 Tested-by: Nicolas Chauvet <kwizart@gmail.com>
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/usb/host/Kconfig      |  1 +
- drivers/usb/host/ehci-tegra.c | 79 +++++++++++++++++++++++++++++++++++
- 2 files changed, 80 insertions(+)
+ drivers/memory/tegra/tegra20-emc.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
-index ab12c4bf0ef1..35c42bc05c5a 100644
---- a/drivers/usb/host/Kconfig
-+++ b/drivers/usb/host/Kconfig
-@@ -278,6 +278,7 @@ config USB_EHCI_TEGRA
- 	depends on ARCH_TEGRA
- 	select USB_EHCI_ROOT_HUB_TT
- 	select USB_TEGRA_PHY
-+	select PM_OPP
- 	help
- 	  This driver enables support for the internal USB Host Controllers
- 	  found in NVIDIA Tegra SoCs. The controllers are EHCI compliant.
-diff --git a/drivers/usb/host/ehci-tegra.c b/drivers/usb/host/ehci-tegra.c
-index 869d9c4de5fc..0976577f54b4 100644
---- a/drivers/usb/host/ehci-tegra.c
-+++ b/drivers/usb/host/ehci-tegra.c
-@@ -17,6 +17,7 @@
- #include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_opp.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
- #include <linux/slab.h>
-@@ -364,6 +365,79 @@ static void tegra_ehci_unmap_urb_for_dma(struct usb_hcd *hcd, struct urb *urb)
- 	free_dma_aligned_buffer(urb);
+diff --git a/drivers/memory/tegra/tegra20-emc.c b/drivers/memory/tegra/tegra20-emc.c
+index 9946b957bb01..b1b0a2439689 100644
+--- a/drivers/memory/tegra/tegra20-emc.c
++++ b/drivers/memory/tegra/tegra20-emc.c
+@@ -1129,6 +1129,12 @@ static int tegra_emc_probe(struct platform_device *pdev)
+ 	return err;
  }
  
-+static void tegra_ehci_deinit_opp_table(void *data)
++static void tegra_emc_sync_state(struct device *dev)
 +{
-+	struct device *dev = data;
-+	struct opp_table *opp_table;
-+
-+	opp_table = dev_pm_opp_get_opp_table(dev);
-+	dev_pm_opp_of_remove_table(dev);
-+	dev_pm_opp_put_regulators(opp_table);
-+	dev_pm_opp_put_opp_table(opp_table);
++	tegra_soc_device_sync_state(dev);
++	icc_sync_state(dev);
 +}
 +
-+static int devm_tegra_ehci_init_opp_table(struct device *dev)
-+{
-+	unsigned long rate = ULONG_MAX;
-+	struct opp_table *opp_table;
-+	const char *rname = "core";
-+	struct dev_pm_opp *opp;
-+	int err;
-+
-+	/* legacy device-trees don't have OPP table */
-+	if (!device_property_present(dev, "operating-points-v2"))
-+		return 0;
-+
-+	/* voltage scaling is optional */
-+	if (device_property_present(dev, "core-supply"))
-+		opp_table = dev_pm_opp_set_regulators(dev, &rname, 1);
-+	else
-+		opp_table = dev_pm_opp_get_opp_table(dev);
-+
-+	if (IS_ERR(opp_table))
-+		return dev_err_probe(dev, PTR_ERR(opp_table),
-+				     "failed to prepare OPP table\n");
-+
-+	err = dev_pm_opp_of_add_table(dev);
-+	if (err) {
-+		dev_err(dev, "failed to add OPP table: %d\n", err);
-+		goto put_table;
-+	}
-+
-+	/* find suitable OPP for the maximum clock rate */
-+	opp = dev_pm_opp_find_freq_floor(dev, &rate);
-+	err = PTR_ERR_OR_ZERO(opp);
-+	if (err) {
-+		dev_err(dev, "failed to get OPP: %d\n", err);
-+		goto remove_table;
-+	}
-+
-+	dev_pm_opp_put(opp);
-+
-+	/*
-+	 * First dummy rate-set initializes voltage vote by setting voltage
-+	 * in accordance to the clock rate.
-+	 */
-+	err = dev_pm_opp_set_rate(dev, rate);
-+	if (err) {
-+		dev_err(dev, "failed to initialize OPP clock: %d\n", err);
-+		goto remove_table;
-+	}
-+
-+	err = devm_add_action(dev, tegra_ehci_deinit_opp_table, dev);
-+	if (err)
-+		goto remove_table;
-+
-+	return 0;
-+
-+remove_table:
-+	dev_pm_opp_of_remove_table(dev);
-+put_table:
-+	dev_pm_opp_put_regulators(opp_table);
-+
-+	return err;
-+}
-+
- static const struct tegra_ehci_soc_config tegra30_soc_config = {
- 	.has_hostpc = true,
+ static const struct of_device_id tegra_emc_of_match[] = {
+ 	{ .compatible = "nvidia,tegra20-emc", },
+ 	{},
+@@ -1141,7 +1147,7 @@ static struct platform_driver tegra_emc_driver = {
+ 		.name = "tegra20-emc",
+ 		.of_match_table = tegra_emc_of_match,
+ 		.suppress_bind_attrs = true,
+-		.sync_state = icc_sync_state,
++		.sync_state = tegra_emc_sync_state,
+ 	},
  };
-@@ -431,6 +505,11 @@ static int tegra_ehci_probe(struct platform_device *pdev)
- 		goto cleanup_hcd_create;
- 	}
- 
-+	err = devm_tegra_ehci_init_opp_table(&pdev->dev);
-+	if (err)
-+		return dev_err_probe(&pdev->dev, err,
-+				     "Failed to initialize OPP\n");
-+
- 	err = clk_prepare_enable(tegra->clk);
- 	if (err)
- 		goto cleanup_hcd_create;
+ module_platform_driver(tegra_emc_driver);
 -- 
 2.27.0
 
