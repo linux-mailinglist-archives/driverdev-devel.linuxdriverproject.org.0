@@ -1,50 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9756E2A622E
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:40:16 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03EF72A627C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:48:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 47EF686355;
-	Wed,  4 Nov 2020 10:40:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5917B86C0C;
+	Wed,  4 Nov 2020 10:48:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v1b5LV5M7Y-a; Wed,  4 Nov 2020 10:40:13 +0000 (UTC)
+	with ESMTP id IiAQKFApRMrQ; Wed,  4 Nov 2020 10:48:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 38D6785F67;
-	Wed,  4 Nov 2020 10:40:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BD68D86B89;
+	Wed,  4 Nov 2020 10:48:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B1BE81BF844
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:40:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 38E0F1BF844
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:48:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ADF6587493
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:40:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3507E86B3B
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:48:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id npmpjC1NF1z0 for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 10:40:04 +0000 (UTC)
+ with ESMTP id H2uhVuV0ew4M for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 10:48:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A22A587436
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:40:03 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 2F7C5ABAE;
- Wed,  4 Nov 2020 10:40:02 +0000 (UTC)
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: u.kleine-koenig@pengutronix.de, linux-kernel@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v3 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
-Date: Wed,  4 Nov 2020 11:39:37 +0100
-Message-Id: <20201104103938.1286-12-nsaenzjulienne@suse.de>
-X-Mailer: git-send-email 2.29.1
-In-Reply-To: <20201104103938.1286-1-nsaenzjulienne@suse.de>
-References: <20201104103938.1286-1-nsaenzjulienne@suse.de>
+Received: from relay10.mail.gandi.net (relay10.mail.gandi.net [217.70.178.230])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AB1E986B33
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:48:35 +0000 (UTC)
+Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay10.mail.gandi.net (Postfix) with ESMTPSA id BA2FB24000D;
+ Wed,  4 Nov 2020 10:48:27 +0000 (UTC)
+Date: Wed, 4 Nov 2020 11:48:27 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH 07/14] dt-bindings: media: i2c: Add A31 MIPI CSI-2
+ bindings documentation
+Message-ID: <20201104104827.GD285779@aptenodytes>
+References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
+ <20201023174546.504028-8-paul.kocialkowski@bootlin.com>
+ <20201026161450.gr3dqpltxw2ccc3s@gilmour.lan>
+ <20201027095221.GE168350@aptenodytes>
+ <20201027184459.eberpkr52kay3du6@gilmour.lan>
 MIME-Version: 1.0
+In-Reply-To: <20201027184459.eberpkr52kay3du6@gilmour.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,305 +60,312 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
- linux-gpio@vger.kernel.org, andy.shevchenko@gmail.com,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- p.zabel@pengutronix.de, linux-input@vger.kernel.org,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, bgolaszewski@baylibre.com,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hans.verkuil@cisco.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============4481162168962962677=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Adds support to control the PWM bus available in official Raspberry Pi
-PoE HAT. Only RPi's co-processor has access to it, so commands have to
-be sent through RPi's firmware mailbox interface.
 
-Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+--===============4481162168962962677==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="JwB53PgKC5A7+0Ej"
+Content-Disposition: inline
 
----
 
-Changes since v2:
- - Use devm_rpi_firmware_get()
- - Rename driver
- - Small cleanups as per Andy Shevchenko's comments
+--JwB53PgKC5A7+0Ej
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes since v1:
- - Use default pwm bindings and get rid of xlate() function
- - Correct spelling errors
- - Correct apply() function
- - Round values
- - Fix divisions in arm32 mode
- - Small cleanups
+Hi,
 
- drivers/pwm/Kconfig               |   9 ++
- drivers/pwm/Makefile              |   1 +
- drivers/pwm/pwm-raspberrypi-poe.c | 216 ++++++++++++++++++++++++++++++
- 3 files changed, 226 insertions(+)
- create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
+On Tue 27 Oct 20, 19:44, Maxime Ripard wrote:
+> On Tue, Oct 27, 2020 at 10:52:21AM +0100, Paul Kocialkowski wrote:
+> > Hi,
+> >=20
+> > On Mon 26 Oct 20, 17:14, Maxime Ripard wrote:
+> > > i2c? :)
+> >=20
+> > Oops, good catch!
+> > =20
+> > > On Fri, Oct 23, 2020 at 07:45:39PM +0200, Paul Kocialkowski wrote:
+> > > > This introduces YAML bindings documentation for the A31 MIPI CSI-2
+> > > > controller.
+> > > >=20
+> > > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > > > ---
+> > > >  .../media/allwinner,sun6i-a31-mipi-csi2.yaml  | 168 ++++++++++++++=
+++++
+> > > >  1 file changed, 168 insertions(+)
+> > > >  create mode 100644 Documentation/devicetree/bindings/media/allwinn=
+er,sun6i-a31-mipi-csi2.yaml
+> > > >=20
+> > > > diff --git a/Documentation/devicetree/bindings/media/allwinner,sun6=
+i-a31-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/allwinner,su=
+n6i-a31-mipi-csi2.yaml
+> > > > new file mode 100644
+> > > > index 000000000000..9adc0bc27033
+> > > > --- /dev/null
+> > > > +++ b/Documentation/devicetree/bindings/media/allwinner,sun6i-a31-m=
+ipi-csi2.yaml
+> > > > @@ -0,0 +1,168 @@
+> > > > +# SPDX-License-Identifier: GPL-2.0
+> > > > +%YAML 1.2
+> > > > +---
+> > > > +$id: http://devicetree.org/schemas/media/allwinner,sun6i-a31-mipi-=
+csi2.yaml#
+> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > +
+> > > > +title: Allwinner A31 MIPI CSI-2 Device Tree Bindings
+> > > > +
+> > > > +maintainers:
+> > > > +  - Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > > > +
+> > > > +properties:
+> > > > +  compatible:
+> > > > +    oneOf:
+> > > > +      - const: allwinner,sun6i-a31-mipi-csi2
+> > > > +      - items:
+> > > > +          - const: allwinner,sun8i-v3s-mipi-csi2
+> > > > +          - const: allwinner,sun6i-a31-mipi-csi2
+> > > > +
+> > > > +  reg:
+> > > > +    maxItems: 1
+> > > > +
+> > > > +  interrupts:
+> > > > +    maxItems: 1
+> > > > +
+> > > > +  clocks:
+> > > > +    items:
+> > > > +      - description: Bus Clock
+> > > > +      - description: Module Clock
+> > > > +
+> > > > +  clock-names:
+> > > > +    items:
+> > > > +      - const: bus
+> > > > +      - const: mod
+> > > > +
+> > > > +  phys:
+> > > > +    items:
+> > > > +      - description: MIPI D-PHY
+> > > > +
+> > > > +  phy-names:
+> > > > +    items:
+> > > > +      - const: dphy
+> > > > +
+> > > > +  resets:
+> > > > +    maxItems: 1
+> > > > +
+> > > > +  # See ./video-interfaces.txt for details
+> > > > +  ports:
+> > > > +    type: object
+> > > > +
+> > > > +    properties:
+> > > > +      port@0:
+> > > > +        type: object
+> > > > +        description: Input port, connect to a MIPI CSI-2 sensor
+> > > > +
+> > > > +        properties:
+> > > > +          reg:
+> > > > +            const: 0
+> > > > +
+> > > > +          endpoint:
+> > > > +            type: object
+> > > > +
+> > > > +            properties:
+> > > > +              remote-endpoint: true
+> > > > +
+> > > > +              bus-type:
+> > > > +                const: 4
+> > > > +
+> > > > +              clock-lanes:
+> > > > +                maxItems: 1
+> > > > +
+> > > > +              data-lanes:
+> > > > +                minItems: 1
+> > > > +                maxItems: 4
+> > > > +
+> > > > +            required:
+> > > > +              - bus-type
+> > > > +              - data-lanes
+> > > > +              - remote-endpoint
+> > > > +
+> > > > +            additionalProperties: false
+> > > > +
+> > > > +        required:
+> > > > +          - endpoint
+> > > > +
+> > > > +        additionalProperties: false
+> > > > +
+> > > > +      port@1:
+> > > > +        type: object
+> > > > +        description: Output port, connect to a CSI controller
+> > > > +
+> > > > +        properties:
+> > > > +          reg:
+> > > > +            const: 1
+> > > > +
+> > > > +          endpoint:
+> > > > +            type: object
+> > > > +
+> > > > +            properties:
+> > > > +              remote-endpoint: true
+> > > > +
+> > > > +              bus-type:
+> > > > +                const: 4
+> > >=20
+> > > That one seems a bit weird. If the input and output ports are using t=
+he
+> > > same format, what is that "bridge" supposed to be doing?
+> >=20
+> > Fair enough. What this represents is the internal link (likely a FIFO) =
+between
+> > the two controllers. It is definitely not a MIPI CSI-2 bus but there's =
+no
+> > mbus type for an internal link (probably because it's not a bus after a=
+ll).
+> >=20
+> > Note that on the CSI controller side, we need the bus-type to be set to=
+ 4 for it
+> > to properly select the MIPI CSI-2 input. So it just felt more logical t=
+o have
+> > the same on the other side of the endpoint. On the other hand, we can j=
+ust
+> > remove it on the MIPI CSI-2 controller side since it won't check it and=
+ have it
+> > fallback to the unknown mbus type.
+> >=20
+> > But that would make the types inconsistent on the two sides of the link.
+> > I don't think V4L2 will complain about it at the moment, but it would a=
+lso make
+> > sense that it does eventually.
+> >=20
+> > What do you think?
+>=20
+> There's still the same issue though, it doesn't make any sense that a
+> bridge doesn't change the bus type. If it really did, we wouldn't need
+> that in the first place.
 
-diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-index 63be5362fd3a..ab31615f07fc 100644
---- a/drivers/pwm/Kconfig
-+++ b/drivers/pwm/Kconfig
-@@ -379,6 +379,15 @@ config PWM_PXA
- 	  To compile this driver as a module, choose M here: the module
- 	  will be called pwm-pxa.
- 
-+config PWM_RASPBERRYPI_POE
-+	tristate "Raspberry Pi Firwmware PoE Hat PWM support"
-+	# Make sure not 'y' when RASPBERRYPI_FIRMWARE is 'm'. This can only
-+	# happen when COMPILE_TEST=y, hence the added !RASPBERRYPI_FIRMWARE.
-+	depends on RASPBERRYPI_FIRMWARE || (COMPILE_TEST && !RASPBERRYPI_FIRMWARE)
-+	help
-+	  Enable Raspberry Pi firmware controller PWM bus used to control the
-+	  official RPI PoE hat
-+
- config PWM_RCAR
- 	tristate "Renesas R-Car PWM support"
- 	depends on ARCH_RENESAS || COMPILE_TEST
-diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
-index cbdcd55d69ee..7ecbbbcb323a 100644
---- a/drivers/pwm/Makefile
-+++ b/drivers/pwm/Makefile
-@@ -35,6 +35,7 @@ obj-$(CONFIG_PWM_MXS)		+= pwm-mxs.o
- obj-$(CONFIG_PWM_OMAP_DMTIMER)	+= pwm-omap-dmtimer.o
- obj-$(CONFIG_PWM_PCA9685)	+= pwm-pca9685.o
- obj-$(CONFIG_PWM_PXA)		+= pwm-pxa.o
-+obj-$(CONFIG_PWM_RASPBERRYPI_POE)	+= pwm-raspberrypi-poe.o
- obj-$(CONFIG_PWM_RCAR)		+= pwm-rcar.o
- obj-$(CONFIG_PWM_RENESAS_TPU)	+= pwm-renesas-tpu.o
- obj-$(CONFIG_PWM_ROCKCHIP)	+= pwm-rockchip.o
-diff --git a/drivers/pwm/pwm-raspberrypi-poe.c b/drivers/pwm/pwm-raspberrypi-poe.c
-new file mode 100644
-index 000000000000..91cd826a36f3
---- /dev/null
-+++ b/drivers/pwm/pwm-raspberrypi-poe.c
-@@ -0,0 +1,216 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright 2020 Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-+ * For more information on Raspberry Pi's PoE hat see:
-+ * https://www.raspberrypi.org/products/poe-hat/
-+ *
-+ * Limitations:
-+ *  - No disable bit, so a disabled PWM is simulated by duty_cycle 0
-+ *  - Only normal polarity
-+ *  - Fixed 12.5 kHz period
-+ *
-+ * The current period is completed when HW is reconfigured.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/pwm.h>
-+
-+#include <soc/bcm2835/raspberrypi-firmware.h>
-+#include <dt-bindings/pwm/raspberrypi,firmware-pwm.h>
-+
-+#define RPI_PWM_MAX_DUTY		255
-+#define RPI_PWM_PERIOD_NS		80000 /* 12.5 kHz */
-+
-+#define RPI_PWM_CUR_DUTY_REG		0x0
-+#define RPI_PWM_DEF_DUTY_REG		0x1
-+
-+struct raspberrypi_pwm {
-+	struct rpi_firmware *firmware;
-+	struct pwm_chip chip;
-+	unsigned int duty_cycle;
-+};
-+
-+struct raspberrypi_pwm_prop {
-+	__le32 reg;
-+	__le32 val;
-+	__le32 ret;
-+} __packed;
-+
-+static inline struct raspberrypi_pwm *to_raspberrypi_pwm(struct pwm_chip *chip)
-+{
-+	return container_of(chip, struct raspberrypi_pwm, chip);
-+}
-+
-+static int raspberrypi_pwm_set_property(struct rpi_firmware *firmware,
-+					u32 reg, u32 val)
-+{
-+	struct raspberrypi_pwm_prop msg = {
-+		.reg = cpu_to_le32(reg),
-+		.val = cpu_to_le32(val),
-+	};
-+	int ret;
-+
-+	ret = rpi_firmware_property(firmware, RPI_FIRMWARE_SET_POE_HAT_VAL,
-+				    &msg, sizeof(msg));
-+	if (ret)
-+		return ret;
-+	if (msg.ret)
-+		return -EIO;
-+
-+	return 0;
-+}
-+
-+static int raspberrypi_pwm_get_property(struct rpi_firmware *firmware,
-+					u32 reg, u32 *val)
-+{
-+	struct raspberrypi_pwm_prop msg = {
-+		.reg = reg
-+	};
-+	int ret;
-+
-+	ret = rpi_firmware_property(firmware, RPI_FIRMWARE_GET_POE_HAT_VAL,
-+				    &msg, sizeof(msg));
-+	if (ret)
-+		return ret;
-+	if (msg.ret)
-+		return -EIO;
-+
-+	*val = le32_to_cpu(msg.val);
-+
-+	return 0;
-+}
-+
-+static void raspberrypi_pwm_get_state(struct pwm_chip *chip,
-+				      struct pwm_device *pwm,
-+				      struct pwm_state *state)
-+{
-+	struct raspberrypi_pwm *rpipwm = to_raspberrypi_pwm(chip);
-+
-+	state->period = RPI_PWM_PERIOD_NS;
-+	state->duty_cycle = DIV_ROUND_CLOSEST(rpipwm->duty_cycle * RPI_PWM_PERIOD_NS,
-+					      RPI_PWM_MAX_DUTY);
-+	state->enabled = !!(rpipwm->duty_cycle);
-+	state->polarity = PWM_POLARITY_NORMAL;
-+}
-+
-+static int raspberrypi_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-+			         const struct pwm_state *state)
-+{
-+	struct raspberrypi_pwm *rpipwm = to_raspberrypi_pwm(chip);
-+	unsigned int duty_cycle;
-+	int ret;
-+
-+        if (state->period < RPI_PWM_PERIOD_NS ||
-+            state->polarity != PWM_POLARITY_NORMAL)
-+                return -EINVAL;
-+
-+        if (!state->enabled)
-+                duty_cycle = 0;
-+        else if (state->duty_cycle < RPI_PWM_PERIOD_NS)
-+                duty_cycle = DIV_ROUND_CLOSEST_ULL(state->duty_cycle * RPI_PWM_MAX_DUTY,
-+					           RPI_PWM_PERIOD_NS);
-+        else
-+                duty_cycle = RPI_PWM_MAX_DUTY;
-+
-+	if (duty_cycle == rpipwm->duty_cycle)
-+		return 0;
-+
-+	ret = raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_CUR_DUTY_REG,
-+					   duty_cycle);
-+	if (ret) {
-+		dev_err(chip->dev, "Failed to set duty cycle: %d\n", ret);
-+		return ret;
-+	}
-+
-+	/*
-+	 * This sets the default duty cycle after resetting the board, we
-+	 * updated it every time to mimic Raspberry Pi's downstream's driver
-+	 * behaviour.
-+	 */
-+	ret = raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_DEF_DUTY_REG,
-+					   duty_cycle);
-+	if (ret) {
-+		dev_err(chip->dev, "Failed to set default duty cycle: %d\n", ret);
-+		return ret;
-+	}
-+
-+        rpipwm->duty_cycle = duty_cycle;
-+
-+	return 0;
-+}
-+
-+static const struct pwm_ops raspberrypi_pwm_ops = {
-+	.get_state = raspberrypi_pwm_get_state,
-+	.apply = raspberrypi_pwm_apply,
-+	.owner = THIS_MODULE,
-+};
-+
-+static int raspberrypi_pwm_probe(struct platform_device *pdev)
-+{
-+	struct device_node *firmware_node;
-+	struct device *dev = &pdev->dev;
-+	struct rpi_firmware *firmware;
-+	struct raspberrypi_pwm *rpipwm;
-+	int ret;
-+
-+	firmware_node = of_get_parent(dev->of_node);
-+	if (!firmware_node) {
-+		dev_err(dev, "Missing firmware node\n");
-+		return -ENOENT;
-+	}
-+
-+	firmware = devm_rpi_firmware_get(&pdev->dev, firmware_node);
-+	of_node_put(firmware_node);
-+	if (!firmware)
-+		return -EPROBE_DEFER;
-+
-+	rpipwm = devm_kzalloc(&pdev->dev, sizeof(*rpipwm), GFP_KERNEL);
-+	if (!rpipwm)
-+		return -ENOMEM;
-+
-+	rpipwm->firmware = firmware;
-+	rpipwm->chip.dev = dev;
-+	rpipwm->chip.ops = &raspberrypi_pwm_ops;
-+	rpipwm->chip.base = -1;
-+	rpipwm->chip.npwm = RASPBERRYPI_FIRMWARE_PWM_NUM;
-+
-+	platform_set_drvdata(pdev, rpipwm);
-+
-+	ret = raspberrypi_pwm_get_property(rpipwm->firmware, RPI_PWM_CUR_DUTY_REG,
-+					   &rpipwm->duty_cycle);
-+	if (ret) {
-+		dev_err(dev, "Failed to get duty cycle: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return pwmchip_add(&rpipwm->chip);
-+}
-+
-+static int raspberrypi_pwm_remove(struct platform_device *pdev)
-+{
-+	struct raspberrypi_pwm *rpipwm = platform_get_drvdata(pdev);
-+
-+	return pwmchip_remove(&rpipwm->chip);
-+}
-+
-+static const struct of_device_id raspberrypi_pwm_of_match[] = {
-+	{ .compatible = "raspberrypi,firmware-pwm", },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, raspberrypi_pwm_of_match);
-+
-+static struct platform_driver raspberrypi_pwm_driver = {
-+	.driver = {
-+		.name = "raspberrypi-pwm",
-+		.of_match_table = raspberrypi_pwm_of_match,
-+	},
-+	.probe = raspberrypi_pwm_probe,
-+	.remove = raspberrypi_pwm_remove,
-+};
-+module_platform_driver(raspberrypi_pwm_driver);
-+
-+MODULE_AUTHOR("Nicolas Saenz Julienne <nsaenzjulienne@suse.de>");
-+MODULE_DESCRIPTION("Raspberry Pi Firwmare Based PWM Bus Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.29.1
+Yes I agreee.
+
+> What you want to check in your driver is whether the subdev you're
+> connected to has a sink pad that uses MIPI-CSI
+
+I'm not really sure that's possible, but if it is it would indeed be the mo=
+st
+appropriate solution. If it's not, we still need to know that we need to fe=
+ed
+=66rom MIPI CSI-2 so I don't see any other option than report MIPI CSI-2 on=
+ both
+ends of MIPI CSI-2 controller.
+
+But there's still the question of what media bus type should be reported for
+the CSI <-> MIPI CSI-2 link. I'm fine with unknown but we could also add a
+generic internal bus type for this case.
+
+Paul
+
+> Maxime
+>=20
+> > > > +            additionalProperties: false
+> > > > +
+> > > > +        required:
+> > > > +          - endpoint
+> > > > +
+> > > > +        additionalProperties: false
+> > > > +
+> > > > +required:
+> > > > +  - compatible
+> > > > +  - reg
+> > > > +  - interrupts
+> > > > +  - clocks
+> > > > +  - clock-names
+> > > > +  - resets
+> > > > +
+> > > > +additionalProperties: false
+> > > > +
+> > > > +examples:
+> > > > +  - |
+> > > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > > > +    #include <dt-bindings/clock/sun8i-v3s-ccu.h>
+> > > > +    #include <dt-bindings/reset/sun8i-v3s-ccu.h>
+> > > > +
+> > > > +    mipi_csi2: mipi-csi2@1cb1000 {
+> > >=20
+> > > The unit name should be pretty standard, with the list here:
+> > >=20
+> > > https://github.com/devicetree-org/devicetree-specification/blob/maste=
+r/source/chapter2-devicetree-basics.rst#generic-names-recommendation
+> > >=20
+> > > there's nothing really standing out for us in that list, but given th=
+at
+> > > there's dsi, we should stick with csi
+> >=20
+> > Then what really surprises me is that the CSI controllers are called "c=
+amera",
+> > not "csi". If "camera" is supposed to cover both image sensor and camer=
+a sensor
+> > interfaces, it would probably fit MIPI CSI-2 as well.
+> >=20
+> > I see lots of names with -controller for controllers with specific devi=
+ces
+> > attached, like "nand-controller" or "lcd-controller". Maybe using
+> > "camera-controller" for the CSI and MIPI CSI-2 controllers would make t=
+he most
+> > sense, while keeping "camera" for the actual image sensors.
+> >=20
+> > What do you think?
+>=20
+> If you really want to discuss this, feel free to open a PR for the DT
+> spec and add it. However, I still think this csi would be best here:
+> it's neither a camera nor a camera controller
+>=20
+> maxime
+
+
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--JwB53PgKC5A7+0Ej
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+ihvsACgkQ3cLmz3+f
+v9Fongf/XSL+crE1GI4SFbtd8uVX2nhvXCN78RRSKI1fFD3SRaWIIuHRUshscxMo
+dEoZ1GzYSbaZSQMJQRXRnJIWQ4AgLMqlnM33gA6me8FSi8YJ4PuKWHP44luENEHT
+rJLDGv3PV72DypUm+hsi/lHdPMmRsmw0MZhT3AixhO6WPevpIswAxyCXasZsKCtc
+o94Fs6UflwcYjfdy+nho8rTRYoz/A6YIUSvaTUJ2TpxJGa/+kNaqXO6D6SC65k4N
+1eTRyoE42qXVN2TP0DJrURO5Cs1yNrBvzbFJ55+FV2GJR1fzoZIdRu4tNeigXT5q
+UyZgCYQBFJCgNSy2qaScfOBdfTnCNQ==
+=flAo
+-----END PGP SIGNATURE-----
+
+--JwB53PgKC5A7+0Ej--
+
+--===============4481162168962962677==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4481162168962962677==--
