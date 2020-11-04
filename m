@@ -1,52 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D7D42A6E5A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 20:55:31 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBE082A6F2E
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 21:51:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7C17885570;
-	Wed,  4 Nov 2020 19:55:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5425F87196;
+	Wed,  4 Nov 2020 20:51:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9C0xlP4gkYHL; Wed,  4 Nov 2020 19:55:28 +0000 (UTC)
+	with ESMTP id E1tIy+yylylA; Wed,  4 Nov 2020 20:51:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67A2D854FC;
-	Wed,  4 Nov 2020 19:55:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A6F69870FF;
+	Wed,  4 Nov 2020 20:51:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4B1641BF38E
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 19:55:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 519291BF30E
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 20:51:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 45601865C4
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 19:55:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4C27120242
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 20:51:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ub+9-I0TqxhK for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 19:55:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3F5A98653D
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 19:55:24 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 15DE6AC53;
- Wed,  4 Nov 2020 19:55:22 +0000 (UTC)
-Message-ID: <4debc77f5c72e1f4eff36a700231493bf9fbf404.camel@suse.de>
-Subject: Re: [PATCH v3 09/11] dt-bindings: pwm: Add binding for RPi firmware
- PWM bus
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Rob Herring <robh@kernel.org>
-Date: Wed, 04 Nov 2020 20:55:19 +0100
-In-Reply-To: <20201104190612.GA3959462@bogus>
-References: <20201104103938.1286-1-nsaenzjulienne@suse.de>
- <20201104103938.1286-10-nsaenzjulienne@suse.de>
- <20201104190612.GA3959462@bogus>
-User-Agent: Evolution 3.36.5 
+ with ESMTP id BNVGjOHEScmq for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 20:51:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.web.de (mout.web.de [212.227.15.3])
+ by silver.osuosl.org (Postfix) with ESMTPS id A945D2014B
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 20:51:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1604523045;
+ bh=zXLy2macP7vO12eaEE949ba4xupS0WKjcG7bwZx5l0M=;
+ h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
+ b=NxkzlvNIpxFVJgLcrNge7M7onrKnpeETLDDpbHlme0lmKty6FOmMwraogQzbOWpNs
+ zlkGJd1gtznuiBjiCJ3Ve0CV6zgnFHxzmqVygTmOhm+2DiuLEy3XQmQ/uNQOY+ey/8
+ iLGc4s6W4XLl+2JGZy5MmMCeLvTWNhgB7O3AuqeE=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.3] ([93.132.3.233]) by smtp.web.de (mrweb002
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 0Lw189-1kHfb61Ia5-017lY0; Wed, 04
+ Nov 2020 21:50:45 +0100
+Subject: Re: [v2] media: atomisp: Fix error handling path
+To: Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org
+References: <1604455331-28031-1-git-send-email-jrdr.linux@gmail.com>
+ <65712450-1ee9-2dd3-cd43-f850807ae203@web.de> <20201104083121.GG18329@kadam>
+ <85ff17ad-8aa7-a457-6e23-4f5c1c5152f2@web.de> <20201104114015.GH18329@kadam>
+From: Markus Elfring <Markus.Elfring@web.de>
+Message-ID: <4fac89cb-0420-8211-6f10-f03f78588744@web.de>
+Date: Wed, 4 Nov 2020 21:50:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+In-Reply-To: <20201104114015.GH18329@kadam>
+Content-Language: en-GB
+X-Provags-ID: V03:K1:Fhjuhbre9iPU0pJsNWp/vbjjRLvJrKhBMvdPphM42qsuBkFWTe8
+ 41Tmcv+ZT80w4+O2fzhSlSy09Q7R7N3Qt4+yQwoDK7X1kQ2oIokxBzKKhkfw6Br/NhGvawM
+ OcIukAudUXT9eOKfkEEOuZscTnvUDIZoYtdEN3tVdn9RUDckdSlZ2lmX5Ub51gKVgS86Wsc
+ YVoVrdMAutlf9MBp0xgGg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KJ8xlMxwEFM=:gvhSORh8zZW5SnwNuCmJdg
+ 8KLkRh9Kei5N6S01LaKIpABNHOXJLAdkbaJhrJ0YMrqQAVJ5gem+BSj0nBDFv/X9F6F4gAwTY
+ o6kDtGeSjDz8d9raUgWGXZWg78MZrBjvgbnVEVtpEsufYn/JHQmzSaX5iJFya7cTE2/iVuSGb
+ +xyS8JthhOD9JiLKCUw4+fzHHZQeH9LjPxJqwI6YX0KGYRjUNfzoh4egN+Umx6gJcrXDroM17
+ ck90HbvhBdXp14UHrr6FNIOk6Yvg44hza3smYhJIT009Ds+aXprh+XXJvCYVxBRAO2qfHvcBr
+ jXJ+gOKCiAIVVOrLCap3rwWC8Nl+H+8GS46eumHLDlj0vX9McjkEPNKMr7cf88vC//jNci4Yt
+ A/e70caK9hqfEGhNIEifQh1h22r7s2MREQDLQyfQiMc7TGAxFBPk4gmkHH8mBx+y7ZKJvUNIh
+ cojiHfALDRAhBJzIfaZdaPPsxaU0EDmfGf0neaNlbVMWoVDs43WgDiulWOu/mXi/ew31Fr4QU
+ xS4SomSmxjokOaX2aOadBRMYGoGQlOiJbzbm4blmqKmy+vXw4AX4DWO1+pC4UrowhQqNT/IOh
+ SZ+kAPtm3c5nD4gnHyZoj1/xpPjUct+7FzFFWBRo7Xjf1Yq6HI18UrOh64CkQfBOFlPsDMMqC
+ nK3UsLHUfhCxX4iKlrGxxNePxJIHiBorcBpSvbAe225yaUz6rdMWNL5+jTDqcunYBao/259f8
+ 0etDH5ZIkmKN3hlLXGGWnjBXrKJopr7q8kP4R8zFRLmBOtgS1Vp9CeIP66KG/clbCU4V1/vtB
+ 23mDU71uHh4crItPoso3ClG4OSnxE/IfOTCP3W44VIo6UWG+uuS6+1Hz7NBRJ2g7bs+Kl11kz
+ xP3A4BjaqdFiGQJmBl/w==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,96 +85,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-pwm@vger.kernel.org, linus.walleij@linaro.org,
- Eric Anholt <eric@anholt.net>, linux-clk@vger.kernel.org,
- devel@driverdev.osuosl.org, Florian Fainelli <f.fainelli@gmail.com>,
- bgolaszewski@baylibre.com, andy.shevchenko@gmail.com,
- bcm-kernel-feedback-list@broadcom.com, u.kleine-koenig@pengutronix.de,
- devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- linux-input@vger.kernel.org, linux-gpio@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>,
- sboyd@kernel.org, gregkh@linuxfoundation.org, dmitry.torokhov@gmail.com,
- linux-kernel@vger.kernel.org, Stefan Wahren <wahrenst@gmx.net>,
- p.zabel@pengutronix.de
-Content-Type: multipart/mixed; boundary="===============0169063911148602985=="
+Cc: devel@driverdev.osuosl.org, Michel Lespinasse <walken@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Daniel Jordan <daniel.m.jordan@oracle.com>,
+ Souptick Joarder <jrdr.linux@gmail.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ John Hubbard <jhubbard@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Vlastimil Babka <vbabka@suse.cz>,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=4ef8451b332662d004df269d4cdeb7d9f31419b5#n123
+>
+> The documentation is correct but no one wants you to constantly be
+> nagging developers about minor stuff...
 
---===============0169063911148602985==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-cU9/G+WYZ+w+iySzg6LF"
-
-
---=-cU9/G+WYZ+w+iySzg6LF
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, 2020-11-04 at 13:06 -0600, Rob Herring wrote:
-> On Wed, 04 Nov 2020 11:39:35 +0100, Nicolas Saenz Julienne wrote:
-> > The PWM bus controlling the fan in RPi's official PoE hat can only be
-> > controlled by the board's co-processor.
-> >=20
-> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> >=20
-> > ---
-> >=20
-> > Changes since v1:
-> >  - Update bindings to use 2 #pwm-cells
-> >=20
-> >  .../arm/bcm/raspberrypi,bcm2835-firmware.yaml | 20 +++++++++++++++++++
-> >  .../pwm/raspberrypi,firmware-pwm.h            | 13 ++++++++++++
-> >  2 files changed, 33 insertions(+)
-> >  create mode 100644 include/dt-bindings/pwm/raspberrypi,firmware-pwm.h
-> >=20
->=20
-> My bot found errors running 'make dt_binding_check' on your patch:
->=20
-> yamllint warnings/errors:
->=20
-> dtschema/dtc warnings/errors:
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/=
-bcm/raspberrypi,bcm2835-firmware.example.dt.yaml: firmware: pwm:#pwm-cells:=
-0:0: 2 was expected
-
-Yes I forgot to update the example...
+Would you interpret patch review attempts in any other directions?
 
 Regards,
-Nicolas
-
-
---=-cU9/G+WYZ+w+iySzg6LF
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl+jBycACgkQlfZmHno8
-x/4lqwf+LNqmKYmR+D64RymsZ5v7t1WD9DkM2AcOluMdjU13iiD8I+U2KdCc2R8Y
-KhH9mNARA0Kd5JtfEzifsT4G3OqWIac7V/abpwHwrS7ilQjx2gLCACaBO87JwzK0
-R5uOO0FWqaEoLK5GknPO2HGn8ez34EPHU3cu4SXBBFqEnaEbEMr9cEl0ou+vdrYS
-3JnsvkWGZO7LY9vh05c9I/L2pyFg1JieOLU46BYJxAPvlqeILLwWvJ0oq4iiFM7I
-ZFjf/7VhrNk92HLeRMTgPt6/LuVsvnDBJXzAEknYiZt4Taa99Y11MxauWIIqAsk+
-LBfmYrGtxl88K4eRkxCDzH4wnYm/qQ==
-=Ei+W
------END PGP SIGNATURE-----
-
---=-cU9/G+WYZ+w+iySzg6LF--
-
-
---===============0169063911148602985==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Markus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0169063911148602985==--
-
