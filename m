@@ -2,58 +2,95 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B99482A69FA
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 17:38:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B298C2A6AD6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 17:53:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6BDC88726A;
-	Wed,  4 Nov 2020 16:38:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 68F31872A4;
+	Wed,  4 Nov 2020 16:53:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DdisuueTATKY; Wed,  4 Nov 2020 16:38:37 +0000 (UTC)
+	with ESMTP id leVhY0dr+OZC; Wed,  4 Nov 2020 16:53:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C0A598720D;
-	Wed,  4 Nov 2020 16:38:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 16A938723F;
+	Wed,  4 Nov 2020 16:53:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 46FDA1BF5DD
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 16:38:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 78B5A1BF20B
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 16:53:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3C48520397
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 16:38:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6E8A5203E2
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 16:53:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fg+N0pnN+156 for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 16:38:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by silver.osuosl.org (Postfix) with ESMTPS id C16AF2038F
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 16:38:32 +0000 (UTC)
-Received: from [IPv6:2804:14c:483:7e3e::1003] (unknown
- [IPv6:2804:14c:483:7e3e::1003])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: koike)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 65BCE1F45ADE;
- Wed,  4 Nov 2020 16:38:12 +0000 (GMT)
-Subject: Re: [PATCH 08/14] media: sunxi: Add support for the A31 MIPI CSI-2
- controller
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Maxime Ripard <maxime@cerno.tech>
+ with ESMTP id 1D5QSaRLPznK for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 16:53:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from new4-smtp.messagingengine.com (new4-smtp.messagingengine.com
+ [66.111.4.230])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1C8602000A
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 16:53:12 +0000 (UTC)
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id F2B1458017C;
+ Wed,  4 Nov 2020 11:53:11 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute6.internal (MEProxy); Wed, 04 Nov 2020 11:53:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=WGtBZotx2zMMoQxK+qbO6rThrSe
+ UPqBq/GTH8RWASsU=; b=OIApHCdFlhK39henbLMfOB/6tYQOiuWZFMBfXo31QwY
+ 82mGkt1bjfe3POJNEepzIvMNk7Tn+ECBHFjuk9zLe5RmPCFjswQPKwKgrFQr2vTM
+ 56gnxq3+ZV+virOTZWqy5n8xiNG4VXoHgWLk+dmdtoMgW+enlwo47N8R06SOHm5O
+ X1Z8mFNFomUMpfEZ51/zrh2OO6Luq6WS4OPMxo1oNm/UjAnYRpBK1xEhuAnmvL7h
+ 0vb4HvAZ7ObyU73KedRAHnz/FDD43DCydTp1YfPRvx5UM5N+LYKdE8OmKfbOxiwf
+ J5YfSVhtL8hI1Ep1TnegyPRI0HpFI3AqsYPHvHB4/FA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=WGtBZo
+ tx2zMMoQxK+qbO6rThrSeUPqBq/GTH8RWASsU=; b=fT4yyXdrCzcaXQptYyvthQ
+ PGGhbZyv9wAob5GpmvCFlmp7/CUpxx0G1JpCRO2QcQIvCBNaulZjsDLN6KQyAqk1
+ 1Uf/uoIFSafRBBk24ja5XFD07m26ESvpwYcY4SCk4uOMJ+fuOI7ddPOG7Q+bYfvL
+ VDWoBMkyR5xRVu3ahM4FgHpaJ6S44tog3PrDRE1YsNWOsywe0f5i5d6OVU9TqVfU
+ lNgOJgsfhPfiN5ZctYnu4eRgmac0V1gdtxEVdtVYBKqPIr6iPuP+VBuqkHgB5+RJ
+ ap2YmvKFx1U7iXWEiWMMFxLtRhHy71nWCccSjvfrkvhoB3QwHSvRqdkszgC5/QoQ
+ ==
+X-ME-Sender: <xms:ddyiX_kVZzypW8ie_ay14__Tf_Lu9sv8YLSSfcH2GImvWdNYUJ0ouw>
+ <xme:ddyiXy0tJM1Ox96p3rY1Eh_qtbE7qIFUYYqvgZWP_EKy0Ui43cBRRan_GCfhGb3wE
+ lXU6BoGZmMQh_Z2wEc>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedruddthedgleehucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+ vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+ htvghrnhepffetteevieejteeuhfffgeektefghfeileehhedtuddutefhhfejtddvtddu
+ ledvnecuffhomhgrihhnpeguvghvihgtvghtrhgvvgdrohhrghenucfkphepledtrdekle
+ drieekrdejieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhr
+ ohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:ddyiX1oC2nva4xv5RDiRXZ-OpHwTCB4ALz83mBzk3YHNvEeDQqbDKA>
+ <xmx:ddyiX3lIyxVSk7CtaIb1MkDgCaW-FcswGzPte2jIWxe85BeAxgvFvQ>
+ <xmx:ddyiX91VeuTQTaW7kK32181gtWdpJkw-6U_b8L6eQ_rsrhsvEDFnyg>
+ <xmx:d9yiX0utDmXtYOUDUh5Z6R1BCBAMVxKvghUZBEpOer5KJ5sOn6__Uw>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id A5338306467D;
+ Wed,  4 Nov 2020 11:53:09 -0500 (EST)
+Date: Wed, 4 Nov 2020 17:53:08 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH 07/14] dt-bindings: media: i2c: Add A31 MIPI CSI-2
+ bindings documentation
+Message-ID: <20201104165308.rcdxvzyj3kbiyfan@gilmour.lan>
 References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
- <20201023174546.504028-9-paul.kocialkowski@bootlin.com>
- <1a3a615c-a058-e282-2dbb-c99dfa98be68@collabora.com>
- <20201102092110.ro6a456lvbrktwoz@gilmour.lan>
- <20201104111710.GB287014@aptenodytes>
-From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <f74e4d59-a391-36ab-74aa-8e02aca1b0bc@collabora.com>
-Date: Wed, 4 Nov 2020 13:38:08 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ <20201023174546.504028-8-paul.kocialkowski@bootlin.com>
+ <20201026161450.gr3dqpltxw2ccc3s@gilmour.lan>
+ <20201027095221.GE168350@aptenodytes>
+ <20201027184459.eberpkr52kay3du6@gilmour.lan>
+ <20201104104827.GD285779@aptenodytes>
 MIME-Version: 1.0
-In-Reply-To: <20201104111710.GB287014@aptenodytes>
-Content-Language: en-US
+In-Reply-To: <20201104104827.GD285779@aptenodytes>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,7 +106,8 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
  Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
  Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
  linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
  Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
@@ -77,81 +115,237 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Hans Verkuil <hans.verkuil@cisco.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5212274882699407484=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
+--===============5212274882699407484==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="xacrwb5dafcleu43"
+Content-Disposition: inline
 
-On 11/4/20 8:17 AM, Paul Kocialkowski wrote:
+
+--xacrwb5dafcleu43
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Nov 04, 2020 at 11:48:27AM +0100, Paul Kocialkowski wrote:
 > Hi,
-> 
-> On Mon 02 Nov 20, 10:21, Maxime Ripard wrote:
->> On Fri, Oct 30, 2020 at 07:45:18PM -0300, Helen Koike wrote:
->>> On 10/23/20 2:45 PM, Paul Kocialkowski wrote:
->>>> The A31 MIPI CSI-2 controller is a dedicated MIPI CSI-2 controller
->>>> found on Allwinner SoCs such as the A31 and V3/V3s.
->>>>
->>>> It is a standalone block, connected to the CSI controller on one side
->>>> and to the MIPI D-PHY block on the other. It has a dedicated address
->>>> space, interrupt line and clock.
->>>>
->>>> Currently, the MIPI CSI-2 controller is hard-tied to a specific CSI
->>>> controller (CSI0) but newer SoCs (such as the V5) may allow switching
->>>> MIPI CSI-2 controllers between CSI controllers.
->>>>
->>>> It is represented as a V4L2 subdev to the CSI controller and takes a
->>>> MIPI CSI-2 sensor as its own subdev, all using the fwnode graph and
->>>> media controller API.
->>>
->>> Maybe this is a bad idea, but I was thinking:
->>> This driver basically just turn on/off and catch some interrupts for errors,
->>> and all the rest of v4l2 config you just forward to the next subdevice
->>> on the pipeline.
->>>
->>> So instead of exposing it as a subdevice, I was wondering if modeling
->>> this driver also through the phy subsystem wouldn't be cleaner, so
->>> you won't need all the v4l2 subdevice/topology boilerplate code that
->>> it seems you are not using (unless you have plans to add controls or
->>> some specific configuration on this node later).
->>>
->>> But this would require changes on the sun6i-csi driver.
->>>
->>> What do you think?
->>
->> Eventually we'll need to filter the virtual channels / datatypes I
->> guess, so it's definitely valuable to have it in v4l2
+>=20
+> On Tue 27 Oct 20, 19:44, Maxime Ripard wrote:
+> > On Tue, Oct 27, 2020 at 10:52:21AM +0100, Paul Kocialkowski wrote:
+> > > Hi,
+> > >=20
+> > > On Mon 26 Oct 20, 17:14, Maxime Ripard wrote:
+> > > > i2c? :)
+> > >=20
+> > > Oops, good catch!
+> > > =20
+> > > > On Fri, Oct 23, 2020 at 07:45:39PM +0200, Paul Kocialkowski wrote:
+> > > > > This introduces YAML bindings documentation for the A31 MIPI CSI-2
+> > > > > controller.
+> > > > >=20
+> > > > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > > > > ---
+> > > > >  .../media/allwinner,sun6i-a31-mipi-csi2.yaml  | 168 ++++++++++++=
+++++++
+> > > > >  1 file changed, 168 insertions(+)
+> > > > >  create mode 100644 Documentation/devicetree/bindings/media/allwi=
+nner,sun6i-a31-mipi-csi2.yaml
+> > > > >=20
+> > > > > diff --git a/Documentation/devicetree/bindings/media/allwinner,su=
+n6i-a31-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/allwinner,=
+sun6i-a31-mipi-csi2.yaml
+> > > > > new file mode 100644
+> > > > > index 000000000000..9adc0bc27033
+> > > > > --- /dev/null
+> > > > > +++ b/Documentation/devicetree/bindings/media/allwinner,sun6i-a31=
+-mipi-csi2.yaml
+> > > > > @@ -0,0 +1,168 @@
+> > > > > +# SPDX-License-Identifier: GPL-2.0
+> > > > > +%YAML 1.2
+> > > > > +---
+> > > > > +$id: http://devicetree.org/schemas/media/allwinner,sun6i-a31-mip=
+i-csi2.yaml#
+> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > > +
+> > > > > +title: Allwinner A31 MIPI CSI-2 Device Tree Bindings
+> > > > > +
+> > > > > +maintainers:
+> > > > > +  - Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > > > > +
+> > > > > +properties:
+> > > > > +  compatible:
+> > > > > +    oneOf:
+> > > > > +      - const: allwinner,sun6i-a31-mipi-csi2
+> > > > > +      - items:
+> > > > > +          - const: allwinner,sun8i-v3s-mipi-csi2
+> > > > > +          - const: allwinner,sun6i-a31-mipi-csi2
+> > > > > +
+> > > > > +  reg:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  interrupts:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  clocks:
+> > > > > +    items:
+> > > > > +      - description: Bus Clock
+> > > > > +      - description: Module Clock
+> > > > > +
+> > > > > +  clock-names:
+> > > > > +    items:
+> > > > > +      - const: bus
+> > > > > +      - const: mod
+> > > > > +
+> > > > > +  phys:
+> > > > > +    items:
+> > > > > +      - description: MIPI D-PHY
+> > > > > +
+> > > > > +  phy-names:
+> > > > > +    items:
+> > > > > +      - const: dphy
+> > > > > +
+> > > > > +  resets:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  # See ./video-interfaces.txt for details
+> > > > > +  ports:
+> > > > > +    type: object
+> > > > > +
+> > > > > +    properties:
+> > > > > +      port@0:
+> > > > > +        type: object
+> > > > > +        description: Input port, connect to a MIPI CSI-2 sensor
+> > > > > +
+> > > > > +        properties:
+> > > > > +          reg:
+> > > > > +            const: 0
+> > > > > +
+> > > > > +          endpoint:
+> > > > > +            type: object
+> > > > > +
+> > > > > +            properties:
+> > > > > +              remote-endpoint: true
+> > > > > +
+> > > > > +              bus-type:
+> > > > > +                const: 4
+> > > > > +
+> > > > > +              clock-lanes:
+> > > > > +                maxItems: 1
+> > > > > +
+> > > > > +              data-lanes:
+> > > > > +                minItems: 1
+> > > > > +                maxItems: 4
+> > > > > +
+> > > > > +            required:
+> > > > > +              - bus-type
+> > > > > +              - data-lanes
+> > > > > +              - remote-endpoint
+> > > > > +
+> > > > > +            additionalProperties: false
+> > > > > +
+> > > > > +        required:
+> > > > > +          - endpoint
+> > > > > +
+> > > > > +        additionalProperties: false
+> > > > > +
+> > > > > +      port@1:
+> > > > > +        type: object
+> > > > > +        description: Output port, connect to a CSI controller
+> > > > > +
+> > > > > +        properties:
+> > > > > +          reg:
+> > > > > +            const: 1
+> > > > > +
+> > > > > +          endpoint:
+> > > > > +            type: object
+> > > > > +
+> > > > > +            properties:
+> > > > > +              remote-endpoint: true
+> > > > > +
+> > > > > +              bus-type:
+> > > > > +                const: 4
+> > > >=20
+> > > > That one seems a bit weird. If the input and output ports are using=
+ the
+> > > > same format, what is that "bridge" supposed to be doing?
+> > >=20
+> > > Fair enough. What this represents is the internal link (likely a FIFO=
+) between
+> > > the two controllers. It is definitely not a MIPI CSI-2 bus but there'=
+s no
+> > > mbus type for an internal link (probably because it's not a bus after=
+ all).
+> > >=20
+> > > Note that on the CSI controller side, we need the bus-type to be set =
+to 4 for it
+> > > to properly select the MIPI CSI-2 input. So it just felt more logical=
+ to have
+> > > the same on the other side of the endpoint. On the other hand, we can=
+ just
+> > > remove it on the MIPI CSI-2 controller side since it won't check it a=
+nd have it
+> > > fallback to the unknown mbus type.
+> > >=20
+> > > But that would make the types inconsistent on the two sides of the li=
+nk.
+> > > I don't think V4L2 will complain about it at the moment, but it would=
+ also make
+> > > sense that it does eventually.
+> > >=20
+> > > What do you think?
+> >=20
+> > There's still the same issue though, it doesn't make any sense that a
+> > bridge doesn't change the bus type. If it really did, we wouldn't need
+> > that in the first place.
+>=20
+> Yes I agreee.
+>=20
+> > What you want to check in your driver is whether the subdev you're
+> > connected to has a sink pad that uses MIPI-CSI
+>=20
+> I'm not really sure that's possible, but if it is it would indeed be the =
+most
+> appropriate solution. If it's not, we still need to know that we need to =
+feed
+> from MIPI CSI-2 so I don't see any other option than report MIPI CSI-2 on=
+ both
+> ends of MIPI CSI-2 controller.
+>=20
+> But there's still the question of what media bus type should be reported =
+for
+> the CSI <-> MIPI CSI-2 link. I'm fine with unknown but we could also add a
+> generic internal bus type for this case.
 
-Which kind of datatypes? I ask to know if this shouldn't be configured
-through the video node instead of subdevice.
+I guess both questions would need to be discussed more on the v4l2 side.
 
-Regarding channels, we had a discussion to implement it through the video
-node (and not subdevice) [1]. But we discussed about blitters and multi-scalers,
-so now I'm wondering if we could use the same API for mipi-csi virtual channels
-in the video entity device, or if it doesn't apply and we need another API
-for that in a subdevice instead.
+Maxime
 
-[1] https://patchwork.linuxtv.org/project/linux-media/cover/20200717115435.2632623-1-helen.koike@collabora.com/
+--xacrwb5dafcleu43
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> 
-> Agreed and like I mentionned in the discussion on 00/14 I don't think it
-> would be a cleaner way to expose things.
-> 
-> There's also the fact that newer SoCs like the V5 seem to allow connecting
-> any MIPI CSI-2 controller to any CSI controller, so the graph representation
-> is definitely welcome here.
+-----BEGIN PGP SIGNATURE-----
 
-I'm not sure this is an advantage in userspace pov, because it means we'll
-have different topologies for basically the same end result to userspace.
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX6LcdAAKCRDj7w1vZxhR
+xc3DAPsEOVFi4YsULyJxUGOG/CUJe58SiZEoSLOt7kVYjgc4hAD/TFRmJ5F8zSIM
+RMVcnb7MsVl3UWOZyZMRL0DxZRfk7wo=
+=IT0H
+-----END PGP SIGNATURE-----
 
-But as I mentioned, I don't mind keeping it in the media topology.
-Helen
+--xacrwb5dafcleu43--
 
-> 
-> Paul
-> 
+--===============5212274882699407484==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5212274882699407484==--
