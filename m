@@ -2,60 +2,89 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69B562A70B5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 23:41:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EB59C2A71EF
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3251C81E04;
-	Wed,  4 Nov 2020 22:41:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 13B3F85AC7;
+	Wed,  4 Nov 2020 23:45:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jkuO51RRoVYK; Wed,  4 Nov 2020 22:41:28 +0000 (UTC)
+	with ESMTP id W2f0oMYkP1rF; Wed,  4 Nov 2020 23:45:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 47C4581B06;
-	Wed,  4 Nov 2020 22:41:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 745C98442F;
+	Wed,  4 Nov 2020 23:45:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E5FFC1BF3CB
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 22:41:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8E5EE1BF2B7
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:44:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E139185BDF
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 22:41:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 85EB2856CB
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:44:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YSsnnTl4OWBA for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 22:41:25 +0000 (UTC)
+ with ESMTP id sA7epZdYyXTV for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:44:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 016ED82125
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 22:41:24 +0000 (UTC)
-IronPort-SDR: S9ssxIMv/88bxyvvm9W4m6V6gIYVfM7TFhitMNubx435aRRxpYRBOtF1BAsmmSm6bexBDDt2tk
- y08RZoxn1+7Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9795"; a="156285706"
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="156285706"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2020 14:41:23 -0800
-IronPort-SDR: RhIS6fPRNEkFmuXQDggl2AvBdPCGWqGYel2UfsK7Ej1o7RSZTOMadA8b7B4UF/oJFILkO8mMm3
- uFJYi3Si+ygg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="471404771"
-Received: from lkp-server02.sh.intel.com (HELO e61783667810) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 04 Nov 2020 14:41:22 -0800
-Received: from kbuild by e61783667810 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kaRSz-00017C-Kb; Wed, 04 Nov 2020 22:41:21 +0000
-Date: Thu, 05 Nov 2020 06:40:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-linus] BUILD SUCCESS
- d181bfe36715a1834958cf2d62253b624adfae51
-Message-ID: <5fa32dd7.wzQwenZYUaxYpgkv%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2EE3C84896
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:44:58 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id s30so177299lfc.4
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:44:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mSwbQjJ1cVy439QSgrXK9AcLY7148KkOFvsAqpIxmwg=;
+ b=QtXKfweBRlsbGOAlYxZXOz/lYCy8unSAvDGjjvWSh/sezRhvIb291EkMy/Az42Eo7e
+ TAfz8YALCyTQ46RYjcz1KHr1bxx3QIW42M38LghlqXeAJIOhgwnXDJ2w5PFdGxUrDaJa
+ CgbvRUnmn+hP+Q9Jgoz/cIcjn3sh+vTzr920aJr959sxIfklRYfD0wQYr1mK7xUjvoYi
+ X2ev0EAqFLOjT7G0Gaih9PQ6buZ2mt73AMYcrCt1Dn2Wa1sOYP2Wywby9BlcF6QCpkRM
+ Ts50hSUFzQvXaYS6FgwlN+Yz+9QeF79aJ602AxxMXZAJiSKQWJJzQ4tzPEnhrIo8A+OP
+ CRyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mSwbQjJ1cVy439QSgrXK9AcLY7148KkOFvsAqpIxmwg=;
+ b=j60/rRAPH94z2J+RJOoDlGks1W5nKXhQCGNU9JM36D1bEXQugilz4PCZlCMrYo4Z4b
+ PW/XCj/exrhaRDBdplyB7UBdhTMZxkSqth5P+bB6CbsuSaKj8rr/5wUb9BYVzE87Fc5S
+ CPbVMuKBLLgM5cxpqwwmnkR1EGTPIuQI3bg03fikPqFx5DcASbTxU9bFzsDXGEnlXTZy
+ Au8HnkEhn+3gTxwPT0UkRkwTb5XZ2iKpiBXcZKnfZiB5LO2Abn8FnCbjon+yoKOk+59L
+ 5hZ2gRZ0c2zTe6IjRIFSRyWKmdXWmBZ2EJTkroCf8yd1TTxKWGlNKarPViLC92Cu0P0b
+ /cow==
+X-Gm-Message-State: AOAM532OVqvg3gC8mCoXRINFXYolu4+lr0rrgRObEU2zLW3KVhi7doos
+ UP/DQ90t3tsHYI6Djn6cNDQ=
+X-Google-Smtp-Source: ABdhPJyAnR4d+zZoZfcUMnF37/CdTyI5a7cshqFtJeUxmjjzKi7K0NU+QmIwz6qwfyOY2SPBqOSB8Q==
+X-Received: by 2002:a19:c8c1:: with SMTP id y184mr46637lff.598.1604533495960; 
+ Wed, 04 Nov 2020 15:44:55 -0800 (PST)
+Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
+ [109.252.192.83])
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.44.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Nov 2020 15:44:55 -0800 (PST)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Peter Chen <Peter.Chen@nxp.com>,
+ Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
+Subject: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA Tegra20/30
+ SoCs
+Date: Thu,  5 Nov 2020 02:43:57 +0300
+Message-Id: <20201104234427.26477-1-digetx@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -69,212 +98,132 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-linus
-branch HEAD: d181bfe36715a1834958cf2d62253b624adfae51  Documentation: remove mic/index from misc-devices/index.rst
+Introduce core voltage scaling for NVIDIA Tegra20/30 SoCs, which reduces
+power consumption and heating of the Tegra chips. Tegra SoC has multiple
+hardware units which belong to a core power domain of the SoC and share
+the core voltage. The voltage must be selected in accordance to a minimum
+requirement of every core hardware unit.
 
-elapsed time: 721m
+The minimum core voltage requirement depends on:
 
-configs tested: 182
-configs skipped: 2
+  1. Clock enable state of a hardware unit.
+  2. Clock frequency.
+  3. Unit's internal idling/active state.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+This series is tested on Acer A500 (T20), AC100 (T20), Nexus 7 (T30) and
+Ouya (T30) devices. I also added voltage scaling to the Ventana (T20) and
+Cardhu (T30) boards which are tested by NVIDIA's CI farm. Tegra30 is now up
+to 5C cooler on Nexus 7 and stays cool on Ouya (instead of becoming burning
+hot) while system is idling. It should be possible to improve this further
+by implementing a more advanced power management features for the kernel
+drivers.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                           se7206_defconfig
-m68k                       bvme6000_defconfig
-m68k                           sun3_defconfig
-h8300                               defconfig
-arm                        shmobile_defconfig
-sh                           se7751_defconfig
-arm                        vexpress_defconfig
-mips                          ath25_defconfig
-arm                            u300_defconfig
-arm                           efm32_defconfig
-arm                     davinci_all_defconfig
-riscv                    nommu_k210_defconfig
-sh                               alldefconfig
-arm                          prima2_defconfig
-powerpc                        fsp2_defconfig
-sh                           se7705_defconfig
-mips                           ip28_defconfig
-m68k                       m5208evb_defconfig
-sh                           se7712_defconfig
-arm                        multi_v7_defconfig
-sh                          rsk7269_defconfig
-sh                   secureedge5410_defconfig
-mips                        maltaup_defconfig
-arm                      pxa255-idp_defconfig
-arm                          tango4_defconfig
-powerpc                   motionpro_defconfig
-powerpc                    amigaone_defconfig
-sh                           se7724_defconfig
-s390                       zfcpdump_defconfig
-powerpc                 mpc834x_itx_defconfig
-ia64                                defconfig
-m68k                       m5249evb_defconfig
-arm                          pxa910_defconfig
-openrisc                            defconfig
-mips                         tb0226_defconfig
-xtensa                              defconfig
-mips                      malta_kvm_defconfig
-sh                ecovec24-romimage_defconfig
-arm                          pcm027_defconfig
-arm                        mvebu_v5_defconfig
-powerpc                    sam440ep_defconfig
-mips                         db1xxx_defconfig
-arm                            pleb_defconfig
-arm                        mvebu_v7_defconfig
-sh                        sh7785lcr_defconfig
-arm                        spear3xx_defconfig
-powerpc                      cm5200_defconfig
-arc                            hsdk_defconfig
-mips                        jmr3927_defconfig
-powerpc                      ppc6xx_defconfig
-arm                      integrator_defconfig
-powerpc                 mpc837x_rdb_defconfig
-powerpc                      tqm8xx_defconfig
-mips                     cu1000-neo_defconfig
-mips                           xway_defconfig
-arm                          exynos_defconfig
-mips                          ath79_defconfig
-sh                          landisk_defconfig
-m68k                          amiga_defconfig
-arm                            mmp2_defconfig
-powerpc                 canyonlands_defconfig
-mips                malta_qemu_32r6_defconfig
-powerpc                     tqm8555_defconfig
-arm                          ep93xx_defconfig
-i386                             alldefconfig
-sh                           se7722_defconfig
-powerpc                       holly_defconfig
-mips                        bcm47xx_defconfig
-mips                            gpr_defconfig
-powerpc                      chrp32_defconfig
-mips                  decstation_64_defconfig
-ia64                      gensparse_defconfig
-riscv                          rv32_defconfig
-powerpc                     kilauea_defconfig
-mips                        nlm_xlp_defconfig
-arm                             pxa_defconfig
-xtensa                         virt_defconfig
-powerpc                          allyesconfig
-c6x                        evmc6678_defconfig
-sh                        apsh4ad0a_defconfig
-mips                           ip22_defconfig
-mips                         tb0287_defconfig
-sh                         ap325rxa_defconfig
-powerpc                     stx_gp3_defconfig
-sh                     magicpanelr2_defconfig
-sh                          r7785rp_defconfig
-powerpc                      ppc64e_defconfig
-arm                          iop32x_defconfig
-m68k                            mac_defconfig
-sh                        edosk7760_defconfig
-powerpc                     taishan_defconfig
-riscv                    nommu_virt_defconfig
-powerpc                      katmai_defconfig
-sh                     sh7710voipgw_defconfig
-arm                         orion5x_defconfig
-mips                         rt305x_defconfig
-s390                          debug_defconfig
-arm                           stm32_defconfig
-sh                           se7780_defconfig
-mips                            ar7_defconfig
-powerpc                        cell_defconfig
-sh                  sh7785lcr_32bit_defconfig
-powerpc                  iss476-smp_defconfig
-ia64                        generic_defconfig
-arm                         mv78xx0_defconfig
-sh                            shmin_defconfig
-m68k                          multi_defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20201104
-i386                 randconfig-a006-20201104
-i386                 randconfig-a005-20201104
-i386                 randconfig-a001-20201104
-i386                 randconfig-a002-20201104
-i386                 randconfig-a003-20201104
-i386                 randconfig-a004-20201105
-i386                 randconfig-a006-20201105
-i386                 randconfig-a005-20201105
-i386                 randconfig-a001-20201105
-i386                 randconfig-a002-20201105
-i386                 randconfig-a003-20201105
-x86_64               randconfig-a012-20201104
-x86_64               randconfig-a015-20201104
-x86_64               randconfig-a013-20201104
-x86_64               randconfig-a011-20201104
-x86_64               randconfig-a014-20201104
-x86_64               randconfig-a016-20201104
-i386                 randconfig-a015-20201104
-i386                 randconfig-a013-20201104
-i386                 randconfig-a014-20201104
-i386                 randconfig-a016-20201104
-i386                 randconfig-a011-20201104
-i386                 randconfig-a012-20201104
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+The DVFS support is opt-in for all boards, meaning that older DTBs will
+continue to work like they did it before this series. It should be possible
+to easily add the core voltage scaling support for Tegra114+ SoCs based on
+this grounding work later on, if anyone will want to implement it.
 
-clang tested configs:
-x86_64               randconfig-a004-20201104
-x86_64               randconfig-a003-20201104
-x86_64               randconfig-a005-20201104
-x86_64               randconfig-a002-20201104
-x86_64               randconfig-a006-20201104
-x86_64               randconfig-a001-20201104
+WARNING(!) This series is made on top of the memory interconnect patches
+           which are currently under review [1]. The Tegra EMC driver
+           and devicetree-related patches need to be applied on top of
+           the ICC series.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+[1] https://patchwork.ozlabs.org/project/linux-tegra/list/?series=212196
+
+Dmitry Osipenko (30):
+  dt-bindings: host1x: Document OPP and voltage regulator properties
+  dt-bindings: mmc: tegra: Document OPP and voltage regulator properties
+  dt-bindings: pwm: tegra: Document OPP and voltage regulator properties
+  media: dt: bindings: tegra-vde: Document OPP and voltage regulator
+    properties
+  dt-binding: usb: ci-hdrc-usb2:  Document OPP and voltage regulator
+    properties
+  dt-bindings: usb: tegra-ehci: Document OPP and voltage regulator
+    properties
+  soc/tegra: Add sync state API
+  soc/tegra: regulators: Support Tegra SoC device sync state API
+  soc/tegra: regulators: Fix lockup when voltage-spread is out of range
+  regulator: Allow skipping disabled regulators in
+    regulator_check_consumers()
+  drm/tegra: dc: Support OPP and SoC core voltage scaling
+  drm/tegra: gr2d: Correct swapped device-tree compatibles
+  drm/tegra: gr2d: Support OPP and SoC core voltage scaling
+  drm/tegra: gr3d: Support OPP and SoC core voltage scaling
+  drm/tegra: hdmi: Support OPP and SoC core voltage scaling
+  gpu: host1x: Support OPP and SoC core voltage scaling
+  mmc: sdhci-tegra: Support OPP and core voltage scaling
+  pwm: tegra: Support OPP and core voltage scaling
+  media: staging: tegra-vde: Support OPP and SoC core voltage scaling
+  usb: chipidea: tegra: Support OPP and SoC core voltage scaling
+  usb: host: ehci-tegra: Support OPP and SoC core voltage scaling
+  memory: tegra20-emc: Support Tegra SoC device state syncing
+  memory: tegra30-emc: Support Tegra SoC device state syncing
+  ARM: tegra: Add OPP tables for Tegra20 peripheral devices
+  ARM: tegra: Add OPP tables for Tegra30 peripheral devices
+  ARM: tegra: ventana: Add voltage supplies to DVFS-capable devices
+  ARM: tegra: paz00: Add voltage supplies to DVFS-capable devices
+  ARM: tegra: acer-a500: Add voltage supplies to DVFS-capable devices
+  ARM: tegra: cardhu-a04: Add voltage supplies to DVFS-capable devices
+  ARM: tegra: nexus7: Add voltage supplies to DVFS-capable devices
+
+ .../display/tegra/nvidia,tegra20-host1x.txt   |  56 +++
+ .../bindings/media/nvidia,tegra-vde.txt       |  12 +
+ .../bindings/mmc/nvidia,tegra20-sdhci.txt     |  12 +
+ .../bindings/pwm/nvidia,tegra20-pwm.txt       |  13 +
+ .../devicetree/bindings/usb/ci-hdrc-usb2.txt  |   4 +
+ .../bindings/usb/nvidia,tegra20-ehci.txt      |   2 +
+ .../boot/dts/tegra20-acer-a500-picasso.dts    |  30 +-
+ arch/arm/boot/dts/tegra20-paz00.dts           |  40 +-
+ .../arm/boot/dts/tegra20-peripherals-opp.dtsi | 386 ++++++++++++++++
+ arch/arm/boot/dts/tegra20-ventana.dts         |  65 ++-
+ arch/arm/boot/dts/tegra20.dtsi                |  14 +
+ .../tegra30-asus-nexus7-grouper-common.dtsi   |  23 +
+ arch/arm/boot/dts/tegra30-cardhu-a04.dts      |  44 ++
+ .../arm/boot/dts/tegra30-peripherals-opp.dtsi | 415 ++++++++++++++++++
+ arch/arm/boot/dts/tegra30.dtsi                |  13 +
+ drivers/gpu/drm/tegra/Kconfig                 |   1 +
+ drivers/gpu/drm/tegra/dc.c                    | 138 +++++-
+ drivers/gpu/drm/tegra/dc.h                    |   5 +
+ drivers/gpu/drm/tegra/gr2d.c                  | 140 +++++-
+ drivers/gpu/drm/tegra/gr3d.c                  | 136 ++++++
+ drivers/gpu/drm/tegra/hdmi.c                  |  63 ++-
+ drivers/gpu/host1x/Kconfig                    |   1 +
+ drivers/gpu/host1x/dev.c                      |  87 ++++
+ drivers/memory/tegra/tegra20-emc.c            |   8 +-
+ drivers/memory/tegra/tegra30-emc.c            |   8 +-
+ drivers/mmc/host/Kconfig                      |   1 +
+ drivers/mmc/host/sdhci-tegra.c                |  70 ++-
+ drivers/pwm/Kconfig                           |   1 +
+ drivers/pwm/pwm-tegra.c                       |  84 +++-
+ drivers/regulator/core.c                      |  12 +-
+ .../soc/samsung/exynos-regulator-coupler.c    |   2 +-
+ drivers/soc/tegra/common.c                    | 152 ++++++-
+ drivers/soc/tegra/regulators-tegra20.c        |  25 +-
+ drivers/soc/tegra/regulators-tegra30.c        |  30 +-
+ drivers/staging/media/tegra-vde/Kconfig       |   1 +
+ drivers/staging/media/tegra-vde/vde.c         | 127 ++++++
+ drivers/staging/media/tegra-vde/vde.h         |   1 +
+ drivers/usb/chipidea/Kconfig                  |   1 +
+ drivers/usb/chipidea/ci_hdrc_tegra.c          |  79 ++++
+ drivers/usb/host/Kconfig                      |   1 +
+ drivers/usb/host/ehci-tegra.c                 |  79 ++++
+ include/linux/regulator/coupler.h             |   6 +-
+ include/soc/tegra/common.h                    |  22 +
+ 43 files changed, 2360 insertions(+), 50 deletions(-)
+
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
