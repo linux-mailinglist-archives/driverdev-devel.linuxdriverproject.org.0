@@ -1,53 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03EF72A627C
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:48:48 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A60422A627E
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:49:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5917B86C0C;
-	Wed,  4 Nov 2020 10:48:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E28C62288F;
+	Wed,  4 Nov 2020 10:49:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IiAQKFApRMrQ; Wed,  4 Nov 2020 10:48:44 +0000 (UTC)
+	with ESMTP id hdkhir1Eoewo; Wed,  4 Nov 2020 10:49:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BD68D86B89;
-	Wed,  4 Nov 2020 10:48:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6EF2420C41;
+	Wed,  4 Nov 2020 10:49:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 38E0F1BF844
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:48:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0A2F01BF844
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:49:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3507E86B3B
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:48:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 06CA586670
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:49:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H2uhVuV0ew4M for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 10:48:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay10.mail.gandi.net (relay10.mail.gandi.net [217.70.178.230])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AB1E986B33
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:48:35 +0000 (UTC)
-Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay10.mail.gandi.net (Postfix) with ESMTPSA id BA2FB24000D;
- Wed,  4 Nov 2020 10:48:27 +0000 (UTC)
-Date: Wed, 4 Nov 2020 11:48:27 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH 07/14] dt-bindings: media: i2c: Add A31 MIPI CSI-2
- bindings documentation
-Message-ID: <20201104104827.GD285779@aptenodytes>
-References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
- <20201023174546.504028-8-paul.kocialkowski@bootlin.com>
- <20201026161450.gr3dqpltxw2ccc3s@gilmour.lan>
- <20201027095221.GE168350@aptenodytes>
- <20201027184459.eberpkr52kay3du6@gilmour.lan>
+ with ESMTP id m-lHaGIBx6UR for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 10:49:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp104.ord1d.emailsrvr.com (smtp104.ord1d.emailsrvr.com
+ [184.106.54.104])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CD30C865FC
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:49:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1604486959;
+ bh=nM3HMBm0LDHyS3BTjAs00IhVNoULUtyWP5a5SFL0J4A=;
+ h=Subject:From:To:Date:From;
+ b=c2UZups3mhpbRhyUtnZ3F8N93t9A6q8u+LMwkpQ4ft68Pn/cRiN8vTH84sV+wdEXk
+ D0tjQz9PBha6iUHd1KbtzJY365tNuzpvCx+G3B/zTcf1bCH1QPPtD4RLl8GeZAVe6V
+ sZKUYwpuIXzkZw4arcGdHRfR9E+xypnZeoK0TP7Y=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp22.relay.ord1d.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 53450E01B0; 
+ Wed,  4 Nov 2020 05:49:19 -0500 (EST)
+Subject: Re: [PATCH] staging: comedi: cb_pcidas: reinstate delay removed from
+ trimpot setting
+From: Ian Abbott <abbotti@mev.co.uk>
+To: devel@driverdev.osuosl.org
+References: <20201029141833.126856-1-abbotti@mev.co.uk>
+ <3d7cf15a-c389-ec2c-5e29-8838e8466790@mev.co.uk>
+ <f28af317-08a7-8218-d2a6-0cdd9e681873@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <975358e2-6a08-211a-d232-3cd0ce628e8e@mev.co.uk>
+Date: Wed, 4 Nov 2020 10:49:18 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201027184459.eberpkr52kay3du6@gilmour.lan>
+In-Reply-To: <f28af317-08a7-8218-d2a6-0cdd9e681873@mev.co.uk>
+Content-Language: en-GB
+X-Classification-ID: c38d9511-2862-475a-af9e-afdf1fc6240b-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,312 +71,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
- Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
- Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Hans Verkuil <hans.verkuil@cisco.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============4481162168962962677=="
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============4481162168962962677==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="JwB53PgKC5A7+0Ej"
-Content-Disposition: inline
-
-
---JwB53PgKC5A7+0Ej
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Tue 27 Oct 20, 19:44, Maxime Ripard wrote:
-> On Tue, Oct 27, 2020 at 10:52:21AM +0100, Paul Kocialkowski wrote:
-> > Hi,
-> >=20
-> > On Mon 26 Oct 20, 17:14, Maxime Ripard wrote:
-> > > i2c? :)
-> >=20
-> > Oops, good catch!
-> > =20
-> > > On Fri, Oct 23, 2020 at 07:45:39PM +0200, Paul Kocialkowski wrote:
-> > > > This introduces YAML bindings documentation for the A31 MIPI CSI-2
-> > > > controller.
-> > > >=20
-> > > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > > ---
-> > > >  .../media/allwinner,sun6i-a31-mipi-csi2.yaml  | 168 ++++++++++++++=
-++++
-> > > >  1 file changed, 168 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/media/allwinn=
-er,sun6i-a31-mipi-csi2.yaml
-> > > >=20
-> > > > diff --git a/Documentation/devicetree/bindings/media/allwinner,sun6=
-i-a31-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/allwinner,su=
-n6i-a31-mipi-csi2.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..9adc0bc27033
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/media/allwinner,sun6i-a31-m=
-ipi-csi2.yaml
-> > > > @@ -0,0 +1,168 @@
-> > > > +# SPDX-License-Identifier: GPL-2.0
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: http://devicetree.org/schemas/media/allwinner,sun6i-a31-mipi-=
-csi2.yaml#
-> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > +
-> > > > +title: Allwinner A31 MIPI CSI-2 Device Tree Bindings
-> > > > +
-> > > > +maintainers:
-> > > > +  - Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > > +
-> > > > +properties:
-> > > > +  compatible:
-> > > > +    oneOf:
-> > > > +      - const: allwinner,sun6i-a31-mipi-csi2
-> > > > +      - items:
-> > > > +          - const: allwinner,sun8i-v3s-mipi-csi2
-> > > > +          - const: allwinner,sun6i-a31-mipi-csi2
-> > > > +
-> > > > +  reg:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  interrupts:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  clocks:
-> > > > +    items:
-> > > > +      - description: Bus Clock
-> > > > +      - description: Module Clock
-> > > > +
-> > > > +  clock-names:
-> > > > +    items:
-> > > > +      - const: bus
-> > > > +      - const: mod
-> > > > +
-> > > > +  phys:
-> > > > +    items:
-> > > > +      - description: MIPI D-PHY
-> > > > +
-> > > > +  phy-names:
-> > > > +    items:
-> > > > +      - const: dphy
-> > > > +
-> > > > +  resets:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  # See ./video-interfaces.txt for details
-> > > > +  ports:
-> > > > +    type: object
-> > > > +
-> > > > +    properties:
-> > > > +      port@0:
-> > > > +        type: object
-> > > > +        description: Input port, connect to a MIPI CSI-2 sensor
-> > > > +
-> > > > +        properties:
-> > > > +          reg:
-> > > > +            const: 0
-> > > > +
-> > > > +          endpoint:
-> > > > +            type: object
-> > > > +
-> > > > +            properties:
-> > > > +              remote-endpoint: true
-> > > > +
-> > > > +              bus-type:
-> > > > +                const: 4
-> > > > +
-> > > > +              clock-lanes:
-> > > > +                maxItems: 1
-> > > > +
-> > > > +              data-lanes:
-> > > > +                minItems: 1
-> > > > +                maxItems: 4
-> > > > +
-> > > > +            required:
-> > > > +              - bus-type
-> > > > +              - data-lanes
-> > > > +              - remote-endpoint
-> > > > +
-> > > > +            additionalProperties: false
-> > > > +
-> > > > +        required:
-> > > > +          - endpoint
-> > > > +
-> > > > +        additionalProperties: false
-> > > > +
-> > > > +      port@1:
-> > > > +        type: object
-> > > > +        description: Output port, connect to a CSI controller
-> > > > +
-> > > > +        properties:
-> > > > +          reg:
-> > > > +            const: 1
-> > > > +
-> > > > +          endpoint:
-> > > > +            type: object
-> > > > +
-> > > > +            properties:
-> > > > +              remote-endpoint: true
-> > > > +
-> > > > +              bus-type:
-> > > > +                const: 4
-> > >=20
-> > > That one seems a bit weird. If the input and output ports are using t=
-he
-> > > same format, what is that "bridge" supposed to be doing?
-> >=20
-> > Fair enough. What this represents is the internal link (likely a FIFO) =
-between
-> > the two controllers. It is definitely not a MIPI CSI-2 bus but there's =
-no
-> > mbus type for an internal link (probably because it's not a bus after a=
-ll).
-> >=20
-> > Note that on the CSI controller side, we need the bus-type to be set to=
- 4 for it
-> > to properly select the MIPI CSI-2 input. So it just felt more logical t=
-o have
-> > the same on the other side of the endpoint. On the other hand, we can j=
-ust
-> > remove it on the MIPI CSI-2 controller side since it won't check it and=
- have it
-> > fallback to the unknown mbus type.
-> >=20
-> > But that would make the types inconsistent on the two sides of the link.
-> > I don't think V4L2 will complain about it at the moment, but it would a=
-lso make
-> > sense that it does eventually.
-> >=20
-> > What do you think?
->=20
-> There's still the same issue though, it doesn't make any sense that a
-> bridge doesn't change the bus type. If it really did, we wouldn't need
-> that in the first place.
-
-Yes I agreee.
-
-> What you want to check in your driver is whether the subdev you're
-> connected to has a sink pad that uses MIPI-CSI
-
-I'm not really sure that's possible, but if it is it would indeed be the mo=
-st
-appropriate solution. If it's not, we still need to know that we need to fe=
-ed
-=66rom MIPI CSI-2 so I don't see any other option than report MIPI CSI-2 on=
- both
-ends of MIPI CSI-2 controller.
-
-But there's still the question of what media bus type should be reported for
-the CSI <-> MIPI CSI-2 link. I'm fine with unknown but we could also add a
-generic internal bus type for this case.
-
-Paul
-
-> Maxime
->=20
-> > > > +            additionalProperties: false
-> > > > +
-> > > > +        required:
-> > > > +          - endpoint
-> > > > +
-> > > > +        additionalProperties: false
-> > > > +
-> > > > +required:
-> > > > +  - compatible
-> > > > +  - reg
-> > > > +  - interrupts
-> > > > +  - clocks
-> > > > +  - clock-names
-> > > > +  - resets
-> > > > +
-> > > > +additionalProperties: false
-> > > > +
-> > > > +examples:
-> > > > +  - |
-> > > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > > +    #include <dt-bindings/clock/sun8i-v3s-ccu.h>
-> > > > +    #include <dt-bindings/reset/sun8i-v3s-ccu.h>
-> > > > +
-> > > > +    mipi_csi2: mipi-csi2@1cb1000 {
-> > >=20
-> > > The unit name should be pretty standard, with the list here:
-> > >=20
-> > > https://github.com/devicetree-org/devicetree-specification/blob/maste=
-r/source/chapter2-devicetree-basics.rst#generic-names-recommendation
-> > >=20
-> > > there's nothing really standing out for us in that list, but given th=
-at
-> > > there's dsi, we should stick with csi
-> >=20
-> > Then what really surprises me is that the CSI controllers are called "c=
-amera",
-> > not "csi". If "camera" is supposed to cover both image sensor and camer=
-a sensor
-> > interfaces, it would probably fit MIPI CSI-2 as well.
-> >=20
-> > I see lots of names with -controller for controllers with specific devi=
-ces
-> > attached, like "nand-controller" or "lcd-controller". Maybe using
-> > "camera-controller" for the CSI and MIPI CSI-2 controllers would make t=
-he most
-> > sense, while keeping "camera" for the actual image sensors.
-> >=20
-> > What do you think?
->=20
-> If you really want to discuss this, feel free to open a PR for the DT
-> spec and add it. However, I still think this csi would be best here:
-> it's neither a camera nor a camera controller
->=20
-> maxime
-
-
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---JwB53PgKC5A7+0Ej
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+ihvsACgkQ3cLmz3+f
-v9Fongf/XSL+crE1GI4SFbtd8uVX2nhvXCN78RRSKI1fFD3SRaWIIuHRUshscxMo
-dEoZ1GzYSbaZSQMJQRXRnJIWQ4AgLMqlnM33gA6me8FSi8YJ4PuKWHP44luENEHT
-rJLDGv3PV72DypUm+hsi/lHdPMmRsmw0MZhT3AixhO6WPevpIswAxyCXasZsKCtc
-o94Fs6UflwcYjfdy+nho8rTRYoz/A6YIUSvaTUJ2TpxJGa/+kNaqXO6D6SC65k4N
-1eTRyoE42qXVN2TP0DJrURO5Cs1yNrBvzbFJ55+FV2GJR1fzoZIdRu4tNeigXT5q
-UyZgCYQBFJCgNSy2qaScfOBdfTnCNQ==
-=flAo
------END PGP SIGNATURE-----
-
---JwB53PgKC5A7+0Ej--
-
---===============4481162168962962677==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============4481162168962962677==--
+T24gMDIvMTEvMjAyMCAxMToxNiwgSWFuIEFiYm90dCB3cm90ZToKPiBPbiAwMi8xMS8yMDIwIDEw
+OjI1LCBJYW4gQWJib3R0IHdyb3RlOgo+PiBPbiAyOS8xMC8yMDIwIDE0OjE4LCBJYW4gQWJib3R0
+IHdyb3RlOgo+Pj4gQ29tbWl0IGVkZGQyYTRjNjc1YyAoInN0YWdpbmc6IGNvbWVkaTogY2JfcGNp
+ZGFzOiByZWZhY3Rvcgo+Pj4gd3JpdGVfY2FsaWJyYXRpb25fYml0c3RyZWFtKCkiKSBpbmFkdmVy
+dGVudGx5IHJlbW92ZWQgb25lIG9mIHRoZQo+Pj4gYHVkZWxheSgxKWAgY2FsbHMgd2hlbiB3cml0
+aW5nIHRvIHRoZSBjYWxpYnJhdGlvbiByZWdpc3RlciBpbgo+Pj4gYGNiX3BjaWRhc19jYWxpYl93
+cml0ZSgpYC7CoCBSZWluc3RhdGUgdGhlIGRlbGF5LsKgIEl0IG1heSBzZWVtIHN0cmFuZ2UKPj4+
+IHRoYXQgdGhlIGRlbGF5IGlzIHBsYWNlZCBiZWZvcmUgdGhlIHJlZ2lzdGVyIHdyaXRlLCBidXQg
+dGhpcyBmdW5jdGlvbiBpcwo+Pj4gY2FsbGVkIGluIGEgbG9vcCBzbyB0aGUgZXh0cmEgZGVsYXkg
+Y2FuIG1ha2UgYSBkaWZmZXJlbmNlLgo+Pj4KPj4+IFRoaXMgX21pZ2h0XyBzb2x2ZSByZXBvcnRl
+ZCBpc3N1ZXMgcmVhZGluZyBhbmFsb2cgaW5wdXRzIG9uIGEKPj4+IFBDSWUtREFTMTYwMi8xNiBj
+YXJkIHdoZXJlIHRoZSBhbmFsb2cgaW5wdXQgdmFsdWVzICJ3ZXJlIHNjYWxlZCBpbiBhCj4+PiBz
+dHJhbmdlIHdheSB0aGF0IGRpZG4ndCBtYWtlIHNlbnNlIi7CoCBPbiB0aGUgc2FtZSBoYXJkd2Fy
+ZSBydW5uaW5nIGEKPj4+IHN5c3RlbSB3aXRoIGEgMy4xMyBrZXJuZWwsIGFuZCB0aGVuIGEgc3lz
+dGVtIHdpdGggYSA0LjQga2VybmVsLCBidXQgd2l0aAo+Pj4gdGhlIHNhbWUgYXBwbGljYXRpb24g
+c29mdHdhcmUsIHRoZSBzeXN0ZW0gd2l0aCB0aGUgMy4xMyBrZXJuZWwgd2FzIGZpbmUsCj4+PiBi
+dXQgdGhlIG9uZSB3aXRoIHRoZSA0LjQga2VybmVsIGV4aGliaXRlZCB0aGUgcHJvYmxlbS7CoCBP
+ZiB0aGUgOTAKPj4+IGNoYW5nZXMgdG8gdGhlIGRyaXZlciBiZXR3ZWVuIHRob3NlIGtlcm5lbCB2
+ZXJzaW9ucywgdGhpcyBjaGFuZ2UgbG9va2VkCj4+PiBsaWtlIHRoZSBtb3N0IGxpa2VseSBjdWxw
+cml0Lgo+Pgo+PiBBY3R1YWxseSwgSSd2ZSByZWFsaXplZCB0aGF0IHRoaXMgcGF0Y2ggd2lsbCBo
+YXZlIG5vIGVmZmVjdCBvbiB0aGUgCj4+IFBDSWUtREFTMTYwMi8xNiBjYXJkIGJlY2F1c2UgaXQg
+dXNlcyBhIGRpZmZlcmVudCBkcml2ZXIgLSBjYl9wY2ltZGFzLCAKPj4gbm90IGNiX3BjaWRhcy4K
+PiAKPiBCdXQgdGhhdCdzIGFsc28gY29uZnVzaW5nIGJlY2F1c2UgUENJZS1EQVMxNjAyLzE2IHdh
+cyBub3Qgc3VwcG9ydGVkIAo+IHVudGlsIHRoZSAzLjE5IGtlcm5lbCHCoCBJIGtub3cgdGhlIHJl
+cG9ydGVkIGhhcyBib3RoIFBDSS1EQVMxNjAyLzE2IGFuZCAKPiBQQ0llLURBUzE2MDIvMTYgY2Fy
+ZHMgKHN1cHBvcnRlZCBieSBjYl9wY2lkYXMgYW5kIGNiX3BjaW1kYXMgCj4gcmVzcGVjdGl2ZWx5
+KSwgc28gdGhlcmUgY291bGQgaGF2ZSBiZWVuIHNvbWUgbWl4LXVwIGluIHRoZSByZXBvcnRpbmcu
+CgpNeXN0ZXJ5IHNvbHZlZC4gIFRoZSByZXBvcnRlciBoYWQgYSBtaXh0dXJlIG9mIFBDSWUtREFT
+MTYwMi8xNiBhbmQgClBDSU0tREFTMTYwMi8xNiBjYXJkcyAobm90IFBDSS1EQVMxNjAyLzE2KS4g
+IEJvdGggb2YgdGhvc2UgYXJlIHN1cHBvcnRlZCAKYnkgdGhlICJjYl9wY2ltZGFzIiBkcml2ZXIg
+KG5vdCAiY2JfcGNpZGFzIiksIGFsdGhvdWdoIHRoZSBQQ0llIGNhcmQgd2FzIApub3Qgc3VwcG9y
+dGVkIHVudGlsIHRoZSAzLjE5IGtlcm5lbCAoYnkgY29tbWl0IDRlM2QxNGFmMTI4NikuICBUZXN0
+aW5nIAp3aXRoIHRoZSAzLjEzIGtlcm5lbCB3YXMgZG9uZSB3aXRoIHRoZSBQQ0lNIGNhcmQuCgpU
+aGUgInN0cmFuZ2Ugc2NhbGluZyIgd2FzIGR1ZSB0byBhIGNoYW5nZSBpbiB0aGUgcmFuZ2VzIHJl
+cG9ydGVkIGZvciB0aGUgCmFuYWxvZyBpbnB1dCBzdWJkZXZpY2UgaW4gdGhlIDQuMSBrZXJuZWwg
+KGJ5IGNvbW1pdCBjNzU0OWQ3NzBhMjcpLiAKQmVmb3JlIHRoZW4sIGl0IGp1c3QgcmVwb3J0ZWQg
+YSBzaW5nbGUgZHVtbXkgcmFuZ2UgWzAsIDEwMDAwMDBdIHdpdGggbm8gCnVuaXRzIChjb252ZXJ0
+ZWQgdG8gWzAuMCwgMS4wXSB3aXRoIG5vIHVuaXRzIGJ5IGNvbWVkaWxpYikuICBBZnRlcndhcmRz
+LCAKaXQgcmVwb3J0ZWQgZm91ciBkaWZmZXJlbnQgdm9sdGFnZSByYW5nZXMgKGVpdGhlciB1bmlw
+b2xhciBvciBiaXBvbGFyLCAKZGVwZW5kaW5nIGluIGEgc3RhdHVzIGJpdCB0aWVkIHRvIGEgcGh5
+c2ljYWwgc3dpdGNoKS4gIFRoZSByZXBvcnRlcidzIAphcHBsaWNhdGlvbiBjb2RlIHdhcyB1c2lu
+ZyB0aGUgcmVwb3J0ZWQgcmFuZ2UgdG8gc2NhbGUgdGhlIHJhdyB2YWx1ZXMgdG8gCmEgdm9sdGFn
+ZSAodXNpbmcgY29tZWRpbGliIGZ1bmN0aW9ucyksIGJ1dCBiZWNhdXNlIHRoZSByZXBvcnRlZCBy
+YW5nZSAKd2FzIGJvZ3VzLCB0aGUgYXBwbGljYXRpb24gY29kZSB3YXMgcGVyZm9ybWluZyBhZGRp
+dGlvbmFsIHNjYWxpbmcgCihvdXRzaWRlIG9mIGNvbWVkaWxpYikuICBUaGUgYXBwbGljYXRpb24g
+Y29kZSBjYW4gYmUgY2hhbmdlZCB0byBjaGVjayAKd2hldGhlciB0aGUgZGV2aWNlIGlzIHJlcG9y
+dGluZyBhIHByb3BlciB2b2x0YWdlIHJhbmdlIG9yIHRoZSBvbGQsIGJvZ3VzIApyYW5nZSwgYW5k
+IGJlaGF2ZSBhY2NvcmRpbmdseS4KCj4+IEdyZWcsIHlvdSBtaWdodCBhcyB3ZWxsIGRyb3AgdGhp
+cyBwYXRjaCBpZiB5b3UgaGF2ZW4ndCBhbHJlYWR5IGFwcGxpZWQgCj4+IGl0LCBzaW5jZSBpdCB3
+YXMgb25seSBhIGh1bmNoIHRoYXQgaXQgZml4ZWQgYSBwcm9ibGVtLgoKVGhhdCdzIHN0aWxsIHRo
+ZSBjYXNlLCBhbHRob3VnaCBpdCB3b24ndCBkbyBhbnkgaGFybSBpZiBhcHBsaWVkIChhcGFydCAK
+ZnJvbSB0aGUgaW5jb3JyZWN0IHBhdGNoIGRlc2NyaXB0aW9uKS4KCi0tIAotPSggSWFuIEFiYm90
+dCA8YWJib3R0aUBtZXYuY28udWs+IHx8IE1FViBMdGQuIGlzIGEgY29tcGFueSAgKT0tCi09KCBy
+ZWdpc3RlcmVkIGluIEVuZ2xhbmQgJiBXYWxlcy4gIFJlZ2QuIG51bWJlcjogMDI4NjIyNjguICAp
+PS0KLT0oIFJlZ2QuIGFkZHIuOiBTMTEgJiAxMiBCdWlsZGluZyA2NywgRXVyb3BhIEJ1c2luZXNz
+IFBhcmssICk9LQotPSggQmlyZCBIYWxsIExhbmUsIFNUT0NLUE9SVCwgU0szIDBYQSwgVUsuIHx8
+IHd3dy5tZXYuY28udWsgKT0tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
+Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaXZlcmRldi1kZXZlbAo=
