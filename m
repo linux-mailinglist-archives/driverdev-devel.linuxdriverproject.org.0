@@ -1,51 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4BF62A61A5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:33:48 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7437A2A61DA
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:37:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A1E7C2284F;
-	Wed,  4 Nov 2020 10:33:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C47EE867DA;
+	Wed,  4 Nov 2020 10:37:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OJGxemG-JaFy; Wed,  4 Nov 2020 10:33:46 +0000 (UTC)
+	with ESMTP id oIfZcvza-hWQ; Wed,  4 Nov 2020 10:37:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9A8EB20C41;
-	Wed,  4 Nov 2020 10:33:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7ABDA86A00;
+	Wed,  4 Nov 2020 10:37:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 497811BF844
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:33:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A6971BF844
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:37:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 21CB38737A
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:33:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 872F385D3D
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:37:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zjYlX3pxdX-J for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 10:33:40 +0000 (UTC)
+ with ESMTP id yMqTuAiyVGM9 for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 10:37:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay12.mail.gandi.net (relay12.mail.gandi.net [217.70.178.232])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5EAC7871E1
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:33:38 +0000 (UTC)
+Received: from relay2-d.mail.gandi.net (relay2-d.mail.gandi.net
+ [217.70.183.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 27C8485C5E
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:37:38 +0000 (UTC)
+X-Originating-IP: 93.29.109.196
 Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay12.mail.gandi.net (Postfix) with ESMTPSA id 2ADE5200009;
- Wed,  4 Nov 2020 10:33:32 +0000 (UTC)
-Date: Wed, 4 Nov 2020 11:33:32 +0100
+ by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id 42D764000A;
+ Wed,  4 Nov 2020 10:37:32 +0000 (UTC)
+Date: Wed, 4 Nov 2020 11:37:31 +0100
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH 11/14] dt-bindings: media: i2c: Add A83T MIPI CSI-2
- bindings documentation
-Message-ID: <20201104103332.GB285779@aptenodytes>
+Subject: Re: [PATCH 12/14] media: sunxi: Add support for the A83T MIPI CSI-2
+ controller
+Message-ID: <20201104103731.GC285779@aptenodytes>
 References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
- <20201023174546.504028-12-paul.kocialkowski@bootlin.com>
- <20201026165653.7tzo2hlagee633ra@gilmour.lan>
+ <20201023174546.504028-13-paul.kocialkowski@bootlin.com>
+ <20201026170041.qsjzxlurufuuhcsq@gilmour.lan>
 MIME-Version: 1.0
-In-Reply-To: <20201026165653.7tzo2hlagee633ra@gilmour.lan>
+In-Reply-To: <20201026170041.qsjzxlurufuuhcsq@gilmour.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,118 +72,96 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Hans Verkuil <hans.verkuil@cisco.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============5791662030665743169=="
+Content-Type: multipart/mixed; boundary="===============1588785038853329708=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============5791662030665743169==
+--===============1588785038853329708==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="yNb1oOkm5a9FJOVX"
+	protocol="application/pgp-signature"; boundary="KN5l+BnMqAQyZLvT"
 Content-Disposition: inline
 
 
---yNb1oOkm5a9FJOVX
+--KN5l+BnMqAQyZLvT
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-On Mon 26 Oct 20, 17:56, Maxime Ripard wrote:
-> On Fri, Oct 23, 2020 at 07:45:43PM +0200, Paul Kocialkowski wrote:
-> > This introduces YAML bindings documentation for the A83T MIPI CSI-2
-> > controller.
+On Mon 26 Oct 20, 18:00, Maxime Ripard wrote:
+> On Fri, Oct 23, 2020 at 07:45:44PM +0200, Paul Kocialkowski wrote:
+> > The A83T supports MIPI CSI-2 with a composite controller, covering both=
+ the
+> > protocol logic and the D-PHY implementation. This controller seems to b=
+e found
+> > on the A83T only and probably was abandonned since.
 > >=20
-> > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
->=20
-> What is the difference with the a31/v3s one?
-
-It's a different controller, not a variation of the A31 one.
-I'll rework the commit log to make this clearer.
-
-> > ---
-> >  .../media/allwinner,sun8i-a83t-mipi-csi2.yaml | 158 ++++++++++++++++++
-> >  1 file changed, 158 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/allwinner,s=
-un8i-a83t-mipi-csi2.yaml
+> > This implementation splits the protocol and D-PHY registers and uses th=
+e PHY
+> > framework internally. The D-PHY is not registered as a standalone PHY d=
+river
+> > since it cannot be used with any other controller.
 > >=20
-> > diff --git a/Documentation/devicetree/bindings/media/allwinner,sun8i-a8=
-3t-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/allwinner,sun8i=
--a83t-mipi-csi2.yaml
-> > new file mode 100644
-> > index 000000000000..2384ae4e7be0
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/allwinner,sun8i-a83t-mipi=
--csi2.yaml
-> > @@ -0,0 +1,158 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/allwinner,sun8i-a83t-mipi-csi=
-2.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Allwinner A83T MIPI CSI-2 Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: allwinner,sun8i-a83t-mipi-csi2
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: Bus Clock
-> > +      - description: Module Clock
-> > +      - description: MIPI-specific Clock
-> > +      - description: Misc CSI Clock
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: bus
-> > +      - const: mod
-> > +      - const: mipi
-> > +      - const: misc
+> > There are a few notable points about the controller:
+> > - The initialisation sequence involes writing specific magic init value=
+s that
+> >   do not seem to make any particular sense given the concerned register=
+ fields.
+> > - Interrupts appear to be hitting regardless of the interrupt mask regi=
+sters,
+> >   which can cause a serious flood when transmission errors occur.
 >=20
-> If it's only due to the clock, it's soemething you can deal with in the
-> first schema, there's no need to duplicate them.
+> Ah, so it's a separate driver too.
+>=20
+> > This work is based on the first version of the driver submitted by
+> > K=C3=A9vin L'h=C3=B4pital, which was adapted to mainline from the Allwi=
+nner BSP.
+> > This version integrates MIPI CSI-2 support as a standalone V4L2 subdev
+> > instead of merging it in the sun6i-csi driver.
+> >=20
+> > It was tested on a Banana Pi M3 board with an OV8865 sensor in a 4-lane
+> > configuration.
+>=20
+> Co-developped-by and SoB from Kevin?
 
-It's a completely different controller so I don't think it makes sense to
-have a single schema for both. Even if the bindings look similar.
+Not really. I wrote this driver from scratch and even significantly reworked
+the register descriptions to the point that I don't think it makes sense to
+consider that he's an author. For parts that can be considered a derivative
+work, copyright attribution was given in the header.
+
+Cheers,
 
 Paul
+
+> Looking at the driver, the same comments from the v3s apply there
+>=20
+> Maxime
 
 --=20
 Paul Kocialkowski, Bootlin
 Embedded Linux and kernel engineering
 https://bootlin.com
 
---yNb1oOkm5a9FJOVX
+--KN5l+BnMqAQyZLvT
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+ig3wACgkQ3cLmz3+f
-v9EOVAf/e4pm05QGgcVnZzLG/lyNaEDWIuSgd/OGrAGoivwtqRFyR9doN4gDBPyT
-WzqyQLUwoqabROn4uo4gDKYeVTBzurmP72wUpi56AZHwMF0GJJxBlnhPRVn+/+yA
-1ivxytdXcDsCl7I4fnU5fgLBtlSAfxKLHpXiRGvUienru9cmtfaTWI4xAZdywRAu
-ZHujRyp3UKa+4vLNsHfp3NTxowZPkXyvKQUkbl78EKyyT5q8fQdx8lnkkpoDdHlG
-0BVa4uZLd5AREHoaRkBXyRjY1BFeurVis820lxAF6ZtX3xk91nc+ZAMGVKtPdjTr
-kFZDDwiEdhWUut3CgCmxe2s656rOOA==
-=ZtOi
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+ihGcACgkQ3cLmz3+f
+v9HKqAf+OuoO0165XskKVuTp2nDVtSSL8D+0v2Fji8v+foCHk2qq8v2otrqY5Ey+
+ptEefRqzPa/VFRm5ZShzliEzeFK1vE+0/NE/n9QU4KdkhNUNnMGUIYGtEIvQr+Qo
+QOqecdSX0SR0qy/CMHbuNQJRRSzZ1AkYjq6g/023m3VMUOvGajq+2cwWYpYE0SC/
+Ngjd/deVC3yvosBdjwUfzyB2zj6pNOM8PQrUnIpiO2pBsZcXqqQ4QgLmi1UgtSrz
+RsTW9bMwsz7IRyogs4dCrb6s3ooCuK+Ox3v7bqng99Eqe/n6oIveLzRNS5QnlKMa
+rDjvmpkshuvTgPMU/kQlaGL1k20Lxw==
+=i052
 -----END PGP SIGNATURE-----
 
---yNb1oOkm5a9FJOVX--
+--KN5l+BnMqAQyZLvT--
 
---===============5791662030665743169==
+--===============1588785038853329708==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -192,4 +172,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============5791662030665743169==--
+--===============1588785038853329708==--
