@@ -2,70 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DF592A720A
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E9F42A7209
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A51C854E7;
-	Wed,  4 Nov 2020 23:45:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0464D85604;
+	Wed,  4 Nov 2020 23:45:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mGwLwp6rJqnA; Wed,  4 Nov 2020 23:45:44 +0000 (UTC)
+	with ESMTP id KUzjhno1aEYB; Wed,  4 Nov 2020 23:45:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D63C385531;
-	Wed,  4 Nov 2020 23:45:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D5C0E85570;
+	Wed,  4 Nov 2020 23:45:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 712B11BF97F
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 221E61BF2B7
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6BAC285AE0
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1D71985722
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w-hNNLWrtCvy for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 23:45:39 +0000 (UTC)
+ with ESMTP id cQJuk41uW297 for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:45:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f43.google.com (mail-lf1-f43.google.com
- [209.85.167.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 25029857C2
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:38 +0000 (UTC)
-Received: by mail-lf1-f43.google.com with SMTP id 74so175008lfo.5
- for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:38 -0800 (PST)
+Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com
+ [209.85.167.53])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 77AE185700
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:39 +0000 (UTC)
+Received: by mail-lf1-f53.google.com with SMTP id i6so197430lfd.1
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JWa430PVIqmJIbeD7KBt0TZCN2r4IZvUOeKukZUULSM=;
- b=eN4h8wmKVmc98I8VpVQD05mgPsSKIV8roZRuvQUi3EOcizAEVMxhK4XcKenNODUP57
- Rxze2zWAWjLCIfL2dNIRIGywZvC28Gu+MslIDgcQBiINpAIgA8ayEvdgAWeaNJS/UoUw
- AF/ln6R+1zf+7IT8b1pPX6qDWo8FajvGF+vv4uuipo2sXIA3JUzx7p8u+ktEcwm1o1pg
- 8EzDhwuYDylAakt40bWirCp8sipi2Klh9G/IBYON5H8zDXGqS29eR/JqRCTc9dW4pVKR
- y1mExIRa9//FQnuJ5e8gfTLqClqNg3UUpnvkCzqL0KLmGCs6gxB1ftFcHku0KNIwUxDo
- VvhA==
+ bh=H3MVi35NrfPSfRw//362HseqQCwlWGtdqp60bFnUhwA=;
+ b=OMn9xsQeCPu/4JinLc/AgoFUYFf1NUAoZIU2Zlu6R9dPQunR73wlhPP73mbb5TTpva
+ 8JiMy8NqbA0ZUwEVbGtyIWXt0/tfNkV48rTG7UCuIXLFva4JtNhIA8GqUErMg0IIfKUE
+ OGNdyB9H+gojt3sZ7bQ7bIApJMJ4in5sly2bBNeehvG48k/7mXjUtjndqT8kWTqY/A8g
+ qT2PIZ20opUDRyncNfJ/LO9879zyPy4vHJoeMho7u+q9lf9+ZJxM1tYmJF+TFnEibpMR
+ nv5gAps0odmdCDhcgB3tni2hr1hAyEgQ9NPd3AF9mNe+BxeSr5+mlHHTfY0Od+dUrfDJ
+ v6DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JWa430PVIqmJIbeD7KBt0TZCN2r4IZvUOeKukZUULSM=;
- b=haIiAghyS9kTTBvc4yj1DvsyoAEXT/O8dIgkqCHZbB1UEKE0Y5MBLEFmjUSoxcv7Bu
- /JWKdgNRdPI5qSulM8BErfAUam1rr0h7ACiY6x6KKh2p74mxSfKtFcW2iZUyUEpi6wv8
- y8s1fe3hibs0FvW/nHmxpx5tP59TWuloDOVbhXn3EnVqbL3b9LigTTXxeLD/jPUgZyik
- M5+K3+SoBQ/cEC09vvbgQoyRQCSMRHYMeLRRdppQkvAFkhq4Bwe1b7F59+xGyptRA+F0
- 07v+eT9VIyHVrfKyzuEE52d9IvWCy2hArxZ/HieX3KGVfaC82dq/G8C5wldppFBeup4y
- lzlA==
-X-Gm-Message-State: AOAM530BJ5qCC0xUWcNzmx7qvuVKHUM2l4WDtgsQq+eqjeef0ULNJS9M
- wP+XKGXjGibLSWAgHoTBc2mmvfi/Wa8=
-X-Google-Smtp-Source: ABdhPJz6df+Ge/OfH/yyY6XjwgEffIPjNRxtB5oKKiqUFuVW6jG9sorT54nuDmLv0xSqhkTx9fOGHg==
-X-Received: by 2002:a05:6512:3388:: with SMTP id
- h8mr60396lfg.318.1604533536417; 
- Wed, 04 Nov 2020 15:45:36 -0800 (PST)
+ bh=H3MVi35NrfPSfRw//362HseqQCwlWGtdqp60bFnUhwA=;
+ b=imV3pCbgiiuZTZ1n4kInI6H7779cf6zQqd7Cp+xWGZa9UYUTIlqCOy+VPAKjB7KRFk
+ ARfCgxA6+PmzRL3YigrIIng75/8ki79rph1t8rB8o/pmiDYAKNyCOWQeiZcaSz6KVCOe
+ 9ObfrFv9evj0sDANLWjzu4J7u5X5yGTb1wyNIwT5yA99U/doBu24UGAUux5bBgA0DNgT
+ JxEpNYvurcYQV2ByxO4mR70Q/qAhsV3c0fzrYb3TYKv+BYcVF0i87xIe0CfPzH9jWcMH
+ ElGz69GLalupWm270fR9ltB00rbAYZ/RZCEITVhWFJGIJidAUleleSiiCaZepVK3CLXN
+ am8Q==
+X-Gm-Message-State: AOAM5307/P09672+rwirIq9Gc1teqwJhPs7l68ZaQwjTGdR8wSS00K+C
+ 4tVn0KxT59Rn5bUl5j99hWU=
+X-Google-Smtp-Source: ABdhPJwyQ9D+w6Gwu+oNG3O4q0AAu7yTKLISIo+dIOXhdhlh+KdufIVDxOlsB9IAA16GjdDdX/+EHA==
+X-Received: by 2002:ac2:53a5:: with SMTP id j5mr41614lfh.253.1604533537747;
+ Wed, 04 Nov 2020 15:45:37 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
  [109.252.192.83])
- by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.35
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 15:45:35 -0800 (PST)
+ Wed, 04 Nov 2020 15:45:37 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
@@ -81,10 +80,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Marek Szyprowski <m.szyprowski@samsung.com>,
  Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: [PATCH v1 29/30] ARM: tegra: cardhu-a04: Add voltage supplies to
+Subject: [PATCH v1 30/30] ARM: tegra: nexus7: Add voltage supplies to
  DVFS-capable devices
-Date: Thu,  5 Nov 2020 02:44:26 +0300
-Message-Id: <20201104234427.26477-30-digetx@gmail.com>
+Date: Thu,  5 Nov 2020 02:44:27 +0300
+Message-Id: <20201104234427.26477-31-digetx@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201104234427.26477-1-digetx@gmail.com>
 References: <20201104234427.26477-1-digetx@gmail.com>
@@ -116,71 +115,79 @@ system-wide voltage scaling.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- arch/arm/boot/dts/tegra30-cardhu-a04.dts | 44 ++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ .../tegra30-asus-nexus7-grouper-common.dtsi   | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/arch/arm/boot/dts/tegra30-cardhu-a04.dts b/arch/arm/boot/dts/tegra30-cardhu-a04.dts
-index c1c0ca628af1..7149e5594537 100644
---- a/arch/arm/boot/dts/tegra30-cardhu-a04.dts
-+++ b/arch/arm/boot/dts/tegra30-cardhu-a04.dts
-@@ -93,6 +93,34 @@ vdd_bl2_reg: regulator@106 {
- 		gpio = <&gpio TEGRA_GPIO(DD, 0) GPIO_ACTIVE_HIGH>;
+diff --git a/arch/arm/boot/dts/tegra30-asus-nexus7-grouper-common.dtsi b/arch/arm/boot/dts/tegra30-asus-nexus7-grouper-common.dtsi
+index 261e266c61d8..2b405872ad2d 100644
+--- a/arch/arm/boot/dts/tegra30-asus-nexus7-grouper-common.dtsi
++++ b/arch/arm/boot/dts/tegra30-asus-nexus7-grouper-common.dtsi
+@@ -60,7 +60,19 @@ trustzone@bfe00000 {
  	};
  
-+	host1x@50000000 {
-+		core-supply = <&vddcore_reg>;
+ 	host1x@50000000 {
++		core-supply = <&vdd_core>;
 +
 +		gr2d@54140000 {
-+			core-supply = <&vddcore_reg>;
++			core-supply = <&vdd_core>;
 +		};
 +
 +		gr3d@54180000 {
-+			core-supply = <&vddcore_reg>;
++			core-supply = <&vdd_core>;
 +		};
 +
-+		dc@54200000 {
-+			core-supply = <&vddcore_reg>;
-+		};
+ 		dc@54200000 {
++			core-supply = <&vdd_core>;
++
+ 			rgb {
+ 				status = "okay";
+ 
+@@ -72,6 +84,10 @@ lcd_output: endpoint {
+ 				};
+ 			};
+ 		};
 +
 +		dc@54240000 {
-+			core-supply = <&vddcore_reg>;
++			core-supply = <&vdd_core>;
 +		};
-+	};
-+
-+	vde@6001a000 {
-+		core-supply = <&vddcore_reg>;
-+	};
-+
-+	pwm: pwm@7000a000 {
-+		core-supply = <&vddcore_reg>;
-+	};
-+
- 	i2c@7000d000 {
- 		pmic: tps65911@2d {
- 			regulators {
-@@ -117,6 +145,22 @@ vddcore_reg: tps62361@60 {
+ 	};
+ 
+ 	gpio@6000d000 {
+@@ -90,6 +106,10 @@ init-low-power-mode {
  		};
  	};
  
-+	memory-controller@7000f400 {
-+		core-supply = <&vddcore_reg>;
++	vde@6001a000 {
++		core-supply = <&vdd_core>;
 +	};
 +
-+	mmc@78000000 {
-+		core-supply = <&vddcore_reg>;
-+	};
-+
-+	mmc@78000600 {
-+		core-supply = <&vddcore_reg>;
-+	};
-+
-+	usb@7d008000 {
-+		core-supply = <&vddcore_reg>;
-+	};
-+
- 	cpus {
- 		cpu0: cpu@0 {
- 			cpu-supply = <&vddctrl_reg>;
+ 	pinmux@70000868 {
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&state_default>;
+@@ -835,6 +855,7 @@ bluetooth {
+ 
+ 	pwm: pwm@7000a000 {
+ 		status = "okay";
++		core-supply = <&vdd_core>;
+ 	};
+ 
+ 	i2c@7000c400 {
+@@ -994,6 +1015,7 @@ sdmmc3: mmc@78000400 {
+ 
+ 		mmc-pwrseq = <&brcm_wifi_pwrseq>;
+ 		vmmc-supply = <&vdd_3v3_sys>;
++		core-supply = <&vdd_core>;
+ 		vqmmc-supply = <&vdd_1v8>;
+ 
+ 		/* Azurewave AW-NH665 BCM4330 */
+@@ -1018,6 +1040,7 @@ usb@7d000000 {
+ 		compatible = "nvidia,tegra30-udc";
+ 		status = "okay";
+ 		dr_mode = "peripheral";
++		core-supply = <&vdd_core>;
+ 	};
+ 
+ 	usb-phy@7d000000 {
 -- 
 2.27.0
 
