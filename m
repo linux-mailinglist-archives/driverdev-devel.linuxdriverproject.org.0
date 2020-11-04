@@ -2,69 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3CB772A7207
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DF592A720A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 70A638554A;
-	Wed,  4 Nov 2020 23:45:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A51C854E7;
+	Wed,  4 Nov 2020 23:45:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xVTwo_0JvNv9; Wed,  4 Nov 2020 23:45:42 +0000 (UTC)
+	with ESMTP id mGwLwp6rJqnA; Wed,  4 Nov 2020 23:45:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A93E85569;
-	Wed,  4 Nov 2020 23:45:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D63C385531;
+	Wed,  4 Nov 2020 23:45:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ABF111BF2B7
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 712B11BF97F
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A2D3D8507C
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6BAC285AE0
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pvsbs19IOqPM for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 23:45:37 +0000 (UTC)
+ with ESMTP id w-hNNLWrtCvy for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:45:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B74538492B
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:36 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id 184so167450lfd.6
- for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:36 -0800 (PST)
+Received: from mail-lf1-f43.google.com (mail-lf1-f43.google.com
+ [209.85.167.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 25029857C2
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:38 +0000 (UTC)
+Received: by mail-lf1-f43.google.com with SMTP id 74so175008lfo.5
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Gi4Ws1VebKSodZ1aFskWWEY2ENCBRhjpkPkVyE+JZ/s=;
- b=ZVGF415ceJ5cr2f9Gly+jv4fzQXLlFJzBRcuR2zD4WvgH5zsluXpWCU+Qj1Ax6ZhVf
- 1u0lOZIC13jnHSZyF8YgC9LapKlkjSE2olp5X0VAkAmOHo47oGiOd5KA51jau/9+1r5Q
- ZeTQKEqrAXOCG4BSyhIC6+s49wRDSmdZMvycdRKpjqSje66qxlJOfAn1erQ73TtXXuaZ
- iSCWRvM8IOOU+neCqee3lOhq+/lqVKY3CF0lloOJSA1gj7ifC6+jn0RNW/R6aoa+9wD+
- dgu4HpFxYtEPUrSRWIfoyjVSloujlYPyvV4oLCDPZxUQsNdkHeXL2lcu1JDT6N4vPELD
- 54yA==
+ bh=JWa430PVIqmJIbeD7KBt0TZCN2r4IZvUOeKukZUULSM=;
+ b=eN4h8wmKVmc98I8VpVQD05mgPsSKIV8roZRuvQUi3EOcizAEVMxhK4XcKenNODUP57
+ Rxze2zWAWjLCIfL2dNIRIGywZvC28Gu+MslIDgcQBiINpAIgA8ayEvdgAWeaNJS/UoUw
+ AF/ln6R+1zf+7IT8b1pPX6qDWo8FajvGF+vv4uuipo2sXIA3JUzx7p8u+ktEcwm1o1pg
+ 8EzDhwuYDylAakt40bWirCp8sipi2Klh9G/IBYON5H8zDXGqS29eR/JqRCTc9dW4pVKR
+ y1mExIRa9//FQnuJ5e8gfTLqClqNg3UUpnvkCzqL0KLmGCs6gxB1ftFcHku0KNIwUxDo
+ VvhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Gi4Ws1VebKSodZ1aFskWWEY2ENCBRhjpkPkVyE+JZ/s=;
- b=YNUDZvtDsA3pI+iWya3nzvD/iPJg20C39vMVnjQdNqmQxdQwaYLTqD8NchtYUdOR1b
- pQ41VhPDhcod+bXeIajLVa0x0CUF2vwD6Jh/z+D9DXfqieZIc3CFmis5gpfn1sTE6oSt
- VzcsaXM4G+shZykxiwzfnxxYMVd3OJ+weX1eM2WIg9yzC2D7shg0vGpH5xHKd6qbJprR
- YMzvW/AGdoKvH1ZG+Mdsv/HIqpji3mvwL51FgbzkgowhXgwnhnQVwNIxYDGIc1HadDmp
- M8NOmuh9aX4fhxBuuHv6tHPjW2sp8GfWpmBkmoLio/8xg3OXUPWS35q33cVJ/OUmPv18
- a4CA==
-X-Gm-Message-State: AOAM531IArn8tgTFGLcnT7Oi2ys5DnGilh7E9njtnQPTZtOW7TQNNLaR
- vW4LwizDC3fDbSd9ebi2yog=
-X-Google-Smtp-Source: ABdhPJxSINEdNTI8WAS9/8DNtowjH/ui3U9cyprfFygiShmm4vwewOoOOmbkqukzpRnxz4FsJYlb2g==
-X-Received: by 2002:ac2:5498:: with SMTP id t24mr69465lfk.12.1604533535051;
- Wed, 04 Nov 2020 15:45:35 -0800 (PST)
+ bh=JWa430PVIqmJIbeD7KBt0TZCN2r4IZvUOeKukZUULSM=;
+ b=haIiAghyS9kTTBvc4yj1DvsyoAEXT/O8dIgkqCHZbB1UEKE0Y5MBLEFmjUSoxcv7Bu
+ /JWKdgNRdPI5qSulM8BErfAUam1rr0h7ACiY6x6KKh2p74mxSfKtFcW2iZUyUEpi6wv8
+ y8s1fe3hibs0FvW/nHmxpx5tP59TWuloDOVbhXn3EnVqbL3b9LigTTXxeLD/jPUgZyik
+ M5+K3+SoBQ/cEC09vvbgQoyRQCSMRHYMeLRRdppQkvAFkhq4Bwe1b7F59+xGyptRA+F0
+ 07v+eT9VIyHVrfKyzuEE52d9IvWCy2hArxZ/HieX3KGVfaC82dq/G8C5wldppFBeup4y
+ lzlA==
+X-Gm-Message-State: AOAM530BJ5qCC0xUWcNzmx7qvuVKHUM2l4WDtgsQq+eqjeef0ULNJS9M
+ wP+XKGXjGibLSWAgHoTBc2mmvfi/Wa8=
+X-Google-Smtp-Source: ABdhPJz6df+Ge/OfH/yyY6XjwgEffIPjNRxtB5oKKiqUFuVW6jG9sorT54nuDmLv0xSqhkTx9fOGHg==
+X-Received: by 2002:a05:6512:3388:: with SMTP id
+ h8mr60396lfg.318.1604533536417; 
+ Wed, 04 Nov 2020 15:45:36 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
  [109.252.192.83])
- by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.33
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 15:45:34 -0800 (PST)
+ Wed, 04 Nov 2020 15:45:35 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
@@ -80,10 +81,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Marek Szyprowski <m.szyprowski@samsung.com>,
  Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: [PATCH v1 28/30] ARM: tegra: acer-a500: Add voltage supplies to
+Subject: [PATCH v1 29/30] ARM: tegra: cardhu-a04: Add voltage supplies to
  DVFS-capable devices
-Date: Thu,  5 Nov 2020 02:44:25 +0300
-Message-Id: <20201104234427.26477-29-digetx@gmail.com>
+Date: Thu,  5 Nov 2020 02:44:26 +0300
+Message-Id: <20201104234427.26477-30-digetx@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201104234427.26477-1-digetx@gmail.com>
 References: <20201104234427.26477-1-digetx@gmail.com>
@@ -111,124 +112,75 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Add voltage supplies to DVFS-capable devices in order to enable
-system-wide voltage scaling and allow CORE/RTC regulators to go lower.
+system-wide voltage scaling.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- .../boot/dts/tegra20-acer-a500-picasso.dts    | 30 +++++++++++++++++--
- 1 file changed, 28 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/tegra30-cardhu-a04.dts | 44 ++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/arch/arm/boot/dts/tegra20-acer-a500-picasso.dts b/arch/arm/boot/dts/tegra20-acer-a500-picasso.dts
-index b4ed88802387..5ab6872cd84c 100644
---- a/arch/arm/boot/dts/tegra20-acer-a500-picasso.dts
-+++ b/arch/arm/boot/dts/tegra20-acer-a500-picasso.dts
-@@ -60,7 +60,19 @@ linux,cma@30000000 {
+diff --git a/arch/arm/boot/dts/tegra30-cardhu-a04.dts b/arch/arm/boot/dts/tegra30-cardhu-a04.dts
+index c1c0ca628af1..7149e5594537 100644
+--- a/arch/arm/boot/dts/tegra30-cardhu-a04.dts
++++ b/arch/arm/boot/dts/tegra30-cardhu-a04.dts
+@@ -93,6 +93,34 @@ vdd_bl2_reg: regulator@106 {
+ 		gpio = <&gpio TEGRA_GPIO(DD, 0) GPIO_ACTIVE_HIGH>;
  	};
  
- 	host1x@50000000 {
-+		core-supply = <&vdd_core>;
++	host1x@50000000 {
++		core-supply = <&vddcore_reg>;
 +
 +		gr2d@54140000 {
-+			core-supply = <&vdd_core>;
++			core-supply = <&vddcore_reg>;
 +		};
 +
 +		gr3d@54180000 {
-+			core-supply = <&vdd_core>;
++			core-supply = <&vddcore_reg>;
 +		};
 +
- 		dc@54200000 {
-+			core-supply = <&vdd_core>;
++		dc@54200000 {
++			core-supply = <&vddcore_reg>;
++		};
 +
- 			rgb {
- 				status = "okay";
- 
-@@ -73,12 +85,17 @@ lcd_output: endpoint {
- 			};
- 		};
- 
 +		dc@54240000 {
-+			core-supply = <&vdd_core>;
++			core-supply = <&vddcore_reg>;
 +		};
-+
- 		hdmi@54280000 {
- 			status = "okay";
- 
- 			vdd-supply = <&hdmi_vdd_reg>;
- 			pll-supply = <&hdmi_pll_reg>;
- 			hdmi-supply = <&vdd_5v0_sys>;
-+			core-supply = <&vdd_core>;
- 
- 			nvidia,ddc-i2c-bus = <&hdmi_ddc>;
- 			nvidia,hpd-gpio = <&gpio TEGRA_GPIO(N, 7)
-@@ -86,6 +103,10 @@ hdmi@54280000 {
- 		};
- 	};
- 
-+	vde@6001a000 {
-+		core-supply = <&vdd_core>;
 +	};
 +
- 	pinmux@70000014 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&state_default>;
-@@ -565,7 +586,7 @@ sys_reg: sys {
- 
- 				vdd_core: sm0 {
- 					regulator-name = "vdd_sm0,vdd_core";
--					regulator-min-microvolt = <1200000>;
-+					regulator-min-microvolt = <950000>;
- 					regulator-max-microvolt = <1300000>;
- 					regulator-coupled-with = <&rtc_vdd &vdd_cpu>;
- 					regulator-coupled-max-spread = <170000 550000>;
-@@ -606,7 +627,7 @@ ldo1 {
- 
- 				rtc_vdd: ldo2 {
- 					regulator-name = "vdd_ldo2,vdd_rtc";
--					regulator-min-microvolt = <1200000>;
-+					regulator-min-microvolt = <950000>;
- 					regulator-max-microvolt = <1300000>;
- 					regulator-coupled-with = <&vdd_core &vdd_cpu>;
- 					regulator-coupled-max-spread = <170000 550000>;
-@@ -696,6 +717,7 @@ usb@c5000000 {
- 		compatible = "nvidia,tegra20-udc";
- 		status = "okay";
- 		dr_mode = "peripheral";
-+		core-supply = <&vdd_core>;
++	vde@6001a000 {
++		core-supply = <&vddcore_reg>;
++	};
++
++	pwm: pwm@7000a000 {
++		core-supply = <&vddcore_reg>;
++	};
++
+ 	i2c@7000d000 {
+ 		pmic: tps65911@2d {
+ 			regulators {
+@@ -117,6 +145,22 @@ vddcore_reg: tps62361@60 {
+ 		};
  	};
  
- 	usb-phy@c5000000 {
-@@ -709,6 +731,7 @@ usb-phy@c5000000 {
- 
- 	usb@c5008000 {
- 		status = "okay";
-+		core-supply = <&vdd_core>;
- 	};
- 
- 	usb-phy@c5008000 {
-@@ -746,6 +769,7 @@ sdmmc1: mmc@c8000000 {
- 		non-removable;
- 
- 		mmc-pwrseq = <&brcm_wifi_pwrseq>;
-+		core-supply = <&vdd_core>;
- 		vmmc-supply = <&vdd_3v3_sys>;
- 		vqmmc-supply = <&vdd_3v3_sys>;
- 
-@@ -764,6 +788,7 @@ sdmmc3: mmc@c8000400 {
- 		bus-width = <4>;
- 		cd-gpios = <&gpio TEGRA_GPIO(I, 5) GPIO_ACTIVE_LOW>;
- 		power-gpios = <&gpio TEGRA_GPIO(I, 6) GPIO_ACTIVE_HIGH>;
-+		core-supply = <&vdd_core>;
- 		vmmc-supply = <&vdd_3v3_sys>;
- 		vqmmc-supply = <&vdd_3v3_sys>;
- 	};
-@@ -771,6 +796,7 @@ sdmmc3: mmc@c8000400 {
- 	sdmmc4: mmc@c8000600 {
- 		status = "okay";
- 		bus-width = <8>;
-+		core-supply = <&vdd_core>;
- 		vmmc-supply = <&vcore_emmc>;
- 		vqmmc-supply = <&vdd_3v3_sys>;
- 		non-removable;
++	memory-controller@7000f400 {
++		core-supply = <&vddcore_reg>;
++	};
++
++	mmc@78000000 {
++		core-supply = <&vddcore_reg>;
++	};
++
++	mmc@78000600 {
++		core-supply = <&vddcore_reg>;
++	};
++
++	usb@7d008000 {
++		core-supply = <&vddcore_reg>;
++	};
++
+ 	cpus {
+ 		cpu0: cpu@0 {
+ 			cpu-supply = <&vddctrl_reg>;
 -- 
 2.27.0
 
