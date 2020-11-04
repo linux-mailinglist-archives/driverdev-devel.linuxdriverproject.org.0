@@ -2,95 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F30B2A6D13
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 19:45:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E63D2A6D44
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 19:57:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 40DE5860D1;
-	Wed,  4 Nov 2020 18:45:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 468AC85F45;
+	Wed,  4 Nov 2020 18:57:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 742KrEirl0nK; Wed,  4 Nov 2020 18:45:49 +0000 (UTC)
+	with ESMTP id yR4YB8UDztLE; Wed,  4 Nov 2020 18:57:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 79A8085EB4;
-	Wed,  4 Nov 2020 18:45:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 534EE85E91;
+	Wed,  4 Nov 2020 18:56:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 66DB71BF5AD
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 18:45:46 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C62E1BF5AD
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 18:56:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 631CC8562D
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 18:45:46 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 02D4087037
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 18:56:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LWItSnSDbP4x for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 18:45:45 +0000 (UTC)
+ with ESMTP id c5kxOzzEZlKR for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 18:56:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from new4-smtp.messagingengine.com (new4-smtp.messagingengine.com
  [66.111.4.230])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1A5D28560E
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 18:45:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7574E87034
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 18:56:56 +0000 (UTC)
 Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id E6A4B580835;
- Wed,  4 Nov 2020 13:45:42 -0500 (EST)
+ by mailnew.nyi.internal (Postfix) with ESMTP id 3E3C2580791;
+ Wed,  4 Nov 2020 13:56:55 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Wed, 04 Nov 2020 13:45:42 -0500
+ by compute6.internal (MEProxy); Wed, 04 Nov 2020 13:56:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
  date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=h6gVKgYCHB4jd1QasmgPAb4cVDy
- Lq5KKdZf8FcfXr70=; b=qonIoKt5ynpSunhkKMoyc09F/y3b4DLCFZaYQc7rQ/I
- wfU4OIT+8iGVCc/csj8PEB7Nm4usgOlD9Jy8BEkd7mfB++jZ467JbNZWRimFLxgu
- BQA2gZVq0O0dQ3j3f7FlOEyG+/3u0P9SCHiU0jDh3udHxXqJpma/3rAa6ZJEsRMx
- PnIm21k/O/r0oVdIqjuXo6OE0+vhLrpBEg0PPuH439P3DpOlg87Xev3Son+qCFtF
- fgCAMrbQVs0JaEXHUiQl5DiOMw8w3gf0yJwCKM/WA/bcpVQQhWYvsH9OPWGSvjmI
- SY5eCDuro02ZQPre4Ic8UoIfUCGJy1pRFaiMSGCnbYw==
+ :content-type:in-reply-to; s=fm1; bh=OVc/96aODvJeJoiBmnUW9Y0oJ7/
+ fFA1GzRqunAxPing=; b=tr1DljGPY9MWd7f90ap+INggtuV4FGeMUU+fcZ0zoIN
+ vF8JS4egEUyq61VRW2eRlAhIaa3F2Y8OITQlcc3ddrK2Q5ANgoKh+GuQiUxLSlJj
+ OJj/8aL8x1z1qUpppGGLMzL6Dqa5QllobEh+OtCW4cu0kwQW4L5WTEEtOj3pjkmF
+ bWAdBYQiBx3coHKEmdhQvQlfLE4WGkI0/6+Sivx73NRY4sG0BhN5gFnHqp+ylBWX
+ 2QWMbY2TkA/dEVo3Nhia8dGAxo1hxCmGzVOnpvD9W+yB4XFu3TKHA2L68TJM6Q8v
+ jrAxjivO+hQ0ne/T3cHCYYs+Wd80b/8guk6u52gNexQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=h6gVKg
- YCHB4jd1QasmgPAb4cVDyLq5KKdZf8FcfXr70=; b=Qb2E6f+2MnAete1r0wrSxx
- bxyhhbgSeAG6GGM+C+xBlWEuL4VvD9L6c7v/yZ78XTQH4PNdcFN3btY/A3K/5ak2
- FGQq8dPvTgTXBZOLESAbOqBv6qmWru6stUtffv02ovtH2ZQvX0Ooet8t8efaE/u/
- rsz6IKf52nEQ4sjyu7e6Y7vUHywMLusd1HoKDn1rLET8cN7pRyaBvQP9CFByCbTI
- WWoC/jds3ba07/gVapb1LZYQVgWgoAmMxbYIWZDvL9294xexN28QJhHt9vBj6IC8
- lFX7tHfTYkkd0Vj8WrkPcdTJIW2rduvf4cNlLUHuTZWAXM2HuzB1zV8iLGUCP4SA
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=OVc/96
+ aODvJeJoiBmnUW9Y0oJ7/fFA1GzRqunAxPing=; b=anMjAzC9sweKpPacv/4IgD
+ WKVDXQJpL4KrjsMH3GnGsJsQr897zB5gs6ioYdraAtq77CqRPHj25uha13q1kp85
+ OB64S87MejQlWhbiL+DoZcSfMmG9aMpk39fewdmcRzlOuI3seGEa6UrlIuu4/4ts
+ WKYOiiXGSgk0eshuamrIKtNOE9YcoR5IQqEWY1fc3pkAiOusIRau0/AdQpqmwOWU
+ vbChV6ooLdEmTkh2NzeQGhpZ6X6968VsFgeS6q33bMr1H+S7yP4KGTKOgM1038d0
+ SOIuVeeGGgbIGOf4yKDGGLg/31NXudsXiTMzf7xBkvBEOjjfv9kK1CNuQ1/NzIZA
  ==
-X-ME-Sender: <xms:1PaiX3uIGw44cNMmjGrWphGok82QEI-4XmiIGbjL59CK3Ko8k8NMlg>
- <xme:1PaiX4e6sYGoZkM9_lFhJE9Q4DmD81-Vyu5h98xs-ETfU7yAt7mRsomycC6xUGDOY
- kL2MX7SXL4cfSZBLoQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedruddthedguddukecutefuodetggdotefrod
+X-ME-Sender: <xms:c_miX3rtHcLumC4p-mi0fiMAgww2OegeZq4rdUEYv5PBmj5igP3ckA>
+ <xme:c_miXxrVh4qiQ8EkwuoWJabkpNDGMxDneEE-Aj0zPFSCf312ngsgne6GWc68VEp_K
+ 8mrCVQ6abtrHJehNpg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedruddthedguddvtdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
  enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
  mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
- htthgvrhhnpeehjedugfduvefhvdfgkeffvddvkeduhfffvdffjeffvdefhfeuuedviedv
- jeduudenucffohhmrghinheplhhinhhugihtvhdrohhrghdpkhgvrhhnvghlrdhorhhgne
- cukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghr
- rghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:1PaiX6wNFuQ3YyPN67e-fzHDzF6VZonIdA2i8nEMrbHvY7JHh11ujQ>
- <xmx:1PaiX2PGH_U4iQl8I3Z6N8Z6F0t7EhhsYgtK8D6Fk7Sg1SN6-Ta5Pw>
- <xmx:1PaiX38uTORCesjCckcr2-UKvnNiA9-eYinx33sI5ujyUIvkdFe8qw>
- <xmx:1vaiX620cpglAM1dYEU9NBoPZ_pcGjiRDgt7d-VdgSgU117MM3Q9iw>
+ htthgvrhhnpeelkeeghefhuddtleejgfeljeffheffgfeijefhgfeufefhtdevteegheei
+ heegudenucfkphepledtrdekledrieekrdejieenucevlhhushhtvghrufhiiigvpedtne
+ curfgrrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:c_miX0Nwo_wpV9cEK464ZgMgFr1GB44ezhZVpbYEZadFEhYfBJzaNQ>
+ <xmx:c_miX65qGkVL_cMX37jJ2twHMrEnhTTgvSTwKzRmww6irSAsU2XT7g>
+ <xmx:c_miX26Ew6AVZJxi2ZRZDctIRVEQRd6lanB4f72B8tO0gmV3mm2YIw>
+ <xmx:d_miXzwLttgMJJHUTB-GWAFeI3FwUd5oJ4EdKCw7gh9JTbMEnktz8A>
 Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
  [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 46CEA328037B;
- Wed,  4 Nov 2020 13:45:40 -0500 (EST)
-Date: Wed, 4 Nov 2020 19:45:38 +0100
+ by mail.messagingengine.com (Postfix) with ESMTPA id 24349328038E;
+ Wed,  4 Nov 2020 13:56:51 -0500 (EST)
+Date: Wed, 4 Nov 2020 19:56:50 +0100
 From: Maxime Ripard <maxime@cerno.tech>
-To: Helen Koike <helen.koike@collabora.com>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Subject: Re: [PATCH 08/14] media: sunxi: Add support for the A31 MIPI CSI-2
  controller
-Message-ID: <20201104184538.f6qagsmjdoijbzmv@gilmour.lan>
+Message-ID: <20201104185650.ii7dlekjtfar2xpp@gilmour.lan>
 References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
  <20201023174546.504028-9-paul.kocialkowski@bootlin.com>
- <1a3a615c-a058-e282-2dbb-c99dfa98be68@collabora.com>
- <20201102092110.ro6a456lvbrktwoz@gilmour.lan>
- <20201104111710.GB287014@aptenodytes>
- <f74e4d59-a391-36ab-74aa-8e02aca1b0bc@collabora.com>
+ <20201026165407.rrq6ccsexcsub5bm@gilmour.lan>
+ <20201104113458.GC287014@aptenodytes>
 MIME-Version: 1.0
-In-Reply-To: <f74e4d59-a391-36ab-74aa-8e02aca1b0bc@collabora.com>
+In-Reply-To: <20201104113458.GC287014@aptenodytes>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,120 +103,208 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
  Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Chen-Yu Tsai <wens@csie.org>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
  linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
  Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
  Hans Verkuil <hans.verkuil@cisco.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- kevin.lhopital@hotmail.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============2455813274664708479=="
+ Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============3443363046063122396=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============2455813274664708479==
+--===============3443363046063122396==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="omzz5qqvuni2vts6"
+	protocol="application/pgp-signature"; boundary="ivpywtswxref2r4j"
 Content-Disposition: inline
 
 
---omzz5qqvuni2vts6
+--ivpywtswxref2r4j
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Nov 04, 2020 at 01:38:08PM -0300, Helen Koike wrote:
->=20
->=20
-> On 11/4/20 8:17 AM, Paul Kocialkowski wrote:
-> > Hi,
+On Wed, Nov 04, 2020 at 12:34:58PM +0100, Paul Kocialkowski wrote:
+> > > +	regmap_write(regmap, SUN6I_MIPI_CSI2_CFG_REG,
+> > > +		     SUN6I_MIPI_CSI2_CFG_CHANNEL_MODE(1) |
+> > > +		     SUN6I_MIPI_CSI2_CFG_LANE_COUNT(lanes_count));
 > >=20
-> > On Mon 02 Nov 20, 10:21, Maxime Ripard wrote:
-> >> On Fri, Oct 30, 2020 at 07:45:18PM -0300, Helen Koike wrote:
-> >>> On 10/23/20 2:45 PM, Paul Kocialkowski wrote:
-> >>>> The A31 MIPI CSI-2 controller is a dedicated MIPI CSI-2 controller
-> >>>> found on Allwinner SoCs such as the A31 and V3/V3s.
-> >>>>
-> >>>> It is a standalone block, connected to the CSI controller on one side
-> >>>> and to the MIPI D-PHY block on the other. It has a dedicated address
-> >>>> space, interrupt line and clock.
-> >>>>
-> >>>> Currently, the MIPI CSI-2 controller is hard-tied to a specific CSI
-> >>>> controller (CSI0) but newer SoCs (such as the V5) may allow switching
-> >>>> MIPI CSI-2 controllers between CSI controllers.
-> >>>>
-> >>>> It is represented as a V4L2 subdev to the CSI controller and takes a
-> >>>> MIPI CSI-2 sensor as its own subdev, all using the fwnode graph and
-> >>>> media controller API.
-> >>>
-> >>> Maybe this is a bad idea, but I was thinking:
-> >>> This driver basically just turn on/off and catch some interrupts for =
-errors,
-> >>> and all the rest of v4l2 config you just forward to the next subdevice
-> >>> on the pipeline.
-> >>>
-> >>> So instead of exposing it as a subdevice, I was wondering if modeling
-> >>> this driver also through the phy subsystem wouldn't be cleaner, so
-> >>> you won't need all the v4l2 subdevice/topology boilerplate code that
-> >>> it seems you are not using (unless you have plans to add controls or
-> >>> some specific configuration on this node later).
-> >>>
-> >>> But this would require changes on the sun6i-csi driver.
-> >>>
-> >>> What do you think?
-> >>
-> >> Eventually we'll need to filter the virtual channels / datatypes I
-> >> guess, so it's definitely valuable to have it in v4l2
+> > It's not really clear what the channel is here? The number of virtual
+> > channels? Something else?
 >=20
-> Which kind of datatypes?=20
-
-MIPI-CSI datatypes. Each packet on the MIPI-CSI bus is assigned a
-virtual channel and data type so that you can multiplex multiple streams
-(like a 3d camera would send for example, through the virtual channels)
-and data types (like frames and metadata) and MIPI-CSI controllers
-usually allow to filter them based on what you want.
-
-> I ask to know if this shouldn't be configured through the video node
-> instead of subdevice.
-
-Not really, some setups have a mux that can split the multiple virtual
-channels to multiple video nodes for example.
-
-> Regarding channels, we had a discussion to implement it through the video
-> node (and not subdevice) [1]. But we discussed about blitters and multi-s=
-calers,
-> so now I'm wondering if we could use the same API for mipi-csi virtual ch=
-annels
-> in the video entity device, or if it doesn't apply and we need another API
-> for that in a subdevice instead.
+> That's somewhat described in the controller documentation. Channels refer=
+s to
+> physical channels of the controller, which can be used to redirect data
+> matching either a specific data type, a specific virtual channel, or both.
+> There's a somewhat similar concept of channels in the CSI controller too.
 >=20
-> [1] https://patchwork.linuxtv.org/project/linux-media/cover/2020071711543=
-5.2632623-1-helen.koike@collabora.com/
+> We're currently only using one...
+>=20
+> > > +	regmap_write(regmap, SUN6I_MIPI_CSI2_VCDT_RX_REG,
+> > > +		     SUN6I_MIPI_CSI2_VCDT_RX_CH_VC(3, 3) |
+> > > +		     SUN6I_MIPI_CSI2_VCDT_RX_CH_VC(2, 2) |
+> > > +		     SUN6I_MIPI_CSI2_VCDT_RX_CH_VC(1, 1) |
+> > > +		     SUN6I_MIPI_CSI2_VCDT_RX_CH_VC(0, 0) |
+> > > +		     SUN6I_MIPI_CSI2_VCDT_RX_CH_DT(0, data_type));
+>=20
+> ... but it's safer to configure them all to virtual channel numbers so we=
+ don't
+> end up with multiple channels matching virtual channel 0.
+>=20
+> I'll add a comment about that.
 
-There's already an API to deal with MIPI-CSI virtual channels:
-https://patchwork.kernel.org/project/linux-renesas-soc/cover/20190328200608=
-=2E9463-1-jacopo+renesas@jmondi.org/
+Maybe we should have pads for all of them then, even if we don't support
+changing anything?
+
+> > > +static const struct v4l2_subdev_pad_ops sun6i_mipi_csi2_subdev_pad_o=
+ps =3D {
+> > > +	.enum_mbus_code		=3D sun6i_mipi_csi2_enum_mbus_code,
+> > > +	.get_fmt		=3D sun6i_mipi_csi2_get_fmt,
+> > > +	.set_fmt		=3D sun6i_mipi_csi2_set_fmt,
+> > > +	.enum_frame_size	=3D sun6i_mipi_csi2_enum_frame_size,
+> > > +	.enum_frame_interval	=3D sun6i_mipi_csi2_enum_frame_interval,
+> > > +};
+> > > +
+> > > +/* Subdev */
+> > > +
+> > > +static const struct v4l2_subdev_ops sun6i_mipi_csi2_subdev_ops =3D {
+> > > +	.core		=3D &sun6i_mipi_csi2_subdev_core_ops,
+> > > +	.video		=3D &sun6i_mipi_csi2_subdev_video_ops,
+> > > +	.pad		=3D &sun6i_mipi_csi2_subdev_pad_ops,
+> > > +};
+> > > +
+> > > +/* Notifier */
+> > > +
+> > > +static int sun6i_mipi_csi2_notifier_bound(struct v4l2_async_notifier=
+ *notifier,
+> > > +					  struct v4l2_subdev *remote_subdev,
+> > > +					  struct v4l2_async_subdev *remote_subdev_async)
+> > > +{
+> > > +	struct v4l2_subdev *subdev =3D notifier->sd;
+> > > +	struct sun6i_mipi_csi2_video *video =3D
+> > > +		sun6i_mipi_csi2_subdev_video(subdev);
+> > > +	struct sun6i_mipi_csi2_dev *cdev =3D sun6i_mipi_csi2_video_dev(vide=
+o);
+> > > +	int source_pad;
+> > > +	int ret;
+> > > +
+> > > +	source_pad =3D media_entity_get_fwnode_pad(&remote_subdev->entity,
+> > > +						 remote_subdev->fwnode,
+> > > +						 MEDIA_PAD_FL_SOURCE);
+> > > +	if (source_pad < 0)
+> > > +		return source_pad;
+> > > +
+> > > +	ret =3D media_create_pad_link(&remote_subdev->entity, source_pad,
+> > > +				    &subdev->entity, 0,
+> > > +				    MEDIA_LNK_FL_ENABLED |
+> > > +				    MEDIA_LNK_FL_IMMUTABLE);
+> > > +	if (ret) {
+> > > +		dev_err(cdev->dev, "failed to create %s:%u -> %s:%u link\n",
+> > > +			remote_subdev->entity.name, source_pad,
+> > > +			subdev->entity.name, 0);
+> > > +		return ret;
+> > > +	}
+> > > +
+> > > +	video->remote_subdev =3D remote_subdev;
+> > > +	video->remote_pad_index =3D source_pad;
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > > +static const struct v4l2_async_notifier_operations sun6i_mipi_csi2_n=
+otifier_ops =3D {
+> > > +	.bound		=3D sun6i_mipi_csi2_notifier_bound,
+> > > +};
+> > > +
+> > > +/* Media Entity */
+> > > +
+> > > +static int sun6i_mipi_csi2_link_validate(struct media_link *link)
+> > > +{
+> > > +	struct v4l2_subdev *subdev =3D
+> > > +		container_of(link->sink->entity, struct v4l2_subdev, entity);
+> > > +	struct sun6i_mipi_csi2_video *video =3D
+> > > +		sun6i_mipi_csi2_subdev_video(subdev);
+> > > +	struct v4l2_subdev *remote_subdev;
+> > > +	struct v4l2_subdev_format format =3D { 0 };
+> > > +	int ret;
+> > > +
+> > > +	if (!is_media_entity_v4l2_subdev(link->source->entity))
+> > > +		return -EINVAL;
+> > > +
+> > > +	remote_subdev =3D media_entity_to_v4l2_subdev(link->source->entity);
+> > > +
+> > > +	format.which =3D V4L2_SUBDEV_FORMAT_ACTIVE;
+> > > +	format.pad =3D link->source->index;
+> > > +
+> > > +	ret =3D v4l2_subdev_call(remote_subdev, pad, get_fmt, NULL, &format=
+);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	video->mbus_code =3D format.format.code;
+> > > +
+> > > +	return 0;
+> > > +}
+> >=20
+> > I'm not really sure what you're trying to validate here?
+>=20
+> The whole purpose is to retreive video->mbus_code from the subdev, like i=
+t's
+> done in the sun6i-csi driver. Maybe there is a more appropriate op to do =
+it?
+
+I'm not sure why you need to do that in the link_validate though?
+
+You just need to init the pad format, and then you'll have a
+get_fmt/set_fmt for your pads.
+
+> > > +	cdev->regmap =3D devm_regmap_init_mmio_clk(&pdev->dev, "bus", io_ba=
+se,
+> > > +						 &sun6i_mipi_csi2_regmap_config);
+> > > +	if (IS_ERR(cdev->regmap)) {
+> > > +		dev_err(&pdev->dev, "failed to init register map\n");
+> > > +		return PTR_ERR(cdev->regmap);
+> > > +	}
+> >=20
+> > Yeah, so that won't work. regmap expects to have access to those
+> > registers when you enable that clock, but that won't happen since the
+> > reset line can be disabled. You would be better off using runtime_pm
+> > here.
+>=20
+> I don't understand what you mean here or what the problem could be.
+> Here we're just initializing regmap and while this is done before the
+> registers are available for I/O, I don't see why it would cause any
+> issue at this point.
+
+The regmap here is supposed to take care of the resources, except it
+only does it for some of the resources here, which kind of breaks the
+expectations. And it doesn't allow you to have the reset / clock
+sequence properly done.
+
+> The exact same thing is done in the CSI driver.
+
+That's not an argument though, is it? :)
 
 Maxime
 
---omzz5qqvuni2vts6
+--ivpywtswxref2r4j
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX6L20gAKCRDj7w1vZxhR
-xaHxAP9LB6Lpk4KycyR1opg5fGkFaTk8pgwzZgebU3CFW+7LvgD+JQUkd4k4fIY7
-xTpXAqCHpDduJ5qtwB9v5M5dAiu+Jgc=
-=vbHI
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX6L5cQAKCRDj7w1vZxhR
+xapUAPkBCQbEYpxpQRc2dQrlYckdrRucLdZjrw4DyHXeRpWXKwD8D9vPu/MJrl2p
+3cE184xWD5PpdHRseodrz4F6IAC7tA4=
+=egrI
 -----END PGP SIGNATURE-----
 
---omzz5qqvuni2vts6--
+--ivpywtswxref2r4j--
 
---===============2455813274664708479==
+--===============3443363046063122396==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -230,4 +315,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============2455813274664708479==--
+--===============3443363046063122396==--
