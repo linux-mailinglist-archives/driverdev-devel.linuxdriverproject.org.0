@@ -1,77 +1,89 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F1632A5EAA
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 08:21:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C91692285E;
-	Wed,  4 Nov 2020 07:21:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MU8r45thc0XW; Wed,  4 Nov 2020 07:21:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F323620797;
-	Wed,  4 Nov 2020 07:21:54 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 405D31BF228
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 07:21:53 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D8D22A5F29
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 09:14:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3AE0A874A5
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 07:21:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AE98E87547;
+	Wed,  4 Nov 2020 08:14:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GKFUj5UmTvGL; Wed,  4 Nov 2020 08:14:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id D4F54874C1;
+	Wed,  4 Nov 2020 08:14:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F6A11BF2EA
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 08:14:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5BF128697A
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 08:14:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H9hoa3Yz+tiH for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 07:21:52 +0000 (UTC)
-X-Greylist: delayed 00:05:18 by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [217.72.192.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CC7E78748D
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 07:21:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1604474509;
- bh=HB94RK7rPrUAMb2QwCw9IBgdswqG/8KrSr+j3yGQncs=;
- h=X-UI-Sender-Class:To:Cc:References:From:Subject:Date:In-Reply-To;
- b=A+rCUT4rc+VEv+d9nTMhkCAK+qAQ4/2QjNBpuBGEySPQxw9Fd6+Fk6gcoXnlFZPh7
- 00tdENBTm0xzhTSwBlfnE9htiohYbV0WHy2PnTwA8BB6jzaDRSi90YToYhJ165icIq
- KGOzUqs2vor4oreLTgzz8X3TgrhcB8zypxLN9hcA=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.3] ([93.132.3.233]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MiuSs-1k6cxr3qWS-00ez8w; Wed, 04
- Nov 2020 08:16:04 +0100
-To: Souptick Joarder <jrdr.linux@gmail.com>, devel@driverdev.osuosl.org,
- linux-media@vger.kernel.org
-References: <1604455331-28031-1-git-send-email-jrdr.linux@gmail.com>
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: Re: [PATCH v2] media: atomisp: Fix error handling path
-Message-ID: <65712450-1ee9-2dd3-cd43-f850807ae203@web.de>
-Date: Wed, 4 Nov 2020 08:15:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ with ESMTP id TehxaMKhjvCW for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 08:14:18 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from wout4-smtp.messagingengine.com (wout4-smtp.messagingengine.com
+ [64.147.123.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DF7458691E
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 08:14:18 +0000 (UTC)
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailout.west.internal (Postfix) with ESMTP id A455BFDD;
+ Wed,  4 Nov 2020 03:14:16 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Wed, 04 Nov 2020 03:14:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=XXFAaRSb32pxervJ1Zv7TKZ0W1s
+ w+VVFPoX3IFt124k=; b=iCwoYVLLUuVNNTENXSZz+PtAZLQH0NKPIcbefvT6PAz
+ 8tNPUABoqO+CJOiPRKxLT77evcmvx99BOPBIVjGOlUnMc2ahCWKNczXUMNhN1Qy1
+ 6WLapO/of98Ad3Y5qA0R0QuxhGJss8NWIdpN2yIoCetNyZ4W5GlO3sf1RhBlGPpd
+ L7fOWZDcMH00O6m9ZkuW02wWh+jm1eCkVAB4uLXOV0991EDg9x6rEwE2LasMz2D1
+ mzFmFDXzdZ4DOBt0TfuGpqNACvWEefe3T4ta178S7CSXR6g8tGx772bOSvIBh3pk
+ X63RPUU9PmFv5GTiH5jWMSm6zYnwMV1zzhk4JqkvqQw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=XXFAaR
+ Sb32pxervJ1Zv7TKZ0W1sw+VVFPoX3IFt124k=; b=paXXPDf3g4w2iHpy7gvEr+
+ WWbQX+cocXbs7LnYqP7myPSy9nGA2kWSgaoH3ExVLATUNre/rDp/eVzzWw5kmA6M
+ xsIXpAYV4C/ja7niS/cqY2FARy5nQksloiNyA4hwoDyHwwQ4xtLDZrB+3XTZuahw
+ t+bSL4JaBeIdKgCjZ2tbiS72uVSk7IS3yysiY/75OJfW+IrSIwD0Vht8QfJBTXNq
+ OGrLs/N+9jSiXf/jCGMhqFbsB/J8yMdUZecKW58h9h9IhK618if6bktxR/NlFHpk
+ brV+Jw09uzy2XJS+3QcqTS19CNhGnN3fhPcV4MAV6GRMSR6UQMfbEX5ar45KetWQ
+ ==
+X-ME-Sender: <xms:1mKiX9Uw7IzIEenw8GEh7Bxgnf68CeebqvVMP6DXsP8SIwOfA_FNcQ>
+ <xme:1mKiX9lEwja08z2fB_8rYkMXpeBD7OUQeWBugc8CE-SmCSKFfTzeShMJeoA790gyx
+ 1GKXcwAgfhDClQ_jdc>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedruddtgedguddugecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
+ mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+ htthgvrhhnpeelkeeghefhuddtleejgfeljeffheffgfeijefhgfeufefhtdevteegheei
+ heegudenucfkphepledtrdekledrieekrdejieenucevlhhushhtvghrufhiiigvpedtne
+ curfgrrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:1mKiX5ae_ncy_0iLL_K73gy0kfa6uzRxio7UfwfhB0QcC_NGb9PBdg>
+ <xmx:1mKiXwW2D2UVSmXop5Vr6IM_Q_Q4HzsadzAwj-ZzTN_tzDm1_ZGyxA>
+ <xmx:1mKiX3nCGITQ660Ht2PtiifK258kb2m8rUY6OPWDIih-t34sHfHtjQ>
+ <xmx:2GKiX1W3mvCko0ApKlkI6NDW5jRTTxv-cEEqAhfUsb-yXNDsSgxF3A>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id D3DE3328037B;
+ Wed,  4 Nov 2020 03:14:13 -0500 (EST)
+Date: Wed, 4 Nov 2020 09:14:11 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: use of dma_direct_set_offset in (allwinner) drivers
+Message-ID: <20201104081411.bnt5kixgunaczbzj@gilmour.lan>
+References: <20201103095538.GA19136@lst.de>
 MIME-Version: 1.0
-In-Reply-To: <1604455331-28031-1-git-send-email-jrdr.linux@gmail.com>
-Content-Language: en-GB
-X-Provags-ID: V03:K1:GsfF8WDcq8EIMKy84nnn797erulor5TekYOiLR3EprjmMHG+puV
- Jl/jxZMUUwtrMrjAxlWfLbhaQk/ZlGUa+nGR4Mni9zcWRvp9DRqdGDI5HXRej+IlJQWBe5Y
- QDjw4bjyz9GajjbI/lmKSOPkLKCd/25i3MvsYBIygl+7Gb9TK2GIcpZf1UTW9o+w0DBfO+P
- CNks/KNRcQpB8v3c5Y98w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:HL273OLy7Rw=:j2R8vnvYerQSXG9NfOR2f0
- te7mNLAhhTa6irx8N74FHOhWHa5heF4uXYrwmdhaigX5TIHRA6ggRK/uZeDTczEdrJiUEvaBq
- auEGi2vPgM2kxIYj7PpPkLT8nHU27qaMZPfR0ywFwiWgcX+UF3OPafEtlJuCrFxlAHh38z/z4
- caMemZzyl7SeQngsBVLFOk80xKM3+k5Ni40q0oVU8fohm/8oj2CaXHXfGE6YPKLBgKKg9gZgO
- djAfk9DRWFdV1fwQVhYyTGb7KhfbWy4Xurj2fab4A8KNXn9/0HGgI9a1Sl8xfQmV872QcQFVT
- iUb8CmvDh4KTsM4qLQV2kOi6Rmw3oc4dSV05C9ohz1LhwzpxPWFgSj39YDIzhleyRX4H0TxE4
- C+r3fKmgpJ7ONhiOz3HLDvzyFMSA4Ut7WmXr8a1Z/pcq8UT2c+3DrdyzrAW8ImdX0Unx6P25I
- Fa57qbQTW3tos5p7N8NuBioV3feQJM3Gs2p6CNDMEHDlxSlJ0arN8dCLx4MgktrUz57dxSHeh
- rMZ3EFYFefSUjqPy90KS8qx/v+GW9Duflw0/4njm5l/Y/44l9up3FjVDYp8U0IbiOwYbbYuD8
- SBrN89t+aVPdjK3fI7rasvac6Vex0kz9YUgMU+4Fo3eno86z55jjFpr1Ul7lALGjIUTe6+U6/
- fvjf4yun2aEy7rfIcVZJRcAWALQ0RXyehyOlKRsbPT7Nb/hjTthsk6l9CD5k7jWwzTG83GgKA
- 568BAkY2C4rTtVIwN17JtA3jBUKzUWjxtbCcrKIxraKOXLPeEILfigB9Gcz1NAuBtiKDaB7KV
- N9d0KN9tLNZCbtbihdw2z6U/yCA8EXNLfJYj75Vt9MP0riluLvsmyJn/pZZgkkyqn1Cnt5oBu
- toTEPJXJsjBUvb2NhKFQ==
+In-Reply-To: <20201103095538.GA19136@lst.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,28 +96,113 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Vlastimil Babka <vbabka@suse.cz>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-kernel@vger.kernel.org,
- Michel Lespinasse <walken@google.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- John Hubbard <jhubbard@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
- Daniel Jordan <daniel.m.jordan@oracle.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, iommu@lists.linux-foundation.org,
+ Yong Deng <yong.deng@magewell.com>, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============8360816395854504224=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> Fixes: 14a638ab96c5 ("media: atomisp: use pin_user_pages() for memory
-> allocation")
 
-Please delete a line break for this tag.
+--===============8360816395854504224==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dpottggxee74tnew"
+Content-Disposition: inline
 
-Regards,
-Markus
+
+--dpottggxee74tnew
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Christoph,
+
+On Tue, Nov 03, 2020 at 10:55:38AM +0100, Christoph Hellwig wrote:
+> Linux 5.10-rc1 switched from having a single dma offset in struct device
+> to a set of DMA ranges, and introduced a new helper to set them,
+> dma_direct_set_offset.
+>=20
+> This in fact surfaced that a bunch of drivers that violate our layering
+> and set the offset from drivers, which meant we had to reluctantly
+> export the symbol to set up the DMA range.
+>=20
+> The drivers are:
+>=20
+> drivers/gpu/drm/sun4i/sun4i_backend.c
+>=20
+>   This just use dma_direct_set_offset as a fallback.  Is there any good
+>   reason to not just kill off the fallback?
+>=20
+> drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+>=20
+>   Same as above.
+
+So, the history of this is:
+
+  - We initially introduced the support for those two controllers
+    assuming that there was a direct mapping between the physical and
+    DMA addresses. It turns out it didn't and the DMA accesses were
+    going through a secondary, dedicated, bus that didn't have the same
+    mapping of the RAM than the CPU.
+
+    4690803b09c6 ("drm/sun4i: backend: Offset layer buffer address by DRAM =
+starting address")
+
+  - This dedicated bus is undocumented and barely used in the vendor
+    kernel so this was overlooked, and it's fairly hard to get infos on
+    it for all the SoCs we support. We added the DT support for it
+    though on some SoCs we had enough infos to do so:
+
+    c43a4469402f ("dt-bindings: interconnect: Add a dma interconnect name")
+    22f88e311399 ("ARM: dts: sun5i: Add the MBUS controller")
+
+    This explains the check on the interconnect property
+
+  - However, due to the stable DT rule, we still need to operate without
+    regressions on older DTs that wouldn't have that property (and for
+    SoCs we haven't figured out). Hence the fallback.
+
+> drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+>=20
+>   This driver unconditionally sets the offset.  Why can't we do this
+>   in the device tree?
+>=20
+> drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+>=20
+>   Same as above.
+>
+
+We should make those two match the previous ones, but we'll have the
+same issue here eventually. Most likely they were never ran on an SoC
+for which we have the MBUS figured out.
+
+Maxime
+
+--dpottggxee74tnew
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX6Ji0wAKCRDj7w1vZxhR
+xfhqAQCGVXPQjuqueGxzvosMw+xeQPBqXhmwv85fYyeue+LdyAEA32seUuD5LvjK
+NYOXbQBiz2tBS6ESieNJ73KOZrgtHgs=
+=h/j1
+-----END PGP SIGNATURE-----
+
+--dpottggxee74tnew--
+
+--===============8360816395854504224==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============8360816395854504224==--
