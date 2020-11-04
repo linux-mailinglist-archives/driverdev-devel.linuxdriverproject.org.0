@@ -1,71 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C2742A71F1
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:07 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2CC82A71F5
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 00:45:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2A64B8643B;
-	Wed,  4 Nov 2020 23:45:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3F10C20418;
+	Wed,  4 Nov 2020 23:45:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w-6UCn0mHW+K; Wed,  4 Nov 2020 23:45:06 +0000 (UTC)
+	with ESMTP id n3LSvWVe1I7z; Wed,  4 Nov 2020 23:45:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9C89584D90;
-	Wed,  4 Nov 2020 23:45:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3AAC8203B4;
+	Wed,  4 Nov 2020 23:45:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E678B1BF2B7
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:02 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B06F1BF97F
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF81585722
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3362220418
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 23:45:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0QkRwc2rZNgs for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 23:45:02 +0000 (UTC)
+ with ESMTP id Ttx5VJ8plyly for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 23:45:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
- [209.85.208.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E6C42856CB
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:01 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id 23so300155ljv.7
- for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:01 -0800 (PST)
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7854A203A4
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 23:45:03 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id 126so153485lfi.8
+ for <devel@driverdev.osuosl.org>; Wed, 04 Nov 2020 15:45:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=tp9Yqrg3ShDWskF8okk8dyCecDIPmsRhr05c/t0mOxA=;
- b=NdQEwwdMZ/yJ8OPkD9uloM0o9Ugj2c5ieJ8wp9NIAg4kjdkCRrrp6Ude1JYuYIY5el
- cQ6T9hxjtsLOMggnGayrIGviTd5zP5TmyeAhR19Q9fq/kaJCXx7OBuhnTCeqhvfrSguA
- Rv4ks7q4ok1WjbMowL1f6z63nyrF+GmoOHEaAOUS5Fxj/XKxQW14PgoN1eaL3naw79IX
- aLkXyfnX2RmIvqjqe6TajXkhlx2gBtY4zoXde/weS+BuPwWztMj9RUDljXw++NeoX+21
- CEVubhkQvuVQyjMvWVwLaZygJnsPTNBVNntcOhwNXbHdInAh8pVfdkI0IC9sCjSOa/LH
- qo2Q==
+ bh=cDQcvrPMx8drC1s+JMdYzz1VL97g9qI4z34Z2y/XS6Y=;
+ b=Dy8bsn+8gKozpA8LFXNo9rNaXYZi8RiG8JuZ7GCiOUv3f8EqLH9Yw1DWyrHCG7aXCa
+ nBna2kBpxCxa6756mpfF/sRJLengE1u0981vSeVZ0iww1/R6MDBNg0z7cp8n3hpUWVSG
+ FjsBHb432QblMRC0hfqqL4Td+fPBtzgidhCB8OrfImcHEK/zTulOsaqMZyxf2OL4je50
+ 7YzggrtiQ+LZ1ok9kxO8CnZAsV2JQjx98NF/dI6kmyaIX//EtNilxbc+Qcrm5rRwGz27
+ NGH1GnvYdauAc1/ekPxqEtzZNVUC1H9TKTl5j5EZH60kcHtxQ9rJ2uyMKymZmVEh5kbP
+ uWEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tp9Yqrg3ShDWskF8okk8dyCecDIPmsRhr05c/t0mOxA=;
- b=EqFYj4Tra+zu53hJdThaUzzCACMo8VCit7NEiEG4xqa4rBKSztNBxn7G9pgmrsfNTD
- M7m0ZlDMgs155G3tz3xQbVeliZ64oSKL3f4gAbiHX8uMprBCl6hZ7O85Su4d8Xv9kB/f
- 2Bywf8kUoQ1iWqouLhy3My+WhNlyZT0DnBn43aYXJMVoOHPcUg2h7V/LGSsQzdfs52Jm
- vc9MR/Wa+UjFdWWCA7iPEluuq+E0h1SFmgB3XqAHNHsN3U9QHNEmnQ5czm+UUEVZ67KG
- AO3EsBWNQLdXpazeXA1iLkXxWrDD8FT73n9wg8kK+KbkhiGxhxDQ6CuiUSWNWlJrCAzU
- gJWQ==
-X-Gm-Message-State: AOAM530ukhdjl3T1XlKZPH2Ie4ghPj6m/VX1e6FRrUaXVcwpkEYkeyeT
- taCclS7wiA8ZghaXThRUOCs=
-X-Google-Smtp-Source: ABdhPJyMzZS8yFbdeuBZmLEvuZcRuMGo/R+/3Gh1ylV5XVZW8SAuxgU/GPnV+T1exBhvuYiAMbxSkQ==
-X-Received: by 2002:a05:651c:32a:: with SMTP id
- b10mr125604ljp.256.1604533500240; 
- Wed, 04 Nov 2020 15:45:00 -0800 (PST)
+ bh=cDQcvrPMx8drC1s+JMdYzz1VL97g9qI4z34Z2y/XS6Y=;
+ b=XafratrW5LGm6rfADjlQQctx7GSQrAVypMcMB2qAQPVXF9zRAVfXFcKbF+yiCgGTXl
+ Culk82Xgh8zfLauvqIIOjmBIBgv6vn+ReDIzdO4G4ICAGqrzDLIs5tFExeUaSB+uyEa2
+ klH2zqMe+pzIqh2MWL2UV27hVZCYl+4VCGRfvNc7yjbDpTd/ETnrBTrgkfTG1bg7tjrd
+ ig6YTQ8VPC7XDXFWYtECbGUmMqJDtsRjFjdLzg+bMQcKH4an3UabbUQUbf9E97jaZP2a
+ kRcjpziaZr2PUFufQafitRuJJFtluHWp0eVNU/CnPcUKqiDgbufWYB6pF/JmhH54Oc7h
+ W+8Q==
+X-Gm-Message-State: AOAM533e187uWwqXVWBlX7Z3DOxOuXmi0HpemFQl+XahlE6GINU9h1oY
+ WKRr55C47UKCcTRGJvT6vqk=
+X-Google-Smtp-Source: ABdhPJz3iuYSiUPzblNYJ3AouIs2I+aBCXK/4d5+EJAE3Br8G9yiMX5bbzdh7qOCN/1x3cb5bQOQVQ==
+X-Received: by 2002:a19:8285:: with SMTP id e127mr54285lfd.270.1604533501645; 
+ Wed, 04 Nov 2020 15:45:01 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-83.dynamic.spd-mgts.ru.
  [109.252.192.83])
- by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.44.58
+ by smtp.gmail.com with ESMTPSA id m6sm640725ljc.112.2020.11.04.15.45.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 15:44:59 -0800 (PST)
+ Wed, 04 Nov 2020 15:45:01 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
@@ -81,10 +80,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Marek Szyprowski <m.szyprowski@samsung.com>,
  Peter Geis <pgwipeout@gmail.com>, Nicolas Chauvet <kwizart@gmail.com>
-Subject: [PATCH v1 03/30] dt-bindings: pwm: tegra: Document OPP and voltage
- regulator properties
-Date: Thu,  5 Nov 2020 02:44:00 +0300
-Message-Id: <20201104234427.26477-4-digetx@gmail.com>
+Subject: [PATCH v1 04/30] media: dt: bindings: tegra-vde: Document OPP and
+ voltage regulator properties
+Date: Thu,  5 Nov 2020 02:44:01 +0300
+Message-Id: <20201104234427.26477-5-digetx@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201104234427.26477-1-digetx@gmail.com>
 References: <20201104234427.26477-1-digetx@gmail.com>
@@ -112,24 +111,23 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Document new DVFS OPP table and voltage regulator properties of the
-PWM controller.
+video decoder engine.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- .../devicetree/bindings/pwm/nvidia,tegra20-pwm.txt  | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ .../devicetree/bindings/media/nvidia,tegra-vde.txt   | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt b/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt
-index 74c41e34c3b6..d4d1c44a2c04 100644
---- a/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt
-+++ b/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt
-@@ -32,6 +32,17 @@ The PWM node will have following optional properties.
- pinctrl-names:	Pin state names. Must be "default" and "sleep".
- pinctrl-0:	phandle for the default/active state of pin configurations.
- pinctrl-1:	phandle for the sleep state of pin configurations.
-+core-supply:	phandle for voltage regulator of the SoC "core" power domain.
-+
-+operating-points-v2: see ../bindings/opp/opp.txt for details.
+diff --git a/Documentation/devicetree/bindings/media/nvidia,tegra-vde.txt b/Documentation/devicetree/bindings/media/nvidia,tegra-vde.txt
+index 602169b8aa19..9854fa9d3cd3 100644
+--- a/Documentation/devicetree/bindings/media/nvidia,tegra-vde.txt
++++ b/Documentation/devicetree/bindings/media/nvidia,tegra-vde.txt
+@@ -36,6 +36,16 @@ Optional properties:
+ - reset-names : Must include the following entries:
+   - mc
+ - iommus: Must contain phandle to the IOMMU device node.
++- operating-points-v2: See ../bindings/opp/opp.txt for details.
++- core-supply: Phandle to voltage regulator of the SoC "core" power domain.
 +
 +For each opp entry in 'operating-points-v2' table:
 +- opp-supported-hw: One bitfield indicating:
@@ -141,15 +139,13 @@ index 74c41e34c3b6..d4d1c44a2c04 100644
  
  Example:
  
-@@ -42,6 +53,8 @@ Example:
- 		clocks = <&tegra_car 17>;
- 		resets = <&tegra_car 17>;
- 		reset-names = "pwm";
-+		operating-points-v2 = <&dvfs_opp_table>;
-+		core-supply = <&vdd_core>;
- 	};
- 
- 
+@@ -61,4 +71,6 @@ video-codec@6001a000 {
+ 	reset-names = "vde", "mc";
+ 	resets = <&tegra_car 61>, <&mc TEGRA20_MC_RESET_VDE>;
+ 	iommus = <&mc TEGRA_SWGROUP_VDE>;
++	operating-points-v2 = <&dvfs_opp_table>;
++	core-supply = <&vdd_core>;
+ };
 -- 
 2.27.0
 
