@@ -2,63 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A60422A627E
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:49:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E4E72A629D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 11:53:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E28C62288F;
-	Wed,  4 Nov 2020 10:49:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 07474228AC;
+	Wed,  4 Nov 2020 10:53:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hdkhir1Eoewo; Wed,  4 Nov 2020 10:49:26 +0000 (UTC)
+	with ESMTP id WMR1g55OUZXj; Wed,  4 Nov 2020 10:53:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6EF2420C41;
-	Wed,  4 Nov 2020 10:49:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 37E5D2277A;
+	Wed,  4 Nov 2020 10:53:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0A2F01BF844
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:49:22 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D4EB61BF844
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:53:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 06CA586670
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:49:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BE517204BE
+ for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 10:53:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m-lHaGIBx6UR for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 10:49:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp104.ord1d.emailsrvr.com (smtp104.ord1d.emailsrvr.com
- [184.106.54.104])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CD30C865FC
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:49:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1604486959;
- bh=nM3HMBm0LDHyS3BTjAs00IhVNoULUtyWP5a5SFL0J4A=;
- h=Subject:From:To:Date:From;
- b=c2UZups3mhpbRhyUtnZ3F8N93t9A6q8u+LMwkpQ4ft68Pn/cRiN8vTH84sV+wdEXk
- D0tjQz9PBha6iUHd1KbtzJY365tNuzpvCx+G3B/zTcf1bCH1QPPtD4RLl8GeZAVe6V
- sZKUYwpuIXzkZw4arcGdHRfR9E+xypnZeoK0TP7Y=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp22.relay.ord1d.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 53450E01B0; 
- Wed,  4 Nov 2020 05:49:19 -0500 (EST)
-Subject: Re: [PATCH] staging: comedi: cb_pcidas: reinstate delay removed from
- trimpot setting
-From: Ian Abbott <abbotti@mev.co.uk>
-To: devel@driverdev.osuosl.org
-References: <20201029141833.126856-1-abbotti@mev.co.uk>
- <3d7cf15a-c389-ec2c-5e29-8838e8466790@mev.co.uk>
- <f28af317-08a7-8218-d2a6-0cdd9e681873@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <975358e2-6a08-211a-d232-3cd0ce628e8e@mev.co.uk>
-Date: Wed, 4 Nov 2020 10:49:18 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ with ESMTP id iLonXpQkP2kc for <devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 10:53:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from relay4-d.mail.gandi.net (relay4-d.mail.gandi.net
+ [217.70.183.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id B84E720C41
+ for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 10:53:43 +0000 (UTC)
+X-Originating-IP: 93.29.109.196
+Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 617B3E0008;
+ Wed,  4 Nov 2020 10:53:35 +0000 (UTC)
+Date: Wed, 4 Nov 2020 11:53:34 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH 02/14] phy: allwinner: phy-sun6i-mipi-dphy: Support D-PHY
+ Rx mode for MIPI CSI-2
+Message-ID: <20201104105334.GE285779@aptenodytes>
+References: <20201023174546.504028-1-paul.kocialkowski@bootlin.com>
+ <20201023174546.504028-3-paul.kocialkowski@bootlin.com>
+ <20201026153857.iwkn4iusi2jy2yf4@gilmour.lan>
+ <20201027092326.GB168350@aptenodytes>
+ <20201027182811.j6372vdmls5yvhri@gilmour.lan>
 MIME-Version: 1.0
-In-Reply-To: <f28af317-08a7-8218-d2a6-0cdd9e681873@mev.co.uk>
-Content-Language: en-GB
-X-Classification-ID: c38d9511-2862-475a-af9e-afdf1fc6240b-1-1
+In-Reply-To: <20201027182811.j6372vdmls5yvhri@gilmour.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,69 +62,246 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Helen Koike <helen.koike@collabora.com>, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ linux-sunxi@googlegroups.com, Rob Herring <robh+dt@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, Yong Deng <yong.deng@magewell.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hans.verkuil@cisco.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============6140169749995074721=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMDIvMTEvMjAyMCAxMToxNiwgSWFuIEFiYm90dCB3cm90ZToKPiBPbiAwMi8xMS8yMDIwIDEw
-OjI1LCBJYW4gQWJib3R0IHdyb3RlOgo+PiBPbiAyOS8xMC8yMDIwIDE0OjE4LCBJYW4gQWJib3R0
-IHdyb3RlOgo+Pj4gQ29tbWl0IGVkZGQyYTRjNjc1YyAoInN0YWdpbmc6IGNvbWVkaTogY2JfcGNp
-ZGFzOiByZWZhY3Rvcgo+Pj4gd3JpdGVfY2FsaWJyYXRpb25fYml0c3RyZWFtKCkiKSBpbmFkdmVy
-dGVudGx5IHJlbW92ZWQgb25lIG9mIHRoZQo+Pj4gYHVkZWxheSgxKWAgY2FsbHMgd2hlbiB3cml0
-aW5nIHRvIHRoZSBjYWxpYnJhdGlvbiByZWdpc3RlciBpbgo+Pj4gYGNiX3BjaWRhc19jYWxpYl93
-cml0ZSgpYC7CoCBSZWluc3RhdGUgdGhlIGRlbGF5LsKgIEl0IG1heSBzZWVtIHN0cmFuZ2UKPj4+
-IHRoYXQgdGhlIGRlbGF5IGlzIHBsYWNlZCBiZWZvcmUgdGhlIHJlZ2lzdGVyIHdyaXRlLCBidXQg
-dGhpcyBmdW5jdGlvbiBpcwo+Pj4gY2FsbGVkIGluIGEgbG9vcCBzbyB0aGUgZXh0cmEgZGVsYXkg
-Y2FuIG1ha2UgYSBkaWZmZXJlbmNlLgo+Pj4KPj4+IFRoaXMgX21pZ2h0XyBzb2x2ZSByZXBvcnRl
-ZCBpc3N1ZXMgcmVhZGluZyBhbmFsb2cgaW5wdXRzIG9uIGEKPj4+IFBDSWUtREFTMTYwMi8xNiBj
-YXJkIHdoZXJlIHRoZSBhbmFsb2cgaW5wdXQgdmFsdWVzICJ3ZXJlIHNjYWxlZCBpbiBhCj4+PiBz
-dHJhbmdlIHdheSB0aGF0IGRpZG4ndCBtYWtlIHNlbnNlIi7CoCBPbiB0aGUgc2FtZSBoYXJkd2Fy
-ZSBydW5uaW5nIGEKPj4+IHN5c3RlbSB3aXRoIGEgMy4xMyBrZXJuZWwsIGFuZCB0aGVuIGEgc3lz
-dGVtIHdpdGggYSA0LjQga2VybmVsLCBidXQgd2l0aAo+Pj4gdGhlIHNhbWUgYXBwbGljYXRpb24g
-c29mdHdhcmUsIHRoZSBzeXN0ZW0gd2l0aCB0aGUgMy4xMyBrZXJuZWwgd2FzIGZpbmUsCj4+PiBi
-dXQgdGhlIG9uZSB3aXRoIHRoZSA0LjQga2VybmVsIGV4aGliaXRlZCB0aGUgcHJvYmxlbS7CoCBP
-ZiB0aGUgOTAKPj4+IGNoYW5nZXMgdG8gdGhlIGRyaXZlciBiZXR3ZWVuIHRob3NlIGtlcm5lbCB2
-ZXJzaW9ucywgdGhpcyBjaGFuZ2UgbG9va2VkCj4+PiBsaWtlIHRoZSBtb3N0IGxpa2VseSBjdWxw
-cml0Lgo+Pgo+PiBBY3R1YWxseSwgSSd2ZSByZWFsaXplZCB0aGF0IHRoaXMgcGF0Y2ggd2lsbCBo
-YXZlIG5vIGVmZmVjdCBvbiB0aGUgCj4+IFBDSWUtREFTMTYwMi8xNiBjYXJkIGJlY2F1c2UgaXQg
-dXNlcyBhIGRpZmZlcmVudCBkcml2ZXIgLSBjYl9wY2ltZGFzLCAKPj4gbm90IGNiX3BjaWRhcy4K
-PiAKPiBCdXQgdGhhdCdzIGFsc28gY29uZnVzaW5nIGJlY2F1c2UgUENJZS1EQVMxNjAyLzE2IHdh
-cyBub3Qgc3VwcG9ydGVkIAo+IHVudGlsIHRoZSAzLjE5IGtlcm5lbCHCoCBJIGtub3cgdGhlIHJl
-cG9ydGVkIGhhcyBib3RoIFBDSS1EQVMxNjAyLzE2IGFuZCAKPiBQQ0llLURBUzE2MDIvMTYgY2Fy
-ZHMgKHN1cHBvcnRlZCBieSBjYl9wY2lkYXMgYW5kIGNiX3BjaW1kYXMgCj4gcmVzcGVjdGl2ZWx5
-KSwgc28gdGhlcmUgY291bGQgaGF2ZSBiZWVuIHNvbWUgbWl4LXVwIGluIHRoZSByZXBvcnRpbmcu
-CgpNeXN0ZXJ5IHNvbHZlZC4gIFRoZSByZXBvcnRlciBoYWQgYSBtaXh0dXJlIG9mIFBDSWUtREFT
-MTYwMi8xNiBhbmQgClBDSU0tREFTMTYwMi8xNiBjYXJkcyAobm90IFBDSS1EQVMxNjAyLzE2KS4g
-IEJvdGggb2YgdGhvc2UgYXJlIHN1cHBvcnRlZCAKYnkgdGhlICJjYl9wY2ltZGFzIiBkcml2ZXIg
-KG5vdCAiY2JfcGNpZGFzIiksIGFsdGhvdWdoIHRoZSBQQ0llIGNhcmQgd2FzIApub3Qgc3VwcG9y
-dGVkIHVudGlsIHRoZSAzLjE5IGtlcm5lbCAoYnkgY29tbWl0IDRlM2QxNGFmMTI4NikuICBUZXN0
-aW5nIAp3aXRoIHRoZSAzLjEzIGtlcm5lbCB3YXMgZG9uZSB3aXRoIHRoZSBQQ0lNIGNhcmQuCgpU
-aGUgInN0cmFuZ2Ugc2NhbGluZyIgd2FzIGR1ZSB0byBhIGNoYW5nZSBpbiB0aGUgcmFuZ2VzIHJl
-cG9ydGVkIGZvciB0aGUgCmFuYWxvZyBpbnB1dCBzdWJkZXZpY2UgaW4gdGhlIDQuMSBrZXJuZWwg
-KGJ5IGNvbW1pdCBjNzU0OWQ3NzBhMjcpLiAKQmVmb3JlIHRoZW4sIGl0IGp1c3QgcmVwb3J0ZWQg
-YSBzaW5nbGUgZHVtbXkgcmFuZ2UgWzAsIDEwMDAwMDBdIHdpdGggbm8gCnVuaXRzIChjb252ZXJ0
-ZWQgdG8gWzAuMCwgMS4wXSB3aXRoIG5vIHVuaXRzIGJ5IGNvbWVkaWxpYikuICBBZnRlcndhcmRz
-LCAKaXQgcmVwb3J0ZWQgZm91ciBkaWZmZXJlbnQgdm9sdGFnZSByYW5nZXMgKGVpdGhlciB1bmlw
-b2xhciBvciBiaXBvbGFyLCAKZGVwZW5kaW5nIGluIGEgc3RhdHVzIGJpdCB0aWVkIHRvIGEgcGh5
-c2ljYWwgc3dpdGNoKS4gIFRoZSByZXBvcnRlcidzIAphcHBsaWNhdGlvbiBjb2RlIHdhcyB1c2lu
-ZyB0aGUgcmVwb3J0ZWQgcmFuZ2UgdG8gc2NhbGUgdGhlIHJhdyB2YWx1ZXMgdG8gCmEgdm9sdGFn
-ZSAodXNpbmcgY29tZWRpbGliIGZ1bmN0aW9ucyksIGJ1dCBiZWNhdXNlIHRoZSByZXBvcnRlZCBy
-YW5nZSAKd2FzIGJvZ3VzLCB0aGUgYXBwbGljYXRpb24gY29kZSB3YXMgcGVyZm9ybWluZyBhZGRp
-dGlvbmFsIHNjYWxpbmcgCihvdXRzaWRlIG9mIGNvbWVkaWxpYikuICBUaGUgYXBwbGljYXRpb24g
-Y29kZSBjYW4gYmUgY2hhbmdlZCB0byBjaGVjayAKd2hldGhlciB0aGUgZGV2aWNlIGlzIHJlcG9y
-dGluZyBhIHByb3BlciB2b2x0YWdlIHJhbmdlIG9yIHRoZSBvbGQsIGJvZ3VzIApyYW5nZSwgYW5k
-IGJlaGF2ZSBhY2NvcmRpbmdseS4KCj4+IEdyZWcsIHlvdSBtaWdodCBhcyB3ZWxsIGRyb3AgdGhp
-cyBwYXRjaCBpZiB5b3UgaGF2ZW4ndCBhbHJlYWR5IGFwcGxpZWQgCj4+IGl0LCBzaW5jZSBpdCB3
-YXMgb25seSBhIGh1bmNoIHRoYXQgaXQgZml4ZWQgYSBwcm9ibGVtLgoKVGhhdCdzIHN0aWxsIHRo
-ZSBjYXNlLCBhbHRob3VnaCBpdCB3b24ndCBkbyBhbnkgaGFybSBpZiBhcHBsaWVkIChhcGFydCAK
-ZnJvbSB0aGUgaW5jb3JyZWN0IHBhdGNoIGRlc2NyaXB0aW9uKS4KCi0tIAotPSggSWFuIEFiYm90
-dCA8YWJib3R0aUBtZXYuY28udWs+IHx8IE1FViBMdGQuIGlzIGEgY29tcGFueSAgKT0tCi09KCBy
-ZWdpc3RlcmVkIGluIEVuZ2xhbmQgJiBXYWxlcy4gIFJlZ2QuIG51bWJlcjogMDI4NjIyNjguICAp
-PS0KLT0oIFJlZ2QuIGFkZHIuOiBTMTEgJiAxMiBCdWlsZGluZyA2NywgRXVyb3BhIEJ1c2luZXNz
-IFBhcmssICk9LQotPSggQmlyZCBIYWxsIExhbmUsIFNUT0NLUE9SVCwgU0szIDBYQSwgVUsuIHx8
-IHd3dy5tZXYuY28udWsgKT0tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
-Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaXZlcmRldi1kZXZlbAo=
+
+--===============6140169749995074721==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Yb+qhiCg54lqZFXW"
+Content-Disposition: inline
+
+
+--Yb+qhiCg54lqZFXW
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Tue 27 Oct 20, 19:28, Maxime Ripard wrote:
+>=20
+> Hi,
+>=20
+> On Tue, Oct 27, 2020 at 10:23:26AM +0100, Paul Kocialkowski wrote:
+> > On Mon 26 Oct 20, 16:38, Maxime Ripard wrote:
+> > > On Fri, Oct 23, 2020 at 07:45:34PM +0200, Paul Kocialkowski wrote:
+> > > > The Allwinner A31 D-PHY supports both Rx and Tx modes. While the la=
+tter
+> > > > is already supported and used for MIPI DSI this adds support for the
+> > > > former, to be used with MIPI CSI-2.
+> > > >=20
+> > > > This implementation is inspired by the Allwinner BSP implementation.
+> > >=20
+> > > Mentionning which BSP you took this from would be helpful
+> >=20
+> > Sure! It's from the Github repo linked from https://linux-sunxi.org/V3s.
+> > Would you like that I mention this URL explicitly or would it be enough=
+ to
+> > mention "Allwinner's V3s Linux SDK" as they seem to call it?
+>=20
+> Yeah, that would be great
+> > > > +static int sun6i_dphy_rx_power_on(struct sun6i_dphy *dphy)
+> > > > +{
+> > > > +	/* Physical clock rate is actually half of symbol rate with DDR. =
+*/
+> > > > +	unsigned long mipi_symbol_rate =3D dphy->config.hs_clk_rate;
+> > > > +	unsigned long dphy_clk_rate;
+> > > > +	unsigned int rx_dly;
+> > > > +	unsigned int lprst_dly;
+> > > > +	u32 value;
+> > > > +
+> > > > +	dphy_clk_rate =3D clk_get_rate(dphy->mod_clk);
+> > > > +	if (!dphy_clk_rate)
+> > > > +		return -1;
+> > >=20
+> > > Returning -1 is weird here?
+> >=20
+> > What do you think would be a more appropriate error code to return?
+> > It looks like some other drivers return -EINVAL when that happens (but =
+many
+> > don't do the check).
+>=20
+> Yeah, EINVAL at least is better than ENOPERM=20
+>=20
+> > > > +
+> > > > +	/* Hardcoded timing parameters from the Allwinner BSP. */
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME0_REG,
+> > > > +		     SUN6I_DPHY_RX_TIME0_HS_RX_SYNC(255) |
+> > > > +		     SUN6I_DPHY_RX_TIME0_HS_RX_CLK_MISS(255) |
+> > > > +		     SUN6I_DPHY_RX_TIME0_LP_RX(255));
+> > > > +
+> > > > +	/*
+> > > > +	 * Formula from the Allwinner BSP, with hardcoded coefficients
+> > > > +	 * (probably internal divider/multiplier).
+> > > > +	 */
+> > > > +	rx_dly =3D 8 * (unsigned int)(dphy_clk_rate / (mipi_symbol_rate /=
+ 8));
+> > > > +
+> > > > +	/*
+> > > > +	 * The Allwinner BSP has an alternative formula for LP_RX_ULPS_WP:
+> > > > +	 * lp_ulps_wp_cnt =3D lp_ulps_wp_ms * lp_clk / 1000
+> > > > +	 * but does not use it and hardcodes 255 instead.
+> > > > +	 */
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME1_REG,
+> > > > +		     SUN6I_DPHY_RX_TIME1_RX_DLY(rx_dly) |
+> > > > +		     SUN6I_DPHY_RX_TIME1_LP_RX_ULPS_WP(255));
+> > > > +
+> > > > +	/* HS_RX_ANA0 value is hardcoded in the Allwinner BSP. */
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME2_REG,
+> > > > +		     SUN6I_DPHY_RX_TIME2_HS_RX_ANA0(4));
+> > > > +
+> > > > +	/*
+> > > > +	 * Formula from the Allwinner BSP, with hardcoded coefficients
+> > > > +	 * (probably internal divider/multiplier).
+> > > > +	 */
+> > > > +	lprst_dly =3D 4 * (unsigned int)(dphy_clk_rate / (mipi_symbol_rat=
+e / 2));
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME3_REG,
+> > > > +		     SUN6I_DPHY_RX_TIME3_LPRST_DLY(lprst_dly));
+> > > > +
+> > > > +	/* Analog parameters are hardcoded in the Allwinner BSP. */
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA0_REG,
+> > > > +		     SUN6I_DPHY_ANA0_REG_PWS |
+> > > > +		     SUN6I_DPHY_ANA0_REG_SLV(7) |
+> > > > +		     SUN6I_DPHY_ANA0_REG_SFB(2));
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA1_REG,
+> > > > +		     SUN6I_DPHY_ANA1_REG_SVTT(4));
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA4_REG,
+> > > > +		     SUN6I_DPHY_ANA4_REG_DMPLVC |
+> > > > +		     SUN6I_DPHY_ANA4_REG_DMPLVD(1));
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA2_REG,
+> > > > +		     SUN6I_DPHY_ANA2_REG_ENIB);
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_ANA3_REG,
+> > > > +		     SUN6I_DPHY_ANA3_EN_LDOR |
+> > > > +		     SUN6I_DPHY_ANA3_EN_LDOC |
+> > > > +		     SUN6I_DPHY_ANA3_EN_LDOD);
+> > > > +
+> > > > +	/*
+> > > > +	 * Delay comes from the Allwinner BSP, likely for internal regula=
+tor
+> > > > +	 * ramp-up.
+> > > > +	 */
+> > > > +	udelay(3);
+> > > > +
+> > > > +	value =3D SUN6I_DPHY_RX_CTL_EN_DBC | SUN6I_DPHY_RX_CTL_RX_CLK_FOR=
+CE;
+> > > > +
+> > > > +	/*
+> > > > +	 * Rx data lane force-enable bits are used as regular RX enable b=
+y the
+> > > > +	 * Allwinner BSP.
+> > > > +	 */
+> > > > +	if (dphy->config.lanes >=3D 1)
+> > > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D0_FORCE;
+> > > > +	if (dphy->config.lanes >=3D 2)
+> > > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D1_FORCE;
+> > > > +	if (dphy->config.lanes >=3D 3)
+> > > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D2_FORCE;
+> > > > +	if (dphy->config.lanes =3D=3D 4)
+> > > > +		value |=3D SUN6I_DPHY_RX_CTL_RX_D3_FORCE;
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_RX_CTL_REG, value);
+> > > > +
+> > > > +	regmap_write(dphy->regs, SUN6I_DPHY_GCTL_REG,
+> > > > +		     SUN6I_DPHY_GCTL_LANE_NUM(dphy->config.lanes) |
+> > > > +		     SUN6I_DPHY_GCTL_EN);
+> > > > +
+> > > > +	return 0;
+> > > > +}
+> > > > +
+> > > > +static int sun6i_dphy_power_on(struct phy *phy)
+> > > > +{
+> > > > +	struct sun6i_dphy *dphy =3D phy_get_drvdata(phy);
+> > > > +
+> > > > +	switch (dphy->submode) {
+> > > > +	case PHY_MIPI_DPHY_SUBMODE_TX:
+> > > > +		return sun6i_dphy_tx_power_on(dphy);
+> > > > +	case PHY_MIPI_DPHY_SUBMODE_RX:
+> > > > +		return sun6i_dphy_rx_power_on(dphy);
+> > > > +	default:
+> > > > +		return -EINVAL;
+> > > > +	}
+> > > > +}
+> > > > +
+> > >=20
+> > > Can one call power_on before set_mode?
+> >=20
+> > I didn't find anything indicating this is illegal. What would happen he=
+re is
+> > that the D-PHY would be configured to PHY_MIPI_DPHY_SUBMODE_TX (submode=
+ =3D=3D 0)
+> > at power-on if set_mode is not called before.
+> >=20
+> > I think it's fair to expect that it's too late to change the mode once =
+the PHY
+> > was powered on. Maybe we should return -EBUSY on set_mode when power on=
+ was
+> > already requested?
+>=20
+> Or maybe we can just clarify it in the framework/function documentation
+
+Agreed, I'll add a patch in that direction. I would also be tempted to chec=
+k on
+phy->power_count to return -EBUSY in phy_set_mode_ext so that the behavior =
+is
+enforced.
+
+What do you think?
+
+Cheers,
+
+Paul
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--Yb+qhiCg54lqZFXW
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl+iiC4ACgkQ3cLmz3+f
+v9FVagf+MFoprb1lhbIcBfZckLyH0cqaPWe5B7qYhnUef4iiObGMo1T0PoXbhnUl
+W4wwFrgdzcpN0SnOHyYXEQIHOdPnwNXNAR/lJtceUcq0MgI4yeh02lURUBBbKjua
+1M8yR/5OYnF1c3f6En4mAGhOdw5dsQDdcVyTA3MlNNLRBVr3W+J6pOkQ3/hzqqX7
+rrO+XgcfmzhhhVu3FVdEMFmCz+35yvGMz3YVNCOIweINBOBJIOsyZd54/QGpq8WJ
+RlSSFuU4rBORC9mEp2sdVZuwOZQF8fnvoSa3O20anz42qmwvyqf7sZkuiL2ro1Ey
+/I7tza6wop/1GiAThIiwYcOBuFKVXw==
+=sQ1N
+-----END PGP SIGNATURE-----
+
+--Yb+qhiCg54lqZFXW--
+
+--===============6140169749995074721==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6140169749995074721==--
