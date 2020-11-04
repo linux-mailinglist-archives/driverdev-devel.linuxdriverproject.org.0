@@ -1,93 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32DFA2A637F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 12:40:39 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2FEE2A6494
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Nov 2020 13:42:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D7881858A6;
-	Wed,  4 Nov 2020 11:40:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D6A3B87551;
+	Wed,  4 Nov 2020 12:42:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jm0amLXIWgVq; Wed,  4 Nov 2020 11:40:37 +0000 (UTC)
+	with ESMTP id YKozb9KpqoXj; Wed,  4 Nov 2020 12:42:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC2B4857E2;
-	Wed,  4 Nov 2020 11:40:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 416DB87509;
+	Wed,  4 Nov 2020 12:42:48 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0BF421BF5DD
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 11:40:35 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D79DE1BF5B3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 12:42:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 08596857E2
- for <devel@linuxdriverproject.org>; Wed,  4 Nov 2020 11:40:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D241086AB6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 12:42:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yHRM8yuhLU7T for <devel@linuxdriverproject.org>;
- Wed,  4 Nov 2020 11:40:33 +0000 (UTC)
+ with ESMTP id uKDPvqEWGft3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 12:42:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AA310857D6
- for <devel@driverdev.osuosl.org>; Wed,  4 Nov 2020 11:40:33 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0A4BdhVI144676;
- Wed, 4 Nov 2020 11:40:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=rma02KPg1kKHnISzToa1qVrQU80lIknQ5aS0+dySMKA=;
- b=TWNQt4gM3JaDdDUBHnnI8fj7mB9KLjO0Dqdc4Gc9FdAZO6XAddNNmq0tZ6PQof0OQLa6
- Vy8cUdzaMjJ/YytnkcFaBwkJZQ0Z9amMx0ipfD9jWf1FgfYgSRIrv0Gw/rfydzJ1V2BD
- Db1n+3FapFp6g1GMEeSpQxwx2mUOYgfg3LVgdWlTI7+ncg9uaosCqMAOfDmYVLBSVydk
- MdRV/AjXmfWKRjFrS43tmOAJldgKMpT4EvSj5a8yTmhmVVzHaXjQKlz0H5Y/g3KaGS2v
- rDSnDYZX9j+kInn40q9A2CdTN7KCrz+of1qUemMkeHHWtQayEWydjmdsZzcaUrMfmFhl rw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 34hhvceae2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 04 Nov 2020 11:40:32 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0A4BaV4r019096;
- Wed, 4 Nov 2020 11:40:32 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 34hw0jruqb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 04 Nov 2020 11:40:32 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0A4BePp2017833;
- Wed, 4 Nov 2020 11:40:25 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 04 Nov 2020 03:40:25 -0800
-Date: Wed, 4 Nov 2020 14:40:15 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Markus Elfring <Markus.Elfring@web.de>
-Subject: Re: [v2] media: atomisp: Fix error handling path
-Message-ID: <20201104114015.GH18329@kadam>
-References: <1604455331-28031-1-git-send-email-jrdr.linux@gmail.com>
- <65712450-1ee9-2dd3-cd43-f850807ae203@web.de>
- <20201104083121.GG18329@kadam>
- <85ff17ad-8aa7-a457-6e23-4f5c1c5152f2@web.de>
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0A61686A6A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  4 Nov 2020 12:42:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1604493766; x=1636029766;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=B3tpM90JUvUKdQx2PpJfoULT051Vtvuty+ZH6vW0ON0=;
+ b=PA34/hZzNZwhHf176V25MMut0x+D0zkoeFd7JVb+g8YA8jNtjOikUcR2
+ 4aniiJCowmTCuKRiYKA4meLN4/pfJEpv5Bu+qziO/MS5JJqWQRWRgQUXG
+ zT+zvhRDptdcdEED2UbN4wSxxmFSIE6fYZNj1gI7+v4Atgire1H7I+/2N
+ 7wI/oMrT2i6tV31KjFdFDigeJ768Eh/q/I7QaUuVb0cdb9MDf5R7GEQk6
+ 94I0KXmyB9UemQkySsexI0iw/ZLlsUICcr97lZH07V/iM432gOonwI/eZ
+ pX/yscEtZERUSdwDSBSC4wVyhGxj9fZHeDFC/nRKc78gFS+f1Uw86D/iE g==;
+IronPort-SDR: QF6UdjVKFuUcN43K4Aj5BcY6rOf42yEku4lm37GQNV6vvOexBth5pyM7POUUJP0jAzkSS3u1qe
+ hSjvDKsucPRn+szwjgo8OZCNHlxiBFp+JU+GQdtc24AEqprINLoc359NbDjdrS+e2iiLwq7SDv
+ kmsKMP9YfI6QZ/18NsX7EkK4lmGmmSNSEMPINiDakybBb/cPwV1E5B6ZuBiG//MF2ZwJudRidX
+ LpZlqW88CxZ5+Hx1DEufjvcm7/aOFU1vdEs6s9ImhOxlvpXLZdDXKe9HSk8IVDyovZT6k53FEV
+ 35Q=
+X-IronPort-AV: E=Sophos;i="5.77,450,1596524400"; d="scan'208";a="92448825"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 04 Nov 2020 05:42:45 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Wed, 4 Nov 2020 05:42:45 -0700
+Received: from kar-sv-agl01.mchp-main.com (10.10.115.15) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
+ 15.1.1979.3 via Frontend Transport; Wed, 4 Nov 2020 05:42:44 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH] drivers: staging: most: use swabXX functions of kernel
+Date: Wed, 4 Nov 2020 13:42:41 +0100
+Message-ID: <1604493761-19144-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <85ff17ad-8aa7-a457-6e23-4f5c1c5152f2@web.de>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9794
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- adultscore=0 bulkscore=0
- mlxscore=0 suspectscore=0 spamscore=0 mlxlogscore=999 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2011040087
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9794
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- suspectscore=0
- impostorscore=0 malwarescore=0 priorityscore=1501 mlxlogscore=999
- bulkscore=0 phishscore=0 adultscore=0 mlxscore=0 lowpriorityscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2011040087
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,45 +83,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Vlastimil Babka <vbabka@suse.cz>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Daniel Jordan <daniel.m.jordan@oracle.com>,
- Souptick Joarder <jrdr.linux@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- John Hubbard <jhubbard@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Michel Lespinasse <walken@google.com>, linux-media@vger.kernel.org
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org, linux-sound@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Nov 04, 2020 at 11:30:29AM +0100, Markus Elfring wrote:
-> >>> Fixes: 14a638ab96c5 ("media: atomisp: use pin_user_pages() for memory
-> >>> allocation")
-> >>
-> >> Please delete a line break for this tag.
-> >
-> > Markus, the thing is that we all saw the line break and we just thought
-> > it didn't matter at all...
-> 
-> Do you disagree to the known documentation then?
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=4ef8451b332662d004df269d4cdeb7d9f31419b5#n123 
+This patch makes use of the swab16() and swab32() functions available
+in the kernel instead of using own implementations.
 
-The documentation is correct but no one wants you to constantly be
-nagging developers about minor stuff...
+Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+---
+ drivers/staging/most/sound/sound.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-One thing that I do is I start to write an email and then if I realize
-it's not worth complaining about and I save it to my postponed messages
-folder.  Then I never send it and I forget about it completely.  I have
-currently have 740 messages in my postponed messages folder.  :P
-
-That's a lot of whining and complaining which I never sent and the world
-is the more beautiful for it.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
+index 8a449ab..3a1a590 100644
+--- a/drivers/staging/most/sound/sound.c
++++ b/drivers/staging/most/sound/sound.c
+@@ -72,22 +72,12 @@ static struct list_head adpt_list;
+ 		       SNDRV_PCM_INFO_INTERLEAVED | \
+ 		       SNDRV_PCM_INFO_BLOCK_TRANSFER)
+ 
+-#define swap16(val) ( \
+-	(((u16)(val) << 8) & (u16)0xFF00) | \
+-	(((u16)(val) >> 8) & (u16)0x00FF))
+-
+-#define swap32(val) ( \
+-	(((u32)(val) << 24) & (u32)0xFF000000) | \
+-	(((u32)(val) <<  8) & (u32)0x00FF0000) | \
+-	(((u32)(val) >>  8) & (u32)0x0000FF00) | \
+-	(((u32)(val) >> 24) & (u32)0x000000FF))
+-
+ static void swap_copy16(u16 *dest, const u16 *source, unsigned int bytes)
+ {
+ 	unsigned int i = 0;
+ 
+ 	while (i < (bytes / 2)) {
+-		dest[i] = swap16(source[i]);
++		dest[i] = swab16(source[i]);
+ 		i++;
+ 	}
+ }
+@@ -109,7 +99,7 @@ static void swap_copy32(u32 *dest, const u32 *source, unsigned int bytes)
+ 	unsigned int i = 0;
+ 
+ 	while (i < bytes / 4) {
+-		dest[i] = swap32(source[i]);
++		dest[i] = swab32(source[i]);
+ 		i++;
+ 	}
+ }
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
