@@ -1,82 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12C392A7B42
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 11:06:13 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52B7D2A7C18
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 11:43:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C66E086C66;
-	Thu,  5 Nov 2020 10:06:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 704DF85751;
+	Thu,  5 Nov 2020 10:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4K+mY+cF7fwl; Thu,  5 Nov 2020 10:06:10 +0000 (UTC)
+	with ESMTP id TDnDZ0dW4C6d; Thu,  5 Nov 2020 10:42:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C7D5D86C0A;
-	Thu,  5 Nov 2020 10:06:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D9A6085754;
+	Thu,  5 Nov 2020 10:42:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C21331BF59A
- for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 10:06:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 507341BF575
+ for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 10:42:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BDC2C860F9
- for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 10:06:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4042022DEC
+ for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 10:42:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J6w2BZHpeTbm for <devel@linuxdriverproject.org>;
- Thu,  5 Nov 2020 10:06:07 +0000 (UTC)
+ with ESMTP id g2Ej6Aukc+6c for <devel@linuxdriverproject.org>;
+ Thu,  5 Nov 2020 10:42:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2E669860F1
- for <devel@driverdev.osuosl.org>; Thu,  5 Nov 2020 10:06:07 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id e7so1069559pfn.12
- for <devel@driverdev.osuosl.org>; Thu, 05 Nov 2020 02:06:07 -0800 (PST)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id A66C2228B0
+ for <devel@driverdev.osuosl.org>; Thu,  5 Nov 2020 10:42:51 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id i7so1147620pgh.6
+ for <devel@driverdev.osuosl.org>; Thu, 05 Nov 2020 02:42:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=eGW1ILzr61LRI7Nn5j3Px4Z853itoyrKaaACPPuanD8=;
- b=AwkPgeKN8JxD5DofrhKKvVmK4cvSq6debaCUoSYPEqvE49cn04nt/Ohj9eefgHf9TL
- aIx6rKXj0///p0JGjzTLdfu2hmMAvQApkss/uH/gSZkh61VO6pZ2ylsM9Il/53KW7LGl
- IUDWHNviUCd6hnxXLRNUeX3Y6HNhSHtWwbsLSi36WRlNoTuyeXeVCGre4buS3NdKlXZ1
- C93L+wYAB2E1lwHrDLcQqvzcXv151CIyLt/YY5KfH9h0bSL8R2KSSrdlcms3OAEXEAQn
- s+1SmPefG0RRF/HzCmYyPjNZRXZ/yeV4tDx9EOD1LS9Yd2qnGpLlBgdhBvWMqnBFNCh+
- Memw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZdAvLjoOXomWCs8t6TmIL4j/I5mepz3FWTuHztdBTlc=;
+ b=BiAiD4e1h7itpTTBhs3DR4K8CfgZymL8qj1e7tZjDyvL22TAbVaJrB6OdCOJ9dCgt8
+ uMo1WI+cg7RQpxF0bBlJEyznK83VkivtEouWpjXE0uDzswIn9ngEEIWZkBVtGoJKPI5a
+ 3gYONlFV9O8ISMzu91uUEboniTdwBNNIgS1GVf+ZVCHpgeExfkJ3HUKHZ4pHVFwQwMtx
+ 5vGFFB38gJyFP7FBlRczIoGJ/8EUs8e6gc59Rm7O/sKD+Kj4+eFQl2/7R5M52mOjdRQY
+ 23FqbRx5TWg7iDot8DaIDKVfEKsFUNqqGSEPkpoltdKL/CwkFxGm9pZGSMzsaqx/PW9N
+ dskg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=eGW1ILzr61LRI7Nn5j3Px4Z853itoyrKaaACPPuanD8=;
- b=m52CmpeociE74SKbDAgDNqroaZ4EiG3BRbzPHo4gaaYolIHAXStzMOIDCA68iW7Yfe
- BnehCuA0PRd42ahNkguWAzukjye1lmqWfSGhWv5Q8UL6bBncOHEv3TeSTvs0UYYOwmuf
- 1vvh3P8yGm3NRiHtAAPsspR09icid5K73/Qt7/hOP2c4OtvMJuUBn37Amix/9l0QCex/
- NpaC1NVQTBilpllo6Rm7EByWxyHXFq09XZTStiZV1pK7jUFQTAT/H/UJLtDmicgOBLOF
- EJ7stVQgdTWP1dgDCzyeI+MhddIk7pTMPt/tcRygSxLpHDn9I1TMFYdhEEZv2Nod2tFd
- RzjA==
-X-Gm-Message-State: AOAM532A5C/0KXCMFUsjXy34KfY7DBT4qqzuO1T+9/enX6VyZoSAZio6
- +jc24fvDtRudV1T8EzRlt8Bb2w==
-X-Google-Smtp-Source: ABdhPJx+19aSHb7auOFJLKtzrXZ1adaxUM3Bi1xOIxWA6Q/xzn6rrIYE3T8B5dM0UQjbWyOAIsn6/Q==
-X-Received: by 2002:a17:90b:ec9:: with SMTP id
- gz9mr1700784pjb.105.1604570766580; 
- Thu, 05 Nov 2020 02:06:06 -0800 (PST)
-Received: from localhost ([122.172.12.172])
- by smtp.gmail.com with ESMTPSA id s22sm1813783pfu.119.2020.11.05.02.06.05
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 05 Nov 2020 02:06:05 -0800 (PST)
-Date: Thu, 5 Nov 2020 15:36:03 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA
- Tegra20/30 SoCs
-Message-ID: <20201105100603.skrirm7uke4s2xyl@vireshk-i7>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZdAvLjoOXomWCs8t6TmIL4j/I5mepz3FWTuHztdBTlc=;
+ b=tH1CI1h68smwxqFigbksDbLMMFI9+oz2EVtuiGSp/rt7vuIJBGHko+Rp+7uUPnZcn5
+ HpxULe79oxsw9AR7k0poI4Bz4iK0CUh/SDR2NcZrxQnOdoi7YGOEbtXh0PyjfigsV9Fj
+ DuMl1q3R7XrESAlM4M/f9gjO0CfoEIF9FDtnln2YyDEHN7TkShdTpE84Aqw50V2IyAMg
+ YGZkVjeRrxJ2sZBsaeCOeIcbuomX/PzsA47oNru0eXOP2CGquUBslAWFB2PuFPjechoG
+ Ek3KCvgMERaJaF5xP7Bpy7+X7oo4/QzLlDsO6QAsX8irGWWUv+jltBVOmFlThjfE75Sb
+ 5kGw==
+X-Gm-Message-State: AOAM532H+iq+6Q9mqgdj/DpMlI8zBsgfFKWmpNkcanmYao6qXQoLl2Jv
+ lZRYiM1EEeauQaDdYjFt9iTOleSH4GXUBhlgpELjb7ZC2nYBUg==
+X-Google-Smtp-Source: ABdhPJxVfapO8HtgRahAnJ4wz7s9HOgbHIAKW7gtu7MmcNt2t4MXd/COFLbP0begvsat+FQbNQGgY8Hv6gEHSKm9IGw=
+X-Received: by 2002:a67:f417:: with SMTP id p23mr725992vsn.42.1604572502741;
+ Thu, 05 Nov 2020 02:35:02 -0800 (PST)
+MIME-Version: 1.0
 References: <20201104234427.26477-1-digetx@gmail.com>
  <CAPDyKFr7qTU2RPhA_ZrbCayoTTNUEno1zdmvmv+8HBe-Owrfeg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPDyKFr7qTU2RPhA_ZrbCayoTTNUEno1zdmvmv+8HBe-Owrfeg@mail.gmail.com>
-User-Agent: NeoMutt/20180716-391-311a52
+ <20201105100603.skrirm7uke4s2xyl@vireshk-i7>
+In-Reply-To: <20201105100603.skrirm7uke4s2xyl@vireshk-i7>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 5 Nov 2020 11:34:26 +0100
+Message-ID: <CAPDyKFoCJt5MBSKBJ8n1OAMdVsWHdwXTx0zFEcZw_F_gQ6Ug0w@mail.gmail.com>
+Subject: Re: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA
+ Tegra20/30 SoCs
+To: Viresh Kumar <viresh.kumar@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,7 +91,7 @@ Cc: Peter Chen <Peter.Chen@nxp.com>, DTML <devicetree@vger.kernel.org>,
  linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
  Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
  Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
- Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
  Linux Media Mailing List <linux-media@vger.kernel.org>,
  linux-pwm@vger.kernel.org, Mark Brown <broonie@kernel.org>,
  linux-tegra <linux-tegra@vger.kernel.org>,
@@ -114,34 +107,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 05-11-20, 10:45, Ulf Hansson wrote:
-> + Viresh
+On Thu, 5 Nov 2020 at 11:06, Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>
+> On 05-11-20, 10:45, Ulf Hansson wrote:
+> > + Viresh
+>
+> Thanks Ulf. I found a bug in OPP core because you cc'd me here :)
 
-Thanks Ulf. I found a bug in OPP core because you cc'd me here :)
+Happy to help. :-)
 
-> On Thu, 5 Nov 2020 at 00:44, Dmitry Osipenko <digetx@gmail.com> wrote:
-> I need some more time to review this, but just a quick check found a
-> few potential issues...
-> 
-> The "core-supply", that you specify as a regulator for each
-> controller's device node, is not the way we describe power domains.
+>
+> > On Thu, 5 Nov 2020 at 00:44, Dmitry Osipenko <digetx@gmail.com> wrote:
+> > I need some more time to review this, but just a quick check found a
+> > few potential issues...
+> >
+> > The "core-supply", that you specify as a regulator for each
+> > controller's device node, is not the way we describe power domains.
+>
+> Maybe I misunderstood your comment here, but there are two ways of
+> scaling the voltage of a device depending on if it is a regulator (and
+> can be modeled as one in the kernel) or a power domain.
 
-Maybe I misunderstood your comment here, but there are two ways of
-scaling the voltage of a device depending on if it is a regulator (and
-can be modeled as one in the kernel) or a power domain.
+I am not objecting about scaling the voltage through a regulator,
+that's fine to me. However, encoding a power domain as a regulator
+(even if it may seem like a regulator) isn't. Well, unless Mark Brown
+has changed his mind about this.
 
-In case of Qcom earlier (when we added the performance-state stuff),
-the eventual hardware was out of kernel's control and we didn't wanted
-(allowed) to model it as a virtual regulator just to pass the votes to
-the RPM. And so we did what we did.
+In this case, it seems like the regulator supply belongs in the
+description of the power domain provider.
 
-But if the hardware (where the voltage is required to be changed) is
-indeed a regulator and is modeled as one, then what Dmitry has done
-looks okay. i.e. add a supply in the device's node and microvolt
-property in the DT entries.
+>
+> In case of Qcom earlier (when we added the performance-state stuff),
+> the eventual hardware was out of kernel's control and we didn't wanted
+> (allowed) to model it as a virtual regulator just to pass the votes to
+> the RPM. And so we did what we did.
+>
+> But if the hardware (where the voltage is required to be changed) is
+> indeed a regulator and is modeled as one, then what Dmitry has done
+> looks okay. i.e. add a supply in the device's node and microvolt
+> property in the DT entries.
 
--- 
-viresh
+I guess I haven't paid enough attention how power domain regulators
+are being described then. I was under the impression that the CPUfreq
+case was a bit specific - and we had legacy bindings to stick with.
+
+Can you point me to some other existing examples of where power domain
+regulators are specified as a regulator in each device's node?
+
+Kind regards
+Uffe
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
