@@ -1,67 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02C1E2A800F
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 14:55:11 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D3FA2A8028
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Nov 2020 14:57:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 94092871D2;
-	Thu,  5 Nov 2020 13:55:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9FF61236B5;
+	Thu,  5 Nov 2020 13:57:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pqf2a7BJAG+B; Thu,  5 Nov 2020 13:55:08 +0000 (UTC)
+	with ESMTP id pD2t+F3bfzjh; Thu,  5 Nov 2020 13:57:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 03F34871AD;
-	Thu,  5 Nov 2020 13:55:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 70D572305A;
+	Thu,  5 Nov 2020 13:57:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D1BD91BF83C
- for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 13:55:05 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 843BC1BF83C
+ for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 13:57:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CE299871B3
- for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 13:55:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6FDAB22EE6
+ for <devel@linuxdriverproject.org>; Thu,  5 Nov 2020 13:57:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RBri7ZGWzQcm for <devel@linuxdriverproject.org>;
- Thu,  5 Nov 2020 13:55:03 +0000 (UTC)
+ with ESMTP id Ggj0NuMoWier for <devel@linuxdriverproject.org>;
+ Thu,  5 Nov 2020 13:57:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net
- [194.109.24.25])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 586F0871AD
- for <devel@driverdev.osuosl.org>; Thu,  5 Nov 2020 13:55:03 +0000 (UTC)
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud8.xs4all.net with ESMTPA
- id afj6kDNilNanzafj9kobEV; Thu, 05 Nov 2020 14:55:01 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1604584501; bh=Os8Q6RoIFzpecz6IaKw3bDHhoVHVDp/wsU85OkcRmUY=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=wVbVNiKI1ni2WRTvKI7A1TOqQHSmAor2+Nr2aLT1NIe2Fc1ge7wnKhpnxbRNayXlA
- XIStbOZv/pHol/XIyMyhQsvsOkY1EJhG1VU54hiXtGdZMj24h0CloQ2zljt3R+jq7r
- 9HHt7HZWGLPtF9VcZdO6Aa9SdRU11Sh34O/AgNlguJmmu+qtwW3KxT+ySOXpfZDJkN
- XVpwF03MOFVFceaBlHg5FF01e5g8/GGGN2bNp2ypa3toumFlAINuLgLnoOb+HnHT1Y
- qYz+1j/r3uOLOrjhIjjvHNYPvWK9IDs8oEEHc3TKvmeQsXgWUucMtsfJsAcW8+44Zq
- WlOe2T5g/AjEQ==
-Subject: Re: [PATCH v2 0/6] ARM: dts: sun8i: v3s: Enable video decoder
-To: Martin Cerveny <m.cerveny@computer.org>, Maxime Ripard <mripard@kernel.org>
-References: <20200912143052.30952-1-m.cerveny@computer.org>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <c8cc3529-3e21-2a11-d258-bb03885a5c91@xs4all.nl>
-Date: Thu, 5 Nov 2020 14:54:56 +0100
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3EA112037A
+ for <devel@driverdev.osuosl.org>; Thu,  5 Nov 2020 13:57:30 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id h6so2433040lfj.3
+ for <devel@driverdev.osuosl.org>; Thu, 05 Nov 2020 05:57:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+oB95VM8Zw9gIAt2FC+TShAF+0gIWo5rt3Q41RXJdtg=;
+ b=k7qYU/S7xIQk2jr0RN0b4YX8DQl0u0bLGIF7BIO03i9ysBwBpKDn2MliLppMdD912h
+ r6BgWfzuRYtSE1eLkUMnbUB/BLsLo+YvOQfwlkgKibkMcVVi1isY/5BggTofJ/y1r0Hm
+ YXTNppZyodPQYF16UO3KTj5p7F89cfzPcpONsMTDz0kZoeDG8Fx0XGembDMrW3FuOzXM
+ jio/WB6mh7LmvjaKoQD27SeVDVB1tKJaInHuJOCXUkAdoOyzgiBYOsX/YjAtCKwJlQaR
+ K889lN9RvZfHHalw/0sSwWgdKgiFdf9q8dpTy6GIkWbl3kBPpBC5N6gEirv5uxbLGA/i
+ qy4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+oB95VM8Zw9gIAt2FC+TShAF+0gIWo5rt3Q41RXJdtg=;
+ b=tAsc1p8gX5/bi7SfUqDnnPk1Vmlw1O+y2VgHGHI1Ppj0X1bKnadYaYUX5VbLaN+f4i
+ xHUig2WcjtWOhHZ1rMeNUGjnlQ/LRslxtDy4EeGhkul5nZ95L6GtSPJNEyjgwMJit8Bj
+ VfiMb88ZzVfOptbA6WFroFpk6mr+TpYZAVwWo4vwtOUhEc071os9knl6l8zS5I7hnYBs
+ yE0Aj5DH/aZj67ABslCTDrajnnDRAxKYJhoEXuEzch/H+UuVD1LFwR8MzMTTQ55XO/gY
+ RbjFE7HQiFJW3ZdsBNSuPJkgIqDv1AnWCQOVmiZakzCWBNZoJz+XcqohWdstOGloNw/O
+ aZDg==
+X-Gm-Message-State: AOAM530JaL3rx+UyVutvHo5jQDdtsRhExnjt31YUygkX2CD++lXFA5qs
+ WKxp/ymjeqBvNhgEp1q3L8s=
+X-Google-Smtp-Source: ABdhPJy8aDH+pQWACig1gxUeRAo9xbkzKXDLndcNZHc3MgeMS7MQorfWYcYeqkisehyHHQbAhHZsRw==
+X-Received: by 2002:ac2:522a:: with SMTP id i10mr1023516lfl.128.1604584648429; 
+ Thu, 05 Nov 2020 05:57:28 -0800 (PST)
+Received: from [192.168.2.145] (109-252-192-83.dynamic.spd-mgts.ru.
+ [109.252.192.83])
+ by smtp.googlemail.com with ESMTPSA id h10sm158920ljj.116.2020.11.05.05.57.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Nov 2020 05:57:27 -0800 (PST)
+Subject: Re: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA
+ Tegra20/30 SoCs
+To: =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>
+References: <20201104234427.26477-1-digetx@gmail.com>
+ <20201105014502.GB17266@qmqm.qmqm.pl>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <60e6ea6b-3a02-30a1-f0c9-d33ef7906ed6@gmail.com>
+Date: Thu, 5 Nov 2020 16:57:26 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200912143052.30952-1-m.cerveny@computer.org>
+In-Reply-To: <20201105014502.GB17266@qmqm.qmqm.pl>
 Content-Language: en-US
-X-CMAE-Envelope: MS4xfKAnj7LQGDaYmCX296c3vrxWv5e/Ef2SUUKyJz1tzh8Hg7mcghn4UOMUtiDF15DbskEEobx/3GV3mKJD2QR/+BJvDWHqtiffPg+JqxWRCXdGkL4LKcAL
- b6V5jIRASp0YnUAjPXv8sTQ8ZicE5R4ThJApeNCQqCrczKLdML9AFoY+wfoHVpYtggLajoVCksU2K1jMfy33BCDILtJpgqt/rbRZBDLwaWwKeezaENCNlvVj
- rqwkrjSzFIGCluWZ57FtuUMXwvG4ZgpyETF8Sx2IhhyDDN3ZfS8CiExo8otjngEgSIJCONqGN8Yks14AFrI6hvlGUXxAHzYvDyIEJB4OkC8B6kOG6q98pzQi
- HJpOoIFNK+wzz5zkeif0O9rV+4nkXvLst2gX25uXjEiTaeAPHEq31/rcJAio7NuAGflbfD5ws+fjF6SbgppVOcdyjCf7GVmq2lt50iGtheq/rTgQ0lsTy2yl
- 1XZ50JXtHleEL3YYTdwL5byb4JNnBec/rBzlZTCv6XRVnV7Sso9sMSPRhPhXTio4KNGI9yflco4KfQCDyJYmbn1BoOGzZ26+dXLKSljH5C+Ip10cN9/NKDr4
- niauSYp1j7DSffLElOjBPaP2
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,91 +91,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Chen-Yu Tsai <wens@csie.org>, Rob Herring <robh+dt@kernel.org>,
+Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, devel@driverdev.osuosl.org,
+ linux-samsung-soc@vger.kernel.org, Nicolas Chauvet <kwizart@gmail.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Alan Stern <stern@rowland.harvard.edu>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-media@vger.kernel.org, linux-pwm@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-mmc@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ Peter Geis <pgwipeout@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Martin,
-
-On 12/09/2020 16:30, Martin Cerveny wrote:
-> First patch extends cedrus capability to all decoders
-> because V3s missing MPEG2 decoder.
-> 
-> Next two patches add system control node (SRAM C1) and 
-> next three patches add support for Cedrus VPU.
-> 
-> Tested on "Lichee Zero" V3s platform with testing LCD patch
-> ( https://github.com/mcerveny/linux/tree/v3s_videocodec_v4 )
-> and V4L2 raw API testing utility
-> ( https://github.com/mcerveny/v4l2-request-test ):
-> - enabled LCD (DRM dual VI and sigle UI planes)
-> - added RGB panel
-> - enabled PWM
-> 
-> There is low memory on V3s (64MB) and maximum must be available to CMA:
-> - CONFIG_CMA_SIZE_MBYTES=28
-> - add swap to swapout other processes
-> - decrease buffers in v4l2-request-test (.buffers_count from 16 to 6)
-> 
-> Only H.264 decoder working - MPEG and H.265 unsupported by V3s,
-> JPEG/MJPEG still unimplemented, encoder unimplemented
-
-When I tried to merged these patches I got merge conflicts.
-
-Possibly due to other 5.10 changes, but certainly because of conflicts
-with patches from Jernej:
-
-https://patchwork.linuxtv.org/project/linux-media/patch/20200825173523.1289379-4-jernej.skrabec@siol.net/
-https://patchwork.linuxtv.org/project/linux-media/patch/20200825173523.1289379-5-jernej.skrabec@siol.net/
-
-I've merged Jerne's patches and posted a PR for that:
-https://patchwork.linuxtv.org/project/linux-media/patch/f3b8e5e2-5f0e-fb6f-e5b2-7f44f7e365e7@xs4all.nl/
-
-Can you rebase your patches on top of my branch that contains Jernej's patches?
-
-https://git.linuxtv.org/hverkuil/media_tree.git/log/?h=for-v5.11e
-
-Once my PR is merged into the media_tree master I can take your rebased
-patches.
-
-Regards,
-
-	Hans
-
-> 
-> best regards,
-> Martin
-> 
-> Changes since v1:
-> - patch 0005 rename
-> - added testing description
-> 
-> Martin Cerveny (6):
->   media: cedrus: Register all codecs as capability
->   dt-bindings: sram: allwinner,sun4i-a10-system-control: Add V3s
->     compatibles
->   ARM: dts: sun8i: v3s: Add node for system control
->   media: cedrus: Add support for V3s
->   dt-bindings: media: cedrus: Add V3s compatible
->   ARM: dts: sun8i: v3s: Add video engine node
-> 
->  .../allwinner,sun4i-a10-video-engine.yaml     |  1 +
->  .../allwinner,sun4i-a10-system-control.yaml   |  6 ++++
->  arch/arm/boot/dts/sun8i-v3s.dtsi              | 33 +++++++++++++++++++
->  drivers/staging/media/sunxi/cedrus/cedrus.c   | 28 +++++++++++++++-
->  drivers/staging/media/sunxi/cedrus/cedrus.h   |  2 ++
->  .../staging/media/sunxi/cedrus/cedrus_video.c |  2 ++
->  6 files changed, 71 insertions(+), 1 deletion(-)
-> 
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+MDUuMTEuMjAyMCAwNDo0NSwgTWljaGHFgiBNaXJvc8WCYXcg0L/QuNGI0LXRgjoKPiBPbiBUaHUs
+IE5vdiAwNSwgMjAyMCBhdCAwMjo0Mzo1N0FNICswMzAwLCBEbWl0cnkgT3NpcGVua28gd3JvdGU6
+Cj4+IEludHJvZHVjZSBjb3JlIHZvbHRhZ2Ugc2NhbGluZyBmb3IgTlZJRElBIFRlZ3JhMjAvMzAg
+U29Dcywgd2hpY2ggcmVkdWNlcwo+PiBwb3dlciBjb25zdW1wdGlvbiBhbmQgaGVhdGluZyBvZiB0
+aGUgVGVncmEgY2hpcHMuIFRlZ3JhIFNvQyBoYXMgbXVsdGlwbGUKPj4gaGFyZHdhcmUgdW5pdHMg
+d2hpY2ggYmVsb25nIHRvIGEgY29yZSBwb3dlciBkb21haW4gb2YgdGhlIFNvQyBhbmQgc2hhcmUK
+Pj4gdGhlIGNvcmUgdm9sdGFnZS4gVGhlIHZvbHRhZ2UgbXVzdCBiZSBzZWxlY3RlZCBpbiBhY2Nv
+cmRhbmNlIHRvIGEgbWluaW11bQo+PiByZXF1aXJlbWVudCBvZiBldmVyeSBjb3JlIGhhcmR3YXJl
+IHVuaXQuCj4gWy4uLl0KPiAKPiBKdXN0IGxvb2tlZCBicmllZmx5IHRocm91Z2ggdGhlIHNlcmll
+cyAtIGl0IGxvb2tzIGxpa2UgdGhlcmUgaXMgYSBsb3Qgb2YKPiBjb2RlIGR1cGxpY2F0aW9uIGlu
+ICpfaW5pdF9vcHBfdGFibGUoKSBmdW5jdGlvbnMuIENvdWxkIHRoaXMgYmUgbWFkZQo+IG1vcmUg
+Z2VuZXJpYyAvIGRhdGEtZHJpdmVuPwoKSW5kZWVkLCBpdCBzaG91bGQgYmUgcG9zc2libGUgdG8g
+YWRkIGEgY29tbW9uIGhlbHBlci4gSSBoYWQgYSBxdWljawp0aG91Z2h0IGFib3V0IGRvaW5nIGl0
+IHRvbywgYnV0IHRoZW4gZGVjaWRlZCB0byBkZWZlciBmb3IgdGhlIHN0YXJ0ZXIKc2luY2UgdGhl
+cmUgd2VyZSBzb21lIGRpZmZlcmVuY2VzIGFtb25nIHRoZSBuZWVkcyBvZiB0aGUgZHJpdmVycy4g
+SSdsbAp0YWtlIGEgY2xvc2VyIGxvb2sgZm9yIHRoZSB2MiwgdGhhbmtzIQpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
+ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
