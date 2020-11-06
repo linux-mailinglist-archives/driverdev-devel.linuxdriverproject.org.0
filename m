@@ -1,65 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D3372A9900
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 17:03:48 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B55A62A9910
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 17:07:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBD2286AB6;
-	Fri,  6 Nov 2020 16:03:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A48A087511;
+	Fri,  6 Nov 2020 16:07:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kqeUUrZoM7jE; Fri,  6 Nov 2020 16:03:46 +0000 (UTC)
+	with ESMTP id dCKxqp+8z95l; Fri,  6 Nov 2020 16:07:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B39B586A89;
-	Fri,  6 Nov 2020 16:03:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0C48D87510;
+	Fri,  6 Nov 2020 16:07:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C6DCE1BF28D
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:03:42 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A39BB1BF287
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:07:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C277886A51
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:03:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 833362E0F9
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:07:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3A2VQh1FxQsD for <devel@linuxdriverproject.org>;
- Fri,  6 Nov 2020 16:03:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2AC2D86A5C
- for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 16:03:42 +0000 (UTC)
-Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com
- [209.85.167.50])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6348D22243
- for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 16:03:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604678621;
- bh=k8bryvFui+YoGklp94RFUzRsPMzTAL7+JGvq9QXQg+s=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=hi/uyH5WXU66Rm2JLXwlxWHG0n5p4kipBD9wlwWxVHzvp+063vHGOKEpCMH1LUxHw
- e6nFQ2VQhcxRGFOrda2acrUwOn11TDLqOXP/if7jmiZILokM3y6FesB5nFRHKsUSI2
- +FGZE3vX2mkQrh666F9acUBGbYRDuZ6R+741q6o4=
-Received: by mail-lf1-f50.google.com with SMTP id r19so309562lfe.6
- for <devel@driverdev.osuosl.org>; Fri, 06 Nov 2020 08:03:41 -0800 (PST)
-X-Gm-Message-State: AOAM530LH4b6t9LZZDAAz0qidtj6xr23hHUtpgjJ2ipY5PCcN2enxuSl
- J4JUUk7GzSn5tqIz8oHenOO7gnTgiYgCKo9DpNk=
-X-Google-Smtp-Source: ABdhPJy4L9sWNTrKjB39Lz4S8huMYtJ2miYTZnmYiCjhMmzPfT6Q8pHTbOo2LrWBLVMhDMAFLR/BADUAut2KfwSjmLs=
-X-Received: by 2002:a19:c354:: with SMTP id t81mr562644lff.283.1604678619488; 
- Fri, 06 Nov 2020 08:03:39 -0800 (PST)
-MIME-Version: 1.0
-References: <20201106151411.321743-1-maxime@cerno.tech>
-In-Reply-To: <20201106151411.321743-1-maxime@cerno.tech>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Sat, 7 Nov 2020 00:03:28 +0800
-X-Gmail-Original-Message-ID: <CAGb2v66N1BF+ReqMwJOUPESvJOwm7w7exuc3T52GULxJHJqKzg@mail.gmail.com>
-Message-ID: <CAGb2v66N1BF+ReqMwJOUPESvJOwm7w7exuc3T52GULxJHJqKzg@mail.gmail.com>
-Subject: Re: [PATCH 0/7] sunxi: Remove the calls to dma_direct_set_offset
+ with ESMTP id NiKsh3YPuHcw for <devel@linuxdriverproject.org>;
+ Fri,  6 Nov 2020 16:07:43 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by silver.osuosl.org (Postfix) with ESMTPS id 40B08203CF
+ for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 16:07:43 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 7B3C268B05; Fri,  6 Nov 2020 17:07:38 +0100 (CET)
+Date: Fri, 6 Nov 2020 17:07:37 +0100
+From: Christoph Hellwig <hch@lst.de>
 To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH 0/7] sunxi: Remove the calls to dma_direct_set_offset
+Message-ID: <20201106160737.GA31913@lst.de>
+References: <20201106151411.321743-1-maxime@cerno.tech>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201106151411.321743-1-maxime@cerno.tech>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,76 +55,145 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>, Yong Deng <yong.deng@magewell.com>,
- David Airlie <airlied@linux.ie>,
+Cc: devel@driverdev.osuosl.org, Hans Verkuil <hverkuil@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Daniel Vetter <daniel.vetter@intel.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Yong Deng <yong.deng@magewell.com>, Daniel Vetter <daniel.vetter@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+Thanks,
 
-On Fri, Nov 6, 2020 at 11:15 PM Maxime Ripard <maxime@cerno.tech> wrote:
->
-> Hi,
->
-> Here's an attempt to removing the dma_direct_set_offset calls we have in
-> numerous drivers and move all those quirks into a global notifier as suggested
-> by Robin.
->
-> Let me know what you think,
-> Maxime
->
-> Maxime Ripard (7):
->   drm/sun4i: backend: Fix probe failure with multiple backends
->   soc: sunxi: Deal with the MBUS DMA offsets in a central place
->   drm/sun4i: backend: Remove the MBUS quirks
->   media: sun4i: Remove the MBUS quirks
->   media: sun6i: Remove the MBUS quirks
->   media: cedrus: Remove the MBUS quirks
->   media: sun8i-di: Remove the call to of_dma_configure
+this looks good to me:
 
-Whole series looks good to me.
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
-Reviewed-by: Chen-Yu Tsai <wens@csie.org>
+Can you include this patch at the end of your series to that it gets
+picked up with the other patches?
 
-Now the question remaining is how do we merge this series so that
-the notifier gets merged before all the code dealing with the MBUS
-quirk gets removed.
+---
+From 5963f88d365367fe74d477b8420d34562d684406 Mon Sep 17 00:00:00 2001
+From: Christoph Hellwig <hch@lst.de>
+Date: Fri, 6 Nov 2020 17:02:17 +0100
+Subject: dma-mapping: remove the dma_direct_set_offset export
 
+Drop the dma_direct_set_offset export and move the declaration to
+dma-map-ops.h now that the Allwinner drivers have stopped calling it.
 
->  drivers/gpu/drm/sun4i/sun4i_backend.c         |  13 --
->  .../platform/sunxi/sun4i-csi/sun4i_csi.c      |  27 ----
->  .../platform/sunxi/sun6i-csi/sun6i_csi.c      |  17 ---
->  .../media/platform/sunxi/sun8i-di/sun8i-di.c  |   4 -
->  drivers/soc/sunxi/Kconfig                     |   8 ++
->  drivers/soc/sunxi/Makefile                    |   1 +
->  drivers/soc/sunxi/sunxi_mbus.c                | 132 ++++++++++++++++++
->  drivers/staging/media/sunxi/cedrus/cedrus.c   |   1 -
->  drivers/staging/media/sunxi/cedrus/cedrus.h   |   3 -
->  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  18 ---
->  10 files changed, 141 insertions(+), 83 deletions(-)
->  create mode 100644 drivers/soc/sunxi/sunxi_mbus.c
->
-> --
-> 2.28.0
->
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+---
+ arch/arm/mach-keystone/keystone.c | 2 +-
+ arch/arm/mach-omap1/usb.c         | 2 +-
+ arch/sh/drivers/pci/pcie-sh7786.c | 2 +-
+ arch/x86/pci/sta2x11-fixup.c      | 3 ++-
+ include/linux/dma-map-ops.h       | 3 +++
+ include/linux/dma-mapping.h       | 7 -------
+ kernel/dma/direct.c               | 1 -
+ 7 files changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/arch/arm/mach-keystone/keystone.c b/arch/arm/mach-keystone/keystone.c
+index 09a65c2dfd7327..cd711bfc591f21 100644
+--- a/arch/arm/mach-keystone/keystone.c
++++ b/arch/arm/mach-keystone/keystone.c
+@@ -8,7 +8,7 @@
+  */
+ #include <linux/io.h>
+ #include <linux/of.h>
+-#include <linux/dma-mapping.h>
++#include <linux/dma-map-ops.h>
+ #include <linux/init.h>
+ #include <linux/of_platform.h>
+ #include <linux/of_address.h>
+diff --git a/arch/arm/mach-omap1/usb.c b/arch/arm/mach-omap1/usb.c
+index ba8566204ea9f4..86d3b3c157af44 100644
+--- a/arch/arm/mach-omap1/usb.c
++++ b/arch/arm/mach-omap1/usb.c
+@@ -9,7 +9,7 @@
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/platform_device.h>
+-#include <linux/dma-mapping.h>
++#include <linux/dma-map-ops.h>
+ #include <linux/io.h>
+ 
+ #include <asm/irq.h>
+diff --git a/arch/sh/drivers/pci/pcie-sh7786.c b/arch/sh/drivers/pci/pcie-sh7786.c
+index 4468289ab2cac7..4d499476c33ad6 100644
+--- a/arch/sh/drivers/pci/pcie-sh7786.c
++++ b/arch/sh/drivers/pci/pcie-sh7786.c
+@@ -12,7 +12,7 @@
+ #include <linux/io.h>
+ #include <linux/async.h>
+ #include <linux/delay.h>
+-#include <linux/dma-mapping.h>
++#include <linux/dma-map-ops.h>
+ #include <linux/slab.h>
+ #include <linux/clk.h>
+ #include <linux/sh_clk.h>
+diff --git a/arch/x86/pci/sta2x11-fixup.c b/arch/x86/pci/sta2x11-fixup.c
+index 5701d5ba3df4ba..7d25256918543f 100644
+--- a/arch/x86/pci/sta2x11-fixup.c
++++ b/arch/x86/pci/sta2x11-fixup.c
+@@ -11,7 +11,8 @@
+ #include <linux/pci_ids.h>
+ #include <linux/export.h>
+ #include <linux/list.h>
+-#include <linux/dma-direct.h>
++#include <linux/dma-map-ops.h>
++#include <linux/swiotlb.h>
+ #include <asm/iommu.h>
+ 
+ #define STA2X11_SWIOTLB_SIZE (4*1024*1024)
+diff --git a/include/linux/dma-map-ops.h b/include/linux/dma-map-ops.h
+index a5f89fc4d6df16..03925e438ec3e5 100644
+--- a/include/linux/dma-map-ops.h
++++ b/include/linux/dma-map-ops.h
+@@ -226,6 +226,9 @@ struct page *dma_alloc_from_pool(struct device *dev, size_t size,
+ 		bool (*phys_addr_ok)(struct device *, phys_addr_t, size_t));
+ bool dma_free_from_pool(struct device *dev, void *start, size_t size);
+ 
++int dma_direct_set_offset(struct device *dev, phys_addr_t cpu_start,
++		dma_addr_t dma_start, u64 size);
++
+ #ifdef CONFIG_ARCH_HAS_DMA_COHERENCE_H
+ #include <asm/dma-coherence.h>
+ #elif defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_DEVICE) || \
+diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+index 2aaed35b556df4..2e49996a8f391a 100644
+--- a/include/linux/dma-mapping.h
++++ b/include/linux/dma-mapping.h
+@@ -558,11 +558,4 @@ static inline int dma_mmap_wc(struct device *dev,
+ #define dma_unmap_len_set(PTR, LEN_NAME, VAL)    do { } while (0)
+ #endif
+ 
+-/*
+- * Legacy interface to set up the dma offset map.  Drivers really should not
+- * actually use it, but we have a few legacy cases left.
+- */
+-int dma_direct_set_offset(struct device *dev, phys_addr_t cpu_start,
+-		dma_addr_t dma_start, u64 size);
+-
+ #endif /* _LINUX_DMA_MAPPING_H */
+diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
+index 06c111544f61d6..002268262c9ad8 100644
+--- a/kernel/dma/direct.c
++++ b/kernel/dma/direct.c
+@@ -547,4 +547,3 @@ int dma_direct_set_offset(struct device *dev, phys_addr_t cpu_start,
+ 	dev->dma_range_map = map;
+ 	return 0;
+ }
+-EXPORT_SYMBOL_GPL(dma_direct_set_offset);
+-- 
+2.28.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
