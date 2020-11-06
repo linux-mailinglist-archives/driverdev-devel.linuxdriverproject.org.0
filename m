@@ -1,65 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE59E2A9851
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 16:14:51 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 372C22A9856
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 16:15:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2FEA8874F5;
-	Fri,  6 Nov 2020 15:14:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E621284E9A;
+	Fri,  6 Nov 2020 15:15:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wnx6k6C1gMM9; Fri,  6 Nov 2020 15:14:49 +0000 (UTC)
+	with ESMTP id HXHDwAggDFdw; Fri,  6 Nov 2020 15:14:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7076787480;
-	Fri,  6 Nov 2020 15:14:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 556EB84F24;
+	Fri,  6 Nov 2020 15:14:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 683791BF9BD
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 15:14:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B31FC1BF28D
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 15:14:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5B33F867EC
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 15:14:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AFF3A86972
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 15:14:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rziw15ShXz1w for <devel@linuxdriverproject.org>;
- Fri,  6 Nov 2020 15:14:22 +0000 (UTC)
+ with ESMTP id 3ZuTChmrpjsO for <devel@linuxdriverproject.org>;
+ Fri,  6 Nov 2020 15:14:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from new3-smtp.messagingengine.com (new3-smtp.messagingengine.com
  [66.111.4.229])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B7C9A8673C
- for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 15:14:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3DDE18696D
+ for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 15:14:24 +0000 (UTC)
 Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 35E5A580702;
- Fri,  6 Nov 2020 10:14:22 -0500 (EST)
+ by mailnew.nyi.internal (Postfix) with ESMTP id AC98F580701;
+ Fri,  6 Nov 2020 10:14:23 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Fri, 06 Nov 2020 10:14:22 -0500
+ by compute6.internal (MEProxy); Fri, 06 Nov 2020 10:14:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
  from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm1; bh=25s9dtBpvKUMB
- jSzbPopd7XcV2NhfxX6EjAEK2lOZXs=; b=urZszon+irSi9Ll/cqP81RPwSn3/G
- nXlAbb2INZXEB77Fnu8gBn6H+h9N3E93bXS3inzybL3oOERkTnxuypx02RthWZ9+
- KBFCmkjvSNMfhMePVtkyLfZV30Am/1Epvl1ZV/SM7xQESXsZFOWUHYNPLAVE8cl1
- rt6UO6OE23iP2ZQKQ4lA4TSysOMuWwtMp7zIs5kDrMYV4Ymb0XHgH6VdAak2CFGQ
- 5uGBtGkcIqOuI9Ga8YdqfpQ60F6h1qKrz4wKOyNa7dkW1WxDo8MufHB1EqJhiDZk
- pY81EOHSNfDa6l5D4x6rmBnG5HzAn7piFXcqEeEhzapUFFfT2GiFDQH9Q==
+ :mime-version:content-transfer-encoding; s=fm1; bh=SzmJUpEELVvdR
+ xE50uIjwGm8zMB0GdoR18I3irVVZQI=; b=RCCAOLFsgkOyCNGZmUO2sVk9uv06J
+ qAMp84Mbv5OmnpO/oVhohP81FilXzdgbNTPY5Vey/aaI6uwCVYhNdMj8RAy7WfLF
+ cewW8iwlEUaJ/Ht0CTeKievU0XRMTCbvSgErdO/Bc4Crolk3qtQBaPmkMdI+nUpz
+ LEoytHBqeIRu4RpQyyeoeJqwSJoBOdClaFeJ2o647tNTEKWZSk48PHbLV4OGLi3T
+ 5Cvavapc44/EaKa8zp3ePHMUCMpXpHFK7LJal33umIuxukpjS92KSLd60cHRyAm0
+ T1aZUyLVd3XIF2Tug8RfKzswxFEKadKJbC7BG+Uw2p5AKil+Yawb+BV7g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
  :in-reply-to:message-id:mime-version:references:subject:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; bh=25s9dtBpvKUMBjSzbPopd7XcV2NhfxX6EjAEK2lOZXs=; b=emfgznoK
- 8pmHYWJ7+ieIugu+xTzTPl8GVqofzW8eHPCC3sWEl3ablBEVRqGvHJsjWeaHhZUN
- HFpdx8cd4XRV/OggDJ9iXTXOpTgj17zYsNfLoQCOLny7ZW90i41TkN7QpWRV/9dm
- XoS0heREVWvKvGpWUQ+fgONgW/wahRAgYyvo7odnDzw7RIIzymHHBNaHb0to59o+
- 9Bi4HcNtQX3q1oxjc3VoDpw+MaYYp1F3jr4YfS/yP3fBY/v1oujn3eqLIP9AOvLS
- bvzCmgpvCU8Mk3DjnXJ20Vl6HmhbPmNyksExOM2KcnJOnggADHA9Tnrh9vCDXSu+
- 9Basi7/MHuR5Ew==
-X-ME-Sender: <xms:TmilXy-QaE2p7SDhuFk1KmHwI0hzf9tPFKwDBQGCmkDZmMp2IZxtUw>
- <xme:TmilXyu6WdxxzZpg81qLDz3HH4aQFu2_CGRZ1H8_6-ba8OwqFjIEeFWhiaZdSlrwK
- V72l7mTTMv1HKqQcio>
+ fm1; bh=SzmJUpEELVvdRxE50uIjwGm8zMB0GdoR18I3irVVZQI=; b=BytyAt+R
+ sMjY8gQbI5HJ5sGPo6QMPPFmnCK6+KDsy1wvSPU0nUAMhn22BnTQ4UsS8vgfAMEZ
+ XUSiSKZvoutzCYgQDjaG0E/TgT6iobizThUVMxKZDUkhS8Ewm8RVjboX1gLeecuP
+ m6coczlSLFXfEp01WZoxwipYBERIhmEfE6vLVNW0UIAQuNwTNUJKDyyHyVDnFEoX
+ m5QFhDNhHb+Cu9rFJzxqKkz3xHMqWs25OxxNccD5E9J1zS9cJZSHI6Jp6c98lYEH
+ r2ZnXRfQ4BpNdukZtCgaBD8TtUqv6bycm6ePNgApkjMltKFmyPF4hUMACdxHlSBP
+ a2vSkZnYalBYvA==
+X-ME-Sender: <xms:T2ilX3wyiOdT9FK4ymEi7mv0oneD9pLoakL_Gd5lN1vmObQvLdgtNQ>
+ <xme:T2ilX_QCn0yjaf2aRsn4v-tTfUDa1K5rZW1Rwf8uBi0VqtZIePj81TwvMY94B-y8a
+ Io1KDl1fdtptIFVLzw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedruddtledgjeehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -68,20 +68,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedruddtledgjeehucetufdoteggod
  htvghrnhepvdekleevfeffkeejhfffueelteelfeduieefheduudfggffhhfffheevveeh
  hedvnecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgepfeenuc
  frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:TmilX4A-e1BQAcyxcAGzi3x8BudQhUZEctRRp6qPm4VQfuH0hw2rmA>
- <xmx:TmilX6cIhOG-mgeFDf2Dc-XPtCO0JsBmuSjzkdwsIhyBY52eKhpHyQ>
- <xmx:TmilX3N9Na3Epz2RN0UPuFfyRMpmnH9UKNGVqtSRYVQ4_c_eNFu5Bg>
- <xmx:TmilX-n8M5tjv2OWvccIuhCsIyNGKETx3sgQV-3eVrMGt9IVoTG5zg>
+X-ME-Proxy: <xmx:T2ilXxXSq8RdxYQlQcj5jRxU4aDsgUE7HxME6IVD9t7B3HAwRSUE6A>
+ <xmx:T2ilXxi9JkK6tkWO8M4i4vcxe-MJPWxkRqh2e1-AILWKMg9qMyoCNA>
+ <xmx:T2ilX5DXxVbPlhA9QFSjBI-d6KI2kuMH83T7uZcFHCXY1EX4eoE6Nw>
+ <xmx:T2ilXxZRyNBPR3tXZYSnu_anBhpuggG2k4xdndsixbBfBz07at6CLA>
 Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
  [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id B87143060057;
- Fri,  6 Nov 2020 10:14:21 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id 24297306005B;
+ Fri,  6 Nov 2020 10:14:23 -0500 (EST)
 From: Maxime Ripard <maxime@cerno.tech>
 To: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>,
  Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 6/7] media: cedrus: Remove the MBUS quirks
-Date: Fri,  6 Nov 2020 16:14:10 +0100
-Message-Id: <20201106151411.321743-7-maxime@cerno.tech>
+Subject: [PATCH 7/7] media: sun8i-di: Remove the call to of_dma_configure
+Date: Fri,  6 Nov 2020 16:14:11 +0100
+Message-Id: <20201106151411.321743-8-maxime@cerno.tech>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201106151411.321743-1-maxime@cerno.tech>
 References: <20201106151411.321743-1-maxime@cerno.tech>
@@ -113,80 +113,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Now that the MBUS quirks are applied by our global notifier, we can
-remove them from Cedrus. Since the only quirk was whether or not we had
-to apply that DMA quirk, we can also remove the quirks infrastructure.
+of_dma_configure is called by the core before probe gets called so this
+is redundant.
 
-Suggested-by: Christoph Hellwig <hch@lst.de>
 Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
- drivers/staging/media/sunxi/cedrus/cedrus.c    |  1 -
- drivers/staging/media/sunxi/cedrus/cedrus.h    |  3 ---
- drivers/staging/media/sunxi/cedrus/cedrus_hw.c | 18 ------------------
- 3 files changed, 22 deletions(-)
+ drivers/media/platform/sunxi/sun8i-di/sun8i-di.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
-index e0e35502e34a..d5fca10ea5b4 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
-@@ -523,7 +523,6 @@ static const struct cedrus_variant sun50i_h5_cedrus_variant = {
- static const struct cedrus_variant sun50i_h6_cedrus_variant = {
- 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
- 			  CEDRUS_CAPABILITY_H265_DEC,
--	.quirks		= CEDRUS_QUIRK_NO_DMA_OFFSET,
- 	.mod_rate	= 600000000,
- };
- 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
-index 93c843ae14bb..626090a5811c 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.h
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
-@@ -29,8 +29,6 @@
- #define CEDRUS_CAPABILITY_UNTILED	BIT(0)
- #define CEDRUS_CAPABILITY_H265_DEC	BIT(1)
- 
--#define CEDRUS_QUIRK_NO_DMA_OFFSET	BIT(0)
--
- enum cedrus_codec {
- 	CEDRUS_CODEC_MPEG2,
- 	CEDRUS_CODEC_H264,
-@@ -150,7 +148,6 @@ struct cedrus_dec_ops {
- 
- struct cedrus_variant {
- 	unsigned int	capabilities;
--	unsigned int	quirks;
- 	unsigned int	mod_rate;
- };
- 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-index bcf050a04ffc..286c7fe844c3 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-@@ -222,24 +222,6 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
+diff --git a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
+index ba5d07886607..ed863bf5ea80 100644
+--- a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
++++ b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
+@@ -825,10 +825,6 @@ static int deinterlace_probe(struct platform_device *pdev)
  		return ret;
  	}
  
--	/*
--	 * The VPU is only able to handle bus addresses so we have to subtract
--	 * the RAM offset to the physcal addresses.
--	 *
--	 * This information will eventually be obtained from device-tree.
--	 *
--	 * XXX(hch): this has no business in a driver and needs to move
--	 * to the device tree.
--	 */
+-	ret = of_dma_configure(dev->dev, dev->dev->of_node, true);
+-	if (ret)
+-		return ret;
 -
--#ifdef PHYS_PFN_OFFSET
--	if (!(variant->quirks & CEDRUS_QUIRK_NO_DMA_OFFSET)) {
--		ret = dma_direct_set_offset(dev->dev, PHYS_OFFSET, 0, SZ_4G);
--		if (ret)
--			return ret;
--	}
--#endif
--
- 	ret = of_reserved_mem_device_init(dev->dev);
- 	if (ret && ret != -ENODEV) {
- 		dev_err(dev->dev, "Failed to reserve memory\n");
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	dev->base = devm_ioremap_resource(&pdev->dev, res);
+ 	if (IS_ERR(dev->base))
 -- 
 2.28.0
 
