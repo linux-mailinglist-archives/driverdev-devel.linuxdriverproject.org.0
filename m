@@ -1,58 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 701DE2A93CB
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 11:12:01 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7A1BD868DB;
-	Fri,  6 Nov 2020 10:11:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tFLrCdo2qcbW; Fri,  6 Nov 2020 10:11:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6AECF8675F;
-	Fri,  6 Nov 2020 10:11:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C12581BF36A
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 10:11:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1AD42A93FF
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 11:20:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 92D6A2E0F5
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 10:11:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 513DF2E103;
+	Fri,  6 Nov 2020 10:20:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kLjIW-M1ey86; Fri,  6 Nov 2020 10:20:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 7C39E2E0E9;
+	Fri,  6 Nov 2020 10:20:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 54CD51BF36A
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 10:19:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5169C84266
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 10:19:27 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OxPuI9Tpl1kI for <devel@linuxdriverproject.org>;
- Fri,  6 Nov 2020 10:11:54 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id AEF782E0E9
- for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 10:11:54 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 51F64206CB;
- Fri,  6 Nov 2020 10:11:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604657513;
- bh=R/G/ijGguYtvMgwvXr02M4X5o++iqaSFXauB9Vtk6u4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TvthmEJOaFI4te9tNvs5dHTWUjbkx3b679VPnPWEhV2zNr5k+DtWYaE0hKHPkolLG
- MTFBPZnVN8Q5v4wez+SlztxcqThl+Hzssh84zEcYs5Aez4WHOCteixm7wVE8wFyDwl
- ln0AETlrE2Gc7aoMU4qOv9esEVrv09UIwExJzPqc=
-Date: Fri, 6 Nov 2020 11:12:40 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Brian O'Keefe <bokeefe@alum.wpi.edu>
-Subject: Re: [PATCH] staging: rtl8723bs: Add 024c:0627 to the list of SDIO
- device-ids
-Message-ID: <20201106101240.GA2770702@kroah.com>
-References: <CABtq2xReyqg1wJM7W1d=KWRNTNN0Q6HCgJMWcQ6DH=SmKcxQRg@mail.gmail.com>
+ with ESMTP id Ym7C-B574Sjw for <devel@linuxdriverproject.org>;
+ Fri,  6 Nov 2020 10:19:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from uaic.utmachala.edu.ec (unknown [181.198.74.24])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 10D7F84103
+ for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 10:19:27 +0000 (UTC)
+Received: by uaic.utmachala.edu.ec (Postfix, from userid 48)
+ id 9E16184368DD; Fri,  6 Nov 2020 05:13:55 -0500 (EST)
+To: devel@driverdev.osuosl.org
+Subject: Business Financing
+X-PHP-Originating-Script: 48:leafmailer2.8.php
+Date: Fri, 6 Nov 2020 10:13:55 +0000
+From: =?UTF-8?Q?Jenny_Tseng=C2=A0=C2=A0?= <jen@uaic.utmachala.edu.ec>
+Message-ID: <581c0016b16047bf6940a007966b69c0@uaic.utmachala.edu.ec>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CABtq2xReyqg1wJM7W1d=KWRNTNN0Q6HCgJMWcQ6DH=SmKcxQRg@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,48 +52,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Hans de Goede <hdegoede@redhat.com>,
- linux-wireless@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
+Reply-To: tseng@inbox.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Oct 29, 2020 at 09:52:16AM -0400, Brian O'Keefe wrote:
-> Add 024c:0627 to the list of SDIO device-ids, based on hardware found in
-> the wild. This hardware exists on at least some Acer SW1-011 tablets.
-> 
-> Signed-off-by: Brian O'Keefe <bokeefe@alum.wpi.edu>
-> Reviewed-by: Hans de Goede <hdegoede@redhat.com>
-> ---
->  drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-> b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-> index 5b1392deb0a7..7256d55fcc1b 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-> @@ -21,6 +21,7 @@ static const struct sdio_device_id sdio_ids[] =
->         { SDIO_DEVICE(0x024c, 0x0525), },
->         { SDIO_DEVICE(0x024c, 0x0623), },
->         { SDIO_DEVICE(0x024c, 0x0626), },
-> +       { SDIO_DEVICE(0x024c, 0x0627), },
->         { SDIO_DEVICE(0x024c, 0xb723), },
->         { /* end: all zeroes */                         },
->  };
-> --
-> 2.25.1
+From the Desk of Jenny Tseng
 
-All of the tabs are gone in your email and it's only spaces, making this
-patch impossible to apply :(
+Hi,
 
-Can you fix up your email client and resend this and keep Hans's
-Reviewed-by on it?
+We are a Financial Strategic Firm specializing in Growth Financial Loans/Funding Investments. We specialize in investments in Private sectors in a broad range of areas, Within our Financial Investment Services are  M&A development and Management,Financial & Operational management, Due diligence, Capital planning and Development including Real estate, Energy, Oil & Gas,Emerging markets, Digital content and Services.
 
-thanks,
+We wish to invest in any viable Projects with good ROI presented by your Management after review on your Business Model Presentation Plan. We intend to maintain a Silent/Financial Position on our Business with your Company.We look forward to your Swift response.
 
-greg k-h
+Please respond to liweiart33@gmail.com
+
+
+Regards,
+Jenny Tseng
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
