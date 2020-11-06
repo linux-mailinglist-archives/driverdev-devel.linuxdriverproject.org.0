@@ -2,75 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 339772A92BC
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 10:30:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C87752A9302
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 10:43:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9248E868E7;
-	Fri,  6 Nov 2020 09:30:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0EA8E868D8;
+	Fri,  6 Nov 2020 09:43:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LP6nKNXPpgyT; Fri,  6 Nov 2020 09:30:36 +0000 (UTC)
+	with ESMTP id P7x2tnqVJ+OC; Fri,  6 Nov 2020 09:43:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B60BA8689D;
-	Fri,  6 Nov 2020 09:30:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 25FB48689A;
+	Fri,  6 Nov 2020 09:43:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 962681BF358
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 09:30:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1F5991BF358
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 09:42:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 92AF386191
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 09:30:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1B780856BF
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 09:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4jIT5cmMDDYE for <devel@linuxdriverproject.org>;
- Fri,  6 Nov 2020 09:30:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AA8CB8618D
- for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 09:30:30 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id w4so472292pgg.13
- for <devel@driverdev.osuosl.org>; Fri, 06 Nov 2020 01:30:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=9IjLA/xj+DCaqgqGoF9Azl/MuEmkxVdtKRQX7C0Fd1c=;
- b=oEMybdqmr95hrZY/hQwyBKi9MAagPUHqbE2DaSTPVO6nJ3xAap7nnQaSAl13MglVkW
- 8dD7Sa0IgcuaELVi3kjGgDYV1GW64m2zF1c5rKbsyHPy9mh8iyUBHWYwxbOK3TI5b1Iq
- JwAfMNWachoFTgNndJsVtagFpY87gK0TypeP/jVbHmu5IOLxO1Sx0XFsPpCkfG89YCpv
- D0M2iikm9dks0ltM5Lc2oL4EkAO53DyGZB0lSwKJQs74UlZMg+47hltxFmaEf1IcqIzq
- 1m7WaOdG9avHDRZBeD3DF17VVBg3X+08g7MH7BOFotBoXh7a/lkBOUnBFEYjsI4/IwSs
- nLBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=9IjLA/xj+DCaqgqGoF9Azl/MuEmkxVdtKRQX7C0Fd1c=;
- b=a3/3MVULsWdRXj38ArTDI8xgqHFcuYShDWtyCO9K6dsByahhy6/bj4fuGeDASWN5pm
- WFmMQasawgtajJMH0TO4EGJpORfeIQDyMt3iF/wLSRRswDRvCcJSt/PyG2+iH2/KFugS
- fg6j//qP3/XAH/s/0COllR1OlJY0kKLoOdY9FK6VNqd4t3pQL0c0L8GMd3uuvFKeBmIA
- zhcnqGWJdFTTJhEb7bIntocNDV6SwburslfsMtl0xVZPSmqZmOMn/j9FNR70b9YzjSaX
- Sfl9QvoeLpqAlVyQrE1ozbjjrdHyUUFQbjmqpVq0E+U/TxS21OOaX4ypFpHbWTmdyYqd
- BaSw==
-X-Gm-Message-State: AOAM532S6h2n3vsAmk+468sOz/7kIzeSihR9FQ4JNU629GUvITqAIDyr
- pQw98QyJbcpszUAweLuLZCdBmzxFZA==
-X-Google-Smtp-Source: ABdhPJyyHHQHPk/miYMvK3I7A3pJyIqVqCI4XP4bzwu4ZDR+kR8EHkhl1nQyYgOMuhMtvMvAXaeq2w==
-X-Received: by 2002:a17:90b:4a4e:: with SMTP id
- lb14mr1495282pjb.23.1604655030124; 
- Fri, 06 Nov 2020 01:30:30 -0800 (PST)
-Received: from Sleakybeast ([103.250.163.155])
- by smtp.gmail.com with ESMTPSA id t19sm1030428pgv.37.2020.11.06.01.30.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Nov 2020 01:30:29 -0800 (PST)
-Date: Fri, 6 Nov 2020 15:00:21 +0530
-From: Siddhant Gupta <siddhantgupta416@gmail.com>
-To: matthias.bgg@gmail.com
-Subject: [PATCH] Staging: mt7621-pci: Fix alignment warnings
-Message-ID: <20201106093021.GA25237@Sleakybeast>
+ with ESMTP id yP0NFNrR9CYG for <devel@linuxdriverproject.org>;
+ Fri,  6 Nov 2020 09:42:58 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AB0C28567A
+ for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 09:42:58 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6E3BD208FE;
+ Fri,  6 Nov 2020 09:42:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604655778;
+ bh=g00gdWIk4p9Pliq9PH6u7KZdMYOMYE8udyfLX1rpXPU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=bPfAw8+tmUrlWgMNTdSyBpXAec9KNT/HeAvJSK19IuuhCqoqbTAklPXCPfTaPsl7v
+ C3Vga9XmgULkAHc88ZzXYq8DYd0XPdTmTT6aFODv3G7lr4WbCi+DAgpc0wn/BuOo4E
+ rlPha2h6MyuRjRP8HwlVULvR3w4leJ6Of12WUhnU=
+Date: Fri, 6 Nov 2020 10:43:44 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH v4 4/4] staging: mt7621-pci-phy: remove driver from staging
+Message-ID: <20201106094344.GA2641594@kroah.com>
+References: <20201031122246.16497-1-sergio.paracuellos@gmail.com>
+ <20201031122246.16497-5-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20201031122246.16497-5-sergio.paracuellos@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,40 +65,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, mamtashukla555@gmail.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- himadrispandya@gmail.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, kishon@ti.com,
+ vkoul@kernel.org, robh+dt@kernel.org, neil@brown.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the alignment issue pointed out by checkpatch
+On Sat, Oct 31, 2020 at 01:22:46PM +0100, Sergio Paracuellos wrote:
+> Remove this driver from staging because it has been moved
+> into its properly place in the kernel.
+> 
+> Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> ---
+>  drivers/staging/Kconfig                       |   2 -
+>  drivers/staging/Makefile                      |   1 -
+>  drivers/staging/mt7621-pci-phy/Kconfig        |   8 -
+>  drivers/staging/mt7621-pci-phy/Makefile       |   2 -
+>  drivers/staging/mt7621-pci-phy/TODO           |   4 -
+>  .../mediatek,mt7621-pci-phy.yaml              |  36 --
+>  .../staging/mt7621-pci-phy/pci-mt7621-phy.c   | 373 ------------------
+>  7 files changed, 426 deletions(-)
+>  delete mode 100644 drivers/staging/mt7621-pci-phy/Kconfig
+>  delete mode 100644 drivers/staging/mt7621-pci-phy/Makefile
+>  delete mode 100644 drivers/staging/mt7621-pci-phy/TODO
+>  delete mode 100644 drivers/staging/mt7621-pci-phy/mediatek,mt7621-pci-phy.yaml
+>  delete mode 100644 drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
 
-Signed-off-by: Siddhant Gupta <siddhantgupta416@gmail.com>
----
- drivers/staging/mt7621-pci/pci-mt7621.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index f961b353c22e..0e95fb33b4e9 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -278,8 +278,8 @@ static void setup_cm_memory_region(struct mt7621_pcie *pcie)
- 		write_gcr_reg1_base(mem_resource->start);
- 		write_gcr_reg1_mask(mask | CM_GCR_REGn_MASK_CMTGT_IOCU0);
- 		dev_info(dev, "PCI coherence region base: 0x%08llx, mask/settings: 0x%08llx\n",
--			(unsigned long long)read_gcr_reg1_base(),
--			(unsigned long long)read_gcr_reg1_mask());
-+			 (unsigned long long)read_gcr_reg1_base(),
-+			 (unsigned long long)read_gcr_reg1_mask());
- 	}
- }
- 
--- 
-2.25.1
-
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
