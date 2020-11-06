@@ -1,48 +1,114 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B55A62A9910
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 17:07:52 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E83052A99DB
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Nov 2020 17:51:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A48A087511;
-	Fri,  6 Nov 2020 16:07:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B91AB86B60;
+	Fri,  6 Nov 2020 16:51:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dCKxqp+8z95l; Fri,  6 Nov 2020 16:07:50 +0000 (UTC)
+	with ESMTP id WqVUu-TZOhnf; Fri,  6 Nov 2020 16:51:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0C48D87510;
-	Fri,  6 Nov 2020 16:07:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4F94086ADD;
+	Fri,  6 Nov 2020 16:51:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A39BB1BF287
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:07:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 244861BF287
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:51:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 833362E0F9
- for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:07:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2050486999
+ for <devel@linuxdriverproject.org>; Fri,  6 Nov 2020 16:51:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NiKsh3YPuHcw for <devel@linuxdriverproject.org>;
- Fri,  6 Nov 2020 16:07:43 +0000 (UTC)
+ with ESMTP id QQrYgk0AHeZw for <devel@linuxdriverproject.org>;
+ Fri,  6 Nov 2020 16:51:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by silver.osuosl.org (Postfix) with ESMTPS id 40B08203CF
- for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 16:07:43 +0000 (UTC)
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 7B3C268B05; Fri,  6 Nov 2020 17:07:38 +0100 (CET)
-Date: Fri, 6 Nov 2020 17:07:37 +0100
-From: Christoph Hellwig <hch@lst.de>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH 0/7] sunxi: Remove the calls to dma_direct_set_offset
-Message-ID: <20201106160737.GA31913@lst.de>
-References: <20201106151411.321743-1-maxime@cerno.tech>
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2075.outbound.protection.outlook.com [40.107.223.75])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DF9738698F
+ for <devel@driverdev.osuosl.org>; Fri,  6 Nov 2020 16:51:07 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=F7rvSqZ8ZK87YluJlVWbuWFmJh2od9gf5GCoylYlVSx+jcnQohoioIjpgbzVvMDeTDMKGVokzHDXRiex484Oi41fhwuc+P07Q/IzK+CYcu5/DQdpDPWtHw+JBy0G2sBBwaLiMGcjiILx3y8+fw6P5AnaUr8gmK12ED5rjrH1RT6wFQy//gFXjeiELBhlVyLOhh4yuQEzxTo09Py48F7OBmhg4cWMSRnxyQyPzOPMiuktgjIp2FbVVpD5pXh49UTmUJPUjOrZ49jcJ8oDRasP9uaJfTkyBCpUhRw7a5tWSrxKkOShJLMfKyiULG/EvJaQ9yJ8RIDAYiKEqoON/ef7uw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PCwwz4xhu2F+Idmu2wIfN9VZjj6Yq2b17WDlRCOiF4I=;
+ b=OA7k1L39irXl13SWZnKwdc1fl7GYga24dkNiny2k1ZXnIxgRTdRoInjSSeEuAvjMn47QxxtdJ3WpsMkaz0P7sSJFWlo22iomak+tSkA/jfy1U+dX73VGB4yfsngM8pctmxmj4o8OvaGAGhQYjgkEkneV1TL+s2vxmAz8V/B+KPT/shCCSvxMZOUhi08b3tfFw3ebJ5MXPHWQGw3/HCxmRzDevZslGpl6VnVS6k3ospSEh1npFb00P5AoDWDpTCJMldB4i/eHiP4rCDIi57P6zOp6SBItDzLBXqrBgVH8LocOC7pG3+C834PS3DNIvCD3lLxqQpUNjIit1pf8SQHz5g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=alum.wpi.edu; dmarc=pass action=none header.from=alum.wpi.edu;
+ dkim=pass header.d=alum.wpi.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alum.wpi.edu;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PCwwz4xhu2F+Idmu2wIfN9VZjj6Yq2b17WDlRCOiF4I=;
+ b=HIPvhj55ZuOc2CMi3+StrSWz5JWs4iBYCDRGIJToOenGm+E0Vt8FKb/9wypF6KED4SpJ5pSuR31BcxqGyZuhv5dwuQxd1A44CwELjgZMQzb/4GsPpApTI4ZKGUv7m3th3H1T7qGvrECey2H177UA3SX+Cm4+RniNlOMOkR0wpYs=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=alum.wpi.edu;
+Received: from CY4PR22MB0392.namprd22.prod.outlook.com (2603:10b6:903:b7::19)
+ by CY4PR22MB0454.namprd22.prod.outlook.com (2603:10b6:903:b4::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.21; Fri, 6 Nov
+ 2020 15:17:29 +0000
+Received: from CY4PR22MB0392.namprd22.prod.outlook.com
+ ([fe80::20c0:ced7:76fc:f46d]) by CY4PR22MB0392.namprd22.prod.outlook.com
+ ([fe80::20c0:ced7:76fc:f46d%11]) with mapi id 15.20.3541.022; Fri, 6 Nov 2020
+ 15:17:29 +0000
+X-Gm-Message-State: AOAM530WJddKQum1q7E1ABcjAEtc3vBC+8HfDO2d9Cyy0VPHMD2EldbP
+ 7adAkQeVIQqSYbjl6Cu9jApv3UoSTYIk13d42+k=
+X-Google-Smtp-Source: ABdhPJyKthLai0TEXe+c0v4ZmXz8BtVj5Cb8Ok4+0YemE6HLJkoYlvKxhVaoc14y3GYzGP6/c4UDKlclTF+QrApgwF4=
+X-Received: by 2002:ae9:e709:: with SMTP id m9mr1852580qka.397.1604675435789; 
+ Fri, 06 Nov 2020 07:10:35 -0800 (PST)
+References: <CABtq2xReyqg1wJM7W1d=KWRNTNN0Q6HCgJMWcQ6DH=SmKcxQRg@mail.gmail.com>
+ <20201106101240.GA2770702@kroah.com>
+In-Reply-To: <20201106101240.GA2770702@kroah.com>
+From: "Brian O'Keefe" <bokeefe@alum.wpi.edu>
+Date: Fri, 6 Nov 2020 10:10:24 -0500
+X-Gmail-Original-Message-ID: <CABtq2xQJCGvBhU230y41DbOgQ7zeP2tzqoV8WUT5Fe2JJc9hCQ@mail.gmail.com>
+Message-ID: <CABtq2xQJCGvBhU230y41DbOgQ7zeP2tzqoV8WUT5Fe2JJc9hCQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: Add 024c:0627 to the list of SDIO
+ device-ids
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+X-Originating-IP: [209.85.160.170]
+X-ClientProxiedBy: MN2PR12CA0003.namprd12.prod.outlook.com
+ (2603:10b6:208:a8::16) To CY4PR22MB0392.namprd22.prod.outlook.com
+ (2603:10b6:903:b7::19)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201106151411.321743-1-maxime@cerno.tech>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mail-qt1-f170.google.com (209.85.160.170) by
+ MN2PR12CA0003.namprd12.prod.outlook.com (2603:10b6:208:a8::16) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3499.19 via Frontend Transport; Fri, 6 Nov 2020 15:17:28 +0000
+Received: by mail-qt1-f170.google.com with SMTP id h12so953592qtc.9 for
+ <devel@driverdev.osuosl.org>; Fri, 06 Nov 2020 07:17:28 -0800 (PST)
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f0c55612-f91d-4975-acb6-08d882671349
+X-MS-TrafficTypeDiagnostic: CY4PR22MB0454:
+X-Microsoft-Antispam-PRVS: <CY4PR22MB0454119339693B76D013B69690ED0@CY4PR22MB0454.namprd22.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2733;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: SYGh81aElR/gftmyg0z9LSCoaDPs47syYtg+cIXFS74XF+S40C0wXM99py0PPXFIk3/M6NZa0OLqAXRd5mplXbaymzRWfgant71INnOI3S3Ac6stfKCXvorlhFjN6/1t5r9IstXORtEyYBBStFwCqZHbU0xvpFsuscLZjiNh6l5ECFGKBaMWpS6Byw4cPYArmXZc9PUJZRyDRx7N/vcKH2i65jgtYZBZtlUVuyMxhrn5fYZUsjuq2MAzI2TExk7AiDa90QPFL1Rwf8YBsF4LD2ymewYtzumUFPjBCCpO0CcqNsiZWkEvlwSDKQaSLYezWrr7siE28FE6PYmUYevckg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY4PR22MB0392.namprd22.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(376002)(39850400004)(366004)(136003)(346002)(54906003)(2906002)(66556008)(4326008)(786003)(42186006)(316002)(52116002)(53546011)(26005)(86362001)(66946007)(66476007)(8676002)(6666004)(5660300002)(8936002)(478600001)(55446002)(55236004)(186003)(75432002)(107886003)(9686003)(6862004);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: yvAUIF07zOj8hY3yDQTEvX2zDg9frYCUnGJfiXIYThHYPhxFd0EKh5l6T2H2EgjCR27Li74BF/+FYrrAe5HxqLmtxQyzxiug2l2ImyjrS1GC7jwzjWJU/jhAUHXrmXlacp7qwxGCgb7azpZKP4arJncmb8XO++FkHne6GQdFUke+0ngNzO1QpqeNWl2e36a2rwCcvxR46NQJ583vYT9bCH9yW6zBQhvoFAe0VgfI+bM/YMxcezrvWIcGXgbzfQHYls+LDIRK5zhdmjLuClotU1ay+bgxM1dfILXMVDxKMF0nH2+ix5iWblXeKdFFxIMd5DYDTSu4vOxUSoS1oCdMT753GPLIx6xn6X8uQ59XV9l0J4FLGMUCDYBkVh5Rbi846RiWzJqzVA606CkFuQtTTR6PooiVdvtczK5sr9HMaE1BOG1GT+7Y8i6dE7D7KXNRWuJqtCRL1H5SVGR/PrjM1kVcpnd1/6Ofr07qlue9B0EGbEaC/rJJEuimbKy9RaD5l+crZp2XTlgjzESqYHfsXl07owq+OIbPRlDdd4qcZXgNDzGvySPoF+vtWVbRriPoANgXxuExyNQ3vbQ6+xfC+GnYkabXE9j/9FSE20EWlsfwAuke6giPkS+O7OQ2RzKq5usSZCKR7jDEQBvXqUtjWw==
+X-OriginatorOrg: alum.wpi.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: f0c55612-f91d-4975-acb6-08d882671349
+X-MS-Exchange-CrossTenant-AuthSource: CY4PR22MB0392.namprd22.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2020 15:17:29.1022 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46a737af-4f36-4dda-ae69-041afc96eaef
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4MU+eMwLAYSKhxv9/uCNBO4emlJDrTv7k6uguS/OTT5zKAvV1Wz9i19rgwxoCRxatFRYV2upfCwcd1AilVDccw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR22MB0454
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,145 +121,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Hans Verkuil <hverkuil@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Yong Deng <yong.deng@magewell.com>, Daniel Vetter <daniel.vetter@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Hans de Goede <hdegoede@redhat.com>,
+ linux-wireless@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Thanks,
+On Fri, Nov 6, 2020 at 5:11 AM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Thu, Oct 29, 2020 at 09:52:16AM -0400, Brian O'Keefe wrote:
+> > Add 024c:0627 to the list of SDIO device-ids, based on hardware found in
+> > the wild. This hardware exists on at least some Acer SW1-011 tablets.
+> >
+> > Signed-off-by: Brian O'Keefe <bokeefe@alum.wpi.edu>
+> > Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+> > ---
+> >  drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+> > b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+> > index 5b1392deb0a7..7256d55fcc1b 100644
+> > --- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+> > +++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
+> > @@ -21,6 +21,7 @@ static const struct sdio_device_id sdio_ids[] =
+> >         { SDIO_DEVICE(0x024c, 0x0525), },
+> >         { SDIO_DEVICE(0x024c, 0x0623), },
+> >         { SDIO_DEVICE(0x024c, 0x0626), },
+> > +       { SDIO_DEVICE(0x024c, 0x0627), },
+> >         { SDIO_DEVICE(0x024c, 0xb723), },
+> >         { /* end: all zeroes */                         },
+> >  };
+> > --
+> > 2.25.1
+>
+> All of the tabs are gone in your email and it's only spaces, making this
+> patch impossible to apply :(
+>
+> Can you fix up your email client and resend this and keep Hans's
+> Reviewed-by on it?
+>
+> thanks,
+>
+> greg k-h
 
-this looks good to me:
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-
-Can you include this patch at the end of your series to that it gets
-picked up with the other patches?
-
----
-From 5963f88d365367fe74d477b8420d34562d684406 Mon Sep 17 00:00:00 2001
-From: Christoph Hellwig <hch@lst.de>
-Date: Fri, 6 Nov 2020 17:02:17 +0100
-Subject: dma-mapping: remove the dma_direct_set_offset export
-
-Drop the dma_direct_set_offset export and move the declaration to
-dma-map-ops.h now that the Allwinner drivers have stopped calling it.
-
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- arch/arm/mach-keystone/keystone.c | 2 +-
- arch/arm/mach-omap1/usb.c         | 2 +-
- arch/sh/drivers/pci/pcie-sh7786.c | 2 +-
- arch/x86/pci/sta2x11-fixup.c      | 3 ++-
- include/linux/dma-map-ops.h       | 3 +++
- include/linux/dma-mapping.h       | 7 -------
- kernel/dma/direct.c               | 1 -
- 7 files changed, 8 insertions(+), 12 deletions(-)
-
-diff --git a/arch/arm/mach-keystone/keystone.c b/arch/arm/mach-keystone/keystone.c
-index 09a65c2dfd7327..cd711bfc591f21 100644
---- a/arch/arm/mach-keystone/keystone.c
-+++ b/arch/arm/mach-keystone/keystone.c
-@@ -8,7 +8,7 @@
-  */
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/dma-mapping.h>
-+#include <linux/dma-map-ops.h>
- #include <linux/init.h>
- #include <linux/of_platform.h>
- #include <linux/of_address.h>
-diff --git a/arch/arm/mach-omap1/usb.c b/arch/arm/mach-omap1/usb.c
-index ba8566204ea9f4..86d3b3c157af44 100644
---- a/arch/arm/mach-omap1/usb.c
-+++ b/arch/arm/mach-omap1/usb.c
-@@ -9,7 +9,7 @@
- #include <linux/kernel.h>
- #include <linux/init.h>
- #include <linux/platform_device.h>
--#include <linux/dma-mapping.h>
-+#include <linux/dma-map-ops.h>
- #include <linux/io.h>
- 
- #include <asm/irq.h>
-diff --git a/arch/sh/drivers/pci/pcie-sh7786.c b/arch/sh/drivers/pci/pcie-sh7786.c
-index 4468289ab2cac7..4d499476c33ad6 100644
---- a/arch/sh/drivers/pci/pcie-sh7786.c
-+++ b/arch/sh/drivers/pci/pcie-sh7786.c
-@@ -12,7 +12,7 @@
- #include <linux/io.h>
- #include <linux/async.h>
- #include <linux/delay.h>
--#include <linux/dma-mapping.h>
-+#include <linux/dma-map-ops.h>
- #include <linux/slab.h>
- #include <linux/clk.h>
- #include <linux/sh_clk.h>
-diff --git a/arch/x86/pci/sta2x11-fixup.c b/arch/x86/pci/sta2x11-fixup.c
-index 5701d5ba3df4ba..7d25256918543f 100644
---- a/arch/x86/pci/sta2x11-fixup.c
-+++ b/arch/x86/pci/sta2x11-fixup.c
-@@ -11,7 +11,8 @@
- #include <linux/pci_ids.h>
- #include <linux/export.h>
- #include <linux/list.h>
--#include <linux/dma-direct.h>
-+#include <linux/dma-map-ops.h>
-+#include <linux/swiotlb.h>
- #include <asm/iommu.h>
- 
- #define STA2X11_SWIOTLB_SIZE (4*1024*1024)
-diff --git a/include/linux/dma-map-ops.h b/include/linux/dma-map-ops.h
-index a5f89fc4d6df16..03925e438ec3e5 100644
---- a/include/linux/dma-map-ops.h
-+++ b/include/linux/dma-map-ops.h
-@@ -226,6 +226,9 @@ struct page *dma_alloc_from_pool(struct device *dev, size_t size,
- 		bool (*phys_addr_ok)(struct device *, phys_addr_t, size_t));
- bool dma_free_from_pool(struct device *dev, void *start, size_t size);
- 
-+int dma_direct_set_offset(struct device *dev, phys_addr_t cpu_start,
-+		dma_addr_t dma_start, u64 size);
-+
- #ifdef CONFIG_ARCH_HAS_DMA_COHERENCE_H
- #include <asm/dma-coherence.h>
- #elif defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_DEVICE) || \
-diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
-index 2aaed35b556df4..2e49996a8f391a 100644
---- a/include/linux/dma-mapping.h
-+++ b/include/linux/dma-mapping.h
-@@ -558,11 +558,4 @@ static inline int dma_mmap_wc(struct device *dev,
- #define dma_unmap_len_set(PTR, LEN_NAME, VAL)    do { } while (0)
- #endif
- 
--/*
-- * Legacy interface to set up the dma offset map.  Drivers really should not
-- * actually use it, but we have a few legacy cases left.
-- */
--int dma_direct_set_offset(struct device *dev, phys_addr_t cpu_start,
--		dma_addr_t dma_start, u64 size);
--
- #endif /* _LINUX_DMA_MAPPING_H */
-diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
-index 06c111544f61d6..002268262c9ad8 100644
---- a/kernel/dma/direct.c
-+++ b/kernel/dma/direct.c
-@@ -547,4 +547,3 @@ int dma_direct_set_offset(struct device *dev, phys_addr_t cpu_start,
- 	dev->dma_range_map = map;
- 	return 0;
- }
--EXPORT_SYMBOL_GPL(dma_direct_set_offset);
--- 
-2.28.0
-
+Sure thing. Sorry about that; I figured out how to get it to send
+properly this time. A corrected patch is on its way.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
