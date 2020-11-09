@@ -1,91 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 063F92AB108
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 06:53:36 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B8B52AB3D4
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 10:43:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7242C85FC3;
-	Mon,  9 Nov 2020 05:53:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 00AA086A87;
+	Mon,  9 Nov 2020 09:43:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QpXB-bIB6gH5; Mon,  9 Nov 2020 05:53:33 +0000 (UTC)
+	with ESMTP id i-BFyvyfrm6i; Mon,  9 Nov 2020 09:43:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 52EFC85F97;
-	Mon,  9 Nov 2020 05:53:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 335EB86A5E;
+	Mon,  9 Nov 2020 09:43:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0BEF31BF417
- for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 05:53:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 588371BF239
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 09:43:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D5C2720506
- for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 05:53:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5245986A35
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 09:43:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eGp4Psdu0ODh for <devel@linuxdriverproject.org>;
- Mon,  9 Nov 2020 05:53:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 5BDE420504
- for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 05:53:24 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id e7so7062202pfn.12
- for <devel@driverdev.osuosl.org>; Sun, 08 Nov 2020 21:53:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=I4CHDtUGbNIJQpM023wPiaWJqW6VgcrXTJggEv8wwSw=;
- b=qCNPstD8wk3f6WVndWAivRv5cGLOIzilHxs0sV7MkBI8GDXwzWkbmt+V1Ae9lrpsMJ
- B4t28mlabIok8WTUpK4tOZJhv14XX6QPx9rUN/5/7PjDOEIOF07vmO2pAN+fOFSCVQFs
- N9tTa3VjUXqiHFZpYHNhvX9c+lshFtkGG4kTSo9LVtvbWKYZTAF10/IyRus+uU55LRBE
- 4k68uNqq+fkS72Id3gBgsPo8GFhIcdXrrqMldXmeqgNgvMOl+qXZJXb1YbEiT/aa1Etq
- o30FSX7jLjx5MVrVA99VofHiE5IMFfg3o0pRw5sTKSTM5XBTSZbKnADSmkIOStFM24ld
- zguw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=I4CHDtUGbNIJQpM023wPiaWJqW6VgcrXTJggEv8wwSw=;
- b=Zq1q+IcdRyfFxSuPPQqRmQikGL0E/QXMyUsHlh5pjqxmWUJjeCM5VJBgW+ry3b4rp3
- tu42BKpcH8SQ5I2rGXiVXHQ9pSj33sSHOi6gUcF6Hs6+SUTxxjQtoz4yL8BMcModAVN3
- DPDosLqCNCDJIzq89+L6yqPLIDpYOeBBPoqClo2iOYk7+fcnOoLybqmvWa9SygxHOYcv
- 6fu7WgAch+lLFmwjwYubpZxmwnscdLV7UuHuwG0/ZJGaUN5zHgV2KAII/mtEQd2387r3
- V3ogFnKiqhnQ4VtzwhzSK0JtlG6iKDe4eStYbhU5JuIoQbHNtm0kyyvnBLlDK4Yxavc1
- Rbtw==
-X-Gm-Message-State: AOAM533WUJ3xnBMJ8UmnL0nwhWdVWK+nrNUUmeKdyE0q/On4XSo0sbx7
- X7c1511owP4mFZsE8AwJOExt2Q==
-X-Google-Smtp-Source: ABdhPJwcV7Uyws0t/xTffHxasXM2N+eWSdO5J/LaZj2Wqdrek/AXYoDsM1gv08im58tWUSJ8zIbVUg==
-X-Received: by 2002:a17:90a:e110:: with SMTP id
- c16mr11572525pjz.84.1604901203964; 
- Sun, 08 Nov 2020 21:53:23 -0800 (PST)
-Received: from localhost ([122.172.12.172])
- by smtp.gmail.com with ESMTPSA id 12sm3592369pjn.19.2020.11.08.21.53.22
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 08 Nov 2020 21:53:22 -0800 (PST)
-Date: Mon, 9 Nov 2020 11:23:20 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH v1 17/30] mmc: sdhci-tegra: Support OPP and core voltage
- scaling
-Message-ID: <20201109055320.5y5gf2whwast2mi4@vireshk-i7>
-References: <6fa54ce6-d5ae-d04f-7c77-b62c148d92b7@gmail.com>
- <20201106061513.uyys7njcqcdlah67@vireshk-i7>
- <a6926456-8bce-a438-bfaa-be334208f004@gmail.com>
- <CAEExFWsp0DWw1yO84e3vzr_YZkqkd+pyPfQQR3J2W6n3wTX4Jw@mail.gmail.com>
- <20201109050010.g47zojh6wafvwqva@vireshk-i7>
- <c584b301-e052-7f01-335d-8f9160865198@gmail.com>
- <20201109051014.oa6bt4g3ctm2hnuy@vireshk-i7>
- <4476fed9-a356-b7f1-32ee-935343e23038@gmail.com>
- <20201109053546.xupmmsx5qccn46tr@vireshk-i7>
- <33a7ad95-a8cf-7b88-0f78-09086c1a4adf@gmail.com>
+ with ESMTP id ZyhzY8rZKuUU for <devel@linuxdriverproject.org>;
+ Mon,  9 Nov 2020 09:43:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
+ [66.111.4.224])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 04B5786A08
+ for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 09:43:09 +0000 (UTC)
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 1456D580195;
+ Mon,  9 Nov 2020 04:43:08 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Mon, 09 Nov 2020 04:43:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=lmiqVPfBRO9HsD4eiakrDCNXKqB
+ n8TEbx/O27OWVDLI=; b=mypyW2SRGaFWVqh9eIwS+6XSviN7iSg5vBD0DujP08f
+ NTMwnLh+7qpBOyAYunecocrgYA+ZD83xDOK8186OMOoFQ+Xb0nOs2zQyXlkxhlw6
+ HPv8vT2JZq1TKs+X9DjJJUUqPy0aDbbd3pVpyIuUbMaFmpDcu9YttXA0ME5BnQU+
+ NcaufGiE2apM4uhQXjANLBhcteDxGlRwLTkXGVsU/zW13YivuK5ePcX7SSPvnSiC
+ kKmx6Y/c5qCfRB6yCY5NEzOLq4M2cUyL8aw1cmhpEM7yYILzhXH2Mca48y8YDMTT
+ EKe976E321k4CFGyXoCKSvuRwNw03gU6RZDx6NzuRbw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=lmiqVP
+ fBRO9HsD4eiakrDCNXKqBn8TEbx/O27OWVDLI=; b=H7qY1QFWL2E1stPQpyP9eg
+ AAJ4inT9BR8xe2fI1/fkS8WJi0i6ZctMYo+URIun6SRJm2+L4WN/fxQqwdjgfDPt
+ ygQ9aQNUbTllTVupPO7i8IqlrkLimVvKL4ZTPQk8aBq3f9DnNR2zi95Te3Iw+Kad
+ 7hwMUljwZ6V/YSmI7p2I8dPUgAQYYjexVXkrIaXnYF6RIzR8o6iiJI//IyDqQbAW
+ zlG6aJJEq2h648P35sUz05qDSNox7LNPkaAyka7Ab/YwvSWwmrltpi1ZSwVMz76C
+ rgmGmYuvrqlNJKZEk0tutQTo7iwFqKEjmZnDm+Q7AQosE729qDxk192LxCSTf/VQ
+ ==
+X-ME-Sender: <xms:KQ-pXwe_i8dNiJZAY4tlnzKs9XbqOj8MBM7z25Mxwdov2thimc9DLg>
+ <xme:KQ-pXyO8ivi7WZ8BAwODuMeesd9QLkTkBWKTaIn0WyOYT9lYWpAF-L9znw6Jvor15
+ cieyRFDbpVwMEIUN8E>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudduhedgtdekucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+ vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+ htvghrnhepleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieeh
+ gedunecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
+ frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:KQ-pXxjlvTmOlgd9bjlnbeGUPVWLSCvcZhonXSR4YQ4KX-CI1c81Ow>
+ <xmx:KQ-pX1-HsXhn-od1yaHQFkk1IpgBnrmnLSb9H6eruasLpI3dYiJP3w>
+ <xmx:KQ-pX8vBDU1Pcsf3hAEUlTyz0uO8CENMf2hwZwyqRlIqjkqsQvmEtw>
+ <xmx:LA-pX8FUnd_DscCKNzgrRd-uO6wlsVUSe8fyyt0RSAgNhH-tifm-HA>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 0230C3280065;
+ Mon,  9 Nov 2020 04:43:04 -0500 (EST)
+Date: Mon, 9 Nov 2020 10:43:03 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Christoph Hellwig <hch@lst.de>, Hans Verkuil <hverkuil@xs4all.nl>,
+ wens@kernel.org
+Subject: Re: [PATCH 0/7] sunxi: Remove the calls to dma_direct_set_offset
+Message-ID: <20201109094303.llqsxqoxjagiqa55@gilmour.lan>
+References: <20201106151411.321743-1-maxime@cerno.tech>
+ <20201106160737.GA31913@lst.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <33a7ad95-a8cf-7b88-0f78-09086c1a4adf@gmail.com>
-User-Agent: NeoMutt/20180716-391-311a52
+In-Reply-To: <20201106160737.GA31913@lst.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,51 +98,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- linux-pwm@vger.kernel.org, Frank Lee <tiny.windzz@gmail.com>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- driver-dev <devel@driverdev.osuosl.org>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
- Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-media@vger.kernel.org, DTML <devicetree@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
+Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Yong Deng <yong.deng@magewell.com>, Daniel Vetter <daniel.vetter@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- "open list:SECURE DIGITAL HO..." <linux-mmc@vger.kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============3951962015989269019=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMDktMTEtMjAsIDA4OjQ0LCBEbWl0cnkgT3NpcGVua28gd3JvdGU6Cj4gMDkuMTEuMjAyMCAw
-ODozNSwgVmlyZXNoIEt1bWFyINC/0LjRiNC10YI6Cj4gPiBPbiAwOS0xMS0yMCwgMDg6MTksIERt
-aXRyeSBPc2lwZW5rbyB3cm90ZToKPiA+PiBUaGFua3MsIEkgbWFkZSBpdCBpbiBhIGRpZmZlcmVu
-dCB3YXkgYnkgc2ltcGx5IGFkZGluZyBoZWxwZXJzIHRvIHRoZQo+ID4+IHBtX29wcC5oIHdoaWNo
-IHVzZSBkZXZtX2FkZF9hY3Rpb25fb3JfcmVzZXQoKS4gVGhpcyBkb2Vzbid0IHJlcXVpcmUgdG8K
-PiA+PiBhZGQgbmV3IGtlcm5lbCBzeW1ib2xzLgo+ID4gCj4gPiBJIHdpbGwgcHJlZmVyIHRvIGFk
-ZCBpdCBpbiBjb3JlLmMgaXRzZWxmLCBhbmQgeWVzCj4gPiBkZXZtX2FkZF9hY3Rpb25fb3JfcmVz
-ZXQoKSBsb29rcyBiZXR0ZXIuIEJ1dCBJIGFtIHN0aWxsIG5vdCBzdXJlIGZvcgo+ID4gd2hpY2gg
-aGVscGVycyBkbyB3ZSBuZWVkIHRoZSBkZXZtXyooKSB2YXJpYW50cywgYXMgdGhpcyBpcyBvbmx5
-IHVzZWZ1bAo+ID4gZm9yIG5vbi1DUFUgZGV2aWNlcy4gQnV0IGlmIHdlIGhhdmUgdXNlcnMgdGhh
-dCB3ZSBjYW4gYWRkIHJpZ2h0IG5vdywKPiA+IHdoeSBub3QuCj4gCj4gQWxsIGN1cnJlbnQgbm9u
-LUNQVSBkcml2ZXJzIChkZXZmcmVxLCBtbWMsIG1lbW9yeSwgZXRjKSBjYW4gYmVuZWZpdCBmcm9t
-IGl0Lgo+IAo+IEZvciBUZWdyYSBkcml2ZXJzIHdlIG5lZWQgdGhlc2UgdmFyaWFudHM6Cj4gCj4g
-ZGV2bV9wbV9vcHBfc2V0X3N1cHBvcnRlZF9odygpCj4gZGV2bV9wbV9vcHBfc2V0X3JlZ3VsYXRv
-cnMoKSBbaWYgd2Ugd29uJ3QgdXNlIEdFTlBEXQo+IGRldm1fcG1fb3BwX3NldF9jbGtuYW1lKCkK
-PiBkZXZtX3BtX29wcF9vZl9hZGRfdGFibGUoKQoKSSB0cmllZCB0byBsb29rIGVhcmxpZXIgZm9y
-IHRoZSBzdHVmZiBhbHJlYWR5IG1lcmdlZCBpbiBhbmQgZGlkbid0CmZpbmQgYSBsb3Qgb2Ygc3R1
-ZmYgd2hlcmUgdGhlIGRldm1fKiBjb3VsZCBiZSB1c2VkLCBtYXliZSBJIG1pc3NlZApzb21lIG9m
-IGl0LgoKRnJhbmssIHdvdWxkIHlvdSBsaWtlIHRvIHJlZnJlc2ggeW91ciBzZXJpZXMgYmFzZWQg
-b24gc3VnZ2VzdGlvbnMgZnJvbQpEbWl0cnkgYW5kIG1ha2Ugb3RoZXIgZHJpdmVycyBhZGFwdCB0
-byB0aGUgbmV3IEFQSXMgPwoKLS0gCnZpcmVzaApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJw
-cm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+
+--===============3951962015989269019==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ukr2zryovmvm4axa"
+Content-Disposition: inline
+
+
+--ukr2zryovmvm4axa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Christoph, Chen-Yu, Hans,
+
+On Fri, Nov 06, 2020 at 05:07:37PM +0100, Christoph Hellwig wrote:
+> Thanks,
+>=20
+> this looks good to me:
+>=20
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
+>=20
+> Can you include this patch at the end of your series to that it gets
+> picked up with the other patches?
+
+I guess the easiest to avoid bisection issues would be to merge all this
+through drm-misc, would that work for you?
+
+Maxime
+
+--ukr2zryovmvm4axa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX6kPJwAKCRDj7w1vZxhR
+xVdNAQDHWf5opH2Wk5MBiU7aGQjw4usXGRwBxWeeBmmVLm8FsQEA8Y3/aoi85/VG
+utrIfztWYorSmqfL/yhtZhR8bdeSEwg=
+=ZXtW
+-----END PGP SIGNATURE-----
+
+--ukr2zryovmvm4axa--
+
+--===============3951962015989269019==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3951962015989269019==--
