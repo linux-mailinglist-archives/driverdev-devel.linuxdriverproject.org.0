@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A7122AB983
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 14:10:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82A022AB98B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 14:10:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5C9F587129;
-	Mon,  9 Nov 2020 13:10:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C1A11204D2;
+	Mon,  9 Nov 2020 13:10:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TuiP4nKJ4CCY; Mon,  9 Nov 2020 13:10:12 +0000 (UTC)
+	with ESMTP id YdkmqzfTuz5B; Mon,  9 Nov 2020 13:10:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C324D8712B;
-	Mon,  9 Nov 2020 13:10:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C596C20531;
+	Mon,  9 Nov 2020 13:10:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 431E61BF37B
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B70071BF37B
  for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 13:10:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 394F485EA5
+ by silver.osuosl.org (Postfix) with ESMTP id A037A2050F
  for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 13:10:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VAdx7Twi-KQH for <devel@linuxdriverproject.org>;
- Mon,  9 Nov 2020 13:10:07 +0000 (UTC)
+ with ESMTP id KiRJRBU-vq8s for <devel@linuxdriverproject.org>;
+ Mon,  9 Nov 2020 13:10:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C0D5685DCA
+ by silver.osuosl.org (Postfix) with ESMTPS id 894AA204D2
  for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 13:10:06 +0000 (UTC)
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CVBDH0LJXzLwYV;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CVBDH08ymzLwYL;
  Mon,  9 Nov 2020 21:09:51 +0800 (CST)
 Received: from huawei.com (10.175.127.227) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Mon, 9 Nov 2020
- 21:09:59 +0800
+ 21:10:00 +0800
 From: Zhang Qilong <zhangqilong3@huawei.com>
 To: <vaibhav.sr@gmail.com>, <mgreer@animalcreek.com>, <johan@kernel.org>,
  <elder@kernel.org>, <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/2] staging: greybus: codecs: Fix reference counter leak in
+Subject: [PATCH 2/2] greybus: audio: apbridgea: Fix reference counter leak in
  error handling
-Date: Mon, 9 Nov 2020 21:13:46 +0800
-Message-ID: <20201109131347.1725288-2-zhangqilong3@huawei.com>
+Date: Mon, 9 Nov 2020 21:13:47 +0800
+Message-ID: <20201109131347.1725288-3-zhangqilong3@huawei.com>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20201109131347.1725288-1-zhangqilong3@huawei.com>
 References: <20201109131347.1725288-1-zhangqilong3@huawei.com>
@@ -68,37 +68,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-gb_pm_runtime_get_sync has increased the usage counter of the device here.
-Forgetting to call gb_pm_runtime_put_noidle will result in usage counter
-leak in the error branch of (gbcodec_hw_params and gbcodec_prepare). We
-fixed it by adding it.
+When gb_audio_apbridgea_register_cport failed, maybe:
 
-Fixes: c388ae7696992 ("greybus: audio: Update pm runtime support in dai_ops callback")
+  1) gb_pm_runtime_get_sync failed, usage counter remained unchanged;
+
+  2) gb_hd_output failed, usage counter remained increased;
+
+In error state, there are two different states in usage cpounter. So,
+if gb_hd_output failed, we should call gb_pm_runtime_put_autosuspend
+ot decrease usage counter for balabce preventing reference leak. And
+we fixed it by add gb_pm_runtime_put_autosuspend when gb_hd_output
+failed.
+
+Fixes: 6ba7fad430d63 ("Add runtime pm support to audio protocol device class driver.")
 Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
 ---
- drivers/staging/greybus/audio_codec.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/greybus/audio_apbridgea.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-index 17a39ed63769..b589cf6b1d03 100644
---- a/drivers/staging/greybus/audio_codec.c
-+++ b/drivers/staging/greybus/audio_codec.c
-@@ -471,6 +471,7 @@ static int gbcodec_hw_params(struct snd_pcm_substream *substream,
- 	if (ret) {
- 		dev_err_ratelimited(dai->dev, "%d: Error during set_config\n",
- 				    ret);
-+		gb_pm_runtime_put_noidle(bundle);
- 		mutex_unlock(&codec->lock);
+diff --git a/drivers/staging/greybus/audio_apbridgea.c b/drivers/staging/greybus/audio_apbridgea.c
+index 26117e390deb..50545fd9756c 100644
+--- a/drivers/staging/greybus/audio_apbridgea.c
++++ b/drivers/staging/greybus/audio_apbridgea.c
+@@ -42,8 +42,12 @@ int gb_audio_apbridgea_register_cport(struct gb_connection *connection,
+ 	if (ret)
  		return ret;
- 	}
-@@ -545,6 +546,7 @@ static int gbcodec_prepare(struct snd_pcm_substream *substream,
- 		break;
- 	}
- 	if (ret) {
-+		gb_pm_runtime_put_noidle(bundle);
- 		mutex_unlock(&codec->lock);
- 		dev_err_ratelimited(dai->dev, "set_data_size failed:%d\n", ret);
- 		return ret;
+ 
+-	return gb_hd_output(connection->hd, &req, sizeof(req),
++	ret = gb_hd_output(connection->hd, &req, sizeof(req),
+ 			    GB_APB_REQUEST_AUDIO_CONTROL, true);
++	if (ret)
++		gb_pm_runtime_put_autosuspend(connection->bundle);
++
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(gb_audio_apbridgea_register_cport);
+ 
 -- 
 2.25.4
 
