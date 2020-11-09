@@ -1,77 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E8262AC5E6
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 21:22:31 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7ED82AC7B0
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 22:54:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2584C860F0;
-	Mon,  9 Nov 2020 20:22:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4696A865D3;
+	Mon,  9 Nov 2020 21:54:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qZgTtUGp-4BC; Mon,  9 Nov 2020 20:22:28 +0000 (UTC)
+	with ESMTP id B1gbn-tV5CKN; Mon,  9 Nov 2020 21:54:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 752E285D54;
-	Mon,  9 Nov 2020 20:22:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6A0F5863CC;
+	Mon,  9 Nov 2020 21:54:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A2D581BF2E5
- for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 20:22:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 568931BF317
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 21:54:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9945C866B0
- for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 20:22:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 534DD863CC
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 21:54:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lmOTT2-xgi3F for <devel@linuxdriverproject.org>;
- Mon,  9 Nov 2020 20:22:17 +0000 (UTC)
+ with ESMTP id AxeTHGeSrGPO for <devel@linuxdriverproject.org>;
+ Mon,  9 Nov 2020 21:54:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f65.google.com (mail-ej1-f65.google.com
- [209.85.218.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D603B866A1
- for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 20:22:16 +0000 (UTC)
-Received: by mail-ej1-f65.google.com with SMTP id o9so14204386ejg.1
- for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 12:22:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LCMgJ7dbbZt1+HrR8oLWGeAravAmNrbCj4m+3YIlKbA=;
- b=OVd0gMwifdU3MsAuI3RT3IVO9V4PDqu1M0mAjCzVGoW12ft8hRyFYCePJhCZgG7tYd
- /P/umBD8yiK57aR6HlCylFs3J2NtIIitsnEVIjLr5H8rAK93UYFFG8eCLXxB57ilxYY7
- ENodMENAG5OsinGjSOBTOuZfrdXK4fg/rO7DYY7XRNFK/Sptaxg9UMs2UD2e7TyYBmVu
- bgim+1SylsrpHi2MMloi5Lqy5OugH2UViVWeGq4QkIlQHTIJrH1E9It27gFf0n+IJKdW
- fkHtCmpEkaxUk/k1lAtbPlP/nVQwUgQVUyZguhEnaGAE8rYRRgF+GAr2QpkweIRBh9jh
- ziIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LCMgJ7dbbZt1+HrR8oLWGeAravAmNrbCj4m+3YIlKbA=;
- b=TW8vWtIwUquviRZ/jpCthd+H3W3p8lR4h3TfYhZiJa6y9zNzKkZ8vGbXxU3C4nKwqE
- ojgRSUAhsNhOgkjUrscdvIS8/0FX0V+SwU4lWZEq76+5/5XLgtOlKGD114ET9J3j/XUI
- bizzfYxUAmc7h0r+1RR+XvOxMxy0/XKyAPFtQ3mkUZfaUWQgZVSp5Afw5WXgtKOqA1qG
- 2poSDkS4tAPZkFSNzPjLjvmeHAgvuZXz+bUe9WjZwsL5kNaH8NqMW5tBc8c3bIgkoeRK
- keyfjvHZUdXTnAUjHOy4IHp0t/28eys8KFmVp8faqDX3c2HtYUpAIrc0Bv+CoFI5LFUt
- PfsA==
-X-Gm-Message-State: AOAM5338/tp52kgxFhveJNt8BrcsOwLJxQ6WWQQKxxeEnXXBXp+NAcUL
- B7kOPMP+ttOo3Rj81J+bWn8=
-X-Google-Smtp-Source: ABdhPJzm321fE545DRgKC/dFiA7rRHiqKZVk0qkVLNYGRUixRINE3FxNHffMBoyPdsgyg0N5FIVZqg==
-X-Received: by 2002:a17:906:860b:: with SMTP id
- o11mr4928310ejx.252.1604953335339; 
- Mon, 09 Nov 2020 12:22:15 -0800 (PST)
-Received: from localhost.localdomain ([86.121.208.33])
- by smtp.gmail.com with ESMTPSA id cn8sm9304308edb.18.2020.11.09.12.22.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2020 12:22:14 -0800 (PST)
-From: Eduard Vintila <eduard.vintila47@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8192e: Braces should be used on all arms of
- statement
-Date: Mon,  9 Nov 2020 22:20:16 +0200
-Message-Id: <20201109202016.79329-1-eduard.vintila47@gmail.com>
-X-Mailer: git-send-email 2.29.2
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B060784D06
+ for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 21:54:52 +0000 (UTC)
+IronPort-SDR: iYbjY1LBPhSEiGbNTn1MEXfvbF4uEeTH3bT9dxyCyu0eNBvZzOk5Bl/R0Qlu1n/itcL0jfePRr
+ Gr5JfGs6lVfQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9800"; a="166367674"
+X-IronPort-AV: E=Sophos;i="5.77,464,1596524400"; d="scan'208";a="166367674"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Nov 2020 13:54:48 -0800
+IronPort-SDR: /sHdMip+rdsrHL5bYXikdvQ3EM3EwhYAS0Guf2KvQApN5ZkX5bXJX5saJozJGjD0GZhNb6lGZj
+ 5n/tHND0ZSgQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,464,1596524400"; d="scan'208";a="541048043"
+Received: from lkp-server01.sh.intel.com (HELO d0be80f1a028) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 09 Nov 2020 13:54:47 -0800
+Received: from kbuild by d0be80f1a028 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kcF7e-0000RA-FE; Mon, 09 Nov 2020 21:54:46 +0000
+Date: Tue, 10 Nov 2020 05:54:42 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ f4acd33c446b2ba97f1552a4da90050109d01ca7
+Message-ID: <5fa9baa2.9tSbMWO8+rFfv3vo%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,76 +69,138 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, john.oldman@polehill.co.uk, robsonde@gmail.com,
- eduard.vintila47@gmail.com, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a coding style issue by adding braces on all arms of an "if"
-statement.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: f4acd33c446b2ba97f1552a4da90050109d01ca7  staging: rtl8723bs: replace ieee80211_back_actioncode
 
-Signed-off-by: Eduard Vintila <eduard.vintila47@gmail.com>
+elapsed time: 1017m
+
+configs tested: 108
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+powerpc                  storcenter_defconfig
+ia64                            zx1_defconfig
+sh                            migor_defconfig
+powerpc                    sam440ep_defconfig
+powerpc                     pseries_defconfig
+m68k                         amcore_defconfig
+arm                         s5pv210_defconfig
+xtensa                  audio_kc705_defconfig
+m68k                          hp300_defconfig
+sh                           se7206_defconfig
+arm                          ep93xx_defconfig
+arc                        nsimosci_defconfig
+mips                           mtx1_defconfig
+arm                        mvebu_v7_defconfig
+arm                          exynos_defconfig
+arc                                 defconfig
+mips                      fuloong2e_defconfig
+sh                         microdev_defconfig
+arm                            mmp2_defconfig
+arm                          collie_defconfig
+sh                        sh7757lcr_defconfig
+m68k                        m5307c3_defconfig
+arm                             rpc_defconfig
+m68k                        m5272c3_defconfig
+c6x                              alldefconfig
+powerpc                      pmac32_defconfig
+arm                          imote2_defconfig
+parisc                           alldefconfig
+arm                        shmobile_defconfig
+arm                   milbeaut_m10v_defconfig
+powerpc                     tqm8540_defconfig
+powerpc                     skiroot_defconfig
+arm                         shannon_defconfig
+nds32                               defconfig
+arm                           corgi_defconfig
+arm                          gemini_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20201109
+i386                 randconfig-a006-20201109
+i386                 randconfig-a005-20201109
+i386                 randconfig-a001-20201109
+i386                 randconfig-a003-20201109
+i386                 randconfig-a002-20201109
+i386                 randconfig-a014-20201109
+i386                 randconfig-a015-20201109
+i386                 randconfig-a013-20201109
+i386                 randconfig-a016-20201109
+i386                 randconfig-a011-20201109
+i386                 randconfig-a012-20201109
+x86_64               randconfig-a003-20201110
+x86_64               randconfig-a005-20201110
+x86_64               randconfig-a004-20201110
+x86_64               randconfig-a002-20201110
+x86_64               randconfig-a006-20201110
+x86_64               randconfig-a001-20201110
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a012-20201109
+x86_64               randconfig-a015-20201109
+x86_64               randconfig-a013-20201109
+x86_64               randconfig-a011-20201109
+x86_64               randconfig-a014-20201109
+x86_64               randconfig-a016-20201109
+
 ---
- drivers/staging/rtl8192e/rtl819x_HTProc.c | 27 ++++++++++++-----------
- 1 file changed, 14 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-index 8abc921ecb3e..9377e48c3f32 100644
---- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-@@ -177,33 +177,34 @@ static void HTIOTPeerDetermine(struct rtllib_device *ieee)
- 			pHTInfo->IOTPeer = HT_IOT_PEER_REALTEK_92SE;
- 		if (net->bssht.RT2RT_HT_Mode & RT_HT_CAP_USE_SOFTAP)
- 			pHTInfo->IOTPeer = HT_IOT_PEER_92U_SOFTAP;
--	} else if (net->broadcom_cap_exist)
-+	} else if (net->broadcom_cap_exist) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_BROADCOM;
--	else if (!memcmp(net->bssid, UNKNOWN_BORADCOM, 3) ||
-+	} else if (!memcmp(net->bssid, UNKNOWN_BORADCOM, 3) ||
- 		 !memcmp(net->bssid, LINKSYSWRT330_LINKSYSWRT300_BROADCOM, 3) ||
--		 !memcmp(net->bssid, LINKSYSWRT350_LINKSYSWRT150_BROADCOM, 3))
-+		 !memcmp(net->bssid, LINKSYSWRT350_LINKSYSWRT150_BROADCOM, 3)) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_BROADCOM;
--	else if ((memcmp(net->bssid, BELKINF5D8233V1_RALINK, 3) == 0) ||
-+	} else if ((memcmp(net->bssid, BELKINF5D8233V1_RALINK, 3) == 0) ||
- 		 (memcmp(net->bssid, BELKINF5D82334V3_RALINK, 3) == 0) ||
- 		 (memcmp(net->bssid, PCI_RALINK, 3) == 0) ||
- 		 (memcmp(net->bssid, EDIMAX_RALINK, 3) == 0) ||
- 		 (memcmp(net->bssid, AIRLINK_RALINK, 3) == 0) ||
--		  net->ralink_cap_exist)
-+		  net->ralink_cap_exist) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_RALINK;
--	else if ((net->atheros_cap_exist) ||
-+	} else if ((net->atheros_cap_exist) ||
- 		(memcmp(net->bssid, DLINK_ATHEROS_1, 3) == 0) ||
--		(memcmp(net->bssid, DLINK_ATHEROS_2, 3) == 0))
-+		(memcmp(net->bssid, DLINK_ATHEROS_2, 3) == 0)) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_ATHEROS;
--	else if ((memcmp(net->bssid, CISCO_BROADCOM, 3) == 0) ||
--		  net->cisco_cap_exist)
-+	} else if ((memcmp(net->bssid, CISCO_BROADCOM, 3) == 0) ||
-+		  net->cisco_cap_exist) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_CISCO;
--	else if ((memcmp(net->bssid, LINKSYS_MARVELL_4400N, 3) == 0) ||
--		  net->marvell_cap_exist)
-+	} else if ((memcmp(net->bssid, LINKSYS_MARVELL_4400N, 3) == 0) ||
-+		  net->marvell_cap_exist) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_MARVELL;
--	else if (net->airgo_cap_exist)
-+	} else if (net->airgo_cap_exist) {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_AIRGO;
--	else
-+	} else {
- 		pHTInfo->IOTPeer = HT_IOT_PEER_UNKNOWN;
-+	}
- 
- 	netdev_dbg(ieee->dev, "IOTPEER: %x\n", pHTInfo->IOTPeer);
- }
--- 
-2.29.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
