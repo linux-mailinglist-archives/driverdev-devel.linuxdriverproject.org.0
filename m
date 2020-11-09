@@ -2,87 +2,87 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 309A82AB04A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 05:47:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3FB702AB066
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 06:00:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 304E6204F8;
-	Mon,  9 Nov 2020 04:47:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0A83820509;
+	Mon,  9 Nov 2020 05:00:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0o+pauwk+TO3; Mon,  9 Nov 2020 04:47:56 +0000 (UTC)
+	with ESMTP id hxN6n7ya2wS1; Mon,  9 Nov 2020 05:00:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D105220104;
-	Mon,  9 Nov 2020 04:47:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 283B2204F9;
+	Mon,  9 Nov 2020 05:00:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1C1D21BF29E
- for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 04:47:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 316C41BF29E
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 05:00:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 181E085F8D
- for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 04:47:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2BD46870B1
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 05:00:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YDMVvDE0dPhW for <devel@linuxdriverproject.org>;
- Mon,  9 Nov 2020 04:47:52 +0000 (UTC)
+ with ESMTP id eMSrnoREqMfo for <devel@linuxdriverproject.org>;
+ Mon,  9 Nov 2020 05:00:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3817285F8B
- for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 04:47:52 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id v18so8709249ljc.3
- for <devel@driverdev.osuosl.org>; Sun, 08 Nov 2020 20:47:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=cLiYnZqbbTYE+Gmw/2Cct5bDgH44FThPRJ7yw1uOIgg=;
- b=q2vWN2tcxbRALqh8OhrgcjDqiOjQbYaIcNRVNh3xuY/yQantgDrl9u9nLrJnRUv9hA
- ozelSxwbh5ozbLSshRt26t0nn4JgOue72bFZttfyw0OBrgyxy/0q3YUfYR1pgzipa1SN
- 6rHhFDgY16ZfVDrPNbw8QVvyGqs9wQGx8X/2T03ASxqQRgNE0dCDud32D9uGfGNfmZew
- AenTGWzR9MZaHnzxGDIGm5LIPE7Dlu6AUnIf3Gl4/2Uz0XXecX93kgVw1IzKv+dHuxNp
- SVxUDP0R0o66WKgdGwDfxEasf8e1tTJw/gWlwvjZlL0cz4D/qEX0YXjFyR4Mid3JYB8g
- gN0w==
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 81A78870A7
+ for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 05:00:14 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id z1so4126713plo.12
+ for <devel@driverdev.osuosl.org>; Sun, 08 Nov 2020 21:00:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=pqRYwsgE80dyuksaxFD472eZJVu82XkbBKetRcMgwkU=;
+ b=jEZAcCQJcoNyrqtopd159IVehbQnFdrCz6Gv6znnBL+oQ9Lbu4SwHrg2soadRKeK2K
+ tHih4WST3i/TCcj6zG3NcC99f5l/4cWK9Hfln+BVXXbkrR1PnWTasCM5zfT/TMCZDGt9
+ 4y9fQy768qLLnTE3MNoBwJpSS+n1y2hy4CEdK5c9TZgDv/CsZCyWoBuiaAscEi6XOXaz
+ fFRrm9tIKwCRdg8pkO9cL1mnHke7AsuFQHSxVtVK1lOFWXAcbU0rrIszlYFyBsfjnS5J
+ 5MYwsJUwjmTVqE/xB66miJ9Smg7Qnite7DZudEoTQOg9GTVBnz2CKxeWfhRk9Fxccles
+ G1MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=cLiYnZqbbTYE+Gmw/2Cct5bDgH44FThPRJ7yw1uOIgg=;
- b=nRpv5tRNi29a3JEvI077cpshKQJXOjs38UUCoaicWVCSCYSBUR5IcLQdW99FMA6FJq
- P72gWMO9mkrK6y1sLG6GXBktHi86p5egtvg3AV9HyYqC9EkzyjU2PssrLOtowy2V4jlQ
- lmElCxBTLsU7pg6SL0OWREwEEefEhD/6zs/ZDH2u35iRRMLNb++OmkQBj1xD3Km5bpJR
- j8U+ou1CsPXlZEYThEFnjMZKX/4K5OymZcH2A5M/My6K8NGMz7YDaO68qAwhm1wUhj4E
- +6l3D4I/7ZGNlCVIe5aZ7MaR7+/bVqX94D1S0vXbLntAVtnqjitkVOWSm8g5uocxVblp
- VniA==
-X-Gm-Message-State: AOAM53282S9hX2jCLH7klXERG9OjuwHJHJOFXpRZQ1QplC0BI8sqSTOd
- Rs/jTT6Swyii98hX0UdGy9Y=
-X-Google-Smtp-Source: ABdhPJyDE2aG8TshKuizrAN7qDH3x0b/P0IYn1ToY1b01Ld0Wj957fykeNLLAtH1r4vAPpkK8xTQfg==
-X-Received: by 2002:a05:651c:2cb:: with SMTP id
- f11mr218668ljo.371.1604897270127; 
- Sun, 08 Nov 2020 20:47:50 -0800 (PST)
-Received: from [192.168.2.145] (109-252-193-159.dynamic.spd-mgts.ru.
- [109.252.193.159])
- by smtp.googlemail.com with ESMTPSA id w13sm795441lfq.72.2020.11.08.20.47.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 08 Nov 2020 20:47:49 -0800 (PST)
-Subject: Re: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA
- Tegra20/30 SoCs
-To: Viresh Kumar <viresh.kumar@linaro.org>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=pqRYwsgE80dyuksaxFD472eZJVu82XkbBKetRcMgwkU=;
+ b=hY0UqrPP97coK5xFHrsdRJQScLXMTQomh+NKyXSswrVVvgCc34rEJOJL4AeKGvA843
+ BA12XWsxAmYKDcJR5qZJ8S/4/0lmF+Y3PT2De8BKKGUIKOqWNHgcp26r2Lt6VPTHASbZ
+ bew4IO6I5rvXYTU/SNcP6qw/FUtQjWVdJLwidLFZMmFQwGlDpvAVae91UkPSKhUdq7Bw
+ 250V68M2B82FJqtKMph/eqILnC3dSWgAJzMEvsGzG+YjqdC02R8LdHpYWan+NoKxcxTZ
+ VKIHIdfuMACeCywJ7ZeWIuZpBrCeiIsX7YdEYW9PD9QfYhFJ2LGFxiVishc3TN7k2JLa
+ LDCA==
+X-Gm-Message-State: AOAM532KnKEuDLaztXHNijXk9qFB7wXwj2AFJX652XPfyztAyY/Dlhdb
+ YtVUb8tzkBg6VblBe3ABU4ZnFw==
+X-Google-Smtp-Source: ABdhPJxqVzbXuE7r2OTnlJIGnZcPTN9Z6rBdnUMyX2RPUkOj+pqZMZGHLq2naeoWPtp+jW/061Xf1w==
+X-Received: by 2002:a17:902:a612:b029:d6:6ae:4d47 with SMTP id
+ u18-20020a170902a612b02900d606ae4d47mr10993684plq.50.1604898014065; 
+ Sun, 08 Nov 2020 21:00:14 -0800 (PST)
+Received: from localhost ([122.172.12.172])
+ by smtp.gmail.com with ESMTPSA id gx24sm3171830pjb.38.2020.11.08.21.00.12
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 08 Nov 2020 21:00:12 -0800 (PST)
+Date: Mon, 9 Nov 2020 10:30:10 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Frank Lee <tiny.windzz@gmail.com>
+Subject: Re: [PATCH v1 17/30] mmc: sdhci-tegra: Support OPP and core voltage
+ scaling
+Message-ID: <20201109050010.g47zojh6wafvwqva@vireshk-i7>
 References: <20201104234427.26477-1-digetx@gmail.com>
- <CAPDyKFr7qTU2RPhA_ZrbCayoTTNUEno1zdmvmv+8HBe-Owrfeg@mail.gmail.com>
- <cd147ab0-1304-a491-7a56-ee6199c02d32@gmail.com>
- <2716c195-083a-112f-f1e5-2f6b7152a4b5@gmail.com>
- <20201109044354.ljd5pomhob6b7u5v@vireshk-i7>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <713b319e-bb7b-4743-59f0-b9892c3da92d@gmail.com>
-Date: Mon, 9 Nov 2020 07:47:48 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <20201104234427.26477-18-digetx@gmail.com>
+ <CAOh2x==sy1w7_oEV8=toC6uQnSN44wyOixbP_X0BrMsnm1AUFg@mail.gmail.com>
+ <6fa54ce6-d5ae-d04f-7c77-b62c148d92b7@gmail.com>
+ <20201106061513.uyys7njcqcdlah67@vireshk-i7>
+ <a6926456-8bce-a438-bfaa-be334208f004@gmail.com>
+ <CAEExFWsp0DWw1yO84e3vzr_YZkqkd+pyPfQQR3J2W6n3wTX4Jw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201109044354.ljd5pomhob6b7u5v@vireshk-i7>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CAEExFWsp0DWw1yO84e3vzr_YZkqkd+pyPfQQR3J2W6n3wTX4Jw@mail.gmail.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,20 +98,18 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
  DTML <devicetree@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>,
  Adrian Hunter <adrian.hunter@intel.com>,
- Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- driverdevel <devel@driverdev.osuosl.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ driver-dev <devel@driverdev.osuosl.org>,
  linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
  Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
  Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- linux-pwm@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- linux-tegra <linux-tegra@vger.kernel.org>,
+ Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-media@vger.kernel.org, linux-pwm@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-tegra@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux USB List <linux-usb@vger.kernel.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ "open list:SECURE DIGITAL HO..." <linux-mmc@vger.kernel.org>,
  Liam Girdwood <lgirdwood@gmail.com>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>
@@ -120,17 +118,31 @@ Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MDkuMTEuMjAyMCAwNzo0MywgVmlyZXNoIEt1bWFyINC/0LjRiNC10YI6Cj4gT24gMDgtMTEtMjAs
-IDE1OjE5LCBEbWl0cnkgT3NpcGVua28gd3JvdGU6Cj4+IEkgdG9vayBhIGRldGFpbGVkIGxvb2sg
-YXQgdGhlIEdFTlBEIGFuZCB0cmllZCB0byBpbXBsZW1lbnQgaXQuIEhlcmUgaXMKPj4gd2hhdCB3
-YXMgZm91bmQ6Cj4+Cj4+IDEuIEdFTlBEIGZyYW1ld29yayBkb2Vzbid0IGFnZ3JlZ2F0ZSBwZXJm
-b3JtYW5jZSByZXF1ZXN0cyBmcm9tIHRoZQo+PiBhdHRhY2hlZCBkZXZpY2VzLiBUaGlzIG1lYW5z
-IHRoYXQgaWYgZGV2aWNlQSByZXF1ZXN0cyBwZXJmb3JtYW5jZSBzdGF0ZQo+PiAxMCBhbmQgdGhl
-biBkZXZpY2VCIHJlcXVlc3RzIHN0YXRlIDMsIHRoZW4gZnJhbWV3b3JrIHdpbGwgc2V0IGRvbWFp
-bidzCj4+IHN0YXRlIHRvIDMgaW5zdGVhZCBvZiAxMC4KPiAKPiBJdCBkb2VzLiBMb29rIGF0IF9n
-ZW5wZF9yZWV2YWxfcGVyZm9ybWFuY2Vfc3RhdGUoKS4KPiAKClRoYW5rcywgSSBwcm9iYWJseSBo
-YWQgYSBidWcgaW4gdGhlIHF1aWNrIHByb3RvdHlwZSBhbmQgdGhlbiBvdmVybG9va2VkCnRoYXQg
-ZnVuY3Rpb24uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9k
-cml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRl
-di1kZXZlbAo=
+T24gMDYtMTEtMjAsIDIxOjQxLCBGcmFuayBMZWUgd3JvdGU6Cj4gT24gRnJpLCBOb3YgNiwgMjAy
+MCBhdCA5OjE4IFBNIERtaXRyeSBPc2lwZW5rbyA8ZGlnZXR4QGdtYWlsLmNvbT4gd3JvdGU6Cj4g
+Pgo+ID4gMDYuMTEuMjAyMCAwOToxNSwgVmlyZXNoIEt1bWFyINC/0LjRiNC10YI6Cj4gPiA+IFNl
+dHRpbmcgcmVndWxhdG9ycyBmb3IgY291bnQgYXMgMCBkb2Vzbid0IHNvdW5kIGdvb2QgdG8gbWUu
+Cj4gPiA+Cj4gPiA+IEJ1dCwgSSB1bmRlcnN0YW5kIHRoYXQgeW91IGRvbid0IHdhbnQgdG8gaGF2
+ZSB0aGF0IGlmIChoYXZlX3JlZ3VsYXRvcikKPiA+ID4gY2hlY2ssIGFuZCBpdCBpcyBhIGZhaXIg
+cmVxdWVzdC4gV2hhdCBJIHdpbGwgaW5zdGVhZCBkbyBpcywgYWxsb3cgYWxsCj4gPiA+IGRldl9w
+bV9vcHBfcHV0KigpIEFQSSB0byBzdGFydCBhY2NlcHRpbmcgYSBOVUxMIHBvaW50ZXIgZm9yIHRo
+ZSBPUFAKPiA+ID4gdGFibGUgYW5kIGZhaWwgc2lsZW50bHkuIEFuZCBzbyB5b3Ugd29uJ3QgYmUg
+cmVxdWlyZWQgdG8gaGF2ZSB0aGlzCj4gPiA+IHVud2FudGVkIGNoZWNrLiBCdXQgeW91IHdpbGwg
+YmUgcmVxdWlyZWQgdG8gc2F2ZSB0aGUgcG9pbnRlciByZXR1cm5lZAo+ID4gPiBiYWNrIGJ5IGRl
+dl9wbV9vcHBfc2V0X3JlZ3VsYXRvcnMoKSwgd2hpY2ggaXMgdGhlIHJpZ2h0IHRoaW5nIHRvIGRv
+Cj4gPiA+IGFueXdheXMuCj4gPgo+ID4gUGVyaGFwcyBldmVuIGEgYmV0dGVyIHZhcmlhbnQgY291
+bGQgYmUgdG8gYWRkIGEgZGV2bSB2ZXJzaW9ucyBvZiB0aGUgT1BQCj4gPiBBUEkgZnVuY3Rpb25z
+LCB0aGVuIGRyaXZlcnMgd29uJ3QgbmVlZCB0byBjYXJlIGFib3V0IHN0b3JpbmcgdGhlCj4gPiBv
+cHBfdGFibGUgcG9pbnRlciBpZiBpdCdzIHVudXNlZCBieSBkcml2ZXJzLgo+IAo+IEkgdGhpbmsg
+c28uIFRoZSBjb25zdW1lciBtYXkgbm90IGJlIHNvIGNvbmNlcm5lZCBhYm91dCB0aGUgc3RhdHVz
+IG9mCj4gdGhlc2UgT1BQIHRhYmxlcy4KPiBJZiB0aGUgZHJpdmVyIG5lZWRzIHRvIG1hbmFnZSB0
+aGUgcmVsZWFzZSwgaXQgbmVlZHMgdG8gYWRkIGEgcG9pbnRlcgo+IHRvIHRoZWlyIGRyaXZlciBn
+bG9iYWwgc3RydWN0dXJlLgo+IAo+IE1heWJlIGl0J3Mgd29ydGggaGF2aW5nIHRoZXNlIGRldm0g
+aW50ZXJmYWNlcyBmb3Igb3BwLgoKU3VyZSBpZiB0aGVyZSBhcmUgZW5vdWdoIHVzZXJzIG9mIHRo
+aXMsIEkgYW0gYWxsIGZvciBpdC4gSSB3YXMgZmluZQp3aXRoIHRoZSBwYXRjaGVzIHlvdSBzZW50
+LCBqdXN0IHRoYXQgdGhlcmUgd2VyZSBub3QgYSBsb3Qgb2YgdXNlcnMgb2YKaXQgYW5kIHNvIEkg
+cHVzaGVkIHRoZW0gYmFjay4gSWYgd2UgZmluZCB0aGF0IHdlIGhhdmUgbW9yZSB1c2VycyBvZiBp
+dApub3csIHdlIGNhbiBzdXJlbHkgZ2V0IHRoYXQgYmFjay4KCi0tIAp2aXJlc2gKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
+CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
+cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
