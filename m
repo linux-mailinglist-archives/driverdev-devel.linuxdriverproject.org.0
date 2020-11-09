@@ -1,50 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C98E2AAB0C
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Nov 2020 14:03:23 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F3B5286904;
-	Sun,  8 Nov 2020 13:03:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h6OY4PB5sJHr; Sun,  8 Nov 2020 13:03:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1B72D8689E;
-	Sun,  8 Nov 2020 13:03:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 726521BF4E6
- for <devel@linuxdriverproject.org>; Sun,  8 Nov 2020 13:03:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AEA42AB046
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Nov 2020 05:44:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4DE1D8725C
- for <devel@linuxdriverproject.org>; Sun,  8 Nov 2020 13:03:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A945870F7;
+	Mon,  9 Nov 2020 04:44:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UjqJCKnELQG1; Mon,  9 Nov 2020 04:44:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4954F870B8;
+	Mon,  9 Nov 2020 04:44:01 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BA56B1BF29E
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 04:43:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B69C085F8D
+ for <devel@linuxdriverproject.org>; Mon,  9 Nov 2020 04:43:58 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pfjMVs+HunF3 for <devel@linuxdriverproject.org>;
- Sun,  8 Nov 2020 13:03:16 +0000 (UTC)
+ with ESMTP id DarZgIDh6tN2 for <devel@linuxdriverproject.org>;
+ Mon,  9 Nov 2020 04:43:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.foescoc.com (mail.foescoc.com [146.255.98.144])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B3F6587245
- for <devel@driverdev.osuosl.org>; Sun,  8 Nov 2020 13:03:15 +0000 (UTC)
-Received: from 131.red-95-120-15.dynamicip.rima-tde.net
- (171.red-79-152-108.dynamicip.rima-tde.net [79.152.108.171])
- by mail.foescoc.com (Postfix) with ESMTPSA id 9CB517298E2
- for <devel@driverdev.osuosl.org>; Sun,  8 Nov 2020 14:03:12 +0100 (CET)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 28DF685F8B
+ for <devel@driverdev.osuosl.org>; Mon,  9 Nov 2020 04:43:57 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id u2so4103564pls.10
+ for <devel@driverdev.osuosl.org>; Sun, 08 Nov 2020 20:43:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=VeSMAdUpVTWg5rlPdJVG8pxSdZtExYB1iM9sVnjYDNg=;
+ b=eJHm3TiHV/0XNoAZ9ieRJhgkcSnJxiDmzQgtmuC631IsES0yYbO7cCylVd6eMw/FxM
+ 2w0vktpK/2bR+J/jtgktx+Gr2a5E4WIjVPPQB3qrivVht7W81PPT0kSZWbO/ezBP4oh3
+ AFt2l3D8uFT0Of/uJ0JN25E9sZwm+T3B9NQeva8HaVvfnqFTqppTyoIAHyZfRITVb3Tk
+ M+XSs405RTTGa0ZBepic36+ge8Bgo4FFga4GyIa7E9+utyyAeorXLVKT0/zgejtt2kbD
+ UaAyk8u3UMl16KNlB69cPX6b6RoOVz7YMyNvMFsZ6hY2VeKwMUlf+tOPFXVnfhIgA/En
+ +CnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=VeSMAdUpVTWg5rlPdJVG8pxSdZtExYB1iM9sVnjYDNg=;
+ b=WN+jDFDhxoQsBWYz4czo0Zca3yhOWC/rBpEO7zda+KBmcTuQ5mT6GFDDf+gwVZoIid
+ Fg9NR3Rxs8hALVQkqDIM+CB1ERNiWK1BWMDthKPbuROUUuj23Iuh+j076JfZOVUVVNVn
+ cXjX8/dcEDeZg8BLUZt4nZONHmJ9X0RvgWcGjftR67Yrfw2VN5DUeQxW4bpv9Qo75AfL
+ tJRKiTZkRN0OuFdSlTWXLvtwnsAs7sjc3JSQ0iq3oDDFdaTZtZhcaWeFvfLgxFdMhFjz
+ h6rPgTARa90B0GHNn2TwUa/NVGZWFdKATFRDzNajQArl0p/Yn2MIJG5eXqCj8LONhEO7
+ dYbw==
+X-Gm-Message-State: AOAM5319sNbjnxZNRJYLq9V6dmmG96JFR+iyyQMSneEJbivG5Q8afHE1
+ zRNvoYob5PhCjqMNAXg9lCJrHw==
+X-Google-Smtp-Source: ABdhPJyHC9U/PvJR88Atd3LH5AQkxzAqN7kL/8313M8l8h0a50sg7VR+oZ4WDuMbbCMOzGA5AzJtTw==
+X-Received: by 2002:a17:902:b58a:b029:d7:d45c:481c with SMTP id
+ a10-20020a170902b58ab02900d7d45c481cmr6521527pls.55.1604897036736; 
+ Sun, 08 Nov 2020 20:43:56 -0800 (PST)
+Received: from localhost ([122.172.12.172])
+ by smtp.gmail.com with ESMTPSA id m11sm8962236pgs.56.2020.11.08.20.43.55
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 08 Nov 2020 20:43:55 -0800 (PST)
+Date: Mon, 9 Nov 2020 10:13:54 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Dmitry Osipenko <digetx@gmail.com>
+Subject: Re: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA
+ Tegra20/30 SoCs
+Message-ID: <20201109044354.ljd5pomhob6b7u5v@vireshk-i7>
+References: <20201104234427.26477-1-digetx@gmail.com>
+ <CAPDyKFr7qTU2RPhA_ZrbCayoTTNUEno1zdmvmv+8HBe-Owrfeg@mail.gmail.com>
+ <cd147ab0-1304-a491-7a56-ee6199c02d32@gmail.com>
+ <2716c195-083a-112f-f1e5-2f6b7152a4b5@gmail.com>
 MIME-Version: 1.0
-From: "FOESCO" <info34@foescoc.com>
-To: devel@driverdev.osuosl.org
-Subject: =?Windows-1252?Q?Formaci=F3n_Bonificable_(=DAltimo_plazo_de_inscr?=
- =?Windows-1252?Q?ipci=F3n_2020)?=
-X-Mailer: Smart_Send_3_1_6
-Date: Sun, 8 Nov 2020 14:03:19 +0100
-Message-ID: <59364081696402732313050@DESKTOP-MFVDD89>
-X-PPP-Message-ID: <20201108130313.2369.57602@mail.foescoc.com>
-X-PPP-Vhost: foescoc.com
+Content-Disposition: inline
+In-Reply-To: <2716c195-083a-112f-f1e5-2f6b7152a4b5@gmail.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,81 +91,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info34@foescoc.com
-Content-Type: multipart/mixed; boundary="===============4172370803592521667=="
+Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ DTML <devicetree@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ driverdevel <devel@driverdev.osuosl.org>,
+ linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
+ Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
+ Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ linux-pwm@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux USB List <linux-usb@vger.kernel.org>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============4172370803592521667==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+On 08-11-20, 15:19, Dmitry Osipenko wrote:
+> I took a detailed look at the GENPD and tried to implement it. Here is
+> what was found:
+> 
+> 1. GENPD framework doesn't aggregate performance requests from the
+> attached devices. This means that if deviceA requests performance state
+> 10 and then deviceB requests state 3, then framework will set domain's
+> state to 3 instead of 10.
 
-Buenos d=EDas
+It does. Look at _genpd_reeval_performance_state().
 
-
-
-Os informamos que se encuentra abierto el plazo de inscripci=F3n para la "=
-=DALTIMA CONVOCATORIA 2020" de Cursos Bonificables para empleados en activo=
- y en ERTE.
-
-Los cursos son 100% Bonificables con cargo al Cr=E9dito de Formaci=F3n 2020=
-, si vuestra empresa todav=EDa dispone de Cr=E9dito de Formaci=F3n 2020 est=
-a es la =FAltima oportunidad para poder consumirlo.
-
-
-Dese=E1is que os mandemos la informaci=F3n=3F
-
-
-Quedamos a la espera de vuestra respuesta.
-
-
-Saludos cordiales.
-
-
-Alex Pons
-Director FOESCO.
-
-FOESCO Formaci=F3n Estatal Continua.
-Entidad Organizadora: B200592AA
-www.foesco.com
-e-mail:     cursos@foesco.net
-Tel:     910 323 794
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. Before p=
-rinting this e-mail please think twice if you really need it. FOESCO Tfno: =
-910 382 880 Email: cursos@foesco.com. La informaci=F3n transmitida en este =
-mensaje est=E1 dirigida solamente a las personas o entidades que figuran en=
- el encabezamiento y contiene informaci=F3n confidencial, por lo que, si us=
-ted lo recibiera por error, por favor destr=FAyalo sin copiarlo, usarlo ni =
-distribuirlo, comunic=E1ndolo inmediatamente al emisor del mensaje. De conf=
-ormidad con lo dispuesto en el Reglamento Europeo del 2016/679, del 27 de A=
-bril de 2016, FOESCO le informa que los datos por usted suministrados ser=
-=E1n tratados con las medidas de seguridad conformes a la normativa vigente=
- que se requiere. Dichos datos ser=E1n empleados con fines de gesti=F3n. Pa=
-ra el ejercicio de sus derechos de transparencia, informaci=F3n, acceso, re=
-ctificaci=F3n, supresi=F3n o derecho al olvido, limitaci=F3n del tratamient=
-o , portabilidad de datos y oposici=F3n de sus datos de car=E1cter personal=
- deber=E1 dirigirse a la direcci=F3n del Responsable del tratamiento a C/ L=
-AGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PULSANDO AQUI" <mailto:bajas@f=
-oesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR" o a traves de la direcci=
-=F3n de correo electr=F3nico: bajas@foesco.com <mailto:bajas@foesco.com=3FS=
-ubject=3DBAJA%20CORREOS>
-
---===============4172370803592521667==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+viresh
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============4172370803592521667==--
