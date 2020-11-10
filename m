@@ -1,54 +1,98 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A43B02AD7CD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 14:39:02 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 824FF2ADEB4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 19:49:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4871B873E8;
-	Tue, 10 Nov 2020 13:39:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7203086672;
+	Tue, 10 Nov 2020 18:49:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id thVXFXyqSfkz; Tue, 10 Nov 2020 13:38:59 +0000 (UTC)
+	with ESMTP id pA21YKADbDt4; Tue, 10 Nov 2020 18:49:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1DF4B8722B;
-	Tue, 10 Nov 2020 13:38:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9F36C865E2;
+	Tue, 10 Nov 2020 18:49:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 08CAB1BF3A8
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 13:38:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 065011BF57C
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 18:49:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EE2E786B74
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 13:38:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0146F8717A
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 18:49:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T6WAXvVsMIs0 for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 13:38:56 +0000 (UTC)
+ with ESMTP id Vfqr7w+1aPQL for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 18:49:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0D12E86B6C
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 13:38:55 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 7AAC6ACDB;
- Tue, 10 Nov 2020 13:38:54 +0000 (UTC)
-Message-ID: <25933d5863cd6ddb98dea25bdedf342ebd063480.camel@suse.de>
-Subject: Re: [PATCH v3 01/11] firmware: raspberrypi: Introduce
- devm_rpi_firmware_get()
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Tue, 10 Nov 2020 14:38:52 +0100
-In-Reply-To: <CAMpxmJUZ23uYM3+_L2XvTXzvA48JWrxrhZaLnGAxTpJjFiERRA@mail.gmail.com>
-References: <20201104103938.1286-1-nsaenzjulienne@suse.de>
- <20201104103938.1286-2-nsaenzjulienne@suse.de>
- <CAMpxmJWJRcQQiLitJCLWKmhQVQWr3bMDY=td5FEn5uy2YZfwkA@mail.gmail.com>
- <47eaba0bc71c6e23bff87b8a01cebf0c6d12efd0.camel@suse.de>
- <CAMpxmJUZ23uYM3+_L2XvTXzvA48JWrxrhZaLnGAxTpJjFiERRA@mail.gmail.com>
-User-Agent: Evolution 3.36.5 
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F03F787175
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 18:49:49 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AAIhtQS121445;
+ Tue, 10 Nov 2020 18:49:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=wC2jbd2NkDz1nAFghaaz9PjGpzDIDHVMI1YpVUVpkYY=;
+ b=mDk3bgC77SfyTsIQJmoA4JjlK+ELV0wEf+2ALlkHf8NY161gdBZxGBHOYExrMjvufFeo
+ OopSm1adJ8Aesyn8ejvl+87ql2LgllSnVHTXjmYP8GNn63AYB4x8fKdDOCYsHs5joHiX
+ qzPixFaNPY9xtTFmDz8NCUvr1fD21rPU953PcFmPi5czUZAU0IP7f3ANi85nkvSEeDWT
+ qM+f3rjlv72E5qJZ+3J+8G9hBM7Pdjzno6nUG4jR80eC3UZLzxRgLWqUFXLiCOGYgqbo
+ QqwuiYoTzAHt8QkyZTOEOTKYKX1s2wTQlkhsEEgl4PGpJTU8kTKTuGf0EM4EseGZWe5n IA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 34nh3awgb5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 10 Nov 2020 18:49:28 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AAIjCpC145314;
+ Tue, 10 Nov 2020 18:49:28 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 34p55p04dn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 10 Nov 2020 18:49:27 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AAInIFC014602;
+ Tue, 10 Nov 2020 18:49:19 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 10 Nov 2020 10:49:18 -0800
+Date: Tue, 10 Nov 2020 21:49:03 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Kees Cook <keescook@chromium.org>
+Subject: Re: [PATCH v3 00/11] Introduce Simple atomic counters
+Message-ID: <20201110184903.GG29398@kadam>
+References: <cover.1602209970.git.skhan@linuxfoundation.org>
+ <20201009193746.GA1073957@hirez.programming.kicks-ass.net>
+ <202010091255.246395A6@keescook>
+ <20201010110920.GQ2628@hirez.programming.kicks-ass.net>
+ <6e1dd408-653e-817e-b659-23649259a929@linuxfoundation.org>
+ <20201014091720.GC2628@hirez.programming.kicks-ass.net>
+ <202010141611.70B7A38@keescook>
+ <20201016105313.GJ2611@hirez.programming.kicks-ass.net>
+ <202010161541.6DD2D1E@keescook>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <202010161541.6DD2D1E@keescook>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9801
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ spamscore=0 phishscore=0
+ mlxlogscore=999 mlxscore=0 malwarescore=0 bulkscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2011100129
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9801
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 priorityscore=1501
+ clxscore=1011 malwarescore=0 mlxscore=0 spamscore=0 suspectscore=0
+ mlxlogscore=999 impostorscore=0 phishscore=0 adultscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2011100129
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,149 +105,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
- linux-devicetree <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Ray Jui <rjui@broadcom.com>, Linus Walleij <linus.walleij@linaro.org>,
- Linux Input <linux-input@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
- linux-gpio <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-clk <linux-clk@vger.kernel.org>,
- arm-soc <linux-arm-kernel@lists.infradead.org>,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============5795131339014669788=="
+Cc: rafael@kernel.org, Peter Zijlstra <peterz@infradead.org>,
+ Will Deacon <will@kernel.org>, linux-kselftest@vger.kernel.org,
+ joel@joelfernandes.org, tkjos@android.com, shuah@kernel.org,
+ devel@driverdev.osuosl.org, minyard@acm.org, corbet@lwn.net, surenb@google.com,
+ linux-doc@vger.kernel.org, linux-acpi@vger.kernel.org, lenb@kernel.org,
+ rric@kernel.org, arnd@arndb.de, bp@alien8.de,
+ Shuah Khan <skhan@linuxfoundation.org>,
+ openipmi-developer@lists.sourceforge.net, mchehab@kernel.org, maco@android.com,
+ christian@brauner.io, linux-edac@vger.kernel.org, tony.luck@intel.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, arve@android.com,
+ james.morse@arm.com, hridya@google.com, johannes@sipsolutions.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Fri, Oct 16, 2020 at 03:51:25PM -0700, Kees Cook wrote:
+> On Fri, Oct 16, 2020 at 12:53:13PM +0200, Peter Zijlstra wrote:
+> > That's like saying: "I'm too lazy to track what I've looked at already".
+> > You're basically proposing to graffiti "Kees was here -- 16/10/2020" all
+> > over the kernel. Just so you can see where you still need to go.
+> > 
+> > It says the code was (assuming your audit was correct) good at that
+> > date, but has no guarantees for any moment after that.
+> 
+> That kind of bit-rot marking is exactly what I would like to avoid: just
+> putting a comment in is pointless. Making the expectations of the usage
+> become _enforced_ is the goal. And having it enforced by the _compiler_
+> is key. Just adding a meaningless attribute that a static checker
+> will notice some time and hope people fix them doesn't scale either
+> (just look at how many sparse warnings there are).
 
---===============5795131339014669788==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-aSQnVn7Q9FP2OogzR6s5"
+Most Sparse warnings are false positives.  People do actually fix the
+ones which matter.
 
+I think this patchset could be useful.  I'm working on a refcounting
+check for Smatch.  I want to warn about when we forget to drop a
+reference on an error path.  Right now I just assume that anything with
+"error", "drop" or "->stats->" in the name is just a counter.
 
---=-aSQnVn7Q9FP2OogzR6s5
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Bartosz, thanks for the feedback.
-
-On Thu, 2020-11-05 at 10:42 +0100, Bartosz Golaszewski wrote:
-> On Thu, Nov 5, 2020 at 10:28 AM Nicolas Saenz Julienne
-> <nsaenzjulienne@suse.de> wrote:
-> > Hi Bartosz, thanks for the review.
-> >=20
-> > On Thu, 2020-11-05 at 10:13 +0100, Bartosz Golaszewski wrote:
-> > > > +/**
-> > > > + * devm_rpi_firmware_get - Get pointer to rpi_firmware structure.
-> > > > + * @firmware_node:    Pointer to the firmware Device Tree node.
-> > > > + *
-> > > > + * Returns NULL is the firmware device is not ready.
-> > > > + */
-> > > > +struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
-> > > > +                                          struct device_node *firm=
-ware_node)
-> > > > +{
-> > > > +       struct platform_device *pdev =3D of_find_device_by_node(fir=
-mware_node);
-> > > > +       struct rpi_firmware *fw;
-> > > > +
-> > > > +       if (!pdev)
-> > > > +               return NULL;
-> > > > +
-> > > > +       fw =3D platform_get_drvdata(pdev);
-> > > > +       if (!fw)
-> > > > +               return NULL;
-> > > > +
-> > > > +       if (!refcount_inc_not_zero(&fw->consumers))
-> > > > +               return NULL;
-> > > > +
-> > > > +       if (devm_add_action_or_reset(dev, rpi_firmware_put, fw))
-> > > > +               return NULL;
-> > > > +
-> > > > +       return fw;
-> > > > +}
-> > > > +EXPORT_SYMBOL_GPL(devm_rpi_firmware_get);
-> > >=20
-> > > Usually I'd expect the devres variant to simply call
-> > > rpi_firmware_get() and then schedule a release callback which would
-> > > call whatever function is the release counterpart for it currently.
-> > > Devres actions are for drivers which want to schedule some more
-> > > unusual tasks at driver detach. Any reason for designing it this way?
-> >=20
-> > Yes, see patch #8 where I get rid of rpi_firmware_get() altogether afte=
-r
-> > converting all users to devres. Since there is no use for the vanilla v=
-ersion
-> > of the function anymore, I figured it'd be better to merge everything i=
-nto
-> > devm_rpi_firmware_get(). That said it's not something I have strong fee=
-lings
-> > about.
-> >=20
->=20
-> I see. So the previous version didn't really have any reference
-> counting and it leaked the reference returned by
-> of_find_device_by_node(), got it. Could you just clarify for me the
-> logic behind the wait_queue in rpi_firmware_remove()? If the firmware
-> driver gets detached and remove() stops on the wait_queue - it will be
-> stuck until the last user releases the firmware. I'm not sure this is
-> correct.
-
-Yes, that's what I meant to implement.
-
-> I'd prefer to see a kref with a release callback and remove
-> would simply decrease the kref and return. Each user would do the same
-> and then after the last user is detached the firmware would be
-> destroyed.
-
-Sounds good to me. I'll update it.
-
-> Don't we really have some centralized firmware subsystem that would handl=
-e this?
-
-Sadly no, this is an RPi specific thing, it doesn't live behind a standard =
-like
-other firmware based protocols (for ex. SCMI), and evolves as the needs ari=
-se.
-
-Regards,
-Nicolas
-
-
---=-aSQnVn7Q9FP2OogzR6s5
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl+ql+wACgkQlfZmHno8
-x/5TFQgArzH6eU5ljiN7do5NqV1SI7f2HoX88NazrWiPc8Ixl7QT4jfzWnZeyiBn
-31OdfWDVQeexADs3RDEvq/o5SSxNP+FDGlnzm9PiYaKPWcGdOpe8wW9wggXest4N
-MVtyqksGQlf3MuItqI4HgP/aAhB8EKnYHTVrku2tAPR9cNliVmeusFWsPWIYXSYc
-IcX61cPnzFkqU56k7aNrk452Kme6XDFDi2eD2DXAzHNlSHiQOH5ZQPKBmFUkaCDL
-xP/T5PwL+YwF3ZWO2sU6voMp96QfiO8R/LYt215dIzlmTmdKcIC7scqEkr4HRSJp
-9SW2n981ery3AA1wXoyGhLMJMilzcQ==
-=CaET
------END PGP SIGNATURE-----
-
---=-aSQnVn7Q9FP2OogzR6s5--
-
-
---===============5795131339014669788==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5795131339014669788==--
-
