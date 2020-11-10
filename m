@@ -1,77 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A19EA2AC9D7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 01:44:14 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D86DF2ACA24
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 02:14:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 832B422636;
-	Tue, 10 Nov 2020 00:44:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F376086AC4;
+	Tue, 10 Nov 2020 01:14:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EieVHxCdGVCD; Tue, 10 Nov 2020 00:44:12 +0000 (UTC)
+	with ESMTP id j15ATZf2wfJu; Tue, 10 Nov 2020 01:14:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3C440203D8;
-	Tue, 10 Nov 2020 00:44:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 60502868E4;
+	Tue, 10 Nov 2020 01:14:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EB7641BF977
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 00:44:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C5D71BF3E9
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 01:14:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E46C68666C
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 00:44:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 619AB2011A
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 01:14:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ok+0PhDUOtDJ for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 00:44:08 +0000 (UTC)
+ with ESMTP id L-9OV1wksmBO for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 01:14:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C3903865D6
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 00:44:07 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id k2so7434328wrx.2
- for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 16:44:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=Sov6QI2+dcKEbVPti+S9VpTmMaMBnOoy8yisJjB3r+E=;
- b=UAh1HsBDivRcx5G1S213KaC/pjNDcxj9I8/2DJ66JkbnUTALShcXWLR5FLn5drfwwL
- r76WaEkx5eHLZgtlskcQpoP+0SCKSgKqdc0M71lj/QwcOklUcvRM2ePC6fcYwQ4Mk2tN
- pW5A+wccsBXuW2kPLTeckbxdSxMHcDQnz+XVVZmVabTckjHPDiJGvYuNAfUIR1gmgMI0
- qPR4tudNj1NP5hFlApMd0mLHMRbqheTZeucurSzSez3buRnq1QvwAfFjk28qu4R9gIqv
- Gnd26ANCh0axUE5OO6Mo2QRbenZ49rPqgnWUQLiwCAKFuSL+f5/khvsGlvKl2USf3fVO
- 94eQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=Sov6QI2+dcKEbVPti+S9VpTmMaMBnOoy8yisJjB3r+E=;
- b=aJWmAQk8bjnPwxmHomNGrAvG9c7O2E27rAWjnKtPB3sIOa1fq9T5qQU3qNGESF8FE7
- VGMOHFe+grzOr5G5p7+TJH+FADIrKtDDQOoT4X82CdOhnmtXtcuKurBZ4t/CGoUIBy/n
- iYQ1rW6LbwWe2jjzlW6xU1TemPQ4VoDsQ2hFYYQ5TxtV1uBMrrykV+kCFy709W6o4XKo
- znmKHIl4j2N/wufrgJa+2aV182xZwRSxRccSnqSG3Q/TuAOU02+cQCSZ2tmqZX0Io3yZ
- ikrWnHXU5dCLV38LtauMmWsK794fXtgHVsjOnzqjMtNHNMgyhpJVsDc4dd3EqzITvZc1
- Nnkw==
-X-Gm-Message-State: AOAM533Go/94OJy1U94PyZ221xyDVejH4GsHbqLzBzbfTNaeksRBAlkS
- a+Sy1+L2RINHDYVksS5fcsM=
-X-Google-Smtp-Source: ABdhPJzmEhb7kgJBfxpd7xHXacWo/NbJhOfnc+DxUq78r33Z/JwRdGcOvJctrpy5hJpLg+VzTvpjng==
-X-Received: by 2002:adf:fa10:: with SMTP id m16mr13026853wrr.194.1604969046243; 
- Mon, 09 Nov 2020 16:44:06 -0800 (PST)
-Received: from tabot ([154.72.150.220])
- by smtp.gmail.com with ESMTPSA id x18sm16331766wrg.4.2020.11.09.16.44.04
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 09 Nov 2020 16:44:05 -0800 (PST)
-Date: Tue, 10 Nov 2020 01:44:00 +0100
-From: Tabot Kevin <tabot.kevin@gmail.com>
-To: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-Subject: [PATCH] staging: greybus: Fixed issues with alignment to open
- parenthesis.
-Message-ID: <20201110004356.GA1803@tabot>
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6F14020107
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 01:14:00 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1604970836;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UkwosGD4CNwpr5O4mn7FToWEjHCGounmVIqa5vjwzhQ=;
+ b=DRjXCHfaWTV+37wSriT1BjBgrVPE6jdQ5QSgYOIapfxJkFIwaFOAyxB9axkmnF7jwFoYyj
+ IwVALzvZ0PuA7RxNph9leDCS6B9rTa4rL3nKcIBy/Am24PTMh01e/A2SQWp6LTkOQfBaj6
+ TPNYDFf29DCqNiv3sgD8nE6enYeIlsYkCGyKDzwB1FGN01/Y3vKoJQtpchwkYWrvNb9W70
+ 4PCnBA8S0oYM/XwkwwZotKzR9vmT9oC6FdGvh5lMI1bLUaS0qdB+ZPTGprUeJSBjnvH0Xv
+ xyRk7zOTS6b0OUuDBNt+X1xYcMB1KSB7gGowiPoSA5hPR5omsqQ5g20Kt4+uKg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1604970836;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UkwosGD4CNwpr5O4mn7FToWEjHCGounmVIqa5vjwzhQ=;
+ b=acv/dHWHYYmtT1/z0brDNSAmBtlvEk8c07ItXmS/RUDap25yEm8biO9jTMWItRsTlNRTeF
+ x/KI3sqvslL8SkDg==
+To: ira.weiny@intel.com, Andrew Morton <akpm@linux-foundation.org>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ Andy Lutomirski <luto@kernel.org>, Peter Zijlstra <peterz@infradead.org>
+Subject: Re: [PATCH RFC PKS/PMEM 05/58] kmap: Introduce k[un]map_thread
+In-Reply-To: <20201009195033.3208459-6-ira.weiny@intel.com>
+References: <20201009195033.3208459-1-ira.weiny@intel.com>
+ <20201009195033.3208459-6-ira.weiny@intel.com>
+Date: Tue, 10 Nov 2020 02:13:56 +0100
+Message-ID: <87h7pyhv3f.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,48 +73,105 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-mmc@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ linux-mm@kvack.org, target-devel@vger.kernel.org,
+ linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
+ samba-technical@lists.samba.org, ceph-devel@vger.kernel.org,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, linux-nilfs@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-nvdimm@lists.01.org,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-afs@lists.infradead.org, cluster-devel@redhat.com,
+ linux-cachefs@redhat.com, intel-wired-lan@lists.osuosl.org,
+ xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
+ Fenghua Yu <fenghua.yu@intel.com>, linux-um@lists.infradead.org,
+ intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org, reiserfs-devel@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
+ Dan Williams <dan.j.williams@intel.com>, io-uring@vger.kernel.org,
+ linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
+ netdev@vger.kernel.org, kexec@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the following:
-- Made sure alignment matched open parenthesis.
+Ira,
 
-Signed-off-by: Tabot Kevin <tabot.kevin@gmail.com>
----
- drivers/staging/greybus/audio_module.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+On Fri, Oct 09 2020 at 12:49, ira weiny wrote:
+> From: Ira Weiny <ira.weiny@intel.com>
+>
+> To correctly support the semantics of kmap() with Kernel protection keys
+> (PKS), kmap() may be required to set the protections on multiple
+> processors (globally).  Enabling PKS globally can be very expensive
+> depending on the requested operation.  Furthermore, enabling a domain
+> globally reduces the protection afforded by PKS.
+>
+> Most kmap() (Aprox 209 of 229) callers use the map within a single thread and
+> have no need for the protection domain to be enabled globally.  However, the
+> remaining callers do not follow this pattern and, as best I can tell, expect
+> the mapping to be 'global' and available to any thread who may access the
+> mapping.[1]
+>
+> We don't anticipate global mappings to pmem, however in general there is a
+> danger in changing the semantics of kmap().  Effectively, this would cause an
+> unresolved page fault with little to no information about why the failure
+> occurred.
+>
+> To resolve this a number of options were considered.
+>
+> 1) Attempt to change all the thread local kmap() calls to kmap_atomic()[2]
+> 2) Introduce a flags parameter to kmap() to indicate if the mapping should be
+>    global or not
+> 3) Change ~20 call sites to 'kmap_global()' to indicate that they require a
+>    global enablement of the pages.
+> 4) Change ~209 call sites to 'kmap_thread()' to indicate that the mapping is to
+>    be used within that thread of execution only
+>
+> Option 1 is simply not feasible.  Option 2 would require all of the call sites
+> of kmap() to change.  Option 3 seems like a good minimal change but there is a
+> danger that new code may miss the semantic change of kmap() and not get the
+> behavior the developer intended.  Therefore, #4 was chosen.
 
-diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
-index c52c4f3..a243d60 100644
---- a/drivers/staging/greybus/audio_module.c
-+++ b/drivers/staging/greybus/audio_module.c
-@@ -175,8 +175,8 @@ static int gbaudio_codec_request_handler(struct gb_operation *op)
- }
- 
- static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
--				struct greybus_descriptor_cport *cport_desc,
--				struct gb_bundle *bundle)
-+					struct greybus_descriptor_cport *cport_desc,
-+					struct gb_bundle *bundle)
- {
- 	struct gb_connection *connection;
- 
-@@ -199,8 +199,8 @@ static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
- }
- 
- static int gb_audio_add_data_connection(struct gbaudio_module_info *gbmodule,
--				struct greybus_descriptor_cport *cport_desc,
--				struct gb_bundle *bundle)
-+					struct greybus_descriptor_cport *cport_desc,
-+					struct gb_bundle *bundle)
- {
- 	struct gb_connection *connection;
- 	struct gbaudio_data_connection *dai;
--- 
-2.7.4
+There is Option #5:
+
+Convert the thread local kmap() invocations to the proposed kmap_local()
+interface which is coming along [1].
+
+That solves a couple of issues:
+
+ 1) It relieves the current kmap_atomic() usage sites from the implict
+    pagefault/preempt disable semantics which apply even when
+    CONFIG_HIGHMEM is disabled. kmap_local() still can be invoked from
+    atomic context.
+
+ 2) Due to #1 it allows to replace the conditional usage of kmap() and
+    kmap_atomic() for purely thread local mappings.
+
+ 3) It puts the burden on the HIGHMEM inflicted systems
+
+ 4) It is actually more efficient for most of the pure thread local use
+    cases on HIGHMEM inflicted systems because it avoids the overhead of
+    the global lock and the potential kmap slot exhaustion. A potential
+    preemption will be more expensive, but that's not really the case we
+    want to optimize for.
+
+ 5) It solves the RT issue vs. kmap_atomic()
+
+So instead of creating yet another variety of kmap() which is just
+scratching the particular PKRS itch, can we please consolidate all of
+that on the wider reaching kmap_local() approach?
+
+Thanks,
+
+        tglx
+     
+[1] https://lore.kernel.org/lkml/20201103092712.714480842@linutronix.de/
 
 _______________________________________________
 devel mailing list
