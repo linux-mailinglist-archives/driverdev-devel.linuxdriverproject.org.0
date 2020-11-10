@@ -2,77 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D04A2AE0F2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 21:47:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B19B72AE109
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 21:51:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A74AC873B1;
-	Tue, 10 Nov 2020 20:47:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6E03E873B1;
+	Tue, 10 Nov 2020 20:51:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0k04BiY2x5Mn; Tue, 10 Nov 2020 20:47:36 +0000 (UTC)
+	with ESMTP id g+UmBdYhrYRQ; Tue, 10 Nov 2020 20:51:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 86F9687141;
-	Tue, 10 Nov 2020 20:47:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DE9E6870EF;
+	Tue, 10 Nov 2020 20:51:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7D9C71BF32C
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:47:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 92A6B1BF32C
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:51:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 749B385B58
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:47:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 84CD423018
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:51:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oFB2eayf7v1R for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 20:47:32 +0000 (UTC)
+ with ESMTP id izx65M5GaM0N for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 20:51:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1766A864D8
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 20:47:32 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id a3so3196229wmb.5
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 12:47:32 -0800 (PST)
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3484F1FEAB
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 20:51:02 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id c17so14209867wrc.11
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 12:51:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=JKOlzvpbWFsw2iYUxRdGhDaWwqhcm/XwpcwUseGbR74=;
- b=BfwOe253mIIwyuY9vhdchEEJQznuJuf8hgScBzwQXYqtOaWL2thJUGjBjxHsW4ciuW
- hsCBqPkfl0FEaHdmn9kHXW5Oll4hJH7gQltVRSnpowkkCOQOdI7mZfiE8OxFD3eAgdTn
- nhsMQRSvI65+IdSdXPHUpTgOL3AYOzq8HzvuxO2xLdFjZRskbr1F4do0f1RcFiXdN71z
- IOqjoFpRGHKbkk8UF9MBrBFB4HqsXeyiCYx/lrKvthDCNRoXo/DIBHj4RbiF13dGUTcA
- cZqO/z22HSS63vf3/Fdnx9ZJSvhgTSdeKLjSXmnDLt6m9U/oJ0dOH47CYuMxCuHbvS/E
- qhTg==
+ bh=7HIcKzFu5PUUQcFiE5YVq2OrMCSk+O2P2oBdDfJbjm4=;
+ b=p3IuKkDXlF3/hpGET8e431R9TjI8VmaD+tYyRxHQGfyz1Zii2UqQIUz90t+lwWNG3V
+ BSvrTnzMRaDza3nj7lIX82CRMGAvsjEdjNzfHjEnvpAFxV5wVG9/Tdztnp70jZFTX9n7
+ XVoGGmB3AUEEriWlJRtubCXxQZ+7IfKCFRLa1Bs/eq7/b3hujUOOe/nhApmQ3zZBcQr6
+ XTN4tHq9WBwGu9zozNsOUEZcudsB0kAiBu+SsVkmAu2gY+R5sjJku3BNQyWBpCWiG0dn
+ F9Q53i5FcdYDhmSQYf/6sS4PokOHp+ScuogduJxME0MCnBiwFP3QWlpGVvuQch6XGJqx
+ df+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=JKOlzvpbWFsw2iYUxRdGhDaWwqhcm/XwpcwUseGbR74=;
- b=hEF/hJ8b/pPVRI/37f8OYWn+f3EbC/iUKoXZl6KgUEfSSgR/AE+PZZ6U3cTu1qdep4
- HHvhlcxSdCKSCYbUfqItv6Eb6iIh9uoDVw8butdw1VrbhDdbN8z6pg/gnNcRvPuC9Q3S
- Tv359/6DIzhH15RzFWZD0rkVzJqxCT+BQqGRRUcYQr7jlz1y6aW/5umeC9owGQNlv9EM
- 6enbf3gUGUl6Rvp7F2fNSGChJ0AoXkvtaw7v8xsEhavk9R32KfhbNq86sMG3x6JLBePX
- qbcipEQBXkXYi17Ws6p2uOTC1E3BrbxIY3KTj15ILVnYdZR0umcA5oKeYUZDfQbW2ocG
- NJJA==
-X-Gm-Message-State: AOAM530TiocuRcRBzfwlKCMH/Pmp/yjTcpSnk4qB9xzDCfm0+pH22wib
- OPFxmeBVcENfBtOTGgUw0ZU=
-X-Google-Smtp-Source: ABdhPJy49c1lUX+wu+3W3Zy5IcL9JRUtvkaxAgpOAl1TJEHa60imDaQR8PoYxaPbPv19myRFV1n2IQ==
-X-Received: by 2002:a7b:c4c3:: with SMTP id g3mr969948wmk.127.1605041250538;
- Tue, 10 Nov 2020 12:47:30 -0800 (PST)
+ bh=7HIcKzFu5PUUQcFiE5YVq2OrMCSk+O2P2oBdDfJbjm4=;
+ b=aevTlRfP/ifb4Ep2Q55f+UF5ZxofSPwhJfswtJ//tAT8+ysjKYUkg7pijx+urEnJMG
+ pXddu174ethTeRAsrPfDTlZUcwUBdhVw0a17JCcojz4LS+EO1jfq8FRTry6NpRGr2we+
+ oEED5Sh8bHLJmGlPgZLtN0w2XbdZv+cadkY7H2TzOfQUR0G9C1t3tevb+/IsMTxdEFWk
+ E1a6uH/VYkClTjYNydWKUEkOOWKnwCTcmD0SSss1ycQiTJGne0blOuHSGe3LPmQH7KXO
+ oO1TBp81P0PpGtY7jMERQzzh3xq99hesjo2AV1j2mgfRKlYGyb9DT7aId/0NoYtZRb/a
+ o4tA==
+X-Gm-Message-State: AOAM5308Vh7teKqCpVUbJT/1mwl93xaYwgBkM1keGsE6kfIPUevV8hrj
+ aNuSSCmHnD51Uo2Isgy7NyQ=
+X-Google-Smtp-Source: ABdhPJxzIEmPPnLANkIp2K03g8rC5eaOPrtyiZGMeuwPXYl02/6Hg+v9qU2Prx3ft4ivHx0jS/Q3dA==
+X-Received: by 2002:a5d:51c2:: with SMTP id n2mr12551938wrv.326.1605041460687; 
+ Tue, 10 Nov 2020 12:51:00 -0800 (PST)
 Received: from localhost ([217.111.27.204])
- by smtp.gmail.com with ESMTPSA id f4sm18998572wrq.54.2020.11.10.12.47.28
+ by smtp.gmail.com with ESMTPSA id z5sm18029459wrw.87.2020.11.10.12.50.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Nov 2020 12:47:29 -0800 (PST)
-Date: Tue, 10 Nov 2020 21:47:27 +0100
+ Tue, 10 Nov 2020 12:50:59 -0800 (PST)
+Date: Tue, 10 Nov 2020 21:50:57 +0100
 From: Thierry Reding <thierry.reding@gmail.com>
 To: Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH v1 07/30] soc/tegra: Add sync state API
-Message-ID: <20201110204727.GG2375022@ulmo>
+Subject: Re: [PATCH v1 18/30] pwm: tegra: Support OPP and core voltage scaling
+Message-ID: <20201110205057.GH2375022@ulmo>
 References: <20201104234427.26477-1-digetx@gmail.com>
- <20201104234427.26477-8-digetx@gmail.com>
+ <20201104234427.26477-19-digetx@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201104234427.26477-8-digetx@gmail.com>
+In-Reply-To: <20201104234427.26477-19-digetx@gmail.com>
 User-Agent: Mutt/1.14.7 (2020-08-29)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -100,274 +100,105 @@ Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
  linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
  Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
-Content-Type: multipart/mixed; boundary="===============3305136476712580168=="
+Content-Type: multipart/mixed; boundary="===============2135468137464674193=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============3305136476712580168==
+--===============2135468137464674193==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="NY6JkbSqL3W9mApi"
+	protocol="application/pgp-signature"; boundary="v2Uk6McLiE8OV1El"
 Content-Disposition: inline
 
 
---NY6JkbSqL3W9mApi
+--v2Uk6McLiE8OV1El
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Nov 05, 2020 at 02:44:04AM +0300, Dmitry Osipenko wrote:
-> Introduce sync state API that will be used by Tegra device drivers. This
-> new API is primarily needed for syncing state of SoC devices that are left
-> ON after bootloader or permanently enabled. All these devices belong to a
-> shared CORE voltage domain, and thus, we needed to bring all the devices
-> into expected state before the voltage scaling could be performed.
->=20
-> All drivers of DVFS-critical devices shall sync theirs the state before
-> Tegra's voltage regulator coupler will be allowed to perform a system-wide
-> voltage scaling.
->=20
-> Tested-by: Peter Geis <pgwipeout@gmail.com>
-> Tested-by: Nicolas Chauvet <kwizart@gmail.com>
-> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
-> ---
->  drivers/soc/tegra/common.c | 152 ++++++++++++++++++++++++++++++++++++-
->  include/soc/tegra/common.h |  22 ++++++
->  2 files changed, 170 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/soc/tegra/common.c b/drivers/soc/tegra/common.c
-> index 3dc54f59cafe..f9b2b6f57887 100644
-> --- a/drivers/soc/tegra/common.c
-> +++ b/drivers/soc/tegra/common.c
-> @@ -3,13 +3,52 @@
->   * Copyright (C) 2014 NVIDIA CORPORATION.  All rights reserved.
->   */
-> =20
-> +#define dev_fmt(fmt)	"%s: " fmt, __func__
-> +#define pr_fmt(fmt)	"%s: " fmt, __func__
+On Thu, Nov 05, 2020 at 02:44:15AM +0300, Dmitry Osipenko wrote:
+[...]
+> +static void tegra_pwm_deinit_opp_table(void *data)
+> +{
+> +	struct device *dev = data;
+> +	struct opp_table *opp_table;
 > +
-> +#include <linux/export.h>
-> +#include <linux/init.h>
-> +#include <linux/mutex.h>
->  #include <linux/of.h>
-> +#include <linux/of_device.h>
-> =20
->  #include <soc/tegra/common.h>
-> =20
-> +#define terga_soc_for_each_device(__dev) \
-
-tegra_soc_for_each_device
-
-> +	for ((__dev) =3D tegra_soc_devices; (__dev) && (__dev)->compatible; \
-> +	     (__dev)++)
-> +
-> +struct tegra_soc_device {
-> +	const char *compatible;
-> +	const bool dvfs_critical;
-> +	unsigned int sync_count;
-> +};
-> +
-> +static DEFINE_MUTEX(tegra_soc_lock);
-> +static struct tegra_soc_device *tegra_soc_devices;
-> +
-> +/*
-> + * DVFS-critical devices are either active at a boot time or permanently
-> + * active, like EMC for example.  System-wide DVFS should be deferred un=
-til
-> + * drivers of the critical devices synced theirs state.
-> + */
-> +
-> +static struct tegra_soc_device tegra20_soc_devices[] =3D {
-> +	{ .compatible =3D "nvidia,tegra20-dc", .dvfs_critical =3D true, },
-> +	{ .compatible =3D "nvidia,tegra20-emc", .dvfs_critical =3D true, },
-> +	{ }
-> +};
-> +
-> +static struct tegra_soc_device tegra30_soc_devices[] =3D {
-> +	{ .compatible =3D "nvidia,tegra30-dc", .dvfs_critical =3D true, },
-> +	{ .compatible =3D "nvidia,tegra30-emc", .dvfs_critical =3D true, },
-> +	{ .compatible =3D "nvidia,tegra30-pwm", .dvfs_critical =3D true, },
-> +	{ }
-> +};
-> +
->  static const struct of_device_id tegra_machine_match[] =3D {
-> -	{ .compatible =3D "nvidia,tegra20", },
-> -	{ .compatible =3D "nvidia,tegra30", },
-> +	{ .compatible =3D "nvidia,tegra20", .data =3D tegra20_soc_devices, },
-> +	{ .compatible =3D "nvidia,tegra30", .data =3D tegra30_soc_devices, },
->  	{ .compatible =3D "nvidia,tegra114", },
->  	{ .compatible =3D "nvidia,tegra124", },
->  	{ .compatible =3D "nvidia,tegra132", },
-> @@ -17,7 +56,7 @@ static const struct of_device_id tegra_machine_match[] =
-=3D {
->  	{ }
->  };
-> =20
-> -bool soc_is_tegra(void)
-> +static const struct of_device_id *tegra_soc_of_match(void)
->  {
->  	const struct of_device_id *match;
->  	struct device_node *root;
-> @@ -29,5 +68,110 @@ bool soc_is_tegra(void)
->  	match =3D of_match_node(tegra_machine_match, root);
->  	of_node_put(root);
-> =20
-> -	return match !=3D NULL;
-> +	return match;
+> +	opp_table = dev_pm_opp_get_opp_table(dev);
+> +	dev_pm_opp_of_remove_table(dev);
+> +	dev_pm_opp_put_regulators(opp_table);
+> +	dev_pm_opp_put_opp_table(opp_table);
 > +}
 > +
-> +bool soc_is_tegra(void)
+> +static int devm_tegra_pwm_init_opp_table(struct device *dev)
 > +{
-> +	return tegra_soc_of_match() !=3D NULL;
-> +}
+> +	struct opp_table *opp_table;
+> +	const char *rname = "core";
+> +	int err;
 > +
-> +void tegra_soc_device_sync_state(struct device *dev)
-> +{
-> +	struct tegra_soc_device *soc_dev;
+> +	/* voltage scaling is optional */
+> +	if (device_property_present(dev, "core-supply"))
+> +		opp_table = dev_pm_opp_set_regulators(dev, &rname, 1);
+> +	else
+> +		opp_table = dev_pm_opp_get_opp_table(dev);
 > +
-> +	mutex_lock(&tegra_soc_lock);
-> +	terga_soc_for_each_device(soc_dev) {
-
-tegra_soc_for_each_device
-
-> +		if (!of_device_is_compatible(dev->of_node, soc_dev->compatible))
-> +			continue;
-> +
-> +		if (!soc_dev->sync_count) {
-> +			dev_err(dev, "already synced\n");
-> +			break;
-> +		}
-> +
-> +		/*
-> +		 * All DVFS-capable devices should have the CORE regulator
-> +		 * phandle.  Older device-trees don't have it, hence state
-> +		 * won't be synced for the older DTBs, allowing them to work
-> +		 * properly.
-> +		 */
-> +		if (soc_dev->dvfs_critical &&
-> +		    !device_property_present(dev, "core-supply")) {
-> +			dev_dbg(dev, "doesn't have core supply\n");
-> +			break;
-> +		}
-> +
-> +		soc_dev->sync_count--;
-> +		dev_dbg(dev, "sync_count=3D%u\n", soc_dev->sync_count);
-> +		break;
-> +	}
-> +	mutex_unlock(&tegra_soc_lock);
-> +}
-> +EXPORT_SYMBOL_GPL(tegra_soc_device_sync_state);
-> +
-> +bool tegra_soc_dvfs_state_synced(void)
-> +{
-> +	struct tegra_soc_device *soc_dev;
-> +	bool synced_state =3D true;
+> +	if (IS_ERR(opp_table))
+> +		return dev_err_probe(dev, PTR_ERR(opp_table),
+> +				     "failed to prepare OPP table\n");
 > +
 > +	/*
-> +	 * CORE voltage scaling is limited until drivers of the critical
-> +	 * devices synced theirs state.
+> +	 * OPP table presence is optional and we want the set_rate() of OPP
+> +	 * API to work similarly to clk_set_rate() if table is missing in a
+> +	 * device-tree.  The add_table() errors out if OPP is missing in DT.
 > +	 */
-> +	mutex_lock(&tegra_soc_lock);
-> +	terga_soc_for_each_device(soc_dev) {
-
-tegra_soc_for_each_device
-
-I wonder if you copy/pasted this or if you got really lucky to mistype
-this all three times.
-
-> +		if (!soc_dev->sync_count || !soc_dev->dvfs_critical)
-> +			continue;
-> +
-> +		pr_debug_ratelimited("%s: sync_count=3D%u\n",
-> +				     soc_dev->compatible, soc_dev->sync_count);
-> +
-> +		synced_state =3D false;
-> +		break;
+> +	if (device_property_present(dev, "operating-points-v2")) {
+> +		err = dev_pm_opp_of_add_table(dev);
+> +		if (err) {
+> +			dev_err(dev, "failed to add OPP table: %d\n", err);
+> +			goto put_table;
+> +		}
 > +	}
-> +	mutex_unlock(&tegra_soc_lock);
 > +
-> +	return synced_state;
-> +}
-> +
-> +static int __init tegra_soc_devices_init(void)
-> +{
-> +	struct device_node *np, *prev_np =3D NULL;
-> +	struct tegra_soc_device *soc_dev;
-> +	const struct of_device_id *match;
-> +
-> +	if (!soc_is_tegra())
-> +		return 0;
-> +
-> +	match =3D tegra_soc_of_match();
-> +	tegra_soc_devices =3D (void *)match->data;
-> +
-> +	/*
-> +	 * If device node is disabled in a device-tree, then we shouldn't
-> +	 * care about this device. Even if device is active during boot,
-> +	 * its clock will be disabled by CCF as unused.
-> +	 */
-> +	terga_soc_for_each_device(soc_dev) {
-> +		do {
-> +			/*
-> +			 * Devices like display controller have multiple
-> +			 * instances with the same compatible. Hence we need
-> +			 * to walk up the whole tree in order to account those
-> +			 * multiple instances.
-> +			 */
-> +			np =3D of_find_compatible_node(prev_np, NULL,
-> +						     soc_dev->compatible);
-> +			of_node_put(prev_np);
-> +			prev_np =3D np;
-> +
-> +			if (of_device_is_available(np)) {
-> +				pr_debug("added %s\n", soc_dev->compatible);
-> +				soc_dev->sync_count++;
-> +			}
-> +		} while (np);
-
-Maybe use for_each_compatible_node() for that inside loop?
-
-> +	}
+> +	err = devm_add_action(dev, tegra_pwm_deinit_opp_table, dev);
+> +	if (err)
+> +		goto remove_table;
 > +
 > +	return 0;
->  }
-> +postcore_initcall_sync(tegra_soc_devices_init);
+> +
+> +remove_table:
+> +	dev_pm_opp_of_remove_table(dev);
+> +put_table:
+> +	dev_pm_opp_put_regulators(opp_table);
+> +
+> +	return err;
+> +}
 
-This is unfortunate. I recall having this discussion multiple times and
-one idea that has been floating around for a while was to let a driver
-bind against the top-level "bus" node. That has the advantage that it
-both anchors the code somewhere, so we don't have to play this game of
-checking for the SoC with soc_is_tegra(), and it properly orders this
-with respect to the child devices, so we wouldn't have to make this a
-postcore_initcall.
-
-Might be worth looking at that again, but for now this seems okay.
+These two functions seem to be heavily boilerplate across all these
+drivers. Have you considered splitting these out into separate helpers?
 
 Thierry
 
---NY6JkbSqL3W9mApi
+--v2Uk6McLiE8OV1El
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl+q/F0ACgkQ3SOs138+
-s6Ffhg//ZzNuVrroPGuv4tZqVJ5AXAx//1JvKJJ/APDlLKqIvIYw77b6jIxkHb/t
-Ay3psh0eNC+cr8tegl6spNx7S66HX1FEbKezsbGO0XqgebaZPtvHx4mtU7L1nBxw
-ysDX2sRKNa//bxU8YyLrhm/2jlrGBBOFQvxmYu62fE6vgN5tQqECAcmscFy+BsgA
-74wHiJRnj0PJXFoQZ6T2lkFfWkfhexPGIq988VELclUjQTfn6kQiXHfHwEPNcni0
-haS3AuFGLsTZqb6c9aI0DKcOS0y+gFEUx+WYWV3z33I6rUS3f1mfJXpIyTTAlU1j
-ENciW+rTnKilsQlE9WqY7B5gmH4f8hZnq35JK2HRDFXQj8g/03C02XjPp2aoDczm
-/3Nv2feu//pkYpMMTZaqeUu7AJVUnfavOMCBlwhyEuaieiVFE31X1BRdLcJ+mpyF
-JbKlY/+i+UCb14jP6sGMKvnxG5dxkm3pYs90XcVHMIAsXsrPNIL0r04Eh1QszqOJ
-uxGf7bpt7L09Yl7CyxahtA+AO+Ntd5dGuDHlRAOSUaMF4BaXHe3LgoNfWhEnF/Qa
-BRIZ3zewRwMVSNCted4nf5x9hymxF743g3kj6AxTmQqbEs5gmR9BxG+I4oEU/jjb
-d6Q/+Zk40xAgCn9dyBkNIqKbUTcQCvcDxSNGYsmkzduZ3tqiieU=
-=CsZi
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl+q/TEACgkQ3SOs138+
+s6FEeBAAokltgZ7HHYhhwbbWHXNUkzO/NUlYWsInWSSKGta8fNY21NFKFf6nxcqg
+ysIyLPN9dv8a9saNwqn3LEtMcfrRlwhNI22SJT9qeJccG/FrVSt9wPszq4Sm/6+/
+XjySJpMVvKGnrZTlrDIqTPjxnocpBDumCM+jSDtNH/VPaGozHg1Zx0qh8/beFTmv
+Vtb0OcnD4qtkufaD0UNVfgFgwtFA3kRYS4cn6HfvqtjefLPSoQPAsdm7Bv4k7x5c
+KT12aYsPstalOtHu+FLiNVpazIpRiQcf1r4C/NtBsZcakeN5yuDe5TjP81BWYYmL
+q2d7TSeKz7bETNVkYlHJYDjvmDKdxfSaCkZYzfrHZlGIIFkDVUldkWLqi3g7SFe8
+SZTVRmWNiXrs6yvvJLLATV+By1fXEUHT+5EncaaS2KKWIER/rkBfZaTU5sm1Dh2e
+1uYKgu1HT00/215AdNLi/QpUSCMoP+RUixydwl9b0+dkJ5mbcY3Zyqz0iyFKEPg6
+EnkFO/edSWtmvQeFqqapWBfvO7ilH+yrlO8usp0A4pFhHFrs5D7k+oij9lDKVDPO
+LT092WpWBVzCxAYioMUGADderKfCTP3Tp4W5Lw9Tp2zyHG6Qze+UsbvNoPwYhb8G
+l0UKpbDA7nfIhJ3zrFcENxPPGXWP7aDaL8sG6HnZ5FQZoyj/w2Y=
+=OvzO
 -----END PGP SIGNATURE-----
 
---NY6JkbSqL3W9mApi--
+--v2Uk6McLiE8OV1El--
 
---===============3305136476712580168==
+--===============2135468137464674193==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -378,4 +209,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============3305136476712580168==--
+--===============2135468137464674193==--
