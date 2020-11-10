@@ -1,59 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFD512AE0D6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 21:41:27 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D04A2AE0F2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 21:47:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 14D0C85B3D;
-	Tue, 10 Nov 2020 20:41:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A74AC873B1;
+	Tue, 10 Nov 2020 20:47:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dKsFZDMBcwwU; Tue, 10 Nov 2020 20:41:24 +0000 (UTC)
+	with ESMTP id 0k04BiY2x5Mn; Tue, 10 Nov 2020 20:47:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 938DB85624;
-	Tue, 10 Nov 2020 20:41:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 86F9687141;
+	Tue, 10 Nov 2020 20:47:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4BB0C1BF32C
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:41:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7D9C71BF32C
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:47:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 462E386388
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:41:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 749B385B58
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:47:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rM6DPhAQBfhG for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 20:41:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2153685BA9
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 20:41:20 +0000 (UTC)
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0C8C42064B;
- Tue, 10 Nov 2020 20:41:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605040879;
- bh=yKv9frgTvVqzPfRFofFJ3n7ouGgpWudWfrCyAmsq0Ac=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=F6jMqfAn1AHkUEQ1J4oxIJsY6olAVg85Py7bpZib2TmtC6g1lYi0DngBOOIFt5utk
- EFXiTKY28UDOKNVDreRLLKKohuiIiXg9ONF3YKN2KD9yB2bif5xKWXrE3o0u6sihCB
- 0DBiiPOPHC8Fu7Hr8yhImjwF9Wn4UU/3MV8rT0Eg=
-Date: Tue, 10 Nov 2020 21:42:21 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Shuah Khan <skhan@linuxfoundation.org>
-Subject: Re: [PATCH 12/13] drivers/staging/unisys/visorhba: convert stats to
- use seqnum_ops
-Message-ID: <X6r7LVcXBBvRIbd8@kroah.com>
-References: <cover.1605027593.git.skhan@linuxfoundation.org>
- <6fb679d23de785bbd1be6a528127e29f8ee6abd7.1605027593.git.skhan@linuxfoundation.org>
+ with ESMTP id oFB2eayf7v1R for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 20:47:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1766A864D8
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 20:47:32 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id a3so3196229wmb.5
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 12:47:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=JKOlzvpbWFsw2iYUxRdGhDaWwqhcm/XwpcwUseGbR74=;
+ b=BfwOe253mIIwyuY9vhdchEEJQznuJuf8hgScBzwQXYqtOaWL2thJUGjBjxHsW4ciuW
+ hsCBqPkfl0FEaHdmn9kHXW5Oll4hJH7gQltVRSnpowkkCOQOdI7mZfiE8OxFD3eAgdTn
+ nhsMQRSvI65+IdSdXPHUpTgOL3AYOzq8HzvuxO2xLdFjZRskbr1F4do0f1RcFiXdN71z
+ IOqjoFpRGHKbkk8UF9MBrBFB4HqsXeyiCYx/lrKvthDCNRoXo/DIBHj4RbiF13dGUTcA
+ cZqO/z22HSS63vf3/Fdnx9ZJSvhgTSdeKLjSXmnDLt6m9U/oJ0dOH47CYuMxCuHbvS/E
+ qhTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=JKOlzvpbWFsw2iYUxRdGhDaWwqhcm/XwpcwUseGbR74=;
+ b=hEF/hJ8b/pPVRI/37f8OYWn+f3EbC/iUKoXZl6KgUEfSSgR/AE+PZZ6U3cTu1qdep4
+ HHvhlcxSdCKSCYbUfqItv6Eb6iIh9uoDVw8butdw1VrbhDdbN8z6pg/gnNcRvPuC9Q3S
+ Tv359/6DIzhH15RzFWZD0rkVzJqxCT+BQqGRRUcYQr7jlz1y6aW/5umeC9owGQNlv9EM
+ 6enbf3gUGUl6Rvp7F2fNSGChJ0AoXkvtaw7v8xsEhavk9R32KfhbNq86sMG3x6JLBePX
+ qbcipEQBXkXYi17Ws6p2uOTC1E3BrbxIY3KTj15ILVnYdZR0umcA5oKeYUZDfQbW2ocG
+ NJJA==
+X-Gm-Message-State: AOAM530TiocuRcRBzfwlKCMH/Pmp/yjTcpSnk4qB9xzDCfm0+pH22wib
+ OPFxmeBVcENfBtOTGgUw0ZU=
+X-Google-Smtp-Source: ABdhPJy49c1lUX+wu+3W3Zy5IcL9JRUtvkaxAgpOAl1TJEHa60imDaQR8PoYxaPbPv19myRFV1n2IQ==
+X-Received: by 2002:a7b:c4c3:: with SMTP id g3mr969948wmk.127.1605041250538;
+ Tue, 10 Nov 2020 12:47:30 -0800 (PST)
+Received: from localhost ([217.111.27.204])
+ by smtp.gmail.com with ESMTPSA id f4sm18998572wrq.54.2020.11.10.12.47.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Nov 2020 12:47:29 -0800 (PST)
+Date: Tue, 10 Nov 2020 21:47:27 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Dmitry Osipenko <digetx@gmail.com>
+Subject: Re: [PATCH v1 07/30] soc/tegra: Add sync state API
+Message-ID: <20201110204727.GG2375022@ulmo>
+References: <20201104234427.26477-1-digetx@gmail.com>
+ <20201104234427.26477-8-digetx@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6fb679d23de785bbd1be6a528127e29f8ee6abd7.1605027593.git.skhan@linuxfoundation.org>
+In-Reply-To: <20201104234427.26477-8-digetx@gmail.com>
+User-Agent: Mutt/1.14.7 (2020-08-29)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,62 +86,296 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: peterz@infradead.org, devel@driverdev.osuosl.org, keescook@chromium.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, dri-devel@lists.freedesktop.org,
+ Adrian Hunter <adrian.hunter@intel.com>, devicetree@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ devel@driverdev.osuosl.org, linux-samsung-soc@vger.kernel.org,
+ Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
+ Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-media@vger.kernel.org, linux-pwm@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
+Content-Type: multipart/mixed; boundary="===============3305136476712580168=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 10, 2020 at 12:53:38PM -0700, Shuah Khan wrote:
-> seqnum_ops api is introduced to be used when a variable is used as
-> a sequence/stat counter and doesn't guard object lifetimes. This
-> clearly differentiates atomic_t usages that guard object lifetimes.
-> 
-> seqnum32 variables wrap around to INT_MIN when it overflows and
-> should not be used to guard resource lifetimes, device usage and
-> open counts that control state changes, and pm states.
-> 
-> atomic_t variables used for error_count and ios_threshold are atomic
-> counters and guarded by max. values. No change to the behavior with
-> this change.
-> 
-> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+
+--===============3305136476712580168==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="NY6JkbSqL3W9mApi"
+Content-Disposition: inline
+
+
+--NY6JkbSqL3W9mApi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Nov 05, 2020 at 02:44:04AM +0300, Dmitry Osipenko wrote:
+> Introduce sync state API that will be used by Tegra device drivers. This
+> new API is primarily needed for syncing state of SoC devices that are left
+> ON after bootloader or permanently enabled. All these devices belong to a
+> shared CORE voltage domain, and thus, we needed to bring all the devices
+> into expected state before the voltage scaling could be performed.
+>=20
+> All drivers of DVFS-critical devices shall sync theirs the state before
+> Tegra's voltage regulator coupler will be allowed to perform a system-wide
+> voltage scaling.
+>=20
+> Tested-by: Peter Geis <pgwipeout@gmail.com>
+> Tested-by: Nicolas Chauvet <kwizart@gmail.com>
+> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 > ---
->  .../staging/unisys/visorhba/visorhba_main.c   | 37 ++++++++++---------
->  1 file changed, 19 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
-> index 7ae5306b92fe..3209958b8aaa 100644
-> --- a/drivers/staging/unisys/visorhba/visorhba_main.c
-> +++ b/drivers/staging/unisys/visorhba/visorhba_main.c
-> @@ -10,6 +10,7 @@
->  #include <linux/module.h>
->  #include <linux/seq_file.h>
->  #include <linux/visorbus.h>
-> +#include <linux/seqnum_ops.h>
->  #include <scsi/scsi.h>
->  #include <scsi/scsi_host.h>
->  #include <scsi/scsi_cmnd.h>
-> @@ -41,8 +42,8 @@ MODULE_ALIAS("visorbus:" VISOR_VHBA_CHANNEL_GUID_STR);
->  struct visordisk_info {
->  	struct scsi_device *sdev;
->  	u32 valid;
-> -	atomic_t ios_threshold;
-> -	atomic_t error_count;
-> +	struct seqnum32 ios_threshold;
-> +	struct seqnum32 error_count;
+>  drivers/soc/tegra/common.c | 152 ++++++++++++++++++++++++++++++++++++-
+>  include/soc/tegra/common.h |  22 ++++++
+>  2 files changed, 170 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/soc/tegra/common.c b/drivers/soc/tegra/common.c
+> index 3dc54f59cafe..f9b2b6f57887 100644
+> --- a/drivers/soc/tegra/common.c
+> +++ b/drivers/soc/tegra/common.c
+> @@ -3,13 +3,52 @@
+>   * Copyright (C) 2014 NVIDIA CORPORATION.  All rights reserved.
+>   */
+> =20
+> +#define dev_fmt(fmt)	"%s: " fmt, __func__
+> +#define pr_fmt(fmt)	"%s: " fmt, __func__
+> +
+> +#include <linux/export.h>
+> +#include <linux/init.h>
+> +#include <linux/mutex.h>
+>  #include <linux/of.h>
+> +#include <linux/of_device.h>
+> =20
+>  #include <soc/tegra/common.h>
+> =20
+> +#define terga_soc_for_each_device(__dev) \
 
-Are you sure the threshold variable is a sequence number?
+tegra_soc_for_each_device
 
-It goes up and down, not just up and up and up.
+> +	for ((__dev) =3D tegra_soc_devices; (__dev) && (__dev)->compatible; \
+> +	     (__dev)++)
+> +
+> +struct tegra_soc_device {
+> +	const char *compatible;
+> +	const bool dvfs_critical;
+> +	unsigned int sync_count;
+> +};
+> +
+> +static DEFINE_MUTEX(tegra_soc_lock);
+> +static struct tegra_soc_device *tegra_soc_devices;
+> +
+> +/*
+> + * DVFS-critical devices are either active at a boot time or permanently
+> + * active, like EMC for example.  System-wide DVFS should be deferred un=
+til
+> + * drivers of the critical devices synced theirs state.
+> + */
+> +
+> +static struct tegra_soc_device tegra20_soc_devices[] =3D {
+> +	{ .compatible =3D "nvidia,tegra20-dc", .dvfs_critical =3D true, },
+> +	{ .compatible =3D "nvidia,tegra20-emc", .dvfs_critical =3D true, },
+> +	{ }
+> +};
+> +
+> +static struct tegra_soc_device tegra30_soc_devices[] =3D {
+> +	{ .compatible =3D "nvidia,tegra30-dc", .dvfs_critical =3D true, },
+> +	{ .compatible =3D "nvidia,tegra30-emc", .dvfs_critical =3D true, },
+> +	{ .compatible =3D "nvidia,tegra30-pwm", .dvfs_critical =3D true, },
+> +	{ }
+> +};
+> +
+>  static const struct of_device_id tegra_machine_match[] =3D {
+> -	{ .compatible =3D "nvidia,tegra20", },
+> -	{ .compatible =3D "nvidia,tegra30", },
+> +	{ .compatible =3D "nvidia,tegra20", .data =3D tegra20_soc_devices, },
+> +	{ .compatible =3D "nvidia,tegra30", .data =3D tegra30_soc_devices, },
+>  	{ .compatible =3D "nvidia,tegra114", },
+>  	{ .compatible =3D "nvidia,tegra124", },
+>  	{ .compatible =3D "nvidia,tegra132", },
+> @@ -17,7 +56,7 @@ static const struct of_device_id tegra_machine_match[] =
+=3D {
+>  	{ }
+>  };
+> =20
+> -bool soc_is_tegra(void)
+> +static const struct of_device_id *tegra_soc_of_match(void)
+>  {
+>  	const struct of_device_id *match;
+>  	struct device_node *root;
+> @@ -29,5 +68,110 @@ bool soc_is_tegra(void)
+>  	match =3D of_match_node(tegra_machine_match, root);
+>  	of_node_put(root);
+> =20
+> -	return match !=3D NULL;
+> +	return match;
+> +}
+> +
+> +bool soc_is_tegra(void)
+> +{
+> +	return tegra_soc_of_match() !=3D NULL;
+> +}
+> +
+> +void tegra_soc_device_sync_state(struct device *dev)
+> +{
+> +	struct tegra_soc_device *soc_dev;
+> +
+> +	mutex_lock(&tegra_soc_lock);
+> +	terga_soc_for_each_device(soc_dev) {
 
-An error count just goes up :)
+tegra_soc_for_each_device
 
-thanks,
+> +		if (!of_device_is_compatible(dev->of_node, soc_dev->compatible))
+> +			continue;
+> +
+> +		if (!soc_dev->sync_count) {
+> +			dev_err(dev, "already synced\n");
+> +			break;
+> +		}
+> +
+> +		/*
+> +		 * All DVFS-capable devices should have the CORE regulator
+> +		 * phandle.  Older device-trees don't have it, hence state
+> +		 * won't be synced for the older DTBs, allowing them to work
+> +		 * properly.
+> +		 */
+> +		if (soc_dev->dvfs_critical &&
+> +		    !device_property_present(dev, "core-supply")) {
+> +			dev_dbg(dev, "doesn't have core supply\n");
+> +			break;
+> +		}
+> +
+> +		soc_dev->sync_count--;
+> +		dev_dbg(dev, "sync_count=3D%u\n", soc_dev->sync_count);
+> +		break;
+> +	}
+> +	mutex_unlock(&tegra_soc_lock);
+> +}
+> +EXPORT_SYMBOL_GPL(tegra_soc_device_sync_state);
+> +
+> +bool tegra_soc_dvfs_state_synced(void)
+> +{
+> +	struct tegra_soc_device *soc_dev;
+> +	bool synced_state =3D true;
+> +
+> +	/*
+> +	 * CORE voltage scaling is limited until drivers of the critical
+> +	 * devices synced theirs state.
+> +	 */
+> +	mutex_lock(&tegra_soc_lock);
+> +	terga_soc_for_each_device(soc_dev) {
 
-greg k-h
+tegra_soc_for_each_device
+
+I wonder if you copy/pasted this or if you got really lucky to mistype
+this all three times.
+
+> +		if (!soc_dev->sync_count || !soc_dev->dvfs_critical)
+> +			continue;
+> +
+> +		pr_debug_ratelimited("%s: sync_count=3D%u\n",
+> +				     soc_dev->compatible, soc_dev->sync_count);
+> +
+> +		synced_state =3D false;
+> +		break;
+> +	}
+> +	mutex_unlock(&tegra_soc_lock);
+> +
+> +	return synced_state;
+> +}
+> +
+> +static int __init tegra_soc_devices_init(void)
+> +{
+> +	struct device_node *np, *prev_np =3D NULL;
+> +	struct tegra_soc_device *soc_dev;
+> +	const struct of_device_id *match;
+> +
+> +	if (!soc_is_tegra())
+> +		return 0;
+> +
+> +	match =3D tegra_soc_of_match();
+> +	tegra_soc_devices =3D (void *)match->data;
+> +
+> +	/*
+> +	 * If device node is disabled in a device-tree, then we shouldn't
+> +	 * care about this device. Even if device is active during boot,
+> +	 * its clock will be disabled by CCF as unused.
+> +	 */
+> +	terga_soc_for_each_device(soc_dev) {
+> +		do {
+> +			/*
+> +			 * Devices like display controller have multiple
+> +			 * instances with the same compatible. Hence we need
+> +			 * to walk up the whole tree in order to account those
+> +			 * multiple instances.
+> +			 */
+> +			np =3D of_find_compatible_node(prev_np, NULL,
+> +						     soc_dev->compatible);
+> +			of_node_put(prev_np);
+> +			prev_np =3D np;
+> +
+> +			if (of_device_is_available(np)) {
+> +				pr_debug("added %s\n", soc_dev->compatible);
+> +				soc_dev->sync_count++;
+> +			}
+> +		} while (np);
+
+Maybe use for_each_compatible_node() for that inside loop?
+
+> +	}
+> +
+> +	return 0;
+>  }
+> +postcore_initcall_sync(tegra_soc_devices_init);
+
+This is unfortunate. I recall having this discussion multiple times and
+one idea that has been floating around for a while was to let a driver
+bind against the top-level "bus" node. That has the advantage that it
+both anchors the code somewhere, so we don't have to play this game of
+checking for the SoC with soc_is_tegra(), and it properly orders this
+with respect to the child devices, so we wouldn't have to make this a
+postcore_initcall.
+
+Might be worth looking at that again, but for now this seems okay.
+
+Thierry
+
+--NY6JkbSqL3W9mApi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl+q/F0ACgkQ3SOs138+
+s6Ffhg//ZzNuVrroPGuv4tZqVJ5AXAx//1JvKJJ/APDlLKqIvIYw77b6jIxkHb/t
+Ay3psh0eNC+cr8tegl6spNx7S66HX1FEbKezsbGO0XqgebaZPtvHx4mtU7L1nBxw
+ysDX2sRKNa//bxU8YyLrhm/2jlrGBBOFQvxmYu62fE6vgN5tQqECAcmscFy+BsgA
+74wHiJRnj0PJXFoQZ6T2lkFfWkfhexPGIq988VELclUjQTfn6kQiXHfHwEPNcni0
+haS3AuFGLsTZqb6c9aI0DKcOS0y+gFEUx+WYWV3z33I6rUS3f1mfJXpIyTTAlU1j
+ENciW+rTnKilsQlE9WqY7B5gmH4f8hZnq35JK2HRDFXQj8g/03C02XjPp2aoDczm
+/3Nv2feu//pkYpMMTZaqeUu7AJVUnfavOMCBlwhyEuaieiVFE31X1BRdLcJ+mpyF
+JbKlY/+i+UCb14jP6sGMKvnxG5dxkm3pYs90XcVHMIAsXsrPNIL0r04Eh1QszqOJ
+uxGf7bpt7L09Yl7CyxahtA+AO+Ntd5dGuDHlRAOSUaMF4BaXHe3LgoNfWhEnF/Qa
+BRIZ3zewRwMVSNCted4nf5x9hymxF743g3kj6AxTmQqbEs5gmR9BxG+I4oEU/jjb
+d6Q/+Zk40xAgCn9dyBkNIqKbUTcQCvcDxSNGYsmkzduZ3tqiieU=
+=CsZi
+-----END PGP SIGNATURE-----
+
+--NY6JkbSqL3W9mApi--
+
+--===============3305136476712580168==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3305136476712580168==--
