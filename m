@@ -1,82 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DF482AE147
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 22:02:26 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74E832AE175
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 22:17:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7172523115;
-	Tue, 10 Nov 2020 21:02:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D34085F4B;
+	Tue, 10 Nov 2020 21:17:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qgyRKzNRQFQ4; Tue, 10 Nov 2020 21:02:24 +0000 (UTC)
+	with ESMTP id aWt9n-kKcMLh; Tue, 10 Nov 2020 21:17:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3BC9420029;
-	Tue, 10 Nov 2020 21:02:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6D33F85D6F;
+	Tue, 10 Nov 2020 21:17:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8D5341BF32C
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 21:02:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C0D001BF3C2
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 21:17:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 80C86862F4
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 21:02:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BA78186151
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 21:17:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TM29lgqRbH+2 for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 21:02:16 +0000 (UTC)
+ with ESMTP id iUp2i1rTIo4r for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 21:17:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
- [209.85.166.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DBA9C86193
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 21:02:16 +0000 (UTC)
-Received: by mail-il1-f194.google.com with SMTP id n5so13528347ile.7
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 13:02:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linuxfoundation.org; s=google;
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B41858613C
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 21:17:10 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id i6so177670lfd.1
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 13:17:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hTEZuc82d1g5VvucdImgjg3ULND3nOsOgigDk2DI/+8=;
- b=T9D/WIcsClZwpGKErlJuHTFALDz6vsuxGxC1d23FpoAq5emQMX6ZPFB58AHesKL4Np
- tcU2ntQUFGsV5Fmvtxy12aE51gFg/hgx6zBLjtyGmAoHaAFYlV6HWA1e1dPXHWbBGFq0
- jKWHhyDfPV6q/pCSOGvu4Zn12BRot5pZCwKDs=
+ bh=EGw/lJ2fFtGQXxuehfGhLjJtLJBME8AehCZBZ0GpWKM=;
+ b=NAjhIP+3pP7247wVyMNIoqS0eBQ6Ub6VXzYDVkDW5hh7OeVhZnrCfqxE2LxWyJsKMV
+ 90KLTj2Sz4TgROVkbS2FdYgKiKElggblFjPltnMdRMP+LsofRfySn0ZAVRiZ/rJhCxi6
+ Ihb4k6looEtRmT1ELEZ0lM7wPWjSKyFQbZqNuGGZWJnLFo6POVOBCZ35lDBdx6WUlyZo
+ hFkkJUxBTXfhYM1L6nmK/Cdx6WzQfwcvnzNWLiRd/LuWn+G/zTP5qT4snC3j+huX+nYr
+ tA9dCLNuMRHfewvKYy4Ua/ksZbn9fdwQO2uPYg+XI2muKxWHeQxfYp9b34Tx6cpXjg8z
+ oyIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=hTEZuc82d1g5VvucdImgjg3ULND3nOsOgigDk2DI/+8=;
- b=IwcyYC7zoD7MxY1cKr3FbG4GCySEFaEP5ARYVBUEb2PyTzd4/ZnqbuqAn8Uu442D/w
- qnYWq4qPWHhCV8OVO8vqGPC1wr4mKpISVgbNrQdvn9jgZ2rFCkcTHAEiZTNYM5ZrR51x
- 2TglL6GgDmx+KAjaaGxnCHZSv2cu9kIzvg2AePTNl+1A5TeICkc8EUVMbsjSrfhHAjlJ
- b255x28JvJSC5sZTtcI9wDdG20uxl3eoAQiqFqEGYhkEWekmjXxaaUFC3mMzO+BlZuyt
- F1qd+wrlAh0hfWVcJjxJVnTPdq4pWVaqmyCd3hgAlaJ1KVBpnL8brdTAHKdFDbT3AiQ9
- pqIQ==
-X-Gm-Message-State: AOAM533QcfpfEHsCNFKkgdG+6tdKSGzRVmZ1xFOxQqzMy06VSr+Fi5MA
- g5UvicD55u6DAsDCJJovFJuwQA==
-X-Google-Smtp-Source: ABdhPJwy0XBegJgfxBv38odl1jCZvoE6acuK2Tr9mU3ARqr4mDAA0qHwmB6d9Byriqqy6+c1VLzreA==
-X-Received: by 2002:a92:85cd:: with SMTP id f196mr14652639ilh.92.1605042136242; 
- Tue, 10 Nov 2020 13:02:16 -0800 (PST)
-Received: from [192.168.1.112] (c-24-9-64-241.hsd1.co.comcast.net.
- [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id x14sm58031ior.7.2020.11.10.13.02.15
+ bh=EGw/lJ2fFtGQXxuehfGhLjJtLJBME8AehCZBZ0GpWKM=;
+ b=B72/uX3sMsOmgQv0hiyaRbRStNVGJBSorqxIv04hScxiv4GzQnSModdurEk5bLeTH4
+ wo845l+bM5fm1X4t/OPplgV0ddJWb71xJeroKWCdpEUxy1fJEZG4ykQD8+oAtBzJEUaY
+ WB2CcYLL5m94MynyYfz0UG2ZrTAiDKTqmQ/dQxVolY4MgPiKZkCW4ZAciUgbl981QFt7
+ JzzfpNQLO6Zbd8AG1q99DNXmZ+/ITRc13TTk8ygL1RoC+T5GDCOw60MfKsAIHLbZGcp9
+ RbjGU9jZ9TxEhYquo/zsWGxQYKSS2DGDKTU4jRnneL4sEnAGuUrU6siaXxHd3TfQlE76
+ uyQw==
+X-Gm-Message-State: AOAM533eTNwghmcCL5FhizmJ8ZR6jJtGYfqfBoCwzAvLlUn0UFEVc/Av
+ ZyFNRXmeYpsXfmg9ELQAHzI=
+X-Google-Smtp-Source: ABdhPJy9MxQ9JDqgbUxs5iJjOZhvvAhbIb4SB90wBtvxj6i+Z1NqL4Sgmd5xFUlSjTl9BiZi3p2X+g==
+X-Received: by 2002:a19:6a07:: with SMTP id u7mr4706867lfu.252.1605043028710; 
+ Tue, 10 Nov 2020 13:17:08 -0800 (PST)
+Received: from [192.168.2.145] (109-252-193-159.dynamic.spd-mgts.ru.
+ [109.252.193.159])
+ by smtp.googlemail.com with ESMTPSA id m7sm1658405ljb.37.2020.11.10.13.17.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Nov 2020 13:02:15 -0800 (PST)
-Subject: Re: [PATCH 12/13] drivers/staging/unisys/visorhba: convert stats to
- use seqnum_ops
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <cover.1605027593.git.skhan@linuxfoundation.org>
- <6fb679d23de785bbd1be6a528127e29f8ee6abd7.1605027593.git.skhan@linuxfoundation.org>
- <X6r7LVcXBBvRIbd8@kroah.com>
-From: Shuah Khan <skhan@linuxfoundation.org>
-Message-ID: <82a5ad26-a633-bf76-0591-14f803133666@linuxfoundation.org>
-Date: Tue, 10 Nov 2020 14:02:14 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.2
+ Tue, 10 Nov 2020 13:17:07 -0800 (PST)
+Subject: Re: [PATCH v1 18/30] pwm: tegra: Support OPP and core voltage scaling
+To: Thierry Reding <thierry.reding@gmail.com>
+References: <20201104234427.26477-1-digetx@gmail.com>
+ <20201104234427.26477-19-digetx@gmail.com> <20201110205057.GH2375022@ulmo>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <a3bf156d-17b8-0edd-9981-a17991266e1d@gmail.com>
+Date: Wed, 11 Nov 2020 00:17:04 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <X6r7LVcXBBvRIbd8@kroah.com>
+In-Reply-To: <20201110205057.GH2375022@ulmo>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,66 +90,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, keescook@chromium.org, peterz@infradead.org,
- linux-kernel@vger.kernel.org, Shuah Khan <skhan@linuxfoundation.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, dri-devel@lists.freedesktop.org,
+ Adrian Hunter <adrian.hunter@intel.com>, devicetree@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ devel@driverdev.osuosl.org, linux-samsung-soc@vger.kernel.org,
+ Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-media@vger.kernel.org, linux-pwm@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 11/10/20 1:42 PM, Greg KH wrote:
-> On Tue, Nov 10, 2020 at 12:53:38PM -0700, Shuah Khan wrote:
->> seqnum_ops api is introduced to be used when a variable is used as
->> a sequence/stat counter and doesn't guard object lifetimes. This
->> clearly differentiates atomic_t usages that guard object lifetimes.
->>
->> seqnum32 variables wrap around to INT_MIN when it overflows and
->> should not be used to guard resource lifetimes, device usage and
->> open counts that control state changes, and pm states.
->>
->> atomic_t variables used for error_count and ios_threshold are atomic
->> counters and guarded by max. values. No change to the behavior with
->> this change.
->>
->> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
->> ---
->>   .../staging/unisys/visorhba/visorhba_main.c   | 37 ++++++++++---------
->>   1 file changed, 19 insertions(+), 18 deletions(-)
->>
->> diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
->> index 7ae5306b92fe..3209958b8aaa 100644
->> --- a/drivers/staging/unisys/visorhba/visorhba_main.c
->> +++ b/drivers/staging/unisys/visorhba/visorhba_main.c
->> @@ -10,6 +10,7 @@
->>   #include <linux/module.h>
->>   #include <linux/seq_file.h>
->>   #include <linux/visorbus.h>
->> +#include <linux/seqnum_ops.h>
->>   #include <scsi/scsi.h>
->>   #include <scsi/scsi_host.h>
->>   #include <scsi/scsi_cmnd.h>
->> @@ -41,8 +42,8 @@ MODULE_ALIAS("visorbus:" VISOR_VHBA_CHANNEL_GUID_STR);
->>   struct visordisk_info {
->>   	struct scsi_device *sdev;
->>   	u32 valid;
->> -	atomic_t ios_threshold;
->> -	atomic_t error_count;
->> +	struct seqnum32 ios_threshold;
->> +	struct seqnum32 error_count;
-> 
-> Are you sure the threshold variable is a sequence number >
-> It goes up and down, not just up and up and up.
-
-Right. I does go down. Turns out this is the only place seqnum32_dec()
-is used. :)
-
-I will fix. I noticed you made a comment about _dec() interfaces on
-1/13. I can drop those as well. This way seqnum_ops can be just used
-for up counters.
-
-thanks,
--- Shuah
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+MTAuMTEuMjAyMCAyMzo1MCwgVGhpZXJyeSBSZWRpbmcg0L/QuNGI0LXRgjoKPiBPbiBUaHUsIE5v
+diAwNSwgMjAyMCBhdCAwMjo0NDoxNUFNICswMzAwLCBEbWl0cnkgT3NpcGVua28gd3JvdGU6Cj4g
+Wy4uLl0KPj4gK3N0YXRpYyB2b2lkIHRlZ3JhX3B3bV9kZWluaXRfb3BwX3RhYmxlKHZvaWQgKmRh
+dGEpCj4+ICt7Cj4+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gZGF0YTsKPj4gKwlzdHJ1Y3Qgb3Bw
+X3RhYmxlICpvcHBfdGFibGU7Cj4+ICsKPj4gKwlvcHBfdGFibGUgPSBkZXZfcG1fb3BwX2dldF9v
+cHBfdGFibGUoZGV2KTsKPj4gKwlkZXZfcG1fb3BwX29mX3JlbW92ZV90YWJsZShkZXYpOwo+PiAr
+CWRldl9wbV9vcHBfcHV0X3JlZ3VsYXRvcnMob3BwX3RhYmxlKTsKPj4gKwlkZXZfcG1fb3BwX3B1
+dF9vcHBfdGFibGUob3BwX3RhYmxlKTsKPj4gK30KPj4gKwo+PiArc3RhdGljIGludCBkZXZtX3Rl
+Z3JhX3B3bV9pbml0X29wcF90YWJsZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4+ICt7Cj4+ICsJc3Ry
+dWN0IG9wcF90YWJsZSAqb3BwX3RhYmxlOwo+PiArCWNvbnN0IGNoYXIgKnJuYW1lID0gImNvcmUi
+Owo+PiArCWludCBlcnI7Cj4+ICsKPj4gKwkvKiB2b2x0YWdlIHNjYWxpbmcgaXMgb3B0aW9uYWwg
+Ki8KPj4gKwlpZiAoZGV2aWNlX3Byb3BlcnR5X3ByZXNlbnQoZGV2LCAiY29yZS1zdXBwbHkiKSkK
+Pj4gKwkJb3BwX3RhYmxlID0gZGV2X3BtX29wcF9zZXRfcmVndWxhdG9ycyhkZXYsICZybmFtZSwg
+MSk7Cj4+ICsJZWxzZQo+PiArCQlvcHBfdGFibGUgPSBkZXZfcG1fb3BwX2dldF9vcHBfdGFibGUo
+ZGV2KTsKPj4gKwo+PiArCWlmIChJU19FUlIob3BwX3RhYmxlKSkKPj4gKwkJcmV0dXJuIGRldl9l
+cnJfcHJvYmUoZGV2LCBQVFJfRVJSKG9wcF90YWJsZSksCj4+ICsJCQkJICAgICAiZmFpbGVkIHRv
+IHByZXBhcmUgT1BQIHRhYmxlXG4iKTsKPj4gKwo+PiArCS8qCj4+ICsJICogT1BQIHRhYmxlIHBy
+ZXNlbmNlIGlzIG9wdGlvbmFsIGFuZCB3ZSB3YW50IHRoZSBzZXRfcmF0ZSgpIG9mIE9QUAo+PiAr
+CSAqIEFQSSB0byB3b3JrIHNpbWlsYXJseSB0byBjbGtfc2V0X3JhdGUoKSBpZiB0YWJsZSBpcyBt
+aXNzaW5nIGluIGEKPj4gKwkgKiBkZXZpY2UtdHJlZS4gIFRoZSBhZGRfdGFibGUoKSBlcnJvcnMg
+b3V0IGlmIE9QUCBpcyBtaXNzaW5nIGluIERULgo+PiArCSAqLwo+PiArCWlmIChkZXZpY2VfcHJv
+cGVydHlfcHJlc2VudChkZXYsICJvcGVyYXRpbmctcG9pbnRzLXYyIikpIHsKPj4gKwkJZXJyID0g
+ZGV2X3BtX29wcF9vZl9hZGRfdGFibGUoZGV2KTsKPj4gKwkJaWYgKGVycikgewo+PiArCQkJZGV2
+X2VycihkZXYsICJmYWlsZWQgdG8gYWRkIE9QUCB0YWJsZTogJWRcbiIsIGVycik7Cj4+ICsJCQln
+b3RvIHB1dF90YWJsZTsKPj4gKwkJfQo+PiArCX0KPj4gKwo+PiArCWVyciA9IGRldm1fYWRkX2Fj
+dGlvbihkZXYsIHRlZ3JhX3B3bV9kZWluaXRfb3BwX3RhYmxlLCBkZXYpOwo+PiArCWlmIChlcnIp
+Cj4+ICsJCWdvdG8gcmVtb3ZlX3RhYmxlOwo+PiArCj4+ICsJcmV0dXJuIDA7Cj4+ICsKPj4gK3Jl
+bW92ZV90YWJsZToKPj4gKwlkZXZfcG1fb3BwX29mX3JlbW92ZV90YWJsZShkZXYpOwo+PiArcHV0
+X3RhYmxlOgo+PiArCWRldl9wbV9vcHBfcHV0X3JlZ3VsYXRvcnMob3BwX3RhYmxlKTsKPj4gKwo+
+PiArCXJldHVybiBlcnI7Cj4+ICt9Cj4gCj4gVGhlc2UgdHdvIGZ1bmN0aW9ucyBzZWVtIHRvIGJl
+IGhlYXZpbHkgYm9pbGVycGxhdGUgYWNyb3NzIGFsbCB0aGVzZQo+IGRyaXZlcnMuIEhhdmUgeW91
+IGNvbnNpZGVyZWQgc3BsaXR0aW5nIHRoZXNlIG91dCBpbnRvIHNlcGFyYXRlIGhlbHBlcnM/CgpU
+aGUgaGVscGVyIGlzIGFscmVhZHkgcHJlcGFyZWQgZm9yIHYyLgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
+dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
