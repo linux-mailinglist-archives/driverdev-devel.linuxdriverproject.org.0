@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EF152ACE66
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 05:10:56 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 808252ACE5C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 05:10:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C39EE86246;
-	Tue, 10 Nov 2020 04:10:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DCE1F2039E;
+	Tue, 10 Nov 2020 04:10:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cp3UUmSR-G-8; Tue, 10 Nov 2020 04:10:44 +0000 (UTC)
+	with ESMTP id ueYGlaPGZ9jj; Tue, 10 Nov 2020 04:10:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9F67984FB1;
-	Tue, 10 Nov 2020 04:10:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CB9DA2035D;
+	Tue, 10 Nov 2020 04:10:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 125791BF34E
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 09D741BF34E
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A2D920385
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 025C62039E
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x6GfsJvpU9Ei for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 04:10:25 +0000 (UTC)
+ with ESMTP id PggIQIYo-mUK for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
- [209.85.166.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 3D46E2035D
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 04:10:25 +0000 (UTC)
-Received: by mail-io1-f65.google.com with SMTP id n12so12343513ioc.2
- for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 20:10:25 -0800 (PST)
+Received: from mail-io1-f47.google.com (mail-io1-f47.google.com
+ [209.85.166.47])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9928620366
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 04:10:26 +0000 (UTC)
+Received: by mail-io1-f47.google.com with SMTP id u19so12360150ion.3
+ for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 20:10:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=aHvgYnfps4rq0eW3EyLY7UD98Nf30o01nptViCW0CDY=;
- b=Rx2MJ3vBANk5nL2Lp5ki+HH/Rd0njDNHOD9pAsGRjJXLewQhTYqWBWUvH5lB6oZN8D
- GVk3UZl5zWs+DkypGu+ybuitLP4Z0S7Lt4B2GeT3WzjXbwAJyLsLGSc70JF3YaLCzF3j
- ihaiwAc5ypzTzTMA3PmTh3FGb3wdXabBdV8FERt69yhwA3rF2WovsS1MsgbsnBk3a/aX
- LwAogCN0GqnHAPj+Qt49NT4cAPrvdE8ImivKx2xIqOW/omdpiuds81y6DP+xMokguapH
- h+2bRtf9b/F8hHgazBj9bs2m3d1jxyZVz/Btt9Xmb28+ZYusetAhoZrFvTLUj3SevEB3
- 75wg==
+ bh=w0uJH20Y9PB94JSNsUBrDpUu5cXmjr476Na4wBZlVak=;
+ b=G0dqbh2SWOkItZGekcxI4+wU+txdf2+3CqKFivXw0I/7gWkAbgW9xQtiHSZsHEW6mY
+ wgiLWQkBIL6QTMDjgf0K6GPT4nw0HIIQLDb/wsL52yi/PJ3ievpt2/kDtasjibcg9yr4
+ H54K1CiHE3qHpDj00CCzWPmR17a3LUYQKRljvxnJ9N5EFO5ulHEfc7++g2mZ5E0wLXIp
+ PSJzLJZ7bqz4Kcr5iyE9AiXYQocIljXpjGJJU6korYt2tPBYV7JwfRpI9V019eGxpxAn
+ WBSMEZYqqIr+slwwnj4HjYsNlM3QQiQaV8YBaYgSdIIZn+oH/cGfZj+7bNIwdNIYOxmy
+ Vj8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=aHvgYnfps4rq0eW3EyLY7UD98Nf30o01nptViCW0CDY=;
- b=mhrUVacEj0qqogceU9gKUG6oF5qVEvLytEhq0w325KhCJXPmBn0mCheT0aFPDxLe1N
- wOHuOVVWkl22lwj975Blc3FNZ0Z8mf0GrAer6ARaH1kvIYoJdp86WU/DvgNr0f0sW1i9
- umnHbORb7bxw0pDUmglhmk1hRgdVDpbWOnHXtYrAMqPSR9OFpyeg17cnpce2ITLhdDRu
- P9zKKunr4qZcA/rAkHhwR5SZJmdcA7/qWoL3kTjaSkvqBgrKnBtXvSXQk+YLMypF7Syh
- I0Y0Jo5dDQCmTCR+CE/nrxd5lYoKdMR7e+2v9CTVjBmP6XENKFmHnNSbz/uaJyjPb9I0
- ngEQ==
-X-Gm-Message-State: AOAM532LQvEsCjbbBwomx6u6TFEz3/NbhI4cDTYOzeTFqtIR7U7ia2zv
- Y8CESdUpLNhrVH270JUvmvI=
-X-Google-Smtp-Source: ABdhPJxq+5r6rsbGVRnA+BHTxEpxsB0txfJ5N+oR+bIEG1QMeuAp4hoiy+aMouQ3Bq/wkAWw37ZERw==
-X-Received: by 2002:a6b:5805:: with SMTP id m5mr12475060iob.1.1604981424596;
- Mon, 09 Nov 2020 20:10:24 -0800 (PST)
+ bh=w0uJH20Y9PB94JSNsUBrDpUu5cXmjr476Na4wBZlVak=;
+ b=s5FIv3BzHCcnNFVTfHfeG+XTvuhepPyo+xapFVnIq2ZNF2yjDbMgvk6Iyqq3lwn55n
+ CVCIs3kuiVK7J9T8MwtWUL0dH1PpEteqXdu7P7ZyE/Zr7uhF7hKFn/40GZ7Eqtq6jexg
+ NFtSt1heyMy/66NJQ6w5sT/Ck8WFMk/zRz3ZIRaX6uSR6jDpDyC2JfqpxqkYmoMF8WNw
+ SJdGTIkzdhJ0VkklOA0/WWkT9MOMYRAgZG0tciaLX7A3xDkm9/ZEK7y1h/hitTJFKnLG
+ D+CaUgvVmxIgE7PWaE+GrS36w/jag4DFhY8pz7zEjdbjPl7LEJfKYr8tDURYH2B4WWcj
+ EOqA==
+X-Gm-Message-State: AOAM5303cARreNvlhmsvsYof+4vziax6pGSkxpes/4+2NunHKdZLl+vZ
+ M6Ef0juRyKcn+fLvzKIafY8=
+X-Google-Smtp-Source: ABdhPJy1jNOb/fUQKzPBckHscOzEWhJf5IzGAfno9RPj2+z0mQaKVhsLU9ZrLjx+rAJLJRQvd7r2TQ==
+X-Received: by 2002:a6b:d907:: with SMTP id r7mr12849335ioc.37.1604981425945; 
+ Mon, 09 Nov 2020 20:10:25 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id e21sm6658842ioc.0.2020.11.09.20.10.23
+ by smtp.gmail.com with ESMTPSA id e21sm6658842ioc.0.2020.11.09.20.10.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2020 20:10:23 -0800 (PST)
+ Mon, 09 Nov 2020 20:10:25 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 05/10] staging: rtl8723bs: clean up open braces
-Date: Mon,  9 Nov 2020 22:10:03 -0600
-Message-Id: <20201110041008.15847-5-ross.schm.dev@gmail.com>
+Subject: [PATCH 06/10] staging: rtl8723bs: clean up switch case indentation
+Date: Mon,  9 Nov 2020 22:10:04 -0600
+Message-Id: <20201110041008.15847-6-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201110041008.15847-1-ross.schm.dev@gmail.com>
 References: <20201110041008.15847-1-ross.schm.dev@gmail.com>
@@ -93,467 +93,305 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Move braces to fix coding style issues and clear checkpatch errors.
-Some braces are removed for single statements.
+Move cases to align with switch indentation to fix coding style issues
+and clear checkpatch errors.
 
-ERROR: open brace '{' following function definitions go on the next line
-ERROR: that open brace { should be on the previous line
+ERROR: switch and case should be at the same indent
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 167 ++++++------------
- 1 file changed, 54 insertions(+), 113 deletions(-)
+ .../staging/rtl8723bs/os_dep/ioctl_linux.c    | 219 +++++++++---------
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   |  14 +-
+ 2 files changed, 116 insertions(+), 117 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-index 736f1a6ac118..385705aafa5c 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-@@ -1746,8 +1746,7 @@ static int rtw_cfg80211_set_cipher(struct security_priv *psecuritypriv, u32 ciph
- 		return -ENOTSUPP;
- 	}
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index 783daa30f1d7..773e4816fbc4 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -664,49 +664,49 @@ static int rtw_set_wpa_ie(struct adapter *padapter, char *pie, unsigned short ie
+ 			pairwise_cipher = WPA_CIPHER_NONE;
  
--	if (ucast)
--	{
-+	if (ucast) {
- 		psecuritypriv->ndisencryptstatus = ndisencryptstatus;
- 
- 		/* if (psecuritypriv->dot11PrivacyAlgrthm >= _AES_) */
-@@ -1819,10 +1818,8 @@ static int rtw_cfg80211_set_wpa_ie(struct adapter *padapter, u8 *pie, size_t iel
- 	}
- 
- 	pwpa = rtw_get_wpa_ie(buf, &wpa_ielen, ielen);
--	if (pwpa && wpa_ielen > 0)
--	{
--		if (rtw_parse_wpa_ie(pwpa, wpa_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS)
--		{
-+	if (pwpa && wpa_ielen > 0) {
-+		if (rtw_parse_wpa_ie(pwpa, wpa_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS) {
- 			padapter->securitypriv.dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
- 			padapter->securitypriv.ndisauthtype = Ndis802_11AuthModeWPAPSK;
- 			memcpy(padapter->securitypriv.supplicant_ie, &pwpa[0], wpa_ielen+2);
-@@ -1832,10 +1829,8 @@ static int rtw_cfg80211_set_wpa_ie(struct adapter *padapter, u8 *pie, size_t iel
- 	}
- 
- 	pwpa2 = rtw_get_wpa2_ie(buf, &wpa2_ielen, ielen);
--	if (pwpa2 && wpa2_ielen > 0)
--	{
--		if (rtw_parse_wpa2_ie(pwpa2, wpa2_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS)
--		{
-+	if (pwpa2 && wpa2_ielen > 0) {
-+		if (rtw_parse_wpa2_ie(pwpa2, wpa2_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS) {
- 			padapter->securitypriv.dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
- 			padapter->securitypriv.ndisauthtype = Ndis802_11AuthModeWPA2PSK;
- 			memcpy(padapter->securitypriv.supplicant_ie, &pwpa2[0], wpa2_ielen+2);
-@@ -1845,13 +1840,10 @@ static int rtw_cfg80211_set_wpa_ie(struct adapter *padapter, u8 *pie, size_t iel
- 	}
- 
- 	if (group_cipher == 0)
--	{
- 		group_cipher = WPA_CIPHER_NONE;
--	}
-+
- 	if (pairwise_cipher == 0)
--	{
- 		pairwise_cipher = WPA_CIPHER_NONE;
--	}
- 
- 	switch (group_cipher)
- 	{
-@@ -1954,8 +1946,7 @@ static int cfg80211_rtw_join_ibss(struct wiphy *wiphy, struct net_device *ndev,
- 		goto exit;
- 	}
- 
--	if (!params->ssid || !params->ssid_len)
--	{
-+	if (!params->ssid || !params->ssid_len) {
- 		ret = -EINVAL;
- 		goto exit;
- 	}
-@@ -1981,8 +1972,7 @@ static int cfg80211_rtw_join_ibss(struct wiphy *wiphy, struct net_device *ndev,
- 	ret = rtw_cfg80211_set_auth_type(psecuritypriv, NL80211_AUTHTYPE_OPEN_SYSTEM);
- 	rtw_set_802_11_authentication_mode(padapter, psecuritypriv->ndisauthtype);
- 
--	if (rtw_set_802_11_ssid(padapter, &ndis_ssid) == false)
--	{
-+	if (rtw_set_802_11_ssid(padapter, &ndis_ssid) == false) {
- 		ret = -1;
- 		goto exit;
- 	}
-@@ -2004,8 +1994,7 @@ static int cfg80211_rtw_leave_ibss(struct wiphy *wiphy, struct net_device *ndev)
- 
- 	rtw_set_to_roam(padapter, 0);
- 
--	if (check_fwstate(&padapter->mlmepriv, _FW_LINKED))
--	{
-+	if (check_fwstate(&padapter->mlmepriv, _FW_LINKED)) {
- 		rtw_scan_abort(padapter);
- 		LeaveAllPowerSaveMode(padapter);
- 
-@@ -2041,8 +2030,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 		sme->privacy, sme->key, sme->key_len, sme->key_idx);
- 
- 
--	if (adapter_wdev_data(padapter)->block == true)
--	{
-+	if (adapter_wdev_data(padapter)->block == true) {
- 		ret = -EBUSY;
- 		DBG_871X("%s wdev_priv.block is set\n", __func__);
- 		goto exit;
-@@ -2059,8 +2047,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 		goto exit;
- 	}
- 
--	if (!sme->ssid || !sme->ssid_len)
--	{
-+	if (!sme->ssid || !sme->ssid_len) {
- 		ret = -EINVAL;
- 		goto exit;
- 	}
-@@ -2119,10 +2106,8 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 	}
- 
- 	/* For WEP Shared auth */
--	if ((psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Shared
--		|| psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Auto) && sme->key
--	)
--	{
-+	if ((psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Shared ||
-+	    psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Auto) && sme->key) {
- 		u32 wep_key_idx, wep_key_len, wep_total_len;
- 		struct ndis_802_11_wep	 *pwep = NULL;
- 		DBG_871X("%s(): Shared/Auto WEP\n", __func__);
-@@ -2135,8 +2120,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 			goto exit;
+ 		switch (group_cipher) {
+-			case WPA_CIPHER_NONE:
+-				padapter->securitypriv.dot118021XGrpPrivacy = _NO_PRIVACY_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
+-				break;
+-			case WPA_CIPHER_WEP40:
+-				padapter->securitypriv.dot118021XGrpPrivacy = _WEP40_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
+-				break;
+-			case WPA_CIPHER_TKIP:
+-				padapter->securitypriv.dot118021XGrpPrivacy = _TKIP_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
+-				break;
+-			case WPA_CIPHER_CCMP:
+-				padapter->securitypriv.dot118021XGrpPrivacy = _AES_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
+-				break;
+-			case WPA_CIPHER_WEP104:
+-				padapter->securitypriv.dot118021XGrpPrivacy = _WEP104_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
+-				break;
++		case WPA_CIPHER_NONE:
++			padapter->securitypriv.dot118021XGrpPrivacy = _NO_PRIVACY_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
++			break;
++		case WPA_CIPHER_WEP40:
++			padapter->securitypriv.dot118021XGrpPrivacy = _WEP40_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
++			break;
++		case WPA_CIPHER_TKIP:
++			padapter->securitypriv.dot118021XGrpPrivacy = _TKIP_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
++			break;
++		case WPA_CIPHER_CCMP:
++			padapter->securitypriv.dot118021XGrpPrivacy = _AES_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
++			break;
++		case WPA_CIPHER_WEP104:
++			padapter->securitypriv.dot118021XGrpPrivacy = _WEP104_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
++			break;
  		}
  
--		if (wep_key_len > 0)
--		{
-+		if (wep_key_len > 0) {
- 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
- 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
- 			pwep = rtw_malloc(wep_total_len);
-@@ -2151,13 +2135,11 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 			pwep->KeyLength = wep_key_len;
- 			pwep->Length = wep_total_len;
+ 		switch (pairwise_cipher) {
+-			case WPA_CIPHER_NONE:
+-				padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
+-				break;
+-			case WPA_CIPHER_WEP40:
+-				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
+-				break;
+-			case WPA_CIPHER_TKIP:
+-				padapter->securitypriv.dot11PrivacyAlgrthm = _TKIP_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
+-				break;
+-			case WPA_CIPHER_CCMP:
+-				padapter->securitypriv.dot11PrivacyAlgrthm = _AES_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
+-				break;
+-			case WPA_CIPHER_WEP104:
+-				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
+-				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
+-				break;
++		case WPA_CIPHER_NONE:
++			padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
++			break;
++		case WPA_CIPHER_WEP40:
++			padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
++			break;
++		case WPA_CIPHER_TKIP:
++			padapter->securitypriv.dot11PrivacyAlgrthm = _TKIP_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
++			break;
++		case WPA_CIPHER_CCMP:
++			padapter->securitypriv.dot11PrivacyAlgrthm = _AES_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
++			break;
++		case WPA_CIPHER_WEP104:
++			padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
++			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
++			break;
+ 		}
  
--			if (wep_key_len == 13)
--			{
-+			if (wep_key_len == 13) {
- 				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
- 				padapter->securitypriv.dot118021XGrpPrivacy = _WEP104_;
+ 		_clr_fwstate_(&padapter->mlmepriv, WIFI_UNDER_WPS);
+@@ -860,28 +860,27 @@ static int rtw_wx_set_mode(struct net_device *dev, struct iw_request_info *a,
+ 	}
+ 
+ 	switch (wrqu->mode) {
+-		case IW_MODE_AUTO:
+-			networkType = Ndis802_11AutoUnknown;
+-			DBG_871X("set_mode = IW_MODE_AUTO\n");
+-			break;
+-		case IW_MODE_ADHOC:
+-			networkType = Ndis802_11IBSS;
+-			DBG_871X("set_mode = IW_MODE_ADHOC\n");
+-			break;
+-		case IW_MODE_MASTER:
+-			networkType = Ndis802_11APMode;
+-			DBG_871X("set_mode = IW_MODE_MASTER\n");
+-                        /* rtw_setopmode_cmd(padapter, networkType, true); */
+-			break;
+-		case IW_MODE_INFRA:
+-			networkType = Ndis802_11Infrastructure;
+-			DBG_871X("set_mode = IW_MODE_INFRA\n");
+-			break;
+-
+-		default:
+-			ret = -EINVAL;
+-			RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_err_, ("\n Mode: %s is not supported \n", iw_operation_mode[wrqu->mode]));
+-			goto exit;
++	case IW_MODE_AUTO:
++		networkType = Ndis802_11AutoUnknown;
++		DBG_871X("set_mode = IW_MODE_AUTO\n");
++		break;
++	case IW_MODE_ADHOC:
++		networkType = Ndis802_11IBSS;
++		DBG_871X("set_mode = IW_MODE_ADHOC\n");
++		break;
++	case IW_MODE_MASTER:
++		networkType = Ndis802_11APMode;
++		DBG_871X("set_mode = IW_MODE_MASTER\n");
++		/* rtw_setopmode_cmd(padapter, networkType, true); */
++		break;
++	case IW_MODE_INFRA:
++		networkType = Ndis802_11Infrastructure;
++		DBG_871X("set_mode = IW_MODE_INFRA\n");
++		break;
++	default:
++		ret = -EINVAL;
++		RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_err_, ("\n Mode: %s is not supported \n", iw_operation_mode[wrqu->mode]));
++		goto exit;
+ 	}
+ 
+ /*
+@@ -1342,50 +1341,50 @@ static int rtw_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
+ 			section = *(pos++); len -= 1;
+ 
+ 			switch (section) {
+-				case WEXT_CSCAN_SSID_SECTION:
+-					/* DBG_871X("WEXT_CSCAN_SSID_SECTION\n"); */
+-					if (len < 1) {
+-						len = 0;
+-						break;
+-					}
++			case WEXT_CSCAN_SSID_SECTION:
++				/* DBG_871X("WEXT_CSCAN_SSID_SECTION\n"); */
++				if (len < 1) {
++					len = 0;
++					break;
++				}
+ 
+-					sec_len = *(pos++); len -= 1;
++				sec_len = *(pos++); len -= 1;
+ 
+-					if (sec_len > 0 && sec_len <= len) {
+-						ssid[ssid_index].SsidLength = sec_len;
+-						memcpy(ssid[ssid_index].Ssid, pos, ssid[ssid_index].SsidLength);
+-						/* DBG_871X("%s COMBO_SCAN with specific ssid:%s, %d\n", __func__ */
+-						/* 	, ssid[ssid_index].Ssid, ssid[ssid_index].SsidLength); */
+-						ssid_index++;
+-					}
++				if (sec_len > 0 && sec_len <= len) {
++					ssid[ssid_index].SsidLength = sec_len;
++					memcpy(ssid[ssid_index].Ssid, pos, ssid[ssid_index].SsidLength);
++					/* DBG_871X("%s COMBO_SCAN with specific ssid:%s, %d\n", __func__ */
++					/* 	, ssid[ssid_index].Ssid, ssid[ssid_index].SsidLength); */
++					ssid_index++;
++				}
+ 
+-					pos += sec_len; len -= sec_len;
+-					break;
++				pos += sec_len; len -= sec_len;
++				break;
+ 
+ 
+-				case WEXT_CSCAN_CHANNEL_SECTION:
+-					/* DBG_871X("WEXT_CSCAN_CHANNEL_SECTION\n"); */
+-					pos += 1; len -= 1;
+-					break;
+-				case WEXT_CSCAN_ACTV_DWELL_SECTION:
+-					/* DBG_871X("WEXT_CSCAN_ACTV_DWELL_SECTION\n"); */
+-					pos += 2; len -= 2;
+-					break;
+-				case WEXT_CSCAN_PASV_DWELL_SECTION:
+-					/* DBG_871X("WEXT_CSCAN_PASV_DWELL_SECTION\n"); */
+-					pos += 2; len -= 2;
+-					break;
+-				case WEXT_CSCAN_HOME_DWELL_SECTION:
+-					/* DBG_871X("WEXT_CSCAN_HOME_DWELL_SECTION\n"); */
+-					pos += 2; len -= 2;
+-					break;
+-				case WEXT_CSCAN_TYPE_SECTION:
+-					/* DBG_871X("WEXT_CSCAN_TYPE_SECTION\n"); */
+-					pos += 1; len -= 1;
+-					break;
+-				default:
+-					/* DBG_871X("Unknown CSCAN section %c\n", section); */
+-					len = 0; /*  stop parsing */
++			case WEXT_CSCAN_CHANNEL_SECTION:
++				/* DBG_871X("WEXT_CSCAN_CHANNEL_SECTION\n"); */
++				pos += 1; len -= 1;
++				break;
++			case WEXT_CSCAN_ACTV_DWELL_SECTION:
++				/* DBG_871X("WEXT_CSCAN_ACTV_DWELL_SECTION\n"); */
++				pos += 2; len -= 2;
++				break;
++			case WEXT_CSCAN_PASV_DWELL_SECTION:
++				/* DBG_871X("WEXT_CSCAN_PASV_DWELL_SECTION\n"); */
++				pos += 2; len -= 2;
++				break;
++			case WEXT_CSCAN_HOME_DWELL_SECTION:
++				/* DBG_871X("WEXT_CSCAN_HOME_DWELL_SECTION\n"); */
++				pos += 2; len -= 2;
++				break;
++			case WEXT_CSCAN_TYPE_SECTION:
++				/* DBG_871X("WEXT_CSCAN_TYPE_SECTION\n"); */
++				pos += 1; len -= 1;
++				break;
++			default:
++				/* DBG_871X("Unknown CSCAN section %c\n", section); */
++				len = 0; /*  stop parsing */
  			}
--		}
--		else {
-+		} else {
- 			ret = -EINVAL;
+ 			/* DBG_871X("len:%d\n", len); */
+ 
+@@ -1917,15 +1916,15 @@ static int rtw_wx_set_enc(struct net_device *dev,
+ 			DBG_871X("(keyindex_provided == 1), keyid =%d, key_len =%d\n", key, padapter->securitypriv.dot11DefKeylen[key]);
+ 
+ 			switch (padapter->securitypriv.dot11DefKeylen[key]) {
+-				case 5:
+-					padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
+-					break;
+-				case 13:
+-					padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
+-					break;
+-				default:
+-					padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
+-					break;
++			case 5:
++				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
++				break;
++			case 13:
++				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
++				break;
++			default:
++				padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
++				break;
+ 			}
+ 
  			goto exit;
- 		}
-@@ -2168,9 +2150,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 		memcpy(pwep->KeyMaterial,  (void *)sme->key, pwep->KeyLength);
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index ed8212b7deb4..b62fe9238e6d 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -400,17 +400,17 @@ u16 rtw_recv_select_queue(struct sk_buff *skb)
+ 	memcpy(&eth_type, pdata + (ETH_ALEN << 1), 2);
  
- 		if (rtw_set_802_11_add_wep(padapter, pwep) == (u8)_FAIL)
--		{
- 			ret = -EOPNOTSUPP;
--		}
+ 	switch (be16_to_cpu(eth_type)) {
+-		case ETH_P_IP:
++	case ETH_P_IP:
  
- 		kfree(pwep);
+-			piphdr = (struct iphdr *)(pdata + ETH_HLEN);
++		piphdr = (struct iphdr *)(pdata + ETH_HLEN);
  
-@@ -2290,17 +2270,14 @@ static int cfg80211_rtw_set_pmksa(struct wiphy *wiphy,
- 	DBG_871X(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
+-			dscp = piphdr->tos & 0xfc;
++		dscp = piphdr->tos & 0xfc;
  
- 	if (!memcmp((u8 *)pmksa->bssid, strZeroMacAddress, ETH_ALEN))
--	{
- 		return -EINVAL;
--	}
+-			priority = dscp >> 5;
++		priority = dscp >> 5;
  
- 	blInserted = false;
- 
- 	/* overwrite PMKID */
--	for (index = 0 ; index < NUM_PMKID_CACHE; index++)
--	{
--		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN))
--		{ /*  BSSID is matched, the same AP => rewrite with new PMKID. */
-+	for (index = 0 ; index < NUM_PMKID_CACHE; index++) {
-+		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN)) {
-+			/*  BSSID is matched, the same AP => rewrite with new PMKID. */
- 			DBG_871X(FUNC_NDEV_FMT" BSSID exists in the PMKList.\n", FUNC_NDEV_ARG(ndev));
- 
- 			memcpy(psecuritypriv->PMKIDList[index].PMKID, (u8 *)pmksa->pmkid, WLAN_PMKID_LEN);
-@@ -2311,8 +2288,7 @@ static int cfg80211_rtw_set_pmksa(struct wiphy *wiphy,
- 		}
+-			break;
+-		default:
+-			priority = 0;
++		break;
++	default:
++		priority = 0;
  	}
  
--	if (!blInserted)
--	{
-+	if (!blInserted) {
- 		/*  Find a new entry */
- 		DBG_871X(FUNC_NDEV_FMT" Use the new entry index = %d for this PMKID.\n",
- 			FUNC_NDEV_ARG(ndev), psecuritypriv->PMKIDIndex);
-@@ -2323,9 +2299,7 @@ static int cfg80211_rtw_set_pmksa(struct wiphy *wiphy,
- 		psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].bUsed = true;
- 		psecuritypriv->PMKIDIndex++;
- 		if (psecuritypriv->PMKIDIndex == 16)
--		{
- 			psecuritypriv->PMKIDIndex = 0;
--		}
- 	}
- 
- 	return 0;
-@@ -2341,10 +2315,12 @@ static int cfg80211_rtw_del_pmksa(struct wiphy *wiphy,
- 
- 	DBG_871X(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
- 
--	for (index = 0 ; index < NUM_PMKID_CACHE; index++)
--	{
--		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN))
--		{ /*  BSSID is matched, the same AP => Remove this PMKID information and reset it. */
-+	for (index = 0 ; index < NUM_PMKID_CACHE; index++) {
-+		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN)) {
-+			/*
-+			 * BSSID is matched, the same AP => Remove this PMKID information
-+			 * and reset it.
-+			 */
- 			eth_zero_addr(psecuritypriv->PMKIDList[index].Bssid);
- 			memset(psecuritypriv->PMKIDList[index].PMKID, 0x00, WLAN_PMKID_LEN);
- 			psecuritypriv->PMKIDList[index].bUsed = false;
-@@ -2353,8 +2329,7 @@ static int cfg80211_rtw_del_pmksa(struct wiphy *wiphy,
- 		}
- 	}
- 
--	if (false == bMatched)
--	{
-+	if (false == bMatched) {
- 		DBG_871X(FUNC_NDEV_FMT" do not have matched BSSID\n"
- 			, FUNC_NDEV_ARG(ndev));
- 		return -EINVAL;
-@@ -2441,8 +2416,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
- 	if (unlikely(skb->len < rtap_len))
- 		goto fail;
- 
--	if (rtap_len != 14)
--	{
-+	if (rtap_len != 14) {
- 		DBG_8192C("radiotap len (should be 14): %d\n", rtap_len);
- 		goto fail;
- 	}
-@@ -2478,11 +2452,8 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
- 		/* Use the real net device to transmit the packet */
- 		return _rtw_xmit_entry(skb, padapter->pnetdev);
- 
--	}
--	else if ((frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE))
--		== (IEEE80211_FTYPE_MGMT|IEEE80211_STYPE_ACTION)
--	)
--	{
-+	} else if ((frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE)) ==
-+		   (IEEE80211_FTYPE_MGMT|IEEE80211_STYPE_ACTION)) {
- 		/* only for action frames */
- 		struct xmit_frame		*pmgntframe;
- 		struct pkt_attrib	*pattrib;
-@@ -2511,9 +2482,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
- 
- 		/* starting alloc mgmt frame to dump it */
- 		if ((pmgntframe = alloc_mgtxmitframe(pxmitpriv)) == NULL)
--		{
- 			goto fail;
--		}
- 
- 		/* update attribute */
- 		pattrib = &pmgntframe->attrib;
-@@ -2538,9 +2507,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
- 
- 		dump_mgntframe(padapter, pmgntframe);
- 
--	}
--	else
--	{
-+	} else {
- 		DBG_8192C("frame_control = 0x%x\n", frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE));
- 	}
- 
-@@ -2738,12 +2705,9 @@ static int rtw_add_beacon(struct adapter *adapter, const u8 *head, size_t head_l
- 	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, P2P_OUI, 4);
- 	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, WFD_OUI, 4);
- 
--	if (rtw_check_beacon_data(adapter, pbuf,  len) == _SUCCESS)
--	{
-+	if (rtw_check_beacon_data(adapter, pbuf,  len) == _SUCCESS) {
- 		ret = 0;
--	}
--	else
--	{
-+	} else {
- 		ret = -EINVAL;
- 	}
- 
-@@ -2819,15 +2783,13 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
- 
- 	DBG_871X("+"FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
- 
--	if (check_fwstate(pmlmepriv, (_FW_LINKED|WIFI_AP_STATE)) != true)
--	{
-+	if (check_fwstate(pmlmepriv, (_FW_LINKED|WIFI_AP_STATE)) != true) {
- 		DBG_8192C("%s, fw_state != FW_LINKED|WIFI_AP_STATE\n", __func__);
- 		return -EINVAL;
- 	}
- 
- 
--	if (!mac)
--	{
-+	if (!mac) {
- 		DBG_8192C("flush all sta, and cam_entry\n");
- 
- 		flush_all_cam_entry(padapter);	/* clear CAM */
-@@ -2842,8 +2804,7 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
- 
- 	if (mac[0] == 0xff && mac[1] == 0xff &&
- 	    mac[2] == 0xff && mac[3] == 0xff &&
--	    mac[4] == 0xff && mac[5] == 0xff)
--	{
-+	    mac[4] == 0xff && mac[5] == 0xff) {
- 		return -EINVAL;
- 	}
- 
-@@ -2854,20 +2815,15 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
- 	plist = get_next(phead);
- 
- 	/* check asoc_queue */
--	while (phead != plist)
--	{
-+	while (phead != plist) {
- 		psta = LIST_CONTAINOR(plist, struct sta_info, asoc_list);
- 
- 		plist = get_next(plist);
- 
--		if (!memcmp((u8 *)mac, psta->hwaddr, ETH_ALEN))
--		{
--			if (psta->dot8021xalg == 1 && psta->bpairwise_key_installed == false)
--			{
-+		if (!memcmp((u8 *)mac, psta->hwaddr, ETH_ALEN)) {
-+			if (psta->dot8021xalg == 1 && psta->bpairwise_key_installed == false) {
- 				DBG_8192C("%s, sta's dot8021xalg = 1 and key_installed = false\n", __func__);
--			}
--			else
--			{
-+			} else {
- 				DBG_8192C("free psta =%p, aid =%d\n", psta, psta->aid);
- 
- 				list_del_init(&psta->asoc_list);
-@@ -2913,8 +2869,7 @@ static struct sta_info *rtw_sta_info_get_by_idx(const int idx, struct sta_priv *
- 	plist = get_next(phead);
- 
- 	/* check asoc_queue */
--	while (phead != plist)
--	{
-+	while (phead != plist) {
- 		if (idx == i) psta = LIST_CONTAINOR(plist, struct sta_info, asoc_list);
- 		plist = get_next(plist);
- 		i++;
-@@ -2935,8 +2890,7 @@ static int	cfg80211_rtw_dump_station(struct wiphy *wiphy, struct net_device *nde
- 	spin_lock_bh(&pstapriv->asoc_list_lock);
- 	psta = rtw_sta_info_get_by_idx(idx, pstapriv);
- 	spin_unlock_bh(&pstapriv->asoc_list_lock);
--	if (NULL == psta)
--	{
-+	if (NULL == psta) {
- 		DBG_871X("Station is not found\n");
- 		ret = -ENOENT;
- 		goto exit;
-@@ -2998,8 +2952,7 @@ static int _cfg80211_rtw_mgmt_tx(struct adapter *padapter, u8 tx_ch, const u8 *b
- 	}
- 
- 	/* starting alloc mgmt frame to dump it */
--	if ((pmgntframe = alloc_mgtxmitframe(pxmitpriv)) == NULL)
--	{
-+	if ((pmgntframe = alloc_mgtxmitframe(pxmitpriv)) == NULL) {
- 		/* ret = -ENOMEM; */
- 		ret = _FAIL;
- 		goto exit;
-@@ -3025,18 +2978,14 @@ static int _cfg80211_rtw_mgmt_tx(struct adapter *padapter, u8 tx_ch, const u8 *b
- 
- 	pattrib->last_txcmdsz = pattrib->pktlen;
- 
--	if (dump_mgntframe_and_wait_ack(padapter, pmgntframe) != _SUCCESS)
--	{
-+	if (dump_mgntframe_and_wait_ack(padapter, pmgntframe) != _SUCCESS) {
- 		ack = false;
- 		ret = _FAIL;
- 
- 		#ifdef DEBUG_CFG80211
- 		DBG_8192C("%s, ack == _FAIL\n", __func__);
- 		#endif
--	}
--	else
--	{
--
-+	} else {
- 		msleep(50);
- 
- 		#ifdef DEBUG_CFG80211
-@@ -3129,9 +3078,7 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
- 		rtw_clear_scan_deny(padapter);
- 		break;
- 	case P2P_INVIT_RESP:
--		if (pwdev_priv->invit_info.flags & BIT(0)
--			&& pwdev_priv->invit_info.status == 0)
--		{
-+		if (pwdev_priv->invit_info.flags & BIT(0) && pwdev_priv->invit_info.status == 0) {
- 			DBG_871X(FUNC_ADPT_FMT" agree with invitation of persistent group\n",
- 				FUNC_ADPT_ARG(padapter));
- 			rtw_set_scan_deny(padapter, 5000);
-@@ -3148,10 +3095,9 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
- }
- 
- #if defined(CONFIG_PNO_SUPPORT)
--static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy,
--		struct net_device *dev,
--		struct cfg80211_sched_scan_request *request) {
--
-+static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy, struct net_device *dev,
-+					 struct cfg80211_sched_scan_request *request)
-+{
- 	struct adapter *padapter = rtw_netdev_priv(dev);
- 	struct	mlme_priv *pmlmepriv = &(padapter->mlmepriv);
- 	int ret;
-@@ -3190,8 +3136,8 @@ static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy,
- 	return ret;
- }
- 
--static int cfg80211_rtw_sched_scan_stop(struct wiphy *wiphy,
--		struct net_device *dev) {
-+static int cfg80211_rtw_sched_scan_stop(struct wiphy *wiphy, struct net_device *dev)
-+{
- 	return rtw_android_pno_enable(dev, false);
- }
- #endif /* CONFIG_PNO_SUPPORT */
-@@ -3229,24 +3175,19 @@ static void rtw_cfg80211_init_ht_capab(struct ieee80211_sta_ht_cap *ht_cap, enum
- 	 *if BW_40 rx_mask[4]= 0x01;
- 	 *highest supported RX rate
- 	 */
--	if (rf_type == RF_1T1R)
--	{
-+	if (rf_type == RF_1T1R) {
- 		ht_cap->mcs.rx_mask[0] = 0xFF;
- 		ht_cap->mcs.rx_mask[1] = 0x00;
- 		ht_cap->mcs.rx_mask[4] = 0x01;
- 
- 		ht_cap->mcs.rx_highest = cpu_to_le16(MAX_BIT_RATE_40MHZ_MCS7);
--	}
--	else if ((rf_type == RF_1T2R) || (rf_type == RF_2T2R))
--	{
-+	} else if ((rf_type == RF_1T2R) || (rf_type == RF_2T2R)) {
- 		ht_cap->mcs.rx_mask[0] = 0xFF;
- 		ht_cap->mcs.rx_mask[1] = 0xFF;
- 		ht_cap->mcs.rx_mask[4] = 0x01;
- 
- 		ht_cap->mcs.rx_highest = cpu_to_le16(MAX_BIT_RATE_40MHZ_MCS15);
--	}
--	else
--	{
-+	} else {
- 		DBG_8192C("%s, error rf_type =%d\n", __func__, rf_type);
- 	}
- 
+ 	return rtw_1d_to_queue[priority];
 -- 
 2.25.1
 
