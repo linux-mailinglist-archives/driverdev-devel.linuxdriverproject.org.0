@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F7392ACE5A
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 05:10:41 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 106DF871B2;
-	Tue, 10 Nov 2020 04:10:40 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id co-56vzshzJi; Tue, 10 Nov 2020 04:10:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DC74A87450;
-	Tue, 10 Nov 2020 04:10:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D55FA1BF34E
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EF152ACE66
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 05:10:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CECEE86797
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C39EE86246;
+	Tue, 10 Nov 2020 04:10:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cp3UUmSR-G-8; Tue, 10 Nov 2020 04:10:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9F67984FB1;
+	Tue, 10 Nov 2020 04:10:30 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 125791BF34E
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 0A2D920385
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9XMMbZqQRImL for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 04:10:24 +0000 (UTC)
+ with ESMTP id x6GfsJvpU9Ei for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 04:10:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f48.google.com (mail-io1-f48.google.com
- [209.85.166.48])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 65CFD84CE1
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 04:10:24 +0000 (UTC)
-Received: by mail-io1-f48.google.com with SMTP id p7so12333569ioo.6
- for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 20:10:24 -0800 (PST)
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3D46E2035D
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 04:10:25 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id n12so12343513ioc.2
+ for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 20:10:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=x1tD0r/dgyq/Z6q0jsnOSA6a5omqa8a2F5KDD/vWS+Q=;
- b=d9EXsAgtRV2KT1o0oCyI5rz+EvmQKpP0cVac0d5JbvLIx06PKGmnr/qTk4ca2hcgU0
- VNKeaG93XeSiT8hZpew6GRp8eRXwiphG1/bGZ2yrQNgBxn0dXx5Q2ypPQChbsMuAnTJK
- na6pLlXBoqc64bkGTYzfrtvTNnkH7m05rjVfvx8Iqkx/iW542qcQueHRHj1JVXcL7kAi
- CvrKow3u++y7yAZpBMhWaNJAaE8knTWEekaaR9jhjqltzIcQtNBFxLT8xz/1OS3s/nLm
- WqA2RdDnIkDDRJh4fdtwj5aLL8Vc2WfMOzkdE5n8pErDFUM0jyByxiMExTyHUMcTz9Of
- bpEA==
+ bh=aHvgYnfps4rq0eW3EyLY7UD98Nf30o01nptViCW0CDY=;
+ b=Rx2MJ3vBANk5nL2Lp5ki+HH/Rd0njDNHOD9pAsGRjJXLewQhTYqWBWUvH5lB6oZN8D
+ GVk3UZl5zWs+DkypGu+ybuitLP4Z0S7Lt4B2GeT3WzjXbwAJyLsLGSc70JF3YaLCzF3j
+ ihaiwAc5ypzTzTMA3PmTh3FGb3wdXabBdV8FERt69yhwA3rF2WovsS1MsgbsnBk3a/aX
+ LwAogCN0GqnHAPj+Qt49NT4cAPrvdE8ImivKx2xIqOW/omdpiuds81y6DP+xMokguapH
+ h+2bRtf9b/F8hHgazBj9bs2m3d1jxyZVz/Btt9Xmb28+ZYusetAhoZrFvTLUj3SevEB3
+ 75wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=x1tD0r/dgyq/Z6q0jsnOSA6a5omqa8a2F5KDD/vWS+Q=;
- b=ZZAviUzr6PhNSyAWZ1JGk4JLQkpdHgiU/4iTIB4kJp429L/OGPnbrYBG1A5i3ihoCW
- D7xPQUaHSGRuFneH99uNfrMj/X6NG6U30eBDsqzwhXXNmE7khUTa95OEkH7OQaskg2zm
- fz2RW/H6VXUrYxcbwGzZLTWynW6v62hjoPsx5M4ONBemkMFIa2it6XpcReuVer3CiUtY
- pLB0OMopAtqc8PxIPeMj+AUH5WwD42JGfOt7xQpUfo7GO4fmTJs+nMc87/VNupibD0Yg
- /eS7h/3/VOkIobCoSkRqkVbwic44vx8d94oSOrCl2uPtUaehg9cbc0zUs3+tFA4XJOQM
- 689w==
-X-Gm-Message-State: AOAM533MKEOlXDs87sNiI8q+IUwVBq8JeyFCfGYYjc3MLr3LiQhM7LYR
- 1DiXeRKubewdiTsWCgZXq14=
-X-Google-Smtp-Source: ABdhPJxmGMlbO0FPQwbHNADRiesZfyX/kZNEExNitbM+bRk3Premx0SLPgpwG+G5RajwAtFeGJYGUQ==
-X-Received: by 2002:a6b:b28d:: with SMTP id b135mr12027150iof.95.1604981423568; 
- Mon, 09 Nov 2020 20:10:23 -0800 (PST)
+ bh=aHvgYnfps4rq0eW3EyLY7UD98Nf30o01nptViCW0CDY=;
+ b=mhrUVacEj0qqogceU9gKUG6oF5qVEvLytEhq0w325KhCJXPmBn0mCheT0aFPDxLe1N
+ wOHuOVVWkl22lwj975Blc3FNZ0Z8mf0GrAer6ARaH1kvIYoJdp86WU/DvgNr0f0sW1i9
+ umnHbORb7bxw0pDUmglhmk1hRgdVDpbWOnHXtYrAMqPSR9OFpyeg17cnpce2ITLhdDRu
+ P9zKKunr4qZcA/rAkHhwR5SZJmdcA7/qWoL3kTjaSkvqBgrKnBtXvSXQk+YLMypF7Syh
+ I0Y0Jo5dDQCmTCR+CE/nrxd5lYoKdMR7e+2v9CTVjBmP6XENKFmHnNSbz/uaJyjPb9I0
+ ngEQ==
+X-Gm-Message-State: AOAM532LQvEsCjbbBwomx6u6TFEz3/NbhI4cDTYOzeTFqtIR7U7ia2zv
+ Y8CESdUpLNhrVH270JUvmvI=
+X-Google-Smtp-Source: ABdhPJxq+5r6rsbGVRnA+BHTxEpxsB0txfJ5N+oR+bIEG1QMeuAp4hoiy+aMouQ3Bq/wkAWw37ZERw==
+X-Received: by 2002:a6b:5805:: with SMTP id m5mr12475060iob.1.1604981424596;
+ Mon, 09 Nov 2020 20:10:24 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id e21sm6658842ioc.0.2020.11.09.20.10.22
+ by smtp.gmail.com with ESMTPSA id e21sm6658842ioc.0.2020.11.09.20.10.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2020 20:10:22 -0800 (PST)
+ Mon, 09 Nov 2020 20:10:23 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 04/10] staging: rtl8723bs: clean up open ended lines
-Date: Mon,  9 Nov 2020 22:10:02 -0600
-Message-Id: <20201110041008.15847-4-ross.schm.dev@gmail.com>
+Subject: [PATCH 05/10] staging: rtl8723bs: clean up open braces
+Date: Mon,  9 Nov 2020 22:10:03 -0600
+Message-Id: <20201110041008.15847-5-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201110041008.15847-1-ross.schm.dev@gmail.com>
 References: <20201110041008.15847-1-ross.schm.dev@gmail.com>
@@ -93,774 +93,467 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Move declarations to fix coding style issues and clear checkpatch
-checks.
+Move braces to fix coding style issues and clear checkpatch errors.
+Some braces are removed for single statements.
 
-CHECK: Lines should not end with a '('
+ERROR: open brace '{' following function definitions go on the next line
+ERROR: that open brace { should be on the previous line
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_efuse.c    |  44 +--
- .../staging/rtl8723bs/core/rtw_ieee80211.c    |  13 +-
- .../staging/rtl8723bs/core/rtw_ioctl_set.c    |  10 +-
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |  16 +-
- drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  |   7 +-
- drivers/staging/rtl8723bs/core/rtw_recv.c     |  38 +--
- drivers/staging/rtl8723bs/core/rtw_security.c | 261 ++++++------------
- drivers/staging/rtl8723bs/core/rtw_sta_mgt.c  |  42 ++-
- drivers/staging/rtl8723bs/core/rtw_xmit.c     |  17 +-
- 9 files changed, 147 insertions(+), 301 deletions(-)
+ .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 167 ++++++------------
+ 1 file changed, 54 insertions(+), 113 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_efuse.c b/drivers/staging/rtl8723bs/core/rtw_efuse.c
-index 8794638468e6..32ca10f01413 100644
---- a/drivers/staging/rtl8723bs/core/rtw_efuse.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_efuse.c
-@@ -303,12 +303,7 @@ bool		bPseudoTest)
- }
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index 736f1a6ac118..385705aafa5c 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -1746,8 +1746,7 @@ static int rtw_cfg80211_set_cipher(struct security_priv *psecuritypriv, u32 ciph
+ 		return -ENOTSUPP;
+ 	}
  
- /*  11/16/2008 MH Write one byte to reald Efuse. */
--u8
--efuse_OneByteWrite(
--struct adapter *padapter,
--u16 		addr,
--u8 	data,
--bool		bPseudoTest)
-+u8 efuse_OneByteWrite(struct adapter *padapter, u16 addr, u8 data, bool bPseudoTest)
- {
- 	u8 tmpidx = 0;
- 	u8 bResult = false;
-@@ -456,12 +451,7 @@ Efuse_ReadAllMap(
- 	u8 efuseType,
- 	u8 *Efuse,
- 	bool		bPseudoTest);
--void
--Efuse_ReadAllMap(
--	struct adapter *padapter,
--	u8 efuseType,
--	u8 *Efuse,
--	bool		bPseudoTest)
-+void Efuse_ReadAllMap(struct adapter *padapter, u8 efuseType, u8 *Efuse, bool bPseudoTest)
- {
- 	u16 mapLen = 0;
+-	if (ucast)
+-	{
++	if (ucast) {
+ 		psecuritypriv->ndisencryptstatus = ndisencryptstatus;
  
-@@ -492,11 +482,7 @@ Efuse_ReadAllMap(
-  * 11/12/2008	MHC		Create Version 0.
-  *
-  *---------------------------------------------------------------------------*/
--static void
--efuse_ShadowRead1Byte(
--struct adapter *padapter,
--u16 	Offset,
--	u8 *Value)
-+static void efuse_ShadowRead1Byte(struct adapter *padapter, u16 Offset, u8 *Value)
- {
- 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
+ 		/* if (psecuritypriv->dot11PrivacyAlgrthm >= _AES_) */
+@@ -1819,10 +1818,8 @@ static int rtw_cfg80211_set_wpa_ie(struct adapter *padapter, u8 *pie, size_t iel
+ 	}
  
-@@ -505,11 +491,7 @@ u16 	Offset,
- }	/*  EFUSE_ShadowRead1Byte */
+ 	pwpa = rtw_get_wpa_ie(buf, &wpa_ielen, ielen);
+-	if (pwpa && wpa_ielen > 0)
+-	{
+-		if (rtw_parse_wpa_ie(pwpa, wpa_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS)
+-		{
++	if (pwpa && wpa_ielen > 0) {
++		if (rtw_parse_wpa_ie(pwpa, wpa_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS) {
+ 			padapter->securitypriv.dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
+ 			padapter->securitypriv.ndisauthtype = Ndis802_11AuthModeWPAPSK;
+ 			memcpy(padapter->securitypriv.supplicant_ie, &pwpa[0], wpa_ielen+2);
+@@ -1832,10 +1829,8 @@ static int rtw_cfg80211_set_wpa_ie(struct adapter *padapter, u8 *pie, size_t iel
+ 	}
  
- /* Read Two Bytes */
--static void
--efuse_ShadowRead2Byte(
--struct adapter *padapter,
--u16 	Offset,
--	u16 	*Value)
-+static void efuse_ShadowRead2Byte(struct adapter *padapter, u16 Offset, u16 *Value)
- {
- 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
+ 	pwpa2 = rtw_get_wpa2_ie(buf, &wpa2_ielen, ielen);
+-	if (pwpa2 && wpa2_ielen > 0)
+-	{
+-		if (rtw_parse_wpa2_ie(pwpa2, wpa2_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS)
+-		{
++	if (pwpa2 && wpa2_ielen > 0) {
++		if (rtw_parse_wpa2_ie(pwpa2, wpa2_ielen+2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS) {
+ 			padapter->securitypriv.dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
+ 			padapter->securitypriv.ndisauthtype = Ndis802_11AuthModeWPA2PSK;
+ 			memcpy(padapter->securitypriv.supplicant_ie, &pwpa2[0], wpa2_ielen+2);
+@@ -1845,13 +1840,10 @@ static int rtw_cfg80211_set_wpa_ie(struct adapter *padapter, u8 *pie, size_t iel
+ 	}
  
-@@ -519,11 +501,7 @@ u16 	Offset,
- }	/*  EFUSE_ShadowRead2Byte */
+ 	if (group_cipher == 0)
+-	{
+ 		group_cipher = WPA_CIPHER_NONE;
+-	}
++
+ 	if (pairwise_cipher == 0)
+-	{
+ 		pairwise_cipher = WPA_CIPHER_NONE;
+-	}
  
- /* Read Four Bytes */
--static void
--efuse_ShadowRead4Byte(
--struct adapter *padapter,
--u16 	Offset,
--	u32 	*Value)
-+static void efuse_ShadowRead4Byte(struct adapter *padapter, u16 Offset, u32 *Value)
- {
- 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
+ 	switch (group_cipher)
+ 	{
+@@ -1954,8 +1946,7 @@ static int cfg80211_rtw_join_ibss(struct wiphy *wiphy, struct net_device *ndev,
+ 		goto exit;
+ 	}
  
-@@ -550,10 +528,7 @@ u16 	Offset,
-  * 11/13/2008	MHC		Create Version 0.
-  *
-  *---------------------------------------------------------------------------*/
--void EFUSE_ShadowMapUpdate(
--	struct adapter *padapter,
--	u8 efuseType,
--	bool	bPseudoTest)
-+void EFUSE_ShadowMapUpdate(struct adapter *padapter, u8 efuseType, bool bPseudoTest)
- {
- 	struct eeprom_priv *pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
- 	u16 mapLen = 0;
-@@ -586,12 +561,7 @@ void EFUSE_ShadowMapUpdate(
-  * 11/12/2008	MHC		Create Version 0.
-  *
-  *---------------------------------------------------------------------------*/
--void
--EFUSE_ShadowRead(
--	struct adapter *padapter,
--	u8 Type,
--	u16 	Offset,
--	u32 	*Value)
-+void EFUSE_ShadowRead(struct adapter *padapter, u8 Type, u16 Offset, u32 *Value)
- {
- 	if (Type == 1)
- 		efuse_ShadowRead1Byte(padapter, Offset, (u8 *)Value);
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index 066dd9cbb60d..8d61be5bd250 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -119,14 +119,11 @@ u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *sourc
- }
+-	if (!params->ssid || !params->ssid_len)
+-	{
++	if (!params->ssid || !params->ssid_len) {
+ 		ret = -EINVAL;
+ 		goto exit;
+ 	}
+@@ -1981,8 +1972,7 @@ static int cfg80211_rtw_join_ibss(struct wiphy *wiphy, struct net_device *ndev,
+ 	ret = rtw_cfg80211_set_auth_type(psecuritypriv, NL80211_AUTHTYPE_OPEN_SYSTEM);
+ 	rtw_set_802_11_authentication_mode(padapter, psecuritypriv->ndisauthtype);
  
- /*  rtw_set_ie will update frame length */
--u8 *rtw_set_ie
--(
--	u8 *pbuf,
--	sint index,
--	uint len,
--	u8 *source,
--	uint *frlen /* frame length */
--)
-+u8 *rtw_set_ie(u8 *pbuf,
-+	       sint index,
-+	       uint len,
-+	       u8 *source,
-+	       uint *frlen) /* frame length */
- {
- 	*pbuf = (u8)index;
+-	if (rtw_set_802_11_ssid(padapter, &ndis_ssid) == false)
+-	{
++	if (rtw_set_802_11_ssid(padapter, &ndis_ssid) == false) {
+ 		ret = -1;
+ 		goto exit;
+ 	}
+@@ -2004,8 +1994,7 @@ static int cfg80211_rtw_leave_ibss(struct wiphy *wiphy, struct net_device *ndev)
  
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-index e0bab0a71f00..3adeca6f20ec 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-@@ -657,12 +657,10 @@ u16 rtw_get_cur_max_rate(struct adapter *adapter)
- 	if (IsSupportedHT(psta->wireless_mode)) {
- 		rtw_hal_get_hwreg(adapter, HW_VAR_RF_TYPE, (u8 *)(&rf_type));
+ 	rtw_set_to_roam(padapter, 0);
  
--		max_rate = rtw_mcs_rate(
--			rf_type,
--			((psta->bw_mode == CHANNEL_WIDTH_40)?1:0),
--			short_GI,
--			psta->htpriv.ht_cap.mcs.rx_mask
--		);
-+		max_rate = rtw_mcs_rate(rf_type,
-+					((psta->bw_mode == CHANNEL_WIDTH_40)?1:0),
-+					short_GI,
-+					psta->htpriv.ht_cap.mcs.rx_mask);
- 	} else {
- 		while ((pcur_bss->SupportedRates[i] != 0) && (pcur_bss->SupportedRates[i] != 0xFF)) {
- 			rate = pcur_bss->SupportedRates[i]&0x7F;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 1a6cae5f9895..e0b0dd226144 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -2487,11 +2487,9 @@ void issue_beacon(struct adapter *padapter, int timeout_ms)
- 			int len_diff;
+-	if (check_fwstate(&padapter->mlmepriv, _FW_LINKED))
+-	{
++	if (check_fwstate(&padapter->mlmepriv, _FW_LINKED)) {
+ 		rtw_scan_abort(padapter);
+ 		LeaveAllPowerSaveMode(padapter);
  
- 			memcpy(pframe, cur_network->IEs, cur_network->IELength);
--			len_diff = update_hidden_ssid(
--				pframe+_BEACON_IE_OFFSET_
--				, cur_network->IELength-_BEACON_IE_OFFSET_
--				, pmlmeinfo->hidden_ssid_mode
--			);
-+			len_diff = update_hidden_ssid(pframe+_BEACON_IE_OFFSET_,
-+						      cur_network->IELength-_BEACON_IE_OFFSET_,
-+						      pmlmeinfo->hidden_ssid_mode);
- 			pframe += (cur_network->IELength+len_diff);
- 			pattrib->pktlen += (cur_network->IELength+len_diff);
+@@ -2041,8 +2030,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 		sme->privacy, sme->key, sme->key_len, sme->key_idx);
+ 
+ 
+-	if (adapter_wdev_data(padapter)->block == true)
+-	{
++	if (adapter_wdev_data(padapter)->block == true) {
+ 		ret = -EBUSY;
+ 		DBG_871X("%s wdev_priv.block is set\n", __func__);
+ 		goto exit;
+@@ -2059,8 +2047,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 		goto exit;
+ 	}
+ 
+-	if (!sme->ssid || !sme->ssid_len)
+-	{
++	if (!sme->ssid || !sme->ssid_len) {
+ 		ret = -EINVAL;
+ 		goto exit;
+ 	}
+@@ -2119,10 +2106,8 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 	}
+ 
+ 	/* For WEP Shared auth */
+-	if ((psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Shared
+-		|| psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Auto) && sme->key
+-	)
+-	{
++	if ((psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Shared ||
++	    psecuritypriv->dot11AuthAlgrthm == dot11AuthAlgrthm_Auto) && sme->key) {
+ 		u32 wep_key_idx, wep_key_len, wep_total_len;
+ 		struct ndis_802_11_wep	 *pwep = NULL;
+ 		DBG_871X("%s(): Shared/Auto WEP\n", __func__);
+@@ -2135,8 +2120,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 			goto exit;
  		}
-@@ -6584,11 +6582,9 @@ u8 set_tx_beacon_cmd(struct adapter *padapter)
  
- 	memcpy(&(ptxBeacon_parm->network), &(pmlmeinfo->network), sizeof(struct wlan_bssid_ex));
+-		if (wep_key_len > 0)
+-		{
++		if (wep_key_len > 0) {
+ 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
+ 			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
+ 			pwep = rtw_malloc(wep_total_len);
+@@ -2151,13 +2135,11 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 			pwep->KeyLength = wep_key_len;
+ 			pwep->Length = wep_total_len;
  
--	len_diff = update_hidden_ssid(
--		ptxBeacon_parm->network.IEs+_BEACON_IE_OFFSET_
--		, ptxBeacon_parm->network.IELength-_BEACON_IE_OFFSET_
--		, pmlmeinfo->hidden_ssid_mode
--	);
-+	len_diff = update_hidden_ssid(ptxBeacon_parm->network.IEs+_BEACON_IE_OFFSET_,
-+				      ptxBeacon_parm->network.IELength-_BEACON_IE_OFFSET_,
-+				      pmlmeinfo->hidden_ssid_mode);
- 	ptxBeacon_parm->network.IELength += len_diff;
+-			if (wep_key_len == 13)
+-			{
++			if (wep_key_len == 13) {
+ 				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
+ 				padapter->securitypriv.dot118021XGrpPrivacy = _WEP104_;
+ 			}
+-		}
+-		else {
++		} else {
+ 			ret = -EINVAL;
+ 			goto exit;
+ 		}
+@@ -2168,9 +2150,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
+ 		memcpy(pwep->KeyMaterial,  (void *)sme->key, pwep->KeyLength);
  
- 	init_h2fwcmd_w_parm_no_rsp(ph2c, ptxBeacon_parm, GEN_CMD_CODE(_TX_Beacon));
-diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-index 8fe1d7429760..90e222a9c93b 100644
---- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-@@ -672,8 +672,7 @@ void LeaveAllPowerSaveMode(struct adapter *Adapter)
+ 		if (rtw_set_802_11_add_wep(padapter, pwep) == (u8)_FAIL)
+-		{
+ 			ret = -EOPNOTSUPP;
+-		}
+ 
+ 		kfree(pwep);
+ 
+@@ -2290,17 +2270,14 @@ static int cfg80211_rtw_set_pmksa(struct wiphy *wiphy,
+ 	DBG_871X(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
+ 
+ 	if (!memcmp((u8 *)pmksa->bssid, strZeroMacAddress, ETH_ALEN))
+-	{
+ 		return -EINVAL;
+-	}
+ 
+ 	blInserted = false;
+ 
+ 	/* overwrite PMKID */
+-	for (index = 0 ; index < NUM_PMKID_CACHE; index++)
+-	{
+-		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN))
+-		{ /*  BSSID is matched, the same AP => rewrite with new PMKID. */
++	for (index = 0 ; index < NUM_PMKID_CACHE; index++) {
++		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN)) {
++			/*  BSSID is matched, the same AP => rewrite with new PMKID. */
+ 			DBG_871X(FUNC_NDEV_FMT" BSSID exists in the PMKList.\n", FUNC_NDEV_ARG(ndev));
+ 
+ 			memcpy(psecuritypriv->PMKIDList[index].PMKID, (u8 *)pmksa->pmkid, WLAN_PMKID_LEN);
+@@ -2311,8 +2288,7 @@ static int cfg80211_rtw_set_pmksa(struct wiphy *wiphy,
+ 		}
  	}
+ 
+-	if (!blInserted)
+-	{
++	if (!blInserted) {
+ 		/*  Find a new entry */
+ 		DBG_871X(FUNC_NDEV_FMT" Use the new entry index = %d for this PMKID.\n",
+ 			FUNC_NDEV_ARG(ndev), psecuritypriv->PMKIDIndex);
+@@ -2323,9 +2299,7 @@ static int cfg80211_rtw_set_pmksa(struct wiphy *wiphy,
+ 		psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].bUsed = true;
+ 		psecuritypriv->PMKIDIndex++;
+ 		if (psecuritypriv->PMKIDIndex == 16)
+-		{
+ 			psecuritypriv->PMKIDIndex = 0;
+-		}
+ 	}
+ 
+ 	return 0;
+@@ -2341,10 +2315,12 @@ static int cfg80211_rtw_del_pmksa(struct wiphy *wiphy,
+ 
+ 	DBG_871X(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
+ 
+-	for (index = 0 ; index < NUM_PMKID_CACHE; index++)
+-	{
+-		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN))
+-		{ /*  BSSID is matched, the same AP => Remove this PMKID information and reset it. */
++	for (index = 0 ; index < NUM_PMKID_CACHE; index++) {
++		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN)) {
++			/*
++			 * BSSID is matched, the same AP => Remove this PMKID information
++			 * and reset it.
++			 */
+ 			eth_zero_addr(psecuritypriv->PMKIDList[index].Bssid);
+ 			memset(psecuritypriv->PMKIDList[index].PMKID, 0x00, WLAN_PMKID_LEN);
+ 			psecuritypriv->PMKIDList[index].bUsed = false;
+@@ -2353,8 +2329,7 @@ static int cfg80211_rtw_del_pmksa(struct wiphy *wiphy,
+ 		}
+ 	}
+ 
+-	if (false == bMatched)
+-	{
++	if (false == bMatched) {
+ 		DBG_871X(FUNC_NDEV_FMT" do not have matched BSSID\n"
+ 			, FUNC_NDEV_ARG(ndev));
+ 		return -EINVAL;
+@@ -2441,8 +2416,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
+ 	if (unlikely(skb->len < rtap_len))
+ 		goto fail;
+ 
+-	if (rtap_len != 14)
+-	{
++	if (rtap_len != 14) {
+ 		DBG_8192C("radiotap len (should be 14): %d\n", rtap_len);
+ 		goto fail;
+ 	}
+@@ -2478,11 +2452,8 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
+ 		/* Use the real net device to transmit the packet */
+ 		return _rtw_xmit_entry(skb, padapter->pnetdev);
+ 
+-	}
+-	else if ((frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE))
+-		== (IEEE80211_FTYPE_MGMT|IEEE80211_STYPE_ACTION)
+-	)
+-	{
++	} else if ((frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE)) ==
++		   (IEEE80211_FTYPE_MGMT|IEEE80211_STYPE_ACTION)) {
+ 		/* only for action frames */
+ 		struct xmit_frame		*pmgntframe;
+ 		struct pkt_attrib	*pattrib;
+@@ -2511,9 +2482,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
+ 
+ 		/* starting alloc mgmt frame to dump it */
+ 		if ((pmgntframe = alloc_mgtxmitframe(pxmitpriv)) == NULL)
+-		{
+ 			goto fail;
+-		}
+ 
+ 		/* update attribute */
+ 		pattrib = &pmgntframe->attrib;
+@@ -2538,9 +2507,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
+ 
+ 		dump_mgntframe(padapter, pmgntframe);
+ 
+-	}
+-	else
+-	{
++	} else {
+ 		DBG_8192C("frame_control = 0x%x\n", frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE));
+ 	}
+ 
+@@ -2738,12 +2705,9 @@ static int rtw_add_beacon(struct adapter *adapter, const u8 *head, size_t head_l
+ 	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, P2P_OUI, 4);
+ 	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, WFD_OUI, 4);
+ 
+-	if (rtw_check_beacon_data(adapter, pbuf,  len) == _SUCCESS)
+-	{
++	if (rtw_check_beacon_data(adapter, pbuf,  len) == _SUCCESS) {
+ 		ret = 0;
+-	}
+-	else
+-	{
++	} else {
+ 		ret = -EINVAL;
+ 	}
+ 
+@@ -2819,15 +2783,13 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
+ 
+ 	DBG_871X("+"FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
+ 
+-	if (check_fwstate(pmlmepriv, (_FW_LINKED|WIFI_AP_STATE)) != true)
+-	{
++	if (check_fwstate(pmlmepriv, (_FW_LINKED|WIFI_AP_STATE)) != true) {
+ 		DBG_8192C("%s, fw_state != FW_LINKED|WIFI_AP_STATE\n", __func__);
+ 		return -EINVAL;
+ 	}
+ 
+ 
+-	if (!mac)
+-	{
++	if (!mac) {
+ 		DBG_8192C("flush all sta, and cam_entry\n");
+ 
+ 		flush_all_cam_entry(padapter);	/* clear CAM */
+@@ -2842,8 +2804,7 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
+ 
+ 	if (mac[0] == 0xff && mac[1] == 0xff &&
+ 	    mac[2] == 0xff && mac[3] == 0xff &&
+-	    mac[4] == 0xff && mac[5] == 0xff)
+-	{
++	    mac[4] == 0xff && mac[5] == 0xff) {
+ 		return -EINVAL;
+ 	}
+ 
+@@ -2854,20 +2815,15 @@ static int cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
+ 	plist = get_next(phead);
+ 
+ 	/* check asoc_queue */
+-	while (phead != plist)
+-	{
++	while (phead != plist) {
+ 		psta = LIST_CONTAINOR(plist, struct sta_info, asoc_list);
+ 
+ 		plist = get_next(plist);
+ 
+-		if (!memcmp((u8 *)mac, psta->hwaddr, ETH_ALEN))
+-		{
+-			if (psta->dot8021xalg == 1 && psta->bpairwise_key_installed == false)
+-			{
++		if (!memcmp((u8 *)mac, psta->hwaddr, ETH_ALEN)) {
++			if (psta->dot8021xalg == 1 && psta->bpairwise_key_installed == false) {
+ 				DBG_8192C("%s, sta's dot8021xalg = 1 and key_installed = false\n", __func__);
+-			}
+-			else
+-			{
++			} else {
+ 				DBG_8192C("free psta =%p, aid =%d\n", psta, psta->aid);
+ 
+ 				list_del_init(&psta->asoc_list);
+@@ -2913,8 +2869,7 @@ static struct sta_info *rtw_sta_info_get_by_idx(const int idx, struct sta_priv *
+ 	plist = get_next(phead);
+ 
+ 	/* check asoc_queue */
+-	while (phead != plist)
+-	{
++	while (phead != plist) {
+ 		if (idx == i) psta = LIST_CONTAINOR(plist, struct sta_info, asoc_list);
+ 		plist = get_next(plist);
+ 		i++;
+@@ -2935,8 +2890,7 @@ static int	cfg80211_rtw_dump_station(struct wiphy *wiphy, struct net_device *nde
+ 	spin_lock_bh(&pstapriv->asoc_list_lock);
+ 	psta = rtw_sta_info_get_by_idx(idx, pstapriv);
+ 	spin_unlock_bh(&pstapriv->asoc_list_lock);
+-	if (NULL == psta)
+-	{
++	if (NULL == psta) {
+ 		DBG_871X("Station is not found\n");
+ 		ret = -ENOENT;
+ 		goto exit;
+@@ -2998,8 +2952,7 @@ static int _cfg80211_rtw_mgmt_tx(struct adapter *padapter, u8 tx_ch, const u8 *b
+ 	}
+ 
+ 	/* starting alloc mgmt frame to dump it */
+-	if ((pmgntframe = alloc_mgtxmitframe(pxmitpriv)) == NULL)
+-	{
++	if ((pmgntframe = alloc_mgtxmitframe(pxmitpriv)) == NULL) {
+ 		/* ret = -ENOMEM; */
+ 		ret = _FAIL;
+ 		goto exit;
+@@ -3025,18 +2978,14 @@ static int _cfg80211_rtw_mgmt_tx(struct adapter *padapter, u8 tx_ch, const u8 *b
+ 
+ 	pattrib->last_txcmdsz = pattrib->pktlen;
+ 
+-	if (dump_mgntframe_and_wait_ack(padapter, pmgntframe) != _SUCCESS)
+-	{
++	if (dump_mgntframe_and_wait_ack(padapter, pmgntframe) != _SUCCESS) {
+ 		ack = false;
+ 		ret = _FAIL;
+ 
+ 		#ifdef DEBUG_CFG80211
+ 		DBG_8192C("%s, ack == _FAIL\n", __func__);
+ 		#endif
+-	}
+-	else
+-	{
+-
++	} else {
+ 		msleep(50);
+ 
+ 		#ifdef DEBUG_CFG80211
+@@ -3129,9 +3078,7 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
+ 		rtw_clear_scan_deny(padapter);
+ 		break;
+ 	case P2P_INVIT_RESP:
+-		if (pwdev_priv->invit_info.flags & BIT(0)
+-			&& pwdev_priv->invit_info.status == 0)
+-		{
++		if (pwdev_priv->invit_info.flags & BIT(0) && pwdev_priv->invit_info.status == 0) {
+ 			DBG_871X(FUNC_ADPT_FMT" agree with invitation of persistent group\n",
+ 				FUNC_ADPT_ARG(padapter));
+ 			rtw_set_scan_deny(padapter, 5000);
+@@ -3148,10 +3095,9 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
  }
  
--void LPS_Leave_check(
--	struct adapter *padapter)
-+void LPS_Leave_check(struct adapter *padapter)
- {
- 	struct pwrctrl_priv *pwrpriv;
- 	unsigned long	start_time;
-@@ -714,9 +713,7 @@ void LPS_Leave_check(
-  *
-  * using to update cpwn of drv; and drv willl make a decision to up or down pwr level
-  */
--void cpwm_int_hdl(
--	struct adapter *padapter,
--	struct reportpwrstate_parm *preportpwrstate)
-+void cpwm_int_hdl(struct adapter *padapter, struct reportpwrstate_parm *preportpwrstate)
- {
- 	struct pwrctrl_priv *pwrpriv;
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index c854aa3ff992..e1528b51c17e 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -765,16 +765,10 @@ void count_rx_stats(struct adapter *padapter, union recv_frame *prframe, struct
- 	traffic_check_for_leave_lps(padapter, false, 0);
- }
- 
--sint sta2sta_data_frame(
--	struct adapter *adapter,
--	union recv_frame *precv_frame,
--	struct sta_info **psta
--);
--sint sta2sta_data_frame(
--	struct adapter *adapter,
--	union recv_frame *precv_frame,
--	struct sta_info **psta
--)
-+sint sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+			struct sta_info **psta);
-+sint sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+			struct sta_info **psta)
- {
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
- 	sint ret = _SUCCESS;
-@@ -866,14 +860,10 @@ sint sta2sta_data_frame(
+ #if defined(CONFIG_PNO_SUPPORT)
+-static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy,
+-		struct net_device *dev,
+-		struct cfg80211_sched_scan_request *request) {
+-
++static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy, struct net_device *dev,
++					 struct cfg80211_sched_scan_request *request)
++{
+ 	struct adapter *padapter = rtw_netdev_priv(dev);
+ 	struct	mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+ 	int ret;
+@@ -3190,8 +3136,8 @@ static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy,
  	return ret;
  }
  
--sint ap2sta_data_frame(
--	struct adapter *adapter,
--	union recv_frame *precv_frame,
--	struct sta_info **psta);
--sint ap2sta_data_frame(
--	struct adapter *adapter,
--	union recv_frame *precv_frame,
--	struct sta_info **psta)
-+sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+		       struct sta_info **psta);
-+sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+		       struct sta_info **psta)
- {
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
-@@ -1015,14 +1005,10 @@ sint ap2sta_data_frame(
- 	return ret;
+-static int cfg80211_rtw_sched_scan_stop(struct wiphy *wiphy,
+-		struct net_device *dev) {
++static int cfg80211_rtw_sched_scan_stop(struct wiphy *wiphy, struct net_device *dev)
++{
+ 	return rtw_android_pno_enable(dev, false);
  }
+ #endif /* CONFIG_PNO_SUPPORT */
+@@ -3229,24 +3175,19 @@ static void rtw_cfg80211_init_ht_capab(struct ieee80211_sta_ht_cap *ht_cap, enum
+ 	 *if BW_40 rx_mask[4]= 0x01;
+ 	 *highest supported RX rate
+ 	 */
+-	if (rf_type == RF_1T1R)
+-	{
++	if (rf_type == RF_1T1R) {
+ 		ht_cap->mcs.rx_mask[0] = 0xFF;
+ 		ht_cap->mcs.rx_mask[1] = 0x00;
+ 		ht_cap->mcs.rx_mask[4] = 0x01;
  
--sint sta2ap_data_frame(
--	struct adapter *adapter,
--	union recv_frame *precv_frame,
--	struct sta_info **psta);
--sint sta2ap_data_frame(
--	struct adapter *adapter,
--	union recv_frame *precv_frame,
--	struct sta_info **psta)
-+sint sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+		       struct sta_info **psta);
-+sint sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+		       struct sta_info **psta)
- {
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
-index 41b80e433cc2..33f5d3c5ac36 100644
---- a/drivers/staging/rtl8723bs/core/rtw_security.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_security.c
-@@ -140,12 +140,7 @@ static u32 arcfour_byte(struct arc4context	*parc4ctx)
- 	return state[(sx + sy) & 0xff];
- }
+ 		ht_cap->mcs.rx_highest = cpu_to_le16(MAX_BIT_RATE_40MHZ_MCS7);
+-	}
+-	else if ((rf_type == RF_1T2R) || (rf_type == RF_2T2R))
+-	{
++	} else if ((rf_type == RF_1T2R) || (rf_type == RF_2T2R)) {
+ 		ht_cap->mcs.rx_mask[0] = 0xFF;
+ 		ht_cap->mcs.rx_mask[1] = 0xFF;
+ 		ht_cap->mcs.rx_mask[4] = 0x01;
  
--static void arcfour_encrypt(
--	struct arc4context *parc4ctx,
--	u8 *dest,
--	u8 *src,
--	u32 len
--)
-+static void arcfour_encrypt(struct arc4context *parc4ctx, u8 *dest, u8 *src, u32 len)
- {
- 	u32 i;
- 
-@@ -882,36 +877,28 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
- /*****************************/
- 
- static void bitwise_xor(u8 *ina, u8 *inb, u8 *out);
--static void construct_mic_iv(
--	u8 *mic_header1,
--	sint qc_exists,
--	sint a4_exists,
--	u8 *mpdu,
--	uint payload_length,
--	u8 *pn_vector,
--	uint frtype
--);/*  add for CONFIG_IEEE80211W, none 11w also can use */
--static void construct_mic_header1(
--	u8 *mic_header1,
--	sint header_length,
--	u8 *mpdu,
--	uint frtype
--);/*  add for CONFIG_IEEE80211W, none 11w also can use */
--static void construct_mic_header2(
--	u8 *mic_header2,
--	u8 *mpdu,
--	sint a4_exists,
--	sint qc_exists
--);
--static void construct_ctr_preload(
--	u8 *ctr_preload,
--	sint a4_exists,
--	sint qc_exists,
--	u8 *mpdu,
--	u8 *pn_vector,
--	sint c,
--	uint frtype
--);/*  add for CONFIG_IEEE80211W, none 11w also can use */
-+static void construct_mic_iv(u8 *mic_header1,
-+			     sint qc_exists,
-+			     sint a4_exists,
-+			     u8 *mpdu,
-+			     uint payload_length,
-+			     u8 *pn_vector,
-+			     uint frtype); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+static void construct_mic_header1(u8 *mic_header1,
-+				  sint header_length,
-+				  u8 *mpdu,
-+				  uint frtype); /* for CONFIG_IEEE80211W, none 11w also can use */
-+static void construct_mic_header2(u8 *mic_header2,
-+				  u8 *mpdu,
-+				  sint a4_exists,
-+				  sint qc_exists);
-+static void construct_ctr_preload(u8 *ctr_preload,
-+				  sint a4_exists,
-+				  sint qc_exists,
-+				  u8 *mpdu,
-+				  u8 *pn_vector,
-+				  sint c,
-+				  uint frtype); /* for CONFIG_IEEE80211W, none 11w also can use */
- static void xor_128(u8 *a, u8 *b, u8 *out);
- static void xor_32(u8 *a, u8 *b, u8 *out);
- static u8 sbox(u8 a);
-@@ -1103,15 +1090,13 @@ static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext)
- /* Baron think the function is construct CCM    */
- /* nonce                                        */
- /************************************************/
--static void construct_mic_iv(
--	u8 *mic_iv,
--	sint qc_exists,
--	sint a4_exists,
--	u8 *mpdu,
--	uint payload_length,
--	u8 *pn_vector,
--	uint frtype/*  add for CONFIG_IEEE80211W, none 11w also can use */
--)
-+static void construct_mic_iv(u8 *mic_iv,
-+			     sint qc_exists,
-+			     sint a4_exists,
-+			     u8 *mpdu,
-+			     uint payload_length,
-+			     u8 *pn_vector,
-+			     uint frtype) /* add for CONFIG_IEEE80211W, none 11w also can use */
- {
- 		sint i;
- 
-@@ -1149,12 +1134,10 @@ static void construct_mic_iv(
- /* header fields.                               */
- /* Build AAD SC, A1, A2                           */
- /************************************************/
--static void construct_mic_header1(
--	u8 *mic_header1,
--	sint header_length,
--	u8 *mpdu,
--	uint frtype/*  add for CONFIG_IEEE80211W, none 11w also can use */
--)
-+static void construct_mic_header1(u8 *mic_header1,
-+				  sint header_length,
-+				  u8 *mpdu,
-+				  uint frtype) /* for CONFIG_IEEE80211W, none 11w also can use */
- {
- 		mic_header1[0] = (u8)((header_length - 2) / 256);
- 		mic_header1[1] = (u8)((header_length - 2) % 256);
-@@ -1185,12 +1168,10 @@ static void construct_mic_header1(
- /* Builds the last MIC header block from        */
- /* header fields.                               */
- /************************************************/
--static void construct_mic_header2(
--	u8 *mic_header2,
--	u8 *mpdu,
--	sint a4_exists,
--	sint qc_exists
--)
-+static void construct_mic_header2(u8 *mic_header2,
-+				  u8 *mpdu,
-+				  sint a4_exists,
-+				  sint qc_exists)
- {
- 		sint i;
- 
-@@ -1233,15 +1214,13 @@ static void construct_mic_header2(
- /* Baron think the function is construct CCM    */
- /* nonce                                        */
- /************************************************/
--static void construct_ctr_preload(
--	u8 *ctr_preload,
--	sint a4_exists,
--	sint qc_exists,
--	u8 *mpdu,
--	u8 *pn_vector,
--	sint c,
--	uint frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
--)
-+static void construct_ctr_preload(u8 *ctr_preload,
-+				  sint a4_exists,
-+				  sint qc_exists,
-+				  u8 *mpdu,
-+				  u8 *pn_vector,
-+				  sint c,
-+				  uint frtype) /* for CONFIG_IEEE80211W, none 11w also can use */
- {
- 	sint i = 0;
- 
-@@ -1347,28 +1326,23 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
- 	pn_vector[4] = pframe[hdrlen+6];
- 	pn_vector[5] = pframe[hdrlen+7];
- 
--	construct_mic_iv(
--			mic_iv,
--			qc_exists,
--			a4_exists,
--			pframe,	 /* message, */
--			plen,
--			pn_vector,
--			frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
--	);
--
--	construct_mic_header1(
--		mic_header1,
--		hdrlen,
--		pframe,	/* message */
--		frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
--	);
--	construct_mic_header2(
--		mic_header2,
--		pframe,	/* message, */
--		a4_exists,
--		qc_exists
--	);
-+	construct_mic_iv(mic_iv,
-+			 qc_exists,
-+			 a4_exists,
-+			 pframe,	 /* message, */
-+			 plen,
-+			 pn_vector,
-+			 frtype); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+
-+	construct_mic_header1(mic_header1,
-+			      hdrlen,
-+			      pframe,	/* message */
-+			      frtype); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+
-+	construct_mic_header2(mic_header2,
-+			      pframe,	/* message, */
-+			      a4_exists,
-+			      qc_exists);
- 
- 	payload_remainder = plen % 16;
- 	num_blocks = plen / 16;
-@@ -1410,15 +1384,9 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
- 
- 	payload_index = hdrlen + 8;
- 	for (i = 0; i < num_blocks; i++) {
--		construct_ctr_preload(
--			ctr_preload,
--			a4_exists,
--			qc_exists,
--			pframe,	/* message, */
--			pn_vector,
--			i+1,
--			frtype
--		); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+		construct_ctr_preload(ctr_preload, a4_exists, qc_exists, pframe, /* message, */
-+				      pn_vector, i+1, frtype);
-+		/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 		aes128k128d(key, ctr_preload, aes_out);
- 		bitwise_xor(aes_out, &pframe[payload_index], chain_buffer);
- 		for (j = 0; j < 16; j++)
-@@ -1428,15 +1396,9 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
- 	if (payload_remainder > 0) {
- 		/* If there is a short final block, then pad it,*/
- 		/* encrypt it and copy the unpadded part back   */
--		construct_ctr_preload(
--			ctr_preload,
--			a4_exists,
--			qc_exists,
--			pframe,	/* message, */
--			pn_vector,
--			num_blocks+1,
--			frtype
--		); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+		construct_ctr_preload(ctr_preload, a4_exists, qc_exists, pframe, /* message, */
-+				      pn_vector, num_blocks+1, frtype);
-+		/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 
- 		for (j = 0; j < 16; j++)
- 			padded_buffer[j] = 0x00;
-@@ -1450,15 +1412,9 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
+ 		ht_cap->mcs.rx_highest = cpu_to_le16(MAX_BIT_RATE_40MHZ_MCS15);
+-	}
+-	else
+-	{
++	} else {
+ 		DBG_8192C("%s, error rf_type =%d\n", __func__, rf_type);
  	}
  
- 	/* Encrypt the MIC */
--	construct_ctr_preload(
--		ctr_preload,
--		a4_exists,
--		qc_exists,
--		pframe,	/* message, */
--		pn_vector,
--		0,
--		frtype
--	); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+	construct_ctr_preload(ctr_preload, a4_exists, qc_exists, pframe, /* message, */
-+			      pn_vector, 0, frtype);
-+	/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 
- 	for (j = 0; j < 16; j++)
- 		padded_buffer[j] = 0x00;
-@@ -1613,15 +1569,9 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
- 	if (payload_remainder > 0) {
- 		/* If there is a short final block, then pad it,*/
- 		/* encrypt it and copy the unpadded part back   */
--		construct_ctr_preload(
--			ctr_preload,
--			a4_exists,
--			qc_exists,
--			pframe,
--			pn_vector,
--			num_blocks+1,
--			frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
--		);
-+		construct_ctr_preload(ctr_preload, a4_exists, qc_exists, pframe, pn_vector,
-+				      num_blocks+1, frtype);
-+		/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 
- 		for (j = 0; j < 16; j++)
- 			padded_buffer[j] = 0x00;
-@@ -1645,28 +1595,12 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
- 	pn_vector[4] = pframe[hdrlen+6];
- 	pn_vector[5] = pframe[hdrlen+7];
- 
--	construct_mic_iv(
--		mic_iv,
--		qc_exists,
--		a4_exists,
--		message,
--		plen-8,
--		pn_vector,
--		frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
--	);
--
--	construct_mic_header1(
--		mic_header1,
--		hdrlen,
--		message,
--		frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
--	);
--	construct_mic_header2(
--		mic_header2,
--		message,
--		a4_exists,
--		qc_exists
--	);
-+	construct_mic_iv(mic_iv, qc_exists, a4_exists, message, plen-8, pn_vector, frtype);
-+	/*  add for CONFIG_IEEE80211W, none 11w also can use */
-+
-+	construct_mic_header1(mic_header1, hdrlen, message, frtype);
-+	/*  add for CONFIG_IEEE80211W, none 11w also can use */
-+	construct_mic_header2(mic_header2, message, a4_exists, qc_exists);
- 
- 	payload_remainder = (plen-8) % 16;
- 	num_blocks = (plen-8) / 16;
-@@ -1708,15 +1642,9 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
- 
- 	payload_index = hdrlen + 8;
- 	for (i = 0; i < num_blocks; i++) {
--		construct_ctr_preload(
--			ctr_preload,
--			a4_exists,
--			qc_exists,
--			message,
--			pn_vector,
--			i+1,
--			frtype
--		); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+		construct_ctr_preload(ctr_preload, a4_exists, qc_exists, message, pn_vector, i+1,
-+				      frtype);
-+		/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 		aes128k128d(key, ctr_preload, aes_out);
- 		bitwise_xor(aes_out, &message[payload_index], chain_buffer);
- 		for (j = 0; j < 16; j++)
-@@ -1726,15 +1654,9 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
- 	if (payload_remainder > 0) {
- 		/* If there is a short final block, then pad it,*/
- 		/* encrypt it and copy the unpadded part back   */
--		construct_ctr_preload(
--			ctr_preload,
--			a4_exists,
--			qc_exists,
--			message,
--			pn_vector,
--			num_blocks+1,
--			frtype
--		); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+		construct_ctr_preload(ctr_preload, a4_exists, qc_exists, message, pn_vector,
-+				      num_blocks+1, frtype);
-+		/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 
- 		for (j = 0; j < 16; j++)
- 			padded_buffer[j] = 0x00;
-@@ -1748,15 +1670,8 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
- 	}
- 
- 	/* Encrypt the MIC */
--	construct_ctr_preload(
--		ctr_preload,
--		a4_exists,
--		qc_exists,
--		message,
--		pn_vector,
--		0,
--		frtype
--	); /*  add for CONFIG_IEEE80211W, none 11w also can use */
-+	construct_ctr_preload(ctr_preload, a4_exists, qc_exists, message, pn_vector, 0, frtype);
-+	/*  add for CONFIG_IEEE80211W, none 11w also can use */
- 
- 	for (j = 0; j < 16; j++)
- 		padded_buffer[j] = 0x00;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-index 6e9785c21cf8..f0dd4da82bf3 100644
---- a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
-@@ -242,18 +242,15 @@ struct	sta_info *rtw_alloc_stainfo(struct	sta_priv *pstapriv, u8 *hwaddr)
- 		for (i = 0; i < 16; i++)
- 			memcpy(&psta->sta_recvpriv.rxcache.tid_rxseq[i], &wRxSeqInitialValue, 2);
- 
--		RT_TRACE(
--			_module_rtl871x_sta_mgt_c_,
--			_drv_info_, (
--				"alloc number_%d stainfo  with hwaddr = %x %x %x %x %x %x \n",
--				pstapriv->asoc_sta_count,
--				hwaddr[0],
--				hwaddr[1],
--				hwaddr[2],
--				hwaddr[3],
--				hwaddr[4],
--				hwaddr[5]
--			)
-+		RT_TRACE(_module_rtl871x_sta_mgt_c_, _drv_info_,
-+			 ("alloc number_%d stainfo  with hwaddr = %x %x %x %x %x %x \n",
-+			  pstapriv->asoc_sta_count,
-+			  hwaddr[0],
-+			  hwaddr[1],
-+			  hwaddr[2],
-+			  hwaddr[3],
-+			  hwaddr[4],
-+			  hwaddr[5])
- 		);
- 
- 		init_addba_retry_timer(pstapriv->padapter, psta);
-@@ -366,18 +363,15 @@ u32 rtw_free_stainfo(struct adapter *padapter, struct sta_info *psta)
- 	spin_unlock_bh(&pxmitpriv->lock);
- 
- 	list_del_init(&psta->hash_list);
--	RT_TRACE(
--		_module_rtl871x_sta_mgt_c_,
--		_drv_err_, (
--			"\n free number_%d stainfo  with hwaddr = 0x%.2x 0x%.2x 0x%.2x 0x%.2x 0x%.2x 0x%.2x \n",
--			pstapriv->asoc_sta_count,
--			psta->hwaddr[0],
--			psta->hwaddr[1],
--			psta->hwaddr[2],
--			psta->hwaddr[3],
--			psta->hwaddr[4],
--			psta->hwaddr[5]
--		)
-+	RT_TRACE(_module_rtl871x_sta_mgt_c_, _drv_err_,
-+		 ("\n free number_%d stainfo  with hwaddr = 0x%.2x 0x%.2x 0x%.2x 0x%.2x 0x%.2x 0x%.2x \n",
-+		  pstapriv->asoc_sta_count,
-+		  psta->hwaddr[0],
-+		  psta->hwaddr[1],
-+		  psta->hwaddr[2],
-+		  psta->hwaddr[3],
-+		  psta->hwaddr[4],
-+		  psta->hwaddr[5])
- 	);
- 	pstapriv->asoc_sta_count--;
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 391bc666f7a6..b69998c5c07e 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -2586,9 +2586,7 @@ void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *pst
- 	spin_unlock_bh(&pxmitpriv->lock);
- }
- 
--void enqueue_pending_xmitbuf(
--	struct xmit_priv *pxmitpriv,
--	struct xmit_buf *pxmitbuf)
-+void enqueue_pending_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
- {
- 	struct __queue *pqueue;
- 	struct adapter *pri_adapter = pxmitpriv->adapter;
-@@ -2603,9 +2601,7 @@ void enqueue_pending_xmitbuf(
- 	complete(&pri_adapter->xmitpriv.xmit_comp);
- }
- 
--void enqueue_pending_xmitbuf_to_head(
--	struct xmit_priv *pxmitpriv,
--	struct xmit_buf *pxmitbuf)
-+void enqueue_pending_xmitbuf_to_head(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
- {
- 	struct __queue *pqueue;
- 
-@@ -2617,8 +2613,7 @@ void enqueue_pending_xmitbuf_to_head(
- 	spin_unlock_bh(&pqueue->lock);
- }
- 
--struct xmit_buf *dequeue_pending_xmitbuf(
--	struct xmit_priv *pxmitpriv)
-+struct xmit_buf *dequeue_pending_xmitbuf(struct xmit_priv *pxmitpriv)
- {
- 	struct xmit_buf *pxmitbuf;
- 	struct __queue *pqueue;
-@@ -2642,8 +2637,7 @@ struct xmit_buf *dequeue_pending_xmitbuf(
- 	return pxmitbuf;
- }
- 
--struct xmit_buf *dequeue_pending_xmitbuf_under_survey(
--	struct xmit_priv *pxmitpriv)
-+struct xmit_buf *dequeue_pending_xmitbuf_under_survey(struct xmit_priv *pxmitpriv)
- {
- 	struct xmit_buf *pxmitbuf;
- 	struct __queue *pqueue;
-@@ -2683,8 +2677,7 @@ struct xmit_buf *dequeue_pending_xmitbuf_under_survey(
- 	return pxmitbuf;
- }
- 
--sint check_pending_xmitbuf(
--	struct xmit_priv *pxmitpriv)
-+sint check_pending_xmitbuf(struct xmit_priv *pxmitpriv)
- {
- 	struct __queue *pqueue;
- 	sint	ret = false;
 -- 
 2.25.1
 
