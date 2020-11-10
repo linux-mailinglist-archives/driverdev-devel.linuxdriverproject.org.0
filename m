@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 808252ACE5C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 05:10:45 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEE1A2ACE58
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 05:10:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DCE1F2039E;
-	Tue, 10 Nov 2020 04:10:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ueYGlaPGZ9jj; Tue, 10 Nov 2020 04:10:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CB9DA2035D;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 586A987440;
 	Tue, 10 Nov 2020 04:10:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0c54raw3V5nI; Tue, 10 Nov 2020 04:10:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8C214871A7;
+	Tue, 10 Nov 2020 04:10:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 09D741BF34E
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:29 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 40FD31BF34E
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 025C62039E
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3CDED871B2
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 04:10:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PggIQIYo-mUK for <devel@linuxdriverproject.org>;
+ with ESMTP id u2jNyd5vCdNe for <devel@linuxdriverproject.org>;
  Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f47.google.com (mail-io1-f47.google.com
- [209.85.166.47])
- by silver.osuosl.org (Postfix) with ESMTPS id 9928620366
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 04:10:26 +0000 (UTC)
-Received: by mail-io1-f47.google.com with SMTP id u19so12360150ion.3
- for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 20:10:26 -0800 (PST)
+Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
+ [209.85.166.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8869C871A7
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 04:10:27 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id r9so12324778ioo.7
+ for <devel@driverdev.osuosl.org>; Mon, 09 Nov 2020 20:10:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=w0uJH20Y9PB94JSNsUBrDpUu5cXmjr476Na4wBZlVak=;
- b=G0dqbh2SWOkItZGekcxI4+wU+txdf2+3CqKFivXw0I/7gWkAbgW9xQtiHSZsHEW6mY
- wgiLWQkBIL6QTMDjgf0K6GPT4nw0HIIQLDb/wsL52yi/PJ3ievpt2/kDtasjibcg9yr4
- H54K1CiHE3qHpDj00CCzWPmR17a3LUYQKRljvxnJ9N5EFO5ulHEfc7++g2mZ5E0wLXIp
- PSJzLJZ7bqz4Kcr5iyE9AiXYQocIljXpjGJJU6korYt2tPBYV7JwfRpI9V019eGxpxAn
- WBSMEZYqqIr+slwwnj4HjYsNlM3QQiQaV8YBaYgSdIIZn+oH/cGfZj+7bNIwdNIYOxmy
- Vj8A==
+ bh=/9o/uLwXwpriyz2hEdpSoPJHB5qVBBNPqLsNjiOdgac=;
+ b=oROsUTXR3irXR7CwhPLQW1q62wOvswP+8Entjgqv/4a6UQ15YA8S640S6OOpBEszT9
+ tZJpIFy0D5zujqASQyPJwTmAFR7d9w0MytaBxTPao1VAdMxJuINZOb3IpRf95XuA+IgF
+ /L0jezO0WmdSc4OKJLROs7Ny9h2XRhn2XwoRQPJAfh46CXlwTYwmsYe33b+hc5PijEn2
+ 492Is1/HFvFJBxm39sN1xPToqjsuuQ+daeII95uXXy4B+poMBIbfMMwPJCPeLK/RxEf4
+ 0vMFeWfD2z7l0USAjNqCZPVrbE/w/Fven1oDhkQkVQzaObxEVB9loWr6lp8aMJFJxpuU
+ BSLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=w0uJH20Y9PB94JSNsUBrDpUu5cXmjr476Na4wBZlVak=;
- b=s5FIv3BzHCcnNFVTfHfeG+XTvuhepPyo+xapFVnIq2ZNF2yjDbMgvk6Iyqq3lwn55n
- CVCIs3kuiVK7J9T8MwtWUL0dH1PpEteqXdu7P7ZyE/Zr7uhF7hKFn/40GZ7Eqtq6jexg
- NFtSt1heyMy/66NJQ6w5sT/Ck8WFMk/zRz3ZIRaX6uSR6jDpDyC2JfqpxqkYmoMF8WNw
- SJdGTIkzdhJ0VkklOA0/WWkT9MOMYRAgZG0tciaLX7A3xDkm9/ZEK7y1h/hitTJFKnLG
- D+CaUgvVmxIgE7PWaE+GrS36w/jag4DFhY8pz7zEjdbjPl7LEJfKYr8tDURYH2B4WWcj
- EOqA==
-X-Gm-Message-State: AOAM5303cARreNvlhmsvsYof+4vziax6pGSkxpes/4+2NunHKdZLl+vZ
- M6Ef0juRyKcn+fLvzKIafY8=
-X-Google-Smtp-Source: ABdhPJy1jNOb/fUQKzPBckHscOzEWhJf5IzGAfno9RPj2+z0mQaKVhsLU9ZrLjx+rAJLJRQvd7r2TQ==
-X-Received: by 2002:a6b:d907:: with SMTP id r7mr12849335ioc.37.1604981425945; 
- Mon, 09 Nov 2020 20:10:25 -0800 (PST)
+ bh=/9o/uLwXwpriyz2hEdpSoPJHB5qVBBNPqLsNjiOdgac=;
+ b=rByKowu7aardbzDSToQMjALpE0x512A61J36rnh+Lz250pDRFExG6Po8IVGoLUKH5G
+ A5gV9weKN5/6Qsn2PPT3uncI1vq/xUO1eKe3g4IxMdOuKazX+VQtgZuoIhYUi01Kud05
+ dprokcm1lAkOEqGhWu7MXUrPAeflRlQ9OTQKRkD2QfdPj62uCDs03gw/1mHTUbzPIrZN
+ yvcN1tK8HVpMINLkKGvhGThrO5BYMHg6QgCuSgejYImeEjBkKW9HgdwXrOdffnOUGTa0
+ XPjiOqGw4O6/8g/9T2qSieMl0gFOTqAnmy8QU3UgkvOyU0bVLs3STYyzQJLVhtWRgEGg
+ gH3Q==
+X-Gm-Message-State: AOAM533MYOfVw1mM/1AnIUvc8IcipkMGDRBvNzJR0e1YMGWzqz+YGUoA
+ paao35WenujPlbR4pLDUHIw=
+X-Google-Smtp-Source: ABdhPJxoWzja8osei2u2dZqugnRf4cP/m87ScMxnueBrH5kLOnCUsAkF1sbUv9V3316DeHbHKtJe/Q==
+X-Received: by 2002:a5d:9683:: with SMTP id m3mr6725781ion.192.1604981426960; 
+ Mon, 09 Nov 2020 20:10:26 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id e21sm6658842ioc.0.2020.11.09.20.10.24
+ by smtp.gmail.com with ESMTPSA id e21sm6658842ioc.0.2020.11.09.20.10.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2020 20:10:25 -0800 (PST)
+ Mon, 09 Nov 2020 20:10:26 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 06/10] staging: rtl8723bs: clean up switch case indentation
-Date: Mon,  9 Nov 2020 22:10:04 -0600
-Message-Id: <20201110041008.15847-6-ross.schm.dev@gmail.com>
+Subject: [PATCH 07/10] staging: rtl8723bs: clean up trailing statements
+Date: Mon,  9 Nov 2020 22:10:05 -0600
+Message-Id: <20201110041008.15847-7-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201110041008.15847-1-ross.schm.dev@gmail.com>
 References: <20201110041008.15847-1-ross.schm.dev@gmail.com>
@@ -93,305 +93,65 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Move cases to align with switch indentation to fix coding style issues
-and clear checkpatch errors.
+Move trailing statements to the next line to fix coding style issues and
+clear checkpatch errors.
 
-ERROR: switch and case should be at the same indent
+ERROR: trailing statements should be on next line
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- .../staging/rtl8723bs/os_dep/ioctl_linux.c    | 219 +++++++++---------
- drivers/staging/rtl8723bs/os_dep/os_intfs.c   |  14 +-
- 2 files changed, 116 insertions(+), 117 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 3 ++-
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c    | 9 ++++++---
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index 385705aafa5c..7676056913d8 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -2870,7 +2870,8 @@ static struct sta_info *rtw_sta_info_get_by_idx(const int idx, struct sta_priv *
+ 
+ 	/* check asoc_queue */
+ 	while (phead != plist) {
+-		if (idx == i) psta = LIST_CONTAINOR(plist, struct sta_info, asoc_list);
++		if (idx == i)
++			psta = LIST_CONTAINOR(plist, struct sta_info, asoc_list);
+ 		plist = get_next(plist);
+ 		i++;
+ 	}
 diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 783daa30f1d7..773e4816fbc4 100644
+index 773e4816fbc4..9c00469deeab 100644
 --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -664,49 +664,49 @@ static int rtw_set_wpa_ie(struct adapter *padapter, char *pie, unsigned short ie
- 			pairwise_cipher = WPA_CIPHER_NONE;
- 
- 		switch (group_cipher) {
--			case WPA_CIPHER_NONE:
--				padapter->securitypriv.dot118021XGrpPrivacy = _NO_PRIVACY_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
--				break;
--			case WPA_CIPHER_WEP40:
--				padapter->securitypriv.dot118021XGrpPrivacy = _WEP40_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
--				break;
--			case WPA_CIPHER_TKIP:
--				padapter->securitypriv.dot118021XGrpPrivacy = _TKIP_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
--				break;
--			case WPA_CIPHER_CCMP:
--				padapter->securitypriv.dot118021XGrpPrivacy = _AES_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
--				break;
--			case WPA_CIPHER_WEP104:
--				padapter->securitypriv.dot118021XGrpPrivacy = _WEP104_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
--				break;
-+		case WPA_CIPHER_NONE:
-+			padapter->securitypriv.dot118021XGrpPrivacy = _NO_PRIVACY_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
-+			break;
-+		case WPA_CIPHER_WEP40:
-+			padapter->securitypriv.dot118021XGrpPrivacy = _WEP40_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
-+			break;
-+		case WPA_CIPHER_TKIP:
-+			padapter->securitypriv.dot118021XGrpPrivacy = _TKIP_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
-+			break;
-+		case WPA_CIPHER_CCMP:
-+			padapter->securitypriv.dot118021XGrpPrivacy = _AES_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
-+			break;
-+		case WPA_CIPHER_WEP104:
-+			padapter->securitypriv.dot118021XGrpPrivacy = _WEP104_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
-+			break;
- 		}
- 
- 		switch (pairwise_cipher) {
--			case WPA_CIPHER_NONE:
--				padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
--				break;
--			case WPA_CIPHER_WEP40:
--				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
--				break;
--			case WPA_CIPHER_TKIP:
--				padapter->securitypriv.dot11PrivacyAlgrthm = _TKIP_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
--				break;
--			case WPA_CIPHER_CCMP:
--				padapter->securitypriv.dot11PrivacyAlgrthm = _AES_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
--				break;
--			case WPA_CIPHER_WEP104:
--				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
--				padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
--				break;
-+		case WPA_CIPHER_NONE:
-+			padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11EncryptionDisabled;
-+			break;
-+		case WPA_CIPHER_WEP40:
-+			padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
-+			break;
-+		case WPA_CIPHER_TKIP:
-+			padapter->securitypriv.dot11PrivacyAlgrthm = _TKIP_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption2Enabled;
-+			break;
-+		case WPA_CIPHER_CCMP:
-+			padapter->securitypriv.dot11PrivacyAlgrthm = _AES_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption3Enabled;
-+			break;
-+		case WPA_CIPHER_WEP104:
-+			padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
-+			padapter->securitypriv.ndisencryptstatus = Ndis802_11Encryption1Enabled;
-+			break;
- 		}
- 
- 		_clr_fwstate_(&padapter->mlmepriv, WIFI_UNDER_WPS);
-@@ -860,28 +860,27 @@ static int rtw_wx_set_mode(struct net_device *dev, struct iw_request_info *a,
- 	}
- 
- 	switch (wrqu->mode) {
--		case IW_MODE_AUTO:
--			networkType = Ndis802_11AutoUnknown;
--			DBG_871X("set_mode = IW_MODE_AUTO\n");
--			break;
--		case IW_MODE_ADHOC:
--			networkType = Ndis802_11IBSS;
--			DBG_871X("set_mode = IW_MODE_ADHOC\n");
--			break;
--		case IW_MODE_MASTER:
--			networkType = Ndis802_11APMode;
--			DBG_871X("set_mode = IW_MODE_MASTER\n");
--                        /* rtw_setopmode_cmd(padapter, networkType, true); */
--			break;
--		case IW_MODE_INFRA:
--			networkType = Ndis802_11Infrastructure;
--			DBG_871X("set_mode = IW_MODE_INFRA\n");
--			break;
--
--		default:
--			ret = -EINVAL;
--			RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_err_, ("\n Mode: %s is not supported \n", iw_operation_mode[wrqu->mode]));
--			goto exit;
-+	case IW_MODE_AUTO:
-+		networkType = Ndis802_11AutoUnknown;
-+		DBG_871X("set_mode = IW_MODE_AUTO\n");
-+		break;
-+	case IW_MODE_ADHOC:
-+		networkType = Ndis802_11IBSS;
-+		DBG_871X("set_mode = IW_MODE_ADHOC\n");
-+		break;
-+	case IW_MODE_MASTER:
-+		networkType = Ndis802_11APMode;
-+		DBG_871X("set_mode = IW_MODE_MASTER\n");
-+		/* rtw_setopmode_cmd(padapter, networkType, true); */
-+		break;
-+	case IW_MODE_INFRA:
-+		networkType = Ndis802_11Infrastructure;
-+		DBG_871X("set_mode = IW_MODE_INFRA\n");
-+		break;
-+	default:
-+		ret = -EINVAL;
-+		RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_err_, ("\n Mode: %s is not supported \n", iw_operation_mode[wrqu->mode]));
-+		goto exit;
- 	}
- 
- /*
-@@ -1342,50 +1341,50 @@ static int rtw_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
- 			section = *(pos++); len -= 1;
- 
- 			switch (section) {
--				case WEXT_CSCAN_SSID_SECTION:
--					/* DBG_871X("WEXT_CSCAN_SSID_SECTION\n"); */
--					if (len < 1) {
--						len = 0;
--						break;
--					}
-+			case WEXT_CSCAN_SSID_SECTION:
-+				/* DBG_871X("WEXT_CSCAN_SSID_SECTION\n"); */
-+				if (len < 1) {
-+					len = 0;
+@@ -3151,7 +3151,8 @@ static int rtw_dbg_port(struct net_device *dev,
+ #endif
+ 				case 0xaa:
+ 					{
+-						if ((extra_arg & 0x7F) > 0x3F) extra_arg = 0xFF;
++						if ((extra_arg & 0x7F) > 0x3F)
++							extra_arg = 0xFF;
+ 						DBG_871X("chang data rate to :0x%02x\n", extra_arg);
+ 						padapter->fix_rate = extra_arg;
+ 					}
+@@ -4934,7 +4935,8 @@ static int rtw_ioctl_wext_private(struct net_device *dev, union iwreq_data *wrq_
+ 			count = 0;
+ 			do {
+ 				str = strsep(&ptr, delim);
+-				if (NULL == str) break;
++				if (NULL == str)
 +					break;
-+				}
- 
--					sec_len = *(pos++); len -= 1;
-+				sec_len = *(pos++); len -= 1;
- 
--					if (sec_len > 0 && sec_len <= len) {
--						ssid[ssid_index].SsidLength = sec_len;
--						memcpy(ssid[ssid_index].Ssid, pos, ssid[ssid_index].SsidLength);
--						/* DBG_871X("%s COMBO_SCAN with specific ssid:%s, %d\n", __func__ */
--						/* 	, ssid[ssid_index].Ssid, ssid[ssid_index].SsidLength); */
--						ssid_index++;
--					}
-+				if (sec_len > 0 && sec_len <= len) {
-+					ssid[ssid_index].SsidLength = sec_len;
-+					memcpy(ssid[ssid_index].Ssid, pos, ssid[ssid_index].SsidLength);
-+					/* DBG_871X("%s COMBO_SCAN with specific ssid:%s, %d\n", __func__ */
-+					/* 	, ssid[ssid_index].Ssid, ssid[ssid_index].SsidLength); */
-+					ssid_index++;
-+				}
- 
--					pos += sec_len; len -= sec_len;
--					break;
-+				pos += sec_len; len -= sec_len;
-+				break;
- 
- 
--				case WEXT_CSCAN_CHANNEL_SECTION:
--					/* DBG_871X("WEXT_CSCAN_CHANNEL_SECTION\n"); */
--					pos += 1; len -= 1;
--					break;
--				case WEXT_CSCAN_ACTV_DWELL_SECTION:
--					/* DBG_871X("WEXT_CSCAN_ACTV_DWELL_SECTION\n"); */
--					pos += 2; len -= 2;
--					break;
--				case WEXT_CSCAN_PASV_DWELL_SECTION:
--					/* DBG_871X("WEXT_CSCAN_PASV_DWELL_SECTION\n"); */
--					pos += 2; len -= 2;
--					break;
--				case WEXT_CSCAN_HOME_DWELL_SECTION:
--					/* DBG_871X("WEXT_CSCAN_HOME_DWELL_SECTION\n"); */
--					pos += 2; len -= 2;
--					break;
--				case WEXT_CSCAN_TYPE_SECTION:
--					/* DBG_871X("WEXT_CSCAN_TYPE_SECTION\n"); */
--					pos += 1; len -= 1;
--					break;
--				default:
--					/* DBG_871X("Unknown CSCAN section %c\n", section); */
--					len = 0; /*  stop parsing */
-+			case WEXT_CSCAN_CHANNEL_SECTION:
-+				/* DBG_871X("WEXT_CSCAN_CHANNEL_SECTION\n"); */
-+				pos += 1; len -= 1;
-+				break;
-+			case WEXT_CSCAN_ACTV_DWELL_SECTION:
-+				/* DBG_871X("WEXT_CSCAN_ACTV_DWELL_SECTION\n"); */
-+				pos += 2; len -= 2;
-+				break;
-+			case WEXT_CSCAN_PASV_DWELL_SECTION:
-+				/* DBG_871X("WEXT_CSCAN_PASV_DWELL_SECTION\n"); */
-+				pos += 2; len -= 2;
-+				break;
-+			case WEXT_CSCAN_HOME_DWELL_SECTION:
-+				/* DBG_871X("WEXT_CSCAN_HOME_DWELL_SECTION\n"); */
-+				pos += 2; len -= 2;
-+				break;
-+			case WEXT_CSCAN_TYPE_SECTION:
-+				/* DBG_871X("WEXT_CSCAN_TYPE_SECTION\n"); */
-+				pos += 1; len -= 1;
-+				break;
-+			default:
-+				/* DBG_871X("Unknown CSCAN section %c\n", section); */
-+				len = 0; /*  stop parsing */
- 			}
- 			/* DBG_871X("len:%d\n", len); */
- 
-@@ -1917,15 +1916,15 @@ static int rtw_wx_set_enc(struct net_device *dev,
- 			DBG_871X("(keyindex_provided == 1), keyid =%d, key_len =%d\n", key, padapter->securitypriv.dot11DefKeylen[key]);
- 
- 			switch (padapter->securitypriv.dot11DefKeylen[key]) {
--				case 5:
--					padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
--					break;
--				case 13:
--					padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
--					break;
--				default:
--					padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
--					break;
-+			case 5:
-+				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP40_;
-+				break;
-+			case 13:
-+				padapter->securitypriv.dot11PrivacyAlgrthm = _WEP104_;
-+				break;
-+			default:
-+				padapter->securitypriv.dot11PrivacyAlgrthm = _NO_PRIVACY_;
-+				break;
- 			}
- 
- 			goto exit;
-diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-index ed8212b7deb4..b62fe9238e6d 100644
---- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-@@ -400,17 +400,17 @@ u16 rtw_recv_select_queue(struct sk_buff *skb)
- 	memcpy(&eth_type, pdata + (ETH_ALEN << 1), 2);
- 
- 	switch (be16_to_cpu(eth_type)) {
--		case ETH_P_IP:
-+	case ETH_P_IP:
- 
--			piphdr = (struct iphdr *)(pdata + ETH_HLEN);
-+		piphdr = (struct iphdr *)(pdata + ETH_HLEN);
- 
--			dscp = piphdr->tos & 0xfc;
-+		dscp = piphdr->tos & 0xfc;
- 
--			priority = dscp >> 5;
-+		priority = dscp >> 5;
- 
--			break;
--		default:
--			priority = 0;
-+		break;
-+	default:
-+		priority = 0;
- 	}
- 
- 	return rtw_1d_to_queue[priority];
+ 				sscanf(str, "%i", &temp);
+ 				buffer[count++] = (u8)temp;
+ 			} while (1);
+@@ -4952,7 +4954,8 @@ static int rtw_ioctl_wext_private(struct net_device *dev, union iwreq_data *wrq_
+ 			count = 0;
+ 			do {
+ 				str = strsep(&ptr, delim);
+-				if (NULL == str) break;
++				if (NULL == str)
++					break;
+ 				sscanf(str, "%i", &temp);
+ 				((s32 *)buffer)[count++] = (s32)temp;
+ 			} while (1);
 -- 
 2.25.1
 
