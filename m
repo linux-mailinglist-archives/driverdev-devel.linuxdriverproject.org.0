@@ -1,61 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 283482AE0B9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 21:33:23 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFD512AE0D6
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Nov 2020 21:41:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4BBF123115;
-	Tue, 10 Nov 2020 20:33:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 14D0C85B3D;
+	Tue, 10 Nov 2020 20:41:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2ZI1QwLBPfuX; Tue, 10 Nov 2020 20:33:19 +0000 (UTC)
+	with ESMTP id dKsFZDMBcwwU; Tue, 10 Nov 2020 20:41:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1FF5C22F26;
-	Tue, 10 Nov 2020 20:33:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 938DB85624;
+	Tue, 10 Nov 2020 20:41:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 645231BF32C
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:33:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BB0C1BF32C
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:41:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5005522F26
- for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:33:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 462E386388
+ for <devel@linuxdriverproject.org>; Tue, 10 Nov 2020 20:41:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ntaAR-1I8Iz4 for <devel@linuxdriverproject.org>;
- Tue, 10 Nov 2020 20:33:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id rM6DPhAQBfhG for <devel@linuxdriverproject.org>;
+ Tue, 10 Nov 2020 20:41:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 6D80722E96
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 20:33:12 +0000 (UTC)
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4A8452065E;
- Tue, 10 Nov 2020 20:33:11 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2153685BA9
+ for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 20:41:20 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0C8C42064B;
+ Tue, 10 Nov 2020 20:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605040391;
- bh=yJTYZmAXuxpcGEJyYxHhM5frnzHMmu2d66zn6Bja/hc=;
+ s=default; t=1605040879;
+ bh=yKv9frgTvVqzPfRFofFJ3n7ouGgpWudWfrCyAmsq0Ac=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=0+9M3MIhvG1jKl+29RdqvQt51vR+oaGK/8GCDfVOFt7DeuVYh3d1crHlNZUC8WDds
- g9vkQkcCbbEoXNQpyaSLrzdPjoLqf+ydgGGXiFyaUf3ctGyVRw0DSvUJ1vfluiCeqN
- k/eioYuKDJ0bQsdAJATDhkiDO1uTXHoc1BDNDaN4=
-Date: Tue, 10 Nov 2020 20:32:57 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v1 11/30] drm/tegra: dc: Support OPP and SoC core voltage
- scaling
-Message-ID: <20201110203257.GC5957@sirena.org.uk>
-References: <20201104234427.26477-1-digetx@gmail.com>
- <20201104234427.26477-12-digetx@gmail.com>
- <20201110202945.GF2375022@ulmo>
+ b=F6jMqfAn1AHkUEQ1J4oxIJsY6olAVg85Py7bpZib2TmtC6g1lYi0DngBOOIFt5utk
+ EFXiTKY28UDOKNVDreRLLKKohuiIiXg9ONF3YKN2KD9yB2bif5xKWXrE3o0u6sihCB
+ 0DBiiPOPHC8Fu7Hr8yhImjwF9Wn4UU/3MV8rT0Eg=
+Date: Tue, 10 Nov 2020 21:42:21 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Shuah Khan <skhan@linuxfoundation.org>
+Subject: Re: [PATCH 12/13] drivers/staging/unisys/visorhba: convert stats to
+ use seqnum_ops
+Message-ID: <X6r7LVcXBBvRIbd8@kroah.com>
+References: <cover.1605027593.git.skhan@linuxfoundation.org>
+ <6fb679d23de785bbd1be6a528127e29f8ee6abd7.1605027593.git.skhan@linuxfoundation.org>
 MIME-Version: 1.0
-In-Reply-To: <20201110202945.GF2375022@ulmo>
-X-Cookie: Disk crisis, please clean up!
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Disposition: inline
+In-Reply-To: <6fb679d23de785bbd1be6a528127e29f8ee6abd7.1605027593.git.skhan@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,80 +66,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Liam Girdwood <lgirdwood@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
- devel@driverdev.osuosl.org, linux-samsung-soc@vger.kernel.org,
- Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-media@vger.kernel.org, linux-pwm@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
- linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>
-Content-Type: multipart/mixed; boundary="===============0150899303155915007=="
+Cc: peterz@infradead.org, devel@driverdev.osuosl.org, keescook@chromium.org,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Tue, Nov 10, 2020 at 12:53:38PM -0700, Shuah Khan wrote:
+> seqnum_ops api is introduced to be used when a variable is used as
+> a sequence/stat counter and doesn't guard object lifetimes. This
+> clearly differentiates atomic_t usages that guard object lifetimes.
+> 
+> seqnum32 variables wrap around to INT_MIN when it overflows and
+> should not be used to guard resource lifetimes, device usage and
+> open counts that control state changes, and pm states.
+> 
+> atomic_t variables used for error_count and ios_threshold are atomic
+> counters and guarded by max. values. No change to the behavior with
+> this change.
+> 
+> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+> ---
+>  .../staging/unisys/visorhba/visorhba_main.c   | 37 ++++++++++---------
+>  1 file changed, 19 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
+> index 7ae5306b92fe..3209958b8aaa 100644
+> --- a/drivers/staging/unisys/visorhba/visorhba_main.c
+> +++ b/drivers/staging/unisys/visorhba/visorhba_main.c
+> @@ -10,6 +10,7 @@
+>  #include <linux/module.h>
+>  #include <linux/seq_file.h>
+>  #include <linux/visorbus.h>
+> +#include <linux/seqnum_ops.h>
+>  #include <scsi/scsi.h>
+>  #include <scsi/scsi_host.h>
+>  #include <scsi/scsi_cmnd.h>
+> @@ -41,8 +42,8 @@ MODULE_ALIAS("visorbus:" VISOR_VHBA_CHANNEL_GUID_STR);
+>  struct visordisk_info {
+>  	struct scsi_device *sdev;
+>  	u32 valid;
+> -	atomic_t ios_threshold;
+> -	atomic_t error_count;
+> +	struct seqnum32 ios_threshold;
+> +	struct seqnum32 error_count;
 
---===============0150899303155915007==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="f+W+jCU1fRNres8c"
-Content-Disposition: inline
+Are you sure the threshold variable is a sequence number?
 
+It goes up and down, not just up and up and up.
 
---f+W+jCU1fRNres8c
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+An error count just goes up :)
 
-On Tue, Nov 10, 2020 at 09:29:45PM +0100, Thierry Reding wrote:
-> On Thu, Nov 05, 2020 at 02:44:08AM +0300, Dmitry Osipenko wrote:
+thanks,
 
-> > +	/*
-> > +	 * Voltage scaling is optional and trying to set voltage for a dummy
-> > +	 * regulator will error out.
-> > +	 */
-> > +	if (!device_property_present(dc->dev, "core-supply"))
-> > +		return;
-
-> This is a potentially heavy operation, so I think we should avoid that
-> here. How about you use devm_regulator_get_optional() in ->probe()? That
-> returns -ENODEV if no regulator was specified, in which case you can set
-> dc->core_reg = NULL and use that as the condition here.
-
-Or enumerate the configurable voltages after getting the regulator and
-handle that appropriately which would be more robust in case there's
-missing or unusual constraints.
-
---f+W+jCU1fRNres8c
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+q+PkACgkQJNaLcl1U
-h9Di3Af+KvYDy9j9hzr4giaqciyG6ZuO/j4tEwL8vjsyaMREZ12mZ3xOOgu04UTQ
-KYUtOH+AIWAUWOBwJNWEgKiRd04eMyhD6IHeCT1lip3XWBxXOEr9/YGXba3fVI/J
-vvHATycSemWFAYfZ1yjhz2fAxz4zxgwujwivC1/YKWjHZi8vFTy16R9yY5Eex5l/
-eplxyfun7IvJxFiVf5XDK4K2lGmn783N6VYofq6lAUknQ+TxScbl9QNyKNihB7Ys
-tOgGgxJpK6+xFKP8RWC34O3W++wjUL2sUZUhvVKP059roKdB0gej+D9DnV+RCYHf
-AloxftWStaHBnOpYPmbGoUoaK8isGQ==
-=oCrN
------END PGP SIGNATURE-----
-
---f+W+jCU1fRNres8c--
-
---===============0150899303155915007==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0150899303155915007==--
