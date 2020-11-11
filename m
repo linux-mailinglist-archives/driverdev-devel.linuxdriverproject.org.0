@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90B952AF66F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 17:30:36 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A56972AF672
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 17:30:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 18EFD20483;
-	Wed, 11 Nov 2020 16:30:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3E6E5867CF;
+	Wed, 11 Nov 2020 16:30:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id INC1sGuBDy5c; Wed, 11 Nov 2020 16:30:34 +0000 (UTC)
+	with ESMTP id OamR-V5zhV23; Wed, 11 Nov 2020 16:30:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 431952E0DE;
-	Wed, 11 Nov 2020 16:30:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DDBC286775;
+	Wed, 11 Nov 2020 16:30:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E278A1BF29D
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 45FC61BF29D
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D50A587439
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3D0F68679A
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5EigejShNZEE for <devel@linuxdriverproject.org>;
- Wed, 11 Nov 2020 16:30:25 +0000 (UTC)
+ with ESMTP id 5s0lQGKk7992 for <devel@linuxdriverproject.org>;
+ Wed, 11 Nov 2020 16:30:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 041DF87218
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EFE9F86791
  for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 16:30:25 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id s8so3090320wrw.10
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 08:30:24 -0800 (PST)
+Received: by mail-wm1-f66.google.com with SMTP id w24so2916159wmi.0
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 08:30:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1KMHSjb1rg2avkeMWbTsRE5Tlf5Gn9ajcRS0CH0fkNc=;
- b=JE8bZwkdqom4kF+K2iyhLoGeBJk3m+eNdkgVW7VQKJDg1Zalq+dEC8UTaP/UL3T13h
- Oy8xMRP/3WTCCeMCZ9ta1FFnTHpdQj26Tu9zmwatJe/PeMnybzYhERv+wnKK6Hy6ss5P
- VHY0YEfy0JA2MjpXzb8kWlyXNuXKBOA3gVUnftSWpvAzAYqi4DfYSI0OpbPcnU5pb490
- 3ySDyEZKiJ6ckfMvn1EVojVPt0CuCTA7DfbO1whZdk0kdOWCB4ez2SlyWTCGMIrOodog
- uZDUSVU0X+4EKmaDWLc3z6qVyYCc5y61tf20j1TSHOHM2tYu2ygURUfwXE7zDPSJ5rWk
- rd2g==
+ bh=FYKOUWD0OJw73iZ7JD4H1o7QmbZcn/nhEwwRlMzqiAE=;
+ b=L8SwnQiC1gEWAQMAmdLFvvbpMlKy/y5IyRJEQipiXdWeEqtzVNZrYHFyr1VWxIsSol
+ cEiJcGB56zoTuiNf+pJMdlW5X5arw+R4k/wnjRVlT+Lid5YS5MuxRf+ZtkGo+Z1ST7Hd
+ gRrCWt8Fs7kZkRwy6ckIIdK8UuJqFIlS3VtM2YBPWeG0yYDZgX+qphamlWvZ8eh+XTQO
+ OqZM0pd525lEAVKH3m9z+86KgnTmucbckaktA8G4oRUOUuQnRL+KGXzjNsHVft82LmKo
+ 92iqmluN1pcw6mLuPy8Bh2sDJvbBpQzUGP1xh46UW0d6q0+VOMOptVzF98uGdvI+BD+0
+ N1Wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=1KMHSjb1rg2avkeMWbTsRE5Tlf5Gn9ajcRS0CH0fkNc=;
- b=EkGGtalcBKiIvmQXLFnl+bBlqykIJUVSJ8eb4EK8cyOozvYJ6isbkQmL8uil15IK9d
- POVOpx3P4OGxKV3p/eQUTDzE9z6bEFPgeyFJKSD8VSb7td1S4n9G2Z8iVtbX7uX6Vcix
- FfpYpGFZgpnL1yHcZBQPrFS5vcLB9h2Ws8bLT4L3Fs3yeEyv8FVzM7nOGNqcp2YRIc3e
- SINO6ElTM8FSHTT0SFbD6xCzmDd6X93LSqTUU5/L8rIZ+rKxIqRfSZdRjKbokMYPvFrf
- ySccBLb3NMmVkPKocrfTy2ofWP8ymGd2pbkFyKv9AVKGKbBLG9q9l7925fWBy8lc5iVu
- PstQ==
-X-Gm-Message-State: AOAM532czDZk7bAbqg4p6+q0Vv7rpnI1DuhdLYv3Wln7GtX5q0avhizK
- QbnEaXNJqIvPzEZ6espQIp8ilLuCTHYm43Yd
-X-Google-Smtp-Source: ABdhPJx055ZqZy6zBpI0MdOC9GIdx/LpSkBu4igfYewwt3pXKtEW96lX1R64m8hCCJeL7WLM1o9yGQ==
-X-Received: by 2002:adf:9066:: with SMTP id h93mr32463508wrh.166.1605112223159; 
- Wed, 11 Nov 2020 08:30:23 -0800 (PST)
+ bh=FYKOUWD0OJw73iZ7JD4H1o7QmbZcn/nhEwwRlMzqiAE=;
+ b=Bzmi9FwCk4j4jJSczWHR/lF9P80n4DnpuP7YcWnSMY/NHH3v71Kue6WgJABI37KWt9
+ E80fv5eK3SoXZXXlHLEGTIeFn2cIioiWf8K627Y9nR7NdFmZq6eBcl5hElHkaawjiHFl
+ j24HO56M1/rZbCbrdc3TCa3nPZzoOY/Z9NglfpS8t73xz4UHrtXO3X0PAT0EDhMoq5oq
+ yy32D8/a4XVCEL+it+zhT+8gw1urejizjY8muCsf68XZMHfU/gJTaLK0sx5Vt9IBq7+K
+ BKB5aMJgzyANZCpgcNx2jU1nBRy3uzgC9tRmIOK5S0+0eRWYiKCiJuvi2kjUCYRgemBz
+ Ty8A==
+X-Gm-Message-State: AOAM530+v6+N5+BKRUFX8x1TnItcfu87Vvp9b3297SC1zg4IMNn6Y9+3
+ ise6Bt7fHjMayvLh7t9FMXI=
+X-Google-Smtp-Source: ABdhPJzGnoLjgNUq+bouW7p8xVRr2Jpc+VKbjdQa4AJBHypdOVF7BcMeR6QuYHGiHnAAkWXizxg/JA==
+X-Received: by 2002:a1c:7303:: with SMTP id d3mr5374141wmb.152.1605112224529; 
+ Wed, 11 Nov 2020 08:30:24 -0800 (PST)
 Received: from localhost.localdomain
  (245.red-79-158-78.dynamicip.rima-tde.net. [79.158.78.245])
- by smtp.gmail.com with ESMTPSA id w186sm3196753wmb.26.2020.11.11.08.30.21
+ by smtp.gmail.com with ESMTPSA id w186sm3196753wmb.26.2020.11.11.08.30.23
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 11 Nov 2020 08:30:22 -0800 (PST)
+ Wed, 11 Nov 2020 08:30:24 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: mturquette@baylibre.com
-Subject: [PATCH 5/7] clk: ralink: add clock gate driver for mt7621 SoC
-Date: Wed, 11 Nov 2020 17:30:11 +0100
-Message-Id: <20201111163013.29412-6-sergio.paracuellos@gmail.com>
+Subject: [PATCH 6/7] staging: mt7621-dts: make use of new 'mt7621-pll' and
+ 'mt7621-clk'
+Date: Wed, 11 Nov 2020 17:30:12 +0100
+Message-Id: <20201111163013.29412-7-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
 References: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
@@ -96,371 +97,227 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In mt7621 SoC register 'SYSC_REG_CPLL_CLKCFG1' allows to
-handle a bunch of gates to enable/disable clocks for
-all or some ip cores. Add a driver to properly handle them.
-Parent clocks for this gates are not documented  at all in
-the SoC documentation so all of them have been assumed looking
-into the clock frequencies used in its related driver code.
-There are three main clocks which are "cpu", "ahb" and "apb"
-from the 'mt7621-pll'.
-
-The following parents are set to each GATE:
-  * "hsdma": "ahb"
-  * "fe": "ahb"
-  * "sp_divtx": "ahb"
-  * "timer": "cpu"
-  * "int": "cpu"
-  * "mc": "ahb"
-  * "pcm": "ahb"
-  * "pio": "ahb"
-  * "gdma": "ahb"
-  * "nand": "ahb"
-  * "i2c": "ahb"
-  * "i2s": "ahb"
-  * "spi": "ahb"
-  * "uart1": "apb"
-  * "uart2": "apb"
-  * "uart3": "apb"
-  * "eth": "ahb"
-  * "pcie0": "ahb"
-  * "pcie1": "ahb"
-  * "pcie2": "ahb"
-  * "crypto": "ahb"
-  * "shxc": "ahb"
-
-With this information the clk driver will provide gate functionality
-from a a set of hardcoded clocks allowing to define a nice device
-tree without fixed clocks.
+Clocks for SoC mt7621 have been properly integrated so there is
+no need to declare fixed clocks at all in the device tree. Remove
+all of them, add new device tree nodes for new mt7621-pll and mt7621-clk
+and update the rest of the nodes to use them.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/clk/Kconfig             |   1 +
- drivers/clk/Makefile            |   1 +
- drivers/clk/ralink/Kconfig      |  14 ++
- drivers/clk/ralink/Makefile     |   2 +
- drivers/clk/ralink/clk-mt7621.c | 258 ++++++++++++++++++++++++++++++++
- 5 files changed, 276 insertions(+)
- create mode 100644 drivers/clk/ralink/Kconfig
- create mode 100644 drivers/clk/ralink/Makefile
- create mode 100644 drivers/clk/ralink/clk-mt7621.c
+ drivers/staging/mt7621-dts/gbpc1.dts   | 11 ----
+ drivers/staging/mt7621-dts/mt7621.dtsi | 71 ++++++++++++--------------
+ 2 files changed, 34 insertions(+), 48 deletions(-)
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index c715d4681a0b..5f94c4329033 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -372,6 +372,7 @@ source "drivers/clk/mediatek/Kconfig"
- source "drivers/clk/meson/Kconfig"
- source "drivers/clk/mvebu/Kconfig"
- source "drivers/clk/qcom/Kconfig"
-+source "drivers/clk/ralink/Kconfig"
- source "drivers/clk/renesas/Kconfig"
- source "drivers/clk/rockchip/Kconfig"
- source "drivers/clk/samsung/Kconfig"
-diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-index da8fcf147eb1..6578e167b047 100644
---- a/drivers/clk/Makefile
-+++ b/drivers/clk/Makefile
-@@ -100,6 +100,7 @@ obj-$(CONFIG_COMMON_CLK_NXP)		+= nxp/
- obj-$(CONFIG_MACH_PISTACHIO)		+= pistachio/
- obj-$(CONFIG_COMMON_CLK_PXA)		+= pxa/
- obj-$(CONFIG_COMMON_CLK_QCOM)		+= qcom/
-+obj-y					+= ralink/
- obj-y					+= renesas/
- obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
- obj-$(CONFIG_COMMON_CLK_SAMSUNG)	+= samsung/
-diff --git a/drivers/clk/ralink/Kconfig b/drivers/clk/ralink/Kconfig
-new file mode 100644
-index 000000000000..7e8697327e0c
---- /dev/null
-+++ b/drivers/clk/ralink/Kconfig
-@@ -0,0 +1,14 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+#
-+# MediaTek Mt7621 Clock Driver
-+#
-+menu "Clock driver for mediatek mt7621 SoC"
-+	depends on SOC_MT7621 || COMPILE_TEST
-+
-+config CLK_MT7621
-+	bool "Clock driver for MediaTek MT7621"
-+	depends on SOC_MT7621 || COMPILE_TEST
-+	default SOC_MT7621
-+	help
-+	  This driver supports MediaTek MT7621 basic clocks.
-+endmenu
-diff --git a/drivers/clk/ralink/Makefile b/drivers/clk/ralink/Makefile
-new file mode 100644
-index 000000000000..cf6f9216379d
---- /dev/null
-+++ b/drivers/clk/ralink/Makefile
-@@ -0,0 +1,2 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_CLK_MT7621) += clk-mt7621.o
-diff --git a/drivers/clk/ralink/clk-mt7621.c b/drivers/clk/ralink/clk-mt7621.c
-new file mode 100644
-index 000000000000..f7279d784a36
---- /dev/null
-+++ b/drivers/clk/ralink/clk-mt7621.c
-@@ -0,0 +1,258 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Mediatek MT7621 Clock gate Driver
-+ * Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-+ */
-+
-+#include <linux/bitops.h>
-+#include <linux/clk-provider.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
+diff --git a/drivers/staging/mt7621-dts/gbpc1.dts b/drivers/staging/mt7621-dts/gbpc1.dts
+index a7c0d3115d72..7716d0efe524 100644
+--- a/drivers/staging/mt7621-dts/gbpc1.dts
++++ b/drivers/staging/mt7621-dts/gbpc1.dts
+@@ -100,17 +100,6 @@ partition@50000 {
+ 	};
+ };
+ 
+-&sysclock {
+-			compatible = "fixed-clock";
+-			/* This is normally 1/4 of cpuclock */
+-			clock-frequency = <225000000>;
+-};
+-
+-&cpuclock {
+-			compatible = "fixed-clock";
+-			clock-frequency = <900000000>;
+-};
+-
+ &pcie {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie_pins>;
+diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
+index 82aa93634eda..e615139d2ccb 100644
+--- a/drivers/staging/mt7621-dts/mt7621.dtsi
++++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+@@ -1,5 +1,6 @@
+ #include <dt-bindings/interrupt-controller/mips-gic.h>
+ #include <dt-bindings/gpio/gpio.h>
 +#include <dt-bindings/clock/mt7621-clk.h>
+ 
+ / {
+ 	#address-cells = <1>;
+@@ -27,26 +28,16 @@ aliases {
+ 		serial0 = &uartlite;
+ 	};
+ 
+-	cpuclock: cpuclock@0 {
+-		#clock-cells = <0>;
+-		compatible = "fixed-clock";
+-
+-		/* FIXME: there should be way to detect this */
+-		clock-frequency = <880000000>;
+-	};
+-
+-	sysclock: sysclock@0 {
+-		#clock-cells = <0>;
+-		compatible = "fixed-clock";
+-
+-		/* This is normally 1/4 of cpuclock */
+-		clock-frequency = <220000000>;
++	pll: pll {
++		compatible = "mediatek,mt7621-pll";
++		#clock-cells = <1>;
++		clock-output-names = "cpu", "ahb", "apb";
+ 	};
+ 
+-	mmc_clock: mmc_clock@0 {
+-		#clock-cells = <0>;
+-		compatible = "fixed-clock";
+-		clock-frequency = <48000000>;
++	clkctrl: clkctrl {
++		compatible = "mediatek,mt7621-clk";
++		#clock-cells = <1>;
++		ralink,sysctl = <&sysc>;
+ 	};
+ 
+ 	mmc_fixed_3v3: fixedregulator@0 {
+@@ -76,7 +67,7 @@ palmbus: palmbus@1E000000 {
+ 		#size-cells = <1>;
+ 
+ 		sysc: sysc@0 {
+-			compatible = "mtk,mt7621-sysc";
++			compatible = "mtk,mt7621-sysc", "syscon";
+ 			reg = <0x0 0x100>;
+ 		};
+ 
+@@ -100,8 +91,8 @@ i2c: i2c@900 {
+ 			compatible = "mediatek,mt7621-i2c";
+ 			reg = <0x900 0x100>;
+ 
+-			clocks = <&sysclock>;
+-
++			clocks = <&clkctrl MT7621_CLK_I2C>;
++			clock-names = "i2c";
+ 			resets = <&rstctrl 16>;
+ 			reset-names = "i2c";
+ 
+@@ -118,8 +109,8 @@ i2s: i2s@a00 {
+ 			compatible = "mediatek,mt7621-i2s";
+ 			reg = <0xa00 0x100>;
+ 
+-			clocks = <&sysclock>;
+-
++			clocks = <&clkctrl MT7621_CLK_I2S>;
++			clock-names = "i2s";
+ 			resets = <&rstctrl 17>;
+ 			reset-names = "i2s";
+ 
+@@ -155,8 +146,8 @@ uartlite: uartlite@c00 {
+ 			compatible = "ns16550a";
+ 			reg = <0xc00 0x100>;
+ 
+-			clocks = <&sysclock>;
+-			clock-frequency = <50000000>;
++			clocks = <&clkctrl MT7621_CLK_UART1>;
++			clock-names = "uart1";
+ 
+ 			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_SHARED 26 IRQ_TYPE_LEVEL_HIGH>;
+@@ -172,7 +163,7 @@ spi0: spi@b00 {
+ 			compatible = "ralink,mt7621-spi";
+ 			reg = <0xb00 0x100>;
+ 
+-			clocks = <&sysclock>;
++			clocks = <&pll MT7621_CLK_AHB>;
+ 
+ 			resets = <&rstctrl 18>;
+ 			reset-names = "spi";
+@@ -188,6 +179,8 @@ gdma: gdma@2800 {
+ 			compatible = "ralink,rt3883-gdma";
+ 			reg = <0x2800 0x800>;
+ 
++			clocks = <&clkctrl MT7621_CLK_GDMA>;
++			clock-names = "gdma";
+ 			resets = <&rstctrl 14>;
+ 			reset-names = "dma";
+ 
+@@ -205,6 +198,8 @@ hsdma: hsdma@7000 {
+ 			compatible = "mediatek,mt7621-hsdma";
+ 			reg = <0x7000 0x1000>;
+ 
++			clocks = <&clkctrl MT7621_CLK_HSDMA>;
++			clock-names = "hsdma";
+ 			resets = <&rstctrl 5>;
+ 			reset-names = "hsdma";
+ 
+@@ -315,11 +310,6 @@ rstctrl: rstctrl {
+ 		#reset-cells = <1>;
+ 	};
+ 
+-	clkctrl: clkctrl {
+-		compatible = "ralink,rt2880-clock";
+-		#clock-cells = <1>;
+-	};
+-
+ 	sdhci: sdhci@1E130000 {
+ 		status = "disabled";
+ 
+@@ -338,7 +328,8 @@ sdhci: sdhci@1E130000 {
+ 		pinctrl-0 = <&sdhci_pins>;
+ 		pinctrl-1 = <&sdhci_pins>;
+ 
+-		clocks = <&mmc_clock &mmc_clock>;
++		clocks = <&pll MT7621_CLK_APB>,
++			 <&pll MT7621_CLK_APB>;
+ 		clock-names = "source", "hclk";
+ 
+ 		interrupt-parent = <&gic>;
+@@ -353,7 +344,7 @@ xhci: xhci@1E1C0000 {
+ 		       0x1e1d0700 0x0100>;
+ 		reg-names = "mac", "ippc";
+ 
+-		clocks = <&sysclock>;
++		clocks = <&pll MT7621_CLK_AHB>;
+ 		clock-names = "sys_ck";
+ 
+ 		interrupt-parent = <&gic>;
+@@ -372,7 +363,7 @@ gic: interrupt-controller@1fbc0000 {
+ 		timer {
+ 			compatible = "mti,gic-timer";
+ 			interrupts = <GIC_LOCAL 1 IRQ_TYPE_NONE>;
+-			clocks = <&cpuclock>;
++			clocks = <&pll MT7621_CLK_CPU>;
+ 		};
+ 	};
+ 
+@@ -385,6 +376,9 @@ nand: nand@1e003000 {
+ 			0x1e003800 0x800>;
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
 +
-+/* clock gate configuration register */
-+#define SYSC_REG_CLKCFG1		0x30
-+
-+/* Gate register enable bits */
-+#define MT7621_HSDMA_CLK_EN		BIT(5)
-+#define MT7621_FE_CLK_EN		BIT(6)
-+#define MT7621_SP_DIVTX_CLK_EN		BIT(7)
-+#define MT7621_TIMER_CLK_EN		BIT(8)
-+#define MT7621_INT_CLK_EN		BIT(9)
-+#define MT7621_MC_CLK_EN		BIT(10)
-+#define MT7621_PCM_CLK_EN		BIT(11)
-+#define MT7621_PIO_CLK_EN		BIT(13)
-+#define MT7621_GDMA_CLK_EN		BIT(14)
-+#define MT7621_NAND_CLK_EN		BIT(15)
-+#define MT7621_I2C_CLK_EN		BIT(16)
-+#define MT7621_I2S_CLK_EN		BIT(17)
-+#define MT7621_SPI_CLK_EN		BIT(18)
-+#define MT7621_UART1_CLK_EN		BIT(19)
-+#define MT7621_UART2_CLK_EN		BIT(20)
-+#define MT7621_UART3_CLK_EN		BIT(21)
-+#define MT7621_ETH_CLK_EN		BIT(23)
-+#define MT7621_PCIE0_CLK_EN		BIT(24)
-+#define MT7621_PCIE1_CLK_EN		BIT(25)
-+#define MT7621_PCIE2_CLK_EN		BIT(26)
-+#define MT7621_CRYPTO_CLK_EN		BIT(29)
-+#define MT7621_SHXC_CLK_EN		BIT(30)
-+
-+struct mt7621_clk_provider {
-+	struct device_node *node;
-+	struct device *dev;
-+	struct regmap *syscon_regmap;
-+	struct clk_hw_onecell_data *clk_data;
-+};
-+
-+struct mt7621_gate {
-+	u8 idx;
-+	const char *name;
-+	const char *parent_name;
-+	struct mt7621_clk_provider *clk_prov;
-+	struct clk_hw hw;
-+	u32 bit_idx;
-+};
-+
-+struct mt7621_gate_data {
-+	u8 idx;
-+	const char *name;
-+	const char *parent_name;
-+	u32 bit_idx;
-+};
-+
-+#define GATE(_id, _name, _pname, _shift)	\
-+	{					\
-+		.idx		= _id,		\
-+		.name		= _name,	\
-+		.parent_name	= _pname,	\
-+		.bit_idx	= _shift	\
-+	}
-+
-+static const struct mt7621_gate mt7621_gates[] = {
-+	GATE(MT7621_CLK_HSDMA, "hsdma", "ahb", MT7621_HSDMA_CLK_EN),
-+	GATE(MT7621_CLK_FE, "fe", "ahb", MT7621_FE_CLK_EN),
-+	GATE(MT7621_CLK_SP_DIVTX, "sp_divtx", "ahb", MT7621_SP_DIVTX_CLK_EN),
-+	GATE(MT7621_CLK_TIMER, "timer", "cpu", MT7621_TIMER_CLK_EN),
-+	GATE(MT7621_CLK_INT, "int", "cpu", MT7621_INT_CLK_EN),
-+	GATE(MT7621_CLK_MC, "mc", "ahb", MT7621_MC_CLK_EN),
-+	GATE(MT7621_CLK_PCM, "pcm", "ahb", MT7621_PCM_CLK_EN),
-+	GATE(MT7621_CLK_PIO, "pio", "ahb", MT7621_PIO_CLK_EN),
-+	GATE(MT7621_CLK_GDMA, "gdma", "ahb", MT7621_GDMA_CLK_EN),
-+	GATE(MT7621_CLK_NAND, "nand", "ahb", MT7621_NAND_CLK_EN),
-+	GATE(MT7621_CLK_I2C, "i2c", "ahb", MT7621_I2C_CLK_EN),
-+	GATE(MT7621_CLK_I2S, "i2s", "ahb", MT7621_I2S_CLK_EN),
-+	GATE(MT7621_CLK_SPI, "spi", "ahb", MT7621_SPI_CLK_EN),
-+	GATE(MT7621_CLK_UART1, "uart1", "apb", MT7621_UART1_CLK_EN),
-+	GATE(MT7621_CLK_UART2, "uart2", "apb", MT7621_UART2_CLK_EN),
-+	GATE(MT7621_CLK_UART3, "uart3", "apb", MT7621_UART3_CLK_EN),
-+	GATE(MT7621_CLK_ETH, "eth", "ahb", MT7621_ETH_CLK_EN),
-+	GATE(MT7621_CLK_PCIE0, "pcie0", "ahb", MT7621_PCIE0_CLK_EN),
-+	GATE(MT7621_CLK_PCIE1, "pcie1", "ahb", MT7621_PCIE1_CLK_EN),
-+	GATE(MT7621_CLK_PCIE2, "pcie2", "ahb", MT7621_PCIE2_CLK_EN),
-+	GATE(MT7621_CLK_CRYPTO, "crypto", "ahb", MT7621_CRYPTO_CLK_EN),
-+	GATE(MT7621_CLK_SHXC, "shxc", "ahb", MT7621_SHXC_CLK_EN)
-+};
-+
-+static inline struct mt7621_gate *to_mt7621_gate(struct clk_hw *hw)
-+{
-+	return container_of(hw, struct mt7621_gate, hw);
-+}
-+
-+static int mt7621_gate_enable(struct clk_hw *hw)
-+{
-+	struct mt7621_gate *clk_gate = to_mt7621_gate(hw);
-+	struct regmap *scon = clk_gate->clk_prov->syscon_regmap;
-+
-+	return regmap_update_bits(scon, SYSC_REG_CLKCFG1,
-+				  clk_gate->bit_idx, clk_gate->bit_idx);
-+}
-+
-+static void mt7621_gate_disable(struct clk_hw *hw)
-+{
-+	struct mt7621_gate *clk_gate = to_mt7621_gate(hw);
-+	struct regmap *scon = clk_gate->clk_prov->syscon_regmap;
-+
-+	regmap_update_bits(scon, SYSC_REG_CLKCFG1, clk_gate->bit_idx, 0);
-+}
-+
-+static int mt7621_gate_is_enabled(struct clk_hw *hw)
-+{
-+	struct mt7621_gate *clk_gate = to_mt7621_gate(hw);
-+	struct regmap *scon = clk_gate->clk_prov->syscon_regmap;
-+	unsigned int val;
-+
-+	if (regmap_read(scon, SYSC_REG_CLKCFG1, &val))
-+		return 0;
-+
-+	return val & clk_gate->bit_idx;
-+}
-+
-+static const struct clk_ops mt7621_gate_ops = {
-+	.enable = mt7621_gate_enable,
-+	.disable = mt7621_gate_disable,
-+	.is_enabled = mt7621_gate_is_enabled,
-+};
-+
-+static int mt7621_gate_ops_init(struct device *dev, struct mt7621_gate *sclk)
-+{
-+	struct clk_init_data init = {
-+		.flags = CLK_SET_RATE_PARENT | CLK_IGNORE_UNUSED,
-+		.num_parents = 1,
-+		.parent_names = &sclk->parent_name,
-+		.ops = &mt7621_gate_ops,
-+		.name = sclk->name,
-+	};
-+
-+	sclk->hw.init = &init;
-+	return devm_clk_hw_register(dev, &sclk->hw);
-+}
-+
-+static int mt7621_register_gates(struct mt7621_clk_provider *clk_prov)
-+{
-+	struct clk_hw_onecell_data **clk_data = &clk_prov->clk_data;
-+	struct device *dev = clk_prov->dev;
-+	int idx, err, count;
-+	struct clk_hw **hws;
-+
-+	count = ARRAY_SIZE(mt7621_gates);
-+	*clk_data = devm_kzalloc(dev, struct_size(*clk_data, hws, count),
-+				 GFP_KERNEL);
-+	if (!*clk_data)
-+		return -ENOMEM;
-+
-+	(*clk_data)->num = count;
-+	hws = (*clk_data)->hws;
-+
-+	for (idx = 0; idx < ARRAY_SIZE(mt7621_gates); idx++) {
-+		struct mt7621_gate *sclk;
-+
-+		sclk = devm_kzalloc(dev, sizeof(*sclk), GFP_KERNEL);
-+		if (!sclk)
-+			return -ENOMEM;
-+
-+		sclk->idx = mt7621_gates[idx].idx;
-+		sclk->name = mt7621_gates[idx].name;
-+		sclk->parent_name = mt7621_gates[idx].parent_name;
-+		sclk->bit_idx = mt7621_gates[idx].bit_idx;
-+		sclk->clk_prov = clk_prov;
-+
-+		err = mt7621_gate_ops_init(dev, sclk);
-+		if (err) {
-+			dev_err(dev, "failed to register clock %d\n", idx);
-+			devm_kfree(dev, sclk);
-+			hws[idx] = NULL;
-+		} else {
-+			dev_info(dev, "Registered clock gate: %s\n",
-+				 mt7621_gates[idx].name);
-+			hws[idx] = &sclk->hw;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt7621_clk_init(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = pdev->dev.of_node;
-+	struct mt7621_clk_provider *clk_provider;
-+	int ret;
-+
-+	clk_provider = devm_kzalloc(dev, sizeof(*clk_provider), GFP_KERNEL);
-+	if (!clk_provider)
-+		return -ENOMEM;
-+
-+	platform_set_drvdata(pdev, clk_provider);
-+	clk_provider->syscon_regmap = syscon_regmap_lookup_by_phandle(node, "ralink,sysctl");
-+	if (IS_ERR(clk_provider->syscon_regmap)) {
-+		dev_err(dev, "Could not get syscon regmap\n");
-+		return -EINVAL;
-+	}
-+
-+	clk_provider->node = node;
-+	clk_provider->dev = dev;
-+
-+	ret = mt7621_register_gates(clk_provider);
-+	if (ret) {
-+		dev_err(dev, "Error registering gates\n");
-+		return ret;
-+	}
-+
-+	return devm_of_clk_add_hw_provider(dev, of_clk_hw_onecell_get,
-+					   clk_provider->clk_data);
-+}
-+
-+static int clk_mt7621_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	int ret;
-+
-+	ret = mt7621_clk_init(pdev);
-+	if (ret) {
-+		dev_err(dev, "Could not register clock provider: %s: %d\n",
-+			pdev->name, ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id of_match_clk_mt7621[] = {
-+	{ .compatible = "mediatek,mt7621-clk", .data = mt7621_clk_init },
-+	{}
-+};
-+
-+static struct platform_driver clk_mt7621_drv = {
-+	.probe = clk_mt7621_probe,
-+	.driver = {
-+		.name = "clk-mt7621",
-+		.of_match_table = of_match_clk_mt7621,
-+	},
-+};
-+builtin_platform_driver(clk_mt7621_drv);
-+
-+MODULE_AUTHOR("Sergio Paracuellos <sergio.paracuellos@gmail.com>");
-+MODULE_DESCRIPTION("Mediatek Mt7621 clock gate driver");
-+MODULE_LICENSE("GPL v2");
++		clocks = <&clkctrl MT7621_CLK_NAND>;
++		clock-names = "nand";
+ 	};
+ 
+ 	ethsys: syscon@1e000000 {
+@@ -398,8 +392,9 @@ ethernet: ethernet@1e100000 {
+ 		compatible = "mediatek,mt7621-eth";
+ 		reg = <0x1e100000 0x10000>;
+ 
+-		clocks = <&sysclock>;
+-		clock-names = "ethif";
++		clocks = <&pll MT7621_CLK_AHB>,
++			 <&clkctrl MT7621_CLK_ETH>;
++		clock-names = "ethif", "eth";
+ 
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -532,7 +527,9 @@ GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH
+ 
+ 		resets = <&rstctrl 24 &rstctrl 25 &rstctrl 26>;
+ 		reset-names = "pcie0", "pcie1", "pcie2";
+-		clocks = <&clkctrl 24 &clkctrl 25 &clkctrl 26>;
++		clocks = <&clkctrl MT7621_CLK_PCIE0>,
++			 <&clkctrl MT7621_CLK_PCIE1>,
++			 <&clkctrl MT7621_CLK_PCIE2>;
+ 		clock-names = "pcie0", "pcie1", "pcie2";
+ 		phys = <&pcie0_phy 1>, <&pcie2_phy 0>;
+ 		phy-names = "pcie-phy0", "pcie-phy2";
 -- 
 2.25.1
 
