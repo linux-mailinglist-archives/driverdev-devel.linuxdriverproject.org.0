@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C20D72AF668
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AB6F2AF666
 	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 17:30:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8A0382E0B5;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E334F868DC;
 	Wed, 11 Nov 2020 16:30:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dseidu8g7Ucc; Wed, 11 Nov 2020 16:30:24 +0000 (UTC)
+	with ESMTP id A_2_cwnjvDlu; Wed, 11 Nov 2020 16:30:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CB64E2CD96;
-	Wed, 11 Nov 2020 16:30:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A60678638E;
+	Wed, 11 Nov 2020 16:30:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BDB9D1BF29D
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 648D11BF29D
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B99CD86214
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5D79E20525
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8ykEzXs_Zk7q for <devel@linuxdriverproject.org>;
- Wed, 11 Nov 2020 16:30:18 +0000 (UTC)
+ with ESMTP id 9GlP4zTHfRQk for <devel@linuxdriverproject.org>;
+ Wed, 11 Nov 2020 16:30:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 36CA4860D2
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 16:30:18 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id 10so2811138wml.2
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 08:30:18 -0800 (PST)
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
+ [209.85.128.51])
+ by silver.osuosl.org (Postfix) with ESMTPS id 70AA920483
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 16:30:19 +0000 (UTC)
+Received: by mail-wm1-f51.google.com with SMTP id c9so2786436wml.5
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 08:30:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XGuUtN4IVknkb+lwRB68ysFvPhv+l5uG2dZdrzyDbxM=;
- b=K3JL3N23cLxCnydD3po0sGWLTdktZNPtKZDeq77xo58iqu2twEcWLWY03hZKN8OVn5
- qEdpJ8jFb6yg88O56K1dAiLdD524KQrappzBIYTq6nDskqXppnxK7psrbYFE1V9EJleO
- EDqmTCSgFUsfjclhlUQfJSK/gCV3GhAgKTIGaXB/WHSyVZ/prBv5WHL9cX/ZbNeOhHfj
- gEEg3vIwotXJSYzU5iDQ+uTpB4KVY70wiKU7U389rBoXvz8e6wrqm5vsyPQCwnBMr93R
- kgh8rW1V1SabpR7kJzszSdQOm1zqp2OkrrVqlT6bJTrrVddU/p9du329EGeW8SNanRlk
- Gvxg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=B4Z4TGbujRr8lzA8mvSLe6pQfLuePfjA32xx1R5acwU=;
+ b=TcGg7wZoHU3Mz7quoPpRmbrozU3kYjLYJ9tPVBCl/RJUKI9kZhR9/kL7Xau+5B1y6b
+ FVEpa5PoQDOh55hABpqUCE0WVEcSCv1+dZzvYoRkYb5CcndMpJPrC4m2xzkwvOwsKPUV
+ mhROj2Hwe3soJU5/lTiaqisvqXuH8zFaWZa+Ni17Ag80cg3iV9+fG0ZbFgYTcQvNC3DF
+ TFJILtlF/AsyBSNeQQsAt7OWYsYWGXHUUEOwEG/TkvBrynPMq04C80f+D2Iwui/BhlTN
+ 2Bjq/xk91LCSHEcrA+JY2v9kfVD1sdpOSGAKvACFdRJuRz6MyPK3hhNrrT4LExn9aK3W
+ BO3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XGuUtN4IVknkb+lwRB68ysFvPhv+l5uG2dZdrzyDbxM=;
- b=bHRqXM8RHz6Z3obflioVPtZMQhhgSRhFq9G1Trgq/xWhvt+qlhXKPxVa4Q4MeF7EfF
- qCLe/u8QhtUs2Ct0Nj1THYISoC/hZC+5VJ3kepBWTZGliPUhbTi88ciYFHYE7bYIlb8J
- r1dcHcQLOxemd487nrUAeDiLk2Ejh8f2LAKJzffFeKaSWDAONPt3oc5qWMH+mO1ZdLeq
- 4txxeUEgYLgRnen1Z5AWSZI/0H1RebDpbpK5owV2u5CpVPqOx+cVQqsi9nq/TO135D8x
- /sxixUF5lWd5wH9th4ALtutGskjStTB/r1sQvsnG9VXllw/b5QzFjCbsr09QfBNZgo+b
- cSlw==
-X-Gm-Message-State: AOAM533ZIAbPDv3o4YjSyQebPIZhgUllNNezYZGhMGsVZsiNdX9MO1Bo
- c6q1ruuo97SQ++iALfmX924=
-X-Google-Smtp-Source: ABdhPJxvkeDKgStqfGw18+d7w57tBjQmKyn2wrOi7vyyg6iYmYfDHwFtAY7vradA/RZ3ObsFOk8S1Q==
-X-Received: by 2002:a1c:3907:: with SMTP id g7mr4962791wma.176.1605112216468; 
- Wed, 11 Nov 2020 08:30:16 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=B4Z4TGbujRr8lzA8mvSLe6pQfLuePfjA32xx1R5acwU=;
+ b=tzXXvCmOXIqM2tAFfaZgeDvJjKPj/QWIn4hPU/Nycmx/dENqid5IubXdsmu5PhhalG
+ JPNB++DlWAdQ2EZL0UHjgyH6FALKgpK2zvc9vLkjkilP2+XJGMzoWqXJI7hzH4DbTdbO
+ E9uNzYBORiVBYV/jo1MtRDmLsXOiwPFnTGqFdCL0Dod81uVEx8VY++Zr/fYs5iWluh3l
+ /oVhwPd0DEjOXAUkhCvgKkN3/YPvmiMgh2w4ilEqJD3DV8sUXUB3AgR6nka+z4dZ9uEy
+ UgpMZwSZzkEb8L7P6DalRO6UdfyfWcaxlFXPbljoBnuU1j+PTOAWT1l8023ME1V0Prby
+ cBxQ==
+X-Gm-Message-State: AOAM531KHLaSYNyaoRdnaPFKL+iPdfgI0hQ0ripn8HLRQFJHA0Q/I5IX
+ 9VRbbVDjZdqWmSbKBcyWXbw=
+X-Google-Smtp-Source: ABdhPJxYUhF2Px9RpGRLF5QdVMttBLrphbFvtCG8DbH3ut8bbRrCWzIayYGZZ9Qpq35eFuVtX2Vn4w==
+X-Received: by 2002:a1c:9a12:: with SMTP id c18mr4962941wme.22.1605112217753; 
+ Wed, 11 Nov 2020 08:30:17 -0800 (PST)
 Received: from localhost.localdomain
  (245.red-79-158-78.dynamicip.rima-tde.net. [79.158.78.245])
- by smtp.gmail.com with ESMTPSA id w186sm3196753wmb.26.2020.11.11.08.30.14
+ by smtp.gmail.com with ESMTPSA id w186sm3196753wmb.26.2020.11.11.08.30.16
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 11 Nov 2020 08:30:15 -0800 (PST)
+ Wed, 11 Nov 2020 08:30:17 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: mturquette@baylibre.com
-Subject: [PATCH 0/7] MIPS: ralink: add CPU clock detection and clock gate
- driver for MT7621
-Date: Wed, 11 Nov 2020 17:30:06 +0100
-Message-Id: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
+Subject: [PATCH 1/7] dt-bindings: clock: add dt binding header for mt7621
+ clocks
+Date: Wed, 11 Nov 2020 17:30:07 +0100
+Message-Id: <20201111163013.29412-2-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
+References: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,101 +97,60 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patchset ports CPU clock detection for MT7621 from OpenWrt
-and adds a complete clock plan for the mt7621 SOC.
+Adds dt binding header for 'mediatek,mt7621-pll' PLL controller
+and for 'mediatek,mt7621-clk' clock gates.
 
-The documentation for this SOC only talks about two registers
-regarding to the clocks:
-* SYSC_REG_CPLL_CLKCFG0 - provides some information about boostrapped
-refclock. PLL and dividers used for CPU and some sort of BUS (AHB?).
-* SYSC_REG_CPLL_CLKCFG1 - a banch of gates to enable/disable clocks for
-all or some ip cores. 
-
-No documentation about a probably existant set of dividers for each ip
-core is included in the datasheets. So we cannot make anything better,
-AFAICT.
-
-Looking into driver code, there is another frequency which is used in
-some drivers (uart, sd...) which for any reason is always hardcoded to
-50 MHz. Taking this into account this patchset provides three main fixed
-clocks to the SOC in 'mt7621-pll' which are:
-  - "cpu": with detected frequency (900 MHz in my board).
-  - "ahb": cpu / 4 = 225 Mhz.
-  - "apb": 50 Mhz.
-
-PLL controller cannot be manipulatedbecause there is no info about
-how to do it. Because of this, there is nothing related with registers
-in the included binding.
-
-It also provides a clock gate driver 'mt7621-clk' as a platform driver
-to allow to enable and disable some clocks in the different ip cores.
-The parent clocks for this clock gates have also set taking into account
-existant device tree and driver code resulting in the followings:
-  - "hsdma": "ahb"
-  - "fe": "ahb"
-  - "sp_divtx": "ahb"
-  - "timer": "cpu"
-  - "int": "cpu"
-  - "mc": "ahb"
-  - "pcm": "ahb"
-  - "pio": "ahb"
-  - "gdma": "ahb"
-  - "nand": "ahb"
-  - "i2c": "ahb"
-  - "i2s": "ahb"
-  - "spi": "ahb"
-  - "uart1": "apb"
-  - "uart2": "apb"
-  - "uart3": "apb"
-  - "eth": "ahb"
-  - "pcie0": "ahb"
-  - "pcie1": "ahb"
-  - "pcie2": "ahb"
-  - "crypto": "ahb"
-  - "shxc": "ahb"
-
-There was a previous attempt of doing this here[0] but the author
-did not wanted to make assumptions of a clock plan for the platform.
-
-I do really want this to be upstreamed so according to the comments
-in previous attempt[0] from Oleksij Rempel I have tried to do this
-by myself.
-
-All of this patches have been tested in a GNUBee PC1 resulting in a
-working platform.
-
-[0]: https://www.lkml.org/lkml/2019/7/23/1044
-
-Sergio Paracuellos (7):
-  dt-bindings: clock: add dt binding header for mt7621 clocks
-  dt: bindings: add mt7621-pll device tree binding documentation
-  dt: bindings: add mt7621-clk device tree binding documentation
-  MIPS: ralink: add clock device providing cpu/ahb/apb clock for mt7621
-  clk: ralink: add clock gate driver for mt7621 SoC
-  staging: mt7621-dts: make use of new 'mt7621-pll' and 'mt7621-clk'
-  MAINTAINERS: add MT7621 CLOCK maintainer
-
- .../bindings/clock/mediatek,mt7621-clk.yaml   |  52 ++++
- .../bindings/clock/mediatek,mt7621-pll.yaml   |  51 ++++
- MAINTAINERS                                   |   8 +
- arch/mips/include/asm/mach-ralink/mt7621.h    |  20 ++
- arch/mips/ralink/mt7621.c                     |  87 ++++++
- drivers/clk/Kconfig                           |   1 +
- drivers/clk/Makefile                          |   1 +
- drivers/clk/ralink/Kconfig                    |  14 +
- drivers/clk/ralink/Makefile                   |   2 +
- drivers/clk/ralink/clk-mt7621.c               | 258 ++++++++++++++++++
- drivers/staging/mt7621-dts/gbpc1.dts          |  11 -
- drivers/staging/mt7621-dts/mt7621.dtsi        |  71 +++--
- include/dt-bindings/clock/mt7621-clk.h        |  39 +++
- 13 files changed, 567 insertions(+), 48 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.yaml
- create mode 100644 drivers/clk/ralink/Kconfig
- create mode 100644 drivers/clk/ralink/Makefile
- create mode 100644 drivers/clk/ralink/clk-mt7621.c
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ include/dt-bindings/clock/mt7621-clk.h | 39 ++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
  create mode 100644 include/dt-bindings/clock/mt7621-clk.h
 
+diff --git a/include/dt-bindings/clock/mt7621-clk.h b/include/dt-bindings/clock/mt7621-clk.h
+new file mode 100644
+index 000000000000..8fccfa514185
+--- /dev/null
++++ b/include/dt-bindings/clock/mt7621-clk.h
+@@ -0,0 +1,39 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
++ */
++
++#ifndef _DT_BINDINGS_CLK_MT7621_H
++#define _DT_BINDINGS_CLK_MT7621_H
++
++/* SYS CLOCKS */
++#define MT7621_CLK_CPU		0
++#define MT7621_CLK_AHB		1
++#define MT7621_CLK_APB		2
++#define MT7621_CLK_MAX		3
++
++/* CLOCK GATES */
++#define MT7621_CLK_HSDMA	0
++#define MT7621_CLK_FE		1
++#define MT7621_CLK_SP_DIVTX	2
++#define MT7621_CLK_TIMER	3
++#define MT7621_CLK_INT		4
++#define MT7621_CLK_MC		5
++#define MT7621_CLK_PCM		6
++#define MT7621_CLK_PIO		7
++#define MT7621_CLK_GDMA		8
++#define MT7621_CLK_NAND		9
++#define MT7621_CLK_I2C		10
++#define MT7621_CLK_I2S		11
++#define MT7621_CLK_SPI		12
++#define MT7621_CLK_UART1	13
++#define MT7621_CLK_UART2	14
++#define MT7621_CLK_UART3	15
++#define MT7621_CLK_ETH		16
++#define MT7621_CLK_PCIE0	17
++#define MT7621_CLK_PCIE1	18
++#define MT7621_CLK_PCIE2	19
++#define MT7621_CLK_CRYPTO	20
++#define MT7621_CLK_SHXC		21
++
++#endif /* _DT_BINDINGS_CLK_MT7621_H */
 -- 
 2.25.1
 
