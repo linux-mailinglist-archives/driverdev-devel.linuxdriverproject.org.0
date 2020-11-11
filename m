@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AB6F2AF666
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 17:30:27 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69B6A2AF669
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 17:30:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E334F868DC;
-	Wed, 11 Nov 2020 16:30:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0E9088678A;
+	Wed, 11 Nov 2020 16:30:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A_2_cwnjvDlu; Wed, 11 Nov 2020 16:30:24 +0000 (UTC)
+	with ESMTP id rYhXrFtogcWw; Wed, 11 Nov 2020 16:30:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A60678638E;
-	Wed, 11 Nov 2020 16:30:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 664FB86722;
+	Wed, 11 Nov 2020 16:30:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 648D11BF29D
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6447A1BF29D
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5D79E20525
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5F8A58643F
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 16:30:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9GlP4zTHfRQk for <devel@linuxdriverproject.org>;
- Wed, 11 Nov 2020 16:30:19 +0000 (UTC)
+ with ESMTP id SSV4fPcjAE75 for <devel@linuxdriverproject.org>;
+ Wed, 11 Nov 2020 16:30:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
- [209.85.128.51])
- by silver.osuosl.org (Postfix) with ESMTPS id 70AA920483
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 16:30:19 +0000 (UTC)
-Received: by mail-wm1-f51.google.com with SMTP id c9so2786436wml.5
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 08:30:19 -0800 (PST)
+Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com
+ [209.85.221.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8F776866AB
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 16:30:20 +0000 (UTC)
+Received: by mail-wr1-f43.google.com with SMTP id b8so3140095wrn.0
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 08:30:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B4Z4TGbujRr8lzA8mvSLe6pQfLuePfjA32xx1R5acwU=;
- b=TcGg7wZoHU3Mz7quoPpRmbrozU3kYjLYJ9tPVBCl/RJUKI9kZhR9/kL7Xau+5B1y6b
- FVEpa5PoQDOh55hABpqUCE0WVEcSCv1+dZzvYoRkYb5CcndMpJPrC4m2xzkwvOwsKPUV
- mhROj2Hwe3soJU5/lTiaqisvqXuH8zFaWZa+Ni17Ag80cg3iV9+fG0ZbFgYTcQvNC3DF
- TFJILtlF/AsyBSNeQQsAt7OWYsYWGXHUUEOwEG/TkvBrynPMq04C80f+D2Iwui/BhlTN
- 2Bjq/xk91LCSHEcrA+JY2v9kfVD1sdpOSGAKvACFdRJuRz6MyPK3hhNrrT4LExn9aK3W
- BO3Q==
+ bh=s54TsY1LaGkKl+iAkFm8rVjUJWbXIQClRD94uBdawis=;
+ b=HrfamzINIDhydwxTILAVucMQTnrMpO95GK+SRfXRXl7RxY4tblv7s0KdRJ5f09CBZf
+ vROi1bBPnGzDU8K95jh5ZwsHI0WtFw9S1RyWhe6z+bGeFe/w0TL29JtMu4eBb3c8vkZn
+ YwVBVBbpcmeRgfPra0BM+uwuGFMGgrRdkwfiOdsCa6ZlQ+E4LQ32Kw/3yjbAkmS1b7N6
+ 3EhvJlbL2jlg4SkyeY0LRBHD1vKoP9K6DBSlulOSqaZ4HfNJ2FihwLLtHMzposNebmCk
+ v5yP2/YDUNBG8Nn+kPiKFydTPLsZ6ncdPq+NeC6dQQ5WWeGDR/s7JLXtCf8+9LpsOGCY
+ 6QVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B4Z4TGbujRr8lzA8mvSLe6pQfLuePfjA32xx1R5acwU=;
- b=tzXXvCmOXIqM2tAFfaZgeDvJjKPj/QWIn4hPU/Nycmx/dENqid5IubXdsmu5PhhalG
- JPNB++DlWAdQ2EZL0UHjgyH6FALKgpK2zvc9vLkjkilP2+XJGMzoWqXJI7hzH4DbTdbO
- E9uNzYBORiVBYV/jo1MtRDmLsXOiwPFnTGqFdCL0Dod81uVEx8VY++Zr/fYs5iWluh3l
- /oVhwPd0DEjOXAUkhCvgKkN3/YPvmiMgh2w4ilEqJD3DV8sUXUB3AgR6nka+z4dZ9uEy
- UgpMZwSZzkEb8L7P6DalRO6UdfyfWcaxlFXPbljoBnuU1j+PTOAWT1l8023ME1V0Prby
- cBxQ==
-X-Gm-Message-State: AOAM531KHLaSYNyaoRdnaPFKL+iPdfgI0hQ0ripn8HLRQFJHA0Q/I5IX
- 9VRbbVDjZdqWmSbKBcyWXbw=
-X-Google-Smtp-Source: ABdhPJxYUhF2Px9RpGRLF5QdVMttBLrphbFvtCG8DbH3ut8bbRrCWzIayYGZZ9Qpq35eFuVtX2Vn4w==
-X-Received: by 2002:a1c:9a12:: with SMTP id c18mr4962941wme.22.1605112217753; 
- Wed, 11 Nov 2020 08:30:17 -0800 (PST)
+ bh=s54TsY1LaGkKl+iAkFm8rVjUJWbXIQClRD94uBdawis=;
+ b=obOxyxuFuPHFan/xO3WLtWMp2mpKRCjvRN+YSXU82EPADY6U60RUg4F3UEAyfzlNh3
+ 4NHdioOx71vYiR/iz+YYVNasSYYhXGHljBfFMvkGxlRwPnQ8Hfj6WvE06hNYt4hy1nWN
+ i4c0CecYn8hBllZhRN8kC7VXzSWIf7mXpLkWKe1ryGhPvT+9p5VG8ZEYWj8Qz2w9H9kV
+ DzwvkDPKuOko+RGlKo6CXJFZ9OyvuNsT6f/KEu+2RD/3RmJlkYbn6p+vU0gka/IH6yzS
+ vpoVqZo3NW5awvESHKGdBnq4VZOBDB3Dfu3fxVj96hrf7Zy9ilHfFzWY5+ZaMH2w7Lab
+ y/YQ==
+X-Gm-Message-State: AOAM532KH0sVBWYzCYeQN9Ua9PZgay53okLcjkQXHOwWV5CU5lBHxgk+
+ XoXhWLlw4pIYb04PAKK7ZRs=
+X-Google-Smtp-Source: ABdhPJxEcRMWJCADMRQEBlXjs4QVD7mwmyZ3wUn94hAGyBlW/rEl7Ua/wu3z47I2GwcvL0pBVUkmDA==
+X-Received: by 2002:adf:cd8d:: with SMTP id q13mr18630041wrj.61.1605112219106; 
+ Wed, 11 Nov 2020 08:30:19 -0800 (PST)
 Received: from localhost.localdomain
  (245.red-79-158-78.dynamicip.rima-tde.net. [79.158.78.245])
- by smtp.gmail.com with ESMTPSA id w186sm3196753wmb.26.2020.11.11.08.30.16
+ by smtp.gmail.com with ESMTPSA id w186sm3196753wmb.26.2020.11.11.08.30.17
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 11 Nov 2020 08:30:17 -0800 (PST)
+ Wed, 11 Nov 2020 08:30:18 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: mturquette@baylibre.com
-Subject: [PATCH 1/7] dt-bindings: clock: add dt binding header for mt7621
- clocks
-Date: Wed, 11 Nov 2020 17:30:07 +0100
-Message-Id: <20201111163013.29412-2-sergio.paracuellos@gmail.com>
+Subject: [PATCH 2/7] dt: bindings: add mt7621-pll device tree binding
+ documentation
+Date: Wed, 11 Nov 2020 17:30:08 +0100
+Message-Id: <20201111163013.29412-3-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
 References: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
@@ -97,60 +97,72 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Adds dt binding header for 'mediatek,mt7621-pll' PLL controller
-and for 'mediatek,mt7621-clk' clock gates.
+Adds device tree binding documentation for PLL controller in
+the MT7621 SOC.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- include/dt-bindings/clock/mt7621-clk.h | 39 ++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
- create mode 100644 include/dt-bindings/clock/mt7621-clk.h
+ .../bindings/clock/mediatek,mt7621-pll.yaml   | 51 +++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.yaml
 
-diff --git a/include/dt-bindings/clock/mt7621-clk.h b/include/dt-bindings/clock/mt7621-clk.h
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.yaml
 new file mode 100644
-index 000000000000..8fccfa514185
+index 000000000000..ef58411065e4
 --- /dev/null
-+++ b/include/dt-bindings/clock/mt7621-clk.h
-@@ -0,0 +1,39 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-+ */
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt7621-pll.yaml
+@@ -0,0 +1,51 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/mediatek,mt7621-pll.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#ifndef _DT_BINDINGS_CLK_MT7621_H
-+#define _DT_BINDINGS_CLK_MT7621_H
++title: MT7621 PLL Controller Device Tree Bindings
 +
-+/* SYS CLOCKS */
-+#define MT7621_CLK_CPU		0
-+#define MT7621_CLK_AHB		1
-+#define MT7621_CLK_APB		2
-+#define MT7621_CLK_MAX		3
++maintainers:
++  - Sergio Paracuellos <sergio.paracuellos@gmail.com>
 +
-+/* CLOCK GATES */
-+#define MT7621_CLK_HSDMA	0
-+#define MT7621_CLK_FE		1
-+#define MT7621_CLK_SP_DIVTX	2
-+#define MT7621_CLK_TIMER	3
-+#define MT7621_CLK_INT		4
-+#define MT7621_CLK_MC		5
-+#define MT7621_CLK_PCM		6
-+#define MT7621_CLK_PIO		7
-+#define MT7621_CLK_GDMA		8
-+#define MT7621_CLK_NAND		9
-+#define MT7621_CLK_I2C		10
-+#define MT7621_CLK_I2S		11
-+#define MT7621_CLK_SPI		12
-+#define MT7621_CLK_UART1	13
-+#define MT7621_CLK_UART2	14
-+#define MT7621_CLK_UART3	15
-+#define MT7621_CLK_ETH		16
-+#define MT7621_CLK_PCIE0	17
-+#define MT7621_CLK_PCIE1	18
-+#define MT7621_CLK_PCIE2	19
-+#define MT7621_CLK_CRYPTO	20
-+#define MT7621_CLK_SHXC		21
 +
-+#endif /* _DT_BINDINGS_CLK_MT7621_H */
++description: |
++  The PLL Controller provides the cpu clock as well as derived
++  clock for the bus and the peripherals.
++
++  Each clock is assigned an identifier and client nodes use this identifier
++  to specify the clock which they consume.
++
++  All these identifiers could be found in:
++  [1]: <include/dt-bindings/clock/mt7621-clk.h>.
++
++properties:
++  compatible:
++    const: mediatek,mt7621-pll
++
++  "#clock-cells":
++    description:
++      The first cell indicates the clock number, see [1] for available
++      clocks.
++    const: 1
++
++  clock-output-names:
++    maxItems: 3
++
++required:
++  - compatible
++  - '#clock-cells'
++  - clock-output-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt7621-clk.h>
++
++    pll {
++      compatible = "mediatek,mt7621-pll";
++      #clock-cells = <1>;
++      clock-output-names = "cpu", "ahb", "apb";
++    };
 -- 
 2.25.1
 
