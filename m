@@ -1,76 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7079D2AE5EE
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 02:38:35 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90FDE2AEDB4
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Nov 2020 10:29:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A30E42E148;
-	Wed, 11 Nov 2020 01:38:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 885A284626;
+	Wed, 11 Nov 2020 09:29:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JKCILeDNIyJx; Wed, 11 Nov 2020 01:38:32 +0000 (UTC)
+	with ESMTP id FQAasbJDw3+N; Wed, 11 Nov 2020 09:29:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C4865204AF;
-	Wed, 11 Nov 2020 01:38:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 96B93867D3;
+	Wed, 11 Nov 2020 09:29:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EEC751BF369
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 01:38:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F4E61BF409
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 09:28:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E7EAE204AF
- for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 01:38:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7B20587381
+ for <devel@linuxdriverproject.org>; Wed, 11 Nov 2020 09:28:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VFUxdyvyz9F1 for <devel@linuxdriverproject.org>;
- Wed, 11 Nov 2020 01:38:26 +0000 (UTC)
-X-Greylist: delayed 00:29:51 by SQLgrey-1.7.6
-Received: from mail-ej1-f66.google.com (mail-ej1-f66.google.com
- [209.85.218.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 0C51520480
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 01:38:25 +0000 (UTC)
-Received: by mail-ej1-f66.google.com with SMTP id me8so502211ejb.10
- for <devel@driverdev.osuosl.org>; Tue, 10 Nov 2020 17:38:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hHQDiEVFp1foYy6daRs4fHFD9ayYaszDLVuF2Z51ya8=;
- b=Lovjln1fIbkD2LOWfwf5p5B1YNXCK0mWG+9fGH4sigwtycevhDKQ0AeODjSfHWpjwF
- iNdy65rI1Wq5x2Grg8/Relh95qlXkU51w/ZD0lb9LhW7+fZEozkHk34DrT0UMCUN6cZK
- iPllHOzKkEliSAK+mJhJhzW+6hAXS8kRfEc/mBC9gPXCg/l/b8iy2GV7cFhZDAUD+UIi
- j4prnHj/aTGgJC/9VBDvxk8HE9lsb0hdMkmXEc2OhmWjr10S6kulM4D/D/k2NonVfPgX
- 1Uj1X6kTPhq9mHhJF+/r4mwzp3aPzJFUKDSUdlBWYLIeWryBNUUdb8Mdv+M7VDq8KMqv
- Mbvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hHQDiEVFp1foYy6daRs4fHFD9ayYaszDLVuF2Z51ya8=;
- b=KE2Q2aStFurv2/njqtpjusL5s3g30q7f1y+Ba2UHtsYmEvhmYujXx4o2jAuV2GbiK1
- PIeSX+WtZv8u4qWqxVjwESB1jw2Oqh94fnABPdGMl9MH/FOrumH449TRgYfnWUxZnmNu
- 6MENmx0ux/kOcAJ8Lq+4qU2QPn8HjR0JDegH4zl948+3wZsl++8qChDrcatAF6VEeTxC
- H39hawUSZWghYCnllDIYfsGPVpM7DAcCZsismKrphhk4u0A3GlPRhlDIm2xJc5/rBh3O
- bdEvMIJ01cOatqo6Nyn40fTvTxTXZbdv2lDoY73KsRmQxauIbGtPnlYGCZ4C7JTQRLfN
- 3Fdw==
-X-Gm-Message-State: AOAM531duw5BqauebukZNPupI7hMiMAOWdz1t1P9HALLX3DZdSMmc/4m
- OYOlKPKN+67rYNrRtL5FVVnxAPscEcQK3XaMbsN2jgEOx1Hcy2Gl
-X-Google-Smtp-Source: ABdhPJxTkNCrHxkNrKMGfx/redHh8XOwE0W/+nPr1awBqj+Z+Er5yh4soUAWZNDAv2tGIUavyTgUj5FavxbQfUNMpTU=
-X-Received: by 2002:a17:906:3541:: with SMTP id
- s1mr23454310eja.413.1605056913762; 
- Tue, 10 Nov 2020 17:08:33 -0800 (PST)
+ with ESMTP id nykK62JXxwlJ for <devel@linuxdriverproject.org>;
+ Wed, 11 Nov 2020 09:28:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 46C9D87380
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 09:28:57 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AB99meS132651;
+ Wed, 11 Nov 2020 09:28:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=5jkDrh9VUno5wDztTu7VDqalYM6QsS2FNOf4jWeicfM=;
+ b=KF1FscfSPqR/jGnEnLVwcEnqGoTHFz4Z2rOgEGN8IMIFxCLnarNmEf6yLZt+ubgc38ju
+ FF6+4F5J68sfFBDifPqGnH5V3uPfk4w6FD5FUr0QS2M/Zdgwq3QISc6uHMw4K+crIWBZ
+ ONnZvtCoT0yED3aryMEFwF8QMGQ8kCWuXGE+ZzejvBwaV98VPCaKj4q8/Jm2eCyVb7sS
+ 0immoY8DntMHZsgAYS5RiANXtfW+vb+GUtthRzQTWbtXxy8A/ct0GwGlCNpnAmiN35xV
+ +MFF8KI2mIgs2JJHTTFMaUrCEPh7GBQi8YyI0SPwXnsO/TJHMLq8dD9Hgr9flHokCiDv Zg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 34p72ep4py-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 11 Nov 2020 09:28:56 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AB9BEYR035947;
+ Wed, 11 Nov 2020 09:28:55 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 34p55pqrs2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 11 Nov 2020 09:28:55 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AB9Sllj029705;
+ Wed, 11 Nov 2020 09:28:47 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 11 Nov 2020 01:28:47 -0800
+Date: Wed, 11 Nov 2020 12:28:32 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v1 11/30] drm/tegra: dc: Support OPP and SoC core voltage
+ scaling
+Message-ID: <20201111092832.GI29398@kadam>
+References: <20201104234427.26477-1-digetx@gmail.com>
+ <20201104234427.26477-12-digetx@gmail.com>
+ <20201110202945.GF2375022@ulmo>
 MIME-Version: 1.0
-References: <20201109162244.16531-1-linkmauve@linkmauve.fr>
-In-Reply-To: <20201109162244.16531-1-linkmauve@linkmauve.fr>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Tue, 10 Nov 2020 22:08:21 -0300
-Message-ID: <CAAEAJfDhQpZYRMQoQRy=2AUSQFpmy2cQ4y=2sczWgkDp03dYEw@mail.gmail.com>
-Subject: Re: [RESEND PATCH 0/2] media: uapi: Expose VP8 probability lengths as
- defines
-To: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+Content-Disposition: inline
+In-Reply-To: <20201110202945.GF2375022@ulmo>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9801
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ spamscore=0 phishscore=0
+ mlxlogscore=999 mlxscore=0 malwarescore=0 bulkscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2011110051
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9801
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=999 mlxscore=0
+ malwarescore=0 suspectscore=0 lowpriorityscore=0 adultscore=0 phishscore=0
+ priorityscore=1501 spamscore=0 impostorscore=0 clxscore=1011
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2011110051
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,45 +100,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
+Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ linux-pwm@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ devel@driverdev.osuosl.org, linux-samsung-soc@vger.kernel.org,
+ Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- linux-media <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
+ linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ Peter Geis <pgwipeout@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgRW1tYW51ZWwsCgpUaGFua3MgZm9yIHRoZSBwYXRjaC4KCk9uIE1vbiwgOSBOb3YgMjAyMCBh
-dCAxNTozNywgRW1tYW51ZWwgR2lsIFBleXJvdCA8bGlua21hdXZlQGxpbmttYXV2ZS5mcj4gd3Jv
-dGU6Cj4KPiBUaGVzZSB2YWx1ZXMgd2lsbCBiZSB1c2VkIGJ5IHZhcmlvdXMgZHJpdmVycyBpbXBs
-ZW1lbnRpbmcgdGhlIFZQOAo+IHN0YXRlbGVzcyBBUEkuCj4KPiBUaGlzIGhhZCBiZWVuIHN1Z2dl
-c3RlZCBieSBFemVxdWllbCBHYXJjaWEgZm9yIHRoZSBDZWRydXMgVlA4IGRyaXZlci4KPgo+IFRo
-ZSBvbmx5IGRyaXZlciB1c2luZyB0aGlzIEFQSSAodW50aWwgbm93KSBoYXMgYWxzbyBiZWVuIHVw
-ZGF0ZWQgdG8gdXNlCj4gdGhlc2UgbmV3IGRlZmluZXMuCj4KPiBUaGlzIGlzIGEgcmVzZW5kIGJl
-Y2F1c2UgSSBmb3Jnb3QgdG8gaW5jbHVkZSBtb3N0IG1haW50YWluZXJzLCBzb3JyeSBmb3IKPiB0
-aGF0LiAgSXTigJlzIG15IHZlcnkgZmlyc3QgcGF0Y2ggdG8gdGhlIGtlcm5lbCwgSSBkaWRu4oCZ
-dCBrbm93IGFib3V0Cj4gc2NyaXB0cy9nZXRfbWFpbnRhaW5lcnMucGwKPgoKSSBoYXZlbid0IHZh
-bGlkYXRlZCB0aGVzZSB0d28gcGF0Y2hlcywgYnV0IG9uIGEgZmlyc3QgbG9vaywKaXQgc2VlbXMg
-aXQncyBhIGxvdy1oYW5naW5nIGZydWl0IG5pY2UgY2xlYW51cC4gVGhhbmtzIGZvciB0aGF0IQoK
-U2luY2UgaXQgc2VlbXMgeW91IGFyZSBsb29raW5nIGZvciBpbnRlcmVzdGluZyB0aGluZ3MgdG8g
-Y29udHJpYnV0ZSwKbm90ZSB0aGF0IHRoZSB2cDgtY3RybHMuaCBoZWFkZXIgaXMgbGFja2luZyBz
-b21lIG5pY2UgZG9jdW1lbnRhdGlvbgpvbiBlYWNoIHN0cnVjdHVyZS4KClRoaXMgc2hvdWxkIGJl
-IGRvbmUgYnkgbG9va2luZyBhdCB0aGUgVlA4IHN5bnRheCBzcGVjIGFuZCBkb2N1bWVudGluZwp0
-aGluZ3MgYXBwcm9wcmlhdGVseS4gU2VlIGhvdyBpdCdzIGRvbmUgZm9yIEguMjY0IGFuZCBWUDk6
-CgpodHRwczovL3BhdGNod29yay5saW51eHR2Lm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhL3BhdGNo
-LzIwMjAwOTI4MjAxNDMzLjMyNzA2OC0xLWV6ZXF1aWVsQGNvbGxhYm9yYS5jb20vCmh0dHBzOi8v
-cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9wYXRjaC8yMDIwMTEw
-MjE5MDU1MS4xMjIzMzg5LTMtYWRyaWFuLnJhdGl1QGNvbGxhYm9yYS5jb20vCgpUaGFua3MsCkV6
-ZXF1aWVsCgo+IEVtbWFudWVsIEdpbCBQZXlyb3QgKDIpOgo+ICAgbWVkaWE6IHVhcGk6IEV4cG9z
-ZSBwcm9iYWJpbGl0eSBsZW5ndGhzIGFzIGRlZmluZXMKPiAgIG1lZGlhOiBoYW50cm86IFVzZSBW
-UDggbGVuZ3RocyBkZWZpbmVkIGluIHVhcGkKPgo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL2hhbnRyb192cDguYyB8IDQgKystLQo+ICBpbmNsdWRlL21lZGlhL3ZwOC1jdHJscy5oICAg
-ICAgICAgICAgICAgICB8IDYgKysrKy0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgNiBpbnNlcnRpb25z
-KCspLCA0IGRlbGV0aW9ucygtKQo+Cj4gLS0KPiAyLjI5LjIKPgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
-dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On Tue, Nov 10, 2020 at 09:29:45PM +0100, Thierry Reding wrote:
+> > +	err = dev_pm_opp_of_add_table(dc->dev);
+> > +	if (err) {
+> > +		dev_err(dc->dev, "failed to add OPP table: %d\n", err);
+> > +		goto put_hw;
+> > +	}
+> > +
+> > +	err = devm_add_action(dc->dev, tegra_dc_deinit_opp_table, dc);
+> > +	if (err)
+> > +		goto remove_table;
+> 
+> Do these functions return positive values? If not, I'd prefer if this
+> check was more explicit (i.e. err < 0) for consistency with the rest of
+> this code.
+> 
+
+Isn't it the other way around?  It's only when the check is explicitly
+for "if (ret < 0)" that we have to wonder about positives. If the codes
+says "if (ret)" then we know that it doesn't return positive values and
+every non-zero is an error.
+
+In the kernel "if (ret)" is way more popular than "if (ret < 0)":
+
+    $ git grep 'if (\(ret\|rc\|err\))' | wc -l
+    92927
+    $ git grep 'if (\(ret\|rc\|err\) < 0)' | wc -l
+    36577
+
+And some of those are places where "ret" can be positive so we are
+forced to use the "if (ret < 0)" format.
+
+Checking for "if (ret)" is easier from a static analysis perspective.
+If it's one style is used consistently then they're the same but when
+there is a mismatch the "if (ret < 0) " will trigger a false positive
+and the "if (ret) " will not.
+
+	int var;
+
+	ret = frob(&var);
+	if (ret < 0)
+		return ret;
+
+Smatch thinks positive returns are not handled so it complains that
+"var can be uninitialized".
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
