@@ -1,51 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C7BC2B018B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 10:06:31 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9D262B062B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 14:20:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 65B5986E19;
-	Thu, 12 Nov 2020 09:06:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA31D2E1EA;
+	Thu, 12 Nov 2020 13:20:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cEOsf3bWqRc5; Thu, 12 Nov 2020 09:06:28 +0000 (UTC)
+	with ESMTP id 577XTOh4U1x3; Thu, 12 Nov 2020 13:20:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 63DE786DF4;
-	Thu, 12 Nov 2020 09:06:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F398F2E1B2;
+	Thu, 12 Nov 2020 13:20:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 62BBD1BF329
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 09:06:26 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 376351BF3ED
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 13:20:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E838872A5
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 09:06:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2B1712E1DC
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 13:20:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bee-tZn0TIUL for <devel@linuxdriverproject.org>;
- Thu, 12 Nov 2020 09:06:25 +0000 (UTC)
+ with ESMTP id i2P8vKZyOziV for <devel@linuxdriverproject.org>;
+ Thu, 12 Nov 2020 13:20:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A443E87290
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 09:06:25 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay1.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 96635AE78;
- Thu, 12 Nov 2020 09:06:23 +0000 (UTC)
-Message-ID: <9e3a04f0ae76675f610bf25e6b53b4aff26afae4.camel@suse.de>
-Subject: Re: [PATCH v3 07/11] input: raspberrypi-ts: Release firmware handle
- when not needed
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Date: Thu, 12 Nov 2020 10:06:21 +0100
-In-Reply-To: <20201112014542.GA1003057@dtor-ws>
-References: <20201104103938.1286-1-nsaenzjulienne@suse.de>
- <20201104103938.1286-8-nsaenzjulienne@suse.de>
- <20201112014542.GA1003057@dtor-ws>
-User-Agent: Evolution 3.36.5 
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 949E72E1B2
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 13:20:04 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id 10so5252894wml.2
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 05:20:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eMLK5wFM3ylLU00PJbRy+Dts0K2HhGy+/Yk3kcCr//I=;
+ b=YGVtNKo+kKiaY6XJvBFtbaP8sFavkFFVBUBsegmYbjw8a+sYjC+4ONrRWozIwu8S1c
+ zGMPeTeod0GBn++IiBgp3GwY3MolP4bntUVy8sAKCVgIzEEHImGBR+Oi5fcxorwZ7qlb
+ iYDJ5V3MSDrK3zATgtfPQcDD6KBN6SutlkzmEsPJleMjm1hGdYuLQ1jTkUvqbNbM1l5G
+ Tk0IFKdcKZLSY32AAXOIhaZhbrRFdEe0tWS+XiZjPKCtC4h5/+5c0YXhbU4Jdwt8xS0F
+ lIvsl1rfWXBQYFsDWO26/0RFTEU3Cc5K/7ZiqhuGuIjRVL10I+a2TbO1+Y+W/I365Vf6
+ C0Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eMLK5wFM3ylLU00PJbRy+Dts0K2HhGy+/Yk3kcCr//I=;
+ b=Ta9O7hSKQeOjESWswOQ3FSpMz3n5tFYib+jdUCdSVkv9aDLrq/aBh1cmPsfS3eB4a9
+ ycK4+imtbOqOjORwZ1jrZp3r2+hU/IrFHHQbwp9uCwGzZDxp4nfmY3C52DP+LGmv/1TL
+ kLjJJLTVvkiNA7xDxxQEkle9nPrTt5/3UO3lqHpiuhqEyow6UdgwwC1tNtsW/292wjqK
+ 1VSSdkHSMGAj6V6jBM+V23YN1SzHnIgso+0X9VVEz7obXmVLcSYiQPTxxPCPr3AH6JG6
+ QhKIRzVQsiC/aT/CCxjXYfVgLSu94brAk10TQuko/kSRDMJnJWa4b7U1Jg/QfuPPkwGC
+ fnMw==
+X-Gm-Message-State: AOAM5307Z0CDmFczFG30DUpk35yQKOri3KOWMGiLpI8cyBM0Gz1uRouS
+ 2cHFNE8rCXHsjk9t5r+WIZljUw==
+X-Google-Smtp-Source: ABdhPJypUJzBSf/UrRpXCaxMahDxGMlGNloxollAPMhwxtws4wXdGnm+IatNgsfEO+UfZfcWDSDYPA==
+X-Received: by 2002:a7b:c05a:: with SMTP id u26mr10154380wmc.159.1605187202922; 
+ Thu, 12 Nov 2020 05:20:02 -0800 (PST)
+Received: from dell.default ([91.110.221.159])
+ by smtp.gmail.com with ESMTPSA id t136sm2806326wmt.18.2020.11.12.05.20.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Nov 2020 05:20:02 -0800 (PST)
+From: Lee Jones <lee.jones@linaro.org>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 0/6] Rid i2400m driver set of W=1 issues
+Date: Thu, 12 Nov 2020 13:19:53 +0000
+Message-Id: <20201112131959.2213841-1-lee.jones@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,76 +83,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
- wahrenst@gmx.net, p.zabel@pengutronix.de, u.kleine-koenig@pengutronix.de,
- bgolaszewski@baylibre.com, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============1134071698866371036=="
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>, linux-wimax@intel.com,
+ Yanir Lubetkin <yanirx.lubetkin@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Lee Jones <lee.jones@linaro.org>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+This set is part of a larger effort attempting to clean-up W=1
+kernel builds, which are currently overwhelmingly riddled with
+niggly little warnings.
 
---===============1134071698866371036==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-j2+UKM6wkcW3jVx2ysNJ"
+This is a rebased set that went to Net before the move to Staging.
 
+Lee Jones (6):
+  staging: net: wimax: i2400m: control: Fix some misspellings in
+    i2400m_set_init_config()'s docs
+  staging: net: wimax: i2400m: driver: Demote some non-conformant
+    kernel-docs, fix others
+  staging: net: wimax: i2400m: fw: Fix some function header
+    misdemeanours
+  staging: net: wimax: i2400m: netdev: Demote non-conformant function
+    header
+  staging: net: wimax: i2400m: tx: Fix a few kernel-doc misdemeanours
+  staging: net: wimax: i2400m: fw: Fix incorrectly spelt function
+    parameter in documentation
 
---=-j2+UKM6wkcW3jVx2ysNJ
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ drivers/staging/wimax/i2400m/control.c |  4 ++--
+ drivers/staging/wimax/i2400m/driver.c  |  9 +++++----
+ drivers/staging/wimax/i2400m/fw.c      | 14 +++++++++++---
+ drivers/staging/wimax/i2400m/netdev.c  |  2 +-
+ drivers/staging/wimax/i2400m/tx.c      |  6 +++++-
+ 5 files changed, 24 insertions(+), 11 deletions(-)
 
-On Wed, 2020-11-11 at 17:45 -0800, Dmitry Torokhov wrote:
-> Hi Nicolas,
->=20
-> On Wed, Nov 04, 2020 at 11:39:33AM +0100, Nicolas Saenz Julienne wrote:
-> > Use devm_rpi_firmware_get() so as to make sure we release RPi's firmwar=
-e
-> > interface when unbinding the device.
->=20
-> Unless I am mistaken this driver does not really need the firmware
-> structure past rpi_ts_probe(), and will be fine if it disappears earlier
-> than unbind time.
-
-Yes, I missed that. Will update it.
-
-Regards,
-Nicolas
-
-
---=-j2+UKM6wkcW3jVx2ysNJ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl+s+w0ACgkQlfZmHno8
-x/5iuQgApaPJZjl0NVPJ80THZ1yICuyOa9+6d8Bal28kwj6Ft8Xb+Z6ploXmWJ5T
-EPDFQF4pFMoSBGmgGSspJj4dl/KD3UaeJIRB3c3UNqIC7icH9TpBZY4Z41Mioqsv
-l4QH1DIWYVsRYi/9I1vhoijsquL5t5WK0c1N9GBs6GIQjVwEMN9tsDcQ3flTLKZs
-93saK4xtDp6UbqsYQYtwmupmREvAIxqnm0g3GB/Qk8Fkg9vpIK0H5cRBaJT9bfb8
-tQPpTY2LWTXQ53azvlBOcZC7yJQRBKitR2GkibS1ynNoNl43f5ZjyWXkzK2TEw1j
-HOKtCH+6NObb7Wm+xwL50tkanpTaGg==
-=eql2
------END PGP SIGNATURE-----
-
---=-j2+UKM6wkcW3jVx2ysNJ--
-
-
---===============1134071698866371036==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: linux-wimax@intel.com
+Cc: netdev@vger.kernel.org
+Cc: Yanir Lubetkin <yanirx.lubetkin@intel.com>
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1134071698866371036==--
-
