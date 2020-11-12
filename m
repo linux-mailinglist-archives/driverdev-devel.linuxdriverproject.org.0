@@ -1,74 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC3362AFC2C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 02:34:16 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46BED2AFCB4
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 02:45:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9F52620448;
-	Thu, 12 Nov 2020 01:34:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AF81786D1D;
+	Thu, 12 Nov 2020 01:45:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vv+zM0Ep2-6M; Thu, 12 Nov 2020 01:34:13 +0000 (UTC)
+	with ESMTP id KXqWagr-duml; Thu, 12 Nov 2020 01:45:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 66206203DE;
-	Thu, 12 Nov 2020 01:34:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1B8EE8693B;
+	Thu, 12 Nov 2020 01:45:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 75FB81BF377
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:34:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B227C1BF377
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:45:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6A6B02038F
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:34:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AE8CB86930
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:45:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F8rk4VIR3ZJo for <devel@linuxdriverproject.org>;
- Thu, 12 Nov 2020 01:34:08 +0000 (UTC)
+ with ESMTP id 2aA8c6LyBU-B for <devel@linuxdriverproject.org>;
+ Thu, 12 Nov 2020 01:45:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 5E22220012
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 01:34:08 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id s24so4303570ioj.13
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 17:34:08 -0800 (PST)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 021EF866B0
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 01:45:47 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id e7so2984966pfn.12
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 17:45:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rbpdEV5oJs5EmTQ4qqBH8SAi38sGGbLtW6CQKc149hs=;
- b=QJHjI8PK16X+WFhTxpfikEQQBKesGLQy41FaqcLf/NYWYbNYkYVVY4hbzUW3/zu83+
- 6LTXMHmPce3IvwNpRjh0UUYuL8X2qLjhdPiIxy706lUXRXEcc5pz3fkpGu81jquaTH+9
- sKFgqy3n4wBPlNcT5mJDERmYeN35oyrxsu0A2IODkzQbLooR+w4nqX9mslkCSt5ISpS2
- hAOgwGk6EzZkHldzpAi2aA1iEPC24vJwF3F0I3wnDGCMxZNCiJ+4sYLrw62wSb4ZpKWO
- KLFcdzbICoZltLeOVJSc2VZdHIqo2dbcpMPLoj+e9cmoqk0LKNPsI5f4H+WHK2mpZ1s/
- Z/pQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=nOQD+47l1Vj9tZi/oOhEDued5DuJRPNMgWRyqUdj0hA=;
+ b=RMJgpf9aRvHsm7kXTPn6A4QHZjITSTMgFpSPAsMIDsD9Vq2FGlymCQ2Uy9WLTcLgud
+ qcvZWqtPn4jtyWomXgZOZuaGMlO2WRVM66OJ58RyU+8tB4/Z6t+5kyb1la/bFNvIQPNy
+ +gfGfVHSsGC88lwyTHYBVOldd5dkmJ8zNnfGN4wdGKkvtA5U/ZgbYHYAtXazC6yUv6G6
+ 18AKV5PhQRuc9McMOPXFn4enN6RsZ6bzrUeznvRv50DulrL8Df1nad3nFKi4ygo6hi1F
+ vr6MAnGzpjH0q2duju6VUxCCWNB57QbzNbWKojxTfKCMb8p803FeYeAomZ9dfOGjw0HX
+ nzmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rbpdEV5oJs5EmTQ4qqBH8SAi38sGGbLtW6CQKc149hs=;
- b=PPofksn5HK8eoSkLUvEkZBJKOwj7ibLieRGjXpYzSC31s8cncO2gaHWIsjreWtfsfm
- /fpjhaPgHUjTgNcoPfg9TRw4CRO1+7LSpY13/dOJOgLyDYruCq0glmmXwANTZjoguxRR
- 2BDHbdvjMLTCKZQfzhU0/RsitdidLHA2ZD64GkCmRxj59nRnGyRABLrUh7uvLiZSFR+n
- 4dkhclVpcaxVz5EOoOOeHS21jIECOad0tEetVJ2r86+EaYURMFCDs+vOosVJZsoSr+K3
- oNq2xPoRebbjMFPZiTGvqsWY5RRCFSRlXBTfxg7b/MfO27U1ZWyhVaZ9MLdAQjDfTUAc
- lY0w==
-X-Gm-Message-State: AOAM530BUe1x7FcTw3+DQgKhx/eFXe9YwCAczUw+lNWQ+RIN+n2ptP9E
- EBVt70ubreZPNBhRzranGV5RTPFBeZqR51tva60=
-X-Google-Smtp-Source: ABdhPJx9s5i1TWJ7IiZOclN/QEVz3COO+bkdo4SQu9Uhi7hDY6mOuJ+30tEBzttD211kuDsTR9BIV8uhKO5AcbH9RrA=
-X-Received: by 2002:a02:a793:: with SMTP id e19mr21883768jaj.45.1605144847713; 
- Wed, 11 Nov 2020 17:34:07 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=nOQD+47l1Vj9tZi/oOhEDued5DuJRPNMgWRyqUdj0hA=;
+ b=j9JSAIgIAnW9w85ObP/+V+662RlI0E2iB1uhA50PWky4133ToXFDdw1fsBoNmAF5PX
+ t7TYMK7oQWXizsYuF6jorKxf1jphpRZl9Nw8nDNPFk1PVpU9TMlPTQsBVm0BPy0GKFkz
+ VViHJbOWGSgNwoLtQAffbZXXDgRmoLJuEFFZYK9bZOsyaxuTgcRKCnElqZhHmm0JDdA1
+ rvMVxReGAl/7scRwXniASmc3gbi9vkJvv8jYZfeMm1zs2+IMITKvRM68AH2pI4k4/WLj
+ W/HXEudkj5fpqR103PTzAIGJCkcO04LjVqUD0DD0dv7tf4y3CFojNP+Yd7/Yjc+Y8P70
+ IAuQ==
+X-Gm-Message-State: AOAM532VWf7L4zxr/OLUrHKp8rgDWKA4F3iT+V1sEg9WarLblFH/i4Kl
+ PcNou9Oq3Hj2iKfGrbpjl7M=
+X-Google-Smtp-Source: ABdhPJw49jebosLeBcZ1ZsqKR3LnVI8Mxnm8v5sWdo+ropNNGLFnXAlwpDz5nWxUdwGFQZE5kJbwXQ==
+X-Received: by 2002:a17:90a:fd0d:: with SMTP id
+ cv13mr4600504pjb.124.1605145546448; 
+ Wed, 11 Nov 2020 17:45:46 -0800 (PST)
+Received: from dtor-ws ([2620:15c:202:201:a6ae:11ff:fe11:fcc3])
+ by smtp.gmail.com with ESMTPSA id d11sm3944079pjm.18.2020.11.11.17.45.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Nov 2020 17:45:45 -0800 (PST)
+Date: Wed, 11 Nov 2020 17:45:42 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v3 07/11] input: raspberrypi-ts: Release firmware handle
+ when not needed
+Message-ID: <20201112014542.GA1003057@dtor-ws>
+References: <20201104103938.1286-1-nsaenzjulienne@suse.de>
+ <20201104103938.1286-8-nsaenzjulienne@suse.de>
 MIME-Version: 1.0
-References: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
- <CAJsYDVJtPqd-aPjJZFC76R2fbv1i=tVzRR7S1VFAMzp1QcPbiQ@mail.gmail.com>
-In-Reply-To: <CAJsYDVJtPqd-aPjJZFC76R2fbv1i=tVzRR7S1VFAMzp1QcPbiQ@mail.gmail.com>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Thu, 12 Nov 2020 09:33:56 +0800
-Message-ID: <CAJsYDVKWuygjbBErQt1B5XD8Bp06-TdrziBzDdYmMGhU_8X-aA@mail.gmail.com>
-Subject: Re: [PATCH 0/7] MIPS: ralink: add CPU clock detection and clock gate
- driver for MT7621
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20201104103938.1286-8-nsaenzjulienne@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,45 +88,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Weijie Gao <hackpascal@gmail.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Stephen Boyd <sboyd@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Turquette <mturquette@baylibre.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>, jiaxun.yang@flygoat.com,
- "open list:MIPS" <linux-mips@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, John Crispin <john@phrozen.org>,
- "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
+ devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ linus.walleij@linaro.org, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
+ wahrenst@gmx.net, p.zabel@pengutronix.de, u.kleine-koenig@pengutronix.de,
+ bgolaszewski@baylibre.com, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Nov 12, 2020 at 9:26 AM Chuanhong Guo <gch981213@gmail.com> wrote:
->
-> I've already said in previous threads that clock assignment in
-> current linux kernel is not trustworthy.
-> I've got the clock plan for mt7621 now. (Can't share it, sorry.)
-> Most of your clock assumptions above are incorrect.
-> I've made a clock driver with gate support a few months ago.[0]
-> but I don't have much time to really finish it.
-> Maybe you could rework your clock gate driver based on it.
->
-> [0] https://github.com/981213/linux/commit/2eca1f045e4c3db18c941135464c0d7422ad8133
+Hi Nicolas,
 
-hsdma/eth/pio clocks are still missing in mediatek doc and
-I just made them up in the driver. Correct clock frequency for
-them aren't really important for them to work though.
-And another part I didn't finish is checking clock support for
-every drivers mt7621 used. Many drivers don't explicitly
-enable the clock and may be problematic when kernel
-gates unused clocks.
+On Wed, Nov 04, 2020 at 11:39:33AM +0100, Nicolas Saenz Julienne wrote:
+> Use devm_rpi_firmware_get() so as to make sure we release RPi's firmware
+> interface when unbinding the device.
+
+Unless I am mistaken this driver does not really need the firmware
+structure past rpi_ts_probe(), and will be fine if it disappears earlier
+than unbind time.
+
+Thanks.
+
+> 
+> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> 
+> ---
+> 
+> Changes since v2:
+>  - Use devm_rpi_firmware_get(), instead of remove function
+> 
+>  drivers/input/touchscreen/raspberrypi-ts.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/input/touchscreen/raspberrypi-ts.c b/drivers/input/touchscreen/raspberrypi-ts.c
+> index ef6aaed217cf..efed0efa91d9 100644
+> --- a/drivers/input/touchscreen/raspberrypi-ts.c
+> +++ b/drivers/input/touchscreen/raspberrypi-ts.c
+> @@ -134,7 +134,7 @@ static int rpi_ts_probe(struct platform_device *pdev)
+>  		return -ENOENT;
+>  	}
+>  
+> -	fw = rpi_firmware_get(fw_node);
+> +	fw = devm_rpi_firmware_get(&pdev->dev, fw_node);
+>  	of_node_put(fw_node);
+>  	if (!fw)
+>  		return -EPROBE_DEFER;
+> -- 
+> 2.29.1
+> 
 
 -- 
-Regards,
-Chuanhong Guo
+Dmitry
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
