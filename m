@@ -1,46 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D4152B0A54
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 17:42:38 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 216C82B0A6B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 17:44:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 45D7D871CF;
-	Thu, 12 Nov 2020 16:42:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AED1B86DB7;
+	Thu, 12 Nov 2020 16:44:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ss7I1vpbSqvR; Thu, 12 Nov 2020 16:42:35 +0000 (UTC)
+	with ESMTP id s+AuG-Q2CWtF; Thu, 12 Nov 2020 16:44:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DD07887169;
-	Thu, 12 Nov 2020 16:42:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A8EB686E82;
+	Thu, 12 Nov 2020 16:44:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A92EC1BF414
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 16:42:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BA4F01BF414
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 16:44:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A62C88713F
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 16:42:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B6C448713F
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 16:44:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WeJfeJ5dbtdU for <devel@linuxdriverproject.org>;
- Thu, 12 Nov 2020 16:42:30 +0000 (UTC)
+ with ESMTP id 1-6NdGMOFROL for <devel@linuxdriverproject.org>;
+ Thu, 12 Nov 2020 16:44:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 21A2B87083
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 16:42:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 310F187083
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 16:44:05 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 5EB15AB95;
- Thu, 12 Nov 2020 16:42:28 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 744C8AFD8;
+ Thu, 12 Nov 2020 16:44:03 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: u.kleine-koenig@pengutronix.de,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 03/11] clk: bcm: rpi: Release firmware handle on unbind
-Date: Thu, 12 Nov 2020 17:36:21 +0100
-Message-Id: <20201112163630.17177-4-nsaenzjulienne@suse.de>
+To: u.kleine-koenig@pengutronix.de, linux-kernel@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Subject: [PATCH v4 04/11] gpio: raspberrypi-exp: Release firmware handle on
+ unbind
+Date: Thu, 12 Nov 2020 17:36:22 +0100
+Message-Id: <20201112163630.17177-5-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201112163630.17177-1-nsaenzjulienne@suse.de>
 References: <20201112163630.17177-1-nsaenzjulienne@suse.de>
@@ -59,14 +61,11 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
  devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, dmitry.torokhov@gmail.com,
  linux-gpio@vger.kernel.org, andy.shevchenko@gmail.com,
- Michael Turquette <mturquette@baylibre.com>,
  bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- p.zabel@pengutronix.de, linux-input@vger.kernel.org,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, bgolaszewski@baylibre.com,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
+ p.zabel@pengutronix.de, linux-input@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -76,26 +75,27 @@ Use devm_rpi_firmware_get() so as to make sure we release RPi's firmware
 interface when unbinding the device.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Acked-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
 
 Changes since v2:
  - Use devm_rpi_firmware_get(), instead of remove function
 
- drivers/clk/bcm/clk-raspberrypi.c | 2 +-
+ drivers/gpio/gpio-raspberrypi-exp.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/bcm/clk-raspberrypi.c b/drivers/clk/bcm/clk-raspberrypi.c
-index f89b9cfc4309..dd3b71eafabf 100644
---- a/drivers/clk/bcm/clk-raspberrypi.c
-+++ b/drivers/clk/bcm/clk-raspberrypi.c
-@@ -314,7 +314,7 @@ static int raspberrypi_clk_probe(struct platform_device *pdev)
+diff --git a/drivers/gpio/gpio-raspberrypi-exp.c b/drivers/gpio/gpio-raspberrypi-exp.c
+index bb100e0124e6..64a552ecc2ad 100644
+--- a/drivers/gpio/gpio-raspberrypi-exp.c
++++ b/drivers/gpio/gpio-raspberrypi-exp.c
+@@ -208,7 +208,7 @@ static int rpi_exp_gpio_probe(struct platform_device *pdev)
  		return -ENOENT;
  	}
  
--	firmware = rpi_firmware_get(firmware_node);
-+	firmware = devm_rpi_firmware_get(&pdev->dev, firmware_node);
- 	of_node_put(firmware_node);
- 	if (!firmware)
+-	fw = rpi_firmware_get(fw_node);
++	fw = devm_rpi_firmware_get(&pdev->dev, fw_node);
+ 	of_node_put(fw_node);
+ 	if (!fw)
  		return -EPROBE_DEFER;
 -- 
 2.29.2
