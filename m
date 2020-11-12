@@ -1,70 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 773B72AFBEA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 02:26:33 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC3362AFC2C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 02:34:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8E29586C89;
-	Thu, 12 Nov 2020 01:26:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F52620448;
+	Thu, 12 Nov 2020 01:34:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sh4KJ8a4GCbY; Thu, 12 Nov 2020 01:26:31 +0000 (UTC)
+	with ESMTP id Vv+zM0Ep2-6M; Thu, 12 Nov 2020 01:34:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2F97086C7C;
-	Thu, 12 Nov 2020 01:26:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 66206203DE;
+	Thu, 12 Nov 2020 01:34:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C56B01BF377
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:26:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 75FB81BF377
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:34:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B8AA4203BF
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:26:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6A6B02038F
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 01:34:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hLPSpA0aeHh5 for <devel@linuxdriverproject.org>;
- Thu, 12 Nov 2020 01:26:27 +0000 (UTC)
+ with ESMTP id F8rk4VIR3ZJo for <devel@linuxdriverproject.org>;
+ Thu, 12 Nov 2020 01:34:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
  [209.85.166.67])
- by silver.osuosl.org (Postfix) with ESMTPS id C4BD52038B
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 01:26:27 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id m13so4317403ioq.9
- for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 17:26:27 -0800 (PST)
+ by silver.osuosl.org (Postfix) with ESMTPS id 5E22220012
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 01:34:08 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id s24so4303570ioj.13
+ for <devel@driverdev.osuosl.org>; Wed, 11 Nov 2020 17:34:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=B2V5fHWjJfDHC37py9TGraaIOkIixettJgS/vXtY+j0=;
- b=RGZU23sr+qdewHuId2wFMbvHWIo7Fy3Q3G2Yf3z57kMcmDjy0YYHeI+qlHGbwkzZWw
- KY3X0VPrclzrZ0Zhiu1eQcnFnEJxP5/r1z3FBQYHG7deQpqHo/sXB2LS+z+DZq4U23pg
- 75eoyEC7bjvKVj51LOVloXwynreqp9WmtenMN3aMfprxkxzH0PoeXXsWU7wCNJpY4oHZ
- O0hKt63VAiAKqEP9lwBJxb4JyUkDFyjb+oe3R113UQqXW9/EPfCH7sfOhMBwl075fJY1
- b08jBtBUT/eicBNBu247UTKPMs1NKlmuFZo/6KwRi2GKbVM0WUjAXRp92CyC5UonuAB1
- s21Q==
+ :cc; bh=rbpdEV5oJs5EmTQ4qqBH8SAi38sGGbLtW6CQKc149hs=;
+ b=QJHjI8PK16X+WFhTxpfikEQQBKesGLQy41FaqcLf/NYWYbNYkYVVY4hbzUW3/zu83+
+ 6LTXMHmPce3IvwNpRjh0UUYuL8X2qLjhdPiIxy706lUXRXEcc5pz3fkpGu81jquaTH+9
+ sKFgqy3n4wBPlNcT5mJDERmYeN35oyrxsu0A2IODkzQbLooR+w4nqX9mslkCSt5ISpS2
+ hAOgwGk6EzZkHldzpAi2aA1iEPC24vJwF3F0I3wnDGCMxZNCiJ+4sYLrw62wSb4ZpKWO
+ KLFcdzbICoZltLeOVJSc2VZdHIqo2dbcpMPLoj+e9cmoqk0LKNPsI5f4H+WHK2mpZ1s/
+ Z/pQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=B2V5fHWjJfDHC37py9TGraaIOkIixettJgS/vXtY+j0=;
- b=KvWPcfigkV3wdd1KfIrIb+vhs76Nk+THy3ask8GbczuJhnADw57f1/0iJqdgBrWWuw
- 2hp7ZZIcSHC9gIPcmX0UR/lOloi5rN8HpwTTlb7lc8/vpp1xgyhpZwNwPGS8kanClxCQ
- oRILjet1jLR8mpXIPgcyRC+H3ed5OjxnfUKxLeELIDs7H7BYmC2JOt+81Kx8YIt6FO8c
- kgG8eCjmMEV2m7Tw0bkHDswJg/7inw5TgcgWB2xPAVmorVE8S3tnr9RzNbxLVYCKoxqN
- x/Wef1WBNL6eeikV2B6Nrz2vKhHBe2Ydp25NavsZzjb9Csf8vN+/JXbwYJS2JALNMNvn
- JKRw==
-X-Gm-Message-State: AOAM530rMdQzn+AZMXo5D5qJm7j2fUy7TBsXkCHZf359Kca30mZGH9GL
- WQ9+8OPOSaLnCCOyzAaeqiWaR9NiI+6vKa1UyGQ=
-X-Google-Smtp-Source: ABdhPJz7OCFU0+VXE96aOUHbHUldtuiC7nVBYOu9ztRPUGxPd9I5Dw2Z/C7Hsz4+DI4dvkFqetu7HQmv4fK5XsDZLwU=
-X-Received: by 2002:a02:c995:: with SMTP id b21mr22906607jap.65.1605144385662; 
- Wed, 11 Nov 2020 17:26:25 -0800 (PST)
+ bh=rbpdEV5oJs5EmTQ4qqBH8SAi38sGGbLtW6CQKc149hs=;
+ b=PPofksn5HK8eoSkLUvEkZBJKOwj7ibLieRGjXpYzSC31s8cncO2gaHWIsjreWtfsfm
+ /fpjhaPgHUjTgNcoPfg9TRw4CRO1+7LSpY13/dOJOgLyDYruCq0glmmXwANTZjoguxRR
+ 2BDHbdvjMLTCKZQfzhU0/RsitdidLHA2ZD64GkCmRxj59nRnGyRABLrUh7uvLiZSFR+n
+ 4dkhclVpcaxVz5EOoOOeHS21jIECOad0tEetVJ2r86+EaYURMFCDs+vOosVJZsoSr+K3
+ oNq2xPoRebbjMFPZiTGvqsWY5RRCFSRlXBTfxg7b/MfO27U1ZWyhVaZ9MLdAQjDfTUAc
+ lY0w==
+X-Gm-Message-State: AOAM530BUe1x7FcTw3+DQgKhx/eFXe9YwCAczUw+lNWQ+RIN+n2ptP9E
+ EBVt70ubreZPNBhRzranGV5RTPFBeZqR51tva60=
+X-Google-Smtp-Source: ABdhPJx9s5i1TWJ7IiZOclN/QEVz3COO+bkdo4SQu9Uhi7hDY6mOuJ+30tEBzttD211kuDsTR9BIV8uhKO5AcbH9RrA=
+X-Received: by 2002:a02:a793:: with SMTP id e19mr21883768jaj.45.1605144847713; 
+ Wed, 11 Nov 2020 17:34:07 -0800 (PST)
 MIME-Version: 1.0
 References: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
-In-Reply-To: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
+ <CAJsYDVJtPqd-aPjJZFC76R2fbv1i=tVzRR7S1VFAMzp1QcPbiQ@mail.gmail.com>
+In-Reply-To: <CAJsYDVJtPqd-aPjJZFC76R2fbv1i=tVzRR7S1VFAMzp1QcPbiQ@mail.gmail.com>
 From: Chuanhong Guo <gch981213@gmail.com>
-Date: Thu, 12 Nov 2020 09:26:14 +0800
-Message-ID: <CAJsYDVJtPqd-aPjJZFC76R2fbv1i=tVzRR7S1VFAMzp1QcPbiQ@mail.gmail.com>
+Date: Thu, 12 Nov 2020 09:33:56 +0800
+Message-ID: <CAJsYDVKWuygjbBErQt1B5XD8Bp06-TdrziBzDdYmMGhU_8X-aA@mail.gmail.com>
 Subject: Re: [PATCH 0/7] MIPS: ralink: add CPU clock detection and clock gate
  driver for MT7621
 To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
@@ -96,76 +97,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi!
+On Thu, Nov 12, 2020 at 9:26 AM Chuanhong Guo <gch981213@gmail.com> wrote:
+>
+> I've already said in previous threads that clock assignment in
+> current linux kernel is not trustworthy.
+> I've got the clock plan for mt7621 now. (Can't share it, sorry.)
+> Most of your clock assumptions above are incorrect.
+> I've made a clock driver with gate support a few months ago.[0]
+> but I don't have much time to really finish it.
+> Maybe you could rework your clock gate driver based on it.
+>
+> [0] https://github.com/981213/linux/commit/2eca1f045e4c3db18c941135464c0d7422ad8133
 
-On Thu, Nov 12, 2020 at 12:30 AM Sergio Paracuellos
-<sergio.paracuellos@gmail.com> wrote:
->
-> This patchset ports CPU clock detection for MT7621 from OpenWrt
-> and adds a complete clock plan for the mt7621 SOC.
->
-> The documentation for this SOC only talks about two registers
-> regarding to the clocks:
-> * SYSC_REG_CPLL_CLKCFG0 - provides some information about boostrapped
-> refclock. PLL and dividers used for CPU and some sort of BUS (AHB?).
-> * SYSC_REG_CPLL_CLKCFG1 - a banch of gates to enable/disable clocks for
-> all or some ip cores.
->
-> No documentation about a probably existant set of dividers for each ip
-> core is included in the datasheets. So we cannot make anything better,
-> AFAICT.
->
-> Looking into driver code, there is another frequency which is used in
-> some drivers (uart, sd...) which for any reason is always hardcoded to
-> 50 MHz. Taking this into account this patchset provides three main fixed
-> clocks to the SOC in 'mt7621-pll' which are:
->   - "cpu": with detected frequency (900 MHz in my board).
->   - "ahb": cpu / 4 = 225 Mhz.
->   - "apb": 50 Mhz.
->
-> PLL controller cannot be manipulatedbecause there is no info about
-> how to do it. Because of this, there is nothing related with registers
-> in the included binding.
->
-> It also provides a clock gate driver 'mt7621-clk' as a platform driver
-> to allow to enable and disable some clocks in the different ip cores.
-> The parent clocks for this clock gates have also set taking into account
-> existant device tree and driver code resulting in the followings:
->   - "hsdma": "ahb"
->   - "fe": "ahb"
->   - "sp_divtx": "ahb"
->   - "timer": "cpu"
->   - "int": "cpu"
->   - "mc": "ahb"
->   - "pcm": "ahb"
->   - "pio": "ahb"
->   - "gdma": "ahb"
->   - "nand": "ahb"
->   - "i2c": "ahb"
->   - "i2s": "ahb"
->   - "spi": "ahb"
->   - "uart1": "apb"
->   - "uart2": "apb"
->   - "uart3": "apb"
->   - "eth": "ahb"
->   - "pcie0": "ahb"
->   - "pcie1": "ahb"
->   - "pcie2": "ahb"
->   - "crypto": "ahb"
->   - "shxc": "ahb"
->
-> There was a previous attempt of doing this here[0] but the author
-> did not wanted to make assumptions of a clock plan for the platform.
+hsdma/eth/pio clocks are still missing in mediatek doc and
+I just made them up in the driver. Correct clock frequency for
+them aren't really important for them to work though.
+And another part I didn't finish is checking clock support for
+every drivers mt7621 used. Many drivers don't explicitly
+enable the clock and may be problematic when kernel
+gates unused clocks.
 
-I've already said in previous threads that clock assignment in
-current linux kernel is not trustworthy.
-I've got the clock plan for mt7621 now. (Can't share it, sorry.)
-Most of your clock assumptions above are incorrect.
-I've made a clock driver with gate support a few months ago.[0]
-but I don't have much time to really finish it.
-Maybe you could rework your clock gate driver based on it.
-
-[0] https://github.com/981213/linux/commit/2eca1f045e4c3db18c941135464c0d7422ad8133
 -- 
 Regards,
 Chuanhong Guo
