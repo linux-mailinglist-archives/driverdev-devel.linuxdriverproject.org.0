@@ -1,78 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 178852B0634
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 14:20:28 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A167C877AD;
-	Thu, 12 Nov 2020 13:20:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SrIMgVjkz2GP; Thu, 12 Nov 2020 13:20:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA20587791;
-	Thu, 12 Nov 2020 13:20:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7799C1BF3ED
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 13:20:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E0632B0A28
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 17:37:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6A3942E1E5
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 13:20:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 17A922036C;
+	Thu, 12 Nov 2020 16:37:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5Gh4d-oWP2dz; Thu, 12 Nov 2020 16:37:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 4F0302E20C;
+	Thu, 12 Nov 2020 16:37:52 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 24C251BF414
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 16:37:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 201AE86FFC
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 16:37:50 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EPy7JqQRlYoi for <devel@linuxdriverproject.org>;
- Thu, 12 Nov 2020 13:20:17 +0000 (UTC)
+ with ESMTP id qWrA0qL0xUmJ for <devel@linuxdriverproject.org>;
+ Thu, 12 Nov 2020 16:37:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 440CB2E1D9
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 13:20:13 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id b6so5980085wrt.4
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 05:20:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=8bT6NBr573z4dRmUGzdy7vOSo0LG9hQOBgI7J9L19n0=;
- b=mgsPSO4Vv1I0HLl+/EpK+bO64s6O30aHTiVXWSNkXtrWiKVu0TONIobdV8BewmbFoU
- gmKhJSfyHbxWuLsrWBbzord4ktUmXpF/JfK8W7GPrkQpwdmHOCV99d8/+u7G6rslcGi4
- T7UW3lD2hbNoZmZOzUqmApvnILA+G/TnMnWP9S6Fb06hjZ+dXQJLn9aSiGrAPx5fGakG
- W8pK1mZW+Frwk+3qur8oKSxcbaZ9gHPuCo6A+OdWIrnZZab8C+2zIpftvjynOTmNKUNw
- JwbYgaKPc/iqYVbpiSRhuVSUKBDzj1++R3rOQjwnVHgJo4nJXLSIHVdqHdgJiPjH6K/o
- DZBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8bT6NBr573z4dRmUGzdy7vOSo0LG9hQOBgI7J9L19n0=;
- b=peUcpqoHv1xBskG4HGkWhXSY7g3D7uiWVN1eCLKKxEQnrqP8ZIVFrB9QSqPMoV+FmM
- G3Wm6w0aB8z67d0JCUIG4DFmEBtak2KWiRO1JfpWGm7ohstc7dYVS8ONJFUnJctfeMPH
- 8xD/eX255dKYNGb5kUPgu77eCIlyNGqNs21H1WUIB3DcK9ciOocBVSn4akc/br685ZO8
- reJ86bjqFrlJfw498WWxzno/KcTZ5p2taZIlGagdGCyJCSyimD+heGWk3817sMiuPq15
- xzBeUb9Vv76Eo/P26QJowwyJ58XVxCk18ILfuh4044R5Csd9lMPdb1Y/etBt8xOTpS30
- Juvg==
-X-Gm-Message-State: AOAM532TS0Nlpg3Tl3q4JjzIa1uJXR+0zypRyWn1DMKdm/hDAEuz5fDf
- i31uF9IS+jodM/3Koj48mmJk6A==
-X-Google-Smtp-Source: ABdhPJyI+2L0X57vYtQloasVb3OMTpYuD6fawy7Bq6HwXGcJSYZ6xpBDXg1Jb9tIfoXKnZ4Ww4pnvw==
-X-Received: by 2002:adf:ebcb:: with SMTP id v11mr35129463wrn.408.1605187211647; 
- Thu, 12 Nov 2020 05:20:11 -0800 (PST)
-Received: from dell.default ([91.110.221.159])
- by smtp.gmail.com with ESMTPSA id t136sm2806326wmt.18.2020.11.12.05.20.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Nov 2020 05:20:11 -0800 (PST)
-From: Lee Jones <lee.jones@linaro.org>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 6/6] staging: net: wimax: i2400m: fw: Fix incorrectly spelt
- function parameter in documentation
-Date: Thu, 12 Nov 2020 13:19:59 +0000
-Message-Id: <20201112131959.2213841-7-lee.jones@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201112131959.2213841-1-lee.jones@linaro.org>
-References: <20201112131959.2213841-1-lee.jones@linaro.org>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E7A3B86FB2
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 16:37:48 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 715CAAB95;
+ Thu, 12 Nov 2020 16:37:47 +0000 (UTC)
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: u.kleine-koenig@pengutronix.de,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v4 00/11] Raspberry Pi PoE HAT fan support
+Date: Thu, 12 Nov 2020 17:36:18 +0100
+Message-Id: <20201112163630.17177-1-nsaenzjulienne@suse.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,49 +55,118 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>, linux-wimax@intel.com,
- Yanir Lubetkin <yanirx.lubetkin@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Lee Jones <lee.jones@linaro.org>, "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
+ devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
+ Eric Anholt <eric@anholt.net>, linux-gpio@vger.kernel.org,
+ andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
+ wahrenst@gmx.net, p.zabel@pengutronix.de, linux-input@vger.kernel.org,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, bgolaszewski@baylibre.com,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixes the following W=1 kernel build warning(s):
+The aim of this series is to add support to the fan found on RPi's PoE
+HAT. Some commentary on the design can be found below. But the imporant
+part to the people CC'd here not involved with PWM is that, in order to
+achieve this properly, we also have to fix the firmware interface the
+driver uses to communicate with the PWM bus (and many other low level
+functions). Specifically, we have to make sure the firmware interface
+isn't unbound while consumers are still up. So, patch #1 & #2 introduce
+reference counting in the firwmware interface driver and patches #3 to
+#8 update all firmware users. Patches #9 to #11 introduce the new PWM
+driver.
 
- drivers/net/wimax/i2400m/fw.c:647: warning: Function parameter or member '__chunk_len' not described in 'i2400m_download_chunk'
- drivers/net/wimax/i2400m/fw.c:647: warning: Excess function parameter 'chunk_len' description in 'i2400m_download_chunk'
+I sent everything as a single series as the final version of the PWM
+drivers depends on the firwmare fixes, but I'll be happy to split this
+into two separate series if you think it's better.
 
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>
-Cc: linux-wimax@intel.com
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Yanir Lubetkin <yanirx.lubetkin@intel.com>
-Cc: netdev@vger.kernel.org
-Cc: devel@driverdev.osuosl.org
-Signed-off-by: Lee Jones <lee.jones@linaro.org>
+--- Original cover letter below ---
+
+This series aims at adding support to RPi's official PoE HAT fan[1].
+
+The HW setup is the following:
+
+| Raspberry Pi                               | PoE HAT                    |
+ arm core -> Mailbox -> RPi co-processor -> I2C -> Atmel MCU -> PWM -> FAN
+
+The arm cores have only access to the mailbox interface, as i2c0, even if
+physically accessible, is to be used solely by the co-processor
+(VideoCore 4/6).
+
+This series implements a PWM bus, and has pwm-fan sitting on top of it as per
+this discussion: https://lkml.org/lkml/2018/9/2/486. Although this design has a
+series of shortcomings:
+
+- It depends on a DT binding: it's not flexible if a new hat shows up with new
+  functionality, we're not 100% sure we'll be able to expand it without
+  breaking backwards compatibility. But without it we can't make use of DT
+  thermal-zones, which IMO is overkill.
+
+- We're using pwm-fan, writing a hwmon driver would, again, give us more
+  flexibility, but it's not really needed at the moment.
+
+I personally think that it's not worth the effort, it's unlikely we'll get
+things right in advance. And ultimately, if the RPi people come up with
+something new, we can always write a new driver/bindings from scratch (as in
+not reusing previous code).
+
+That said, I'm more than happy to change things if there is a consensus that
+another design will do the trick.
+
+[1] https://www.raspberrypi.org/blog/introducing-power-over-ethernet-poe-hat/
+
 ---
- drivers/staging/wimax/i2400m/fw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
-index 9970857063374..edb5eba0898b0 100644
---- a/drivers/staging/wimax/i2400m/fw.c
-+++ b/drivers/staging/wimax/i2400m/fw.c
-@@ -636,7 +636,7 @@ ssize_t i2400m_bm_cmd(struct i2400m *i2400m,
-  *
-  * @i2400m: device descriptor
-  * @chunk: the buffer to write
-- * @chunk_len: length of the buffer to write
-+ * @__chunk_len: length of the buffer to write
-  * @addr: address in the device memory space
-  * @direct: bootrom write mode
-  * @do_csum: should a checksum validation be performed
+Changes since v3:
+ - Split first patch, #1 introduces refcount, then #2 the devm function
+ - Fix touchscreen function
+ - Use kref
+
+Changes since v2:
+ - Introduce devm_rpi_firmware_get()
+ - Small cleanups in PWM driver
+
+Changes since v1:
+ - Address PWM driver changes
+ - Fix binding, now with 2 cells
+
+Nicolas Saenz Julienne (11):
+  firmware: raspberrypi: Keep count of all consumers
+  firmware: raspberrypi: Introduce devm_rpi_firmware_get()
+  clk: bcm: rpi: Release firmware handle on unbind
+  gpio: raspberrypi-exp: Release firmware handle on unbind
+  reset: raspberrypi: Release firmware handle on unbind
+  soc: bcm: raspberrypi-power: Release firmware handle on unbind
+  staging: vchiq: Release firmware handle on unbind
+  input: raspberrypi-ts: Release firmware handle when not needed
+  dt-bindings: pwm: Add binding for RPi firmware PWM bus
+  DO NOT MERGE: ARM: dts: Add RPi's official PoE hat support
+  pwm: Add Raspberry Pi Firmware based PWM bus
+
+ .../arm/bcm/raspberrypi,bcm2835-firmware.yaml |  20 ++
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts         |  54 +++++
+ drivers/clk/bcm/clk-raspberrypi.c             |   2 +-
+ drivers/firmware/raspberrypi.c                |  66 +++++-
+ drivers/gpio/gpio-raspberrypi-exp.c           |   2 +-
+ drivers/input/touchscreen/raspberrypi-ts.c    |   2 +-
+ drivers/pwm/Kconfig                           |   9 +
+ drivers/pwm/Makefile                          |   1 +
+ drivers/pwm/pwm-raspberrypi-poe.c             | 216 ++++++++++++++++++
+ drivers/reset/reset-raspberrypi.c             |   2 +-
+ drivers/soc/bcm/raspberrypi-power.c           |   2 +-
+ .../interface/vchiq_arm/vchiq_arm.c           |   2 +-
+ .../pwm/raspberrypi,firmware-pwm.h            |  13 ++
+ include/soc/bcm2835/raspberrypi-firmware.h    |  10 +
+ 14 files changed, 391 insertions(+), 10 deletions(-)
+ create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
+ create mode 100644 include/dt-bindings/pwm/raspberrypi,firmware-pwm.h
+
 -- 
-2.25.1
+2.29.2
 
 _______________________________________________
 devel mailing list
