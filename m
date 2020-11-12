@@ -1,89 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B19652B1121
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 23:14:55 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F44C2B1193
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Nov 2020 23:33:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 08B3887052;
-	Thu, 12 Nov 2020 22:14:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 960F6870A4;
+	Thu, 12 Nov 2020 22:33:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dc1buLOZ3hME; Thu, 12 Nov 2020 22:14:53 +0000 (UTC)
+	with ESMTP id FLJW0K6h9Y7p; Thu, 12 Nov 2020 22:33:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 96BCC86E31;
-	Thu, 12 Nov 2020 22:14:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A53186FD9;
+	Thu, 12 Nov 2020 22:33:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A3DD1BF41F
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 22:14:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B75F1BF41F
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 22:33:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 83F1486DD9
- for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 22:14:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 62CDA8771E
+ for <devel@linuxdriverproject.org>; Thu, 12 Nov 2020 22:33:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M2zgoV5f1R+p for <devel@linuxdriverproject.org>;
- Thu, 12 Nov 2020 22:14:49 +0000 (UTC)
+ with ESMTP id 1E9C-ZOjiJSa for <devel@linuxdriverproject.org>;
+ Thu, 12 Nov 2020 22:33:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 68F2F86943
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 22:14:49 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id u19so4594207lfr.7
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 14:14:49 -0800 (PST)
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7727887718
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 22:33:43 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id j7so7684405wrp.3
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 14:33:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6I7BUpsnPeFRDPSie+hImwdRFU/lPQPc9b4Pu6iDC2E=;
- b=rTk36LmZQcm5DdyOg9CK1Elk91TFk0T8lyUlO9RxBsp5ITaOWlFWcg3AV0rTW9G7Fl
- B6TACsnPLGb34KzxDAUE5JNpA8rKCiIYmwnsooKuQ5CJPenNHaDkySPSIz0N4dA2mLC2
- ceGHtL+0omSK/rfvc/iBFGMPW7YFmDKVdtwAqouRvCKmxOe0YX6rh655e/OEj8aNiO7i
- 2TnSG5M0WfSwHXJLwfwFsxeQVYZO/NoD6krHxrPimFlpUvEHQ0Flcj2/UVNE7RA8OKWv
- F5nTBOfRpIsNskD3f1jdTo1Fs37JxPEI37HHCcMNOqLF/lrAhV14qvEdFLt3uc4uef0i
- siZw==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=Sov6QI2+dcKEbVPti+S9VpTmMaMBnOoy8yisJjB3r+E=;
+ b=PaumCKNDUQ/UbbjjN+UcYYQ7C7Eq7wEBAmHONlbn6WxG7o13NNOvWBzN7m1LqCjCQs
+ WL9p70rCyeyuXHeyGUbhtVarNngk41RX+oC0YrrrAF69kOMw0kB0wRDKbbfTueuIMLG1
+ u6/v3Ng5cY8fpW1O0jDKvBvlIrVvk2re0+7WajXkn+NCItv+J0EIHEZVCUCKYA7Vi1Qz
+ +Glj3vMfxza2ySC4cSSdQbRpC7+tUGGl1Mscb2+9mNPX/h/Mts+VXgcFgu2tRPYzON2w
+ 1Zi668r/Ip7rh+c7My9Ib/8h++gawx6Jk8SxF+6+yIsFqyuprvST0uI5UZfRARQyYEkO
+ rbgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6I7BUpsnPeFRDPSie+hImwdRFU/lPQPc9b4Pu6iDC2E=;
- b=AqyQ+FK4ZAFESoJxgqODsVZjyzIAWf6VRf2Y5c7uDm8kxDujFnN9kk+OxAXQXmR3SV
- 4fCqCLNXS1Jzqlls8IEVAIw4fGmQSCJsDcWt+QfY6x+OwCAssFSU5xHonnG+zDFI29oX
- hJnFuAx/v29vyZCaG41QUXnXGKpgiFgi+RvHqYq1jBN5S4Qm3vYdlVmAwe3Wmn4U/kIO
- Vc0NIXGdjl43OqkFLn6Ya4CICVOC/IoPR79lIpACXzvYTGGN/6Ljqfs3dmjcVF+7tLbJ
- ldHjEypBaMLOHh3HmYE6ldDeKL41pD0XH4nfxEQySyeMtmno9JbTwHHGcDDsY53AUcgw
- P82A==
-X-Gm-Message-State: AOAM532KSJCiHOxenGh5xpkG0zylF8afXwWCALrWF9mq5epMmIJI/1yb
- ICHTrG9dQ0A2LxC052jKZYw5r8IGlvE=
-X-Google-Smtp-Source: ABdhPJyBaFcKp4/EPF+acP6+aR+EtI8BnydIDUm/bvPzHQQAYMYoVmfy0wH61huOt4WJ1kuffSiKGA==
-X-Received: by 2002:a19:7108:: with SMTP id m8mr661367lfc.246.1605219287612;
- Thu, 12 Nov 2020 14:14:47 -0800 (PST)
-Received: from [192.168.2.145] (109-252-193-159.dynamic.spd-mgts.ru.
- [109.252.193.159])
- by smtp.googlemail.com with ESMTPSA id z200sm968935lfc.189.2020.11.12.14.14.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Nov 2020 14:14:46 -0800 (PST)
-Subject: Re: [PATCH v1 00/30] Introduce core voltage scaling for NVIDIA
- Tegra20/30 SoCs
-To: Thierry Reding <thierry.reding@gmail.com>
-References: <20201104234427.26477-1-digetx@gmail.com>
- <CAPDyKFr7qTU2RPhA_ZrbCayoTTNUEno1zdmvmv+8HBe-Owrfeg@mail.gmail.com>
- <cd147ab0-1304-a491-7a56-ee6199c02d32@gmail.com>
- <2716c195-083a-112f-f1e5-2f6b7152a4b5@gmail.com>
- <CAPDyKFqUMsH9dCZ=OYqfdLt==+-8NjK9n=S5jGGNXZu6Y9q=2w@mail.gmail.com>
- <1f7e90c4-6134-2e2b-4869-5afbda18ead3@gmail.com>
- <20201112204358.GA1027187@ulmo>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <25942da9-b527-c0aa-5403-53c9cc34ad93@gmail.com>
-Date: Fri, 13 Nov 2020 01:14:45 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.2
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=Sov6QI2+dcKEbVPti+S9VpTmMaMBnOoy8yisJjB3r+E=;
+ b=SYIxnsImvmAc7JiGINaqKrGHIG+in/lQbkSOflPeoR/7BUJoUS4gTUljqe9QYwY9zh
+ s6MtWlS10L6mzHgvXLclEJ6kGjD+lhF/zflKLbZT1Qem0ng/0Uc1ZSlahrzWQskUi9qb
+ dmoQjG1BiiywUW+TAXfkuO+DXGRvbNUaIkoSb8QfFbdPpaFSYA1dOq83dPFRxeVf71S3
+ QOBAyVpLz6Nofhc1FHAV6vsG400ZbFz2RjkwRaq4Vcz9jl2ZTJeQGgt03YkSmk4S/SUJ
+ gtMG1s/+2UVAPSme8P6Xc2AZxdwY9jUeebH72pb8Jf1YQFnS54INjS4i4Au91u7rZbbR
+ 054Q==
+X-Gm-Message-State: AOAM533mHSW2QLFxur2dVywI4iJoobi8WhmoCQhp/WRVsjguN1tAK7Hf
+ nNv8UMmC2pH+Yb6hJFHPVOLEJdk3yU5UgQ==
+X-Google-Smtp-Source: ABdhPJxyF55EsQYu9Lk5GwUPWqIRsuf0sTIKLTXSF+gVLeVIttb/A4V1Bze7FVvR7Tyt/ZDZNq5iVw==
+X-Received: by 2002:a5d:50d1:: with SMTP id f17mr2065863wrt.264.1605220421864; 
+ Thu, 12 Nov 2020 14:33:41 -0800 (PST)
+Received: from tabot ([154.72.150.132])
+ by smtp.gmail.com with ESMTPSA id z189sm3307986wme.23.2020.11.12.14.33.39
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 12 Nov 2020 14:33:41 -0800 (PST)
+Date: Thu, 12 Nov 2020 23:33:35 +0100
+From: Tabot Kevin <tabot.kevin@gmail.com>
+To: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Subject: [PATCH] staging: greybus: Fixed issues with alignment to open
+ parenthesis.
+Message-ID: <20201112223331.GA1681@tabot>
 MIME-Version: 1.0
-In-Reply-To: <20201112204358.GA1027187@ulmo>
-Content-Language: en-US
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,72 +84,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- DTML <devicetree@vger.kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Adrian Hunter <adrian.hunter@intel.com>, Lee Jones <lee.jones@linaro.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- driverdevel <devel@driverdev.osuosl.org>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- Nicolas Chauvet <kwizart@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Alan Stern <stern@rowland.harvard.edu>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- linux-pwm@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux USB List <linux-usb@vger.kernel.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MTIuMTEuMjAyMCAyMzo0MywgVGhpZXJyeSBSZWRpbmcg0L/QuNGI0LXRgjoKPj4gVGhlIGRpZmZl
-cmVuY2UgaW4gY29tcGFyaXNvbiB0byB1c2luZyB2b2x0YWdlIHJlZ3VsYXRvciBkaXJlY3RseSBp
-cwo+PiBtaW5pbWFsLCBiYXNpY2FsbHkgdGhlIGNvcmUtc3VwcGx5IHBoYW5kbGUgaXMgcmVwbGFj
-ZWQgaXMgcmVwbGFjZWQgd2l0aAo+PiBhIHBvd2VyLWRvbWFpbiBwaGFuZGxlIGluIGEgZGV2aWNl
-IHRyZWUuCj4gVGhlc2UgbmV3IHBvd2VyLWRvbWFpbiBoYW5kbGVzIHdvdWxkIGhhdmUgdG8gYmUg
-YWRkZWQgdG8gZGV2aWNlcyB0aGF0Cj4gcG90ZW50aWFsbHkgYWxyZWFkeSBoYXZlIGEgcG93ZXIt
-ZG9tYWluIGhhbmRsZSwgcmlnaHQ/IElzbid0IHRoYXQgZ29pbmcKPiB0byBjYXVzZSBpc3N1ZXM/
-IEkgdmFndWVseSByZWNhbGwgdGhhdCB3ZSBhbHJlYWR5IGhhdmUgbXVsdGlwbGUgcG93ZXIKPiBk
-b21haW5zIGZvciB0aGUgWFVTQiBjb250cm9sbGVyIGFuZCB3ZSBoYXZlIHRvIGp1bXAgdGhyb3Vn
-aCBleHRyYSBob29wcwo+IHRvIG1ha2UgdGhhdCB3b3JrLgoKSSBtb2RlbGVkIHRoZSBjb3JlIFBE
-IGFzIGEgcGFyZW50IG9mIHRoZSBQTUMgc3ViLWRvbWFpbnMsIHdoaWNoCnByZXN1bWFibHkgaXMg
-YSBjb3JyZWN0IHdheSB0byByZXByZXNlbnQgdGhlIGRvbWFpbnMgdG9wb2xvZ3kuCgpodHRwczov
-L2dpc3QuZ2l0aHViLmNvbS9kaWdldHgvZGZkOTJjN2Y3ZTBhYTZjZWYyMDQwM2M0Mjk4MDg4ZDcK
-Cj4+IFRoZSBvbmx5IHRoaW5nIHdoaWNoIG1ha2VzIG1lIGZlZWwgYSBiaXQgdW5jb21mb3J0YWJs
-ZSBpcyB0aGF0IHRoZXJlIGlzCj4+IG5vIHJlYWwgaGFyZHdhcmUgbm9kZSBmb3IgdGhlIHBvd2Vy
-IGRvbWFpbiBub2RlIGluIGEgZGV2aWNlLXRyZWUuCj4gQ291bGQgd2UgYW5jaG9yIHRoZSBuZXcg
-cG93ZXIgZG9tYWluIGF0IHRoZSBQTUMgZm9yIGV4YW1wbGU/IFRoYXQgd291bGQKPiBhbGxvdyB1
-cyB0byBhdm9pZCB0aGUgInZpcnR1YWwiIG5vZGUuCgpJIGhhZCBhIHRob3VnaHQgYWJvdXQgdXNp
-bmcgUE1DIGZvciB0aGUgY29yZSBkb21haW4sIGJ1dCBub3Qgc3VyZQp3aGV0aGVyIGl0IHdpbGwg
-YmUgYW4gZW50aXJlbHkgY29ycmVjdCBoYXJkd2FyZSBkZXNjcmlwdGlvbi4gQWx0aG91Z2gsCml0
-IHdpbGwgYmUgbmljZSB0byBoYXZlIGl0IHRoaXMgd2F5LgoKVGhpcyBpcyB3aGF0IFRlZ3JhIFRS
-TSBzYXlzIGFib3V0IFBNQzoKCiJUaGUgUG93ZXIgTWFuYWdlbWVudCBDb250cm9sbGVyIChQTUMp
-IGJsb2NrIGludGVyYWN0cyB3aXRoIGFuIGV4dGVybmFsCm9yIFBvd2VyIE1hbmFnZXIgVW5pdCAo
-UE1VKS4gVGhlIFBNQyBtb3N0bHkgY29udHJvbHMgdGhlIGVudHJ5IGFuZCBleGl0Cm9mIHRoZSBz
-eXN0ZW0gZnJvbSBkaWZmZXJlbnQgc2xlZXAgbW9kZXMuIEl0IHByb3ZpZGVzIHBvd2VyLWdhdGlu
-Zwpjb250cm9sbGVycyBmb3IgU09DIGFuZCBDUFUgcG93ZXItaXNsYW5kcyBhbmQgYWxzbyBwcm92
-aWRlcyBzY3JhdGNoCnN0b3JhZ2UgdG8gc2F2ZSBzb21lIG9mIHRoZSBjb250ZXh0IGR1cmluZyBz
-bGVlcCBtb2RlcyAod2hlbiBDUFUgYW5kL29yClNPQyBwb3dlciByYWlscyBhcmUgb2ZmKS4gQWRk
-aXRpb25hbGx5LCBQTUMgaW50ZXJhY3RzIHdpdGggdGhlIGV4dGVybmFsClBvd2VyIE1hbmFnZXIg
-VW5pdCAoUE1VKS4iCgpUaGUgY29yZSB2b2x0YWdlIHJlZ3VsYXRvciBpcyBhIHBhcnQgb2YgdGhl
-IFBNVS4KCk5vdCBhbGwgY29yZSBTb0MgZGV2aWNlcyBhcmUgYmVoaW5kIFBNQywgSUlVQy4KCj4g
-T24gdGhlIG90aGVyIGhhbmQsIGlmIHdlIHdlcmUgdG8KPiB1c2UgYSByZWd1bGF0b3IsIHdlJ2Qg
-YmUgYWRkaW5nIGEgbm9kZSBmb3IgdGhhdCwgcmlnaHQ/IFNvIGlzbid0IHRoaXMKPiBlZmZlY3Rp
-dmVseSBnb2luZyB0byBiZSB0aGUgc2FtZSBub2RlIGlmIHdlIHVzZSBhIHBvd2VyIGRvbWFpbj8g
-Qm90aAo+IHNvZnR3YXJlIGNvbnN0cnVjdHMgYXJlIHVzaW5nIHRoZSBzYW1lIHZvbHRhZ2UgcmVn
-dWxhdG9yLCBzbyB0aGV5IHNob3VsZAo+IGJlIGFibGUgdG8gYmUgZGVzY3JpYmVkIGJ5IHRoZSBz
-YW1lIGRldmljZSB0cmVlIG5vZGUsIHNob3VsZG4ndCB0aGV5PwoKSSdtIG5vdCBleGFjdGx5IHN1
-cmUgd2hhdCB5b3UncmUgbWVhbmluZyBieSAidXNlIGEgcmVndWxhdG9yIiBhbmQgIndlJ2QKYmUg
-YWRkaW5nIGEgbm9kZSBmb3IgdGhhdCIsIGNvdWxkIHlvdSBwbGVhc2UgY2xhcmlmeT8gVGhpcyB2
-MSBhcHByb2FjaAp1c2VzIGEgY29yZS1zdXBwbHkgcGhhbmRsZSAoaS5lLiByZWd1bGF0b3IgaXMg
-dXNlZCksIGl0IGRvZXNuJ3QgcmVxdWlyZQpleHRyYSBub2Rlcy4KX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+This patch fixes the following:
+- Made sure alignment matched open parenthesis.
+
+Signed-off-by: Tabot Kevin <tabot.kevin@gmail.com>
+---
+ drivers/staging/greybus/audio_module.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
+index c52c4f3..a243d60 100644
+--- a/drivers/staging/greybus/audio_module.c
++++ b/drivers/staging/greybus/audio_module.c
+@@ -175,8 +175,8 @@ static int gbaudio_codec_request_handler(struct gb_operation *op)
+ }
+ 
+ static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
+-				struct greybus_descriptor_cport *cport_desc,
+-				struct gb_bundle *bundle)
++					struct greybus_descriptor_cport *cport_desc,
++					struct gb_bundle *bundle)
+ {
+ 	struct gb_connection *connection;
+ 
+@@ -199,8 +199,8 @@ static int gb_audio_add_mgmt_connection(struct gbaudio_module_info *gbmodule,
+ }
+ 
+ static int gb_audio_add_data_connection(struct gbaudio_module_info *gbmodule,
+-				struct greybus_descriptor_cport *cport_desc,
+-				struct gb_bundle *bundle)
++					struct greybus_descriptor_cport *cport_desc,
++					struct gb_bundle *bundle)
+ {
+ 	struct gb_connection *connection;
+ 	struct gbaudio_data_connection *dai;
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
