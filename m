@@ -1,77 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 817802B1591
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 06:33:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04D882B165E
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 08:26:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C98E873A8;
-	Fri, 13 Nov 2020 05:33:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DC7342E1A6;
+	Fri, 13 Nov 2020 07:26:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9o1lJV8PCfAT; Fri, 13 Nov 2020 05:33:11 +0000 (UTC)
+	with ESMTP id LP2AyR1cnxXA; Fri, 13 Nov 2020 07:26:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 284DF8735E;
-	Fri, 13 Nov 2020 05:33:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 99DFA2048A;
+	Fri, 13 Nov 2020 07:26:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 18E321BF852
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 05:33:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E33371BF868
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 07:26:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1532C86ADA
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 05:33:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DE2B487650
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 07:26:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xc47+7F8JEF9 for <devel@linuxdriverproject.org>;
- Fri, 13 Nov 2020 05:33:07 +0000 (UTC)
+ with ESMTP id OVZvKmPldJgq for <devel@linuxdriverproject.org>;
+ Fri, 13 Nov 2020 07:26:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B0E1086973
- for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 05:33:07 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id c80so9231623oib.2
- for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 21:33:07 -0800 (PST)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B2DAD875A7
+ for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 07:26:19 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id k7so4159042plk.3
+ for <devel@driverdev.osuosl.org>; Thu, 12 Nov 2020 23:26:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rzpHxVwtYfPNR5m+0xd40O02SiyxGAAISovudBzR/vE=;
- b=h86+nsdjF93+wDYVtajUVNvY26hefcNO04S+d0kH+aiRUmxn58HcQx5GtgRzTOZZg7
- qtXZbq4JpNzvvjKAnjgzcujlx+yLhKxWysKxVUHdj9hcYpjHiwcYjfITQyblfLCd8BL2
- d2bOfs2FEkwNBZGGGDYwInbsQp8GwLNv+BTmQ7vmL0XGShcy94/3LcblWZu0yr2DAOYm
- CAdnXuF54D7OuqAweTnyGlQhL7UMhXNdlcLjUWtg9CAtMYEqIn97G286HoczEHADNb/+
- Leez1Sjob23y065wvBBKLehx4xhenW1CRkTCIzUZPa5aEFxJZX7x8ZLRUiAQpQiODjwe
- mk9Q==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=bVc4aZk4rKy/6/VqEhMXbEQ5ZVosOHXwKRbVIxDDoGY=;
+ b=GMiotV0GyRZSn0pn1dgPWm/1yR1DzPikBgKi5Lbkr2+y/iNDlpqYBVO7SfIvAgqAbf
+ uIaCVLY528t7w5yWehm/+G4BNoS1lB69IH4dB9iSPueZ2vY4/XYJoWpU0aQEMS570PMt
+ gfyrGW2DRdfuIkQPiOQfGiyd6Icf9TqwlJVhKT9GlbO7q/Mj4/7h6vRa/vNWfxW1mehI
+ GBBBTEzl+JU36/Sc52m4n+V0gVtafzPbCLB2RuMl1UZyUSG2LeWJBlAiNPu5ZgflYKFh
+ dBz3JOOX0NRmiUfmf22A+yolC5R2dAEyS/GcPJGRpS4tu3Prtj7hQV+cpG105mS2OmpU
+ cB8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rzpHxVwtYfPNR5m+0xd40O02SiyxGAAISovudBzR/vE=;
- b=qSyjYY7zunwhe0GQQAOlV3gNhX3MjAdS00z7cFY4x5dceimiMQ02iaJtNXBs1ZQnuO
- ntwj6Ma+WVEWYKwuUIS4dO32iBue1AiSSdpIrGfer78Kc8/QB7p8e83hsBKoAoQiDrYB
- EhCZAmp+NJrDC1eOWfcFKPBlSk7RKfZ9+XBa1wrUMNEQOCwjXVtNmZLXKa+6EmOWfqmz
- 8YOIov/StkBm9Mvf+u9CKCgIurxR0FBmlZw3HB2sf/+OqYtCTcis5YQ+0FZ7hz0v5sxr
- 9KlN7pDzXQ94bNPMZLJN0wkUXPSlshSwsI0UpBpdzwAvhuTPmxQyxKyo2pIy6OJ09MJz
- +Prg==
-X-Gm-Message-State: AOAM532NMlw84F90Z7fcBH6rlq7nS2hQa7az/vpZkaSma+go0q5prV8c
- tmtqppPeGWlgNL/pqlK8pJ9mr+w6lagAl+u+Y6k=
-X-Google-Smtp-Source: ABdhPJzvDqnz5H8slcSClxUbBKekqGkSOvIRf7i1k5l9QQ/+KRmv33DpeSYtc0XvtPH09vHjxxEa5wSlnHz8GOQH1sA=
-X-Received: by 2002:aca:f407:: with SMTP id s7mr377123oih.23.1605245587028;
- Thu, 12 Nov 2020 21:33:07 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=bVc4aZk4rKy/6/VqEhMXbEQ5ZVosOHXwKRbVIxDDoGY=;
+ b=absIR6ITTh4M9zFYXHsMy/xiLYm35x9xIix2LTZWCRjw6zw/DOrAZWvxLzjtRiqrB8
+ M0X+D5yfUeNMtP2d/N68T7DQjIfu0FtQ+H+mJvyT6OSt2pXv/KzJfEHQyu/7RJ38HG65
+ 0+jV8iZga6hw9I0rvTJdAVOfXOl3uQY6uv+apXsDmkOIhaCUjh+lD7cNmaxccOAXAr1U
+ ndymUXb+VN+FUMpAKP9rDpsF+dGkUwdynYDVtjnj0e12I/2AvhaFvrMVeQESbs5KM2ZY
+ SkNR9leRX7pZBwPNUIhNKi63njFM5ii8V3LAPMnAlRSoDEv+KsVXyiXqfGfVPZrRLQr0
+ 5ZWw==
+X-Gm-Message-State: AOAM533UCsJ0Ukid/2MEYEhgIZ2xCHbrd/QzVdkkbuCKyqtXVHkq5SZt
+ KmjWnkmCrrwMJ91U/ezqZv4=
+X-Google-Smtp-Source: ABdhPJwxvk3sEiTwtCGzh6+CErNAzuUpI0fhTqrV5pUBqPIIf6eT7t4y2GPOTdCy6tzoqSvWpYqfbA==
+X-Received: by 2002:a17:902:c016:b029:d7:1a0:7cf0 with SMTP id
+ v22-20020a170902c016b02900d701a07cf0mr878425plx.64.1605252379251; 
+ Thu, 12 Nov 2020 23:26:19 -0800 (PST)
+Received: from dtor-ws ([2620:15c:202:201:a6ae:11ff:fe11:fcc3])
+ by smtp.gmail.com with ESMTPSA id l20sm9170507pfd.103.2020.11.12.23.26.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Nov 2020 23:26:18 -0800 (PST)
+Date: Thu, 12 Nov 2020 23:26:15 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v4 01/11] firmware: raspberrypi: Keep count of all
+ consumers
+Message-ID: <20201113072615.GE356503@dtor-ws>
+References: <20201112163630.17177-1-nsaenzjulienne@suse.de>
+ <20201112163630.17177-2-nsaenzjulienne@suse.de>
+ <CAHp75Vf9E7UWVDMs=eRjLjoSN6SVOWw9thNdnR8ruCL6GmY7JQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20201111163013.29412-1-sergio.paracuellos@gmail.com>
- <CAJsYDVJtPqd-aPjJZFC76R2fbv1i=tVzRR7S1VFAMzp1QcPbiQ@mail.gmail.com>
- <CAJsYDVKWuygjbBErQt1B5XD8Bp06-TdrziBzDdYmMGhU_8X-aA@mail.gmail.com>
- <CAMhs-H85RCK=a_y+fVm-oR3hOEfr=rtVcLvX09YH4F65enz3oA@mail.gmail.com>
- <CAJsYDV+Gm-0HpvE7W8iG=t5JT+whrQjerRUT65eXxv2av9160A@mail.gmail.com>
-In-Reply-To: <CAJsYDV+Gm-0HpvE7W8iG=t5JT+whrQjerRUT65eXxv2av9160A@mail.gmail.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 13 Nov 2020 06:32:55 +0100
-Message-ID: <CAMhs-H_qFpVv3KK5Bc4igrj7VffZSmAAT=sM8PSyY7H0-SV1yg@mail.gmail.com>
-Subject: Re: [PATCH 0/7] MIPS: ralink: add CPU clock detection and clock gate
- driver for MT7621
-To: Chuanhong Guo <gch981213@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <CAHp75Vf9E7UWVDMs=eRjLjoSN6SVOWw9thNdnR8ruCL6GmY7JQ@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,52 +89,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Weijie Gao <hackpascal@gmail.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Stephen Boyd <sboyd@kernel.org>,
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ linux-pwm@vger.kernel.org,
+ linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>,
+ Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
+ devicetree <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Ray Jui <rjui@broadcom.com>, Linus Walleij <linus.walleij@linaro.org>,
+ linux-input <linux-input@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Turquette <mturquette@baylibre.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>, jiaxun.yang@flygoat.com,
- "open list:MIPS" <linux-mips@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, John Crispin <john@phrozen.org>,
- "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Stefan Wahren <wahrenst@gmx.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Nov 13, 2020 at 1:40 AM Chuanhong Guo <gch981213@gmail.com> wrote:
->
-> On Thu, Nov 12, 2020 at 1:23 PM Sergio Paracuellos
-> <sergio.paracuellos@gmail.com> wrote:
+On Thu, Nov 12, 2020 at 07:52:14PM +0200, Andy Shevchenko wrote:
+> On Thu, Nov 12, 2020 at 6:40 PM Nicolas Saenz Julienne
+> <nsaenzjulienne@suse.de> wrote:
 > >
-> > To avoid weird behaviour because of some drivers are
-> > not using properly clocks we have the CLK_IGNORED_UNUSED, which as you
-> > can see is currently being used in my code. Using that all seems to
-> > work as expected as it is now.
->
-> The whole point of having a clock gate driver is to gate unused
-> clocks to save (maybe a tiny bit of) power. It's other peripheral
-> drivers' fault that it doesn't enable clocks properly and we shouldn't
-> just work-around the problem in the clock driver by disallowing auto
-> clock gating.
->
+> > When unbinding the firmware device we need to make sure it has no
+> > consumers left. Otherwise we'd leave them with a firmware handle
+> > pointing at freed memory.
+> >
+> > Keep a reference count of all consumers and introduce rpi_firmware_put()
+> > which will permit automatically decrease the reference count upon
+> > unbinding consumer drivers.
+> 
+> ...
+> 
+> >  /**
+> > - * rpi_firmware_get - Get pointer to rpi_firmware structure.
+> >   * @firmware_node:    Pointer to the firmware Device Tree node.
+> >   *
+> > + * The reference to rpi_firmware has to be released with rpi_firmware_put().
+> > + *
+> >   * Returns NULL is the firmware device is not ready.
+> >   */
+> >  struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node)
+> >  {
+> >         struct platform_device *pdev = of_find_device_by_node(firmware_node);
+> > +       struct rpi_firmware *fw;
+> >
+> >         if (!pdev)
+> >                 return NULL;
+> >
+> > -       return platform_get_drvdata(pdev);
+> > +       fw = platform_get_drvdata(pdev);
+> > +       if (!fw)
+> > +               return NULL;
+> > +
+> > +       if (!kref_get_unless_zero(&fw->consumers))
+> > +               return NULL;
+> 
+> Don't we have a more traditional way of doing this, i.e.
+> try_module_get() coupled with get_device() ?
 
-Totally agreed with what you are saying here but I don't really think
-using the flag is a workaround. It is just a way to ensure no
-regressions occurred until all drivers are adapted and also having all
-of them enabled is the behaviour. For me adapt the rest of driver code
- should be a different patch set after this driver is properly
-finished and mainlined.
+get_device() will make sure that device is there, but gives no
+assurances that device is bound to a driver, so it will not help with
+the racy access to firmware via platform_get_drvdata() call.
 
-> --
-> Regards,
-> Chuanhong Guo
+Thanks.
 
-Best regards,
-     Sergio Paracuellos
+-- 
+Dmitry
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
