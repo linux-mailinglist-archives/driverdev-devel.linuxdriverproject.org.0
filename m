@@ -1,52 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 204182B1817
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 10:21:44 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15E958743E;
-	Fri, 13 Nov 2020 09:21:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cw6GyfbuzGv2; Fri, 13 Nov 2020 09:21:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A02D787425;
-	Fri, 13 Nov 2020 09:21:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A57441BF3FB
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 09:21:37 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DFD922B1D76
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 15:29:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A20AD878D5
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 09:21:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 24986878D9;
+	Fri, 13 Nov 2020 14:29:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DymDREJQNMwp; Fri, 13 Nov 2020 14:29:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 94004878A4;
+	Fri, 13 Nov 2020 14:29:56 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C53E1BF3A0
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 14:29:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 68C4487169
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 14:29:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oFuTFIEVbzxW for <devel@linuxdriverproject.org>;
- Fri, 13 Nov 2020 09:21:32 +0000 (UTC)
+ with ESMTP id ofrY76cFo8qS for <devel@linuxdriverproject.org>;
+ Fri, 13 Nov 2020 14:29:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 63A1A8769A
- for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 09:21:32 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 2523CAE92;
- Fri, 13 Nov 2020 09:21:30 +0000 (UTC)
-Message-ID: <3af26701a12b0bcb55b8d422e2a18f06a8e94d4d.camel@suse.de>
-Subject: Re: [PATCH v4 02/11] firmware: raspberrypi: Introduce
- devm_rpi_firmware_get()
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Fri, 13 Nov 2020 10:21:28 +0100
-In-Reply-To: <CAMpxmJWZsqfkkTP99a_8mu+O4xHwNWDqHuvgt7Cs88bA-iMvQA@mail.gmail.com>
-References: <20201112163630.17177-1-nsaenzjulienne@suse.de>
- <20201112163630.17177-3-nsaenzjulienne@suse.de>
- <CAMpxmJWZsqfkkTP99a_8mu+O4xHwNWDqHuvgt7Cs88bA-iMvQA@mail.gmail.com>
-User-Agent: Evolution 3.36.5 
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D503387160
+ for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 14:29:53 +0000 (UTC)
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F2EB220715;
+ Fri, 13 Nov 2020 14:29:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605277793;
+ bh=e3QjDJePQNmrQAx9u96nNaIxxOGo5XiKT36hOiGvu+M=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=qdIPXjqeu0rWfbDhg94jLjPcBpmjZIBwHLLPLWv8P6x9WxP7WDJlLcmQsmpV8vRGt
+ OMAvIEyxcmZ1NB/z1oI3hSi74zITJffw9hIAMOQqum4nnm6Zfcb2rB+ZZN/WE/Zl+v
+ 9Wu52UzARkZm/5A7M04ywnI3+F30eZJLDlreIMsY=
+Date: Fri, 13 Nov 2020 14:29:37 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Dmitry Osipenko <digetx@gmail.com>
+Subject: Re: [PATCH v1 11/30] drm/tegra: dc: Support OPP and SoC core voltage
+ scaling
+Message-ID: <20201113142937.GB4828@sirena.org.uk>
+References: <20201104234427.26477-12-digetx@gmail.com>
+ <20201110202945.GF2375022@ulmo>
+ <20201110203257.GC5957@sirena.org.uk>
+ <72ae6462-13df-9fcb-510e-8e57eee0f035@gmail.com>
+ <20201111115534.GA4847@sirena.org.uk>
+ <dd26eb18-8ac4-22a6-29b0-dbbe5fa6075b@gmail.com>
+ <20201112171600.GD4742@sirena.org.uk>
+ <b4b06c1d-c9d4-43b2-c6eb-93f8cb6c677d@gmail.com>
+ <20201112200123.GF4742@sirena.org.uk>
+ <ce9e2d9f-917e-fb8a-7323-f3bf1a367e9d@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <ce9e2d9f-917e-fb8a-7323-f3bf1a367e9d@gmail.com>
+X-Cookie: No solicitors.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,98 +75,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
- linux-devicetree <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Ray Jui <rjui@broadcom.com>, Linus Walleij <linus.walleij@linaro.org>,
- Linux Input <linux-input@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
- linux-gpio <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-clk <linux-clk@vger.kernel.org>,
- arm-soc <linux-arm-kernel@lists.infradead.org>,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============2152717696513807085=="
+Cc: Peter Chen <Peter.Chen@nxp.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, dri-devel@lists.freedesktop.org,
+ Adrian Hunter <adrian.hunter@intel.com>, devicetree@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, devel@driverdev.osuosl.org,
+ linux-samsung-soc@vger.kernel.org, Nicolas Chauvet <kwizart@gmail.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Alan Stern <stern@rowland.harvard.edu>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-media@vger.kernel.org, linux-pwm@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Peter Geis <pgwipeout@gmail.com>
+Content-Type: multipart/mixed; boundary="===============1811722972848274824=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============2152717696513807085==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-lVAZyxFfZVTn1rZzZexc"
+--===============1811722972848274824==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="CdrF4e02JqNVZeln"
+Content-Disposition: inline
 
 
---=-lVAZyxFfZVTn1rZzZexc
-Content-Type: text/plain; charset="UTF-8"
+--CdrF4e02JqNVZeln
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, 2020-11-12 at 18:25 +0100, Bartosz Golaszewski wrote:
-> On Thu, Nov 12, 2020 at 5:44 PM Nicolas Saenz Julienne
-> <nsaenzjulienne@suse.de> wrote:
-> > Itroduce devm_rpi_firmware_get(), it'll simplify the firmware handling
-> > for most consumers.
-> >=20
-> > Suggested-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-> > ---
-> >=20
-> > Changes since v2:
-> > - Introduce devm_rpi_firmware_get()
-> >=20
-> >  drivers/firmware/raspberrypi.c             | 31 +++++++++++++++++++++-
-> >  include/soc/bcm2835/raspberrypi-firmware.h |  8 ++++++
-> >  2 files changed, 38 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/firmware/raspberrypi.c b/drivers/firmware/raspberr=
-ypi.c
-> > index 438e17074a97..4ab2dfdc82ad 100644
-> > --- a/drivers/firmware/raspberrypi.c
-> > +++ b/drivers/firmware/raspberrypi.c
-> > @@ -237,10 +237,17 @@ static void rpi_firmware_delete(struct kref *kref=
-)
-> >         kfree(fw);
-> >  }
-> >=20
-> > -void rpi_firmware_put(struct rpi_firmware *fw)
-> > +static void __rpi_firmware_put(void *data)
-> >  {
->=20
-> The '__' prefix is very vague and usually used for unlocked variants
-> of functions. The casting to void * in rpi_firmware_put() is also
-> unneeded. I would much prefer that the devres release callback be
-> called devm_rpi_firmware_put() and that it call rpi_firmware_put()
-> which would then call kref_put().
+On Fri, Nov 13, 2020 at 01:37:01AM +0300, Dmitry Osipenko wrote:
+> 12.11.2020 23:01, Mark Brown =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+> >> But it's not allowed to change voltage of a dummy regulator, is it
+> >> intentional?
 
-Yes, that's better. I'll change it.
+> > Of course not, we can't know if the requested new voltage is valid - the
+> > driver would have to have explict support for handling situations where
+> > it's not possible to change the voltage (which it can detect through
+> > enumerating the values it wants to set at startup).
 
-Regards,
-Nicolas
+> > [Requesting the same supply multiple times]
 
+> But how driver is supposed to recognize that it's a dummy or buggy
+> regulator if it rejects all voltages?
 
---=-lVAZyxFfZVTn1rZzZexc
+It's not clear if it matters - it's more a policy decision on the part
+of the driver about what it thinks safe error handling is.  If it's not
+possible to read voltages from the regulator the consumer driver has to
+decide what it thinks it's safe for it to do, either way it has no idea
+what the actual current voltage is.  It could assume that it's something
+that supports all the use cases it wants to use and just carry on with
+no configuration of voltages, it could decide that it might not support
+everything and not make any changes to be safe, or do something like
+try to figure out that if we're currently at a given OPP that's the top
+OPP possible.  Historically when we've not had regulator control in
+these drivers so they have effectively gone with the first option of
+just assuming it's a generally safe value, this often aligns with what
+the power on requirements for SoCs are so it's not unreasonable.
+
+--CdrF4e02JqNVZeln
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl+uUBgACgkQlfZmHno8
-x/6lEgf/d59t0Td5W4xLTNBLofc0Vh4uZHeN9Gvi6L52ayUePt+6T8iYBizcBSD7
-gMFFnbzAziAWiKl7DSZjZTOaVNPohvZqyhssPCN/xAs2Xw4k/9iy8SfjtY0LyJ5S
-cY0As+Fny0/3v+hdAXAcl0O26eMFecffjVnEne56Iyy9pA1GAsjf2IU2XO6bE2sX
-qED6OKxz+B+3vVZOyHv4E10B0L1rIs64Tjrh0fUElpaT+d8jPJ2aog1LKEjPe+rD
-1QA4cwN8xmkiB6Tj97LK6q2yG2Cji9OHBP6QEw9orQHti/aKKhozLyw+stmIq/uF
-gGk9YGb3/9okyNRC33V9EFN+3zjzCg==
-=Sbj8
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+umFAACgkQJNaLcl1U
+h9DRnAf/TT8I9XDaCoZsP58r0YQKOYiW9tWOMx5iUwJFikxSUl6upudJ8HrbvhS/
+O1evWVxr6jTg2q8A2Rq24+SXSF7KEAINXdggEQ+N4q8l5CzBXLA84C+z5IRIb6lL
+dgWqTg93CtK+XCEAKGWhAXn/nNFv8p9nol6fYYw6k8h00DJ+v04vDE/U+oofX1nn
+bOkrueTE3zsDh0U6tHC2dXK7hZX5s8j+g5aN4C5B27Xip+nGg6iiGHUQmsNP33Vc
+SLN6fJ7s1iNF+YNZBQLPWAeVTz44INs/8yIA6KTemFKz2lNUCozTaACHiLZTlyM2
+/pcp+qCaLayuAuXMCA2bNUT5gef9cg==
+=G9Fp
 -----END PGP SIGNATURE-----
 
---=-lVAZyxFfZVTn1rZzZexc--
+--CdrF4e02JqNVZeln--
 
-
---===============2152717696513807085==
+--===============1811722972848274824==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -161,5 +163,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============2152717696513807085==--
-
+--===============1811722972848274824==--
