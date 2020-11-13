@@ -1,78 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6EF5C2B17D6
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 10:11:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AB2182E1D6;
-	Fri, 13 Nov 2020 09:11:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IbLsEvlcmNvY; Fri, 13 Nov 2020 09:11:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E94ED2E1BA;
-	Fri, 13 Nov 2020 09:11:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 16A971BF9BD
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 09:11:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 204182B1817
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 10:21:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0EAE18740A
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 09:11:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 15E958743E;
+	Fri, 13 Nov 2020 09:21:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cw6GyfbuzGv2; Fri, 13 Nov 2020 09:21:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id A02D787425;
+	Fri, 13 Nov 2020 09:21:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A57441BF3FB
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 09:21:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id A20AD878D5
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 09:21:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HqUeUjgNgnkh for <devel@linuxdriverproject.org>;
- Fri, 13 Nov 2020 09:10:57 +0000 (UTC)
+ with ESMTP id oFuTFIEVbzxW for <devel@linuxdriverproject.org>;
+ Fri, 13 Nov 2020 09:21:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 85DDE87405
- for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 09:10:57 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id b6so8933180wrt.4
- for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 01:10:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=g0CHHJRFLkJgpWDc0kWpwLPadBEpgRbUEt1rTCDH2OM=;
- b=D4gyFtmnvMDTS1VEiZeY7wc2KHvHol8ijYHtMFfyx5VbwjErW66XQTz0w7lCQFArnK
- XPxkxdBykxUHPdhUCQuboujhx2cbVUeHYe2V+ppviGv0yVlG5sYZNK6F1CLc1HmFdrQT
- q8xD+UYA6Z+KNkkrbi2rYokMRdrKQ0GT5JdjSGXnlIeUMzd3HoYLPdycuULkuGEIC7Q1
- Ffublk3nJFT9eWAExx9SzFMDZLw2ZkJlr/tsQUypphx9yw6lmVl13jvwC6LEAVM4WKLr
- +MCxB0uHr+cNv32fwaPK/SFSvyKydc1HWFHyvCz8+2f4BufFCC518Rm95o+E4/GDBpUf
- QiTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=g0CHHJRFLkJgpWDc0kWpwLPadBEpgRbUEt1rTCDH2OM=;
- b=Ml8kW/sJ0vuPV30ZtRi/19j1zGxtrY5E1OX64KZDBIISEow3+bNpQqvtwYLpLkwndi
- CgB6LdENCaz7TPV8y/FIWjET6bYpqrb+C4e8y4C9dEoo/UggtvA2iEsQKsoWK8xpGP5F
- r/PXbVjgPZbrw5VelN1nheVeVXlyaTwK3Awcq5RPezR1yZg/x1jesY4ZKbbNWVGTLnW7
- Gm8ixRnP2ftTMQWKOJyfcNYKSWw33NAo62tiKAO7ILzsSdooc0D9CCV0P1cdzQaX1YcY
- 815eVKmqDrGgUchhXfiBftYjkvtC+zxe4XH3MANrsY++jmpmTDLxu0FwmGNCfI0NTlzt
- r/6g==
-X-Gm-Message-State: AOAM533J3Rit5f4zQexpZlWepkvBMQBcCSx14ZzJhSEndhht9vjGxypb
- BqfvMVLBm05w9MXifh0Jt9o=
-X-Google-Smtp-Source: ABdhPJyciHbl+LA+gvNXReZgkWMntgWiftBxUeKU2/A5fHAhGlcnRxlfHeTL61G7xGNH6ujrauQYzg==
-X-Received: by 2002:adf:84a6:: with SMTP id 35mr2167644wrg.18.1605258656126;
- Fri, 13 Nov 2020 01:10:56 -0800 (PST)
-Received: from localhost.localdomain
- (245.red-79-158-78.dynamicip.rima-tde.net. [79.158.78.245])
- by smtp.gmail.com with ESMTPSA id 15sm9266183wmg.1.2020.11.13.01.10.54
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 13 Nov 2020 01:10:55 -0800 (PST)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: mturquette@baylibre.com
-Subject: [PATCH v2 5/5] MAINTAINERS: add MT7621 CLOCK maintainer
-Date: Fri, 13 Nov 2020 10:10:46 +0100
-Message-Id: <20201113091046.30964-6-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201113091046.30964-1-sergio.paracuellos@gmail.com>
-References: <20201113091046.30964-1-sergio.paracuellos@gmail.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 63A1A8769A
+ for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 09:21:32 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 2523CAE92;
+ Fri, 13 Nov 2020 09:21:30 +0000 (UTC)
+Message-ID: <3af26701a12b0bcb55b8d422e2a18f06a8e94d4d.camel@suse.de>
+Subject: Re: [PATCH v4 02/11] firmware: raspberrypi: Introduce
+ devm_rpi_firmware_get()
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Date: Fri, 13 Nov 2020 10:21:28 +0100
+In-Reply-To: <CAMpxmJWZsqfkkTP99a_8mu+O4xHwNWDqHuvgt7Cs88bA-iMvQA@mail.gmail.com>
+References: <20201112163630.17177-1-nsaenzjulienne@suse.de>
+ <20201112163630.17177-3-nsaenzjulienne@suse.de>
+ <CAMpxmJWZsqfkkTP99a_8mu+O4xHwNWDqHuvgt7Cs88bA-iMvQA@mail.gmail.com>
+User-Agent: Evolution 3.36.5 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,44 +59,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: hackpascal@gmail.com, devicetree@vger.kernel.org, tsbogend@alpha.franken.de,
- sboyd@kernel.org, gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, jiaxun.yang@flygoat.com,
- linux-mips@vger.kernel.org, robh+dt@kernel.org, john@phrozen.org,
- neil@brown.name, linux-clk@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
+ linux-devicetree <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Ray Jui <rjui@broadcom.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Linux Input <linux-input@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ linux-gpio <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
+ bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>,
+ linux-rpi-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2152717696513807085=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Adding myself as maintainer for mt7621 clock driver.
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
+--===============2152717696513807085==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-lVAZyxFfZVTn1rZzZexc"
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f1f088a29bc2..30822ad6837c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -11142,6 +11142,12 @@ L:	linux-wireless@vger.kernel.org
- S:	Maintained
- F:	drivers/net/wireless/mediatek/mt7601u/
- 
-+MEDIATEK MT7621 CLOCK DRIVER
-+M:	Sergio Paracuellos <sergio.paracuellos@gmail.com>
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
-+F:	drivers/clk/ralink/clk-mt7621.c
-+
- MEDIATEK MT7621/28/88 I2C DRIVER
- M:	Stefan Roese <sr@denx.de>
- L:	linux-i2c@vger.kernel.org
--- 
-2.25.1
+
+--=-lVAZyxFfZVTn1rZzZexc
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, 2020-11-12 at 18:25 +0100, Bartosz Golaszewski wrote:
+> On Thu, Nov 12, 2020 at 5:44 PM Nicolas Saenz Julienne
+> <nsaenzjulienne@suse.de> wrote:
+> > Itroduce devm_rpi_firmware_get(), it'll simplify the firmware handling
+> > for most consumers.
+> >=20
+> > Suggested-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> > ---
+> >=20
+> > Changes since v2:
+> > - Introduce devm_rpi_firmware_get()
+> >=20
+> >  drivers/firmware/raspberrypi.c             | 31 +++++++++++++++++++++-
+> >  include/soc/bcm2835/raspberrypi-firmware.h |  8 ++++++
+> >  2 files changed, 38 insertions(+), 1 deletion(-)
+> >=20
+> > diff --git a/drivers/firmware/raspberrypi.c b/drivers/firmware/raspberr=
+ypi.c
+> > index 438e17074a97..4ab2dfdc82ad 100644
+> > --- a/drivers/firmware/raspberrypi.c
+> > +++ b/drivers/firmware/raspberrypi.c
+> > @@ -237,10 +237,17 @@ static void rpi_firmware_delete(struct kref *kref=
+)
+> >         kfree(fw);
+> >  }
+> >=20
+> > -void rpi_firmware_put(struct rpi_firmware *fw)
+> > +static void __rpi_firmware_put(void *data)
+> >  {
+>=20
+> The '__' prefix is very vague and usually used for unlocked variants
+> of functions. The casting to void * in rpi_firmware_put() is also
+> unneeded. I would much prefer that the devres release callback be
+> called devm_rpi_firmware_put() and that it call rpi_firmware_put()
+> which would then call kref_put().
+
+Yes, that's better. I'll change it.
+
+Regards,
+Nicolas
+
+
+--=-lVAZyxFfZVTn1rZzZexc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl+uUBgACgkQlfZmHno8
+x/6lEgf/d59t0Td5W4xLTNBLofc0Vh4uZHeN9Gvi6L52ayUePt+6T8iYBizcBSD7
+gMFFnbzAziAWiKl7DSZjZTOaVNPohvZqyhssPCN/xAs2Xw4k/9iy8SfjtY0LyJ5S
+cY0As+Fny0/3v+hdAXAcl0O26eMFecffjVnEne56Iyy9pA1GAsjf2IU2XO6bE2sX
+qED6OKxz+B+3vVZOyHv4E10B0L1rIs64Tjrh0fUElpaT+d8jPJ2aog1LKEjPe+rD
+1QA4cwN8xmkiB6Tj97LK6q2yG2Cji9OHBP6QEw9orQHti/aKKhozLyw+stmIq/uF
+gGk9YGb3/9okyNRC33V9EFN+3zjzCg==
+=Sbj8
+-----END PGP SIGNATURE-----
+
+--=-lVAZyxFfZVTn1rZzZexc--
+
+
+--===============2152717696513807085==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============2152717696513807085==--
+
