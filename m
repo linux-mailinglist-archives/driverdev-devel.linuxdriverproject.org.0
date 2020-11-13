@@ -1,80 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA3F92B22E4
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Nov 2020 18:46:56 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 816FD2B2915
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Nov 2020 00:20:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 214742E261;
-	Fri, 13 Nov 2020 17:46:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CD8DA87394;
+	Fri, 13 Nov 2020 23:20:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ld4Dsy0kNA1s; Fri, 13 Nov 2020 17:46:54 +0000 (UTC)
+	with ESMTP id jgauR77XqIvZ; Fri, 13 Nov 2020 23:20:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1CB4C2E24D;
-	Fri, 13 Nov 2020 17:46:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9728E87069;
+	Fri, 13 Nov 2020 23:19:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 302E31BF990
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 17:46:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F96A1BF283
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 23:19:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2CD2C87913
- for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 17:46:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4BD6E872DA
+ for <devel@linuxdriverproject.org>; Fri, 13 Nov 2020 23:19:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LN8-1hkHskih for <devel@linuxdriverproject.org>;
- Fri, 13 Nov 2020 17:46:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f180.google.com (mail-il1-f180.google.com
- [209.85.166.180])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 782618790B
- for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 17:46:49 +0000 (UTC)
-Received: by mail-il1-f180.google.com with SMTP id p10so9223933ile.3
- for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 09:46:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linuxfoundation.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=XEtz35TwaMOmtP7wZDty93xaU0e4wII3qI7ntzR/4WQ=;
- b=MBLRtdNVXvb371vssRTTQIGlMBWRZWFOky+eOrsFPSWIyGwIFrbO3WCfYTXFCxtesk
- BQ3sUk+dJLBKLpYxajlh97iZOUIZiE3EWWVA4Ux2agGHurqQDjaq0+bm/exeIrN+GlhP
- YkxXbuynzH+IpN0i116JxOb+1sDrgFHgO6W2s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=XEtz35TwaMOmtP7wZDty93xaU0e4wII3qI7ntzR/4WQ=;
- b=bYD0yYcw/NHohsh3N4ZY1tvp5hd/q77m0EKHMPeRiqY0Njs5IlwaIqizPjgLFpuCPy
- 1u/nWy6dImexBWjkQhxkEaH+v7nnV3Uzd6hAqvsnnQBxV3eF0QewGyjQg3Q4lMR8YXRl
- VUMqX+53AFZwX5A0jGiu38G/Zn8BhsWQYNHYBSixFs7+ytFwnnlb+VmjAwOBtmB1z6Rn
- yrHzVUR1OHwU/gqzah1P0c4fyGtoFB12KLmJJwA2dAPTZkHrVQG9Mac7V+bNFE/lgOQr
- ihk5vpOR8h/rm3iGqm3HvzwIy1SiFU+IVIYIQRPnU1bDmFJ62z23WH951t/gxtQLZ4ga
- 0XFQ==
-X-Gm-Message-State: AOAM531JsSdOsoVYBRJyU/ZWjeyDn5bPJSip1thzd8uQBNkbkjZC/0jV
- FJdTq6bmPolgS8eJRhcwU+83+A==
-X-Google-Smtp-Source: ABdhPJzOuUC15iLMQufTNIo7HdP2XkphHFvteCLyXwmLRGJvWU3Jror9urZyYDx8rK37OJlqrdLoAA==
-X-Received: by 2002:a05:6e02:1313:: with SMTP id
- g19mr748344ilr.177.1605289607715; 
- Fri, 13 Nov 2020 09:46:47 -0800 (PST)
-Received: from shuah-t480s.internal (c-24-9-64-241.hsd1.co.comcast.net.
- [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id y14sm4772585ilb.66.2020.11.13.09.46.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Nov 2020 09:46:47 -0800 (PST)
-From: Shuah Khan <skhan@linuxfoundation.org>
-To: david.kershner@unisys.com, gregkh@linuxfoundation.org,
- keescook@chromium.org, peterz@infradead.org
-Subject: [PATCH v2 12/13] drivers/staging/unisys/visorhba: convert stats to
- use seqnum_ops
-Date: Fri, 13 Nov 2020 10:46:14 -0700
-Message-Id: <948df30739a497922bafa4637f63218e9ec44e61.1605287778.git.skhan@linuxfoundation.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <cover.1605287778.git.skhan@linuxfoundation.org>
-References: <cover.1605287778.git.skhan@linuxfoundation.org>
+ with ESMTP id w7GW+-C6QEJA for <devel@linuxdriverproject.org>;
+ Fri, 13 Nov 2020 23:19:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 22E1687297
+ for <devel@driverdev.osuosl.org>; Fri, 13 Nov 2020 23:19:56 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3194B22256;
+ Fri, 13 Nov 2020 23:19:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605309595;
+ bh=d1+vwm7q5zqxJz8uUnUUrY8tcJifIeZAylikIYeQdb8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=tR0c5z8/xo7blosIiFBRvtCwJ2fs0gGY+AWvbzQLUVqKAFOsuLiOib9im6VB3JCEE
+ r+c4fHFYTtFXld55i6+WwsKCqvOaPFiiINqG4aATdr0l/SmhFSenNx4CoGh1IV1anc
+ ID1Eo08x7LkjSjQiPE3RvNw0rHipvcB5gmJKvPmg=
+Date: Sat, 14 Nov 2020 00:20:51 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH] staging: mt7621-pci: avoid to request pci bus resources
+Message-ID: <X68U0wyL0QHLfFbY@kroah.com>
+References: <20201102202515.19073-1-sergio.paracuellos@gmail.com>
+ <CAMhs-H9DRT6G0GQg-gpDT=q_BniDf3EbE3Qq2YbHCXZSK7nPqw@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAMhs-H9DRT6G0GQg-gpDT=q_BniDf3EbE3Qq2YbHCXZSK7nPqw@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,102 +65,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Shuah Khan <skhan@linuxfoundation.org>
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ NeilBrown <neil@brown.name>, stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sequence Number api provides interfaces for unsigned atomic up counters
-leveraging atomic_t and atomic64_t ops underneath. Convert it to use
-seqnum_ops.
+On Fri, Nov 13, 2020 at 04:26:08PM +0100, Sergio Paracuellos wrote:
+> Hi Greg,
+> 
+> On Mon, Nov 2, 2020 at 9:25 PM Sergio Paracuellos
+> <sergio.paracuellos@gmail.com> wrote:
+> >
+> > After upgrading kernel to version 5.9.x the driver was not
+> > working anymore showing the following kernel trace:
+> >
+> > ...
+> > mt7621-pci 1e140000.pcie: resource collision:
+> > [mem 0x60000000-0x6fffffff] conflicts with pcie@1e140000 [mem 0x60000000-0x6fffffff]
+> > ------------[ cut here ]------------
+> > WARNING: CPU: 2 PID: 73 at kernel/resource.c:1400
+> > devm_request_resource+0xfc/0x10c
+> > Modules linked in:
+> > CPU: 2 PID: 73 Comm: kworker/2:1 Not tainted 5.9.2 #0
+> > Workqueue: events deferred_probe_work_func
+> > Stack : 00000000 81590000 807d0a1c 808a0000 8fd49080
+> >         807d0000 00000009 808ac820
+> >         00000001 808338d0 7fff0001 800839dc 00000049
+> >         00000001 8fe51b00 367204ab
+> >         00000000 00000000 807d0a1c 807c0000 00000001
+> >         80082358 8fe50000 00559000
+> >         00000000 8fe519f1 ffffffff 00000005 00000000
+> >         00000001 00000000 807d0000
+> >         00000009 808ac820 00000001 808338d0 00000001
+> >         803bf1b0 00000008 81390008
+> >
+> > Call Trace:
+> > [<8000d018>] show_stack+0x30/0x100
+> > [<8032e66c>] dump_stack+0xa4/0xd4
+> > [<8002db1c>] __warn+0xc0/0x134
+> > [<8002dbec>] warn_slowpath_fmt+0x5c/0xac
+> > [<80033b34>] devm_request_resource+0xfc/0x10c
+> > [<80365ff8>] devm_request_pci_bus_resources+0x58/0xdc
+> > [<8048e13c>] mt7621_pci_probe+0x8dc/0xe48
+> > [<803d2140>] platform_drv_probe+0x40/0x94
+> > [<803cfd94>] really_probe+0x108/0x4ec
+> > [<803cd958>] bus_for_each_drv+0x70/0xb0
+> > [<803d0388>] __device_attach+0xec/0x164
+> > [<803cec8c>] bus_probe_device+0xa4/0xc0
+> > [<803cf1c4>] deferred_probe_work_func+0x80/0xc4
+> > [<80048444>] process_one_work+0x260/0x510
+> > [<80048a4c>] worker_thread+0x358/0x5cc
+> > [<8004f7d0>] kthread+0x134/0x13c
+> > [<80007478>] ret_from_kernel_thread+0x14/0x1c
+> > ---[ end trace a9dd2e37537510d3 ]---
+> > mt7621-pci 1e140000.pcie: Error requesting resources
+> > mt7621-pci: probe of 1e140000.pcie failed with error -16
+> > ...
+> >
+> > With commit 669cbc708122 ("PCI: Move DT resource setup into
+> > devm_pci_alloc_host_bridge()"), the DT 'ranges' is parsed and populated
+> > into resources when the host bridge is allocated. The resources are
+> > requested as well, but that happens a 2nd time for this driver in
+> > mt7621_pcie_request_resources(). Hence we should avoid this second
+> > request.
+> >
+> > Also, the bus ranges was also populated by default, so we can remove
+> > it from mt7621_pcie_request_resources() to avoid the following trace
+> > if we don't avoid it:
+> >
+> > pci_bus 0000:00: busn_res: can not insert [bus 00-ff]
+> > under domain [bus 00-ff] (conflicts with (null) [bus 00-ff])
+> >
+> > Function 'mt7621_pcie_request_resources' has been renamed into
+> > 'mt7621_pcie_add_resources' which now is a more accurate name
+> > for this function.
+> >
+> > Cc: stable@vger.kernel.org#5.9.x-
+> > Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> 
+> This patch have to be added also for stable 5.9.x because driver is
+> broken in all kernel 5.9.x releases. I noticed a new stable release
+> comes three days ago (5.9.8) and this was not added. I was wondering
+> if the way I marked this patch to be included is wrong.
 
-atomic_t variable used for error_count are atomic counters. Convert it to
-use seqnum_ops.
+Is this patch in Linus's tree yet?  If not, we can't add it to any
+stable tree.  That has to happen first.
 
-Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
----
- .../staging/unisys/visorhba/visorhba_main.c   | 21 ++++++++++---------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
-index 7ae5306b92fe..7837eca83758 100644
---- a/drivers/staging/unisys/visorhba/visorhba_main.c
-+++ b/drivers/staging/unisys/visorhba/visorhba_main.c
-@@ -10,6 +10,7 @@
- #include <linux/module.h>
- #include <linux/seq_file.h>
- #include <linux/visorbus.h>
-+#include <linux/seqnum_ops.h>
- #include <scsi/scsi.h>
- #include <scsi/scsi_host.h>
- #include <scsi/scsi_cmnd.h>
-@@ -42,7 +43,7 @@ struct visordisk_info {
- 	struct scsi_device *sdev;
- 	u32 valid;
- 	atomic_t ios_threshold;
--	atomic_t error_count;
-+	struct seqnum32 error_count;
- 	struct visordisk_info *next;
- };
- 
-@@ -374,8 +375,8 @@ static int visorhba_abort_handler(struct scsi_cmnd *scsicmd)
- 
- 	scsidev = scsicmd->device;
- 	vdisk = scsidev->hostdata;
--	if (atomic_read(&vdisk->error_count) < VISORHBA_ERROR_COUNT)
--		atomic_inc(&vdisk->error_count);
-+	if (seqnum32_fetch(&vdisk->error_count) < VISORHBA_ERROR_COUNT)
-+		seqnum32_inc_return(&vdisk->error_count);
- 	else
- 		atomic_set(&vdisk->ios_threshold, IOS_ERROR_THRESHOLD);
- 	rtn = forward_taskmgmt_command(TASK_MGMT_ABORT_TASK, scsidev);
-@@ -401,8 +402,8 @@ static int visorhba_device_reset_handler(struct scsi_cmnd *scsicmd)
- 
- 	scsidev = scsicmd->device;
- 	vdisk = scsidev->hostdata;
--	if (atomic_read(&vdisk->error_count) < VISORHBA_ERROR_COUNT)
--		atomic_inc(&vdisk->error_count);
-+	if (seqnum32_fetch(&vdisk->error_count) < VISORHBA_ERROR_COUNT)
-+		seqnum32_inc_return(&vdisk->error_count);
- 	else
- 		atomic_set(&vdisk->ios_threshold, IOS_ERROR_THRESHOLD);
- 	rtn = forward_taskmgmt_command(TASK_MGMT_LUN_RESET, scsidev);
-@@ -429,8 +430,8 @@ static int visorhba_bus_reset_handler(struct scsi_cmnd *scsicmd)
- 	scsidev = scsicmd->device;
- 	shost_for_each_device(scsidev, scsidev->host) {
- 		vdisk = scsidev->hostdata;
--		if (atomic_read(&vdisk->error_count) < VISORHBA_ERROR_COUNT)
--			atomic_inc(&vdisk->error_count);
-+		if (seqnum32_fetch(&vdisk->error_count) < VISORHBA_ERROR_COUNT)
-+			seqnum32_inc_return(&vdisk->error_count);
- 		else
- 			atomic_set(&vdisk->ios_threshold, IOS_ERROR_THRESHOLD);
- 	}
-@@ -803,8 +804,8 @@ static void do_scsi_linuxstat(struct uiscmdrsp *cmdrsp,
- 		return;
- 	/* Okay see what our error_count is here.... */
- 	vdisk = scsidev->hostdata;
--	if (atomic_read(&vdisk->error_count) < VISORHBA_ERROR_COUNT) {
--		atomic_inc(&vdisk->error_count);
-+	if (seqnum32_fetch(&vdisk->error_count) < VISORHBA_ERROR_COUNT) {
-+		seqnum32_inc_return(&vdisk->error_count);
- 		atomic_set(&vdisk->ios_threshold, IOS_ERROR_THRESHOLD);
- 	}
- }
-@@ -884,7 +885,7 @@ static void do_scsi_nolinuxstat(struct uiscmdrsp *cmdrsp,
- 		if (atomic_read(&vdisk->ios_threshold) > 0) {
- 			atomic_dec(&vdisk->ios_threshold);
- 			if (atomic_read(&vdisk->ios_threshold) == 0)
--				atomic_set(&vdisk->error_count, 0);
-+				seqnum32_init(&vdisk->error_count);
- 		}
- 	}
- }
--- 
-2.27.0
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
