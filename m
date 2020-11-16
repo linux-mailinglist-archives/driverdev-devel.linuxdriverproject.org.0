@@ -1,44 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 038552B443D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Nov 2020 14:02:30 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4F2B3204E0;
-	Mon, 16 Nov 2020 13:02:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aizbVHwQ9+Kz; Mon, 16 Nov 2020 13:02:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4841D20113;
-	Mon, 16 Nov 2020 13:02:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2F7D21BF41C
- for <devel@linuxdriverproject.org>; Mon, 16 Nov 2020 13:02:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 52D272B443B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Nov 2020 14:02:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2399D867E8
- for <devel@linuxdriverproject.org>; Mon, 16 Nov 2020 13:02:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 32A6B8686F;
+	Mon, 16 Nov 2020 13:02:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p8rpKydNVJg0; Mon, 16 Nov 2020 13:02:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8F6708681A;
+	Mon, 16 Nov 2020 13:02:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B5BB21BF41C
+ for <devel@linuxdriverproject.org>; Mon, 16 Nov 2020 13:02:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7C777204BB
+ for <devel@linuxdriverproject.org>; Mon, 16 Nov 2020 13:02:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ytzEfxGU1NIk for <devel@linuxdriverproject.org>;
- Mon, 16 Nov 2020 13:02:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id d3FPtuvf6cXM for <devel@linuxdriverproject.org>;
+ Mon, 16 Nov 2020 13:02:05 +0000 (UTC)
+X-Greylist: delayed 00:05:30 by SQLgrey-1.7.6
 Received: from dmz.c-home.cz (gw.c-home.cz [89.24.150.100])
- by whitealder.osuosl.org (Postfix) with ESMTP id 66BBE8682A
- for <devel@driverdev.osuosl.org>; Mon, 16 Nov 2020 13:02:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 51A4B20488
+ for <devel@driverdev.osuosl.org>; Mon, 16 Nov 2020 13:02:05 +0000 (UTC)
 Received: from ubuntu2004.c-home.cz (unifi.c-home.cz [192.168.1.227])
- by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 0AGCuMla021922;
- Mon, 16 Nov 2020 13:56:44 +0100 (CET)
+ by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 0AGCuMlb021922;
+ Mon, 16 Nov 2020 13:56:46 +0100 (CET)
 From: Martin Cerveny <m.cerveny@computer.org>
 To: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH v3 5/6] dt-bindings: media: cedrus: Add V3s compatible
-Date: Mon, 16 Nov 2020 13:56:16 +0100
-Message-Id: <20201116125617.7597-6-m.cerveny@computer.org>
+Subject: [PATCH v3 6/6] ARM: dts: sun8i: v3s: Add video engine node
+Date: Mon, 16 Nov 2020 13:56:17 +0100
+Message-Id: <20201116125617.7597-7-m.cerveny@computer.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201116125617.7597-1-m.cerveny@computer.org>
 References: <20201116125617.7597-1-m.cerveny@computer.org>
@@ -70,25 +70,35 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Allwinner V3s SoC contains video engine. Add compatible for it.
+Allwinner V3S SoC has a video engine.
+Add a node for it.
 
 Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
 ---
- .../bindings/media/allwinner,sun4i-a10-video-engine.yaml         | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/sun8i-v3s.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml b/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
-index 0d58bbcd24d3..2f7058f7760c 100644
---- a/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
-+++ b/Documentation/devicetree/bindings/media/allwinner,sun4i-a10-video-engine.yaml
-@@ -18,6 +18,7 @@ properties:
-       - allwinner,sun7i-a20-video-engine
-       - allwinner,sun8i-a33-video-engine
-       - allwinner,sun8i-h3-video-engine
-+      - allwinner,sun8i-v3s-video-engine
-       - allwinner,sun8i-r40-video-engine
-       - allwinner,sun50i-a64-video-engine
-       - allwinner,sun50i-h5-video-engine
+diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+index 70193512c222..e8f304125e2d 100644
+--- a/arch/arm/boot/dts/sun8i-v3s.dtsi
++++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+@@ -211,6 +211,16 @@ tcon0_out: port@1 {
+ 			};
+ 		};
+ 
++		video-codec@1c0e000 {
++			compatible = "allwinner,sun8i-v3s-video-engine";
++			reg = <0x01c0e000 0x1000>;
++			clocks = <&ccu CLK_BUS_VE>, <&ccu CLK_VE>,
++				 <&ccu CLK_DRAM_VE>;
++			clock-names = "ahb", "mod", "ram";
++			resets = <&ccu RST_BUS_VE>;
++			interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>;
++			allwinner,sram = <&ve_sram 1>;
++		};
+ 
+ 		mmc0: mmc@1c0f000 {
+ 			compatible = "allwinner,sun7i-a20-mmc";
 -- 
 2.25.1
 
