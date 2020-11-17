@@ -2,59 +2,139 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B7C22B5AB8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Nov 2020 09:08:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 005322B5ABF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Nov 2020 09:09:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F00FF87116;
-	Tue, 17 Nov 2020 08:08:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5FBBB8705B;
+	Tue, 17 Nov 2020 08:09:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pLa5eNmpDGJb; Tue, 17 Nov 2020 08:08:33 +0000 (UTC)
+	with ESMTP id 7o4G+9i9sm1e; Tue, 17 Nov 2020 08:09:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3F3BF8704E;
-	Tue, 17 Nov 2020 08:08:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id DA6CB8704C;
+	Tue, 17 Nov 2020 08:09:14 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CD5A41BF340
- for <devel@linuxdriverproject.org>; Tue, 17 Nov 2020 08:08:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7B8AA1BF340
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 Nov 2020 08:09:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B277E2038B
- for <devel@linuxdriverproject.org>; Tue, 17 Nov 2020 08:08:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 773BD811C1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 Nov 2020 08:09:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AYqlK+BfayaY for <devel@linuxdriverproject.org>;
- Tue, 17 Nov 2020 08:08:29 +0000 (UTC)
+ with ESMTP id sAYQuUxeCdHe
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 Nov 2020 08:09:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 9365F1FB6B
- for <devel@driverdev.osuosl.org>; Tue, 17 Nov 2020 08:08:29 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5cc.dynamic.kabel-deutschland.de
- [95.90.213.204])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AE5DA217A0;
- Tue, 17 Nov 2020 08:08:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605600509;
- bh=cRiR775sbP/iM4xvFYf2hnVUp7zOkSPpk4O4Ifcuc+I=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=OcdWHYNAp9Idh3juVnQys4lCUIATjqkUV9VMjC0eC76liXginBdO3BsXsudMTb8Da
- aE10utKWj9StftQrGI4Nsbzed7t/e31IyQKmeMLqW5ieiA5rZ0ZIuUoomHq2Xp4NjU
- +enwnfYCSLAn+zSobcyol2YJzku7RMPp1nagUl88=
-Date: Tue, 17 Nov 2020 09:08:22 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 4/8] regulator: hi6421v600-regulator: move it from staging
-Message-ID: <20201117090724.4ade833a@coco.lan>
-In-Reply-To: <20201116183833.GC4739@sirena.org.uk>
-References: <cover.1605530560.git.mchehab+huawei@kernel.org>
- <471362653f22a8748202c55babd2b462056a5797.1605530560.git.mchehab+huawei@kernel.org>
- <20201116183833.GC4739@sirena.org.uk>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
+ [68.232.149.84])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3856084E4E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 Nov 2020 08:08:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1605600534; x=1637136534;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=Cizs8dNnpcP0JKrQbhWulGhITHuYp09ELwYiGjNOweE=;
+ b=P2MSvS7/xBlDRHUtNORrVdDiNFzxe20NTdaAQcekOdaOrnUtG29vNeBi
+ HBQxVQldT5YhVBR2AQMdnYl2n9VBn+Iyt/hhR+lStoFylB5eepbtEM3kw
+ no5ZgsgQfNUzlfh2xCOIBNhxz0NsTNegAGDGoqm8CpVm7jwJBNh0F0LNQ
+ dKQ8H3Bds+JQde4GLuIGfl+FgxSQlg9Khjr8vzUVdcP8K6FHU6HfbYZSA
+ ujQl+ZHqWNPkqgffrKQkJt84Lzhx3Wq2YcPqFcCkY1r8ETQqBynmUP/bU
+ oaiYrJO+dg81p60b65h4i4xGkU3F2t78ukGolCmejmS3ikDEeWc1tO6WJ A==;
+IronPort-SDR: 3RqN+6to+C5MzK1Q5ZaSuuIs37VNersTAKibdXu3hkT+LD4EUJGsMiEIexW3UDFCndzhtksjDs
+ 96rGPKz/6+LNwh8ci+p3iZ1HVmKJRjOTFn8FSwPFLbXCieClyah9lQ8DWiK9y+iWbxEXZ7e1ew
+ WMxuzlHXWoZsUMGiZABtgt3w9iSFRv++XUN9wn/wbXkkLfi45Tmh9p0kSFZlDgnYsRky4/Ih8o
+ dWa+bwigbMmx7eKYBpwZxu/NeOrIBZahm5OB4EhruWPhecly30/5pr035S85qvpqvLLmeP9GHn
+ q40=
+X-IronPort-AV: E=Sophos;i="5.77,484,1596524400"; d="scan'208";a="96587520"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 17 Nov 2020 01:08:52 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Tue, 17 Nov 2020 01:08:52 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3
+ via Frontend Transport; Tue, 17 Nov 2020 01:08:52 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=K2vRPdWa0qPteDbT0Zel+Ob5BB5GcNXJSyl34WCYfsV/zMiC+V33sIFAygZuFxqfczzux9RSOakdiBbSAPG74FPCAl1bEIc9JO2szyDWLaHqY7iTSnv5jLcu8VIWfpNrlCYlyd4xG7dxV3jfKp8tBN18WQw6azeFmNZDRwhgsGgvD9exikJ9tZD/Qr0zk3KJU/dHnqGRRX7Q3KWMVW3AL2/mB8nO36xRW37dZgwqyPEPZ9SQ1k9Wu2SGYes4n8xNlHO5d2oXlypCLCbZxUNbN30QfuepYhHEisDtaVKgcVf6NMWNA8aUH1OZGY2DIz4FdRYaGjfbg+26qix3lVz/PA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Cizs8dNnpcP0JKrQbhWulGhITHuYp09ELwYiGjNOweE=;
+ b=gOEQ+erCY52Ql/jFwJAdBS5VbSmmoBBP8nyEemIDw0wA8w3fMy4CJNa65o/7kysYLbzNZ40wTQzymGsHb2HQtIZQCFS1SamKXogBfcNErFSVACNnMtBfFrOprYWI3ZBgC3gSuANvgf8bfA7v/Xdk2xxdFwMT3bYVikVqGAcOk8v8BZyF2UmAPWU+EWJEmuTQAc+gTJFfhRrDVSrTBL73nM2HC/8iFzUXM9gM7SWeL5xbHh6gK9pq35ZFMv8ukGn81l4RGbBBCuw23TwfdNiX7iP005tVEeztF+fISfaTRl07/k2YBmQurJjvIk7jpE9FATbGYJau/Cz7ByrUkOayXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Cizs8dNnpcP0JKrQbhWulGhITHuYp09ELwYiGjNOweE=;
+ b=TrJ8JQl12dGQDe7NsevO6AT9LJQQ7U6JpFu+D7/vW32AkTs6oQeP4t91PsjVbT1DiQkP9GwV0o/GLazLOoJZQ+VNlN7h54zKgCc8Bmho0mOxJVPtSRRoOaLV14mJ/MZjS7tWvbIPXmA2b8c/KQTCNySfqkc5z9ehekdu6ld+h64=
+Received: from DM6PR11MB3420.namprd11.prod.outlook.com (2603:10b6:5:69::31) by
+ DM6PR11MB3868.namprd11.prod.outlook.com (2603:10b6:5:19f::13) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3564.28; Tue, 17 Nov 2020 08:08:51 +0000
+Received: from DM6PR11MB3420.namprd11.prod.outlook.com
+ ([fe80::f983:dc6d:ad81:9e18]) by DM6PR11MB3420.namprd11.prod.outlook.com
+ ([fe80::f983:dc6d:ad81:9e18%7]) with mapi id 15.20.3564.028; Tue, 17 Nov 2020
+ 08:08:50 +0000
+From: <Christian.Gromm@microchip.com>
+To: <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v2] drivers: most: add ALSA sound driver
+Thread-Topic: [PATCH v2] drivers: most: add ALSA sound driver
+Thread-Index: AQHWtFo41Os4vkblKke0fdQNlR9SoqnBE80AgAr1QIA=
+Date: Tue, 17 Nov 2020 08:08:50 +0000
+Message-ID: <564d35a4fc32866f91f5bf3fb1bb16a5c67b3d9e.camel@microchip.com>
+References: <1604680254-17185-1-git-send-email-christian.gromm@microchip.com>
+ <20201110084826.GE29398@kadam>
+In-Reply-To: <20201110084826.GE29398@kadam>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.30.5-1.1 
+authentication-results: oracle.com; dkim=none (message not signed)
+ header.d=none;oracle.com; dmarc=none action=none header.from=microchip.com;
+x-originating-ip: [109.250.134.222]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 66516092-9b4f-42bd-b413-08d88ad004b4
+x-ms-traffictypediagnostic: DM6PR11MB3868:
+x-microsoft-antispam-prvs: <DM6PR11MB3868F9F5E72A5C015B78793CF8E20@DM6PR11MB3868.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ZiMZ8MuAKKhF8PWBtV4YrJp3ieTAR7aTOOrsWU3EuzF5ICZdYR8kFDMpRek1+xKbsH4cB7URJnqu/VKKvlm1qNpdQYPvzyn2BsFg9n1Mk/Ex1sPdrhG3anw1YXjQS5mEav0YjcKph29fdxv342atP88Qph4lxuQHZd/GbyBD1AYSOtGq6WAZwmWVvnu4rNUW+HsP/3QZc4VQaLb9NhMJu2Z+nTxFaPRpyBiuFnsvmFcCW+sDApgAEIer4SsmndmVKUhT5lfibQPOLsBcwS+N6t3+TLCrTO4iqZ6CXxhPG+Iv/eW4zYHxj3zCjJK86m0P
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3420.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(366004)(346002)(136003)(39860400002)(396003)(66556008)(66476007)(64756008)(66946007)(316002)(478600001)(66446008)(71200400001)(91956017)(8676002)(4001150100001)(4326008)(6916009)(8936002)(26005)(186003)(2616005)(6512007)(76116006)(6506007)(6486002)(36756003)(86362001)(54906003)(5660300002)(2906002)(83380400001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: Ejksa0aQvmLqSFO5TdxPR9qH/2b3oPAby+NWskyhka3FdU0dwmjFt0rEzRGB0gx29dk93DP0PWgrFdFDfuKzY0EgFu1tH3mPa5YztC7P+JoEFfr97bhA7Be6PH6QTTM2Ysjkp908eDyYwJ8XsoTBd9D8lkQXZwm3VDTIEAkiZqP9qA4S8SzqOKw1lV3vKnbtVU+waz7fd3cgxmhabzk+mYTz7XobBKoD5c32u/ufwGMn3XPCCZSGfwv71rmgO6l6QQOEwm8jyyY53od1VaxG16X/1PspIqYCsCDLcwrZkWicqYkrjr8KqkYbnYXzY8rMHtXe35/5gRbspkbIdamp0h6wkbsAqJiWBGG2x8/CqsF2mf2cigE96U0aY46IOt3hlbIohBMuq2plzsdTcyTwcROHg2QTzHNobYiSYiBFrHHSxXLaxWdFiA8rAdzRwq63HyEJTkfFG/Pna5raEv2JIHsp2/Hn71cJ/9IUCzQJJUxZqfXQUWa1qq72wU8lX55IghADzqRYar/XHhQ/I4NxLsd2usqMQuFCo9c1uX7M2/Wrkb8OcO7ScEr0/dOZu1uu1tXfLNADnXGfD1sX8pU4nIWAA08wm1Q2IIqvyO0WN6iOixYL9EoZ9DVoIS8YN3RCpiHcGKY2q0jLrC2oRl0YLcoENmTmaKddo8kCtT29ML1yG/EjaxMhuzgSs8iq5aIR5GXc4GHcFXnOdOS1whQDpX30EeLzf+Hf6WFGGUB5tQUnlZwOEZQ9xt9eSg8QX2KatEkGBYZqcUXbOxf/ptPzvrQjD2QdRcjVGRP15Q+MbnYM8LijVH1ys2LW0/k86piGAqcSoZJ3fVQ4CUqS4Tnso7uAO8WgwUYDRmsB7bJv8zQEQW3fyOAlH4JPKxT38TLVkjI7qdgdl1CSp0cH7EkLeA==
+x-ms-exchange-transport-forked: True
+Content-ID: <B0910BA52A52704F97833B5DF420EE8B@namprd11.prod.outlook.com>
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3420.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66516092-9b4f-42bd-b413-08d88ad004b4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Nov 2020 08:08:50.6419 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: UzEa4FzPFrLO1FRn3cYisD1Tlz+qbYXLAleJ2b4k/XesJt7E1/Y29caDzReZH+6JaX47yZnGkPoNUSxUnSbPFzzxeEWjesGVodX+rt9B8jQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3868
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,92 +147,191 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Manivannan Sadhasivam <mani@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mayulong <mayulong1@huawei.com>, YueHaibing <yuehaibing@huawei.com>,
- Liam Girdwood <lgirdwood@gmail.com>, linuxarm@huawei.com,
- John Stultz <john.stultz@linaro.org>, mauro.chehab@huawei.com,
- linux-kernel@vger.kernel.org
+Cc: gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org,
+ linux-sound@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Mark,
-
-Em Mon, 16 Nov 2020 18:38:33 +0000
-Mark Brown <broonie@kernel.org> escreveu:
-
-> > This driver is ready for mainstream. Move it out of staging.  
+On Tue, 2020-11-10 at 11:48 +0300, Dan Carpenter wrote:
+> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
 > 
-> There's quite a few issues here, to be honest I'm disappointed some of
-> them weren't caught during staging review, this needs fairly substantial
-> work and there's signs that this also applies to at least the MFD
-> portion.
+> On Fri, Nov 06, 2020 at 05:30:54PM +0100, Christian Gromm wrote:
+> > +static struct list_head adpt_list;
+> > +
+> > +#define MOST_PCM_INFO (SNDRV_PCM_INFO_MMAP | \
+> > +                    SNDRV_PCM_INFO_MMAP_VALID | \
+> > +                    SNDRV_PCM_INFO_BATCH | \
+> > +                    SNDRV_PCM_INFO_INTERLEAVED | \
+> > +                    SNDRV_PCM_INFO_BLOCK_TRANSFER)
+> > +
+> > +static void swap_copy16(u16 *dest, const u16 *source, unsigned int bytes)
+> > +{
+> > +     unsigned int i = 0;
+> > +
+> > +     while (i < (bytes / 2)) {
+> > +             dest[i] = swab16(source[i]);
+> > +             i++;
+> > +     }
+> > +}
+> > +
+> > +static void swap_copy24(u8 *dest, const u8 *source, unsigned int bytes)
+> > +{
+> > +     unsigned int i = 0;
+> > +
+> > +     while (i < bytes - 2) {
 > 
-...
-> > +static int hi6421_spmi_regulator_probe_ldo(struct platform_device *pdev,
-> > +                                          struct device_node *np,
-> > +                                          struct hi6421_spmi_pmic *pmic)
-> > +{  
+> Can bytes ever be zero?  If so then this will corrupt memory and crash.
 > 
-> This probe code looks very different to other regulator drivers, this
-> alone should have been a warning that the driver needs some substantial
-> refactoring here.  As indicated information about what regulators are
-> present on devices and their properties should be in the driver not the
-> DT, the driver should just be able to register them unconditionally and
-> use of_match and regulators_node to allow the core to find any
-> constraints that are provided by the platform.
+> Generally "int i;" is less risky than "unsigned int i;".  Of course, I
+> recently almost introduced a situation where we were copying up to
+> ULONG_MAX bytes so there are times when iterators should be size_t so
+> that does happen.  It could be buggy either way is what I'm saying but
+> generally "unsigned int i;" is more often buggy.
+> 
+> > +             dest[i] = source[i + 2];
+> > +             dest[i + 1] = source[i + 1];
+> > +             dest[i + 2] = source[i];
+> > +             i += 3;
+> > +     }
+> > +}
+> > +
+> > +static void swap_copy32(u32 *dest, const u32 *source, unsigned int bytes)
+> > +{
+> > +     unsigned int i = 0;
+> > +
+> > +     while (i < bytes / 4) {
+> > +             dest[i] = swab32(source[i]);
+> > +             i++;
+> > +     }
+> > +}
+> > +
+> > +static void alsa_to_most_memcpy(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     memcpy(most, alsa, bytes);
+> > +}
+> > +
+> > +static void alsa_to_most_copy16(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     swap_copy16(most, alsa, bytes);
+> > +}
+> > +
+> > +static void alsa_to_most_copy24(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     swap_copy24(most, alsa, bytes);
+> > +}
+> > +
+> > +static void alsa_to_most_copy32(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     swap_copy32(most, alsa, bytes);
+> > +}
+> > +
+> > +static void most_to_alsa_memcpy(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     memcpy(alsa, most, bytes);
+> > +}
+> > +
+> > +static void most_to_alsa_copy16(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     swap_copy16(alsa, most, bytes);
+> > +}
+> > +
+> > +static void most_to_alsa_copy24(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     swap_copy24(alsa, most, bytes);
+> > +}
+> > +
+> > +static void most_to_alsa_copy32(void *alsa, void *most, unsigned int bytes)
+> > +{
+> > +     swap_copy32(alsa, most, bytes);
+> > +}
+> > +
+> > +/**
+> > + * get_channel - get pointer to channel
+> > + * @iface: interface structure
+> > + * @channel_id: channel ID
+> > + *
+> > + * This traverses the channel list and returns the channel matching the
+> > + * ID and interface.
+> > + *
+> > + * Returns pointer to channel on success or NULL otherwise.
+> > + */
+> > +static struct channel *get_channel(struct most_interface *iface,
+> > +                                int channel_id)
+> > +{
+> > +     struct sound_adapter *adpt = iface->priv;
+> > +     struct channel *channel, *tmp;
+> > +
+> > +     list_for_each_entry_safe(channel, tmp, &adpt->dev_list, list) {
+> > +             if ((channel->iface == iface) && (channel->id == channel_id))
+> > +                     return channel;
+> 
+> No need to use the _safe() version of this loop macro.  You're not
+> freeing anything.  My concern is that sometimes people think the _safe()
+> has something to do with locking and it does not.
+> 
+> > +     }
+> > +     return NULL;
+> > +}
+> > +
+> 
+> [ Snip ]
+> 
+> > +/**
+> > + * audio_probe_channel - probe function of the driver module
+> > + * @iface: pointer to interface instance
+> > + * @channel_id: channel index/ID
+> > + * @cfg: pointer to actual channel configuration
+> > + * @arg_list: string that provides the name of the device to be created in /dev
+> > + *         plus the desired audio resolution
+> > + *
+> > + * Creates sound card, pcm device, sets pcm ops and registers sound card.
+> > + *
+> > + * Returns 0 on success or error code otherwise.
+> > + */
+> > +static int audio_probe_channel(struct most_interface *iface, int channel_id,
+> > +                            struct most_channel_config *cfg,
+> > +                            char *device_name, char *arg_list)
+> > +{
+> > +     struct channel *channel;
+> > +     struct sound_adapter *adpt;
+> > +     struct snd_pcm *pcm;
+> > +     int playback_count = 0;
+> > +     int capture_count = 0;
+> > +     int ret;
+> > +     int direction;
+> > +     u16 ch_num;
+> > +     char *sample_res;
+> > +     char arg_list_cpy[STRING_SIZE];
+> > +
+> > +     if (cfg->data_type != MOST_CH_SYNC) {
+> > +             pr_err("Incompatible channel type\n");
+> > +             return -EINVAL;
+> > +     }
+> > +     strlcpy(arg_list_cpy, arg_list, STRING_SIZE);
+> > +     ret = split_arg_list(arg_list_cpy, &ch_num, &sample_res);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     list_for_each_entry(adpt, &adpt_list, list) {
+> > +             if (adpt->iface != iface)
+> > +                     continue;
+> > +             if (adpt->registered)
+> > +                     return -ENOSPC;
+> > +             adpt->pcm_dev_idx++;
+> > +             goto skip_adpt_alloc;
+> 
+> It's weird how if the "channel = " allocation fails, then we free this
+> "adpt" which we didn't allocate.
 
-Let me reply to this before handling the other issues you pointed, as
-this one is related to some design decisions I had to make for this driver
-to properly work upstream.
+We actually did allocate it in a previous call to this function.
+Otherwise we would not jump to the skip_adpt_alloc label. And if
+we don't jump there, we are allocating it right away.
 
-FYI, all documentation I have about this board is at:
-	https://www.96boards.org/documentation/consumer/hikey/hikey970/
+thanks,
+Chris
 
--
-
-The setup for MFD/regulator is different than almost all other
-regulator drivers currently upstreamed[1]. 
-
-The PM part of Hikey970 is based on a master/slave SPMI bus. Each
-bus can have up to 16 PM chips connected into it.
-
-It means that, for the regulator driver to work, two drivers
-should be probed first: the SPMI bus controller driver
-(hisi-spmi-controller.c) and the SPMI bus client driver, which is
-at the MFD driver(hi6421-spmi-pmic.c).
-
-Only after having both probed, the regulator driver can be
-probed.
-
-Also, as all the communication between the PM chip
-and the SoC happens via a single serial bus, there's no
-sense on probing the regulators in parallel.
-
-That's mainly the reason why I opted to serialize the probe
-inside hi6421v600-regulator.c. 
-
-The relevant changeset that ensures that everything is
-probed the right way is this one:
-	75937f8f961e ("staging: regulator: hi6421v600-regulator: change the binding logic")
-
-Without such change, the driver doesn't work upstream, as the 
-regulator driver ends by being probed before the bus client
-driver (MFD).
-
-There's a second reason, though: when letting regulator probe to
-happen in parallel, the LDOs got probed on a random order, which
-makes more difficult to debug the driver, as the LDO numbering
-may not be following the LDO name, making harder to debug the
-drivers that depend on regulator support.
-
-Thanks,
-Mauro
-
-[1] The only other drivers for SPMI bus are from some Qualcomm
-based boards - those seem to be using a different setup.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
