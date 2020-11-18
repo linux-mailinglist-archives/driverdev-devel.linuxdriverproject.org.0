@@ -1,62 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 486032B755F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Nov 2020 05:25:48 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D47D2B7627
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Nov 2020 07:09:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 93734851D6;
-	Wed, 18 Nov 2020 04:25:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9716D871FE;
+	Wed, 18 Nov 2020 06:09:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SnjP6indsAqc; Wed, 18 Nov 2020 04:25:45 +0000 (UTC)
+	with ESMTP id cW3AcudRgD+q; Wed, 18 Nov 2020 06:09:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BF31C84E24;
-	Wed, 18 Nov 2020 04:25:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C1028871BE;
+	Wed, 18 Nov 2020 06:09:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 89F091BF584
- for <devel@linuxdriverproject.org>; Wed, 18 Nov 2020 04:25:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CDDE1BF4E3
+ for <devel@linuxdriverproject.org>; Wed, 18 Nov 2020 06:09:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 845FB8511B
- for <devel@linuxdriverproject.org>; Wed, 18 Nov 2020 04:25:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1288E867C8
+ for <devel@linuxdriverproject.org>; Wed, 18 Nov 2020 06:09:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UAUraykBzfRO for <devel@linuxdriverproject.org>;
- Wed, 18 Nov 2020 04:25:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BD94F84E24
- for <devel@driverdev.osuosl.org>; Wed, 18 Nov 2020 04:25:42 +0000 (UTC)
-IronPort-SDR: ylw1aJivAgOupKTUHy1TFZ/UO/MPM70pGhDqncPOmgP0AD8BXcJUw3f1GfNXplfLfvcn9Jotib
- w6I7EabJRuVQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9808"; a="158095684"
-X-IronPort-AV: E=Sophos;i="5.77,486,1596524400"; d="scan'208";a="158095684"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Nov 2020 20:25:42 -0800
-IronPort-SDR: 1qDIwmrxP3W40yDvmkBCzZnSSB56FL4t/eKup1ab+R4ZZxYr5OBTl+0jgYtkdLh6fhKABFpzZj
- 0SFzY5pu88Jg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,486,1596524400"; d="scan'208";a="356847183"
-Received: from lkp-server01.sh.intel.com (HELO 34cd9d7151aa) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 17 Nov 2020 20:25:40 -0800
-Received: from kbuild by 34cd9d7151aa with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kfF2K-00002R-AT; Wed, 18 Nov 2020 04:25:40 +0000
-Date: Wed, 18 Nov 2020 12:25:19 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- 2dde2821b57f12fa8601d35d438b5e300fcbbe1d
-Message-ID: <5fb4a22f.i1txiZoUOMT2f5W6%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id SGVdPk3gHPaK for <devel@linuxdriverproject.org>;
+ Wed, 18 Nov 2020 06:09:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from par.cse.nsysu.edu.tw (par.cse.nsysu.edu.tw [140.117.168.41])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 50519867B5
+ for <devel@driverdev.osuosl.org>; Wed, 18 Nov 2020 06:09:07 +0000 (UTC)
+Received: from User (unknown [156.96.115.150])
+ by par.cse.nsysu.edu.tw (Postfix) with ESMTPA id 1B91F149DBC;
+ Wed, 18 Nov 2020 14:06:03 +0800 (CST)
+From: "COCA COLA."<huanggf@par.cse.nsysu.edu.tw>
+Subject: COCA-COLA  LOTTERY ORGANIZATION.
+Date: Tue, 17 Nov 2020 20:06:28 -0800
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20201118060910.1288E867C8@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,176 +55,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: contactad004@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
-branch HEAD: 2dde2821b57f12fa8601d35d438b5e300fcbbe1d  Merge tag 'iio-fixes-for-5.10a' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
+COCA-COLA LOTTERY ORGANIZATION
+TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
 
-elapsed time: 720m
+Greetings Winner,
 
-configs tested: 146
-configs skipped: 2
+If you are the correct owner of this email address? If yes then be glad this day as the result of the Coca-Cola lotto online e-mail address free-ticket winning draws of July 2020 ,held in United States of America has just been released and we are glad to announce to you that your email address won you the sweepstakes in the first category and you are entitled to claim the sum of One Million Two Hundred And Fifty Thousand United States Dollars(US$1,250,000.00). Your email address was entered for the online draw on this ticket No: 546-373-66773 and won on this Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+On how to receive your won prize of US$1.250,000.00M. (One Million Two Hundred And Fifty Thousand United States Dollars Only) to enable Mr.James Curtise ascertain you as the rightful winner and receiver of the US$1.250,000.00M.Make sure you include the below listed information in your contact email to him.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-h8300                     edosk2674_defconfig
-powerpc                 mpc8313_rdb_defconfig
-sh                               j2_defconfig
-sparc                       sparc64_defconfig
-mips                       bmips_be_defconfig
-ia64                            zx1_defconfig
-powerpc                 mpc836x_rdk_defconfig
-xtensa                generic_kc705_defconfig
-powerpc                     tqm8540_defconfig
-sh                          rsk7201_defconfig
-nios2                         10m50_defconfig
-powerpc                       eiger_defconfig
-m68k                        mvme147_defconfig
-xtensa                          iss_defconfig
-mips                           ci20_defconfig
-s390                       zfcpdump_defconfig
-openrisc                         alldefconfig
-powerpc                 xes_mpc85xx_defconfig
-arc                         haps_hs_defconfig
-arc                    vdk_hs38_smp_defconfig
-arm                          pxa910_defconfig
-sh                          sdk7786_defconfig
-powerpc                     tqm8555_defconfig
-powerpc                     tqm8560_defconfig
-arm                         orion5x_defconfig
-powerpc                      mgcoge_defconfig
-mips                           mtx1_defconfig
-m68k                             allmodconfig
-sh                          landisk_defconfig
-sh                         apsh4a3a_defconfig
-powerpc                        warp_defconfig
-arm                            u300_defconfig
-arm                         axm55xx_defconfig
-arm                         lpc18xx_defconfig
-arm                          moxart_defconfig
-arm                           u8500_defconfig
-m68k                            mac_defconfig
-arm                              alldefconfig
-arm                       mainstone_defconfig
-xtensa                       common_defconfig
-arm                        neponset_defconfig
-mips                malta_kvm_guest_defconfig
-powerpc                     redwood_defconfig
-mips                          rb532_defconfig
-h8300                    h8300h-sim_defconfig
-arc                          axs103_defconfig
-arc                                 defconfig
-arm                            zeus_defconfig
-arm                        clps711x_defconfig
-sh                         ap325rxa_defconfig
-mips                     cu1000-neo_defconfig
-sh                  sh7785lcr_32bit_defconfig
-powerpc                         ps3_defconfig
-powerpc                   bluestone_defconfig
-sh                         microdev_defconfig
-powerpc                      ppc40x_defconfig
-nios2                               defconfig
-powerpc                    adder875_defconfig
-m68k                         amcore_defconfig
-mips                            e55_defconfig
-sh                            migor_defconfig
-mips                        workpad_defconfig
-mips                         tb0219_defconfig
-powerpc                     ppa8548_defconfig
-mips                         cobalt_defconfig
-microblaze                    nommu_defconfig
-arm                      tct_hammer_defconfig
-mips                         mpc30x_defconfig
-powerpc                     skiroot_defconfig
-riscv                               defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                                defconfig
-m68k                             allyesconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a006-20201117
-i386                 randconfig-a005-20201117
-i386                 randconfig-a001-20201117
-i386                 randconfig-a002-20201117
-i386                 randconfig-a004-20201117
-i386                 randconfig-a003-20201117
-x86_64               randconfig-a015-20201115
-x86_64               randconfig-a011-20201115
-x86_64               randconfig-a014-20201115
-x86_64               randconfig-a013-20201115
-x86_64               randconfig-a016-20201115
-x86_64               randconfig-a012-20201115
-i386                 randconfig-a012-20201117
-i386                 randconfig-a014-20201117
-i386                 randconfig-a016-20201117
-i386                 randconfig-a011-20201117
-i386                 randconfig-a015-20201117
-i386                 randconfig-a013-20201117
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+Your complete official names, country of origin and country of residence/work, contact telephone and mobile numbers, amount won,lucky numbers, date of draw. OPTIONAL: - [Sex, age, occupation and job title].
 
-clang tested configs:
-x86_64               randconfig-a003-20201117
-x86_64               randconfig-a005-20201117
-x86_64               randconfig-a004-20201117
-x86_64               randconfig-a002-20201117
-x86_64               randconfig-a001-20201117
-x86_64               randconfig-a006-20201117
-x86_64               randconfig-a015-20201116
-x86_64               randconfig-a011-20201116
-x86_64               randconfig-a014-20201116
-x86_64               randconfig-a013-20201116
-x86_64               randconfig-a016-20201116
-x86_64               randconfig-a012-20201116
+Just in case you are thinking of how you won without entering then know again that this very draw of the Coca-Cola Lottery Organization in which you have emerged as a winner was a free ticket online email address draws were thousands of email addresses was collected from almost all world wide websites and used for the online draws/sweepstakes and during winners selection your email address came out among the first ten which won you the lottery in the first winnings category and entitles you to claim the US$1,250,000.00 dollars.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
+Yours Faithfully,
+Mr.James Curtise
+COCA-COLA  LOTTERY ORGANIZATION.
+Online Winning Notification Department.
+Tel: +1-403-607-1548
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
