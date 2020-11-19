@@ -2,74 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE2B62B8E44
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 09:56:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BA7DC2B8DBB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 09:42:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 04B9286A33;
-	Thu, 19 Nov 2020 08:56:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D3745869E3;
+	Thu, 19 Nov 2020 08:42:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ypWwT6dZRDwZ; Thu, 19 Nov 2020 08:56:52 +0000 (UTC)
+	with ESMTP id 5MDf8c1RfOyU; Thu, 19 Nov 2020 08:42:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EEC28869D0;
-	Thu, 19 Nov 2020 08:56:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1CD2E869C8;
+	Thu, 19 Nov 2020 08:42:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1C6771BF3D0
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 08:56:50 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D9F081BF3D0
+ for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 08:42:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 18D3886CE7
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 08:56:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7AEB1204D4
+ for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 08:42:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HcR6e1mgbi1W for <devel@linuxdriverproject.org>;
- Thu, 19 Nov 2020 08:56:48 +0000 (UTC)
-X-Greylist: delayed 00:27:32 by SQLgrey-1.7.6
-Received: from mail-yb1-f202.google.com (mail-yb1-f202.google.com
- [209.85.219.202])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A28C386CE2
- for <devel@driverdev.osuosl.org>; Thu, 19 Nov 2020 08:56:48 +0000 (UTC)
-Received: by mail-yb1-f202.google.com with SMTP id u37so6334344ybi.15
- for <devel@driverdev.osuosl.org>; Thu, 19 Nov 2020 00:56:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:message-id:mime-version:subject:from:to:cc;
- bh=81mSmqAt+DDKbAEgLE/Wz5sPpfws9ggf7r+1ve0W/Wk=;
- b=E0aZcpxN2P2AVWhKSW6to7t826wYwxN2CGTKh0jlSZ901IvKkL1SD/LA4PuvwCOwjx
- usZhKMy1RBhEOeg2S17DjOk7VLen/MDrogsMuB5TcyAQe/lmau8naLmkciQM5oueDU4j
- H9gzsKWRve4WARBlmMsJyd+6GNRrKkm/u/Gbgy6K+fLggV6sea1Ij5x8uKmUlpA7zBAY
- Jt+T8iq6LTvaylImilgj/R2DZ9/9mdVjP2RQbIjS0pjpWzJ38yI1jJ/6yx1/d2oKc+H/
- 22diMlbN0GvTKl+aPU2ZUCbB9TMUYJjXKDELUbfAiOXkBst3UYBwFL9ZeColpxu8tf+l
- Iz9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
- :to:cc;
- bh=81mSmqAt+DDKbAEgLE/Wz5sPpfws9ggf7r+1ve0W/Wk=;
- b=KTICECFdntrn4YtBkttOij5qNG8oyfshGd0Jn7/ozBQEYehZLhWWLl8CUfbJoHr6za
- 1RObXl7Swl4CWBnHdW2w4KmLY1ObKY9niPReY5w+bcUCRBjBYdzu0dmo/M3Q8GSucU30
- TpxZ83qE1taeaOxgI9Z9h8ZYGQ6gM2rZ3zKavddkTdJviQ8OaStzha1U0eeNv52BXcV9
- U186H569pK9z9cepgTAaC3cOvmPs8usn5QFbAdpXybjM8pyBlk0BKxzaWg0BOfhqZTuY
- Kqx+NdflexHafq9SNttgX291zQU1Jdo2rebP9dlyqw6Y+5CEmHBhMxCpBiIt19MOaGc8
- iPPQ==
-X-Gm-Message-State: AOAM531zjY/mskw6bXmnmseyJhEzrDNs1mLTBFuxt4GgO6vuK1O1jHO1
- 7Fa3/fHW00xpMq0mEnH1OTrQvUhuQEs3Ww==
-X-Google-Smtp-Source: ABdhPJx4nHRJ9HBK0xGsF349VilqjBdUds2kPWTNILQ3mVJ7qMYLaGPDTbfU1Jm6LFL+Sf/pntsdHR1i+rj2PQ==
-X-Received: from spirogrip.svl.corp.google.com
- ([2620:15c:2cb:201:42a8:f0ff:fe4d:3548])
- (user=davidgow job=sendgmr) by 2002:a25:4686:: with SMTP id
- t128mr14653855yba.109.1605774555483; Thu, 19 Nov 2020 00:29:15 -0800 (PST)
-Date: Thu, 19 Nov 2020 00:29:03 -0800
-Message-Id: <20201119082903.3601758-1-davidgow@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.29.2.454.gaff20da3a2-goog
-Subject: [PATCH] staging: hikey9xx: Specify HAS_IOMEM dependency for
- MFD_HI6421_SPMI
-From: David Gow <davidgow@google.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+ with ESMTP id TyA+0Rjd66N4 for <devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 08:42:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from new1-smtp.messagingengine.com (new1-smtp.messagingengine.com
+ [66.111.4.221])
+ by silver.osuosl.org (Postfix) with ESMTPS id ECEC0204D0
+ for <devel@driverdev.osuosl.org>; Thu, 19 Nov 2020 08:42:19 +0000 (UTC)
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id AC71B5800F5;
+ Thu, 19 Nov 2020 03:42:18 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Thu, 19 Nov 2020 03:42:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=5DqwnmNe5MZ1oBWo8rYgCJvgNX/
+ nBUSLLMd4qJKLVwo=; b=QMvJsxuS+F230z5kmRQhjhxPWJN3BwS5U5NDc+s6xel
+ uve9cUDM9e2DtwJM4HSQG1nKnq5Rkdgr7cY8y2vAE/cEkUGj8XOa3ASIs4z9aJkL
+ YYHCBVE7R0laK3vo67NItzCK1nDWVSC4qU01mLTSLLzDGL0yJPs8GLM46pHYi8/3
+ Wf3L2XNps2W9dvMEpuM7V5Z06F6Tb3SJSDGbymFdsMpSfgj6+Ny/deGVpZl2xXCm
+ 53SZGr85emNDDI86qLdLL7JaF+XbkiBz8PDcz8tgt5JpSoprB/Qo+nglwBZ4MwhO
+ 17V+8w3dHl3/a9uWSmtmziP+MTLY36piPpkbkU+layw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=5Dqwnm
+ Ne5MZ1oBWo8rYgCJvgNX/nBUSLLMd4qJKLVwo=; b=XM+viXwm8de4uydp9rVcYE
+ Dv4fOMl3pEKGARRtkgPmDU76FI+NdnJHwtpW0btAFHNpd+T7RNRWTXGiRwrwvuqW
+ coIC4mY5/9PiJnimz0V9WJe17tqKeDgbcw8NuAifOqdJZgMn0SJ5MFVpNEjLWi8f
+ AGEjoYfEkCD74Zc45slkrG3k2sylT8Hcm3uXO907n7mC4ZaejiZJ0/jBNCeKRp1+
+ EoteZSXRxC7XlAlhk3zA6U0TRA8WdbcghyT07icgNJSIYdaGJBkNDwx/3IvvGm9R
+ Z+db4YjhcLNsXZ7OnDWWObQYKRz2gzC7ZoE8GLD75xiKjngLH+TqkOZJupc1sF4A
+ ==
+X-ME-Sender: <xms:6S-2X9xQcg1gPCZ_ylxT_8PP1xmff6hWLyNRBgwMwVP_KmF0r4vUvA>
+ <xme:6S-2X9QxGAngEQKHOU-dMheqXI4YLjvl8BQBRcuNahSUlodFnHqrQilPqT6Uv6n7N
+ uaPO5fuOhthAOZFbcM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudefiedguddvtdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
+ mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+ htthgvrhhnpeevveefffduveeitdegtefhhfetueffteefffdvheevvdehteethedvleff
+ gfejvdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecukfhppeeltddrkeelrdeike
+ drjeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhep
+ mhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:6S-2X3UH4loHGjFMH6yAk6vQU4SS7v6LQuCzDtr2auC1xTlPvXCniw>
+ <xmx:6S-2X_i2r1_uw_W0bFd6G5-IH6FV3HousApy6PkQkl2l3W0HHu5AZA>
+ <xmx:6S-2X_B7F5XEw3h6CwQ_4hbOvf2KsTeaUvpQnFquw_lLb3Zq3ANauw>
+ <xmx:6i-2X3YzK6YtDeJ81cm3LvWYBMbSFGDzLYt1skFBYLCUSMHCfzGOfg>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id E12C5328005D;
+ Thu, 19 Nov 2020 03:42:16 -0500 (EST)
+Date: Thu, 19 Nov 2020 09:42:15 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH 0/7] sunxi: Remove the calls to dma_direct_set_offset
+Message-ID: <20201119084215.pnzypitnyfgxsgrg@gilmour.lan>
+References: <20201106151411.321743-1-maxime@cerno.tech>
+ <20201106160737.GA31913@lst.de>
+ <20201109094303.llqsxqoxjagiqa55@gilmour.lan>
+ <20201119075959.GA15942@lst.de>
+MIME-Version: 1.0
+In-Reply-To: <20201119075959.GA15942@lst.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,47 +100,86 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Brendan Higgins <brendanhiggins@google.com>,
- linux-kernel@vger.kernel.org, David Gow <davidgow@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Hans Verkuil <hverkuil@xs4all.nl>, Yong Deng <yong.deng@magewell.com>,
+ Daniel Vetter <daniel.vetter@intel.com>, wens@kernel.org,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1149263842922877769=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MFD_CORE is selected by MFD_HI6421_SPMI, and MFD_CORE depends on
-HAS_IOMEM. If HAS_IOMEM is not set, this can cause a conflict in Kconfig
-resolution, yielding the following error:
 
-WARNING: unmet direct dependencies detected for MFD_CORE
-  Depends on [n]: HAS_IOMEM [=n]
-  Selected by [y]:
-  - MFD_HI6421_SPMI [=y] && STAGING [=y] && OF [=y] && SPMI [=y]
+--===============1149263842922877769==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="7dwjhxt6inc72kiy"
+Content-Disposition: inline
 
-By specifying HAS_IOMEM as a dependency for MFD_HI6421_SPMI (as
-SPMI_HISI3670 already dows), this issue is resolved, and no such warning
-appears when building on architectures without HAS_IOMEM.
 
-Signed-off-by: David Gow <davidgow@google.com>
----
- drivers/staging/hikey9xx/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+--7dwjhxt6inc72kiy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/hikey9xx/Kconfig b/drivers/staging/hikey9xx/Kconfig
-index b29f5d5df134..2e48ded92a7e 100644
---- a/drivers/staging/hikey9xx/Kconfig
-+++ b/drivers/staging/hikey9xx/Kconfig
-@@ -25,6 +25,7 @@ config SPMI_HISI3670
- # to be placed at drivers/mfd
- config MFD_HI6421_SPMI
- 	tristate "HiSilicon Hi6421v600 SPMI PMU/Codec IC"
-+	depends on HAS_IOMEM
- 	depends on OF
- 	depends on SPMI
- 	select MFD_CORE
--- 
-2.29.2.454.gaff20da3a2-goog
+Hi Christoph,
+
+On Thu, Nov 19, 2020 at 08:59:59AM +0100, Christoph Hellwig wrote:
+> On Mon, Nov 09, 2020 at 10:43:03AM +0100, Maxime Ripard wrote:
+> > Hi Christoph, Chen-Yu, Hans,
+> >=20
+> > On Fri, Nov 06, 2020 at 05:07:37PM +0100, Christoph Hellwig wrote:
+> > > Thanks,
+> > >=20
+> > > this looks good to me:
+> > >=20
+> > > Reviewed-by: Christoph Hellwig <hch@lst.de>
+> > >=20
+> > > Can you include this patch at the end of your series to that it gets
+> > > picked up with the other patches?
+> >=20
+> > I guess the easiest to avoid bisection issues would be to merge all this
+> > through drm-misc, would that work for you?
+>=20
+> Is this going to get picked up in drm-misc?  I don't see it in linux-next
+> so far.
+
+After some discussion with Arnd and Daniel, this will go through
+arm-soc, and I sent the PR here:
+https://lore.kernel.org/linux-arm-kernel/20201118091303.wa5npxyop3cdsczb@gi=
+lmour.lan/
+
+It hasn't been merged yet though
+
+Maxime
+
+--7dwjhxt6inc72kiy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX7Yv5wAKCRDj7w1vZxhR
+xS5FAQCYXp84yiCjK6DzHMXuvqUyjuQ2zW50D8gIbktS+6dxsgD8CZD6PR2bxjbU
+MvZ5WHoaGibeUb5SbiM7G0oySMAPyAg=
+=FD/c
+-----END PGP SIGNATURE-----
+
+--7dwjhxt6inc72kiy--
+
+--===============1149263842922877769==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============1149263842922877769==--
