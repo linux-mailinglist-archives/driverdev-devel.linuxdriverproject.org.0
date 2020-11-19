@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC1DD2B9CE3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 22:27:45 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 966492B9D50
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 23:03:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B1F886C51;
-	Thu, 19 Nov 2020 21:27:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 18F1C86A03;
+	Thu, 19 Nov 2020 22:03:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FAHw4jCf5lI7; Thu, 19 Nov 2020 21:27:43 +0000 (UTC)
+	with ESMTP id GGNeu8bRRU-Z; Thu, 19 Nov 2020 22:03:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 13BC686C5A;
-	Thu, 19 Nov 2020 21:27:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 241C586672;
+	Thu, 19 Nov 2020 22:03:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 26EAC1BF32B
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 21:27:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CD6F81BF32B
+ for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 22:03:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 157BA847AB
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 21:27:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C67D18670B
+ for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 22:03:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bn1r-F6vmch2 for <devel@linuxdriverproject.org>;
- Thu, 19 Nov 2020 21:27:39 +0000 (UTC)
+ with ESMTP id TLXluM0nje6j for <devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 22:03:45 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from spfilter-3.sesg01.sgcloudhosting.com
  (spfilter-3.sesg01.sgcloudhosting.com [103.7.8.248])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1C5838324B
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 21:27:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 03D0D86672
+ for <devel@driverdev.osuosl.org>; Thu, 19 Nov 2020 22:03:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=spamexpertfilter.sgcloudhosting.com; s=default; h=Message-ID:CC:To:Reply-To
  :From:Subject:Content-Transfer-Encoding:Content-Type:Date:MIME-Version:sender
  :bcc:in-reply-to:references; bh=n4M5FvZpPdQYkRaeUD4QSH6e2W+QtOLvBF4A/0y3OUo=; 
- b=VPcXl35zw5j/ueLxIToNuy1WAMHL533AEEv3ngKSuaPtH8/yzv3smlBg4dV6jF3x2l2HVGQFpJ
- gqC9gyEQlmn8RwEryLVwh64DYE45J1S5E1MIlzCljbzNgr9+6bumol2YsBksAcqyULr8nAN5I5c/Q
- E8FJ+GdBgayYOhRhDpN0=;
+ b=5I9bw8f6s7vU2h+fgbZiKfF2mhzAz8XFTwPnoDlDi8GpISeLYOf6fZqdjlSeNCgRJmaXxyOqFd
+ ILxo4mzUAuninh+49nJIaSfLfZ356THsqCcWALUtyjMQjyFk9aF7RJnIKxgLQDo5kz7GWj+6hIY3+
+ LZwWNh0bBo6xC+dWXda4=;
 Received: from cloudmail63.cybersitezone.com ([103.254.255.63]
  helo=gray.zonecybersite.com)
  by spfilter-3.sesg01.sgcloudhosting.com with esmtpsa
  (TLSv1.2:AES128-GCM-SHA256:128) (Exim 4.92)
  (envelope-from <agatha.tan@homeequity.com.sg>)
- id 1kfqQW-00043M-MQ; Fri, 20 Nov 2020 04:21:30 +0800
+ id 1kfqRc-0004aN-Uw; Fri, 20 Nov 2020 04:22:49 +0800
 Received: from mail10.spidertrackers.com (mail10.cybersite.com.sg
  [43.227.231.18]) by gray.zonecybersite.com with SMTP; 
- Fri, 20 Nov 2020 04:20:04 +0800
+ Fri, 20 Nov 2020 04:21:00 +0800
 MIME-Version: 1.0
-Date: Fri, 20 Nov 2020 04:19:26 +0800
+Date: Fri, 20 Nov 2020 04:20:21 +0800
 Subject: hello
 From: Dr.Henry Biko <agatha.tan@homeequity.com.sg>
 To: <drbikohenry@gmail.com>
-Message-ID: <a8211da894664549a8122ab78b708c96@homeequity.com.sg>
-X-Exim-Id: a8211da894664549a8122ab78b708c96
+Message-ID: <c5405504db33446189c90e8c71dd9b0d@homeequity.com.sg>
+X-Exim-Id: c5405504db33446189c90e8c71dd9b0d
 X-Originating-IP: 103.254.255.63
 X-SpamExperts-Domain: spamexpertfilter.sgcloudhosting.com
 X-SpamExperts-Username: gray
@@ -64,64 +64,65 @@ X-SpamExperts-Outgoing-Class: unsure
 X-SpamExperts-Outgoing-Evidence: Combined (0.84)
 X-Recommended-Action: accept
 X-Filter-ID: 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
- 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
+ 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
 X-Report-Abuse-To: spam@spfilter-1.sesg01.sgcloudhosting.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
