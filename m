@@ -2,43 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 928162B8E49
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 09:57:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40D382B8E5B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 10:04:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8EC80873BA;
-	Thu, 19 Nov 2020 08:57:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5562F873B5;
+	Thu, 19 Nov 2020 09:04:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id snoAT107gaYR; Thu, 19 Nov 2020 08:57:53 +0000 (UTC)
+	with ESMTP id YuvbyUARuOQG; Thu, 19 Nov 2020 09:04:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 048C18735E;
-	Thu, 19 Nov 2020 08:57:53 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id D6C29873A8;
+	Thu, 19 Nov 2020 09:04:19 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DD7431BF3D0
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 08:57:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7D6E71BF59B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 09:04:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D9DC4873A8
- for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 08:57:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7A574873A8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 09:04:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HPsyja0XfB1A for <devel@linuxdriverproject.org>;
- Thu, 19 Nov 2020 08:57:48 +0000 (UTC)
+ with ESMTP id 72wEiXv0X6Dd
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 09:04:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailouta.xpedite.com (mailouta.xpedite.com [137.236.4.13])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 91A178735E
- for <devel@driverdev.osuosl.org>; Thu, 19 Nov 2020 08:57:48 +0000 (UTC)
-Received: from [10.230.230.81] ([10.230.230.81:24237] helo=User)
- by tf-vmsmta-p001.xpedite.com (envelope-from <jmsbfrn@ownmail.net>)
+Received: from mailoutd.xpedite.com (mailoutd.xpedite.com [137.236.4.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 37E2A8739F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 09:04:17 +0000 (UTC)
+Received: from [10.230.230.81] ([10.230.230.81:34262] helo=User)
+ by tf-vmsmta-p002.xpedite.com (envelope-from <jmsbfrn@ownmail.net>)
  (ecelerity 4.2.31.59853 r(Core:4.2.31.1)) with ESMTP
- id BF/83-05679-C7336BF5; Thu, 19 Nov 2020 03:57:47 -0500
-Message-ID: <BF.83.05679.C7336BF5@tf-vmsmta-p001.xpedite.com>
+ id 02/AC-07884-FF436BF5; Thu, 19 Nov 2020 04:04:15 -0500
+Message-ID: <02.AC.07884.FF436BF5@tf-vmsmta-p002.xpedite.com>
 From: "HSBC London Office"<jmsbfrn@ownmail.net>
 Subject: (BANK ALERT) About Your Fund//   
-Date: Thu, 19 Nov 2020 07:57:46 -0800
+Date: Thu, 19 Nov 2020 08:04:13 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
