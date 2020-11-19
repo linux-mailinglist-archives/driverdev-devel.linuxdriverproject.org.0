@@ -1,75 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 017A72B84F9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Nov 2020 20:36:32 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 51B4F2B8B07
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Nov 2020 06:31:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1636786370;
-	Wed, 18 Nov 2020 19:36:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8DAFC86CE6;
+	Thu, 19 Nov 2020 05:31:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YeJBuJwl+qJc; Wed, 18 Nov 2020 19:36:29 +0000 (UTC)
+	with ESMTP id NAS03Scp2OyB; Thu, 19 Nov 2020 05:31:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 91D4C85A1D;
-	Wed, 18 Nov 2020 19:36:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 43A1D86CC5;
+	Thu, 19 Nov 2020 05:31:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7010E1BF285
- for <devel@linuxdriverproject.org>; Wed, 18 Nov 2020 19:36:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 475691BF844
+ for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 05:31:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6C65D85A1D
- for <devel@linuxdriverproject.org>; Wed, 18 Nov 2020 19:36:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 43F1C86CB6
+ for <devel@linuxdriverproject.org>; Thu, 19 Nov 2020 05:31:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2Y-RAfS1+uEv for <devel@linuxdriverproject.org>;
- Wed, 18 Nov 2020 19:36:26 +0000 (UTC)
+ with ESMTP id MuVaUsZv258D for <devel@linuxdriverproject.org>;
+ Thu, 19 Nov 2020 05:31:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vk1-f193.google.com (mail-vk1-f193.google.com
- [209.85.221.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A899B8591B
- for <devel@driverdev.osuosl.org>; Wed, 18 Nov 2020 19:36:26 +0000 (UTC)
-Received: by mail-vk1-f193.google.com with SMTP id o73so763140vka.5
- for <devel@driverdev.osuosl.org>; Wed, 18 Nov 2020 11:36:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Oycl9rXnrPavfA5bPND3v6cuTejfQRr5MJa/4Z/zAec=;
- b=qdLG7jhNUoxN8DlG6k27zxeTP/luVeWx57IAyLfJPv33lazYi8MjkP6FuAhYOfid/D
- 4WVyEjCN6fSaPHTUe+jF7Lhor8R+6+IOkNjd+7nLoLs9mNaI+zjl0ecaeFpswUzhiogH
- ovcPUPWsYMrciYcXDBn2OeutfGJe2Cpp72iLFEqkFGtk5Lr9WQo+o85Mn4xYOLeVOj3v
- 0SiMbKKPrbgQrfajxY1wMJPxvsWSFvciwodc/W0MvGBWyMtxbYqMhWsXaaq1qUoQs4ja
- hghNVv07P7nRu/WIZkZHSjZEH+bIpMtmAg5VssSfl9S250NgsuAFKeO0dcX/Eji5e3wi
- MGlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Oycl9rXnrPavfA5bPND3v6cuTejfQRr5MJa/4Z/zAec=;
- b=ChJQkjSIzCtjBJKg4aWqzFyN54GyS7FG2bCzqN9q7UCD091qgJ4Ck8CnXG5sSeuvEX
- Jh9feh0qwuXBocuTa42oSjTkfA9O+yY67n6RBSnX5Niyx394WaqNyh5F2cbQdhTIA3l8
- ZsBdhfT85sc7sjwHg1dz5jHrA64t+sKhtdvcqjggjJy02m/dM+ZPeV/vzlEkMlI6AZlM
- ODzIlvj4aBfS+zWWdLwJ2QhaauNW8XuPvpFdK+tFrJ9HhVvAe5xGTH7s7FXz4HRHOYih
- gmJS0qUtokKCmwR2BmManzpWh171aLdEwtg3V+VXKkCBJm3T0PWqfkuX9xRp2SDXxuj0
- 70Hg==
-X-Gm-Message-State: AOAM532h3Mn2+n6DkdtatfnofH6PuJ+D18MQuZkKFa50wPsoK02s6fGT
- oVKDuUBUSp+JXQerHKMCdTNaURp2pp3plz479Vc=
-X-Google-Smtp-Source: ABdhPJxrhhmloucaf7V96PGI/m/7uAmESZdIb0lRcvIUTFDFBaSYYW8Dh8zApbOmcfkmyoxw3AlrWp6w6Oa61Bzz2BU=
-X-Received: by 2002:a1f:3f52:: with SMTP id m79mr3183264vka.23.1605728185660; 
- Wed, 18 Nov 2020 11:36:25 -0800 (PST)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8B6E986CB5
+ for <devel@driverdev.osuosl.org>; Thu, 19 Nov 2020 05:31:04 +0000 (UTC)
+Received: from localhost (unknown [122.171.203.152])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E2AC1246E8;
+ Thu, 19 Nov 2020 05:31:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605763863;
+ bh=wuKzkDcFCNqez140xTkBhynCW3+e/QyBfDsukHeaLZ0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=V1Q4or9XuylwW/dCBLgvhQajP+HOtrEXO4NO6kCEOWRSnZ83a0H/dUaQqtG3wxRJr
+ kxMvA0Tz8f0hxAdGc7ckTon4L1eg8XIZjurRLaaLGNTCOdbUTFREu7/DnsSMLaOAZQ
+ mMvRqybfM3QI+edzZBgIJeM/d0ymd48bQaarxpCo=
+Date: Thu, 19 Nov 2020 11:00:59 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH v4 2/4] phy: ralink: Add PHY driver for MT7621 PCIe PHY
+Message-ID: <20201119053059.GY50232@vkoul-mobl>
+References: <20201031122246.16497-1-sergio.paracuellos@gmail.com>
+ <20201031122246.16497-3-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
-References: <1604455331-28031-1-git-send-email-jrdr.linux@gmail.com>
-In-Reply-To: <1604455331-28031-1-git-send-email-jrdr.linux@gmail.com>
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Date: Thu, 19 Nov 2020 01:06:14 +0530
-Message-ID: <CAFqt6zZ3HouweyeKGUbeF9ix+SXvBUrRB6ks3hozRofwtUaUtA@mail.gmail.com>
-Subject: Re: [PATCH v2] media: atomisp: Fixed error handling path
-To: mchehab@kernel.org, sakari.ailus@linux.intel.com, 
- Greg KH <gregkh@linuxfoundation.org>, gustavoars@kernel.org, 
- Andrew Morton <akpm@linux-foundation.org>, Vlastimil Babka <vbabka@suse.cz>,
- daniel.m.jordan@oracle.com, Michel Lespinasse <walken@google.com>
+Content-Disposition: inline
+In-Reply-To: <20201031122246.16497-3-sergio.paracuellos@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,98 +65,185 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- John Hubbard <jhubbard@nvidia.com>, linux-kernel@vger.kernel.org,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ gregkh@linuxfoundation.org, kishon@ti.com, robh+dt@kernel.org, neil@brown.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Nov 4, 2020 at 7:32 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
->
-> Inside alloc_user_pages() based on flag value either pin_user_pages()
-> or get_user_pages_fast() will be called. However, these API might fail.
->
-> But free_user_pages() called in error handling path doesn't bother
-> about return value and will try to unpin bo->pgnr pages, which is
-> incorrect.
->
-> Fix this by passing the page_nr to free_user_pages(). If page_nr > 0
-> pages will be unpinned based on bo->mem_type. This will also take care
-> of non error handling path.
->
-> Fixes: 14a638ab96c5 ("media: atomisp: use pin_user_pages() for memory
-> allocation")
-> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Cc: John Hubbard <jhubbard@nvidia.com>
-> Cc: Ira Weiny <ira.weiny@intel.com>
-> Cc: Dan Carpenter <dan.carpenter@oracle.com>
-> ---
-> v2:
->     Added review tag.
+On 31-10-20, 13:22, Sergio Paracuellos wrote:
 
-Any further comment ? If no, can we get this patch in queue for 5.11 ?
->
->  drivers/staging/media/atomisp/pci/hmm/hmm_bo.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-> index f13af23..0168f98 100644
-> --- a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-> +++ b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-> @@ -857,16 +857,17 @@ static void free_private_pages(struct hmm_buffer_object *bo,
->         kfree(bo->page_obj);
->  }
->
-> -static void free_user_pages(struct hmm_buffer_object *bo)
-> +static void free_user_pages(struct hmm_buffer_object *bo,
-> +                           unsigned int page_nr)
->  {
->         int i;
->
->         hmm_mem_stat.usr_size -= bo->pgnr;
->
->         if (bo->mem_type == HMM_BO_MEM_TYPE_PFN) {
-> -               unpin_user_pages(bo->pages, bo->pgnr);
-> +               unpin_user_pages(bo->pages, page_nr);
->         } else {
-> -               for (i = 0; i < bo->pgnr; i++)
-> +               for (i = 0; i < page_nr; i++)
->                         put_page(bo->pages[i]);
->         }
->         kfree(bo->pages);
-> @@ -942,6 +943,8 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
->                 dev_err(atomisp_dev,
->                         "get_user_pages err: bo->pgnr = %d, pgnr actually pinned = %d.\n",
->                         bo->pgnr, page_nr);
-> +               if (page_nr < 0)
-> +                       page_nr = 0;
->                 goto out_of_mem;
->         }
->
-> @@ -954,7 +957,7 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
->
->  out_of_mem:
->
-> -       free_user_pages(bo);
-> +       free_user_pages(bo, page_nr);
->
->         return -ENOMEM;
->  }
-> @@ -1037,7 +1040,7 @@ void hmm_bo_free_pages(struct hmm_buffer_object *bo)
->         if (bo->type == HMM_BO_PRIVATE)
->                 free_private_pages(bo, &dynamic_pool, &reserved_pool);
->         else if (bo->type == HMM_BO_USER)
-> -               free_user_pages(bo);
-> +               free_user_pages(bo, bo->pgnr);
->         else
->                 dev_err(atomisp_dev, "invalid buffer type.\n");
->         mutex_unlock(&bo->mutex);
-> --
-> 1.9.1
->
+> +#define RG_PE1_PIPE_REG				0x02c
+> +#define RG_PE1_PIPE_RST				BIT(12)
+> +#define RG_PE1_PIPE_CMD_FRC			BIT(4)
+> +
+> +#define RG_P0_TO_P1_WIDTH			0x100
+> +#define RG_PE1_H_LCDDS_REG			0x49c
+> +#define RG_PE1_H_LCDDS_PCW			GENMASK(30, 0)
+> +#define RG_PE1_H_LCDDS_PCW_VAL(x)		((0x7fffffff & (x)) << 0)
+
+Pls use FIELD_{GET|PREP} instead of coding like this, you already
+defined the mask, use it to set and get the reg field ;)
+
+> +
+> +#define RG_PE1_FRC_H_XTAL_REG			0x400
+> +#define RG_PE1_FRC_H_XTAL_TYPE			BIT(8)
+> +#define RG_PE1_H_XTAL_TYPE			GENMASK(10, 9)
+> +#define RG_PE1_H_XTAL_TYPE_VAL(x)		((0x3 & (x)) << 9)
+> +
+> +#define RG_PE1_FRC_PHY_REG			0x000
+> +#define RG_PE1_FRC_PHY_EN			BIT(4)
+> +#define RG_PE1_PHY_EN				BIT(5)
+> +
+> +#define RG_PE1_H_PLL_REG			0x490
+> +#define RG_PE1_H_PLL_BC				GENMASK(23, 22)
+> +#define RG_PE1_H_PLL_BC_VAL(x)			((0x3 & (x)) << 22)
+> +#define RG_PE1_H_PLL_BP				GENMASK(21, 18)
+> +#define RG_PE1_H_PLL_BP_VAL(x)			((0xf & (x)) << 18)
+> +#define RG_PE1_H_PLL_IR				GENMASK(15, 12)
+> +#define RG_PE1_H_PLL_IR_VAL(x)			((0xf & (x)) << 12)
+> +#define RG_PE1_H_PLL_IC				GENMASK(11, 8)
+> +#define RG_PE1_H_PLL_IC_VAL(x)			((0xf & (x)) << 8)
+> +#define RG_PE1_H_PLL_PREDIV			GENMASK(7, 6)
+> +#define RG_PE1_H_PLL_PREDIV_VAL(x)		((0x3 & (x)) << 6)
+> +#define RG_PE1_PLL_DIVEN			GENMASK(3, 1)
+> +#define RG_PE1_PLL_DIVEN_VAL(x)			((0x7 & (x)) << 1)
+> +
+> +#define RG_PE1_H_PLL_FBKSEL_REG			0x4bc
+> +#define RG_PE1_H_PLL_FBKSEL			GENMASK(5, 4)
+> +#define RG_PE1_H_PLL_FBKSEL_VAL(x)		((0x3 & (x)) << 4)
+> +
+> +#define	RG_PE1_H_LCDDS_SSC_PRD_REG		0x4a4
+> +#define RG_PE1_H_LCDDS_SSC_PRD			GENMASK(15, 0)
+> +#define RG_PE1_H_LCDDS_SSC_PRD_VAL(x)		((0xffff & (x)) << 0)
+> +
+> +#define RG_PE1_H_LCDDS_SSC_DELTA_REG		0x4a8
+> +#define RG_PE1_H_LCDDS_SSC_DELTA		GENMASK(11, 0)
+> +#define RG_PE1_H_LCDDS_SSC_DELTA_VAL(x)		((0xfff & (x)) << 0)
+> +#define RG_PE1_H_LCDDS_SSC_DELTA1		GENMASK(27, 16)
+> +#define RG_PE1_H_LCDDS_SSC_DELTA1_VAL(x)	((0xff & (x)) << 16)
+> +
+> +#define RG_PE1_LCDDS_CLK_PH_INV_REG		0x4a0
+> +#define RG_PE1_LCDDS_CLK_PH_INV			BIT(5)
+> +
+> +#define RG_PE1_H_PLL_BR_REG			0x4ac
+> +#define RG_PE1_H_PLL_BR				GENMASK(18, 16)
+> +#define RG_PE1_H_PLL_BR_VAL(x)			((0x7 & (x)) << 16)
+> +
+> +#define	RG_PE1_MSTCKDIV_REG			0x414
+> +#define RG_PE1_MSTCKDIV				GENMASK(7, 6)
+> +#define RG_PE1_MSTCKDIV_VAL(x)			((0x3 & (x)) << 6)
+> +
+> +#define RG_PE1_FRC_MSTCKDIV			BIT(5)
+> +
+> +#define XTAL_MODE_SEL_SHIFT			6
+
+Bonus you dont need to define shifts if you use stuff defined in
+bitfield.h
+
+> +struct mt7621_pci_phy {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	struct phy *phy;
+> +	void __iomem *port_base;
+> +	bool has_dual_port;
+> +	bool bypass_pipe_rst;
+> +};
+> +
+> +static inline u32 phy_read(struct mt7621_pci_phy *phy, u32 reg)
+> +{
+> +	u32 val;
+> +
+> +	regmap_read(phy->regmap, reg, &val);
+> +
+> +	return val;
+> +}
+> +
+> +static inline void phy_write(struct mt7621_pci_phy *phy, u32 val, u32 reg)
+> +{
+> +	regmap_write(phy->regmap, reg, val);
+
+Why not use regmap_ calls directly and avoid the dummy wrappers..?
+
+> +}
+> +
+> +static inline void mt7621_phy_rmw(struct mt7621_pci_phy *phy,
+> +				  u32 reg, u32 clr, u32 set)
+> +{
+> +	u32 val = phy_read(phy, reg);
+> +
+> +	val &= ~clr;
+> +	val |= set;
+> +	phy_write(phy, val, reg);
+
+why not use regmap_update_bits() instead
+
+> +static void mt7621_set_phy_for_ssc(struct mt7621_pci_phy *phy)
+> +{
+> +	struct device *dev = phy->dev;
+> +	u32 xtal_mode;
+> +
+> +	xtal_mode = (rt_sysc_r32(SYSC_REG_SYSTEM_CONFIG0)
+> +		     >> XTAL_MODE_SEL_SHIFT) & XTAL_MODE_SEL_MASK;
+> +
+> +	/* Set PCIe Port PHY to disable SSC */
+> +	/* Debug Xtal Type */
+> +	mt7621_phy_rmw(phy, RG_PE1_FRC_H_XTAL_REG,
+> +		       RG_PE1_FRC_H_XTAL_TYPE | RG_PE1_H_XTAL_TYPE,
+> +		       RG_PE1_FRC_H_XTAL_TYPE | RG_PE1_H_XTAL_TYPE_VAL(0x00));
+> +
+> +	/* disable port */
+> +	mt7621_phy_rmw(phy, RG_PE1_FRC_PHY_REG,
+> +		       RG_PE1_PHY_EN, RG_PE1_FRC_PHY_EN);
+> +
+> +	if (phy->has_dual_port) {
+> +		mt7621_phy_rmw(phy, RG_PE1_FRC_PHY_REG + RG_P0_TO_P1_WIDTH,
+> +			       RG_PE1_PHY_EN, RG_PE1_FRC_PHY_EN);
+> +	}
+> +
+> +	if (xtal_mode <= 5 && xtal_mode >= 3) { /* 40MHz Xtal */
+> +		/* Set Pre-divider ratio (for host mode) */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_PLL_REG,
+> +			       RG_PE1_H_PLL_PREDIV,
+> +			       RG_PE1_H_PLL_PREDIV_VAL(0x01));
+> +		dev_info(dev, "Xtal is 40MHz\n");
+> +	} else if (xtal_mode >= 6) { /* 25MHz Xal */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_PLL_REG,
+> +			       RG_PE1_H_PLL_PREDIV,
+> +			       RG_PE1_H_PLL_PREDIV_VAL(0x00));
+> +		/* Select feedback clock */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_PLL_FBKSEL_REG,
+> +			       RG_PE1_H_PLL_FBKSEL,
+> +			       RG_PE1_H_PLL_FBKSEL_VAL(0x01));
+> +		/* DDS NCPO PCW (for host mode) */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_LCDDS_SSC_PRD_REG,
+> +			       RG_PE1_H_LCDDS_SSC_PRD,
+> +			       RG_PE1_H_LCDDS_SSC_PRD_VAL(0x18000000));
+> +		/* DDS SSC dither period control */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_LCDDS_SSC_PRD_REG,
+> +			       RG_PE1_H_LCDDS_SSC_PRD,
+> +			       RG_PE1_H_LCDDS_SSC_PRD_VAL(0x18d));
+> +		/* DDS SSC dither amplitude control */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_LCDDS_SSC_DELTA_REG,
+> +			       RG_PE1_H_LCDDS_SSC_DELTA |
+> +			       RG_PE1_H_LCDDS_SSC_DELTA1,
+> +			       RG_PE1_H_LCDDS_SSC_DELTA_VAL(0x4a) |
+> +			       RG_PE1_H_LCDDS_SSC_DELTA1_VAL(0x4a));
+> +		dev_info(dev, "Xtal is 25MHz\n");
+
+Debug please
+
+> +	} else { /* 20MHz Xtal */
+> +		mt7621_phy_rmw(phy, RG_PE1_H_PLL_REG,
+> +			       RG_PE1_H_PLL_PREDIV,
+> +			       RG_PE1_H_PLL_PREDIV_VAL(0x00));
+> +
+> +		dev_info(dev, "Xtal is 20MHz\n");
+
+ditto
+-- 
+~Vinod
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
