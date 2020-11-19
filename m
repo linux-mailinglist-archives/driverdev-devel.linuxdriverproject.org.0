@@ -2,52 +2,46 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E57D02BA178
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 05:34:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0733A2BA21D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 07:02:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9E36B87595;
-	Fri, 20 Nov 2020 04:34:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 457518759B;
+	Fri, 20 Nov 2020 06:02:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PuBYdeeeW9wg; Fri, 20 Nov 2020 04:34:05 +0000 (UTC)
+	with ESMTP id gwbJt7qww-MH; Fri, 20 Nov 2020 06:02:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 183FC8757E;
-	Fri, 20 Nov 2020 04:34:05 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 664A787591;
+	Fri, 20 Nov 2020 06:02:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 876301BF39F
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 04:34:02 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D9C641BF83B
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 06:02:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7CCC787580
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 04:34:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C1C632D946
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 06:02:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S3bjq0OXS3eG
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 04:34:02 +0000 (UTC)
+ with ESMTP id eMxCFY81rmdK for <devel@linuxdriverproject.org>;
+ Fri, 20 Nov 2020 06:02:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from 4sasa.xyz (4sasa.xyz [113.31.105.249])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B8D928757E
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 04:34:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4sasa.xyz;
- h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=nami@4sasa.xyz; bh=6mwxfy3c4qP/3JDNtH0dDInIz3U=;
- b=BOrVouRTdWKR7nlmISErRV75p8jbgfmypQ/IeKs59o0r7+Wn/typYdDXiqxd6xVAqdWtZk1CJ1WZ
- ZvsAc7ICyGMfYJOUxMVPAkVb8ZEYQWH2js1SbD3Z6qorl7ogVgbUk+whp8CuqsZ/whXNQ6Sr5TWR
- jOhRZDtC1UndPxyJusY=
-From: "Ms. Marylyne Vantelli"<nami@4sasa.xyz>
-Subject: GREETINGS DEAR BELOVED:
-Date: Fri, 20 Nov 2020 12:33:52 +0800
+Received: from mail.taiz.edu.ye (unknown [185.11.10.24])
+ by silver.osuosl.org (Postfix) with ESMTP id 2FDEC203A0
+ for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 06:02:28 +0000 (UTC)
+Received: from User ([51.140.114.72]) by taiz.edu.ye with
+ MailEnable ESMTP; Thu, 19 Nov 2020 06:34:35 +0300
+From: "Hello"<ictsa@taiz.edu.ye>
+Subject: Hello friend  19/11/2020
+Date: Thu, 19 Nov 2020 03:34:45 -0000
 MIME-Version: 1.0
+X-Priority: 3
 X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20201120043402.7CCC787580@hemlock.osuosl.org>
+Message-ID: <35C7E6AC4BA04847924E0AF40FAA2ADF.MAI@taiz.edu.ye>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,27 +54,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: marylynevantelli248@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: reemhashimy1978@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBCZWxvdmVkLAoKTGlmZSBpcyBncmFkdWFsbHkgcGFzc2luZyBhd2F5IGZyb20gbWUgYXMg
-YSByZXN1bHQgb2YgbXkgcHJlc2VudCBtZWRpY2FsIGNvbmRpdGlvbiBhbmQgbXkgcGVyc29uYWwg
-ZG9jdG9yIGNvbmZpZGVkIGluIG1lIHllc3RlcmRheSB0aGF0IEkgaGF2ZSBvbmx5IGJ1dCBmZXcg
-bW9yZSB3ZWVrcyB0byBsaXZlLiBJbiB2aWV3IG9mIHRoaXMgc2V0YmFjaywgSSB3YW50IHRvIGRv
-bmF0ZSBteSBlc3RhdGUgZm9yIGh1bWFuaXRhcmlhbiBhc3Npc3RhbmNlLCBzaW5jZSB0aGlzIGhh
-cyBhbHdheXMgYmVlbiB0aGUgcGxhbiBvZiBteSBsYXRlIGh1c2JhbmQgYW5kIGJlc2lkZXMgSSBo
-YXZlIG5vIGNoaWxkLgpJbiBhbiBlZmZvcnQgdG8gY29tcGxpbWVudCB0aGUgZ29vZCB3b3JrIG9m
-IG91ciBjcmVhdG9yIGZvciBodW1hbml0eSBhbmQgdGhlIHdpc2ggb2YgbXkgbGF0ZSBIdXNiYW5k
-IEkgZG9uYXRlIHRoZSBzdW0gb2YggDEwLDAwMCwwMDAuMDAgRXVybyAoVGVuIE1pbGxpb24gRVVS
-KSB0byB5b3UuIE9uIHlvdXIgYWNrbm93bGVkZ21lbnQgb2YgdGhpcyBtYWlsIGFuZCBpbmZvcm1p
-bmcgbWUgb2YgeW91ciBuYXRpb25hbGl0eSBhbmQgY3VycmVudCBwbGFjZSBvZiByZXNpZGVudCwg
-bXkgQmFuayB3aWxsIGZhY2lsaXRhdGUgZHVlIHByb2Nlc3NlcyBmb3IgdHJhbnNmZXIgb2YgdGhp
-cyBsZWdhY3kgdG8geW91LiBNYXkgR29kIGJsZXNzIHlvdSBhcyB5b3UgdXNlIHRoaXMgbW9uZXkg
-anVkaWNpb3VzbHkgZm9yIHRoZSB3b3JrIG9mIGNoYXJpdHkuCgpTaW5jZXJlIHJlZ2FyZHMsCgpN
-cy4gTWFyeWx5bmUgdmFudGVsbGkKRW1haWw6bWFyeWx5bmV2YW50ZWxsaTI0OEBnbWFpbC5jb20K
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
-bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
-aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+My name is Reem Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee which has been postponed to October 2021 to March 2022 because of the Covid-19 pandemic.
+I am writing to you to manage the funds I received as financial gratification from various foreign companies I assisted to receive a participation approval to the coming event. The amount is $44,762,906.00 United States dollars. But I can not personally manage the fund in my country because of the sensitive nature of my office and the certain restriction on married Muslim women.
+ 
+For this reason, an agreement was reached with a consulting firm to direct the various financial gifts into an open beneficiary account in my name with a bank where it will be possible for me to instruct the transfer of ownership right to a third party for investment purpose; which is the reason I am contacting you to receive the fund and manage it as my investment partner. Note that the fund is NOT connected to any criminal or terrorist activity.
+On your indication of interest with your information to include your name, your phone number and contact mailing address; I will instruct the consulting firm to process the fund from the bank to your country for investment purposes.
+ 
+Regards.
+Reem Hashimy.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
