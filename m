@@ -2,53 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2498A2BB298
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 19:27:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE15C2BB299
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 19:27:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ADD4887072;
-	Fri, 20 Nov 2020 18:27:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 86AA98706F;
+	Fri, 20 Nov 2020 18:27:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6LLnjt9WNdRT; Fri, 20 Nov 2020 18:27:35 +0000 (UTC)
+	with ESMTP id y-Nama4QvMUe; Fri, 20 Nov 2020 18:27:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9ABFE8701D;
-	Fri, 20 Nov 2020 18:27:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 73AD88702D;
+	Fri, 20 Nov 2020 18:27:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5FC9D1BF327
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:27:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 85A9B1BF327
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:27:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5CD4B873AB
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:27:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7FD962E11B
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:27:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fNhQCKiPoZ+r for <devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 18:27:31 +0000 (UTC)
+ with ESMTP id BI1ROViDZvfZ for <devel@linuxdriverproject.org>;
+ Fri, 20 Nov 2020 18:27:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DEB3F87318
- for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 18:27:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 7BAEF2E117
+ for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 18:27:39 +0000 (UTC)
 Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E2C682415A;
- Fri, 20 Nov 2020 18:27:30 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7589024137;
+ Fri, 20 Nov 2020 18:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605896851;
- bh=fLmEoecdeaRM8oGYWWnG5fKqd37Y+u0nknDa9Jmb8Lw=;
+ s=default; t=1605896859;
+ bh=fmjm1AiZxkRaF0b1/Nesig0WMravFjRhy2EbeFt3hTo=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fP8LorIs/8eVqI3ODfsLIn5j59MeegzVg0DYIja9Z/zB9oBf5utSSBfZHR0G0BYHg
- xAPNfKCC3AIb1OQkLIeijObe1/KeuRACdBHZyqRYibDiDCLKtGtE5HiG9WQbBdkRqp
- GTfvK58daonZG1ru2fkAZ6biXxxBW8r+/F5n2keI=
-Date: Fri, 20 Nov 2020 12:27:37 -0600
+ b=IrVkdKVgpgaoVGWxLIUc9x/BKLIikfPolq7fpmPdtW3t+I7hXd0ci+0nOm8BGFl3r
+ 0G0zgkyYRfzDwY3OcBDDWJqHN+Z2eIbB24707ZN5gtbMGbZz3AtlLd02OakvzrSU+z
+ a5tbL4fJzLP+jOE9BSGXtYk1xvRR869/rdUOckgo=
+Date: Fri, 20 Nov 2020 12:27:44 -0600
 From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 023/141] staging: rtl8723bs: core: Fix fall-through warnings
- for Clang
-Message-ID: <cd07e3ebc11b44a3fe016341438e24cf950994a3.1605896059.git.gustavoars@kernel.org>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 024/141] staging: vt6655: Fix fall-through warnings for Clang
+Message-ID: <863fda60074850bc976974af48fa769c64725e64.1605896059.git.gustavoars@kernel.org>
 References: <cover.1605896059.git.gustavoars@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -80,47 +80,42 @@ letting the code fall through to the next case.
 Link: https://github.com/KSPP/linux/issues/115
 Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c       | 1 +
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c  | 1 +
- drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 1 +
- 3 files changed, 3 insertions(+)
+ drivers/staging/vt6655/device_main.c | 1 +
+ drivers/staging/vt6655/rxtx.c        | 2 ++
+ 2 files changed, 3 insertions(+)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 2abe205e3453..232661e6a5c9 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -1487,6 +1487,7 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
- 		break;
- 	case LPS_CTRL_TRAFFIC_BUSY:
- 		LPS_Leave(padapter, "LPS_CTRL_TRAFFIC_BUSY");
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index 09ab6d6f2429..0adbd2b67df0 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -1579,6 +1579,7 @@ static int vnt_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 	case DISABLE_KEY:
+ 		if (test_bit(key->hw_key_idx, &priv->key_entry_inuse))
+ 			clear_bit(key->hw_key_idx, &priv->key_entry_inuse);
 +		break;
  	default:
  		break;
  	}
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index b912ad2f4b72..ea44d653a591 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -1708,6 +1708,7 @@ unsigned int OnAssocRsp(struct adapter *padapter, union recv_frame *precv_frame)
- 
- 		case _ERPINFO_IE_:
- 			ERP_IE_handler(padapter, pIE);
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index 477d19314634..1a64152de189 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -1004,6 +1004,7 @@ s_cbFillTxBufHead(struct vnt_private *pDevice, unsigned char byPktType,
+ 		switch (info->control.hw_key->cipher) {
+ 		case WLAN_CIPHER_SUITE_CCMP:
+ 			cbMICHDR = sizeof(struct vnt_mic_hdr);
 +			break;
- 
  		default:
  			break;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-index 372ce17c3569..2b13c683ba5c 100644
---- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-@@ -1505,6 +1505,7 @@ unsigned int is_ap_in_tkip(struct adapter *padapter)
- 			case _RSN_IE_2_:
- 				if (!memcmp((pIE->data + 8), RSN_TKIP_CIPHER, 4))
- 					return true;
-+				break;
- 
- 			default:
- 				break;
+ 		}
+@@ -1318,6 +1319,7 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
+ 			break;
+ 		case WLAN_CIPHER_SUITE_CCMP:
+ 			tx_buffer_head->frag_ctl |= cpu_to_le16(FRAGCTL_AES);
++			break;
+ 		default:
+ 			break;
+ 		}
 -- 
 2.27.0
 
