@@ -1,138 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF66C2BB543
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 20:30:11 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 64E2C2BB54C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 20:31:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 38BEE87692;
-	Fri, 20 Nov 2020 19:30:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 445262E12C;
+	Fri, 20 Nov 2020 19:30:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8kUYa4RMKaN9; Fri, 20 Nov 2020 19:30:08 +0000 (UTC)
+	with ESMTP id Wxnub+krhHrq; Fri, 20 Nov 2020 19:30:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E0EBA87675;
-	Fri, 20 Nov 2020 19:30:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7B3FA2E133;
+	Fri, 20 Nov 2020 19:30:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 000471BF289
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 19:30:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3C5FE1BF289
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 19:30:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EF2CE8700F
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 19:30:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 377F487126
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 19:30:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JAFWvdg_kgEu for <devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 19:30:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from gateway33.websitewelcome.com (gateway33.websitewelcome.com
- [192.185.145.4])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9895786EFE
- for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 19:30:04 +0000 (UTC)
-Received: from cm12.websitewelcome.com (cm12.websitewelcome.com [100.42.49.8])
- by gateway33.websitewelcome.com (Postfix) with ESMTP id 76A1C5C8399
- for <devel@driverdev.osuosl.org>;
- Fri, 20 Nov 2020 13:04:52 -0600 (CST)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id gBiGkXqZfiQiZgBiGkDloA; Fri, 20 Nov 2020 13:04:52 -0600
-X-Authority-Reason: nr=8
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=o6HouBgCeARvPDycxq+DQL9GTuV0FZaznhFf+B5lvvQ=; b=RC17bKQEy60oNUOsP9/+FoFba3
- 7IOvK7tatxfYFulfXrzo1R1inJiR70+fGm96EOiyxuGoF10JW8F/HPs+jPpuI495euTAFQHufGSAV
- KFk2OzUW7hWgtf7v4LM6Poy7NupLGz6fEDbexZ2hS8wrxAWAlGQM9lxjgUTuzQh4+AEwwhtM/J+sO
- AoW8/bIYU33TR8wm0Dkj1ZL5b4OT77sQWi2RWgP14r2tlNn5M1PdILrguUL1Nl2Hy0yV5KIqCCVAo
- j0nfxV1qHzIcwVylK9t1AWmoK15QajwvXxprFA+S9YfES+wOdY+ET5oNf4zzGyJ24cDNT8LjZrCcC
- nhh+2ALA==;
-Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:52360
- helo=[192.168.15.4])
- by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
- (envelope-from <gustavo@embeddedor.com>)
- id 1kgBiD-00024G-7d; Fri, 20 Nov 2020 13:04:49 -0600
+ with ESMTP id yv2T0aKaLdUM for <devel@linuxdriverproject.org>;
+ Fri, 20 Nov 2020 19:30:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 80FC98711F
+ for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 19:30:43 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id y7so8808303pfq.11
+ for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 11:30:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=3bv50j9tOMZCSWAChUvUk5K6TgooTRt3SRcQZBJ9fcA=;
+ b=GgFl3K9IS/lWsdMjkEVVAtTSDzsQ0sxEOabPKwuHzNJyTA7s1nVN/P5Py+wtAIOvbE
+ i43RryzoLL4QMDFVI6bDxTe0ngekUN0rycJ/u5dixn0o4ZWxiMdHtnF6M1zgV7bxdmjG
+ OxnZTS8PQwcd6ZCwnahaxVB8GYQEw6f4nxFx4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3bv50j9tOMZCSWAChUvUk5K6TgooTRt3SRcQZBJ9fcA=;
+ b=Fzjs3zT/XLo8c42FyMOV4NT7q19/j1vMV8XEPflcqRAsv+hS/wbHnhVBDp9eb5WWSp
+ n+w+hqCm2Ybf2iPc49lxY+Xddbgq3JM88isO4emJ1NxkgVncUilBWKdsZHPY8eAUpqEK
+ 8gUUV/d2IrE0JzXBSdwUiWtWjSn7FMPZgpQmfoFpvSlDuuh/GxZLbY8Gd/+4VfIKsHXz
+ YXbkr2SjerJnPTJa6DLgVJVPMsE55wspFgQV7KXc5y0Nw2gVU5DI3D2+yy6sz+ZvNAIN
+ uDkK3FKdS+mg1pTMcSWDG2NOEdIbeaoPKtsTfOAwA1jSqaNWmMuk//AXxwRequoS+xSx
+ 93Zg==
+X-Gm-Message-State: AOAM532sP3onOZMwzJjP8DIBL9JxPGW8KyFBJIEXXwtbzL0yPanDaZjW
+ +JHo5uC6LTkEulAtw1cMrOI9HQ==
+X-Google-Smtp-Source: ABdhPJwl3VgOHP/MWhG5DtpaEL0Yyt6dBbRzpe/94BRgWnGkgcq6AJ5JXkZmDK0TJqDkyAhq9Y3Q+Q==
+X-Received: by 2002:a63:5043:: with SMTP id q3mr17907345pgl.137.1605900643099; 
+ Fri, 20 Nov 2020 11:30:43 -0800 (PST)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id d10sm4785681pjj.38.2020.11.20.11.30.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Nov 2020 11:30:41 -0800 (PST)
+Date: Fri, 20 Nov 2020 11:30:40 -0800
+From: Kees Cook <keescook@chromium.org>
+To: Jakub Kicinski <kuba@kernel.org>
 Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-To: Jakub Kicinski <kuba@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Message-ID: <202011201129.B13FDB3C@keescook>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Autocrypt: addr=gustavo@embeddedor.com; keydata=
- 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
- AP7RWS474w==
-Message-ID: <4609d49b-4dd3-c017-b76e-a8a536871c05@embeddedor.com>
-Date: Fri, 20 Nov 2020 13:04:55 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
 MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Content-Language: en-US
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 187.162.31.110
-X-Source-L: No
-X-Exim-ID: 1kgBiD-00024G-7d
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.4])
- [187.162.31.110]:52360
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 87
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,7 +86,7 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
  reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-fbdev@vger.kernel.org,
- dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
  dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
  GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
@@ -172,41 +110,39 @@ Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
  op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
  xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
  linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org,
  linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
  x86@kernel.org, linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- Kees Cook <keescook@chromium.org>, linux-mm@kvack.org, netdev@vger.kernel.org,
+ linux-mm@kvack.org, netdev@vger.kernel.org,
  linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-sctp@vger.kernel.org, linux-usb@vger.kernel.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
- linux-hardening@vger.kernel.org
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux-renesas-soc@vger.kernel.org, linux-sctp@vger.kernel.org,
+ linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ linux-crypto@vger.kernel.org, patches@opensource.cirrus.com,
+ Joe Perches <joe@perches.com>, linux-integrity@vger.kernel.org,
+ target-devel@vger.kernel.org, linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-Hi,
-
-On 11/20/20 12:53, Jakub Kicinski wrote:
+On Fri, Nov 20, 2020 at 10:53:44AM -0800, Jakub Kicinski wrote:
 > On Fri, 20 Nov 2020 12:21:39 -0600 Gustavo A. R. Silva wrote:
->> This series aims to fix almost all remaining fall-through warnings in
->> order to enable -Wimplicit-fallthrough for Clang.
->>
->> In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
->> add multiple break/goto/return/fallthrough statements instead of just
->> letting the code fall through to the next case.
->>
->> Notice that in order to enable -Wimplicit-fallthrough for Clang, this
->> change[1] is meant to be reverted at some point. So, this patch helps
->> to move in that direction.
->>
->> Something important to mention is that there is currently a discrepancy
->> between GCC and Clang when dealing with switch fall-through to empty case
->> statements or to cases that only contain a break/continue/return
->> statement[2][3][4].
+> > This series aims to fix almost all remaining fall-through warnings in
+> > order to enable -Wimplicit-fallthrough for Clang.
+> > 
+> > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
+> > add multiple break/goto/return/fallthrough statements instead of just
+> > letting the code fall through to the next case.
+> > 
+> > Notice that in order to enable -Wimplicit-fallthrough for Clang, this
+> > change[1] is meant to be reverted at some point. So, this patch helps
+> > to move in that direction.
+> > 
+> > Something important to mention is that there is currently a discrepancy
+> > between GCC and Clang when dealing with switch fall-through to empty case
+> > statements or to cases that only contain a break/continue/return
+> > statement[2][3][4].
 > 
 > Are we sure we want to make this change? Was it discussed before?
 > 
@@ -216,37 +152,14 @@ On 11/20/20 12:53, Jakub Kicinski wrote:
 > IMVHO compiler warnings are supposed to warn about issues that could
 > be bugs. Falling through to default: break; can hardly be a bug?!
 
-The justification for this is explained in this same changelog text:
+It's certainly a place where the intent is not always clear. I think
+this makes all the cases unambiguous, and doesn't impact the machine
+code, since the compiler will happily optimize away any behavioral
+redundancy.
 
-Now that the -Wimplicit-fallthrough option has been globally enabled[5],
-any compiler should really warn on missing either a fallthrough annotation
-or any of the other case-terminating statements (break/continue/return/
-goto) when falling through to the next case statement. Making exceptions
-to this introduces variation in case handling which may continue to lead
-to bugs, misunderstandings, and a general lack of robustness. The point
-of enabling options like -Wimplicit-fallthrough is to prevent human error
-and aid developers in spotting bugs before their code is even built/
-submitted/committed, therefore eliminating classes of bugs. So, in order
-to really accomplish this, we should, and can, move in the direction of
-addressing any error-prone scenarios and get rid of the unintentional
-fallthrough bug-class in the kernel, entirely, even if there is some minor
-redundancy. Better to have explicit case-ending statements than continue to
-have exceptions where one must guess as to the right result. The compiler
-will eliminate any actual redundancy.
 
-Note that there is already a patch in mainline that addresses almost
-40,000 of these issues[6].
-
-[1] commit e2079e93f562c ("kbuild: Do not enable -Wimplicit-fallthrough for clang for now")
-[2] ClangBuiltLinux#636
-[3] https://gcc.gnu.org/bugzilla/show_bug.cgi?id=91432
-[4] https://godbolt.org/z/xgkvIh
-[5] commit a035d552a93b ("Makefile: Globally enable fall-through warning")
-[6] commit 4169e889e588 ("include: jhash/signal: Fix fall-through warnings for Clang")
-
-Thanks
---
-Gustavo
+-- 
+Kees Cook
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
