@@ -1,47 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0733A2BA21D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 07:02:37 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D97612BA2D7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 08:10:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 457518759B;
-	Fri, 20 Nov 2020 06:02:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BAE412DF03;
+	Fri, 20 Nov 2020 07:10:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gwbJt7qww-MH; Fri, 20 Nov 2020 06:02:35 +0000 (UTC)
+	with ESMTP id z+RW2pMCO+SU; Fri, 20 Nov 2020 07:10:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 664A787591;
-	Fri, 20 Nov 2020 06:02:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9288D2E0BD;
+	Fri, 20 Nov 2020 07:10:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D9C641BF83B
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 06:02:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 859241BF28A
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 07:10:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C1C632D946
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 06:02:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 632292DEC9
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 07:10:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eMxCFY81rmdK for <devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 06:02:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.taiz.edu.ye (unknown [185.11.10.24])
- by silver.osuosl.org (Postfix) with ESMTP id 2FDEC203A0
- for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 06:02:28 +0000 (UTC)
-Received: from User ([51.140.114.72]) by taiz.edu.ye with
- MailEnable ESMTP; Thu, 19 Nov 2020 06:34:35 +0300
-From: "Hello"<ictsa@taiz.edu.ye>
-Subject: Hello friend  19/11/2020
-Date: Thu, 19 Nov 2020 03:34:45 -0000
+ with ESMTP id Pm7OpklsDOqd for <devel@linuxdriverproject.org>;
+ Fri, 20 Nov 2020 07:10:05 +0000 (UTC)
+X-Greylist: delayed 00:06:24 by SQLgrey-1.7.6
+Received: from users460.phy.lolipop.jp (users460.phy.lolipop.jp
+ [157.7.106.226])
+ by silver.osuosl.org (Postfix) with ESMTPS id 16E332DEA1
+ for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 07:10:05 +0000 (UTC)
+Received: by users460.phy.lolipop.jp (Postfix, from userid 499)
+ id BC7331D811B5; Fri, 20 Nov 2020 16:03:37 +0900 (JST)
+To: devel@driverdev.osuosl.org
+Subject: =?UTF-8?Q?=F0=9F=92=BC_Ride_the_wave_of_bitcoins_and_earn_guaranteed_13,
+ 0?=  =?UTF-8?Q?00$_in_exactly_24_hours,
+ _follow_the_personal_link:_https://mill?=
+ =?UTF-8?Q?ionairego.page.link/de=3F76a_=F0=9F=92=BC?=
+X-PHP-Originating-Script: 910470:class-phpmailer.php
+Date: Fri, 20 Nov 2020 07:03:37 +0000
+From: takuma onishi <wordpress@takuma-onishi.com>
+Message-ID: <35f77345bee8855743a13011682f67bd@takuma-onishi.com>
+X-Mailer: PHPMailer 5.2.22 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <35C7E6AC4BA04847924E0AF40FAA2ADF.MAI@taiz.edu.ye>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,21 +57,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimy1978@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info@power-to-climb-music.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee which has been postponed to October 2021 to March 2022 because of the Covid-19 pandemic.
-I am writing to you to manage the funds I received as financial gratification from various foreign companies I assisted to receive a participation approval to the coming event. The amount is $44,762,906.00 United States dollars. But I can not personally manage the fund in my country because of the sensitive nature of my office and the certain restriction on married Muslim women.
- 
-For this reason, an agreement was reached with a consulting firm to direct the various financial gifts into an open beneficiary account in my name with a bank where it will be possible for me to instruct the transfer of ownership right to a third party for investment purpose; which is the reason I am contacting you to receive the fund and manage it as my investment partner. Note that the fund is NOT connected to any criminal or terrorist activity.
-On your indication of interest with your information to include your name, your phone number and contact mailing address; I will instruct the consulting firm to process the fund from the bank to your country for investment purposes.
- 
-Regards.
-Reem Hashimy.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+44Oh44OD44K744O844K45pys5paHOgrwn5K8IFJpZGUgdGhlIHdhdmUgb2YgYml0Y29pbnMgYW5k
+IGVhcm4gZ3VhcmFudGVlZCAxMywwMDAkIGluIGV4YWN0bHkgMjQgaG91cnMsIGZvbGxvdyB0aGUg
+cGVyc29uYWwgbGluazogaHR0cHM6Ly9taWxsaW9uYWlyZWdvLnBhZ2UubGluay9kZT83NmEg8J+S
+vAoKLS0K44GT44Gu44Oh44O844Or44GvIHRha3VtYSBvbmlzaGkgKGh0dHA6Ly90YWt1bWEtb25p
+c2hpLmNvbSkg44Gu44GK5ZWP44GE5ZCI44KP44Gb44OV44Kp44O844Og44GL44KJ6YCB5L+h44GV
+44KM44G+44GX44GfCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRw
+Oi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2
+ZXJkZXYtZGV2ZWwK
