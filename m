@@ -1,55 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4B192BB2BE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 19:36:50 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC4152BB3E7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Nov 2020 19:39:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A71BA87403;
-	Fri, 20 Nov 2020 18:36:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EA088708C;
+	Fri, 20 Nov 2020 18:39:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 78Vok7kHk2Lr; Fri, 20 Nov 2020 18:36:48 +0000 (UTC)
+	with ESMTP id S44enE9zXPKQ; Fri, 20 Nov 2020 18:39:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1D2C287236;
-	Fri, 20 Nov 2020 18:36:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 870C586F2B;
+	Fri, 20 Nov 2020 18:39:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5440F1BF327
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:36:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 981A41BF327
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:39:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 48E1A2E124
- for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:36:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 61BCC2E124
+ for <devel@linuxdriverproject.org>; Fri, 20 Nov 2020 18:39:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cOORi1jtck1k for <devel@linuxdriverproject.org>;
- Fri, 20 Nov 2020 18:36:45 +0000 (UTC)
+ with ESMTP id WSA6N-FMJLea for <devel@linuxdriverproject.org>;
+ Fri, 20 Nov 2020 18:39:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 19AB12E120
- for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 18:36:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 87CEC2E120
+ for <devel@driverdev.osuosl.org>; Fri, 20 Nov 2020 18:39:46 +0000 (UTC)
 Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C98AF24178;
- Fri, 20 Nov 2020 18:36:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2CE252242B;
+ Fri, 20 Nov 2020 18:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605897404;
- bh=P0ho12sgAaK4DoLh6QPmF0ZxrwPVgf6Fhfqmw03f+BA=;
+ s=default; t=1605897586;
+ bh=v1Gn6x73baTEirIVYn+YPO3Vj9enivyASeGZ6ba81Js=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hgs/MwvnI4/Qh1IfQWTHC1V2ek1jzIsFGde9Z77it39Ux6x6UXhMXSCW3aTWRqGNI
- uzDVKZ5aVrFvT4UQkApb7Kz94DD0EAgCxWyudIoi/jKDymBGjsIo8fqxt1jQHPoC8q
- tEDI7k/xz0naaRL1SOLGHcKfFclDyhc+0Vxp77Og=
-Date: Fri, 20 Nov 2020 12:36:50 -0600
+ b=Bb2W0ZyHzyTQexuiKzZ1tsGPtRvsy3FK+uh5TuQpq4qnVK1ygVyd5HN4/MIGNxXak
+ vgk/fAFRIaKqD+Ysqnqo2YfhvSHdUgV5lRaGY230J+Z83Rl8W2XR6QV8H1PtkVQIdG
+ 6u0AdCaz7P1JBvq/gFfR97pSh247uZ1NnVMwnWA4=
+Date: Fri, 20 Nov 2020 12:39:51 -0600
 From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
+To: Manish Chopra <manishc@marvell.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 094/141] media: atomisp: Fix fall-through warnings for Clang
-Message-ID: <6a1c9b29a2d8e5accb48cd179cfe43b87fd83a00.1605896060.git.gustavoars@kernel.org>
+Subject: [PATCH 127/141] staging: qlge: Fix fall-through warnings for Clang
+Message-ID: <673bd9f27bcc2df8c9d12be94f54001d8066d4ab.1605896060.git.gustavoars@kernel.org>
 References: <cover.1605896059.git.gustavoars@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -67,9 +66,9 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- linux-hardening@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
+ netdev@vger.kernel.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -82,17 +81,17 @@ through to the next case.
 Link: https://github.com/KSPP/linux/issues/115
 Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
- drivers/staging/media/atomisp/pci/runtime/isys/src/rx.c | 1 +
+ drivers/staging/qlge/qlge_main.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/media/atomisp/pci/runtime/isys/src/rx.c b/drivers/staging/media/atomisp/pci/runtime/isys/src/rx.c
-index b4813cd50daa..4a18da6bf0c1 100644
---- a/drivers/staging/media/atomisp/pci/runtime/isys/src/rx.c
-+++ b/drivers/staging/media/atomisp/pci/runtime/isys/src/rx.c
-@@ -368,6 +368,7 @@ static mipi_predictor_t sh_css_csi2_compression_type_2_mipi_predictor(
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 27da386f9d87..c41b1373dcf8 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -1385,6 +1385,7 @@ static void ql_categorize_rx_err(struct ql_adapter *qdev, u8 rx_err,
  		break;
- 	case IA_CSS_CSI2_COMPRESSION_TYPE_2:
- 		predictor = MIPI_PREDICTOR_TYPE2 - 1;
+ 	case IB_MAC_IOCB_RSP_ERR_CRC:
+ 		stats->rx_crc_err++;
 +		break;
  	default:
  		break;
