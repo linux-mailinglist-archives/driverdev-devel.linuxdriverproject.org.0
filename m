@@ -1,75 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 184482BC010
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Nov 2020 15:50:45 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61CA42BC052
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Nov 2020 16:50:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A290D86C31;
-	Sat, 21 Nov 2020 14:50:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3021887498;
+	Sat, 21 Nov 2020 15:50:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1MncUKdILlj4; Sat, 21 Nov 2020 14:50:42 +0000 (UTC)
+	with ESMTP id FzEXga0wkqKb; Sat, 21 Nov 2020 15:50:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F09B86A1D;
-	Sat, 21 Nov 2020 14:50:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2FA9887478;
+	Sat, 21 Nov 2020 15:50:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 920FA1BF82F
- for <devel@linuxdriverproject.org>; Sat, 21 Nov 2020 14:50:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E44321BF95C
+ for <devel@linuxdriverproject.org>; Sat, 21 Nov 2020 15:50:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7F77020420
- for <devel@linuxdriverproject.org>; Sat, 21 Nov 2020 14:50:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DF95320402
+ for <devel@linuxdriverproject.org>; Sat, 21 Nov 2020 15:50:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3AkHLi5iT--T for <devel@linuxdriverproject.org>;
- Sat, 21 Nov 2020 14:50:35 +0000 (UTC)
+ with ESMTP id ITjetPOYg1Gt for <devel@linuxdriverproject.org>;
+ Sat, 21 Nov 2020 15:50:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 26CD620418
- for <devel@driverdev.osuosl.org>; Sat, 21 Nov 2020 14:50:35 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id s18so13046742oih.1
- for <devel@driverdev.osuosl.org>; Sat, 21 Nov 2020 06:50:35 -0800 (PST)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3962820420
+ for <devel@driverdev.osuosl.org>; Sat, 21 Nov 2020 15:50:42 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id t4so1046058wrr.12
+ for <devel@driverdev.osuosl.org>; Sat, 21 Nov 2020 07:50:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ette9kx7pLe3BTxF6SA7N6NBJN1cBdU9jOFxOgT8Dgs=;
- b=C98eNIJQ96ROHkZRL2BXaceiD1FesqjudfRDq0SpYUawYUbCsJMGSJnsiTUwp+ChlT
- m4kiJfomdNY6iWhv9UK81qwOFUCOseOB+YLSTDuzWlcTHD45LIH6deMhEFjpv8zwnRsZ
- F5PDDrjO3Jly6kUL5VABH4/9KRP5UwkMRT1mxrEAaZ9nCCNw9bbLebPJgNbvD/KcwcKG
- KRAt1AyVrrgnbZ8qjoNtbFrDp28z/eI4ki6K6oxtKYMZKmQwvNEHwnQVWDZFDBDTuzWq
- /7/0SuxWzzN2qPxvilP23Ega639E64hREY3F/w3y2+39Rlc8brtm/8PnKKhypzapyapf
- RFsg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Jd3/1hRfxc7Y0whxq1qc3RnNgcKPiRRQEOenbTFn7o8=;
+ b=UaRRq3qNj2P+/jG9H9x6ZMHkVMcQDKG3Fb5afOhielDlXzdzwYtEv7jaYWvNDo9oBE
+ 632GUZHFZF6M2H4CvrYS1VwIqx7UNhyjMziiNaarLVJV9o0p2AshUdiuW+hz2tEF1F7j
+ bkDYYD95K7wKUCKpjs7Qf1NGxvsrDKuWPtUsiWibv5SKU6u6ot2Ka/7buPaq9CVPVF/7
+ 0JJjf0bl4y3ogkjJy4CfL6w7opgBMSHY+WFv8w8EDw3VnTpXRP43C2yBa3bzQ0wPiI1T
+ Jab0Jk/A4frfGqsYcxxYk+mgb/pHqC2aXBWjHV+Pynl6voetj/Ie9b3o8ikWAFBL960V
+ 5pag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ette9kx7pLe3BTxF6SA7N6NBJN1cBdU9jOFxOgT8Dgs=;
- b=nTzSsPsT8257zQcjL2Fl7Gq1FgCRGuQEV3DPFmQPZyS374PK8xNofWP/e6VlDzdhiJ
- Q2+g1YEWlJS6K7F5CV5T/1mOypLQmLOSS2bVncd3V9+dU/GlAAtKs7bIAbR2ipxrGiQ0
- BQLPycnu9q+6h2sseZA4j/eh6tqYaixQ8tAsDtXPw8DCh5jJ5M1gO2QGOKp4HfDmnwRQ
- iR0crErhuIPP3TNBRgcs9Bl9W/2TQ3xnZaUNKUk2faa7pgcQNx6hAR9t4fZt4u1iE0oi
- 9lHjS69ywwTbQHSqxe+Dk5qaQzul6tr+3kuUWdtd1J1TWInk53Es+UJTMYApGaGyX441
- ynsQ==
-X-Gm-Message-State: AOAM532K/0SwSNBQZVyq2ylDi29FQNVq+QtsWe5rC4qherEun/nC7JNW
- jmpNL3LdTleTJakyPjB9B/iBI5IRxA3Pq48uJM4=
-X-Google-Smtp-Source: ABdhPJySOdSRaChFfDTdyVQzHEvIojGBbrolLIz896Qw2h4xpte1Ro7K6uWBdEMow99a6PELRxBLWCEe9btAVMFc9CI=
-X-Received: by 2002:aca:59c3:: with SMTP id n186mr9282300oib.149.1605970234325; 
- Sat, 21 Nov 2020 06:50:34 -0800 (PST)
-MIME-Version: 1.0
-References: <20201113154632.24973-1-sergio.paracuellos@gmail.com>
- <20201113154632.24973-3-sergio.paracuellos@gmail.com>
- <20201121133432.GA2130098@robh.at.kernel.org>
-In-Reply-To: <20201121133432.GA2130098@robh.at.kernel.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Jd3/1hRfxc7Y0whxq1qc3RnNgcKPiRRQEOenbTFn7o8=;
+ b=gLSVzyV7sv6tFQbg4RXuEUro90fsZdpCcPR/qGkJdFrVBpAxPggNsXB2Lu57A0Uygs
+ rXlbBTf0rg8NVv20YnLcjGlRBPNIQIBOKCHk6liEDRYtPdqoGuqHCOPblXCODOGqdRSn
+ Khc43pPFgCSIC4NEmX/0uEYVla9o0C4H22VwMa2a7e/fPm6YzgtyMceQwUNp/45u3N3d
+ RJupqXyCaUxKxuLQM7j5xfTtEK4ombgbRYwAOn2IEjtQ1f/Aj6eGRDdcJSo5o1FdOZU2
+ ZZiVtbwIdw+bIl7jSOnS/Qm9HttoRWkllKCt55dEh24mH6tME3wyPWYdkOwOt9FaxuPB
+ IzqQ==
+X-Gm-Message-State: AOAM531J145hRfbw6ZHdOGuqzS3KOh2o+OAkQl2EzfF3pKbI9MNUTmi1
+ XNQ9/894iBIv0mWVxAeqVZ8=
+X-Google-Smtp-Source: ABdhPJz0fqaV77TCFstUF9IdkyZyPzYGXTbA2hyH2EMB6jgfHhm+iKDcv3JV8BkwcztGGLyCdmCUNA==
+X-Received: by 2002:a5d:6852:: with SMTP id o18mr21570046wrw.336.1605973840346; 
+ Sat, 21 Nov 2020 07:50:40 -0800 (PST)
+Received: from localhost.localdomain
+ (161.red-83-46-194.dynamicip.rima-tde.net. [83.46.194.161])
+ by smtp.gmail.com with ESMTPSA id n128sm7959598wmb.46.2020.11.21.07.50.38
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 21 Nov 2020 07:50:39 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Sat, 21 Nov 2020 15:50:23 +0100
-Message-ID: <CAMhs-H9JORHgPmq0-n=hx=yRo0SCT33mP_quxZoRtKYkiVDy_Q@mail.gmail.com>
-Subject: Re: [PATCH v3 2/5] dt: bindings: add mt7621-clk device tree binding
- documentation
-To: Rob Herring <robh@kernel.org>
+To: vkoul@kernel.org
+Subject: [PATCH v6 0/4] MT7621 PCIe PHY
+Date: Sat, 21 Nov 2020 16:50:33 +0100
+Message-Id: <20201121155037.21354-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,147 +84,115 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Weijie Gao <hackpascal@gmail.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Stephen Boyd <sboyd@kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
- Michael Turquette <mturquette@baylibre.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, jiaxun.yang@flygoat.com,
- "open list:MIPS" <linux-mips@vger.kernel.org>, John Crispin <john@phrozen.org>,
- NeilBrown <neil@brown.name>,
- "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, kishon@ti.com,
+ robh+dt@kernel.org, neil@brown.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Rob,
+This series adds support for the PCIe PHY found in the Mediatek
+MT7621 SoC.
 
-Thanks for the review.
+There is also a 'mt7621-pci' driver which is the controller part
+which is still in staging and is a client of this phy.
 
-On Sat, Nov 21, 2020 at 2:34 PM Rob Herring <robh@kernel.org> wrote:
->
-> On Fri, Nov 13, 2020 at 04:46:29PM +0100, Sergio Paracuellos wrote:
-> > Adds device tree binding documentation for clocks in the
-> > MT7621 SOC.
-> >
-> > Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> > ---
-> >  .../bindings/clock/mediatek,mt7621-clk.yaml   | 61 +++++++++++++++++++
-> >  1 file changed, 61 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
-> >
-> > diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
-> > new file mode 100644
-> > index 000000000000..363bd9880e29
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
-> > @@ -0,0 +1,61 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/clock/mediatek,mt7621-clk.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MT7621 Clock Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> > +
-> > +description: |
-> > +  The MT7621 has a PLL controller from where the cpu clock is provided
-> > +  as well as derived clocks for the bus and the peripherals. It also
-> > +  can gate SoC device clocks.
-> > +
-> > +  Each clock is assigned an identifier and client nodes use this identifier
-> > +  to specify the clock which they consume.
-> > +
-> > +  All these identifiers could be found in:
-> > +  [1]: <include/dt-bindings/clock/mt7621-clk.h>.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt7621-clk
-> > +
-> > +  ralink,sysctl:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description:
-> > +      phandle to the syscon which is in the same address area with syscon
-> > +      device.
-> > +
-> > +  "#clock-cells":
-> > +    description:
-> > +      The first cell indicates the clock gate number, see [1] for available
-> > +      clocks.
-> > +    const: 1
-> > +
-> > +  clock-output-names:
-> > +    maxItems: 8
-> > +
-> > +required:
-> > +  - compatible
-> > +  - ralink,sysctl
-> > +  - '#clock-cells'
-> > +  - clock-output-names
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/clock/mt7621-clk.h>
-> > +
-> > +    pll {
-> > +      compatible = "mediatek,mt7621-clk";
-> > +      ralink,sysctl = <&sysc>;
->
-> If this is the only control interface, then make this a child of 'sysc'.
-> And use 'reg' if there's a dedicated range of registers.
+Both drivers have been tested together in a gnubee1 board.
 
-This is the only one now in the device tree which is still in staging
-but there are several places where this sys control registers are
-accessed from. In the case of the clocks we need:
+This series are rebased on the top of linux-phy:
+commit 768a711e2d4b ("phy: samsung: phy-exynos-pcie: fix typo 'tunning'")
 
-#define SYSC_REG_SYSTEM_CONFIG0         0x10
-#define SYSC_REG_SYSTEM_CONFIG1         0x14
-#define SYSC_REG_CLKCFG0                0x2c
-#define SYSC_REG_CLKCFG1                0x30
-#define SYSC_REG_CUR_CLK_STS            0x44
+Changes in v6:
+  - Change definition name to XTAL_MASK to fix its use in one line.
+  - Fix XTAL_MASK mask value after use it with 'FIELD_GET'.
+  - Add comment in 'mt7621_phy_rmw' about why 'regmap_write_bits'
+    cannot be used.
+  - Rebase series on the top of 'next' branch of 'linux-phy' tree.
 
-where there is not a range as it is but several different registers
-from where we need to read or write things. I wrote the driver using
-syscon and regmap because I thought in that way it might be more
-maintainable but this architecture also has operations to read and
-write registers from sysc and not using regmap at all. This operations
-are defined in arch/mips/include/asm/mach-ralink/ralink_regs.h. But
-because this sysc is currently mapped I cannot request its registers
-using reg in the device tree. If you prefer me to avoid the use of
-this syscon and regmap and use operations defined in ralink_regs.h,
-this will become in a node without "regs" or  "ralink,sysctl"
-property:
+Changes in v5:
+  - PATCH 1/4: Recollect Rob's Reviewed-by of bindings.
+  - PATCH 4/4: Recollect Greg's Acked-by for removing stuff from
+    staging area.
+  - Use 'devm_platform_ioremap_resource' instead of using 
+    'platform_get_resource' and 'devm_ioremap_resource'.
+  - Make Vinod's review comments changes in [0]:
+    * Use FIELD_GET and FIELD_PREP apis and avoid multiple *_VAL and
+      *_SHIFT custom definitions.
+    * Remove phy-read and phy-write internal functions and directly
+      call regmap_read and regmap_write in 'mt7621_phy_rmw'.
+    * Change some traces from info to debug log level.
+    * Note that I have maintained 'mt7621_phy_rmw' instead of use
+      'regmap_update_bits'. This is because in order to get a reliable
+      boot registers must be written event the contained value in 
+      that register is the same. I have preferred doing in this way
+      instead of using 'regmap_update_bits_base' passing 'false' for
+      async and 'true' for the force write. If this way of using 
+      'regmap_update_bits_base' is preferred just let me know.
 
-pll {
-    compatible = "mediatek,mt7621-clk";
-    #clock-cells = <1>;
-    clock-output-names = "xtal", "cpu", "bus",
-                      "50m", "125m", "150m",
-                       "250m", "270m";
-};
+Changes in v4:
+  - Bindings moved from txt to yaml so previous Rob's Reviewed-by
+    is not in the new patch with the yaml file.
+  - 'phy-cells' property means now if phy is dual-ported.
+  - Avoid custom 'xlate' function and properly set registers
+    when the phy is dual ported.
+  - Add use of 'builtin_platform_driver'.
+  - Added a patch including myself as maintainer in the
+    MAINTAINERS file.
+  - Add a patch removing patch from staging to make easier
+    the complete inclusion and avoid possible problems might
+    appear in 'linux-next' if the series are included.
 
-What should I do then?
+Changes in v3:
+  - Recollect Rob's Reviewed-by of bindings.
+  - Make Kishon Vijay suggested changes in v2:
+   (See https://lkml.org/lkml/2019/4/17/53)
+  - Kconfig:
+    * Add depends on COMPILE_TEST
+    * Select REGMAP_MMIO
+  - Make use of 'soc_device_attribute' and 'soc_device_match'
+  - Use regmap mmio API instead of directly 'readl' and 'writel'.
+  - Use 'platform_get_resource' instead of 'of_address_to_resource'.
+
+Changes in v2:
+  - Reorder patches to get bindings first in the series.
+  - Don't use child nodes in the device tree. Use #phy-cells=1 instead.
+  - Update driver code with new 'xlate' function for the new device tree.
+  - Minor changes in driver's macros changing some spaces to tabs.
+
+Thanks in advance for your time.
 
 Best regards,
     Sergio Paracuellos
 
->
-> > +      #clock-cells = <1>;
-> > +      clock-output-names = "xtal", "cpu", "bus",
-> > +                           "50m", "125m", "150m",
-> > +                           "250m", "270m";
-> > +    };
-> > --
-> > 2.25.1
-> >
+[0]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2020-November/148864.html
+
+Sergio Paracuellos (4):
+  dt-bindings: phy: Add binding for Mediatek MT7621 PCIe PHY
+  phy: ralink: Add PHY driver for MT7621 PCIe PHY
+  MAINTAINERS: add MT7621 PHY PCI maintainer
+  staging: mt7621-pci-phy: remove driver from staging
+
+ .../phy}/mediatek,mt7621-pci-phy.yaml         |   2 +-
+ MAINTAINERS                                   |   6 +
+ drivers/phy/ralink/Kconfig                    |   8 ++
+ drivers/phy/ralink/Makefile                   |   1 +
+ .../ralink/phy-mt7621-pci.c}                  | 115 +++++++-----------
+ drivers/staging/Kconfig                       |   2 -
+ drivers/staging/Makefile                      |   1 -
+ drivers/staging/mt7621-pci-phy/Kconfig        |   8 --
+ drivers/staging/mt7621-pci-phy/Makefile       |   2 -
+ drivers/staging/mt7621-pci-phy/TODO           |   4 -
+ 10 files changed, 63 insertions(+), 86 deletions(-)
+ rename {drivers/staging/mt7621-pci-phy => Documentation/devicetree/bindings/phy}/mediatek,mt7621-pci-phy.yaml (92%)
+ rename drivers/{staging/mt7621-pci-phy/pci-mt7621-phy.c => phy/ralink/phy-mt7621-pci.c} (76%)
+ delete mode 100644 drivers/staging/mt7621-pci-phy/Kconfig
+ delete mode 100644 drivers/staging/mt7621-pci-phy/Makefile
+ delete mode 100644 drivers/staging/mt7621-pci-phy/TODO
+
+-- 
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
