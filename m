@@ -1,64 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FAE82BC891
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Nov 2020 20:23:09 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FE6C2BC8D6
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Nov 2020 20:54:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C6E7D86892;
-	Sun, 22 Nov 2020 19:23:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3411985F98;
+	Sun, 22 Nov 2020 19:54:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4ViJhcjnQ5fx; Sun, 22 Nov 2020 19:23:07 +0000 (UTC)
+	with ESMTP id kNSFLkQNpwLu; Sun, 22 Nov 2020 19:54:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 847BB86871;
-	Sun, 22 Nov 2020 19:23:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0031A85F33;
+	Sun, 22 Nov 2020 19:54:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 182E41BF5DD
- for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 19:23:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 641101BF5DD
+ for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 19:54:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F1CE22042B
- for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 19:23:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5B11D87068
+ for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 19:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kwiRGRORW82J for <devel@linuxdriverproject.org>;
- Sun, 22 Nov 2020 19:23:02 +0000 (UTC)
+ with ESMTP id rZ0ztbe1AwTt for <devel@linuxdriverproject.org>;
+ Sun, 22 Nov 2020 19:54:00 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0016.hostedemail.com
- [216.40.44.16])
- by silver.osuosl.org (Postfix) with ESMTPS id BC96920428
- for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 19:23:02 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave06.hostedemail.com (Postfix) with ESMTP id C4D6D800761B
- for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 19:23:01 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay06.hostedemail.com (Postfix) with ESMTP id 8A2DD18221869;
- Sun, 22 Nov 2020 19:22:59 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:967:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2525:2560:2563:2682:2685:2828:2859:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3352:3622:3865:3866:3871:3873:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4250:4321:5007:6742:6743:7903:8985:9025:9108:10004:10400:10848:11232:11658:11914:12043:12297:12555:12740:12760:12895:13069:13311:13357:13439:14181:14659:14721:21080:21450:21499:21627:30054:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: curve68_4013d692735f
-X-Filterd-Recvd-Size: 4350
-Received: from XPS-9350.home (unknown [47.151.128.180])
- (Authenticated sender: joe@perches.com)
- by omf17.hostedemail.com (Postfix) with ESMTPA;
- Sun, 22 Nov 2020 19:22:48 +0000 (UTC)
-Message-ID: <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
+Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
+ [96.44.175.130])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1EC4087064
+ for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 19:54:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 5AE091280408;
+ Sun, 22 Nov 2020 11:53:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606074839;
+ bh=VEGy54rcLCho40R+6JbprsRZooc9e7x1ylV8+ruCN0g=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=Xy60wiIzsyTeElUeeJd3QYsiHNZfzmGET/Nzo9eZo2OJxmb5EOyvszf5Q8Et12YN3
+ QzMj8C6lMBcV0iKMn2xQmIYhyRP6O8RGeJWdk6ZnR1Mz2fkvBJLWRT04tHjc221TnA
+ rtTRX0GCrDoOkJiVFq/y98T9XhefjbMkzX0sdCSc=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id KaMwHtHCHbnw; Sun, 22 Nov 2020 11:53:59 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id D0B171280404;
+ Sun, 22 Nov 2020 11:53:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606074839;
+ bh=VEGy54rcLCho40R+6JbprsRZooc9e7x1ylV8+ruCN0g=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=Xy60wiIzsyTeElUeeJd3QYsiHNZfzmGET/Nzo9eZo2OJxmb5EOyvszf5Q8Et12YN3
+ QzMj8C6lMBcV0iKMn2xQmIYhyRP6O8RGeJWdk6ZnR1Mz2fkvBJLWRT04tHjc221TnA
+ rtTRX0GCrDoOkJiVFq/y98T9XhefjbMkzX0sdCSc=
+Message-ID: <dbd2cb703ed9eefa7dde9281ea26ab0f7acc8afe.camel@HansenPartnership.com>
 Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: Joe Perches <joe@perches.com>
-To: James Bottomley <James.Bottomley@HansenPartnership.com>, Kees Cook
- <keescook@chromium.org>, Jakub Kicinski <kuba@kernel.org>
-Date: Sun, 22 Nov 2020 11:22:47 -0800
-In-Reply-To: <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Joe Perches <joe@perches.com>, Kees Cook <keescook@chromium.org>, Jakub
+ Kicinski <kuba@kernel.org>
+Date: Sun, 22 Nov 2020 11:53:55 -0800
+In-Reply-To: <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
@@ -67,7 +74,8 @@ References: <cover.1605896059.git.gustavoars@kernel.org>
  <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
  <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
  <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
-User-Agent: Evolution 3.38.1-1 
+ <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -124,21 +132,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 2020-11-22 at 11:12 -0800, James Bottomley wrote:
-> On Sun, 2020-11-22 at 10:25 -0800, Joe Perches wrote:
-> > On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
-> > > Please tell me our reward for all this effort isn't a single
-> > > missing error print.
+On Sun, 2020-11-22 at 11:22 -0800, Joe Perches wrote:
+> On Sun, 2020-11-22 at 11:12 -0800, James Bottomley wrote:
+> > On Sun, 2020-11-22 at 10:25 -0800, Joe Perches wrote:
+> > > On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
+> > > > Please tell me our reward for all this effort isn't a single
+> > > > missing error print.
+> > > 
+> > > There were quite literally dozens of logical defects found
+> > > by the fallthrough additions.  Very few were logging only.
 > > 
-> > There were quite literally dozens of logical defects found
-> > by the fallthrough additions.  Very few were logging only.
+> > So can you give us the best examples (or indeed all of them if
+> > someone is keeping score)?  hopefully this isn't a US election
+> > situation ...
 > 
-> So can you give us the best examples (or indeed all of them if someone
-> is keeping score)?  hopefully this isn't a US election situation ...
+> Gustavo?  Are you running for congress now?
+> 
+> https://lwn.net/Articles/794944/
 
-Gustavo?  Are you running for congress now?
+That's 21 reported fixes of which about 50% seem to produce no change
+in code behaviour at all, a quarter seem to have no user visible effect
+with the remaining quarter producing unexpected errors on obscure
+configuration parameters, which is why no-one really noticed them
+before.
 
-https://lwn.net/Articles/794944/
+James
 
 
 _______________________________________________
