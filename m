@@ -1,67 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F5182BC7ED
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Nov 2020 19:25:57 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A416C2BC863
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Nov 2020 20:12:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C168586788;
-	Sun, 22 Nov 2020 18:25:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BB46E85F8C;
+	Sun, 22 Nov 2020 19:12:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mB2OU9Gu9RTG; Sun, 22 Nov 2020 18:25:55 +0000 (UTC)
+	with ESMTP id WAr8V-MKFzDF; Sun, 22 Nov 2020 19:12:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 55469867E8;
-	Sun, 22 Nov 2020 18:25:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8DA5585E79;
+	Sun, 22 Nov 2020 19:12:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2A9131BF5B5
- for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 18:25:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EDAD81BF5DD
+ for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 19:12:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 206CC20386
- for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 18:25:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CA8E42042B
+ for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 19:12:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TBEM+jmPKXlS for <devel@linuxdriverproject.org>;
- Sun, 22 Nov 2020 18:25:51 +0000 (UTC)
+ with ESMTP id RtSENWYjXs5x for <devel@linuxdriverproject.org>;
+ Sun, 22 Nov 2020 19:12:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0206.hostedemail.com
- [216.40.44.206])
- by silver.osuosl.org (Postfix) with ESMTPS id 9ED532034B
- for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 18:25:51 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay06.hostedemail.com (Postfix) with ESMTP id 883C21800AEAD;
- Sun, 22 Nov 2020 18:25:49 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1537:1561:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3865:3866:4321:5007:6742:6743:10004:10400:10848:11232:11658:11914:12297:12740:12760:12895:13019:13069:13161:13229:13311:13357:13439:14659:21080:21450:21627:30054:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: stamp54_4305a342735e
-X-Filterd-Recvd-Size: 3841
-Received: from XPS-9350.home (unknown [47.151.128.180])
- (Authenticated sender: joe@perches.com)
- by omf09.hostedemail.com (Postfix) with ESMTPA;
- Sun, 22 Nov 2020 18:25:38 +0000 (UTC)
-Message-ID: <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
+Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
+ [96.44.175.130])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2105C20428
+ for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 19:12:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 96EF41280181;
+ Sun, 22 Nov 2020 11:12:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606072354;
+ bh=RkMkP78xnGMXpQYwW6B64FZnxQgTZZOXvlSf0xxLQvs=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=cqs+SSmhVi1ZEA6KYpGlCOCKLLv9H3tmiNoTpcFF7F+1vb1QgbekNgnLlgvfKOfrE
+ OZFKROCwJ+4Dh9AKsWr2ZhTbG6lfWTbk5QBrrreOMOUbINEmr9+ncDNzytUg1VYukU
+ VtKrfA4fWPJSjG94bNM6AxKG7W4waC4yzJNdPcng=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id T_J7YGNeXPBb; Sun, 22 Nov 2020 11:12:34 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id D7CFF128010B;
+ Sun, 22 Nov 2020 11:12:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606072354;
+ bh=RkMkP78xnGMXpQYwW6B64FZnxQgTZZOXvlSf0xxLQvs=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=cqs+SSmhVi1ZEA6KYpGlCOCKLLv9H3tmiNoTpcFF7F+1vb1QgbekNgnLlgvfKOfrE
+ OZFKROCwJ+4Dh9AKsWr2ZhTbG6lfWTbk5QBrrreOMOUbINEmr9+ncDNzytUg1VYukU
+ VtKrfA4fWPJSjG94bNM6AxKG7W4waC4yzJNdPcng=
+Message-ID: <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
 Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: Joe Perches <joe@perches.com>
-To: James Bottomley <James.Bottomley@HansenPartnership.com>, Kees Cook
- <keescook@chromium.org>, Jakub Kicinski <kuba@kernel.org>
-Date: Sun, 22 Nov 2020 10:25:37 -0800
-In-Reply-To: <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Joe Perches <joe@perches.com>, Kees Cook <keescook@chromium.org>, Jakub
+ Kicinski <kuba@kernel.org>
+Date: Sun, 22 Nov 2020 11:12:30 -0800
+In-Reply-To: <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
  <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011220816.8B6591A@keescook>
  <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
-User-Agent: Evolution 3.38.1-1 
+ <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -118,13 +130,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
-> Please tell me
-> our reward for all this effort isn't a single missing error print.
+On Sun, 2020-11-22 at 10:25 -0800, Joe Perches wrote:
+> On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
+> > Please tell me our reward for all this effort isn't a single
+> > missing error print.
+> 
+> There were quite literally dozens of logical defects found
+> by the fallthrough additions.  Very few were logging only.
 
-There were quite literally dozens of logical defects found
-by the fallthrough additions.  Very few were logging only.
+So can you give us the best examples (or indeed all of them if someone
+is keeping score)?  hopefully this isn't a US election situation ...
 
+James
 
 
 _______________________________________________
