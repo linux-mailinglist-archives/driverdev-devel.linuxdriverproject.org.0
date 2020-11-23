@@ -1,46 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6BE402C1343
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 19:38:59 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E1092C134B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 19:39:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 17E3487049;
-	Mon, 23 Nov 2020 18:38:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9C124204C2;
+	Mon, 23 Nov 2020 18:39:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n-uf4+TNqyn2; Mon, 23 Nov 2020 18:38:57 +0000 (UTC)
+	with ESMTP id hp16JJhdbE-F; Mon, 23 Nov 2020 18:39:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4DA138701D;
-	Mon, 23 Nov 2020 18:38:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6923F204B8;
+	Mon, 23 Nov 2020 18:39:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA5F41BF395
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 18:38:50 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EF56E1BF395
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 18:39:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CEBA887017
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 18:38:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A9C34204A8
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 18:39:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OdlGLNcrZGsv for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 18:38:50 +0000 (UTC)
+ with ESMTP id rWw3tzRLx7Gq for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 18:38:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 54AE48702C
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 18:38:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 768E91FF59
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 18:38:51 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id E3727ACA3;
- Mon, 23 Nov 2020 18:38:48 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 12AA5AC91;
+ Mon, 23 Nov 2020 18:38:50 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: u.kleine-koenig@pengutronix.de,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 07/11] staging: vchiq: Release firmware handle on unbind
-Date: Mon, 23 Nov 2020 19:38:28 +0100
-Message-Id: <20201123183833.18750-8-nsaenzjulienne@suse.de>
+Subject: [PATCH v5 08/11] input: raspberrypi-ts: Release firmware handle when
+ not needed
+Date: Mon, 23 Nov 2020 19:38:29 +0100
+Message-Id: <20201123183833.18750-9-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201123183833.18750-1-nsaenzjulienne@suse.de>
 References: <20201123183833.18750-1-nsaenzjulienne@suse.de>
@@ -78,25 +79,28 @@ Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 
 ---
 
+Changes since v3:
+ - Release firmware handle in probe function
+
 Changes since v2:
  - Use devm_rpi_firmware_get(), instead of remove function
 
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 2 +-
+ drivers/input/touchscreen/raspberrypi-ts.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index f500a7043805..6c196cade4a0 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -2732,7 +2732,7 @@ static int vchiq_probe(struct platform_device *pdev)
- 		return -ENOENT;
- 	}
- 
--	drvdata->fw = rpi_firmware_get(fw_node);
-+	drvdata->fw = devm_rpi_firmware_get(&pdev->dev, fw_node);
- 	of_node_put(fw_node);
- 	if (!drvdata->fw)
- 		return -EPROBE_DEFER;
+diff --git a/drivers/input/touchscreen/raspberrypi-ts.c b/drivers/input/touchscreen/raspberrypi-ts.c
+index ef6aaed217cf..5000f5fd9ec3 100644
+--- a/drivers/input/touchscreen/raspberrypi-ts.c
++++ b/drivers/input/touchscreen/raspberrypi-ts.c
+@@ -160,7 +160,7 @@ static int rpi_ts_probe(struct platform_device *pdev)
+ 	touchbuf = (u32)ts->fw_regs_phys;
+ 	error = rpi_firmware_property(fw, RPI_FIRMWARE_FRAMEBUFFER_SET_TOUCHBUF,
+ 				      &touchbuf, sizeof(touchbuf));
+-
++	rpi_firmware_put(fw);
+ 	if (error || touchbuf != 0) {
+ 		dev_warn(dev, "Failed to set touchbuf, %d\n", error);
+ 		return error;
 -- 
 2.29.2
 
