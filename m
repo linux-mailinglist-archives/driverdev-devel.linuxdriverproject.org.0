@@ -1,79 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BCE52BFC37
-	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Nov 2020 23:36:14 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 906CE2BFE83
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 04:08:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5055C85F33;
-	Sun, 22 Nov 2020 22:36:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 48AF8870B7;
+	Mon, 23 Nov 2020 03:08:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GxWR7K1tez5j; Sun, 22 Nov 2020 22:36:11 +0000 (UTC)
+	with ESMTP id COhi12cVVhej; Mon, 23 Nov 2020 03:08:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0722C8454F;
-	Sun, 22 Nov 2020 22:36:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6DC8F87080;
+	Mon, 23 Nov 2020 03:08:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7475A1BF2BF
- for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 22:36:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B14831BF3BB
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 03:08:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6994885F33
- for <devel@linuxdriverproject.org>; Sun, 22 Nov 2020 22:36:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AD33E85F97
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 03:08:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YiniylaYJjk4 for <devel@linuxdriverproject.org>;
- Sun, 22 Nov 2020 22:36:07 +0000 (UTC)
+ with ESMTP id 9vfgrkxwrj02 for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 03:08:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
- [96.44.175.130])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C6E5585F50
- for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 22:36:06 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id 3EEFD12808AA;
- Sun, 22 Nov 2020 14:36:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1606084565;
- bh=y5Oo39UQGhMKIHztx5i9osM+IVUxOt/AInbXjgVEmOM=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=it2DEm5qbX6tNKGabRZf0YZ7FJN256ppIXEFnMqNHN+XY9h76oTIzuZgEyEoREiKM
- yiP/0zNVKPNW1kWiLTindkrOQ7bXlSJOTVsRohihqSOzq1tvOmtHcybKKU2pQsn+gK
- kXbE7Tzelwaqt/71bFtBSSIQ6PZYHLF3M7J5PGe0=
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id YhaEdPXdRRpF; Sun, 22 Nov 2020 14:36:05 -0800 (PST)
-Received: from jarvis.int.hansenpartnership.com (unknown
- [IPv6:2601:600:8280:66d1::527])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id B820412808A7;
- Sun, 22 Nov 2020 14:36:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1606084565;
- bh=y5Oo39UQGhMKIHztx5i9osM+IVUxOt/AInbXjgVEmOM=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=it2DEm5qbX6tNKGabRZf0YZ7FJN256ppIXEFnMqNHN+XY9h76oTIzuZgEyEoREiKM
- yiP/0zNVKPNW1kWiLTindkrOQ7bXlSJOTVsRohihqSOzq1tvOmtHcybKKU2pQsn+gK
- kXbE7Tzelwaqt/71bFtBSSIQ6PZYHLF3M7J5PGe0=
-Message-ID: <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Sun, 22 Nov 2020 14:36:00 -0800
-In-Reply-To: <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
- <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
-User-Agent: Evolution 3.34.4 
+Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
+ [209.85.218.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4646485F95
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 03:08:07 +0000 (UTC)
+Received: by mail-ej1-f68.google.com with SMTP id o9so21285500ejg.1
+ for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 19:08:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=X/h8mnbAUuvIjH6Tba/THN9fIiEUryqxQTJ1lpmtNis=;
+ b=y7kbd8ECOpDrtxh6QBb19MEWdUVAFBR3AzXzNV6TFTaa8LQHh0waCoKoLOZTWu2Sz3
+ r9dEondUCP29tJNwj6XIO/inCY9Y/6X/7lmDcDCzsSyZxuWSpAZ6wWpkdqeUs0EbnQyy
+ Rdjm7CO7c/42wqJ1rpoy8eeLd7aHX4CR0DX0E39tnUZEnrUPvYW6F3QdHDP+wrhjAhtR
+ ZCPRPqVJlkwxTyk1+POJA00SiTh3g0rgvVMNLQwnCanPvuDAZ2O1K+/UpzaKUJm5HBaa
+ MkcgzVOlKha0NoNHEQOhSuvcCeQQ4fqujOG8aB/8EUjVhzfh0wCgmduKbA8laYIonyKQ
+ +dqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=X/h8mnbAUuvIjH6Tba/THN9fIiEUryqxQTJ1lpmtNis=;
+ b=s2jNccX1gp9uJLqUvGCnNQ58F3pzp526+rGyNzizwUQHvb2mIkmBdm1QYhCKbdMlg4
+ pzAwrUJNlCzG3T4H7qS/nH/XUvrdfd2KQQhHg8y/qf86YNnCBhYFhav3263OBsKtYJxu
+ hJMQ0jN5bKdrgtrnXLHOeBXkkmuENeFViRI3rwc/Jw6v2VMHFxrbnTRmtvfqDEeAce0W
+ 3bN0mJiDNxdoi0scu/4cTXHSIP6rRzBlSzgjfNsO0ILBYaKZtW5oHIyVlSvRaVPj6pob
+ yNypTjf1owUPf788XZ1NIMLKE8lWj9WqLi8iHhR2dpkOTRXyLv39y40743R0cn/G80BN
+ TY+w==
+X-Gm-Message-State: AOAM530e7ItHHNgtkZA071KhtldfpZDtwyP906cHBaEX9TLOtVTP8D29
+ wbPIkr91ijBKgOhhlgJAeQPsY+HJwC0Ar5wNwSgQ/w==
+X-Google-Smtp-Source: ABdhPJwU0MxV1+uBRTiVT8JVaHkd74D4cjl2EjekvPyzveVzCXAZrz8+0U9zue39xgA3JwkJ3gYm70Q/DXMwUnrD4QU=
+X-Received: by 2002:a17:906:8c7:: with SMTP id
+ o7mr36471249eje.413.1606100885616; 
+ Sun, 22 Nov 2020 19:08:05 -0800 (PST)
 MIME-Version: 1.0
+References: <cover.1513038011.git.digetx@gmail.com>
+ <3d565db80f8dccafd14224924305243b37b75a07.1513038011.git.digetx@gmail.com>
+ <CAAEAJfBZD0u6MDxcp3See-agzyCSJS7dKpwK28LMJwPvE9DLtQ@mail.gmail.com>
+ <5665b221-04d7-6be9-2377-8006b9563d4b@gmail.com>
+In-Reply-To: <5665b221-04d7-6be9-2377-8006b9563d4b@gmail.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Mon, 23 Nov 2020 00:07:57 -0300
+Message-ID: <CAAEAJfAdGeFK7DNY3QzRZEsZx+PGbQtxyyOPwawmMsx2JByt8g@mail.gmail.com>
+Subject: Re: [PATCH v5 2/4] staging: media: Introduce NVIDIA Tegra video
+ decoder driver
+To: Dmitry Osipenko <digetx@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,106 +86,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
- linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Ext4 Developers List <linux-ext4@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
- GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
- Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-renesas-soc@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
- linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree <devicetree@vger.kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Stephen Warren <swarren@wwwdotorg.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Vladimir Zapolskiy <vz@mleia.com>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ linux-media <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 2020-11-22 at 21:35 +0100, Miguel Ojeda wrote:
-> On Sun, Nov 22, 2020 at 7:22 PM James Bottomley
-> <James.Bottomley@hansenpartnership.com> wrote:
-> > Well, it's a problem in an error leg, sure, but it's not a really
-> > compelling reason for a 141 patch series, is it?  All that fixing
-> > this error will do is get the driver to print "oh dear there's a
-> > problem" under four more conditions than it previously did.
-> > 
-> > We've been at this for three years now with nearly a thousand
-> > patches, firstly marking all the fall throughs with /* fall through
-> > */ and later changing it to fallthrough.  At some point we do have
-> > to ask if the effort is commensurate with the protection
-> > afforded.  Please tell me our reward for all this effort isn't a
-> > single missing error print.
-> 
-> It isn't that much effort, isn't it?
-
-Well, it seems to be three years of someone's time plus the maintainer
-review time and series disruption of nearly a thousand patches.  Let's
-be conservative and assume the producer worked about 30% on the series
-and it takes about 5-10 minutes per patch to review, merge and for
-others to rework existing series.  So let's say it's cost a person year
-of a relatively junior engineer producing the patches and say 100h of
-review and application time.  The latter is likely the big ticket item
-because it's what we have in least supply in the kernel (even though
-it's 20x vs the producer time).
-
->  Plus we need to take into account the future mistakes that it might
-> prevent, too. So even if there were zero problems found so far, it is
-> still a positive change.
-
-Well, the question I was asking is if it's worth the cost which I've
-tried to outline above.
-
-> I would agree if these changes were high risk, though; but they are
-> almost trivial.
-
-It's not about the risk of the changes it's about the cost of
-implementing them.  Even if you discount the producer time (which
-someone gets to pay for, and if I were the engineering manager, I'd be
-unhappy about), the review/merge/rework time is pretty significant in
-exchange for six minor bug fixes.  Fine, when a new compiler warning
-comes along it's certainly reasonable to see if we can benefit from it
-and the fact that the compiler people think it's worthwhile is enough
-evidence to assume this initially.  But at some point you have to ask
-whether that assumption is supported by the evidence we've accumulated
-over the time we've been using it.  And if the evidence doesn't support
-it perhaps it is time to stop the experiment.
-
-James
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gU2F0LCAyMSBOb3YgMjAyMCBhdCAyMzowMSwgRG1pdHJ5IE9zaXBlbmtvIDxkaWdldHhAZ21h
+aWwuY29tPiB3cm90ZToKPgo+IDIyLjExLjIwMjAgMDQ6MDIsIEV6ZXF1aWVsIEdhcmNpYSDQv9C4
+0YjQtdGCOgo+ID4gSGkgRG1pdHJ5LAo+ID4KPiAuLi4KPiA+PiArKysgYi9kcml2ZXJzL3N0YWdp
+bmcvbWVkaWEvdGVncmEtdmRlL1RPRE8KPiA+PiBAQCAtMCwwICsxLDQgQEAKPiA+PiArVE9ETzoK
+PiA+PiArICAgICAgIC0gSW1wbGVtZW50IFY0TDIgQVBJIG9uY2UgaXQgZ2FpbnMgc3VwcG9ydCBm
+b3Igc3RhdGVsZXNzIGRlY29kZXJzLgo+ID4+ICsKPiA+PiArQ29udGFjdDogRG1pdHJ5IE9zaXBl
+bmtvIDxkaWdldHhAZ21haWwuY29tPgo+ID4KPiA+IFRoZSBBUEkgZm9yIEgyNjQgc3RhdGVsZXNz
+IGRlY29kaW5nIGlzIHJlYWR5Lgo+ID4gU2VlIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDIwLzEx
+LzE4Lzc5NS4KPgo+IEhlbGxvIEV6ZXF1aWVsLAo+Cj4gVGhhbmsgeW91IGZvciB0aGUgbm90aWZp
+Y2F0aW9uISBNeSBsYXN0IGF0dGVtcHQgYXQgaW1wbGVtZW50aW5nIFY0TCBBUEkKPiBzdXBwb3J0
+IHdhcyBhYm91dCBhIHllYXIgYWdvIGFuZCBpdCBzdG9wcGVkIG9uY2UgSSByZWFsaXplZCB0aGF0
+IHRoZXJlCj4gaXMgbm8gdXNlcnNwYWNlIHdoaWNoIHVzZXMgdGhhdCBBUEkuIEZGTVBFRyBhbmQg
+Y2hyb21pdW0gYnJvd3NlciBoYWQKPiBzb21lIGtpbmQgb2YgVjRMIHN1cHBvcnQsIGJ1dCBpdCBh
+bGwgd2FzIG9yaWVudGVkIGF0IGRvd25zdHJlYW0gZHJpdmVyCj4gc3RhY2tzLCBhbmQgdGh1cywg
+bm90IHVzYWJsZS4gRG8geW91IGtub3cgd2hhdCBpcyB0aGUgY3VycmVudCBzdGF0dXM/Cj4KClRo
+ZSBidWxrIG9mIHRoZSBBUEksIHdoaWNoIHJlbGllcyBvbiB0aGUgc3RhdGVsZXNzIGRlY29kZXIg
+aW50ZXJmYWNlIFsxXSwKYW5kIEgyNjQgc3RhdGVsZXNzIFY0TDIgY29udHJvbHMgaGFzIGJlZW4g
+cmVhZHkgZm9yIHNvbWUgdGltZSBub3csCmFuZCB0aGVyZSBhcmUgdmFyaW91cyBpbXBsZW1lbnRh
+dGlvbnMgc3VwcG9ydGluZyBpdC4KCkNocm9taXVtIHN1cHBvcnRzIGl0IFsyXSwgYW5kIEkndmUg
+dGVzdGVkIGl0IG9uIGNocm9tZWJvb2tzLAp0aHJvdWdoIGNocm9tZW9zIGJ1aWxkcy4gV2UgaGF2
+ZW4ndCB0cmllZCBhIG5vbi1jaHJvbWVvcyBidWlsZCwKYW5kIEkgd291bGQgc2F5IGl0J3MgcXVp
+dGUgc29tZSB3b3JrLgoKR1N0cmVhbWVyIHN1cHBvcnQgaXMgYXZhaWxhYmxlIGFzIHdlbGwuIFNl
+ZSBbM10gd2hpY2ggc2hvdWxkCndvcmsgZm9yIHRoZSBsYXRlc3QgSDI2NCBjb250cm9scyAodGhl
+IG9uZXMgYmVpbmcgbW92ZWQgb3V0IG9mIHN0YWdpbmcpLgoKTGlicmVFTEVDIGRldmVsb3BlcnMg
+bWFpbnRhaW4gYW4gRmZtcGVnIGJyYW5jaCBbNF0sIEkgZXhwZWN0IGl0IHdpbGwKYmUgdXBkYXRl
+ZCBmb3IgdGhlIGxhdGVzdCBIMjY0IGNvbnRyb2xzIHNvb24sIGFuZCBob3BlZnVsbHkgbWVyZ2Vk
+CmluIG1haW5saW5lIEZmbXBlZy4KCkdTdHJlYW1lciBhbmQgRmZtcGVnIGFyZSByZWxhdGl2ZWx5
+IHN0cmFpZ2h0Zm9yd2FyZCB0byBidWlsZCBhbmQgdGVzdC4KClRoYW5rcywKRXplcXVpZWwKClsx
+XSBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC91c2Vyc3BhY2UtYXBpL21l
+ZGlhL3Y0bC9kZXYtc3RhdGVsZXNzLWRlY29kZXIuaHRtbApbMl0gaHR0cHM6Ly9naXRodWIuY29t
+L2Nocm9taXVtL2Nocm9taXVtL3RyZWUvbWFzdGVyL21lZGlhL2dwdS92NGwyClszXSBodHRwczov
+L2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvZXplcXVpZWxnYXJjaWEvZ3N0LXBsdWdpbnMtYmFkLy0v
+dHJlZS9oMjY0X3N0YWJsZV91YXBpCls0XSBodHRwczovL2dpdGh1Yi5jb20vS3dpYm9vL0ZGbXBl
+Zy90cmVlL3Y0bDItcmVxdWVzdC1od2FjY2VsLTQuMy4KCgo+ID4gT25lIG1pbm9yIGNvbW1lbnQg
+YmVsb3cuCj4gPgo+IC4uLgo+ID4+ICsgICAgICAgLy8gUFBTCj4gPj4gKyAgICAgICBfX3U4ICBw
+aWNfaW5pdF9xcDsKPiA+PiArICAgICAgIF9fdTggIGRlYmxvY2tpbmdfZmlsdGVyX2NvbnRyb2xf
+cHJlc2VudF9mbGFnOwo+ID4+ICsgICAgICAgX191OCAgY29uc3RyYWluZWRfaW50cmFfcHJlZF9m
+bGFnOwo+ID4+ICsgICAgICAgX191OCAgY2hyb21hX3FwX2luZGV4X29mZnNldDsKPiA+PiArICAg
+ICAgIF9fdTggIHBpY19vcmRlcl9wcmVzZW50X2ZsYWc7Cj4gPj4gKwo+ID4KPiA+IFRoaXMgc2Vl
+bXMgdG8gYmUgYm90dG9tX2ZpZWxkX3BpY19vcmRlcl9pbl9mcmFtZV9wcmVzZW50X2ZsYWcsCj4g
+PiBhcyB0aGVyZSBpcyBubyAicGljX29yZGVyX3ByZXNlbnRfZmxhZyIgc3ludGF4IGVsZW1lbnQu
+Cj4KPiBDb3JyZWN0LCBsb29rcyBsaWtlIEkgYm9ycm93ZWQgdGhhdCBuYW1lIGZyb20gdGhlIGxp
+YnZkcGF1IEFQSS4KPgo+IGh0dHBzOi8vdmRwYXUucGFnZXMuZnJlZWRlc2t0b3Aub3JnL2xpYnZk
+cGF1L3N0cnVjdF92ZHBfcGljdHVyZV9pbmZvX2gyNjQuaHRtbCNhNDA1ZjdlZjI2ZWE3NmJiMmM0
+NDZlMTUxMDYyZmMwMDEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
+cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+dmVyZGV2LWRldmVsCg==
