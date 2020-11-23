@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D47E82BFF1B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 05:46:59 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83F702BFF21
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 05:47:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E997F20452;
-	Mon, 23 Nov 2020 04:46:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A7E74870A1;
+	Mon, 23 Nov 2020 04:47:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dU3E89KU1HAB; Mon, 23 Nov 2020 04:46:55 +0000 (UTC)
+	with ESMTP id 3+MX1x4BQSla; Mon, 23 Nov 2020 04:47:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DB71220111;
-	Mon, 23 Nov 2020 04:46:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 19DB387062;
+	Mon, 23 Nov 2020 04:47:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 32A9D1BF3D4
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 04:46:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CB6C01BF3D4
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 04:47:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2796A857BF
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 04:46:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C7A4687062
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 04:47:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HFbZCBwGqKR6 for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 04:46:49 +0000 (UTC)
+ with ESMTP id zdPiPO2L66UE for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 04:47:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
- [209.85.167.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D408A857B0
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 04:46:48 +0000 (UTC)
-Received: by mail-lf1-f67.google.com with SMTP id e139so21984062lfd.1
- for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 20:46:48 -0800 (PST)
+Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
+ [209.85.208.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 756308705D
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 04:47:47 +0000 (UTC)
+Received: by mail-lj1-f193.google.com with SMTP id f24so3703273ljk.13
+ for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 20:47:47 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=A2batJNX3Sb2NAphta4ZUVPmR4QZ93tWrIH5Q2h8chA=;
- b=tsFjOWpE3sDYJJ1b3PS3sMJ/ra8+fBcdezRBbxhoyo2GPTJnf4yi3cgWMqLtGkt5dx
- c5kqAXn7ZqBAi41w8NELv0vYQTDwuEGpCUECSvsPE+JhV1UtWWGN/eGD5zp2tBfkqd45
- X6s7hWPQYD4qAx8zIjvfO59G7iYgf5nxDzFpAEHyR52tDqASvMaL1X8Ka5JNqZHGGd9P
- lY+Dv0AeLleoBsYes7l0kzfKliHf/ZkrZqImrYOMW2nun1j5L7ltovFE1ysmyv/eLVqG
- DyHsUrFICe9GeJfLlmuldJm8BvB3nWPsPvjHX+Fiea67ETrC44lUJvMYvhwcuZfMXaL0
- wVwA==
-X-Gm-Message-State: AOAM530x6fB27VjpvQxtc9Gd1V78U9VGgCAgHak3U7+5BcID2LLgWfz0
- e2HjoRTKPQbK9I/rdCb8jB26k/9804vfhA==
-X-Google-Smtp-Source: ABdhPJwblU6xo45OwA5D3jMJbKfM5WWfCZi2xbMkE1zETWOuGffZbLy1gkY9Ijh6L2F3qe1KPenNSg==
-X-Received: by 2002:a19:42d2:: with SMTP id p201mr2425281lfa.273.1606106806558; 
- Sun, 22 Nov 2020 20:46:46 -0800 (PST)
-Received: from mail-lf1-f44.google.com (mail-lf1-f44.google.com.
- [209.85.167.44])
- by smtp.gmail.com with ESMTPSA id w6sm1246987lfn.64.2020.11.22.20.46.45
+ bh=NPKKFFttECtrhCNY5oVMatcAdfTTlnNsNes6pooxhN8=;
+ b=OtQJHLYJy/PVJZyVZR4Ac9na645u/+YvS6yzHGcpge/d3vEH/cob8ttcu3IzUg7JZs
+ s/yJoFtrsZKxNzEPAh7AVT14hXnPDAFaDdc7DM/hN66+64YjLrHlRZZRYSGaLLN+7eXe
+ 31/7AlD+BWCRYp5wzs2LAKIfRMLsIGodfKOlIOLx+amsZBR9jMgqo95PwZCKzm5yix3E
+ K1jXBby4qr3mWFtzAWHIEU4p7FhGIh7neYhzHQrwwFYInITepxTvCzoYP14E2hhPFxKb
+ miyKvTcR1ctCgbTpbXfnEF8ySxVizEYwlsGKu+OYmfzysF3tHEltcJPsq/j/3IE3jUDI
+ ly5A==
+X-Gm-Message-State: AOAM5337QjWlgCkRZG3jbms3rMGqblACne0G+GuXMqGr4JHyLQK4cn6l
+ zPgVsey+h9NLItcpcwUJReJbBkHCSUN0qg==
+X-Google-Smtp-Source: ABdhPJwTReh1EXblDvUAKKRM6fwuDDmjJjqSrguY8X0fcfXsnK8/jhjkjWX/PooSbAL7zcOEabVjgQ==
+X-Received: by 2002:a2e:b5ca:: with SMTP id g10mr1902782ljn.209.1606106865390; 
+ Sun, 22 Nov 2020 20:47:45 -0800 (PST)
+Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com.
+ [209.85.208.170])
+ by smtp.gmail.com with ESMTPSA id r20sm1171718ljk.97.2020.11.22.20.47.43
  for <devel@driverdev.osuosl.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 22 Nov 2020 20:46:46 -0800 (PST)
-Received: by mail-lf1-f44.google.com with SMTP id a9so21959196lfh.2
- for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 20:46:45 -0800 (PST)
-X-Received: by 2002:a19:c509:: with SMTP id w9mr3050799lfe.193.1606106805789; 
- Sun, 22 Nov 2020 20:46:45 -0800 (PST)
+ Sun, 22 Nov 2020 20:47:44 -0800 (PST)
+Received: by mail-lj1-f170.google.com with SMTP id 142so16540183ljj.10
+ for <devel@driverdev.osuosl.org>; Sun, 22 Nov 2020 20:47:43 -0800 (PST)
+X-Received: by 2002:a2e:8546:: with SMTP id u6mr12923580ljj.125.1606106863590; 
+ Sun, 22 Nov 2020 20:47:43 -0800 (PST)
 MIME-Version: 1.0
 References: <20201116125617.7597-1-m.cerveny@computer.org>
- <20201116125617.7597-6-m.cerveny@computer.org>
-In-Reply-To: <20201116125617.7597-6-m.cerveny@computer.org>
+ <20201116125617.7597-7-m.cerveny@computer.org>
+In-Reply-To: <20201116125617.7597-7-m.cerveny@computer.org>
 From: Chen-Yu Tsai <wens@csie.org>
-Date: Mon, 23 Nov 2020 12:46:34 +0800
-X-Gmail-Original-Message-ID: <CAGb2v67_VqkLqXKADnj5=EuYBNSB8awK_2V3HeHJBOdnUywNhA@mail.gmail.com>
-Message-ID: <CAGb2v67_VqkLqXKADnj5=EuYBNSB8awK_2V3HeHJBOdnUywNhA@mail.gmail.com>
-Subject: Re: [PATCH v3 5/6] dt-bindings: media: cedrus: Add V3s compatible
+Date: Mon, 23 Nov 2020 12:47:32 +0800
+X-Gmail-Original-Message-ID: <CAGb2v67kS3TfoEv+QsoOawuMOaRU89DY3TvJAruF6Tzryzwv_w@mail.gmail.com>
+Message-ID: <CAGb2v67kS3TfoEv+QsoOawuMOaRU89DY3TvJAruF6Tzryzwv_w@mail.gmail.com>
+Subject: Re: [PATCH v3 6/6] ARM: dts: sun8i: v3s: Add video engine node
 To: Martin Cerveny <m.cerveny@computer.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -99,7 +99,8 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On Mon, Nov 16, 2020 at 8:58 PM Martin Cerveny <m.cerveny@computer.org> wrote:
 >
-> Allwinner V3s SoC contains video engine. Add compatible for it.
+> Allwinner V3S SoC has a video engine.
+> Add a node for it.
 >
 > Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
 
