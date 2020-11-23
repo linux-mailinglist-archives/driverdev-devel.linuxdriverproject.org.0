@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 671FB2C1451
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 20:28:54 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7609A2C14D5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 20:56:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15CF5858B5;
-	Mon, 23 Nov 2020 19:28:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CE1C085AD6;
+	Mon, 23 Nov 2020 19:56:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TIaSzxc+6tq5; Mon, 23 Nov 2020 19:28:52 +0000 (UTC)
+	with ESMTP id zOChIxSO6P_i; Mon, 23 Nov 2020 19:56:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1D6FC84DFD;
-	Mon, 23 Nov 2020 19:28:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 64CFB851C2;
+	Mon, 23 Nov 2020 19:56:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D2C931BF3F3
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 19:28:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C3EF51BF3F3
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 19:56:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CF5C1858FB
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 19:28:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C0F838522E
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 19:56:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O3eqQQ1i9vx5 for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 19:28:41 +0000 (UTC)
+ with ESMTP id 8xD6fH43uHi4 for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 19:56:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9ED13858F7
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 19:28:41 +0000 (UTC)
-IronPort-SDR: SbqwC9XJSZOi7HvjAKeEL8H1WCJI1T2Y7xyZAb/TX7epIa3tBolvzVx8DyFKdrorFBn+jJD9E9
- MA5kKDLQaesw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9814"; a="151670248"
-X-IronPort-AV: E=Sophos;i="5.78,364,1599548400"; d="scan'208";a="151670248"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 97603851C2
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 19:56:44 +0000 (UTC)
+IronPort-SDR: W8miTEeD8RNkIXdj5owCZnv9A6XytXAbqYJkTJ5MqlUv9/H0ob7D0OB5NkJ9za8WyUWn8CsQN/
+ O8j5HtYVj2ZA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9814"; a="151093101"
+X-IronPort-AV: E=Sophos;i="5.78,364,1599548400"; d="scan'208";a="151093101"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2020 11:28:40 -0800
-IronPort-SDR: CMNCHWiWSGvtRXMuQlsHaocBrJZCPYwEpOzoQGEl3BaZLfUZhjtAIJln53EcIvWvGOBe1m5LFB
- CImoWUcmFe8Q==
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Nov 2020 11:56:44 -0800
+IronPort-SDR: /r/4MEWryNS8tcBAJPpBuQWG/NvEoEFQ3c1kh5iQ0jvkv4iCSaij1vDr6k1/xpWezDCV2MbD5b
+ jRWyMP7cUhyQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,364,1599548400"; d="scan'208";a="364748464"
+X-IronPort-AV: E=Sophos;i="5.78,364,1599548400"; d="scan'208";a="432388363"
 Received: from lkp-server01.sh.intel.com (HELO 1138cb5768e3) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 23 Nov 2020 11:28:39 -0800
+ by fmsmga001.fm.intel.com with ESMTP; 23 Nov 2020 11:56:43 -0800
 Received: from kbuild by 1138cb5768e3 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1khHVv-0000A8-2a; Mon, 23 Nov 2020 19:28:39 +0000
-Date: Tue, 24 Nov 2020 03:27:48 +0800
+ id 1khHx4-0000B3-8C; Mon, 23 Nov 2020 19:56:42 +0000
+Date: Tue, 24 Nov 2020 03:56:25 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- 03c1136af504bbc2cabda76af6b27fd5f7cf8a7d
-Message-ID: <5fbc0d34.ubu3ZhDZJt36aXvz%lkp@intel.com>
+Subject: [driver-core:readfile] BUILD SUCCESS
+ 652db3de96a630e8051ffa921286000bb9ee2727
+Message-ID: <5fbc13e9.VZwkanwiYuYaupKS%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -75,12 +75,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
-branch HEAD: 03c1136af504bbc2cabda76af6b27fd5f7cf8a7d  Merge 5.10-rc5 into staging-testing
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  readfile
+branch HEAD: 652db3de96a630e8051ffa921286000bb9ee2727  readfile.2: new page describing readfile(2)
 
-elapsed time: 723m
+elapsed time: 725m
 
-configs tested: 133
+configs tested: 141
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -116,18 +116,26 @@ xtensa                          iss_defconfig
 powerpc                     skiroot_defconfig
 powerpc                      makalu_defconfig
 powerpc                        icon_defconfig
-arm                         cm_x300_defconfig
-arm64                            alldefconfig
-mips                         tb0226_defconfig
-powerpc                  iss476-smp_defconfig
 powerpc                     akebono_defconfig
 arm                         s3c6400_defconfig
 sparc                            alldefconfig
 mips                           ip32_defconfig
 sh                           se7721_defconfig
 powerpc                      ep88xc_defconfig
+mips                         bigsur_defconfig
+powerpc                     pseries_defconfig
+arm                           tegra_defconfig
+powerpc                     kmeter1_defconfig
+mips                 decstation_r4k_defconfig
+mips                           ip27_defconfig
+nds32                             allnoconfig
+powerpc                    mvme5100_defconfig
+arm                  colibri_pxa270_defconfig
+m68k                           sun3_defconfig
+powerpc                           allnoconfig
 c6x                         dsk6455_defconfig
 mips                        qi_lb60_defconfig
+mips                         tb0226_defconfig
 arc                     nsimosci_hs_defconfig
 riscv                            allmodconfig
 mips                           gcw0_defconfig
@@ -142,13 +150,15 @@ arm                      footbridge_defconfig
 arm                       mainstone_defconfig
 sparc64                          alldefconfig
 arm                         assabet_defconfig
-arm                  colibri_pxa270_defconfig
 powerpc                   motionpro_defconfig
 powerpc                      chrp32_defconfig
 sh                          rsk7269_defconfig
 mips                malta_qemu_32r6_defconfig
 arm                             rpc_defconfig
-powerpc                     pseries_defconfig
+powerpc                      arches_defconfig
+powerpc                   currituck_defconfig
+arm                          pxa168_defconfig
+mips                        vocore2_defconfig
 xtensa                  audio_kc705_defconfig
 mips                       rbtx49xx_defconfig
 arm                            mps2_defconfig
@@ -162,7 +172,6 @@ m68k                                defconfig
 m68k                             allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
-nds32                             allnoconfig
 c6x                              allyesconfig
 nds32                               defconfig
 nios2                            allyesconfig
@@ -184,7 +193,6 @@ mips                             allyesconfig
 mips                             allmodconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
-powerpc                           allnoconfig
 i386                 randconfig-a004-20201123
 i386                 randconfig-a003-20201123
 i386                 randconfig-a002-20201123
@@ -192,9 +200,9 @@ i386                 randconfig-a005-20201123
 i386                 randconfig-a001-20201123
 i386                 randconfig-a006-20201123
 x86_64               randconfig-a015-20201123
+x86_64               randconfig-a011-20201123
 x86_64               randconfig-a014-20201123
 x86_64               randconfig-a016-20201123
-x86_64               randconfig-a011-20201123
 x86_64               randconfig-a012-20201123
 x86_64               randconfig-a013-20201123
 i386                 randconfig-a012-20201123
