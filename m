@@ -1,62 +1,97 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7609A2C14D5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 20:56:50 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 883502C150C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 21:04:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE1C085AD6;
-	Mon, 23 Nov 2020 19:56:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1F3C720502;
+	Mon, 23 Nov 2020 20:04:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zOChIxSO6P_i; Mon, 23 Nov 2020 19:56:48 +0000 (UTC)
+	with ESMTP id 9PimYLToYo1z; Mon, 23 Nov 2020 20:04:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 64CFB851C2;
-	Mon, 23 Nov 2020 19:56:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A6728204C9;
+	Mon, 23 Nov 2020 20:03:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C3EF51BF3F3
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 19:56:45 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CB6351BF3F3
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 20:03:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C0F838522E
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 19:56:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C35D3825A6
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 20:03:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8xD6fH43uHi4 for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 19:56:44 +0000 (UTC)
+ with ESMTP id nX3wnZt1+nZC for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 20:03:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 97603851C2
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 19:56:44 +0000 (UTC)
-IronPort-SDR: W8miTEeD8RNkIXdj5owCZnv9A6XytXAbqYJkTJ5MqlUv9/H0ob7D0OB5NkJ9za8WyUWn8CsQN/
- O8j5HtYVj2ZA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9814"; a="151093101"
-X-IronPort-AV: E=Sophos;i="5.78,364,1599548400"; d="scan'208";a="151093101"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2020 11:56:44 -0800
-IronPort-SDR: /r/4MEWryNS8tcBAJPpBuQWG/NvEoEFQ3c1kh5iQ0jvkv4iCSaij1vDr6k1/xpWezDCV2MbD5b
- jRWyMP7cUhyQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,364,1599548400"; d="scan'208";a="432388363"
-Received: from lkp-server01.sh.intel.com (HELO 1138cb5768e3) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 23 Nov 2020 11:56:43 -0800
-Received: from kbuild by 1138cb5768e3 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1khHx4-0000B3-8C; Mon, 23 Nov 2020 19:56:42 +0000
-Date: Tue, 24 Nov 2020 03:56:25 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:readfile] BUILD SUCCESS
- 652db3de96a630e8051ffa921286000bb9ee2727
-Message-ID: <5fbc13e9.VZwkanwiYuYaupKS%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from hqnvemgate25.nvidia.com (hqnvemgate25.nvidia.com
+ [216.228.121.64])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A618581C39
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 20:03:54 +0000 (UTC)
+Received: from hqmail.nvidia.com (Not Verified[216.228.121.13]) by
+ hqnvemgate25.nvidia.com (using TLS: TLSv1.2, AES256-SHA)
+ id <B5fbc15a70004>; Mon, 23 Nov 2020 12:03:51 -0800
+Received: from HQMAIL107.nvidia.com (172.20.187.13) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Mon, 23 Nov
+ 2020 20:03:49 +0000
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.103)
+ by HQMAIL107.nvidia.com (172.20.187.13) with Microsoft SMTP Server (TLS) id
+ 15.0.1473.3 via Frontend Transport; Mon, 23 Nov 2020 20:03:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gITd84wMHHzcOptjQRg1Bi4wKYLoloErjGXTzbxbsYYxXpRm6DfDjP1G8JsqPPruG8n8djHpWT3ChykgCoTQdTlPHkj05TPw7WZ4Y46HlI8bprZC3XuF3n009Te/qaTwPxc9ef3s3wxgnUStlvtZrJvP5WQhh3MIKLFTGEWjhLXWcgs1VmoV9q6ndrBwWgPhsRBIC9rKh9qqm9cf9Ujr9sks/ml2cZ4bW16uPSJVifE1ke5RuUikXPZ60YcpNVw15sbmeBPfJ8v059YAkVfr8AOpsBgi+OymMySTg/JYVNFtVJ2pGo3M9pC5txLp474ztgTCR2D9RfvqUQOXT+42RA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QophqWBVIGhmInjMMmoN1JCz5yEuED07MVw87J8AVUY=;
+ b=dpOj+p56VpZQgFejSTc+TjZx9PpIbmIlWcJPfXyA8QiV6hyerQ1PNIg37pZm/OoPMM7dRNU+MPO2Sxmva5Z6iKtLQpQNkcM79tS52of8WjxHEmReB+Qc/VB0gzy26dU2FtXMoEzn5Rx6YHRp97uhlWeSk7Nsi1BUrieORD+G9yqkgKBmwQvC726s6EkJ0s32uNc7iMGffyCjKbyBtSLggJX9G9WEJ0m0GYQlYWRE7aVXL+Iy16bXoksvn7nW7YXP74v45GAqxPt7EElquzCZ4kXurFfWXXWM9ThsUobGLm/yb7wWVAmTEM+ttWZwc1mR7P3I+RsId2H9o2Xiqq+zAg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+Received: from DM6PR12MB3834.namprd12.prod.outlook.com (2603:10b6:5:14a::12)
+ by DM6PR12MB4338.namprd12.prod.outlook.com (2603:10b6:5:2a2::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3589.21; Mon, 23 Nov
+ 2020 20:03:48 +0000
+Received: from DM6PR12MB3834.namprd12.prod.outlook.com
+ ([fe80::e40c:730c:156c:2ef9]) by DM6PR12MB3834.namprd12.prod.outlook.com
+ ([fe80::e40c:730c:156c:2ef9%7]) with mapi id 15.20.3589.022; Mon, 23 Nov 2020
+ 20:03:48 +0000
+Date: Mon, 23 Nov 2020 16:03:45 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
+Message-ID: <20201123200345.GA38546@nvidia.com>
+References: <cover.1605896059.git.gustavoars@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <cover.1605896059.git.gustavoars@kernel.org>
+X-ClientProxiedBy: MN2PR03CA0013.namprd03.prod.outlook.com
+ (2603:10b6:208:23a::18) To DM6PR12MB3834.namprd12.prod.outlook.com
+ (2603:10b6:5:14a::12)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mlx.ziepe.ca (156.34.48.30) by
+ MN2PR03CA0013.namprd03.prod.outlook.com (2603:10b6:208:23a::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3589.20 via Frontend
+ Transport; Mon, 23 Nov 2020 20:03:47 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
+ <jgg@nvidia.com>)	id 1khI3t-000A35-Tb; Mon, 23 Nov 2020 16:03:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1606161831; bh=QophqWBVIGhmInjMMmoN1JCz5yEuED07MVw87J8AVUY=;
+ h=ARC-Seal:ARC-Message-Signature:ARC-Authentication-Results:Date:
+ From:To:CC:Subject:Message-ID:References:Content-Type:
+ Content-Disposition:In-Reply-To:X-ClientProxiedBy:MIME-Version:
+ X-MS-Exchange-MessageSentRepresentingType;
+ b=Zr1EZlr7FGouweCXJ2A3YJZ8lxsTazMwmiIDkNNgeYuPc4M3hA0h9guNHLXrnnLeX
+ Dp0jtpGLpYuZZsYit0m8+Y/3Pgk+U78P2KDuhjfei0oh+kHbQnRfzB2jD1Wu7rVyZ8
+ A2iuCgvA8hhwNVx8Bo/l4LfRAECKvf8eJj6um7c8+wyJ6oFgyijvPixB8Xcq6YNTLj
+ o7o09Zdo2SkPJV9Ld82VvGAW1KENwGx8qxL8L4kHw5xGizl/kk/4FLfOCs8mx17bXD
+ N2PIS7AsaPoH2bHogxWrZ7vcH6YOCMGYKk/oZQ1BhSoaDoH96AMZAs9BCirfcyYEMq
+ 3EMRDyReptNPA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,171 +104,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
+ reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
+ dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
+ samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
+ linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ Miguel Ojeda <ojeda@kernel.org>, tipc-discussion@lists.sourceforge.net,
+ linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
+ op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
+ linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ x86@kernel.org, linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
+ Kees Cook <keescook@chromium.org>, linux-mm@kvack.org, netdev@vger.kernel.org,
+ linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-sctp@vger.kernel.org, linux-usb@vger.kernel.org,
+ netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  readfile
-branch HEAD: 652db3de96a630e8051ffa921286000bb9ee2727  readfile.2: new page describing readfile(2)
+On Fri, Nov 20, 2020 at 12:21:39PM -0600, Gustavo A. R. Silva wrote:
 
-elapsed time: 725m
+>   IB/hfi1: Fix fall-through warnings for Clang
+>   IB/mlx4: Fix fall-through warnings for Clang
+>   IB/qedr: Fix fall-through warnings for Clang
+>   RDMA/mlx5: Fix fall-through warnings for Clang
 
-configs tested: 141
-configs skipped: 2
+I picked these four to the rdma tree, thanks
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-m68k                          hp300_defconfig
-arm                         bcm2835_defconfig
-sh                               alldefconfig
-m68k                         apollo_defconfig
-sh                ecovec24-romimage_defconfig
-powerpc                 mpc832x_mds_defconfig
-xtensa                         virt_defconfig
-sh                          r7780mp_defconfig
-arm                       netwinder_defconfig
-xtensa                              defconfig
-arm                            u300_defconfig
-arm                         nhk8815_defconfig
-sh                               allmodconfig
-powerpc                      cm5200_defconfig
-arm                          badge4_defconfig
-powerpc                     tqm8540_defconfig
-microblaze                      mmu_defconfig
-arm                          simpad_defconfig
-x86_64                           allyesconfig
-sh                        apsh4ad0a_defconfig
-xtensa                          iss_defconfig
-powerpc                     skiroot_defconfig
-powerpc                      makalu_defconfig
-powerpc                        icon_defconfig
-powerpc                     akebono_defconfig
-arm                         s3c6400_defconfig
-sparc                            alldefconfig
-mips                           ip32_defconfig
-sh                           se7721_defconfig
-powerpc                      ep88xc_defconfig
-mips                         bigsur_defconfig
-powerpc                     pseries_defconfig
-arm                           tegra_defconfig
-powerpc                     kmeter1_defconfig
-mips                 decstation_r4k_defconfig
-mips                           ip27_defconfig
-nds32                             allnoconfig
-powerpc                    mvme5100_defconfig
-arm                  colibri_pxa270_defconfig
-m68k                           sun3_defconfig
-powerpc                           allnoconfig
-c6x                         dsk6455_defconfig
-mips                        qi_lb60_defconfig
-mips                         tb0226_defconfig
-arc                     nsimosci_hs_defconfig
-riscv                            allmodconfig
-mips                           gcw0_defconfig
-powerpc                   bluestone_defconfig
-mips                      fuloong2e_defconfig
-powerpc                   lite5200b_defconfig
-mips                          ath79_defconfig
-arm                         hackkit_defconfig
-mips                            ar7_defconfig
-arm                        realview_defconfig
-arm                      footbridge_defconfig
-arm                       mainstone_defconfig
-sparc64                          alldefconfig
-arm                         assabet_defconfig
-powerpc                   motionpro_defconfig
-powerpc                      chrp32_defconfig
-sh                          rsk7269_defconfig
-mips                malta_qemu_32r6_defconfig
-arm                             rpc_defconfig
-powerpc                      arches_defconfig
-powerpc                   currituck_defconfig
-arm                          pxa168_defconfig
-mips                        vocore2_defconfig
-xtensa                  audio_kc705_defconfig
-mips                       rbtx49xx_defconfig
-arm                            mps2_defconfig
-c6x                        evmc6474_defconfig
-arm                        spear3xx_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-i386                 randconfig-a004-20201123
-i386                 randconfig-a003-20201123
-i386                 randconfig-a002-20201123
-i386                 randconfig-a005-20201123
-i386                 randconfig-a001-20201123
-i386                 randconfig-a006-20201123
-x86_64               randconfig-a015-20201123
-x86_64               randconfig-a011-20201123
-x86_64               randconfig-a014-20201123
-x86_64               randconfig-a016-20201123
-x86_64               randconfig-a012-20201123
-x86_64               randconfig-a013-20201123
-i386                 randconfig-a012-20201123
-i386                 randconfig-a013-20201123
-i386                 randconfig-a011-20201123
-i386                 randconfig-a016-20201123
-i386                 randconfig-a014-20201123
-i386                 randconfig-a015-20201123
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-x86_64                                   rhel
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a006-20201123
-x86_64               randconfig-a003-20201123
-x86_64               randconfig-a004-20201123
-x86_64               randconfig-a005-20201123
-x86_64               randconfig-a002-20201123
-x86_64               randconfig-a001-20201123
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Jason
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
