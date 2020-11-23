@@ -2,74 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 968022C105F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 17:38:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11D992C11BA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 18:19:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 196388489C;
-	Mon, 23 Nov 2020 16:38:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 66E5C865D4;
+	Mon, 23 Nov 2020 17:19:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cl7xdtIsMCcP; Mon, 23 Nov 2020 16:38:04 +0000 (UTC)
+	with ESMTP id EKpKlOKiq+WO; Mon, 23 Nov 2020 17:19:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ADD4F84344;
-	Mon, 23 Nov 2020 16:38:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9400E86123;
+	Mon, 23 Nov 2020 17:19:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B3A4B1BF4DA
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 16:38:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 38A2A1BF395
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 17:19:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AC032861A2
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 16:38:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2EB54870EE
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 17:19:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CySe1i70lr36 for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 16:38:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0178.hostedemail.com
- [216.40.44.178])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7CB6A85ECB
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 16:38:01 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave01.hostedemail.com (Postfix) with ESMTP id 3513118013217
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 16:32:56 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay07.hostedemail.com (Postfix) with ESMTP id A722B181D3025;
- Mon, 23 Nov 2020 16:32:53 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:960:967:973:988:989:1260:1263:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1535:1541:1593:1594:1711:1730:1747:1777:1792:2393:2525:2565:2682:2685:2740:2828:2859:2912:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3353:3622:3653:3865:3866:3867:3868:3870:3871:3872:3873:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:5007:6119:6742:6743:7903:9025:9388:10004:10400:10848:10946:11026:11232:11658:11914:12043:12049:12297:12438:12663:12740:12760:12895:13069:13161:13172:13229:13311:13357:13439:13972:14096:14097:14181:14659:14721:14764:21080:21451:21627:21781:21788:21809:21990:30034:30041:30054:30060:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: can43_5c1502d27366
-X-Filterd-Recvd-Size: 5503
-Received: from XPS-9350.home (unknown [47.151.128.180])
- (Authenticated sender: joe@perches.com)
- by omf03.hostedemail.com (Postfix) with ESMTPA;
- Mon, 23 Nov 2020 16:32:42 +0000 (UTC)
-Message-ID: <32dc7423124b51da4e144e931bf099a368ab50a8.camel@perches.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: Joe Perches <joe@perches.com>
-To: James Bottomley <James.Bottomley@HansenPartnership.com>, Miguel Ojeda
- <miguel.ojeda.sandonis@gmail.com>
-Date: Mon, 23 Nov 2020 08:32:41 -0800
-In-Reply-To: <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
- <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
- <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
- <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
- <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
-User-Agent: Evolution 3.38.1-1 
+ with ESMTP id ZUoHU1CJOsMY for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 17:19:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 57BC5870EA
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 17:19:39 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 52398AC82;
+ Mon, 23 Nov 2020 17:19:37 +0000 (UTC)
+Message-ID: <ac38b89133f80f82b857ad2b4e421b501c2f4826.camel@suse.de>
+Subject: Re: [PATCH v4 01/11] firmware: raspberrypi: Keep count of all
+ consumers
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Andy Shevchenko
+ <andy.shevchenko@gmail.com>
+Date: Mon, 23 Nov 2020 18:19:35 +0100
+In-Reply-To: <20201113072615.GE356503@dtor-ws>
+References: <20201112163630.17177-1-nsaenzjulienne@suse.de>
+ <20201112163630.17177-2-nsaenzjulienne@suse.de>
+ <CAHp75Vf9E7UWVDMs=eRjLjoSN6SVOWw9thNdnR8ruCL6GmY7JQ@mail.gmail.com>
+ <20201113072615.GE356503@dtor-ws>
+User-Agent: Evolution 3.38.1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -83,93 +61,142 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
- linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Ext4 Developers List <linux-ext4@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
- GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
- Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-renesas-soc@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- patches@opensource.cirrus.com, linux-integrity@vger.kernel.org,
- target-devel@vger.kernel.org, linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ linux-pwm@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
+ Scott Branden <sbranden@broadcom.com>, devicetree <devicetree@vger.kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, Ray Jui <rjui@broadcom.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ linux-input <linux-input@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open
+ list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Stefan Wahren <wahrenst@gmx.net>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>
+Content-Type: multipart/mixed; boundary="===============1976774087815427540=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-11-23 at 07:58 -0800, James Bottomley wrote:
-> We're also complaining about the inability to recruit maintainers:
-> 
-> https://www.theregister.com/2020/06/30/hard_to_find_linux_maintainers_says_torvalds/
-> 
-> And burn out:
-> 
-> http://antirez.com/news/129
 
-https://www.wired.com/story/open-source-coders-few-tired/
+--===============1976774087815427540==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-4mT4pfaztxo3yJL0guCg"
 
-> What I'm actually trying to articulate is a way of measuring value of
-> the patch vs cost ... it has nothing really to do with who foots the
-> actual bill.
 
-It's unclear how to measure value in consistency.
+--=-4mT4pfaztxo3yJL0guCg
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-But one way that costs can be reduced is by automation and _not_
-involving maintainers when the patch itself is provably correct.
+On Thu, 2020-11-12 at 23:26 -0800, Dmitry Torokhov wrote:
+> On Thu, Nov 12, 2020 at 07:52:14PM +0200, Andy Shevchenko wrote:
+> > On Thu, Nov 12, 2020 at 6:40 PM Nicolas Saenz Julienne
+> > <nsaenzjulienne@suse.de> wrote:
+> > >=20
+> > > When unbinding the firmware device we need to make sure it has no
+> > > consumers left. Otherwise we'd leave them with a firmware handle
+> > > pointing at freed memory.
+> > >=20
+> > > Keep a reference count of all consumers and introduce rpi_firmware_pu=
+t()
+> > > which will permit automatically decrease the reference count upon
+> > > unbinding consumer drivers.
+> >=20
+> > ...
+> >=20
+> > > =C2=A0/**
+> > > - * rpi_firmware_get - Get pointer to rpi_firmware structure.
+> > > =C2=A0=C2=A0* @firmware_node:    Pointer to the firmware Device Tree =
+node.
+> > > =C2=A0=C2=A0*
+> > > + * The reference to rpi_firmware has to be released with rpi_firmwar=
+e_put().
+> > > + *
+> > > =C2=A0=C2=A0* Returns NULL is the firmware device is not ready.
+> > > =C2=A0=C2=A0*/
+> > > =C2=A0struct rpi_firmware *rpi_firmware_get(struct device_node *firmw=
+are_node)
+> > > =C2=A0{
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct platform_devic=
+e *pdev =3D of_find_device_by_node(firmware_node);
+> > > +       struct rpi_firmware *fw;
+> > >=20
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!pdev)
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0return NULL;
+> > >=20
+> > > -       return platform_get_drvdata(pdev);
+> > > +       fw =3D platform_get_drvdata(pdev);
+> > > +       if (!fw)
+> > > +               return NULL;
+> > > +
+> > > +       if (!kref_get_unless_zero(&fw->consumers))
+> > > +               return NULL;
+> >=20
 
-> One thesis I'm actually starting to formulate is that this continual
-> devaluing of maintainers is why we have so much difficulty keeping and
-> recruiting them.
+Hi Andy, Dimitry,
 
-The linux kernel has something like 1500 different maintainers listed
-in the MAINTAINERS file.  That's not a trivial number.
+> > Don't we have a more traditional way of doing this, i.e.
+> > try_module_get() coupled with get_device() ?
+>=20
+> get_device() will make sure that device is there, but gives no
+> assurances that device is bound to a driver, so it will not help with
+> the racy access to firmware via platform_get_drvdata() call.
 
-$ git grep '^M:' MAINTAINERS | sort | uniq -c | wc -l
-1543
-$ git grep '^M:' MAINTAINERS| cut -f1 -d'<' | sort | uniq -c | wc -l
-1446
+I also looked at using get/put_device() just as a means for refcounting (i.=
+e.
+replacing fw->consumers), but I can't make it work either. I'd need a way t=
+o
+hook up into one of the struct device_ktype release() functions. AFAIK it's=
+ not
+possible for private uses like this.
 
-I think the question you are asking is about trust and how it
-effects development.
+IIUC the way to do this would be to bypass platform device and create a spe=
+cial
+device class/bus for RPi's firmware dependent devices (I could pretty much =
+copy
+SCMI's implementation), but I fear that's overkill.
 
-And back to that wired story, the actual number of what you might
-be considering to be maintainers is likely less than 10% of the
-listed numbers above.
+So, for now I'll stick with the kref based implementation, I'll be happy to
+change it if you find a better solution. :)
 
+Regards,
+Nicolas
+
+
+--=-4mT4pfaztxo3yJL0guCg
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl+77ycACgkQlfZmHno8
+x/4SuAf/fbVt5dbVlASpaXs9h1cMXb/e8xl+GmDU2l1pP/uQHmyY+sGKGqNo7+G1
+gtKuEhPEavnasiHhJaBTWCCpwytJF9/iToX0i75cDZIObrF1xbO1A3L7hvlRiO6x
+C+oECKGo3/Awayb7MRHqEiRrLqtuu0odnT3Usn26Rbo7J2o5Lc4KF8WwYblFkmV9
+KCW77SlB/6W865vD6KK1KaN6nPqOD3XmKC7doM/MWHIvYd8siFy8qlT5m06s/vhC
+OHHbX2/7bhgcB+3/9LA9TF5J/JU9KIDHuUVbPYC2hcAVbkELXL93OwJ3DnN7csjp
+6obres4oiWUNt0B5Zi7lJDT4Y1KnUw==
+=C3d8
+-----END PGP SIGNATURE-----
+
+--=-4mT4pfaztxo3yJL0guCg--
+
+
+--===============1976774087815427540==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============1976774087815427540==--
+
