@@ -1,65 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A67F2C0D1B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 15:20:13 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0F2D2C0F79
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 16:58:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F09BE85FE4;
-	Mon, 23 Nov 2020 14:20:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 09A0E86741;
+	Mon, 23 Nov 2020 15:58:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0J1lioTOldjf; Mon, 23 Nov 2020 14:20:11 +0000 (UTC)
+	with ESMTP id 36im9IwN58dJ; Mon, 23 Nov 2020 15:58:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 89FEE85F6C;
-	Mon, 23 Nov 2020 14:20:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0B83E8673F;
+	Mon, 23 Nov 2020 15:58:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 878831BF980
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 14:20:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 733011BF358
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 15:58:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8361585EFB
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 14:20:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 69F1887062
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 15:58:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2oh-y6V6Kjnc for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 14:20:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yb1-f195.google.com (mail-yb1-f195.google.com
- [209.85.219.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A01D185EF0
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 14:20:06 +0000 (UTC)
-Received: by mail-yb1-f195.google.com with SMTP id w5so16043947ybj.11
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 06:20:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WUYMqcUnfpAQa1YuH9tQ3ze5bp2bxaoGLXc9Sg/470Y=;
- b=b0LkeT2q71Z3peIccxL7MkU5QadaCN3igdEC89IE4ykmdOxIlhuoo/0+H7pQCoNmlh
- 0UX19Z7soasUpz2fDZHX56luUWrH4GLKAJ9K28HwPu9km7qlcvasqfBffaQW+LtXvh6a
- fVP4J8wQFxbi1QWFB10Wsq9dLONxRShLcqQtcaktrZCy3tSRV5R4FOw2MSdgwNuCxNwd
- cKQMyE/jYgmlc9Qm972BZKz9xJaasT5iW6gpZgai8YpCh1sxJNgZFzlfCpv21Fvd7rwb
- akOsznbnFT4mJT95mXFDUPnplTdAJirWAcm8YfzHFRAfOGn9Vk91PuRcq7JipLelDPMB
- VWgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WUYMqcUnfpAQa1YuH9tQ3ze5bp2bxaoGLXc9Sg/470Y=;
- b=LtIUA8RxXgEu+muPNXWuT7sjwvDtCFyEBk1HKtOh7pSRmJPCGSFwuE65byuLu36lRx
- VzcFh6JhjrEUhuk5oAqqAnQhT1xD+nv8SXsM1umA3/+O895Qxqr97OKYIhTM0vhnxrZ4
- ZPBScImDa4Yvx1iZpj0WIL/cFtaU56MUjWG9tCwfKNO059E2BvDN8tP7D+1gVZOW/KFK
- qsxCCOVXqxML5fTuqFJVLg4s9ykjV23NR4uusNrtsqkIHKGIPBx504eIERLbXvusyBG6
- 4M//ntrkw7Z+LmftE7jrauOzBb5RC4GfNx25KpFwFEMW5b2d/ds/VhYgUUs0bMzhLt61
- R6bg==
-X-Gm-Message-State: AOAM533/X9tPt+tljdSbN1WIb570yyoSmLnPfEgpUjlSdy71rPfB5B4M
- RuZnDpOpRNfWMChoOqT+QHvKIvVIt6V5Mf8LRxQ=
-X-Google-Smtp-Source: ABdhPJyiJqjBIpEzWlk5pyqpoGG3+KpoWdKnlyza2YA6ODhXnRhATytwh5Bq+iGOzNqc5gs+zuqHC8iB1cjfDTXU/ik=
-X-Received: by 2002:a25:bcc7:: with SMTP id l7mr32380985ybm.115.1606141205830; 
- Mon, 23 Nov 2020 06:20:05 -0800 (PST)
-MIME-Version: 1.0
+ with ESMTP id fYEUKZC2Mory for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 15:58:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
+ [96.44.175.130])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5679B87061
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 15:58:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 8958812803A6;
+ Mon, 23 Nov 2020 07:58:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606147090;
+ bh=lBjYTVUJkmNX+Ql1BcMOHCS5uLgrfuyir/PBRp4vAgY=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=tw2BKkTzWzFWEQdrm6zgBKJtIh2PRfv5Mb0TfkjZKqSr5KeTmWZWgl8VEPx5No8bX
+ gdEQ1NYoCzrZ51ueWl3PIAwT19fSirwyiz4cqIKbNqhoqeMTMjHgs4jilQhkGLvH0x
+ +YA09wNIiuW9eCRS9chAzVTlxjJYgA69RXyn6sLU=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id pNOg0X0CRuCM; Mon, 23 Nov 2020 07:58:10 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 1690C12802D9;
+ Mon, 23 Nov 2020 07:58:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606147090;
+ bh=lBjYTVUJkmNX+Ql1BcMOHCS5uLgrfuyir/PBRp4vAgY=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=tw2BKkTzWzFWEQdrm6zgBKJtIh2PRfv5Mb0TfkjZKqSr5KeTmWZWgl8VEPx5No8bX
+ gdEQ1NYoCzrZ51ueWl3PIAwT19fSirwyiz4cqIKbNqhoqeMTMjHgs4jilQhkGLvH0x
+ +YA09wNIiuW9eCRS9chAzVTlxjJYgA69RXyn6sLU=
+Message-ID: <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
+Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Date: Mon, 23 Nov 2020 07:58:06 -0800
+In-Reply-To: <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
@@ -68,12 +73,9 @@ References: <cover.1605896059.git.gustavoars@kernel.org>
  <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
  <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
  <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
-In-Reply-To: <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
-From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Mon, 23 Nov 2020 15:19:55 +0100
-Message-ID: <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-To: James Bottomley <James.Bottomley@hansenpartnership.com>
+ <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
+User-Agent: Evolution 3.34.4 
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,41 +135,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Nov 22, 2020 at 11:36 PM James Bottomley
-<James.Bottomley@hansenpartnership.com> wrote:
->
-> Well, it seems to be three years of someone's time plus the maintainer
-> review time and series disruption of nearly a thousand patches.  Let's
-> be conservative and assume the producer worked about 30% on the series
-> and it takes about 5-10 minutes per patch to review, merge and for
-> others to rework existing series.  So let's say it's cost a person year
-> of a relatively junior engineer producing the patches and say 100h of
-> review and application time.  The latter is likely the big ticket item
-> because it's what we have in least supply in the kernel (even though
-> it's 20x vs the producer time).
+On Mon, 2020-11-23 at 15:19 +0100, Miguel Ojeda wrote:
+> On Sun, Nov 22, 2020 at 11:36 PM James Bottomley
+> <James.Bottomley@hansenpartnership.com> wrote:
+> > Well, it seems to be three years of someone's time plus the
+> > maintainer review time and series disruption of nearly a thousand
+> > patches.  Let's be conservative and assume the producer worked
+> > about 30% on the series and it takes about 5-10 minutes per patch
+> > to review, merge and for others to rework existing series.  So
+> > let's say it's cost a person year of a relatively junior engineer
+> > producing the patches and say 100h of review and application
+> > time.  The latter is likely the big ticket item because it's what
+> > we have in least supply in the kernel (even though it's 20x vs the
+> > producer time).
+> 
+> How are you arriving at such numbers? It is a total of ~200 trivial
+> lines.
 
-How are you arriving at such numbers? It is a total of ~200 trivial lines.
+Well, I used git.  It says that as of today in Linus' tree we have 889
+patches related to fall throughs and the first series went in in
+october 2017 ... ignoring a couple of outliers back to February.
 
-> It's not about the risk of the changes it's about the cost of
-> implementing them.  Even if you discount the producer time (which
-> someone gets to pay for, and if I were the engineering manager, I'd be
-> unhappy about), the review/merge/rework time is pretty significant in
-> exchange for six minor bug fixes.  Fine, when a new compiler warning
-> comes along it's certainly reasonable to see if we can benefit from it
-> and the fact that the compiler people think it's worthwhile is enough
-> evidence to assume this initially.  But at some point you have to ask
-> whether that assumption is supported by the evidence we've accumulated
-> over the time we've been using it.  And if the evidence doesn't support
-> it perhaps it is time to stop the experiment.
+> > It's not about the risk of the changes it's about the cost of
+> > implementing them.  Even if you discount the producer time (which
+> > someone gets to pay for, and if I were the engineering manager, I'd
+> > be unhappy about), the review/merge/rework time is pretty
+> > significant in exchange for six minor bug fixes.  Fine, when a new
+> > compiler warning comes along it's certainly reasonable to see if we
+> > can benefit from it and the fact that the compiler people think
+> > it's worthwhile is enough evidence to assume this initially.  But
+> > at some point you have to ask whether that assumption is supported
+> > by the evidence we've accumulated over the time we've been using
+> > it.  And if the evidence doesn't support it perhaps it is time to
+> > stop the experiment.
+> 
+> Maintainers routinely review 1-line trivial patches, not to mention
+> internal API changes, etc.
 
-Maintainers routinely review 1-line trivial patches, not to mention
-internal API changes, etc.
+We're also complaining about the inability to recruit maintainers:
 
-If some company does not want to pay for that, that's fine, but they
-don't get to be maintainers and claim `Supported`.
+https://www.theregister.com/2020/06/30/hard_to_find_linux_maintainers_says_torvalds/
 
-Cheers,
-Miguel
+And burn out:
+
+http://antirez.com/news/129
+
+The whole crux of your argument seems to be maintainers' time isn't
+important so we should accept all trivial patches ... I'm pushing back
+on that assumption in two places, firstly the valulessness of the time
+and secondly that all trivial patches are valuable.
+
+> If some company does not want to pay for that, that's fine, but they
+> don't get to be maintainers and claim `Supported`.
+
+What I'm actually trying to articulate is a way of measuring value of
+the patch vs cost ... it has nothing really to do with who foots the
+actual bill.
+
+One thesis I'm actually starting to formulate is that this continual
+devaluing of maintainers is why we have so much difficulty keeping and
+recruiting them.
+
+James
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
