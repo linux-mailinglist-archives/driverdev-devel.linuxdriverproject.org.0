@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EED932C0259
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 10:37:06 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 152632C0256
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Nov 2020 10:36:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3E2032048D;
-	Mon, 23 Nov 2020 09:37:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A525870C1;
+	Mon, 23 Nov 2020 09:36:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9MuZ2w5MzKoi; Mon, 23 Nov 2020 09:37:02 +0000 (UTC)
+	with ESMTP id fCvewYovWWCp; Mon, 23 Nov 2020 09:36:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 187E620494;
-	Mon, 23 Nov 2020 09:36:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F068087051;
+	Mon, 23 Nov 2020 09:36:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 189E91BF2BC
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 09:36:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 76ADE1BF2BC
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 09:36:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0E0EB2048D
- for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 09:36:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 73715855A1
+ for <devel@linuxdriverproject.org>; Mon, 23 Nov 2020 09:36:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 45+qcYrpHn5R for <devel@linuxdriverproject.org>;
- Mon, 23 Nov 2020 09:36:47 +0000 (UTC)
+ with ESMTP id O8KzFfw30a-k for <devel@linuxdriverproject.org>;
+ Mon, 23 Nov 2020 09:36:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 9D9A720492
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 09:36:47 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id e7so361213wrv.6
- for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 01:36:47 -0800 (PST)
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com
+ [209.85.221.52])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B786E855CF
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 09:36:48 +0000 (UTC)
+Received: by mail-wr1-f52.google.com with SMTP id 23so17856829wrc.8
+ for <devel@driverdev.osuosl.org>; Mon, 23 Nov 2020 01:36:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MMArJXM9UzpjLMpWBXhkcJMC3LIGOmm/bIbpKGtqT8k=;
- b=cdbo3iuyPSIZ92/jo0fMskHL6KRAMan/JxZ2bGkhF2dNDzYWkyFeK/im00q3PoMZw/
- yyB4OW/OT5lo3qeV/rBZNSfr4NpM7f5+aq/CFtSIFl3SqvM5OI9H9hcDTsm0DU9B2pDY
- PbTmbDFipJ4fmu37ad8VdvtSw9UNI9TY0xg0H+uRpBQzhOQ4Cm4AdL3tCqRB4NFXwnbx
- jzzYW7CAG7hayr/gr31Ap0fXp4JQHgGKk5L1aZBzqVKpa5ygo8R/YgfIaf7wSu/Cdup1
- TCDmDwel8Tk48ZQdts8Ec48UcG22dchHQgL7hzdlmlkZoDQyNw5kATHsIXUcg8CqX20S
- u7kg==
+ bh=RNedSGKNC3f2BFpH82uLx/hREcbBSGI5BO2FexUA2OY=;
+ b=EPW3VDMo++DzRqLIWLBVZCSGzehMhMzl3IcnODaUmOGLrOs1dXBGBF7Tz+K7UNxZ4L
+ vBBxfWJ4j+Z4i4GHxOafByrV4c6BVBcdjPQgx5ft07X4ia7e3GONIDl6eCfxfX2IkFAi
+ sSLZcRh1eY509nTWTc/vVUlKc7QyajrpI2fMj+vR8U7cuwGFqS8zEHtUSiMeiFFv7fYu
+ q0ssZ1QH+Lkcgt3ivIizA47cGGhoQk9Il8RzBLFfjpDarRVt4q0EwwVq4M5SU2FuHPnv
+ f7D8opwONbm2nYzWTA0mfoaN4hrC4J5YqvlBwXF/8aO7MiVC253yFq8VWkbNi1DHNsLn
+ ja3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=MMArJXM9UzpjLMpWBXhkcJMC3LIGOmm/bIbpKGtqT8k=;
- b=s0fC69aXNdug0zU7gOszH7JP2vanFvFd8fJpQfPkV5X6IFJAIw2+Cw/bQQ1yIJmXq0
- IK6iI8bcCWYQkpfThY+pNbYhjWdL2+xNuoJw9gkxyC8QGWjWBIZcVwdsLY+m3FhiQxfO
- xru0WA59UWPjMDtdH5GZpOfPw3xz88suGdQH7k4xQQJ6hvHghDlOkfX4xXRXEFAOyoGj
- PSFKk4SzUVl8gq4a/XiYt1yYucdpAnx+3SKUXckAuZgttm/PNz18xu4NGy9yw2Zjt6FI
- t/TZFX+9Rk429XKqktwB2DLtz0jjFPST3gDNB9Nroo72cG2fV/LwtxegwUF/gCCAGNRo
- h+vw==
-X-Gm-Message-State: AOAM533yTuvE6n+Hs7NCaQznQq1F7/NJVjgnldTWDoy076NedbuJEHJb
- aomGbp53IKdhdYw82hHA4u0=
-X-Google-Smtp-Source: ABdhPJwdAX+ppKYIdJy1tqA/uDmxNOWJZdNNnGxNSahLRX13kDxck2H28zBj2aqnrgJKJ8YvM3JnXg==
-X-Received: by 2002:adf:b64f:: with SMTP id i15mr10066625wre.125.1606124206235; 
- Mon, 23 Nov 2020 01:36:46 -0800 (PST)
+ bh=RNedSGKNC3f2BFpH82uLx/hREcbBSGI5BO2FexUA2OY=;
+ b=KxQatoNUXw8TEF31wXSFXle0xdGFzdmQt05DdbGy8hCIu1b/cOYXWElDKF7Gc/1sXb
+ /2Q6qaFxxTYGIenTv/SH+WJ0fs3avhAVk9dvAKgxm91owTxUd7r3DsQXZ74ionKnK2iG
+ tBb7jFMTloqBFVTnsXA1SNJUSVcsmth8+q1Bhn2/zLCKXvSMK3fRXl7E4TFL/oq8RJdV
+ OvBLlZu4vXHkUXQ3qNDtDIz5/CMlV9uc36rrS6zdMdV+zPudDORJN3wQfMkLda0KHyAV
+ 72dsiGDtyrLL49ddcz0mLEO9g0HfN68j085oK6GSAivlVEk/DRDV6nUjhwfJ9HeY//mH
+ 8dXg==
+X-Gm-Message-State: AOAM532mMEMK5rxfFEUj8iQLHWjzkOxigzEEtFsz+78dF2atvmqaMY3V
+ nYmqXVZkblvl3IVUmgYNNGA=
+X-Google-Smtp-Source: ABdhPJyqlmgoVsr5ZgkeO5GIG/YQWhhMU4/7Dq13AejHrL0mvyQ0wQp4XbAUFLzjdujV1cpFFEjJ3A==
+X-Received: by 2002:adf:fd0d:: with SMTP id e13mr28769668wrr.85.1606124207114; 
+ Mon, 23 Nov 2020 01:36:47 -0800 (PST)
 Received: from localhost.localdomain (188.red-81-44-87.dynamicip.rima-tde.net.
  [81.44.87.188])
- by smtp.gmail.com with ESMTPSA id s202sm16073807wme.39.2020.11.23.01.36.45
+ by smtp.gmail.com with ESMTPSA id s202sm16073807wme.39.2020.11.23.01.36.46
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 23 Nov 2020 01:36:45 -0800 (PST)
+ Mon, 23 Nov 2020 01:36:46 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 6/7] staging: mt7621-pci: convert to use
- 'devm_platform_ioremap_resource'
-Date: Mon, 23 Nov 2020 10:36:36 +0100
-Message-Id: <20201123093637.8300-7-sergio.paracuellos@gmail.com>
+Subject: [PATCH 7/7] staging: mt7621-pci: remove 'RALINK_PCI_IMBASEBAR0_ADDR'
+ register
+Date: Mon, 23 Nov 2020 10:36:37 +0100
+Message-Id: <20201123093637.8300-8-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201123093637.8300-1-sergio.paracuellos@gmail.com>
 References: <20201123093637.8300-1-sergio.paracuellos@gmail.com>
@@ -93,78 +93,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Instead of getting resources parsing from DT first and remaping
-afterwards, this can be done in one step using the kernel function
-'devm_platform_ioremap_resource'. Hence, update to use it.
+Register 'RALINK_PCI_IMBASEBAR0_ADDR' contains internal memory
+base address for BAR0. We don't really need to write anything
+there at all since its initial value contains always a desired
+valid value. Hence remove register definition and related code.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/staging/mt7621-pci/pci-mt7621.c | 24 ++++--------------------
- 1 file changed, 4 insertions(+), 20 deletions(-)
+ drivers/staging/mt7621-pci/pci-mt7621.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
 diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index a0b3ec51c7d9..4cdaccbcc97c 100644
+index 4cdaccbcc97c..c3532bc138fb 100644
 --- a/drivers/staging/mt7621-pci/pci-mt7621.c
 +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -337,28 +337,18 @@ static int mt7621_pci_parse_request_of_pci_ranges(struct pci_host_bridge *host)
- }
+@@ -68,7 +68,6 @@
+ #define MT7621_NEXT_PORT		0x1000
  
- static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
--				  struct device_node *node,
- 				  int slot)
- {
- 	struct mt7621_pcie_port *port;
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
--	struct device_node *pnode = dev->of_node;
--	struct resource regs;
- 	char name[10];
--	int err;
+ #define RALINK_PCI_BAR0SETUP_ADDR	0x0010
+-#define RALINK_PCI_IMBASEBAR0_ADDR	0x0018
+ #define RALINK_PCI_ID			0x0030
+ #define RALINK_PCI_CLASS		0x0034
+ #define RALINK_PCI_SUBID		0x0038
+@@ -83,7 +82,6 @@
+ #define PCIE_PORT_CLK_EN(x)		BIT(24 + (x))
+ #define PCIE_PORT_LINKUP		BIT(0)
  
- 	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
- 	if (!port)
- 		return -ENOMEM;
+-#define MEMORY_BASE			0x0
+ #define PERST_MODE_MASK			GENMASK(11, 10)
+ #define PERST_MODE_GPIO			BIT(10)
+ #define PERST_DELAY_MS			100
+@@ -543,8 +541,6 @@ static void mt7621_pcie_enable_port(struct mt7621_pcie_port *port)
+ 	/* map 2G DDR region */
+ 	pcie_write(pcie, PCIE_BAR_MAP_MAX | PCIE_BAR_ENABLE,
+ 		   offset + RALINK_PCI_BAR0SETUP_ADDR);
+-	pcie_write(pcie, MEMORY_BASE,
+-		   offset + RALINK_PCI_IMBASEBAR0_ADDR);
  
--	err = of_address_to_resource(pnode, slot + 1, &regs);
--	if (err) {
--		dev_err(dev, "missing \"reg\" property\n");
--		return err;
--	}
--
--	port->base = devm_ioremap_resource(dev, &regs);
-+	port->base = devm_platform_ioremap_resource(pdev, slot + 1);
- 	if (IS_ERR(port->base))
- 		return PTR_ERR(port->base);
- 
-@@ -399,17 +389,11 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
- static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
- 	struct device_node *node = dev->of_node, *child;
--	struct resource regs;
- 	int err;
- 
--	err = of_address_to_resource(node, 0, &regs);
--	if (err) {
--		dev_err(dev, "missing \"reg\" property\n");
--		return err;
--	}
--
--	pcie->base = devm_ioremap_resource(dev, &regs);
-+	pcie->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(pcie->base))
- 		return PTR_ERR(pcie->base);
- 
-@@ -425,7 +409,7 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
- 
- 		slot = PCI_SLOT(err);
- 
--		err = mt7621_pcie_parse_port(pcie, child, slot);
-+		err = mt7621_pcie_parse_port(pcie, slot);
- 		if (err) {
- 			of_node_put(child);
- 			return err;
+ 	/* configure class code and revision ID */
+ 	pcie_write(pcie, PCIE_CLASS_CODE | PCIE_REVISION_ID,
 -- 
 2.25.1
 
