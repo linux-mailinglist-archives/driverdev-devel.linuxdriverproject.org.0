@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFFBB2C42F5
-	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Nov 2020 16:36:11 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69B262C42FF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Nov 2020 16:36:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BFFA6203F5;
-	Wed, 25 Nov 2020 15:36:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B936987699;
+	Wed, 25 Nov 2020 15:36:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5CpG98Pz7J1s; Wed, 25 Nov 2020 15:36:08 +0000 (UTC)
+	with ESMTP id u721XP6WYWoD; Wed, 25 Nov 2020 15:36:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2C31E2E160;
-	Wed, 25 Nov 2020 15:36:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A3D787684;
+	Wed, 25 Nov 2020 15:36:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0024E1BF2FC
- for <devel@linuxdriverproject.org>; Wed, 25 Nov 2020 15:36:01 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 005FF1BF2FC
+ for <devel@linuxdriverproject.org>; Wed, 25 Nov 2020 15:36:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EB8DF2E0DA
- for <devel@linuxdriverproject.org>; Wed, 25 Nov 2020 15:36:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F00078718B
+ for <devel@linuxdriverproject.org>; Wed, 25 Nov 2020 15:36:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SOZoirftpJoN for <devel@linuxdriverproject.org>;
- Wed, 25 Nov 2020 15:36:00 +0000 (UTC)
+ with ESMTP id lZKwt9H3sBw4 for <devel@linuxdriverproject.org>;
+ Wed, 25 Nov 2020 15:36:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id BCA32203F5
- for <devel@driverdev.osuosl.org>; Wed, 25 Nov 2020 15:36:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 751E98716B
+ for <devel@driverdev.osuosl.org>; Wed, 25 Nov 2020 15:36:49 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 706B920857;
- Wed, 25 Nov 2020 15:35:59 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id EA13420857;
+ Wed, 25 Nov 2020 15:36:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606318560;
+ s=default; t=1606318609;
  bh=h60ek0hTv04VHgQSiFeWek+FE4Lk+MHPlUOUUhBX+ng=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VDSmEWn8l9LiSBVS6f8W4twXvwdIyMbdZRpzDJgmtbcXuklZUyxKag2JK9pOTDtja
- tPjAnsOD3BBTEkAlPc2rL0xyUFeat5Pnf971om9UhHRfHC1TOjE3zYPKaZl0wGF07Q
- 1jZDWV9RfsSGHj8p5OOtBq3ztJXe8Dp7DQ6JXX+U=
+ b=HYsW6S20lGRsMFSPK2OaauEF+r3PkOMvkQFb+6IMsI5IS2Ug9HORuv//hcS4+2A2C
+ 83knZ25RP5Dx6y9XyTV/FXrwCIrsYFCupJwGwWS/D2NTqw1iymjJcUNILwvYlOU2j7
+ EFGOe9Imqdgirb4Z/vTJaIVNKOSmwH/9vr9MPltI=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.9 07/33] staging: ralink-gdma: fix kconfig
+Subject: [PATCH AUTOSEL 5.4 07/23] staging: ralink-gdma: fix kconfig
  dependency bug for DMA_RALINK
-Date: Wed, 25 Nov 2020 10:35:24 -0500
-Message-Id: <20201125153550.810101-7-sashal@kernel.org>
+Date: Wed, 25 Nov 2020 10:36:22 -0500
+Message-Id: <20201125153638.810419-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201125153550.810101-1-sashal@kernel.org>
-References: <20201125153550.810101-1-sashal@kernel.org>
+In-Reply-To: <20201125153638.810419-1-sashal@kernel.org>
+References: <20201125153638.810419-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
