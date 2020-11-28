@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEAEF2C6F93
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:10 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 642B12C6F98
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CEC4787A32;
-	Sat, 28 Nov 2020 14:29:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1880486F05;
+	Sat, 28 Nov 2020 14:29:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xfMGMaEVVtcd; Sat, 28 Nov 2020 14:29:08 +0000 (UTC)
+	with ESMTP id VrUCenzctie9; Sat, 28 Nov 2020 14:29:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 464AD87984;
-	Sat, 28 Nov 2020 14:29:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6808B84E5F;
+	Sat, 28 Nov 2020 14:29:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 505401BF342
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D090D1BF342
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3ABA420483
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CA8B587984
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WUXfV2KJ7oHK for <devel@linuxdriverproject.org>;
- Sat, 28 Nov 2020 14:29:03 +0000 (UTC)
+ with ESMTP id GUlRKosgHLON for <devel@linuxdriverproject.org>;
+ Sat, 28 Nov 2020 14:29:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from relay2-d.mail.gandi.net (relay2-d.mail.gandi.net
  [217.70.183.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 10A1C203C9
- for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:29:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C1DAC877A9
+ for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:29:05 +0000 (UTC)
 X-Originating-IP: 93.29.109.196
 Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
  [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id B289440006;
- Sat, 28 Nov 2020 14:28:59 +0000 (UTC)
+ by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id B48BC4000D;
+ Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-doc@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-sunxi@googlegroups.com
-Subject: [PATCH v2 04/19] media: sun6i-csi: Use common V4L2 format info for
- storage bpp
-Date: Sat, 28 Nov 2020 15:28:24 +0100
-Message-Id: <20201128142839.517949-5-paul.kocialkowski@bootlin.com>
+Subject: [PATCH v2 05/19] media: sun6i-csi: Only configure the interface data
+ width for parallel
+Date: Sat, 28 Nov 2020 15:28:25 +0100
+Message-Id: <20201128142839.517949-6-paul.kocialkowski@bootlin.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
 References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
@@ -63,7 +63,8 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+Cc: =?UTF-8?q?K=C3=A9vin=20L=27h=C3=B4pital?= <kevin.lhopital@bootlin.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
  Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Jonathan Corbet <corbet@lwn.net>,
  Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
@@ -75,110 +76,59 @@ Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
  Hans Verkuil <hans.verkuil@cisco.com>, Yong Deng <yong.deng@magewell.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-V4L2 has a common helper which can be used for calculating the number
-of stored bits per pixels of a given (stored) image format.
-
-Use the helper-returned structure instead of our own switch/case list.
-Note that a few formats are not in that list so we keep them as
-special cases.
-
-The custom switch/case was also wrong concerning 10/12-bit Bayer
-formats, which are aligned to 16 bits in memory. Using the common
-helper fixes it.
-
-Fixes: 5cc7522d8965 ("media: sun6i: Add support for Allwinner CSI V3s")
-Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
----
- .../platform/sunxi/sun6i-csi/sun6i_csi.h      | 55 +++++++------------
- 1 file changed, 20 insertions(+), 35 deletions(-)
-
-diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h
-index c626821aaedb..092445f04c60 100644
---- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h
-+++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h
-@@ -86,53 +86,38 @@ void sun6i_csi_update_buf_addr(struct sun6i_csi *csi, dma_addr_t addr);
-  */
- void sun6i_csi_set_stream(struct sun6i_csi *csi, bool enable);
- 
--/* get bpp form v4l2 pixformat */
-+/* get memory storage bpp from v4l2 pixformat */
- static inline int sun6i_csi_get_bpp(unsigned int pixformat)
- {
-+	const struct v4l2_format_info *info;
-+	unsigned int i;
-+	int bpp = 0;
-+
-+	/* Handle special cases unknown to V4L2 format info first. */
- 	switch (pixformat) {
--	case V4L2_PIX_FMT_SBGGR8:
--	case V4L2_PIX_FMT_SGBRG8:
--	case V4L2_PIX_FMT_SGRBG8:
--	case V4L2_PIX_FMT_SRGGB8:
- 	case V4L2_PIX_FMT_JPEG:
- 		return 8;
--	case V4L2_PIX_FMT_SBGGR10:
--	case V4L2_PIX_FMT_SGBRG10:
--	case V4L2_PIX_FMT_SGRBG10:
--	case V4L2_PIX_FMT_SRGGB10:
--		return 10;
--	case V4L2_PIX_FMT_SBGGR12:
--	case V4L2_PIX_FMT_SGBRG12:
--	case V4L2_PIX_FMT_SGRBG12:
--	case V4L2_PIX_FMT_SRGGB12:
- 	case V4L2_PIX_FMT_HM12:
--	case V4L2_PIX_FMT_NV12:
--	case V4L2_PIX_FMT_NV21:
--	case V4L2_PIX_FMT_YUV420:
--	case V4L2_PIX_FMT_YVU420:
- 		return 12;
--	case V4L2_PIX_FMT_YUYV:
--	case V4L2_PIX_FMT_YVYU:
--	case V4L2_PIX_FMT_UYVY:
--	case V4L2_PIX_FMT_VYUY:
--	case V4L2_PIX_FMT_NV16:
--	case V4L2_PIX_FMT_NV61:
--	case V4L2_PIX_FMT_YUV422P:
--	case V4L2_PIX_FMT_RGB565:
- 	case V4L2_PIX_FMT_RGB565X:
- 		return 16;
--	case V4L2_PIX_FMT_RGB24:
--	case V4L2_PIX_FMT_BGR24:
--		return 24;
--	case V4L2_PIX_FMT_RGB32:
--	case V4L2_PIX_FMT_BGR32:
--		return 32;
--	default:
-+	}
-+
-+	info = v4l2_format_info(pixformat);
-+	if (!info) {
- 		WARN(1, "Unsupported pixformat: 0x%x\n", pixformat);
--		break;
-+		return 0;
-+	}
-+
-+	for (i = 0; i < info->comp_planes; i++) {
-+		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-+		unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
-+
-+		/* We return bits per pixel while V4L2 format info is bytes. */
-+		bpp += 8 * info->bpp[i] / hdiv / vdiv;
- 	}
- 
--	return 0;
-+	return bpp;
- }
- 
- #endif /* __SUN6I_CSI_H__ */
--- 
-2.29.2
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Qml0cyByZWxhdGVkIHRvIHRoZSBpbnRlcmZhY2UgZGF0YSB3aWR0aCBhcmUgb25seSBhcHBsaWNh
+YmxlIHRvIHRoZQpwYXJhbGxlbCBpbnRlcmZhY2UgYW5kIGFyZSBpcnJlbGV2YW50IHdoZW4gdGhl
+IENTSSBjb250cm9sbGVyIGlzIHRha2luZwppbnB1dCBmcm9tIHRoZSBNSVBJIENTSS0yIGNvbnRy
+b2xsZXIuCgpJbiBwcmV2aXNpb24gb2YgYWRkaW5nIHN1cHBvcnQgZm9yIHRoaXMgY2FzZSwgc2V0
+IHRoZXNlIGJpdHMKY29uZGl0aW9uYWxseSBzbyB0aGVyZSBpcyBubyBhbWJpZ3VpdHkuIFRoZSBj
+b25kaXRpb25hbCBibG9jayBpcwptb3ZlZCBhcm91bmQgYmVmb3JlIHRoZSBpbnRlcmxhY2VkIGNv
+bmRpdGlvbmFsIGJsb2NrIGZvciBuaWNlciBjb2RlCnN5bW1ldHJ5IChjb25kaXRpb25hbCBibG9j
+a3MgZmlyc3QpIHdoaWxlIGF0IGl0LgoKQ28tZGV2ZWxvcGVkLWJ5OiBLw6l2aW4gTCdow7RwaXRh
+bCA8a2V2aW4ubGhvcGl0YWxAYm9vdGxpbi5jb20+ClNpZ25lZC1vZmYtYnk6IEvDqXZpbiBMJ2jD
+tHBpdGFsIDxrZXZpbi5saG9waXRhbEBib290bGluLmNvbT4KU2lnbmVkLW9mZi1ieTogUGF1bCBL
+b2NpYWxrb3dza2kgPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPgotLS0KIC4uLi9wbGF0
+Zm9ybS9zdW54aS9zdW42aS1jc2kvc3VuNmlfY3NpLmMgICAgICB8IDQyICsrKysrKysrKysrLS0t
+LS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNlcnRpb25zKCspLCAxNyBkZWxldGlvbnMoLSkK
+CmRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3N1bnhpL3N1bjZpLWNzaS9zdW42
+aV9jc2kuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc3VueGkvc3VuNmktY3NpL3N1bjZpX2Nz
+aS5jCmluZGV4IDUzMWE0Y2NjZDE0YS4uZjExNTBkZTk0ZTk4IDEwMDY0NAotLS0gYS9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3N1bnhpL3N1bjZpLWNzaS9zdW42aV9jc2kuYworKysgYi9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3N1bnhpL3N1bjZpLWNzaS9zdW42aV9jc2kuYwpAQCAtMzc4LDggKzM3
+OCwxMyBAQCBzdGF0aWMgdm9pZCBzdW42aV9jc2lfc2V0dXBfYnVzKHN0cnVjdCBzdW42aV9jc2lf
+ZGV2ICpzZGV2KQogCXVuc2lnbmVkIGNoYXIgYnVzX3dpZHRoOwogCXUzMiBmbGFnczsKIAl1MzIg
+Y2ZnOworCWJvb2wgaW5wdXRfcGFyYWxsZWwgPSBmYWxzZTsKIAlib29sIGlucHV0X2ludGVybGFj
+ZWQgPSBmYWxzZTsKIAorCWlmIChlbmRwb2ludC0+YnVzX3R5cGUgPT0gVjRMMl9NQlVTX1BBUkFM
+TEVMIHx8CisJICAgIGVuZHBvaW50LT5idXNfdHlwZSA9PSBWNEwyX01CVVNfQlQ2NTYpCisJCWlu
+cHV0X3BhcmFsbGVsID0gdHJ1ZTsKKwogCWlmIChjc2ktPmNvbmZpZy5maWVsZCA9PSBWNEwyX0ZJ
+RUxEX0lOVEVSTEFDRUQKIAkgICAgfHwgY3NpLT5jb25maWcuZmllbGQgPT0gVjRMMl9GSUVMRF9J
+TlRFUkxBQ0VEX1RCCiAJICAgIHx8IGNzaS0+Y29uZmlnLmZpZWxkID09IFY0TDJfRklFTERfSU5U
+RVJMQUNFRF9CVCkKQEAgLTM5NSw2ICs0MDAsMjYgQEAgc3RhdGljIHZvaWQgc3VuNmlfY3NpX3Nl
+dHVwX2J1cyhzdHJ1Y3Qgc3VuNmlfY3NpX2RldiAqc2RldikKIAkJIENTSV9JRl9DRkdfSFJFRl9Q
+T0xfTUFTSyB8IENTSV9JRl9DRkdfRklFTERfTUFTSyB8CiAJCSBDU0lfSUZfQ0ZHX1NSQ19UWVBF
+X01BU0spOwogCisJaWYgKGlucHV0X3BhcmFsbGVsKSB7CisJCXN3aXRjaCAoYnVzX3dpZHRoKSB7
+CisJCWNhc2UgODoKKwkJCWNmZyB8PSBDU0lfSUZfQ0ZHX0lGX0RBVEFfV0lEVEhfOEJJVDsKKwkJ
+CWJyZWFrOworCQljYXNlIDEwOgorCQkJY2ZnIHw9IENTSV9JRl9DRkdfSUZfREFUQV9XSURUSF8x
+MEJJVDsKKwkJCWJyZWFrOworCQljYXNlIDEyOgorCQkJY2ZnIHw9IENTSV9JRl9DRkdfSUZfREFU
+QV9XSURUSF8xMkJJVDsKKwkJCWJyZWFrOworCQljYXNlIDE2OiAvKiBObyBuZWVkIHRvIGNvbmZp
+Z3VyZSBEQVRBX1dJRFRIIGZvciAxNmJpdCAqLworCQkJYnJlYWs7CisJCWRlZmF1bHQ6CisJCQlk
+ZXZfd2FybihzZGV2LT5kZXYsICJVbnN1cHBvcnRlZCBidXMgd2lkdGg6ICV1XG4iLAorCQkJCSBi
+dXNfd2lkdGgpOworCQkJYnJlYWs7CisJCX0KKwl9CisKIAlpZiAoaW5wdXRfaW50ZXJsYWNlZCkK
+IAkJY2ZnIHw9IENTSV9JRl9DRkdfU1JDX1RZUEVfSU5URVJMQUNFRDsKIAllbHNlCkBAIC00NDAs
+MjMgKzQ2NSw2IEBAIHN0YXRpYyB2b2lkIHN1bjZpX2NzaV9zZXR1cF9idXMoc3RydWN0IHN1bjZp
+X2NzaV9kZXYgKnNkZXYpCiAJCWJyZWFrOwogCX0KIAotCXN3aXRjaCAoYnVzX3dpZHRoKSB7Ci0J
+Y2FzZSA4OgotCQljZmcgfD0gQ1NJX0lGX0NGR19JRl9EQVRBX1dJRFRIXzhCSVQ7Ci0JCWJyZWFr
+OwotCWNhc2UgMTA6Ci0JCWNmZyB8PSBDU0lfSUZfQ0ZHX0lGX0RBVEFfV0lEVEhfMTBCSVQ7Ci0J
+CWJyZWFrOwotCWNhc2UgMTI6Ci0JCWNmZyB8PSBDU0lfSUZfQ0ZHX0lGX0RBVEFfV0lEVEhfMTJC
+SVQ7Ci0JCWJyZWFrOwotCWNhc2UgMTY6IC8qIE5vIG5lZWQgdG8gY29uZmlndXJlIERBVEFfV0lE
+VEggZm9yIDE2Yml0ICovCi0JCWJyZWFrOwotCWRlZmF1bHQ6Ci0JCWRldl93YXJuKHNkZXYtPmRl
+diwgIlVuc3VwcG9ydGVkIGJ1cyB3aWR0aDogJXVcbiIsIGJ1c193aWR0aCk7Ci0JCWJyZWFrOwot
+CX0KLQogCXJlZ21hcF93cml0ZShzZGV2LT5yZWdtYXAsIENTSV9JRl9DRkdfUkVHLCBjZmcpOwog
+fQogCi0tIAoyLjI5LjIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
+dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aXZlcmRldi1kZXZlbAo=
