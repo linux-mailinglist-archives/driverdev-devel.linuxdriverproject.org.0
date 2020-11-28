@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93B712C6F96
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:13 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B7C92C6F9A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5037C86C32;
-	Sat, 28 Nov 2020 14:29:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8C7602048D;
+	Sat, 28 Nov 2020 14:29:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ceLb3NGobjQ8; Sat, 28 Nov 2020 14:29:08 +0000 (UTC)
+	with ESMTP id ZgKoRr-HIM0K; Sat, 28 Nov 2020 14:29:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B1E587567;
-	Sat, 28 Nov 2020 14:29:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B0B8F203C9;
+	Sat, 28 Nov 2020 14:29:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9480C1BF342
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6834D1BF342
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8CCD8874BC
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 621B987CE4
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ivEfJ3J5xK64 for <devel@linuxdriverproject.org>;
- Sat, 28 Nov 2020 14:28:59 +0000 (UTC)
+ with ESMTP id DKvmQFJrgI8q for <devel@linuxdriverproject.org>;
+ Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from relay2-d.mail.gandi.net (relay2-d.mail.gandi.net
  [217.70.183.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E05287491
- for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:28:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 11DE487D1D
+ for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:29:00 +0000 (UTC)
 X-Originating-IP: 93.29.109.196
 Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
  [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id 9DA034000A;
- Sat, 28 Nov 2020 14:28:55 +0000 (UTC)
+ by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id A1E6B4000C;
+ Sat, 28 Nov 2020 14:28:57 +0000 (UTC)
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-doc@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-sunxi@googlegroups.com
-Subject: [PATCH v2 02/19] phy: Distinguish between Rx and Tx for MIPI D-PHY
- with submodes
-Date: Sat, 28 Nov 2020 15:28:22 +0100
-Message-Id: <20201128142839.517949-3-paul.kocialkowski@bootlin.com>
+Subject: [PATCH v2 03/19] phy: allwinner: phy-sun6i-mipi-dphy: Support D-PHY
+ Rx mode for MIPI CSI-2
+Date: Sat, 28 Nov 2020 15:28:23 +0100
+Message-Id: <20201128142839.517949-4-paul.kocialkowski@bootlin.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
 References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
@@ -80,59 +80,246 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As some D-PHY controllers support both Rx and Tx mode, we need a way for
-users to explicitly request one or the other. For instance, Rx mode can
-be used along with MIPI CSI-2 while Tx mode can be used with MIPI DSI.
+The Allwinner A31 D-PHY supports both Rx and Tx modes. While the latter
+is already supported and used for MIPI DSI this adds support for the
+former, to be used with MIPI CSI-2.
 
-Introduce new MIPI D-PHY PHY submodes to use with PHY_MODE_MIPI_DPHY.
-The default (zero value) is kept to Tx so only the rkisp1 driver, which
-uses D-PHY in Rx mode, needs to be adapted.
+This implementation is inspired by Allwinner's V3s Linux SDK
+implementation, which was used as a documentation base.
 
 Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-isp.c |  3 ++-
- include/linux/phy/phy-mipi-dphy.h         | 13 +++++++++++++
- 2 files changed, 15 insertions(+), 1 deletion(-)
+ drivers/phy/allwinner/phy-sun6i-mipi-dphy.c | 164 +++++++++++++++++++-
+ 1 file changed, 160 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index a9715b0b7264..f1167995688a 100644
---- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -914,7 +914,8 @@ static int rkisp1_mipi_csi2_start(struct rkisp1_isp *isp,
+diff --git a/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c b/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
+index 1fa761ba6cbb..0389b6b670d6 100644
+--- a/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
++++ b/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
+@@ -24,6 +24,14 @@
+ #define SUN6I_DPHY_TX_CTL_REG		0x04
+ #define SUN6I_DPHY_TX_CTL_HS_TX_CLK_CONT	BIT(28)
  
- 	phy_mipi_dphy_get_default_config(pixel_clock, isp->sink_fmt->bus_width,
- 					 sensor->lanes, cfg);
--	phy_set_mode(sensor->dphy, PHY_MODE_MIPI_DPHY);
-+	phy_set_mode_ext(cdev->dphy, PHY_MODE_MIPI_DPHY,
-+			 PHY_MIPI_DPHY_SUBMODE_RX);
- 	phy_configure(sensor->dphy, &opts);
- 	phy_power_on(sensor->dphy);
- 
-diff --git a/include/linux/phy/phy-mipi-dphy.h b/include/linux/phy/phy-mipi-dphy.h
-index a877ffee845d..0f57ef46a8b5 100644
---- a/include/linux/phy/phy-mipi-dphy.h
-+++ b/include/linux/phy/phy-mipi-dphy.h
-@@ -6,6 +6,19 @@
- #ifndef __PHY_MIPI_DPHY_H_
- #define __PHY_MIPI_DPHY_H_
- 
-+/**
-+ * enum phy_mipi_dphy_submode - MIPI D-PHY sub-mode
-+ *
-+ * A MIPI D-PHY can be used to transmit or receive data.
-+ * Since some controllers can support both, the direction to enable is specified
-+ * with the PHY sub-mode. Transmit is assumed by default with phy_set_mode.
-+ */
++#define SUN6I_DPHY_RX_CTL_REG		0x08
++#define SUN6I_DPHY_RX_CTL_EN_DBC	BIT(31)
++#define SUN6I_DPHY_RX_CTL_RX_CLK_FORCE	BIT(24)
++#define SUN6I_DPHY_RX_CTL_RX_D3_FORCE	BIT(23)
++#define SUN6I_DPHY_RX_CTL_RX_D2_FORCE	BIT(22)
++#define SUN6I_DPHY_RX_CTL_RX_D1_FORCE	BIT(21)
++#define SUN6I_DPHY_RX_CTL_RX_D0_FORCE	BIT(20)
 +
-+enum phy_mipi_dphy_submode {
-+	PHY_MIPI_DPHY_SUBMODE_TX = 0,
-+	PHY_MIPI_DPHY_SUBMODE_RX,
-+};
+ #define SUN6I_DPHY_TX_TIME0_REG		0x10
+ #define SUN6I_DPHY_TX_TIME0_HS_TRAIL(n)		(((n) & 0xff) << 24)
+ #define SUN6I_DPHY_TX_TIME0_HS_PREPARE(n)	(((n) & 0xff) << 16)
+@@ -44,12 +52,29 @@
+ #define SUN6I_DPHY_TX_TIME4_HS_TX_ANA1(n)	(((n) & 0xff) << 8)
+ #define SUN6I_DPHY_TX_TIME4_HS_TX_ANA0(n)	((n) & 0xff)
+ 
++#define SUN6I_DPHY_RX_TIME0_REG		0x30
++#define SUN6I_DPHY_RX_TIME0_HS_RX_SYNC(n)	(((n) & 0xff) << 24)
++#define SUN6I_DPHY_RX_TIME0_HS_RX_CLK_MISS(n)	(((n) & 0xff) << 16)
++#define SUN6I_DPHY_RX_TIME0_LP_RX(n)		(((n) & 0xff) << 8)
 +
- /**
-  * struct phy_configure_opts_mipi_dphy - MIPI D-PHY configuration set
-  *
++#define SUN6I_DPHY_RX_TIME1_REG		0x34
++#define SUN6I_DPHY_RX_TIME1_RX_DLY(n)		(((n) & 0xfff) << 20)
++#define SUN6I_DPHY_RX_TIME1_LP_RX_ULPS_WP(n)	((n) & 0xfffff)
++
++#define SUN6I_DPHY_RX_TIME2_REG		0x38
++#define SUN6I_DPHY_RX_TIME2_HS_RX_ANA1(n)	(((n) & 0xff) << 8)
++#define SUN6I_DPHY_RX_TIME2_HS_RX_ANA0(n)	((n) & 0xff)
++
++#define SUN6I_DPHY_RX_TIME3_REG		0x40
++#define SUN6I_DPHY_RX_TIME3_LPRST_DLY(n)	(((n) & 0xffff) << 16)
++
+ #define SUN6I_DPHY_ANA0_REG		0x4c
+ #define SUN6I_DPHY_ANA0_REG_PWS			BIT(31)
+ #define SUN6I_DPHY_ANA0_REG_DMPC		BIT(28)
+ #define SUN6I_DPHY_ANA0_REG_DMPD(n)		(((n) & 0xf) << 24)
+ #define SUN6I_DPHY_ANA0_REG_SLV(n)		(((n) & 7) << 12)
+ #define SUN6I_DPHY_ANA0_REG_DEN(n)		(((n) & 0xf) << 8)
++#define SUN6I_DPHY_ANA0_REG_SFB(n)		(((n) & 3) << 2)
+ 
+ #define SUN6I_DPHY_ANA1_REG		0x50
+ #define SUN6I_DPHY_ANA1_REG_VTTMODE		BIT(31)
+@@ -92,6 +117,8 @@ struct sun6i_dphy {
+ 
+ 	struct phy				*phy;
+ 	struct phy_configure_opts_mipi_dphy	config;
++
++	int					submode;
+ };
+ 
+ static int sun6i_dphy_init(struct phy *phy)
+@@ -105,6 +132,18 @@ static int sun6i_dphy_init(struct phy *phy)
+ 	return 0;
+ }
+ 
++static int sun6i_dphy_set_mode(struct phy *phy, enum phy_mode mode, int submode)
++{
++	struct sun6i_dphy *dphy = phy_get_drvdata(phy);
++
++	if (mode != PHY_MODE_MIPI_DPHY)
++		return -EINVAL;
++
++	dphy->submode = submode;
++
++	return 0;
++}
++
+ static int sun6i_dphy_configure(struct phy *phy, union phy_configure_opts *opts)
+ {
+ 	struct sun6i_dphy *dphy = phy_get_drvdata(phy);
+@@ -119,9 +158,8 @@ static int sun6i_dphy_configure(struct phy *phy, union phy_configure_opts *opts)
+ 	return 0;
+ }
+ 
+-static int sun6i_dphy_power_on(struct phy *phy)
++static int sun6i_dphy_tx_power_on(struct sun6i_dphy *dphy)
+ {
+-	struct sun6i_dphy *dphy = phy_get_drvdata(phy);
+ 	u8 lanes_mask = GENMASK(dphy->config.lanes - 1, 0);
+ 
+ 	regmap_write(dphy->regs, SUN6I_DPHY_TX_CTL_REG,
+@@ -211,12 +249,129 @@ static int sun6i_dphy_power_on(struct phy *phy)
+ 	return 0;
+ }
+ 
++static int sun6i_dphy_rx_power_on(struct sun6i_dphy *dphy)
++{
++	/* Physical clock rate is actually half of symbol rate with DDR. */
++	unsigned long mipi_symbol_rate = dphy->config.hs_clk_rate;
++	unsigned long dphy_clk_rate;
++	unsigned int rx_dly;
++	unsigned int lprst_dly;
++	u32 value;
++
++	dphy_clk_rate = clk_get_rate(dphy->mod_clk);
++	if (!dphy_clk_rate)
++		return -EINVAL;
++
++	/* Hardcoded timing parameters from the Allwinner BSP. */
++	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME0_REG,
++		     SUN6I_DPHY_RX_TIME0_HS_RX_SYNC(255) |
++		     SUN6I_DPHY_RX_TIME0_HS_RX_CLK_MISS(255) |
++		     SUN6I_DPHY_RX_TIME0_LP_RX(255));
++
++	/*
++	 * Formula from the Allwinner BSP, with hardcoded coefficients
++	 * (probably internal divider/multiplier).
++	 */
++	rx_dly = 8 * (unsigned int)(dphy_clk_rate / (mipi_symbol_rate / 8));
++
++	/*
++	 * The Allwinner BSP has an alternative formula for LP_RX_ULPS_WP:
++	 * lp_ulps_wp_cnt = lp_ulps_wp_ms * lp_clk / 1000
++	 * but does not use it and hardcodes 255 instead.
++	 */
++	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME1_REG,
++		     SUN6I_DPHY_RX_TIME1_RX_DLY(rx_dly) |
++		     SUN6I_DPHY_RX_TIME1_LP_RX_ULPS_WP(255));
++
++	/* HS_RX_ANA0 value is hardcoded in the Allwinner BSP. */
++	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME2_REG,
++		     SUN6I_DPHY_RX_TIME2_HS_RX_ANA0(4));
++
++	/*
++	 * Formula from the Allwinner BSP, with hardcoded coefficients
++	 * (probably internal divider/multiplier).
++	 */
++	lprst_dly = 4 * (unsigned int)(dphy_clk_rate / (mipi_symbol_rate / 2));
++
++	regmap_write(dphy->regs, SUN6I_DPHY_RX_TIME3_REG,
++		     SUN6I_DPHY_RX_TIME3_LPRST_DLY(lprst_dly));
++
++	/* Analog parameters are hardcoded in the Allwinner BSP. */
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA0_REG,
++		     SUN6I_DPHY_ANA0_REG_PWS |
++		     SUN6I_DPHY_ANA0_REG_SLV(7) |
++		     SUN6I_DPHY_ANA0_REG_SFB(2));
++
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA1_REG,
++		     SUN6I_DPHY_ANA1_REG_SVTT(4));
++
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA4_REG,
++		     SUN6I_DPHY_ANA4_REG_DMPLVC |
++		     SUN6I_DPHY_ANA4_REG_DMPLVD(1));
++
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA2_REG,
++		     SUN6I_DPHY_ANA2_REG_ENIB);
++
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA3_REG,
++		     SUN6I_DPHY_ANA3_EN_LDOR |
++		     SUN6I_DPHY_ANA3_EN_LDOC |
++		     SUN6I_DPHY_ANA3_EN_LDOD);
++
++	/*
++	 * Delay comes from the Allwinner BSP, likely for internal regulator
++	 * ramp-up.
++	 */
++	udelay(3);
++
++	value = SUN6I_DPHY_RX_CTL_EN_DBC | SUN6I_DPHY_RX_CTL_RX_CLK_FORCE;
++
++	/*
++	 * Rx data lane force-enable bits are used as regular RX enable by the
++	 * Allwinner BSP.
++	 */
++	if (dphy->config.lanes >= 1)
++		value |= SUN6I_DPHY_RX_CTL_RX_D0_FORCE;
++	if (dphy->config.lanes >= 2)
++		value |= SUN6I_DPHY_RX_CTL_RX_D1_FORCE;
++	if (dphy->config.lanes >= 3)
++		value |= SUN6I_DPHY_RX_CTL_RX_D2_FORCE;
++	if (dphy->config.lanes == 4)
++		value |= SUN6I_DPHY_RX_CTL_RX_D3_FORCE;
++
++	regmap_write(dphy->regs, SUN6I_DPHY_RX_CTL_REG, value);
++
++	regmap_write(dphy->regs, SUN6I_DPHY_GCTL_REG,
++		     SUN6I_DPHY_GCTL_LANE_NUM(dphy->config.lanes) |
++		     SUN6I_DPHY_GCTL_EN);
++
++	return 0;
++}
++
++static int sun6i_dphy_power_on(struct phy *phy)
++{
++	struct sun6i_dphy *dphy = phy_get_drvdata(phy);
++
++	switch (dphy->submode) {
++	case PHY_MIPI_DPHY_SUBMODE_TX:
++		return sun6i_dphy_tx_power_on(dphy);
++	case PHY_MIPI_DPHY_SUBMODE_RX:
++		return sun6i_dphy_rx_power_on(dphy);
++	default:
++		return -EINVAL;
++	}
++}
++
+ static int sun6i_dphy_power_off(struct phy *phy)
+ {
+ 	struct sun6i_dphy *dphy = phy_get_drvdata(phy);
+ 
+-	regmap_update_bits(dphy->regs, SUN6I_DPHY_ANA1_REG,
+-			   SUN6I_DPHY_ANA1_REG_VTTMODE, 0);
++	regmap_write(dphy->regs, SUN6I_DPHY_GCTL_REG, 0);
++
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA0_REG, 0);
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA1_REG, 0);
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA2_REG, 0);
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA3_REG, 0);
++	regmap_write(dphy->regs, SUN6I_DPHY_ANA4_REG, 0);
+ 
+ 	return 0;
+ }
+@@ -234,6 +389,7 @@ static int sun6i_dphy_exit(struct phy *phy)
+ 
+ 
+ static const struct phy_ops sun6i_dphy_ops = {
++	.set_mode	= sun6i_dphy_set_mode,
+ 	.configure	= sun6i_dphy_configure,
+ 	.power_on	= sun6i_dphy_power_on,
+ 	.power_off	= sun6i_dphy_power_off,
 -- 
 2.29.2
 
