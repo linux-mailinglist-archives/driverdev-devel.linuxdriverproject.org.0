@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1720B2C6F9D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:26 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 60A272C6FA1
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4AE4387A64;
-	Sat, 28 Nov 2020 14:29:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD6E32047D;
+	Sat, 28 Nov 2020 14:29:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nwKv7cpwxv4y; Sat, 28 Nov 2020 14:29:24 +0000 (UTC)
+	with ESMTP id x+uzc70M1MP7; Sat, 28 Nov 2020 14:29:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CA47D877D3;
-	Sat, 28 Nov 2020 14:29:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6D92E20484;
+	Sat, 28 Nov 2020 14:29:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9D24A1BF342
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 284561BF342
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 99B238447F
+ by silver.osuosl.org (Postfix) with ESMTP id EC0FF203C9
  for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Je3TSNS43-7R for <devel@linuxdriverproject.org>;
- Sat, 28 Nov 2020 14:29:19 +0000 (UTC)
+ with ESMTP id qR-IYKgPB4UL for <devel@linuxdriverproject.org>;
+ Sat, 28 Nov 2020 14:29:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from relay2-d.mail.gandi.net (relay2-d.mail.gandi.net
  [217.70.183.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 53B6186F2B
- for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:29:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 6E5272047D
+ for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:29:17 +0000 (UTC)
 X-Originating-IP: 93.29.109.196
 Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
  [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id 088FF40007;
- Sat, 28 Nov 2020 14:29:11 +0000 (UTC)
+ by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id 0B91A4000B;
+ Sat, 28 Nov 2020 14:29:13 +0000 (UTC)
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-doc@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-sunxi@googlegroups.com
-Subject: [PATCH v2 10/19] ARM: dts: sun8i: v3s: Add CSI1 controller port for
- parallel input
-Date: Sat, 28 Nov 2020 15:28:30 +0100
-Message-Id: <20201128142839.517949-11-paul.kocialkowski@bootlin.com>
+Subject: [PATCH v2 11/19] arm64: dts: allwinner: a64: Add CSI controller port
+ for parallel input
+Date: Sat, 28 Nov 2020 15:28:31 +0100
+Message-Id: <20201128142839.517949-12-paul.kocialkowski@bootlin.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
 References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
@@ -89,29 +89,29 @@ interface input and there's no confusion about the port number.
 
 Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 ---
- arch/arm/boot/dts/sun8i-v3s.dtsi | 9 +++++++++
+ arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi | 9 +++++++++
  1 file changed, 9 insertions(+)
 
-diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
-index 7b2d684aeb97..7926c8b2ac5e 100644
---- a/arch/arm/boot/dts/sun8i-v3s.dtsi
-+++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
-@@ -540,6 +540,15 @@ csi1: camera@1cb4000 {
- 			clock-names = "bus", "mod", "ram";
- 			resets = <&ccu RST_BUS_CSI>;
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi
+index 51cc30e84e26..1e1f0d2097d5 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi
+@@ -1109,6 +1109,15 @@ csi: csi@1cb0000 {
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&csi_pins>;
  			status = "disabled";
 +
 +			ports {
 +				#address-cells = <1>;
 +				#size-cells = <0>;
 +
-+				csi1_in_parallel: port@0 {
++				csi_in_parallel: port@0 {
 +					reg = <0>;
 +				};
 +			};
  		};
  
- 		gic: interrupt-controller@1c81000 {
+ 		dsi: dsi@1ca0000 {
 -- 
 2.29.2
 
