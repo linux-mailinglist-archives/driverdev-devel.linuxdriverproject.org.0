@@ -2,51 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E0552C6F95
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2A7D2C6F94
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Nov 2020 15:29:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82680858DA;
-	Sat, 28 Nov 2020 14:29:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A38D68499E;
+	Sat, 28 Nov 2020 14:29:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a7_U75Fwnd7S; Sat, 28 Nov 2020 14:29:04 +0000 (UTC)
+	with ESMTP id gIXSGTXzIdDT; Sat, 28 Nov 2020 14:29:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DFD3187491;
-	Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B4F9C874C7;
+	Sat, 28 Nov 2020 14:29:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 209B51BF342
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:00 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 384C21BF342
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 16DA087D06
- for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 22D062047B
+ for <devel@linuxdriverproject.org>; Sat, 28 Nov 2020 14:29:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OkBHBrIccHHp for <devel@linuxdriverproject.org>;
- Sat, 28 Nov 2020 14:28:57 +0000 (UTC)
+ with ESMTP id spNbqJvvCN09 for <devel@linuxdriverproject.org>;
+ Sat, 28 Nov 2020 14:28:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from relay2-d.mail.gandi.net (relay2-d.mail.gandi.net
  [217.70.183.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 16DD787CE4
- for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:28:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 03476203C9
+ for <devel@driverdev.osuosl.org>; Sat, 28 Nov 2020 14:28:57 +0000 (UTC)
 X-Originating-IP: 93.29.109.196
 Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
  [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id 8328E40005;
- Sat, 28 Nov 2020 14:28:47 +0000 (UTC)
+ by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id A1B0340009;
+ Sat, 28 Nov 2020 14:28:53 +0000 (UTC)
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-doc@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-sunxi@googlegroups.com
-Subject: [PATCH v2 00/19] Allwinner MIPI CSI-2 support for A31/V3s/A83T
-Date: Sat, 28 Nov 2020 15:28:20 +0100
-Message-Id: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
+Subject: [PATCH v2 01/19] docs: phy: Add a part about PHY mode and submode
+Date: Sat, 28 Nov 2020 15:28:21 +0100
+Message-Id: <20201128142839.517949-2-paul.kocialkowski@bootlin.com>
 X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
+References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -77,341 +79,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This series introduces support for MIPI CSI-2, with the A31 controller that is
-found on most SoCs (A31, V3s and probably V5) as well as the A83T-specific
-controller. While the former uses the same MIPI D-PHY that is already supported
-for DSI, the latter embeds its own D-PHY.
+Besides giving pointers to the relevant functions for PHY mode and
+submode configuration, this clarifies the need to set them before
+powering on the PHY.
 
-In order to distinguish the use of the D-PHY between Rx mode (for MIPI CSI-2)
-and Tx mode (for MIPI DSI), a submode is introduced for D-PHY in the PHY API.
-This allows adding Rx support in the A31 D-PHY driver.
+Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+---
+ Documentation/driver-api/phy/phy.rst | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-A few changes and fixes are applied to the A31 CSI controller driver, in order
-to support the MIPI CSI-2 use-case.
-
-Changes since v1:
-- reworked fwnode and media graph on the CSI controller end to have one port
-  per interface, which solves the bus type representation issue;
-- removed unused IRQ handlers in the MIPI CSI-2 bridges;
-- avoided the use of devm_regmap_init_mmio_clk;
-- deasserted reset before enabling clocks;
-- fixed reported return code issues (ret |=, missing checks);
-- applied requested cosmetic changes (backward goto, etc);
-- switched over to runtime PM for the mipi csi-2 bridge drivers;
-- selected PHY_SUN6I_MIPI_DPHY in Kconfig for sun6i-mipi-csi2;
-- registered nodes with mipi csi-2 bridge subdevs;
-- used V4L2 format info instead of switch/case for sun6i-csi bpp;
-- fixed device-tree bindings as requested (useless properties, license);
-- fixed mipi bridge dt instances names;
-- added PHY API documentation about mode/power on order requirement;
-- fixed clock error return code in d-phy code;
-- fixed D-PHY mode check in d-phy code;
-- added MAINTAINERS entries for the new drivers;
-- added V4L2 compliance results;
-- added various comments and rework commit mesages as requested.
-
-V4L2 compliance runs are available below:
-
-# sun6i-csi + sun6i-mipi-csi2 + ov5648
-
-v4l2-compliance SHA: not available, 32 bits
-
-Compliance test for sun6i-video device /dev/video0:
-
-Driver Info:
-	Driver name      : sun6i-video
-	Card type        : sun6i-csi
-	Bus info         : platform:camera
-	Driver version   : 5.10.0
-	Capabilities     : 0x84200001
-		Video Capture
-		Streaming
-		Extended Pix Format
-		Device Capabilities
-	Device Caps      : 0x04200001
-		Video Capture
-		Streaming
-		Extended Pix Format
-Media Driver Info:
-	Driver name      : sun6i-csi
-	Model            : Allwinner Video Capture Device
-	Serial           : 
-	Bus info         : platform:1cb0000.camera
-	Media version    : 5.10.0
-	Hardware revision: 0x00000000 (0)
-	Driver version   : 5.10.0
-Interface Info:
-	ID               : 0x03000004
-	Type             : V4L Video
-Entity Info:
-	ID               : 0x00000001 (1)
-	Name             : sun6i-csi
-	Function         : V4L2 I/O
-	Pad 0x01000002   : 0: Sink
-	Pad 0x01000003   : 1: Sink
-	  Link 0x0200000d: from remote pad 0x1000008 of entity 'sun6i-mipi-csi2': Data, Enabled
-
-Required ioctls:
-	test MC information (see 'Media Driver Info' above): OK
-		warn: v4l2-compliance.cpp(633): media bus_info 'platform:1cb0000.camera' differs from V4L2 bus_info 'platform:camera'
-	test VIDIOC_QUERYCAP: OK
-
-Allow for multiple opens:
-	test second /dev/video0 open: OK
-		warn: v4l2-compliance.cpp(633): media bus_info 'platform:1cb0000.camera' differs from V4L2 bus_info 'platform:camera'
-	test VIDIOC_QUERYCAP: OK
-	test VIDIOC_G/S_PRIORITY: OK
-	test for unlimited opens: OK
-
-Debug ioctls:
-	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-	test VIDIOC_LOG_STATUS: OK
-
-Input ioctls:
-	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-	test VIDIOC_ENUMAUDIO: OK (Not Supported)
-	test VIDIOC_G/S/ENUMINPUT: OK
-	test VIDIOC_G/S_AUDIO: OK (Not Supported)
-	Inputs: 1 Audio Inputs: 0 Tuners: 0
-
-Output ioctls:
-	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-	Outputs: 0 Audio Outputs: 0 Modulators: 0
-
-Input/Output configuration ioctls:
-	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-	test VIDIOC_G/S_EDID: OK (Not Supported)
-
-Control ioctls (Input 0):
-		warn: v4l2-test-controls.cpp(92): Exposure: (max - min) % step != 0
-		warn: v4l2-test-controls.cpp(92): Gain: (max - min) % step != 0
-		warn: v4l2-test-controls.cpp(92): Exposure: (max - min) % step != 0
-		warn: v4l2-test-controls.cpp(92): Gain: (max - min) % step != 0
-	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-	test VIDIOC_QUERYCTRL: OK
-		warn: v4l2-test-controls.cpp(368): Gain: returned control value 44 not a multiple of step
-		warn: v4l2-test-controls.cpp(368): Gain: returned control value 44 not a multiple of step
-		warn: v4l2-test-controls.cpp(368): Gain: returned control value 44 not a multiple of step
-		warn: v4l2-test-controls.cpp(368): Gain: returned control value 44 not a multiple of step
-	test VIDIOC_G/S_CTRL: OK
-		warn: v4l2-test-controls.cpp(555): Gain: returned control value 44 not a multiple of step
-	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-	Standard Controls: 15 Private Controls: 0
-
-Format ioctls (Input 0):
-	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-	test VIDIOC_G/S_PARM: OK (Not Supported)
-	test VIDIOC_G_FBUF: OK (Not Supported)
-	test VIDIOC_G_FMT: OK
-	test VIDIOC_TRY_FMT: OK
-	test VIDIOC_S_FMT: OK
-	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-	test Cropping: OK (Not Supported)
-	test Composing: OK (Not Supported)
-	test Scaling: OK
-
-Codec ioctls (Input 0):
-	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-
-Buffer ioctls (Input 0):
-	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-		fail: v4l2-test-buffers.cpp(755): q.export_bufs(node, q.g_type())
-	test VIDIOC_EXPBUF: FAIL
-	test Requests: OK (Not Supported)
-
-Total for sun6i-video device /dev/video0: 45, Succeeded: 44, Failed: 1, Warnings: 1
-
-# sun6i-csi + sun8i-a83t-mipi-csi2 + ov8865
-
-v4l2-compliance SHA: not available, 32 bits
-
-Compliance test for sun6i-video device /dev/video0:
-
-Driver Info:
-	Driver name      : sun6i-video
-	Card type        : sun6i-csi
-	Bus info         : platform:camera
-	Driver version   : 5.10.0
-	Capabilities     : 0x84200001
-		Video Capture
-		Streaming
-		Extended Pix Format
-		Device Capabilities
-	Device Caps      : 0x04200001
-		Video Capture
-		Streaming
-		Extended Pix Format
-Media Driver Info:
-	Driver name      : sun6i-csi
-	Model            : Allwinner Video Capture Device
-	Serial           : 
-	Bus info         : platform:1cb0000.camera
-	Media version    : 5.10.0
-	Hardware revision: 0x00000000 (0)
-	Driver version   : 5.10.0
-Interface Info:
-	ID               : 0x03000004
-	Type             : V4L Video
-Entity Info:
-	ID               : 0x00000001 (1)
-	Name             : sun6i-csi
-	Function         : V4L2 I/O
-	Pad 0x01000002   : 0: Sink
-	Pad 0x01000003   : 1: Sink
-	  Link 0x0200000d: from remote pad 0x1000008 of entity 'sun8i-a83t-mipi-csi2': Data, Enabled
-
-Required ioctls:
-	test MC information (see 'Media Driver Info' above): OK
-		warn: v4l2-compliance.cpp(633): media bus_info 'platform:1cb0000.camera' differs from V4L2 bus_info 'platform:camera'
-	test VIDIOC_QUERYCAP: OK
-
-Allow for multiple opens:
-	test second /dev/video0 open: OK
-		warn: v4l2-compliance.cpp(633): media bus_info 'platform:1cb0000.camera' differs from V4L2 bus_info 'platform:camera'
-	test VIDIOC_QUERYCAP: OK
-	test VIDIOC_G/S_PRIORITY: OK
-	test for unlimited opens: OK
-
-Debug ioctls:
-	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-	test VIDIOC_LOG_STATUS: OK
-
-Input ioctls:
-	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-	test VIDIOC_ENUMAUDIO: OK (Not Supported)
-	test VIDIOC_G/S/ENUMINPUT: OK
-	test VIDIOC_G/S_AUDIO: OK (Not Supported)
-	Inputs: 1 Audio Inputs: 0 Tuners: 0
-
-Output ioctls:
-	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-	Outputs: 0 Audio Outputs: 0 Modulators: 0
-
-Input/Output configuration ioctls:
-	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-	test VIDIOC_G/S_EDID: OK (Not Supported)
-
-Control ioctls (Input 0):
-		warn: v4l2-test-controls.cpp(92): Exposure: (max - min) % step != 0
-		warn: v4l2-test-controls.cpp(92): Gain: (max - min) % step != 0
-		warn: v4l2-test-controls.cpp(92): Exposure: (max - min) % step != 0
-		warn: v4l2-test-controls.cpp(92): Gain: (max - min) % step != 0
-	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-	test VIDIOC_QUERYCTRL: OK
-	test VIDIOC_G/S_CTRL: OK
-	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-	Standard Controls: 11 Private Controls: 0
-
-Format ioctls (Input 0):
-	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-	test VIDIOC_G/S_PARM: OK (Not Supported)
-	test VIDIOC_G_FBUF: OK (Not Supported)
-	test VIDIOC_G_FMT: OK
-	test VIDIOC_TRY_FMT: OK
-	test VIDIOC_S_FMT: OK
-	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-	test Cropping: OK (Not Supported)
-	test Composing: OK (Not Supported)
-	test Scaling: OK
-
-Codec ioctls (Input 0):
-	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-
-Buffer ioctls (Input 0):
-	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-	test VIDIOC_EXPBUF: OK
-	test Requests: OK (Not Supported)
-
-Total for sun6i-video device /dev/video0: 45, Succeeded: 45, Failed: 0, Warnings: 6
-
-Paul Kocialkowski (19):
-  docs: phy: Add a part about PHY mode and submode
-  phy: Distinguish between Rx and Tx for MIPI D-PHY with submodes
-  phy: allwinner: phy-sun6i-mipi-dphy: Support D-PHY Rx mode for MIPI
-    CSI-2
-  media: sun6i-csi: Use common V4L2 format info for storage bpp
-  media: sun6i-csi: Only configure the interface data width for parallel
-  dt-bindings: media: sun6i-a31-csi: Add MIPI CSI-2 input port
-  media: sun6i-csi: Add support for MIPI CSI-2 bridge input
-  ARM: dts: sun8i: a83t: Add CSI controller ports
-  ARM: dts: sunxi: h3/h5: Add CSI controller port for parallel input
-  ARM: dts: sun8i: v3s: Add CSI1 controller port for parallel input
-  arm64: dts: allwinner: a64: Add CSI controller port for parallel input
-  dt-bindings: media: Add A31 MIPI CSI-2 bindings documentation
-  media: sunxi: Add support for the A31 MIPI CSI-2 controller
-  ARM: dts: sun8i: v3s: Add nodes for MIPI CSI-2 support
-  MAINTAINERS: Add entry for the Allwinner A31 MIPI CSI-2 bridge
-  dt-bindings: media: Add A83T MIPI CSI-2 bindings documentation
-  media: sunxi: Add support for the A83T MIPI CSI-2 controller
-  ARM: dts: sun8i: a83t: Add MIPI CSI-2 controller node
-  MAINTAINERS: Add entry for the Allwinner A83T MIPI CSI-2 bridge
-
- .../media/allwinner,sun6i-a31-csi.yaml        |  86 ++-
- .../media/allwinner,sun6i-a31-mipi-csi2.yaml  | 151 ++++
- .../media/allwinner,sun8i-a83t-mipi-csi2.yaml | 147 ++++
- Documentation/driver-api/phy/phy.rst          |  18 +
- MAINTAINERS                                   |  16 +
- arch/arm/boot/dts/sun8i-a83t.dtsi             |  38 +-
- arch/arm/boot/dts/sun8i-v3s.dtsi              |  77 ++
- arch/arm/boot/dts/sunxi-h3-h5.dtsi            |   9 +
- arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi |   9 +
- drivers/media/platform/sunxi/Kconfig          |   2 +
- drivers/media/platform/sunxi/Makefile         |   2 +
- .../platform/sunxi/sun6i-csi/sun6i_csi.c      | 165 +++--
- .../platform/sunxi/sun6i-csi/sun6i_csi.h      |  58 +-
- .../platform/sunxi/sun6i-csi/sun6i_video.c    |  53 +-
- .../platform/sunxi/sun6i-csi/sun6i_video.h    |   7 +-
- .../platform/sunxi/sun6i-mipi-csi2/Kconfig    |  12 +
- .../platform/sunxi/sun6i-mipi-csi2/Makefile   |   4 +
- .../sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c   | 591 ++++++++++++++++
- .../sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.h   | 117 ++++
- .../sunxi/sun8i-a83t-mipi-csi2/Kconfig        |  11 +
- .../sunxi/sun8i-a83t-mipi-csi2/Makefile       |   4 +
- .../sun8i-a83t-mipi-csi2/sun8i_a83t_dphy.c    |  92 +++
- .../sun8i-a83t-mipi-csi2/sun8i_a83t_dphy.h    |  39 ++
- .../sun8i_a83t_mipi_csi2.c                    | 657 ++++++++++++++++++
- .../sun8i_a83t_mipi_csi2.h                    | 197 ++++++
- drivers/phy/allwinner/phy-sun6i-mipi-dphy.c   | 164 ++++-
- drivers/staging/media/rkisp1/rkisp1-isp.c     |   3 +-
- include/linux/phy/phy-mipi-dphy.h             |  13 +
- 28 files changed, 2620 insertions(+), 122 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/allwinner,sun6i-a31-mipi-csi2.yaml
- create mode 100644 Documentation/devicetree/bindings/media/allwinner,sun8i-a83t-mipi-csi2.yaml
- create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig
- create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/Makefile
- create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
- create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.h
- create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/Kconfig
- create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/Makefile
- create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_dphy.c
- create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_dphy.h
- create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_csi2.c
- create mode 100644 drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_csi2.h
-
+diff --git a/Documentation/driver-api/phy/phy.rst b/Documentation/driver-api/phy/phy.rst
+index 8fc1ce0bb905..6cbc72707a49 100644
+--- a/Documentation/driver-api/phy/phy.rst
++++ b/Documentation/driver-api/phy/phy.rst
+@@ -195,3 +195,21 @@ DeviceTree Binding
+ 
+ The documentation for PHY dt binding can be found @
+ Documentation/devicetree/bindings/phy/phy-bindings.txt
++
++PHY Mode and Submode
++====================
++
++Once a reference to a PHY is obtained by a controller, the PHY can be configured
++to a PHY mode and submode. PHY modes are described in the `phy_mode` enum while
++submodes are specific to the selected PHY mode.
++
++Mode and submode configuration is done by calling::
++
++	int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode);
++
++If no submode is to be configured, users can call::
++
++	int phy_set_mode(struct phy *phy, enum phy_mode mode);
++
++The PHY mode and submode must not be configured after the PHY has already been
++powered on.
 -- 
 2.29.2
 
