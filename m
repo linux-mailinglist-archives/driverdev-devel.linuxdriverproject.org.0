@@ -1,53 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F3AF2CBF5F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 15:19:31 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D58652CBFCE
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 15:35:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5AE922E26F;
-	Wed,  2 Dec 2020 14:19:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 982218794A;
+	Wed,  2 Dec 2020 14:35:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e2yDzKOIOQKH; Wed,  2 Dec 2020 14:19:28 +0000 (UTC)
+	with ESMTP id YnPAgbCIeJTs; Wed,  2 Dec 2020 14:35:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7381D2E260;
-	Wed,  2 Dec 2020 14:19:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4E7FB87951;
+	Wed,  2 Dec 2020 14:35:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 403791BF281
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 14:19:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 001531BF281
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 14:35:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 33D758738D
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 14:19:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F0F2E86E65
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 14:35:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zg-TQG4ZOW65 for <devel@linuxdriverproject.org>;
- Wed,  2 Dec 2020 14:19:21 +0000 (UTC)
+ with ESMTP id IRs8KrQIr6RU for <devel@linuxdriverproject.org>;
+ Wed,  2 Dec 2020 14:35:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay6-d.mail.gandi.net (relay6-d.mail.gandi.net
- [217.70.183.198])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C58C38765E
- for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 14:19:20 +0000 (UTC)
-X-Originating-IP: 93.29.109.196
-Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 4856DC0007;
- Wed,  2 Dec 2020 14:19:12 +0000 (UTC)
-Date: Wed, 2 Dec 2020 15:19:11 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH v2 07/19] media: sun6i-csi: Add support for MIPI CSI-2
- bridge input
-Message-ID: <X8eiXxYw1iHKbdDV@aptenodytes>
-References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
- <20201128142839.517949-8-paul.kocialkowski@bootlin.com>
- <20201201121241.cyafjhot45puusfc@gilmour>
+Received: from lb1-smtp-cloud7.xs4all.net (lb1-smtp-cloud7.xs4all.net
+ [194.109.24.24])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E870C86E5C
+ for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 14:35:08 +0000 (UTC)
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id kTDhkEkxiN7XgkTDkktWZQ; Wed, 02 Dec 2020 15:35:06 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1606919706; bh=fh8vXt7wHNbCxu6ykXYAavndPHeJvk9VILjQnHShEFA=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=KgbqiPCRbb4OHX60zqLwum0x/0xSyjmCDHD46BaaZI0hm3+Wv9QNp+oKmkSvyNzSP
+ IaDrHmWP1boiXe1KenIZjH+4KlUHyRHJo4D874h5hyRnapFOlFfI9MM9PIR0Zthwru
+ ndNPsBuUCvP7jdLWMVdrMPYlPqfcIalV3/PtNwikZxG9t+XO9pfC/NbzsfRvJReexm
+ iBddXCKoiTKWATFLJgy+p+jpgUnCziVLQ/KBiIuLyjcl7A1ki/0naJ2bVtTMCsOy3g
+ pLcpJsNIxxq67jakaeZQqdALVHY5v74HHewICefF6CBCnkuyn4qA//fzYKFHGsGAzj
+ yQR3krgjWr0ZQ==
+Subject: Re: [PATCH v3 0/6] ARM: dts: sun8i: v3s: Enable video decoder
+To: Martin Cerveny <m.cerveny@computer.org>, Maxime Ripard <mripard@kernel.org>
+References: <20201116125617.7597-1-m.cerveny@computer.org>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <1266873e-fe8f-d021-9d45-0baa38e32d31@xs4all.nl>
+Date: Wed, 2 Dec 2020 15:35:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201201121241.cyafjhot45puusfc@gilmour>
+In-Reply-To: <20201116125617.7597-1-m.cerveny@computer.org>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfKR+fVSTqZQ9ETYlJsohtz44JkYTfKbMjH4fxpTnpM4lRtLIPUmpUyH43J8Y6tdt4a6CFI9TQe4YqZpf2OvrmjuoH14gdj6mjhFaRn1iyasnjc0vQuXC
+ GYJY5etmYjhxjxBl0MIbHFoePwaCbr4gd6f9il5k9DK7D/SregCzz2q+8Sd3jdr3LhoqQ19E5U186vp8kam4zDdErEMxdqG9oyIfu/Q5uoef+knX5ms4Lzpt
+ myl14X96sBTogHjL75oPC0XwFYfBa9qD724PSHOHNp2CGggDJYLTscPzPYVuOFLRRYB4lWFIqxLpW7mr34BoE6jMiZWCT1kpLts/z8b44or+1E9Qg0RI/E2m
+ k337RuaaKaoB2+fiNtKSc4wsohixuZoRilBJ5NmkITSyWpRB+o73Of2KSgI7XMhD6eXC+IAwn0o+pwrqOhkIH45371j+6GVvdszzIdlhA/Pcs6jDEym1SR/P
+ 2aYu1xPiHsap+xvgOc2mKP6O1iT1/6/MW/VqWjEk2P/f+MdZmbjJMYAtdjv98BfJYr++MLXM01HbHKGMGFxiKWwP/gF0p01GZI0hQ/eDmaHQ08udrJLDmiyr
+ rB8DKxSE0kyClfHBS9Q+c9XpTNb/m5lZ65waecVEhVWzoDOL2GxeI5EKMgzI4XquqxZY41DXlFUV75/5bY5hkjPttH6HORjDG6bYPhXq9ehTkiTtzSFOe+MH
+ bo2h+SVYO9s=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,122 +75,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-doc@vger.kernel.org, linux-sunxi@googlegroups.com,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, kevin.lhopital@hotmail.com,
- devel@driverdev.osuosl.org, Jonathan Corbet <corbet@lwn.net>,
- Kishon Vijay Abraham I <kishon@ti.com>, Chen-Yu Tsai <wens@csie.org>,
- Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Helen Koike <helen.koike@collabora.com>, Rob Herring <robh+dt@kernel.org>,
- Yong Deng <yong.deng@magewell.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>,
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============3231236216975860985=="
+ Rob Herring <robh+dt@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Mark Brown <broonie@kernel.org>,
+ linux-media@vger.kernel.org, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, Icenowy Zheng <icenowy@aosc.io>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hi Martin, Maxime,
 
---===============3231236216975860985==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="tDn8NpJ7qnoGqYpK"
-Content-Disposition: inline
+On 16/11/2020 13:56, Martin Cerveny wrote:
+> First patch extends cedrus capability to all decoders
+> because V3s missing MPEG2 decoder.
+> 
+> Next two patches add system control node (SRAM C1) and 
+> next three patches add support for Cedrus VPU.
 
+I've picked up patches 1, 4 and 5 for the media subsystem.
+Maxime, can you pick up the other three?
 
---tDn8NpJ7qnoGqYpK
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks!
 
-Hi,
+	Hans
 
-On Tue 01 Dec 20, 13:12, Maxime Ripard wrote:
-> Hi,
->=20
-> On Sat, Nov 28, 2020 at 03:28:27PM +0100, Paul Kocialkowski wrote:
-> > The A31 CSI controller supports a MIPI CSI-2 bridge input, which has
-> > its own dedicated port in the fwnode graph.
-> >=20
-> > Support for this input is added with this change:
-> > - two pads are defined for the media entity instead of one
-> >   and only one needs to be connected at a time;
-> > - the pads currently match the fwnode graph representation;
-> > - links are created between our pads and the subdevs for each
-> >   interface and are no longer immutable so that userspace can select
-> >   which interface to use in case both are bound to a subdev;
-> > - fwnode endpoints are parsed and stored for each interface;
-> > - the active subdev (and fwnode endpoint) is retrieved when validating
-> >   the media link at stream on time and cleared at stream off;
-> > - an error is raised if both links are active at the same time;
-> > - the MIPI interface bit is set if the MIPI CSI-2 bridge endpoint is
-> >   active.
-> >=20
-> > In the future, the media entity representation might evolve to:
-> > - distinguish the internal parallel bridge and data formatter;
-> > - represent each of the 4 internal channels that can exist between
-> >   the parallel bridge (for BT656 time-multiplex) and MIPI CSI-2
-> >   (internal channels can be mapped to virtual channels);
-> > - connect the controller's output to the ISP instead of its
-> >   DMA engine.
-> >=20
-> > Finally note that the MIPI CSI-2 bridges should not be linked in
-> > the fwnode graph unless they have a sensor subdev attached.
->=20
-> I'll leave most of the review to Laurent and Sakari, but I'm not quite
-> sure what you meant in the last paragraph. Did you mean that the
-> MIPI-CSI controller in the Allwinner SoC should only be linked if it has
-> a sensor attached, or did you mean that any MIPI-CSI2 bridge cannot be
-> attached to the controller?
-
-So the use of plural was a mistake and your first understanding is the corr=
-ect
-one: if the bridge is linked to the CSI controller in the OF graph but the
-bridge doesn't have a sensor attached, the CSI controller driver will fail
-to probe, as far as I could see.
-
-I haven't investigated much but it looks like this is expected behavior.
-
-> Also, having somewhere (like your cover letter) the media-ctl setup you
-> tested with would be great.
-
-Understood!
-
-Cheers,
-
-Paul
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---tDn8NpJ7qnoGqYpK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl/Hol8ACgkQ3cLmz3+f
-v9EqPAf/X3YxsNi+JcqhfeAseKXD/cboW7DdagCpjzxZ/RZN8sjOJGOKhxrKkxw5
-wkAPyF/nPPaqeSUF20XtgSx/rwQqMrOb1efwgUY22v7rq1u4Kw4kcVl9iLfS3xpo
-B2fcBhgLvne3l6tpGUiKoQS7cNTiVMAYw6scpEPCpZ/mA6pV02upCEFcrZkGUw7i
-scOA6986c3kONoWQQ6Zu5x7J7DMklN/+kc+zkZt/Vb6ZwSOO+/DMopUMsbhv0Op3
-FBYySRjzikhFTMYjtLWvIqihnpaCr3OXroEMgS1sGIpsUepFeMvVbL1ihmgNo7vh
-T9iQ6dPLnWvDl4gg4XMefkTAB4BRUg==
-=iVuy
------END PGP SIGNATURE-----
-
---tDn8NpJ7qnoGqYpK--
-
---===============3231236216975860985==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> Tested on "Lichee Zero" V3s platform with testing LCD patch
+> ( https://github.com/mcerveny/linux/tree/media_tree_for-v5.11e )
+> and V4L2 raw API testing utility (updated to v5.10)
+> ( https://github.com/mcerveny/v4l2-request-test ):
+> - enabled LCD (DRM dual VI and sigle UI planes)
+> - added RGB panel
+> - enabled PWM
+> - need additional patch https://git.linuxtv.org/media_tree.git/commit/?h=fixes&id=9ac924b98728c3733c91c6c59fc410827d0da49f
+> 
+> There is low memory on V3s (64MB) and maximum must be available to CMA:
+> - CONFIG_CMA_SIZE_MBYTES=28
+> - add swap to swapout other processes
+> - decrease buffers in v4l2-request-test (.buffers_count from 16 to 8)
+> 
+> Only H.264 decoder working - MPEG and H.265 unsupported by V3s,
+> JPEG/MJPEG still unimplemented, encoder unimplemented
+> 
+> best regards,
+> Martin
+> 
+> Changes since v2:
+> - updated/rebased to https://git.linuxtv.org/hverkuil/media_tree.git/?h=for-v5.11e
+> - some parts of patches implemeted by others
+> - updated R40
+> Changes since v1:
+> - patch 0005 rename
+> - added testing description
+> 
+> Martin Cerveny (6):
+>   media: cedrus: Register all codecs as capability
+>   dt-bindings: sram: allwinner,sun4i-a10-system-control: Add V3s
+>     compatibles
+>   ARM: dts: sun8i: v3s: Add node for system control
+>   media: cedrus: Add support for V3s
+>   dt-bindings: media: cedrus: Add V3s compatible
+>   ARM: dts: sun8i: v3s: Add video engine node
+> 
+>  .../allwinner,sun4i-a10-video-engine.yaml     |  1 +
+>  .../allwinner,sun4i-a10-system-control.yaml   |  3 ++
+>  arch/arm/boot/dts/sun8i-v3s.dtsi              | 24 ++++++++++++++
+>  drivers/staging/media/sunxi/cedrus/cedrus.c   | 32 +++++++++++++++++--
+>  drivers/staging/media/sunxi/cedrus/cedrus.h   |  2 ++
+>  .../staging/media/sunxi/cedrus/cedrus_video.c |  2 ++
+>  6 files changed, 62 insertions(+), 2 deletions(-)
+> 
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3231236216975860985==--
