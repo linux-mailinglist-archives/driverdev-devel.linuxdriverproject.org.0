@@ -1,93 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF7C52CC13D
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 16:48:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 940888795B;
-	Wed,  2 Dec 2020 15:48:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ne89qdHRWC1O; Wed,  2 Dec 2020 15:48:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 058E587958;
-	Wed,  2 Dec 2020 15:48:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7F3B31BF3A0
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 15:48:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14AC02CC1A9
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 17:07:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7BF8787146
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 15:48:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 030848719F;
+	Wed,  2 Dec 2020 16:07:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5gtVlGyrU_RW; Wed,  2 Dec 2020 16:07:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B8CCC87165;
+	Wed,  2 Dec 2020 16:07:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 26C831BF868
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 16:07:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 224CA87A1A
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 16:07:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wnhSL6L5-crv for <devel@linuxdriverproject.org>;
- Wed,  2 Dec 2020 15:48:22 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
- [66.111.4.224])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BB8CB86E85
- for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 15:48:22 +0000 (UTC)
-Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
- by mailnew.nyi.internal (Postfix) with ESMTP id DFCA0580332;
- Wed,  2 Dec 2020 10:48:21 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute7.internal (MEProxy); Wed, 02 Dec 2020 10:48:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=uz5tx6JJZjQqRBY1wNhOnZvzzfm
- C/Lfn/oSOwP2IkT8=; b=Z3pWWe9FSw50pShNnh4c7pQV/o2Gg0E1ADAczlTSMn5
- qjjMftjnfqlZ6X99WP7By8v1UydluJiVE3idiPJte5wulTVPLtQ7fRN3EfsVImlV
- SsgomEyE6vf8tgDSu32m0U2yguzqmOOEhaSEIQ8ZZcUYPkLcImqpOF990inWdV9I
- npSB+bNDS21WYK7FSuOthFRFC9ABjyEkOSsF5o+2bryBXKnKj2P+75+I7NVaDgDf
- ELYXaBRPWr7+3wWzcbi1auITTDoXQCTW2yvfmVkwStNnlWCcnvVcF/mcBA2SGb9u
- WpwkTQxcFewvo8oog/+StttyZVuF2P+unDC4ASyqe7Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=uz5tx6
- JJZjQqRBY1wNhOnZvzzfmC/Lfn/oSOwP2IkT8=; b=Xq6cywrRM5HSQp9rRf29V2
- w1sPoPUakfLix8M1JdprS/Jxt8aXInmyUkoxhzqyXzU9S5JJsHHlrOpfJMdzdHkR
- +/UySKhVaOUJdb9qMHHRzy3XSseyTVPEr/s+SYi0gKnxP7Z+JSIWc7VqcXkvMFFZ
- MsS6onf6SPTEdBZGglLb5Kk7wHnys6KXz9nN1Gf9cWap2UmcuFMgTyRjW1YrfqHH
- U4m9PGIjVKqubZLd6xV3MgX0UuytHz1A7Srb9DydmTFs74IbVX3kcmmfPODja43G
- qntePIFr3c3l1yx2W08tVYy8OMRVhFzsLnN04PEJ0/gy+BKfDCJebWwIkHWmyvwg
- ==
-X-ME-Sender: <xms:Q7fHX963KcXgoTuiNX4nObysjv7ItUz5S-lsbt0HbkyOtzMerpny8Q>
- <xme:Q7fHXx5-y9Vq-QwXXLW3Okn8RahCNj_HSeb010NK_vXLCoiNjvoVGB6YiTKnWKvnI
- T_-kIRdEDV2uB7WOV4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudeigedgkedvucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
- htvghrnhepleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieeh
- gedunecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:Q7fHX5e0hZDW8fBBYxUnRkCYn1JcIeUEiYdkIRomGrWaVeXtKnNCAQ>
- <xmx:Q7fHX1Ccge-lPO2wbq36lHMq7sthC8k3fZT3ij0LUtbOyZwtoJBkBw>
- <xmx:Q7fHX8-joJNh5fkpKbIw2aKuNhb1aDSH1z33sv918ZvyzLUrgGMdQQ>
- <xmx:RbfHX2YWxqMm1yOkSKXdh9n2RCPvbRE93BjJ1U-dAPsZ5lKRVnP6sA>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 66015108005B;
- Wed,  2 Dec 2020 10:48:19 -0500 (EST)
-Date: Wed, 2 Dec 2020 16:48:18 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v2 13/19] media: sunxi: Add support for the A31 MIPI
- CSI-2 controller
-Message-ID: <20201202154818.bf72m2firemyc5ve@gilmour>
+ with ESMTP id 0HVhvxkckyTa for <devel@linuxdriverproject.org>;
+ Wed,  2 Dec 2020 16:07:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from relay1-d.mail.gandi.net (relay1-d.mail.gandi.net
+ [217.70.183.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 64557879E9
+ for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 16:07:33 +0000 (UTC)
+X-Originating-IP: 93.29.109.196
+Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id F23DA24000B;
+ Wed,  2 Dec 2020 16:07:23 +0000 (UTC)
+Date: Wed, 2 Dec 2020 17:07:23 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH v2 07/19] media: sun6i-csi: Add support for MIPI CSI-2
+ bridge input
+Message-ID: <X8e7u3smOjzFluy5@aptenodytes>
 References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
- <20201128142839.517949-14-paul.kocialkowski@bootlin.com>
- <20201201122038.bxk3vu2w3mg43ayq@gilmour>
- <X8eoX+M650sMXqpx@aptenodytes>
+ <20201128142839.517949-8-paul.kocialkowski@bootlin.com>
+ <20201201121241.cyafjhot45puusfc@gilmour>
+ <X8eiXxYw1iHKbdDV@aptenodytes>
+ <20201202154053.3fcxiift2uyqnjvp@gilmour>
 MIME-Version: 1.0
-In-Reply-To: <X8eoX+M650sMXqpx@aptenodytes>
+In-Reply-To: <20201202154053.3fcxiift2uyqnjvp@gilmour>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,99 +74,112 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
  Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============5442515873569150501=="
+Content-Type: multipart/mixed; boundary="===============0230423347734529371=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============5442515873569150501==
+--===============0230423347734529371==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="kkjqa5btqozg6oqw"
+	protocol="application/pgp-signature"; boundary="B6QLXucSOn8pJf1x"
 Content-Disposition: inline
 
 
---kkjqa5btqozg6oqw
-Content-Type: text/plain; charset=us-ascii
+--B6QLXucSOn8pJf1x
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Dec 02, 2020 at 03:44:47PM +0100, Paul Kocialkowski wrote:
-> > > +static int __maybe_unused sun6i_mipi_csi2_suspend(struct device *dev)
-> > > +{
-> > > +	struct sun6i_mipi_csi2_dev *cdev =3D dev_get_drvdata(dev);
-> > > +
-> > > +	clk_disable_unprepare(cdev->clk_mod);
-> > > +	clk_disable_unprepare(cdev->clk_bus);
-> > > +	reset_control_assert(cdev->reset);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int __maybe_unused sun6i_mipi_csi2_resume(struct device *dev)
-> > > +{
-> > > +	struct sun6i_mipi_csi2_dev *cdev =3D dev_get_drvdata(dev);
-> > > +	int ret;
-> > > +
-> > > +	ret =3D reset_control_deassert(cdev->reset);
-> > > +	if (ret) {
-> > > +		dev_err(cdev->dev, "failed to deassert reset\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret =3D clk_prepare_enable(cdev->clk_bus);
-> > > +	if (ret) {
-> > > +		dev_err(cdev->dev, "failed to enable bus clock\n");
-> > > +		goto error_reset;
-> > > +	}
-> > > +
-> > > +	ret =3D clk_prepare_enable(cdev->clk_mod);
-> > > +	if (ret) {
-> > > +		dev_err(cdev->dev, "failed to enable module clock\n");
-> > > +		goto error_clk_bus;
-> > > +	}
-> > > +
-> > > +	return 0;
-> > > +
-> > > +error_clk_bus:
-> > > +	clk_disable_unprepare(cdev->clk_bus);
-> > > +
-> > > +error_reset:
-> > > +	reset_control_assert(cdev->reset);
-> > > +
-> > > +	return ret;
-> > > +}
+Hi,
+
+On Wed 02 Dec 20, 16:40, Maxime Ripard wrote:
+> On Wed, Dec 02, 2020 at 03:19:11PM +0100, Paul Kocialkowski wrote:
+> > Hi,
 > >=20
-> > I'm guessing you set the __maybe_unused attribute because you're using
-> > SET_RUNTIME_PM_OPS, but what would happen if runtime_pm isn't selected?
-> > It looks like you don't handle that case.
+> > On Tue 01 Dec 20, 13:12, Maxime Ripard wrote:
+> > > Hi,
+> > >=20
+> > > On Sat, Nov 28, 2020 at 03:28:27PM +0100, Paul Kocialkowski wrote:
+> > > > The A31 CSI controller supports a MIPI CSI-2 bridge input, which has
+> > > > its own dedicated port in the fwnode graph.
+> > > >=20
+> > > > Support for this input is added with this change:
+> > > > - two pads are defined for the media entity instead of one
+> > > >   and only one needs to be connected at a time;
+> > > > - the pads currently match the fwnode graph representation;
+> > > > - links are created between our pads and the subdevs for each
+> > > >   interface and are no longer immutable so that userspace can select
+> > > >   which interface to use in case both are bound to a subdev;
+> > > > - fwnode endpoints are parsed and stored for each interface;
+> > > > - the active subdev (and fwnode endpoint) is retrieved when validat=
+ing
+> > > >   the media link at stream on time and cleared at stream off;
+> > > > - an error is raised if both links are active at the same time;
+> > > > - the MIPI interface bit is set if the MIPI CSI-2 bridge endpoint is
+> > > >   active.
+> > > >=20
+> > > > In the future, the media entity representation might evolve to:
+> > > > - distinguish the internal parallel bridge and data formatter;
+> > > > - represent each of the 4 internal channels that can exist between
+> > > >   the parallel bridge (for BT656 time-multiplex) and MIPI CSI-2
+> > > >   (internal channels can be mapped to virtual channels);
+> > > > - connect the controller's output to the ISP instead of its
+> > > >   DMA engine.
+> > > >=20
+> > > > Finally note that the MIPI CSI-2 bridges should not be linked in
+> > > > the fwnode graph unless they have a sensor subdev attached.
+> > >=20
+> > > I'll leave most of the review to Laurent and Sakari, but I'm not quite
+> > > sure what you meant in the last paragraph. Did you mean that the
+> > > MIPI-CSI controller in the Allwinner SoC should only be linked if it =
+has
+> > > a sensor attached, or did you mean that any MIPI-CSI2 bridge cannot be
+> > > attached to the controller?
+> >=20
+> > So the use of plural was a mistake and your first understanding is the =
+correct
+> > one: if the bridge is linked to the CSI controller in the OF graph but =
+the
+> > bridge doesn't have a sensor attached, the CSI controller driver will f=
+ail
+> > to probe, as far as I could see.
 >=20
-> Indeed, __maybe_unused is because of the conditional definition of
-> SET_RUNTIME_PM_OPS. If CONFIG_PM is not selected, then I guess the contro=
-ller
-> wouldn't be powered and wouldn't work. So I should definitely add a Kconf=
-ig
-> dependency on PM then, right?
+> I'm not sure it's reasonable to not link it in the DTSI then, we'll want
+> to reduce as much the boilerplate from the board DTS as possible, and
+> the MIPI-CSI controller is always there anyway. However, we should
+> definitely have it disabled if there's no sensor, which should solve
+> your probe issue
 
-There's two ways we can do it. What you suggested is one, the other is
-to have something like our SPI driver to call directly the resume
-function if there's no runtime pm support.
+Ah yes there's a good chance that it will solve it.
+I'll try that and get back to you!
 
-Maxime
+Cheers,
 
---kkjqa5btqozg6oqw
+Paul
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--B6QLXucSOn8pJf1x
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX8e3QgAKCRDj7w1vZxhR
-xTh1AP9duiS3skBTouB0HbqCTA8nOkx0lRrOPWEGWu+5e8k5VgEA0QgCH0eQIVFH
-JiC/huo/36twoas2fjPbzkTE/g2VhQw=
-=EZvC
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl/Hu7sACgkQ3cLmz3+f
+v9EBKwf9FlOPkn4I/QP73y0XTYCJul68SVmMn85aeJ6iIqaVWGXtkRMM7ILKodOu
+aZY8NnE4BjULBapZ1fJOvD+1WfCfjpc31gGtHtmdAc22Yev2PBLbIKtegSnR9O2x
+mMPTTkupiw+lCZjZjFqLn5gQEnSJm44I7dZa5bz3kHWM0cgNl2upzQtKBRf4iLCt
+bYktWtnpkUNvBGjFtQOI1/8VSiXpdJerFN+qOSIDmbXmp87CNqr6iLzE2CDrJc4g
+/eSo/Ot7bGmVK59c1Av4ZXSkJ034dhhA9c0sXST+8boRDIr6Cnl7/zuh/dXsEj4p
+aWJ9/KOEC0dyIoJGjtmPNu1IAzSi0w==
+=Bj4d
 -----END PGP SIGNATURE-----
 
---kkjqa5btqozg6oqw--
+--B6QLXucSOn8pJf1x--
 
---===============5442515873569150501==
+--===============0230423347734529371==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -215,4 +190,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============5442515873569150501==--
+--===============0230423347734529371==--
