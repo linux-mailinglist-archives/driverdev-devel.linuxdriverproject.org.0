@@ -1,55 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5548D2CC1BC
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 17:09:48 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FB3C2CC38D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 18:26:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C6EB287A7A;
-	Wed,  2 Dec 2020 16:09:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F3D68723B;
+	Wed,  2 Dec 2020 17:26:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dpcJaWn+J4Py; Wed,  2 Dec 2020 16:09:46 +0000 (UTC)
+	with ESMTP id LNMW_dfrsi6N; Wed,  2 Dec 2020 17:26:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C5D0A87911;
-	Wed,  2 Dec 2020 16:09:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1B2F88721B;
+	Wed,  2 Dec 2020 17:26:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 071A51BF868
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 16:09:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B3F141BF3BE
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 17:26:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0380F87903
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 16:09:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B050787843
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 17:26:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yA4MUHJ80KcC for <devel@linuxdriverproject.org>;
- Wed,  2 Dec 2020 16:09:29 +0000 (UTC)
+ with ESMTP id PL3z5s9bcnLy for <devel@linuxdriverproject.org>;
+ Wed,  2 Dec 2020 17:26:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay7-d.mail.gandi.net (relay7-d.mail.gandi.net
- [217.70.183.200])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 722A4878FE
- for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 16:09:29 +0000 (UTC)
-X-Originating-IP: 93.29.109.196
-Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 23E8520002;
- Wed,  2 Dec 2020 16:09:20 +0000 (UTC)
-Date: Wed, 2 Dec 2020 17:09:20 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH v2 13/19] media: sunxi: Add support for the A31 MIPI
- CSI-2 controller
-Message-ID: <X8e8MNc5WYnpKTyy@aptenodytes>
-References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
- <20201128142839.517949-14-paul.kocialkowski@bootlin.com>
- <20201201122038.bxk3vu2w3mg43ayq@gilmour>
- <X8eoX+M650sMXqpx@aptenodytes>
- <20201202154818.bf72m2firemyc5ve@gilmour>
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E96F687841
+ for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 17:26:20 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id o5so1477002pgm.10
+ for <devel@driverdev.osuosl.org>; Wed, 02 Dec 2020 09:26:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+ImcfZLvvBHYTsDO30kABBGCYuRzWZL4tNLUXZUAuvg=;
+ b=MAQoRwiVDhTQ6Ub6BSmEB45rRexBqKhTBoqOebc0RP+LnrSgRXwxM68WZwNwl1UHNW
+ UJYMjaX3bXAjVzGfXz7DG+Zzm+9Jx8XWvy/L1MUbQIhv625BAbzflWfXSUUS48fVHNFD
+ eApJoZ+qchvmIPi21of4/K11CrOmV/yZpk12TmoiV2UaUlnszyUYLORhWLSeBrzam7HI
+ NhlYDfAumfunnJX6BCpzPmkzRCWqS55BC8Kfx0Y3UmVv1hOjFn3A9e400Fpe3ArJb2HY
+ FyebhMDtYqtyojkj0gyOMdZ6A7qy93Co51f77Zppx7pInGPb0ZpoJjXY4Tzsm1r1Hwjx
+ vahg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+ImcfZLvvBHYTsDO30kABBGCYuRzWZL4tNLUXZUAuvg=;
+ b=VOI5+t9nm1vMzSsV33VrJCDtKeOKHt3lCyzXE7gyanYVwEd9qBlu2XCZ3zT10muWT+
+ 3Y4XAlXLOFBtxZEsAH6c6TscOkcdXC7jvisUTJ5zYnalLIiLlInNO+yxFEZUscXP4BHU
+ yfkBrtDnmG2SsDHcRLq/tHeih+UvztMlTVFECd9nC7fHSHX5XNHI2ArNxzS6wruJTVNS
+ r2Ja4JrKhNXAEKaD9l/8zbp6BktCRQv7HPBvHe4tksji4UN/AjvRGUUrUnnvy4qB71Pl
+ N2nkEcGu8sk9dNz6DwcFXRSuYCYazH9U66MSbAcYkeULOmEsibR8WVWbfQWQKkJbN5SC
+ sY2Q==
+X-Gm-Message-State: AOAM53211/OqQ1b5bzDssjgJ5k2rHXtGo6pJq5YaouzpFHBQJ4mirOVF
+ C4qiN+r1yG//fso3F1UKF8k=
+X-Google-Smtp-Source: ABdhPJyxF+Y0NQAkwkYnU2mgmQOhTo1yEH5GDBb1+SLp7aPVK2X1GOo8Gie7sldyvHPUZqw2992YFg==
+X-Received: by 2002:a63:5a22:: with SMTP id o34mr776276pgb.187.1606929980486; 
+ Wed, 02 Dec 2020 09:26:20 -0800 (PST)
+Received: from [10.230.28.242] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id y21sm424018pfr.90.2020.12.02.09.26.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Dec 2020 09:26:19 -0800 (PST)
+Subject: Re: [PATCH v5 01/11] firmware: raspberrypi: Keep count of all
+ consumers
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ u.kleine-koenig@pengutronix.de, linux-kernel@vger.kernel.org,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ bcm-kernel-feedback-list@broadcom.com
+References: <20201123183833.18750-1-nsaenzjulienne@suse.de>
+ <20201123183833.18750-2-nsaenzjulienne@suse.de>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Message-ID: <e78cde23-5a5e-5e46-fde4-a299629ec6d6@gmail.com>
+Date: Wed, 2 Dec 2020 09:26:15 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <20201202154818.bf72m2firemyc5ve@gilmour>
+In-Reply-To: <20201123183833.18750-2-nsaenzjulienne@suse.de>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,139 +93,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-doc@vger.kernel.org, linux-sunxi@googlegroups.com,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, kevin.lhopital@hotmail.com,
- devel@driverdev.osuosl.org, Jonathan Corbet <corbet@lwn.net>,
- Kishon Vijay Abraham I <kishon@ti.com>, Chen-Yu Tsai <wens@csie.org>,
- Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Helen Koike <helen.koike@collabora.com>, Rob Herring <robh+dt@kernel.org>,
- Yong Deng <yong.deng@magewell.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============1102939053631054251=="
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
+ linux-gpio@vger.kernel.org, andy.shevchenko@gmail.com, wahrenst@gmx.net,
+ p.zabel@pengutronix.de, linux-input@vger.kernel.org, bgolaszewski@baylibre.com,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============1102939053631054251==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="NYHUWLtOMJokL+dM"
-Content-Disposition: inline
-
-
---NYHUWLtOMJokL+dM
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Wed 02 Dec 20, 16:48, Maxime Ripard wrote:
-> On Wed, Dec 02, 2020 at 03:44:47PM +0100, Paul Kocialkowski wrote:
-> > > > +static int __maybe_unused sun6i_mipi_csi2_suspend(struct device *d=
-ev)
-> > > > +{
-> > > > +	struct sun6i_mipi_csi2_dev *cdev =3D dev_get_drvdata(dev);
-> > > > +
-> > > > +	clk_disable_unprepare(cdev->clk_mod);
-> > > > +	clk_disable_unprepare(cdev->clk_bus);
-> > > > +	reset_control_assert(cdev->reset);
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > > +static int __maybe_unused sun6i_mipi_csi2_resume(struct device *de=
-v)
-> > > > +{
-> > > > +	struct sun6i_mipi_csi2_dev *cdev =3D dev_get_drvdata(dev);
-> > > > +	int ret;
-> > > > +
-> > > > +	ret =3D reset_control_deassert(cdev->reset);
-> > > > +	if (ret) {
-> > > > +		dev_err(cdev->dev, "failed to deassert reset\n");
-> > > > +		return ret;
-> > > > +	}
-> > > > +
-> > > > +	ret =3D clk_prepare_enable(cdev->clk_bus);
-> > > > +	if (ret) {
-> > > > +		dev_err(cdev->dev, "failed to enable bus clock\n");
-> > > > +		goto error_reset;
-> > > > +	}
-> > > > +
-> > > > +	ret =3D clk_prepare_enable(cdev->clk_mod);
-> > > > +	if (ret) {
-> > > > +		dev_err(cdev->dev, "failed to enable module clock\n");
-> > > > +		goto error_clk_bus;
-> > > > +	}
-> > > > +
-> > > > +	return 0;
-> > > > +
-> > > > +error_clk_bus:
-> > > > +	clk_disable_unprepare(cdev->clk_bus);
-> > > > +
-> > > > +error_reset:
-> > > > +	reset_control_assert(cdev->reset);
-> > > > +
-> > > > +	return ret;
-> > > > +}
-> > >=20
-> > > I'm guessing you set the __maybe_unused attribute because you're using
-> > > SET_RUNTIME_PM_OPS, but what would happen if runtime_pm isn't selecte=
-d?
-> > > It looks like you don't handle that case.
-> >=20
-> > Indeed, __maybe_unused is because of the conditional definition of
-> > SET_RUNTIME_PM_OPS. If CONFIG_PM is not selected, then I guess the cont=
-roller
-> > wouldn't be powered and wouldn't work. So I should definitely add a Kco=
-nfig
-> > dependency on PM then, right?
->=20
-> There's two ways we can do it. What you suggested is one, the other is
-> to have something like our SPI driver to call directly the resume
-> function if there's no runtime pm support.
-
-Understood! I think I'll stick to depending on PM (unless you prefer not to)
-but it's good to know.
-
-Cheers,
-
-Paul
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---NYHUWLtOMJokL+dM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl/HvDAACgkQ3cLmz3+f
-v9Fm8AgAiWV6aebhuxeTBIhOQywJt0bWH442ibCI6O2W3BO1aBzn5le48//KHOBW
-3KuGiKTjL4guqfc4fNKG+moEqOai8v11MAVAz8ii/74l0WyN4LYUFwrKRJzGwS0J
-KQw/ldQxF5u8pYMGxaderBmACdscPzBoTvQZuVshEnRlQ9qKUHIsDa6CGieDQqIs
-9GNj9KiG/mWBV/AAYRwvllA3QW/EQJo3zbNs7wAAMMtOebNwSfh6P9peh8/memFn
-3MOHDAbEKAHKUWimARCMBhOQRGnQf3/wjBif0L7iebN4FUYqyl8cN5iOCwGVwfgs
-iFi3TSt1u9r0cUsE5yzDwsR6UZBipA==
-=TddM
------END PGP SIGNATURE-----
-
---NYHUWLtOMJokL+dM--
-
---===============1102939053631054251==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1102939053631054251==--
+CgpPbiAxMS8yMy8yMDIwIDEwOjM4IEFNLCBOaWNvbGFzIFNhZW56IEp1bGllbm5lIHdyb3RlOgo+
+IFdoZW4gdW5iaW5kaW5nIHRoZSBmaXJtd2FyZSBkZXZpY2Ugd2UgbmVlZCB0byBtYWtlIHN1cmUg
+aXQgaGFzIG5vCj4gY29uc3VtZXJzIGxlZnQuIE90aGVyd2lzZSB3ZSdkIGxlYXZlIHRoZW0gd2l0
+aCBhIGZpcm13YXJlIGhhbmRsZQo+IHBvaW50aW5nIGF0IGZyZWVkIG1lbW9yeS4KPiAKPiBLZWVw
+IGEgcmVmZXJlbmNlIGNvdW50IG9mIGFsbCBjb25zdW1lcnMgYW5kIGludHJvZHVjZSBycGlfZmly
+bXdhcmVfcHV0KCkKPiB3aGljaCB3aWxsIHBlcm1pdCBhdXRvbWF0aWNhbGx5IGRlY3JlYXNlIHRo
+ZSByZWZlcmVuY2UgY291bnQgdXBvbgo+IHVuYmluZGluZyBjb25zdW1lciBkcml2ZXJzLgo+IAo+
+IFN1Z2dlc3RlZC1ieTogVXdlIEtsZWluZS1Lw7ZuaWcgPHUua2xlaW5lLWtvZW5pZ0BwZW5ndXRy
+b25peC5kZT4KPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIFNhZW56IEp1bGllbm5lIDxuc2Flbnpq
+dWxpZW5uZUBzdXNlLmRlPgoKVGhpcyBsb29rcyBmaW5lIHRvIG1lLCBqdXN0IG9uZSBuaXQgYmVs
+b3c6Cgpbc25pcF0KCj4gIC8qKgo+IC0gKiBycGlfZmlybXdhcmVfZ2V0IC0gR2V0IHBvaW50ZXIg
+dG8gcnBpX2Zpcm13YXJlIHN0cnVjdHVyZS4KCklzIG5vdCByZW1vdmluZyB0aGlzIGxpbmUgZ29p
+bmcgdG8gY3JlYXRlIGEga2VybmVsIGRvYyB3YXJuaW5nPwoKV2l0aCB0aGF0IGZpeGVkOgoKUmV2
+aWV3ZWQtYnk6IEZsb3JpYW4gRmFpbmVsbGkgPGYuZmFpbmVsbGlAZ21haWwuY29tPgotLSAKRmxv
+cmlhbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZl
+bCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVy
+ZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2
+ZWwK
