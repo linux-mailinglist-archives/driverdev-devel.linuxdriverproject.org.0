@@ -1,66 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3E4C2CC10B
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 16:41:06 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 326902CC12B
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Dec 2020 16:46:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B50D0879AD;
-	Wed,  2 Dec 2020 15:41:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E3C087146;
+	Wed,  2 Dec 2020 15:46:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gIL6nxz+liKX; Wed,  2 Dec 2020 15:41:04 +0000 (UTC)
+	with ESMTP id S9dmIQhRw0dt; Wed,  2 Dec 2020 15:46:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 415548798A;
-	Wed,  2 Dec 2020 15:41:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DB85D86E85;
+	Wed,  2 Dec 2020 15:46:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 626281BF3A0
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 15:41:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C32501BF3A0
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 15:46:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 576822E202
- for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 15:41:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A65672E260
+ for <devel@linuxdriverproject.org>; Wed,  2 Dec 2020 15:46:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0Mat6PYAn-Dz for <devel@linuxdriverproject.org>;
- Wed,  2 Dec 2020 15:40:59 +0000 (UTC)
+ with ESMTP id GtVaoCbK0--S for <devel@linuxdriverproject.org>;
+ Wed,  2 Dec 2020 15:46:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
  [66.111.4.224])
- by silver.osuosl.org (Postfix) with ESMTPS id 6C7D42E17D
- for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 15:40:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 0E1392E289
+ for <devel@driverdev.osuosl.org>; Wed,  2 Dec 2020 15:46:06 +0000 (UTC)
 Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 458EC580387;
- Wed,  2 Dec 2020 10:40:58 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Wed, 02 Dec 2020 10:40:58 -0500
+ by mailnew.nyi.internal (Postfix) with ESMTP id 3DE115802E3;
+ Wed,  2 Dec 2020 10:46:05 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Wed, 02 Dec 2020 10:46:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
  date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=9Gmw2R9k0ECc5QddBoAVCGV1sXx
- zmzO4YbJmiIaU4YY=; b=XTaU5h2f3WAixKnXCS97j2KVWpPWFVh0YhT+m4Nj3CM
- d8fTiUZiwPxy0O5RDJhyFigFAz8sZz+tbotDWcC+lmTl53Ikj9hzxkoHOvZx4Hdg
- FHl+5ybpwHd/CInVL1bT07psyo33xntHw9gOTFFJX3XlcgTC7hIttoxNqcv+uUeo
- LZQPJSK/VNUNsS9C/ou1MotSZMMX0hGIUtSeitIqp/teQgRTE1jozqWsg2tNM+Vn
- USR1udlNMb86zaufmPt12VFdaaCvyfDp4yC4U8VFzxXM7WpMW7JKENwMOH/bGpX3
- WtGeRMbpE+ekTaVlvtl49Bm8G884l6R2RuIACX1pO4w==
+ :content-type:in-reply-to; s=fm1; bh=jRoUn1Nixmx8fV7/eiqUN6Tsxsg
+ 78St+eJ4PgOBSguI=; b=TQt9wzTEpAomumtEVyYfhBOFAMhYofunpmo1MYB5ub2
+ mygYpWsC8enY2HvcSTrkSd4kho0hsgZbPDmWPkwBNTji/y5p7pGWgXwXoWLCQql6
+ cgS7v/2fedN8fj99I/JEF0BuO4XrMRKCPl86BVk3aPzAzT/CWhTKFK0ZXnWX2jQX
+ 8CDdFM7OVTyvvwnS22/bH67qUYbh4efacDPeGvP+5QC6ZLCJINM9WwLLDzYg3zyQ
+ rr9FwWd3Uk0UT3yqzOq1u8CQxFA/PhonDE7b6HM/BAuOPjQkBAhDQzQYEQEF/Fiz
+ vlqPsFvOipJbglqukQLaGUndk9cqsglBAk9G8ipAy6g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=9Gmw2R
- 9k0ECc5QddBoAVCGV1sXxzmzO4YbJmiIaU4YY=; b=GObBsEcZzgssNLZ33qx0AJ
- GhlgBV+VE8PDXxHuIwxRZtWVbtBsMqOVYwL3HUiCeUs7vY8qYe7eEgG24NXTJrw5
- eJgCZirNGC/0NxuBWDfYbSsxr1R9Xq00iLJEo3mFb51sjeL9PGDCc09ibc4NbLEd
- 0KooxPvuwHzHE0LxBpGNgx7SCw9X4xddpdRZbhog0DNe1o2WVVFV9AoU8bzzO1NL
- UW3xSz6z9XM5YMvkD0pfQlzsIhp4ctFCnj2JwxMvQpMw4wAqOGvL5a3BMOQT1teW
- JwGpgNnv8qyoHrp5w/jg0fLjmzY+6Be9L1HWOP9B78yeu9+bujjcrxCKZT4ofyvQ
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=jRoUn1
+ Nixmx8fV7/eiqUN6Tsxsg78St+eJ4PgOBSguI=; b=S7b+9A+BK+bXFoLMxHcUCK
+ 2ml/FqmbCjgSCQ9lUP16UtpeBuFflkv0aVlTfRQANUmf5sQmH9FrwnH2/XYvQGYl
+ j7j/+NwdtpOTU3FjR5rnRSuFTcQxVdrxZ0GtiafXh0XkRK2iLRtN5KgW3fe4fUGL
+ v6ZFrkkQ1aZe7beWfpnxnEb4ir4lvXvq4K9mwkInDtOw75DQ7tgqJ4t4Ly5GBNYP
+ SxEJt9WF/MysoAs+Gtk41hOvThUw82c4zhmTpShEQgqRzwKgEY+VJ5nvCz/Oxote
+ srw0OhNwnN704qXyqf51YnYxMqB2R2ki/77k/+qP/P+FQdlCH9a9GgfVkppWn4PQ
  ==
-X-ME-Sender: <xms:h7XHX6UQeHQEadhXHmWiua1blbeGIYoHmrlI6pKlv80Kx1hkp7LMPg>
- <xme:h7XHX2lwJSwaWT89wtGtST6xjt8rJR0k4ZT9_TbTo--YaWK9DUy5suydVTxsCrBMk
- anmTROWQ3BZ2g3drAE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudeigedgkeduucetufdoteggodetrfdotf
+X-ME-Sender: <xms:urbHX7mweWR1qljBr_MExWUkdMRV0tmFycoSy-4iG7shpRNcYcPjkA>
+ <xme:urbHX-2QGL3MuSS6ysrC0KGAkvZclRLfNn08313yojQTwbmq2USutfe5ngPBYww0n
+ 6zPMrrDN7J34lD9fqs>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudeigedgkedvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
@@ -68,26 +68,26 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudeigedgkeduucetufdoteggod
  htvghrnhepleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieeh
  gedunecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
  frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:h7XHX-aKGxXIfGlJvn1_Dysw-33py4S0qYrfKro6R7oq7vEmSSYZww>
- <xmx:h7XHXxU0cICtGIQXx-YSPouGHbBpvLURwrA__hpjab2MreoNnOw4Xw>
- <xmx:h7XHX0nPMPTgDlfrW0B3kohd_CznI66BouVVJPEjF-NshJcMO-eEzw>
- <xmx:irXHX6vQYPWX-0wHB404TnSZkkQOuwK3QpEq_uaXgxrSibT3kK1dOw>
+X-ME-Proxy: <xmx:urbHXxr7hq23eyK4HjadMXO7LlCY7uZVKhxqtnSUl-C0vBVuO3yI9Q>
+ <xmx:urbHXzmy7XQptpb2dVlgOp4l5d4xu9j9yP6iWT_47cXcDlUhVw4GJw>
+ <xmx:urbHX53cI05xHEVa_C_yRehMj6z3E2UgIWfHhH589jZvxQOIrflKaw>
+ <xmx:vbbHX482dsQIV9UiOVhgqRglb05zjpF5PLwLRAdB2fu23SuK7Wk7Ow>
 Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
  [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id D6D14108005B;
- Wed,  2 Dec 2020 10:40:54 -0500 (EST)
-Date: Wed, 2 Dec 2020 16:40:53 +0100
+ by mail.messagingengine.com (Postfix) with ESMTPA id 69B94240059;
+ Wed,  2 Dec 2020 10:46:02 -0500 (EST)
+Date: Wed, 2 Dec 2020 16:46:01 +0100
 From: Maxime Ripard <maxime@cerno.tech>
 To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v2 07/19] media: sun6i-csi: Add support for MIPI CSI-2
- bridge input
-Message-ID: <20201202154053.3fcxiift2uyqnjvp@gilmour>
+Subject: Re: [PATCH v2 09/19] ARM: dts: sunxi: h3/h5: Add CSI controller port
+ for parallel input
+Message-ID: <20201202154601.ws7wrx6msrp3u4pd@gilmour>
 References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
- <20201128142839.517949-8-paul.kocialkowski@bootlin.com>
- <20201201121241.cyafjhot45puusfc@gilmour>
- <X8eiXxYw1iHKbdDV@aptenodytes>
+ <20201128142839.517949-10-paul.kocialkowski@bootlin.com>
+ <20201201121405.at4pwxon56ecwrx6@gilmour>
+ <X8escb4SZXEpiR0n@aptenodytes>
 MIME-Version: 1.0
-In-Reply-To: <X8eiXxYw1iHKbdDV@aptenodytes>
+In-Reply-To: <X8escb4SZXEpiR0n@aptenodytes>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,91 +112,92 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
  Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============7331210235161441802=="
+Content-Type: multipart/mixed; boundary="===============5639990009643565282=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============7331210235161441802==
+--===============5639990009643565282==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="45hcbhhgcfnzxspi"
+	protocol="application/pgp-signature"; boundary="btrg2f6ei6hzo3fh"
 Content-Disposition: inline
 
 
---45hcbhhgcfnzxspi
+--btrg2f6ei6hzo3fh
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Dec 02, 2020 at 03:19:11PM +0100, Paul Kocialkowski wrote:
+On Wed, Dec 02, 2020 at 04:02:09PM +0100, Paul Kocialkowski wrote:
 > Hi,
 >=20
-> On Tue 01 Dec 20, 13:12, Maxime Ripard wrote:
-> > Hi,
+> On Tue 01 Dec 20, 13:14, Maxime Ripard wrote:
+> > On Sat, Nov 28, 2020 at 03:28:29PM +0100, Paul Kocialkowski wrote:
+> > > Since the CSI controller binding is getting a bit more complex due
+> > > to the addition of MIPI CSI-2 bridge support, make the ports node
+> > > explicit with the parallel port.
+> > >=20
+> > > This way, it's clear that the controller only supports parallel
+> > > interface input and there's no confusion about the port number.
+> > >=20
+> > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > > ---
+> > >  arch/arm/boot/dts/sunxi-h3-h5.dtsi | 9 +++++++++
+> > >  1 file changed, 9 insertions(+)
+> > >=20
+> > > diff --git a/arch/arm/boot/dts/sunxi-h3-h5.dtsi b/arch/arm/boot/dts/s=
+unxi-h3-h5.dtsi
+> > > index 9be13378d4df..02b698cace6a 100644
+> > > --- a/arch/arm/boot/dts/sunxi-h3-h5.dtsi
+> > > +++ b/arch/arm/boot/dts/sunxi-h3-h5.dtsi
+> > > @@ -803,6 +803,15 @@ csi: camera@1cb0000 {
+> > >  			pinctrl-names =3D "default";
+> > >  			pinctrl-0 =3D <&csi_pins>;
+> > >  			status =3D "disabled";
+> > > +
+> > > +			ports {
+> > > +				#address-cells =3D <1>;
+> > > +				#size-cells =3D <0>;
+> > > +
+> > > +				csi_in_parallel: port@0 {
+> > > +					reg =3D <0>;
+> > > +				};
+> > > +			};
+> > >  		};
 > >=20
-> > On Sat, Nov 28, 2020 at 03:28:27PM +0100, Paul Kocialkowski wrote:
-> > > The A31 CSI controller supports a MIPI CSI-2 bridge input, which has
-> > > its own dedicated port in the fwnode graph.
-> > >=20
-> > > Support for this input is added with this change:
-> > > - two pads are defined for the media entity instead of one
-> > >   and only one needs to be connected at a time;
-> > > - the pads currently match the fwnode graph representation;
-> > > - links are created between our pads and the subdevs for each
-> > >   interface and are no longer immutable so that userspace can select
-> > >   which interface to use in case both are bound to a subdev;
-> > > - fwnode endpoints are parsed and stored for each interface;
-> > > - the active subdev (and fwnode endpoint) is retrieved when validating
-> > >   the media link at stream on time and cleared at stream off;
-> > > - an error is raised if both links are active at the same time;
-> > > - the MIPI interface bit is set if the MIPI CSI-2 bridge endpoint is
-> > >   active.
-> > >=20
-> > > In the future, the media entity representation might evolve to:
-> > > - distinguish the internal parallel bridge and data formatter;
-> > > - represent each of the 4 internal channels that can exist between
-> > >   the parallel bridge (for BT656 time-multiplex) and MIPI CSI-2
-> > >   (internal channels can be mapped to virtual channels);
-> > > - connect the controller's output to the ISP instead of its
-> > >   DMA engine.
-> > >=20
-> > > Finally note that the MIPI CSI-2 bridges should not be linked in
-> > > the fwnode graph unless they have a sensor subdev attached.
-> >=20
-> > I'll leave most of the review to Laurent and Sakari, but I'm not quite
-> > sure what you meant in the last paragraph. Did you mean that the
-> > MIPI-CSI controller in the Allwinner SoC should only be linked if it has
-> > a sensor attached, or did you mean that any MIPI-CSI2 bridge cannot be
-> > attached to the controller?
+> > This will create a DTC warning, since port@0 is the only node, and is
+> > equivalent to port
 >=20
-> So the use of plural was a mistake and your first understanding is the co=
-rrect
-> one: if the bridge is linked to the CSI controller in the OF graph but the
-> bridge doesn't have a sensor attached, the CSI controller driver will fail
-> to probe, as far as I could see.
+> I'm not seeing the warning when running dtbs_check.
 
-I'm not sure it's reasonable to not link it in the DTSI then, we'll want
-to reduce as much the boilerplate from the board DTS as possible, and
-the MIPI-CSI controller is always there anyway. However, we should
-definitely have it disabled if there's no sensor, which should solve
-your probe issue
+Some are silenced by the Linux build system. You can pass W=3D1 to your
+make command line enable all of them.
+
+> More generally, why is it a problem that there's only one node defined?
+>=20
+> One issue that I did see is that the port node doesn't have an endpoint
+> here, so I will remove the requirement to have an endpoint in the bindings
+> documentation to allow this kind of definition.
+
+We definitely want to have the endpoint required. If the CSI node is
+disabled, the error should be ignored by the dt-validate tool though
 
 Maxime
 
---45hcbhhgcfnzxspi
+--btrg2f6ei6hzo3fh
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX8e1hQAKCRDj7w1vZxhR
-xUmfAQDrnEGoBdbQg8pcpjrHuleZtMVcXIe+BVlxHlRQPOZFXwEAjruXhWd67Q5L
-aw25nh4z4WBzD8T8dUj7t5A/R28hows=
-=crGk
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX8e2uQAKCRDj7w1vZxhR
+xYE3AP4u/RvuwgGW7PW013WC31Z7iECgCdFpXbQBo4FZEKym5wEAuygTLOqYLNTZ
+3TelATfMdZXOAbQq9j+JnNSVltFQLAk=
+=/zNa
 -----END PGP SIGNATURE-----
 
---45hcbhhgcfnzxspi--
+--btrg2f6ei6hzo3fh--
 
---===============7331210235161441802==
+--===============5639990009643565282==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -207,4 +208,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============7331210235161441802==--
+--===============5639990009643565282==--
