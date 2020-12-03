@@ -1,77 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F8432CD0BB
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 09:05:35 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08DA32CD1C9
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 09:53:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A617A8777D;
-	Thu,  3 Dec 2020 08:05:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5CA362E2C3;
+	Thu,  3 Dec 2020 08:53:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0tr3CWipFSXn; Thu,  3 Dec 2020 08:05:32 +0000 (UTC)
+	with ESMTP id W9vbgkqvQ2w8; Thu,  3 Dec 2020 08:53:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9737D87753;
-	Thu,  3 Dec 2020 08:05:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C0C38203DF;
+	Thu,  3 Dec 2020 08:53:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C768A1BF86D
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 08:05:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EB2AE1BF831
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 08:53:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C2DEC8771C
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 08:05:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E23BE86977
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 08:53:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ftcHIN9Esoqh for <devel@linuxdriverproject.org>;
- Thu,  3 Dec 2020 08:05:28 +0000 (UTC)
+ with ESMTP id dAYfm+QQyN1w for <devel@linuxdriverproject.org>;
+ Thu,  3 Dec 2020 08:53:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
- [209.85.218.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D7D9187705
- for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 08:05:27 +0000 (UTC)
-Received: by mail-ej1-f68.google.com with SMTP id x16so2080745ejj.7
- for <devel@driverdev.osuosl.org>; Thu, 03 Dec 2020 00:05:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=FZ8VxZZvqmh6ehr3KHE/PiRk3db+weOkpDGOlsh3YO8=;
- b=haDseJv+D02T10aLAxQHXG0BsYACsfkijqaB+ELZmfch2JYU9g6y9ryqDyIqWShXaW
- yaAZ88xKKVmpIrZKV/qetu3zM2AbVORk0wYWL03XQMh8ss+hr7Dc6CnNOdvjOspJC/vQ
- R2df0RgSro0FHNGu8o3DpusAvPeMobIgNjOfc7hfwHJ6Nvy0U69h0GmKMctPOdP8JHuK
- uCRMiqbef850rMYfMmIEUS0TzdqaTlcSg4Jgua9sT1AuBgZSfdy1txMa/Fszl/iCAsRa
- 6RBF8zj3OIpntYgPprvZoROYfpZUKnhmmTVDrR3O2ZTkmVat83g3y0aDOoH39HHPuS4h
- RbOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=FZ8VxZZvqmh6ehr3KHE/PiRk3db+weOkpDGOlsh3YO8=;
- b=myvtPBAFgASUMZJMhi/Oa+S1cElvMuepnMgeH2OpC/wNljMLCZMOK2LIT+wOwxtsqM
- wPof4GIzyrzG/ayDYhqOYVxUmUDv/RveyJ/PsktZQR3hT7Dk72oNLvbmVfbn4dm64/UP
- g2/IcD0R61mI8R26jVftmVhijZke6UHVca+VAl1i7hEwAE7qFwnDyn1+Klwx0EOn0Fx5
- yuRtWgyLCxShvFh9NcGyKfTwn062f5OzaJh4uDa2MCoQY+o40L+mY6u7nucVp/UPXZrK
- 2YfmAjpR8QQhNiurprv1N6Qt4NB1QM8toYMx7IySfQlUSojX7H4HLfWCI85JBeur6d7Z
- ZE8g==
-X-Gm-Message-State: AOAM531MWuGQK4dbdWIz5XEo9TeF0jd0PKn3U0GwmOEBnjYk4I09YLXl
- vKwsYhHffL0RldxcteVz6MGB6rgxwSTQ6z+RydicnQ==
-X-Google-Smtp-Source: ABdhPJxP2EJznI3pbg+Rqtm4SZQefIKFXf0kkiRRTqzbUDyEG5oMEZvNtOYbyFNg3cm8vTl+G0cfLIdKavT7T0DOD1k=
-X-Received: by 2002:a17:906:7f01:: with SMTP id
- d1mr1414079ejr.429.1606982726027; 
- Thu, 03 Dec 2020 00:05:26 -0800 (PST)
-MIME-Version: 1.0
-References: <20201123183833.18750-1-nsaenzjulienne@suse.de>
- <20201123183833.18750-2-nsaenzjulienne@suse.de>
-In-Reply-To: <20201123183833.18750-2-nsaenzjulienne@suse.de>
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Thu, 3 Dec 2020 09:05:15 +0100
-Message-ID: <CAMpxmJX6zdoYek2THEj2x8ycJYz-bxqE_5RnOz1sYv0vwLSFpA@mail.gmail.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CAEA1869EF
+ for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 08:53:16 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 6E0E5AC55;
+ Thu,  3 Dec 2020 08:53:14 +0000 (UTC)
+Message-ID: <401be3062e06f4896662da179a751a1a08b8a75a.camel@suse.de>
 Subject: Re: [PATCH v5 01/11] firmware: raspberrypi: Keep count of all
  consumers
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Date: Thu, 03 Dec 2020 09:53:12 +0100
+In-Reply-To: <CAMpxmJX6zdoYek2THEj2x8ycJYz-bxqE_5RnOz1sYv0vwLSFpA@mail.gmail.com>
+References: <20201123183833.18750-1-nsaenzjulienne@suse.de>
+ <20201123183833.18750-2-nsaenzjulienne@suse.de>
+ <CAMpxmJX6zdoYek2THEj2x8ycJYz-bxqE_5RnOz1sYv0vwLSFpA@mail.gmail.com>
+User-Agent: Evolution 3.38.2 
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,103 +68,147 @@ Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
  linux-gpio <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
  bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
  Philipp Zabel <p.zabel@pengutronix.de>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
  Dmitry Torokhov <dmitry.torokhov@gmail.com>,
  linux-clk <linux-clk@vger.kernel.org>,
  arm-soc <linux-arm-kernel@lists.infradead.org>,
  linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6686931480165653806=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gTW9uLCBOb3YgMjMsIDIwMjAgYXQgNzozOCBQTSBOaWNvbGFzIFNhZW56IEp1bGllbm5lCjxu
-c2FlbnpqdWxpZW5uZUBzdXNlLmRlPiB3cm90ZToKPgo+IFdoZW4gdW5iaW5kaW5nIHRoZSBmaXJt
-d2FyZSBkZXZpY2Ugd2UgbmVlZCB0byBtYWtlIHN1cmUgaXQgaGFzIG5vCj4gY29uc3VtZXJzIGxl
-ZnQuIE90aGVyd2lzZSB3ZSdkIGxlYXZlIHRoZW0gd2l0aCBhIGZpcm13YXJlIGhhbmRsZQo+IHBv
-aW50aW5nIGF0IGZyZWVkIG1lbW9yeS4KPgo+IEtlZXAgYSByZWZlcmVuY2UgY291bnQgb2YgYWxs
-IGNvbnN1bWVycyBhbmQgaW50cm9kdWNlIHJwaV9maXJtd2FyZV9wdXQoKQo+IHdoaWNoIHdpbGwg
-cGVybWl0IGF1dG9tYXRpY2FsbHkgZGVjcmVhc2UgdGhlIHJlZmVyZW5jZSBjb3VudCB1cG9uCj4g
-dW5iaW5kaW5nIGNvbnN1bWVyIGRyaXZlcnMuCj4KPiBTdWdnZXN0ZWQtYnk6IFV3ZSBLbGVpbmUt
-S8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Cj4gU2lnbmVkLW9mZi1ieTog
-Tmljb2xhcyBTYWVueiBKdWxpZW5uZSA8bnNhZW56anVsaWVubmVAc3VzZS5kZT4KPiAtLS0KPgo+
-IENoYW5nZXMgc2luY2UgdjM6Cj4gLSBVc2Uga3JlZiBpbnN0ZWFkIG9mIHdhaXRpbmcgb24gcmVm
-Y291bnQKPgo+ICBkcml2ZXJzL2Zpcm13YXJlL3Jhc3BiZXJyeXBpLmMgICAgICAgICAgICAgfCAz
-NyArKysrKysrKysrKysrKysrKysrLS0tCj4gIGluY2x1ZGUvc29jL2JjbTI4MzUvcmFzcGJlcnJ5
-cGktZmlybXdhcmUuaCB8ICAyICsrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMzUgaW5zZXJ0aW9ucygr
-KSwgNCBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Zpcm13YXJlL3Jhc3Bi
-ZXJyeXBpLmMgYi9kcml2ZXJzL2Zpcm13YXJlL3Jhc3BiZXJyeXBpLmMKPiBpbmRleCAzMDI1OWRj
-OWI4MDUuLmVkNzkzYWVmNzg1MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2Zpcm13YXJlL3Jhc3Bi
-ZXJyeXBpLmMKPiArKysgYi9kcml2ZXJzL2Zpcm13YXJlL3Jhc3BiZXJyeXBpLmMKPiBAQCAtNyw2
-ICs3LDcgQEAKPiAgICovCj4KPiAgI2luY2x1ZGUgPGxpbnV4L2RtYS1tYXBwaW5nLmg+Cj4gKyNp
-bmNsdWRlIDxsaW51eC9rcmVmLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tYWlsYm94X2NsaWVudC5o
-Pgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9wbGF0
-Zm9ybS5oPgo+IEBAIC0yNyw2ICsyOCw4IEBAIHN0cnVjdCBycGlfZmlybXdhcmUgewo+ICAgICAg
-ICAgc3RydWN0IG1ib3hfY2hhbiAqY2hhbjsgLyogVGhlIHByb3BlcnR5IGNoYW5uZWwuICovCj4g
-ICAgICAgICBzdHJ1Y3QgY29tcGxldGlvbiBjOwo+ICAgICAgICAgdTMyIGVuYWJsZWQ7Cj4gKwo+
-ICsgICAgICAgc3RydWN0IGtyZWYgY29uc3VtZXJzOwo+ICB9Owo+Cj4gIHN0YXRpYyBERUZJTkVf
-TVVURVgodHJhbnNhY3Rpb25fbG9jayk7Cj4gQEAgLTIyNSwxMiArMjI4LDI3IEBAIHN0YXRpYyB2
-b2lkIHJwaV9yZWdpc3Rlcl9jbGtfZHJpdmVyKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMSwgTlVMTCwgMCk7Cj4g
-IH0KPgo+ICtzdGF0aWMgdm9pZCBycGlfZmlybXdhcmVfZGVsZXRlKHN0cnVjdCBrcmVmICprcmVm
-KQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3QgcnBpX2Zpcm13YXJlICpmdyA9IGNvbnRhaW5lcl9vZihr
-cmVmLCBzdHJ1Y3QgcnBpX2Zpcm13YXJlLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgY29uc3VtZXJzKTsKPiArCj4gKyAgICAgICBtYm94X2ZyZWVfY2hh
-bm5lbChmdy0+Y2hhbik7Cj4gKyAgICAgICBrZnJlZShmdyk7Cj4gK30KPiArCj4gK3ZvaWQgcnBp
-X2Zpcm13YXJlX3B1dChzdHJ1Y3QgcnBpX2Zpcm13YXJlICpmdykKPiArewo+ICsgICAgICAga3Jl
-Zl9wdXQoJmZ3LT5jb25zdW1lcnMsIHJwaV9maXJtd2FyZV9kZWxldGUpOwo+ICt9Cj4gK0VYUE9S
-VF9TWU1CT0xfR1BMKHJwaV9maXJtd2FyZV9wdXQpOwo+ICsKPiAgc3RhdGljIGludCBycGlfZmly
-bXdhcmVfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgewo+ICAgICAgICAg
-c3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPiAgICAgICAgIHN0cnVjdCBycGlfZmly
-bXdhcmUgKmZ3Owo+Cj4gLSAgICAgICBmdyA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqZncp
-LCBHRlBfS0VSTkVMKTsKCk9uZSBuaXQgZnJvbSBteSBzaWRlOiBtYXliZSBhZGQgYSBjb21tZW50
-IGhlcmUgc2F5aW5nIHRoYXQgeW91IHJlYWxseQp3YW50IHRvIHVzZSBub24tbWFuYWdlZCBremFs
-bG9jKCkgYmVjYXVzZSB5b3UncmUgZ29pbmcgdG8gZ2V0IHBlb3BsZQpibGluZGx5IGNvbnZlcnRp
-bmcgaXQgdG8gZGV2bV9remFsbG9jKCkgdmVyeSBzb29uLgoKQmFydG9zegoKPiArICAgICAgIGZ3
-ID0ga3phbGxvYyhzaXplb2YoKmZ3KSwgR0ZQX0tFUk5FTCk7Cj4gICAgICAgICBpZiAoIWZ3KQo+
-ICAgICAgICAgICAgICAgICByZXR1cm4gLUVOT01FTTsKPgo+IEBAIC0yNDcsNiArMjY1LDcgQEAg
-c3RhdGljIGludCBycGlfZmlybXdhcmVfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-dikKPiAgICAgICAgIH0KPgo+ICAgICAgICAgaW5pdF9jb21wbGV0aW9uKCZmdy0+Yyk7Cj4gKyAg
-ICAgICBrcmVmX2luaXQoJmZ3LT5jb25zdW1lcnMpOwo+Cj4gICAgICAgICBwbGF0Zm9ybV9zZXRf
-ZHJ2ZGF0YShwZGV2LCBmdyk7Cj4KPiBAQCAtMjc1LDI1ICsyOTQsMzUgQEAgc3RhdGljIGludCBy
-cGlfZmlybXdhcmVfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAgICAg
-ICBycGlfaHdtb24gPSBOVUxMOwo+ICAgICAgICAgcGxhdGZvcm1fZGV2aWNlX3VucmVnaXN0ZXIo
-cnBpX2Nsayk7Cj4gICAgICAgICBycGlfY2xrID0gTlVMTDsKPiAtICAgICAgIG1ib3hfZnJlZV9j
-aGFubmVsKGZ3LT5jaGFuKTsKPiArCj4gKyAgICAgICBycGlfZmlybXdhcmVfcHV0KGZ3KTsKPgo+
-ICAgICAgICAgcmV0dXJuIDA7Cj4gIH0KPgo+ICAvKioKPiAtICogcnBpX2Zpcm13YXJlX2dldCAt
-IEdldCBwb2ludGVyIHRvIHJwaV9maXJtd2FyZSBzdHJ1Y3R1cmUuCj4gICAqIEBmaXJtd2FyZV9u
-b2RlOiAgICBQb2ludGVyIHRvIHRoZSBmaXJtd2FyZSBEZXZpY2UgVHJlZSBub2RlLgo+ICAgKgo+
-ICsgKiBUaGUgcmVmZXJlbmNlIHRvIHJwaV9maXJtd2FyZSBoYXMgdG8gYmUgcmVsZWFzZWQgd2l0
-aCBycGlfZmlybXdhcmVfcHV0KCkuCj4gKyAqCj4gICAqIFJldHVybnMgTlVMTCBpcyB0aGUgZmly
-bXdhcmUgZGV2aWNlIGlzIG5vdCByZWFkeS4KPiAgICovCj4gIHN0cnVjdCBycGlfZmlybXdhcmUg
-KnJwaV9maXJtd2FyZV9nZXQoc3RydWN0IGRldmljZV9ub2RlICpmaXJtd2FyZV9ub2RlKQo+ICB7
-Cj4gICAgICAgICBzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gb2ZfZmluZF9kZXZpY2Vf
-Ynlfbm9kZShmaXJtd2FyZV9ub2RlKTsKPiArICAgICAgIHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3
-Owo+Cj4gICAgICAgICBpZiAoIXBkZXYpCj4gICAgICAgICAgICAgICAgIHJldHVybiBOVUxMOwo+
-Cj4gLSAgICAgICByZXR1cm4gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4gKyAgICAgICBm
-dyA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ICsgICAgICAgaWYgKCFmdykKPiArICAg
-ICAgICAgICAgICAgcmV0dXJuIE5VTEw7Cj4gKwo+ICsgICAgICAgaWYgKCFrcmVmX2dldF91bmxl
-c3NfemVybygmZnctPmNvbnN1bWVycykpCj4gKyAgICAgICAgICAgICAgIHJldHVybiBOVUxMOwo+
-ICsKPiArICAgICAgIHJldHVybiBmdzsKPiAgfQo+ICBFWFBPUlRfU1lNQk9MX0dQTChycGlfZmly
-bXdhcmVfZ2V0KTsKPgo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJy
-eXBpLWZpcm13YXJlLmggYi9pbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBpLWZpcm13YXJl
-LmgKPiBpbmRleCBjYzljZGJjNjY0MDMuLmZkZmVmN2ZlNDBkZiAxMDA2NDQKPiAtLS0gYS9pbmNs
-dWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBpLWZpcm13YXJlLmgKPiArKysgYi9pbmNsdWRlL3Nv
-Yy9iY20yODM1L3Jhc3BiZXJyeXBpLWZpcm13YXJlLmgKPiBAQCAtMTQwLDYgKzE0MCw3IEBAIGlu
-dCBycGlfZmlybXdhcmVfcHJvcGVydHkoc3RydWN0IHJwaV9maXJtd2FyZSAqZncsCj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgICB1MzIgdGFnLCB2b2lkICpkYXRhLCBzaXplX3QgbGVuKTsKPiAg
-aW50IHJwaV9maXJtd2FyZV9wcm9wZXJ0eV9saXN0KHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3LAo+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpkYXRhLCBzaXplX3QgdGFnX3Np
-emUpOwo+ICt2b2lkIHJwaV9maXJtd2FyZV9wdXQoc3RydWN0IHJwaV9maXJtd2FyZSAqZncpOwo+
-ICBzdHJ1Y3QgcnBpX2Zpcm13YXJlICpycGlfZmlybXdhcmVfZ2V0KHN0cnVjdCBkZXZpY2Vfbm9k
-ZSAqZmlybXdhcmVfbm9kZSk7Cj4gICNlbHNlCj4gIHN0YXRpYyBpbmxpbmUgaW50IHJwaV9maXJt
-d2FyZV9wcm9wZXJ0eShzdHJ1Y3QgcnBpX2Zpcm13YXJlICpmdywgdTMyIHRhZywKPiBAQCAtMTU0
-LDYgKzE1NSw3IEBAIHN0YXRpYyBpbmxpbmUgaW50IHJwaV9maXJtd2FyZV9wcm9wZXJ0eV9saXN0
-KHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3LAo+ICAgICAgICAgcmV0dXJuIC1FTk9TWVM7Cj4gIH0K
-Pgo+ICtzdGF0aWMgaW5saW5lIHZvaWQgcnBpX2Zpcm13YXJlX3B1dChzdHJ1Y3QgcnBpX2Zpcm13
-YXJlICpmdykgeyB9Cj4gIHN0YXRpYyBpbmxpbmUgc3RydWN0IHJwaV9maXJtd2FyZSAqcnBpX2Zp
-cm13YXJlX2dldChzdHJ1Y3QgZGV2aWNlX25vZGUgKmZpcm13YXJlX25vZGUpCj4gIHsKPiAgICAg
-ICAgIHJldHVybiBOVUxMOwo+IC0tCj4gMi4yOS4yCj4KX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJp
-dmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+
+--===============6686931480165653806==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-SBC+IJay38JRk592gNwQ"
+
+
+--=-SBC+IJay38JRk592gNwQ
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, 2020-12-03 at 09:05 +0100, Bartosz Golaszewski wrote:
+> On Mon, Nov 23, 2020 at 7:38 PM Nicolas Saenz Julienne
+> <nsaenzjulienne@suse.de> wrote:
+> >=20
+> > When unbinding the firmware device we need to make sure it has no
+> > consumers left. Otherwise we'd leave them with a firmware handle
+> > pointing at freed memory.
+> >=20
+> > Keep a reference count of all consumers and introduce rpi_firmware_put(=
+)
+> > which will permit automatically decrease the reference count upon
+> > unbinding consumer drivers.
+> >=20
+> > Suggested-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> > ---
+> >=20
+> > Changes since v3:
+> > - Use kref instead of waiting on refcount
+> >=20
+> > =C2=A0drivers/firmware/raspberrypi.c             | 37 +++++++++++++++++=
+++---
+> > =C2=A0include/soc/bcm2835/raspberrypi-firmware.h |  2 ++
+> > =C2=A02 files changed, 35 insertions(+), 4 deletions(-)
+> >=20
+> > diff --git a/drivers/firmware/raspberrypi.c b/drivers/firmware/raspberr=
+ypi.c
+> > index 30259dc9b805..ed793aef7851 100644
+> > --- a/drivers/firmware/raspberrypi.c
+> > +++ b/drivers/firmware/raspberrypi.c
+> > @@ -7,6 +7,7 @@
+> > =C2=A0=C2=A0*/
+> >=20
+> > =C2=A0#include <linux/dma-mapping.h>
+> > +#include <linux/kref.h>
+> > =C2=A0#include <linux/mailbox_client.h>
+> > =C2=A0#include <linux/module.h>
+> > =C2=A0#include <linux/of_platform.h>
+> > @@ -27,6 +28,8 @@ struct rpi_firmware {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct mbox_chan *chan;=
+ /* The property channel. */
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct completion c;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0u32 enabled;
+> > +
+> > +       struct kref consumers;
+> > =C2=A0};
+> >=20
+> > =C2=A0static DEFINE_MUTEX(transaction_lock);
+> > @@ -225,12 +228,27 @@ static void rpi_register_clk_driver(struct device=
+ *dev)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0-1, NU=
+LL, 0);
+> > =C2=A0}
+> >=20
+> > +static void rpi_firmware_delete(struct kref *kref)
+> > +{
+> > +       struct rpi_firmware *fw =3D container_of(kref, struct rpi_firmw=
+are,
+> > +                                              consumers);
+> > +
+> > +       mbox_free_channel(fw->chan);
+> > +       kfree(fw);
+> > +}
+> > +
+> > +void rpi_firmware_put(struct rpi_firmware *fw)
+> > +{
+> > +       kref_put(&fw->consumers, rpi_firmware_delete);
+> > +}
+> > +EXPORT_SYMBOL_GPL(rpi_firmware_put);
+> > +
+> > =C2=A0static int rpi_firmware_probe(struct platform_device *pdev)
+> > =C2=A0{
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct device *dev =3D =
+&pdev->dev;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct rpi_firmware *fw=
+;
+> >=20
+> > -       fw =3D devm_kzalloc(dev, sizeof(*fw), GFP_KERNEL);
+>=20
+> One nit from my side: maybe add a comment here saying that you really
+> want to use non-managed kzalloc() because you're going to get people
+> blindly converting it to devm_kzalloc() very soon.
+
+Good point, I'll change it.
+
+Regards,
+Nicolas
+
+
+--=-SBC+IJay38JRk592gNwQ
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl/Ip3gACgkQlfZmHno8
+x/5Ncwf8C0HFE7YBc4W1hWu3koQkBNupWVGDMLkAR36Dfmk6pph04kKcLSt6ZIu1
+2SMHgfQG4VikmJnqGQp66Y93QWodjPeglOr+09VL5rY7rehOGcdBICaNPJcS1vrl
+LnF+n0Lqyfirpq4rVd7qX5taBOz890GfthlZMmFsNcbFcSEuuUVogJC7iCDe+0cy
+nqEYLXfaCEVDE0jR4Zvmyvs20dEZpXHR0gfoc29hMBtRLDL2l1CClG7Vm9im7Ob1
+2Jm9YqHMduon8YCqLZF+jxnZesbb9ktTry5StYQ7lSZyfDxb32nOjAQqGeZfsYyF
+y1nknR5dNeL/6dbIqCn33h4p6HSTbA==
+=idux
+-----END PGP SIGNATURE-----
+
+--=-SBC+IJay38JRk592gNwQ--
+
+
+--===============6686931480165653806==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6686931480165653806==--
+
