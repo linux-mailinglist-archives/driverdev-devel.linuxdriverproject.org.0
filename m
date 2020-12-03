@@ -1,90 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 657C52CD6A4
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 14:24:16 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3057D2CD6CB
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 14:30:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D16E087BA1;
-	Thu,  3 Dec 2020 13:24:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ECD432E379;
+	Thu,  3 Dec 2020 13:30:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g+Y9SmFT4z6a; Thu,  3 Dec 2020 13:24:14 +0000 (UTC)
+	with ESMTP id jB1N-rOIYJxL; Thu,  3 Dec 2020 13:30:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CBD7587ACD;
-	Thu,  3 Dec 2020 13:24:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1B0B32E368;
+	Thu,  3 Dec 2020 13:30:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 044CE1BF5A5
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 13:24:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D99371BF5A5
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 13:30:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 00B7187ACD
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 13:24:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C8C8E2E32A
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 13:30:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NiAkMKg9po0l for <devel@linuxdriverproject.org>;
- Thu,  3 Dec 2020 13:24:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from new4-smtp.messagingengine.com (new4-smtp.messagingengine.com
- [66.111.4.230])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 25ECB87AAC
- for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 13:24:10 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.nyi.internal (Postfix) with ESMTP id 3A7215803EB;
- Thu,  3 Dec 2020 08:24:09 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Thu, 03 Dec 2020 08:24:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=TIrQvB3UrbufB/GyXub/EtdF/K7
- 1e6rUtngpjAms+UI=; b=ZLIDlDHeAU1tKCcbMe3fBkWwIMdX26uYk8+UPkJ94sd
- KxxedTHTYUr+G6ogpB2nnSgV6Vbi2j5HemALBtFNWlR/n1NQrOGre4P9rUP62FwW
- yBZ9j79D7jR1dGk42sYYYY74x0KN3CitVkwn08gqF9Zc09GoY7cYKa/bI5tfgQLR
- ICEjLxgiY/O0ahT5MV6ogK1Xq1T7EkdSgiPMnggw+lFt7CeBO5A9RphsiZTRl9KS
- HaIF22EVLDtCI0+mZi14FZme8606SpCsGdRASnepRlkvFXOTmYnaarJYxMAPiwu4
- bSl1jaBk0Ajn3tCI03AP8lSsurfhloRXeG3ODhhUrGQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=TIrQvB
- 3UrbufB/GyXub/EtdF/K71e6rUtngpjAms+UI=; b=kj8Vw1pYu5t4qjQqPe8A8Z
- iTxnV0PjwrJ+wrKDn5gK6uhFfZmPaJ6Ox6ttwKzH/iOt3OQsZeP3Ji9yn8vZjr2f
- e/D/dA9fAVhXXSJYe0nFBMP8b6tWM3/Q8wouRJkmrmgba7i/VLo8oTaOTMovxPN9
- mGdvOglQfuVTvqkEy3/alSXZH1TtU/rWmcwndMb/NrCtKqb6zA9rlBEg7ua32x4z
- Z/fH8OMpHHMKr+xnhoeLQf2rlmsQuF4pxrWB/F7aelwlLzcghzK5U7cz7afzQUXW
- NH6EU6CekucaxD6rpZx7CgrU60V4xVpdmAoXheNIgxe1PPMtwBCMOfoJOzyU/ljQ
- ==
-X-ME-Sender: <xms:9-bIX2JkrJc_idGOXw7CJ0Efs1Xrw2Glr-GZAlv7mOU_1Qsq6VZZyg>
- <xme:9-bIX7ulMuhkk1uvbX4CL9t_Y3KezJP4t-UP2UozEuT6JsRO43nl1JV7DT-ZWDL3c
- iJbIb5mpfIVUQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudeiiedghedvucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
- dttddtvdenucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheq
- necuggftrfgrthhtvghrnhepveeuheejgfffgfeivddukedvkedtleelleeghfeljeeiue
- eggeevueduudekvdetnecukfhppeekfedrkeeirdejgedrieegnecuvehluhhsthgvrhfu
- ihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtoh
- hm
-X-ME-Proxy: <xmx:9-bIX9IAit820Ldv33Vx9Ua7TvUDsr2s0yP72w8tNHoQB3wNZRyfgw>
- <xmx:9-bIX8_Zy08d821_6TB9NYEmrE08EnnPc5yxHln1xQysJJ3H07SDVA>
- <xmx:9-bIX-wWnb7BJW7CkZUOFN2TWGVPRj6MOef8KPlBhelkLEnARbsBWA>
- <xmx:-ebIXz61tF8SSagFmVsGikb66R3ACi6YeXeDoVMjFaRN9ddN1wellQ>
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- by mail.messagingengine.com (Postfix) with ESMTPA id 2B38124005B;
- Thu,  3 Dec 2020 08:24:07 -0500 (EST)
-Date: Thu, 3 Dec 2020 14:25:15 +0100
-From: Greg KH <greg@kroah.com>
-To: "Enrico Weigelt, metux IT consult" <info@metux.net>
-Subject: Re: [PATCH 01/11] drivers: staging: speakup: remove unneeded
- MODULE_VERSION() call
-Message-ID: <X8jnO5cPUQGEK9cr@kroah.com>
-References: <20201203124803.23390-1-info@metux.net>
+ with ESMTP id ApWs3KB9TLh2 for <devel@linuxdriverproject.org>;
+ Thu,  3 Dec 2020 13:30:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2B81E2E2E6
+ for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 13:30:45 +0000 (UTC)
+From: Sasha Levin <sashal@kernel.org>
+Authentication-Results: mail.kernel.org;
+ dkim=permerror (bad message/signature format)
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 4.14 8/9] soc: fsl: dpio: Get the cpumask through
+ cpumask_of(cpu)
+Date: Thu,  3 Dec 2020 08:30:30 -0500
+Message-Id: <20201203133031.931763-8-sashal@kernel.org>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20201203133031.931763-1-sashal@kernel.org>
+References: <20201203133031.931763-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201203124803.23390-1-info@metux.net>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,38 +58,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, f.fainelli@gmail.com, sbranden@broadcom.com,
- rjui@broadcom.com, mchehab@kernel.org, speakup@linux-speakup.org,
- linux-kernel@vger.kernel.org, rcy@google.com, rspringer@google.com,
- laurent.pinchart@ideasonboard.com, netdev@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, toddpoynor@google.com,
- nsaenzjulienne@suse.de, linux-media@vger.kernel.org
+Cc: Yi Wang <wang.yi59@zte.com.cn>, devel@driverdev.osuosl.org,
+ Sasha Levin <sashal@kernel.org>, Hao Si <si.hao@zte.com.cn>,
+ Li Yang <leoyang.li@nxp.com>, Lin Chen <chen.lin5@zte.com.cn>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Dec 03, 2020 at 01:47:53PM +0100, Enrico Weigelt, metux IT consult wrote:
-> Remove MODULE_VERSION(), as it doesn't seem to serve any practical
-> purpose. For in-tree drivers, the kernel version matters.
-> 
-> The drivers have received lots of changes, without the module version
-> (or the underlying DRV_VERSION macro) ever changed, since the code
-> landed in the kernel tree. So, it doesn't seem to have any practical
-> meaning anymore.
-> 
-> Signed-off-by: Enrico Weigelt <info@metux.net>
-> ---
->  drivers/accessibility/speakup/main.c           | 1 -
+From: Hao Si <si.hao@zte.com.cn>
 
-<snip>
+[ Upstream commit 2663b3388551230cbc4606a40fabf3331ceb59e4 ]
 
-Yous subject line is odd, these are not "staging" drivers anymore, so
-why do you say they are there?
+The local variable 'cpumask_t mask' is in the stack memory, and its address
+is assigned to 'desc->affinity' in 'irq_set_affinity_hint()'.
+But the memory area where this variable is located is at risk of being
+modified.
 
-thanks,
+During LTP testing, the following error was generated:
 
-greg k-h
+Unable to handle kernel paging request at virtual address ffff000012e9b790
+Mem abort info:
+  ESR = 0x96000007
+  Exception class = DABT (current EL), IL = 32 bits
+  SET = 0, FnV = 0
+  EA = 0, S1PTW = 0
+Data abort info:
+  ISV = 0, ISS = 0x00000007
+  CM = 0, WnR = 0
+swapper pgtable: 4k pages, 48-bit VAs, pgdp = 0000000075ac5e07
+[ffff000012e9b790] pgd=00000027dbffe003, pud=00000027dbffd003,
+pmd=00000027b6d61003, pte=0000000000000000
+Internal error: Oops: 96000007 [#1] PREEMPT SMP
+Modules linked in: xt_conntrack
+Process read_all (pid: 20171, stack limit = 0x0000000044ea4095)
+CPU: 14 PID: 20171 Comm: read_all Tainted: G    B   W
+Hardware name: NXP Layerscape LX2160ARDB (DT)
+pstate: 80000085 (Nzcv daIf -PAN -UAO)
+pc : irq_affinity_hint_proc_show+0x54/0xb0
+lr : irq_affinity_hint_proc_show+0x4c/0xb0
+sp : ffff00001138bc10
+x29: ffff00001138bc10 x28: 0000ffffd131d1e0
+x27: 00000000007000c0 x26: ffff8025b9480dc0
+x25: ffff8025b9480da8 x24: 00000000000003ff
+x23: ffff8027334f8300 x22: ffff80272e97d000
+x21: ffff80272e97d0b0 x20: ffff8025b9480d80
+x19: ffff000009a49000 x18: 0000000000000000
+x17: 0000000000000000 x16: 0000000000000000
+x15: 0000000000000000 x14: 0000000000000000
+x13: 0000000000000000 x12: 0000000000000040
+x11: 0000000000000000 x10: ffff802735b79b88
+x9 : 0000000000000000 x8 : 0000000000000000
+x7 : ffff000009a49848 x6 : 0000000000000003
+x5 : 0000000000000000 x4 : ffff000008157d6c
+x3 : ffff00001138bc10 x2 : ffff000012e9b790
+x1 : 0000000000000000 x0 : 0000000000000000
+Call trace:
+ irq_affinity_hint_proc_show+0x54/0xb0
+ seq_read+0x1b0/0x440
+ proc_reg_read+0x80/0xd8
+ __vfs_read+0x60/0x178
+ vfs_read+0x94/0x150
+ ksys_read+0x74/0xf0
+ __arm64_sys_read+0x24/0x30
+ el0_svc_common.constprop.0+0xd8/0x1a0
+ el0_svc_handler+0x34/0x88
+ el0_svc+0x10/0x14
+Code: f9001bbf 943e0732 f94066c2 b4000062 (f9400041)
+---[ end trace b495bdcb0b3b732b ]---
+Kernel panic - not syncing: Fatal exception
+SMP: stopping secondary CPUs
+SMP: failed to stop secondary CPUs 0,2-4,6,8,11,13-15
+Kernel Offset: disabled
+CPU features: 0x0,21006008
+Memory Limit: none
+---[ end Kernel panic - not syncing: Fatal exception ]---
+
+Fix it by using 'cpumask_of(cpu)' to get the cpumask.
+
+Signed-off-by: Hao Si <si.hao@zte.com.cn>
+Signed-off-by: Lin Chen <chen.lin5@zte.com.cn>
+Signed-off-by: Yi Wang <wang.yi59@zte.com.cn>
+Signed-off-by: Li Yang <leoyang.li@nxp.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/fsl-mc/bus/dpio/dpio-driver.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/staging/fsl-mc/bus/dpio/dpio-driver.c b/drivers/staging/fsl-mc/bus/dpio/dpio-driver.c
+index e36da20a2796b..e7856a9e685f4 100644
+--- a/drivers/staging/fsl-mc/bus/dpio/dpio-driver.c
++++ b/drivers/staging/fsl-mc/bus/dpio/dpio-driver.c
+@@ -77,7 +77,6 @@ static int register_dpio_irq_handlers(struct fsl_mc_device *dpio_dev, int cpu)
+ 	struct dpio_priv *priv;
+ 	int error;
+ 	struct fsl_mc_device_irq *irq;
+-	cpumask_t mask;
+ 
+ 	priv = dev_get_drvdata(&dpio_dev->dev);
+ 
+@@ -96,9 +95,7 @@ static int register_dpio_irq_handlers(struct fsl_mc_device *dpio_dev, int cpu)
+ 	}
+ 
+ 	/* set the affinity hint */
+-	cpumask_clear(&mask);
+-	cpumask_set_cpu(cpu, &mask);
+-	if (irq_set_affinity_hint(irq->msi_desc->irq, &mask))
++	if (irq_set_affinity_hint(irq->msi_desc->irq, cpumask_of(cpu)))
+ 		dev_err(&dpio_dev->dev,
+ 			"irq_set_affinity failed irq %d cpu %d\n",
+ 			irq->msi_desc->irq, cpu);
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
