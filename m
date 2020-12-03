@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 698762CD5E6
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 13:51:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D30062CD5E7
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 13:51:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 87FB92E38C;
-	Thu,  3 Dec 2020 12:51:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 746522E372;
+	Thu,  3 Dec 2020 12:51:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 99gClA6OsEsr; Thu,  3 Dec 2020 12:51:04 +0000 (UTC)
+	with ESMTP id FhmDrFt0Ggyk; Thu,  3 Dec 2020 12:51:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F0EDD2E375;
-	Thu,  3 Dec 2020 12:50:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CC9B2E36C;
+	Thu,  3 Dec 2020 12:51:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B88FA1BF344
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 12:50:54 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D7DD1BF344
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 12:50:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B58BE87506
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 12:50:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 78A3A87A98
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 12:50:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AXNB1jDb2fv9 for <devel@linuxdriverproject.org>;
- Thu,  3 Dec 2020 12:50:53 +0000 (UTC)
+ with ESMTP id cBdsR0i11JQH for <devel@linuxdriverproject.org>;
+ Thu,  3 Dec 2020 12:50:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.131])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id ED5F587513
- for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 12:50:52 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.187])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7B02087AAC
+ for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 12:50:57 +0000 (UTC)
 Received: from orion.localdomain ([95.118.71.13]) by mrelayeu.kundenserver.de
  (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
- 1Mrfgi-1kPmZ03hwK-00nkW5; Thu, 03 Dec 2020 13:48:07 +0100
+ 1MEUaQ-1kwMUn2U7W-00G3at; Thu, 03 Dec 2020 13:48:07 +0100
 From: "Enrico Weigelt, metux IT consult" <info@metux.net>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 03/11] drivers: staging: gdm724x: remove unneeded
+Subject: [PATCH 04/11] drivers: staging: goldfish: remove unneeded
  MODULE_VERSION() call
-Date: Thu,  3 Dec 2020 13:47:55 +0100
-Message-Id: <20201203124803.23390-3-info@metux.net>
+Date: Thu,  3 Dec 2020 13:47:56 +0100
+Message-Id: <20201203124803.23390-4-info@metux.net>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20201203124803.23390-1-info@metux.net>
 References: <20201203124803.23390-1-info@metux.net>
-X-Provags-ID: V03:K1:y/GRYT+te7Xvb7tqixaHWNKlrsFAQsktrzB4LZEe1ypwz1DoS68
- HNy5FLm7U6iklFSixKOCHtXY2kF48DiVaeuPrLGmy0DXsQZyGMBuHVtCM4C5T04ORFcmFb9
- 1QNyTCBTBB861jFXXj1JCfg22dQDfhM52ieKjGpOtFqygA1jxZCid554JQBNmBAL1CCYJAD
- Xllzu1X8tGbIRTfaM6k7w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:f24F5x+x0sk=:/niJrw9CbZxm8SsYM0Uqyt
- 54SI3myUUg/yESet1Neh6kEryUvzRVV3D0etBZG1U06WU041rOie57lSUYeSpCaCPH4n56OD8
- s9Lklkmj/Ci16AIN+3FKW8HBz1z41XUzntXRkm4uT6ZHah3Yq31iG8aXQLCQmmfVaRIwxZom9
- B4kCaZVaCKyWrxvVoVM814L+H+SJjk+qy7fStVwXdn1AlegP5MuSjQhNw7KJy7Z+a/nJoDVQL
- XHya0MD8jPFKQrJsem41b3YKrCluMZqOU9ZeXI7mIg8TDcQidGv/7ur3I/buC/U5nlZEGcX1z
- Watp+frjGAYm8TtIboTE9++3BRc/Rlbi77wRIro32Fwg9VjGRd9q3pS2srkwZLZKWOF9LjCQr
- bq3XFUNXcAOhVeYgObI7ew9jNXoEuYKcCVgbB85Zm+CLTJk+Ph9L3wBKvp68P
+X-Provags-ID: V03:K1:4VMUivbUOMUD8OthMTSocKelq1MbRgHbaY3f/G6xITxz6Xk22M8
+ uEHUC/m7pcHhQN7/1teMHnGJ105bj2MFxIG8OKD8iMvw0OijeR18OxT+t8B0FkJvqbNflL2
+ kBIVNRlu9uGg7FSNGDM3EvhgOQpvUQ/ujKwC7A+tlDShQON10tV25yv0S6bLDTnEhdvdql7
+ Mi+EHZ1SnUSeR+e459RGA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:/ZThhDNRtBg=:nhBRCngE4HdS48BlApC8N0
+ ONTzsyy9ujSC4Xeo4w9hxz3+VWhpmVANsgQOAJXhGAbxAOONikbDE3xX3mM/8A1v7qv0GoM6u
+ qhcDtZyGVu9+gbScyuV0g7+9cqiYQhwEG5DTqQNb59qfKoSvttrPrX8Uffz5UwTNqtScGHHBF
+ IXtFSlwWy87137LwHju9B1fgIG+U87TnNu+8di0HDUUpRD8RgwUjOEOkAAYdQBmE6EDq4C7iY
+ ZYdyZ1IHuiCls74t1twRXYX8JX674vhxqqi1e1MaWLfxL5xqY18X7eH4TFkn75hWw3zPyLuig
+ vy7NQcwZDhyQCYwcRQoUUDmfmZIps7uRuz330L3JPoqP8CpqLeZKXdZgPkpWAuygzScxOZUmi
+ 9Gr9AGejryjR2VV6Qgia9N7SnlGfrYRyoQYAjJXxomK2+nxFUhlJ3QSHkbP7k
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,41 +77,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove MODULE_VERSION(), as it doesn't seem to serve any practical purpose.
-For in-kernel drivers, the kernel version matters. And the code has received
-lots of changes, without the version ever been touched (remained constant
-since landing in the mainline tree), so it doesn't seem to have any practical
+Remove MODULE_VERSION(), as it doesn't seem to have much practical purpose.
+For in-kernel drivers, the kernel version matters. The driver received lots
+of changes, but version number has remained the same since it's introducing
+into mainline, seven years ago. So, it doesn't seem to have much practical
 meaning anymore.
 
 Signed-off-by: Enrico Weigelt <info@metux.net>
 ---
- drivers/staging/gdm724x/gdm_lte.h | 1 -
- drivers/staging/gdm724x/gdm_usb.c | 1 -
- 2 files changed, 2 deletions(-)
+ drivers/staging/goldfish/goldfish_audio.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/gdm724x/gdm_lte.h b/drivers/staging/gdm724x/gdm_lte.h
-index f2143a6e0e99..bf6478ab05dd 100644
---- a/drivers/staging/gdm724x/gdm_lte.h
-+++ b/drivers/staging/gdm724x/gdm_lte.h
-@@ -11,7 +11,6 @@
- 
- #define MAX_NIC_TYPE		4
- #define MAX_RX_SUBMIT_COUNT	3
--#define DRIVER_VERSION		"3.7.17.0"
- 
- enum TX_ERROR_CODE {
- 	TX_NO_ERROR = 0,
-diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
-index dc4da66c3695..aa6f08396396 100644
---- a/drivers/staging/gdm724x/gdm_usb.c
-+++ b/drivers/staging/gdm724x/gdm_usb.c
-@@ -1003,6 +1003,5 @@ static void __exit gdm_usb_lte_exit(void)
- module_init(gdm_usb_lte_init);
- module_exit(gdm_usb_lte_exit);
- 
--MODULE_VERSION(DRIVER_VERSION);
- MODULE_DESCRIPTION("GCT LTE USB Device Driver");
+diff --git a/drivers/staging/goldfish/goldfish_audio.c b/drivers/staging/goldfish/goldfish_audio.c
+index 0c65a0121dde..4a23f40e549a 100644
+--- a/drivers/staging/goldfish/goldfish_audio.c
++++ b/drivers/staging/goldfish/goldfish_audio.c
+@@ -24,7 +24,6 @@
+ MODULE_AUTHOR("Google, Inc.");
+ MODULE_DESCRIPTION("Android QEMU Audio Driver");
  MODULE_LICENSE("GPL");
+-MODULE_VERSION("1.0");
+ 
+ struct goldfish_audio {
+ 	char __iomem *reg_base;
 -- 
 2.11.0
 
