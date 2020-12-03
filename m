@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2DEB2CCCEA
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 03:59:18 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83FF52CCDD5
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 05:21:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 113DC86D5F;
-	Thu,  3 Dec 2020 02:59:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 12F0987273;
+	Thu,  3 Dec 2020 04:21:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fwTbqC8pCtOF; Thu,  3 Dec 2020 02:59:16 +0000 (UTC)
+	with ESMTP id q0ERTy2gxNS9; Thu,  3 Dec 2020 04:21:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DDD1386A36;
-	Thu,  3 Dec 2020 02:59:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3723F87278;
+	Thu,  3 Dec 2020 04:21:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 18D961BF4DB
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 02:58:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4663E1BF2F3
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 04:21:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1038086A36
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 02:58:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 42D1587273
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 04:21:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K0udf533Xb42 for <devel@linuxdriverproject.org>;
- Thu,  3 Dec 2020 02:58:40 +0000 (UTC)
+ with ESMTP id sWuKmkFcAD2j for <devel@linuxdriverproject.org>;
+ Thu,  3 Dec 2020 04:21:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
- [209.85.166.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 03B3186A1F
- for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 02:58:40 +0000 (UTC)
-Received: by mail-io1-f66.google.com with SMTP id o8so598194ioh.0
- for <devel@driverdev.osuosl.org>; Wed, 02 Dec 2020 18:58:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=lfDZP13PR8kC5Li0Ht5HKu9mGjw3wiKn6x/Hn9RPxR0=;
- b=C29z1Oa9gw1hNYIVA2ni+gVAnY+4+Xs8wAD+Ua8XAzYBh5xMg3LGmXDA+XZlUgFNXv
- xK9CEAhuWWst/axaNxK+5pRoHCGaUYRZjQr+edJvApNQKxxsacBaQx/g/zOvx6zdZh/8
- xzAEm7azQaRqqvQZe3bFaFVEat7F2oFqHOgrPhHuQVtwF3N9L6+AH6U1+x4V0PBq9m3r
- /0yT0Q4J7jhvRGYiW/323O2+AdN2bQHGLK0plRs/djkS5fBH/kBnluyzop3lqDAwhOg6
- m6cJqjIsfYETdz4zIhBYVTfQA/jAeasdIiRWnFM46fgooRy6jNJWrue9GNUcdilRH6CN
- nyiA==
+Received: from mail-ua1-f68.google.com (mail-ua1-f68.google.com
+ [209.85.222.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F095D87267
+ for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 04:21:00 +0000 (UTC)
+Received: by mail-ua1-f68.google.com with SMTP id t19so291278uaq.1
+ for <devel@driverdev.osuosl.org>; Wed, 02 Dec 2020 20:21:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=lfDZP13PR8kC5Li0Ht5HKu9mGjw3wiKn6x/Hn9RPxR0=;
- b=RU+WHZRhLaCe5uFBsB/e0cFZLi/vSctwQyCz7Jvj+0PJYEfUj9FZZKpzOBErmNZdwh
- J2zY9JyHE5/NuksZL9sdwLsU7H4Di8gDaVc94Jt2PwFKjDHyk3cfYsya5QrEo8hHwDXS
- SBhoqy+6AVab7zOZT5DGkBMpv4RDA9LzfSdtxihbMK2GCW6rV2d/SeiEFm1hVuDgzLIA
- dwvIwoz8NfipObyy4Q4EiEc22Jx5V27DQbLQbkSonr+7zkj03DsPnrfkiq/eD6szFuKM
- ork4RN6ASr5g9JQHaQbF+9553d2Q1izZG4YqkwNYcHtvPYPsF8ui7aDN6P2M8sXsfB+l
- zyRQ==
-X-Gm-Message-State: AOAM533uMnrnbcmzfSKir+rP9f3PJGwD/+lmCcEJKyQ39h4abyYCYWea
- 0rxZUTzDLv0MMUIswyL+Pv8=
-X-Google-Smtp-Source: ABdhPJyBMVTDz7Qx/VxSc1uLTEG+NB92GihnZtgnmf28tACRkRPfZcdphhp1jif3iR+rgg1a7ZCJwA==
-X-Received: by 2002:a02:340c:: with SMTP id x12mr1556985jae.75.1606964319048; 
- Wed, 02 Dec 2020 18:58:39 -0800 (PST)
-Received: from a ([24.13.98.51])
- by smtp.gmail.com with ESMTPSA id y13sm324166iop.14.2020.12.02.18.58.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Dec 2020 18:58:38 -0800 (PST)
-Date: Wed, 2 Dec 2020 20:58:36 -0600
-From: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
-To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net, hdegoede@redhat.com
-Subject: [PATCH] Staging: rtl8723bs/core fix brace coding style issues in
- rtw_ioctl_set.c
-Message-ID: <20201203025836.GA420974@a>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DcIEExrbxW09u75pxnwKALCT9ZbEoGFab0Y+pgzyv5k=;
+ b=tAhQN9hOEvvEOdqbdUrfAHnsnH4R1al2m0Lu89NvB8x1sHuNGlvk5Z0A23NDrewJTM
+ DCGz/aW6drez6CFfMW7wLl+ql+YFGvN2XsURSjM78dMjBgmlrMq6RZpSaR+T9jsb4xhI
+ W4m+C76+Tlp8iHxXGxGKuN4/vYc4BUjfGSApNfX62PPlYCX0C3mEOnsaj5srbSuT4Joj
+ vlcVSQGP1A+xlDEq6zqPC5q+DlkaLwMLCjutf5C+Slskv/IKydg08AHe5Ym8pVypMmqP
+ 64Uge29xdwvsay+ZcEDEfLUw7dx7ccAjgvE2xggwgXgH7kM8XT8j/yjXpJ28MC6vfATZ
+ Sj6Q==
+X-Gm-Message-State: AOAM5302enbbU7UnY5JDCT/H9L4gf/scBWP6jlrseDRV4Hucs1Or7q4E
+ Kgz7ZyH1XdrXAkqi0KDhVikEAwAtH4pLXQ==
+X-Google-Smtp-Source: ABdhPJzPepVEhVSUZXiLK3RJfOAfzk+dS4fAfBvJwMGYxt7p2nTKhRkZIVe0z6g0aoJtruW2nCY9VA==
+X-Received: by 2002:ab0:5f9e:: with SMTP id b30mr997029uaj.35.1606969259464;
+ Wed, 02 Dec 2020 20:20:59 -0800 (PST)
+Received: from mail-vs1-f43.google.com (mail-vs1-f43.google.com.
+ [209.85.217.43])
+ by smtp.gmail.com with ESMTPSA id f1sm2525vkh.12.2020.12.02.20.20.57
+ for <devel@driverdev.osuosl.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Dec 2020 20:20:58 -0800 (PST)
+Received: by mail-vs1-f43.google.com with SMTP id s85so559289vsc.3
+ for <devel@driverdev.osuosl.org>; Wed, 02 Dec 2020 20:20:57 -0800 (PST)
+X-Received: by 2002:a05:6102:832:: with SMTP id
+ k18mr1065101vsb.2.1606969257087; 
+ Wed, 02 Dec 2020 20:20:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
+References: <20201116125617.7597-1-m.cerveny@computer.org>
+ <20201116125617.7597-4-m.cerveny@computer.org>
+In-Reply-To: <20201116125617.7597-4-m.cerveny@computer.org>
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Thu, 3 Dec 2020 12:20:45 +0800
+X-Gmail-Original-Message-ID: <CAGb2v66T9aakxRQNBbA+=EC-d5EpmUrZSK5xTW=orK6Z7PyG9Q@mail.gmail.com>
+Message-ID: <CAGb2v66T9aakxRQNBbA+=EC-d5EpmUrZSK5xTW=orK6Z7PyG9Q@mail.gmail.com>
+Subject: Re: [PATCH v3 3/6] ARM: dts: sun8i: v3s: Add node for system control
+To: Martin Cerveny <m.cerveny@computer.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,143 +83,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, devicetree <devicetree@vger.kernel.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mark Brown <broonie@kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>, Icenowy Zheng <icenowy@aosc.io>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix all the brace code style warnings found by the checkpatch tool at the following lines:
-rtw_ioctl_set.c:178: WARNING: braces {} are not necessary for any arm of this statement
-rtw_ioctl_set.c:219: WARNING: braces {} are not necessary for any arm of this statement
-rtw_ioctl_set.c:255: WARNING: braces {} are not necessary for any arm of this statement
-rtw_ioctl_set.c:324: WARNING: braces {} are not necessary for any arm of this statement
-rtw_ioctl_set.c:372: WARNING: braces {} are not necessary for any arm of this statement
-rtw_ioctl_set.c:396: WARNING: braces {} are not necessary for any arm of this statement
-rtw_ioctl_set.c:441: WARNING: braces {} are not necessary for single statement blocks
-rtw_ioctl_set.c:527: WARNING: braces {} are not necessary for any arm of this statement
+Hi,
 
-Signed-off-by: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
----
- .../staging/rtl8723bs/core/rtw_ioctl_set.c    | 38 ++++++++-----------
- 1 file changed, 15 insertions(+), 23 deletions(-)
+On Mon, Nov 16, 2020 at 8:57 PM Martin Cerveny <m.cerveny@computer.org> wrote:
+>
+> Allwinner V3s has system control and SRAM C1 region similar to H3.
+>
+> Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
+> ---
+>  arch/arm/boot/dts/sun8i-v3s.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+> index 0c7341676921..70193512c222 100644
+> --- a/arch/arm/boot/dts/sun8i-v3s.dtsi
+> +++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+> @@ -161,6 +161,20 @@ syscon: system-control@1c00000 {
+>                         #address-cells = <1>;
+>                         #size-cells = <1>;
+>                         ranges;
+> +
+> +                       sram_c: sram@1d00000 {
+> +                               compatible = "mmio-sram";
+> +                               reg = <0x01d00000 0x80000>;
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-index 3adeca6f20ec..1cfdf7c93662 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-@@ -175,11 +175,10 @@ u8 rtw_set_802_11_bssid(struct adapter *padapter, u8 *bssid)
- 
- 
- 	DBG_871X("Set BSSID under fw_state = 0x%08x\n", get_fwstate(pmlmepriv));
--	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true)
- 		goto handle_tkip_countermeasure;
--	} else if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true) {
-+	else if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true)
- 		goto release_mlme_lock;
--	}
- 
- 	if (check_fwstate(pmlmepriv, _FW_LINKED|WIFI_ADHOC_MASTER_STATE) == true) {
- 		RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_, ("set_bssid: _FW_LINKED||WIFI_ADHOC_MASTER_STATE\n"));
-@@ -216,11 +215,10 @@ u8 rtw_set_802_11_bssid(struct adapter *padapter, u8 *bssid)
- 	memcpy(&pmlmepriv->assoc_bssid, bssid, ETH_ALEN);
- 	pmlmepriv->assoc_by_bssid = true;
- 
--	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true)
- 		pmlmepriv->to_join = true;
--	} else {
-+	else
- 		status = rtw_do_join(padapter);
--	}
- 
- release_mlme_lock:
- 	spin_unlock_bh(&pmlmepriv->lock);
-@@ -252,11 +250,10 @@ u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid *ssid)
- 	spin_lock_bh(&pmlmepriv->lock);
- 
- 	DBG_871X("Set SSID under fw_state = 0x%08x\n", get_fwstate(pmlmepriv));
--	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true)
- 		goto handle_tkip_countermeasure;
--	} else if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true) {
-+	else if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true)
- 		goto release_mlme_lock;
--	}
- 
- 	if (check_fwstate(pmlmepriv, _FW_LINKED|WIFI_ADHOC_MASTER_STATE) == true) {
- 		RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_,
-@@ -321,11 +318,10 @@ u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid *ssid)
- 	memcpy(&pmlmepriv->assoc_ssid, ssid, sizeof(struct ndis_802_11_ssid));
- 	pmlmepriv->assoc_by_bssid = false;
- 
--	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true)
- 		pmlmepriv->to_join = true;
--	} else {
-+	else
- 		status = rtw_do_join(padapter);
--	}
- 
- release_mlme_lock:
- 	spin_unlock_bh(&pmlmepriv->lock);
-@@ -369,11 +365,10 @@ u8 rtw_set_802_11_connect(struct adapter *padapter, u8 *bssid, struct ndis_802_1
- 	DBG_871X_LEVEL(_drv_always_, FUNC_ADPT_FMT"  fw_state = 0x%08x\n",
- 		FUNC_ADPT_ARG(padapter), get_fwstate(pmlmepriv));
- 
--	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true)
- 		goto handle_tkip_countermeasure;
--	} else if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true) {
-+	else if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true)
- 		goto release_mlme_lock;
--	}
- 
- handle_tkip_countermeasure:
- 	if (rtw_handle_tkip_countermeasure(padapter, __func__) == _FAIL) {
-@@ -393,11 +388,10 @@ u8 rtw_set_802_11_connect(struct adapter *padapter, u8 *bssid, struct ndis_802_1
- 		pmlmepriv->assoc_by_bssid = false;
- 	}
- 
--	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
-+	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true)
- 		pmlmepriv->to_join = true;
--	} else {
-+	else
- 		status = rtw_do_join(padapter);
--	}
- 
- release_mlme_lock:
- 	spin_unlock_bh(&pmlmepriv->lock);
-@@ -438,9 +432,8 @@ u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter,
- 			rtw_free_assoc_resources(padapter, 1);
- 
- 		if ((*pold_state == Ndis802_11Infrastructure) || (*pold_state == Ndis802_11IBSS)) {
--			if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
-+			if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
- 				rtw_indicate_disconnect(padapter); /* will clr Linked_state; before this function, we must have checked whether issue dis-assoc_cmd or not */
--			}
- 	       }
- 
- 		*pold_state = networktype;
-@@ -524,11 +517,10 @@ u8 rtw_set_802_11_bssid_list_scan(struct adapter *padapter, struct ndis_802_11_s
- 		RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_, ("rtw_set_802_11_bssid_list_scan fail since fw_state = %x\n", get_fwstate(pmlmepriv)));
- 		res = true;
- 
--		if (check_fwstate(pmlmepriv, (_FW_UNDER_SURVEY|_FW_UNDER_LINKING)) == true) {
-+		if (check_fwstate(pmlmepriv, (_FW_UNDER_SURVEY|_FW_UNDER_LINKING)) == true)
- 			RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_, ("\n###_FW_UNDER_SURVEY|_FW_UNDER_LINKING\n\n"));
--		} else {
-+		else
- 			RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_, ("\n###pmlmepriv->sitesurveyctrl.traffic_busy ==true\n\n"));
--		}
- 	} else {
- 		if (rtw_is_scan_deny(padapter)) {
- 			DBG_871X(FUNC_ADPT_FMT": scan deny\n", FUNC_ADPT_ARG(padapter));
--- 
-2.25.1
+How was this address derived? Did you check that there is actually SRAM here?
 
+ChenYu
+
+> +                               #address-cells = <1>;
+> +                               #size-cells = <1>;
+> +                               ranges = <0 0x01d00000 0x80000>;
+> +
+> +                               ve_sram: sram-section@0 {
+> +                                       compatible = "allwinner,sun8i-v3s-sram-c1",
+> +                                                    "allwinner,sun4i-a10-sram-c1";
+> +                                       reg = <0x000000 0x80000>;
+> +                               };
+> +                       };
+>                 };
+>
+>                 tcon0: lcd-controller@1c0c000 {
+> --
+> 2.25.1
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
