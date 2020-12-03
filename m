@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 292C32CD5E0
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 13:51:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 698762CD5E6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 13:51:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9240B2E37C;
-	Thu,  3 Dec 2020 12:51:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 87FB92E38C;
+	Thu,  3 Dec 2020 12:51:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BM9jEl3T24kb; Thu,  3 Dec 2020 12:51:01 +0000 (UTC)
+	with ESMTP id 99gClA6OsEsr; Thu,  3 Dec 2020 12:51:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0B54A2E35F;
+	by silver.osuosl.org (Postfix) with ESMTP id F0EDD2E375;
 	Thu,  3 Dec 2020 12:50:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5771A1BF9B6
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B88FA1BF344
  for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 12:50:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5433787AAC
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B58BE87506
  for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 12:50:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E2QPjPp8JeJT for <devel@linuxdriverproject.org>;
+ with ESMTP id AXNB1jDb2fv9 for <devel@linuxdriverproject.org>;
  Thu,  3 Dec 2020 12:50:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.130])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 11A0E87AA6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.131])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id ED5F587513
  for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 12:50:52 +0000 (UTC)
 Received: from orion.localdomain ([95.118.71.13]) by mrelayeu.kundenserver.de
  (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
- 1MQy0N-1kZRNh0hRX-00NvnC; Thu, 03 Dec 2020 13:48:06 +0100
+ 1Mrfgi-1kPmZ03hwK-00nkW5; Thu, 03 Dec 2020 13:48:07 +0100
 From: "Enrico Weigelt, metux IT consult" <info@metux.net>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 02/11] drivers: staging: gasket: remove unneeded
+Subject: [PATCH 03/11] drivers: staging: gdm724x: remove unneeded
  MODULE_VERSION() call
-Date: Thu,  3 Dec 2020 13:47:54 +0100
-Message-Id: <20201203124803.23390-2-info@metux.net>
+Date: Thu,  3 Dec 2020 13:47:55 +0100
+Message-Id: <20201203124803.23390-3-info@metux.net>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20201203124803.23390-1-info@metux.net>
 References: <20201203124803.23390-1-info@metux.net>
-X-Provags-ID: V03:K1:5cNNaj3L1/oSaoHWBOWl0bfD/3mFxrG/x2hhKeTIwCx0/LVUkqJ
- 9NVSdVPi4tZ8L7wKa7HtR7+OYYkwTIuZXgExz+2yWHIHjzhMXdwkO221R8mu8e3PmZ3gxGh
- KVPomrKpJKUobLqzoQICc41cHBibPpHdW0AblAT4iJkB/TZQGkencXQEj2T/2HetV82Yyph
- PD7FG5NSALtrKTRLxAo+A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ch9o7BlYNY0=:PCQG1wY9TcGzs26MLv2lEQ
- JI/cf0W1LfysAd/VFg13X3YS5gKmsaf3j9MEDQEMb5cNyUKy4CQqjdekZG0SxCW2dE62/VfPl
- xTtXC5ypyvj/C1VNLHFuavsgs4xmO3lRF26k8gKGTS7ZSfW55AjQ7ntjoFWjrL2sU3W9C6Twj
- p3t2OVVPRHH0oqA5WWFfBeN77/Pk45kF5WCzNclG0FJgCz/S63wcjXL6GEUgga+or2MtkPUAY
- O9PygrJ8tBk+sDOpX6KMNbKyRm0tTc7fgdawzvC75cNjo+FsAmuj4uLwZ6QpQQuRwzXRniWaZ
- 2PnovUxiYTTcJuUu8cbmygnPsYvZmIcvCozRwU3nieAYD1UWyw16aZjcTwOxlaKrlIwZD521m
- OuxFxIWDTyckIpwES9kNKA3PhBhQ5QJHmLqZrgYwc2BIP/Y+i3wV8/W+qIVEk
+X-Provags-ID: V03:K1:y/GRYT+te7Xvb7tqixaHWNKlrsFAQsktrzB4LZEe1ypwz1DoS68
+ HNy5FLm7U6iklFSixKOCHtXY2kF48DiVaeuPrLGmy0DXsQZyGMBuHVtCM4C5T04ORFcmFb9
+ 1QNyTCBTBB861jFXXj1JCfg22dQDfhM52ieKjGpOtFqygA1jxZCid554JQBNmBAL1CCYJAD
+ Xllzu1X8tGbIRTfaM6k7w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:f24F5x+x0sk=:/niJrw9CbZxm8SsYM0Uqyt
+ 54SI3myUUg/yESet1Neh6kEryUvzRVV3D0etBZG1U06WU041rOie57lSUYeSpCaCPH4n56OD8
+ s9Lklkmj/Ci16AIN+3FKW8HBz1z41XUzntXRkm4uT6ZHah3Yq31iG8aXQLCQmmfVaRIwxZom9
+ B4kCaZVaCKyWrxvVoVM814L+H+SJjk+qy7fStVwXdn1AlegP5MuSjQhNw7KJy7Z+a/nJoDVQL
+ XHya0MD8jPFKQrJsem41b3YKrCluMZqOU9ZeXI7mIg8TDcQidGv/7ur3I/buC/U5nlZEGcX1z
+ Watp+frjGAYm8TtIboTE9++3BRc/Rlbi77wRIro32Fwg9VjGRd9q3pS2srkwZLZKWOF9LjCQr
+ bq3XFUNXcAOhVeYgObI7ew9jNXoEuYKcCVgbB85Zm+CLTJk+Ph9L3wBKvp68P
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,40 +78,40 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Remove MODULE_VERSION(), as it doesn't seem to serve any practical purpose.
-For in-tree drivers, the kernel version matters. The code has received lots
-of changes, w/o the versions being actively maintained, so it doesn't seem
-to have much practical meaning.
+For in-kernel drivers, the kernel version matters. And the code has received
+lots of changes, without the version ever been touched (remained constant
+since landing in the mainline tree), so it doesn't seem to have any practical
+meaning anymore.
 
 Signed-off-by: Enrico Weigelt <info@metux.net>
 ---
- drivers/staging/gasket/apex_driver.c | 1 -
- drivers/staging/gasket/gasket_core.c | 1 -
+ drivers/staging/gdm724x/gdm_lte.h | 1 -
+ drivers/staging/gdm724x/gdm_usb.c | 1 -
  2 files changed, 2 deletions(-)
 
-diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-index f12f81c8dd2f..66ae99bebfd8 100644
---- a/drivers/staging/gasket/apex_driver.c
-+++ b/drivers/staging/gasket/apex_driver.c
-@@ -718,7 +718,6 @@ static void apex_exit(void)
- 	gasket_unregister_device(&apex_desc);
- }
- MODULE_DESCRIPTION("Google Apex driver");
--MODULE_VERSION(APEX_DRIVER_VERSION);
- MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("John Joseph <jnjoseph@google.com>");
- MODULE_DEVICE_TABLE(pci, apex_pci_ids);
-diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
-index 28dab302183b..763d5ea45e68 100644
---- a/drivers/staging/gasket/gasket_core.c
-+++ b/drivers/staging/gasket/gasket_core.c
-@@ -1809,7 +1809,6 @@ static int __init gasket_init(void)
- }
+diff --git a/drivers/staging/gdm724x/gdm_lte.h b/drivers/staging/gdm724x/gdm_lte.h
+index f2143a6e0e99..bf6478ab05dd 100644
+--- a/drivers/staging/gdm724x/gdm_lte.h
++++ b/drivers/staging/gdm724x/gdm_lte.h
+@@ -11,7 +11,6 @@
  
- MODULE_DESCRIPTION("Google Gasket driver framework");
--MODULE_VERSION(GASKET_FRAMEWORK_VERSION);
- MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Rob Springer <rspringer@google.com>");
- module_init(gasket_init);
+ #define MAX_NIC_TYPE		4
+ #define MAX_RX_SUBMIT_COUNT	3
+-#define DRIVER_VERSION		"3.7.17.0"
+ 
+ enum TX_ERROR_CODE {
+ 	TX_NO_ERROR = 0,
+diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
+index dc4da66c3695..aa6f08396396 100644
+--- a/drivers/staging/gdm724x/gdm_usb.c
++++ b/drivers/staging/gdm724x/gdm_usb.c
+@@ -1003,6 +1003,5 @@ static void __exit gdm_usb_lte_exit(void)
+ module_init(gdm_usb_lte_init);
+ module_exit(gdm_usb_lte_exit);
+ 
+-MODULE_VERSION(DRIVER_VERSION);
+ MODULE_DESCRIPTION("GCT LTE USB Device Driver");
+ MODULE_LICENSE("GPL");
 -- 
 2.11.0
 
