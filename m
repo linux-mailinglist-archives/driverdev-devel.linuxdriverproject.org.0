@@ -2,50 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89AD62CD992
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 15:53:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B52E02CDB27
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Dec 2020 17:25:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D4B687B2D;
-	Thu,  3 Dec 2020 14:52:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0C49387B01;
+	Thu,  3 Dec 2020 16:25:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U4UUfxjESLab; Thu,  3 Dec 2020 14:52:59 +0000 (UTC)
+	with ESMTP id 83-G3R+cdrfe; Thu,  3 Dec 2020 16:25:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BDB1587753;
-	Thu,  3 Dec 2020 14:52:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2BE4087A1C;
+	Thu,  3 Dec 2020 16:25:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9DAA51BF470
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 14:52:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2465B1BF2CA
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 16:25:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9A4B287C5A
- for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 14:52:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 192B5879F2
+ for <devel@linuxdriverproject.org>; Thu,  3 Dec 2020 16:25:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XFIFHlzTbRju for <devel@linuxdriverproject.org>;
- Thu,  3 Dec 2020 14:52:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0FEF487C45
- for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 14:52:56 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id D6E6DAC6A;
- Thu,  3 Dec 2020 14:52:53 +0000 (UTC)
-Message-ID: <25466e2a562765be1d67abd2d1bdae1a089a8d33.camel@suse.de>
-Subject: Re: [PATCH v5 08/11] input: raspberrypi-ts: Release firmware handle
- when not needed
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Date: Thu, 03 Dec 2020 15:52:52 +0100
-In-Reply-To: <20201202060347.GA2034289@dtor-ws>
-References: <20201123183833.18750-1-nsaenzjulienne@suse.de>
- <20201123183833.18750-9-nsaenzjulienne@suse.de>
- <20201202060347.GA2034289@dtor-ws>
-User-Agent: Evolution 3.38.2 
+ with ESMTP id 9ZCAbMMmZdYU for <devel@linuxdriverproject.org>;
+ Thu,  3 Dec 2020 16:25:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from dmz.c-home.cz (gw.c-home.cz [89.24.150.100])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1FF8C87A1C
+ for <devel@driverdev.osuosl.org>; Thu,  3 Dec 2020 16:25:38 +0000 (UTC)
+Received: from dmz.c-home.cz (localhost [127.0.0.1])
+ by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id 0B3GPO9u008783;
+ Thu, 3 Dec 2020 17:25:29 +0100 (CET)
+Received: from localhost (martin@localhost)
+ by dmz.c-home.cz (8.14.4+Sun/8.14.4/Submit) with ESMTP id 0B3GPLrf008777;
+ Thu, 3 Dec 2020 17:25:22 +0100 (CET)
+X-Authentication-Warning: dmz.c-home.cz: martin owned process doing -bs
+Date: Thu, 3 Dec 2020 17:25:21 +0100 (CET)
+From: Martin Cerveny <martin@c-home.cz>
+To: Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH v3 3/6] ARM: dts: sun8i: v3s: Add node for system control
+In-Reply-To: <CAGb2v66T9aakxRQNBbA+=EC-d5EpmUrZSK5xTW=orK6Z7PyG9Q@mail.gmail.com>
+Message-ID: <alpine.GSO.2.00.2012031617500.7044@dmz.c-home.cz>
+References: <20201116125617.7597-1-m.cerveny@computer.org>
+ <20201116125617.7597-4-m.cerveny@computer.org>
+ <CAGb2v66T9aakxRQNBbA+=EC-d5EpmUrZSK5xTW=orK6Z7PyG9Q@mail.gmail.com>
+User-Agent: Alpine 2.00 (GSO 1167 2008-08-23)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,76 +61,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
- wahrenst@gmx.net, p.zabel@pengutronix.de, u.kleine-koenig@pengutronix.de,
- bgolaszewski@baylibre.com, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============0293025520202639640=="
+Reply-To: Martin Cerveny <M.Cerveny@computer.org>
+Cc: devel@driverdev.osuosl.org, devicetree <devicetree@vger.kernel.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mark Brown <broonie@kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>, Icenowy Zheng <icenowy@aosc.io>,
+ Martin Cerveny <m.cerveny@computer.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hello.
 
---===============0293025520202639640==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-ZvftALHIaTsXsRIracDG"
+On Thu, 3 Dec 2020, Chen-Yu Tsai wrote:
 
+> Hi,
+>
+> On Mon, Nov 16, 2020 at 8:57 PM Martin Cerveny <m.cerveny@computer.org> wrote:
+>>
+>> Allwinner V3s has system control and SRAM C1 region similar to H3.
+>>
+>> Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
+>> ---
+>>  arch/arm/boot/dts/sun8i-v3s.dtsi | 14 ++++++++++++++
+>>  1 file changed, 14 insertions(+)
+>>
+>> diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+>> index 0c7341676921..70193512c222 100644
+>> --- a/arch/arm/boot/dts/sun8i-v3s.dtsi
+>> +++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+>> @@ -161,6 +161,20 @@ syscon: system-control@1c00000 {
+>>                         #address-cells = <1>;
+>>                         #size-cells = <1>;
+>>                         ranges;
+>> +
+>> +                       sram_c: sram@1d00000 {
+>> +                               compatible = "mmio-sram";
+>> +                               reg = <0x01d00000 0x80000>;
+>
+> How was this address derived? Did you check that there is actually SRAM here?
 
---=-ZvftALHIaTsXsRIracDG
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Yes, I did some checking (mmap). But I repeated measurement and found 
+mirrored regions:
 
-On Tue, 2020-12-01 at 22:03 -0800, Dmitry Torokhov wrote:
-> Hi Nicolas,
->=20
-> On Mon, Nov 23, 2020 at 07:38:29PM +0100, Nicolas Saenz Julienne wrote:
-> > Use devm_rpi_firmware_get() so as to make sure we release RPi's firmwar=
-e
-> > interface when unbinding the device.
->=20
-> I do not believe this comment is correct any longer. Otherwise:
->=20
-> Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+- SRAM_C is mirrored from 0x0000_4000 (primary location) to 0x01d0_4000 (size 0xb000)
+   (probably exact size is 0xb0c0)
+- rest of 0x01d0_0000 are discontinuously filled with R/W register sets
+   (probably some internals registers from VE) that I thought to be SRAM too
+- register SRAM_CTRL_REG0==0x01c00_0000 (value 0x7fff_ffff) switch whole
+   region 0x01d0_0000-0x01df_ffff __AND__ 0x0000_4000-0x0000_ffff
+- VE/cedrus code use this regions indirectly
+   (VE_AVC_SRAM_PORT_OFFSET/VE_AVC_SRAM_PORT_DATA...)
+   and it is not influenced by "true" SRAM mapping or size
 
-Yes, sorry for that. I'll update it.
+-> so I suppose to better use only SRAM_C lower definition:
 
-Regards,
-Nicolas
+---
+diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+index e8f304125e2d..90d703e5b73b 100644
+--- a/arch/arm/boot/dts/sun8i-v3s.dtsi
++++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+@@ -162,17 +162,17 @@ syscon: system-control@1c00000 {
+  			#size-cells = <1>;
+  			ranges;
 
+-			sram_c: sram@1d00000 {
++			sram_c: sram@4000 {
+  				compatible = "mmio-sram";
+-				reg = <0x01d00000 0x80000>;
++				reg = <0x4000 0xb000>;
+  				#address-cells = <1>;
+  				#size-cells = <1>;
+-				ranges = <0 0x01d00000 0x80000>;
++				ranges = <0 0 0x4000 0xb000>;
 
---=-ZvftALHIaTsXsRIracDG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+  				ve_sram: sram-section@0 {
+  					compatible = "allwinner,sun8i-v3s-sram-c1",
+  						     "allwinner,sun4i-a10-sram-c1";
+-					reg = <0x000000 0x80000>;
++					reg = <0x0 0xb000>;
+  				};
+  			};
+  		};
+---
 
------BEGIN PGP SIGNATURE-----
+Does someone have accessible specific documentation of VE/cedrus for V3s ?
 
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl/I+8QACgkQlfZmHno8
-x/7NvQf+JfeK0Lnf/15akeGZ/8CgqH3D9RSZKgyFKFIcOAUVnKXWdodRdXxrVu0+
-1VgbGz2N5efgb/8exdYKRQqJine/T/NLCHW1PcrUE/NJPvJZ+JdM8P+JcOndFCv3
-ERWwKGhxK5gboL1Av3jiy9rUGSc/xDfmV5JZVDGnaANaDx7TWE0ZrznAqmwLhxfb
-qWo3bToylX8NAWP5vNs24bzPP7KyQHBwXDNuC3LIg3n9D5aj8s/qq/ZbHK3upjIG
-M/3jrHsvITNvyvy5xVhJhlzywtd2780n2VbwUW4JkfxELPxeCrJRmSyop46k98zX
-qBEeTzyBfM9kHKAcklkuqve2moyBtw==
-=2QiO
------END PGP SIGNATURE-----
+Regards, Martin
 
---=-ZvftALHIaTsXsRIracDG--
-
-
---===============0293025520202639640==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> ChenYu
+>
+>> +                               #address-cells = <1>;
+>> +                               #size-cells = <1>;
+>> +                               ranges = <0 0x01d00000 0x80000>;
+>> +
+>> +                               ve_sram: sram-section@0 {
+>> +                                       compatible = "allwinner,sun8i-v3s-sram-c1",
+>> +                                                    "allwinner,sun4i-a10-sram-c1";
+>> +                                       reg = <0x000000 0x80000>;
+>> +                               };
+>> +                       };
+>>                 };
+>>
+>>                 tcon0: lcd-controller@1c0c000 {
+>> --
+>> 2.25.1
+>>
+>>
+>> _______________________________________________
+>> linux-arm-kernel mailing list
+>> linux-arm-kernel@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0293025520202639640==--
-
