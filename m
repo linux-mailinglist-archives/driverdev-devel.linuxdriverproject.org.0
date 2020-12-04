@@ -2,52 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C9EF2CF8D6
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 02:55:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37CF82CF8D9
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 02:55:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 27D2E87D57;
-	Sat,  5 Dec 2020 01:55:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DE60887D28;
+	Sat,  5 Dec 2020 01:55:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JwG7QHAiisFx; Sat,  5 Dec 2020 01:55:17 +0000 (UTC)
+	with ESMTP id HWS-N9ZSD+hU; Sat,  5 Dec 2020 01:55:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD41D87CB8;
-	Sat,  5 Dec 2020 01:55:16 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD71F87CB8;
+	Sat,  5 Dec 2020 01:55:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 887D71BF9C6
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 01:55:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2BEE01BF9C6
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 01:55:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 775E92E368
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 01:55:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 27BAD2E34F
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 01:55:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wHS4zxtpwGJc
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 01:55:14 +0000 (UTC)
+ with ESMTP id Ux31+MxMbXZm for <devel@linuxdriverproject.org>;
+ Sat,  5 Dec 2020 01:55:32 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from vsm-gw.hyogo-dai.ac.jp (vsm-gw.hyogo-dai.ac.jp [202.244.76.12])
- by silver.osuosl.org (Postfix) with ESMTP id EC6E9204B1
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 01:55:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B22C0204B1
+ for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 01:55:32 +0000 (UTC)
 Received: from humans-kc.hyogo-dai.ac.jp (humans-kc.hyogo-dai.ac.jp
  [202.244.77.11])
- by vsm-gw.hyogo-dai.ac.jp (Postfix) with ESMTP id A12D91A4A96;
- Sat,  5 Dec 2020 05:05:07 +0900 (JST)
+ by vsm-gw.hyogo-dai.ac.jp (Postfix) with ESMTP id 59AB71A3660;
+ Sat,  5 Dec 2020 05:05:34 +0900 (JST)
 Received: from humans-kc.hyogo-dai.ac.jp (humans-kc.hyogo-dai.ac.jp
- [127.0.0.1]) by postfix.imss71 (Postfix) with ESMTP id 5BC8D682200;
- Sat,  5 Dec 2020 05:05:07 +0900 (JST)
+ [127.0.0.1]) by postfix.imss71 (Postfix) with ESMTP id 33FAB838858;
+ Sat,  5 Dec 2020 05:05:34 +0900 (JST)
 Received: from hyogo-dai.ac.jp (unknown [202.244.77.11])
- by humans-kc.hyogo-dai.ac.jp (Postfix) with SMTP id 3103F682201;
- Sat,  5 Dec 2020 05:05:07 +0900 (JST)
+ by humans-kc.hyogo-dai.ac.jp (Postfix) with SMTP id 0968B838260;
+ Sat,  5 Dec 2020 05:05:34 +0900 (JST)
 MIME-Version: 1.0
-Message-ID: <20201204200507.0000964F.0187@hyogo-dai.ac.jp>
-Date: Sat, 05 Dec 2020 05:05:07 +0900
+Message-ID: <20201204200534.00009901.0488@hyogo-dai.ac.jp>
+Date: Sat, 05 Dec 2020 05:05:34 +0900
 From: "Dr.Raymond" <tabata@hyogo-dai.ac.jp>
 To: <infocarferr1@aim.com>
 Subject: I am Vice Chairman of Hang Seng Bank, Dr. Raymond Chien
