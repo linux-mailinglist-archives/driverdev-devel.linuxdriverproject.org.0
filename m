@@ -2,52 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EA1C2CEC85
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 11:53:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C89CB2CECE0
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 12:16:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D6E3987EAC;
-	Fri,  4 Dec 2020 10:53:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 393E48802E;
+	Fri,  4 Dec 2020 11:16:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tnxpo5KmMooh; Fri,  4 Dec 2020 10:53:41 +0000 (UTC)
+	with ESMTP id Ua26rV8fiEna; Fri,  4 Dec 2020 11:16:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0873D87136;
-	Fri,  4 Dec 2020 10:53:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2230B87EB4;
+	Fri,  4 Dec 2020 11:16:29 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AD0551BF391
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 10:53:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5567B1BF36B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 11:16:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A97BF875CE
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 10:53:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 50B6D87858
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 11:16:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CfOofJ72oMCP for <devel@linuxdriverproject.org>;
- Fri,  4 Dec 2020 10:53:35 +0000 (UTC)
-X-Greylist: delayed 00:08:32 by SQLgrey-1.7.6
-Received: from mslow2.mail.gandi.net (mslow2.mail.gandi.net [217.70.178.242])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D408D875A2
- for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 10:53:34 +0000 (UTC)
-Received: from relay3-d.mail.gandi.net (unknown [217.70.183.195])
- by mslow2.mail.gandi.net (Postfix) with ESMTP id 669233B3577
- for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 10:44:59 +0000 (UTC)
-X-Originating-IP: 93.34.118.233
-Received: from uno.localdomain (93-34-118-233.ip49.fastwebnet.it
- [93.34.118.233]) (Authenticated sender: jacopo@jmondi.org)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 4544E601C1;
- Fri,  4 Dec 2020 10:44:49 +0000 (UTC)
-Date: Fri, 4 Dec 2020 11:44:56 +0100
-From: Jacopo Mondi <jacopo@jmondi.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Subject: Re: [PATCH] staging: bcm2835: fix vchiq_mmal dependencies
-Message-ID: <20201204104456.hhu76as6ruf5vmqq@uno.localdomain>
-References: <20201203223836.1362313-1-arnd@kernel.org>
+ with ESMTP id 1Uri7KrsCbTC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 11:16:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from e-server.org (103-200-210-82.ip4.readyserver.sg
+ [103.200.210.82])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4868687707
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 11:16:24 +0000 (UTC)
+Received: from [188.207.108.172] (account disnams@e-server.org HELO User)
+ by e-server.org (CommuniGate Pro SMTP 6.1.9 _community_)
+ with ESMTPA id 867634; Fri, 04 Dec 2020 02:55:40 -0800
+From: "MR JABER AL-GHAFR"<steveuur@yahoo.com>
+Subject: Re.Investment
+Date: Fri, 4 Dec 2020 11:55:37 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201203223836.1362313-1-arnd@kernel.org>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+X-Antivirus: AVG (VPS 201202-6, 02/12/2020), Outbound message
+X-Antivirus-Status: Clean
+Message-ID: <auto-000000867634@e-server.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,87 +62,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: alghafrij13@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Arnd,
-
-On Thu, Dec 03, 2020 at 11:38:30PM +0100, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
->
-> When the MMAL code is built-in but the vchiq core config is
-> set to =m, the mmal code never gets built, which in turn can
-> lead to link errors:
-
-My bad, I repetedly ignored the error report received from the 'kernel
-test robot' about this. Thanks for fixing.
-
-For my eduction, why would the vchiq-mmal code not get build if
-vchiq-core is set to M ? I mean, that configuration is indeed wrong,
-as vchiq-mmal uses symbols from vchiq-core and I would expect that to
-fail when building the kernel image, not have the other modules (as
-bcm2835-camera) fail as a consequence when building modules.
-
->
-> ERROR: modpost: "vchiq_mmal_port_set_format" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_port_disable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_port_parameter_set" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_component_finalise" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_port_connect_tunnel" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_component_enable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_finalise" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_component_init" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_component_disable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "mmal_vchi_buffer_init" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_port_enable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_version" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_submit_buffer" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_init" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "mmal_vchi_buffer_cleanup" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
-> ERROR: modpost: "vchiq_mmal_port_parameter_get" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
->
-> Change the Kconfig to depend on BCM2835_VCHIQ like the other drivers,
-> and remove the now redundant dependencies.
->
-> Fixes: b18ee53ad297 ("staging: bcm2835: Break MMAL support out from camera")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Acked-by: Jacopo Mondi <jacopo@jmondi.org>
-
-If you noticed this from the same error notification I recevied it
-might be fair to report:
-Reported-by: kernel test robot <lkp@intel.com>
-
-Thanks
-   j
-
-> ---
->  drivers/staging/vc04_services/vchiq-mmal/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/vc04_services/vchiq-mmal/Kconfig b/drivers/staging/vc04_services/vchiq-mmal/Kconfig
-> index 500c0d12e4ff..c99525a0bb45 100644
-> --- a/drivers/staging/vc04_services/vchiq-mmal/Kconfig
-> +++ b/drivers/staging/vc04_services/vchiq-mmal/Kconfig
-> @@ -1,6 +1,6 @@
->  config BCM2835_VCHIQ_MMAL
->  	tristate "BCM2835 MMAL VCHIQ service"
-> -	depends on (ARCH_BCM2835 || COMPILE_TEST)
-> +	depends on BCM2835_VCHIQ
->  	help
->  	  Enables the MMAL API over VCHIQ interface as used for the
->  	  majority of the multimedia services on VideoCore.
-> --
-> 2.27.0
->
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBEYXkKSSBhbSBKQUJFUiBBTC1HSEFGUkksIFBsZWFzYW50IGdyZWV0aW5ncyB0byB5b3Ug
+YXMgaSBzZWVrIHlvdXIgaW5kdWxnZW5jZSB0byBpbnRyb2R1Y2UgdG8geW91IHRoZSBkZXNpcmUg
+b2YgbXkgcHJpbmNpcGFsknMgd2lzaCwgdG8gbWFrZSBodWdlIGZpbmFuY2lhbCBpbnZlc3RtZW50
+IGluIHlvdXIgaG9tZSBjb3VudHJ5IG9uIGFyZWFzIG9mIG9pbCBhbmQgZ2FzLCByZWFsIGVzdGF0
+ZSwgdG91cmlzbSBhbmQgaG90ZWwsIG1hbnVmYWN0dXJpbmcgYW5kIHByb2R1Y3Rpb24gY29tcGFu
+eSwgYWdyaWN1bHR1cmUsIGZpc2hpbmcsIE1pbmluZyAmIFRyYWRpbmcgb2YgbmF0dXJhbCByZXNv
+dXJjZXMgc3VjaCBhcyBjcnVkZSBvaWwsIGNvYWwsIGdyYXBoaXRlLCBjb2tlLCByZWZpbmVyeSwg
+ZW5lcmd5LCBob3NwaXRhbCBldGMuCgpIZSBuZWVkcyBhIGNhcGFibGUsIHRydXN0d29ydGh5IGFu
+ZCB1bmRlcnN0YW5kaW5nIGJ1c2luZXNzIHBhcnRuZXIsIHdobyBjYW4gY29uZmlkZW50bHkgaGFu
+ZGxlIGFuZCBtYW5hZ2UgaGlzIGludmVzdG1lbnQgZnVuZHMgd2l0aCB1dG1vc3QgY2FyZSBvZiBz
+ZWNyZWN5IHdpdGhvdXQgdHJhY2VzIG9yIGxpbmsgdG8gaGltIGFzIGhlIGlzIHBvbGl0aWNhbGx5
+IGV4cG9zZWQgYXQgdGhlIG1vbWVudCBpbiBoaXMgY291bnRyeS4gSGUgaGFzIGEgaHVnZSBhdmFp
+bGFibGUgZmluYW5jaWFsIHBvcnRmb2xpby4KClBsZWFzZSwgSSB3aWxsIHByb3ZpZGUgbW9yZSBk
+ZXRhaWxzIGFib3V0IHRoZSB0cmFuc2FjdGlvbiBpZiB5b3UgYXJlIHN1cmUgeW91IGNhbiBoYW5k
+bGUgY2xhc3NpZmllZCBpbmZvcm1hdGlvbiBhbmQgYWxzbyBsZXQgbWUga25vdyB5b3VyIGVudGl0
+bGVtZW50IGZvciB0aGUgc29saWNpdGVkIHJvbGUKSSBzaGFsbCBiZSBleHBlY3RpbmcgeW91ciBx
+dWljayByZXBseS4gRS1tYWlsIGFsZ2hhZnJpajEzQGdtYWlsLmNvbQpCZXN0IFJlZ2FyZHMsCkpB
+QkVSIEFMLUdIQUZSSQoKLS0gClRoaXMgZW1haWwgaGFzIGJlZW4gY2hlY2tlZCBmb3IgdmlydXNl
+cyBieSBBVkcuCmh0dHBzOi8vd3d3LmF2Zy5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
+cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
