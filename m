@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98DF12CECB7
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 12:06:41 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D14ED2CECB8
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 12:06:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C69748783C;
-	Fri,  4 Dec 2020 11:06:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AF4AB87B53;
+	Fri,  4 Dec 2020 11:06:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char E1 hex):
-	Subject: Ozn\303\241men\303\255v\303\255tezu-Noti[...]
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+	Subject: Ozn\341men\355v\355tezu-Noti[...]
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 11MJaYQVAjee; Fri,  4 Dec 2020 11:06:39 +0000 (UTC)
+	with ESMTP id SxhILaGWIRgV; Fri,  4 Dec 2020 11:06:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A06F876C5;
-	Fri,  4 Dec 2020 11:06:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 62D8B875DC;
+	Fri,  4 Dec 2020 11:06:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F196C1BF36B
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:36 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C4F01BF9C1
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EDA7D875D5
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 08BA487490
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char E1 hex):
  Subject: Ozn\341men\355v\355tezu-Noti[...]
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rz4W0y82nj8k for <devel@linuxdriverproject.org>;
- Fri,  4 Dec 2020 11:06:35 +0000 (UTC)
+ with ESMTP id 4FhdL4JIVdLA for <devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 11:06:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.inweb.cc (unknown [95.170.145.248])
- by whitealder.osuosl.org (Postfix) with ESMTP id DDC88875A1
- for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 11:06:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1D23A87477
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:34 +0000 (UTC)
 Received: from mail.inweb.cc (localhost [127.0.0.1])
  by mail.inweb.cc (Postfix) with ESMTP id 7DEC42417B2;
  Fri,  4 Dec 2020 17:35:22 +0700 (NOVT)
@@ -50,7 +50,7 @@ X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-Virus-Scanned: ClamAV using ClamSMTP
-Message-Id: <20201204110636.EDA7D875D5@whitealder.osuosl.org>
+Message-Id: <20201204110637.08BA487490@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
