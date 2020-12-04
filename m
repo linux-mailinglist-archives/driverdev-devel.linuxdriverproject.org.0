@@ -1,77 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA62F2CEC55
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 11:40:04 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EA1C2CEC85
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 11:53:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F52B87898;
-	Fri,  4 Dec 2020 10:40:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D6E3987EAC;
+	Fri,  4 Dec 2020 10:53:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k8-FDa5wb_Li; Fri,  4 Dec 2020 10:40:03 +0000 (UTC)
+	with ESMTP id tnxpo5KmMooh; Fri,  4 Dec 2020 10:53:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 58F5987470;
-	Fri,  4 Dec 2020 10:40:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0873D87136;
+	Fri,  4 Dec 2020 10:53:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 22FC31BF391
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 10:40:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AD0551BF391
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 10:53:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1F5BB87C51
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 10:40:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A97BF875CE
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 10:53:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0kvASzGjkEOE for <devel@linuxdriverproject.org>;
- Fri,  4 Dec 2020 10:39:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 24A5387C4E
- for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 10:39:59 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id r18so6076562ljc.2
- for <devel@driverdev.osuosl.org>; Fri, 04 Dec 2020 02:39:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=hlZCJEKzokNwCxy9PppGO+4osNv7sekOt95QGYGMFIY=;
- b=Euj0Lza02dZf9QKfO9NZPmttrzD5xQe6Ta2CE8Y39XnmCStTbJtNwVcgIqQ2G0OIh/
- iFT5iYD00DpxR1oKgLU1vC1ojq8pR8GmXbOLPuSk58sgB6nvoX/fA+xFy8EJdS4G3m60
- 3mPzMEdNUntBXZz85Zpd2PkjjooswMRYHAnddd3X+lnSU0dXHpWJ9nUF+QAR2EUg3eLI
- LhsKnjYNVOCufOH4F/0FyXmWhnlYgRdrnFS+jXloFtbZL4mityFx1I8aERdfJGXKfloX
- 6b97wWVI/W2zp9Xa1XmW0GnVjYl60RcA4ztncCGdWrvvWStDSCJVj4PaszbuvLH43XYF
- MP+w==
-X-Gm-Message-State: AOAM53245ywWMf4rocRcf27lp8dPG0PXxexxFOgze16J9q5vEv6xGBrk
- r0NE31friDDWNaCd+msqh4E=
-X-Google-Smtp-Source: ABdhPJwJfv10aOeyJIlJZY7U4xVm/2/Apb5jMujh/Ugx1ulLYSPkB2FbOrnNq0jrlcThClHnr5QLnw==
-X-Received: by 2002:a05:651c:323:: with SMTP id
- b3mr3029571ljp.452.1607078397416; 
- Fri, 04 Dec 2020 02:39:57 -0800 (PST)
-Received: from xi.terra (c-beaee455.07-184-6d6c6d4.bbcust.telenor.se.
- [85.228.174.190])
- by smtp.gmail.com with ESMTPSA id m16sm1515838lfa.57.2020.12.04.02.39.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Dec 2020 02:39:56 -0800 (PST)
-Received: from johan by xi.terra with local (Exim 4.93.0.4)
- (envelope-from <johan@kernel.org>)
- id 1kl8Vq-0005Ys-Fa; Fri, 04 Dec 2020 11:40:30 +0100
-Date: Fri, 4 Dec 2020 11:40:30 +0100
-From: Johan Hovold <johan@kernel.org>
-To: "wanghai (M)" <wanghai38@huawei.com>
-Subject: Re: [PATCH] staging: greybus: audio: Add missing unlock in
- gbaudio_dapm_free_controls()
-Message-ID: <X8oSHkQZFHCv+Fza@localhost>
-References: <20201204021350.28182-1-wanghai38@huawei.com>
- <X8n2CL58pQ/077rQ@localhost>
- <d95dac95-09d0-66bb-4f3b-5ffa154be174@huawei.com>
+ with ESMTP id CfOofJ72oMCP for <devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 10:53:35 +0000 (UTC)
+X-Greylist: delayed 00:08:32 by SQLgrey-1.7.6
+Received: from mslow2.mail.gandi.net (mslow2.mail.gandi.net [217.70.178.242])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D408D875A2
+ for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 10:53:34 +0000 (UTC)
+Received: from relay3-d.mail.gandi.net (unknown [217.70.183.195])
+ by mslow2.mail.gandi.net (Postfix) with ESMTP id 669233B3577
+ for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 10:44:59 +0000 (UTC)
+X-Originating-IP: 93.34.118.233
+Received: from uno.localdomain (93-34-118-233.ip49.fastwebnet.it
+ [93.34.118.233]) (Authenticated sender: jacopo@jmondi.org)
+ by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 4544E601C1;
+ Fri,  4 Dec 2020 10:44:49 +0000 (UTC)
+Date: Fri, 4 Dec 2020 11:44:56 +0100
+From: Jacopo Mondi <jacopo@jmondi.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Subject: Re: [PATCH] staging: bcm2835: fix vchiq_mmal dependencies
+Message-ID: <20201204104456.hhu76as6ruf5vmqq@uno.localdomain>
+References: <20201203223836.1362313-1-arnd@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d95dac95-09d0-66bb-4f3b-5ffa154be174@huawei.com>
+In-Reply-To: <20201203223836.1362313-1-arnd@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,43 +60,87 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, elder@kernel.org,
- Vaibhav Agarwal <vaibhav.sr@gmail.com>, Mark Greer <mgreer@animalcreek.com>,
- gregkh@linuxfoundation.org, Johan Hovold <johan@kernel.org>,
- linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org,
- dan.carpenter@oracle.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gRnJpLCBEZWMgMDQsIDIwMjAgYXQgMDU6MTk6MjVQTSArMDgwMCwgd2FuZ2hhaSAoTSkgd3Jv
-dGU6Cj4gCj4g5ZyoIDIwMjAvMTIvNCAxNjo0MCwgSm9oYW4gSG92b2xkIOWGmemBkzoKPiA+IE9u
-IEZyaSwgRGVjIDA0LCAyMDIwIGF0IDEwOjEzOjUwQU0gKzA4MDAsIFdhbmcgSGFpIHdyb3RlOgo+
-ID4+IEFkZCB0aGUgbWlzc2luZyB1bmxvY2sgYmVmb3JlIHJldHVybiBmcm9tIGZ1bmN0aW9uCj4g
-Pj4gZ2JhdWRpb19kYXBtX2ZyZWVfY29udHJvbHMoKSBpbiB0aGUgZXJyb3IgaGFuZGxpbmcgY2Fz
-ZS4KPiA+Pgo+ID4+IEZpeGVzOiA1MTBlMzQwZWZlMGMgKCJzdGFnaW5nOiBncmV5YnVzOiBhdWRp
-bzogQWRkIGhlbHBlciBBUElzIGZvciBkeW5hbWljIGF1ZGlvIG1vZHVsZSIpCj4gPj4gUmVwb3J0
-ZWQtYnk6IEh1bGsgUm9ib3QgPGh1bGtjaUBodWF3ZWkuY29tPgo+ID4+IFNpZ25lZC1vZmYtYnk6
-IFdhbmcgSGFpIDx3YW5naGFpMzhAaHVhd2VpLmNvbT4KPiA+PiAtLS0KPiA+PiAgIGRyaXZlcnMv
-c3RhZ2luZy9ncmV5YnVzL2F1ZGlvX2hlbHBlci5jIHwgMSArCj4gPj4gICAxIGZpbGUgY2hhbmdl
-ZCwgMSBpbnNlcnRpb24oKykKPiA+Pgo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
-Z3JleWJ1cy9hdWRpb19oZWxwZXIuYyBiL2RyaXZlcnMvc3RhZ2luZy9ncmV5YnVzL2F1ZGlvX2hl
-bHBlci5jCj4gPj4gaW5kZXggMjM3NTMxYmE2MGYzLi4yOTM2NzVkYmVhMTAgMTAwNjQ0Cj4gPj4g
-LS0tIGEvZHJpdmVycy9zdGFnaW5nL2dyZXlidXMvYXVkaW9faGVscGVyLmMKPiA+PiArKysgYi9k
-cml2ZXJzL3N0YWdpbmcvZ3JleWJ1cy9hdWRpb19oZWxwZXIuYwo+ID4+IEBAIC0xMzUsNiArMTM1
-LDcgQEAgaW50IGdiYXVkaW9fZGFwbV9mcmVlX2NvbnRyb2xzKHN0cnVjdCBzbmRfc29jX2RhcG1f
-Y29udGV4dCAqZGFwbSwKPiA+PiAgIAkJaWYgKCF3KSB7Cj4gPj4gICAJCQlkZXZfZXJyKGRhcG0t
-PmRldiwgIiVzOiB3aWRnZXQgbm90IGZvdW5kXG4iLAo+ID4+ICAgCQkJCXdpZGdldC0+bmFtZSk7
-Cj4gPj4gKwkJCW11dGV4X3VubG9jaygmZGFwbS0+Y2FyZC0+ZGFwbV9tdXRleCk7Cj4gPj4gICAJ
-CQlyZXR1cm4gLUVJTlZBTDsKPiA+PiAgIAkJfQo+ID4+ICAgCQl3aWRnZXQrKzsKPiA+IFRoaXMg
-c3VwZXJmaWNpYWxseSBsb29rcyBjb3JyZWN0LCBidXQgdGhlcmUgc2VlbXMgdG8gYmUgYW5vdGhl
-ciBidWcgaW4KPiA+IHRoaXMgZnVuY3Rpb24uIEl0IGNhbiBiZSB1c2VkIGZyZWUgYW4gYXJyYXkg
-b2Ygd2lkZ2V0cywgYnV0IGlmIG9uZSBvZgo+ID4gdGhlbSBpc24ndCBmb3VuZCB3ZSBqdXN0IGxl
-YWsgdGhlIHJlc3QuIFBlcmhhcHMgdGhhdCByZXR1cm4gc2hvdWxkCj4gPiByYXRoZXIgYmUgIndp
-ZGdldCsrOyBjb250aW51ZTsiLgo+ID4KPiBJIHRoaW5rIHRoaXMgaXMgYSBnb29kIGlkZWEsIHNo
-b3VsZCBJIHNlbmQgYSB2MiBwYXRjaD8KCkxldCdzIGp1c3Qgd2FpdCBhIGJpdCBhbmQgc2VlIHdo
-YXQgVmFpYmhhdiBvciBNYXJrIHNheXMgZmlyc3QuCgpKb2hhbgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
-dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hi Arnd,
+
+On Thu, Dec 03, 2020 at 11:38:30PM +0100, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> When the MMAL code is built-in but the vchiq core config is
+> set to =m, the mmal code never gets built, which in turn can
+> lead to link errors:
+
+My bad, I repetedly ignored the error report received from the 'kernel
+test robot' about this. Thanks for fixing.
+
+For my eduction, why would the vchiq-mmal code not get build if
+vchiq-core is set to M ? I mean, that configuration is indeed wrong,
+as vchiq-mmal uses symbols from vchiq-core and I would expect that to
+fail when building the kernel image, not have the other modules (as
+bcm2835-camera) fail as a consequence when building modules.
+
+>
+> ERROR: modpost: "vchiq_mmal_port_set_format" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_port_disable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_port_parameter_set" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_component_finalise" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_port_connect_tunnel" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_component_enable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_finalise" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_component_init" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_component_disable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "mmal_vchi_buffer_init" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_port_enable" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_version" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_submit_buffer" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_init" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "mmal_vchi_buffer_cleanup" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+> ERROR: modpost: "vchiq_mmal_port_parameter_get" [drivers/staging/vc04_services/bcm2835-camera/bcm2835-v4l2.ko] undefined!
+>
+> Change the Kconfig to depend on BCM2835_VCHIQ like the other drivers,
+> and remove the now redundant dependencies.
+>
+> Fixes: b18ee53ad297 ("staging: bcm2835: Break MMAL support out from camera")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+
+Acked-by: Jacopo Mondi <jacopo@jmondi.org>
+
+If you noticed this from the same error notification I recevied it
+might be fair to report:
+Reported-by: kernel test robot <lkp@intel.com>
+
+Thanks
+   j
+
+> ---
+>  drivers/staging/vc04_services/vchiq-mmal/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vc04_services/vchiq-mmal/Kconfig b/drivers/staging/vc04_services/vchiq-mmal/Kconfig
+> index 500c0d12e4ff..c99525a0bb45 100644
+> --- a/drivers/staging/vc04_services/vchiq-mmal/Kconfig
+> +++ b/drivers/staging/vc04_services/vchiq-mmal/Kconfig
+> @@ -1,6 +1,6 @@
+>  config BCM2835_VCHIQ_MMAL
+>  	tristate "BCM2835 MMAL VCHIQ service"
+> -	depends on (ARCH_BCM2835 || COMPILE_TEST)
+> +	depends on BCM2835_VCHIQ
+>  	help
+>  	  Enables the MMAL API over VCHIQ interface as used for the
+>  	  majority of the multimedia services on VideoCore.
+> --
+> 2.27.0
+>
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
