@@ -1,56 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D14ED2CECB8
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 12:06:42 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A640A2CEE58
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Dec 2020 13:50:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AF4AB87B53;
-	Fri,  4 Dec 2020 11:06:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8328587C66;
+	Fri,  4 Dec 2020 12:50:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char E1 hex):
-	Subject: Ozn\341men\355v\355tezu-Noti[...]
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SxhILaGWIRgV; Fri,  4 Dec 2020 11:06:40 +0000 (UTC)
+	with ESMTP id 2wNMmLhMoHR7; Fri,  4 Dec 2020 12:50:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 62D8B875DC;
-	Fri,  4 Dec 2020 11:06:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EC55B87C53;
+	Fri,  4 Dec 2020 12:50:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0C4F01BF9C1
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:37 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 21A9F1BF86D
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 12:49:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 08BA487490
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1A78D2E2E2
+ for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 12:49:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char E1 hex):
- Subject: Ozn\341men\355v\355tezu-Noti[...]
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4FhdL4JIVdLA for <devel@linuxdriverproject.org>;
- Fri,  4 Dec 2020 11:06:34 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.inweb.cc (unknown [95.170.145.248])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1D23A87477
- for <devel@linuxdriverproject.org>; Fri,  4 Dec 2020 11:06:34 +0000 (UTC)
-Received: from mail.inweb.cc (localhost [127.0.0.1])
- by mail.inweb.cc (Postfix) with ESMTP id 7DEC42417B2;
- Fri,  4 Dec 2020 17:35:22 +0700 (NOVT)
-Received: from User (94.red-83-57-207.dynamicip.rima-tde.net [83.57.207.94])
- by mail.inweb.cc (Postfix) with ESMTPA id 17ED22417F7;
- Fri,  4 Dec 2020 17:35:14 +0700 (NOVT)
-From: "Raymond"<ttt@gateit.ro>
-Subject: Oznámenívítezu-Notification 
-Date: Fri, 4 Dec 2020 11:06:22 -0000
+ with ESMTP id 5R+BQV3zshpZ for <devel@linuxdriverproject.org>;
+ Fri,  4 Dec 2020 12:49:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 60CFF2E1F0
+ for <devel@driverdev.osuosl.org>; Fri,  4 Dec 2020 12:49:57 +0000 (UTC)
+X-Gm-Message-State: AOAM531zSsqh9CFD71/8lz6GF1STrQR5XA2aVP6IkuC40qCmiawflQvq
+ V/5//e4Z8bIvrR0vH8FhQWSiujCqrH3SUyCx1ZE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1607086196;
+ bh=SCXDMZeVgXBiYgVyKgyRTs9OROoKgEN6O5lqo1xultU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=k0tBhHt37W64R82XOTYLCEOW9TKm5xlToou1Xwm2cwrHRSEXoM6KvQgU/47GquCYF
+ AopO4nM/SfkQ3z4xBboop8Zvcyb8/nHmjv/HVhYsEtKS3qQ4U6C34ONZ6mPK79kYrJ
+ EbHZm+25pnRs3x1DPYSpUE1k7DtbgPk6LGUr2kU/7AtSQmhVjCyefxj4dkxGy8DnWc
+ tO8ZZjDtcHsERZdJdafwk119U15xwn5v1MCfimF85mvn0YxqdRoMd/jPqC++8GjDGF
+ 4QJzR1TyPHS5VDklkNjv82Gh4hd2Z9Uki7KDhoclhHADFyy6YQ6Ce/fOxTZqyAzvKQ
+ j3bkXS3h0A5QQ==
+X-Google-Smtp-Source: ABdhPJzLJsPP6X76kIsw8diIwzUdJladshIAUH8jWe7Lsz6t5eMIeHR928VTeF+NzXpAc0SAxhJ8TMUp0o0cO8eOlmQ=
+X-Received: by 2002:a9d:be1:: with SMTP id 88mr3555296oth.210.1607086196167;
+ Fri, 04 Dec 2020 04:49:56 -0800 (PST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Virus-Scanned: ClamAV using ClamSMTP
-Message-Id: <20201204110637.08BA487490@hemlock.osuosl.org>
+References: <20201203223836.1362313-1-arnd@kernel.org>
+ <20201204104456.hhu76as6ruf5vmqq@uno.localdomain>
+In-Reply-To: <20201204104456.hhu76as6ruf5vmqq@uno.localdomain>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Fri, 4 Dec 2020 13:49:39 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a0PzyP9L5zYvfTCmAtCSxZBBjg6Pzc6Ta91gWH_HXVmNw@mail.gmail.com>
+Message-ID: <CAK8P3a0PzyP9L5zYvfTCmAtCSxZBBjg6Pzc6Ta91gWH_HXVmNw@mail.gmail.com>
+Subject: Re: [PATCH] staging: bcm2835: fix vchiq_mmal dependencies
+To: Jacopo Mondi <jacopo@jmondi.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,32 +68,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jaimesanchez43@aol.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: driverdevel <devel@driverdev.osuosl.org>, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T3pu4W1lbu0gdu10ZXp1ICEhIS4KClZhmmUgZS1tYWlsb3bpIElEIHrtc2thbG8gMTUwIDAwMCww
-MCBldXIgKFN0byBwYWRlc+F0IHRpc+1jIGV1cikgdiBwcm9ncmFtdSBMb3R0b01heCBJbnRlcm5h
-dGlvbmFsIENoYXJpdHkuUmVmIE5vIFNwCi8xNzkvMC0zOS80NC80LTA3L0VTLkx1Y2t5IGMuOSAv
-IDQ0LzE1LzI3IC8gNDkuUHJvIHbtY2UgaW5mb3JtYWPtIGEgcmVrbGFtYWNlIGtvbnRha3R1anRl
-IHByb3PtbSBuYZplaG8geuFzdHVwY2Ugbu2eZTsKCk7hcm9kbu0gYWdlbnR1cmEgcG9zdGNvZGUg
-Uy5MClBhbu0gSmFpbWUgU2FuY2hlem924QpFLW1haWw6amFpbWVzYW5jaGV6NDNAYW9sLmNvbQpT
-IHZhmu1tIHBsbv1tIGpt6W5lbSwgYWRyZXNvdSwgdmVrZW0sIHphbWVzdG7hbu1tLCB0ZWxlZm9u
-bu1taSBj7XNseSBQb3NsYXQgb2Rwb3ZlZCBuYSB0ZW50byBlLW1haWw6amFpbWVzYW5jaGV6NDNA
-YW9sLmNvbQpQb3pu4W1rYTogSmVkbuEgc2UgbyBtZXppbuFyb2Ru7SBsb3Rlcmlqbu0gcHJvZ3Jh
-bS4gVGVudG8geuF6bmFtIGJ5bCBhdXRvbWF0aWNreSBwcmVsb55lbiB6IGFuZ2xpY3RpbnkgZG8g
-U2xvdmFrLgoKR3JhdHVsYWNlIQpfX19fX19fX19fXwpXaW5uZXJzIE5vdGlmaWNhdGlvbiAhISEu
-CgpZb3VyIGVtYWlsIElEIGhhcyB3b24ggDE1MCwwMDAuMDAgZXVyb3MgKE9uZSBodW5kcmVkIGFu
-ZCBmaWZ0eSB0aG91c2FuZCBFVVIpIGluIExvdHRvTWF4IEludGVybmF0aW9uYWwgQ2hhcml0eSBw
-cm9ncmFtLlJlZiBObyBTcAovMTc5LzAtMzkvNDQvNC0wNy9FUy5MdWNreSBOby45LzQ0LzE1LzI3
-LzQ5LkZvciBtb3JlIGluZm9ybWF0aW9uIGFuZCBjbGFpbSBwcm9jZWR1cmUsIHBsZWFzZSBjb250
-YWN0IG91ciBhZ2VudCBiZWxvdzsKCk5hdGlvbmFsIFBvc3RDb2RlIEFnZW5jeS5TLkwKTXIuSmFp
-bWUgU2FuY2hlegpFLW1haWw6amFpbWVzYW5jaGV6NDNAYW9sLmNvbQoKV2l0aCB5b3VyIGZ1bGwg
-bmFtZSwgYWRkcmVzcywgYWdlLCBvY2N1cGF0aW9uLCBwaG9uZSBudW1iZXJzIFNlbmQgeW91ciBh
-bnN3ZXIgdG8gdGhpcyBlLW1haWw6amFpbWVzYW5jaGV6NDNAYW9sLmNvbQpOb3RlOiBUaGlzIGlz
-IGFuIGludGVybmF0aW9uYWwgbG90dGVyeSBwcm9ncmFtLgpDb25ncmF0dWxhdGlvbnMhZHlkeQpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWls
-aW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2Lmxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On Fri, Dec 4, 2020 at 11:44 AM Jacopo Mondi <jacopo@jmondi.org> wrote:
+>
+> Hi Arnd,
+>
+> On Thu, Dec 03, 2020 at 11:38:30PM +0100, Arnd Bergmann wrote:
+> > From: Arnd Bergmann <arnd@arndb.de>
+> >
+> > When the MMAL code is built-in but the vchiq core config is
+> > set to =m, the mmal code never gets built, which in turn can
+> > lead to link errors:
+>
+> My bad, I repetedly ignored the error report received from the 'kernel
+> test robot' about this. Thanks for fixing.
+>
+> For my eduction, why would the vchiq-mmal code not get build if
+> vchiq-core is set to M ? I mean, that configuration is indeed wrong,
+> as vchiq-mmal uses symbols from vchiq-core and I would expect that to
+> fail when building the kernel image, not have the other modules (as
+> bcm2835-camera) fail as a consequence when building modules.
+
+
+drivers/staging/Makefile has this line:
+
+obj-$(CONFIG_BCM2835_VCHIQ)     += vc04_services/
+
+when CONFIG_BCM2835_VCHIQ=m, the kbuild infrastructure
+only enters the subdirectory while building modules, but a built-in
+mmal driver is not a loadable module, so it does not get built
+at that time. When compiling the built-in code, the subdirectory is
+not entered.
+
+> > Fixes: b18ee53ad297 ("staging: bcm2835: Break MMAL support out from camera")
+> > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+>
+> Acked-by: Jacopo Mondi <jacopo@jmondi.org>
+>
+> If you noticed this from the same error notification I recevied it
+> might be fair to report:
+> Reported-by: kernel test robot <lkp@intel.com>
+
+I had not seen that report but found it during my own testing,
+thanks for adding.
+
+      Arnd
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
