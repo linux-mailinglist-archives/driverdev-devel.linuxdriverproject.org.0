@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B1C82CF91C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 03:58:49 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57FB72CF937
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 04:49:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 74905878B7;
-	Sat,  5 Dec 2020 02:58:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AA0BB87AF8;
+	Sat,  5 Dec 2020 03:49:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nF3DsIv9Go47; Sat,  5 Dec 2020 02:58:46 +0000 (UTC)
+	with ESMTP id 1xO3WxUBQiWx; Sat,  5 Dec 2020 03:49:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DCFDE877D4;
-	Sat,  5 Dec 2020 02:58:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8DFA287AC5;
+	Sat,  5 Dec 2020 03:49:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8CA761BF36D
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 02:58:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AB3DB1BF990
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 03:49:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5E5FD207EF
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 02:58:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A808D87AA2
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 03:49:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8SGvFN6PHaV0 for <devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 02:58:42 +0000 (UTC)
+ with ESMTP id IqO3jcPFC7m2 for <devel@linuxdriverproject.org>;
+ Sat,  5 Dec 2020 03:49:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id 2F8BA2046D
- for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 02:58:42 +0000 (UTC)
-IronPort-SDR: E2X7V2dUxrxvJz8etQLNjiac2Vo2W1xC+qDoQZmJEvuOFuAz2I/hxjvsiMUk2dSOPGlOYinzEs
- 8k7H9CPq9fpA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9825"; a="258194524"
-X-IronPort-AV: E=Sophos;i="5.78,394,1599548400"; d="scan'208";a="258194524"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CD82787A97
+ for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 03:49:52 +0000 (UTC)
+IronPort-SDR: pq9mHDWrtxZB3LGL1vMzuL0c08hyVKlemshwbdFGd5dhd88FzAfxeLPXLZfY3GTdM7jVJIVVTZ
+ qSaANczzom7Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9825"; a="170917079"
+X-IronPort-AV: E=Sophos;i="5.78,394,1599548400"; d="scan'208";a="170917079"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2020 18:58:41 -0800
-IronPort-SDR: Zdg9CbgfrkpDOw1Sdo01mc6hPaZXvgJTt3Y7+0+DIeb29guQwoQn3TguDumYDk4cWT8ddgX43y
- RN/E4wGAyR7w==
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2020 19:49:51 -0800
+IronPort-SDR: JrL5/C4sih9vlS2E0Vsu7tvsrIyje8Wn1X3u3wqvuBgPdycPYVaEZi0u0FtPG9ZZgT9dKUaHJC
+ 42Tu0pvW/8NQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,394,1599548400"; d="scan'208";a="540943474"
+X-IronPort-AV: E=Sophos;i="5.78,394,1599548400"; d="scan'208";a="336596328"
 Received: from lkp-server01.sh.intel.com (HELO 47754f1311fc) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 04 Dec 2020 18:58:40 -0800
+ by orsmga006.jf.intel.com with ESMTP; 04 Dec 2020 19:49:50 -0800
 Received: from kbuild by 47754f1311fc with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1klNmR-00003R-Pe; Sat, 05 Dec 2020 02:58:39 +0000
-Date: Sat, 05 Dec 2020 10:58:36 +0800
+ id 1klOZx-00004x-Is; Sat, 05 Dec 2020 03:49:49 +0000
+Date: Sat, 05 Dec 2020 11:49:11 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 5812b32e01c6d86ba7a84110702b46d8a8531fe9
-Message-ID: <5fcaf75c.Amq6eJ72Jyza+0vw%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 138f3e1265488a9163be7f379073297ba8545cca
+Message-ID: <5fcb0337.xJYs4DzEkCzVjAzL%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -75,12 +75,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: 5812b32e01c6d86ba7a84110702b46d8a8531fe9  of: fix linker-section match-table corruption
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 138f3e1265488a9163be7f379073297ba8545cca  Staging: rtl8723bs/core fix brace coding style issues in rtw_ioctl_set.c
 
-elapsed time: 726m
+elapsed time: 723m
 
-configs tested: 107
+configs tested: 119
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -92,28 +92,40 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-m68k                          amiga_defconfig
-sh                          r7785rp_defconfig
-sh                         microdev_defconfig
-m68k                       m5275evb_defconfig
+arc                        vdk_hs38_defconfig
+powerpc                      cm5200_defconfig
+arm                          tango4_defconfig
+mips                 decstation_r4k_defconfig
+powerpc                     tqm8555_defconfig
+sh                           se7721_defconfig
 arm                         lpc18xx_defconfig
 powerpc                     tqm5200_defconfig
 sh                            titan_defconfig
 mips                         tb0226_defconfig
-nios2                            allyesconfig
-parisc                generic-64bit_defconfig
-powerpc                     sbc8548_defconfig
-powerpc                     skiroot_defconfig
-sh                          lboxre2_defconfig
 powerpc                      ep88xc_defconfig
 arm                         bcm2835_defconfig
 powerpc                      acadia_defconfig
 arm                         assabet_defconfig
+powerpc                     skiroot_defconfig
+powerpc                   motionpro_defconfig
+mips                           jazz_defconfig
+powerpc                        cell_defconfig
+ia64                             alldefconfig
+nds32                               defconfig
+nios2                            alldefconfig
+powerpc                     redwood_defconfig
+powerpc                          g5_defconfig
+powerpc                         wii_defconfig
+powerpc                 mpc836x_mds_defconfig
+arm                      jornada720_defconfig
+arm                          pxa3xx_defconfig
+openrisc                         alldefconfig
+powerpc                      mgcoge_defconfig
+arm                         s3c2410_defconfig
+openrisc                    or1ksim_defconfig
 mips                  maltasmvp_eva_defconfig
 arm                        trizeps4_defconfig
 arm                        spear3xx_defconfig
-powerpc                    amigaone_defconfig
-powerpc               mpc834x_itxgp_defconfig
 powerpc                 mpc8272_ads_defconfig
 sh                             espt_defconfig
 arm                         vf610m4_defconfig
@@ -129,14 +141,14 @@ nios2                               defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
 c6x                              allyesconfig
-nds32                               defconfig
+nios2                            allyesconfig
 csky                                defconfig
 alpha                               defconfig
 alpha                            allyesconfig
-xtensa                           allyesconfig
 h8300                            allyesconfig
 arc                                 defconfig
 sh                               allmodconfig
+xtensa                           allyesconfig
 parisc                              defconfig
 s390                             allyesconfig
 parisc                           allyesconfig
@@ -170,11 +182,11 @@ i386                 randconfig-a015-20201204
 i386                 randconfig-a012-20201204
 i386                 randconfig-a016-20201204
 riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
 riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
 riscv                               defconfig
 riscv                          rv32_defconfig
-riscv                            allyesconfig
 riscv                            allmodconfig
 x86_64                                   rhel
 x86_64                    rhel-7.6-kselftests
