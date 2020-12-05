@@ -2,79 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57F0F2CFB8C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 15:29:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F0B92CFB94
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 15:47:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 676B586FB4;
-	Sat,  5 Dec 2020 14:29:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 52E7C86F73;
+	Sat,  5 Dec 2020 14:47:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0uaXXzebDB2t; Sat,  5 Dec 2020 14:29:09 +0000 (UTC)
+	with ESMTP id d4elh2K_8ykz; Sat,  5 Dec 2020 14:47:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0553A8639F;
-	Sat,  5 Dec 2020 14:29:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B1A786E09;
+	Sat,  5 Dec 2020 14:47:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B95E31BF3D1
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 14:29:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1ABD61BF3D1
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 14:47:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9D87687558
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 14:29:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1737D87782
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 14:47:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kSvPWleHF3Qj for <devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 14:29:05 +0000 (UTC)
+ with ESMTP id c9PZHtlB5O1j for <devel@linuxdriverproject.org>;
+ Sat,  5 Dec 2020 14:47:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3E598878C6
- for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 14:28:14 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id i9so8889142ioo.2
- for <devel@driverdev.osuosl.org>; Sat, 05 Dec 2020 06:28:14 -0800 (PST)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 739458777F
+ for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 14:47:30 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id l11so4753473plt.1
+ for <devel@driverdev.osuosl.org>; Sat, 05 Dec 2020 06:47:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=0qWSnPq14pK/2TF1N7i6M8TMgylwHfxJyGzNzbUxtWg=;
- b=VxBQMnWWWzbUd0BqiflvaNzHCifCL0HUlVOOVAvuRTcIMzn1bJ15mmeaSwtd4oQA6O
- 5igOxiTVzJn+vjnoTTCi0N7oBAnOUSpP/xYClORLcnXGwg1uFLELXABtaQLYz9NyCnCk
- GTr0JOKTGjjk/S7evTvzWwZg8dOi3Kolob9pIEHskH4giqDS4nnwudnZnPkZeVqEfH8I
- k/HfujsF6FD9B6SzQ5oyiOIS460s74+4lE+yYyc7r5SADe8MrNbCLlU3g2CLEvfhwcO1
- CtFXfcD6i35UdfzIvh2bnciKyF7irP2DQgxiGP8mHsDuA8GLwVPdUETQgIa9dQefgd0S
- IxEQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nXyfW/MOF1GC7gFH6eMrnSd2RczMd1PKQk2yaRcPi1g=;
+ b=NUP7VUBboQYlYfKlvt1q5hm/95Dp0qy9yROg5ye2pE7IOT5Qu8E0iSdta+kqip+dZ8
+ qnrrhhI03C+5Zldh0suZAf381vsBWP5gL7K126mdLr9hwhol7Gdw2YOeP+Yghu5N3TuK
+ kK5qdJ23UyUixbIRYQuoXUJ3tMfZVxXbHrHJJVrgVqWEWPOUzaiQZN3pj/kvsNskFDyr
+ XttB9Qhq0DM/bKb8xXYNhA1ua8KuaXP3ufzCiLLS+iiXUbL7fiKOHYFGK58TMPrPD9xh
+ bueWEhfasB34+9CMZcL2zaY0/AywEoqF0tq1dBCNTbs/7dO+3yNcEOooswCThBrr+Vrc
+ tW5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=0qWSnPq14pK/2TF1N7i6M8TMgylwHfxJyGzNzbUxtWg=;
- b=ufaITqybUXnH9+JuyjrG8O4jy4KW9p4SVAjiiMTPf8uZOaYM4LHvZDv8jWWQ5Tthug
- BE+/lKRP6AlVMEx0gDxo98F1uFvTsYILbLGBnZJIOQMfjmVG0V1mwnhRYpa5qJWqNN94
- W/21/b5/WDzRmW3E/Hhbq2pmWiGar/c9niKydWOPz+76UfGo+34gXGQfQ4le4Sh/fSxQ
- G1BGHJFR/17e1zMOxGsWz3Blj3tfafeutvQ0NhUoaskkSbQ7NuS6ZM0gk4j6jMlzC2Wj
- ImgiXqtD8JZqTSOSywJjCR6K350q1l/ApTdUtgVmkpWQfLypemyEkPxjZMJ5jyZd3BUg
- qoXA==
-X-Gm-Message-State: AOAM5317J8sxuSnSfnywt9GnvpAfA43/mPLWaOQyRyYOwUb14KRsL1cU
- gG1sJl/SGxXQvJa/apvcvLs=
-X-Google-Smtp-Source: ABdhPJxVnKLxgLBfY2bJL3ivoIS40N2M+kyWNYFjfExnjyz9Ea5FlbC1xdgEmQT6TdYbItTfbHI/Hw==
-X-Received: by 2002:a5d:8a1a:: with SMTP id w26mr11135442iod.112.1607178493187; 
- Sat, 05 Dec 2020 06:28:13 -0800 (PST)
-Received: from a ([24.13.98.51])
- by smtp.gmail.com with ESMTPSA id x12sm3737730ila.0.2020.12.05.06.28.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Dec 2020 06:28:12 -0800 (PST)
-Date: Sat, 5 Dec 2020 08:28:10 -0600
-From: YOUR NAME <matthew.v.deangelis@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] Staging: rtl8723bs/core fix brace coding style issues in
- rtw_recv.c
-Message-ID: <20201205142810.GA448750@a>
-References: <20201204220043.GA440355@a>
- <X8tHrHq9lbjdulvA@kroah.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nXyfW/MOF1GC7gFH6eMrnSd2RczMd1PKQk2yaRcPi1g=;
+ b=j/9L+6WdjV4kvDG6F+EnixhrpKUseu3ZB9em+4p0ROGd6B1RI9HM8XvcIiobh6Y2aW
+ xw1TTDq9ODzZq4xP2lDM0xm0sBpuVgjAubniWWfG2nF8tE/IzzsadZF7EIdxog0Xc0UA
+ /wjLVSGhDUtwfZRodmmqVjTnihDPSRTXGYkTT9ilXB7vu6s+exmCaWAHvl3sBNZK+zxJ
+ NTntRJx6mCEqg4k6CuPdBWNQBC6vPPrIegDpokxpji5ZJj2LtCzkZg9Ai4WuzLUsDPw4
+ n8rGOxKRlwriP4erJdJxP7FuQHlEys5ody6CWFH3Z6P3G6380DheU7hHESOm31l2bM6k
+ rnpw==
+X-Gm-Message-State: AOAM5317P3qyBPdN4DNGdwK82RT4pb57+s+V0q/cGk1c7bGv0ucjpwbv
+ zd+/P49kb63mN4IirIdRoXIEIDjkwc5/Dvnku9M=
+X-Google-Smtp-Source: ABdhPJyQ8+KzBh38nM1VVwl++fObl9pwdTRvDAQgKZhdgmR8gwVtB0RBPVqu+vMfPrkTLAwbcR/rrhj8hdKY8OG/5uk=
+X-Received: by 2002:a17:902:324:b029:d8:fdf3:af34 with SMTP id
+ 33-20020a1709020324b02900d8fdf3af34mr8179239pld.70.1607179650020; Sat, 05 Dec
+ 2020 06:47:30 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <X8tHrHq9lbjdulvA@kroah.com>
+References: <20201205103827.31244-1-wanghai38@huawei.com>
+In-Reply-To: <20201205103827.31244-1-wanghai38@huawei.com>
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Date: Sat, 5 Dec 2020 20:16:53 +0530
+Message-ID: <CAAs3648wsmiJw43BAfigLHC_Sr=9Coubk9b=na0dVNTtNwFqXA@mail.gmail.com>
+Subject: Re: [PATCH] staging: greybus: audio: Fix possible leak free widgets
+ in gbaudio_dapm_free_controls
+To: Wang Hai <wanghai38@huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,65 +81,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, pterjan@google.com, vkor@vkten.in,
- amarjargal16@gmail.com, ross.schm.dev@gmail.com
+Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, aibhav.sr@gmail.com,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:GREYBUS SUBSYSTEM" <greybus-dev@lists.linaro.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Dec 05, 2020 at 09:41:16AM +0100, Greg KH wrote:
-> On Fri, Dec 04, 2020 at 04:00:43PM -0600, Brother Matthew De Angelis wrote:
-> > Fix all the brace code style warnings found by checkpatch.pl at the
-> > following lines:
-> > 748, 940, 1039, 1602, 1922, 1939.
-> > At line 940 add a semi-colon to specify a line that does not execute
-> > anything, as in Kernighan and Ritchie
-> > 
-> > Signed-off-by: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723bs/core/rtw_recv.c | 20 +++++++-------------
-> >  1 file changed, 7 insertions(+), 13 deletions(-)
-> > 
-> > diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > index 43e67e48d2df..22030fe6e714 100644
-> > --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > @@ -745,9 +745,8 @@ void count_rx_stats(struct adapter *padapter, union recv_frame *prframe, struct
-> >  
-> >  	padapter->mlmepriv.LinkDetectInfo.NumRxOkInPeriod++;
-> >  
-> > -	if ((!MacAddr_isBcst(pattrib->dst)) && (!IS_MCAST(pattrib->dst))) {
-> > +	if ((!MacAddr_isBcst(pattrib->dst)) && (!IS_MCAST(pattrib->dst)))
-> >  		padapter->mlmepriv.LinkDetectInfo.NumRxUnicastOkInPeriod++;
-> > -	}
-> >  
-> >  	if (sta)
-> >  		psta = sta;
-> > @@ -937,9 +936,8 @@ sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-> >  			goto exit;
-> >  		}
-> >  
-> > -		if ((GetFrameSubType(ptr) & WIFI_QOS_DATA_TYPE) == WIFI_QOS_DATA_TYPE) {
-> > -		}
-> > -
-> > +		if ((GetFrameSubType(ptr) & WIFI_QOS_DATA_TYPE) == WIFI_QOS_DATA_TYPE)
-> > +			;
-> 
-> An if statement that does nothing should not be here at all, right?
-> 
-> thanks,
-> 
-> greg k-h
-My apologies for sending this in private to Greg the first time.
-I was not smart enough to figure out that Group in Mutt stands for "Reply to all".
-Thank you for your suggestion Greg.
-Should I send a single patch that deletes the empty if statement at line 940
-and the unnecessary braces at the other lines
-or should I split the two deletions into two separate patches?
-Should it perhaps be a patch set?
-Thanks!
-Br. Matt
+On Sat, Dec 5, 2020 at 4:02 PM Wang Hai <wanghai38@huawei.com> wrote:
+>
+> In gbaudio_dapm_free_controls(), if one of the widgets is not found, an error
+> will be returned directly, which will cause the rest to be unable to be freed,
+> resulting in leak.
+>
+> This patch fixes the bug. If if one of them is not found, just skip and free the others.
+>
+
+nit, typo error "If if one".
+
+> Fixes: 510e340efe0c ("staging: greybus: audio: Add helper APIs for dynamic audio module")
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Wang Hai <wanghai38@huawei.com>
+> ---
+
+Reviewed-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+
+--
+thanks,
+vaibhav
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
