@@ -2,52 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0392D2CFAA5
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 09:41:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AE8FE2CFAFE
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 11:33:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5C647875D4;
-	Sat,  5 Dec 2020 08:41:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 437C987737;
+	Sat,  5 Dec 2020 10:33:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rjUSfKVTaVz3; Sat,  5 Dec 2020 08:41:24 +0000 (UTC)
+	with ESMTP id 8YKxnNXIDA8R; Sat,  5 Dec 2020 10:33:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8013A8758E;
-	Sat,  5 Dec 2020 08:41:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C58E87720;
+	Sat,  5 Dec 2020 10:32:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 65F8F1BF35C
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 08:41:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7207A1BF5DA
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 10:32:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 48DCA2044A
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 08:41:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6A5E086DCA
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 10:32:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1Tv01nZXVlHY for <devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 08:41:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 1875F2043B
- for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 08:41:20 +0000 (UTC)
-Date: Sat, 5 Dec 2020 09:41:16 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1607157679;
- bh=c+teTVo5155X2lFYbPixoTVHfTf9U2/9jLKYeD+TPIE=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=BT/KjABWqzQ6v3ifAXxbedBjaBW9zHVJFrHaYRLgrUK578oVaCjAzaF0E2vYBJP5P
- s1KlZ/51wAwJgmM4vF+OOG5x0Vc4w9656Ife49pNB2pfAd9HtxZl1njdyBzuoNWsP+
- +GJkMZ00n0HTlytipy56uzQaYVYKbYSal1s2p4Ec=
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
-Subject: Re: [PATCH] Staging: rtl8723bs/core fix brace coding style issues in
- rtw_recv.c
-Message-ID: <X8tHrHq9lbjdulvA@kroah.com>
-References: <20201204220043.GA440355@a>
+ with ESMTP id jvdc_B0xTp98 for <devel@linuxdriverproject.org>;
+ Sat,  5 Dec 2020 10:32:55 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from szxga06-in.huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 29EC986DB4
+ for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 10:32:54 +0000 (UTC)
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Cp5Vj3PsRzhmyr;
+ Sat,  5 Dec 2020 18:32:29 +0800 (CST)
+Received: from huawei.com (10.175.113.133) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Sat, 5 Dec 2020
+ 18:32:49 +0800
+From: Wang Hai <wanghai38@huawei.com>
+To: <johan@kernel.org>, <vaibhav.sr@gmail.com>
+Subject: [PATCH] staging: greybus: audio: Fix possible leak free widgets in
+ gbaudio_dapm_free_controls
+Date: Sat, 5 Dec 2020 18:38:27 +0800
+Message-ID: <20201205103827.31244-1-wanghai38@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201204220043.GA440355@a>
+X-Originating-IP: [10.175.113.133]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,55 +59,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, pterjan@google.com, vkor@vkten.in,
- amarjargal16@gmail.com, ross.schm.dev@gmail.com
+Cc: devel@driverdev.osuosl.org, elder@kernel.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, aibhav.sr@gmail.com,
+ greybus-dev@lists.linaro.org, dan.carpenter@oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Dec 04, 2020 at 04:00:43PM -0600, Brother Matthew De Angelis wrote:
-> Fix all the brace code style warnings found by checkpatch.pl at the
-> following lines:
-> 748, 940, 1039, 1602, 1922, 1939.
-> At line 940 add a semi-colon to specify a line that does not execute
-> anything, as in Kernighan and Ritchie
-> 
-> Signed-off-by: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_recv.c | 20 +++++++-------------
->  1 file changed, 7 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> index 43e67e48d2df..22030fe6e714 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> @@ -745,9 +745,8 @@ void count_rx_stats(struct adapter *padapter, union recv_frame *prframe, struct
->  
->  	padapter->mlmepriv.LinkDetectInfo.NumRxOkInPeriod++;
->  
-> -	if ((!MacAddr_isBcst(pattrib->dst)) && (!IS_MCAST(pattrib->dst))) {
-> +	if ((!MacAddr_isBcst(pattrib->dst)) && (!IS_MCAST(pattrib->dst)))
->  		padapter->mlmepriv.LinkDetectInfo.NumRxUnicastOkInPeriod++;
-> -	}
->  
->  	if (sta)
->  		psta = sta;
-> @@ -937,9 +936,8 @@ sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
->  			goto exit;
->  		}
->  
-> -		if ((GetFrameSubType(ptr) & WIFI_QOS_DATA_TYPE) == WIFI_QOS_DATA_TYPE) {
-> -		}
-> -
-> +		if ((GetFrameSubType(ptr) & WIFI_QOS_DATA_TYPE) == WIFI_QOS_DATA_TYPE)
-> +			;
+In gbaudio_dapm_free_controls(), if one of the widgets is not found, an error
+will be returned directly, which will cause the rest to be unable to be freed,
+resulting in leak.
 
-An if statement that does nothing should not be here at all, right?
+This patch fixes the bug. If if one of them is not found, just skip and free the others.
 
-thanks,
+Fixes: 510e340efe0c ("staging: greybus: audio: Add helper APIs for dynamic audio module")
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Wang Hai <wanghai38@huawei.com>
+---
+ drivers/staging/greybus/audio_helper.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-greg k-h
+diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greybus/audio_helper.c
+index 237531ba60f3..3011b8abce38 100644
+--- a/drivers/staging/greybus/audio_helper.c
++++ b/drivers/staging/greybus/audio_helper.c
+@@ -135,7 +135,8 @@ int gbaudio_dapm_free_controls(struct snd_soc_dapm_context *dapm,
+ 		if (!w) {
+ 			dev_err(dapm->dev, "%s: widget not found\n",
+ 				widget->name);
+-			return -EINVAL;
++			widget++;
++			continue;
+ 		}
+ 		widget++;
+ #ifdef CONFIG_DEBUG_FS
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
