@@ -1,54 +1,99 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A1B32CFC04
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 17:29:29 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36DC32CFC0D
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 17:32:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C47E02285E;
-	Sat,  5 Dec 2020 16:29:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7032F87759;
+	Sat,  5 Dec 2020 16:32:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bfdnA2b6abka; Sat,  5 Dec 2020 16:29:26 +0000 (UTC)
+	with ESMTP id NEyYRC+yEdwf; Sat,  5 Dec 2020 16:32:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4E5BD227AD;
-	Sat,  5 Dec 2020 16:29:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB64D87723;
+	Sat,  5 Dec 2020 16:32:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E5221BF57B
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 16:29:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D4C4D1BF57B
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 16:32:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 799B186DFD
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 16:29:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D14B087630
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 16:32:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KLVNpqRBJXXY for <devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 16:29:18 +0000 (UTC)
+ with ESMTP id 7Su871Qa2WMe for <devel@linuxdriverproject.org>;
+ Sat,  5 Dec 2020 16:32:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6BDFC8733E
- for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 16:29:18 +0000 (UTC)
-Date: Sat, 5 Dec 2020 17:30:31 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1607185758;
- bh=R8W33ePbrXRgiBmtf6iFIDMGOHjokI3L2tHwEAOkJOY=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=NipTx32l0RfPEXv4++bsZ2Ln4Cq0t0H0I/WiaD82bbQw+XMfpdjzeqY6qvCGVA9rf
- LXh0IwVxHqV+q+zgCPYnjKxAhTDjwVBBKQbw1u8OTVFQyNigp4/Ko+qSAiGJxYj1ba
- PdexPmPyT8xJXCLx9gSgyiAnP+J2fdKwl/BEvyOA=
-From: Greg KH <gregkh@linuxfoundation.org>
-To: YOUR NAME <matthew.v.deangelis@gmail.com>
-Subject: Re: [PATCH] Staging: rtl8723bs/core fix brace coding style issues in
- rtw_recv.c
-Message-ID: <X8u1p5l133+UlaWf@kroah.com>
-References: <20201204220043.GA440355@a> <X8tHrHq9lbjdulvA@kroah.com>
- <20201205142810.GA448750@a>
+Received: from wnew4-smtp.messagingengine.com (wnew4-smtp.messagingengine.com
+ [64.147.123.18])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D49A887537
+ for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 16:32:10 +0000 (UTC)
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailnew.west.internal (Postfix) with ESMTP id 0EAEE764;
+ Sat,  5 Dec 2020 11:32:08 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute1.internal (MEProxy); Sat, 05 Dec 2020 11:32:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+ to:cc:references:from:subject:message-id:date:mime-version
+ :in-reply-to:content-type:content-transfer-encoding; s=fm1; bh=x
+ NUdODL65lR5S1XXZ1801IZLJZ+2fkKKMPiqtEeplEk=; b=TsbUXV+Ft57FpkUPV
+ THSaIOis/gi+FjJeym7xUu14WLJfaxrYJkjABd3mXnx2H9FFFoNxzaLKIF5WwVaC
+ OrdvOv7s8EjYK0LZ79lG8b8K4Ai+a0kUtH/yqUXcc5VPI1sl9qmnecNWkevYrFUP
+ 31cwO74/y3OpO/Wn2Xgp0jcW4Al9m7I871lXXySJPpB1un3+dTwPzOg5bc6l/vet
+ tf+hZybsnEI+B3NcULLLEMHIyYhW8lfzi/ibV/wG38UPelDYVh1J1ctqRuFOVqv0
+ iY5LFtUVsc3uiYJtYw2u1J/KgU7KgX0SuTOheqGLvKEGXP8L0AOQQZ8QMsKZmujw
+ hjJHg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=xNUdODL65lR5S1XXZ1801IZLJZ+2fkKKMPiqtEepl
+ Ek=; b=BdNh+MC0OOTuzVk5POPma17FWA1t8oZsV/qiP5MDIEIYk4NxQ9EoDRgRN
+ HdwV5Ggb3+FHFC6Z4oY9EqVN2gVzc/HIBse+LzLEBAhHx3iqo39Op84h3jy1EyGs
+ x3D8Ws+sxBe8hUnsS/bl4cwVxtU+kX36Bzb0hnJA/de3Xrcz067Ei1pvuO/gspAF
+ JhNWCMxaJC6ez5ydKi3bwI5LhXQJMUktn16v8HNZjlahoQ0xunAhYbwGochjhMR/
+ xk+80Y0JRmZ3o/PP1oYAOtuIvK+UzPZkDy5XYGQfiOSeWm9SZQcL018Z8ByrQpMm
+ oDCmijVZrYZz/5WRJPW5uszgXDEIg==
+X-ME-Sender: <xms:BrbLXwHMd0Vgdwqe7ayHWqEnk3k2J91CyjJpgyDdr_4CFQgQJS5_0w>
+ <xme:BrbLX8nKtFh6-5al4c-mZ-wPukRzQSbJd58GVN4Az67WqZEqLWsvRbuKJnvzHj1wI
+ ri2oKt1p16m23Bdmg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudejtddgledvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepvfhfhffukffffgggjggtgfesthekredttdefjeenucfhrhhomhepufgrmhhu
+ vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
+ ftrfgrthhtvghrnhepteelvddugfehtefgueegueeiieevfeehleefjeelhefgffejteej
+ tdeltdfgfeetnecuffhomhgrihhnpehgihhthhhusgdrtghomhdpihhnfhhrrgguvggrug
+ drohhrghenucfkphepjedtrddufeehrddugeekrdduhedunecuvehluhhsthgvrhfuihii
+ vgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshgrmhhuvghlsehshhholhhlrghnug
+ drohhrgh
+X-ME-Proxy: <xmx:BrbLXzlxQVs5H0vKhCm_UZKoASzHWbk8ilrGwiDJoyX0hxYAZc1fJA>
+ <xmx:BrbLX9vmg9-erJuBu0zTsSxXbDkXclPxTnVwpEcZv9eeg1EQ9u0Sng>
+ <xmx:BrbLX2mOB3OUNZBsbAIrhaqQc7iGVJDeFCgBa5l4F_38EhIUFZYBLg>
+ <xmx:CLbLX-tOYYpy1qwJ3naJfD7b2sk6VldMnUwMev9GThYfsziNzK2uenJlASI>
+Received: from [70.135.148.151]
+ (70-135-148-151.lightspeed.stlsmo.sbcglobal.net [70.135.148.151])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 2A0C91080069;
+ Sat,  5 Dec 2020 11:32:06 -0500 (EST)
+To: Chen-Yu Tsai <wens@csie.org>, Martin Cerveny <M.Cerveny@computer.org>
+References: <20201116125617.7597-1-m.cerveny@computer.org>
+ <20201116125617.7597-4-m.cerveny@computer.org>
+ <CAGb2v66T9aakxRQNBbA+=EC-d5EpmUrZSK5xTW=orK6Z7PyG9Q@mail.gmail.com>
+ <alpine.GSO.2.00.2012031617500.7044@dmz.c-home.cz>
+ <CAGb2v65Kb1BrdwKjMv9w1CNQpe=ExpN1d-yUSvZ6TA=fvgE5og@mail.gmail.com>
+From: Samuel Holland <samuel@sholland.org>
+Subject: Re: [PATCH v3 3/6] ARM: dts: sun8i: v3s: Add node for system control
+Message-ID: <f09e7beb-bcf6-83b2-4148-b6d5218ff5ee@sholland.org>
+Date: Sat, 5 Dec 2020 10:32:05 -0600
+User-Agent: Mozilla/5.0 (X11; Linux ppc64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201205142810.GA448750@a>
+In-Reply-To: <CAGb2v65Kb1BrdwKjMv9w1CNQpe=ExpN1d-yUSvZ6TA=fvgE5og@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,71 +106,218 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, pterjan@google.com, vkor@vkten.in,
- amarjargal16@gmail.com, ross.schm.dev@gmail.com
+Cc: devel@driverdev.osuosl.org, devicetree <devicetree@vger.kernel.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Icenowy Zheng <icenowy@aosc.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Dec 05, 2020 at 08:28:10AM -0600, YOUR NAME wrote:
-> On Sat, Dec 05, 2020 at 09:41:16AM +0100, Greg KH wrote:
-> > On Fri, Dec 04, 2020 at 04:00:43PM -0600, Brother Matthew De Angelis wrote:
-> > > Fix all the brace code style warnings found by checkpatch.pl at the
-> > > following lines:
-> > > 748, 940, 1039, 1602, 1922, 1939.
-> > > At line 940 add a semi-colon to specify a line that does not execute
-> > > anything, as in Kernighan and Ritchie
-> > > 
-> > > Signed-off-by: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
-> > > ---
-> > >  drivers/staging/rtl8723bs/core/rtw_recv.c | 20 +++++++-------------
-> > >  1 file changed, 7 insertions(+), 13 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > > index 43e67e48d2df..22030fe6e714 100644
-> > > --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > > +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > > @@ -745,9 +745,8 @@ void count_rx_stats(struct adapter *padapter, union recv_frame *prframe, struct
-> > >  
-> > >  	padapter->mlmepriv.LinkDetectInfo.NumRxOkInPeriod++;
-> > >  
-> > > -	if ((!MacAddr_isBcst(pattrib->dst)) && (!IS_MCAST(pattrib->dst))) {
-> > > +	if ((!MacAddr_isBcst(pattrib->dst)) && (!IS_MCAST(pattrib->dst)))
-> > >  		padapter->mlmepriv.LinkDetectInfo.NumRxUnicastOkInPeriod++;
-> > > -	}
-> > >  
-> > >  	if (sta)
-> > >  		psta = sta;
-> > > @@ -937,9 +936,8 @@ sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-> > >  			goto exit;
-> > >  		}
-> > >  
-> > > -		if ((GetFrameSubType(ptr) & WIFI_QOS_DATA_TYPE) == WIFI_QOS_DATA_TYPE) {
-> > > -		}
-> > > -
-> > > +		if ((GetFrameSubType(ptr) & WIFI_QOS_DATA_TYPE) == WIFI_QOS_DATA_TYPE)
-> > > +			;
-> > 
-> > An if statement that does nothing should not be here at all, right?
-> > 
-> > thanks,
-> > 
-> > greg k-h
-> My apologies for sending this in private to Greg the first time.
-> I was not smart enough to figure out that Group in Mutt stands for "Reply to all".
-> Thank you for your suggestion Greg.
-> Should I send a single patch that deletes the empty if statement at line 940
-> and the unnecessary braces at the other lines
-> or should I split the two deletions into two separate patches?
+On 12/3/20 10:44 AM, Chen-Yu Tsai wrote:
+> On Fri, Dec 4, 2020 at 12:25 AM Martin Cerveny <martin@c-home.cz> wrote:
+>>
+>> Hello.
+>>
+>> On Thu, 3 Dec 2020, Chen-Yu Tsai wrote:
+>>
+>>> Hi,
+>>>
+>>> On Mon, Nov 16, 2020 at 8:57 PM Martin Cerveny <m.cerveny@computer.org> wrote:
+>>>>
+>>>> Allwinner V3s has system control and SRAM C1 region similar to H3.
+>>>>
+>>>> Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
+>>>> ---
+>>>>  arch/arm/boot/dts/sun8i-v3s.dtsi | 14 ++++++++++++++
+>>>>  1 file changed, 14 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+>>>> index 0c7341676921..70193512c222 100644
+>>>> --- a/arch/arm/boot/dts/sun8i-v3s.dtsi
+>>>> +++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+>>>> @@ -161,6 +161,20 @@ syscon: system-control@1c00000 {
+>>>>                         #address-cells = <1>;
+>>>>                         #size-cells = <1>;
+>>>>                         ranges;
+>>>> +
+>>>> +                       sram_c: sram@1d00000 {
+>>>> +                               compatible = "mmio-sram";
+>>>> +                               reg = <0x01d00000 0x80000>;
+>>>
+>>> How was this address derived? Did you check that there is actually SRAM here?
+>>
+>> Yes, I did some checking (mmap). But I repeated measurement and found
+>> mirrored regions:
+>>
+>> - SRAM_C is mirrored from 0x0000_4000 (primary location) to 0x01d0_4000 (size 0xb000)
+>>    (probably exact size is 0xb0c0)
+>> - rest of 0x01d0_0000 are discontinuously filled with R/W register sets
+>>    (probably some internals registers from VE) that I thought to be SRAM too
+>> - register SRAM_CTRL_REG0==0x01c00_0000 (value 0x7fff_ffff) switch whole
+>>    region 0x01d0_0000-0x01df_ffff __AND__ 0x0000_4000-0x0000_ffff
+>> - VE/cedrus code use this regions indirectly
+>>    (VE_AVC_SRAM_PORT_OFFSET/VE_AVC_SRAM_PORT_DATA...)
+>>    and it is not influenced by "true" SRAM mapping or size
+> 
+> Could you add this to your commit log? That would make the information
+> available to others, and you could mention that you only added the
+> location that is contiguous SRAM without the interspersed registers.
+> 
+> So based on this, and what we've seen with the H616, I'm guessing
+> 0x01d0_0000 - 0x01df_ffff exposes all the internal guts of the VE,
+> while SRAM C @ 0x4000 just maps a small portion out.
+> 
+>> -> so I suppose to better use only SRAM_C lower definition:
+> 
+> Yes that would be more appropriate, as it matches the manual, and as you
+> mentioned, is *real* SRAM.
 
-2 different patches, as they are doing different things, right?
+My reading of the manual and comments in the BSP U-Boot is that the high
+address near the VE registers is the "real" address. The alternate SRAM
+mapping just past the end of SRAM A1 exists specifically so the boot ROM
+can load boot0/TOC0 images larger than would fit in SRAM A1.
 
-> Should it perhaps be a patch set?
+I don't have a copy of the V3s BROM, but here's the logic from the
+beginning of the H6 SBROM, which first enables the VE bus clock and
+reset before mapping the SRAM:
 
-Yes a patch series would be great, thanks.
+; VE_BGR_REG |= BIT(16)
+     2dc:  e59f113c  ldr r1, [pc, #316] ; 420
+     2e0:  e5912000  ldr r2, [r1]
+     2e4:  e3a03801  mov r3, #65536 ; 0x10000
+     2e8:  e1822003  orr r2, r2, r3
+     2ec:  e5812000  str r2, [r1]
+; VE_BGR_REG |= BIT(0)
+     2f0:  e59f1128  ldr r1, [pc, #296] ; 420
+     2f4:  e5912000  ldr r2, [r1]
+     2f8:  e3a03001  mov r3, #1
+     2fc:  e1822003  orr r2, r2, r3
+     300:  e5812000  str r2, [r1]
+; SRAM_CTRL_REG0 &= BIT(31)
+     304:  e3a01403  mov r1, #50331648 ; 0x3000000
+     308:  e5912000  ldr r2, [r1]
+     30c:  e3c220ff  bic r2, r2, #255 ; 0xff
+     310:  e3c22cff  bic r2, r2, #65280 ; 0xff00
+     314:  e3c228ff  bic r2, r2, #16711680 ; 0xff0000
+     318:  e3c2247f  bic r2, r2, #2130706432 ; 0x7f000000
+     31c:  e5812000  str r2, [r1]
+; SRAM_CTRL_REG1 = BIT(24) | BIT(0)
+     320:  e59f10fc  ldr r1, [pc, #252] ; 424
+     324:  e3a02401  mov r2, #16777216 ; 0x1000000
+     328:  e1822003  orr r2, r2, r3
+     32c:  e5812000  str r2, [r1]
+...
+     420:  .word 0300169c
+     424:  .word 03000004
 
-greg k-h
+Then U-Boot SPL[1] sets the SRAM back to "normal mode" before turning
+off the VE gating and reset:
+
+	//VE SRAM:set sram to normal mode, default boot mode
+	reg_val = readl(SUNXI_SYSCRL_BASE+0X0004);
+	reg_val &= ~(0x1<<24);
+	writel(reg_val, SUNXI_SYSCRL_BASE+0X0004);
+
+	//VE gating&VE Bus Reset :brom set them, but not require now
+	reg_val = readl(CCMU_VE_BGR_REG);
+	reg_val &= ~(0x1<<0);
+	reg_val &= ~(0x1<<16);
+	writel(reg_val, CCMU_VE_BGR_REG);
+
+Other SoCs have a similar code to unmap SRAM C[2]. The AHB1 bus clock
+frequency limitation makes sense given that it has to go through the VE
+hardware block to get to the SRAM.
+
+In fact, the AHB1 clock limitation when using the low mapping should be
+reason enough to prefer the high mapping.
+
+Cheers,
+Samuel
+
+[1]:
+https://github.com/Allwinner-Homlet/H6-BSP4.9-brandy/blob/master/u-boot-2014.07/board/sunxi/sun50iw6p1/sun50iw6p1.c#L60
+[2]:
+https://github.com/Allwinner-Homlet/H6-BSP4.9-brandy/blob/master/u-boot-2014.07/board/sunxi/sun8iw10p1/sun8iw10p1.c#L75
+
+>> ---
+>> diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
+>> index e8f304125e2d..90d703e5b73b 100644
+>> --- a/arch/arm/boot/dts/sun8i-v3s.dtsi
+>> +++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
+>> @@ -162,17 +162,17 @@ syscon: system-control@1c00000 {
+>>                         #size-cells = <1>;
+>>                         ranges;
+>>
+>> -                       sram_c: sram@1d00000 {
+>> +                       sram_c: sram@4000 {
+>>                                 compatible = "mmio-sram";
+>> -                               reg = <0x01d00000 0x80000>;
+>> +                               reg = <0x4000 0xb000>;
+>>                                 #address-cells = <1>;
+>>                                 #size-cells = <1>;
+>> -                               ranges = <0 0x01d00000 0x80000>;
+>> +                               ranges = <0 0 0x4000 0xb000>;
+>>
+>>                                 ve_sram: sram-section@0 {
+>>                                         compatible = "allwinner,sun8i-v3s-sram-c1",
+>>                                                      "allwinner,sun4i-a10-sram-c1";
+>> -                                       reg = <0x000000 0x80000>;
+>> +                                       reg = <0x0 0xb000>;
+>>                                 };
+>>                         };
+>>                 };
+>> ---
+>>
+>> Does someone have accessible specific documentation of VE/cedrus for V3s ?
+> 
+> I doubt such information exists.
+> 
+> 
+> Regards
+> ChenYu
+> 
+>> Regards, Martin
+>>
+>>> ChenYu
+>>>
+>>>> +                               #address-cells = <1>;
+>>>> +                               #size-cells = <1>;
+>>>> +                               ranges = <0 0x01d00000 0x80000>;
+>>>> +
+>>>> +                               ve_sram: sram-section@0 {
+>>>> +                                       compatible = "allwinner,sun8i-v3s-sram-c1",
+>>>> +                                                    "allwinner,sun4i-a10-sram-c1";
+>>>> +                                       reg = <0x000000 0x80000>;
+>>>> +                               };
+>>>> +                       };
+>>>>                 };
+>>>>
+>>>>                 tcon0: lcd-controller@1c0c000 {
+>>>> --
+>>>> 2.25.1
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> linux-arm-kernel mailing list
+>>>> linux-arm-kernel@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>>>
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> 
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
