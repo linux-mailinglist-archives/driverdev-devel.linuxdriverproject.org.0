@@ -1,99 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36DC32CFC0D
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Dec 2020 17:32:16 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1EC72CFFB6
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 00:21:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7032F87759;
-	Sat,  5 Dec 2020 16:32:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1EBA7874AF;
+	Sat,  5 Dec 2020 23:21:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NEyYRC+yEdwf; Sat,  5 Dec 2020 16:32:14 +0000 (UTC)
+	with ESMTP id 2UGCNlTjLH9o; Sat,  5 Dec 2020 23:21:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CB64D87723;
-	Sat,  5 Dec 2020 16:32:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A408886109;
+	Sat,  5 Dec 2020 23:21:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D4C4D1BF57B
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 16:32:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 772741BF361
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 23:21:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D14B087630
- for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 16:32:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7144986109
+ for <devel@linuxdriverproject.org>; Sat,  5 Dec 2020 23:21:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7Su871Qa2WMe for <devel@linuxdriverproject.org>;
- Sat,  5 Dec 2020 16:32:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from wnew4-smtp.messagingengine.com (wnew4-smtp.messagingengine.com
- [64.147.123.18])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D49A887537
- for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 16:32:10 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.west.internal (Postfix) with ESMTP id 0EAEE764;
- Sat,  5 Dec 2020 11:32:08 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Sat, 05 Dec 2020 11:32:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
- to:cc:references:from:subject:message-id:date:mime-version
- :in-reply-to:content-type:content-transfer-encoding; s=fm1; bh=x
- NUdODL65lR5S1XXZ1801IZLJZ+2fkKKMPiqtEeplEk=; b=TsbUXV+Ft57FpkUPV
- THSaIOis/gi+FjJeym7xUu14WLJfaxrYJkjABd3mXnx2H9FFFoNxzaLKIF5WwVaC
- OrdvOv7s8EjYK0LZ79lG8b8K4Ai+a0kUtH/yqUXcc5VPI1sl9qmnecNWkevYrFUP
- 31cwO74/y3OpO/Wn2Xgp0jcW4Al9m7I871lXXySJPpB1un3+dTwPzOg5bc6l/vet
- tf+hZybsnEI+B3NcULLLEMHIyYhW8lfzi/ibV/wG38UPelDYVh1J1ctqRuFOVqv0
- iY5LFtUVsc3uiYJtYw2u1J/KgU7KgX0SuTOheqGLvKEGXP8L0AOQQZ8QMsKZmujw
- hjJHg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=xNUdODL65lR5S1XXZ1801IZLJZ+2fkKKMPiqtEepl
- Ek=; b=BdNh+MC0OOTuzVk5POPma17FWA1t8oZsV/qiP5MDIEIYk4NxQ9EoDRgRN
- HdwV5Ggb3+FHFC6Z4oY9EqVN2gVzc/HIBse+LzLEBAhHx3iqo39Op84h3jy1EyGs
- x3D8Ws+sxBe8hUnsS/bl4cwVxtU+kX36Bzb0hnJA/de3Xrcz067Ei1pvuO/gspAF
- JhNWCMxaJC6ez5ydKi3bwI5LhXQJMUktn16v8HNZjlahoQ0xunAhYbwGochjhMR/
- xk+80Y0JRmZ3o/PP1oYAOtuIvK+UzPZkDy5XYGQfiOSeWm9SZQcL018Z8ByrQpMm
- oDCmijVZrYZz/5WRJPW5uszgXDEIg==
-X-ME-Sender: <xms:BrbLXwHMd0Vgdwqe7ayHWqEnk3k2J91CyjJpgyDdr_4CFQgQJS5_0w>
- <xme:BrbLX8nKtFh6-5al4c-mZ-wPukRzQSbJd58GVN4Az67WqZEqLWsvRbuKJnvzHj1wI
- ri2oKt1p16m23Bdmg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudejtddgledvucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepvfhfhffukffffgggjggtgfesthekredttdefjeenucfhrhhomhepufgrmhhu
- vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
- ftrfgrthhtvghrnhepteelvddugfehtefgueegueeiieevfeehleefjeelhefgffejteej
- tdeltdfgfeetnecuffhomhgrihhnpehgihhthhhusgdrtghomhdpihhnfhhrrgguvggrug
- drohhrghenucfkphepjedtrddufeehrddugeekrdduhedunecuvehluhhsthgvrhfuihii
- vgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshgrmhhuvghlsehshhholhhlrghnug
- drohhrgh
-X-ME-Proxy: <xmx:BrbLXzlxQVs5H0vKhCm_UZKoASzHWbk8ilrGwiDJoyX0hxYAZc1fJA>
- <xmx:BrbLX9vmg9-erJuBu0zTsSxXbDkXclPxTnVwpEcZv9eeg1EQ9u0Sng>
- <xmx:BrbLX2mOB3OUNZBsbAIrhaqQc7iGVJDeFCgBa5l4F_38EhIUFZYBLg>
- <xmx:CLbLX-tOYYpy1qwJ3naJfD7b2sk6VldMnUwMev9GThYfsziNzK2uenJlASI>
-Received: from [70.135.148.151]
- (70-135-148-151.lightspeed.stlsmo.sbcglobal.net [70.135.148.151])
- by mail.messagingengine.com (Postfix) with ESMTPA id 2A0C91080069;
- Sat,  5 Dec 2020 11:32:06 -0500 (EST)
-To: Chen-Yu Tsai <wens@csie.org>, Martin Cerveny <M.Cerveny@computer.org>
-References: <20201116125617.7597-1-m.cerveny@computer.org>
- <20201116125617.7597-4-m.cerveny@computer.org>
- <CAGb2v66T9aakxRQNBbA+=EC-d5EpmUrZSK5xTW=orK6Z7PyG9Q@mail.gmail.com>
- <alpine.GSO.2.00.2012031617500.7044@dmz.c-home.cz>
- <CAGb2v65Kb1BrdwKjMv9w1CNQpe=ExpN1d-yUSvZ6TA=fvgE5og@mail.gmail.com>
-From: Samuel Holland <samuel@sholland.org>
-Subject: Re: [PATCH v3 3/6] ARM: dts: sun8i: v3s: Add node for system control
-Message-ID: <f09e7beb-bcf6-83b2-4148-b6d5218ff5ee@sholland.org>
-Date: Sat, 5 Dec 2020 10:32:05 -0600
-User-Agent: Mozilla/5.0 (X11; Linux ppc64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ with ESMTP id tve_89FO-8U2 for <devel@linuxdriverproject.org>;
+ Sat,  5 Dec 2020 23:21:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-io1-f42.google.com (mail-io1-f42.google.com
+ [209.85.166.42])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F141A860FF
+ for <devel@driverdev.osuosl.org>; Sat,  5 Dec 2020 23:21:17 +0000 (UTC)
+Received: by mail-io1-f42.google.com with SMTP id t8so9660169iov.8
+ for <devel@driverdev.osuosl.org>; Sat, 05 Dec 2020 15:21:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=4t6TYZrxhTxH/eFGEgRXXjU9rfFDcdKUYbPzwqTnqSo=;
+ b=UB6pWf0JWljtkpi7sxV7b9ENsbgDkVunQWhJSw/UhAaVQh/+1Dm0d0tB9C2Eu7/+tr
+ FHvQL8QlMq/9/wk49pnC3/z+Dk5nmxl1q7i10/+hC7jZFPtJMcnOQiNdeYjQMufqMVqN
+ 3s+uscmFeZmLi49WmABPJ7A+bnfSK73qd5BMNq6WbeZEO5N30b71JarL2yMqU+OKXLSc
+ FN8/PpInPfq3mH6WyeDyzHC9mrqf1k2owssOLsU00a/N6UMG2WmLToiQDv85YyERA3Qv
+ 0nTdLsSFa5caFD8Qidf9aH5CjzrpS4lZq1wsVuFuDL66X9DB9s6rFA6gFayFpen5OD4b
+ Qihg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=4t6TYZrxhTxH/eFGEgRXXjU9rfFDcdKUYbPzwqTnqSo=;
+ b=t2SISOpzfqQFTEQOsAQ+kaAW+X94WaWyS2jAdQyHiZUpTxNFOY8LGfUOvnQtkxKS0j
+ 6slqvHrd4WNrYL3UsYuXRzyL4jtNlJC7U8BaqmHg+yv4xPjLMx7LwcDkr5JLQPtkiFKg
+ TfxMe/og4NzpCpfD8ryAH/24OovYwYgvOszOiCzxVPHWF8o3zDr2JdTLinXdklExg7hv
+ 13+JRQZ6DUTWkT6z8ZwYYdz5TtTMkxIFAhTpmpTt5+d/XR9MKnorG6P/oxInzT5NPxCt
+ JuJz/4zmj5iRCp72gKqLBcH0BdLmx5R/5rlLX9M0CoLeh9a3Qo/qvvCME1LvFLoRDi30
+ sDFg==
+X-Gm-Message-State: AOAM533U9sYSJd2M6jHB+nXg4erAFQ1TKlDuxR1VZKo8ebKqViby0aJC
+ 2uIUkaX1jSPk+yvzQqqBJFU=
+X-Google-Smtp-Source: ABdhPJwUiVnxhhSME/zowh6lZX5WcjbWfTMfbF1/2oN6Tfn9LB1Ks0I5qUwfs3/kuS+OUnTwlfexuQ==
+X-Received: by 2002:a02:7650:: with SMTP id z77mr12657868jab.134.1607210477251; 
+ Sat, 05 Dec 2020 15:21:17 -0800 (PST)
+Received: from a ([24.13.98.51])
+ by smtp.gmail.com with ESMTPSA id f2sm3482131iow.4.2020.12.05.15.21.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Dec 2020 15:21:16 -0800 (PST)
+Date: Sat, 5 Dec 2020 17:21:14 -0600
+From: Brother Matthew De Angelis <matthew.v.deangelis@gmail.com>
+To: gregkh@linuxfoundation.org, hdegoede@redhat.com,
+ Larry.Finger@lwfinger.net, ross.schm.dev@gmail.com, vkor@vkten.in,
+ dan.carpenter@oracle.com, pterjan@google.com, marjargal16@gmail.com
+Subject: [PATCH 0/2] Fix coding style issues
+Message-ID: <cover.1607209336.git.matthew.v.deangelis@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAGb2v65Kb1BrdwKjMv9w1CNQpe=ExpN1d-yUSvZ6TA=fvgE5og@mail.gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,217 +84,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree <devicetree@vger.kernel.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Maxime Ripard <mripard@kernel.org>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Lee Jones <lee.jones@linaro.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Icenowy Zheng <icenowy@aosc.io>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 12/3/20 10:44 AM, Chen-Yu Tsai wrote:
-> On Fri, Dec 4, 2020 at 12:25 AM Martin Cerveny <martin@c-home.cz> wrote:
->>
->> Hello.
->>
->> On Thu, 3 Dec 2020, Chen-Yu Tsai wrote:
->>
->>> Hi,
->>>
->>> On Mon, Nov 16, 2020 at 8:57 PM Martin Cerveny <m.cerveny@computer.org> wrote:
->>>>
->>>> Allwinner V3s has system control and SRAM C1 region similar to H3.
->>>>
->>>> Signed-off-by: Martin Cerveny <m.cerveny@computer.org>
->>>> ---
->>>>  arch/arm/boot/dts/sun8i-v3s.dtsi | 14 ++++++++++++++
->>>>  1 file changed, 14 insertions(+)
->>>>
->>>> diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
->>>> index 0c7341676921..70193512c222 100644
->>>> --- a/arch/arm/boot/dts/sun8i-v3s.dtsi
->>>> +++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
->>>> @@ -161,6 +161,20 @@ syscon: system-control@1c00000 {
->>>>                         #address-cells = <1>;
->>>>                         #size-cells = <1>;
->>>>                         ranges;
->>>> +
->>>> +                       sram_c: sram@1d00000 {
->>>> +                               compatible = "mmio-sram";
->>>> +                               reg = <0x01d00000 0x80000>;
->>>
->>> How was this address derived? Did you check that there is actually SRAM here?
->>
->> Yes, I did some checking (mmap). But I repeated measurement and found
->> mirrored regions:
->>
->> - SRAM_C is mirrored from 0x0000_4000 (primary location) to 0x01d0_4000 (size 0xb000)
->>    (probably exact size is 0xb0c0)
->> - rest of 0x01d0_0000 are discontinuously filled with R/W register sets
->>    (probably some internals registers from VE) that I thought to be SRAM too
->> - register SRAM_CTRL_REG0==0x01c00_0000 (value 0x7fff_ffff) switch whole
->>    region 0x01d0_0000-0x01df_ffff __AND__ 0x0000_4000-0x0000_ffff
->> - VE/cedrus code use this regions indirectly
->>    (VE_AVC_SRAM_PORT_OFFSET/VE_AVC_SRAM_PORT_DATA...)
->>    and it is not influenced by "true" SRAM mapping or size
-> 
-> Could you add this to your commit log? That would make the information
-> available to others, and you could mention that you only added the
-> location that is contiguous SRAM without the interspersed registers.
-> 
-> So based on this, and what we've seen with the H616, I'm guessing
-> 0x01d0_0000 - 0x01df_ffff exposes all the internal guts of the VE,
-> while SRAM C @ 0x4000 just maps a small portion out.
-> 
->> -> so I suppose to better use only SRAM_C lower definition:
-> 
-> Yes that would be more appropriate, as it matches the manual, and as you
-> mentioned, is *real* SRAM.
+Hello,
 
-My reading of the manual and comments in the BSP U-Boot is that the high
-address near the VE registers is the "real" address. The alternate SRAM
-mapping just past the end of SRAM A1 exists specifically so the boot ROM
-can load boot0/TOC0 images larger than would fit in SRAM A1.
+this series fixes two separate coding style issues.
 
-I don't have a copy of the V3s BROM, but here's the logic from the
-beginning of the H6 SBROM, which first enables the VE bus clock and
-reset before mapping the SRAM:
+1. Delete an empty if statement.
 
-; VE_BGR_REG |= BIT(16)
-     2dc:  e59f113c  ldr r1, [pc, #316] ; 420
-     2e0:  e5912000  ldr r2, [r1]
-     2e4:  e3a03801  mov r3, #65536 ; 0x10000
-     2e8:  e1822003  orr r2, r2, r3
-     2ec:  e5812000  str r2, [r1]
-; VE_BGR_REG |= BIT(0)
-     2f0:  e59f1128  ldr r1, [pc, #296] ; 420
-     2f4:  e5912000  ldr r2, [r1]
-     2f8:  e3a03001  mov r3, #1
-     2fc:  e1822003  orr r2, r2, r3
-     300:  e5812000  str r2, [r1]
-; SRAM_CTRL_REG0 &= BIT(31)
-     304:  e3a01403  mov r1, #50331648 ; 0x3000000
-     308:  e5912000  ldr r2, [r1]
-     30c:  e3c220ff  bic r2, r2, #255 ; 0xff
-     310:  e3c22cff  bic r2, r2, #65280 ; 0xff00
-     314:  e3c228ff  bic r2, r2, #16711680 ; 0xff0000
-     318:  e3c2247f  bic r2, r2, #2130706432 ; 0x7f000000
-     31c:  e5812000  str r2, [r1]
-; SRAM_CTRL_REG1 = BIT(24) | BIT(0)
-     320:  e59f10fc  ldr r1, [pc, #252] ; 424
-     324:  e3a02401  mov r2, #16777216 ; 0x1000000
-     328:  e1822003  orr r2, r2, r3
-     32c:  e5812000  str r2, [r1]
-...
-     420:  .word 0300169c
-     424:  .word 03000004
+2. Fix remaining unnecessary brace coding style issues.
 
-Then U-Boot SPL[1] sets the SRAM back to "normal mode" before turning
-off the VE gating and reset:
+Brother Matthew De Angelis (2):
+  Staging: rtl8723bs/core: delete empty if statement
+  Staging: rtl8723bs/core: fix brace coding style issue
 
-	//VE SRAM:set sram to normal mode, default boot mode
-	reg_val = readl(SUNXI_SYSCRL_BASE+0X0004);
-	reg_val &= ~(0x1<<24);
-	writel(reg_val, SUNXI_SYSCRL_BASE+0X0004);
+ drivers/staging/rtl8723bs/core/rtw_recv.c | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-	//VE gating&VE Bus Reset :brom set them, but not require now
-	reg_val = readl(CCMU_VE_BGR_REG);
-	reg_val &= ~(0x1<<0);
-	reg_val &= ~(0x1<<16);
-	writel(reg_val, CCMU_VE_BGR_REG);
-
-Other SoCs have a similar code to unmap SRAM C[2]. The AHB1 bus clock
-frequency limitation makes sense given that it has to go through the VE
-hardware block to get to the SRAM.
-
-In fact, the AHB1 clock limitation when using the low mapping should be
-reason enough to prefer the high mapping.
-
-Cheers,
-Samuel
-
-[1]:
-https://github.com/Allwinner-Homlet/H6-BSP4.9-brandy/blob/master/u-boot-2014.07/board/sunxi/sun50iw6p1/sun50iw6p1.c#L60
-[2]:
-https://github.com/Allwinner-Homlet/H6-BSP4.9-brandy/blob/master/u-boot-2014.07/board/sunxi/sun8iw10p1/sun8iw10p1.c#L75
-
->> ---
->> diff --git a/arch/arm/boot/dts/sun8i-v3s.dtsi b/arch/arm/boot/dts/sun8i-v3s.dtsi
->> index e8f304125e2d..90d703e5b73b 100644
->> --- a/arch/arm/boot/dts/sun8i-v3s.dtsi
->> +++ b/arch/arm/boot/dts/sun8i-v3s.dtsi
->> @@ -162,17 +162,17 @@ syscon: system-control@1c00000 {
->>                         #size-cells = <1>;
->>                         ranges;
->>
->> -                       sram_c: sram@1d00000 {
->> +                       sram_c: sram@4000 {
->>                                 compatible = "mmio-sram";
->> -                               reg = <0x01d00000 0x80000>;
->> +                               reg = <0x4000 0xb000>;
->>                                 #address-cells = <1>;
->>                                 #size-cells = <1>;
->> -                               ranges = <0 0x01d00000 0x80000>;
->> +                               ranges = <0 0 0x4000 0xb000>;
->>
->>                                 ve_sram: sram-section@0 {
->>                                         compatible = "allwinner,sun8i-v3s-sram-c1",
->>                                                      "allwinner,sun4i-a10-sram-c1";
->> -                                       reg = <0x000000 0x80000>;
->> +                                       reg = <0x0 0xb000>;
->>                                 };
->>                         };
->>                 };
->> ---
->>
->> Does someone have accessible specific documentation of VE/cedrus for V3s ?
-> 
-> I doubt such information exists.
-> 
-> 
-> Regards
-> ChenYu
-> 
->> Regards, Martin
->>
->>> ChenYu
->>>
->>>> +                               #address-cells = <1>;
->>>> +                               #size-cells = <1>;
->>>> +                               ranges = <0 0x01d00000 0x80000>;
->>>> +
->>>> +                               ve_sram: sram-section@0 {
->>>> +                                       compatible = "allwinner,sun8i-v3s-sram-c1",
->>>> +                                                    "allwinner,sun4i-a10-sram-c1";
->>>> +                                       reg = <0x000000 0x80000>;
->>>> +                               };
->>>> +                       };
->>>>                 };
->>>>
->>>>                 tcon0: lcd-controller@1c0c000 {
->>>> --
->>>> 2.25.1
->>>>
->>>>
->>>> _______________________________________________
->>>> linux-arm-kernel mailing list
->>>> linux-arm-kernel@lists.infradead.org
->>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
->>>
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> 
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
