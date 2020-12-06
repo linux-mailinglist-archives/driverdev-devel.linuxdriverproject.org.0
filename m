@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A94712D0051
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 04:45:41 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70F102D0055
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 04:46:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 07F3D87509;
-	Sun,  6 Dec 2020 03:45:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B73C02750D;
+	Sun,  6 Dec 2020 03:46:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mdFL5NO-KyM0; Sun,  6 Dec 2020 03:45:39 +0000 (UTC)
+	with ESMTP id 3dLNeQuOpYJ5; Sun,  6 Dec 2020 03:45:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B35887563;
-	Sun,  6 Dec 2020 03:45:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D5DBC2E4E2;
+	Sun,  6 Dec 2020 03:45:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C88781BF962
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 03:45:31 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D41171BF962
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 03:45:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C46FC87BDD
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 03:45:31 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE6AA87563
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 03:45:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id snq+MtXaYYu7 for <devel@linuxdriverproject.org>;
- Sun,  6 Dec 2020 03:45:31 +0000 (UTC)
+ with ESMTP id xEpW8gUi1FaJ for <devel@linuxdriverproject.org>;
+ Sun,  6 Dec 2020 03:45:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
- [209.85.166.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 21EF487BF8
- for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 03:45:31 +0000 (UTC)
-Received: by mail-il1-f193.google.com with SMTP id q1so9015066ilt.6
- for <devel@driverdev.osuosl.org>; Sat, 05 Dec 2020 19:45:31 -0800 (PST)
+Received: from mail-io1-f46.google.com (mail-io1-f46.google.com
+ [209.85.166.46])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2BC2786BEC
+ for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 03:45:32 +0000 (UTC)
+Received: by mail-io1-f46.google.com with SMTP id y5so9988689iow.5
+ for <devel@driverdev.osuosl.org>; Sat, 05 Dec 2020 19:45:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xozfEtcjgJFJI3Lfdsh6l2B4qBozB67SYu7OaS1aMj8=;
- b=WPDQ971HnD3G3d2c90QjQ6tkM+4oUIUwXBKoAO37zdTFeSwlOi6T9mpdWIWee69+ag
- NBG2SoAI6sJ7nTKEmeISBZdxcCP2hws8zr64A9Yb2DeQ+BjYR483TrXrXljRmF3TAY95
- xrKc0NM1Ty+k1XtX4Uwuxz6XduDk/DT8N9J7I95RbFEOwsrexRVUWhJDDPsizFMMxnQp
- qSQS1MIOtH60ad+5flljT8UeFGb0wnsbjksLE9VsPrkX0TllFeaou326msok2ygar45y
- ANxraMaLnKVoAxg1nNHIXlBV1HDxCYZwnwjKbYrLGY5Q++z6mkfOHbyrr/Pf7fsQUrKF
- Jm9Q==
+ bh=7qkNKRbDcUUBwj4iE09P22MAxUjsp1i2IjCK22JBaNw=;
+ b=K3Xacm+ALpMCMgLd5dMXNV8jpgof/q3XY2HvxGHwzrNT1SmLVlp3/LNUWcOvqkA+Sv
+ ovZ+A/iurKJTuKx1ZBNW7p2THk9BHHNnxLQu3BsyfXNg1pdutZ2Xmi+/gqstIdrNdSpF
+ 8fXSwlbNbU2ILmN5GqpIx7fHUztsVBWeC1Y/54HEn5sXrURFm7CSB3PEoJblnemqvFxa
+ RhUPiTNKgioorD7cScsBPUL5xxiDIfCS/8loWjM6/1y0gmzQ+2XZIMANJYxYQz/Kwu1F
+ tJcnXEjHBtKXdqa/BituwyKrBh85qy5hr75FDZhXxQVSremHY4cyfUpKN503SgKwNTIL
+ j6rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xozfEtcjgJFJI3Lfdsh6l2B4qBozB67SYu7OaS1aMj8=;
- b=j4oZDChWyFZHSMqdMBO8VDTxn8Iu96Hbzo2beFgW7ewTNYRzDU6l6zbYbZ+vUA++jO
- i3hVVLImMINc1x/eTSlqh0NrB79VcP4aP5Vk6S/xGu9SKYpe4FCsxpY2temCqujz4EvP
- TPVvaL9IUupb1wAot5x3T6OLq2+cvA4Ka4t0CM24pnzhNf39Dgz8WNYeDWIxGrToqdIu
- yuc1UcCwRI3sFPCBsYTDW0iIEwmSgRfF25TeUMzZGTr7PQst5Eu/xGnQDnjelWTwXUs6
- uEbl9dYqNapKixHigiI5v9bOJ4hOEAkJ23NBHStIxpiCO3a4XVw4c7r5msw71Dnt6JC1
- zm5g==
-X-Gm-Message-State: AOAM532Nh1sZgiu8GNGCmdVFwratyS7isaiyIMkRFKil1Nj4g0YT706J
- CpOkcGR2pKj0r9ADx3zNOEA=
-X-Google-Smtp-Source: ABdhPJy8Yh9LYFtX77yTPdq/GqAkN7LOhq1p1msgGNctPUh4XyTK7eE3x1qyyaTh29gzf6Ez6Q7WZQ==
-X-Received: by 2002:a92:c052:: with SMTP id o18mr13075881ilf.245.1607226330528; 
- Sat, 05 Dec 2020 19:45:30 -0800 (PST)
+ bh=7qkNKRbDcUUBwj4iE09P22MAxUjsp1i2IjCK22JBaNw=;
+ b=Ooi/NxI3vIMIE72MXGEXk7+Vqg7QRBwBxrFFLSEJwpvPUBk7SGFMN/qmLDEnMDrUuL
+ N3itTM3mzpvS1WrZ26EaPbdPVS/iX0wu3lzQtfNA2GKnj1L9x4mb9Y+9XvWD1qOsooZK
+ ZDKd2xFvFERek7O/OUuHDVDQQ965c9VWdWM6x6FHhighfjiQLn744+nLiQKkcmGzbefs
+ p/Zyk+MzTLyveVJmFs9q6SDE0QffPFYSjaN8z/qEM8O4xvf58w3jLZ1BWPFgunVIS4lu
+ NmRi1CBcBDjRxryTCmE+Tr2tbndmAyBzSYMKYqUjlkdlBgDJ524Hkz+Qir4DB9Rx3B9H
+ +qYg==
+X-Gm-Message-State: AOAM530IRkMVhzb6q+LULJVhAvcqnXcirbheJS9fC6/D65zQh+gGH3Fd
+ 4X8JsEsDXFRPtZJdjP/GWrA0s3b6J+E=
+X-Google-Smtp-Source: ABdhPJw6HHjZb88oT7T9qa/YCnyOZP41p8Jpoi72+tH03BXkNWpB2VnFGehobFpmjC36s0ezpu0dbQ==
+X-Received: by 2002:a02:6c50:: with SMTP id w77mr13359501jab.68.1607226331614; 
+ Sat, 05 Dec 2020 19:45:31 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id v63sm3908553ioe.52.2020.12.05.19.45.29
+ by smtp.gmail.com with ESMTPSA id v63sm3908553ioe.52.2020.12.05.19.45.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Dec 2020 19:45:29 -0800 (PST)
+ Sat, 05 Dec 2020 19:45:31 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 07/10] staging: rtl8723bs: replace
- RTW_IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK
-Date: Sat,  5 Dec 2020 21:45:14 -0600
-Message-Id: <20201206034517.4276-7-ross.schm.dev@gmail.com>
+Subject: [PATCH 08/10] staging: rtl8723bs: remove unused macros
+Date: Sat,  5 Dec 2020 21:45:15 -0600
+Message-Id: <20201206034517.4276-8-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201206034517.4276-1-ross.schm.dev@gmail.com>
 References: <20201206034517.4276-1-ross.schm.dev@gmail.com>
@@ -94,59 +93,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace unique macro RTW_IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK with kernel
-provided IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK.  The other
-IEEE80211_ADDBA_* and IEEE_DELBA_* macros are duplicates already defined
-in linux/ieee80211.h, remove them.
+Remove many macros from wifi.h because they are unused.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 6 +++---
- drivers/staging/rtl8723bs/include/wifi.h      | 7 -------
- 2 files changed, 3 insertions(+), 10 deletions(-)
+ drivers/staging/rtl8723bs/include/wifi.h | 33 ------------------------
+ 1 file changed, 33 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 0743e56582ba..166b5369b003 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -3943,7 +3943,7 @@ void issue_action_BA(struct adapter *padapter, unsigned char *raddr, unsigned ch
- 				/*  TID */
- 				BA_para_set |= (status << 2) & IEEE80211_ADDBA_PARAM_TID_MASK;
- 				/*  max buffer size is 8 MSDU */
--				BA_para_set |= (8 << 6) & RTW_IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK;
-+				BA_para_set |= (8 << 6) & IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK;
- 			} else {
- 				BA_para_set = (0x1002 | ((status & 0xf) << 2)); /* immediate ack & 64 buffer size */
- 			}
-@@ -3994,8 +3994,8 @@ void issue_action_BA(struct adapter *padapter, unsigned char *raddr, unsigned ch
- 			if (hal_btcoex_IsBTCoexCtrlAMPDUSize(padapter) &&
- 			    padapter->driver_rx_ampdu_factor == 0xFF) {
- 				/*  max buffer size is 8 MSDU */
--				BA_para_set &= ~RTW_IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK;
--				BA_para_set |= (8 << 6) & RTW_IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK;
-+				BA_para_set &= ~IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK;
-+				BA_para_set |= (8 << 6) & IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK;
- 			}
- 
- 			if (pregpriv->ampdu_amsdu == 0)/* disabled */
 diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index 2e8ca191c608..c3a4a0bad0d7 100644
+index c3a4a0bad0d7..41de2605c517 100644
 --- a/drivers/staging/rtl8723bs/include/wifi.h
 +++ b/drivers/staging/rtl8723bs/include/wifi.h
-@@ -653,13 +653,6 @@ struct ADDBA_request {
- #define IEEE80211_HT_IE_NON_GF_STA_PRSNT	0x0004
- #define IEEE80211_HT_IE_NON_HT_STA_PRSNT	0x0010
+@@ -643,39 +643,6 @@ struct ADDBA_request {
+ #define IEEE80211_HT_CAP_TXBF_TX_NDP		0x00000010
+ #define IEEE80211_HT_CAP_TXBF_EXPLICIT_COMP_STEERING_CAP	0x00000400
  
--/* block-ack parameters */
--#define IEEE80211_ADDBA_PARAM_POLICY_MASK 0x0002
--#define IEEE80211_ADDBA_PARAM_TID_MASK 0x003C
--#define RTW_IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK 0xFFC0
--#define IEEE80211_DELBA_PARAM_TID_MASK 0xF000
--#define IEEE80211_DELBA_PARAM_INITIATOR_MASK 0x0800
+-/* 802.11n HT IE masks */
+-#define IEEE80211_HT_IE_CHA_SEC_OFFSET		0x03
+-#define IEEE80211_HT_IE_CHA_SEC_NONE		0x00
+-#define IEEE80211_HT_IE_CHA_SEC_ABOVE		0x01
+-#define IEEE80211_HT_IE_CHA_SEC_BELOW		0x03
+-#define IEEE80211_HT_IE_CHA_WIDTH		0x04
+-#define IEEE80211_HT_IE_HT_PROTECTION		0x0003
+-#define IEEE80211_HT_IE_NON_GF_STA_PRSNT	0x0004
+-#define IEEE80211_HT_IE_NON_HT_STA_PRSNT	0x0010
 -
- /*
-  * A-PMDU buffer sizes
-  * According to IEEE802.11n spec size varies from 8K to 64K (in powers of 2)
+-/*
+- * A-PMDU buffer sizes
+- * According to IEEE802.11n spec size varies from 8K to 64K (in powers of 2)
+- */
+-#define IEEE80211_MIN_AMPDU_BUF 0x8
+-
+-#define HT_INFO_HT_PARAM_SECONDARY_CHNL_OFF_MASK	((u8) BIT(0) | BIT(1))
+-#define HT_INFO_HT_PARAM_SECONDARY_CHNL_ABOVE		((u8) BIT(0))
+-#define HT_INFO_HT_PARAM_SECONDARY_CHNL_BELOW		((u8) BIT(0) | BIT(1))
+-#define HT_INFO_HT_PARAM_REC_TRANS_CHNL_WIDTH		((u8) BIT(2))
+-#define HT_INFO_HT_PARAM_RIFS_MODE			((u8) BIT(3))
+-#define HT_INFO_HT_PARAM_CTRL_ACCESS_ONLY		((u8) BIT(4))
+-#define HT_INFO_HT_PARAM_SRV_INTERVAL_GRANULARITY	((u8) BIT(5))
+-
+-#define HT_INFO_STBC_PARAM_DUAL_BEACON			((u16) BIT(6))
+-#define HT_INFO_STBC_PARAM_DUAL_STBC_PROTECT		((u16) BIT(7))
+-#define HT_INFO_STBC_PARAM_SECONDARY_BCN		((u16) BIT(8))
+-#define HT_INFO_STBC_PARAM_LSIG_TXOP_PROTECT_ALLOWED	((u16) BIT(9))
+-#define HT_INFO_STBC_PARAM_PCO_ACTIVE			((u16) BIT(10))
+-#define HT_INFO_STBC_PARAM_PCO_PHASE			((u16) BIT(11))
+-
+-
+-
+ /* endif */
+ 
+ /* 	===============WPS Section =============== */
 -- 
 2.25.1
 
