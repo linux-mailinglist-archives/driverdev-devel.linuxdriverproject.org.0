@@ -2,78 +2,64 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 246D82D030A
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 11:53:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 703182D05D6
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 17:07:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7D49E86E8D;
-	Sun,  6 Dec 2020 10:53:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7F67A86C8A;
+	Sun,  6 Dec 2020 16:07:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wbX1c3KxoRnn; Sun,  6 Dec 2020 10:53:42 +0000 (UTC)
+	with ESMTP id bVYjb8x9SgIQ; Sun,  6 Dec 2020 16:07:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D8EAE87051;
-	Sun,  6 Dec 2020 10:53:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2739A86D33;
+	Sun,  6 Dec 2020 16:07:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CA7D81BF5E0
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 10:53:39 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E9FC1BF28F
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 16:07:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C1BB086969
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 10:53:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 55603204BD
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 16:07:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B_Tr6ChNA8Fs for <devel@linuxdriverproject.org>;
- Sun,  6 Dec 2020 10:53:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D364686985
- for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 10:53:37 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id k14so9802914wrn.1
- for <devel@driverdev.osuosl.org>; Sun, 06 Dec 2020 02:53:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rhwZAV3eKMtxp3H1CRRBlzG2XWrWtcdxKEWScJZQEDE=;
- b=D5/dNWcJIl/r8GFvLonqTR1+zFAnKn5yTBn7EVgUwH7mbuXGKopA6zU/ip6OWEs7Bh
- 1nMuYONqSbBg567su/U1aaJnnLfsIJyPVVnR/U8bbl8nRjfEYWCjPKTqWy4If0M7Zc4B
- SU2PxXiZGUmYtFbwKvtDOGNREpFMBArgVQPmywV1pat9MWi9BpKTng544e/QjUyuKkpJ
- 8GDh+zPrB1J1CFO0G6EuBjt2Jt0ZaZ/XcecvyiOoYWFezTB1fLei2AQf25dzWkSwfmp9
- +EYDHvtRZHYiMElCPCSsKmd9ySSLC4wdk6Xd9HYeEZigSb6lH9tME2bXBgSjgsb/Buq/
- ALpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rhwZAV3eKMtxp3H1CRRBlzG2XWrWtcdxKEWScJZQEDE=;
- b=oZDLqbOh96DzsWwT0fRbasGkK2ziIWBKjrfmsTHkZttfbS/ftua161cWdK4kfw7sXC
- O0nnDxoxItbA5iReT8wRIKmfqidVAxK9jxV0tu8Mlg56UNDx2YMP0cgvzNdzRM8N7Mt2
- S8IhOWUOoxvKKawIXGUznXQe9ISglMUKE2uU4gbNTRQ3WYy0q6e8yWriQMOoI2o3xTZQ
- osDcGLXUYNVoIvGfwheItRKGZ/Gm+FX7d+rsQz5JIFuSar82xo8JoKXrLQOwVHxDsOg9
- gMLzjW6YDCVaCOj5CqBIYMQEInnBr/Cl9jGFDzJASxzIw0H8ThQaOTWdZ314pz7WkHTf
- cnvA==
-X-Gm-Message-State: AOAM530VMI/wkRIJZJwNg9FhZvwJSn4n4wF9YArIXEt7jckkQVfvxKwh
- V7jrv3P9Xbyz6vOacj9zA/k=
-X-Google-Smtp-Source: ABdhPJz/c1q7AEPX6j8VVX7WMMOgMyZumfUs+CtkcMGXKT7BWV+dreb78Hl/l3+np6rKEpRITMvmOg==
-X-Received: by 2002:adf:90f1:: with SMTP id
- i104mr10783733wri.348.1607252016391; 
- Sun, 06 Dec 2020 02:53:36 -0800 (PST)
-Received: from localhost.localdomain (188.red-81-44-87.dynamicip.rima-tde.net.
- [81.44.87.188])
- by smtp.gmail.com with ESMTPSA id v64sm10134049wme.25.2020.12.06.02.53.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 06 Dec 2020 02:53:35 -0800 (PST)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: mt7621-pinctrl: stop using the deprecated
- 'pinctrl_add_gpio_range'
-Date: Sun,  6 Dec 2020 11:53:33 +0100
-Message-Id: <20201206105333.18428-1-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
+ with ESMTP id eJ3PVYw0q+UY for <devel@linuxdriverproject.org>;
+ Sun,  6 Dec 2020 16:07:25 +0000 (UTC)
+X-Greylist: delayed 00:08:10 by SQLgrey-1.7.6
+Received: from cstnet.cn (smtp25.cstnet.cn [159.226.251.25])
+ by silver.osuosl.org (Postfix) with ESMTP id CF0F920496
+ for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 16:07:23 +0000 (UTC)
+Received: from localhost (unknown [60.163.229.220])
+ by APP-05 (Coremail) with SMTP id zQCowADnyOHN_8xfCAPUAA--.35835S2;
+ Sun, 06 Dec 2020 23:59:10 +0800 (CST)
+From: shaojie.dong@isrc.iscas.ac.cn
+To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+ gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8712: check register_netdev() return value
+Date: Sun,  6 Dec 2020 23:59:07 +0800
+Message-Id: <20201206155907.7991-1-shaojie.dong@isrc.iscas.ac.cn>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: zQCowADnyOHN_8xfCAPUAA--.35835S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrKr1rWr1kCr4UCrW5Jw43Jrb_yoWfZrbEkw
+ 1I9r97Jrs8Ca45u3WDCr13AryIvaykWw40qF1jgFWrGryxKws5W34DWFn8GrW8Zr9FkrZx
+ Aw12gr1Syr47ujkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbIAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+ 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+ A2z4x0Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
+ Cr1l84ACjcxK6I8E87Iv67AKxVWUJVW8JwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gr0_Gr
+ 1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
+ jxv20xvE14v26r1Y6r17McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr
+ 1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4kE6xkIj40Ew7xC0wCY
+ 02Avz4vE14v_XrWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxV
+ Aqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r12
+ 6r1DMIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6x
+ kF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWrJr0_WFyUJwCI42IY6I8E87Iv
+ 67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyT
+ uYvjfU1LvKUUUUU
+X-Originating-IP: [60.163.229.220]
+X-CM-SenderInfo: pvkd0ytlhov01qj6x21ufox2xfdvhtffof0/
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,88 +72,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: hackpascal@gmail.com, devel@driverdev.osuosl.org, linus.walleij@linaro.org,
- yanaijie@huawei.com
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ shaojie.dong@isrc.iscas.ac.cn
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-If the gpio DT node has the 'gpio-ranges' property, the range will be
-added by the gpio core and doesn't need to be added by the pinctrl
-driver.
+From: "shaojie.dong" <shaojie.dong@isrc.iscas.ac.cn>
 
-By having the gpio-ranges property, we can map every pin between
-gpio node and pinctrl node and we can stop using the deprecated
-pinctrl_add_gpio_range() function.
+Function register_netdev() can fail, so we should check it's return value
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Signed-off-by: shaojie.dong <shaojie.dong@isrc.iscas.ac.cn>
 ---
- drivers/staging/mt7621-dts/mt7621.dtsi        |  1 +
- .../staging/mt7621-pinctrl/pinctrl-rt2880.c   | 29 -------------------
- 2 files changed, 1 insertion(+), 29 deletions(-)
+ drivers/staging/rtl8712/hal_init.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index 82aa93634eda..5b9d3bf82cb1 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -90,6 +90,7 @@ gpio: gpio@600 {
- 			#interrupt-cells = <2>;
- 			compatible = "mediatek,mt7621-gpio";
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 95>;
- 			interrupt-controller;
- 			reg = <0x600 0x100>;
- 			interrupt-parent = <&gic>;
-diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-index caaf9e34f1ee..e61dbe186bc9 100644
---- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-+++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-@@ -318,7 +318,6 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
- {
- 	struct rt2880_priv *p;
- 	struct pinctrl_dev *dev;
--	struct device_node *np;
- 
- 	if (!rt2880_pinmux_data)
- 		return -ENOTSUPP;
-@@ -346,34 +345,6 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
- 	if (IS_ERR(dev))
- 		return PTR_ERR(dev);
- 
--	/* finalize by adding gpio ranges for enables gpio controllers */
--	for_each_compatible_node(np, NULL, "ralink,rt2880-gpio") {
--		const __be32 *ngpio, *gpiobase;
--		struct pinctrl_gpio_range *range;
--
--		if (!of_device_is_available(np))
--			continue;
--
--		ngpio = of_get_property(np, "ralink,num-gpios", NULL);
--		gpiobase = of_get_property(np, "ralink,gpio-base", NULL);
--		if (!ngpio || !gpiobase) {
--			dev_err(&pdev->dev, "failed to load chip info\n");
--			of_node_put(np);
--			return -EINVAL;
--		}
--
--		range = devm_kzalloc(p->dev, sizeof(*range), GFP_KERNEL);
--		if (!range) {
--			of_node_put(np);
--			return -ENOMEM;
--		}
--		range->name = "pio";
--		range->npins = __be32_to_cpu(*ngpio);
--		range->base = __be32_to_cpu(*gpiobase);
--		range->pin_base = range->base;
--		pinctrl_add_gpio_range(dev, range);
--	}
--
- 	return 0;
+diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
+index 715f1fe8b..fbcc6de1b 100644
+--- a/drivers/staging/rtl8712/hal_init.c
++++ b/drivers/staging/rtl8712/hal_init.c
+@@ -45,7 +45,8 @@ static void rtl871x_load_fw_cb(const struct firmware *firmware, void *context)
+ 	}
+ 	adapter->fw = firmware;
+ 	/* firmware available - start netdev */
+-	register_netdev(adapter->pnetdev);
++	if (register_netdev(adapter->pnetdev) != 0)
++		dev_err(&udev->dev, "r8712u: register_netdev() failed\n");
+ 	complete(&adapter->rtl8712_fw_ready);
  }
  
 -- 
-2.25.1
+2.17.0
 
 _______________________________________________
 devel mailing list
