@@ -1,59 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EBB62D0057
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 04:52:47 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 31550886CA;
-	Sun,  6 Dec 2020 03:52:45 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ir-NkOt1pSZz; Sun,  6 Dec 2020 03:52:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6D3A0886C4;
-	Sun,  6 Dec 2020 03:52:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3F27D1BF962
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 03:52:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 39FBA2D0162
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 08:14:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3426F20130
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 03:52:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B84A0272DF;
+	Sun,  6 Dec 2020 07:14:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nsaHJvQMFkdZ; Sun,  6 Dec 2020 07:14:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id D1E2A27261;
+	Sun,  6 Dec 2020 07:14:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B27D1BF59A
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 07:14:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 951408697C
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 07:14:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yEz0k1gSqkHb for <devel@linuxdriverproject.org>;
- Sun,  6 Dec 2020 03:52:40 +0000 (UTC)
+ with ESMTP id eJb5sA2Pz4Xh for <devel@linuxdriverproject.org>;
+ Sun,  6 Dec 2020 07:14:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id 807D720101
- for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 03:52:39 +0000 (UTC)
-IronPort-SDR: /pvtEeuOe2S+kkDxivDHmVdE6pyZQ7Y0CYU87OnigbvNHR9JPtqcQX4d6NKQqHArdOzb7XQLYQ
- 4f37Hp/jPYFQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9826"; a="170046934"
-X-IronPort-AV: E=Sophos;i="5.78,396,1599548400"; d="scan'208";a="170046934"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2020 19:52:38 -0800
-IronPort-SDR: m0ZebBFl8yarbe25howqsNds6rIl6e57s4Br8GPa+7IHPpgvXu4ApuEctdW/wCQy89kh316/k5
- 13zZfUIdZe1w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,396,1599548400"; d="scan'208";a="362647196"
-Received: from lkp-server01.sh.intel.com (HELO 47754f1311fc) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 05 Dec 2020 19:52:37 -0800
-Received: from kbuild by 47754f1311fc with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kll6C-0000YE-Sy; Sun, 06 Dec 2020 03:52:36 +0000
-Date: Sun, 06 Dec 2020 11:51:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 784b2c48ac12dcee27db001fb1a3c58c39380cb6
-Message-ID: <5fcc5558.bDtu6PGhFz4vG5Ko%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp.smtpout.orange.fr (smtp04.smtpout.orange.fr
+ [80.12.242.126])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EEFE986955
+ for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 07:14:00 +0000 (UTC)
+Received: from localhost.localdomain ([93.23.13.76]) by mwinf5d08 with ME
+ id 0vDs240021eT3zR03vDso5; Sun, 06 Dec 2020 08:13:56 +0100
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 06 Dec 2020 08:13:56 +0100
+X-ME-IP: 93.23.13.76
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: martyn@welchs.me.uk, manohar.vanga@gmail.com, gregkh@linuxfoundation.org,
+ arnd@arndb.de, trix@redhat.com
+Subject: [PATCH] vme: switch from 'pci_' to 'dma_' API
+Date: Sun,  6 Dec 2020 08:13:52 +0100
+Message-Id: <20201206071352.21949-1-christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,126 +58,249 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: 784b2c48ac12dcee27db001fb1a3c58c39380cb6  driver core: auxiliary bus: Fix auxiliary bus shutdown null auxdrv ptr
+The wrappers in include/linux/pci-dma-compat.h should go away.
 
-elapsed time: 722m
+The patch has been generated with the coccinelle script below and has been
+hand modified to replace GFP_ with a correct flag.
+It has been compile tested.
 
-configs tested: 96
-configs skipped: 2
+When memory is allocated in 'ca91cx42_alloc_consistent()' and
+'tsi148_alloc_consistent()' GFP_KERNEL can be used because both functions
+are called only from 'vme_alloc_consistent()' (vme.c). This function is
+only called from the 'vme_user_probe()' probe function and no lock is
+taken in the between.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+When memory is allocated in 'ca91cx42_crcsr_init()' and
+'tsi148_crcsr_init()' GFP_KERNEL can be used because both functions
+are called only from their corresponding probe function and no lock is
+taken in the between.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-xtensa                         virt_defconfig
-powerpc                      arches_defconfig
-powerpc                      bamboo_defconfig
-parisc                generic-32bit_defconfig
-sh                           se7705_defconfig
-powerpc                     redwood_defconfig
-sh                             espt_defconfig
-arm                           h5000_defconfig
-mips                         cobalt_defconfig
-m68k                       m5208evb_defconfig
-arm                           stm32_defconfig
-powerpc                     pseries_defconfig
-alpha                            allyesconfig
-powerpc                     sbc8548_defconfig
-powerpc                   currituck_defconfig
-powerpc                 canyonlands_defconfig
-sh                             shx3_defconfig
-sh                   rts7751r2dplus_defconfig
-sh                          landisk_defconfig
-m68k                        m5407c3_defconfig
-mips                          ath25_defconfig
-arc                     nsimosci_hs_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a005-20201206
-i386                 randconfig-a004-20201206
-i386                 randconfig-a001-20201206
-i386                 randconfig-a002-20201206
-i386                 randconfig-a006-20201206
-i386                 randconfig-a003-20201206
-i386                 randconfig-a014-20201206
-i386                 randconfig-a013-20201206
-i386                 randconfig-a011-20201206
-i386                 randconfig-a015-20201206
-i386                 randconfig-a012-20201206
-i386                 randconfig-a016-20201206
-x86_64               randconfig-a004-20201206
-x86_64               randconfig-a006-20201206
-x86_64               randconfig-a002-20201206
-x86_64               randconfig-a001-20201206
-x86_64               randconfig-a005-20201206
-x86_64               randconfig-a003-20201206
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+@@
+@@
+-    PCI_DMA_BIDIRECTIONAL
++    DMA_BIDIRECTIONAL
 
-clang tested configs:
-x86_64               randconfig-a016-20201206
-x86_64               randconfig-a012-20201206
-x86_64               randconfig-a014-20201206
-x86_64               randconfig-a013-20201206
-x86_64               randconfig-a015-20201206
-x86_64               randconfig-a011-20201206
+@@
+@@
+-    PCI_DMA_TODEVICE
++    DMA_TO_DEVICE
 
+@@
+@@
+-    PCI_DMA_FROMDEVICE
++    DMA_FROM_DEVICE
+
+@@
+@@
+-    PCI_DMA_NONE
++    DMA_NONE
+
+@@
+expression e1, e2, e3;
+@@
+-    pci_alloc_consistent(e1, e2, e3)
++    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
+
+@@
+expression e1, e2, e3;
+@@
+-    pci_zalloc_consistent(e1, e2, e3)
++    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_free_consistent(e1, e2, e3, e4)
++    dma_free_coherent(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_map_single(e1, e2, e3, e4)
++    dma_map_single(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_unmap_single(e1, e2, e3, e4)
++    dma_unmap_single(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4, e5;
+@@
+-    pci_map_page(e1, e2, e3, e4, e5)
++    dma_map_page(&e1->dev, e2, e3, e4, e5)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_unmap_page(e1, e2, e3, e4)
++    dma_unmap_page(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_map_sg(e1, e2, e3, e4)
++    dma_map_sg(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_unmap_sg(e1, e2, e3, e4)
++    dma_unmap_sg(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_dma_sync_single_for_cpu(e1, e2, e3, e4)
++    dma_sync_single_for_cpu(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_dma_sync_single_for_device(e1, e2, e3, e4)
++    dma_sync_single_for_device(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_dma_sync_sg_for_cpu(e1, e2, e3, e4)
++    dma_sync_sg_for_cpu(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2, e3, e4;
+@@
+-    pci_dma_sync_sg_for_device(e1, e2, e3, e4)
++    dma_sync_sg_for_device(&e1->dev, e2, e3, e4)
+
+@@
+expression e1, e2;
+@@
+-    pci_dma_mapping_error(e1, e2)
++    dma_mapping_error(&e1->dev, e2)
+
+@@
+expression e1, e2;
+@@
+-    pci_set_dma_mask(e1, e2)
++    dma_set_mask(&e1->dev, e2)
+
+@@
+expression e1, e2;
+@@
+-    pci_set_consistent_dma_mask(e1, e2)
++    dma_set_coherent_mask(&e1->dev, e2)
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+If needed, see post from Christoph Hellwig on the kernel-janitors ML:
+   https://marc.info/?l=kernel-janitors&m=158745678307186&w=4
+---
+ drivers/vme/bridges/vme_ca91cx42.c | 13 +++++++------
+ drivers/vme/bridges/vme_tsi148.c   | 13 +++++++------
+ 2 files changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/vme/bridges/vme_ca91cx42.c b/drivers/vme/bridges/vme_ca91cx42.c
+index ea938dc29c5e..439b0edeca08 100644
+--- a/drivers/vme/bridges/vme_ca91cx42.c
++++ b/drivers/vme/bridges/vme_ca91cx42.c
+@@ -1510,7 +1510,7 @@ static void *ca91cx42_alloc_consistent(struct device *parent, size_t size,
+ 	/* Find pci_dev container of dev */
+ 	pdev = to_pci_dev(parent);
+ 
+-	return pci_alloc_consistent(pdev, size, dma);
++	return dma_alloc_coherent(&pdev->dev, size, dma, GFP_KERNEL);
+ }
+ 
+ static void ca91cx42_free_consistent(struct device *parent, size_t size,
+@@ -1521,7 +1521,7 @@ static void ca91cx42_free_consistent(struct device *parent, size_t size,
+ 	/* Find pci_dev container of dev */
+ 	pdev = to_pci_dev(parent);
+ 
+-	pci_free_consistent(pdev, size, vaddr, dma);
++	dma_free_coherent(&pdev->dev, size, vaddr, dma);
+ }
+ 
+ /*
+@@ -1555,8 +1555,9 @@ static int ca91cx42_crcsr_init(struct vme_bridge *ca91cx42_bridge,
+ 	}
+ 
+ 	/* Allocate mem for CR/CSR image */
+-	bridge->crcsr_kernel = pci_zalloc_consistent(pdev, VME_CRCSR_BUF_SIZE,
+-						     &bridge->crcsr_bus);
++	bridge->crcsr_kernel = dma_alloc_coherent(&pdev->dev,
++						  VME_CRCSR_BUF_SIZE,
++						  &bridge->crcsr_bus, GFP_KERNEL);
+ 	if (!bridge->crcsr_kernel) {
+ 		dev_err(&pdev->dev, "Failed to allocate memory for CR/CSR "
+ 			"image\n");
+@@ -1589,8 +1590,8 @@ static void ca91cx42_crcsr_exit(struct vme_bridge *ca91cx42_bridge,
+ 	/* Free image */
+ 	iowrite32(0, bridge->base + VCSR_TO);
+ 
+-	pci_free_consistent(pdev, VME_CRCSR_BUF_SIZE, bridge->crcsr_kernel,
+-		bridge->crcsr_bus);
++	dma_free_coherent(&pdev->dev, VME_CRCSR_BUF_SIZE,
++			  bridge->crcsr_kernel, bridge->crcsr_bus);
+ }
+ 
+ static int ca91cx42_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+diff --git a/drivers/vme/bridges/vme_tsi148.c b/drivers/vme/bridges/vme_tsi148.c
+index 1227ea937059..be9051b02f24 100644
+--- a/drivers/vme/bridges/vme_tsi148.c
++++ b/drivers/vme/bridges/vme_tsi148.c
+@@ -2155,7 +2155,7 @@ static void *tsi148_alloc_consistent(struct device *parent, size_t size,
+ 	/* Find pci_dev container of dev */
+ 	pdev = to_pci_dev(parent);
+ 
+-	return pci_alloc_consistent(pdev, size, dma);
++	return dma_alloc_coherent(&pdev->dev, size, dma, GFP_KERNEL);
+ }
+ 
+ static void tsi148_free_consistent(struct device *parent, size_t size,
+@@ -2166,7 +2166,7 @@ static void tsi148_free_consistent(struct device *parent, size_t size,
+ 	/* Find pci_dev container of dev */
+ 	pdev = to_pci_dev(parent);
+ 
+-	pci_free_consistent(pdev, size, vaddr, dma);
++	dma_free_coherent(&pdev->dev, size, vaddr, dma);
+ }
+ 
+ /*
+@@ -2192,8 +2192,9 @@ static int tsi148_crcsr_init(struct vme_bridge *tsi148_bridge,
+ 	bridge = tsi148_bridge->driver_priv;
+ 
+ 	/* Allocate mem for CR/CSR image */
+-	bridge->crcsr_kernel = pci_zalloc_consistent(pdev, VME_CRCSR_BUF_SIZE,
+-						     &bridge->crcsr_bus);
++	bridge->crcsr_kernel = dma_alloc_coherent(&pdev->dev,
++						  VME_CRCSR_BUF_SIZE,
++						  &bridge->crcsr_bus, GFP_KERNEL);
+ 	if (!bridge->crcsr_kernel) {
+ 		dev_err(tsi148_bridge->parent, "Failed to allocate memory for "
+ 			"CR/CSR image\n");
+@@ -2261,8 +2262,8 @@ static void tsi148_crcsr_exit(struct vme_bridge *tsi148_bridge,
+ 	iowrite32be(0, bridge->base + TSI148_LCSR_CROU);
+ 	iowrite32be(0, bridge->base + TSI148_LCSR_CROL);
+ 
+-	pci_free_consistent(pdev, VME_CRCSR_BUF_SIZE, bridge->crcsr_kernel,
+-		bridge->crcsr_bus);
++	dma_free_coherent(&pdev->dev, VME_CRCSR_BUF_SIZE,
++			  bridge->crcsr_kernel, bridge->crcsr_bus);
+ }
+ 
+ static int tsi148_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
