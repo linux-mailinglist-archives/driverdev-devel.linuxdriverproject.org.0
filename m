@@ -1,50 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39FBA2D0162
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 08:14:12 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 246D82D030A
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Dec 2020 11:53:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B84A0272DF;
-	Sun,  6 Dec 2020 07:14:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7D49E86E8D;
+	Sun,  6 Dec 2020 10:53:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nsaHJvQMFkdZ; Sun,  6 Dec 2020 07:14:08 +0000 (UTC)
+	with ESMTP id wbX1c3KxoRnn; Sun,  6 Dec 2020 10:53:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D1E2A27261;
-	Sun,  6 Dec 2020 07:14:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D8EAE87051;
+	Sun,  6 Dec 2020 10:53:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9B27D1BF59A
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 07:14:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CA7D81BF5E0
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 10:53:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 951408697C
- for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 07:14:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C1BB086969
+ for <devel@linuxdriverproject.org>; Sun,  6 Dec 2020 10:53:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eJb5sA2Pz4Xh for <devel@linuxdriverproject.org>;
- Sun,  6 Dec 2020 07:14:01 +0000 (UTC)
+ with ESMTP id B_Tr6ChNA8Fs for <devel@linuxdriverproject.org>;
+ Sun,  6 Dec 2020 10:53:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp.smtpout.orange.fr (smtp04.smtpout.orange.fr
- [80.12.242.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EEFE986955
- for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 07:14:00 +0000 (UTC)
-Received: from localhost.localdomain ([93.23.13.76]) by mwinf5d08 with ME
- id 0vDs240021eT3zR03vDso5; Sun, 06 Dec 2020 08:13:56 +0100
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 06 Dec 2020 08:13:56 +0100
-X-ME-IP: 93.23.13.76
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: martyn@welchs.me.uk, manohar.vanga@gmail.com, gregkh@linuxfoundation.org,
- arnd@arndb.de, trix@redhat.com
-Subject: [PATCH] vme: switch from 'pci_' to 'dma_' API
-Date: Sun,  6 Dec 2020 08:13:52 +0100
-Message-Id: <20201206071352.21949-1-christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.27.0
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D364686985
+ for <devel@driverdev.osuosl.org>; Sun,  6 Dec 2020 10:53:37 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id k14so9802914wrn.1
+ for <devel@driverdev.osuosl.org>; Sun, 06 Dec 2020 02:53:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rhwZAV3eKMtxp3H1CRRBlzG2XWrWtcdxKEWScJZQEDE=;
+ b=D5/dNWcJIl/r8GFvLonqTR1+zFAnKn5yTBn7EVgUwH7mbuXGKopA6zU/ip6OWEs7Bh
+ 1nMuYONqSbBg567su/U1aaJnnLfsIJyPVVnR/U8bbl8nRjfEYWCjPKTqWy4If0M7Zc4B
+ SU2PxXiZGUmYtFbwKvtDOGNREpFMBArgVQPmywV1pat9MWi9BpKTng544e/QjUyuKkpJ
+ 8GDh+zPrB1J1CFO0G6EuBjt2Jt0ZaZ/XcecvyiOoYWFezTB1fLei2AQf25dzWkSwfmp9
+ +EYDHvtRZHYiMElCPCSsKmd9ySSLC4wdk6Xd9HYeEZigSb6lH9tME2bXBgSjgsb/Buq/
+ ALpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rhwZAV3eKMtxp3H1CRRBlzG2XWrWtcdxKEWScJZQEDE=;
+ b=oZDLqbOh96DzsWwT0fRbasGkK2ziIWBKjrfmsTHkZttfbS/ftua161cWdK4kfw7sXC
+ O0nnDxoxItbA5iReT8wRIKmfqidVAxK9jxV0tu8Mlg56UNDx2YMP0cgvzNdzRM8N7Mt2
+ S8IhOWUOoxvKKawIXGUznXQe9ISglMUKE2uU4gbNTRQ3WYy0q6e8yWriQMOoI2o3xTZQ
+ osDcGLXUYNVoIvGfwheItRKGZ/Gm+FX7d+rsQz5JIFuSar82xo8JoKXrLQOwVHxDsOg9
+ gMLzjW6YDCVaCOj5CqBIYMQEInnBr/Cl9jGFDzJASxzIw0H8ThQaOTWdZ314pz7WkHTf
+ cnvA==
+X-Gm-Message-State: AOAM530VMI/wkRIJZJwNg9FhZvwJSn4n4wF9YArIXEt7jckkQVfvxKwh
+ V7jrv3P9Xbyz6vOacj9zA/k=
+X-Google-Smtp-Source: ABdhPJz/c1q7AEPX6j8VVX7WMMOgMyZumfUs+CtkcMGXKT7BWV+dreb78Hl/l3+np6rKEpRITMvmOg==
+X-Received: by 2002:adf:90f1:: with SMTP id
+ i104mr10783733wri.348.1607252016391; 
+ Sun, 06 Dec 2020 02:53:36 -0800 (PST)
+Received: from localhost.localdomain (188.red-81-44-87.dynamicip.rima-tde.net.
+ [81.44.87.188])
+ by smtp.gmail.com with ESMTPSA id v64sm10134049wme.25.2020.12.06.02.53.35
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 06 Dec 2020 02:53:35 -0800 (PST)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: mt7621-pinctrl: stop using the deprecated
+ 'pinctrl_add_gpio_range'
+Date: Sun,  6 Dec 2020 11:53:33 +0100
+Message-Id: <20201206105333.18428-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -58,248 +86,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: hackpascal@gmail.com, devel@driverdev.osuosl.org, linus.walleij@linaro.org,
+ yanaijie@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The wrappers in include/linux/pci-dma-compat.h should go away.
+If the gpio DT node has the 'gpio-ranges' property, the range will be
+added by the gpio core and doesn't need to be added by the pinctrl
+driver.
 
-The patch has been generated with the coccinelle script below and has been
-hand modified to replace GFP_ with a correct flag.
-It has been compile tested.
+By having the gpio-ranges property, we can map every pin between
+gpio node and pinctrl node and we can stop using the deprecated
+pinctrl_add_gpio_range() function.
 
-When memory is allocated in 'ca91cx42_alloc_consistent()' and
-'tsi148_alloc_consistent()' GFP_KERNEL can be used because both functions
-are called only from 'vme_alloc_consistent()' (vme.c). This function is
-only called from the 'vme_user_probe()' probe function and no lock is
-taken in the between.
-
-When memory is allocated in 'ca91cx42_crcsr_init()' and
-'tsi148_crcsr_init()' GFP_KERNEL can be used because both functions
-are called only from their corresponding probe function and no lock is
-taken in the between.
-
-@@
-@@
--    PCI_DMA_BIDIRECTIONAL
-+    DMA_BIDIRECTIONAL
-
-@@
-@@
--    PCI_DMA_TODEVICE
-+    DMA_TO_DEVICE
-
-@@
-@@
--    PCI_DMA_FROMDEVICE
-+    DMA_FROM_DEVICE
-
-@@
-@@
--    PCI_DMA_NONE
-+    DMA_NONE
-
-@@
-expression e1, e2, e3;
-@@
--    pci_alloc_consistent(e1, e2, e3)
-+    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
-
-@@
-expression e1, e2, e3;
-@@
--    pci_zalloc_consistent(e1, e2, e3)
-+    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_free_consistent(e1, e2, e3, e4)
-+    dma_free_coherent(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_map_single(e1, e2, e3, e4)
-+    dma_map_single(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_single(e1, e2, e3, e4)
-+    dma_unmap_single(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4, e5;
-@@
--    pci_map_page(e1, e2, e3, e4, e5)
-+    dma_map_page(&e1->dev, e2, e3, e4, e5)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_page(e1, e2, e3, e4)
-+    dma_unmap_page(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_map_sg(e1, e2, e3, e4)
-+    dma_map_sg(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_sg(e1, e2, e3, e4)
-+    dma_unmap_sg(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_single_for_cpu(e1, e2, e3, e4)
-+    dma_sync_single_for_cpu(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_single_for_device(e1, e2, e3, e4)
-+    dma_sync_single_for_device(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_sg_for_cpu(e1, e2, e3, e4)
-+    dma_sync_sg_for_cpu(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_sg_for_device(e1, e2, e3, e4)
-+    dma_sync_sg_for_device(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2;
-@@
--    pci_dma_mapping_error(e1, e2)
-+    dma_mapping_error(&e1->dev, e2)
-
-@@
-expression e1, e2;
-@@
--    pci_set_dma_mask(e1, e2)
-+    dma_set_mask(&e1->dev, e2)
-
-@@
-expression e1, e2;
-@@
--    pci_set_consistent_dma_mask(e1, e2)
-+    dma_set_coherent_mask(&e1->dev, e2)
-
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
-If needed, see post from Christoph Hellwig on the kernel-janitors ML:
-   https://marc.info/?l=kernel-janitors&m=158745678307186&w=4
----
- drivers/vme/bridges/vme_ca91cx42.c | 13 +++++++------
- drivers/vme/bridges/vme_tsi148.c   | 13 +++++++------
- 2 files changed, 14 insertions(+), 12 deletions(-)
+ drivers/staging/mt7621-dts/mt7621.dtsi        |  1 +
+ .../staging/mt7621-pinctrl/pinctrl-rt2880.c   | 29 -------------------
+ 2 files changed, 1 insertion(+), 29 deletions(-)
 
-diff --git a/drivers/vme/bridges/vme_ca91cx42.c b/drivers/vme/bridges/vme_ca91cx42.c
-index ea938dc29c5e..439b0edeca08 100644
---- a/drivers/vme/bridges/vme_ca91cx42.c
-+++ b/drivers/vme/bridges/vme_ca91cx42.c
-@@ -1510,7 +1510,7 @@ static void *ca91cx42_alloc_consistent(struct device *parent, size_t size,
- 	/* Find pci_dev container of dev */
- 	pdev = to_pci_dev(parent);
+diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
+index 82aa93634eda..5b9d3bf82cb1 100644
+--- a/drivers/staging/mt7621-dts/mt7621.dtsi
++++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+@@ -90,6 +90,7 @@ gpio: gpio@600 {
+ 			#interrupt-cells = <2>;
+ 			compatible = "mediatek,mt7621-gpio";
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 95>;
+ 			interrupt-controller;
+ 			reg = <0x600 0x100>;
+ 			interrupt-parent = <&gic>;
+diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+index caaf9e34f1ee..e61dbe186bc9 100644
+--- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
++++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+@@ -318,7 +318,6 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
+ {
+ 	struct rt2880_priv *p;
+ 	struct pinctrl_dev *dev;
+-	struct device_node *np;
  
--	return pci_alloc_consistent(pdev, size, dma);
-+	return dma_alloc_coherent(&pdev->dev, size, dma, GFP_KERNEL);
+ 	if (!rt2880_pinmux_data)
+ 		return -ENOTSUPP;
+@@ -346,34 +345,6 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dev))
+ 		return PTR_ERR(dev);
+ 
+-	/* finalize by adding gpio ranges for enables gpio controllers */
+-	for_each_compatible_node(np, NULL, "ralink,rt2880-gpio") {
+-		const __be32 *ngpio, *gpiobase;
+-		struct pinctrl_gpio_range *range;
+-
+-		if (!of_device_is_available(np))
+-			continue;
+-
+-		ngpio = of_get_property(np, "ralink,num-gpios", NULL);
+-		gpiobase = of_get_property(np, "ralink,gpio-base", NULL);
+-		if (!ngpio || !gpiobase) {
+-			dev_err(&pdev->dev, "failed to load chip info\n");
+-			of_node_put(np);
+-			return -EINVAL;
+-		}
+-
+-		range = devm_kzalloc(p->dev, sizeof(*range), GFP_KERNEL);
+-		if (!range) {
+-			of_node_put(np);
+-			return -ENOMEM;
+-		}
+-		range->name = "pio";
+-		range->npins = __be32_to_cpu(*ngpio);
+-		range->base = __be32_to_cpu(*gpiobase);
+-		range->pin_base = range->base;
+-		pinctrl_add_gpio_range(dev, range);
+-	}
+-
+ 	return 0;
  }
  
- static void ca91cx42_free_consistent(struct device *parent, size_t size,
-@@ -1521,7 +1521,7 @@ static void ca91cx42_free_consistent(struct device *parent, size_t size,
- 	/* Find pci_dev container of dev */
- 	pdev = to_pci_dev(parent);
- 
--	pci_free_consistent(pdev, size, vaddr, dma);
-+	dma_free_coherent(&pdev->dev, size, vaddr, dma);
- }
- 
- /*
-@@ -1555,8 +1555,9 @@ static int ca91cx42_crcsr_init(struct vme_bridge *ca91cx42_bridge,
- 	}
- 
- 	/* Allocate mem for CR/CSR image */
--	bridge->crcsr_kernel = pci_zalloc_consistent(pdev, VME_CRCSR_BUF_SIZE,
--						     &bridge->crcsr_bus);
-+	bridge->crcsr_kernel = dma_alloc_coherent(&pdev->dev,
-+						  VME_CRCSR_BUF_SIZE,
-+						  &bridge->crcsr_bus, GFP_KERNEL);
- 	if (!bridge->crcsr_kernel) {
- 		dev_err(&pdev->dev, "Failed to allocate memory for CR/CSR "
- 			"image\n");
-@@ -1589,8 +1590,8 @@ static void ca91cx42_crcsr_exit(struct vme_bridge *ca91cx42_bridge,
- 	/* Free image */
- 	iowrite32(0, bridge->base + VCSR_TO);
- 
--	pci_free_consistent(pdev, VME_CRCSR_BUF_SIZE, bridge->crcsr_kernel,
--		bridge->crcsr_bus);
-+	dma_free_coherent(&pdev->dev, VME_CRCSR_BUF_SIZE,
-+			  bridge->crcsr_kernel, bridge->crcsr_bus);
- }
- 
- static int ca91cx42_probe(struct pci_dev *pdev, const struct pci_device_id *id)
-diff --git a/drivers/vme/bridges/vme_tsi148.c b/drivers/vme/bridges/vme_tsi148.c
-index 1227ea937059..be9051b02f24 100644
---- a/drivers/vme/bridges/vme_tsi148.c
-+++ b/drivers/vme/bridges/vme_tsi148.c
-@@ -2155,7 +2155,7 @@ static void *tsi148_alloc_consistent(struct device *parent, size_t size,
- 	/* Find pci_dev container of dev */
- 	pdev = to_pci_dev(parent);
- 
--	return pci_alloc_consistent(pdev, size, dma);
-+	return dma_alloc_coherent(&pdev->dev, size, dma, GFP_KERNEL);
- }
- 
- static void tsi148_free_consistent(struct device *parent, size_t size,
-@@ -2166,7 +2166,7 @@ static void tsi148_free_consistent(struct device *parent, size_t size,
- 	/* Find pci_dev container of dev */
- 	pdev = to_pci_dev(parent);
- 
--	pci_free_consistent(pdev, size, vaddr, dma);
-+	dma_free_coherent(&pdev->dev, size, vaddr, dma);
- }
- 
- /*
-@@ -2192,8 +2192,9 @@ static int tsi148_crcsr_init(struct vme_bridge *tsi148_bridge,
- 	bridge = tsi148_bridge->driver_priv;
- 
- 	/* Allocate mem for CR/CSR image */
--	bridge->crcsr_kernel = pci_zalloc_consistent(pdev, VME_CRCSR_BUF_SIZE,
--						     &bridge->crcsr_bus);
-+	bridge->crcsr_kernel = dma_alloc_coherent(&pdev->dev,
-+						  VME_CRCSR_BUF_SIZE,
-+						  &bridge->crcsr_bus, GFP_KERNEL);
- 	if (!bridge->crcsr_kernel) {
- 		dev_err(tsi148_bridge->parent, "Failed to allocate memory for "
- 			"CR/CSR image\n");
-@@ -2261,8 +2262,8 @@ static void tsi148_crcsr_exit(struct vme_bridge *tsi148_bridge,
- 	iowrite32be(0, bridge->base + TSI148_LCSR_CROU);
- 	iowrite32be(0, bridge->base + TSI148_LCSR_CROL);
- 
--	pci_free_consistent(pdev, VME_CRCSR_BUF_SIZE, bridge->crcsr_kernel,
--		bridge->crcsr_bus);
-+	dma_free_coherent(&pdev->dev, VME_CRCSR_BUF_SIZE,
-+			  bridge->crcsr_kernel, bridge->crcsr_bus);
- }
- 
- static int tsi148_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 -- 
-2.27.0
+2.25.1
 
 _______________________________________________
 devel mailing list
