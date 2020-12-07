@@ -2,71 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A80312D1D8C
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 23:42:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E44C2D1DE5
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 00:00:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C63E287769;
-	Mon,  7 Dec 2020 22:42:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 95FCD87664;
+	Mon,  7 Dec 2020 23:00:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lGAg1QjZ0F7G; Mon,  7 Dec 2020 22:42:34 +0000 (UTC)
+	with ESMTP id s69WYZsb_ip3; Mon,  7 Dec 2020 23:00:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E0BA873FD;
-	Mon,  7 Dec 2020 22:42:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A0638764D;
+	Mon,  7 Dec 2020 23:00:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 264841BF312
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 22:42:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F1D21BF312
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 23:00:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2290E873FD
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 22:42:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8BA8B8764D
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 23:00:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mXdZ1ta9G5FT for <devel@linuxdriverproject.org>;
- Mon,  7 Dec 2020 22:42:31 +0000 (UTC)
+ with ESMTP id eFq6xTxdSLut for <devel@linuxdriverproject.org>;
+ Mon,  7 Dec 2020 23:00:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AB3C9873E9
- for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 22:42:30 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id o24so16873991ljj.6
- for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 14:42:30 -0800 (PST)
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A067986E4E
+ for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 23:00:47 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id a8so5720187lfb.3
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 15:00:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cImNfTxV3yatbn+FwY8M9bZp9qMjG8D8HnYsrobPKBM=;
- b=l/3wAoeuSBrTZ5kzXGqkOaoPHawgUXp/mHZNKiEgADA645+ISC1YZ5iqJSJE4+v7XZ
- xITpXU1sinnNXZW40rT7HZ9HShZ2VXfN0X+Aub2v/zs7L1Z9Rpi5mG56cCwHWGDM7EfC
- TYf097m6CnVspCAAUT7WedGTeh+kjr78Ck97MfE4ZiBDJSdNjadXF8AF0c3WKqiv5gQy
- 1K3PB9Gu3LhF7EApfg/b+njaSxfT7CJBuj0f6/eB6HvN3aeATU7Ogpo0xxmALvGEUhrK
- UmnvAGyBnC3OfhTcxyd1TAzTPNXz9tUs239JVEq2mS0RhykttT9WUZEjnT9zoW+1x9QF
- W4Jw==
+ :cc; bh=MRIaz/QqwQXKXSXb3nYPYT/g6KDa16uGLes5GkMKucw=;
+ b=I3Yudz7nX7p+tWeGi5ph2E0TAva8TL/UBIq0ubmfa3xumuDzsXpp/l8ed6YuW6hNac
+ eRz3/aE2Z/qMBQivOjEKOmfa467OY6IEMa4mxTbxHNLjAj3deqCdAfHCcttajzl3B7RT
+ IzieTMJEE3NdR6H3itBuhVmVdROVBej5UIN/aPAoEJONTo+lgNjMQgee7f3PWy/6aWvg
+ NmOQHSmXAnnjdz93N4lWIxa7Veb2oHKwMJKoud+BhGEHX4fH6VswVWWXsRhhmkLTeXAU
+ i5xD/t+14ys1OE2nwpSKhnGXsfnOciVSbamtMQxvIFyoTkcXy7lF5msRj19DT+gt0e6t
+ pXqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cImNfTxV3yatbn+FwY8M9bZp9qMjG8D8HnYsrobPKBM=;
- b=lvRWof/TbmnA1v0L0nvziUFiziF9+YncDyYGRvq5EEnv/9IwLC4ZeBOAa76dLsHLwZ
- lEMR5czsjHshDy79miTCkEgek7M2rn9Cs38l7JAHTa0pHkUyux4Y3tjgqUYth3IRIF1z
- GMQTytsBzauvFv+MCXpIK2CRH+wjgdAP20gPf0fQKZofdnubT22DfU3QLu0usAWHRw0W
- 1SWud20kSrDVuj90QlnD8BRI0cOX75kJsSGV+sf/n+z/qQ3t+c4ECsKmCaeoqXF1QuBY
- T0FO78j8zpZM5RB73dxYdfcWqISv878YP6kbQqCxy9C/7q9WwlrDls5VhJWTgWHUQrLT
- LJVA==
-X-Gm-Message-State: AOAM532mFJo7OLT7LzhitkxwirgbGQU94DQDLM/2mGwCGmDRYCn//QYI
- kzxpCgRpvUe+VvDutZ8Fi6T4J+uBprO2z7Sam6er1w==
-X-Google-Smtp-Source: ABdhPJy8Ot+W5f80Fu6BvEpJfkPnwWQJWnUoywlXCUa7zl1OOM6UIV8Ecm6vA/ioB3u0PzOzFPstmhe2dwDhcTnSjz8=
-X-Received: by 2002:a2e:9ad3:: with SMTP id p19mr4433350ljj.286.1607380948588; 
- Mon, 07 Dec 2020 14:42:28 -0800 (PST)
+ bh=MRIaz/QqwQXKXSXb3nYPYT/g6KDa16uGLes5GkMKucw=;
+ b=AtwoEuMXHM+n36sZ/UdEjufzRB48qXptgSjDR6rKW+HnMNNa+n3ep194BOAW/RzENR
+ tLWBI47ycxEQ7d5LEotTOxnMdkvCMdH6CKysNJdtgcgy/BIaBqeECvwuLKBcz3Hm5gPu
+ ArPKSf5gvNGk4FTCSI44V+v/VcSym9FTPt4ZnIx0D4J78ujVt5DIeZVl+r8VjCa5yU3a
+ acSMyJ9VA2z+VErsoau1BOL+SeYuI7K+yg4ghCWA+aKO1v9zTZwW4wY1KKt7nVlygf2d
+ AnLTQbsgxJ3ASmjFw+FAdP7Gp7ZHxTrYX1WUKCT4wr7rf2ZaXPohno7Y65YtFpRECx99
+ 9+/A==
+X-Gm-Message-State: AOAM533/o0IhLI3qUBRMySWIG59zaFCYjvEiLGLThlwNSDIkL2qGPCqC
+ 766u8shy56tfw7359UjxQ10wBLYwasvAEkHU31cpub0R4UN2/VLi
+X-Google-Smtp-Source: ABdhPJy2sUGuSdRe+WHjDjkACjfv4ZbpS4pEOJB0KAz1DrrDHq1eFB3zVzh2Pu7z8R1AeVPsyMxOi0snYGph3Deuutk=
+X-Received: by 2002:a19:cb45:: with SMTP id b66mr2646521lfg.441.1607382045497; 
+ Mon, 07 Dec 2020 15:00:45 -0800 (PST)
 MIME-Version: 1.0
 References: <20201207192104.6046-1-sergio.paracuellos@gmail.com>
- <20201207192104.6046-2-sergio.paracuellos@gmail.com>
-In-Reply-To: <20201207192104.6046-2-sergio.paracuellos@gmail.com>
+ <20201207192104.6046-3-sergio.paracuellos@gmail.com>
+In-Reply-To: <20201207192104.6046-3-sergio.paracuellos@gmail.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 7 Dec 2020 23:42:16 +0100
-Message-ID: <CACRpkdavpQ+QP56MVQ5E0oxNKWb0tR9g8vHay6-LAc+Bj7tAQQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: pinctrl: rt2880: add binding document
+Date: Tue, 8 Dec 2020 00:00:34 +0100
+Message-ID: <CACRpkdagTdkMbg=nw-N9KQhsWXqLxofzpD_9YLgpKPBxo0vyhQ@mail.gmail.com>
+Subject: Re: [PATCH 2/3] pinctrl: ralink: add a pinctrl driver for the rt2880
+ family
 To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,115 +92,51 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Sergio,
+Hi Serigio,
 
-thanks for driving this!
+I dug around some to try to understand the patch I think I get
+it now :)
+
+Squash this with the third patch so it becomes a
+"move" of this file, preserving history. With that:
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+
+I have ideas, but it is better to move the driver out
+of staging and improve it in pinctrl.
+
+Since there might be many sub-SoCs for this pin
+controller, what about creating
+drivers/pinctrl/ralink/* for this at the same time?
 
 On Mon, Dec 7, 2020 at 8:21 PM Sergio Paracuellos
 <sergio.paracuellos@gmail.com> wrote:
-
-> The commit adds rt2880 compatible node in binding document.
+>
+> These Socs have 1-3 banks of 8-32 gpios. Rather then setting the muxing of each
+> pin individually, these socs have mux groups that when set will effect 1-N pins.
+> Pin groups have a 2, 4 or 8 different muxes.
 >
 > Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 (...)
-> +description:
-> +  The rt2880 pinmux can only set the muxing of pin groups. muxing indiviual pins
-> +  is not supported. There is no pinconf support.
+> +#include <asm/mach-ralink/ralink_regs.h>
+> +#include <asm/mach-ralink/pinmux.h>
+> +#include <asm/mach-ralink/mt7620.h>
 
-OK!
+I think in the next step we should move the contents of
+rt2880_pinmux_data into this driver, then we can drop these
+mach-headers and show the way for the rest of the ralink
+chips to push their data down into this driver (or subdrivers)
+and depopulate mach-ralink a bit.
 
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - ralink,rt2880-pinmux
-> +
-> +  pinctrl-0:
-> +    description:
-> +      A phandle to the node containing the subnodes containing default
-> +      configurations.
+> +       p->groups = rt2880_pinmux_data;
 
-As it is a node on the pin controller itself, this is a hog so write something
-about that this is for pinctrl hogs.
+So this is where the driver actually gets a pointer to all
+groups and functions, and these groups and functions all
+come from arch/mips/ralink/mt7621.c right?
 
-> +  pinctrl-names:
-> +    description:
-> +      A pinctrl state named "default" must be defined.
-> +    const: default
-
-Is it really compulsory?
-
-> +required:
-> +  - compatible
-> +  - pinctrl-names
-> +  - pinctrl-0
-
-I wonder if the hogs are really compulsory.
-
-> +patternProperties:
-> +  '^.*$':
-
-That's liberal node naming!
-What about [a-z0-9_-]+ or something?
-
-> +    if:
-> +      type: object
-> +      description: |
-> +        A pinctrl node should contain at least one subnodes representing the
-> +        pinctrl groups available on the machine.
-> +      $ref: "pinmux-node.yaml"
-> +      required:
-> +        - groups
-> +        - function
-> +      additionalProperties: false
-> +    then:
-> +      properties:
-> +        groups:
-> +          description:
-> +            Name of the pin group to use for the functions.
-> +          $ref: "/schemas/types.yaml#/definitions/string"
-> +          enum: [i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2, mdio,
-> +                 pcie, sdhci]
-> +        function:
-> +          description:
-> +            The mux function to select
-> +          $ref: "/schemas/types.yaml#/definitions/string"
-> +          enum: [gpio, i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2,
-> +                 mdio, nand1, nand2, sdhci]
-
-Why do we have this complex if: clause?
-$ref: "pinmux-node.yaml" should bring in the groups and
-function properties. Then you can add some further restrictions
-on top of that, right?
-
-I would just do:
-
-patternProperties:
-  '^[a-z0-9_]+$':
-    type: object
-      description: node for pinctrl
-      $ref "pinmux-node.yaml"
-
-      properties:
-        groups:
-          description: groups...
-          enum: [i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2, mdio,
-pcie, sdhci]
-        function:
-          description: function...
-          enum: [gpio, i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2,
-mdio, nand1, nand2, sdhci]
-
-Note: the function names are fine but the group names are a bit
-confusion since often a group can be used for more than one
-function, and e.g.
-
-function = "i2c";
-group = "uart1";
-
-to use the uart1 pins for an i2c is gonna look mildly confusing.
-
-But if this is what the hardware calls it I suppose it is
-fine.
+I think after this first step we should move mt7621.c
+to pinctrl and become a subdriver for this pin controller
+and then we can hopefully move the rest as well once
+you set the pattern for how we do this.
 
 Yours,
 Linus Walleij
