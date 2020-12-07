@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 484B42D19CF
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 20:40:05 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F7282D19D5
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 20:40:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 67F7687875;
-	Mon,  7 Dec 2020 19:40:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 29DF22E277;
+	Mon,  7 Dec 2020 19:40:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7RPuxFL+H3Wp; Mon,  7 Dec 2020 19:40:02 +0000 (UTC)
+	with ESMTP id fKNSwRFL6McN; Mon,  7 Dec 2020 19:40:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0AD8087853;
-	Mon,  7 Dec 2020 19:40:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3F7722E24D;
+	Mon,  7 Dec 2020 19:40:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 40F1E1BF83B
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CDF861BF83B
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3DF90877B4
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C5C552E268
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dCJcTcIRpFhK for <devel@linuxdriverproject.org>;
+ with ESMTP id v6sqevU3PfOw for <devel@linuxdriverproject.org>;
  Mon,  7 Dec 2020 19:39:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 349558784A
+ by silver.osuosl.org (Postfix) with ESMTPS id 344492E24D
  for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 19:39:54 +0000 (UTC)
 Received: from cipterm0.informatik.uni-erlangen.de (cipterm0.cip.cs.fau.de
- [IPv6:2001:638:a000:4130:131:188:30:90])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 32456240F01;
- Mon,  7 Dec 2020 20:30:32 +0100 (CET)
+ [131.188.30.90])
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 77DF5241006;
+ Mon,  7 Dec 2020 20:30:34 +0100 (CET)
 Received: by cipterm0.informatik.uni-erlangen.de (Postfix, from userid 67858)
- id 2F45E3280304; Mon,  7 Dec 2020 20:30:32 +0100 (CET)
+ id 6C34B3280304; Mon,  7 Dec 2020 20:30:33 +0100 (CET)
 From: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 09/12] media: atomisp: Fix PARENTHESIS_ALIGNMENT
-Date: Mon,  7 Dec 2020 20:26:36 +0100
-Message-Id: <20201207192638.15219-10-Philipp.Gerlesberger@fau.de>
+Subject: [PATCH 10/12] media: atomisp: Fix BLOCK_COMMENT_STYLE
+Date: Mon,  7 Dec 2020 20:26:37 +0100
+Message-Id: <20201207192638.15219-11-Philipp.Gerlesberger@fau.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201207192638.15219-1-Philipp.Gerlesberger@fau.de>
 References: <20201207192638.15219-1-Philipp.Gerlesberger@fau.de>
@@ -68,30 +68,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-You can sum up the two lines, because the maximum line length of
-100 columns is not exceeded.
+Block comments should align the * on each line
 
 Co-developed-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 Signed-off-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 Signed-off-by: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 ---
- drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c b/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
-index 753a99703f1e..38f86764ccfc 100644
+index 38f86764ccfc..7f4592565af6 100644
 --- a/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
 +++ b/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
-@@ -37,8 +37,7 @@ static struct spctrl_context_info spctrl_cofig_info[N_SP_ID];
- static bool spctrl_loaded[N_SP_ID] = {0};
- 
- /* Load firmware */
--int ia_css_spctrl_load_fw(sp_ID_t sp_id,
--				      ia_css_spctrl_cfg *spctrl_cfg)
-+int ia_css_spctrl_load_fw(sp_ID_t sp_id, ia_css_spctrl_cfg *spctrl_cfg)
+@@ -105,8 +105,8 @@ int ia_css_spctrl_load_fw(sp_ID_t sp_id, ia_css_spctrl_cfg *spctrl_cfg)
+ void sh_css_spctrl_reload_fw(sp_ID_t sp_id)
  {
- 	ia_css_ptr code_addr = mmgr_NULL;
- 	struct ia_css_sp_init_dmem_cfg *init_dmem_cfg;
+ 	/* now we program the base address into the icache and
+-	* invalidate the cache.
+-	*/
++	 * invalidate the cache.
++	 */
+ 	sp_ctrl_store(sp_id, SP_ICACHE_ADDR_REG,
+ 		      (hrt_data)spctrl_cofig_info[sp_id].code_addr);
+ 	sp_ctrl_setbit(sp_id, SP_ICACHE_INV_REG, SP_ICACHE_INV_BIT);
 -- 
 2.20.1
 
