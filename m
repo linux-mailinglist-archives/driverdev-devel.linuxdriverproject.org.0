@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5C752D19CE
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 20:40:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 385DA2D19D3
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 20:40:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2CE3186A2F;
-	Mon,  7 Dec 2020 19:40:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E957186B88;
+	Mon,  7 Dec 2020 19:40:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b6IHmAzy_orr; Mon,  7 Dec 2020 19:40:02 +0000 (UTC)
+	with ESMTP id iyf66q87Hdzu; Mon,  7 Dec 2020 19:40:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DEB988638F;
-	Mon,  7 Dec 2020 19:40:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 313C886AD0;
+	Mon,  7 Dec 2020 19:40:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 780FA1BF83B
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E461D1BF976
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6DAAB2E268
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E133A86EA6
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qGIGmGUgoUG0 for <devel@linuxdriverproject.org>;
- Mon,  7 Dec 2020 19:39:54 +0000 (UTC)
+ with ESMTP id jDQIQz6ybyCQ for <devel@linuxdriverproject.org>;
+ Mon,  7 Dec 2020 19:39:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by silver.osuosl.org (Postfix) with ESMTPS id 385172E25D
- for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 19:39:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C6AB187065
+ for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 19:39:52 +0000 (UTC)
 Received: from cipterm0.informatik.uni-erlangen.de (cipterm0.cip.cs.fau.de
  [IPv6:2001:638:a000:4130:131:188:30:90])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 3EE84240EBB;
- Mon,  7 Dec 2020 20:30:26 +0100 (CET)
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id DFF20240EC0;
+ Mon,  7 Dec 2020 20:30:29 +0100 (CET)
 Received: by cipterm0.informatik.uni-erlangen.de (Postfix, from userid 67858)
- id 3CDCC3280304; Mon,  7 Dec 2020 20:30:26 +0100 (CET)
+ id DCDE03280304; Mon,  7 Dec 2020 20:30:29 +0100 (CET)
 From: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 06/12] media: atomisp: Add parentheses
-Date: Mon,  7 Dec 2020 20:26:33 +0100
-Message-Id: <20201207192638.15219-7-Philipp.Gerlesberger@fau.de>
+Subject: [PATCH 07/12] media: atomisp: Fix funciton decleration
+Date: Mon,  7 Dec 2020 20:26:34 +0100
+Message-Id: <20201207192638.15219-8-Philipp.Gerlesberger@fau.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201207192638.15219-1-Philipp.Gerlesberger@fau.de>
 References: <20201207192638.15219-1-Philipp.Gerlesberger@fau.de>
@@ -63,40 +63,31 @@ Cc: devel@driverdev.osuosl.org, linux-kernel@i4.cs.fau.de,
  gregkh@linuxfoundation.org, ij72uhux@stud.informatik.uni-erlangen.de,
  Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>,
  sakari.ailus@linux.intel.com, mchehab@kernel.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ERROR:COMPLEX_MACRO: Macros with complex values should be
-enclosed in parentheses
-
-Co-developed-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
-Signed-off-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
-Signed-off-by: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
----
- .../media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h    | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h b/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h
-index 9cd3d92b34c9..2c02dd1cf27a 100644
---- a/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h
-+++ b/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h
-@@ -22,8 +22,8 @@
- #define STORAGE_CLASS_RMGR_H extern
- #define STORAGE_CLASS_RMGR_C
- #else				/* __INLINE_RMGR__ */
--#define STORAGE_CLASS_RMGR_H static inline
--#define STORAGE_CLASS_RMGR_C static inline
-+#define STORAGE_CLASS_RMGR_H (static inline)
-+#define STORAGE_CLASS_RMGR_C (static inline)
- #endif				/* __INLINE_RMGR__ */
- 
- /**
--- 
-2.20.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+V3JpdGUgcmV0dXJuX3R5cGUsIGZ1bmN0aW9uX25hbWUgYW5kIHBhcmFtZXRlcnMgaW4gb25lIGxp
+bmUKYmVjYXVzZSBsaW5lcyBzaG91bGQgbm90IGVuZCB3aXRoIGEgJygnIFtPUEVOX0VOREVEX0xJ
+TkVdCldyaXRlIG9wZW4gYnJhY2Ug4oCZe+KAmSBvbiB0aGUgbmV4dCBsaW5lIHRvIGZpeCBPUEVO
+X0JSQUNFIEVycm9yCgpDby1kZXZlbG9wZWQtYnk6IEFuZHJleSBLaGxvcGtvdiA8aWo3MnVodXhA
+c3R1ZC5pbmZvcm1hdGlrLnVuaS1lcmxhbmdlbi5kZT4KU2lnbmVkLW9mZi1ieTogQW5kcmV5IEto
+bG9wa292IDxpajcydWh1eEBzdHVkLmluZm9ybWF0aWsudW5pLWVybGFuZ2VuLmRlPgpTaWduZWQt
+b2ZmLWJ5OiBQaGlsaXBwIEdlcmxlc2JlcmdlciA8UGhpbGlwcC5HZXJsZXNiZXJnZXJAZmF1LmRl
+PgotLS0KIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9hdG9taXNwL3BjaS9ydW50aW1lL3RpbWVyL3Ny
+Yy90aW1lci5jIHwgNSArKy0tLQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMyBk
+ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvYXRvbWlzcC9w
+Y2kvcnVudGltZS90aW1lci9zcmMvdGltZXIuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9hdG9t
+aXNwL3BjaS9ydW50aW1lL3RpbWVyL3NyYy90aW1lci5jCmluZGV4IDY3OWVmODI0MjU3NC4uMDBi
+NTRhMDYxM2JiIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvYXRvbWlzcC9wY2kv
+cnVudGltZS90aW1lci9zcmMvdGltZXIuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvYXRv
+bWlzcC9wY2kvcnVudGltZS90aW1lci9zcmMvdGltZXIuYwpAQCAtMTksOSArMTksOCBAQAogI2lu
+Y2x1ZGUgImdwX3RpbWVyLmgiIC8qZ3BfdGltZXJfcmVhZCgpKi8KICNpbmNsdWRlICJhc3NlcnRf
+c3VwcG9ydC5oIgogCi1pbnQKLWlhX2Nzc190aW1lcl9nZXRfY3VycmVudF90aWNrKAotICAgIHN0
+cnVjdCBpYV9jc3NfY2xvY2tfdGljayAqY3Vycl90cykgeworaW50IGlhX2Nzc190aW1lcl9nZXRf
+Y3VycmVudF90aWNrKHN0cnVjdCBpYV9jc3NfY2xvY2tfdGljayAqY3Vycl90cykKK3sKIAlhc3Nl
+cnQoY3Vycl90cyk7CiAJaWYgKCFjdXJyX3RzKQogCXsKLS0gCjIuMjAuMQoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
+dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
+b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
