@@ -2,55 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF8422D150A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 16:49:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C86062D1713
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 18:05:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 271DB86151;
-	Mon,  7 Dec 2020 15:49:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 18C8A86C3A;
+	Mon,  7 Dec 2020 17:04:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FSHy-FlCigaq; Mon,  7 Dec 2020 15:49:27 +0000 (UTC)
+	with ESMTP id ccDoXbRJqY4K; Mon,  7 Dec 2020 17:04:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F1F6C85FFD;
-	Mon,  7 Dec 2020 15:49:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DDC9286B6A;
+	Mon,  7 Dec 2020 17:04:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 326F41BF28A
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 15:49:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 637881BF2F7
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 17:04:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2EBF68776F
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 15:49:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5CB228776F
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 17:04:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qz7S0KKRQ3RJ for <devel@linuxdriverproject.org>;
- Mon,  7 Dec 2020 15:49:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F09A487740
- for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 15:49:21 +0000 (UTC)
-Date: Mon, 7 Dec 2020 16:50:31 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1607356161;
- bh=qTBPibEoRu5n/CizFEG0pWRxG9m5E+TMjsuOMLCNFiE=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=VZVM6LsSiUyJ7qdyf5ffpQ8bSADyh6wb2Wid4dEYKTeg5JeGGJdJvBQzCqdDcmUFo
- G2kvF+J1/lasDYQhIIMVcWoPWU7wIJ2sT3S2nZXbshw0tAADTXT9eAh+UZQZ1xVvyE
- VxNMc/c36u4vqIw09eoqXlCowKf6DXzImKTK7Wok=
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] staging: mt7621-pinctrl: stop using the deprecated
- 'pinctrl_add_gpio_range'
-Message-ID: <X85PR+MHeoKm2b6b@kroah.com>
-References: <20201206105333.18428-1-sergio.paracuellos@gmail.com>
- <CACRpkdapoB3P2wgMG+WbrsGopfgPtk5ZebRyb__wZK_hXzXZtg@mail.gmail.com>
- <CAMhs-H_R5dp14_8OG=Mh2kfRG3SXGGAcAhY8NF0sd4M8mk6nWQ@mail.gmail.com>
- <CACRpkdafXZJ5W9Z0LJv3p7htP12o2mULgHhFa8kmnT+LWJhh0A@mail.gmail.com>
+ with ESMTP id XRX-WUR5fiHU for <devel@linuxdriverproject.org>;
+ Mon,  7 Dec 2020 17:04:54 +0000 (UTC)
+X-Greylist: delayed 00:07:41 by SQLgrey-1.7.6
+Received: from faui03.informatik.uni-erlangen.de
+ (faui03.informatik.uni-erlangen.de [131.188.30.103])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CA82287769
+ for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 17:04:53 +0000 (UTC)
+Received: from cip2a2.informatik.uni-erlangen.de (cip2a2.cip.cs.fau.de
+ [131.188.30.65])
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 097C024005A;
+ Mon,  7 Dec 2020 17:57:03 +0100 (CET)
+Received: by cip2a2.informatik.uni-erlangen.de (Postfix, from userid 68240)
+ id 0393788010C; Mon,  7 Dec 2020 17:57:02 +0100 (CET)
+From: Ferdinand Schober <ferdinand.schober@fau.de>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: ks7010: Enclose macros in parentheses
+Date: Mon,  7 Dec 2020 17:56:46 +0100
+Message-Id: <20201207165646.8306-1-ferdinand.schober@fau.de>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CACRpkdafXZJ5W9Z0LJv3p7htP12o2mULgHhFa8kmnT+LWJhh0A@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,47 +57,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Weijie Gao <hackpascal@gmail.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Jason Yan <yanaijie@huawei.com>
+Cc: Ferdinand Schober <ferdinand.schober@fau.de>, gregkh@linuxfoundation.org,
+ Philipp Bruegmann <philipp.bruegmann@fau.de>, linux-kernel@i4.cs.fau.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Dec 07, 2020 at 04:40:06PM +0100, Linus Walleij wrote:
-> On Mon, Dec 7, 2020 at 2:57 PM Sergio Paracuellos
-> <sergio.paracuellos@gmail.com> wrote:
-> > On Mon, Dec 7, 2020 at 2:05 PM Linus Walleij <linus.walleij@linaro.org> wrote:
-> 
-> > > After this I think the driver looks good and can graduate from staging.
-> > > Can you send a patch to move this to drivers/pinctrl next
-> > >
-> > > I think drivers/pinctrl/pinctrl-rt2880.c since we don't expect a lot
-> > > more of them.
-> >
-> > Perfect, let me write the bindings yaml file and send the patch moving this.
-> >
-> > What git tree do you prefer the patch to be rebased onto?
-> 
-> I suppose Gregs since he has some changes to it that it need to
-> be based on. After v5.11-rc1 it could be the pinctrl tree as well.
-> I don't know if Greg has a favourite way to de-stage drivers?
+Enclose macros in parentheses to ensure correct casting behaviour as
+suggested by checkpatch.
 
-It all depends on what the subsystem maintainer wants to do.
+Co-developed-by: Philipp Bruegmann <philipp.bruegmann@fau.de>
+Signed-off-by: Philipp Bruegmann <philipp.bruegmann@fau.de>
+Signed-off-by: Ferdinand Schober <ferdinand.schober@fau.de>
+---
+ drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-Sometimes we just do a "add a new driver to the real spot" that goes
-through the subsystem tree, and when that is accepted, I delete the
-driver in the staging tree.  This is most often in networking.
+diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
+index 39138191a556..c62a494ed6bb 100644
+--- a/drivers/staging/ks7010/ks_hostif.h
++++ b/drivers/staging/ks7010/ks_hostif.h
+@@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
+ #define TX_RATE_FIXED		5
+ 
+ /* 11b rate */
+-#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
+-#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
+-#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
+-#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
++#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
++#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
++#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
++#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
+ 
+ /* 11g rate */
+-#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
+-#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
+-#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
+-#define TX_RATE_9M	(u8)(90 / 5)
+-#define TX_RATE_18M	(u8)(180 / 5)
+-#define TX_RATE_36M	(u8)(360 / 5)
+-#define TX_RATE_48M	(u8)(480 / 5)
+-#define TX_RATE_54M	(u8)(540 / 5)
++#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
++#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
++#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
++#define TX_RATE_9M	((u8)(90 / 5))
++#define TX_RATE_18M	((u8)(180 / 5))
++#define TX_RATE_36M	((u8)(360 / 5))
++#define TX_RATE_48M	((u8)(480 / 5))
++#define TX_RATE_54M	((u8)(540 / 5))
+ 
+ static inline bool is_11b_rate(u8 rate)
+ {
+-- 
+2.29.2
 
-Or you can wait until -rc1 and do a move in your tree, or just tell me
-to do the move in my tree with an ack, and I can handle it all.
-
-Whatever is easier for you is fine with me, I'm flexible :)
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
