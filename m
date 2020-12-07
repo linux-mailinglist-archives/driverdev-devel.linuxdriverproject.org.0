@@ -1,52 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BCC82D19D1
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 20:40:06 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B62E72D1C3F
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 22:44:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 87ED687884;
-	Mon,  7 Dec 2020 19:40:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 309772E173;
+	Mon,  7 Dec 2020 21:44:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aLuzvfvU+4UY; Mon,  7 Dec 2020 19:40:03 +0000 (UTC)
+	with ESMTP id xBmVRmT7VfO5; Mon,  7 Dec 2020 21:44:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 10CDF877B4;
-	Mon,  7 Dec 2020 19:40:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 66A7B2E162;
+	Mon,  7 Dec 2020 21:44:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 919E11BF976
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8540E1BF3A4
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 21:44:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8E2D1864C3
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 19:39:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7BDA82E1F3
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 21:44:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6UKtsXCSaxS9 for <devel@linuxdriverproject.org>;
- Mon,  7 Dec 2020 19:39:52 +0000 (UTC)
+ with ESMTP id 0MQI+avv13O4 for <devel@linuxdriverproject.org>;
+ Mon,  7 Dec 2020 21:44:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from faui03.informatik.uni-erlangen.de
- (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C29EF8638F
- for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 19:39:52 +0000 (UTC)
-Received: from cipterm0.informatik.uni-erlangen.de (cipterm0.cip.cs.fau.de
- [131.188.30.90])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id E0C95240F6D;
- Mon,  7 Dec 2020 20:30:39 +0100 (CET)
-Received: by cipterm0.informatik.uni-erlangen.de (Postfix, from userid 67858)
- id DEB773280304; Mon,  7 Dec 2020 20:30:39 +0100 (CET)
-From: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 12/12] media: atomisp: Fix LOGICAL_CONTINUATIONS
-Date: Mon,  7 Dec 2020 20:26:39 +0100
-Message-Id: <20201207192638.15219-13-Philipp.Gerlesberger@fau.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201207192638.15219-1-Philipp.Gerlesberger@fau.de>
-References: <20201207192638.15219-1-Philipp.Gerlesberger@fau.de>
+Received: from mail-lf1-f66.google.com (mail-lf1-f66.google.com
+ [209.85.167.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id DD3062E17F
+ for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 21:44:04 +0000 (UTC)
+Received: by mail-lf1-f66.google.com with SMTP id d20so20184397lfe.11
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 13:44:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=NBllnL8naQwiLC3IbQ729nVkC34dWc2rKWCyWdH5Py8=;
+ b=YzEXc63jD6JXdypKnuewp+ea/CgHHiBDUoFB1W2zKHwdVhFGLPBBETGuO++CuhHmE6
+ NBgMEpJl6h4P+RzvyXvO6GNtsNeLZw9lln3RpJRBWPD3XVptl02AM+h3xBfD9L3X/V2B
+ mEAh4JO1bjQqgtgCJHZ2Api/oJwN4bYF3iw4KnqJmQd55uDtHLvz8DCvf2ZZxlWU+5lC
+ NWZIL5ftDZ/D2gMYLNIZpC6XgvMQyxbqO+5nKXde4EVhxp4sMTCY3XWnoqXMQVsGPwct
+ bL1rrZMtELljIjVrU+HIYALDBy87TxdKunAWvu6/aBKub2xN3IA5Z4aPhXMMOeTLs5hL
+ eC8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=NBllnL8naQwiLC3IbQ729nVkC34dWc2rKWCyWdH5Py8=;
+ b=uj2ciwRkluNXBN5EJHPSiZ6RCvAyyFjzMtpqdxX+JSe0Wj5aIkrUcxI19VeflVqzwo
+ bYgzSVXrnHgYjToA3BJriMK/TVb3BV2egUPZVmLbtpsaiwT8eqnrd7J6qT2bze/rS8Xw
+ fcPdNPeDS4+SzzX/bbD3RLyfHo4Lb63OaYYMXXauvtXl32u2+SnzecMKHyh7zq7jk7zy
+ QJhja3z1mjfsDP7Yq6FqqSOzRL5FTFzpb5fp9M6dgfRhZn/oUajAHwwJNiPjqt/ovhwk
+ xYdre4mcajcruNo58zQVhIPsWWF+ZJKoeCOoP1e1aWzSxWzd9Uz1PlmFbH3m6Ej6XF2H
+ iFbw==
+X-Gm-Message-State: AOAM530nCuP7I8Gvz8t62fXnn6Z5tlvVZAv3IeCeae3GCGyDnJ5CFBKH
+ 9FKLPTjhGwvg1ojxL2wSsTFw0glLRYZo3uTeTpryHw==
+X-Google-Smtp-Source: ABdhPJzBFQxeWpbrZWzI8IAvXWeRXihWFY+gMGNPFO1E69dT+O2Nviq0M2ZRvmwNvqeh2WwWeAdngxJeYIkrO0APqRg=
+X-Received: by 2002:a19:ad41:: with SMTP id s1mr9615981lfd.571.1607377442784; 
+ Mon, 07 Dec 2020 13:44:02 -0800 (PST)
 MIME-Version: 1.0
+References: <20201206105333.18428-1-sergio.paracuellos@gmail.com>
+ <CACRpkdapoB3P2wgMG+WbrsGopfgPtk5ZebRyb__wZK_hXzXZtg@mail.gmail.com>
+ <CAMhs-H_R5dp14_8OG=Mh2kfRG3SXGGAcAhY8NF0sd4M8mk6nWQ@mail.gmail.com>
+ <CACRpkdafXZJ5W9Z0LJv3p7htP12o2mULgHhFa8kmnT+LWJhh0A@mail.gmail.com>
+ <X85PR+MHeoKm2b6b@kroah.com>
+In-Reply-To: <X85PR+MHeoKm2b6b@kroah.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 7 Dec 2020 22:43:51 +0100
+Message-ID: <CACRpkdY+Xsv4hnVhGWcPZkDLX0TzYWeUn2LmAEQLDTVkJd9g4Q@mail.gmail.com>
+Subject: Re: [PATCH] staging: mt7621-pinctrl: stop using the deprecated
+ 'pinctrl_add_gpio_range'
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,42 +84,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@i4.cs.fau.de,
- gregkh@linuxfoundation.org, ij72uhux@stud.informatik.uni-erlangen.de,
- Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>,
- sakari.ailus@linux.intel.com, mchehab@kernel.org, linux-media@vger.kernel.org
+Cc: Weijie Gao <hackpascal@gmail.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Jason Yan <yanaijie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Logical continuations should be on the previous line
+On Mon, Dec 7, 2020 at 4:49 PM Greg KH <gregkh@linuxfoundation.org> wrote:
 
-Co-developed-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
-Signed-off-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
-Signed-off-by: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
----
- drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> Sometimes we just do a "add a new driver to the real spot" that goes
+> through the subsystem tree, and when that is accepted, I delete the
+> driver in the staging tree.  This is most often in networking.
 
-diff --git a/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c b/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
-index 2f1c2df59f71..7d44070c7114 100644
---- a/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
-+++ b/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
-@@ -24,8 +24,8 @@
-  *****************************************************************************/
- int ia_css_queue_local_init(ia_css_queue_t *qhandle, ia_css_queue_local_t *desc)
- {
--	if (NULL == qhandle || NULL == desc
--	    || NULL == desc->cb_elems || NULL == desc->cb_desc) {
-+	if (NULL == qhandle || NULL == desc ||
-+	    NULL == desc->cb_elems || NULL == desc->cb_desc) {
- 		/* Invalid parameters, return error*/
- 		return -EINVAL;
- 	}
--- 
-2.20.1
+That's unnice, it will loose the history, it is so nice to git blame
+the source.
 
+> Or you can wait until -rc1 and do a move in your tree, or just tell me
+> to do the move in my tree with an ack, and I can handle it all.
+>
+> Whatever is easier for you is fine with me, I'm flexible :)
+
+I say let's move it to my subsystem before the merge window
+if there is time. I'll provide ACK.
+
+Yours,
+Linus Walleij
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
