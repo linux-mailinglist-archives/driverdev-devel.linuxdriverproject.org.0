@@ -2,53 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DDB92D132D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 15:12:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD7AC2D142C
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Dec 2020 15:58:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BF7C587047;
-	Mon,  7 Dec 2020 14:12:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C1480870A1;
+	Mon,  7 Dec 2020 14:58:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RQbAoNHjnrHG; Mon,  7 Dec 2020 14:12:24 +0000 (UTC)
+	with ESMTP id ql0o5y6lvLvB; Mon,  7 Dec 2020 14:58:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 848E486FD9;
-	Mon,  7 Dec 2020 14:12:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5BB5E870A3;
+	Mon,  7 Dec 2020 14:58:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 55F4F1BF3F7
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 14:12:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A40871BF3F7
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 14:58:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 526C4871C0
- for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 14:12:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7C7FF2E257
+ for <devel@linuxdriverproject.org>; Mon,  7 Dec 2020 14:58:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hcvT2S3at3mD for <devel@linuxdriverproject.org>;
- Mon,  7 Dec 2020 14:12:17 +0000 (UTC)
+ with ESMTP id 9T4yzphzv9X8 for <devel@linuxdriverproject.org>;
+ Mon,  7 Dec 2020 14:58:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 62392871A2
- for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 14:12:17 +0000 (UTC)
-Date: Mon, 7 Dec 2020 15:13:27 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1607350337;
- bh=IBMlOSU2iIQucQDXTYzzOosHVlluTgpzB+poKtRcw9w=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=wwl07o6i4DTkUBy150n/O9L5A0sK2A7T2brGedOTzb2xqUS9Me31gjT1yipnbAtp3
- rDE80owzb5nA/pXqKIE6wyyECAqYBZL1Bt7O2mFYpeEVLRsVntmF+1gdmhl6eAihwq
- b274GpcaxnQ8E+8T9GikVP0OHJrbkxUcnB8XPL28=
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Ross Schmidt <ross.schm.dev@gmail.com>
-Subject: Re: [PATCH 10/10] staging: rtl8723bs: replace unique macros and
- ELEMENT_ID
-Message-ID: <X844h0efBCbQ0yrw@kroah.com>
-References: <20201206034517.4276-1-ross.schm.dev@gmail.com>
- <20201206034517.4276-10-ross.schm.dev@gmail.com>
+Received: from smtp85.iad3a.emailsrvr.com (smtp85.iad3a.emailsrvr.com
+ [173.203.187.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id BB8822E255
+ for <devel@driverdev.osuosl.org>; Mon,  7 Dec 2020 14:58:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1607353108;
+ bh=YcCxsxOfPO6UHXXPtFWvbo8Y59EzcSwClxJ/pTXEQXk=;
+ h=From:To:Subject:Date:From;
+ b=qv8lQ3ETEoUcUS/1ntSzwoTejOWzFaR56BDX9dQGos3O2LHMnx7H1DCrSOvWW34J3
+ mbAJDOsiIAJJ24wJlJ6L530BR5iA9OTgp4L4fG/OMYn9YPPk5ciEHeEQtruShi3Mop
+ bqwvnrNq06lmnmUhJQcqG2aZZExVlIBDnW4XpCK4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1607353108;
+ bh=YcCxsxOfPO6UHXXPtFWvbo8Y59EzcSwClxJ/pTXEQXk=;
+ h=From:To:Subject:Date:From;
+ b=CGuL3ZqsZlUJsHoD47/zpBYT7xuIyLNDAuzKMsj42XLbrT74eDPthdoMkU6YInHjo
+ lPkCt/enujH2iETKEo/l89XTCnoCrdRYb19rEg78D/3DLyhCD5ogQN38SMLnE4dNUO
+ 8SFriPulVBefdV6Bgy2u+8aaV862aKQhtvZDb7G4=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp3.relay.iad3a.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id EDB7A22FA6; 
+ Mon,  7 Dec 2020 09:58:27 -0500 (EST)
+From: Ian Abbott <abbotti@mev.co.uk>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: comedi: mf6x4: Fix AI end-of-conversion detection
+Date: Mon,  7 Dec 2020 14:58:06 +0000
+Message-Id: <20201207145806.4046-1-abbotti@mev.co.uk>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201206034517.4276-10-ross.schm.dev@gmail.com>
+X-Classification-ID: 547b1621-c35d-4a06-be47-8b7791185542-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,40 +70,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ian Abbott <abbotti@mev.co.uk>, Rostislav Lisovy <lisovy@gmail.com>,
+ stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Dec 05, 2020 at 09:45:17PM -0600, Ross Schmidt wrote:
-> Replace unique macros and ELEMENT_ID with kernel provided ieee80211_eid
-> enum.
-> 
-> In a several cases multiple macros or constants are replaced by one
-> constant.
-> 
-> WLAN_EID_HT_CAP, _HT_CAPABILITY_IE_, and EID_HTCapability are replace by
-> WLAN_EID_HT_CAPABILITY.
-> 
-> _WPA2_IE_ID_, EID_WPA2, and _RSN_IE_2_ are replaced by WLAN_EID_RSN.
-> 
-> _HT_EXTRA_INFO_IE_ and _HT_ADD_INFO_IE_ are replaced by
-> WLAN_EID_HT_OPERATION.
-> 
-> WLAN_EID_GENERIC, _WPA_IE_ID_, _SSN_IE_1_, and _VENDOR_SPECIFIC_IE_ are
-> replaced by WLAN_EID_VENDOR_SPECIFIC.
-> 
-> Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
+I have had reports from two different people that attempts to read the
+analog input channels of the MF624 board fail with an `ETIMEDOUT` error.
 
-All other patches in this series applied cleanly, please rebase this one
-and resend.
+After triggering the conversion, the code calls `comedi_timeout()` with
+`mf6x4_ai_eoc()` as the callback function to check if the conversion is
+complete.  The callback returns 0 if complete or `-EBUSY` if not yet
+complete.  `comedi_timeout()` returns `-ETIMEDOUT` if it has not
+completed within a timeout period which is propagated as an error to the
+user application.
 
-You might want to break it up into one-patch-per-constant replacement
+The existing code considers the conversion to be complete when the EOLC
+bit is high.  However, according to the user manuals for the MF624 and
+MF634 boards, this test is incorrect because EOLC is an active low
+signal that goes high when the conversion is triggered, and goes low
+when the conversion is complete.  Fix the problem by inverting the test
+of the EOLC bit state.
 
-thanks,
+Fixes: 04b565021a83 ("comedi: Humusoft MF634 and MF624 DAQ cards driver")
+Cc: <stable@vger.kernel.org> # v4.4+
+Cc: Rostislav Lisovy <lisovy@gmail.com>
+Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
+---
+ drivers/staging/comedi/drivers/mf6x4.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-greg k-h
+diff --git a/drivers/staging/comedi/drivers/mf6x4.c b/drivers/staging/comedi/drivers/mf6x4.c
+index ea430237efa7..9da8dd748078 100644
+--- a/drivers/staging/comedi/drivers/mf6x4.c
++++ b/drivers/staging/comedi/drivers/mf6x4.c
+@@ -112,8 +112,9 @@ static int mf6x4_ai_eoc(struct comedi_device *dev,
+ 	struct mf6x4_private *devpriv = dev->private;
+ 	unsigned int status;
+ 
++	/* EOLC goes low at end of conversion. */
+ 	status = ioread32(devpriv->gpioc_reg);
+-	if (status & MF6X4_GPIOC_EOLC)
++	if ((status & MF6X4_GPIOC_EOLC) == 0)
+ 		return 0;
+ 	return -EBUSY;
+ }
+-- 
+2.29.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
