@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 883532D21C1
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:08:55 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 025EC2D21BB
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:08:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C7F672E50A;
-	Tue,  8 Dec 2020 04:08:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AF9D587B4F;
+	Tue,  8 Dec 2020 04:08:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UlmlpeYGJSYW; Tue,  8 Dec 2020 04:08:47 +0000 (UTC)
+	with ESMTP id vam-Xlc1lrfQ; Tue,  8 Dec 2020 04:08:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E130B2E50B;
-	Tue,  8 Dec 2020 04:08:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 021DF87B5A;
+	Tue,  8 Dec 2020 04:08:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C4A771BF356
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BB78F1BF356
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C156D8769E
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B8C578768C
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uUkwRi0jlOxN for <devel@linuxdriverproject.org>;
+ with ESMTP id Fg2rCX1wlBx2 for <devel@linuxdriverproject.org>;
  Tue,  8 Dec 2020 04:08:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f46.google.com (mail-io1-f46.google.com
- [209.85.166.46])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D372887B8B
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:08:00 +0000 (UTC)
-Received: by mail-io1-f46.google.com with SMTP id r9so15635634ioo.7
- for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:08:00 -0800 (PST)
+Received: from mail-io1-f43.google.com (mail-io1-f43.google.com
+ [209.85.166.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E11B3879DC
+ for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:08:01 +0000 (UTC)
+Received: by mail-io1-f43.google.com with SMTP id d9so7078000iob.6
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:08:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dsWJ3wrdvClaf8NoUeAOfEEb2bR+T2eO/cQV3hJDJhA=;
- b=O3SsdqoptsHL+5djAONfMBEO4xq7WCTiejUCI/p/Nmi6OEizNdKX5jH2UatTU6nxSz
- kYXX/BH9jGXLcj341NUUje8zDnWt0U9ZsNIn1igZFVytaV13cgxVAzyC1vSz0x+Vgkwd
- MlliFr/LKBxzOD12uqhAYZRB1FziXfvMILEqLJVM5VuhrEaqd2TA8/OgkqIc1xPMTlD0
- MLvVDR00+LQliL77qZ3x+akhodwsl1eKA2W22McXhDDOilivK87oYVydz8nbKUirwbid
- efrP8A+EaFjK5fP1oW8m/FaglBCXI+kpI7+h1cHG4kzJRHoQW9uOO5zZHe7M8EuDVqI8
- 1Org==
+ bh=C9YK23rigNo4fAHt5FAnHz48ScTShF2RcQD5zdVR6cE=;
+ b=Wcn1Juryu3qkMZUKfIfG170JSh7UMKXs12S4Ml8pa09DSqzulQHnxGPi5zfs+lzueV
+ kkr9Or9sHHxs8REwiJcdAHg4N6TehE5EZPtwYfGPSodtqgvZHReseyIG6ouT7e/KGW6h
+ iog63eQumvX1bnGwoqhFK4NI26AkjHZRzKhNNWue1llPOvzcF+sSFyyENMjka5MjzMhQ
+ 3CBLEaTiUht2SnG0oTV3EGGDhOvQnD18d2dKZ82zriyQxNap3/wePAtBq8SN3QselckJ
+ YbXCqn1ZiRosMq9u7jNrHMnp0afvvbEtI98NFCzmUiuFgRpzrNK9NA6lmlOg5+4AfOUu
+ mniQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dsWJ3wrdvClaf8NoUeAOfEEb2bR+T2eO/cQV3hJDJhA=;
- b=A99FO+hbm1Lxtxy6vp1R0ZjjTqqRKaMQ8UmhULnkWnsw+zzRJ3gqzRuFDebdOAwz2D
- kj71QCS3xz988rxUaBkEf4jmVvzJ8IGoNTQrF5C9qRFoS4YXAN4zBtnLZ1/mj2pZ4lfG
- 1DXqRHBS1gNtqG/1iiEz13jWu33kSoB4vsZJitJwvQZWxCpLsOzB08xjheB5iOohYiUQ
- PTLr4FktzgwLMh56RA4nL0reuu5A2pVl1XR0Uhbnrka49Eij04obyv8kHaGSz+GIxllS
- F4ylAObkiHqhr/PB+qKgDBVx9xKW4yKEelkcmVdQJSAjSuaAlKj6V8JlPf2Pbc+6DKaD
- tV2w==
-X-Gm-Message-State: AOAM533CI0qiqTIji+dDTzdx5UMSCIO5NVOVYA3XIN/mVZtdrMdVfQyN
- JBZafdP8G1O6awvCdBAtM/g=
-X-Google-Smtp-Source: ABdhPJxK9xuXLbplaY1A0R0SwyrpRl4q1MJSZx1rOm8fC1aw+oP6FpIfRiS27FtfmeE65QMnwhgQpw==
-X-Received: by 2002:a02:b607:: with SMTP id h7mr25285486jam.120.1607400480332; 
- Mon, 07 Dec 2020 20:08:00 -0800 (PST)
+ bh=C9YK23rigNo4fAHt5FAnHz48ScTShF2RcQD5zdVR6cE=;
+ b=sBYyBp4NlzRVymvamwEQ+5mqhDimlGxqTTkT6pyD0qRDSs2QXudUE4pMoila2B5k0Y
+ /uAVdHA1ypOH29yWCLM8L2eXnhNvd4dWASBgEnw9XIgpiv00vHsinGI9uwCpaQhiUbA/
+ zp+ksjN7cbyL2GlUo5QW0x+wJeS9F/8CUNnNhoN2mRlD8ZJ3jLcqGo/++T2Ik6jqMvjt
+ 80R4kFvMuEKG4HQ+TH+WCCeKNoScOXuCZ0qxlBd9G3cMB8dX7Ig23mo2M0HFdDw07QsW
+ 3A+IZAepT0NdJrPCNkVOt7l/m7r8EGlnhGGZh9+3wLOybe94gC24y1fo96xkmrNk16oI
+ YfOg==
+X-Gm-Message-State: AOAM531dlhg3IygUZOQ7dC2BVssMw6YZ35hshClWhsP9BAViztw4wrjZ
+ FFpnw1ZDCYcXu7P79X/Zlok=
+X-Google-Smtp-Source: ABdhPJxWb8DUiF60yGXfPP+EaqbFAuy3gs56WZmQ+rKN9NG+Xm2chom1s5shL8zHfpUS+Tpa3zgecQ==
+X-Received: by 2002:a02:93ac:: with SMTP id z41mr24939609jah.127.1607400481315; 
+ Mon, 07 Dec 2020 20:08:01 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.59
+ by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.08.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 20:07:59 -0800 (PST)
+ Mon, 07 Dec 2020 20:08:00 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 20/21] staging: rtl8723bs: remove unused macros
-Date: Mon,  7 Dec 2020 22:07:32 -0600
-Message-Id: <20201208040733.379197-21-ross.schm.dev@gmail.com>
+Subject: [PATCH v2 21/21] staging: rtl8723bs: remove ELEMENT_ID enum
+Date: Mon,  7 Dec 2020 22:07:33 -0600
+Message-Id: <20201208040733.379197-22-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201208040733.379197-1-ross.schm.dev@gmail.com>
 References: <20201208040733.379197-1-ross.schm.dev@gmail.com>
@@ -93,56 +93,100 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove many macros from wifi.h and ieee80211.h because they are unused.
+The ELEMENT_ID enum is no longer used, remove it.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/ieee80211.h |  5 -----
- drivers/staging/rtl8723bs/include/wifi.h      | 15 ---------------
- 2 files changed, 20 deletions(-)
+ drivers/staging/rtl8723bs/include/wifi.h | 76 ------------------------
+ 1 file changed, 76 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/ieee80211.h b/drivers/staging/rtl8723bs/include/ieee80211.h
-index 20c53c290aa1..d9ff8c8e7f36 100644
---- a/drivers/staging/rtl8723bs/include/ieee80211.h
-+++ b/drivers/staging/rtl8723bs/include/ieee80211.h
-@@ -348,11 +348,6 @@ struct ieee80211_snap_hdr {
- #define WLAN_REASON_JOIN_WRONG_CHANNEL       65534
- #define WLAN_REASON_EXPIRATION_CHK 65535
- 
--/* EIDs defined by IEEE 802.11h - END */
--#define WLAN_EID_20_40_BSS_COEXISTENCE 72
--#define WLAN_EID_20_40_BSS_INTOLERANT 73
--#define WLAN_EID_OVERLAPPING_BSS_SCAN_PARAMS 74
--
- #define IEEE80211_MGMT_HDR_LEN 24
- #define IEEE80211_DATA_HDR3_LEN 24
- #define IEEE80211_DATA_HDR4_LEN 30
 diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index 82dfdafb38fc..7f482a45705b 100644
+index 7f482a45705b..fe984fcb66a9 100644
 --- a/drivers/staging/rtl8723bs/include/wifi.h
 +++ b/drivers/staging/rtl8723bs/include/wifi.h
-@@ -387,21 +387,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
+@@ -387,82 +387,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
  
  #define _FIXED_IE_LENGTH_			_BEACON_IE_OFFSET_
  
--#define _SUPPORTED_CH_IE_		36
--#define _CH_SWTICH_ANNOUNCE_	37	/* Secondary Channel Offset */
+-enum ELEMENT_ID {
+-	EID_SsId					= 0, /* service set identifier (0:32) */
+-	EID_SupRates				= 1, /* supported rates (1:8) */
+-	EID_FHParms				= 2, /* FH parameter set (5) */
+-	EID_DSParms				= 3, /* DS parameter set (1) */
+-	EID_CFParms				= 4, /* CF parameter set (6) */
+-	EID_Tim						= 5, /* Traffic Information Map (4:254) */
+-	EID_IbssParms				= 6, /* IBSS parameter set (2) */
+-	EID_Country					= 7, /* */
 -
--#define _FTIE_						55
--#define _TIMEOUT_ITVL_IE_			56
--#define _SRC_IE_				59
+-	/*  Form 7.3.2: Information elements in 802.11E/D13.0, page 46. */
+-	EID_QBSSLoad				= 11,
+-	EID_EDCAParms				= 12,
+-	EID_TSpec					= 13,
+-	EID_TClass					= 14,
+-	EID_Schedule				= 15,
+-	/*  */
 -
--#define _RIC_Descriptor_IE_			75
--#define _LINK_ID_IE_					101
--#define _CH_SWITCH_TIMING_		104
--#define _PTI_BUFFER_STATUS_		106
--#define _EXT_CAP_IE_				127
+-	EID_Ctext					= 16, /* challenge text*/
+-	EID_POWER_CONSTRAINT		= 32, /* Power Constraint*/
 -
--#define	_RESERVED47_				47
+-	/* vivi for WIFITest, 802.11h AP, 20100427 */
+-	/*  2010/12/26 MH The definition we can declare always!! */
+-	EID_PowerCap				= 33,
+-	EID_SupportedChannels		= 36,
+-	EID_ChlSwitchAnnounce		= 37,
 -
- enum ELEMENT_ID {
- 	EID_SsId					= 0, /* service set identifier (0:32) */
- 	EID_SupRates				= 1, /* supported rates (1:8) */
+-	EID_MeasureRequest			= 38, /*  Measurement Request */
+-	EID_MeasureReport			= 39, /*  Measurement Report */
+-
+-	EID_ERPInfo				= 42,
+-
+-	/*  Form 7.3.2: Information elements in 802.11E/D13.0, page 46. */
+-	EID_TSDelay				= 43,
+-	EID_TCLASProc				= 44,
+-	EID_HTCapability			= 45,
+-	EID_QoSCap					= 46,
+-	/*  */
+-
+-	EID_WPA2					= 48,
+-	EID_ExtSupRates			= 50,
+-
+-	EID_FTIE					= 55, /*  Defined in 802.11r */
+-	EID_Timeout				= 56, /*  Defined in 802.11r */
+-
+-	EID_SupRegulatory			= 59, /*  Supported Requlatory Classes 802.11y */
+-	EID_HTInfo					= 61,
+-	EID_SecondaryChnlOffset		= 62,
+-
+-	EID_BSSCoexistence			= 72, /*  20/40 BSS Coexistence */
+-	EID_BSSIntolerantChlReport	= 73,
+-	EID_OBSS					= 74, /*  Overlapping BSS Scan Parameters */
+-
+-	EID_LinkIdentifier			= 101, /*  Defined in 802.11z */
+-	EID_WakeupSchedule		= 102, /*  Defined in 802.11z */
+-	EID_ChnlSwitchTimeing		= 104, /*  Defined in 802.11z */
+-	EID_PTIControl				= 105, /*  Defined in 802.11z */
+-	EID_PUBufferStatus			= 106, /*  Defined in 802.11z */
+-
+-	EID_EXTCapability			= 127, /*  Extended Capabilities */
+-	/*  From S19:Aironet IE and S21:AP IP address IE in CCX v1.13, p16 and p18. */
+-	EID_Aironet					= 133, /*  0x85: Aironet Element for Cisco CCX */
+-	EID_CiscoIP					= 149, /*  0x95: IP Address IE for Cisco CCX */
+-
+-	EID_CellPwr					= 150, /*  0x96: Cell Power Limit IE. Ref. 0x96. */
+-
+-	EID_CCKM					= 156,
+-
+-	EID_Vendor					= 221, /*  0xDD: Vendor Specific */
+-
+-	EID_WAPI					= 68,
+-	EID_VHTCapability			= 191, /*  Based on 802.11ac D2.0 */
+-	EID_VHTOperation			= 192, /*  Based on 802.11ac D2.0 */
+-	EID_OpModeNotification		= 199, /*  Based on 802.11ac D3.0 */
+-};
+-
+ /* ---------------------------------------------------------------------------
+ 					Below is the fixed elements...
+ -----------------------------------------------------------------------------*/
 -- 
 2.25.1
 
