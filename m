@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 846052D21AD
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:07:48 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8DB2A87BDB;
-	Tue,  8 Dec 2020 04:07:45 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ww5eIEAvujPR; Tue,  8 Dec 2020 04:07:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 95E1687695;
-	Tue,  8 Dec 2020 04:07:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 478AE1BF356
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:07:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A1102D21B0
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:07:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 43B2D879D2
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:07:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CBD4587B4F;
+	Tue,  8 Dec 2020 04:07:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KxPTArljyZ8Y; Tue,  8 Dec 2020 04:07:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 808ED87B17;
+	Tue,  8 Dec 2020 04:07:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9DB831BF356
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:07:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 94E1587695
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:07:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7k8i_2NAZpH7 for <devel@linuxdriverproject.org>;
- Tue,  8 Dec 2020 04:07:40 +0000 (UTC)
+ with ESMTP id D1ZpQuWMq9VN for <devel@linuxdriverproject.org>;
+ Tue,  8 Dec 2020 04:07:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
- [209.85.166.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 34045879AE
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:07:40 +0000 (UTC)
-Received: by mail-io1-f65.google.com with SMTP id q137so15636555iod.9
- for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:07:40 -0800 (PST)
+Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
+ [209.85.166.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 400EF87681
+ for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:07:41 +0000 (UTC)
+Received: by mail-il1-f193.google.com with SMTP id q1so14358969ilt.6
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:07:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3Tg7EqaEqlCHiBnS4fcUrI7H2461EM76bzDVeFFF6TU=;
- b=sQpnzPgiazEGenvgQO3P+uvUO0hrkx4dPUl0Jp4b4ifN0pt3qz7MA6KmnXU6Jexr6s
- CouZ91LaVCBlBtSp6YpuR9oHqLq+D5/gHHW0SzDLQwO5kadiRVh/Df3sIW7wYqNkhR/N
- KhXmU21iSAOocJnGMsOaMrnsR3b0hM9AOuROvOAgUgguAJS6GRcK5/w2k9Yi+FynoSEi
- wqYX3I2tHLoxwMqd7BtSy8j88KQSCdhYrz1erWBq2S0usoTDRjeolRR2VDjCbU5EDkb7
- uAcmRuErnAW+Hg+kgaT9NjDS969dtRjsk5j3WdJaQN0AjFiW0Xgynbsr1PwooxPqMFgz
- /1xg==
+ bh=bQfYQOHOYiw5gTqUH3QfEc5M2sDfdhx7Mvo0vFAWlp8=;
+ b=B/Ywdh0aBqFNhlcSa6MwHQiY6ECEqw5vZjXNRB1fkZnXcMblQPTLsStZj1oufNRIc0
+ N1VHHbTWbeju3byMCiGQF+JYbE4zdKoJCsyBO5FiCc+6h0t3f56KWbSjE67C+xUDsmi0
+ RdiruPC6IZeAmEHZ18aO9+USANwYAFNvmbr5RX9YIbwnj6+ZI5B/dQOLD2g5x6U5GxZg
+ mLVEFf1jQHlbTgFONRkflATQJTeTZirl4ZpRMXDSlPq9VJ+fJx38zkh4vgLF/bB60eWO
+ Ms5GWXE+WnnudE6N5cSCE7m4Bhjc4yU/NP4XI2rawOvtBvaFDd1vIm8LbP6TA5WCcCnt
+ j01g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3Tg7EqaEqlCHiBnS4fcUrI7H2461EM76bzDVeFFF6TU=;
- b=oEQLh0l64Ai4LFW+r736OstIhaclPioqXMc7wx8G1zWCWZvPr/D5+b+lBrHvfnZVh/
- 2BlGr72u3wJ6R3HVa447KkYVC+howgkqRR5U3aCCPIHlNWktccOJJC6rXWKExmVqCPKr
- j507ue8yKMswG8sfOkvY7JYK7KgYDFFnbgIYVlnx0PYrlzLB5j7u1OmA/be334AaNg7o
- TKosK7bnU9cOVinf7weEGRcp3naKCmTXsWjI+Hwboaen+tWlKU4hcvmioPpJm9nJPqr0
- SqlGyD7Pr9oJpzRfDZjqmNYChrbIsgFWvI1NTI6pdrh4GV3zor1ADFEKKJySIDj0mtji
- Rg9g==
-X-Gm-Message-State: AOAM5330qvNbNA0TbU0wBdlIe5wbm7460KJtya753srd71kRr/HWXZpD
- 9tCCTIPmjkX76tqvhNmRHjk=
-X-Google-Smtp-Source: ABdhPJyQ4SJcxpGL141ddC6MslAcyEGa8RtydBpo6ANbYO9vsH2FCI9ZMipP+lGDS4LH67GDc/1X8Q==
-X-Received: by 2002:a02:7f41:: with SMTP id r62mr24493700jac.17.1607400459483; 
- Mon, 07 Dec 2020 20:07:39 -0800 (PST)
+ bh=bQfYQOHOYiw5gTqUH3QfEc5M2sDfdhx7Mvo0vFAWlp8=;
+ b=Tl1L/QosqXruy0X0GsqIa6b0fZR2YRD+Jb3eK6j86My63MbGThQmv4lvHgHl4nvv8g
+ fVK8FeksGKlpme/vbL8Jui8xc5xX4WpGtymto2B6iE/IkBESefiqHBg1SX2aCb1lkCrI
+ Jt+OLm17QQebYkZDxS5Mza9B7Z7fgu+RLDXUYOhzo2N/53yd3V53fH8xPPB3lNWwh7mU
+ MBoAw/pzMvw0pF9I5A9rQrOblBjibRvgHpi3TuPPLszlcBNIU/mSYhEXyLI3++rnJTgi
+ 4EFW4mW2iDNTJkWwJ/IKOsYdCgxhqBzcbtOhAzHhp0lp/u5B/tIT4P+il8h6CXEqPEl2
+ VIcA==
+X-Gm-Message-State: AOAM5312Erf5UnxxU8BES/KtYc0asFgfc363qKamEdZDpAVyY+au4bWV
+ TZ62sIgqQZjHlCNCqDaCNHg=
+X-Google-Smtp-Source: ABdhPJzjV6gPglgenwB059H3nYfVJ6SZISlCnWxXsG3MDyI5cmItfgLctugCu8Gf7Id8jZwUvUqjyg==
+X-Received: by 2002:a92:a153:: with SMTP id v80mr24903386ili.66.1607400460536; 
+ Mon, 07 Dec 2020 20:07:40 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.38
+ by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 20:07:38 -0800 (PST)
+ Mon, 07 Dec 2020 20:07:39 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 01/21] staging: rtl8723bs: use WLAN_EID_HT_CAPABILITY
-Date: Mon,  7 Dec 2020 22:07:13 -0600
-Message-Id: <20201208040733.379197-2-ross.schm.dev@gmail.com>
+Subject: [PATCH v2 02/21] staging: rtl8723bs: use WLAN_EID_VENDOR_SPECIFIC
+Date: Mon,  7 Dec 2020 22:07:14 -0600
+Message-Id: <20201208040733.379197-3-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201208040733.379197-1-ross.schm.dev@gmail.com>
 References: <20201208040733.379197-1-ross.schm.dev@gmail.com>
@@ -93,244 +93,382 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace unique WLAN_EID_HT_CAP, _HT_CAPABILITY_IE_, and EID_HTCapability
-with kernel provided WLAN_EID_HT_CAPABILITY from linux/ieee80211.h.
+Replace unique WLAN_EID_GENERIC, _WPA_IE_ID_, _SSN_IE_1_, and
+_VENDOR_SPECIFIC_IE_ macros with kernel provided WLAN_EID_VENDOR_SPECIFIC
+from linux/ieee80211.h.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_ap.c        |  8 ++++----
- drivers/staging/rtl8723bs/core/rtw_cmd.c       |  2 +-
- drivers/staging/rtl8723bs/core/rtw_ieee80211.c |  4 ++--
- drivers/staging/rtl8723bs/core/rtw_mlme.c      |  4 ++--
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c  | 14 +++++++-------
- drivers/staging/rtl8723bs/core/rtw_wlan_util.c |  2 +-
- drivers/staging/rtl8723bs/include/ieee80211.h  |  1 -
- drivers/staging/rtl8723bs/include/wifi.h       |  1 -
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c |  6 +++---
- 9 files changed, 20 insertions(+), 22 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ap.c       |  6 +++---
+ .../staging/rtl8723bs/core/rtw_ieee80211.c    | 12 +++++------
+ drivers/staging/rtl8723bs/core/rtw_mlme.c     |  6 +++---
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 20 +++++++++----------
+ .../staging/rtl8723bs/core/rtw_wlan_util.c    |  6 +++---
+ drivers/staging/rtl8723bs/include/ieee80211.h |  1 -
+ .../staging/rtl8723bs/include/rtw_security.h  |  1 -
+ drivers/staging/rtl8723bs/include/wifi.h      |  2 --
+ .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c |  4 ++--
+ .../staging/rtl8723bs/os_dep/ioctl_linux.c    |  8 ++++----
+ drivers/staging/rtl8723bs/os_dep/mlme_linux.c |  2 +-
+ 11 files changed, 32 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index 04d5852d0d3e..87605d425a31 100644
+index 87605d425a31..c8953b442734 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_ap.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -1172,7 +1172,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 	/* parsing HT_CAP_IE */
- 	p = rtw_get_ie(
- 		ie + _BEACON_IE_OFFSET_,
--		_HT_CAPABILITY_IE_,
-+		WLAN_EID_HT_CAPABILITY,
- 		&ie_len,
- 		(pbss_network->IELength - _BEACON_IE_OFFSET_)
- 	);
-@@ -1774,7 +1774,7 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
+@@ -1110,7 +1110,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+ 	for (p = ie + _BEACON_IE_OFFSET_; ; p += (ie_len + 2)) {
+ 		p = rtw_get_ie(
+ 			p,
+-			_SSN_IE_1_,
++			WLAN_EID_VENDOR_SPECIFIC,
+ 			&ie_len,
+ 			(pbss_network->IELength - _BEACON_IE_OFFSET_ - (ie_len + 2))
+ 		);
+@@ -1146,7 +1146,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+ 		for (p = ie + _BEACON_IE_OFFSET_; ; p += (ie_len + 2)) {
+ 			p = rtw_get_ie(
+ 				p,
+-				_VENDOR_SPECIFIC_IE_,
++				WLAN_EID_VENDOR_SPECIFIC,
+ 				&ie_len,
+ 				(pbss_network->IELength - _BEACON_IE_OFFSET_ - (ie_len + 2))
+ 			);
+@@ -1792,7 +1792,7 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
  
  		break;
  
--	case _HT_CAPABILITY_IE_:
-+	case WLAN_EID_HT_CAPABILITY:
+-	case _VENDOR_SPECIFIC_IE_:
++	case WLAN_EID_VENDOR_SPECIFIC:
  
- 		update_bcn_htcap_ie(padapter);
+ 		update_bcn_vendor_spec_ie(padapter, oui);
  
-@@ -2052,7 +2052,7 @@ void bss_cap_update_on_sta_join(struct adapter *padapter, struct sta_info *psta)
- 	}
- 
- 	if (rtw_ht_operation_update(padapter) > 0) {
--		update_beacon(padapter, _HT_CAPABILITY_IE_, NULL, false);
-+		update_beacon(padapter, WLAN_EID_HT_CAPABILITY, NULL, false);
- 		update_beacon(padapter, _HT_ADD_INFO_IE_, NULL, true);
- 	}
- 
-@@ -2116,7 +2116,7 @@ u8 bss_cap_update_on_sta_leave(struct adapter *padapter, struct sta_info *psta)
- 	}
- 
- 	if (rtw_ht_operation_update(padapter) > 0) {
--		update_beacon(padapter, _HT_CAPABILITY_IE_, NULL, false);
-+		update_beacon(padapter, WLAN_EID_HT_CAPABILITY, NULL, false);
- 		update_beacon(padapter, _HT_ADD_INFO_IE_, NULL, true);
- 	}
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index f6160f1cca43..1d0a7690acde 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -842,7 +842,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	}
- 
- 	phtpriv->ht_option = false;
--	ptmp = rtw_get_ie(&pnetwork->network.IEs[12], _HT_CAPABILITY_IE_, &tmp_len, pnetwork->network.IELength-12);
-+	ptmp = rtw_get_ie(&pnetwork->network.IEs[12], WLAN_EID_HT_CAPABILITY, &tmp_len, pnetwork->network.IELength-12);
- 	if (pregistrypriv->ht_enable && ptmp && tmp_len > 0) {
- 		/* 	Added by Albert 2010/06/23 */
- 		/* 	For the WEP mode, we will use the bg mode to do the connection to avoid some IOT issue. */
 diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index e80b957f947f..23ba4160ab21 100644
+index 23ba4160ab21..86a5114d1241 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -1056,7 +1056,7 @@ ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
- 			elems->timeout_int = pos;
- 			elems->timeout_int_len = elen;
- 			break;
--		case WLAN_EID_HT_CAP:
-+		case WLAN_EID_HT_CAPABILITY:
- 			elems->ht_capabilities = pos;
- 			elems->ht_capabilities_len = elen;
- 			break;
-@@ -1209,7 +1209,7 @@ void rtw_get_bcn_info(struct wlan_network *pnetwork)
+@@ -383,7 +383,7 @@ unsigned char *rtw_get_wpa_ie(unsigned char *pie, int *wpa_ie_len, int limit)
+ 	__le16 le_tmp;
  
- 	/* get bwmode and ch_offset */
- 	/* parsing HT_CAP_IE */
--	p = rtw_get_ie(pnetwork->network.IEs + _FIXED_IE_LENGTH_, _HT_CAPABILITY_IE_, &len, pnetwork->network.IELength - _FIXED_IE_LENGTH_);
-+	p = rtw_get_ie(pnetwork->network.IEs + _FIXED_IE_LENGTH_, WLAN_EID_HT_CAPABILITY, &len, pnetwork->network.IELength - _FIXED_IE_LENGTH_);
- 	if (p && len > 0) {
- 			pht_cap = (struct ieee80211_ht_cap *)(p + 2);
- 			pnetwork->BcnInfo.ht_cap_info = le16_to_cpu(pht_cap->cap_info);
+ 	while (1) {
+-		pbuf = rtw_get_ie(pbuf, _WPA_IE_ID_, &len, limit_new);
++		pbuf = rtw_get_ie(pbuf, WLAN_EID_VENDOR_SPECIFIC, &len, limit_new);
+ 
+ 		if (pbuf) {
+ 			/* check if oui matches... */
+@@ -471,7 +471,7 @@ int rtw_parse_wpa_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher, int *pairwis
+ 		return _FAIL;
+ 	}
+ 
+-	if ((*wpa_ie != _WPA_IE_ID_) || (*(wpa_ie+1) != (u8)(wpa_ie_len - 2)) ||
++	if ((*wpa_ie != WLAN_EID_VENDOR_SPECIFIC) || (*(wpa_ie+1) != (u8)(wpa_ie_len - 2)) ||
+ 	   (memcmp(wpa_ie+2, RTW_WPA_OUI_TYPE, WPA_SELECTOR_LEN))) {
+ 		return _FAIL;
+ 	}
+@@ -667,7 +667,7 @@ void rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len, u8 *wpa_ie
+ 	while (cnt < in_len) {
+ 		authmode = in_ie[cnt];
+ 
+-		if ((authmode == _WPA_IE_ID_) && (!memcmp(&in_ie[cnt+2], &wpa_oui[0], 4))) {
++		if ((authmode == WLAN_EID_VENDOR_SPECIFIC) && (!memcmp(&in_ie[cnt+2], &wpa_oui[0], 4))) {
+ 				RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("\n rtw_get_wpa_ie: sec_idx =%d in_ie[cnt+1]+2 =%d\n", sec_idx, in_ie[cnt+1]+2));
+ 
+ 				if (wpa_ie) {
+@@ -715,7 +715,7 @@ u8 rtw_is_wps_ie(u8 *ie_ptr, uint *wps_ielen)
+ 
+ 	eid = ie_ptr[0];
+ 
+-	if ((eid == _WPA_IE_ID_) && (!memcmp(&ie_ptr[2], wps_oui, 4))) {
++	if ((eid == WLAN_EID_VENDOR_SPECIFIC) && (!memcmp(&ie_ptr[2], wps_oui, 4))) {
+ 		/* DBG_8192C("==> found WPS_IE.....\n"); */
+ 		*wps_ielen = ie_ptr[1]+2;
+ 		match = true;
+@@ -749,7 +749,7 @@ u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen)
+ 	while (cnt < in_len) {
+ 		eid = in_ie[cnt];
+ 
+-		if ((eid == _WPA_IE_ID_) && (!memcmp(&in_ie[cnt+2], wps_oui, 4))) {
++		if ((eid == WLAN_EID_VENDOR_SPECIFIC) && (!memcmp(&in_ie[cnt+2], wps_oui, 4))) {
+ 			wpsie_ptr = &in_ie[cnt];
+ 
+ 			if (wps_ie)
+@@ -788,7 +788,7 @@ u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id, u8 *buf_att
+ 	if (len_attr)
+ 		*len_attr = 0;
+ 
+-	if ((wps_ie[0] != _VENDOR_SPECIFIC_IE_) ||
++	if ((wps_ie[0] != WLAN_EID_VENDOR_SPECIFIC) ||
+ 		(memcmp(wps_ie + 2, wps_oui, 4))) {
+ 		return attr_ptr;
+ 	}
 diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index b1737fbeb33f..f32cf36ea949 100644
+index f32cf36ea949..50129a3e67e0 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2718,7 +2718,7 @@ unsigned int rtw_restructure_ht_ie(struct adapter *padapter, u8 *in_ie, u8 *out_
- 	else
- 		ht_capie.ampdu_params_info |= (IEEE80211_HT_CAP_AMPDU_DENSITY&0x00);
+@@ -2359,7 +2359,7 @@ sint rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in
+ 	memcpy(out_ie, in_ie, 12);
+ 	ielength = 12;
+ 	if ((ndisauthmode == Ndis802_11AuthModeWPA) || (ndisauthmode == Ndis802_11AuthModeWPAPSK))
+-			authmode = _WPA_IE_ID_;
++			authmode = WLAN_EID_VENDOR_SPECIFIC;
+ 	if ((ndisauthmode == Ndis802_11AuthModeWPA2) || (ndisauthmode == Ndis802_11AuthModeWPA2PSK))
+ 			authmode = _WPA2_IE_ID_;
  
--	pframe = rtw_set_ie(out_ie+out_len, _HT_CAPABILITY_IE_,
-+	pframe = rtw_set_ie(out_ie+out_len, WLAN_EID_HT_CAPABILITY,
- 						sizeof(struct ieee80211_ht_cap), (unsigned char *)&ht_capie, pout_len);
+@@ -2367,7 +2367,7 @@ sint rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in
+ 		memcpy(out_ie+ielength, psecuritypriv->wps_ie, psecuritypriv->wps_ie_len);
  
- 	phtpriv->ht_option = true;
-@@ -2768,7 +2768,7 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+ 		ielength += psecuritypriv->wps_ie_len;
+-	} else if ((authmode == _WPA_IE_ID_) || (authmode == _WPA2_IE_ID_)) {
++	} else if ((authmode == WLAN_EID_VENDOR_SPECIFIC) || (authmode == _WPA2_IE_ID_)) {
+ 		/* copy RSN or SSN */
+ 		memcpy(&out_ie[ielength], &psecuritypriv->supplicant_ie[0], psecuritypriv->supplicant_ie[1]+2);
+ 		/* debug for CONFIG_IEEE80211W
+@@ -2574,7 +2574,7 @@ void rtw_build_wmm_ie_ht(struct adapter *padapter, u8 *out_ie, uint *pout_len)
  
- 	/* check Max Rx A-MPDU Size */
- 	len = 0;
--	p = rtw_get_ie(pie+sizeof(struct ndis_802_11_fix_ie), _HT_CAPABILITY_IE_, &len, ie_len-sizeof(struct ndis_802_11_fix_ie));
-+	p = rtw_get_ie(pie+sizeof(struct ndis_802_11_fix_ie), WLAN_EID_HT_CAPABILITY, &len, ie_len-sizeof(struct ndis_802_11_fix_ie));
- 	if (p && len > 0) {
- 		pht_capie = (struct ieee80211_ht_cap *)(p+2);
- 		max_ampdu_sz = (pht_capie->ampdu_params_info & IEEE80211_HT_CAP_AMPDU_FACTOR);
+ 	if (padapter->mlmepriv.qospriv.qos_option == 0) {
+ 		out_len = *pout_len;
+-		pframe = rtw_set_ie(out_ie+out_len, _VENDOR_SPECIFIC_IE_,
++		pframe = rtw_set_ie(out_ie+out_len, WLAN_EID_VENDOR_SPECIFIC,
+ 							_WMM_IE_Length_, WMM_IE, pout_len);
+ 
+ 		padapter->mlmepriv.qospriv.qos_option = 1;
 diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 632b0f7eeff2..9024aa9f1a92 100644
+index 9024aa9f1a92..11e176f29b4b 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -1697,7 +1697,7 @@ unsigned int OnAssocRsp(struct adapter *padapter, union recv_frame *precv_frame)
+@@ -628,7 +628,7 @@ unsigned int OnProbeReq(struct adapter *padapter, union recv_frame *precv_frame)
+ 		u8 RC_OUI[4] = {0x00, 0xE0, 0x4C, 0x0A};
+ 		/* EID[1] + EID_LEN[1] + RC_OUI[4] + MAC[6] + PairingID[2] + ChannelNum[2] */
+ 
+-		p = rtw_get_ie(pframe + WLAN_HDR_A3_LEN + _PROBEREQ_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, (int *)&ielen,
++		p = rtw_get_ie(pframe + WLAN_HDR_A3_LEN + _PROBEREQ_IE_OFFSET_, WLAN_EID_VENDOR_SPECIFIC, (int *)&ielen,
+ 			len - WLAN_HDR_A3_LEN - _PROBEREQ_IE_OFFSET_);
+ 
+ 		if (!p || ielen != 14)
+@@ -1445,7 +1445,7 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
+ 	if (pmlmepriv->qospriv.qos_option) {
+ 		p = pframe + WLAN_HDR_A3_LEN + ie_offset; ie_len = 0;
+ 		for (;;) {
+-			p = rtw_get_ie(p, _VENDOR_SPECIFIC_IE_, &ie_len, pkt_len - WLAN_HDR_A3_LEN - ie_offset);
++			p = rtw_get_ie(p, WLAN_EID_VENDOR_SPECIFIC, &ie_len, pkt_len - WLAN_HDR_A3_LEN - ie_offset);
+ 			if (p) {
+ 				if (!memcmp(p+2, WMM_IE, 6)) {
+ 
+@@ -1692,7 +1692,7 @@ unsigned int OnAssocRsp(struct adapter *padapter, union recv_frame *precv_frame)
+ 		pIE = (struct ndis_80211_var_ie *)(pframe + i);
+ 
+ 		switch (pIE->ElementID) {
+-		case _VENDOR_SPECIFIC_IE_:
++		case WLAN_EID_VENDOR_SPECIFIC:
+ 			if (!memcmp(pIE->data, WMM_PARA_OUI, 6))	/* WMM */
  				WMM_param_handler(padapter, pIE);
  			break;
+@@ -2796,7 +2796,7 @@ void issue_probersp(struct adapter *padapter, unsigned char *da, u8 is_valid_p2p
+ 		memcpy(&RC_INFO[10], (u8 *)&psta->pid, 2);
+ 		memcpy(&RC_INFO[12], (u8 *)&cu_ch, 2);
  
--		case _HT_CAPABILITY_IE_:	/* HT caps */
-+		case WLAN_EID_HT_CAPABILITY:	/* HT caps */
- 			HT_caps_handler(padapter, pIE);
- 			break;
+-		pframe = rtw_set_ie(pframe, _VENDOR_SPECIFIC_IE_, sizeof(RC_INFO), RC_INFO, &pattrib->pktlen);
++		pframe = rtw_set_ie(pframe, WLAN_EID_VENDOR_SPECIFIC, sizeof(RC_INFO), RC_INFO, &pattrib->pktlen);
+ 	}
+ }
+ #endif /* CONFIG_AUTO_AP_MODE */
+@@ -3188,7 +3188,7 @@ void issue_asocrsp(struct adapter *padapter, unsigned short status, struct sta_i
+ 		unsigned char WMM_PARA_IE[] = {0x00, 0x50, 0xf2, 0x02, 0x01, 0x01};
  
-@@ -3164,7 +3164,7 @@ void issue_asocrsp(struct adapter *padapter, unsigned short status, struct sta_i
+ 		for (pbuf = ie + _BEACON_IE_OFFSET_; ; pbuf += (ie_len + 2)) {
+-			pbuf = rtw_get_ie(pbuf, _VENDOR_SPECIFIC_IE_, &ie_len, (pnetwork->IELength - _BEACON_IE_OFFSET_ - (ie_len + 2)));
++			pbuf = rtw_get_ie(pbuf, WLAN_EID_VENDOR_SPECIFIC, &ie_len, (pnetwork->IELength - _BEACON_IE_OFFSET_ - (ie_len + 2)));
+ 			if (pbuf && !memcmp(pbuf+2, WMM_PARA_IE, 6)) {
+ 				memcpy(pframe, pbuf, ie_len+2);
+ 				pframe += (ie_len+2);
+@@ -3205,7 +3205,7 @@ void issue_asocrsp(struct adapter *padapter, unsigned short status, struct sta_i
+ 	}
  
- 		/* FILL HT CAP INFO IE */
- 		/* p = hostapd_eid_ht_capabilities_info(hapd, p); */
--		pbuf = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _HT_CAPABILITY_IE_, &ie_len, (pnetwork->IELength - _BEACON_IE_OFFSET_));
-+		pbuf = rtw_get_ie(ie + _BEACON_IE_OFFSET_, WLAN_EID_HT_CAPABILITY, &ie_len, (pnetwork->IELength - _BEACON_IE_OFFSET_));
- 		if (pbuf && ie_len > 0) {
- 			memcpy(pframe, pbuf, ie_len+2);
- 			pframe += (ie_len+2);
-@@ -3372,11 +3372,11 @@ void issue_assocreq(struct adapter *padapter)
- 		case EID_WPA2:
- 			pframe = rtw_set_ie(pframe, EID_WPA2, pIE->Length, pIE->data, &(pattrib->pktlen));
- 			break;
--		case EID_HTCapability:
-+		case WLAN_EID_HT_CAPABILITY:
- 			if (padapter->mlmepriv.htpriv.ht_option) {
- 				if (!(is_ap_in_tkip(padapter))) {
- 					memcpy(&(pmlmeinfo->HT_caps), pIE->data, sizeof(struct HT_caps_element));
--					pframe = rtw_set_ie(pframe, EID_HTCapability, pIE->Length, (u8 *)(&(pmlmeinfo->HT_caps)), &(pattrib->pktlen));
-+					pframe = rtw_set_ie(pframe, WLAN_EID_HT_CAPABILITY, pIE->Length, (u8 *)(&(pmlmeinfo->HT_caps)), &(pattrib->pktlen));
+ 	if (pmlmeinfo->assoc_AP_vendor == HT_IOT_PEER_REALTEK) {
+-		pframe = rtw_set_ie(pframe, _VENDOR_SPECIFIC_IE_, 6, REALTEK_96B_IE, &(pattrib->pktlen));
++		pframe = rtw_set_ie(pframe, WLAN_EID_VENDOR_SPECIFIC, 6, REALTEK_96B_IE, &(pattrib->pktlen));
+ 	}
+ 
+ 	/* add WPS IE ie for wps 2.0 */
+@@ -3350,7 +3350,7 @@ void issue_assocreq(struct adapter *padapter)
+ 		pIE = (struct ndis_80211_var_ie *)(pmlmeinfo->network.IEs + i);
+ 
+ 		switch (pIE->ElementID) {
+-		case _VENDOR_SPECIFIC_IE_:
++		case WLAN_EID_VENDOR_SPECIFIC:
+ 			if ((!memcmp(pIE->data, RTW_WPA_OUI, 4)) ||
+ 					(!memcmp(pIE->data, WMM_OUI, 4)) ||
+ 					(!memcmp(pIE->data, WPS_OUI, 4))) {
+@@ -3365,7 +3365,7 @@ void issue_assocreq(struct adapter *padapter)
+ 					vs_ie_length = 14;
  				}
+ 
+-				pframe = rtw_set_ie(pframe, _VENDOR_SPECIFIC_IE_, vs_ie_length, pIE->data, &(pattrib->pktlen));
++				pframe = rtw_set_ie(pframe, WLAN_EID_VENDOR_SPECIFIC, vs_ie_length, pIE->data, &(pattrib->pktlen));
  			}
  			break;
-@@ -4125,7 +4125,7 @@ static void issue_action_BSSCoexistPacket(struct adapter *padapter)
  
- 			pbss_network = (struct wlan_bssid_ex *)&pnetwork->network;
+@@ -3393,7 +3393,7 @@ void issue_assocreq(struct adapter *padapter)
+ 	}
  
--			p = rtw_get_ie(pbss_network->IEs + _FIXED_IE_LENGTH_, _HT_CAPABILITY_IE_, &len, pbss_network->IELength - _FIXED_IE_LENGTH_);
-+			p = rtw_get_ie(pbss_network->IEs + _FIXED_IE_LENGTH_, WLAN_EID_HT_CAPABILITY, &len, pbss_network->IELength - _FIXED_IE_LENGTH_);
- 			if ((p == NULL) || (len == 0)) {/* non-HT */
+ 	if (pmlmeinfo->assoc_AP_vendor == HT_IOT_PEER_REALTEK)
+-		pframe = rtw_set_ie(pframe, _VENDOR_SPECIFIC_IE_, 6, REALTEK_96B_IE, &(pattrib->pktlen));
++		pframe = rtw_set_ie(pframe, WLAN_EID_VENDOR_SPECIFIC, 6, REALTEK_96B_IE, &(pattrib->pktlen));
  
- 				if ((pbss_network->Configuration.DSConfig <= 0) || (pbss_network->Configuration.DSConfig > 14))
-@@ -4553,7 +4553,7 @@ u8 collect_bss_info(struct adapter *padapter, union recv_frame *precv_frame, str
- 	if ((pregistrypriv->wifi_spec == 1) && (false == pmlmeinfo->bwmode_updated)) {
- 		struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
  
--		p = rtw_get_ie(bssid->IEs + ie_offset, _HT_CAPABILITY_IE_, &len, bssid->IELength - ie_offset);
-+		p = rtw_get_ie(bssid->IEs + ie_offset, WLAN_EID_HT_CAPABILITY, &len, bssid->IELength - ie_offset);
- 		if (p && len > 0) {
- 			struct HT_caps_element	*pHT_caps;
+ 	pattrib->last_txcmdsz = pattrib->pktlen;
+@@ -6173,7 +6173,7 @@ u8 join_cmd_hdl(struct adapter *padapter, u8 *pbuf)
+ 		pIE = (struct ndis_80211_var_ie *)(pnetwork->IEs + i);
  
-@@ -6178,7 +6178,7 @@ u8 join_cmd_hdl(struct adapter *padapter, u8 *pbuf)
+ 		switch (pIE->ElementID) {
+-		case _VENDOR_SPECIFIC_IE_:/* Get WMM IE. */
++		case WLAN_EID_VENDOR_SPECIFIC:/* Get WMM IE. */
+ 			if (!memcmp(pIE->data, WMM_OUI, 4))
  				WMM_param_handler(padapter, pIE);
  			break;
- 
--		case _HT_CAPABILITY_IE_:	/* Get HT Cap IE. */
-+		case WLAN_EID_HT_CAPABILITY:	/* Get HT Cap IE. */
- 			pmlmeinfo->HT_caps_enable = 1;
- 			break;
- 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-index 4bc0bea7e969..9659e0db5484 100644
+index 9659e0db5484..92c4ef01b070 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-@@ -1289,7 +1289,7 @@ int rtw_check_bcn_info(struct adapter *Adapter, u8 *pframe, u32 packet_len)
+@@ -1466,7 +1466,7 @@ void update_beacon_info(struct adapter *padapter, u8 *pframe, uint pkt_len, stru
+ 		pIE = (struct ndis_80211_var_ie *)(pframe + (_BEACON_IE_OFFSET_ + WLAN_HDR_A3_LEN) + i);
  
- 	/* check bw and channel offset */
- 	/* parsing HT_CAP_IE */
--	p = rtw_get_ie(bssid->IEs + _FIXED_IE_LENGTH_, _HT_CAPABILITY_IE_, &len, bssid->IELength - _FIXED_IE_LENGTH_);
-+	p = rtw_get_ie(bssid->IEs + _FIXED_IE_LENGTH_, WLAN_EID_HT_CAPABILITY, &len, bssid->IELength - _FIXED_IE_LENGTH_);
- 	if (p && len > 0) {
- 			pht_cap = (struct ieee80211_ht_cap *)(p + 2);
- 			ht_cap_info = le16_to_cpu(pht_cap->cap_info);
+ 		switch (pIE->ElementID) {
+-		case _VENDOR_SPECIFIC_IE_:
++		case WLAN_EID_VENDOR_SPECIFIC:
+ 			/* to update WMM parameter set while receiving beacon */
+ 			if (!memcmp(pIE->data, WMM_PARA_OUI, 6) && pIE->Length == WLAN_WMM_LEN)	/* WMM */
+ 				if (WMM_param_handler(padapter, pIE))
+@@ -1505,7 +1505,7 @@ unsigned int is_ap_in_tkip(struct adapter *padapter)
+ 			pIE = (struct ndis_80211_var_ie *)(pmlmeinfo->network.IEs + i);
+ 
+ 			switch (pIE->ElementID) {
+-			case _VENDOR_SPECIFIC_IE_:
++			case WLAN_EID_VENDOR_SPECIFIC:
+ 				if ((!memcmp(pIE->data, RTW_WPA_OUI, 4)) && (!memcmp((pIE->data + 12), WPA_TKIP_CIPHER, 4)))
+ 					return true;
+ 
+@@ -1581,7 +1581,7 @@ unsigned char check_assoc_AP(u8 *pframe, uint len)
+ 		pIE = (struct ndis_80211_var_ie *)(pframe + i);
+ 
+ 		switch (pIE->ElementID) {
+-		case _VENDOR_SPECIFIC_IE_:
++		case WLAN_EID_VENDOR_SPECIFIC:
+ 			if ((!memcmp(pIE->data, ARTHEROS_OUI1, 3)) || (!memcmp(pIE->data, ARTHEROS_OUI2, 3))) {
+ 				DBG_871X("link to Artheros AP\n");
+ 				return HT_IOT_PEER_ATHEROS;
 diff --git a/drivers/staging/rtl8723bs/include/ieee80211.h b/drivers/staging/rtl8723bs/include/ieee80211.h
-index 79c410cfadba..7cf32aa7cd88 100644
+index 7cf32aa7cd88..880d3f0a32fa 100644
 --- a/drivers/staging/rtl8723bs/include/ieee80211.h
 +++ b/drivers/staging/rtl8723bs/include/ieee80211.h
-@@ -349,7 +349,6 @@ struct ieee80211_snap_hdr {
- #define WLAN_REASON_EXPIRATION_CHK 65535
- 
- /* EIDs defined by IEEE 802.11h - END */
--#define WLAN_EID_HT_CAP 45
+@@ -352,7 +352,6 @@ struct ieee80211_snap_hdr {
  #define WLAN_EID_20_40_BSS_COEXISTENCE 72
  #define WLAN_EID_20_40_BSS_INTOLERANT 73
  #define WLAN_EID_OVERLAPPING_BSS_SCAN_PARAMS 74
+-#define WLAN_EID_GENERIC (WLAN_EID_VENDOR_SPECIFIC)
+ #define WLAN_EID_VHT_OP_MODE_NOTIFY 199
+ 
+ #define IEEE80211_MGMT_HDR_LEN 24
+diff --git a/drivers/staging/rtl8723bs/include/rtw_security.h b/drivers/staging/rtl8723bs/include/rtw_security.h
+index f4a3739651da..67ba62b54b10 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_security.h
++++ b/drivers/staging/rtl8723bs/include/rtw_security.h
+@@ -21,7 +21,6 @@
+ 
+ const char *security_type_str(u8 value);
+ 
+-#define _WPA_IE_ID_	0xdd
+ #define _WPA2_IE_ID_	0x30
+ 
+ #define SHA256_MAC_LEN 32
 diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index 41de2605c517..47a828de5227 100644
+index 47a828de5227..f7d8d0ec827c 100644
 --- a/drivers/staging/rtl8723bs/include/wifi.h
 +++ b/drivers/staging/rtl8723bs/include/wifi.h
-@@ -401,7 +401,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
+@@ -397,7 +397,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
+ #define _SUPPORTED_CH_IE_		36
+ #define _CH_SWTICH_ANNOUNCE_	37	/* Secondary Channel Offset */
+ #define _RSN_IE_2_				48
+-#define _SSN_IE_1_					221
  #define _ERPINFO_IE_			42
  #define _EXT_SUPPORTEDRATES_IE_	50
  
--#define _HT_CAPABILITY_IE_			45
- #define _FTIE_						55
- #define _TIMEOUT_ITVL_IE_			56
- #define _SRC_IE_				59
+@@ -414,7 +413,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
+ #define _CH_SWITCH_TIMING_		104
+ #define _PTI_BUFFER_STATUS_		106
+ #define _EXT_CAP_IE_				127
+-#define _VENDOR_SPECIFIC_IE_		221
+ 
+ #define	_RESERVED47_				47
+ 
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index fe89fb3d4ddb..bf1417236161 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -2702,8 +2702,8 @@ static int rtw_add_beacon(struct adapter *adapter, const u8 *head, size_t head_l
+ 		DBG_8192C("add bcn, wps_ielen =%d\n", wps_ielen);
+ 
+ 	/* pbss_network->IEs will not include p2p_ie, wfd ie */
+-	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, P2P_OUI, 4);
+-	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, _VENDOR_SPECIFIC_IE_, WFD_OUI, 4);
++	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, WLAN_EID_VENDOR_SPECIFIC, P2P_OUI, 4);
++	rtw_ies_remove_ie(pbuf, &len, _BEACON_IE_OFFSET_, WLAN_EID_VENDOR_SPECIFIC, WFD_OUI, 4);
+ 
+ 	if (rtw_check_beacon_data(adapter, pbuf,  len) == _SUCCESS) {
+ 		ret = 0;
 diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 1d73df69f737..e81a953d9c9a 100644
+index e81a953d9c9a..41389e266f54 100644
 --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -109,9 +109,9 @@ static char *translate_scan(struct adapter *padapter,
+@@ -717,7 +717,7 @@ static int rtw_set_wpa_ie(struct adapter *padapter, char *pie, unsigned short ie
+ 			while (cnt < ielen) {
+ 				eid = buf[cnt];
  
- 	/* parsing HT_CAP_IE */
- 	if (pnetwork->network.Reserved[0] == 2) { /*  Probe Request */
--		p = rtw_get_ie(&pnetwork->network.IEs[0], _HT_CAPABILITY_IE_, &ht_ielen, pnetwork->network.IELength);
-+		p = rtw_get_ie(&pnetwork->network.IEs[0], WLAN_EID_HT_CAPABILITY, &ht_ielen, pnetwork->network.IELength);
- 	} else {
--		p = rtw_get_ie(&pnetwork->network.IEs[12], _HT_CAPABILITY_IE_, &ht_ielen, pnetwork->network.IELength-12);
-+		p = rtw_get_ie(&pnetwork->network.IEs[12], WLAN_EID_HT_CAPABILITY, &ht_ielen, pnetwork->network.IELength-12);
+-				if ((eid == _VENDOR_SPECIFIC_IE_) && (!memcmp(&buf[cnt+2], wps_oui, 4))) {
++				if ((eid == WLAN_EID_VENDOR_SPECIFIC) && (!memcmp(&buf[cnt+2], wps_oui, 4))) {
+ 					DBG_871X("SET WPS_IE\n");
+ 
+ 					padapter->securitypriv.wps_ie_len = ((buf[cnt+1]+2) < MAX_WPS_IE_LEN) ? (buf[cnt+1]+2):MAX_WPS_IE_LEN;
+@@ -3945,7 +3945,7 @@ static int rtw_get_sta_wpaie(struct net_device *dev, struct ieee_param *param)
+ 
+ 	psta = rtw_get_stainfo(pstapriv, param->sta_addr);
+ 	if (psta) {
+-		if ((psta->wpa_ie[0] == WLAN_EID_RSN) || (psta->wpa_ie[0] == WLAN_EID_GENERIC)) {
++		if ((psta->wpa_ie[0] == WLAN_EID_RSN) || (psta->wpa_ie[0] == WLAN_EID_VENDOR_SPECIFIC)) {
+ 			int wpa_ie_len;
+ 			int copy_len;
+ 
+@@ -3998,7 +3998,7 @@ static int rtw_set_wps_beacon(struct net_device *dev, struct ieee_param *param,
+ 
+ 		memcpy(pmlmepriv->wps_beacon_ie, param->u.bcn_ie.buf, ie_len);
+ 
+-		update_beacon(padapter, _VENDOR_SPECIFIC_IE_, wps_oui, true);
++		update_beacon(padapter, WLAN_EID_VENDOR_SPECIFIC, wps_oui, true);
+ 
+ 		pmlmeext->bstart_bss = true;
  	}
- 	if (p && ht_ielen > 0) {
- 		struct ieee80211_ht_cap *pht_capie;
-@@ -771,7 +771,7 @@ static int rtw_wx_get_name(struct net_device *dev,
+@@ -4361,7 +4361,7 @@ static int rtw_wx_set_priv(struct net_device *dev,
+ 		int probereq_wpsie_len = len;
+ 		u8 wps_oui[4] = {0x0, 0x50, 0xf2, 0x04};
  
- 	if (check_fwstate(pmlmepriv, _FW_LINKED|WIFI_ADHOC_MASTER_STATE) == true) {
- 		/* parsing HT_CAP_IE */
--		p = rtw_get_ie(&pcur_bss->IEs[12], _HT_CAPABILITY_IE_, &ht_ielen, pcur_bss->IELength-12);
-+		p = rtw_get_ie(&pcur_bss->IEs[12], WLAN_EID_HT_CAPABILITY, &ht_ielen, pcur_bss->IELength-12);
- 		if (p && ht_ielen > 0)
- 			ht_cap = true;
+-		if ((_VENDOR_SPECIFIC_IE_ == probereq_wpsie[0]) &&
++		if ((WLAN_EID_VENDOR_SPECIFIC == probereq_wpsie[0]) &&
+ 			(!memcmp(&probereq_wpsie[2], wps_oui, 4))) {
+ 			cp_sz = probereq_wpsie_len > MAX_WPS_IE_LEN ? MAX_WPS_IE_LEN : probereq_wpsie_len;
  
+diff --git a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+index f121dbfaa029..fb2df871c0cb 100644
+--- a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+@@ -147,7 +147,7 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
+ 	RT_TRACE(_module_mlme_osdep_c_, _drv_info_, ("+rtw_report_sec_ie, authmode =%d\n", authmode));
+ 
+ 	buff = NULL;
+-	if (authmode == _WPA_IE_ID_) {
++	if (authmode == WLAN_EID_VENDOR_SPECIFIC) {
+ 		RT_TRACE(_module_mlme_osdep_c_, _drv_info_, ("rtw_report_sec_ie, authmode =%d\n", authmode));
+ 
+ 		buff = rtw_zmalloc(IW_CUSTOM_MAX);
 -- 
 2.25.1
 
