@@ -1,76 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 008332D2507
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 08:55:37 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A7F42D2508
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 08:55:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9AE7387CB3;
-	Tue,  8 Dec 2020 07:55:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 16C5B273EB;
+	Tue,  8 Dec 2020 07:55:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R9Td8gJYXp8J; Tue,  8 Dec 2020 07:55:34 +0000 (UTC)
+	with ESMTP id X48XfBQRkwwf; Tue,  8 Dec 2020 07:55:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B551787C4B;
-	Tue,  8 Dec 2020 07:55:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B209120445;
+	Tue,  8 Dec 2020 07:55:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1D6C31BF3F2
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 07:55:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 43CA31BF3F2
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 07:55:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 19DED871A7
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 07:55:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 325DF20444
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 07:55:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xpdCywj5DDfI for <devel@linuxdriverproject.org>;
- Tue,  8 Dec 2020 07:55:28 +0000 (UTC)
+ with ESMTP id sv02KFncsKlJ for <devel@linuxdriverproject.org>;
+ Tue,  8 Dec 2020 07:55:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 76538871A0
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 07:55:28 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id a6so1328114wmc.2
- for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 23:55:28 -0800 (PST)
+Received: from mail-wr1-f46.google.com (mail-wr1-f46.google.com
+ [209.85.221.46])
+ by silver.osuosl.org (Postfix) with ESMTPS id 10C23203B1
+ for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 07:55:30 +0000 (UTC)
+Received: by mail-wr1-f46.google.com with SMTP id 91so11325628wrj.7
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 23:55:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y5t5X3T+9uiPlHL+SyLoVu8rBUqMKyK7LwZogvfh9xQ=;
- b=M0fx6VEn+BwLdieI5HZxETdtfhHwE6+xayRvMAyhaeey3fxefvmxZeXnMn6DUF1cs2
- 7e5+R5Mj4y8lb8VAjmbV0sA94yeIrTXw0yAhPs8yRT+svhhfD6MgYgK7H3XMKcKsJrUI
- xgb5QIqbWJlv9NGc7QGydzgeiY8lw81hAF2dVJwZAJzl12tzkITSgKSY71TGwtt4sGk4
- ZTsRibdqxRYKHOWP1EfZlVPFqc1YhLBB8vUyxFXKkdoigrwi4Hy/zxaT1LVXwosKDiBd
- AzYCDQQwDavkaBhksJmfch0aLjdQi72eZEODGFarzm+PWg8PTxZRPg2bA13trV7O7j2j
- J6ag==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=iZBg6NYc1fDrXniV/VR86/1qE8M8HyWt002YbvqPFwA=;
+ b=NR05I4W5IgbtZCAnyadH1WNM+a0Jdb5V5V1FIjmJJVoOHLm//pyynVhvfizCaUPjK0
+ tCCeaCiEB8i4eIUV6SVZmOKVMrxsmKwVxJkQtD+BRWEzlbBs9SxGtvZm8eUJyAysMV41
+ HeMuYpg3tCm4k1SBKEtaUVJXOeCrxQ4BXnnG5lMBXYD9W2udo3cYB773g4zsHj/IsTC3
+ EwkVLp1wF32XosN1nqJLnIZGCf4czVFzPJkI420+bvjBCEOJwlHC/G7urFnxQz71BT9r
+ GcECxPo0Uedxz6v1MNZz9/ZKylnMwfhLpD4oc4W7C3slmjdmZ93weTNTt3ylpw/IRd2c
+ Ughw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y5t5X3T+9uiPlHL+SyLoVu8rBUqMKyK7LwZogvfh9xQ=;
- b=Suec6WLgEeXMxwGkQD4a5YBFL5wY0FbaYy6ElkRRugpx0F2lf57UtdM2VwL/0nmhvh
- jtHaB69GH2Yu6ncypzrKQ9xvSEhN1lGLc+j63pHw22eJY/W/ypmCpqgfX1+RpED5M1r1
- MlSZzrFfxQzdXeGv+Nthb50BCrCO/Ql6zAvkPbpv6PwzWqa+BzvMVnVGZ19rprfIAAwF
- yBlPImmJ2Kdp8mGNGR+9I2yp6juoDPGsOTpMb9viJlnILpEu+L/cQ037Jcg2dnna8yRo
- BihslGh0pu8ERF/ELmE9ElaxsuBdPXOlV9Jp34dozgfmcSvds1Qc52YXSLnJTsBxxfXF
- EJVQ==
-X-Gm-Message-State: AOAM532FyoUUyrsB9ZXGRAjbuU5z0VRyY4uK/nwnejJ4eiDLyTZNFNdT
- LLHxuhF+soiuUpqvjsM1lF8=
-X-Google-Smtp-Source: ABdhPJyAo8FAQ+FtdXkUzZb1YmqUvO0sIrjFeLfPOYPK971E4HkYcRn1akpF/3iXZ3r3RISicNfU5w==
-X-Received: by 2002:a1c:7218:: with SMTP id n24mr2586630wmc.186.1607414126696; 
- Mon, 07 Dec 2020 23:55:26 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=iZBg6NYc1fDrXniV/VR86/1qE8M8HyWt002YbvqPFwA=;
+ b=rF74GqIvc3oIeBcEqy6YaryQfH/naxRtSRsCBO9KVCHS2A/xxOom142sIErqZ2ZPQk
+ +koJD/f7+IwFntfekRxJ6gPEH78A54DBE1MCv8rGlNnO2ZNlmqUm4gqEWFGY4WCna+wc
+ BI0l/CWQJSR+75v/1Rqi3vca0ohuyWALBXJSSeBBR6piENN+tHVXVC5HXZkvVHV/diJG
+ dwXosjan+jAEc6075BtzUb8V05pcOXNZlOPYjEChZWeM6ZqI8D7MlbD1H9uxKaRx8y2t
+ J/ZPCL9PhCFOmlJqnMYkkJJl4W+0XxFDUmqdcskL1nGEU1eBMBKA5K8MW9YTaRA0g/Mi
+ OY2Q==
+X-Gm-Message-State: AOAM532wvCYmboF1rHlRhmmRk+Zqk6XZXBdP2UNcbc46yolWvewQxti3
+ Tth3lr5/SYdphxuQxHlFeZs=
+X-Google-Smtp-Source: ABdhPJxxbsnv9uCrap7/LBgI68S6qea6ttTGtNj92JTHuHMUhjs2jiRWobIn4D8wOMzmenDEgBrc5w==
+X-Received: by 2002:a5d:610d:: with SMTP id v13mr23845962wrt.425.1607414128460; 
+ Mon, 07 Dec 2020 23:55:28 -0800 (PST)
 Received: from localhost.localdomain (188.red-81-44-87.dynamicip.rima-tde.net.
  [81.44.87.188])
- by smtp.gmail.com with ESMTPSA id h184sm1620735wmh.23.2020.12.07.23.55.25
+ by smtp.gmail.com with ESMTPSA id h184sm1620735wmh.23.2020.12.07.23.55.26
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 07 Dec 2020 23:55:25 -0800 (PST)
+ Mon, 07 Dec 2020 23:55:27 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: linus.walleij@linaro.org
-Subject: [PATCH v2 0/2] pinctrl: ralink: pinctrl driver for the rt2880 family
-Date: Tue,  8 Dec 2020 08:55:21 +0100
-Message-Id: <20201208075523.7060-1-sergio.paracuellos@gmail.com>
+Subject: [PATCH v2 1/2] dt-bindings: pinctrl: rt2880: add binding document
+Date: Tue,  8 Dec 2020 08:55:22 +0100
+Message-Id: <20201208075523.7060-2-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20201208075523.7060-1-sergio.paracuellos@gmail.com>
+References: <20201208075523.7060-1-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,54 +93,90 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This series adds a pinctrl driver for ralink rt2880 SoC.
+The commit adds rt2880 compatible node in binding document.
 
-After last cleanup in staging I was told [0] this driver is ready to be
-promoted from staging.
-
-This series are rebased on the top of staging-testing.
-
-Thanks in advance for your time.
-
-Changes in v2:
-    - Squash PATCH 2/3 and PATCH 3/3 in only one.
-    - Put driver inside 'ralink' subdir of pinctrl.
-    - Add Linus'Acked-by for driver after squashing two patches. 
-    - Make changes suggested by Linus in bindings doc: [1].
-      NOTE that I simplified but not removes if-clause because without
-      that I am not be able to validate using 'dt_binding_check' with errors
-      in all pinctrl nodes because are not of type 'object'.
-
-Best regards,
-    Sergio Paracuellos
-
-[0]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2020-December/149178.html
-[1]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2020-December/149204.html
-
-*** BLURB HERE ***
-
-Sergio Paracuellos (2):
-  dt-bindings: pinctrl: rt2880: add binding document
-  pinctrl: ralink: add a pinctrl driver for the rt2880 family
-
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
  .../pinctrl/ralink,rt2880-pinmux.yaml         | 70 +++++++++++++++++++
- drivers/pinctrl/Kconfig                       |  1 +
- drivers/pinctrl/Makefile                      |  1 +
- drivers/pinctrl/ralink/Kconfig                | 14 ++++
- .../ralink}/Makefile                          |  2 -
- .../ralink}/pinctrl-rt2880.c                  |  4 +-
- drivers/staging/Kconfig                       |  2 -
- drivers/staging/Makefile                      |  1 -
- drivers/staging/mt7621-pinctrl/Kconfig        |  6 --
- drivers/staging/mt7621-pinctrl/TODO           |  6 --
- 10 files changed, 88 insertions(+), 19 deletions(-)
+ 1 file changed, 70 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinmux.yaml
- create mode 100644 drivers/pinctrl/ralink/Kconfig
- rename drivers/{staging/mt7621-pinctrl => pinctrl/ralink}/Makefile (66%)
- rename drivers/{staging/mt7621-pinctrl => pinctrl/ralink}/pinctrl-rt2880.c (99%)
- delete mode 100644 drivers/staging/mt7621-pinctrl/Kconfig
- delete mode 100644 drivers/staging/mt7621-pinctrl/TODO
 
+diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinmux.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinmux.yaml
+new file mode 100644
+index 000000000000..7dea3e26d99e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinmux.yaml
+@@ -0,0 +1,70 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pinctrl/ralink,rt2880-pinmux.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Ralink rt2880 pinmux controller
++
++maintainers:
++  - Sergio Paracuellos <sergio.paracuellos@gmail.com>
++
++description:
++  The rt2880 pinmux can only set the muxing of pin groups. muxing indiviual pins
++  is not supported. There is no pinconf support.
++
++properties:
++  compatible:
++    enum:
++      - ralink,rt2880-pinmux
++
++  pinctrl-0:
++    description:
++      A phandle to the node containing the subnodes containing default
++      configurations. This is for pinctrl hogs.
++
++  pinctrl-names:
++    description:
++      A pinctrl state named "default" can be defined.
++    const: default
++
++required:
++  - compatible
++
++patternProperties:
++  '[a-z0-9_-]+':
++    if:
++      type: object
++      description: node for pinctrl.
++      $ref: "pinmux-node.yaml"
++    then:
++      properties:
++        groups:
++          description: Name of the pin group to use for the functions.
++          enum: [i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2, mdio,
++                 pcie, sdhci]
++        function:
++          description: The mux function to select
++          enum: [gpio, i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2,
++                 mdio, nand1, nand2, sdhci]
++
++additionalProperties: false
++
++examples:
++  # Pinmux controller node
++  - |
++    pinctrl {
++      compatible = "ralink,rt2880-pinmux";
++      pinctrl-names = "default";
++      pinctrl-0 = <&state_default>;
++
++      state_default: pinctrl0 {
++      };
++
++      i2c_pins: i2c0 {
++        i2c0 {
++          groups = "i2c";
++          function = "i2c";
++        };
++      };
++    };
 -- 
 2.25.1
 
