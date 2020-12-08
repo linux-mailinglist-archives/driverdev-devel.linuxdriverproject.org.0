@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BC1E2D21B2
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:07:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D76072D21B9
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:08:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B950587A06;
-	Tue,  8 Dec 2020 04:07:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 808AF87CF3;
+	Tue,  8 Dec 2020 04:08:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R9-YSWi47ylY; Tue,  8 Dec 2020 04:07:54 +0000 (UTC)
+	with ESMTP id w9BDby4cVCpx; Tue,  8 Dec 2020 04:08:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 218EB879F7;
-	Tue,  8 Dec 2020 04:07:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 040BC86BA1;
+	Tue,  8 Dec 2020 04:08:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A27051BF97D
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:07:50 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B464A1BF356
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9B70A879D2
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:07:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B00C72E516
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K2LSzYtl60Aw for <devel@linuxdriverproject.org>;
- Tue,  8 Dec 2020 04:07:48 +0000 (UTC)
+ with ESMTP id tz+dCbjK-RZj for <devel@linuxdriverproject.org>;
+ Tue,  8 Dec 2020 04:07:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C80E387B49
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:07:48 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id z136so15648936iof.3
- for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:07:48 -0800 (PST)
+Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
+ [209.85.166.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id D5B4F2E502
+ for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:07:49 +0000 (UTC)
+Received: by mail-io1-f68.google.com with SMTP id r9so15635293ioo.7
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:07:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=998/RAMpBFAw+nXnsxaqoKJ9xKsScbi5lvuf7EPxM+Q=;
- b=Jn/vMcOZQn+CXLXoYxtlNWmEoAMNYX0WoEoVQWn/UrizI3hcJc836lc38WIJl/x6Bp
- IFUuwcTj8dyYqvoNN74dA/UNUFXKH8pFIKaaYJMsKicCL/2b59DkhSVzS9y2Zjef+c3e
- aB+8IzkVmmDvJoxAQbe2tDI0H4qizkskDJkdr2gzbFjAYd+nn2HFvxbQarbnKPLs9iiD
- kFZiYaKMIcCVT4SWHZ82Jlnd/xgtuPquitUY/lxr+GE2isBv59vP9RA2tgDcuZhkboHh
- TYNKbIoqGtRt+wupm1CtHUlOGozypXW1HU1kH9M72P2jaejpoMPPdrPCJEAQfyKOJgKR
- 74Pw==
+ bh=JST98VZPaX2qnxCjv/Wu6UJKvxVQ8ZfkpQ0u1A/qWnQ=;
+ b=PSBY/Cj73fWmbvypFpatUNUYlRwtvtP+dlMvWeZLEs+BSfu23hScw9KqmGbITUhGPs
+ e4u/naCzZzSg0rIiEJgbjkK1Qvi2PefI94n8NLWEfVuFxbiCOop1af/qI/oC9qUBzv7h
+ 478xW7GTCuF+h2jMhWKTGEBUnot90PiQYfFva2dWT4WzLnjTAMe9KHOmWmDqlKdIN9je
+ 5q11XmXtweJvQ3zYfiD9omzY4pHeWb2IzFxBrlGFHDL4H1lRYIXysfYM7aKKL3N5J289
+ dOu6lzqTGqP31Wh7x3pGDIPacPAMDgCjr6+kn90TQEjTxnXNCWAtwtlAXXz8WPnegJdd
+ 7zyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=998/RAMpBFAw+nXnsxaqoKJ9xKsScbi5lvuf7EPxM+Q=;
- b=VLQje8ryC723ZZlCUL+5u0Eu2gemcM9jhPFk5kGHlhVkiV751HyGMdos0oLtGqaomF
- GHCBVwdUUyj5QJgjDXsURZWRP2JY2xeLyqFFjbw5I/qgFjhUrNjkXVBq7eM25IY/jbbB
- p+8al96Ir3QjSJElDC8mf2l1tm7oF0OlFEAT2E19nNpM9UA3xBGQpatcEr6r1/x1mhME
- l9ydUca+GRCrajU7Z2xEnQ0sO9och/sC+GYFg+cERGQFeBiSVxxhBWTpIotJA2w8uatx
- ThqcTN8VMaEZ+KKT/RwPmtGU+YgCjhNF7kXJhDITPReY/mEd2pM9YvK63yRN68jdI+oF
- x9jg==
-X-Gm-Message-State: AOAM531CUmZTFxZWc1nWLIjcyME8GASB0z0Ow+DsOCHsamxIB1CmgHaW
- 3v3PCcu8YGbfOTelxGsGrec=
-X-Google-Smtp-Source: ABdhPJyNpUHQSu9mb5ve1RkmxOJlflCJAi93SkPMC7qbKkrLnkKrH3xq/SeNSjV+I7zAcJ3CHL7ZJw==
-X-Received: by 2002:a02:969a:: with SMTP id w26mr24834336jai.96.1607400468204; 
- Mon, 07 Dec 2020 20:07:48 -0800 (PST)
+ bh=JST98VZPaX2qnxCjv/Wu6UJKvxVQ8ZfkpQ0u1A/qWnQ=;
+ b=dUxvocO89uSfC3OWKQmBAC1hh0Nc2Q2x1l9TF8FlXgR9eNVMHnpYWA0sazDj0uqwKI
+ oCapzgQd4HR0a3R7UzMMr4+KuI5PvcYW3Radhx7pg9uc3Tsiq0FMuVYnoN0JynXRlv7d
+ peWJy5lryosWCEAmmLbdNJbyQQuoZhHEEjZI9bL9N1PcrxU4zzFgPiL2wrXYtFaQEcnB
+ /Yh2B82LevLEsCaN+Tyrn0LA1HxbpP3FmS6hmh2O6nJrciTVuhuvn7PKS60ZqXh1wcFf
+ 8VXj8R+O2jQied2eLGNWZx0C39q3CihE5hD5LD2c5MAWdOSg6WD81+9yCP7n0UyScCVa
+ Hr3g==
+X-Gm-Message-State: AOAM5325qAcgStbkVl69JDkYJMNqHwzE9bgEspJ7S7SvehLs49bW8Kol
+ iHbLcADroe+RX6VVCAnPgVA=
+X-Google-Smtp-Source: ABdhPJxXGPFenswYiMPKdpPyxS/1QjD/CEYgAxlvcpk9uYWEqy2eTP8d3NoJRHfEEJFE1PDvcD9Ldw==
+X-Received: by 2002:a6b:441a:: with SMTP id r26mr22951251ioa.105.1607400469242; 
+ Mon, 07 Dec 2020 20:07:49 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.47
+ by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 20:07:47 -0800 (PST)
+ Mon, 07 Dec 2020 20:07:48 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 09/21] staging: rtl8723bs: replace _TIM_IE_
-Date: Mon,  7 Dec 2020 22:07:21 -0600
-Message-Id: <20201208040733.379197-10-ross.schm.dev@gmail.com>
+Subject: [PATCH v2 10/21] staging: rtl8723bs: replace _IBSS_PARA_IE_
+Date: Mon,  7 Dec 2020 22:07:22 -0600
+Message-Id: <20201208040733.379197-11-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201208040733.379197-1-ross.schm.dev@gmail.com>
 References: <20201208040733.379197-1-ross.schm.dev@gmail.com>
@@ -93,154 +93,77 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace unique _TIM_IE_ macro with kernel provided WLAN_EID_DS_PARAMS
-from linux/ieee80211.h.
+Replace unique _IBSS_PARA_IE_ macro with kernel provided
+WLAN_EID_IBSS_PARAMS from linux/ieee80211.h.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_ap.c   | 10 +++++-----
- drivers/staging/rtl8723bs/core/rtw_cmd.c  |  2 +-
- drivers/staging/rtl8723bs/core/rtw_recv.c |  4 ++--
- drivers/staging/rtl8723bs/core/rtw_xmit.c |  8 ++++----
- drivers/staging/rtl8723bs/include/wifi.h  |  1 -
- 5 files changed, 12 insertions(+), 13 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ieee80211.c | 2 +-
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c  | 4 ++--
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c   | 2 +-
+ drivers/staging/rtl8723bs/include/wifi.h       | 1 -
+ 4 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index 1514975f23bc..139350288d1b 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -76,7 +76,7 @@ static void update_BCNTIM(struct adapter *padapter)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+index 58e29314c8f8..b899f511ff9f 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+@@ -354,7 +354,7 @@ int rtw_generate_ie(struct registry_priv *pregistrypriv)
  
- 		p = rtw_get_ie(
- 			pie + _FIXED_IE_LENGTH_,
--			_TIM_IE_,
-+			WLAN_EID_TIM,
- 			&tim_ielen,
- 			pnetwork_mlmeext->IELength - _FIXED_IE_LENGTH_
- 		);
-@@ -133,7 +133,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 				memcpy(pbackup_remainder_ie, premainder_ie, remainder_ielen);
- 		}
+ 	/* IBSS Parameter Set */
  
--		*dst_ie++ = _TIM_IE_;
-+		*dst_ie++ = WLAN_EID_TIM;
+-	ie = rtw_set_ie(ie, _IBSS_PARA_IE_, 2, (u8 *)&(pdev_network->Configuration.ATIMWindow), &sz);
++	ie = rtw_set_ie(ie, WLAN_EID_IBSS_PARAMS, 2, (u8 *)&(pdev_network->Configuration.ATIMWindow), &sz);
  
- 		if ((pstapriv->tim_bitmap & 0xff00) && (pstapriv->tim_bitmap & 0x00fe))
- 			tim_ielen = 5;
-@@ -301,7 +301,7 @@ void expire_timeout_chk(struct adapter *padapter)
+ 	if (rateLen > 8) {
+ 		ie = rtw_set_ie(ie, _EXT_SUPPORTEDRATES_IE_, (rateLen - 8), (pdev_network->SupportedRates + 8), &sz);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+index 1f6c1e441744..546e4a31142b 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+@@ -2552,7 +2552,7 @@ void issue_beacon(struct adapter *padapter, int timeout_ms)
+ 		/*  IBSS Parameter Set... */
+ 		/* ATIMWindow = cur->Configuration.ATIMWindow; */
+ 		ATIMWindow = 0;
+-		pframe = rtw_set_ie(pframe, _IBSS_PARA_IE_, 2, (unsigned char *)(&ATIMWindow), &pattrib->pktlen);
++		pframe = rtw_set_ie(pframe, WLAN_EID_IBSS_PARAMS, 2, (unsigned char *)(&ATIMWindow), &pattrib->pktlen);
  
- 					/* to update bcn with tim_bitmap for this station */
- 					pstapriv->tim_bitmap |= BIT(psta->aid);
--					update_beacon(padapter, _TIM_IE_, NULL, true);
-+					update_beacon(padapter, WLAN_EID_TIM, NULL, true);
+ 		/* ERP IE */
+ 		pframe = rtw_set_ie(pframe, _ERPINFO_IE_, 1, &erpinfo, &pattrib->pktlen);
+@@ -2755,7 +2755,7 @@ void issue_probersp(struct adapter *padapter, unsigned char *da, u8 is_valid_p2p
+ 			/*  IBSS Parameter Set... */
+ 			/* ATIMWindow = cur->Configuration.ATIMWindow; */
+ 			ATIMWindow = 0;
+-			pframe = rtw_set_ie(pframe, _IBSS_PARA_IE_, 2, (unsigned char *)(&ATIMWindow), &pattrib->pktlen);
++			pframe = rtw_set_ie(pframe, WLAN_EID_IBSS_PARAMS, 2, (unsigned char *)(&ATIMWindow), &pattrib->pktlen);
  
- 					if (!pmlmeext->active_keep_alive_check)
- 						continue;
-@@ -922,7 +922,7 @@ void start_bss_network(struct adapter *padapter, u8 *pbuf)
- 	);
- 
- 	if (pmlmeext->bstart_bss) {
--		update_beacon(padapter, _TIM_IE_, NULL, true);
-+		update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 
- #ifndef CONFIG_INTERRUPT_BASED_TXBCN /* other case will  tx beacon when bcn interrupt coming in. */
- 		/* issue beacon frame */
-@@ -1762,7 +1762,7 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
- 
- 		break;
- 
--	case _TIM_IE_:
-+	case WLAN_EID_TIM:
- 
- 		update_BCNTIM(padapter);
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 1d0a7690acde..3fe79169a811 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -1703,7 +1703,7 @@ static void rtw_chk_hi_queue_hdl(struct adapter *padapter)
- 			pstapriv->sta_dz_bitmap &= ~BIT(0);
- 
- 			if (update_tim)
--				update_beacon(padapter, _TIM_IE_, NULL, true);
-+				update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 		} else {/* re check again */
- 			rtw_chk_hi_queue_cmd(padapter);
- 		}
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index 2bb501f2113c..3c9dbd7443d9 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -1158,7 +1158,7 @@ sint validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_
- 
- 					/* update BCN for TIM IE */
- 					/* update_BCNTIM(padapter); */
--					update_beacon(padapter, _TIM_IE_, NULL, true);
-+					update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 				}
- 
- 				/* spin_unlock_bh(&psta->sleep_q.lock); */
-@@ -1184,7 +1184,7 @@ sint validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_
- 
- 					/* update BCN for TIM IE */
- 					/* update_BCNTIM(padapter); */
--					update_beacon(padapter, _TIM_IE_, NULL, true);
-+					update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 				}
- 			}
- 		}
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index f9ef7dc84e55..1d62ce501e80 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -2251,7 +2251,7 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
- 			pstapriv->sta_dz_bitmap |= BIT(0);
- 
- 			if (update_tim)
--				update_beacon(padapter, _TIM_IE_, NULL, true);
-+				update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 			else
- 				chk_bmc_sleepq_cmd(padapter);
- 
-@@ -2308,7 +2308,7 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
- 
- 				if (update_tim)
- 					/* update BCN for TIM IE */
--					update_beacon(padapter, _TIM_IE_, NULL, true);
-+					update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 			}
- 
- 			ret = true;
-@@ -2516,7 +2516,7 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
- 	spin_unlock_bh(&pxmitpriv->lock);
- 
- 	if (update_mask)
--		update_beacon(padapter, _TIM_IE_, NULL, true);
-+		update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- }
- 
- void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *psta)
-@@ -2579,7 +2579,7 @@ void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *pst
- 		if ((psta->sleepq_ac_len == 0) && (!psta->has_legacy_ac) && (wmmps_ac)) {
- 			pstapriv->tim_bitmap &= ~BIT(psta->aid);
- 
--			update_beacon(padapter, _TIM_IE_, NULL, true);
-+			update_beacon(padapter, WLAN_EID_TIM, NULL, true);
- 		}
+ 			/* ERP IE */
+ 			pframe = rtw_set_ie(pframe, _ERPINFO_IE_, 1, &erpinfo, &pattrib->pktlen);
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+index ac6677212086..f6073ecef2e2 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+@@ -189,7 +189,7 @@ static void ConstructBeacon(struct adapter *padapter, u8 *pframe, u32 *pLength)
+ 		/*  IBSS Parameter Set... */
+ 		/* ATIMWindow = cur->Configuration.ATIMWindow; */
+ 		ATIMWindow = 0;
+-		pframe = rtw_set_ie(pframe, _IBSS_PARA_IE_, 2, (unsigned char *)(&ATIMWindow), &pktlen);
++		pframe = rtw_set_ie(pframe, WLAN_EID_IBSS_PARAMS, 2, (unsigned char *)(&ATIMWindow), &pktlen);
  	}
  
+ 
 diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index b29762bfb3c1..dc11ba28d469 100644
+index dc11ba28d469..3adeb3c23a3c 100644
 --- a/drivers/staging/rtl8723bs/include/wifi.h
 +++ b/drivers/staging/rtl8723bs/include/wifi.h
 @@ -387,7 +387,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
  
  #define _FIXED_IE_LENGTH_			_BEACON_IE_OFFSET_
  
--#define _TIM_IE_					5
- #define _IBSS_PARA_IE_			6
+-#define _IBSS_PARA_IE_			6
  #define _COUNTRY_IE_			7
  #define _CHLGETXT_IE_			16
+ #define _SUPPORTED_CH_IE_		36
 -- 
 2.25.1
 
