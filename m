@@ -2,59 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF64F2D22EC
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 06:12:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81BF32D23CB
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 07:47:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1A53487666;
-	Tue,  8 Dec 2020 05:12:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6B039877D5;
+	Tue,  8 Dec 2020 06:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ky4Q38AbtEj6; Tue,  8 Dec 2020 05:12:10 +0000 (UTC)
+	with ESMTP id dDBRkYpMKsfz; Tue,  8 Dec 2020 06:47:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A3F4A874A4;
-	Tue,  8 Dec 2020 05:12:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 16484877C1;
+	Tue,  8 Dec 2020 06:47:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C999A1BF32A
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 05:12:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A9001BF84C
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 06:46:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BD978203F2
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 05:12:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 36A0487233
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 06:46:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vsgXyIwDowAK for <devel@linuxdriverproject.org>;
- Tue,  8 Dec 2020 05:12:06 +0000 (UTC)
+ with ESMTP id iinBufAQ3A4o for <devel@linuxdriverproject.org>;
+ Tue,  8 Dec 2020 06:46:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 20FA0203CF
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 05:12:06 +0000 (UTC)
-IronPort-SDR: AHWaqG2QxanQbLgTLMZGNqmYAML9tAtZxrlptIzdwcRdLCd/QOisnofZRAYmFzXxtIRKRWwT8O
- 5mz3JYvQXPgA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9828"; a="237938319"
-X-IronPort-AV: E=Sophos;i="5.78,401,1599548400"; d="scan'208";a="237938319"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2020 21:11:59 -0800
-IronPort-SDR: vIQiV2C9pTw0sQaXkIK+aImVY3Nvl2pEh2nsTPmN7ikIuzY8g3+suaC6feLa6zHsRchU2bSC/m
- lXqCJZJZnq4g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,401,1599548400"; d="scan'208";a="541888436"
-Received: from lkp-server01.sh.intel.com (HELO d624d5343356) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 07 Dec 2020 21:11:58 -0800
-Received: from kbuild by d624d5343356 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kmVI5-00001e-Lc; Tue, 08 Dec 2020 05:11:57 +0000
-Date: Tue, 08 Dec 2020 13:11:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 19cf9d7afc2e7b91f47b8f2638ec08b29de55060
-Message-ID: <5fcf0b04.9anGY/R8susyhEtz%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-ot1-f41.google.com (mail-ot1-f41.google.com
+ [209.85.210.41])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1D25A871EA
+ for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 06:46:57 +0000 (UTC)
+Received: by mail-ot1-f41.google.com with SMTP id h18so10994486otq.12
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 22:46:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FHeqGcpUq0K/LfMy6iWPf10Yt7dCiT+hVL7+V0mFEG4=;
+ b=ZbufPNenq+pVtfYd22sI3tBeluvAD8zx/IiJrcTWvRq860NWC0mMJJHhbKqPS5+NgE
+ 8upDHajGqUXVsdHjBST0+zFB8YJ6XajUAxvMLj20nUp/hyUCmPW1oMcr7M6XymwcjmPR
+ kYhQCbjFAjoRe4PcglK8ifIY0sdoa+5kjQN+WhWtjctcnQtsEdqu1BudMB46JMRKp82J
+ 0enoOHiIZkJo4+dTATwDHgroskEV4f5EhMVHJIiX91xDJL0GF4wyxw6qZ+pE2/qAvgHy
+ DP7RX0Fb8l634zbgR/py2EBOqcGbEJqAonYYWTCQ2Y7NTQ/GFbGC1XlYH+obVoBsLZn7
+ 4jKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FHeqGcpUq0K/LfMy6iWPf10Yt7dCiT+hVL7+V0mFEG4=;
+ b=agOBSEGbgv5FCzo6IRMBt40DITHuOwuPlUeZfuE4bMV2KTC9qQsUTXR+ykXVq5z+Y0
+ 9iOR27mmhMj/Fo1HVRz5rig3IA7RAD0PalBy67SJI+MKkXpQyCk3HINarSqMec1vxi0O
+ fl40PTSZIinfNIE5OG0WyQUhECjPZt01kRrxLlJ7L2rb87O3nZLLLx5Zy8miMYCzU12g
+ cumcmGOfer31wNhjR6CPcsrLL2+IiTtNH28iF8OLu5Dz+VuYDPNIgMEgqrwYBG8Wq/ec
+ qZPYLtVCqGGRrhI0RK/lDhIYmb6olepne10wSM1Kw3M4d5fKh3sAVwboaAQcr9mmqkv+
+ TFcw==
+X-Gm-Message-State: AOAM5306EB8XOpTymXRnTaDPVJM9gMsz29JVwkS+28TFeKCBTuzt8Tgc
+ s8NK2MeGtS4xgBUYGyJ+5953Sbm/5kKan7EgGDQ=
+X-Google-Smtp-Source: ABdhPJzCAaa7yN+Wk5sFAvAe9YX5TxXG43cpkSCDjtkK9c8g7PvLcNOUJnzq9Y0HW6a+IRBMoNzYb6/AZ+oHIaDen3I=
+X-Received: by 2002:a9d:589:: with SMTP id 9mr15977543otd.72.1607410016335;
+ Mon, 07 Dec 2020 22:46:56 -0800 (PST)
 MIME-Version: 1.0
+References: <20201207192104.6046-1-sergio.paracuellos@gmail.com>
+ <20201207192104.6046-2-sergio.paracuellos@gmail.com>
+ <CACRpkdavpQ+QP56MVQ5E0oxNKWb0tR9g8vHay6-LAc+Bj7tAQQ@mail.gmail.com>
+In-Reply-To: <CACRpkdavpQ+QP56MVQ5E0oxNKWb0tR9g8vHay6-LAc+Bj7tAQQ@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Tue, 8 Dec 2020 07:46:45 +0100
+Message-ID: <CAMhs-H8rT7ofTsBn7mkp5rWhGfSrMCUHtbn1KLeEUKEeH20=1Q@mail.gmail.com>
+Subject: Re: [PATCH 1/3] dt-bindings: pinctrl: rt2880: add binding document
+To: Linus Walleij <linus.walleij@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,169 +81,164 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Jason Yan <yanaijie@huawei.com>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 19cf9d7afc2e7b91f47b8f2638ec08b29de55060  staging: rtl8723bs: remove LIST_CONTAINOR
+Hi Linus,
 
-elapsed time: 742m
+Thanks for the review. There weren't too many yaml samples for this so
+as you had seen this was a bit messy and I really needed this review,
+especially in the 'if' clause part :).
 
-configs tested: 139
-configs skipped: 2
+On Mon, Dec 7, 2020 at 11:42 PM Linus Walleij <linus.walleij@linaro.org> wrote:
+>
+> Hi Sergio,
+>
+> thanks for driving this!
+>
+> On Mon, Dec 7, 2020 at 8:21 PM Sergio Paracuellos
+> <sergio.paracuellos@gmail.com> wrote:
+>
+> > The commit adds rt2880 compatible node in binding document.
+> >
+> > Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> (...)
+> > +description:
+> > +  The rt2880 pinmux can only set the muxing of pin groups. muxing indiviual pins
+> > +  is not supported. There is no pinconf support.
+>
+> OK!
+>
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - ralink,rt2880-pinmux
+> > +
+> > +  pinctrl-0:
+> > +    description:
+> > +      A phandle to the node containing the subnodes containing default
+> > +      configurations.
+>
+> As it is a node on the pin controller itself, this is a hog so write something
+> about that this is for pinctrl hogs.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Ok, will do.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                      walnut_defconfig
-arm                          simpad_defconfig
-nds32                               defconfig
-powerpc                     tqm8555_defconfig
-arm                         palmz72_defconfig
-arc                          axs103_defconfig
-powerpc                  mpc885_ads_defconfig
-mips                           ip28_defconfig
-powerpc                     pq2fads_defconfig
-powerpc                 mpc832x_rdb_defconfig
-c6x                         dsk6455_defconfig
-m68k                        m5272c3_defconfig
-m68k                          hp300_defconfig
-s390                          debug_defconfig
-arm                             ezx_defconfig
-mips                            gpr_defconfig
-microblaze                          defconfig
-microblaze                    nommu_defconfig
-powerpc                   motionpro_defconfig
-arm                       imx_v4_v5_defconfig
-powerpc                 mpc834x_itx_defconfig
-powerpc                         wii_defconfig
-mips                         cobalt_defconfig
-m68k                        stmark2_defconfig
-arm                  colibri_pxa300_defconfig
-powerpc                     powernv_defconfig
-m68k                        mvme16x_defconfig
-powerpc                     tqm8540_defconfig
-mips                         rt305x_defconfig
-powerpc                   lite5200b_defconfig
-arm                         mv78xx0_defconfig
-powerpc                   currituck_defconfig
-sparc                       sparc32_defconfig
-sh                   rts7751r2dplus_defconfig
-sh                                  defconfig
-powerpc                      pasemi_defconfig
-arc                         haps_hs_defconfig
-arm                        multi_v5_defconfig
-mips                           ci20_defconfig
-arm                     eseries_pxa_defconfig
-ia64                          tiger_defconfig
-i386                                defconfig
-sh                           se7780_defconfig
-arm                       omap2plus_defconfig
-arm                         lpc18xx_defconfig
-sh                          sdk7780_defconfig
-m68k                       m5275evb_defconfig
-mips                         tb0287_defconfig
-m68k                             alldefconfig
-arm                           omap1_defconfig
-um                            kunit_defconfig
-sh                 kfr2r09-romimage_defconfig
-powerpc                        fsp2_defconfig
-powerpc                       eiger_defconfig
-arm                           tegra_defconfig
-sh                            hp6xx_defconfig
-powerpc                    adder875_defconfig
-arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-sh                           se7751_defconfig
-riscv                          rv32_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a005-20201207
-i386                 randconfig-a004-20201207
-i386                 randconfig-a001-20201207
-i386                 randconfig-a002-20201207
-i386                 randconfig-a006-20201207
-i386                 randconfig-a003-20201207
-i386                 randconfig-a004-20201208
-i386                 randconfig-a005-20201208
-i386                 randconfig-a001-20201208
-i386                 randconfig-a002-20201208
-i386                 randconfig-a006-20201208
-i386                 randconfig-a003-20201208
-x86_64               randconfig-a016-20201207
-x86_64               randconfig-a012-20201207
-x86_64               randconfig-a014-20201207
-x86_64               randconfig-a013-20201207
-x86_64               randconfig-a015-20201207
-x86_64               randconfig-a011-20201207
-i386                 randconfig-a014-20201207
-i386                 randconfig-a013-20201207
-i386                 randconfig-a011-20201207
-i386                 randconfig-a015-20201207
-i386                 randconfig-a012-20201207
-i386                 randconfig-a016-20201207
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+>
+> > +  pinctrl-names:
+> > +    description:
+> > +      A pinctrl state named "default" must be defined.
+> > +    const: default
+>
+> Is it really compulsory?
 
-clang tested configs:
-x86_64               randconfig-a004-20201207
-x86_64               randconfig-a006-20201207
-x86_64               randconfig-a002-20201207
-x86_64               randconfig-a001-20201207
-x86_64               randconfig-a005-20201207
-x86_64               randconfig-a003-20201207
+Not really, I guess. The current device tree contains one so I added
+here because of this.
+>
+> > +required:
+> > +  - compatible
+> > +  - pinctrl-names
+> > +  - pinctrl-0
+>
+> I wonder if the hogs are really compulsory.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Ok, so I guess I should remove both 'pinctrl-names' and ' pinctrl-0'
+from the required but maintain its desciption.
+
+>
+> > +patternProperties:
+> > +  '^.*$':
+>
+> That's liberal node naming!
+> What about [a-z0-9_-]+ or something?
+
+hahaha. Yeah, I like freedom :), but yes, you are right, I will change
+the pattern using the one proposed here.
+
+>
+> > +    if:
+> > +      type: object
+> > +      description: |
+> > +        A pinctrl node should contain at least one subnodes representing the
+> > +        pinctrl groups available on the machine.
+> > +      $ref: "pinmux-node.yaml"
+> > +      required:
+> > +        - groups
+> > +        - function
+> > +      additionalProperties: false
+> > +    then:
+> > +      properties:
+> > +        groups:
+> > +          description:
+> > +            Name of the pin group to use for the functions.
+> > +          $ref: "/schemas/types.yaml#/definitions/string"
+> > +          enum: [i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2, mdio,
+> > +                 pcie, sdhci]
+> > +        function:
+> > +          description:
+> > +            The mux function to select
+> > +          $ref: "/schemas/types.yaml#/definitions/string"
+> > +          enum: [gpio, i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2,
+> > +                 mdio, nand1, nand2, sdhci]
+>
+> Why do we have this complex if: clause?
+
+To be honest to avoid problems with other pinctrl root nodes because
+they are not type 'object' and not having real idea in what way this
+should be achieved :).
+
+> $ref: "pinmux-node.yaml" should bring in the groups and
+> function properties. Then you can add some further restrictions
+> on top of that, right?
+>
+> I would just do:
+>
+> patternProperties:
+>   '^[a-z0-9_]+$':
+>     type: object
+>       description: node for pinctrl
+>       $ref "pinmux-node.yaml"
+>
+>       properties:
+>         groups:
+>           description: groups...
+>           enum: [i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2, mdio,
+> pcie, sdhci]
+>         function:
+>           description: function...
+>           enum: [gpio, i2c, spi, uart1, uart2, uart3, rgmii1, rgmii2,
+> mdio, nand1, nand2, sdhci]
+>
+> Note: the function names are fine but the group names are a bit
+> confusion since often a group can be used for more than one
+> function, and e.g.
+>
+> function = "i2c";
+> group = "uart1";
+>
+> to use the uart1 pins for an i2c is gonna look mildly confusing.
+>
+> But if this is what the hardware calls it I suppose it is
+> fine.
+
+This is the way is currently being used in the device tree.
+
+>
+> Yours,
+> Linus Walleij
+
+Thanks again. I will change this and send v2.
+
+Best regards,
+     Sergio Paracuellos
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
