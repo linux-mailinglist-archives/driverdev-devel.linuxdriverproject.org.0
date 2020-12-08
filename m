@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1DD82D21BF
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:08:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 883532D21C1
+	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 05:08:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0319F2E506;
-	Tue,  8 Dec 2020 04:08:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C7F672E50A;
+	Tue,  8 Dec 2020 04:08:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tiLt1EqGVrBv; Tue,  8 Dec 2020 04:08:42 +0000 (UTC)
+	with ESMTP id UlmlpeYGJSYW; Tue,  8 Dec 2020 04:08:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CD62C2E507;
-	Tue,  8 Dec 2020 04:08:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E130B2E50B;
+	Tue,  8 Dec 2020 04:08:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 809C91BF356
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C4A771BF356
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7D43887C39
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C156D8769E
+ for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 04:08:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XG9Z7rqAvqMl for <devel@linuxdriverproject.org>;
- Tue,  8 Dec 2020 04:07:59 +0000 (UTC)
+ with ESMTP id uUkwRi0jlOxN for <devel@linuxdriverproject.org>;
+ Tue,  8 Dec 2020 04:08:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
- [209.85.166.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CA66A8769E
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:07:59 +0000 (UTC)
-Received: by mail-il1-f193.google.com with SMTP id j12so7197153ilk.3
- for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:07:59 -0800 (PST)
+Received: from mail-io1-f46.google.com (mail-io1-f46.google.com
+ [209.85.166.46])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D372887B8B
+ for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 04:08:00 +0000 (UTC)
+Received: by mail-io1-f46.google.com with SMTP id r9so15635634ioo.7
+ for <devel@driverdev.osuosl.org>; Mon, 07 Dec 2020 20:08:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B2kvsrP4A4w9Ll/8j0HYqPedZLnR0R37yVmOg87xaPQ=;
- b=WKCdaZbidtImG3GtcDYPK1cR3ReQS7JakYx9QXy3pR1y0BIVqyWTl1ijLYUnb+vpAW
- irZXTNSzo0t073Fe0BnUx7kvbF0uA+w7QT6uUw9eTkQbC+rhoJ+OTjpoTx8TShbnlfRk
- BxvnARs7qP1MFb4DlkKlsC6g5e5zU9m5ojzTDj69n0ZwILt7oeUZuh0y2DAA/Nz++60h
- rohZO8vkw9o/nyyKWN0iZCm2fCTDZgJc0CnMDI/sEYCL4IGTsSyPRp0bBY7Gx7V7dyWt
- jOCWpteiZO5WQtWi1WFYTssEe0J9SqE1R15gt1peXSaljTD8H0NovPbgGg/7C+g0pi3I
- gtUA==
+ bh=dsWJ3wrdvClaf8NoUeAOfEEb2bR+T2eO/cQV3hJDJhA=;
+ b=O3SsdqoptsHL+5djAONfMBEO4xq7WCTiejUCI/p/Nmi6OEizNdKX5jH2UatTU6nxSz
+ kYXX/BH9jGXLcj341NUUje8zDnWt0U9ZsNIn1igZFVytaV13cgxVAzyC1vSz0x+Vgkwd
+ MlliFr/LKBxzOD12uqhAYZRB1FziXfvMILEqLJVM5VuhrEaqd2TA8/OgkqIc1xPMTlD0
+ MLvVDR00+LQliL77qZ3x+akhodwsl1eKA2W22McXhDDOilivK87oYVydz8nbKUirwbid
+ efrP8A+EaFjK5fP1oW8m/FaglBCXI+kpI7+h1cHG4kzJRHoQW9uOO5zZHe7M8EuDVqI8
+ 1Org==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B2kvsrP4A4w9Ll/8j0HYqPedZLnR0R37yVmOg87xaPQ=;
- b=BOuBQVVMFr9rXfGOaxNcpvyos8EJrf101er3lFybnhMJJefO7/6AWSxl7QeDgIAJV9
- RImpLBYXdIWTHrm+pXY0KZCzYsiF7Kwc+hOes1pS8xMEqb/51wMpkDj2EYjOEmtb+rds
- rZKVSgteZiw9AOwG2LeAAGAP1h/db1ULeHyfOws4Z2DxH+2wBr35ePdCEDfRFpHIw5aA
- C5NvJvAPaMnkTTXE6E+pf50kGIB8vuinFlPnCjJ4p9mZLqVjf5OULL6YBzH3rTQ3OQt8
- m5dsSFudRXQkWkZZWJPvd7+UNhje3IKa8u/xU6ZBtMQxKm9Tgg1tIVRjpkZ3djmpZ720
- ByVQ==
-X-Gm-Message-State: AOAM530z5RiPQA/TerHK9na/f+/FjJZYgl4etwbQylx+dRqKkVoOGUP3
- V1W/qoDh42QmggzdVCvyKzw=
-X-Google-Smtp-Source: ABdhPJyyfqz3bycaiHCfu0MYFS5x9VmP/0W4+iqlTCHKYxWFFsnHrTVkjIEii/y1wUoON6+alAyEwQ==
-X-Received: by 2002:a92:4002:: with SMTP id n2mr23931383ila.293.1607400479231; 
- Mon, 07 Dec 2020 20:07:59 -0800 (PST)
+ bh=dsWJ3wrdvClaf8NoUeAOfEEb2bR+T2eO/cQV3hJDJhA=;
+ b=A99FO+hbm1Lxtxy6vp1R0ZjjTqqRKaMQ8UmhULnkWnsw+zzRJ3gqzRuFDebdOAwz2D
+ kj71QCS3xz988rxUaBkEf4jmVvzJ8IGoNTQrF5C9qRFoS4YXAN4zBtnLZ1/mj2pZ4lfG
+ 1DXqRHBS1gNtqG/1iiEz13jWu33kSoB4vsZJitJwvQZWxCpLsOzB08xjheB5iOohYiUQ
+ PTLr4FktzgwLMh56RA4nL0reuu5A2pVl1XR0Uhbnrka49Eij04obyv8kHaGSz+GIxllS
+ F4ylAObkiHqhr/PB+qKgDBVx9xKW4yKEelkcmVdQJSAjSuaAlKj6V8JlPf2Pbc+6DKaD
+ tV2w==
+X-Gm-Message-State: AOAM533CI0qiqTIji+dDTzdx5UMSCIO5NVOVYA3XIN/mVZtdrMdVfQyN
+ JBZafdP8G1O6awvCdBAtM/g=
+X-Google-Smtp-Source: ABdhPJxK9xuXLbplaY1A0R0SwyrpRl4q1MJSZx1rOm8fC1aw+oP6FpIfRiS27FtfmeE65QMnwhgQpw==
+X-Received: by 2002:a02:b607:: with SMTP id h7mr25285486jam.120.1607400480332; 
+ Mon, 07 Dec 2020 20:08:00 -0800 (PST)
 Received: from localhost.localdomain (c-73-242-81-227.hsd1.mn.comcast.net.
  [73.242.81.227])
- by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.58
+ by smtp.gmail.com with ESMTPSA id g2sm8630390ilh.41.2020.12.07.20.07.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 20:07:58 -0800 (PST)
+ Mon, 07 Dec 2020 20:07:59 -0800 (PST)
 From: Ross Schmidt <ross.schm.dev@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 19/21] staging: rtl8723bs: replace EID_EXTCapability
-Date: Mon,  7 Dec 2020 22:07:31 -0600
-Message-Id: <20201208040733.379197-20-ross.schm.dev@gmail.com>
+Subject: [PATCH v2 20/21] staging: rtl8723bs: remove unused macros
+Date: Mon,  7 Dec 2020 22:07:32 -0600
+Message-Id: <20201208040733.379197-21-ross.schm.dev@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201208040733.379197-1-ross.schm.dev@gmail.com>
 References: <20201208040733.379197-1-ross.schm.dev@gmail.com>
@@ -93,44 +93,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace unique EID_EXTCapability constant with kernel provided
-WLAN_EID_EXT_CAPABILITY from linux/ieee80211.h.
+Remove many macros from wifi.h and ieee80211.h because they are unused.
 
 Signed-off-by: Ross Schmidt <ross.schm.dev@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme.c     | 2 +-
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8723bs/include/ieee80211.h |  5 -----
+ drivers/staging/rtl8723bs/include/wifi.h      | 15 ---------------
+ 2 files changed, 20 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index d05338015744..2c9425e2a1e9 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2912,7 +2912,7 @@ void rtw_append_exented_cap(struct adapter *padapter, u8 *out_ie, uint *pout_len
- 	if (phtpriv->bss_coexist)
- 		SET_EXT_CAPABILITY_ELE_BSS_COEXIST(cap_content, 1);
+diff --git a/drivers/staging/rtl8723bs/include/ieee80211.h b/drivers/staging/rtl8723bs/include/ieee80211.h
+index 20c53c290aa1..d9ff8c8e7f36 100644
+--- a/drivers/staging/rtl8723bs/include/ieee80211.h
++++ b/drivers/staging/rtl8723bs/include/ieee80211.h
+@@ -348,11 +348,6 @@ struct ieee80211_snap_hdr {
+ #define WLAN_REASON_JOIN_WRONG_CHANNEL       65534
+ #define WLAN_REASON_EXPIRATION_CHK 65535
  
--	rtw_set_ie(out_ie + *pout_len, EID_EXTCapability, 8, cap_content, pout_len);
-+	rtw_set_ie(out_ie + *pout_len, WLAN_EID_EXT_CAPABILITY, 8, cap_content, pout_len);
- }
+-/* EIDs defined by IEEE 802.11h - END */
+-#define WLAN_EID_20_40_BSS_COEXISTENCE 72
+-#define WLAN_EID_20_40_BSS_INTOLERANT 73
+-#define WLAN_EID_OVERLAPPING_BSS_SCAN_PARAMS 74
+-
+ #define IEEE80211_MGMT_HDR_LEN 24
+ #define IEEE80211_DATA_HDR3_LEN 24
+ #define IEEE80211_DATA_HDR4_LEN 30
+diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
+index 82dfdafb38fc..7f482a45705b 100644
+--- a/drivers/staging/rtl8723bs/include/wifi.h
++++ b/drivers/staging/rtl8723bs/include/wifi.h
+@@ -387,21 +387,6 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
  
- inline void rtw_set_to_roam(struct adapter *adapter, u8 to_roam)
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 9d172bd23911..fa4b0259c5ae 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -3381,9 +3381,9 @@ void issue_assocreq(struct adapter *padapter)
- 			}
- 			break;
+ #define _FIXED_IE_LENGTH_			_BEACON_IE_OFFSET_
  
--		case EID_EXTCapability:
-+		case WLAN_EID_EXT_CAPABILITY:
- 			if (padapter->mlmepriv.htpriv.ht_option)
--				pframe = rtw_set_ie(pframe, EID_EXTCapability, pIE->Length, pIE->data, &(pattrib->pktlen));
-+				pframe = rtw_set_ie(pframe, WLAN_EID_EXT_CAPABILITY, pIE->Length, pIE->data, &(pattrib->pktlen));
- 			break;
- 		default:
- 			break;
+-#define _SUPPORTED_CH_IE_		36
+-#define _CH_SWTICH_ANNOUNCE_	37	/* Secondary Channel Offset */
+-
+-#define _FTIE_						55
+-#define _TIMEOUT_ITVL_IE_			56
+-#define _SRC_IE_				59
+-
+-#define _RIC_Descriptor_IE_			75
+-#define _LINK_ID_IE_					101
+-#define _CH_SWITCH_TIMING_		104
+-#define _PTI_BUFFER_STATUS_		106
+-#define _EXT_CAP_IE_				127
+-
+-#define	_RESERVED47_				47
+-
+ enum ELEMENT_ID {
+ 	EID_SsId					= 0, /* service set identifier (0:32) */
+ 	EID_SupRates				= 1, /* supported rates (1:8) */
 -- 
 2.25.1
 
