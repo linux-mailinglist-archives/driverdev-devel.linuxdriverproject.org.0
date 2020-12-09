@@ -1,51 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 850D22D4024
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Dec 2020 11:42:19 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E9D06878AB;
-	Wed,  9 Dec 2020 10:42:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cQHxc80fCdkf; Wed,  9 Dec 2020 10:42:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 153E987877;
-	Wed,  9 Dec 2020 10:42:17 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0FFF41BF5F6
- for <devel@linuxdriverproject.org>; Wed,  9 Dec 2020 10:42:15 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D6ED2D407C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Dec 2020 12:00:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EED75273D7
- for <devel@linuxdriverproject.org>; Wed,  9 Dec 2020 10:42:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 409F3273FC;
+	Wed,  9 Dec 2020 11:00:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aPd6n+rq6yXQ; Wed,  9 Dec 2020 11:00:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id C0D5C273E3;
+	Wed,  9 Dec 2020 11:00:04 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 39BEF1BF23B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 11:00:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 362F5873C2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 11:00:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Iq2Gb4FK6JXY for <devel@linuxdriverproject.org>;
- Wed,  9 Dec 2020 10:42:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 72D4B273CF
- for <devel@driverdev.osuosl.org>; Wed,  9 Dec 2020 10:42:12 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 08849AB63;
- Wed,  9 Dec 2020 10:42:11 +0000 (UTC)
-Message-ID: <fcc97ca28c3aaa3ab69b4de4818c1dc89b85b430.camel@suse.de>
-Subject: Re: [PATCH v5 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: u.kleine-koenig@pengutronix.de, linux-kernel@vger.kernel.org, Thierry
- Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>
-Date: Wed, 09 Dec 2020 11:42:09 +0100
-In-Reply-To: <20201123183833.18750-12-nsaenzjulienne@suse.de>
-References: <20201123183833.18750-1-nsaenzjulienne@suse.de>
- <20201123183833.18750-12-nsaenzjulienne@suse.de>
-User-Agent: Evolution 3.38.2 
+ with ESMTP id kQ5r20Kz6B7F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 10:59:58 +0000 (UTC)
+X-Greylist: delayed 00:09:15 by SQLgrey-1.7.6
+Received: from visi.com (vps-ad94741f.vps.ovh.ca [51.79.157.202])
+ by hemlock.osuosl.org (Postfix) with ESMTP id C1691873BA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 10:59:57 +0000 (UTC)
+Received: from [89.200.15.204] (account juliangath@visi.com HELO User)
+ by visi.com (CommuniGate Pro SMTP 6.1.9 _community_)
+ with ESMTPA id 218561; Wed, 09 Dec 2020 09:38:30 -0800
+From: "MR JABER AL-GHAFR"<nhenry61@yahoo.com>
+Subject: INVESTMENT
+Date: Wed, 9 Dec 2020 11:50:27 +0100
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+X-Antivirus: AVG (VPS 201207-4, 07/12/2020), Outbound message
+X-Antivirus-Status: Clean
+Message-ID: <auto-000000218561@visi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,75 +61,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
- linux-gpio@vger.kernel.org, andy.shevchenko@gmail.com,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- p.zabel@pengutronix.de, linux-input@vger.kernel.org, bgolaszewski@baylibre.com,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============3461531206273022961=="
+Reply-To: jalghafri3@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============3461531206273022961==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-DYDWHGJjHHu30M9SeI+k"
-
-
---=-DYDWHGJjHHu30M9SeI+k
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi All,
-
-On Mon, 2020-11-23 at 19:38 +0100, Nicolas Saenz Julienne wrote:
-> Adds support to control the PWM bus available in official Raspberry Pi
-> PoE HAT. Only RPi's co-processor has access to it, so commands have to
-> be sent through RPi's firmware mailbox interface.
->=20
-> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
->=20
-
-I'll soon send a v6 of this series and was wondering if there is any more
-feedback for this patch.
-
-Regards,
-Nicolas
-
-
---=-DYDWHGJjHHu30M9SeI+k
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl/QqgEACgkQlfZmHno8
-x/4KCgf/atII/Noi91247tu9b99CnitDBaC5oT2VJlArRSWUNcHEEJPbZ1seDvpF
-wmsApHQ7yKkAnDJdCzSRj7K+/Pp8PhETFK/vmD5TWAxaBtjbvvdHDQT+2RvLSthv
-x4AJ/aAdpPsHuGzde7JViJAuogdoPuqVWExVPdjBbA2+SoWmuHxsaCBtnlD+HYhL
-jP+22+d6ea9OTvtVHgWrgeRjfWXPaNSvQ6GCWASLBpbsfssUWlSWWAURk4NP/lXA
-XhGFaDg+yzd1scAtX8T74lseUd7EP0sMpGmL4G3YWx1eg1oLSChdPx4hdupyIA6G
-ZUcTKvwbLhTkXiSJYnXeAUDjSgbJag==
-=FbnN
------END PGP SIGNATURE-----
-
---=-DYDWHGJjHHu30M9SeI+k--
-
-
---===============3461531206273022961==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3461531206273022961==--
-
+R29vZCBEYXkKSSBhbSBKQUJFUiBBTC1HSEFGUkksIFBsZWFzYW50IGdyZWV0aW5ncyB0byB5b3Ug
+YXMgaSBzZWVrIHlvdXIgaW5kdWxnZW5jZSB0byBpbnRyb2R1Y2UgdG8geW91IHRoZSBkZXNpcmUg
+b2YgbXkgcHJpbmNpcGFsknMgd2lzaCwgdG8gbWFrZSBodWdlIGZpbmFuY2lhbCBpbnZlc3RtZW50
+IGluIHlvdXIgaG9tZSBjb3VudHJ5IG9uIGFyZWFzIG9mIG9pbCBhbmQgZ2FzLCByZWFsIGVzdGF0
+ZSwgdG91cmlzbSBhbmQgaG90ZWwsIG1hbnVmYWN0dXJpbmcgYW5kIHByb2R1Y3Rpb24gY29tcGFu
+eSwgYWdyaWN1bHR1cmUsIGZpc2hpbmcsIE1pbmluZyAmIFRyYWRpbmcgb2YgbmF0dXJhbCByZXNv
+dXJjZXMgc3VjaCBhcyBjcnVkZSBvaWwsIGNvYWwsIGdyYXBoaXRlLCBjb2tlLCByZWZpbmVyeSwg
+ZW5lcmd5LCBob3NwaXRhbCBldGMuCgpIZSBuZWVkcyBhIGNhcGFibGUsIHRydXN0d29ydGh5IGFu
+ZCB1bmRlcnN0YW5kaW5nIGJ1c2luZXNzIHBhcnRuZXIsIHdobyBjYW4gY29uZmlkZW50bHkgaGFu
+ZGxlIGFuZCBtYW5hZ2UgaGlzIGludmVzdG1lbnQgZnVuZHMgd2l0aCB1dG1vc3QgY2FyZSBvZiBz
+ZWNyZWN5IHdpdGhvdXQgdHJhY2VzIG9yIGxpbmsgdG8gaGltIGFzIGhlIGlzIHBvbGl0aWNhbGx5
+IGV4cG9zZWQgYXQgdGhlIG1vbWVudCBpbiBoaXMgY291bnRyeS4gSGUgaGFzIGEgaHVnZSBhdmFp
+bGFibGUgZmluYW5jaWFsIHBvcnRmb2xpby4KClBsZWFzZSwgSSB3aWxsIHByb3ZpZGUgbW9yZSBk
+ZXRhaWxzIGFib3V0IHRoZSB0cmFuc2FjdGlvbiBpZiB5b3UgYXJlIHN1cmUgeW91IGNhbiBoYW5k
+bGUgY2xhc3NpZmllZCBpbmZvcm1hdGlvbiBhbmQgYWxzbyBsZXQgbWUga25vdyB5b3VyIGVudGl0
+bGVtZW50IGZvciB0aGUgc29saWNpdGVkIHJvbGUKSSBzaGFsbCBiZSBleHBlY3RpbmcgeW91ciBx
+dWljayByZXBseS4gRS1tYWlsIGphbGdoYWZyaTNAZ21haWwuY29tCkJlc3QgUmVnYXJkcywKSkFC
+RVIgQUwtR0hBRlJJCgotLSAKVGhpcyBlbWFpbCBoYXMgYmVlbiBjaGVja2VkIGZvciB2aXJ1c2Vz
+IGJ5IEFWRy4KaHR0cHM6Ly93d3cuYXZnLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
