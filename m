@@ -1,88 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D4462D3656
-	for <lists+driverdev-devel@lfdr.de>; Tue,  8 Dec 2020 23:36:04 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F3972D37E6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Dec 2020 01:42:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 94E95274B3;
-	Tue,  8 Dec 2020 22:36:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C286986D28;
+	Wed,  9 Dec 2020 00:42:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IibaXi7U1hLL; Wed,  9 Dec 2020 00:42:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D2E4786C71;
+	Wed,  9 Dec 2020 00:42:26 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 699161BF297
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 00:42:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 4E80B204E0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 00:42:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mLCv0lJ9l-c7; Tue,  8 Dec 2020 22:36:01 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 29525203B8;
-	Tue,  8 Dec 2020 22:35:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B0DE91BF2E4
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 22:35:55 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A392286ED7
- for <devel@linuxdriverproject.org>; Tue,  8 Dec 2020 22:35:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d7S60wAxiX2M for <devel@linuxdriverproject.org>;
- Tue,  8 Dec 2020 22:35:54 +0000 (UTC)
-X-Greylist: delayed 00:09:45 by SQLgrey-1.7.6
-Received: from wout3-smtp.messagingengine.com (wout3-smtp.messagingengine.com
- [64.147.123.19])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5E62986ED2
- for <devel@driverdev.osuosl.org>; Tue,  8 Dec 2020 22:35:54 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.west.internal (Postfix) with ESMTP id 8EC2A10ED;
- Tue,  8 Dec 2020 17:26:08 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Tue, 08 Dec 2020 17:26:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nkwarfield.io;
- h=date:from:to:cc:subject:message-id:mime-version:content-type;
- s=fm3; bh=93kAimUHuURvl/m8SQ6dsmBkazfQnzIkpniefjGMWU0=; b=qsi7z
- D62duOvWPi4ET9Smy9P8MKlIoAXC13tu6wsyZyjGUvRmZDOhgMHFiSbdxNg+Vpwy
- h9Dj3CMJnthvP6X77f+7pSMSbc/aST8SkCsgRFb82yPiNBrHWTuwVXTrS4F0DgEV
- EPgPanSLqUs31Un4CjGKLkkh94rZ1wVLSFH5kilmKnHcH4Z6F/fjID/nqDYt90hX
- Db+ZYoNYzVCp2vlg6UK5czw8BgDccaWyUpF3gwbdd908YJe1pYEFYIljESE6V50L
- V32+dTCDjiLwh1bt+AHIGtnHxFn2hxMYxxuNTQUvJnHCGNFKKXFigYd8aDo9BHJv
- gC3fvYWVQaDTPDT9g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:message-id
- :mime-version:subject:to:x-me-proxy:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; bh=93kAimUHuURvl/m8SQ6dsmBkazfQn
- zIkpniefjGMWU0=; b=bvvCNF2PVTLkBG5Z9iTVQ4hqAapTc0vYH4YtYI2OxC6zB
- UECGV+NitvLPzkSZPKGfeGvaXjIwEQeCRkg+6ggfjYYhQXiBXPL/tb+KyTvzlMW2
- 2d/EpVcx0hi6SJ9D/4DhoQGereliWLOocUB9RrNg8ysUzFagzH/3b6uFmfdeBiMR
- l0TWqPH6ALtuoVMXVU4OrSH/k73L+66/NTIUfp1EmQ3SPS2c2PU6NyH23fu3ofQR
- I4h9C7wGJHfj0txk01W54sj1YHjfL9Q0BkRZxLu4FfcDk5iEukh2VFg8/IAoKf2i
- mxLYAykw9REfD1F4n+KtVXRr28J7i1ecUfEAiTBLQ==
-X-ME-Sender: <xms:f_3PX57uHuVVnysGIRx5pAftp0LRJJU2NS1BkVdZ7asJ5jodiX27rg>
- <xme:f_3PXxebH8Rv5nMe8LzM8Vyl70tzs-m5UZHxWim0jLy9VecWrx7HFC7RKV-26aRbn
- MmXiOXdwBjz6uhN0ng>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrudejiedgudeifecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvuffkgggtugesthdtredttddtvdenucfhrhhomheppfhitghhohhl
- rghsucghrghrfhhivghlugcuoehnihgtkhesnhhkfigrrhhfihgvlhgurdhioheqnecugg
- ftrfgrthhtvghrnhepgfdugfekhefftdekuedukedvheettdehudeugfffgfffjeevgfdu
- udffgffhjeejnecukfhppedutdegrdefgedrleelrdejieenucevlhhushhtvghrufhiii
- gvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehnihgtkhesnhhkfigrrhhfihgvlhgu
- rdhioh
-X-ME-Proxy: <xmx:f_3PX9DAH6ve09LwgWj3DJWtzTYYIFxPsWi0_M50zKZ4PMcXFR7sLA>
- <xmx:f_3PX08uwTBb5YV_OZDVVCgV9TTH-YukttFHFp3nLBdlZD4i7MQ04A>
- <xmx:f_3PX4L_RdOiwlHPronP8CX7SJ1TDAE1yukKOIVf6B76KjM2yPPDcw>
- <xmx:gP3PX3VmchpQn9vAaziq_l7jP4r43dcFVH72q7xC9wSc_gkUXnhKig>
-Received: from coffee.localdomain (cpe-104-34-99-76.socal.res.rr.com
- [104.34.99.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id B490A24005C;
- Tue,  8 Dec 2020 17:26:06 -0500 (EST)
-Date: Tue, 8 Dec 2020 14:25:29 -0800
-From: Nicholas Warfield <nick@nkwarfield.io>
-To: Manish Chopra <manishc@marvell.com>
-Subject: [PATCH] staging: qlge: remove duplicate word in comment
-Message-ID: <X8/9WWP3S1GrVNaa@coffee.localdomain>
+ with ESMTP id oshYLMWzP3AC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 00:42:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from visi.com (vps-ad94741f.vps.ovh.ca [51.79.157.202])
+ by silver.osuosl.org (Postfix) with ESMTP id 4D59720337
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  9 Dec 2020 00:42:20 +0000 (UTC)
+Received: from [31.161.230.241] (account juliangath@visi.com HELO User)
+ by visi.com (CommuniGate Pro SMTP 6.1.9 _community_)
+ with ESMTPA id 53845; Tue, 08 Dec 2020 23:28:35 -0800
+From: "MR JABER AL-GHAFR"<raywandyg@gmail.com>
+Subject: INVESTMENT
+Date: Wed, 9 Dec 2020 01:40:30 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+X-Antivirus: AVG (VPS 201207-4, 07/12/2020), Outbound message
+X-Antivirus-Status: Clean
+Message-ID: <auto-000000053845@visi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,42 +61,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- nick@nkwarfield.io, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: jalghafri3@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the checkpatch warning:
-
-WARNING: Possible repeated word: 'each'
-1712: FILE: qlge.h:1712.h
-+ * that are each each 64-bits in length. There are a total of
-
-Signed-off-by: Nicholas Warfield <nick@nkwarfield.io>
----
- drivers/staging/qlge/qlge.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
-index b295990e361b..0381f3f56bc7 100644
---- a/drivers/staging/qlge/qlge.h
-+++ b/drivers/staging/qlge/qlge.h
-@@ -1709,7 +1709,7 @@ enum {
- #define ETS_REGS_DUMP_WORD_COUNT		10
- 
- /* Each probe mux entry stores the probe type plus 64 entries
-- * that are each each 64-bits in length. There are a total of
-+ * that are each 64-bits in length. There are a total of
-  * 34 (PRB_MX_ADDR_VALID_TOTAL) valid probes.
-  */
- #define PRB_MX_ADDR_PRB_WORD_COUNT		(1 + (PRB_MX_ADDR_MAX_MUX * 2))
--- 
-2.29.2
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBEYXkKSSBhbSBKQUJFUiBBTC1HSEFGUkksIFBsZWFzYW50IGdyZWV0aW5ncyB0byB5b3Ug
+YXMgaSBzZWVrIHlvdXIgaW5kdWxnZW5jZSB0byBpbnRyb2R1Y2UgdG8geW91IHRoZSBkZXNpcmUg
+b2YgbXkgcHJpbmNpcGFsknMgd2lzaCwgdG8gbWFrZSBodWdlIGZpbmFuY2lhbCBpbnZlc3RtZW50
+IGluIHlvdXIgaG9tZSBjb3VudHJ5IG9uIGFyZWFzIG9mIG9pbCBhbmQgZ2FzLCByZWFsIGVzdGF0
+ZSwgdG91cmlzbSBhbmQgaG90ZWwsIG1hbnVmYWN0dXJpbmcgYW5kIHByb2R1Y3Rpb24gY29tcGFu
+eSwgYWdyaWN1bHR1cmUsIGZpc2hpbmcsIE1pbmluZyAmIFRyYWRpbmcgb2YgbmF0dXJhbCByZXNv
+dXJjZXMgc3VjaCBhcyBjcnVkZSBvaWwsIGNvYWwsIGdyYXBoaXRlLCBjb2tlLCByZWZpbmVyeSwg
+ZW5lcmd5LCBob3NwaXRhbCBldGMuCgpIZSBuZWVkcyBhIGNhcGFibGUsIHRydXN0d29ydGh5IGFu
+ZCB1bmRlcnN0YW5kaW5nIGJ1c2luZXNzIHBhcnRuZXIsIHdobyBjYW4gY29uZmlkZW50bHkgaGFu
+ZGxlIGFuZCBtYW5hZ2UgaGlzIGludmVzdG1lbnQgZnVuZHMgd2l0aCB1dG1vc3QgY2FyZSBvZiBz
+ZWNyZWN5IHdpdGhvdXQgdHJhY2VzIG9yIGxpbmsgdG8gaGltIGFzIGhlIGlzIHBvbGl0aWNhbGx5
+IGV4cG9zZWQgYXQgdGhlIG1vbWVudCBpbiBoaXMgY291bnRyeS4gSGUgaGFzIGEgaHVnZSBhdmFp
+bGFibGUgZmluYW5jaWFsIHBvcnRmb2xpby4KClBsZWFzZSwgSSB3aWxsIHByb3ZpZGUgbW9yZSBk
+ZXRhaWxzIGFib3V0IHRoZSB0cmFuc2FjdGlvbiBpZiB5b3UgYXJlIHN1cmUgeW91IGNhbiBoYW5k
+bGUgY2xhc3NpZmllZCBpbmZvcm1hdGlvbiBhbmQgYWxzbyBsZXQgbWUga25vdyB5b3VyIGVudGl0
+bGVtZW50IGZvciB0aGUgc29saWNpdGVkIHJvbGUKSSBzaGFsbCBiZSBleHBlY3RpbmcgeW91ciBx
+dWljayByZXBseS4gRS1tYWlsIGphbGdoYWZyaTNAZ21haWwuY29tCkJlc3QgUmVnYXJkcywKSkFC
+RVIgQUwtR0hBRlJJCgotLSAKVGhpcyBlbWFpbCBoYXMgYmVlbiBjaGVja2VkIGZvciB2aXJ1c2Vz
+IGJ5IEFWRy4KaHR0cHM6Ly93d3cuYXZnLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
