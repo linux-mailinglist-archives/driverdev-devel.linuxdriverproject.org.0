@@ -2,53 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9C992D56A7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Dec 2020 10:17:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6156D2D5713
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Dec 2020 10:27:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D2821876B7;
-	Thu, 10 Dec 2020 09:17:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D2A4876C3;
+	Thu, 10 Dec 2020 09:27:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MXQIdUGRYh-n; Thu, 10 Dec 2020 09:17:44 +0000 (UTC)
+	with ESMTP id c8gOciwXIw25; Thu, 10 Dec 2020 09:27:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56683876A1;
-	Thu, 10 Dec 2020 09:17:43 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1D123876A1;
+	Thu, 10 Dec 2020 09:27:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2B3841BF3D4
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Dec 2020 09:17:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6077F1BF3D4
+ for <devel@linuxdriverproject.org>; Thu, 10 Dec 2020 09:27:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 27663865C1
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Dec 2020 09:17:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 56133865AB
+ for <devel@linuxdriverproject.org>; Thu, 10 Dec 2020 09:27:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CMAIF9WZ+0Ki
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Dec 2020 09:17:40 +0000 (UTC)
+ with ESMTP id HmUOBv7h2kb0 for <devel@linuxdriverproject.org>;
+ Thu, 10 Dec 2020 09:26:59 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from visi.com (vps-ad94741f.vps.ovh.ca [51.79.157.202])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6FE49865AB
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 10 Dec 2020 09:17:38 +0000 (UTC)
-Received: from [188.207.117.22] (account juliangath@visi.com HELO User)
- by visi.com (CommuniGate Pro SMTP 6.1.9 _community_)
- with ESMTPA id 391068; Thu, 10 Dec 2020 08:05:29 -0800
-From: "MR JABER AL-GHAFR"<nhenry61@yahoo.com>
-Subject: INVESTMENT
-Date: Thu, 10 Dec 2020 10:17:22 +0100
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3F12485C13
+ for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 09:26:59 +0000 (UTC)
+Date: Thu, 10 Dec 2020 10:28:12 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1607592418;
+ bh=+bm4nSxz3uw7A+wBxE5e9SXlmjGSJ/oe2vmGKGeAAEI=;
+ h=From:To:Cc:Subject:References:In-Reply-To:From;
+ b=K4DGBQuO/JPxvu0h5+FGlDWGI7zQnKw0nj47sUHM03bEup9UYODQF72kCKZ7bD3X3
+ Dh1sxixAu71uuEaYgLVgBwXcYRKSayp3be6lGFQCav1Xgl8i0bndcV2Znbq7ToJ2sS
+ lE856qsBfwCJpZCO2Bc5Z6Gnh9E98fPew6R64ARQ=
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Chris Bloomfield <ginge264@gmail.com>
+Subject: Re: [PATCH] Staging: ralink-gdma: ralink-gdma: Fix a blank line
+ coding style issue
+Message-ID: <X9HqLFwjHSPXqRgZ@kroah.com>
+References: <20201210100657.22562-1-ginge264@gmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1081
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-X-Antivirus: AVG (VPS 201209-8, 09/12/2020), Outbound message
-X-Antivirus-Status: Clean
-Message-ID: <auto-000000391068@visi.com>
+Content-Disposition: inline
+In-Reply-To: <20201210100657.22562-1-ginge264@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,31 +60,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jalghafri3@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29vZCBEYXkKSSBhbSBKQUJFUiBBTC1HSEFGUkksIFBsZWFzYW50IGdyZWV0aW5ncyB0byB5b3Ug
-YXMgaSBzZWVrIHlvdXIgaW5kdWxnZW5jZSB0byBpbnRyb2R1Y2UgdG8geW91IHRoZSBkZXNpcmUg
-b2YgbXkgcHJpbmNpcGFsknMgd2lzaCwgdG8gbWFrZSBodWdlIGZpbmFuY2lhbCBpbnZlc3RtZW50
-IGluIHlvdXIgaG9tZSBjb3VudHJ5IG9uIGFyZWFzIG9mIG9pbCBhbmQgZ2FzLCByZWFsIGVzdGF0
-ZSwgdG91cmlzbSBhbmQgaG90ZWwsIG1hbnVmYWN0dXJpbmcgYW5kIHByb2R1Y3Rpb24gY29tcGFu
-eSwgYWdyaWN1bHR1cmUsIGZpc2hpbmcsIE1pbmluZyAmIFRyYWRpbmcgb2YgbmF0dXJhbCByZXNv
-dXJjZXMgc3VjaCBhcyBjcnVkZSBvaWwsIGNvYWwsIGdyYXBoaXRlLCBjb2tlLCByZWZpbmVyeSwg
-ZW5lcmd5LCBob3NwaXRhbCBldGMuCgpIZSBuZWVkcyBhIGNhcGFibGUsIHRydXN0d29ydGh5IGFu
-ZCB1bmRlcnN0YW5kaW5nIGJ1c2luZXNzIHBhcnRuZXIsIHdobyBjYW4gY29uZmlkZW50bHkgaGFu
-ZGxlIGFuZCBtYW5hZ2UgaGlzIGludmVzdG1lbnQgZnVuZHMgd2l0aCB1dG1vc3QgY2FyZSBvZiBz
-ZWNyZWN5IHdpdGhvdXQgdHJhY2VzIG9yIGxpbmsgdG8gaGltIGFzIGhlIGlzIHBvbGl0aWNhbGx5
-IGV4cG9zZWQgYXQgdGhlIG1vbWVudCBpbiBoaXMgY291bnRyeS4gSGUgaGFzIGEgaHVnZSBhdmFp
-bGFibGUgZmluYW5jaWFsIHBvcnRmb2xpby4KClBsZWFzZSwgSSB3aWxsIHByb3ZpZGUgbW9yZSBk
-ZXRhaWxzIGFib3V0IHRoZSB0cmFuc2FjdGlvbiBpZiB5b3UgYXJlIHN1cmUgeW91IGNhbiBoYW5k
-bGUgY2xhc3NpZmllZCBpbmZvcm1hdGlvbiBhbmQgYWxzbyBsZXQgbWUga25vdyB5b3VyIGVudGl0
-bGVtZW50IGZvciB0aGUgc29saWNpdGVkIHJvbGUKSSBzaGFsbCBiZSBleHBlY3RpbmcgeW91ciBx
-dWljayByZXBseS4gRS1tYWlsIGphbGdoYWZyaTNAZ21haWwuY29tCkJlc3QgUmVnYXJkcywKSkFC
-RVIgQUwtR0hBRlJJCgotLSAKVGhpcyBlbWFpbCBoYXMgYmVlbiBjaGVja2VkIGZvciB2aXJ1c2Vz
-IGJ5IEFWRy4KaHR0cHM6Ly93d3cuYXZnLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Thu, Dec 10, 2020 at 10:06:57AM +0000, Chris Bloomfield wrote:
+> Fix a coding style issue as identified by checkpatch.pl
+> 
+> Signed-off-by: Chris Bloomfield <ginge264@gmail.com>
+> ---
+>  drivers/staging/ralink-gdma/ralink-gdma.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
+> index 655df317d0ee..a6181a167814 100644
+> --- a/drivers/staging/ralink-gdma/ralink-gdma.c
+> +++ b/drivers/staging/ralink-gdma/ralink-gdma.c
+> @@ -122,6 +122,7 @@ struct gdma_dma_dev {
+>  	struct gdma_data *data;
+>  	void __iomem *base;
+>  	struct tasklet_struct task;
+> +
+>  	volatile unsigned long chan_issued;
+>  	atomic_t cnt;
+>  
+
+With your knowledge of C, do you think the above change looks correct?
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
