@@ -1,53 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86D252D5AFA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Dec 2020 13:53:58 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A53C12D5AFC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Dec 2020 13:54:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4BF678734C;
-	Thu, 10 Dec 2020 12:53:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BDC1187383;
+	Thu, 10 Dec 2020 12:54:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9SO-O5vIxWPH; Thu, 10 Dec 2020 12:53:55 +0000 (UTC)
+	with ESMTP id xMhAPmJeIqP1; Thu, 10 Dec 2020 12:54:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AF225872C6;
-	Thu, 10 Dec 2020 12:53:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9AABC87336;
+	Thu, 10 Dec 2020 12:54:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CD1DE1BF31C
- for <devel@linuxdriverproject.org>; Thu, 10 Dec 2020 12:53:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0660C1BF31C
+ for <devel@linuxdriverproject.org>; Thu, 10 Dec 2020 12:54:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C167E872D1
- for <devel@linuxdriverproject.org>; Thu, 10 Dec 2020 12:53:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 02F1C872EE
+ for <devel@linuxdriverproject.org>; Thu, 10 Dec 2020 12:54:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ScM6qvwq0Jdo for <devel@linuxdriverproject.org>;
- Thu, 10 Dec 2020 12:53:50 +0000 (UTC)
+ with ESMTP id ru-cFBKT-A6P for <devel@linuxdriverproject.org>;
+ Thu, 10 Dec 2020 12:54:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A4C17872C6
- for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 12:53:50 +0000 (UTC)
-Date: Thu, 10 Dec 2020 13:55:05 +0100
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 918A1872E7
+ for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 12:54:21 +0000 (UTC)
+Date: Thu, 10 Dec 2020 13:55:36 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1607604830;
- bh=gtqICGnsvOHitJ+qiT1LDw6ed/QH/+lGYZQH8qRXoqI=;
+ s=korg; t=1607604861;
+ bh=KcwKvGKRWej3wjBdyOKtL4xEYVhJHIpgdWBDVoUDJec=;
  h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=WPfcBZx7Z1JquJ69v007RmtZtwB8tKa1oBqTdCU+tt0bnnPaH8rexkQVxiB9CuEG9
- zyShvqhCLw0HFkGcrkDjsIVw3iQ5GnVZZOz86lmI8FUIxiXKe0ZQ5Aru434oDqxmRt
- OogMivKa0jVQkeZWozG0TItmfUbFDv8wuUQFGooc=
+ b=0HyDI+NfW5JFwV4agXDxW+ZshOKLzuJrth8kpM+GcKPtWs/sn6mlh9CxUIxyQxGex
+ FCk9vKUS8G4zIHhGkGvZCeQ9uSiPs3Jwzk3d9Wmwy8V1SuTwlKdkJmpHIsYHsR1m1F
+ Zh56903Z5j/2D9CIyjoyi2DsfMV/JR1Guim+orKc=
 From: 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>
 To: =?iso-8859-1?Q?J=F3zsef_Horv=E1th?= <info@ministro.hu>
-Subject: Re: [PATCH v1 1/2] Staging: silabs si4455 serial driver: fix
- directory structure and coding style
-Message-ID: <X9Iaqd8cb7xBAI7S@kroah.com>
-References: <20201210122057.GA31782@dincontrollerdev>
+Subject: Re: [PATCH] Staging: silabs si4455 serial driver
+Message-ID: <X9IayHu9E1HbnvJt@kroah.com>
+References: <20201210122001.GA31758@dincontrollerdev>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201210122057.GA31782@dincontrollerdev>
+In-Reply-To: <20201210122001.GA31758@dincontrollerdev>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,17 +66,28 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Dec 10, 2020 at 12:20:59PM +0000, J=F3zsef Horv=E1th wrote:
-> fix: coding style
-> fix: error checking
-> remove: doc silabs,si4455.txt
+On Thu, Dec 10, 2020 at 12:20:10PM +0000, J=F3zsef Horv=E1th wrote:
+> I send this again, because my original mail content was corrupted.
+> =
 
-What does all of this mean?
+> This is a serial port driver for
+> Silicon Labs Si4455 Sub-GHz transciver.
+> =
 
-Please read the documentation for how to write an effective changelog
-text, and where to put the "changes from the first version" text at.
+> Signed-off-by: J=F3zsef Horv=E1th <info@ministro.hu>
+> ---
+>  .../bindings/staging/serial/silabs,si4455.txt |   39 +
+>  drivers/staging/Kconfig                       |    2 +
+>  drivers/staging/Makefile                      |    1 +
+>  drivers/staging/si4455/Kconfig                |    8 +
+>  drivers/staging/si4455/Makefile               |    2 +
+>  drivers/staging/si4455/TODO                   |    3 +
+>  drivers/staging/si4455/si4455.c               | 1465 +++++++++++++++++
 
-thanks,
+I said I wasn't going to take this into drivers/staging/ so why is this
+still here?
+
+confused,
 
 greg k-h
 _______________________________________________
