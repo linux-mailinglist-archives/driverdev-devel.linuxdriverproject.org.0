@@ -1,49 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D9872D7B43
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Dec 2020 17:48:18 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B0C42D7B45
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Dec 2020 17:48:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2CF18875DA;
-	Fri, 11 Dec 2020 16:48:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C17E72E107;
+	Fri, 11 Dec 2020 16:48:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R1G2Q0N57mU0; Fri, 11 Dec 2020 16:48:15 +0000 (UTC)
+	with ESMTP id v6HwTKWjMf1R; Fri, 11 Dec 2020 16:48:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A9E2B87277;
-	Fri, 11 Dec 2020 16:48:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DBC1B2E0DC;
+	Fri, 11 Dec 2020 16:48:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E92561BF2BF
- for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 16:48:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 184E71BF9C6
+ for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 16:48:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E61B386637
- for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 16:48:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 14FAC873A5
+ for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 16:48:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MB3Vw092QG7v for <devel@linuxdriverproject.org>;
- Fri, 11 Dec 2020 16:48:10 +0000 (UTC)
+ with ESMTP id 40j7kteQ7jyH for <devel@linuxdriverproject.org>;
+ Fri, 11 Dec 2020 16:48:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 569E28679B
- for <devel@driverdev.osuosl.org>; Fri, 11 Dec 2020 16:48:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2674A873F3
+ for <devel@driverdev.osuosl.org>; Fri, 11 Dec 2020 16:48:12 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id E06B5AE55;
- Fri, 11 Dec 2020 16:48:08 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 5FB31B066;
+ Fri, 11 Dec 2020 16:48:10 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: u.kleine-koenig@pengutronix.de, linux-kernel@vger.kernel.org,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
  Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
  Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com
-Subject: [PATCH v6 01/11] firmware: raspberrypi: Keep count of all consumers
-Date: Fri, 11 Dec 2020 17:47:50 +0100
-Message-Id: <20201211164801.7838-2-nsaenzjulienne@suse.de>
+ bcm-kernel-feedback-list@broadcom.com,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: [PATCH v6 02/11] firmware: raspberrypi: Introduce
+ devm_rpi_firmware_get()
+Date: Fri, 11 Dec 2020 17:47:51 +0100
+Message-Id: <20201211164801.7838-3-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201211164801.7838-1-nsaenzjulienne@suse.de>
 References: <20201211164801.7838-1-nsaenzjulienne@suse.de>
@@ -67,90 +68,105 @@ Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
  p.zabel@pengutronix.de, linux-input@vger.kernel.org, bgolaszewski@baylibre.com,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-V2hlbiB1bmJpbmRpbmcgdGhlIGZpcm13YXJlIGRldmljZSB3ZSBuZWVkIHRvIG1ha2Ugc3VyZSBp
-dCBoYXMgbm8KY29uc3VtZXJzIGxlZnQuIE90aGVyd2lzZSB3ZSdkIGxlYXZlIHRoZW0gd2l0aCBh
-IGZpcm13YXJlIGhhbmRsZQpwb2ludGluZyBhdCBmcmVlZCBtZW1vcnkuCgpLZWVwIGEgcmVmZXJl
-bmNlIGNvdW50IG9mIGFsbCBjb25zdW1lcnMgYW5kIGludHJvZHVjZSBycGlfZmlybXdhcmVfcHV0
-KCkKd2hpY2ggd2lsbCBwZXJtaXQgYXV0b21hdGljYWxseSBkZWNyZWFzZSB0aGUgcmVmZXJlbmNl
-IGNvdW50IHVwb24KdW5iaW5kaW5nIGNvbnN1bWVyIGRyaXZlcnMuCgpTdWdnZXN0ZWQtYnk6IFV3
-ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+ClNpZ25lZC1v
-ZmYtYnk6IE5pY29sYXMgU2FlbnogSnVsaWVubmUgPG5zYWVuemp1bGllbm5lQHN1c2UuZGU+ClJl
-dmlld2VkLWJ5OiBGbG9yaWFuIEZhaW5lbGxpIDxmLmZhaW5lbGxpQGdtYWlsLmNvbT4KCi0tLQpD
-aGFuZ2VzIHNpbmNlIHY1OgogLSBBZGQgY29tbWVudCB0byBhdm9pZCBwZW9wbGUgYmxpbmRseSBz
-d2l0Y2hpbmcgdGhlIG1lbW9yeSBhbGxvY2F0aW9uCiAgIHRvIHRoZSBkZXZtIHZhcmlhbnQuCiAt
-IEZpeCBmdW5jdGlvbiBkb2N1bWVudGF0aW9uIGFzIHBlciBGbG9yaWFuJ3MgY29tbWVudC4KCiBD
-aGFuZ2VzIHNpbmNlIHYzOgotIFVzZSBrcmVmIGluc3RlYWQgb2Ygd2FpdGluZyBvbiByZWZjb3Vu
-dAoKIGRyaXZlcnMvZmlybXdhcmUvcmFzcGJlcnJ5cGkuYyAgICAgICAgICAgICB8IDQwICsrKysr
-KysrKysrKysrKysrKysrLS0KIGluY2x1ZGUvc29jL2JjbTI4MzUvcmFzcGJlcnJ5cGktZmlybXdh
-cmUuaCB8ICAyICsrCiAyIGZpbGVzIGNoYW5nZWQsIDM5IGluc2VydGlvbnMoKyksIDMgZGVsZXRp
-b25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9maXJtd2FyZS9yYXNwYmVycnlwaS5jIGIvZHJp
-dmVycy9maXJtd2FyZS9yYXNwYmVycnlwaS5jCmluZGV4IDMwMjU5ZGM5YjgwNS4uYjY1ZTRjNDk1
-NzcyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2Zpcm13YXJlL3Jhc3BiZXJyeXBpLmMKKysrIGIvZHJp
-dmVycy9maXJtd2FyZS9yYXNwYmVycnlwaS5jCkBAIC03LDYgKzcsNyBAQAogICovCiAKICNpbmNs
-dWRlIDxsaW51eC9kbWEtbWFwcGluZy5oPgorI2luY2x1ZGUgPGxpbnV4L2tyZWYuaD4KICNpbmNs
-dWRlIDxsaW51eC9tYWlsYm94X2NsaWVudC5oPgogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgog
-I2luY2x1ZGUgPGxpbnV4L29mX3BsYXRmb3JtLmg+CkBAIC0yNyw2ICsyOCw4IEBAIHN0cnVjdCBy
-cGlfZmlybXdhcmUgewogCXN0cnVjdCBtYm94X2NoYW4gKmNoYW47IC8qIFRoZSBwcm9wZXJ0eSBj
-aGFubmVsLiAqLwogCXN0cnVjdCBjb21wbGV0aW9uIGM7CiAJdTMyIGVuYWJsZWQ7CisKKwlzdHJ1
-Y3Qga3JlZiBjb25zdW1lcnM7CiB9OwogCiBzdGF0aWMgREVGSU5FX01VVEVYKHRyYW5zYWN0aW9u
-X2xvY2spOwpAQCAtMjI1LDEyICsyMjgsMzEgQEAgc3RhdGljIHZvaWQgcnBpX3JlZ2lzdGVyX2Ns
-a19kcml2ZXIoc3RydWN0IGRldmljZSAqZGV2KQogCQkJCQkJLTEsIE5VTEwsIDApOwogfQogCitz
-dGF0aWMgdm9pZCBycGlfZmlybXdhcmVfZGVsZXRlKHN0cnVjdCBrcmVmICprcmVmKQoreworCXN0
-cnVjdCBycGlfZmlybXdhcmUgKmZ3ID0gY29udGFpbmVyX29mKGtyZWYsIHN0cnVjdCBycGlfZmly
-bXdhcmUsCisJCQkJCSAgICAgICBjb25zdW1lcnMpOworCisJbWJveF9mcmVlX2NoYW5uZWwoZnct
-PmNoYW4pOworCWtmcmVlKGZ3KTsKK30KKwordm9pZCBycGlfZmlybXdhcmVfcHV0KHN0cnVjdCBy
-cGlfZmlybXdhcmUgKmZ3KQoreworCWtyZWZfcHV0KCZmdy0+Y29uc3VtZXJzLCBycGlfZmlybXdh
-cmVfZGVsZXRlKTsKK30KK0VYUE9SVF9TWU1CT0xfR1BMKHJwaV9maXJtd2FyZV9wdXQpOworCiBz
-dGF0aWMgaW50IHJwaV9maXJtd2FyZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2
-KQogewogCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7CiAJc3RydWN0IHJwaV9maXJt
-d2FyZSAqZnc7CiAKLQlmdyA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqZncpLCBHRlBfS0VS
-TkVMKTsKKwkvKgorCSAqIE1lbW9yeSB3aWxsIGJlIGZyZWVkIGJ5IHJwaV9maXJtd2FyZV9kZWxl
-dGUoKSBvbmNlIGFsbCB1c2VycyBoYXZlCisJICogcmVsZWFzZWQgdGhlaXIgZmlybXdhcmUgaGFu
-ZGxlcy4gRG9uJ3QgdXNlIGRldm1fa3phbGxvYygpIGhlcmUuCisJICovCisJZncgPSBremFsbG9j
-KHNpemVvZigqZncpLCBHRlBfS0VSTkVMKTsKIAlpZiAoIWZ3KQogCQlyZXR1cm4gLUVOT01FTTsK
-IApAQCAtMjQ3LDYgKzI2OSw3IEBAIHN0YXRpYyBpbnQgcnBpX2Zpcm13YXJlX3Byb2JlKHN0cnVj
-dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJfQogCiAJaW5pdF9jb21wbGV0aW9uKCZmdy0+Yyk7
-CisJa3JlZl9pbml0KCZmdy0+Y29uc3VtZXJzKTsKIAogCXBsYXRmb3JtX3NldF9kcnZkYXRhKHBk
-ZXYsIGZ3KTsKIApAQCAtMjc1LDcgKzI5OCw4IEBAIHN0YXRpYyBpbnQgcnBpX2Zpcm13YXJlX3Jl
-bW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXJwaV9od21vbiA9IE5VTEw7CiAJ
-cGxhdGZvcm1fZGV2aWNlX3VucmVnaXN0ZXIocnBpX2Nsayk7CiAJcnBpX2NsayA9IE5VTEw7Ci0J
-bWJveF9mcmVlX2NoYW5uZWwoZnctPmNoYW4pOworCisJcnBpX2Zpcm13YXJlX3B1dChmdyk7CiAK
-IAlyZXR1cm4gMDsKIH0KQEAgLTI4NCwxNiArMzA4LDI2IEBAIHN0YXRpYyBpbnQgcnBpX2Zpcm13
-YXJlX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogICogcnBpX2Zpcm13YXJl
-X2dldCAtIEdldCBwb2ludGVyIHRvIHJwaV9maXJtd2FyZSBzdHJ1Y3R1cmUuCiAgKiBAZmlybXdh
-cmVfbm9kZTogICAgUG9pbnRlciB0byB0aGUgZmlybXdhcmUgRGV2aWNlIFRyZWUgbm9kZS4KICAq
-CisgKiBUaGUgcmVmZXJlbmNlIHRvIHJwaV9maXJtd2FyZSBoYXMgdG8gYmUgcmVsZWFzZWQgd2l0
-aCBycGlfZmlybXdhcmVfcHV0KCkuCisgKgogICogUmV0dXJucyBOVUxMIGlzIHRoZSBmaXJtd2Fy
-ZSBkZXZpY2UgaXMgbm90IHJlYWR5LgogICovCiBzdHJ1Y3QgcnBpX2Zpcm13YXJlICpycGlfZmly
-bXdhcmVfZ2V0KHN0cnVjdCBkZXZpY2Vfbm9kZSAqZmlybXdhcmVfbm9kZSkKIHsKIAlzdHJ1Y3Qg
-cGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gb2ZfZmluZF9kZXZpY2VfYnlfbm9kZShmaXJtd2FyZV9u
-b2RlKTsKKwlzdHJ1Y3QgcnBpX2Zpcm13YXJlICpmdzsKIAogCWlmICghcGRldikKIAkJcmV0dXJu
-IE5VTEw7CiAKLQlyZXR1cm4gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7CisJZncgPSBwbGF0
-Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsKKwlpZiAoIWZ3KQorCQlyZXR1cm4gTlVMTDsKKworCWlm
-ICgha3JlZl9nZXRfdW5sZXNzX3plcm8oJmZ3LT5jb25zdW1lcnMpKQorCQlyZXR1cm4gTlVMTDsK
-KworCXJldHVybiBmdzsKIH0KIEVYUE9SVF9TWU1CT0xfR1BMKHJwaV9maXJtd2FyZV9nZXQpOwog
-CmRpZmYgLS1naXQgYS9pbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBpLWZpcm13YXJlLmgg
-Yi9pbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBpLWZpcm13YXJlLmgKaW5kZXggY2M5Y2Ri
-YzY2NDAzLi5mZGZlZjdmZTQwZGYgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvc29jL2JjbTI4MzUvcmFz
-cGJlcnJ5cGktZmlybXdhcmUuaAorKysgYi9pbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBp
-LWZpcm13YXJlLmgKQEAgLTE0MCw2ICsxNDAsNyBAQCBpbnQgcnBpX2Zpcm13YXJlX3Byb3BlcnR5
-KHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3LAogCQkJICB1MzIgdGFnLCB2b2lkICpkYXRhLCBzaXpl
-X3QgbGVuKTsKIGludCBycGlfZmlybXdhcmVfcHJvcGVydHlfbGlzdChzdHJ1Y3QgcnBpX2Zpcm13
-YXJlICpmdywKIAkJCSAgICAgICB2b2lkICpkYXRhLCBzaXplX3QgdGFnX3NpemUpOwordm9pZCBy
-cGlfZmlybXdhcmVfcHV0KHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3KTsKIHN0cnVjdCBycGlfZmly
-bXdhcmUgKnJwaV9maXJtd2FyZV9nZXQoc3RydWN0IGRldmljZV9ub2RlICpmaXJtd2FyZV9ub2Rl
-KTsKICNlbHNlCiBzdGF0aWMgaW5saW5lIGludCBycGlfZmlybXdhcmVfcHJvcGVydHkoc3RydWN0
-IHJwaV9maXJtd2FyZSAqZncsIHUzMiB0YWcsCkBAIC0xNTQsNiArMTU1LDcgQEAgc3RhdGljIGlu
-bGluZSBpbnQgcnBpX2Zpcm13YXJlX3Byb3BlcnR5X2xpc3Qoc3RydWN0IHJwaV9maXJtd2FyZSAq
-ZncsCiAJcmV0dXJuIC1FTk9TWVM7CiB9CiAKK3N0YXRpYyBpbmxpbmUgdm9pZCBycGlfZmlybXdh
-cmVfcHV0KHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3KSB7IH0KIHN0YXRpYyBpbmxpbmUgc3RydWN0
-IHJwaV9maXJtd2FyZSAqcnBpX2Zpcm13YXJlX2dldChzdHJ1Y3QgZGV2aWNlX25vZGUgKmZpcm13
-YXJlX25vZGUpCiB7CiAJcmV0dXJuIE5VTEw7Ci0tIAoyLjI5LjIKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBs
-aW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+It'll simplify the firmware handling for most consumers.
+
+Suggested-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+---
+
+Changes since v4:
+ - Rearrange function calls for clarity, same functionality
+
+Changes since v2:
+- Create devm_rpi_firmware_get()
+
+ drivers/firmware/raspberrypi.c             | 29 ++++++++++++++++++++++
+ include/soc/bcm2835/raspberrypi-firmware.h |  8 ++++++
+ 2 files changed, 37 insertions(+)
+
+diff --git a/drivers/firmware/raspberrypi.c b/drivers/firmware/raspberrypi.c
+index b65e4c495772..250e01680742 100644
+--- a/drivers/firmware/raspberrypi.c
++++ b/drivers/firmware/raspberrypi.c
+@@ -243,6 +243,13 @@ void rpi_firmware_put(struct rpi_firmware *fw)
+ }
+ EXPORT_SYMBOL_GPL(rpi_firmware_put);
+ 
++static void devm_rpi_firmware_put(void *data)
++{
++	struct rpi_firmware *fw = data;
++
++	rpi_firmware_put(fw);
++}
++
+ static int rpi_firmware_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -331,6 +338,28 @@ struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node)
+ }
+ EXPORT_SYMBOL_GPL(rpi_firmware_get);
+ 
++/**
++ * devm_rpi_firmware_get - Get pointer to rpi_firmware structure.
++ * @firmware_node:    Pointer to the firmware Device Tree node.
++ *
++ * Returns NULL is the firmware device is not ready.
++ */
++struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
++					   struct device_node *firmware_node)
++{
++	struct rpi_firmware *fw;
++
++	fw = rpi_firmware_get(firmware_node);
++	if (!fw)
++		return NULL;
++
++	if (devm_add_action_or_reset(dev, devm_rpi_firmware_put, fw))
++		return NULL;
++
++	return fw;
++}
++EXPORT_SYMBOL_GPL(devm_rpi_firmware_get);
++
+ static const struct of_device_id rpi_firmware_of_match[] = {
+ 	{ .compatible = "raspberrypi,bcm2835-firmware", },
+ 	{},
+diff --git a/include/soc/bcm2835/raspberrypi-firmware.h b/include/soc/bcm2835/raspberrypi-firmware.h
+index fdfef7fe40df..73ad784fca96 100644
+--- a/include/soc/bcm2835/raspberrypi-firmware.h
++++ b/include/soc/bcm2835/raspberrypi-firmware.h
+@@ -142,6 +142,8 @@ int rpi_firmware_property_list(struct rpi_firmware *fw,
+ 			       void *data, size_t tag_size);
+ void rpi_firmware_put(struct rpi_firmware *fw);
+ struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node);
++struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
++					   struct device_node *firmware_node);
+ #else
+ static inline int rpi_firmware_property(struct rpi_firmware *fw, u32 tag,
+ 					void *data, size_t len)
+@@ -160,6 +162,12 @@ static inline struct rpi_firmware *rpi_firmware_get(struct device_node *firmware
+ {
+ 	return NULL;
+ }
++
++static inline struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
++					struct device_node *firmware_node)
++{
++	return NULL;
++}
+ #endif
+ 
+ #endif /* __SOC_RASPBERRY_FIRMWARE_H__ */
+-- 
+2.29.2
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
