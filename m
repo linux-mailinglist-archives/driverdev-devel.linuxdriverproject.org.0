@@ -1,72 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D68512D6E4A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Dec 2020 04:02:41 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A899A2D6E59
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Dec 2020 04:12:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B355F860C5;
-	Fri, 11 Dec 2020 03:02:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EEDA686D10;
+	Fri, 11 Dec 2020 03:12:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ak0jmge7R93S; Fri, 11 Dec 2020 03:02:39 +0000 (UTC)
+	with ESMTP id E9Fzuh-Rzt0B; Fri, 11 Dec 2020 03:12:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B3E2860BE;
-	Fri, 11 Dec 2020 03:02:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5E3CA86CFD;
+	Fri, 11 Dec 2020 03:12:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 651621BF335
- for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:02:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 59C3D1BF9CD
+ for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:12:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5A3DB8717B
- for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:02:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4EAF722CB0
+ for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:12:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 71pa6yZdASYQ for <devel@linuxdriverproject.org>;
- Fri, 11 Dec 2020 03:02:35 +0000 (UTC)
+ with ESMTP id nuwDVTKsYGuK for <devel@linuxdriverproject.org>;
+ Fri, 11 Dec 2020 03:12:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CB16187168
- for <devel@driverdev.osuosl.org>; Fri, 11 Dec 2020 03:02:35 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id d189so8260704oig.11
- for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 19:02:35 -0800 (PST)
+Received: from mail-oo1-f66.google.com (mail-oo1-f66.google.com
+ [209.85.161.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id AEBB922BCC
+ for <devel@driverdev.osuosl.org>; Fri, 11 Dec 2020 03:12:10 +0000 (UTC)
+Received: by mail-oo1-f66.google.com with SMTP id j8so1812958oon.3
+ for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 19:12:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=rVA3v//5uFeyzZYgKjyJny/vDnQO/EJzRhd8D8iaejQ=;
- b=Fpm12VRjD3pumwjY0NJW/T1xK4uwYLHhp+6N0SfEuD5ME82nMjGSc1lGoDudXJAs7q
- DyAVjmPn7fY2iAv/KfrSdVFjwB7AWlXtxzdwhjkTAwf8T0ZYaIDqr858dUN1K13Ea1b5
- HggJhvwxf+CN3GawHcFUa5/q1owHvLxL5UfHL0bx/4KkBgiY3Ayk5lnRlQsRdAh05Yzx
- Ik0xeNYzSfdTdGF7thqJzbxpjGW2vqYBsC09Uaax+gzbvS7M+S+zT4q7R+SvTmRxWbpd
- tMEo1YO465I+LdFE2twiiIlBtQ+YLh+i1ZBp9At1UO249dkNmoJj+LrD/W7HlT9ULrRu
- uJ2A==
-X-Gm-Message-State: AOAM5313n1jTM80q+3mKOi2DqoDV6WryquxTBB211LDjKbCsANppu7x8
- cDYv9qS/tzGBl0Sj0KFQUA==
-X-Google-Smtp-Source: ABdhPJwCIQonnSCIfxwOgO8gPt+2/0oE5Zl3IUpntY7Xd98njTzBqZsLFZWiIrcsrQosIMcr8S04Rw==
-X-Received: by 2002:aca:dd09:: with SMTP id u9mr7177668oig.73.1607655755070;
- Thu, 10 Dec 2020 19:02:35 -0800 (PST)
+ :mime-version:content-disposition:in-reply-to;
+ bh=20FUrkWgYAPacYXxuWXY+xSuM7UzPwHMJmdN/diicTY=;
+ b=dkdcXiwK4i7AM9wq4YjuVfszs7CcZOGxsZrp0BwqVbqSfCaQtdiaAGNUELxCze1lDS
+ UshNk/371wmgx1PkXMk97sKy3TLdW8CKactb73Ubk5SZhpxL/+Ueh/sL9DRiKYvWoG7L
+ I1rtVOHE0/s/Hl9vFFVKufPOx52KJZ8Lj3GTWdaagCdJAxhqupjTY0dRHR0f36tusdxN
+ nhnx5VnBUvQOaP40bHGQWF9/k0iZG9iTJP7+K+g8BFLc+Lwu7QVfhR1lVghelUJc6s9j
+ 3T/Xzl90oal84bmfnf2Aio85FdFe31Gvq1nVXXY9S8Yw9NhI3vxQxg6cqW/1aogYQqZw
+ pJCw==
+X-Gm-Message-State: AOAM532A8Mq+IrGMRLFah9FW4OPzEuacbyICLtyl8uov1EJoFnQ0m5Wp
+ O1NRB8ZGeUsMGAvpIUpkWg==
+X-Google-Smtp-Source: ABdhPJwohjal/Q+JcqCNbtBwiT+Ur1QE8QEtsOSmxZ6JD0zWUlTAcOoTlEyI60ZGWGKBfLTL5wWqQA==
+X-Received: by 2002:a4a:bc8d:: with SMTP id m13mr8457514oop.63.1607656329889; 
+ Thu, 10 Dec 2020 19:12:09 -0800 (PST)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id h20sm1546911otj.57.2020.12.10.19.02.33
+ by smtp.gmail.com with ESMTPSA id o63sm1500679ooa.10.2020.12.10.19.12.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Dec 2020 19:02:34 -0800 (PST)
-Received: (nullmailer pid 3538020 invoked by uid 1000);
- Fri, 11 Dec 2020 03:02:33 -0000
-Date: Thu, 10 Dec 2020 21:02:33 -0600
+ Thu, 10 Dec 2020 19:12:08 -0800 (PST)
+Received: (nullmailer pid 3555218 invoked by uid 1000);
+ Fri, 11 Dec 2020 03:12:07 -0000
+Date: Thu, 10 Dec 2020 21:12:07 -0600
 From: Rob Herring <robh@kernel.org>
-To: =?iso-8859-1?Q?J=F3zsef_Horv=E1th?= <info@ministro.hu>
-Subject: Re: [PATCH v1 2/2] Staging: silabs si4455 serial driver: docs device
- tree binding
-Message-ID: <20201211030233.GA3536340@robh.at.kernel.org>
-References: <20201210122154.GA31799@dincontrollerdev>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v2 16/19] dt-bindings: media: Add A83T MIPI CSI-2
+ bindings documentation
+Message-ID: <20201211031207.GA3555125@robh.at.kernel.org>
+References: <20201128142839.517949-1-paul.kocialkowski@bootlin.com>
+ <20201128142839.517949-17-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201210122154.GA31799@dincontrollerdev>
+In-Reply-To: <20201128142839.517949-17-paul.kocialkowski@bootlin.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,56 +79,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- 'Rob Herring' <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ linux-doc@vger.kernel.org, linux-sunxi@googlegroups.com,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, kevin.lhopital@hotmail.com,
+ devel@driverdev.osuosl.org, Jonathan Corbet <corbet@lwn.net>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Chen-Yu Tsai <wens@csie.org>,
+ Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Helen Koike <helen.koike@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>, Yong Deng <yong.deng@magewell.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 10 Dec 2020 12:21:56 +0000, J=F3zsef Horv=E1th wrote:
-> add: device tree binding schema
-> =
-
-> Signed-off-by: J=F3zsef Horv=E1th <info@ministro.hu>
+On Sat, 28 Nov 2020 15:28:36 +0100, Paul Kocialkowski wrote:
+> This introduces YAML bindings documentation for the A83T MIPI CSI-2
+> controller.
+> 
+> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 > ---
->  .../bindings/serial/silabs,si4455.yaml        | 53 +++++++++++++++++++
->  MAINTAINERS                                   |  2 +-
->  2 files changed, 54 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/serial/silabs,si445=
-5.yaml
-> =
+>  .../media/allwinner,sun8i-a83t-mipi-csi2.yaml | 147 ++++++++++++++++++
+>  1 file changed, 147 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/allwinner,sun8i-a83t-mipi-csi2.yaml
+> 
 
-
-
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/serial/silabs,si4455.example.dts:1=
-9.9-14 syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/s=
-erial/silabs,si4455.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1364: dt_binding_check] Error 2
-
-
-See https://patchwork.ozlabs.org/patch/1414082
-
-The base for the patch is generally the last rc1. Any dependencies
-should be noted.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
