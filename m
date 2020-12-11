@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 658C72D6E49
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Dec 2020 04:01:10 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AE27E87228;
-	Fri, 11 Dec 2020 03:01:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y8U4I0tRH-hO; Fri, 11 Dec 2020 03:01:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5331587184;
-	Fri, 11 Dec 2020 03:01:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7FE2C1BF335
- for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:01:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D68512D6E4A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Dec 2020 04:02:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 77E35860BE
- for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:01:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B355F860C5;
+	Fri, 11 Dec 2020 03:02:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ak0jmge7R93S; Fri, 11 Dec 2020 03:02:39 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B3E2860BE;
+	Fri, 11 Dec 2020 03:02:38 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 651621BF335
+ for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:02:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5A3DB8717B
+ for <devel@linuxdriverproject.org>; Fri, 11 Dec 2020 03:02:36 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F-TRR7qKkJwG for <devel@linuxdriverproject.org>;
- Fri, 11 Dec 2020 03:01:03 +0000 (UTC)
+ with ESMTP id 71pa6yZdASYQ for <devel@linuxdriverproject.org>;
+ Fri, 11 Dec 2020 03:02:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B5CD2860AD
- for <devel@driverdev.osuosl.org>; Fri, 11 Dec 2020 03:01:03 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id o11so7017978ote.4
- for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 19:01:03 -0800 (PST)
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CB16187168
+ for <devel@driverdev.osuosl.org>; Fri, 11 Dec 2020 03:02:35 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id d189so8260704oig.11
+ for <devel@driverdev.osuosl.org>; Thu, 10 Dec 2020 19:02:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=bxEVmvuvgvxAxXjfH0UsYcMfJWZdt7Is0fsO8Ao9Gxk=;
- b=OHrLELMA9jq/MeFzgK1m8FD5sVSwnxbb8rpuR7BsZAw5ScQ1SpwVXdMxfffEkV5u1B
- PVkQI4gDTfg4Nm5EfuAzM+A8FXUuwi/fvHVumRCKShOhuz6VSZmaHcQPQkLSBwG3ZArU
- EYBSvmUmkET2V22mapYd8IzxAosFkvIa/B1EwmEFYBwAc55r4l+TUOHCH6vbMQvnHZNU
- ZuOJirG67tRRnidaDAoYXyGIEmCZniUGQlxJ6rdRUMZqQv5oHT/VMgVuJ1HeeFiYU5Pc
- D9tWPQxy1DrNzAC77mi5snthcbdOT9cvE6/j9SSjwIW/Zi4HAuWiy3ZOIbN2J3PMxMCg
- FO/g==
-X-Gm-Message-State: AOAM531RoiS8ZLCODqXZ3JJLBGSBAWyBWsLUyWSA2uiQ3XbKJygV2DbH
- lFBfmCCnMwH4HesOMZ+EkQ==
-X-Google-Smtp-Source: ABdhPJwNvin4qOwa9EmFH5TamvivmjDAGuGjlF4l85a7pdXJZuKtaj7NhbjkwP8YLrI2g+9wGQwr3A==
-X-Received: by 2002:a9d:6642:: with SMTP id q2mr8244070otm.172.1607655663035; 
- Thu, 10 Dec 2020 19:01:03 -0800 (PST)
+ bh=rVA3v//5uFeyzZYgKjyJny/vDnQO/EJzRhd8D8iaejQ=;
+ b=Fpm12VRjD3pumwjY0NJW/T1xK4uwYLHhp+6N0SfEuD5ME82nMjGSc1lGoDudXJAs7q
+ DyAVjmPn7fY2iAv/KfrSdVFjwB7AWlXtxzdwhjkTAwf8T0ZYaIDqr858dUN1K13Ea1b5
+ HggJhvwxf+CN3GawHcFUa5/q1owHvLxL5UfHL0bx/4KkBgiY3Ayk5lnRlQsRdAh05Yzx
+ Ik0xeNYzSfdTdGF7thqJzbxpjGW2vqYBsC09Uaax+gzbvS7M+S+zT4q7R+SvTmRxWbpd
+ tMEo1YO465I+LdFE2twiiIlBtQ+YLh+i1ZBp9At1UO249dkNmoJj+LrD/W7HlT9ULrRu
+ uJ2A==
+X-Gm-Message-State: AOAM5313n1jTM80q+3mKOi2DqoDV6WryquxTBB211LDjKbCsANppu7x8
+ cDYv9qS/tzGBl0Sj0KFQUA==
+X-Google-Smtp-Source: ABdhPJwCIQonnSCIfxwOgO8gPt+2/0oE5Zl3IUpntY7Xd98njTzBqZsLFZWiIrcsrQosIMcr8S04Rw==
+X-Received: by 2002:aca:dd09:: with SMTP id u9mr7177668oig.73.1607655755070;
+ Thu, 10 Dec 2020 19:02:35 -0800 (PST)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id p4sm1501461oib.24.2020.12.10.19.01.01
+ by smtp.gmail.com with ESMTPSA id h20sm1546911otj.57.2020.12.10.19.02.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Dec 2020 19:01:02 -0800 (PST)
-Received: (nullmailer pid 3535825 invoked by uid 1000);
- Fri, 11 Dec 2020 03:01:01 -0000
-Date: Thu, 10 Dec 2020 21:01:01 -0600
+ Thu, 10 Dec 2020 19:02:34 -0800 (PST)
+Received: (nullmailer pid 3538020 invoked by uid 1000);
+ Fri, 11 Dec 2020 03:02:33 -0000
+Date: Thu, 10 Dec 2020 21:02:33 -0600
 From: Rob Herring <robh@kernel.org>
 To: =?iso-8859-1?Q?J=F3zsef_Horv=E1th?= <info@ministro.hu>
 Subject: Re: [PATCH v1 2/2] Staging: silabs si4455 serial driver: docs device
  tree binding
-Message-ID: <20201211030101.GA3530369@robh.at.kernel.org>
+Message-ID: <20201211030233.GA3536340@robh.at.kernel.org>
 References: <20201210122154.GA31799@dincontrollerdev>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -79,20 +79,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ 'Rob Herring' <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Dec 10, 2020 at 12:21:56PM +0000, J=F3zsef Horv=E1th wrote:
+On Thu, 10 Dec 2020 12:21:56 +0000, J=F3zsef Horv=E1th wrote:
 > add: device tree binding schema
-
-For the subject, follow conventions of the directory. Something like:
-
-dt-bindings: serial: Add SiLabs SI4455 schema
+> =
 
 > Signed-off-by: J=F3zsef Horv=E1th <info@ministro.hu>
 > ---
@@ -103,92 +100,34 @@ dt-bindings: serial: Add SiLabs SI4455 schema
 5.yaml
 > =
 
-> diff --git a/Documentation/devicetree/bindings/serial/silabs,si4455.yaml =
-b/Documentation/devicetree/bindings/serial/silabs,si4455.yaml
-> new file mode 100644
-> index 000000000000..80a73a61755b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/serial/silabs,si4455.yaml
-> @@ -0,0 +1,53 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/serial/silabs,si4455.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: Silicon Labs Si4455 device tree bindings
 
-Add 'description' with some info on this h/w and possibly a link to =
 
-datasheet if available.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-> +
-> +maintainers:
-> +  - J=F3zsef Horv=E1th <info@ministro.hu>
-> +
-> +allOf:
-> +  - $ref: "/schemas/serial.yaml#"
-> +
-> +properties:
-> +  compatible:
-> +    const: silabs,si4455
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  spi-max-frequency:
-> +    description: maximum clock frequency on SPI port
-> +    maximum: 500000
-> +
-> +  shutdown-gpios:
-> +    description: gpio pin for SDN
-> +    maxItems: 1
-> +
-> +required:
-> +  - reg
-> +  - interrupts
-> +  - spi-max-frequency
-> +  - shutdown-gpios
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    &spi0 {
-> +      serial0: si4455@0 {
-> +        compatible =3D "silabs,si4455";
-> +        reg =3D <0>;
-> +        interrupt-parent =3D <&gpio>;
-> +        interrupts =3D <7 IRQ_TYPE_LEVEL_LOW>;
-> +        shutdown-gpios =3D <&gpio 26 1>;
-> +        spi-max-frequency =3D <300000>;
-> +      };
-> +    };
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index a29bc17d446d..16cc96971ac2 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -15937,7 +15937,7 @@ F:	drivers/platform/x86/touchscreen_dmi.c
->  SILICON LABS SI4455 SERIAL DRIVER
->  M:	J=F3zsef Horv=E1th <info@ministro.hu>
->  S:	Maintained
-> -F:	Documentation/devicetree/bindings/staging/serial/silabs,si4455.txt
+yamllint warnings/errors:
 
-This is a new file, right?
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/serial/silabs,si4455.example.dts:1=
+9.9-14 syntax error
+FATAL ERROR: Unable to parse input tree
+make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/s=
+erial/silabs,si4455.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1364: dt_binding_check] Error 2
 
-> +F:	Documentation/devicetree/bindings/serial/silabs,si4455.yaml
->  F:	drivers/tty/serial/si4455.c
->  F:	drivers/tty/serial/si4455_api.h
->  =
 
-> -- =
+See https://patchwork.ozlabs.org/patch/1414082
 
-> 2.17.1
-> =
+The base for the patch is generally the last rc1. Any dependencies
+should be noted.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 _______________________________________________
 devel mailing list
