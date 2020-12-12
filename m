@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28CE02D877F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Dec 2020 17:08:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A86BD2D8788
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Dec 2020 17:08:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ADC6087432;
-	Sat, 12 Dec 2020 16:08:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4F53786A9C;
+	Sat, 12 Dec 2020 16:08:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zxmPstDAq-CN; Sat, 12 Dec 2020 16:08:25 +0000 (UTC)
+	with ESMTP id f0z4R5d4gEaJ; Sat, 12 Dec 2020 16:08:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 909B3867C0;
-	Sat, 12 Dec 2020 16:08:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 70DD8811EC;
+	Sat, 12 Dec 2020 16:08:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 90EB41BF35F
- for <devel@linuxdriverproject.org>; Sat, 12 Dec 2020 16:08:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 238561BF35F
+ for <devel@linuxdriverproject.org>; Sat, 12 Dec 2020 16:08:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8A95B86D4E
- for <devel@linuxdriverproject.org>; Sat, 12 Dec 2020 16:08:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1BF0887230
+ for <devel@linuxdriverproject.org>; Sat, 12 Dec 2020 16:08:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1JjfxlFFbKbV for <devel@linuxdriverproject.org>;
- Sat, 12 Dec 2020 16:08:22 +0000 (UTC)
+ with ESMTP id 7KA7VvZMwkvY for <devel@linuxdriverproject.org>;
+ Sat, 12 Dec 2020 16:08:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 05D4D867C0
- for <devel@linuxdriverproject.org>; Sat, 12 Dec 2020 16:08:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 83C95870C0
+ for <devel@linuxdriverproject.org>; Sat, 12 Dec 2020 16:08:41 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 Authentication-Results: mail.kernel.org;
  dkim=permerror (bad message/signature format)
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.9 15/23] scsi: storvsc: Validate length of incoming
+Subject: [PATCH AUTOSEL 5.4 08/14] scsi: storvsc: Validate length of incoming
  packet in storvsc_on_channel_callback()
-Date: Sat, 12 Dec 2020 11:07:56 -0500
-Message-Id: <20201212160804.2334982-15-sashal@kernel.org>
+Date: Sat, 12 Dec 2020 11:08:25 -0500
+Message-Id: <20201212160831.2335172-8-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201212160804.2334982-1-sashal@kernel.org>
-References: <20201212160804.2334982-1-sashal@kernel.org>
+In-Reply-To: <20201212160831.2335172-1-sashal@kernel.org>
+References: <20201212160831.2335172-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -88,10 +88,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/scsi/storvsc_drv.c b/drivers/scsi/storvsc_drv.c
-index 8f5f5dc863a4a..6779ee4edfee3 100644
+index 5087ed6afbdc3..9f78630e332f9 100644
 --- a/drivers/scsi/storvsc_drv.c
 +++ b/drivers/scsi/storvsc_drv.c
-@@ -1246,6 +1246,11 @@ static void storvsc_on_channel_callback(void *context)
+@@ -1170,6 +1170,11 @@ static void storvsc_on_channel_callback(void *context)
  		request = (struct storvsc_cmd_request *)
  			((unsigned long)desc->trans_id);
  
