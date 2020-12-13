@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED0662D8E9A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 17:17:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80E752D8E9C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 17:17:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9497C8740B;
-	Sun, 13 Dec 2020 16:17:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C77648741E;
+	Sun, 13 Dec 2020 16:17:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yIhIex0EEKxW; Sun, 13 Dec 2020 16:17:36 +0000 (UTC)
+	with ESMTP id qgb09icgtCS7; Sun, 13 Dec 2020 16:17:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0954987396;
-	Sun, 13 Dec 2020 16:17:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3F7AE871D4;
+	Sun, 13 Dec 2020 16:17:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D39501BF3EA
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:17:32 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E7581BF3EA
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:17:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CE9AD86D93
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:17:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8B3AB85E28
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:17:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H2jCIB0i3ptc for <devel@linuxdriverproject.org>;
- Sun, 13 Dec 2020 16:17:31 +0000 (UTC)
+ with ESMTP id ulonEplktjhg for <devel@linuxdriverproject.org>;
+ Sun, 13 Dec 2020 16:17:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5F66986D0F
- for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 16:17:31 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id r7so13981492wrc.5
- for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 08:17:31 -0800 (PST)
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3431385DE1
+ for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 16:17:32 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id q75so13041585wme.2
+ for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 08:17:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=d+qBYzhMTB1Wzp8xi32BRlc6s23LYHlnQSW4DIZrTQE=;
- b=ZEIbaQwK4Eg+4j8a01m4Enb6LHDVS2HC/cI7yynOS9U2GqeZfdNYe26GdbmYgDa8EN
- UYBnO937i/xRSXVo8WGE9qZMn7eKdwRLB/qPLQ4v6oI8K1mXrkcGE+hSnZ4dzd7u+8qN
- r7CdiNX2SF+gL/ztuE4+I7qYctMD7XYEUYa0yZksUDG9sZnaEIx0rcZnENezTCfgvXnJ
- RUIIMds0Hx1wbzkrtcNW0q2Nc2IKH+H4ab9t0uHKSVbPMXMGlEkEVPRQXFOrRDZvHGbw
- yGeEuBgw3wAZw3A/qLzSfrTbBONIDs+2tZiu5zy5rHH7t7Ouv6G3AjgCNr58XJd39PdB
- 2ejQ==
+ bh=w9VFIJdHj+SJxF4z+WgbqJ8x7eNPsM9DBQcH2wJnArM=;
+ b=DgvvQc0NAh1OKOf+xsxZRjBpmVYIChLVpTygScao4JsyKQZOXnJ995flh2Z2WHhXjS
+ VU/iMisOaB4SSkMVJ64YnxbYHFcBhhgHnBSWQ0qBOqmg64ucF0sTz89qTDee+v3/FwiT
+ WuoMfkWSGEz8J5H4wSIBSk9rnCtdBM/yH3U/TLLWJHV7PNnYKhWyd+qcr1s/l9zmK/sg
+ RI7aD+YPTWWVZPrHNVa/GakA3b798KuLaSScKfbCCCB45BhFr/yBSMg7YcnX7MfUEvXd
+ r6j/lDdOzcOf267FQjO2UJwx17Mp6zPsKm9bIvIeaozT50bW+fA4B/FbivMZQOQTaw/F
+ UBIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=d+qBYzhMTB1Wzp8xi32BRlc6s23LYHlnQSW4DIZrTQE=;
- b=SHqVPc3CmbmUxTKmf3sRebCEXsXIDNCAK90prvzZxgyPxj84fZqKYn+t7QY5f9Cbrk
- N8JVOsmElnRendLEa6J0bEtfY5zFHgkz6w75h8usc3zxk+ZahGoqIN+FSePvT7NclxZy
- iwNBRfz9dB5cvaVeX/xwRAzvGxuUt/kBoZvJyMBskttdUDEb0d9ohY80a5it8D7cXdfk
- cFpBMFCQo9paGF7L2lvSoTEQMOJ9DhglwPw0bhtthW7DZZKqK52jXX5mTU8ljprImF/w
- 4zCa3z85XhRmRnhWkt9/o9Xed4K2BQR5t65IR98W2aU48JnsaBaIbu1oA4fkxP3JGdP9
- YZxg==
-X-Gm-Message-State: AOAM530FuENikAr6ogO4s7n/nRXWhjQQsLBBvZA6Xu4pOjU2BlkpfXhD
- MLggF4QydpqO8/3v/7+/hTw=
-X-Google-Smtp-Source: ABdhPJyvY3ww7ODL0QierPoakFmNPsYRid6N4+4QjmL2PI8Bb4wlecxAnlQjp8AZ11Ms1rSaPEKjRw==
-X-Received: by 2002:adf:a3ca:: with SMTP id m10mr24759846wrb.228.1607876249739; 
- Sun, 13 Dec 2020 08:17:29 -0800 (PST)
+ bh=w9VFIJdHj+SJxF4z+WgbqJ8x7eNPsM9DBQcH2wJnArM=;
+ b=haHtV18/uh/8GET6CZEzh3wcnaqzXVVWWj0pMt6JYGxycdQGxQsQ3HnlLOQRm+aQgy
+ r1EC8pFj6EopxWcmiBj8+s6nplBORDeKzizsGI1iQbuwnb4j4z0DhhdLuVmBUgazdeSE
+ ipv+bwaeF0zYE/2NtIt4OVA7wdeyNbptgfTuk8QyO+mOauIOsorBjqMS8gwQD/rut+YT
+ ya0+TTUd71Oxl9cqcHpbxZ3q0Kigpg4ZK+Ij4E0EXtyvNgwpq2oktvy8n3K24PMJHXcs
+ 8Oww0rrRZHkVL0aQw1jlxWjH3PxPHvbZbNycBRWKRARQJ79Vqt5M4SIwvsiOlPJFKKcw
+ kTig==
+X-Gm-Message-State: AOAM531YGMqBkgcrg+rkJ58OeA4UER+rNuPb51w7nJcnJn/7UjF3etPV
+ XgNT1G10gcMPiqn2EuhkWPM=
+X-Google-Smtp-Source: ABdhPJyTeWtycO/1IXRhvCbaw1614hdJtEa+J6vkyRpI4RbtVAsHskSG3As8u1WNf7N78Tpig7KSGw==
+X-Received: by 2002:a7b:c751:: with SMTP id w17mr23205450wmk.121.1607876250816; 
+ Sun, 13 Dec 2020 08:17:30 -0800 (PST)
 Received: from localhost.localdomain (188.red-81-44-87.dynamicip.rima-tde.net.
  [81.44.87.188])
- by smtp.gmail.com with ESMTPSA id 64sm27102073wmd.12.2020.12.13.08.17.28
+ by smtp.gmail.com with ESMTPSA id 64sm27102073wmd.12.2020.12.13.08.17.29
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 13 Dec 2020 08:17:29 -0800 (PST)
+ Sun, 13 Dec 2020 08:17:30 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: linus.walleij@linaro.org
-Subject: [PATCH 5/8] pinctrl: ralink: rt2880: delete not needed error message
-Date: Sun, 13 Dec 2020 17:17:18 +0100
-Message-Id: <20201213161721.6514-6-sergio.paracuellos@gmail.com>
+Subject: [PATCH 6/8] pinctrl: ralink: rt2880: preserve error codes
+Date: Sun, 13 Dec 2020 17:17:19 +0100
+Message-Id: <20201213161721.6514-7-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201213161721.6514-1-sergio.paracuellos@gmail.com>
 References: <20201213161721.6514-1-sergio.paracuellos@gmail.com>
@@ -94,31 +94,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When '-ENOMEM' is returned there is not need at all to
-add custom error messages. Hence delete it.
+Some paths in probe function are returning '-EINVAL'
+instead of preserve original code from called functions.
+Change them to preserve all of them.
 
 Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/pinctrl/ralink/pinctrl-rt2880.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/pinctrl/ralink/pinctrl-rt2880.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/pinctrl/ralink/pinctrl-rt2880.c b/drivers/pinctrl/ralink/pinctrl-rt2880.c
-index 3c3336b724ca..4725aa34328a 100644
+index 4725aa34328a..5af1c8a20322 100644
 --- a/drivers/pinctrl/ralink/pinctrl-rt2880.c
 +++ b/drivers/pinctrl/ralink/pinctrl-rt2880.c
-@@ -279,10 +279,8 @@ static int rt2880_pinmux_pins(struct rt2880_priv *p)
- 	/* the pads needed to tell pinctrl about our pins */
- 	p->pads = devm_kcalloc(p->dev, p->max_pins,
- 			       sizeof(struct pinctrl_pin_desc), GFP_KERNEL);
--	if (!p->pads || !p->gpio) {
--		dev_err(p->dev, "Failed to allocate gpio data\n");
-+	if (!p->pads || !p->gpio)
- 		return -ENOMEM;
--	}
+@@ -315,6 +315,7 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
+ {
+ 	struct rt2880_priv *p;
+ 	struct pinctrl_dev *dev;
++	int err;
  
- 	memset(p->gpio, 1, sizeof(u8) * p->max_pins);
- 	for (i = 0; i < p->func_count; i++) {
+ 	if (!rt2880_pinmux_data)
+ 		return -ENOTSUPP;
+@@ -330,13 +331,16 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, p);
+ 
+ 	/* init the device */
+-	if (rt2880_pinmux_index(p)) {
++	err = rt2880_pinmux_index(p);
++	if (err) {
+ 		dev_err(&pdev->dev, "failed to load index\n");
+-		return -EINVAL;
++		return err;
+ 	}
+-	if (rt2880_pinmux_pins(p)) {
++
++	err = rt2880_pinmux_pins(p);
++	if (err) {
+ 		dev_err(&pdev->dev, "failed to load pins\n");
+-		return -EINVAL;
++		return err;
+ 	}
+ 	dev = pinctrl_register(p->desc, &pdev->dev, p);
+ 	if (IS_ERR(dev))
 -- 
 2.25.1
 
