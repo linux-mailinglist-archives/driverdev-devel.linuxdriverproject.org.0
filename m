@@ -1,79 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 030D82D8E9E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 17:17:41 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 88AEA8740A;
-	Sun, 13 Dec 2020 16:17:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KwlINft6Adgl; Sun, 13 Dec 2020 16:17:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1B4AF871D4;
-	Sun, 13 Dec 2020 16:17:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0A24D1BF3EA
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:17:35 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9477B2D8EB3
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 17:26:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 06E0A85D94
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:17:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 557CA85ABE;
+	Sun, 13 Dec 2020 16:26:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8Q0QK2fAOctI; Sun, 13 Dec 2020 16:26:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C674C85C54;
+	Sun, 13 Dec 2020 16:26:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B79871BF3EA
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:26:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id B437286DDB
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 16:26:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id py9ooMf9CTez for <devel@linuxdriverproject.org>;
- Sun, 13 Dec 2020 16:17:34 +0000 (UTC)
+ with ESMTP id 83edH2vwvWmC for <devel@linuxdriverproject.org>;
+ Sun, 13 Dec 2020 16:26:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 437AE85E28
- for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 16:17:34 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id r7so13981579wrc.5
- for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 08:17:34 -0800 (PST)
+Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
+ [209.85.208.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F300786DD6
+ for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 16:26:38 +0000 (UTC)
+Received: by mail-ed1-f68.google.com with SMTP id u19so14626337edx.2
+ for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 08:26:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=X/SjzDMsmOBxksRB2/nR67BPPBDrp7yLu8jvVQSPdRA=;
- b=RA9YPVDPP+Hlea2+CoCov3pCGvBJPPAI//vWwsri9yIDoXMxCPFwqlm6aDUA2tO5C2
- bbs/pBFtoOssukMSlk+7pNsbfJJEnm8M2sC0hWQs3hFZGgb5GTq3rlSIvtcp/dg+oo1G
- lchDa25ZOzl5UcvMKgN6pSH4FkRYFQER+22/5YbSv/PtsN4qAHnezkQHLWsEaOO8McL/
- CEHY0YkOqBdy9bBZMNVBFK6VthIvIC8paW39UGvpmOJVE1WOrgKrE8ZGuqdZTwFeyfXN
- um/36355ECTDo1cnex8yxgAPttwXkzCmXrLAHG7xZoIg8PBNJ0W7AP+rJkinQO5Nl7kh
- 5iMA==
+ h=message-id:date:from:user-agent:mime-version:to:cc:subject
+ :references:in-reply-to:content-transfer-encoding;
+ bh=MHMay/24ew2u/NmtErrJSYAjPHicatfG3PUl5wqVLEM=;
+ b=EAnp6GwmxB7x2Ptvfua1LSRWWjkLtEBb8E/VMyzTueXXhrfRUZC1EquuvK0HORKiCa
+ mvvWDguNHM3V//0BKsZhKHukC0d52vymKynYelmAOiTU9GsNnIQ0gvBSqKwBKrGAH+o2
+ TMtH0j12iBjQniEcn5cOqEPC7NWwLCeFQoCpexOZtmW5GVv4kv9Gj4qgb77ODnaukkuf
+ BWTg/sAaoBUvz0di7xxpuJyRv4cVGmAXYms1w0TVC5OD47Uk7ZDlWka8T9bIBYcpMm9T
+ 9QCEb0bCdZ4tgJTDuxvLeAe/anROZIfZlUkMPiQu/tlLgXxQQatqn5gtJ4HXNn6WVPQd
+ Z2mQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=X/SjzDMsmOBxksRB2/nR67BPPBDrp7yLu8jvVQSPdRA=;
- b=i8LtI3tXTuSczn6fHXbj8IIdnwcjhBYtwNAgwb4JyIXe/bfY6GK4h2HQZf46lam1Ny
- mhxtshNr725Hw5N9DOGaRJABtWVDfFiYXFNeTgp/i69zdx9m4BrJ4mThxMTW9ZD86Cdq
- pwQEDRJC5TmcLAQ+B+CWoQFXdNHXYz7paCVGOIRJIfNe+llxctTUq6q6dEcXn2ckRgaZ
- KMJXhojKspnS+RovX5te+5hsLB0iZmzTTCbM9dh60l+QJ4GBaA6sE3K/92vS3pg/vBI/
- rj6KHq44vn4iuCJhqkYGlj7zQosQpcHklK1gRnAPL8GTo3gW0kuL8TF5UlkztrI5+Q43
- CKGA==
-X-Gm-Message-State: AOAM532exDY0428w+O6fVJcnn2qZyq2+jCYwK6ackGN6Hhb4mJtV8izT
- 1bEBAiZvt4riszv1JgupIj8=
-X-Google-Smtp-Source: ABdhPJyJqmj0HNzc2fwOmoYbmupN0wZjJVWhHfjcFkpjkCTKKiJrRTgN6MXYcDkwVAPecugXOEcpeg==
-X-Received: by 2002:a5d:5704:: with SMTP id a4mr13108334wrv.37.1607876252873; 
- Sun, 13 Dec 2020 08:17:32 -0800 (PST)
-Received: from localhost.localdomain (188.red-81-44-87.dynamicip.rima-tde.net.
- [81.44.87.188])
- by smtp.gmail.com with ESMTPSA id 64sm27102073wmd.12.2020.12.13.08.17.31
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 13 Dec 2020 08:17:32 -0800 (PST)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: linus.walleij@linaro.org
-Subject: [PATCH 8/8] staging: mt7621-dts: properly name pinctrl related nodes
-Date: Sun, 13 Dec 2020 17:17:21 +0100
-Message-Id: <20201213161721.6514-9-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201213161721.6514-1-sergio.paracuellos@gmail.com>
-References: <20201213161721.6514-1-sergio.paracuellos@gmail.com>
+ h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
+ :cc:subject:references:in-reply-to:content-transfer-encoding;
+ bh=MHMay/24ew2u/NmtErrJSYAjPHicatfG3PUl5wqVLEM=;
+ b=myzdTerUrgYG9nLJp32CvDRhGF1+ra2K43M/8Qe5dB2DuvaQZ7UbAiyUCxX/azKlmo
+ PF5bg4S1HJIbhsJ71eS9j3kFANJc+Rol4td4HmTQ+Up+ZD3m+UIpqtdl6JSm4/rt73kV
+ apIK1L/H/vIIzKutzxWyrGQkizWjx9Jg8gleO+oolJjyMj81Qn2uRIxfc2RocmeRrMeI
+ xQ6kT5xsfHIabzkiAZFO6RiFI/Jh/crD8/LyO2pUovA5k7BoQ954s/uesB5vzomllO+y
+ kRoAG7dZ0FGmiusVYFHit7PEqWi/uewflkRmtOw8c4jdXs3QOlCQ0Z19MHsaqgJ9EPG1
+ +MdQ==
+X-Gm-Message-State: AOAM530gfmH1xTEbtHrpmHpWzg1eK88W9Ss5UhDNWp20mpiJxNg4L012
+ Svj3nLuUBz4NY7XWj8D81tGqv9JIN30=
+X-Google-Smtp-Source: ABdhPJxnwEhJEtFrGxdRiRTVq8yuH6SWzCbvjDYbJZQB01wc1pP1MmvkRzM423yp6HSjcK7Kyx/Wbg==
+X-Received: by 2002:a50:c406:: with SMTP id v6mr22102478edf.367.1607876797478; 
+ Sun, 13 Dec 2020 08:26:37 -0800 (PST)
+Received: from [109.186.216.164] (109-186-216-164.bb.netvision.net.il.
+ [109.186.216.164])
+ by smtp.gmail.com with ESMTPSA id qu21sm11767393ejb.95.2020.12.13.08.26.36
+ (version=TLS1 cipher=AES128-SHA bits=128/128);
+ Sun, 13 Dec 2020 08:26:36 -0800 (PST)
+Message-ID: <5FD640AE.4040201@gmail.com>
+Date: Sun, 13 Dec 2020 18:26:22 +0200
+From: Eli Billauer <eli.billauer@gmail.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+ rv:1.9.1.12) Gecko/20100907 Fedora/3.0.7-1.fc12 Thunderbird/3.0.7
 MIME-Version: 1.0
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: Add xillyusb driver (Xillybus variant for USB)
+References: <20201213115933.58823-1-eli.billauer@gmail.com>
+ <X9YoGnkD7fjPdr4x@kroah.com>
+In-Reply-To: <X9YoGnkD7fjPdr4x@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,135 +88,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, yanaijie@huawei.com,
- gregkh@linuxfoundation.org, linux-gpio@vger.kernel.org, robh+dt@kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-According to the binding documentation pinctrl related nodes
-must use '-pins$' and ''^(.*-)?pinmux$'' as names. Change all
-of them to properly match them.
+Hello Greg,
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- drivers/staging/mt7621-dts/mt7621.dtsi | 46 +++++++++++++-------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
+There's no TODO file because it would have been empty: There is nothing 
+to do, as far as I know.
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index 5b9d3bf82cb1..f05b7dec703b 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -228,83 +228,83 @@ pinctrl: pinctrl {
- 		state_default: pinctrl0 {
- 		};
- 
--		i2c_pins: i2c0 {
--			i2c0 {
-+		i2c_pins: i2c0-pins {
-+			pinmux {
- 				groups = "i2c";
- 				function = "i2c";
- 			};
- 		};
- 
--		spi_pins: spi0 {
--			spi0 {
-+		spi_pins: spi0-pins {
-+			pinmux {
- 				groups = "spi";
- 				function = "spi";
- 			};
- 		};
- 
--		uart1_pins: uart1 {
--			uart1 {
-+		uart1_pins: uart1-pins {
-+			pinmux {
- 				groups = "uart1";
- 				function = "uart1";
- 			};
- 		};
- 
--		uart2_pins: uart2 {
--			uart2 {
-+		uart2_pins: uart2-pins {
-+			pinmux {
- 				groups = "uart2";
- 				function = "uart2";
- 			};
- 		};
- 
--		uart3_pins: uart3 {
--			uart3 {
-+		uart3_pins: uart3-pins {
-+			pinmux {
- 				groups = "uart3";
- 				function = "uart3";
- 			};
- 		};
- 
--		rgmii1_pins: rgmii1 {
--			rgmii1 {
-+		rgmii1_pins: rgmii1-pins {
-+			pinmux {
- 				groups = "rgmii1";
- 				function = "rgmii1";
- 			};
- 		};
- 
--		rgmii2_pins: rgmii2 {
--			rgmii2 {
-+		rgmii2_pins: rgmii2-pins {
-+			pinmux {
- 				groups = "rgmii2";
- 				function = "rgmii2";
- 			};
- 		};
- 
--		mdio_pins: mdio0 {
--			mdio0 {
-+		mdio_pins: mdio0-pins {
-+			pinmux {
- 				groups = "mdio";
- 				function = "mdio";
- 			};
- 		};
- 
--		pcie_pins: pcie0 {
--			pcie0 {
-+		pcie_pins: pcie0-pins {
-+			pinmux {
- 				groups = "pcie";
- 				function = "gpio";
- 			};
- 		};
- 
--		nand_pins: nand0 {
--			spi-nand {
-+		nand_pins: nand0-pins {
-+			spi-pinmux {
- 				groups = "spi";
- 				function = "nand1";
- 			};
- 
--			sdhci-nand {
-+			sdhci-pinmux {
- 				groups = "sdhci";
- 				function = "nand2";
- 			};
- 		};
- 
--		sdhci_pins: sdhci0 {
--			sdhci0 {
-+		sdhci_pins: sdhci0-pins {
-+			pinmux {
- 				groups = "sdhci";
- 				function = "sdhci";
- 			};
--- 
-2.25.1
+I submitted this to staging because I failed to push the Xillybus driver 
+to non-staging back in 2013. In the end, the way in was through staging 
++ a review that got it out a year later or so. So I expected the same story.
+
+I'll submit a patch for this driver to char/xillybus/ soon.
+
+Thanks,
+    Eli
+
+On 13/12/20 16:41, Greg KH wrote:
+> Why add this driver to staging?  All drivers in staging need a TODO file
+> that lists what is needed to be done to it in order to get it out of
+> staging.  Why not just submit it to the "real" part of the kernel?
+>
+> thanks,
+>
+> greg k-h
+>
+>    
 
 _______________________________________________
 devel mailing list
