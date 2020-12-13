@@ -1,58 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCBD12D8DAF
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 15:05:56 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 182202D8E03
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 15:41:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 76C7385F81;
-	Sun, 13 Dec 2020 14:05:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9D98C872B5;
+	Sun, 13 Dec 2020 14:41:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tOkcoBiMiplo; Sun, 13 Dec 2020 14:05:55 +0000 (UTC)
+	with ESMTP id Y9us2Lt2hryD; Sun, 13 Dec 2020 14:41:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8BF9785321;
-	Sun, 13 Dec 2020 14:05:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1C90886FD9;
+	Sun, 13 Dec 2020 14:41:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 12ADA1BF2C9
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:05:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D00541BF2C9
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:41:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0A76687143
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:05:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CCF3787310
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:41:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ePa2NBkr5-zj for <devel@linuxdriverproject.org>;
- Sun, 13 Dec 2020 14:05:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id 3cVCCyPwr1sk for <devel@linuxdriverproject.org>;
+ Sun, 13 Dec 2020 14:41:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DECCA8703C
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:05:50 +0000 (UTC)
-Date: Sun, 13 Dec 2020 09:05:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607868350;
- bh=mcbojKX0rCRAglq8j0baJ+vgXce4rMTNLcaD/nWwNHs=;
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CCBCE871FE
+ for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 14:41:33 +0000 (UTC)
+Date: Sun, 13 Dec 2020 15:41:30 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1607870493;
+ bh=lrc0i225WKIWHAG05yCH09jeXgang9pZ0NF8NL0NLc0=;
  h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=rRFQLa9PCwMZs0lPKS99ktrsTgouLcbSl8Wem5V5bqvQpsD5VnSfXkjJkwDv6NpTP
- wYi8ROaa6VTvX1JMo/pD7EayF2ds/o4Bh2HD+DjRVHnRSTuWGz1+NY9VukNrnmOgBv
- zWlyg3DYQevPMBJ4qe9HX8IXTWiyLHK9C2CZ5CPIsSfXd+llpnf0rIXyXtJOMaLuJA
- FeEzDOO1d1pjE2yFrwqwrLLrNlh3LDvfPPRMltmi3ikLrvqqauzeiSmphedv+1IwEx
- uQYLBzXaoa0SF7zjUhhOfPMNx17/ZjnEUrvUhbTJWa+2k8Rp5NHeo4Zjgr/RJ5Dpcw
- 3F+kzL1Linugg==
-From: Sasha Levin <sashal@kernel.org>
-To: Andrea Parri <parri.andrea@gmail.com>
-Subject: Re: [PATCH AUTOSEL 5.9 15/23] scsi: storvsc: Validate length of
- incoming packet in storvsc_on_channel_callback()
-Message-ID: <20201213140549.GP643756@sasha-vm>
-References: <20201212160804.2334982-1-sashal@kernel.org>
- <20201212160804.2334982-15-sashal@kernel.org>
- <20201212180901.GA19225@andrea>
+ b=nN4ywPSjIz3KSGCTBK/cTFZ0uweiYnmyHO5VNz6ZGWXOmex7uGhFH+/6j9+OOon40
+ kCON6oBWln175KIvuBMEk6lgfB4LbeBiIJLbr2mprKZQWpf/yJjuQwOJffu/ZGlcr1
+ YCkqHIzGZG6yU5MJ68Awy/xZI1uYoRY+U3V2s0JA=
+From: Greg KH <gregkh@linuxfoundation.org>
+To: eli.billauer@gmail.com
+Subject: Re: [PATCH] staging: Add xillyusb driver (Xillybus variant for USB)
+Message-ID: <X9YoGnkD7fjPdr4x@kroah.com>
+References: <20201213115933.58823-1-eli.billauer@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201212180901.GA19225@andrea>
+In-Reply-To: <20201213115933.58823-1-eli.billauer@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,35 +59,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>,
- linux-scsi@vger.kernel.org, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- devel@linuxdriverproject.org, Saruhan Karademir <skarade@microsoft.com>
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Dec 12, 2020 at 07:09:01PM +0100, Andrea Parri wrote:
->Hi Sasha,
->
->On Sat, Dec 12, 2020 at 11:07:56AM -0500, Sasha Levin wrote:
->> From: "Andrea Parri (Microsoft)" <parri.andrea@gmail.com>
->>
->> [ Upstream commit 3b8c72d076c42bf27284cda7b2b2b522810686f8 ]
->
->FYI, we found that this commit introduced a regression and posted a
->revert:
->
->  https://lkml.kernel.org/r/20201211131404.21359-1-parri.andrea@gmail.com
->
->Same comment for the AUTOSEL 5.4, 4.19 and 4.14 you've just posted.
+On Sun, Dec 13, 2020 at 01:59:33PM +0200, eli.billauer@gmail.com wrote:
+> From: Eli Billauer <eli.billauer@gmail.com>
+> 
+> Xillybus is a means for exchanging data between an FPGA and a Linux
+> host, which helps making the task easier on both sides. The already
+> existing driver resides in drivers/char/xillybus/ and it supports
+> communication with the FPGA over the PCIe bus. For Xilinx' Zynq-7000
+> processors, it also supports the device's native AXI3 bus.
+> 
+> The XillyUSB driver, which is added with this patch as a staging driver,
+> uses the USB transport for communicating with the FPGA. Even though it
+> presents a nearly identical API on the FPGA and host, it's almost a
+> complete rewrite of the driver: The framework for exchanging data on a
+> USB bus is fundamentally different from doing the same with a PCIe
+> interface, which leaves very little in common between the existing
+> driver and the new one for XillyUSB.
+> 
+> Signed-off-by: Eli Billauer <eli.billauer@gmail.com>
+> ---
+>  MAINTAINERS                         |    1 +
+>  drivers/staging/Kconfig             |    2 +
+>  drivers/staging/Makefile            |    1 +
+>  drivers/staging/xillyusb/Kconfig    |   19 +
+>  drivers/staging/xillyusb/Makefile   |    6 +
+>  drivers/staging/xillyusb/xillyusb.c | 2363 +++++++++++++++++++++++++++
 
-I'll drop those, thanks!
+Why add this driver to staging?  All drivers in staging need a TODO file
+that lists what is needed to be done to it in order to get it out of
+staging.  Why not just submit it to the "real" part of the kernel?
 
--- 
-Thanks,
-Sasha
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
