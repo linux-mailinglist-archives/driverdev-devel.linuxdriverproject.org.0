@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 182202D8E03
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 15:41:40 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D4F02D8E2E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Dec 2020 16:13:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9D98C872B5;
-	Sun, 13 Dec 2020 14:41:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DC32720442;
+	Sun, 13 Dec 2020 15:13:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y9us2Lt2hryD; Sun, 13 Dec 2020 14:41:37 +0000 (UTC)
+	with ESMTP id XUN8cH+UeTmX; Sun, 13 Dec 2020 15:13:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1C90886FD9;
-	Sun, 13 Dec 2020 14:41:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 713FA2042E;
+	Sun, 13 Dec 2020 15:12:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D00541BF2C9
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:41:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id ABB9F1BF29E
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 15:12:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CCF3787310
- for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 14:41:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9F28985C4F
+ for <devel@linuxdriverproject.org>; Sun, 13 Dec 2020 15:12:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3cVCCyPwr1sk for <devel@linuxdriverproject.org>;
- Sun, 13 Dec 2020 14:41:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CCBCE871FE
- for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 14:41:33 +0000 (UTC)
-Date: Sun, 13 Dec 2020 15:41:30 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1607870493;
- bh=lrc0i225WKIWHAG05yCH09jeXgang9pZ0NF8NL0NLc0=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=nN4ywPSjIz3KSGCTBK/cTFZ0uweiYnmyHO5VNz6ZGWXOmex7uGhFH+/6j9+OOon40
- kCON6oBWln175KIvuBMEk6lgfB4LbeBiIJLbr2mprKZQWpf/yJjuQwOJffu/ZGlcr1
- YCkqHIzGZG6yU5MJ68Awy/xZI1uYoRY+U3V2s0JA=
-From: Greg KH <gregkh@linuxfoundation.org>
-To: eli.billauer@gmail.com
-Subject: Re: [PATCH] staging: Add xillyusb driver (Xillybus variant for USB)
-Message-ID: <X9YoGnkD7fjPdr4x@kroah.com>
-References: <20201213115933.58823-1-eli.billauer@gmail.com>
+ with ESMTP id i6w83zpio5DN for <devel@linuxdriverproject.org>;
+ Sun, 13 Dec 2020 15:11:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp.smtpout.orange.fr (smtp02.smtpout.orange.fr
+ [80.12.242.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5D4EB84FA5
+ for <devel@driverdev.osuosl.org>; Sun, 13 Dec 2020 15:11:11 +0000 (UTC)
+Received: from localhost.localdomain ([93.23.12.208]) by mwinf5d78 with ME
+ id 3rB5240064VKWNM03rB5ND; Sun, 13 Dec 2020 16:11:07 +0100
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 13 Dec 2020 16:11:07 +0100
+X-ME-IP: 93.23.12.208
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: mchehab+huawei@kernel.org,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: spmi: hisi-spmi-controller: Fix some error handling
+ paths
+Date: Sun, 13 Dec 2020 16:11:05 +0100
+Message-Id: <20201213151105.137731-1-christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201213115933.58823-1-eli.billauer@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,45 +59,91 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Dec 13, 2020 at 01:59:33PM +0200, eli.billauer@gmail.com wrote:
-> From: Eli Billauer <eli.billauer@gmail.com>
-> 
-> Xillybus is a means for exchanging data between an FPGA and a Linux
-> host, which helps making the task easier on both sides. The already
-> existing driver resides in drivers/char/xillybus/ and it supports
-> communication with the FPGA over the PCIe bus. For Xilinx' Zynq-7000
-> processors, it also supports the device's native AXI3 bus.
-> 
-> The XillyUSB driver, which is added with this patch as a staging driver,
-> uses the USB transport for communicating with the FPGA. Even though it
-> presents a nearly identical API on the FPGA and host, it's almost a
-> complete rewrite of the driver: The framework for exchanging data on a
-> USB bus is fundamentally different from doing the same with a PCIe
-> interface, which leaves very little in common between the existing
-> driver and the new one for XillyUSB.
-> 
-> Signed-off-by: Eli Billauer <eli.billauer@gmail.com>
-> ---
->  MAINTAINERS                         |    1 +
->  drivers/staging/Kconfig             |    2 +
->  drivers/staging/Makefile            |    1 +
->  drivers/staging/xillyusb/Kconfig    |   19 +
->  drivers/staging/xillyusb/Makefile   |    6 +
->  drivers/staging/xillyusb/xillyusb.c | 2363 +++++++++++++++++++++++++++
+IN the probe function, if an error occurs after calling
+'spmi_controller_alloc()', it must be undone by a corresponding
+'spmi_controller_put() call.
 
-Why add this driver to staging?  All drivers in staging need a TODO file
-that lists what is needed to be done to it in order to get it out of
-staging.  Why not just submit it to the "real" part of the kernel?
+In the remove function, use 'spmi_controller_put(ctrl)' instead of
+'kfree(ctrl)'.
 
-thanks,
+While a it fix an error message
+(s/spmi_add_controller/spmi_controller_add/)
 
-greg k-h
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ .../staging/hikey9xx/hisi-spmi-controller.c   | 21 +++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/staging/hikey9xx/hisi-spmi-controller.c
+index 861aedd5de48..0d42bc65f39b 100644
+--- a/drivers/staging/hikey9xx/hisi-spmi-controller.c
++++ b/drivers/staging/hikey9xx/hisi-spmi-controller.c
+@@ -278,21 +278,24 @@ static int spmi_controller_probe(struct platform_device *pdev)
+ 	iores = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	if (!iores) {
+ 		dev_err(&pdev->dev, "can not get resource!\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_put_controller;
+ 	}
+ 
+ 	spmi_controller->base = devm_ioremap(&pdev->dev, iores->start,
+ 					     resource_size(iores));
+ 	if (!spmi_controller->base) {
+ 		dev_err(&pdev->dev, "can not remap base addr!\n");
+-		return -EADDRNOTAVAIL;
++		ret = -EADDRNOTAVAIL;
++		goto err_put_controller;
+ 	}
+ 
+ 	ret = of_property_read_u32(pdev->dev.of_node, "spmi-channel",
+ 				   &spmi_controller->channel);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "can not get channel\n");
+-		return -ENODEV;
++		ret = -ENODEV;
++		goto err_put_controller;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, spmi_controller);
+@@ -309,9 +312,15 @@ static int spmi_controller_probe(struct platform_device *pdev)
+ 	ctrl->write_cmd = spmi_write_cmd;
+ 
+ 	ret = spmi_controller_add(ctrl);
+-	if (ret)
+-		dev_err(&pdev->dev, "spmi_add_controller failed with error %d!\n", ret);
++	if (ret) {
++		dev_err(&pdev->dev, "spmi_controller_add failed with error %d!\n", ret);
++		goto err_put_controller;
++	}
++
++	return 0;
+ 
++err_put_controller:
++	spmi_controller_put(ctrl);
+ 	return ret;
+ }
+ 
+@@ -320,7 +329,7 @@ static int spmi_del_controller(struct platform_device *pdev)
+ 	struct spmi_controller *ctrl = platform_get_drvdata(pdev);
+ 
+ 	spmi_controller_remove(ctrl);
+-	kfree(ctrl);
++	spmi_controller_put(ctrl);
+ 	return 0;
+ }
+ 
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
