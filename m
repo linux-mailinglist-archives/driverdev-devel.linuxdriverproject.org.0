@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3AA452D947C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Dec 2020 10:02:16 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E7392D9564
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Dec 2020 10:41:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 47D1A87150;
-	Mon, 14 Dec 2020 09:02:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E33B02E127;
+	Mon, 14 Dec 2020 09:41:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4DUJDs5TwHKV; Mon, 14 Dec 2020 09:02:13 +0000 (UTC)
+	with ESMTP id LztQIz1BLCfE; Mon, 14 Dec 2020 09:41:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2FC328711F;
-	Mon, 14 Dec 2020 09:02:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 700392E12F;
+	Mon, 14 Dec 2020 09:40:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2C0AD1BF3D6
- for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 09:02:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4868C1BF29C
+ for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 09:40:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 288C4873EC
- for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 09:02:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 456858672E
+ for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 09:40:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OGy31Eev6kn9 for <devel@linuxdriverproject.org>;
- Mon, 14 Dec 2020 09:02:07 +0000 (UTC)
+ with ESMTP id F8fjZUx7_8KX for <devel@linuxdriverproject.org>;
+ Mon, 14 Dec 2020 09:40:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A5F3786F74
- for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 09:02:06 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id 23so28210483lfg.10
- for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 01:02:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 32DD886207
+ for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 09:40:10 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id w124so15414680oia.6
+ for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 01:40:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h7gw/JKcedbcbsZwWfTxV9h1NBzBz2xSdjArgBt47FY=;
- b=WIy+wdN5lxXjhzWSRCsGIRQ/FvjPCq2eE4e/RV8zdXhIGPEGF+/Dygqmnulqs2h0oy
- N39B12UanCXacWSc66RvefD94HonfQ58k1NWUgKUKXAY4zpDQWmZvKBj2W5pKXwo6MnF
- x5FPL/HMF/C854ApS3GWH+di2LmuWIV832VXVJxSVFqa3C18AkaomEYHXeXemsM3TPxS
- taxqysgYJxMEsk+r+3hsfGMKVQZrkFWoWAA7Jpie9ACkrJQNQSOD704OWnUVXLMKGZsO
- wLziKwG+kqLlPfC6UJiTmTvZ0hzRWRIMrj9nolAASDlfjotDFLZxTgOzrfJhpsSn5TEM
- TqcA==
+ :cc; bh=fqzM7e75UJFJjd3gnYlao0ic5zl7gtQUCIPOWPs96Ww=;
+ b=OkWVeO8TRWXdf1hoWatNgy9+nYBfbN/r+HTm6Z7zBn4HQYbhWJJPF5YjNH8ti+tGLM
+ WtcswV8KtWzaHZKgpXEwMhQpN1e9Oc59jT3oh/jIBqYGj+XWEO3fByV+lNGlon6jyLS/
+ jtE467MahuKhATMxQlqHSk5RjdeDLGbdGDAz7hkTx9XrWi4t1b5g1Vt/tNmHL8fF9wBU
+ hsv4o8xZtOmCmTfxxr34Rmlfvt4jGwGhc1HFffD48/7RF4b2PWGWDa1mtyD3Hw6au+vz
+ NiIkvZp4v8XIrJxWv3fdpBQYbRqJrLOZqdg2VExk2U8YYWWBlNljWpXB/l8pU5yiKTMs
+ 3GrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=h7gw/JKcedbcbsZwWfTxV9h1NBzBz2xSdjArgBt47FY=;
- b=c3AGUaPE4v5so20s1ZANdK0N6yDSR2HiKktJpuggMU/zrMKXcvqWVGaHez0hhFR1zS
- vGvkVBVeRH4rrRbybXq9jW+zEgMwpKs7A7NQYgnVRZIv9u/6zB1rChB0vLtn8z2XGCMV
- L/edsnLMP9Qy3nd4Z9CLeZ9fiSPGr2U9/3TywxiwFMQzWeU3jWqtKCL6g3UTIUNuu2n0
- 9Z197Q5+tYNch3m4HqHKRfTYhXM0Y18Jb6rUmkl7v30/3bZd/ae45f4C4bgSS2PPHDzV
- 7AOgpMwJZBkR5uVVKzPOM7MnosX16xUZx/GUUJ/A45PVVet9W/9/p4rVSiS5iOVL4ziL
- YZyA==
-X-Gm-Message-State: AOAM5335AcklFkeEbCOGOdcjAtws4vMrILG/w0qgSuFc+qTyHEG2+UBh
- PwXMIZt9kOtrN4KmFypZhpAWvddMqDjBVebTH+OjAA==
-X-Google-Smtp-Source: ABdhPJzcfW5SBxLhGM7ZnE4/gbP2E/5QbU94LqpZXgLMKTebXCXYm5Ux1pgYsFxkEX42MlFg1Dig+zvDzSrCm3pQeTM=
-X-Received: by 2002:a05:6512:3f3:: with SMTP id
- n19mr1240953lfq.586.1607936524573; 
- Mon, 14 Dec 2020 01:02:04 -0800 (PST)
+ bh=fqzM7e75UJFJjd3gnYlao0ic5zl7gtQUCIPOWPs96Ww=;
+ b=Hd6h7fIKxm0sbYhqaUUfhqL5TUeXDQLYH8GuaMCJYiE9Iy5awSiU37qh95skYCbLrB
+ 9+K6pAO79hruKKZ+ukrPpIDyMkQbZroWPCzdxL2tDJ48PTjmtXU9RYfZe65E97R/kT8N
+ QGjWL7/Z1iISTskxrnlhh8sdEhPWE0yzgDitdjTkf6RYhkJWS8TSXcCa3nuDsNuua1z3
+ MWIz2F62nMONTut2+oshaF0odHpEq63OK/kfi+3uRvi6wbkySmBVO1+U4+bVt/my2Bo9
+ oJ7UI64zyuLfQrGlm+DLJWFgM4bCZ/h79PISRSOQDzVpv/dBukUkhXk0omErzgzfKQy+
+ B6+g==
+X-Gm-Message-State: AOAM532uhGtfkKdOI1j1xnG8BgdJIOrf63sEiSe1AsvWC6Mglt0/OlDa
+ E+nTVz3c2WflngdS7hkBssxkptx4kBRLY7UcA/g=
+X-Google-Smtp-Source: ABdhPJyQx9ElRrEpYfu6YbyoM1UD/VmFNB/bMFmoavOcrHCFhmWvWa8WBDfsHoHEGu1WPZ8oql6XZd5h4Gp0AI9aG2s=
+X-Received: by 2002:aca:5a86:: with SMTP id o128mr17717137oib.23.1607938809521; 
+ Mon, 14 Dec 2020 01:40:09 -0800 (PST)
 MIME-Version: 1.0
 References: <20201213161721.6514-1-sergio.paracuellos@gmail.com>
-In-Reply-To: <20201213161721.6514-1-sergio.paracuellos@gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 14 Dec 2020 10:01:53 +0100
-Message-ID: <CACRpkdaAd-wJuqspYTuj4RGTyJgobX+6j=5ZWWSCtdLLMnPoYw@mail.gmail.com>
+ <CACRpkdaAd-wJuqspYTuj4RGTyJgobX+6j=5ZWWSCtdLLMnPoYw@mail.gmail.com>
+In-Reply-To: <CACRpkdaAd-wJuqspYTuj4RGTyJgobX+6j=5ZWWSCtdLLMnPoYw@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Mon, 14 Dec 2020 10:39:58 +0100
+Message-ID: <CAMhs-H8HKU0Rw3tpnrEUie7S42pq5y8uhDqjSiJBLqAkMUQ4UA@mail.gmail.com>
 Subject: Re: [PATCH 0/8] pinctrl: ralink: rt2880: Some minimal clean ups
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,21 +91,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Dec 13, 2020 at 5:17 PM Sergio Paracuellos
-<sergio.paracuellos@gmail.com> wrote:
+On Mon, Dec 14, 2020 at 10:02 AM Linus Walleij <linus.walleij@linaro.org> wrote:
+>
+> On Sun, Dec 13, 2020 at 5:17 PM Sergio Paracuellos
+> <sergio.paracuellos@gmail.com> wrote:
+>
+> > After this driver was moved from staging into pinctrl subsytems
+> > some reviews for bindigns and driver itself comes from Ron Herring
+> > and Dan Carpenter. Get rid of all the comments to properly be in
+> > a good shape before merge window.
+>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+>
+> If Greg wants he can queue them last minute. Else I'll apply these
+> after the merge window, no big deal.
 
-> After this driver was moved from staging into pinctrl subsytems
-> some reviews for bindigns and driver itself comes from Ron Herring
-> and Dan Carpenter. Get rid of all the comments to properly be in
-> a good shape before merge window.
+Thanks, and sorry for the last minute.
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+>
+> Yours,
+> Linus Walleij
 
-If Greg wants he can queue them last minute. Else I'll apply these
-after the merge window, no big deal.
-
-Yours,
-Linus Walleij
+Best regards,
+    Sergio Paracuellos
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
