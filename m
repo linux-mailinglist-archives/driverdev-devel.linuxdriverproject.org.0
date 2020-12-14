@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 254EE2D96E1
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Dec 2020 12:03:11 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87B0A2D970A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Dec 2020 12:10:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE38D86463;
-	Mon, 14 Dec 2020 11:03:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 24F0187531;
+	Mon, 14 Dec 2020 11:10:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zs7XPcjChscI; Mon, 14 Dec 2020 11:03:08 +0000 (UTC)
+	with ESMTP id CkTg+0IPpskm; Mon, 14 Dec 2020 11:10:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE9808623B;
-	Mon, 14 Dec 2020 11:03:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 930B487532;
+	Mon, 14 Dec 2020 11:10:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 122A61BF45A
- for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:03:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C93621BF42E
+ for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:10:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 00B02204F9
- for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:03:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C2BCD871D3
+ for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZLaRg+EYFGyW for <devel@linuxdriverproject.org>;
- Mon, 14 Dec 2020 11:02:59 +0000 (UTC)
+ with ESMTP id YeFt+JoWk1Lb for <devel@linuxdriverproject.org>;
+ Mon, 14 Dec 2020 11:10:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by silver.osuosl.org (Postfix) with ESMTPS id 39EDB204F4
- for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 11:02:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 24A4E86E4F
+ for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 11:10:23 +0000 (UTC)
 Received: from cipterm0.informatik.uni-erlangen.de (cipterm0.cip.cs.fau.de
- [IPv6:2001:638:a000:4130:131:188:30:90])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id E4577240BAA;
- Mon, 14 Dec 2020 12:02:55 +0100 (CET)
+ [131.188.30.90])
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 82CA1240BE4;
+ Mon, 14 Dec 2020 12:10:20 +0100 (CET)
 Received: by cipterm0.informatik.uni-erlangen.de (Postfix, from userid 67858)
- id DE9123280146; Mon, 14 Dec 2020 12:02:54 +0100 (CET)
+ id 30BAC3280202; Mon, 14 Dec 2020 12:02:56 +0100 (CET)
 From: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 08/12] media: atomisp: Delete braces
-Date: Mon, 14 Dec 2020 12:01:52 +0100
-Message-Id: <20201214110156.6152-9-Philipp.Gerlesberger@fau.de>
+Subject: [PATCH v2 09/12] media: atomisp: Fix PARENTHESIS_ALIGNMENT
+Date: Mon, 14 Dec 2020 12:01:53 +0100
+Message-Id: <20201214110156.6152-10-Philipp.Gerlesberger@fau.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201214110156.6152-1-Philipp.Gerlesberger@fau.de>
 References: <20201214110156.6152-1-Philipp.Gerlesberger@fau.de>
@@ -68,29 +68,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-WARNING:BRACES: braces {} are not necessary for single statement blocks
+You can sum up the two lines, because the maximum line length of
+100 columns is not exceeded.
 
 Co-developed-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 Signed-off-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 Signed-off-by: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 ---
- drivers/staging/media/atomisp/pci/runtime/timer/src/timer.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/runtime/timer/src/timer.c b/drivers/staging/media/atomisp/pci/runtime/timer/src/timer.c
-index 00b54a0613bb..08f5c3ea6d29 100644
---- a/drivers/staging/media/atomisp/pci/runtime/timer/src/timer.c
-+++ b/drivers/staging/media/atomisp/pci/runtime/timer/src/timer.c
-@@ -23,9 +23,7 @@ int ia_css_timer_get_current_tick(struct ia_css_clock_tick *curr_ts)
+diff --git a/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c b/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
+index 753a99703f1e..38f86764ccfc 100644
+--- a/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
++++ b/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
+@@ -37,8 +37,7 @@ static struct spctrl_context_info spctrl_cofig_info[N_SP_ID];
+ static bool spctrl_loaded[N_SP_ID] = {0};
+ 
+ /* Load firmware */
+-int ia_css_spctrl_load_fw(sp_ID_t sp_id,
+-				      ia_css_spctrl_cfg *spctrl_cfg)
++int ia_css_spctrl_load_fw(sp_ID_t sp_id, ia_css_spctrl_cfg *spctrl_cfg)
  {
- 	assert(curr_ts);
- 	if (!curr_ts)
--	{
- 		return -EINVAL;
--	}
- 	curr_ts->ticks = (clock_value_t)gp_timer_read(GP_TIMER_SEL);
- 	return 0;
- }
+ 	ia_css_ptr code_addr = mmgr_NULL;
+ 	struct ia_css_sp_init_dmem_cfg *init_dmem_cfg;
 -- 
 2.20.1
 
