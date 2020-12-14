@@ -1,51 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B0A12D9709
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Dec 2020 12:10:31 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 480E02D9707
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Dec 2020 12:10:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 89ABD87542;
-	Mon, 14 Dec 2020 11:10:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC6C887236;
+	Mon, 14 Dec 2020 11:10:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F3Lst-9M8-7b; Mon, 14 Dec 2020 11:10:28 +0000 (UTC)
+	with ESMTP id TTfTX3YDQSHx; Mon, 14 Dec 2020 11:10:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 05F2087517;
-	Mon, 14 Dec 2020 11:10:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C702A86E4F;
+	Mon, 14 Dec 2020 11:10:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 362D61BF42E
- for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:10:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 703701BF42E
+ for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:10:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2B967204E8
- for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:10:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6D631863DD
+ for <devel@linuxdriverproject.org>; Mon, 14 Dec 2020 11:10:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YSBsx1OI0S52 for <devel@linuxdriverproject.org>;
+ with ESMTP id VJEBqjwYAUec for <devel@linuxdriverproject.org>;
  Mon, 14 Dec 2020 11:10:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by silver.osuosl.org (Postfix) with ESMTPS id C3481204E7
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D87C08626D
  for <devel@driverdev.osuosl.org>; Mon, 14 Dec 2020 11:10:21 +0000 (UTC)
 Received: from cipterm0.informatik.uni-erlangen.de (cipterm0.cip.cs.fau.de
  [IPv6:2001:638:a000:4130:131:188:30:90])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 75EA12409E1;
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 7D615240B55;
  Mon, 14 Dec 2020 12:10:20 +0100 (CET)
 Received: by cipterm0.informatik.uni-erlangen.de (Postfix, from userid 67858)
- id 6720B328043D; Mon, 14 Dec 2020 12:03:00 +0100 (CET)
+ id D1D893280440; Mon, 14 Dec 2020 12:05:05 +0100 (CET)
 From: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 12/12] media: atomisp: Fix LOGICAL_CONTINUATIONS
-Date: Mon, 14 Dec 2020 12:01:56 +0100
-Message-Id: <20201214110156.6152-13-Philipp.Gerlesberger@fau.de>
+Subject: [PATCH v2 09/12] media: atomisp: Fix PARENTHESIS_ALIGNMENT
+Date: Mon, 14 Dec 2020 12:03:55 +0100
+Message-Id: <20201214110358.7102-10-Philipp.Gerlesberger@fau.de>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201214110156.6152-1-Philipp.Gerlesberger@fau.de>
-References: <20201214110156.6152-1-Philipp.Gerlesberger@fau.de>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,30 +66,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Logical continuations should be on the previous line
+You can sum up the two lines, because the maximum line length of
+100 columns is not exceeded.
 
 Co-developed-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 Signed-off-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 Signed-off-by: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 ---
- drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c b/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
-index 2f1c2df59f71..7d44070c7114 100644
---- a/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
-+++ b/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
-@@ -24,8 +24,8 @@
-  *****************************************************************************/
- int ia_css_queue_local_init(ia_css_queue_t *qhandle, ia_css_queue_local_t *desc)
+diff --git a/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c b/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
+index 753a99703f1e..38f86764ccfc 100644
+--- a/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
++++ b/drivers/staging/media/atomisp/pci/runtime/spctrl/src/spctrl.c
+@@ -37,8 +37,7 @@ static struct spctrl_context_info spctrl_cofig_info[N_SP_ID];
+ static bool spctrl_loaded[N_SP_ID] = {0};
+ 
+ /* Load firmware */
+-int ia_css_spctrl_load_fw(sp_ID_t sp_id,
+-				      ia_css_spctrl_cfg *spctrl_cfg)
++int ia_css_spctrl_load_fw(sp_ID_t sp_id, ia_css_spctrl_cfg *spctrl_cfg)
  {
--	if (NULL == qhandle || NULL == desc
--	    || NULL == desc->cb_elems || NULL == desc->cb_desc) {
-+	if (NULL == qhandle || NULL == desc ||
-+	    NULL == desc->cb_elems || NULL == desc->cb_desc) {
- 		/* Invalid parameters, return error*/
- 		return -EINVAL;
- 	}
+ 	ia_css_ptr code_addr = mmgr_NULL;
+ 	struct ia_css_sp_init_dmem_cfg *init_dmem_cfg;
 -- 
 2.20.1
 
