@@ -2,78 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 981512DB4E6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Dec 2020 21:16:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 387152DB672
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Dec 2020 23:20:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2E5E12079A;
-	Tue, 15 Dec 2020 20:16:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1DB0620489;
+	Tue, 15 Dec 2020 22:20:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ggpAmqb+sxQl; Tue, 15 Dec 2020 20:16:48 +0000 (UTC)
+	with ESMTP id yR25TnE1hDFh; Tue, 15 Dec 2020 22:20:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5984020553;
-	Tue, 15 Dec 2020 20:16:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 11F44203A8;
+	Tue, 15 Dec 2020 22:20:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B11061BF409
- for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 20:16:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2D1071BF5DB
+ for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 22:20:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AA24286EB0
- for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 20:16:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2564386BA8
+ for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 22:20:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1GM5GQEfTfv5 for <devel@linuxdriverproject.org>;
- Tue, 15 Dec 2020 20:16:43 +0000 (UTC)
+ with ESMTP id mwoapqhH5r6z for <devel@linuxdriverproject.org>;
+ Tue, 15 Dec 2020 22:20:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5675B86C82
- for <devel@driverdev.osuosl.org>; Tue, 15 Dec 2020 20:16:43 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id x22so405238wmc.5
- for <devel@driverdev.osuosl.org>; Tue, 15 Dec 2020 12:16:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=/zOqoxSagYmofoKUHmkIlwhwGeUtRKR7Bpdk69rbfx8=;
- b=WV7un/KeKac/x+b7RhIrEqMBzOIu2cYPGIJacSyM0+VTxarTDZe6Cm9mb1yLu+bvZv
- Ip8PiNON1qRh0s1LBS02OaoopAmHfATc9AxbI+TW+jXLyJT1QFLuQuPGo1W6Zp8a0Wdj
- s85BtfQYPo4jOn9o2zX5Mokznz79NrlgeShIpBYiecG3iQCqxLghRjK/XrWA5EvjZTWY
- 2TeXFPbmi/d1w85gahvbBJdHwNg/ZwThjrIFw/BCNOiAR3Q/CYccXGTsOHsf49cKxlL4
- CQ5uA9cwmInAqrh7BAIlS1mpfCRFmgsrKe/n/hS4Bzg4ne4iJSNQ6+wWqt6jTj7II+a+
- tLcw==
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3414B86BA1
+ for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 22:20:46 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id l11so43476731lfg.0
+ for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 14:20:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux-foundation.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RLkwiClWiZEufd757VnQ12gJprYkp+uUjzIoU0sN1IY=;
+ b=RqsSk46kiv+oauJQZjgoCDxigw8xhGRze+AVMrO9n70VxeBAWsZC8s+tj0XEThYaLy
+ E7tNVqy6MPxOrgIG0sk6lwgqMqzCdaiCFrqsevKcuF3sPMZ3aBTF5Db7NTlQUXzcbAo/
+ RdT6UQdkjsTSOnU+GNvLW9+vdESzy8j9xYsiQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=/zOqoxSagYmofoKUHmkIlwhwGeUtRKR7Bpdk69rbfx8=;
- b=Q/johPXI1xB2YFEydvZw4KKmDrtzw1NR+EWMzoew8uwUFVhXGKSp5LrnvZgfJiOdtv
- sW4c5ZUN45sfONbYf2wbYm/TY+sMQz0AlUInF39xq03S9DdpLiIFB8jlN9h5WJoBukud
- Rj8oK9mooDp/9V6nbAKcn12Yla8om7juZ2qGaJlry8BvjDEbSEZM5Iq9xnO3Q1A104AQ
- gem0b/7tGN3DZWS2xXxylG4bcdIT2mBPYta9luwtKhegNeJU8iB+OSQgW1PQBVTsqZ4w
- CkHxhk97EkMhgvOXhMxkyJPYQbwTQLgUNbQp0BzhBPEQvD8q2LAkOrAC+G9zAAWWjHGz
- uJEA==
-X-Gm-Message-State: AOAM53278ne72yPZPFHkhiyt9Qo7EMtm/xE/GfOhDH6NdiK7OxeXjde5
- Y+bgjZKozYIW5qp8dJz802w=
-X-Google-Smtp-Source: ABdhPJyp07CyyeGRkvwcBp1uzTblfK5nAB1mSINYdhmLZ6m2Dmx+BMzg3T7jGG6q2Idc1CtECWiUiQ==
-X-Received: by 2002:a1c:b082:: with SMTP id z124mr492939wme.129.1608063401802; 
- Tue, 15 Dec 2020 12:16:41 -0800 (PST)
-Received: from debian (host-92-5-250-55.as43234.net. [92.5.250.55])
- by smtp.gmail.com with ESMTPSA id t10sm38630929wrp.39.2020.12.15.12.16.40
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 15 Dec 2020 12:16:41 -0800 (PST)
-Date: Tue, 15 Dec 2020 20:16:39 +0000
-From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-To: Milan Lakhani <milan.lakhani@codethink.co.uk>
-Subject: Re: [PATCH] Documentation: process: Correct numbering
-Message-ID: <20201215201639.cuq7xtyanbk6bxan@debian>
-References: <1608061835-5118-1-git-send-email-milan.lakhani@codethink.co.uk>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RLkwiClWiZEufd757VnQ12gJprYkp+uUjzIoU0sN1IY=;
+ b=FDe0w2UKkigB+x0iyJw/Q+xBiLsgpDERq3UqiQCAuS3tT1ZMTn18AFI2ai4gQqeTSO
+ vN9RcSP995mggVUhhUN8UbdkCamEp+a6aNW+zl4GOaWbvomtnfSQTAtwlviIVn3joiJz
+ +ytazo/uqywlpboCscj8s/TDqE9L+i3vsNtGXRwshXZJgVvatvj8tlUqG9Yo7sEOsRwI
+ 7PBXM4WHN/OiIgwy/a9MTon6yzJOzQbkBQ1S7X2uhayIVDxb5jaH0g2qNmqmRs/xiXo9
+ UB/NTlXfPAvAKu66FHSjng8j+zU5hZ0ARPStF20ocmNFrfcJhLtE3frp/DKOBD+rDabO
+ vLOg==
+X-Gm-Message-State: AOAM5329RtABoB6+AhhfCL+AarH9FmRqiTFL8hMu9ODd5noEViZ1JrWT
+ i9esgeCGS7df1mfgqUeBYzOGtuvhod1KAA==
+X-Google-Smtp-Source: ABdhPJzqLofnaJtoP+/6JFeutYcjvJOgT7RGwWoXilVoBWZizxhxy58J7X9SNZZZ9UL/5f55DE7CFA==
+X-Received: by 2002:a2e:88c8:: with SMTP id a8mr13138015ljk.148.1608070843977; 
+ Tue, 15 Dec 2020 14:20:43 -0800 (PST)
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com.
+ [209.85.167.51])
+ by smtp.gmail.com with ESMTPSA id y20sm8016lji.86.2020.12.15.14.20.43
+ for <devel@linuxdriverproject.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Dec 2020 14:20:43 -0800 (PST)
+Received: by mail-lf1-f51.google.com with SMTP id m12so43467725lfo.7
+ for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 14:20:43 -0800 (PST)
+X-Received: by 2002:a2e:3211:: with SMTP id y17mr6681510ljy.61.1608070842610; 
+ Tue, 15 Dec 2020 14:20:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1608061835-5118-1-git-send-email-milan.lakhani@codethink.co.uk>
-User-Agent: NeoMutt/20170113 (1.7.2)
+References: <X9iNTajXvwiLa1bV@kroah.com>
+ <20201215223752.42c377d7@canb.auug.org.au>
+ <X9iiwr5Lf8l8TOpP@kroah.com>
+In-Reply-To: <X9iiwr5Lf8l8TOpP@kroah.com>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Tue, 15 Dec 2020 14:20:26 -0800
+X-Gmail-Original-Message-ID: <CAHk-=wiu-UMhJZEUM4u+6OyMh=i8Y2RPzqd+W=JArEwhUAHG8w@mail.gmail.com>
+Message-ID: <CAHk-=wiu-UMhJZEUM4u+6OyMh=i8Y2RPzqd+W=JArEwhUAHG8w@mail.gmail.com>
+Subject: Re: [GIT PULL] Staging/IIO driver changes for 5.11-rc1
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,30 +90,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, corbet@lwn.net, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, lukas.bulwahn@gmail.com,
- linux-safety@lists.elisa.tech
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Milan,
+On Tue, Dec 15, 2020 at 3:48 AM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> Linus, your call.
 
-On Tue, Dec 15, 2020 at 07:50:35PM +0000, Milan Lakhani wrote:
-> Renumber the steps in submit-checklist.rst as some numbers were skipped.
-> 
-> Signed-off-by: Milan Lakhani <milan.lakhani@codethink.co.uk>
+This showed up in my build testing and I fixed it in the merge. No
+problem, but thanks to Stephen for tracking these things.
 
-Maybe you can also add:
-Fixes: 72deb455b5ec ("block: remove CONFIG_LBDAF")
-
-But I am confused about why you have added Greg and staging list instead
-of 'linux-doc@vger.kernel.org'.
-
---
-Regards
-Sudip
+             Linus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
