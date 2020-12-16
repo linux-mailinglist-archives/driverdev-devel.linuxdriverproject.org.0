@@ -1,72 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A317E2DBDC1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Dec 2020 10:38:56 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2012E2DBEB0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Dec 2020 11:36:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BE97F2153E;
-	Wed, 16 Dec 2020 09:38:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26CB186913;
+	Wed, 16 Dec 2020 10:36:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HgnnTKQiMAyi; Wed, 16 Dec 2020 09:38:53 +0000 (UTC)
+	with ESMTP id dBwyjq0D9+pc; Wed, 16 Dec 2020 10:36:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 065CF20BF9;
-	Wed, 16 Dec 2020 09:38:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B61A6868F9;
+	Wed, 16 Dec 2020 10:35:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F17341BF471
- for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 09:38:47 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 06DD51BF2FA
+ for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 10:35:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ED74585F31
- for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 09:38:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EF1CB203E7
+ for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 10:35:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UYNq8tbp-k-g for <devel@linuxdriverproject.org>;
- Wed, 16 Dec 2020 09:38:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb3-smtp-cloud9.xs4all.net (lb3-smtp-cloud9.xs4all.net
- [194.109.24.30])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7341385755
- for <devel@driverdev.osuosl.org>; Wed, 16 Dec 2020 09:38:43 +0000 (UTC)
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id pTGXkOjPbynrEpTGakpafo; Wed, 16 Dec 2020 10:38:41 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1608111521; bh=KXHBueOjDbo6cNmvea+XKTXDVux7va/DaIm14CAlSxY=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=wSuoBl2w39m+LtyBlld1XHvXDuU0AklIGh1K38If9ePpHhC5DrOVDown4dTHFefC8
- X2h+XueHJwdXbB31tNG6QtCpqfDevF6OL0ui0m4fJ+TXfpW7fjD5TZ3ywL/cGIBVZ7
- YxCSnJPN8sOo6Z2cybHKifij5BIzFrl1/aVQ2mzyOUpMJga85v1JqzF/quxBWkImbo
- rNyNEnV1CH2bS26eBdXbmqkCdyVKI8MuNmz0kc2lw8HYeddkMMDv+6uBlsHZKVCDRs
- ISo7dEnSkqcG9OdUuiZc9RbjQgXEpqEiVOA5CFhWZLwZ/ktLe6GDpOuttwLzHnXGce
- wUwLo9F9z+3Sg==
-Subject: Re: [PATCH] media: allegro: Fix use after free on error
-To: Michael Tretter <m.tretter@pengutronix.de>,
- Dan Carpenter <dan.carpenter@oracle.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chuhong Yuan <hslester96@gmail.com>, linux-media@vger.kernel.org,
- devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org
-References: <X9dShwq8PrThDpn9@mwanda> <20201214171627.GE1861@pengutronix.de>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <7f7011dd-ceb2-67de-1f9b-9edd0777c04d@xs4all.nl>
-Date: Wed, 16 Dec 2020 10:38:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ with ESMTP id Dwk6k+UGnNcu for <devel@linuxdriverproject.org>;
+ Wed, 16 Dec 2020 10:35:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f48.google.com (mail-ed1-f48.google.com
+ [209.85.208.48])
+ by silver.osuosl.org (Postfix) with ESMTPS id 13B6D1FEB7
+ for <devel@driverdev.osuosl.org>; Wed, 16 Dec 2020 10:35:56 +0000 (UTC)
+Received: by mail-ed1-f48.google.com with SMTP id cw27so24259128edb.5
+ for <devel@driverdev.osuosl.org>; Wed, 16 Dec 2020 02:35:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eY8G+T0bh4LN6y+cxgn4OGYQRTzOO5yifrdrjlzP4xo=;
+ b=uevDLfBCO9sybtFyuI9g0Jolsd9EIBafOCpuddeg/PnCFSM0EIJre/eAALMhnVHa1v
+ 83YoKSEg+yR8N+zEKwZfM7aMKPgHaCtkF/tcxOzNRi5oANZuwiXZpP3j13oNGY09WA5v
+ yXWleMUI961UX04vP2i+JyTBwDg3gmTwFBaJG21MyjvPIvS0q42WPOr9DxCrikyW+maS
+ mLTgJuAGMEVcbKP4H62TiepZhlR8xOao/xrd8/bwY3yyBlt1asvDICr7SDTW2gcOQTnG
+ 8YPueB0fePMYSHsf+E2QxDnkCb5EsA562nE6n44yZbys+7ZFEl/PaVizHAPgH7MdhjAV
+ a70w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eY8G+T0bh4LN6y+cxgn4OGYQRTzOO5yifrdrjlzP4xo=;
+ b=OSkQKTtW815fqL2VJQ6T2r13d7f8/2MV2CgTaF8AS32NF5q+O1ugRoa8jkYA07+vLs
+ 0zBJUcDs9+4LVURIs7/X4tYOOR/puXGRxvxnHjskP5BDiQGj6gjhCi1RogxtpgGvl0Js
+ ZtHHoDgJ4jnvDDgE9z2qkv/W5iwAaEaOaXWrrK9cPiciFHnkWu3oIKFkIk+v56Vu1FEw
+ 3h9/XRJ4z84aFoADTpqRNzwi4Fiw68AMNx3nwD9Widdanfz94WevvwnvKvrek0Ssh4rT
+ CaS0x8uOKrnMRsgmzIfJtWSsgyPlZVpiL1vlNKMVL5a5R059jNLU5ThfEgZHHinEu/4D
+ XG+w==
+X-Gm-Message-State: AOAM530gQX3grUgcFtkbL7Y8qAz5CZul2eVNIUVfoZb0amplyxPLeXZM
+ 9Eo8D9b1fFV5ZZUlyOklDolGIOOg2AdiM3BE1mxncA==
+X-Google-Smtp-Source: ABdhPJyahnUh0rw5wbWB1tMgwq0uvYik/i1xvch+qmo0s2+lLe+wAf2QZmn9/oHa2jA6RYanoM46HmiqgQq+MjTAhu8=
+X-Received: by 2002:aa7:cc15:: with SMTP id q21mr29018379edt.213.1608114954502; 
+ Wed, 16 Dec 2020 02:35:54 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201214171627.GE1861@pengutronix.de>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfEXhxv8wK2HMnRg9PJqD/Jk1kJWKXA/KSh5IEuI0F6AoeYMO6Oy0+VhEWfIoog/2cPqTMEEGM6HjxUce041XaPcFfNijzRdIvn+HeQBQNwSbRQTSQl0w
- LL5pEyQ/+ljdZ2UuUKYu8W1w2fwVWZtkb+A9G+IiwHN5qmG8LrAe3l64XNUIj4ldgjT+UJ4Hh0m7s3egkPyqu64osW+Bo45poR30eAr+LczDF+6M0JWL6Ol2
- lIqBjqFOlG2MaNzx+9qms+NimmRHs+r/SiKfSWEbKtc7bNLDyiBPNtBYtzJuNrrFTCD/xJt5gzswbWORp5JRqZ4EIwfCC5qQO0XfbvUI/cADS1WK3lkoEiv/
- 9ZzKoaN1dzBRw1xaeRfdGiKL9TjXRAZBS/887l5asljdfzkYdFggYhqMsmB0vHr7rYLz23Y/N0UbfASTGNNe1hxk+keY9IO5mxqwKzsuyWjqpBT1ZpQzgdYQ
- nHm38PJbjScvFz2CNivbk5pMJf7R8HE7r+dbyQ==
+References: <20201211164801.7838-1-nsaenzjulienne@suse.de>
+ <20201211164801.7838-3-nsaenzjulienne@suse.de>
+In-Reply-To: <20201211164801.7838-3-nsaenzjulienne@suse.de>
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Date: Wed, 16 Dec 2020 11:35:43 +0100
+Message-ID: <CAMpxmJX5t=LWpLkY=uYNK9r4rmStuSfmGc7=zcnu4_oHkQevWQ@mail.gmail.com>
+Subject: Re: [PATCH v6 02/11] firmware: raspberrypi: Introduce
+ devm_rpi_firmware_get()
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,76 +82,123 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
+ linux-devicetree <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Ray Jui <rjui@broadcom.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Linux Input <linux-input@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ linux-gpio <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
+ bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>,
+ linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 14/12/2020 18:16, Michael Tretter wrote:
-> On Mon, 14 Dec 2020 14:54:47 +0300, Dan Carpenter wrote:
->> The "channel" is added to the "dev->channels" but then if
->> v4l2_m2m_ctx_init() fails then we free "channel" but it's still on the
->> list so it could lead to a use after free.  Let's not add it to the
->> list until after v4l2_m2m_ctx_init() succeeds.
-> 
-> Thanks.
-> 
-> The patch conflicts with the series that moves the driver from staging to
-> mainline [0]. I'm not sure, which patch should go in first.
+On Fri, Dec 11, 2020 at 5:48 PM Nicolas Saenz Julienne
+<nsaenzjulienne@suse.de> wrote:
+>
+> It'll simplify the firmware handling for most consumers.
+>
+> Suggested-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> ---
+>
+> Changes since v4:
+>  - Rearrange function calls for clarity, same functionality
+>
+> Changes since v2:
+> - Create devm_rpi_firmware_get()
+>
+>  drivers/firmware/raspberrypi.c             | 29 ++++++++++++++++++++++
+>  include/soc/bcm2835/raspberrypi-firmware.h |  8 ++++++
+>  2 files changed, 37 insertions(+)
+>
+> diff --git a/drivers/firmware/raspberrypi.c b/drivers/firmware/raspberrypi.c
+> index b65e4c495772..250e01680742 100644
+> --- a/drivers/firmware/raspberrypi.c
+> +++ b/drivers/firmware/raspberrypi.c
+> @@ -243,6 +243,13 @@ void rpi_firmware_put(struct rpi_firmware *fw)
+>  }
+>  EXPORT_SYMBOL_GPL(rpi_firmware_put);
+>
+> +static void devm_rpi_firmware_put(void *data)
+> +{
+> +       struct rpi_firmware *fw = data;
+> +
+> +       rpi_firmware_put(fw);
+> +}
+> +
+>  static int rpi_firmware_probe(struct platform_device *pdev)
+>  {
+>         struct device *dev = &pdev->dev;
+> @@ -331,6 +338,28 @@ struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node)
+>  }
+>  EXPORT_SYMBOL_GPL(rpi_firmware_get);
+>
+> +/**
+> + * devm_rpi_firmware_get - Get pointer to rpi_firmware structure.
+> + * @firmware_node:    Pointer to the firmware Device Tree node.
+> + *
+> + * Returns NULL is the firmware device is not ready.
+> + */
+> +struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
+> +                                          struct device_node *firmware_node)
+> +{
+> +       struct rpi_firmware *fw;
+> +
+> +       fw = rpi_firmware_get(firmware_node);
+> +       if (!fw)
+> +               return NULL;
+> +
+> +       if (devm_add_action_or_reset(dev, devm_rpi_firmware_put, fw))
+> +               return NULL;
+> +
+> +       return fw;
+> +}
+> +EXPORT_SYMBOL_GPL(devm_rpi_firmware_get);
+> +
+>  static const struct of_device_id rpi_firmware_of_match[] = {
+>         { .compatible = "raspberrypi,bcm2835-firmware", },
+>         {},
+> diff --git a/include/soc/bcm2835/raspberrypi-firmware.h b/include/soc/bcm2835/raspberrypi-firmware.h
+> index fdfef7fe40df..73ad784fca96 100644
+> --- a/include/soc/bcm2835/raspberrypi-firmware.h
+> +++ b/include/soc/bcm2835/raspberrypi-firmware.h
+> @@ -142,6 +142,8 @@ int rpi_firmware_property_list(struct rpi_firmware *fw,
+>                                void *data, size_t tag_size);
+>  void rpi_firmware_put(struct rpi_firmware *fw);
+>  struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node);
+> +struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
+> +                                          struct device_node *firmware_node);
+>  #else
+>  static inline int rpi_firmware_property(struct rpi_firmware *fw, u32 tag,
+>                                         void *data, size_t len)
+> @@ -160,6 +162,12 @@ static inline struct rpi_firmware *rpi_firmware_get(struct device_node *firmware
+>  {
+>         return NULL;
+>  }
+> +
+> +static inline struct rpi_firmware *devm_rpi_firmware_get(struct device *dev,
+> +                                       struct device_node *firmware_node)
+> +{
+> +       return NULL;
+> +}
+>  #endif
+>
+>  #endif /* __SOC_RASPBERRY_FIRMWARE_H__ */
+> --
+> 2.29.2
+>
 
-I'll take care of the conflict.
-
-Regards,
-
-	Hans
-
-> 
-> It is also correct to not change the order of list_del and
-> v4l2_m2m_ctx_release in allegro_release. The list is used to relate messages
-> from the VCU to their destination channel and this should be possible until
-> the context has been released and no further messages are expected for that
-> channel.
-> 
-> [0] https://lore.kernel.org/linux-media/20201202133040.1954837-1-m.tretter@pengutronix.de/
-> 
->>
->> Fixes: cc62c74749a3 ("media: allegro: add missed checks in allegro_open()")
->> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
-> Reviewed-by: Michael Tretter <m.tretter@pengutronix.de>
-> 
->> ---
->> From static analysis.  Not tested.
->>
->>  drivers/staging/media/allegro-dvt/allegro-core.c | 3 +--
->>  1 file changed, 1 insertion(+), 2 deletions(-)
->>
->> diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
->> index 9f718f43282b..640451134072 100644
->> --- a/drivers/staging/media/allegro-dvt/allegro-core.c
->> +++ b/drivers/staging/media/allegro-dvt/allegro-core.c
->> @@ -2483,8 +2483,6 @@ static int allegro_open(struct file *file)
->>  	INIT_LIST_HEAD(&channel->buffers_reference);
->>  	INIT_LIST_HEAD(&channel->buffers_intermediate);
->>  
->> -	list_add(&channel->list, &dev->channels);
->> -
->>  	channel->fh.m2m_ctx = v4l2_m2m_ctx_init(dev->m2m_dev, channel,
->>  						allegro_queue_init);
->>  
->> @@ -2493,6 +2491,7 @@ static int allegro_open(struct file *file)
->>  		goto error;
->>  	}
->>  
->> +	list_add(&channel->list, &dev->channels);
->>  	file->private_data = &channel->fh;
->>  	v4l2_fh_add(&channel->fh);
->>  
->> -- 
->> 2.29.2
->>
->>
-
+Reviewed-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
