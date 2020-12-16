@@ -1,61 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A645B2DB675
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Dec 2020 23:22:23 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 567EF2DBBDD
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Dec 2020 08:15:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DDF9686F6A;
-	Tue, 15 Dec 2020 22:22:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 921C386A7A;
+	Wed, 16 Dec 2020 07:15:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WXHWi2ZC-4hQ; Tue, 15 Dec 2020 22:22:21 +0000 (UTC)
+	with ESMTP id ewl1iliyNZrm; Wed, 16 Dec 2020 07:15:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4FE4986F71;
-	Tue, 15 Dec 2020 22:22:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A5F5E86A92;
+	Wed, 16 Dec 2020 07:15:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 776721BF5DB
- for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 22:22:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 78C401BF401
+ for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 07:15:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 73F8686F71
- for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 22:22:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 710B986A89
+ for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 07:15:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aPqhOAGc3nmy for <devel@linuxdriverproject.org>;
- Tue, 15 Dec 2020 22:22:19 +0000 (UTC)
+ with ESMTP id IEs-d1osyaQz for <devel@linuxdriverproject.org>;
+ Wed, 16 Dec 2020 07:15:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2A6B386F6A
- for <devel@linuxdriverproject.org>; Tue, 15 Dec 2020 22:22:19 +0000 (UTC)
-Subject: Re: [GIT PULL] Staging/IIO driver changes for 5.11-rc1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1608070938;
- bh=VMzxmOcaJtcJJWUe9Tf2Tcj2pV41CIhNNNe+rRXhbiY=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=mVwPrLuLmB5Z0W8HIGYsa/CUyco/1IF4D7Niwl0PdL+F3pMISCvnF1+I0a8PzEpng
- W6mzC85n8yY146AI7zWDafdqT2ryzvWV4A7eZ0c9Eq1Dib3Xey90noFGqMaPdhwYES
- tGPn3w7sEEEdTAQebnTyvbB9hgJxtSJTYdlKy2C2Ndp4eG5YplVVUASgBZPvvSBZyK
- ze7ZMI9akCvYOJTh7XdI9viWs0j8k9On6vLqKh/3+jw1Ub70pfNYHMyChTuPTGCU6j
- C1YbnTA+8k0a+d5RpOwhdGWop2DSJuibGmTY80EgJIuLsZqjwqcHnWDaBei721k0yy
- 3hC/F0sSqobpw==
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <X9iNTajXvwiLa1bV@kroah.com>
-References: <X9iNTajXvwiLa1bV@kroah.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <X9iNTajXvwiLa1bV@kroah.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
- tags/staging-5.11-rc1
-X-PR-Tracked-Commit-Id: 4996b4610767064807d022dd731584f7ff78c309
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 3db1a3fa98808aa90f95ec3e0fa2fc7abf28f5c9
-Message-Id: <160807093876.3012.2067442470065183086.pr-tracker-bot@kernel.org>
-Date: Tue, 15 Dec 2020 22:22:18 +0000
-To: Greg KH <gregkh@linuxfoundation.org>
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C6A2586A28
+ for <devel@driverdev.osuosl.org>; Wed, 16 Dec 2020 07:15:03 +0000 (UTC)
+Received: by mail-il1-f198.google.com with SMTP id r20so18707132ilh.23
+ for <devel@driverdev.osuosl.org>; Tue, 15 Dec 2020 23:15:03 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
+ :from:to;
+ bh=36zW/PbpiTCKuG8Esvh3+4Beyh5+p/0KAx49415NdvY=;
+ b=FZ5rSIFJbYTkQvhLed5NVYw86bcDzZI4252mkJkhBGIjWjZHYi7UxjK1Kl9BZL8X7r
+ Smgol92/c9PhwOBqsDQIp5OUISc0bDWQuiPj3Kh609w58QntcV8cu+1H/Q0gzcdXW+2p
+ lcqZO1iyYk3/XmXgCsg+anzy46mzlA6ClAozB5g9g+Yfct6lt8jd65Zg9z9oj4aSiwVR
+ YKT9LebkxW6XAD3P81SOP60zCg4ok6T9VM7Ta6MlEqpijBNQc4YK2v67EDAhQgt9A10T
+ Ws/UEmrQhkIX4HuBb1jB95ANenD/s8zud32qnZR+WysvVb4JuW7/Io6/vbn88gC//lUG
+ gXxw==
+X-Gm-Message-State: AOAM530xHB0CwysVSftOt2MQQgzlSJ2zDbowZoadhUOjxRzoKTyPUT23
+ tSSDlmJJE2WfMaL4BfiACYxD/hnpQTRIPo1lfaso4nEjM3ZC
+X-Google-Smtp-Source: ABdhPJyE+w4DQGI1MtjxdqzF3IywhKSts84lZVnS0w5MQcPUmCQp7IMO10IRfWgV2p9/kkfUbcykf9u+Dd+WT8lfjHM/CdRp4VIy
+MIME-Version: 1.0
+X-Received: by 2002:a6b:c9cb:: with SMTP id
+ z194mr40484133iof.110.1608102903193; 
+ Tue, 15 Dec 2020 23:15:03 -0800 (PST)
+Date: Tue, 15 Dec 2020 23:15:03 -0800
+In-Reply-To: <000000000000ab11c505abeb19f5@google.com>
+X-Google-Appengine-App-Id: s~syzkaller
+X-Google-Appengine-App-Id-Alias: syzkaller
+Message-ID: <0000000000004ea4fe05b68fa299@google.com>
+Subject: Re: KASAN: use-after-free Write in __sco_sock_close
+From: syzbot <syzbot+077eca30d3cb7c02b273@syzkaller.appspotmail.com>
+To: anmol.karan123@gmail.com, coreteam@netfilter.org, davem@davemloft.net, 
+ devel@driverdev.osuosl.org, foxhlchen@gmail.com, gregkh@linuxfoundation.org, 
+ johan.hedberg@gmail.com, kaber@trash.net, kadlec@blackhole.kfki.hu, 
+ kuba@kernel.org, linux-bluetooth@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ marcel@holtmann.org, mchehab@kernel.org, mchehab@s-opensource.com, 
+ netdev@vger.kernel.org, netfilter-devel@vger.kernel.org, pablo@netfilter.org, 
+ syzkaller-bugs@googlegroups.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,28 +79,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
- devel@linuxdriverproject.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pull request you sent on Tue, 15 Dec 2020 11:17:49 +0100:
+syzbot suspects this issue was fixed by commit:
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.11-rc1
+commit 6dfccd13db2ff2b709ef60a50163925d477549aa
+Author: Anmol Karn <anmol.karan123@gmail.com>
+Date:   Wed Sep 30 14:18:13 2020 +0000
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/3db1a3fa98808aa90f95ec3e0fa2fc7abf28f5c9
+    Bluetooth: Fix null pointer dereference in hci_event_packet()
 
-Thank you!
+bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=14cb845b500000
+start commit:   47ec5303 Merge git://git.kernel.org/pub/scm/linux/kernel/g..
+git tree:       upstream
+kernel config:  https://syzkaller.appspot.com/x/.config?x=e0c783f658542f35
+dashboard link: https://syzkaller.appspot.com/bug?extid=077eca30d3cb7c02b273
+syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=165a89dc900000
+C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=130a8c62900000
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+If the result looks correct, please mark the issue as fixed by replying with:
+
+#syz fix: Bluetooth: Fix null pointer dereference in hci_event_packet()
+
+For information about bisection process see: https://goo.gl/tpsmEJ#bisection
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
