@@ -1,71 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D5F92DD6D5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:08:06 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 326322DD6CC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:07:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3534C2E2DC;
-	Thu, 17 Dec 2020 18:07:54 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y4XuY7fXe-DU; Thu, 17 Dec 2020 18:07:52 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 26B072E2C7;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3188A87655;
 	Thu, 17 Dec 2020 18:07:36 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T6uiNs_5qRtC; Thu, 17 Dec 2020 18:07:35 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DCE168762A;
+	Thu, 17 Dec 2020 18:07:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C39CD1BF477
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A99081BF477
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B4BF02E2BD
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A66A587A95
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XtJCtG2dGB3P for <devel@linuxdriverproject.org>;
- Thu, 17 Dec 2020 18:07:29 +0000 (UTC)
+ with ESMTP id Gia8LaXF66xo for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com
- [209.85.167.53])
- by silver.osuosl.org (Postfix) with ESMTPS id B0FEE2E192
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:28 +0000 (UTC)
-Received: by mail-lf1-f53.google.com with SMTP id m25so59778058lfc.11
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:28 -0800 (PST)
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com
+ [209.85.167.51])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CC20187A8A
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:29 +0000 (UTC)
+Received: by mail-lf1-f51.google.com with SMTP id a12so59835333lfl.6
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Kj7GIF+uJIxlrnFvjrN1VqMHS/QleXXRwa7p10T8PcE=;
- b=kP7PHY6U8z1UY31KMv3z/cd4fSHYhATI3ExPOUCA2tZru2WKCyeTd2UP8TlwgAp1M6
- m3gKgbjGMcs+s5oOOkkKRg5uLBYrKlTd+fICyDzeWlVMS8TJLKcBOPihhJWpu+AU9087
- BB/WHFvb13FuPmlwTMx7QgLcXn2/Ad1/eGMuph5p4IXpPVqJSz4M2F28QQ7j5D3NT9Pe
- SKPb+8KyQFL1FQLuLtECc7uWAD8qFTVYL6Rf2IuNbEgYvORPTvGDGfDYaX2QnYwn0Rgx
- FmpTg2+9oH4Y9ij9LQu4ybJ+DxcuDbYI0ihxUQcWcjKPtcTSS6c8GDtx5aNyj2kNgujh
- 8knA==
+ bh=yP8wRMt2G/dKkoQz0kDkh+VFFd+KrJNpavXd55zD7Hc=;
+ b=Eevxt/jmSiXEagYpaEv4vTmdCIDS9N1+4fjs6XIYwYipyv36lpsy/C6pKYbwX3UiQu
+ VAu1mRAoSEvOvC9CFXWr2nMYvvWgaq6SnOLErxU8ODNmC5j5jGOa6Ib2PM6ZcCqmH38P
+ /ms4L91GUDsLbCwK3p/ykpA37+zlTT+eRvLma64wIszQWtha25BPEQkFpHNddqKyWQfT
+ +buwKXxL3bX53bNkQosbcNQQk/A6YGx+HMISS5X5MXNlAcmh2539N1EunFi1fSgAdPPc
+ lZu6y+bcf9lMXUeX6+mQg1Tjih0kF9Uxcyo55RH6sXDp4bTnJ3oHXwSLox21wctsWd9N
+ I+6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Kj7GIF+uJIxlrnFvjrN1VqMHS/QleXXRwa7p10T8PcE=;
- b=uY4EGbOplrGRlCn8bs6ickCsGegQls5CqISUQJvzikl7D2+3vhN3VSJhc50Xy+6AYm
- dlQi4ThWJdKaKH1pNYNEFtm2VMG0J/UN3AJWHVYnhNbdaEbAfwqABlFH0X1yMJ2zzime
- O7BLFZ1cUcMl6EBgVkoxlAEoIBUXOQiIyXSr/hBZnZvFWVIDJt2JBJJWJlsUWGEnyaMz
- uflGc55JXyKwWvKYt17YYlshOcwRaQZW3EzX1RFR0fxuXIV4fDDt3sdGq4nihIjOcpb5
- agM7egSvPKEIEGieeQbuKIjXBLRDV/zxXLBIjOYiEkAy8/CO1i1drqZAtJ4kHKgDrUBh
- oj9A==
-X-Gm-Message-State: AOAM530Fxu+OfNgsDhFjLSZXuhUUIEq+/wOqyLcpnHfpRzF5UsslLa+O
- 4XOY+VL20uOZyaqr/DPmNe8=
-X-Google-Smtp-Source: ABdhPJwIfOmllgVrz8dHRr+2J5z3WatJHYxi2dLPJpEQkNdVwjNkmxMLIP17neNyCZHg4jvjqXoFpw==
-X-Received: by 2002:a05:6512:32a2:: with SMTP id
- q2mr7511267lfe.625.1608228446970; 
- Thu, 17 Dec 2020 10:07:26 -0800 (PST)
+ bh=yP8wRMt2G/dKkoQz0kDkh+VFFd+KrJNpavXd55zD7Hc=;
+ b=pbHGz21ksgpWBZNf8XkqchHbcLgZAhYOkno4XvvUJt6Od/PmkJAPkje5SXPKVYZEsP
+ aPJsr53uupqltlMsz1HVuJ1sEpl5i9gr5vF9sfdg94+pqF847F2+FEDVTi4KLzMxmPD5
+ egXUybtTQ+1aciPYs+3PomWsw56WJjZF9fBDHXUiU6FK+jJ0hBgFDJokhTI7qnJNNAxL
+ wPJ4IgFSzXVBmDJ9jdJL+RDYeWujqKqi52dLDd2HKjB6plR9EVaTFl7EEquyyf4JngSN
+ y8fqTAJGzuLvYxaNkqYzQUeoVGYN+qRanoFEnkChTzhEsfxWZ/MFoIBMnl+mmYz9M3NG
+ xNyw==
+X-Gm-Message-State: AOAM533hBhrR7437bcIfk/rlXKR32eu5n9/VGULmlux24cuy7qyn/cFL
+ iuPB00wlkwxvZ2x/2/LQ5xA=
+X-Google-Smtp-Source: ABdhPJxW3mip7l7QnT2EdI9cbqOdB8U51k+kpDGMuuvT5UJhcE0JXjG8oIyqWzLDIWmT1OVJbpI9yg==
+X-Received: by 2002:a19:c3c2:: with SMTP id t185mr1565lff.104.1608228448105;
+ Thu, 17 Dec 2020 10:07:28 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-57.dynamic.spd-mgts.ru.
  [109.252.192.57])
- by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.25
+ by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 10:07:26 -0800 (PST)
+ Thu, 17 Dec 2020 10:07:27 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Mark Brown <broonie@kernel.org>,
@@ -77,9 +76,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Peter De Schrijver <pdeschrijver@nvidia.com>,
  Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>
-Subject: [PATCH v2 06/48] dt-bindings: clock: tegra: Document clocks sub-node
-Date: Thu, 17 Dec 2020 21:05:56 +0300
-Message-Id: <20201217180638.22748-7-digetx@gmail.com>
+Subject: [PATCH v2 07/48] dt-bindings: arm: tegra: Add binding for core power
+ domain
+Date: Thu, 17 Dec 2020 21:05:57 +0300
+Message-Id: <20201217180638.22748-8-digetx@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201217180638.22748-1-digetx@gmail.com>
 References: <20201217180638.22748-1-digetx@gmail.com>
@@ -105,104 +105,69 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Document "clocks" sub-node which describes Tegra SoC clocks that require
-a higher voltage of the core power domain in order to operate properly on
-a higher rates.
+All NVIDIA Tegra SoCs have a core power domain where majority of hardware
+blocks reside. Add binding for the core power domain.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- .../bindings/clock/nvidia,tegra20-car.txt     | 26 +++++++++++++++++++
- .../bindings/clock/nvidia,tegra30-car.txt     | 26 +++++++++++++++++++
- 2 files changed, 52 insertions(+)
+ .../arm/tegra/nvidia,tegra20-core-domain.yaml | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml
 
-diff --git a/Documentation/devicetree/bindings/clock/nvidia,tegra20-car.txt b/Documentation/devicetree/bindings/clock/nvidia,tegra20-car.txt
-index 6c5901b503d0..353354477785 100644
---- a/Documentation/devicetree/bindings/clock/nvidia,tegra20-car.txt
-+++ b/Documentation/devicetree/bindings/clock/nvidia,tegra20-car.txt
-@@ -19,6 +19,16 @@ Required properties :
-   In clock consumers, this cell represents the bit number in the CAR's
-   array of CLK_RST_CONTROLLER_RST_DEVICES_* registers.
- 
-+Optional child sub-node "clocks" should contain nodes matching the clocks
-+on the Tegra SoC. Refer to Tegra TRM for mode details on the clock nodes.
+diff --git a/Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml b/Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml
+new file mode 100644
+index 000000000000..f3d8fd2d8371
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml
+@@ -0,0 +1,48 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/tegra/nvidia,tegra20-core-domain.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+Required properties :
-+- compatible : Should be "nvidia,tegra20-clock".
-+- operating-points-v2: See ../bindings/opp/opp.txt for details.
-+- clocks : Should contain clock which corresponds to the node.
-+- power-domains: Phandle to a power domain node as described by generic
-+                 PM domain bindings.
++title: NVIDIA Tegra Core Power Domain
 +
- Example SoC include file:
- 
- / {
-@@ -27,6 +37,22 @@ Example SoC include file:
- 		reg = <0x60006000 0x1000>;
- 		#clock-cells = <1>;
- 		#reset-cells = <1>;
++maintainers:
++  - Dmitry Osipenko <digetx@gmail.com>
++  - Jon Hunter <jonathanh@nvidia.com>
++  - Thierry Reding <thierry.reding@gmail.com>
 +
-+		clocks {
-+			hdmi {
-+				compatible = "nvidia,tegra20-clock";
-+				operating-points-v2 = <&hdmi_opp_table>;
-+				clocks = <&tegra_car TEGRA20_CLK_HDMI>;
-+				power-domains = <&domain>;
-+			};
++properties:
++  compatible:
++    enum:
++      - nvidia,tegra20-core-domain
++      - nvidia,tegra30-core-domain
 +
-+			pll_m {
-+				compatible = "nvidia,tegra20-clock";
-+				operating-points-v2 = <&pll_m_opp_table>;
-+				clocks = <&tegra_car TEGRA20_CLK_PLL_M>;
-+				power-domains = <&domain>;
-+			};
-+		};
- 	};
- 
- 	usb@c5004000 {
-diff --git a/Documentation/devicetree/bindings/clock/nvidia,tegra30-car.txt b/Documentation/devicetree/bindings/clock/nvidia,tegra30-car.txt
-index 63618cde12df..bc7bbdaa9d3f 100644
---- a/Documentation/devicetree/bindings/clock/nvidia,tegra30-car.txt
-+++ b/Documentation/devicetree/bindings/clock/nvidia,tegra30-car.txt
-@@ -19,6 +19,16 @@ Required properties :
-   In clock consumers, this cell represents the bit number in the CAR's
-   array of CLK_RST_CONTROLLER_RST_DEVICES_* registers.
- 
-+Optional child sub-node "clocks" should contain nodes matching the clocks
-+on the Tegra SoC. Refer to Tegra TRM for mode details on the clock nodes.
++  operating-points-v2:
++    description:
++      Should contain level, voltages and opp-supported-hw property.
++      The supported-hw is a bitfield indicating SoC speedo or process
++      ID mask.
 +
-+Required properties :
-+- compatible : Should be "nvidia,tegra30-clock".
-+- operating-points-v2: See ../bindings/opp/opp.txt for details.
-+- clocks : Should contain clock which corresponds to the node.
-+- power-domains: Phandle to a power domain node as described by generic
-+                 PM domain bindings.
++  "#power-domain-cells":
++    const: 0
 +
- Example SoC include file:
- 
- / {
-@@ -31,6 +41,22 @@ Example SoC include file:
- 
- 	usb@c5004000 {
- 		clocks = <&tegra_car TEGRA30_CLK_USB2>;
++  power-supply:
++    description:
++      Phandle to voltage regulator connected to the SoC Core power rail.
 +
-+		clocks {
-+			hdmi {
-+				compatible = "nvidia,tegra30-clock";
-+				operating-points-v2 = <&hdmi_opp_table>;
-+				clocks = <&tegra_car TEGRA30_CLK_HDMI>;
-+				power-domains = <&domain>;
-+			};
++required:
++  - compatible
++  - operating-points-v2
++  - "#power-domain-cells"
++  - power-supply
 +
-+			pll_m {
-+				compatible = "nvidia,tegra30-clock";
-+				operating-points-v2 = <&pll_m_opp_table>;
-+				clocks = <&tegra_car TEGRA30_CLK_PLL_M>;
-+				power-domains = <&domain>;
-+			};
-+		};
- 	};
- };
- 
++additionalProperties: false
++
++examples:
++  - |
++    core-domain {
++        compatible = "nvidia,tegra20-core-domain";
++        operating-points-v2 = <&opp_table>;
++        power-supply = <&regulator>;
++        #power-domain-cells = <0>;
++    };
 -- 
 2.29.2
 
