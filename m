@@ -1,58 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4D3A2DCF40
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 11:12:23 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0676D2DD00D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 12:07:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F11A72E295;
-	Thu, 17 Dec 2020 10:12:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 90F1787871;
+	Thu, 17 Dec 2020 11:07:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e-TNr++RzDSa; Thu, 17 Dec 2020 10:12:21 +0000 (UTC)
+	with ESMTP id G9UmY28PotwQ; Thu, 17 Dec 2020 11:07:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A0A2B2E289;
-	Thu, 17 Dec 2020 10:12:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 590A787803;
+	Thu, 17 Dec 2020 11:07:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C33611BF865
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 10:12:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B3B5D1BF59F
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 11:07:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BC867843FE
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 10:12:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AFE2D8755A
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 11:07:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HaCcl2AgNzlb for <devel@linuxdriverproject.org>;
- Thu, 17 Dec 2020 10:12:15 +0000 (UTC)
+ with ESMTP id 6p9po2eVNmdi for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 11:07:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1D30F842B2
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:12:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1608199934;
- bh=PfWP2jLdI1/NZWMHoUW5uRuEhXlIDaojx0Lzc3GC8YE=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=of2D6+Pfh249Hbaxdt1mjyeyluljubP6Cu4vTcG78IG2xysRGKWj5411bpmml7Ofy
- UdWZC0xRVuUW980AUUd8g+WvC7dF4/hxa2NxPChfFiLf8orc+HaTq5vu9H2Pk85eNG
- 9fOOK2qZvqbT30CyBwVly4w5t1sSnZ+Grug4F9dUX2lTELiD8RvA/JE49nGKCqaO55
- j+zHVdpRn62J0hkFFGbJUeoyydkSidOelwSmuIXSGQ/KKG56a/Ln3VYo/jutHuIFYd
- Vuzr0Y4fMqr3/IBl4NGGahe+x064rN5mKDLSncAhHVfpiWjYv4tUOqz4H/+gAoMu1a
- bFOO0O97+88iA==
+Received: from mail-qt1-f171.google.com (mail-qt1-f171.google.com
+ [209.85.160.171])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A3FA87559
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 11:07:19 +0000 (UTC)
+Received: by mail-qt1-f171.google.com with SMTP id v5so10525840qtv.7
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 03:07:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WpyJG39zsZR3QTEsxdeIZ6It7enzbMRWstsw8rPRonw=;
+ b=rFasmzLx8XfOzm6Y+FxLK6NecNAgN+nus0rsYJrLuW+hpzBD/G6Aut+1epJgd3Q9Y3
+ rI4U+FdwwtB+ydXf1iKiX2YBDEoIPOXfOjoxwDsLlRC+VSAaSRks/dwUdbna9h704pS/
+ d2A8hO4XsNEFJP5gOafW/aGB3cdf1Rucz2BtuT7meDa5VftF2vj6TKqvm/XuqnJdLo2v
+ rJfj5QslNlV2FdjWijrHD1hpkaEMpURVzu25lOoF97RlseM6vDkoBhuHL0zQ2qg3FJ/4
+ rLfN4/8uFirSkdP/MspVGyDZ3L7GXufno7ZA4RNMUzeNVlOatGeiFxvigK+pXnDBpG47
+ sfKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WpyJG39zsZR3QTEsxdeIZ6It7enzbMRWstsw8rPRonw=;
+ b=cQn6oAi/N0ebWWyD+8PlA54A4cyKbyGWDcoRKwzC7C5ZFGKuN0NTTpVVBvBGO2PhvU
+ 8MRnRcJ5yvInLqb9zRW+KNZGVTixE6pqW7xrCh7SXd+GlOtgVDxzQ0A5Ky7GdU7ZNccH
+ 2lhpdZhJHqCi9h/mJYxNc8jHexCIo4az3sqDlMDTyegrWru9uvmCOUYfnTuj2iq4Ov/X
+ RjZt1JCKLIyiltIh/S/+wFexL7foq5IjRYr2X+sQjzaMwKtresFZQYqSAjrFCQMMkSIH
+ D4Fo4oTTuZuzftmNg9aVX+tVzy0/+CkbRdR//FcOlvyD03CfavlH6jEC97sc7HnOP8Rh
+ AAYA==
+X-Gm-Message-State: AOAM533fCVOSjwTmsYxUqwRNc5hZnXIWmDq7OG5Brpv3qvMM8PNuK1Bh
+ DjoLbypSN/OBRlV9vzTyU4uiHCfO2n6PjPVb85nsFA==
+X-Google-Smtp-Source: ABdhPJwsy+Mk6kAd77qSP1iHQ1KvXJLnVTRVxCZaOziunZ7175tYz6+6XvAtQVR72glNqSkBWHZ8KadI0C3bjv0widA=
+X-Received: by 2002:ac8:5ac3:: with SMTP id d3mr47345365qtd.66.1608203237853; 
+ Thu, 17 Dec 2020 03:07:17 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAMhs-H_6x7rTLPd8sABvzBqNJE2WeRJUGxG5VoqW4EvGy1hhPA@mail.gmail.com>
-References: <20201122095556.21597-1-sergio.paracuellos@gmail.com>
- <20201122095556.21597-4-sergio.paracuellos@gmail.com>
- <160819619591.1580929.9915856168932644762@swboyd.mtv.corp.google.com>
- <CAMhs-H_6x7rTLPd8sABvzBqNJE2WeRJUGxG5VoqW4EvGy1hhPA@mail.gmail.com>
-Subject: Re: [PATCH v4 3/6] clk: ralink: add clock driver for mt7621 SoC
-From: Stephen Boyd <sboyd@kernel.org>
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Thu, 17 Dec 2020 02:12:12 -0800
-Message-ID: <160819993289.1580929.17666667936736079931@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+References: <000000000000ab11c505abeb19f5@google.com>
+ <0000000000004ea4fe05b68fa299@google.com>
+In-Reply-To: <0000000000004ea4fe05b68fa299@google.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Thu, 17 Dec 2020 12:07:06 +0100
+Message-ID: <CACT4Y+ZyAD1aJtTt0q1E=AmsTwnapjitit82+o-Gn2NyxDZNgQ@mail.gmail.com>
+Subject: Re: KASAN: use-after-free Write in __sco_sock_close
+To: syzbot <syzbot+077eca30d3cb7c02b273@syzkaller.appspotmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,126 +80,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Weijie Gao <hackpascal@gmail.com>,
- STAGING SUBSYSTEM <devel@driverdev.osuosl.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Greg KH <gregkh@linuxfoundation.org>,
- Michael Turquette <mturquette@baylibre.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, evicetree@vger.kernel.org,
- MIPS <linux-mips@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- John Crispin <john@phrozen.org>, NeilBrown <neil@brown.name>,
- COMMON CLK FRAMEWORK <linux-clk@vger.kernel.org>
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, anmol.karan123@gmail.com,
+ Fox Chen <foxhlchen@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Marcel Holtmann <marcel@holtmann.org>,
+ syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
+ LKML <linux-kernel@vger.kernel.org>, Patrick McHardy <kaber@trash.net>,
+ mchehab@s-opensource.com, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ coreteam@netfilter.org, NetFilter <netfilter-devel@vger.kernel.org>,
+ Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, Jakub Kicinski <kuba@kernel.org>,
+ netdev <netdev@vger.kernel.org>, linux-media@vger.kernel.org,
+ David Miller <davem@davemloft.net>, Pablo Neira Ayuso <pablo@netfilter.org>,
+ Johan Hedberg <johan.hedberg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Quoting Sergio Paracuellos (2020-12-17 01:54:18)
-> 
-> On Thu, Dec 17, 2020 at 10:09 AM Stephen Boyd <sboyd@kernel.org> wrote:
-> >
-> > Quoting Sergio Paracuellos (2020-11-22 01:55:53)
-> > > diff --git a/drivers/clk/ralink/Makefile b/drivers/clk/ralink/Makefile
-> > > new file mode 100644
-> > > index 000000000000..cf6f9216379d
-> > > --- /dev/null
-> > > +++ b/drivers/clk/ralink/Makefile
-> > > @@ -0,0 +1,2 @@
-> > > +# SPDX-License-Identifier: GPL-2.0
-> > > +obj-$(CONFIG_CLK_MT7621) += clk-mt7621.o
-> > > diff --git a/drivers/clk/ralink/clk-mt7621.c b/drivers/clk/ralink/clk-mt7621.c
-> > > new file mode 100644
-> > > index 000000000000..4e929f13fe7c
-> > > --- /dev/null
-> > > +++ b/drivers/clk/ralink/clk-mt7621.c
-> > > @@ -0,0 +1,435 @@
-> > > +// SPDX-License-Identifier: GPL-2.0
-> > > +/*
-> > > + * Mediatek MT7621 Clock Driver
-> > > + * Author: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> > > + */
-> > > +
-> > > +#include <linux/bitops.h>
-> > > +#include <linux/clk-provider.h>
-> > > +#include <linux/mfd/syscon.h>
-> > > +#include <linux/module.h>
-> > > +#include <linux/slab.h>
-> > > +#include <linux/regmap.h>
-> > > +#include <asm/mach-ralink/ralink_regs.h>
-> >
-> > Is it possible to drop this include? Doing so would make this portable
-> > and compilable on more architectures so us cross compilers can check
-> > build stuff and make changes easily.
-> 
-> No, this is not possible. This old arch makes some global functions
-> there to properly access different registers in the palmbus. It is not
-> also well documented so it is really difficult to make something
-> better with this.
-> This is needed to use 'rt_memc_r32'
-> (arch/mips/include/asm/mach-ralink/ralink_regs.h) for reading
-> MEMC_REG_CPU_PLL.
-> 
-> This is a not documented register and is not in the syscon related
-> part and we need it to derive the clock frequency for the XTAL clock.
+On Wed, Dec 16, 2020 at 8:15 AM syzbot
+<syzbot+077eca30d3cb7c02b273@syzkaller.appspotmail.com> wrote:
+>
+> syzbot suspects this issue was fixed by commit:
+>
+> commit 6dfccd13db2ff2b709ef60a50163925d477549aa
+> Author: Anmol Karn <anmol.karan123@gmail.com>
+> Date:   Wed Sep 30 14:18:13 2020 +0000
+>
+>     Bluetooth: Fix null pointer dereference in hci_event_packet()
+>
+> bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=14cb845b500000
+> start commit:   47ec5303 Merge git://git.kernel.org/pub/scm/linux/kernel/g..
+> git tree:       upstream
+> kernel config:  https://syzkaller.appspot.com/x/.config?x=e0c783f658542f35
+> dashboard link: https://syzkaller.appspot.com/bug?extid=077eca30d3cb7c02b273
+> syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=165a89dc900000
+> C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=130a8c62900000
+>
+> If the result looks correct, please mark the issue as fixed by replying with:
+>
+> #syz fix: Bluetooth: Fix null pointer dereference in hci_event_packet()
+>
+> For information about bisection process see: https://goo.gl/tpsmEJ#bisection
 
-Ok.
-
-> > > +static int mt7621_gate_ops_init(struct device_node *np,
-> > > +                                struct mt7621_gate *sclk)
-> > > +{
-> > > +       struct clk_init_data init = {
-> > > +               .flags = CLK_SET_RATE_PARENT | CLK_IGNORE_UNUSED,
-> >
-> > Why ignore unused? Are they CLK_IS_CRITICAL? Can they be enabled at
-> > driver probe instead of here? Or left out of the kernel entirely if they
-> > shouldn't be turned off?
-> 
-> Because all the platform drivers are not changed to use this gates yet
-> and all gates are enabled by default (related registers are set to all
-> ones),  kernel disables all the stuff because they are not being
-> referenced, but yes, you are right, I think I can call
-> clk_prepare_enable for all of them at init time and avoid this
-> 'CLK_IGNORE_UNUSED' flag to don't break anything of the current other
-> upstream code.
-
-Does something crash if they're turned off? We have CLK_IS_CRITICAL for
-that. The CLK_IGNORE_UNUSED flag is sort of deprecated now.
-
-> > > +
-> > > +#define CLK_BASE(_name, _parent, _recalc) {                            \
-> > > +       .init = &(struct clk_init_data) {                               \
-> > > +               .name = _name,                                          \
-> > > +               .ops = &(const struct clk_ops) {                        \
-> > > +                       .recalc_rate = _recalc,                         \
-> > > +               },                                                      \
-> > > +               .parent_names = (const char *const[]) { _parent },      \
-> >
-> > Please use clk_parent_data instead
-> 
-> parent can also be NULL here and num_parents zero, but I will search
-> what do you really mean with this 'clk_parent_data' :).
-
-Heh, 'git grep clk_parent_data -- drivers/clk/' should give some clues.
-
-> > > +free_clk_prov:
-> > > +       kfree(clk_prov);
-> > > +}
-> > > +
-> > > +CLK_OF_DECLARE(mt7621_clk, "mediatek,mt7621-clk", mt7621_clk_init);
-> >
-> > Any reason to use this vs. a platform driver?
-> 
-> We need clocks available in 'plat_time_init' before setting up the
-> timer for the GIC, so to maintain all the clock driver in a simple
-> file and using only one device tree node and no separate the gates
-> into another platform driver, I think this is the only way to go, but
-> please correct me if I am wrong.
-
-We can register the few clks like that early with
-CLK_OF_DECLARE_DRIVER() and then have a platform driver register the
-rest of the clks that aren't required early. This lets us hook into the
-driver framework better while still getting those few clks to turn on
-early enough for the timers.
+#syz fix: Bluetooth: Fix null pointer dereference in hci_event_packet()
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
