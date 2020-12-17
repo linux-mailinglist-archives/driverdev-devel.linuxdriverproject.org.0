@@ -1,70 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 200362DD6D1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:07:57 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 763072DD6FF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:08:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D108487664;
-	Thu, 17 Dec 2020 18:07:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 03EB62E308;
+	Thu, 17 Dec 2020 18:08:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gSJS_1xDo8QD; Thu, 17 Dec 2020 18:07:45 +0000 (UTC)
+	with ESMTP id FAbN-ibFIwPf; Thu, 17 Dec 2020 18:08:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82B1F8762F;
-	Thu, 17 Dec 2020 18:07:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7BF5D2E2CD;
+	Thu, 17 Dec 2020 18:07:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7E7FE1BF477
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EF77D1BF477
  for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7A1A987637
+ by hemlock.osuosl.org (Postfix) with ESMTP id EC047876BC
  for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5xmYqnWXq155 for <devel@linuxdriverproject.org>;
- Thu, 17 Dec 2020 18:07:38 +0000 (UTC)
+ with ESMTP id 55KZ5rlmuX65 for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 18:07:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f48.google.com (mail-lf1-f48.google.com
- [209.85.167.48])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CC6138762D
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:37 +0000 (UTC)
-Received: by mail-lf1-f48.google.com with SMTP id a12so59836429lfl.6
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:37 -0800 (PST)
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com
+ [209.85.167.51])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2887287A9F
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:39 +0000 (UTC)
+Received: by mail-lf1-f51.google.com with SMTP id l11so59859030lfg.0
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pyhIAorEBtf9lvlliXp3a/E9KosdNviFUVTLwzCMWu4=;
- b=KBFsuU+VjlIdBBBqzZxU8fjyUNxV2GYS1K8Z7YQLuOAUMr50erguvS8eg5lipX2IzF
- wUJXnioL5pZGD/Km96I24RKaP0oAWM4mVWYg5Lwi1t+/D5N5Jk9k/aWAJCSWNgl+6Ag9
- Ul+TTXmwIB4/L6tLNavF1vvHuiaDPvO1IYmGAGIQ6IjffbXmmXs+G+t+xYVRe1XCiLUT
- TTtBHS6GvMaXs7btcbzdBpOt1vRgkH9ELTMrtOzYa5YunqIgyj0rI6fTA1UyrDJBGKzG
- NsTRPdNroHWqtup4JrKq4hCihZ/I8rG1hzY9GLcahCmccGNQRN37v+O1tg2GPp/B1ZlZ
- I1Bw==
+ bh=NlDMl6XjPevCn3rRvWT/f1VR4LdbuUD4/E02zVLuVCI=;
+ b=RTWkhu3VqMqpDCA4Qo24BTJf+2HuJmLcparbZ+4myGwK1DNAzIGrgipPwwDKIIjrKS
+ ePerczxp+6zHrPN6Dqn9OXFrwkqgqVZKTxDtaFeEELTEv5tlBstMf0P3QwYRzM20vWTM
+ BliaLVxvI1nhJVyskHZ3FMESXBjgr+oWdWqVqRNm2rlei11rc3wpmZbdQ4odalL2zKWD
+ GwaPJoY/LSJ0dqPxg3Bq/HrsjDS7nXr5Uxa2HsKYjBt0fe7/MWnpeLhAWQ//k18Hkb4W
+ Qgu8Q7C+KU3jCZyrFKxqARUQD6npMHl2BNPx+eMXU587ADHJ5fD/w80+TTFH/cNU5wLn
+ gbKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=pyhIAorEBtf9lvlliXp3a/E9KosdNviFUVTLwzCMWu4=;
- b=n8OK1XQDpjjrdBNi09jUHb9MpMl4A5NmAz6XqsvWIeju85wLSDfS4Em5MJ3dD3cG5R
- 8D7XH4WKpafcPqlYD7WM7nbmhRE2zG/+dHaFBl04EQrR3Opic7D3tCoEAWcJtqE0wFpE
- cxPVt5M2iweFrV/gdqPHigseF9EToZRKVFA0lCPL4AdP3mZnQyLCNn760ZS7XIvf2zEx
- +mHElhwBYfNA7uDeMTlea+ViOPrgMbwI/ObxzNGnX37D9m1gumP9Ztwis0j8stdMNnrE
- cGBNKKEmAQZeDnorEqP0sUvah1PZvZAsHKhsIdYtJFHP/Hg2HXdwWw/w4JqRKh7tgUUK
- NGCg==
-X-Gm-Message-State: AOAM53016oISz5e0uMxy+kHpwebIoUHN4a4QbE4BjSluoNhf8PUun62c
- pdYGf54leH+MYNoK1+b8snM=
-X-Google-Smtp-Source: ABdhPJyLU/4FC56tDazvyGbryuQ04uANev9KjoowVlnl0s+BVYhQ5t9V+9Mz7a+xus7YmajAeqhwKw==
-X-Received: by 2002:ac2:54b9:: with SMTP id w25mr1838lfk.8.1608228456153;
- Thu, 17 Dec 2020 10:07:36 -0800 (PST)
+ bh=NlDMl6XjPevCn3rRvWT/f1VR4LdbuUD4/E02zVLuVCI=;
+ b=bQaM0QfjgTXBVfGfDM8RoeaiFZMIKEEqPq1tv5D6sFMgd52CJOMlA20vsgWoxZyw0n
+ mTOYV81DgtVUYcdSB+M1DzBMT549G1JuHaSPC5m0W9tMJ/s+1KR75hNupm6jOUrcu+Ej
+ j2ANK5quRJLr51qAGKv/isq1tOiGxwNYyldnq2awp2NBCiexQBsDYY/EY34H51+glnhu
+ aLLzdJtRR1g9CAqVD0IBz+653HkliHhmqeQZVz4Ot2Omu03mtuz7XGCD9oujGY3okpYd
+ UIhpO6rQKG698VJCKU+5+oR6ulB3DNqfRDSWvPr+d9NJxoZ8ucnMkTn14rm9lYv1gY5/
+ zY5w==
+X-Gm-Message-State: AOAM5336j6ZhHFY9THZxcyXHYgf7UTxXTc07eNYpPnNe2zFC2EYVQVX3
+ 2UG6k+jB0XRswVEFqgRuB00=
+X-Google-Smtp-Source: ABdhPJwLHLuEJNjyRdVPWt6WXEB6a0huo4TKPk5vwaRTMIFRcOi8N+JmP0jdXRGsy84KSAUugIUQMQ==
+X-Received: by 2002:a05:651c:2dc:: with SMTP id
+ f28mr207871ljo.13.1608228457280; 
+ Thu, 17 Dec 2020 10:07:37 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-57.dynamic.spd-mgts.ru.
  [109.252.192.57])
- by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.35
+ by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 10:07:35 -0800 (PST)
+ Thu, 17 Dec 2020 10:07:36 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Mark Brown <broonie@kernel.org>,
@@ -76,10 +77,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Peter De Schrijver <pdeschrijver@nvidia.com>,
  Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>
-Subject: [PATCH v2 14/48] opp: Filter out OPPs based on availability of a
- required-OPP
-Date: Thu, 17 Dec 2020 21:06:04 +0300
-Message-Id: <20201217180638.22748-15-digetx@gmail.com>
+Subject: [PATCH v2 15/48] opp: Support set_opp() customization without
+ requiring to use regulators
+Date: Thu, 17 Dec 2020 21:06:05 +0300
+Message-Id: <20201217180638.22748-16-digetx@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201217180638.22748-1-digetx@gmail.com>
 References: <20201217180638.22748-1-digetx@gmail.com>
@@ -105,43 +106,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-A required OPP may not be available, and thus, all OPPs which are using
-this required OPP should be unavailable too.
+Support set_opp() customization without requiring to use regulators. This
+is needed by drivers which want to use dev_pm_opp_set_rate() for changing
+rates of a multiple clocks and don't need to touch regulator.
+
+One example is NVIDIA Tegra30/114 SoCs which have two sibling 3D hardware
+units which should be use to the same clock rate, meanwhile voltage
+scaling is done using a power domain. In this case OPP table doesn't have
+a regulator, causing a NULL dereference in _set_opp_custom().
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/opp/core.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ drivers/opp/core.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/opp/core.c b/drivers/opp/core.c
-index d9feb7639598..3d02fe33630b 100644
+index 3d02fe33630b..625dae7a5ecb 100644
 --- a/drivers/opp/core.c
 +++ b/drivers/opp/core.c
-@@ -1588,7 +1588,7 @@ int _opp_add(struct device *dev, struct dev_pm_opp *new_opp,
- 	     struct opp_table *opp_table, bool rate_not_available)
+@@ -828,17 +828,25 @@ static int _set_opp_custom(const struct opp_table *opp_table,
+ 			   struct dev_pm_opp_supply *old_supply,
+ 			   struct dev_pm_opp_supply *new_supply)
  {
- 	struct list_head *head;
--	int ret;
-+	int i, ret;
+-	struct dev_pm_set_opp_data *data;
++	struct dev_pm_set_opp_data *data, tmp_data;
++	unsigned int regulator_count;
+ 	int size;
  
- 	mutex_lock(&opp_table->lock);
- 	head = &opp_table->opp_list;
-@@ -1615,6 +1615,15 @@ int _opp_add(struct device *dev, struct dev_pm_opp *new_opp,
- 			 __func__, new_opp->rate);
- 	}
- 
-+	for (i = 0; i < opp_table->required_opp_count && new_opp->available; i++) {
-+		if (new_opp->required_opps[i]->available)
-+			continue;
-+
-+		new_opp->available = false;
-+		dev_warn(dev, "%s: OPP not supported by required OPP %pOF (%lu)\n",
-+			 __func__, new_opp->required_opps[i]->np, new_opp->rate);
+-	data = opp_table->set_opp_data;
++	if (opp_table->set_opp_data) {
++		data = opp_table->set_opp_data;
++		regulator_count = opp_table->regulator_count;
++	} else {
++		data = &tmp_data;
++		regulator_count = 0;
 +	}
 +
- 	return 0;
- }
+ 	data->regulators = opp_table->regulators;
+-	data->regulator_count = opp_table->regulator_count;
++	data->regulator_count = regulator_count;
+ 	data->clk = opp_table->clk;
+ 	data->dev = dev;
  
+ 	data->old_opp.rate = old_freq;
+-	size = sizeof(*old_supply) * opp_table->regulator_count;
++	size = sizeof(*old_supply) * regulator_count;
+ 	if (!old_supply)
+ 		memset(data->old_opp.supplies, 0, size);
+ 	else
 -- 
 2.29.2
 
