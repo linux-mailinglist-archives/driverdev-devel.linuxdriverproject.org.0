@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 326322DD6CC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:07:48 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3188A87655;
-	Thu, 17 Dec 2020 18:07:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T6uiNs_5qRtC; Thu, 17 Dec 2020 18:07:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DCE168762A;
-	Thu, 17 Dec 2020 18:07:34 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A99081BF477
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E09B42DD6D2
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:08:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A66A587A95
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 719F387AA6;
+	Thu, 17 Dec 2020 18:07:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XquGR8xZF2lm; Thu, 17 Dec 2020 18:07:49 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id DFBB2876BC;
+	Thu, 17 Dec 2020 18:07:48 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 88FC71BF477
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7FA4F2E2BB
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gia8LaXF66xo for <devel@linuxdriverproject.org>;
- Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
+ with ESMTP id mjRpX0xVNLLA for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 18:07:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com
- [209.85.167.51])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CC20187A8A
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:29 +0000 (UTC)
-Received: by mail-lf1-f51.google.com with SMTP id a12so59835333lfl.6
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:29 -0800 (PST)
+Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com
+ [209.85.167.42])
+ by silver.osuosl.org (Postfix) with ESMTPS id 01A632E2B8
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:30 +0000 (UTC)
+Received: by mail-lf1-f42.google.com with SMTP id 23so59801541lfg.10
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yP8wRMt2G/dKkoQz0kDkh+VFFd+KrJNpavXd55zD7Hc=;
- b=Eevxt/jmSiXEagYpaEv4vTmdCIDS9N1+4fjs6XIYwYipyv36lpsy/C6pKYbwX3UiQu
- VAu1mRAoSEvOvC9CFXWr2nMYvvWgaq6SnOLErxU8ODNmC5j5jGOa6Ib2PM6ZcCqmH38P
- /ms4L91GUDsLbCwK3p/ykpA37+zlTT+eRvLma64wIszQWtha25BPEQkFpHNddqKyWQfT
- +buwKXxL3bX53bNkQosbcNQQk/A6YGx+HMISS5X5MXNlAcmh2539N1EunFi1fSgAdPPc
- lZu6y+bcf9lMXUeX6+mQg1Tjih0kF9Uxcyo55RH6sXDp4bTnJ3oHXwSLox21wctsWd9N
- I+6Q==
+ bh=85Y5Xy0sCYGIXnoBRS4PIkvg6O/T96bo2+JpLeZeoDU=;
+ b=HO8B6pRWWY34CmtfEP2kpsIswJ2lPhhfqt6pCe/KhgZFrWjAvhfVC/olegJlNCb7eF
+ UI3MKbRzrqIhUSxGSc5Ajvbj/hJs+jZ8oq79wnAhjB7etVTaRWe4bMbSawUlSSLPp3Sm
+ gCkoFwyBIrpdeWNZ5sjoyHEP793xOAsMnj6a4mh49sHgbLePE2qqdLPbO9YOXsp09Ar5
+ fFnxwvcfqqIwW6ZgiE1KVVbHtu/AdCwcdYddZ+PNfP7cZL8U7GJO6Xf5MAWOk7rTpt8Q
+ hKO49nwhSnI90wCCw8KhsSWqHvaLpPRSm/m3rAfl3WzFoYpQz3bkg9b+THJ9m6P12R5F
+ 8/ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=yP8wRMt2G/dKkoQz0kDkh+VFFd+KrJNpavXd55zD7Hc=;
- b=pbHGz21ksgpWBZNf8XkqchHbcLgZAhYOkno4XvvUJt6Od/PmkJAPkje5SXPKVYZEsP
- aPJsr53uupqltlMsz1HVuJ1sEpl5i9gr5vF9sfdg94+pqF847F2+FEDVTi4KLzMxmPD5
- egXUybtTQ+1aciPYs+3PomWsw56WJjZF9fBDHXUiU6FK+jJ0hBgFDJokhTI7qnJNNAxL
- wPJ4IgFSzXVBmDJ9jdJL+RDYeWujqKqi52dLDd2HKjB6plR9EVaTFl7EEquyyf4JngSN
- y8fqTAJGzuLvYxaNkqYzQUeoVGYN+qRanoFEnkChTzhEsfxWZ/MFoIBMnl+mmYz9M3NG
- xNyw==
-X-Gm-Message-State: AOAM533hBhrR7437bcIfk/rlXKR32eu5n9/VGULmlux24cuy7qyn/cFL
- iuPB00wlkwxvZ2x/2/LQ5xA=
-X-Google-Smtp-Source: ABdhPJxW3mip7l7QnT2EdI9cbqOdB8U51k+kpDGMuuvT5UJhcE0JXjG8oIyqWzLDIWmT1OVJbpI9yg==
-X-Received: by 2002:a19:c3c2:: with SMTP id t185mr1565lff.104.1608228448105;
- Thu, 17 Dec 2020 10:07:28 -0800 (PST)
+ bh=85Y5Xy0sCYGIXnoBRS4PIkvg6O/T96bo2+JpLeZeoDU=;
+ b=OZOJ4UDi2Pzi6PKsCaSGthFmmsot5S1gO4klDncKvJEY5qSXyPrKbEhAHbTVglwzGx
+ AG64aZKpSWdp/oeEoZXTmod+YPNvH+WD3wST17diWdV5LdQVq1AgjGPos9q7KLXI3D2v
+ u2xHrCC6TGxBC4G/PJJYsYBOQimCcyykGKtEXLlOXdsx4UG5YksSnBtXKGKrUBjEZ4FU
+ k3lZ/K8KUfLXJxp1U+Ni3gXYFpOo3BtoANvu10b9moFbUl34qmIJ+Vz44xnkg5Yrsqpq
+ 79r27ZCoz7gQ4RQZWtroIfKRxoFMunyGgLIkRaPBdH5aKVxUYaa8JLLDLNiCQQ06Hcqb
+ 3JNA==
+X-Gm-Message-State: AOAM533lpMcRoZgKNog9xOeXRT5iPgvU5mCZnibfMjgVLR2/Z7th7qhH
+ L9/rpPGk80zgL3epeQl7JTo=
+X-Google-Smtp-Source: ABdhPJxdsk3SmejHPdeEJpjzdTthLwWs3KYuEnkts5yzgKLNEZKMY28YcLV/8fEvQKXp+zJuE2Yd2Q==
+X-Received: by 2002:ac2:4359:: with SMTP id o25mr5495403lfl.536.1608228449259; 
+ Thu, 17 Dec 2020 10:07:29 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-57.dynamic.spd-mgts.ru.
  [109.252.192.57])
- by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.27
+ by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 10:07:27 -0800 (PST)
+ Thu, 17 Dec 2020 10:07:28 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Mark Brown <broonie@kernel.org>,
@@ -76,10 +76,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Peter De Schrijver <pdeschrijver@nvidia.com>,
  Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>
-Subject: [PATCH v2 07/48] dt-bindings: arm: tegra: Add binding for core power
- domain
-Date: Thu, 17 Dec 2020 21:05:57 +0300
-Message-Id: <20201217180638.22748-8-digetx@gmail.com>
+Subject: [PATCH v2 08/48] regulator: Make regulator_sync_voltage() usable by
+ coupled regulators
+Date: Thu, 17 Dec 2020 21:05:58 +0300
+Message-Id: <20201217180638.22748-9-digetx@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201217180638.22748-1-digetx@gmail.com>
 References: <20201217180638.22748-1-digetx@gmail.com>
@@ -105,69 +105,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-All NVIDIA Tegra SoCs have a core power domain where majority of hardware
-blocks reside. Add binding for the core power domain.
+Make regulator_sync_voltage() to re-balance voltage state of a coupled
+regulators instead of changing the voltage directly.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- .../arm/tegra/nvidia,tegra20-core-domain.yaml | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml
+ drivers/regulator/core.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml b/Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml
-new file mode 100644
-index 000000000000..f3d8fd2d8371
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/tegra/nvidia,tegra20-core-domain.yaml
-@@ -0,0 +1,48 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/tegra/nvidia,tegra20-core-domain.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
+index ca03d8e70bd1..576efb815eb8 100644
+--- a/drivers/regulator/core.c
++++ b/drivers/regulator/core.c
+@@ -4131,6 +4131,12 @@ int regulator_sync_voltage(struct regulator *regulator)
+ 	if (ret < 0)
+ 		goto out;
+ 
++	/* balance only if there are regulators coupled */
++	if (rdev->coupling_desc.n_coupled > 1) {
++		ret = regulator_balance_voltage(rdev, PM_SUSPEND_ON);
++		goto out;
++	}
 +
-+title: NVIDIA Tegra Core Power Domain
-+
-+maintainers:
-+  - Dmitry Osipenko <digetx@gmail.com>
-+  - Jon Hunter <jonathanh@nvidia.com>
-+  - Thierry Reding <thierry.reding@gmail.com>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - nvidia,tegra20-core-domain
-+      - nvidia,tegra30-core-domain
-+
-+  operating-points-v2:
-+    description:
-+      Should contain level, voltages and opp-supported-hw property.
-+      The supported-hw is a bitfield indicating SoC speedo or process
-+      ID mask.
-+
-+  "#power-domain-cells":
-+    const: 0
-+
-+  power-supply:
-+    description:
-+      Phandle to voltage regulator connected to the SoC Core power rail.
-+
-+required:
-+  - compatible
-+  - operating-points-v2
-+  - "#power-domain-cells"
-+  - power-supply
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    core-domain {
-+        compatible = "nvidia,tegra20-core-domain";
-+        operating-points-v2 = <&opp_table>;
-+        power-supply = <&regulator>;
-+        #power-domain-cells = <0>;
-+    };
+ 	ret = _regulator_do_set_voltage(rdev, min_uV, max_uV);
+ 
+ out:
 -- 
 2.29.2
 
