@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7694A2DD6DB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:08:13 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D5F452DD70C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:09:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F76887663;
-	Thu, 17 Dec 2020 18:08:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 28A722E33A;
+	Thu, 17 Dec 2020 18:09:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hSUloNTb9Mw9; Thu, 17 Dec 2020 18:08:01 +0000 (UTC)
+	with ESMTP id yCCBUrOgVgim; Thu, 17 Dec 2020 18:09:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0AF2A87648;
-	Thu, 17 Dec 2020 18:08:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AACDE2E2DC;
+	Thu, 17 Dec 2020 18:08:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EBF3A1BF9B6
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DC2F31BF9B6
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E24488793E
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D40178794F
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id idYu3DvB1mU5 for <devel@linuxdriverproject.org>;
- Thu, 17 Dec 2020 18:07:50 +0000 (UTC)
+ with ESMTP id X+Ewjo0OUQqR for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 18:07:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com
- [209.85.167.52])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8BC8E878D1
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:50 +0000 (UTC)
-Received: by mail-lf1-f52.google.com with SMTP id m12so59850553lfo.7
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:50 -0800 (PST)
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com
+ [209.85.167.51])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C5B7687943
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:51 +0000 (UTC)
+Received: by mail-lf1-f51.google.com with SMTP id o19so34209595lfo.1
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6bihTvUOG89oM9Y/xPaskNMPx8lkVh3OwDTHQ+rUz0Q=;
- b=YgQsVYInkk2m03hroKiBAdfDFB0PzOxzZdQWbW80OhGLnIy3SbqjhUVrhoSZeXa/0W
- QptR34QOdICKwEMJUmDxpjneCiq75Y7dTMq7ocCew51i7k6af4lsmH5StFCUi9OTDhVb
- fkffM7TvBqgMrqtPjxPVzHIrvwZiJjnMgj7xb07gyClRUZltKNMvyRF6okcKk1aStAZd
- mp728vEPg8JQCyoih6cV4ja0h8WnBc1s6FIBhCFwdaw3v0fMvuWj2P6nkduHjFPSOjQS
- keUpNhEJqrXcP7lE7tFFikb8lcCmKC63UC7B+C+1vO13XTwgbK+khXS51cmtHSOxZQKa
- Bzbw==
+ bh=PmBu9E2lIeozw0QkYWqe3D4pOekliocLu8JrWl5nny4=;
+ b=EPS29kv9Q9vOe6wgqe5DONcXtk0sVSUx85ZiXeHamtvdS3wv4XQD1m8FcHhtjA4J0u
+ WJ7s/9fectY4VCJGti53BT0w5BHKjdWK5DG/6uPZajKUSJ+QfKB1xTT3bWx8nnZ/6YEx
+ R1uOLMI3v7r0/KODn3O75mFfr7WU/WYV92H/GFIJE+LDOnXf//43yvBJUkqYK3LFc3yS
+ za1YN9CBQLJMiQDmt96cJVJ9ptT9MDoybRZaEARxn65Hhx9NuakJbAMrFhxFYgQAi/Tj
+ q5Ox90eUTSlb/QofCCJ+/nBR6XF3NdVQkxIlzbCHxOcPsjp2ug7KBulB9karp77fy0WD
+ NyRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6bihTvUOG89oM9Y/xPaskNMPx8lkVh3OwDTHQ+rUz0Q=;
- b=rxGMdGN9rh89QmHexk5fpNKoIQMoaKp1a0rWMNeDJuBeII9iQMqB5kSyTJBfrgbDWk
- V0Jtwsp01KZY2+eXQ+c2fxV1LZReMkaQ/IC07XzPPzM9hOnWzpuQz6DLcDE1Zn/tszDc
- vq/MSzqospFnRrNiXPwZqu1X6yDUj1fhdng87rWq6qNBQJqKE44DwSbEDYy9IccyFZrJ
- Z/iIRH3xw0Sy3y8PN7KhGURDetxS6MPCVcNL3tlb6SAZq1RfRfH6JQLH4p389rts4BwD
- KgeQ4lDzIYaF9VQEd6L/EwQAxppamgV+4DWcRTIZocK4OQj+yTJ65LlFV8auLOx3Ut7w
- IItA==
-X-Gm-Message-State: AOAM530OIiN2p0dv1GcKCJUbyx3QXRDLow0/ncBmhi3TWLYohTKKvrWo
- j2gEMCsEvi4hGSKR0yq6N30=
-X-Google-Smtp-Source: ABdhPJzce1teuxCCTBwGEaaplQ9RyWEJB7D0DJvqSLoeEK+KGIZsCfWwh4vgsDqV4p/wJQUKuj+Jzg==
-X-Received: by 2002:ac2:5547:: with SMTP id l7mr7724553lfk.313.1608228468872; 
- Thu, 17 Dec 2020 10:07:48 -0800 (PST)
+ bh=PmBu9E2lIeozw0QkYWqe3D4pOekliocLu8JrWl5nny4=;
+ b=IerV87MG3H6+Q6SPq9bKFVWxw6YTeXQZkK1RHxh9UoQzaJBO38QB9Zeao43jV3+wHR
+ /pT161qJ6fYEayF9pMmUP/0iJ/C8wA2NiU01bZVrIvfVEKHVH3nRB5aGRdrBtpIgmnXD
+ OVleeZ8yn/M/pto21MUI/JrOltb6fPx0u7F1X9X2dl18WkDm0qxm01RHnsJlrsxBwyLp
+ zg/YDMZ+B0ygqrrfW7cpFc09rpuCchoUnvNxD9Axmu655de0ZxLa9UmZeSU7020+Cu4S
+ shJaF9aKwnYmJAHiCqYVmV+NMv2VlDDdHB4JFayiCELLB+E4ojRWrmozxoCE09UYCXl7
+ wvDw==
+X-Gm-Message-State: AOAM531wyZxILmgWfCxohNSjPRBpHZtx8ZY1yeFtCyysuxGj/0OrbqTi
+ 14bUE5GBSuMoN2iH9ATxIqw=
+X-Google-Smtp-Source: ABdhPJwuD/q1ABQNnsDhwwbsY4LvwtjnLoFCXaYG1DCAoLzU2SaJeA+CHarpqRnPA6WcuWUQ7qagqw==
+X-Received: by 2002:ac2:4946:: with SMTP id o6mr14552075lfi.412.1608228470017; 
+ Thu, 17 Dec 2020 10:07:50 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-57.dynamic.spd-mgts.ru.
  [109.252.192.57])
- by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.47
+ by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 10:07:48 -0800 (PST)
+ Thu, 17 Dec 2020 10:07:49 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Mark Brown <broonie@kernel.org>,
@@ -76,10 +76,9 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Peter De Schrijver <pdeschrijver@nvidia.com>,
  Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>
-Subject: [PATCH v2 25/48] soc/tegra: pmc: Print out domain name when reset
- fails to acquire
-Date: Thu, 17 Dec 2020 21:06:15 +0300
-Message-Id: <20201217180638.22748-26-digetx@gmail.com>
+Subject: [PATCH v2 26/48] soc/tegra: Add devm_tegra_core_dev_init_opp_table()
+Date: Thu, 17 Dec 2020 21:06:16 +0300
+Message-Id: <20201217180638.22748-27-digetx@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201217180638.22748-1-digetx@gmail.com>
 References: <20201217180638.22748-1-digetx@gmail.com>
@@ -105,28 +104,215 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Print out domain name when reset fails to acquire for debugging purposes
-and to make formatting of GENPD errors consistent in the driver.
+Add common helper which initializes OPP table for Tegra SoC core devices.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/soc/tegra/pmc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/soc/tegra/common.c | 137 +++++++++++++++++++++++++++++++++++++
+ include/soc/tegra/common.h |  35 ++++++++++
+ 2 files changed, 172 insertions(+)
 
-diff --git a/drivers/soc/tegra/pmc.c b/drivers/soc/tegra/pmc.c
-index 8edcd5b319f6..4f96dc7745c4 100644
---- a/drivers/soc/tegra/pmc.c
-+++ b/drivers/soc/tegra/pmc.c
-@@ -821,7 +821,8 @@ static int tegra_genpd_power_off(struct generic_pm_domain *domain)
+diff --git a/drivers/soc/tegra/common.c b/drivers/soc/tegra/common.c
+index 3dc54f59cafe..1339d46f494d 100644
+--- a/drivers/soc/tegra/common.c
++++ b/drivers/soc/tegra/common.c
+@@ -3,9 +3,16 @@
+  * Copyright (C) 2014 NVIDIA CORPORATION.  All rights reserved.
+  */
  
- 	err = reset_control_acquire(pg->reset);
- 	if (err < 0) {
--		pr_err("failed to acquire resets: %d\n", err);
-+		dev_err(dev, "failed to acquire resets for PM domain %s: %d\n",
-+			pg->genpd.name, err);
- 		return err;
- 	}
++#define dev_fmt(fmt)	"tegra-soc: " fmt
++
++#include <linux/clk.h>
++#include <linux/device.h>
++#include <linux/export.h>
+ #include <linux/of.h>
++#include <linux/pm_opp.h>
  
+ #include <soc/tegra/common.h>
++#include <soc/tegra/fuse.h>
+ 
+ static const struct of_device_id tegra_machine_match[] = {
+ 	{ .compatible = "nvidia,tegra20", },
+@@ -31,3 +38,133 @@ bool soc_is_tegra(void)
+ 
+ 	return match != NULL;
+ }
++
++static int tegra_core_dev_init_opp_state(struct device *dev)
++{
++	struct dev_pm_opp *opp;
++	unsigned long rate;
++	struct clk *clk;
++	int err;
++
++	clk = devm_clk_get(dev, NULL);
++	if (IS_ERR(clk)) {
++		dev_err(dev, "failed to get clk: %pe\n", clk);
++		return PTR_ERR(clk);
++	}
++
++	/*
++	 * If voltage regulator presents, then we could select the fastest
++	 * clock rate, but driver doesn't support power management and
++	 * frequency scaling yet, hence the top freq OPP will vote for a
++	 * very high voltage that will produce lot's of heat.  Let's select
++	 * OPP for the current/default rate for now.
++	 *
++	 * Clock rate should be pre-initialized (i.e. it's non-zero) either
++	 * by clock driver or by assigned clocks in a device-tree.
++	 */
++	rate = clk_get_rate(clk);
++	if (!rate) {
++		dev_err(dev, "failed to get clk rate\n");
++		return -EINVAL;
++	}
++
++	/* find suitable OPP for the clock rate and supportable by hardware */
++	opp = dev_pm_opp_find_freq_ceil(dev, &rate);
++
++	/*
++	 * dev_pm_opp_set_rate() doesn't search for a floor clock rate and it
++	 * will error out if default clock rate is too high, i.e. unsupported
++	 * by a SoC hardware version.  Hence will find floor rate by ourselves.
++	 */
++	if (opp == ERR_PTR(-ERANGE))
++		opp = dev_pm_opp_find_freq_floor(dev, &rate);
++
++	err = PTR_ERR_OR_ZERO(opp);
++	if (err) {
++		dev_err(dev, "failed to get OPP for %ld Hz: %d\n",
++			rate, err);
++		return err;
++	}
++
++	dev_pm_opp_put(opp);
++
++	/*
++	 * First dummy rate-set initializes voltage vote by setting voltage
++	 * in accordance to the clock rate.  We need to do this because some
++	 * drivers currently don't support power management and clock is
++	 * permanently enabled.
++	 */
++	err = dev_pm_opp_set_rate(dev, rate);
++	if (err) {
++		dev_err(dev, "failed to initialize OPP clock: %d\n", err);
++		return err;
++	}
++
++	return 0;
++}
++
++/**
++ * devm_tegra_core_dev_init_opp_table() - initialize OPP table
++ * @cfg: pointer to the OPP table configuration
++ *
++ * This function will initialize OPP table and sync OPP state of a Tegra SoC
++ * core device.
++ *
++ * Return: 0 on success or errorno.
++ */
++int devm_tegra_core_dev_init_opp_table(struct device *dev,
++				       struct tegra_core_opp_params *params)
++{
++	struct opp_table *opp_table;
++	u32 hw_version;
++	int err;
++
++	opp_table = devm_pm_opp_set_clkname(dev, NULL);
++	if (IS_ERR(opp_table)) {
++		dev_err(dev, "failed to set OPP clk %pe\n", opp_table);
++		return PTR_ERR(opp_table);
++	}
++
++	/* Tegra114+ don't support OPP yet */
++	if (!of_machine_is_compatible("nvidia,tegra20") &&
++	    !of_machine_is_compatible("nvidia,tegra30"))
++		return -ENODEV;
++
++	if (of_machine_is_compatible("nvidia,tegra20"))
++		hw_version = BIT(tegra_sku_info.soc_process_id);
++	else
++		hw_version = BIT(tegra_sku_info.soc_speedo_id);
++
++	opp_table = devm_pm_opp_set_supported_hw(dev, &hw_version, 1);
++	if (IS_ERR(opp_table)) {
++		dev_err(dev, "failed to set OPP supported HW: %pe\n", opp_table);
++		return PTR_ERR(opp_table);
++	}
++
++	/*
++	 * Older device-trees have an empty OPP table, hence we will get
++	 * -ENODEV from devm_pm_opp_of_add_table() for the older DTBs.
++	 *
++	 * The OPP table presence also varies per-device and depending
++	 * on a SoC generation, hence -ENODEV is expected to happen for
++	 * the newer DTs as well.
++	 */
++	err = devm_pm_opp_of_add_table(dev);
++	if (err) {
++		if (err == -ENODEV)
++			dev_err_once(dev, "OPP table not found, please update device-tree\n");
++		else
++			dev_err(dev, "failed to add OPP table: %d\n", err);
++
++		return err;
++	}
++
++	if (params->init_state) {
++		err = tegra_core_dev_init_opp_state(dev);
++		if (err)
++			return err;
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(devm_tegra_core_dev_init_opp_table);
+diff --git a/include/soc/tegra/common.h b/include/soc/tegra/common.h
+index 98027a76ce3d..57b56793a9e5 100644
+--- a/include/soc/tegra/common.h
++++ b/include/soc/tegra/common.h
+@@ -6,6 +6,41 @@
+ #ifndef __SOC_TEGRA_COMMON_H__
+ #define __SOC_TEGRA_COMMON_H__
+ 
++#include <linux/errno.h>
++#include <linux/types.h>
++
++struct clk;
++struct device;
++
++/**
++ * Tegra SoC core device OPP table configuration
++ *
++ * @dev: pointer to the core device
++ * @clkname: name of clock used for DVFS
++ * @init_state: pre-initialize OPP state of a device
++ */
++struct tegra_core_opp_params {
++	struct device *dev;
++	const char *clkname;
++	bool init_state;
++};
++
++#ifdef CONFIG_ARCH_TEGRA
+ bool soc_is_tegra(void);
++int devm_tegra_core_dev_init_opp_table(struct device *dev,
++				       struct tegra_core_opp_params *cfg);
++#else
++static inline bool soc_is_tegra(void)
++{
++	return false;
++}
++
++static inline int
++devm_tegra_core_dev_init_opp_table(struct device *dev,
++				   struct tegra_core_opp_params *cfg)
++{
++	return -ENODEV;
++}
++#endif
+ 
+ #endif /* __SOC_TEGRA_COMMON_H__ */
 -- 
 2.29.2
 
