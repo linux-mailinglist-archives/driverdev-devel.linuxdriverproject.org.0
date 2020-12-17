@@ -1,76 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F18EB2DBEBC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Dec 2020 11:37:24 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C944E2DCDEF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 09:58:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 92CD385F6F;
-	Wed, 16 Dec 2020 10:37:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2064587A47;
+	Thu, 17 Dec 2020 08:58:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hgmiVnBuhvze; Wed, 16 Dec 2020 10:37:23 +0000 (UTC)
+	with ESMTP id gVhcCTqI5KDU; Thu, 17 Dec 2020 08:58:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8386885BC4;
-	Wed, 16 Dec 2020 10:37:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7221C87A18;
+	Thu, 17 Dec 2020 08:58:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 186841BF2FA
- for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 10:37:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 29FB91BF355
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 08:58:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 02D4621505
- for <devel@linuxdriverproject.org>; Wed, 16 Dec 2020 10:37:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 15F2B203EF
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 08:58:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oTKWSZh9lyOc for <devel@linuxdriverproject.org>;
- Wed, 16 Dec 2020 10:37:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com
- [209.85.208.47])
- by silver.osuosl.org (Postfix) with ESMTPS id A427B21543
- for <devel@driverdev.osuosl.org>; Wed, 16 Dec 2020 10:37:14 +0000 (UTC)
-Received: by mail-ed1-f47.google.com with SMTP id q16so24246959edv.10
- for <devel@driverdev.osuosl.org>; Wed, 16 Dec 2020 02:37:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=bsYmkfEVvQqgzD1O+aSIpPO4CsKO+u0Ea3O6N1E481c=;
- b=E1gRWKOIK1EEv0yOYoQV3P1kGDMjSZejlfc9pBHAb3Ok+GL+cHeIuNDOxsqtxGH7Ef
- TItAt0jy8MO6I7jrtnl/EtsFj0NIH1iYsicmOwSPqBC1WpEozE46gxcOkApFuK3yM67H
- 3kAry0qXXNXvRk60jFkvTEZAae8Qsj65vAyBAUKRnpHNAwnLStkzn9Vg5UxXlJKu3xpl
- subhgINJugcYcDXVXRZF/R2lvLpHgjtSBDprPGBKaHegBUYMCngYjKnV0iQpkn1k/D1c
- YT3MZIqrg5HTPLQjTDj2jiSiTcHfX6l7pl6tyiuZGhOajtlGx2wi/GcI+CwN3awjt/km
- I9BQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bsYmkfEVvQqgzD1O+aSIpPO4CsKO+u0Ea3O6N1E481c=;
- b=ubvIYaRdFqLxnLln7W3CCw9Gzkri00XVjnXTiPU4vaL9cqj95kOHj0spyhvrzUMlw6
- Dt/MT2BHl3CmNU4ZwNk9YBM7aP0n4WZWn2NkPLGL9ycs48V72XHiAV4EHQ0iqVEM6Ich
- ybFucWsmA1q1VJT31VuY1gwoqTztp5mtzkHknWaMKP+EW5P39YAQQK0dOg2AksrfDTBP
- fzGYY/eDP44wT/FaPx5rVb18rLC5DLZUBx05bf68dqXAGa5xQanFlAhAm81vxVFBIeRa
- Vu8SE8j4dV/xymozp8ZTZJP6MtgL2kj5afSX0KTGBd7aaXgyplTVkSJSMR/fb1ASTUNf
- 6Sfg==
-X-Gm-Message-State: AOAM530+KnAHIxmwx0g88jDNh8e4xCJAQtry3YLUGzZ4VY3ilZecPruG
- 6nzrJNm8b0JKQTZes2oiPvUkQZZMxiwOCreGtXdXyg==
-X-Google-Smtp-Source: ABdhPJwS+suNBsnmqdweQsc8crfYev1Kw3Evg9H2jPGzz2d+ZRjYUcCPzp4JsF4gaLfvS+QySSxQ51abC3XScJaIYz4=
-X-Received: by 2002:a50:b742:: with SMTP id g60mr32617780ede.113.1608115033228; 
- Wed, 16 Dec 2020 02:37:13 -0800 (PST)
+ with ESMTP id doZINJ-moke0 for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 08:58:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 11C00203BA
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 08:58:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1608195507;
+ bh=89Rrw3aBfmj49VIcsFK0hxM3oXxLCW7ouMh8y82kb8c=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=jSM8yIJeNXE2vbVBtrhtHPxiIvg3M2ZUY4PpsQ6HWbzbJ57SHE7Su1WHykBMYxJfv
+ 7Oet2owLzFdWUI7lKwBCNx1Vhm0MmL9Qr9p6QM9EcWH3dZSse/NhX0IKLuPCeFhLp/
+ mvXDJARC/IrF++8iS9JIh6MdK/N1yM30FbdQM2hEdXi7HRbTW66pN3dQ7abUhi87a4
+ JhrKcevsI++WNiAtoNs7ZnNFtYOZQN+WlIGNRXSMY4P/zHHz4opdahBPzpfcheuR/V
+ VdAV3dgvfPJeH9QniPA9YLljEidWSb5XcqQchHh5xFooX9LHZni7L1Aknyp94dXP1J
+ w4bk84/dNUniw==
 MIME-Version: 1.0
-References: <20201211164801.7838-1-nsaenzjulienne@suse.de>
- <20201211164801.7838-2-nsaenzjulienne@suse.de>
-In-Reply-To: <20201211164801.7838-2-nsaenzjulienne@suse.de>
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Wed, 16 Dec 2020 11:37:02 +0100
-Message-ID: <CAMpxmJUoTHq+ZMm6UOH3tmhGMuDEG5sPn4hiXiZdwSP3FV-hjg@mail.gmail.com>
-Subject: Re: [PATCH v6 01/11] firmware: raspberrypi: Keep count of all
- consumers
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+In-Reply-To: <20201122095556.21597-3-sergio.paracuellos@gmail.com>
+References: <20201122095556.21597-1-sergio.paracuellos@gmail.com>
+ <20201122095556.21597-3-sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH v4 2/6] dt: bindings: add mt7621-clk device tree binding
+ documentation
+From: Stephen Boyd <sboyd@kernel.org>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>, mturquette@baylibre.com
+Date: Thu, 17 Dec 2020 00:58:26 -0800
+Message-ID: <160819550615.1580929.14234996916739809712@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,37 +64,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
- linux-devicetree <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Ray Jui <rjui@broadcom.com>, Linus Walleij <linus.walleij@linaro.org>,
- Linux Input <linux-input@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
- linux-gpio <linux-gpio@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- Philipp Zabel <p.zabel@pengutronix.de>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-clk <linux-clk@vger.kernel.org>,
- arm-soc <linux-arm-kernel@lists.infradead.org>,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: hackpascal@gmail.com, devel@driverdev.osuosl.org, tsbogend@alpha.franken.de,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ evicetree@vger.kernel.org, linux-mips@vger.kernel.org, robh+dt@kernel.org,
+ john@phrozen.org, neil@brown.name, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gRnJpLCBEZWMgMTEsIDIwMjAgYXQgNTo0OCBQTSBOaWNvbGFzIFNhZW56IEp1bGllbm5lCjxu
-c2FlbnpqdWxpZW5uZUBzdXNlLmRlPiB3cm90ZToKPgo+IFdoZW4gdW5iaW5kaW5nIHRoZSBmaXJt
-d2FyZSBkZXZpY2Ugd2UgbmVlZCB0byBtYWtlIHN1cmUgaXQgaGFzIG5vCj4gY29uc3VtZXJzIGxl
-ZnQuIE90aGVyd2lzZSB3ZSdkIGxlYXZlIHRoZW0gd2l0aCBhIGZpcm13YXJlIGhhbmRsZQo+IHBv
-aW50aW5nIGF0IGZyZWVkIG1lbW9yeS4KPgo+IEtlZXAgYSByZWZlcmVuY2UgY291bnQgb2YgYWxs
-IGNvbnN1bWVycyBhbmQgaW50cm9kdWNlIHJwaV9maXJtd2FyZV9wdXQoKQo+IHdoaWNoIHdpbGwg
-cGVybWl0IGF1dG9tYXRpY2FsbHkgZGVjcmVhc2UgdGhlIHJlZmVyZW5jZSBjb3VudCB1cG9uCj4g
-dW5iaW5kaW5nIGNvbnN1bWVyIGRyaXZlcnMuCj4KPiBTdWdnZXN0ZWQtYnk6IFV3ZSBLbGVpbmUt
-S8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Cj4gU2lnbmVkLW9mZi1ieTog
-Tmljb2xhcyBTYWVueiBKdWxpZW5uZSA8bnNhZW56anVsaWVubmVAc3VzZS5kZT4KPiBSZXZpZXdl
-ZC1ieTogRmxvcmlhbiBGYWluZWxsaSA8Zi5mYWluZWxsaUBnbWFpbC5jb20+Cj4KPiAtLS0KClJl
-dmlld2VkLWJ5OiBCYXJ0b3N6IEdvbGFzemV3c2tpIDxiZ29sYXN6ZXdza2lAYmF5bGlicmUuY29t
-PgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
-YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
-LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Quoting Sergio Paracuellos (2020-11-22 01:55:52)
+> Adds device tree binding documentation for clocks in the
+> MT7621 SOC.
+> 
+> Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> ---
+>  .../bindings/clock/mediatek,mt7621-clk.yaml   | 67 +++++++++++++++++++
+>  1 file changed, 67 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
+> 
+
+Rob?
+
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
+> new file mode 100644
+> index 000000000000..6aca4c1a4a46
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
+> @@ -0,0 +1,67 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/mediatek,mt7621-clk.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MT7621 Clock Device Tree Bindings
+> +
+> +maintainers:
+> +  - Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> +
+> +description: |
+> +  The MT7621 has a PLL controller from where the cpu clock is provided
+> +  as well as derived clocks for the bus and the peripherals. It also
+> +  can gate SoC device clocks.
+> +
+> +  Each clock is assigned an identifier and client nodes use this identifier
+> +  to specify the clock which they consume.
+> +
+> +  All these identifiers could be found in:
+> +  [1]: <include/dt-bindings/clock/mt7621-clk.h>.
+> +
+> +  The mt7621 clock node should be the child of a syscon node with the
+> +  required property:
+> +
+> +  - compatible: Should be one of the following:
+> +                "mediatek,mt7621-sysc", "syscon"
+> +
+> +  Refer to the bindings described in
+> +  Documentation/devicetree/bindings/mfd/syscon.yaml
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt7621-clk
+> +
+> +  "#clock-cells":
+> +    description:
+> +      The first cell indicates the clock gate number, see [1] for available
+> +      clocks.
+> +    const: 1
+> +
+> +  clock-output-names:
+> +    maxItems: 8
+> +
+> +required:
+> +  - compatible
+> +  - '#clock-cells'
+> +  - clock-output-names
+
+Why is clock-output-names required? Hopefully it is not required.
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt7621-clk.h>
+> +
+> +    sysc: sysc@0 {
+
+syscon@0? I don't think sysc is a standard node name.
+
+> +      compatible = "mediatek,mt7621-sysc", "syscon";
+> +      reg = <0x0 0x100>;
+> +
+> +      pll {
+
+clock-controller? Why can't the parent device be the clk provider and
+have #clock-cells?
+
+> +        compatible = "mediatek,mt7621-clk";
+> +        #clock-cells = <1>;
+> +        clock-output-names = "xtal", "cpu", "bus",
+> +                             "50m", "125m", "150m",
+> +                             "250m", "270m";
+> +      };
+> +    };
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
