@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAA502DD6D4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:08:04 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EA982DD6D8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Dec 2020 19:08:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 522CB87AB5;
-	Thu, 17 Dec 2020 18:07:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A3F98765F;
+	Thu, 17 Dec 2020 18:07:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2kFDOX8tfKVk; Thu, 17 Dec 2020 18:07:53 +0000 (UTC)
+	with ESMTP id R0ojQCzr8Dqx; Thu, 17 Dec 2020 18:07:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9A9F887A9C;
-	Thu, 17 Dec 2020 18:07:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EFE0A8762A;
+	Thu, 17 Dec 2020 18:07:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EBB2D1BF477
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 477D41BF9BD
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E8604879D9
- for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 439AA8794A
+ for <devel@linuxdriverproject.org>; Thu, 17 Dec 2020 18:07:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7fxwRZ0ey9IO for <devel@linuxdriverproject.org>;
- Thu, 17 Dec 2020 18:07:46 +0000 (UTC)
+ with ESMTP id TtUHsae0X4Lt for <devel@linuxdriverproject.org>;
+ Thu, 17 Dec 2020 18:07:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com
- [209.85.167.52])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 08283876BC
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:46 +0000 (UTC)
-Received: by mail-lf1-f52.google.com with SMTP id o13so36633345lfr.3
- for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:45 -0800 (PST)
+Received: from mail-lf1-f49.google.com (mail-lf1-f49.google.com
+ [209.85.167.49])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 29BAF87949
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 18:07:47 +0000 (UTC)
+Received: by mail-lf1-f49.google.com with SMTP id o17so56901247lfg.4
+ for <devel@driverdev.osuosl.org>; Thu, 17 Dec 2020 10:07:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4FYxQew+p18AO5FBSec7kTxg/87GRcpO76q4A6IgDv4=;
- b=cOKXXBVSpDRg0y9isOFdN9ypZc0EDS0wcBFXXnpHA5gHfe4rMBp0KSj+DDdWOL11DO
- 14H+OQC2eE39/MWECC9kqvFurVIqFvJ2WndhK/heNmgpBhaBuetfvjX3bSbDChUGYlOl
- M03g7jnK6aEYOl3VVMYqgb92F5jHXviJ0kadHsCvkB6DjdIkY3a6/yN0ivwTWZMQPNas
- 0wbcDxjvzueYloI0q/vTGlIggkOTjoKgB+9h6hdCf1lTJRXhHWJAjOP8NmnXryCCK0tq
- y7aL9Gb5rsb/CvF+4IQm84UqG1pgiogHxaF3WzjOcQgVdkCBNmmODR0H0IjN3ODbgQKH
- YcOA==
+ bh=NX+MS+anU76BlhEILutoJiS/7/Thy1nqdrl3kCzllJ4=;
+ b=m+RcrvCN5SVrC4E9GsHQPZphjjmtSgb6vuW0wmrHP3sg/7u7V+Hka3Yz10nHRBIxUV
+ 8UV768vcIQ+01fjn0PkPPxF+oLpCfOhdiGMGBDnrsILzLvxYhOSOifjhnRxs/HVEVyn6
+ 3ZsI83oqk77uAHPWY8AhNT3DQe6YpD0gs1NFWahq0b0q9n4yDXnm7aBZCe5eDJG1LvpP
+ zjMk/P17UXO40lcqYkyijOIomLa1G4M0uXMPS0E9EQAbEU49va0WIVYn6oBBujqzciPE
+ QaxGQKnyhWyxfVKhKid9wYcl1G+4A72GGTAmGaMdNzjWKaK3YvR+eOFL4SdIEwRHHc65
+ RtZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4FYxQew+p18AO5FBSec7kTxg/87GRcpO76q4A6IgDv4=;
- b=IY40EeGBXbg6DhEsf2g6Z9cly8sySbZ7sM2T6scY66/QifpW60cZ6UXV23nYDe1iuW
- cQEcdeZ90jBpq+NDavpYoXkVRidHdjLSmu5JJDYchJRLMKAQRqKNyCwJBQuwYY2ScqFh
- eahkPQc3YEd8RYv/nsXGvqopdc5zzCcqa3h00CWywPT/ZwO5as5TLmdv6HwmEl/ksF2F
- wygEKcQ8eUjkZVo7F6d4Hd6GblvUoFiyQJT53SPSIFvcZBaVbrSaGi1vgS63u38pOqai
- ZMvYz4ga/+v7SYu7hDJbwiQK4Nk/L3XZq5SxyX/JMnsx3db6VtsK/h/yN1bRAi9GI1/D
- YcnQ==
-X-Gm-Message-State: AOAM533CyhpRXom2VSCh9E68mt43DVl134zxofUSZjQ2L+GrsfD7ZiqJ
- j02iXk9L6Ec0DIdUPVK9IGo=
-X-Google-Smtp-Source: ABdhPJwJR2PqCRmXe5Tfarwrq+QmAbDDyYK3hcoSttNokb6f8iiftpP/z20ln6MtYTWY0f0cfPKVTg==
-X-Received: by 2002:a2e:712:: with SMTP id 18mr205136ljh.165.1608228464322;
- Thu, 17 Dec 2020 10:07:44 -0800 (PST)
+ bh=NX+MS+anU76BlhEILutoJiS/7/Thy1nqdrl3kCzllJ4=;
+ b=fKm72hkxJEYwH9oNLkqgX0juWEzWO0S+tFlcCRZqtdGLhy+OttFAw/6hesl/H5c/IS
+ DiCngmCbugXZNJiMaxcfv72oCA/t98kZMBAzoT0EdpLc9cFtPwfAWarV9ORCUb7t32RP
+ q3OhnfpH0xJDai5+V4sM8MVeXjMciCvUVCcNV/HJTom0phpDHU0hZLMI07jK2GacIfvE
+ mCptlYZfPG5h2egigNki1ZehntlBEOVIN/n6GJaeFBOXbVLyFbrs1PzO/CMt8n30e/LI
+ wRbSmih/XWGDPy63BUc0d4yfxCh7UsblCeltEPceGqaJVXRYRa8TtZlq8mgSA3JvoLGL
+ 9zaQ==
+X-Gm-Message-State: AOAM5334RuZ957QwodEuDAr3iSq2WL4ojZuHDo+t4Cd2JUIJr5BvchoR
+ 6edGFsyjYodhNHqRIr+lSZc=
+X-Google-Smtp-Source: ABdhPJzZPdbXPbkUp1eRbNGTe1GkWb+tswPD3NA3JbqvyYw4q06czICReBowWtbbVUqPBOhPjZBhXQ==
+X-Received: by 2002:a19:9d8:: with SMTP id 207mr8275690lfj.581.1608228465466; 
+ Thu, 17 Dec 2020 10:07:45 -0800 (PST)
 Received: from localhost.localdomain (109-252-192-57.dynamic.spd-mgts.ru.
  [109.252.192.57])
- by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.43
+ by smtp.gmail.com with ESMTPSA id u5sm655596lff.78.2020.12.17.10.07.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 10:07:43 -0800 (PST)
+ Thu, 17 Dec 2020 10:07:45 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Mark Brown <broonie@kernel.org>,
@@ -76,10 +76,10 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  Peter De Schrijver <pdeschrijver@nvidia.com>,
  Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>
-Subject: [PATCH v2 21/48] PM: domains: Add "performance" column to debug
- summary
-Date: Thu, 17 Dec 2020 21:06:11 +0300
-Message-Id: <20201217180638.22748-22-digetx@gmail.com>
+Subject: [PATCH v2 22/48] soc/tegra: pmc: Fix imbalanced clock disabling in
+ error code path
+Date: Thu, 17 Dec 2020 21:06:12 +0300
+Message-Id: <20201217180638.22748-23-digetx@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201217180638.22748-1-digetx@gmail.com>
 References: <20201217180638.22748-1-digetx@gmail.com>
@@ -105,76 +105,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add "performance" column to debug summary which shows performance state
-of all power domains and theirs devices.
+The tegra_powergate_power_up() has a typo in the error code path where it
+will try to disable clocks twice, fix it. In practice that error never
+happens, so this is a minor correction.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/base/power/domain.c | 22 +++++++++++++++++-----
- 1 file changed, 17 insertions(+), 5 deletions(-)
+ drivers/soc/tegra/pmc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/base/power/domain.c b/drivers/base/power/domain.c
-index a3e1bfc233d4..1c60dae8540c 100644
---- a/drivers/base/power/domain.c
-+++ b/drivers/base/power/domain.c
-@@ -2951,7 +2951,15 @@ static void rtpm_status_str(struct seq_file *s, struct device *dev)
- 	else
- 		WARN_ON(1);
+diff --git a/drivers/soc/tegra/pmc.c b/drivers/soc/tegra/pmc.c
+index df9a5ca8c99c..fd2ba3c59178 100644
+--- a/drivers/soc/tegra/pmc.c
++++ b/drivers/soc/tegra/pmc.c
+@@ -638,7 +638,7 @@ static int tegra_powergate_power_up(struct tegra_powergate *pg,
  
--	seq_puts(s, p);
-+	seq_printf(s, "%-25s  ", p);
-+}
-+
-+static void perf_status_str(struct seq_file *s, struct device *dev)
-+{
-+	struct generic_pm_domain_data *gpd_data;
-+
-+	gpd_data = to_gpd_data(dev->power.subsys_data->domain_data);
-+	seq_put_decimal_ull(s, "", gpd_data->performance_state);
- }
+ 	err = tegra_powergate_enable_clocks(pg);
+ 	if (err)
+-		goto disable_clks;
++		goto powergate_off;
  
- static int genpd_summary_one(struct seq_file *s,
-@@ -2979,7 +2987,7 @@ static int genpd_summary_one(struct seq_file *s,
- 	else
- 		snprintf(state, sizeof(state), "%s",
- 			 status_lookup[genpd->status]);
--	seq_printf(s, "%-30s  %-15s ", genpd->name, state);
-+	seq_printf(s, "%-30s  %-50s %u", genpd->name, state, genpd->performance_state);
+ 	usleep_range(10, 20);
  
- 	/*
- 	 * Modifications on the list require holding locks on both
-@@ -2987,7 +2995,10 @@ static int genpd_summary_one(struct seq_file *s,
- 	 * Also genpd->name is immutable.
- 	 */
- 	list_for_each_entry(link, &genpd->parent_links, parent_node) {
--		seq_printf(s, "%s", link->child->name);
-+		if (list_is_first(&link->parent_node, &genpd->parent_links))
-+			seq_printf(s, "\n%50s ", link->child->name);
-+		else
-+			seq_printf(s, "%s", link->child->name);
- 		if (!list_is_last(&link->parent_node, &genpd->parent_links))
- 			seq_puts(s, ", ");
- 	}
-@@ -3001,6 +3012,7 @@ static int genpd_summary_one(struct seq_file *s,
- 
- 		seq_printf(s, "\n    %-50s  ", kobj_path);
- 		rtpm_status_str(s, pm_data->dev);
-+		perf_status_str(s, pm_data->dev);
- 		kfree(kobj_path);
- 	}
- 
-@@ -3016,9 +3028,9 @@ static int summary_show(struct seq_file *s, void *data)
- 	struct generic_pm_domain *genpd;
- 	int ret = 0;
- 
--	seq_puts(s, "domain                          status          children\n");
-+	seq_puts(s, "domain                          status          children                           performance\n");
- 	seq_puts(s, "    /device                                             runtime status\n");
--	seq_puts(s, "----------------------------------------------------------------------\n");
-+	seq_puts(s, "----------------------------------------------------------------------------------------------\n");
- 
- 	ret = mutex_lock_interruptible(&gpd_list_lock);
- 	if (ret)
 -- 
 2.29.2
 
