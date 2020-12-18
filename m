@@ -1,67 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF4FB2DE0BB
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Dec 2020 11:08:49 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73E222DE12C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Dec 2020 11:38:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5F675878BF;
-	Fri, 18 Dec 2020 10:08:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B9D6387AD2;
+	Fri, 18 Dec 2020 10:38:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id flkhb2W_SW89; Fri, 18 Dec 2020 10:08:46 +0000 (UTC)
+	with ESMTP id lGLW4xLLSbTC; Fri, 18 Dec 2020 10:38:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3FC52878AA;
-	Fri, 18 Dec 2020 10:08:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 396B787A67;
+	Fri, 18 Dec 2020 10:38:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 915C41BF385
- for <devel@linuxdriverproject.org>; Fri, 18 Dec 2020 10:08:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D54601BF385
+ for <devel@linuxdriverproject.org>; Fri, 18 Dec 2020 10:38:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8C1C9878AA
- for <devel@linuxdriverproject.org>; Fri, 18 Dec 2020 10:08:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D1E45878B9
+ for <devel@linuxdriverproject.org>; Fri, 18 Dec 2020 10:38:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1wFdE3zYqvjW for <devel@linuxdriverproject.org>;
- Fri, 18 Dec 2020 10:08:43 +0000 (UTC)
+ with ESMTP id NsUuqWJA05A0 for <devel@linuxdriverproject.org>;
+ Fri, 18 Dec 2020 10:38:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0184.hostedemail.com
- [216.40.44.184])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BCA0D878A8
- for <devel@driverdev.osuosl.org>; Fri, 18 Dec 2020 10:08:43 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay06.hostedemail.com (Postfix) with ESMTP id 821BB18026431;
- Fri, 18 Dec 2020 10:08:42 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3867:3870:3872:3874:4321:5007:7576:8879:10004:10400:10848:11026:11232:11658:11914:12296:12297:12740:12760:12895:13069:13311:13357:13439:14096:14097:14659:14721:21080:21627:21773:21796:30030:30036:30054:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: rock88_2b13b822743c
-X-Filterd-Recvd-Size: 2292
-Received: from XPS-9350.home (unknown [47.151.137.21])
- (Authenticated sender: joe@perches.com)
- by omf19.hostedemail.com (Postfix) with ESMTPA;
- Fri, 18 Dec 2020 10:08:40 +0000 (UTC)
-Message-ID: <c09401d003360cff41c949ccaea8ae9dc7b2c733.camel@perches.com>
-Subject: Re: [PATCH] staging: most: video: fixed a parentheses coding style
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [185.58.86.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9FC11878B7
+ for <devel@driverdev.osuosl.org>; Fri, 18 Dec 2020 10:38:39 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-197-PIVC8sKqNfOkRnhW4ZbtOA-1; Fri, 18 Dec 2020 10:38:35 +0000
+X-MC-Unique: PIVC8sKqNfOkRnhW4ZbtOA-1
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Fri, 18 Dec 2020 10:38:35 +0000
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Fri, 18 Dec 2020 10:38:35 +0000
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Joe Perches' <joe@perches.com>, Daniel West <daniel.west.dev@gmail.com>, 
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Subject: RE: [PATCH] staging: most: video: fixed a parentheses coding style
  issue.
-From: Joe Perches <joe@perches.com>
-To: David Laight <David.Laight@ACULAB.COM>, Daniel West
- <daniel.west.dev@gmail.com>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>
-Date: Fri, 18 Dec 2020 02:08:39 -0800
-In-Reply-To: <d5993e314b134e038a1e4eeba32833ce@AcuMS.aculab.com>
+Thread-Topic: [PATCH] staging: most: video: fixed a parentheses coding style
+ issue.
+Thread-Index: AQHW1NDTd/J3KnGAs0yZSrCCE0TdLqn8mvVQgAAG7ICAAAdwsA==
+Date: Fri, 18 Dec 2020 10:38:35 +0000
+Message-ID: <934cbebcb57a49fd8761cc8b3aaffbfa@AcuMS.aculab.com>
 References: <20201217234501.351725-1-daniel.west.dev@gmail.com>
  <04c331f6bfce57c253cb86208ebd28f6363e04c0.camel@perches.com>
  <d5993e314b134e038a1e4eeba32833ce@AcuMS.aculab.com>
-User-Agent: Evolution 3.38.1-1 
+ <c09401d003360cff41c949ccaea8ae9dc7b2c733.camel@perches.com>
+In-Reply-To: <c09401d003360cff41c949ccaea8ae9dc7b2c733.camel@perches.com>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,41 +91,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 2020-12-18 at 09:49 +0000, David Laight wrote:
-> From: Joe Perches
-> > Sent: 17 December 2020 23:58
-> > 
-> > On Thu, 2020-12-17 at 15:45 -0800, Daniel West wrote:
-> > > Fixed a coding style issue.
-> > 
-> > It may pass checkpatch without warning, but it's uncommon kernel coding style.
+From: Joe Perches
+> Sent: 18 December 2020 10:09
+> On Fri, 2020-12-18 at 09:49 +0000, David Laight wrote:
+> > From: Joe Perches
+> > checkpatch probably shouldn't complain about lines that end in (
+> > if they are function definitions.
 > 
-> checkpatch probably shouldn't complain about lines that end in (
-> if they are function definitions.
+> Opinons vary.
+> 
+> Very few function declaration/definitions in the linux kernel use the
+> one line per argument style (gnu indent -bfde)
+> 
+> type function(
+> 	type argument1,
+> 	type argument2,
+> 	...
+> 	)
+> {
+> 	...
+> }
+> 
+> It probably shouldn't be encouraged.
 
-Opinons vary.
+The only excuse for anything like that is if there are comments for
+each parameter that are used to generate the interface documentation.
 
-Very few function declaration/definitions in the linux kernel use the
-one line per argument style (gnu indent -bfde)
+Using that style for function calls just wastes vertical space.
+At least that doesn't happen in the kernel.
 
-type function(
-	type argument1,
-	type argument2,
-	...
-	)
-{
-	...
-}
+	David
 
-It probably shouldn't be encouraged.
-
-> > or (> 80 columns)
-> > static struct most_video_dev *get_comp_dev(struct most_interface *iface, int channel_idx)
-> Or shorten the variable/type names a bit so it all fits.
-
-Always a possibility but probably not a good one here as even
-renaming channel_idx to idx doesn't make it < 80 columns
-
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
 _______________________________________________
 devel mailing list
