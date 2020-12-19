@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E0E52DF2B7
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Dec 2020 03:09:48 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 819ED2DEE11
+	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Dec 2020 10:55:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A6167876D6;
-	Sun, 20 Dec 2020 02:09:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EDD1E2043C;
+	Sat, 19 Dec 2020 09:55:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id In68zyEo2DYG; Sun, 20 Dec 2020 02:09:45 +0000 (UTC)
+	with ESMTP id vgshVkHEMH+f; Sat, 19 Dec 2020 09:55:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1B556875E8;
-	Sun, 20 Dec 2020 02:09:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4D4F20416;
+	Sat, 19 Dec 2020 09:55:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ACEA01BF34A
- for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 02:09:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0D1B71BF30A
+ for <devel@linuxdriverproject.org>; Sat, 19 Dec 2020 09:55:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4D4FF20486
- for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 02:09:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0284A203F9
+ for <devel@linuxdriverproject.org>; Sat, 19 Dec 2020 09:55:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BZj-laitOvUC for <devel@linuxdriverproject.org>;
- Sun, 20 Dec 2020 02:09:25 +0000 (UTC)
+ with ESMTP id 0Wg5OBVDwegA for <devel@linuxdriverproject.org>;
+ Sat, 19 Dec 2020 09:55:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from www.umprosol.com (mail.umprosol.com [213.250.55.150])
- by silver.osuosl.org (Postfix) with ESMTP id 69C8B20481
- for <devel@driverdev.osuosl.org>; Sun, 20 Dec 2020 02:09:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A7573203E3
+ for <devel@linuxdriverproject.org>; Sat, 19 Dec 2020 09:55:09 +0000 (UTC)
 Received: from [100.64.1.74] (unknown [190.15.125.55])
- by www.umprosol.com (Postfix) with ESMTPA id 6ACC0930D96
- for <devel@driverdev.osuosl.org>; Sat, 19 Dec 2020 07:59:17 +0100 (CET)
+ by www.umprosol.com (Postfix) with ESMTPA id 3DBFB94251A
+ for <devel@linuxdriverproject.org>; Sat, 19 Dec 2020 08:25:48 +0100 (CET)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: An investment company 
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 From: "Allied Group" <richardgranat@gmail.com>
-Date: Sat, 19 Dec 2020 04:59:15 -0200
-Message-Id: <20201220020926.4D4FF20486@silver.osuosl.org>
+Date: Sat, 19 Dec 2020 05:25:46 -0200
+Message-Id: <20201219095513.0284A203F9@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,7 +59,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello devel@driverdev.osuosl.org,
+Hello devel@linuxdriverproject.org,
 
 
 I am the investment officer of an investment company who are ready to fund projects in the form of debt finance. The company grant loan to both corporate and private entities at a low interest rate of 3% ROI per annual. The terms are very flexible and interesting.
