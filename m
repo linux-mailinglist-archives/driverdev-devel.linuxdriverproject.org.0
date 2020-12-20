@@ -1,79 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5D0B2DF5FE
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Dec 2020 16:53:50 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B53C2DF674
+	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Dec 2020 19:26:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 304F68753F;
-	Sun, 20 Dec 2020 15:53:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6405C86AC8;
+	Sun, 20 Dec 2020 18:26:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ri7LACdsZuoW; Sun, 20 Dec 2020 15:53:48 +0000 (UTC)
+	with ESMTP id 0dT1QBfBsjvd; Sun, 20 Dec 2020 18:26:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 928FB874FD;
-	Sun, 20 Dec 2020 15:53:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E18DA86AAC;
+	Sun, 20 Dec 2020 18:26:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 581B31BF5A0
- for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 15:53:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 502E51BF592
+ for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 18:26:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 54AFF874FD
- for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 15:53:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4A32B86AAC
+ for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 18:26:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6kDmvyfv+O10 for <devel@linuxdriverproject.org>;
- Sun, 20 Dec 2020 15:53:44 +0000 (UTC)
+ with ESMTP id c5jnlzcxX4q2 for <devel@linuxdriverproject.org>;
+ Sun, 20 Dec 2020 18:26:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f41.google.com (mail-lf1-f41.google.com
- [209.85.167.41])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D11F3874FB
- for <devel@driverdev.osuosl.org>; Sun, 20 Dec 2020 15:53:43 +0000 (UTC)
-Received: by mail-lf1-f41.google.com with SMTP id m25so17716876lfc.11
- for <devel@driverdev.osuosl.org>; Sun, 20 Dec 2020 07:53:43 -0800 (PST)
+Received: from mail-lf1-f47.google.com (mail-lf1-f47.google.com
+ [209.85.167.47])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 47E5286783
+ for <devel@driverdev.osuosl.org>; Sun, 20 Dec 2020 18:26:34 +0000 (UTC)
+Received: by mail-lf1-f47.google.com with SMTP id o17so18451103lfg.4
+ for <devel@driverdev.osuosl.org>; Sun, 20 Dec 2020 10:26:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=w76pCbNy6dxzNTJV7uHayuF0nPAVCQYp3cgaHRN1pxg=;
- b=IWK1veCqkgZg0RfGQiV33qKujvUJIF+bvTfYUJjG5xtXku66UuxK4HiDdFvlrKhlav
- 3OpCMbE/9CpWEb6fTIzg7xCi6ftOq25maadCVjcnNh4dk5/Q8UDBxY8lHnE4K7A8hOlT
- SJB56Sy88Qjf4ixmoPGG13RooG5H4+YR5to5qNfm92V4gY0lLgef+CtGAZlr9vPPploF
- SoxD8qsxYBn0Al9+xKMVTLod9hnty09YxFr5JmowJ1O8rnzdCcx3CKTSJxr7oTM9ldbq
- LPiPgwpS2zG3cQnpZUq5FyxLiW9lswXEJ+1yeQA0XCfo/DPNe3EnuDHocDMQpO0zkhLI
- Yv6Q==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Dw4JPrP6acwrpZwuGGjt1P7HcEJMDGmCI8V3sWOk5Ic=;
+ b=pT37pEqHrqcxmnPSmwxH9RNswp5aGcnhhkvGsin7xICzjgnixZn8OtcU68Lc88mq2F
+ QeSH7/ZwBsEUnvTjmYhOv2U7rOCzN/Fwt5knsfkhL1k890q8dzOIpL+9Nub4xIEnFWiC
+ I9BU8ipqTFV9wGpnkw3XaXsz9NPpZsKtXRALa5OlSF3SDGThfy0moA2TdgyGl0Q2nICC
+ 3592J56MExRzHJj3nzxSfQpzZ/eAcS7Tl2sO8BPDjAKnjOdLolp4Zdztugw7fu3gDLg1
+ CNXQg+VpYtC8uFh8FVWXpKwvLIWY8ovV2QX09I5bwKez+3EBnhQsJkL28KhPfz9FOJY7
+ l5VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=w76pCbNy6dxzNTJV7uHayuF0nPAVCQYp3cgaHRN1pxg=;
- b=XX7C/Qjop6QL0vLdrU3R6UKK7U1Nmdcstlmi58WN8zXx73qYBN8a1y+wZUANkFc4Aj
- 1pY87yp4WGrGtVechPKmYIKf9ls5R41Zsh6Mc2RLC6aCKs5SZYSrHcA6U2eWaUiXU3dA
- 9wdQ8HfejrcG/P+beU1/CbSGA15PFaDmL5h+KoS6+PVwGs115Dljw3HSz5XKXifbZ64z
- ma2KcTcfFhC/IwjL4A9O+jkzwp9fGIhCzvm+OZNqOMsoEZughDQTpXI3gbIQWyIs/UXh
- O9hs65i5ZEkWCKc7qpPwd0IbouWBYMriYO6jAjszno5bEraTeqfASALihhAERZjAsEGz
- mm3w==
-X-Gm-Message-State: AOAM532MpuaKjJlOiRJIqFpIPdix4PC+rzIqa0QueU5HoXjgKKSRC5Gz
- inmQHPnI/KNkvJOjoFPYn30e+WCbBXRcxQ==
-X-Google-Smtp-Source: ABdhPJxk3EmTSSarCFyPET1I9pcrsaQ7+5lBrzGUboTUPa/xBJZ2oxFjq9QVuNDQlgrgX4m20qSOkg==
-X-Received: by 2002:a19:3f01:: with SMTP id m1mr4957152lfa.203.1608479621895; 
- Sun, 20 Dec 2020 07:53:41 -0800 (PST)
-Received: from kari-VirtualBox (87-95-193-210.bb.dnainternet.fi.
- [87.95.193.210])
- by smtp.gmail.com with ESMTPSA id t196sm1679738lff.195.2020.12.20.07.53.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Dec 2020 07:53:41 -0800 (PST)
-Date: Sun, 20 Dec 2020 17:53:39 +0200
-From: Kari Argillander <kari.argillander@gmail.com>
-To: Aditya Srivastava <yashsri421@gmail.com>
-Subject: Re: [PATCH] staging: rtl8192e: fix bool comparison in expressions
-Message-ID: <20201220155339.qove5haszqr7zggl@kari-VirtualBox>
-References: <20201217114204.12029-1-yashsri421@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Dw4JPrP6acwrpZwuGGjt1P7HcEJMDGmCI8V3sWOk5Ic=;
+ b=tKGwQD+hk0OJMs1/S3dizov89agEDEEeq5lCLxxDGG2iw3iWuichOqBB4OBG5HLjnT
+ idr0gl/C8u08YRE24NMjzuvyAoQPoUyhX78q7slLB8WxDFasIz1Zwwj2U55QuE/ns90N
+ YohvcGxnsJBoGe52r0h4zdCS3YbawY1RTFd5cU2aMgOPzJXGxIGWb1dtMBPOLyJGV53I
+ 1V8pX9AJpZyvbr0iQrL75R7UT///KURMhwgrLTwjrgz/Bsb/9Qi2xq1hZak8oh/3FvkE
+ 0GOKxvSD9SjheSxGKRNQXqq8Q5wvLLp9gNW8TVddd2rTAPNQS+bUZnnNjZY4kP1vmesz
+ Z49A==
+X-Gm-Message-State: AOAM532UtkGMhW9QWpyB3+v2iZpVJH0DLPhva3kGbdrjHhfC5cZHLK1T
+ yNy1d4bsD8dl+CL1fbt6AhY=
+X-Google-Smtp-Source: ABdhPJwCPdrUxXmxfP01OJOvkTo9IkzknyisoOQ+UqFGkH2TZMJbXVFVbNUMFJk8uto6KAnZIThVbg==
+X-Received: by 2002:ac2:59ce:: with SMTP id x14mr5133297lfn.545.1608488792261; 
+ Sun, 20 Dec 2020 10:26:32 -0800 (PST)
+Received: from [192.168.2.145] (109-252-192-57.dynamic.spd-mgts.ru.
+ [109.252.192.57])
+ by smtp.googlemail.com with ESMTPSA id p13sm1877788ljc.112.2020.12.20.10.26.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 20 Dec 2020 10:26:31 -0800 (PST)
+Subject: Re: [PATCH v2 07/48] dt-bindings: arm: tegra: Add binding for core
+ power domain
+To: Krzysztof Kozlowski <krzk@kernel.org>
+References: <20201217180638.22748-1-digetx@gmail.com>
+ <20201217180638.22748-8-digetx@gmail.com> <20201219105720.GA5323@kozik-lap>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <cba644de-97fc-7249-31b5-d23e7e40634d@gmail.com>
+Date: Sun, 20 Dec 2020 21:26:30 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201217114204.12029-1-yashsri421@gmail.com>
+In-Reply-To: <20201219105720.GA5323@kozik-lap>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,163 +91,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-kernel@vger.kernel.org,
- lukas.bulwahn@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Michael Turquette <mturquette@baylibre.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
+ linux-clk@vger.kernel.org, devel@driverdev.osuosl.org,
+ Kevin Hilman <khilman@kernel.org>, Nicolas Chauvet <kwizart@gmail.com>,
+ Viresh Kumar <vireshk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Dec 17, 2020 at 05:12:04PM +0530, Aditya Srivastava wrote:
-> There are certain conditional expressions in rtl8192e, where a boolean
-> variable is compared with true/false, in forms such as (foo == true) or
-> (false != bar), which does not comply with checkpatch.pl (CHECK:
-> BOOL_COMPARISON), according to which boolean variables should be
-> themselves used in the condition, rather than comparing with true/false
-> 
-> E.g. in drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c,
-> "if (Type == true)" can be replaced with: "if (Type)"
-> 
-> Replace all such expressions with the bool variables appropriately
-> 
-> Signed-off-by: Aditya Srivastava <yashsri421@gmail.com>
-> ---
-> - the changes made are compile tested
-> - the patch applies perfectly over next-20201204
-> 
->  drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c | 4 ++--
->  drivers/staging/rtl8192e/rtl8192e/rtl_core.c   | 4 ++--
->  drivers/staging/rtl8192e/rtl8192e/rtl_dm.c     | 4 ++--
->  drivers/staging/rtl8192e/rtllib_rx.c           | 4 ++--
->  drivers/staging/rtl8192e/rtllib_tx.c           | 8 ++++----
->  5 files changed, 12 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
-> index 9f869fb3eaa8..c4a3fc79fb40 100644
-> --- a/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
-> +++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
-> @@ -129,9 +129,9 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
->  		RegRCR = rtl92e_readl(dev, RCR);
->  		priv->ReceiveConfig = RegRCR;
->  
-> -		if (Type == true)
-> +		if (Type)
->  			RegRCR |= (RCR_CBSSID);
-> -		else if (Type == false)
-> +		else if (!Type)
-
-Just else here?
-
->  			RegRCR &= (~RCR_CBSSID);
->  
->  		rtl92e_writel(dev, RCR, RegRCR);
-> diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-> index 663675efcfe4..9078fadd65f9 100644
-> --- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-> +++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-> @@ -1389,7 +1389,7 @@ static void _rtl92e_watchdog_wq_cb(void *data)
->  
->  	rtl92e_dm_watchdog(dev);
->  
-> -	if (rtllib_act_scanning(priv->rtllib, false) == false) {
-> +	if (!rtllib_act_scanning(priv->rtllib, false)) {
->  		if ((ieee->iw_mode == IW_MODE_INFRA) && (ieee->state ==
->  		     RTLLIB_NOLINK) &&
->  		     (ieee->eRFPowerState == eRfOn) && !ieee->is_set_key &&
-> @@ -2471,7 +2471,7 @@ static int _rtl92e_pci_probe(struct pci_dev *pdev,
->  
->  	priv->ops = ops;
->  
-> -	if (rtl92e_check_adapter(pdev, dev) == false)
-> +	if (!rtl92e_check_adapter(pdev, dev))
->  		goto err_unmap;
->  
->  	dev->irq = pdev->irq;
-> diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-> index 462835684e8b..e340be3ebb97 100644
-> --- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-> +++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-> @@ -1765,7 +1765,7 @@ static void _rtl92e_dm_cts_to_self(struct net_device *dev)
->  	unsigned long curTxOkCnt = 0;
->  	unsigned long curRxOkCnt = 0;
->  
-> -	if (priv->rtllib->bCTSToSelfEnable != true) {
-> +	if (!priv->rtllib->bCTSToSelfEnable) {
->  		pHTInfo->IOTAction &= ~HT_IOT_ACT_FORCED_CTS2SELF;
->  		return;
->  	}
-> @@ -2447,7 +2447,7 @@ static void _rtl92e_dm_dynamic_tx_power(struct net_device *dev)
->  	unsigned int txhipower_threshold = 0;
->  	unsigned int txlowpower_threshold = 0;
->  
-> -	if (priv->rtllib->bdynamic_txpower_enable != true) {
-> +	if (!priv->rtllib->bdynamic_txpower_enable) {
->  		priv->bDynamicTxHighPower = false;
->  		priv->bDynamicTxLowPower = false;
->  		return;
-> diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
-> index d31b5e1c8df4..217557ac8d80 100644
-> --- a/drivers/staging/rtl8192e/rtllib_rx.c
-> +++ b/drivers/staging/rtl8192e/rtllib_rx.c
-> @@ -924,7 +924,7 @@ static int rtllib_rx_check_duplicate(struct rtllib_device *ieee,
->  	sc = le16_to_cpu(hdr->seq_ctl);
->  	frag = WLAN_GET_SEQ_FRAG(sc);
->  
-> -	if ((ieee->pHTInfo->bCurRxReorderEnable == false) ||
-> +	if ((!ieee->pHTInfo->bCurRxReorderEnable) ||
-
-No need for brackets. Atleast after you remove check.
-
->  		!ieee->current_network.qos_data.active ||
->  		!IsDataFrame(skb->data) ||
->  		IsLegacyDataFrame(skb->data)) {
-> @@ -1442,7 +1442,7 @@ static int rtllib_rx_InfraAdhoc(struct rtllib_device *ieee, struct sk_buff *skb,
->  	}
->  
->  	/* Indicate packets to upper layer or Rx Reorder */
-> -	if (ieee->pHTInfo->bCurRxReorderEnable == false || pTS == NULL ||
-> +	if (!ieee->pHTInfo->bCurRxReorderEnable || pTS == NULL ||
->  	    bToOtherSTA)
-
-Now bToOtherSTA would fit same line. It is ok to fix that also.
-
->  		rtllib_rx_indicate_pkt_legacy(ieee, rx_stats, rxb, dst, src);
->  	else
-> diff --git a/drivers/staging/rtl8192e/rtllib_tx.c b/drivers/staging/rtl8192e/rtllib_tx.c
-> index e0d79daca24a..8add17752eed 100644
-> --- a/drivers/staging/rtl8192e/rtllib_tx.c
-> +++ b/drivers/staging/rtl8192e/rtllib_tx.c
-> @@ -297,7 +297,7 @@ static void rtllib_tx_query_agg_cap(struct rtllib_device *ieee,
->  			netdev_info(ieee->dev, "%s: can't get TS\n", __func__);
->  			return;
->  		}
-> -		if (pTxTs->TxAdmittedBARecord.bValid == false) {
-> +		if (!pTxTs->TxAdmittedBARecord.bValid) {
->  			if (ieee->wpa_ie_len && (ieee->pairwise_key_type ==
->  			    KEY_TYPE_NA)) {
->  				;
-> @@ -307,7 +307,7 @@ static void rtllib_tx_query_agg_cap(struct rtllib_device *ieee,
->  				TsStartAddBaProcess(ieee, pTxTs);
->  			}
->  			goto FORCED_AGG_SETTING;
-> -		} else if (pTxTs->bUsingBa == false) {
-> +		} else if (!pTxTs->bUsingBa) {
->  			if (SN_LESS(pTxTs->TxAdmittedBARecord.BaStartSeqCtrl.field.SeqNum,
->  			   (pTxTs->TxCurSeq+1)%4096))
->  				pTxTs->bUsingBa = true;
-> @@ -365,9 +365,9 @@ static void rtllib_query_HTCapShortGI(struct rtllib_device *ieee,
->  		return;
->  	}
->  
-> -	if ((pHTInfo->bCurBW40MHz == true) && pHTInfo->bCurShortGI40MHz)
-> +	if (pHTInfo->bCurBW40MHz && pHTInfo->bCurShortGI40MHz)
->  		tcb_desc->bUseShortGI = true;
-> -	else if ((pHTInfo->bCurBW40MHz == false) && pHTInfo->bCurShortGI20MHz)
-> +	else if (!pHTInfo->bCurBW40MHz && pHTInfo->bCurShortGI20MHz)
->  		tcb_desc->bUseShortGI = true;
->  }
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+MTkuMTIuMjAyMCAxMzo1NywgS3J6eXN6dG9mIEtvemxvd3NraSDQv9C40YjQtdGCOgo+IE9uIFRo
+dSwgRGVjIDE3LCAyMDIwIGF0IDA5OjA1OjU3UE0gKzAzMDAsIERtaXRyeSBPc2lwZW5rbyB3cm90
+ZToKPj4gQWxsIE5WSURJQSBUZWdyYSBTb0NzIGhhdmUgYSBjb3JlIHBvd2VyIGRvbWFpbiB3aGVy
+ZSBtYWpvcml0eSBvZiBoYXJkd2FyZQo+PiBibG9ja3MgcmVzaWRlLiBBZGQgYmluZGluZyBmb3Ig
+dGhlIGNvcmUgcG93ZXIgZG9tYWluLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBEbWl0cnkgT3NpcGVu
+a28gPGRpZ2V0eEBnbWFpbC5jb20+Cj4+IC0tLQo+PiAgLi4uL2FybS90ZWdyYS9udmlkaWEsdGVn
+cmEyMC1jb3JlLWRvbWFpbi55YW1sIHwgNDggKysrKysrKysrKysrKysrKysrKwo+PiAgMSBmaWxl
+IGNoYW5nZWQsIDQ4IGluc2VydGlvbnMoKykKPj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3RlZ3JhL252aWRpYSx0ZWdyYTIwLWNvcmUt
+ZG9tYWluLnlhbWwKPj4KPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9hcm0vdGVncmEvbnZpZGlhLHRlZ3JhMjAtY29yZS1kb21haW4ueWFtbCBiL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vdGVncmEvbnZpZGlhLHRlZ3JhMjAtY29y
+ZS1kb21haW4ueWFtbAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAwMDAwMDAw
+MDAuLmYzZDhmZDJkODM3MQo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vdGVncmEvbnZpZGlhLHRlZ3JhMjAtY29yZS1kb21haW4u
+eWFtbAo+PiBAQCAtMCwwICsxLDQ4IEBACj4+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBH
+UEwtMi4wLW9ubHkgT1IgQlNELTItQ2xhdXNlCj4+ICslWUFNTCAxLjIKPj4gKy0tLQo+PiArJGlk
+OiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9hcm0vdGVncmEvbnZpZGlhLHRlZ3JhMjAt
+Y29yZS1kb21haW4ueWFtbCMKPj4gKyRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRh
+LXNjaGVtYXMvY29yZS55YW1sIwo+PiArCj4+ICt0aXRsZTogTlZJRElBIFRlZ3JhIENvcmUgUG93
+ZXIgRG9tYWluCj4+ICsKPj4gK21haW50YWluZXJzOgo+PiArICAtIERtaXRyeSBPc2lwZW5rbyA8
+ZGlnZXR4QGdtYWlsLmNvbT4KPj4gKyAgLSBKb24gSHVudGVyIDxqb25hdGhhbmhAbnZpZGlhLmNv
+bT4KPj4gKyAgLSBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdAZ21haWwuY29tPgo+PiAr
+Cj4+ICtwcm9wZXJ0aWVzOgo+PiArICBjb21wYXRpYmxlOgo+PiArICAgIGVudW06Cj4+ICsgICAg
+ICAtIG52aWRpYSx0ZWdyYTIwLWNvcmUtZG9tYWluCj4+ICsgICAgICAtIG52aWRpYSx0ZWdyYTMw
+LWNvcmUtZG9tYWluCj4gCj4gVGhlIGZpbGUgc2hvdWxkIGJlIGluIGJpbmRpbmdzL3Bvd2VyLgo+
+IEluY2x1ZGUgYWxzbyB0aGUgcG93ZXItZG9tYWluLnlhbWwgc2NoZW1hLgo+IAo+PiArCj4+ICsg
+IG9wZXJhdGluZy1wb2ludHMtdjI6Cj4+ICsgICAgZGVzY3JpcHRpb246Cj4+ICsgICAgICBTaG91
+bGQgY29udGFpbiBsZXZlbCwgdm9sdGFnZXMgYW5kIG9wcC1zdXBwb3J0ZWQtaHcgcHJvcGVydHku
+Cj4+ICsgICAgICBUaGUgc3VwcG9ydGVkLWh3IGlzIGEgYml0ZmllbGQgaW5kaWNhdGluZyBTb0Mg
+c3BlZWRvIG9yIHByb2Nlc3MKPj4gKyAgICAgIElEIG1hc2suCj4+ICsKPj4gKyAgIiNwb3dlci1k
+b21haW4tY2VsbHMiOgo+PiArICAgIGNvbnN0OiAwCj4+ICsKPj4gKyAgcG93ZXItc3VwcGx5Ogo+
+PiArICAgIGRlc2NyaXB0aW9uOgo+PiArICAgICAgUGhhbmRsZSB0byB2b2x0YWdlIHJlZ3VsYXRv
+ciBjb25uZWN0ZWQgdG8gdGhlIFNvQyBDb3JlIHBvd2VyIHJhaWwuCj4+ICsKPj4gK3JlcXVpcmVk
+Ogo+PiArICAtIGNvbXBhdGlibGUKPj4gKyAgLSBvcGVyYXRpbmctcG9pbnRzLXYyCj4+ICsgIC0g
+IiNwb3dlci1kb21haW4tY2VsbHMiCj4+ICsgIC0gcG93ZXItc3VwcGx5Cj4+ICsKPj4gK2FkZGl0
+aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQo+PiArCj4+ICtleGFtcGxlczoKPj4gKyAgLSB8Cj4+ICsg
+ICAgY29yZS1kb21haW4gewo+IAo+IHBvd2VyLWRvbWFpbiAodG8gZm9sbG93IHNjaGVtYSBhbmQg
+ZGV2aWNldHJlZSBzcGVjKQoKVGhhbmtzIGZvciB0aGUgc3VnZ2VzdGlvbiwgSSdsbCB1cGRhdGUg
+aXQgaW4gdjMuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
+ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
+ZXYtZGV2ZWwK
