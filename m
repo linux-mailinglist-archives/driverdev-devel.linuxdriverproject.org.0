@@ -1,44 +1,39 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 408F72DF727
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 00:55:53 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4680D2DF726
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 00:55:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D720C87B9A;
-	Sun, 20 Dec 2020 23:55:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 622F287169;
+	Sun, 20 Dec 2020 23:55:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NMe0VtYi79tR; Sun, 20 Dec 2020 23:55:50 +0000 (UTC)
+	with ESMTP id 2mLxd5CRwnOb; Sun, 20 Dec 2020 23:55:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 38FA087B8F;
-	Sun, 20 Dec 2020 23:55:50 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CA2BE86DBF;
+	Sun, 20 Dec 2020 23:55:38 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 558B51BF573
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Dec 2020 23:55:48 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B87AE1BF573
+ for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 23:55:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5245E87B91
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Dec 2020 23:55:48 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B534286FE2
+ for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 23:55:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x5LTMeU6DbSP
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Dec 2020 23:55:47 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id guYWY_RhzA6J for <devel@linuxdriverproject.org>;
+ Sun, 20 Dec 2020 23:55:34 +0000 (UTC)
+X-Greylist: delayed 00:05:50 by SQLgrey-1.7.6
 Received: from mail.devilmail.me (mail.devilmail.me [23.92.30.210])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4E41187B8F
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Dec 2020 23:55:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 66BC886DBF
+ for <devel@linuxdriverproject.org>; Sun, 20 Dec 2020 23:55:34 +0000 (UTC)
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.devilmail.me (Postfix) with ESMTP id 876C3193D0
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 21 Dec 2020 10:49:41 +1100 (AEDT)
+ by mail.devilmail.me (Postfix) with ESMTP id 0B9A3193CD
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 10:49:41 +1100 (AEDT)
 Authentication-Results: mail.devilmail.me (amavisd-new);
  dkim=pass (1024-bit key) reason="pass (just generated, assumed good)"
  header.d=devilmail.me
@@ -53,8 +48,7 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=devilmail.me; h=
 X-Virus-Scanned: Debian amavisd-new at mail.devilmail.me
 Received: from mail.devilmail.me ([127.0.0.1])
  by localhost (mail.devilmail.me [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0SZRX0v-X4Ki
- for <driverdev-devel@linuxdriverproject.org>;
+ with ESMTP id FvCSOhV_YsJk for <devel@linuxdriverproject.org>;
  Mon, 21 Dec 2020 10:49:40 +1100 (AEDT)
 Received: from jmapnzin.host-stage-dns.com (unknown [188.165.89.95])
  by mail.devilmail.me (Postfix) with ESMTPSA id A4D381141B;
@@ -65,7 +59,7 @@ Subject: Re: Ember Proposal
 To: Recipients <postmaster@devilmail.me>
 From: postmaster@devilmail.me
 Date: Mon, 21 Dec 2020 06:10:41 +0800
-Message-Id: <20201220234941.876C3193D0@mail.devilmail.me>
+Message-Id: <20201220234941.0B9A3193CD@mail.devilmail.me>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
