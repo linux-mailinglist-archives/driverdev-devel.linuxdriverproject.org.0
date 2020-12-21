@@ -1,53 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D17542DFC02
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 13:44:52 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9FD42DFC24
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 14:02:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AF3BE86D7F;
-	Mon, 21 Dec 2020 12:44:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7DCE587957;
+	Mon, 21 Dec 2020 13:02:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k7vptgivCkBh; Mon, 21 Dec 2020 12:44:49 +0000 (UTC)
+	with ESMTP id aSDfCzzAnINW; Mon, 21 Dec 2020 13:02:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E8F3685F9A;
-	Mon, 21 Dec 2020 12:44:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B9CCC8775D;
+	Mon, 21 Dec 2020 13:02:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E426A1BF3FD
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 12:44:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 44CDC1BF3FD
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 13:02:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E0EB285F9A
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 12:44:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 40E808746E
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 13:02:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qJrgCg-BITh0 for <devel@linuxdriverproject.org>;
- Mon, 21 Dec 2020 12:44:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 62EDB85F4E
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 12:44:46 +0000 (UTC)
-Date: Mon, 21 Dec 2020 13:46:01 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1608554685;
- bh=PBUW9Lx+G53wYGSrbtEAM4HN5gntZsw8HL1tFF3G2V4=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=YgZGL83lfemTCEe+XHlHWz1bKJ44ruN3dOwcPv5zrX8CfP7jyjrlHtGfzfUFKjGjU
- pzuOYa0PEK8FexptM8wWeN5/sVKTQ/DDH0XMPtZr0cPtpWZQhn/N7mazIgGKNBv/16
- pIA7tnyQHn9lCpVGR3SgQcUULUK/OExOMt0CFyvc=
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Anjandev Momi <anjan@momi.ca>
-Subject: Re: [PATCH] staging: octeon-usb: octeon-hcd: fixed indent and ending
- with brace coding style issue
-Message-ID: <X+CZCejDffbbkQ2T@kroah.com>
-References: <20201221091508.17280-1-anjan@momi.ca>
+ with ESMTP id H-g+JFlaT0ol for <devel@linuxdriverproject.org>;
+ Mon, 21 Dec 2020 13:02:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D186F8747F
+ for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 13:02:26 +0000 (UTC)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4D003S72SKz15h0q;
+ Mon, 21 Dec 2020 21:01:40 +0800 (CST)
+Received: from ubuntu.network (10.175.138.68) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.498.0; Mon, 21 Dec 2020 21:02:12 +0800
+From: Zheng Yongjun <zhengyongjun3@huawei.com>
+To: <johan@kernel.org>, <elder@kernel.org>, <gregkh@linuxfoundation.org>,
+ <greybus-dev@lists.linaro.org>, <devel@driverdev.osuosl.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH -next] greybus/audio_helper: Add missing unlock to avoid
+ mismatched lock
+Date: Mon, 21 Dec 2020 21:02:46 +0800
+Message-ID: <20201221130246.1807-1-zhengyongjun3@huawei.com>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201221091508.17280-1-anjan@momi.ca>
+X-Originating-IP: [10.175.138.68]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,62 +61,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Zheng Yongjun <zhengyongjun3@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Dec 21, 2020 at 09:15:57AM +0000, Anjandev Momi wrote:
-> Fixed coding style issues
-> 
-> Signed-off-by: Anjandev Momi <anjan@momi.ca>
-> ---
->  drivers/staging/octeon-usb/octeon-hcd.c | 96 ++++++++++++-------------
->  1 file changed, 46 insertions(+), 50 deletions(-)
-> 
+Fix a missing unlock in the error branch.
 
-Hi,
+Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
+---
+ drivers/staging/greybus/audio_helper.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greybus/audio_helper.c
+index 237531ba60f3..293675dbea10 100644
+--- a/drivers/staging/greybus/audio_helper.c
++++ b/drivers/staging/greybus/audio_helper.c
+@@ -135,6 +135,7 @@ int gbaudio_dapm_free_controls(struct snd_soc_dapm_context *dapm,
+ 		if (!w) {
+ 			dev_err(dapm->dev, "%s: widget not found\n",
+ 				widget->name);
++			mutex_unlock(&dapm->card->dapm_mutex);
+ 			return -EINVAL;
+ 		}
+ 		widget++;
+-- 
+2.22.0
 
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
