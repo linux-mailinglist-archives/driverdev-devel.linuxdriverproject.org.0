@@ -1,47 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 170882DFA46
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 10:27:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9ADB9879B6;
-	Mon, 21 Dec 2020 09:27:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1M4P0nruAOFN; Mon, 21 Dec 2020 09:27:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 53768877EC;
-	Mon, 21 Dec 2020 09:27:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EE49E1BF2CF
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 09:27:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 979042DFBDE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 13:33:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E9B6287BEF
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 09:27:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AEC6B875C1;
+	Mon, 21 Dec 2020 12:33:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HDfQ4wfSuk3f; Mon, 21 Dec 2020 12:33:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7784D875BA;
+	Mon, 21 Dec 2020 12:33:32 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 67FEE1BF3FD
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 12:33:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 615F786132
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 12:33:27 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tfG2pxsTqM+p for <devel@linuxdriverproject.org>;
- Mon, 21 Dec 2020 09:27:06 +0000 (UTC)
-X-Greylist: delayed 00:11:05 by SQLgrey-1.7.6
-Received: from out0.migadu.com (out0.migadu.com [94.23.1.103])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 819A287B31
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 09:27:06 +0000 (UTC)
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Anjandev Momi <anjan@momi.ca>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: octeon-usb: octeon-hcd: fixed indent and ending with
- brace coding style issue
-Message-Id: <20201221091508.17280-1-anjan@momi.ca>
-MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
-X-Migadu-Auth-User: anjan@momi.ca
-Date: Mon, 21 Dec 2020 09:15:57 GMT
+ with ESMTP id Fc1KbdMPKv48 for <devel@linuxdriverproject.org>;
+ Mon, 21 Dec 2020 12:33:26 +0000 (UTC)
+X-Greylist: delayed 00:08:34 by SQLgrey-1.7.6
+Received: from zju.edu.cn (spam.zju.edu.cn [61.164.42.155])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A316986103
+ for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 12:33:24 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.192.85.18])
+ by mail-app2 (Coremail) with SMTP id by_KCgDHrwIDlOBfl0tgAA--.60309S4;
+ Mon, 21 Dec 2020 20:24:40 +0800 (CST)
+From: Dinghao Liu <dinghao.liu@zju.edu.cn>
+To: dinghao.liu@zju.edu.cn,
+	kjlu@umn.edu
+Subject: [PATCH] staging: fwserial: Fix error handling in fwserial_create
+Date: Mon, 21 Dec 2020 20:24:35 +0800
+Message-Id: <20201221122437.10274-1-dinghao.liu@zju.edu.cn>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: by_KCgDHrwIDlOBfl0tgAA--.60309S4
+X-Coremail-Antispam: 1UD129KBjvdXoWrZr4DWFW3GrWkZF13AF1rCrg_yoWkGFb_uw
+ 1kCw1xXFyUur1Ska1xAa4FqF1SyFWrXF40gr10qFZxJ398Aa93GFWSgr1DKF1DZF4j9Fy7
+ Ar9rKry2kryDGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbc8Fc2x0x2IEx4CE42xK8VAvwI8IcIk0rVWrJVCq3wAFIxvE14AK
+ wVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK021l84ACjcxK6xIIjxv20x
+ vE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4UJVW0owA2z4x0Y4vEx4A2
+ jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52
+ x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWU
+ GwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI4
+ 8JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCF04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv
+ 6cx26r4fKr1UJr1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGw
+ C20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r126r1DMIIYrxkI7VAKI48J
+ MIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r1j6r4UMI
+ IF0xvE42xK8VAvwI8IcIk0rVWrJr0_WFyUJwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY
+ 6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUoOJ5UUUUU
+X-CM-SenderInfo: qrrzjiaqtzq6lmxovvfxof0/1tbiAgUMBlZdtRf+rwARsk
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,258 +70,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Anjandev Momi <anjan@momi.ca>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Abheek Dhawan <adawesomeguy222@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed coding style issues
+When fw_core_add_address_handler() fails, we need to destroy
+the port by tty_port_destroy(). Also we need to unregister
+the address handler by fw_core_remove_address_handler() on
+failure.
 
-Signed-off-by: Anjandev Momi <anjan@momi.ca>
+Signed-off-by: Dinghao Liu <dinghao.liu@zju.edu.cn>
 ---
- drivers/staging/octeon-usb/octeon-hcd.c | 96 ++++++++++++-------------
- 1 file changed, 46 insertions(+), 50 deletions(-)
+ drivers/staging/fwserial/fwserial.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
-index e2f8b6b67f75..d8b099f8b83a 100644
---- a/drivers/staging/octeon-usb/octeon-hcd.c
-+++ b/drivers/staging/octeon-usb/octeon-hcd.c
-@@ -1258,7 +1258,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
- 		union cvmx_usbcx_hptxsts tx_status;
- 
- 		tx_status.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HPTXSTS(usb->index));
-+						    CVMX_USBCX_HPTXSTS(usb->index));
- 		if (cvmx_usb_fill_tx_hw(usb, &usb->periodic,
- 					tx_status.s.ptxfspcavail))
- 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
-@@ -1272,7 +1272,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
- 		union cvmx_usbcx_gnptxsts tx_status;
- 
- 		tx_status.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_GNPTXSTS(usb->index));
-+						    CVMX_USBCX_GNPTXSTS(usb->index));
- 		if (cvmx_usb_fill_tx_hw(usb, &usb->nonperiodic,
- 					tx_status.s.nptxfspcavail))
- 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
-@@ -1298,13 +1298,13 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
- 
- 	/* We only need to fill data on outbound channels */
- 	hcchar.u32 = cvmx_usb_read_csr32(usb,
--			CVMX_USBCX_HCCHARX(channel, usb->index));
-+					 CVMX_USBCX_HCCHARX(channel, usb->index));
- 	if (hcchar.s.epdir != CVMX_USB_DIRECTION_OUT)
- 		return;
- 
- 	/* OUT Splits only have data on the start and not the complete */
- 	usbc_hcsplt.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCSPLTX(channel, usb->index));
-+					      CVMX_USBCX_HCSPLTX(channel, usb->index));
- 	if (usbc_hcsplt.s.spltena && usbc_hcsplt.s.compsplt)
- 		return;
- 
-@@ -1313,7 +1313,7 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
- 	 * words.
- 	 */
- 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCTSIZX(channel, usb->index));
-+					      CVMX_USBCX_HCTSIZX(channel, usb->index));
- 	if (!usbc_hctsiz.s.xfersize)
- 		return;
- 
-@@ -1360,7 +1360,7 @@ static void cvmx_usb_start_channel_control(struct octeon_hcd *usb,
- 	union cvmx_usbcx_hctsizx usbc_hctsiz;
- 
- 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCTSIZX(channel, usb->index));
-+					      CVMX_USBCX_HCTSIZX(channel, usb->index));
- 
- 	switch (transaction->stage) {
- 	case CVMX_USB_STAGE_NON_CONTROL:
-@@ -1517,7 +1517,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
- 
- 		/* Clear all channel status bits */
- 		usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HCINTX(channel, usb->index));
-+						     CVMX_USBCX_HCINTX(channel, usb->index));
- 
- 		cvmx_usb_write_csr32(usb,
- 				     CVMX_USBCX_HCINTX(channel, usb->index),
-@@ -1552,7 +1552,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
- 
- 		/* Enable the channel interrupt to propagate */
- 		usbc_haintmsk.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HAINTMSK(usb->index));
-+							CVMX_USBCX_HAINTMSK(usb->index));
- 		usbc_haintmsk.s.haintmsk |= 1 << channel;
- 		cvmx_usb_write_csr32(usb, CVMX_USBCX_HAINTMSK(usb->index),
- 				     usbc_haintmsk.u32);
-@@ -1797,15 +1797,13 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
- 			 */
- 			if (pipe->transfer_dir == CVMX_USB_DIRECTION_OUT) {
- 				if (pipe->multi_count < 2) /* Need DATA0 */
--					USB_SET_FIELD32(
--						CVMX_USBCX_HCTSIZX(channel,
--								   usb->index),
--						cvmx_usbcx_hctsizx, pid, 0);
-+					USB_SET_FIELD32(CVMX_USBCX_HCTSIZX(channel,
-+									   usb->index),
-+							cvmx_usbcx_hctsizx, pid, 0);
- 				else /* Need MDATA */
--					USB_SET_FIELD32(
--						CVMX_USBCX_HCTSIZX(channel,
--								   usb->index),
--						cvmx_usbcx_hctsizx, pid, 3);
-+					USB_SET_FIELD32(CVMX_USBCX_HCTSIZX(channel,
-+									   usb->index),
-+							cvmx_usbcx_hctsizx, pid, 3);
- 			}
+diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+index db83d34cd677..c368082aae1a 100644
+--- a/drivers/staging/fwserial/fwserial.c
++++ b/drivers/staging/fwserial/fwserial.c
+@@ -2189,6 +2189,7 @@ static int fwserial_create(struct fw_unit *unit)
+ 		err = fw_core_add_address_handler(&port->rx_handler,
+ 						  &fw_high_memory_region);
+ 		if (err) {
++			tty_port_destroy(&port->port);
+ 			kfree(port);
+ 			goto free_ports;
  		}
- 		break;
-@@ -1836,7 +1834,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
-  * Returns: Pipe or NULL if none are ready
-  */
- static struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(struct octeon_hcd *usb,
--		enum cvmx_usb_transfer xfer_type)
-+						      enum cvmx_usb_transfer xfer_type)
- {
- 	struct list_head *list = usb->active_pipes + xfer_type;
- 	u64 current_frame = usb->frame_number;
-@@ -2119,17 +2117,17 @@ static void cvmx_usb_complete(struct octeon_hcd *usb,
-  *
-  * Returns: Transaction or NULL on failure.
-  */
--static struct cvmx_usb_transaction *cvmx_usb_submit_transaction(
--				struct octeon_hcd *usb,
--				struct cvmx_usb_pipe *pipe,
--				enum cvmx_usb_transfer type,
--				u64 buffer,
--				int buffer_length,
--				u64 control_header,
--				int iso_start_frame,
--				int iso_number_packets,
--				struct cvmx_usb_iso_packet *iso_packets,
--				struct urb *urb)
-+static struct cvmx_usb_transaction *cvmx_usb_submit_transaction(struct octeon_hcd *usb,
-+								struct cvmx_usb_pipe *pipe,
-+								enum cvmx_usb_transfer type,
-+								u64 buffer,
-+								int buffer_length,
-+								u64 control_header,
-+								int iso_start_frame,
-+								int iso_number_packets,
-+								struct cvmx_usb_iso_packet
-+								*iso_packets,
-+								struct urb *urb)
- {
- 	struct cvmx_usb_transaction *transaction;
+@@ -2271,6 +2272,7 @@ static int fwserial_create(struct fw_unit *unit)
  
-@@ -2180,10 +2178,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_transaction(
-  *
-  * Returns: A submitted transaction or NULL on failure.
-  */
--static struct cvmx_usb_transaction *cvmx_usb_submit_bulk(
--						struct octeon_hcd *usb,
--						struct cvmx_usb_pipe *pipe,
--						struct urb *urb)
-+static struct cvmx_usb_transaction *cvmx_usb_submit_bulk(struct octeon_hcd *usb,
-+							 struct cvmx_usb_pipe *pipe,
-+							 struct urb *urb)
- {
- 	return cvmx_usb_submit_transaction(usb, pipe, CVMX_USB_TRANSFER_BULK,
- 					   urb->transfer_dma,
-@@ -2204,10 +2201,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_bulk(
-  *
-  * Returns: A submitted transaction or NULL on failure.
-  */
--static struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(
--						struct octeon_hcd *usb,
--						struct cvmx_usb_pipe *pipe,
--						struct urb *urb)
-+static struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(struct octeon_hcd *usb,
-+							      struct cvmx_usb_pipe *pipe,
-+							      struct urb *urb)
- {
- 	return cvmx_usb_submit_transaction(usb, pipe,
- 					   CVMX_USB_TRANSFER_INTERRUPT,
-@@ -2229,10 +2225,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(
-  *
-  * Returns: A submitted transaction or NULL on failure.
-  */
--static struct cvmx_usb_transaction *cvmx_usb_submit_control(
--						struct octeon_hcd *usb,
--						struct cvmx_usb_pipe *pipe,
--						struct urb *urb)
-+static struct cvmx_usb_transaction *cvmx_usb_submit_control(struct octeon_hcd *usb,
-+							    struct cvmx_usb_pipe *pipe,
-+							    struct urb *urb)
- {
- 	int buffer_length = urb->transfer_buffer_length;
- 	u64 control_header = urb->setup_dma;
-@@ -2260,10 +2255,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_control(
-  *
-  * Returns: A submitted transaction or NULL on failure.
-  */
--static struct cvmx_usb_transaction *cvmx_usb_submit_isochronous(
--						struct octeon_hcd *usb,
--						struct cvmx_usb_pipe *pipe,
--						struct urb *urb)
-+static struct cvmx_usb_transaction *cvmx_usb_submit_isochronous(struct octeon_hcd *usb,
-+								struct cvmx_usb_pipe *pipe,
-+								struct urb *urb)
- {
- 	struct cvmx_usb_iso_packet *packets;
- 
-@@ -2309,7 +2303,8 @@ static int cvmx_usb_cancel(struct octeon_hcd *usb,
- 		CVMX_SYNCW;
- 
- 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCCHARX(pipe->channel, usb->index));
-+						      CVMX_USBCX_HCCHARX(pipe->channel,
-+									 usb->index));
- 		/*
- 		 * If the channel isn't enabled then the transaction already
- 		 * completed.
-@@ -2605,11 +2600,12 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
- 
- 	/* Read the interrupt status bits for the channel */
- 	usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCINTX(channel, usb->index));
-+					     CVMX_USBCX_HCINTX(channel, usb->index));
- 
- 	if (usb->init_flags & CVMX_USB_INITIALIZE_FLAGS_NO_DMA) {
- 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCCHARX(channel, usb->index));
-+						      CVMX_USBCX_HCCHARX(channel,
-+									 usb->index));
- 
- 		if (usbc_hcchar.s.chena && usbc_hcchar.s.chdis) {
- 			/*
-@@ -2688,9 +2684,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
- 	 * transferred
- 	 */
- 	usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
--			CVMX_USBCX_HCCHARX(channel, usb->index));
-+					      CVMX_USBCX_HCCHARX(channel, usb->index));
- 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
--			CVMX_USBCX_HCTSIZX(channel, usb->index));
-+					      CVMX_USBCX_HCTSIZX(channel, usb->index));
- 
- 	/*
- 	 * Calculating the number of bytes successfully transferred is dependent
-@@ -3010,7 +3006,7 @@ static int cvmx_usb_poll(struct octeon_hcd *usb)
- 		union cvmx_usbcx_haint usbc_haint;
- 
- 		usbc_haint.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HAINT(usb->index));
-+						     CVMX_USBCX_HAINT(usb->index));
- 		while (usbc_haint.u32) {
- 			int channel;
- 
+ free_ports:
+ 	for (--i; i >= 0; --i) {
++		fw_core_remove_address_handler(&serial->ports[i]->rx_handler);
+ 		tty_port_destroy(&serial->ports[i]->port);
+ 		kfree(serial->ports[i]);
+ 	}
 -- 
-2.26.2
+2.17.1
 
 _______________________________________________
 devel mailing list
