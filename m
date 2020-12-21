@@ -1,64 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0FFC2DF80B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 04:34:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 170882DFA46
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 10:27:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E8D532E3ED;
-	Mon, 21 Dec 2020 03:34:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9ADB9879B6;
+	Mon, 21 Dec 2020 09:27:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r6qbB7v2eRBl; Mon, 21 Dec 2020 03:34:17 +0000 (UTC)
+	with ESMTP id 1M4P0nruAOFN; Mon, 21 Dec 2020 09:27:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 11E5C20781;
-	Mon, 21 Dec 2020 03:34:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 53768877EC;
+	Mon, 21 Dec 2020 09:27:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4674F1BF403
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 03:34:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EE49E1BF2CF
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 09:27:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4050C20767
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 03:34:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E9B6287BEF
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 09:27:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bgfoE7YjzmMN for <devel@linuxdriverproject.org>;
- Mon, 21 Dec 2020 03:34:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200])
- by silver.osuosl.org (Postfix) with ESMTPS id E57182052F
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 03:34:10 +0000 (UTC)
-Received: by mail-il1-f200.google.com with SMTP id f2so8244572ils.6
- for <devel@driverdev.osuosl.org>; Sun, 20 Dec 2020 19:34:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
- bh=FlEgzUD3QYmF41PuLCVzjuZhfq6vSLPvJuuSLKlwXN0=;
- b=hDujX97shp13ChJXhWVSUl94fuubER8RFphp74x84+UhEfkyMh8XhUgKBdeCE7ePYv
- 3UPb/YV0DNTq+rGPe86zYlI3hdsiITCX98GXrK0rJNl5JbjT4NjaVYVedTjTqYojeMaN
- rK1LHZeEsZVA+cPmIOqhRMmDSLllL6WTViT49UyFDjpLJ7+36cqQL6J9OADQmovS5Idr
- jCrm1TzwbHT26oobi8GtzoaxnfHsriN4bGLnBjsC8ziL5o1SkOhsQOC6OXrH+zY5x96h
- 7nJXJHoRMPAtvNsGaPC3A+SlizmvJJyCfztykUesmBp511v1FIgLz4vZ+oOGINVMY0/Z
- sYIg==
-X-Gm-Message-State: AOAM532iG6f/AgloE/KgNTtXToZH9DwBnQ/mth8EfKgRAI7NO05UfRAA
- n8kuIZsff+9hRvySX8SPtKygJMy3lzKBHRYUrJ68RDVCwLp0
-X-Google-Smtp-Source: ABdhPJw0Yac3wN6O5CdvHOK+e+SgSb1V6BAzy9fL5+lWZuExRbaMuwzfZFx94DzAFs+2eWwRUa6bM9Wbdkjm+SlBa2tw+c01eSU9
+ with ESMTP id tfG2pxsTqM+p for <devel@linuxdriverproject.org>;
+ Mon, 21 Dec 2020 09:27:06 +0000 (UTC)
+X-Greylist: delayed 00:11:05 by SQLgrey-1.7.6
+Received: from out0.migadu.com (out0.migadu.com [94.23.1.103])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 819A287B31
+ for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 09:27:06 +0000 (UTC)
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Anjandev Momi <anjan@momi.ca>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: octeon-usb: octeon-hcd: fixed indent and ending with
+ brace coding style issue
+Message-Id: <20201221091508.17280-1-anjan@momi.ca>
 MIME-Version: 1.0
-X-Received: by 2002:a5d:928d:: with SMTP id s13mr12922242iom.47.1608521650203; 
- Sun, 20 Dec 2020 19:34:10 -0800 (PST)
-Date: Sun, 20 Dec 2020 19:34:10 -0800
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <00000000000092f61e05b6f1215b@google.com>
-Subject: memory leak in r8712_init_recv_priv
-From: syzbot <syzbot+1c46f3771695bccbdb3a@syzkaller.appspotmail.com>
-To: Larry.Finger@lwfinger.net, devel@driverdev.osuosl.org, 
- florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org, 
- linux-kernel@vger.kernel.org, syzkaller-bugs@googlegroups.com
+X-Migadu-Flow: FLOW_OUT
+X-Migadu-Auth-User: anjan@momi.ca
+Date: Mon, 21 Dec 2020 09:15:57 GMT
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,114 +54,259 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Anjandev Momi <anjan@momi.ca>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Fixed coding style issues
 
-syzbot found the following issue on:
-
-HEAD commit:    467f8165 Merge tag 'close-range-cloexec-unshare-v5.11' of ..
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=142b5745500000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=37c889fb8b2761af
-dashboard link: https://syzkaller.appspot.com/bug?extid=1c46f3771695bccbdb3a
-compiler:       gcc (GCC) 10.1.0-syz 20200507
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=1265cb37500000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1763527b500000
-
-IMPORTANT: if you fix the issue, please add the following tag to the commit:
-Reported-by: syzbot+1c46f3771695bccbdb3a@syzkaller.appspotmail.com
-
-executing program
-BUG: memory leak
-unreferenced object 0xffff88810ecc26c0 (size 192):
-  comm "kworker/1:1", pid 35, jiffies 4294942461 (age 18.010s)
-  hex dump (first 32 bytes):
-    01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-    00 00 00 00 00 00 00 00 d8 26 cc 0e 81 88 ff ff  .........&......
-  backtrace:
-    [<000000005aecb941>] kmalloc include/linux/slab.h:557 [inline]
-    [<000000005aecb941>] usb_alloc_urb+0x66/0xe0 drivers/usb/core/urb.c:74
-    [<000000007c4331ea>] r8712_os_recvbuf_resource_alloc+0x1b/0x80 drivers/staging/rtl8712/recv_linux.c:46
-    [<0000000026fac6b7>] r8712_init_recv_priv+0x96/0x210 drivers/staging/rtl8712/rtl8712_recv.c:54
-    [<000000004dbac0de>] _r8712_init_recv_priv+0x134/0x150 drivers/staging/rtl8712/rtl871x_recv.c:78
-    [<000000009f37c02e>] r8712_init_drv_sw+0xa0/0x1d0 drivers/staging/rtl8712/os_intfs.c:312
-    [<00000000439d06d7>] r871xu_drv_init.cold+0x104/0x7d1 drivers/staging/rtl8712/usb_intf.c:391
-    [<00000000a5c43c27>] usb_probe_interface+0x177/0x370 drivers/usb/core/driver.c:396
-    [<00000000106f93f1>] really_probe+0x159/0x480 drivers/base/dd.c:561
-    [<00000000856556bd>] driver_probe_device+0x84/0x100 drivers/base/dd.c:745
-    [<00000000789974b2>] __device_attach_driver+0xee/0x110 drivers/base/dd.c:851
-    [<000000003b6b23b1>] bus_for_each_drv+0xb7/0x100 drivers/base/bus.c:431
-    [<00000000d916cd73>] __device_attach+0x122/0x250 drivers/base/dd.c:919
-    [<000000000aa7621e>] bus_probe_device+0xc6/0xe0 drivers/base/bus.c:491
-    [<00000000c2fd5fd8>] device_add+0x5be/0xc30 drivers/base/core.c:3091
-    [<00000000d7a5749a>] usb_set_configuration+0x9d9/0xb90 drivers/usb/core/message.c:2164
-    [<00000000197a0613>] usb_generic_driver_probe+0x8c/0xc0 drivers/usb/core/generic.c:238
-
-BUG: memory leak
-unreferenced object 0xffff88810ecc2600 (size 192):
-  comm "kworker/1:1", pid 35, jiffies 4294942461 (age 18.010s)
-  hex dump (first 32 bytes):
-    01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-    00 00 00 00 00 00 00 00 18 26 cc 0e 81 88 ff ff  .........&......
-  backtrace:
-    [<000000005aecb941>] kmalloc include/linux/slab.h:557 [inline]
-    [<000000005aecb941>] usb_alloc_urb+0x66/0xe0 drivers/usb/core/urb.c:74
-    [<000000007c4331ea>] r8712_os_recvbuf_resource_alloc+0x1b/0x80 drivers/staging/rtl8712/recv_linux.c:46
-    [<0000000026fac6b7>] r8712_init_recv_priv+0x96/0x210 drivers/staging/rtl8712/rtl8712_recv.c:54
-    [<000000004dbac0de>] _r8712_init_recv_priv+0x134/0x150 drivers/staging/rtl8712/rtl871x_recv.c:78
-    [<000000009f37c02e>] r8712_init_drv_sw+0xa0/0x1d0 drivers/staging/rtl8712/os_intfs.c:312
-    [<00000000439d06d7>] r871xu_drv_init.cold+0x104/0x7d1 drivers/staging/rtl8712/usb_intf.c:391
-    [<00000000a5c43c27>] usb_probe_interface+0x177/0x370 drivers/usb/core/driver.c:396
-    [<00000000106f93f1>] really_probe+0x159/0x480 drivers/base/dd.c:561
-    [<00000000856556bd>] driver_probe_device+0x84/0x100 drivers/base/dd.c:745
-    [<00000000789974b2>] __device_attach_driver+0xee/0x110 drivers/base/dd.c:851
-    [<000000003b6b23b1>] bus_for_each_drv+0xb7/0x100 drivers/base/bus.c:431
-    [<00000000d916cd73>] __device_attach+0x122/0x250 drivers/base/dd.c:919
-    [<000000000aa7621e>] bus_probe_device+0xc6/0xe0 drivers/base/bus.c:491
-    [<00000000c2fd5fd8>] device_add+0x5be/0xc30 drivers/base/core.c:3091
-    [<00000000d7a5749a>] usb_set_configuration+0x9d9/0xb90 drivers/usb/core/message.c:2164
-    [<00000000197a0613>] usb_generic_driver_probe+0x8c/0xc0 drivers/usb/core/generic.c:238
-
-BUG: memory leak
-unreferenced object 0xffff88810ecc2540 (size 192):
-  comm "kworker/1:1", pid 35, jiffies 4294942461 (age 18.010s)
-  hex dump (first 32 bytes):
-    01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-    00 00 00 00 00 00 00 00 58 25 cc 0e 81 88 ff ff  ........X%......
-  backtrace:
-    [<000000005aecb941>] kmalloc include/linux/slab.h:557 [inline]
-    [<000000005aecb941>] usb_alloc_urb+0x66/0xe0 drivers/usb/core/urb.c:74
-    [<000000007c4331ea>] r8712_os_recvbuf_resource_alloc+0x1b/0x80 drivers/staging/rtl8712/recv_linux.c:46
-    [<0000000026fac6b7>] r8712_init_recv_priv+0x96/0x210 drivers/staging/rtl8712/rtl8712_recv.c:54
-    [<000000004dbac0de>] _r8712_init_recv_priv+0x134/0x150 drivers/staging/rtl8712/rtl871x_recv.c:78
-    [<000000009f37c02e>] r8712_init_drv_sw+0xa0/0x1d0 drivers/staging/rtl8712/os_intfs.c:312
-    [<00000000439d06d7>] r871xu_drv_init.cold+0x104/0x7d1 drivers/staging/rtl8712/usb_intf.c:391
-    [<00000000a5c43c27>] usb_probe_interface+0x177/0x370 drivers/usb/core/driver.c:396
-    [<00000000106f93f1>] really_probe+0x159/0x480 drivers/base/dd.c:561
-    [<00000000856556bd>] driver_probe_device+0x84/0x100 drivers/base/dd.c:745
-    [<00000000789974b2>] __device_attach_driver+0xee/0x110 drivers/base/dd.c:851
-    [<000000003b6b23b1>] bus_for_each_drv+0xb7/0x100 drivers/base/bus.c:431
-    [<00000000d916cd73>] __device_attach+0x122/0x250 drivers/base/dd.c:919
-    [<000000000aa7621e>] bus_probe_device+0xc6/0xe0 drivers/base/bus.c:491
-    [<00000000c2fd5fd8>] device_add+0x5be/0xc30 drivers/base/core.c:3091
-    [<00000000d7a5749a>] usb_set_configuration+0x9d9/0xb90 drivers/usb/core/message.c:2164
-    [<00000000197a0613>] usb_generic_driver_probe+0x8c/0xc0 drivers/usb/core/generic.c:238
-
-
-
+Signed-off-by: Anjandev Momi <anjan@momi.ca>
 ---
-This report is generated by a bot. It may contain errors.
-See https://goo.gl/tpsmEJ for more information about syzbot.
-syzbot engineers can be reached at syzkaller@googlegroups.com.
+ drivers/staging/octeon-usb/octeon-hcd.c | 96 ++++++++++++-------------
+ 1 file changed, 46 insertions(+), 50 deletions(-)
 
-syzbot will keep track of this issue. See:
-https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-syzbot can test patches for this issue, for details see:
-https://goo.gl/tpsmEJ#testing-patches
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+index e2f8b6b67f75..d8b099f8b83a 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.c
++++ b/drivers/staging/octeon-usb/octeon-hcd.c
+@@ -1258,7 +1258,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
+ 		union cvmx_usbcx_hptxsts tx_status;
+ 
+ 		tx_status.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HPTXSTS(usb->index));
++						    CVMX_USBCX_HPTXSTS(usb->index));
+ 		if (cvmx_usb_fill_tx_hw(usb, &usb->periodic,
+ 					tx_status.s.ptxfspcavail))
+ 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
+@@ -1272,7 +1272,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
+ 		union cvmx_usbcx_gnptxsts tx_status;
+ 
+ 		tx_status.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_GNPTXSTS(usb->index));
++						    CVMX_USBCX_GNPTXSTS(usb->index));
+ 		if (cvmx_usb_fill_tx_hw(usb, &usb->nonperiodic,
+ 					tx_status.s.nptxfspcavail))
+ 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
+@@ -1298,13 +1298,13 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
+ 
+ 	/* We only need to fill data on outbound channels */
+ 	hcchar.u32 = cvmx_usb_read_csr32(usb,
+-			CVMX_USBCX_HCCHARX(channel, usb->index));
++					 CVMX_USBCX_HCCHARX(channel, usb->index));
+ 	if (hcchar.s.epdir != CVMX_USB_DIRECTION_OUT)
+ 		return;
+ 
+ 	/* OUT Splits only have data on the start and not the complete */
+ 	usbc_hcsplt.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCSPLTX(channel, usb->index));
++					      CVMX_USBCX_HCSPLTX(channel, usb->index));
+ 	if (usbc_hcsplt.s.spltena && usbc_hcsplt.s.compsplt)
+ 		return;
+ 
+@@ -1313,7 +1313,7 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
+ 	 * words.
+ 	 */
+ 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCTSIZX(channel, usb->index));
++					      CVMX_USBCX_HCTSIZX(channel, usb->index));
+ 	if (!usbc_hctsiz.s.xfersize)
+ 		return;
+ 
+@@ -1360,7 +1360,7 @@ static void cvmx_usb_start_channel_control(struct octeon_hcd *usb,
+ 	union cvmx_usbcx_hctsizx usbc_hctsiz;
+ 
+ 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCTSIZX(channel, usb->index));
++					      CVMX_USBCX_HCTSIZX(channel, usb->index));
+ 
+ 	switch (transaction->stage) {
+ 	case CVMX_USB_STAGE_NON_CONTROL:
+@@ -1517,7 +1517,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+ 
+ 		/* Clear all channel status bits */
+ 		usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HCINTX(channel, usb->index));
++						     CVMX_USBCX_HCINTX(channel, usb->index));
+ 
+ 		cvmx_usb_write_csr32(usb,
+ 				     CVMX_USBCX_HCINTX(channel, usb->index),
+@@ -1552,7 +1552,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+ 
+ 		/* Enable the channel interrupt to propagate */
+ 		usbc_haintmsk.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HAINTMSK(usb->index));
++							CVMX_USBCX_HAINTMSK(usb->index));
+ 		usbc_haintmsk.s.haintmsk |= 1 << channel;
+ 		cvmx_usb_write_csr32(usb, CVMX_USBCX_HAINTMSK(usb->index),
+ 				     usbc_haintmsk.u32);
+@@ -1797,15 +1797,13 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+ 			 */
+ 			if (pipe->transfer_dir == CVMX_USB_DIRECTION_OUT) {
+ 				if (pipe->multi_count < 2) /* Need DATA0 */
+-					USB_SET_FIELD32(
+-						CVMX_USBCX_HCTSIZX(channel,
+-								   usb->index),
+-						cvmx_usbcx_hctsizx, pid, 0);
++					USB_SET_FIELD32(CVMX_USBCX_HCTSIZX(channel,
++									   usb->index),
++							cvmx_usbcx_hctsizx, pid, 0);
+ 				else /* Need MDATA */
+-					USB_SET_FIELD32(
+-						CVMX_USBCX_HCTSIZX(channel,
+-								   usb->index),
+-						cvmx_usbcx_hctsizx, pid, 3);
++					USB_SET_FIELD32(CVMX_USBCX_HCTSIZX(channel,
++									   usb->index),
++							cvmx_usbcx_hctsizx, pid, 3);
+ 			}
+ 		}
+ 		break;
+@@ -1836,7 +1834,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+  * Returns: Pipe or NULL if none are ready
+  */
+ static struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(struct octeon_hcd *usb,
+-		enum cvmx_usb_transfer xfer_type)
++						      enum cvmx_usb_transfer xfer_type)
+ {
+ 	struct list_head *list = usb->active_pipes + xfer_type;
+ 	u64 current_frame = usb->frame_number;
+@@ -2119,17 +2117,17 @@ static void cvmx_usb_complete(struct octeon_hcd *usb,
+  *
+  * Returns: Transaction or NULL on failure.
+  */
+-static struct cvmx_usb_transaction *cvmx_usb_submit_transaction(
+-				struct octeon_hcd *usb,
+-				struct cvmx_usb_pipe *pipe,
+-				enum cvmx_usb_transfer type,
+-				u64 buffer,
+-				int buffer_length,
+-				u64 control_header,
+-				int iso_start_frame,
+-				int iso_number_packets,
+-				struct cvmx_usb_iso_packet *iso_packets,
+-				struct urb *urb)
++static struct cvmx_usb_transaction *cvmx_usb_submit_transaction(struct octeon_hcd *usb,
++								struct cvmx_usb_pipe *pipe,
++								enum cvmx_usb_transfer type,
++								u64 buffer,
++								int buffer_length,
++								u64 control_header,
++								int iso_start_frame,
++								int iso_number_packets,
++								struct cvmx_usb_iso_packet
++								*iso_packets,
++								struct urb *urb)
+ {
+ 	struct cvmx_usb_transaction *transaction;
+ 
+@@ -2180,10 +2178,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_transaction(
+  *
+  * Returns: A submitted transaction or NULL on failure.
+  */
+-static struct cvmx_usb_transaction *cvmx_usb_submit_bulk(
+-						struct octeon_hcd *usb,
+-						struct cvmx_usb_pipe *pipe,
+-						struct urb *urb)
++static struct cvmx_usb_transaction *cvmx_usb_submit_bulk(struct octeon_hcd *usb,
++							 struct cvmx_usb_pipe *pipe,
++							 struct urb *urb)
+ {
+ 	return cvmx_usb_submit_transaction(usb, pipe, CVMX_USB_TRANSFER_BULK,
+ 					   urb->transfer_dma,
+@@ -2204,10 +2201,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_bulk(
+  *
+  * Returns: A submitted transaction or NULL on failure.
+  */
+-static struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(
+-						struct octeon_hcd *usb,
+-						struct cvmx_usb_pipe *pipe,
+-						struct urb *urb)
++static struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(struct octeon_hcd *usb,
++							      struct cvmx_usb_pipe *pipe,
++							      struct urb *urb)
+ {
+ 	return cvmx_usb_submit_transaction(usb, pipe,
+ 					   CVMX_USB_TRANSFER_INTERRUPT,
+@@ -2229,10 +2225,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(
+  *
+  * Returns: A submitted transaction or NULL on failure.
+  */
+-static struct cvmx_usb_transaction *cvmx_usb_submit_control(
+-						struct octeon_hcd *usb,
+-						struct cvmx_usb_pipe *pipe,
+-						struct urb *urb)
++static struct cvmx_usb_transaction *cvmx_usb_submit_control(struct octeon_hcd *usb,
++							    struct cvmx_usb_pipe *pipe,
++							    struct urb *urb)
+ {
+ 	int buffer_length = urb->transfer_buffer_length;
+ 	u64 control_header = urb->setup_dma;
+@@ -2260,10 +2255,9 @@ static struct cvmx_usb_transaction *cvmx_usb_submit_control(
+  *
+  * Returns: A submitted transaction or NULL on failure.
+  */
+-static struct cvmx_usb_transaction *cvmx_usb_submit_isochronous(
+-						struct octeon_hcd *usb,
+-						struct cvmx_usb_pipe *pipe,
+-						struct urb *urb)
++static struct cvmx_usb_transaction *cvmx_usb_submit_isochronous(struct octeon_hcd *usb,
++								struct cvmx_usb_pipe *pipe,
++								struct urb *urb)
+ {
+ 	struct cvmx_usb_iso_packet *packets;
+ 
+@@ -2309,7 +2303,8 @@ static int cvmx_usb_cancel(struct octeon_hcd *usb,
+ 		CVMX_SYNCW;
+ 
+ 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCCHARX(pipe->channel, usb->index));
++						      CVMX_USBCX_HCCHARX(pipe->channel,
++									 usb->index));
+ 		/*
+ 		 * If the channel isn't enabled then the transaction already
+ 		 * completed.
+@@ -2605,11 +2600,12 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
+ 
+ 	/* Read the interrupt status bits for the channel */
+ 	usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCINTX(channel, usb->index));
++					     CVMX_USBCX_HCINTX(channel, usb->index));
+ 
+ 	if (usb->init_flags & CVMX_USB_INITIALIZE_FLAGS_NO_DMA) {
+ 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCCHARX(channel, usb->index));
++						      CVMX_USBCX_HCCHARX(channel,
++									 usb->index));
+ 
+ 		if (usbc_hcchar.s.chena && usbc_hcchar.s.chdis) {
+ 			/*
+@@ -2688,9 +2684,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
+ 	 * transferred
+ 	 */
+ 	usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
+-			CVMX_USBCX_HCCHARX(channel, usb->index));
++					      CVMX_USBCX_HCCHARX(channel, usb->index));
+ 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
+-			CVMX_USBCX_HCTSIZX(channel, usb->index));
++					      CVMX_USBCX_HCTSIZX(channel, usb->index));
+ 
+ 	/*
+ 	 * Calculating the number of bytes successfully transferred is dependent
+@@ -3010,7 +3006,7 @@ static int cvmx_usb_poll(struct octeon_hcd *usb)
+ 		union cvmx_usbcx_haint usbc_haint;
+ 
+ 		usbc_haint.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HAINT(usb->index));
++						     CVMX_USBCX_HAINT(usb->index));
+ 		while (usbc_haint.u32) {
+ 			int channel;
+ 
+-- 
+2.26.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
