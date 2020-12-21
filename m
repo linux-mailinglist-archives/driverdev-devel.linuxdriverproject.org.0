@@ -1,54 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9FD42DFC24
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 14:02:34 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1548A2DFD04
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 15:49:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7DCE587957;
-	Mon, 21 Dec 2020 13:02:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7138B860E6;
+	Mon, 21 Dec 2020 14:49:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aSDfCzzAnINW; Mon, 21 Dec 2020 13:02:33 +0000 (UTC)
+	with ESMTP id t5ja3rYUAeUn; Mon, 21 Dec 2020 14:49:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B9CCC8775D;
-	Mon, 21 Dec 2020 13:02:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2EEDB86090;
+	Mon, 21 Dec 2020 14:49:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 44CDC1BF3FD
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 13:02:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 65B361BF419
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 14:49:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 40E808746E
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 13:02:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5F4AB87220
+ for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 14:49:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H-g+JFlaT0ol for <devel@linuxdriverproject.org>;
- Mon, 21 Dec 2020 13:02:27 +0000 (UTC)
+ with ESMTP id K9GvtOYpXknq for <devel@linuxdriverproject.org>;
+ Mon, 21 Dec 2020 14:49:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D186F8747F
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 13:02:26 +0000 (UTC)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4D003S72SKz15h0q;
- Mon, 21 Dec 2020 21:01:40 +0800 (CST)
-Received: from ubuntu.network (10.175.138.68) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Mon, 21 Dec 2020 21:02:12 +0800
-From: Zheng Yongjun <zhengyongjun3@huawei.com>
-To: <johan@kernel.org>, <elder@kernel.org>, <gregkh@linuxfoundation.org>,
- <greybus-dev@lists.linaro.org>, <devel@driverdev.osuosl.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH -next] greybus/audio_helper: Add missing unlock to avoid
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AFCB4852D9
+ for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 14:49:40 +0000 (UTC)
+Date: Mon, 21 Dec 2020 15:49:43 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1608562180;
+ bh=RjibE7PG3Dvn4e4r8XrqcqR858sjNjYceU7oTN+r+Qs=;
+ h=From:To:Cc:Subject:References:In-Reply-To:From;
+ b=V/TP6eAEJMdklu8YP9BrGIhbPnCN8Ujwb8dlTSkyoSnCJ0hXgmJCj3vMvz4RjpONz
+ cJSOF7juGFow2sjAl2dKnu7vVqt/LUIK+NsN4Po3YdER8PoHsk+BUSTS9CIq0s7FzP
+ ObFJHGymW3PYL+TCQp+JryCMyS6P0FL9BksxePJFfwGNVHvWUBAbtQf+VNmTkmGOxi
+ DMGLo8FQZyQVG9HKAeglDM4cjYwa5fWMQ+BYJsAN9m4T7eevPRbTCttSsy4yyKoIf3
+ Cyixcobceo4Cx2F4Rwi0OuoRupvKUKlI8H8D3tJ9HxlMwFGgy7Kl+kNIprbcXitar3
+ hFh7efD4LNcwA==
+From: Johan Hovold <johan@kernel.org>
+To: Zheng Yongjun <zhengyongjun3@huawei.com>
+Subject: Re: [PATCH -next] greybus/audio_helper: Add missing unlock to avoid
  mismatched lock
-Date: Mon, 21 Dec 2020 21:02:46 +0800
-Message-ID: <20201221130246.1807-1-zhengyongjun3@huawei.com>
-X-Mailer: git-send-email 2.22.0
+Message-ID: <X+C2BwZlPw3tRYyf@hovoldconsulting.com>
+References: <20201221130246.1807-1-zhengyongjun3@huawei.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.175.138.68]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20201221130246.1807-1-zhengyongjun3@huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,34 +63,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Zheng Yongjun <zhengyongjun3@huawei.com>
+Cc: devel@driverdev.osuosl.org, elder@kernel.org, gregkh@linuxfoundation.org,
+ johan@kernel.org, linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix a missing unlock in the error branch.
+On Mon, Dec 21, 2020 at 09:02:46PM +0800, Zheng Yongjun wrote:
+> Fix a missing unlock in the error branch.
+> 
+> Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
+> ---
+>  drivers/staging/greybus/audio_helper.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greybus/audio_helper.c
+> index 237531ba60f3..293675dbea10 100644
+> --- a/drivers/staging/greybus/audio_helper.c
+> +++ b/drivers/staging/greybus/audio_helper.c
+> @@ -135,6 +135,7 @@ int gbaudio_dapm_free_controls(struct snd_soc_dapm_context *dapm,
+>  		if (!w) {
+>  			dev_err(dapm->dev, "%s: widget not found\n",
+>  				widget->name);
+> +			mutex_unlock(&dapm->card->dapm_mutex);
+>  			return -EINVAL;
+>  		}
+>  		widget++;
 
-Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
----
- drivers/staging/greybus/audio_helper.c | 1 +
- 1 file changed, 1 insertion(+)
+This has already been fixed in mainline by your colleague:
 
-diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greybus/audio_helper.c
-index 237531ba60f3..293675dbea10 100644
---- a/drivers/staging/greybus/audio_helper.c
-+++ b/drivers/staging/greybus/audio_helper.c
-@@ -135,6 +135,7 @@ int gbaudio_dapm_free_controls(struct snd_soc_dapm_context *dapm,
- 		if (!w) {
- 			dev_err(dapm->dev, "%s: widget not found\n",
- 				widget->name);
-+			mutex_unlock(&dapm->card->dapm_mutex);
- 			return -EINVAL;
- 		}
- 		widget++;
--- 
-2.22.0
+	e77b259f67ab ("staging: greybus: audio: Fix possible leak free widgets in gbaudio_dapm_free_controls")
 
+It seems you're all working on reports from your "Hulk Robot" so perhaps
+you can try to coordinate that internally.
+
+Johan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
