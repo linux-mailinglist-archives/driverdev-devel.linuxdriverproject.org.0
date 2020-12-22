@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 622B82E0C58
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 16:05:57 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4A9B2E0C69
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 16:08:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C0B5860FE;
-	Tue, 22 Dec 2020 15:05:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 92D90872D3;
+	Tue, 22 Dec 2020 15:08:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MQSXujSfuy9F; Tue, 22 Dec 2020 15:05:54 +0000 (UTC)
+	with ESMTP id LXk1Ye7fUD41; Tue, 22 Dec 2020 15:08:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 204B48615E;
-	Tue, 22 Dec 2020 15:05:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B8525872C8;
+	Tue, 22 Dec 2020 15:08:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 186E21BF370
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:05:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 059F41BF370
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:08:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0B48787290
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:05:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0207A87277
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:08:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RRd4WuXni9VG for <devel@linuxdriverproject.org>;
- Tue, 22 Dec 2020 15:05:49 +0000 (UTC)
+ with ESMTP id ppj5YLrHRuyb for <devel@linuxdriverproject.org>;
+ Tue, 22 Dec 2020 15:08:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m43-15.mailgun.net (m43-15.mailgun.net [69.72.43.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 00E8E87271
- for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 15:05:48 +0000 (UTC)
+Received: from so254-31.mailgun.net (so254-31.mailgun.net [198.61.254.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CB3D58729A
+ for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 15:08:03 +0000 (UTC)
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1608649548; h=Content-Transfer-Encoding: Content-Type:
+ s=smtp; t=1608649683; h=Content-Transfer-Encoding: Content-Type:
  MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=nBdti4p145SybWnCMKjk232I8BcskhOJcfGH3EeiP68=;
- b=ubKs81oUUUAxIq+R8TMmvz11KLpdfgQV4Wt5nk+1/RMFiL4OKqpN9vRSTMq4WbqO99F285qs
- WeOb1UI0wy2beGkw65TgyJFG7a1Heq7lyClw6xCBgRhOmi8/CPa+PkROA/VfS+hs6ltnFrE6
- cmkhlD6cexZOOndYHtyQmdpKbbg=
-X-Mailgun-Sending-Ip: 69.72.43.15
+ To: From: Sender; bh=ZlCng/8clulWrjBwm8L11jZK1Evn1oWxnBMS0ZVA4DU=;
+ b=gz/W9ri5B+c+lfIkD3InUH/ycsecMPiBrrM3L46OO6KHUH5t/nMehrPW8wJQgMwNIbDc9uJj
+ G4cXrI8HsuwqMoAT+NhFj5BnWov9d29lpmsfknKgTnkwaYfD6i+/mZu8IeuakexZICPR6ooc
+ qQwOxTWANTvhmlAQIAYMG37pES0=
+X-Mailgun-Sending-Ip: 198.61.254.31
 X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n09.prod.us-east-1.postgun.com with SMTP id
- 5fe20b4be61d77c971a7d1d4 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Dec 2020 15:05:47
+ smtp-out-n05.prod.us-east-1.postgun.com with SMTP id
+ 5fe20bd2120d248bb52a0167 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Dec 2020 15:08:02
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 27216C43462; Tue, 22 Dec 2020 15:05:47 +0000 (UTC)
+ id 90772C433CA; Tue, 22 Dec 2020 15:08:01 +0000 (UTC)
 Received: from x230.qca.qualcomm.com (88-114-240-156.elisa-laajakaista.fi
  [88.114.240.156])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 94631C433C6;
- Tue, 22 Dec 2020 15:05:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 94631C433C6
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 587E1C433C6;
+ Tue, 22 Dec 2020 15:07:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 587E1C433C6
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=fail smtp.mailfrom=kvalo@codeaurora.org
 From: Kalle Valo <kvalo@codeaurora.org>
 To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH v3 03/24] wfx: add Makefile/Kconfig
+Subject: Re: [PATCH v3 05/24] wfx: add main.c/main.h
 References: <20201104155207.128076-1-Jerome.Pouiller@silabs.com>
- <20201104155207.128076-4-Jerome.Pouiller@silabs.com>
-Date: Tue, 22 Dec 2020 17:05:41 +0200
-In-Reply-To: <20201104155207.128076-4-Jerome.Pouiller@silabs.com> (Jerome
- Pouiller's message of "Wed, 4 Nov 2020 16:51:46 +0100")
-Message-ID: <87tusd98ze.fsf@codeaurora.org>
+ <20201104155207.128076-6-Jerome.Pouiller@silabs.com>
+Date: Tue, 22 Dec 2020 17:07:56 +0200
+In-Reply-To: <20201104155207.128076-6-Jerome.Pouiller@silabs.com> (Jerome
+ Pouiller's message of "Wed, 4 Nov 2020 16:51:48 +0100")
+Message-ID: <87pn3198vn.fsf@codeaurora.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -98,26 +98,16 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 SmVyb21lIFBvdWlsbGVyIDxKZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbT4gd3JpdGVzOgoKPiBG
 cm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBT
 aWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5j
-b20+Cj4gLS0tCj4gIGRyaXZlcnMvbmV0L3dpcmVsZXNzL3NpbGFicy93ZngvS2NvbmZpZyAgfCAg
-OCArKysrKysrKwo+ICBkcml2ZXJzL25ldC93aXJlbGVzcy9zaWxhYnMvd2Z4L01ha2VmaWxlIHwg
-MjUgKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMzMgaW5zZXJ0
-aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvd2lyZWxlc3Mvc2lsYWJz
-L3dmeC9LY29uZmlnCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC93aXJlbGVzcy9z
-aWxhYnMvd2Z4L01ha2VmaWxlCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3Mv
-c2lsYWJzL3dmeC9LY29uZmlnCj4gYi9kcml2ZXJzL25ldC93aXJlbGVzcy9zaWxhYnMvd2Z4L0tj
-b25maWcKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAwMDAwMC4uODNlZTRk
-MGNhOGM2Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL3NpbGFi
-cy93ZngvS2NvbmZpZwo+IEBAIC0wLDAgKzEsOCBAQAo+ICtjb25maWcgV0ZYCj4gKwl0cmlzdGF0
-ZSAiU2lsaWNvbiBMYWJzIHdpcmVsZXNzIGNoaXBzIFdGMjAwIGFuZCBmdXJ0aGVyIgo+ICsJZGVw
-ZW5kcyBvbiBNQUM4MDIxMQo+ICsJZGVwZW5kcyBvbiBNTUMgfHwgIU1NQyAjIGRvIG5vdCBhbGxv
-dyBXRlg9eSBpZiBNTUM9bQo+ICsJZGVwZW5kcyBvbiAoU1BJIHx8IE1NQykKPiArCWhlbHAKPiAr
-CSAgVGhpcyBpcyBhIGRyaXZlciBmb3IgU2lsaWNvbnMgTGFicyBXRnh4eCBzZXJpZXMgKFdGMjAw
-IGFuZCBmdXJ0aGVyKQo+ICsJICBjaGlwc2V0cy4gVGhpcyBjaGlwIGNhbiBiZSBmb3VuZCBvbiBT
-UEkgb3IgU0RJTyBidXNlcy4KCktjb25maWcgc2hvdWxkIG1lbnRpb24gYWJvdXQgdGhlIFNESU8g
-aWQgc25hZnUgYW5kIHRoYXQgRGV2aWNlIFRyZWUgaXMKcmVxdWlyZWQuCgotLSAKaHR0cHM6Ly9w
-YXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3QvCgpodHRwczov
-L3dpcmVsZXNzLndpa2kua2VybmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3Vi
-bWl0dGluZ3BhdGNoZXMKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
-cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-dmVyZGV2LWRldmVsCg==
+b20+CgpbLi4uXQoKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBpZWVlODAyMTFfc3VwcG9ydGVkX2Jh
+bmQgd2Z4X2JhbmRfMmdoeiA9IHsKPiArCS5jaGFubmVscyA9IHdmeF8yZ2h6X2NoYW50YWJsZSwK
+PiArCS5uX2NoYW5uZWxzID0gQVJSQVlfU0laRSh3ZnhfMmdoel9jaGFudGFibGUpLAo+ICsJLmJp
+dHJhdGVzID0gd2Z4X3JhdGVzLAo+ICsJLm5fYml0cmF0ZXMgPSBBUlJBWV9TSVpFKHdmeF9yYXRl
+cyksCj4gKwkuaHRfY2FwID0gewo+ICsJCS8vIFJlY2VpdmUgY2FwcwoKVGhpcyBkcml2ZXIgaXMg
+ZnVsbCBvZiBDKysgY29tbWVudHMsIHBsZWFzZSBjb252ZXJ0IHRoZW0gdG8gbmV0d29yawpzdHls
+ZSBjb21tZW50cy4gTW9yZSBpbmZvIGluIHRoZSBjb2Rpbmcgc3R5bGUgZG9jLgoKLS0gCmh0dHBz
+Oi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC13aXJlbGVzcy9saXN0LwoKaHR0
+cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1bWVudGF0aW9u
+L3N1Ym1pdHRpbmdwYXRjaGVzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
+Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaXZlcmRldi1kZXZlbAo=
