@@ -1,72 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93F172E02A5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Dec 2020 23:54:21 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C233D2E032D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 01:09:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 15D3622E96;
-	Mon, 21 Dec 2020 22:54:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 782E086362;
+	Tue, 22 Dec 2020 00:09:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H-ALXaiw8wbV; Mon, 21 Dec 2020 22:54:18 +0000 (UTC)
+	with ESMTP id i6vwf6X6q3Qx; Tue, 22 Dec 2020 00:09:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6874922DDB;
-	Mon, 21 Dec 2020 22:54:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 07A298629C;
+	Tue, 22 Dec 2020 00:09:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 293201BF97A
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 22:54:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 43C6F1BF97C
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 00:09:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1F6A122CB0
- for <devel@linuxdriverproject.org>; Mon, 21 Dec 2020 22:54:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3A88A22F26
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 00:09:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TN+KQYkuUMea for <devel@linuxdriverproject.org>;
- Mon, 21 Dec 2020 22:54:13 +0000 (UTC)
+ with ESMTP id ei-TKoXMoXxU for <devel@linuxdriverproject.org>;
+ Tue, 22 Dec 2020 00:09:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oo1-f52.google.com (mail-oo1-f52.google.com
- [209.85.161.52])
- by silver.osuosl.org (Postfix) with ESMTPS id 5358E22C51
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 22:54:13 +0000 (UTC)
-Received: by mail-oo1-f52.google.com with SMTP id i18so2584783ooh.5
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 14:54:13 -0800 (PST)
+Received: from mail-ot1-f43.google.com (mail-ot1-f43.google.com
+ [209.85.210.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7D7DF2152C
+ for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 00:09:11 +0000 (UTC)
+Received: by mail-ot1-f43.google.com with SMTP id q25so10434715otn.10
+ for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 16:09:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=Jw1ndUTD1aoOuURqqx/C6H+0xyb493YdyXMpTfuGNvM=;
- b=i7P33YxeCQDdLMwu+sE7X5ruw3ufqMfCrg98EB/DCQXZT+syJ/qNqfIgHb30bPVxCV
- ZlXjKBOzzeQIWfT+aDqLo81FwFOCvS+eIhBkjY1bvn/iCBvr5O4p8ftKBBdOUTYtHLH/
- UnvlCUPjOz21+JZ4tsYNfHCMhb1wt2CAFSCtWf+KOY18s20JvBwZKCY5W2OzWMLGXDQK
- 5pYg161Kkwt91ArdCo8adgQcOFCNlCKmLEWGFVPcR1g1ftdoXRwymg/PzzMp8tyFoQD9
- VZCn8fFbjrIoOI6ndDq6dJ8xNAocWlCW3iQQWgIt+RNIR028ZKd7AYxpltu6LI0qxCk2
- sCCA==
-X-Gm-Message-State: AOAM530Ggget0rkx+Wea2eTVuNZdEM1/jMmKpWkwEkEu5uTBnApu12qd
- W9dvRj2dRduUAjLsvXACcg==
-X-Google-Smtp-Source: ABdhPJyh7WIlcaY2pi0KoO1t1QH32umrXAGjAjGGPz8NFDz5TkVO7QEgKYygMTJiLlGyoihZfsxu1g==
-X-Received: by 2002:a4a:a7c5:: with SMTP id n5mr12984272oom.9.1608591252632;
- Mon, 21 Dec 2020 14:54:12 -0800 (PST)
+ bh=ItdUMRfTDsdb0hqe14rohMJr65K3UQ/22dOQXCjLzFE=;
+ b=XeVa1z20szRq8Ixn2b++ptZ7EoSFsUAwbToqdjXVoMU0ZSLa5cQ4MQSRt5c+nFUyt7
+ N40vACTYU6V2LitNHShnzh15dt0Gop0D05n4ElSGxN9e3Y3qKDs5c0Qxyw/lPdcRRNUq
+ vSVkUmkbq5XvZG/SuULVhg/Z1XVwalvKaDLF1EfIfOfoINnmz/mBDzS1xoPxi5mahdcN
+ YYlO7opaBnpRQgVHRu/seXBIFAudRAQEhQ2WKA+hke4mDe2/qv+8J4dFRhBbGqDAWXCL
+ WcUnO6LSHTZYbctDSzSMH4iPb4Y0i1LtHcqVhwBqOyIcakbnjJwofmp2S9J+XwZdrD7X
+ pIPw==
+X-Gm-Message-State: AOAM530Vz1XdZc51Zo+QzSpwHHcnMEXFKsU9Qk7LTdeizVBjeYeI0+iC
+ p7gf/JnhsKPcy+lOJR/6Mg==
+X-Google-Smtp-Source: ABdhPJy4jl6IQt5jJ5yPRdxdZBTTS1Nugckix9YOiNWPt3ntEL9GZvmZ7XQ1+laNFn9KbtQIJ5+hQA==
+X-Received: by 2002:a9d:470f:: with SMTP id a15mr14177036otf.62.1608595750781; 
+ Mon, 21 Dec 2020 16:09:10 -0800 (PST)
 Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id z14sm4101967otk.70.2020.12.21.14.54.06
+ by smtp.gmail.com with ESMTPSA id s77sm4075422oos.27.2020.12.21.16.09.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Dec 2020 14:54:11 -0800 (PST)
-Received: (nullmailer pid 724741 invoked by uid 1000);
- Mon, 21 Dec 2020 22:54:05 -0000
-Date: Mon, 21 Dec 2020 15:54:05 -0700
+ Mon, 21 Dec 2020 16:09:09 -0800 (PST)
+Received: (nullmailer pid 890725 invoked by uid 1000);
+ Tue, 22 Dec 2020 00:09:04 -0000
+Date: Mon, 21 Dec 2020 17:09:04 -0700
 From: Rob Herring <robh@kernel.org>
 To: Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH v2 02/48] dt-bindings: memory: tegra30: emc: Replace core
- regulator with power domain
-Message-ID: <20201221225405.GA723611@robh.at.kernel.org>
+Subject: Re: [PATCH v2 04/48] dt-bindings: host1x: Document OPP and power
+ domain properties
+Message-ID: <20201222000904.GA890651@robh.at.kernel.org>
 References: <20201217180638.22748-1-digetx@gmail.com>
- <20201217180638.22748-3-digetx@gmail.com>
+ <20201217180638.22748-5-digetx@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201217180638.22748-3-digetx@gmail.com>
+In-Reply-To: <20201217180638.22748-5-digetx@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,55 +90,23 @@ Cc: Ulf Hansson <ulf.hansson@linaro.org>,
  linux-tegra@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
  Stephen Boyd <sboyd@kernel.org>, Peter De Schrijver <pdeschrijver@nvidia.com>,
  "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>
+ Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Dec 17, 2020 at 09:05:52PM +0300, Dmitry Osipenko wrote:
-> Power domain fits much better than a voltage regulator in regards to
-> a proper hardware description and from a software perspective as well.
-> Hence replace the core regulator with the power domain. Note that this
-> doesn't affect any existing DTBs because we haven't started to use the
-> regulator yet, and thus, it's okay to change it.
+On Thu, 17 Dec 2020 21:05:54 +0300, Dmitry Osipenko wrote:
+> Document new DVFS OPP table and power domain properties of the Host1x bus
+> and devices sitting on the bus.
 > 
 > Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 > ---
->  .../bindings/memory-controllers/nvidia,tegra30-emc.yaml     | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  .../display/tegra/nvidia,tegra20-host1x.txt   | 49 +++++++++++++++++++
+>  1 file changed, 49 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/memory-controllers/nvidia,tegra30-emc.yaml b/Documentation/devicetree/bindings/memory-controllers/nvidia,tegra30-emc.yaml
-> index 0a2e2c0d0fdd..7b4af9169b0b 100644
-> --- a/Documentation/devicetree/bindings/memory-controllers/nvidia,tegra30-emc.yaml
-> +++ b/Documentation/devicetree/bindings/memory-controllers/nvidia,tegra30-emc.yaml
-> @@ -39,9 +39,9 @@ properties:
->      description:
->        Phandle of the Memory Controller node.
->  
-> -  core-supply:
-> +  power-domains:
->      description:
-> -      Phandle of voltage regulator of the SoC "core" power domain.
-> +      Phandle to the SoC "core" power domain.
 
-power-domains needs to define how many (maxItems).
-
->  
->    operating-points-v2:
->      description:
-> @@ -241,7 +241,7 @@ examples:
->  
->          nvidia,memory-controller = <&mc>;
->          operating-points-v2 = <&dvfs_opp_table>;
-> -        core-supply = <&vdd_core>;
-> +        power-domains = <&domain>;
->  
->          #interconnect-cells = <0>;
->  
-> -- 
-> 2.29.2
-> 
+Reviewed-by: Rob Herring <robh@kernel.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
