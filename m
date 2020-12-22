@@ -1,81 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2BBE2E05CE
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 06:47:57 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB66C2E0619
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 07:40:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3181E86A24;
-	Tue, 22 Dec 2020 05:47:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8775487278;
+	Tue, 22 Dec 2020 06:40:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sAdYAa-BK22c; Tue, 22 Dec 2020 05:47:55 +0000 (UTC)
+	with ESMTP id BgpZ2aWqDMUg; Tue, 22 Dec 2020 06:40:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1086C86A01;
-	Tue, 22 Dec 2020 05:47:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8605987267;
+	Tue, 22 Dec 2020 06:40:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8DD5B1BF3EC
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 05:47:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D1FE1BF343
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 06:40:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 874D785FB9
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 05:47:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8852487256
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 06:40:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tFL84nWtcaby for <devel@linuxdriverproject.org>;
- Tue, 22 Dec 2020 05:47:49 +0000 (UTC)
+ with ESMTP id EIfI70i84ICt for <devel@linuxdriverproject.org>;
+ Tue, 22 Dec 2020 06:40:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com
- [209.85.215.179])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6465485FB4
- for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 05:47:49 +0000 (UTC)
-Received: by mail-pg1-f179.google.com with SMTP id i7so7693863pgc.8
- for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 21:47:49 -0800 (PST)
+Received: from mail-pg1-f172.google.com (mail-pg1-f172.google.com
+ [209.85.215.172])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4754E87252
+ for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 06:40:33 +0000 (UTC)
+Received: by mail-pg1-f172.google.com with SMTP id g18so7777367pgk.1
+ for <devel@driverdev.osuosl.org>; Mon, 21 Dec 2020 22:40:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=cCGMbIqC4XxP3YzkMZr/q4dVBJexuv/rEbrwR/RfRdY=;
- b=Srk+K+UPjswKkg/1tVgElwXk8iXMo12S4lotAPM6oNqJRfLX4Akb4jCzrEVhJFkNcN
- KwmEReFJdIBHT2WSRvLkd8i7wVFSz7dFKJm/2rVvjMB6ZGvTiX6hGy+DN4X/ZM868V00
- 73HzbED5vDA3gtnluSyszbP9FxpDsO4c7ybd4Z2kxt3KPzrU9HDkl0eZjifyL6ThwXeR
- k0KGy+QQ3/ZEWuzY9D28U31GnJbEv+Z2ji2hUUETC1Z5OcgNUbZ9jIW5JLBjioaJAzAK
- jXto8mCy8uH+aG0s1Wrs8f12pwSFRlOMMfPi/A2aGQydtoLszXVJRV7ZUkW2dkIIR5ja
- 0K2Q==
+ bh=58if8R3c+oDYrkVVIdvCMuB/HRUSZCNfm9pXzo2Jxis=;
+ b=xrayxzNVWoBOOUTllKsBsgUMpNC6xjZxfZRPwCLEzoXU/sg5+VOejq6aNdvm2F+h2l
+ oH0+TkshTv1ugzupTG92EKZ/M+hvjdg0PJI86pwt4TR1v8JqJdT8Pz61vnx9sJ5e5IhD
+ 0EmBrUKXKuIbpIgXqOaGOBgmjNnR7tKFoe67MoGdHqq/3HpwUSPXpkKjhoVhd8YJ7Eol
+ V682sF5RTwD5LSJkgu7VcNMjDxbWuqm/SMYLAkqsFi0U43LQmIqScaYNgn8+0Pf4UE6X
+ FlNsocE3fBXkr36MtWwlASa3aY1opWbBf4DS7Gh+PnwPpww69IKJ7asp4rk18Z4vqVBQ
+ ibyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=cCGMbIqC4XxP3YzkMZr/q4dVBJexuv/rEbrwR/RfRdY=;
- b=VDIeW3eTMEAyTIC0tjMyqzqYD101w3avVxvY1V+zsFzP6DN7Zfu/LEQJIUrigWA9T7
- GDqKXprRifiRVMya56hBhxl7Zzzg3/GvTd0J9bhzIFSHb0K2AalVFY6qxHNcMYtiAIZ6
- OYGv2EzUOmGadAoEWWR9zRDmf5jMfdkFiRIBFhOnFnS9xZ78BoUDSvFuD1ehdi/NNq2R
- NXoq3moh/ZpvUlZU11EG8Q9MudKR4P6C2r/q5cCo/ouejz++2hjKnBGeHyYJ2Su0rFG3
- a6LyLEASaCM40MZbhRveQOLAaQ5e+oBwAGnSGJFlA9N3nWWscpyRfPrTvQkzrya6jSV3
- tAhQ==
-X-Gm-Message-State: AOAM533pjr+vQq/i6S+MTX1DLi2b9v/86Fspg3QQMQUH3W3oApFW1qb+
- exTmWiYIIE47nFy8LWQoAFY9Hg==
-X-Google-Smtp-Source: ABdhPJwP8rj+wVobkUZDGozTZvrM4sLI7dbTq8nO4cY0ZzqShz5ME0L2t66M0IEjW5YQ3Z5zCN6kng==
-X-Received: by 2002:a62:e30c:0:b029:19d:932b:a1e2 with SMTP id
- g12-20020a62e30c0000b029019d932ba1e2mr18342199pfh.78.1608616068942; 
- Mon, 21 Dec 2020 21:47:48 -0800 (PST)
+ bh=58if8R3c+oDYrkVVIdvCMuB/HRUSZCNfm9pXzo2Jxis=;
+ b=nWvnQpb3J9YhymH4PfcosKB5IuSZIE7WDVy8Lb6+w3Cf8KbQhW6tm85fXkn60vW6VG
+ tLb3ByfXF5R0ijuXTucIDljO3yKuYj3O7TfqXHj3LK9vD5KILbQoOidHBnDTnYrVVro2
+ NPv38xZaaCGB+EKyT3aWWSbt/By63cbZyalnmI4K+0i7Nz7jXvBaq/onH36cbHoRo0GY
+ uNSBLW4RxnSFebKb/sr8EaedMUvHnPlD5H0yggUuLqItKfgIcR977Go8ZcPZS3LZDBd1
+ wjXkGlSgZ18bRxTthA//y93NfpsBAkSwD6XLC78b5q9XAdpfVs0wrztiSKS0eoFs7zQq
+ p7Qg==
+X-Gm-Message-State: AOAM531ZWQKMtzndPUCTKeYaJfm4F8jnMBplMcZWAJyF9RNq8rDSvxy/
+ cN22s5tuYTw2h0S6iUqo0A8ZOA==
+X-Google-Smtp-Source: ABdhPJy/vJr+NNSCt7f3w3qkCyZMIzMDucjtinh/w3AD+sfsU1ChxDwkeoH4189p2G8BBp09nYpz6Q==
+X-Received: by 2002:a63:1f10:: with SMTP id f16mr14879515pgf.111.1608619232743; 
+ Mon, 21 Dec 2020 22:40:32 -0800 (PST)
 Received: from localhost ([122.172.20.109])
- by smtp.gmail.com with ESMTPSA id f29sm18854172pfk.32.2020.12.21.21.47.47
+ by smtp.gmail.com with ESMTPSA id 197sm19176671pgg.43.2020.12.21.22.40.31
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 21 Dec 2020 21:47:47 -0800 (PST)
-Date: Tue, 22 Dec 2020 11:17:45 +0530
+ Mon, 21 Dec 2020 22:40:31 -0800 (PST)
+Date: Tue, 22 Dec 2020 12:10:29 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
 To: Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH v2 43/48] ARM: tegra: Add OPP tables and power domains to
- Tegra20 device-tree
-Message-ID: <20201222054745.2am4bcbk5df5aqzj@vireshk-i7>
+Subject: Re: [PATCH v2 28/48] soc/tegra: Introduce core power domain driver
+Message-ID: <20201222064029.duuzcsj53rt7xzvt@vireshk-i7>
 References: <20201217180638.22748-1-digetx@gmail.com>
- <20201217180638.22748-44-digetx@gmail.com>
+ <20201217180638.22748-29-digetx@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201217180638.22748-44-digetx@gmail.com>
+In-Reply-To: <20201217180638.22748-29-digetx@gmail.com>
 User-Agent: NeoMutt/20180716-391-311a52
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -107,25 +105,55 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On 17-12-20, 21:06, Dmitry Osipenko wrote:
-> diff --git a/arch/arm/boot/dts/tegra20-peripherals-opp.dtsi b/arch/arm/boot/dts/tegra20-peripherals-opp.dtsi
-> index b84afecea154..7e015cdfbc55 100644
-> --- a/arch/arm/boot/dts/tegra20-peripherals-opp.dtsi
-> +++ b/arch/arm/boot/dts/tegra20-peripherals-opp.dtsi
-> @@ -1,6 +1,46 @@
->  // SPDX-License-Identifier: GPL-2.0
->  
->  / {
-> +	core_opp_table: core-power-domain-opp-table {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
+> +++ b/drivers/soc/tegra/core-power-domain.c
+> @@ -0,0 +1,125 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * NVIDIA Tegra SoC Core Power Domain Driver
+> + */
 > +
-> +		core_opp_950: opp@950000 {
-> +			opp-microvolt = <950000 950000 1300000>;
-> +			opp-level = <950000>;
-> +		};
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+> +#include <linux/pm_opp.h>
+> +#include <linux/slab.h>
+> +
+> +#include <soc/tegra/common.h>
+> +
+> +static struct lock_class_key tegra_core_domain_lock_class;
+> +static bool tegra_core_domain_state_synced;
+> +
+> +static int tegra_genpd_set_performance_state(struct generic_pm_domain *genpd,
+> +					     unsigned int level)
+> +{
+> +	struct dev_pm_opp *opp;
+> +	int err;
+> +
+> +	opp = dev_pm_opp_find_level_ceil(&genpd->dev, &level);
 
-I am not sure I fully understand this, why does it have both microvolt and level
-properties ?
+We don't need ceil or floor versions for level, but rather _exact() version. Or
+maybe just call it dev_pm_opp_find_level().
+
+> +	if (IS_ERR(opp)) {
+> +		dev_err(&genpd->dev, "failed to find OPP for level %u: %pe\n",
+> +			level, opp);
+> +		return PTR_ERR(opp);
+> +	}
+> +
+> +	err = dev_pm_opp_set_voltage(&genpd->dev, opp);
+
+IIUC, you implemented this callback because you want to use the voltage triplet
+present in the OPP table ?
+
+And so you are setting the regulator ("power") later in this patch ?
+
+I am not in favor of implementing this routine, as it just adds a wrapper above
+the regulator API. What you should be doing rather is get the regulator by
+yourself here (instead of depending on the OPP core). And then you can do
+dev_pm_opp_get_voltage() here and set the voltage yourself. You may want to
+implement a version supporting triplet here though for the same.
+
+And you won't require the sync version of the API as well then.
 
 -- 
 viresh
