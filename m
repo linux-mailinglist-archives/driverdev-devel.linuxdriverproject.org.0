@@ -2,75 +2,85 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D67C2E0CDB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 16:44:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B0A0D2E0E99
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 20:14:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C6F43869E4;
-	Tue, 22 Dec 2020 15:44:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C21DA8698C;
+	Tue, 22 Dec 2020 19:14:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7kmT7nJun-Ep; Tue, 22 Dec 2020 15:44:22 +0000 (UTC)
+	with ESMTP id SX0f+JN0hU3Z; Tue, 22 Dec 2020 19:14:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E6F5A8664B;
-	Tue, 22 Dec 2020 15:44:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC1F6867B6;
+	Tue, 22 Dec 2020 19:14:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 458251BF370
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:44:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F2FE1BF3D1
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 19:14:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3CCD787281
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:44:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7B475867B6
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 19:14:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BesTjqN4OaR3 for <devel@linuxdriverproject.org>;
- Tue, 22 Dec 2020 15:44:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m43-15.mailgun.net (m43-15.mailgun.net [69.72.43.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D2CC38727E
- for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 15:44:17 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1608651858; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=V3is/KP9X3iODvQMYSfeCfbe4PwUmMc4FyAr6uEgGbc=;
- b=OdNyVsKrlKHsSqlxw0SYgXQ8htBBtALhPpkck4zRhumVEfxT4Qqy4xhBF5H9XCOKiv5pEFgj
- Q8BpM7bLEuOhsPR8c310AiBMkcS7hbCN1uKBFnfo9uTHLbXwlZyxRIQZ3+lsu77f7OGImAkq
- 61AJn3x0u6VCTw76kCxfr8HVYwc=
-X-Mailgun-Sending-Ip: 69.72.43.15
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n10.prod.us-west-2.postgun.com with SMTP id
- 5fe2144b1d5c1fa4270628d6 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Dec 2020 15:44:11
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 2E092C43462; Tue, 22 Dec 2020 15:44:11 +0000 (UTC)
-Received: from x230.qca.qualcomm.com (88-114-240-156.elisa-laajakaista.fi
- [88.114.240.156])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id DEE1FC433C6;
- Tue, 22 Dec 2020 15:44:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org DEE1FC433C6
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH v3 05/24] wfx: add main.c/main.h
-References: <20201104155207.128076-1-Jerome.Pouiller@silabs.com>
- <20201104155207.128076-6-Jerome.Pouiller@silabs.com>
-Date: Tue, 22 Dec 2020 17:44:05 +0200
-In-Reply-To: <20201104155207.128076-6-Jerome.Pouiller@silabs.com> (Jerome
- Pouiller's message of "Wed, 4 Nov 2020 16:51:48 +0100")
-Message-ID: <87a6u57smy.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+ with ESMTP id 3ueBvqSYG2n8 for <devel@linuxdriverproject.org>;
+ Tue, 22 Dec 2020 19:14:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com
+ [209.85.167.50])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2D4D28673C
+ for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 19:14:39 +0000 (UTC)
+Received: by mail-lf1-f50.google.com with SMTP id o13so34519888lfr.3
+ for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 11:14:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=XzA+IxTqOiwjX/OrglCXeb/ESpno+XzmysujmIzCZFM=;
+ b=h6Un3O0GRIs20IfATLi+caPIyTbxDAcApXIG4ly+tb+Ff/AsSFUMzbqRg8x3QcB6R+
+ /lifUSEyU9TWfJc8mLHdB9d8Y9qRGestdhGRPway3GOSGQ8cuy0pUSKXN4e5DxzEnKwD
+ fYR1YIf05Ra2zD+xV/OtVJhAAejE7qDSsealn/k6wRndcA+Kr9Qd5G4O+fFM4ffhZQx5
+ iWL+fsem7uxnvLNF9sQvi3DoxjBI8dadxS+frkf0ytoCPFY3u7CLr3wTEKUDK5cvpLd6
+ ZVfYRe9qC4R3pywKEw8dY8c5wQiJMnxeiGLjUsFSzmvoCygv4r2QJhnbSecDGxF5TC88
+ NxkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=XzA+IxTqOiwjX/OrglCXeb/ESpno+XzmysujmIzCZFM=;
+ b=UagIqHVBjMImUPSyfXL8fxyvENVLvFxrR1Fb+txyZhIfq4iO9cy6XqErIuOKGOQ4gr
+ D8XOkt1WvRTdnwyt8A/jbTbI5IRFHJqywlud2gZ+GusaTxpUw/x3XK0ruElQGt1NmFq2
+ iCxjXXnAaxSeWMw++IcRkbyVzf4NllEOV2wuJ73xx84rbeY4v5g8gFcfSyaCNUVq5f/H
+ V9zRf2Mcs1eaQXbsMn0eBirbWl+GsXd3E90phjKbfBfX/kf1c/3FTxbs6EEjdAw+VKaM
+ cpHTzrGONCsE4h0mpmEehtodY6NLFfYuhBjOdDOyrt6RmwWwzT7RRb/ylUqiEPp08PJ2
+ 3Jxg==
+X-Gm-Message-State: AOAM53299s4O4ShBWtB+GYMHcYi44Mg7X72x3iZeVVOlYK3QtA3n5EcA
+ vNNQksqNl2GuH4ITdS1oVAo=
+X-Google-Smtp-Source: ABdhPJx7qPXV3sur6eNMVZg5jfo2nbqg0IGWfAP0Kv+mCCycwkuquOyLrOc/kJVZYxAbFZWEAV5uLg==
+X-Received: by 2002:a2e:a366:: with SMTP id i6mr10568406ljn.427.1608664477207; 
+ Tue, 22 Dec 2020 11:14:37 -0800 (PST)
+Received: from [192.168.2.145] (109-252-192-57.dynamic.spd-mgts.ru.
+ [109.252.192.57])
+ by smtp.googlemail.com with ESMTPSA id h23sm3018460ljh.115.2020.12.22.11.14.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Dec 2020 11:14:36 -0800 (PST)
+Subject: Re: [PATCH v2 00/48] Introduce core voltage scaling for NVIDIA
+ Tegra20/30 SoCs
+To: Viresh Kumar <viresh.kumar@linaro.org>
+References: <20201217180638.22748-1-digetx@gmail.com>
+ <20201218071455.vdeozvvnmkjtrejt@vireshk-i7>
+ <c0976db7-ae66-740c-d95f-501d81c99fa0@gmail.com>
+ <20201222091558.mhqf4oytviwc6b3h@vireshk-i7>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <6281108a-5d76-bf6e-13ea-e27808c829b9@gmail.com>
+Date: Tue, 22 Dec 2020 22:14:35 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.2
 MIME-Version: 1.0
+In-Reply-To: <20201222091558.mhqf4oytviwc6b3h@vireshk-i7>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,80 +93,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Michael Turquette <mturquette@baylibre.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
+ linux-clk@vger.kernel.org, devel@driverdev.osuosl.org,
+ Kevin Hilman <khilman@kernel.org>, Nicolas Chauvet <kwizart@gmail.com>,
+ Viresh Kumar <vireshk@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-tegra@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, Peter De Schrijver <pdeschrijver@nvidia.com>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
-
-> +/* NOTE: wfx_send_pds() destroy buf */
-> +int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
-> +{
-> +	int ret;
-> +	int start, brace_level, i;
-> +
-> +	start = 0;
-> +	brace_level = 0;
-> +	if (buf[0] != '{') {
-> + dev_err(wdev->dev, "valid PDS start with '{'. Did you forget to
-> compress it?\n");
-> +		return -EINVAL;
-> +	}
-> +	for (i = 1; i < len - 1; i++) {
-> +		if (buf[i] == '{')
-> +			brace_level++;
-> +		if (buf[i] == '}')
-> +			brace_level--;
-> +		if (buf[i] == '}' && !brace_level) {
-> +			i++;
-> +			if (i - start + 1 > WFX_PDS_MAX_SIZE)
-> +				return -EFBIG;
-> +			buf[start] = '{';
-> +			buf[i] = 0;
-> +			dev_dbg(wdev->dev, "send PDS '%s}'\n", buf + start);
-> +			buf[i] = '}';
-> +			ret = hif_configuration(wdev, buf + start,
-> +						i - start + 1);
-> +			if (ret > 0) {
-> + dev_err(wdev->dev, "PDS bytes %d to %d: invalid data (unsupported
-> options?)\n",
-> +					start, i);
-> +				return -EINVAL;
-> +			}
-> +			if (ret == -ETIMEDOUT) {
-> + dev_err(wdev->dev, "PDS bytes %d to %d: chip didn't reply (corrupted
-> file?)\n",
-> +					start, i);
-> +				return ret;
-> +			}
-> +			if (ret) {
-> + dev_err(wdev->dev, "PDS bytes %d to %d: chip returned an unknown
-> error\n",
-> +					start, i);
-> +				return -EIO;
-> +			}
-> +			buf[i] = ',';
-> +			start = i;
-> +		}
-> +	}
-> +	return 0;
-> +}
-
-What does this function do? Looks very strange.
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+MjIuMTIuMjAyMCAxMjoxNSwgVmlyZXNoIEt1bWFyINC/0LjRiNC10YI6Cj4gT24gMTgtMTItMjAs
+IDE2OjUxLCBEbWl0cnkgT3NpcGVua28gd3JvdGU6Cj4+IEFscmlnaHQsIGFsdGhvdWdoIEkgaGF2
+ZW4ndCBwcmV0ZW5kZWQgdGhhdCB2MiBwYXRjaGVzIHNob3VsZCBiZSBtZXJnZWQKPj4gcmlnaHQg
+YXdheSBzaW5jZSB0aGV5IGFyZSBmdW5kYW1lbnRhbGx5IGRpZmZlcmVudCBmcm9tIHYxLCBhbmQg
+dGh1cywgYWxsCj4+IHBhdGNoZXMgbmVlZCB0byBiZSByZXZpZXdlZCBmaXJzdC4KPiAKPiBJIGFn
+cmVlLiBJIGhhdmUgZG9uZSBzb21lIGJhc2ljIHJldmlldyBmb3IgdGhlIHN0dWZmLgoKVGhhbmsg
+eW91IGZvciB0aGUgcmV2aWV3LgoKPj4gSWYgdGhlIGN1cnJlbnQgT1BQIGNoYW5nZXMgbG9vayBn
+b29kIHRvIHlvdSwgdGhlbiBwbGVhc2UgZ2l2ZSB5b3VycyByLWIKPj4gdG8gdGhlIHBhdGNoZXMu
+IFRoYW5rcyBpbiBhZHZhbmNlIQo+IAo+IHItYi15IGlzbid0IHJlcXVpcmVkIGFzIHRoZXkgd2ls
+bCBnbyB0aHJvdWdoIG15IHRyZWUgaXRzZWxmLiBTbyBpZiBldmVyeW9uZSBpcwo+IGhhcHB5IHdp
+dGggdGhlIGlkZWEsIHBsZWFzZSBzdWJtaXQgdGhlIHBhdGNoZXMgc2VwYXJhdGVseSAoZml4ZXMs
+IGltcHJvdmVtZW50cywKPiBkZXZtXyosIGV0YykuCgpva2F5Cl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
+eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
