@@ -1,75 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 854042E0CA1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 16:24:09 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD20686871;
-	Tue, 22 Dec 2020 15:24:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t95NBaB3fqrM; Tue, 22 Dec 2020 15:24:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C375286861;
-	Tue, 22 Dec 2020 15:24:05 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4565E1BF370
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:24:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63B0A2E0CA7
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Dec 2020 16:25:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2E73521503
- for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:24:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AD06B273E1;
+	Tue, 22 Dec 2020 15:25:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zhYGVBpMsD9k; Tue, 22 Dec 2020 15:25:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 2A3BB21561;
+	Tue, 22 Dec 2020 15:25:51 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CE3771BF370
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:25:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CB1B9860E0
+ for <devel@linuxdriverproject.org>; Tue, 22 Dec 2020 15:25:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TgEbytSs-qUU for <devel@linuxdriverproject.org>;
- Tue, 22 Dec 2020 15:24:02 +0000 (UTC)
+ with ESMTP id or72ScqsY1kN for <devel@linuxdriverproject.org>;
+ Tue, 22 Dec 2020 15:25:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m43-15.mailgun.net (m43-15.mailgun.net [69.72.43.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 1A6F22000A
- for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 15:24:02 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1608650642; h=Content-Transfer-Encoding: Content-Type:
- MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=Ptj5zSnNvuCBSRtlITspyWoblj0NS5WFVN+WtCGDrDk=;
- b=XFSOzwL65as+/PP39cD8vZQrqt18Jz/Z5Q6rnTHMyQ7Ad4Pv6eV9zTau2Wx58+GxKFq2xKoE
- jUU5dY+5y7mzYHvK47oHWspLZAQ/Ot5TBmcc68dJ3Qo1bKMYNZmvAtveAwFfbXBIA43qQO5d
- Er6CmYc3lc2J0z46KsRGBJteiLw=
-X-Mailgun-Sending-Ip: 69.72.43.15
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 5fe20f91b00c0d7ad4223289 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Dec 2020 15:24:01
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 7B062C433C6; Tue, 22 Dec 2020 15:24:00 +0000 (UTC)
-Received: from x230.qca.qualcomm.com (88-114-240-156.elisa-laajakaista.fi
- [88.114.240.156])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 452F2C433CA;
- Tue, 22 Dec 2020 15:23:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 452F2C433CA
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH v3 00/24] wfx: get out from the staging area
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 53F8B860DE
+ for <devel@driverdev.osuosl.org>; Tue, 22 Dec 2020 15:25:48 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8438C22B2B;
+ Tue, 22 Dec 2020 15:25:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1608650748;
+ bh=5u1OMPazxna6SdFx9055/ZLyzwNHmLasEDnc+ZdsHKQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=VT5ufNfTQ9zHVf2sog5IbNLe33dKHyraVdbhAhDioiIFia5wjW/bGXXyPHFCSh5kY
+ CGvdJjggR7bAXGtx/LtjFgzceZ44NAnL7We7BHtHSDOQxw4BlABUrK76l5G+CtkItm
+ HWi0t5/T0yE6kbm7VVDd2ByOjkbBvXlEZtFpjKlc=
+Date: Tue, 22 Dec 2020 16:27:01 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH v3 09/24] wfx: add hwio.c/hwio.h
+Message-ID: <X+IQRct0Zsm87H4+@kroah.com>
 References: <20201104155207.128076-1-Jerome.Pouiller@silabs.com>
-Date: Tue, 22 Dec 2020 17:23:55 +0200
-In-Reply-To: <20201104155207.128076-1-Jerome.Pouiller@silabs.com> (Jerome
- Pouiller's message of "Wed, 4 Nov 2020 16:51:43 +0100")
-Message-ID: <87czz19850.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+ <20201104155207.128076-10-Jerome.Pouiller@silabs.com>
+ <87lfdp98rw.fsf@codeaurora.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <87lfdp98rw.fsf@codeaurora.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,24 +66,40 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
  "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SmVyb21lIFBvdWlsbGVyIDxKZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbT4gd3JpdGVzOgoKPiBG
-cm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBJ
-IHRoaW5rIHRoZSB3ZnggZHJpdmVyIGlzIG5vdyBtYXR1cmUgZW5vdWdoIHRvIGJlIGFjY2VwdGVk
-IGluIHRoZQo+IGRyaXZlcnMvbmV0L3dpcmVsZXNzIGRpcmVjdG9yeS4KCldoYXQncyB0aGUgc3Rh
-dHVzIHdpdGggZmlybXdhcmUgaW1hZ2VzPyBDYW4gYW55b25lIHRha2UgdGhlIGxhdGVzdAprZXJu
-ZWwgYW5kIGxpbnV4LWZpcm13YXJlIGFuZCB1c2UgdGhpcyBkcml2ZXIgbm9ybWFsbHk/CgotLSAK
-aHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3Qv
-CgpodHRwczovL3dpcmVsZXNzLndpa2kua2VybmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50
-YXRpb24vc3VibWl0dGluZ3BhdGNoZXMKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
-dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Tue, Dec 22, 2020 at 05:10:11PM +0200, Kalle Valo wrote:
+> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+> 
+> > +/*
+> > + * Internal helpers.
+> > + *
+> > + * About CONFIG_VMAP_STACK:
+> > + * When CONFIG_VMAP_STACK is enabled, it is not possible to run DMA on stack
+> > + * allocated data. Functions below that work with registers (aka functions
+> > + * ending with "32") automatically reallocate buffers with kmalloc. However,
+> > + * functions that work with arbitrary length buffers let's caller to handle
+> > + * memory location. In doubt, enable CONFIG_DEBUG_SG to detect badly located
+> > + * buffer.
+> > + */
+> 
+> This sounds very hacky to me, I have understood that you should never
+> use stack with DMA.
+
+You should never do that because some platforms do not support it, so no
+driver should ever try to do that as they do not know what platform they
+are running on.
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
