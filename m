@@ -2,54 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60A8C2E126D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Dec 2020 03:24:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9351A2E1270
+	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Dec 2020 03:24:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1CB2886A28;
-	Wed, 23 Dec 2020 02:24:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3D6088698C;
+	Wed, 23 Dec 2020 02:24:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ok7taL0Pj0I5; Wed, 23 Dec 2020 02:24:29 +0000 (UTC)
+	with ESMTP id UMlsF-Fvf+EP; Wed, 23 Dec 2020 02:24:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5A58086964;
-	Wed, 23 Dec 2020 02:24:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 384C886990;
+	Wed, 23 Dec 2020 02:24:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 25FAB1BF990
- for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:24:27 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4324B1BF301
+ for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:24:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2318086964
- for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:24:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3FF9B85E98
+ for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:24:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bi-xIxIOIyYD for <devel@linuxdriverproject.org>;
- Wed, 23 Dec 2020 02:24:26 +0000 (UTC)
+ with ESMTP id 3igODmPr4xMm for <devel@linuxdriverproject.org>;
+ Wed, 23 Dec 2020 02:24:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A058B86822
- for <devel@driverdev.osuosl.org>; Wed, 23 Dec 2020 02:24:26 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BB1DC22A83;
- Wed, 23 Dec 2020 02:24:25 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B390E85E40
+ for <devel@driverdev.osuosl.org>; Wed, 23 Dec 2020 02:24:37 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C20932339D;
+ Wed, 23 Dec 2020 02:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1608690266;
- bh=AeLGneNumqsKiJ0ejLw8pRSsPio2RJ6NzKssWVIDVfk=;
+ s=k20201202; t=1608690277;
+ bh=bfortx+wnC+TGOCt//qZ8vIqwkv0I4jomBOictlh65k=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=j45OD9XfNNhx33rLfVPiedJZFMic3VBcTsX2nD0m4GMahQ0uTgewbu0H9Qad9nlm7
- yoIuAqNqXbts1bWuFI9+AK126QpAX7mXzZ11I2XSIPSUQ98E6MxFKTzbofFBTWUFT6
- iCWsF4LY6LBuWFciEe3SMVHsOQcCgVB6oGa41lR7mvHXcBXCtBMqY8dmrMVMir3OtG
- qQKjqPPUzfypuVzmLwttITw2wpbhiUwe+CYEz74zKFCnCdVCegU0OCzTBMagLKdixE
- AN/qwEXsjdfN1a4ZPANAVxDrro1atfIhY+yVHuaY2KicHrsac44YYxBNGwmlvfb4Xg
- 7QIhyNLsKVjlA==
+ b=AMUBVodX/eEFEhjI3HFLzCM9ZdHdFPBWNUpacerZWjqdi/CaHRzwIOqbovKCbIlL8
+ KMxDzneSX37Kx2IoSWthv97RWWq5RGpETcE5Vtfi9cpcOSQFlZaNahnq5M99j0La4m
+ yNlBR2RzMKSH3Irdx6si6woQ593rIncw8IBf6otIFGsDtGBY4UzI7o2gpTbWhM1I6L
+ ORYODpHVd1bRRGDIg3alJQaLW0WlC5ZEQpKg3N943bqx22nAHxqg4TfnZh7JteovpY
+ d9vaSCd+cGUnAVHEOQiCoJly9+BZ3JhWiyFx0qKAO93nwNW4s6/Z5lMnrY/0mZyuav
+ //k9uMxriHH5g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.9 07/48] staging: rtl8192u: fix wrong judgement in
- rtl8192_rx_isr
-Date: Tue, 22 Dec 2020 21:23:35 -0500
-Message-Id: <20201223022417.2794032-7-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 17/48] media: cec-core: first mark device
+ unregistered, then wake up fhs
+Date: Tue, 22 Dec 2020 21:23:45 -0500
+Message-Id: <20201223022417.2794032-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201223022417.2794032-1-sashal@kernel.org>
 References: <20201223022417.2794032-1-sashal@kernel.org>
@@ -68,50 +68,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Zhang Qilong <zhangqilong3@huawei.com>, devel@driverdev.osuosl.org
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-media@vger.kernel.org,
+ devel@driverdev.osuosl.org, Sasha Levin <sashal@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Zhang Qilong <zhangqilong3@huawei.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 
-[ Upstream commit 071dc1787a2f8bb636f864c1f306280deea3b1d5 ]
+[ Upstream commit e91c255733d9bbb4978a372f44fb5ed689ccdbd1 ]
 
-The 'EPERM' cannot appear in the previous path, we
-should use '-EPERM' to check it. For example:
+If a CEC device node is unregistered, then it should be marked as
+unregistered before waking up any filehandles that are waiting for
+an event.
 
-Call trace:
-->rtl8192_rx_isr
-    ->usb_submit_urb
-       ->usb_hcd_submit_urb
-           ->rh_urb_enqueue
-	       ->rh_queue_status
-	           ->usb_hcd_link_urb_to_ep
+This ensures that there is no race condition where an application can
+call CEC_DQEVENT and have the ioctl return 0 instead of ENODEV.
 
-Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
-Link: https://lore.kernel.org/r/20201028122648.47959-1-zhangqilong3@huawei.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/rtl8192u/r8192U_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/cec/cec-core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index fa4c47c7d2166..f5e53df9d49db 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -970,7 +970,7 @@ static void rtl8192_rx_isr(struct urb *urb)
- 	urb->context = skb;
- 	skb_queue_tail(&priv->rx_queue, skb);
- 	err = usb_submit_urb(urb, GFP_ATOMIC);
--	if (err && err != EPERM)
-+	if (err && err != -EPERM)
- 		netdev_err(dev,
- 			   "can not submit rxurb, err is %x, URB status is %x\n",
- 			   err, urb->status);
+diff --git a/drivers/staging/media/cec/cec-core.c b/drivers/staging/media/cec/cec-core.c
+index b0137e247dc9a..bb189f753c3ac 100644
+--- a/drivers/staging/media/cec/cec-core.c
++++ b/drivers/staging/media/cec/cec-core.c
+@@ -183,12 +183,12 @@ static void cec_devnode_unregister(struct cec_devnode *devnode)
+ 		mutex_unlock(&devnode->lock);
+ 		return;
+ 	}
++	devnode->registered = false;
++	devnode->unregistered = true;
+ 
+ 	list_for_each_entry(fh, &devnode->fhs, list)
+ 		wake_up_interruptible(&fh->wait);
+ 
+-	devnode->registered = false;
+-	devnode->unregistered = true;
+ 	mutex_unlock(&devnode->lock);
+ 
+ 	device_del(&devnode->dev);
 -- 
 2.27.0
 
