@@ -1,55 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A42A22E1260
-	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Dec 2020 03:23:09 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3E1C286A35;
-	Wed, 23 Dec 2020 02:23:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DCideSwnskEg; Wed, 23 Dec 2020 02:23:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 53BBF86964;
-	Wed, 23 Dec 2020 02:23:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6DE8A1BF301
- for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:23:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9D402E1269
+	for <lists+driverdev-devel@lfdr.de>; Wed, 23 Dec 2020 03:24:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5F5A827A49
- for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:23:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41E322DAFA;
+	Wed, 23 Dec 2020 02:24:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id w-xhGkO6oQTX; Wed, 23 Dec 2020 02:24:10 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id E56DB2CD96;
+	Wed, 23 Dec 2020 02:24:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5319B1BF301
+ for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:24:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5020B86820
+ for <devel@linuxdriverproject.org>; Wed, 23 Dec 2020 02:24:05 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mA++HDNTZdNE for <devel@linuxdriverproject.org>;
- Wed, 23 Dec 2020 02:23:03 +0000 (UTC)
+ with ESMTP id qKiypj1F3uEc for <devel@linuxdriverproject.org>;
+ Wed, 23 Dec 2020 02:24:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id C824A27266
- for <devel@driverdev.osuosl.org>; Wed, 23 Dec 2020 02:23:03 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id ED10723137;
- Wed, 23 Dec 2020 02:23:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C282E86744
+ for <devel@driverdev.osuosl.org>; Wed, 23 Dec 2020 02:24:04 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 719D322AAF;
+ Wed, 23 Dec 2020 02:24:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1608690183;
- bh=gRH/DzjNbL1Co5o8P1LZJKyOjSjpo/Al9L+y3JPk/FM=;
+ s=k20201202; t=1608690244;
+ bh=2baLd7G6FKO3JwsZYeeLATPe/21sVJUcpc//7lAZn5Q=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FCV1uy1tVcBLDbnWzvm5HETecuuK/q/O7/bFKd2ZRhjblCm/JKTzWIduwL5gZCK8/
- bhrKQS55TCGszi+ULYm1+nHbV3gCwG3zTez/4qyCJ7N3CByeDpUVk6bAhk8ypEYBPv
- M8ywubSMXH3cO6BuytxmYu733a0iyShWvsLDzf+YitBWwMt8Yo722DDnPt6XydsSWd
- xKad3/KDYUO1q0z7eF168WCKUtvUJtnqrHXX/pYq+6J0BXPgQImO0Jf4n+8lyM1dTo
- d5uyGJvp5usZnuXe5GJbjRMCTLXt1kssQPGvNpr/Da+zTABrs/0zQiUCvwZKdaCpZ4
- kFjfCudc4y9+A==
+ b=Wf6R/I+8iX4ad8PC2/z9RlC1WXIouJIdeI4AbxJk9izkzdwBcyz8tx9wKNvQxb/Xi
+ 79MIyEQbFZlOFAhvLJwgPcbxa9oUrpWiqUVjGWp3C0uMfmNJR9FCve16gaH/SKUAJ4
+ +sMNDhrB7l9neEn4YVhFoBWZRO0eFOIPou6uIJ7FVY7pLy8idtidijsul9aS4atQBO
+ M8tYtu2yoY+OG6lxEiZ2rG+ELmoawcS5wCiNrPU83FvgMv45f7QBUeecCzbALHKYu0
+ E2yAroYpZ8RnP5CH6NPw8hA7oFDQyI6YbGLLA3yxw5EQdO/fViT/qxNl9Ua75xX9Ja
+ qg1EdYdB0i7bQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 08/66] staging: rtl8192u: fix wrong judgement in
- rtl8192_rx_isr
-Date: Tue, 22 Dec 2020 21:21:54 -0500
-Message-Id: <20201223022253.2793452-8-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 57/66] USB: typec: tcpm: Fix PR_SWAP error
+ handling
+Date: Tue, 22 Dec 2020 21:22:43 -0500
+Message-Id: <20201223022253.2793452-57-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20201223022253.2793452-1-sashal@kernel.org>
 References: <20201223022253.2793452-1-sashal@kernel.org>
@@ -68,50 +68,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Will McVicker <willmcvicker@google.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Zhang Qilong <zhangqilong3@huawei.com>, devel@driverdev.osuosl.org
+ Badhri Jagan Sridharan <badhri@google.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Kyle Tso <kyletso@google.com>, Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Zhang Qilong <zhangqilong3@huawei.com>
+From: Kyle Tso <kyletso@google.com>
 
-[ Upstream commit 071dc1787a2f8bb636f864c1f306280deea3b1d5 ]
+[ Upstream commit 301a633c1b5b2caa4c4b97a83270d4a1d60c53bf ]
 
-The 'EPERM' cannot appear in the previous path, we
-should use '-EPERM' to check it. For example:
+PD rev3.0 8.3.3.16.3.6 PE_PRS_SRC_SNK_Wait_Source_on State
+The Policy Enging Shall transition to the ErrorRecovery state when the
+PSSourceOnTimer times out ...
 
-Call trace:
-->rtl8192_rx_isr
-    ->usb_submit_urb
-       ->usb_hcd_submit_urb
-           ->rh_urb_enqueue
-	       ->rh_queue_status
-	           ->usb_hcd_link_urb_to_ep
-
-Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
-Link: https://lore.kernel.org/r/20201028122648.47959-1-zhangqilong3@huawei.com
+Cc: Guenter Roeck <linux@roeck-us.net>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Badhri Jagan Sridharan <badhri@google.com>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Signed-off-by: Kyle Tso <kyletso@google.com>
+Signed-off-by: Will McVicker <willmcvicker@google.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Link: https://lore.kernel.org/r/20201210160521.3417426-4-gregkh@linuxfoundation.org
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/rtl8192u/r8192U_core.c | 2 +-
+ drivers/staging/typec/tcpm.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index b5941ae410d9a..fbeee8654781d 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -967,7 +967,7 @@ static void rtl8192_rx_isr(struct urb *urb)
- 	urb->context = skb;
- 	skb_queue_tail(&priv->rx_queue, skb);
- 	err = usb_submit_urb(urb, GFP_ATOMIC);
--	if (err && err != EPERM)
-+	if (err && err != -EPERM)
- 		netdev_err(dev,
- 			   "can not submit rxurb, err is %x, URB status is %x\n",
- 			   err, urb->status);
+diff --git a/drivers/staging/typec/tcpm.c b/drivers/staging/typec/tcpm.c
+index 686037a498c19..39f99a80daf73 100644
+--- a/drivers/staging/typec/tcpm.c
++++ b/drivers/staging/typec/tcpm.c
+@@ -2710,7 +2710,7 @@ static void run_state_machine(struct tcpm_port *port)
+ 			tcpm_set_state(port, ERROR_RECOVERY, 0);
+ 			break;
+ 		}
+-		tcpm_set_state_cond(port, SNK_UNATTACHED, PD_T_PS_SOURCE_ON);
++		tcpm_set_state(port, ERROR_RECOVERY, PD_T_PS_SOURCE_ON);
+ 		break;
+ 	case PR_SWAP_SRC_SNK_SINK_ON:
+ 		tcpm_set_state(port, SNK_STARTUP, 0);
 -- 
 2.27.0
 
