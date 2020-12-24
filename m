@@ -1,47 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B10A2E272F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Dec 2020 14:25:05 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 14D2E2E2730
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Dec 2020 14:25:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0198620455;
-	Thu, 24 Dec 2020 13:25:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5A3DD86268;
+	Thu, 24 Dec 2020 13:25:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1mgrMHZZR6wl; Thu, 24 Dec 2020 13:25:01 +0000 (UTC)
+	with ESMTP id wNs8a20xRvnP; Thu, 24 Dec 2020 13:25:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9021920434;
-	Thu, 24 Dec 2020 13:24:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3CD28861F9;
+	Thu, 24 Dec 2020 13:25:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8C4A1BF83B
- for <devel@linuxdriverproject.org>; Thu, 24 Dec 2020 13:24:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C09C31BF83B
+ for <devel@linuxdriverproject.org>; Thu, 24 Dec 2020 13:25:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E275D203F4
- for <devel@linuxdriverproject.org>; Thu, 24 Dec 2020 13:24:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BC4AB8738B
+ for <devel@linuxdriverproject.org>; Thu, 24 Dec 2020 13:25:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4+Q8ekKcN6uI for <devel@linuxdriverproject.org>;
- Thu, 24 Dec 2020 13:24:55 +0000 (UTC)
+ with ESMTP id GabLbwuHOcXU for <devel@linuxdriverproject.org>;
+ Thu, 24 Dec 2020 13:25:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by silver.osuosl.org (Postfix) with ESMTPS id 453C5203D3
- for <devel@driverdev.osuosl.org>; Thu, 24 Dec 2020 13:24:54 +0000 (UTC)
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4D1rPj3RLzzktQ8;
- Thu, 24 Dec 2020 21:23:53 +0800 (CST)
+Received: from szxga06-in.huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4F44187377
+ for <devel@driverdev.osuosl.org>; Thu, 24 Dec 2020 13:25:04 +0000 (UTC)
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4D1rQL5R4Tzhs4k;
+ Thu, 24 Dec 2020 21:24:26 +0800 (CST)
 Received: from ubuntu.network (10.175.138.68) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.498.0; Thu, 24 Dec 2020 21:24:42 +0800
+ DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
+ 14.3.498.0; Thu, 24 Dec 2020 21:24:51 +0800
 From: Zheng Yongjun <zhengyongjun3@huawei.com>
-To: <devel@driverdev.osuosl.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 -next] staging: most: net: use DEFINE_MUTEX() for mutex lock
-Date: Thu, 24 Dec 2020 21:25:19 +0800
-Message-ID: <20201224132519.31504-1-zhengyongjun3@huawei.com>
+To: <nsaenzjulienne@suse.de>, <bcm-kernel-feedback-list@broadcom.com>,
+ <devel@driverdev.osuosl.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2 -next] staging: vc04_services: use DEFINE_MUTEX() for mutex
+ lock
+Date: Thu, 24 Dec 2020 21:25:28 +0800
+Message-ID: <20201224132528.31558-1-zhengyongjun3@huawei.com>
 X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
 X-Originating-IP: [10.175.138.68]
@@ -69,30 +71,28 @@ rather than explicitly calling mutex_init().
 
 Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
 ---
- drivers/staging/most/net/net.c | 3 +--
+ .../vc04_services/interface/vchiq_arm/vchiq_connected.c        | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/most/net/net.c b/drivers/staging/most/net/net.c
-index b6fecb06a0e6..f125bb6da406 100644
---- a/drivers/staging/most/net/net.c
-+++ b/drivers/staging/most/net/net.c
-@@ -68,7 +68,7 @@ struct net_dev_context {
- };
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
+index 79b75efa6868..864253866155 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
+@@ -12,13 +12,12 @@ static   int                        g_connected;
+ static   int                        g_num_deferred_callbacks;
+ static   VCHIQ_CONNECTED_CALLBACK_T g_deferred_callback[MAX_CALLBACKS];
+ static   int                        g_once_init;
+-static   struct mutex               g_connected_mutex;
++static   DEFINE_MUTEX(g_connected_mutex);
  
- static struct list_head net_devices = LIST_HEAD_INIT(net_devices);
--static struct mutex probe_disc_mt; /* ch->linked = true, most_nd_open */
-+static DEFINE_MUTEX(probe_disc_mt); /* ch->linked = true, most_nd_open */
- static DEFINE_SPINLOCK(list_lock); /* list_head, ch->linked = false, dev_hold */
- static struct most_component comp;
- 
-@@ -520,7 +520,6 @@ static int __init most_net_init(void)
+ /* Function to initialize our lock */
+ static void connected_init(void)
  {
- 	int err;
- 
--	mutex_init(&probe_disc_mt);
- 	err = most_register_component(&comp);
- 	if (err)
- 		return err;
+ 	if (!g_once_init) {
+-		mutex_init(&g_connected_mutex);
+ 		g_once_init = 1;
+ 	}
+ }
 -- 
 2.22.0
 
