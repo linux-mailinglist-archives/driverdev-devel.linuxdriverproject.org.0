@@ -1,72 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD30F2E35B0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Dec 2020 11:06:49 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5C5D2E367A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Dec 2020 12:31:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 859BB203CE;
-	Mon, 28 Dec 2020 10:06:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7E99E86CDA;
+	Mon, 28 Dec 2020 11:30:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dsqpJ-pSvCen; Mon, 28 Dec 2020 10:06:45 +0000 (UTC)
+	with ESMTP id MoVNF1peUKSV; Mon, 28 Dec 2020 11:30:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CDD8E204EF;
-	Mon, 28 Dec 2020 10:06:42 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 49CD486CB5;
+	Mon, 28 Dec 2020 11:30:56 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 18FD41BF232
- for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 10:06:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8C9291BF363
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Dec 2020 11:30:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 155C185D87
- for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 10:06:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 83EDB85D7D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Dec 2020 11:30:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RtfmxVDzZLjl for <devel@linuxdriverproject.org>;
- Mon, 28 Dec 2020 10:06:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com
- [209.85.167.50])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7833685CD8
- for <devel@driverdev.osuosl.org>; Mon, 28 Dec 2020 10:06:38 +0000 (UTC)
-Received: by mail-lf1-f50.google.com with SMTP id h22so22826840lfu.2
- for <devel@driverdev.osuosl.org>; Mon, 28 Dec 2020 02:06:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=dGFTgGcRujaKVNM6ipjz6OavsqjZpLAuWJIkLwgW8fc=;
- b=UAUYnu2e9giAY/vs4k6IS4+yKQCBY4137Fpt6bg8Sc31cVoPM313pQLSCdfd7LhX2/
- GIVaxRXuf3RdLycqs4kjAlSD3k/L8Doc6IVoXvDEyMuxH2kpvSCb8ysz+I39IIWgukvY
- MQ1kk8VbD0Xdg+PA1rycV6LIJT6o6gQorlVCcY6HtrIMRESkx6umFtQrrf9yqG0OQJbi
- /9mF7FnmnDy/OBd1ih87QxR3wBVFSh7zmdli13lAfXtOaqrjVfU50yVpbDHA4LcDmzyW
- imlxsJQb5WF+Hi3s49/IA11XzK5JrgJhoVWsBnLiMK1lNuOjPUubw+DMzwCGj/XgW7ob
- pNdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=dGFTgGcRujaKVNM6ipjz6OavsqjZpLAuWJIkLwgW8fc=;
- b=NrIv0ecUJmCh/TVpc+gAMZQaWg7MXgT3yokrq94DJAOGefhVGyRi6AdTc/DJkEM+IB
- pX/cN2Hq3UsF37ksGNN/NMNGvkxu+TcOw89D4Pdc4gHZvRRn43Ie0ZMu3kjDNwcfCjOU
- jBatg4owsPu/+KbEjalbA+rkN7c5Klmd241j3XjUtVLT3rgi91wsATqS5+aUkuS3yMzL
- Z3M1r1ndIIWpvgyBWcfO0Bzv89gRzHK6Skvg5okYFYRHrdfjcFLke5dXByifyPlGt1ta
- 1HN5n03+QFiaEZwII0Wr8wjuMVueQecEPu+dRx0dQ002+No9pWrvw8pkJ7C2hGHsKR7X
- pImw==
-X-Gm-Message-State: AOAM53137q8ZrJlt5R/acSaIqoR4evnmqPp1L2dR9YsFXCHpn7YgMsMF
- 7UT+zVrckeHaUwFwGAYNm5FYBAmAekrrYhcSxWs=
-X-Google-Smtp-Source: ABdhPJz4FzzUlhAB4TYYS2+DDPy0BDKRm1efjwaHQb2soGPHBJAhh+POYnSwUvdyQUgwC3lPIDNP7Qf1LNHTkKOqrxg=
-X-Received: by 2002:ac2:4c2f:: with SMTP id u15mr10682434lfq.163.1609149996417; 
- Mon, 28 Dec 2020 02:06:36 -0800 (PST)
+ with ESMTP id oGerfVbYlpmu
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Dec 2020 11:30:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from visi.com (vps-ee291961.vps.ovh.ca [51.79.157.83])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0A0FE85CF2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 28 Dec 2020 11:30:52 +0000 (UTC)
+Received: from [5.62.61.65] (account couvent04@visi.com HELO User)
+ by visi.com (CommuniGate Pro SMTP 6.1.9 _community_)
+ with ESMTPA id 359098; Mon, 28 Dec 2020 03:30:39 -0800
+From: "MR Ho-Seok Yang"<nhenry61@yahoo.com>
+Subject: INVESTMENT
+Date: Mon, 28 Dec 2020 12:30:40 +0100
 MIME-Version: 1.0
-Received: by 2002:a2e:594:0:0:0:0:0 with HTTP;
- Mon, 28 Dec 2020 02:06:36 -0800 (PST)
-From: Mrs Suzara Maling Wan <centralbkbf.unitedbkafrica1@gmail.com>
-Date: Mon, 28 Dec 2020 02:06:36 -0800
-Message-ID: <CAJVrGSu64D7Jp1ZC6--_N=fne62KP_MTVN8nQM3LpdEoMajoXg@mail.gmail.com>
-Subject: Mrs Suzara Maling Wan
-To: undisclosed-recipients:;
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+X-Antivirus: AVG (VPS 201228-0, 28/12/2020), Outbound message
+X-Antivirus-Status: Clean
+Message-ID: <auto-000000359098@visi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,28 +61,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: suzara.wankind@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: hoseoky34@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-I am Mrs Suzara Maling Wan from (Philippine) but based in West Africa
-Country since eight years as a business woman dealing with gold
-exportation, I have a dream and desire of building an orphanage home
-in your country, and i have a deposit fund to the project, but
-presently my health condition we not allow me to carry out the project
-my self, now my doctor has already told me that I have just few period
-of time to leave because of my ovarian cancer disease, can you help
-fulfill this project.
-
-If you have the mind to help me in this project, contact me privet
-email address  for more details on the way forward
-
-With kind Regards,
-Mrs Suzara Maling Wan
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBEYXkgCkkgYW0gSG8tU2VvayBZYW5nICwgUGxlYXNhbnQgZ3JlZXRpbmdzIHRvIHlvdSBh
+cyBpIHNlZWsgeW91ciBpbmR1bGdlbmNlIHRvIGludHJvZHVjZSB0byB5b3UgdGhlIGRlc2lyZSBv
+ZiBteSBwcmluY2lwYWyScyB3aXNoLCB0byBtYWtlIGh1Z2UgZmluYW5jaWFsIGludmVzdG1lbnQg
+aW4geW91ciBob21lIGNvdW50cnkgb24gYXJlYXMgb2Ygb2lsIGFuZCBnYXMsIHJlYWwgZXN0YXRl
+LCB0b3VyaXNtIGFuZCBob3RlbCwgbWFudWZhY3R1cmluZyBhbmQgcHJvZHVjdGlvbiBjb21wYW55
+LCBhZ3JpY3VsdHVyZSwgZmlzaGluZywgTWluaW5nICYgVHJhZGluZyBvZiBuYXR1cmFsIHJlc291
+cmNlcyBzdWNoIGFzIGNydWRlIG9pbCwgY29hbCwgZ3JhcGhpdGUsIGNva2UsIHJlZmluZXJ5LCBl
+bmVyZ3ksIGhvc3BpdGFsIGV0Yy4KCkhlIG5lZWRzIGEgY2FwYWJsZSwgdHJ1c3R3b3J0aHkgYW5k
+IHVuZGVyc3RhbmRpbmcgYnVzaW5lc3MgcGFydG5lciwgd2hvIGNhbiBjb25maWRlbnRseSBoYW5k
+bGUgYW5kIG1hbmFnZSBoaXMgaW52ZXN0bWVudCBmdW5kcyB3aXRoIHV0bW9zdCBjYXJlIG9mIHNl
+Y3JlY3kgd2l0aG91dCB0cmFjZXMgb3IgbGluayB0byBoaW0gYXMgaGUgaXMgcG9saXRpY2FsbHkg
+ZXhwb3NlZCBhdCB0aGUgbW9tZW50IGluIGhpcyBjb3VudHJ5LiBIZSBoYXMgYSBodWdlIGF2YWls
+YWJsZSBmaW5hbmNpYWwgcG9ydGZvbGlvLgoKUGxlYXNlLCBJIHdpbGwgcHJvdmlkZSBtb3JlIGRl
+dGFpbHMgYWJvdXQgdGhlIHRyYW5zYWN0aW9uIGlmIHlvdSBhcmUgc3VyZSB5b3UgY2FuIGhhbmRs
+ZSBjbGFzc2lmaWVkIGluZm9ybWF0aW9uIGFuZCBhbHNvIGxldCBtZSBrbm93IHlvdXIgZW50aXRs
+ZW1lbnQgZm9yIHRoZSBzb2xpY2l0ZWQgcm9sZQpJIHNoYWxsIGJlIGV4cGVjdGluZyB5b3VyIHF1
+aWNrIHJlc3BvbnNlICAgaG9zZW9reTM0QGdtYWlsLmNvbQpCZXN0IFJlZ2FyZHMsCkhvLVNlb2sg
+WWFuZyAgCgotLSAKVGhpcyBlbWFpbCBoYXMgYmVlbiBjaGVja2VkIGZvciB2aXJ1c2VzIGJ5IEFW
+Ry4KaHR0cHM6Ly93d3cuYXZnLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
