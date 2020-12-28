@@ -1,39 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F0642E3326
-	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Dec 2020 23:53:29 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACD582E332D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Dec 2020 00:10:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 47C6286A3C;
-	Sun, 27 Dec 2020 22:53:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1B6802107A;
+	Sun, 27 Dec 2020 23:10:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m7iDwHFNfD+0; Sun, 27 Dec 2020 22:53:26 +0000 (UTC)
+	with ESMTP id vPGXU2FDsXlk; Sun, 27 Dec 2020 23:10:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBE1386A0F;
-	Sun, 27 Dec 2020 22:53:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 99A692094D;
+	Sun, 27 Dec 2020 23:10:21 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 729BE1BF2B9
- for <devel@linuxdriverproject.org>; Sun, 27 Dec 2020 22:53:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F0E01BF31A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 27 Dec 2020 23:10:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6F6B985E9B
- for <devel@linuxdriverproject.org>; Sun, 27 Dec 2020 22:53:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 68E5586FFB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 27 Dec 2020 23:10:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a-nyNkPUcCvP for <devel@linuxdriverproject.org>;
- Sun, 27 Dec 2020 22:53:23 +0000 (UTC)
+ with ESMTP id nsJZ00mYAsel
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 27 Dec 2020 23:10:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from lucky1.263xmail.com (lucky1.263xmail.com [211.157.147.133])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0253E85E85
- for <devel@driverdev.osuosl.org>; Sun, 27 Dec 2020 22:53:23 +0000 (UTC)
-Received: from localhost (unknown [192.168.167.70])
- by lucky1.263xmail.com (Postfix) with ESMTP id 21C3BCA7A2;
- Mon, 28 Dec 2020 06:53:21 +0800 (CST)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1F81086FEC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 27 Dec 2020 23:10:17 +0000 (UTC)
+Received: from localhost (unknown [192.168.167.13])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 4F080CA63C;
+ Mon, 28 Dec 2020 07:10:15 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -41,25 +45,25 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from user (unknown [103.75.167.6])
  by smtp.263.net (postfix) whith ESMTP id
- P7694T140181873088256S1609109566789666_; 
- Mon, 28 Dec 2020 06:53:20 +0800 (CST)
-X-UNIQUE-TAG: <e2b4c593fa6d03091be0526348c53017>
+ P21655T139636112336640S1609110580537382_; 
+ Mon, 28 Dec 2020 07:10:15 +0800 (CST)
+X-UNIQUE-TAG: <f957f464d01b38927bea6f2825353991>
 X-RL-SENDER: libing@winhong.com
 X-SENDER: libing@winhong.com
 X-LOGIN-NAME: libing@winhong.com
-X-FST-TO: dev@xwem.org
+X-FST-TO: drivehero@2x.jp
 X-SENDER-IP: 103.75.167.6
 X-ATTACHMENT-NUM: 0
 X-System-Flag: 0
 From: "COCA COLA."<libing@winhong.com>
 Subject: COCA-COLA  LOTTERY ORGANIZATION.
-Date: Sun, 27 Dec 2020 21:53:19 -0800
+Date: Sun, 27 Dec 2020 22:10:14 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: 1609109600_481347_414@263.net
+Message-ID: 1609110615_397952_414@263.net
 X-Message-ID-Missing: 263.net
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
