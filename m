@@ -2,54 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 715C62E3487
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Dec 2020 07:35:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98DC22E34F3
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Dec 2020 09:10:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C81F86153;
-	Mon, 28 Dec 2020 06:35:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F00B985BB5;
+	Mon, 28 Dec 2020 08:10:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4wI0_5Fe4snv; Mon, 28 Dec 2020 06:35:20 +0000 (UTC)
+	with ESMTP id 52oNToOrsBl2; Mon, 28 Dec 2020 08:10:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C05E85DA5;
-	Mon, 28 Dec 2020 06:35:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 94A5C8613E;
+	Mon, 28 Dec 2020 08:10:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 55B061BF3C1
- for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 06:35:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F3B921BF3C0
+ for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 08:10:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 50CDC86912
- for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 06:35:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EFEDE86C8B
+ for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 08:10:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kf7x-wkA3l4U for <devel@linuxdriverproject.org>;
- Mon, 28 Dec 2020 06:35:13 +0000 (UTC)
+ with ESMTP id z+WiH6uKJs1C for <devel@linuxdriverproject.org>;
+ Mon, 28 Dec 2020 08:10:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 02A81868DE
- for <devel@driverdev.osuosl.org>; Mon, 28 Dec 2020 06:35:12 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 4886120715;
- Mon, 28 Dec 2020 06:35:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1609137312;
- bh=tuuZcnd4yFMUkxjYB/o7BzJe7osRuH4BdWFrjJ43KxM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PQHOtvte1kVQZgTZCfIWJRWo8MDb2BNoXlEnngQm4lTO/Qv4otduoNUoHBbT5TLwV
- btbQcE8ipZtb1ZPIM77wT80EHwdj4m80E1MahDAFtMtZsLvhHXLjtKP6HKk3mKFgMQ
- +XSYLs22K4qv/a1Nhv4R2Om9NMgUek4prfMF7Bq4=
-Date: Mon, 28 Dec 2020 07:35:07 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: jovin555 <jovin555@gmail.com>
-Subject: Re: [PATCH] staging: android: ashmem: Declared file operation with
- const keyword
-Message-ID: <X+l8m6Z7eD26gaUC@kroah.com>
-References: <20201228051301.14983-1-jovin555@gmail.com>
+Received: from JRNNyntex.jresources.com (unknown [115.85.73.34])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 741CE86C8A
+ for <devel@driverdev.osuosl.org>; Mon, 28 Dec 2020 08:10:03 +0000 (UTC)
+Received: from User ([115.85.73.44]) by JRNNyntex.jresources.com with
+ Microsoft SMTPSVC(8.5.9600.16384); Mon, 28 Dec 2020 14:52:48 +0700
+From: "Alice Douglas"<alic115t@mail.com>
+Subject: Payment of US$5,550,000.00 to your account
+Date: Sun, 27 Dec 2020 23:52:40 -0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201228051301.14983-1-jovin555@gmail.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <JRNNYNTEXW234xOjIL2000009d5@JRNNyntex.jresources.com>
+X-OriginalArrivalTime: 28 Dec 2020 07:52:48.0365 (UTC)
+ FILETIME=[6F6B79D0:01D6DCEE]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,43 +56,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- linux-kernel@vger.kernel.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Reply-To: mdredban775@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Dec 28, 2020 at 12:13:00AM -0500, jovin555 wrote:
-> Warning found by checkpatch.pl script.
-> 
-> Signed-off-by: jovin555 <jovin555@gmail.com>
-> ---
->  drivers/staging/android/ashmem.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-> index c05a214191da..f9cfa15b785f 100644
-> --- a/drivers/staging/android/ashmem.c
-> +++ b/drivers/staging/android/ashmem.c
-> @@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
->  
->  static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
->  {
-> -	static struct file_operations vmfile_fops;
-> +	static const struct file_operations vmfile_fops;
->  	struct ashmem_area *asma = file->private_data;
->  	int ret = 0;
->  
+Ref: UNDR/EFD550/SE
 
-Did you build your modified kernel with this change in it?
+Good Morning,
 
-Always do so...
+We wish to congratulate and inform you that after thorough review of all unclaimed funds, lottery funds, Inheritance and contract funds, etc. in conjunction with the auditor;s reports sent to the united nation accounts department, your payment file was forwarded to this office for immediate transfer of US$5,550,000.00 to your bank account, a compensation for your funds retarded.
 
-greg k-h
+The auditors reports shows that you have been going through hard times to see the release of the fund into your bank account, which has been by some delay dubious officials.
+
+We therefore advice you to stop further correspondence with any officer or persons outside this office, You do not have to pay any fee since you have met up with the funds transfer requirements.
+
+Should you follow our directives, your US$5,550,000.00 compensation will be credited to your bank account within the next three (3) working days and copies of the fund transfer release documents will be sent to you and your bankers for confirmation.
+
+For the immediate transfer of the US$5,550,000.00 to your bank account, kindly contact Mrs.Evelyn Bernard today with the below information; she will give you guidelines on how to claim your fund.
+
+Contact Name: Mrs.Evelyn Bernard.
+
+E-mail: mdredban775@gmail.com (OR) unccpmoln@yahoo.co.jp
+
+PLEASE NOTE: All correspondences to Mrs.Evelyn Bernard have the reference number: Ref: UNDR/EFD550/SE sent along with your Full Names and Telephone numbers for prompt attention.
+
+Yours sincerely,
+
+Alice Douglas
+Financial services, UK
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
