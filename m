@@ -1,68 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B2BF2E6A83
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Dec 2020 20:47:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA18C87236;
-	Mon, 28 Dec 2020 19:47:38 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eMIsMsZ8ZHlx; Mon, 28 Dec 2020 19:47:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 449418722B;
-	Mon, 28 Dec 2020 19:47:37 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EB5391BF97A
- for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 19:47:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C7662E6D36
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Dec 2020 03:19:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E246C84993
- for <devel@linuxdriverproject.org>; Mon, 28 Dec 2020 19:47:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E969834D7;
+	Tue, 29 Dec 2020 02:19:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ecSYY0NTpD_a; Tue, 29 Dec 2020 02:19:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4066C84177;
+	Tue, 29 Dec 2020 02:19:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A66D1BF311
+ for <devel@linuxdriverproject.org>; Tue, 29 Dec 2020 02:19:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 34EAB2045E
+ for <devel@linuxdriverproject.org>; Tue, 29 Dec 2020 02:19:14 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DH7mEYb1aCzg for <devel@linuxdriverproject.org>;
- Mon, 28 Dec 2020 19:47:34 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0033.hostedemail.com
- [216.40.44.33])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EE60F848FC
- for <devel@driverdev.osuosl.org>; Mon, 28 Dec 2020 19:47:33 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id C8C671801F2D5
- for <devel@driverdev.osuosl.org>; Mon, 28 Dec 2020 19:47:32 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay05.hostedemail.com (Postfix) with ESMTP id 452531802926E;
- Mon, 28 Dec 2020 19:47:30 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:973:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3871:3872:3874:4250:4321:5007:7652:10004:10400:10848:11026:11232:11657:11658:11914:12043:12297:12438:12683:12740:12895:13069:13311:13357:13439:13894:14110:14659:21080:21451:21611:21627:21939:30012:30054:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: dust30_4a09e1827496
-X-Filterd-Recvd-Size: 2258
-Received: from [192.168.1.159] (unknown [47.151.137.21])
- (Authenticated sender: joe@perches.com)
- by omf19.hostedemail.com (Postfix) with ESMTPA;
- Mon, 28 Dec 2020 19:47:28 +0000 (UTC)
-Message-ID: <4aeb47e4aa643181e462328104ef63c66eaf587b.camel@perches.com>
-Subject: Re: [PATCH 8455/8455] staging: rtl8188eu: core: fixed a comment
- format issue.
-From: Joe Perches <joe@perches.com>
-To: Greg KH <gregkh@linuxfoundation.org>, Daniel West
- <daniel.west.dev@gmail.com>
-Date: Mon, 28 Dec 2020 11:47:27 -0800
-In-Reply-To: <X+nnAwy/a7mZlmeL@kroah.com>
-References: <20201219224312.380126-1-daniel.west.dev@gmail.com>
- <X+nnAwy/a7mZlmeL@kroah.com>
-User-Agent: Evolution 3.38.1-1 
+ with ESMTP id lUXZT24D+8f8 for <devel@linuxdriverproject.org>;
+ Tue, 29 Dec 2020 02:19:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6653A20417
+ for <devel@driverdev.osuosl.org>; Tue, 29 Dec 2020 02:19:09 +0000 (UTC)
+IronPort-SDR: S5xekNKXp1V630k6ue4M7A+AXUmAbmtx6oRp68fU/pG2CJHwFiqxoORz7eQJsjGNf8SW7+3cuV
+ pRcjGLXcw4TA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9848"; a="237999950"
+X-IronPort-AV: E=Sophos;i="5.78,456,1599548400"; d="scan'208";a="237999950"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Dec 2020 18:19:07 -0800
+IronPort-SDR: +qfjdX90NH8Jot1ajb95Ye9z9jgoav6oxqtVzqIiBBamMzq6ONmzjHBkd1NUkqq7fsjjoosOSS
+ G9E32ZHE1+hw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,456,1599548400"; d="scan'208";a="343920504"
+Received: from lkp-server02.sh.intel.com (HELO 4242b19f17ef) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 28 Dec 2020 18:19:06 -0800
+Received: from kbuild by 4242b19f17ef with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1ku4bK-0003G2-63; Tue, 29 Dec 2020 02:19:06 +0000
+Date: Tue, 29 Dec 2020 10:18:46 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 1e9a9c7cba3ca5cbd3201a9f3b8dc6e8d7bef1c0
+Message-ID: <5fea9206.WXL3K5WZkuu80R9C%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,64 +67,182 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, insafonov@gmail.com,
- linux-kernel@vger.kernel.org, andrealmeidap1996@gmail.com,
- gustavoars@kernel.org, yepeilin.cs@gmail.com, Larry.Finger@lwfinger.net
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-12-28 at 15:09 +0100, Greg KH wrote:
-> On Sat, Dec 19, 2020 at 02:43:12PM -0800, Daniel West wrote:
-> > Fixed a checkpatch warning:
-> > =
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 1e9a9c7cba3ca5cbd3201a9f3b8dc6e8d7bef1c0  staging: rtl8192e: fix bool comparison in expressions
 
-> > WARNING: Block comments use * on subsequent lines
-> > =A0#4595: FILE: drivers/staging/rtl8188eu/core/rtw_mlme_ext.c:4595:
-> > +/*********************************************************************=
-*******
-> > +
-> > =
+elapsed time: 725m
 
-> > The code is full of comments like this. Should the coding style
-> > be inforced here, even when there is a logic to the way the code
-> > was broken up?
-[]
-> > diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/st=
-aging/rtl8188eu/core/rtw_mlme_ext.c
-[]
-> > @@ -4591,11 +4591,10 @@ void mlmeext_sta_del_event_callback(struct adap=
-ter *padapter)
-> > =A0	}
-> > =A0}
-> > =A0
-> > =
+configs tested: 152
+configs skipped: 2
 
-> > -/*********************************************************************=
-*******
-> > -
-> > -Following are the functions for the timer handlers
-> > -
-> > -**********************************************************************=
-*******/
-> > +/*
-> > + *
-> > + *Following are the functions for the timer handlers
-> > + */
-> =
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> Does that look correct?  Make it all one line please.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+riscv                    nommu_k210_defconfig
+powerpc                     rainier_defconfig
+powerpc                        warp_defconfig
+ia64                            zx1_defconfig
+arm                            mps2_defconfig
+powerpc                     tqm8541_defconfig
+sh                           se7722_defconfig
+sh                 kfr2r09-romimage_defconfig
+sh                         ap325rxa_defconfig
+arm                       imx_v6_v7_defconfig
+arm                            qcom_defconfig
+powerpc                     powernv_defconfig
+arm                     am200epdkit_defconfig
+riscv                          rv32_defconfig
+riscv                               defconfig
+sh                           se7705_defconfig
+sh                      rts7751r2d1_defconfig
+arm                         axm55xx_defconfig
+arm                         socfpga_defconfig
+sparc                               defconfig
+powerpc                  mpc866_ads_defconfig
+arm                          pxa3xx_defconfig
+arc                    vdk_hs38_smp_defconfig
+arm                        mvebu_v5_defconfig
+um                             i386_defconfig
+h8300                       h8s-sim_defconfig
+sh                               j2_defconfig
+sparc                       sparc32_defconfig
+powerpc                      pmac32_defconfig
+arm                         at91_dt_defconfig
+sh                           se7751_defconfig
+arm                      footbridge_defconfig
+sh                     magicpanelr2_defconfig
+powerpc                      obs600_defconfig
+powerpc                     asp8347_defconfig
+csky                             alldefconfig
+m68k                            mac_defconfig
+arc                          axs103_defconfig
+powerpc                    adder875_defconfig
+arm                           tegra_defconfig
+mips                            gpr_defconfig
+arm                           sunxi_defconfig
+sh                          kfr2r09_defconfig
+powerpc                    socrates_defconfig
+sh                     sh7710voipgw_defconfig
+powerpc                     mpc5200_defconfig
+mips                           xway_defconfig
+powerpc                mpc7448_hpc2_defconfig
+mips                            e55_defconfig
+powerpc                       ebony_defconfig
+mips                        jmr3927_defconfig
+arm                   milbeaut_m10v_defconfig
+mips                           ci20_defconfig
+powerpc                     kilauea_defconfig
+arm                             mxs_defconfig
+powerpc                     pseries_defconfig
+powerpc                     tqm8555_defconfig
+arm                        multi_v7_defconfig
+powerpc                 mpc836x_mds_defconfig
+arm                         shannon_defconfig
+powerpc                      walnut_defconfig
+sh                        sh7763rdp_defconfig
+mips                             allmodconfig
+m68k                        stmark2_defconfig
+mips                malta_kvm_guest_defconfig
+arc                     haps_hs_smp_defconfig
+mips                      fuloong2e_defconfig
+mips                  maltasmvp_eva_defconfig
+arm                      jornada720_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20201228
+i386                 randconfig-a002-20201228
+i386                 randconfig-a004-20201228
+i386                 randconfig-a006-20201228
+i386                 randconfig-a003-20201228
+i386                 randconfig-a001-20201228
+i386                 randconfig-a002-20201227
+i386                 randconfig-a005-20201227
+i386                 randconfig-a006-20201227
+i386                 randconfig-a004-20201227
+i386                 randconfig-a003-20201227
+i386                 randconfig-a001-20201227
+x86_64               randconfig-a014-20201228
+x86_64               randconfig-a015-20201228
+x86_64               randconfig-a016-20201228
+x86_64               randconfig-a012-20201228
+x86_64               randconfig-a011-20201228
+x86_64               randconfig-a013-20201228
+i386                 randconfig-a011-20201227
+i386                 randconfig-a016-20201227
+i386                 randconfig-a012-20201227
+i386                 randconfig-a014-20201227
+i386                 randconfig-a015-20201227
+i386                 randconfig-a013-20201227
+i386                 randconfig-a014-20201228
+i386                 randconfig-a012-20201228
+i386                 randconfig-a016-20201228
+i386                 randconfig-a011-20201228
+i386                 randconfig-a015-20201228
+i386                 randconfig-a013-20201228
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-Just:
+clang tested configs:
+x86_64               randconfig-a001-20201228
+x86_64               randconfig-a006-20201228
+x86_64               randconfig-a002-20201228
+x86_64               randconfig-a004-20201228
+x86_64               randconfig-a003-20201228
+x86_64               randconfig-a005-20201228
 
-/* timer handler functions */
-
-would be simpler.
-
-And the code is mostly a horror to read.
-
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
