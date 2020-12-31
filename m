@@ -1,54 +1,124 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC2202E7D23
-	for <lists+driverdev-devel@lfdr.de>; Thu, 31 Dec 2020 00:21:23 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB62F2E7DCA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 31 Dec 2020 03:52:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 24900867AE;
-	Wed, 30 Dec 2020 23:21:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2BF8186A2D;
+	Thu, 31 Dec 2020 02:52:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ehU1ocZ9eKTk; Wed, 30 Dec 2020 23:21:21 +0000 (UTC)
+	with ESMTP id N0aYNGIrHPKX; Thu, 31 Dec 2020 02:52:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 88F9786DB8;
-	Wed, 30 Dec 2020 23:21:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0BA0686A00;
+	Thu, 31 Dec 2020 02:52:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 58D221BF46A
- for <devel@linuxdriverproject.org>; Wed, 30 Dec 2020 23:21:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6802E1BF57C
+ for <devel@linuxdriverproject.org>; Thu, 31 Dec 2020 02:52:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 54BD985B3C
- for <devel@linuxdriverproject.org>; Wed, 30 Dec 2020 23:21:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6351F87241
+ for <devel@linuxdriverproject.org>; Thu, 31 Dec 2020 02:52:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AexigAzJ43Rc for <devel@linuxdriverproject.org>;
- Wed, 30 Dec 2020 23:21:17 +0000 (UTC)
+ with ESMTP id xLfeIl+7TCE2 for <devel@linuxdriverproject.org>;
+ Thu, 31 Dec 2020 02:52:09 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.chinacoalmd.com (unknown [218.202.83.178])
- by hemlock.osuosl.org (Postfix) with ESMTP id B93A385AC7
- for <devel@driverdev.osuosl.org>; Wed, 30 Dec 2020 23:21:16 +0000 (UTC)
-Received: from User ([96.9.208.156])
- by mail.chinacoalmd.com (IBM Domino Release 9.0.1FP7)
- with ESMTP id 2020123106341862-54323 ;
- Thu, 31 Dec 2020 06:34:18 +0800 
-From: "MRS. VERUMLEM KLEITH"<atunerrosdelsur@gmail.com>
-Subject: WINNING NOTIFICATION.
-Date: Wed, 30 Dec 2020 23:31:14 +0100
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2103.outbound.protection.outlook.com [40.107.93.103])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7F24B8716A
+ for <devel@driverdev.osuosl.org>; Thu, 31 Dec 2020 02:52:09 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=X7J0oBZ26ShoiftCHiRofXExwsd7cm+5uN/VEUr6lAoAf9p6zIzE31fsrqGigUY2uEsdKImu1rrHo3PpDDKWe8OoFFTN/+psLvS//YDRNvmNuB44ThmJ54DM0XvDtvkpuZDFpMYx2ApmCkYzG8DiUFrBE4Gm8eMVbARlvFrbAxwz3RzEkcc47K+HFjTiPNhpMDWhnJnb4loqsW0MFHbsZGM+0p0tNrKmKVWy1p+fmhnwGMshjSXkN+TgUeBFNYat091JgD7UOUXoxDVqHIDBCNvPZCNcLePQuYZKqWRewFzjIO4SEujrXPQI7O+slFYngUua1Xjgz7agofK0RgCuOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EYTxRNuLtW1rps/vGoj0fy/DVPBIR97RGaf/tnJnlW0=;
+ b=gkVfalwfzqkmSi2LD9NS0azTIEzAZE1fFvhEQders0NeUS0pejqik1bXyKKkZjjyhh5gASt/yk20nb9VZj3PHvq7GmMNW05GivYz6eaiKDN6FUDkgNk6sEQifGUNGOx5gOH9HlGvzNcYmXnF+GFfI0/ncNRcteuSbVkX4PwQujn9LnsHkSpWHtm9cLSnVVCDRyWeJAWzC7dqpxCyqQMYNr8eTSxZZGbil+d7oDlt4s1YQLgksePTaT6K4ZqqU2S1yRVlQn6hu9VmTzJSYcdK6gc1xa7eVmlT8F1MMaG9mBeEbTvd0vbbVuWmVOdLP1k2x5tAJWXgk1XvxC9e4C0ruQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EYTxRNuLtW1rps/vGoj0fy/DVPBIR97RGaf/tnJnlW0=;
+ b=AasimMjY1puGcjxhLYwFoUOwt9efiTaeZSNXvEdSWJ3JQA8cU3hqZTfssMoHbmJn8ri4CDbCUp9sZ/TNi2pa42ijKvuyI6fJHD+9frKw2jL471jYCf6wlt/KKad8yCCtvFL48Xtlxe/kkJcVvgW8v5hSzQyxUoEs6FduvpK+fS8=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BYAPR04MB5957.namprd04.prod.outlook.com (2603:10b6:a03:ea::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3721.19; Thu, 31 Dec
+ 2020 02:19:37 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::707e:7179:3257:e72b]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::707e:7179:3257:e72b%8]) with mapi id 15.20.3721.020; Thu, 31 Dec 2020
+ 02:19:37 +0000
+Date: Thu, 31 Dec 2020 10:19:29 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Nicolas Boichat <drinkcat@google.com>, Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 0/2] Add MIPI rx DPI support
+Message-ID: <cover.1609380663.git.xji@analogixsemi.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [61.148.116.10]
+X-ClientProxiedBy: HK2PR02CA0215.apcprd02.prod.outlook.com
+ (2603:1096:201:20::27) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-X-Priority: 3 (Normal)
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-MIMETrack: Itemize by SMTP Server on mailserver/zmmd(Release 9.0.1FP7|August
- 17, 2016) at 2020-12-31 06:34:19,
- Serialize by Router on mailserver/zmmd(Release 9.0.1FP7|August  17, 2016) at
- 2020-12-31 07:24:43, Serialize complete at 2020-12-31 07:24:43
-X-TNEFEvaluated: 1
-Message-ID: <OFE84109F3.78FF46C9-ON4825864E.007BFDD5@chinacoalmd.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-user (61.148.116.10) by
+ HK2PR02CA0215.apcprd02.prod.outlook.com (2603:1096:201:20::27) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3721.20 via Frontend Transport; Thu, 31 Dec 2020 02:19:36 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a3c7d46c-6f54-4121-72ba-08d8ad32859a
+X-MS-TrafficTypeDiagnostic: BYAPR04MB5957:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BYAPR04MB5957C65BB697F1D48C865519C7D60@BYAPR04MB5957.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: pGW0qhNV1vYZPh/nfeSTnvqb3JkpTjy1bZ7CDepl3vVQJe8FuXEvc/ve0LWtieitWuTwJKMIjnJPlI5BKyBRmbAQktzaGbRXHtsHwPEB5Cve2bKHjlp8mRua2D9GDlUwErvtrsEm6QeDNyBiKFYG02OseyQ5YP+OM05QrGUJQA0xDgi/J1PTky1ZA9PIb2dDb9Hbsm0z7Nuxiqp/DRzkH3lLWEcKMdlhhtXsDaJpPhYxpG+jUGQRbNgISQcB5YgM5SbHO+Btz0oNMZ50sMa099YLoUlO/wVbkU/nuvHdL39O4Gi8/92D4cOVvMyJvxRQCg8QiTLIcdh6e1OAPwaI7KjiX0ndodH7zgspPLcjL2KC5ebxyt2dgpvzfzYzIlE1i9vwA+DLAiInwp1FqV9EOQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(346002)(366004)(136003)(396003)(376002)(39840400004)(52116002)(6496006)(86362001)(316002)(54906003)(36756003)(66946007)(110136005)(66556008)(66476007)(83380400001)(5660300002)(7416002)(6666004)(2906002)(8936002)(26005)(6486002)(4326008)(8676002)(478600001)(4744005)(2616005)(956004)(186003)(16526019);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?63gIan9y7OsPU1647Tqc2YTFYD8v26uU65tldAuPHY+gyCIC/ESOtZGAYD1o?=
+ =?us-ascii?Q?YvtxYYLTJ5jeLZeeYjJxfjrQB8LtYkyqYGPdiI7rJJNUlpHqJP7l+jFyLoI0?=
+ =?us-ascii?Q?EzHNnhKawKHGZlDYx8WC1pcMAEgrbDY5BQCTeLp0KuaTSjU8ua5s8xMIpZtc?=
+ =?us-ascii?Q?CT5ELbmZG4A+tCjncitW1qMF/56mpL41fbig3Sid1VJpVr9JUtzUExeTFQst?=
+ =?us-ascii?Q?1Cu/3HMiM698j0H4v5nLDgD0vb13PzRDRnRs4ahjLBupAYwCTtDj5/3y3Ji0?=
+ =?us-ascii?Q?X+vpmZI80rPFoWB9p0VY2tnDAmhPO+miwi5N27BbC0FpyL5QKI5anWa77Yf5?=
+ =?us-ascii?Q?NmYJsuO8JfDR3nokUThx2dP9riE03JcwmwgLKviMQUnmBggqb86nRKhMcxd9?=
+ =?us-ascii?Q?CZRL8HF2OO+GId8Ze4njtXs530lrQMJ6p9w2ewWv7aDUz7qlGNGPBNgmoT8T?=
+ =?us-ascii?Q?f6gicVrza4gE4OJJsvA4q36bmEsav9U9qvV/R9ekw9BQxql6DabRN/G8KMZ8?=
+ =?us-ascii?Q?3R3n3UN4/bnx3TiC1TCM7WXC7ak/m0QKCNr4ts6WwaG1dH+Yf10Y7TlIWEA5?=
+ =?us-ascii?Q?PBxVeYMCRkiTOoT/vuE46iRUyOy5nCBN6vUgMtG6gP5gtee8504F7xV2VQU8?=
+ =?us-ascii?Q?7w2047TVGqUHvZUbVYOPtr4v2F+1nL+91m4+3KzsuJwMKshpx44WVHjHQYO6?=
+ =?us-ascii?Q?c066468w433hy7ixejZJJOXAg5lF9ZIrbq8BN5OA9haSVd5360cdZaLxzYk5?=
+ =?us-ascii?Q?eWGNj8aimNLzXQ4Y0ylXCP3a2L3cxa9BPAbyZT3c+lPFpqApo7Efh00wcGxB?=
+ =?us-ascii?Q?JGbbfGa/f9QXJgHyXL0U4AM2K7WNmGwSS7h7zgtdbW8TneEqMoMqokVszIur?=
+ =?us-ascii?Q?RVmahWDFnzS/jQN8lZFjNW4LGUdoVRE4qsCL4ONLQvDfOtGQaL0S/TUGrRTP?=
+ =?us-ascii?Q?BJXY3tDipa+yVv7/MIARY9k2MVaDWIisk7CjOSTiGIyqWy3qmKbOx/KLGwLK?=
+ =?us-ascii?Q?PQEB?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Dec 2020 02:19:37.2694 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-Network-Message-Id: a3c7d46c-6f54-4121-72ba-08d8ad32859a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uqRRr96uk/tJxJ3b17kbgKyJc4hwtdh8hCZYEn9VN/U1XEBVzlTAX1MyYxr2uAUdAcO6ZikvR6+srVISZSmSXg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5957
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,61 +131,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mike.beekens@execs.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Vasily Khoruzhick <anarsoul@gmail.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
+ Sheng Pan <span@analogixsemi.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Sam Ravnborg <sam@ravnborg.org>,
+ Xin Ji <xji@analogixsemi.com>, Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29vZ2xlIEluY29ycG9yYXRpb26uLgpCZWxncmF2ZSBIb3VzZSwKNzYgQnVja2luZ2hhbSBQYWxh
-Y2UgUm9hZCwKTG9uZG9uIFNXMVcgOVRRLApVbml0ZWQgS2luZ2RvbS4KCkF0dGVudGlvbjogTHVj
-a3kgV2lubmVyLgoKR09PR0xFIFdJTk5JTkcgTk9USUZJQ0FUSU9OLgoKV2Ugd2lzaCB0byBjb25n
-cmF0dWxhdGUgeW91IGZvciBiZWluZyBwYXJ0IG9mIG91ciBsdWNreSB3aW5uZXJzIHNlbGVjdGVk
-IGZvciB0aGUgR29vZ2xlIDIwMjAgZW5kIG9mIHRoZSB5ZWFyIFByb21vdGlvbi4gVGhpcyBwcm9t
-b3Rpb24gd2FzIHNldC11cCB0byBlbmNvdXJhZ2UgdGhlIGFjdGl2ZSB1c2Ugb2YgdGhlIEdvb2ds
-ZSBzZWFyY2ggZW5naW5lIGFuZCB0aGUgR29vZ2xlIGFuY2lsbGFyeSBzZXJ2aWNlcy4gSGVuY2Ug
-d2UgZG8gYmVsaWV2ZSB3aXRoIHlvdXIgcHJpemUgd2lubmluZywgeW91IHdpbGwgY29udGludWUg
-dG8gYmUgYWN0aXZlIGFuZCBwYXRyb25pemUgdGhpcyBjb21wYW55J3Mgc2VydmljZXMuIAoKR29v
-Z2xlIGlzIG5vdyB0aGUgbGVhZGluZyBzZWFyY2ggZW5naW5lIHdvcmxkd2lkZSwgYW5kIGluIGFu
-IGVmZm9ydCB0byBlbnN1cmUgdGhhdCBpdCByZW1haW5zIHRoZSBtb3N0IHdpZGVseSB1c2VkIHNl
-YXJjaCBlbmdpbmUuIEFuIG9ubGluZSBlLW1haWwgYmFsbG90aW5nIHdhcyBjYXJyaWVkIG91dCBv
-biB0aGUgMTh0aCBEZWNlbWJlciwgMjAyMCB3aXRob3V0IHlvdXIga25vd2xlZGdlLiBSZXN1bHRz
-IHdlcmUgb2ZmaWNpYWxseSByZWxlYXNlZCB0b2RheS4gV2Ugd2lzaCB0byBmb3JtYWxseSBhbm5v
-dW5jZSB0byB5b3UgdGhhdCB5b3VyIGVtYWlsIGFkZHJlc3Mgd2FzIGF0dGFjaGVkIHRvIGEgbHVt
-cCBzdW0gb2Ygozg1MCwwMDAuMDAge0VpZ2h0IEh1bmRyZWQgYW5kIEZpZnR5IFRob3VzYW5kIEdy
-ZWF0IEJyaXRpc2ggUG91bmRzIFN0ZXJsaW5nfS4KCkhPVyBESUQgWU9VIFdJTj8KCkx1Y2t5IHdp
-bm5lcnMgZGlkIG5vdCBoYXZlIHRvIHB1cmNoYXNlIGEgdGlja2V0IHRvIHBhcnRpY2lwYXRlIGlu
-IHRoZSBsb3R0ZXJ5IHByb2dyYW0uIEVtYWlsIGFkZHJlc3NlcyB3YXMgc2VsZWN0ZWQgZnJvbSAg
-Tm9ydGggQW1lcmljYSwgU291dGggQW1lcmljYSwgQXNpYSwgRXVyb3BlLCBNaWRkbGUgRWFzdCwg
-YW5kIEFmcmljYW4gcmVnaW9ucy4gVGhpcyBwcm9tb3Rpb24gd2FzIHNldC11cCB0byBlbmNvdXJh
-Z2UgdGhlIGFjdGl2ZSB1c2FnZSBvZiB0aGUgR09PR0xFKFIpIGJyYW5kLiBIZW5jZSB3ZSBkbyBi
-ZWxpZXZlIHRoYXQgd2l0aCB5b3VyIHByaXplIHdpbm5pbmcsIHlvdSB3aWxsIGNvbnRpbnVlIHRv
-IGJlIGFjdGl2ZSBhbmQgcGF0cm9uaXplIEdPT0dMRSBzZXJ2aWNlcy4KClRoZXNlIGFyZSB5b3Vy
-IHByaXplIHdpbm5pbmcgZGV0YWlscy4KU2VjdXJpdHkgQ29kZS9CYXRjaCBOdW1iZXI6IEdVSy80
-NTMyMzQ1RwpUaWNrZXQgTnVtYmVyOiBHVUsvNjk5LzMzLzIwMjAKV2lubmluZyBOdW1iZXI6IEdV
-Sy84NzcvNzk4LzIwMjAKCkluZm9ybWF0aW9uIHJlcXVpcmVkIGZyb20geW91IGFyZSBwYXJ0IG9m
-IG91ciBwcmVjYXV0aW9uYXJ5IG1lYXN1cmUgdG8gYXZvaWQgZG91YmxlIGNsYWltcyBhbmQgdW53
-YXJyYW50ZWQgYWJ1c2Ugb2YgdGhpcyBwcm9ncmFtLiBUbyBjbGFpbSB5b3VyIHdpbm5pbmcsIFBs
-ZWFzZSBmaWxsIG91dCB0aGUgaW5mb3JtYXRpb24gYmVsb3c6CgooMSkgWW91ciBjb250YWN0IGFk
-ZHJlc3M6CigyKSBZb3VyIERpcmVjdCBUZWxlcGhvbmUvbW9iaWxlIG51bWJlcnM6CigzKSBZb3Vy
-IE5hdGlvbmFsaXR5L0NvdW50cnk6Cig0KSBZb3VyIEZ1bGwgTmFtZToKKDUpIFNleDoKKDYpIE9j
-Y3VwYXRpb246Cig3KSBBZ2U6CgpQbGVhc2UgY29udGFjdCBvdXIgQ2xhaW1zIE9mZmljZXI6Ck1S
-IE1JQ0hBRUwgQkVFS0VOUwpHT09HTEUgVkFMSURBVElPTiBPRkZJQ0UgREVQQVJUTUVOVCAoVUsp
-LgpFLW1haWw6IG1pa2UuYmVla2Vuc0BleGVjcy5jb20KClRoZSBHb29nbGUgUHJvbW90aW9uIEF3
-YXJkIFRlYW0gaGFzIGRpc2NvdmVyZWQgYSBodWdlIG51bWJlciBvZiBkb3VibGUgY2xhaW1zIGR1
-ZSB0byB3aW5uZXJzIGluZm9ybWluZyBjbG9zZSBmcmllbmRzLCByZWxhdGl2ZXMgYW5kIHRoaXJk
-IHBhcnRpZXMgYWJvdXQgdGhlaXIgd2lubmluZ3MgYW5kIGFsc28gc2hhcmluZyB0aGVpciBpZGVu
-dGlmaWNhdGlvbiBudW1iZXJzLiBBcyBhIHJlc3VsdCBvZiB0aGlzLCB0aGVzZSBmcmllbmRzIHRy
-eSB0byBjbGFpbSB0aGUgd2lubmluZ3Mgb24gYmVoYWxmIG9mIHRoZSByZWFsIHdpbm5lcnMuIFRo
-ZSBnb29nbGUgcHJvbW90aW9uIGF3YXJkIApjb21taXR0ZWUgaGFzIHJlYWNoZWQgYSBkZWNpc2lv
-biBmcm9tIHRoZSBoZWFkcXVhcnRlcnMgaW4gdGhlIFVuaXRlZCBLaW5nZG9tIHRoYXQgYW55IGRv
-dWJsZSBjbGFpbSBkaXNjb3ZlcmVkIGJ5IHRoZSBMb3R0ZXJ5IEJvYXJkIHdpbGwgcmVzdWx0IHRv
-IGRpc3F1YWxpZmljYXRpb24gb2YgdGhlIHdpbm5lci4gU28geW91IGFyZSBoZXJlYnkgc3Ryb25n
-bHkgYWR2aXNlZCBvbmNlIG1vcmUgdG8ga2VlcCB5b3VyIHdpbm5pbmdzIHN0cmljdGx5IGNvbmZp
-ZGVudGlhbCB1bnRpbCB5b3UgY2xhaW0geW91ciBwcml6ZS4KCkNvbmdyYXR1bGF0aW9ucyBmcm9t
-IHRoZSBTdGFmZiBhbmQgTWVtYmVycyBvZiB0aGUgR29vZ2xlIEludGVyYWN0aXZlIExvdHRlcnkg
-Qm9hcmQgQ29tbWlzc2lvbi4KCllvdXJzIFNpbmNlcmVseSwKTVJTLiBWRVJVTUxFTSBLTEVJVEgu
-CkdPT0dMRSBaT05BTCBDT09SRElOQVRPUgpMT05ET04sVU5JVEVEIEtJTkdET00uCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
-dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
-ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hi all, this patch series implement MIPI rx DPI feature. Please help to review.
+
+This is the v2 version, any mistakes, please let me know,
+I'll fix it in the next series.
+
+Change history:
+v2: Fix Rob Herring comment
+ - Fix yamllint warnings/errors in analogix,anx7625.yaml
+ - Fix kernel robot compiling warning
+
+v1: initial MIPI rx DPI feature support
+
+Xin Ji (2):
+  dt-bindings: drm/bridge: anx7625: add DPI flag and swing setting
+  drm/bridge: anx7625: add MIPI DPI input feature support
+
+ .../bindings/display/bridge/analogix,anx7625.yaml  |  25 +-
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 344 +++++++++++++++++++--
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  24 +-
+ 3 files changed, 371 insertions(+), 22 deletions(-)
+
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
