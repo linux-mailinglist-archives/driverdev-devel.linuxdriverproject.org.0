@@ -1,71 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B44F2E94F6
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Jan 2021 13:37:14 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B89112E9511
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Jan 2021 13:41:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A34A85F93;
-	Mon,  4 Jan 2021 12:37:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A7925870E8;
+	Mon,  4 Jan 2021 12:41:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gnTbyujbXZkN; Mon,  4 Jan 2021 12:37:11 +0000 (UTC)
+	with ESMTP id DofGHTFMHayH; Mon,  4 Jan 2021 12:41:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DDED385F2D;
-	Mon,  4 Jan 2021 12:37:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 150C8870C4;
+	Mon,  4 Jan 2021 12:41:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F3E9A1BF355
- for <devel@linuxdriverproject.org>; Mon,  4 Jan 2021 12:37:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C80E1BF355
+ for <devel@linuxdriverproject.org>; Mon,  4 Jan 2021 12:41:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ED90885F74
- for <devel@linuxdriverproject.org>; Mon,  4 Jan 2021 12:37:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 671D4870C4
+ for <devel@linuxdriverproject.org>; Mon,  4 Jan 2021 12:41:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dPZacO1_RzwS for <devel@linuxdriverproject.org>;
- Mon,  4 Jan 2021 12:37:08 +0000 (UTC)
-X-Greylist: delayed 00:20:28 by SQLgrey-1.7.6
-Received: from mail-ej1-f49.google.com (mail-ej1-f49.google.com
- [209.85.218.49])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0677885F2D
- for <devel@driverdev.osuosl.org>; Mon,  4 Jan 2021 12:37:08 +0000 (UTC)
-Received: by mail-ej1-f49.google.com with SMTP id jx16so36536726ejb.10
- for <devel@driverdev.osuosl.org>; Mon, 04 Jan 2021 04:37:07 -0800 (PST)
+ with ESMTP id uwQdQhH4lRKy for <devel@linuxdriverproject.org>;
+ Mon,  4 Jan 2021 12:41:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com
+ [209.85.221.51])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 73B51870A8
+ for <devel@driverdev.osuosl.org>; Mon,  4 Jan 2021 12:41:24 +0000 (UTC)
+Received: by mail-wr1-f51.google.com with SMTP id d26so31971246wrb.12
+ for <devel@driverdev.osuosl.org>; Mon, 04 Jan 2021 04:41:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=raspberrypi.com; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NKzEXkRu9uc/1CbMh/oq34zAp/WkX7HSeewQ3vRITpI=;
- b=EUFpO9SOvDFpMJ5W7SyxF3MV5Sti2owhjuA+c1qJ3/oSG+msy1ir5fZDEEFbT5LR3J
- 9YHWs5CyQLLCEU8UMzZy96RKapIRCryOOt3zrkmeyqsDzJJM3FlonigFVsVt8ulVCGOp
- TOuBkl/c1zoTvxRwgUwrufVhxdKpUhesnSLxc5a9N8zIRImcNtaH2/ozKB6Db6ny3IPg
- IWAPyKQggYYllbmHu+MUeZc7p/Nj9oG/uwq6Md0LG0BZCNQ+OxAV08TsIRGhwTEEBQxs
- 91S7iJLMbXo7cDQeFZOw5UGTDoNzlW9VzAyddYwP3hkFBm+dQUvfNJvuY95VVMwWKWam
- 3wDA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=NX9GgUhvrdFINxLCVAgA1k2tN4aNPfLwDkftpmTakS4=;
+ b=cTovjni5LQCRAn6uHRuxGVYwlk3KeVos6rIAlDhRBydP7rVzrt2MVmqKQ9VhP7TEhT
+ 4kD+aDA9dWY36k+ujzmAJ4DdZ+BjpQ2bg0kfVhqjdrKYClArK0+AnPg33bIDmHqXGAN9
+ WEarYd2R/gOPj3MuqOgtWaRJcOrdE/mfdiZjRIgd0Eou1MskM23TbAMogOdrFaRmTQy5
+ SsSDuX6EbZNEoFWAaTsEo+tDj446O9+gm7/P7n3c59u5xmJdm3dmJhFu7+/8TktZhTbR
+ KXJL7EcAw4yczqVIKHyf1tzxH0gQXiwhh/1LoxrUEmKiiH7Mi5LVuPFYh7rJNXxTVGSn
+ +zTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NKzEXkRu9uc/1CbMh/oq34zAp/WkX7HSeewQ3vRITpI=;
- b=pJUeQn79SukbTC7Asibnx6d7UF+tuuqHPtMlI7wFj13/aTXbMQpyeuiXj5etT5A6Y1
- EbUBCwRQHkp/4m+13y1dIqs2RLiNlanSTZeF0TUlLCIef7bLDhczOH2RX9yBs1scbU9+
- dg5vUhholHVkv12HcwA2mEoJNrqzTx3f/cZ3je/iuryLP/iK1g2goNIgNJhSLXUbli2Y
- UrIJ4A5h0mu78v+9QefR0LtlpSZSIwAD9+tfYXVc4dyct/RLHfKko+gK1X5WmfkT7ZP6
- IIu0bVMEYI0VHeqs14HxqN5gtjw5xVtRPJQbllZAgw3LSthfl42BwnXSZCOiXDAAeC/Z
- x6TQ==
-X-Gm-Message-State: AOAM530e5nTqdd9vXy1gfg9/0NWyd3CP/RZnT74QsI5Uf+eplcXkn995
- 2ukCijeoC+zomaXZYbx52YllNH9P1JCHkQ==
-X-Google-Smtp-Source: ABdhPJxbCJWslVNpxvqew/Yc279x2bH/jXeewgXMHbdVlRQ65xBHqKRyFc8JFm/eI0xs0cJDeBHrug==
-X-Received: by 2002:adf:fb05:: with SMTP id c5mr78582449wrr.69.1609762190239; 
- Mon, 04 Jan 2021 04:09:50 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=NX9GgUhvrdFINxLCVAgA1k2tN4aNPfLwDkftpmTakS4=;
+ b=ORE118/fSmkoERbfBOwdJrByZmulibplj78jQgHFuXQHkrqRk+ndNua0ZyVdO8N/eS
+ oj1QgpcHS9RO4pHNQrEIluwC34f9Bb73SFlXF2JIQH3BTFIc0sgCCAjOXDYnZouYzxSw
+ 3yz0v7NIB//hCUNDe2vzEcZ5D6jNCwjqUP46vx0jW0dBuRv3p/kE3Gj4Dhjut64OoQn4
+ TmmvmKgSXrAsw1uR1rs3QA0GG1d7/fsjOIIWEf8E3r9w/+cfJt4fCaxVYQl5obaMuKF5
+ S1ZyN42wNrkpkPCF1BFRayOO1iZuFrykSb/UCB4jE8u9a7ZuywsgAFbFsnV0czBoUUn/
+ s02w==
+X-Gm-Message-State: AOAM532RRTmb4/FkDlpmP0rhQLqRtm0Qea2KNFFasv/B3YqYGHP4lB68
+ WUHumrOvXwSK844HR6XXOy/8BX2SbrBu/Q==
+X-Google-Smtp-Source: ABdhPJzCKAT3H5EG+58xo4rEm8YigOVsJHy9bx80PMJBNUq89UyAuaI0Pc85gv7qTARQeGyVXbnoRQ==
+X-Received: by 2002:adf:8342:: with SMTP id 60mr80603401wrd.140.1609762195420; 
+ Mon, 04 Jan 2021 04:09:55 -0800 (PST)
 Received: from buildbot.pitowers.org ([2a00:1098:3142:14:ae1f:6bff:fedd:de54])
  by smtp.gmail.com with ESMTPSA id
- x66sm33692952wmg.26.2021.01.04.04.09.49
+ x66sm33692952wmg.26.2021.01.04.04.09.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Jan 2021 04:09:49 -0800 (PST)
+ Mon, 04 Jan 2021 04:09:54 -0800 (PST)
 From: Phil Elwell <phil@raspberrypi.com>
 To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -73,10 +73,12 @@ To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
  bcm-kernel-feedback-list@broadcom.com,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  devel@driverdev.osuosl.org
-Subject: [PATCH 0/2] A brace of vchiq bulk transfer fixes
-Date: Mon,  4 Jan 2021 12:09:26 +0000
-Message-Id: <20210104120929.294063-1-phil@raspberrypi.com>
+Subject: [PATCH 2/2] staging: vchiq: Fix bulk transfers on 64-bit builds
+Date: Mon,  4 Jan 2021 12:09:28 +0000
+Message-Id: <20210104120929.294063-3-phil@raspberrypi.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210104120929.294063-1-phil@raspberrypi.com>
+References: <20210104120929.294063-1-phil@raspberrypi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -96,23 +98,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The recent batch of vchiq improvements broke bulk transfers in two ways:
+The recent change to the bulk transfer compat function missed the fact
+the relevant ioctl command is VCHIQ_IOC_QUEUE_BULK_TRANSMIT32, not
+VCHIQ_IOC_QUEUE_BULK_TRANSMIT, as any attempt to send a bulk block
+to the VPU would have shown.
 
-1. The userdata associated with a transfer was lost in the case that a
-   non-blocking mode was used.
+Fixes: a4367cd2b231 ("staging: vchiq: convert compat bulk transfer")
 
-2. The 64-bit ioctl compatibility shim for a bulk transfer used the
-   wrong ioctl command.
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This patch set fixes both of those bugs.
-
-Phil Elwell (2):
-  staging: vchiq: Fix bulk userdata handling
-  staging: vchiq: Fix bulk transfers on 64-bit builds
-
- .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index 2a8883673ba1..2ca5805b2fce 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -1717,7 +1717,7 @@ vchiq_compat_ioctl_queue_bulk(struct file *file,
+ {
+ 	struct vchiq_queue_bulk_transfer32 args32;
+ 	struct vchiq_queue_bulk_transfer args;
+-	enum vchiq_bulk_dir dir = (cmd == VCHIQ_IOC_QUEUE_BULK_TRANSMIT) ?
++	enum vchiq_bulk_dir dir = (cmd == VCHIQ_IOC_QUEUE_BULK_TRANSMIT32) ?
+ 				  VCHIQ_BULK_TRANSMIT : VCHIQ_BULK_RECEIVE;
+ 
+ 	if (copy_from_user(&args32, argp, sizeof(args32)))
 -- 
 2.25.1
 
