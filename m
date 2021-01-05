@@ -1,77 +1,88 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6BEE92EAA48
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Jan 2021 12:59:10 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0C4F585DF5;
-	Tue,  5 Jan 2021 11:59:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZeW9JxK1zD92; Tue,  5 Jan 2021 11:59:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 70ADC848A9;
-	Tue,  5 Jan 2021 11:59:05 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 120731BF23F
- for <devel@linuxdriverproject.org>; Tue,  5 Jan 2021 11:59:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C5C82EABBE
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Jan 2021 14:19:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0EAC4870C8
- for <devel@linuxdriverproject.org>; Tue,  5 Jan 2021 11:59:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D62D887151;
+	Tue,  5 Jan 2021 13:19:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WYi2CYCNZXw5; Tue,  5 Jan 2021 13:19:54 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id EA76D8712E;
+	Tue,  5 Jan 2021 13:19:53 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 668C31BF390
+ for <devel@linuxdriverproject.org>; Tue,  5 Jan 2021 13:19:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 588AD21509
+ for <devel@linuxdriverproject.org>; Tue,  5 Jan 2021 13:19:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i-DV9Z9dvYoS for <devel@linuxdriverproject.org>;
- Tue,  5 Jan 2021 11:59:02 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f54.google.com (mail-ot1-f54.google.com
- [209.85.210.54])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2FCC0870C3
- for <devel@driverdev.osuosl.org>; Tue,  5 Jan 2021 11:59:02 +0000 (UTC)
-Received: by mail-ot1-f54.google.com with SMTP id o11so29028632ote.4
- for <devel@driverdev.osuosl.org>; Tue, 05 Jan 2021 03:59:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=raspberrypi.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Pk4Qq2YKL30G+6a6HOVm8kHQKCseUHAE6YvgfBgjVZk=;
- b=h6IbyPCaSChmAyVG/ynnFKP/3nQ/ZGwZiHvQExwhDecZ36WXISf6yENgPUjIw/mBUG
- 15nJQ2YfvOq2FN95133nZDbb7CSSzHtrX0CGg6VaUYSGD8AL+IDGSazn8N8KeW2akXWU
- oUFe4lghga2pNZJD1/ib6soFiUfTXN86hXKNpPTFjdFniM61DmnMmdI5FaYnAgbYUI4o
- 8xI+uCOHw7gmBzFM8gOSvsbe4ftCz94bq22kt0zL9iLjzAcrbD88jY6fO51lEebJzbJr
- 4suwEb5eaQZFiOkEi0jWHbFHsTJSWmPrIHxoWfiLR1ay5KPfIKcocc4vwLc6RFgi0Hrc
- folw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Pk4Qq2YKL30G+6a6HOVm8kHQKCseUHAE6YvgfBgjVZk=;
- b=QMrxaabo7Q047SEOZomtVQYpyrYKMIv+qStehDqoFs5u1P+H+5ezIVb3kDufhEm8fh
- RoJWIhPlOZRG2hHmwL3TJHI13LBagJifN6yOE1fwH+LyYs4PrUkW/d5W5GpHzOd+dLTQ
- TwO8amaoaB8u65QzIqp6hIA06PKENaxVGJAvlDG3JiluKPCenSeo/YwC/MHCCcd4yojx
- 0+Q0PE5plRVd4/yvhZWZLEF1J3c9OcJb/p8vpoTwQ50MADLdO6B8RjkoYRmjmb1qAQcj
- pCuL3e62qNSe8FP/SkInGnLueEzxuBbEjrB7uRTjwksa0YQmsS9kDWOXE6IgJWTHkzMj
- zIkQ==
-X-Gm-Message-State: AOAM530iMLZJsMns4Q8gCYk7XXtS9Nh/1iEFEXYTb0cmrjGZsoaGl31h
- hzb+64djWYfOstQCbSRxtf5DB0t+GLJvnIcpoxrN12EqfgfDjQ==
-X-Google-Smtp-Source: ABdhPJxLzR1Pw8N/NP8hPCrIiJC/HSISpbPs+Yx5Rm1iWHE64RNsD/a+GMpBjYOlTJ0kFQYWR5qFHDexfDktJK0BVOM=
-X-Received: by 2002:a9d:27ea:: with SMTP id c97mr53960788otb.173.1609847622735; 
- Tue, 05 Jan 2021 03:53:42 -0800 (PST)
+ with ESMTP id T3coAw5Dxxa2 for <devel@linuxdriverproject.org>;
+ Tue,  5 Jan 2021 13:19:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3035D2035E
+ for <devel@driverdev.osuosl.org>; Tue,  5 Jan 2021 13:19:51 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 105DFwrg187489;
+ Tue, 5 Jan 2021 13:19:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=VaQQH4yQYOVXFT1zmyl9uIWZ8nz/GQH8XQPhbggN880=;
+ b=ObIGHWtSVE0fCop0Cm/mRSdSMZ7qNgCKrEIuE94uaKp1FWMdModqH87mdytnLv+iBGlr
+ DI5vpbSbOoPxLPmI+s8USM1nHCjFRuPkOlUyUejt/QavuSt//yZSwCZxpE09w+UyaSLM
+ y7USldwm0rI3oGYQN3YQ0yXjMNsiTher5Y/Jd7wvw5QdxJjIDBeWgUxcX2DUbsZNNsLw
+ K75Ss+FZoBEYFC8edcqFQw9HcMMmgq4Zg0w9rophYwlFvhUJ+baOV255cJ+pyjXWNcQe
+ bh2vmQ+bXSphvgVaBrsNWjEVm2vq7xZcsIOk3bvDvZPwA03XDU5CFARjr+FCA2bxNlx5 vg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 35tgskrpyr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 05 Jan 2021 13:19:47 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 105DGWXP039521;
+ Tue, 5 Jan 2021 13:19:46 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 35v4rbcdew-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 05 Jan 2021 13:19:46 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 105DJeLr009133;
+ Tue, 5 Jan 2021 13:19:40 GMT
+Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 05 Jan 2021 05:19:39 -0800
+Date: Tue, 5 Jan 2021 16:19:14 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] staging: vchiq: delete obselete comment
+Message-ID: <X/RnUjY3XkZohk7w@mwanda>
 MIME-Version: 1.0
-References: <20210104120929.294063-1-phil@raspberrypi.com>
- <20210104120929.294063-2-phil@raspberrypi.com>
- <20210104183134.GV2809@kadam>
- <989ef44f-2afe-5147-1277-74df56797a4c@raspberrypi.com>
- <20210105110140.GW2809@kadam>
-In-Reply-To: <20210105110140.GW2809@kadam>
-From: Phil Elwell <phil@raspberrypi.com>
-Date: Tue, 5 Jan 2021 11:53:32 +0000
-Message-ID: <CAMEGJJ2emHFr7P1nzBCKK66ynuFZU-+ftLdP=dG+14JUGofXUw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] staging: vchiq: Fix bulk userdata handling
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9854
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ mlxscore=0 bulkscore=0
+ suspectscore=0 spamscore=0 adultscore=0 malwarescore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2101050083
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9854
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ spamscore=0 malwarescore=0
+ phishscore=0 impostorscore=0 bulkscore=0 clxscore=1011 priorityscore=1501
+ lowpriorityscore=0 adultscore=0 suspectscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2101050083
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,83 +95,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, linux-arm-kernel@lists.infradead.org,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Marcelo Diop-Gonzalez <marcgonzalez@google.com>,
+ kernel-janitors@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org,
+ Amarjargal Gundjalam <amarjargal16@gmail.com>,
+ Phil Elwell <phil@raspberrypi.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 5 Jan 2021 at 11:04, Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Mon, Jan 04, 2021 at 07:26:42PM +0000, Phil Elwell wrote:
-> > On 04/01/2021 18:31, Dan Carpenter wrote:
-> > > On Mon, Jan 04, 2021 at 12:09:27PM +0000, Phil Elwell wrote:
-> > > > The addition of the local 'userdata' pointer to
-> > > > vchiq_irq_queue_bulk_tx_rx omitted the case where neither BLOCKING nor
-> > > > WAITING modes are used, in which case the value provided by the
-> > > > caller is replaced with a NULL.
-> > > >
-> > > > Fixes: 4184da4f316a ("staging: vchiq: fix __user annotations")
-> > > >
-> > > > Signed-off-by: Phil Elwell <phil@raspberrypi.com>
-> > > > ---
-> > > >   drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 4 +++-
-> > > >   1 file changed, 3 insertions(+), 1 deletion(-)
-> > > >
-> > > > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > > > index f500a7043805..2a8883673ba1 100644
-> > > > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > > > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > > > @@ -958,7 +958,7 @@ static int vchiq_irq_queue_bulk_tx_rx(struct vchiq_instance *instance,
-> > > >           struct vchiq_service *service;
-> > > >           struct bulk_waiter_node *waiter = NULL;
-> > > >           bool found = false;
-> > > > - void *userdata = NULL;
-> > > > + void *userdata;
-> > > >           int status = 0;
-> > > >           int ret;
-> > > > @@ -997,6 +997,8 @@ static int vchiq_irq_queue_bulk_tx_rx(struct vchiq_instance *instance,
-> > > >                           "found bulk_waiter %pK for pid %d", waiter,
-> > > >                           current->pid);
-> > > >                   userdata = &waiter->bulk_waiter;
-> > > > + } else {
-> > > > +         userdata = args->userdata;
-> > >
-> > > "args->userdata" is marked as a user pointer so we really don't want to
-> > > mix user and kernel pointers here.  Presumably this opens up a large
-> > > security hole.
-> >
-> > It's an opaque, pointer-sized token that only exists to bereturned to userspace (or not,
-> > without this patch) - it's hard to see that as a security hole.
->
-> I was assuming the bug here was a NULL dereference...  Apparently that's
-> not the case?  The commit message needs to be updated to be more clear
-> about how the bug looks like to the user.
->
-> Are we using the "&waiter->bulk_waiter" as a "token to be returned to
-> userspace" as well?  It looks like maybe it is in vchiq_put_completion().
-> That defeats KASLR and is a different sort of security problem.
->
-> Mixing __user pointers and regular pointers is dangerous and has lead to
-> security problems in this driver in the past.  But also mixing mixing
-> tokens with pointers just makes the code hard to read.  Instead of
-> undoing Arnd's work where he split the user space and kernel pointers
-> apart we should go ahead and spit it up even more.  At least add a giant
-> FIXME comment and an item in the TODO list so we don't forget to do this
-> before removing the code from staging.
+This comment describes a security problem which was fixed in commit
+1c954540c0eb ("staging: vchiq: avoid mixing kernel and user pointers").
+The bug is fixed now so the FIXME can be removed.
 
-Those all sound like valid comments to have made against the original
-patch, but that seems to have received little attention.
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c  | 7 -------
+ 1 file changed, 7 deletions(-)
 
-I'll just leave this here - perhaps Arnd has the patience to finish the job.
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index f500a7043805..54770a9b4735 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -999,13 +999,6 @@ static int vchiq_irq_queue_bulk_tx_rx(struct vchiq_instance *instance,
+ 		userdata = &waiter->bulk_waiter;
+ 	}
+ 
+-	/*
+-	 * FIXME address space mismatch:
+-	 * args->data may be interpreted as a kernel pointer
+-	 * in create_pagelist() called from vchiq_bulk_transfer(),
+-	 * accessing kernel data instead of user space, based on the
+-	 * address.
+-	 */
+ 	status = vchiq_bulk_transfer(args->handle, NULL, args->data, args->size,
+ 				     userdata, args->mode, dir);
+ 
+-- 
+2.29.2
 
-Phil
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
