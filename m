@@ -1,81 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E73E72EC4DC
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Jan 2021 21:27:31 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 377272EC592
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Jan 2021 22:18:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 06425873CE;
-	Wed,  6 Jan 2021 20:27:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 802F02A0D9;
+	Wed,  6 Jan 2021 21:17:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c6AB-v3yoR8D; Wed,  6 Jan 2021 20:27:29 +0000 (UTC)
+	with ESMTP id lUoxYorToxpt; Wed,  6 Jan 2021 21:17:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 53380873B1;
-	Wed,  6 Jan 2021 20:27:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 30C25275A6;
+	Wed,  6 Jan 2021 21:17:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 173BC1BF2FE
- for <devel@linuxdriverproject.org>; Wed,  6 Jan 2021 20:27:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F2FB41BF5A0
+ for <devel@linuxdriverproject.org>; Wed,  6 Jan 2021 21:17:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0DAB127447
- for <devel@linuxdriverproject.org>; Wed,  6 Jan 2021 20:27:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A068D27447
+ for <devel@linuxdriverproject.org>; Wed,  6 Jan 2021 21:17:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YQ6t7AD+Onyo for <devel@linuxdriverproject.org>;
- Wed,  6 Jan 2021 20:27:25 +0000 (UTC)
-X-Greylist: delayed 00:07:22 by SQLgrey-1.7.6
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
- [209.85.128.51])
- by silver.osuosl.org (Postfix) with ESMTPS id 6CAC2273A9
- for <devel@driverdev.osuosl.org>; Wed,  6 Jan 2021 20:27:25 +0000 (UTC)
-Received: by mail-wm1-f51.google.com with SMTP id y23so3709228wmi.1
- for <devel@driverdev.osuosl.org>; Wed, 06 Jan 2021 12:27:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=w3vu7Q77s3pJWhDM2ZQklqoYrnX9v2imWoObUc3E/RA=;
- b=ctIAJZXn1n8n6ErtdFx+i0m//hYktYCyTIp+fkL2LcY4Jfm0wKjplw4EPnBOWExPAF
- tm1apLDsKQTMmoQJulDnTwruR9Hsv/yMpbPSwvB33Dn0xO8hHEGo06j0Mq+sinPqwyZs
- kWZVEpQfTT0gtFMj0arQ6YCHOg8raZObUVbJLy3IpkYwflXc322j700Bc561ZRWT68Qr
- WImc4bVeS/KdcVxYAC3M6Lh5048xfOZ+mJi3bkLkEPN0k184n8amf7w7eb1X+DXPr41W
- BYDH63AMZUvCTtDjclrX3JOjBQH+bUaDAXZVik31j8KCdfx49K2tkomwviBCLVObiuL0
- DAOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=w3vu7Q77s3pJWhDM2ZQklqoYrnX9v2imWoObUc3E/RA=;
- b=WPbSZeje6huJvnKrYHxKTszEFgo7a37o58WXkzAApCaAO42p1y/GY3ds8eVIvn/phV
- G3ZP5zjVNeH+yVNnDaGs/O0E8f4tuAJKAJ/RCKv6VKiHBYRXBSX25Rd6V0nPuH8L+yuo
- 74qjzswNkCewTSXPBuV1h2gCYexTcg/3kclMl6BnMNIwlJcLl56gcQQNTtZkSBsUyivG
- KRhc4/GByC/3fiSzRL/QjaRyn6zggozKRJHctMr5LgMPOfe89Sl2eJVJZGskzU2WZvfp
- JezBklLzaiZjmvf/PQCqWg6vhxCyquWhxV6zlvA7zO2LxiLghhWa+2fT1wbRu4oFYCqI
- GiEA==
-X-Gm-Message-State: AOAM531HhhJUZ1sy58gP4jEPylp4urFAZMKVaceQqej7Oo2AJWgNZk5t
- abI+234ha6km6iJ7ujAbCekITkuPKeld5w==
-X-Google-Smtp-Source: ABdhPJyBV1GURnIjVGPvwWRfM4Ufh3xwem8TBRk7I5b9Hoc2Gd8ZantU2ae2Sew+89YLsf+t89oB0A==
-X-Received: by 2002:a7b:c1d7:: with SMTP id a23mr5101496wmj.62.1609964401954; 
- Wed, 06 Jan 2021 12:20:01 -0800 (PST)
-Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
- by smtp.googlemail.com with ESMTPSA id n16sm4435939wrj.26.2021.01.06.12.20.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 06 Jan 2021 12:20:01 -0800 (PST)
-Date: Wed, 6 Jan 2021 21:19:58 +0100
-From: LABBE Corentin <clabbe@baylibre.com>
+ with ESMTP id jIMiwJ6mt711 for <devel@linuxdriverproject.org>;
+ Wed,  6 Jan 2021 21:17:52 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0223.hostedemail.com
+ [216.40.44.223])
+ by silver.osuosl.org (Postfix) with ESMTPS id 288CB2049D
+ for <devel@driverdev.osuosl.org>; Wed,  6 Jan 2021 21:17:52 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id D782D100E7B45;
+ Wed,  6 Jan 2021 21:17:50 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:968:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3870:3871:3872:3874:4321:5007:6691:7652:7903:10004:10400:10848:11232:11658:11914:12043:12297:12740:12760:12895:13069:13095:13311:13357:13439:14181:14659:14721:21080:21433:21451:21627:21740:30029:30054:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: love44_6310349274e4
+X-Filterd-Recvd-Size: 2444
+Received: from [192.168.1.159] (unknown [47.151.137.21])
+ (Authenticated sender: joe@perches.com)
+ by omf01.hostedemail.com (Postfix) with ESMTPA;
+ Wed,  6 Jan 2021 21:17:49 +0000 (UTC)
+Message-ID: <c5781c80a582cc68e1ae1bdc106c50cb263f81bf.camel@perches.com>
+Subject: Re: [PATCH] media: atomisp: ov2722: replace hardcoded function name
+From: Joe Perches <joe@perches.com>
 To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH -next] media: zoran: use resource_size
-Message-ID: <X/Ybbj6gN2xrhIwP@Red>
-References: <20210106131702.32507-1-zhengyongjun3@huawei.com>
- <20210106145100.GJ2809@kadam>
+Date: Wed, 06 Jan 2021 13:17:47 -0800
+In-Reply-To: <20210106193633.GK2809@kadam>
+References: <20210105202945.26913-1-fil.kolev@gmail.com>
+ <X/VsF364jpGz6oze@kroah.com>
+ <dcdda829-89d6-badd-4f22-72d95d24e9e3@gmail.com>
+ <X/X45909l1Tk7Bni@kroah.com>
+ <c9284a7f1443146b3885e8ceae3dcf113c531a36.camel@perches.com>
+ <20210106193633.GK2809@kadam>
+User-Agent: Evolution 3.38.1-1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210106145100.GJ2809@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,56 +74,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Zheng Yongjun <zhengyongjun3@huawei.com>,
- mjpeg-users@lists.sourceforge.net, mchehab@kernel.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Filip Kolev <fil.kolev@gmail.com>, devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Le Wed, Jan 06, 2021 at 05:51:00PM +0300, Dan Carpenter a =E9crit :
-> On Wed, Jan 06, 2021 at 09:17:02PM +0800, Zheng Yongjun wrote:
-> > Use resource_size rather than a verbose computation on
-> > the end and start fields.
-> > =
+On Wed, 2021-01-06 at 22:36 +0300, Dan Carpenter wrote:
+> On Wed, Jan 06, 2021 at 10:25:26AM -0800, Joe Perches wrote:
+> > On Wed, 2021-01-06 at 18:52 +0100, Greg Kroah-Hartman wrote:
+> > > On Wed, Jan 06, 2021 at 07:43:42PM +0200, Filip Kolev wrote: 
+> > > > On 06-Jan-21 09:51, Greg Kroah-Hartman wrote:
+> > > > > On Tue, Jan 05, 2021 at 10:29:18PM +0200, Filip Kolev wrote:
+> > > > > > There is a debug message using hardcoded function name instead of the
+> > > > > > __func__ macro. Replace it.
+> > > > > > 
+> > > > > > Report from checkpatch.pl on the file:
+> > > > > > 
+> > > > > > WARNING: Prefer using '"%s...", __func__' to using 'ov2722_remove', this function's name, in a string
+> > > > > > +	dev_dbg(&client->dev, "ov2722_remove...\n");
+[]
+> > There are quite a lot of these relatively useless function tracing like
+> > uses in the kernel:
+> > 
+> > $ git grep -P '"%s[\.\!]*\\n"\s*,\s*__func__\s*\)' | wc -l
+> > 1065
+> 
+> These are printing other stuff besides just the function name.
 
-> > Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
-> > ---
-> >  drivers/staging/media/zoran/zoran_driver.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > =
+No, these are printing _only_ the function name.
 
-> > diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/stagi=
-ng/media/zoran/zoran_driver.c
-> > index 808196ea5b81..d60b4c73ea80 100644
-> > --- a/drivers/staging/media/zoran/zoran_driver.c
-> > +++ b/drivers/staging/media/zoran/zoran_driver.c
-> > @@ -1020,7 +1020,7 @@ int zoran_queue_init(struct zoran *zr, struct vb2=
-_queue *vq)
-> >  	vq->buf_struct_size =3D sizeof(struct zr_buffer);
-> >  	vq->ops =3D &zr_video_qops;
-> >  	vq->mem_ops =3D &vb2_dma_contig_memops;
-> > -	vq->gfp_flags =3D GFP_DMA32,
-> > +	vq->gfp_flags =3D GFP_DMA32;
-> =
+> Maybe grep for '", __func__\)'?
 
-> The commit doesn't match the patch.  Also this driver is in
-> staging because it's going to be deleted soon so there probably isn't
-> much point doing cleanups.
-> =
+No, that wouldn't work as there are many many uses like:
+
+	printk('%s: some string\n", __func__);
 
 
-No, the driver just came back in staging since I fixed the videobuf2 conver=
-sion.
-One of the reason it is kept in staging is that media maintainer want to te=
-st it with its own zoran card but covid19 delayed the physical recovery of =
-it.
-
-So the patch need to be resent, please.
-
-Regards
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
