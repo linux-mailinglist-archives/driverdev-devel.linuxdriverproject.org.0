@@ -1,84 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED3A22EE63F
-	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Jan 2021 20:39:18 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84D382EE7A6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Jan 2021 22:32:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A59A8874E1;
-	Thu,  7 Jan 2021 19:39:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 74B6E2E0D9;
+	Thu,  7 Jan 2021 21:32:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rbrDDlGQLjFE; Thu,  7 Jan 2021 19:39:16 +0000 (UTC)
+	with ESMTP id nAUGjS1Wlhz4; Thu,  7 Jan 2021 21:32:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 267BF874C9;
-	Thu,  7 Jan 2021 19:39:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8594A2E0E8;
+	Thu,  7 Jan 2021 21:31:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 82FCD1BF41A
- for <devel@linuxdriverproject.org>; Thu,  7 Jan 2021 19:39:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 48A531BF398
+ for <devel@linuxdriverproject.org>; Thu,  7 Jan 2021 21:31:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7D89A874D2
- for <devel@linuxdriverproject.org>; Thu,  7 Jan 2021 19:39:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3127A2E0DB
+ for <devel@linuxdriverproject.org>; Thu,  7 Jan 2021 21:31:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vAOx8KEpFGv2 for <devel@linuxdriverproject.org>;
- Thu,  7 Jan 2021 19:39:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f41.google.com (mail-lf1-f41.google.com
- [209.85.167.41])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A2E6B87405
- for <devel@driverdev.osuosl.org>; Thu,  7 Jan 2021 19:39:12 +0000 (UTC)
-Received: by mail-lf1-f41.google.com with SMTP id b26so17322640lff.9
- for <devel@driverdev.osuosl.org>; Thu, 07 Jan 2021 11:39:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ffFy7U5GHTO2EDTarXBfsvng3yi/U0HlVmDD4XbAyvk=;
- b=Wyed8+zva/LYFJ10gJQ7x+ViNyXTsElCtmMUOpgTb/1YDegkPcwMsRWfb6bnPT+iKb
- yyIaGP48HD/upBYUEQjlmhnaGmrTDy9me1CdAxCQI1Rt9cCh1vfk83W55UpQWTrfx4fq
- on3q+XX+gRqs1lF4J6Dzk0wEr9tXNiH+ySbd07plWndwWUiv4F0ykGda/gBwJEg5vYOK
- ATsgATXXNyU6xMDyYcnyAnQ213ZoX/ZXl6yf3ac43tSt0qdPngmmF29bG1+eUDSwgUw1
- AzFECZcWDk9At66ZrGB8CFVrd2+qabP6np+CVOMLQJhpLToWrA6wWVQzNGJpmAyDhR53
- AsKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ffFy7U5GHTO2EDTarXBfsvng3yi/U0HlVmDD4XbAyvk=;
- b=uWZJ/rNvDTx7+glNEgrX+vVtMBfjW+cZGfIi8/L57TDZ1KxRI7ls/lMhtckPnuXDf9
- +7FvaLncWPov9aHSyLIiux4gmFRx5rnOqvSzMAp8YL5Qp9xuqjdBR+0tNSSRL1Bm5jFz
- x5L6J0aGe5GyU7T9B/TJZX+goNXowigXnm6Fw5CIcLeAdmr3qXy9jZZ9ZazujkwHENQJ
- LhW9W6Z9/i3UHVwu07/WF8VS1+wlx0GhGe8hfrnDW3HJQq4ZqvqdyDE5pHp2Hz8y8Mie
- m1tT5tp9KOn6vP67vGUpXw7+TRA9JbEvIToypdDBIKEFhcxKrQrfTmhHNlaNckOLdD7H
- vspw==
-X-Gm-Message-State: AOAM533W6i/iNoBEGvvSDGFLOPzxtoq0w4m2lEqARMjGZjff8jtk5xse
- p3myGw4ioXeY41XVQVYuBC4=
-X-Google-Smtp-Source: ABdhPJwcjsVwi672lMyB3VRDqyLku+RskEcHu3FcswkJW1KB+hkV/1FIv9p7umOsoz2IRKSWh6yzhA==
-X-Received: by 2002:a19:230d:: with SMTP id j13mr148331lfj.378.1610048350619; 
- Thu, 07 Jan 2021 11:39:10 -0800 (PST)
-Received: from [192.168.2.145] (109-252-192-57.dynamic.spd-mgts.ru.
- [109.252.192.57])
- by smtp.googlemail.com with ESMTPSA id q21sm1369032lff.280.2021.01.07.11.39.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Jan 2021 11:39:09 -0800 (PST)
-Subject: Re: [PATCH v2 00/48] Introduce core voltage scaling for NVIDIA
- Tegra20/30 SoCs
-To: Krzysztof Kozlowski <krzk@kernel.org>
-References: <20201217180638.22748-1-digetx@gmail.com>
- <20210105171111.GC26301@kozik-lap>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <988cf951-ff81-4b48-6baf-b393bd1613d2@gmail.com>
-Date: Thu, 7 Jan 2021 22:39:09 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.2
+ with ESMTP id VeFvhuSC4kcP for <devel@linuxdriverproject.org>;
+ Thu,  7 Jan 2021 21:31:52 +0000 (UTC)
+X-Greylist: delayed 00:52:25 by SQLgrey-1.7.6
+Received: from outgoing3.flk.host-h.net (outgoing3.flk.host-h.net
+ [188.40.0.89])
+ by silver.osuosl.org (Postfix) with ESMTPS id 310662E0D9
+ for <devel@driverdev.osuosl.org>; Thu,  7 Jan 2021 21:31:52 +0000 (UTC)
+Received: from www106.nur4.host-h.net ([213.133.104.106])
+ by antispam1-flk1.host-h.net with esmtpsa (TLSv1.2:AES128-GCM-SHA256:128)
+ (Exim 4.92) (envelope-from <Ida@online.no>)
+ id 1kxc40-0002hv-Tj; Thu, 07 Jan 2021 22:39:21 +0200
+Received: from [155.93.153.8] (helo=[192.168.0.103])
+ by www106.nur4.host-h.net with esmtpa (Exim 4.89)
+ (envelope-from <Ida@online.no>)
+ id 1kxbrb-0001nM-Q6; Thu, 07 Jan 2021 22:26:32 +0200
 MIME-Version: 1.0
-In-Reply-To: <20210105171111.GC26301@kozik-lap>
-Content-Language: en-US
+Content-Description: Mail message body
+Subject: Proposal 
+To: Recipients <Ida@online.no>
+From: Ida Wolden Bache <Ida@online.no>
+Date: Thu, 07 Jan 2021 22:26:23 +0200
+Message-Id: <E1kxbrb-0001nM-Q6@www106.nur4.host-h.net>
+X-Authenticated-Sender: inge@wordmaster.co.za
+X-Virus-Scanned: Clear
+X-Originating-IP: 213.133.104.106
+X-SpamExperts-Domain: wordmaster.co.za
+X-SpamExperts-Username: 
+Authentication-Results: host-h.net;
+ auth=pass (login) smtp.auth=@wordmaster.co.za
+X-SpamExperts-Outgoing-Class: unsure
+X-SpamExperts-Outgoing-Evidence: Combined (0.74)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT/pqRwNo9qEuk7C3XyIHspgPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5xng5oTQ9Gg+veqeHGUjslU9h3eg4toHJWLEcz/DXIflGXX
+ nyfb+wH8NJ2dR/JMdGEQHamcVqIEcpb7C8ozagEtCGebq37ub7A60jKJnL9Lld2u7rGH7O6AbeOm
+ egmsB7kxktFrxSSCSJ9OatcKLpkDkAFqVuij+Ed+SZ9C0zmEvYs/6OGUJH1kQvJsEY33PTyumYmi
+ y+P5DcqvorNlgSm1ZVtKxCmmXPA4DoMamS2t2iU08SQo3XKnIixUM5uYd8r89/1oVOKSsRrcyy4P
+ 59cjdc7Dg7DmOXC6VlO/x/FNRiuWoTnhSmxNtjIzfbgro89L37iD6zPJezK7X6Qa4kszsxjB4oRN
+ T6zcoHK26sznmilwqztf3ac+KP2sWFYhjQNCsRfY1RLVPSd9/TPCxS8UJb71o3ywbshyLF9MKC5F
+ 9S5B6pkFmeoP72XApxcg2B9jpQrCUG2mHr7rye9aPGgAYvTtnnBJY8/3NZM9P/E44q9XJldLkZ4Z
+ ggu08rqMlZI+7LxVSc3JzGsN7s9XMFOep/EAT0R4diQmGQr0OjQ+R6RgEVPSblDgl0hmQEy2K5A6
+ 2/AAInNfz7ckazu607KCsdUwB6NjS4W44STU3GOk1CIWGXYUHe5dXnKFtuwN6Q+b/zucomtFzmh1
+ 2ym2Yhu1mWYn6CBI3PWxZoLDQXycHgncTx/fGPCNOaDFh3O4mJLUkJJnrb0T7jIdJJQ+joSr04HH
+ YPad5OG3Ex9hES7nOcaJFn9isNKfImsWsY1VxqZKEPZuqejto7c6TXRUEk42QoweTv01oLe1TbE4
+ xQGOxIQnRc9gy5Ne2kHu78FebOiMQhWt+IqBwYtnp9Do1oCYRFNLRK8kx9CkUf3QTXKT/l7jPbZu
+ yvlPJuuQI6rmp4tDvQdvCRRVuZLrV6dkBe9OYSKrA6omOTRbhJpQphi7B+GKwJoacmIoidmUTE3j
+ X0IcU5M6sWLYvSYjlBvKf73Ahl2pBchqpohXCVOKbSo/YA0f9Fxnt4nUt5LVrh5TtUG2VVV9CEgp
+ FLD35ryWoxpIRAwX31WVY5lWjWxuGSRuxeZeM53TqUKdYcdqXlFbAOIG9Ijhux8umdYRAwEZ6gI8
+ p5Tpsoh1CJ3SA7QpT5XePWUa6KG7USrwMOr9ODN7I4CVxmQ9Grs2GjHIzCqLxDbdY0fsfLb1Ff5g
+ wNs50H2tQR3mA3n2D1mWkxaBJ6fsbt96EipRzMVZ5LqwTx7Vvn9ScEn22002XRS6i/HVcRklp9th
+ Na2bAXeERasg4oWfAuCFuAjdNLJnweOC89vYQ5Q7kKGHFdYykmm2fmhTOihnWweYUOp7A73HI6oJ
+ g7w/Vofxgh3X6Tch/B/wCWhK0Ndr2qGXjGWToOr7ey19bCj8kmKd01Oz4bOmEJzBRL9T+BsFdUlT
+ 1ClyIMwu120R7TWQp0lFZoAata7A6ObjRlA9rFk4PY4L/ReihJhJq3IK7NIccBIk1Sag4dKiqCrF
+ 8eZZpJ/iEiSxuZrGMxH3vWvsFwIvTO3RDLN/gvtm8H+HkfAXs8Okui+2Q94IwB7lG/Tsj1PIdmj8
+ SCe0uxt0RDUMj+UBqgy5MvLKcM3fuCJIS+zDvFzD0jdhHQlzgreQRNC2Nsj0ZNx9ROADUXTdQZTy
+ OS3cL5R3tOhOxCQ6Dfv3eKlm46q46YXk8tm7Qi8zlHjU
+X-Report-Abuse-To: spam@antispammaster.host-h.net
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,55 +94,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
- linux-clk@vger.kernel.org, devel@driverdev.osuosl.org,
- Kevin Hilman <khilman@kernel.org>, Nicolas Chauvet <kwizart@gmail.com>,
- Viresh Kumar <vireshk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-tegra@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: bacheidawolden126@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MDUuMDEuMjAyMSAyMDoxMSwgS3J6eXN6dG9mIEtvemxvd3NraSDQv9C40YjQtdGCOgo+IE9uIFRo
-dSwgRGVjIDE3LCAyMDIwIGF0IDA5OjA1OjUwUE0gKzAzMDAsIERtaXRyeSBPc2lwZW5rbyB3cm90
-ZToKPj4gSW50cm9kdWNlIGNvcmUgdm9sdGFnZSBzY2FsaW5nIGZvciBOVklESUEgVGVncmEyMC8z
-MCBTb0NzLCB3aGljaCByZWR1Y2VzCj4+IHBvd2VyIGNvbnN1bXB0aW9uIGFuZCBoZWF0aW5nIG9m
-IHRoZSBUZWdyYSBjaGlwcy4gVGVncmEgU29DIGhhcyBtdWx0aXBsZQo+PiBoYXJkd2FyZSB1bml0
-cyB3aGljaCBiZWxvbmcgdG8gYSBjb3JlIHBvd2VyIGRvbWFpbiBvZiB0aGUgU29DIGFuZCBzaGFy
-ZQo+PiB0aGUgY29yZSB2b2x0YWdlLiBUaGUgdm9sdGFnZSBtdXN0IGJlIHNlbGVjdGVkIGluIGFj
-Y29yZGFuY2UgdG8gYSBtaW5pbXVtCj4+IHJlcXVpcmVtZW50IG9mIGV2ZXJ5IGNvcmUgaGFyZHdh
-cmUgdW5pdC4KPj4KPj4gVGhlIG1pbmltdW0gY29yZSB2b2x0YWdlIHJlcXVpcmVtZW50IGRlcGVu
-ZHMgb246Cj4+Cj4+ICAgMS4gQ2xvY2sgZW5hYmxlIHN0YXRlIG9mIGEgaGFyZHdhcmUgdW5pdC4K
-Pj4gICAyLiBDbG9jayBmcmVxdWVuY3kuCj4+ICAgMy4gVW5pdCdzIGludGVybmFsIGlkbGluZy9h
-Y3RpdmUgc3RhdGUuCj4+Cj4+IFRoaXMgc2VyaWVzIGlzIHRlc3RlZCBvbiBBY2VyIEE1MDAgKFQy
-MCksIEFDMTAwIChUMjApLCBOZXh1cyA3IChUMzApLAo+PiBPdXlhIChUMzApLCBUSzEgKFQxMjQp
-IGFuZCBzb21lIG90aGVycy4gSSBhbHNvIGFkZGVkIHZvbHRhZ2Ugc2NhbGluZyB0bwo+PiB0aGUg
-VmVudGFuYSAoVDIwKSBhbmQgQ2FyZGh1IChUMzApIGJvYXJkcyB3aGljaCBhcmUgdGVzdGVkIGJ5
-IE5WSURJQSdzIENJCj4+IGZhcm0uIFRlZ3JhMzAgaXMgbm93IGNvdXBsZSBkZWdyZWVzIGNvb2xl
-ciBvbiBOZXh1cyA3IGFuZCBzdGF5cyBjb29sIG9uCj4+IE91eWEgKGluc3RlYWQgb2YgYmVjb21p
-bmcgYnVybmluZyBob3QpIHdoaWxlIHN5c3RlbSBpcyBpZGxpbmcuIEl0IHNob3VsZAo+PiBiZSBw
-b3NzaWJsZSB0byBpbXByb3ZlIHRoaXMgZnVydGhlciBieSBpbXBsZW1lbnRpbmcgYSBtb3JlIGFk
-dmFuY2VkIHBvd2VyCj4+IG1hbmFnZW1lbnQgZmVhdHVyZXMgZm9yIHRoZSBrZXJuZWwgZHJpdmVy
-cy4KPj4KPj4gVGhlIERWRlMgc3VwcG9ydCBpcyBvcHQtaW4gZm9yIGFsbCBib2FyZHMsIG1lYW5p
-bmcgdGhhdCBvbGRlciBEVEJzIHdpbGwKPj4gY29udGludWUgdG8gd29yayBsaWtlIHRoZXkgZGlk
-IGl0IGJlZm9yZSB0aGlzIHNlcmllcy4gSXQgc2hvdWxkIGJlIHBvc3NpYmxlCj4+IHRvIGVhc2ls
-eSBhZGQgdGhlIGNvcmUgdm9sdGFnZSBzY2FsaW5nIHN1cHBvcnQgZm9yIFRlZ3JhMTE0KyBTb0Nz
-IGJhc2VkIG9uCj4+IHRoaXMgZ3JvdW5kaW5nIHdvcmsgbGF0ZXIgb24sIGlmIGFueW9uZSB3aWxs
-IHdhbnQgdG8gaW1wbGVtZW50IGl0Lgo+IAo+IFRoZSBzYW1lIGNvbW1lbnQgYXMgZm9yIHlvdXIg
-aW50ZXJjb25uZWN0IHdvcms6IGZvciBzZXRzIHRvdWNoaW5nCj4gbXVsdGlwbGUgc3lzdGVtcyBw
-bGVhc2UgbWVudGlvbiB0aGUgZGVwZW5kZW5jaWVzIGJldHdlZW4gcGF0Y2hlcyBpbiB0aGUKPiBj
-b3ZlciBsZXR0ZXIuIE5vdCBhcyBhIHJlcGx5IHRvIHN1Y2ggcmVtYXJrIGxpa2UgSSBtYWtlIGhl
-cmUsIGJ1dCBhcyBhCj4gc2VwYXJhdGUgZW50cnkgaW4gdGhlIGNvdmVyIGxldHRlci4KCkknbGwg
-ZGVzY3JpYmUgYWxsIHRoZSBkZXBlbmRlbmNpZXMgaW4gdGhlIG5leHQgcmV2aXNpb24sIHRoYW5r
-cy4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwg
-bWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRl
-di5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVs
-Cg==
+Greetings from Norway,
+
+I got your e-mail address from google database when I was in search of someone to assist me to close a transaction.
+
+I have a proposal to share with you. Kindly contact me via email for more communication.
+
+Regards,
+Ida Wolden Bache
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
