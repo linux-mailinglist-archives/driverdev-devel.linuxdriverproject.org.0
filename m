@@ -1,57 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 846B72EF3C5
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Jan 2021 15:14:14 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9451E2EF3FA
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Jan 2021 15:36:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D087B2E145;
-	Fri,  8 Jan 2021 14:14:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 43D5F8730E;
+	Fri,  8 Jan 2021 14:36:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vI7boGM33z7b; Fri,  8 Jan 2021 14:14:11 +0000 (UTC)
+	with ESMTP id bxAayaw92RuW; Fri,  8 Jan 2021 14:36:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E09242E13D;
-	Fri,  8 Jan 2021 14:14:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 844138709D;
+	Fri,  8 Jan 2021 14:36:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CA9731BF2F0
- for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 14:14:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 369591BF2F0
+ for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 14:36:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C144A2E139
- for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 14:14:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 32616204F6
+ for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 14:36:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aSzto1v9OHlq for <devel@linuxdriverproject.org>;
- Fri,  8 Jan 2021 14:14:05 +0000 (UTC)
+ with ESMTP id sh7sdwVfYg3u for <devel@linuxdriverproject.org>;
+ Fri,  8 Jan 2021 14:36:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 57ADD2E136
- for <devel@driverdev.osuosl.org>; Fri,  8 Jan 2021 14:14:05 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C3BBD22A99;
- Fri,  8 Jan 2021 14:14:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610115244;
- bh=LP4iqShCCmApBox7uX87r8DgJVKp3NJlHINQVEMmtGA=;
- h=From:To:Cc:Subject:Date:From;
- b=eaSB6OG+8xAN9ZgU7y0quuTFTsQ/ngFahBFMNvhptoDZvyXHPIiNM3HcvzxdeGJSm
- tMYWgHEul0hUM4yHGMHScZ6DxJLD41md9aj86wFm6mzHVjY4sG297je9wtXZOoxlec
- ZjuCmcx/4OSw8nYuC1lNpGCkQ6C5BvhfkwbRDUnVTOcPBVvZMe4s8ub1BNej/T8tgb
- e2QdXPAQFTPT4YrrXLFMJwL25ogplfk1aSVEEgP71xOSJ2X3OpFlL8ELlmpTF2zqGG
- 4dHxBG7hdU9IJJzimxBv/rFtWyE5LrKqEquhO1Lj0Bw56BAs2qPBTq5l6tJgWoUnSI
- +WPDN6mdvdZTQ==
-Received: by wens.tw (Postfix, from userid 1000)
- id A46105FB8B; Fri,  8 Jan 2021 22:14:02 +0800 (CST)
-From: Chen-Yu Tsai <wens@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: rtl8723bs: wifi_regd.c: Fix incorrect number of
- regulatory rules
-Date: Fri,  8 Jan 2021 22:14:01 +0800
-Message-Id: <20210108141401.31741-1-wens@kernel.org>
-X-Mailer: git-send-email 2.29.2
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2D7442042B
+ for <devel@driverdev.osuosl.org>; Fri,  8 Jan 2021 14:36:38 +0000 (UTC)
+IronPort-SDR: TNZ5d81iPZuYvqPy5Vw5XSF1GMhREhmmkqP4/HCuf6K73X9CwXpo+HN5grEaMO09NT6ObZyWEZ
+ F7GrVIrHbacg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9857"; a="164682181"
+X-IronPort-AV: E=Sophos;i="5.79,331,1602572400"; d="scan'208";a="164682181"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2021 06:36:37 -0800
+IronPort-SDR: +TYgsbVURTTGwnWpJEa4Lf3luSD6MGA5hgwOKn3BmRoz/9RvB5oj9pdXzpNbt5siOf8h/PKH+o
+ HHt91eTW/2hQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,331,1602572400"; d="scan'208";a="350892025"
+Received: from lkp-server01.sh.intel.com (HELO 412602b27703) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 08 Jan 2021 06:36:36 -0800
+Received: from kbuild by 412602b27703 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kxssV-0000KQ-I9; Fri, 08 Jan 2021 14:36:35 +0000
+Date: Fri, 08 Jan 2021 22:36:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ d61adf609c48b9e91a84e9a943f0b3bcd84c3cad
+Message-ID: <5ff86dde.ndIsazdhQsxz28rn%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -65,96 +67,150 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com,
- Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Chen-Yu Tsai <wens@csie.org>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: d61adf609c48b9e91a84e9a943f0b3bcd84c3cad  staging: unisys: visorhba: enhance visorhba to use channel_interrupt
 
-The custom regulatory ruleset in the rtl8723bs driver lists an incorrect
-number of rules: one too many. This results in an out-of-bounds access,
-as detected by KASAN. This was possible thanks to the newly added support
-for KASAN on ARMv7.
+elapsed time: 775m
 
-Fix this by filling in the correct number of rules given.
+configs tested: 120
+configs skipped: 3
 
-KASAN report:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-==================================================================
-BUG: KASAN: global-out-of-bounds in cfg80211_does_bw_fit_range+0x14/0x4c [cfg80211]
-Read of size 4 at addr bf20c254 by task ip/971
+gcc tested configs:
+arm64                            allyesconfig
+arm64                               defconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+nios2                            alldefconfig
+c6x                         dsk6455_defconfig
+arm                        mini2440_defconfig
+mips                          rb532_defconfig
+mips                       rbtx49xx_defconfig
+nios2                            allyesconfig
+powerpc                    mvme5100_defconfig
+mips                          ath25_defconfig
+sh                             shx3_defconfig
+m68k                          multi_defconfig
+sh                          lboxre2_defconfig
+arm                       aspeed_g4_defconfig
+arm                         vf610m4_defconfig
+arm                          badge4_defconfig
+arm                        neponset_defconfig
+arm                       imx_v4_v5_defconfig
+sh                         ap325rxa_defconfig
+m68k                         amcore_defconfig
+ia64                             alldefconfig
+sh                        sh7785lcr_defconfig
+arm                           h3600_defconfig
+m68k                          atari_defconfig
+sparc                       sparc64_defconfig
+c6x                        evmc6472_defconfig
+powerpc                     akebono_defconfig
+nds32                            alldefconfig
+sh                         microdev_defconfig
+powerpc                      arches_defconfig
+powerpc                mpc7448_hpc2_defconfig
+powerpc                 xes_mpc85xx_defconfig
+mips                          rm200_defconfig
+powerpc                        cell_defconfig
+x86_64                              defconfig
+ia64                            zx1_defconfig
+powerpc                     ppa8548_defconfig
+mips                           ip22_defconfig
+openrisc                    or1ksim_defconfig
+sh                           se7724_defconfig
+powerpc                      cm5200_defconfig
+arm                         lpc32xx_defconfig
+ia64                         bigsur_defconfig
+arm                        vexpress_defconfig
+mips                            gpr_defconfig
+sh                            hp6xx_defconfig
+arm                      integrator_defconfig
+sh                   rts7751r2dplus_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20210108
+x86_64               randconfig-a006-20210108
+x86_64               randconfig-a001-20210108
+x86_64               randconfig-a002-20210108
+x86_64               randconfig-a003-20210108
+x86_64               randconfig-a005-20210108
+i386                 randconfig-a005-20210108
+i386                 randconfig-a002-20210108
+i386                 randconfig-a001-20210108
+i386                 randconfig-a003-20210108
+i386                 randconfig-a006-20210108
+i386                 randconfig-a004-20210108
+i386                 randconfig-a016-20210108
+i386                 randconfig-a011-20210108
+i386                 randconfig-a014-20210108
+i386                 randconfig-a015-20210108
+i386                 randconfig-a013-20210108
+i386                 randconfig-a012-20210108
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-CPU: 2 PID: 971 Comm: ip Tainted: G         C        5.11.0-rc2-00020-gf7fe528a7ebe #1
-Hardware name: Allwinner sun8i Family
-[<c0113338>] (unwind_backtrace) from [<c010e8a4>] (show_stack+0x10/0x14)
-[<c010e8a4>] (show_stack) from [<c0e0f868>] (dump_stack+0x9c/0xb4)
-[<c0e0f868>] (dump_stack) from [<c0388284>] (print_address_description.constprop.2+0x1dc/0x2dc)
-[<c0388284>] (print_address_description.constprop.2) from [<c03885cc>] (kasan_report+0x1a8/0x1c4)
-[<c03885cc>] (kasan_report) from [<bf00a354>] (cfg80211_does_bw_fit_range+0x14/0x4c [cfg80211])
-[<bf00a354>] (cfg80211_does_bw_fit_range [cfg80211]) from [<bf00b41c>] (freq_reg_info_regd.part.6+0x108/0x124 [>
-[<bf00b41c>] (freq_reg_info_regd.part.6 [cfg80211]) from [<bf00df00>] (handle_channel_custom.constprop.12+0x48/>
-[<bf00df00>] (handle_channel_custom.constprop.12 [cfg80211]) from [<bf00e150>] (wiphy_apply_custom_regulatory+0>
-[<bf00e150>] (wiphy_apply_custom_regulatory [cfg80211]) from [<bf1fb9e8>] (rtw_regd_init+0x60/0x70 [r8723bs])
-[<bf1fb9e8>] (rtw_regd_init [r8723bs]) from [<bf1ee5a8>] (rtw_cfg80211_init_wiphy+0x164/0x1e8 [r8723bs])
-[<bf1ee5a8>] (rtw_cfg80211_init_wiphy [r8723bs]) from [<bf1f8d50>] (_netdev_open+0xe4/0x28c [r8723bs])
-[<bf1f8d50>] (_netdev_open [r8723bs]) from [<bf1f8f58>] (netdev_open+0x60/0x88 [r8723bs])
-[<bf1f8f58>] (netdev_open [r8723bs]) from [<c0bb3730>] (__dev_open+0x178/0x220)
-[<c0bb3730>] (__dev_open) from [<c0bb3cdc>] (__dev_change_flags+0x258/0x2c4)
-[<c0bb3cdc>] (__dev_change_flags) from [<c0bb3d88>] (dev_change_flags+0x40/0x80)
-[<c0bb3d88>] (dev_change_flags) from [<c0bc86fc>] (do_setlink+0x538/0x1160)
-[<c0bc86fc>] (do_setlink) from [<c0bcf9e8>] (__rtnl_newlink+0x65c/0xad8)
-[<c0bcf9e8>] (__rtnl_newlink) from [<c0bcfeb0>] (rtnl_newlink+0x4c/0x6c)
-[<c0bcfeb0>] (rtnl_newlink) from [<c0bc67c8>] (rtnetlink_rcv_msg+0x1f8/0x454)
-[<c0bc67c8>] (rtnetlink_rcv_msg) from [<c0c330e4>] (netlink_rcv_skb+0xc4/0x1e0)
-[<c0c330e4>] (netlink_rcv_skb) from [<c0c32478>] (netlink_unicast+0x2c8/0x3c4)
-[<c0c32478>] (netlink_unicast) from [<c0c32894>] (netlink_sendmsg+0x320/0x5f0)
-[<c0c32894>] (netlink_sendmsg) from [<c0b75eb0>] (____sys_sendmsg+0x320/0x3e0)
-[<c0b75eb0>] (____sys_sendmsg) from [<c0b78394>] (___sys_sendmsg+0xe8/0x12c)
-[<c0b78394>] (___sys_sendmsg) from [<c0b78a50>] (__sys_sendmsg+0xc0/0x120)
-[<c0b78a50>] (__sys_sendmsg) from [<c0100060>] (ret_fast_syscall+0x0/0x58)
-Exception stack(0xc5693fa8 to 0xc5693ff0)
-3fa0:                   00000074 c7a39800 00000003 b6cee648 00000000 00000000
-3fc0: 00000074 c7a39800 00000001 00000128 78d18349 00000000 b6ceeda0 004f7cb0
-3fe0: 00000128 b6cee5e8 aeca151f aec1d746
+clang tested configs:
+x86_64               randconfig-a013-20210108
+x86_64               randconfig-a011-20210108
+x86_64               randconfig-a012-20210108
+x86_64               randconfig-a016-20210108
+x86_64               randconfig-a014-20210108
+x86_64               randconfig-a015-20210108
 
-The buggy address belongs to the variable:
- rtw_drv_halt+0xf908/0x6b4 [r8723bs]
-
-Memory state around the buggy address:
- bf20c100: 00 00 00 00 00 00 00 00 00 00 04 f9 f9 f9 f9 f9
- bf20c180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->bf20c200: 00 00 00 00 00 00 00 00 00 00 04 f9 f9 f9 f9 f9
-                                         ^
- bf20c280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
- bf20c300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-==================================================================
-
-Fixes: 554c0a3abf21 ("staging: Add rtl8723bs sdio wifi driver")
-Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
- drivers/staging/rtl8723bs/os_dep/wifi_regd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8723bs/os_dep/wifi_regd.c b/drivers/staging/rtl8723bs/os_dep/wifi_regd.c
-index 578b9f734231..65592bf84f38 100644
---- a/drivers/staging/rtl8723bs/os_dep/wifi_regd.c
-+++ b/drivers/staging/rtl8723bs/os_dep/wifi_regd.c
-@@ -34,7 +34,7 @@
- 	NL80211_RRF_PASSIVE_SCAN)
- 
- static const struct ieee80211_regdomain rtw_regdom_rd = {
--	.n_reg_rules = 3,
-+	.n_reg_rules = 2,
- 	.alpha2 = "99",
- 	.reg_rules = {
- 		RTW_2GHZ_CH01_11,
--- 
-2.29.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
