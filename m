@@ -1,55 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04F3A2EEE84
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Jan 2021 09:23:52 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA0612EEF5A
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Jan 2021 10:20:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3DE33204F2;
-	Fri,  8 Jan 2021 08:23:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B15748759B;
+	Fri,  8 Jan 2021 09:20:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MgXYBU+FdXD0; Fri,  8 Jan 2021 08:23:48 +0000 (UTC)
+	with ESMTP id ZvdoNYJDBodh; Fri,  8 Jan 2021 09:20:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D47AC20417;
-	Fri,  8 Jan 2021 08:23:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA21E87565;
+	Fri,  8 Jan 2021 09:20:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A13861BF9C8
- for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 08:23:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 89A191BF5A5
+ for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 09:20:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9CFE086EE2
- for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 08:23:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 82D232048B
+ for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 09:20:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0CLskIlEd+Q4 for <devel@linuxdriverproject.org>;
- Fri,  8 Jan 2021 08:23:42 +0000 (UTC)
+ with ESMTP id XotY-yCym+Xq for <devel@linuxdriverproject.org>;
+ Fri,  8 Jan 2021 09:20:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 94D2D86E26
- for <devel@driverdev.osuosl.org>; Fri,  8 Jan 2021 08:23:42 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 907DB2343B;
- Fri,  8 Jan 2021 08:23:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610094222;
- bh=Kb16w298kZTAlEWpzqllvq2hovbvuFFho6Aectf+P2Q=;
- h=From:To:Cc:Subject:Date:From;
- b=WamJreZb+aHOCvWYMI4fEqI0PlJQZ8fbipCb3x7HG2ff1xkqKyTazUHc63vjUQFC2
- TieFRi213IHgRdBymssxUlqO2qHmocTOqOigzhktw+QqeKraljxk4UbgVS3Zs2yWwQ
- BV5j9DaKfC7N3GINFqM9Kfxc6QHIWG4OcoqoaEEtSesJmV164OAIgR/t02AnNREbcx
- LEu4aT6jYoXEQbvusL6PRBD3eT+UFx361idz170TYzlR1JnGkK3gAiqg26vdxZmRRQ
- a9wXynGOPx9+JRob6sYUj2jnT3YigRcR4H4WlkIUAtmW9a4xRQLdn4W59OvzpXmtBe
- qBtvpyc30e2oA==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH] media: atomisp: fix Wvisiblity warning
-Date: Fri,  8 Jan 2021 09:23:28 +0100
-Message-Id: <20210108082337.2305938-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.29.2
+Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by silver.osuosl.org (Postfix) with ESMTPS id 44E8D2042B
+ for <devel@driverdev.osuosl.org>; Fri,  8 Jan 2021 09:20:47 +0000 (UTC)
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DByGr12f7zMH8R;
+ Fri,  8 Jan 2021 17:19:32 +0800 (CST)
+Received: from ubuntu.network (10.175.138.68) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 8 Jan 2021 17:20:34 +0800
+From: Zheng Yongjun <zhengyongjun3@huawei.com>
+To: <clabbe@baylibre.com>, <mchehab@kernel.org>,
+ <mjpeg-users@lists.sourceforge.net>, <linux-media@vger.kernel.org>,
+ <devel@driverdev.osuosl.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2 -next] media: zoran: convert comma to semicolon
+Date: Fri, 8 Jan 2021 17:21:19 +0800
+Message-ID: <20210108092119.18642-1-zhengyongjun3@huawei.com>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
+X-Originating-IP: [10.175.138.68]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,48 +60,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org
+Cc: gregkh@linuxfoundation.org, Zheng Yongjun <zhengyongjun3@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Arnd Bergmann <arnd@arndb.de>
+Replace a comma between expression statements by a semicolon.
 
-Some randconfig builds include ia_css_firmware.h without first
-including linux/device.h:
-
-In file included from atomisp/pci/mmu/sh_mmu_mrfld.c:23:
-In file included from atomisp/pci/atomisp_compat.h:22:
-In file included from atomisp/pci/atomisp_compat_css20.h:24:
-In file included from atomisp/pci/ia_css.h:28:
-In file included from atomisp/pci/ia_css_control.h:25:
-drivers/staging/media/atomisp//pci/ia_css_firmware.h:52:29: error: declaration of 'struct device' will not be visible outside of this function [-Werror,-Wvisibility]
-
-Add a forward declaration to avoid the warning.
-
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
 ---
- drivers/staging/media/atomisp/pci/ia_css_firmware.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/media/zoran/zoran_driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/ia_css_firmware.h b/drivers/staging/media/atomisp/pci/ia_css_firmware.h
-index edab72256494..38f0408947d1 100644
---- a/drivers/staging/media/atomisp/pci/ia_css_firmware.h
-+++ b/drivers/staging/media/atomisp/pci/ia_css_firmware.h
-@@ -30,6 +30,8 @@ struct ia_css_fw {
- 	unsigned int bytes; /** length in bytes of firmware data */
- };
- 
-+struct device;
-+
- /* @brief Loads the firmware
-  * @param[in]	env		Environment, provides functions to access the
-  *				environment in which the CSS code runs. This is
+diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
+index 808196ea5b81..d60b4c73ea80 100644
+--- a/drivers/staging/media/zoran/zoran_driver.c
++++ b/drivers/staging/media/zoran/zoran_driver.c
+@@ -1020,7 +1020,7 @@ int zoran_queue_init(struct zoran *zr, struct vb2_queue *vq)
+ 	vq->buf_struct_size = sizeof(struct zr_buffer);
+ 	vq->ops = &zr_video_qops;
+ 	vq->mem_ops = &vb2_dma_contig_memops;
+-	vq->gfp_flags = GFP_DMA32,
++	vq->gfp_flags = GFP_DMA32;
+ 	vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+ 	vq->min_buffers_needed = 9;
+ 	vq->lock = &zr->lock;
 -- 
-2.29.2
+2.22.0
 
 _______________________________________________
 devel mailing list
