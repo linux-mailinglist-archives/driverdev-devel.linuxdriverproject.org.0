@@ -1,72 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D14F2EED34
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Jan 2021 06:44:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7A9D38757D;
-	Fri,  8 Jan 2021 05:44:53 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EyxlINCRJBFP; Fri,  8 Jan 2021 05:44:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E90FA87565;
-	Fri,  8 Jan 2021 05:44:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5A3961BF863
- for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 05:44:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 04F3A2EEE84
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Jan 2021 09:23:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3EA672040C
- for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 05:44:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3DE33204F2;
+	Fri,  8 Jan 2021 08:23:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MgXYBU+FdXD0; Fri,  8 Jan 2021 08:23:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id D47AC20417;
+	Fri,  8 Jan 2021 08:23:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A13861BF9C8
+ for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 08:23:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9CFE086EE2
+ for <devel@linuxdriverproject.org>; Fri,  8 Jan 2021 08:23:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5drL-psa0l0J for <devel@linuxdriverproject.org>;
- Fri,  8 Jan 2021 05:44:49 +0000 (UTC)
+ with ESMTP id 0CLskIlEd+Q4 for <devel@linuxdriverproject.org>;
+ Fri,  8 Jan 2021 08:23:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f51.google.com (mail-ot1-f51.google.com
- [209.85.210.51])
- by silver.osuosl.org (Postfix) with ESMTPS id 57BD4203DD
- for <devel@driverdev.osuosl.org>; Fri,  8 Jan 2021 05:44:49 +0000 (UTC)
-Received: by mail-ot1-f51.google.com with SMTP id j12so8668343ota.7
- for <devel@driverdev.osuosl.org>; Thu, 07 Jan 2021 21:44:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dN7XgZiaahG9n5z68abqbWJt/hKn0HehLbVW0HG4KYk=;
- b=F4LCR8SFeymr3L6I9IMpBAqOjln4fubvxWUuu6ZbsmU6xWctmjkVDqa+j23NsdZUeJ
- 2lbqgRfSx8pm609CeYUMden0X8f5qH0Irp+ydwQKmqYgw8Z/6D4RTFRsSX+YyUOd119c
- 9Bfc29kUfbjj8Aexwzt4aip5WXjbRpz8nWT6aOd1V3JMENtdyA4LHiQiG8eJpurVTeIy
- ZwdlHbwIKT5W3nTD4Enql9zHaIfSiBNnraX9hviwAlz9ArpOFQOtMUtvUr4i/JL0AFLg
- PJB5KhL9JJxqUQvAYTMixwTdGoG2EKKDtBMXClSsECz+IZ25fZyF3dIntGJugRg4O1B2
- N8Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dN7XgZiaahG9n5z68abqbWJt/hKn0HehLbVW0HG4KYk=;
- b=qZF/TjfTog0dgwqmLhuMrb6jf7gQvu6a8X/GkqaITHz2iTbtaTZ8TGJFK45jtMIa2N
- Va0O4V4jYox89wFWLY2l/kbOctkF8hb5YeSM8gubcEriaw9lVhowWcTJTN2wezGqNtxl
- sU0xIWrLVYCdWmDSfl0P3zMlI4o6gH+o8w/1da6/8oKelhn0svRkLtCq+bwmsq6kBt6g
- wfGHyLPtGpx716JiLXmOWDXN2zL6rUcelTmWcAUg5LbOhOL3iFxSqCu0CjQYIv/bCBer
- YxQQoY12MmasKEx274lSR9ONjMBJNo7xUy2LKwU0uXSitcJJDwXjHNCLF43QNOsPmuVw
- tHHQ==
-X-Gm-Message-State: AOAM5313HOMRMee7CBaiQfWAAKvRjVtrkp995RaZAmG0UEX70s4dEkG1
- zkSPeiavoWBMVfqPiROYhTSMI/LfdxXS6izHLhY=
-X-Google-Smtp-Source: ABdhPJxqkHD8/hZsHWha7Yg6Ebl6JiAOdmUjcNyUQaZ32Ho/phTwGNlSwM+/HgMhRNU7VRuWjAVkOMCF0dWpbckONuk=
-X-Received: by 2002:a9d:730e:: with SMTP id e14mr1531093otk.74.1610084688599; 
- Thu, 07 Jan 2021 21:44:48 -0800 (PST)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 94D2D86E26
+ for <devel@driverdev.osuosl.org>; Fri,  8 Jan 2021 08:23:42 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 907DB2343B;
+ Fri,  8 Jan 2021 08:23:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610094222;
+ bh=Kb16w298kZTAlEWpzqllvq2hovbvuFFho6Aectf+P2Q=;
+ h=From:To:Cc:Subject:Date:From;
+ b=WamJreZb+aHOCvWYMI4fEqI0PlJQZ8fbipCb3x7HG2ff1xkqKyTazUHc63vjUQFC2
+ TieFRi213IHgRdBymssxUlqO2qHmocTOqOigzhktw+QqeKraljxk4UbgVS3Zs2yWwQ
+ BV5j9DaKfC7N3GINFqM9Kfxc6QHIWG4OcoqoaEEtSesJmV164OAIgR/t02AnNREbcx
+ LEu4aT6jYoXEQbvusL6PRBD3eT+UFx361idz170TYzlR1JnGkK3gAiqg26vdxZmRRQ
+ a9wXynGOPx9+JRob6sYUj2jnT3YigRcR4H4WlkIUAtmW9a4xRQLdn4W59OvzpXmtBe
+ qBtvpyc30e2oA==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Subject: [PATCH] media: atomisp: fix Wvisiblity warning
+Date: Fri,  8 Jan 2021 09:23:28 +0100
+Message-Id: <20210108082337.2305938-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-References: <20210108025155.31556-1-dqfext@gmail.com>
-In-Reply-To: <20210108025155.31556-1-dqfext@gmail.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 8 Jan 2021 06:44:37 +0100
-Message-ID: <CAMhs-H-xJZUkm78eJcP8QctB9HFfVtMqWC=gM7E-6WfqwPgn0A@mail.gmail.com>
-Subject: Re: [PATCH] staging: mt7621-dts: remove obsolete switch node
-To: DENG Qingfang <dqfext@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,28 +62,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, NeilBrown <neil@brown.name>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Rosen Penev <rosenp@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jan 8, 2021 at 3:52 AM DENG Qingfang <dqfext@gmail.com> wrote:
->
-> This was for OpenWrt's swconfig driver, which never made it upstream,
-> and was also superseded by MT7530 DSA driver.
->
-> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> ---
->  drivers/staging/mt7621-dts/mt7621.dtsi | 7 -------
->  1 file changed, 7 deletions(-)
+From: Arnd Bergmann <arnd@arndb.de>
 
-Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Some randconfig builds include ia_css_firmware.h without first
+including linux/device.h:
+
+In file included from atomisp/pci/mmu/sh_mmu_mrfld.c:23:
+In file included from atomisp/pci/atomisp_compat.h:22:
+In file included from atomisp/pci/atomisp_compat_css20.h:24:
+In file included from atomisp/pci/ia_css.h:28:
+In file included from atomisp/pci/ia_css_control.h:25:
+drivers/staging/media/atomisp//pci/ia_css_firmware.h:52:29: error: declaration of 'struct device' will not be visible outside of this function [-Werror,-Wvisibility]
+
+Add a forward declaration to avoid the warning.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/staging/media/atomisp/pci/ia_css_firmware.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/staging/media/atomisp/pci/ia_css_firmware.h b/drivers/staging/media/atomisp/pci/ia_css_firmware.h
+index edab72256494..38f0408947d1 100644
+--- a/drivers/staging/media/atomisp/pci/ia_css_firmware.h
++++ b/drivers/staging/media/atomisp/pci/ia_css_firmware.h
+@@ -30,6 +30,8 @@ struct ia_css_fw {
+ 	unsigned int bytes; /** length in bytes of firmware data */
+ };
+ 
++struct device;
++
+ /* @brief Loads the firmware
+  * @param[in]	env		Environment, provides functions to access the
+  *				environment in which the CSS code runs. This is
+-- 
+2.29.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
