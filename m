@@ -2,51 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F3C62EFF77
-	for <lists+driverdev-devel@lfdr.de>; Sat,  9 Jan 2021 13:36:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 693F02F0040
+	for <lists+driverdev-devel@lfdr.de>; Sat,  9 Jan 2021 14:53:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B630868BC;
-	Sat,  9 Jan 2021 12:36:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C6C8F869F4;
+	Sat,  9 Jan 2021 13:53:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l5bAvEyORAIm; Sat,  9 Jan 2021 12:36:15 +0000 (UTC)
+	with ESMTP id Snx8sh4YaWSV; Sat,  9 Jan 2021 13:53:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 556E9869EC;
-	Sat,  9 Jan 2021 12:36:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6DEC386910;
+	Sat,  9 Jan 2021 13:53:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 14F251BF2F5
- for <devel@linuxdriverproject.org>; Sat,  9 Jan 2021 12:36:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F81A1BF291
+ for <devel@linuxdriverproject.org>; Sat,  9 Jan 2021 13:53:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 115878728C
- for <devel@linuxdriverproject.org>; Sat,  9 Jan 2021 12:36:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7BDE6868FB
+ for <devel@linuxdriverproject.org>; Sat,  9 Jan 2021 13:53:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lo7VSVo93AON for <devel@linuxdriverproject.org>;
- Sat,  9 Jan 2021 12:36:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DED648724E
- for <devel@driverdev.osuosl.org>; Sat,  9 Jan 2021 12:36:11 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 44C971F45F1B
-Message-ID: <ad42babfca4a34d31875ff4f1250f4869be3a5a1.camel@collabora.com>
-Subject: Re: [PATCH v3] staging: media: rkvdec: rkvdec.c: Use semicolon in
- place of comma
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Sri Laasya Nutheti <nutheti.laasya@gmail.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Date: Sat, 09 Jan 2021 09:36:01 -0300
-In-Reply-To: <20210109121349.wuf7xpkqicjadlnf@nutheti>
-References: <20210109121349.wuf7xpkqicjadlnf@nutheti>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+ with ESMTP id QGRcCn5+jJML for <devel@linuxdriverproject.org>;
+ Sat,  9 Jan 2021 13:53:29 +0000 (UTC)
+X-Greylist: delayed 00:18:52 by SQLgrey-1.7.6
+Received: from mail-oi1-f171.google.com (mail-oi1-f171.google.com
+ [209.85.167.171])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9DF73868F0
+ for <devel@driverdev.osuosl.org>; Sat,  9 Jan 2021 13:53:29 +0000 (UTC)
+Received: by mail-oi1-f171.google.com with SMTP id w124so14865933oia.6
+ for <devel@driverdev.osuosl.org>; Sat, 09 Jan 2021 05:53:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=V6kzdP2xat9iocod2DKVN/cLtAYKJvORnSBIgaoo6+I=;
+ b=d72Tkx0cui223Epc1i+fCO9dgKUqSalR/M1wfB7aVXhtEABiBc7ENn3RbKglOeEP4K
+ Ixoms7B+P/DWWZnYP1IythsQgOnqWaTbaA0zESykWSbCrr5TuwXZAo6knFHbAnPkr9zg
+ vmIW1nM4yuT4tZNIWxxwp3KP8sckmbcWWglhxJwle1ZfwwSjFhKRnFl5SJeq0v35CewY
+ O4NMvcitKG31FUGmAbuT+G/2rTnXQQjvTkZ+5JCyPptgaeCdXnS1JgNjxWfH1xGhZL6r
+ EymHjqsMVLcB2iOvgQISvOL7rzSoqeCvV8gnxaaPEJRPBCyjr6PCIPe3CxA85GsJIJNm
+ GsUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=V6kzdP2xat9iocod2DKVN/cLtAYKJvORnSBIgaoo6+I=;
+ b=UXBErKFrnOHUfMpUd/EOngOUl4i4XEDXY6shDf+0h9oOQ8PtXCq1SK2BhFrtS2TYEN
+ 0tA5cXcpIZMfoFndAmEq/NlKBsnAJb9GfmQJP8ULtNKI0b7slNSf7wAl8e/zp+V2GMkO
+ kQBJRJZ1WLsRh3p4VU9hjZTirH2ZaV0zqxutvSCZmaOy6IgpcEkpvVZUIVuYIzd2sU8u
+ 16D5xjeUn9qxIdjk5Qq+cRSVp8kD7D8f3j9oTTHeGQpz7N3CdhLQjAJ0c2RBG/yif/Op
+ CXdoAe/5ZHuepXTA8MAUH+Icu4Gvb6+ZibDRKNv1UbJt1iIZgXbdTKnjS3TNyVY05xBs
+ vj9Q==
+X-Gm-Message-State: AOAM532aLhzrJEUrVC9J336sruNYiB+PnlGEao8gjyiL2aVGVx9EzbP5
+ E9SmPnMAIbJ2N7Z0bk8PCYBufqvIl+VG5Q==
+X-Google-Smtp-Source: ABdhPJx1E81FOsQLowFml13y0YFhYGLrEGX3Ic1/SX3apoOBMdw/Q7kEnIKPs5jtNJMvGZI6o2Uc7A==
+X-Received: by 2002:a17:90a:c306:: with SMTP id
+ g6mr8986891pjt.104.1610198857739; 
+ Sat, 09 Jan 2021 05:27:37 -0800 (PST)
+Received: from localhost ([2406:7400:73:4813:5519:9c74:24bc:5cec])
+ by smtp.gmail.com with ESMTPSA id y5sm8053301pjt.42.2021.01.09.05.27.36
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 09 Jan 2021 05:27:36 -0800 (PST)
+Date: Sat, 9 Jan 2021 18:57:31 +0530
+From: B K Karthik <bkkarthik@pesu.pes.edu>
+To: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: greybus: audio_helper.c: Replace strlcpy() with
+ strscpy()
+Message-ID: <20210109132731.tczawd5p74xnfz7p@pesu.pes.edu>
 MIME-Version: 1.0
+User-Agent: NeoMutt/20171215
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,34 +88,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3536521101450432689=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gU2F0LCAyMDIxLTAxLTA5IGF0IDE3OjQzICswNTMwLCBTcmkgTGFhc3lhIE51dGhldGkgd3Jv
-dGU6Cj4gTGluZSAxNDYgaGFkIGEgY29tbWEgaW4gcGxhY2Ugb2YgYSBzZW1pY29sb24uIEZpeCBp
-dC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTcmkgTGFhc3lhIE51dGhldGkgPG51dGhldGkubGFhc3lh
-QGdtYWlsLmNvbT4KPiAtLS0KPiB2MzogQ29ycmVjdGVkIGVtYWlsIHJlY2lwaWVudHMKPiDCoGRy
-aXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMgfCAyICstCj4gwqAxIGZpbGUgY2hh
-bmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9ya3ZkZWMvcmt2ZGVjLmMKPiBpbmRleCBhYTRmOGMyODc2MTguLmQzZWI4MWVlOGRjMiAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCj4gKysrIGIv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+IEBAIC0xNDMsNyArMTQzLDcg
-QEAgc3RhdGljIHZvaWQgcmt2ZGVjX3Jlc2V0X2ZtdChzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LCBz
-dHJ1Y3QgdjRsMl9mb3JtYXQgKmYsCj4gwqDCoMKgwqDCoMKgwqDCoG1lbXNldChmLCAwLCBzaXpl
-b2YoKmYpKTsKPiDCoMKgwqDCoMKgwqDCoMKgZi0+Zm10LnBpeF9tcC5waXhlbGZvcm1hdCA9IGZv
-dXJjYzsKPiDCoMKgwqDCoMKgwqDCoMKgZi0+Zm10LnBpeF9tcC5maWVsZCA9IFY0TDJfRklFTERf
-Tk9ORTsKPiAtwqDCoMKgwqDCoMKgwqBmLT5mbXQucGl4X21wLmNvbG9yc3BhY2UgPSBWNEwyX0NP
-TE9SU1BBQ0VfUkVDNzA5LAo+ICvCoMKgwqDCoMKgwqDCoGYtPmZtdC5waXhfbXAuY29sb3JzcGFj
-ZSA9IFY0TDJfQ09MT1JTUEFDRV9SRUM3MDk7Cj4gwqDCoMKgwqDCoMKgwqDCoGYtPmZtdC5waXhf
-bXAueWNiY3JfZW5jID0gVjRMMl9ZQ0JDUl9FTkNfREVGQVVMVDsKPiDCoMKgwqDCoMKgwqDCoMKg
-Zi0+Zm10LnBpeF9tcC5xdWFudGl6YXRpb24gPSBWNEwyX1FVQU5USVpBVElPTl9ERUZBVUxUOwo+
-IMKgwqDCoMKgwqDCoMKgwqBmLT5mbXQucGl4X21wLnhmZXJfZnVuYyA9IFY0TDJfWEZFUl9GVU5D
-X0RFRkFVTFQ7CgpBIGZpeCB3YXMgc2VudCBhbHJlYWR5IGZvciB0aGlzOgoKaHR0cHM6Ly9wYXRj
-aHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LXJvY2tjaGlwL3BhdGNoLzIwMjAxMjA0MjMz
-NzQzLkdBODUzMEBsaW51eG1pbnQtbWlkdG93ZXItcGMvCgpUaGFua3MsCkV6ZXF1aWVsCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
-IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
-ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+
+--===============3536521101450432689==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="kls55wqpg7fma2yb"
+Content-Disposition: inline
+
+
+--kls55wqpg7fma2yb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+In gbaudio_remove_controls() , replace the usage of strlcpy() with
+strscpy() because strlcpy() only limits the *destination*
+size, and the source is always read fully.
+
+https://lore.kernel.org/r/CAHk-=3DwgfRnXz0W3D37d01q3JFkr_i_uTL=3DV6A6G1oUZc=
+prmknw@mail.gmail.com/
+was quoted by checkpatch while showing this warning.
+
+Signed-off-by: B K Karthik <bkkarthik@pesu.pes.edu>
+---
+ drivers/staging/greybus/audio_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greyb=
+us/audio_helper.c
+index 3011b8abce38..1ed4772d2771 100644
+--- a/drivers/staging/greybus/audio_helper.c
++++ b/drivers/staging/greybus/audio_helper.c
+@@ -166,7 +166,7 @@ static int gbaudio_remove_controls(struct snd_card *car=
+d, struct device *dev,
+ 			snprintf(id.name, sizeof(id.name), "%s %s", prefix,
+ 				 control->name);
+ 		else
+-			strlcpy(id.name, control->name, sizeof(id.name));
++			strscpy(id.name, control->name, sizeof(id.name));
+ 		id.numid =3D 0;
+ 		id.iface =3D control->iface;
+ 		id.device =3D control->device;
+--=20
+2.17.1
+
+
+--kls55wqpg7fma2yb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEE88CpXiCXh4Qs88cHZmzYLLde5wcFAl/5r0MACgkQZmzYLLde
+5wc1MQwAxhSWhwtY2mD97K2T1quipOm7mKH5OHygx9T/aAr8t5k92DznAVswiHV1
+KE/jBYTfu1P0MYp/74rWvcb8fm5+fKoICSu5WIn6XIbiuIw010CY48QJilmcyDp5
+Kq2UNpmGtCrE2eI8ePFnkiRgK7Y3KVS/OlMoVLd+msLevI+Rf/Is/RsV1UARHb9t
+uQed1rw//LB8qM2FV+MpoY5z9a8kcohX10TPTbsepXr0TRqpkdvAFcDNbg2+kdHr
+UIXCinZXW6vpN9+YoxfMndrFHqUjj0mAEW42pNhA4Kd61+kXW4BJgEWhch/naERx
+SdSxQDaU547U0vqoaYsbIiAEF5M0nVmcsSaqFO33GHSDYy11QmyIGYbh9mHhe/u5
+KYaVd/geKHpFk014AmdBnKlSZ9zc7GkxSF56AU0S2Uwu+mcic0lTLUfMkLIpxxNL
+oxZO2c0bxUNVDQutoTsF4idVSc5rFwBAKD+iby3x7smxeZpSQ/GhVchG4FWTGxgc
+eSfg+mBK
+=6954
+-----END PGP SIGNATURE-----
+
+--kls55wqpg7fma2yb--
+
+--===============3536521101450432689==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3536521101450432689==--
