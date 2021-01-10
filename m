@@ -2,99 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B19A2F041F
-	for <lists+driverdev-devel@lfdr.de>; Sat,  9 Jan 2021 23:36:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B5202F0786
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Jan 2021 15:08:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE753860F0;
-	Sat,  9 Jan 2021 22:36:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2092486113;
+	Sun, 10 Jan 2021 14:08:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KT4R0lv8JIii; Sat,  9 Jan 2021 22:36:08 +0000 (UTC)
+	with ESMTP id x5YM1PeRlDOo; Sun, 10 Jan 2021 14:08:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0480C8615E;
-	Sat,  9 Jan 2021 22:36:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D91DC860C5;
+	Sun, 10 Jan 2021 14:08:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 69BCC1BF5DA
- for <devel@linuxdriverproject.org>; Sat,  9 Jan 2021 22:36:05 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 82B3D1BF4DB
+ for <devel@linuxdriverproject.org>; Sun, 10 Jan 2021 14:08:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 64AB6860EF
- for <devel@linuxdriverproject.org>; Sat,  9 Jan 2021 22:36:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 68AC620358
+ for <devel@linuxdriverproject.org>; Sun, 10 Jan 2021 14:08:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ox5IGE2-5IWn for <devel@linuxdriverproject.org>;
- Sat,  9 Jan 2021 22:36:03 +0000 (UTC)
-X-Greylist: delayed 00:11:55 by SQLgrey-1.7.6
-Received: from new4-smtp.messagingengine.com (new4-smtp.messagingengine.com
- [66.111.4.230])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 584D0860C6
- for <devel@driverdev.osuosl.org>; Sat,  9 Jan 2021 22:36:03 +0000 (UTC)
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailnew.nyi.internal (Postfix) with ESMTP id 0C8985805EF;
- Sat,  9 Jan 2021 17:24:07 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute5.internal (MEProxy); Sat, 09 Jan 2021 17:24:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
- to:cc:references:from:subject:message-id:date:mime-version
- :in-reply-to:content-type:content-transfer-encoding; s=fm1; bh=m
- 12NFdKt3bGrZeShAQKdpYummJW0fgdM/Zs/d2W6cXE=; b=YhmaFfwuMCWJ//o7d
- xQPOOwawY+upfamD3yMo7ainVkyhPxe8Fa8R0GOV307DPKuU7A5JmFBtr98/gAK6
- eRL65NmeF6PWmo98HCEfSobQrTEPJ+4N3MgYOcEGZ97+ZFIgjzlxWeb9ijt08dMs
- yQMubyN5bvInwxVpZxqwCQFleNAIJ8aPma078GSO3XSb/j2ovhOEPpV5f7KnJwyg
- pAwiIqOWA62ltBYiaeYGFqD3DljaRGI2JQGnvTEHbZlxCoAZyHEeU84WaFYA9T6x
- 0xxIhTyaL47yv+XgePozom5VQ+qUrePBIbcOUsJsLFuHp2NxLEGX980qehOQUxLi
- ww9Tw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=m12NFdKt3bGrZeShAQKdpYummJW0fgdM/Zs/d2W6c
- XE=; b=pw5W4y3Fd76Mbc1DC1ewxmUAwR94EhUk6k7JiKajubxmlmTKF/242wapQ
- 5Wt3bPLyAvDjdiPhaf5HokS2Qi6s+hXPKNbbYE6SMh5gIwTVVcYhyCVJ0jqAr3hF
- VfCrXKISxFyQGFTHIJo8Ec7BtTkrtJz7h46ZDev7ncXQQ2eRwc/5BbpzYMd1FP2n
- t+OZi2GCpkJNcGJF6P5WI7+I8aC5FtdrvPEYEr1VLEKxJ61fzO8szjkw06t3WQ6i
- daaFzTj5XF7PwthYIbOqEmXH75kqX9HKt32TMbPAwsVgjOgfXi2yiAgz78/WMWdC
- FAruv4juw+GYvOotiSn83E0hLW77w==
-X-ME-Sender: <xms:Ay36X1Y1h-KqjoodnccU38awJLJi-UIAdHnDx34zgR0HtxIvvZG-UQ>
- <xme:Ay36X8YVu_TDdAS0-rJ74MaaqcDesfC2Ts_VFHQRQPGMGxReRBMze4N9M9Qv7eaxq
- BThi2iuBWOQkp882w>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrvdegjedgudeivdcutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpefvfhfhuffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpefurghm
- uhgvlhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenuc
- ggtffrrghtthgvrhhnpedvtddtjeeiuddugfffveetkeffgeffgedutdfgfeekudevudek
- ffehtdefveeuvdenucfkphepjedtrddufeehrddugeekrdduhedunecuvehluhhsthgvrh
- fuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshgrmhhuvghlsehshhholhhl
- rghnugdrohhrgh
-X-ME-Proxy: <xmx:Ay36X3-BIAcYok8WBOWIHKzgH4DCnIqk_REtsCwrv88DnmAk72YeOw>
- <xmx:Ay36XzqpJgWqkixv_77DUWmiPgRoN6SPrcxj-SSprreR03vtjacfBg>
- <xmx:Ay36XwruO3cqQlTCyyiExYFTmeZt42XVRWmsttBNq3z_txMAhzESgg>
- <xmx:Bi36X5ay336yNwVUfUsqrUZN98m-Yh_0P-BckXpbJjSjxzVQWP7q1Q>
-Received: from [70.135.148.151]
- (70-135-148-151.lightspeed.stlsmo.sbcglobal.net [70.135.148.151])
- by mail.messagingengine.com (Postfix) with ESMTPA id 2DB9A1080057;
- Sat,  9 Jan 2021 17:24:02 -0500 (EST)
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-doc@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-sunxi@googlegroups.com
-References: <20201231142948.3241780-1-paul.kocialkowski@bootlin.com>
- <20201231142948.3241780-10-paul.kocialkowski@bootlin.com>
-From: Samuel Holland <samuel@sholland.org>
-Subject: Re: [PATCH v4 09/15] media: sunxi: Add support for the A31 MIPI CSI-2
- controller
-Message-ID: <4ea6a6d0-e2ef-9374-e24b-9d62d5f66e23@sholland.org>
-Date: Sat, 9 Jan 2021 16:24:01 -0600
-User-Agent: Mozilla/5.0 (X11; Linux ppc64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ with ESMTP id hiuJZRMR0Ks6 for <devel@linuxdriverproject.org>;
+ Sun, 10 Jan 2021 14:08:49 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id F059720111
+ for <devel@linuxdriverproject.org>; Sun, 10 Jan 2021 14:08:48 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1532F23741;
+ Sun, 10 Jan 2021 14:08:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1610287728;
+ bh=H4C/kgtcqODsENedvtiyfwLLRJosZe1/by42z5lqayQ=;
+ h=Date:From:To:Cc:Subject:From;
+ b=ooBtaeEloDWzze3HSAjQg6uJpHaNYeF/pGJ+ait60pYUJoysSOC/rYWpOOKENcI2P
+ RILXB7dXpbw5h+u0coIC54iYFxwPVglnRnVGVSxrXUA78ryF5jMZ7oTjPPi5R2glap
+ arzyIMUtSV1AslmItA9zBrJ4QolyPCvTIYJWuY2Y=
+Date: Sun, 10 Jan 2021 15:10:02 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging driver fixes for 5.11-rc3
+Message-ID: <X/sKurcTpwVvIuOs@kroah.com>
 MIME-Version: 1.0
-In-Reply-To: <20201231142948.3241780-10-paul.kocialkowski@bootlin.com>
-Content-Language: en-US
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,377 +61,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Jonathan Corbet <corbet@lwn.net>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Helen Koike <helen.koike@collabora.com>, Vinod Koul <vkoul@kernel.org>,
- Maxime Ripard <mripard@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Chen-Yu Tsai <wens@csie.org>, Rob Herring <robh+dt@kernel.org>,
- Hans Verkuil <hans.verkuil@cisco.com>, Yong Deng <yong.deng@magewell.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, kevin.lhopital@hotmail.com
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 12/31/20 8:29 AM, Paul Kocialkowski wrote:
-> The A31 MIPI CSI-2 controller is a dedicated MIPI CSI-2 bridge
-> found on Allwinner SoCs such as the A31 and V3/V3s.
-> 
-> It is a standalone block, connected to the CSI controller on one side
-> and to the MIPI D-PHY block on the other. It has a dedicated address
-> space, interrupt line and clock.
-> 
-> It is represented as a V4L2 subdev to the CSI controller and takes a
-> MIPI CSI-2 sensor as its own subdev, all using the fwnode graph and
-> media controller API.
-> 
-> Only 8-bit and 10-bit Bayer formats are currently supported.
-> While up to 4 internal channels to the CSI controller exist, only one
-> is currently supported by this implementation.
-> 
-> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> ---
->  drivers/media/platform/sunxi/Kconfig          |   1 +
->  drivers/media/platform/sunxi/Makefile         |   1 +
->  .../platform/sunxi/sun6i-mipi-csi2/Kconfig    |  12 +
->  .../platform/sunxi/sun6i-mipi-csi2/Makefile   |   4 +
->  .../sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c   | 590 ++++++++++++++++++
->  .../sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.h   | 117 ++++
->  6 files changed, 725 insertions(+)
->  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig
->  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/Makefile
->  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
->  create mode 100644 drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.h
-> 
-> diff --git a/drivers/media/platform/sunxi/Kconfig b/drivers/media/platform/sunxi/Kconfig
-> index 7151cc249afa..9684e07454ad 100644
-> --- a/drivers/media/platform/sunxi/Kconfig
-> +++ b/drivers/media/platform/sunxi/Kconfig
-> @@ -2,3 +2,4 @@
->  
->  source "drivers/media/platform/sunxi/sun4i-csi/Kconfig"
->  source "drivers/media/platform/sunxi/sun6i-csi/Kconfig"
-> +source "drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig"
-> diff --git a/drivers/media/platform/sunxi/Makefile b/drivers/media/platform/sunxi/Makefile
-> index fc537c9f5ca9..887a7cae8fca 100644
-> --- a/drivers/media/platform/sunxi/Makefile
-> +++ b/drivers/media/platform/sunxi/Makefile
-> @@ -2,5 +2,6 @@
->  
->  obj-y		+= sun4i-csi/
->  obj-y		+= sun6i-csi/
-> +obj-y		+= sun6i-mipi-csi2/
->  obj-y		+= sun8i-di/
->  obj-y		+= sun8i-rotate/
-> diff --git a/drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig b/drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig
-> new file mode 100644
-> index 000000000000..47f1bb0779a8
-> --- /dev/null
-> +++ b/drivers/media/platform/sunxi/sun6i-mipi-csi2/Kconfig
-> @@ -0,0 +1,12 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config VIDEO_SUN6I_MIPI_CSI2
-> +	tristate "Allwinner A31 MIPI CSI-2 Controller Driver"
-> +	depends on ARCH_SUNXI || COMPILE_TEST
-> +	depends on PM && COMMON_CLK && VIDEO_V4L2
-> +	select REGMAP_MMIO
-> +	select PHY_SUN6I_MIPI_DPHY
-> +	select MEDIA_CONTROLLER
-> +	select VIDEO_V4L2_SUBDEV_API
-> +	select V4L2_FWNODE
-> +	help
-> +	   Support for the Allwinner A31 MIPI CSI-2 Controller.
-> diff --git a/drivers/media/platform/sunxi/sun6i-mipi-csi2/Makefile b/drivers/media/platform/sunxi/sun6i-mipi-csi2/Makefile
-> new file mode 100644
-> index 000000000000..14e4e03818b5
-> --- /dev/null
-> +++ b/drivers/media/platform/sunxi/sun6i-mipi-csi2/Makefile
-> @@ -0,0 +1,4 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +sun6i-mipi-csi2-y += sun6i_mipi_csi2.o
-> +
-> +obj-$(CONFIG_VIDEO_SUN6I_MIPI_CSI2) += sun6i-mipi-csi2.o
-> diff --git a/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c b/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
-> new file mode 100644
-> index 000000000000..87307beda4cf
-> --- /dev/null
-> +++ b/drivers/media/platform/sunxi/sun6i-mipi-csi2/sun6i_mipi_csi2.c
-> @@ -0,0 +1,590 @@
-[...]
-> +/* Base Driver */
-> +
-> +static int sun6i_mipi_csi2_suspend(struct device *dev)
-> +{
-> +	struct sun6i_mipi_csi2_dev *cdev = dev_get_drvdata(dev);
-> +
-> +	clk_disable_unprepare(cdev->clk_mod);
-> +	clk_disable_unprepare(cdev->clk_bus);
-> +	reset_control_assert(cdev->reset);
-> +
-> +	return 0;
-> +}
-> +
-> +static int sun6i_mipi_csi2_resume(struct device *dev)
-> +{
-> +	struct sun6i_mipi_csi2_dev *cdev = dev_get_drvdata(dev);
-> +	int ret;
-> +
-> +	ret = reset_control_deassert(cdev->reset);
-> +	if (ret) {
-> +		dev_err(cdev->dev, "failed to deassert reset\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = clk_prepare_enable(cdev->clk_bus);
-> +	if (ret) {
-> +		dev_err(cdev->dev, "failed to enable bus clock\n");
-> +		goto error_reset;
-> +	}
-> +
-> +	ret = clk_prepare_enable(cdev->clk_mod);
-> +	if (ret) {
-> +		dev_err(cdev->dev, "failed to enable module clock\n");
-> +		goto error_clk_bus;
-> +	}
-> +
-> +	return 0;
-> +
-> +error_clk_bus:
-> +	clk_disable_unprepare(cdev->clk_bus);
-> +
-> +error_reset:
-> +	reset_control_assert(cdev->reset);
-> +
-> +	return ret;
-> +}
-> +
-> +static int sun6i_mipi_csi2_v4l2_setup(struct sun6i_mipi_csi2_dev *cdev)
-> +{
-> +	struct sun6i_mipi_csi2_video *video = &cdev->video;
-> +	struct v4l2_subdev *subdev = &video->subdev;
-> +	struct v4l2_async_notifier *notifier = &video->notifier;
-> +	struct fwnode_handle *handle;
-> +	struct v4l2_fwnode_endpoint *endpoint;
-> +	struct v4l2_async_subdev *subdev_async;
-> +	int ret;
-> +
-> +	/* Subdev */
-> +
-> +	v4l2_subdev_init(subdev, &sun6i_mipi_csi2_subdev_ops);
-> +	subdev->dev = cdev->dev;
-> +	subdev->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
-> +	strscpy(subdev->name, MODULE_NAME, sizeof(subdev->name));
-> +	v4l2_set_subdevdata(subdev, cdev);
-> +
-> +	/* Entity */
-> +
-> +	subdev->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
-> +	subdev->entity.ops = &sun6i_mipi_csi2_entity_ops;
-> +
-> +	/* Pads */
-> +
-> +	video->pads[0].flags = MEDIA_PAD_FL_SINK;
-> +	video->pads[1].flags = MEDIA_PAD_FL_SOURCE;
-> +
-> +	ret = media_entity_pads_init(&subdev->entity, 2, video->pads);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Endpoint */
-> +
-> +	handle = fwnode_graph_get_endpoint_by_id(dev_fwnode(cdev->dev), 0, 0,
-> +						 FWNODE_GRAPH_ENDPOINT_NEXT);
-> +	if (!handle) {
-> +		ret = -ENODEV;
-> +		goto error_media_entity;
-> +	}
-> +
-> +	endpoint = &video->endpoint;
-> +	endpoint->bus_type = V4L2_MBUS_CSI2_DPHY;
-> +
-> +	ret = v4l2_fwnode_endpoint_parse(handle, endpoint);
-> +	fwnode_handle_put(handle);
-> +	if (ret)
-> +		goto error_media_entity;
-> +
-> +	/* Notifier */
-> +
-> +	v4l2_async_notifier_init(notifier);
-> +
-> +	subdev_async = &video->subdev_async;
-> +	ret = v4l2_async_notifier_add_fwnode_remote_subdev(notifier, handle,
-> +							   subdev_async);
-> +	if (ret)
-> +		goto error_media_entity;
-> +
-> +	video->notifier.ops = &sun6i_mipi_csi2_notifier_ops;
-> +
-> +	ret = v4l2_async_subdev_notifier_register(subdev, notifier);
-> +	if (ret < 0)
-> +		goto error_notifier;
-> +
-> +	/* Subdev */
-> +
-> +	ret = v4l2_async_register_subdev(subdev);
-> +	if (ret < 0)
-> +		goto error_notifier_registered;
-> +
-> +	/* Runtime PM */
-> +
-> +	pm_runtime_enable(cdev->dev);
+The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
 
-I would expect to see this before registering with the class, since
-pm_runtime_get_sync() will fail if called before runtime PM is enabled.
+  Linux 5.11-rc1 (2020-12-27 15:30:22 -0800)
 
-> +	pm_runtime_set_suspended(cdev->dev);
+are available in the Git repository at:
 
-This is already the default.
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.11-rc3
 
-> +
-> +	return 0;
-> +
-> +error_notifier_registered:
-> +	v4l2_async_notifier_unregister(notifier);
-> +error_notifier:
-> +	v4l2_async_notifier_cleanup(notifier);
-> +error_media_entity:
-> +	media_entity_cleanup(&subdev->entity);
-> +
-> +	return ret;
-> +}
-> +
-> +static int sun6i_mipi_csi2_v4l2_teardown(struct sun6i_mipi_csi2_dev *cdev)
-> +{
-> +	struct sun6i_mipi_csi2_video *video = &cdev->video;
-> +	struct v4l2_subdev *subdev = &video->subdev;
-> +	struct v4l2_async_notifier *notifier = &video->notifier;
-> +
-> +	v4l2_async_unregister_subdev(subdev);
-> +	v4l2_async_notifier_unregister(notifier);
-> +	v4l2_async_notifier_cleanup(notifier);
-> +	media_entity_cleanup(&subdev->entity);
-> +	v4l2_device_unregister_subdev(subdev);
-> +
+for you to fetch changes up to 00b8c557d096f0930d5c07df618223d3d06902d6:
 
-I would expect to see pm_runtime_suspend()/pm_runtime_disable() called
-here, so you do not leak clock prepare/enable references.
+  staging: ION: remove some references to CONFIG_ION (2021-01-06 17:39:38 +0100)
 
-Cheers,
-Samuel
+----------------------------------------------------------------
+Staging driver fixes for 5.11-rc3
 
-> +	return 0;
-> +}
-> +
-> +static const struct regmap_config sun6i_mipi_csi2_regmap_config = {
-> +	.reg_bits       = 32,
-> +	.reg_stride     = 4,
-> +	.val_bits       = 32,
-> +	.max_register	= 0x400,
-> +};
-> +
-> +static int sun6i_mipi_csi2_probe(struct platform_device *pdev)
-> +{
-> +	struct sun6i_mipi_csi2_dev *cdev;
-> +	struct resource *res;
-> +	void __iomem *io_base;
-> +	int ret;
-> +
-> +	cdev = devm_kzalloc(&pdev->dev, sizeof(*cdev), GFP_KERNEL);
-> +	if (!cdev)
-> +		return -ENOMEM;
-> +
-> +	cdev->dev = &pdev->dev;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	io_base = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(io_base))
-> +		return PTR_ERR(io_base);
-> +
-> +	cdev->regmap = devm_regmap_init_mmio(&pdev->dev, io_base,
-> +					     &sun6i_mipi_csi2_regmap_config);
-> +	if (IS_ERR(cdev->regmap)) {
-> +		dev_err(&pdev->dev, "failed to init register map\n");
-> +		return PTR_ERR(cdev->regmap);
-> +	}
-> +
-> +	cdev->clk_bus = devm_clk_get(&pdev->dev, "bus");
-> +	if (IS_ERR(cdev->clk_bus)) {
-> +		dev_err(&pdev->dev, "failed to acquire bus clock\n");
-> +		return PTR_ERR(cdev->clk_bus);
-> +	}
-> +
-> +	cdev->clk_mod = devm_clk_get(&pdev->dev, "mod");
-> +	if (IS_ERR(cdev->clk_mod)) {
-> +		dev_err(&pdev->dev, "failed to acquire mod clock\n");
-> +		return PTR_ERR(cdev->clk_mod);
-> +	}
-> +
-> +	cdev->reset = devm_reset_control_get_shared(&pdev->dev, NULL);
-> +	if (IS_ERR(cdev->reset)) {
-> +		dev_err(&pdev->dev, "failed to get reset controller\n");
-> +		return PTR_ERR(cdev->reset);
-> +	}
-> +
-> +	cdev->dphy = devm_phy_get(&pdev->dev, NULL);
-> +	if (IS_ERR(cdev->dphy)) {
-> +		dev_err(&pdev->dev, "failed to get the MIPI D-PHY\n");
-> +		return PTR_ERR(cdev->dphy);
-> +	}
-> +
-> +	ret = phy_init(cdev->dphy);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "failed to initialize the MIPI D-PHY\n");
-> +		return ret;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, cdev);
-> +
-> +	ret = sun6i_mipi_csi2_v4l2_setup(cdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static int sun6i_mipi_csi2_remove(struct platform_device *pdev)
-> +{
-> +	struct sun6i_mipi_csi2_dev *cdev = platform_get_drvdata(pdev);
-> +
-> +	phy_exit(cdev->dphy);
-> +
-> +	return sun6i_mipi_csi2_v4l2_teardown(cdev);
-> +}
-> +
-> +static const struct dev_pm_ops sun6i_mipi_csi2_pm_ops = {
-> +	SET_RUNTIME_PM_OPS(sun6i_mipi_csi2_suspend, sun6i_mipi_csi2_resume,
-> +			   NULL)
-> +};
-> +
-> +static const struct of_device_id sun6i_mipi_csi2_of_match[] = {
-> +	{ .compatible = "allwinner,sun6i-a31-mipi-csi2" },
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, sun6i_mipi_csi2_of_match);
-> +
-> +static struct platform_driver sun6i_mipi_csi2_platform_driver = {
-> +	.probe = sun6i_mipi_csi2_probe,
-> +	.remove = sun6i_mipi_csi2_remove,
-> +	.driver = {
-> +		.name = MODULE_NAME,
-> +		.of_match_table = of_match_ptr(sun6i_mipi_csi2_of_match),
-> +		.pm = &sun6i_mipi_csi2_pm_ops,
-> +	},
-> +};
-> +module_platform_driver(sun6i_mipi_csi2_platform_driver);
-> +
-> +MODULE_DESCRIPTION("Allwinner A31 MIPI CSI-2 Controller Driver");
-> +MODULE_AUTHOR("Paul Kocialkowski <paul.kocialkowski@bootlin.com>");
-> +MODULE_LICENSE("GPL");
-[...]
+Here are some small staging driver fixes for 5.11-rc3.  Nothing major,
+just resolving some reported issues:
+	- cleanup some remaining mentions of the ION drivers that were
+	  removed in 5.11-rc1
+	- comedi driver bugfix
+	- 2 error path memory leak fixes
+
+All have been in linux-next for a while with no reported issues.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Christophe JAILLET (2):
+      staging: spmi: hisi-spmi-controller: Fix some error handling paths
+      staging: mt7621-dma: Fix a resource leak in an error handling path
+
+Dan Carpenter (1):
+      Staging: comedi: Return -EFAULT if copy_to_user() fails
+
+Matthias Maennich (1):
+      staging: ION: remove some references to CONFIG_ION
+
+ drivers/staging/comedi/comedi_fops.c               |  4 +++-
+ drivers/staging/hikey9xx/hisi-spmi-controller.c    | 21 +++++++++++++++------
+ drivers/staging/media/atomisp/pci/atomisp_subdev.c | 20 --------------------
+ drivers/staging/mt7621-dma/mtk-hsdma.c             |  4 +++-
+ kernel/configs/android-recommended.config          |  1 -
+ 5 files changed, 21 insertions(+), 29 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
