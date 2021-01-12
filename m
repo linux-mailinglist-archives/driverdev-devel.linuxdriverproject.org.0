@@ -2,60 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 040812F2F6E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Jan 2021 13:56:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7486C2F3255
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Jan 2021 14:58:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 55AFF273A9;
-	Tue, 12 Jan 2021 12:56:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E00AE2045F;
+	Tue, 12 Jan 2021 13:58:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hBeScXv4ZVw1; Tue, 12 Jan 2021 12:56:10 +0000 (UTC)
+	with ESMTP id LvLNiOtwYus8; Tue, 12 Jan 2021 13:58:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 618D9204B9;
-	Tue, 12 Jan 2021 12:56:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D87FA203BD;
+	Tue, 12 Jan 2021 13:58:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 71BAE1BF357
- for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 12:56:05 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EA1DE1BF285
+ for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 13:58:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6DA9287008
- for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 12:56:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E5A498561D
+ for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 13:58:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FRM3NdNyY9UL for <devel@linuxdriverproject.org>;
- Tue, 12 Jan 2021 12:56:04 +0000 (UTC)
+ with ESMTP id BEr55J_7yN8B for <devel@linuxdriverproject.org>;
+ Tue, 12 Jan 2021 13:58:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C13A187004
- for <devel@driverdev.osuosl.org>; Tue, 12 Jan 2021 12:56:04 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B226623133;
- Tue, 12 Jan 2021 12:56:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610456164;
- bh=eCWatQ31FO3AivDi5FAeTDE1Kbblb++Bkw5IzvuubZk=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BLvrkylc/0A09kXvjLBIKUuNEvxJaSRCxr6WBQW/Br41HVU05Sf+Sr1mxLGyc+R3s
- 3YU1JTbrSEHPVkzMrSQWX9NntbGbeHEq5Q1upQlaj/La46WXBLZlHAdBS3LJESBj2j
- VesxK6Fys8unx9LSqlcPOyBzsxmOGhCMMNrtQJ/HeKbEkwz31uUpysbmvglByOSIWX
- 0v7zLg9htkiJvVlyXGgcMZ03vyD1rTUywbNYHXlWwW18DfvrRnbQ3AAqUAkzcLZcEa
- 3dpTE8iKsgTcbYSJGGkNvglPyh/qB4bTj0edqhPqet9l6qHAWIGGJgBn+drxO4p39N
- dlES85iVc3vLQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 22/51] staging: spmi: hisi-spmi-controller: Fix
- some error handling paths
-Date: Tue, 12 Jan 2021 07:55:04 -0500
-Message-Id: <20210112125534.70280-22-sashal@kernel.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210112125534.70280-1-sashal@kernel.org>
-References: <20210112125534.70280-1-sashal@kernel.org>
+Received: from mail-vk1-f181.google.com (mail-vk1-f181.google.com
+ [209.85.221.181])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 19A6185618
+ for <devel@driverdev.osuosl.org>; Tue, 12 Jan 2021 13:58:19 +0000 (UTC)
+Received: by mail-vk1-f181.google.com with SMTP id v3so630139vkb.1
+ for <devel@driverdev.osuosl.org>; Tue, 12 Jan 2021 05:58:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=NXadZdz8Ctiv1n9eDAHyiJm1Q2gQ3cn9xSsA8PIpIy8=;
+ b=X6eafdEk/mhZKGkplAkeZlHtw5MHYiPGzuLqaU/8QIJNUYdB77gAnLlDUNAiD4hMNh
+ xtLhe6wxwEiVq1lSHcSdByEjddJcVv0v0t0oPEFeAc9L27R7dcQSR2snp4mzm54uhMOV
+ QKMmK332VJC9oTr7isDNxdOmzA+cqgmtgUlK1ECND3GRn5P+0A4DXM4oMIsVo0M63aHu
+ tz/gPl2J8bw3GAsqZAj7v5VCFpg1TO+MjzWZoFbxAP5iVZXNmoKqZLzr4y4p5HBfjEPW
+ z4ZdM03MFp9BUDCj2gplHxCyRyXtyF1F2XMD9c4mZY1sgSAu7ecGDfwd89/tv+VfhSp4
+ YzPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=NXadZdz8Ctiv1n9eDAHyiJm1Q2gQ3cn9xSsA8PIpIy8=;
+ b=GvFnyqhv28odnayVK9NCNRjuvWbZSfs7mD1vBDQoRHpUxwTC52ZydBEtAylSKW02fZ
+ EYLo3ITT8dKOR7tCBqEnbDjVpLYLKYZTSD+JZoJ6CEvE+vlA0zdAg/XGB9oU0YdeBw0j
+ 7r9C6SN4hE4sq93bjLC+TdhL+UXeBfswqzoWnAHJahRpvfwEOQP3sy1D2GIM9l0PpjIl
+ LVWG7pqe2ceeylNWcC2tbGy8c4q6SfrUAJWhO54XRW5beg6NXJTSc4AC7lEWWXCk/E54
+ O2BBPIH61hq9IOW0dV00fGltO1i1A63Mk5ShF1+abmNr7nfx/lGmhe5agXRGdfBdw8pl
+ qJrQ==
+X-Gm-Message-State: AOAM531/qu6ovL3eFm2wygGE9KTBNnxRT006bG/ccbfNBgLFYeJSEXU8
+ Sn8LVpYxhPTPByeyGHPNn2QIyrPVvnNiMDnMDSbEGQ==
+X-Google-Smtp-Source: ABdhPJy+B3y/eESbyu3OC6gky5khJjR8g/IPWLuj2VIXLHRwiMv4vqF7OT9LeQIvE4BHFVFqSxmsFb+5AO9DEtsQ0nY=
+X-Received: by 2002:a1f:8f08:: with SMTP id r8mr3665187vkd.15.1610459897870;
+ Tue, 12 Jan 2021 05:58:17 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+References: <20201217180638.22748-1-digetx@gmail.com>
+ <20201217180638.22748-32-digetx@gmail.com>
+In-Reply-To: <20201217180638.22748-32-digetx@gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 12 Jan 2021 14:57:41 +0100
+Message-ID: <CAPDyKFrRKbQS1+t_nGH9RRKf0WGcAf-Pjzo1rJt=Sz=SMWOa7Q@mail.gmail.com>
+Subject: Re: [PATCH v2 31/48] soc/tegra: regulators: Support Core domain state
+ syncing
+To: Dmitry Osipenko <digetx@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,98 +81,140 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ driverdevel <devel@driverdev.osuosl.org>, Kevin Hilman <khilman@kernel.org>,
+ Nicolas Chauvet <kwizart@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ DTML <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+On Thu, 17 Dec 2020 at 19:07, Dmitry Osipenko <digetx@gmail.com> wrote:
+>
+> The core voltage shall not drop until state of Core domain is synced,
+> i.e. all device drivers that use Core domain are loaded and ready.
+>
+> Support Core domain state syncing. The Core domain driver invokes the
+> core-regulator voltage syncing once the state of domain is synced, at
+> this point the Core voltage is allowed to go lower.
+>
+> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 
-[ Upstream commit 12b38ea040b3bb2a30eb9cd488376df5be7ea81f ]
+This looks reasonable to me, feel free to add:
 
-IN the probe function, if an error occurs after calling
-'spmi_controller_alloc()', it must be undone by a corresponding
-'spmi_controller_put() call.
+Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-In the remove function, use 'spmi_controller_put(ctrl)' instead of
-'kfree(ctrl)'.
+Kind regards
+Uffe
 
-While a it fix an error message
-(s/spmi_add_controller/spmi_controller_add/)
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Link: https://lore.kernel.org/r/20201213151105.137731-1-christophe.jaillet@wanadoo.fr
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- .../staging/hikey9xx/hisi-spmi-controller.c   | 21 +++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/staging/hikey9xx/hisi-spmi-controller.c
-index f831c43f4783f..29f226503668d 100644
---- a/drivers/staging/hikey9xx/hisi-spmi-controller.c
-+++ b/drivers/staging/hikey9xx/hisi-spmi-controller.c
-@@ -278,21 +278,24 @@ static int spmi_controller_probe(struct platform_device *pdev)
- 	iores = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	if (!iores) {
- 		dev_err(&pdev->dev, "can not get resource!\n");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto err_put_controller;
- 	}
- 
- 	spmi_controller->base = devm_ioremap(&pdev->dev, iores->start,
- 					     resource_size(iores));
- 	if (!spmi_controller->base) {
- 		dev_err(&pdev->dev, "can not remap base addr!\n");
--		return -EADDRNOTAVAIL;
-+		ret = -EADDRNOTAVAIL;
-+		goto err_put_controller;
- 	}
- 
- 	ret = of_property_read_u32(pdev->dev.of_node, "spmi-channel",
- 				   &spmi_controller->channel);
- 	if (ret) {
- 		dev_err(&pdev->dev, "can not get channel\n");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto err_put_controller;
- 	}
- 
- 	platform_set_drvdata(pdev, spmi_controller);
-@@ -309,9 +312,15 @@ static int spmi_controller_probe(struct platform_device *pdev)
- 	ctrl->write_cmd = spmi_write_cmd;
- 
- 	ret = spmi_controller_add(ctrl);
--	if (ret)
--		dev_err(&pdev->dev, "spmi_add_controller failed with error %d!\n", ret);
-+	if (ret) {
-+		dev_err(&pdev->dev, "spmi_controller_add failed with error %d!\n", ret);
-+		goto err_put_controller;
-+	}
-+
-+	return 0;
- 
-+err_put_controller:
-+	spmi_controller_put(ctrl);
- 	return ret;
- }
- 
-@@ -320,7 +329,7 @@ static int spmi_del_controller(struct platform_device *pdev)
- 	struct spmi_controller *ctrl = platform_get_drvdata(pdev);
- 
- 	spmi_controller_remove(ctrl);
--	kfree(ctrl);
-+	spmi_controller_put(ctrl);
- 	return 0;
- }
- 
--- 
-2.27.0
-
+> ---
+>  drivers/soc/tegra/regulators-tegra20.c | 19 ++++++++++++++++++-
+>  drivers/soc/tegra/regulators-tegra30.c | 18 +++++++++++++++++-
+>  2 files changed, 35 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/soc/tegra/regulators-tegra20.c b/drivers/soc/tegra/regulators-tegra20.c
+> index 367a71a3cd10..e2c11d442591 100644
+> --- a/drivers/soc/tegra/regulators-tegra20.c
+> +++ b/drivers/soc/tegra/regulators-tegra20.c
+> @@ -16,6 +16,8 @@
+>  #include <linux/regulator/driver.h>
+>  #include <linux/regulator/machine.h>
+>
+> +#include <soc/tegra/common.h>
+> +
+>  struct tegra_regulator_coupler {
+>         struct regulator_coupler coupler;
+>         struct regulator_dev *core_rdev;
+> @@ -38,6 +40,21 @@ static int tegra20_core_limit(struct tegra_regulator_coupler *tegra,
+>         int core_cur_uV;
+>         int err;
+>
+> +       /*
+> +        * Tegra20 SoC has critical DVFS-capable devices that are
+> +        * permanently-active or active at a boot time, like EMC
+> +        * (DRAM controller) or Display controller for example.
+> +        *
+> +        * The voltage of a CORE SoC power domain shall not be dropped below
+> +        * a minimum level, which is determined by device's clock rate.
+> +        * This means that we can't fully allow CORE voltage scaling until
+> +        * the state of all DVFS-critical CORE devices is synced.
+> +        */
+> +       if (tegra_soc_core_domain_state_synced()) {
+> +               pr_info_once("voltage state synced\n");
+> +               return 0;
+> +       }
+> +
+>         if (tegra->core_min_uV > 0)
+>                 return tegra->core_min_uV;
+>
+> @@ -58,7 +75,7 @@ static int tegra20_core_limit(struct tegra_regulator_coupler *tegra,
+>          */
+>         tegra->core_min_uV = core_max_uV;
+>
+> -       pr_info("core minimum voltage limited to %duV\n", tegra->core_min_uV);
+> +       pr_info("core voltage initialized to %duV\n", tegra->core_min_uV);
+>
+>         return tegra->core_min_uV;
+>  }
+> diff --git a/drivers/soc/tegra/regulators-tegra30.c b/drivers/soc/tegra/regulators-tegra30.c
+> index 0e776b20f625..42d675b79fa3 100644
+> --- a/drivers/soc/tegra/regulators-tegra30.c
+> +++ b/drivers/soc/tegra/regulators-tegra30.c
+> @@ -16,6 +16,7 @@
+>  #include <linux/regulator/driver.h>
+>  #include <linux/regulator/machine.h>
+>
+> +#include <soc/tegra/common.h>
+>  #include <soc/tegra/fuse.h>
+>
+>  struct tegra_regulator_coupler {
+> @@ -39,6 +40,21 @@ static int tegra30_core_limit(struct tegra_regulator_coupler *tegra,
+>         int core_cur_uV;
+>         int err;
+>
+> +       /*
+> +        * Tegra30 SoC has critical DVFS-capable devices that are
+> +        * permanently-active or active at a boot time, like EMC
+> +        * (DRAM controller) or Display controller for example.
+> +        *
+> +        * The voltage of a CORE SoC power domain shall not be dropped below
+> +        * a minimum level, which is determined by device's clock rate.
+> +        * This means that we can't fully allow CORE voltage scaling until
+> +        * the state of all DVFS-critical CORE devices is synced.
+> +        */
+> +       if (tegra_soc_core_domain_state_synced()) {
+> +               pr_info_once("voltage state synced\n");
+> +               return 0;
+> +       }
+> +
+>         if (tegra->core_min_uV > 0)
+>                 return tegra->core_min_uV;
+>
+> @@ -59,7 +75,7 @@ static int tegra30_core_limit(struct tegra_regulator_coupler *tegra,
+>          */
+>         tegra->core_min_uV = core_max_uV;
+>
+> -       pr_info("core minimum voltage limited to %duV\n", tegra->core_min_uV);
+> +       pr_info("core voltage initialized to %duV\n", tegra->core_min_uV);
+>
+>         return tegra->core_min_uV;
+>  }
+> --
+> 2.29.2
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
