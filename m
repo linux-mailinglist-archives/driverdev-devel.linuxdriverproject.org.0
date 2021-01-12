@@ -1,59 +1,127 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EB942F2AFF
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Jan 2021 10:18:57 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ACFA2F2E89
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Jan 2021 13:01:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DF11E8688A;
-	Tue, 12 Jan 2021 09:18:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ED5FB86191;
+	Tue, 12 Jan 2021 12:01:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dAHb0F8otb7h; Tue, 12 Jan 2021 09:18:54 +0000 (UTC)
+	with ESMTP id g33znMIiL0ss; Tue, 12 Jan 2021 12:01:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15B6286860;
-	Tue, 12 Jan 2021 09:18:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A7E1860FC;
+	Tue, 12 Jan 2021 12:01:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4151B1BF276
- for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 09:18:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8EC251BF588
+ for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 12:01:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 395DE870F6
- for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 09:18:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8A99B86055
+ for <devel@linuxdriverproject.org>; Tue, 12 Jan 2021 12:01:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RbDZ6-Ilq6Ro for <devel@linuxdriverproject.org>;
- Tue, 12 Jan 2021 09:18:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [85.220.165.71])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EBFD4870C9
- for <devel@driverdev.osuosl.org>; Tue, 12 Jan 2021 09:18:48 +0000 (UTC)
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1kzFp7-0000pF-8e; Tue, 12 Jan 2021 10:18:45 +0100
-Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1kzFp4-0006Im-L6; Tue, 12 Jan 2021 10:18:42 +0100
-Date: Tue, 12 Jan 2021 10:18:42 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v6 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
-Message-ID: <20210112091842.3th64ardbqjafvuq@pengutronix.de>
-References: <20201211164801.7838-1-nsaenzjulienne@suse.de>
- <20201211164801.7838-12-nsaenzjulienne@suse.de>
+ with ESMTP id u_Oqzn16VMBZ for <devel@linuxdriverproject.org>;
+ Tue, 12 Jan 2021 12:01:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2114.outbound.protection.outlook.com [40.107.243.114])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 822118604A
+ for <devel@driverdev.osuosl.org>; Tue, 12 Jan 2021 12:01:11 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UMtrmMGobkSxHP1MnEw6gXesbjbwxv6CGYLsYBqqGehPD/ugWKCQxeM7OSPyKsiyKSpwbUo2P7u1I9UrWVn6EoWN8cXRH7RRL+/TIz1FeVWTVF54HYDqUyBoz6XLqADI1DqD1+f4BAHhsmB3FNmTqtJUsU8je30O2n3COUs28Cgz5ETFlhP5vWwX+9yVeJ37MV7igOA61i06wZAPupzecswN5hL92qJzxIk4k/e/FeastbM52yMaOoggoy33cK3xwP3gy//0PlmwmpLvb08LUHKLLHhc+Nbzpv03nxEcS7LZt7IGN7lOGczvP1b12exNtZ7G8PS8yRaNSjOp7oTg5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8GgPiNXiVuBpzGbi7AtrQy9O8vS5DAE5SaScCeXPoMw=;
+ b=FNDsHtfOluydXRGeMJzPQN0b7JY6RG0t+Wxzz+n+pY/hknVSSlnwgMAUYhz6yE6ZurAQqdsFACEh3xoxOR8MwUWAr+SeC2wEQi+ygdEk7FL5G9X4LmOmUpRTMauK8VUTCPZoyqJeHwimD/DdnoqOWLFsQw+1baY4nwbtj9tlelv5bCOLeKpQWkmXRPzeTyXtwZCBrvTFJFB8YTDIC09qthBTYwhogNDEJGnYYiYtOelcddXHEv482O24MFFoHdpa9aEDgtnpdZFNG26Xl9ppXi/vyk3BllT5KVYqzw/o08CoefV700hC0jZgtvx1cObBEE+LudOtXQ6+e+Eu8p7OWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8GgPiNXiVuBpzGbi7AtrQy9O8vS5DAE5SaScCeXPoMw=;
+ b=sOfVUhlOKyhQD6g1Ovq4vEFs9qGNTGSEr+KKQudgqxsOkBGOUjHO7H8dz/NKk/fAoQoHsgrxLUH/sxLZ+nnRROGV39VlbJScpCtz6TYu1KgzDMTCmq3QXQh8C9eitGQKh5XBGsJQiR1flmu2tUC3mb5419r0lfASzRZR8Hyz4q8=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BY5PR04MB6913.namprd04.prod.outlook.com (2603:10b6:a03:22e::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3742.9; Tue, 12 Jan
+ 2021 08:28:49 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::b59c:9ae:6e98:5e1e]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::b59c:9ae:6e98:5e1e%8]) with mapi id 15.20.3742.012; Tue, 12 Jan 2021
+ 08:28:49 +0000
+Date: Tue, 12 Jan 2021 16:28:43 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v2 2/2] drm/bridge: anx7625: add MIPI DPI input feature
+ support
+Message-ID: <20210112082843.GB5827@pc-user>
+References: <cover.1609380663.git.xji@analogixsemi.com>
+ <f7fce2657d3c98a4d705f88eb9684f97b646793e.1609380663.git.xji@analogixsemi.com>
+ <20210105141701.GG2809@kadam>
+Content-Disposition: inline
+In-Reply-To: <20210105141701.GG2809@kadam>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [61.148.116.10]
+X-ClientProxiedBy: HK2PR02CA0142.apcprd02.prod.outlook.com
+ (2603:1096:202:16::26) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-In-Reply-To: <20201211164801.7838-12-nsaenzjulienne@suse.de>
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: devel@driverdev.osuosl.org
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-user (61.148.116.10) by
+ HK2PR02CA0142.apcprd02.prod.outlook.com (2603:1096:202:16::26) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3742.6 via Frontend Transport; Tue, 12 Jan 2021 08:28:48 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f8f6d433-1bfb-4b79-8345-08d8b6d4166f
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6913:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BY5PR04MB691386013D71BD93ED60B8C1C7AA0@BY5PR04MB6913.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:5516;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Rr9CU9Si9miXZjOdbDdeXqz5fMS7S6o52qCnaAEz9nYXStXTaWEzgvmhZbAnLHkDEYReKPopNe53Z76w5X05gJPpmP6iFk/PpHKDwMCEnNPUaCgO4y2V6uzUDrHr0DMCvrldpgGLpAw0xPBJiN0qjMKNwyWEpHHyHm3I5zy8ITGrBQBNr8axO/Gu6HNU+IqPcxOm4egoUKjfYsmCJrMna1xQihhlFhyr0lTr2tLQV5e5+p+FXK3ReCX/XomfeHCY/CeHJIfijLhJ4pMUrX3x/RFcKYwwuq+1K9G9FoJVhWKt9nA3NqIajUs4lD/8sCmXVY1kkvjYM2yi1LezuXPc/Mz2SYVVwSjtM5VMj8uxZI0Sf5ve+ALLZSTC69UwiBSt/SpIdyMGhNJ4zzvIneSNEA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(346002)(376002)(39840400004)(136003)(396003)(366004)(66946007)(4744005)(66556008)(54906003)(66476007)(9686003)(316002)(186003)(33716001)(6666004)(86362001)(26005)(55016002)(52116002)(7416002)(6496006)(6916009)(4326008)(5660300002)(1076003)(8936002)(956004)(2906002)(16526019)(8676002)(33656002)(478600001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?YuHBD+wwH9/9pZLDgU1nibExIcA5OtI8ZK54Fo7+LF36QHfJsOJGoc2N/Ptt?=
+ =?us-ascii?Q?Q3yopSagLbBkkS3TVdZ2dZaGgPO9mSaV+/Sk+zjx3oGxCDtsdf54fe7ECbND?=
+ =?us-ascii?Q?ofdWD1vkRNb9zUyr9OX6tS0uUuiNGSMTbZwIU9CAjijfdcZKfnpHwp/PPl73?=
+ =?us-ascii?Q?77U6LMURmad6o5LnsOQTjdv55H7dULaySXl+iYu+HWhpBgoM+Cc5s7ruMgfX?=
+ =?us-ascii?Q?6cCmDywLulDA7mwlF445YfPjchDJ7VKE5fDozsdBDVG9YTKWqHQKacksKqWs?=
+ =?us-ascii?Q?8SFuMlsxtL09PktjTUfHPKaE7xfv8BXZmmPLRj43AiIqzAdaVIaMdl5t1Ptg?=
+ =?us-ascii?Q?ATA2P27GqYm0UD/Zw6jINx/DZ6DblMrnlJ/AUTg5yjhtg3qqA53/RxxpgUOI?=
+ =?us-ascii?Q?mDLXjftpXGFfI21SQARNAZoa+ry295tmSKORJ8jligfB3eQPGwQOBnI7IagX?=
+ =?us-ascii?Q?hCi4jnJPg3c79XP8TdVUW68iW95Kk33QpOU/Oj24vFosKYP5sRNFMoab+sFr?=
+ =?us-ascii?Q?fjCXDby94d93EnANxNh+cFy0gDuby9/XKTk896FZrD2D/9WMkbrLpA0rrcVa?=
+ =?us-ascii?Q?72yxef1ZTGdNzn4ZahnHkxp7Y7rrGqrGa/OtcXthSIsphfIai03Sf9JgRSOs?=
+ =?us-ascii?Q?mNZOhidFoIOdsOLCIquI3VfNF/0AsYoFpS0q4I+xuHVD33wZJddUl1Q4a0iQ?=
+ =?us-ascii?Q?ke2CLHAsVGjj2oFFliasZ2Hz7ts+4oX3hjlhHJixYR9MKp8XLukCI1bZSTOQ?=
+ =?us-ascii?Q?3BVx9wXb9OHRAOS7aljp/Yy9U0FgtdzJs7jPq0sP2rOpq7RBYhPyjklVQB/1?=
+ =?us-ascii?Q?KnKNZduJcs+Ir0jy5chmJabev3CLVJHUVZm5NpgOUiEdpM8PH8xLinRu6+kA?=
+ =?us-ascii?Q?vYD1zWEX91+GC9N7cDrDz05I29B3kMrr6dclyJ0y0nW6TnPfMhOFbC+uIrg4?=
+ =?us-ascii?Q?QVwg3mKY8uGY9nE1CunObW9uhS0mY2T6v2fsWFLIRYzHH4ywYZOgB8sxwS30?=
+ =?us-ascii?Q?BhO+?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2021 08:28:49.7628 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-Network-Message-Id: f8f6d433-1bfb-4b79-8345-08d8b6d4166f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: m7zfdtef52SHD3GRKj1kIgC4mUw/DwGvqaMKb6kuUV97GQX5ky7ro5NDbEpjP/lR/dsg+boI94bXsALS2UAgUQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6913
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,296 +134,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- andy.shevchenko@gmail.com, Thierry Reding <thierry.reding@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- p.zabel@pengutronix.de, linux-input@vger.kernel.org, bgolaszewski@baylibre.com,
- Lee Jones <lee.jones@linaro.org>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============6425277951782323309=="
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Sheng Pan <span@analogixsemi.com>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Vasily Khoruzhick <anarsoul@gmail.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============6425277951782323309==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="r23z722cpflr6wgz"
-Content-Disposition: inline
-
-
---r23z722cpflr6wgz
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hello Nicolas,
-
-On Fri, Dec 11, 2020 at 05:48:00PM +0100, Nicolas Saenz Julienne wrote:
-> diff --git a/drivers/pwm/pwm-raspberrypi-poe.c b/drivers/pwm/pwm-raspberr=
-ypi-poe.c
-> new file mode 100644
-> index 000000000000..24b498839fcc
-> --- /dev/null
-> +++ b/drivers/pwm/pwm-raspberrypi-poe.c
-> @@ -0,0 +1,216 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright 2020 Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-> + * For more information on Raspberry Pi's PoE hat see:
-> + * https://www.raspberrypi.org/products/poe-hat/
-> + *
-> + * Limitations:
-> + *  - No disable bit, so a disabled PWM is simulated by duty_cycle 0
-> + *  - Only normal polarity
-> + *  - Fixed 12.5 kHz period
-> + *
-> + * The current period is completed when HW is reconfigured.
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pwm.h>
-> +
-> +#include <soc/bcm2835/raspberrypi-firmware.h>
-> +#include <dt-bindings/pwm/raspberrypi,firmware-poe-pwm.h>
-> +
-> +#define RPI_PWM_MAX_DUTY		255
-> +#define RPI_PWM_PERIOD_NS		80000 /* 12.5 kHz */
-> +
-> +#define RPI_PWM_CUR_DUTY_REG		0x0
-> +#define RPI_PWM_DEF_DUTY_REG		0x1
-> +
-> +struct raspberrypi_pwm {
-> +	struct rpi_firmware *firmware;
-> +	struct pwm_chip chip;
-> +	unsigned int duty_cycle;
-> +};
-> +
-> +struct raspberrypi_pwm_prop {
-> +	__le32 reg;
-> +	__le32 val;
-> +	__le32 ret;
-> +} __packed;
-> +
-> +static inline struct raspberrypi_pwm *to_raspberrypi_pwm(struct pwm_chip=
- *chip)
-
-I'd like to see this function use the same prefix as the other
-functions. I suggest "raspberrypi_pwm_from_chip".
-
-> +{
-> +	return container_of(chip, struct raspberrypi_pwm, chip);
-> +}
-> +
-> +static int raspberrypi_pwm_set_property(struct rpi_firmware *firmware,
-> +					u32 reg, u32 val)
-> +{
-> +	struct raspberrypi_pwm_prop msg =3D {
-> +		.reg =3D cpu_to_le32(reg),
-> +		.val =3D cpu_to_le32(val),
-> +	};
-> +	int ret;
-> +
-> +	ret =3D rpi_firmware_property(firmware, RPI_FIRMWARE_SET_POE_HAT_VAL,
-> +				    &msg, sizeof(msg));
-> +	if (ret)
-> +		return ret;
-> +	if (msg.ret)
-> +		return -EIO;
-> +
-> +	return 0;
-> +}
-> +
-> +static int raspberrypi_pwm_get_property(struct rpi_firmware *firmware,
-> +					u32 reg, u32 *val)
-> +{
-> +	struct raspberrypi_pwm_prop msg =3D {
-> +		.reg =3D reg
-> +	};
-> +	int ret;
-> +
-> +	ret =3D rpi_firmware_property(firmware, RPI_FIRMWARE_GET_POE_HAT_VAL,
-> +				    &msg, sizeof(msg));
-> +	if (ret)
-> +		return ret;
-> +	if (msg.ret)
-> +		return -EIO;
-> +
-> +	*val =3D le32_to_cpu(msg.val);
-> +
-> +	return 0;
-> +}
-> +
-> +static void raspberrypi_pwm_get_state(struct pwm_chip *chip,
-> +				      struct pwm_device *pwm,
-> +				      struct pwm_state *state)
-> +{
-> +	struct raspberrypi_pwm *rpipwm =3D to_raspberrypi_pwm(chip);
-> +
-> +	state->period =3D RPI_PWM_PERIOD_NS;
-> +	state->duty_cycle =3D DIV_ROUND_CLOSEST(rpipwm->duty_cycle * RPI_PWM_PE=
-RIOD_NS,
-> +					      RPI_PWM_MAX_DUTY);
-
-Please round up here ...
-
-> +	state->enabled =3D !!(rpipwm->duty_cycle);
-> +	state->polarity =3D PWM_POLARITY_NORMAL;
-> +}
-> +
-> +static int raspberrypi_pwm_apply(struct pwm_chip *chip, struct pwm_devic=
-e *pwm,
-> +			         const struct pwm_state *state)
-> +{
-> +	struct raspberrypi_pwm *rpipwm =3D to_raspberrypi_pwm(chip);
-> +	unsigned int duty_cycle;
-> +	int ret;
-> +
-> +        if (state->period < RPI_PWM_PERIOD_NS ||
-> +            state->polarity !=3D PWM_POLARITY_NORMAL)
-> +                return -EINVAL;
-> +
-> +        if (!state->enabled)
-> +                duty_cycle =3D 0;
-> +        else if (state->duty_cycle < RPI_PWM_PERIOD_NS)
-> +                duty_cycle =3D DIV_ROUND_CLOSEST_ULL(state->duty_cycle *=
- RPI_PWM_MAX_DUTY,
-> +					           RPI_PWM_PERIOD_NS);
-
-=2E.. and round down here.
-
-Just to be sure: writing RPI_PWM_MAX_DUTY (i.e. 255) yields 100% duty
-cycle, right?
-
-> +        else
-> +                duty_cycle =3D RPI_PWM_MAX_DUTY;
-> +
-> +	if (duty_cycle =3D=3D rpipwm->duty_cycle)
-> +		return 0;
-> +
-> +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_CUR_DUTY=
-_REG,
-> +					   duty_cycle);
-> +	if (ret) {
-> +		dev_err(chip->dev, "Failed to set duty cycle: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	/*
-> +	 * This sets the default duty cycle after resetting the board, we
-> +	 * updated it every time to mimic Raspberry Pi's downstream's driver
-> +	 * behaviour.
-> +	 */
-> +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_DEF_DUTY=
-_REG,
-> +					   duty_cycle);
-> +	if (ret) {
-> +		dev_err(chip->dev, "Failed to set default duty cycle: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +        rpipwm->duty_cycle =3D duty_cycle;
-
-Please use tabs for indention. (The general hint is to use checkpatch
-which (I hope) tells you about problems like this.)
-
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct pwm_ops raspberrypi_pwm_ops =3D {
-> +	.get_state =3D raspberrypi_pwm_get_state,
-> +	.apply =3D raspberrypi_pwm_apply,
-> +	.owner =3D THIS_MODULE,
-> +};
-> +
-> +static int raspberrypi_pwm_probe(struct platform_device *pdev)
-> +{
-> +	struct device_node *firmware_node;
-> +	struct device *dev =3D &pdev->dev;
-> +	struct rpi_firmware *firmware;
-> +	struct raspberrypi_pwm *rpipwm;
-> +	int ret;
-> +
-> +	firmware_node =3D of_get_parent(dev->of_node);
-> +	if (!firmware_node) {
-> +		dev_err(dev, "Missing firmware node\n");
-> +		return -ENOENT;
-> +	}
-> +
-> +	firmware =3D devm_rpi_firmware_get(&pdev->dev, firmware_node);
-> +	of_node_put(firmware_node);
-> +	if (!firmware)
-> +		return -EPROBE_DEFER;
-
-Please use dev_err_probe to benefit from recording an error message in
-this case.
-
-> +	rpipwm =3D devm_kzalloc(&pdev->dev, sizeof(*rpipwm), GFP_KERNEL);
-> +	if (!rpipwm)
-> +		return -ENOMEM;
-> +
-> +	rpipwm->firmware =3D firmware;
-> +	rpipwm->chip.dev =3D dev;
-> +	rpipwm->chip.ops =3D &raspberrypi_pwm_ops;
-> +	rpipwm->chip.base =3D -1;
-> +	rpipwm->chip.npwm =3D RASPBERRYPI_FIRMWARE_PWM_NUM;
-> +
-> +	platform_set_drvdata(pdev, rpipwm);
-> +
-> +	ret =3D raspberrypi_pwm_get_property(rpipwm->firmware, RPI_PWM_CUR_DUTY=
-_REG,
-> +					   &rpipwm->duty_cycle);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to get duty cycle: %d\n", ret);
-
-Please use %pe for the error codes (directly or still better by using
-dev_err_probe here, too).
-
-> +		return ret;
-> +	}
-> +
-> +	return pwmchip_add(&rpipwm->chip);
-> +}
-> [...]
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---r23z722cpflr6wgz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAl/9aW8ACgkQwfwUeK3K
-7AkKmAf/X43HuzDS2E9bHa7KzzW9+7rOPBmL3wmZt/Ab01mgp1yRp2gC+qtv7BPT
-0n138wPi5O+rOAxm/iC9Uc4Y1s0bpvndj05noMRAK2X+XLXxwWhLARqf63uCvxIr
-sa6Dl6PDQsOj9ucrNUJPWFNYkjm4YGLmKJQrqjr8lEyydl7j8S4e2IGryiMs+sSV
-nL9CkhaIA0cFiritdv3THxRfhxnzMLkcG2E3ePHA2eq91FuV1DHqfZpgYwSd0eDf
-w1egR/8M6Lup6AxF7B5IzSzaBf+XFZi5k5Wj0LuRXNSpUBcL7nv81l0e+A8+fCF5
-ZmpW6QOoovobVNxANzKLcZ4hfKwybw==
-=J/5G
------END PGP SIGNATURE-----
-
---r23z722cpflr6wgz--
-
---===============6425277951782323309==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+On Tue, Jan 05, 2021 at 05:17:01PM +0300, Dan Carpenter wrote:
+> On Thu, Dec 31, 2020 at 10:22:36AM +0800, Xin Ji wrote:
+> >  static int anx7625_read_ctrl_status_p0(struct anx7625_data *ctx)
+> >  {
+> >  	return anx7625_reg_read(ctx, ctx->i2c.rx_p0_client, AP_AUX_CTRL_STATUS);
+> > @@ -189,10 +203,64 @@ static int wait_aux_op_finish(struct anx7625_data *ctx)
+> >  			       AP_AUX_CTRL_STATUS);
+> >  	if (val < 0 || (val & 0x0F)) {
+> >  		DRM_DEV_ERROR(dev, "aux status %02x\n", val);
+> > -		val = -EIO;
+> > +		return -EIO;
+> >  	}
+> >  
+> > -	return val;
+> > +	return 0;
+> 
+> This s/val/0/ change seems like a bug fix.  Could you please send that
+> as a separate patch at the start of the patch set?
+Hi Dan Carpenter, OK, I'll send this as a separate patch.
+Thanks,
+Xin
+> 
+> > +}
+> 
+> regards,
+> dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6425277951782323309==--
