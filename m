@@ -1,51 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DD5D2F69D5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Jan 2021 19:44:56 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A177C2F6EA1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Jan 2021 23:54:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7490C87416;
-	Thu, 14 Jan 2021 18:44:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0EA4A86A90;
+	Thu, 14 Jan 2021 22:54:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g5pbCfS9xDcv; Thu, 14 Jan 2021 18:44:54 +0000 (UTC)
+	with ESMTP id lbcs-RFLs3c8; Thu, 14 Jan 2021 22:54:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 81DC787400;
-	Thu, 14 Jan 2021 18:44:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 868D38647F;
+	Thu, 14 Jan 2021 22:54:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2EDE11BF3A4
- for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 18:44:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 08E2B1BF393
+ for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 22:54:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2927686C1A
- for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 18:44:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 03168863F2
+ for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 22:54:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MaLfqW8qNjlV for <devel@linuxdriverproject.org>;
- Thu, 14 Jan 2021 18:44:50 +0000 (UTC)
+ with ESMTP id rr0qH9ILZyDu for <devel@linuxdriverproject.org>;
+ Thu, 14 Jan 2021 22:54:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 66A8786C08
- for <devel@driverdev.osuosl.org>; Thu, 14 Jan 2021 18:44:50 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 248D5B77E;
- Thu, 14 Jan 2021 18:44:48 +0000 (UTC)
-Message-ID: <99a7d6e80646ff7ac6c1fc615146fc4ad1428552.camel@suse.de>
-Subject: Re: [PATCH v6 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Date: Thu, 14 Jan 2021 19:44:46 +0100
-In-Reply-To: <20210112091842.3th64ardbqjafvuq@pengutronix.de>
-References: <20201211164801.7838-1-nsaenzjulienne@suse.de>
- <20201211164801.7838-12-nsaenzjulienne@suse.de>
- <20210112091842.3th64ardbqjafvuq@pengutronix.de>
-User-Agent: Evolution 3.38.2 
-MIME-Version: 1.0
+Received: from mail-oi1-f181.google.com (mail-oi1-f181.google.com
+ [209.85.167.181])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DF9EC8638F
+ for <devel@driverdev.osuosl.org>; Thu, 14 Jan 2021 22:54:11 +0000 (UTC)
+Received: by mail-oi1-f181.google.com with SMTP id l207so7697023oib.4
+ for <devel@driverdev.osuosl.org>; Thu, 14 Jan 2021 14:54:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=qWYHygthLZ8mTq8gd7jEV6pMc0SdpN8hLLa0SmpOOjo=;
+ b=BhTYANMTlW9bZ5QSPYpoE+HI/oy803gzNVTNRz7OCIK4QtobKDqXiWbj6vr4uywwzI
+ C7Rjg+3CQFvmz/CZR2P02sP0AzHWQUQOs9DHxpYpROpYycL1kx2m9tszYJR/OWKs3m9i
+ gstn6M2nN5Grauu/5Ra6R8cqK1mxWIQre86UIq27lfD257eYNulQT+d0F2oqmxyGQrno
+ BwEGbSI7tPbO0cfSJ4lw9UGtcNmgEcRMPEbzfBBfH5QU5gthKVT5m74I1IEs+Qc/Gt3E
+ N7RcKN1mQIN44xxdKvwJutpXCnDz0PH/SN3XPwIkEnxtoNoVZBvMWV+n9kNI7Qg3RKaK
+ 8Qrw==
+X-Gm-Message-State: AOAM531+XzLzK/GJbc84eiQQSbX3t708+g0jLQjR/qrqDY/oG4ilyL9O
+ vjQC0KI+hszSUTWwP4ddRQ==
+X-Google-Smtp-Source: ABdhPJzyV0763obF7cbS9CXWkgMfwQPg33Rx08ZaO2ZOKRwYv+4ZxDG0NYjU132wwc6AGyIgeSrnpg==
+X-Received: by 2002:a05:6808:8f0:: with SMTP id
+ d16mr3941097oic.47.1610664851178; 
+ Thu, 14 Jan 2021 14:54:11 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id h11sm1403197ooj.36.2021.01.14.14.54.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Jan 2021 14:54:10 -0800 (PST)
+Received: (nullmailer pid 3797266 invoked by uid 1000);
+ Thu, 14 Jan 2021 22:54:06 -0000
+From: Rob Herring <robh@kernel.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+In-Reply-To: <78e54d594b9e31d603d913048a7bc89d3a089608.1610645385.git.mchehab+huawei@kernel.org>
+References: <cover.1610645385.git.mchehab+huawei@kernel.org>
+ <78e54d594b9e31d603d913048a7bc89d3a089608.1610645385.git.mchehab+huawei@kernel.org>
+Subject: Re: [PATCH v2 4/4] phy: phy-hi3670-usb3: move driver from staging
+ into phy
+Date: Thu, 14 Jan 2021 16:54:06 -0600
+Message-Id: <1610664846.682257.3797263.nullmailer@robh.at.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,117 +79,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- andy.shevchenko@gmail.com, Thierry Reding <thierry.reding@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net,
- p.zabel@pengutronix.de, linux-input@vger.kernel.org, bgolaszewski@baylibre.com,
- Lee Jones <lee.jones@linaro.org>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============3844660269415697339=="
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Yu Chen <chenyu56@huawei.com>,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Alex Dewar <alex.dewar90@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Thu, 14 Jan 2021 18:35:44 +0100, Mauro Carvalho Chehab wrote:
+> The phy USB3 driver for Hisilicon 970 (hi3670) is ready
+> for mainstream. Mode it from staging into the main driver's
+> phy/ directory.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  .../bindings/phy/phy-hi3670-usb3.yaml         |  72 ++
+>  MAINTAINERS                                   |   9 +-
+>  drivers/phy/hisilicon/Kconfig                 |  10 +
+>  drivers/phy/hisilicon/Makefile                |   1 +
+>  drivers/phy/hisilicon/phy-hi3670-usb3.c       | 668 ++++++++++++++++++
+>  drivers/staging/hikey9xx/Kconfig              |  11 -
+>  drivers/staging/hikey9xx/Makefile             |   2 -
+>  drivers/staging/hikey9xx/phy-hi3670-usb3.c    | 668 ------------------
+>  drivers/staging/hikey9xx/phy-hi3670-usb3.yaml |  72 --
+>  9 files changed, 759 insertions(+), 754 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
+>  create mode 100644 drivers/phy/hisilicon/phy-hi3670-usb3.c
+>  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.c
+>  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+> 
 
---===============3844660269415697339==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-Gc66jpwjN4JFK05BfjVR"
+My bot found errors running 'make dt_binding_check' on your patch:
 
+yamllint warnings/errors:
 
---=-Gc66jpwjN4JFK05BfjVR
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+dtschema/dtc warnings/errors:
+./Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml: $id: relative path/filename doesn't match actual path or filename
+	expected: http://devicetree.org/schemas/phy/phy-hi3670-usb3.yaml#
 
-Hi Uwe, thanks for the review.
+See https://patchwork.ozlabs.org/patch/1426545
 
-On Tue, 2021-01-12 at 10:18 +0100, Uwe Kleine-K=C3=B6nig wrote:
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-[...]
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-> > +                duty_cycle =3D DIV_ROUND_CLOSEST_ULL(state->duty_cycle=
- * RPI_PWM_MAX_DUTY,
-> > +					           RPI_PWM_PERIOD_NS);
->=20
-> ... and round down here.
->=20
-> Just to be sure: writing RPI_PWM_MAX_DUTY (i.e. 255) yields 100% duty
-> cycle, right?
+pip3 install dtschema --upgrade
 
-Yes, at 255 the signal is flat.
-
-> > +        else
-> > +                duty_cycle =3D RPI_PWM_MAX_DUTY;
-> > +
-> > +	if (duty_cycle =3D=3D rpipwm->duty_cycle)
-> > +		return 0;
-> > +
-> > +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_CUR_DU=
-TY_REG,
-> > +					   duty_cycle);
-> > +	if (ret) {
-> > +		dev_err(chip->dev, "Failed to set duty cycle: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	/*
-> > +	 * This sets the default duty cycle after resetting the board, we
-> > +	 * updated it every time to mimic Raspberry Pi's downstream's driver
-> > +	 * behaviour.
-> > +	 */
-> > +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_DEF_DU=
-TY_REG,
-> > +					   duty_cycle);
-> > +	if (ret) {
-> > +		dev_err(chip->dev, "Failed to set default duty cycle: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +        rpipwm->duty_cycle =3D duty_cycle;
->=20
-> Please use tabs for indention. (The general hint is to use checkpatch
-> which (I hope) tells you about problems like this.)
-
-Sorry for that.
-
-I took note of the rest of comments and will update the code.
-
-Regards,
-Nicolas
-
-
-
---=-Gc66jpwjN4JFK05BfjVR
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAmAAkR4ACgkQlfZmHno8
-x/7WpAf+OcmBebYI8HGJFfpFhX3gBSdN6587Todi3RNaMrm6loRFFbe3HDS3rO0u
-pv9Zl7lrjVKV1+Fug2/3rTL4Kh0/w98EZJ5mpf6n5k0EG+EoMqGqfqElaLL0mvW9
-7NpiNF15W4/v/U22BH3jtFUkt0PpjN1J2WPclOl+ZPEe31vjdiEauq7zAhRT9Gpr
-XHH9ZbY9f4oXR2s91ZaYGdni3ikxxB4cG/aS50GAM019KW/RIkEibfYpDjrCNOml
-M4Z4Y15Mqi8aouumlLNKiuxNmNhtyCilx3jHPeNm+2b5GeBp/S9jtAVkVaUaYQ9I
-N8qh4QzVUk4qMeucxLeRRemzuIWCOw==
-=pJN/
------END PGP SIGNATURE-----
-
---=-Gc66jpwjN4JFK05BfjVR--
-
-
---===============3844660269415697339==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Please check and re-submit.
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3844660269415697339==--
-
