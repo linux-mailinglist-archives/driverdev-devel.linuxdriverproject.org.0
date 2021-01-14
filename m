@@ -1,77 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F1EFF2F51C3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 Jan 2021 19:15:34 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A1EF82F58E6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Jan 2021 04:28:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 498B98737B;
-	Wed, 13 Jan 2021 18:15:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D1AF786B92;
+	Thu, 14 Jan 2021 03:28:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JJZ+ufVMJzDg; Wed, 13 Jan 2021 18:15:33 +0000 (UTC)
+	with ESMTP id NsZ4zT5R8NC2; Thu, 14 Jan 2021 03:28:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C83F987361;
-	Wed, 13 Jan 2021 18:15:32 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id A04BA86B22;
+	Thu, 14 Jan 2021 03:28:38 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1E8A71BF33C
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jan 2021 18:15:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B1721BF38D
+ for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 03:28:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 16674204FB
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jan 2021 18:15:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1B037204FE
+ for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 03:28:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sMmN3a0WCXAV
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jan 2021 18:15:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
- [209.85.222.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 856692042B
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jan 2021 18:15:30 +0000 (UTC)
-Received: by mail-qk1-f194.google.com with SMTP id 143so3079486qke.10
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jan 2021 10:15:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=zkv0Q58PPvkSvJu6d30h6KYA2gvkC/VcWaVEKk6ruOk=;
- b=RhcPybeYJPS0bluJdpWE0YoZy5adLbukjZz1h5uja73ye1KrqGg4Z+xp29UW453cD6
- Ut1L2lD54oVo2dLIjD3nbW6nmkr+q44qR4y2v7YEGdcr+c/2l8RA/duY6idIOb4XJLHD
- pVOZzFDhlLPDK3VkPvm46eAJlMO0OM5u6F6dM4ZWpe0m6+c3HhggKkEct55fngmR9EOz
- yNpj191qT0XhpkWGyucZGG7aoHAPgFiNZ8K0DhOJscGePlk2s4ROAr9pk85DYMzUTW29
- Q/eHvZBD06SmP9C7/lwJyFAjtiQe+o4kY+jztpvNAYmaAEBZOfwhRpTIvYHWJJYMxl1L
- BFAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=zkv0Q58PPvkSvJu6d30h6KYA2gvkC/VcWaVEKk6ruOk=;
- b=PoHtp/qwYXoXQsm5dw2pUzoIjXfKMwvkSkf0KePHrK2qfNVKUENZqi3/7XMBuE4Iu7
- qbyIi0x1eooEmCrTePmuie3YPQNdDoZjRelGpE8fJHaJDxxRNmySnDx1L1j3AGAtNNGn
- BhKaxJY9MeYZHaF04Sa8OHBTnE2z28m15TBv00JS5IcIorcQ492fWkEnukv+Auqp19DA
- 4TEHHFHDBCfAkTiFQ9u3Pt9wXNEOcnuG7dxNI8GOFYI6VDpl4mNHCi3HEkWk7MCGmG1a
- MgsP/4/Npd6V8tLF/8BR2cz6dGgEQAs2ytVrUEovo/rZF5rKrfhGgygh6eCFiw5bNC8r
- Xyeg==
-X-Gm-Message-State: AOAM533MveyczreDKcYmgkBAxlVL/y86MSKiFmLqNZoL+NvimHqITblO
- XKoLDeXX7MA9ERuDTorWB1ALurSRyT1BnmAbdjk=
-X-Google-Smtp-Source: ABdhPJxc9tbIWVP5Jpyi3+QcPgfqUtlgDDyKftFgLSJAWcQAlfPvxMsaZtkYKUDv0qINeov5yZ/p2MI6kjxFisM7AaA=
-X-Received: by 2002:a25:ca97:: with SMTP id a145mr5140364ybg.221.1610561729530; 
- Wed, 13 Jan 2021 10:15:29 -0800 (PST)
+ with ESMTP id nGLSkcMasPEi for <devel@linuxdriverproject.org>;
+ Thu, 14 Jan 2021 03:28:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from aybeng.com (mail.aybeng.com [80.86.230.58])
+ by silver.osuosl.org (Postfix) with ESMTPS id 27C622048B
+ for <devel@linuxdriverproject.org>; Thu, 14 Jan 2021 03:28:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by aybeng.com (Postfix) with ESMTP id 102A7230D41F;
+ Wed, 13 Jan 2021 20:07:20 -0500 (EST)
+Received: from aybeng.com ([127.0.0.1])
+ by localhost (aybeng.com [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id WHbyd8OmhQKA; Wed, 13 Jan 2021 20:07:19 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by aybeng.com (Postfix) with ESMTP id 81F28230D407;
+ Wed, 13 Jan 2021 20:07:19 -0500 (EST)
+X-Virus-Scanned: amavisd-new at aybeng.com
+Received: from aybeng.com ([127.0.0.1])
+ by localhost (aybeng.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id ntkKyupFsU3P; Wed, 13 Jan 2021 20:07:19 -0500 (EST)
+Received: from WIN-H7L9HI5UDA4.eu-central-1.compute.internal
+ (ec2-18-193-102-162.eu-central-1.compute.amazonaws.com [18.193.102.162])
+ by aybeng.com (Postfix) with ESMTPSA id 29A9D230D424;
+ Wed, 13 Jan 2021 20:07:16 -0500 (EST)
 MIME-Version: 1.0
-Received: by 2002:a05:7110:a38c:b029:31:3fb9:baa1 with HTTP; Wed, 13 Jan 2021
- 10:15:29 -0800 (PST)
-From: Jerry Kloubarly Ngessan <dw5234296@gmail.com>
-Date: Wed, 13 Jan 2021 18:15:29 +0000
-Message-ID: <CAO=Sjhb4eBzzfUiK37JPA_csYEztU9+8vpv8ETQM06xxw-kLdg@mail.gmail.com>
-Subject: Mr.Jerry Kloubarly Ngessan
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: RE- Congratulations
+To: Recipients <claim@winer.com>
+From: claim@winer.com
+Date: Thu, 14 Jan 2021 01:07:05 +0000
+Message-Id: <20210114010717.29A9D230D424@aybeng.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,22 +67,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jerrykloubarlyngessan@gmail.com
+Reply-To: hustsolicitorr@protonmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Please
-I am Mr. Jerry Kloubarly Ngessan, I stopped at your email from our
-international business directory in my research for a reliable person
-to partner with, I have a business that will profit us both that I
-want us to discuss. You can contact me for more details for convenient
-business discussion if you are interested.
-My email is   (jerrykloubarlyngessan@gmail.com)  I will be glad to
-hear from you soon for more  details
-Thanks for your time and waiting for your response
-Mr.Jerry Kloubarly Ngessan
+Order Number: BIDEEL UK / EU / 220021ZG / 7744UQ
+Batch number: B19921KG
+
+Dear internet user,
+
+We congratulate you on your success in the following official release of the results of the electronic lottery organized by the European Lottery Foundation on 11TH January 2021 by e-mail. Your e-mail ID has won a grand total of $ 5,00,000.00 (five hundred thousand dollars) during electronic e-mail online Powerball Draws for Internet users.
+
+Contact your claims agent to receive your cash prize. Please find below the contact details of your claims agent.
+
+
+Name: Donald Hust
+E-mail: hustsolicitorr@protonmail.com
+Company: HustSolicitor
+
+
+
+Yours sincerely
+
+
+Mrs. Linda Helier (Lottery Coordinator)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
