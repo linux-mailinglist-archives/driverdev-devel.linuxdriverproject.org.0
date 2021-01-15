@@ -2,68 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 225912F7783
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Jan 2021 12:21:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FCB72F7FC7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Jan 2021 16:39:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F29CA86CFB;
-	Fri, 15 Jan 2021 11:21:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD6D281F63;
+	Fri, 15 Jan 2021 15:39:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NiBrvUEQGMzA; Fri, 15 Jan 2021 11:21:02 +0000 (UTC)
+	with ESMTP id qMjzJL2L7f+I; Fri, 15 Jan 2021 15:39:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CC58486AC8;
-	Fri, 15 Jan 2021 11:21:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 39D8086C4A;
+	Fri, 15 Jan 2021 15:39:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E4CF51BF2C6
- for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 11:20:59 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 901891BF28B
+ for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 15:39:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E062886CAC
- for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 11:20:59 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8AA90872F8
+ for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 15:39:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PKXrfwtofJ32 for <devel@linuxdriverproject.org>;
- Fri, 15 Jan 2021 11:20:58 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0178.hostedemail.com
- [216.40.44.178])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7AD3D86AC8
- for <devel@driverdev.osuosl.org>; Fri, 15 Jan 2021 11:20:58 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave02.hostedemail.com (Postfix) with ESMTP id 98C01180244E5
- for <devel@driverdev.osuosl.org>; Fri, 15 Jan 2021 11:04:02 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id F3DCF100E7B44;
- Fri, 15 Jan 2021 11:03:59 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:967:973:982:988:989:1260:1261:1263:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2393:2525:2561:2564:2682:2685:2828:2859:2902:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3352:3622:3865:3871:3872:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:5007:6119:7652:7875:7903:8599:8957:9025:9388:10004:10049:10400:10848:11232:11657:11658:11914:12043:12297:12740:12760:12895:13069:13161:13229:13311:13357:13439:14181:14659:14721:14849:21080:21451:21627:21939:30054:30080:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:3, LUA_SUMMARY:none
-X-HE-Tag: sock06_080489a2752e
-X-Filterd-Recvd-Size: 2111
-Received: from [192.168.1.159] (unknown [47.151.137.21])
- (Authenticated sender: joe@perches.com)
- by omf03.hostedemail.com (Postfix) with ESMTPA;
- Fri, 15 Jan 2021 11:03:58 +0000 (UTC)
-Message-ID: <7d5c085f456ab83700c26db467b22dc9ccf233ac.camel@perches.com>
-Subject: Re: [PATCH v3 4/4] phy: phy-hi3670-usb3: move driver from staging
- into phy
-From: Joe Perches <joe@perches.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Vinod Koul
- <vkoul@kernel.org>
-Date: Fri, 15 Jan 2021 03:03:57 -0800
+ with ESMTP id BSIclhM6RG0G for <devel@linuxdriverproject.org>;
+ Fri, 15 Jan 2021 15:39:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-oi1-f169.google.com (mail-oi1-f169.google.com
+ [209.85.167.169])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D2862872E5
+ for <devel@driverdev.osuosl.org>; Fri, 15 Jan 2021 15:39:07 +0000 (UTC)
+Received: by mail-oi1-f169.google.com with SMTP id d189so9908353oig.11
+ for <devel@driverdev.osuosl.org>; Fri, 15 Jan 2021 07:39:07 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=jHmZbmprcEbR1QsC3/QO5a2FmEK+SUt/uIaHwmVakGg=;
+ b=LDh4/X5qxBLcTHKsMD1OHUNNxLbb8LHukOqWS7b9lYDoBExpDdpxcIE3e+DcVdRin7
+ 7ViUZDvQjZuHMoVufhULcx4z2a6nhfTM/Z2a25JFqhK8df3iaZqN+O3GvB4JQtmBeucs
+ KJzTfU5eBi6nUVOppx+4MyB79YYwsiZCLxFle8Sa9cWbfsSRl9hKv2IIB9NL6fIhk+6D
+ wlABG//MbUQn+HLzy0Zsc30YcKia7gq/WeG//kFnN3mHYIBUtZLz3ll5IsYitnCj/0Ol
+ 7aH/1sJF81GozOCyU9AYSLFbxMZjqFASaleD54LoFhbOip/KKLDKWeAfMUTazM5by1ZK
+ cenQ==
+X-Gm-Message-State: AOAM531NbB9kV6tcHRehtWYgWqu6N9ix3lYrXP4ZffMJuqf3dbxQnauC
+ ztvUruIX2FaAeOq4lJMvCA==
+X-Google-Smtp-Source: ABdhPJxBM/BxN2PpIZ3KNI3NmCSctqZbH8H5vmUrdoawmsnh7sU76/EwJpngkxbcpxMYf7Ize5gBoA==
+X-Received: by 2002:a05:6808:3bc:: with SMTP id
+ n28mr6179439oie.118.1610725146938; 
+ Fri, 15 Jan 2021 07:39:06 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id j194sm1702875oih.56.2021.01.15.07.39.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Jan 2021 07:39:06 -0800 (PST)
+Received: (nullmailer pid 1311454 invoked by uid 1000);
+ Fri, 15 Jan 2021 15:39:04 -0000
+From: Rob Herring <robh@kernel.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 In-Reply-To: <78e54d594b9e31d603d913048a7bc89d3a089608.1610697726.git.mchehab+huawei@kernel.org>
 References: <cover.1610697726.git.mchehab+huawei@kernel.org>
  <78e54d594b9e31d603d913048a7bc89d3a089608.1610697726.git.mchehab+huawei@kernel.org>
-User-Agent: Evolution 3.38.1-1 
-MIME-Version: 1.0
+Subject: Re: [PATCH v3 4/4] phy: phy-hi3670-usb3: move driver from staging
+ into phy
+Date: Fri, 15 Jan 2021 09:39:04 -0600
+Message-Id: <1610725144.873753.1311453.nullmailer@robh.at.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,37 +82,57 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Yu Chen <chenyu56@huawei.com>,
  linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Rob Herring <robh+dt@kernel.org>, Alex Dewar <alex.dewar90@gmail.com>
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Alex Dewar <alex.dewar90@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 2021-01-15 at 09:10 +0100, Mauro Carvalho Chehab wrote:
+On Fri, 15 Jan 2021 09:10:03 +0100, Mauro Carvalho Chehab wrote:
 > The phy USB3 driver for Hisilicon 970 (hi3670) is ready
 > for mainstream. Mode it from staging into the main driver's
 > phy/ directory.
-[]
-> diff --git a/Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml b/Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
-[]
-> +++ b/Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
-> @@ -0,0 +1,72 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/phy/hisilicon,hi3670-usb3.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Hisilicon Kirin970 USB PHY
-> +
-> +maintainers:
-> +  - Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> +description: |+
-> +  Bindings for USB3 PHY on HiSilicon Kirin 970.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  .../bindings/phy/phy-hi3670-usb3.yaml         |  72 ++
+>  MAINTAINERS                                   |   9 +-
+>  drivers/phy/hisilicon/Kconfig                 |  10 +
+>  drivers/phy/hisilicon/Makefile                |   1 +
+>  drivers/phy/hisilicon/phy-hi3670-usb3.c       | 668 ++++++++++++++++++
+>  drivers/staging/hikey9xx/Kconfig              |  11 -
+>  drivers/staging/hikey9xx/Makefile             |   2 -
+>  drivers/staging/hikey9xx/phy-hi3670-usb3.c    | 668 ------------------
+>  drivers/staging/hikey9xx/phy-hi3670-usb3.yaml |  72 --
+>  9 files changed, 759 insertions(+), 754 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
+>  create mode 100644 drivers/phy/hisilicon/phy-hi3670-usb3.c
+>  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.c
+>  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+> 
 
-The cover letter for v3 says there's a blank link after maintainers:
-here but not found...
+My bot found errors running 'make dt_binding_check' on your patch:
 
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+./Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml: $id: relative path/filename doesn't match actual path or filename
+	expected: http://devicetree.org/schemas/phy/phy-hi3670-usb3.yaml#
+
+See https://patchwork.ozlabs.org/patch/1426831
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 _______________________________________________
 devel mailing list
