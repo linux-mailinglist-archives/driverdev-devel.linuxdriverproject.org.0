@@ -2,56 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5F552F7400
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Jan 2021 09:10:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D85A2F7402
+	for <lists+driverdev-devel@lfdr.de>; Fri, 15 Jan 2021 09:10:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2A59087472;
-	Fri, 15 Jan 2021 08:10:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DA37A8748D;
+	Fri, 15 Jan 2021 08:10:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZsP70LPgXrnx; Fri, 15 Jan 2021 08:10:09 +0000 (UTC)
+	with ESMTP id jdQL-AAqzOpp; Fri, 15 Jan 2021 08:10:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8FAF28743A;
-	Fri, 15 Jan 2021 08:10:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5311D8747D;
+	Fri, 15 Jan 2021 08:10:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 645931BF311
- for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 08:10:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 338A71BF311
+ for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 08:10:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 60ECF85FD7
- for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 08:10:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2EB5886CBA
+ for <devel@linuxdriverproject.org>; Fri, 15 Jan 2021 08:10:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uV8exqlL96vo for <devel@linuxdriverproject.org>;
+ with ESMTP id jQpSSXh1+Osv for <devel@linuxdriverproject.org>;
  Fri, 15 Jan 2021 08:10:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D818F810B6
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E52C385727
  for <devel@driverdev.osuosl.org>; Fri, 15 Jan 2021 08:10:07 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 620E0221F7;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 67DCA22240;
  Fri, 15 Jan 2021 08:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1610698207;
- bh=73sR10wECqQUqw6UkBdoCbc/733OkO6ECg5/oQb+LQs=;
+ bh=xa37m5Q/FryyLUx/FnM3xo2yMtvSkpnfWMgpl5fR0oo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=TDeJ13UnQ2lDho86FNm1kzDSYFy/JyoRSLcyTR1ThPh4oyE5KB0MUNeYoWCdPoPxx
- qrvfRwzSKi3uXv/mzkwRhKMxULAVoxcP/bs0aXA6q8VN1wAu0tWUrLt8mHHz2kQ8ml
- KeZ4AtFrBkrvn0jV0ZSK/NMtDs/kUk7RlS4+uBhNVH2QppXgiQ0Mu3FU7GUNeDxyp+
- UGzhv5WhHPq8UmVnpAemj2PPPZLZwfQwMmARIE3mo3ebSl88gZt4BFiRytBDTwp48h
- 9r1TCACFI7s/Vqs2C/BkbCdSSWt1FF2AchEclBi439B7EXXeQlSnJstbP97dVfvXKA
- EsBkESookIyYQ==
+ b=ENL5Yll/V6vbZpJaTVYA9JC4Zdt7I2HM1M9TfWMmpm2UWAT+JCFsfw1jke1IKtAom
+ cnwhDNE9qXXscQQIAl8R3ivBOteDVxjyHY/HV8YpKLmuipzwAJIpe5WvUi00nuNJUS
+ pu9NZfFHM1bfzpDKv38jUVXh8et947jmSmCumagywtProc5S2mXapRWKQbgTR9pkYD
+ fi6gZT3C4slT4q96k4TYm92cNAYuzKVkdNQjMcLb6aRcbc0j7QS57ShlhZDR7qf2VF
+ JpWCjb+TQWQLj8Dds3bXYFu/EemULFyA+kf5tPWROQNatnWHMauRH6AJbrreMsk9Fb
+ 6yLvg1sQMeS9Q==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l0KBJ-00FiGK-00; Fri, 15 Jan 2021 09:10:05 +0100
+ id 1l0KBJ-00FiGM-0p; Fri, 15 Jan 2021 09:10:05 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH v3 2/4] staging: hikey9xx: phy-hi3670-usb3.c: adjust retry
- logic
-Date: Fri, 15 Jan 2021 09:10:01 +0100
-Message-Id: <8a5d59d49acba14d0cc9f8e720d9892a21240d22.1610697726.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 3/4] staging: hikey9xx: phy-hi3670-usb3.c:
+ hi3670_is_abbclk_seleted() returns bool
+Date: Fri, 15 Jan 2021 09:10:02 +0100
+Message-Id: <d1e0d94381e214157545d6808835fdfe99448f76.1610697726.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1610697726.git.mchehab+huawei@kernel.org>
 References: <cover.1610697726.git.mchehab+huawei@kernel.org>
@@ -77,41 +77,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Instead of running a loop up to 100k times, add a small
-delay inside it, running it up to 10 times, waiting up
-to 100-200 us.
-
-It should be noticed that I don't have the datasheet for
-this PHY. So, not sure if this time will cover all
-situations.
+Instead of using 1/0 for true/false, change the type to boolean
+and change the returned value.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/phy-hi3670-usb3.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/staging/hikey9xx/phy-hi3670-usb3.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.c b/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-index 722cabaa9bd9..cffe6c58dfd7 100644
+index cffe6c58dfd7..b5fed306fcbf 100644
 --- a/drivers/staging/hikey9xx/phy-hi3670-usb3.c
 +++ b/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-@@ -185,7 +185,7 @@ static int hi3670_phy_cr_start(struct regmap *usb31misc, int direction)
- static int hi3670_phy_cr_wait_ack(struct regmap *usb31misc)
+@@ -326,24 +326,24 @@ static int hi3670_phy_set_params(struct hi3670_priv *priv)
+ 	return ret;
+ }
+ 
+-static int hi3670_is_abbclk_seleted(struct hi3670_priv *priv)
++static bool hi3670_is_abbclk_seleted(struct hi3670_priv *priv)
  {
  	u32 reg;
--	int retry = 100000;
-+	int retry = 10;
- 	int ret;
  
- 	while (retry-- > 0) {
-@@ -198,6 +198,8 @@ static int hi3670_phy_cr_wait_ack(struct regmap *usb31misc)
- 		ret = hi3670_phy_cr_clk(usb31misc);
- 		if (ret)
- 			return ret;
-+
-+		usleep_range(10, 20);
+ 	if (!priv->sctrl) {
+ 		dev_err(priv->dev, "priv->sctrl is null!\n");
+-		return 1;
++		return true;
  	}
  
- 	return -ETIMEDOUT;
+ 	if (regmap_read(priv->sctrl, SCTRL_SCDEEPSLEEPED, &reg)) {
+ 		dev_err(priv->dev, "SCTRL_SCDEEPSLEEPED read failed!\n");
+-		return 1;
++		return true;
+ 	}
+ 
+ 	if ((reg & USB_CLK_SELECTED) == 0)
+-		return 1;
++		return true;
+ 
+-	return 0;
++	return false;
+ }
+ 
+ static int hi3670_config_phy_clock(struct hi3670_priv *priv)
 -- 
 2.29.2
 
