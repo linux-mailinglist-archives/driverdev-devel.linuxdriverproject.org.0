@@ -2,53 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71A7F2F910B
-	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Jan 2021 07:20:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3E3F2F9113
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Jan 2021 07:32:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 17628874A4;
-	Sun, 17 Jan 2021 06:20:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 65702874D7;
+	Sun, 17 Jan 2021 06:32:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sMBbwwWrMIVO; Sun, 17 Jan 2021 06:20:44 +0000 (UTC)
+	with ESMTP id Cwgwu0FO4u6r; Sun, 17 Jan 2021 06:32:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC6F087455;
-	Sun, 17 Jan 2021 06:20:42 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id BEC368748C;
+	Sun, 17 Jan 2021 06:32:09 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DDCB11BF2CD
- for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:20:39 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2623A1BF2CD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 17 Jan 2021 06:32:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CC00986081
- for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:20:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 00840229D4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 17 Jan 2021 06:32:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ePnwvQkB9V95 for <devel@linuxdriverproject.org>;
- Sun, 17 Jan 2021 06:20:39 +0000 (UTC)
+ with ESMTP id 9xBzGyHaXzdg
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 17 Jan 2021 06:32:05 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx4.look.ca (mx4.look.ca [208.65.246.140])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 91C3785F84
- for <devel@driverdev.osuosl.org>; Sun, 17 Jan 2021 06:20:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id D803E228D5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 17 Jan 2021 06:32:04 +0000 (UTC)
 Received: from mx4.look.ca (localhost [127.0.0.1])
- by mx4.look.ca (Postfix) with ESMTP id 902A3548555;
- Sun, 17 Jan 2021 01:03:36 -0500 (EST)
+ by mx4.look.ca (Postfix) with ESMTP id 0B692548934;
+ Sun, 17 Jan 2021 01:13:38 -0500 (EST)
 Received: from mx4.look.ca ([127.0.0.1])
  by mx4.look.ca (mx4.look.ca [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0pu9QXqtb3Q3; Sun, 17 Jan 2021 01:03:33 -0500 (EST)
+ with ESMTP id cT5YrNNckkgQ; Sun, 17 Jan 2021 01:13:35 -0500 (EST)
 Received: by mx4.look.ca (Postfix, from userid 33)
- id 9F41F54853D; Sun, 17 Jan 2021 01:03:31 -0500 (EST)
+ id 341C3548912; Sun, 17 Jan 2021 01:13:33 -0500 (EST)
 Received: from 196.240.126.162 (user tscanlon) by webmail.look.ca with HTTP;
- Sun, 17 Jan 2021 01:03:31 -0500 (EST)
-Message-ID: <0ecc8d6d80f174457ec3bbab9234979b@webmail.look.ca>
-Date: Sun, 17 Jan 2021 01:03:31 -0500 (EST)
+ Sun, 17 Jan 2021 01:13:33 -0500 (EST)
+Message-ID: <13a3b7b349b68a9d0d54c9744b441296@webmail.look.ca>
+Date: Sun, 17 Jan 2021 01:13:33 -0500 (EST)
 Subject: Good Day?
 From: "tscanlon" <tscanlon@look.ca>
 To: ireasi@att.net
 User-Agent: Look WebMail
 MIME-Version: 1.0
-Content-Type: multipart/mixed;boundary="----=_20210117010331_22621"
+Content-Type: multipart/mixed;boundary="----=_20210117011333_28165"
 X-Priority: 3 (Normal)
 Importance: Normal
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -67,14 +71,14 @@ Reply-To: ukoffice.agent@webmail.co.za
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-------=_20210117010331_22621
+------=_20210117011333_28165
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: 8bit
 
 
 
 Reply
-------=_20210117010331_22621
+------=_20210117011333_28165
 Content-Type:      application/vnd.openxmlformats-officedocument.wordprocessingml.documen
      t; name="Letter.docx"
 Content-Transfer-Encoding: base64
@@ -8018,7 +8022,7 @@ AAAAAAAAAAAAAJPXBgBkb2NQcm9wcy9jb3JlLnhtbFBLAQItABQABgAIAAAAIQAupc8X9wQAAOUr
 AAASAAAAAAAAAAAAAAAAACnaBgB3b3JkL251bWJlcmluZy54bWxQSwECLQAUAAYACAAAACEATTu8
 /9UBAADTAwAAEAAAAAAAAAAAAAAAAABQ3wYAZG9jUHJvcHMvYXBwLnhtbFBLBQYAAAAAEwATANAE
 AABb4gYAAAA=
-------=_20210117010331_22621
+------=_20210117011333_28165
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -8029,5 +8033,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_20210117010331_22621--
+------=_20210117011333_28165--
 
