@@ -2,41 +2,41 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 234082F910D
-	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Jan 2021 07:21:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 71A7F2F910B
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Jan 2021 07:20:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AEACD874BE;
-	Sun, 17 Jan 2021 06:21:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 17628874A4;
+	Sun, 17 Jan 2021 06:20:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZgRvX0sMm2OD; Sun, 17 Jan 2021 06:21:06 +0000 (UTC)
+	with ESMTP id sMBbwwWrMIVO; Sun, 17 Jan 2021 06:20:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CA5898747D;
-	Sun, 17 Jan 2021 06:21:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EC6F087455;
+	Sun, 17 Jan 2021 06:20:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 837E51BF2CD
- for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:21:03 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DDCB11BF2CD
+ for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:20:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7C9AD86840
- for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:21:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CC00986081
+ for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:20:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XhP6lf1x0PN5 for <devel@linuxdriverproject.org>;
- Sun, 17 Jan 2021 06:21:03 +0000 (UTC)
+ with ESMTP id ePnwvQkB9V95 for <devel@linuxdriverproject.org>;
+ Sun, 17 Jan 2021 06:20:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx4.look.ca (mx4.look.ca [208.65.246.140])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7F6D0867B5
- for <devel@linuxdriverproject.org>; Sun, 17 Jan 2021 06:21:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 91C3785F84
+ for <devel@driverdev.osuosl.org>; Sun, 17 Jan 2021 06:20:38 +0000 (UTC)
 Received: from mx4.look.ca (localhost [127.0.0.1])
- by mx4.look.ca (Postfix) with ESMTP id 0888A548561;
- Sun, 17 Jan 2021 01:03:37 -0500 (EST)
+ by mx4.look.ca (Postfix) with ESMTP id 902A3548555;
+ Sun, 17 Jan 2021 01:03:36 -0500 (EST)
 Received: from mx4.look.ca ([127.0.0.1])
  by mx4.look.ca (mx4.look.ca [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Oi2ZEFZMrDLY; Sun, 17 Jan 2021 01:03:37 -0500 (EST)
+ with ESMTP id 0pu9QXqtb3Q3; Sun, 17 Jan 2021 01:03:33 -0500 (EST)
 Received: by mx4.look.ca (Postfix, from userid 33)
  id 9F41F54853D; Sun, 17 Jan 2021 01:03:31 -0500 (EST)
 Received: from 196.240.126.162 (user tscanlon) by webmail.look.ca with HTTP;
