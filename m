@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2746B2FA17B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 14:28:31 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D07772FA178
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 14:28:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6DF8E86687;
-	Mon, 18 Jan 2021 13:28:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 134D58704B;
+	Mon, 18 Jan 2021 13:28:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zrDZp1s2LDZM; Mon, 18 Jan 2021 13:28:28 +0000 (UTC)
+	with ESMTP id 44GnlCKkaGNx; Mon, 18 Jan 2021 13:28:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3E14086489;
-	Mon, 18 Jan 2021 13:28:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 68E2B87016;
+	Mon, 18 Jan 2021 13:28:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8100B1BF3CD
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 44B451BF3CD
  for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 13:28:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7DBCE85143
+ by whitealder.osuosl.org (Postfix) with ESMTP id 40A1086443
  for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 13:28:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0pbn6RZCwZcG for <devel@linuxdriverproject.org>;
+ with ESMTP id p3nugL7tUJvc for <devel@linuxdriverproject.org>;
  Mon, 18 Jan 2021 13:28:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 70A0D85778
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5948C863EE
  for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 13:28:19 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E4E06221EB;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EAE0222B49;
  Mon, 18 Jan 2021 13:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1610976499;
- bh=nEeEvrRLh9lNcaUoTdN+s8gNyA0TJfHuL3xy6iPuWW4=;
+ bh=heSPP3aRBgBZFx/Q0SMe/3RDJAAippqxfJey05I92D4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=k1l+E44+HFP3G+3j/wusY9mlu0qe/WX5ua6UdpEHmBpRlh+fqn2b6TQ/vJeaKv6My
- 6YPKodFnkXDP4dXW75a9qdWbVHDVB5XZdPIFG6PW5lyoDeaThyFlXMHMzI74Wd+CmM
- 0AlAL+g6/tSEZGS7AWeA1anis4zd0haBUarNZIv3LyFzfGVVe0ZEJXqPNuhO6vbfGf
- oC0QQHxuo7tSEY6++H9Xvkc4wBkJufcNfxv0iA1JiUomONtoXG5mx7uGQYmt5brHFE
- tb8UCkaWhSpGJRYu608wPkBLHDjEu0XYocqrAJahUH5wy0ZDSd+NEok1NzeRKSSRQE
- m1jNTPStlk0zA==
+ b=W5we0A2yuIGJ2VW466I79lgXS2RCOscbS2ZSzRRxT9RPcnPgM1fT4mmQmMuVgcZSY
+ PEmAraUZjz6P2mqm9NW8oNELW1QXr5MP3mJJecDy41XexNF+BtCFEcLTh5+pFcyzRN
+ Zzh9G2uXrlJ8LVOOp4jwoVDYpqyhkwfhxFUExRKNsoMKhVk1SlWg1E2p7Z7pwlAVV5
+ 7pOzvv62kSv94lg3/OYkKY0N4P4uWCsZtb5FOSRChMtP2VcMajFt5KJ8HGMQz3jHG1
+ MiABKWnyi18HG5J6DoS8NF/UdfVtt7Edu6aVelrGcOsn83Jm6EyNY3btiePXGnKdz7
+ dmkRHGq9IfDTQ==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1UZs-000Vke-Br; Mon, 18 Jan 2021 14:28:16 +0100
+ id 1l1UZs-000Vkg-D4; Mon, 18 Jan 2021 14:28:16 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>
-Subject: [PATCH v2 01/13] staging: hikey9xx: hisilicon,
- hisi-spmi-controller.yaml fix bindings
-Date: Mon, 18 Jan 2021 14:28:02 +0100
-Message-Id: <226ffb8b47818fc08885f344e7213a5f71be2ada.1610975633.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v2 02/13] staging: hikey9xx: hisi-spmi-controller: clean
+ sparse warnings
+Date: Mon, 18 Jan 2021 14:28:03 +0100
+Message-Id: <0a1b05424637b47e5c93c047e436f2ab2b88c5a5.1610975633.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1610975633.git.mchehab+huawei@kernel.org>
 References: <cover.1610975633.git.mchehab+huawei@kernel.org>
@@ -68,75 +68,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
+ Colin Ian King <colin.king@canonical.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix a few warnings produced by make dt_binding_check.
+Sparse complains about __be32 conversions:
+
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:239:17:      warning: cast from restricted __be32
+
+The conversions there are valid ones. So, add __force macro
+to disable such warnings.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../hisilicon,hisi-spmi-controller.yaml       | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ drivers/staging/hikey9xx/hisi-spmi-controller.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml b/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-index f2a56fa4e78e..21f68a9c2df1 100644
---- a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-+++ b/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-@@ -26,14 +26,22 @@ properties:
-   reg:
-     maxItems: 1
+diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/staging/hikey9xx/hisi-spmi-controller.c
+index f831c43f4783..4be2344ad7b5 100644
+--- a/drivers/staging/hikey9xx/hisi-spmi-controller.c
++++ b/drivers/staging/hikey9xx/hisi-spmi-controller.c
+@@ -161,7 +161,7 @@ static int spmi_read_cmd(struct spmi_controller *ctrl,
+ 			     SPMI_SLAVE_OFFSET * slave_id +
+ 			     SPMI_APB_SPMI_RDATA0_BASE_ADDR +
+ 			     i * SPMI_PER_DATAREG_BYTE);
+-		data = be32_to_cpu((__be32)data);
++		data = be32_to_cpu((__force __be32)data);
+ 		if ((bc - i * SPMI_PER_DATAREG_BYTE) >> 2) {
+ 			memcpy(buf, &data, sizeof(data));
+ 			buf += sizeof(data);
+@@ -236,7 +236,7 @@ static int spmi_write_cmd(struct spmi_controller *ctrl,
+ 			buf += (bc % SPMI_PER_DATAREG_BYTE);
+ 		}
  
-+  "#address-cells":
-+    const: 2
-+
-+  "#size-cells":
-+    const: 0
-+
-   spmi-channel:
-     description: |
-       number of the Kirin 970 SPMI channel where the SPMI devices are connected.
- 
- required:
-- - compatible
-- - reg
-- - spmi-channel
-+  - compatible
-+  - reg
-+  - spmi-channel
-+  - "#address-cells"
-+  - "#size-cells"
- 
- patternProperties:
-   "^pmic@[0-9a-f]$":
-@@ -43,6 +51,8 @@ patternProperties:
-       are documented at
-       drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml.
- 
-+additionalProperties: false
-+
- examples:
-   - |
-     bus {
-@@ -51,11 +61,14 @@ examples:
- 
-       spmi: spmi@fff24000 {
-         compatible = "hisilicon,kirin970-spmi-controller";
-+        #address-cells = <2>;
-+        #size-cells = <0>;
-         status = "ok";
-         reg = <0x0 0xfff24000 0x0 0x1000>;
-         spmi-channel = <2>;
- 
-         pmic@0 {
-+          reg = <0 0>;
-           /* pmic properties */
-         };
-       };
+-		writel((u32)cpu_to_be32(data),
++		writel((__force u32)cpu_to_be32(data),
+ 		       spmi_controller->base + chnl_ofst +
+ 		       SPMI_APB_SPMI_WDATA0_BASE_ADDR +
+ 		       SPMI_PER_DATAREG_BYTE * i);
 -- 
 2.29.2
 
