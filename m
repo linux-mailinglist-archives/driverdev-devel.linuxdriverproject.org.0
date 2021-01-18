@@ -2,56 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80AA42FA179
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 14:28:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CEBA52FA189
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 14:28:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 097AA2046A;
-	Mon, 18 Jan 2021 13:28:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CEBE92046B;
+	Mon, 18 Jan 2021 13:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7pndxJ3Eo2uH; Mon, 18 Jan 2021 13:28:27 +0000 (UTC)
+	with ESMTP id rjJCaZTHwjjr; Mon, 18 Jan 2021 13:28:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D3D2220408;
-	Mon, 18 Jan 2021 13:28:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8BF3B2049E;
+	Mon, 18 Jan 2021 13:28:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E97591BF962
- for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 13:28:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 078D01BF3CD
+ for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 13:28:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E184A8526D
- for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 13:28:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0438886443
+ for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 13:28:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yxL5SQVRW0iM for <devel@linuxdriverproject.org>;
+ with ESMTP id DuV3lmmdM2KG for <devel@linuxdriverproject.org>;
  Mon, 18 Jan 2021 13:28:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 55D3B85143
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 749A686418
  for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 13:28:19 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id DF17B21D93;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id F0E9922BEA;
  Mon, 18 Jan 2021 13:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1610976499;
- bh=kgnPnbYajDLZ7OMrS6Oz7aU+0+apRb/5+GgwuoOZGW4=;
+ bh=ym77ocWKV10S+hX38ZBtUuhXsAT7fhTK688EHVretXs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LWdhETu969WoazpjNy5rmzowuadILkFhLqSnJNverOOTAI6CJbDNu642bJQsvsw+C
- V+ew2niDXSd4NXelynWh1GcudBT4yubxXjX6ZQ+BlqPwBQdmZ5DB55zg17h0+y9I3i
- QXlZ/wLW22K+3XmiForUGiprSGgGxA+3SO0DkE0ueMVkbrdsrSBVxRldXfqJNVkXka
- ZNxNrcUe8ZbVFhpR5qae9r+WrkJEUx/sxq1FaE4uYNk2QveSDHgSd3NQ6sFIr1DCCV
- laUgQpM6mV+HUb4njF4v5GyEhvaJ7bA1C0YBsmHZf5qJVolJN/X0E1Z7+LfGdDqeMG
- GpBEMaZ+2uBkQ==
+ b=F/bR2qOyM2IEl1XrPvqnFotwdtyBg9riyeibIOQstoourZLQEi6Ll5qo/WDRGsVyR
+ 6octrduBNlPD3/wqWml30q6naWEFsja0qgWZUTlf0R8RIqlhgGx36ldtsUIHMICDPL
+ XyhgKzeRK/tpmFhAtNBm7eENJbnW5yZsV2Eaw22TalLaj92r93ylJusmpi8WFZYy+k
+ u2MjORs6TBiqVFLpKWJ7t8+CA6CCCBOVO7zwaCR9Rq8S3h667FyXG/uNQN5vTQZfIa
+ g4z75mNwdDa2+9ELraJIbcM1Oqmy1+NPHBBtGGm+X9eg2mSnd458bcOvEbfSIXB9vX
+ DgfGf4hgYMZsA==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1UZs-000Vkm-Fy; Mon, 18 Jan 2021 14:28:16 +0100
+ id 1l1UZs-000Vko-Ha; Mon, 18 Jan 2021 14:28:16 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>
-Subject: [PATCH v2 05/13] staging: hikey9xx: hi6421v600-regulator: cleanup
- debug msgs
-Date: Mon, 18 Jan 2021 14:28:06 +0100
-Message-Id: <5a9fa2db2f996b5b8739f2960105e25e5c096abe.1610975633.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v2 06/13] staging: hikey9xx: hisilicon,
+ hi6421-spmi-pmic.yaml: simplify props
+Date: Mon, 18 Jan 2021 14:28:07 +0100
+Message-Id: <454a76ea63fe9ecae55c7762aeafd1e5a65ab142.1610975633.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1610975633.git.mchehab+huawei@kernel.org>
 References: <cover.1610975633.git.mchehab+huawei@kernel.org>
@@ -70,138 +70,156 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-While those were useful during port time from downstream
-version, let's get rid of them for good, as it is possible to
-get about the same things by enabling regulator debugging code.
+As all regulator-specific properties got moved to be part of the
+driver, remove them from the DT spec.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../staging/hikey9xx/hi6421v600-regulator.c   | 47 ++-----------------
- 1 file changed, 4 insertions(+), 43 deletions(-)
+ .../hikey9xx/hisilicon,hi6421-spmi-pmic.yaml  | 106 +++++++-----------
+ 1 file changed, 40 insertions(+), 66 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-index a9d83c99d2d4..1aed5b37fa23 100644
---- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
-+++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-@@ -23,9 +23,6 @@
- #include <linux/regulator/driver.h>
- #include <linux/spmi.h>
+diff --git a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+index 80e74c261e05..f385146d2bd1 100644
+--- a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
++++ b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+@@ -55,47 +55,6 @@ properties:
  
--#define rdev_dbg(rdev, fmt, arg...)	\
--		 pr_debug("%s: %s: " fmt, (rdev)->desc->name, __func__, ##arg)
+         $ref: "/schemas/regulator/regulator.yaml#"
+ 
+-        properties:
+-          reg:
+-            description: Enable register.
 -
- struct hi6421_spmi_reg_info {
- 	struct regulator_desc	desc;
- 	struct hi6421_spmi_pmic *pmic;
-@@ -112,11 +109,6 @@ static int hi6421_spmi_regulator_is_enabled(struct regulator_dev *rdev)
- 
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->enable_reg);
- 
--	rdev_dbg(rdev,
--		 "enable_reg=0x%x, val= 0x%x, enable_state=%d\n",
--		 rdev->desc->enable_reg,
--		 reg_val, (reg_val & rdev->desc->enable_mask));
+-          '#address-cells':
+-            const: 1
 -
- 	return ((reg_val & rdev->desc->enable_mask) != 0);
- }
- 
-@@ -131,11 +123,6 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
- 		     HISI_REGS_ENA_PROTECT_TIME + 1000);
- 
- 	/* set enable register */
--	rdev_dbg(rdev,
--		 "off_on_delay=%d us, enable_reg=0x%x, enable_mask=0x%x\n",
--		 rdev->desc->off_on_delay, rdev->desc->enable_reg,
--		 rdev->desc->enable_mask);
+-          '#size-cells':
+-            const: 0
 -
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
- 			     rdev->desc->enable_mask,
- 			     rdev->desc->enable_mask);
-@@ -151,9 +138,6 @@ static int hi6421_spmi_regulator_disable(struct regulator_dev *rdev)
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
- 
- 	/* set enable register to 0 */
--	rdev_dbg(rdev, "enable_reg=0x%x, enable_mask=0x%x\n",
--		 rdev->desc->enable_reg, rdev->desc->enable_mask);
+-          vsel-reg:
+-            description: Voltage selector register.
 -
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
- 			     rdev->desc->enable_mask, 0);
- 
-@@ -164,19 +148,12 @@ static int hi6421_spmi_regulator_get_voltage_sel(struct regulator_dev *rdev)
- {
- 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
--	u32 reg_val, selector;
-+	u32 reg_val;
- 
- 	/* get voltage selector */
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->vsel_reg);
- 
--	selector = (reg_val & rdev->desc->vsel_mask) >>	(ffs(rdev->desc->vsel_mask) - 1);
+-          enable-mask:
+-            description: Bitmask used to enable the regulator.
 -
--	rdev_dbg(rdev,
--		 "vsel_reg=0x%x, value=0x%x, entry=0x%x, voltage=%d mV\n",
--		 rdev->desc->vsel_reg, reg_val, selector,
--		rdev->desc->ops->list_voltage(rdev, selector) / 1000);
+-          voltage-table:
+-            description: Table with the selector items for the voltage regulator.
+-            minItems: 2
+-            maxItems: 16
 -
--	return selector;
-+	return (reg_val & rdev->desc->vsel_mask) >>	(ffs(rdev->desc->vsel_mask) - 1);
- }
- 
- static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
-@@ -192,11 +169,6 @@ static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
- 	reg_val = selector << (ffs(rdev->desc->vsel_mask) - 1);
- 
- 	/* set voltage selector */
--	rdev_dbg(rdev,
--		 "vsel_reg=0x%x, mask=0x%x, value=0x%x, voltage=%d mV\n",
--		 rdev->desc->vsel_reg, rdev->desc->vsel_mask, reg_val,
--		 rdev->desc->ops->list_voltage(rdev, selector) / 1000);
+-          off-on-delay-us:
+-            description: Time required for changing state to enabled in microseconds.
 -
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->vsel_reg,
- 			     rdev->desc->vsel_mask, reg_val);
- 
-@@ -207,22 +179,14 @@ static unsigned int hi6421_spmi_regulator_get_mode(struct regulator_dev *rdev)
- {
- 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
--	unsigned int mode;
- 	u32 reg_val;
- 
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->enable_reg);
- 
- 	if (reg_val & sreg->eco_mode_mask)
--		mode = REGULATOR_MODE_IDLE;
--	else
--		mode = REGULATOR_MODE_NORMAL;
-+		return REGULATOR_MODE_IDLE;
- 
--	rdev_dbg(rdev,
--		 "enable_reg=0x%x, eco_mode_mask=0x%x, reg_val=0x%x, %s mode\n",
--		 rdev->desc->enable_reg, sreg->eco_mode_mask, reg_val,
--		 mode == REGULATOR_MODE_IDLE ? "idle" : "normal");
+-          startup-delay-us:
+-            description: Startup time in microseconds.
 -
--	return mode;
-+	return REGULATOR_MODE_NORMAL;
- }
- 
- static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
-@@ -244,9 +208,6 @@ static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
- 	}
- 
- 	/* set mode */
--	rdev_dbg(rdev, "enable_reg=0x%x, eco_mode_mask=0x%x, value=0x%x\n",
--		 rdev->desc->enable_reg, sreg->eco_mode_mask, val);
+-          idle-mode-mask:
+-            description: Bitmask used to put the regulator on idle mode.
 -
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
- 			     sreg->eco_mode_mask, val);
+-          eco-microamp:
+-            description: Maximum current while on idle mode.
+-
+-        required:
+-          - reg
+-          - vsel-reg
+-          - enable-mask
+-          - voltage-table
+-          - off-on-delay-us
+-          - startup-delay-us
+-
+ required:
+   - compatible
+   - reg
+@@ -117,43 +76,58 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
  
+-        ldo3: ldo3@16 {
+-          reg = <0x16>;
+-          vsel-reg = <0x51>;
+-
++        ldo3: LDO3 {
+           regulator-name = "ldo3";
+           regulator-min-microvolt = <1500000>;
+           regulator-max-microvolt = <2000000>;
+           regulator-boot-on;
+-
+-          enable-mask = <0x01>;
+-
+-          voltage-table = <1500000>, <1550000>, <1600000>, <1650000>,
+-                          <1700000>, <1725000>, <1750000>, <1775000>,
+-                          <1800000>, <1825000>, <1850000>, <1875000>,
+-                          <1900000>, <1925000>, <1950000>, <2000000>;
+-          off-on-delay-us = <20000>;
+-          startup-delay-us = <120>;
+         };
+ 
+-        ldo4: ldo4@17 { /* 40 PIN */
+-          reg = <0x17>;
+-          vsel-reg = <0x52>;
+-
++        ldo4: LDO4 {
+           regulator-name = "ldo4";
+           regulator-min-microvolt = <1725000>;
+           regulator-max-microvolt = <1900000>;
+           regulator-boot-on;
++        };
+ 
+-          enable-mask = <0x01>;
+-          idle-mode-mask = <0x10>;
+-          eco-microamp = <10000>;
++        ldo9: LDO9 {
++          regulator-name = "ldo9";
++          regulator-min-microvolt = <1750000>;
++          regulator-max-microvolt = <3300000>;
++          regulator-boot-on;
++        };
+ 
+-          hi6421-vsel = <0x52 0x07>;
+-          voltage-table = <1725000>, <1750000>, <1775000>, <1800000>,
+-                          <1825000>, <1850000>, <1875000>, <1900000>;
+-          off-on-delay-us = <20000>;
+-          startup-delay-us = <120>;
++        ldo15: LDO15 {
++          regulator-name = "ldo15";
++          regulator-min-microvolt = <1800000>;
++          regulator-max-microvolt = <3000000>;
++          regulator-always-on;
++        };
++
++        ldo16: LDO16 {
++          regulator-name = "ldo16";
++          regulator-min-microvolt = <1800000>;
++          regulator-max-microvolt = <3000000>;
++          regulator-boot-on;
++        };
++
++        ldo17: LDO17 {
++          regulator-name = "ldo17";
++          regulator-min-microvolt = <2500000>;
++          regulator-max-microvolt = <3300000>;
++        };
++
++        ldo33: LDO33 {
++          regulator-name = "ldo33";
++          regulator-min-microvolt = <2500000>;
++          regulator-max-microvolt = <3300000>;
++          regulator-boot-on;
++        };
++
++        ldo34: LDO34 {
++          regulator-name = "ldo34";
++          regulator-min-microvolt = <2600000>;
++          regulator-max-microvolt = <3300000>;
+         };
+       };
+     };
 -- 
 2.29.2
 
