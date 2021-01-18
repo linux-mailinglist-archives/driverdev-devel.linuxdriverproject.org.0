@@ -2,70 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FCF72FA514
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 16:47:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D1A22FA522
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 16:50:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 75A58204A5;
-	Mon, 18 Jan 2021 15:47:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 82F8420485;
+	Mon, 18 Jan 2021 15:50:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wxwLsEnhiNpn; Mon, 18 Jan 2021 15:47:14 +0000 (UTC)
+	with ESMTP id dStGuo50zKUT; Mon, 18 Jan 2021 15:50:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3BDE920485;
-	Mon, 18 Jan 2021 15:47:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DA6F12049E;
+	Mon, 18 Jan 2021 15:50:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C95C31BF33E
- for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 15:47:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 62DEB1BF33E
+ for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 15:50:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C612C86420
- for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 15:47:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5F11385198
+ for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 15:50:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bXtliopOHvGw for <devel@linuxdriverproject.org>;
- Mon, 18 Jan 2021 15:47:11 +0000 (UTC)
+ with ESMTP id hgufeUH2WsCZ for <devel@linuxdriverproject.org>;
+ Mon, 18 Jan 2021 15:50:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f51.google.com (mail-ot1-f51.google.com
- [209.85.210.51])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3185B863F1
- for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 15:47:11 +0000 (UTC)
-Received: by mail-ot1-f51.google.com with SMTP id f6so7418341ots.9
- for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 07:47:11 -0800 (PST)
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com
+ [209.85.128.45])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6358984F33
+ for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 15:50:30 +0000 (UTC)
+Received: by mail-wm1-f45.google.com with SMTP id 190so14029266wmz.0
+ for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 07:50:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=hnlP4TCuuuU1Boi/hLdzhd2/6iQdts7ZHhXzPyMgjoQ=;
+ b=C5aYq8K6u9jjD9Bxrht4BtypiJqRgY4dAlrtbgaYqLKiGopcD3CZOqogeLuBQshiC/
+ rLAS9F/uord1WqD0EZA4j9vpmHY6rxDIiSOeN80PtzTh8ARftMzeDqbc78uo4fxmhH3J
+ W8BtWFO05uzZsIDEUzKTpHVpsTqoN8rTqx6AlbDD7W2ngK66pKXgcB/nLEbfFpyH9F7L
+ nAwKM4QM/IdBwnPo4LUsDt2Q3PBg3E1yL5dAFy/JhUVMDJ7nZ7B4Gfl0WYtsD61uPuAx
+ QxIIDD6739wfYHmcmVuZJM6p55gXqigdlDAlJEhGaA8bIWjtLnqzZU3858Zfa+hDNi1x
+ tuYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=7fgTElUed+dLXiedRGXn6iUhg8ezF6u02H7vJDNFxaQ=;
- b=aet50fM2Iy2fClUhnMmLUMAbNzthqlcC3XwnwuN+4UIx2GHAouHA+pkl222B5w1IVC
- KJhd4BHn85zEepDSwe4NxaA10YbwPK5ydMBOqSrlth9i1cflXkIKQbGK9X18foI4HXkS
- +9uHIj4OSFsgwzDrQSc+4XhFHq+fUWGG8Tsb1dnzyAe2PM5DecXEtnKpAHXBZaVzuoUY
- kPuNJb0PNAg0FdF75LnEWri6/sxggcWQ1f531FEiDqVqKG57Yv9Bg3Kq/XiXiy66emN9
- l5/yDDb7xfnPdvy9gGhxZkVMDQIAxeBOSty44PEOjGNnhNEzHZ6fPKkrYd/Y5VuL4rq+
- gAeA==
-X-Gm-Message-State: AOAM531pnsWLN/5HQNzCc2q8yzB6+vo8MSOoaP+cl3SVY/gBseUDLO+K
- oTfgUt5/ZmEmC89/WNq3QQ==
-X-Google-Smtp-Source: ABdhPJy5q/BWp4jbEhJl/2ExB4bau3UfQKeemepMe2Nty8rNip/vK0Lj+SkolcrUeG6oTBVPUFZLhw==
-X-Received: by 2002:a05:6830:1e47:: with SMTP id
- e7mr73795otj.268.1610984829430; 
- Mon, 18 Jan 2021 07:47:09 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id s2sm732912otk.45.2021.01.18.07.47.08
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=hnlP4TCuuuU1Boi/hLdzhd2/6iQdts7ZHhXzPyMgjoQ=;
+ b=uNqFh9YepYqaldlpjatY4W37bk8hNZ1C3+ODz5R0no9r4rek5emkwk7Fio2QGQcb3L
+ /H980E9hkjAtBsAUqPN42Y9W6CTyCyzwlmPJk+o+lJL3ImjNq3Wd5Fweac2FiPV2uylz
+ ubTFb/iKG4gJI/hVeezsOLceCTwLagGF9sxwiVX7AOKB4Fss6eDfTh6U7HZe5a6UAzSq
+ IxrisqX8ZhYPtkaR5ingn8UcbNt4yXNkJ2yEJ8iE1C+Pna7yxV1NfBuKsV01qXwhhfzN
+ sBlMMrX5oBlxzemYOQzpq85lj+iqBTQ0Sw0oA33hMum2mLR2sdr+IYWrQewpbrfY3JYB
+ mb6g==
+X-Gm-Message-State: AOAM532Ha2pKn+J0x7NCTnAklXBgtNpQVyP7eujlG78z46kAW7+u+OWH
+ cRniVZg3M7/JCyYCCjl0oVPvkg==
+X-Google-Smtp-Source: ABdhPJyGQlmjNpAe5FPf9+L9SpVO6HOy+hRWw/s3IfHIcDSQDh6vMYL2r/2lCncdI6UxCHS92rQYVA==
+X-Received: by 2002:a1c:6383:: with SMTP id x125mr37380wmb.46.1610985028772;
+ Mon, 18 Jan 2021 07:50:28 -0800 (PST)
+Received: from dell ([91.110.221.158])
+ by smtp.gmail.com with ESMTPSA id m14sm30211665wrh.94.2021.01.18.07.50.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Jan 2021 07:47:08 -0800 (PST)
-Received: (nullmailer pid 3984441 invoked by uid 1000);
- Mon, 18 Jan 2021 15:47:02 -0000
-From: Rob Herring <robh@kernel.org>
+ Mon, 18 Jan 2021 07:50:28 -0800 (PST)
+Date: Mon, 18 Jan 2021 15:50:26 +0000
+From: Lee Jones <lee.jones@linaro.org>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-In-Reply-To: <8a152819ef89c73dd6afb5c2deb5441402fcd2fa.1610975633.git.mchehab+huawei@kernel.org>
+Subject: Re: [PATCH v2 10/13] mfd: hi6421-spmi-pmic: move driver from staging
+Message-ID: <20210118155026.GH4903@dell>
 References: <cover.1610975633.git.mchehab+huawei@kernel.org>
  <8a152819ef89c73dd6afb5c2deb5441402fcd2fa.1610975633.git.mchehab+huawei@kernel.org>
-Subject: Re: [PATCH v2 10/13] mfd: hi6421-spmi-pmic: move driver from staging
-Date: Mon, 18 Jan 2021 09:47:02 -0600
-Message-Id: <1610984822.729521.3984440.nullmailer@robh.at.kernel.org>
+ <20210118151227.GF4903@dell> <20210118163222.6161f9a2@coco.lan>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210118163222.6161f9a2@coco.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,58 +91,42 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Mayulong <mayulong1@huawei.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
- Lee Jones <lee.jones@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 18 Jan 2021 14:28:11 +0100, Mauro Carvalho Chehab wrote:
-> This driver is ready for mainstream. So, move it out of staging.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  .../mfd/hisilicon,hi6421-spmi-pmic.yaml       | 133 +++++++
->  MAINTAINERS                                   |   7 +
->  drivers/mfd/Kconfig                           |  15 +
->  drivers/mfd/Makefile                          |   1 +
->  drivers/mfd/hi6421-spmi-pmic.c                | 342 ++++++++++++++++++
->  drivers/staging/hikey9xx/Kconfig              |  16 -
->  drivers/staging/hikey9xx/Makefile             |   1 -
->  drivers/staging/hikey9xx/hi6421-spmi-pmic.c   | 342 ------------------
->  .../hikey9xx/hisilicon,hi6421-spmi-pmic.yaml  | 133 -------
->  9 files changed, 498 insertions(+), 492 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
->  create mode 100644 drivers/mfd/hi6421-spmi-pmic.c
->  delete mode 100644 drivers/staging/hikey9xx/hi6421-spmi-pmic.c
->  delete mode 100644 drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-> 
-
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml: 'additionalProperties' is a required property
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml: ignoring, error in schema: 
-warning: no schema found in file: ./Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
-
-See https://patchwork.ozlabs.org/patch/1428169
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gTW9uLCAxOCBKYW4gMjAyMSwgTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIHdyb3RlOgoKPiBFbSBN
+b24sIDE4IEphbiAyMDIxIDE1OjEyOjI3ICswMDAwCj4gTGVlIEpvbmVzIDxsZWUuam9uZXNAbGlu
+YXJvLm9yZz4gZXNjcmV2ZXU6Cj4gCj4gPiBPbiBNb24sIDE4IEphbiAyMDIxLCBNYXVybyBDYXJ2
+YWxobyBDaGVoYWIgd3JvdGU6Cj4gPiAKPiA+ID4gVGhpcyBkcml2ZXIgaXMgcmVhZHkgZm9yIG1h
+aW5zdHJlYW0uIFNvLCBtb3ZlIGl0IG91dCBvZiBzdGFnaW5nLgo+ID4gPiAKPiA+ID4gU2lnbmVk
+LW9mZi1ieTogTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIDxtY2hlaGFiK2h1YXdlaUBrZXJuZWwub3Jn
+Pgo+ID4gPiAtLS0KPiA+ID4gIC4uLi9tZmQvaGlzaWxpY29uLGhpNjQyMS1zcG1pLXBtaWMueWFt
+bCAgICAgICB8IDEzMyArKysrKysrCj4gPiA+ICBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgfCAgIDcgKwo+ID4gPiAgZHJpdmVycy9tZmQvS2NvbmZpZyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwgIDE1ICsKPiA+ID4gIGRyaXZlcnMvbWZkL01ha2VmaWxl
+ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gPiA+ICBkcml2ZXJzL21mZC9oaTY0
+MjEtc3BtaS1wbWljLmMgICAgICAgICAgICAgICAgfCAzNDIgKysrKysrKysrKysrKysrKysrCj4g
+PiA+ICBkcml2ZXJzL3N0YWdpbmcvaGlrZXk5eHgvS2NvbmZpZyAgICAgICAgICAgICAgfCAgMTYg
+LQo+ID4gPiAgZHJpdmVycy9zdGFnaW5nL2hpa2V5OXh4L01ha2VmaWxlICAgICAgICAgICAgIHwg
+ICAxIC0KPiA+ID4gIGRyaXZlcnMvc3RhZ2luZy9oaWtleTl4eC9oaTY0MjEtc3BtaS1wbWljLmMg
+ICB8IDM0MiAtLS0tLS0tLS0tLS0tLS0tLS0KPiA+ID4gIC4uLi9oaWtleTl4eC9oaXNpbGljb24s
+aGk2NDIxLXNwbWktcG1pYy55YW1sICB8IDEzMyAtLS0tLS0tCj4gPiA+ICA5IGZpbGVzIGNoYW5n
+ZWQsIDQ5OCBpbnNlcnRpb25zKCspLCA0OTIgZGVsZXRpb25zKC0pICAKPiA+IAo+ID4gQ291bGQg
+eW91IHBsZWFzZSByZXN1Ym1pdCB0aGlzIHdpbGwgdGhlIGNvcnJlY3QgZmxhZ3MuCj4gPiAKPiA+
+IEkgYmVsaWV2ZSBpdCdzIHRoZSBgZ2l0IGZvcm1hdC1wYXRjaGAgLU0gZmxhZyB0aGF0IHlvdSB3
+YW50Lgo+IAo+IEFzIGV4cGxhaW5lZCBhdCBwYXRjaCAwMC8xMywgdGhpcyB3YXMgaW50ZW50aW9u
+YWxseSBnZW5lcmF0ZWQgd2l0aAo+IC0tbm8tbWVyZ2VzLCBpbiBvcmRlciB0byBhbGxvdyByZXZp
+ZXdlcnMgdG8gdmlldyB0aGUgZW50aXJlIHNvdXJjZQo+IGNvZGUgYXQgdGhlIHBhdGNoLiAKClRo
+YXQncyBhIGZhaXIgcG9pbnQuICBQbGVhc2UgbGVhdmUgaXQgYXMgaXQgaXMgZm9yIG5vdyB0aGVu
+LgoKSSdsbCBnZXQgYXJvdW5kIHRvIHRoZSByZXZpZXcgc29vbiBJIGhvcGUuCgo+IEFueXdheSwg
+SSdsbCByZS1zZW5kIHRoZSBzZXJpZXMgd2l0aCAtTSwgYXMgaXQgbWFrZXMgZWFzaWVyIHRvIG1l
+cmdlLAo+IGlmIGV2ZXJ5dGhpbmcgaXMgb2suCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dClNl
+bmlvciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3JnIOKUgiBP
+cGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sg
+fCBUd2l0dGVyIHwgQmxvZwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
+dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cml2ZXJkZXYtZGV2ZWwK
