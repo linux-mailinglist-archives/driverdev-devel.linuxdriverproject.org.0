@@ -1,91 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 337F12F9BBE
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 10:10:05 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F78F2F9FBA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Jan 2021 13:33:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B0E0983A66;
-	Mon, 18 Jan 2021 09:10:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ED88E20413;
+	Mon, 18 Jan 2021 12:33:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DOLDFsKhKraQ; Mon, 18 Jan 2021 09:10:03 +0000 (UTC)
+	with ESMTP id v3WMd2wIcxuT; Mon, 18 Jan 2021 12:33:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9617B85008;
-	Mon, 18 Jan 2021 09:10:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5D94C203FA;
+	Mon, 18 Jan 2021 12:33:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4D0461BF40E
- for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 09:09:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8FBC01BF29C
+ for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 12:32:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2E6A120016
- for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 09:09:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5972A203F3
+ for <devel@linuxdriverproject.org>; Mon, 18 Jan 2021 12:32:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HHvD9TCPc5Dp for <devel@linuxdriverproject.org>;
- Mon, 18 Jan 2021 09:09:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
- [66.111.4.224])
- by silver.osuosl.org (Postfix) with ESMTPS id 89A091FD42
- for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 09:09:55 +0000 (UTC)
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 950255806CC;
- Mon, 18 Jan 2021 04:09:53 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Mon, 18 Jan 2021 04:09:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=R1pGfxcuJnekXAz99rc1GrqcVhx
- oC8FEezWd5X2V/wc=; b=HDdEhP7k0u7Kr0CuJmufFRjOKLQG+h1H/Oxx8zICiFS
- m3XhURRkqWYGyESLH2ioYAOjyidK9mbPo9vxY7C0+MqQoOBumn2f8hFEmvlwxyIi
- 6H94opM/TGbkKAOuPqBeItwXPCx9tA9OsaE/DRoYGfvRicNtnYxIiCQWMT5O6rhc
- q4/A0F0FdsXmOl1yzTsXXhVT0aRhnLEq92qjjEB8Gf7vwW0Ap8ExnihYOfBtjpv7
- lWzlubCqjxfJTit+2kJzW2QU+SqfDT1YAjDK/eFAG+oQfKXM8pCaxAOrQ9QtmTmh
- z0+SbeeLZNIMrZaa43fROYR/b1S/y711D4yqoeSBuow==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=R1pGfx
- cuJnekXAz99rc1GrqcVhxoC8FEezWd5X2V/wc=; b=Y91WYLV3bL70Fnuz0Lcrkg
- fUcr3CPJUuNQQ/73hpLWF8xSfCtd12pU18VAeCUi0aD4hwLgn+ArVdtxGUUhETa5
- 4SUfET+eDvdHW6wFrmTiRuG/QwWPLGr+V7leHuH3dh2nwrseyF7hWiLnq9v/Fvod
- JA+6SwrFTbYIMpbclZGNGVb8o74k3EQ0IJV1rYimtsn6Rl45zHolhTW3yszwAM2P
- uQ67utqjjVGSYOkZE7MgPRAj7py4P3BI3L4UfnQ2sOkGXLvj5/iTD/1ZKDy+q9zU
- B0MEfpIVDBfk/tRr3GMVz33PTJpwmq5BUQoNdKM3Lbif0ycVaEPV/0Hehs8P80kw
- ==
-X-ME-Sender: <xms:XFAFYDeeKHtqy-FMSF4DaQn8bORgh2zjymAkiiOB_CXhA5VWsV8FyA>
- <xme:XFAFYJPjGsMFddeIiiADXOVcfsrFS0vpvt-S4a31B31bWVoKp1AMPRF3nwqvnVevb
- vgv5qPWXBkctAotxRA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrtdekucetufdoteggodetrfdotffvucfrrh
- hofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgenuceurghi
- lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurh
- epfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhmvgcutfhi
- phgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrthhtvghrnh
- epleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieehgedunecu
- kfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
- hmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:XFAFYMhPzXcPrv8lXJzVW7dXtPA-e7CpLVEca5UyRw3QpqGAst5QxA>
- <xmx:XFAFYE8UXLmhOM5_TUoJnDF_OcIwYiwGka2bKBlnybGgT4RFezqKEw>
- <xmx:XFAFYPtjix0-ov_riM1aMc3_eD9VgYUVFUUc6vy48MAi7vRg1-GQHQ>
- <xmx:YVAFYPcftKako6DbTRIDzIJlchl40QfeLNkJJ5sWyecWcUIioS8Odw>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 6A748240064;
- Mon, 18 Jan 2021 04:09:48 -0500 (EST)
-Date: Mon, 18 Jan 2021 10:09:46 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v5 04/16] media: sun6i-csi: Stop using the deprecated
- fwnode endpoint parser
-Message-ID: <20210118090946.vysdaribva7jl4xi@gilmour>
-References: <20210115200141.1397785-1-paul.kocialkowski@bootlin.com>
- <20210115200141.1397785-5-paul.kocialkowski@bootlin.com>
+ with ESMTP id 7EdVluxiwtcj for <devel@linuxdriverproject.org>;
+ Mon, 18 Jan 2021 12:32:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6BB2A2010C
+ for <devel@driverdev.osuosl.org>; Mon, 18 Jan 2021 12:32:57 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 545C3ACBA;
+ Mon, 18 Jan 2021 12:32:55 +0000 (UTC)
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: u.kleine-koenig@pengutronix.de
+Subject: [PATCH v7 00/11] Raspberry Pi PoE HAT fan support
+Date: Mon, 18 Jan 2021 13:32:33 +0100
+Message-Id: <20210118123244.13669-1-nsaenzjulienne@suse.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-In-Reply-To: <20210115200141.1397785-5-paul.kocialkowski@bootlin.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,76 +54,131 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-doc@vger.kernel.org, linux-sunxi@googlegroups.com,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, kevin.lhopital@hotmail.com,
- devel@driverdev.osuosl.org, Jonathan Corbet <corbet@lwn.net>,
- Kishon Vijay Abraham I <kishon@ti.com>, Chen-Yu Tsai <wens@csie.org>,
- Hans Verkuil <hans.verkuil@cisco.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Helen Koike <helen.koike@collabora.com>, Rob Herring <robh+dt@kernel.org>,
- Yong Deng <yong.deng@magewell.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============8935865159945708803=="
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
+ devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
+ wahrenst@gmx.net, p.zabel@pengutronix.de, linux-input@vger.kernel.org,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, bgolaszewski@baylibre.com,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+The aim of this series is to add support to the fan found on RPi's PoE
+HAT. Some commentary on the design can be found below. But the important
+part to the people CC'd here not involved with PWM is that, in order to
+achieve this properly, we also have to fix the firmware interface the
+driver uses to communicate with the PWM bus (and many other low level
+functions). Specifically, we have to make sure the firmware interface
+isn't unbound while consumers are still up. So, patch #1 & #2 introduce
+reference counting in the firmware interface driver and patches #3 to #8
+update all firmware users. Patches #9 to #11 introduce the new PWM
+driver.
 
---===============8935865159945708803==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="phzzxokt6uufvv73"
-Content-Disposition: inline
+I sent everything as a single series as the final version of the PWM
+drivers depends on the firmware fixes, but I'll be happy to split this
+into two separate series if you think it's better.
 
+--- Original cover letter below ---
 
---phzzxokt6uufvv73
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This series aims at adding support to RPi's official PoE HAT fan[1].
 
-Hi,
+The HW setup is the following:
 
-Thanks for working on this
+| Raspberry Pi                               | PoE HAT                    |
+ arm core -> Mailbox -> RPi co-processor -> I2C -> Atmel MCU -> PWM -> FAN
 
-On Fri, Jan 15, 2021 at 09:01:29PM +0100, Paul Kocialkowski wrote:
-> The v4l2_async_notifier_parse_fwnode_endpoints helper is getting
-> deprecated in favor of explicit parsing of the endpoints.
->=20
-> Implement it instead of using this deprecated function.
->=20
-> Since this was the last user of the helper, it should now be safe to
-> remove.
->=20
-> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+The arm cores have only access to the mailbox interface, as i2c0, even if
+physically accessible, is to be used solely by the co-processor
+(VideoCore 4/6).
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+This series implements a PWM bus, and has pwm-fan sitting on top of it as per
+this discussion: https://lkml.org/lkml/2018/9/2/486. Although this design has a
+series of shortcomings:
 
-Maxime
+- It depends on a DT binding: it's not flexible if a new hat shows up with new
+  functionality, we're not 100% sure we'll be able to expand it without
+  breaking backwards compatibility. But without it we can't make use of DT
+  thermal-zones, which IMO is overkill.
 
---phzzxokt6uufvv73
-Content-Type: application/pgp-signature; name="signature.asc"
+- We're using pwm-fan, writing a hwmon driver would, again, give us more
+  flexibility, but it's not really needed at the moment.
 
------BEGIN PGP SIGNATURE-----
+I personally think that it's not worth the effort, it's unlikely we'll get
+things right in advance. And ultimately, if the RPi people come up with
+something new, we can always write a new driver/bindings from scratch (as in
+not reusing previous code).
 
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYAVQWgAKCRDj7w1vZxhR
-xePXAQCUCBAhygtdMlfSOyDe9FrqYWFDVy55JekmXn69swyY2AEAgRYKfDHOvKjp
-OK65VWBIaKANrwzOQ+puhKAQ4DMbLgs=
-=WFFY
------END PGP SIGNATURE-----
+That said, I'm more than happy to change things if there is a consensus that
+another design will do the trick.
 
---phzzxokt6uufvv73--
+[1] https://www.raspberrypi.org/blog/introducing-power-over-ethernet-poe-hat/
 
---===============8935865159945708803==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+---
+
+Changes since v6:
+ - Address PWM driver comments
+
+Changes since v5:
+ - Small cleanups
+ - Add extra code comments
+
+Changes since v4:
+ - Cleanup devm calls
+ - Rename compatible string so it's unique to the PoE HAT
+
+Changes since v3:
+ - Split first patch, #1 introduces refcount, then #2 the devm function
+ - Fix touchscreen function
+ - Use kref
+
+Changes since v2:
+ - Introduce devm_rpi_firmware_get()
+ - Small cleanups in PWM driver
+
+Changes since v1:
+ - Address PWM driver changes
+ - Fix binding, now with 2 cells
+
+Nicolas Saenz Julienne (11):
+  firmware: raspberrypi: Keep count of all consumers
+  firmware: raspberrypi: Introduce devm_rpi_firmware_get()
+  clk: bcm: rpi: Release firmware handle on unbind
+  gpio: raspberrypi-exp: Release firmware handle on unbind
+  reset: raspberrypi: Release firmware handle on unbind
+  soc: bcm: raspberrypi-power: Release firmware handle on unbind
+  staging: vchiq: Release firmware handle on unbind
+  input: raspberrypi-ts: Release firmware handle when not needed
+  dt-bindings: pwm: Add binding for RPi firmware PWM bus
+  DO NOT MERGE: ARM: dts: Add RPi's official PoE hat support
+  pwm: Add Raspberry Pi Firmware based PWM bus
+
+ .../arm/bcm/raspberrypi,bcm2835-firmware.yaml |  20 ++
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts         |  54 +++++
+ drivers/clk/bcm/clk-raspberrypi.c             |   2 +-
+ drivers/firmware/raspberrypi.c                |  69 +++++-
+ drivers/gpio/gpio-raspberrypi-exp.c           |   2 +-
+ drivers/input/touchscreen/raspberrypi-ts.c    |   2 +-
+ drivers/pwm/Kconfig                           |   9 +
+ drivers/pwm/Makefile                          |   1 +
+ drivers/pwm/pwm-raspberrypi-poe.c             | 220 ++++++++++++++++++
+ drivers/reset/reset-raspberrypi.c             |   2 +-
+ drivers/soc/bcm/raspberrypi-power.c           |   2 +-
+ .../interface/vchiq_arm/vchiq_arm.c           |   2 +-
+ .../pwm/raspberrypi,firmware-poe-pwm.h        |  13 ++
+ include/soc/bcm2835/raspberrypi-firmware.h    |  10 +
+ 14 files changed, 399 insertions(+), 9 deletions(-)
+ create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
+ create mode 100644 include/dt-bindings/pwm/raspberrypi,firmware-poe-pwm.h
+
+-- 
+2.29.2
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============8935865159945708803==--
