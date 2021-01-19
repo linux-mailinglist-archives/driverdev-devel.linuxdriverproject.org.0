@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75BB72FB534
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:15:02 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 245A22FB530
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 14A60203C7;
-	Tue, 19 Jan 2021 10:15:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C57B886DEA;
+	Tue, 19 Jan 2021 10:14:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id okGm+jk1iDjQ; Tue, 19 Jan 2021 10:14:59 +0000 (UTC)
+	with ESMTP id cz-0zScRBncr; Tue, 19 Jan 2021 10:14:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 16B2E204DA;
-	Tue, 19 Jan 2021 10:14:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 50DDA86C6D;
+	Tue, 19 Jan 2021 10:14:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B7CAC1BF27F
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 17C361BF9BD
  for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B3AEF861AB
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1201486B2C
  for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AeJoTEAQX6BC for <devel@linuxdriverproject.org>;
- Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
+ with ESMTP id l1Zdp8e69wF8 for <devel@linuxdriverproject.org>;
+ Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B6C8F86091
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E24E686C3A
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0097423119;
- Tue, 19 Jan 2021 10:14:26 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 302C32313F;
+ Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611051267;
- bh=heSPP3aRBgBZFx/Q0SMe/3RDJAAippqxfJey05I92D4=;
+ bh=P5famsmNqxFy3kRdQiJ3S9R1bIcL68pOBNQEbAmhHFQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=AUQLTsyznHmg0lqExXPNf/meSDtv4m2D5EcSO+2KdTfaPE/oawiw1JuDXJiLyxiXu
- s2HNZH7DEm13TtU8Tg45XmQcyqjMjdhr8ipfVBXE6I+087Li14lkYNVYJeOSqn1MCT
- yCe2VIZeEZhxFr6n7zqqHVankdcSTe7AHkigRy4hI9tgqpR4Bqu5IrpBo26I/gEpnI
- 2LuEHwWkFLWULOoVK7QU4TDc0bCT8TSmMb8YVt+FG3FKI9cODizmj50N2Z7SBCYJku
- pbFP4tAgHEblmI7O/AQ/ExKejUlb9eo/98rKxc60HyILk/9z14+L5YegsE+8pqXQb+
- j3Zi6d8HVee7w==
+ b=qT7GNdVcgOo5upapVnhneCqoaFYtLyv9ailruozk54U/rfI5GEPTTDOONcK2iH58F
+ MGO4MiLL0qtJHsB6y5dPl2uLNeRMWAfJrE2l/zCZck/i/Pe6U9/2XveRBNlU3h/ppq
+ dGj+dA7Z9nfr/K97cn7YjBgewsyt4ENVT2wW3G5V/KXtdLVICv+Ev2b3oitJ87HQwk
+ gEAgIxIG0Dgt2J3t+y4ReAr8FsXb81L6j5VtsmDIFgY/mDpfXXzjs0HE4TfYgZ+lsZ
+ k4DsOvUk9Cs/JY4Ws3OJK/HguuqKUakcDS96yPChYyHyUXm9Bw3r5kg78lrL/skbtk
+ 0a+EpieSn6ZFg==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1o1o-000tOg-JT; Tue, 19 Jan 2021 11:14:24 +0100
+ id 1l1o1o-000tOi-Kd; Tue, 19 Jan 2021 11:14:24 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v3 03/18] staging: hikey9xx: hisi-spmi-controller: clean
- sparse warnings
-Date: Tue, 19 Jan 2021 11:14:08 +0100
-Message-Id: <20bf465025b1b37ead9429663a54055ae16b6a40.1611048785.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 04/18] staging: hikey9xx: hi6421v600-regulator: do some
+ cleanups
+Date: Tue, 19 Jan 2021 11:14:09 +0100
+Message-Id: <4c2401f396fdeed7994b5b26889387e09e0d5251.1611048785.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611048785.git.mchehab+huawei@kernel.org>
 References: <cover.1611048785.git.mchehab+huawei@kernel.org>
@@ -69,57 +69,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- Colin Ian King <colin.king@canonical.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sparse complains about __be32 conversions:
-
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
-    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:239:17:      warning: cast from restricted __be32
-
-The conversions there are valid ones. So, add __force macro
-to disable such warnings.
+Use C99 comments at the beginning of the file and remove
+uneeded includes.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hisi-spmi-controller.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../staging/hikey9xx/hi6421v600-regulator.c   | 43 +++++++------------
+ 1 file changed, 16 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/staging/hikey9xx/hisi-spmi-controller.c
-index f831c43f4783..4be2344ad7b5 100644
---- a/drivers/staging/hikey9xx/hisi-spmi-controller.c
-+++ b/drivers/staging/hikey9xx/hisi-spmi-controller.c
-@@ -161,7 +161,7 @@ static int spmi_read_cmd(struct spmi_controller *ctrl,
- 			     SPMI_SLAVE_OFFSET * slave_id +
- 			     SPMI_APB_SPMI_RDATA0_BASE_ADDR +
- 			     i * SPMI_PER_DATAREG_BYTE);
--		data = be32_to_cpu((__be32)data);
-+		data = be32_to_cpu((__force __be32)data);
- 		if ((bc - i * SPMI_PER_DATAREG_BYTE) >> 2) {
- 			memcpy(buf, &data, sizeof(data));
- 			buf += sizeof(data);
-@@ -236,7 +236,7 @@ static int spmi_write_cmd(struct spmi_controller *ctrl,
- 			buf += (bc % SPMI_PER_DATAREG_BYTE);
- 		}
+diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
+index 614b03c9ddfb..4ee0444b2b4e 100644
+--- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
++++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
+@@ -1,41 +1,30 @@
+ // SPDX-License-Identifier: GPL-2.0
+-/*
+- * Device driver for regulators in Hisi IC
+- *
+- * Copyright (c) 2013 Linaro Ltd.
+- * Copyright (c) 2011 Hisilicon.
+- *
+- * Guodong Xu <guodong.xu@linaro.org>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License version 2 as
+- * published by the Free Software Foundation.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- */
++//
++// Device driver for regulators in Hisi IC
++//
++// Copyright (c) 2013 Linaro Ltd.
++// Copyright (c) 2011 Hisilicon.
++//
++// Guodong Xu <guodong.xu@linaro.org>
++//
++// This program is free software; you can redistribute it and/or modify
++// it under the terms of the GNU General Public License version 2 as
++// published by the Free Software Foundation.
++//
++// This program is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++// GNU General Public License for more details.
  
--		writel((u32)cpu_to_be32(data),
-+		writel((__force u32)cpu_to_be32(data),
- 		       spmi_controller->base + chnl_ofst +
- 		       SPMI_APB_SPMI_WDATA0_BASE_ADDR +
- 		       SPMI_PER_DATAREG_BYTE * i);
+-#include <linux/delay.h>
+-#include <linux/device.h>
+-#include <linux/err.h>
+-#include <linux/io.h>
+ #include <linux/mfd/hi6421-spmi-pmic.h>
+ #include <linux/module.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/driver.h>
+ #include <linux/regulator/machine.h>
+ #include <linux/regulator/of_regulator.h>
+-#include <linux/seq_file.h>
+-#include <linux/slab.h>
+ #include <linux/spmi.h>
+-#include <linux/time.h>
+-#include <linux/uaccess.h>
+ 
+ #define rdev_dbg(rdev, fmt, arg...)	\
+ 		 pr_debug("%s: %s: " fmt, (rdev)->desc->name, __func__, ##arg)
 -- 
 2.29.2
 
