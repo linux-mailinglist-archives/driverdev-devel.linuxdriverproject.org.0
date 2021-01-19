@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76CAD2FBC17
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 17:11:26 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1E3F485CB8;
-	Tue, 19 Jan 2021 16:11:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WDBnDlNP+skS; Tue, 19 Jan 2021 16:11:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1A4B286FAA;
-	Tue, 19 Jan 2021 16:11:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AFF061BF576
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B06922FBC09
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 17:11:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A1CAC86915
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E8F888695A;
+	Tue, 19 Jan 2021 16:11:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5e1e4GGGaIRB; Tue, 19 Jan 2021 16:10:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id CF54481AE8;
+	Tue, 19 Jan 2021 16:10:57 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E1181BF576
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8AE11851AA
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iRYqJZBJhT4A for <devel@linuxdriverproject.org>;
+ with ESMTP id IcbAVXKJh7ns for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 423F781AE8
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 26E73844E7
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5EFC223137;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 40FCC23121;
  Tue, 19 Jan 2021 16:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611072651;
- bh=U4kdN16C/IeL/ZSKFf0juQ1NKvCmwim4VbjgDzr2xqo=;
+ bh=HuED0fleILW116DXWL4/LVOkOe1VH+LKgrg9V6adeZg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=DMeFVp2Pp6giY8zWEglxIortdceQaS9vjmSrKs5tDfvAhtEvDuvddRt+6oEKJpX/k
- uGvJfCG4yEvA68LCEohMB2MmOq9VKV27gFX4h8oZFHinXMXdlM3YovBbf5E+iDZOd3
- wV5GvdhXflWmu+JWHs83nq3+bcza0pwN3/D+f5jxqP5wk/9CugsCx537Ot1PXkdp+r
- 6j85IMJNfBzwVgMmiOaZPDE7yasysS/GwS/e+dWu9ivLmP8B7wrRTcxv98rBdkCJwx
- LfCfepePIYbsy/YzrtGFLxyrLUgRuMd6LuPHFTepzsSg2wKYVLEHyKtZGkSMt+lMNs
- nXhgVasVSVehA==
+ b=FHEQ9B3bEXQcsbYrj8BVPXJnRZYQMFCjxdZ6+pl+6D+2A1BQUG49xlMyT3fLs6y89
+ uNWBFomqnsUbF8ljFTi7M0ExLgJ6sb1CcKRF4gbOgtWVUvUSZyrR8IGjWoZxoim4U9
+ BWOga9qgK6x1hOQl0z/0E57EaNaqvqQee6ib6icGaQX9vQESAzptB6k0uAX7IW6rfR
+ 3Nf0CbUd4YCQvdK/K46mc55+Ummo0XaBXOvNUgVaOxOXToZVrHj6gLDypjyI3u+n4W
+ cH3YB8R8iXK+hBPlfGSJfyb4fmXW+42Gu4eeRR6QVgGvoGadsFCNhYyEyfSuf0uxvm
+ RIgmL9Du1KDnA==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1taj-0012bl-1x; Tue, 19 Jan 2021 17:10:49 +0100
+ id 1l1taj-0012bn-2q; Tue, 19 Jan 2021 17:10:49 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v4 08/21] staging: hikey9xx: hi6421v600-regulator: do some
- cleanups
-Date: Tue, 19 Jan 2021 17:10:34 +0100
-Message-Id: <1011b25c5e4e20d93ad1ce118dfdc9747467f852.1611072387.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v4 09/21] staging: hikey9xx: hi6421v600-regulator: update
+ copyright
+Date: Tue, 19 Jan 2021 17:10:35 +0100
+Message-Id: <8c0c517fe7c4a5afa7290f2a412d11562cd1ae75.1611072387.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611072387.git.mchehab+huawei@kernel.org>
 References: <cover.1611072387.git.mchehab+huawei@kernel.org>
@@ -77,127 +77,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In preparation for de-staging, do some cleanups:
-
-- Return error codes from hi6421_spmi_pmic_rmw();
-- Remove a debug message;
-- Change the module description;
-- a few minor coding style adjustments.
+Remove the GPL boilerplate, as SPDX tag already points to the
+license terms and add a new copyright for Huawei.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../staging/hikey9xx/hi6421v600-regulator.c   | 37 ++++++++-----------
- 1 file changed, 15 insertions(+), 22 deletions(-)
+ drivers/staging/hikey9xx/hi6421v600-regulator.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-index e25e596f58cf..564d86f0e4dc 100644
+index 564d86f0e4dc..5e78eebfc1f3 100644
 --- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
 +++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-@@ -117,6 +117,7 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
- {
- 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
-+	int ret;
+@@ -4,17 +4,9 @@
+ //
+ // Copyright (c) 2013 Linaro Ltd.
+ // Copyright (c) 2011 Hisilicon.
++// Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
+ //
+ // Guodong Xu <guodong.xu@linaro.org>
+-//
+-// This program is free software; you can redistribute it and/or modify
+-// it under the terms of the GNU General Public License version 2 as
+-// published by the Free Software Foundation.
+-//
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU General Public License for more details.
  
- 	/* cannot enable more than one regulator at one time */
- 	mutex_lock(&sreg->enable_mutex);
-@@ -124,13 +125,13 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
- 		     HISI_REGS_ENA_PROTECT_TIME + 1000);
- 
- 	/* set enable register */
--	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
--			     rdev->desc->enable_mask,
--			     rdev->desc->enable_mask);
-+	ret = hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
-+				   rdev->desc->enable_mask,
-+				   rdev->desc->enable_mask);
- 
- 	mutex_unlock(&sreg->enable_mutex);
- 
--	return 0;
-+	return ret;
- }
- 
- static int hi6421_spmi_regulator_disable(struct regulator_dev *rdev)
-@@ -139,10 +140,8 @@ static int hi6421_spmi_regulator_disable(struct regulator_dev *rdev)
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
- 
- 	/* set enable register to 0 */
--	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
--			     rdev->desc->enable_mask, 0);
--
--	return 0;
-+	return hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
-+				    rdev->desc->enable_mask, 0);
- }
- 
- static int hi6421_spmi_regulator_get_voltage_sel(struct regulator_dev *rdev)
-@@ -154,7 +153,7 @@ static int hi6421_spmi_regulator_get_voltage_sel(struct regulator_dev *rdev)
- 	/* get voltage selector */
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->vsel_reg);
- 
--	return (reg_val & rdev->desc->vsel_mask) >>	(ffs(rdev->desc->vsel_mask) - 1);
-+	return (reg_val & rdev->desc->vsel_mask) >> (ffs(rdev->desc->vsel_mask) - 1);
- }
- 
- static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
-@@ -164,16 +163,14 @@ static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
- 	u32 reg_val;
- 
--	if (unlikely(selector >= rdev->desc->n_voltages))
-+	if (selector >= rdev->desc->n_voltages)
- 		return -EINVAL;
- 
- 	reg_val = selector << (ffs(rdev->desc->vsel_mask) - 1);
- 
- 	/* set voltage selector */
--	hi6421_spmi_pmic_rmw(pmic, rdev->desc->vsel_reg,
--			     rdev->desc->vsel_mask, reg_val);
--
--	return 0;
-+	return hi6421_spmi_pmic_rmw(pmic, rdev->desc->vsel_reg,
-+				    rdev->desc->vsel_mask, reg_val);
- }
- 
- static unsigned int hi6421_spmi_regulator_get_mode(struct regulator_dev *rdev)
-@@ -209,10 +206,8 @@ static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
- 	}
- 
- 	/* set mode */
--	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
--			     sreg->eco_mode_mask, val);
--
--	return 0;
-+	return hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
-+				    sreg->eco_mode_mask, val);
- }
- 
- static unsigned int
-@@ -319,8 +314,6 @@ static int hi6421_spmi_regulator_probe(struct platform_device *pdev)
- 		/* assign per-regulator data */
- 		info = &regulator_info[i];
- 
--		dev_dbg(dev, "adding regulator %s\n", info->desc.name);
--
- 		config.dev = pdev->dev.parent;
- 		config.driver_data = sreg;
- 
-@@ -344,12 +337,12 @@ MODULE_DEVICE_TABLE(platform, hi6421_spmi_regulator_table);
- static struct platform_driver hi6421_spmi_regulator_driver = {
- 	.id_table = hi6421_spmi_regulator_table,
- 	.driver = {
--		.name	= "hi6421v600-regulator",
-+		.name = "hi6421v600-regulator",
- 	},
- 	.probe	= hi6421_spmi_regulator_probe,
- };
- module_platform_driver(hi6421_spmi_regulator_driver);
- 
--MODULE_DESCRIPTION("Hi6421v600 regulator driver");
-+MODULE_DESCRIPTION("Hi6421v600 SPMI regulator driver");
- MODULE_LICENSE("GPL v2");
- 
+ #include <linux/delay.h>
+ #include <linux/mfd/hi6421-spmi-pmic.h>
 -- 
 2.29.2
 
