@@ -1,59 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D53332FB551
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:27:04 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7610D2FB56E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:44:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 41C8784E49;
-	Tue, 19 Jan 2021 10:27:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 430F386F21;
+	Tue, 19 Jan 2021 10:44:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0fzT52odYZey; Tue, 19 Jan 2021 10:27:02 +0000 (UTC)
+	with ESMTP id UFqL+FwaH26K; Tue, 19 Jan 2021 10:44:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B6B3B84E74;
-	Tue, 19 Jan 2021 10:27:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C3C7386D73;
+	Tue, 19 Jan 2021 10:44:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 79BF31BF27F
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:27:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6F3D21BF27F
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:44:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 75EFD863D9
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:27:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6C2DA834E6
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:44:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MYNp+S7nItMj for <devel@linuxdriverproject.org>;
- Tue, 19 Jan 2021 10:26:59 +0000 (UTC)
+ with ESMTP id qg5gpBz0NnSf for <devel@linuxdriverproject.org>;
+ Tue, 19 Jan 2021 10:44:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8FC2786091
- for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:26:59 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B5DD42312B;
- Tue, 19 Jan 2021 10:26:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 36F3086731
+ for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:44:47 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7DBC623133;
+ Tue, 19 Jan 2021 10:44:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611052019;
- bh=Ar1/SklmNFyzFiDjsKFwakgEW96TKWupJSp0Bvsmmrk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=bsZ8Tz3WzvfuDSeraGRRIKOeIxd8F0dD5h3NBVe6NLv6nAXKyKRI6N4ZDXTk0OcOR
- 5SXBFK3z3rJFFybGYpXxLTNf5C2EjFikiD8i++3c2/zGAvcKGtrMaRrzUbqKhujrM8
- J10VpZuuHP4j19SRX/jhhbMqsswfsI34ZKo6B1eYXx1ho/XO3VY8lWF9N7AoCH2rQ3
- /mYUOzN+KMU40TscEcH9kfun7U1gGtHUzbm0rJCL/Lkq44zw5neqHluuvmScGhWOI4
- JfOHmSf49BH4Gx1Rd6dAbVz4LRFGpd2mSomCIL+iKPf4ylRiIRU0wM0cMzLd3CdCd6
- XScBmD8g/wm8Q==
-Date: Tue, 19 Jan 2021 11:26:53 +0100
+ s=k20201202; t=1611053086;
+ bh=rjcTlAC/ryp0e09HlnT0QF/xECvHei8ZjA0QvbaxLI4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=u9NBfYuKtP60Phebz8NRNodkxGaG8wIyIW/E1TTdRqgB1Lr5jpbxY0THwAbeqvR1d
+ amGecAkD0IvE5dxxaKW+JYh5XALCL13qLbzl1mMh+VaPNgxzoeip3aN1q8/lr9wUqr
+ wyZf6hC3PtiJZgTUDWQRmMCP4KZI31ngcSevAwht9aDs1e4CkYQYilHiIwlpMnOG5y
+ jEp7p8Iyp8zHfuayxfUtqB7Y+ghp7O7K8J/5wkdI5vL6nX1H5l9hw0FX4WYbfGRbt3
+ 2KcSU1587oBSi1B1WXMLIb/yKh7pBaYTkhaGzPBh2DfL8duXyaS3kVsJ6sFDJ61j8F
+ kQzyJAqvEovrQ==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1l1oVA-000u2D-2h; Tue, 19 Jan 2021 11:44:44 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 4/4] phy: phy-hi3670-usb3: move driver from staging
- into phy
-Message-ID: <20210119112653.46f26ce3@coco.lan>
-In-Reply-To: <20210115014731.GA4077569@robh.at.kernel.org>
-References: <cover.1610645385.git.mchehab+huawei@kernel.org>
- <78e54d594b9e31d603d913048a7bc89d3a089608.1610645385.git.mchehab+huawei@kernel.org>
- <20210115014731.GA4077569@robh.at.kernel.org>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+To: Vinod Koul <vkoul@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v4 0/5] Promote Hikey 970 USB phy out of staging
+Date: Tue, 19 Jan 2021 11:44:38 +0100
+Message-Id: <cover.1611052729.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,163 +67,71 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Yu Chen <chenyu56@huawei.com>,
  linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>, Alex Dewar <alex.dewar90@gmail.com>
+ Alex Dewar <alex.dewar90@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Thu, 14 Jan 2021 19:47:31 -0600
-Rob Herring <robh@kernel.org> escreveu:
+Hi Vinod/Rob,
 
-> On Thu, Jan 14, 2021 at 06:35:44PM +0100, Mauro Carvalho Chehab wrote:
-> > The phy USB3 driver for Hisilicon 970 (hi3670) is ready
-> > for mainstream. Mode it from staging into the main driver's
-> > phy/ directory.
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > ---
-> >  .../bindings/phy/phy-hi3670-usb3.yaml         |  72 ++
-> >  MAINTAINERS                                   |   9 +-
-> >  drivers/phy/hisilicon/Kconfig                 |  10 +
-> >  drivers/phy/hisilicon/Makefile                |   1 +
-> >  drivers/phy/hisilicon/phy-hi3670-usb3.c       | 668 ++++++++++++++++++
-> >  drivers/staging/hikey9xx/Kconfig              |  11 -
-> >  drivers/staging/hikey9xx/Makefile             |   2 -
-> >  drivers/staging/hikey9xx/phy-hi3670-usb3.c    | 668 ------------------
-> >  drivers/staging/hikey9xx/phy-hi3670-usb3.yaml |  72 --
-> >  9 files changed, 759 insertions(+), 754 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
-> >  create mode 100644 drivers/phy/hisilicon/phy-hi3670-usb3.c
-> >  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.c
-> >  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml b/Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
-> > new file mode 100644
-> > index 000000000000..125a5d6546ae
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/phy-hi3670-usb3.yaml
-> > @@ -0,0 +1,72 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/phy/hisilicon,hi3670-usb3.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Hisilicon Kirin970 USB PHY
-> > +
-> > +maintainers:
-> > +  - Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
-> 
-> Blank line.
+This series moves  the Hikey 970 USB PHY driver out of staging.
 
-Ok.
+Patches 1 to 4 contain the fixes from staging. Patch 5 moves the
+driver from staging:
 
-> 
-> > +description: |+
-> > +  Bindings for USB3 PHY on HiSilicon Kirin 970.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: hisilicon,hi3670-usb-phy
-> > +
-> > +  "#phy-cells":
-> > +    const: 0
-> > +
-> > +  hisilicon,pericrg-syscon:
-> > +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> > +    description: phandle of syscon used to control iso refclk.
-> > +
-> > +  hisilicon,pctrl-syscon:
-> > +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> > +    description: phandle of syscon used to control usb tcxo.
-> > +
-> > +  hisilicon,sctrl-syscon:
-> > +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> > +    description: phandle of syscon used to control phy deep sleep.
-> > +
-> > +  hisilicon,eye-diagram-param:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    description: Eye diagram for phy.
-> > +
-> > +  hisilicon,tx-vboost-lvl:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    description: TX level vboost for phy.
-> > +
-> > +required:
-> > +  - compatible
-> > +  - hisilicon,pericrg-syscon
-> > +  - hisilicon,pctrl-syscon
-> > +  - hisilicon,sctrl-syscon
-> > +  - hisilicon,eye-diagram-param
-> > +  - hisilicon,tx-vboost-lvl
-> > +  - "#phy-cells"
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    bus {
-> > +      #address-cells = <2>;
-> > +      #size-cells = <2>;
-> > +
-> > +      usb3_otg_bc: usb3_otg_bc@ff200000 {
-> > +        compatible = "syscon", "simple-mfd";
-> > +        reg = <0x0 0xff200000 0x0 0x1000>;
-> > +
-> > +        usb_phy {  
-> 
-> Is there a contiguous register region for this sub-block? If so, add 
-> 'reg' even though Linux doesn't need it currently.
+	$ git show 82ce73ac9a38 --summary
+	...
+	 rename drivers/staging/hikey9xx/phy-hi3670-usb3.yaml => Documentation/devicetree/bindings/phy/hisilicon,hi3670-usb3.yaml (100%)
+	 rename drivers/{staging/hikey9xx => phy/hisilicon}/phy-hi3670-usb3.c (100%)
 
-No. The driver uses 4 syscon regions in order to access the needed
-registers:
+I opted to use --no-renames on this series in order to make easier to
+review via e-mail, as the entire driver and DT bindings will be seen
+at the last patch on this series.
 
-	priv->peri_crg = syscon_regmap_lookup_by_phandle(dev->of_node,
-							 "hisilicon,pericrg-syscon");
-	if (IS_ERR(priv->peri_crg)) {
-		dev_err(dev, "no hisilicon,pericrg-syscon\n");
-		return PTR_ERR(priv->peri_crg);
-	}
 
-	priv->pctrl = syscon_regmap_lookup_by_phandle(dev->of_node,
-						      "hisilicon,pctrl-syscon");
-	if (IS_ERR(priv->pctrl)) {
-		dev_err(dev, "no hisilicon,pctrl-syscon\n");
-		return PTR_ERR(priv->pctrl);
-	}
+v4:
+- do additional changes at the hi3670_is_abbclk_seleted() function,
+  fixing the typo on its name and reversing the bool return code;
+- the yaml fix is now on a separate patch.
 
-	priv->sctrl = syscon_regmap_lookup_by_phandle(dev->of_node,
-						      "hisilicon,sctrl-syscon");
-	if (IS_ERR(priv->sctrl)) {
-		dev_err(dev, "no hisilicon,sctrl-syscon\n");
-		return PTR_ERR(priv->sctrl);
-	}
+v3: 
+- no changes on patches 1-2 nor at phy-hi3670-usb3.c;
+- yaml renamed to: hisilicon,hi3670-usb3.yaml 
+- Added a blank line after maintainers at hisilicon,hi3670-usb3.yaml 
 
-	/* node of hi3670 phy is a sub-node of usb3_otg_bc */
-	priv->usb31misc = syscon_node_to_regmap(dev->parent->of_node);
-	if (IS_ERR(priv->usb31misc)) {
-		dev_err(dev, "no hisilicon,usb3-otg-bc-syscon\n");
-		return PTR_ERR(priv->usb31misc);
-	}
 
-So, I don't see what an additional reg would help here.
 
-> > +          compatible = "hisilicon,hi3670-usb-phy";
-> > +          #phy-cells = <0>;
-> > +          hisilicon,pericrg-syscon = <&crg_ctrl>;
-> > +          hisilicon,pctrl-syscon = <&pctrl>;
-> > +          hisilicon,sctrl-syscon = <&sctrl>;
-> > +          hisilicon,eye-diagram-param = <0xfdfee4>;
-> > +          hisilicon,tx-vboost-lvl = <0x5>;
-> > +        };
-> > +      };
-> > +    };  
+Mauro Carvalho Chehab (5):
+  staging: hikey9xx: phy-hi3670-usb3: use bitfield macros
+  staging: hikey9xx: phy-hi3670-usb3: adjust retry logic
+  staging: hikey9xx: phy-hi3670-usb3: hi3670_is_abbclk_seleted() returns
+    bool
+  staging: hikey9xx: phy-hi3670-usb3.yaml: add a blank line
+  phy: phy-hi3670-usb3: move driver from staging into phy
 
-Thanks,
-Mauro
+ .../bindings/phy/hisilicon,hi3670-usb3.yaml   |  73 ++
+ MAINTAINERS                                   |   9 +-
+ drivers/phy/hisilicon/Kconfig                 |  10 +
+ drivers/phy/hisilicon/Makefile                |   1 +
+ drivers/phy/hisilicon/phy-hi3670-usb3.c       | 668 +++++++++++++++++
+ drivers/staging/hikey9xx/Kconfig              |  11 -
+ drivers/staging/hikey9xx/Makefile             |   2 -
+ drivers/staging/hikey9xx/phy-hi3670-usb3.c    | 671 ------------------
+ drivers/staging/hikey9xx/phy-hi3670-usb3.yaml |  72 --
+ 9 files changed, 760 insertions(+), 757 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/phy/hisilicon,hi3670-usb3.yaml
+ create mode 100644 drivers/phy/hisilicon/phy-hi3670-usb3.c
+ delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.c
+ delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+
+-- 
+2.29.2
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
