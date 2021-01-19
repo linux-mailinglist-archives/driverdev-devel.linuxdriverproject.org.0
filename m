@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B06922FBC09
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 17:11:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 057232FBC0F
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 17:11:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E8F888695A;
-	Tue, 19 Jan 2021 16:11:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A58348698B;
+	Tue, 19 Jan 2021 16:11:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5e1e4GGGaIRB; Tue, 19 Jan 2021 16:10:59 +0000 (UTC)
+	with ESMTP id ptbJxQFtPswl; Tue, 19 Jan 2021 16:11:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CF54481AE8;
-	Tue, 19 Jan 2021 16:10:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BDE9485693;
+	Tue, 19 Jan 2021 16:11:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8E1181BF576
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F394C1BF9B2
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8AE11851AA
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EECB41FD42
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 16:10:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IcbAVXKJh7ns for <devel@linuxdriverproject.org>;
+ with ESMTP id zZx8ldOdR9Fb for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 26E73844E7
+ by silver.osuosl.org (Postfix) with ESMTPS id 28E4620450
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 16:10:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 40FCC23121;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4316923131;
  Tue, 19 Jan 2021 16:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611072651;
- bh=HuED0fleILW116DXWL4/LVOkOe1VH+LKgrg9V6adeZg=;
+ bh=mbuAyjc4Gf5cdswGQdNod+LYe43pzG2SbMc0YDjJRSI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FHEQ9B3bEXQcsbYrj8BVPXJnRZYQMFCjxdZ6+pl+6D+2A1BQUG49xlMyT3fLs6y89
- uNWBFomqnsUbF8ljFTi7M0ExLgJ6sb1CcKRF4gbOgtWVUvUSZyrR8IGjWoZxoim4U9
- BWOga9qgK6x1hOQl0z/0E57EaNaqvqQee6ib6icGaQX9vQESAzptB6k0uAX7IW6rfR
- 3Nf0CbUd4YCQvdK/K46mc55+Ummo0XaBXOvNUgVaOxOXToZVrHj6gLDypjyI3u+n4W
- cH3YB8R8iXK+hBPlfGSJfyb4fmXW+42Gu4eeRR6QVgGvoGadsFCNhYyEyfSuf0uxvm
- RIgmL9Du1KDnA==
+ b=YLe8ECVsuT7TxA/IJPy8sm18v/l0vacr0z/vjGHTH2Zb7qwsz2gUB/aCv9lQi1Cxy
+ zgFdOGqjhyTDDxUBbnp3orDTmn7SmfvWW2wasGLlZxrPdG6Gm53bARtJQ6cEm2O2iV
+ CLzi9jEXUI4Z2sCS8lGFs08Wy+fMLlQaBqiXWHQ1uRer4v84xPWRVaY3ZUYVrkvIDJ
+ aXCpxZg+GlshT4FibZ8Amu753Vm/hLsToG73ggkIvmtUO08lYX/iPXxXI9drKlThD3
+ 5u1ikd3xLDFFbWzJ8s+dzw6PTB9yD0ejSfzL/9GZf/bdfuuBklTb3Z6fwh8+3jxzP9
+ yoWgH4EicTDHA==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1taj-0012bn-2q; Tue, 19 Jan 2021 17:10:49 +0100
+ id 1l1taj-0012bq-3g; Tue, 19 Jan 2021 17:10:49 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v4 09/21] staging: hikey9xx: hi6421v600-regulator: update
- copyright
-Date: Tue, 19 Jan 2021 17:10:35 +0100
-Message-Id: <8c0c517fe7c4a5afa7290f2a412d11562cd1ae75.1611072387.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v4 10/21] staging: hikey9xx: hi6421v600-regulator: fix delay
+ logic
+Date: Tue, 19 Jan 2021 17:10:36 +0100
+Message-Id: <d33d4221e0700b8c41f711936645f22c5daaa927.1611072387.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611072387.git.mchehab+huawei@kernel.org>
 References: <cover.1611072387.git.mchehab+huawei@kernel.org>
@@ -77,37 +77,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the GPL boilerplate, as SPDX tag already points to the
-license terms and add a new copyright for Huawei.
+The original driver, which can be seen at
+commit 42f24d9d446a ("staging: regulator: add a regulator driver for HiSilicon 6421v600 SPMI PMIC")
+had a complex logic to ensure that there won't be multiple power
+enable/disable commands running at the same time. At the original
+logic, it were ensured that:
+
+- a next power up/down would wait for at least the on/off period;
+- an extra delay would be granted. It turns that such extra delay
+  has a value of zero, but it was relying on gettimeofday()
+  call, which can take some time.
+
+This was later simplified, but there are still some possible
+issues. In order to avoid that, let's simply add a delay
+to wait for the power up line to stabilize after powering up
+a device.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421v600-regulator.c | 10 +---------
- 1 file changed, 1 insertion(+), 9 deletions(-)
+ drivers/staging/hikey9xx/hi6421v600-regulator.c | 5 +++--
+ include/linux/mfd/hi6421-spmi-pmic.h            | 1 -
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-index 564d86f0e4dc..5e78eebfc1f3 100644
+index 5e78eebfc1f3..e5a492ee7121 100644
 --- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
 +++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-@@ -4,17 +4,9 @@
- //
- // Copyright (c) 2013 Linaro Ltd.
- // Copyright (c) 2011 Hisilicon.
-+// Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
- //
- // Guodong Xu <guodong.xu@linaro.org>
--//
--// This program is free software; you can redistribute it and/or modify
--// it under the terms of the GNU General Public License version 2 as
--// published by the Free Software Foundation.
--//
--// This program is distributed in the hope that it will be useful,
--// but WITHOUT ANY WARRANTY; without even the implied warranty of
--// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--// GNU General Public License for more details.
+@@ -113,14 +113,15 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
  
- #include <linux/delay.h>
- #include <linux/mfd/hi6421-spmi-pmic.h>
+ 	/* cannot enable more than one regulator at one time */
+ 	mutex_lock(&sreg->enable_mutex);
+-	usleep_range(HISI_REGS_ENA_PROTECT_TIME,
+-		     HISI_REGS_ENA_PROTECT_TIME + 1000);
+ 
+ 	/* set enable register */
+ 	ret = hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
+ 				   rdev->desc->enable_mask,
+ 				   rdev->desc->enable_mask);
+ 
++	/* Avoid powering up multiple devices at the same time */
++	usleep_range(rdev->desc->off_on_delay, rdev->desc->off_on_delay + 60);
++
+ 	mutex_unlock(&sreg->enable_mutex);
+ 
+ 	return ret;
+diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
+index 2c8896fd852e..0c2214612c4e 100644
+--- a/include/linux/mfd/hi6421-spmi-pmic.h
++++ b/include/linux/mfd/hi6421-spmi-pmic.h
+@@ -13,7 +13,6 @@
+ 
+ #include <linux/irqdomain.h>
+ 
+-#define HISI_REGS_ENA_PROTECT_TIME	(0)	/* in microseconds */
+ #define HISI_ECO_MODE_ENABLE		(1)
+ #define HISI_ECO_MODE_DISABLE		(0)
+ 
 -- 
 2.29.2
 
