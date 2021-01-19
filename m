@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 098102FB532
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75BB72FB534
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:15:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D9EAF204CA;
-	Tue, 19 Jan 2021 10:14:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 14A60203C7;
+	Tue, 19 Jan 2021 10:15:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5y0kgVMCvTqb; Tue, 19 Jan 2021 10:14:44 +0000 (UTC)
+	with ESMTP id okGm+jk1iDjQ; Tue, 19 Jan 2021 10:14:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B24A520477;
-	Tue, 19 Jan 2021 10:14:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 16B2E204DA;
+	Tue, 19 Jan 2021 10:14:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 26E941BF27F
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B7CAC1BF27F
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 24156843ED
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B3AEF861AB
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HaIi-R0d3nDu for <devel@linuxdriverproject.org>;
+ with ESMTP id AeJoTEAQX6BC for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C95218441F
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B6C8F86091
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 10C5323133;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0097423119;
  Tue, 19 Jan 2021 10:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611051267;
- bh=ym77ocWKV10S+hX38ZBtUuhXsAT7fhTK688EHVretXs=;
+ bh=heSPP3aRBgBZFx/Q0SMe/3RDJAAippqxfJey05I92D4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=PYz9pscn2Sm9xqEgtWOZx8a7munbIVsulk2a0oIjnNtUoq2TSvYayJdwht40NCsy9
- dnC6TD6vNXqvKfuqxRRzxVhl7DVN4hI0WeApi0XWHo39XIhz4qVCtlGVw7jd2WohwF
- k7y3IaxDpw0tJj4LlV8G3cJEoHTQiLkJUNUudM1mDj+0heiXd9NqnbdOFPsN8WV8Js
- EmOXEXKJQs2r6l7IIsLNAghOmBIE+906nFl2MfnQLf8mMq0b97uKxK6Ft7eOArtGL0
- jA/2j6Pqy/vh1XhC+X39qjeSnQmTq5OYBL35IebRJOjSsqqd7va5IWQP8sSux7dR/C
- sdkSEh1fK7a3g==
+ b=AUQLTsyznHmg0lqExXPNf/meSDtv4m2D5EcSO+2KdTfaPE/oawiw1JuDXJiLyxiXu
+ s2HNZH7DEm13TtU8Tg45XmQcyqjMjdhr8ipfVBXE6I+087Li14lkYNVYJeOSqn1MCT
+ yCe2VIZeEZhxFr6n7zqqHVankdcSTe7AHkigRy4hI9tgqpR4Bqu5IrpBo26I/gEpnI
+ 2LuEHwWkFLWULOoVK7QU4TDc0bCT8TSmMb8YVt+FG3FKI9cODizmj50N2Z7SBCYJku
+ pbFP4tAgHEblmI7O/AQ/ExKejUlb9eo/98rKxc60HyILk/9z14+L5YegsE+8pqXQb+
+ j3Zi6d8HVee7w==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1o1o-000tOe-IM; Tue, 19 Jan 2021 11:14:24 +0100
+ id 1l1o1o-000tOg-JT; Tue, 19 Jan 2021 11:14:24 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v3 02/18] staging: hikey9xx: hisilicon,
- hi6421-spmi-pmic.yaml: simplify props
-Date: Tue, 19 Jan 2021 11:14:07 +0100
-Message-Id: <bfb4ecb4a6b830259f59bfe1da203d9c01997d2f.1611048785.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 03/18] staging: hikey9xx: hisi-spmi-controller: clean
+ sparse warnings
+Date: Tue, 19 Jan 2021 11:14:08 +0100
+Message-Id: <20bf465025b1b37ead9429663a54055ae16b6a40.1611048785.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611048785.git.mchehab+huawei@kernel.org>
 References: <cover.1611048785.git.mchehab+huawei@kernel.org>
@@ -69,158 +69,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
+ Colin Ian King <colin.king@canonical.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As all regulator-specific properties got moved to be part of the
-driver, remove them from the DT spec.
+Sparse complains about __be32 conversions:
+
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:164:24:      warning: cast to restricted __be32
+    drivers/spmi/hisi-spmi-controller.c drivers/spmi/hisi-spmi-controller.c:239:17:      warning: cast from restricted __be32
+
+The conversions there are valid ones. So, add __force macro
+to disable such warnings.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../hikey9xx/hisilicon,hi6421-spmi-pmic.yaml  | 106 +++++++-----------
- 1 file changed, 40 insertions(+), 66 deletions(-)
+ drivers/staging/hikey9xx/hisi-spmi-controller.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-index 80e74c261e05..f385146d2bd1 100644
---- a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-+++ b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-@@ -55,47 +55,6 @@ properties:
+diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/staging/hikey9xx/hisi-spmi-controller.c
+index f831c43f4783..4be2344ad7b5 100644
+--- a/drivers/staging/hikey9xx/hisi-spmi-controller.c
++++ b/drivers/staging/hikey9xx/hisi-spmi-controller.c
+@@ -161,7 +161,7 @@ static int spmi_read_cmd(struct spmi_controller *ctrl,
+ 			     SPMI_SLAVE_OFFSET * slave_id +
+ 			     SPMI_APB_SPMI_RDATA0_BASE_ADDR +
+ 			     i * SPMI_PER_DATAREG_BYTE);
+-		data = be32_to_cpu((__be32)data);
++		data = be32_to_cpu((__force __be32)data);
+ 		if ((bc - i * SPMI_PER_DATAREG_BYTE) >> 2) {
+ 			memcpy(buf, &data, sizeof(data));
+ 			buf += sizeof(data);
+@@ -236,7 +236,7 @@ static int spmi_write_cmd(struct spmi_controller *ctrl,
+ 			buf += (bc % SPMI_PER_DATAREG_BYTE);
+ 		}
  
-         $ref: "/schemas/regulator/regulator.yaml#"
- 
--        properties:
--          reg:
--            description: Enable register.
--
--          '#address-cells':
--            const: 1
--
--          '#size-cells':
--            const: 0
--
--          vsel-reg:
--            description: Voltage selector register.
--
--          enable-mask:
--            description: Bitmask used to enable the regulator.
--
--          voltage-table:
--            description: Table with the selector items for the voltage regulator.
--            minItems: 2
--            maxItems: 16
--
--          off-on-delay-us:
--            description: Time required for changing state to enabled in microseconds.
--
--          startup-delay-us:
--            description: Startup time in microseconds.
--
--          idle-mode-mask:
--            description: Bitmask used to put the regulator on idle mode.
--
--          eco-microamp:
--            description: Maximum current while on idle mode.
--
--        required:
--          - reg
--          - vsel-reg
--          - enable-mask
--          - voltage-table
--          - off-on-delay-us
--          - startup-delay-us
--
- required:
-   - compatible
-   - reg
-@@ -117,43 +76,58 @@ examples:
-         #address-cells = <1>;
-         #size-cells = <0>;
- 
--        ldo3: ldo3@16 {
--          reg = <0x16>;
--          vsel-reg = <0x51>;
--
-+        ldo3: LDO3 {
-           regulator-name = "ldo3";
-           regulator-min-microvolt = <1500000>;
-           regulator-max-microvolt = <2000000>;
-           regulator-boot-on;
--
--          enable-mask = <0x01>;
--
--          voltage-table = <1500000>, <1550000>, <1600000>, <1650000>,
--                          <1700000>, <1725000>, <1750000>, <1775000>,
--                          <1800000>, <1825000>, <1850000>, <1875000>,
--                          <1900000>, <1925000>, <1950000>, <2000000>;
--          off-on-delay-us = <20000>;
--          startup-delay-us = <120>;
-         };
- 
--        ldo4: ldo4@17 { /* 40 PIN */
--          reg = <0x17>;
--          vsel-reg = <0x52>;
--
-+        ldo4: LDO4 {
-           regulator-name = "ldo4";
-           regulator-min-microvolt = <1725000>;
-           regulator-max-microvolt = <1900000>;
-           regulator-boot-on;
-+        };
- 
--          enable-mask = <0x01>;
--          idle-mode-mask = <0x10>;
--          eco-microamp = <10000>;
-+        ldo9: LDO9 {
-+          regulator-name = "ldo9";
-+          regulator-min-microvolt = <1750000>;
-+          regulator-max-microvolt = <3300000>;
-+          regulator-boot-on;
-+        };
- 
--          hi6421-vsel = <0x52 0x07>;
--          voltage-table = <1725000>, <1750000>, <1775000>, <1800000>,
--                          <1825000>, <1850000>, <1875000>, <1900000>;
--          off-on-delay-us = <20000>;
--          startup-delay-us = <120>;
-+        ldo15: LDO15 {
-+          regulator-name = "ldo15";
-+          regulator-min-microvolt = <1800000>;
-+          regulator-max-microvolt = <3000000>;
-+          regulator-always-on;
-+        };
-+
-+        ldo16: LDO16 {
-+          regulator-name = "ldo16";
-+          regulator-min-microvolt = <1800000>;
-+          regulator-max-microvolt = <3000000>;
-+          regulator-boot-on;
-+        };
-+
-+        ldo17: LDO17 {
-+          regulator-name = "ldo17";
-+          regulator-min-microvolt = <2500000>;
-+          regulator-max-microvolt = <3300000>;
-+        };
-+
-+        ldo33: LDO33 {
-+          regulator-name = "ldo33";
-+          regulator-min-microvolt = <2500000>;
-+          regulator-max-microvolt = <3300000>;
-+          regulator-boot-on;
-+        };
-+
-+        ldo34: LDO34 {
-+          regulator-name = "ldo34";
-+          regulator-min-microvolt = <2600000>;
-+          regulator-max-microvolt = <3300000>;
-         };
-       };
-     };
+-		writel((u32)cpu_to_be32(data),
++		writel((__force u32)cpu_to_be32(data),
+ 		       spmi_controller->base + chnl_ofst +
+ 		       SPMI_APB_SPMI_WDATA0_BASE_ADDR +
+ 		       SPMI_PER_DATAREG_BYTE * i);
 -- 
 2.29.2
 
