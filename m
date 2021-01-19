@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EEC12FB570
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:44:58 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43B892FB56C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:44:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A5DAF86759;
-	Tue, 19 Jan 2021 10:44:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 235A086EA3;
+	Tue, 19 Jan 2021 10:44:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F9fqTVWa009k; Tue, 19 Jan 2021 10:44:56 +0000 (UTC)
+	with ESMTP id dlWgysnZ7OcJ; Tue, 19 Jan 2021 10:44:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7F14786443;
-	Tue, 19 Jan 2021 10:44:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6D24D86D52;
+	Tue, 19 Jan 2021 10:44:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EA7A51BF27F
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:44:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9059E1BF27F
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:44:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E781A834E6
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:44:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8A97F834E6
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:44:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ioqnS+XHJVji for <devel@linuxdriverproject.org>;
+ with ESMTP id FcE+KqTVZT9R for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 10:44:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2921C8672B
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1761186443
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:44:47 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 82C2C23135;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5FF612312E;
  Tue, 19 Jan 2021 10:44:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611053086;
- bh=j5TNAkUnCDVkwUohdOLjCc2ujRXRd6fxt6gLz8EHDEE=;
+ bh=73sR10wECqQUqw6UkBdoCbc/733OkO6ECg5/oQb+LQs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZyPpU79u7fO1rlEsEhxDzUs9Kpp+YyDGVWR85EerNG7VYndiuXUxRUdex8fFekZQx
- ReIjmcoN0WuHD9j3nJ/ep9297PY/+lkmCPg3dhcYOADLzyIrImzZiRbst8dJ0JPhYZ
- NwdFL0QKmC360ooidGe4zr8W6sHmxnS8KNpCVsZFrRoBX38cDefOIhWgiBO5g40C23
- ErDDlAqIjpFy93BSzwVoPK686IO8d4ocoyh2YfBaTF/x2D106v4dSEBMtS8/MbAzx8
- 7T5fS+yhMwzT6WoRWtPdhTsvQeXiI58NgLI+z7SEgzahOITuLqAq08XLslnHtCMaO4
- Sonfwo/NpyNUg==
+ b=NDIcbPAb9o6Mk2q/aSQ4tBHvN0nXxtIZASJtDRoiQDeKXEuBcNO857UKzqqc1t4vO
+ EEWHS8bk5vr3uzaM9pCCUZNagjSgDsSwatD3ROTUmPQD0LAqqAf+XFOGYuPfx7x9Wz
+ mF0aZLGi/tkPu+7F17oiw65ESM+HbL6MX+BNPRM3CzE1NwUknbGsPKx7Jk/agsnEgw
+ osOM1zd6nJ8sygeyhPB1cGtwRNI4iT0BdgpEqHZdeH9+q+4Pv39bWfzPJplAGRNGkI
+ lhBhbmZJVDuewj5FC18y320PflUXVEHOcAhw4Cl0P+sEhe/8zjsWgAHo+LcjF4MMfQ
+ 7Wqahle3pu6bQ==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1oVA-000u2F-3z; Tue, 19 Jan 2021 11:44:44 +0100
+ id 1l1oVA-000u2H-5k; Tue, 19 Jan 2021 11:44:44 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Vinod Koul <vkoul@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 1/5] staging: hikey9xx: phy-hi3670-usb3: use bitfield macros
-Date: Tue, 19 Jan 2021 11:44:39 +0100
-Message-Id: <ac56b97a99ec278d2f40e07e7e07adef36d45d09.1611052729.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v4 2/5] staging: hikey9xx: phy-hi3670-usb3: adjust retry logic
+Date: Tue, 19 Jan 2021 11:44:40 +0100
+Message-Id: <b653d7d6073de176598a5026c41b1a845f360c9e.1611052729.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611052729.git.mchehab+huawei@kernel.org>
 References: <cover.1611052729.git.mchehab+huawei@kernel.org>
@@ -77,170 +77,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleanup the bitfield macros by using FIELD_PREP() and GENMASK().
+Instead of running a loop up to 100k times, add a small
+delay inside it, running it up to 10 times, waiting up
+to 100-200 us.
 
-While here, place all hexadecimal values in lowercase.
+It should be noticed that I don't have the datasheet for
+this PHY. So, not sure if this time will cover all
+situations.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/phy-hi3670-usb3.c | 61 ++++++++++------------
- 1 file changed, 28 insertions(+), 33 deletions(-)
+ drivers/staging/hikey9xx/phy-hi3670-usb3.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/hikey9xx/phy-hi3670-usb3.c b/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-index 4fc013911a78..722cabaa9bd9 100644
+index 722cabaa9bd9..cffe6c58dfd7 100644
 --- a/drivers/staging/hikey9xx/phy-hi3670-usb3.c
 +++ b/drivers/staging/hikey9xx/phy-hi3670-usb3.c
-@@ -8,6 +8,7 @@
-  * Authors: Yu Chen <chenyu56@huawei.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/clk.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
-@@ -41,15 +42,15 @@
- #define SC_CLK_USB3PHY_3MUX1_SEL	BIT(25)
- 
- #define USB3OTG_CTRL0			(0x00)
--#define USB3OTG_CTRL3			(0x0C)
-+#define USB3OTG_CTRL3			(0x0c)
- #define USB3OTG_CTRL4			(0x10)
- #define USB3OTG_CTRL5			(0x14)
--#define USB3OTG_CTRL7			(0x1C)
-+#define USB3OTG_CTRL7			(0x1c)
- #define USB_MISC_CFG50			(0x50)
- #define USB_MISC_CFG54			(0x54)
- #define USB_MISC_CFG58			(0x58)
--#define USB_MISC_CFG5C			(0x5C)
--#define USB_MISC_CFGA0			(0xA0)
-+#define USB_MISC_CFG5C			(0x5c)
-+#define USB_MISC_CFGA0			(0xa0)
- #define TCA_CLK_RST			(0x200)
- #define TCA_INTR_EN			(0x204)
- #define TCA_INTR_STS			(0x208)
-@@ -66,14 +67,14 @@
- 
- #define CTRL5_USB2_SIDDQ		BIT(0)
- 
--#define CTRL7_USB2_REFCLKSEL_MASK	(3 << 3)
--#define CTRL7_USB2_REFCLKSEL_ABB	(3 << 3)
--#define CTRL7_USB2_REFCLKSEL_PAD	(2 << 3)
-+#define CTRL7_USB2_REFCLKSEL_MASK	GENMASK(4, 3)
-+#define CTRL7_USB2_REFCLKSEL_ABB	(BIT(4) | BIT(3))
-+#define CTRL7_USB2_REFCLKSEL_PAD	BIT(4)
- 
- #define CFG50_USB3_PHY_TEST_POWERDOWN	BIT(23)
- 
--#define CFG54_USB31PHY_CR_ADDR_MASK	(0xFFFF)
--#define CFG54_USB31PHY_CR_ADDR_SHIFT	(16)
-+#define CFG54_USB31PHY_CR_ADDR_MASK	GENMASK(31, 16)
-+
- #define CFG54_USB3PHY_REF_USE_PAD	BIT(12)
- #define CFG54_PHY0_PMA_PWR_STABLE	BIT(11)
- #define CFG54_PHY0_PCS_PWR_STABLE	BIT(9)
-@@ -84,8 +85,7 @@
- #define CFG54_USB31PHY_CR_CLK		BIT(2)
- #define CFG54_USB3_PHY0_ANA_PWR_EN	BIT(1)
- 
--#define CFG58_USB31PHY_CR_DATA_MASK     (0xFFFF)
--#define CFG58_USB31PHY_CR_DATA_RD_START (16)
-+#define CFG58_USB31PHY_CR_DATA_MASK     GENMASK(31, 16)
- 
- #define CFG5C_USB3_PHY0_SS_MPLLA_SSC_EN	BIT(1)
- 
-@@ -102,20 +102,20 @@
- #define CLK_RST_SUSPEND_CLK_EN		BIT(0)
- 
- #define GCFG_ROLE_HSTDEV		BIT(4)
--#define GCFG_OP_MODE			(3 << 0)
-+#define GCFG_OP_MODE			GENMASK(1, 0)
- #define GCFG_OP_MODE_CTRL_SYNC_MODE	BIT(0)
- 
- #define TCPC_VALID			BIT(4)
- #define TCPC_LOW_POWER_EN		BIT(3)
--#define TCPC_MUX_CONTROL_MASK		(3 << 0)
-+#define TCPC_MUX_CONTROL_MASK		GENMASK(1, 0)
- #define TCPC_MUX_CONTROL_USB31		BIT(0)
- 
- #define SYSMODE_CFG_TYPEC_DISABLE	BIT(3)
- 
--#define VBUS_CTRL_POWERPRESENT_OVERRD	(3 << 2)
--#define VBUS_CTRL_VBUSVALID_OVERRD	(3 << 0)
-+#define VBUS_CTRL_POWERPRESENT_OVERRD	GENMASK(3, 2)
-+#define VBUS_CTRL_VBUSVALID_OVERRD	GENMASK(1, 0)
- 
--#define KIRIN970_USB_DEFAULT_PHY_PARAM	(0xFDFEE4)
-+#define KIRIN970_USB_DEFAULT_PHY_PARAM	(0xfdfee4)
- #define KIRIN970_USB_DEFAULT_PHY_VBOOST	(0x5)
- 
- #define TX_VBOOST_LVL_REG		(0xf)
-@@ -162,16 +162,14 @@ static int hi3670_phy_cr_set_sel(struct regmap *usb31misc)
- 
- static int hi3670_phy_cr_start(struct regmap *usb31misc, int direction)
- {
--	int ret;
-+	int ret, reg;
- 
- 	if (direction)
--		ret = regmap_update_bits(usb31misc, USB_MISC_CFG54,
--					 CFG54_USB31PHY_CR_WR_EN,
--					 CFG54_USB31PHY_CR_WR_EN);
-+		reg = CFG54_USB31PHY_CR_WR_EN;
- 	else
--		ret = regmap_update_bits(usb31misc, USB_MISC_CFG54,
--					 CFG54_USB31PHY_CR_RD_EN,
--					 CFG54_USB31PHY_CR_RD_EN);
-+		reg = CFG54_USB31PHY_CR_RD_EN;
-+
-+	ret = regmap_update_bits(usb31misc, USB_MISC_CFG54, reg, reg);
- 
- 	if (ret)
- 		return ret;
-@@ -180,10 +178,8 @@ static int hi3670_phy_cr_start(struct regmap *usb31misc, int direction)
- 	if (ret)
- 		return ret;
- 
--	ret = regmap_update_bits(usb31misc, USB_MISC_CFG54,
--				 CFG54_USB31PHY_CR_RD_EN | CFG54_USB31PHY_CR_WR_EN, 0);
--
--	return ret;
-+	return regmap_update_bits(usb31misc, USB_MISC_CFG54,
-+				  CFG54_USB31PHY_CR_RD_EN | CFG54_USB31PHY_CR_WR_EN, 0);
- }
- 
+@@ -185,7 +185,7 @@ static int hi3670_phy_cr_start(struct regmap *usb31misc, int direction)
  static int hi3670_phy_cr_wait_ack(struct regmap *usb31misc)
-@@ -216,9 +212,9 @@ static int hi3670_phy_cr_set_addr(struct regmap *usb31misc, u32 addr)
- 	if (ret)
- 		return ret;
+ {
+ 	u32 reg;
+-	int retry = 100000;
++	int retry = 10;
+ 	int ret;
  
--	reg &= ~(CFG54_USB31PHY_CR_ADDR_MASK << CFG54_USB31PHY_CR_ADDR_SHIFT);
--	reg |= ((addr & CFG54_USB31PHY_CR_ADDR_MASK) << CFG54_USB31PHY_CR_ADDR_SHIFT);
--	ret = regmap_write(usb31misc, USB_MISC_CFG54, reg);
-+	reg = FIELD_PREP(CFG54_USB31PHY_CR_ADDR_MASK, addr);
-+	ret = regmap_update_bits(usb31misc, USB_MISC_CFG54,
-+				 CFG54_USB31PHY_CR_ADDR_MASK, reg);
+ 	while (retry-- > 0) {
+@@ -198,6 +198,8 @@ static int hi3670_phy_cr_wait_ack(struct regmap *usb31misc)
+ 		ret = hi3670_phy_cr_clk(usb31misc);
+ 		if (ret)
+ 			return ret;
++
++		usleep_range(10, 20);
+ 	}
  
- 	return ret;
- }
-@@ -255,8 +251,7 @@ static int hi3670_phy_cr_read(struct regmap *usb31misc, u32 addr, u32 *val)
- 	if (ret)
- 		return ret;
- 
--	*val = (reg >> CFG58_USB31PHY_CR_DATA_RD_START) &
--		CFG58_USB31PHY_CR_DATA_MASK;
-+	*val = FIELD_GET(CFG58_USB31PHY_CR_DATA_MASK, reg);
- 
- 	return 0;
- }
-@@ -281,7 +276,7 @@ static int hi3670_phy_cr_write(struct regmap *usb31misc, u32 addr, u32 val)
- 		return ret;
- 
- 	ret = regmap_write(usb31misc, USB_MISC_CFG58,
--			   val & CFG58_USB31PHY_CR_DATA_MASK);
-+			   FIELD_PREP(CFG58_USB31PHY_CR_DATA_MASK, val));
- 	if (ret)
- 		return ret;
- 
+ 	return -ETIMEDOUT;
 -- 
 2.29.2
 
