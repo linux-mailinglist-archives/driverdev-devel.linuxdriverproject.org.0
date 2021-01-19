@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 496FE2FB528
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:40 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D66C72FB531
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBEE5866B9;
-	Tue, 19 Jan 2021 10:14:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1BC7B204E7;
+	Tue, 19 Jan 2021 10:14:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xDN3R+S5+k6p; Tue, 19 Jan 2021 10:14:38 +0000 (UTC)
+	with ESMTP id OP+0A-F6eCV6; Tue, 19 Jan 2021 10:14:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DC9DD86661;
-	Tue, 19 Jan 2021 10:14:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E525E2044B;
+	Tue, 19 Jan 2021 10:14:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E1C5D1BF9BD
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D13FF1BF9B2
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DB45286B2C
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CE923864D7
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XpFSka7i+AAi for <devel@linuxdriverproject.org>;
+ with ESMTP id PaK6KSOD9vr2 for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CA94586C0A
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B7A73861AB
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0C01523131;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 07FDC2312D;
  Tue, 19 Jan 2021 10:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611051267;
- bh=WCeeeo5tB7di/O38tXWCfrzQBOZ8xAKFt+MaNDaC8nk=;
+ bh=IpeT4f8JXrVnsFJHt6Enkj704N8aVAQGXWVcjhCAoIY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=NDOVRjwgsgMnMV0n1yvnvBLuwzRdcuxQ7E/mwdgzswZ1JwxZgr9zr096Ogr+Trmfe
- +B7UigkVuZBH9qOhyY/jfAvZegWUW+sWhOf+9BV6z7oIVfDesCyVagKNFBtQgT4a05
- WhQtxgR4O5ZRSsUYHU5j1DNvlK8UYuaSzedDJK+oltIoqEOGv5UvLuKrz4eUIHJLJO
- F7eECbwYcxHuWexEZMymzCH1EEyWtw+WyNqXxFPs343f23GlRb1xcvkUMWEOIrcT6Q
- 6KWXHIUNec/7Wn25UczeOgZoCAH51WNA47CHWY3YuhZbrtbYzvQT4CEfYY9ayBXj4h
- dGAL7MtKz41nw==
+ b=av31pOUhbBdpgLTyP8C4PAXu0wdYuoorgxJXoi2EFiiKNPrtXzQRfD/JL+bc2onkd
+ ORVu5DnGQ4KWGphG2IUIEP1xniFF7ShMwsjKapzD+GoT0x+l16XNDw+o/5G8khJbPT
+ 1d5IK5CaAGee7FElStdoAydE/qhgfuBLZ1dS0IVN2p3IyClM+PfhryHtnAPph4oec/
+ 2/HCyvjM/5fWWbt+z63kZrRMLirFa/f8QD/t9Ae6v88vImxm6emuMIm+easIYjofKF
+ alIllAsh598hwOBUKUQ5FJgBEF0YOj4APLv8lxFttI7gDmWCSAbA6uSLVZWs73Pavu
+ CijX13LT+1MRg==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1o1o-000tOx-RU; Tue, 19 Jan 2021 11:14:24 +0100
+ id 1l1o1o-000tP0-SG; Tue, 19 Jan 2021 11:14:24 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v3 10/18] staging: hikey9xx: hi6421v600-regulator: fix delay
- logic
-Date: Tue, 19 Jan 2021 11:14:15 +0100
-Message-Id: <749073392fa6d6a76c10b947df6493be821116eb.1611048785.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 11/18] staging: hikey9xx: hi6421v600-regulator: cleanup
+ comments
+Date: Tue, 19 Jan 2021 11:14:16 +0100
+Message-Id: <871347dc3e67d111a4047675d04136958b35844a.1611048785.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611048785.git.mchehab+huawei@kernel.org>
 References: <cover.1611048785.git.mchehab+huawei@kernel.org>
@@ -77,62 +77,91 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The original driver, which can be seen at
-commit 42f24d9d446a ("staging: regulator: add a regulator driver for HiSilicon 6421v600 SPMI PMIC")
-had a complex logic to ensure that there won't be multiple power
-enable/disable commands running at the same time. At the original
-logic, it were ensured that:
+Remove obvious comments and fix the comment for the
+HI6421V600_LDO() macro.
 
-- a next power up/down would wait for at least the on/off period;
-- an extra delay would be granted. It turns that such extra delay
-  has a value of zero, but it was relying on gettimeofday()
-  call, which can take some time.
-
-This was later simplified, but there are still some possible
-issues. In order to avoid that, let's simply add a delay
-to wait for the power up line to stabilize after powering up
-a device.
+While on it, use kernel-doc notation for HI6421V600_LDO(),
+as kernel-doc can check if the arguments match its
+description.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421v600-regulator.c | 5 +++--
- include/linux/mfd/hi6421-spmi-pmic.h            | 1 -
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ .../staging/hikey9xx/hi6421v600-regulator.c   | 27 ++++++++-----------
+ 1 file changed, 11 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-index 35a72ea1bd14..f728118e84c0 100644
+index f728118e84c0..72dd779d85e6 100644
 --- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
 +++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-@@ -113,14 +113,15 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
+@@ -57,17 +57,17 @@ static const unsigned int ldo34_voltages[] = {
+ 	3000000, 3100000, 3200000, 3300000
+ };
  
+-/*
+- * _id - LDO id name string
+- * _match - of match name string
+- * v_table - voltage table
+- * vreg - voltage select register
+- * vmask - voltage select mask
+- * ereg - enable register
+- * emask - enable mask
+- * odelay - off/on delay time in uS
+- * ecomask - eco mode mask
+- * ecoamp - eco mode load uppler limit in uA
++/**
++ * HI6421V600_LDO() - specify a LDO power line
++ * @_id: LDO id name string
++ * @vtable: voltage table
++ * @ereg: enable register
++ * @emask: enable mask
++ * @vreg: voltage select register
++ * @odelay: off/on delay time in uS
++ * @etime: enable time in uS
++ * @ecomask: eco mode mask
++ * @ecoamp: eco mode load uppler limit in uA
+  */
+ #define HI6421V600_LDO(_id, vtable, ereg, emask, vreg,			       \
+ 		       odelay, etime, ecomask, ecoamp)			       \
+@@ -114,7 +114,6 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
  	/* cannot enable more than one regulator at one time */
  	mutex_lock(&sreg->enable_mutex);
--	usleep_range(HISI_REGS_ENA_PROTECT_TIME,
--		     HISI_REGS_ENA_PROTECT_TIME + 1000);
  
- 	/* set enable register */
+-	/* set enable register */
  	ret = hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
  				   rdev->desc->enable_mask,
  				   rdev->desc->enable_mask);
+@@ -132,7 +131,6 @@ static int hi6421_spmi_regulator_disable(struct regulator_dev *rdev)
+ 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
+ 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
  
-+	/* Avoid powering up multiple devices at the same time */
-+	usleep_range(rdev->desc->off_on_delay, rdev->desc->off_on_delay + 60);
-+
- 	mutex_unlock(&sreg->enable_mutex);
+-	/* set enable register to 0 */
+ 	return hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
+ 				    rdev->desc->enable_mask, 0);
+ }
+@@ -143,7 +141,6 @@ static int hi6421_spmi_regulator_get_voltage_sel(struct regulator_dev *rdev)
+ 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
+ 	u32 reg_val;
  
- 	return ret;
-diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
-index 2c8896fd852e..0c2214612c4e 100644
---- a/include/linux/mfd/hi6421-spmi-pmic.h
-+++ b/include/linux/mfd/hi6421-spmi-pmic.h
-@@ -13,7 +13,6 @@
+-	/* get voltage selector */
+ 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->vsel_reg);
  
- #include <linux/irqdomain.h>
+ 	return (reg_val & rdev->desc->vsel_mask) >> (ffs(rdev->desc->vsel_mask) - 1);
+@@ -198,7 +195,6 @@ static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
+ 		return -EINVAL;
+ 	}
  
--#define HISI_REGS_ENA_PROTECT_TIME	(0)	/* in microseconds */
- #define HISI_ECO_MODE_ENABLE		(1)
- #define HISI_ECO_MODE_DISABLE		(0)
+-	/* set mode */
+ 	return hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
+ 				    sreg->eco_mode_mask, val);
+ }
+@@ -304,7 +300,6 @@ static int hi6421_spmi_regulator_probe(struct platform_device *pdev)
+ 	mutex_init(&sreg->enable_mutex);
  
+ 	for (i = 0; i < ARRAY_SIZE(regulator_info); i++) {
+-		/* assign per-regulator data */
+ 		info = &regulator_info[i];
+ 
+ 		config.dev = pdev->dev.parent;
 -- 
 2.29.2
 
