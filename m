@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 859B92FB526
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:37 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D9862FB529
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B5CFD84E49;
-	Tue, 19 Jan 2021 10:14:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 36F0586D2D;
+	Tue, 19 Jan 2021 10:14:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yFKNYaVjf5HT; Tue, 19 Jan 2021 10:14:35 +0000 (UTC)
+	with ESMTP id s+CgckmDRn0F; Tue, 19 Jan 2021 10:14:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A1EF8441F;
-	Tue, 19 Jan 2021 10:14:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A7AC386B2C;
+	Tue, 19 Jan 2021 10:14:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B80421BF27F
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F2C211BF9C2
  for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A97BD20108
+ by whitealder.osuosl.org (Postfix) with ESMTP id EE11786650
  for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e-TXmh5AWgTj for <devel@linuxdriverproject.org>;
+ with ESMTP id bPNahMX3O1FL for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id DFC2C2002E
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C6D63864D7
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 14BBF23135;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 16B5C23137;
  Tue, 19 Jan 2021 10:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611051267;
- bh=f70VrjUazjIsj4geHIDw8iQGbGJuOPNIJZNEMBLszRg=;
+ bh=QCx692mEV9EmrBqf9kmDsyhi0piG9+D6dDMN9S7D8lU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=tPojx9r5LoGRC1ee4hZVw2igy9mmbVvGuf6QgUNEoYQx4JFPmoC9B4btEsnavSJYa
- mjB08TRcgde9QMn17z1iR7yP+9jApxQfKKRIqYEInrmyp0I2lAuvVAFaPzDL9DIPnE
- pjJ9lUEV6hDTNN4xhu6D/Zq66OHEBDRnCkZbMJjblJQD8tw7QxpNeOKkgigokxGQ1J
- ZXFUbpOvmHkAR6+STCtIapkWYgqQt1A6BD7IY1TGrzZDS6YWWB02jI3NfTYNVL+3sx
- 2ev14SHq5npr0NofCqVDLMFmIAXchsyOxPF/ueVWsZz5EOhm7vs/2YWocvrPvpMTwx
- lg2At/rptwb9g==
+ b=VP0dcE5O+4PWIgAVupUy2WV9F9ZCnEGoCnX5oDT3d37RxPaXLDlICfJ9vWGoquW7i
+ soilPwpcHlgtKUAmR7rbXzfVx+K+o3f0A3be08pfqeg73ZeNvwN3JbXucN7DExHCEE
+ LaGT4UAsUUwGw8cYtnPM8fgA3fcN9mWLKJB+QjL3MVpGC1wosgM1jeodZSQcR+/VW4
+ WT1BVZ7L0a2YFU4MMYOexzxRKgDk7hHwi61pOX6VTxrymx4dzJohrpNm4J3/EH8kdQ
+ OhjSGky+IaLm2Ec7a2KH6iPu8WWeSXgQUU+bloyECvihjSelUFcC8SitRUH5uKJ5Cw
+ f2IUr8WGrxpaQ==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1o1o-000tP2-T6; Tue, 19 Jan 2021 11:14:24 +0100
+ id 1l1o1o-000tP6-UA; Tue, 19 Jan 2021 11:14:24 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v3 12/18] staging: hikey9xx: hi6421v600-regulator: fix
- get_optimum_mode
-Date: Tue, 19 Jan 2021 11:14:17 +0100
-Message-Id: <7b981bc43760502e3ad3553ca9480cf861346457.1611048785.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 13/18] staging: hikey9xx: hisilicon,
+ hi6421-spmi-pmic.yaml: cleanup a warning
+Date: Tue, 19 Jan 2021 11:14:18 +0100
+Message-Id: <e491a7421ecffda5348e0191020ab1d661808c0c.1611048785.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611048785.git.mchehab+huawei@kernel.org>
 References: <cover.1611048785.git.mchehab+huawei@kernel.org>
@@ -71,39 +71,33 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-During the driver refactor, a regression broke the logic inside
-hi6421_spmi_regulator_get_optimum_mode(). Basically, if a LDO
-has eco_uA == 0, it doesn't support economic mode. So, it should
-return REGULATOR_MODE_NORMAL.
-
-If economic mode is supported, it can return either
-REGULATOR_MODE_IDLE or REGULATOR_MODE_NORMAL, depending on the
-load current.
+There's no additionalProperties field at the yaml file, causing
+a warning when checking it.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421v600-regulator.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-index 72dd779d85e6..5fe77b490166 100644
---- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
-+++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-@@ -206,7 +206,7 @@ hi6421_spmi_regulator_get_optimum_mode(struct regulator_dev *rdev,
- {
- 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
+diff --git a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+index f385146d2bd1..3b23ad56b31a 100644
+--- a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
++++ b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+@@ -60,6 +60,8 @@ required:
+   - reg
+   - regulators
  
--	if (load_uA || ((unsigned int)load_uA > sreg->eco_uA))
-+	if (!sreg->eco_uA || ((unsigned int)load_uA > sreg->eco_uA))
- 		return REGULATOR_MODE_NORMAL;
- 
- 	return REGULATOR_MODE_IDLE;
++additionalProperties: false
++
+ examples:
+   - |
+     /* pmic properties */
 -- 
 2.29.2
 
