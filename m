@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C162E2FB52F
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:49 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1FB22FB527
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jan 2021 11:14:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 420F8864D7;
-	Tue, 19 Jan 2021 10:14:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 75BCA20408;
+	Tue, 19 Jan 2021 10:14:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mP7l8Br0CBcM; Tue, 19 Jan 2021 10:14:43 +0000 (UTC)
+	with ESMTP id u+dsybLtqlF5; Tue, 19 Jan 2021 10:14:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 59F9B86745;
-	Tue, 19 Jan 2021 10:14:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1CCBA2036D;
+	Tue, 19 Jan 2021 10:14:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B54C51BF27F
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:29 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2349B1BF27F
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AF8E2843ED
- for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1F7FA86C82
+ for <devel@linuxdriverproject.org>; Tue, 19 Jan 2021 10:14:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2YlU8MdToFh5 for <devel@linuxdriverproject.org>;
+ with ESMTP id qDF5fzWX+YEc for <devel@linuxdriverproject.org>;
  Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DBC9484422
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9D2BF86B2C
  for <devel@driverdev.osuosl.org>; Tue, 19 Jan 2021 10:14:27 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1898223138;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 05BB02312B;
  Tue, 19 Jan 2021 10:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611051267;
- bh=ON1WHgDgD0ZmN9PohuCMC1Ep5UBt3k+LB9V4ffsECfg=;
+ bh=9sJuiRaH9YoTTEL9TAIlpGXfKAAfiZ//TDkV9Z3S4Ws=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eWy0xqSTPNndyNi5WO3jazDVoiaB/Oz8Oftl4J/zPFUHVVDVjYSPR7g14v5Qoio2U
- zCZIGy2QVcTQ5+lnAuZDr9Zb0p/hH7X7kTELDIejrJArn1naVTnue5FExfsAImkIXz
- eP0wosAVgoazmjXbLyK2Vu4ENn9GSzmYgLpjR/Vlx++gto64pQZi3TZfy2VgI+Skow
- MUvw01NpU0UrC2lKWZSPe5Jp/Mq2FSr1aisnOgjuhLehGNbsxnORFm3RqCynp4gsVW
- sN1KDIl/FP+0Wxl+0SmEg3Mopq6TVvb5G9A6Y8HLe1xDr3dm5wveOpNC7RXAGSX75g
- kk6YcoefLQgpA==
+ b=gqQ9h+ps6w031wGOL9aEJw07zFDY3gt7szzUBM082o7L0uZrP6L3AcHj+6p8qanRS
+ +ZwUNFfVHs1qcVD0akZMSqAygeMHU21iNWuKyfg3y1OiDpoCc/UmpUWn4bewW8KMZt
+ /jASoNG1uReVnwIre+k4ob36mwaQ2uqoF9rqd3ImPK+QW1pB0/QwcLX45+p0u7scKs
+ 4PQKigv+2J3sKYiQ4P1B4rLvVBYJWXa/eOtcqG+iY/onQmhYHCNhVhM/1QTkxUPIOf
+ 5EA2XUZkjJ5fSahX7d/z6GSDhF8MLv/05VadxP0ZhSqTmVU4BJKpiMP2vh3EjmOGSd
+ BMaHXxSA9W55w==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l1o1o-000tOo-Nz; Tue, 19 Jan 2021 11:14:24 +0100
+ id 1l1o1o-000tOq-Ox; Tue, 19 Jan 2021 11:14:24 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v3 06/18] staging: hikey9xx: hi6421v600-regulator: cleanup
- debug msgs
-Date: Tue, 19 Jan 2021 11:14:11 +0100
-Message-Id: <dada109bc93eb8cfbfbe3789924a36cd8828aa7e.1611048785.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 07/18] staging: hikey9xx: hi6421v600-regulator: get rid of
+ an static data
+Date: Tue, 19 Jan 2021 11:14:12 +0100
+Message-Id: <e4c7ed9321df9d5772b9ab381f98ded879dbcd3c.1611048785.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611048785.git.mchehab+huawei@kernel.org>
 References: <cover.1611048785.git.mchehab+huawei@kernel.org>
@@ -77,132 +77,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-While those were useful during port time from downstream
-version, let's get rid of them for good, as it is possible to
-get about the same things by enabling regulator debugging code.
+Move it to be inside the private data struct.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../staging/hikey9xx/hi6421v600-regulator.c   | 47 ++-----------------
- 1 file changed, 4 insertions(+), 43 deletions(-)
+ drivers/staging/hikey9xx/hi6421v600-regulator.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-index 70e4c06c1b2d..5469089a3daf 100644
+index 5469089a3daf..e96aab17a499 100644
 --- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
 +++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
-@@ -23,9 +23,6 @@
- #include <linux/regulator/driver.h>
- #include <linux/spmi.h>
- 
--#define rdev_dbg(rdev, fmt, arg...)	\
--		 pr_debug("%s: %s: " fmt, (rdev)->desc->name, __func__, ##arg)
--
- struct hi6421_spmi_reg_info {
- 	struct regulator_desc	desc;
+@@ -28,9 +28,10 @@ struct hi6421_spmi_reg_info {
  	struct hi6421_spmi_pmic *pmic;
-@@ -112,11 +109,6 @@ static int hi6421_spmi_regulator_is_enabled(struct regulator_dev *rdev)
+ 	u8			eco_mode_mask;
+ 	u32			eco_uA;
+-};
  
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->enable_reg);
+-static DEFINE_MUTEX(enable_mutex);
++	/* Serialize regulator enable logic */
++	struct mutex enable_mutex;
++};
  
--	rdev_dbg(rdev,
--		 "enable_reg=0x%x, val= 0x%x, enable_state=%d\n",
--		 rdev->desc->enable_reg,
--		 reg_val, (reg_val & rdev->desc->enable_mask));
--
- 	return ((reg_val & rdev->desc->enable_mask) != 0);
- }
+ static const unsigned int ldo3_voltages[] = {
+ 	1500000, 1550000, 1600000, 1650000,
+@@ -118,7 +119,7 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
+ 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
  
-@@ -131,11 +123,6 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
+ 	/* cannot enable more than one regulator at one time */
+-	mutex_lock(&enable_mutex);
++	mutex_lock(&sreg->enable_mutex);
+ 	usleep_range(HISI_REGS_ENA_PROTECT_TIME,
  		     HISI_REGS_ENA_PROTECT_TIME + 1000);
  
- 	/* set enable register */
--	rdev_dbg(rdev,
--		 "off_on_delay=%d us, enable_reg=0x%x, enable_mask=0x%x\n",
--		 rdev->desc->off_on_delay, rdev->desc->enable_reg,
--		 rdev->desc->enable_mask);
--
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
+@@ -127,7 +128,7 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
  			     rdev->desc->enable_mask,
  			     rdev->desc->enable_mask);
-@@ -151,9 +138,6 @@ static int hi6421_spmi_regulator_disable(struct regulator_dev *rdev)
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
  
- 	/* set enable register to 0 */
--	rdev_dbg(rdev, "enable_reg=0x%x, enable_mask=0x%x\n",
--		 rdev->desc->enable_reg, rdev->desc->enable_mask);
--
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
- 			     rdev->desc->enable_mask, 0);
+-	mutex_unlock(&enable_mutex);
++	mutex_unlock(&sreg->enable_mutex);
  
-@@ -164,19 +148,12 @@ static int hi6421_spmi_regulator_get_voltage_sel(struct regulator_dev *rdev)
- {
- 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
--	u32 reg_val, selector;
-+	u32 reg_val;
- 
- 	/* get voltage selector */
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->vsel_reg);
- 
--	selector = (reg_val & rdev->desc->vsel_mask) >>	(ffs(rdev->desc->vsel_mask) - 1);
--
--	rdev_dbg(rdev,
--		 "vsel_reg=0x%x, value=0x%x, entry=0x%x, voltage=%d mV\n",
--		 rdev->desc->vsel_reg, reg_val, selector,
--		rdev->desc->ops->list_voltage(rdev, selector) / 1000);
--
--	return selector;
-+	return (reg_val & rdev->desc->vsel_mask) >>	(ffs(rdev->desc->vsel_mask) - 1);
+ 	return 0;
  }
+@@ -312,6 +313,7 @@ static int hi6421_spmi_regulator_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
  
- static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
-@@ -192,11 +169,6 @@ static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
- 	reg_val = selector << (ffs(rdev->desc->vsel_mask) - 1);
+ 	sreg->pmic = pmic;
++	mutex_init(&sreg->enable_mutex);
  
- 	/* set voltage selector */
--	rdev_dbg(rdev,
--		 "vsel_reg=0x%x, mask=0x%x, value=0x%x, voltage=%d mV\n",
--		 rdev->desc->vsel_reg, rdev->desc->vsel_mask, reg_val,
--		 rdev->desc->ops->list_voltage(rdev, selector) / 1000);
--
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->vsel_reg,
- 			     rdev->desc->vsel_mask, reg_val);
- 
-@@ -207,22 +179,14 @@ static unsigned int hi6421_spmi_regulator_get_mode(struct regulator_dev *rdev)
- {
- 	struct hi6421_spmi_reg_info *sreg = rdev_get_drvdata(rdev);
- 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
--	unsigned int mode;
- 	u32 reg_val;
- 
- 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->enable_reg);
- 
- 	if (reg_val & sreg->eco_mode_mask)
--		mode = REGULATOR_MODE_IDLE;
--	else
--		mode = REGULATOR_MODE_NORMAL;
-+		return REGULATOR_MODE_IDLE;
- 
--	rdev_dbg(rdev,
--		 "enable_reg=0x%x, eco_mode_mask=0x%x, reg_val=0x%x, %s mode\n",
--		 rdev->desc->enable_reg, sreg->eco_mode_mask, reg_val,
--		 mode == REGULATOR_MODE_IDLE ? "idle" : "normal");
--
--	return mode;
-+	return REGULATOR_MODE_NORMAL;
- }
- 
- static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
-@@ -244,9 +208,6 @@ static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
- 	}
- 
- 	/* set mode */
--	rdev_dbg(rdev, "enable_reg=0x%x, eco_mode_mask=0x%x, value=0x%x\n",
--		 rdev->desc->enable_reg, sreg->eco_mode_mask, val);
--
- 	hi6421_spmi_pmic_rmw(pmic, rdev->desc->enable_reg,
- 			     sreg->eco_mode_mask, val);
- 
+ 	for (i = 0; i < ARRAY_SIZE(regulator_info); i++) {
+ 		/* assign per-regulator data */
 -- 
 2.29.2
 
