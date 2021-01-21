@@ -2,61 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 525BD2FE3F1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jan 2021 08:29:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 721E62FE4F6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jan 2021 09:29:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8B1B686D21;
-	Thu, 21 Jan 2021 07:29:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4BADD86BB0;
+	Thu, 21 Jan 2021 08:29:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f2T7uMJbrOYE; Thu, 21 Jan 2021 07:29:57 +0000 (UTC)
+	with ESMTP id gOuiICdFIWV1; Thu, 21 Jan 2021 08:29:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 69E5E86CD1;
-	Thu, 21 Jan 2021 07:29:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2BC2C86B72;
+	Thu, 21 Jan 2021 08:29:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5C3121BF873
- for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:29:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 74F7C1BF5DD
+ for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 08:29:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 54F6820763
- for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:29:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 642F920396
+ for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 08:29:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4V3CBIBX1mEC for <devel@linuxdriverproject.org>;
- Thu, 21 Jan 2021 07:29:53 +0000 (UTC)
+ with ESMTP id zXUrEKkXKIP6 for <devel@linuxdriverproject.org>;
+ Thu, 21 Jan 2021 08:29:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id AA91620788
- for <devel@driverdev.osuosl.org>; Thu, 21 Jan 2021 07:29:53 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A864F23877;
- Thu, 21 Jan 2021 07:29:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611214193;
- bh=dy3L1jica4WKQF+cqZ7I7ZgMXPtsT1Sr6ANeEUfQwX8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=bv9OhMzw4yJN0xbTN/LSuN/8rePwqbTc3yqZk8Wz0gFn8MYQ8OZradvHW/dz/m1Nm
- LZrPRQxhU2ZNwVUloNaYBABNtMAUkcYHT/NC8zisx3MyVUqGqmUWbV46reAO2jEv1a
- Aq+d9DNdPrEf0M8TRk6Ey9gcayANRlEQisz7W8JqAoA+02lpm1D08QS+M+Sj6tf1aK
- 4JljzraYtuP18TsE5pXQoRQHK98yMrz52rWXdWO/R6JLpwb9mOFTZwYxo3+Pbgo+kS
- m/uDg4EuDg/rUQy9n3UoW/1Ow/5DVsAmElHUzh9Y4GWh/fuNnoCrfPcUQSHp4JT2Hl
- DVZyHOL6kOSSQ==
-Date: Thu, 21 Jan 2021 08:29:47 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v4 19/21] regulator: hi6421v600-regulator: move it from
- staging
-Message-ID: <20210121082947.633213ad@coco.lan>
-In-Reply-To: <20210120170744.GD6794@sirena.org.uk>
-References: <cover.1611072387.git.mchehab+huawei@kernel.org>
- <8000252dfd10677c5eb52d498e68de9c65304cf4.1611072387.git.mchehab+huawei@kernel.org>
- <20210119161950.GC4478@sirena.org.uk>
- <20210120000244.2f1862d6@coco.lan>
- <20210120170744.GD6794@sirena.org.uk>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
+Received: from out30-57.freemail.mail.aliyun.com
+ (out30-57.freemail.mail.aliyun.com [115.124.30.57])
+ by silver.osuosl.org (Postfix) with ESMTPS id EEF442026D
+ for <devel@driverdev.osuosl.org>; Thu, 21 Jan 2021 08:29:03 +0000 (UTC)
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R591e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=alimailimapcm10staff010182156082;
+ MF=abaci-bugfix@linux.alibaba.com; NM=1; PH=DS; RN=7; SR=0;
+ TI=SMTPD_---0UMPTmlJ_1611217732; 
+Received: from
+ j63c13417.sqa.eu95.tbsite.net(mailfrom:abaci-bugfix@linux.alibaba.com
+ fp:SMTPD_---0UMPTmlJ_1611217732) by smtp.aliyun-inc.com(127.0.0.1);
+ Thu, 21 Jan 2021 16:29:00 +0800
+From: Yang Li <abaci-bugfix@linux.alibaba.com>
+To: mchehab@kernel.org
+Subject: [PATCH] media: atomisp: remove redundant NULL check
+Date: Thu, 21 Jan 2021 16:28:51 +0800
+Message-Id: <1611217731-56866-1-git-send-email-abaci-bugfix@linux.alibaba.com>
+X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,50 +58,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Lee Jones <lee.jones@linaro.org>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Yang Li <abaci-bugfix@linux.alibaba.com>,
+ sakari.ailus@linux.intel.com, linux-media@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Wed, 20 Jan 2021 17:07:44 +0000
-Mark Brown <broonie@kernel.org> escreveu:
+Fix below warnings reported by coccicheck:
+./drivers/staging/media/atomisp/pci/sh_css_params.c:1575:2-8: WARNING:
+NULL check before some freeing functions is not needed.
+./drivers/staging/media/atomisp/pci/sh_css_params.c:3006:2-8: WARNING:
+NULL check before some freeing functions is not needed.
 
-> On Wed, Jan 20, 2021 at 12:02:44AM +0100, Mauro Carvalho Chehab wrote:
-> > Mark Brown <broonie@kernel.org> escreveu:  
-> 
-> > > Now that the driver has been converted to regmap these are just
-> > > duplicates of the regmap helpers.  You may also be able to use them for
-> > > the disable() and is_enabled() operations, I didn't confirm that that's
-> > > OK with the device using multi-bit enable controls for some reason IIRC.  
-> 
-> > True.  
-> 
-> > In order to avoid re-submitting 21 patches, I sent such change as
-> > patch 22/21 .  
-> 
-> Unfortunately I can't actually apply the regulator bits as things are as
-> the MAINTAINERS changes are incremental against the prior patches in the
-> series.  What's the plan for getting these merged?
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <abaci-bugfix@linux.alibaba.com>
+---
+ drivers/staging/media/atomisp/pci/sh_css_params.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-I submitted the USB3 PHY patch series to Vinod on Jan, 19. There's also a 
-second series with 3 dts patches, submitted to Rob on Jan, 15 which is
-needed by the USB3 PHY dts file, but this doesn't affect the regulator
-series. I'm currently waiting for review on such series.
+diff --git a/drivers/staging/media/atomisp/pci/sh_css_params.c b/drivers/staging/media/atomisp/pci/sh_css_params.c
+index 24fc497..569473b9 100644
+--- a/drivers/staging/media/atomisp/pci/sh_css_params.c
++++ b/drivers/staging/media/atomisp/pci/sh_css_params.c
+@@ -1575,8 +1575,7 @@ struct ia_css_isp_3a_statistics_map *
+ 	return me;
+ 
+ err:
+-	if (me)
+-		kvfree(me);
++	kvfree(me);
+ 	return NULL;
+ }
+ 
+@@ -3006,8 +3005,7 @@ static void free_map(struct sh_css_ddr_address_map *map)
+ 	}
+ 
+ 	kvfree(params);
+-	if (per_frame_params)
+-		kvfree(per_frame_params);
++	kvfree(per_frame_params);
+ 	stream->isp_params_configs = NULL;
+ 	stream->per_frame_isp_params_configs = NULL;
+ 
+-- 
+1.8.3.1
 
-In any case, just sent you a v5 of this patch series that doesn't depend
-on the USB3 PHY related patches. As they'll be applied on a different
-tree, it is expected a conflict at linux-next when both gets merged,
-which will be trivial: the fix would be to simply remove all lines
-from drivers/staging/hikey9xx/Makefile and 
-drivers/staging/hikey9xx/Kconfig.
-
-Thanks,
-Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
