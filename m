@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CE972FE3AA
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E3CB2FE3A9
 	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jan 2021 08:18:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3931A86D17;
-	Thu, 21 Jan 2021 07:18:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F11AE2150A;
+	Thu, 21 Jan 2021 07:18:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-JLJTthnOkv; Thu, 21 Jan 2021 07:18:48 +0000 (UTC)
+	with ESMTP id PeA8Qtmevqem; Thu, 21 Jan 2021 07:18:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7CE0286D0B;
-	Thu, 21 Jan 2021 07:18:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D1656214D2;
+	Thu, 21 Jan 2021 07:18:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4CD8E1C1127
- for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 03B7C1BF873
+ for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 41D0B871B5
- for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ED58E20763
+ for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SOcLpDNZzmoq for <devel@linuxdriverproject.org>;
- Thu, 21 Jan 2021 07:18:30 +0000 (UTC)
+ with ESMTP id 0f3LeKQ3Qe7t for <devel@linuxdriverproject.org>;
+ Thu, 21 Jan 2021 07:18:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8B067871B4
+ by silver.osuosl.org (Postfix) with ESMTPS id 1B0D82078C
  for <devel@driverdev.osuosl.org>; Thu, 21 Jan 2021 07:18:29 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 726C123A1D;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4CF91239E7;
  Thu, 21 Jan 2021 07:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611213508;
- bh=h+FnArthq66xndfpWsFAxK7FHnJyAY6Cs3A8V9B1WC0=;
+ bh=pNzT4ZXdfbyQJ787t9mEl9rU6uPQH/3r0bnIT/3lt4U=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nyfeM0WI0p5CSnc2WUbULtfjVcNrK60h2ehrfLTQtfb3VKnCYTJflEkSQTP7aKeQr
- x2IFvg4iWlvC5z2i5USAHXAqFi+wPnmZP/nlm/7zr80hw0s4jdtz8fZCAn9HJ6rll8
- kEgEYNwNbNVlFo9OqjvTW+it/AriYck/Nscq07DhyRgYDuRtFWzDBZYLAJ0gpGoPx9
- SQd77r4aidPTDsTMc2TMj5JtMiTtqQNeZtgFenV6aOFpWeLpYOOFeduWRz98qhNEwV
- 0E1OH2yuVOG6ic+3S9RChVKAekcF7LPcyfIBKE3Sr/8Sh1FwDhi7+2V8NRsdULCebc
- 1D/1jCebbvUnQ==
+ b=nkPi4gPBWQfXAYQvAC08IA8EJv2L9M5QpSUabfH0P8/HfUJK5RX7OAXiNGwuzOSy9
+ IVt9SymCk+IXEVu6fzoS2Ucv3txg6mA1BJ/J8EXrrXgTIoBn0z0KKDZWahyit6+OVH
+ yon+Ir5TqFmQ4ec5OefKBQgEJzl3ah+cjIARJVwyjyDRCRjl8wYozUdUZaykn0Qgu7
+ cAAHln8Kj4fB00YawJ5221GIWxLHpfiW2MY9TLMbxjg2eR6K6nQNZ7mK3ufXYT47ZJ
+ 2ZTyTSlZPyG+/EE5x5L3ZIyCcSwGmM0EjoC2mU4n2OOGziPHBRyb16gQ8pPm0Lp8TV
+ vYlcMIWBmnfyA==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l2UEb-004BsX-PP; Thu, 21 Jan 2021 08:18:25 +0100
+ id 1l2UEb-004BsZ-QE; Thu, 21 Jan 2021 08:18:25 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v5 18/21] spmi: hisi-spmi-controller: move driver from staging
-Date: Thu, 21 Jan 2021 08:18:20 +0100
-Message-Id: <edc1a3f12e802607be42c60814b141aa5e1554f4.1611212783.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v5 19/21] mfd: hi6421-spmi-pmic: move driver from staging
+Date: Thu, 21 Jan 2021 08:18:21 +0100
+Message-Id: <97696bbe44202ae4af15c4f799de65dca7de6d37.1611212783.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611212783.git.mchehab+huawei@kernel.org>
 References: <cover.1611212783.git.mchehab+huawei@kernel.org>
@@ -71,121 +71,128 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Mayulong <mayulong1@huawei.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-msm@vger.kernel.org, Colin Ian King <colin.king@canonical.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Hisilicon 6421v600 SPMI driver is ready for mainstream.
-
-So, move it from staging.
+This driver is ready for mainstream. So, move it out of staging.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../spmi}/hisilicon,hisi-spmi-controller.yaml         |  0
- MAINTAINERS                                           |  7 +++++++
- drivers/spmi/Kconfig                                  |  9 +++++++++
- drivers/spmi/Makefile                                 |  1 +
- .../{staging/hikey9xx => spmi}/hisi-spmi-controller.c |  0
- drivers/staging/hikey9xx/Kconfig                      | 11 -----------
- drivers/staging/hikey9xx/Makefile                     |  1 -
- 7 files changed, 17 insertions(+), 12 deletions(-)
- rename {drivers/staging/hikey9xx => Documentation/devicetree/bindings/spmi}/hisilicon,hisi-spmi-controller.yaml (100%)
- rename drivers/{staging/hikey9xx => spmi}/hisi-spmi-controller.c (100%)
+ .../mfd}/hisilicon,hi6421-spmi-pmic.yaml         |  0
+ MAINTAINERS                                      |  7 +++++++
+ drivers/mfd/Kconfig                              | 15 +++++++++++++++
+ drivers/mfd/Makefile                             |  1 +
+ .../{staging/hikey9xx => mfd}/hi6421-spmi-pmic.c |  0
+ drivers/staging/hikey9xx/Kconfig                 | 16 ----------------
+ drivers/staging/hikey9xx/Makefile                |  1 -
+ 7 files changed, 23 insertions(+), 17 deletions(-)
+ rename {drivers/staging/hikey9xx => Documentation/devicetree/bindings/mfd}/hisilicon,hi6421-spmi-pmic.yaml (100%)
+ rename drivers/{staging/hikey9xx => mfd}/hi6421-spmi-pmic.c (100%)
 
-diff --git a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml b/Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml
+diff --git a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml b/Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
 similarity index 100%
-rename from drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-rename to Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml
+rename from drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+rename to Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 281de213ef47..056777397c68 100644
+index 056777397c68..120f14620f56 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -7999,6 +7999,13 @@ F:	drivers/crypto/hisilicon/sec2/sec_crypto.c
- F:	drivers/crypto/hisilicon/sec2/sec_crypto.h
- F:	drivers/crypto/hisilicon/sec2/sec_main.c
+@@ -8006,6 +8006,13 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml
+ F:	drivers/spmi/hisi-spmi-controller.c
  
-+HISILICON SPMI CONTROLLER DRIVER FOR HIKEY 970
++HISILICON SPMI PMIC DRIVER FOR HIKEY 6421v600
 +M:	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 +L:	linux-kernel@vger.kernel.org
 +S:	Maintained
-+F:	Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml
-+F:	drivers/spmi/hisi-spmi-controller.c
++F:	Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
++F:	drivers/mfd/hi6421-spmi-pmic.c
 +
  HISILICON STAGING DRIVERS FOR HIKEY 960/970
  M:	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
  L:	devel@driverdev.osuosl.org
-diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
-index a53bad541f1a..2874b6c26028 100644
---- a/drivers/spmi/Kconfig
-+++ b/drivers/spmi/Kconfig
-@@ -11,6 +11,15 @@ menuconfig SPMI
+diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+index 8b99a13669bf..c04c2f6be1d9 100644
+--- a/drivers/mfd/Kconfig
++++ b/drivers/mfd/Kconfig
+@@ -509,6 +509,21 @@ config MFD_HI6421_PMIC
+ 	  menus in order to enable them.
+ 	  We communicate with the Hi6421 via memory-mapped I/O.
  
- if SPMI
- 
-+config SPMI_HISI3670
-+	tristate "Hisilicon 3670 SPMI Controller"
-+	select IRQ_DOMAIN_HIERARCHY
-+	depends on HAS_IOMEM
++config MFD_HI6421_SPMI
++	tristate "HiSilicon Hi6421v600 SPMI PMU/Codec IC"
++	depends on OF
++	depends on SPMI
++	select MFD_CORE
 +	help
-+	  If you say yes to this option, support will be included for the
-+	  built-in SPMI PMIC Arbiter interface on Hisilicon 3670
-+	  processors.
++	  Add support for HiSilicon Hi6421v600 SPMI PMIC. Hi6421 includes
++	  multi-functions, such as regulators, RTC, codec, Coulomb counter,
++	  etc.
 +
- config SPMI_MSM_PMIC_ARB
- 	tristate "Qualcomm MSM SPMI Controller (PMIC Arbiter)"
- 	select IRQ_DOMAIN_HIERARCHY
-diff --git a/drivers/spmi/Makefile b/drivers/spmi/Makefile
-index 55a94cadeffe..6e092e6f290c 100644
---- a/drivers/spmi/Makefile
-+++ b/drivers/spmi/Makefile
-@@ -4,4 +4,5 @@
- #
- obj-$(CONFIG_SPMI)	+= spmi.o
- 
-+obj-$(CONFIG_SPMI_HISI3670)	+= hisi-spmi-controller.o
- obj-$(CONFIG_SPMI_MSM_PMIC_ARB)	+= spmi-pmic-arb.o
-diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/spmi/hisi-spmi-controller.c
++	  This driver includes core APIs _only_. You have to select
++	  individual components like voltage regulators under corresponding
++	  menus in order to enable them.
++	  We communicate with the Hi6421v600 via a SPMI bus.
++
+ config MFD_HI655X_PMIC
+ 	tristate "HiSilicon Hi655X series PMU/Codec IC"
+ 	depends on ARCH_HISI || COMPILE_TEST
+diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+index 1780019d2474..7744993c42bc 100644
+--- a/drivers/mfd/Makefile
++++ b/drivers/mfd/Makefile
+@@ -233,6 +233,7 @@ obj-$(CONFIG_MFD_IPAQ_MICRO)	+= ipaq-micro.o
+ obj-$(CONFIG_MFD_IQS62X)	+= iqs62x.o
+ obj-$(CONFIG_MFD_MENF21BMC)	+= menf21bmc.o
+ obj-$(CONFIG_MFD_HI6421_PMIC)	+= hi6421-pmic-core.o
++obj-$(CONFIG_MFD_HI6421_SPMI)	+= hi6421-spmi-pmic.o
+ obj-$(CONFIG_MFD_HI655X_PMIC)   += hi655x-pmic.o
+ obj-$(CONFIG_MFD_DLN2)		+= dln2.o
+ obj-$(CONFIG_MFD_RT5033)	+= rt5033.o
+diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/mfd/hi6421-spmi-pmic.c
 similarity index 100%
-rename from drivers/staging/hikey9xx/hisi-spmi-controller.c
-rename to drivers/spmi/hisi-spmi-controller.c
+rename from drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+rename to drivers/mfd/hi6421-spmi-pmic.c
 diff --git a/drivers/staging/hikey9xx/Kconfig b/drivers/staging/hikey9xx/Kconfig
-index b29f5d5df134..6dc9f9307510 100644
+index 6dc9f9307510..76337be330f8 100644
 --- a/drivers/staging/hikey9xx/Kconfig
 +++ b/drivers/staging/hikey9xx/Kconfig
-@@ -11,17 +11,6 @@ config PHY_HI3670_USB
+@@ -11,22 +11,6 @@ config PHY_HI3670_USB
  
  	  To compile this driver as a module, choose M here.
  
--# to be placed at drivers/spmi
--config SPMI_HISI3670
--	tristate "Hisilicon 3670 SPMI Controller"
--	select IRQ_DOMAIN_HIERARCHY
--	depends on HAS_IOMEM
+-# to be placed at drivers/mfd
+-config MFD_HI6421_SPMI
+-	tristate "HiSilicon Hi6421v600 SPMI PMU/Codec IC"
+-	depends on OF
 -	depends on SPMI
+-	select MFD_CORE
 -	help
--	  If you say yes to this option, support will be included for the
--	  built-in SPMI PMIC Arbiter interface on Hisilicon 3670
--	  processors.
+-	  Add support for HiSilicon Hi6421v600 SPMI PMIC. Hi6421 includes
+-	  multi-functions, such as regulators, RTC, codec, Coulomb counter,
+-	  etc.
 -
- # to be placed at drivers/mfd
- config MFD_HI6421_SPMI
- 	tristate "HiSilicon Hi6421v600 SPMI PMU/Codec IC"
+-	  This driver includes core APIs _only_. You have to select
+-	  individual components like voltage regulators under corresponding
+-	  menus in order to enable them.
+-	  We communicate with the Hi6421v600 via a SPMI bus.
+-
+ # to be placed at drivers/regulator
+ config REGULATOR_HI6421V600
+ 	tristate "HiSilicon Hi6421v600 PMIC voltage regulator support"
 diff --git a/drivers/staging/hikey9xx/Makefile b/drivers/staging/hikey9xx/Makefile
-index 1924fadac952..64b419cf7bca 100644
+index 64b419cf7bca..d26af65baf8b 100644
 --- a/drivers/staging/hikey9xx/Makefile
 +++ b/drivers/staging/hikey9xx/Makefile
-@@ -2,6 +2,5 @@
+@@ -2,5 +2,4 @@
  
  obj-$(CONFIG_PHY_HI3670_USB)		+= phy-hi3670-usb3.o
  
--obj-$(CONFIG_SPMI_HISI3670)		+= hisi-spmi-controller.o
- obj-$(CONFIG_MFD_HI6421_SPMI)		+= hi6421-spmi-pmic.o
+-obj-$(CONFIG_MFD_HI6421_SPMI)		+= hi6421-spmi-pmic.o
  obj-$(CONFIG_REGULATOR_HI6421V600)	+= hi6421v600-regulator.o
 -- 
 2.29.2
