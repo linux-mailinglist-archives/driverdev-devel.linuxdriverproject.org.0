@@ -1,57 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B16552FE3A5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jan 2021 08:18:43 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE4ED2FE3A6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jan 2021 08:18:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E6F04214EC;
-	Thu, 21 Jan 2021 07:18:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 640D1871B8;
+	Thu, 21 Jan 2021 07:18:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 75PIJvyLXjP6; Thu, 21 Jan 2021 07:18:41 +0000 (UTC)
+	with ESMTP id LsBDwDdwo8mq; Thu, 21 Jan 2021 07:18:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A1ADD20788;
-	Thu, 21 Jan 2021 07:18:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1954B871B6;
+	Thu, 21 Jan 2021 07:18:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C0AB51BF873
- for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 01B2C1BF873
+ for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BCF6486CF3
- for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id F0F2C871AC
+ for <devel@linuxdriverproject.org>; Thu, 21 Jan 2021 07:18:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D16y7ZK+H6-Q for <devel@linuxdriverproject.org>;
+ with ESMTP id AN4zdfyosVLr for <devel@linuxdriverproject.org>;
  Thu, 21 Jan 2021 07:18:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2617686D0D
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2EE31871AF
  for <devel@driverdev.osuosl.org>; Thu, 21 Jan 2021 07:18:29 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 481E5239D3;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4A05C239E4;
  Thu, 21 Jan 2021 07:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611213508;
- bh=hnqLjlmHjAxUUcednMhZwa9NC57nL6CEIvOqH+CzQA8=;
+ bh=ocmCpgwDao2iTuPR1N+l2pLHx6KXPjh5Kl2bcWLyNNw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=EIpyVk5TD+e2uhoPXxdOFTNTzYbPQkmidHteKhYHqZf1pud+vPVm5ztMYGhMYAx8H
- ey6t2rkVpJVV8UtG8hqovCew66335uceTM8Vfe/ixrovd8BQkLUS6621dDH+0Mw5jx
- UfcDXFrPlwF5OnUsjk09F4zGhtiJBUbURtWCk+OHNMM4psbh6MjgrAPabhokbLUDsi
- APa5EGgrj3ipndmaElwwVzp3AF5tWR+kjQe3xdbOJ90dP8Fv9gRTf7hAJSncvdmxUJ
- WqmjUtz4RmMnbY92+ieFMDfYmhlDYo5Oxf8pMZTowptpJNWH6UbEi5hInecsodZ/ty
- J3Q+okXWphjyQ==
+ b=qcw+5DyoQZMrS0umyKse1494ffXucPLf0BqoBwVFcWL0P6h5UhYHAOZft0akGmuxP
+ eWLyjpop3oKyf2b9dGTvsuSi7eAGn2B0xoEO5bRWYZhtWS8qHrDP/2AJ9XZE2mcxGE
+ px04VvBaaLlnxao8Dbe6LwsEA/P42+blbirWIiXEQBwCV3qni9vFxf9+/w/pU2nzJx
+ 5vZYIDvw2AzZVLRBbPSLj66s9FwPV2iCiUk5C/mZTn3UKebrpH9DBR/OYwo8ggmxWY
+ 7d8GU4yjaIOy37emsUrIDD2dTaRgeuE2xaV7zrKrxQRZ6QGlAutSs5LeC4J2g11aer
+ 11L3QpeJnLpiQ==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l2UEb-004BsQ-N3; Thu, 21 Jan 2021 08:18:25 +0100
+ id 1l2UEb-004BsS-No; Thu, 21 Jan 2021 08:18:25 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Mark Brown <broonie@kernel.org>,
 	Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v5 15/21] staging: hikey9xx: hi6421-spmi-pmic: update copyright
-Date: Thu, 21 Jan 2021 08:18:17 +0100
-Message-Id: <18b36d01c04519d84912140b6c40c1bd1f75a3a8.1611212783.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v5 16/21] staging: hikey9xx: hi6421-spmi-pmic: simplify
+ includes
+Date: Thu, 21 Jan 2021 08:18:18 +0100
+Message-Id: <50087bb41fc262d6930aeda0583546cf9d597b87.1611212783.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611212783.git.mchehab+huawei@kernel.org>
 References: <cover.1611212783.git.mchehab+huawei@kernel.org>
@@ -76,47 +77,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the GPL boilerplate, as SPDX tag already points to the
-license terms and add a new copyright for Huawei.
+There are several uneeded includes. Remove them.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 24 ++++++---------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index de6da2779084..9310a9d699bc 100644
+index 9310a9d699bc..99c4f3359f71 100644
 --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
 +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -1,21 +1,11 @@
- // SPDX-License-Identifier: GPL-2.0
--/*
-- * Device driver for regulators in HISI PMIC IC
-- *
-- * Copyright (c) 2013 Linaro Ltd.
-- * Copyright (c) 2011 Hisilicon.
-- *
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- */
-+//
-+// Device driver for regulators in HISI PMIC IC
-+//
-+// Copyright (c) 2013 Linaro Ltd.
-+// Copyright (c) 2011 Hisilicon.
-+//
-+// Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
+@@ -7,20 +7,12 @@
+ //
+ // Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
  
- #include <linux/delay.h>
- #include <linux/device.h>
+-#include <linux/delay.h>
+-#include <linux/device.h>
+-#include <linux/err.h>
+ #include <linux/interrupt.h>
+-#include <linux/io.h>
+ #include <linux/irq.h>
+ #include <linux/mfd/core.h>
+ #include <linux/mfd/hi6421-spmi-pmic.h>
+ #include <linux/module.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/of_gpio.h>
+-#include <linux/of.h>
+-#include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <linux/spmi.h>
 -- 
 2.29.2
 
