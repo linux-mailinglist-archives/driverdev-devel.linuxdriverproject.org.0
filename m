@@ -1,54 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B8A72FFF5B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Jan 2021 10:41:38 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 463CA3002D9
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Jan 2021 13:27:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D92E86A0F;
-	Fri, 22 Jan 2021 09:41:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C25E987375;
+	Fri, 22 Jan 2021 12:27:28 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zuTtpoWNLfwH; Fri, 22 Jan 2021 12:27:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4CB8D87336;
+	Fri, 22 Jan 2021 12:27:28 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 259A11BF2A6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 22 Jan 2021 12:27:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 21BEF86A85
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 22 Jan 2021 12:27:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t5utNeW20uMT; Fri, 22 Jan 2021 09:41:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6DBA086A00;
-	Fri, 22 Jan 2021 09:41:35 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5D5B91BF21A
- for <devel@linuxdriverproject.org>; Fri, 22 Jan 2021 09:41:34 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 507692DE22
- for <devel@linuxdriverproject.org>; Fri, 22 Jan 2021 09:41:34 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bJFhRvBW2wya for <devel@linuxdriverproject.org>;
- Fri, 22 Jan 2021 09:41:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 9C5232D9B5
- for <devel@driverdev.osuosl.org>; Fri, 22 Jan 2021 09:41:33 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7E06323381;
- Fri, 22 Jan 2021 09:41:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611308493;
- bh=ECesVPcS/HIWEZfAdA/O3MXlnw9MPpIYj1PgFRvyz2s=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=LJ2GSws0GTi8bk2C4bFtny6FgWkt89b2swGZKCfyhPWnK0E1IiFBd0CtjCM+NhzFJ
- whv1b/b61zKuSyBCSxIBNGXK4rU7mZrIotnVbXNfYc2RndOSQeEd5r+myvAeSNCaNe
- bDSGJ8Uqz7N+iTLBdARZ/EFVF6oAoVGd1+kzuteY=
-Date: Fri, 22 Jan 2021 10:41:30 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Yang Li <abaci-bugfix@linux.alibaba.com>
-Subject: Re: [PATCH] scsi: megaraid_sas: remove redundant NULL check
-Message-ID: <YAqdyoZhHsDXoDOD@kroah.com>
-References: <1611307424-109090-1-git-send-email-abaci-bugfix@linux.alibaba.com>
+ with ESMTP id xwUNgJEm9P_C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 22 Jan 2021 12:27:25 +0000 (UTC)
+X-Greylist: delayed 03:32:53 by SQLgrey-1.7.6
+Received: from funjimwm.com (unknown [165.22.65.191])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 758DC86A54
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 22 Jan 2021 12:27:25 +0000 (UTC)
+Received: from ip86.ip-51-81-161.us ([51.81.161.86] helo=User)
+ by funjimwm.com with esmtpa (Exim 4.86_2)
+ (envelope-from <raywandyg@gmail.com>)
+ id 1l2vVN-0007Fi-SA; Fri, 22 Jan 2021 12:25:34 +0000
+From: "Mr.Ho-Seok Yang"<raywandyg@gmail.com>
+Subject: WORKING TOGETHER
+Date: Fri, 22 Jan 2021 04:25:40 -0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1611307424-109090-1-git-send-email-abaci-bugfix@linux.alibaba.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+Message-Id: <E1l2vVN-0007Fi-SA@funjimwm.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,32 +60,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mchehab@kernel.org,
- linux-kernel@vger.kernel.org, sakari.ailus@linux.intel.com,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: hoseoky9@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jan 22, 2021 at 05:23:44PM +0800, Yang Li wrote:
-> Fix below warnings reported by coccicheck:
-> ./drivers/scsi/megaraid/megaraid_sas_fusion.c:3924:3-8: WARNING: NULL
-> check before some freeing functions is not needed.
-> 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Signed-off-by: Yang Li <abaci-bugfix@linux.alibaba.com>
-> ---
->  drivers/scsi/megaraid/megaraid_sas_fusion.c | 3 +--
-
-Please always use scripts/get_maintainer.pl to determine who to send
-patches to, and what mailing list, otherwise they will just be ignored,
-like this one :(
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBEYXkgCkkgYW0gSG8tU2VvayBZYW5nLCBQbGVhc2FudCBncmVldGluZ3MgdG8geW91IGFz
+IGkgc2VlayB5b3VyIGluZHVsZ2VuY2UgdG8gaW50cm9kdWNlIHRvIHlvdSB0aGUgZGVzaXJlIG9m
+IG15IHByaW5jaXBhbJJzIHdpc2gsIHRvIG1ha2UgaHVnZSBmaW5hbmNpYWwgaW52ZXN0bWVudCBp
+biB5b3VyIGhvbWUgY291bnRyeSBvbiBhcmVhcyBvZiBvaWwgYW5kIGdhcywgcmVhbCBlc3RhdGUs
+IHRvdXJpc20gYW5kIGhvdGVsLCBtYW51ZmFjdHVyaW5nIGFuZCBwcm9kdWN0aW9uIGNvbXBhbnks
+IGFncmljdWx0dXJlLCBmaXNoaW5nLCBNaW5pbmcgJiBUcmFkaW5nIG9mIG5hdHVyYWwgcmVzb3Vy
+Y2VzIHN1Y2ggYXMgY3J1ZGUgb2lsLCBjb2FsLCBncmFwaGl0ZSwgY29rZSwgcmVmaW5lcnksIGVu
+ZXJneSwgaG9zcGl0YWwgZXRjLgoKSGUgbmVlZHMgYSBjYXBhYmxlLCB0cnVzdHdvcnRoeSBhbmQg
+dW5kZXJzdGFuZGluZyBidXNpbmVzcyBwYXJ0bmVyLCB3aG8gY2FuIGNvbmZpZGVudGx5IGhhbmRs
+ZSBhbmQgbWFuYWdlIGhpcyBpbnZlc3RtZW50IGZ1bmRzIHdpdGggdXRtb3N0IGNhcmUgb2Ygc2Vj
+cmVjeSB3aXRob3V0IHRyYWNlcyBvciBsaW5rIHRvIGhpbSBhcyBoZSBpcyBwb2xpdGljYWxseSBl
+eHBvc2VkIGF0IHRoZSBtb21lbnQgaW4gaGlzIGNvdW50cnkuIEhlIGhhcyBhIGh1Z2UgYXZhaWxh
+YmxlIGZpbmFuY2lhbCBwb3J0Zm9saW8uCgpQbGVhc2UsIEkgd2lsbCBwcm92aWRlIG1vcmUgZGV0
+YWlscyBhYm91dCB0aGUgdHJhbnNhY3Rpb24gaWYgeW91IGFyZSBzdXJlIHlvdSBjYW4gaGFuZGxl
+IGNsYXNzaWZpZWQgaW5mb3JtYXRpb24gYW5kIGFsc28gbGV0IG1lIGtub3cgeW91ciBlbnRpdGxl
+bWVudCBmb3IgdGhlIHNvbGljaXRlZCByb2xlCkkgc2hhbGwgYmUgZXhwZWN0aW5nIHlvdXIgcXVp
+Y2sgcmVzcG9uc2UgIGhvc2Vva3k5QGdtYWlsLmNvbQpCZXN0IFJlZ2FyZHMsCkhvLVNlb2sgWWFu
+ZyAgICAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2
+ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZl
+cmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRl
+dmVsCg==
