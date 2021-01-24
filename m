@@ -1,54 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D968301BEE
-	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Jan 2021 13:58:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8B37786947;
-	Sun, 24 Jan 2021 12:58:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ELcLjhFQ8BAa; Sun, 24 Jan 2021 12:58:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ADFCC868EA;
-	Sun, 24 Jan 2021 12:58:09 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4A43C1BF419
- for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 12:58:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F256301CCD
+	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Jan 2021 15:43:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 438A186F62
- for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 12:58:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C730C87231;
+	Sun, 24 Jan 2021 14:43:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wa2G96M6NY1g; Sun, 24 Jan 2021 14:43:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id F0E32871F1;
+	Sun, 24 Jan 2021 14:43:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F7951BF30F
+ for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 14:43:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 8F4422044B
+ for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 14:43:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lqmrap2s3xDm for <devel@linuxdriverproject.org>;
- Sun, 24 Jan 2021 12:58:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 759A7850A3
- for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 12:58:06 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 710FB22D2C;
- Sun, 24 Jan 2021 12:58:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611493086;
- bh=5eDnF12i/gn9txUcrRfZFG6pDa2J2ggsQkJpqfZwI8c=;
- h=Date:From:To:Cc:Subject:From;
- b=up10i3UtUcHONEE1qCRR6JrR0nDyGfu1+VfM+G3rIUGu9VZstd2DqFpayw9DP9BRV
- beNZuWKbAuHHk8gw4fdxzsIgsZKZ5DBbSytJNU1polOI9QAk8/hkQVz0nEY43UustA
- hdRVkNPAloJnza8pRmgDnxwi706oV71hUTAfR5/M=
-Date: Sun, 24 Jan 2021 13:58:03 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>
-Subject: [GIT PULL] Staging/IIO driver fixes for 5.11-rc5
-Message-ID: <YA1u24kUPB+B7gKY@kroah.com>
+ with ESMTP id uRpAeKla5pwW for <devel@linuxdriverproject.org>;
+ Sun, 24 Jan 2021 14:43:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f48.google.com (mail-pj1-f48.google.com
+ [209.85.216.48])
+ by silver.osuosl.org (Postfix) with ESMTPS id BD8D4203C7
+ for <devel@driverdev.osuosl.org>; Sun, 24 Jan 2021 14:43:45 +0000 (UTC)
+Received: by mail-pj1-f48.google.com with SMTP id cq1so6729342pjb.4
+ for <devel@driverdev.osuosl.org>; Sun, 24 Jan 2021 06:43:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=osMtOIqCXb/idGVAa6Cmd8MuwAYO+7JETSggruryKKA=;
+ b=fyz3CUkD1kwnvK70qcpdDoYauqytIcvEdjznkrbmOVQc2/d18+HyzN1r1UVAVZ9gHB
+ b/l+Zts4PcevayOcXTMj6+31FOLfvicQDJ6WZDZaYsaDAECEng/hwS8b+bTDUDSMPrtl
+ +HAoLyJxV3+EAkitEUPBr219mF+hgSlgZfjJDdSHxaul0h/W+JlBYCqKz3oRZGc0gLwU
+ 1RD8JDXyuwbHp6A+sOAfGug2sSESfpbNAxWfhcUT21WjUPYiMZF9uRlmDWhU5Q242YbE
+ bL6/BdVZDlNnMqqa3A+HXVnGM1lBb6m6qtywm9BPKA6Fk0ppP0r84Ad1M248OHPyU2h0
+ 8Rbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=osMtOIqCXb/idGVAa6Cmd8MuwAYO+7JETSggruryKKA=;
+ b=MOP69k4tUcxoJcIOUa4MY9P4ZshK2ucbbrHXaFg8MSR4I8xLDsr6xmKA2mjfeJ3dOK
+ LM3B7SFRgPiP5zdfCO5R9kewwOFwkLgXuW6EPv2hr4iZQnzeF4lMz/XT09Sv42TsFBzS
+ oeQkMbBAMDuqUgNAKl0TjSib9vhdqfd/uRUpsuPlqqLbK3WQXxpXtYuopR4f8kZryVuP
+ iHbBWir0z3y8w7EKNtlQS010I4d57btZia1rp6+61Gx5H9wT8Uq0OTpQ72XgW3oKqSQP
+ PhmHziepHn8J1J7rLNp7l3US3zkwEiyW17Fb5bEXUmvK/3v/UwCpu/3yjWNE82NqqfHV
+ tHRA==
+X-Gm-Message-State: AOAM530F1cAlPc3YHjhF7nAyC0/07yVVrs2kyodRy+GJ9hEs64APXKeu
+ YyRRoNEIjONcbiFoW7xeRcM=
+X-Google-Smtp-Source: ABdhPJxJk34fOVKGvlFobysn/pfrS40uEVinSe9YKjvv6o6axmOXfVeD1EEfKTBxLV5v7juaO6S0HQ==
+X-Received: by 2002:a17:90b:949:: with SMTP id
+ dw9mr6178804pjb.20.1611499425304; 
+ Sun, 24 Jan 2021 06:43:45 -0800 (PST)
+Received: from localhost.localdomain ([27.255.168.247])
+ by smtp.googlemail.com with ESMTPSA id
+ i67sm14378161pfc.153.2021.01.24.06.43.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 24 Jan 2021 06:43:44 -0800 (PST)
+From: Puranjay Mohan <puranjay12@gmail.com>
+To: gregkh@linuxfoundation.org, puranjay12@gmail.com,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] Staging: rtl8192u: use %s and __func__
+Date: Sun, 24 Jan 2021 20:13:28 +0530
+Message-Id: <20210124144328.121688-1-puranjay12@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,71 +86,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The following changes since commit 7c53f6b671f4aba70ff15e1b05148b10d58c2837:
+Change function's name to %s and __func__ to fix checkpatch.pl errors.
 
-  Linux 5.11-rc3 (2021-01-10 14:34:50 -0800)
+Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
+---
+ drivers/staging/rtl8192u/r8190_rtl8256.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-are available in the Git repository at:
+diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
+index 63e0f7b1b852..fee3bfb99075 100644
+--- a/drivers/staging/rtl8192u/r8190_rtl8256.c
++++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
+@@ -58,7 +58,7 @@ void phy_set_rf8256_bandwidth(struct net_device *dev, enum ht_channel_width Band
+ 						(enum rf90_radio_path_e)eRFPath,
+ 						0x14, bMask12Bits, 0x5ab);
+ 				} else {
+-					RT_TRACE(COMP_ERR, "phy_set_rf8256_bandwidth(): unknown hardware version\n");
++					RT_TRACE(COMP_ERR, "%s(): unknown hardware version\n", __func__);
+ 					}
+ 				break;
+ 		case HT_CHANNEL_WIDTH_20_40:
+-- 
+2.27.0
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.11-rc5
-
-for you to fetch changes up to a1bfb0ccf94dc79223d0db0d50237d3b3898f0b2:
-
-  Merge tag 'iio-fixes-for-5.11a' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus (2021-01-15 08:16:35 +0100)
-
-----------------------------------------------------------------
-Staging/IIO fixes for 5.11-rc5
-
-Here are some IIO driver fixes for 5.11-rc5 to resolve some reported
-problems.
-
-Nothing major, just a few small fixes, all of these have been in
-linux-next for a while and full details are in the shortlog.
-
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-----------------------------------------------------------------
-Alexandru Ardelean (1):
-      iio: adc: ti_am335x_adc: remove omitted iio_kfifo_free()
-
-Dan Carpenter (1):
-      iio: sx9310: Off by one in sx9310_read_thresh()
-
-David Lechner (1):
-      counter:ti-eqep: remove floor
-
-Greg Kroah-Hartman (1):
-      Merge tag 'iio-fixes-for-5.11a' of https://git.kernel.org/.../jic23/iio into staging-linus
-
-Lars-Peter Clausen (1):
-      iio: ad5504: Fix setting power-down state
-
-Lorenzo Bianconi (1):
-      iio: common: st_sensors: fix possible infinite loop in st_sensors_irq_thread
-
-Slaveyko Slaveykov (1):
-      drivers: iio: temperature: Add delay after the addressed reset command in mlx90632.c
-
-Stephan Gerhold (1):
-      dt-bindings: iio: accel: bma255: Fix bmc150/bmi055 compatible
-
-Stephen Boyd (1):
-      iio: sx9310: Fix semtech,avg-pos-strength setting when > 16
-
- .../bindings/iio/accel/bosch,bma255.yaml           |  4 +--
- drivers/counter/ti-eqep.c                          | 35 ----------------------
- drivers/iio/adc/ti_am335x_adc.c                    |  6 +---
- drivers/iio/common/st_sensors/st_sensors_trigger.c | 31 ++++++++++---------
- drivers/iio/dac/ad5504.c                           |  4 +--
- drivers/iio/proximity/sx9310.c                     |  5 ++--
- drivers/iio/temperature/mlx90632.c                 |  6 ++++
- 7 files changed, 31 insertions(+), 60 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
