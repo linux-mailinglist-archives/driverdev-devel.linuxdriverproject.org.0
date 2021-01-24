@@ -1,60 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DD6B3019A1
-	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Jan 2021 06:12:55 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D968301BEE
+	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Jan 2021 13:58:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 502F9873D0;
-	Sun, 24 Jan 2021 05:12:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8B37786947;
+	Sun, 24 Jan 2021 12:58:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yCEcR+WQbpKz; Sun, 24 Jan 2021 05:12:53 +0000 (UTC)
+	with ESMTP id ELcLjhFQ8BAa; Sun, 24 Jan 2021 12:58:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BDFDA87331;
-	Sun, 24 Jan 2021 05:12:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ADFCC868EA;
+	Sun, 24 Jan 2021 12:58:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BB8411BF479
- for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 05:12:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A43C1BF419
+ for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 12:58:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B71C62291C
- for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 05:12:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 438A186F62
+ for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 12:58:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R90HyPFQdYs2 for <devel@linuxdriverproject.org>;
- Sun, 24 Jan 2021 05:12:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 8D3DF20104
- for <devel@driverdev.osuosl.org>; Sun, 24 Jan 2021 05:12:48 +0000 (UTC)
-IronPort-SDR: dsaLWLueDrNLOWwMx96PQV3m6vBahiluUlZ46malJMNkUKaFUI1k3QAWcr7GOEb40BkFthR/Gq
- bp2xaYP6Lidw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9873"; a="159373058"
-X-IronPort-AV: E=Sophos;i="5.79,370,1602572400"; d="scan'208";a="159373058"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2021 21:12:48 -0800
-IronPort-SDR: kh3dcYjCOGoVGWriBMQEfCROeYK01smO3rh+BBa4Zk6+ZN6OkE5Wv0n5PnwyiDzHBFmblIc4D+
- R91X3cP6TudA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,370,1602572400"; d="scan'208";a="573088080"
-Received: from lkp-server01.sh.intel.com (HELO 27c4e0a4b6d9) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 23 Jan 2021 21:12:47 -0800
-Received: from kbuild by 27c4e0a4b6d9 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l3Xhe-00003O-Fv; Sun, 24 Jan 2021 05:12:46 +0000
-Date: Sun, 24 Jan 2021 13:11:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-linus] BUILD SUCCESS
- e020ff611ba9be54e959e6b548038f8a020da1c9
-Message-ID: <600d0190.vKO2rgqZh+yq6qnx%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id lqmrap2s3xDm for <devel@linuxdriverproject.org>;
+ Sun, 24 Jan 2021 12:58:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 759A7850A3
+ for <devel@linuxdriverproject.org>; Sun, 24 Jan 2021 12:58:06 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 710FB22D2C;
+ Sun, 24 Jan 2021 12:58:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1611493086;
+ bh=5eDnF12i/gn9txUcrRfZFG6pDa2J2ggsQkJpqfZwI8c=;
+ h=Date:From:To:Cc:Subject:From;
+ b=up10i3UtUcHONEE1qCRR6JrR0nDyGfu1+VfM+G3rIUGu9VZstd2DqFpayw9DP9BRV
+ beNZuWKbAuHHk8gw4fdxzsIgsZKZ5DBbSytJNU1polOI9QAk8/hkQVz0nEY43UustA
+ hdRVkNPAloJnza8pRmgDnxwi706oV71hUTAfR5/M=
+Date: Sun, 24 Jan 2021 13:58:03 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging/IIO driver fixes for 5.11-rc5
+Message-ID: <YA1u24kUPB+B7gKY@kroah.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,128 +61,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-linus
-branch HEAD: e020ff611ba9be54e959e6b548038f8a020da1c9  driver core: Fix device link device name collision
+The following changes since commit 7c53f6b671f4aba70ff15e1b05148b10d58c2837:
 
-elapsed time: 3298m
+  Linux 5.11-rc3 (2021-01-10 14:34:50 -0800)
 
-configs tested: 100
-configs skipped: 2
+are available in the Git repository at:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.11-rc5
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                    amigaone_defconfig
-mips                malta_qemu_32r6_defconfig
-mips                        maltaup_defconfig
-powerpc                     tqm8560_defconfig
-powerpc                 mpc8315_rdb_defconfig
-arm                           efm32_defconfig
-arm                        shmobile_defconfig
-arm                         s3c6400_defconfig
-mips                           mtx1_defconfig
-powerpc                     tqm8555_defconfig
-powerpc                  mpc885_ads_defconfig
-powerpc                       holly_defconfig
-powerpc                  storcenter_defconfig
-powerpc                     taishan_defconfig
-powerpc                     tqm8541_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                     rainier_defconfig
-arm                          exynos_defconfig
-sh                            shmin_defconfig
-arm                         cm_x300_defconfig
-mips                           ip27_defconfig
-m68k                         amcore_defconfig
-powerpc                     sequoia_defconfig
-mips                          ath25_defconfig
-arm                         orion5x_defconfig
-sh                           se7712_defconfig
-mips                        bcm47xx_defconfig
-arm                        spear3xx_defconfig
-sh                         ap325rxa_defconfig
-arc                            hsdk_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a002-20210121
-x86_64               randconfig-a003-20210121
-x86_64               randconfig-a001-20210121
-x86_64               randconfig-a005-20210121
-x86_64               randconfig-a006-20210121
-x86_64               randconfig-a004-20210121
-i386                 randconfig-a001-20210121
-i386                 randconfig-a002-20210121
-i386                 randconfig-a004-20210121
-i386                 randconfig-a006-20210121
-i386                 randconfig-a005-20210121
-i386                 randconfig-a003-20210121
-i386                 randconfig-a013-20210121
-i386                 randconfig-a011-20210121
-i386                 randconfig-a012-20210121
-i386                 randconfig-a014-20210121
-i386                 randconfig-a015-20210121
-i386                 randconfig-a016-20210121
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                                   rhel
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+for you to fetch changes up to a1bfb0ccf94dc79223d0db0d50237d3b3898f0b2:
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+  Merge tag 'iio-fixes-for-5.11a' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus (2021-01-15 08:16:35 +0100)
+
+----------------------------------------------------------------
+Staging/IIO fixes for 5.11-rc5
+
+Here are some IIO driver fixes for 5.11-rc5 to resolve some reported
+problems.
+
+Nothing major, just a few small fixes, all of these have been in
+linux-next for a while and full details are in the shortlog.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Alexandru Ardelean (1):
+      iio: adc: ti_am335x_adc: remove omitted iio_kfifo_free()
+
+Dan Carpenter (1):
+      iio: sx9310: Off by one in sx9310_read_thresh()
+
+David Lechner (1):
+      counter:ti-eqep: remove floor
+
+Greg Kroah-Hartman (1):
+      Merge tag 'iio-fixes-for-5.11a' of https://git.kernel.org/.../jic23/iio into staging-linus
+
+Lars-Peter Clausen (1):
+      iio: ad5504: Fix setting power-down state
+
+Lorenzo Bianconi (1):
+      iio: common: st_sensors: fix possible infinite loop in st_sensors_irq_thread
+
+Slaveyko Slaveykov (1):
+      drivers: iio: temperature: Add delay after the addressed reset command in mlx90632.c
+
+Stephan Gerhold (1):
+      dt-bindings: iio: accel: bma255: Fix bmc150/bmi055 compatible
+
+Stephen Boyd (1):
+      iio: sx9310: Fix semtech,avg-pos-strength setting when > 16
+
+ .../bindings/iio/accel/bosch,bma255.yaml           |  4 +--
+ drivers/counter/ti-eqep.c                          | 35 ----------------------
+ drivers/iio/adc/ti_am335x_adc.c                    |  6 +---
+ drivers/iio/common/st_sensors/st_sensors_trigger.c | 31 ++++++++++---------
+ drivers/iio/dac/ad5504.c                           |  4 +--
+ drivers/iio/proximity/sx9310.c                     |  5 ++--
+ drivers/iio/temperature/mlx90632.c                 |  6 ++++
+ 7 files changed, 31 insertions(+), 60 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
