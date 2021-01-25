@@ -1,52 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 971C330241D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Jan 2021 12:11:20 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7EE7302441
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Jan 2021 12:29:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 79BD0867F2;
-	Mon, 25 Jan 2021 11:11:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5FEC4864C3;
+	Mon, 25 Jan 2021 11:29:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PEY4mw6-zh0f; Mon, 25 Jan 2021 11:11:18 +0000 (UTC)
+	with ESMTP id PghIimTvdMxA; Mon, 25 Jan 2021 11:29:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F018C87568;
-	Mon, 25 Jan 2021 11:11:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C1C578631C;
+	Mon, 25 Jan 2021 11:29:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B6BA1BF3DF
- for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 11:11:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 855CF1BF3DF
+ for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 11:28:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 272F12043D
- for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 11:11:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 704C121515
+ for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 11:28:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CWddSgf0z8pI for <devel@linuxdriverproject.org>;
- Mon, 25 Jan 2021 11:11:13 +0000 (UTC)
+ with ESMTP id Ts4da-SWcQ94 for <devel@linuxdriverproject.org>;
+ Mon, 25 Jan 2021 11:28:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2113.outbound.protection.outlook.com [40.107.93.113])
- by silver.osuosl.org (Postfix) with ESMTPS id 9E12120029
- for <devel@driverdev.osuosl.org>; Mon, 25 Jan 2021 11:11:13 +0000 (UTC)
+ (mail-dm6nam10on2101.outbound.protection.outlook.com [40.107.93.101])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0BAD11FF98
+ for <devel@driverdev.osuosl.org>; Mon, 25 Jan 2021 11:28:58 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ha4uiTIAMIJ5SYS4srjIZDeqxBSt45Q7cbJPFCw+ngt5837UGsZnHpbX4VM133h38Y57eWhAZq2Ir8fBGk7PRTwMqV7g/fLmao+/5GB1aA48GhJ9XgLmPspZV8XILpsccrsIOg1xfgfVdgbIGp7L1js+KkHtrKmeMXjtwK8BsOvpbc0ih4cZMANv003xqYNyy+BCEfQ2koLx4JA0D9DEQs+mMP1kyxiAycArgL2TTX0xXQiX38ybdtJJsO0J4VEiVZQqRfzyjjH0BdMdf7s3eY977Dndv8zlPZgJUdJjUhNMu7lu5wtAsE4p2sqhYDsUPeGVz6QWJSu+dl9p+wrwmg==
+ b=lI6SK4E3xRljlAFfWTyVhX7ESBmlgFpjBLJNGWh1KiMypPMwjO905t2jVnRv0IEY8ASo0KM+kwhOC0SUNvijmu4899No4Rl2Xa0SNl0gMstFAbXfiHoNwf9YLOUQmNSJ5uUOngkzUTrRtpEPEFeTAXrAGpuby+2mEiadD4kCoHHXOeaLoLs+e2xe31uLXQE8WevuTvVx51iDJxMGj1Ly2xKh3a2iXJ5FSKWJXCHT5UqfWkPGy8Kw3EOKDiGKVU/bsJCf4jz3n5fOROmiRFI9CdPuU5fZIfs84onYgpvJ0ooAt0uHKkQpEzQdFtemV3AdY8VAfKY3T5eEbd2law+X7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=omUbABZOgw5Fp0Y1jelt4e+NPCWjpIOqJucYqVthNbI=;
- b=YGAbTPwJnodJRgMJGipxW21GgQpi7Zx5+M16+LMTmOyM6VVT0erV0W+vt45Q11bHg+cwQuU6LFQ5ImKFy/wRQi+u7XA5SGXjFX9utbIuOqKS6uhbYhiRhzM6F8/K3gLF/qxTqCtMGGHlt1xD0eLpwTIyZlFDe26dLyGQIcQ76ZEd49ydbnpLlGF1AeoEOJj0BmR0WUFw2trGfamYXt4cToaqaoAUI6Lhl8fRRKq1ntGNFs2nju4ybcGVVYno2p6bfOsuTMwdmy/yqlU7bll9XsBioFHv3IsaLyyPqIjqFljQikwJPrdfWVu6ghEkHldnIJPoGN0FSk1/BNEZ3LDqQg==
+ bh=CxJSPytLTGbJfuVaYKZUvuN+jvubAhBytBbcyAoj2zg=;
+ b=bX0y1lG4b8FE9VN1aJGGCoXNm6bXJ+kyfs8Nyf0R2HyTUurwVS6iuxUAfd81nNefBHrEm2Ts8NDm4vRD1DbRWFWnCxh8qfnWC0f9u7cekBrZyctJE+gpI0tUidSaWmWmervfuMsWZQYxpFScABoPo+0ma+DYTwbwcv+n4M4WQbW4A20eFKFQkykXKbAjcCGHkmpRxpbl8yjAOQ6zyC5Y2LvRabOim2tkRiE4zCWSudoc3w46XlgcmvNUarUTQ2ukkZ/yNsFXPvyn27X8NZsSdYv0mHDhLoH2zeTJHjSt1XMayjnCq/8jJCcS52w96m/FXjbt1QZaD5KVmwKdp9vjIA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
  header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=omUbABZOgw5Fp0Y1jelt4e+NPCWjpIOqJucYqVthNbI=;
- b=nCIyQGrMyFBneI4eq1tzkx2a/yJzYc2UF8+yOyknNjFV6xVftldOaetkv5Fawh/r8x2aCFcQwcLRDhNnF+382tfPuaHtxg4xTp1tM+fAGQcHAdy1uGtMgkV7LuMgqL71BF4p76pTcoGtm9TvOGIxRX/gpPuSWqFEgkNoU5QkfAs=
+ bh=CxJSPytLTGbJfuVaYKZUvuN+jvubAhBytBbcyAoj2zg=;
+ b=t9J+MmmjbqU3hd5Qr3KGI9Zm4gzGIQGO9vhBVY6/C8gRgJ+OjiG9kL4DVj4vBBcggA52V+fEFHcE5jnO9lOLDwIB76d7h1lCQY0VbISpqkHHaE30q6V7o4p4bRfY7tNnY3OicN8Yf3O2TPzyRlFTA9wVFtfa4lrbg9xmi5i6kIU=
 Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
  header.d=none;driverdev.osuosl.org; dmarc=none action=none
  header.from=analogixsemi.com;
@@ -54,71 +54,73 @@ Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
  by BYAPR04MB6262.namprd04.prod.outlook.com (2603:10b6:a03:e3::32)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.13; Mon, 25 Jan
- 2021 11:11:09 +0000
+ 2021 11:14:09 +0000
 Received: from BY5PR04MB6739.namprd04.prod.outlook.com
  ([fe80::5813:96a7:b2d6:132]) by BY5PR04MB6739.namprd04.prod.outlook.com
  ([fe80::5813:96a7:b2d6:132%6]) with mapi id 15.20.3763.015; Mon, 25 Jan 2021
- 11:11:09 +0000
-Date: Mon, 25 Jan 2021 19:10:39 +0800
+ 11:14:09 +0000
+Date: Mon, 25 Jan 2021 19:13:40 +0800
 From: Xin Ji <xji@analogixsemi.com>
 To: Nicolas Boichat <drinkcat@google.com>, Andrzej Hajda <a.hajda@samsung.com>,
  Neil Armstrong <narmstrong@baylibre.com>,
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v3 0/3] Add MIPI rx DPI support
-Message-ID: <cover.1611572142.git.xji@analogixsemi.com>
+Subject: [PATCH v3 2/3] drm/bridge: anx7625: fix not correct return value
+Message-ID: <b585748741a9a4c20175e7f62ecad2d86de4a161.1611572143.git.xji@analogixsemi.com>
+References: <cover.1611572142.git.xji@analogixsemi.com>
 Content-Disposition: inline
+In-Reply-To: <cover.1611572142.git.xji@analogixsemi.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-Originating-IP: [61.148.116.10]
-X-ClientProxiedBy: HK2PR02CA0174.apcprd02.prod.outlook.com
- (2603:1096:201:1f::34) To BY5PR04MB6739.namprd04.prod.outlook.com
+X-ClientProxiedBy: HKAPR04CA0005.apcprd04.prod.outlook.com
+ (2603:1096:203:d0::15) To BY5PR04MB6739.namprd04.prod.outlook.com
  (2603:10b6:a03:229::8)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from zhaomy-pc (61.148.116.10) by
- HK2PR02CA0174.apcprd02.prod.outlook.com (2603:1096:201:1f::34) with Microsoft
+ HKAPR04CA0005.apcprd04.prod.outlook.com (2603:1096:203:d0::15) with Microsoft
  SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.3784.12 via Frontend Transport; Mon, 25 Jan 2021 11:11:08 +0000
+ 15.20.3784.12 via Frontend Transport; Mon, 25 Jan 2021 11:14:08 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e0f82def-f839-4747-751f-08d8c121ea7e
+X-MS-Office365-Filtering-Correlation-Id: ea6472dc-de02-4ad1-38ac-08d8c1225625
 X-MS-TrafficTypeDiagnostic: BYAPR04MB6262:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BYAPR04MB62627C13E06F594DAC2546A7C7BD9@BYAPR04MB6262.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-Microsoft-Antispam-PRVS: <BYAPR04MB626253E9EB2FE57C32AA0404C7BD9@BYAPR04MB6262.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:813;
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: PiOA886UvjzA6p3oHSUVXXIBd7Uzr4YB6pQJP7ZZp/1fH75OlM9F3epS3nlF0aRqTy1wAslgAI6BJUuQktfm/o4fuIMT1jA24OwsFR55T9TVsBqoogRvJmQ/j7rhrr0dOiCKWUspowDC523KNB1Jj65VVhbz93ZxO4KZIvBNwQGuH9OCnO7Bb7VtxxuL5nsKz6SkFMx322NEatyd9/V9mkGUfSxDGI43fLC22ANqn9rrPL1C/ZZEeo3HiuD7y2KEsIXM+HdoCHpjlBn7ICaxRVBgdOB0dxxtBNbqYPGy3MVfO872fOBcFjX/7TIdmA1YUPgVPraa9zNE1bNYxYeTc4w5aCa1g8y1LSOCN+375C0xB9QILsAwkqRzpEkEwUfeqfmVNLgpkDtpd66FBLNhYo1l2h45RjdYYWzanRXzyph92YQbwvv0hwUCsi7pm5dQAsHDqZtiAupeEG9vzYAiqUkCGU/x9Z1/pyZTH4dZuqJLpKF8kBhteTFMeE7KF1uFcjzBKMz/bpffeFjXlJgbRPYKiV7I4btrYaQkoGmR0ecl4OhIM7JiyagHZUoQhgCA+TQc9J/X7BxGeFkALo56ZQ==
+X-Microsoft-Antispam-Message-Info: Wu1NqyjrAS/vuvHwieTCtuFiy1w4qRfc3YXDWDczgOIWAB3yxLtHgeKSV8T+8BbjEIlGNEPyuY0PIIyI1yAFvIERzhvRRWJm+KIobbyx+iEyTAqxvWfyg3wgXcvUPyaYsefGYkikeCxwaagnbGcPhFp3Zoxrb1XkvKTEqDYgCefKm3WblcZDaIhxTdYQlG6WZBBzSyOUi45ipoDBNd0QgWmmQ3YQR33+O1EgvCAGNlw2BXzpNEp8LSKIKlE/Z/KvFFgvSI4e4o4AVmloaiR5hgNPxF/yeMVIoTUs2HXRmJmAE2eE8B2JbhX6WjFl6/8lX0/js2Lvwxyztvy7iif52eNioQvn0GtGp1a+P7GfALYs2JF7/MI4kdCWPAtGzGIrLNp1HROi8As5L+dqh0hg7fOs4B6/jiHpERx7ul+JpluRk0ZfzdGbfc+gsrcpUoTruE8mg1KjL4eJcexJR2GXpbVN4As3C6hsytMfCO3AvO2uhNUb2OXSQh352fL4FPZKZfinq2HQEpnXNOXsLfDhiphfGi4czdJm9Cihz0hMdW6Tmn8jYYXgp4eepk7M96oMwHKjzbPearqIZRA/rsnbyQ==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(366004)(39840400004)(136003)(376002)(346002)(26005)(186003)(6486002)(16526019)(83380400001)(2616005)(956004)(478600001)(66946007)(316002)(110136005)(54906003)(8676002)(8936002)(6496006)(66476007)(52116002)(4326008)(66556008)(86362001)(36756003)(7416002)(5660300002)(2906002)(6666004)(16060500001);
+ SFS:(396003)(366004)(136003)(39850400004)(376002)(346002)(26005)(186003)(6486002)(16526019)(83380400001)(2616005)(956004)(478600001)(66946007)(4744005)(316002)(110136005)(54906003)(8676002)(8936002)(6496006)(66476007)(52116002)(4326008)(66556008)(86362001)(36756003)(7416002)(5660300002)(2906002)(6666004)(16060500001);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?y3e+LDXMO9ZyrqgtC3vdRjuKhTwqqZX5FlfZkgjobKC8jREXMRntSCklS8L6?=
- =?us-ascii?Q?ca4P884/I8FPJBIclIwcvT0Wwp9uKKcbDmW7wODkMwGQUYfhveG+HeTVFHkE?=
- =?us-ascii?Q?NXdTIKR02hYfn2M7DhEGLl/yG0wJZZoMwYREJiKB8uRbaW1w6DjnM0zKAhUW?=
- =?us-ascii?Q?TNPhlmxhySprZDSVw+X3fQoFcbjz7w8ev3InDLBLCUccrGhbeuy8BYg3UHmP?=
- =?us-ascii?Q?SfHyWTcXH5I+mZ80lLAOFHK/kkLV7sJf0t1H0d6nrTbl3beYgLqnLs3NwZwb?=
- =?us-ascii?Q?n+4qDyV8jnXIS8QjSF81b7l2MODp9IxVS/D5a2q6mlKOvktuvAvBvTkZyt9+?=
- =?us-ascii?Q?pMYLNwvrhaNEW5tOsBECMsVfEy1FrxpyvJZ0hkZl2k7QXnCHhlFfDxMtnBxm?=
- =?us-ascii?Q?GLhFX4Dau5pyho+lkdTh3rdNm56QKVZ88eyVCtsikfSmSP5iXzUF4F062hpu?=
- =?us-ascii?Q?a4wwGB2PlLJRfkaXxfkP9QCgIakTunJR4PeaDtdz2uotbjK62bmrCxXyxh7S?=
- =?us-ascii?Q?vi0A586oYp8EDbhwBofUJUCjbkgEsZsGDiuKMQV/M8sCB4wYo/hhOoYIg10f?=
- =?us-ascii?Q?GN75bNZ2PpHZdeQ6aQ8MtJOqFRjhRMK1GKbOYQdy6IDOLm5SD0T35r7SoI12?=
- =?us-ascii?Q?T1p7Rg36Nxmv6wiiGuFvO6j114Kptg8R+7k3A34+v5jqH3a2Rskx97ZxFr8g?=
- =?us-ascii?Q?S+DTdS09zHElkL5JMywmblDck2dx+MD2Jh9xdMDWCAkIP2+kzlk/rFS0G2/+?=
- =?us-ascii?Q?VaY1uEB8fw+UdDy08/XQthRT7jb/Qat0s6U+4lLfsqNUB2286UA5yRqqNkhy?=
- =?us-ascii?Q?oPo6rYRNdGsSy7dyrRChcNZH/ZBEElK2VfMTBOPiiPK6ImE/vFBpJMLkh+lJ?=
- =?us-ascii?Q?FjgjxWE0uIFGJSsqFjmQdR8tB2X/IwNFuwkemAU9Msa7OYhOl95Lq6lmQVsR?=
- =?us-ascii?Q?uQB66lSrNqgaHysoNm2gqL5mi+uQ40LyOmZ5vsepBY6bRRn6E21x/sDNYjW8?=
- =?us-ascii?Q?LsIutMfel4oZtjaKj3S3S2PDPGX148MsEfaudO4jc9aSYbQg5IZG0HHVjI/S?=
- =?us-ascii?Q?Mv2E7UP+?=
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?ODh3Bt1n/+sqMReuQsywQIgR6W5nnxwklUNQp5uO5jQX4mnYS1yWI5KtzjAd?=
+ =?us-ascii?Q?L3oEkJJT3z5vVB2qSbQkBEalSi6X/GDVZTSGg5TRewiVgRlcY+oZV+zOvDBN?=
+ =?us-ascii?Q?OhMmpBmSMdI04i1DnUnlcb564k4elGSCfDW9ZMpsPgUVpt9+VkiBUbmuHAUz?=
+ =?us-ascii?Q?00WtE7YZRWvyoX6Z79Sg6AeoNsQQ+es5BIWTOnDIZeNtPVp+r3F9dniumXn3?=
+ =?us-ascii?Q?+Dx3OriBw63jI7ySAL2mZF/EfEV6FU35VwgO7JMhjza64DZ+GOz3YZnUjlH8?=
+ =?us-ascii?Q?N4FAbUb6W4eST31mwMeIGcD1RcLZzV7A9/o0IydxSXtZuXQWBGlEz46iB0ix?=
+ =?us-ascii?Q?XRn0XDek4+7jWrv3+QyxNDtxlfrRZa5/dn4UTRVhfejkLaZXQlRmDm1PnVtj?=
+ =?us-ascii?Q?CJuf6KH2JYesdNGF7VaRvdW5q+jyoDf6um+p25oFTFkFj0euRdNA2mQHNp4P?=
+ =?us-ascii?Q?b7etygpAR+2SBl70wFqgWyeNPwXRGFACED7w8PIebCagKb/9FamT1/fNf2+n?=
+ =?us-ascii?Q?fMZW19KI8ebg+JGvdXR3MzZdUukvgwMqgbfMc4vqNrZXvlHtfxb1jDPUTiyj?=
+ =?us-ascii?Q?dYLnrxdYNUyACxizc/FIVZC2jnDL4Je61zFNOcVEd5xGiMMAY7JeyzEInmhF?=
+ =?us-ascii?Q?uEd9jArDCra1Ooi/JUeUS5NGnNM+CPmlRRDr4cNMps11H4njZ2a+0l+SlZWz?=
+ =?us-ascii?Q?cRyDFHjiDhn/GHwlKNlgXVXzjhz0EHI4R3lYlHGLcjDk12oyDQrRhB0G8MsK?=
+ =?us-ascii?Q?ll3/5EXTmThtGPNIuaxTCpxtUoZxwmUUEg5MBnZIAJgSU68Tv62vtr3RMfbF?=
+ =?us-ascii?Q?8pSPx/oL8nduqpMKRxsMoLua2ePVX3iDeoqMyywFA4puXUaXeIlviyjV2W2Y?=
+ =?us-ascii?Q?DjaSsfmNM/ogBCu2S2TDvegQlxHvJP3LqhAk9TrL+ts2WE1RhPNqg6KsdYlF?=
+ =?us-ascii?Q?EvOGuMFmyghnHkICiZKTHI+SK6edgv8LDnCGfk3PZTK9UsVmT6kwsbT1gwL4?=
+ =?us-ascii?Q?3GjyauTmUWOkKEN7h1myN7MW7giJGVkrrJ5/IoU3tX8uHZZvYVZ8GgT1Wma7?=
+ =?us-ascii?Q?JzpokN97?=
 X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e0f82def-f839-4747-751f-08d8c121ea7e
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea6472dc-de02-4ad1-38ac-08d8c1225625
 X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jan 2021 11:11:08.9075 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jan 2021 11:14:09.5555 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /C+L6S/U4v5L3dqoEAcYATGtPaMLj3dl6c+o3MqXEFeAJ8zM9JloFuAjdC10i4KsQbWbv5lW+pcYLjHI1jEhrw==
+X-MS-Exchange-CrossTenant-UserPrincipalName: JxewNBCuJfcAzxbhJKvZEsCamLhV2ei7FdwJnfW9Y6x2welQ2OqXNYhrXkrocDPkCqYvgJmZq7q16Mlbpux24Q==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6262
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -146,36 +148,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all, this patch series implement MIPI rx DPI feature. Please help to review.
+At some time, the original code may return non zero value, force return 0
+if operation finished
 
-This is the v3 version, any mistakes, please let me know,
-I'll fix it in the next series.
+Signed-off-by: Xin Ji <xji@analogixsemi.com>
+---
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Change history:
-v3: Fix Rob Herring, Dan Carpenter, Nicolas comments
- - Split the patch, fix not correct return data
- - Fix several coding format
- - Split DP tx swing register setting to two property
- - Add HDCP support vender flag
- - remove 'analogix,swing-setting' and 'analogix,mipi-dpi-in' property
-
-v2: Fix Rob Herring comment
- - Fix yamllint warnings/errors in analogix,anx7625.yaml
- - Fix kernel robot compile warning
-
-v1: initial MIPI rx DPI feature support
-
-
-Xin Ji (3):
-  dt-bindings:drm/bridge:anx7625:add HDCP support flag and swing reg
-  drm/bridge: anx7625: fix not correct return value
-  drm/bridge: anx7625: add MIPI DPI input feature support
-
- .../bindings/display/bridge/analogix,anx7625.yaml  |  57 +++-
- drivers/gpu/drm/bridge/analogix/anx7625.c          | 330 +++++++++++++++++----
- drivers/gpu/drm/bridge/analogix/anx7625.h          |  20 +-
- 3 files changed, 341 insertions(+), 66 deletions(-)
-
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index 65cc059..04536cc 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -189,10 +189,10 @@ static int wait_aux_op_finish(struct anx7625_data *ctx)
+ 			       AP_AUX_CTRL_STATUS);
+ 	if (val < 0 || (val & 0x0F)) {
+ 		DRM_DEV_ERROR(dev, "aux status %02x\n", val);
+-		val = -EIO;
++		return -EIO;
+ 	}
+ 
+-	return val;
++	return 0;
+ }
+ 
+ static int anx7625_video_mute_control(struct anx7625_data *ctx,
 -- 
 2.7.4
 
