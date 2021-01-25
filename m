@@ -1,74 +1,125 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6F11302326
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Jan 2021 10:14:33 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8087487432;
-	Mon, 25 Jan 2021 09:14:31 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k6RQQ4QI+0i6; Mon, 25 Jan 2021 09:14:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D8008741C;
-	Mon, 25 Jan 2021 09:14:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5E8851BF2A2
- for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 09:14:29 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 971C330241D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Jan 2021 12:11:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5AB4E86EA4
- for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 09:14:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 79BD0867F2;
+	Mon, 25 Jan 2021 11:11:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PEY4mw6-zh0f; Mon, 25 Jan 2021 11:11:18 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id F018C87568;
+	Mon, 25 Jan 2021 11:11:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B6BA1BF3DF
+ for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 11:11:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 272F12043D
+ for <devel@linuxdriverproject.org>; Mon, 25 Jan 2021 11:11:15 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9RplT6eKnG3Q for <devel@linuxdriverproject.org>;
- Mon, 25 Jan 2021 09:14:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f179.google.com (mail-pl1-f179.google.com
- [209.85.214.179])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1E2A786E9E
- for <devel@driverdev.osuosl.org>; Mon, 25 Jan 2021 09:14:28 +0000 (UTC)
-Received: by mail-pl1-f179.google.com with SMTP id q2so4439321plk.4
- for <devel@driverdev.osuosl.org>; Mon, 25 Jan 2021 01:14:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=Uuz1cWK615KjsyzAn5B4uJHEFhZmMkBz735HYYCWLVw=;
- b=h/AIA79zizQQWojMq6zI+7TjxgSNttvCWo/+HGGBWb3sk7UE2Ca2RaycAW6/fXal6h
- RzoL80f2C9Wyua8eX9hB2eb0UVf9KnDI2VfeZVnOcsc0c4NE8QGisnZoIy8m8tCw3ceo
- vOL0S4bjzdbfDaFNX2lENvCM8ZHEy/+WwP5aFXLG9k2g72TwPQE9AMfW3Ob60acOuhac
- PlGtxE8DLVNXD45cgC/cTlqyqgwNwQ+XF/53fbVJUTlOtmX03qPW9UWwrG7ID/bDQc1h
- PRdNb79irDYNhfm4zfPtxFEUtTbTveFrJOY1K3wTaMNX5tsqPKNWdWcVERzgpbBnVSEu
- ZxxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=Uuz1cWK615KjsyzAn5B4uJHEFhZmMkBz735HYYCWLVw=;
- b=AkC1QKTo73r6LdqUojm6m5f+5Jz/zmQbIXEyr9BGptXVlbt1h+0ZZugRsZ0VlOMijq
- bylmX8O7qCkA7rhFJWcUfpelnTtHjQyxrnmSDIguCxz4j1/OOEc9qbohPFAuG3rCMHEY
- E00bDDM2P/clvmdz+01+ILlu0ltd2KyhPAgvg96DwMl6MXLD/CsTx4tsByjN8LyJNRAw
- iR6SavYJwqe5KzhbXTABcXsRQJAEKTuy2Hh4f8NNGjBE2U2uSBzbVgvhzYwZE5Br2EnM
- ieDEpZjdhWXe+5jb8/e4esXrrKenEZtz18y7XnPnrnP6TbFT1VHZXgYEe6e/kjft4b+2
- vDlQ==
-X-Gm-Message-State: AOAM532OFUPNxfgLelcJXecd+v1bcmVSp1Bvc9mplKzHTQcr+d/joUqe
- mDmXDmWxPaA5F5v5DsWXflE=
-X-Google-Smtp-Source: ABdhPJyXozHSNR3fCJUy/gHIy4qAmev22ABOH8/+wjpYGHD2zR3SUBsJ5+AJ2vN67e7SzkUYmysjIg==
-X-Received: by 2002:a17:90a:17a5:: with SMTP id
- q34mr4549773pja.47.1611566067755; 
- Mon, 25 Jan 2021 01:14:27 -0800 (PST)
-Received: from bf-rmsz-10.ccdomain.com ([103.220.76.197])
- by smtp.gmail.com with ESMTPSA id p13sm15184063pjz.49.2021.01.25.01.14.24
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 25 Jan 2021 01:14:26 -0800 (PST)
-From: Carlis <zhangxuezhi3@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v3] fbtft: add tearing signal detect
-Date: Mon, 25 Jan 2021 17:14:30 +0800
-Message-Id: <1611566070-84944-1-git-send-email-zhangxuezhi3@gmail.com>
-X-Mailer: git-send-email 1.9.1
+ with ESMTP id CWddSgf0z8pI for <devel@linuxdriverproject.org>;
+ Mon, 25 Jan 2021 11:11:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2113.outbound.protection.outlook.com [40.107.93.113])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E12120029
+ for <devel@driverdev.osuosl.org>; Mon, 25 Jan 2021 11:11:13 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ha4uiTIAMIJ5SYS4srjIZDeqxBSt45Q7cbJPFCw+ngt5837UGsZnHpbX4VM133h38Y57eWhAZq2Ir8fBGk7PRTwMqV7g/fLmao+/5GB1aA48GhJ9XgLmPspZV8XILpsccrsIOg1xfgfVdgbIGp7L1js+KkHtrKmeMXjtwK8BsOvpbc0ih4cZMANv003xqYNyy+BCEfQ2koLx4JA0D9DEQs+mMP1kyxiAycArgL2TTX0xXQiX38ybdtJJsO0J4VEiVZQqRfzyjjH0BdMdf7s3eY977Dndv8zlPZgJUdJjUhNMu7lu5wtAsE4p2sqhYDsUPeGVz6QWJSu+dl9p+wrwmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=omUbABZOgw5Fp0Y1jelt4e+NPCWjpIOqJucYqVthNbI=;
+ b=YGAbTPwJnodJRgMJGipxW21GgQpi7Zx5+M16+LMTmOyM6VVT0erV0W+vt45Q11bHg+cwQuU6LFQ5ImKFy/wRQi+u7XA5SGXjFX9utbIuOqKS6uhbYhiRhzM6F8/K3gLF/qxTqCtMGGHlt1xD0eLpwTIyZlFDe26dLyGQIcQ76ZEd49ydbnpLlGF1AeoEOJj0BmR0WUFw2trGfamYXt4cToaqaoAUI6Lhl8fRRKq1ntGNFs2nju4ybcGVVYno2p6bfOsuTMwdmy/yqlU7bll9XsBioFHv3IsaLyyPqIjqFljQikwJPrdfWVu6ghEkHldnIJPoGN0FSk1/BNEZ3LDqQg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=omUbABZOgw5Fp0Y1jelt4e+NPCWjpIOqJucYqVthNbI=;
+ b=nCIyQGrMyFBneI4eq1tzkx2a/yJzYc2UF8+yOyknNjFV6xVftldOaetkv5Fawh/r8x2aCFcQwcLRDhNnF+382tfPuaHtxg4xTp1tM+fAGQcHAdy1uGtMgkV7LuMgqL71BF4p76pTcoGtm9TvOGIxRX/gpPuSWqFEgkNoU5QkfAs=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BYAPR04MB6262.namprd04.prod.outlook.com (2603:10b6:a03:e3::32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.13; Mon, 25 Jan
+ 2021 11:11:09 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5813:96a7:b2d6:132]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5813:96a7:b2d6:132%6]) with mapi id 15.20.3763.015; Mon, 25 Jan 2021
+ 11:11:09 +0000
+Date: Mon, 25 Jan 2021 19:10:39 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Nicolas Boichat <drinkcat@google.com>, Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v3 0/3] Add MIPI rx DPI support
+Message-ID: <cover.1611572142.git.xji@analogixsemi.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Originating-IP: [61.148.116.10]
+X-ClientProxiedBy: HK2PR02CA0174.apcprd02.prod.outlook.com
+ (2603:1096:201:1f::34) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from zhaomy-pc (61.148.116.10) by
+ HK2PR02CA0174.apcprd02.prod.outlook.com (2603:1096:201:1f::34) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3784.12 via Frontend Transport; Mon, 25 Jan 2021 11:11:08 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e0f82def-f839-4747-751f-08d8c121ea7e
+X-MS-TrafficTypeDiagnostic: BYAPR04MB6262:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BYAPR04MB62627C13E06F594DAC2546A7C7BD9@BYAPR04MB6262.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: PiOA886UvjzA6p3oHSUVXXIBd7Uzr4YB6pQJP7ZZp/1fH75OlM9F3epS3nlF0aRqTy1wAslgAI6BJUuQktfm/o4fuIMT1jA24OwsFR55T9TVsBqoogRvJmQ/j7rhrr0dOiCKWUspowDC523KNB1Jj65VVhbz93ZxO4KZIvBNwQGuH9OCnO7Bb7VtxxuL5nsKz6SkFMx322NEatyd9/V9mkGUfSxDGI43fLC22ANqn9rrPL1C/ZZEeo3HiuD7y2KEsIXM+HdoCHpjlBn7ICaxRVBgdOB0dxxtBNbqYPGy3MVfO872fOBcFjX/7TIdmA1YUPgVPraa9zNE1bNYxYeTc4w5aCa1g8y1LSOCN+375C0xB9QILsAwkqRzpEkEwUfeqfmVNLgpkDtpd66FBLNhYo1l2h45RjdYYWzanRXzyph92YQbwvv0hwUCsi7pm5dQAsHDqZtiAupeEG9vzYAiqUkCGU/x9Z1/pyZTH4dZuqJLpKF8kBhteTFMeE7KF1uFcjzBKMz/bpffeFjXlJgbRPYKiV7I4btrYaQkoGmR0ecl4OhIM7JiyagHZUoQhgCA+TQc9J/X7BxGeFkALo56ZQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(366004)(39840400004)(136003)(376002)(346002)(26005)(186003)(6486002)(16526019)(83380400001)(2616005)(956004)(478600001)(66946007)(316002)(110136005)(54906003)(8676002)(8936002)(6496006)(66476007)(52116002)(4326008)(66556008)(86362001)(36756003)(7416002)(5660300002)(2906002)(6666004)(16060500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?y3e+LDXMO9ZyrqgtC3vdRjuKhTwqqZX5FlfZkgjobKC8jREXMRntSCklS8L6?=
+ =?us-ascii?Q?ca4P884/I8FPJBIclIwcvT0Wwp9uKKcbDmW7wODkMwGQUYfhveG+HeTVFHkE?=
+ =?us-ascii?Q?NXdTIKR02hYfn2M7DhEGLl/yG0wJZZoMwYREJiKB8uRbaW1w6DjnM0zKAhUW?=
+ =?us-ascii?Q?TNPhlmxhySprZDSVw+X3fQoFcbjz7w8ev3InDLBLCUccrGhbeuy8BYg3UHmP?=
+ =?us-ascii?Q?SfHyWTcXH5I+mZ80lLAOFHK/kkLV7sJf0t1H0d6nrTbl3beYgLqnLs3NwZwb?=
+ =?us-ascii?Q?n+4qDyV8jnXIS8QjSF81b7l2MODp9IxVS/D5a2q6mlKOvktuvAvBvTkZyt9+?=
+ =?us-ascii?Q?pMYLNwvrhaNEW5tOsBECMsVfEy1FrxpyvJZ0hkZl2k7QXnCHhlFfDxMtnBxm?=
+ =?us-ascii?Q?GLhFX4Dau5pyho+lkdTh3rdNm56QKVZ88eyVCtsikfSmSP5iXzUF4F062hpu?=
+ =?us-ascii?Q?a4wwGB2PlLJRfkaXxfkP9QCgIakTunJR4PeaDtdz2uotbjK62bmrCxXyxh7S?=
+ =?us-ascii?Q?vi0A586oYp8EDbhwBofUJUCjbkgEsZsGDiuKMQV/M8sCB4wYo/hhOoYIg10f?=
+ =?us-ascii?Q?GN75bNZ2PpHZdeQ6aQ8MtJOqFRjhRMK1GKbOYQdy6IDOLm5SD0T35r7SoI12?=
+ =?us-ascii?Q?T1p7Rg36Nxmv6wiiGuFvO6j114Kptg8R+7k3A34+v5jqH3a2Rskx97ZxFr8g?=
+ =?us-ascii?Q?S+DTdS09zHElkL5JMywmblDck2dx+MD2Jh9xdMDWCAkIP2+kzlk/rFS0G2/+?=
+ =?us-ascii?Q?VaY1uEB8fw+UdDy08/XQthRT7jb/Qat0s6U+4lLfsqNUB2286UA5yRqqNkhy?=
+ =?us-ascii?Q?oPo6rYRNdGsSy7dyrRChcNZH/ZBEElK2VfMTBOPiiPK6ImE/vFBpJMLkh+lJ?=
+ =?us-ascii?Q?FjgjxWE0uIFGJSsqFjmQdR8tB2X/IwNFuwkemAU9Msa7OYhOl95Lq6lmQVsR?=
+ =?us-ascii?Q?uQB66lSrNqgaHysoNm2gqL5mi+uQ40LyOmZ5vsepBY6bRRn6E21x/sDNYjW8?=
+ =?us-ascii?Q?LsIutMfel4oZtjaKj3S3S2PDPGX148MsEfaudO4jc9aSYbQg5IZG0HHVjI/S?=
+ =?us-ascii?Q?Mv2E7UP+?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e0f82def-f839-4747-751f-08d8c121ea7e
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jan 2021 11:11:08.9075 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /C+L6S/U4v5L3dqoEAcYATGtPaMLj3dl6c+o3MqXEFeAJ8zM9JloFuAjdC10i4KsQbWbv5lW+pcYLjHI1jEhrw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6262
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,224 +132,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- mh12gx2825@gmail.com, oliver.graute@kococonnector.com,
+Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- sbrivio@redhat.com, colin.king@canonical.com, zhangxuezhi1@yulong.com
-MIME-Version: 1.0
+ Vasily Khoruzhick <anarsoul@gmail.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
+ Sheng Pan <span@analogixsemi.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Sam Ravnborg <sam@ravnborg.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: zhangxuezhi <zhangxuezhi1@yulong.com>
+Hi all, this patch series implement MIPI rx DPI feature. Please help to review.
 
-For st7789v ic,add tearing signal detect to avoid screen tearing
+This is the v3 version, any mistakes, please let me know,
+I'll fix it in the next series.
 
-Signed-off-by: zhangxuezhi <zhangxuezhi1@yulong.com>
----
-v3:modify author name
----
- drivers/staging/fbtft/fb_st7789v.c | 134 ++++++++++++++++++++++++++++++++++++-
- drivers/staging/fbtft/fbtft.h      |   1 +
- 2 files changed, 134 insertions(+), 1 deletion(-)
+Change history:
+v3: Fix Rob Herring, Dan Carpenter, Nicolas comments
+ - Split the patch, fix not correct return data
+ - Fix several coding format
+ - Split DP tx swing register setting to two property
+ - Add HDCP support vender flag
+ - remove 'analogix,swing-setting' and 'analogix,mipi-dpi-in' property
 
-diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
-index 3a280cc..5426276 100644
---- a/drivers/staging/fbtft/fb_st7789v.c
-+++ b/drivers/staging/fbtft/fb_st7789v.c
-@@ -9,9 +9,12 @@
- #include <linux/delay.h>
- #include <linux/init.h>
- #include <linux/kernel.h>
-+#include <linux/mutex.h>
-+#include <linux/interrupt.h>
-+#include <linux/completion.h>
- #include <linux/module.h>
- #include <video/mipi_display.h>
--
-+#include <linux/gpio/consumer.h>
- #include "fbtft.h"
- 
- #define DRVNAME "fb_st7789v"
-@@ -66,6 +69,38 @@ enum st7789v_command {
- #define MADCTL_MX BIT(6) /* bitmask for column address order */
- #define MADCTL_MY BIT(7) /* bitmask for page address order */
- 
-+#define SPI_PANEL_TE_TIMEOUT	400
-+static struct mutex te_mutex;/*mutex for tearing line*/
-+static struct completion spi_panel_te;
-+
-+static irqreturn_t spi_panel_te_handler(int irq, void *data)
-+{
-+	complete(&spi_panel_te);
-+	return IRQ_HANDLED;
-+}
-+
-+static void enable_spi_panel_te_irq(struct fbtft_par *par, bool enable)
-+{
-+	static int te_irq_count;
-+
-+	if (!par->gpio.te) {
-+		pr_err("%s:%d,SPI panel TE GPIO not configured\n",
-+		       __func__, __LINE__);
-+		return;
-+	}
-+
-+	mutex_lock(&te_mutex);
-+
-+	if (enable) {
-+		if (++te_irq_count == 1)
-+			enable_irq(gpiod_to_irq(par->gpio.te));
-+	} else {
-+		if (--te_irq_count == 0)
-+			disable_irq(gpiod_to_irq(par->gpio.te));
-+	}
-+	mutex_unlock(&te_mutex);
-+}
-+
- /**
-  * init_display() - initialize the display controller
-  *
-@@ -82,6 +117,29 @@ enum st7789v_command {
-  */
- static int init_display(struct fbtft_par *par)
- {
-+	int rc;
-+	struct device *dev = par->info->device;
-+
-+	par->gpio.te = devm_gpiod_get_index_optional(dev, "te", 0, GPIOD_IN);
-+	if (par->gpio.te) {
-+		init_completion(&spi_panel_te);
-+		mutex_init(&te_mutex);
-+		rc = devm_request_irq(dev,
-+				      gpiod_to_irq(par->gpio.te),
-+				     spi_panel_te_handler, IRQF_TRIGGER_RISING,
-+				     "TE_GPIO", par);
-+		if (rc) {
-+			pr_err("TE request_irq failed.\n");
-+			devm_gpiod_put(dev, par->gpio.te);
-+			par->gpio.te = NULL;
-+		} else {
-+			disable_irq_nosync(gpiod_to_irq(par->gpio.te));
-+			pr_info("TE request_irq completion.\n");
-+		}
-+	} else {
-+		pr_err("%s:%d, TE gpio not specified\n",
-+		       __func__, __LINE__);
-+	}
- 	/* turn off sleep mode */
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
- 	mdelay(120);
-@@ -137,6 +195,9 @@ static int init_display(struct fbtft_par *par)
- 	 */
- 	write_reg(par, PWCTRL1, 0xA4, 0xA1);
- 
-+    /*Tearing Effect Line On*/
-+	if (par->gpio.te)
-+		write_reg(par, 0x35, 0x00);
- 	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
- 
- 	if (HSD20_IPS)
-@@ -145,6 +206,76 @@ static int init_display(struct fbtft_par *par)
- 	return 0;
- }
- 
-+/*****************************************************************************
-+ *
-+ *   int (*write_vmem)(struct fbtft_par *par);
-+ *
-+ *****************************************************************************/
-+
-+/* 16 bit pixel over 8-bit databus */
-+int st7789v_write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
-+{
-+	u16 *vmem16;
-+	__be16 *txbuf16 = par->txbuf.buf;
-+	size_t remain;
-+	size_t to_copy;
-+	size_t tx_array_size;
-+	int i;
-+	int rc, ret = 0;
-+	size_t startbyte_size = 0;
-+
-+	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "st7789v ---%s(offset=%zu, len=%zu)\n",
-+		      __func__, offset, len);
-+
-+	remain = len / 2;
-+	vmem16 = (u16 *)(par->info->screen_buffer + offset);
-+
-+	if (par->gpio.dc)
-+		gpiod_set_value(par->gpio.dc, 1);
-+
-+	/* non buffered write */
-+	if (!par->txbuf.buf)
-+		return par->fbtftops.write(par, vmem16, len);
-+
-+	/* buffered write */
-+	tx_array_size = par->txbuf.len / 2;
-+
-+	if (par->startbyte) {
-+		txbuf16 = par->txbuf.buf + 1;
-+		tx_array_size -= 2;
-+		*(u8 *)(par->txbuf.buf) = par->startbyte | 0x2;
-+		startbyte_size = 1;
-+	}
-+
-+	while (remain) {
-+		to_copy = min(tx_array_size, remain);
-+		dev_dbg(par->info->device, "    to_copy=%zu, remain=%zu\n",
-+			to_copy, remain - to_copy);
-+
-+		for (i = 0; i < to_copy; i++)
-+			txbuf16[i] = cpu_to_be16(vmem16[i]);
-+
-+		vmem16 = vmem16 + to_copy;
-+		if (par->gpio.te) {
-+			enable_spi_panel_te_irq(par, true);
-+			reinit_completion(&spi_panel_te);
-+			rc = wait_for_completion_timeout(&spi_panel_te,
-+							 msecs_to_jiffies(SPI_PANEL_TE_TIMEOUT));
-+			if (rc == 0)
-+				pr_err("wait panel TE time out\n");
-+		}
-+		ret = par->fbtftops.write(par, par->txbuf.buf,
-+								startbyte_size + to_copy * 2);
-+		if (par->gpio.te)
-+			enable_spi_panel_te_irq(par, false);
-+		if (ret < 0)
-+			return ret;
-+		remain -= to_copy;
-+	}
-+
-+	return ret;
-+}
-+
- /**
-  * set_var() - apply LCD properties like rotation and BGR mode
-  *
-@@ -259,6 +390,7 @@ static int blank(struct fbtft_par *par, bool on)
- 	.gamma = HSD20_IPS_GAMMA,
- 	.fbtftops = {
- 		.init_display = init_display,
-+		.write_vmem = st7789v_write_vmem16_bus8,
- 		.set_var = set_var,
- 		.set_gamma = set_gamma,
- 		.blank = blank,
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 76f8c09..93bac05 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -212,6 +212,7 @@ struct fbtft_par {
- 		struct gpio_desc *wr;
- 		struct gpio_desc *latch;
- 		struct gpio_desc *cs;
-+		struct gpio_desc *te;
- 		struct gpio_desc *db[16];
- 		struct gpio_desc *led[16];
- 		struct gpio_desc *aux[16];
+v2: Fix Rob Herring comment
+ - Fix yamllint warnings/errors in analogix,anx7625.yaml
+ - Fix kernel robot compile warning
+
+v1: initial MIPI rx DPI feature support
+
+
+Xin Ji (3):
+  dt-bindings:drm/bridge:anx7625:add HDCP support flag and swing reg
+  drm/bridge: anx7625: fix not correct return value
+  drm/bridge: anx7625: add MIPI DPI input feature support
+
+ .../bindings/display/bridge/analogix,anx7625.yaml  |  57 +++-
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 330 +++++++++++++++++----
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  20 +-
+ 3 files changed, 341 insertions(+), 66 deletions(-)
+
 -- 
-1.9.1
+2.7.4
 
 _______________________________________________
 devel mailing list
