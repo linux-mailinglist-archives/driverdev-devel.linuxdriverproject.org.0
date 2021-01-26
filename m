@@ -1,54 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3DF6303B60
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jan 2021 12:20:44 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9D0A303B6A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jan 2021 12:21:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D2B8686796;
-	Tue, 26 Jan 2021 11:20:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DA07484867;
+	Tue, 26 Jan 2021 11:21:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6Q3eQal9030l; Tue, 26 Jan 2021 11:20:42 +0000 (UTC)
+	with ESMTP id pMXUC7HyO9Di; Tue, 26 Jan 2021 11:21:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DB41B86785;
-	Tue, 26 Jan 2021 11:20:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DD00B84481;
+	Tue, 26 Jan 2021 11:21:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9BD9F1BF47E
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 11:20:40 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 105731BF47E
+ for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 11:21:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 983858676C
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 11:20:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0917C86F75
+ for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 11:21:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GVIkOkemUm-D for <devel@linuxdriverproject.org>;
- Tue, 26 Jan 2021 11:20:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 56AEC85B71
- for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 11:20:39 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7039022795;
- Tue, 26 Jan 2021 11:20:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611660038;
- bh=cxRRKLvkAzn2aBTFkAN9CJZ7uMjLsyIWHcwe3vNgWns=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mboS0X9Ca6iVq9Fp7TWZryUk0WK0mCud4u2Gn2bvqyR8Tg60493cnPLHqJT/TsstQ
- HZyG+oSPHSEEjGphSBg+68LZYU3EAVpHn9G0VK3ysj0M5aTo0FwwohhObGsu9dziND
- Vh0cTQuEWEIoc1sgAGgYrvOXRqnBzT0RahtGfg1E=
-Date: Tue, 26 Jan 2021 12:20:36 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Johannes Berg <johannes@sipsolutions.net>
+ with ESMTP id fvuGqpwZ+Gjb for <devel@linuxdriverproject.org>;
+ Tue, 26 Jan 2021 11:21:17 +0000 (UTC)
+X-Greylist: delayed 00:26:55 by SQLgrey-1.7.6
+Received: from sipsolutions.net (s3.sipsolutions.net [144.76.43.62])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4D07E86F5F
+ for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 11:21:17 +0000 (UTC)
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94) (envelope-from <johannes@sipsolutions.net>)
+ id 1l4MPK-00Bsxn-Ff; Tue, 26 Jan 2021 12:21:14 +0100
+Message-ID: <e0eac0c0576c260ccdd849996805562167fcc009.camel@sipsolutions.net>
 Subject: Re: [PATCH] staging: rtl8723bs: fix wireless regulatory API misuse
-Message-ID: <YA/7BL3eblv1glZr@kroah.com>
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Tue, 26 Jan 2021 12:21:13 +0100
+In-Reply-To: <YA/7BL3eblv1glZr@kroah.com>
 References: <20210126115409.d5fd6f8fe042.Ib5823a6feb2e2aa01ca1a565d2505367f38ad246@changeid>
+ <YA/7BL3eblv1glZr@kroah.com>
+User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210126115409.d5fd6f8fe042.Ib5823a6feb2e2aa01ca1a565d2505367f38ad246@changeid>
+X-malware-bazaar: not-scanned
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,39 +58,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Johannes Berg <johannes.berg@intel.com>,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org, ilan.peer@intel.com,
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, ilan.peer@intel.com,
  Hans de Goede <hdegoede@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jan 26, 2021 at 11:54:09AM +0100, Johannes Berg wrote:
-> From: Johannes Berg <johannes.berg@intel.com>
+On Tue, 2021-01-26 at 12:20 +0100, Greg Kroah-Hartman wrote:
 > 
-> This code ends up calling wiphy_apply_custom_regulatory(), for which
-> we document that it should be called before wiphy_register(). This
-> driver doesn't do that, but calls it from ndo_open() with the RTNL
-> held, which caused deadlocks.
+> > Greg, can you take this for 5.11 please? Or if you prefer, since the
+> > patch that exposed this and broke the driver went through my tree, I
+> > can take it as well.
 > 
-> Since the driver just registers static regdomain data and then the
-> notifier applies the channel changes if any, there's no reason for
-> it to call this in ndo_open(), move it earlier to fix the deadlock.
+> Please feel free to take it through yours, as I don't think I'll have
+> any more staging patches for 5.11-final (or none have been sent to me
+> yet), so this might be the fastest way in:
 > 
-> Reported-and-tested-by: Hans de Goede <hdegoede@redhat.com>
-> Fixes: 51d62f2f2c50 ("cfg80211: Save the regulatory domain with a lock")
-> Signed-off-by: Johannes Berg <johannes.berg@intel.com>
-> ---
-> Greg, can you take this for 5.11 please? Or if you prefer, since the
-> patch that exposed this and broke the driver went through my tree, I
-> can take it as well.
+> Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
-Please feel free to take it through yours, as I don't think I'll have
-any more staging patches for 5.11-final (or none have been sent to me
-yet), so this might be the fastest way in:
+OK, will do, thanks!
 
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+johannes
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
