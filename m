@@ -1,60 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 431623045CE
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jan 2021 18:58:42 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 288103045E0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jan 2021 19:02:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1EFFB87061;
-	Tue, 26 Jan 2021 17:58:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 369EA204FC;
+	Tue, 26 Jan 2021 18:02:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7JLkww7xfEu0; Tue, 26 Jan 2021 17:58:39 +0000 (UTC)
+	with ESMTP id y7muX617Bopj; Tue, 26 Jan 2021 18:02:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0934D87001;
-	Tue, 26 Jan 2021 17:58:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 63A16204A5;
+	Tue, 26 Jan 2021 18:02:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 39FA91BF2EF
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 17:58:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 47A041BF2EF
+ for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 18:02:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 36548867AE
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 17:58:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4464085773
+ for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 18:02:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 12TDNe8DXo25 for <devel@linuxdriverproject.org>;
- Tue, 26 Jan 2021 17:58:35 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id gtiuZMYk-nuB for <devel@linuxdriverproject.org>;
+ Tue, 26 Jan 2021 18:02:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BB24E86755
- for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 17:58:35 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C9D2A22228;
- Tue, 26 Jan 2021 17:58:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611683915;
- bh=JqysvydwDUKj1yfhbxxNYxFV3o0GLYfGUQY0dhuSy8E=;
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DE19F85722
+ for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 18:02:41 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EB63A22228;
+ Tue, 26 Jan 2021 18:02:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1611684161;
+ bh=BK2ao5kYzXCxcy1D2owWU3STiedR0YeC1K9uvhJ1CYA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DKsiFyHZdKqd8yujcPLEsK5kbxR3hgBE+vDlm45CwddOk5jvn6QoIYatuDQWgvjGG
- +GLG9bAs7mzkpzWI5wmhx1THuHpc19n2qEZbau+ZmlR/t0rtRuWu5qFszGtdbxYZGV
- /U5bUTApJocxMtffqhaF2NJNlNXE3x91CsnQgBynPSD3wdQHNCSvMsROTE80JNZqGP
- scUmSTXHw1Ye9TDzRV/3iO7I5+0bLaXEL9gPobm2hPGCCn3s46OlysZLeZlA7xTfYL
- 305JXjPGaz6zGYceaBz8LO3xEWtFBD9h8VNTS8tGxxsU4vbcoMldL41ZmVPJB5tOBb
- WIGedf1b3xszg==
-Date: Tue, 26 Jan 2021 17:57:52 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+ b=SppsyU7c8vQ/1xjj/G04Hcb9QmODrvXvXO7Xm2grGJWu3FKtlbOQ7sKdV14Wy8T33
+ nJu0RdiUqBSUxLBdudClYd5m8qdNlalWax5AiHlHbgTWDMdDxPNARrQVxT4ZKj9rt0
+ xcINjm9FJjkOPzGSNK3rDZpppSBm3nK1aFvdZgIo=
+Date: Tue, 26 Jan 2021 19:02:39 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH v5 00/21] Move Hisilicon 6421v600 SPMI driver set out of
  staging
-Message-ID: <20210126175752.GF4839@sirena.org.uk>
+Message-ID: <YBBZP9LjXPi/rzfP@kroah.com>
 References: <cover.1611212783.git.mchehab+huawei@kernel.org>
- <YBBXcdLbj92yMJhw@kroah.com>
+ <YBBXcdLbj92yMJhw@kroah.com> <20210126175752.GF4839@sirena.org.uk>
 MIME-Version: 1.0
-In-Reply-To: <YBBXcdLbj92yMJhw@kroah.com>
-X-Cookie: I don't understand you anymore.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Disposition: inline
+In-Reply-To: <20210126175752.GF4839@sirena.org.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,57 +69,32 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
  linux-kernel@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
  Colin Ian King <colin.king@canonical.com>, Lee Jones <lee.jones@linaro.org>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============2621834086308357136=="
+ Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Tue, Jan 26, 2021 at 05:57:52PM +0000, Mark Brown wrote:
+> On Tue, Jan 26, 2021 at 06:54:57PM +0100, Greg Kroah-Hartman wrote:
+> 
+> > I've applied the first 13 patches, except for patch 3, as that did not
+> > apply, to my tree, thanks.
+> 
+> Is there a branch we can pull from?
 
---===============2621834086308357136==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="FoLtEtfbNGMjfgrs"
-Content-Disposition: inline
+Once 0-day passes, you can pull from my staging-testing branch from
+staging.git on git.kernel.org if you want.  Give it 24 hours to pass
+before it hits that location.
 
+Do you need a tag to pull from?
 
---FoLtEtfbNGMjfgrs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+thanks,
 
-On Tue, Jan 26, 2021 at 06:54:57PM +0100, Greg Kroah-Hartman wrote:
-
-> I've applied the first 13 patches, except for patch 3, as that did not
-> apply, to my tree, thanks.
-
-Is there a branch we can pull from?
-
---FoLtEtfbNGMjfgrs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmAQWCAACgkQJNaLcl1U
-h9DWLwf9GOwp0ilayT81yRRDzKHtM/R3iAuHhu+73HMAoE1RVse5WGuQJZdgfuzz
-RGMUEVfOhxguPn/C6yzxTcPWJbrF7vlyfqR5a0wrD725Y4eVsVVCVvW7wsZW0Vcr
-s1FnzFGzfgEhuL+EOWzvB8cJoW6G+mz/8Ddez5VIK/syAtarmrYHDqUH5Nuox914
-R6FJD37IyTE3/P2ddv8jltJYaepL15MgI2A/5PqeI2jqRcZ1wshafliorZ0ISfnh
-2IncyITNtZKJQAJ2+b3gHxr9UaW5kJeQL+fuUxKsQB8rAZ+m1ixiw97FmI4pMr+W
-+M6SBEeOR7dwFi3RF9ip9vlyh2k5xg==
-=4XGD
------END PGP SIGNATURE-----
-
---FoLtEtfbNGMjfgrs--
-
---===============2621834086308357136==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2621834086308357136==--
