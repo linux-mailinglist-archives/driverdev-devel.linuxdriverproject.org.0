@@ -1,51 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF9A73038F1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jan 2021 10:26:00 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B3DF6303B60
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jan 2021 12:20:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8165387049;
-	Tue, 26 Jan 2021 09:25:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D2B8686796;
+	Tue, 26 Jan 2021 11:20:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AB68JMANEj2a; Tue, 26 Jan 2021 09:25:58 +0000 (UTC)
+	with ESMTP id 6Q3eQal9030l; Tue, 26 Jan 2021 11:20:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EB4D787034;
-	Tue, 26 Jan 2021 09:25:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB41B86785;
+	Tue, 26 Jan 2021 11:20:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AB7B41BF294
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 09:25:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9BD9F1BF47E
+ for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 11:20:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 92318203E3
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 09:25:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 983858676C
+ for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 11:20:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JrO1pPV33ymk for <devel@linuxdriverproject.org>;
- Tue, 26 Jan 2021 09:25:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from out30-56.freemail.mail.aliyun.com
- (out30-56.freemail.mail.aliyun.com [115.124.30.56])
- by silver.osuosl.org (Postfix) with ESMTPS id BFC762002C
- for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 09:25:52 +0000 (UTC)
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R161e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e01424;
- MF=abaci-bugfix@linux.alibaba.com; NM=1; PH=DS; RN=7; SR=0;
- TI=SMTPD_---0UMxxyMj_1611653142; 
-Received: from
- j63c13417.sqa.eu95.tbsite.net(mailfrom:abaci-bugfix@linux.alibaba.com
- fp:SMTPD_---0UMxxyMj_1611653142) by smtp.aliyun-inc.com(127.0.0.1);
- Tue, 26 Jan 2021 17:25:49 +0800
-From: Jiapeng Zhong <abaci-bugfix@linux.alibaba.com>
-To: mchehab@kernel.org
-Subject: [PATCH] media: atomisp: Simplify the calculation of variables
-Date: Tue, 26 Jan 2021 17:25:40 +0800
-Message-Id: <1611653140-76630-1-git-send-email-abaci-bugfix@linux.alibaba.com>
-X-Mailer: git-send-email 1.8.3.1
+ with ESMTP id GVIkOkemUm-D for <devel@linuxdriverproject.org>;
+ Tue, 26 Jan 2021 11:20:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 56AEC85B71
+ for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 11:20:39 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7039022795;
+ Tue, 26 Jan 2021 11:20:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1611660038;
+ bh=cxRRKLvkAzn2aBTFkAN9CJZ7uMjLsyIWHcwe3vNgWns=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mboS0X9Ca6iVq9Fp7TWZryUk0WK0mCud4u2Gn2bvqyR8Tg60493cnPLHqJT/TsstQ
+ HZyG+oSPHSEEjGphSBg+68LZYU3EAVpHn9G0VK3ysj0M5aTo0FwwohhObGsu9dziND
+ Vh0cTQuEWEIoc1sgAGgYrvOXRqnBzT0RahtGfg1E=
+Date: Tue, 26 Jan 2021 12:20:36 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Subject: Re: [PATCH] staging: rtl8723bs: fix wireless regulatory API misuse
+Message-ID: <YA/7BL3eblv1glZr@kroah.com>
+References: <20210126115409.d5fd6f8fe042.Ib5823a6feb2e2aa01ca1a565d2505367f38ad246@changeid>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210126115409.d5fd6f8fe042.Ib5823a6feb2e2aa01ca1a565d2505367f38ad246@changeid>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,45 +61,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Jiapeng Zhong <abaci-bugfix@linux.alibaba.com>,
- sakari.ailus@linux.intel.com, linux-media@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Johannes Berg <johannes.berg@intel.com>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org, ilan.peer@intel.com,
+ Hans de Goede <hdegoede@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the following coccicheck warnings:
+On Tue, Jan 26, 2021 at 11:54:09AM +0100, Johannes Berg wrote:
+> From: Johannes Berg <johannes.berg@intel.com>
+> 
+> This code ends up calling wiphy_apply_custom_regulatory(), for which
+> we document that it should be called before wiphy_register(). This
+> driver doesn't do that, but calls it from ndo_open() with the RTNL
+> held, which caused deadlocks.
+> 
+> Since the driver just registers static regdomain data and then the
+> notifier applies the channel changes if any, there's no reason for
+> it to call this in ndo_open(), move it earlier to fix the deadlock.
+> 
+> Reported-and-tested-by: Hans de Goede <hdegoede@redhat.com>
+> Fixes: 51d62f2f2c50 ("cfg80211: Save the regulatory domain with a lock")
+> Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+> ---
+> Greg, can you take this for 5.11 please? Or if you prefer, since the
+> patch that exposed this and broke the driver went through my tree, I
+> can take it as well.
 
-./drivers/staging/media/atomisp/pci/sh_css_params.c:4652:24-26: WARNING
-!A || A && B is equivalent to !A || B.
+Please feel free to take it through yours, as I don't think I'll have
+any more staging patches for 5.11-final (or none have been sent to me
+yet), so this might be the fastest way in:
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Zhong <abaci-bugfix@linux.alibaba.com>
----
- drivers/staging/media/atomisp/pci/sh_css_params.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_params.c b/drivers/staging/media/atomisp/pci/sh_css_params.c
-index 24fc497..9eb02f4 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_params.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css_params.c
-@@ -4649,10 +4649,8 @@ struct ia_css_dvs_6axis_config *
- 	params = stream->isp_params_configs;
- 
- 	/* Backward compatibility by default consider pipe as Video*/
--	if (!params || (params &&
--			!params->pipe_dvs_6axis_config[IA_CSS_PIPE_ID_VIDEO])) {
-+	if (!params || !params->pipe_dvs_6axis_config[IA_CSS_PIPE_ID_VIDEO])
- 		goto err;
--	}
- 
- 	dvs_config = kvcalloc(1, sizeof(struct ia_css_dvs_6axis_config),
- 			      GFP_KERNEL);
--- 
-1.8.3.1
-
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
