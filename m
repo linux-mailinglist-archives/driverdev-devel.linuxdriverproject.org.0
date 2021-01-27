@@ -1,60 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF11B3063BE
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 20:08:34 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F16113065E5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 22:23:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82CB586288;
-	Wed, 27 Jan 2021 19:08:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B072287388;
+	Wed, 27 Jan 2021 21:23:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iIX3J9gGRH6e; Wed, 27 Jan 2021 19:08:32 +0000 (UTC)
+	with ESMTP id 2NdB9r-INgZG; Wed, 27 Jan 2021 21:23:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 966A486243;
-	Wed, 27 Jan 2021 19:08:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1C12487213;
+	Wed, 27 Jan 2021 21:23:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C5A9C1BF9B2
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 19:08:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E2BE01BF4E4
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 21:23:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C0E3787369
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 19:08:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DE91887313
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 21:23:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wb-m6t1KPCHG for <devel@linuxdriverproject.org>;
- Wed, 27 Jan 2021 19:08:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D2CAF87376
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 19:08:25 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5C1E964DBC;
- Wed, 27 Jan 2021 19:08:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611774505;
- bh=bzLxt6iCKF/jm+eAY+TcrkrkRqLK5ooejuiJItVnlsg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Di80Wh1P4XZoURJwQItSpT7s9DmwvxJsiADu9AZKLOCAlkdcswt4IVV5UcyfCzPzm
- 7si/YSJaSHlg4iIsLNckd3emwfvyCe37AwwWQI+paiLlqObU7oC1zmpw3OyDDnAaa0
- qiuWmS0NaW8dLY4nY4hOSmYTEzUpTWOYGLRy8rX1fJNPtWPErcLjIgAsavLRKkP/2D
- OPyjB+W2BYanQ4Ti/YQKGLN0HuOwmNTQqpUBXGFofj+ABxRdNez422Q67+7pouqii/
- jOA4Z6pA9Fc+wkRUF6p0TlPn2kjjAst0Cp7Y7Ea0ucbk1Ncu/T4WErRi7lFxBLQq3U
- yg3MNDaXa4/SQ==
-Received: by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1l4qAx-003n52-7x; Wed, 27 Jan 2021 20:08:23 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v6 6/7] regulator: hi6421v600-regulator: move it from staging
-Date: Wed, 27 Jan 2021 20:08:21 +0100
-Message-Id: <8620941b4f29ccc049bd4bd641651c466f8de685.1611773727.git.mchehab+huawei@kernel.org>
+ with ESMTP id l0UraHrqv63L for <devel@linuxdriverproject.org>;
+ Wed, 27 Jan 2021 21:23:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from antares.kleine-koenig.org (antares.kleine-koenig.org
+ [94.130.110.236])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id ADA5287213
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 21:23:32 +0000 (UTC)
+Received: by antares.kleine-koenig.org (Postfix, from userid 1000)
+ id 78AFCAE0B56; Wed, 27 Jan 2021 22:23:30 +0100 (CET)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>
+To: Martyn Welch <martyn@welchs.me.uk>,
+ Manohar Vanga <manohar.vanga@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] vme: make remove callback return void
+Date: Wed, 27 Jan 2021 22:23:29 +0100
+Message-Id: <20210127212329.98517-1-uwe@kleine-koenig.org>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <cover.1611773727.git.mchehab+huawei@kernel.org>
-References: <cover.1611773727.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,148 +55,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
- David Gow <davidgow@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This driver is ready for mainstream. Move it out of staging.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- MAINTAINERS                                           |  7 +------
- drivers/regulator/Kconfig                             |  8 ++++++++
- drivers/regulator/Makefile                            |  1 +
- .../hikey9xx => regulator}/hi6421v600-regulator.c     |  0
- drivers/staging/Kconfig                               |  2 --
- drivers/staging/Makefile                              |  1 -
- drivers/staging/hikey9xx/Kconfig                      | 11 -----------
- drivers/staging/hikey9xx/Makefile                     |  3 ---
- drivers/staging/hikey9xx/TODO                         |  5 -----
- 9 files changed, 10 insertions(+), 28 deletions(-)
- rename drivers/{staging/hikey9xx => regulator}/hi6421v600-regulator.c (100%)
- delete mode 100644 drivers/staging/hikey9xx/Kconfig
- delete mode 100644 drivers/staging/hikey9xx/Makefile
- delete mode 100644 drivers/staging/hikey9xx/TODO
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 241f11b7d48a..5c5ad946c5d5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8091,12 +8091,7 @@ L:	linux-kernel@vger.kernel.org
- S:	Maintained
- F:	Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
- F:	drivers/mfd/hi6421-spmi-pmic.c
--
--HISILICON STAGING DRIVERS FOR HIKEY 960/970
--M:	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
--L:	devel@driverdev.osuosl.org
--S:	Maintained
--F:	drivers/staging/hikey9xx/
-+F:	drivers/regulator/hi6421v600-regulator.c
- 
- HISILICON TRUE RANDOM NUMBER GENERATOR V2 SUPPORT
- M:	Zaibo Xu <xuzaibo@huawei.com>
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index 5abdd29fb9f3..088474391da8 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -423,6 +423,14 @@ config REGULATOR_HI655X
- 	  This driver provides support for the voltage regulators of the
- 	  Hisilicon Hi655x PMIC device.
- 
-+config REGULATOR_HI6421V600
-+	tristate "HiSilicon Hi6421v600 PMIC voltage regulator support"
-+	depends on MFD_HI6421_SPMI && OF
-+	help
-+	  This driver provides support for the voltage regulators on
-+	  HiSilicon Hi6421v600 PMU / Codec IC.
-+	  This is used on Kirin 3670 boards, like HiKey 970.
-+
- config REGULATOR_ISL9305
- 	tristate "Intersil ISL9305 regulator"
- 	depends on I2C
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 680e539f6579..77e519d2bc68 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -49,6 +49,7 @@ obj-$(CONFIG_REGULATOR_FAN53880) += fan53880.o
- obj-$(CONFIG_REGULATOR_GPIO) += gpio-regulator.o
- obj-$(CONFIG_REGULATOR_HI6421) += hi6421-regulator.o
- obj-$(CONFIG_REGULATOR_HI6421V530) += hi6421v530-regulator.o
-+obj-$(CONFIG_REGULATOR_HI6421V600) += hi6421v600-regulator.o
- obj-$(CONFIG_REGULATOR_HI655X) += hi655x-regulator.o
- obj-$(CONFIG_REGULATOR_ISL6271A) += isl6271a-regulator.o
- obj-$(CONFIG_REGULATOR_ISL9305) += isl9305.o
-diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/regulator/hi6421v600-regulator.c
-similarity index 100%
-rename from drivers/staging/hikey9xx/hi6421v600-regulator.c
-rename to drivers/regulator/hi6421v600-regulator.c
-diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-index b22f73d7bfc4..db7ec218644f 100644
---- a/drivers/staging/Kconfig
-+++ b/drivers/staging/Kconfig
-@@ -112,6 +112,4 @@ source "drivers/staging/wimax/Kconfig"
- 
- source "drivers/staging/wfx/Kconfig"
- 
--source "drivers/staging/hikey9xx/Kconfig"
--
- endif # STAGING
-diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
-index 2245059e69c7..7b0ef538dcce 100644
---- a/drivers/staging/Makefile
-+++ b/drivers/staging/Makefile
-@@ -46,4 +46,3 @@ obj-$(CONFIG_KPC2000)		+= kpc2000/
- obj-$(CONFIG_QLGE)		+= qlge/
- obj-$(CONFIG_WIMAX)		+= wimax/
- obj-$(CONFIG_WFX)		+= wfx/
--obj-y				+= hikey9xx/
-diff --git a/drivers/staging/hikey9xx/Kconfig b/drivers/staging/hikey9xx/Kconfig
-deleted file mode 100644
-index 1afb8648a2c4..000000000000
---- a/drivers/staging/hikey9xx/Kconfig
-+++ /dev/null
-@@ -1,11 +0,0 @@
--# SPDX-License-Identifier: GPL-2.0
--
--# to be placed at drivers/regulator
--config REGULATOR_HI6421V600
--	tristate "HiSilicon Hi6421v600 PMIC voltage regulator support"
--	depends on MFD_HI6421_SPMI && OF
--	depends on REGULATOR
--	help
--	  This driver provides support for the voltage regulators on
--	  HiSilicon Hi6421v600 PMU / Codec IC.
--	  This is used on Kirin 3670 boards, like HiKey 970.
-diff --git a/drivers/staging/hikey9xx/Makefile b/drivers/staging/hikey9xx/Makefile
-deleted file mode 100644
-index 4d63184e6086..000000000000
---- a/drivers/staging/hikey9xx/Makefile
-+++ /dev/null
-@@ -1,3 +0,0 @@
--# SPDX-License-Identifier: GPL-2.0
--
--obj-$(CONFIG_REGULATOR_HI6421V600)	+= hi6421v600-regulator.o
-diff --git a/drivers/staging/hikey9xx/TODO b/drivers/staging/hikey9xx/TODO
-deleted file mode 100644
-index 65e7996a3066..000000000000
---- a/drivers/staging/hikey9xx/TODO
-+++ /dev/null
-@@ -1,5 +0,0 @@
--ToDo list:
--
--- Port other drivers needed by Hikey 960/970;
--- Test drivers on Hikey 960;
--- Validate device tree bindings.
--- 
-2.29.2
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+VGhlIGRyaXZlciBjb3JlIGlnbm9yZXMgdGhlIHJldHVybiB2YWx1ZSBvZiBzdHJ1Y3QgYnVzX3R5
+cGU6OnJlbW92ZSgpCmJlY2F1c2UgdGhlcmUgaXMgb25seSBsaXR0bGUgdGhhdCBjYW4gYmUgZG9u
+ZS4gVG8gc2ltcGxpZnkgdGhlIHF1ZXN0IHRvCm1ha2UgdGhpcyBmdW5jdGlvbiByZXR1cm4gdm9p
+ZCwgbGV0IHN0cnVjdCB2bWVfZHJpdmVyOjpyZW1vdmUgcmV0dXJuIHZvaWQsCnRvby4gVGhlcmUg
+aXMgb25seSBhIHNpbmdsZSB2bWUgZHJpdmVyIGFuZCBpdCBhbHJlYWR5IHJldHVybnMgMAp1bmNv
+bmRpdGlvbmFsbHkgaW4gLnJlbW92ZSgpLgoKQWxzbyBmaXggdGhlIGJ1cyByZW1vdmUgZnVuY3Rp
+b24gdG8gYWx3YXlzIHJldHVybiAwLgoKU2lnbmVkLW9mZi1ieTogVXdlIEtsZWluZS1Lw7ZuaWcg
+PHV3ZUBrbGVpbmUta29lbmlnLm9yZz4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvdm1lL2RldmljZXMv
+dm1lX3VzZXIuYyB8IDQgKy0tLQogZHJpdmVycy92bWUvdm1lLmMgICAgICAgICAgICAgICAgICAg
+ICAgfCA0ICsrLS0KIGluY2x1ZGUvbGludXgvdm1lLmggICAgICAgICAgICAgICAgICAgIHwgMiAr
+LQogMyBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCgpkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3ZtZS9kZXZpY2VzL3ZtZV91c2VyLmMgYi9kcml2ZXJz
+L3N0YWdpbmcvdm1lL2RldmljZXMvdm1lX3VzZXIuYwppbmRleCBmZDBlYTRkYmNiOTEuLjM1ZDcy
+NjBlMjI3MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3ZtZS9kZXZpY2VzL3ZtZV91c2Vy
+LmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL3ZtZS9kZXZpY2VzL3ZtZV91c2VyLmMKQEAgLTY4OSw3
+ICs2ODksNyBAQCBzdGF0aWMgaW50IHZtZV91c2VyX3Byb2JlKHN0cnVjdCB2bWVfZGV2ICp2ZGV2
+KQogCXJldHVybiBlcnI7CiB9CiAKLXN0YXRpYyBpbnQgdm1lX3VzZXJfcmVtb3ZlKHN0cnVjdCB2
+bWVfZGV2ICpkZXYpCitzdGF0aWMgdm9pZCB2bWVfdXNlcl9yZW1vdmUoc3RydWN0IHZtZV9kZXYg
+KmRldikKIHsKIAlpbnQgaTsKIApAQCAtNzE3LDggKzcxNyw2IEBAIHN0YXRpYyBpbnQgdm1lX3Vz
+ZXJfcmVtb3ZlKHN0cnVjdCB2bWVfZGV2ICpkZXYpCiAKIAkvKiBVbnJlZ2lzdGVyIHRoZSBtYWpv
+ciBhbmQgbWlub3IgZGV2aWNlIG51bWJlcnMgKi8KIAl1bnJlZ2lzdGVyX2NocmRldl9yZWdpb24o
+TUtERVYoVk1FX01BSk9SLCAwKSwgVk1FX0RFVlMpOwotCi0JcmV0dXJuIDA7CiB9CiAKIHN0YXRp
+YyBzdHJ1Y3Qgdm1lX2RyaXZlciB2bWVfdXNlcl9kcml2ZXIgPSB7CmRpZmYgLS1naXQgYS9kcml2
+ZXJzL3ZtZS92bWUuYyBiL2RyaXZlcnMvdm1lL3ZtZS5jCmluZGV4IDU0ZDc5NjNjMTA3OC4uMWIx
+NWFmZWEyOGVlIDEwMDY0NAotLS0gYS9kcml2ZXJzL3ZtZS92bWUuYworKysgYi9kcml2ZXJzL3Zt
+ZS92bWUuYwpAQCAtMTk5Nyw5ICsxOTk3LDkgQEAgc3RhdGljIGludCB2bWVfYnVzX3JlbW92ZShz
+dHJ1Y3QgZGV2aWNlICpkZXYpCiAKIAlkcml2ZXIgPSBkZXYtPnBsYXRmb3JtX2RhdGE7CiAJaWYg
+KGRyaXZlci0+cmVtb3ZlKQotCQlyZXR1cm4gZHJpdmVyLT5yZW1vdmUodmRldik7CisJCWRyaXZl
+ci0+cmVtb3ZlKHZkZXYpOwogCi0JcmV0dXJuIC1FTk9ERVY7CisJcmV0dXJuIDA7CiB9CiAKIHN0
+cnVjdCBidXNfdHlwZSB2bWVfYnVzX3R5cGUgPSB7CmRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4
+L3ZtZS5oIGIvaW5jbHVkZS9saW51eC92bWUuaAppbmRleCA3ZTgyYmY1MDBmMDEuLmIyMDRhOWI0
+YmUxYiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9saW51eC92bWUuaAorKysgYi9pbmNsdWRlL2xpbnV4
+L3ZtZS5oCkBAIC0xMjIsNyArMTIyLDcgQEAgc3RydWN0IHZtZV9kcml2ZXIgewogCWNvbnN0IGNo
+YXIgKm5hbWU7CiAJaW50ICgqbWF0Y2gpKHN0cnVjdCB2bWVfZGV2ICopOwogCWludCAoKnByb2Jl
+KShzdHJ1Y3Qgdm1lX2RldiAqKTsKLQlpbnQgKCpyZW1vdmUpKHN0cnVjdCB2bWVfZGV2ICopOwor
+CXZvaWQgKCpyZW1vdmUpKHN0cnVjdCB2bWVfZGV2ICopOwogCXN0cnVjdCBkZXZpY2VfZHJpdmVy
+IGRyaXZlcjsKIAlzdHJ1Y3QgbGlzdF9oZWFkIGRldmljZXM7CiB9OwotLSAKMi4yOS4yCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
+IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
