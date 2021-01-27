@@ -1,60 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 265BF304D58
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 00:30:18 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A11E1304E72
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 02:16:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 818FB8522B;
-	Tue, 26 Jan 2021 23:30:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AA3E62051D;
+	Wed, 27 Jan 2021 01:16:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 29eggwgms-2C; Tue, 26 Jan 2021 23:30:16 +0000 (UTC)
+	with ESMTP id r0lTch+zZ31M; Wed, 27 Jan 2021 01:16:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3ABAF852F8;
-	Tue, 26 Jan 2021 23:30:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1EDC420515;
+	Wed, 27 Jan 2021 01:16:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6A38F1BF59C
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 23:30:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5921C1BF263
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 01:15:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6166B86697
- for <devel@linuxdriverproject.org>; Tue, 26 Jan 2021 23:30:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 558BE8666E
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 01:15:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5cJ6og6P+qYu for <devel@linuxdriverproject.org>;
- Tue, 26 Jan 2021 23:30:12 +0000 (UTC)
+ with ESMTP id SKwFsp35sSPC for <devel@linuxdriverproject.org>;
+ Wed, 27 Jan 2021 01:15:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C422C816D2
- for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 23:30:12 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPS id 92A8C64D85;
- Tue, 26 Jan 2021 23:30:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611703811;
- bh=rR19SpKbng4O/m5hurHHL1TQQLw77agzg4H49OFmfSs=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=P4DldOK7SbD/uAVEmd6xBxG2liAbgVw1kL15W//tznEOoyFe5hGiFSrTgrLcuj30U
- YvRw353e/Dh8amJBVgQwK8bXkwSj0dSFIRlnYx0EEmUXhofLCXwI0pSQ4DUu7wVdkN
- iSjvGdqAI9P5XR12IXYDgvZ9tpKVIdZNl/M04jMXAGqGSyo7SLEcyi71gP05sSf4Ss
- 2utto15CBb8KCiWYMTSfzxoKLZFqru3v5ArxeWuklH5aMeFpWcrXhnL9bZuAOfPZ6z
- Jv/ku6scImtiORDPZvDOGHGXlEMKtJgtlxuDYOxLYXfmmdsJsKd+12NNVHuhKz27A2
- ML3/FdSClbtcA==
-Received: from pdx-korg-docbuild-2.ci.codeaurora.org (localhost.localdomain
- [127.0.0.1])
- by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id 8601665209;
- Tue, 26 Jan 2021 23:30:11 +0000 (UTC)
+Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com
+ [209.85.216.47])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A0E908660D
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 01:15:56 +0000 (UTC)
+Received: by mail-pj1-f47.google.com with SMTP id g15so307377pjd.2
+ for <devel@driverdev.osuosl.org>; Tue, 26 Jan 2021 17:15:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=KJ+yQ5bWaZ2enwzjx+4GHtaZjxc83d9TFtN5y4k2HgI=;
+ b=i/yuys92Y5AzJRo1OemPBFbioTJmSuQ33639+tZ6prHwvFx51LOyZrVSO1E33i+8wh
+ dEJHgrQ8sxZTiELoPu/HB5idN1Xr1ngd23fU7Q5qWKVITJs29r5uNEgiLJ+UF3eew7oh
+ Te/siDN/xEQeEQxDBwRHsCc0asJLTkm6YLdAmJzmN6G5BtxF5PPok0bVMoyLAZ3KdEOI
+ Iq/KGqEfFxJ8EHCQGitG/cuxLRRvin9iwNT0mDvewcCr0Gf/gUQc+rg3v6bY/LX+Q7bw
+ v09GqAMKSqwIVfOdSE9AZRLH5lptxD2UA4smZNauFMOwPs6tZbLVbnqHk4lzlHnzj5FL
+ mYJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=KJ+yQ5bWaZ2enwzjx+4GHtaZjxc83d9TFtN5y4k2HgI=;
+ b=ajiU8pw6kfwowXOsw2bm9cm0fyV+C3n2dQLKEYFLpa08zrvaYvyUo2ed0iXfV1J/6k
+ 7x1xgbqZQuY1ah06pnmc/t3QIaT08yzGfYl8rw/t1WH0n5tUFLJeQ8/SUdk1kqdHtYhx
+ rnoNRcGN3slrswgqACGguyJoaEBhMw0cw8iPIMcWb0z5pnX8YpA5F/jP7rxPWQNToFzN
+ x3wodWAQgvBbHRLKUs07EEGMUS1NbEi1lTmymuVaK5BSFXfSMnYpKABixw/Sr5usRKDJ
+ KH1jQodKL6pxx0TTJG3Dgrtf3YajB/PLcj58z3ZQLcHpWkPggwGuTXSXnm8tp8m/iimd
+ eUYg==
+X-Gm-Message-State: AOAM5335IEK7hoX/sGGAVEA5LmAT4FdfvtMSf9E1U+KQB4Tx30+f2Zys
+ oB6fHC/kx0yXT/9OnkaepqY=
+X-Google-Smtp-Source: ABdhPJwh8l3R0l+5Z0cCZw5Tw01gyH/2L5iZDeU27N+EyiLMmddVKlQ+fKoZdTxT07XrfYEndiiX9A==
+X-Received: by 2002:a17:902:d64e:b029:df:e5b1:b7f7 with SMTP id
+ y14-20020a170902d64eb02900dfe5b1b7f7mr8586928plh.10.1611710156278; 
+ Tue, 26 Jan 2021 17:15:56 -0800 (PST)
+Received: from localhost ([103.220.76.197])
+ by smtp.gmail.com with ESMTPSA id d128sm218943pga.87.2021.01.26.17.15.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Jan 2021 17:15:55 -0800 (PST)
+Date: Wed, 27 Jan 2021 09:15:49 +0800
+From: carlis <zhangxuezhi3@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v4] fbtft: add tearing signal detect
+Message-ID: <20210127091549.00005933@gmail.com>
+In-Reply-To: <20210126175141.GZ2696@kadam>
+References: <1611664835-150687-1-git-send-email-zhangxuezhi3@gmail.com>
+ <20210126175141.GZ2696@kadam>
+Organization: Tyzmig-ryrjum-8kedto
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-Subject: Re: [PATCH] staging: rtl8723bs: fix wireless regulatory API misuse
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <161170381154.29376.422652736680366832.git-patchwork-notify@kernel.org>
-Date: Tue, 26 Jan 2021 23:30:11 +0000
-References: <20210126115409.d5fd6f8fe042.Ib5823a6feb2e2aa01ca1a565d2505367f38ad246@changeid>
-In-Reply-To: <20210126115409.d5fd6f8fe042.Ib5823a6feb2e2aa01ca1a565d2505367f38ad246@changeid>
-To: Johannes Berg <johannes@sipsolutions.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,38 +88,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, johannes.berg@intel.com,
- gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
- ilan.peer@intel.com, hdegoede@redhat.com, netdev@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ mh12gx2825@gmail.com, gregkh@linuxfoundation.org,
+ oliver.graute@kococonnector.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, sbrivio@redhat.com, colin.king@canonical.com,
+ zhangxuezhi1@yulong.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello:
+On Tue, 26 Jan 2021 20:51:41 +0300
+Dan Carpenter <dan.carpenter@oracle.com> wrote:
 
-This patch was applied to netdev/net.git (refs/heads/master):
-
-On Tue, 26 Jan 2021 11:54:09 +0100 you wrote:
-> From: Johannes Berg <johannes.berg@intel.com>
+> On Tue, Jan 26, 2021 at 08:40:35PM +0800, Carlis wrote:
+> > @@ -82,6 +111,29 @@ enum st7789v_command {
+> >   */
+> >  static int init_display(struct fbtft_par *par)
+> >  {
+> > +	int rc;
+> > +	struct device *dev = par->info->device;
+> > +
+> > +	par->gpio.te = devm_gpiod_get_index_optional(dev, "te", 0,
+> > GPIOD_IN);
+> > +	if (par->gpio.te) {  
 > 
-> This code ends up calling wiphy_apply_custom_regulatory(), for which
-> we document that it should be called before wiphy_register(). This
-> driver doesn't do that, but calls it from ndo_open() with the RTNL
-> held, which caused deadlocks.
+> I explained in my earlier review that devm_gpiod_get_index_optional()
+> can return error pointers...  There was quite a bit of detail about
+> how to handle this correctly in my earlier review, but I think you
+> might not have noticed it.  Please read it again.
 > 
-> [...]
+> > +		init_completion(&spi_panel_te);
+> > +		mutex_init(&te_mutex);
+> > +		rc = devm_request_irq(dev,
+> > +				      gpiod_to_irq(par->gpio.te),
+> > +				     spi_panel_te_handler,
+> > IRQF_TRIGGER_RISING,
+> > +				     "TE_GPIO", par);
+> > +		if (rc) {
+> > +			pr_err("TE request_irq failed.\n");
+> > +			devm_gpiod_put(dev, par->gpio.te);
+> > +			par->gpio.te = NULL;
+> > +		} else {
+> > +
+> > disable_irq_nosync(gpiod_to_irq(par->gpio.te));
+> > +			pr_info("TE request_irq completion.\n");
+> > +		}
+> > +	} else {
+> > +		pr_err("%s:%d, TE gpio not specified\n",
+> > +		       __func__, __LINE__);
+> > +	}  
+> 
+> regards,
+> dan carpenter
+> 
+Thank you for your correction,i will change pr_err to pr_info in next
+patch v5
 
-Here is the summary with links:
-  - staging: rtl8723bs: fix wireless regulatory API misuse
-    https://git.kernel.org/netdev/net/c/81f153faacd0
-
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
