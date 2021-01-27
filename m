@@ -2,53 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 870E7305C98
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 14:11:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC28D305D44
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 14:32:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 03818227AD;
-	Wed, 27 Jan 2021 13:11:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 98FF522844;
+	Wed, 27 Jan 2021 13:32:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0SHpowoQzwi7; Wed, 27 Jan 2021 13:11:41 +0000 (UTC)
+	with ESMTP id u430tzyVh9wy; Wed, 27 Jan 2021 13:32:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0509F226E9;
-	Wed, 27 Jan 2021 13:11:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 666BC226EA;
+	Wed, 27 Jan 2021 13:32:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 184A61BF301
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 13:11:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B70DF1BF301
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 13:32:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 14DB285B0D
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 13:11:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B07858683A
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 13:32:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hluOVQpSNP_3 for <devel@linuxdriverproject.org>;
- Wed, 27 Jan 2021 13:11:35 +0000 (UTC)
+ with ESMTP id 3xOw5vQgqSg0 for <devel@linuxdriverproject.org>;
+ Wed, 27 Jan 2021 13:32:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 06F8685A84
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 13:11:34 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 113DE207A9;
- Wed, 27 Jan 2021 13:11:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F324386824
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 13:32:37 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C12A5207B1;
+ Wed, 27 Jan 2021 13:32:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611753094;
- bh=I4r0yZ8jap4E3EH0ZHseFzeM7MtZzKaH9l7xqzv59bQ=;
+ s=korg; t=1611754357;
+ bh=Hvdj/TnKmUGUDvd5D0ucCsJxgPxWAmML6NC1NFEiusw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MNpK4IHRXaQOtZQCN+SVmVPuvONxqxbedb9G528D2M42gjQjlh6qtaJX88ER4zDYu
- mro5u6r7etWNHbnk+eYxbKMS62eiR0DLUwBN72TktzslBxxiNpbtL0c4VyW90XY3Gk
- EIpTgEjl31XAWdi3AoABxtbWjMulbNQfE2QpcvKk=
-Date: Wed, 27 Jan 2021 14:11:31 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Carlis <zhangxuezhi3@gmail.com>
-Subject: Re: [PATCH v9] staging: fbtft: add tearing signal detect
-Message-ID: <YBFmg3yHlORg1mhf@kroah.com>
-References: <1611752257-150851-1-git-send-email-zhangxuezhi3@gmail.com>
+ b=u15m2WoKpaM2iRwFCDTC0Id9jWPw061bwZFZVpyaROia9HdMUZpooYN6buBoxdlwy
+ 6NL+OCZ4TYv3aWLNwta4GI1HP+QQwqWP4lbYbH/HIzFjrmmoE268Uz7/dgLdi9COTS
+ Kz7z8I8j1c9WoCqZbzrhR5Psr3s97OHDrK6ehxlE=
+Date: Wed, 27 Jan 2021 14:32:35 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v5 00/21] Move Hisilicon 6421v600 SPMI driver set out of
+ staging
+Message-ID: <YBFrc/yk7uvh9HX8@kroah.com>
+References: <cover.1611212783.git.mchehab+huawei@kernel.org>
+ <YBBXcdLbj92yMJhw@kroah.com> <20210126175752.GF4839@sirena.org.uk>
+ <YBBZP9LjXPi/rzfP@kroah.com> <20210126181124.GG4839@sirena.org.uk>
+ <YBErBByYD8lNIWAX@kroah.com> <20210127120426.GB4387@sirena.org.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1611752257-150851-1-git-send-email-zhangxuezhi3@gmail.com>
+In-Reply-To: <20210127120426.GB4387@sirena.org.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,66 +65,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- mh12gx2825@gmail.com, oliver.graute@kococonnector.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- sbrivio@redhat.com, colin.king@canonical.com, zhangxuezhi1@yulong.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-arm-msm@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
+ linux-kernel@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ Colin Ian King <colin.king@canonical.com>, Lee Jones <lee.jones@linaro.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jan 27, 2021 at 08:57:37PM +0800, Carlis wrote:
-> From: zhangxuezhi <zhangxuezhi1@yulong.com>
+On Wed, Jan 27, 2021 at 12:04:26PM +0000, Mark Brown wrote:
+> On Wed, Jan 27, 2021 at 09:57:40AM +0100, Greg Kroah-Hartman wrote:
+> > On Tue, Jan 26, 2021 at 06:11:24PM +0000, Mark Brown wrote:
 > 
-> For st7789v ic,add tearing signal detect to avoid screen tearing
-
-I need a much better changelog description here please.
-
+> > > > Do you need a tag to pull from?
 > 
-> Signed-off-by: zhangxuezhi <zhangxuezhi1@yulong.com>
-> ---
-> v9: change pr_* to dev_*
-> ---
-
-What changed in all of your previous versions?  All of them should be
-listed here, right?
-
-
-
->  drivers/staging/fbtft/fb_st7789v.c | 132 ++++++++++++++++++++++++++++++++++++-
->  drivers/staging/fbtft/fbtft.h      |   1 +
->  2 files changed, 132 insertions(+), 1 deletion(-)
+> > > It'd be nice but not essential.
 > 
-> diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
-> index 3a280cc..9aa2f36 100644
-> --- a/drivers/staging/fbtft/fb_st7789v.c
-> +++ b/drivers/staging/fbtft/fb_st7789v.c
-> @@ -9,9 +9,12 @@
->  #include <linux/delay.h>
->  #include <linux/init.h>
->  #include <linux/kernel.h>
-> +#include <linux/mutex.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/completion.h>
->  #include <linux/module.h>
->  #include <video/mipi_display.h>
-> -
-> +#include <linux/gpio/consumer.h>
->  #include "fbtft.h"
->  
->  #define DRVNAME "fb_st7789v"
-> @@ -66,6 +69,32 @@ enum st7789v_command {
->  #define MADCTL_MX BIT(6) /* bitmask for column address order */
->  #define MADCTL_MY BIT(7) /* bitmask for page address order */
->  
-> +#define SPI_PANEL_TE_TIMEOUT	400
+> > Why do you want/need this?  Having these changes in your tree is good,
+> > but what about other coding style cleanups that I will end up applying
+> > over time before the 5.12-rc1 merge window opens?  Are you wanting to
+> > take the moved driver in your tree, or something else?
+> 
+> I want to apply the regulator driver so I stop being sent this patch
+> series which will help keep my backlog more manageable.
+> 
+> > Traditionally moving drivers out of staging can be done 2 ways:
+> > 	- all happens in the staging tree, I take an ack from the
+> > 	  subsystem maintainer that this is ok to do.
+> > 	- A new driver enters the "real" subsystem tree, and then I
+> > 	  delete the driver in the staging tree.  This doesn't preserve
+> > 	  history as well (not at all), but can be easier for trees that
+> > 	  move quickly (like networking.)
+> 
+> The whole reason the driver is in the staging tree is that Mauro has a
+> requirement to do things in a way that preserves history and so won't
+> send any non-incremental patches.
 
-What is the units here?  Where did this value come from?
-
-> +static struct mutex te_mutex;/*mutex for tearing line*/
-
-Does that look correct???
+Ok, should we wait until after 5.12-rc1 is out then?
 
 thanks,
 
