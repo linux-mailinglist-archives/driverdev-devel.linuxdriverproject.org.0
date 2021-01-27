@@ -1,58 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35DC730581C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 11:19:46 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38645305842
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 11:24:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9020386718;
-	Wed, 27 Jan 2021 10:19:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BC7A62151E;
+	Wed, 27 Jan 2021 10:24:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pP+RQrxN8skN; Wed, 27 Jan 2021 10:19:44 +0000 (UTC)
+	with ESMTP id v4tguQVjk3tr; Wed, 27 Jan 2021 10:24:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ACD05866D2;
-	Wed, 27 Jan 2021 10:19:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 69D5121080;
+	Wed, 27 Jan 2021 10:24:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5240B1BF405
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 10:19:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 17BCA1BF405
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 10:24:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4E88A866D7
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 10:19:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1439084FC9
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 10:24:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FKHdikuysBi0 for <devel@linuxdriverproject.org>;
- Wed, 27 Jan 2021 10:19:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F3187866D2
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 10:19:39 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D7AF320723;
- Wed, 27 Jan 2021 10:19:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611742779;
- bh=d2h1EgBQMOjE5+8onjr7Xk6n8e+j+afxZeaitVsthDs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=d3XzXb/8FnxZ1Z+z/5HUsE1VWiFD1iFv7la249QYlq0mttvihgZY54uYl71wX/v3J
- rZnaGR6hUIp5u8D7f9DT9gQ1py/w3RRjWVJ96amv9pSOuUeGKhWT2FHh4iLA7tSVxv
- VYBz7WHULvVOjJ0hVgvY+RJayodaHXT6vS0A7tgE=
-Date: Wed, 27 Jan 2021 11:19:36 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v5 00/21] Move Hisilicon 6421v600 SPMI driver set out of
- staging
-Message-ID: <YBE+OFwLj31qo/ss@kroah.com>
-References: <cover.1611212783.git.mchehab+huawei@kernel.org>
- <YBBXcdLbj92yMJhw@kroah.com> <20210126175752.GF4839@sirena.org.uk>
- <YBBZP9LjXPi/rzfP@kroah.com> <20210126181124.GG4839@sirena.org.uk>
- <YBErBByYD8lNIWAX@kroah.com> <20210127100816.GH4903@dell>
+ with ESMTP id 6tvqRA2vEZXC for <devel@linuxdriverproject.org>;
+ Wed, 27 Jan 2021 10:24:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com
+ [209.85.214.181])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E1F5484E77
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 10:24:02 +0000 (UTC)
+Received: by mail-pl1-f181.google.com with SMTP id s15so779832plr.9
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 02:24:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=xRcgTb91tK28anYqrlC++wtp+Am92iHcjy/4eSWbMUs=;
+ b=ZVd0VPHkqckjxZmYv4/v2cboiZSDr8qUPwHMzMlYHsy0Hu3sK1Sh2jfHizwSenYTig
+ AhejQOWtpeZ6dqXMdwqVaZLcgU4eRtnJIhzFAUjdHqTxQdJOLRaJM3nA+QMX5DBrFf0l
+ FEjo16QriDvnD/40PuuhCJfhDE37wGRKgRZgqGdh1w7ZQLl9zmuB+/UpKLSRkCkeKgbs
+ Qtk5QufgvK8Hdz7om32gkQZ8rOPszKZnTwGaPCHTaZEIe4VlQxkTHRQOdObfncNdfbww
+ lF8aItGo2wKUlFFRS9qH3RqjWY4t4aWl5oWjSJIMHSSUnpgu4Nyk5kTyPImZSSTwvPIk
+ 129g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=xRcgTb91tK28anYqrlC++wtp+Am92iHcjy/4eSWbMUs=;
+ b=DJ3m511MlRtkIwD63i9jXcZbWB0ZTBtW5KkOeZMQLgvnKPghzC7IHP0vwXjQgnaZLQ
+ qJnx08McZqdrVotO3VmwHu8ZkhWYdzj751FzFXRL9c7KRSBMrjFXvP+e/2uWdRhc4wpu
+ X9L0/itZvUd/yPwDRO6U4IkE9wnPyATi/Ym96KwPd614hpVETFu94l5q+GEwkiXRKwXA
+ ODdpRSeC2riWAILYnOfmNh5/nxGrW2cxpCeb0H3p6jsxQ/gkwuU53rOX0cHKRFNR8fV8
+ 0x6zVU2Af4KjDY4aSVyAYpDaHe59zSpPrMHclpaAv+thdKnP0RfZHf9pp+b2zvJwHSIf
+ YD0w==
+X-Gm-Message-State: AOAM531PByjWbVCD6REYpJ8iwEvALR7lAlgipGt5NEnjx/eRgUdj1R1A
+ N4ml8dK13XKPixrwI9Ywqm0=
+X-Google-Smtp-Source: ABdhPJzTgP2xJ9TiEus/lM8X6G6P4az0ohaUTLuqRAbnoOTXq0i9h7FnZEwNwwYqWfTlv5yT/U1Epg==
+X-Received: by 2002:a17:90a:3f82:: with SMTP id
+ m2mr4895955pjc.235.1611743042596; 
+ Wed, 27 Jan 2021 02:24:02 -0800 (PST)
+Received: from localhost ([103.220.76.197])
+ by smtp.gmail.com with ESMTPSA id d128sm2152572pga.87.2021.01.27.02.23.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Jan 2021 02:24:01 -0800 (PST)
+Date: Wed, 27 Jan 2021 18:23:55 +0800
+From: carlis <zhangxuezhi3@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v6] fbtft: add tearing signal detect
+Message-ID: <20210127182355.00007300@gmail.com>
+In-Reply-To: <20210127085951.GE2696@kadam>
+References: <1611732502-99639-1-git-send-email-zhangxuezhi3@gmail.com>
+ <20210127085951.GE2696@kadam>
+Organization: Tyzmig-ryrjum-8kedto
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210127100816.GH4903@dell>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,77 +88,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Mayulong <mayulong1@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-arm-msm@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- YueHaibing <yuehaibing@huawei.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Wei Xu <xuwei5@hisilicon.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Colin Ian King <colin.king@canonical.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ mh12gx2825@gmail.com, gregkh@linuxfoundation.org,
+ oliver.graute@kococonnector.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, sbrivio@redhat.com, colin.king@canonical.com,
+ zhangxuezhi1@yulong.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jan 27, 2021 at 10:08:16AM +0000, Lee Jones wrote:
-> On Wed, 27 Jan 2021, Greg Kroah-Hartman wrote:
-> 
-> > On Tue, Jan 26, 2021 at 06:11:24PM +0000, Mark Brown wrote:
-> > > On Tue, Jan 26, 2021 at 07:02:39PM +0100, Greg Kroah-Hartman wrote:
-> > > > On Tue, Jan 26, 2021 at 05:57:52PM +0000, Mark Brown wrote:
-> > > 
-> > > > > Is there a branch we can pull from?
-> > > 
-> > > > Once 0-day passes, you can pull from my staging-testing branch from
-> > > > staging.git on git.kernel.org if you want.  Give it 24 hours to pass
-> > > > before it hits that location.
-> > > 
-> > > Thanks.
-> > 
-> > Should be out there now if you want to pull.
-> > 
-> > > > Do you need a tag to pull from?
-> > > 
-> > > It'd be nice but not essential.
-> > 
-> > Why do you want/need this?  Having these changes in your tree is good,
-> > but what about other coding style cleanups that I will end up applying
-> > over time before the 5.12-rc1 merge window opens?  Are you wanting to
-> > take the moved driver in your tree, or something else?
-> > 
-> > Traditionally moving drivers out of staging can be done 2 ways:
-> > 	- all happens in the staging tree, I take an ack from the
-> > 	  subsystem maintainer that this is ok to do.
-> > 	- A new driver enters the "real" subsystem tree, and then I
-> > 	  delete the driver in the staging tree.  This doesn't preserve
-> > 	  history as well (not at all), but can be easier for trees that
-> > 	  move quickly (like networking.)
-> > 
-> > Which ever works for you is fine with me, but relying on the code to
-> > stay "not touched" in my tree after you pull it almost never happens due
-> > to the number of drive-by coding style cleanups that end up in the
-> > staging tree every week.
-> 
-> I would have expected the whole set to be merged as a set into a
-> single tree, placed on an immutable branch and a pull-request to be
-> sent out for the other maintainers to pull from (if they so wished).
-> 
-> This would ensure development could continue on any/all of the
-> affected drivers/files.
-> 
-> If it's not too late, I'd be more than happy to facilitate.
+On Wed, 27 Jan 2021 11:59:51 +0300
+Dan Carpenter <dan.carpenter@oracle.com> wrote:
 
-Given these patches are already in my public tree, that might be a bit
-harder, why the huge work for this?  Worst case, I just keep all of the
-patches that do not actually move the code in my tree, and then things
-can move after 5.12-rc1.
-
-thanks,
-
-greg k-h
+> On Wed, Jan 27, 2021 at 03:28:22PM +0800, Carlis wrote:
+> >  static int init_display(struct fbtft_par *par)
+> >  {
+> > +	int rc;
+> > +	struct device *dev = par->info->device;
+> > +
+> > +	par->gpio.te = devm_gpiod_get_index_optional(dev, "te", 0,
+> > GPIOD_IN);
+> > +	if (IS_ERR(par->gpio.te)) {
+> > +		rc = PTR_ERR(par->gpio.te);
+> > +		pr_err("Failed to request te gpio: %d\n", rc);
+> > +		par->gpio.te = NULL;
+> > +	}
+> > +	if (par->gpio.te) {
+> > +		init_completion(&spi_panel_te);
+> > +		mutex_init(&te_mutex);
+> > +		rc = devm_request_irq(dev,
+> > +				      gpiod_to_irq(par->gpio.te),
+> > +				     spi_panel_te_handler,
+> > IRQF_TRIGGER_RISING,
+> > +				     "TE_GPIO", par);
+> > +		if (rc) {
+> > +			pr_err("TE request_irq failed.\n");
+> > +			devm_gpiod_put(dev, par->gpio.te);
+> > +			par->gpio.te = NULL;
+> > +		} else {
+> > +
+> > disable_irq_nosync(gpiod_to_irq(par->gpio.te));
+> > +			pr_info("TE request_irq completion.\n");  
+> 
+> #SadFaceEmoji
+> 
+> > +		}
+> > +	} else {
+> > +		pr_info("%s:%d, TE gpio not specified\n",
+> > +			__func__, __LINE__);
+> > +	}  
+> 
+> regards,
+> dan carpenter
+> 
+Sorry,i will delete this log in patch v8
+regards
+zhangxuezhi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
