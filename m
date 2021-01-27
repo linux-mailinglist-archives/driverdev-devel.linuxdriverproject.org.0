@@ -1,69 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3476F3063A2
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 20:01:03 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8649B3063C0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jan 2021 20:08:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AE9088621E;
-	Wed, 27 Jan 2021 19:01:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 72D1E234BB;
+	Wed, 27 Jan 2021 19:08:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SiTw6xsNILOX; Wed, 27 Jan 2021 19:01:00 +0000 (UTC)
+	with ESMTP id cu3uRKQDINqV; Wed, 27 Jan 2021 19:08:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8A2BC861FF;
-	Wed, 27 Jan 2021 19:00:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 88BA723120;
+	Wed, 27 Jan 2021 19:08:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 69FF01BF9D1
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 19:00:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 297A21BF574
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 19:08:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 659F787346
- for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 19:00:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2609486C61
+ for <devel@linuxdriverproject.org>; Wed, 27 Jan 2021 19:08:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sosdBoN9AKwd for <devel@linuxdriverproject.org>;
- Wed, 27 Jan 2021 19:00:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0190.hostedemail.com
- [216.40.44.190])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 740C48734C
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 19:00:56 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave06.hostedemail.com (Postfix) with ESMTP id F1EA1800BE89
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 18:21:35 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id EC021100E7B4B;
- Wed, 27 Jan 2021 18:21:33 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:973:982:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2197:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3865:3866:3867:3871:3872:3874:4321:4823:5007:6742:7652:7903:10004:10400:10848:11232:11658:11914:12297:12555:12663:12760:12986:13069:13311:13357:13439:14093:14097:14181:14659:14721:21080:21221:21433:21451:21627:21740:21939:30054:30083,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: wire77_23102f827599
-X-Filterd-Recvd-Size: 2760
-Received: from [192.168.1.159] (unknown [47.151.137.21])
- (Authenticated sender: joe@perches.com)
- by omf08.hostedemail.com (Postfix) with ESMTPA;
- Wed, 27 Jan 2021 18:21:31 +0000 (UTC)
-Message-ID: <2efe84eefdfd21da68d323a6e32b4ad84bc0fa6b.camel@perches.com>
-Subject: Re: [PATCH v10] staging: fbtft: add tearing signal detect
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Greg KH
- <gregkh@linuxfoundation.org>
-Date: Wed, 27 Jan 2021 10:21:30 -0800
-In-Reply-To: <20210127144946.GF2696@kadam>
-References: <1611754972-151016-1-git-send-email-zhangxuezhi3@gmail.com>
- <YBFv+12xfsoxacDb@kroah.com> <20210127220809.000026fb@gmail.com>
- <YBF08Xf7qaZx3YZ1@kroah.com> <20210127221708.00002568@gmail.com>
- <YBF30EEUkhEMY5ti@kroah.com> <20210127144946.GF2696@kadam>
-User-Agent: Evolution 3.38.1-1 
+ with ESMTP id wLs73ziW+Ss5 for <devel@linuxdriverproject.org>;
+ Wed, 27 Jan 2021 19:08:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 01E9F86C4D
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 19:08:25 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5B43864DAB;
+ Wed, 27 Jan 2021 19:08:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1611774505;
+ bh=2HavwUWRXPYAzxhXM+vrsP246g6dUCKujiewop5u6Mw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=exksylbd229tqjbMBx300VKVBsCgT8w/z3AhlXq2BxP1S2/hY+dwKeG/8OoOIQ9aV
+ +SmhYyjis9Jkkg/M+KsikSNf/WVHWJ+Q3pRFhmy1YjfUOedXkJ4vn4R21nng0OxJgN
+ 4I0JhC+jnNgWMVlB4ue/EuBLoj7QvhfDT4b7s3EfoTZQSh9PCS7uvme/vSZjIZoFgg
+ lg7WRJNNX31lWDKYhuWPIROAc9BJ/rwL/slRUanza9D8RgBeZsk3S4QXVH51YA8+zJ
+ pNoUBy9AykXo3Mp2Xj0/qe4BczHrlP/0rNSLSqWrvDGeNjFbpKoBYva8P3zC5lNpii
+ X4JMWzj3HVAsQ==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1l4qAx-003n4p-09; Wed, 27 Jan 2021 20:08:23 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH v6 0/7] Move Hisilicon 6421v600 SPMI and USB drivers out of
+ staging
+Date: Wed, 27 Jan 2021 20:08:15 +0100
+Message-Id: <cover.1611773727.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -77,56 +68,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- mh12gx2825@gmail.com, oliver.graute@kococonnector.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- sbrivio@redhat.com, carlis <zhangxuezhi3@gmail.com>,
- Andy Whitcroft <apw@canonical.com>, colin.king@canonical.com,
- zhangxuezhi1@yulong.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Wang Hai <wanghai38@huawei.com>, linux-kernel@vger.kernel.org,
+ Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ YueHaibing <yuehaibing@huawei.com>, Yu Chen <chenyu56@huawei.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
+ Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ linux-arm-kernel@lists.infradead.org, David Gow <davidgow@google.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Alex Dewar <alex.dewar90@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> Comments are the exception to the "no spaces at the start of a line"
-> rule.  I was expecting that the kbuild-bot would send a Smatch warning
-> for inconsistent indenting, but comments are not counted there either.
-> 
-> I'm sort of surprised that we don't have checkpatch rule about the
-> missing space characters.  It should be: "/* Tearing Effect Line On */".
+Hi Greg/Mark/Lee/Vinod,
 
-Maybe this but the "preceded by a tab" test is pretty noisy.
+Just did a rebase on the top of staging-testing, and re-tested
+at the hardware.
 
----
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 4f8494527139..72347e82d384 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -3720,6 +3720,22 @@ sub process {
- 				    s/(\(\s*$Type\s*\))[ \t]+/$1/;
- 			}
- 		}
-+
-+# Comment styles
-+# Initial comment only lines that have a leading space
-+		if ($rawline =~ m{^\+([ \t]+)(?:/\*|//)} && $1 =~ / /) {
-+			WARN("COMMENT_STYLE",
-+			     "Initial comment lines should be indented only with tabs\n" . $herecurr);
-+# comments not aligned on tabs
-+		} elsif ($rawline !~ m{^\+(?:/\*|//)} &&
-+			 $rawline =~ m{^\+.*[^\t](?:/\*|//)}) {
-+			CHK("COMMENT_STYLE",
-+			    "Comments should generally be preceded by a tab\n" . $herecurr);
-+		}
-+
-+# comment initiators should generally be followed by a space if using words
-+		if ($rawline =~ m{^\+.*(?:/\*|//)\w}) {
-+			WARN("COMMENT_STYLE",
-+			     "Comment text should use a space after the comment initiator\n" . $herecurr);
-+		}
- 
- # Block comment styles
- # Networking with an initial /*
+This series contain the remaining patches for USB to start working,
+except for a final DTS patch, which depends on two patches
+that should be merged via the ARM SoC tree.
+
+Patches 1 and 2 convert the SPMI and regulator
+drivers to use regmap and simplifies the logic by using
+regmap helpers.
+
+I guess the best would be if Greg could apply both patches
+also via the staging tree.
+
+Patches 3-6 move the drivers and their corresponding
+DT documentation bindings out of staging.
+
+Patch 7 contains the DT which describes the regulator,
+SPMI controller and MFD.
+
+I'll submit the final patch with USB bindings after having
+everything set (e.g. after 5.12-rc1).
+
+Mauro Carvalho Chehab (7):
+  staging: hikey9xx: spmi driver: convert to regmap
+  staging: hikey9xx: hi6421v600-regulator: use some regmap helpers
+  phy: phy-hi3670-usb3: move driver from staging into phy
+  spmi: hisi-spmi-controller: move driver from staging
+  mfd: hi6421-spmi-pmic: move driver from staging
+  regulator: hi6421v600-regulator: move it from staging
+  dts: hisilicon: add support for the PMIC found on Hikey 970
+
+ .../mfd}/hisilicon,hi6421-spmi-pmic.yaml      |   0
+ .../bindings/phy/hisilicon,hi3670-usb3.yaml   |   0
+ .../spmi}/hisilicon,hisi-spmi-controller.yaml |   0
+ MAINTAINERS                                   |  24 +++-
+ .../boot/dts/hisilicon/hi3670-hikey970.dts    |  22 +---
+ .../boot/dts/hisilicon/hikey970-pmic.dtsi     |  87 +++++++++++++
+ drivers/mfd/Kconfig                           |  15 +++
+ drivers/mfd/Makefile                          |   1 +
+ .../hikey9xx => mfd}/hi6421-spmi-pmic.c       | 115 ++++++------------
+ drivers/phy/hisilicon/Kconfig                 |  10 ++
+ drivers/phy/hisilicon/Makefile                |   1 +
+ .../hisilicon}/phy-hi3670-usb3.c              |   0
+ drivers/regulator/Kconfig                     |   8 ++
+ drivers/regulator/Makefile                    |   1 +
+ .../hi6421v600-regulator.c                    |  63 ++--------
+ drivers/spmi/Kconfig                          |   9 ++
+ drivers/spmi/Makefile                         |   1 +
+ .../hikey9xx => spmi}/hisi-spmi-controller.c  |   0
+ drivers/staging/Kconfig                       |   2 -
+ drivers/staging/Makefile                      |   1 -
+ drivers/staging/hikey9xx/Kconfig              |  50 --------
+ drivers/staging/hikey9xx/Makefile             |   7 --
+ drivers/staging/hikey9xx/TODO                 |   5 -
+ include/linux/mfd/hi6421-spmi-pmic.h          |   7 +-
+ 24 files changed, 207 insertions(+), 222 deletions(-)
+ rename {drivers/staging/hikey9xx => Documentation/devicetree/bindings/mfd}/hisilicon,hi6421-spmi-pmic.yaml (100%)
+ rename drivers/staging/hikey9xx/phy-hi3670-usb3.yaml => Documentation/devicetree/bindings/phy/hisilicon,hi3670-usb3.yaml (100%)
+ rename {drivers/staging/hikey9xx => Documentation/devicetree/bindings/spmi}/hisilicon,hisi-spmi-controller.yaml (100%)
+ create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-pmic.dtsi
+ rename drivers/{staging/hikey9xx => mfd}/hi6421-spmi-pmic.c (72%)
+ rename drivers/{staging/hikey9xx => phy/hisilicon}/phy-hi3670-usb3.c (100%)
+ rename drivers/{staging/hikey9xx => regulator}/hi6421v600-regulator.c (81%)
+ rename drivers/{staging/hikey9xx => spmi}/hisi-spmi-controller.c (100%)
+ delete mode 100644 drivers/staging/hikey9xx/Kconfig
+ delete mode 100644 drivers/staging/hikey9xx/Makefile
+ delete mode 100644 drivers/staging/hikey9xx/TODO
+
+-- 
+2.29.2
 
 
 _______________________________________________
