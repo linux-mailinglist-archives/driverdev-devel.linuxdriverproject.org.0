@@ -2,47 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9813E307C69
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 18:28:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B41F307CA9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 18:37:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 642EF87463;
-	Thu, 28 Jan 2021 17:28:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 504FC87449;
+	Thu, 28 Jan 2021 17:37:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3wmXHFgepg7w; Thu, 28 Jan 2021 17:28:42 +0000 (UTC)
+	with ESMTP id NIxuJ131NdrD; Thu, 28 Jan 2021 17:37:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9CE3187448;
-	Thu, 28 Jan 2021 17:28:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B53F38744A;
+	Thu, 28 Jan 2021 17:37:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1BE3A1BF40A
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 17:28:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D81041BF40A
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 17:37:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1709F2E0E4
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 17:28:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D09192E0EA
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 17:37:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9HiSwH1j8fPk for <devel@linuxdriverproject.org>;
- Thu, 28 Jan 2021 17:28:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ngay18 (unknown [51.79.141.120])
- by silver.osuosl.org (Postfix) with ESMTP id BF2CA2E0DE
- for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 17:28:38 +0000 (UTC)
-Received: from User (unknown [111.118.154.101])
- by ngay18 (Postfix) with ESMTPA id 688CE274423;
- Thu, 28 Jan 2021 03:51:24 +0000 (UTC)
-From: "Mohamad Al Numan"<aliya@tenba.com>
-Subject: BUSINESS OFFER
-Date: Thu, 28 Jan 2021 10:51:18 +0700
+ with ESMTP id lf-UeOVE4laH for <devel@linuxdriverproject.org>;
+ Thu, 28 Jan 2021 17:37:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id C720A2E0E9
+ for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 17:37:05 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1l5BE7-0007g0-7L; Thu, 28 Jan 2021 17:37:03 +0000
+From: Colin King <colin.king@canonical.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: net: wimax: i2400m: fw: remove redundant
+ initialization of variable result
+Date: Thu, 28 Jan 2021 17:37:02 +0000
+Message-Id: <20210128173703.645328-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210128172839.1709F2E0E4@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,26 +58,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mohamedalnuman1968@gmail.com
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Compliment of the day.
+From: Colin Ian King <colin.king@canonical.com>
 
-Hope my email will reach you in time. My name is Mohamad Al Numan from Kuwait City. I am a businessman who has my business in Kuwait. I am here to ask for your help so that I can invest in your country with your help.
+The variable result is being initialized with a value that is never
+read and it is being updated later with a new value.  The initialization
+is redundant and can be removed.
 
-The reason I contacted you is because I intend to invest in a business with you in your country, sorry to bother you with my business offer, but you must consider if we can work together to guarantee good investments in your country. I am interested in real estate investments, Health and education, industries, import and export, logistics, construction, technology, health and Agriculture. I would like you to name one particular investment that we should focus on.
+Addresses-Coverity: ("Unused value")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/wimax/i2400m/fw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I will appreciate your response. Let me know your ideas and knowledge regarding this investment or any other profitable investment you can suggest. We have some capital to invest which I made from oil and gas. I am willing to cooperate with you to establish this business in your country. In my next letter, I will explain all the details of the project and its interest.
+diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
+index edb5eba0898b..b2fd4bd2c5f9 100644
+--- a/drivers/staging/wimax/i2400m/fw.c
++++ b/drivers/staging/wimax/i2400m/fw.c
+@@ -583,7 +583,7 @@ ssize_t i2400m_bm_cmd(struct i2400m *i2400m,
+ 		      struct i2400m_bootrom_header *ack, size_t ack_size,
+ 		      int flags)
+ {
+-	ssize_t result = -ENOMEM, rx_bytes;
++	ssize_t result, rx_bytes;
+ 	struct device *dev = i2400m_dev(i2400m);
+ 	int opcode = cmd == NULL ? -1 : i2400m_brh_get_opcode(cmd);
+ 
+-- 
+2.29.2
 
-I will tell you more about myself when I receive your answer. You can also tell me a little more about yourself.
-
-Please email me back so that we can discuss further.
-
-Best Regards,
-Mohamad Al Numan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
