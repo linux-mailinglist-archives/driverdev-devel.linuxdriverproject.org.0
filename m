@@ -1,52 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EC4F307EEA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 20:46:03 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 500C130803C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 22:08:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B902586DD0;
-	Thu, 28 Jan 2021 19:46:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 663A08688B;
+	Thu, 28 Jan 2021 21:08:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NuZMSipKkwbU; Thu, 28 Jan 2021 19:46:01 +0000 (UTC)
+	with ESMTP id DZGPlMwBJUh3; Thu, 28 Jan 2021 21:08:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D080A86C2B;
-	Thu, 28 Jan 2021 19:46:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 718BB86807;
+	Thu, 28 Jan 2021 21:08:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9084C1BF3E3
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 19:45:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A8D611BF3D8
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 21:08:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8B67E2038A
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 19:45:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9C8F486DDA
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 21:08:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zYdWeq0d-e-o for <devel@linuxdriverproject.org>;
- Thu, 28 Jan 2021 19:45:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 0AF262033D
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 19:45:57 +0000 (UTC)
-Received: from archlinux (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
- [81.101.6.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CB15864E34;
- Thu, 28 Jan 2021 19:45:55 +0000 (UTC)
-Date: Thu, 28 Jan 2021 19:45:51 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [GIT PULL] Staging/IIO driver fixes for 5.11-rc5
-Message-ID: <20210128194551.76c76cfe@archlinux>
-In-Reply-To: <YA7Q0XZMIdudb6x9@kroah.com>
-References: <YA1u24kUPB+B7gKY@kroah.com>
- <CAHk-=whe0kHRKsNegF+JxCooS_Z0otcEX_Ggz=iN2v3D1Rssxg@mail.gmail.com>
- <YA7Q0XZMIdudb6x9@kroah.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+ with ESMTP id P9hRd12VRaXG for <devel@linuxdriverproject.org>;
+ Thu, 28 Jan 2021 21:08:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0080.hostedemail.com
+ [216.40.44.80])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6F7B586DCB
+ for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 21:08:29 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave07.hostedemail.com (Postfix) with ESMTP id 7543218030153
+ for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 20:51:42 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay08.hostedemail.com (Postfix) with ESMTP id E9245182CF665;
+ Thu, 28 Jan 2021 20:51:39 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:800:960:967:968:973:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2525:2560:2563:2682:2685:2828:2859:2895:2933:2937:2939:2942:2945:2947:2951:2954:3000:3022:3138:3139:3140:3141:3142:3351:3622:3865:3868:3870:3871:3872:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4250:4321:5007:7576:7652:7809:9025:10004:10400:10848:11232:11657:11658:11914:12043:12048:12297:12555:12740:12895:13069:13255:13311:13357:13439:13894:14181:14659:14721:21080:21451:21627:21990:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:152, LUA_SUMMARY:none
+X-HE-Tag: store90_330d584275a2
+X-Filterd-Recvd-Size: 1703
+Received: from [192.168.1.159] (unknown [47.151.137.21])
+ (Authenticated sender: joe@perches.com)
+ by omf16.hostedemail.com (Postfix) with ESMTPA;
+ Thu, 28 Jan 2021 20:51:36 +0000 (UTC)
+Message-ID: <4feb2701856a0a05ce22f27adf1ade679695cfe5.camel@perches.com>
+Subject: Re: [PATCH] staging: net: wimax: i2400m: fw: remove redundant
+ initialization of variable result
+From: Joe Perches <joe@perches.com>
+To: Colin King <colin.king@canonical.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, 
+ devel@driverdev.osuosl.org
+Date: Thu, 28 Jan 2021 12:51:35 -0800
+In-Reply-To: <20210128173703.645328-1-colin.king@canonical.com>
+References: <20210128173703.645328-1-colin.king@canonical.com>
+User-Agent: Evolution 3.38.1-1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -60,60 +76,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- William Breathitt Gray <vilhelm.gray@gmail.com>, devel@linuxdriverproject.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 25 Jan 2021 15:08:17 +0100
-Greg KH <gregkh@linuxfoundation.org> wrote:
+On Thu, 2021-01-28 at 17:37 +0000, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> =
 
-> On Sun, Jan 24, 2021 at 11:31:59AM -0800, Linus Torvalds wrote:
-> > On Sun, Jan 24, 2021 at 4:58 AM Greg KH <gregkh@linuxfoundation.org> wrote:  
-> > >
-> > > David Lechner (1):
-> > >       counter:ti-eqep: remove floor  
-> > 
-> > I'm not sure why that ti-eqep counter driver seems to be in your
-> > "iio/staging" pile rather than "char/misc", but whatever..  
-> 
-> Jonathan said why that was needed, I think it was due to fixes in the
-> counter core code, but he can verify this better than I can...
+> The variable result is being initialized with a value that is never
+> read and it is being updated later with a new value.  The initialization
+> is redundant and can be removed.
 
-Hi Linus / Greg,
+Isn't WIMAX dead?  Shouldn't it be marked ORPHAN in MAINTAINERS?
+---
+diff --git a/MAINTAINERS b/MAINTAINERS
+index caac09a3c5c9..922afd393cb6 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -19201,6 +19201,10 @@ S:     Supported
+ W:	https://wireless.wiki.kernel.org/en/users/Drivers/wil6210
+ F:	drivers/net/wireless/ath/wil6210/
+ =
 
-Bit of history involved here...
++WIMAX
++S:	Orphan
++F:	drivers/staging/wimax/
++
+ WINBOND CIR DRIVER
+ M:	David H=E4rdeman <david@hardeman.nu>
+ S:	Maintained
 
-The counter drivers started out as just another sensor type
-under IIO, but ended up pushing the boundaries of the ABI a lot -
-ultimately making it clear that they really didn't fit in IIO.
-William came up with a better abstraction / framework that
-became drivers/counter/, but currently the patch flow for
-drivers/counter/ is sufficiently low that I handle their
-patches along side IIO rather than via a separate tree.
-
-There is also a cross dependency because of legacy IIO ABI
-though we are aiming to drop that either this cycle or next.
-
-Hope that clears it up.  If either of you would prefer
-it a different way in future let me know.
-
-This particular fix was local to the driver - it was pretending
-it supported something that hardware couldn't actually do.
-
-Thanks,
-
-Jonathan
-
-> 
-> thanks,
-> 
-> greg k-h
 
 _______________________________________________
 devel mailing list
