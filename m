@@ -1,81 +1,125 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06D33306A93
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 02:43:18 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29A53306C55
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 05:41:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2E460275A6;
-	Thu, 28 Jan 2021 01:43:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CD14E873AA;
+	Thu, 28 Jan 2021 04:41:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IbWxjBdFItbO; Thu, 28 Jan 2021 01:43:15 +0000 (UTC)
+	with ESMTP id uegcVRnl0nlN; Thu, 28 Jan 2021 04:41:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1F203274E3;
-	Thu, 28 Jan 2021 01:43:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C4CD58735F;
+	Thu, 28 Jan 2021 04:41:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5C4BF1BF48D
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 01:43:10 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B6F61BF3DB
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 04:41:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 58C3B86448
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 01:43:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 17855872B8
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 04:41:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UG52rHigBMEa for <devel@linuxdriverproject.org>;
- Thu, 28 Jan 2021 01:43:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f45.google.com (mail-pj1-f45.google.com
- [209.85.216.45])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7C35886427
- for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 01:43:09 +0000 (UTC)
-Received: by mail-pj1-f45.google.com with SMTP id jx18so3300886pjb.5
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 17:43:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :organization:mime-version:content-transfer-encoding;
- bh=aLnHcsVzTybOGfmfrxsAnhlQ3Vuld8baNUB9PVoHh6Y=;
- b=ovxIBjYLObG8GNMq7qXkVHuiVnnpQgh4WvrFs21LmlhgFjECQ2Y7OntVqxa4rAhXZZ
- srskp6/XJWnCL/y8ZP2U+WFPDrz0Ayh8g2VWqlkLjoBclEL8gQiwaCqoKFxhzvU4YBsd
- rpLGLYkxGEU19zXIbk8vEf6DQC29UPIXKaoA6eMFkSL0KOtCfKKOO7oFZnrRY2XNzCR+
- nLXnOwez4nuGyAm0znTkFX2IQ/m2ETc1t8+uRp8ExByqG8zUYjZ06uLboHmeq2GZQcJG
- 3a/T8rnRmQIkAhAv9kchy1C6cYa5UmlrReMJxP9neKGppksJKfIGjUmOLECZIa5DuAnD
- FqgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=aLnHcsVzTybOGfmfrxsAnhlQ3Vuld8baNUB9PVoHh6Y=;
- b=oxpvjKrwUC0Myl4CN2sIDlk2Mzqqt9+Aht+gKkpRR0BRApoUOBOrvHWbBD1aZZsW79
- X8JD+Anaxw90wbKtSmQmPnN6V199/TdW1lh9Gzdty78djdv8op1VXCDa/JRhl4OE+SVr
- K6hIHPG8ZxZouT2aTZRjiULF/IEs5TgkpPmPmfoP8y2KeVgOq0dntEGU4n+mD8yhLmad
- 7AdlGDxnYWN+Q9bR5RjSSa4oz9KkZDnk+3Oxu2ZgDJUCvMv9EQ7+B2+9OeqwKh8Ii6MR
- iklHmNw1aAdglJHdLfbjmWJ2ja4Wf397fcd4OOh5vvPyD1YiZbxDGbITqBG3WKf0WRAo
- ClRQ==
-X-Gm-Message-State: AOAM533/IKvAotIJCNLr6q99PG6QariGgrAncTxnyvWfpYpF4utLspZg
- 0GqrCkH46McbHnFJnD/0XEo=
-X-Google-Smtp-Source: ABdhPJykyWkbsEeVy/u2ousqs2hVZa8H55LBByXoRF4UXBzg0By+NDlzoQOvEeX6HrZ8+rGyPS7elw==
-X-Received: by 2002:a17:90a:4a85:: with SMTP id
- f5mr8708829pjh.117.1611798189061; 
- Wed, 27 Jan 2021 17:43:09 -0800 (PST)
-Received: from localhost ([103.220.76.197])
- by smtp.gmail.com with ESMTPSA id k6sm4034011pgk.36.2021.01.27.17.43.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Jan 2021 17:43:08 -0800 (PST)
-Date: Thu, 28 Jan 2021 09:42:58 +0800
-From: carlis <zhangxuezhi3@gmail.com>
-To: Kari Argillander <kari.argillander@gmail.com>
-Subject: Re: [PATCH v10] staging: fbtft: add tearing signal detect
-Message-ID: <20210128094258.000012c3@gmail.com>
-In-Reply-To: <20210127223222.3lavtl3roc4cabso@kari-VirtualBox>
-References: <1611754972-151016-1-git-send-email-zhangxuezhi3@gmail.com>
- <20210127223222.3lavtl3roc4cabso@kari-VirtualBox>
-Organization: Tyzmig-ryrjum-8kedto
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
+ with ESMTP id Ji4AdHDJd6Gi for <devel@linuxdriverproject.org>;
+ Thu, 28 Jan 2021 04:41:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2124.outbound.protection.outlook.com [40.107.93.124])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8A2F387287
+ for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 04:41:25 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=f+UOYRO755p1HnKvXHCl+9pdvTKImBv7gRqqlElA92ATDiIAMTqefh4tHpxfU5UaOb6jpcbnnJM2AxXLVWzcZBsodyRvWjRw0CZXIGIwxGkowJUHpS5wy5IklWvyeV8YzScuMItMTV+YVx3C4OI2CxIC1WT06F+952NLpVDqEReYDOS+al1JDhzLDvpTwj8geyP42Hw5s7Cm/8+jyuM26csTYuvz7A+A+M9COaw9FfKgIKzmKKV4R37dw/4tDAcgpMjO8EQkAysTws3bf4eCNJ13wb8ZpJuxpnRhL6GFrC8A0h79KmD8cIGuCaAQ8m/ziH2VS95/uqYWhWsLP6+pww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nBYfrYYMhk8tHK5mOTNjFWWNKuHkXuBRd3JEa7pPS3E=;
+ b=TjKktMc/z2D88s9de+z0yZ3L34Uij7WeOq0naOdKiMGuuoFtJOcvLafbpAtEKMXscPPTBLhaFI2IK7/5VdhHVQSI63I3OyFKKu2xUXvt9sO5u2ikf0e5tKowWhSMO7H9DhGV/hdK6A8vSaCj7TgebheTF4dDMlEVtD783ST4RUUHgaVbcBGlPOvQfGpgf9+FG9qfHCVRWGMAZ8KPhkyt7rWXEqUQJI8VUKoAG8spwVJ8WTkWVPuw6mxeyyLt+S+ZPwQJrIFvH9diCGQMo+T8HFJEiYiFO2fiZ25vatzf3M8cRxf43Qr7cVZ9p/n+XdGz7h+iL8+Nk/AnXRqZ4nbM+w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nBYfrYYMhk8tHK5mOTNjFWWNKuHkXuBRd3JEa7pPS3E=;
+ b=koROuI7HlvJO4LBgsi7MJj6LTC+b9UbD/8vlePA/SykizsXSxn91kb3YUiaQeRG5aBAmHyxjy/gZU3RtP8D5393sJzT9p5FxPFUuh4vKnTpoHgGbbEV7CxFlM56rFsP9YqSvZQFz9hK0gNXtrHQGV93TIZ3l6FQCI6gErbT3xdc=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by SJ0PR04MB7504.namprd04.prod.outlook.com (2603:10b6:a03:32e::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.19; Thu, 28 Jan
+ 2021 03:08:12 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5813:96a7:b2d6:132]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5813:96a7:b2d6:132%6]) with mapi id 15.20.3763.019; Thu, 28 Jan 2021
+ 03:08:12 +0000
+Date: Thu, 28 Jan 2021 11:07:32 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Rob Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>
+Subject: [PATCH v4 0/3] Add MIPI rx DPI support
+Message-ID: <cover.1611802321.git.xji@analogixsemi.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Originating-IP: [61.148.116.10]
+X-ClientProxiedBy: HK2PR06CA0013.apcprd06.prod.outlook.com
+ (2603:1096:202:2e::25) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from zhaomy-pc (61.148.116.10) by
+ HK2PR06CA0013.apcprd06.prod.outlook.com (2603:1096:202:2e::25) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.3805.17 via Frontend Transport; Thu, 28 Jan 2021 03:08:11 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ab9a7418-e7a8-4daa-cda8-08d8c339f239
+X-MS-TrafficTypeDiagnostic: SJ0PR04MB7504:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <SJ0PR04MB7504BADBF2A45137C892ABF9C7BA9@SJ0PR04MB7504.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Sk4ZRMiEa1bRp9A9nBUyOyyCES+CadP05g1UpukLdWkjfl6y+es3TrhkyPddwD2f1beAQ5EUORSkG8lvp5X86vB5DX5TFuDjv+GQ4XjxwSDfoEh3N1NhMMRLYLflAJBka61UNtgcVTFQHcXCNMafNHOfdLPc8QFaSXV87okC9ABVM7A3QZMluWEJBU4ySTEgTMlVBwPTlccSzAlnHJHJ/hEU/sEtq1nbNWL6oiuZY382x6U5OigqsuQGFEZ70Bbq9pu2CIbgRv3ON5UlAL/lDor8KdJ6ARcsFBashZC8z/j9q0WzwEJ2zwI61j0cnNikhrBFGHOUqkGZzCL4yM43EpNbsoOanf0agoWsp5l312IHWW4IVMBFveCF41UYkYfAbvdNMk0iQGaBBTo/5wobhVbtb75ocVO1m6+GO/k72nwmJUzH4+cIXedVnHL5zDTn
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(346002)(376002)(39840400004)(396003)(136003)(366004)(478600001)(7416002)(956004)(8936002)(6666004)(6486002)(5660300002)(186003)(36756003)(8676002)(6496006)(110136005)(316002)(52116002)(4326008)(83380400001)(66476007)(16526019)(86362001)(66946007)(26005)(2906002)(54906003)(66556008)(2616005)(16060500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?FtyHGmroRw2PWozn9egtfWQKZqAaAYyFi5gyuu279fQCwYFSMGumyRjNPfD2?=
+ =?us-ascii?Q?daPGueqzuIY2uofO/ArAz8iKF4IOXE4y8T1RuHLHeQTwwLTztcPuJqLE1cUz?=
+ =?us-ascii?Q?8fHehjJF2E1yNKyEzWCaXzqgLMpyZORqDxWNQK7VC/5ubF56YQ8IfsvhCNZ/?=
+ =?us-ascii?Q?xkMRUHu2/kxm6g8F6LuAeW/MpyMygNPWWAqiJsuaWJ8FNxOqKpQtzq5zyfgm?=
+ =?us-ascii?Q?m3LPDUdnbdvjmImgi4xhVOQYSApMjS+t+bLWSszHkBuuPLWmGPYHk0tmtOJp?=
+ =?us-ascii?Q?U94joAW0cZ/6DzCVOz4w2vbKENI9jl1Og7WF3vqlQ+e9vKUqpy9QgsQ2dy5M?=
+ =?us-ascii?Q?UykiAf4jhmqKTZHMLQxZ6pYrhNwoeUkbDg3Co2VMuOYvGCXfFMqOokbwtDhU?=
+ =?us-ascii?Q?o63SeVd0F5z6u2tcpXFlk8ID3L6c5ud9dmmHUY9bhRPUdJWaDY3MJKSsEutv?=
+ =?us-ascii?Q?Lj01c+glgdglQyY6yDIFL8/Sno7ZXr7gU4lTlZUtuR2BZUUyIT/SNpwc6W4f?=
+ =?us-ascii?Q?tgB0g9FCSyTSgkchUmZabBNDiCLdsEN4v69Ouko43OHY12VhUc49n0Acds7A?=
+ =?us-ascii?Q?3yzQ8AE2dMbjVf3k/3lIC2pYm6GXSgGes95ePuP/SNhhlvOxFMpf3IeIns0O?=
+ =?us-ascii?Q?IL/p6VHPl/F1Yim4e6wBaz+rHL16Q6LKvamqsTvpu8YWaTDRuSV8XNchXSud?=
+ =?us-ascii?Q?kzMU7cA8b9//wu8xBCJf3enXpuH5ylffBWBagiAPXp5mps9XQwGbGHgA5jlS?=
+ =?us-ascii?Q?4G9hKr+k6+Bhs0iF9c7Oi0uSpPdN/srDMqvw+Oi4sU3z2kjnWeUEW9tnDYQD?=
+ =?us-ascii?Q?jfkhuxu9bQ26TbB0RoRCsMLnxSQRXF888pTkXWIyxrFib7mivdvDUIj3Xloc?=
+ =?us-ascii?Q?YfNbLOjDIkpn2Nn7n6XUFUWacdBf2ZRvRvHkeyQb6RRApf8+mB3DcbecT2nT?=
+ =?us-ascii?Q?9xr23VdXSXVTt2YwxbaR04UNLhp/LsivkY9n2sBQE80YGAFN6XTm209z9K+5?=
+ =?us-ascii?Q?1OTXU3WTZagVJGeHbnUHi1/Lp8XSvRsAV9jgefdnpkmta8Bhzqt/0D7CDm0l?=
+ =?us-ascii?Q?cofVBIXF?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ab9a7418-e7a8-4daa-cda8-08d8c339f239
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jan 2021 03:08:12.0806 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DumYLdykhTAdVPRDgIOjbfG7Y8JnBNbv2CoHnBJ4bZqQG5U94MCPG5Z0b4LeIs4/j7zT9AmU2Oc5VUPCIKnvAg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR04MB7504
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,297 +132,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- mh12gx2825@gmail.com, gregkh@linuxfoundation.org,
- oliver.graute@kococonnector.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, sbrivio@redhat.com, colin.king@canonical.com,
- zhangxuezhi1@yulong.com
+Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Sheng Pan <span@analogixsemi.com>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Vasily Khoruzhick <anarsoul@gmail.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 28 Jan 2021 00:32:22 +0200
-Kari Argillander <kari.argillander@gmail.com> wrote:
+Hi all, this patch series implement MIPI rx DPI feature. Please help to review.
 
-> On Wed, Jan 27, 2021 at 09:42:52PM +0800, Carlis wrote:
-> > For st7789v ic,when we need continuous full screen refresh, it is
-> > best to wait for the TE signal arrive to avoid screen tearing  
->  
-> > diff --git a/drivers/staging/fbtft/fb_st7789v.c
-> > b/drivers/staging/fbtft/fb_st7789v.c index 3a280cc..cba08a8 100644
-> > --- a/drivers/staging/fbtft/fb_st7789v.c
-> > +++ b/drivers/staging/fbtft/fb_st7789v.c
-> > @@ -9,9 +9,12 @@
-> >  #include <linux/delay.h>
-> >  #include <linux/init.h>
-> >  #include <linux/kernel.h>
-> > +#include <linux/mutex.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/completion.h>
-> >  #include <linux/module.h>
-> >  #include <video/mipi_display.h>
-> > -
-> > +#include <linux/gpio/consumer.h>  
-> 
-> Space after local headers. Also this should one up so all Linux
-> headers are group together. You agreed?
-> 
-OK,i will fix it in patch v12 tomorrow
+This is the v4 version, any mistakes, please let me know,
+I'll fix it in the next series.
 
-> >  #include "fbtft.h"
-> >  
-> >  #define DRVNAME "fb_st7789v"
-> > @@ -66,6 +69,32 @@ enum st7789v_command {
-> >  #define MADCTL_MX BIT(6) /* bitmask for column address order */
-> >  #define MADCTL_MY BIT(7) /* bitmask for page address order */
-> >  
-> > +#define SPI_PANEL_TE_TIMEOUT	400 /* msecs */
-> > +static struct mutex te_mutex;/* mutex for set te gpio irq status
-> > */  
-> 
-> Space after ;
-hi, i have fix it in the patch v11
-> 
-> > +static struct completion spi_panel_te;  
-> 
-> What if multiple displays? Is this possible for user?
-I will check it carefully again about this logic.
-> 
-> > +
-> > +static irqreturn_t spi_panel_te_handler(int irq, void *data)
-> > +{
-> > +	complete(&spi_panel_te);
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static void set_spi_panel_te_irq_status(struct fbtft_par *par,
-> > bool enable) +{
-> > +	static int te_irq_count;  
-> 
-> Same here. Maybe you can think better way and then this code would
-> also be cleaner.
-> 
-> > +
-> > +	mutex_lock(&te_mutex);  
-> 
-> So locking should be done if we really do action and not just in case.
-> 
-> > +
-> > +	if (enable) {
-> > +		if (++te_irq_count == 1)
-> > +			enable_irq(gpiod_to_irq(par->gpio.te));
-> > +	} else {
-> > +		if (--te_irq_count == 0)
-> > +			disable_irq(gpiod_to_irq(par->gpio.te));
-> > +	}
-> > +	mutex_unlock(&te_mutex);
-> > +}
-> > +
-> >  /**
-> >   * init_display() - initialize the display controller
-> >   *
-> > @@ -82,6 +111,33 @@ enum st7789v_command {
-> >   */
-> >  static int init_display(struct fbtft_par *par)
-> >  {
-> > +	int rc;
-> > +	struct device *dev = par->info->device;
-> > +
-> > +	par->gpio.te = devm_gpiod_get_index_optional(dev, "te", 0,
-> > GPIOD_IN);
-> > +	if (IS_ERR(par->gpio.te)) {
-> > +		rc = PTR_ERR(par->gpio.te);
-> > +		dev_err(par->info->device, "Failed to request te
-> > gpio: %d\n", rc);
-> > +		return rc;
-> > +	}  
-> 
-> You request with optinal and you still want to error out? We could
-> just continue and not care about that error. User will be happier if
-> device still works somehow.
-You mean i just delete this dev_err print ?!
-like this:
-	par->gpio.te = devm_gpiod_get_index_optional(dev, "te",
-0,GPIOD_IN); 
-        if (IS_ERR(par->gpio.te))
-		return PTR_ERR(par->gpio.te);
-> 
-> > +	if (par->gpio.te) {
-> > +		init_completion(&spi_panel_te);
-> > +		mutex_init(&te_mutex);
-> > +		rc = devm_request_irq(dev,
-> > +				      gpiod_to_irq(par->gpio.te),
-> > +				     spi_panel_te_handler,
-> > IRQF_TRIGGER_RISING,
-> > +				     "TE_GPIO", par);
-> > +		if (rc) {
-> > +			dev_err(par->info->device, "TE request_irq
-> > failed.\n");
-> > +			devm_gpiod_put(dev, par->gpio.te);
-> > +			return rc;
-> > +		}
-> > +
-> > +		disable_irq_nosync(gpiod_to_irq(par->gpio.te));
-> > +	} else {
-> > +		dev_info(par->info->device, "%s:%d, TE gpio not
-> > specified\n",
-> > +			 __func__, __LINE__);
-> > +	}
-> >  	/* turn off sleep mode */
-> >  	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
-> >  	mdelay(120);
-> > @@ -137,6 +193,9 @@ static int init_display(struct fbtft_par *par)
-> >  	 */
-> >  	write_reg(par, PWCTRL1, 0xA4, 0xA1);
-> >  
-> > +    /*Tearing Effect Line On*/  
-> 
-> Spaces and why upcase everything?
-i will fix it in patch v12 tomorrow
-> 
-> > +	if (par->gpio.te)
-> > +		write_reg(par, 0x35, 0x00);
-> >  	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
-> >  
-> >  	if (HSD20_IPS)
-> > @@ -145,6 +204,76 @@ static int init_display(struct fbtft_par *par)
-> >  	return 0;
-> >  }
-> >  
-> > +/*****************************************************************************
-> > + *
-> > + *   int (*write_vmem)(struct fbtft_par *par);
-> > + *
-> > +
-> > *****************************************************************************/
-> > +  
-> 
-> Why this kind of function comment? Please use same as another function
-> comments in this file. They are atleast almoust like kernel-doc style.
-i will fix it in patch v12 tomorrow
-> > +/* 16 bit pixel over 8-bit databus */
-> > +static int st7789v_write_vmem16_bus8(struct fbtft_par *par, size_t
-> > offset, size_t len) +{
-> > +	u16 *vmem16;
-> > +	__be16 *txbuf16 = par->txbuf.buf;
-> > +	size_t remain;
-> > +	size_t to_copy;
-> > +	size_t tx_array_size;
-> > +	int i;
-> > +	int ret = 0;
-> > +	size_t startbyte_size = 0;
-> > +
-> > +	fbtft_par_dbg(DEBUG_WRITE_VMEM, par, "st7789v
-> > ---%s(offset=%zu, len=%zu)\n",
-> > +		      __func__, offset, len);
-> > +
-> > +	remain = len / 2;
-> > +	vmem16 = (u16 *)(par->info->screen_buffer + offset);
-> > +
-> > +	if (par->gpio.dc)
-> > +		gpiod_set_value(par->gpio.dc, 1);
-> > +
-> > +	/* non buffered write */
-> > +	if (!par->txbuf.buf)
-> > +		return par->fbtftops.write(par, vmem16, len);
-> > +
-> > +	/* buffered write */
-> > +	tx_array_size = par->txbuf.len / 2;
-> > +
-> > +	if (par->startbyte) {
-> > +		txbuf16 = par->txbuf.buf + 1;
-> > +		tx_array_size -= 2;
-> > +		*(u8 *)(par->txbuf.buf) = par->startbyte | 0x2;
-> > +		startbyte_size = 1;
-> > +	}
-> > +
-> > +	while (remain) {  
-> 
-> for (remain = len / 2; remain; remain -= to_copy) {
-> 
-> or even use len = len / 2 if you wanna save variable.
-> 
-> > +		to_copy = min(tx_array_size, remain);  
-> 
-> Care must be taken that this will not be endless loop if another is
-> 0. I will not check this further but hopefully you have.
-> 
-> > +		dev_dbg(par->info->device, "    to_copy=%zu,
-> > remain=%zu\n",
-> > +			to_copy, remain - to_copy);
-> > +
-> > +		for (i = 0; i < to_copy; i++)
-> > +			txbuf16[i] = cpu_to_be16(vmem16[i]);
-> > +
-> > +		vmem16 = vmem16 + to_copy;  
-> 
-> += Or you can ++ vmem16 at the for loop but that is not so readable
-> sometimes with pointers.
-> 
-> > +		if (par->gpio.te) {
-> > +			set_spi_panel_te_irq_status(par, true);
-> > +			reinit_completion(&spi_panel_te);
-> > +			ret =
-> > wait_for_completion_timeout(&spi_panel_te,
-> > +
-> > msecs_to_jiffies(SPI_PANEL_TE_TIMEOUT));
-> > +			if (ret == 0)  
-> 
-> !ret
-> 
-> > +				dev_err(par->info->device, "wait
-> > panel TE time out\n");
-> > +		}
-> > +		ret = par->fbtftops.write(par, par->txbuf.buf,
-> > +					 startbyte_size + to_copy
-> > * 2);
-> > +		if (par->gpio.te)
-> > +			set_spi_panel_te_irq_status(par, false);
-> > +		if (ret < 0)
-> > +			return ret;
-> > +		remain -= to_copy;
-> > +	}
-> > +
-> > +	return ret;  
-> 
-> Do we want to return something over 0? If not then this can be return
-> 0. And then you do not need to even init ret value at the beginning.
-> 
-> Also wait little bit like Greg sayd before sending new version.
-> Someone might nack about what I say or say something more.
-> 
-hi, i copy fbtft_write_vmem16_bus8 from file fbtft_bus.c and modify it
-,just add te wait logic, i will take more time to check this original
-function.
-> > +}
-> > +
-> >  /**
-> >   * set_var() - apply LCD properties like rotation and BGR mode
-> >   *
-> > @@ -259,6 +388,7 @@ static int blank(struct fbtft_par *par, bool on)
-> >  	.gamma = HSD20_IPS_GAMMA,
-> >  	.fbtftops = {
-> >  		.init_display = init_display,
-> > +		.write_vmem = st7789v_write_vmem16_bus8,
-> >  		.set_var = set_var,
-> >  		.set_gamma = set_gamma,
-> >  		.blank = blank,
-> > diff --git a/drivers/staging/fbtft/fbtft.h
-> > b/drivers/staging/fbtft/fbtft.h index 76f8c09..93bac05 100644
-> > --- a/drivers/staging/fbtft/fbtft.h
-> > +++ b/drivers/staging/fbtft/fbtft.h
-> > @@ -212,6 +212,7 @@ struct fbtft_par {
-> >  		struct gpio_desc *wr;
-> >  		struct gpio_desc *latch;
-> >  		struct gpio_desc *cs;
-> > +		struct gpio_desc *te;
-> >  		struct gpio_desc *db[16];
-> >  		struct gpio_desc *led[16];
-> >  		struct gpio_desc *aux[16];
-> > -- 
-> > 1.9.1
-> >   
+Change history:
+v4: Fix Rob Herring comment
+ - Rebase code on the branch 'drm-misc-next'
+ - Change 'analogix,hdcp-support' type to boolean
+
+v3: Fix Rob Herring, Dan Carpenter, Nicolas comment
+ - Split the patch, fix not correct return data
+ - Fix several coding format
+ - Split DP tx swing register setting to two property
+ - Add HDCP support vender flag
+ - remove 'analogix,swing-setting' and 'analogix,mipi-dpi-in' property
+
+v2: Fix Rob Herring comment
+ - Fix yamllint warnings/errors in analogix,anx7625.yaml
+ - Fix kernel robot compile warning
+
+v1: initial MIPI rx DPI feature support
+
+Xin Ji (3):
+  dt-bindings:drm/bridge:anx7625:add vendor define flags
+  drm/bridge: anx7625: fix not correct return value
+  drm/bridge: anx7625: add MIPI DPI input feature support
+
+ .../bindings/display/bridge/analogix,anx7625.yaml  |  54 +++-
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 330 +++++++++++++++++----
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  20 +-
+ 3 files changed, 340 insertions(+), 64 deletions(-)
+
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
