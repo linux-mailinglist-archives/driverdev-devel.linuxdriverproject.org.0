@@ -2,80 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E78F306DE2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 07:52:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AE7483070EA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 09:16:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2BC2D864EC;
-	Thu, 28 Jan 2021 06:52:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 16CB5864F4;
+	Thu, 28 Jan 2021 08:16:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0TgluRNNKIKv; Thu, 28 Jan 2021 06:52:42 +0000 (UTC)
+	with ESMTP id hU6FN2pQqpOY; Thu, 28 Jan 2021 08:16:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1D080864EE;
-	Thu, 28 Jan 2021 06:52:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 686A186508;
+	Thu, 28 Jan 2021 08:16:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D84781BF83C
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 06:52:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E7511BF3F7
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 08:16:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D4F04873B4
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 06:52:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 366CB2041A
+ for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 08:16:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6dG6LxZ4F33v for <devel@linuxdriverproject.org>;
- Thu, 28 Jan 2021 06:52:38 +0000 (UTC)
+ with ESMTP id 5oyUG9Ju-4Ue for <devel@linuxdriverproject.org>;
+ Thu, 28 Jan 2021 08:16:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f172.google.com (mail-lj1-f172.google.com
- [209.85.208.172])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D2AD1873B3
- for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 06:52:37 +0000 (UTC)
-Received: by mail-lj1-f172.google.com with SMTP id t8so5011031ljk.10
- for <devel@driverdev.osuosl.org>; Wed, 27 Jan 2021 22:52:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com
+ [209.85.221.52])
+ by silver.osuosl.org (Postfix) with ESMTPS id E1F09203DA
+ for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 08:16:36 +0000 (UTC)
+Received: by mail-wr1-f52.google.com with SMTP id s7so1467063wru.5
+ for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 00:16:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=0f8ZmrzuRXVxsk0SyBLitP6T9N64hUKSEphOtPuOnnU=;
- b=s+g+9RsgEvfyHBAfUcVSsvVK/MPPAhyVtK61GUGybbJo3USYD2l22Xsq5KyeCpb0f/
- l1xM12+qQnzcDbEEwE5NLLvrD1GkzD3o6ODrZXwCpwUiuHBGvcW4/gcxN7/QesOCbvRw
- qZzz213l28pva/a4EMbmsfli5alFUpJDcK/5ctFYL7S4mKgjcuLe+HBeNwfv31f6o592
- eefP7qqqkvXrSvxcezl8+8YrbiZi7tbRSVFNpUxApCFR8x48GWr/a6UXw8+gm5GA7cXU
- PldFlVfnAt6ruHdg4Fzwg0D6SryNeBQPFysHDqBV57Tk611P+KNV7o5H2hSK6tRoFJHJ
- a9Ow==
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=UeimYJSD/BbdilP/QsnJ5hxblqoSqeJXssbZW1GuA/E=;
+ b=HLDco07WIOI0eRFrC4jndd4L8LCMXW0F+aUl9EIn2JpFOtTztYSUhXSqu9mjB1ioMJ
+ 2sMiLjA0fs5EjoOfH+6ae16pwEgx0Vz/GaRY03tRa59UCnqaSJGMERAVLi92/G1LPO7y
+ /2q4IBj6bHwKIii0su+YEfEDRtAVYtJJorqFU7WM40gL3nxqURSOXN6123lu3p03ZkGD
+ 1xdATKryVyMbwSBPrLiSxu6FOXvoFfDYg1vCUW4a3wVomTQH4VUx++wSlvHf+O8dcdEG
+ g11wNZZnagd45iHVfLFiJYSbAhNFWtCRwXCez7z7D1ec7q1GsbBf0aEmLgTWmnSf4rwe
+ WvNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=0f8ZmrzuRXVxsk0SyBLitP6T9N64hUKSEphOtPuOnnU=;
- b=rGfYRP07b0++MkxPQNSfLzsEkCNlfVXGoj0V1ztrhCvyiHXW6IUvbB+hB5koHIUaCM
- Cu+QEGdh8z8a52u8JCE07DCoFvQmuZAMO1sMIUDrYhHkKQmadIXlPp2hAzG7Hq9g6uWJ
- de3nAqp0bRB6Plczj27dtJF9/BuHD8aY2LWLlfvMYIXahwpB1cKW8W6vRl4t6OXqlIE/
- H7rF6zccftEtix3l/W8i80YpW3CqEsyiMA+fC31yERiVtM45fInp3XLL7kPaaaUlYmD9
- QYurmbt0kYMpINZohXuiSczyG0K0vRgDjfEawj7R+zKluCEp+QW/pR/I0IUuk07iBxJr
- 6iKg==
-X-Gm-Message-State: AOAM532PMj424B82WunD1lcEdjkbswO69b4Kf0yIOA/0EqWrbp0irKFn
- Ab/zIa93vNyHfwhdvWgiiKc=
-X-Google-Smtp-Source: ABdhPJzrGUlABaISZ4hc6GbDuExEK/6vRiKAKwuM77hmE1jRQLaxmTiugZ80sCFhjv+vgSxmjuzXCw==
-X-Received: by 2002:a2e:8106:: with SMTP id d6mr7678908ljg.217.1611816755777; 
- Wed, 27 Jan 2021 22:52:35 -0800 (PST)
-Received: from kari-VirtualBox (87-95-193-210.bb.dnainternet.fi.
- [87.95.193.210])
- by smtp.gmail.com with ESMTPSA id o4sm1313687lfo.231.2021.01.27.22.52.34
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=UeimYJSD/BbdilP/QsnJ5hxblqoSqeJXssbZW1GuA/E=;
+ b=FJC/NYzOGD/l8RXehQ0ecTFG4vGMCwdBo/fzLfo06P+ZoCByn3LOTVufNoM03j1dnf
+ lfjpluhLDExlygWLDtw61wS79gMjQT+mHVj7HLhjhXUdSYFB+YiGWCoK/PfBX+lfRsHe
+ J6GDnk02USEIZNbRR8jkrq5k+CfeUY7qSPhrEaJI7p7xTz7Sm3VKe4yrmoxIaDuq8DmQ
+ lpFObShXr49l3E6fA+eXt/q4xkoQSWXt9YQjjs14BVCHBuWCsINpfKEdZR8N9+7NanT0
+ gdOfVtxZDtFGFG2I/z44kUkOwIeX+fObhaYe0AYYRxY81yR2n8CtFSA2nlliJ5wMCgmD
+ dalQ==
+X-Gm-Message-State: AOAM533caXrpL3yEyj0VGOSBszfRM4IBya0CAvf9Y0wWHNOQvfcZo17i
+ 4Tgd5WM7lOvmxaZr8lUBxj0j7w==
+X-Google-Smtp-Source: ABdhPJwk4pcrmzfuCbnjS9kjUUrQd6dcq75GhqojTwB1b/FrDLAyrcZHVKoo6nED2QAu8b6oqCCoLg==
+X-Received: by 2002:adf:b78d:: with SMTP id s13mr15032680wre.344.1611821795387; 
+ Thu, 28 Jan 2021 00:16:35 -0800 (PST)
+Received: from dell ([91.110.221.188])
+ by smtp.gmail.com with ESMTPSA id f4sm5952787wrs.34.2021.01.28.00.16.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Jan 2021 22:52:35 -0800 (PST)
-Date: Thu, 28 Jan 2021 08:52:33 +0200
-From: Kari Argillander <kari.argillander@gmail.com>
-To: carlis <zhangxuezhi3@gmail.com>
-Subject: Re: [PATCH v10] staging: fbtft: add tearing signal detect
-Message-ID: <20210128065233.ji4b7ea54ihyu2l5@kari-VirtualBox>
-References: <1611754972-151016-1-git-send-email-zhangxuezhi3@gmail.com>
- <20210127223222.3lavtl3roc4cabso@kari-VirtualBox>
- <20210128094258.000012c3@gmail.com>
+ Thu, 28 Jan 2021 00:16:34 -0800 (PST)
+Date: Thu, 28 Jan 2021 08:16:33 +0000
+From: Lee Jones <lee.jones@linaro.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH v6 5/7] mfd: hi6421-spmi-pmic: move driver from staging
+Message-ID: <20210128081633.GB4774@dell>
+References: <cover.1611773727.git.mchehab+huawei@kernel.org>
+ <2b0e6f6cef0aaa914956792088c554c57f5ec644.1611773727.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210128094258.000012c3@gmail.com>
+In-Reply-To: <2b0e6f6cef0aaa914956792088c554c57f5ec644.1611773727.git.mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,114 +87,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- mh12gx2825@gmail.com, gregkh@linuxfoundation.org,
- oliver.graute@kococonnector.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, sbrivio@redhat.com, colin.king@canonical.com,
- zhangxuezhi1@yulong.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Wang Hai <wanghai38@huawei.com>, Mayulong <mayulong1@huawei.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
+ David Gow <davidgow@google.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jan 28, 2021 at 09:42:58AM +0800, carlis wrote:
-> On Thu, 28 Jan 2021 00:32:22 +0200
-> Kari Argillander <kari.argillander@gmail.com> wrote:
-> > >  #include "fbtft.h"
-> > >  
-> > >  #define DRVNAME "fb_st7789v"
-> > > @@ -66,6 +69,32 @@ enum st7789v_command {
-> > >  #define MADCTL_MX BIT(6) /* bitmask for column address order */
-> > >  #define MADCTL_MY BIT(7) /* bitmask for page address order */
-> > >  
-> > > +#define SPI_PANEL_TE_TIMEOUT	400 /* msecs */
-> > > +static struct mutex te_mutex;/* mutex for set te gpio irq status
-> > > */  
-> > 
-> > Space after ;
-> hi, i have fix it in the patch v11
-> > 
-
-Yeah sorry. I accidentally review wrong patch. But mostly stuff are
-still relevant.
-
-> > > @@ -82,6 +111,33 @@ enum st7789v_command {
-> > >   */
-> > >  static int init_display(struct fbtft_par *par)
-> > >  {
-> > > +	int rc;
-> > > +	struct device *dev = par->info->device;
-> > > +
-> > > +	par->gpio.te = devm_gpiod_get_index_optional(dev, "te", 0,
-> > > GPIOD_IN);
-> > > +	if (IS_ERR(par->gpio.te)) {
-> > > +		rc = PTR_ERR(par->gpio.te);
-> > > +		dev_err(par->info->device, "Failed to request te
-> > > gpio: %d\n", rc);
-> > > +		return rc;
-> > > +	}  
-> > 
-> > You request with optinal and you still want to error out? We could
-> > just continue and not care about that error. User will be happier if
-> > device still works somehow.
-> You mean i just delete this dev_err print ?!
-> like this:
-> 	par->gpio.te = devm_gpiod_get_index_optional(dev, "te",
-> 0,GPIOD_IN); 
->         if (IS_ERR(par->gpio.te))
-> 		return PTR_ERR(par->gpio.te);
-
-Not exactly. I'm suggesting something like this.
-
-if (IS_ERR(par->gpio.te) == -EPROBE_DEFER) {
-	return -EPROBE_DEFER;
-
-if (IS_ERR(par->gpio.te))
-	par-gpio.te = NULL;
-
-This like beginning of your patch series but the difference is that if
-EPROBE_DEFER then we will try again later. Any other error and we will
-just ignore TE gpio. But this is up to you what you want to do. To me
-this just seems place where this kind of logic can work.
-
-> > > +		if (par->gpio.te) {
-> > > +			set_spi_panel_te_irq_status(par, true);
-> > > +			reinit_completion(&spi_panel_te);
-> > > +			ret =
-> > > wait_for_completion_timeout(&spi_panel_te,
-> > > +
-> > > msecs_to_jiffies(SPI_PANEL_TE_TIMEOUT));
-> > > +			if (ret == 0)  
-> > 
-> > !ret
-> > 
-> > > +				dev_err(par->info->device, "wait
-> > > panel TE time out\n");
-> > > +		}
-> > > +		ret = par->fbtftops.write(par, par->txbuf.buf,
-> > > +					 startbyte_size + to_copy
-> > > * 2);
-> > > +		if (par->gpio.te)
-> > > +			set_spi_panel_te_irq_status(par, false);
-> > > +		if (ret < 0)
-> > > +			return ret;
-> > > +		remain -= to_copy;
-> > > +	}
-> > > +
-> > > +	return ret;  
-> > 
-> > Do we want to return something over 0? If not then this can be return
-> > 0. And then you do not need to even init ret value at the beginning.
-> > 
-> > Also wait little bit like Greg sayd before sending new version.
-> > Someone might nack about what I say or say something more.
-> > 
-> hi, i copy fbtft_write_vmem16_bus8 from file fbtft_bus.c and modify it
-> ,just add te wait logic, i will take more time to check this original
-> function.
-
-It might be ok or not. You should still check.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gV2VkLCAyNyBKYW4gMjAyMSwgTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIHdyb3RlOgoKPiBUaGlz
+IGRyaXZlciBpcyByZWFkeSBmb3IgbWFpbnN0cmVhbS4gU28sIG1vdmUgaXQgb3V0IG9mIHN0YWdp
+bmcuCj4gCj4gU2lnbmVkLW9mZi1ieTogTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIDxtY2hlaGFiK2h1
+YXdlaUBrZXJuZWwub3JnPgo+IC0tLQo+ICAuLi4vbWZkfS9oaXNpbGljb24saGk2NDIxLXNwbWkt
+cG1pYy55YW1sICAgICAgICB8ICAwCj4gIE1BSU5UQUlORVJTICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHwgIDcgKysrKysrKwo+ICBkcml2ZXJzL21mZC9LY29uZmlnICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB8IDE1ICsrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL21m
+ZC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAxICsKPiAgLi4uL2hpa2V5
+OXh4ID0+IG1mZH0vaGk2NDIxLXNwbWktcG1pYy5jICAgICAgICAgfCAgMAo+ICBkcml2ZXJzL3N0
+YWdpbmcvaGlrZXk5eHgvS2NvbmZpZyAgICAgICAgICAgICAgICB8IDE3IC0tLS0tLS0tLS0tLS0t
+LS0tCj4gIGRyaXZlcnMvc3RhZ2luZy9oaWtleTl4eC9NYWtlZmlsZSAgICAgICAgICAgICAgIHwg
+IDEgLQo+ICA3IGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygt
+KQo+ICByZW5hbWUge2RyaXZlcnMvc3RhZ2luZy9oaWtleTl4eCA9PiBEb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvbWZkfS9oaXNpbGljb24saGk2NDIxLXNwbWktcG1pYy55YW1sICgx
+MDAlKQo+ICByZW5hbWUgZHJpdmVycy97c3RhZ2luZy9oaWtleTl4eCA9PiBtZmR9L2hpNjQyMS1z
+cG1pLXBtaWMuYyAoMTAwJSkKCkkndmUgYWxyZWFkeSByZXZpZXdlZCB0aGlzOgoKICBodHRwczov
+L2xvcmUua2VybmVsLm9yZy9kcml2ZXJkZXYtZGV2ZWwvMjAyMTAxMjcxMTA1MzcuR0k0OTAzQGRl
+bGwvCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dClNlbmlvciBUZWNobmljYWwgTGVhZCAtIERl
+dmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3Ig
+QXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxp
+c3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJp
+dmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
