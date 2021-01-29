@@ -1,75 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A784030892E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 13:47:48 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53894308932
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 13:55:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 94E05871FF;
-	Fri, 29 Jan 2021 12:47:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8CF4E874E3;
+	Fri, 29 Jan 2021 12:55:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tRLCu5PMaINv; Fri, 29 Jan 2021 12:47:46 +0000 (UTC)
+	with ESMTP id PPqn42a6bXMw; Fri, 29 Jan 2021 12:55:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9A0C4871FB;
-	Fri, 29 Jan 2021 12:47:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 03CF0874DF;
+	Fri, 29 Jan 2021 12:55:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 449461BF34C
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 12:47:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 77C461BF34C
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 12:54:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3E9B92E13D
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 12:47:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 741EF862D4
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 12:54:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gFOVcOSa0Sd3 for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 12:47:41 +0000 (UTC)
+ with ESMTP id 1EJ5IdrQR-cj for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 12:54:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com
- [209.85.214.182])
- by silver.osuosl.org (Postfix) with ESMTPS id 98CF42729B
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 12:47:41 +0000 (UTC)
-Received: by mail-pl1-f182.google.com with SMTP id e9so5179651plh.3
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 04:47:41 -0800 (PST)
+Received: from mail-pg1-f173.google.com (mail-pg1-f173.google.com
+ [209.85.215.173])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2814786199
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 12:54:54 +0000 (UTC)
+Received: by mail-pg1-f173.google.com with SMTP id s23so5332881pgh.11
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 04:54:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:in-reply-to:references
  :organization:mime-version:content-transfer-encoding;
- bh=gey6ZY0toHv6VOmxg4G7/z9gStOYikqSFh5g6TpL77g=;
- b=vXuqtJc1idgNU9yQCo/fp7Ab+usyyyfz1rSAqGtMgWtscmTnt8AT0BdLItHL2GlrXk
- gkQmfIP6Z4ygt7lY4rgpNd/7dGSgSR7JEiYxoOkcy5wpVlMS0eYu0/UgLLUPxNt1kMLS
- b2E/+9KjqTf9Q9BOZMpWXbC+Hdn1uGfY0NqP4oA7G2kArYNox63IVCU3KqqkVF9TdIWY
- 6ukXjx71x12HkKZTJJ2sapPY+W13ItMFJmVurVOiPIuqBc18o4LXBawyUsaNk/SKg8qc
- 9+pZHOFFQ7TifaeYRrP4QKIDZU5g4SrAkESSsWNbFKMZ1o2boq4S3tpqHNQVh3nriy8Y
- KgKw==
+ bh=hEFtshIJPKNSQZ+CC0supJzNPIjoTkOgp8j1yQcbZhI=;
+ b=B49bAVMmMWCyao1WgFn6Dw5fLu30hjmYlejPf1p/6p4S1Nf0Ct6eVyiAcixZ+lC1no
+ Nj9NY5K6yxO9eb6xJZyE14yGoVyFHfdahcfSqAS/vovupBiI3QATrR4KJ5w+53btcpqv
+ 1LFcc7TqeREXy3kYtiPHnpN8ABEp6ACgYRJOmXCW8GJMa/2qBeig9oeFHkpojK03wZUN
+ mxdMj0LLyT6U6o6lhgYjFM/hZJZVYipUHvi4WE2i3SPkh/zqs6vuq0rhYY614g073r3r
+ T9cGQTS3RKenOAJESbPA3JShLeq3vDs0B4/ZBWCQNadDSRG5nP72sR1HCS9sCx0gp/Bq
+ hS5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:organization:mime-version:content-transfer-encoding;
- bh=gey6ZY0toHv6VOmxg4G7/z9gStOYikqSFh5g6TpL77g=;
- b=J2EuU1r3X/0YMQHoXaMR6Czds9IaeBbNgyp+DztW2MSMYLpnmJJ7JLOXLmwfdVRpHt
- FR4tSJWBmoOQc5xHr6o+xoamtiGQPmxav/et5fxJz3/gnNyktzlnudj0aUhEOMJzV5Gt
- z4tHrdR9V/eR1lnQZjvqWCJhZxoK5DucrmkF9MvNCRlxYCEtS5peJHU5ERPFYAQcC+UQ
- asb7ln9B05UgAAn2IGWt2N0RluM8I8rdNoHoGOBwo0n6UJv7rs3EE/5CBqI+tqMAq16c
- RGWl8MUXI8py2BisVIfwhbIqKBpaDJi1PdB3y/4oQYYb1H/yJ86zsVAm2dDbGg3n1/wt
- Vv+w==
-X-Gm-Message-State: AOAM5310YmZ2j0/zxnX2v6t+W5HFO8TiOfkM0QUfilSoWlQ0oHafEmvM
- gSIF1u3BZjS39jyeiB7DJpw=
-X-Google-Smtp-Source: ABdhPJzrUKpZVmxy7aREzbzLAECwsJsp1TVGwWCQ4IACdk/D7pTSz/Vr2FguW3H0pi0FGnZzWRgFdw==
-X-Received: by 2002:a17:902:ab93:b029:df:f681:cdf3 with SMTP id
- f19-20020a170902ab93b02900dff681cdf3mr4248655plr.28.1611924461212; 
- Fri, 29 Jan 2021 04:47:41 -0800 (PST)
+ bh=hEFtshIJPKNSQZ+CC0supJzNPIjoTkOgp8j1yQcbZhI=;
+ b=PYwnkvnvuBmrLt6nwCsvI0nUaSH/TXWFFeo3/k+YXd6Y1RWyl7KJBmZMvycrnA4t+u
+ 5DOTpqmnIHQnDrqKFj6gxsuMSOAKY+zcnGM5flVv5ZnBPsUd+hLCQtIJUbSntWggK27X
+ qm6YkEpFovc/apqlVu9/OcCwLJ9+SdFU7DH6VAWKSEdk5+8RBHdQTOcU1Asq+yQPHTVF
+ 99UrOw7H2r82CM8fLP6znbsFE7dAMYaS321YIZm3RVWAA//EsutdFMCcrMf8lRxPmfBm
+ bGPxPjN20xur7ki2XXTYxejziCG7hpdS7W5vOOPUoWvSR1J0NSeS+NliYfJUTLhjJ06C
+ yZ/g==
+X-Gm-Message-State: AOAM5315qTYHDl8G1wmLP3OnW8nS6PTVB7PwHH2vyso4GFXY394kSQPA
+ TBPPDcX7HjcXlLybrZmP25E=
+X-Google-Smtp-Source: ABdhPJyXCt2fIv2Ld4WrkceGfcg/wM0H8EGE5oOM/aWMgQeVI+RaaeUKcdVGuowoyh8ppXslv9Y6BA==
+X-Received: by 2002:a63:5014:: with SMTP id e20mr4647413pgb.152.1611924893831; 
+ Fri, 29 Jan 2021 04:54:53 -0800 (PST)
 Received: from localhost ([103.220.76.197])
- by smtp.gmail.com with ESMTPSA id 21sm8415028pfh.56.2021.01.29.04.47.37
+ by smtp.gmail.com with ESMTPSA id a2sm8861568pgq.94.2021.01.29.04.54.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 04:47:40 -0800 (PST)
-Date: Fri, 29 Jan 2021 20:47:33 +0800
+ Fri, 29 Jan 2021 04:54:53 -0800 (PST)
+Date: Fri, 29 Jan 2021 20:54:47 +0800
 From: carlis <zhangxuezhi3@gmail.com>
 To: Andy Shevchenko <andy.shevchenko@gmail.com>
 Subject: Re: [PATCH v12] staging: fbtft: add tearing signal detect
-Message-ID: <20210129204733.00003954@gmail.com>
+Message-ID: <20210129205447.0000464f@gmail.com>
 In-Reply-To: <CAHp75Vdi4H_zY3+QPSq_wmdf20B9xPeqsOT10JHfMLJESX77gA@mail.gmail.com>
 References: <1611838435-151774-1-git-send-email-zhangxuezhi3@gmail.com>
  <CAHp75Vd=ijxnamuSYuxNLeyhGMCod=HaXWrQ0W0+3QCsQAychg@mail.gmail.com>
@@ -144,7 +143,6 @@ Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
 > 
 > For example, above was commented on and hasn't been addressed here.
 > 
-hi,here i can not get you.....
 > >  * @par: FBTFT parameter object
 > >  *
 > >  * Return: 0 on success, < 0 if error occurred.
@@ -164,8 +162,8 @@ hi,here i can not get you.....
 > >         if (te) {  
 > 
 > This one is not like I suggested.
-Why? My thinking is that if the TE is not configured and NULL is
-returned, the initialization can still proceed.....
+I don't think I have a problem here, if te GPIO is not configured, it
+should return NULL, if it is configured, it should be greater than 0 
 > 
 > >                 par->irq_te = gpiod_to_irq(te);
 > >                 gpiod_put(te);
@@ -174,11 +172,6 @@ returned, the initialization can still proceed.....
 > >                 if (par->irq_te) {  
 > 
 > This is wrong.
-
-Why? i have read gpiod_to_irq code, if an error occurs, a negative
-value is returned, and zero is not possible,so I need this value to
-determine if TE IRQ is configured
-
 > 
 > >                         rc = devm_request_irq(dev,
 > >                                               par->irq_te,
@@ -187,6 +180,8 @@ determine if TE IRQ is configured
 > >                 "TE_GPIO", par);  
 > 
 > Try to use less LOCs.
+
+LOCs???? i can not get you 
 > 
 > >                         if (rc)
 > >                                 return dev_err_probe(dev, rc, "TE
