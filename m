@@ -2,58 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D223E30898F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 15:35:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3836E3089B4
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 16:04:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0479023039;
-	Fri, 29 Jan 2021 14:35:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B41DD2E120;
+	Fri, 29 Jan 2021 15:04:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kq-VDEND8daX; Fri, 29 Jan 2021 14:35:56 +0000 (UTC)
+	with ESMTP id cWi+nBAYI4ky; Fri, 29 Jan 2021 15:04:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BC9AD22D0D;
-	Fri, 29 Jan 2021 14:35:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5179C2E13E;
+	Fri, 29 Jan 2021 15:04:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D53C91BF399
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 14:35:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 99A6A1C1170
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 15:03:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C87AD1FE49
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 14:35:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 927FD2A128
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 15:03:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VqTTAzY3J5YD for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 14:35:49 +0000 (UTC)
+ with ESMTP id 7C21quPJkzjB for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 15:03:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id EB20122D0D
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 14:35:48 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7629B64E05;
- Fri, 29 Jan 2021 14:35:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 84D182E113
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 15:03:55 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C964F64E19;
+ Fri, 29 Jan 2021 15:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611930948;
- bh=xbFXyaDzkCEvW+hbiYAzI1+iTa8lQ/M75C0djNmGrXA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Ka8c3/hfKJbE4Oaw6xqRLhc/2VOhBig35mJ5zFywZ9qq/MDuQBnse5t8vGqj2cK0u
- o5qS8sjJNQeW+B67ae8oJiFbq45RlNuUez5+Cz4c4EOPc3knN31lIUdAGnRNLqDQK3
- p/I2K2OHKxGEOQFL+78x/d8gC+CNrI9kczAkCh5o44shDbuAl0DbJpEuuhQTIT/XsZ
- rlBNO1tnlUmP8Q2OM0PYQidBvOZA3mdSAvRF+KG5ZOKpt2ISN/bGB19gbIoykcopyW
- jYpBoz2JZu/MAkWdyDbEFJ549nO4ayU5CO57HBpN/XG93lPVJoyGRlQ0CEiIIc+y+b
- tz5EczloNkCeA==
-Date: Fri, 29 Jan 2021 15:35:43 +0100
+ s=k20201202; t=1611932635;
+ bh=CO/C+gkAeJ4/y8oQwPnwPfaFENpvIiIherDQJ+TcbK0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Kdq5zwmm1k/ze1pwtcpRhy8d4w1fLetm4UAk+mYLKMWkwIFWqyi3XtHj5YJnIn7xG
+ /CQVMFTOMK9sGkpzNH4N3WkaWObz8jzQAVk5jcYZZfzxmZmNYbXiAbYTMr/vI9P5fA
+ 9JjIFcT35gPE99npKqI8l34kROHebYxIq5W66B5KSPxzRRkKtT1DA0E49G4LeJq5FU
+ vl5fRn6TpskmmWO1ZOj/kC383D8AlqipmAQwQWAZQZ1w+rTLWY9upDlS3lYG5/Syd3
+ Zv5xqpGjtz0T610plnUsVVV4jh9+Bx5PJlYv7JoR880xRF/bA5PE+zaZ73TgP2TzSg
+ dnXT2ujwKmVNg==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1l5VJP-0078t4-Nf; Fri, 29 Jan 2021 16:03:51 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v4 18/21] mfd: hi6421-spmi-pmic: move driver from staging
-Message-ID: <20210129153543.52efeb6a@coco.lan>
-In-Reply-To: <20210129132910.GP4774@dell>
-References: <cover.1611072387.git.mchehab+huawei@kernel.org>
- <e79ffb200c52fc8c8926492cc82ac5dbcda3e3fb.1611072387.git.mchehab+huawei@kernel.org>
- <20210127110537.GI4903@dell> <20210129140348.6b151fcb@coco.lan>
- <20210129132910.GP4774@dell>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>, Mark Brown <broonie@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH v7 00/14] Move Hisilicon 6421v600 SPMI and USB drivers out of
+ staging
+Date: Fri, 29 Jan 2021 16:03:35 +0100
+Message-Id: <cover.1611932194.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,260 +69,119 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Mayulong <mayulong1@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>
+ linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ YueHaibing <yuehaibing@huawei.com>, Yu Chen <chenyu56@huawei.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
+ Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ linux-arm-kernel@lists.infradead.org, David Gow <davidgow@google.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Alex Dewar <alex.dewar90@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Fri, 29 Jan 2021 13:29:10 +0000
-Lee Jones <lee.jones@linaro.org> escreveu:
+Hi Greg/Mark/Lee/Vinod,
 
-> On Fri, 29 Jan 2021, Mauro Carvalho Chehab wrote:
-> 
-> > Hi Lee,
-> > 
-> > Em Wed, 27 Jan 2021 11:05:37 +0000
-> > Lee Jones <lee.jones@linaro.org> escreveu:
+Another rebase , also the top of staging-testing,
 
-> 
-> > > > +static const struct mfd_cell hi6421v600_devs[] = {
-> > > > +	{ .name = "hi6421v600-regulator", },
-> > > > +};    
-> > > 
-> > > Where are the reset of the devices?  
-> > 
-> > Not sure what you mean here. 
-> > 
-> > This MFD device provides:
-> > 
-> > 	- an IRQ handler;
-> > 	- several LDO lines used by a regulator driver.
-> > 
-> > The IRQ handler is properly initialized here, while the
-> > regulators are initialized by the regulator driver. The initial
-> > state of this device is set up by u-boot.
-> > 
-> > So, AFAIKT, there's no need to have any reset line
-> > attached here.  
-> 
-> Oh wow!  Sorry about that.  It's a misspelling.
-> 
-> "Where are the *rest* of the devices?"
-> 
-> Registering one device does not qualify this as an MFD.
+This series contain the remaining patches for USB to start working,
+except for a final DTS patch.
 
-This is a MFD device. The current support has two different functions:
+Patches 1 and 2 convert the SPMI and regulator
+drivers to use regmap and simplifies the logic by using
+regmap helpers.
 
-	- it is an IRQ controller
-	- it regulator
+Patches 3 to 9 address some issues pointed by Lee at the MFD driver.
 
-From the Hikey 970 schematics (pags. 12-14):
+I guess the best would be if Greg could apply both patches
+also via the staging tree.
 
-	https://www.96boards.org/documentation/consumer/hikey/hikey970/hardware-docs/files/hikey970-schematics.pdf
+Patches 10 to 13 move the drivers and their corresponding
+DT documentation bindings out of staging.
 
-This chip also has some A/D converts, a battery voltage sensor 
-and some clock generators. Those are unused on Hikey 970.
+Patch 14 contains the DT which describes the regulator,
+SPMI controller and MFD.
 
-Btw, the initial version of this chipset (without SPMI bus) is
-also under drivers/mfd, as hi6421-pmic-core.
+I'll submit the final patch with USB bindings after having
+everything set (e.g. after 5.12-rc1).
 
-> >   
-> > > > +static void hi6421_spmi_irq_mask(struct irq_data *d)
-> > > > +{
-> > > > +	struct hi6421_spmi_pmic *pmic = irq_data_get_irq_chip_data(d);
-> > > > +	unsigned long flags;
-> > > > +	unsigned int data;
-> > > > +	u32 offset;
-> > > > +
-> > > > +	offset = (irqd_to_hwirq(d) >> 3);    
-> > > 
-> > > Why 3?   
-> > 
-> > No idea. I don't have any datasheets from this device.
-> >  
-> > > Probably better to define these shifts/masks rather than use
-> > > magic numbers with no comments.  
-> > 
-> > I'll change the above to:
-> > 
-> > 	#define HISI_IRQ_MASK			GENMASK(1, 0)
-> > 
-> > 	offset = (irqd_to_hwirq(d) >> HISI_IRQ_MASK);  
-> 
-> This is a shift surely?  Marks are usually &'ed.
-> 
-> > > > +	regmap_read(pmic->map, offset, &data);
-> > > > +	data |= (1 << (irqd_to_hwirq(d) & 0x07));    
-> > > 
-> > > What are you doing here?
-> > > 
-> > > Maybe improved defines will be enough.  If not, please supply a
-> > > suitable comment.  
-> > 
-> > Again, no idea. The only documentation I had access to this chip is
-> > at:
-> > 
-> > 	https://www.96boards.org/documentation/consumer/hikey/hikey970/
-> > 
-> > With doesn't mention any register details.
-> > 
-> > The driver itself came from the Linaro's 96boards git tree, with also
-> > doesn't contain any register mapping.  
-> 
-> Well that's awkward.
-> 
-> I'm not keen on merging code that no one knows what it does.
-> 
-> Maybe I can do some digging.
 
-Hmm... after re-reading the code:
+Mauro Carvalho Chehab (14):
+  staging: hikey9xx: spmi driver: convert to regmap
+  staging: hikey9xx: hi6421v600-regulator: use some regmap helpers
+  staging: hikey9xx: hi6421-spmi-pmic: rename some vars
+  staging: hikey9xx: hi6421-spmi-pmic: cleanup probe code
+  staging: hikey9xx: hi6421-spmi-pmic: cleanup header file
+  staging: hikey9xx: hi6421-spmi-pmic: fix IRQ handler code
+  staging: hikey9xx: hi6421-spmi-pmic: cleanup IRQ handling code
+  staging: hikey9xx: hi6421-spmi-pmic: document registers
+  staging: hikey9xx: hi6421-spmi-pmic: update copyright notes
+  phy: phy-hi3670-usb3: move driver from staging into phy
+  spmi: hisi-spmi-controller: move driver from staging
+  mfd: hi6421-spmi-pmic: move driver from staging
+  regulator: hi6421v600-regulator: move it from staging
+  dts: hisilicon: add support for the PMIC found on Hikey 970
 
-	enum hi6421_spmi_pmic_irq_list {
-		OTMP = 0,
-		VBUS_CONNECT,
-		VBUS_DISCONNECT,
-		ALARMON_R,
-		HOLD_6S,
-		HOLD_1S,
-		POWERKEY_UP,
-		POWERKEY_DOWN,
-		OCP_SCP_R,
-		COUL_R,
-		SIM0_HPD_R,
-		SIM0_HPD_F,
-		SIM1_HPD_R,
-		SIM1_HPD_F,
-		PMIC_IRQ_LIST_MAX,
-	};
-	...
+ .../mfd/hisilicon,hi6421-spmi-pmic.yaml       | 135 ++++
+ .../bindings/phy/hisilicon,hi3670-usb3.yaml   |  73 ++
+ .../spmi/hisilicon,hisi-spmi-controller.yaml  |  75 ++
+ MAINTAINERS                                   |  24 +-
+ .../boot/dts/hisilicon/hi3670-hikey970.dts    |  22 +-
+ .../boot/dts/hisilicon/hikey970-pmic.dtsi     |  87 +++
+ drivers/mfd/Kconfig                           |  15 +
+ drivers/mfd/Makefile                          |   1 +
+ drivers/mfd/hi6421-spmi-pmic.c                | 296 ++++++++
+ drivers/phy/hisilicon/Kconfig                 |  10 +
+ drivers/phy/hisilicon/Makefile                |   1 +
+ drivers/phy/hisilicon/phy-hi3670-usb3.c       | 668 ++++++++++++++++++
+ drivers/regulator/Kconfig                     |   8 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/hi6421v600-regulator.c      | 299 ++++++++
+ drivers/spmi/Kconfig                          |   9 +
+ drivers/spmi/Makefile                         |   1 +
+ drivers/spmi/hisi-spmi-controller.c           | 367 ++++++++++
+ drivers/staging/Kconfig                       |   2 -
+ drivers/staging/Makefile                      |   1 -
+ drivers/staging/hikey9xx/Kconfig              |  50 --
+ drivers/staging/hikey9xx/Makefile             |   7 -
+ drivers/staging/hikey9xx/TODO                 |   5 -
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c   | 326 ---------
+ .../staging/hikey9xx/hi6421v600-regulator.c   | 336 ---------
+ .../staging/hikey9xx/hisi-spmi-controller.c   | 367 ----------
+ .../hikey9xx/hisilicon,hi6421-spmi-pmic.yaml  | 135 ----
+ .../hisilicon,hisi-spmi-controller.yaml       |  75 --
+ drivers/staging/hikey9xx/phy-hi3670-usb3.c    | 668 ------------------
+ drivers/staging/hikey9xx/phy-hi3670-usb3.yaml |  73 --
+ include/linux/mfd/hi6421-spmi-pmic.h          |  28 +-
+ 31 files changed, 2072 insertions(+), 2093 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml
+ create mode 100644 Documentation/devicetree/bindings/phy/hisilicon,hi3670-usb3.yaml
+ create mode 100644 Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml
+ create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-pmic.dtsi
+ create mode 100644 drivers/mfd/hi6421-spmi-pmic.c
+ create mode 100644 drivers/phy/hisilicon/phy-hi3670-usb3.c
+ create mode 100644 drivers/regulator/hi6421v600-regulator.c
+ create mode 100644 drivers/spmi/hisi-spmi-controller.c
+ delete mode 100644 drivers/staging/hikey9xx/Kconfig
+ delete mode 100644 drivers/staging/hikey9xx/Makefile
+ delete mode 100644 drivers/staging/hikey9xx/TODO
+ delete mode 100644 drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+ delete mode 100644 drivers/staging/hikey9xx/hi6421v600-regulator.c
+ delete mode 100644 drivers/staging/hikey9xx/hisi-spmi-controller.c
+ delete mode 100644 drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+ delete mode 100644 drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
+ delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.c
+ delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
 
-	#define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
-	#define SOC_PMIC_IRQ0_ADDR		0x0212
+-- 
+2.29.2
 
-	...
 
-	static void hi6421_spmi_irq_mask(struct irq_data *d)
-	{
-		struct hi6421_spmi_pmic *ddata = irq_data_get_irq_chip_data(d);
-		unsigned long flags;
-		unsigned int data;
-		u32 offset;
-
-		offset = (irqd_to_hwirq(d) >> 3);
-		offset += SOC_PMIC_IRQ_MASK_0_ADDR;
-
-		spin_lock_irqsave(&ddata->lock, flags);
-
-		regmap_read(ddata->regmap, offset, &data);
-		data |= (1 << (irqd_to_hwirq(d) & 0x07));
-		regmap_write(ddata->regmap, offset, data);
-
-		spin_unlock_irqrestore(&ddata->lock, flags);
-	}
-
-Actually does this mapping:
-
-	======================  =============   =====
-	IRQ			MASK REGISTER 	BIT
-	======================  =============   =====
-	OTMP			0x0202		bit 0
-	VBUS_CONNECT		0x0202		bit 1
-	VBUS_DISCONNECT		0x0202		bit 2
-	ALARMON_R		0x0202		bit 3
-	HOLD_6S			0x0202		bit 4
-	HOLD_1S			0x0202		bit 5
-	POWERKEY_UP		0x0202		bit 6
-	POWERKEY_DOWN		0x0202		bit 7
-
-	OCP_SCP_R		0x0203		bit 0
-	COUL_R			0x0203		bit 1
-	SIM0_HPD_R		0x0203		bit 2
-	SIM0_HPD_F		0x0203		bit 3
-	SIM1_HPD_R		0x0203		bit 4
-	SIM1_HPD_F		0x0203		bit 5
-	======================  =============   =====
-
-The IRQ register itself is the mask register + 0x10:
-
-	static irqreturn_t hi6421_spmi_irq_handler(int irq, void *priv)
-	{
-		struct hi6421_spmi_pmic *ddata = (struct hi6421_spmi_pmic *)priv;
-		unsigned long pending;
-		unsigned int in;
-		int i, offset;
-	
-		for (i = 0; i < HISI_IRQ_ARRAY; i++) {
-			regmap_read(ddata->regmap, SOC_PMIC_IRQ0_ADDR + i, &in);
-			pending = HISI_MASK & in;
-			regmap_write(ddata->regmap, SOC_PMIC_IRQ0_ADDR + i, pending);
-			...
-		}
-		return IRQ_HANDLED;
-	}
-
-Anyway, it sounds a good idea to have a table like the above on some
-comment inside the driver's code.
-
-> > > > +		pr_debug("PMU IRQ address value:irq[0x%x] = 0x%x\n",
-> > > > +			 SOC_PMIC_IRQ0_ADDR + i, pending);    
-> > > 
-> > > Again, is this actually useful to anyone now that the driver is nearly
-> > > 10 years old.  Particularly anyone who can't add a quick printk()
-> > > during a debug session?  
-> > 
-> > With regards to the debug stuff, I'm dropping everything.  
-> 
-> Great.
-> 
-> > On a side comment, I doubt that the driver has 10 years old ;-)
-> > 
-> > See, Hikey 970 uses Kirin 970 SoC, which it was launched in Sept, 2017.   
-> 
-> The header has a copyright from 2011.
-> 
->  // Copyright (c) 2013 Linaro Ltd.
->  // Copyright (c) 2011 Hisilicon.
-> 
-> > The original version of this driver publicly debuted on this tree:
-> > 
-> > 	https://github.com/96boards-hikey/linux/blob/hikey970-v4.9/drivers/mfd/hisi_pmic_spmi.c
-> > 
-> > On a commit made on Feb, 2018.
-> > 
-> > Ok, Hi6421v600 is a separate silicon, probably derivative from
-> > Hi6421 (used on Hikey 960). Its copyright mentions 2011, but 
-> > that's probably because the code itself came from older generations
-> > of the regulator chipset.  
-> 
-> So we've inherited a copyright from another driver?
-> 
-> Sounds suspect.
-
-Not really. The non-SPMI version of this chipset
-(at drivers/mfd/hi6421-pmic-core.c) has its copyright starting in
-2011:
-
-	/*
-	 * Device driver for Hi6421 PMIC
-	 *
-	 * Copyright (c) <2011-2014> HiSilicon Technologies Co., Ltd.
-	 *              http://www.hisilicon.com
-	 * Copyright (c) <2013-2017> Linaro Ltd.
-	 *              https://www.linaro.org
-
-> > Please see the enclosed patch for the new code after fixing the issues
-> > you pointed. I'll re-submit it as a series once you're ok with the
-> > code.  
-> 
-> Would you mind just resubmitting please?  We can go from there.
-
-Ok. Will do it on a next spin.
-
-Thanks,
-Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
