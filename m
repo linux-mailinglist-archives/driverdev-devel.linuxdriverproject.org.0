@@ -1,69 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 500C130803C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Jan 2021 22:08:35 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 663A08688B;
-	Thu, 28 Jan 2021 21:08:33 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DZGPlMwBJUh3; Thu, 28 Jan 2021 21:08:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 718BB86807;
-	Thu, 28 Jan 2021 21:08:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A8D611BF3D8
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 21:08:30 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id EE3B8308491
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 05:43:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9C8F486DDA
- for <devel@linuxdriverproject.org>; Thu, 28 Jan 2021 21:08:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6969E86FDC;
+	Fri, 29 Jan 2021 04:43:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TNMji+gpE1Zj; Fri, 29 Jan 2021 04:43:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2CD6786F95;
+	Fri, 29 Jan 2021 04:43:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A1F331BF348
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 04:43:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 9BC702E11F
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 04:43:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P9hRd12VRaXG for <devel@linuxdriverproject.org>;
- Thu, 28 Jan 2021 21:08:29 +0000 (UTC)
+ with ESMTP id 9d5y8ylDTbN1 for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 04:43:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0080.hostedemail.com
- [216.40.44.80])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6F7B586DCB
- for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 21:08:29 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id 7543218030153
- for <devel@driverdev.osuosl.org>; Thu, 28 Jan 2021 20:51:42 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay08.hostedemail.com (Postfix) with ESMTP id E9245182CF665;
- Thu, 28 Jan 2021 20:51:39 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:967:968:973:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2525:2560:2563:2682:2685:2828:2859:2895:2933:2937:2939:2942:2945:2947:2951:2954:3000:3022:3138:3139:3140:3141:3142:3351:3622:3865:3868:3870:3871:3872:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4250:4321:5007:7576:7652:7809:9025:10004:10400:10848:11232:11657:11658:11914:12043:12048:12297:12555:12740:12895:13069:13255:13311:13357:13439:13894:14181:14659:14721:21080:21451:21627:21990:30054:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:152, LUA_SUMMARY:none
-X-HE-Tag: store90_330d584275a2
-X-Filterd-Recvd-Size: 1703
-Received: from [192.168.1.159] (unknown [47.151.137.21])
- (Authenticated sender: joe@perches.com)
- by omf16.hostedemail.com (Postfix) with ESMTPA;
- Thu, 28 Jan 2021 20:51:36 +0000 (UTC)
-Message-ID: <4feb2701856a0a05ce22f27adf1ade679695cfe5.camel@perches.com>
-Subject: Re: [PATCH] staging: net: wimax: i2400m: fw: remove redundant
- initialization of variable result
-From: Joe Perches <joe@perches.com>
-To: Colin King <colin.king@canonical.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, 
- devel@driverdev.osuosl.org
-Date: Thu, 28 Jan 2021 12:51:35 -0800
-In-Reply-To: <20210128173703.645328-1-colin.king@canonical.com>
-References: <20210128173703.645328-1-colin.king@canonical.com>
-User-Agent: Evolution 3.38.1-1 
+Received: from vm1816402.nvme.had.yt (vm1816402.nvme.had.yt [185.231.71.50])
+ by silver.osuosl.org (Postfix) with ESMTPS id 60A942E11B
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 04:43:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=vm1816402.nvme.had.yt; s=mail; h=Message-Id:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Date:Subject:From:Reply-To;
+ bh=XntvA0VlrpdqvPf8aqABEyKXcVWrXNip0iyJllqq5zg=; b=ihUs6o59+rm8DeInmEj/OxGXd5
+ n3vpWBxw5Vl0QdsVgaY1AdZTe5hCuYU5iSZq2x2Er5ij2euWKi+60wSB8nLwh/O/d2EGSPr2rPz6J
+ mREdL17mQWFWgtVzeE7homgwySfM2LZ2GJLbcGAs96hI/V4AqymuVf6zAfWfV3ilxmw8=;
+Received: from [51.255.3.56] (helo=User)
+ by vm1816402.nvme.had.yt with esmtpa (Exim 4.86_2)
+ (envelope-from <info@vm1816402.nvme.had.yt>)
+ id 1l5LaV-00089J-AC; Fri, 29 Jan 2021 04:40:51 +0000
+From: "Agencia Tributarion"<info@vm1816402.nvme.had.yt>
+Subject: EESP/KK11052020
+Date: Fri, 29 Jan 2021 05:40:53 +0100
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1l5LaV-00089J-AC@vm1816402.nvme.had.yt>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,41 +62,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: infotriibuteria@mail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2021-01-28 at 17:37 +0000, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> =
-
-> The variable result is being initialized with a value that is never
-> read and it is being updated later with a new value.  The initialization
-> is redundant and can be removed.
-
-Isn't WIMAX dead?  Shouldn't it be marked ORPHAN in MAINTAINERS?
----
-diff --git a/MAINTAINERS b/MAINTAINERS
-index caac09a3c5c9..922afd393cb6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -19201,6 +19201,10 @@ S:     Supported
- W:	https://wireless.wiki.kernel.org/en/users/Drivers/wil6210
- F:	drivers/net/wireless/ath/wil6210/
- =
-
-+WIMAX
-+S:	Orphan
-+F:	drivers/staging/wimax/
-+
- WINBOND CIR DRIVER
- M:	David H=E4rdeman <david@hardeman.nu>
- S:	Maintained
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RlJPTTogVEhFIERFU0sgT0YgVEhFIFZJQ0UgIFBSRVNJREVOVC4gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCklOVEVSTkFUSU9O
+QUwgUFJPTU9USU9OL1BSSUNFIEFXQVJEICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgCk1BRFJJRCwgU1BBSU4uClJlZiAgTrogOiBFU1AvSzEx
+MDUyMDIwClRJQ0tFVC9CQVRDSDogNTMxNTIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
+QVRUOiBCRU5FRklDSUFSWToKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+UkU6IExPVEVSSUEgTkFDSU9OQUwgQVdBUkQgTk9USUZJQ0FUSU9OIApUaGlzIGlzIHRvIGluZm9y
+bSB5b3Ugb2YgdGhlIHJlbGVhc2Ugb2YgdGhlIExPVEVSSUEgTkFDSU9OQUwvRVVST01JTExJT05F
+Uy9FTC1HT1JETyBMT1RURVJZIFBST01PVElPTlMgUFJPR1JBTSBoZWxkIGluIE1hZHJpZCBTcGFp
+biwgb24gdGhlIDIyTkQgIERFQ0VNQkVSLCAyMDIwLiBZb3VyIE5BTUUgd2FzIHBpY2sgYW5kIGF0
+dGFjaGVkIHRvIHRpY2tldC9CYXRjaCBudW1iZXIgNTMxNTIgd2l0aCBSZWZlcmVuY2UgbnVtYmVy
+IEVTUC9LMTEwNTIwMjAgZHJldyB0aGUgbHVja3kgbnVtYmVycyAwNy0xNS0yNS0zMS0zNC00Niwg
+d2hpY2ggY29uc2VxdWVudGx5IHdvbiB0aGUgbG90dGVyeSBpbiB0aGUgMk5EIGNhdGVnb3J5LiBZ
+b3UgaGF2ZSB0aGVyZWZvcmUgYmVlbiBhcHByb3ZlZCBvZiBhIGx1bXAgc3VtIHBheW1lbnQgb2Yg
+gDIuODk4LjAwMC4wMC4KClRoaXMgaXMgZnJvbSBhIHRvdGFsIGNhc2ggcHJpemUgb2YggDE4MCw3
+OTYsMDAwLjAwIHNoYXJlZCBhbW9uZyB0aGUgbG9jYWwgYW5kIGludGVybmF0aW9uYWwgd2lubmVy
+cyBpbiBhbGwgY2F0ZWdvcmllcykuIENPTkdSQVRVTEFUSU9OUyEhISAKWW91ciBmdW5kIGlzIG5v
+dyBkZXBvc2l0ZWQgd2l0aCB0aGUgQkFOSywgYW5kIGluc3VyZWQgaW4geW91ciBuYW1lIHdpdGgg
+aW5zdXJhbmNlIG51bWJlcjogRVNQL0tLMTkwMDQzMy8yMDIwLiBEdWUgdG8gZmFsc2UgcHJhY3Rp
+Y2VzLCB3ZSBhc2sgdGhhdCB5b3Uga2VlcCB5b3VyIGF3YXJkIGluZm9ybWF0aW9uIHN0cmljdGx5
+IGF3YXkgZnJvbSBwdWJsaWMgbm90aWNlLCB1bnRpbCB5b3VyIGNsYWltIGhhcyBiZWVuIHByb2Nl
+c3NlZCBhbmQgbW9uZXkgcmVtaXR0ZWQgdG8geW91ciBwb3NzZXNzaW9uIGFzIHRoaXMgaXMgcGFy
+dCBvZiBvdXIgc2VjdXJpdHkgcHJvdG9jb2wgdG8gYXZvaWQgZG91YmxlIGNsYWltaW5nIG9yIHVu
+d2FycmFudGVkIGFidXNlIG9mIHRoaXMgcHJvZ3JhbSBieSAgdW5zY3J1cHVsb3VzIGluZGl2aWR1
+YWxzLiBBbGwgcGFydGljaXBhbnRzIHdlcmUgc2VsZWN0ZWQgdGhyb3VnaCB2aXNpYmxlIHRpY2tl
+dHMgYW5kIGNvbXB1dGVyIGJhbGxvdCBzeXN0ZW0gZHJhd24gZnJvbSAoTUlMTElPTlMpIG9mIG5h
+bWVzIGZyb20gQXNpYSwgQW1lcmljYSwgQWZyaWNhLCBFdXJvcGUsIGFuZCBTb3V0aCBQYWNpZmlj
+LCBhcyBwYXJ0IG9mIG91ciBJbnRlcm5hdGlvbmFsIHByb21vdGlvbiBwcm9ncmFtLiBXZSBob3Bl
+IHlvdXIgbHVja3kgbmFtZSBhbmQgZW1haWwgd2lsbCBkcmF3IGEgYmlnZ2VyIGNhc2ggcHJpemUg
+aW4gdGhlIHN1YnNlcXVlbnQgcHJvZ3JhbXMgYWhlYWQuCgpUbyBiZWdpbiB5b3VyIGxvdHRlcnkg
+Y2xhaW1zLCBwbGVhc2UgZmlsbCBhbmQgZmF4IG9yIGVtYWlsIHRoZSBhdHRhY2hlZCBwYXltZW50
+IHByb2Nlc3NpbmcgZm9ybSB3aXRoIGEgY29weSBvZiB5b3VyIGlkZW50aWZpY2F0aW9uIHRvIHlv
+dXIgY2xhaW1zIGFnZW50IE1SLiBJU0lEUk8gU0FOQ0hFWiBBTEJFUlRPIEpVUkFETywgVEhFIEZP
+UkVJR04gU0VSVklDRSBNQU5BR0VSIG9mIEVYQ0VMIFNFR1VST1MsIFMuTC4gT24gVGVsOiArMzQt
+NjM0IDEzOSAzMzgsIEZheDogKzM0LTkxOSAwMzkgNDQ3IGFuZCBFbWFpbDogaXNpZHJvc2FuY2hl
+emFsYmVydG9AZ21haWwuY29tIGZvciB0aGUgcHJvY2Vzc2luZyBhbmQgcmVtaXR0YW5jZSBvZiB5
+b3VyIHByaXplIHdpbm5pbmcgbW9uZXkgdG8gYSBkZXNpZ25hdGVkIGNob2ljZSBvZiB5b3Vycy4K
+ClJlbWVtYmVyLCBhbGwgcHJpemUgbW9uZXkgbXVzdCBiZSBjbGFpbWVkIG5vdCBsYXRlciB0aGFu
+IDI1dGggTWF0Y2gsIDIwMjEuIEFueSBjbGFpbSBub3QgbWFkZSBiZWZvcmUgdGhpcyBkYXRlIHdp
+bGwgYmUgcmV0dXJuZWQgdG8gdGhlIE1JTklTVEVSSU8gREUgRUNPTk9NSUEgWSBIQUNJRU5EQSBh
+cyB1bmNsYWltZWQgZnVuZC4gIEFuZCBhbHNvIGJlIGluZm9ybWVkIHRoYXQgMTAlIG9mIHlvdXIg
+V2lubmluZyBiZWxvbmdzIHRvIEVYQ0VMIFNFR1VST1MsIFMuTCBmb3IgYWN0aW5nIG9uIHlvdXIg
+YmVoYWxmIG9uIHJlY2VpcHQgb2YgdGhpcyBtb25leS4gIAoKTk9URTogVGhyZWUgKDMpIGNlcnRp
+ZmljYXRlcyBhcmUgdG8gYmUgaXNzdWVkIHRvIHlvdSBieSB0aGUgTE9DQUwgR09WRVJOTUVOVCBU
+QVggQVVUSE9SSVRZLCBNSU5JU1RSWSBPRiBGSU5BTkNFIEFORCBOQVRJT05BTCBMT1RURVJZIEJP
+QVJELCB0byBiYWNrIHVwIHlvdXIgd2lubmluZy4gWW91ciBhZ2VudCB3aWxsIGRpcmVjdCB5b3Ug
+ZnVydGhlciBvbiB0aGUgYWRtaW5pc3RyYXRpdmUgcmVxdWlyZW1lbnQgdG8gZW5hYmxlIHRoZSBi
+YW5rIHJlbGVhc2UgeW91ciBmdW5kIHRvIHRoZSBkZXNpZ25hdGVkIGNob2ljZSBvZiB5b3Vycy4g
+ICAKCkZ1cnRoZXJtb3JlLCBzaG91bGQgdGhlcmUgYmUgYW55IGNoYW5nZSBvZiBhZGRyZXNzLCBk
+byBpbmZvcm0geW91ciBjbGFpbXMgYWdlbmN5IGNvbXBhbnkgYXMgc29vbiBhcyBwb3NzaWJsZS4g
+VGhlIG9yaWdpbmFsIGNvcHkgb2YgeW91ciBhd2FyZCBsZXR0ZXIgaGFzIGJlZW4gZm9yd2FyZGVk
+IHRvIHlvdXIgYWdlbnQgY29tcGFueSBmb3Igc2VjdXJpdHkgcHVycG9zZXMuCgogICAgICAgICAg
+ICAgICAgUEFZTUVOVCBQUk9DRVNTSU5HIEZPUk2FLlBMRUFTRSBGSUxML0NPTVBMRVRFIFRIRSBG
+T1JNIFdJVEggQ0FQSVRBTCBMRVRURVJTLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIApTVVJOQU1FX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+TkFNRTpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwoKQUREUkVTU0lO
+RlVMTDpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KClRFTEVGT046X19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X0VNQUlMX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCgpPQ0NVUEFUSU9O
+X19fX19fX19fX19fX19fX19fX19fX19fX19fREFURU9GQklSVEhfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwoKUkVGRVJFTkNFIE66Ol9fX19fX19fX19fX19fX19fX19fX19fX0JB
+VENITro6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KICAgICAgICAgICAg
+ICAgIApCQU5LIE5BTUU6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwoKSUJBTjpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19CSUMvU1dJRlRfX19fX19fX19fX19fX19fX19fX19fCgpCQU5LIEFE
+RFJFU1M6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KCgpDT05HUkFUVUxBVElPTiBPTkNFIEFHQUlOCkRSIEFOQSBNQVJJQSBM
+T1BFWgpWSUNFIFBSRVNJREVOVCwgSU5URVJOQVRJT05BTCBQUklaRSBERVBBUlRNRU5UCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
+bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
+cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
