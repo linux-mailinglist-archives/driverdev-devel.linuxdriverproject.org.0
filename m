@@ -2,82 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14378308753
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 10:25:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C30FD3087C5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 11:23:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 371028749E;
-	Fri, 29 Jan 2021 09:25:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E72D887496;
+	Fri, 29 Jan 2021 10:23:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XPPum9Fzk4Ly; Fri, 29 Jan 2021 09:25:52 +0000 (UTC)
+	with ESMTP id f9pI-H-sKlcc; Fri, 29 Jan 2021 10:23:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9DA4387463;
-	Fri, 29 Jan 2021 09:25:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E763E87487;
+	Fri, 29 Jan 2021 10:23:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CFBF71BF59E
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 09:25:49 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C0BB1BF379
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 10:23:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CC3E586962
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 09:25:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 05BDD22D0D
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 10:23:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zNAcnsYxASE0 for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 09:25:47 +0000 (UTC)
+ with ESMTP id pt+iZ2YyosQS for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 10:23:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 289D38648C
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 09:25:47 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id u67so5872009pfb.3
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 01:25:47 -0800 (PST)
+Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com
+ [209.85.210.182])
+ by silver.osuosl.org (Postfix) with ESMTPS id 99060228AC
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 10:23:25 +0000 (UTC)
+Received: by mail-pf1-f182.google.com with SMTP id w18so5947018pfu.9
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 02:23:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=SrJRdML7yk6Qv98s2csu9McFa5qnTY/wVdWlusd7L10=;
- b=Y+Wwd8qekFFF5f7YGOE9mD8cja3rWji3Y3k43MGeWKHDf4D3AAMW5EHoSw5xDqk7iY
- iv84vQhN1PNbruzUilGCE6LhsCGr7aCBOfB1oWrDw5opoNjnvu1UDLERLmbEl9lS7r1N
- i0WvTTfkevSMHmyByIrAAC/IhChySJD0QdZuv11ujBP/EdbyygxkTi/kTGbMWwiMnH3x
- D4Adt5W9dQmYtcqXuWlOxFd1NoNC4VwWB8vmF+Q25e9E02CibNQ+DdSOCObZWQIoQxMd
- LbJ6dYfeSfNL3DPLfz7JcqSEnvSGwrYoapJB6cl8xECtAL1ZhpXr0KAx5PLVTb9gg72P
- JMCQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1yJOa9cCZqrpekGVxy3im++BvB26IIFrQ7p67xz4bWU=;
+ b=JItl3w9RUXsrlQMdTdeSeE9VBrTpEoACcm6QZPtalecMUES/uswc8XnfoqLQ7CZRaw
+ Bxvntx2atyAtdGs616fHZGRboBerITSzM0/rDnrNylVyFMZfdhgSuCWLrroO+9FZbUhT
+ +kBqrJPQJZ3mFuLkbW5pfVMIiKCMg9jsLSPOCOAQSEire7oJ2LrZJuXhFSm6fHNTksgB
+ IpP7spHvaFEXfCRLPq5hr6lEeWAU2LXCeoI3yRx54c9FMckVtTcfwqqN2Js75ZKUWLW7
+ qcLFTQ1RrGKhNxqjZpxMcvsag7S2B81bvf0cykSxYjExfWhHHdSVhn7m/TvLGK5S3xmM
+ Gg7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=SrJRdML7yk6Qv98s2csu9McFa5qnTY/wVdWlusd7L10=;
- b=ioMTNdAgfpB4PWxsc42zS6KPvBoqGNfqty3SZPQEcylG/kldcji+9JfXWmHgVR58Ca
- 15LfCHwZgINLLwXq3Ts1iBTnxDfh+udSFrzMCuH13SDNq4n03BU5FZBUw36b4xRqJEZc
- nSj9xzXv/dfGjLIQpe1LTdlgj6stQBiXwJa0buUPFzPEg/FGer3N4AJCYVh+W54J7Gao
- tRLYmqjxQTLSLYo4dyF1ari+fEIZkWeEZjOjH1QX1euyI476At9ORHVIQqId/uGnEXak
- VJg026l+nkFVX2dHq95Cjvj0gguVPbtsnk8uRegWEGWPNmNKDm6HjQsw5oo2eXBUTgxa
- keQg==
-X-Gm-Message-State: AOAM531Ub6t/Z+DfUCq/QWONMTjexvslX0CObW1BD6IizOzsy2/4sy7P
- TH81f0wyN8f1F5wRYZUCbME=
-X-Google-Smtp-Source: ABdhPJycLTmRmRbNUdbhvyx/esQ5IpI3JJO0bF2QukMBiF4MLzW6U/mU4/B4hYujPe2uc8wD0RZVfQ==
-X-Received: by 2002:a65:6542:: with SMTP id a2mr3835484pgw.148.1611912346702; 
- Fri, 29 Jan 2021 01:25:46 -0800 (PST)
-Received: from localhost ([2402:3a80:11ea:bf74:a2a4:c5ff:fe20:7222])
- by smtp.gmail.com with ESMTPSA id t6sm8349421pfe.177.2021.01.29.01.25.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 01:25:46 -0800 (PST)
-Date: Fri, 29 Jan 2021 14:55:43 +0530
-From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: qlge/qlge_ethtool.c: strlcpy -> strscpy
-Message-ID: <20210129092543.tl76sff4mmf6i6s3@apollo>
-References: <20210129064522.97548-1-memxor@gmail.com>
- <YBPBoajKXbKhI7ji@kroah.com>
- <20210129082155.2ob4kokjdjbutdqm@apollo>
- <YBPMnCqlxSDs84qF@kroah.com>
- <20210129090833.o3sdo7drhd4un53z@apollo>
- <YBPRa5+rx52RqQtx@kroah.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1yJOa9cCZqrpekGVxy3im++BvB26IIFrQ7p67xz4bWU=;
+ b=P5gkQr+KVQIzx+sbFsfC2hARomVDsU+Xu0rCK2w2ymEI+hGwCUyGfhyIa3L6JAXA4m
+ DKYasVymCr2kNnkSPZpR8xIRrtFjQx5KpEag0kcXKGGukAd4lKykvR3iSw+Ii/VPusQw
+ nj7Wqpyuu77+sXZOAvHHk8nMIkNluhyOoGuHd2VLmceAxfNDN+Iv6STHMFrPmlyAtjFC
+ viMa7tSDZubbJzVhmMcVO5aewBQLDxPzBBsH2Jby0UQdAymsYmVOiO2lPmtNgmIYcDu9
+ IlMnqj2TWzLO0DG1lmnGTJQLMHt12I+DmgvbWPO/MggYkWdVX9Aj1j2ROjCx5qL3EFfC
+ VmBQ==
+X-Gm-Message-State: AOAM53112mdQM4AZMg5VWC9ww80McY5EAGOoeu0w8ryC4tnXzTPpo27u
+ nWeO8SH9zyO5z0f4dpEmn/ln4k7QEWJfUJ3r+7A=
+X-Google-Smtp-Source: ABdhPJzZPmiIy1i6+oWh62iX8kptMK1v3q70xltdxURXcNI2yQymGXHBS4//dugEb39m/ZKQUFoE+w0P3eCtMBpXBGA=
+X-Received: by 2002:a65:644b:: with SMTP id s11mr4173241pgv.4.1611915805200;
+ Fri, 29 Jan 2021 02:23:25 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YBPRa5+rx52RqQtx@kroah.com>
+References: <1611838435-151774-1-git-send-email-zhangxuezhi3@gmail.com>
+ <CAHp75Vd=ijxnamuSYuxNLeyhGMCod=HaXWrQ0W0+3QCsQAychg@mail.gmail.com>
+ <20210129130110.00003bb1@gmail.com>
+In-Reply-To: <20210129130110.00003bb1@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Fri, 29 Jan 2021 12:23:08 +0200
+Message-ID: <CAHp75Vdi4H_zY3+QPSq_wmdf20B9xPeqsOT10JHfMLJESX77gA@mail.gmail.com>
+Subject: Re: [PATCH v12] staging: fbtft: add tearing signal detect
+To: carlis <zhangxuezhi3@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,49 +81,116 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
- GR-Linux-NIC-Dev@marvell.com, linux-kernel@vger.kernel.org,
- Manish Chopra <manishc@marvell.com>
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ "open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>,
+ Deepak R Varma <mh12gx2825@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ oliver.graute@kococonnector.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Stefano Brivio <sbrivio@redhat.com>, Colin King <colin.king@canonical.com>,
+ zhangxuezhi1@yulong.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 0129, Greg Kroah-Hartman wrote:
-> [SNIP] 
-> > Yes, because it's copying the source strings to fixed size buffers in
-> > ethtool_drvinfo, so truncation would be fine here (as it's the driver name and
-> > other identity related stuff).
-> 
-> So there is no need to make this change, or it is required to make this
-> change?  I can't tell from your response here.
-> 
+On Fri, Jan 29, 2021 at 7:01 AM carlis <zhangxuezhi3@gmail.com> wrote:
+> On Thu, 28 Jan 2021 16:33:02 +0200
+> Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
+> > On Thu, Jan 28, 2021 at 2:58 PM Carlis <zhangxuezhi3@gmail.com> wrote:
+> >
+> > Thanks for your contribution, my comments below.
+> >
+> > > From: zhangxuezhi <zhangxuezhi1@yulong.com>
+> >
+> > You probably have to configure your Git to use the same account for
+> > author and committer.
+>
+> hi,you mean like below:
+>         Carlis <zhangxuezhi1@yulong.com>
+> ?
 
-It's marked as deprecated in Documentation/process/deprecated.rst, is
-inefficient, so its usage should be discouraged (and eventually it can be
-dropped from the tree). So yes, this change makes sense. When the return value
-isn't being checked (the caller is ok with truncation), there is no functional
-difference between the two, in addition strscpy avoids a useless strlen call
-internally.  strncpy is not a good candidate (as it doesn't guarantee NUL
-termination), and strcpy is broken anyway. 
+I meant that you shouldn't probably have a From: line in the commit message.
 
-strlcpy is a dangerous API (atleast in kernel context), and introduces cognitive
-overhead on the developer where they need to remember whether the source will
-be valid all the time. strscpy instead only reads up to count bytes.
+...
 
-When the return value is being checked, it needs to be adpated to the -E2BIG
-negative return code instead. In this case though, that isn't required.
+> hi, i have modified it according to your suggestion like below:
 
-> > Should I send a v2 with the reason?
-> 
-> I've already rejected the first one as being incomplete :)
-> 
-> thanks,
-> 
-> greg k-h
+Please, go again thru my comments and comments from others and
+carefully address all of them everywhere in your contribution. If you
+have questions, ask them in reply in the corresponding context.
+
+...
+
+> /**
+>  * init_tearing_effect_line() - init tearing effect line
+
+>  *
+
+For example, above was commented on and hasn't been addressed here.
+
+>  * @par: FBTFT parameter object
+>  *
+>  * Return: 0 on success, < 0 if error occurred.
+>  */
+> static int init_tearing_effect_line(struct fbtft_par *par)
+> {
+>         struct device *dev = par->info->device;
+>         struct gpio_desc *te;
+>         int rc;
+>
+>         te = gpiod_get_optional(dev, "te", GPIOD_IN);
+>         if (IS_ERR(te))
+>                 return dev_err_probe(dev, PTR_ERR(te), "Failed to
+>         request te GPIO\n");
+>
+
+>         if (te) {
+
+This one is not like I suggested.
+
+>                 par->irq_te = gpiod_to_irq(te);
+>                 gpiod_put(te);
+>
+
+>                 if (par->irq_te) {
+
+This is wrong.
+
+>                         rc = devm_request_irq(dev,
+>                                               par->irq_te,
+>                 panel_te_handler,
+>                                               IRQF_TRIGGER_RISING,
+>                 "TE_GPIO", par);
+
+Try to use less LOCs.
+
+>                         if (rc)
+>                                 return dev_err_probe(dev, rc, "TE IRQ
+>                 request failed.\n");
+>
+>                         disable_irq_nosync(par->irq_te);
+>                         init_completion(&par->panel_te);
+
+>                 } else {
+>                         return dev_err_probe(dev, par->irq_te, "gpiod
+>                         to TE IRQ failed.\n");
+>                 }
+
+Again, it is not what had been suggested.
+
+>         }
+>
+>         return 0;
+> }
+
+The rest is better, but we will see later on when you submit a new
+version (And I feel it won't be last).
 
 -- 
-Kartikeya
+With Best Regards,
+Andy Shevchenko
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
