@@ -1,76 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C54D6308E5B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 21:25:08 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA2753090C4
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 00:54:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 23174874B7;
-	Fri, 29 Jan 2021 20:25:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 410D2872D2;
+	Fri, 29 Jan 2021 23:54:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mJiu5WaZUSes; Fri, 29 Jan 2021 20:25:05 +0000 (UTC)
+	with ESMTP id nPyIVeNrNJ35; Fri, 29 Jan 2021 23:54:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A05B98748C;
-	Fri, 29 Jan 2021 20:25:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 995A4872BA;
+	Fri, 29 Jan 2021 23:54:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C78B51BF3AE
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 20:25:03 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D9F51BF9B2
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 23:54:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BA906204D5
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 20:25:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 682F0872B3
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 23:54:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JUYjhN-rKslj for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 20:25:02 +0000 (UTC)
-X-Greylist: delayed 00:15:29 by SQLgrey-1.7.6
-Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com
- [209.85.160.175])
- by silver.osuosl.org (Postfix) with ESMTPS id 52D6320401
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 20:25:02 +0000 (UTC)
-Received: by mail-qt1-f175.google.com with SMTP id o18so7647102qtp.10
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 12:25:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=yaerobi-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=NnmLK0QuYK5q1OECi1UZh+ESlr4Q56eYy5OG4YOB2mc=;
- b=ruPtmf70+Wnc1fDId6zF7H0AVczBl7ht4P6pxI6F2R65F+ax3UTM59zz06WrgiZJiG
- guQO5GqCQqCluBwwLcGI2+7CSRR+wlpok4/W9/rOrPkJHKm1aGSwXVSseNHcleQr/s2n
- qndH5Q2mZLRaG/718TD1vuCkPYWBerOtAfo5vI1EJzJRjv9DpTvJw6suQXzdaBX1CJFs
- 1s9J7+4AQmsFw4vVz5oN9M5Ml1Kqc2R3QunVSzHc4q5UfYy7LXwDHySU14tKTpmDedeH
- vNp5af3Q4l5jkFrDsFcKwLQciEvqRJPLUs5CSUqN/MTKjEGvlCErx4CExykZVljuX0m/
- VZNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=NnmLK0QuYK5q1OECi1UZh+ESlr4Q56eYy5OG4YOB2mc=;
- b=EP0tJHynSEsWXCcUha297uX9r89bCbIXrjNZBfrU6PXCZmyXeioGXZl2TLRNep+IqE
- STRJNmXfrypFfUQ42ZDrA4nIDNudrooDt6MIRwz6V2vcOFaunwdbzkMpTo2jNosIWml0
- BpTTBV48waVAaQAliAQ4zrKr0Ny1SZyr8mHknkqUQn8AEs/I91gS4rDg9xL1FApAmt+G
- Vp1QKJilUfaJRqLW1iFkc/R/ApE5bUxTXspN/DzC1XMZXzQ1G0wHUQqmznjDjxRAFfkd
- ZJyZCRF+K7ysQuQ/uvBDUoAb5hMZVMMVoY2tHrqYuga9PLumegsGWtBfPsBcCGKxd16F
- p2qg==
-X-Gm-Message-State: AOAM533D0VLX0W5YyLpx66cPhpuQacWjKbrmON6xRsyfJ9SZWsc0l85n
- rDjBWB4YqL2wH/UaqTPGu3E3PWMabZVgIw==
-X-Google-Smtp-Source: ABdhPJxXwVBULwXtR+LUfGxqk26ZRE2SqzkeI4itlU4ZtUJvtmiPPbeicq+RbGwkrVH5kIjB4uAgrw==
-X-Received: by 2002:a37:688e:: with SMTP id d136mr5362234qkc.213.1611950520577; 
- Fri, 29 Jan 2021 12:02:00 -0800 (PST)
-Received: from debian (host15.190-136-155.telecom.net.ar. [190.136.155.15])
- by smtp.gmail.com with ESMTPSA id p22sm6710082qkk.128.2021.01.29.12.01.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 12:02:00 -0800 (PST)
-Date: Fri, 29 Jan 2021 17:01:54 -0300
-From: Emmanuel Arias <eamanu@yaerobi.com>
-To: m.tretter@pengutronix.de, kernel@pengutronix.de, mchehab@kernel.org
-Subject: [PATCH] media: allegro-dvt: Use __packed sentence
-Message-ID: <YBRpstkOi685uHef@debian>
+ with ESMTP id JdzduBfKXxyW for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 23:54:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [185.58.86.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4021186D92
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 23:54:46 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
+ TLS) by relay.mimecast.com with ESMTP id
+ uk-mta-29-6edYh7Y8NwSD3Bzf9GiMrw-1; Fri, 29 Jan 2021 23:54:41 +0000
+X-MC-Unique: 6edYh7Y8NwSD3Bzf9GiMrw-1
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
+ Server (TLS) id 15.0.1347.2; Fri, 29 Jan 2021 23:54:41 +0000
+Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
+ AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
+ Fri, 29 Jan 2021 23:54:41 +0000
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Emmanuel Arias' <eamanu@yaerobi.com>, "m.tretter@pengutronix.de"
+ <m.tretter@pengutronix.de>, "kernel@pengutronix.de" <kernel@pengutronix.de>,
+ "mchehab@kernel.org" <mchehab@kernel.org>
+Subject: RE: [PATCH] media: allegro-dvt: Use __packed sentence
+Thread-Topic: [PATCH] media: allegro-dvt: Use __packed sentence
+Thread-Index: AQHW9nn+Eu7GW6k8EESnigV6OI4+Q6o/RrGQ
+Date: Fri, 29 Jan 2021 23:54:41 +0000
+Message-ID: <63a4ed5c2ef54c09b2df9d6234b68711@AcuMS.aculab.com>
+References: <YBRpstkOi685uHef@debian>
+In-Reply-To: <YBRpstkOi685uHef@debian>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Content-Disposition: inline
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,36 +76,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix coding style using __packed sentece instead of
-__attribute__((__packed__)).
+From: Emmanuel Arias
+> Sent: 29 January 2021 20:02
+> 
+> Fix coding style using __packed sentece instead of
+> __attribute__((__packed__)).
+> 
+> Signed-off-by: Emmanuel Arias <eamanu@yaerobi.com>
+> ---
+>  drivers/staging/media/allegro-dvt/allegro-core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-
+> dvt/allegro-core.c
+> index 9f718f43282b..cee624dac61a 100644
+> --- a/drivers/staging/media/allegro-dvt/allegro-core.c
+> +++ b/drivers/staging/media/allegro-dvt/allegro-core.c
+> @@ -670,7 +670,7 @@ static ssize_t allegro_mbox_read(struct allegro_mbox *mbox,
+>  	struct {
+>  		u16 length;
+>  		u16 type;
+> -	} __attribute__ ((__packed__)) *header;
+> +	} __packed *header;
+>  	struct regmap *sram = mbox->dev->sram;
 
-Signed-off-by: Emmanuel Arias <eamanu@yaerobi.com>
----
- drivers/staging/media/allegro-dvt/allegro-core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Does this actually need to be packed?
+The only reason would be if the structure could exist on a 2n+1
+boundary.
+But that is only likely if part of some binary sequence.
+In which case I'd expect it to be marked __be or __le.
 
-diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
-index 9f718f43282b..cee624dac61a 100644
---- a/drivers/staging/media/allegro-dvt/allegro-core.c
-+++ b/drivers/staging/media/allegro-dvt/allegro-core.c
-@@ -670,7 +670,7 @@ static ssize_t allegro_mbox_read(struct allegro_mbox *mbox,
- 	struct {
- 		u16 length;
- 		u16 type;
--	} __attribute__ ((__packed__)) *header;
-+	} __packed *header;
- 	struct regmap *sram = mbox->dev->sram;
- 	unsigned int head;
- 	ssize_t size;
--- 
-2.29.2
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
 _______________________________________________
 devel mailing list
