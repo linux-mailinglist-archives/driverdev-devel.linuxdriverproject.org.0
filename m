@@ -1,58 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3AB5A308D91
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 20:44:26 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6231308DC9
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 20:52:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 33D982E133;
-	Fri, 29 Jan 2021 19:44:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 15B8687183;
+	Fri, 29 Jan 2021 19:52:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9UG+383RVMXG; Fri, 29 Jan 2021 19:44:22 +0000 (UTC)
+	with ESMTP id co2xQYWW4hVg; Fri, 29 Jan 2021 19:52:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 501392E120;
-	Fri, 29 Jan 2021 19:44:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CBD2187136;
+	Fri, 29 Jan 2021 19:52:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CE7B81C113E
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 19:44:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B6BFF1C1148
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 19:52:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CB3C1874B7
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 19:44:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B250B871EB
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 19:52:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vLxu2cmWJ9Hb for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 19:44:17 +0000 (UTC)
+ with ESMTP id bxO8JXMbe-eu for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 19:52:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8CFCE874BB
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 19:44:17 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BECA164E0E;
- Fri, 29 Jan 2021 19:44:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1F599872C0
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 19:52:06 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5344464E11;
+ Fri, 29 Jan 2021 19:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611949457;
- bh=4uA8DEtVUTJtQbH/lV1yVkqAXtxwx/Ez6Fi4zN699bw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=bwDwxWN9dlLW8RCeaJbDiGTvykIEQAFmxGTJ4EzCQHh3jmZ6l8HB7eq8wN84WL7kh
- iplrCcAa3eo4IAC7NLphJ67WT9JaK2v8VSKjZGLJ8nSpa16kaBWKqTgwWKYclU7/XT
- zE34argo92tLExxnFxmOuJteLxJ7FWBYNo1eDR8T6rddI7RVSS4lT/+NIZ/qe02Xh4
- 2brrzf/hOq/g7W2xjnQ1QcsSjxpHrjh3Tuy7a5YrUGh+gL6ZLG5lew+QuJohP31w4U
- 2FU5+irjD5a8OARqaJF7hHUu64PGcB3tPXmvlVnxvg16L6V/2/f5ICP8iLT5bdG/Kz
- AESy9kGJavL/w==
-Date: Fri, 29 Jan 2021 20:44:12 +0100
+ s=k20201202; t=1611949925;
+ bh=/vAPo6FjDg1j/+87POMJgSj4N2taKZvJjD0FjtW0fYo=;
+ h=From:To:Cc:Subject:Date:From;
+ b=ZGhvLIlIz73Nkqfl2zZL4Z7LG+DGy23xdjh/FTZCjfmFvea9RgrA6ftAZTPxXQHvW
+ ypUh+oe1uxVvENGIz81IagdeTTl7IEdDh5LWmunTH92ZWW/WmqPzFuyrLpUo8lTrol
+ 4DaHKWrS4QthWCwwuvEpZtUqiWb33Ex82Porhgiz54+VKCDzaCpNfjykNLbmyd6R57
+ T72KIW7BmQu1rQgC6xSQT03xbskzHhQrCR/OLo7fsRK+aiPXTozpeBKJ0Ni3pFM+3E
+ eRbciB+GcrY2MDbSVBgqI6YSlqyqTT9tnRmVFho9h3efoErWiYjBWDdYkC7rFHBgnv
+ iwKx8Zf2UFaHA==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1l5ZoI-007Wja-U2; Fri, 29 Jan 2021 20:52:02 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v7 01/14] staging: hikey9xx: spmi driver: convert to regmap
-Message-ID: <20210129204412.25e912a6@coco.lan>
-In-Reply-To: <YBQth03ENuTIp1Rb@kroah.com>
-References: <cover.1611932194.git.mchehab+huawei@kernel.org>
- <8148fe6afb24f91efba22f66472b227aab2ace70.1611932194.git.mchehab+huawei@kernel.org>
- <YBQth03ENuTIp1Rb@kroah.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH v8 00/14] Move Hisilicon 6421v600 SPMI and USB drivers out of
+ staging
+Date: Fri, 29 Jan 2021 20:51:46 +0100
+Message-Id: <cover.1611949675.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -66,50 +68,111 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Lee Jones <lee.jones@linaro.org>,
- linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ YueHaibing <yuehaibing@huawei.com>, Yu Chen <chenyu56@huawei.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
+ Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ linux-arm-kernel@lists.infradead.org, David Gow <davidgow@google.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Alex Dewar <alex.dewar90@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Fri, 29 Jan 2021 16:45:11 +0100
-Greg Kroah-Hartman <gregkh@linuxfoundation.org> escreveu:
+Hi Greg/Mark/Lee/Vinod,
 
-> On Fri, Jan 29, 2021 at 04:03:36PM +0100, Mauro Carvalho Chehab wrote:
-> > Instead of doing its own SPMI I/O implementation, use the
-> > already-existing regmap one.
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > ---
-> >  drivers/staging/hikey9xx/hi6421-spmi-pmic.c   | 115 ++++++------------
-> >  .../staging/hikey9xx/hi6421v600-regulator.c   |  26 ++--
-> >  include/linux/mfd/hi6421-spmi-pmic.h          |   7 +-
-> >  3 files changed, 52 insertions(+), 96 deletions(-)  
-> 
-> After applying this, I get a build failure:
-> 
-> ERROR: modpost: "__devm_regmap_init_spmi_ext" [drivers/staging/hikey9xx/hi6421-spmi-pmic.ko] undefined!
-> 
-> So you need some sort of build dependancy here :(
+Another rebase , also the top of staging-testing.
 
-It seems that it is missing REGMAP_SPMI.
+This series contain the remaining patches for USB to start working,
+except for a final DTS patch.
 
-> Also, when I apply the first 9 patches and stop, I get a build error
-> that you should see as well, so I can't take any of these right now,
-> sorry.
+Patches 1 and 2 convert the SPMI and regulator
+drivers to use regmap and simplifies the logic by using
+regmap helpers.
 
-Gah, there was a rename patch which a hunk that went into the
-following patch. Sorry. 
+Patches 3 to 9 address some issues pointed by Lee at the MFD driver.
 
-Added the missing select REGMAP_SPMI / REGMAP, fixed it and
-tested, patch-per-patch.
+I guess the best would be if Greg could apply patches 1 to 9
+via the staging tree.
 
-I'll run a new test at the hardware to double-check if everything is
-OK at the hardware and should be re-submitting the series soon enough.
+Patches 10 to 13 move the drivers and their corresponding
+DT documentation bindings out of staging.
 
-Thanks,
-Mauro
+Patch 14 contains the DT which describes the regulator,
+SPMI controller and MFD.
+
+I'll submit the final patch with USB bindings after having
+everything set (e.g. after 5.12-rc1).
+
+-
+
+v8: contains a fix for REGMAP dependencies and for a build breakage.
+
+Mauro Carvalho Chehab (14):
+  staging: hikey9xx: spmi driver: convert to regmap
+  staging: hikey9xx: hi6421v600-regulator: use some regmap helpers
+  staging: hikey9xx: hi6421-spmi-pmic: rename some vars
+  staging: hikey9xx: hi6421-spmi-pmic: cleanup probe code
+  staging: hikey9xx: hi6421-spmi-pmic: cleanup header file
+  staging: hikey9xx: hi6421-spmi-pmic: fix IRQ handler code
+  staging: hikey9xx: hi6421-spmi-pmic: cleanup IRQ handling code
+  staging: hikey9xx: hi6421-spmi-pmic: document registers
+  staging: hikey9xx: hi6421-spmi-pmic: update copyright notes
+  phy: phy-hi3670-usb3: move driver from staging into phy
+  spmi: hisi-spmi-controller: move driver from staging
+  mfd: hi6421-spmi-pmic: move driver from staging
+  regulator: hi6421v600-regulator: move it from staging
+  dts: hisilicon: add support for the PMIC found on Hikey 970
+
+ .../mfd}/hisilicon,hi6421-spmi-pmic.yaml      |   0
+ .../bindings/phy/hisilicon,hi3670-usb3.yaml   |   0
+ .../spmi}/hisilicon,hisi-spmi-controller.yaml |   0
+ MAINTAINERS                                   |  24 +-
+ .../boot/dts/hisilicon/hi3670-hikey970.dts    |  22 +-
+ .../boot/dts/hisilicon/hikey970-pmic.dtsi     |  87 +++++
+ drivers/mfd/Kconfig                           |  16 +
+ drivers/mfd/Makefile                          |   1 +
+ drivers/mfd/hi6421-spmi-pmic.c                | 297 ++++++++++++++++
+ drivers/phy/hisilicon/Kconfig                 |  10 +
+ drivers/phy/hisilicon/Makefile                |   1 +
+ .../hisilicon}/phy-hi3670-usb3.c              |   0
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ .../hi6421v600-regulator.c                    |  63 +---
+ drivers/spmi/Kconfig                          |   9 +
+ drivers/spmi/Makefile                         |   1 +
+ .../hikey9xx => spmi}/hisi-spmi-controller.c  |   0
+ drivers/staging/Kconfig                       |   2 -
+ drivers/staging/Makefile                      |   1 -
+ drivers/staging/hikey9xx/Kconfig              |  50 ---
+ drivers/staging/hikey9xx/Makefile             |   7 -
+ drivers/staging/hikey9xx/TODO                 |   5 -
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c   | 326 ------------------
+ include/linux/mfd/hi6421-spmi-pmic.h          |  28 +-
+ 25 files changed, 471 insertions(+), 489 deletions(-)
+ rename {drivers/staging/hikey9xx => Documentation/devicetree/bindings/mfd}/hisilicon,hi6421-spmi-pmic.yaml (100%)
+ rename drivers/staging/hikey9xx/phy-hi3670-usb3.yaml => Documentation/devicetree/bindings/phy/hisilicon,hi3670-usb3.yaml (100%)
+ rename {drivers/staging/hikey9xx => Documentation/devicetree/bindings/spmi}/hisilicon,hisi-spmi-controller.yaml (100%)
+ create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-pmic.dtsi
+ create mode 100644 drivers/mfd/hi6421-spmi-pmic.c
+ rename drivers/{staging/hikey9xx => phy/hisilicon}/phy-hi3670-usb3.c (100%)
+ rename drivers/{staging/hikey9xx => regulator}/hi6421v600-regulator.c (81%)
+ rename drivers/{staging/hikey9xx => spmi}/hisi-spmi-controller.c (100%)
+ delete mode 100644 drivers/staging/hikey9xx/Kconfig
+ delete mode 100644 drivers/staging/hikey9xx/Makefile
+ delete mode 100644 drivers/staging/hikey9xx/TODO
+ delete mode 100644 drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+
+-- 
+2.29.2
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
