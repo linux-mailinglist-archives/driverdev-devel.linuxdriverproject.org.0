@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E24C1308DBD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 20:52:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A73D308DB7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 20:52:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4D48886A61;
-	Fri, 29 Jan 2021 19:52:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4EBFB2E12D;
+	Fri, 29 Jan 2021 19:52:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7l9cFIZjHN3U; Fri, 29 Jan 2021 19:52:12 +0000 (UTC)
+	with ESMTP id 3o1Y54Lu4LFe; Fri, 29 Jan 2021 19:52:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2E6E686A24;
-	Fri, 29 Jan 2021 19:52:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 89E9F2047E;
+	Fri, 29 Jan 2021 19:52:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D235C1C1148
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5FE001C113E
  for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 19:52:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CEEAC86A2D
+ by hemlock.osuosl.org (Postfix) with ESMTP id 58F8587340
  for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 19:52:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7BGNaqEwvQ6T for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 19:52:06 +0000 (UTC)
+ with ESMTP id qhm8kEeX-T1h for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 19:52:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5117886A24
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 19:52:06 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 626F164E16;
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DAD55872BE
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 19:52:05 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 55EA364E12;
  Fri, 29 Jan 2021 19:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611949925;
- bh=7JLtK1ZG6Fg/i5KmUg42DfpdW1WhNDzqH82CShEOGJQ=;
+ bh=9mLiGpXk6bvkY+x4LV/OFvu74lal4nzyr2VPTxZeGVk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=WBDHKe/ZX896ep26XLUYFGFSV3wwfO1AV0TH7Yxo99eIp6tq6pCH00F5RNPskqD3/
- KOq4UUrtU2C9cpPlworWicMar/qjpxqCUXCq3VaC+GMu8x0x1m4aEIXwPjVnNW1UVc
- TTEr1QmOgF4rI93b+iU4pu6tsZB1o6+Ibxa7TcyAYjUNWW9whfxDzJVdcArup3PJNd
- PHJZSxl/GryiCWPKBYbAJGAyj+t6lVrNSVBvomv4hfpcj0oaKzbz4FRXrD1tnXxYMx
- VJgJl8sVPjYXzf5bhH9Jee1LVZwUgsxciPKprP+FHoZoilSQC0khJ8X2g1VuZQTJeN
- szAHihamZ1rgg==
+ b=CJPoslY/cGvuk/BxzdZnfpsdeDjI0BUUu6krvgOwflx1Lc/6RA911p/YSzzazDpQT
+ /XsIl5slMgtcH4qDB1tcJ7kcBp9j5WNDmoginQO42f+XuWkXvjUUYsQjqe++KTv2mN
+ Kbh3XTV+e0iIw0tNBODPOnCxGhy+utn6xjuRHAHwRx4PDdTNcstbbyY8shrkJ0fx01
+ dUnKcxeE0pq9zEu9uz42wIqv/cUgnrv4uw8B6/JUI/crpddIUDd5xZNImObjhu8evm
+ 0CkrM8jYFBsXo1H/qDor/gNSyp2FfDIvz3lzS+Vr6JvfcOfRCXOakdJFY6S37bcW8k
+ O4jFxxfokpOZw==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l5ZoJ-007Wjr-5c; Fri, 29 Jan 2021 20:52:03 +0100
+ id 1l5ZoJ-007Wju-6V; Fri, 29 Jan 2021 20:52:03 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Mark Brown <broonie@kernel.org>, Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v8 08/14] staging: hikey9xx: hi6421-spmi-pmic: document
- registers
-Date: Fri, 29 Jan 2021 20:51:54 +0100
-Message-Id: <10f52ec0a8346fb883245344886c44714c859cd1.1611949675.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v8 09/14] staging: hikey9xx: hi6421-spmi-pmic: update
+ copyright notes
+Date: Fri, 29 Jan 2021 20:51:55 +0100
+Message-Id: <5a86478c8ccb93d3105485b5f16e20e9c12e2196.1611949675.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611949675.git.mchehab+huawei@kernel.org>
 References: <cover.1611949675.git.mchehab+huawei@kernel.org>
@@ -77,83 +77,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Make it clearer about how the IRQ registers are filled by adding
-a table with them, with two macros used to calculate the mask
-register.
+At PMIC subsystem, C89 comments are preferred over C99.
+While here, also update the copyrights of the header file.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 39 +++++++++++++++++----
- 1 file changed, 32 insertions(+), 7 deletions(-)
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 14 +++++++-------
+ include/linux/mfd/hi6421-spmi-pmic.h        |  1 +
+ 2 files changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index f2af1760add9..9c10f7c4e7c9 100644
+index 9c10f7c4e7c9..2301f4fcd48d 100644
 --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
 +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -38,10 +38,6 @@ enum hi6421_spmi_pmic_irq_list {
- 
- #define HISI_IRQ_ARRAY			2
- #define HISI_IRQ_NUM			(HISI_IRQ_ARRAY * 8)
--#define HISI_IRQ_MASK			GENMASK(1, 0)
--
--#define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
--#define SOC_PMIC_IRQ0_ADDR		0x0212
- 
- #define HISI_IRQ_KEY_NUM		0
- 
-@@ -49,6 +45,36 @@ enum hi6421_spmi_pmic_irq_list {
- #define HISI_IRQ_KEY_VALUE		(BIT(POWERKEY_DOWN) | BIT(POWERKEY_UP))
- #define HISI_MASK			GENMASK(HISI_BITS - 1, 0)
- 
+@@ -1,11 +1,11 @@
+ // SPDX-License-Identifier: GPL-2.0
+-//
+-// Device driver for regulators in HISI PMIC IC
+-//
+-// Copyright (c) 2013 Linaro Ltd.
+-// Copyright (c) 2011 Hisilicon.
+-//
+-// Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
 +/*
-+ * The IRQs are mapped as:
++ * Device driver for regulators in HISI PMIC IC
 + *
-+ * 	======================  =============   ============	=====
-+ *	IRQ			MASK REGISTER 	IRQ REGISTER	BIT
-+ * 	======================  =============   ============	=====
-+ *	OTMP			0x0202		0x212		bit 0
-+ *	VBUS_CONNECT		0x0202		0x212		bit 1
-+ *	VBUS_DISCONNECT		0x0202		0x212		bit 2
-+ *	ALARMON_R		0x0202		0x212		bit 3
-+ *	HOLD_6S			0x0202		0x212		bit 4
-+ *	HOLD_1S			0x0202		0x212		bit 5
-+ *	POWERKEY_UP		0x0202		0x212		bit 6
-+ *	POWERKEY_DOWN		0x0202		0x212		bit 7
-+ *
-+ *	OCP_SCP_R		0x0203		0x213		bit 0
-+ *	COUL_R			0x0203		0x213		bit 1
-+ *	SIM0_HPD_R		0x0203		0x213		bit 2
-+ *	SIM0_HPD_F		0x0203		0x213		bit 3
-+ *	SIM1_HPD_R		0x0203		0x213		bit 4
-+ *	SIM1_HPD_F		0x0203		0x213		bit 5
-+ * 	======================  =============   ============	=====
++ * Copyright (c) 2013 Linaro Ltd.
++ * Copyright (c) 2011 Hisilicon.
++ * Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
 + */
-+#define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
-+#define SOC_PMIC_IRQ0_ADDR		0x0212
-+
-+#define IRQ_MASK_REGISTER(irq_data)	(SOC_PMIC_IRQ_MASK_0_ADDR + \
-+					 (irqd_to_hwirq(irq_data) >> 3))
-+#define IRQ_MASK_BIT(irq_data)		BIT(irqd_to_hwirq(irq_data) & 0x07)
-+
- static const struct mfd_cell hi6421v600_devs[] = {
- 	{ .name = "hi6421v600-regulator", },
- };
-@@ -89,13 +115,12 @@ static void hi6421_spmi_irq_mask(struct irq_data *d)
- 	unsigned int data;
- 	u32 offset;
  
--	offset = (irqd_to_hwirq(d) >> HISI_IRQ_MASK);
--	offset += SOC_PMIC_IRQ_MASK_0_ADDR;
-+	offset = IRQ_MASK_REGISTER(d);
- 
- 	spin_lock_irqsave(&ddata->lock, flags);
- 
- 	regmap_read(ddata->regmap, offset, &data);
--	data |= (1 << (irqd_to_hwirq(d) & 0x07));
-+	data |= IRQ_MASK_BIT(d);
- 	regmap_write(ddata->regmap, offset, data);
- 
- 	spin_unlock_irqrestore(&ddata->lock, flags);
+ #include <linux/bitops.h>
+ #include <linux/interrupt.h>
+diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
+index 4d61cb266a18..2660226138b8 100644
+--- a/include/linux/mfd/hi6421-spmi-pmic.h
++++ b/include/linux/mfd/hi6421-spmi-pmic.h
+@@ -4,6 +4,7 @@
+  *
+  * Copyright (c) 2013 Linaro Ltd.
+  * Copyright (C) 2011 Hisilicon.
++ * Copyright (c) 2020-2021 Huawei Technologies Co., Ltd
+  *
+  * Guodong Xu <guodong.xu@linaro.org>
+  */
 -- 
 2.29.2
 
