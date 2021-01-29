@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63E6A3089A9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 16:04:06 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F0093089AA
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 16:04:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CDB59874C1;
-	Fri, 29 Jan 2021 15:04:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MXD3fMk7aXFv; Fri, 29 Jan 2021 15:04:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A74E787484;
+	by silver.osuosl.org (Postfix) with ESMTP id DEDA42E12E;
 	Fri, 29 Jan 2021 15:04:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4evmwjecAvGd; Fri, 29 Jan 2021 15:04:03 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 10BB92E126;
+	Fri, 29 Jan 2021 15:04:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DC2CE1C113E
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D53431BF9D1
  for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 15:03:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D716286944
+ by hemlock.osuosl.org (Postfix) with ESMTP id D204F8748B
  for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 15:03:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gAkAG9aj6JRD for <devel@linuxdriverproject.org>;
+ with ESMTP id zZA5mVl7v5cL for <devel@linuxdriverproject.org>;
  Fri, 29 Jan 2021 15:03:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 416118691A
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 450C6873DC
  for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 15:03:55 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 72B1064E0A;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7BB5E64E0C;
  Fri, 29 Jan 2021 15:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611932634;
- bh=xgX5DeIktFta17uj6BFsKutHrP+N5cRpgUrJoxtkF7Y=;
+ bh=wiKCKGyTVk+pRgyRdpyk+paR7C1IehaYdBx7mwRq1K0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LgZERUS7Lu+X6jCqnkF4cP69SUVkmTpDPj/IncZDc+jDgCRogW2nV9O6XCvNE09Fh
- vadP5meyoBVqyHbD+ts4Z7oO5qeEg1v5vFm1QoCQAgV/pEZIuvvF3ELX4G/T84huIb
- XEjqN0PUPuJQqtuGV6DQpttb0szsFHgUXPyssPzFWZ+5MM7xE6enEgrctMlfQC3kAE
- nNnODXIzBXK9gOhjN2cUnpYRaeKu45b2eVNgcUBx6+fkF3HUOPwwVvkPB6DjJEiOBQ
- pcJWzBe3vi9UaaP0Tw7TvFK7pWY2DCVPc2tf10J8BbACQhHHfSKaIP8328Ok1ADKtP
- ztyrO9LvpEdvQ==
+ b=bcAiRNyJFn+bTfEEfduk2jafmAmtQI7AOmdgTaj4wWfTOrK8UR7XzHLgZ4zLKxmfC
+ xudmymJsXqxFq/9IdaVbjLF6Tx3Ndvwtg+ZMoP79VyjPkoESneKi/jdPZWKouG2DZH
+ ivD3nZ+hUfs2YI4RquGzMQTk1NpefvUBGAsqG/PqAYG4wRl1n1/+qcvuD6yurshlUg
+ 4fTinaGL4gg0gLy/9lV2V9Q4sghyHxuNYy5S7NWQ1kO0lWI+eW6msrhG77IKWvqtNj
+ ydXBnQZYvAhJChq1MfDf43wBLoxlvtE6l5PKJZAqbJkjpfseHhhsJBAF2l8TN3BdaW
+ w4R9t664mzt+w==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1l5VJP-0078tC-TV; Fri, 29 Jan 2021 16:03:51 +0100
+ id 1l5VJP-0078tE-V3; Fri, 29 Jan 2021 16:03:51 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH v7 04/14] staging: hikey9xx: hi6421-spmi-pmic: cleanup probe
- code
-Date: Fri, 29 Jan 2021 16:03:39 +0100
-Message-Id: <6c364007d5a59b9569ace6fbfbdebc95c142d00c.1611932194.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v7 05/14] staging: hikey9xx: hi6421-spmi-pmic: cleanup header
+ file
+Date: Fri, 29 Jan 2021 16:03:40 +0100
+Message-Id: <5cb8f7ca8075202b6de16b3c8bb1bae13e8378a5.1611932194.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1611932194.git.mchehab+huawei@kernel.org>
 References: <cover.1611932194.git.mchehab+huawei@kernel.org>
@@ -68,133 +68,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Mayulong <mayulong1@huawei.com>
+Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleanup the error handling code, making the messages more
-consistent and removing an uneeded call to free_irq().
+Remove the IRQ list from the header, as this is used only
+inside the driver itself. Also, get rid of two unused
+defines.
 
-While here, also remove debug messages and make the
-error messages more consistent.
+The net result is that only struct hi6421_spmi_pmic remains
+on it, as this is used by the regulator driver.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 48 +++++++--------------
- 1 file changed, 15 insertions(+), 33 deletions(-)
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 17 +++++++++++++++++
+ include/linux/mfd/hi6421-spmi-pmic.h        | 20 --------------------
+ 2 files changed, 17 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index a4ffeb06ed6a..56a991ddea1a 100644
+index 56a991ddea1a..1b12464b51b4 100644
 --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
 +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -166,7 +166,6 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 	struct hi6421_spmi_pmic *ddata;
--	struct regmap *map;
- 	unsigned int virq;
- 	int ret, i;
+@@ -17,6 +17,23 @@
+ #include <linux/slab.h>
+ #include <linux/spmi.h>
  
-@@ -174,14 +173,13 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 	if (!ddata)
- 		return -ENOMEM;
++enum hi6421_spmi_pmic_irq_list {
++	OTMP = 0,
++	VBUS_CONNECT,
++	VBUS_DISCONNECT,
++	ALARMON_R,
++	HOLD_6S,
++	HOLD_1S,
++	POWERKEY_UP,
++	POWERKEY_DOWN,
++	OCP_SCP_R,
++	COUL_R,
++	SIM0_HPD_R,
++	SIM0_HPD_F,
++	SIM1_HPD_R,
++	SIM1_HPD_F,
++	PMIC_IRQ_LIST_MAX,
++};
+ /* 8-bit register offset in PMIC */
+ #define HISI_MASK_STATE			0xff
  
--	map = devm_regmap_init_spmi_ext(pdev, &spmi_regmap_config);
--	if (IS_ERR(map))
--		return PTR_ERR(map);
-+	ddata->regmap = devm_regmap_init_spmi_ext(pdev, &regmap_config);
-+	if (IS_ERR(ddata->regmap))
-+		return PTR_ERR(ddata->regmap);
+diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
+index aa8d5382f559..4d61cb266a18 100644
+--- a/include/linux/mfd/hi6421-spmi-pmic.h
++++ b/include/linux/mfd/hi6421-spmi-pmic.h
+@@ -14,9 +14,6 @@
+ #include <linux/irqdomain.h>
+ #include <linux/regmap.h>
  
- 	spin_lock_init(&ddata->lock);
- 
- 	ddata->dev = dev;
--	ddata->regmap = map;
- 
- 	ddata->gpio = of_get_gpio(np, 0);
- 	if (ddata->gpio < 0)
-@@ -192,7 +190,7 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 
- 	ret = devm_gpio_request_one(dev, ddata->gpio, GPIOF_IN, "pmic");
- 	if (ret < 0) {
--		dev_err(dev, "failed to request gpio%d\n", ddata->gpio);
-+		dev_err(dev, "Failed to request gpio%d\n", ddata->gpio);
- 		return ret;
- 	}
- 
-@@ -201,57 +199,41 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 	hi6421_spmi_pmic_irq_prc(ddata);
- 
- 	ddata->irqs = devm_kzalloc(dev, HISI_IRQ_NUM * sizeof(int), GFP_KERNEL);
--	if (!ddata->irqs) {
--		ret = -ENOMEM;
--		goto irq_malloc;
--	}
-+	if (!ddata->irqs)
-+		return -ENOMEM;
- 
- 	ddata->domain = irq_domain_add_simple(np, HISI_IRQ_NUM, 0,
- 					     &hi6421_spmi_domain_ops, ddata);
- 	if (!ddata->domain) {
--		dev_err(dev, "failed irq domain add simple!\n");
--		ret = -ENODEV;
--		goto irq_malloc;
-+		dev_err(dev, "Failed to create IRQ domain\n");
-+		return -ENODEV;
- 	}
- 
- 	for (i = 0; i < HISI_IRQ_NUM; i++) {
- 		virq = irq_create_mapping(ddata->domain, i);
- 		if (!virq) {
--			dev_err(dev, "Failed mapping hwirq\n");
--			ret = -ENOSPC;
--			goto irq_malloc;
-+			dev_err(dev, "Failed to map H/W IRQ\n");
-+			return -ENOSPC;
- 		}
- 		ddata->irqs[i] = virq;
--		dev_dbg(dev, "%s: ddata->irqs[%d] = %d\n",
--			__func__, i, ddata->irqs[i]);
- 	}
- 
- 	ret = request_threaded_irq(ddata->irq, hi6421_spmi_irq_handler, NULL,
- 				   IRQF_TRIGGER_LOW | IRQF_SHARED | IRQF_NO_SUSPEND,
- 				   "pmic", ddata);
- 	if (ret < 0) {
--		dev_err(dev, "could not claim pmic IRQ: error %d\n", ret);
--		goto irq_malloc;
-+		dev_err(dev, "Failed to start IRQ handling thread: error %d\n",
-+			ret);
-+		return ret;
- 	}
- 
- 	dev_set_drvdata(&pdev->dev, ddata);
- 
--	/*
--	 * The logic below will rely that the ddata is already stored at
--	 * drvdata.
--	 */
--	dev_dbg(&pdev->dev, "SPMI-PMIC: adding children for %pOF\n",
--		pdev->dev.of_node);
- 	ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
- 				   hi6421v600_devs, ARRAY_SIZE(hi6421v600_devs),
- 				   NULL, 0, NULL);
--	if (!ret)
--		return 0;
+-#define HISI_ECO_MODE_ENABLE		(1)
+-#define HISI_ECO_MODE_DISABLE		(0)
 -
--	dev_err(dev, "Failed to add child devices: %d\n", ret);
--
--irq_malloc:
--	free_irq(ddata->irq, ddata);
-+	if (ret < 0)
-+		dev_err(dev, "Failed to add child devices: %d\n", ret);
+ struct hi6421_spmi_pmic {
+ 	struct resource				*res;
+ 	struct device				*dev;
+@@ -29,21 +26,4 @@ struct hi6421_spmi_pmic {
+ 	struct regmap				*regmap;
+ };
  
- 	return ret;
- }
+-enum hi6421_spmi_pmic_irq_list {
+-	OTMP = 0,
+-	VBUS_CONNECT,
+-	VBUS_DISCONNECT,
+-	ALARMON_R,
+-	HOLD_6S,
+-	HOLD_1S,
+-	POWERKEY_UP,
+-	POWERKEY_DOWN,
+-	OCP_SCP_R,
+-	COUL_R,
+-	SIM0_HPD_R,
+-	SIM0_HPD_F,
+-	SIM1_HPD_R,
+-	SIM1_HPD_F,
+-	PMIC_IRQ_LIST_MAX,
+-};
+ #endif		/* __HISI_PMIC_H */
 -- 
 2.29.2
 
