@@ -2,57 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12392308743
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 10:12:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14378308753
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jan 2021 10:25:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B3F4487493;
-	Fri, 29 Jan 2021 09:12:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 371028749E;
+	Fri, 29 Jan 2021 09:25:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mIUkh9QSDZAW; Fri, 29 Jan 2021 09:12:17 +0000 (UTC)
+	with ESMTP id XPPum9Fzk4Ly; Fri, 29 Jan 2021 09:25:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4607A8733C;
-	Fri, 29 Jan 2021 09:12:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9DA4387463;
+	Fri, 29 Jan 2021 09:25:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 845A71BF59E
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 09:12:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CFBF71BF59E
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 09:25:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8122A863DC
- for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 09:12:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CC3E586962
+ for <devel@linuxdriverproject.org>; Fri, 29 Jan 2021 09:25:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KVIrFGp9gBLj for <devel@linuxdriverproject.org>;
- Fri, 29 Jan 2021 09:12:14 +0000 (UTC)
+ with ESMTP id zNAcnsYxASE0 for <devel@linuxdriverproject.org>;
+ Fri, 29 Jan 2021 09:25:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6D223863D9
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 09:12:14 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6BEA564E0B;
- Fri, 29 Jan 2021 09:12:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611911534;
- bh=sDa07CcTmuvh6fFsHUJo11UEJc+IuqySVsCH5pe+DEE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=QfxpVK1H8fZYiumW0I4/yxb9EYAFuQWsja8IdLB9yZnXrJrGCIWd4JU4MVbzSyvQc
- nC9kyry5IG4J9utSJpOwfJZDoVazQaYmunbZEQ/8EPcKz4Y0/4lP4PhmhKdBD0SuOt
- zPVU1wz4A5Mrw00DABaLGGm8GHHUCtnYzMxpIGvY=
-Date: Fri, 29 Jan 2021 10:12:11 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 289D38648C
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 09:25:47 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id u67so5872009pfb.3
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 01:25:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=SrJRdML7yk6Qv98s2csu9McFa5qnTY/wVdWlusd7L10=;
+ b=Y+Wwd8qekFFF5f7YGOE9mD8cja3rWji3Y3k43MGeWKHDf4D3AAMW5EHoSw5xDqk7iY
+ iv84vQhN1PNbruzUilGCE6LhsCGr7aCBOfB1oWrDw5opoNjnvu1UDLERLmbEl9lS7r1N
+ i0WvTTfkevSMHmyByIrAAC/IhChySJD0QdZuv11ujBP/EdbyygxkTi/kTGbMWwiMnH3x
+ D4Adt5W9dQmYtcqXuWlOxFd1NoNC4VwWB8vmF+Q25e9E02CibNQ+DdSOCObZWQIoQxMd
+ LbJ6dYfeSfNL3DPLfz7JcqSEnvSGwrYoapJB6cl8xECtAL1ZhpXr0KAx5PLVTb9gg72P
+ JMCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=SrJRdML7yk6Qv98s2csu9McFa5qnTY/wVdWlusd7L10=;
+ b=ioMTNdAgfpB4PWxsc42zS6KPvBoqGNfqty3SZPQEcylG/kldcji+9JfXWmHgVR58Ca
+ 15LfCHwZgINLLwXq3Ts1iBTnxDfh+udSFrzMCuH13SDNq4n03BU5FZBUw36b4xRqJEZc
+ nSj9xzXv/dfGjLIQpe1LTdlgj6stQBiXwJa0buUPFzPEg/FGer3N4AJCYVh+W54J7Gao
+ tRLYmqjxQTLSLYo4dyF1ari+fEIZkWeEZjOjH1QX1euyI476At9ORHVIQqId/uGnEXak
+ VJg026l+nkFVX2dHq95Cjvj0gguVPbtsnk8uRegWEGWPNmNKDm6HjQsw5oo2eXBUTgxa
+ keQg==
+X-Gm-Message-State: AOAM531Ub6t/Z+DfUCq/QWONMTjexvslX0CObW1BD6IizOzsy2/4sy7P
+ TH81f0wyN8f1F5wRYZUCbME=
+X-Google-Smtp-Source: ABdhPJycLTmRmRbNUdbhvyx/esQ5IpI3JJO0bF2QukMBiF4MLzW6U/mU4/B4hYujPe2uc8wD0RZVfQ==
+X-Received: by 2002:a65:6542:: with SMTP id a2mr3835484pgw.148.1611912346702; 
+ Fri, 29 Jan 2021 01:25:46 -0800 (PST)
+Received: from localhost ([2402:3a80:11ea:bf74:a2a4:c5ff:fe20:7222])
+ by smtp.gmail.com with ESMTPSA id t6sm8349421pfe.177.2021.01.29.01.25.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Jan 2021 01:25:46 -0800 (PST)
+Date: Fri, 29 Jan 2021 14:55:43 +0530
+From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [PATCH] staging: qlge/qlge_ethtool.c: strlcpy -> strscpy
-Message-ID: <YBPRa5+rx52RqQtx@kroah.com>
+Message-ID: <20210129092543.tl76sff4mmf6i6s3@apollo>
 References: <20210129064522.97548-1-memxor@gmail.com>
  <YBPBoajKXbKhI7ji@kroah.com>
  <20210129082155.2ob4kokjdjbutdqm@apollo>
  <YBPMnCqlxSDs84qF@kroah.com>
  <20210129090833.o3sdo7drhd4un53z@apollo>
+ <YBPRa5+rx52RqQtx@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210129090833.o3sdo7drhd4un53z@apollo>
+In-Reply-To: <YBPRa5+rx52RqQtx@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,56 +98,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jan 29, 2021 at 02:38:33PM +0530, Kumar Kartikeya Dwivedi wrote:
-> On 0129, Greg Kroah-Hartman wrote:
-> > On Fri, Jan 29, 2021 at 01:51:55PM +0530, Kumar Kartikeya Dwivedi wrote:
-> > > [Forgot to reply-all]
-> > > 
-> > > On 0129, Greg Kroah-Hartman wrote:
-> > > > On Fri, Jan 29, 2021 at 12:15:23PM +0530, Kumar Kartikeya Dwivedi wrote:
-> > > > > Fixes checkpatch warnings for usage of strlcpy.
-> > > > 
-> > > > What warning would that be?
-> > > > 
-> > > 
-> > > 5dbdb2d87c294401a22e6a6002f08ebc9fbea38b
-> > > 
-> > > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5dbdb2d87c294401a22e6a6002f08ebc9fbea38b
-> > 
-> > Hint, in the future, write the above as: 5dbdb2d87c29 ("checkpatch:
-> > prefer strscpy to strlcpy").  The documentation has examples of how to
-> > do this easily.
-> > 
-> > And yes, I know that checkpatch says that, but I need to know how you
-> > know this is the correct change.
-> > 
-> > > > And if we could just search/replace for this, why hasn't that already
-> > > > happened for the whole tree?
-> > > >
-> > > 
-> > > I think that's because it is hard to tell whether truncation is expected at the
-> > > call site or not, so each change needs to be audited manually (to check the
-> > > return value or not). In cases where it's just a safe strcpy, strscpy is a
-> > > relatively better choice (due to not reading the entire source string).
-> > 
-> > Did you do that auditing?  I need to know that you did and that this is
-> > fine, or that maybe, this isn't needed at all?  All of that information
-> > needs to go in the changelog.
+On 0129, Greg Kroah-Hartman wrote:
+> [SNIP] 
+> > Yes, because it's copying the source strings to fixed size buffers in
+> > ethtool_drvinfo, so truncation would be fine here (as it's the driver name and
+> > other identity related stuff).
 > 
-> Yes, because it's copying the source strings to fixed size buffers in
-> ethtool_drvinfo, so truncation would be fine here (as it's the driver name and
-> other identity related stuff).
+> So there is no need to make this change, or it is required to make this
+> change?  I can't tell from your response here.
+> 
 
-So there is no need to make this change, or it is required to make this
-change?  I can't tell from your response here.
+It's marked as deprecated in Documentation/process/deprecated.rst, is
+inefficient, so its usage should be discouraged (and eventually it can be
+dropped from the tree). So yes, this change makes sense. When the return value
+isn't being checked (the caller is ok with truncation), there is no functional
+difference between the two, in addition strscpy avoids a useless strlen call
+internally.  strncpy is not a good candidate (as it doesn't guarantee NUL
+termination), and strcpy is broken anyway. 
 
-> Should I send a v2 with the reason?
+strlcpy is a dangerous API (atleast in kernel context), and introduces cognitive
+overhead on the developer where they need to remember whether the source will
+be valid all the time. strscpy instead only reads up to count bytes.
 
-I've already rejected the first one as being incomplete :)
+When the return value is being checked, it needs to be adpated to the -E2BIG
+negative return code instead. In this case though, that isn't required.
 
-thanks,
+> > Should I send a v2 with the reason?
+> 
+> I've already rejected the first one as being incomplete :)
+> 
+> thanks,
+> 
+> greg k-h
 
-greg k-h
+-- 
+Kartikeya
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
