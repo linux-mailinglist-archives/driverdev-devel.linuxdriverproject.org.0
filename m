@@ -1,59 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 977D83091D9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 05:30:54 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A0A73091E7
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 05:49:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B4811874F7;
-	Sat, 30 Jan 2021 04:30:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1EB11860AE;
+	Sat, 30 Jan 2021 04:49:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NQvuNaeJ670Z; Sat, 30 Jan 2021 04:30:51 +0000 (UTC)
+	with ESMTP id SyxnMtcDjThf; Sat, 30 Jan 2021 04:49:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BD9F4874E9;
-	Sat, 30 Jan 2021 04:30:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 089DE85BC4;
+	Sat, 30 Jan 2021 04:49:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 21CA31BF23B
- for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 04:30:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AFF4C1BF23B
+ for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 04:49:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1D9FF22FB9
- for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 04:30:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A60CF203D9
+ for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 04:49:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HY4K0b340A6N for <devel@linuxdriverproject.org>;
- Sat, 30 Jan 2021 04:30:47 +0000 (UTC)
+ with ESMTP id 4AfRfJV2leXe for <devel@linuxdriverproject.org>;
+ Sat, 30 Jan 2021 04:49:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 1671B20472
- for <devel@driverdev.osuosl.org>; Sat, 30 Jan 2021 04:30:47 +0000 (UTC)
-IronPort-SDR: V7xKbT082SwRc1IflWd6tESWa6y7YhQVOcSl1GqnRkQXfrIKnwnCfN8OasQlDvHdjobDUIosMy
- MfXOXx7t0KcA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="180585296"
-X-IronPort-AV: E=Sophos;i="5.79,387,1602572400"; d="scan'208";a="180585296"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 20:30:46 -0800
-IronPort-SDR: E7ZXt0VOMtl/1seGIhhqbB/3PX3MlmQ/D1LupMv0IaSC6rDbGToRKrM7LYdzgB0dNGgkSPvM+u
- xCZ4h8wdSw3A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,387,1602572400"; d="scan'208";a="410997231"
-Received: from lkp-server02.sh.intel.com (HELO 625d3a354f04) ([10.239.97.151])
- by fmsmga002.fm.intel.com with ESMTP; 29 Jan 2021 20:30:44 -0800
-Received: from kbuild by 625d3a354f04 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l5huF-0004Ho-Vo; Sat, 30 Jan 2021 04:30:43 +0000
-Date: Sat, 30 Jan 2021 12:29:45 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 02bd88b4834d22cedd47f17fbce6cfa66a323287
-Message-ID: <6014e0b9.fF/GdYauAgQ0QGFV%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id F3C611FD7D
+ for <devel@driverdev.osuosl.org>; Sat, 30 Jan 2021 04:49:42 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id d13so6563022plg.0
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 20:49:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=W4ElXu2pfKkjYu5Tw1aWk15MrTDF5YFDL7qh1XByBdU=;
+ b=ulPePdt06VqbRP2Ujk8YwZYWD5dPcMsw0esI2Kr6hHl3kPuXd0V04B5AbW06/iUh2y
+ 3X14k0FOC0gg9t8YTtoKOSq2e6ThnCsNEJ70mbaVC4gCQiUVYwsN7L+r29r0PVtPylXX
+ o5JmE2gfJEG/K7qIyZesI2m/3vTR2RfJgCEkwyrCPgL2Yqi7W89kuV/BYkTWMQqESrRp
+ MwADubfTtYYyqt0V7GOQLATuKMkGmP2nWnCHnKfqFaMH3WHwj8GhPuoIx0V54p1tIZcj
+ 5VGSqtyEqOd1GtazFyUH/Q9B7UVd7sWkoSfMrMHqxW8KG3XazWx/2vabz7LtN4o144mc
+ bhNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=W4ElXu2pfKkjYu5Tw1aWk15MrTDF5YFDL7qh1XByBdU=;
+ b=QXB0Ubmvb9cHK+2g6QKAIAwIV/MpDMtNGWpZEFYsvd4DKwwx0kjCbj0GRdihFEGBf1
+ rGaSC0iNm6pOJ331h/VP0TpBULoDm2WElc8Ptvi6wdYQhcEXP01h0IIGA3HTtWGAE9Mc
+ boQ2MtxaAUixvYimrRB3Qu7q4W+xn5+nSMiTk6/sRqDdM+J8F6AOlb84Wg6W3uBGzYbX
+ 6HacU5hr/DJxzQpcYqL57DCWWn8NV+R0HkOzYwBiJkmRnXnxGKig7/gqsDqsPaolDMh/
+ k96AZKGooRjbEdpGp2L3KUI+jBYwBSM2BMih2Wx43bRn7owyV6f5v0oFidW9b8mjo7Pr
+ 4ouw==
+X-Gm-Message-State: AOAM533aOZgll5AxkQfhEVqYpsth06t/xbs2G3u/ooI9KJ2l5507Httz
+ mXAQwYJ296fWcIt4fugj7Bw=
+X-Google-Smtp-Source: ABdhPJz9rqRji737ivUghrqzFXycVYcDmyKV5BXhRQHvkmQmsOZi5IkJYmQS7gIvAzb9hG43ivNAbw==
+X-Received: by 2002:a17:902:854b:b029:e1:1d90:f299 with SMTP id
+ d11-20020a170902854bb02900e11d90f299mr7130144plo.15.1611982182581; 
+ Fri, 29 Jan 2021 20:49:42 -0800 (PST)
+Received: from localhost ([2402:3a80:11ea:a43c:a2a4:c5ff:fe20:7222])
+ by smtp.gmail.com with ESMTPSA id z201sm5385249pfc.157.2021.01.29.20.49.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Jan 2021 20:49:41 -0800 (PST)
+From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+To: 
+Subject: [PATCH v2] staging: qlge/qlge_ethtool.c: Switch from strlcpy to
+ strscpy
+Date: Sat, 30 Jan 2021 10:18:28 +0530
+Message-Id: <20210130044828.121248-1-memxor@gmail.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,136 +85,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
+ Manish Chopra <manishc@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ memxor@gmail.com, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 02bd88b4834d22cedd47f17fbce6cfa66a323287  staging: qlge: add documentation for debugging qlge
+strlcpy is marked as deprecated in Documentation/process/deprecated.rst,
+and there is no functional difference when the caller expects truncation
+(when not checking the return value). strscpy is relatively better as it
+also avoids scanning the whole source string.
 
-elapsed time: 725m
+This silences the related checkpatch warnings from:
+5dbdb2d87c29 ("checkpatch: prefer strscpy to strlcpy")
 
-configs tested: 106
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm64                               defconfig
-sh                          polaris_defconfig
-ia64                          tiger_defconfig
-arm                            xcep_defconfig
-sparc64                          alldefconfig
-sh                             espt_defconfig
-mips                       capcella_defconfig
-mips                           ci20_defconfig
-riscv                             allnoconfig
-m68k                           sun3_defconfig
-riscv                            allmodconfig
-mips                           ip27_defconfig
-arm                       imx_v6_v7_defconfig
-powerpc                        fsp2_defconfig
-arm                       netwinder_defconfig
-powerpc                 mpc837x_rdb_defconfig
-powerpc                   bluestone_defconfig
-c6x                        evmc6457_defconfig
-mips                             allyesconfig
-sh                          r7785rp_defconfig
-mips                       bmips_be_defconfig
-powerpc                     tqm8548_defconfig
-arm                       imx_v4_v5_defconfig
-sh                          rsk7203_defconfig
-arm                      tct_hammer_defconfig
-powerpc                    mvme5100_defconfig
-sh                           se7712_defconfig
-c6x                        evmc6474_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20210129
-i386                 randconfig-a002-20210129
-i386                 randconfig-a004-20210129
-i386                 randconfig-a005-20210129
-i386                 randconfig-a003-20210129
-i386                 randconfig-a006-20210129
-i386                 randconfig-a005-20210130
-i386                 randconfig-a003-20210130
-i386                 randconfig-a002-20210130
-i386                 randconfig-a001-20210130
-i386                 randconfig-a004-20210130
-i386                 randconfig-a006-20210130
-i386                 randconfig-a013-20210129
-i386                 randconfig-a011-20210129
-i386                 randconfig-a012-20210129
-i386                 randconfig-a016-20210129
-i386                 randconfig-a014-20210129
-i386                 randconfig-a015-20210129
-x86_64               randconfig-a002-20210129
-x86_64               randconfig-a003-20210129
-x86_64               randconfig-a001-20210129
-x86_64               randconfig-a005-20210129
-x86_64               randconfig-a006-20210129
-x86_64               randconfig-a004-20210129
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a012-20210129
-x86_64               randconfig-a015-20210129
-x86_64               randconfig-a016-20210129
-x86_64               randconfig-a011-20210129
-x86_64               randconfig-a013-20210129
-x86_64               randconfig-a014-20210129
-
+Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/staging/qlge/qlge_ethtool.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/qlge/qlge_ethtool.c b/drivers/staging/qlge/qlge_ethtool.c
+index a28f0254c..635d3338f 100644
+--- a/drivers/staging/qlge/qlge_ethtool.c
++++ b/drivers/staging/qlge/qlge_ethtool.c
+@@ -417,15 +417,15 @@ static void ql_get_drvinfo(struct net_device *ndev,
+ {
+ 	struct ql_adapter *qdev = netdev_priv(ndev);
+ 
+-	strlcpy(drvinfo->driver, qlge_driver_name, sizeof(drvinfo->driver));
+-	strlcpy(drvinfo->version, qlge_driver_version,
++	strscpy(drvinfo->driver, qlge_driver_name, sizeof(drvinfo->driver));
++	strscpy(drvinfo->version, qlge_driver_version,
+ 		sizeof(drvinfo->version));
+ 	snprintf(drvinfo->fw_version, sizeof(drvinfo->fw_version),
+ 		 "v%d.%d.%d",
+ 		 (qdev->fw_rev_id & 0x00ff0000) >> 16,
+ 		 (qdev->fw_rev_id & 0x0000ff00) >> 8,
+ 		 (qdev->fw_rev_id & 0x000000ff));
+-	strlcpy(drvinfo->bus_info, pci_name(qdev->pdev),
++	strscpy(drvinfo->bus_info, pci_name(qdev->pdev),
+ 		sizeof(drvinfo->bus_info));
+ }
+ 
+-- 
+2.29.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
