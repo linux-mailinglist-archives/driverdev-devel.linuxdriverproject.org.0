@@ -1,77 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A0A73091E7
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 05:49:48 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1EB11860AE;
-	Sat, 30 Jan 2021 04:49:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SyxnMtcDjThf; Sat, 30 Jan 2021 04:49:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 089DE85BC4;
-	Sat, 30 Jan 2021 04:49:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AFF4C1BF23B
- for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 04:49:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD112309276
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 07:39:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A60CF203D9
- for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 04:49:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C911B204CC;
+	Sat, 30 Jan 2021 06:39:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eSIuQkmhrpFW; Sat, 30 Jan 2021 06:39:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 3C28520477;
+	Sat, 30 Jan 2021 06:39:35 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 981681BF568
+ for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 06:39:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8426C86AEF
+ for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 06:39:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4AfRfJV2leXe for <devel@linuxdriverproject.org>;
- Sat, 30 Jan 2021 04:49:43 +0000 (UTC)
+ with ESMTP id GJQbV4sdw4I3 for <devel@linuxdriverproject.org>;
+ Sat, 30 Jan 2021 06:39:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by silver.osuosl.org (Postfix) with ESMTPS id F3C611FD7D
- for <devel@driverdev.osuosl.org>; Sat, 30 Jan 2021 04:49:42 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id d13so6563022plg.0
- for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 20:49:42 -0800 (PST)
+Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com
+ [209.85.216.51])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9223E86A90
+ for <devel@driverdev.osuosl.org>; Sat, 30 Jan 2021 06:39:31 +0000 (UTC)
+Received: by mail-pj1-f51.google.com with SMTP id gx1so7522889pjb.1
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jan 2021 22:39:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=W4ElXu2pfKkjYu5Tw1aWk15MrTDF5YFDL7qh1XByBdU=;
- b=ulPePdt06VqbRP2Ujk8YwZYWD5dPcMsw0esI2Kr6hHl3kPuXd0V04B5AbW06/iUh2y
- 3X14k0FOC0gg9t8YTtoKOSq2e6ThnCsNEJ70mbaVC4gCQiUVYwsN7L+r29r0PVtPylXX
- o5JmE2gfJEG/K7qIyZesI2m/3vTR2RfJgCEkwyrCPgL2Yqi7W89kuV/BYkTWMQqESrRp
- MwADubfTtYYyqt0V7GOQLATuKMkGmP2nWnCHnKfqFaMH3WHwj8GhPuoIx0V54p1tIZcj
- 5VGSqtyEqOd1GtazFyUH/Q9B7UVd7sWkoSfMrMHqxW8KG3XazWx/2vabz7LtN4o144mc
- bhNA==
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=TANixHB1VghGJvUItmZRy+uLix9/H4aSqcnAzrKjFBE=;
+ b=T4CRyO1szRQ0/ybotrnrWq6fV5wBmc5Oa0bouNJ6DA8t+KkTh452zOK4hqN+tAKE+g
+ SgECaofNxz3i//yrAFtiQo7qdPEPHRSRJsK0fwSSiGscDYxZ/sDIISz3mHuSjpf0eDdY
+ mjay+t0F2sxzBCOwXFC1bg+vTJ90c/TOL/j/ZSPYpv5fZtKz0Np3FfgdjXVFQS4QAJmb
+ RlBvbTOjNm3jd8pYvJYdACiSRg0BRtQ9muhClDFdcfKmfT78vxyY/rRVd+OjCctD9dTP
+ AT9J9LC6AOr7OSFl0jPhhLHXOhS5kvAV7mahZfnCcKZbV/u8d+XIe99uvtSIx4mazpO/
+ Ydug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=W4ElXu2pfKkjYu5Tw1aWk15MrTDF5YFDL7qh1XByBdU=;
- b=QXB0Ubmvb9cHK+2g6QKAIAwIV/MpDMtNGWpZEFYsvd4DKwwx0kjCbj0GRdihFEGBf1
- rGaSC0iNm6pOJ331h/VP0TpBULoDm2WElc8Ptvi6wdYQhcEXP01h0IIGA3HTtWGAE9Mc
- boQ2MtxaAUixvYimrRB3Qu7q4W+xn5+nSMiTk6/sRqDdM+J8F6AOlb84Wg6W3uBGzYbX
- 6HacU5hr/DJxzQpcYqL57DCWWn8NV+R0HkOzYwBiJkmRnXnxGKig7/gqsDqsPaolDMh/
- k96AZKGooRjbEdpGp2L3KUI+jBYwBSM2BMih2Wx43bRn7owyV6f5v0oFidW9b8mjo7Pr
- 4ouw==
-X-Gm-Message-State: AOAM533aOZgll5AxkQfhEVqYpsth06t/xbs2G3u/ooI9KJ2l5507Httz
- mXAQwYJ296fWcIt4fugj7Bw=
-X-Google-Smtp-Source: ABdhPJz9rqRji737ivUghrqzFXycVYcDmyKV5BXhRQHvkmQmsOZi5IkJYmQS7gIvAzb9hG43ivNAbw==
-X-Received: by 2002:a17:902:854b:b029:e1:1d90:f299 with SMTP id
- d11-20020a170902854bb02900e11d90f299mr7130144plo.15.1611982182581; 
- Fri, 29 Jan 2021 20:49:42 -0800 (PST)
-Received: from localhost ([2402:3a80:11ea:a43c:a2a4:c5ff:fe20:7222])
- by smtp.gmail.com with ESMTPSA id z201sm5385249pfc.157.2021.01.29.20.49.41
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=TANixHB1VghGJvUItmZRy+uLix9/H4aSqcnAzrKjFBE=;
+ b=apxQWZ+PJLi2lOhuoj3t4EPC4VrhexJh1ZJW9jbT2dlJglU9D5WTzG0OZgJ6o8omUu
+ UgRbdA/LTxrOvkPHZtBAnsAhNJMJBdVszld3bGTrhNcmjWEVEV2gyqEiXJH9shwMG27k
+ 7FfctAxsGanqxdk5NO4aFCaF4JuuSnO+CnT3hVtEp12rd6aacpSThcQjvJneL70yoCc6
+ G0uSl+ks2vZW27izhcqQsHE+T3FLOseos8TfdyMQBUMGHpoOziCSrUqzYqAll0Ik/zsX
+ U0F/l4iyptl/nQ+7TUTg+JasFSypWXwQqyu6vP/7rr2RPfo++EcjSkP4bepj4tBJcQcR
+ myBg==
+X-Gm-Message-State: AOAM532JreHek5G9052PPsUyN1iRrGJOUFXUh5ZrtaEh0YBh9KHCZy3o
+ 1HnrrPPJiKlOEolMMPVrk78=
+X-Google-Smtp-Source: ABdhPJznlhJCt2LNVfTUGyGHmkAifzTWGztAOXlfqCmGbmi3wonXDaAJr5lCg8Q1B9X5uB6Z8XvqGQ==
+X-Received: by 2002:a17:903:2306:b029:de:18e9:f439 with SMTP id
+ d6-20020a1709032306b02900de18e9f439mr8089143plh.38.1611988771137; 
+ Fri, 29 Jan 2021 22:39:31 -0800 (PST)
+Received: from localhost ([103.220.76.197])
+ by smtp.gmail.com with ESMTPSA id j14sm9083885pjl.35.2021.01.29.22.39.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 20:49:41 -0800 (PST)
-From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-To: 
-Subject: [PATCH v2] staging: qlge/qlge_ethtool.c: Switch from strlcpy to
- strscpy
-Date: Sat, 30 Jan 2021 10:18:28 +0530
-Message-Id: <20210130044828.121248-1-memxor@gmail.com>
-X-Mailer: git-send-email 2.29.2
+ Fri, 29 Jan 2021 22:39:30 -0800 (PST)
+Date: Sat, 30 Jan 2021 14:39:24 +0800
+From: carlis <zhangxuezhi3@gmail.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v12] staging: fbtft: add tearing signal detect
+Message-ID: <20210130143924.00005432@gmail.com>
+In-Reply-To: <CAHp75VcdOibSRuSBZYhFtEcVxuammYMfcnrUQGvS6ttArFxj6g@mail.gmail.com>
+References: <1611838435-151774-1-git-send-email-zhangxuezhi3@gmail.com>
+ <CAHp75Vd=ijxnamuSYuxNLeyhGMCod=HaXWrQ0W0+3QCsQAychg@mail.gmail.com>
+ <20210129130110.00003bb1@gmail.com>
+ <CAHp75Vdi4H_zY3+QPSq_wmdf20B9xPeqsOT10JHfMLJESX77gA@mail.gmail.com>
+ <20210129215638.000047b0@gmail.com>
+ <CAHp75VcdOibSRuSBZYhFtEcVxuammYMfcnrUQGvS6ttArFxj6g@mail.gmail.com>
+Organization: Tyzmig-ryrjum-8kedto
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,54 +92,422 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- Manish Chopra <manishc@marvell.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- memxor@gmail.com, netdev@vger.kernel.org
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ "open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>,
+ Deepak R Varma <mh12gx2825@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ oliver.graute@kococonnector.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Stefano Brivio <sbrivio@redhat.com>, Colin King <colin.king@canonical.com>,
+ zhangxuezhi1@yulong.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-strlcpy is marked as deprecated in Documentation/process/deprecated.rst,
-and there is no functional difference when the caller expects truncation
-(when not checking the return value). strscpy is relatively better as it
-also avoids scanning the whole source string.
+On Fri, 29 Jan 2021 16:26:12 +0200
+Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
 
-This silences the related checkpatch warnings from:
-5dbdb2d87c29 ("checkpatch: prefer strscpy to strlcpy")
+> On Fri, Jan 29, 2021 at 3:56 PM carlis <zhangxuezhi3@gmail.com> wrote:
+> > On Fri, 29 Jan 2021 12:23:08 +0200
+> > Andy Shevchenko <andy.shevchenko@gmail.com> wrote:  
+> 
+> We are almost there, I have no idea what Noralf or others are going to
+> say though.
+> 
+> ...
+> 
+> > Hi, I apologize for what I said in the previous two emails. I missed
+> > one email you sent before, and now I probably understand what you
+> > meant. Here is a version I modified according to your suggestion:
+> >
+> > From 399e7fb91d1dcba4924cd38cc8283393c80b97e4 Mon Sep 17 00:00:00
+> > 2001 From: Carlis <zhangxuezhi1@yulong.com>
+> > Date: Sun, 24 Jan 2021 22:43:21 +0800
+> > Subject: [PATCH v13] staging: fbtft: add tearing signal detect
+> >
+> > For st7789v IC,when we need continuous full screen refresh, it is
+> > best  
+> 
+> Missed space after comma.
+> 
+> > to wait for the tearing effect line signal arrive to avoid screen  
+> 
+> to arrive
+> 
+> > tearing.  
+> 
+> ...
+> 
+> > +#define PANEL_TE_TIMEOUT_MS  34 /* 60Hz for 16.6ms, configured as
+> > 2*16.6ms */ +  
+> 
+> Move comment before the definition
+> /* comment */
+> #define DEFINITION
+> 
+> Also consider to use 33 ms as closest to what you mentioned in the
+> comment. Or leave it with mention that you are using ceil() value.
+> 
+> ...
+> 
+> > +/**
+> > + * init_tearing_effect_line() - init tearing effect line  
+> 
+> > + *  
+> 
+> As per a few previous reviews.
+> Okay, I have noticed that the existing kernel-doc is written like
+> this, but it doesn't prevent you from avoiding this little mistake.
+> 
+> > + * @par: FBTFT parameter object
+> > + *
+> > + * Return: 0 on success, or a negative error code otherwise.
+> > + */
+> > +static int init_tearing_effect_line(struct fbtft_par *par)
+> > +{
+> > +       struct device *dev = par->info->device;
+> > +       struct gpio_desc *te;
+> > +       int rc;
+> > +
+> > +       te = gpiod_get_optional(dev, "te", GPIOD_IN);
+> > +       if (IS_ERR(te))
+> > +               return dev_err_probe(dev, PTR_ERR(te), "Failed to
+> > request te GPIO\n"); +  
+> 
+> Below is okay, but needs a comment explaining why we return a success.
+> 
+> > +       if (!te)
+> > +               return 0;
+> > +
+> > +       par->irq_te = gpiod_to_irq(te);
+> > +
+> > +       /* GPIO is locked as an IRQ, we may drop the reference */
+> > +       gpiod_put(te);
+> > +
+> > +       if (par->irq_te < 0)
+> > +               return par->irq_te;  
+> 
+> I recommend using a temporary variable. In such a case you won't need
+> to specifically check for negative error code. So, something like
+> 
+> int irq;
+> 
+> irq = ...
+> 
+> if (irq < 0)
+>   return irq;
+> 
+> ->irq_te = irq;  
+> 
+> > +       init_completion(&par->panel_te);
+> > +       rc = devm_request_irq(dev, par->irq_te, panel_te_handler,
+> > +                             IRQF_TRIGGER_RISING, "TE_GPIO", par);
+> >  
+> 
+> Right. Now it needs a comment explaining the choice of rising edge
+> type of IRQ.
+> 
+> > +       if (rc)
+> > +               return dev_err_probe(dev, rc, "TE IRQ request
+> > failed.\n"); +
+> > +       disable_irq_nosync(par->irq_te);
+> > +
+> > +       return 0;
+> > +}  
+> 
+> ...
+> 
+> > +       rc = init_tearing_effect_line(par);  
+> 
+> > +       if (rc < 0)  
+> 
+> Here is no need to specifically check against less than 0,
+>   if (ret)
+> will work nicely.
+> 
+> > +               return rc;  
+> 
+> ...
+> 
+> > +       if (par->irq_te)
+> > +               write_reg(par, MIPI_DCS_SET_TEAR_ON, 0x00);  
+> 
+> Do you need to call MIPI_DCS_SET_TEAR_SCANLINE in this case?
+> 
+Hi, TE line output is off by default when powering on, and I use
+Qualcomm SDX55 chip, SPI top speed is only 50MHz, its data transmission
+speed( It takes about 24ms to transmit a frame) is slower than 60Hz
+refresh(a frame only need 16.6ms), so i think there is no need to call
+MIPI_DCS_SET_TEAR_SCANLINE 
 
-Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> Alos, when there is no IRQ, shouldn't we explicitly call
+>                write_reg(par, MIPI_DCS_SET_TEAR_OFF);
+> ?
+> 
+> ...
+> 
+> >  /**
+> > + * st7789v_write_vmem16_bus8() - write data to display  
+> 
+> > + *  
+> 
+> Redundant.
+> 
+> > + * @par: FBTFT parameter object
+> > + * @offset: offset from screen_buffer
+> > + * @len: the length of data to be written
+> > + *  
+> 
+> > + * 16 bit pixel over 8-bit databus  
+> 
+> Write 16-bit pixels over 8-bit data bus.
+> 
+> > + * Return: 0 on success, or a negative error code otherwise.
+> > + */  
+> 
+> ...
+> 
+> > +       if (par->irq_te) {
+> > +               enable_irq(par->irq_te);
+> > +               reinit_completion(&par->panel_te);
+> > +               ret = wait_for_completion_timeout(&par->panel_te,
+> > +
+> > msecs_to_jiffies(PANEL_TE_TIMEOUT_MS));
+> > +               if (ret == 0)
+> > +                       dev_err(dev, "wait panel TE time out\n");  
+> 
+> timeout
+> 
+> > +
+> > +               disable_irq(par->irq_te);
+> > +       }  
+> 
+> ...
+> 
+> > + * @panel_te: completion for panel te line  
+> 
+> TE line
+> 
+> > + * @irq_te: LCD Chip tearing effect line  
+> 
+> "Linux IRQ for LCD..."
+> 
+
+hi, i modify new below:
+
+From b65fc2bfbe123defc8ec838601a9c12707f70c53 Mon Sep 17 00:00:00 2001
+From: Carlis <zhangxuezhi1@yulong.com>
+Date: Sun, 24 Jan 2021 22:43:21 +0800
+Subject: [PATCH v13] staging: fbtft: add tearing signal detect
+
+For st7789v IC, when we need continuous full screen refresh, it is best
+to wait for the tearing effect line signal to arrive to avoid screen
+tearing.
+
+Signed-off-by: Carlis <zhangxuezhi1@yulong.com>
 ---
- drivers/staging/qlge/qlge_ethtool.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+v13: change TE completion to par data struct member and add a new
+     function to deal te gpio request, move wait logic to
+fbtft_write_vmem16_bus8. v12: change dev_err to dev_err_probe and add
+space in comments start, and delete te_mutex, change te wait logic.
+v11: remove devm_gpio_put and change a dev_err to dev_info.
+v10: additional notes.
+v9: change pr_* to dev_*.
+v8: delete a log line.
+v7: return error value when request fail.
+v6: add te gpio request fail deal logic.
+v5: fix log print.
+v4: modify some code style and change te irq set function name.
+v3: modify author and signed-off-by name.
+v2: add release te gpio after irq request fail.
+---
+ drivers/staging/fbtft/fb_st7789v.c | 64
+++++++++++++++++++++++++++++++++++++++
+drivers/staging/fbtft/fbtft-bus.c  | 20 ++++++++++--
+drivers/staging/fbtft/fbtft.h      |  5 +++ 3 files changed, 87
+insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge_ethtool.c b/drivers/staging/qlge/qlge_ethtool.c
-index a28f0254c..635d3338f 100644
---- a/drivers/staging/qlge/qlge_ethtool.c
-+++ b/drivers/staging/qlge/qlge_ethtool.c
-@@ -417,15 +417,15 @@ static void ql_get_drvinfo(struct net_device *ndev,
+diff --git a/drivers/staging/fbtft/fb_st7789v.c
+b/drivers/staging/fbtft/fb_st7789v.c index 3a280cc..695dcac 100644
+--- a/drivers/staging/fbtft/fb_st7789v.c
++++ b/drivers/staging/fbtft/fb_st7789v.c
+@@ -7,9 +7,13 @@
+ 
+ #include <linux/bitops.h>
+ #include <linux/delay.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/init.h>
+ #include <linux/kernel.h>
++#include <linux/interrupt.h>
++#include <linux/completion.h>
+ #include <linux/module.h>
++
+ #include <video/mipi_display.h>
+ 
+ #include "fbtft.h"
+@@ -66,6 +70,56 @@ enum st7789v_command {
+ #define MADCTL_MX BIT(6) /* bitmask for column address order */
+ #define MADCTL_MY BIT(7) /* bitmask for page address order */
+ 
++static irqreturn_t panel_te_handler(int irq, void *data)
++{
++	struct fbtft_par *par = (struct fbtft_par *)data;
++
++	complete(&par->panel_te);
++	return IRQ_HANDLED;
++}
++
++/*
++ * init_tearing_effect_line() - init tearing effect line.
++ * @par: FBTFT parameter object.
++ *
++ * Return: 0 on success, or a negative error code otherwise.
++ */
++static int init_tearing_effect_line(struct fbtft_par *par)
++{
++	struct device *dev = par->info->device;
++	struct gpio_desc *te;
++	int rc, irq;
++
++	te = gpiod_get_optional(dev, "te", GPIOD_IN);
++	if (IS_ERR(te))
++		return dev_err_probe(dev, PTR_ERR(te), "Failed to
+request te GPIO\n"); +
++	/* if te is NULL, indicating no configuration, directly return
+success */
++	if (!te)
++		return 0;
++
++	irq = gpiod_to_irq(te);
++
++	/* GPIO is locked as an IRQ, we may drop the reference */
++	gpiod_put(te);
++
++	if (irq < 0)
++		return irq;
++
++	par->irq_te = irq;
++	init_completion(&par->panel_te);
++
++	/* The effective state is high and lasts no more than 1000
+microseconds */
++	rc = devm_request_irq(dev, par->irq_te, panel_te_handler,
++			      IRQF_TRIGGER_RISING, "TE_GPIO", par);
++	if (rc)
++		return dev_err_probe(dev, rc, "TE IRQ request
+failed.\n"); +
++	disable_irq_nosync(par->irq_te);
++
++	return 0;
++}
++
+ /**
+  * init_display() - initialize the display controller
+  *
+@@ -82,6 +136,12 @@ enum st7789v_command {
+  */
+ static int init_display(struct fbtft_par *par)
  {
- 	struct ql_adapter *qdev = netdev_priv(ndev);
++	int rc;
++
++	rc = init_tearing_effect_line(par);
++	if (rc)
++		return rc;
++
+ 	/* turn off sleep mode */
+ 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
+ 	mdelay(120);
+@@ -137,6 +197,10 @@ static int init_display(struct fbtft_par *par)
+ 	 */
+ 	write_reg(par, PWCTRL1, 0xA4, 0xA1);
  
--	strlcpy(drvinfo->driver, qlge_driver_name, sizeof(drvinfo->driver));
--	strlcpy(drvinfo->version, qlge_driver_version,
-+	strscpy(drvinfo->driver, qlge_driver_name, sizeof(drvinfo->driver));
-+	strscpy(drvinfo->version, qlge_driver_version,
- 		sizeof(drvinfo->version));
- 	snprintf(drvinfo->fw_version, sizeof(drvinfo->fw_version),
- 		 "v%d.%d.%d",
- 		 (qdev->fw_rev_id & 0x00ff0000) >> 16,
- 		 (qdev->fw_rev_id & 0x0000ff00) >> 8,
- 		 (qdev->fw_rev_id & 0x000000ff));
--	strlcpy(drvinfo->bus_info, pci_name(qdev->pdev),
-+	strscpy(drvinfo->bus_info, pci_name(qdev->pdev),
- 		sizeof(drvinfo->bus_info));
- }
++	/* TE line output is off by default when powering on */
++	if (par->irq_te)
++		write_reg(par, MIPI_DCS_SET_TEAR_ON, 0x00);
++
+ 	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
  
+ 	if (HSD20_IPS)
+diff --git a/drivers/staging/fbtft/fbtft-bus.c
+b/drivers/staging/fbtft/fbtft-bus.c index 63c65dd..5bc2fff 100644
+--- a/drivers/staging/fbtft/fbtft-bus.c
++++ b/drivers/staging/fbtft/fbtft-bus.c
+@@ -2,9 +2,15 @@
+ #include <linux/export.h>
+ #include <linux/errno.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/interrupt.h>
++#include <linux/completion.h>
+ #include <linux/spi/spi.h>
++
+ #include "fbtft.h"
+ 
++/* 60Hz for 16.6ms, configured as 2*16.6ms */
++#define PANEL_TE_TIMEOUT_MS  33
++
+ /*****************************************************************************
+  *
+  *   void (*write_reg)(struct fbtft_par *par, int len, ...);
+@@ -135,8 +141,18 @@ int fbtft_write_vmem16_bus8(struct fbtft_par *par,
+size_t offset, size_t len) remain = len / 2;
+ 	vmem16 = (u16 *)(par->info->screen_buffer + offset);
+ 
+-	if (par->gpio.dc)
+-		gpiod_set_value(par->gpio.dc, 1);
++	gpiod_set_value(par->gpio.dc, 1);
++
++	if (par->irq_te) {
++		enable_irq(par->irq_te);
++		reinit_completion(&par->panel_te);
++		ret = wait_for_completion_timeout(&par->panel_te,
++
+msecs_to_jiffies(PANEL_TE_TIMEOUT_MS));
++		if (ret == 0)
++			dev_err(par->info->device, "wait panel TE
+timeout\n"); +
++		disable_irq(par->irq_te);
++	}
+ 
+ 	/* non buffered write */
+ 	if (!par->txbuf.buf)
+diff --git a/drivers/staging/fbtft/fbtft.h
+b/drivers/staging/fbtft/fbtft.h index 76f8c09..61c7207 100644
+--- a/drivers/staging/fbtft/fbtft.h
++++ b/drivers/staging/fbtft/fbtft.h
+@@ -8,6 +8,7 @@
+ #include <linux/spinlock.h>
+ #include <linux/spi/spi.h>
+ #include <linux/platform_device.h>
++#include <linux/completion.h>
+ 
+ #define FBTFT_ONBOARD_BACKLIGHT 2
+ 
+@@ -165,6 +166,8 @@ struct fbtft_platform_data {
+  *             Format: 6 bit Device id + RS bit + RW bit
+  * @fbtftops: FBTFT operations provided by driver or device
+(platform_data)
+  * @dirty_lock: Protects dirty_lines_start and dirty_lines_end
++ * @panel_te: completion for panel TE line
++ * @irq_te: Linux IRQ for LCD TE line
+  * @dirty_lines_start: Where to begin updating display
+  * @dirty_lines_end: Where to end updating display
+  * @gpio.reset: GPIO used to reset display
+@@ -203,6 +206,8 @@ struct fbtft_par {
+ 	u8 startbyte;
+ 	struct fbtft_ops fbtftops;
+ 	spinlock_t dirty_lock;
++	struct completion panel_te;
++	int irq_te;
+ 	unsigned int dirty_lines_start;
+ 	unsigned int dirty_lines_end;
+ 	struct {
 -- 
-2.29.2
+1.9.1
 
+regards,
+Carlis 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
