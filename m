@@ -1,68 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37360309762
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 18:45:30 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A8B5309764
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jan 2021 18:54:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A8491204E4;
-	Sat, 30 Jan 2021 17:45:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 252EB87260;
+	Sat, 30 Jan 2021 17:54:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xXZuBPC61kYS; Sat, 30 Jan 2021 17:45:26 +0000 (UTC)
+	with ESMTP id QTKTe7EwzqAv; Sat, 30 Jan 2021 17:54:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 268B020451;
-	Sat, 30 Jan 2021 17:45:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 82A2F87231;
+	Sat, 30 Jan 2021 17:54:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 56DD71BF4D7
- for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 17:45:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9CC541BF4D7
+ for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 17:54:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 539DF85F50
- for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 17:45:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 926D3869A7
+ for <devel@linuxdriverproject.org>; Sat, 30 Jan 2021 17:54:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EkTXI4YdUFJT for <devel@linuxdriverproject.org>;
- Sat, 30 Jan 2021 17:45:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sender4-of-o58.zoho.com (sender4-of-o58.zoho.com
- [136.143.188.58])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4714C85F4E
- for <devel@driverdev.osuosl.org>; Sat, 30 Jan 2021 17:45:23 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; t=1612028720; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=ROtYQKvyAxwgVdxRFZSAFRT+id4kjhGpJ6hiOx0FXm047cVIWW367SlGQChjagiGJeSqhgsv5U7lYErkEUCPATnUXP9S7cns59tXVo+wjAcFFSfVmhuGkcA51oBNXB8hDiYAb2aqw7iJ6wQ2uXFGGwgVyV1R7wWhmZhyRNcEWNQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1612028720;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To;
- bh=BHv+Hneu4LE0XcH8i0NN7VhsQrUX+zXk04pk3HGBn/U=; 
- b=aiuc//wdtaMd+sxmgeEfhvr7I6CbEgDtBLCFeLdluu6mIHb832WlCwTcrJe1QvBEC1r/yIjng4vWmXcELg2jE1qu/rGOXHFNwRFXBwQo95UgU/Q/IKujUa/Q4n2waDMuPQNLVbUt7WGrirF+LYS270muvFI63wZCkdatm3ceGWQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=anirudhrb.com;
- spf=pass  smtp.mailfrom=mail@anirudhrb.com;
- dmarc=pass header.from=<mail@anirudhrb.com> header.from=<mail@anirudhrb.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1612028720; 
- s=zoho; d=anirudhrb.com; i=mail@anirudhrb.com;
- h=From:To:Cc:Message-ID:Subject:Date:MIME-Version:Content-Transfer-Encoding:Content-Type;
- bh=BHv+Hneu4LE0XcH8i0NN7VhsQrUX+zXk04pk3HGBn/U=;
- b=PwdvtaUiecRKt0qgagHWwkTbXHUJQFUxwvJkAI/hNNvV5CC+xs5yYi8RArkO626w
- 77ToEDGATVYZAP/y7GCBw1oJYHLrExkWuaShYdZTCgeCtWYDQkfZIikLfKPpokjegp5
- k0A5oN+NECb0/CZIlzw68PdN9OTEWbsyKBjtNhHU=
-Received: from localhost.localdomain (106.51.111.98 [106.51.111.98]) by
- mx.zohomail.com with SMTPS id 1612028718065671.0814556597444;
- Sat, 30 Jan 2021 09:45:18 -0800 (PST)
-From: Anirudh Rayabharam <mail@anirudhrb.com>
-To: gregkh@linuxfoundation.org, johannes@sipsolutions.net, arnd@arndb.de,
- kuba@kernel.org
-Message-ID: <20210130174454.11810-1-mail@anirudhrb.com>
-Subject: [PATCH v2] staging: wimax/i2400m: fix pointer declaration style
-Date: Sat, 30 Jan 2021 23:14:54 +0530
-X-Mailer: git-send-email 2.26.2
+ with ESMTP id zCoZ+F-TAPQg for <devel@linuxdriverproject.org>;
+ Sat, 30 Jan 2021 17:54:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sipsolutions.net (s3.sipsolutions.net [144.76.43.62])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BC949868C5
+ for <devel@driverdev.osuosl.org>; Sat, 30 Jan 2021 17:54:25 +0000 (UTC)
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94) (envelope-from <johannes@sipsolutions.net>)
+ id 1l5uRv-00Diei-KX; Sat, 30 Jan 2021 18:54:19 +0100
+Message-ID: <fe92d9783a3cde70cab41f12ef7fda65b8a74b60.camel@sipsolutions.net>
+Subject: Re: [PATCH v2] staging: wimax/i2400m: fix pointer declaration style
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Anirudh Rayabharam <mail@anirudhrb.com>, gregkh@linuxfoundation.org, 
+ arnd@arndb.de, kuba@kernel.org
+Date: Sat, 30 Jan 2021 18:54:18 +0100
+In-Reply-To: <20210130174454.11810-1-mail@anirudhrb.com>
+References: <20210130174454.11810-1-mail@anirudhrb.com>
+User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
-X-ZohoMailClient: External
+X-malware-bazaar: not-scanned
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,48 +58,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Anirudh Rayabharam <mail@anirudhrb.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix a couple of pointer declarations where the pointer qualifier '*'
-is not attached to the variable name. This fixes the checkpatch
-error: "foo * bar" should be "foo *bar".
+On Sat, 2021-01-30 at 23:14 +0530, Anirudh Rayabharam wrote:
+> Fix a couple of pointer declarations where the pointer qualifier '*'
+> is not attached to the variable name. This fixes the checkpatch
+> error: "foo * bar" should be "foo *bar".
 
-Signed-off-by: Anirudh Rayabharam <mail@anirudhrb.com>
----
-v2: Minor corrections in the commit message.
----
- drivers/staging/wimax/i2400m/rx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This driver is in staging to get deleted unless somebody really wants to
+step up and maintain wimax, so there's no point in fixing up whitespace.
 
-diff --git a/drivers/staging/wimax/i2400m/rx.c b/drivers/staging/wimax/i2400m/rx.c
-index c9fb619a9e01..5b3a85035f6a 100644
---- a/drivers/staging/wimax/i2400m/rx.c
-+++ b/drivers/staging/wimax/i2400m/rx.c
-@@ -819,7 +819,7 @@ void i2400m_roq_reset(struct i2400m *i2400m, struct i2400m_roq *roq)
-  */
- static
- void i2400m_roq_queue(struct i2400m *i2400m, struct i2400m_roq *roq,
--		      struct sk_buff * skb, unsigned lbn)
-+		      struct sk_buff *skb, unsigned lbn)
- {
- 	struct device *dev = i2400m_dev(i2400m);
- 	unsigned nsn, len;
-@@ -882,7 +882,7 @@ void i2400m_roq_update_ws(struct i2400m *i2400m, struct i2400m_roq *roq,
-  */
- static
- void i2400m_roq_queue_update_ws(struct i2400m *i2400m, struct i2400m_roq *roq,
--				struct sk_buff * skb, unsigned sn)
-+				struct sk_buff *skb, unsigned sn)
- {
- 	struct device *dev = i2400m_dev(i2400m);
- 	unsigned nsn, old_ws, len;
--- 
-2.26.2
-
+johannes
 
 _______________________________________________
 devel mailing list
