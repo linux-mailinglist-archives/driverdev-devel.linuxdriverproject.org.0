@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0B6B309E11
-	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jan 2021 18:32:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EFBC309E13
+	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jan 2021 18:32:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E12885A00;
-	Sun, 31 Jan 2021 17:32:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 482BD858B3;
+	Sun, 31 Jan 2021 17:32:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 26pVI1pRNTJO; Sun, 31 Jan 2021 17:32:43 +0000 (UTC)
+	with ESMTP id 7MDdXspLUt3h; Sun, 31 Jan 2021 17:32:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B70385C06;
-	Sun, 31 Jan 2021 17:32:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1EAFE858A6;
+	Sun, 31 Jan 2021 17:32:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 439AD1BF3DD
- for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 839FA1BF3DD
+ for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3C71186F72
- for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7DFF181C80
+ for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 82NZufm5TpBe for <devel@linuxdriverproject.org>;
- Sun, 31 Jan 2021 17:32:39 +0000 (UTC)
+ with ESMTP id IWvYw2Ne5Iph for <devel@linuxdriverproject.org>;
+ Sun, 31 Jan 2021 17:32:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C2120857A2
- for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 17:32:39 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id q2so8671994plk.4
- for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 09:32:39 -0800 (PST)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0EE7F857A2
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 17:32:49 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id r38so10405815pgk.13
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 09:32:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UATS+ZdWIHunyokeUQ2KzApxYEhPMU9QywnIQp+k1xo=;
- b=b9PXwhx5E5wwbmXTP1RC5Fki7Zw2VLqiM/m2UxK1wU8m1BcPsvMcbEoZKi8Jo/UQfo
- row6SlwsGQ4BvNwDVIFQKQ/exYO3s1SXu5odFHUWe5KJyKgB3MdlNG4erlIsz0qCCsKl
- mWVsToJ0LPw8Jz4M7lkZxQtrfefC0w4E9v94Z8g+fQoBFJWMp5LIJg7kn1zkr+a/kmIX
- OS6IXKIRgJ0Z6rRVCw55ShwQemSUKLOnG27rkeZv06XzlINdBPCLpuk0AsGiO8EDQq7t
- DNrGOEj9pmVX5fRmfrorZSbIo7rwnLgXNjJrVAgsXk6dQZJErelCE7Teavl1RfklKb3o
- Zo8Q==
+ bh=mo0+brrhGMjJednSGVa7WEJAUXKYi42r2CVW4s4Y5xs=;
+ b=QAkz1tON5iYvjkr2NHcgpozTGPVoPfYRL4IL0BfDh3zUuFMq5MAc0McwM/O6fZxYTx
+ 4Ox6Wp+bygqNnDl+e1e+XZOK8Cn9ZXwWO0yGKqt7AY0w64FQcDxXGdKMjfqfYY7Wcpir
+ qTdPyjnOjGe/hr+t+2gSz6alaE01d7BUa4KwH6+1ZGajL0RoAVzxsrJ7L//OQWb7U5ZR
+ IbbUp31V3HHVm0+gA4trWkKa4jjz7KCsKnILVQNDMBRNjT/IX6/jth0aCQIM44Vn5WBE
+ ZLCisAIdk8IokOJ7qhqv32Rof2XzRSOSCJ00916W7BF1hKgKTiADIs5mFPy+JeqHJ5vu
+ Bgbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UATS+ZdWIHunyokeUQ2KzApxYEhPMU9QywnIQp+k1xo=;
- b=Z9eULKObqZta9QUvYgVcwdSi/nDZGyZ0COgCWwTGWuSbcDQzg/GPu2wyGo8w4TkC30
- WajPpw9QjH+S+fzjOYwwBu3u/DP4a3EDH+jvIm2TmDXYCeugeE78Wsaph7+wnakVlqp9
- A6eCscIZNYwEoAijlIjPct+KN6xZhQh5hyqNsYqId7tX5vdXiA+rOllj5u3miDv1kVe+
- a6GilCkTW5CoJhfkQ0yQwA8KrGjvJe4+10FFkAGbeAv/OuvdGyruX1k4vvtChJhAtJSC
- 1cnIcXezYoVBKg0i7GO95o5/H6Mgy45T7xxggpUm1PFGvpgs3njCawVnci4qckIDsthw
- fClw==
-X-Gm-Message-State: AOAM530layTA58sI73GnuwUrEuDw1mSwUW/IoLci0JV2D/+DdZrbw/Xw
- rAWzHHr6C9ynnfBcESlWz4QyeOW00WceNg==
-X-Google-Smtp-Source: ABdhPJxtoGANsdEpKKge2o/29AN1E8VfPfLdlwcKVddQbVKTDT3+km65hFEkM3txwdasUFD8QbEDvQ==
-X-Received: by 2002:a17:90a:778b:: with SMTP id
- v11mr13218923pjk.61.1612114358345; 
- Sun, 31 Jan 2021 09:32:38 -0800 (PST)
+ bh=mo0+brrhGMjJednSGVa7WEJAUXKYi42r2CVW4s4Y5xs=;
+ b=Xhu+dLSuWHE1lke96F7jKf8zmIg9YZwY4vGpqv6XUnEMPfRUcDbII4tWGoyctu8Xuq
+ G9iRD7+ZsUs6twkFYp4iTpxBQvnZTCA+jMEdI+2M6LcO/90JGZzAddz3BdEJEyKkJQtp
+ 9h8yRMfS0xkcXmaurXOf0i+SEHvz66n13/wAn2js7gRZOYQ/PU/I5j3P/byoMPgRM/Hj
+ U+4mYF81b6Rl8mufBPQg6CY3edPLJOqM/sfukCK0ohuV2YtDxiaFL/NfqAd0NQjbodYM
+ gOcmXu8zctetFMpabqq9INU4O58wHmmav/xEHJRy8x8bpeEvEfypSEAU+HTNBhwImGyc
+ f5tg==
+X-Gm-Message-State: AOAM532u4Z2vWcDAh4emXNh22zEUHD/YrjYjMC/4GMeAeVZsOSMbOvEC
+ QycGFkiPl0mhkCWBdibS+V9RK+/PalykYQ==
+X-Google-Smtp-Source: ABdhPJwcxoFrwI/FRC06emoEJxOlhapapq3uXAbaNvZgMSxCrsCYsYe4eF797A5mhxRg8Rzkb7s87g==
+X-Received: by 2002:a62:ae0c:0:b029:1bc:a0b9:f0aa with SMTP id
+ q12-20020a62ae0c0000b02901bca0b9f0aamr12613811pff.78.1612114368491; 
+ Sun, 31 Jan 2021 09:32:48 -0800 (PST)
 Received: from localhost ([2402:3a80:11ea:e144:a2a4:c5ff:fe20:7222])
- by smtp.gmail.com with ESMTPSA id y16sm15492888pfb.83.2021.01.31.09.32.37
+ by smtp.gmail.com with ESMTPSA id f71sm14799711pfa.138.2021.01.31.09.32.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 09:32:37 -0800 (PST)
+ Sun, 31 Jan 2021 09:32:47 -0800 (PST)
 From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 To: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 09/13] staging: rtl8192e: Switch from strlcpy to strscpy
-Date: Sun, 31 Jan 2021 22:58:30 +0530
-Message-Id: <20210131172838.146706-10-memxor@gmail.com>
+Subject: [PATCH 10/13] staging: rtl8192u: Switch from strlcpy to strscpy
+Date: Sun, 31 Jan 2021 22:58:31 +0530
+Message-Id: <20210131172838.146706-11-memxor@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210131172838.146706-1-memxor@gmail.com>
 References: <20210131172838.146706-1-memxor@gmail.com>
@@ -89,14 +89,14 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: linux-fbdev@vger.kernel.org, Jon Nettleton <jon.nettleton@gmail.com>,
  Mark Greer <mgreer@animalcreek.com>, Marc Dietrich <marvin24@gmx.de>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, William Cohen <wcohen@redhat.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Thomas Gleixner <tglx@linutronix.de>,
  ac100@lists.launchpad.net, Stephen Rothwell <sfr@canb.auug.org.au>,
  Florian Fainelli <f.fainelli@gmail.com>, Daniel Drake <dsd@laptop.org>,
  Jens Frederich <jfrederich@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
  Robert Richter <rric@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
  Johan Hovold <johan@kernel.org>, Ian Abbott <abbotti@mev.co.uk>,
  Al Viro <viro@zeniv.linux.org.uk>, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
+ William Cohen <wcohen@redhat.com>,
  Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
  Alex Elder <elder@kernel.org>, Teddy Wang <teddy.wang@siliconmotion.com>,
  greybus-dev@lists.linaro.org, Andrew Morton <akpm@linux-foundation.org>,
@@ -118,26 +118,22 @@ This silences the related checkpatch warnings from:
 
 Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 ---
- drivers/staging/rtl8192e/rtl8192e/rtl_ethtool.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_ethtool.c b/drivers/staging/rtl8192e/rtl8192e/rtl_ethtool.c
-index 6ae7a67e7..f4f7b74c8 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_ethtool.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_ethtool.c
-@@ -18,9 +18,9 @@ static void _rtl92e_ethtool_get_drvinfo(struct net_device *dev,
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
+index f434a26cd..afa92ddfa 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac_wx.c
+@@ -484,7 +484,7 @@ int ieee80211_wx_get_name(struct ieee80211_device *ieee,
+ 			     struct iw_request_info *info,
+ 			     union iwreq_data *wrqu, char *extra)
  {
- 	struct r8192_priv *priv = rtllib_priv(dev);
- 
--	strlcpy(info->driver, DRV_NAME, sizeof(info->driver));
--	strlcpy(info->version, DRV_VERSION, sizeof(info->version));
--	strlcpy(info->bus_info, pci_name(priv->pdev), sizeof(info->bus_info));
-+	strscpy(info->driver, DRV_NAME, sizeof(info->driver));
-+	strscpy(info->version, DRV_VERSION, sizeof(info->version));
-+	strscpy(info->bus_info, pci_name(priv->pdev), sizeof(info->bus_info));
- }
- 
- static u32 _rtl92e_ethtool_get_link(struct net_device *dev)
+-	strlcpy(wrqu->name, "802.11", IFNAMSIZ);
++	strscpy(wrqu->name, "802.11", IFNAMSIZ);
+ 	if (ieee->modulation & IEEE80211_CCK_MODULATION) {
+ 		strlcat(wrqu->name, "b", IFNAMSIZ);
+ 		if (ieee->modulation & IEEE80211_OFDM_MODULATION)
 -- 
 2.29.2
 
