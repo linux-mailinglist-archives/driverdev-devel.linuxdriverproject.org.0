@@ -1,48 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE99E30DBC8
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Feb 2021 14:51:23 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 300F130DE88
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Feb 2021 16:46:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A065685E6E;
-	Wed,  3 Feb 2021 13:51:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A967587121;
+	Wed,  3 Feb 2021 15:46:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R5kYFGaaESDz; Wed,  3 Feb 2021 13:51:21 +0000 (UTC)
+	with ESMTP id N6-JAt8hn9cd; Wed,  3 Feb 2021 15:46:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56D6780868;
-	Wed,  3 Feb 2021 13:51:21 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 207148533D;
+	Wed,  3 Feb 2021 15:46:08 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E3FB91BF27A
- for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 13:51:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F1E671BF842
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Feb 2021 15:46:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DD0132037E
- for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 13:51:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E6B1F228E3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Feb 2021 15:46:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YyEifL2QQOoF for <devel@linuxdriverproject.org>;
- Wed,  3 Feb 2021 13:51:19 +0000 (UTC)
+ with ESMTP id vI0qOod8Uh9s
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Feb 2021 15:46:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from optinix.in (unknown [20.39.40.203])
- by silver.osuosl.org (Postfix) with ESMTPS id 7976C20373
- for <devel@driverdev.osuosl.org>; Wed,  3 Feb 2021 13:51:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 8FB332037A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Feb 2021 15:46:03 +0000 (UTC)
 dkim-signature: v=1; a=rsa-sha256; d=digitalsol.in; s=dkim;
  c=relaxed/relaxed; q=dns/txt;
  h=From:Reply-To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
  bh=wK2neTcOXNiSQ+RBxrnFed+mRrGUU/ndLGEgvo8IMCc=;
- b=FS21EClFcr+A3vpYRlQQTMCvaya3puBKhF0t/hIIPvbHnwR+rgtC79jCNgOd5Ep+3tI3PC3XGw+gg8yd/GX54LmqQdKAMluAD+K+bzTI4zahRqPbm7KtfaMxxLjP1zy5bc8VXCd+pYJSaA44sqh+vttDlJ9joLFmVmdqNZ/U1Ii0YQuvu1e5+80FTLXannYWfDV+yNG+fM0atW47XipaPh3qYaJ9qQyVsnTbadcB2bQu1a4YZ7LLVooH7O
- Vzah+xwYyqNFKO89GsubeImYj63yeirGylE2RvHO8q8chaXbYgGsxfBd5U+r4EZ0xxSiQVUltIwj9F/ZkNYp8D9drF7w==
+ b=VoftIHguM6VfX8ivoJVhzbGCemm+yox7gMjukTlo522ffeccGGJTctTgZjq+ZfYPapekMfxf+gYAzHRYBR0ScQh/EUJrtPApNhYLZh0EfMxvDzNARPARORKVbCGTvdXj2OWyoMAiSqhuVD5y1gvhCquiJR71wG14v9uufegl2hcNqb9gq/eQ2UxSM1av3UxSpiiQ50ZTUI+Oj3h7Oa4wYDrOGDshLIL2/TlneaMV6NW93QZG7jr00pPt0Y
+ ERq9odoWIGGIpNOCHl/0esmg18ulIniavWax4hgAnlUaTMpFLR5a82H/udtNr2ozb+4AC4FXa3cQcJ5RLtv8wCHTO6AA==
 Received: from User (Unknown [52.231.31.5]) by optinix.in with ESMTP
- ; Sun, 31 Jan 2021 19:46:16 +0000
-Message-ID: <5379DADF-1901-47E6-8429-247F25ECBABA@optinix.in>
+ ; Sun, 31 Jan 2021 20:20:37 +0000
+Message-ID: <CC43F287-5DB6-4607-9784-A1A63DC51360@optinix.in>
 From: "Ms. Reem"<support@digitalsol.in>
 Subject: Re:read
-Date: Sun, 31 Jan 2021 19:46:14 -0000
+Date: Sun, 31 Jan 2021 20:20:36 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
