@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42077309E0C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jan 2021 18:32:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DB61309E0D
+	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jan 2021 18:32:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EE42F87060;
-	Sun, 31 Jan 2021 17:32:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DA56487093;
+	Sun, 31 Jan 2021 17:32:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xj6jYAhX-7ik; Sun, 31 Jan 2021 17:32:02 +0000 (UTC)
+	with ESMTP id 4r1ViD1iEAXF; Sun, 31 Jan 2021 17:32:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 55C3287052;
-	Sun, 31 Jan 2021 17:32:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 43DC887014;
+	Sun, 31 Jan 2021 17:32:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 66A241BF3DD
- for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:31:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B61A1BF3DD
+ for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 38843203AA
- for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:31:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 86733858A6
+ for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jSvsiYMaIDgh for <devel@linuxdriverproject.org>;
- Sun, 31 Jan 2021 17:31:58 +0000 (UTC)
+ with ESMTP id lVy9SrrBvUdK for <devel@linuxdriverproject.org>;
+ Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 7F0E51FDFB
- for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 17:31:57 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id y142so2018849pfb.3
- for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 09:31:57 -0800 (PST)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1C0BD85821
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id b8so8650745plh.12
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 09:32:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qJkSDHaVmo+fJzrmd85PruQ7oVf+hPtIrZplmqs4FsA=;
- b=jseMqVYIOvqKcPA/OwJOxqo47r1bns7PdZ92MYc8WnLySr4D9EAs7DqgJS0+aE8YHp
- R8TRcr2mBuWyyAAy5kMFW74lfmeeAxESnQcBgiyn/Ygtzlc+X17sQFhrX3RuiD7jBgjA
- kQQFOh8zaCwGjKXkO8QQoXf8ti/f7oF7bAzBdFLX6mLNQ56pgi8gdyBaigXw2eEJbFei
- JREaN7WndHVD5yH56eDTFcjU5L0djrKpOR1X+ITgwK8+NY3wg0y3WgqE03YhgPG9aOLt
- uqhg3IIWZ1ghNrXu+IabOuwbbptykfG8YcpVq4enlECFi01637z7p7cYH+nTI21I+C0T
- dnhg==
+ bh=8z7T30JwVaWaq0MDWkzbLRl1Zk2i9+kaaFA/9JES7Xs=;
+ b=Uoqbq4QkgIl9VP9kliAkYuDQm21xB+XmNDU1AxMz1RJf8ufeaxxdJyfbPtuk5Ue9Sy
+ MsdwlBDkuXGbADiWX3vmEvafdwHpDVKRSJ9NoYmEi915UYcqRWEQPKMo+cP6rmBvv8bF
+ qkIqPu6ztvPeb9ysJJLiyUFmRIrZVzyr9cs/x02p9cSb4Pt62moPq/QSkjFuqmHJ/4V6
+ E2opHNxR9Ga44NNvcciGBBq2C025jSGE+TkcgPUq2BZ1KJf5K5IlNq0oVQnrPipGjDLr
+ XRzLuQtPzaP5fBIV1iwtCKI5ZRISbgq/zvxGOm4x9XsH6BxWulI21PlLJsi/m4HS2xyG
+ 1Q6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qJkSDHaVmo+fJzrmd85PruQ7oVf+hPtIrZplmqs4FsA=;
- b=jQfrrpV6UydoY74GLpfO5hRb/VE8NuyjLX7L3G73l1Nw7kBDI7yP75wFs5995tZrVl
- LMN6Fh7YW8YVhmESf5rj8ZDK5NiaiHQMsXigJk9xad4ZbsMP3epWJOsm2QIs+9j1arve
- cN+ifGyC93D4Z0EyKNG6mLeRuMT3+RdYVe1kZGqzN68tjykgM75QODJ3CsIIma5uPDF1
- 5YG6+X2u/XQGOtpjA6/JX3kq5nuLXo5C4xLk3bNwO+eOFY7BPfrtMPuR2KQ88IueYni7
- UY1tkiZSl49KLEJ/lN2AoYiHZ8MsdGax3oKe4iLsI45FnXZmtwf61dqHIHxBc0POWypv
- yd7w==
-X-Gm-Message-State: AOAM5339bSm2+zAAkr0bsnDxrrx+4rXD9yx51vz95spAY6te3ue3ibKd
- Nf6ahB7tlQlwlBnmUkJhNcuubL1U21vOoQ==
-X-Google-Smtp-Source: ABdhPJx20zg4Eel9orHc/z6tQYJ/L78aqH6IGuvnMGtz2Lor1bTYfNI80zv9b09QNyvsIwBHoDcw5w==
-X-Received: by 2002:a62:32c3:0:b029:1bc:7e0:ae66 with SMTP id
- y186-20020a6232c30000b02901bc07e0ae66mr13089095pfy.53.1612114316906; 
- Sun, 31 Jan 2021 09:31:56 -0800 (PST)
+ bh=8z7T30JwVaWaq0MDWkzbLRl1Zk2i9+kaaFA/9JES7Xs=;
+ b=tjjxhDpTcLwTDxwnQ9xzQd0J1qIKCO/yND4yCQicm/QN2ZrEU7v2uG5ivtVOeouy4Z
+ 358WhkdvgMj9EuQMdT7dhN4TIm7gbU8jktjadTbgaaOL51U99sMJO/jC3uJY17+raTJR
+ IDlRlV4iuviOWFmcZmfd2wgvPO8egCxyeEdEGcf5X14EARIB3d53i9lgRAl9CAStmdht
+ nxSF+ZX2176tuJHM59ZyrOugxsn2HStdD7Fbjh/awk/Fz0+kaEedspnOMv9Gzwu84IRY
+ OBH3TOVuO9xqTP9UVbSeR09qkfMXzV/udr7+xswcOpfnHqchrUKTkrPWtHd6WXQxbicN
+ HSWw==
+X-Gm-Message-State: AOAM531J/Zst53M7JI5sY9/n5Rz7942+Ab7aJQ/L2gWmZXNSQPm/H9eF
+ 8hOUKfn0WNhtt+x45kf3m1cdXyx/Fy7B/A==
+X-Google-Smtp-Source: ABdhPJxlrmQpiP0t2W7sFWGvxmRHJQ1EXLzsFuG1+Bm3Y/OPuczoXDBzhNcDmo58qBTT9cFSwqvRTw==
+X-Received: by 2002:a17:902:eacb:b029:e1:2de4:72b6 with SMTP id
+ p11-20020a170902eacbb02900e12de472b6mr8975072pld.17.1612114327515; 
+ Sun, 31 Jan 2021 09:32:07 -0800 (PST)
 Received: from localhost ([2402:3a80:11ea:e144:a2a4:c5ff:fe20:7222])
- by smtp.gmail.com with ESMTPSA id z2sm5127218pfa.121.2021.01.31.09.31.55
+ by smtp.gmail.com with ESMTPSA id 76sm14898291pfz.174.2021.01.31.09.32.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 09:31:56 -0800 (PST)
+ Sun, 31 Jan 2021 09:32:06 -0800 (PST)
 From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 To: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 05/13] staging: nvec: Switch from strlcpy to strscpy
-Date: Sun, 31 Jan 2021 22:58:26 +0530
-Message-Id: <20210131172838.146706-6-memxor@gmail.com>
+Subject: [PATCH 06/13] staging: octeon: Switch from strlcpy to strscpy
+Date: Sun, 31 Jan 2021 22:58:27 +0530
+Message-Id: <20210131172838.146706-7-memxor@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210131172838.146706-1-memxor@gmail.com>
 References: <20210131172838.146706-1-memxor@gmail.com>
@@ -90,14 +90,14 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: linux-fbdev@vger.kernel.org, Jon Nettleton <jon.nettleton@gmail.com>,
  Mark Greer <mgreer@animalcreek.com>, Al Viro <viro@zeniv.linux.org.uk>,
  Marc Dietrich <marvin24@gmx.de>, Ioana Ciornei <ioana.ciornei@nxp.com>,
- William Cohen <wcohen@redhat.com>, ac100@lists.launchpad.net,
+ Thomas Gleixner <tglx@linutronix.de>, ac100@lists.launchpad.net,
  Stephen Rothwell <sfr@canb.auug.org.au>,
  Florian Fainelli <f.fainelli@gmail.com>, Daniel Drake <dsd@laptop.org>,
  Jens Frederich <jfrederich@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
  Robert Richter <rric@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
  Johan Hovold <johan@kernel.org>, Ian Abbott <abbotti@mev.co.uk>,
  Kumar Kartikeya Dwivedi <memxor@gmail.com>, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
+ William Cohen <wcohen@redhat.com>,
  Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
  Alex Elder <elder@kernel.org>, Teddy Wang <teddy.wang@siliconmotion.com>,
  greybus-dev@lists.linaro.org, Andrew Morton <akpm@linux-foundation.org>,
@@ -118,24 +118,26 @@ This silences the related checkpatch warnings from:
 
 Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 ---
- drivers/staging/nvec/nvec_ps2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/octeon/ethernet-mdio.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/nvec/nvec_ps2.c b/drivers/staging/nvec/nvec_ps2.c
-index 45db29262..157009015 100644
---- a/drivers/staging/nvec/nvec_ps2.c
-+++ b/drivers/staging/nvec/nvec_ps2.c
-@@ -112,8 +112,8 @@ static int nvec_mouse_probe(struct platform_device *pdev)
- 	ser_dev->start = ps2_startstreaming;
- 	ser_dev->stop = ps2_stopstreaming;
+diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
+index 0bf545849..1bb91a904 100644
+--- a/drivers/staging/octeon/ethernet-mdio.c
++++ b/drivers/staging/octeon/ethernet-mdio.c
+@@ -21,9 +21,9 @@
+ static void cvm_oct_get_drvinfo(struct net_device *dev,
+ 				struct ethtool_drvinfo *info)
+ {
+-	strlcpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
+-	strlcpy(info->version, UTS_RELEASE, sizeof(info->version));
+-	strlcpy(info->bus_info, "Builtin", sizeof(info->bus_info));
++	strscpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
++	strscpy(info->version, UTS_RELEASE, sizeof(info->version));
++	strscpy(info->bus_info, "Builtin", sizeof(info->bus_info));
+ }
  
--	strlcpy(ser_dev->name, "nvec mouse", sizeof(ser_dev->name));
--	strlcpy(ser_dev->phys, "nvec", sizeof(ser_dev->phys));
-+	strscpy(ser_dev->name, "nvec mouse", sizeof(ser_dev->name));
-+	strscpy(ser_dev->phys, "nvec", sizeof(ser_dev->phys));
- 
- 	ps2_dev.ser_dev = ser_dev;
- 	ps2_dev.notifier.notifier_call = nvec_ps2_notifier;
+ static int cvm_oct_nway_reset(struct net_device *dev)
 -- 
 2.29.2
 
