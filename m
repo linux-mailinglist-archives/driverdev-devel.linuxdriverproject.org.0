@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DB61309E0D
-	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jan 2021 18:32:12 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 157BA309E0E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jan 2021 18:32:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA56487093;
-	Sun, 31 Jan 2021 17:32:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 440968677E;
+	Sun, 31 Jan 2021 17:32:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4r1ViD1iEAXF; Sun, 31 Jan 2021 17:32:10 +0000 (UTC)
+	with ESMTP id 7I1vsewxyZ8F; Sun, 31 Jan 2021 17:32:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43DC887014;
-	Sun, 31 Jan 2021 17:32:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4451C86798;
+	Sun, 31 Jan 2021 17:32:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8B61A1BF3DD
- for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A9D511BF3DD
+ for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 86733858A6
- for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 896261FDFB
+ for <devel@linuxdriverproject.org>; Sun, 31 Jan 2021 17:32:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lVy9SrrBvUdK for <devel@linuxdriverproject.org>;
- Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
+ with ESMTP id q4PeD2I1zmgo for <devel@linuxdriverproject.org>;
+ Sun, 31 Jan 2021 17:32:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1C0BD85821
- for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 17:32:08 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id b8so8650745plh.12
- for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 09:32:08 -0800 (PST)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9D6AB203AA
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 17:32:17 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id m6so10019962pfk.1
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jan 2021 09:32:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8z7T30JwVaWaq0MDWkzbLRl1Zk2i9+kaaFA/9JES7Xs=;
- b=Uoqbq4QkgIl9VP9kliAkYuDQm21xB+XmNDU1AxMz1RJf8ufeaxxdJyfbPtuk5Ue9Sy
- MsdwlBDkuXGbADiWX3vmEvafdwHpDVKRSJ9NoYmEi915UYcqRWEQPKMo+cP6rmBvv8bF
- qkIqPu6ztvPeb9ysJJLiyUFmRIrZVzyr9cs/x02p9cSb4Pt62moPq/QSkjFuqmHJ/4V6
- E2opHNxR9Ga44NNvcciGBBq2C025jSGE+TkcgPUq2BZ1KJf5K5IlNq0oVQnrPipGjDLr
- XRzLuQtPzaP5fBIV1iwtCKI5ZRISbgq/zvxGOm4x9XsH6BxWulI21PlLJsi/m4HS2xyG
- 1Q6Q==
+ bh=9mx9QDkqfNUwWdACyM2Fn2TS+NlXzO5XMeT4wvvF4yM=;
+ b=FKhRyOzoZSbBuvWwr0fTJ+iFeZN7JT2FPX2669eIzdGFo5UYBxWO2lMckA9wnehLTS
+ xHmrEWENAHskb5BhFX6J42HLdCsFefK2aEtxG+yPckdGw3BsDu96v/DESQiAw56isE0b
+ 92NLHHC68hguqKz0GvB+ulD4I9TKRUFtGwmpjbUEFBrTaIf3OgckiVwzJ4/ROpw8BSoX
+ oNKalg6R33IaEWts0MFGrxDLnL3XZx2GMYqee70sRg1dd1sE0JdHazOda1TasbNt87tJ
+ kfglu74r09XJiZR8kMAJf+x7dJ636t7EoxwawooqaIZ/J1affyE1+5moWGYYW8MxlYCO
+ LFZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8z7T30JwVaWaq0MDWkzbLRl1Zk2i9+kaaFA/9JES7Xs=;
- b=tjjxhDpTcLwTDxwnQ9xzQd0J1qIKCO/yND4yCQicm/QN2ZrEU7v2uG5ivtVOeouy4Z
- 358WhkdvgMj9EuQMdT7dhN4TIm7gbU8jktjadTbgaaOL51U99sMJO/jC3uJY17+raTJR
- IDlRlV4iuviOWFmcZmfd2wgvPO8egCxyeEdEGcf5X14EARIB3d53i9lgRAl9CAStmdht
- nxSF+ZX2176tuJHM59ZyrOugxsn2HStdD7Fbjh/awk/Fz0+kaEedspnOMv9Gzwu84IRY
- OBH3TOVuO9xqTP9UVbSeR09qkfMXzV/udr7+xswcOpfnHqchrUKTkrPWtHd6WXQxbicN
- HSWw==
-X-Gm-Message-State: AOAM531J/Zst53M7JI5sY9/n5Rz7942+Ab7aJQ/L2gWmZXNSQPm/H9eF
- 8hOUKfn0WNhtt+x45kf3m1cdXyx/Fy7B/A==
-X-Google-Smtp-Source: ABdhPJxlrmQpiP0t2W7sFWGvxmRHJQ1EXLzsFuG1+Bm3Y/OPuczoXDBzhNcDmo58qBTT9cFSwqvRTw==
-X-Received: by 2002:a17:902:eacb:b029:e1:2de4:72b6 with SMTP id
- p11-20020a170902eacbb02900e12de472b6mr8975072pld.17.1612114327515; 
- Sun, 31 Jan 2021 09:32:07 -0800 (PST)
+ bh=9mx9QDkqfNUwWdACyM2Fn2TS+NlXzO5XMeT4wvvF4yM=;
+ b=uHydiYmXH585umEpfzAX3nQkfNxMOPqoAfh91ozxAoGpKYFu40toANQO9MD6L4PqK7
+ Hnc9f8UKpOq54+4pnV6aI24NslfmMpDws7cT/+rB++mTuBazmUxgqK/S/D0J4tHlhkS8
+ uY3hP/cIwMJPUG8VEoMgNYr3w6R5S64wbCvkRhVR4KAO3JKZri0XBYzPDa69FymI0Iud
+ 0eVwbkQ1zrETtqRF3QmJqQgko4M55lgn9j+xF3ApuXQcwWNEJGSIHvRBIHNhlA55nIJp
+ U/zTYNUaSzoAwFkuyAKNVNiO0eXsSCtGefG1wOkkV/eqTg2KkuRF8t+Zd+tSppil+J78
+ 5T5w==
+X-Gm-Message-State: AOAM530dcySa5BCMIqPSh5c5YqtnA3ND8wMktYrl8rYGrLShgI73gf7L
+ isCuhrDDgBZ6OYMI1C/xmE/o613cYqBgwQ==
+X-Google-Smtp-Source: ABdhPJy0FOOeBvw8A30nFmOClcs73UGIMxJUMDIk2k6K7lguT0DTnIX/42iZkIg0q78K2sAG9Txfpw==
+X-Received: by 2002:a63:c43:: with SMTP id 3mr13088289pgm.250.1612114337079;
+ Sun, 31 Jan 2021 09:32:17 -0800 (PST)
 Received: from localhost ([2402:3a80:11ea:e144:a2a4:c5ff:fe20:7222])
- by smtp.gmail.com with ESMTPSA id 76sm14898291pfz.174.2021.01.31.09.32.06
+ by smtp.gmail.com with ESMTPSA id y11sm14165281pfn.85.2021.01.31.09.32.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 09:32:06 -0800 (PST)
+ Sun, 31 Jan 2021 09:32:16 -0800 (PST)
 From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 To: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 06/13] staging: octeon: Switch from strlcpy to strscpy
-Date: Sun, 31 Jan 2021 22:58:27 +0530
-Message-Id: <20210131172838.146706-7-memxor@gmail.com>
+Subject: [PATCH 07/13] staging: olpc_dcon: Switch from strlcpy to strscpy
+Date: Sun, 31 Jan 2021 22:58:28 +0530
+Message-Id: <20210131172838.146706-8-memxor@gmail.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210131172838.146706-1-memxor@gmail.com>
 References: <20210131172838.146706-1-memxor@gmail.com>
@@ -118,26 +117,22 @@ This silences the related checkpatch warnings from:
 
 Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 ---
- drivers/staging/octeon/ethernet-mdio.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/olpc_dcon/olpc_dcon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
-index 0bf545849..1bb91a904 100644
---- a/drivers/staging/octeon/ethernet-mdio.c
-+++ b/drivers/staging/octeon/ethernet-mdio.c
-@@ -21,9 +21,9 @@
- static void cvm_oct_get_drvinfo(struct net_device *dev,
- 				struct ethtool_drvinfo *info)
- {
--	strlcpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
--	strlcpy(info->version, UTS_RELEASE, sizeof(info->version));
--	strlcpy(info->bus_info, "Builtin", sizeof(info->bus_info));
-+	strscpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
-+	strscpy(info->version, UTS_RELEASE, sizeof(info->version));
-+	strscpy(info->bus_info, "Builtin", sizeof(info->bus_info));
- }
+diff --git a/drivers/staging/olpc_dcon/olpc_dcon.c b/drivers/staging/olpc_dcon/olpc_dcon.c
+index e7281212d..6d8e9a481 100644
+--- a/drivers/staging/olpc_dcon/olpc_dcon.c
++++ b/drivers/staging/olpc_dcon/olpc_dcon.c
+@@ -576,7 +576,7 @@ static struct notifier_block dcon_panic_nb = {
  
- static int cvm_oct_nway_reset(struct net_device *dev)
+ static int dcon_detect(struct i2c_client *client, struct i2c_board_info *info)
+ {
+-	strlcpy(info->type, "olpc_dcon", I2C_NAME_SIZE);
++	strscpy(info->type, "olpc_dcon", I2C_NAME_SIZE);
+ 
+ 	return 0;
+ }
 -- 
 2.29.2
 
