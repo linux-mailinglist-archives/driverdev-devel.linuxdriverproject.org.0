@@ -2,49 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E57A30CDCD
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Feb 2021 22:17:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D0BC30CDD0
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Feb 2021 22:18:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BB53886A64;
-	Tue,  2 Feb 2021 21:17:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 053B286A63;
+	Tue,  2 Feb 2021 21:18:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1bL-ZiZNyydx; Tue,  2 Feb 2021 21:17:47 +0000 (UTC)
+	with ESMTP id sKJbgVGlo-SL; Tue,  2 Feb 2021 21:18:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD6B086A31;
-	Tue,  2 Feb 2021 21:17:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 066CC86A31;
+	Tue,  2 Feb 2021 21:18:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BF2801BF232
- for <devel@linuxdriverproject.org>; Tue,  2 Feb 2021 21:17:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 009DC1BF232
+ for <devel@linuxdriverproject.org>; Tue,  2 Feb 2021 21:18:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A64BD870BD
- for <devel@linuxdriverproject.org>; Tue,  2 Feb 2021 21:17:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DFDE4870C1
+ for <devel@linuxdriverproject.org>; Tue,  2 Feb 2021 21:18:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y9nP-WB5KWbT for <devel@linuxdriverproject.org>;
- Tue,  2 Feb 2021 21:17:41 +0000 (UTC)
+ with ESMTP id vF0YmwkTY30o for <devel@linuxdriverproject.org>;
+ Tue,  2 Feb 2021 21:18:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from 17781608.hospedagemdesite.com (pop.hostlocation.com.br
  [189.1.160.103])
- by hemlock.osuosl.org (Postfix) with SMTP id EC297870BB
- for <devel@driverdev.osuosl.org>; Tue,  2 Feb 2021 21:17:36 +0000 (UTC)
-Received: (qmail 15367 invoked by uid 48); 2 Feb 2021 19:07:43 -0200
+ by hemlock.osuosl.org (Postfix) with SMTP id 1ABDD870BB
+ for <devel@linuxdriverproject.org>; Tue,  2 Feb 2021 21:18:45 +0000 (UTC)
+Received: (qmail 15676 invoked by uid 48); 2 Feb 2021 19:07:54 -0200
 Cc: recipient list not shown: ;
 Received: from 105.4.4.46
  (SquirrelMail authenticated user diretoria@dmonegatto.com.br)
  by mail.dmonegatto.com.br with HTTP;
- Tue, 2 Feb 2021 19:07:43 -0200 (BRST)
-Message-ID: <15998.105.4.4.46.1612300063.squirrel@mail.dmonegatto.com.br>
-Date: Tue, 2 Feb 2021 19:07:43 -0200 (BRST)
+ Tue, 2 Feb 2021 19:07:54 -0200 (BRST)
+Message-ID: <33886.105.4.4.46.1612300074.squirrel@mail.dmonegatto.com.br>
+Date: Tue, 2 Feb 2021 19:07:54 -0200 (BRST)
 Subject: International Relief Fund (Award Notice)
 From: diretoria@dmonegatto.com.br
 User-Agent: SquirrelMail/1.4.10a
 MIME-Version: 1.0
-Content-Type: multipart/mixed;boundary="----=_20210202190743_66257"
+Content-Type: multipart/mixed;boundary="----=_20210202190754_85771"
 X-Priority: 3 (Normal)
 Importance: Normal
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -63,7 +63,7 @@ Reply-To: cmhlanga@starmail.co.za
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-------=_20210202190743_66257
+------=_20210202190754_85771
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: 8bit
 
@@ -132,7 +132,7 @@ PERSONAL SAFETY AND THE SAFETY OF OUR OFFICIALS.
 
 
 
-------=_20210202190743_66257
+------=_20210202190754_85771
 Content-Type: application/pdf; name="PHOTO-1.pdf"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="PHOTO-1.pdf"
@@ -3899,7 +3899,7 @@ emUgMTcNCi9Sb290IDEgMCBSDQovSW5mbyAxMyAwIFINCi9JRCBbIDxCMUQyNEQwN0YyQ0FCQjRB
 OTU3Nzk5NDU1QTc0Q0FFOT4gPGIyRDI0RDA3RjJDQUJCNEE5NTc3OTk0NTVBNzRDQUU5PiBdDQov
 UHJldiAyMTM4MjYNCi9YUmVmU3RtIDIxMzA2Mg0KPj4NCiVFbmRFeGlmVG9vbFVwZGF0ZSAyMTQw
 MDgNCnN0YXJ0eHJlZg0KMjE0MTMzDQolJUVPRg0K
-------=_20210202190743_66257
+------=_20210202190754_85771
 Content-Type: application/pdf; name="PHOTO-2.pdf"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="PHOTO-2.pdf"
@@ -8074,7 +8074,7 @@ DQovSW5mbyAxMyAwIFINCi9JRCBbIDw4MjNDNzcxODhCRjE0RDRBOEU0NDE0MUQ3RkZBMkYzQj4g
 PDgzM0M3NzE4OEJGMTRENEE4RTQ0MTQxRDdGRkEyRjNCPiBdDQovUHJldiAyMzcwNjQNCi9YUmVm
 U3RtIDIzNjI5OQ0KPj4NCiVFbmRFeGlmVG9vbFVwZGF0ZSAyMzcyNDYNCnN0YXJ0eHJlZg0KMjM3
 MzcxDQolJUVPRg0K
-------=_20210202190743_66257
+------=_20210202190754_85771
 Content-Type: application/pdf; name="PHOTO-3.pdf"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="PHOTO-3.pdf"
@@ -12174,7 +12174,7 @@ DQovUm9vdCAxIDAgUg0KL0luZm8gMTMgMCBSDQovSUQgWyA8NzVDOTFGRTBFMTk4NjQ0QUIyQUQz
 NUNEODg4NUY3RDM+IDw3NkM5MUZFMEUxOTg2NDRBQjJBRDM1Q0Q4ODg1RjdEMz4gXQ0KL1ByZXYg
 MjMyODAyDQovWFJlZlN0bSAyMzIwMzgNCj4+DQolRW5kRXhpZlRvb2xVcGRhdGUgMjMyOTg0DQpz
 dGFydHhyZWYNCjIzMzEwOQ0KJSVFT0YNCg==
-------=_20210202190743_66257
+------=_20210202190754_85771
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -12185,5 +12185,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_20210202190743_66257--
+------=_20210202190754_85771--
 
