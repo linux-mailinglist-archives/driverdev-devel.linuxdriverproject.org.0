@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F0D430BD41
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Feb 2021 12:38:25 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A573D30BD42
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Feb 2021 12:38:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 573C422708;
-	Tue,  2 Feb 2021 11:38:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5052F86224;
+	Tue,  2 Feb 2021 11:38:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yXVdgx-d+uqW; Tue,  2 Feb 2021 11:38:22 +0000 (UTC)
+	with ESMTP id kFgXrqM0tR8E; Tue,  2 Feb 2021 11:38:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0C48A2046B;
+	by whitealder.osuosl.org (Postfix) with ESMTP id DDA5486290;
 	Tue,  2 Feb 2021 11:38:22 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CD6A71BF865
+ by ash.osuosl.org (Postfix) with ESMTP id 488571BF865
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Feb 2021 11:38:19 +0000 (UTC)
+ Tue,  2 Feb 2021 11:38:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 269FD221DC
+ by silver.osuosl.org (Postfix) with ESMTP id 3AFE32046B
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Feb 2021 11:38:19 +0000 (UTC)
+ Tue,  2 Feb 2021 11:38:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1ui2bFxq0DPf
+ with ESMTP id B3HUaX9yBQEf
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Feb 2021 11:38:17 +0000 (UTC)
+ Tue,  2 Feb 2021 11:38:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa.microchip.iphmx.com (esa.microchip.iphmx.com
  [68.232.154.123])
- by silver.osuosl.org (Postfix) with ESMTPS id 3C5FA20510
+ by silver.osuosl.org (Postfix) with ESMTPS id 3A91C20016
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 Feb 2021 11:38:17 +0000 (UTC)
+ Tue,  2 Feb 2021 11:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1612265897; x=1643801897;
+ t=1612265898; x=1643801898;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=Jzu8ew+tJ7XjQ0/QPEEHBA4QDypasGGIc5HXzOaJ09A=;
- b=b5ky9hSraeaSw00QkNtZUeTtZyjK8cqTNuQd62/mbnmm7TOxw0YAxL4D
- DsjjjQnHU5YPs4EHF5v5xxONsj1X+/cL3X0XZdHSLuIhq0YnTvKUuxRwp
- WOyXROUzqWBdf+MtbIXcMWQ09+GfmNINHuRumzEygaTHfzde8MOkqj2EO
- sgHFJFv3/LRZGBoepazswstzvbW4BnTlKnID8ulyV07Gp72CzbpUX5aZM
- WSDinnTPGpZ/t92io8Sy3kiae6vZtmeFVwtOE8LdaTNSecsD87q04P5AP
- xxr9RZtJ9fY23MaZifFNVMdaPsNNfUWlcIfc4udc3MWwjGqeQIybdZXSk g==;
-IronPort-SDR: egXNsETcaS4OE+xF5oAoIzYzMZCB7VfXMOeQ/3dTUxD7ErV22eNtxgjA0bDRq63dnqNBtOsOir
- dSkuXJ2JPeAzsANHqxHA+mlotO9e1nDoJHEx7O7rJh6Gp0TBSL7YcFSHjbzu7XHQGWCbtFciPh
- cDpjCERoGjXj9NkHTYn+OE1IwunjOLDAprTkQtNB8DDRGk/virNcoAbVKW+69HwX/DR76uzIRk
- linxKMGa83WL99AZvtmsent2YUYJbTUQ7yzuQW71uuKkwsWnoQvMVODB1Uy2BlbbJCf93wwnhu
- Znw=
-X-IronPort-AV: E=Sophos;i="5.79,394,1602572400"; d="scan'208";a="105091237"
+ bh=NrgiiISsPvBR2hrJHAqYHO0HCv/dQEMttC7SvzR27js=;
+ b=tI7v7lq5g0Ah2Tw1nikkLRpAeCUTLyVYbm9gKkGzX6f9MvE3adT3e1AO
+ P4/TlCXCO+CFzpHlIrdC07cndUX2RlJj/5nTUZX6UI8ZDOALW7iJ1hR6c
+ SMp/mAaaucaelikuxwcqjKG21PvaOe+LkTnd2yPhstBsp903O4NIrLi14
+ P2G9bmMSJubewbGU41El2oSalj6sKxSMJTyMD5fLORuyoEm4GST9hFnu5
+ 9QMpJb4gS34SqMLk2AFTeX6PPFBPulGYDf9nIc0rX08MMYzUEY4SGcY8G
+ NcR4ja2P7+kN2MEgchvdoWeg0P3riZWvlBFkXykt3k947p4Dzbd5ox2bt w==;
+IronPort-SDR: CdB7OTZwvlvLvbKQKvq0v591Zcq1f6kX8KEGGAJTS/p0p6aGcApEhJBA7ys2YHw3hX4MwZp4Hm
+ Wk+3WL7AhtI8dmZjHJrwUqv4ulG0ogQNo1EdJhzKQfqCRUl8Cv/eq8eAW20wkPZGw3Q27EMCC4
+ jDywdrvmlifZ/u0z3B5PRpKj1H/SJdEipSZaD2F5q4/JWXoF164qYRm+ZoRfj3kcNQrw4UuyL/
+ mrCs0SyJM9jBj5VsFU/9UYFvtClfg2Q/j2z81kEJO4B+/SVRcKNbgPnW+NqZWj+vRXSRDxvIMF
+ xXw=
+X-IronPort-AV: E=Sophos;i="5.79,394,1602572400"; d="scan'208";a="42602537"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 02 Feb 2021 04:38:16 -0700
+ by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 02 Feb 2021 04:38:17 -0700
 Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
  chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Tue, 2 Feb 2021 04:38:16 -0700
+ 15.1.1979.3; Tue, 2 Feb 2021 04:38:17 -0700
 Received: from kar-sv-agl01.mchp-main.com (10.10.115.15) by
  chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server id
- 15.1.1979.3 via Frontend Transport; Tue, 2 Feb 2021 04:38:15 -0700
+ 15.1.1979.3 via Frontend Transport; Tue, 2 Feb 2021 04:38:16 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/2] staging: most: sound: add sanity check for function
- argument
-Date: Tue, 2 Feb 2021 12:38:09 +0100
-Message-ID: <1612265890-18246-2-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 2/2] staging: most: sound: use non-safe list iteration
+Date: Tue, 2 Feb 2021 12:38:10 +0100
+Message-ID: <1612265890-18246-3-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1612265890-18246-1-git-send-email-christian.gromm@microchip.com>
 References: <1612265890-18246-1-git-send-email-christian.gromm@microchip.com>
@@ -94,28 +93,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch zero checks the function parameter 'bytes' before doing the
-subtraction to prevent memory corruption.
+This patch replaces the safe list iteration function with the
+non-safe one, as no list element is being deleted.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/staging/most/sound/sound.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/most/sound/sound.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
-index 3a1a590..953a4fe 100644
+index 953a4fe..9e23b11 100644
 --- a/drivers/staging/most/sound/sound.c
 +++ b/drivers/staging/most/sound/sound.c
-@@ -86,6 +86,8 @@ static void swap_copy24(u8 *dest, const u8 *source, unsigned int bytes)
+@@ -160,9 +160,9 @@ static struct channel *get_channel(struct most_interface *iface,
+ 				   int channel_id)
  {
- 	unsigned int i = 0;
+ 	struct sound_adapter *adpt = iface->priv;
+-	struct channel *channel, *tmp;
++	struct channel *channel;
  
-+	if (!bytes)
-+		return;
- 	while (i < bytes - 2) {
- 		dest[i] = source[i + 2];
- 		dest[i + 1] = source[i + 1];
+-	list_for_each_entry_safe(channel, tmp, &adpt->dev_list, list) {
++	list_for_each_entry(channel, &adpt->dev_list, list) {
+ 		if ((channel->iface == iface) && (channel->id == channel_id))
+ 			return channel;
+ 	}
 -- 
 2.7.4
 
