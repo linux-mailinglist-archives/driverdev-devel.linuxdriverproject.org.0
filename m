@@ -1,77 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83C0730E215
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Feb 2021 19:12:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BD1830E214
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Feb 2021 19:12:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 91DED86AB6;
-	Wed,  3 Feb 2021 18:12:23 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MiqaR2xKt8kj; Wed,  3 Feb 2021 18:12:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 94F3A84FB1;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D72586132;
 	Wed,  3 Feb 2021 18:12:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i5PKsP8rmoof; Wed,  3 Feb 2021 18:12:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A8E2684E5E;
+	Wed,  3 Feb 2021 18:12:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B24D61BF2F9
- for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 40B0C1BF2F9
+ for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AF20B848F5
- for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3D2D187164
+ for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hgKUZJg399L8 for <devel@linuxdriverproject.org>;
- Wed,  3 Feb 2021 18:12:19 +0000 (UTC)
+ with ESMTP id bNpYujDhxQ4F for <devel@linuxdriverproject.org>;
+ Wed,  3 Feb 2021 18:12:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f179.google.com (mail-il1-f179.google.com
- [209.85.166.179])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 56BA684973
- for <devel@driverdev.osuosl.org>; Wed,  3 Feb 2021 18:12:19 +0000 (UTC)
-Received: by mail-il1-f179.google.com with SMTP id e7so106497ile.7
- for <devel@driverdev.osuosl.org>; Wed, 03 Feb 2021 10:12:19 -0800 (PST)
+Received: from mail-il1-f181.google.com (mail-il1-f181.google.com
+ [209.85.166.181])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A446F87158
+ for <devel@driverdev.osuosl.org>; Wed,  3 Feb 2021 18:12:18 +0000 (UTC)
+Received: by mail-il1-f181.google.com with SMTP id q9so145195ilo.1
+ for <devel@driverdev.osuosl.org>; Wed, 03 Feb 2021 10:12:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linuxfoundation.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Us34ijyq5YldDgoM68M19WNAuZlemdS7tunn1EAeqK0=;
- b=AGLM7izY/rKHCOxp7cxBmTm/tVSqPW7ZIDhByLc5ZUs5fT9iVWlpKxs0rLvrlh1mCo
- rUiu/sshU1xp9YhketiJr9uBHZ5yjx9c65M+Ez/Sds7s9ZGZ30Vm/e1O5nR7ry/Ri6kk
- 55jue1iwccIWPtSDFXvnqOff+FiLMnDHgx7uo=
+ bh=bjC27Eb9w9mM2SAEoXcwuyGIikNJU3zdPVeVR9rKt0c=;
+ b=KqWrrH2txCq4lO2ex6WKtRqHlkaLYMNP/cM5ExESO2VMWv16ydv9eW4RUqwDSNgULE
+ cV9HAU5u2bk8h6Bdl11d/CiQYi/VeWsJsIfOQozly7zbb8GrHUOoPQ1x+sx+Tu2iCRKE
+ N+71OcIyUcMeVWPZhq9WGSvc962kn3oWzcHPo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Us34ijyq5YldDgoM68M19WNAuZlemdS7tunn1EAeqK0=;
- b=WpVlysDp9vK5SNuiJntLkytlhsdhtsbu/+HsoE5xZk8yWn4QvOhUlJBCgG3cgKT4+l
- WGOKuEHMAHjxlNmugFTe+aHlc1DjqkoDabnkmUkLGWxVtGzbVZutlwr+1VERrkrUgSGm
- e4AyNI4kxUb2Ylfg1zmJhAYit0o2/yJ6Iflmyon5Nd+AYCquXHEqG/Vw23IirX+HPDao
- RsBGYTixFyoRA23/aNLPDkic1ExwYvp+SrM3AnnZE1U9ysA/WRXmCXGo2Iz3tYZoDAX6
- yhUK89pOlszebRTF/zVPRtzSQZBLqX6EYFxd0rYUchc8S8DLam8ti7Nkhgq51llCY2o9
- pyZQ==
-X-Gm-Message-State: AOAM532xKUe4jtcTF/uzuy9fUQdw3+pU6cLD5T5RKOTTCk6Oe4HE1fEk
- d1ZL8zmpR3RX2XDN0VrILf8Wsw==
-X-Google-Smtp-Source: ABdhPJyuJchmuxTVpwILYv0SxXq+AaTfD/pPbWAbbGIQDB/rEG3yKWTEsN9alX7Ngl05yOUMaGN1bA==
-X-Received: by 2002:a05:6e02:152f:: with SMTP id
- i15mr3711883ilu.277.1612375935896; 
- Wed, 03 Feb 2021 10:12:15 -0800 (PST)
+ bh=bjC27Eb9w9mM2SAEoXcwuyGIikNJU3zdPVeVR9rKt0c=;
+ b=Macw4GPwAA50SCsrOiIjbA5JgJ6xvEJF0fs0O3IMhU0m1roAEN7UEZwxZaoZeQl1Ge
+ tboHIYL5V7jwsB3WH2H99gb8RAF9fhrPiJICZEcYGaOCmYL9XOyjMWV0Q8B3qFa7ey4F
+ SZGw9PzxtFtaCn3Be+TXd57liA3vak+5L1AATvzzT3/UOqZBDsB4Pb3oH+24khHOMLA7
+ YzaJXfqnH8eZVqyFqqIjZdFaqZQOJAGNLUoYrMfoSwX1pkeymGX+z3Q6nC4COPySkP75
+ 2rNLk1clz1BG9/fDwy417U+MW95OtbDafR4Xh4IiBvp1Uo+1pzcNVSkT0YpfKUoySqEE
+ N76g==
+X-Gm-Message-State: AOAM531ZNouYH+ermE9rW2V4vZSN44bvJk+Vv8+7t/NCwhoVqZtA345H
+ nL1ZbMELYOYobt4U3TSb66PlKQ==
+X-Google-Smtp-Source: ABdhPJx8Qrp2K4WoCsSpLgc8CZBOB6oPCmpJqO+WHXB9WoPN+cz8O0USgJa4+n4x2TYfDLXOVcxczA==
+X-Received: by 2002:a92:d845:: with SMTP id h5mr3474042ilq.34.1612375937986;
+ Wed, 03 Feb 2021 10:12:17 -0800 (PST)
 Received: from shuah-t480s.internal (c-24-9-64-241.hsd1.co.comcast.net.
  [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id h21sm399684iob.30.2021.02.03.10.12.14
+ by smtp.gmail.com with ESMTPSA id h21sm399684iob.30.2021.02.03.10.12.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 10:12:15 -0800 (PST)
+ Wed, 03 Feb 2021 10:12:17 -0800 (PST)
 From: Shuah Khan <skhan@linuxfoundation.org>
 To: corbet@lwn.net, gregkh@linuxfoundation.org, peterz@infradead.org,
  keescook@chromium.org, rafael@kernel.org, lenb@kernel.org,
  james.morse@arm.com, tony.luck@intel.com, bp@alien8.de
-Subject: [PATCH v3 2/7] selftests: lib:test_seqnum_ops: add new test for
- seqnum_ops
-Date: Wed,  3 Feb 2021 11:11:58 -0700
-Message-Id: <08e6ceb7608d008faf9e28e4f08361af5618cf07.1612314468.git.skhan@linuxfoundation.org>
+Subject: [PATCH v3 3/7] drivers/acpi: convert seqno to use seqnum_ops
+Date: Wed,  3 Feb 2021 11:11:59 -0700
+Message-Id: <8d11eec80d6668065fb35a0b025c3614b67bf798.1612314468.git.skhan@linuxfoundation.org>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <cover.1612314468.git.skhan@linuxfoundation.org>
 References: <cover.1612314468.git.skhan@linuxfoundation.org>
@@ -96,112 +94,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add a new selftest for testing seqnum_ops. This test loads test_seqnum_ops
-test module and unloads it. The test module runs tests and prints results
-to dmesg.
-
 Sequence Number api provides interfaces for unsigned atomic up counters
 leveraging atomic_t and atomic64_t ops underneath.
 
-There are a number of atomic_t usages in the kernel where atomic_t api
-is used for counting sequence numbers and other statistical counters.
-Several of these usages, convert atomic_read() and atomic_inc_return()
-return values to unsigned. Introducing sequence number ops supports
-these use-cases with a standard core-api.
-
-Sequence Number ops provide interfaces to initialize, increment and get
-the sequence number. These ops also check for overflow and log message to
-indicate when overflow occurs.
+Convert seqno atomic counter to use seqnum_ops.
 
 Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
 ---
- Documentation/core-api/seqnum_ops.rst          |  9 +++++++++
- MAINTAINERS                                    |  1 +
- include/linux/seqnum_ops.h                     |  2 ++
- tools/testing/selftests/lib/Makefile           |  1 +
- tools/testing/selftests/lib/config             |  1 +
- tools/testing/selftests/lib/test_seqnum_ops.sh | 10 ++++++++++
- 6 files changed, 24 insertions(+)
- create mode 100755 tools/testing/selftests/lib/test_seqnum_ops.sh
+ drivers/acpi/acpi_extlog.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/core-api/seqnum_ops.rst b/Documentation/core-api/seqnum_ops.rst
-index ed4eba394799..6db2c9120885 100644
---- a/Documentation/core-api/seqnum_ops.rst
-+++ b/Documentation/core-api/seqnum_ops.rst
-@@ -51,3 +51,12 @@ Returns sequence number value. ::
+diff --git a/drivers/acpi/acpi_extlog.c b/drivers/acpi/acpi_extlog.c
+index 72f1fb77abcd..16a4928645a1 100644
+--- a/drivers/acpi/acpi_extlog.c
++++ b/drivers/acpi/acpi_extlog.c
+@@ -12,6 +12,7 @@
+ #include <linux/ratelimit.h>
+ #include <linux/edac.h>
+ #include <linux/ras.h>
++#include <linux/seqnum_ops.h>
+ #include <asm/cpu.h>
+ #include <asm/mce.h>
  
- .. warning::
-         seqnum32 wraps around to INT_MIN when it overflows.
-+
-+Where are the seqnum_ops and how to use and test them?
-+------------------------------------------------------
-+
-+.. kernel-doc:: include/linux/seqnum_ops.h
-+
-+Please see lib/test_seqnum_ops.c for examples usages and test module.
-+Please find selftest: testing/selftests/lib/test_seqnum_ops.sh
-+Please check dmesg for results after running test_seqnum_ops.sh.
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f9fe1438a8cd..70b9eeb995f7 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -16241,6 +16241,7 @@ L:	linux-kernel@vger.kernel.org
- S:	Maintained
- F:	include/linux/seqnum_ops.h
- F:	lib/test_seqnum_ops.c
-+F:	tools/testing/selftests/lib/test_seqnum_ops.sh
+@@ -93,8 +94,7 @@ static struct acpi_hest_generic_status *extlog_elog_entry_check(int cpu, int ban
+ static void __print_extlog_rcd(const char *pfx,
+ 			       struct acpi_hest_generic_status *estatus, int cpu)
+ {
+-	static atomic_t seqno;
+-	unsigned int curr_seqno;
++	static struct seqnum32 seqno;
+ 	char pfx_seq[64];
  
- SIMPLE FIRMWARE INTERFACE (SFI)
- S:	Obsolete
-diff --git a/include/linux/seqnum_ops.h b/include/linux/seqnum_ops.h
-index e8d8481445d3..d540b62d1aa4 100644
---- a/include/linux/seqnum_ops.h
-+++ b/include/linux/seqnum_ops.h
-@@ -18,6 +18,8 @@
-  *
-  * Reference and API guide:
-  *	Documentation/core-api/seqnum_ops.rst for more information.
-+ *	lib/test_seqnum_ops.c - example usages and test module
-+ *	tools/testing/selftests/lib/test_seqnum_ops.sh
-  */
- 
- #ifndef __LINUX_SEQNUM_OPS_H
-diff --git a/tools/testing/selftests/lib/Makefile b/tools/testing/selftests/lib/Makefile
-index a105f094676e..1818444f0e97 100644
---- a/tools/testing/selftests/lib/Makefile
-+++ b/tools/testing/selftests/lib/Makefile
-@@ -5,5 +5,6 @@
- all:
- 
- TEST_PROGS := printf.sh bitmap.sh prime_numbers.sh strscpy.sh
-+TEST_PROGS += test_seqnum_ops.sh
- 
- include ../lib.mk
-diff --git a/tools/testing/selftests/lib/config b/tools/testing/selftests/lib/config
-index b80ee3f6e265..674ed2a2ac82 100644
---- a/tools/testing/selftests/lib/config
-+++ b/tools/testing/selftests/lib/config
-@@ -3,3 +3,4 @@ CONFIG_TEST_BITMAP=m
- CONFIG_PRIME_NUMBERS=m
- CONFIG_TEST_STRSCPY=m
- CONFIG_TEST_BITOPS=m
-+CONFIG_TEST_SEQNUM_OPS=m
-diff --git a/tools/testing/selftests/lib/test_seqnum_ops.sh b/tools/testing/selftests/lib/test_seqnum_ops.sh
-new file mode 100755
-index 000000000000..fdce16b220ba
---- /dev/null
-+++ b/tools/testing/selftests/lib/test_seqnum_ops.sh
-@@ -0,0 +1,10 @@
-+#!/bin/sh
-+# SPDX-License-Identifier: GPL-2.0
-+#
-+# Copyright (c) 2020 Shuah Khan <skhan@linuxfoundation.org>
-+# Copyright (c) 2020 The Linux Foundation
-+#
-+# Tests the Sequence Number Ops interfaces using test_seqnum_ops
-+# kernel module
-+#
-+$(dirname $0)/../kselftest/module.sh "test_seqnum_ops" test_seqnum_ops
+ 	if (!pfx) {
+@@ -103,8 +103,8 @@ static void __print_extlog_rcd(const char *pfx,
+ 		else
+ 			pfx = KERN_ERR;
+ 	}
+-	curr_seqno = atomic_inc_return(&seqno);
+-	snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx, curr_seqno);
++	snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx,
++		 seqnum32_inc(&seqno));
+ 	printk("%s""Hardware error detected on CPU%d\n", pfx_seq, cpu);
+ 	cper_estatus_print(pfx_seq, estatus);
+ }
 -- 
 2.27.0
 
