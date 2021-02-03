@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BD1830E214
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Feb 2021 19:12:24 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42BF030E217
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Feb 2021 19:12:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D72586132;
-	Wed,  3 Feb 2021 18:12:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6637223600;
+	Wed,  3 Feb 2021 18:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i5PKsP8rmoof; Wed,  3 Feb 2021 18:12:22 +0000 (UTC)
+	with ESMTP id V4jyWEV9GZzb; Wed,  3 Feb 2021 18:12:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A8E2684E5E;
-	Wed,  3 Feb 2021 18:12:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D22942046C;
+	Wed,  3 Feb 2021 18:12:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 40B0C1BF2F9
- for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 30CCF1BF2F9
+ for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3D2D187164
- for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2D7FE84E5E
+ for <devel@linuxdriverproject.org>; Wed,  3 Feb 2021 18:12:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bNpYujDhxQ4F for <devel@linuxdriverproject.org>;
- Wed,  3 Feb 2021 18:12:18 +0000 (UTC)
+ with ESMTP id h9_CNPDeSkRA for <devel@linuxdriverproject.org>;
+ Wed,  3 Feb 2021 18:12:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f181.google.com (mail-il1-f181.google.com
- [209.85.166.181])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A446F87158
- for <devel@driverdev.osuosl.org>; Wed,  3 Feb 2021 18:12:18 +0000 (UTC)
-Received: by mail-il1-f181.google.com with SMTP id q9so145195ilo.1
- for <devel@driverdev.osuosl.org>; Wed, 03 Feb 2021 10:12:18 -0800 (PST)
+Received: from mail-io1-f42.google.com (mail-io1-f42.google.com
+ [209.85.166.42])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 197FF8610E
+ for <devel@driverdev.osuosl.org>; Wed,  3 Feb 2021 18:12:21 +0000 (UTC)
+Received: by mail-io1-f42.google.com with SMTP id n14so312172iog.3
+ for <devel@driverdev.osuosl.org>; Wed, 03 Feb 2021 10:12:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linuxfoundation.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bjC27Eb9w9mM2SAEoXcwuyGIikNJU3zdPVeVR9rKt0c=;
- b=KqWrrH2txCq4lO2ex6WKtRqHlkaLYMNP/cM5ExESO2VMWv16ydv9eW4RUqwDSNgULE
- cV9HAU5u2bk8h6Bdl11d/CiQYi/VeWsJsIfOQozly7zbb8GrHUOoPQ1x+sx+Tu2iCRKE
- N+71OcIyUcMeVWPZhq9WGSvc962kn3oWzcHPo=
+ bh=q/XjWOBQrwKZ3SFGSB0fATQ2ysDx1Jq6OdD33TEzEu4=;
+ b=Ca53H6enHZi+n+88m0jGJsgev/5lnuLUGNk2voy5K3CkZmT9+uJF4YH8ETx+tL+2IO
+ CsNamMChin+rVfByuLl3nBKMwXT+UjebNkNLPSpCDhm3jyBEi/GrkfSWDK+OBSvIqbuv
+ KrhYy0sJv/lDXYjv+3sK05wxFYcwI/qdrikZ0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bjC27Eb9w9mM2SAEoXcwuyGIikNJU3zdPVeVR9rKt0c=;
- b=Macw4GPwAA50SCsrOiIjbA5JgJ6xvEJF0fs0O3IMhU0m1roAEN7UEZwxZaoZeQl1Ge
- tboHIYL5V7jwsB3WH2H99gb8RAF9fhrPiJICZEcYGaOCmYL9XOyjMWV0Q8B3qFa7ey4F
- SZGw9PzxtFtaCn3Be+TXd57liA3vak+5L1AATvzzT3/UOqZBDsB4Pb3oH+24khHOMLA7
- YzaJXfqnH8eZVqyFqqIjZdFaqZQOJAGNLUoYrMfoSwX1pkeymGX+z3Q6nC4COPySkP75
- 2rNLk1clz1BG9/fDwy417U+MW95OtbDafR4Xh4IiBvp1Uo+1pzcNVSkT0YpfKUoySqEE
- N76g==
-X-Gm-Message-State: AOAM531ZNouYH+ermE9rW2V4vZSN44bvJk+Vv8+7t/NCwhoVqZtA345H
- nL1ZbMELYOYobt4U3TSb66PlKQ==
-X-Google-Smtp-Source: ABdhPJx8Qrp2K4WoCsSpLgc8CZBOB6oPCmpJqO+WHXB9WoPN+cz8O0USgJa4+n4x2TYfDLXOVcxczA==
-X-Received: by 2002:a92:d845:: with SMTP id h5mr3474042ilq.34.1612375937986;
- Wed, 03 Feb 2021 10:12:17 -0800 (PST)
+ bh=q/XjWOBQrwKZ3SFGSB0fATQ2ysDx1Jq6OdD33TEzEu4=;
+ b=cv4flXze5r8QgMZi35Yp98mOMhpT8/Fz2xYR3hAxlEjnKpFHidLMhmrbfsXnLLlRKs
+ xmRdRhpKah1hhJYuHCmdr4UHzFmrwWK7uobjERu3wSQy1BJnL9i7kXx09IWG6zYvJ1PQ
+ Wf9aM8W3nk19tBud3ISKDIk4dvBgbGyo50pBpi7CVjhVGOeGrWUa8ujhX+CaicSck8E0
+ 8FHTqWwsXFfi3QxkENHH5O0U9g5j0wm1HVtleVLt8HRThw/sMEtZTgg59Kyufc/iriLy
+ gzyw7H2aPvbv2cJ4Xrjx52PXBGjdtwPmYeUJyyEWNoP4CoYbZH53M9TYIezyqbpqwVRT
+ iKjg==
+X-Gm-Message-State: AOAM532aobIN6bhLMZSlGioGqd0uIrwhne2ujKS86mRKXXzqFOpWAeq8
+ hx78nQOQKj5g+qV5cRrt9ISWQQ==
+X-Google-Smtp-Source: ABdhPJw8iD9beaycWlURDEZl4vpUK/XlUZjR45GfkvhmxT8ZKEaI7qDG0lvzt7C8BSA2pY18tqX2mg==
+X-Received: by 2002:a5d:968e:: with SMTP id m14mr3468449ion.26.1612375940544; 
+ Wed, 03 Feb 2021 10:12:20 -0800 (PST)
 Received: from shuah-t480s.internal (c-24-9-64-241.hsd1.co.comcast.net.
  [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id h21sm399684iob.30.2021.02.03.10.12.16
+ by smtp.gmail.com with ESMTPSA id h21sm399684iob.30.2021.02.03.10.12.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 10:12:17 -0800 (PST)
+ Wed, 03 Feb 2021 10:12:19 -0800 (PST)
 From: Shuah Khan <skhan@linuxfoundation.org>
 To: corbet@lwn.net, gregkh@linuxfoundation.org, peterz@infradead.org,
  keescook@chromium.org, rafael@kernel.org, lenb@kernel.org,
  james.morse@arm.com, tony.luck@intel.com, bp@alien8.de
-Subject: [PATCH v3 3/7] drivers/acpi: convert seqno to use seqnum_ops
-Date: Wed,  3 Feb 2021 11:11:59 -0700
-Message-Id: <8d11eec80d6668065fb35a0b025c3614b67bf798.1612314468.git.skhan@linuxfoundation.org>
+Subject: [PATCH v3 4/7] drivers/acpi/apei: convert seqno to seqnum_ops
+Date: Wed,  3 Feb 2021 11:12:00 -0700
+Message-Id: <d0f4ecaf408f2ea1d8cbb719b4fcabf969749c04.1612314468.git.skhan@linuxfoundation.org>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <cover.1612314468.git.skhan@linuxfoundation.org>
 References: <cover.1612314468.git.skhan@linuxfoundation.org>
@@ -101,42 +101,42 @@ Convert seqno atomic counter to use seqnum_ops.
 
 Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
 ---
- drivers/acpi/acpi_extlog.c | 8 ++++----
+ drivers/acpi/apei/ghes.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/acpi/acpi_extlog.c b/drivers/acpi/acpi_extlog.c
-index 72f1fb77abcd..16a4928645a1 100644
---- a/drivers/acpi/acpi_extlog.c
-+++ b/drivers/acpi/acpi_extlog.c
-@@ -12,6 +12,7 @@
- #include <linux/ratelimit.h>
- #include <linux/edac.h>
+diff --git a/drivers/acpi/apei/ghes.c b/drivers/acpi/apei/ghes.c
+index fce7ade2aba9..103f67edee1a 100644
+--- a/drivers/acpi/apei/ghes.c
++++ b/drivers/acpi/apei/ghes.c
+@@ -41,6 +41,7 @@
+ #include <linux/uuid.h>
  #include <linux/ras.h>
+ #include <linux/task_work.h>
 +#include <linux/seqnum_ops.h>
- #include <asm/cpu.h>
- #include <asm/mce.h>
  
-@@ -93,8 +94,7 @@ static struct acpi_hest_generic_status *extlog_elog_entry_check(int cpu, int ban
- static void __print_extlog_rcd(const char *pfx,
- 			       struct acpi_hest_generic_status *estatus, int cpu)
+ #include <acpi/actbl1.h>
+ #include <acpi/ghes.h>
+@@ -625,8 +626,7 @@ static void __ghes_print_estatus(const char *pfx,
+ 				 const struct acpi_hest_generic *generic,
+ 				 const struct acpi_hest_generic_status *estatus)
  {
 -	static atomic_t seqno;
 -	unsigned int curr_seqno;
 +	static struct seqnum32 seqno;
  	char pfx_seq[64];
  
- 	if (!pfx) {
-@@ -103,8 +103,8 @@ static void __print_extlog_rcd(const char *pfx,
+ 	if (pfx == NULL) {
+@@ -636,8 +636,8 @@ static void __ghes_print_estatus(const char *pfx,
  		else
  			pfx = KERN_ERR;
  	}
 -	curr_seqno = atomic_inc_return(&seqno);
--	snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx, curr_seqno);
-+	snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx,
+-	snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}" HW_ERR, pfx, curr_seqno);
++	snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}" HW_ERR, pfx,
 +		 seqnum32_inc(&seqno));
- 	printk("%s""Hardware error detected on CPU%d\n", pfx_seq, cpu);
+ 	printk("%s""Hardware error from APEI Generic Hardware Error Source: %d\n",
+ 	       pfx_seq, generic->header.source_id);
  	cper_estatus_print(pfx_seq, estatus);
- }
 -- 
 2.27.0
 
