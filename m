@@ -1,58 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E5A930FF27
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 22:18:21 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 64EA930FFB9
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 22:55:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E259C87272;
-	Thu,  4 Feb 2021 21:18:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E63FC868EF;
+	Thu,  4 Feb 2021 21:55:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yffbliZKBHOT; Thu,  4 Feb 2021 21:18:18 +0000 (UTC)
+	with ESMTP id SmZzxwWEdZcC; Thu,  4 Feb 2021 21:55:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 17AD387245;
-	Thu,  4 Feb 2021 21:18:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 05F92868D9;
+	Thu,  4 Feb 2021 21:55:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 35E341BF33E
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 21:18:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C863A1BF33E
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 21:55:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 303B92D059
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 21:18:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BD8222043C
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 21:55:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dbaN2Wey6mL4 for <devel@linuxdriverproject.org>;
- Thu,  4 Feb 2021 21:18:11 +0000 (UTC)
+ with ESMTP id lrh1katidI0X for <devel@linuxdriverproject.org>;
+ Thu,  4 Feb 2021 21:55:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from knopi.disroot.org (knopi.disroot.org [178.21.23.139])
- by silver.osuosl.org (Postfix) with ESMTPS id E64702D8B7
- for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 21:18:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by disroot.org (Postfix) with ESMTP id 054CD50DCE;
- Thu,  4 Feb 2021 22:18:08 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at disroot.org
-Received: from knopi.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7wPuzTRtVEr2; Thu,  4 Feb 2021 22:18:06 +0100 (CET)
-From: Ayush <ayush@disroot.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
- t=1612473485; bh=/+NEzUUuQp8RPmE1cUqmrXC27+S+5xXWCOlWoYZdB4g=;
- h=From:To:Cc:Subject:Date;
- b=GjQ6lvo+pLXAJc1j9SuI5fs1UqMvn9Y5cacOQTLY03lftdlkJxkLn/+tNhBpUJPyc
- YV6OtcXedCMO9imUF8Gv0LaeIC9GaVV1e+jjYiBVRrJpstNxidGw63EIngxzYNG42q
- cs2/dQYEs2ic8SgErMDcN1fw5Bq2wPmPde0lodNwZfPVwn7Ka41hoioRYAfuHcdnEY
- iJiJbtO1OIZ/CgMn1Th7CP7ptCOIJ3753rJgWoliBZdjyGQgvCyngds93XZgQphUMi
- JE91oVQnz28dW7ATy8bk+DlgnKFcJ7gjhAbBjIX1FGij5DmZD5yUesULCwAwwRf9mK
- 6ij7HnDPQDETA==
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: fix pointer declaration style
-Date: Fri,  5 Feb 2021 02:47:50 +0530
-Message-Id: <20210204211750.102129-1-ayush@disroot.org>
-Mime-Version: 1.0
+Received: from mail-qt1-f179.google.com (mail-qt1-f179.google.com
+ [209.85.160.179])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8BD0920432
+ for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 21:55:35 +0000 (UTC)
+Received: by mail-qt1-f179.google.com with SMTP id e15so3596680qte.9
+ for <devel@driverdev.osuosl.org>; Thu, 04 Feb 2021 13:55:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TpNR/qUQzjMgrNMY8WiD0ezGe7uykjtuTLC9thjn8a4=;
+ b=RNpwBclZVwN9RxcPCe+47atq297vQ3yjHyfe3aRBa0mPQyIzbTyjxaQLuP2D35m1HZ
+ aHLGzjzAiiItFIkjqEbKdKfcoofm5NnPSCK9xY0em2J1NLgx1YGFwSFutZcO/4Ex7796
+ U/WCHURkUYWOOrLYgnIzL0Cn1zTF5RbGEEqENiyXG/fJER1YJPUtq16vqJa67Rck5Ql/
+ GrqL03lMn3kbGbKMMpLQp+V1ws74gKDpRub9eyN4ky0E+DuXiiC5lOCZf0fTAaAthSvZ
+ RsQLKLRRkGRKCh9ZOlkq/+3xcFKfR3C0bUG2stT3yg7To/6QPy18i7+9/asarXLnMFlp
+ dBOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TpNR/qUQzjMgrNMY8WiD0ezGe7uykjtuTLC9thjn8a4=;
+ b=EJUZr9ACk3jvE19mtyLla0xOasNEvr+tYNFjsGjch1UGRdAKvUHL+aDreinz62FVRf
+ DY2h98632xKwiVEkug7x+LuY/7MkfO6wXLlNbLrWqt/bi9CPYQrby1IGVZpuRJjA/2ln
+ 86tmTHH9NO0/LMGYA3wkfZKk8iM0Zab4xbuKNxNitUI//Oxn5zWhlYdcsm8APpxdgwcf
+ 3pln4H/qTyQuDqiPHEfplitnFAoro56Os9Ksvnsi/ul9mAj+LHCMOLpzReBmSd7xnBfC
+ tyUalpysAkMztWXFDpeh3/4lwg+mNRzDnu7DUqUpKc6/0BAFA8agWlW/VqcjQIza1Nn1
+ /W0w==
+X-Gm-Message-State: AOAM531M+FaTexgGfumMF4y0nK0omLETy7P6TXxJfh2oUN4dzY6/KOPp
+ Bch+XBpjwr1VBWbUWM6mfsc=
+X-Google-Smtp-Source: ABdhPJzlpDuhn/mJzhWCfkUnpQCI85+erWHahrbX/wavXQ+zIuymbwaFTRyApeqeHTmTBEzDIL8QKQ==
+X-Received: by 2002:ac8:5995:: with SMTP id e21mr1665445qte.294.1612475734577; 
+ Thu, 04 Feb 2021 13:55:34 -0800 (PST)
+Received: from localhost.localdomain ([45.87.214.195])
+ by smtp.googlemail.com with ESMTPSA id l30sm5366573qtv.54.2021.02.04.13.55.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Feb 2021 13:55:33 -0800 (PST)
+From: ameynarkhede02@gmail.com
+To: manishc@marvell.com, GR-Linux-NIC-Dev@marvell.com,
+ gregkh@linuxfoundation.org
+Subject: [PATCH] staging: qlge/qlge_main: Use min_t instead of min
+Date: Fri,  5 Feb 2021 03:24:51 +0530
+Message-Id: <20210204215451.69928-1-ameynarkhede02@gmail.com>
+X-Mailer: git-send-email 2.30.0
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,53 +84,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, luk@wybcz.pl
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Amey Narkhede <ameynarkhede02@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix some pointer declarations where '*' is not adjacent to
-data name.
-This fixes checkpatch.pl error: "POINTER_LOCATION: "foo * bar"
-should be "foo *bar""
+From: Amey Narkhede <ameynarkhede02@gmail.com>
 
-Signed-off-by: Ayush <ayush@disroot.org>
+Use min_t instead of min function in qlge/qlge_main.c
+Fixes following checkpatch.pl warning:
+WARNING: min() should probably be min_t(int, MAX_CPUS, num_online_cpus())
+
+Signed-off-by: Amey Narkhede <ameynarkhede02@gmail.com>
 ---
-compile tested only.
+ drivers/staging/qlge/qlge_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/rtl8723bs/include/hal_intf.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 402edaeff..29606d1eb 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -3938,7 +3938,7 @@ static int ql_configure_rings(struct ql_adapter *qdev)
+ 	int i;
+ 	struct rx_ring *rx_ring;
+ 	struct tx_ring *tx_ring;
+-	int cpu_cnt = min(MAX_CPUS, (int)num_online_cpus());
++	int cpu_cnt = min_t(int, MAX_CPUS, (int)num_online_cpus());
 
-diff --git a/drivers/staging/rtl8723bs/include/hal_intf.h b/drivers/staging/rtl8723bs/include/hal_intf.h
-index 1de5acaef8ff..426c8d58c444 100644
---- a/drivers/staging/rtl8723bs/include/hal_intf.h
-+++ b/drivers/staging/rtl8723bs/include/hal_intf.h
-@@ -257,8 +257,8 @@ struct hal_ops {
- 	bool	(*Efuse_PgPacketWrite_BT)(struct adapter *padapter, u8 offset, u8 word_en, u8 *data, bool bPseudoTest);
- 
- 	s32 (*xmit_thread_handler)(struct adapter *padapter);
--	void (*hal_notch_filter)(struct adapter * adapter, bool enable);
--	void (*hal_reset_security_engine)(struct adapter * adapter);
-+	void (*hal_notch_filter)(struct adapter *adapter, bool enable);
-+	void (*hal_reset_security_engine)(struct adapter *adapter);
- 	s32 (*c2h_handler)(struct adapter *padapter, u8 *c2h_evt);
- 	c2h_id_filter c2h_id_filter_ccx;
- 
-@@ -384,8 +384,8 @@ void rtw_hal_dm_watchdog_in_lps(struct adapter *padapter);
- 
- s32 rtw_hal_xmit_thread_handler(struct adapter *padapter);
- 
--void rtw_hal_notch_filter(struct adapter * adapter, bool enable);
--void rtw_hal_reset_security_engine(struct adapter * adapter);
-+void rtw_hal_notch_filter(struct adapter *adapter, bool enable);
-+void rtw_hal_reset_security_engine(struct adapter *adapter);
- 
- bool rtw_hal_c2h_valid(struct adapter *adapter, u8 *buf);
- s32 rtw_hal_c2h_handler(struct adapter *adapter, u8 *c2h_evt);
--- 
+ 	/* In a perfect world we have one RSS ring for each CPU
+ 	 * and each has it's own vector.  To do that we ask for
+--
 2.30.0
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
