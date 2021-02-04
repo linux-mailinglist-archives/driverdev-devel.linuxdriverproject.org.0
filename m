@@ -1,64 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40F0430F4A2
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 15:11:47 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB31830F565
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 15:51:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E3B38850CF;
-	Thu,  4 Feb 2021 14:11:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5FC64860AD;
+	Thu,  4 Feb 2021 14:51:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z+3WEzDqI7Od; Thu,  4 Feb 2021 14:11:45 +0000 (UTC)
+	with ESMTP id wrqSDZlBfzK6; Thu,  4 Feb 2021 14:51:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A57BB84F98;
-	Thu,  4 Feb 2021 14:11:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 78E2585F8C;
+	Thu,  4 Feb 2021 14:51:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A1E271BF5A3
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 14:11:42 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 278FE1BF5A3
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 14:51:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 84B3C20020
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 14:11:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 218A68553C
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 14:51:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2oix88Khqzta for <devel@linuxdriverproject.org>;
- Thu,  4 Feb 2021 14:11:41 +0000 (UTC)
+ with ESMTP id Mx--DhtTBGKN for <devel@linuxdriverproject.org>;
+ Thu,  4 Feb 2021 14:51:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f170.google.com (mail-oi1-f170.google.com
- [209.85.167.170])
- by silver.osuosl.org (Postfix) with ESMTPS id DA88D1FE49
- for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 14:11:40 +0000 (UTC)
-Received: by mail-oi1-f170.google.com with SMTP id j25so3852386oii.0
- for <devel@driverdev.osuosl.org>; Thu, 04 Feb 2021 06:11:40 -0800 (PST)
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com
+ [209.85.221.50])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 438468543B
+ for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 14:51:48 +0000 (UTC)
+Received: by mail-wr1-f50.google.com with SMTP id g10so3872109wrx.1
+ for <devel@driverdev.osuosl.org>; Thu, 04 Feb 2021 06:51:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=1tKBbIR4fWGNy/DkjznXmDcn30clccCwDDnQOymnr5o=;
+ b=lowTAP/p6H/c5T3jDMEClUYbkbotY60JVGaI4ih0IGq5VPn6yxxxQO+B62cZoMjiBl
+ cv/HDKI2E4eQfXZsqaWD0iNTxO5wWBOFmgzWpR4FnZPir1hrncJjB9P9uhcEv0ivfiRW
+ cf4FN7n9dg7Vf2Xqg8s0qYBUQ/sUA8eDK1T5wMLsORUsSMzp3kJWoHIbB/xKm87/bAKp
+ zkiQW9MlF3ZXAlZC9sQ055QtC0X1wQOakhzbCjPsb1HlrIGtHjy2hZMmcien12IC7Ki3
+ rgUA+6vlbS6ErQXr1G1k6rdFvivBJtX4PnduA9sm6C816RnKiKEspYSq3F/3Zp5k8lwM
+ 9b8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AeTSTNxgLE2BT0GTudXgmFb4g9IjjW+lbLXDMlVfRik=;
- b=KniTLZht5ZzZXmx/CS0CuYnRsrG0YvC1fhjkc7lgOku/Qx681ujkRQWZLUG89db/BZ
- poYfhwlWgg6XtR90PXORUuijJi2oEW3qgMMjT4YakaShGPZXp/QIBv1utwC6uthR7ITc
- gi4IYwBpQY5LXtmBUxOv+6N1RqiGoVZknK9tk+VuxmU63rKzgI3MtrpYSacGrsJAsK3X
- hkuYdhlvOG+2NU+M7r/c1kSwRKZgcGK7db0idNp0tkfXQoQGxMFaJeHfN3+j6dS1Blok
- EeNoXBAxUC2VinysRErLynemJmUOyQDOsTYZh/WMmGLc+nR20nPqYjiMGsWCr61gxSHg
- sj0w==
-X-Gm-Message-State: AOAM532QuK81Tw+KR666Drx6E/TkriOCf0KkEA/c83Z314dyeMOhb6dz
- UkYOe5adEwQAG9Uo6PJg3i7ge+D/ZO1MF0eLh3LZOnoVfT4=
-X-Google-Smtp-Source: ABdhPJwIMkZ9crB5RzPfP0aiVhmh61qrbaAU2HVxqJSpznq2cpzmYfpLAgUbYTQO/oABbafz5fjdh/q7MscPh0Ye06E=
-X-Received: by 2002:aca:308a:: with SMTP id w132mr5018580oiw.69.1612447327733; 
- Thu, 04 Feb 2021 06:02:07 -0800 (PST)
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=1tKBbIR4fWGNy/DkjznXmDcn30clccCwDDnQOymnr5o=;
+ b=I/eLEJ+1hQwUg7HK39BHO4yhOEr3PLGzSMHNhLxMTNceZoi+rkUA3ySgrNMU8KKK79
+ z1WzKBmJ9IYa6Herm39Au16SPWF9xMh2xD03BXNce849lwFinKFTxsAvbGgftRy+3cbG
+ CR2GZ1QKwp/aAj7FF3C/K0yN99b9JycKKemrQ33WYYbWAYFKRZaIYizabnQ5JfUUw+At
+ qYrdkM9GrB2bz/KDK8A5bLCmW1zDa9Ez8VcZJfyf3miJI/2UHD1o8Ou7gDytslHk0nOV
+ ZgkH+eteLqOTFSWCtkP7dytTnfY5UwjL2Hn94AFB/HZ6jW80vscoGINe/FRrJi3XnqEQ
+ eHZg==
+X-Gm-Message-State: AOAM5330h6eKcfBW42XKymv/FJW3lIbubmkPDubmLw9XXcxT61isV6L2
+ TcRdnxsllmrGSVMz2UW6AkI=
+X-Google-Smtp-Source: ABdhPJyVuSUWI6KjAL+pvJkLiegbo19gHvRJIW+dOyxIj8aGroNo8CIzFM4Hx8Sei42qQMHh5e61Vw==
+X-Received: by 2002:a5d:538b:: with SMTP id d11mr10047459wrv.334.1612450306719; 
+ Thu, 04 Feb 2021 06:51:46 -0800 (PST)
+Received: from LEGION ([27.255.58.138])
+ by smtp.gmail.com with ESMTPSA id n187sm6323450wmf.29.2021.02.04.06.51.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Feb 2021 06:51:45 -0800 (PST)
+Message-ID: <3d1f36ebd3b59788a586e55bcaaad9705ecca4be.camel@gmail.com>
+Subject: Re: [PATCH] staging: rtl8192e, rtl8192u: use correct notation to
+ define pointer
+From: Muhammad Usama Anjum <musamaanjum@gmail.com>
+To: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>, Greg KH
+ <gregkh@linuxfoundation.org>
+Date: Thu, 04 Feb 2021 19:51:42 +0500
+In-Reply-To: <20201028044232.qtzsnrrh7xgdzsoc@ltop.local>
+References: <20201026121435.GA782465@LEGION>
+ <20201027112303.GA405023@kroah.com>
+ <20201028044232.qtzsnrrh7xgdzsoc@ltop.local>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-References: <cover.1612314468.git.skhan@linuxfoundation.org>
- <8d11eec80d6668065fb35a0b025c3614b67bf798.1612314468.git.skhan@linuxfoundation.org>
-In-Reply-To: <8d11eec80d6668065fb35a0b025c3614b67bf798.1612314468.git.skhan@linuxfoundation.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 4 Feb 2021 15:01:56 +0100
-Message-ID: <CAJZ5v0i8-HpSAk=HGOgVN1RTLup4Rh0WTt0H3LQh1EfuWE-e+w@mail.gmail.com>
-Subject: Re: [PATCH v3 3/7] drivers/acpi: convert seqno to use seqnum_ops
-To: Shuah Khan <skhan@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,81 +89,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Tony Luck <tony.luck@intel.com>,
- Kees Cook <keescook@chromium.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jonathan Corbet <corbet@lwn.net>,
- "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
- James Morse <james.morse@arm.com>, linux-kselftest@vger.kernel.org,
- Borislav Petkov <bp@alien8.de>, Len Brown <lenb@kernel.org>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Shuah,
+> Sparse's warning is not about changing the definition of this member
+> as if it was the argument of a function. It's about how can you use
+> an array of structure when this structure has a flexible member.
 
-First off, please indicate the component in the subject, for example:
+We have the following structures in drivers/staging/rtl8192e. (I've
+simplified them for showing here.)
 
-"ACPI: extlog: convert seqno to use seqnum_ops"
+struct rtllib_hdr_3addr {
+	int a;	
+	int payload[];
+};
 
-On Wed, Feb 3, 2021 at 7:12 PM Shuah Khan <skhan@linuxfoundation.org> wrote:
->
-> Sequence Number api provides interfaces for unsigned atomic up counters
-> leveraging atomic_t and atomic64_t ops underneath.
->
-> Convert seqno atomic counter to use seqnum_ops.
+struct rtllib_info_element {
+	int len;
+	int data[];
+};
 
-Apart from the above, it would be good to say why the change is an improvement.
+struct rtllib_probe_request {
+	struct rtllib_hdr_3addr header;
+	struct rtllib_info_element info_element[];
+};
 
-It looks like the rationale is that using struct seqnum32 would allow
-tools to easily detect the usage of sequence numbers, but is there
-anything else in this particular case?
+static void func(struct rtllib_probe_request *ptr) {
+	ptr->header.a = 1;
+}
 
-> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
-> ---
->  drivers/acpi/acpi_extlog.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/acpi/acpi_extlog.c b/drivers/acpi/acpi_extlog.c
-> index 72f1fb77abcd..16a4928645a1 100644
-> --- a/drivers/acpi/acpi_extlog.c
-> +++ b/drivers/acpi/acpi_extlog.c
-> @@ -12,6 +12,7 @@
->  #include <linux/ratelimit.h>
->  #include <linux/edac.h>
->  #include <linux/ras.h>
-> +#include <linux/seqnum_ops.h>
->  #include <asm/cpu.h>
->  #include <asm/mce.h>
->
-> @@ -93,8 +94,7 @@ static struct acpi_hest_generic_status *extlog_elog_entry_check(int cpu, int ban
->  static void __print_extlog_rcd(const char *pfx,
->                                struct acpi_hest_generic_status *estatus, int cpu)
->  {
-> -       static atomic_t seqno;
-> -       unsigned int curr_seqno;
-> +       static struct seqnum32 seqno;
->         char pfx_seq[64];
->
->         if (!pfx) {
-> @@ -103,8 +103,8 @@ static void __print_extlog_rcd(const char *pfx,
->                 else
->                         pfx = KERN_ERR;
->         }
-> -       curr_seqno = atomic_inc_return(&seqno);
-> -       snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx, curr_seqno);
-> +       snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx,
-> +                seqnum32_inc(&seqno));
->         printk("%s""Hardware error detected on CPU%d\n", pfx_seq, cpu);
->         cper_estatus_print(pfx_seq, estatus);
->  }
-> --
-> 2.27.0
->
+Running sparse gives: 
+sparse -Wflexible-array-array flexible_array.c
+flexible_array.c:13:48: warning: array of flexible structures
+
+There are several such structures in rtl8192e and rtl8192u. I've been
+trying to fix one of them. But it seems like more knowledge is
+required to refactor the driver.
+
+Thanks,
+Usama
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
