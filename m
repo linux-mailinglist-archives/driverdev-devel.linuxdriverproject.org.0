@@ -1,59 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9580930EDEC
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 09:04:00 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AE8330EF0B
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 09:52:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D14685EC6;
-	Thu,  4 Feb 2021 08:03:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 96B1286AF3;
+	Thu,  4 Feb 2021 08:52:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fRAhYJN-IltP; Thu,  4 Feb 2021 08:03:57 +0000 (UTC)
+	with ESMTP id Kp3igQiYN1u8; Thu,  4 Feb 2021 08:52:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F29D85EF1;
-	Thu,  4 Feb 2021 08:03:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 83F8C869A2;
+	Thu,  4 Feb 2021 08:52:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A84271BF844
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 08:03:54 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8724C1BF303
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 08:52:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7029287123
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 08:03:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7386E20407
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 08:52:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q85XVzqSnVwh for <devel@linuxdriverproject.org>;
- Thu,  4 Feb 2021 08:03:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D13068712C
- for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 08:03:53 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 80F7F64E31;
- Thu,  4 Feb 2021 08:03:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612425833;
- bh=l9ZMtxaWdlJ1HbbmtjUwxdoQZJ9SJ+NLgrPaOz9k7aY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ezlazHLvCAOyaozx0y2isxj4ErAbPbIVApegzjf/SLS9X5vRKNabzavRgeLvnNWgh
- tjH6TMNmy3m6HcvF1L+nFvh80zgOaYfyduYGxx2XtTyebBIGVFmv63oXtI2rKB7xo8
- l7iCJUCrGj+8J7XfDsBEifXKI9/5Fvdv/+gOZIEZ1cqQaaPKff7VnmNTc0otT5Nbsr
- wnu30TQUHoY//+wfuUNPYuKpNDadKOmHpqCw6atnNirzZxnUjmDIflN3bH2sVDaCXT
- 9dX8/4sJJ8tOd7slEAd8A6RU7p/zF5itofJ2jZ2r3C6nC+9jKkn18+87rNkVIRPJlm
- 53e423qQDwHiQ==
-Date: Thu, 4 Feb 2021 13:33:49 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH v7 10/14] phy: phy-hi3670-usb3: move driver from staging
- into phy
-Message-ID: <20210204080349.GL3079@vkoul-mobl.Dlink>
-References: <cover.1611932194.git.mchehab+huawei@kernel.org>
- <810f286cade454acda418b9e5f39bb3a595e871a.1611932194.git.mchehab+huawei@kernel.org>
+ with ESMTP id YhcoMVvOdDNI for <devel@linuxdriverproject.org>;
+ Thu,  4 Feb 2021 08:52:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from viti.kaiser.cx (viti.kaiser.cx [85.214.81.225])
+ by silver.osuosl.org (Postfix) with ESMTPS id F1034203D9
+ for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 08:52:34 +0000 (UTC)
+Received: from ipservice-092-217-087-202.092.217.pools.vodafone-ip.de
+ ([92.217.87.202] helo=martin-debian-2.paytec.ch)
+ by viti.kaiser.cx with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <martin@kaiser.cx>)
+ id 1l7aNK-0001X7-D1; Thu, 04 Feb 2021 09:52:30 +0100
+From: Martin Kaiser <martin@kaiser.cx>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rtl8188eu: Add Edimax EW-7811UN V2 to device table
+Date: Thu,  4 Feb 2021 09:52:17 +0100
+Message-Id: <20210204085217.9743-1-martin@kaiser.cx>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <810f286cade454acda418b9e5f39bb3a595e871a.1611932194.git.mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,25 +56,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Yu Chen <chenyu56@huawei.com>,
- linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Rob Herring <robh+dt@kernel.org>, David Gow <davidgow@google.com>,
- Alex Dewar <alex.dewar90@gmail.com>
+Cc: devel@driverdev.osuosl.org, Martin Kaiser <martin@kaiser.cx>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 29-01-21, 16:03, Mauro Carvalho Chehab wrote:
-> The phy USB3 driver for Hisilicon 970 (hi3670) is ready
-> for mainstream. Mode it from staging into the main driver's
-> phy/ directory.
+The Edimax EW-7811UN V2 uses an RTL8188EU chipset and works with this
+driver.
 
-Acked-By: Vinod Koul <vkoul@kernel.org>
+Signed-off-by: Martin Kaiser <martin@kaiser.cx>
+---
+ drivers/staging/rtl8188eu/os_dep/usb_intf.c | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/drivers/staging/rtl8188eu/os_dep/usb_intf.c b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
+index 43ebd11b53fe..efad43d8e465 100644
+--- a/drivers/staging/rtl8188eu/os_dep/usb_intf.c
++++ b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
+@@ -41,6 +41,7 @@ static const struct usb_device_id rtw_usb_id_tbl[] = {
+ 	{USB_DEVICE(0x2357, 0x0111)}, /* TP-Link TL-WN727N v5.21 */
+ 	{USB_DEVICE(0x2C4E, 0x0102)}, /* MERCUSYS MW150US v2 */
+ 	{USB_DEVICE(0x0df6, 0x0076)}, /* Sitecom N150 v2 */
++	{USB_DEVICE(0x7392, 0xb811)}, /* Edimax EW-7811UN V2 */
+ 	{USB_DEVICE(USB_VENDER_ID_REALTEK, 0xffef)}, /* Rosewill RNX-N150NUB */
+ 	{}	/* Terminating entry */
+ };
 -- 
-~Vinod
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
