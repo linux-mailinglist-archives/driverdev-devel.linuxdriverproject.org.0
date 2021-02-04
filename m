@@ -2,129 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B0ED30F39F
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 14:05:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40F0430F4A2
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 15:11:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 383DB87117;
-	Thu,  4 Feb 2021 13:05:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E3B38850CF;
+	Thu,  4 Feb 2021 14:11:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MZjbSUua81UN; Thu,  4 Feb 2021 13:05:08 +0000 (UTC)
+	with ESMTP id Z+3WEzDqI7Od; Thu,  4 Feb 2021 14:11:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 59D0686F84;
-	Thu,  4 Feb 2021 13:05:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A57BB84F98;
+	Thu,  4 Feb 2021 14:11:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A96581BF57C
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 13:05:05 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A1E271BF5A3
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 14:11:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9F271870BD
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 13:05:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 84B3C20020
+ for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 14:11:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c-zQJvg75jkU for <devel@linuxdriverproject.org>;
- Thu,  4 Feb 2021 13:05:03 +0000 (UTC)
-X-Greylist: delayed 00:05:37 by SQLgrey-1.7.6
-Received: from mailout2.w1.samsung.com (mailout2.w1.samsung.com
- [210.118.77.12])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 862B986F84
- for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 13:05:03 +0000 (UTC)
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20210204125923euoutp02ef1f3c2381b15e8e273ac392e271306a~gjODKNr6Z1366213662euoutp02j
- for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 12:59:23 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20210204125923euoutp02ef1f3c2381b15e8e273ac392e271306a~gjODKNr6Z1366213662euoutp02j
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1612443563;
- bh=w7hfHypJZijxK8JFc5TVj8rXVC9Oyo0ayBAp0KkUDYo=;
- h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
- b=i767CN/+1LE3Oaqdpn2tv6LHoQpsFPgXsgI+fZ4BkdiWMDSwvEgGmqwPN8GlX3h0S
- zy4QAqC1XMdHTHkNF8wjRHBQNazL9MCTqYvAUlmvmNEFsVc6HPhP32I+24V8Yd3vri
- ZejL1lwpMlA/Yp0ginJf8kvpMhY5I9r+wWb/GwBM=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20210204125923eucas1p2c90b7f8976b27a610e80bd7a32c18988~gjOCnmIHZ0262802628eucas1p2b;
- Thu,  4 Feb 2021 12:59:23 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges1new.samsung.com (EUCPMTA) with SMTP id E4.91.27958.AAFEB106; Thu,  4
- Feb 2021 12:59:23 +0000 (GMT)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20210204125922eucas1p2d832c777e404561418768f013ba983d5~gjOCPrrMW2557425574eucas1p2c;
- Thu,  4 Feb 2021 12:59:22 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20210204125922eusmtrp266dd073b8b33d4465b881362b6806d40~gjOCOpXC-2733127331eusmtrp2j;
- Thu,  4 Feb 2021 12:59:22 +0000 (GMT)
-X-AuditID: cbfec7f2-f15ff70000006d36-85-601befaaa2ba
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id DB.9C.21957.AAFEB106; Thu,  4
- Feb 2021 12:59:22 +0000 (GMT)
-Received: from [106.210.131.79] (unknown [106.210.131.79]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20210204125921eusmtip175e7f6d9d0285a6a206869ecda1f0a53~gjOBGaBtr1244612446eusmtip1D;
- Thu,  4 Feb 2021 12:59:21 +0000 (GMT)
-Message-ID: <b680fef2-7c8a-183b-443a-6b2b9fe595d7@samsung.com>
-Date: Thu, 4 Feb 2021 13:59:21 +0100
+ with ESMTP id 2oix88Khqzta for <devel@linuxdriverproject.org>;
+ Thu,  4 Feb 2021 14:11:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-oi1-f170.google.com (mail-oi1-f170.google.com
+ [209.85.167.170])
+ by silver.osuosl.org (Postfix) with ESMTPS id DA88D1FE49
+ for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 14:11:40 +0000 (UTC)
+Received: by mail-oi1-f170.google.com with SMTP id j25so3852386oii.0
+ for <devel@driverdev.osuosl.org>; Thu, 04 Feb 2021 06:11:40 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AeTSTNxgLE2BT0GTudXgmFb4g9IjjW+lbLXDMlVfRik=;
+ b=KniTLZht5ZzZXmx/CS0CuYnRsrG0YvC1fhjkc7lgOku/Qx681ujkRQWZLUG89db/BZ
+ poYfhwlWgg6XtR90PXORUuijJi2oEW3qgMMjT4YakaShGPZXp/QIBv1utwC6uthR7ITc
+ gi4IYwBpQY5LXtmBUxOv+6N1RqiGoVZknK9tk+VuxmU63rKzgI3MtrpYSacGrsJAsK3X
+ hkuYdhlvOG+2NU+M7r/c1kSwRKZgcGK7db0idNp0tkfXQoQGxMFaJeHfN3+j6dS1Blok
+ EeNoXBAxUC2VinysRErLynemJmUOyQDOsTYZh/WMmGLc+nR20nPqYjiMGsWCr61gxSHg
+ sj0w==
+X-Gm-Message-State: AOAM532QuK81Tw+KR666Drx6E/TkriOCf0KkEA/c83Z314dyeMOhb6dz
+ UkYOe5adEwQAG9Uo6PJg3i7ge+D/ZO1MF0eLh3LZOnoVfT4=
+X-Google-Smtp-Source: ABdhPJwIMkZ9crB5RzPfP0aiVhmh61qrbaAU2HVxqJSpznq2cpzmYfpLAgUbYTQO/oABbafz5fjdh/q7MscPh0Ye06E=
+X-Received: by 2002:aca:308a:: with SMTP id w132mr5018580oiw.69.1612447327733; 
+ Thu, 04 Feb 2021 06:02:07 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0)
- Gecko/20100101 Thunderbird/86.0
-Subject: Re: [PATCH] drm/bridge: anx7625: enable DSI EOTP
-Content-Language: en-GB
-To: Nicolas Boichat <drinkcat@chromium.org>, Robert Foss
- <robert.foss@linaro.org>
-From: Andrzej Hajda <a.hajda@samsung.com>
-In-Reply-To: <CANMq1KAuUTqgM2mDR5WN6Ad+cATFXLPE+5rstyhfNE9Lc716+g@mail.gmail.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprCJsWRmVeSWpSXmKPExsWy7djP87qr30snGNw/zWjRe+4kk0XrsWeM
- FqfPnGKyeP1vOovFnjO/2C2ufH3PZrH6ygoWi8u3vjJbfLsClJ3Qup3Z4ur3l8wWJ99cZbHo
- nLiE3eLyrjlsFmuP3GW3ONQXbfFp1kNmixU/tzJaPFu7lNVi3t0fzA4iHnP37mL2eH+jld1j
- dsNFFo8dd5cwetzbd5jFY+esu+weCzaVeszumMnqcWLCJSaPO9f2sHls//aA1eN+93Emj903
- G9g8Pj69xeKxZNpVNo++LasYA4SiuGxSUnMyy1KL9O0SuDK+vNQq+C5UceDncdYGxmv8XYyc
- HBICJhLvd89hA7GFBFYwSqzeKNrFyAVkf2GUePN1CwuE85lRouPORSaYjtYvD6ESyxklPn5e
- wwrhvGeU2HP3GjtIFa+AncSbQ9OYQWwWARWJnqXvoeKCEidnPmEBsUUFEiQ2dG4GmyosYCkx
- 52MLmM0sIC7R9GUlK4gtIhAs0bHsMBPIAmaBS6wS/StmgjWzCWhK/N18E+xwToFAiYmd3xkh
- muUlmrfOZgZpkBBo45LoeXCPBeJuF4nt68+xQ9jCEq+Ob4GyZST+75wP9Vu9xP0VLVDNHYwS
- WzfsZIZIWEvcOfcLaBsH0AZNifW79CHCjhJNqyYwgoQlBPgkbrwVhLiBT2LStunMEGFeiY42
- IYhqRYn7Z7dCDRSXWHrhK9sERqVZSMEyC8n7s5B8Mwth7wJGllWM4qmlxbnpqcWGeanlesWJ
- ucWleel6yfm5mxiBCff0v+OfdjDOffVR7xAjEwfjIUYJDmYlEd7ENqkEId6UxMqq1KL8+KLS
- nNTiQ4zSHCxK4ryrZq+JFxJITyxJzU5NLUgtgskycXBKNTCp9Rm/fqCoKHpCyKVo1Rt35fO3
- PwS4bfM5KP2qVuj0xAXr7R0MJ/Wlz7hz/sfJloObNdIsRY2rP72dpxTCs+PMAYf+XWVJT2d5
- t9WqJqW7afF4HZL4eMhx+qQ1+zbvUppziOn037aqQ9PXcM7+wr7Ip6IxJE3c8/WLyq87RfVO
- 7rikNT1KtXVDZOjLlhorkwCnHbl99+N+6N/3DTn/XZvleZaDj5D6lBDptfwL5KdZv4xg8ffc
- 03Rnm806+7KnAgtszmZJmeidmrCY+dlUhzq/O5U5hxdMtra6vvlV4sT7l+ZJMWwJXv2Ko7k+
- sEch8fr6g9oV9jevZK2MFA96FPvAyXz/32XNdw2W3QgwFX+sxFKckWioxVxUnAgAmFtH/CcE
- AAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrBKsWRmVeSWpSXmKPExsVy+t/xu7qr3ksnGHT+UbToPXeSyaL12DNG
- i9NnTjFZvP43ncViz5lf7BZXvr5ns1h9ZQWLxeVbX5ktvl0Byk5o3c5scfX7S2aLk2+uslh0
- TlzCbnF51xw2i7VH7rJbHOqLtvg06yGzxYqfWxktnq1dymox7+4PZgcRj7l7dzF7vL/Ryu4x
- u+Eii8eOu0sYPe7tO8zisXPWXXaPBZtKPWZ3zGT1ODHhEpPHnWt72Dy2f3vA6nG/+ziTx+6b
- DWweH5/eYvFYMu0qm0ffllWMAUJRejZF+aUlqQoZ+cUltkrRhhZGeoaWFnpGJpZ6hsbmsVZG
- pkr6djYpqTmZZalF+nYJehlfXmoVfBeqOPDzOGsD4zX+LkZODgkBE4nWLw9Zuhi5OIQEljJK
- nNu3lwUiIS6xe/5bZghbWOLPtS42iKK3jBLvHjaygyR4Bewk3hyaBlbEIqAi0bP0PVRcUOLk
- zCdgg0QFEiQm979mA7GFBSwl5nxsYQKxmYEWNH1ZyQpiiwgES8z4NxFsAbPAFVaJn8s/MUFs
- 62eSODr7LdgkNgFNib+bb4JN4hQIlJjY+Z0RYpKZRNfWLihbXqJ562zmCYxCs5AcMgvJwllI
- WmYhaVnAyLKKUSS1tDg3PbfYUK84Mbe4NC9dLzk/dxMjMMlsO/Zz8w7Gea8+6h1iZOJgPMQo
- wcGsJMKb2CaVIMSbklhZlVqUH19UmpNafIjRFBgaE5mlRJPzgWkuryTe0MzA1NDEzNLA1NLM
- WEmcd+vcNfFCAumJJanZqakFqUUwfUwcnFINTOlLttfnVHKcTPh37NjpX328cioyXU4L9yw3
- UNz533Def+0NJ1y/p8zM7/MqflM0MzF/b3Od4i+r745NaqFPvM5V3nNLE180z1uwJeRW8Qmn
- c/833mZ/U/5xwoe1TKtexj/e01Uyr9nIZf88PxGeLQaTX8ltuW/7au6sr/3vFMSTnJYk1HAf
- yuUVPdzw9JG3ug6jf9dXQ7XfH8SZM6MO7NCunmzK6F3PGxT/2nXpuhUPNP/FnrHj+J2uqd89
- VznbRmAq34WqvnWmjZwWOaKKXhaaa4qKA+tvvuexTzU78eKAyVs+nkJ9s1sngl06vv8v+3g9
- zOaG+H7d1bpMN8525ireTIhmFfBKdn37u+W4EktxRqKhFnNRcSIAZ++N8bsDAAA=
-X-CMS-MailID: 20210204125922eucas1p2d832c777e404561418768f013ba983d5
-X-Msg-Generator: CA
-X-RootMTR: 20210204123452eucas1p1eb8fd9dc5b62b036ebd9e9208e796cb9
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20210204123452eucas1p1eb8fd9dc5b62b036ebd9e9208e796cb9
-References: <20210128111549.GA8174@zhaomy-pc>
- <CAG3jFysU4epjS3A85ZojrJn3TAC78O_jx5p_4SWsCdRBrQ5GXQ@mail.gmail.com>
- <CGME20210204123452eucas1p1eb8fd9dc5b62b036ebd9e9208e796cb9@eucas1p1.samsung.com>
- <CANMq1KAuUTqgM2mDR5WN6Ad+cATFXLPE+5rstyhfNE9Lc716+g@mail.gmail.com>
+References: <cover.1612314468.git.skhan@linuxfoundation.org>
+ <8d11eec80d6668065fb35a0b025c3614b67bf798.1612314468.git.skhan@linuxfoundation.org>
+In-Reply-To: <8d11eec80d6668065fb35a0b025c3614b67bf798.1612314468.git.skhan@linuxfoundation.org>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Thu, 4 Feb 2021 15:01:56 +0100
+Message-ID: <CAJZ5v0i8-HpSAk=HGOgVN1RTLup4Rh0WTt0H3LQh1EfuWE-e+w@mail.gmail.com>
+Subject: Re: [PATCH v3 3/7] drivers/acpi: convert seqno to use seqnum_ops
+To: Shuah Khan <skhan@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -137,64 +71,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
- Sheng Pan <span@analogixsemi.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Sam Ravnborg <sam@ravnborg.org>,
- Xin Ji <xji@analogixsemi.com>, Dan Carpenter <dan.carpenter@oracle.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Tony Luck <tony.luck@intel.com>,
+ Kees Cook <keescook@chromium.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jonathan Corbet <corbet@lwn.net>,
+ "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ James Morse <james.morse@arm.com>, linux-kselftest@vger.kernel.org,
+ Borislav Petkov <bp@alien8.de>, Len Brown <lenb@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ClcgZG5pdSAwNC4wMi4yMDIxIG/CoDEzOjM0LCBOaWNvbGFzIEJvaWNoYXQgcGlzemU6Cj4gT24g
-VGh1LCBGZWIgNCwgMjAyMSBhdCA4OjA3IFBNIFJvYmVydCBGb3NzIDxyb2JlcnQuZm9zc0BsaW5h
-cm8ub3JnPiB3cm90ZToKPj4gSGkgWGluLAo+Pgo+PiBUaGFua3MgZm9yIHRoZSBwYXRjaC4KPj4K
-Pj4gT24gVGh1LCAyOCBKYW4gMjAyMSBhdCAxMjoxNywgWGluIEppIDx4amlAYW5hbG9naXhzZW1p
-LmNvbT4gd3JvdGU6Cj4+PiBFbmFibGUgRFNJIEVPVFAgZmVhdHVyZSBmb3IgZml4aW5nIHNvbWUg
-cGFuZWwgc2NyZWVuIGNvbnN0YW5jZQo+Pj4gc2hpZnQgaXNzdWUuCj4+PiBSZW1vdmluZyBNSVBJ
-IGZsYWcgTUlQSV9EU0lfTU9ERV9FT1RfUEFDS0VUIHRvIGVuYWJsZSBEU0kgRU9UUC4KPj4gSSBk
-b24ndCB0aGluayBJIHF1aXRlIHVuZGVyc3RhbmQgaG93IHJlbW92aW5nIHRoZQo+PiBNSVBJX0RT
-SV9NT0RFX0VPVF9QQUNLRVQgZmxhZyB3aWxsIGNhdXNlIERTSSBFT1RQIHRvIGJlIGVuYWJsZWQu
-IENvdWxkCj4+IHlvdSBleHRyYXBvbGF0ZSBvbiB0aGlzIGluIHRoZSBjb21taXQgbWVzc2FnZT8K
-PiBUaGF0IGNvbmZ1c2VkIG1lIGFzIHdlbGwsIGJ1dCBpdCB0dXJucyBvdXQgdGhhdCdzIGhvdyB0
-aGUgZmxhZyBpcyBkZWZpbmVkOgo+IGBgYAo+IC8qIGRpc2FibGUgRW9UIHBhY2tldHMgaW4gSFMg
-bW9kZSAqLwo+ICNkZWZpbmUgTUlQSV9EU0lfTU9ERV9FT1RfUEFDS0VUIEJJVCg5KQo+IGBgYAo+
-IChodHRwczovL3Byb3RlY3QyLmZpcmVleWUuY29tL3YxL3VybD9rPTViZDk1ZWJkLTA0NDI2N2Zi
-LTViZDhkNWYyLTBjYzQ3YTMwMDNlOC1jZTlkYjhlYTI2NGQ2OTAxJnE9MSZlPTkwMDU1NmRjLWQx
-OTktNGMxOC05NDMyLTVjMzQ2NWE5OGVhZSZ1PWh0dHBzJTNBJTJGJTJGZWxpeGlyLmJvb3RsaW4u
-Y29tJTJGbGludXglMkZsYXRlc3QlMkZzb3VyY2UlMkZpbmNsdWRlJTJGZHJtJTJGZHJtX21pcGlf
-ZHNpLmglMjNMMTI5KQo+Cj4gSSdtIGFsbW9zdCB0ZW1wdGVkIHRvIHB1dCB0b2dldGhlciBhIG1h
-c3MgcGF0Y2ggdG8gcmVuYW1lIGFsbCBvZiB0aGVzZSBmbGFncy4uLgoKClllcyB0aGF0IHdvdWxk
-IGJlIGdvb2QsIG1hbnkgb2YgdGhlc2UgZmxhZ3Mgd2VyZSBqdXN0IGNvcHkgcGFzdGVkIGZyb20g
-CnNvbWUgaHcgZGF0YXNoZWV0LCB3aXRob3V0IGdvb2QgYW5hbHlzaXMgaG93IHRvIGFkYXB0IHRo
-ZW0gdG8gdGhlIGZyYW1ld29yay4KCgpSZWdhcmRzCgpBbmRyemVqCgoKPgo+Pj4gU2lnbmVkLW9m
-Zi1ieTogWGluIEppIDx4amlAYW5hbG9naXhzZW1pLmNvbT4KPj4+IC0tLQo+Pj4gICBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FueDc2MjUuYyB8IDEgLQo+Pj4gICAxIGZpbGUgY2hh
-bmdlZCwgMSBkZWxldGlvbigtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL2FuYWxvZ2l4L2FueDc2MjUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW54NzYyNS5jCj4+PiBpbmRleCA2NWNjMDU5Li5lMzFlZWIxYiAxMDA2NDQKPj4+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW54NzYyNS5jCj4+PiArKysgYi9kcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FueDc2MjUuYwo+Pj4gQEAgLTEzMzQsNyArMTMz
-NCw2IEBAIHN0YXRpYyBpbnQgYW54NzYyNV9hdHRhY2hfZHNpKHN0cnVjdCBhbng3NjI1X2RhdGEg
-KmN0eCkKPj4+ICAgICAgICAgIGRzaS0+Zm9ybWF0ID0gTUlQSV9EU0lfRk1UX1JHQjg4ODsKPj4+
-ICAgICAgICAgIGRzaS0+bW9kZV9mbGFncyA9IE1JUElfRFNJX01PREVfVklERU8gICB8Cj4+PiAg
-ICAgICAgICAgICAgICAgIE1JUElfRFNJX01PREVfVklERU9fU1lOQ19QVUxTRSAgfAo+Pj4gLSAg
-ICAgICAgICAgICAgIE1JUElfRFNJX01PREVfRU9UX1BBQ0tFVCAgICAgICAgfAo+Pj4gICAgICAg
-ICAgICAgICAgICBNSVBJX0RTSV9NT0RFX1ZJREVPX0hTRTsKPj4+Cj4+PiAgICAgICAgICBpZiAo
-bWlwaV9kc2lfYXR0YWNoKGRzaSkgPCAwKSB7Cj4+PiAtLQo+Pj4gMi43LjQKPj4+Cj4gX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vcHJv
-dGVjdDIuZmlyZWV5ZS5jb20vdjEvdXJsP2s9NDU3ZjNmMzktMWFlNDA2N2YtNDU3ZWI0NzYtMGNj
-NDdhMzAwM2U4LWI3MDIwNzJkYTcyOWQ4YzkmcT0xJmU9OTAwNTU2ZGMtZDE5OS00YzE4LTk0MzIt
-NWMzNDY1YTk4ZWFlJnU9aHR0cHMlM0ElMkYlMkZsaXN0cy5mcmVlZGVza3RvcC5vcmclMkZtYWls
-bWFuJTJGbGlzdGluZm8lMkZkcmktZGV2ZWwKPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJw
-cm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hi Shuah,
+
+First off, please indicate the component in the subject, for example:
+
+"ACPI: extlog: convert seqno to use seqnum_ops"
+
+On Wed, Feb 3, 2021 at 7:12 PM Shuah Khan <skhan@linuxfoundation.org> wrote:
+>
+> Sequence Number api provides interfaces for unsigned atomic up counters
+> leveraging atomic_t and atomic64_t ops underneath.
+>
+> Convert seqno atomic counter to use seqnum_ops.
+
+Apart from the above, it would be good to say why the change is an improvement.
+
+It looks like the rationale is that using struct seqnum32 would allow
+tools to easily detect the usage of sequence numbers, but is there
+anything else in this particular case?
+
+> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+> ---
+>  drivers/acpi/acpi_extlog.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/acpi/acpi_extlog.c b/drivers/acpi/acpi_extlog.c
+> index 72f1fb77abcd..16a4928645a1 100644
+> --- a/drivers/acpi/acpi_extlog.c
+> +++ b/drivers/acpi/acpi_extlog.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/ratelimit.h>
+>  #include <linux/edac.h>
+>  #include <linux/ras.h>
+> +#include <linux/seqnum_ops.h>
+>  #include <asm/cpu.h>
+>  #include <asm/mce.h>
+>
+> @@ -93,8 +94,7 @@ static struct acpi_hest_generic_status *extlog_elog_entry_check(int cpu, int ban
+>  static void __print_extlog_rcd(const char *pfx,
+>                                struct acpi_hest_generic_status *estatus, int cpu)
+>  {
+> -       static atomic_t seqno;
+> -       unsigned int curr_seqno;
+> +       static struct seqnum32 seqno;
+>         char pfx_seq[64];
+>
+>         if (!pfx) {
+> @@ -103,8 +103,8 @@ static void __print_extlog_rcd(const char *pfx,
+>                 else
+>                         pfx = KERN_ERR;
+>         }
+> -       curr_seqno = atomic_inc_return(&seqno);
+> -       snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx, curr_seqno);
+> +       snprintf(pfx_seq, sizeof(pfx_seq), "%s{%u}", pfx,
+> +                seqnum32_inc(&seqno));
+>         printk("%s""Hardware error detected on CPU%d\n", pfx_seq, cpu);
+>         cper_estatus_print(pfx_seq, estatus);
+>  }
+> --
+> 2.27.0
+>
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
