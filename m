@@ -1,67 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD5E6311524
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 23:26:19 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DC5328737E;
-	Fri,  5 Feb 2021 22:26:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eFDEBms7Tik9; Fri,  5 Feb 2021 22:26:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1FA4787376;
-	Fri,  5 Feb 2021 22:26:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3D1971BF576
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:26:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA485311525
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 23:26:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2AA0A203BE
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:26:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ABE7C2E140;
+	Fri,  5 Feb 2021 22:26:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id B507aadGdme0; Fri,  5 Feb 2021 22:26:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 245A12E13C;
+	Fri,  5 Feb 2021 22:26:51 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E4831BF576
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:26:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 68ACC8738E
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:26:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xEUCbIkIvwn7 for <devel@linuxdriverproject.org>;
- Fri,  5 Feb 2021 22:26:09 +0000 (UTC)
+ with ESMTP id TrtW8+BSdw35 for <devel@linuxdriverproject.org>;
+ Fri,  5 Feb 2021 22:26:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f50.google.com (mail-ot1-f50.google.com
- [209.85.210.50])
- by silver.osuosl.org (Postfix) with ESMTPS id 670D0203A5
- for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 22:26:09 +0000 (UTC)
-Received: by mail-ot1-f50.google.com with SMTP id d7so6155598otq.6
- for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 14:26:09 -0800 (PST)
+Received: from mail-ot1-f41.google.com (mail-ot1-f41.google.com
+ [209.85.210.41])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D3F068738D
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 22:26:47 +0000 (UTC)
+Received: by mail-ot1-f41.google.com with SMTP id s107so8400825otb.8
+ for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 14:26:47 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=FU+UCOFQQYVXfS0+LCrISl1mGUUH7pHKT1RulCQQqCk=;
- b=bETy0DK10PvAxEhXgJj5L4AKWVYEV5YgtPVlVKrWR2cqPejsaM8DCAkNdhPxNls51c
- gnc7Qx+Ijk+/zLEk/HhT0Rcd6QFyaJjnQEaxL4tMBzCLpkpiohaW2omTOHw9k6rUw42a
- giHnvpmNZGy/vSQ5MwwsDb6UFkSdkw2fiEyrccHkdJq2P3EgQVvPRg0Asd+blYvkcua7
- C+AFowEUS1cmGaAs768t9P4n4ZityBiTL+kLeQkhp59h9esKc5HzLnJqhh10CEeAioX2
- TgRdSBsn5QpbNjm3wr5aDJAoBTgkIoScA8xPUrgv7Jg713Zx/eb6NT2HIEBmiNnQJ3hA
- vq9A==
-X-Gm-Message-State: AOAM530ttQidefnZ/QilYstMI5lvBzzQNr+GeIvRzNq2iTesrjobOSIP
- VpAvMyaV9xikf4cUFNrgcw==
-X-Google-Smtp-Source: ABdhPJyr1AlIFE4ExmRHCvX9qNXq8/sjd9wV24kKZcLUt9dS+ovyZrQ6nuiOsTAaglcyp92xF8HXfg==
-X-Received: by 2002:a9d:37c4:: with SMTP id x62mr5065131otb.87.1612563968681; 
- Fri, 05 Feb 2021 14:26:08 -0800 (PST)
+ bh=bWD0Xd1LugmrPim9uT1TIxiY19YbyAjLXKLTF24G3cs=;
+ b=TOlp9Pl/SIa5FOT3fC6crgxa0JF+ewXmmQ+r+aq+Gd9cVKfSkX7ID+ASFRA7R0c9Ni
+ 7ZtKPnn/zqFLHU09ppKaNOWH1yUpePcJxIaafL2mwbsKCJXBnmHqC5SYRnwbvOCBKtbc
+ h2S3v+W7mtgFSjQ0Y6Sd3s2NGjR8ttfgjKDLs9SHCISH0Yr4K0ms2O3+Xwu/gFKzNDOS
+ REnw5Rg4KdOpYE3lgDv3XxDCRl5a0kS5iyW9zDyvmsTcU4mPcm9TdWzNbyKvE1OE+mFo
+ F84zkBBxXY4+H6kDA4MOAbiO4uvaBUgX3Y9H4GTg+dILkzAUXEIyERbbmhXImu1dcflC
+ d0eg==
+X-Gm-Message-State: AOAM531zKWLIOlaBn/6rmdNHxfgdj/N9J/wZM+L/fTOqA7I6GiPBWhlT
+ qSPRbeRw2h7ZtdnG5soI2A==
+X-Google-Smtp-Source: ABdhPJx4H3231S2pjcifJwGi+k2xYKRAeq+BOInc+gwPHSJdr5kMBWGsfC5hidReoeOqkxqNElMVZQ==
+X-Received: by 2002:a9d:7514:: with SMTP id r20mr4899658otk.318.1612564007144; 
+ Fri, 05 Feb 2021 14:26:47 -0800 (PST)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id a63sm2097188otc.75.2021.02.05.14.26.07
+ by smtp.gmail.com with ESMTPSA id u7sm2067882oib.22.2021.02.05.14.26.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 14:26:07 -0800 (PST)
-Received: (nullmailer pid 3866684 invoked by uid 1000);
- Fri, 05 Feb 2021 22:26:06 -0000
-Date: Fri, 5 Feb 2021 16:26:06 -0600
+ Fri, 05 Feb 2021 14:26:46 -0800 (PST)
+Received: (nullmailer pid 3867655 invoked by uid 1000);
+ Fri, 05 Feb 2021 22:26:45 -0000
+Date: Fri, 5 Feb 2021 16:26:45 -0600
 From: Rob Herring <robh@kernel.org>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Subject: Re: [PATCH v4 18/21] mfd: hi6421-spmi-pmic: move driver from staging
-Message-ID: <20210205222606.GA3857395@robh.at.kernel.org>
+Message-ID: <20210205222645.GB3857395@robh.at.kernel.org>
 References: <cover.1611072387.git.mchehab+huawei@kernel.org>
  <e79ffb200c52fc8c8926492cc82ac5dbcda3e3fb.1611072387.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
@@ -142,134 +142,7 @@ On Tue, Jan 19, 2021 at 05:10:44PM +0100, Mauro Carvalho Chehab wrote:
 > +  compatible:
 > +    const: hisilicon,hi6421v600-spmi
 
-'-spmi' is redundant.
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#interrupt-cells':
-> +    const: 2
-> +
-> +  interrupt-controller:
-> +    description:
-> +      Identify that the PMIC is capable of behaving as an interrupt controller.
-
-Don't need a description here.
-
-Don't you need 'interrupts' here to get the interrupts to the host?
-
-> +
-> +  gpios:
-> +    maxItems: 1
-
-GPIO for what? It's preferred to have a named gpio.
-
-> +
-> +  regulators:
-> +    type: object
-> +
-> +    properties:
-> +      '#address-cells':
-> +        const: 1
-> +
-> +      '#size-cells':
-> +        const: 0
-> +
-> +    patternProperties:
-> +      '^ldo[0-9]+@[0-9a-f]$':
-> +        type: object
-> +
-> +        $ref: "/schemas/regulator/regulator.yaml#"
-
-       additionalProperties: false
-
-Which will give you errors in the example.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - regulators
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    /* pmic properties */
-> +
-> +    pmic: pmic@0 {
-> +      compatible = "hisilicon,hi6421-spmi";
-> +      reg = <0 0>;
-> +
-> +      #interrupt-cells = <2>;
-> +      interrupt-controller;
-> +      gpios = <&gpio28 0 0>;
-> +
-> +      regulators {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        ldo3: LDO3 {
-
-LDO3: ldo3  {
-
-is preferred and closer to what you defined above.
-
-> +          regulator-name = "ldo3";
-> +          regulator-min-microvolt = <1500000>;
-> +          regulator-max-microvolt = <2000000>;
-> +          regulator-boot-on;
-> +        };
-> +
-> +        ldo4: LDO4 {
-> +          regulator-name = "ldo4";
-> +          regulator-min-microvolt = <1725000>;
-> +          regulator-max-microvolt = <1900000>;
-> +          regulator-boot-on;
-> +        };
-> +
-> +        ldo9: LDO9 {
-> +          regulator-name = "ldo9";
-> +          regulator-min-microvolt = <1750000>;
-> +          regulator-max-microvolt = <3300000>;
-> +          regulator-boot-on;
-> +        };
-> +
-> +        ldo15: LDO15 {
-> +          regulator-name = "ldo15";
-> +          regulator-min-microvolt = <1800000>;
-> +          regulator-max-microvolt = <3000000>;
-> +          regulator-always-on;
-> +        };
-> +
-> +        ldo16: LDO16 {
-> +          regulator-name = "ldo16";
-> +          regulator-min-microvolt = <1800000>;
-> +          regulator-max-microvolt = <3000000>;
-> +          regulator-boot-on;
-> +        };
-> +
-> +        ldo17: LDO17 {
-> +          regulator-name = "ldo17";
-> +          regulator-min-microvolt = <2500000>;
-> +          regulator-max-microvolt = <3300000>;
-> +        };
-> +
-> +        ldo33: LDO33 {
-> +          regulator-name = "ldo33";
-> +          regulator-min-microvolt = <2500000>;
-> +          regulator-max-microvolt = <3300000>;
-> +          regulator-boot-on;
-> +        };
-> +
-> +        ldo34: LDO34 {
-> +          regulator-name = "ldo34";
-> +          regulator-min-microvolt = <2600000>;
-> +          regulator-max-microvolt = <3300000>;
-> +        };
-> +      };
-> +    };
+Also, use the compatible string as the filename.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
