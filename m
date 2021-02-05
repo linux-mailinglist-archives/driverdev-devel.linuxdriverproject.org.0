@@ -1,83 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F85E3111CC
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 21:03:30 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 831703111F1
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 21:09:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C2AF786C3A;
-	Fri,  5 Feb 2021 20:03:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6BAA12E13C;
+	Fri,  5 Feb 2021 20:09:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id InQl_RrXSsp5; Fri,  5 Feb 2021 20:03:27 +0000 (UTC)
+	with ESMTP id yGyXBNueViOI; Fri,  5 Feb 2021 20:09:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A9AAC86C22;
-	Fri,  5 Feb 2021 20:03:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 713422E135;
+	Fri,  5 Feb 2021 20:09:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0C3A01BF9D1
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 20:03:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A3C411BF831
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 20:09:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F407986C26
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 20:03:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A04A086435
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 20:09:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I7zW0hkOlRhm for <devel@linuxdriverproject.org>;
- Fri,  5 Feb 2021 20:03:23 +0000 (UTC)
+ with ESMTP id XRIkZ0Of0G40 for <devel@linuxdriverproject.org>;
+ Fri,  5 Feb 2021 20:09:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f54.google.com (mail-ot1-f54.google.com
- [209.85.210.54])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5425286C22
- for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 20:03:23 +0000 (UTC)
-Received: by mail-ot1-f54.google.com with SMTP id t25so8090448otc.5
- for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 12:03:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linuxfoundation.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gbEhNHNmugKLJCiX2KXjV/LxdZ+gCz+sfTdhU2+sb8o=;
- b=hbBndiN61VScugSn8g5PdH5dOEpNc1vTlDgcO3sD8O0Q6YfsnCaurJGZNYTTpb+NeL
- 2C00ky9tWgh3CuOv2jxbTmdNpPk9XqWrjq7gXRCFpc/iaSrlsuWJa6bt03UGWa5Rq276
- hTV4GgzREQQ4e8s4GIvRWcWvDOh9qfgu3LyAQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gbEhNHNmugKLJCiX2KXjV/LxdZ+gCz+sfTdhU2+sb8o=;
- b=hY8lm/YHmTPLmeEWPhmt0CabJpIIOFQM0ElstcVa4cZz/Vey/9N75sqAOu8hiPo8xV
- E6j2lgci0vEXizzfV65qx3d6eHfYi5lKS3Mhbz1G3SxXXjQz1ihrOVZJa+I7+yWrpvkb
- muzHYlDy8CjJP7pMhG83V9vIERQ9UuUfxHl8ruUKeyYVZxY3qy18b6sN8V3hljjG1M8H
- W1xxUU/3ENYXcqWIKR0UKvp9SNqNEmgYhtU45uo48jHMR0unARQO88yE9AYbx9Vsv4I9
- p/+3flES9KNY8HvFo4OKpHB99AwDXGmgazPQngvyaIm4yJlqW6uDZz3c/kg7x2FhkQZ5
- oU3w==
-X-Gm-Message-State: AOAM530n3ty/F4tZRuAOCqREtcRIuQcKedUCa4qSjvqtcrSBw4YOQy78
- FKouwtBiwJ6iB5NveShpLyBUwQ==
-X-Google-Smtp-Source: ABdhPJyzu0tvcLo4s7d2FrIQ4o1zmYD8+me/HyP+MRVvqQ5v4ul3YMRLWMniCJpUPs1SigUqE0QdTg==
-X-Received: by 2002:a05:6830:1dad:: with SMTP id
- z13mr4489856oti.223.1612555401135; 
- Fri, 05 Feb 2021 12:03:21 -0800 (PST)
-Received: from [192.168.1.112] (c-24-9-64-241.hsd1.co.comcast.net.
- [24.9.64.241])
- by smtp.gmail.com with ESMTPSA id m7sm2002833otq.33.2021.02.05.12.03.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Feb 2021 12:03:20 -0800 (PST)
-Subject: Re: [PATCH v3 1/7] seqnum_ops: Introduce Sequence Number Ops
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <cover.1612314468.git.skhan@linuxfoundation.org>
- <23f6347a7bb9f902babe7351f71b23644035673d.1612314468.git.skhan@linuxfoundation.org>
- <YB0WzBnLd+OcpxEE@kroah.com>
-From: Shuah Khan <skhan@linuxfoundation.org>
-Message-ID: <2fe15f90-2e33-d018-0d5d-cabe3846ed98@linuxfoundation.org>
-Date: Fri, 5 Feb 2021 13:03:18 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B790A862FC
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 20:09:02 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EC17364FBA;
+ Fri,  5 Feb 2021 20:09:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612555742;
+ bh=beiP1QVTcTtnz/28je3Db2hFbKVGRBpJgYPrzRQ3FJY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=HiHatxkiTqo19TZ7agC6KDqUsgXV67Li8ly2L0wqDAIgO/TnRxAG2RsEVs5oqP6c+
+ UaOzHqagc4QJeLih2kXFAEt5d7GhSEhvjlhL3gH10/QCgaTVU1AQai8Mn1NFjTiezP
+ i1wgd9CTA84LgzCyhkwn5/kx2hr1+O0JvExsTupHij3anIzI/f4gsgHmz14r0nXCYL
+ l0+YcKZuoB+EBsv5ijeTNTCycIDJJ3bqKmtNaMYKKxf/lWGat0JwJxc2r6hSYJ80aS
+ IrqB6hXBSMagUQ342uqUdCGIfPNEt/aJJPrbGL+JfG1RPWW1Icry7tJhu+BlO9Wj7x
+ cGUyryDyXIy7Q==
+Date: Fri, 5 Feb 2021 14:08:59 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH 2/4] hwmon: Use subdir-ccflags-* to inherit debug flag
+Message-ID: <20210205200859.GA193526@bjorn-Precision-5520>
 MIME-Version: 1.0
-In-Reply-To: <YB0WzBnLd+OcpxEE@kroah.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210205182832.GA186268@roeck-us.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,43 +63,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tony.luck@intel.com, keescook@chromium.org,
- rafael@kernel.org, peterz@infradead.org, corbet@lwn.net,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-acpi@vger.kernel.org, james.morse@arm.com,
- linux-kselftest@vger.kernel.org, bp@alien8.de, lenb@kernel.org
+Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
+ jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
+ gregkh@linuxfoundation.org, masahiroy@kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Yicong Yang <yangyicong@hisilicon.com>,
+ linuxarm@openeuler.org, abbotti@mev.co.uk, michal.lkml@markovi.net,
+ linux-kbuild@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2/5/21 2:58 AM, Greg KH wrote:
-> On Wed, Feb 03, 2021 at 11:11:57AM -0700, Shuah Khan wrote:
->> +static inline u32 seqnum32_inc(struct seqnum32 *seq)
->> +{
->> +	atomic_t val = ATOMIC_INIT(seq->seqnum);
->> +
->> +	seq->seqnum = (u32) atomic_inc_return(&val);
->> +	if (seq->seqnum >= UINT_MAX)
->> +		pr_info("Sequence Number overflow %u detected\n",
->> +			seq->seqnum);
->> +	return seq->seqnum;
+On Fri, Feb 05, 2021 at 10:28:32AM -0800, Guenter Roeck wrote:
+> On Fri, Feb 05, 2021 at 05:44:13PM +0800, Yicong Yang wrote:
+> > From: Junhao He <hejunhao2@hisilicon.com>
+> > 
+> > Use subdir-ccflags-* instead of ccflags-* to inherit the debug
+> > settings from Kconfig when traversing subdirectories.
+> > 
+> > Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+> > Signed-off-by: Junhao He <hejunhao2@hisilicon.com>
+> > Signed-off-by: Yicong Yang <yangyicong@hisilicon.com>
 > 
-> As Peter points out, this is doing doing what you think it is doing :(
-> 
-> Why do you not just have seq->seqnum be a real atomic variable?  Trying
-> to switch to/from one like this does not work as there is no
-> "atomic-ness" happening here at all.
-> 
+> What problem does this fix ? Maybe I am missing it, but I don't see
+> DEBUG being used in a subdirectory of drivers/hwmon.
 
-Yes. This is sloppy on my part. As Peter and Rafael also pointed. I have
-to start paying more attention to my inner voice.
+It's my fault for raising this question [1].  Yicong fixed a real
+problem in drivers/pci, where we are currently using
 
-thanks,
--- Shuah
+  ccflags-$(CONFIG_PCI_DEBUG) := -DDEBUG
 
+so CONFIG_PCI_DEBUG=y turns on debug in drivers/pci, but not in the
+subdirectories.  That's surprising to users.
 
+So my question was whether we should default to using subdir-ccflags
+for -DDEBUG in general, and only use ccflags when we have
+subdirectories that have their own debug options, e.g.,
 
+  drivers/i2c/Makefile:ccflags-$(CONFIG_I2C_DEBUG_CORE) := -DDEBUG
+  drivers/i2c/algos/Makefile:ccflags-$(CONFIG_I2C_DEBUG_ALGO) := -DDEBUG
+  drivers/i2c/busses/Makefile:ccflags-$(CONFIG_I2C_DEBUG_BUS) := -DDEBUG
+  drivers/i2c/muxes/Makefile:ccflags-$(CONFIG_I2C_DEBUG_BUS) := -DDEBUG
+
+I mentioned drivers/hwmon along with a few others that have
+subdirectories, do not have per-subdirectory debug options, and use
+ccflags.  I didn't try to determine whether those subdirectories
+currently use -DDEBUG.
+
+In the case of drivers/hwmon, several drivers do use pr_debug(),
+and CONFIG_HWMON_DEBUG_CHIP=y turns those on.  But if somebody
+were to add pr_debug() to drivers/hwmon/occ/common.c, for example,
+CONFIG_HWMON_DEBUG_CHIP=y would *not* turn it on.  That sounds
+surprising to me, but if that's what you intend, that's totally fine.
+
+[1] https://lore.kernel.org/r/20210204161048.GA68790@bjorn-Precision-5520
+
+> > ---
+> >  drivers/hwmon/Makefile | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
+> > index 09a86c5..1c0c089 100644
+> > --- a/drivers/hwmon/Makefile
+> > +++ b/drivers/hwmon/Makefile
+> > @@ -201,5 +201,5 @@ obj-$(CONFIG_SENSORS_XGENE)	+= xgene-hwmon.o
+> >  obj-$(CONFIG_SENSORS_OCC)	+= occ/
+> >  obj-$(CONFIG_PMBUS)		+= pmbus/
+> >  
+> > -ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
+> > +subdir-ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
+> >  
+> > -- 
+> > 2.8.1
+> > 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
