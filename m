@@ -1,72 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38806311487
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 23:09:18 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1654131148B
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 23:14:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1D2F687385;
-	Fri,  5 Feb 2021 22:09:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2762C873CB;
+	Fri,  5 Feb 2021 22:14:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kzu139U8pSgI; Fri,  5 Feb 2021 22:09:15 +0000 (UTC)
+	with ESMTP id LgNJn8UIDx5Q; Fri,  5 Feb 2021 22:14:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 21E6E86D78;
-	Fri,  5 Feb 2021 22:09:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CBD4A873BE;
+	Fri,  5 Feb 2021 22:14:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 547CE1BF576
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:09:12 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 151961BF576
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:14:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 48CF92E12B
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:09:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 11B9986BED
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:14:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5QbXLvXlNigc for <devel@linuxdriverproject.org>;
- Fri,  5 Feb 2021 22:09:11 +0000 (UTC)
+ with ESMTP id Nnb2vXMdfFkr for <devel@linuxdriverproject.org>;
+ Fri,  5 Feb 2021 22:13:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 8049520357
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 22:09:11 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id y199so7111423oia.4
- for <devel@linuxdriverproject.org>; Fri, 05 Feb 2021 14:09:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=IE5RykT5wjt4jhSO+Z/B8Mk6ViF3QiE4nbFkPNYjttA=;
- b=lRndl+ch7B+AZjwU8wJwz4FYfau5nfWhzQSZ6ILH1VqaR12e0OTNPRRqHrbkTjFmAQ
- AjQYegOXmqRzG47NpO8bm+wL7Te+i3znZ1QYy5h+MPJ5Ztx6BkDeYOJ0+UlMok5UNS+q
- i71AUH+Q08dhBkGByKfskyX/GXfkOyZli6J0dzOX33LeDcNFTRtXV0bmlzvCdzbWA3iN
- BVPvb7usBhhxlYtbo6C9S5xQ6+JXrnvh898tvNYDjKkPTo7Kb+6Qh/+LyQXAaFELSb+Y
- 4Ie+eMqFR7SCzna3aVq1Erng964OzSQRZ0qAVZ7+x/wzgAQyjpJaKk0fAJPkxihfSOnK
- CPPw==
+Received: from mail-oi1-f171.google.com (mail-oi1-f171.google.com
+ [209.85.167.171])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C0BAB86BE5
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 22:13:58 +0000 (UTC)
+Received: by mail-oi1-f171.google.com with SMTP id j25so9167555oii.0
+ for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 14:13:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=IE5RykT5wjt4jhSO+Z/B8Mk6ViF3QiE4nbFkPNYjttA=;
- b=cfmr/3nxaZvm7QJSfhj3awDh55d2LRkXe77oQ7FC5NOvwGKN7LZhgW+TR+mvRpQbQE
- aAIqLCh2qOBJGp91DRM5WphkMGo/vOQscD6HIzKoICqERxTBo84X3fY/prdkfF2XwDI5
- n/KFUKxGaNhtMyf8wF2xcQ4B8Dnjwd0gvRfQRIom6GuZdr53oDFvan2TAGT1bA8i7yCM
- 6cKJDdYadcm3HMHd/5cGQek8ZkgbMYrbzchYI2ysvLTPqT+WBfqqTHcv2ZkBfV+FUXtw
- jvNnvODV4esiDg3+ML0/0uloEdTG0yz4YFpkyRZvRd+CNPl5yi4LXjmV7X2A/blp6QVl
- gAWw==
-X-Gm-Message-State: AOAM5304ESWHyW/2ZG1O4d3QWfaVA3Gv0vTJUt83vQF1mOhFo+GyzFno
- V0m++G3cfGTzSW8TNCT7Ku4p6Ir03KcHvjXd5Ms=
-X-Google-Smtp-Source: ABdhPJy509dUpP20X3C9FI0eoYdFFeUy2ispgX28h3FHn4PgU7hjM9+iHETFYRcEdnQCTbhdxStmVBayrlVzzcYA9Y8=
-X-Received: by 2002:aca:530f:: with SMTP id h15mr4269055oib.5.1612562950634;
- Fri, 05 Feb 2021 14:09:10 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=+M4rD8lhAIwaWja6r8ayIGoRcioSa2ru8gsy3RVn3Ec=;
+ b=gYgLFk9HXqExAv767BQd6eKYoHxChjwr/3XQz9TE6E+oYejRx3wJdCM4HJoTtceK7t
+ RgXzHXhh3o017SGOaOp5nc1VXH7/oll9KXI4qiMwJZyuwpmmhBnFHAWYX4K/oNM/vW2n
+ FxolAuvajtOyWgKNM1wJZRb6s6TV7rkB9pX+Zdk0JkJykNwVc012kDACaQF2lwM1l4u1
+ 0M9yxD1dMh+C4ToiK9q0r5B6pI9yvYx2sjY1sGlBYBBxmJv3lVol2fOBb9K/flPEGeg6
+ PDidNC5Rvb7E8UHfBtjJquD1ls5sNP0ir7un3srofTcuV5XZUG4wchG45cZAd8HNdIA8
+ D4+Q==
+X-Gm-Message-State: AOAM530IVVuLi0HrblvCI+mH+zF6icDsEsl7CwjfGVYIia3rVnDGlOYi
+ GSICJmDgDWxAUYVKlFbzrA==
+X-Google-Smtp-Source: ABdhPJwT+do3Tf8ShVWqxdJZu0MSFLTcBAZfVqwvPQ1VqaYfgImnDQkA3Ib6XJKGM1n47zjkuTd86w==
+X-Received: by 2002:aca:b255:: with SMTP id b82mr4420318oif.98.1612563238100; 
+ Fri, 05 Feb 2021 14:13:58 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id u73sm2035591oie.30.2021.02.05.14.13.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Feb 2021 14:13:56 -0800 (PST)
+Received: (nullmailer pid 3847968 invoked by uid 1000);
+ Fri, 05 Feb 2021 22:13:55 -0000
+Date: Fri, 5 Feb 2021 16:13:55 -0600
+From: Rob Herring <robh@kernel.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH v4 5/5] phy: phy-hi3670-usb3: move driver from staging
+ into phy
+Message-ID: <20210205221355.GA3847933@robh.at.kernel.org>
+References: <cover.1611052729.git.mchehab+huawei@kernel.org>
+ <82ce73ac9a383f0cae0faded5ec6fef2d3417d3c.1611052729.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-Received: by 2002:a9d:5a0d:0:0:0:0:0 with HTTP;
- Fri, 5 Feb 2021 14:09:10 -0800 (PST)
-From: Hamidou Franck Ali <mckenzieclara48@gmail.com>
-Date: Fri, 5 Feb 2021 14:09:10 -0800
-Message-ID: <CAKkbHUW-A2Pr-0Tm3iCF=LfYW3-Kv31-hq4r_bfmtVyhBd=szQ@mail.gmail.com>
-Subject: Proposal
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <82ce73ac9a383f0cae0faded5ec6fef2d3417d3c.1611052729.git.mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,26 +80,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: hamidoufranck24@gmail.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Yu Chen <chenyu56@huawei.com>,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Alex Dewar <alex.dewar90@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend,
+On Tue, 19 Jan 2021 11:44:43 +0100, Mauro Carvalho Chehab wrote:
+> The phy USB3 driver for Hisilicon 970 (hi3670) is ready
+> for mainstream. Mode it from staging into the main driver's
+> phy/ directory.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> ---
+>  .../bindings/phy/hisilicon,hi3670-usb3.yaml   |  73 ++
+>  MAINTAINERS                                   |   9 +-
+>  drivers/phy/hisilicon/Kconfig                 |  10 +
+>  drivers/phy/hisilicon/Makefile                |   1 +
+>  drivers/phy/hisilicon/phy-hi3670-usb3.c       | 668 ++++++++++++++++++
+>  drivers/staging/hikey9xx/Kconfig              |  11 -
+>  drivers/staging/hikey9xx/Makefile             |   2 -
+>  drivers/staging/hikey9xx/phy-hi3670-usb3.c    | 668 ------------------
+>  drivers/staging/hikey9xx/phy-hi3670-usb3.yaml |  73 --
+>  9 files changed, 760 insertions(+), 755 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/hisilicon,hi3670-usb3.yaml
+>  create mode 100644 drivers/phy/hisilicon/phy-hi3670-usb3.c
+>  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.c
+>  delete mode 100644 drivers/staging/hikey9xx/phy-hi3670-usb3.yaml
+> 
 
-With much sincerity of heart, I write to inform you about a business
-proposal I have which I would like to handle with you. $35 million USD
-is involved. Be rest assured that everything is legal and risk free as
-I have concluded all the arrangements and the legal papers that will
-back the transaction up. Kindly indicate your interest so as to enable
-me give you more details of the proposal.
-
-Waiting for your urgent response.
-
-Yours faithfully,
-
-Mr. Franck Hamidou.
+Acked-by: Rob Herring <robh@kernel.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
