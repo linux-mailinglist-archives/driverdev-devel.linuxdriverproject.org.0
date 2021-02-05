@@ -1,57 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D86F310068
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Feb 2021 23:58:52 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D93A310402
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 05:21:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B512F87297;
-	Thu,  4 Feb 2021 22:58:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A28262E0FF;
+	Fri,  5 Feb 2021 04:21:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BL6q26c4szFN; Thu,  4 Feb 2021 22:58:50 +0000 (UTC)
+	with ESMTP id ZRKZ4AydA0hV; Fri,  5 Feb 2021 04:21:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D716187278;
-	Thu,  4 Feb 2021 22:58:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6668A2E0F6;
+	Fri,  5 Feb 2021 04:21:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E07501BF32C
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 22:58:47 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 417BA1BF39D
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 04:21:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DD00A868D0
- for <devel@linuxdriverproject.org>; Thu,  4 Feb 2021 22:58:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3E4EC86E68
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 04:21:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RtzW_8SDeoyS for <devel@linuxdriverproject.org>;
- Thu,  4 Feb 2021 22:58:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 368BF868F3
- for <devel@driverdev.osuosl.org>; Thu,  4 Feb 2021 22:58:47 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 38E5D64FAC;
- Thu,  4 Feb 2021 22:58:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612479526;
- bh=x7XJkzjV+9hwJNvlgLRyMG4w5s/WquVgMBsSG5Lp89Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=BPqdRmd/NPPTZAYOee+Z3Sm/tdPp+ibXDbht6u7CE9Fdxd0DXyzJV3Ir8pnq5q066
- 3wRb4IMnV+4hvgGhNZC/WUcTzKvIxL0aEs5UEEs0yxbRZiltEf51suucEb1VIHRtvM
- ROdlXPVE7yJUKIrrqu9jhpon9xLbAmFUje+U8Ynavu1HObsiQfwXKTlfX5vVEOXt/W
- ZTbF20VTTz20pkz3BmV9xSvchoVMzNNcutEBLnEzMH3c9vMYzIl7cEr4NSA/OTowmd
- JKn96K8fQFpiQxa2u17Ws/u36ofp1XKG6jDEAuRELFvOWnvEq+rsIZ/VaTZVzMeKhF
- Mhvil6CmwXaDw==
-Date: Thu, 4 Feb 2021 15:58:44 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: ameynarkhede02@gmail.com
-Subject: Re: [PATCH] staging: qlge/qlge_main: Use min_t instead of min
-Message-ID: <20210204225844.GA431671@localhost>
-References: <20210204215451.69928-1-ameynarkhede02@gmail.com>
+ with ESMTP id LeMi9mTpEhEM for <devel@linuxdriverproject.org>;
+ Fri,  5 Feb 2021 04:20:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail2.softwise.co.jp (mail2.softwise.co.jp [210.196.153.15])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 01A7186E49
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 04:20:56 +0000 (UTC)
+Received: from IP-8-40.dataclub.eu (unknown [185.29.8.40])
+ by mail2.softwise.co.jp (Postfix) with ESMTPA id 2EEF712D261
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 13:19:33 +0900 (JST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210204215451.69928-1-ameynarkhede02@gmail.com>
+Content-Description: Mail message body
+Subject: Project Funding/ Soft Loan OFFER!
+To: devel@driverdev.osuosl.org
+From: "Marc Simpson" <chadbowene@gmail.com>
+Date: Fri, 05 Feb 2021 05:18:28 +0100
+Message-Id: <20210205041934.2EEF712D261@mail2.softwise.co.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,48 +53,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- manishc@marvell.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
+Reply-To: msimpson.aghillpartners@mail.ee
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 05, 2021 at 03:24:51AM +0530, ameynarkhede02@gmail.com wrote:
-> From: Amey Narkhede <ameynarkhede02@gmail.com>
-> 
-> Use min_t instead of min function in qlge/qlge_main.c
-> Fixes following checkpatch.pl warning:
-> WARNING: min() should probably be min_t(int, MAX_CPUS, num_online_cpus())
-> 
-> Signed-off-by: Amey Narkhede <ameynarkhede02@gmail.com>
-> ---
->  drivers/staging/qlge/qlge_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-> index 402edaeff..29606d1eb 100644
-> --- a/drivers/staging/qlge/qlge_main.c
-> +++ b/drivers/staging/qlge/qlge_main.c
-> @@ -3938,7 +3938,7 @@ static int ql_configure_rings(struct ql_adapter *qdev)
->  	int i;
->  	struct rx_ring *rx_ring;
->  	struct tx_ring *tx_ring;
-> -	int cpu_cnt = min(MAX_CPUS, (int)num_online_cpus());
-> +	int cpu_cnt = min_t(int, MAX_CPUS, (int)num_online_cpus());
-
-You should remove the cast on num_online_cpus() like checkpatch
-suggests. min_t adds the cast to int on both of the inputs for you.
-
-> 
->  	/* In a perfect world we have one RSS ring for each CPU
->  	 * and each has it's own vector.  To do that we ask for
-> --
-> 2.30.0
-
-Cheers,
-Nathan
+Greetings,
+ 
+I represent an International finance & investment company, and we are currently expanding our business interest abroad.
+ 
+We offer a wide range of financial services to interested companies, enterprises or individuals who are looking for soft loans to finance their PROJECT, our services are due at a very low & minimum rate of 2% to suit your needs.
+ 
+We specialize in both start up projects and existing businesses needing funding for expansion. It takes fewer than 21 days to release funds if you have an existing business.
+ 
+Please email us your Project executive summary or Business plan for review and possible approval for funding to (majid.arabi@ronekco.com)
+ 
+Feel free to ask your questions.
+ 
+Best Regards,
+Marc Simpson
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
