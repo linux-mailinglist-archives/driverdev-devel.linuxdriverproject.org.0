@@ -1,56 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DC3A310866
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 10:54:22 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D3FB310891
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 10:58:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE8428713D;
-	Fri,  5 Feb 2021 09:54:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E222286AE1;
+	Fri,  5 Feb 2021 09:58:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zBNB6gyUGWUQ; Fri,  5 Feb 2021 09:54:20 +0000 (UTC)
+	with ESMTP id 2rLyconhE_7V; Fri,  5 Feb 2021 09:58:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1CC16870E5;
-	Fri,  5 Feb 2021 09:54:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3385986ACB;
+	Fri,  5 Feb 2021 09:58:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D68941BF383
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:54:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8AD731BF4E2
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:58:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D2C0B8711C
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:54:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 87A5286ACB
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:58:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3lcjAutq1JLa for <devel@linuxdriverproject.org>;
- Fri,  5 Feb 2021 09:54:16 +0000 (UTC)
+ with ESMTP id O4mIUsRMs_hy for <devel@linuxdriverproject.org>;
+ Fri,  5 Feb 2021 09:58:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EF87F870E5
- for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 09:54:15 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 90E2564FBC;
- Fri,  5 Feb 2021 09:54:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5B5FC86A75
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 09:58:39 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2F3AD64E2C;
+ Fri,  5 Feb 2021 09:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612518855;
- bh=qqGS/sqwAf0mec/vUlbRuCasqOYPkR2xSCTJXt2Iw34=;
+ s=korg; t=1612519118;
+ bh=nV/rbqwWRF8qM4CIyf4ANBmKaUDGONxRBkHMpb/7CR4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XdQGGIPtSw1Aw+LVyu9t22n8gc1Z9YOhrLUMXol8pNxflAQoCjfkuW2yC888XeU6C
- lNFY8zgQZ5Vv4kvhlufhrLZOVc2xr4DlttWtp5jWM0SkLgFFJ8bpH0WR/rVKlpgq3o
- REwZWF8Q3xTTTI9u2nAfSxab4wNc2KGHBEvKWg8w=
-Date: Fri, 5 Feb 2021 10:54:12 +0100
+ b=suxX5FVBS+WooJ8axVdYhFfyaX4TTMrJP9y6L6NxvLOb22YUJK1w1qsAyy6vSL1p8
+ WC4DhmtWEfw/bFhWsVLHvEUUYJ6kMLxYk8dbBMSsn+7qONou9MHKzqST1PRylbUKQs
+ Jg9D26ueFHg0n4uFtR7jbEz/yFPmQaDGgHJf8PHU=
+Date: Fri, 5 Feb 2021 10:58:36 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Yicong Yang <yangyicong@hisilicon.com>
-Subject: Re: [PATCH 4/4] staging: comedi: Use subdir-ccflags-* to inherit
- debug flag
-Message-ID: <YB0VxBrYM3BSoxrc@kroah.com>
-References: <1612518255-23052-1-git-send-email-yangyicong@hisilicon.com>
- <1612518255-23052-5-git-send-email-yangyicong@hisilicon.com>
+To: Shuah Khan <skhan@linuxfoundation.org>
+Subject: Re: [PATCH v3 1/7] seqnum_ops: Introduce Sequence Number Ops
+Message-ID: <YB0WzBnLd+OcpxEE@kroah.com>
+References: <cover.1612314468.git.skhan@linuxfoundation.org>
+ <23f6347a7bb9f902babe7351f71b23644035673d.1612314468.git.skhan@linuxfoundation.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1612518255-23052-5-git-send-email-yangyicong@hisilicon.com>
+In-Reply-To: <23f6347a7bb9f902babe7351f71b23644035673d.1612314468.git.skhan@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,27 +62,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
- jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
- masahiroy@kernel.org, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-kbuild@vger.kernel.org, linuxarm@openeuler.org, abbotti@mev.co.uk,
- michal.lkml@markovi.net, helgaas@kernel.org, linux@roeck-us.net
+Cc: devel@driverdev.osuosl.org, tony.luck@intel.com, keescook@chromium.org,
+ rafael@kernel.org, peterz@infradead.org, corbet@lwn.net,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-acpi@vger.kernel.org, james.morse@arm.com,
+ linux-kselftest@vger.kernel.org, bp@alien8.de, lenb@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 05, 2021 at 05:44:15PM +0800, Yicong Yang wrote:
-> From: Junhao He <hejunhao2@hisilicon.com>
-> 
-> Use subdir-ccflags-* instead of ccflags-* to inherit the debug
-> settings from Kconfig when traversing subdirectories.
+On Wed, Feb 03, 2021 at 11:11:57AM -0700, Shuah Khan wrote:
+> +static inline u32 seqnum32_inc(struct seqnum32 *seq)
+> +{
+> +	atomic_t val = ATOMIC_INIT(seq->seqnum);
+> +
+> +	seq->seqnum = (u32) atomic_inc_return(&val);
+> +	if (seq->seqnum >= UINT_MAX)
+> +		pr_info("Sequence Number overflow %u detected\n",
+> +			seq->seqnum);
+> +	return seq->seqnum;
 
-Again, explain _why_.
+As Peter points out, this is doing doing what you think it is doing :(
 
-Please read the section entitled "The canonical patch format" in the
-kernel file, Documentation/SubmittingPatches for what a proper changelog
-should look like.
+Why do you not just have seq->seqnum be a real atomic variable?  Trying
+to switch to/from one like this does not work as there is no
+"atomic-ness" happening here at all.
+
+Oh, and checkpatch should have complained about the extra ' ' in your
+cast :)
 
 thanks,
 
