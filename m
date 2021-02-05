@@ -1,107 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C1483107BB
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 10:26:41 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3C47387129;
-	Fri,  5 Feb 2021 09:26:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oaeaZ5ncmmuQ; Fri,  5 Feb 2021 09:26:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BF87187111;
-	Fri,  5 Feb 2021 09:26:37 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2CAC61BF383
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:26:36 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C76AE31079A
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Feb 2021 10:20:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 13F402E0FD
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:26:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8A3842E10F;
+	Fri,  5 Feb 2021 09:20:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rWFUMwYzgrcQ; Fri,  5 Feb 2021 09:20:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 6C1EC200ED;
+	Fri,  5 Feb 2021 09:20:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E8E2C1BF383
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:20:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id E4B828731A
+ for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 09:20:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OK0OsWbrsFTU for <devel@linuxdriverproject.org>;
- Fri,  5 Feb 2021 09:26:33 +0000 (UTC)
-X-Greylist: delayed 00:14:48 by SQLgrey-1.7.6
-Received: from APC01-SG2-obe.outbound.protection.outlook.com
- (mail-oln040092253084.outbound.protection.outlook.com [40.92.253.84])
- by silver.osuosl.org (Postfix) with ESMTPS id 7DBD420384
- for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 09:26:32 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=f6O8aZukv7rMdHBdqpaLPvtEBCCmmO9voB5r88P/rdu2lBNGjSprRlfqYFJZ8TYx5S1Ko5gsB3uaWeOaV9pz7sQHlgzRr+e/0UwCrqL41+UVo7a++hn4hBjXvO92/Nuwxog9LZk1TuBrkJvwIMWns+mlY54vWm6PiNDziK7SLfNpVne+kY41PeQDLB9VzAG8gxtwVhoho3ZR26gAA1R9MJlgfU8HqkfmDNx5nvmEzdcfaqmn4+vEyUO7eVCY9adeatQ8DVZis+29B0AGUrzBoJEUCO0vvaWTlwzDiKHiW7B8u4eLHi5N4KE5u7zYJiTHuRxEy8cy9JaQcK2Fh0pgZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lyAaggpKXlqNBVpH7HCuTwA7xTLbNf9sNSFgWaX3M1w=;
- b=DvFlwhfxQYvWEHg1/pwoonxsgZGj8jYCy8rX8z9+lbE/gsQY9StZJbf5r4bqMogrhqVTiEwyfeSujXy+soE5uapFMmqD6JqR0Is/5CW67z/6CcWcpiMSTdG7VTw8k846Te1Q5XPkYIXK/gZr7soy/Esh/xBwcUQXBY27Nyz7TJlzhw7rF1UWI2hQiHvP9Y3wfG012FflpQws+rxsrVZInuUSnIofLJBiluX4zVjQ3PEo+84ukFolyMCb+/9M4p3iguM6O043z06RuXjhRvE8UIWyDUGyh4K1Y+VGI0r6VxzE+ItW8gN/TYbvrID7VW0I2L6DoGmpHF4D0KXAJhBt+A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=live.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lyAaggpKXlqNBVpH7HCuTwA7xTLbNf9sNSFgWaX3M1w=;
- b=bWj/e6L55IyK7c8elCtWKMpckhuVbFk92t1cF0DTUE4o2sESlCwY3TGbO6TWbdvshI3zlJA897BDTpyzWBS8pDBeuBweFWU6FEA1UJDPZXTCfdZpwxEANlhRHtaM2eHWqut/ghllPj1wFO0tq1aRv8av3+zgkvfOA2cFzKaOg16oLN+Vm78vApqtPHCXStR0HpvsELdJI4HMmfg9VLLIkyiFoKRNkDPqrJ2nXDPgcQYgdM6t0LIfoGnus2wlW1BDazx1Hi+hGasBhEH9rxrrAnJZkk9ywz6ZrHUBEkQ+PBTgNBf4kdtumaU749IEPjJD11IY7tyhc3JtPzu17M/pJA==
-Received: from PU1APC01FT043.eop-APC01.prod.protection.outlook.com
- (2a01:111:e400:7ebe::41) by
- PU1APC01HT183.eop-APC01.prod.protection.outlook.com (2a01:111:e400:7ebe::454)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.11; Fri, 5 Feb
- 2021 09:11:33 +0000
-Received: from PS1PR04MB2934.apcprd04.prod.outlook.com
- (2a01:111:e400:7ebe::52) by PU1APC01FT043.mail.protection.outlook.com
- (2a01:111:e400:7ebe::262) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.11 via Frontend
- Transport; Fri, 5 Feb 2021 09:11:33 +0000
-X-IncomingTopHeaderMarker: OriginalChecksum:AE3A65ED5B137D831F8B145509833EB02648F8D350B6735A64DE31A300941FD0;
- UpperCasedChecksum:3CC019D8A067AD27104857B5766A34BCC26B85E9C8BE3EB6F9E5BC7CED926006;
- SizeAsReceived:7485; Count:44
-Received: from PS1PR04MB2934.apcprd04.prod.outlook.com
- ([fe80::55d8:45ac:a6c8:b297]) by PS1PR04MB2934.apcprd04.prod.outlook.com
- ([fe80::55d8:45ac:a6c8:b297%3]) with mapi id 15.20.3825.019; Fri, 5 Feb 2021
- 09:11:33 +0000
-From: Mayank Suman <mayanksuman@live.com>
-To: gregkh@linuxfoundation.org, sfr@canb.auug.org.au, mayanksuman@live.com,
- dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-kernel-mentees@lists.linuxfoundation.org
-Subject: [PATCH] staging: fbtft replaced udelay with usleep_range
-Date: Fri,  5 Feb 2021 14:41:13 +0530
-Message-ID: <PS1PR04MB29341C7117657B1F312444FBD6B29@PS1PR04MB2934.apcprd04.prod.outlook.com>
-X-Mailer: git-send-email 2.30.0
-X-TMN: [fNC3v8HBfu/BQltsmUk1UYAYOsqFhc/TJmLgRs+VoKw=]
-X-ClientProxiedBy: BMXPR01CA0052.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:b00:2c::16) To PS1PR04MB2934.apcprd04.prod.outlook.com
- (2603:1096:803:3e::21)
-X-Microsoft-Original-Message-ID: <20210205091113.1183466-1-mayanksuman@live.com>
+ with ESMTP id MR5Zhkyhvcyj for <devel@linuxdriverproject.org>;
+ Fri,  5 Feb 2021 09:20:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com
+ [209.85.216.47])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D244A87319
+ for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 09:20:44 +0000 (UTC)
+Received: by mail-pj1-f47.google.com with SMTP id g15so3445540pjd.2
+ for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 01:20:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=U6dWRiyrIbPA57yDDAstPw73ZY/dCSiR50oKzjx/H6g=;
+ b=HSa2DSSMZS+e+scFXZu0NDFNcryeuP7Aes44vX2eicn4LJOzoDW4pE4magZtPxVZum
+ XduPEeGVtNA0SLvbcmAkktQYYSJ6iNy9AFFRm0DCGM0qtc7RXLY6tkBBeBM4tCX9LKmS
+ 3hu4orweIDyaCxc42NDaPbVyQ3TZoHRHGK/PnemFRGbOO2QdjVKjq2UF0BqC1BTYW+VC
+ xmPE+jZXWH6vkGgG+6WjhjacANCagFitJH4M6DKRoBnHiWOrMSvj8Z42wS2v966HMwB4
+ fGvfsTR1vLFZkD9D6t2AZ0YkBu60DoKza1WUOnBrT8IHQKjCAAOqtmhdrSv0jRo1dT38
+ FGlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=U6dWRiyrIbPA57yDDAstPw73ZY/dCSiR50oKzjx/H6g=;
+ b=BZQKjApCNUgp0L9LfQdCn2hdh13KbEi4VS3HKrvtcSe/JZysv8lrFQ9hgkAxdMfQ+/
+ nc7R1y4NB3K+Pd/NQ8G61B0kVyZgQShnysyUSJZ31ngJkbb4JvLZo2fEXZ+8OyDUXz3G
+ YKWe1PpWPfhNBdEV0e2ZtttVrPmlv40QHoJBsjv52iqlqQwLvhoSbC2tQCN+FthZOdpm
+ /KGT2wcwwU+V5JaYdwVSAN12fFWtMEm+HWy8oY+qvTu5oOTtzsg16WFr9hVpOAvQwzRh
+ QQMNX3HwfRw9LhXSV1LDTPTNn3RZ4mSH/EHmIRbTBo5hdN2lyZX4lC8TSN8nEdTkvi03
+ J8sA==
+X-Gm-Message-State: AOAM5308djd7uXaUtcucpYRqw6n2/+K7P3Qo7VWv1LTpCDrhabvFAdDA
+ EpayM8eCO/27jKwz3suLJ0c=
+X-Google-Smtp-Source: ABdhPJwG1sbba1GA71Z/ZsoLV0AXeXnT/scifzyZ8m25RVsPHbBrHLFRH2dadY60zQ8rJtTGlKMxsg==
+X-Received: by 2002:a17:90a:ba87:: with SMTP id
+ t7mr3163335pjr.184.1612516844327; 
+ Fri, 05 Feb 2021 01:20:44 -0800 (PST)
+Received: from localhost ([103.200.106.135])
+ by smtp.gmail.com with ESMTPSA id f15sm7768722pja.24.2021.02.05.01.20.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Feb 2021 01:20:43 -0800 (PST)
+Date: Fri, 5 Feb 2021 14:50:32 +0530
+From: Amey Narkhede <ameynarkhede02@gmail.com>
+To: Nathan Chancellor <nathan@kernel.org>
+Subject: Re: [PATCH] staging: qlge/qlge_main: Use min_t instead of min
+Message-ID: <20210205092032.3cyymzvkp5nkiok3@archlinux>
+References: <20210204215451.69928-1-ameynarkhede02@gmail.com>
+ <20210204225844.GA431671@localhost>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost.localdomain (103.127.101.171) by
- BMXPR01CA0052.INDPRD01.PROD.OUTLOOK.COM (2603:1096:b00:2c::16) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3825.19 via Frontend Transport; Fri, 5 Feb 2021 09:11:30 +0000
-X-MS-PublicTrafficType: Email
-X-IncomingHeaderCount: 44
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-Correlation-Id: 35973a73-eab1-4187-ffb7-08d8c9b60814
-X-MS-Exchange-SLBlob-MailProps: 7MJMDUNTCtxonY1sqs0A+FAVLkVdFa61r9V4wI1z8pop/cLlFsUo+0lms4aKY9zdvKeNre9lBufoi0hI7sb8t3jSIzLb70TE5pfj5nenzSakctR4luC74xYXVuMTEI6HjtuzhliwdYFqSwB5E3F2dYVcVwtNzfbI6I9fcaletIWGZ6qa58Lwl84eZSyxM9QRjweV/s7eN9qXryydzLkKqqiXs3inbplZfoFmQMMli/WlkGbszUIuU+0gVzgqOEzsvtS6ybUg5cMCwEiUWeQjDCbxQnipTqUcoaV9L4Ed2ysSz9NNVbW7zEQ/Oa1CLXVIpLqQr0ZALz06jXwHa/YNWgXm68jLsOyPUCBhjwK0cfrtNpkJs9S2ZGZiHetSkQprD/CVeq8tJEr8qdL4vWWXIVprfE8dCUiz9gvs6xPQwq1yZrgFhdi9dbY1kOYJTCXQE3qeuaSrvbt/lK/cwaeUXZC281e+5jz++2YWaj3OjLQUcXzJU5Q0mWR5UY/zO3saMfmmYUxvrC0BiEWt302oHcNdP8ojGKPN4blOs6YiHUCyV7lblbxU/BVbLASic/FUJrAWuX+D/1zBGblCOa1uOGRwxtAxzXFKzUBxAcqWyZSWOx298cXx1OmUtXv3D7xhI6JST2h08hxaw4H/10Dzzp54jDXjHYeNpRCRBF6KjJKE+LN9ckZRLLLxoAXkm6vsdXktiXtNiUTwz92CWvRKgox266A8nyMQi1nZw5wiHBCEC/Xd33/kVQ==
-X-MS-TrafficTypeDiagnostic: PU1APC01HT183:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: B5dUEFrNUo1URNA5SG6kJWtOG1LUbnNy1IPkpDnMvmeghH9IXh6SXP6Szu8yn+ka/XdhTgkv0Vf0gi+t07DUqOuUeDqtL1vp6JBCSeUWaXvvoeNWY9sf5kwwY7PuBrVDfL4Hg0ySzb583HvHD8Pr2hyOyVywCPyVCVNQXRcn6SKLEUE+gycFApGRTiRFB1mWArv8PiR3E+unZ3JUtQwwMPYaERbGAcxOsm4pgNFinZaZpxuFGIVBwT4JCS7bWAW9TvfTCQGvnhmbGz1qU8j5p05aVxk3hG8Cec3SPG6p2s/SC2PFltbxz7s/llphXQTLkEhQ5X6Z39ArfiZ7fqAyczvWGen07Es1h1y3TCsn5Qvg9h8Vdq58vQvtr5G8fX1bBKGXRnQqrG3vfY4CKBudyw==
-X-MS-Exchange-AntiSpam-MessageData: fli3bkGsiW3isVSCAwTVyn1YSOiZje+yNR3uY3KUj7BE96Y16vB9978+uGIS6srSrMdbd/fqt7V5BSYOMQdpHpa92WdeLoJNxWK6ZgbzuFLJFDWWd5l00zOmztGVB1mJKAJpruiIuPUgiunaM3XPIA==
-X-OriginatorOrg: live.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 35973a73-eab1-4187-ffb7-08d8c9b60814
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Feb 2021 09:11:33.4371 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-AuthSource: PU1APC01FT043.eop-APC01.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1APC01HT183
+In-Reply-To: <20210204225844.GA431671@localhost>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,150 +86,85 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============7516235440216448072=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-According to Documentation/timers/timers-howto.rst, usleep_range is
-preffered over udelay for >=10us delay.
 
-Signed-off-by: Mayank Suman <mayanksuman@live.com>
----
- drivers/staging/fbtft/fb_agm1264k-fl.c |  2 +-
- drivers/staging/fbtft/fb_ra8875.c      |  4 ++--
- drivers/staging/fbtft/fb_tinylcd.c     |  4 ++--
- drivers/staging/fbtft/fb_upd161704.c   | 18 +++++++++---------
- drivers/staging/fbtft/fb_watterott.c   |  4 ++--
- 5 files changed, 16 insertions(+), 16 deletions(-)
+--===============7516235440216448072==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ueodtozohea73jpb"
+Content-Disposition: inline
 
-diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-index eeeeec97a..9ac523511 100644
---- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-+++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-@@ -85,7 +85,7 @@ static void reset(struct fbtft_par *par)
- 	dev_dbg(par->info->device, "%s()\n", __func__);
- 
- 	gpiod_set_value(par->gpio.reset, 0);
--	udelay(20);
-+	usleep_range(20);
- 	gpiod_set_value(par->gpio.reset, 1);
- 	mdelay(120);
- }
-diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
-index 398bdbf53..61d58efab 100644
---- a/drivers/staging/fbtft/fb_ra8875.c
-+++ b/drivers/staging/fbtft/fb_ra8875.c
-@@ -217,7 +217,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
- 	}
- 	len--;
- 
--	udelay(100);
-+	usleep_range(100);
- 
- 	if (len) {
- 		buf = (u8 *)par->buf;
-@@ -238,7 +238,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
- 
- 	/* restore user spi-speed */
- 	par->fbtftops.write = fbtft_write_spi;
--	udelay(100);
-+	usleep_range(100);
- }
- 
- static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
-diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-index 9469248f2..fffd39d96 100644
---- a/drivers/staging/fbtft/fb_tinylcd.c
-+++ b/drivers/staging/fbtft/fb_tinylcd.c
-@@ -38,10 +38,10 @@ static int init_display(struct fbtft_par *par)
- 	write_reg(par, 0xE5, 0x00);
- 	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
- 	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
--		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-+			0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
--	udelay(250);
-+	usleep_range(250);
- 	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
- 
- 	return 0;
-diff --git a/drivers/staging/fbtft/fb_upd161704.c b/drivers/staging/fbtft/fb_upd161704.c
-index c77832ae5..bdcfda868 100644
---- a/drivers/staging/fbtft/fb_upd161704.c
-+++ b/drivers/staging/fbtft/fb_upd161704.c
-@@ -36,27 +36,27 @@ static int init_display(struct fbtft_par *par)
- 
- 	/* oscillator start */
- 	write_reg(par, 0x003A, 0x0001);	/*Oscillator 0: stop, 1: operation */
--	udelay(100);
-+	usleep_range(100);
- 
- 	/* y-setting */
- 	write_reg(par, 0x0024, 0x007B);	/* amplitude setting */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0025, 0x003B);	/* amplitude setting */
- 	write_reg(par, 0x0026, 0x0034);	/* amplitude setting */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0027, 0x0004);	/* amplitude setting */
- 	write_reg(par, 0x0052, 0x0025);	/* circuit setting 1 */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0053, 0x0033);	/* circuit setting 2 */
- 	write_reg(par, 0x0061, 0x001C);	/* adjustment V10 positive polarity */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0062, 0x002C);	/* adjustment V9 negative polarity */
- 	write_reg(par, 0x0063, 0x0022);	/* adjustment V34 positive polarity */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0064, 0x0027);	/* adjustment V31 negative polarity */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0065, 0x0014);	/* adjustment V61 negative polarity */
--	udelay(10);
-+	usleep_range(10);
- 	write_reg(par, 0x0066, 0x0010);	/* adjustment V61 negative polarity */
- 
- 	/* Basical clock for 1 line (BASECOUNT[7:0]) number specified */
-@@ -64,7 +64,7 @@ static int init_display(struct fbtft_par *par)
- 
- 	/* Power supply setting */
- 	write_reg(par, 0x0019, 0x0000);	/* DC/DC output setting */
--	udelay(200);
-+	usleep_range(200);
- 	write_reg(par, 0x001A, 0x1000);	/* DC/DC frequency setting */
- 	write_reg(par, 0x001B, 0x0023);	/* DC/DC rising setting */
- 	write_reg(par, 0x001C, 0x0C01);	/* Regulator voltage setting */
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 76b25df37..580d5329e 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -84,7 +84,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 			par->txbuf.buf, 10 + par->info->fix.line_length);
- 		if (ret < 0)
- 			return ret;
--		udelay(300);
-+		usleep_range(300);
- 	}
- 
- 	return 0;
-@@ -124,7 +124,7 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
- 			par->txbuf.buf, 10 + par->info->var.xres);
- 		if (ret < 0)
- 			return ret;
--		udelay(700);
-+		usleep_range(700);
- 	}
- 
- 	return 0;
--- 
-2.30.0
+
+--ueodtozohea73jpb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On 21/02/04 03:58PM, Nathan Chancellor wrote:
+> On Fri, Feb 05, 2021 at 03:24:51AM +0530, ameynarkhede02@gmail.com wrote:
+> > From: Amey Narkhede <ameynarkhede02@gmail.com>
+> >
+> > Use min_t instead of min function in qlge/qlge_main.c
+> > Fixes following checkpatch.pl warning:
+> > WARNING: min() should probably be min_t(int, MAX_CPUS, num_online_cpus())
+> >
+> > Signed-off-by: Amey Narkhede <ameynarkhede02@gmail.com>
+> > ---
+> >  drivers/staging/qlge/qlge_main.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+> > index 402edaeff..29606d1eb 100644
+> > --- a/drivers/staging/qlge/qlge_main.c
+> > +++ b/drivers/staging/qlge/qlge_main.c
+> > @@ -3938,7 +3938,7 @@ static int ql_configure_rings(struct ql_adapter *qdev)
+> >  	int i;
+> >  	struct rx_ring *rx_ring;
+> >  	struct tx_ring *tx_ring;
+> > -	int cpu_cnt = min(MAX_CPUS, (int)num_online_cpus());
+> > +	int cpu_cnt = min_t(int, MAX_CPUS, (int)num_online_cpus());
+>
+> You should remove the cast on num_online_cpus() like checkpatch
+> suggests. min_t adds the cast to int on both of the inputs for you.
+>
+Thanks. Fixed in v2
+
+Amey
+
+--ueodtozohea73jpb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEE6H5dELF7r4AXEH5hLybaax94G/8FAmAdDeAACgkQLybaax94
+G//LZQ//YzFyc1n4oGkSaJGiso13StX9yKhtHGF4+kH2iRzT6Et4/eJTZwnOCuzn
+XBMT0agwZFIBVlupnHi92uz8YwCPbmKmcLrWZAlO61XW65ITRjcdpw2N4GF/yOc8
+uAr74KvXLMmX9CKACUvaRGkVvu1eKuy6bFAMvbKxNUgwI1NvMJzLc2h+sD8dMk5p
+xPIG0wte9VXvbD9U+bWDeBdhlXKoAR8LPv/NmOy1NEzQ2Y33AXkGHenOQEPHGjGP
+MmeMj3lIiBH1Tohu+NJ7Yk3VqCc3d4Rtei/WueQ8EDsAvO1dzKRhhhnzR8Edty+N
+xGTNgSIL28HYOaW+3noiWhTbJHghmQp+3Nt3fdADU2avcs4l+WigfIm1gtlH/azT
+sar5v1rzmRSsJE+spCOuQ6YqXOguwspcpkQij/uEhy4+ASk1Xc/BhPVhFzycgtI/
+etH2+wqN591qPA3hvNqyVYfAb8ySC4iLYRYtBfxolNBZrIrLBiBiC4y4Jr+sfIlX
+dMAlEcFW9T5zjmZTO66Jtcz7Iz1ZI2HDzy0dVjUJCwVJVE0h9yq9NLShHg0KNhcH
+s+qS+RVbz6xPpxWKZkCkp5aLrk29t2HtTjPCy2++bGL40OskoF4QXfD/AGPhGj0G
+oFCdFONyUMkMMDnoYqp8RhpSUnhwKNy1MYqvbCz2fhZv0vXAitk=
+=r0ZT
+-----END PGP SIGNATURE-----
+
+--ueodtozohea73jpb--
+
+--===============7516235440216448072==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============7516235440216448072==--
