@@ -1,84 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94B47311678
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Feb 2021 00:17:00 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27C31311805
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Feb 2021 02:03:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A5EDB2E154;
-	Fri,  5 Feb 2021 23:16:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A6A45873E8;
+	Sat,  6 Feb 2021 01:03:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i9k7dEDSBBlO; Fri,  5 Feb 2021 23:16:58 +0000 (UTC)
+	with ESMTP id x5QdCXaWnzbN; Sat,  6 Feb 2021 01:03:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D1C512E14E;
-	Fri,  5 Feb 2021 23:16:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 32C398700B;
+	Sat,  6 Feb 2021 01:03:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E00071BF2E5
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 23:16:54 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BCF271C115D
+ for <devel@linuxdriverproject.org>; Sat,  6 Feb 2021 01:03:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D9ACA86BA3
- for <devel@linuxdriverproject.org>; Fri,  5 Feb 2021 23:16:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AF603203BA
+ for <devel@linuxdriverproject.org>; Sat,  6 Feb 2021 01:03:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id smhHf9jqrIDj for <devel@linuxdriverproject.org>;
- Fri,  5 Feb 2021 23:16:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f50.google.com (mail-ot1-f50.google.com
- [209.85.210.50])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EF6E186B84
- for <devel@driverdev.osuosl.org>; Fri,  5 Feb 2021 23:16:53 +0000 (UTC)
-Received: by mail-ot1-f50.google.com with SMTP id o12so8479005ote.12
- for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 15:16:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rwe5uVEsJGK5yJWOuT60cjDB4g4zMZRqI4yHWXKKFDI=;
- b=IM6esCCJ8RSmF8l/G+Bs94LbX/NU9QtFerWFm8Ry+QRZ2aK1X/5vZ7KM8dXRk/gcxc
- +lLPPO5A28xF9bzh0Og4iaO04fE9OAbpRTlncabU5ttXENHcJywW0KqltVuDsYavSsmA
- luTp2pKBk0buMzX7l88tKH/zeAnM2hVyXpTOyjWFgkEu3OA1Z/gWH83ap+50Fk5JHA76
- VSBrZph6h+eeQXVQoncFCHJfnN2HdMaTiiSUIdyRSWP6TqSje5NDRfwLpgU5TyykxK4/
- HE/kqZVwz4VKy+/dZ6XOGai/g97A9ngk/VqlCQeef8G73vdxrBtpksXp2RSg/rDw2+VV
- tNqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rwe5uVEsJGK5yJWOuT60cjDB4g4zMZRqI4yHWXKKFDI=;
- b=tujJzzhvuUcA2RhPll0i1QfJ2boeSMlSS/xIQtxYDZ6gkX6JsPyDHTmq5rPFgXEFsD
- Sxc1mL0ztmX0att15x1tpYytvH+rzJ+JpHoHr49lka5Lb1dsF6wHhr4KduvCULyKIcE2
- xBXZOhdBs7M7bQWI0rrlS+zC1CNB5aYCzPVErsjvyaS6B6mP9mp/GoCG40SnNjoAYQDn
- DkhtXXXxWE7SaZN4PDE9ed2gCGTr1Wo+2Rsx2PC6qslGVQKO/ASLO3zkRtHrKKzKYwk6
- jjW0VROPVz1DkLIz4JB7sYXVxLFGXuYlBcBJigxMSbOxMUbYT3Ge5rfGYJ9tCxkUyvRW
- sdyw==
-X-Gm-Message-State: AOAM530xJYJT2VyxP3rsk9JLIzS3EFXHwZBn03xHkj+q6AIaITePOVv0
- uWutMimSXKZMo8AsSbcAXkA=
-X-Google-Smtp-Source: ABdhPJxqRVskNlO0mie8LeYeds1HCwXPOcoIn1x549FmvwaAzQv14DWVVBBJ1Y0bMHPKm38eNyYGYA==
-X-Received: by 2002:a9d:6757:: with SMTP id w23mr5302278otm.101.1612567013247; 
- Fri, 05 Feb 2021 15:16:53 -0800 (PST)
-Received: from localhost.localdomain (cpe-24-31-245-230.kc.res.rr.com.
- [24.31.245.230])
- by smtp.gmail.com with ESMTPSA id o98sm2121605ota.0.2021.02.05.15.16.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Feb 2021 15:16:52 -0800 (PST)
-Subject: Re: [PATCH] staging: rtl8188eu: Add Edimax EW-7811UN V2 to device
- table
-To: Martin Kaiser <martin@kaiser.cx>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20210204085217.9743-1-martin@kaiser.cx>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-Message-ID: <134235b7-f15d-9ac9-5fc9-58f3628479aa@lwfinger.net>
-Date: Fri, 5 Feb 2021 17:16:51 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ with ESMTP id eLI5HELbJ5xF for <devel@linuxdriverproject.org>;
+ Sat,  6 Feb 2021 01:03:08 +0000 (UTC)
+X-Greylist: delayed 00:05:54 by SQLgrey-1.7.6
+Received: from condef-06.nifty.com (condef-06.nifty.com [202.248.20.71])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2FB40203B1
+ for <devel@driverdev.osuosl.org>; Sat,  6 Feb 2021 01:03:07 +0000 (UTC)
+Received: from conssluserg-01.nifty.com ([10.126.8.80])by condef-06.nifty.com
+ with ESMTP id 1160rHJs026675
+ for <devel@driverdev.osuosl.org>; Sat, 6 Feb 2021 09:53:17 +0900
+Received: from mail-pl1-f178.google.com (mail-pl1-f178.google.com
+ [209.85.214.178]) (authenticated)
+ by conssluserg-01.nifty.com with ESMTP id 1160r64o004671
+ for <devel@driverdev.osuosl.org>; Sat, 6 Feb 2021 09:53:06 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-01.nifty.com 1160r64o004671
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1612572787;
+ bh=GPySi5FWUUgt3Nf/zevYzreQ14QCHC7dq4Gj7Iu6PdM=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=KzoShgNcKgDb7aRIUtJmJ1rx2FCzGlFX5m421RSg8KaR+ZHU8DcZFfkcqCpImJ9Se
+ 20oACGiCEzq35ncdGVLdFr6G1HYhyWy3yG5j/x9hhHGP5NxMYVrw8h5YL8Obo6YLgf
+ 0JL+92QeKSoxYEWm/F+wV2qZUWoO7N4oDG5iKl1+/QwFmgAkEuLBfJn6y9tjzrDebn
+ CkTvpcRmcekx+4ZSrH5eVn29+qe268TkYo2LZ43I6TRxiQJVDMNn33AogXk8F6sYKx
+ vh58eyX+5U0MuKjD6MMyeih7AS0CJ0J0dJLiYuJsou+U3K8BZAAhnwrtxQ+ZftcYw/
+ XzdXCJifY0GFQ==
+X-Nifty-SrcIP: [209.85.214.178]
+Received: by mail-pl1-f178.google.com with SMTP id d13so4432187plg.0
+ for <devel@driverdev.osuosl.org>; Fri, 05 Feb 2021 16:53:06 -0800 (PST)
+X-Gm-Message-State: AOAM532+VD9fw1EO/3u3qUdHrh+G09pADSLshABD3pCT/HI+s4N+TG9x
+ R+BkafFluNbLYDIILpUrfpwswg9YVkpP64aDjqY=
+X-Google-Smtp-Source: ABdhPJy2iadLfW+f/QGkcC2eqfoUOehXlU0LObloB/V5zjeO+YCzFrx6L4Mi1lzQVdV+RNvC/ncuPB1ZZ0t1rSii5I8=
+X-Received: by 2002:a17:902:bb87:b029:e1:d1f:2736 with SMTP id
+ m7-20020a170902bb87b02900e10d1f2736mr6360693pls.1.1612572786057; Fri, 05 Feb
+ 2021 16:53:06 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210204085217.9743-1-martin@kaiser.cx>
-Content-Language: en-US
+References: <1612518255-23052-1-git-send-email-yangyicong@hisilicon.com>
+ <1612518255-23052-5-git-send-email-yangyicong@hisilicon.com>
+ <YB0VxBrYM3BSoxrc@kroah.com>
+In-Reply-To: <YB0VxBrYM3BSoxrc@kroah.com>
+From: Masahiro Yamada <masahiroy@kernel.org>
+Date: Sat, 6 Feb 2021 09:52:28 +0900
+X-Gmail-Original-Message-ID: <CAK7LNAQoUZYxswxT9zkq=G_2A4tdkhkedMyQhj8eHkBeqz7+Lw@mail.gmail.com>
+Message-ID: <CAK7LNAQoUZYxswxT9zkq=G_2A4tdkhkedMyQhj8eHkBeqz7+Lw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] staging: comedi: Use subdir-ccflags-* to inherit
+ debug flag
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,39 +82,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
+ jdelvare@suse.com, prime.zeng@huawei.com,
+ Linux PM mailing list <linux-pm@vger.kernel.org>,
+ Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
+ devel@driverdev.osuosl.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Yicong Yang <yangyicong@hisilicon.com>, linuxarm@openeuler.org,
+ Ian Abbott <abbotti@mev.co.uk>, Michal Marek <michal.lkml@markovi.net>,
+ Bjorn Helgaas <helgaas@kernel.org>, Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2/4/21 2:52 AM, Martin Kaiser wrote:
-> The Edimax EW-7811UN V2 uses an RTL8188EU chipset and works with this
-> driver.
-> 
-> Signed-off-by: Martin Kaiser <martin@kaiser.cx>
-> ---
->   drivers/staging/rtl8188eu/os_dep/usb_intf.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/rtl8188eu/os_dep/usb_intf.c b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
-> index 43ebd11b53fe..efad43d8e465 100644
-> --- a/drivers/staging/rtl8188eu/os_dep/usb_intf.c
-> +++ b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
-> @@ -41,6 +41,7 @@ static const struct usb_device_id rtw_usb_id_tbl[] = {
->   	{USB_DEVICE(0x2357, 0x0111)}, /* TP-Link TL-WN727N v5.21 */
->   	{USB_DEVICE(0x2C4E, 0x0102)}, /* MERCUSYS MW150US v2 */
->   	{USB_DEVICE(0x0df6, 0x0076)}, /* Sitecom N150 v2 */
-> +	{USB_DEVICE(0x7392, 0xb811)}, /* Edimax EW-7811UN V2 */
->   	{USB_DEVICE(USB_VENDER_ID_REALTEK, 0xffef)}, /* Rosewill RNX-N150NUB */
->   	{}	/* Terminating entry */
->   };
-> 
+On Fri, Feb 5, 2021 at 6:54 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Fri, Feb 05, 2021 at 05:44:15PM +0800, Yicong Yang wrote:
+> > From: Junhao He <hejunhao2@hisilicon.com>
+> >
+> > Use subdir-ccflags-* instead of ccflags-* to inherit the debug
+> > settings from Kconfig when traversing subdirectories.
+>
+> Again, explain _why_.
+>
+> Please read the section entitled "The canonical patch format" in the
+> kernel file, Documentation/SubmittingPatches for what a proper changelog
+> should look like.
+>
+> thanks,
+>
+> greg k-h
 
-Acked-by: Larry Finger <Larry.Finger@lwfinger.net>
 
-Larry
+I think this is a good clean-up,
+assuming CONFIG_COMEDI_DEBUG intends to
+give the DEBUG flag to all source files
+under drivers/staging/comedi/.
 
+
+
+-- 
+Best Regards
+Masahiro Yamada
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
