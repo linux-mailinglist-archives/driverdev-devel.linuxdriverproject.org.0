@@ -1,55 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D70C3124B1
-	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 15:35:14 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A89473124DB
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 15:53:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3CB6E20515;
-	Sun,  7 Feb 2021 14:35:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B9584867B9;
+	Sun,  7 Feb 2021 14:53:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iz02jXEz3BpF; Sun,  7 Feb 2021 14:35:11 +0000 (UTC)
+	with ESMTP id BdEPro+X6v1e; Sun,  7 Feb 2021 14:53:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CE6A420440;
-	Sun,  7 Feb 2021 14:35:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C77B5866D6;
+	Sun,  7 Feb 2021 14:53:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4C80D1BF3F4
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:35:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2CF8C1BF3F4
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:53:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4226120481
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:35:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2916A2042C
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:53:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xznAK6nWIOxO for <devel@linuxdriverproject.org>;
- Sun,  7 Feb 2021 14:35:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 419C9204B4
- for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 14:35:04 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 64B7764E42;
- Sun,  7 Feb 2021 14:35:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612708503;
- bh=3oAePvp7BtjsZE5pGFHqzeOfislh9iQnGI/HKJOc+Dc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZrYvmFzVRVgfpGW9Pgc47Zn3ZqU6prI1sq6jhYlMFGfimmperFwI+D1ZuW0IyzjpC
- QVEumeTmmBwDIXCXwlnkm4NH/p6cBS1+ELiGEiHnM/Z6l9kmuUxx3auTMlh6HVRBC2
- 0SkiiiTdmRGZDG6p2j/FhCdExFCcQRgLJgxYYAzQ=
-Date: Sun, 7 Feb 2021 15:35:00 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Mahak Gupta <gmahak1@gmail.com>
-Subject: Re: [PATCH] staging: gasket: fix indentation and lines ending with
- open parenthesis
-Message-ID: <YB/6lL/kljg/isrH@kroah.com>
-References: <20210207140928.11029-1-gmahak1@gmail.com>
+ with ESMTP id wJSuS8nsFtGg for <devel@linuxdriverproject.org>;
+ Sun,  7 Feb 2021 14:53:46 +0000 (UTC)
+X-Greylist: delayed 00:05:36 by SQLgrey-1.7.6
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com
+ [209.85.128.46])
+ by silver.osuosl.org (Postfix) with ESMTPS id E517F20109
+ for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 14:53:45 +0000 (UTC)
+Received: by mail-wm1-f46.google.com with SMTP id i9so10786981wmq.1
+ for <devel@driverdev.osuosl.org>; Sun, 07 Feb 2021 06:53:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=U+FD4FX1W6U2mWTuvI4YJ635kqsngjRjhMWM6RDCGfA=;
+ b=AECeStMnc4+w96Ilr4WY6VqwAL2P4HRo4cUt0DESevLEYIhDDNkBfSniM/3y/4Uo2Y
+ bChGzp3f4vOV1p4vJ0d5TbBGwvXnNSTASbQYda66AK2zsLyDnI8qtF0AQG4oFF9Th2N5
+ 5WHD09gLTQt7dTZRSvXYLaT5u3vz0/pMbECdcUYNcFSqMR/dzFb/WzuiIy+1NvtLIrfL
+ v4Sve+eF0wqJYGOVoi7RDCYSeTxM8oWQiCjrh26fu3jLprOnIG2FzAcoHzf54fG0Lrz1
+ pePfhjEyU4iyfoq78IwmVwNc1h9SZx3ZmUehwiVu6hQRBiiqNOT6+FkJ34aXpYmxM7Ha
+ gukA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=U+FD4FX1W6U2mWTuvI4YJ635kqsngjRjhMWM6RDCGfA=;
+ b=ldsTXtGQRpduuohjEsnunalUmehRtfPEOREEQw4/M4YtigkF6GyOoqi0HYRDrLIDeg
+ NmjgVoHXu+RGgs+Yp/bQ6VAWkTgXhx/4pi+xSCGJg0jrDDQOOQYQf9VUcPh1BpdhQnUx
+ 8AIydBNNyoCnQ+9LLw//IsPhIWeVQDuFr1USefgjvRc+6Y9Mzkzy/bLemq/X2T0YEi1T
+ NeJMmmf/47bPInXqrRXQQKp14wOG+ouXHZ7rTc98TZHTlPML2GIldKTsLa48Rb9ti5mc
+ BaJxHdB/CjfNZsXlOQmc8VELE0bjNXEF76auqK8P+aFZtQBWqpX7Au+Zy57ylLhK7w7w
+ LTnQ==
+X-Gm-Message-State: AOAM531y9myhvy9w9K0wGfe5Q7K4ekxF4Op4IOa67Q7m16WP28XljI8W
+ vFTKeezQTWtkBSlNnwz+hT3tET87H13wxcUV
+X-Google-Smtp-Source: ABdhPJwlfr8M4W6SCuEjqXkYxolOOvi+szVjPfeMJ08gbEUvM9Uo19BSqfM2i4Uhet5G1C42HsixIw==
+X-Received: by 2002:a1c:e402:: with SMTP id b2mr11359221wmh.122.1612709287404; 
+ Sun, 07 Feb 2021 06:48:07 -0800 (PST)
+Received: from localhost.localdomain
+ (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
+ [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
+ by smtp.gmail.com with ESMTPSA id n10sm22600578wro.39.2021.02.07.06.48.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 07 Feb 2021 06:48:06 -0800 (PST)
+From: Phillip Potter <phil@philpotter.co.uk>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: octeon: convert all uses of strlcpy to strscpy in
+ ethernet-mdio.c
+Date: Sun,  7 Feb 2021 14:48:04 +0000
+Message-Id: <20210207144804.88330-1-phil@philpotter.co.uk>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210207140928.11029-1-gmahak1@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,126 +87,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, rcy@google.com,
- rspringer@google.com, toddpoynor@google.com
+Cc: devel@driverdev.osuosl.org, andrew@lunn.ch, linux-kernel@vger.kernel.org,
+ chris.packham@alliedtelesis.co.nz, alexander.sverdlin@nokia.com,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Feb 07, 2021 at 07:39:28PM +0530, Mahak Gupta wrote:
-> This patch fixes warnings of 'checkpatch.pl'. According to
-> Linux coding guidelines, code should be aligned properly to
-> match with open parenthesis and lines should not end with
-> open parenthesis.
-> 
-> Signed-off-by: Mahak Gupta <gmahak1@gmail.com>
-> ---
->  drivers/staging/gasket/gasket_ioctl.c | 18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
-> index e3047d36d8db..a966231bad42 100644
-> --- a/drivers/staging/gasket/gasket_ioctl.c
-> +++ b/drivers/staging/gasket/gasket_ioctl.c
-> @@ -40,7 +40,7 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
->  
->  /* Read the size of the page table. */
->  static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
-> -	struct gasket_page_table_ioctl __user *argp)
-> +				       struct gasket_page_table_ioctl __user *argp)
->  {
->  	int ret = 0;
->  	struct gasket_page_table_ioctl ibuf;
-> @@ -51,8 +51,7 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
->  	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
->  		return -EFAULT;
->  
-> -	ibuf.size = gasket_page_table_num_entries(
-> -		gasket_dev->page_table[ibuf.page_table_index]);
-> +	ibuf.size = gasket_page_table_num_entries(gasket_dev->page_table[ibuf.page_table_index]);
->  
->  	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
->  					   ibuf.host_address,
-> @@ -66,7 +65,7 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
->  
->  /* Read the size of the simple page table. */
->  static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
-> -	struct gasket_page_table_ioctl __user *argp)
-> +					      struct gasket_page_table_ioctl __user *argp)
->  {
->  	int ret = 0;
->  	struct gasket_page_table_ioctl ibuf;
-> @@ -92,7 +91,7 @@ static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
->  
->  /* Set the boundary between the simple and extended page tables. */
->  static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
-> -	struct gasket_page_table_ioctl __user *argp)
-> +				       struct gasket_page_table_ioctl __user *argp)
->  {
->  	int ret;
->  	struct gasket_page_table_ioctl ibuf;
-> @@ -107,8 +106,8 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
->  
->  	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
->  		return -EFAULT;
-> -	max_page_table_size = gasket_page_table_max_size(
-> -		gasket_dev->page_table[ibuf.page_table_index]);
-> +	max_page_table_size = gasket_page_table_max_size
-> +		(gasket_dev->page_table[ibuf.page_table_index]);
->  
->  	if (ibuf.size > max_page_table_size) {
->  		dev_dbg(gasket_dev->dev,
-> @@ -119,8 +118,7 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
->  
->  	mutex_lock(&gasket_dev->mutex);
->  
-> -	ret = gasket_page_table_partition(
-> -		gasket_dev->page_table[ibuf.page_table_index], ibuf.size);
-> +	ret = gasket_page_table_partition(gasket_dev->page_table[ibuf.page_table_index], ibuf.size);
->  	mutex_unlock(&gasket_dev->mutex);
->  
->  	return ret;
-> @@ -183,7 +181,7 @@ static int gasket_unmap_buffers(struct gasket_dev *gasket_dev,
->   * corresponding memory.
->   */
->  static int gasket_config_coherent_allocator(struct gasket_dev *gasket_dev,
-> -	struct gasket_coherent_alloc_config_ioctl __user *argp)
-> +					    struct gasket_coherent_alloc_config_ioctl __user *argp)
->  {
->  	int ret;
->  	struct gasket_coherent_alloc_config_ioctl ibuf;
-> -- 
-> 2.17.1
-> 
+Convert three calls to strlcpy inside the cvm_oct_get_drvinfo function
+to strscpy calls. Fixes a style warning.
 
-Hi,
+Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
+---
+ drivers/staging/octeon/ethernet-mdio.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
+index b0fd083a5bf2..b3049108edc4 100644
+--- a/drivers/staging/octeon/ethernet-mdio.c
++++ b/drivers/staging/octeon/ethernet-mdio.c
+@@ -21,9 +21,9 @@
+ static void cvm_oct_get_drvinfo(struct net_device *dev,
+ 				struct ethtool_drvinfo *info)
+ {
+-	strlcpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
+-	strlcpy(info->version, UTS_RELEASE, sizeof(info->version));
+-	strlcpy(info->bus_info, "Builtin", sizeof(info->bus_info));
++	strscpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
++	strscpy(info->version, UTS_RELEASE, sizeof(info->version));
++	strscpy(info->bus_info, "Builtin", sizeof(info->bus_info));
+ }
+ 
+ static int cvm_oct_nway_reset(struct net_device *dev)
+-- 
+2.29.2
 
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version.
-  Please read the section entitled "The canonical patch format" in the
-  kernel file, Documentation/SubmittingPatches for what needs to be done
-  here to properly describe this.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
