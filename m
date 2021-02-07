@@ -1,54 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBB633122B5
-	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 09:31:30 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DDC83122C3
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 09:33:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D967486DA0;
-	Sun,  7 Feb 2021 08:31:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D3FF587269;
+	Sun,  7 Feb 2021 08:33:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M6S5fsJO9sUn; Sun,  7 Feb 2021 08:31:27 +0000 (UTC)
+	with ESMTP id DVGi1jR8fiFl; Sun,  7 Feb 2021 08:33:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 003E486C1C;
-	Sun,  7 Feb 2021 08:31:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD0038722E;
+	Sun,  7 Feb 2021 08:33:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5923B1BF96B
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 08:31:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1854E1BF966
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 08:33:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 403A7204FC
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 08:31:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 02C1320515
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 08:33:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6FKz-TQ9gcow for <devel@linuxdriverproject.org>;
- Sun,  7 Feb 2021 08:31:22 +0000 (UTC)
+ with ESMTP id FVsXeDBDvEzy for <devel@linuxdriverproject.org>;
+ Sun,  7 Feb 2021 08:33:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 753EB20499
- for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 08:31:22 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A3B6E64E30;
- Sun,  7 Feb 2021 08:31:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 2CEB720499
+ for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 08:33:30 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BC98C64E30;
+ Sun,  7 Feb 2021 08:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612686681;
- bh=M3PH+chd17Y34z36kJqmIdtJdfNBKaFZ1Kv4CHgD2OI=;
+ s=korg; t=1612686809;
+ bh=CRF6ov8HZYQgEMXDSLagshxMHLuVPb+BGxWwtc4e66E=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KQ/u0DT4rWsmpteZpoewVkCesHjCd3R7GTGmWbIpaVsUTCd2HPsCOrGrZL6pLlFGr
- yr1p38UgU/KZXR0SmWJE1AD0as9nREMIMEyaZqODbi8TI3yRrBxprOHQEMMJvgiV3H
- zRbM0NUgrRnh2EBJ/HZSYrNecpn03Llk1fZaR+Zs=
-Date: Sun, 7 Feb 2021 09:31:17 +0100
+ b=Nl8xpCtGkMfGXg5YCYtqrLhodKgeY4c/Lr9EQ6MkFxnx2AMTdNdR3SVtlsoRx9reB
+ /wdrtE4kD398a4E08oKcvXYG9I+tX2kcIGJ8GlJ+rsd2HdRIF+myMP+uiNKT5P8HrR
+ 0Ids3NNMBPsOx3loFGmyDQqqghGuIwGpCZHBKoH4=
+Date: Sun, 7 Feb 2021 09:33:26 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Kumar Kartikeya Dwivedi <memxor@gmail.com>
 Subject: Re: [PATCH] staging: emxx_udc: Fix incorrectly defined global
-Message-ID: <YB+lVey4DAXxEPmF@kroah.com>
+Message-ID: <YB+l1t/k4VuSw3B9@kroah.com>
 References: <20210207000030.256592-1-memxor@gmail.com>
+ <20210207173441.2902acac@canb.auug.org.au>
+ <20210207073827.7l7h3475tqgxxfte@apollo>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210207000030.256592-1-memxor@gmail.com>
+In-Reply-To: <20210207073827.7l7h3475tqgxxfte@apollo>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,36 +70,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Feb 07, 2021 at 05:30:31AM +0530, Kumar Kartikeya Dwivedi wrote:
-> The global gpio_desc pointer and int were defined in the header,
-> instead put the definitions in the translation unit and add an extern
-> declaration for consumers of the header (currently only one, which is
-> perhaps why the linker didn't complain about symbol collisions).
+On Sun, Feb 07, 2021 at 01:08:27PM +0530, Kumar Kartikeya Dwivedi wrote:
+> On Sun, Feb 07, 2021 at 12:04:41PM IST, Stephen Rothwell wrote:
+> > 
+> > Given that drivers/staging/emxx_udc/emxx_udc.h is only included by
+> > drivers/staging/emxx_udc/emxx_udc.c, shouldn't these variables just be
+> > declared static in emxx_udc.c and removed from emxx_udc.h?
+> >
 > 
-> This fixes sparse related warnings for this driver:
-> drivers/staging/emxx_udc/emxx_udc.c: note: in included file:
-> drivers/staging/emxx_udc/emxx_udc.h:23:18: warning: symbol 'vbus_gpio' was not declared. Should it be static?
-> drivers/staging/emxx_udc/emxx_udc.h:24:5: warning: symbol 'vbus_irq' was not declared. Should it be static?
+> Either would be correct. I went this way because it was originally trying to
+> (incorrectly) define a global variable instead. I guess they can be static now
+> and when more users are added, the linkage can be adjusted as needed.
 > 
-> Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> ---
->  drivers/staging/emxx_udc/emxx_udc.c | 3 +++
->  drivers/staging/emxx_udc/emxx_udc.h | 4 ++--
->  2 files changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-> index a30b4f5b1..6983c3e31 100644
-> --- a/drivers/staging/emxx_udc/emxx_udc.c
-> +++ b/drivers/staging/emxx_udc/emxx_udc.c
-> @@ -34,6 +34,9 @@
->  #define	DRIVER_DESC	"EMXX UDC driver"
->  #define	DMA_ADDR_INVALID	(~(dma_addr_t)0)
->  
-> +struct gpio_desc *vbus_gpio;
-> +int vbus_irq;
+> Here's another version of the patch:
 
-A tiny driver can not create global variables with generic names like
-this, sorry.  That will polute the global namespace.
+<snip>
+
+Please resend in the proper format that a second version of a patch
+should be in (the documentation describes how to do this.)
 
 thanks,
 
