@@ -1,79 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 328BF3124FE
-	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 16:13:35 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E940831253A
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 16:25:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2587A85D44;
-	Sun,  7 Feb 2021 15:13:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2C4A186FE4;
+	Sun,  7 Feb 2021 15:25:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zgH8E-OA5lAQ; Sun,  7 Feb 2021 15:13:32 +0000 (UTC)
+	with ESMTP id N6IVjMPKy3nB; Sun,  7 Feb 2021 15:25:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EDE06859D1;
-	Sun,  7 Feb 2021 15:13:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7089986FFA;
+	Sun,  7 Feb 2021 15:25:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8A5F81BF3ED
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 15:13:30 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D7EBB1BF3ED
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 15:25:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6F60F203DA
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 15:13:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D3A398592F
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 15:25:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OBVikL3IWDK8 for <devel@linuxdriverproject.org>;
- Sun,  7 Feb 2021 15:13:28 +0000 (UTC)
+ with ESMTP id un0B77hLIlX3 for <devel@linuxdriverproject.org>;
+ Sun,  7 Feb 2021 15:25:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com
- [209.85.221.44])
- by silver.osuosl.org (Postfix) with ESMTPS id 117B120030
- for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 15:13:28 +0000 (UTC)
-Received: by mail-wr1-f44.google.com with SMTP id b3so14148362wrj.5
- for <devel@driverdev.osuosl.org>; Sun, 07 Feb 2021 07:13:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=npRGieRx9sN3XQp2RVyJRR7pkmet7/uPGppQEGZDlB4=;
- b=EqNn9rwsbaNP7+lnW2sqiNUYVz/vSv4k8Xbi6qeAv8QyrdJz+iAL4XXbwLatza97p7
- 8ZGNdMvlWG52oklrD7WzTTjs5QPK4el0yw816PwiIycAqxvAZZRYPjg8RgueXDlqa+rg
- 3nBdVt3zrcKMtlgrPUVAb9sJF/4gftMuIIMG9PO9gZlthdkAf2/g/oeGNZKUkGxYVzGk
- vySsboz1sN9v7HOxw62WGfcB2Tfk7FfMSp72iXTWtxtKHQzWBVkVjoAwmA1DAcpgyb4x
- E/dE/NfJZSLK/YbfifuJrdcuX8mNRVvGL1JQ87noM+Kd6txAJLYJOWXOMZ++ilThuJ2k
- zong==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=npRGieRx9sN3XQp2RVyJRR7pkmet7/uPGppQEGZDlB4=;
- b=Gwlk4bF4lnbZZX3s/70GYOJXcaAfywmTkOKbwU9hNOTtVo9hyOcb8MkH1WM0gENGYy
- 4whYrkSPWAI18XRxZsSa43Zag4U/K/kezjc9hLp+peYgYUw2M+6kNtKCXG20viedv8fh
- 4ptzmT69aXqnzNmzWLIWUMuTrpwmc8XjHazuAG74TXHilce5GJ92vP7QAJPzzAD/3Mh0
- lVA8bMECEtc7joU5CHFxVkxoEQ4ZpyrTu6DcY503lDF+ctnhtvFerj3mYNFiT74EKI27
- RI0PGY+/de/ugo1zRZCiCCF09VrBfUYPZ+bi2dSK991psIot+d83QWk9n/21WcNV2cT0
- 7Ulw==
-X-Gm-Message-State: AOAM532zaPolJs53Ux7V0T/KEx4CN3bFZ9m0gL0snN7hZUwK5zcl9yzp
- 7Zb/0Hux8tixepgZGn/1ySRJ/g==
-X-Google-Smtp-Source: ABdhPJzyM7/V6H9r/1lycXwLEBnu1XJfn3RmQP0Xfnhdi2nB+rKeGHf5/nzguZHBCmGqoiFCzXxnTg==
-X-Received: by 2002:adf:ea51:: with SMTP id j17mr16184510wrn.382.1612710804660; 
- Sun, 07 Feb 2021 07:13:24 -0800 (PST)
-Received: from localhost.localdomain
- (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
- [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
- by smtp.gmail.com with ESMTPSA id j40sm4855105wmp.47.2021.02.07.07.13.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 07:13:23 -0800 (PST)
-From: Phillip Potter <phil@philpotter.co.uk>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: octeon: convert all uses of strlcpy to strscpy in
- ethernet-mdio.c
-Date: Sun,  7 Feb 2021 15:13:20 +0000
-Message-Id: <20210207151320.88696-1-phil@philpotter.co.uk>
-X-Mailer: git-send-email 2.29.2
+Received: from smtprelay.hostedemail.com (smtprelay0130.hostedemail.com
+ [216.40.44.130])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E5D3A85910
+ for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 15:25:35 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave07.hostedemail.com (Postfix) with ESMTP id CD8B81801BD81
+ for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 15:25:34 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay03.hostedemail.com (Postfix) with ESMTP id 42D0C837F24A;
+ Sun,  7 Feb 2021 15:25:32 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:973:982:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:4250:4321:5007:6119:7652:7903:8531:10004:10400:10848:11026:11232:11658:11914:12297:12679:12740:12760:12895:13069:13161:13229:13255:13311:13357:13439:14096:14097:14659:14721:21080:21433:21451:21611:21627:21771:21990:30054:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: road21_3c0a044275f7
+X-Filterd-Recvd-Size: 2124
+Received: from [192.168.1.159] (unknown [47.151.137.21])
+ (Authenticated sender: joe@perches.com)
+ by omf06.hostedemail.com (Postfix) with ESMTPA;
+ Sun,  7 Feb 2021 15:25:30 +0000 (UTC)
+Message-ID: <6d5c18f41277d4d926dbe411df070393b4418d6f.camel@perches.com>
+Subject: Re: [PATCH] staging: octeon: convert all uses of strlcpy to strscpy
+ in ethernet-mdio.c
+From: Joe Perches <joe@perches.com>
+To: Greg KH <gregkh@linuxfoundation.org>, Phillip Potter
+ <phil@philpotter.co.uk>
+Date: Sun, 07 Feb 2021 07:25:29 -0800
+In-Reply-To: <YB//SDQJEsHwewFb@kroah.com>
+References: <20210207144804.88330-1-phil@philpotter.co.uk>
+ <YB//SDQJEsHwewFb@kroah.com>
+User-Agent: Evolution 3.38.1-1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,37 +84,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Convert three calls to strlcpy inside the cvm_oct_get_drvinfo function
-to strscpy calls. As return values were not checked for these three
-calls before, change should be safe as functionality is equivalent.
+On Sun, 2021-02-07 at 15:55 +0100, Greg KH wrote:
+> On Sun, Feb 07, 2021 at 02:48:04PM +0000, Phillip Potter wrote:
+> > Convert three calls to strlcpy inside the cvm_oct_get_drvinfo function
+> > to strscpy calls. Fixes a style warning.
+> 
+> Is it really safe to do this type of conversion here?
 
-Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
----
+Yes.  No locks are taken by either strlcpy or strscpy, and the conversion
+is only done where the return value is unused.
 
-v2: Modified changelog to take account of feedback from Greg KH.
+strscpy is:
 
- drivers/staging/octeon/ethernet-mdio.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+lib/string.c: * Preferred to strlcpy() since the API doesn't require reading memory
+lib/string.c- * from the src string beyond the specified "count" bytes, and since
+lib/string.c: * the return value is easier to error-check than strlcpy()'s.
+lib/string.c- * In addition, the implementation is robust to the string changing out
+lib/string.c: * from underneath it, unlike the current strlcpy() implementation.
 
-diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
-index b0fd083a5bf2..b3049108edc4 100644
---- a/drivers/staging/octeon/ethernet-mdio.c
-+++ b/drivers/staging/octeon/ethernet-mdio.c
-@@ -21,9 +21,9 @@
- static void cvm_oct_get_drvinfo(struct net_device *dev,
- 				struct ethtool_drvinfo *info)
- {
--	strlcpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
--	strlcpy(info->version, UTS_RELEASE, sizeof(info->version));
--	strlcpy(info->bus_info, "Builtin", sizeof(info->bus_info));
-+	strscpy(info->driver, KBUILD_MODNAME, sizeof(info->driver));
-+	strscpy(info->version, UTS_RELEASE, sizeof(info->version));
-+	strscpy(info->bus_info, "Builtin", sizeof(info->bus_info));
- }
- 
- static int cvm_oct_nway_reset(struct net_device *dev)
--- 
-2.29.2
+> If so, you need
+> to provide evidence of it in the changelog, otherwise we could just do a
+> search/replace across the whole kernel and be done with it :)
+
+Yes please.
+
+There's a cocci script for that in commit 75b1a8f9d62e
+("ALSA: Convert strlcpy to strscpy when return value is unused")
+
 
 _______________________________________________
 devel mailing list
