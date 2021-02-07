@@ -1,54 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E01883124B0
-	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 15:34:25 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D70C3124B1
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Feb 2021 15:35:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 780018701B;
-	Sun,  7 Feb 2021 14:34:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3CB6E20515;
+	Sun,  7 Feb 2021 14:35:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TY0bAya92uj7; Sun,  7 Feb 2021 14:34:23 +0000 (UTC)
+	with ESMTP id Iz02jXEz3BpF; Sun,  7 Feb 2021 14:35:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7E98886FBE;
-	Sun,  7 Feb 2021 14:34:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CE6A420440;
+	Sun,  7 Feb 2021 14:35:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 82BED1BF3F4
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:34:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4C80D1BF3F4
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:35:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6B5B220468
- for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:34:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4226120481
+ for <devel@linuxdriverproject.org>; Sun,  7 Feb 2021 14:35:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PmcHE72TSK4a for <devel@linuxdriverproject.org>;
- Sun,  7 Feb 2021 14:34:17 +0000 (UTC)
+ with ESMTP id xznAK6nWIOxO for <devel@linuxdriverproject.org>;
+ Sun,  7 Feb 2021 14:35:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 53E7220243
- for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 14:34:17 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6439264E42;
- Sun,  7 Feb 2021 14:34:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 419C9204B4
+ for <devel@driverdev.osuosl.org>; Sun,  7 Feb 2021 14:35:04 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 64B7764E42;
+ Sun,  7 Feb 2021 14:35:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612708457;
- bh=WTLkE+iYv7ult7TIpL8q2wfswvIm5afRydOWeq9c3gw=;
+ s=korg; t=1612708503;
+ bh=3oAePvp7BtjsZE5pGFHqzeOfislh9iQnGI/HKJOc+Dc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pxV7sVXNpdtHe9hjvs+NnUrufoizzc7hIO9DhS4UEqJRcj0OPE+oCfA1Fq46+gdRd
- uFQ/2em8dMzcbrczxiXdCkL537pa7vxtkcCv37P469oN5kwtzxrNknl0Tv31szrNeH
- 4fepcD4x1gLtF+AqRd1PAtPZ8394yU8IUTbQ4N9M=
-Date: Sun, 7 Feb 2021 15:34:14 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: karthek <mail@karthek.com>
-Subject: Re: [PATCH] staging: rtl8723bs: fix block comments alignment
-Message-ID: <YB/6ZmZwCF3jeEue@kroah.com>
-References: <YB/2Uvj99+sReckM@karthik-strix-linux.karthek.com>
+ b=ZrYvmFzVRVgfpGW9Pgc47Zn3ZqU6prI1sq6jhYlMFGfimmperFwI+D1ZuW0IyzjpC
+ QVEumeTmmBwDIXCXwlnkm4NH/p6cBS1+ELiGEiHnM/Z6l9kmuUxx3auTMlh6HVRBC2
+ 0SkiiiTdmRGZDG6p2j/FhCdExFCcQRgLJgxYYAzQ=
+Date: Sun, 7 Feb 2021 15:35:00 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mahak Gupta <gmahak1@gmail.com>
+Subject: Re: [PATCH] staging: gasket: fix indentation and lines ending with
+ open parenthesis
+Message-ID: <YB/6lL/kljg/isrH@kroah.com>
+References: <20210207140928.11029-1-gmahak1@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YB/2Uvj99+sReckM@karthik-strix-linux.karthek.com>
+In-Reply-To: <20210207140928.11029-1-gmahak1@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,294 +62,98 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, rcy@google.com,
+ rspringer@google.com, toddpoynor@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Feb 07, 2021 at 07:46:50PM +0530, karthek wrote:
-> fix checkpatch.pl warning for "block comments should align the * on each line"
+On Sun, Feb 07, 2021 at 07:39:28PM +0530, Mahak Gupta wrote:
+> This patch fixes warnings of 'checkpatch.pl'. According to
+> Linux coding guidelines, code should be aligned properly to
+> match with open parenthesis and lines should not end with
+> open parenthesis.
 > 
-> Signed-off-by: karthek <mail@karthek.com>
+> Signed-off-by: Mahak Gupta <gmahak1@gmail.com>
 > ---
-> eudyptula challenge thing
+>  drivers/staging/gasket/gasket_ioctl.c | 18 ++++++++----------
+>  1 file changed, 8 insertions(+), 10 deletions(-)
 > 
->  .../staging/rtl8723bs/hal/rtl8723b_phycfg.c   | 204 +++++++++---------
->  1 file changed, 102 insertions(+), 102 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
-> index cf23414d7..003f954c2 100644
-> --- a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
-> +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
-> @@ -20,16 +20,16 @@
->  #define MAX_DOZE_WAITING_TIMES_9x 64
+> diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
+> index e3047d36d8db..a966231bad42 100644
+> --- a/drivers/staging/gasket/gasket_ioctl.c
+> +++ b/drivers/staging/gasket/gasket_ioctl.c
+> @@ -40,7 +40,7 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
 >  
->  /**
-> -* Function:	phy_CalculateBitShift
-> -*
-> -* OverView:	Get shifted position of the BitMask
-> -*
-> -* Input:
-> -*		u32 	BitMask,
-> -*
-> -* Output:	none
-> -* Return:		u32 	Return the shift bit bit position of the mask
-> -*/
-> + * Function:	phy_CalculateBitShift
-> + *
-> + * OverView:	Get shifted position of the BitMask
-> + *
-> + * Input:
-> + *		u32 	BitMask,
-> + *
-> + * Output:	none
-> + * Return:		u32 	Return the shift bit bit position of the mask
-> + */
->  static	u32 phy_CalculateBitShift(u32 BitMask)
+>  /* Read the size of the page table. */
+>  static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
+> -	struct gasket_page_table_ioctl __user *argp)
+> +				       struct gasket_page_table_ioctl __user *argp)
 >  {
->  	u32 i;
-> @@ -43,19 +43,19 @@ static	u32 phy_CalculateBitShift(u32 BitMask)
+>  	int ret = 0;
+>  	struct gasket_page_table_ioctl ibuf;
+> @@ -51,8 +51,7 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
+>  	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
+>  		return -EFAULT;
 >  
+> -	ibuf.size = gasket_page_table_num_entries(
+> -		gasket_dev->page_table[ibuf.page_table_index]);
+> +	ibuf.size = gasket_page_table_num_entries(gasket_dev->page_table[ibuf.page_table_index]);
 >  
->  /**
-> -* Function:	PHY_QueryBBReg
-> -*
-> -* OverView:	Read "specific bits" from BB register
-> -*
-> -* Input:
-> -*		struct adapter *	Adapter,
-> -*		u32 		RegAddr,	The target address to be readback
-> -*		u32 		BitMask		The target bit position in the target address
-> -*							to be readback
-> -* Output:	None
-> -* Return:		u32 		Data		The readback register value
-> -* Note:		This function is equal to "GetRegSetting" in PHY programming guide
-> -*/
-> + * Function:	PHY_QueryBBReg
-> + *
-> + * OverView:	Read "specific bits" from BB register
-> + *
-> + * Input:
-> + *		struct adapter *	Adapter,
-> + *		u32 		RegAddr,	The target address to be readback
-> + *		u32 		BitMask		The target bit position in the target address
-> + *							to be readback
-> + * Output:	None
-> + * Return:		u32 		Data		The readback register value
-> + * Note:		This function is equal to "GetRegSetting" in PHY programming guide
-> + */
->  u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask)
+>  	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
+>  					   ibuf.host_address,
+> @@ -66,7 +65,7 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
+>  
+>  /* Read the size of the simple page table. */
+>  static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
+> -	struct gasket_page_table_ioctl __user *argp)
+> +					      struct gasket_page_table_ioctl __user *argp)
 >  {
->  	u32 OriginalValue, BitShift;
-> @@ -75,22 +75,22 @@ u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask)
+>  	int ret = 0;
+>  	struct gasket_page_table_ioctl ibuf;
+> @@ -92,7 +91,7 @@ static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
 >  
->  
->  /**
-> -* Function:	PHY_SetBBReg
-> -*
-> -* OverView:	Write "Specific bits" to BB register (page 8~)
-> -*
-> -* Input:
-> -*		struct adapter *	Adapter,
-> -*		u32 		RegAddr,	The target address to be modified
-> -*		u32 		BitMask		The target bit position in the target address
-> -*								to be modified
-> -*		u32 		Data		The new register value in the target bit position
-> -*								of the target address
-> -*
-> -* Output:	None
-> -* Return:		None
-> -* Note:		This function is equal to "PutRegSetting" in PHY programming guide
-> -*/
-> + * Function:	PHY_SetBBReg
-> + *
-> + * OverView:	Write "Specific bits" to BB register (page 8~)
-> + *
-> + * Input:
-> + *		struct adapter *	Adapter,
-> + *		u32 		RegAddr,	The target address to be modified
-> + *		u32 		BitMask		The target bit position in the target address
-> + *								to be modified
-> + *		u32 		Data		The new register value in the target bit position
-> + *								of the target address
-> + *
-> + * Output:	None
-> + * Return:		None
-> + * Note:		This function is equal to "PutRegSetting" in PHY programming guide
-> + */
->  
->  void PHY_SetBBReg_8723B(
->  	struct adapter *Adapter,
-> @@ -184,25 +184,25 @@ static u32 phy_RFSerialRead_8723B(
->  }
->  
->  /**
-> -* Function:	phy_RFSerialWrite_8723B
-> -*
-> -* OverView:	Write data to RF register (page 8~)
-> -*
-> -* Input:
-> -*		struct adapter *	Adapter,
-> -*		RF_PATH			eRFPath,	Radio path of A/B/C/D
-> -*		u32 		Offset,		The target address to be read
-> -*		u32 		Data		The new register Data in the target bit position
-> -*								of the target to be read
-> -*
-> -* Output:	None
-> -* Return:		None
-> -* Note:		Threre are three types of serial operations:
-> -*		1. Software serial write
-> -*		2. Hardware LSSI-Low Speed Serial Interface
-> -*		3. Hardware HSSI-High speed
-> -*		serial write. Driver need to implement (1) and (2).
-> -*		This function is equal to the combination of RF_ReadReg() and  RFLSSIRead()
-> + * Function:	phy_RFSerialWrite_8723B
-> + *
-> + * OverView:	Write data to RF register (page 8~)
-> + *
-> + * Input:
-> + *		struct adapter *	Adapter,
-> + *		RF_PATH			eRFPath,	Radio path of A/B/C/D
-> + *		u32 		Offset,		The target address to be read
-> + *		u32 		Data		The new register Data in the target bit position
-> + *								of the target to be read
-> + *
-> + * Output:	None
-> + * Return:		None
-> + * Note:		Threre are three types of serial operations:
-> + *		1. Software serial write
-> + *		2. Hardware LSSI-Low Speed Serial Interface
-> + *		3. Hardware HSSI-High speed
-> + *		serial write. Driver need to implement (1) and (2).
-> + *		This function is equal to the combination of RF_ReadReg() and  RFLSSIRead()
->   *
->   * Note:		  For RF8256 only
->   *		 The total count of RTL8256(Zebra4) register is around 36 bit it only employs
-> @@ -225,7 +225,7 @@ static u32 phy_RFSerialRead_8723B(
->   *
->   *
->   *
-> -*/
-> + */
->  static void phy_RFSerialWrite_8723B(
->  	struct adapter *Adapter,
->  	enum RF_PATH eRFPath,
-> @@ -261,21 +261,21 @@ static void phy_RFSerialWrite_8723B(
->  
->  
->  /**
-> -* Function:	PHY_QueryRFReg
-> -*
-> -* OverView:	Query "Specific bits" to RF register (page 8~)
-> -*
-> -* Input:
-> -*		struct adapter *	Adapter,
-> -*		RF_PATH			eRFPath,	Radio path of A/B/C/D
-> -*		u32 		RegAddr,	The target address to be read
-> -*		u32 		BitMask		The target bit position in the target address
-> -*								to be read
-> -*
-> -* Output:	None
-> -* Return:		u32 		Readback value
-> -* Note:		This function is equal to "GetRFRegSetting" in PHY programming guide
-> -*/
-> + * Function:	PHY_QueryRFReg
-> + *
-> + * OverView:	Query "Specific bits" to RF register (page 8~)
-> + *
-> + * Input:
-> + *		struct adapter *	Adapter,
-> + *		RF_PATH			eRFPath,	Radio path of A/B/C/D
-> + *		u32 		RegAddr,	The target address to be read
-> + *		u32 		BitMask		The target bit position in the target address
-> + *								to be read
-> + *
-> + * Output:	None
-> + * Return:		u32 		Readback value
-> + * Note:		This function is equal to "GetRFRegSetting" in PHY programming guide
-> + */
->  u32 PHY_QueryRFReg_8723B(
->  	struct adapter *Adapter,
->  	u8 eRFPath,
-> @@ -296,23 +296,23 @@ u32 PHY_QueryRFReg_8723B(
->  }
->  
->  /**
-> -* Function:	PHY_SetRFReg
-> -*
-> -* OverView:	Write "Specific bits" to RF register (page 8~)
-> -*
-> -* Input:
-> -*		struct adapter *	Adapter,
-> -*		RF_PATH			eRFPath,	Radio path of A/B/C/D
-> -*		u32 		RegAddr,	The target address to be modified
-> -*		u32 		BitMask		The target bit position in the target address
-> -*								to be modified
-> -*		u32 		Data		The new register Data in the target bit position
-> -*								of the target address
-> -*
-> -* Output:	None
-> -* Return:		None
-> -* Note:		This function is equal to "PutRFRegSetting" in PHY programming guide
-> -*/
-> + * Function:	PHY_SetRFReg
-> + *
-> + * OverView:	Write "Specific bits" to RF register (page 8~)
-> + *
-> + * Input:
-> + *		struct adapter *	Adapter,
-> + *		RF_PATH			eRFPath,	Radio path of A/B/C/D
-> + *		u32 		RegAddr,	The target address to be modified
-> + *		u32 		BitMask		The target bit position in the target address
-> + *								to be modified
-> + *		u32 		Data		The new register Data in the target bit position
-> + *								of the target address
-> + *
-> + * Output:	None
-> + * Return:		None
-> + * Note:		This function is equal to "PutRFRegSetting" in PHY programming guide
-> + */
->  void PHY_SetRFReg_8723B(
->  	struct adapter *Adapter,
->  	u8 eRFPath,
-> @@ -369,17 +369,17 @@ s32 PHY_MACConfig8723B(struct adapter *Adapter)
->  }
->  
->  /**
-> -* Function:	phy_InitBBRFRegisterDefinition
-> -*
-> -* OverView:	Initialize Register definition offset for Radio Path A/B/C/D
-> -*
-> -* Input:
-> -*		struct adapter *	Adapter,
-> -*
-> -* Output:	None
-> -* Return:		None
-> -* Note:		The initialization value is constant and it should never be changes
-> -*/
-> + * Function:	phy_InitBBRFRegisterDefinition
-> + *
-> + * OverView:	Initialize Register definition offset for Radio Path A/B/C/D
-> + *
-> + * Input:
-> + *		struct adapter *	Adapter,
-> + *
-> + * Output:	None
-> + * Return:		None
-> + * Note:		The initialization value is constant and it should never be changes
-> + */
->  static void phy_InitBBRFRegisterDefinition(struct adapter *Adapter)
+>  /* Set the boundary between the simple and extended page tables. */
+>  static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
+> -	struct gasket_page_table_ioctl __user *argp)
+> +				       struct gasket_page_table_ioctl __user *argp)
 >  {
->  	struct hal_com_data		*pHalData = GET_HAL_DATA(Adapter);
+>  	int ret;
+>  	struct gasket_page_table_ioctl ibuf;
+> @@ -107,8 +106,8 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
+>  
+>  	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
+>  		return -EFAULT;
+> -	max_page_table_size = gasket_page_table_max_size(
+> -		gasket_dev->page_table[ibuf.page_table_index]);
+> +	max_page_table_size = gasket_page_table_max_size
+> +		(gasket_dev->page_table[ibuf.page_table_index]);
+>  
+>  	if (ibuf.size > max_page_table_size) {
+>  		dev_dbg(gasket_dev->dev,
+> @@ -119,8 +118,7 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
+>  
+>  	mutex_lock(&gasket_dev->mutex);
+>  
+> -	ret = gasket_page_table_partition(
+> -		gasket_dev->page_table[ibuf.page_table_index], ibuf.size);
+> +	ret = gasket_page_table_partition(gasket_dev->page_table[ibuf.page_table_index], ibuf.size);
+>  	mutex_unlock(&gasket_dev->mutex);
+>  
+>  	return ret;
+> @@ -183,7 +181,7 @@ static int gasket_unmap_buffers(struct gasket_dev *gasket_dev,
+>   * corresponding memory.
+>   */
+>  static int gasket_config_coherent_allocator(struct gasket_dev *gasket_dev,
+> -	struct gasket_coherent_alloc_config_ioctl __user *argp)
+> +					    struct gasket_coherent_alloc_config_ioctl __user *argp)
+>  {
+>  	int ret;
+>  	struct gasket_coherent_alloc_config_ioctl ibuf;
 > -- 
-> 2.30.0
+> 2.17.1
 > 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
 Hi,
 
@@ -363,10 +168,11 @@ kernel tree.
 You are receiving this message because of the following common error(s)
 as indicated below:
 
-- It looks like you did not use your "real" name for the patch on either
-  the Signed-off-by: line, or the From: line (both of which have to
-  match).  Please read the kernel file, Documentation/SubmittingPatches
-  for how to do this correctly.
+- This looks like a new version of a previously submitted patch, but you
+  did not list below the --- line any changes from the previous version.
+  Please read the section entitled "The canonical patch format" in the
+  kernel file, Documentation/SubmittingPatches for what needs to be done
+  here to properly describe this.
 
 If you wish to discuss this problem further, or you have questions about
 how to resolve this issue, please feel free to respond to this email and
