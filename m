@@ -1,59 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D8ED93132F1
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 14:09:47 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3E3C31330D
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 14:15:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 38572868C4;
-	Mon,  8 Feb 2021 13:09:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 590E485CD0;
+	Mon,  8 Feb 2021 13:15:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HIFForcHTiK0; Mon,  8 Feb 2021 13:09:45 +0000 (UTC)
+	with ESMTP id PE-qfOgr6kF0; Mon,  8 Feb 2021 13:15:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ED1AC867B0;
-	Mon,  8 Feb 2021 13:09:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A739A85C86;
+	Mon,  8 Feb 2021 13:15:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7B00F1BF39C
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 13:09:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E4FF11BF39C
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 13:15:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7732485A57
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 13:09:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E0D6785C37
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 13:15:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TdJHw7nD968j for <devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 13:09:41 +0000 (UTC)
+ with ESMTP id bRahaG_O3zdP for <devel@linuxdriverproject.org>;
+ Mon,  8 Feb 2021 13:15:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E2344859D5
- for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 13:09:40 +0000 (UTC)
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DZ5tN1XMdz164TN;
- Mon,  8 Feb 2021 21:08:12 +0800 (CST)
-Received: from [127.0.0.1] (10.69.38.196) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.498.0; Mon, 8 Feb 2021
- 21:09:29 +0800
-Subject: Re: [PATCH 1/4] driver core: Use subdir-ccflags-* to inherit debug
- flag
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <1612518255-23052-1-git-send-email-yangyicong@hisilicon.com>
- <1612518255-23052-2-git-send-email-yangyicong@hisilicon.com>
- <YB0Vk6ERJ3lFc3WD@kroah.com>
- <08017751-a1be-ea07-50de-73d14ab6d57e@hisilicon.com>
- <YCEWtxYgbRPET4Sr@kroah.com>
-From: Yicong Yang <yangyicong@hisilicon.com>
-Message-ID: <1f0b2f37-db56-c220-dfe1-8c376031404f@hisilicon.com>
-Date: Mon, 8 Feb 2021 21:09:20 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E33BA85C19
+ for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 13:15:11 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EABDE64E6F;
+ Mon,  8 Feb 2021 13:15:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1612790111;
+ bh=nOfFOrAI99F6FuM9bIcvzcCZh046kMP9nBtOULyoS5Y=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=nzJEePtmI+1aiDT2hlGtykLk69fbZAfZCvZUlR7aXKXTOZgmHkdwpKE3KqAUHLod5
+ z6ZLa9ukkQxYL9PNc5dT7zprslDIQ6Gg5gqOmh7Cw7PuzhoXyEgcsJ1lOvGUKZFiWJ
+ znCHlL1hjM0rb5QOGqE8ObhKo7LyCIeHYkq5tvbY=
+Date: Mon, 8 Feb 2021 14:15:07 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mukul Mehar <mukulmehar02@gmail.com>
+Subject: Re: [PATCH]: checkpatch: Fixed styling issue
+Message-ID: <YCE5W5C4fVQsZzV1@kroah.com>
+References: <20210208130614.GA7749@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <YCEWtxYgbRPET4Sr@kroah.com>
-X-Originating-IP: [10.69.38.196]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20210208130614.GA7749@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,66 +61,98 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
- jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
- masahiroy@kernel.org, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-kbuild@vger.kernel.org, linuxarm@openeuler.org, abbotti@mev.co.uk,
- michal.lkml@markovi.net, helgaas@kernel.org, linux@roeck-us.net
+Cc: devel@driverdev.osuosl.org, christian.gromm@microchip.com,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2021/2/8 18:47, Greg KH wrote:
-> On Mon, Feb 08, 2021 at 06:44:52PM +0800, Yicong Yang wrote:
->> Hi Greg,
->>
->> On 2021/2/5 17:53, Greg KH wrote:
->>> On Fri, Feb 05, 2021 at 05:44:12PM +0800, Yicong Yang wrote:
->>>> From: Junhao He <hejunhao2@hisilicon.com>
->>>>
->>>> Use subdir-ccflags-* instead of ccflags-* to inherit the debug
->>>> settings from Kconfig when traversing subdirectories.
->>>
->>> That says what you do, but not _why_ you are doing it.
->>
->> i'll illustrate the reason and reword the commit.
->>
->>>
->>> What does this offer in benefit of the existing way?  What is it fixing?
->>> Why do this "churn"?
->>
->> currently we have added ccflags-$(CONFIG_DEBUG_DRIVER) := -DDEBUG in the Makefile
->> of driver/base and driver/base/power, but not in the subdirectory
->> driver/base/firmware_loader. we cannot turn the debug on for subdirectory
->> firmware_loader if we config DEBUG_DRIVER and there is no kconfig option
->> for the it.
-> 
-> Is that necessary?  Does that directory need it?
+On Mon, Feb 08, 2021 at 06:36:14PM +0530, Mukul Mehar wrote:
 
-there are several debug prints in firmware_loader/main.c:
-
-./main.c:207:   pr_debug("%s: fw-%s fw_priv=%p\n", __func__, fw_name, fw_priv);
-./main.c:245:                   pr_debug("batched request - sharing the same struct fw_priv and lookup for multiple requests\n");
-./main.c:269:   pr_debug("%s: fw-%s fw_priv=%p data=%p size=%u\n",
-./main.c:594:   pr_debug("%s: fw-%s fw_priv=%p data=%p size=%u\n",
-./main.c:605:           pr_debug("%s: fw_name-%s devm-%p released\n",
-./main.c:1175:  pr_debug("%s: %s\n", __func__, fw_name);
-./main.c:1181:  pr_debug("%s: %s ret=%d\n", __func__, fw_name, ret);
-./main.c:1214:  pr_debug("%s: %s\n", __func__, fw_name);
-./main.c:1272:          pr_debug("%s: fw: %s\n", __func__, name);
-./main.c:1389:  pr_debug("%s\n", __func__);
-./main.c:1415:  pr_debug("%s\n", __func__);
-
-
+> >From 29bcaf0066003983da29b1e026b985c0727b091a Mon Sep 17 00:00:00 2001
+> From: Mukul Mehar <mukulmehar02@gmail.com>
+> Date: Mon, 8 Feb 2021 01:03:06 +0530
+> Subject: [PATCH] Drivers: staging: most: sound: Fixed style issue.
+> Signed-off-by: Mukul Mehar <mukulmehar02@gmail.com>
 > 
-> thanks,
 > 
-> greg k-h
+> This patch fixes a warning, of the line ending with a '(',
+> generated by checkpatch.pl.
+> This is my first patch.
+> ---
+>  drivers/staging/most/sound/sound.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> .
+> diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
+> index 3a1a59058042..4dd1bf95d1ce 100644
+> --- a/drivers/staging/most/sound/sound.c
+> +++ b/drivers/staging/most/sound/sound.c
+> @@ -228,12 +228,12 @@ static int playback_thread(void *data)
+>  		struct mbo *mbo = NULL;
+>  		bool period_elapsed = false;
+>  
+> -		wait_event_interruptible(
+> -			channel->playback_waitq,
+> -			kthread_should_stop() ||
+> -			(channel->is_stream_running &&
+> -			 (mbo = most_get_mbo(channel->iface, channel->id,
+> -					     &comp))));
+> +		wait_event_interruptible(channel->playback_waitq,
+> +					 kthread_should_stop() ||
+> +					 (channel->is_stream_running &&
+> +					 (mbo = most_get_mbo(channel->iface,
+> +					 channel->id,
+> +					 &comp))));
+>  		if (!mbo)
+>  			continue;
+>  
+> -- 
+> 2.25.1
 > 
 
+Hi,
+
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
+
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Your patch was attached, please place it inline so that it can be
+  applied directly from the email message itself.
+
+- Your patch does not have a Signed-off-by: line.  Please read the
+  kernel file, Documentation/SubmittingPatches and resend it after
+  adding that line.  Note, the line needs to be in the body of the
+  email, before the patch, not at the bottom of the patch or in the
+  email signature.
+
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
+
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
