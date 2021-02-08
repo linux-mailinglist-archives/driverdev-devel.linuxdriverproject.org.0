@@ -1,54 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDE05312F7F
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 11:52:15 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06142313152
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 12:49:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 09695868D0;
-	Mon,  8 Feb 2021 10:52:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E33B820767;
+	Mon,  8 Feb 2021 11:49:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BdSihq6TIr48; Mon,  8 Feb 2021 10:52:13 +0000 (UTC)
+	with ESMTP id Xpl9XyR+pEu4; Mon,  8 Feb 2021 11:49:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0BE2F867E0;
-	Mon,  8 Feb 2021 10:52:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D77642052F;
+	Mon,  8 Feb 2021 11:49:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8A6671BF3C9
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 10:52:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D96AB1BF3C8
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 11:49:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7D1DD86F9F
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 10:52:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D5E028702B
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 11:49:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dHIsY4whmrAk for <devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 10:52:08 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 66B8A86F77
- for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 10:52:08 +0000 (UTC)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DZ2qk2zrjzjKdR;
- Mon,  8 Feb 2021 18:50:42 +0800 (CST)
-Received: from [127.0.0.1] (10.69.38.196) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.498.0; Mon, 8 Feb 2021
- 18:51:58 +0800
-Subject: Re: [PATCH 2/4] hwmon: Use subdir-ccflags-* to inherit debug flag
-To: Bjorn Helgaas <helgaas@kernel.org>, Guenter Roeck <linux@roeck-us.net>
-References: <20210205200859.GA193526@bjorn-Precision-5520>
-From: Yicong Yang <yangyicong@hisilicon.com>
-Message-ID: <2513dca6-2460-5f9d-c482-ff2c179d9c94@hisilicon.com>
-Date: Mon, 8 Feb 2021 18:51:57 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+ with ESMTP id ZvQZrnqtFXLZ for <devel@linuxdriverproject.org>;
+ Mon,  8 Feb 2021 11:49:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com
+ [209.85.221.54])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E0A3286FFA
+ for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 11:49:18 +0000 (UTC)
+Received: by mail-wr1-f54.google.com with SMTP id g10so16740002wrx.1
+ for <devel@driverdev.osuosl.org>; Mon, 08 Feb 2021 03:49:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=3mciRa7cMGw+89JwLiOf5wQ63ZdZhqloXYBNXacQTd0=;
+ b=ele/Op1LikFpIE/w29roSL53XhNUf3kIRgIdQqW3tbl5jFLqFst1m6oGfeYiQxY2NY
+ 6dsfmulUO9gmkugKj6fvubsZ2RkcVTO7wGDlSmhapc/GnJCnOhCapfcP1bMCg0Yd5aQo
+ XXg2fZDHb771UA2ycvKcWlFciLR7UwaGFzODJiDA/cJUfUyUefzWdcC1/imhuLhErq48
+ WG3WbYo3AvbnQL3WOLRU3VpYGRtDxXHD1UlH7/fuCQlKa97uKLx9BUiozUh/W7PvLXyJ
+ 67ZzS/+LpBN/axZHXRZ45tROjM0OP7Wp+rpjWVXHW+ArGiNdVoYcT1MKaN2cGHjlQZJ+
+ C4UQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3mciRa7cMGw+89JwLiOf5wQ63ZdZhqloXYBNXacQTd0=;
+ b=YB1YEK8JjtcjDzCs+s/l8RpLuzswT33bJvC0/652Oo0gfOdCcylOSRSZzHqr2HrzJA
+ +wWvATeQU5dolvZS/iIcAVv7x1YUKICBMDXxC3Qyf38eyijwxVABvkoPGXKb/U0xlOpD
+ bAyuZ+BjrFB+Tak1nMU+hYEe1NAxRXdGQ+X1XL2rAeZggvGuliSjfBELTpjGDkEGnDZq
+ ifTU5xq5VSJP+YKcpamTtQyvekx8QldT/kICSYTjtFGTKoFA3ex/GtlFOLN9IaDpd6zq
+ 8ZX+p8fJxuvugTA+wFx+/CzEtvr5vTpHKV4BF0m8s0REkX/3WcSghYfXxfGB/a4IxtxH
+ jOCw==
+X-Gm-Message-State: AOAM532+11Lztqhi7zt2CyXalv17JtP1cdYNnrd4AoqqUzljVIkzl4O6
+ xs4mznkkH+jh3YCMpvqCWUqKSA==
+X-Google-Smtp-Source: ABdhPJxwtYMJ43K6RSTiqi5dsGPmexEEWZSFirxDQkCQbvlx5dufhtRQG6MbTfDCgtvW5SGHuvST2w==
+X-Received: by 2002:a5d:67cd:: with SMTP id n13mr6413679wrw.96.1612784957392; 
+ Mon, 08 Feb 2021 03:49:17 -0800 (PST)
+Received: from kernelvm
+ (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
+ [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
+ by smtp.gmail.com with ESMTPSA id z8sm27563113wrh.83.2021.02.08.03.49.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Feb 2021 03:49:16 -0800 (PST)
+Date: Mon, 8 Feb 2021 11:49:14 +0000
+From: Phillip Potter <phil@philpotter.co.uk>
+To: Alexander Sverdlin <alexander.sverdlin@nokia.com>
+Subject: Re: [PATCH] staging: octeon: remove braces from single-line block
+Message-ID: <20210208114914.GA115411@kernelvm>
+References: <20210206201701.5273-1-phil@philpotter.co.uk>
+ <51bab7d2-2f37-b4de-71b5-47cfe8857f02@nokia.com>
 MIME-Version: 1.0
-In-Reply-To: <20210205200859.GA193526@bjorn-Precision-5520>
-X-Originating-IP: [10.69.38.196]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <51bab7d2-2f37-b4de-71b5-47cfe8857f02@nokia.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,93 +89,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
- jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
- gregkh@linuxfoundation.org, masahiroy@kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, linuxarm@openeuler.org, abbotti@mev.co.uk,
- michal.lkml@markovi.net, linux-kbuild@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, andrew@lunn.ch, f.fainelli@gmail.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ chris.packham@alliedtelesis.co.nz, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2021/2/6 4:08, Bjorn Helgaas wrote:
-> On Fri, Feb 05, 2021 at 10:28:32AM -0800, Guenter Roeck wrote:
->> On Fri, Feb 05, 2021 at 05:44:13PM +0800, Yicong Yang wrote:
->>> From: Junhao He <hejunhao2@hisilicon.com>
->>>
->>> Use subdir-ccflags-* instead of ccflags-* to inherit the debug
->>> settings from Kconfig when traversing subdirectories.
->>>
->>> Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
->>> Signed-off-by: Junhao He <hejunhao2@hisilicon.com>
->>> Signed-off-by: Yicong Yang <yangyicong@hisilicon.com>
->>
->> What problem does this fix ? Maybe I am missing it, but I don't see
->> DEBUG being used in a subdirectory of drivers/hwmon.
+On Mon, Feb 08, 2021 at 08:14:02AM +0100, Alexander Sverdlin wrote:
+> Hi!
 > 
-> It's my fault for raising this question [1].  Yicong fixed a real
-> problem in drivers/pci, where we are currently using
+> On 06/02/2021 21:17, Phillip Potter wrote:
+> > This removes the braces from the if statement that checks the
+> > physical node return value in cvm_oct_phy_setup_device, as this
+> > block contains only one statement. Fixes a style warning.
+> > 
+> > Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
 > 
->   ccflags-$(CONFIG_PCI_DEBUG) := -DDEBUG
-> 
-> so CONFIG_PCI_DEBUG=y turns on debug in drivers/pci, but not in the
-> subdirectories.  That's surprising to users.
-> 
-> So my question was whether we should default to using subdir-ccflags
-> for -DDEBUG in general, and only use ccflags when we have
-> subdirectories that have their own debug options, e.g.,
-> 
->   drivers/i2c/Makefile:ccflags-$(CONFIG_I2C_DEBUG_CORE) := -DDEBUG
->   drivers/i2c/algos/Makefile:ccflags-$(CONFIG_I2C_DEBUG_ALGO) := -DDEBUG
->   drivers/i2c/busses/Makefile:ccflags-$(CONFIG_I2C_DEBUG_BUS) := -DDEBUG
->   drivers/i2c/muxes/Makefile:ccflags-$(CONFIG_I2C_DEBUG_BUS) := -DDEBUG
-> 
-> I mentioned drivers/hwmon along with a few others that have
-> subdirectories, do not have per-subdirectory debug options, and use
-> ccflags.  I didn't try to determine whether those subdirectories
-> currently use -DDEBUG.
-> 
-> In the case of drivers/hwmon, several drivers do use pr_debug(),
-> and CONFIG_HWMON_DEBUG_CHIP=y turns those on.  But if somebody
-> were to add pr_debug() to drivers/hwmon/occ/common.c, for example,
-> CONFIG_HWMON_DEBUG_CHIP=y would *not* turn it on.  That sounds
-> surprising to me, but if that's what you intend, that's totally fine.
-
-i thought CONFIG_HWMON_DEBUG_CHIP=y means to enable debug including the
-subdirectories, so use subdir-ccflags-* will make sure the debug
-message on in the subdirectories, if there will be.
-
-please let me know if i understand wrong.
-
-Thanks,
-Yicong
-
-> 
-> [1] https://lore.kernel.org/r/20210204161048.GA68790@bjorn-Precision-5520
-> 
->>> ---
->>>  drivers/hwmon/Makefile | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
->>> index 09a86c5..1c0c089 100644
->>> --- a/drivers/hwmon/Makefile
->>> +++ b/drivers/hwmon/Makefile
->>> @@ -201,5 +201,5 @@ obj-$(CONFIG_SENSORS_XGENE)	+= xgene-hwmon.o
->>>  obj-$(CONFIG_SENSORS_OCC)	+= occ/
->>>  obj-$(CONFIG_PMBUS)		+= pmbus/
->>>  
->>> -ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
->>> +subdir-ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
->>>  
->>> -- 
->>> 2.8.1
->>>
-> 
-> .
+> Reviewed-by: Alexander Sverdlin <alexander.sverdlin@nokia.com>
 > 
 
+Thank you Alexander.
+
+> > ---
+> >  drivers/staging/octeon/ethernet-mdio.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
+> > index 0bf545849b11..b0fd083a5bf2 100644
+> > --- a/drivers/staging/octeon/ethernet-mdio.c
+> > +++ b/drivers/staging/octeon/ethernet-mdio.c
+> > @@ -146,9 +146,8 @@ int cvm_oct_phy_setup_device(struct net_device *dev)
+> >  		goto no_phy;
+> >  
+> >  	phy_node = of_parse_phandle(priv->of_node, "phy-handle", 0);
+> > -	if (!phy_node && of_phy_is_fixed_link(priv->of_node)) {
+> > +	if (!phy_node && of_phy_is_fixed_link(priv->of_node))
+> >  		phy_node = of_node_get(priv->of_node);
+> > -	}
+> >  	if (!phy_node)
+> >  		goto no_phy;
+> >  
+> 
+> -- 
+> Best regards,
+> Alexander Sverdlin.
+
+Regards,
+Phil Potter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
