@@ -2,75 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6088931291F
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 03:59:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4A98312992
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 04:55:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A77D1867FC;
-	Mon,  8 Feb 2021 02:59:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0E12286888;
+	Mon,  8 Feb 2021 03:55:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6muOoT4VPyll; Mon,  8 Feb 2021 02:59:22 +0000 (UTC)
+	with ESMTP id zRBL6cCxDLai; Mon,  8 Feb 2021 03:55:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3356C867F3;
-	Mon,  8 Feb 2021 02:59:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A7BC7867FC;
+	Mon,  8 Feb 2021 03:55:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7E61A1BF296
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 02:59:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 588371BF584
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 03:55:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 74BD886FAA
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 02:59:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 54BA986FBD
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 03:55:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 17AuQJCf-Hhg for <devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 02:59:18 +0000 (UTC)
+ with ESMTP id 1JJgrwYwRuEo for <devel@linuxdriverproject.org>;
+ Mon,  8 Feb 2021 03:55:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f175.google.com (mail-pg1-f175.google.com
- [209.85.215.175])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7E1FD86F9F
- for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 02:59:18 +0000 (UTC)
-Received: by mail-pg1-f175.google.com with SMTP id j5so475551pgb.11
- for <devel@driverdev.osuosl.org>; Sun, 07 Feb 2021 18:59:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=cRQhiF2GEiPjRDo8n2Y99tRPesoEHMgxfbNm4llEXVw=;
- b=ZBxi0jfUIhrsQXwB+yZwsKCq0/6iEdKrbrqkHslqKUDwz4/m10VgN3iVG1Au07HaAp
- VTC7v3N6uU3kpYq0mUdNFOlLxGCua1nntBZ12IV5IV5HLzhHSKeHELfjBESZw5EU70k5
- nB1pOXIZ1wcFLYkI1Bvqc/1xq2xZ70Xlid4vXSAj4scoVuP39twAi+V0O3YVFjNXKYSL
- f/U/kOWNbRmLD6HYTBILIqXaEFGnJKX/NvsTWqM7LY1q++g9t98ktW8pOGhIk8qb4W5q
- LQ+myPID6th6Mf5wCW258ua8MV06aFFVEIxsw3r/0m1vtpa8RCVa0KTbMgCzdevv8g+i
- 4aiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=cRQhiF2GEiPjRDo8n2Y99tRPesoEHMgxfbNm4llEXVw=;
- b=ks28MrQ2awThkBxHvjw9LDpRG542yofDre4MZ/sjtBsr+kLnO+xpP74oCG89P9JsiN
- h80Z6fnKnTBz/RMsJATGHEkZJ+Q4o1ETnI6AwzpQExUaFa7Jh9RuORbnCkTe/3/Pofno
- LVDH5Eu1AQ4mnCLkV2zeBRoolGtJC3eEPNmk8LYgfTQUuRyORonWM3s3C6MkyCHZzBKb
- E28zi3DwGIqs+pKEB1B4f2ruETZlN+jGbLYPfUO101lMgNDdQsRO6BCojz5P10/WMh2G
- wEYf3xzUcDFhwes6XZRx0LXsZ73ry5WJKq6vLFLeeMLfQl4XaXG7xPJ1Aa+0tWKs75mH
- j8gg==
-X-Gm-Message-State: AOAM530TZpusqlan5BqVLZtBe5iNcWV/g/y5YmV+IzTT6lzGDpvE5QdT
- aEvsr42lDwivGgdCg3+GFb4=
-X-Google-Smtp-Source: ABdhPJyrDYjBkjTNMd70wDRpdhsIwHFFGtWhjpLo2ind8f7JKNWyosISjnIKosY0HPto1BKdirpH2w==
-X-Received: by 2002:a63:d446:: with SMTP id i6mr15123872pgj.446.1612753158006; 
- Sun, 07 Feb 2021 18:59:18 -0800 (PST)
-Received: from mahak-Inspiron-7570 ([103.153.208.42])
- by smtp.gmail.com with ESMTPSA id v19sm13875984pjh.37.2021.02.07.18.59.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 18:59:17 -0800 (PST)
-From: Mahak Gupta <gmahak1@gmail.com>
-To: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
- gregkh@linuxfoundation.org, rcy@google.com, benchan@chromium.org,
- toddpoynor@google.com, rspringer@google.com
-Subject: [PATCH v2] staging: gasket: fix indentation and lines ending with
- open parenthesis
-Date: Mon,  8 Feb 2021 08:29:04 +0530
-Message-Id: <20210208025904.25928-1-gmahak1@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 00C9D86D7A
+ for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 03:55:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=r5e0pP3lJ6oc8hBEATfesxmMHxx1NyuwyNkkdpPRZS0=; b=rpKYMsoFiCzLmEQ2Dvo4qBjVyl
+ t61Uuhp0KMj3ILsCvBeXtxoklLp7JJ2p7h6fkLvu2auv0bqoV9OnAoRK1DM74Z4vWvsLyW9c2SLwP
+ yL78Ap7DKAKUg0mtrx7ys2YbEXhuW/+C2sZ4kgbsMatwdGyXlsx2zL5kuTclcx9q4kT2pJhIOueK5
+ 5lm5IGrupPAzuLcwXCNpWFZK/R5MRVZtJIZWssW5tA1DExmvMJ8VrjLCU43dGoVqD1WksAw9eVToj
+ KUxhs/ENkjJDhr6WtV7xdYt7/I2LK39hxC9RwMD1tmOZvUyGSz3jbeWZ8/RokMx6tcHNK4l1BOV6w
+ qpuezpeA==;
+Received: from [2601:1c0:6280:3f0::b879]
+ by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l8xeA-0005yg-37; Mon, 08 Feb 2021 03:55:34 +0000
+Subject: Re: [PATCH v3 1/7] seqnum_ops: Introduce Sequence Number Ops
+To: Shuah Khan <skhan@linuxfoundation.org>, corbet@lwn.net,
+ gregkh@linuxfoundation.org, peterz@infradead.org, keescook@chromium.org,
+ rafael@kernel.org, lenb@kernel.org, james.morse@arm.com,
+ tony.luck@intel.com, bp@alien8.de
+References: <cover.1612314468.git.skhan@linuxfoundation.org>
+ <23f6347a7bb9f902babe7351f71b23644035673d.1612314468.git.skhan@linuxfoundation.org>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <8f64e963-e0d6-e9a2-41c3-206bed440cde@infradead.org>
+Date: Sun, 7 Feb 2021 19:55:28 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <23f6347a7bb9f902babe7351f71b23644035673d.1612314468.git.skhan@linuxfoundation.org>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,173 +71,323 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mahak Gupta <gmahak1@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linux-acpi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-kselftest@vger.kernel.org,
+ linux-doc@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes warnings of 'checkpatch.pl'. According to
-Linux coding guidelines, code should be aligned properly to
-match with open parenthesis and lines should not end with
-open parenthesis.
+Hi--
+Comments are inline.
 
-Signed-off-by: Mahak Gupta <gmahak1@gmail.com>
----
-Changes since v1:
- - Use temporary variables to shorten long lines. This variable was used multiple times.
----
- drivers/staging/gasket/gasket_ioctl.c | 42 ++++++++++++++-------------
- 1 file changed, 22 insertions(+), 20 deletions(-)
+On 2/3/21 10:11 AM, Shuah Khan wrote:
+> Sequence Number api provides interfaces for unsigned atomic up counters.
+> 
+> There are a number of atomic_t usages in the kernel where atomic_t api
+> is used for counting sequence numbers and other statistical counters.
+> Several of these usages, convert atomic_read() and atomic_inc_return()
+> return values to unsigned. Introducing sequence number ops supports
+> these use-cases with a standard core-api.
+> 
+> Sequence Number ops provide interfaces to initialize, increment and get
+> the sequence number. These ops also check for overflow and log message to
+> indicate when overflow occurs.
+> 
+> Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+> ---
+>  Documentation/core-api/index.rst      |   1 +
+>  Documentation/core-api/seqnum_ops.rst |  53 ++++++++++
+>  MAINTAINERS                           |   7 ++
+>  include/linux/seqnum_ops.h            | 129 +++++++++++++++++++++++++
+>  lib/Kconfig                           |   9 ++
+>  lib/Makefile                          |   1 +
+>  lib/test_seqnum_ops.c                 | 133 ++++++++++++++++++++++++++
+>  7 files changed, 333 insertions(+)
+>  create mode 100644 Documentation/core-api/seqnum_ops.rst
+>  create mode 100644 include/linux/seqnum_ops.h
+>  create mode 100644 lib/test_seqnum_ops.c
 
-diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
-index e3047d36d8db..aa65f4fbf860 100644
---- a/drivers/staging/gasket/gasket_ioctl.c
-+++ b/drivers/staging/gasket/gasket_ioctl.c
-@@ -40,10 +40,11 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
- 
- /* Read the size of the page table. */
- static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
--	struct gasket_page_table_ioctl __user *argp)
-+				       struct gasket_page_table_ioctl __user *argp)
- {
- 	int ret = 0;
- 	struct gasket_page_table_ioctl ibuf;
-+	struct gasket_page_table *table;
- 
- 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
- 		return -EFAULT;
-@@ -51,8 +52,8 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
- 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
- 		return -EFAULT;
- 
--	ibuf.size = gasket_page_table_num_entries(
--		gasket_dev->page_table[ibuf.page_table_index]);
-+	table = gasket_dev->page_table[ibuf.page_table_index];
-+	ibuf.size = gasket_page_table_num_entries(table);
- 
- 	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
- 					   ibuf.host_address,
-@@ -66,10 +67,11 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
- 
- /* Read the size of the simple page table. */
- static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
--	struct gasket_page_table_ioctl __user *argp)
-+					      struct gasket_page_table_ioctl __user *argp)
- {
- 	int ret = 0;
- 	struct gasket_page_table_ioctl ibuf;
-+	struct gasket_page_table *table;
- 
- 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
- 		return -EFAULT;
-@@ -77,8 +79,8 @@ static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
- 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
- 		return -EFAULT;
- 
--	ibuf.size =
--		gasket_page_table_num_simple_entries(gasket_dev->page_table[ibuf.page_table_index]);
-+	table = gasket_dev->page_table[ibuf.page_table_index];
-+	ibuf.size = gasket_page_table_num_simple_entries(table);
- 
- 	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
- 					   ibuf.host_address,
-@@ -92,11 +94,12 @@ static int gasket_read_simple_page_table_size(struct gasket_dev *gasket_dev,
- 
- /* Set the boundary between the simple and extended page tables. */
- static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
--	struct gasket_page_table_ioctl __user *argp)
-+				       struct gasket_page_table_ioctl __user *argp)
- {
- 	int ret;
- 	struct gasket_page_table_ioctl ibuf;
- 	uint max_page_table_size;
-+	struct gasket_page_table *table;
- 
- 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
- 		return -EFAULT;
-@@ -107,8 +110,8 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
- 
- 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
- 		return -EFAULT;
--	max_page_table_size = gasket_page_table_max_size(
--		gasket_dev->page_table[ibuf.page_table_index]);
-+	table = gasket_dev->page_table[ibuf.page_table_index];
-+	max_page_table_size = gasket_page_table_max_size(table);
- 
- 	if (ibuf.size > max_page_table_size) {
- 		dev_dbg(gasket_dev->dev,
-@@ -119,8 +122,7 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
- 
- 	mutex_lock(&gasket_dev->mutex);
- 
--	ret = gasket_page_table_partition(
--		gasket_dev->page_table[ibuf.page_table_index], ibuf.size);
-+	ret = gasket_page_table_partition(table, ibuf.size);
- 	mutex_unlock(&gasket_dev->mutex);
- 
- 	return ret;
-@@ -131,6 +133,7 @@ static int gasket_map_buffers(struct gasket_dev *gasket_dev,
- 			      struct gasket_page_table_ioctl __user *argp)
- {
- 	struct gasket_page_table_ioctl ibuf;
-+	struct gasket_page_table *table;
- 
- 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
- 		return -EFAULT;
-@@ -142,13 +145,12 @@ static int gasket_map_buffers(struct gasket_dev *gasket_dev,
- 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
- 		return -EFAULT;
- 
--	if (gasket_page_table_are_addrs_bad(gasket_dev->page_table[ibuf.page_table_index],
--					    ibuf.host_address,
-+	table = gasket_dev->page_table[ibuf.page_table_index];
-+	if (gasket_page_table_are_addrs_bad(table, ibuf.host_address,
- 					    ibuf.device_address, ibuf.size))
- 		return -EINVAL;
- 
--	return gasket_page_table_map(gasket_dev->page_table[ibuf.page_table_index],
--				     ibuf.host_address, ibuf.device_address,
-+	return gasket_page_table_map(table, ibuf.host_address, ibuf.device_address,
- 				     ibuf.size / PAGE_SIZE);
- }
- 
-@@ -157,6 +159,7 @@ static int gasket_unmap_buffers(struct gasket_dev *gasket_dev,
- 				struct gasket_page_table_ioctl __user *argp)
- {
- 	struct gasket_page_table_ioctl ibuf;
-+	struct gasket_page_table *table;
- 
- 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
- 		return -EFAULT;
-@@ -168,12 +171,11 @@ static int gasket_unmap_buffers(struct gasket_dev *gasket_dev,
- 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
- 		return -EFAULT;
- 
--	if (gasket_page_table_is_dev_addr_bad(gasket_dev->page_table[ibuf.page_table_index],
--					      ibuf.device_address, ibuf.size))
-+	table = gasket_dev->page_table[ibuf.page_table_index];
-+	if (gasket_page_table_is_dev_addr_bad(table, ibuf.device_address, ibuf.size))
- 		return -EINVAL;
- 
--	gasket_page_table_unmap(gasket_dev->page_table[ibuf.page_table_index],
--				ibuf.device_address, ibuf.size / PAGE_SIZE);
-+	gasket_page_table_unmap(table, ibuf.device_address, ibuf.size / PAGE_SIZE);
- 
- 	return 0;
- }
-@@ -183,7 +185,7 @@ static int gasket_unmap_buffers(struct gasket_dev *gasket_dev,
-  * corresponding memory.
-  */
- static int gasket_config_coherent_allocator(struct gasket_dev *gasket_dev,
--	struct gasket_coherent_alloc_config_ioctl __user *argp)
-+					    struct gasket_coherent_alloc_config_ioctl __user *argp)
- {
- 	int ret;
- 	struct gasket_coherent_alloc_config_ioctl ibuf;
+
+> diff --git a/Documentation/core-api/seqnum_ops.rst b/Documentation/core-api/seqnum_ops.rst
+> new file mode 100644
+> index 000000000000..ed4eba394799
+> --- /dev/null
+> +++ b/Documentation/core-api/seqnum_ops.rst
+> @@ -0,0 +1,53 @@
+> +.. SPDX-License-Identifier: GPL-2.0
+> +
+> +.. include:: <isonum.txt>
+> +
+> +.. _seqnum_ops:
+> +
+> +==========================
+> +Sequence Number Operations
+> +==========================
+> +
+> +:Author: Shuah Khan
+> +:Copyright: |copy| 2021, The Linux Foundation
+> +:Copyright: |copy| 2021, Shuah Khan <skhan@linuxfoundation.org>
+> +
+> +Sequence Number api provides interfaces for unsigned up counters.
+
+                   API
+
+> +
+> +Sequence Number Ops
+> +===================
+> +
+> +seqnum32 and seqnum64 types support implementing unsigned up counters. ::
+> +
+> +        struct seqnum32 { u32 seqnum; };
+> +        struct seqnum64 { u64 seqnum; };
+> +
+> +Initializers
+> +------------
+> +
+> +Interfaces for initializing sequence numbers. ::
+> +
+> +        #define SEQNUM_INIT(i)    { .seqnum = i }
+> +        seqnum32_init(seqnum, val)
+> +        seqnum64_init(seqnum, val)
+> +
+> +Increment interface
+> +-------------------
+> +
+> +Increments sequence number and returns the new value. Checks for overflow
+> +conditions and logs message when overflow occurs. This check is intended
+> +to help catch cases where overflow could lead to problems. ::
+> +
+> +        seqnum32_inc(seqnum): Calls atomic_inc_return(seqnum).
+> +        seqnum64_inc(seqnum): Calls atomic64_inc_return(seqnum).
+> +
+> +Return/get value interface
+> +--------------------------
+> +
+> +Returns sequence number value. ::
+> +
+> +        seqnum32_get() - return seqnum value.
+> +        seqnum64_get() - return seqnum value.
+> +
+> +.. warning::
+> +        seqnum32 wraps around to INT_MIN when it overflows.
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index cc1e6a5ee6e6..f9fe1438a8cd 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -16235,6 +16235,13 @@ S:	Maintained
+>  F:	Documentation/fb/sm712fb.rst
+>  F:	drivers/video/fbdev/sm712*
+>  
+> +SEQNUM OPS
+> +M:	Shuah Khan <skhan@linuxfoundation.org>
+> +L:	linux-kernel@vger.kernel.org
+> +S:	Maintained
+> +F:	include/linux/seqnum_ops.h
+> +F:	lib/test_seqnum_ops.c
+> +
+>  SIMPLE FIRMWARE INTERFACE (SFI)
+>  S:	Obsolete
+>  W:	http://simplefirmware.org/
+> diff --git a/include/linux/seqnum_ops.h b/include/linux/seqnum_ops.h
+> new file mode 100644
+> index 000000000000..e8d8481445d3
+> --- /dev/null
+> +++ b/include/linux/seqnum_ops.h
+> @@ -0,0 +1,129 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * seqnum_ops.h - Interfaces for unsigned atomic sequential up counters.
+> + *
+> + * Copyright (c) 2021 Shuah Khan <skhan@linuxfoundation.org>
+> + * Copyright (c) 2021 The Linux Foundation
+> + *
+> + * Sequence Number functions provide support for unsgined atomic up
+
+                                                    unsigned
+
+> + * counters.
+> + *
+> + * The interface provides:
+> + * seqnumu32 & seqnumu64 functions:
+> + *	initialization
+> + *	increment and return
+> + *
+> + * seqnumu32 and seqnumu64 functions leverage/use atomic*_t ops to
+> + * implement support for unsigned atomic up counters.
+> + *
+> + * Reference and API guide:
+> + *	Documentation/core-api/seqnum_ops.rst for more information.
+> + */
+> +
+> +#ifndef __LINUX_SEQNUM_OPS_H
+> +#define __LINUX_SEQNUM_OPS_H
+> +
+> +#include <linux/atomic.h>
+> +
+> +/**
+> + * struct seqnum32 - Sequence number atomic counter
+> + * @seqnum: atomic_t
+> + *
+> + **/
+> +struct seqnum32 {
+> +	u32 seqnum;
+> +};
+> +
+> +#define SEQNUM_INIT(i)		{ .seqnum = i }
+> +
+> +/*
+> + * seqnum32_init() - initialize seqnum value
+> + * @seq: struct seqnum32 pointer
+> + *
+> + */
+> +static inline void seqnum32_init(struct seqnum32 *seq, u32 val)
+> +{
+> +	seq->seqnum = val;
+> +}
+> +
+> +/*
+> + * seqnum32_inc() - increment seqnum value and return the new value
+> + * @seq: struct seqnum32 pointer
+> + *
+> + * Return u32
+
+It would be good to convert that to kernel-doc notation.
+
+> + */
+> +static inline u32 seqnum32_inc(struct seqnum32 *seq)
+> +{
+> +	atomic_t val = ATOMIC_INIT(seq->seqnum);
+> +
+> +	seq->seqnum = (u32) atomic_inc_return(&val);
+> +	if (seq->seqnum >= UINT_MAX)
+> +		pr_info("Sequence Number overflow %u detected\n",
+> +			seq->seqnum);
+> +	return seq->seqnum;
+> +}
+> +
+> +/*
+> + * seqnum32_get() - get seqnum value
+> + * @seq: struct seqnum32 pointer
+> + *
+> + * Return u32
+> + */
+> +static inline u32 seqnum32_get(struct seqnum32 *seq)
+> +{
+> +	return seq->seqnum;
+> +}
+> +
+> +/*
+> + * struct seqnum64 - Sequential/Statistical atomic counter
+> + * @seq: atomic64_t
+> + *
+> + */
+> +struct seqnum64 {
+> +	u64 seqnum;
+> +};
+> +
+> +/* Add to a global include/vdso/limits.h and fix all other UINT64_MAX
+> + * duplicate defines?
+> + */
+> +#define SEQ_UINT64_MAX	((u64)(~((u64) 0)))	/* 0xFFFFFFFFFFFFFFFF */
+> +
+> +/*
+> + * seqnum64_init() - initialize seqnum value
+> + * @seq: struct seqnum64 pointer
+> + *
+> + */
+
+and kernel-doc there also.
+
+> +static inline void seqnum64_init(struct seqnum64 *seq, u64 val)
+> +{
+> +	seq->seqnum = val;
+> +}
+> +
+> +/*
+> + * seqnum64_inc() - increment seqnum value and return the new value
+> + * @seq: struct seqnum64 pointer
+> + *
+> + * Return u64
+> + */
+> +static inline u64 seqnum64_inc(struct seqnum64 *seq)
+> +{
+> +	atomic64_t val = ATOMIC_INIT(seq->seqnum);
+> +
+> +	seq->seqnum = (u64) atomic64_inc_return(&val);
+> +	if (seq->seqnum >= SEQ_UINT64_MAX)
+> +		pr_info("Sequence Number overflow %llu detected\n",
+> +			seq->seqnum);
+> +	return seq->seqnum;
+> +}
+> +
+> +/*
+> + * seqnum64_get() - get seqnum value
+> + * @seq: struct seqnum64 pointer
+> + *
+> + * Return u64
+> + */
+> +static inline u64 seqnum64_get(struct seqnum64 *seq)
+> +{
+> +	return (u64) seq->seqnum;
+> +}
+> +
+> +#endif /* __LINUX_SEQNUM_OPS_H */
+
+
+> diff --git a/lib/test_seqnum_ops.c b/lib/test_seqnum_ops.c
+> new file mode 100644
+> index 000000000000..173278314f26
+> --- /dev/null
+> +++ b/lib/test_seqnum_ops.c
+> @@ -0,0 +1,133 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * test_seqnum_ops.c - Kernel module for testing Seqnum API
+> + *
+> + * Copyright (c) 2021 Shuah Khan <skhan@linuxfoundation.org>
+> + * Copyright (c) 2021 The Linux Foundation
+> + *
+> + */
+> +
+> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+> +
+> +#include <linux/module.h>
+> +#include <linux/seqnum_ops.h>
+> +
+>
+...
+
+> +static void test_seqnum64(void)
+> +{
+> +	u64 start_val = 0;
+> +	struct seqnum64 seq = SEQNUM_INIT(start_val);
+> +	u64 end_val;
+> +
+> +	end_val = seqnum64_inc(&seq);
+> +	test_seqnum64_result("Test increment",
+> +			     start_val, end_val, start_val+1);
+> +
+> +	/* Initialize sequence number to 0 */
+> +	seqnum64_init(&seq, start_val);
+> +	end_val = seqnum64_inc(&seq);
+> +
+> +	/* if seqnum642_init() works correctly end_val should be 1 */
+
+	      seqnum64_init()
+AFAICT.
+
+> +	test_seqnum64_result("Test init", start_val, end_val, 1);
+> +	/* seqnum64_get() test for seqnum value == 1 */
+> +	start_val = end_val = seqnum64_get(&seq);
+> +	test_seqnum64_result("Test get", start_val, end_val, 1);
+> +}
+> +
+
+
 -- 
-2.17.1
+~Randy
 
 _______________________________________________
 devel mailing list
