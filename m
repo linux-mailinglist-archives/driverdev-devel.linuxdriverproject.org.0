@@ -1,56 +1,137 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEA80312AEF
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 07:49:44 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 395D4312B1B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 08:30:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5E0412041E;
-	Mon,  8 Feb 2021 06:49:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B5748701A;
+	Mon,  8 Feb 2021 07:30:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N0HcZ7PpKeDy; Mon,  8 Feb 2021 06:49:41 +0000 (UTC)
+	with ESMTP id vhwyLIqFXops; Mon,  8 Feb 2021 07:30:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B1F520403;
-	Mon,  8 Feb 2021 06:49:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 00E3786D82;
+	Mon,  8 Feb 2021 07:30:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 870BF1BF41E
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 06:49:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1440E1BF414
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 07:30:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 834F08588C
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 06:49:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 10B3A86FC7
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 07:30:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZIpvb7bfRf6v for <devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 06:49:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3548A85381
- for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 06:49:36 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C914B64E6D;
- Mon,  8 Feb 2021 06:49:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612766975;
- bh=j5eBuMrXOq7cxtxz9OVRPiCP6VDJ6xKCOPp5qbvijo8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=f6zv+t6LObLAAtdd39dm6f9MLbAtTiC6vBOBISqGDKvyzjVYvCSdYOuhWhS61dKJq
- iApxaB/0BsaS8Gv93UoS1yPxsVggdefuGQVsNAChvMtMt2g19zpRP6wYy37rfEWtOh
- J8U3jN36xtz+MyEumiqSDXKOagpX+HqHywTGZ10w=
-Date: Mon, 8 Feb 2021 07:49:31 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: dev.dragon@bk.ru
-Subject: Re: [96e8740] [PATCH 2/2] Staging: wimax: i2400m: some readability
- improvements.
-Message-ID: <YCDe++lsnROljLNh@kroah.com>
-References: <fb815f4d3d75cdb10add70378de1271bc8d6297e.camel@perches.com>
- <96e87403e3d3d825ea8fad6108aef905b71439b3.1612722827.git.dev.dragon@bk.ru>
+ with ESMTP id rcLpoa8299gH for <devel@linuxdriverproject.org>;
+ Mon,  8 Feb 2021 07:30:11 +0000 (UTC)
+X-Greylist: delayed 00:16:01 by SQLgrey-1.7.6
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2115.outbound.protection.outlook.com [40.107.21.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 915C486D82
+ for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 07:30:10 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jgr2u/WAI2pZ/OuVigyR9A7xkvkrl9lD+sOEvaTClHURoOPjcJU5jP/5xEdum46uy6j1ho2zLVDELP6pXBsF12aujojQ2gQL7aN1ARrLTnh6LUw85QMW/WCQAEpNtRvBJxe9Ct2cXPdip3rlhzB4ETlUZC2B1kQuT9wbTXkhJB3LRO3lrt4Z140cZnZWf0/8JsqN6S9fFDg9AiHaCQGd9xJFMyULC+dheD0xHL4GeQhYDwVOZ9qM2nqdKSn6tuX5+IpXSHUiI8fyER6c9mDsTTGzcBZTfAxPYeSRrOCBKPXS+v0rwnZEIAVly6et+q9r41tqWLCyed0OmfCxS1cVOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KdpvFjZ8x30yDiuzNxG+/UMYwd+t3ep4aPclFGiYqac=;
+ b=YuhdYwGWmvC8m+C/RjZods1pZAOBakX+oS6y9AC7tJ2mx4RjZ6GejEjG9eWPiFY8XaFFdnB6GaOAeJ+Bp3tsdLfjBcV/BWEUNrZqGHTcdmEcFQwPgni9eNe/Eox8SRd1JBvMyDML/pcDpw9QgC6qOqlLiNu+uLBjxgXqh71zRhfiN/tN/x+2mLACMoX6z8G6q5J6W5ZT2mfJZwqBHBxh8QYwM6hD9VzD+p6v2AEfID8smQob7vs+bCOkCSfB5H2IROvBMonoVJdKHFO8GYOx+dPmFMlxyGndaU8H0igwZFjKgvfUd9md5SQcJnqiu66GkAyX3Yixkkc/Kw/3aFnMgA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nokia.com; dmarc=pass action=none header.from=nokia.com;
+ dkim=pass header.d=nokia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nokia.onmicrosoft.com; 
+ s=selector1-nokia-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KdpvFjZ8x30yDiuzNxG+/UMYwd+t3ep4aPclFGiYqac=;
+ b=N65PsLQ2YnXeeodANOY3vUVBIx2PZQ5qynjiFC8tv0LtIl2hm2SRw7XgekJ2jBkGHcNmBoLyHVpNd+Ozqvf7Iy5XAmL4Q9pq3c1VH0hHH3lNrgUI1ELRXxCxBP+iz43VPgVIa7M4R5hnJLWr25xbqbyusmAMelrd9YLxvhBUYqc=
+Authentication-Results: alliedtelesis.co.nz; dkim=none (message not signed)
+ header.d=none;alliedtelesis.co.nz; dmarc=none action=none
+ header.from=nokia.com;
+Received: from (2603:10a6:208:6e::15) by
+ AM0PR0702MB3825.eurprd07.prod.outlook.com (2603:10a6:208:23::31) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.8; Mon, 8 Feb
+ 2021 07:14:06 +0000
+Received: from AM0PR07MB4531.eurprd07.prod.outlook.com
+ ([fe80::e965:2884:260b:b29a]) by AM0PR07MB4531.eurprd07.prod.outlook.com
+ ([fe80::e965:2884:260b:b29a%3]) with mapi id 15.20.3846.023; Mon, 8 Feb 2021
+ 07:14:06 +0000
+Subject: Re: [PATCH] staging: octeon: remove braces from single-line block
+To: Phillip Potter <phil@philpotter.co.uk>, gregkh@linuxfoundation.org
+References: <20210206201701.5273-1-phil@philpotter.co.uk>
+From: Alexander Sverdlin <alexander.sverdlin@nokia.com>
+Message-ID: <51bab7d2-2f37-b4de-71b5-47cfe8857f02@nokia.com>
+Date: Mon, 8 Feb 2021 08:14:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
+In-Reply-To: <20210206201701.5273-1-phil@philpotter.co.uk>
+Content-Language: en-US
+X-Originating-IP: [131.228.32.169]
+X-ClientProxiedBy: AM9P191CA0005.EURP191.PROD.OUTLOOK.COM
+ (2603:10a6:20b:21c::10) To AM0PR07MB4531.eurprd07.prod.outlook.com
+ (2603:10a6:208:6e::15)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <96e87403e3d3d825ea8fad6108aef905b71439b3.1612722827.git.dev.dragon@bk.ru>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from ulegcpsvhp1.emea.nsn-net.net (131.228.32.169) by
+ AM9P191CA0005.EURP191.PROD.OUTLOOK.COM (2603:10a6:20b:21c::10) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3825.19 via Frontend Transport; Mon, 8 Feb 2021 07:14:05 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: 1f52b2a0-4b30-410f-73d5-08d8cc011ed4
+X-MS-TrafficTypeDiagnostic: AM0PR0702MB3825:
+X-Microsoft-Antispam-PRVS: <AM0PR0702MB3825F19FA6B91013B56FBE13888F9@AM0PR0702MB3825.eurprd07.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4714;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: MiIhaNGUIYdlQkvdMsa2RA1hVNtSYCuQcpkj9YbwWpxD82TOJbMf7oldJPm7hv06Hn5ImC8y7xDSzWRRQlriyyyCtao0SLSg44hNsYK3TraPIj4eLcf8/ZwGf4MW96v/a5QpZOApONlXQMwjgR83ikBCLp/w+tS8UJunGQDiTowR40nSZQraRNLbm4cxKe7StBZGH+QOE8u1IISFz8XYE9x+1hI1ZEm6WqiMMR8yE2TGHoUyihkgmRsQxvk82TlEMtI/lb8HpbTsfYscSOQO88T8ro1gQqbxiYX3Z9RRhaiu5dcYbBZqAMBeFaMNfQrAMgaCBrn4IcfkZJ3+bhAtDYjotHJwKt7ptyYZDNOj8SziaDDGl6U434hF3UDQGFsNvLDi5NIgz25V066GxFgPWAfJjYSOtEhng/sH2W8wh83bDT/1axEb00vGzL0IN6x18FzxXs3WcPH1zAqnkpr/RFBw5/Png1Nf8plhKlxfyF7K/wHAzpapqhdH3ml2BGmyBSuXsaRS5XBQ8L9ziA697KziBLlKNtmxk0ZA8jT8yoN6sbWUgwhkACNMuj8gEwGQtK0nnlXXbeS9aZSDd4JaBSRQttmAS6WxDm/xO5z7muA=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM0PR07MB4531.eurprd07.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(346002)(366004)(396003)(39860400002)(136003)(478600001)(6486002)(316002)(86362001)(8676002)(31696002)(8936002)(66476007)(83380400001)(5660300002)(66946007)(6512007)(36756003)(66556008)(2616005)(53546011)(44832011)(6506007)(2906002)(52116002)(16526019)(31686004)(26005)(4326008)(956004)(186003)(6666004)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: =?utf-8?B?NUN3RjgxTU9tYkMrbHJUTFpXVlZxNjVDTFE0TU5qbEphWTlXaW50R3Uwb1l1?=
+ =?utf-8?B?V2dyaXZ6Nm01UUlOYnVhYmpLQlFQSHU1L3BNQzJjbDd3eGJPNzFRMWxpUzBo?=
+ =?utf-8?B?cTJ5OVBDMUdPQm90dXNRbXVCTUJtdlZVNlhXM0ZTcXRIRWUxNkF2WjBVUnF5?=
+ =?utf-8?B?UVBocVkvNHBobHJvTlFDQm5ZNmMwaUgxTUYxTERIWXdyUWkyWENnZmdrR3hh?=
+ =?utf-8?B?KzZiNnVUcHQ1bDFsQURuVloxTDhaUDNERllvOGdIYkdnVlJmdkhvVnNNK2dj?=
+ =?utf-8?B?STlWQ3hrVkVPdXA3eFN5UHhsdGZOWHRZV3V3aGt2VXZRNVh4L3I1T2tNZ3Rw?=
+ =?utf-8?B?SXFLeGFtdlNoWll0emh0dCt6dlFxK3A3bWM1ZkFVQUhNOVhVL2kvUXM2Qk5Z?=
+ =?utf-8?B?L2djZEVGbXZ5dWJCaExxUlJ4eG0xaW1QWStXQ2xMcDAvZ0djQ1M0WXZnNmVo?=
+ =?utf-8?B?K0pPdmNRK2FVQm1aQUprS0VRVGlNd3E5VzdqbytuNHNYWUR2Um5KMzVveGZE?=
+ =?utf-8?B?R0FSbHd5V0dMVVlIY0I2RUxSMWpnZnRCcUtpNlRzaTFTYVdJNDU2UWY4OHFa?=
+ =?utf-8?B?Q3A5MHBoRUVVQjdRQ0QvYTJFMHFMenU4T3hsWEw0TUV4NkdaQ2dsM25EaktL?=
+ =?utf-8?B?c0NkY2lGcXFNcnF5ZHF5ZGZnSVZQelptM1RRcXppWVQrQ25JYWNLSWZPYUEz?=
+ =?utf-8?B?U1hUd0VkNkdHUW9LcWJYS1RDOFFDa2NBdTNJYnBUNk5uOERzWWVWdWgzRENO?=
+ =?utf-8?B?MnNFNWcweGxWKzV3WjVQeXFLZVV4cHE3emhtdTdRU3hORzhMWnBaUkdzcjRO?=
+ =?utf-8?B?VE9tNmVSWDBxMk8yWTZrZy9uTEhBdXY0MTduREp3YVIxdFZEZzIrNXc3M0Vi?=
+ =?utf-8?B?ZzRJWnIzNTU3MUlhMHFSOTVWcTQxUkdpYmpiaGc1UXFTV3ltWXlodVVjQ0RL?=
+ =?utf-8?B?NDNTYTFJRnR1eENYYjgzWWFMdFlEcnRSK2lVVCtic1pRZHVEZitxYkgzSWZ2?=
+ =?utf-8?B?NmNrU3pLUVBRWVJGSU5IY2ZjNkJqNjl0aFBNT0Fka1JwbEN5NDE5cFBHN3I3?=
+ =?utf-8?B?V0UvRTVkeFVZRzlRSDlTU08xTTNnSjdnYWtqRGdaemw0Q2liQWdxNWl1d3BM?=
+ =?utf-8?B?SGp5Qkk4RXJRbmJZZWlLVzV2UzNITGRxOU1kRVR6dkVGVWNNd2ZnT3ZEZ3V3?=
+ =?utf-8?B?M0ZJT0tGRytYWW0zaWlqeURyU0s2UjExaFV0S2VDWDBuRXhTYTZ1SjYzUTdr?=
+ =?utf-8?B?UERtckdpNmgva0V0RGZPTS82eHB3OUlGUGdSNysvWktZWG4yZTZpODBhc3Vp?=
+ =?utf-8?B?YmpSVGtPclZIb0ZqL1F1Q0NsNVNpTkhXKy9NQUpsakdjdERpZUVDWmhNODBn?=
+ =?utf-8?B?bGEzUjRHbHp2N0RoUm16VURDVGxvOHo5VDRHNHhUV1ZuNWRyOGk3RmNPcUpH?=
+ =?utf-8?B?dFJ0Wlc5SXRzRnB6TGZaaTVKUUwvcFRYYXgyU3B5Rko0Q1BvcWR3YTVUUVht?=
+ =?utf-8?B?RnR5N0JLSE5IektyUFFEQ2xDajdLTVBvMktDbzZqWCtER1RKMUhwRWZUU1Fj?=
+ =?utf-8?B?TktmUnAyQmV0cStZdWQyZWpJbmgvM3B2L3JucE5BWkJuNlk0MkVPek5zL3dJ?=
+ =?utf-8?B?K0NiZFlWRlRMWkFMLzIvNzNLVHgzbWFHQzdjY0lpYk5mVHBGTENSMnBSTDRD?=
+ =?utf-8?B?SmFGdmpwclo1c0hTN0s5UnNMQytBT1IvRHNaWkx5blNKaWtsNTJ2QjdIVGZt?=
+ =?utf-8?Q?RNWVPPruNFn3mfKn1KQKl9wQZDTVsqIagrNysm8?=
+X-OriginatorOrg: nokia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1f52b2a0-4b30-410f-73d5-08d8cc011ed4
+X-MS-Exchange-CrossTenant-AuthSource: AM0PR07MB4531.eurprd07.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Feb 2021 07:14:06.1426 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5d471751-9675-428d-917b-70f44f9630b0
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: GCGr3TDdVoo3WDoTRdaDasWn1CxFItINyCSg8ag0otzhq0ukD9SL5nlCgo30m97SlLu+ihvrTOQkvTJn1FA0zbzxt71G/ku2ridaXpFjVHY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR0702MB3825
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,159 +144,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: joe@perches.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, andrew@lunn.ch, f.fainelli@gmail.com,
+ linux-kernel@vger.kernel.org, chris.packham@alliedtelesis.co.nz,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Feb 07, 2021 at 10:11:24PM +0300, dev.dragon@bk.ru wrote:
-> From: Dmitrii Wolf <dev.dragon@bk.ru>
+Hi!
+
+On 06/02/2021 21:17, Phillip Potter wrote:
+> This removes the braces from the if statement that checks the
+> physical node return value in cvm_oct_phy_setup_device, as this
+> block contains only one statement. Fixes a style warning.
 > 
->  Hello, developers!
->  Sorry for the late answer. As you know - i am a newbie and it is my first kernel patch.
->  After reading kernelnewbies.or, ./Documentation/process/ files and viewing FOSDEM's videpo
->  "Write and Submit your first Linux kernel Patch", i took a decision to send you some
->  changes. I understand that it is annoying to get this "style fixing" patches. So, the
->  Joe Perches's idea to improve code readability was implemented in second patch. Also,
->  some new readability improvements added to it.
->  Thanks in advance!
-> 
-> Signed-off-by: Dmitrii Wolf <dev.dragon@bk.ru>
+> Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
+
+Reviewed-by: Alexander Sverdlin <alexander.sverdlin@nokia.com>
+
 > ---
->  drivers/staging/wimax/i2400m/netdev.c |  8 ++++----
->  drivers/staging/wimax/i2400m/rx.c     | 25 +++++++++++++------------
->  2 files changed, 17 insertions(+), 16 deletions(-)
+>  drivers/staging/octeon/ethernet-mdio.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/drivers/staging/wimax/i2400m/netdev.c b/drivers/staging/wimax/i2400m/netdev.c
-> index 0895a2e441d3..5f79ccc87656 100644
-> --- a/drivers/staging/wimax/i2400m/netdev.c
-> +++ b/drivers/staging/wimax/i2400m/netdev.c
-> @@ -366,13 +366,13 @@ netdev_tx_t i2400m_hard_start_xmit(struct sk_buff *skb,
->  		result = i2400m_net_wake_tx(i2400m, net_dev, skb);
->  	else
->  		result = i2400m_net_tx(i2400m, net_dev, skb);
-> -	if (result <  0) {
-> -drop:
-> -		net_dev->stats.tx_dropped++;
-> -	} else {
-> +	if (result >= 0) {
->  		net_dev->stats.tx_packets++;
->  		net_dev->stats.tx_bytes += skb->len;
->  	}
-> +drop:
-> +	net_dev->stats.tx_dropped++;
-> +
->  	dev_kfree_skb(skb);
->  	d_fnend(3, dev, "(skb %p net_dev %p) = %d\n", skb, net_dev, result);
->  	return NETDEV_TX_OK;
-> diff --git a/drivers/staging/wimax/i2400m/rx.c b/drivers/staging/wimax/i2400m/rx.c
-> index 807bd3db69e9..fdc5da409683 100644
-> --- a/drivers/staging/wimax/i2400m/rx.c
-> +++ b/drivers/staging/wimax/i2400m/rx.c
-> @@ -194,8 +194,8 @@ void i2400m_report_hook_work(struct work_struct *ws)
->  		spin_unlock_irqrestore(&i2400m->rx_lock, flags);
->  		if (list_empty(&list))
->  			break;
-> -		else
-> -			d_printf(1, dev, "processing queued reports\n");
-> +
-> +		d_printf(1, dev, "processing queued reports\n");
->  		list_for_each_entry_safe(args, args_next, &list, list_node) {
->  			d_printf(2, dev, "processing queued report %p\n", args);
->  			i2400m_report_hook(i2400m, args->l3l4_hdr, args->size);
-> @@ -756,16 +756,15 @@ unsigned __i2400m_roq_update_ws(struct i2400m *i2400m, struct i2400m_roq *roq,
->  		roq_data_itr = (struct i2400m_roq_data *) &skb_itr->cb;
->  		nsn_itr = __i2400m_roq_nsn(roq, roq_data_itr->sn);
->  		/* NSN bounds assumed correct (checked when it was queued) */
-> -		if (nsn_itr < new_nws) {
-> -			d_printf(2, dev, "ERX: roq %p - release skb %p "
-> -				 "(nsn %u/%u new nws %u)\n",
-> -				 roq, skb_itr, nsn_itr, roq_data_itr->sn,
-> -				 new_nws);
-> -			__skb_unlink(skb_itr, &roq->queue);
-> -			i2400m_net_erx(i2400m, skb_itr, roq_data_itr->cs);
-> -		} else {
-> +		if (nsn_itr >= new_nws) {
->  			break;	/* rest of packets all nsn_itr > nws */
->  		}
-> +		d_printf(2, dev, "ERX: roq %p - release skb %p "
-> +			 "(nsn %u/%u new nws %u)\n",
-> +			 roq, skb_itr, nsn_itr, roq_data_itr->sn,
-> +			 new_nws);
-> +		__skb_unlink(skb_itr, &roq->queue);
-> +		i2400m_net_erx(i2400m, skb_itr, roq_data_itr->cs);
->  	}
->  	roq->ws = sn;
->  	return new_nws;
-> @@ -904,8 +903,9 @@ void i2400m_roq_queue_update_ws(struct i2400m *i2400m, struct i2400m_roq *roq,
->  		struct i2400m_roq_data *roq_data;
->  		roq_data = (struct i2400m_roq_data *) &skb->cb;
->  		i2400m_net_erx(i2400m, skb, roq_data->cs);
-> -	} else
-> +	} else {
->  		__i2400m_roq_queue(i2400m, roq, skb, sn, nsn);
-> +	}
+> diff --git a/drivers/staging/octeon/ethernet-mdio.c b/drivers/staging/octeon/ethernet-mdio.c
+> index 0bf545849b11..b0fd083a5bf2 100644
+> --- a/drivers/staging/octeon/ethernet-mdio.c
+> +++ b/drivers/staging/octeon/ethernet-mdio.c
+> @@ -146,9 +146,8 @@ int cvm_oct_phy_setup_device(struct net_device *dev)
+>  		goto no_phy;
 >  
->  	__i2400m_roq_update_ws(i2400m, roq, sn + 1);
->  	i2400m_roq_log_add(i2400m, roq, I2400M_RO_TYPE_PACKET_WS,
-> @@ -1321,9 +1321,10 @@ void i2400m_unknown_barker(struct i2400m *i2400m,
->  			       8, 4, buf, 64, 0);
->  		printk(KERN_ERR "%s... (only first 64 bytes "
->  		       "dumped)\n", prefix);
-> -	} else
-> +	} else {
->  		print_hex_dump(KERN_ERR, prefix, DUMP_PREFIX_OFFSET,
->  			       8, 4, buf, size, 0);
-> +	}
->  }
->  EXPORT_SYMBOL(i2400m_unknown_barker);
+>  	phy_node = of_parse_phandle(priv->of_node, "phy-handle", 0);
+> -	if (!phy_node && of_phy_is_fixed_link(priv->of_node)) {
+> +	if (!phy_node && of_phy_is_fixed_link(priv->of_node))
+>  		phy_node = of_node_get(priv->of_node);
+> -	}
+>  	if (!phy_node)
+>  		goto no_phy;
 >  
-> -- 
-> 2.25.1
-> 
 
-Hi,
-
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+-- 
+Best regards,
+Alexander Sverdlin.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
