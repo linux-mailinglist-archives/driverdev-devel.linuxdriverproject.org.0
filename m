@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02165312916
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 03:55:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6088931291F
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 03:59:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D1B458681C;
-	Mon,  8 Feb 2021 02:55:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A77D1867FC;
+	Mon,  8 Feb 2021 02:59:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p5XVmOBX5bOP; Mon,  8 Feb 2021 02:55:39 +0000 (UTC)
+	with ESMTP id 6muOoT4VPyll; Mon,  8 Feb 2021 02:59:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 50EE98681A;
-	Mon,  8 Feb 2021 02:55:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3356C867F3;
+	Mon,  8 Feb 2021 02:59:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2B39B1BF350
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 02:55:36 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E61A1BF296
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 02:59:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 27AF385683
- for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 02:55:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 74BD886FAA
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 02:59:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AIZzujiY51Fk for <devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 02:55:35 +0000 (UTC)
+ with ESMTP id 17AuQJCf-Hhg for <devel@linuxdriverproject.org>;
+ Mon,  8 Feb 2021 02:59:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f178.google.com (mail-pf1-f178.google.com
- [209.85.210.178])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 75F8285424
- for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 02:55:35 +0000 (UTC)
-Received: by mail-pf1-f178.google.com with SMTP id x136so2214391pfc.2
- for <devel@driverdev.osuosl.org>; Sun, 07 Feb 2021 18:55:35 -0800 (PST)
+Received: from mail-pg1-f175.google.com (mail-pg1-f175.google.com
+ [209.85.215.175])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7E1FD86F9F
+ for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 02:59:18 +0000 (UTC)
+Received: by mail-pg1-f175.google.com with SMTP id j5so475551pgb.11
+ for <devel@driverdev.osuosl.org>; Sun, 07 Feb 2021 18:59:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
  bh=cRQhiF2GEiPjRDo8n2Y99tRPesoEHMgxfbNm4llEXVw=;
- b=YvzighEBZPgRI0+B7YbURV5Uei8SR77KtaA/mEz3JnyIBexL5pWA/HLsYS8WPNrn+1
- CSipSRXJueQVKSi1n0XJOZ4PoT7vRsE2/RsWCJ3EyEjvL9G/437TCXNc1VKwnvpfTylp
- ETH7oezyngV3YIS2XZS340OmzVvSLAZN+lXU/sQSY4jEDzr/xHst7yebuT569oxO5gPP
- LiRDroRXK2sgmKQM1xKeK6xhpvmUahg3aX4UZyYl2Rvr6a5MZfu5afnmHfVvhdkwAtpE
- ASiepLulkJpcz74/ivCaR74dkalFhpMCBJtKSROvrCU6JHh8zBCZZ4Rmxzj1yN0n6YLD
- nDTA==
+ b=ZBxi0jfUIhrsQXwB+yZwsKCq0/6iEdKrbrqkHslqKUDwz4/m10VgN3iVG1Au07HaAp
+ VTC7v3N6uU3kpYq0mUdNFOlLxGCua1nntBZ12IV5IV5HLzhHSKeHELfjBESZw5EU70k5
+ nB1pOXIZ1wcFLYkI1Bvqc/1xq2xZ70Xlid4vXSAj4scoVuP39twAi+V0O3YVFjNXKYSL
+ f/U/kOWNbRmLD6HYTBILIqXaEFGnJKX/NvsTWqM7LY1q++g9t98ktW8pOGhIk8qb4W5q
+ LQ+myPID6th6Mf5wCW258ua8MV06aFFVEIxsw3r/0m1vtpa8RCVa0KTbMgCzdevv8g+i
+ 4aiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
  bh=cRQhiF2GEiPjRDo8n2Y99tRPesoEHMgxfbNm4llEXVw=;
- b=g9OYvzS4+YQNPBTgVrzP1ukFaEO++cIh32qrWQ76HZc25/irxKavW96JJFqaOFmJOG
- Yt3UXwDEtAcc4T2vVLdnaRY6i2GlHZNrGLOEKJOvb62usA/Xqje2r3cwd8Lqf+IsWGvQ
- 2/MRP1oMaPj5yU36vtzkZS3wlTSruMV+NSBbUOQ12pIDGcqofFNgYFm6w6YUB2I6AK6/
- UJFxKLEwhOlEjabMKFimulFFkJWDgmBOj9VvH+HLzQE+X1SSoLHvhEFIy0lzbv5GCtCs
- plLNmCse4IhxNaVzjr/A7ccGiZVg6NL/m4GffjotKQnu0mCGrve6m4b49UFM+exN2XVb
- jxnQ==
-X-Gm-Message-State: AOAM530lbQRwfxpoDv181TJU3Lo00TNAGtSA+1Fd8FRCr11QhmgVTFis
- MkrqGWirzr5KoI7F7Fjc2UE=
-X-Google-Smtp-Source: ABdhPJxlyrOhirfCn4YYSv0rzIFzBuoTySDyB8uyOX7zJBXiw4W9hm42DYdBV+Uwg7TuLHRfa4iDAA==
-X-Received: by 2002:a63:70f:: with SMTP id 15mr14818934pgh.250.1612752934934; 
- Sun, 07 Feb 2021 18:55:34 -0800 (PST)
+ b=ks28MrQ2awThkBxHvjw9LDpRG542yofDre4MZ/sjtBsr+kLnO+xpP74oCG89P9JsiN
+ h80Z6fnKnTBz/RMsJATGHEkZJ+Q4o1ETnI6AwzpQExUaFa7Jh9RuORbnCkTe/3/Pofno
+ LVDH5Eu1AQ4mnCLkV2zeBRoolGtJC3eEPNmk8LYgfTQUuRyORonWM3s3C6MkyCHZzBKb
+ E28zi3DwGIqs+pKEB1B4f2ruETZlN+jGbLYPfUO101lMgNDdQsRO6BCojz5P10/WMh2G
+ wEYf3xzUcDFhwes6XZRx0LXsZ73ry5WJKq6vLFLeeMLfQl4XaXG7xPJ1Aa+0tWKs75mH
+ j8gg==
+X-Gm-Message-State: AOAM530TZpusqlan5BqVLZtBe5iNcWV/g/y5YmV+IzTT6lzGDpvE5QdT
+ aEvsr42lDwivGgdCg3+GFb4=
+X-Google-Smtp-Source: ABdhPJyrDYjBkjTNMd70wDRpdhsIwHFFGtWhjpLo2ind8f7JKNWyosISjnIKosY0HPto1BKdirpH2w==
+X-Received: by 2002:a63:d446:: with SMTP id i6mr15123872pgj.446.1612753158006; 
+ Sun, 07 Feb 2021 18:59:18 -0800 (PST)
 Received: from mahak-Inspiron-7570 ([103.153.208.42])
- by smtp.gmail.com with ESMTPSA id w13sm16759704pfc.7.2021.02.07.18.55.33
+ by smtp.gmail.com with ESMTPSA id v19sm13875984pjh.37.2021.02.07.18.59.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 18:55:34 -0800 (PST)
+ Sun, 07 Feb 2021 18:59:17 -0800 (PST)
 From: Mahak Gupta <gmahak1@gmail.com>
 To: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
  gregkh@linuxfoundation.org, rcy@google.com, benchan@chromium.org,
  toddpoynor@google.com, rspringer@google.com
-Subject: [PATCH] staging: gasket: fix indentation and lines ending with open
- parenthesis
-Date: Mon,  8 Feb 2021 08:25:08 +0530
-Message-Id: <20210208025508.25714-1-gmahak1@gmail.com>
+Subject: [PATCH v2] staging: gasket: fix indentation and lines ending with
+ open parenthesis
+Date: Mon,  8 Feb 2021 08:29:04 +0530
+Message-Id: <20210208025904.25928-1-gmahak1@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
