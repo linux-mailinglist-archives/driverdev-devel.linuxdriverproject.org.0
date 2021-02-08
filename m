@@ -1,44 +1,39 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42CA0312D8D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 10:42:48 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 214EA312D8E
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Feb 2021 10:42:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E040D8685D;
+	by silver.osuosl.org (Postfix) with ESMTP id B0F6120488;
 	Mon,  8 Feb 2021 09:42:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B2xAnkCqubAq; Mon,  8 Feb 2021 09:42:46 +0000 (UTC)
+	with ESMTP id ESZy3Dyb1xSN; Mon,  8 Feb 2021 09:42:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 33013867F4;
-	Mon,  8 Feb 2021 09:42:46 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 2919A20424;
+	Mon,  8 Feb 2021 09:42:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 029B91BF96B
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 09:42:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CA5871BF3D2
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 09:42:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F27E684D9A
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 09:42:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C6FC584E49
+ for <devel@linuxdriverproject.org>; Mon,  8 Feb 2021 09:42:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t9Qh0-UKpr2Z
- for <driverdev-devel@linuxdriverproject.org>;
+ with ESMTP id QXWtvUzPmj2i for <devel@linuxdriverproject.org>;
  Mon,  8 Feb 2021 09:42:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
- [209.85.128.51])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BDE7684CC2
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Feb 2021 09:42:38 +0000 (UTC)
-Received: by mail-wm1-f51.google.com with SMTP id f16so11949520wmq.5
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 08 Feb 2021 01:42:38 -0800 (PST)
+Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com
+ [209.85.128.52])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BC2A084BDF
+ for <devel@driverdev.osuosl.org>; Mon,  8 Feb 2021 09:42:38 +0000 (UTC)
+Received: by mail-wm1-f52.google.com with SMTP id f16so11949513wmq.5
+ for <devel@driverdev.osuosl.org>; Mon, 08 Feb 2021 01:42:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:reply-to:from:date:message-id:subject:to;
  bh=z7Z/JdX0RhrlgqchmamXWMY47TIIKUp5Zm0+e0J1lMs=;
@@ -53,14 +48,14 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
  bh=z7Z/JdX0RhrlgqchmamXWMY47TIIKUp5Zm0+e0J1lMs=;
- b=bgVyzp0FFbcDW+SiBb77FFOljXXzLMD8h3vaSm9Tb0MiPppX2UGAvSLLCkWFSdf6tT
- W36AMe8ffwkSRYQihiCpSrZOqPpRg2M/Ud2E8prZ1PfOoB60fgtlPEje5l/dbVE4z/v3
- JHc2EITpxAsrUrzJktZaa+iY5ZkZHOULVAXGU/8HoEbMngeAgsQEcq4/rqBCMCkMpKrO
- X2jrwDE8JQ4CFSp+AjkDLTcawaKReUYJ40p41I1g14xzWKthMWeyoRud4zHKp0qDzIyx
- sEKfzI2uPlFeJ0lacot0lUBzhRuw16vIAkWzKMN/psndJwd1RxCfVLO5WaqLx2k+sUp8
- IMgw==
-X-Gm-Message-State: AOAM530bC5TSMQBjJvkiVkx/xh8CxJcnq+iYzptSrPGGzyLmLO/njkVT
- Nt+quyPOyTzNyIW8WK13ky04nAjAkafsz8378KE=
+ b=ILiDmf+dv60a2uzuk9wDMfcthy+ThOmi0T+J3H6aYOcoL8MU+Xa2eixRWrqKTjzPeo
+ gotFxcI0Mn0G84inFXn2VzZ9wRmVothlUq3AxxJhSCi1YaTscjKMrkeBCn/CPI/CZvdN
+ sBDROcvuQXUjCjwQ6B4zl7GF1IlFGjGpWSiesrFTupRAwxlZscsLlToCta6dCZSmuvD/
+ PXVMvzyBJF8TGldx6KrFB/+Ix8Eo1mhDR5sJAIPKuOXlehZ+wHpaRzwWIJ5WOF5maveE
+ 39P2CuKOmFvnxEnSnvp1UpnKkM/ksG09WHDgT01YuFbevSlMWrun4H9B7nS0rDw/vqei
+ RFiw==
+X-Gm-Message-State: AOAM532QwUdMbfQWq2djHh4CjukDh/hDiG/b55KHQqee0+HHA9OHYSM9
+ xyRddZxVW7GYxdIdIU+85L+OW38ShVvvAIJpJEw=
 X-Google-Smtp-Source: ABdhPJwHXjBFfHh6GUHeSU0pS6GtSZpKhr6izt183GE0wZjCV6ME1xUoXdYKmZ/WPvLMD4eEH2XCy/rVnbB+arEBSEo=
 X-Received: by 2002:a05:600c:3510:: with SMTP id
  h16mr13633566wmq.156.1612777357169; 
