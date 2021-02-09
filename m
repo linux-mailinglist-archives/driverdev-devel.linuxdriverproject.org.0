@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 347CB315140
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 15:11:04 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 89FBF31521C
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 15:54:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E662887342;
-	Tue,  9 Feb 2021 14:11:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DD05F86A01;
+	Tue,  9 Feb 2021 14:54:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ld3W6daxO46z; Tue,  9 Feb 2021 14:11:01 +0000 (UTC)
+	with ESMTP id A9fGn7ANhjTK; Tue,  9 Feb 2021 14:54:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 68C1587290;
-	Tue,  9 Feb 2021 14:11:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5EBB85F6D;
+	Tue,  9 Feb 2021 14:54:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A2F221BF3E5
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 14:10:58 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A7BA11BF3E5
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 14:54:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9DAAC8729E
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 14:10:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9656B6F53F
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 14:54:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PaFhr9i7O7YO for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 14:10:58 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
- [209.85.128.51])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C017387290
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 14:10:57 +0000 (UTC)
-Received: by mail-wm1-f51.google.com with SMTP id m1so3612299wml.2
- for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 06:10:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1YtW-weVQG3s for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 14:54:39 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id D6DBB6F545; Tue,  9 Feb 2021 14:54:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com
+ [209.85.216.41])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BC82F6F53F
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 14:54:38 +0000 (UTC)
+Received: by mail-pj1-f41.google.com with SMTP id z9so1780728pjl.5
+ for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 06:54:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=DfSxnDPOrIUn/HEZGYbaIQRBPrxMTgYuKgiiI2/TE/Q=;
- b=InGYPcFmDfAAcGsK5hS1o03zp9pfkUSJCwwxaGZZnUe9b+/hyS6sRwowut59cNAMqE
- 0N0fS5PdrlZv7DbzJK/yLBCVYsmAnJdoxEv8Vww4croVaZUXwSBESUWVT+dEvfSZd6AO
- M85H/fWUYtbX8u2G5L5p44aoPUgEfO0+SNhQG17Av98oQ+z++ophkCTp+rELD3DFQ/Ap
- UA10oZ3cxnK3QSZthW1TDyo3SH1KhYUtH9ppOmPUqDzmwdKiyEox9yfrfg8qL7zOsosU
- Jf1CkcNhkkVCWp0t/itxgXtr7P8hADQ+XqVxgQVpgNx7X+Dosym/J5zUQ7N9j7AEKs4H
- K1Fw==
+ bh=KsFPmTIeHm7DtYVfmhESnu0dmNeWI5KMqfpQCLa5iyM=;
+ b=c0UCx2hpMuMRuWZw0veFTmfeYTp9GcEPe41wCtVLRucXalJm2ayodh4x6gaRR/xJkm
+ a3fq863JBv3+GLa1/utbL3s4/16clhaAxE+uHQTdDE6ie9pnasbiQfNXqM+m2tF1jL/a
+ /EthGW58r+LVspVgjDAnjwfLVBjb97mEHiZOKZkUGxhucN5eTKUhIFMO+nbJ52/NG9vT
+ 9GvCX9BxkZy8xql8JAngqhJseaAbBodVm9CsME8aiUb2hlQApmldx/Z6bh2Cw5B08cmj
+ RkFph55uISoFpfubzPWGsHsHF/8brFKX9qqqG7RDqcRNqNYQMHrVbzr4EjZCaHvw1f5p
+ Ei7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=DfSxnDPOrIUn/HEZGYbaIQRBPrxMTgYuKgiiI2/TE/Q=;
- b=TabRx436ffJy8QgKVxiwSTLfjimaz3/Dta6ddg51u1AohixNNZDBc9cCFEyLgw1/Rz
- 3AO3cRW/JUzlD/UCUbTwpfYO2C8GbY3b+Ys2vqpC3h9sMpuD8eCV/DpMyl2ITxFSZh2P
- zAEcOEXhSscbQ8VPI9YpdBjSCf4Dy1DjpLFcbklRxIB5KZovXwX2WqMWdN3y2JxzFh1l
- nUnB0YFT/fQC5/e381M/4iOR82h2nz0cHa3Pn5qqauoa1EiZynDGeXUxqcjrj/M6064x
- 6rA4hk+owqkyN1mTAQaQOdWI8u6k2f2JRow9b+tmiM2lDoVPXn6xePfaruuw4jYVjkcG
- nPnA==
-X-Gm-Message-State: AOAM533HmsvYYm1+tULu1+y0pvZle3+SkFYK6TdS3hFMiosIoSOotXe1
- keE9ODyQQdD6BQzXNZ6lMjGG+g==
-X-Google-Smtp-Source: ABdhPJy/onNmAvIvp0kgs2Fa63R01Dh05mS6q/CTgKfnQyFVLGOy/NHfhJa3xA3lQZdMfoXFpOvI6Q==
-X-Received: by 2002:a1c:1fca:: with SMTP id f193mr3685023wmf.102.1612879855283; 
- Tue, 09 Feb 2021 06:10:55 -0800 (PST)
-Received: from localhost.localdomain
- (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
- [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
- by smtp.gmail.com with ESMTPSA id a84sm4443695wme.12.2021.02.09.06.10.53
+ bh=KsFPmTIeHm7DtYVfmhESnu0dmNeWI5KMqfpQCLa5iyM=;
+ b=XXe1jjmzVLRzna5p/jgfAY12AqgiFEGzs6x88+j2hM8HkK54XYhLa7Z/LhxtHfmy2L
+ TKANuEZlHQU23KMUO9vYUd/q5KobV/cWXjhSgENUxH94a+yBE/MdhMnSi1CtywUVkKE9
+ +p/iQdaAYBuTcW1HE29yMLVW0H49xfOlL51twCAXU2+tvFVIq9YUdufO73/h2oTOEtRE
+ 6bgmCXHe3VUov68XcSNgSAoaVvQMs6oxVicu3mvEURNSrRqeQTu5TcFpxDIrBGU3g7hH
+ 3YbLKU8MCg+RlVTYCJlQR9HnfAlxS7Khjky4yNlgYF4oJRSTb3JJdzw3K/czTY9RhnJP
+ /miw==
+X-Gm-Message-State: AOAM530dXGRUkPoI8yLHH1/Qzq8GYvH+ZZJLL9+f0Noh8pHBzoaEIReG
+ d1Klka0a+/mF/kT4difQ8cMstxDN47I=
+X-Google-Smtp-Source: ABdhPJxV86a/ldtHrtX1gHDG2mnkJoZqklMH4sbHBhbkJY7FNHpM9sW6HMLw9uUsOHofh5tY4/ZGNA==
+X-Received: by 2002:a17:902:e812:b029:de:5af2:3d09 with SMTP id
+ u18-20020a170902e812b02900de5af23d09mr21645098plg.33.1612882477400; 
+ Tue, 09 Feb 2021 06:54:37 -0800 (PST)
+Received: from localhost.localdomain ([103.200.106.135])
+ by smtp.googlemail.com with ESMTPSA id e23sm8878798pfd.145.2021.02.09.06.54.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 06:10:54 -0800 (PST)
-From: Phillip Potter <phil@philpotter.co.uk>
+ Tue, 09 Feb 2021 06:54:36 -0800 (PST)
+From: ameynarkhede03@gmail.com
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: remove typedefs from rtl8723b_recv.h
-Date: Tue,  9 Feb 2021 14:10:51 +0000
-Message-Id: <20210209141051.4739-1-phil@philpotter.co.uk>
-X-Mailer: git-send-email 2.29.2
+Subject: [PATCH] staging: gdm724x: Fix DMA from stack
+Date: Tue,  9 Feb 2021 20:24:15 +0530
+Message-Id: <20210209145415.29609-1-ameynarkhede03@gmail.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,74 +86,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, romain.perier@gmail.com, insafonov@gmail.com,
- foxhlchen@gmail.com, linux-kernel@vger.kernel.org, singhalsimran0@gmail.com,
- apais@linux.microsoft.com
+Cc: devel@driverdev.osuosl.org, Amey Narkhede <ameynarkhede03@gmail.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove typedefs from include/rtl8723b_recv.h and convert one usage in
-hal/rtl8723bs_recv.c to use the actual structure name in its pointer
-declaration. Fixes two checkpatch warnings.
+From: Amey Narkhede <ameynarkhede03@gmail.com>
 
-Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
+Stack allocated buffers cannot be used for DMA
+on all architectures so allocate usbdev buffer
+using kmalloc().
+
+Signed-off-by: Amey Narkhede <ameynarkhede03@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c    | 2 +-
- drivers/staging/rtl8723bs/include/rtl8723b_recv.h | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/gdm724x/gdm_usb.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-index 1fbf89cb72d0..2d15a5f7648d 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-@@ -24,7 +24,7 @@ static void update_recvframe_attrib(struct adapter *padapter,
+diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
+index dc4da66c3..50dc463d4 100644
+--- a/drivers/staging/gdm724x/gdm_usb.c
++++ b/drivers/staging/gdm724x/gdm_usb.c
+@@ -56,7 +56,7 @@ static int gdm_usb_recv(void *priv_dev,
+
+ static int request_mac_address(struct lte_udev *udev)
  {
- 	struct rx_pkt_attrib *pattrib;
- 	struct recv_stat report;
--	PRXREPORT prxreport = (PRXREPORT)&report;
-+	struct rxreport_8723b *prxreport = (struct rxreport_8723b *)&report;
- 
- 	report.rxdw0 = prxstat->rxdw0;
- 	report.rxdw1 = prxstat->rxdw1;
-diff --git a/drivers/staging/rtl8723bs/include/rtl8723b_recv.h b/drivers/staging/rtl8723bs/include/rtl8723b_recv.h
-index fad6749af768..60a1df703c8e 100644
---- a/drivers/staging/rtl8723bs/include/rtl8723b_recv.h
-+++ b/drivers/staging/rtl8723bs/include/rtl8723b_recv.h
-@@ -9,7 +9,7 @@
- 
- #include <rtl8192c_recv.h>
- 
--typedef struct rxreport_8723b {
-+struct rxreport_8723b {
- 	/* DWORD 0 */
- 	u32 pktlen:14;
- 	u32 crc32:1;
-@@ -79,9 +79,9 @@ typedef struct rxreport_8723b {
- 
- 	/* DWORD 5 */
- 	u32 tsfl;
--} RXREPORT, *PRXREPORT;
-+};
- 
--typedef struct phystatus_8723b {
-+struct phystatus_8723b {
- 	u32 rxgain_a:7;
- 	u32 trsw_a:1;
- 	u32 rxgain_b:7;
-@@ -123,7 +123,7 @@ typedef struct phystatus_8723b {
- 	u32 anttrainen:1;
- 	u32 antselb:1;
- 	u32 antsel:1;
--} PHYSTATUS, *PPHYSTATUS;
-+};
- 
- s32 rtl8723bs_init_recv_priv(struct adapter *padapter);
- void rtl8723bs_free_recv_priv(struct adapter *padapter);
--- 
-2.29.2
+-	u8 buf[16] = {0,};
++	u8 *buf;
+ 	struct hci_packet *hci = (struct hci_packet *)buf;
+ 	struct usb_device *usbdev = udev->usbdev;
+ 	int actual;
+@@ -66,6 +66,10 @@ static int request_mac_address(struct lte_udev *udev)
+ 	hci->len = gdm_cpu_to_dev16(udev->gdm_ed, 1);
+ 	hci->data[0] = MAC_ADDRESS;
 
++	buf = kmalloc(16, GFP_KERNEL);
++	if (!buf)
++		return -ENOMEM;
++
+ 	ret = usb_bulk_msg(usbdev, usb_sndbulkpipe(usbdev, 2), buf, 5,
+ 			   &actual, 1000);
+
+--
+2.30.0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
