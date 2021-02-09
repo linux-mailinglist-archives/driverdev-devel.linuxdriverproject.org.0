@@ -1,54 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42532314876
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 07:09:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12C193148AE
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 07:23:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1A5BC87269;
-	Tue,  9 Feb 2021 06:09:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AA1756F884
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 06:23:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fA1M8k49CkxB; Tue,  9 Feb 2021 06:09:03 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2ynjH0s-1U7J for <lists+driverdev-devel@lfdr.de>;
+	Tue,  9 Feb 2021 06:23:54 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id CB5F56F61E; Tue,  9 Feb 2021 06:23:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58A3F87248;
-	Tue,  9 Feb 2021 06:09:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9D4BF6F675;
+	Tue,  9 Feb 2021 06:23:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 93BBD1BF29D
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 06:09:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 71B411BF29D
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 06:23:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 64CFF86A11
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 06:09:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6DFDB86FB9
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 06:23:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s-Pu1sjf4d1M for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 06:09:01 +0000 (UTC)
+ with ESMTP id 3AyDTrkO-2eK for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 06:23:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D478C8698C
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 06:08:56 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9002F64EB8;
- Tue,  9 Feb 2021 06:08:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612850936;
- bh=7ZFeJoTMAgClPx+EU8W9uRO0tg2vEEeuop17o7Cs8Dw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=xUHDV35uVMGKQ4TNZs5xaMxieWSSyQQmNygNIuoxx/xn3R4dG/ayZE6JOUUQHM5uK
- eYMzNitPjQSYz1Lhx0l01Snvv/acXBAnPWGljl+46rRfHL+BP6B/W0gibrjw3/SKtx
- Bd+gPWGNl9h04FS785HR0A5fPoseMBDkg+Va4r6A=
-Date: Tue, 9 Feb 2021 07:08:53 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Atul Gopinathan <leoatul12@gmail.com>
-Subject: Re: [PATCH] staging: hikey9xx: fix checkpatch error and warning
-Message-ID: <YCIm9e0w06aeOL91@kroah.com>
-References: <20210209055703.7211-1-leoatul12@gmail.com>
+Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com
+ [209.85.210.182])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C92A486F9E
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 06:23:17 +0000 (UTC)
+Received: by mail-pf1-f182.google.com with SMTP id x136so4686629pfc.2
+ for <devel@driverdev.osuosl.org>; Mon, 08 Feb 2021 22:23:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=FwDUrtEdOuIcoL5Igin5mNt9ZMqE9CmodwIOH49NTT4=;
+ b=OGTKaXTfWKQ4mCqdcsKtC4EIf2Txf/VUio5Ke4kxNxNKKud7Y+TrsRWYQd6pAdDq6/
+ F5Z4f+kaxeOGP+QN32WnsQRglJj+r7R0sRNTMBKxtMCD0lVQ1ZP/bF/2v49+3H2CQQQf
+ RL9pydrRIpWoLyMJRcDC7FDfqdl+p47C66OupvFB+Jj474CBod0SvC4/HhtF4iNKz8Fi
+ dq3PKquIbPAFD1BwLXf7f33XGrxLf/dqhjJTiCBEkOa0Oge8beIMBLGJsUZXd8tBPOz3
+ TyqCSiZw6LIGEdvNQ4QdOeLMm8l0qBnhuiFGtaCk3ieJhT9zf2lSVCHkOTcoMhIrhfY+
+ od8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=FwDUrtEdOuIcoL5Igin5mNt9ZMqE9CmodwIOH49NTT4=;
+ b=jgo4mH4UUmkqPMPSvff4ZPAPNJm2B8NhBuFNiioBMLK2mmJ5+UePEgAqjL/CA8D8Xr
+ xepjv1WsXg/XviL8L2JWxwReGju2/u1wN17UwpFuDEHnYkfkHW+F2EsMZfZXc3EggNa+
+ S8957C6U25prY1USrixL+G4nRxk8NP7P39kpDVIjEOj7dhWPYDnZp2Bhe1P4MJbxiXqj
+ 1sLOM7bGRkA3KKLvEzv0LqXBg/DZyHKW6CGd6ViaAsf9RhGFLD0bQ86FACjV7zEbGa6C
+ n6Y7Qo/cEuvPafmmbGOTipFqVTiJsp+jEl38nFW5w8sY6vTTA60C5sCFhyEaMYfVBDZl
+ fPtA==
+X-Gm-Message-State: AOAM531bxHfh/USaUQTV0CfqbawN/cfL0lmnTIJXzYSB1o/3CuDXgu52
+ c3WDNlg5wjl6HjHUa1iiRJ4=
+X-Google-Smtp-Source: ABdhPJzhITGiWlP2fgks0EdEF3lQI6v9gxm3CleZBywzJY16FI4BZswH8uGEQ4VgMB/vuluyPwDXzQ==
+X-Received: by 2002:a65:5b0c:: with SMTP id y12mr21147464pgq.407.1612851797259; 
+ Mon, 08 Feb 2021 22:23:17 -0800 (PST)
+Received: from gmail.com ([2405:201:5c0a:f013:d622:5b80:d6cc:e0d])
+ by smtp.gmail.com with ESMTPSA id k10sm21437409pfk.0.2021.02.08.22.23.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Feb 2021 22:23:16 -0800 (PST)
+Date: Tue, 9 Feb 2021 11:53:11 +0530
+From: Mukul Mehar <mukulmehar02@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH]: drivers: staging: most: Fixed styling issue.
+Message-ID: <20210209062311.GA10016@gmail.com>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="h31gzZEtNLTqOjlF"
 Content-Disposition: inline
-In-Reply-To: <20210209055703.7211-1-leoatul12@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,26 +86,68 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mchehab+huawei@kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 09, 2021 at 11:27:04AM +0530, Atul Gopinathan wrote:
-> Fix the following types of checkpatch error and warning:
-> 
-> ERROR: code indent should use tabs where possible
-> WARNING: struct phy_ops should normally be const
 
-That is 2 different things, which means this should be 2 different
-patches.  Please make this a patch series and resend.
+--h31gzZEtNLTqOjlF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-thanks,
 
-greg k-h
+--h31gzZEtNLTqOjlF
+Content-Type: text/x-diff; charset=us-ascii
+Content-Disposition: attachment; filename="first_patch.patch"
+
+From 29bcaf0066003983da29b1e026b985c0727b091a Mon Sep 17 00:00:00 2001
+From: Mukul Mehar <mukulmehar02@gmail.com>
+Date: Mon, 8 Feb 2021 01:03:06 +0530
+Subject: [PATCH] Drivers: staging: most: sound: Fixed style issue.
+
+This patch fixes a warning, of the line ending with a '(',
+generated by checkpatch.pl.
+
+Signed-off-by: Mukul Mehar <mukulmehar02@gmail.com>
+---
+ drivers/staging/most/sound/sound.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
+index 3a1a59058042..4dd1bf95d1ce 100644
+--- a/drivers/staging/most/sound/sound.c
++++ b/drivers/staging/most/sound/sound.c
+@@ -228,12 +228,12 @@ static int playback_thread(void *data)
+ 		struct mbo *mbo = NULL;
+ 		bool period_elapsed = false;
+ 
+-		wait_event_interruptible(
+-			channel->playback_waitq,
+-			kthread_should_stop() ||
+-			(channel->is_stream_running &&
+-			 (mbo = most_get_mbo(channel->iface, channel->id,
+-					     &comp))));
++		wait_event_interruptible(channel->playback_waitq,
++					 kthread_should_stop() ||
++					 (channel->is_stream_running &&
++					 (mbo = most_get_mbo(channel->iface,
++					 channel->id,
++					 &comp))));
+ 		if (!mbo)
+ 			continue;
+ 
+-- 
+2.25.1
+
+--h31gzZEtNLTqOjlF
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--h31gzZEtNLTqOjlF--
