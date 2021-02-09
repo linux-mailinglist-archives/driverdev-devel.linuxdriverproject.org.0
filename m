@@ -1,93 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEE443155B8
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 19:19:47 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 717FD315655
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 19:53:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CCE178720E;
-	Tue,  9 Feb 2021 18:19:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B5D4861BC;
+	Tue,  9 Feb 2021 18:53:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8v0WHJo76uh4; Tue,  9 Feb 2021 18:19:45 +0000 (UTC)
+	with ESMTP id b-p2ynh4J1SM; Tue,  9 Feb 2021 18:53:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1A3EE871EE;
-	Tue,  9 Feb 2021 18:19:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B67086144;
+	Tue,  9 Feb 2021 18:53:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 802911BF616
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 18:19:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 915451BF616
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 18:53:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7BCE26F5A5
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 18:19:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8D21E86A0D
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 18:53:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9sBl2yqUwuze for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 18:19:42 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id CE1276F5AA; Tue,  9 Feb 2021 18:19:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 99E9A6F5A5
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 18:19:41 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 119IDxjr023448;
- Tue, 9 Feb 2021 18:19:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=mXF2S+84uidYb9ZOFD31+7fdLlCAK8tk/gCYcuBHPpU=;
- b=iIY7aYAYvR+PHO6+Ag3WI0TMXcSNYBvCnLLkq7CUW2b6bRU/r08sKfVQPmhMTh0aMIoe
- /yI0aKJZfrihya3QVhR0pRrvALIPBTJ5NwdziLSwOnISG33nfzjwE1y40QzNysXjlAZr
- Zjui89+o7n11vaLairSDA2xaGRWNbHHS+cBblJKRi4G9dB4AEMjn+EauO4ZTqrrALuLh
- Rgyrm8eyqa/+NQ4Lv9ADOrYDkOlwf0KkCHtcrt0SGRC6iXTS5Lp0PcvvQgVNutVgFAyY
- ApMybUEMpib+B/kyc0fUj8wnlrUhnC1HJUEem5k1w7TEvP3yvh1YS+Uabfk4lCVAxyE4 +Q== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 36hgmagn76-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 09 Feb 2021 18:19:39 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 119IAdC3116880;
- Tue, 9 Feb 2021 18:19:37 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3020.oracle.com with ESMTP id 36j4vrpss6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 09 Feb 2021 18:19:37 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 119IJZeH008693;
- Tue, 9 Feb 2021 18:19:36 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 09 Feb 2021 10:19:35 -0800
-Date: Tue, 9 Feb 2021 21:19:14 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: ameynarkhede03@gmail.com
-Subject: Re: [PATCH] staging: gdm724x: Fix DMA from stack
-Message-ID: <20210209181914.GQ2696@kadam>
-References: <20210209145415.29609-1-ameynarkhede03@gmail.com>
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BqLnUrBjRBTG for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 18:53:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com
+ [209.85.216.44])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6BFD7869C3
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 18:53:22 +0000 (UTC)
+Received: by mail-pj1-f44.google.com with SMTP id cv23so2078325pjb.5
+ for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 10:53:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=3x8SHWviOX06noXl3VoCAEVkKd/3xhRiiOCeeg42KP0=;
+ b=D7gM2sHW5Ob2HmPWOw49KK8keHLdykS812cqzJW4U4/8R8+7x63BjiM0wYMZ/Y/X1G
+ 317QnyKLoZsznGzYOVvLAEubrkFkdhywT3pT9Q+XEPblmtcfNzKMt+bbnQQRFg06skfa
+ xAiIE3Z7ankVPTP6Nr3onYxts327vXqJhb2/LXdzJUkX/wHaqa9uGUO0P/5Hsd41y6ws
+ 9ws9/rwuRfgtG/f1N+LdoGZNK1sJIRLRmj6PsOUEr2nXyE55WRyPrcQ/b/uGnRXEXqoX
+ D8hRhVlPu7zilwHKRepyWN4H1LhjFIhjhXYRHxLzB7yczAGj53qsWpcktPnWfYkLzEYo
+ ixHg==
+X-Gm-Message-State: AOAM5320332dH/NJIM17UZW35LPsi640WlQSZTDty3e1D4J2sdLdWH60
+ iBx9/2kZY5TX14Gj3pN7toQ=
+X-Google-Smtp-Source: ABdhPJwZVdfjNVUGRwkBl370CX/LHOszp4Jlj5KSRT0z7W0XHTPZ0DpFanbL2vGMkHnENEY0dX6P4w==
+X-Received: by 2002:a17:90b:1804:: with SMTP id
+ lw4mr5499762pjb.141.1612896802116; 
+ Tue, 09 Feb 2021 10:53:22 -0800 (PST)
+Received: from karthik-strix-linux.karthek.com ([192.140.154.47])
+ by smtp.gmail.com with ESMTPSA id 18sm3643628pfy.46.2021.02.09.10.53.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Feb 2021 10:53:21 -0800 (PST)
+Date: Wed, 10 Feb 2021 00:23:17 +0530
+From: karthik alapati <mail@karthek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [PATCH] staging: rtl8723bs: fix block comments alignment
+Message-ID: <YCLaHXD/sUKM5HZE@karthik-strix-linux.karthek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210209145415.29609-1-ameynarkhede03@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9890
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- adultscore=0
- mlxlogscore=999 mlxscore=0 suspectscore=0 malwarescore=0 phishscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102090087
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9890
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- spamscore=0 lowpriorityscore=0 phishscore=0 adultscore=0 impostorscore=0
- suspectscore=0 mlxscore=0 clxscore=1011 mlxlogscore=999 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102090087
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,54 +75,285 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 09, 2021 at 08:24:15PM +0530, ameynarkhede03@gmail.com wrote:
-> From: Amey Narkhede <ameynarkhede03@gmail.com>
-> 
-> Stack allocated buffers cannot be used for DMA
-> on all architectures so allocate usbdev buffer
-> using kmalloc().
-> 
-> Signed-off-by: Amey Narkhede <ameynarkhede03@gmail.com>
-> ---
->  drivers/staging/gdm724x/gdm_usb.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
-> index dc4da66c3..50dc463d4 100644
-> --- a/drivers/staging/gdm724x/gdm_usb.c
-> +++ b/drivers/staging/gdm724x/gdm_usb.c
-> @@ -56,7 +56,7 @@ static int gdm_usb_recv(void *priv_dev,
-> 
->  static int request_mac_address(struct lte_udev *udev)
->  {
-> -	u8 buf[16] = {0,};
-> +	u8 *buf;
->  	struct hci_packet *hci = (struct hci_packet *)buf;
->  	struct usb_device *usbdev = udev->usbdev;
->  	int actual;
-> @@ -66,6 +66,10 @@ static int request_mac_address(struct lte_udev *udev)
->  	hci->len = gdm_cpu_to_dev16(udev->gdm_ed, 1);
->  	hci->data[0] = MAC_ADDRESS;
-> 
-> +	buf = kmalloc(16, GFP_KERNEL);
-> +	if (!buf)
-> +		return -ENOMEM;
-> +
->  	ret = usb_bulk_msg(usbdev, usb_sndbulkpipe(usbdev, 2), buf, 5,
->  			   &actual, 1000);
+fix checkpatch.pl warning for "block comments should align the * on each line"
 
+Signed-off-by: karthik alapati <mail@karthek.com>
+---
+ .../staging/rtl8723bs/hal/rtl8723b_phycfg.c   | 204 +++++++++---------
+ 1 file changed, 102 insertions(+), 102 deletions(-)
 
-You need to add a kfree() as well.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
+index cf23414d7..003f954c2 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
+@@ -20,16 +20,16 @@
+ #define MAX_DOZE_WAITING_TIMES_9x 64
+ 
+ /**
+-* Function:	phy_CalculateBitShift
+-*
+-* OverView:	Get shifted position of the BitMask
+-*
+-* Input:
+-*		u32 	BitMask,
+-*
+-* Output:	none
+-* Return:		u32 	Return the shift bit bit position of the mask
+-*/
++ * Function:	phy_CalculateBitShift
++ *
++ * OverView:	Get shifted position of the BitMask
++ *
++ * Input:
++ *		u32 	BitMask,
++ *
++ * Output:	none
++ * Return:		u32 	Return the shift bit bit position of the mask
++ */
+ static	u32 phy_CalculateBitShift(u32 BitMask)
+ {
+ 	u32 i;
+@@ -43,19 +43,19 @@ static	u32 phy_CalculateBitShift(u32 BitMask)
+ 
+ 
+ /**
+-* Function:	PHY_QueryBBReg
+-*
+-* OverView:	Read "specific bits" from BB register
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		u32 		RegAddr,	The target address to be readback
+-*		u32 		BitMask		The target bit position in the target address
+-*							to be readback
+-* Output:	None
+-* Return:		u32 		Data		The readback register value
+-* Note:		This function is equal to "GetRegSetting" in PHY programming guide
+-*/
++ * Function:	PHY_QueryBBReg
++ *
++ * OverView:	Read "specific bits" from BB register
++ *
++ * Input:
++ *		struct adapter *	Adapter,
++ *		u32 		RegAddr,	The target address to be readback
++ *		u32 		BitMask		The target bit position in the target address
++ *							to be readback
++ * Output:	None
++ * Return:		u32 		Data		The readback register value
++ * Note:		This function is equal to "GetRegSetting" in PHY programming guide
++ */
+ u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask)
+ {
+ 	u32 OriginalValue, BitShift;
+@@ -75,22 +75,22 @@ u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask)
+ 
+ 
+ /**
+-* Function:	PHY_SetBBReg
+-*
+-* OverView:	Write "Specific bits" to BB register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		u32 		RegAddr,	The target address to be modified
+-*		u32 		BitMask		The target bit position in the target address
+-*								to be modified
+-*		u32 		Data		The new register value in the target bit position
+-*								of the target address
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		This function is equal to "PutRegSetting" in PHY programming guide
+-*/
++ * Function:	PHY_SetBBReg
++ *
++ * OverView:	Write "Specific bits" to BB register (page 8~)
++ *
++ * Input:
++ *		struct adapter *	Adapter,
++ *		u32 		RegAddr,	The target address to be modified
++ *		u32 		BitMask		The target bit position in the target address
++ *								to be modified
++ *		u32 		Data		The new register value in the target bit position
++ *								of the target address
++ *
++ * Output:	None
++ * Return:		None
++ * Note:		This function is equal to "PutRegSetting" in PHY programming guide
++ */
+ 
+ void PHY_SetBBReg_8723B(
+ 	struct adapter *Adapter,
+@@ -184,25 +184,25 @@ static u32 phy_RFSerialRead_8723B(
+ }
+ 
+ /**
+-* Function:	phy_RFSerialWrite_8723B
+-*
+-* OverView:	Write data to RF register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		RF_PATH			eRFPath,	Radio path of A/B/C/D
+-*		u32 		Offset,		The target address to be read
+-*		u32 		Data		The new register Data in the target bit position
+-*								of the target to be read
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		Threre are three types of serial operations:
+-*		1. Software serial write
+-*		2. Hardware LSSI-Low Speed Serial Interface
+-*		3. Hardware HSSI-High speed
+-*		serial write. Driver need to implement (1) and (2).
+-*		This function is equal to the combination of RF_ReadReg() and  RFLSSIRead()
++ * Function:	phy_RFSerialWrite_8723B
++ *
++ * OverView:	Write data to RF register (page 8~)
++ *
++ * Input:
++ *		struct adapter *	Adapter,
++ *		RF_PATH			eRFPath,	Radio path of A/B/C/D
++ *		u32 		Offset,		The target address to be read
++ *		u32 		Data		The new register Data in the target bit position
++ *								of the target to be read
++ *
++ * Output:	None
++ * Return:		None
++ * Note:		Threre are three types of serial operations:
++ *		1. Software serial write
++ *		2. Hardware LSSI-Low Speed Serial Interface
++ *		3. Hardware HSSI-High speed
++ *		serial write. Driver need to implement (1) and (2).
++ *		This function is equal to the combination of RF_ReadReg() and  RFLSSIRead()
+  *
+  * Note:		  For RF8256 only
+  *		 The total count of RTL8256(Zebra4) register is around 36 bit it only employs
+@@ -225,7 +225,7 @@ static u32 phy_RFSerialRead_8723B(
+  *
+  *
+  *
+-*/
++ */
+ static void phy_RFSerialWrite_8723B(
+ 	struct adapter *Adapter,
+ 	enum RF_PATH eRFPath,
+@@ -261,21 +261,21 @@ static void phy_RFSerialWrite_8723B(
+ 
+ 
+ /**
+-* Function:	PHY_QueryRFReg
+-*
+-* OverView:	Query "Specific bits" to RF register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		RF_PATH			eRFPath,	Radio path of A/B/C/D
+-*		u32 		RegAddr,	The target address to be read
+-*		u32 		BitMask		The target bit position in the target address
+-*								to be read
+-*
+-* Output:	None
+-* Return:		u32 		Readback value
+-* Note:		This function is equal to "GetRFRegSetting" in PHY programming guide
+-*/
++ * Function:	PHY_QueryRFReg
++ *
++ * OverView:	Query "Specific bits" to RF register (page 8~)
++ *
++ * Input:
++ *		struct adapter *	Adapter,
++ *		RF_PATH			eRFPath,	Radio path of A/B/C/D
++ *		u32 		RegAddr,	The target address to be read
++ *		u32 		BitMask		The target bit position in the target address
++ *								to be read
++ *
++ * Output:	None
++ * Return:		u32 		Readback value
++ * Note:		This function is equal to "GetRFRegSetting" in PHY programming guide
++ */
+ u32 PHY_QueryRFReg_8723B(
+ 	struct adapter *Adapter,
+ 	u8 eRFPath,
+@@ -296,23 +296,23 @@ u32 PHY_QueryRFReg_8723B(
+ }
+ 
+ /**
+-* Function:	PHY_SetRFReg
+-*
+-* OverView:	Write "Specific bits" to RF register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		RF_PATH			eRFPath,	Radio path of A/B/C/D
+-*		u32 		RegAddr,	The target address to be modified
+-*		u32 		BitMask		The target bit position in the target address
+-*								to be modified
+-*		u32 		Data		The new register Data in the target bit position
+-*								of the target address
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		This function is equal to "PutRFRegSetting" in PHY programming guide
+-*/
++ * Function:	PHY_SetRFReg
++ *
++ * OverView:	Write "Specific bits" to RF register (page 8~)
++ *
++ * Input:
++ *		struct adapter *	Adapter,
++ *		RF_PATH			eRFPath,	Radio path of A/B/C/D
++ *		u32 		RegAddr,	The target address to be modified
++ *		u32 		BitMask		The target bit position in the target address
++ *								to be modified
++ *		u32 		Data		The new register Data in the target bit position
++ *								of the target address
++ *
++ * Output:	None
++ * Return:		None
++ * Note:		This function is equal to "PutRFRegSetting" in PHY programming guide
++ */
+ void PHY_SetRFReg_8723B(
+ 	struct adapter *Adapter,
+ 	u8 eRFPath,
+@@ -369,17 +369,17 @@ s32 PHY_MACConfig8723B(struct adapter *Adapter)
+ }
+ 
+ /**
+-* Function:	phy_InitBBRFRegisterDefinition
+-*
+-* OverView:	Initialize Register definition offset for Radio Path A/B/C/D
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		The initialization value is constant and it should never be changes
+-*/
++ * Function:	phy_InitBBRFRegisterDefinition
++ *
++ * OverView:	Initialize Register definition offset for Radio Path A/B/C/D
++ *
++ * Input:
++ *		struct adapter *	Adapter,
++ *
++ * Output:	None
++ * Return:		None
++ * Note:		The initialization value is constant and it should never be changes
++ */
+ static void phy_InitBBRFRegisterDefinition(struct adapter *Adapter)
+ {
+ 	struct hal_com_data		*pHalData = GET_HAL_DATA(Adapter);
+-- 
+2.30.0
 
 _______________________________________________
 devel mailing list
