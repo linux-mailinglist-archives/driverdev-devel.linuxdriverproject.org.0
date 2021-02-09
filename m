@@ -2,73 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E89E314506
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 01:43:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D920D31457E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 02:18:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 882FD86191;
-	Tue,  9 Feb 2021 00:43:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 090E986204;
+	Tue,  9 Feb 2021 01:18:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VnnBwQu8BeBp; Tue,  9 Feb 2021 00:43:19 +0000 (UTC)
+	with ESMTP id GGzkrDas0gcO; Tue,  9 Feb 2021 01:18:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4973B86135;
-	Tue,  9 Feb 2021 00:43:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 220808618D;
+	Tue,  9 Feb 2021 01:18:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2E7A51BF977
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 00:43:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C76AA1BF31D
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 01:18:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2B20C86135
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 00:43:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C413E87338
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 01:18:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DpDd-2Ke2Y8A for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 00:43:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yb1-f175.google.com (mail-yb1-f175.google.com
- [209.85.219.175])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B5AA286132
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 00:43:14 +0000 (UTC)
-Received: by mail-yb1-f175.google.com with SMTP id v123so16421860yba.13
- for <devel@driverdev.osuosl.org>; Mon, 08 Feb 2021 16:43:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=RchYhSnUH4D8ir65x6OKK1yxktPnAGhcFCbackPivPM=;
- b=HJm923hcZrf0dfNmclH0lcXqxIyFCnn3UQzdchco8/ZeNO+ScgmLlPbEBW2g4tH+ub
- 9BIKiS6ReP0qT56QTrC54AzlplOnIhBrMQXptF69K4nkjy+VOqJYDWz44Cv6c/sIwDU8
- BQ5C3N3m7oGg+9MDUjBJEN+sVoRkJACuDB4PGlMTtibFwTGArOUw3eqY8WHtSvWWP2uK
- vyuK3IC7WdT6EGfOn0cCbFEkQ9u2pywygxDhx08lgMrRIK11M27m5rng7zRLfmMdQ0Jy
- +dHn7zJ4eZLMWsVdd9WpauMc0qfGyGVVjxQG52LSSscCluvh+XnyTLgtQX4dJZy+aunq
- i4Lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=RchYhSnUH4D8ir65x6OKK1yxktPnAGhcFCbackPivPM=;
- b=beqEFKbpfyXtnC9K6EDNCP0AF+AwOxhPKqcmlwn3OuJAMgn8c7KBpBl5bxparhokKO
- bvYaWC50YQ9APunzPl5e10RFkWljyvSzJj/FzlG0UKvlgiiRa9DeWPIWlPMRT0itx5/U
- hgC+jOrtOI4dZJP+lBq3YFdQgyFYGOA1QPWux/uTwjma6eLBa4ADQqhbZTTgI8IeHR0W
- BRNLh8erlePotYIHzbZRZgBH8lla6f+8psjijrFhB+tdfubNVy2gK3RSHqLOjKY5ruc6
- yQRlVKEfcNTptDdn5F+F6QMPt0OoaZdO/d99c+xF3MR7ZzE/UsPxU3wjrCtegZ10yZva
- 4kmA==
-X-Gm-Message-State: AOAM530dmHMgWasokKbI16XkRM+lUTA1D25IoQm0gKv25TWiFuJIs1Kd
- OJJWHwD9BJjNaIpwaH3lwpzBjQrVP3Ubh0aSUF4=
-X-Google-Smtp-Source: ABdhPJxG5LKbrsvPTLHLSTJPoOWI3qUUtr0X3kNxbX99P4ZDRMX4QYhlFvcO+S8NJnl5o9Sx7b4Fg8k/qHR4JHt39tk=
-X-Received: by 2002:a05:6902:706:: with SMTP id
- k6mr28980167ybt.52.1612831393828; 
- Mon, 08 Feb 2021 16:43:13 -0800 (PST)
+ with ESMTP id OmN0+agak6uK for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 01:18:07 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from loongson.cn (mail.loongson.cn [114.242.206.163])
+ by whitealder.osuosl.org (Postfix) with ESMTP id D2BFE8731F
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 01:18:06 +0000 (UTC)
+Received: from [10.130.0.193] (unknown [113.200.148.30])
+ by mail.loongson.cn (Coremail) with SMTP id AQAAf9Dx7_LK4iFgkGUIAA--.10747S3; 
+ Tue, 09 Feb 2021 09:18:03 +0800 (CST)
+Subject: Re: [PATCH] staging: fix ignoring return value warning
+To: Dan Carpenter <dan.carpenter@oracle.com>, Sascha Hauer <sha@pengutronix.de>
+References: <1612689808-30985-1-git-send-email-tangyouling@loongson.cn>
+ <20210208134517.GG2696@kadam> <20210208150618.GI8233@pengutronix.de>
+ <20210208190237.GN20820@kadam>
+From: Youling Tang <tangyouling@loongson.cn>
+Message-ID: <13779748-ab8e-c7c3-11e4-5232836f5ae6@loongson.cn>
+Date: Tue, 9 Feb 2021 09:18:02 +0800
+User-Agent: Mozilla/5.0 (X11; Linux mips64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 2002:a0d:f305:0:0:0:0:0 with HTTP;
- Mon, 8 Feb 2021 16:43:13 -0800 (PST)
-From: "Mrs. Grace Williams" <iyamuedwin1@gmail.com>
-Date: Mon, 8 Feb 2021 16:43:13 -0800
-Message-ID: <CAPqwXFTJkLNRSwhK8mSRz94+32g6GT_=D3s=6PcQo3_4qHvbbA@mail.gmail.com>
-Subject: FORM MRS.GRACE WILLIAMS
-To: undisclosed-recipients:;
+In-Reply-To: <20210208190237.GN20820@kadam>
+X-CM-TRANSID: AQAAf9Dx7_LK4iFgkGUIAA--.10747S3
+X-Coremail-Antispam: 1UD129KBjvJXoW7Zw1rAr1UWF4UtrWrJw1UWrg_yoW8Ar4fpa
+ y0kFyjkFZ8tF4UKan0vw40v3WYy3srK348uFnYyw18u345XFyftr4UtrW5Ww15K34SkF1Y
+ yFWUXa4jqa4DZFDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUvIb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
+ 0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+ A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xII
+ jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVWxJVW8Jr1l84ACjcxK6I
+ 8E87Iv6xkF7I0E14v26r4UJVWxJr1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xv
+ F2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r
+ 4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvEwIxGrwCYjI0SjxkI62AI1cAE67vIY487
+ MxkIecxEwVAFwVWkMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I
+ 0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWU
+ tVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcV
+ CY1x0267AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_WFyUJVCq3wCI42IY6I8E87Iv
+ 67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r1j6r4UYxBIdaVFxhVjvjDU0xZFpf
+ 9x07b51v-UUUUU=
+X-CM-SenderInfo: 5wdqw5prxox03j6o00pqjv00gofq/
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,43 +76,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: gracewillia01@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8gVG8gV2hvbSBJdCBNYXkgQ29uY2VybiwKRGVhciBGcmllbmQsCgpQbGVhc2UgZm9yZ2l2
-ZSBtZSBmb3Igc3RyZXNzaW5nIHlvdSB3aXRoIG15IHByZWRpY2FtZW50cyBhcyBJIGtub3cKdGhh
-dCB0aGlzIGxldHRlciBtYXkgY29tZSB0byB5b3UgYXMgYmlnIHN1cnByaXNlLiBBY3R1YWxseSwg
-YXMgbXkKcGFzdG9yIGFkdmlzZWQgbWUgdG8gcmVqZWN0IGVhcnRobHkgcmV3YXJkIGFuZCB0aGFu
-a3MgYnkgaGFuZGluZyB0aGUKcHJvamVjdCB0byBzb21lb25lIEkgaGF2ZSBuZXZlciBzZWVuIG9y
-IG1ldCBmb3IgYSBncmVhdGVyIHJld2FyZCBpbgpoZWF2ZW4gd2FpdHMgZm9yIHdob2V2ZXIgY2Fu
-IGdpdmUgc3VjaCBhIGNvc3RseSBkb25hdGlvbi4gSSBjYW1lCmFjcm9zcyB5b3VyIEUtbWFpbCBm
-cm9tIG15IHBlcnNvbmFsIHNlYXJjaCwgYW5kIEkgZGVjaWRlZCB0byBlbWFpbCB5b3UKZGlyZWN0
-bHkgYmVsaWV2aW5nIHRoYXQgeW91IHdpbGwgYmUgaG9uZXN0IHRvIGZ1bGZpbGwgbXkgZmluYWwg
-d2lzaApiZWZvcmUgb3IgYWZ0ZXIgbXkgZGVhdGguCgpNZWFud2hpbGUsIEkgYW0gTWFkYW0gR3Jh
-Y2UgV2lsbGlhbXMsIDUzIHllYXJzLCBhbSBmcm9tIFVLLCBtYXJyaWVkCkpPIFdpbGxpYW1zIG15
-IG1vdGhlciBzaGUgZnJvbSBTb3V0aCBLb3JlYSwgd2UgbGl2ZSB0b2dldGhlciBpbiBVU0EKYmVm
-b3JlIGhlIGRlYWQuIEkgYW0gc3VmZmVyaW5nIGZyb20gQWRlbm9jYXJjaW5vbWEgQ2FuY2VyIG9m
-IHRoZSBsdW5ncwpmb3IgdGhlIHBhc3QgOCB5ZWFycyBhbmQgZnJvbSBhbGwgaW5kaWNhdGlvbiBt
-eSBjb25kaXRpb24gaXMgcmVhbGx5CmRldGVyaW9yYXRpbmcgYXMgbXkgZG9jdG9ycyBoYXZlIGNv
-bmZpcm1lZCBhbmQgY291cmFnZW91c2x5IGFkdmlzZWQgbWUKdGhhdCBJIG1heSBub3QgbGl2ZSBi
-ZXlvbmQgMiB3ZWVrcyBmcm9tIG5vdyBmb3IgdGhlIHJlYXNvbiB0aGF0IG15CnR1bW9yIGhhcyBy
-ZWFjaGVkIGEgY3JpdGljYWwgc3RhZ2Ugd2hpY2ggaGFzIGRlZmlsZWQgYWxsIGZvcm1zIG9mCm1l
-ZGljYWwgdHJlYXRtZW50LgoKU2luY2UgbXkgZGF5cyBhcmUgbnVtYmVyZWQsIEnigJl2ZSBkZWNp
-ZGVkIHdpbGxpbmdseSB0byBmdWxmaWxsIG15CmxvbmctdGltZSB2b3cgdG8gZG9uYXRlIHRvIHRo
-ZSB1bmRlcnByaXZpbGVnZWQgdGhlIHN1bSBvZiBFaWdodApNaWxsaW9uIEZpdmUgSHVuZHJlZCBU
-aG91c2FuZCBEb2xsYXJzIEkgZGVwb3NpdGVkIGluIGEgZGlmZmVyZW50CmFjY291bnQgb3ZlciAx
-MCB5ZWFycyBub3cgYmVjYXVzZSBJIGhhdmUgdHJpZWQgdG8gaGFuZGxlIHRoaXMgcHJvamVjdApi
-eSBteXNlbGYgYnV0IEkgaGF2ZSBzZWVuIHRoYXQgbXkgaGVhbHRoIGNvdWxkIG5vdCBhbGxvdyBt
-ZSB0byBkbyBzbwphbnltb3JlLiBNeSBwcm9taXNlIGZvciB0aGUgcG9vciBpbmNsdWRlcyBidWls
-ZGluZyBvZiB3ZWxsLWVxdWlwcGVkCmNoYXJpdHkgZm91bmRhdGlvbiBob3NwaXRhbCBhbmQgYSB0
-ZWNobmljYWwgc2Nob29sIGZvciB0aGVpciBzdXJ2aXZhbC4KCklmIHlvdSB3aWxsIGJlIGhvbmVz
-dCwga2luZCBhbmQgd2lsbGluZyB0byBhc3Npc3QgbWUgaGFuZGxlIHRoaXMKY2hhcml0eSBwcm9q
-ZWN0IGFzIEnigJl2ZSBtZW50aW9uZWQgaGVyZSwgSSB3aWxsIGxpa2UgeW91IHRvIENvbnRhY3Qg
-bWUKdGhyb3VnaCB0aGlzIGVtYWlsIGFkZHJlc3MgKGdyYWNld2lsbGlhMDFAZ21haWwuY29tKS4K
-CkJlc3QgUmVnYXJkcyEKTXJzLiBHcmFjZSBXaWxsaWFtcwpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hi, Dan
+
+
+On 02/09/2021 03:02 AM, Dan Carpenter wrote:
+> On Mon, Feb 08, 2021 at 04:06:18PM +0100, Sascha Hauer wrote:
+>> Hi Dan,
+>>
+>> On Mon, Feb 08, 2021 at 04:45:17PM +0300, Dan Carpenter wrote:
+>>> On Sun, Feb 07, 2021 at 05:23:28PM +0800, Youling Tang wrote:
+>>>> Fix the below ignoring return value warning for device_reset.
+>>>>
+>>>> drivers/staging/mt7621-dma/mtk-hsdma.c:685:2: warning: ignoring return value
+>>>> of function declared with 'warn_unused_result' attribute [-Wunused-result]
+>>>>          device_reset(&pdev->dev);
+>>>>          ^~~~~~~~~~~~ ~~~~~~~~~~
+>>>> drivers/staging/ralink-gdma/ralink-gdma.c:836:2: warning: ignoring return value
+>>>> of function declared with 'warn_unused_result' attribute [-Wunused-result]
+>>>>          device_reset(&pdev->dev);
+>>>>          ^~~~~~~~~~~~ ~~~~~~~~~~
+>>>>
+>>> We can't really do this sort of fix without the hardware to test it.
+>>> This could be the correct fix or perhaps switching to device_reset_optional()
+>>> is the correct fix.  We can't know unless we have the hardware to test.
+>> When device_reset() is the wrong function then adding a return value
+>> check will turn this into a runtime error for those who have the
+>> hardware which will hopefully trigger them to tell us why reset_device
+>> is wrong for them.
+>> At least for a staging driver I find this procedure opportune.
+>>
+> That seems like sort of a jerk move...  What's the rush?  Someone will
+> eventually be able to test this if we just wait around for a bit.
+> Otherwise if no one has the hardware then eventually the driver will be
+> deleted.
+>
+> regards,
+> dan carpenter
+We do not have the relevant hardware to test, this is just to solve a
+compile-time warning.
+
+Thanks,
+Youling.
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
