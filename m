@@ -2,94 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D9E7314C95
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 11:13:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11EE7314CEF
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 11:28:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ADBA28733D;
-	Tue,  9 Feb 2021 08:06:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9FEE087336;
+	Tue,  9 Feb 2021 08:20:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AmvV7xvS45H1; Tue,  9 Feb 2021 08:06:56 +0000 (UTC)
+	with ESMTP id dxAt+BUHoUcV; Tue,  9 Feb 2021 08:20:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DA987872ED;
-	Tue,  9 Feb 2021 08:06:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8F29F8669A;
+	Tue,  9 Feb 2021 08:20:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0D25E1BF282
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 08:06:52 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 674371BF282
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 08:20:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0262B872D7
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 08:06:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 63DBB872ED
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 08:20:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sHjuh7a1ZdGu for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 08:06:50 +0000 (UTC)
+ with ESMTP id 6FPta3g1StHl for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 08:20:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id ABADE872D4
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 08:06:50 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1197xF1W185136;
- Tue, 9 Feb 2021 08:06:49 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=FgbAm48IzN4NjhMcfVudFiqdSoE9vqOSbrnwPBxudIU=;
- b=DtIerUdiuipSsIr9VodYqA4p5BBzwPJ86kX+shahaqZ+CsGdSgchtLz+G/hHX3QYxYIQ
- 2Bl57p0VNckurTBjzJUFBLlOGFNPpV21aNF/EaioCoFsgJdRGCbEwSHuYlUyqOrhYpoR
- SDlimMJl8n9WHMIeYgPTEpv1seUzcqmOrKjHcVarpw/TK6txsCSNwmpUzWhzpaTvUAvG
- z2ZMQNI6AyR8SALtap5aV9XHVbKiEgCiPioxhpRyG/Wi0xWsY7p4R3LuEBQxH5BHeuNK
- Gixb6ClXAZNgxb0CF3iQ7Ltfi8EhQsuuft3H1uVrgzxYHXWNs+ffF3tq0vcrmQ1THRxl eA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 36hk2kek7j-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 09 Feb 2021 08:06:49 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1197xsuM167532;
- Tue, 9 Feb 2021 08:06:47 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 36j4pncj41-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 09 Feb 2021 08:06:47 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11986jig021903;
- Tue, 9 Feb 2021 08:06:45 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 09 Feb 2021 00:06:44 -0800
-Date: Tue, 9 Feb 2021 11:06:34 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Youling Tang <tangyouling@loongson.cn>
-Subject: Re: [PATCH] staging: fix ignoring return value warning
-Message-ID: <20210209080633.GO20820@kadam>
-References: <1612689808-30985-1-git-send-email-tangyouling@loongson.cn>
- <20210208134517.GG2696@kadam>
- <20210208150618.GI8233@pengutronix.de>
- <20210208190237.GN20820@kadam>
- <13779748-ab8e-c7c3-11e4-5232836f5ae6@loongson.cn>
+Received: from mail-pf1-f170.google.com (mail-pf1-f170.google.com
+ [209.85.210.170])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D44CD872D4
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 08:20:02 +0000 (UTC)
+Received: by mail-pf1-f170.google.com with SMTP id w18so11415630pfu.9
+ for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 00:20:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zU44lqKZfuZa5WJ6YSMKYxpCeD9c1eY+nex3tkGFwBk=;
+ b=qPqMf0zWe3zyWdr2Qchr0jORtbXnV5uaYbMTXt4WnFJcks169V9aehOzLsJWXp8f+G
+ D/aOWKNpwGItLVT8ycseObdD5QUJurC9iXsdyJo37R5oq+/m9bV48/bXVnrFLcyIYe+Q
+ jq++6zfErycPWeP0hncWq7qYYt/cAqXx+IYSbVKq+hdQMHYNSIRRexgG6cnDpzKMP61T
+ KcQUIHsTuA3ZsNfoHgoIvlL7fFz5htuVtKxG/f8NFdZ63AqtkwPPgtkrEIViH0sajmH/
+ JguR0+J9Q77vXwWpTZL4xwY1C091DmZHC24f6OiSwyJXqQ77mgB0EvsgFeCOwedF7gxk
+ v5Rg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zU44lqKZfuZa5WJ6YSMKYxpCeD9c1eY+nex3tkGFwBk=;
+ b=Yd25QsatXEOVEYEHufrGw7OC1u28pIwxk/cje3EXuaJ9F17zAdqeH21ahsI7A0DBet
+ e+Q1QqwgS5cCklJf/i9j7opcI0L2Uglp9WtUQvw55rClvbqxyr/4gzVZ7tNJhVD/Z9QC
+ UMIaIWW11Vwq/sInufFqEFetm79bwj7AluTAqLoNKLjDdVcxDpL0rfiMckdddCyneQZU
+ R/zXtV5UnVi+9Xr1jJowvEYxdpw/k/9en2kElRTDyw8O1ner+C3VpSVFwv7i4pqS0qYe
+ +lGTz1kKbthppIel9oFFgfuSdpq/8pCNSwG7PmouhWoOpiqN9OXPDaIsMaNEv4c6z4nw
+ l90A==
+X-Gm-Message-State: AOAM533T6mlcTdHozJZnrmYeExT7/zSMek6RKN2wIk7Lb5IHPSsn5mqL
+ 9QZvvu2b5iMc6iC/RIraEUg=
+X-Google-Smtp-Source: ABdhPJwVDNTXY2OqlNwQ3lJEh+Ycf5UAfMfcq0D5qrhteeMDLM375h6ln369yMQOP/WZO4O6nqqDog==
+X-Received: by 2002:a63:c60b:: with SMTP id w11mr2769704pgg.215.1612858802414; 
+ Tue, 09 Feb 2021 00:20:02 -0800 (PST)
+Received: from localhost.localdomain ([106.198.21.213])
+ by smtp.gmail.com with ESMTPSA id y16sm22011002pfb.83.2021.02.09.00.19.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Feb 2021 00:20:01 -0800 (PST)
+From: Atul Gopinathan <leoatul12@gmail.com>
+To: mchehab+huawei@kernel.org
+Subject: [PATCH v2 1/2] staging: hikey9xx: change spaces to tabs
+Date: Tue,  9 Feb 2021 13:49:34 +0530
+Message-Id: <20210209081935.3084-1-leoatul12@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <13779748-ab8e-c7c3-11e4-5232836f5ae6@loongson.cn>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9889
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0
- mlxlogscore=999 malwarescore=0 bulkscore=0 phishscore=0 spamscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102090037
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9889
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- malwarescore=0
- priorityscore=1501 clxscore=1015 impostorscore=0 lowpriorityscore=0
- bulkscore=0 suspectscore=0 spamscore=0 mlxlogscore=999 adultscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102090037
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,63 +83,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <sha@pengutronix.de>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Atul Gopinathan <leoatul12@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 09, 2021 at 09:18:02AM +0800, Youling Tang wrote:
-> Hi, Dan
-> 
-> 
-> On 02/09/2021 03:02 AM, Dan Carpenter wrote:
-> > On Mon, Feb 08, 2021 at 04:06:18PM +0100, Sascha Hauer wrote:
-> > > Hi Dan,
-> > > 
-> > > On Mon, Feb 08, 2021 at 04:45:17PM +0300, Dan Carpenter wrote:
-> > > > On Sun, Feb 07, 2021 at 05:23:28PM +0800, Youling Tang wrote:
-> > > > > Fix the below ignoring return value warning for device_reset.
-> > > > > 
-> > > > > drivers/staging/mt7621-dma/mtk-hsdma.c:685:2: warning: ignoring return value
-> > > > > of function declared with 'warn_unused_result' attribute [-Wunused-result]
-> > > > >          device_reset(&pdev->dev);
-> > > > >          ^~~~~~~~~~~~ ~~~~~~~~~~
-> > > > > drivers/staging/ralink-gdma/ralink-gdma.c:836:2: warning: ignoring return value
-> > > > > of function declared with 'warn_unused_result' attribute [-Wunused-result]
-> > > > >          device_reset(&pdev->dev);
-> > > > >          ^~~~~~~~~~~~ ~~~~~~~~~~
-> > > > > 
-> > > > We can't really do this sort of fix without the hardware to test it.
-> > > > This could be the correct fix or perhaps switching to device_reset_optional()
-> > > > is the correct fix.  We can't know unless we have the hardware to test.
-> > > When device_reset() is the wrong function then adding a return value
-> > > check will turn this into a runtime error for those who have the
-> > > hardware which will hopefully trigger them to tell us why reset_device
-> > > is wrong for them.
-> > > At least for a staging driver I find this procedure opportune.
-> > > 
-> > That seems like sort of a jerk move...  What's the rush?  Someone will
-> > eventually be able to test this if we just wait around for a bit.
-> > Otherwise if no one has the hardware then eventually the driver will be
-> > deleted.
-> > 
-> > regards,
-> > dan carpenter
-> We do not have the relevant hardware to test, this is just to solve a
-> compile-time warning.
+Fix the following type of checkpatch error:
+"ERROR: code indent should use tabs where possible"
 
-Yeah, I know.  Wait for someone who can test it on this.  Normally we
-don't require testing for staging patches.  But in this case, it's
-impossible to know which is the proper fix without testing so we should
-wait.  It's rude to test by breaking people's systems and hope they
-report the bug.
+Signed-off-by: Atul Gopinathan <leoatul12@gmail.com>
+---
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c     | 2 +-
+ drivers/staging/hikey9xx/hi6421v600-regulator.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+index 2301f4fcd48d..9c5e113e1a81 100644
+--- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
++++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+@@ -177,7 +177,7 @@ static void hi6421_spmi_pmic_irq_init(struct hi6421_spmi_pmic *ddata)
+ 
+ 	for (i = 0; i < HISI_IRQ_ARRAY; i++)
+ 		regmap_write(ddata->regmap, SOC_PMIC_IRQ_MASK_0_ADDR + i,
+-				        HISI_MASK);
++					HISI_MASK);
+ 
+ 	for (i = 0; i < HISI_IRQ_ARRAY; i++) {
+ 		regmap_read(ddata->regmap, SOC_PMIC_IRQ0_ADDR + i, &pending);
+diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
+index c801bb840962..f6a14e9c3cbf 100644
+--- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
++++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
+@@ -106,7 +106,7 @@ static int hi6421_spmi_regulator_enable(struct regulator_dev *rdev)
+ 
+ 	ret = regmap_update_bits(pmic->regmap, rdev->desc->enable_reg,
+ 				 rdev->desc->enable_mask,
+-			         rdev->desc->enable_mask);
++				 rdev->desc->enable_mask);
+ 
+ 	/* Avoid powering up multiple devices at the same time */
+ 	usleep_range(rdev->desc->off_on_delay, rdev->desc->off_on_delay + 60);
+-- 
+2.27.0
 
 _______________________________________________
 devel mailing list
