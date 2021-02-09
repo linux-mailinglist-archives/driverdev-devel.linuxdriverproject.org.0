@@ -1,58 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D43EE314FAB
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 14:02:16 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17F6E314FC1
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 14:06:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ED9B7873B4;
-	Tue,  9 Feb 2021 13:02:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 633088651A;
+	Tue,  9 Feb 2021 13:06:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aanARVJNiB3v; Tue,  9 Feb 2021 13:02:14 +0000 (UTC)
+	with ESMTP id Ob-jmP5rZ5pd; Tue,  9 Feb 2021 13:06:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0886187358;
-	Tue,  9 Feb 2021 13:02:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7C3B186433;
+	Tue,  9 Feb 2021 13:06:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 548D21BF232
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 13:02:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 17B911BF376
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 13:06:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 509E28706C
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 13:02:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 147B3872BD
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 13:06:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4dwwOILf-VtI for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 13:02:11 +0000 (UTC)
+ with ESMTP id UWXtCV0Yhpci for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 13:06:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B100586DDC
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 13:02:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id ACCEC64E75;
- Tue,  9 Feb 2021 13:02:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1612875731;
- bh=/Me+7Kp4JW3Y1A7KUFx3KcdF6XAOxqCUi6IcZfTyxrY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jLTExcCLBH7WheJBZQ5S0RePJQet3Yt4yzTvMxtzy17ZPNcpv9XUzMvNhNqZqAlN/
- QcsM9TB6q/6DP5A6Q0uhWHweiv0yxIkpcY5o+iOyzpXFXBGkN3MkMRbPk9Ml2tHaIZ
- P46V3Blimx+4djJUl0gbR3wpdHfyXV4U4eftNzis=
-Date: Tue, 9 Feb 2021 14:02:08 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH AUTOSEL 5.10 14/36] media: rkisp1: uapi: change hist_bins
- array type from __u16 to __u32
-Message-ID: <YCKH0HvTxeYKg1xf@kroah.com>
-References: <20210208175806.2091668-1-sashal@kernel.org>
- <20210208175806.2091668-14-sashal@kernel.org>
- <12c8f50e-3bba-5936-6e67-55bd928a75c7@xs4all.nl>
- <e086d0f4-c5f0-e38c-8937-593852ac0b50@collabora.com>
+Received: from mail-pl1-f172.google.com (mail-pl1-f172.google.com
+ [209.85.214.172])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 41467871F0
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 13:06:48 +0000 (UTC)
+Received: by mail-pl1-f172.google.com with SMTP id b8so9697721plh.12
+ for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 05:06:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yZxg6dXXFoEHvIAudV0HbB2Heq7jrncVjx+BrvchARk=;
+ b=Z/P072YoJXe1w1sSUcH7ZxBpuuwu9ACdPIfwahPk/+OFBkNAUHJYN9xkGRrheQayNU
+ LBe1U9y6YbmNjAJPFU77CvjCIY9fa3ElhjIEFmhYuHlXUowhP5zde32rJK2Mz6MV1Yjm
+ Lt4xCsghaWFMB/WeAl0F47l+Vueqb0Yt90+vTslniMQHgC4ytBavWahVEm3HOKmL3LNj
+ Y4rs/qQFRX/j6LiVqw38uGx04ynKOdTPZadtUNKcQk3y+71Dt+cO7pa8+++D0/a5TRfh
+ dmpaGbVevn6EkRs9GlTGoKzr7OHsElZNxbA/FWh+Rgnb650itwOY9Mc94SslnEBT80Dm
+ DWDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yZxg6dXXFoEHvIAudV0HbB2Heq7jrncVjx+BrvchARk=;
+ b=OPYgZ2ezMrSrz68BoLhE3tRIgbag8vXA8ygrNXkxDq2EhDbYhz3VlCiuq0Y3xqqmdB
+ vGxPpAzEmOYAc4vY+NEIkDBLF17HWzQO3iz3aKVGfay57yNeMTI35WQyypEwQc6lud/z
+ IgL35YUlCXvytssDBcZkgr1HImjgK85KLI2krRIrcFt4wU3TKG3FmjIm7UW6DKIqLKzB
+ 7X7DOWWBGKm1AoSMu9Esbn7gUbaPa/19US6u3BlD2oGXb9wCXWfPQUEc/vdpJZEzv8Yf
+ ONM5jW5gx54hGG7+FQNdzPWJa5J9cCw1bjVu/tk5/tO9CZcKVMYeMRPwh/GXnis+GJ4z
+ bx4Q==
+X-Gm-Message-State: AOAM532RkRl9E30DF6XnZj2ajeF9LM3l9wQOXR44HBhc6e3iXgt61uzh
+ vz9GrSkS37HAYEeIbTJFFQs=
+X-Google-Smtp-Source: ABdhPJxwBiUbfTgcM7M138rzeAj1HmC6j5l/qpheZ0IIsQ2eQ9ILuSeTuxtmr2elV2ujAVDXzrMz1A==
+X-Received: by 2002:a17:90a:4209:: with SMTP id
+ o9mr4113295pjg.75.1612876007592; 
+ Tue, 09 Feb 2021 05:06:47 -0800 (PST)
+Received: from localhost.localdomain ([2405:201:5c0a:f013:997:8903:ccd:f31])
+ by smtp.gmail.com with ESMTPSA id 21sm21502224pfh.56.2021.02.09.05.06.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Feb 2021 05:06:47 -0800 (PST)
+From: Mukul Mehar <mukulmehar02@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] Drivers: staging: most: sound: Fixed styling issue.
+Date: Tue,  9 Feb 2021 18:36:19 +0530
+Message-Id: <20210209130618.18508-1-mukulmehar02@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e086d0f4-c5f0-e38c-8937-593852ac0b50@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,41 +84,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- Helen Koike <helen.koike@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, christian.gromm@microchip.com,
+ linux-kernel@vger.kernel.org, Mukul Mehar <mukulmehar02@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 09, 2021 at 01:45:35PM +0100, Dafna Hirschfeld wrote:
-> 
-> 
-> Am 08.02.21 um 21:46 schrieb Hans Verkuil:
-> > On 08/02/2021 18:57, Sasha Levin wrote:
-> > > From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > > 
-> > > [ Upstream commit 31f190e0ccac8b75d33fdc95a797c526cf9b149e ]
-> > > 
-> > > Each entry in the array is a 20 bits value composed of 16 bits unsigned
-> > > integer and 4 bits fractional part. So the type should change to __u32.
-> > > In addition add a documentation of how the measurements are done.
-> > 
-> > Dafna, Helen, does it make sense at all to backport these three patches to
-> > when rkisp1 was a staging driver?
-> > 
-> > I would be inclined not to backport this.
-> 
-> I also don't think it makes sense since this changes the uapi and it is not really a bug fix.
+This patch fixes a warning, of the line ending with a '(',
+generated by checkpatch.pl.
 
-Why was it ok to change the uapi in a newer kernel and not an older one?
+Signed-off-by: Mukul Mehar <mukulmehar02@gmail.com>
+---
+ drivers/staging/most/sound/sound.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-thanks,
-
-greg k-h
+diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
+index 3a1a59058042..4dd1bf95d1ce 100644
+--- a/drivers/staging/most/sound/sound.c
++++ b/drivers/staging/most/sound/sound.c
+@@ -228,12 +228,12 @@ static int playback_thread(void *data)
+ 		struct mbo *mbo = NULL;
+ 		bool period_elapsed = false;
+ 
+-		wait_event_interruptible(
+-			channel->playback_waitq,
+-			kthread_should_stop() ||
+-			(channel->is_stream_running &&
+-			 (mbo = most_get_mbo(channel->iface, channel->id,
+-					     &comp))));
++		wait_event_interruptible(channel->playback_waitq,
++					 kthread_should_stop() ||
++					 (channel->is_stream_running &&
++					 (mbo = most_get_mbo(channel->iface,
++					 channel->id,
++					 &comp))));
+ 		if (!mbo)
+ 			continue;
+ 
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
