@@ -1,77 +1,88 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59BE23152E8
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 16:37:28 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F268D31544C
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 17:48:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A9D785585;
-	Tue,  9 Feb 2021 15:37:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B3E01861A7;
+	Tue,  9 Feb 2021 16:48:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0DIxChVDO4DX; Tue,  9 Feb 2021 15:37:26 +0000 (UTC)
+	with ESMTP id 9Y1OLeM2r678; Tue,  9 Feb 2021 16:48:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC33D85087;
-	Tue,  9 Feb 2021 15:37:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CB06985727;
+	Tue,  9 Feb 2021 16:48:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D3C411BF836
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 729E91BF40E
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 16:48:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D062585585
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 622856F185
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 16:48:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K7Ks3J0COQhk for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f52.google.com (mail-pj1-f52.google.com
- [209.85.216.52])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7812F85087
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
-Received: by mail-pj1-f52.google.com with SMTP id my11so1647538pjb.1
- for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 07:37:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=QKpVLQm7ZgzFHub3c/NcdvxoQclO6JlmQvaCgvZwUso=;
- b=i2a1iFtyMtyF821MfTRZUkwrMjKRzRHxgbbddSQbrmgdl0umOE4/AZwIPLHQvVhIAP
- XZhwtbpaFbwChOo+FtSRRVDFQAMWn13PuGTpHiIjtSE9L9nH6pG8eJVDaBCkcybMcLlY
- 4lao8MGkuJltTGb2BDzcKoVEf7OjOE3jEUOcACDQ5G6C2P6EP9VNCrK3zPboJ7oEyAmu
- Ih8dn/+Htd6g6WOwB/QJh3Tt0b6RydywOB4J1KD9UHyldXTsR12upcwdznl5gglK5I2f
- eBAYMT+7PT6VVAMxjaSy165fGAJZqRzd2YyMSZNCnho6mwuvZ36SMHn3bcOodJwJEpJG
- 9euA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=QKpVLQm7ZgzFHub3c/NcdvxoQclO6JlmQvaCgvZwUso=;
- b=VxCyOGUjdWGpUBhVX9maWVAxfbA9PAmTdSFpAASd0Xutm2FJJvxifxtRv12VDmLuI+
- 4OPioF6Zs8wYYtoU5WsH6c0DIVvAhkOkOuVQ9mV88jGOo9dQqjIaD8m7cP9g7l/cWZQA
- FAF+PnU+ivpU6D0Yp0G/G0/Nm7O7KQOp/hR6ersbUyj1++PYYkD4EoFhwe2V18Lnrgln
- Y4XFJxWK0UjV1MfBaqWWFDdmnH8BZudHvCw465tzUq4VoIV05VF6DC9GlX/BX3f7gdbH
- cOWE3nZ4BBL9jTyPLx3e6c1nkg8afocBxqwS17eWwE9+dZtYoscu8nqwdPtpiXObsuQg
- mDrg==
-X-Gm-Message-State: AOAM5304YWDjjd1HcTuSNbBj6+cm7l1/OrLTD5glV7VXYzX8zoHZeuZb
- KrkFfbTHapCVeCshhIN2aU22hXpsvYoVflrd
-X-Google-Smtp-Source: ABdhPJyWxZWW4E9OVCxZns9sUsIjtc7KinBlV1hYdh+UexUhafMldAYJM/gcSdiQffMjCMRhrBgkdg==
-X-Received: by 2002:a17:902:b189:b029:dc:4102:4edf with SMTP id
- s9-20020a170902b189b02900dc41024edfmr21137768plr.80.1612885041976; 
- Tue, 09 Feb 2021 07:37:21 -0800 (PST)
-Received: from xps.yggdrail ([49.205.78.218])
- by smtp.gmail.com with ESMTPSA id g9sm23369759pfr.94.2021.02.09.07.37.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 07:37:21 -0800 (PST)
-From: Aakash Hemadri <aakashhemadri123@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH] staging: rtl8712: Remove multiple blank lines
-Date: Tue,  9 Feb 2021 21:07:09 +0530
-Message-Id: <20210209153709.128676-1-aakashhemadri123@gmail.com>
-X-Mailer: git-send-email 2.30.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jf7Z32ytzX1C for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 16:48:41 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id AAAC86F4D2; Tue,  9 Feb 2021 16:48:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from barracuda.auroraoh.com (spam.auroraoh.com [24.56.89.101])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5087B6F185
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 16:48:40 +0000 (UTC)
+X-ASG-Debug-ID: 1612888447-112c0d6a7999cb0003-qY8YKe
+Received: from COASRV-MAIL2.auroraoh.loc (coasrv-mail2.auroraoh.loc
+ [10.3.1.15]) by barracuda.auroraoh.com with ESMTP id p8OW2pLSbAe6vhHI;
+ Tue, 09 Feb 2021 11:34:08 -0500 (EST)
+X-Barracuda-Envelope-From: JanuskaD@auroraoh.com
+X-Barracuda-RBL-Trusted-Forwarder: 10.3.1.15
+Received: from [172.20.10.5] (197.210.29.8) by COASRV-MAIL2.auroraoh.loc
+ (10.3.1.15) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Tue, 9 Feb 2021
+ 02:41:50 -0500
+X-Barracuda-RBL-Trusted-Forwarder: 172.20.10.5
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: We are a registered Private Loan Investment Company in the United
+ Kingdom, 
+ we also registered with the Turkish British Chamber of Commerce and Industry
+ (TBCCI) we have operations in Europe and Asia.
+To: Recipients <januskad@auroraoh.com>
+X-ASG-Orig-Subj: We are a registered Private Loan Investment Company in the
+ United Kingdom, 
+ we also registered with the Turkish British Chamber of Commerce and Industry
+ (TBCCI) we have operations in Europe and Asia.
+From: <januskad@auroraoh.com>
+Date: Tue, 9 Feb 2021 15:41:03 +0800
+X-Priority: 1 (High)
+X-Antivirus: Avast (VPS 210207-2, 02/07/2021), Outbound message
+X-Antivirus-Status: Clean
+Message-ID: <19476914-06ef-4e05-b16e-afe6693abdc0@COASRV-MAIL2.auroraoh.loc>
+X-Originating-IP: [197.210.29.8]
+X-ClientProxiedBy: COASRV-MAIL3.auroraoh.loc (10.3.1.13) To
+ COASRV-MAIL2.auroraoh.loc (10.3.1.15)
+X-Barracuda-Connect: coasrv-mail2.auroraoh.loc[10.3.1.15]
+X-Barracuda-Start-Time: 1612888448
+X-Barracuda-URL: https://10.3.1.12:443/cgi-mod/mark.cgi
+X-Virus-Scanned: by bsmtpd at auroraoh.com
+X-Barracuda-Scan-Msg-Size: 755
+X-Barracuda-BRTS-Status: 1
+X-Barracuda-Spam-Score: 1.61
+X-Barracuda-Spam-Status: No, SCORE=1.61 using global scores of TAG_LEVEL=1000.0
+ QUARANTINE_LEVEL=1000.0 KILL_LEVEL=5.0 tests=BSF_SC0_SA609_NRN,
+ BSF_SC0_SA912_RP_FR, BSF_SC0_SA_TO_FROM_ADDR_MATCH, NO_REAL_NAME
+X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.87864
+ Rule breakdown below
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 0.00 NO_REAL_NAME           From: does not include a real name
+ 0.01 BSF_SC0_SA912_RP_FR    Custom Rule BSF_SC0_SA912_RP_FR
+ 0.50 BSF_SC0_SA_TO_FROM_ADDR_MATCH Sender Address Matches Recipient
+ Address
+ 1.10 BSF_SC0_SA609_NRN      Custom Rule SA609_NRN
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,49 +95,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- linux-kernel@vger.kernel.org, Shuah Khan <skhan@linuxfoundation.org>,
- linux-kernel-mentees@lists.linuxfoundation.org
+Reply-To: cfolimiited@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix checkpatch.pl CHECK:
-CHECK: Please don't use multiple blank lines
+We are seeking for beneficiaries who source for fund to expand/relocating their business interest abroad. We are ready to fund projects outside Turkey and United Kingdom in the form of Soft Loan. We grant loans to both corporate and private entities at a low interest rate of 2% R.O.I per annul.
 
-Signed-off-by: Aakash Hemadri <aakashhemadri123@gmail.com>
----
-This is my first patch.
-Done as a part of the linux-kernel-mentees program and as the 10th task
-on eudyptula to fix style checks.
+We like to grant loan in the following sectors: oil/Gas, banking, real estate, stock speculation and mining, transportation, health sector and tobacco, Communication Services, Agriculture Forestry & Fishing, thus any sector. The terms are very flexible and interesting.
 
- drivers/staging/rtl8712/rtl871x_debug.h | 2 --
- 1 file changed, 2 deletions(-)
+Please contact us for more details;
 
-diff --git a/drivers/staging/rtl8712/rtl871x_debug.h b/drivers/staging/rtl8712/rtl871x_debug.h
-index a427547c02ba..57f2a38cb71c 100644
---- a/drivers/staging/rtl8712/rtl871x_debug.h
-+++ b/drivers/staging/rtl8712/rtl871x_debug.h
-@@ -17,7 +17,6 @@
- #include "osdep_service.h"
- #include "drv_types.h"
 
--
- #define _drv_emerg_			1
- #define _drv_alert_			2
- #define _drv_crit_			3
-@@ -28,7 +27,6 @@
- #define _drv_dump_			8
- #define	_drv_debug_			9
+Kind regards,
 
--
- #define _module_rtl871x_xmit_c_		BIT(0)
- #define _module_xmit_osdep_c_		BIT(1)
- #define _module_rtl871x_recv_c_		BIT(2)
---
-2.30.0
+Paul McCann
+
+-- 
+This email has been checked for viruses by Avast antivirus software.
+https://www.avast.com/antivirus
 
 _______________________________________________
 devel mailing list
