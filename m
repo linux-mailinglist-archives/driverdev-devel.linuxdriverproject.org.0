@@ -1,82 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE006315DEB
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 04:46:36 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B231B315F7A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 07:29:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D1A3A85FC9;
-	Wed, 10 Feb 2021 03:46:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B92E8709D;
+	Wed, 10 Feb 2021 06:29:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DK--o7XIwN55; Wed, 10 Feb 2021 03:46:34 +0000 (UTC)
+	with ESMTP id zKWg4CA0Zp71; Wed, 10 Feb 2021 06:29:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C7BEE85624;
-	Wed, 10 Feb 2021 03:46:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id F41A187216;
+	Wed, 10 Feb 2021 06:29:19 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2331C1BF973
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 03:46:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BB3A61BF2A5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 06:29:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1F8A38681C
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 03:46:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B7A6E6F4E9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 06:29:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bg2gU-WxIWf1 for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 03:46:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f170.google.com (mail-qk1-f170.google.com
- [209.85.222.170])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 82AB4867DA
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 03:46:30 +0000 (UTC)
-Received: by mail-qk1-f170.google.com with SMTP id t63so488107qkc.1
- for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 19:46:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XCL608888xI21CZ+Cc5Dfc0mFqx0sZ/adP+mXo0osYM=;
- b=gjichQiW9DLCgeVHOm5q57W6CmsdQ8Z7LQNp9k6kKlr+LMtVQ7PXVHlUcFGuvZpKWL
- uUY8nFpovfqU+zrdyJ+hdTTWlYmlBIdxhR4Eptfc8CPYL4PWhSRvKA50AfkRIV6no35Z
- uPhUokODsKugTcoU0pT+pV+vjAsHn9qvgkBYNPwKErISDF22ZRz6w5chvuBYZ/XJ8qQX
- djcV0Ox8DvQ6q1pfsJc6t8G8ZW978ShvjgWKzTSDBeInk/2gTu65BLtiPve3aU5XmWfO
- L4B4JNvoewasAGoaKIKijdeGgLJuH38xK8Nhf03vaigZdmX7aOHkpTLHACGoZqwTJ/W/
- Gv1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XCL608888xI21CZ+Cc5Dfc0mFqx0sZ/adP+mXo0osYM=;
- b=MXNtZArokyQnwE5rFs5vfcZDM378rx3OfX504ltQbF5Yzk02eVfGdjLKGKQ25epeoF
- 3wX6CURCF1Ro8/gXwti9h+qRhE/z3/7jDb8MIHWcz5i04JpAOh7ssgXvRlXPP/0HajbH
- OQAwfaWPWLebdoyNKISPD6AL4Shn4S1052n932P3d9v26EqjWfl++oBJDSJKNSPRZn3t
- HQCRykTvnQK9AOVfp9IW4J7ndrOm0hMNeuASf2Ps0vqMrkVMDk7XWjL7RFG3v1Pl1SZ/
- 9/jPeyybNkJGPDaywIwb45GGOu1upvtnxSEc4NtDHkEv98PSqQK9KKe5jUOhI/Xyv3go
- lH/Q==
-X-Gm-Message-State: AOAM531qCwgM2yjruZX1WHedcobB251Fxulfj7NBQAb+TaGbQO2l/0VI
- 4UaL+hY3Eb9ofYvKCzwbpZc=
-X-Google-Smtp-Source: ABdhPJx6kvKUN88jZOsUC1EnyXqhw/OXZTYN7Eh5iqLBAPbo3ABv6d/o7waFiEWOTLusJbvvQ0VvKA==
-X-Received: by 2002:a05:620a:1442:: with SMTP id
- i2mr1594129qkl.290.1612928789590; 
- Tue, 09 Feb 2021 19:46:29 -0800 (PST)
-Received: from tong-desktop.local ([2601:5c0:c200:27c6:7408:b5fb:1cd8:ad04])
- by smtp.googlemail.com with ESMTPSA id k187sm622254qkc.74.2021.02.09.19.46.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 19:46:28 -0800 (PST)
-From: Tong Zhang <ztong0001@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nicolas Boichat <drinkcat@chromium.org>, Tong Zhang <ztong0001@gmail.com>,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v1] media: atomisp: fix compiler warning
-Date: Tue,  9 Feb 2021 22:46:18 -0500
-Message-Id: <20210210034622.1013012-1-ztong0001@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fcvSq6QNYQDb
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 06:29:16 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id EC8E26F5D0; Wed, 10 Feb 2021 06:29:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from barracuda.auroraoh.com (spam.auroraoh.com [24.56.89.101])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 79A696F4E9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 06:29:14 +0000 (UTC)
+X-ASG-Debug-ID: 1612938546-112c0d6a799c820002-xxYovs
+Received: from COASRV-MAIL2.auroraoh.loc (coasrv-mail2.auroraoh.loc
+ [10.3.1.15]) by barracuda.auroraoh.com with ESMTP id HkUMfvJE5nNpv3dT;
+ Wed, 10 Feb 2021 01:29:06 -0500 (EST)
+X-Barracuda-Envelope-From: JanuskaD@auroraoh.com
+X-Barracuda-RBL-Trusted-Forwarder: 10.3.1.15
+Received: from [172.20.10.5] (197.210.29.8) by COASRV-MAIL2.auroraoh.loc
+ (10.3.1.15) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Tue, 9 Feb 2021
+ 02:50:08 -0500
+X-Barracuda-RBL-Trusted-Forwarder: 172.20.10.5
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: We are a registered Private Loan Investment Company in the United
+ Kingdom, 
+ we also registered with the Turkish British Chamber of Commerce and Industry
+ (TBCCI) we have operations in Europe and Asia.
+To: Recipients <januskad@auroraoh.com>
+X-ASG-Orig-Subj: We are a registered Private Loan Investment Company in the
+ United Kingdom, 
+ we also registered with the Turkish British Chamber of Commerce and Industry
+ (TBCCI) we have operations in Europe and Asia.
+From: <januskad@auroraoh.com>
+Date: Tue, 9 Feb 2021 15:49:21 +0800
+X-Priority: 1 (High)
+X-Antivirus: Avast (VPS 210207-2, 02/07/2021), Outbound message
+X-Antivirus-Status: Clean
+Message-ID: <927807a0-628d-4822-ad8b-83aff3893b57@COASRV-MAIL2.auroraoh.loc>
+X-Originating-IP: [197.210.29.8]
+X-ClientProxiedBy: COASRV-MAIL3.auroraoh.loc (10.3.1.13) To
+ COASRV-MAIL2.auroraoh.loc (10.3.1.15)
+X-Barracuda-Connect: coasrv-mail2.auroraoh.loc[10.3.1.15]
+X-Barracuda-Start-Time: 1612938546
+X-Barracuda-URL: https://10.3.1.12:443/cgi-mod/mark.cgi
+X-Barracuda-BRTS-Status: 1
+X-Virus-Scanned: by bsmtpd at auroraoh.com
+X-Barracuda-Scan-Msg-Size: 755
+X-Barracuda-Spam-Score: 1.61
+X-Barracuda-Spam-Status: No, SCORE=1.61 using global scores of TAG_LEVEL=1000.0
+ QUARANTINE_LEVEL=1000.0 KILL_LEVEL=5.0 tests=BSF_SC0_SA609_NRN,
+ BSF_SC0_SA912_RP_FR, BSF_SC0_SA_TO_FROM_ADDR_MATCH, NO_REAL_NAME
+X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.87878
+ Rule breakdown below
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 0.00 NO_REAL_NAME           From: does not include a real name
+ 0.01 BSF_SC0_SA912_RP_FR    Custom Rule BSF_SC0_SA912_RP_FR
+ 0.50 BSF_SC0_SA_TO_FROM_ADDR_MATCH Sender Address Matches Recipient
+ Address
+ 1.10 BSF_SC0_SA609_NRN      Custom Rule SA609_NRN
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,34 +99,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: cfolimiited@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-c2hvdWxkIHVzZSAlenUgZm9yIHNpemVfdCB0eXBlLCBvdGhlcndpc2UgY29tcGlsZXIgd2lsbCBj
-b21wbGFpbgpkcml2ZXJzL3N0YWdpbmcvbWVkaWEvYXRvbWlzcC9wY2kvaG1tL2htbS5jOjI3Mjoz
-OiB3YXJuaW5nOiBmb3JtYXQg4oCYJWxk4oCZIGV4cGVjdHMgYXJndW1lbnQgb2YgdHlwZSDigJhs
-b25nIGludOKAmSwgYnV0IGFyZ3VtZW50IDYgaGFzIHR5cGUg4oCYc2l6ZV904oCZIHtha2Eg4oCY
-dW5zaWduZWQgaW504oCZfSBbLVdmb3JtYXQ9XQogIDI3MiB8ICAgIiVzOiBwYWdlczogMHglMDh4
-ICglbGQgYnl0ZXMpLCB0eXBlOiAlZCBmcm9tIGhpZ2htZW0gJWQsIHVzZXIgcHRyICVwLCBjYWNo
-ZWQgJWRcbiIsCiAgICAgIHwgICBefn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fgoKU2lnbmVkLW9m
-Zi1ieTogVG9uZyBaaGFuZyA8enRvbmcwMDAxQGdtYWlsLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvYXRvbWlzcC9wY2kvaG1tL2htbS5jIHwgMiArLQogMSBmaWxlIGNoYW5nZWQsIDEg
-aW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2F0b21pc3AvcGNpL2htbS9obW0uYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9hdG9t
-aXNwL3BjaS9obW0vaG1tLmMKaW5kZXggZTBlYWZmMGY4YTIyLi42YTVlZTQ2MDcwODkgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9hdG9taXNwL3BjaS9obW0vaG1tLmMKKysrIGIv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL2F0b21pc3AvcGNpL2htbS9obW0uYwpAQCAtMjY5LDcgKzI2
-OSw3IEBAIGlhX2Nzc19wdHIgaG1tX2FsbG9jKHNpemVfdCBieXRlcywgZW51bSBobW1fYm9fdHlw
-ZSB0eXBlLAogCQlobW1fc2V0KGJvLT5zdGFydCwgMCwgYnl0ZXMpOwogCiAJZGV2X2RiZyhhdG9t
-aXNwX2RldiwKLQkJIiVzOiBwYWdlczogMHglMDh4ICglbGQgYnl0ZXMpLCB0eXBlOiAlZCBmcm9t
-IGhpZ2htZW0gJWQsIHVzZXIgcHRyICVwLCBjYWNoZWQgJWRcbiIsCisJCSIlczogcGFnZXM6IDB4
-JTA4eCAoJXp1IGJ5dGVzKSwgdHlwZTogJWQgZnJvbSBoaWdobWVtICVkLCB1c2VyIHB0ciAlcCwg
-Y2FjaGVkICVkXG4iLAogCQlfX2Z1bmNfXywgYm8tPnN0YXJ0LCBieXRlcywgdHlwZSwgZnJvbV9o
-aWdobWVtLCB1c2VycHRyLCBjYWNoZWQpOwogCiAJcmV0dXJuIGJvLT5zdGFydDsKLS0gCjIuMjUu
-MQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwg
-bWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRl
-di5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVs
-Cg==
+We are seeking for beneficiaries who source for fund to expand/relocating their business interest abroad. We are ready to fund projects outside Turkey and United Kingdom in the form of Soft Loan. We grant loans to both corporate and private entities at a low interest rate of 2% R.O.I per annul.
+
+We like to grant loan in the following sectors: oil/Gas, banking, real estate, stock speculation and mining, transportation, health sector and tobacco, Communication Services, Agriculture Forestry & Fishing, thus any sector. The terms are very flexible and interesting.
+
+Please contact us for more details;
+
+
+Kind regards,
+
+Paul McCann
+
+-- 
+This email has been checked for viruses by Avast antivirus software.
+https://www.avast.com/antivirus
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
