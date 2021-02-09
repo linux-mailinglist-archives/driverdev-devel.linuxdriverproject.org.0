@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E83CA315259
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 16:07:09 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59BE23152E8
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Feb 2021 16:37:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 99CF8869EF;
-	Tue,  9 Feb 2021 15:07:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A9D785585;
+	Tue,  9 Feb 2021 15:37:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oORG+nF4gGmP; Tue,  9 Feb 2021 15:07:07 +0000 (UTC)
+	with ESMTP id 0DIxChVDO4DX; Tue,  9 Feb 2021 15:37:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1EE8A86789;
-	Tue,  9 Feb 2021 15:07:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AC33D85087;
+	Tue,  9 Feb 2021 15:37:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B68211BF836
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 15:07:02 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D3C411BF836
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B2BB9870B7
- for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 15:07:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D062585585
+ for <devel@linuxdriverproject.org>; Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ns6jtbDU0zvH for <devel@linuxdriverproject.org>;
- Tue,  9 Feb 2021 15:07:02 +0000 (UTC)
+ with ESMTP id K7Ks3J0COQhk for <devel@linuxdriverproject.org>;
+ Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oo1-f46.google.com (mail-oo1-f46.google.com
- [209.85.161.46])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 082C48643B
- for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 15:07:02 +0000 (UTC)
-Received: by mail-oo1-f46.google.com with SMTP id g46so4326350ooi.9
- for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 07:07:01 -0800 (PST)
+Received: from mail-pj1-f52.google.com (mail-pj1-f52.google.com
+ [209.85.216.52])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7812F85087
+ for <devel@driverdev.osuosl.org>; Tue,  9 Feb 2021 15:37:22 +0000 (UTC)
+Received: by mail-pj1-f52.google.com with SMTP id my11so1647538pjb.1
+ for <devel@driverdev.osuosl.org>; Tue, 09 Feb 2021 07:37:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=bjxmsAAlaEuDY9+PSLnzX23gCEFtWGdplw8kECzDAe0=;
- b=j0Lv1K0lAyO/aXssmrb2JSZHcKCXRO4dHOzcsVMzGZ65kKP2JFgGXgG/PaJsPQmWyL
- PH8Szb7vv3OS37Av5B78PgUF9qUpBk+6szQZ0Mfc8jSxBierincFetlK43SpuOzrUSix
- JDDATP8QCbQ/aXeHyIJqqZd7pJSUDfMkAMtY2cLwiTzpZBSQR2VGEVrGoEiA/22eFBBo
- +2ZJvXCwq/arwcW35AZo8Y99RUJ3pHuVD2TUi39R4P3fZW+D3AHUywDpJIcez+2zvwAw
- fDD91rMnpF03sjoHuA3XsLqaWXEjraCCqrggCHNCij4oj5FWSNRnCtWAs9gcs4N0aJNk
- ZQ/A==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QKpVLQm7ZgzFHub3c/NcdvxoQclO6JlmQvaCgvZwUso=;
+ b=i2a1iFtyMtyF821MfTRZUkwrMjKRzRHxgbbddSQbrmgdl0umOE4/AZwIPLHQvVhIAP
+ XZhwtbpaFbwChOo+FtSRRVDFQAMWn13PuGTpHiIjtSE9L9nH6pG8eJVDaBCkcybMcLlY
+ 4lao8MGkuJltTGb2BDzcKoVEf7OjOE3jEUOcACDQ5G6C2P6EP9VNCrK3zPboJ7oEyAmu
+ Ih8dn/+Htd6g6WOwB/QJh3Tt0b6RydywOB4J1KD9UHyldXTsR12upcwdznl5gglK5I2f
+ eBAYMT+7PT6VVAMxjaSy165fGAJZqRzd2YyMSZNCnho6mwuvZ36SMHn3bcOodJwJEpJG
+ 9euA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=bjxmsAAlaEuDY9+PSLnzX23gCEFtWGdplw8kECzDAe0=;
- b=mwOI3pJLO29Bb8rbBadWxmx6F3lPtfPStAz5ENiMq62LcrugMA6V+020BocxCt1VYR
- fsdI5H8jrVHy2NxatkpHD+VCKBVA/21nBfcXCWT25ghjPH4AxbSzQzTpR2gMHav1PjtY
- lxUvInpha0WhHK36NoCgmELOZxJvOc4X8devEyP45OUq56cTDLF0d7je7Ghfr/RwF3ME
- a2pTud/8PJ4uhsAukSIfa9Jk2rgKyJJpkBUlePbXbIDiyAKnEy1M7S/BD7WdTPTNsMdI
- PGu4oFXAravsBbTEjBOKiwcWTV1rF38seZ6Rocyjk8qtWPdUIuX2J+IZTzAiDfBFc4Tn
- Nt6A==
-X-Gm-Message-State: AOAM5311MyQen1nTYOgLMF+G4bPg4gos0qwZT4DTfDFO1g9lJUL19ukN
- REimOtdqiIxvI7Bdvqs9rE8=
-X-Google-Smtp-Source: ABdhPJzdEtSfPGrXG09x+Nc8Hru0U15ym9pUPhGZOCl+C3Q5W19I9KAYsqOfSP9595rJ8B9hyn1HDA==
-X-Received: by 2002:a4a:97a7:: with SMTP id w36mr1076981ooi.64.1612883221140; 
- Tue, 09 Feb 2021 07:07:01 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id p23sm4534821otk.51.2021.02.09.07.06.59
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 09 Feb 2021 07:07:00 -0800 (PST)
-Date: Tue, 9 Feb 2021 07:06:58 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Yicong Yang <yangyicong@hisilicon.com>
-Subject: Re: [PATCH v2 2/4] hwmon: Use subdir-ccflags-* to inherit debug flag
-Message-ID: <20210209150658.GA31002@roeck-us.net>
-References: <1612868899-9185-1-git-send-email-yangyicong@hisilicon.com>
- <1612868899-9185-3-git-send-email-yangyicong@hisilicon.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QKpVLQm7ZgzFHub3c/NcdvxoQclO6JlmQvaCgvZwUso=;
+ b=VxCyOGUjdWGpUBhVX9maWVAxfbA9PAmTdSFpAASd0Xutm2FJJvxifxtRv12VDmLuI+
+ 4OPioF6Zs8wYYtoU5WsH6c0DIVvAhkOkOuVQ9mV88jGOo9dQqjIaD8m7cP9g7l/cWZQA
+ FAF+PnU+ivpU6D0Yp0G/G0/Nm7O7KQOp/hR6ersbUyj1++PYYkD4EoFhwe2V18Lnrgln
+ Y4XFJxWK0UjV1MfBaqWWFDdmnH8BZudHvCw465tzUq4VoIV05VF6DC9GlX/BX3f7gdbH
+ cOWE3nZ4BBL9jTyPLx3e6c1nkg8afocBxqwS17eWwE9+dZtYoscu8nqwdPtpiXObsuQg
+ mDrg==
+X-Gm-Message-State: AOAM5304YWDjjd1HcTuSNbBj6+cm7l1/OrLTD5glV7VXYzX8zoHZeuZb
+ KrkFfbTHapCVeCshhIN2aU22hXpsvYoVflrd
+X-Google-Smtp-Source: ABdhPJyWxZWW4E9OVCxZns9sUsIjtc7KinBlV1hYdh+UexUhafMldAYJM/gcSdiQffMjCMRhrBgkdg==
+X-Received: by 2002:a17:902:b189:b029:dc:4102:4edf with SMTP id
+ s9-20020a170902b189b02900dc41024edfmr21137768plr.80.1612885041976; 
+ Tue, 09 Feb 2021 07:37:21 -0800 (PST)
+Received: from xps.yggdrail ([49.205.78.218])
+ by smtp.gmail.com with ESMTPSA id g9sm23369759pfr.94.2021.02.09.07.37.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Feb 2021 07:37:21 -0800 (PST)
+From: Aakash Hemadri <aakashhemadri123@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging: rtl8712: Remove multiple blank lines
+Date: Tue,  9 Feb 2021 21:07:09 +0530
+Message-Id: <20210209153709.128676-1-aakashhemadri123@gmail.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1612868899-9185-3-git-send-email-yangyicong@hisilicon.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,60 +84,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
- jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
- gregkh@linuxfoundation.org, masahiroy@kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, linuxarm@openeuler.org, abbotti@mev.co.uk,
- michal.lkml@markovi.net, helgaas@kernel.org, linux-kbuild@vger.kernel.org
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ linux-kernel@vger.kernel.org, Shuah Khan <skhan@linuxfoundation.org>,
+ linux-kernel-mentees@lists.linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 09, 2021 at 07:08:17PM +0800, Yicong Yang wrote:
-> From: Junhao He <hejunhao2@hisilicon.com>
-> 
-> We use ccflags-$(CONFIG_HWMON_DEBUG_CHIP) for the debug
-> message in drivers/hwmon, but the DEBUG flag will not pass to
-> the subdirectory.
-> 
-> Considering CONFIG_HWMON_DEBUG_CHIP intends to have DEBUG
-> recursively in driver/hwmon. It will be clearer
-> to use subdir-ccflags-* instead of ccflags-* to inherit
-> the debug settings from Kconfig when traversing subdirectories,
-> and it will avoid omittance of DEBUG define when debug messages
-> added in the subdirectories.
-> 
+Fix checkpatch.pl CHECK:
+CHECK: Please don't use multiple blank lines
 
-The above paragraph doesn't add clarity and may as well be dropped.
-On the other side, the commit message still doesn't mention that
-pr_debug depends on DEBUG, which I am sure many people don't know
-or remember. This is the prime reason why this patch is acceptable,
-so it most definitely needs to be mentioned here.
+Signed-off-by: Aakash Hemadri <aakashhemadri123@gmail.com>
+---
+This is my first patch.
+Done as a part of the linux-kernel-mentees program and as the 10th task
+on eudyptula to fix style checks.
 
-Guenter
+ drivers/staging/rtl8712/rtl871x_debug.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-> Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
-> Signed-off-by: Junhao He <hejunhao2@hisilicon.com>
-> Signed-off-by: Yicong Yang <yangyicong@hisilicon.com>
-> ---
->  drivers/hwmon/Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
-> index 09a86c5..1c0c089 100644
-> --- a/drivers/hwmon/Makefile
-> +++ b/drivers/hwmon/Makefile
-> @@ -201,5 +201,5 @@ obj-$(CONFIG_SENSORS_XGENE)	+= xgene-hwmon.o
->  obj-$(CONFIG_SENSORS_OCC)	+= occ/
->  obj-$(CONFIG_PMBUS)		+= pmbus/
->  
-> -ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
-> +subdir-ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
->  
-> -- 
-> 2.8.1
-> 
+diff --git a/drivers/staging/rtl8712/rtl871x_debug.h b/drivers/staging/rtl8712/rtl871x_debug.h
+index a427547c02ba..57f2a38cb71c 100644
+--- a/drivers/staging/rtl8712/rtl871x_debug.h
++++ b/drivers/staging/rtl8712/rtl871x_debug.h
+@@ -17,7 +17,6 @@
+ #include "osdep_service.h"
+ #include "drv_types.h"
+
+-
+ #define _drv_emerg_			1
+ #define _drv_alert_			2
+ #define _drv_crit_			3
+@@ -28,7 +27,6 @@
+ #define _drv_dump_			8
+ #define	_drv_debug_			9
+
+-
+ #define _module_rtl871x_xmit_c_		BIT(0)
+ #define _module_xmit_osdep_c_		BIT(1)
+ #define _module_rtl871x_recv_c_		BIT(2)
+--
+2.30.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
