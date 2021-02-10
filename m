@@ -1,86 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1C38316A62
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 16:40:05 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 476CD316BEC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 18:00:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 461926F479
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 15:40:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C905C874E3;
+	Wed, 10 Feb 2021 17:00:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fSa7n4HhdCw0 for <lists+driverdev-devel@lfdr.de>;
-	Wed, 10 Feb 2021 15:40:01 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 939646F79F; Wed, 10 Feb 2021 15:40:01 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id m2oDn3vSnVW6; Wed, 10 Feb 2021 17:00:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2F3206F8EB;
-	Wed, 10 Feb 2021 15:38:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E4CB874D2;
+	Wed, 10 Feb 2021 17:00:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2A5201BF2F1
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 15:38:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C9DD41BF41C
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:00:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 01CC76EAA1
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 15:38:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C359986CE0
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:00:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GqQoJhP58fZi for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 15:38:04 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 985A56F8D7; Wed, 10 Feb 2021 15:38:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-f43.google.com (mail-pj1-f43.google.com
- [209.85.216.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 18DBB6F710
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 15:36:36 +0000 (UTC)
-Received: by mail-pj1-f43.google.com with SMTP id e9so1353194pjj.0
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 07:36:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=AExeMbU6/3BxOHLnhv3fYTbsrsNViVB+RCtpeImP3T8=;
- b=b3Ae+56yg1cB1V8FTSmCrOT0NAYqlRdeUMT2k/4uSx5NA5k10+m8hcnijT2xXmt9QH
- h9O15ZWnBdAf/0UBAhiQRKMmV4ZMpBiLv4i1uXHJ6X8ew9qUQecxzNDMCJ1Ie8absEa2
- BurQ2T+PVNOwhQZrApTAZF8jtbZvqvFGKclqEBjR6JIxSLOSsCsGNhk5pMq41xQVv6gi
- Jsx8vhiJGkSKGQuqEwSN8mQnt+zCsGWJeegTi69txmqy94HKS5vaCD2GrIMDdY6Ddu6C
- 1nHXcjjtMhHjRV+cyv5SxHN645T5UmvjxGHseSIcUKDpeY0kWxIRJjD7ouM15B+ZilUI
- /SIg==
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AeAEJB04ke8O for <devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 17:00:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com
+ [209.85.221.49])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3D82986CC8
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 17:00:08 +0000 (UTC)
+Received: by mail-wr1-f49.google.com with SMTP id m13so3333230wro.12
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 09:00:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=f52jNubWeppUFK3CjhLaeqlhm2HiQ/lG/LaNbIAx5C0=;
+ b=X4/N6zuXTfQvs2QxG/bCYsPdqmCOvANyCoWdsxoN+Ldu2i+XuwbIzX8INTQDm9RX+J
+ efcjAMwDdeEGzALl7TdJfCvWr0LMS3pGWuoYuLuXcQUxf5aMN+qmX7VXOaJtWsel2jNB
+ Sm09FHgIrK20fXWcbBsAwjVh03N2RLszTsjVbd2klGYillyD0UJySnaZCzKY1eaZzrVB
+ wCqFfZInZxYPwym544GxvSDZxev72YhaIVV16Y9vn9N4xLiyQBO3+M0JZg5escWWqfg3
+ TIIWg9FZKK+Rpke2AzeSkQmmnSIsQHohC8TmpRCaxraw4WUKa3Wxglw6vnDlBxnOCDUv
+ 8a1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AExeMbU6/3BxOHLnhv3fYTbsrsNViVB+RCtpeImP3T8=;
- b=iM9xQM/z6iag+QJYKVLak0g0KRaLAYTvBgAbf2wjRaNNI9wUStKcAN/3YAV/j7zWQ0
- DXQbMCQe9qCvYAWOYMZzaptqg6JaA5D5IuH1CyYJ7iRA768S5VTbQpg3IbyA6FpID92S
- pQRTUM8XcciBZeFSWjpWLZE3RAE0p+h7Qr/eyWmAypSKsFYg+01mraFcyu6a7aWudiLL
- Dt+gSwhrwTMeC6Ade+nGYfi/NZC7Qj4uqP44RCyrtDGdZKBqOfi2glqgsjvt/vQmyAre
- rJQVlkcs/6Nrsby9+a6dxM3A/ZP4qzE8zErK95hTf6nlhYfQcq+tkqqT7IRBkjzxO4Zg
- kIkw==
-X-Gm-Message-State: AOAM5325I5HGiMBp3OnMHTfpSFq47FOhUfWNxGUpUEyRN59u4PKXvPok
- OJ4VzIT9OR0LzC/efETT/TY=
-X-Google-Smtp-Source: ABdhPJwyfWnpxMVVCqKFPkQcSKqZvbs0LaPo4DQFOW+BgK9wBo3szV3izhRJt4FsVlgJ6AXy6glWZw==
-X-Received: by 2002:a17:90a:4598:: with SMTP id
- v24mr3520249pjg.135.1612971396414; 
- Wed, 10 Feb 2021 07:36:36 -0800 (PST)
-Received: from localhost ([103.200.106.135])
- by smtp.gmail.com with ESMTPSA id k69sm2841896pfd.4.2021.02.10.07.36.34
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=f52jNubWeppUFK3CjhLaeqlhm2HiQ/lG/LaNbIAx5C0=;
+ b=TS1dXrUf4f7WsAaa3tml+L8tnshmBQqROLWH9tuiQYMlfWQw6Cw4W27Sa3lPsGS2xC
+ J+ah4QSx1xQkfmUUYVQQPL7ql10tio14u8VV8Z+9rVO3tffLgMojttQ6sNTB72pWH3VW
+ TydcAxFJURMfFGjdlKkQ8Gw4UwHZV8of7mLrdWhNGVXhZKzY+U85di1+XUgih7gFS2sW
+ UZK2QL4bDCEQzSSxSqw5m+QFIWs23FrStEWUqnTVPmQXYoisL1PNk6MYgW2ctGCxlUl0
+ yz/GtjwArkqjYtWwBxLftCI2qczRxNR3krC1rrVOrBbMXtArymlLD/zhZpyzlqV44o9r
+ +6Bw==
+X-Gm-Message-State: AOAM5333sXlKW6XxcaGP3Bu/OwEj1+aGAMeABK/7dMKohd5coVHnmIOZ
+ cQ8KpvLLhsRvE97tYbJhkSyLCQ==
+X-Google-Smtp-Source: ABdhPJx5EvknDyldDtZ0k46H95CbsUhT1EhdFUe30CLTxNqUN4lrBz2Qc0lI24T/Eg3f+n2NiCUZ/Q==
+X-Received: by 2002:adf:f8c8:: with SMTP id f8mr4710717wrq.132.1612976406806; 
+ Wed, 10 Feb 2021 09:00:06 -0800 (PST)
+Received: from localhost.localdomain
+ (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
+ [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
+ by smtp.gmail.com with ESMTPSA id x4sm4120335wrn.64.2021.02.10.09.00.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 07:36:35 -0800 (PST)
-Date: Wed, 10 Feb 2021 21:06:21 +0530
-From: Amey Narkhede <ameynarkhede03@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH v3] staging: gdm724x: Fix DMA from stack
-Message-ID: <20210210153621.3nmwsegn5a7mb5v5@archlinux>
-References: <20210210142512.23152-1-ameynarkhede03@gmail.com>
- <YCPz7jy6BLRzmvU3@kroah.com>
- <20210210150133.chf4gwefgcvaewnd@archlinux>
- <20210210151924.GA20820@kadam>
+ Wed, 10 Feb 2021 09:00:06 -0800 (PST)
+From: Phillip Potter <phil@philpotter.co.uk>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8723bs: cleanup macros within include/rtw_debug.h
+Date: Wed, 10 Feb 2021 17:00:03 +0000
+Message-Id: <20210210170003.100880-1-phil@philpotter.co.uk>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-In-Reply-To: <20210210151924.GA20820@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,108 +86,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============3016451356878620383=="
+Cc: devel@driverdev.osuosl.org, luk@wybcz.pl, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Remove do/while loops from DBG_871X, MSG_8192C and DBG_8192C. Also
+fix opening brace placements and trailing single statement layout within
+RT_PRINT_DATA, as well as making newline character placement more
+consistent and removing camel case where possible. Finally, add
+parentheses for DBG_COUNTER definition.
 
---===============3016451356878620383==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="jyslrfw62hrxq7ip"
-Content-Disposition: inline
+This fixes 3 checkpatch warnings, 5 checkpatch errors and 3 checkpatch
+checks.
 
+Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
+---
+ drivers/staging/rtl8723bs/include/rtw_debug.h | 40 +++++++++----------
+ 1 file changed, 19 insertions(+), 21 deletions(-)
 
---jyslrfw62hrxq7ip
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On 21/02/10 06:19PM, Dan Carpenter wrote:
-> On Wed, Feb 10, 2021 at 08:31:33PM +0530, Amey Narkhede wrote:
-> > On 21/02/10 03:55PM, Greg KH wrote:
-> > > On Wed, Feb 10, 2021 at 07:55:12PM +0530, Amey Narkhede wrote:
-> > > > Stack allocated buffers cannot be used for DMA
-> > > > on all architectures so allocate hci_packet buffer
-> > > > using kmalloc.
-> > > >
-> > > > Signed-off-by: Amey Narkhede <ameynarkhede03@gmail.com>
-> > > > ---
-> > > > Changes in v3:
-> > > > 	- Remove superfluous buf pointer
-> > > > 	- Reduce size of allocation of hci_packet to match number of
-> > > > 	bytes used for DMA
-> > > >
-> > > >  drivers/staging/gdm724x/gdm_usb.c | 10 +++++++---
-> > > >  1 file changed, 7 insertions(+), 3 deletions(-)
-> > > >
-> > > > diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
-> > > > index dc4da66c3..80c58a3ef 100644
-> > > > --- a/drivers/staging/gdm724x/gdm_usb.c
-> > > > +++ b/drivers/staging/gdm724x/gdm_usb.c
-> > > > @@ -56,20 +56,24 @@ static int gdm_usb_recv(void *priv_dev,
-> > > >
-> > > >  static int request_mac_address(struct lte_udev *udev)
-> > > >  {
-> > > > -	u8 buf[16] = {0,};
-> > > > -	struct hci_packet *hci = (struct hci_packet *)buf;
-> > > > +	struct hci_packet *hci;
-> > > >  	struct usb_device *usbdev = udev->usbdev;
-> > > >  	int actual;
-> > > >  	int ret = -1;
-> > > >
-> > > > +	hci = kmalloc(5, GFP_KERNEL);
-> > >
-> > > Why "5" and not:
-> > > 	hci = kmalloc(sizeof(*hci), GFP_KERNEL);
->
-> 5 is correct and sizeof(*hci) is 4.  The hci struct ends in a zero
-> element array.  You could do:
->
-> 	hci = kmalloc(struct_size(hci, data, 1), GFP_KERNEL);
->
-> I'm not sure it's more readable.  But you still will have to resend
-> because the patch passes "&hci" to usb_bulk_msg() instead of "hci" so it
-> will corrupt memory.
->
-> I always encourage people to write the patch and then sit on it over
-> night and send it the next day.
->
-> regards,
-> dan carpenter
->
-Yes I was about to send patch with kmalloc(sizeof(*hci) + sizeof(u8)).
-Now I'll take your advice and send the patch tomorrow.
-
-Thanks,
-Amey
-
---jyslrfw62hrxq7ip
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEb5tNK+B4oWmn+0Z9BBTsy/Z3yzYFAmAj/XQACgkQBBTsy/Z3
-yzbaowgAmz+E/S2FJPQNOQbR3rn7hOqy0HcAUM5WNjZ8Q4Qnd5+K28z5mr1M47or
-VFNNjtfq1pr46zPGUUm3sIsd+nfYkun5Ya+KlV6nbsw5uUqnUKQktietlN25k7No
-MkEEze4w8FLZ55tgW0SuHPR+iAR++1FZuMDgDmJhlWJYN/oiHBqgq6TsRsRi3sT0
-pev8ihSRzZRERb+msPAX8URUT+6qC+r7iHNMFfU9k9SpUBf1KRtzmab4F6+nZwRp
-WUEeALP6HrKiMfWs6+74Hyp+MCyhHTOQ+BgUs5O51DKXT07NGf4BdfdAW+UwO1Ws
-3grFxtVbeqWgnDKlWPCgOX0CEeuiGA==
-=6vKP
------END PGP SIGNATURE-----
-
---jyslrfw62hrxq7ip--
-
---===============3016451356878620383==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/staging/rtl8723bs/include/rtw_debug.h b/drivers/staging/rtl8723bs/include/rtw_debug.h
+index c90adfb87261..d06ac9540cf7 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_debug.h
++++ b/drivers/staging/rtl8723bs/include/rtw_debug.h
+@@ -201,19 +201,16 @@
+ #ifdef DEBUG
+ #if	defined(_dbgdump)
+ 	#undef DBG_871X
+-	#define DBG_871X(...)     do {\
+-		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+-	} while (0)
++	#define DBG_871X(...)\
++		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
+ 
+ 	#undef MSG_8192C
+-	#define MSG_8192C(...)     do {\
+-		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+-	} while (0)
++	#define MSG_8192C(...)\
++		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
+ 
+ 	#undef DBG_8192C
+-	#define DBG_8192C(...)     do {\
+-		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+-	} while (0)
++	#define DBG_8192C(...)\
++		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
+ #endif /* defined(_dbgdump) */
+ #endif /* DEBUG */
+ 
+@@ -235,25 +232,26 @@
+ 
+ #if	defined(_dbgdump)
+ 	#undef RT_PRINT_DATA
+-	#define RT_PRINT_DATA(_Comp, _Level, _TitleString, _HexData, _HexDataLen)			\
+-		if (((_Comp) & GlobalDebugComponents) && (_Level <= GlobalDebugLevel))	\
+-		{									\
++	#define RT_PRINT_DATA(_comp, _level, _title_string, _hex_data, _hex_data_len)		\
++	do {											\
++		if (((_comp) & GlobalDebugComponents) && ((_level) <= GlobalDebugLevel)) {	\
+ 			int __i;								\
+-			u8 *ptr = (u8 *)_HexData;				\
++			u8 *ptr = (u8 *)_hex_data;						\
+ 			_dbgdump("%s", DRIVER_PREFIX);						\
+-			_dbgdump(_TitleString);						\
+-			for (__i = 0; __i < (int)_HexDataLen; __i++)				\
+-			{								\
++			_dbgdump(_title_string);						\
++			for (__i = 0; __i < (int)_hex_data_len; __i++) {			\
+ 				_dbgdump("%02X%s", ptr[__i], (((__i + 1) % 4) == 0)?"  ":" ");	\
+-				if (((__i + 1) % 16) == 0)	_dbgdump("\n");			\
+-			}								\
+-			_dbgdump("\n");							\
+-		}
++				if (((__i + 1) % 16) == 0)					\
++					_dbgdump("\n");						\
++			}									\
++			_dbgdump("\n");								\
++		}										\
++	} while (0)
+ #endif /* defined(_dbgdump) */
+ #endif /* DEBUG_RTL871X */
+ 
+ #ifdef CONFIG_DBG_COUNTER
+-#define DBG_COUNTER(counter) counter++
++#define DBG_COUNTER(counter) ((counter)++)
+ #else
+ #define DBG_COUNTER(counter) do {} while (0)
+ #endif
+-- 
+2.29.2
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3016451356878620383==--
