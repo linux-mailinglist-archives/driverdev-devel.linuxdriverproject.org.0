@@ -1,92 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC28A316D49
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 18:51:01 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9393D316EEB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 19:40:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 71C556F7AA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 17:51:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A3F8787427;
+	Wed, 10 Feb 2021 18:40:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UZYnyzH2WAcM for <lists+driverdev-devel@lfdr.de>;
-	Wed, 10 Feb 2021 17:50:59 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 036C46F655; Wed, 10 Feb 2021 17:50:58 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5S2KCXfE15r2; Wed, 10 Feb 2021 18:40:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F10136F69E;
-	Wed, 10 Feb 2021 17:50:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 22FAC87391;
+	Wed, 10 Feb 2021 18:40:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E412A1BF860
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:50:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 498E81BF419
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 18:40:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E13E286AC9
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:50:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 464A286AB3
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 18:40:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mCnJVWR5JmGG for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 17:50:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com
- [66.111.4.25])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6626A8693F
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 17:50:14 +0000 (UTC)
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id A4EDE5C0222;
- Wed, 10 Feb 2021 12:50:13 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Wed, 10 Feb 2021 12:50:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=2KiaYljnLbMw401GGxte1DwjG79
- QKTgtQggzO4yjkfI=; b=BOwHgy343rT/CqiWDyeOqs/CXVsAlXpWjS+IRqAWkMF
- s9XWjJEvh1ooydYuWMaexjiu+qWj/tsrWR4ap5Ydjw1GD0UMyiS9obtEawyhBqRR
- 0P7mYP2Q0kYODJKyoTdP//hEl83VXe3OXcA1mMd9cuTSTBjJM9caTHt60AXz7hVP
- uAw/qEGAUGt/4T7vuITDv6UZUMaCDPWTmHOBaeW2l+n1QeFRdg3AGRmQYkylwn9I
- 9rUB8kcA72Vx6mCqhaHgG/0EB8R6DjDOgqN+r6KQzn6R/Vgs1YhGNnO43e7aeWeN
- 6fhYkU/lrlV+0WFzZ6VgN5o/spcBtNrhK/Xxt1aU4lQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=2KiaYl
- jnLbMw401GGxte1DwjG79QKTgtQggzO4yjkfI=; b=Qj76Yol+M4wfmCWusTe6/H
- 46GN62KXYBgwrcsP+xVXlvRsoPY2d8XO08aM0FV4KkQUSkXlt1+SXzj6KYHChh1k
- Nohr2muym9e4FQu4vPfZ1ArOd722m4ClkDN46OE/DiS3oVr+7Ka5dGbmTCAneFMM
- qC6vVnx0SwVdopTNvh5vtSkU/dkXkxRsjtNmXc2EKGeo3gNlW/9c1KJyYAfXacNx
- jS/g3F4wABDMGLUreBh/hUzIpNerxiWV7ACN6HWUEOrCBErxRRFd3T0DGfpWYMp+
- UprG4jKCnFkYwFOdfy2zdHQWBXQx1m/Kq7QpoWwVCzbQI3sLC7hNLqKOmYazbsYA
- ==
-X-ME-Sender: <xms:1RwkYGaE7PABfl4eoAcmN1nb8ub0Ew79XJdLB1JjguVluhbmzW-xGw>
- <xme:1RwkYGjAxcoYBgG9rBKmAhtoVqXps8wJ74O-T8IqyIe2YArGDfUy7p17ackiEhHLe
- PtmVPL6w9479g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrheejgddutdefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefirhgvghcu
- mfhrohgrhhdqjfgrrhhtmhgrnhcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrf
- grthhtvghrnhepfeeuveektddutdduiedukeeufedtjeekhefhieevhefhleduffehfffh
- vefhtdfhnecukfhppeekfedrkeeirdejgedrieegnecuvehluhhsthgvrhfuihiivgeptd
- enucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhm
-X-ME-Proxy: <xmx:1RwkYP-17JS756yhH67QJla1OEBfkM2YkJEkM8mnf3WMa0dEQpOw2Q>
- <xmx:1RwkYJrfmVPUJym6g8fN6WJmiKHerTArVw_-7Qczjiw0ejZZAjLMVw>
- <xmx:1RwkYPXR0Xx92ww7z0MILUhPmgeXpfH_000zLgF2N-xw1Q4HnabJOQ>
- <xmx:1RwkYBJKktT5g4teAROlSRJ30-eq31vb4HWIR-bdM5p6j2BsCwwCFw>
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- by mail.messagingengine.com (Postfix) with ESMTPA id B63B21080059;
- Wed, 10 Feb 2021 12:50:12 -0500 (EST)
-Date: Wed, 10 Feb 2021 18:50:10 +0100
-From: Greg Kroah-Hartman <greg@kroah.com>
-To: Yujia Qiao <rapiz@foxmail.com>
-Subject: Re: [PATCH] Staging: vt6655: Replace a camel case variable name
-Message-ID: <YCQc0iBNqqkr/KK/@kroah.com>
-References: <tencent_30203B4B4D63EBA1A5083C4AB110C9243C08@qq.com>
+ with ESMTP id dzinZPE7tiCs for <devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 18:40:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4AA3686A9D
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 18:40:46 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11AIP7Gr089153;
+ Wed, 10 Feb 2021 18:40:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=C+Gyl+bsnt2+HTSAhWjCVJVbRPBb0xQhVV2gG5aAxOg=;
+ b=tGTEWrEqurwtPVMKI0IFlMMOs0OLVh/eJUWy18hgKf0uPEkIeBu/VMeRAw9NLZuWjhjD
+ dYcg3AFFByq7RiYjRTALOcok+tWsIL2M8jlz96xdA5UXhEdZjpXmpspnfJU5omdRlkV5
+ WS1rPFJE0nugv4j9M0DpC69VP5yMLHU1Bze69Nc4iODOpB51Qffjz6HGLJg0W4dB0YZN
+ 8/HEXEM4yapNdimboW4w4hK6BlGhP0iECSxlBDua5tE1IatXHHLYLAAMpV4iAvbSuAdq
+ gzsRXZECyHZK1VNn9Z+7R5YNtr2c5bYWbmASlKyOGVyxKW74p8l0VP6j3XLQRQM/rRMM KQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 36hjhqvmcn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 10 Feb 2021 18:40:45 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11AIP5u4183658;
+ Wed, 10 Feb 2021 18:40:43 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 36j51xxy03-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 10 Feb 2021 18:40:43 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11AIegxX032272;
+ Wed, 10 Feb 2021 18:40:42 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 10 Feb 2021 10:40:41 -0800
+Date: Wed, 10 Feb 2021 21:40:27 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Phillip Potter <phil@philpotter.co.uk>
+Subject: Re: [PATCH] staging: rtl8723bs: cleanup macros within
+ include/rtw_debug.h
+Message-ID: <20210210184027.GZ2696@kadam>
+References: <20210210170003.100880-1-phil@philpotter.co.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <tencent_30203B4B4D63EBA1A5083C4AB110C9243C08@qq.com>
+In-Reply-To: <20210210170003.100880-1-phil@philpotter.co.uk>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9891
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ spamscore=0 phishscore=0
+ mlxscore=0 malwarescore=0 mlxlogscore=999 bulkscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102100167
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9891
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ impostorscore=0
+ priorityscore=1501 bulkscore=0 suspectscore=0 mlxscore=0 phishscore=0
+ lowpriorityscore=0 mlxlogscore=999 clxscore=1011 spamscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102100167
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,26 +99,135 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Forest Bond <forest@alittletooquiet.net>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, luk@wybcz.pl,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 10, 2021 at 06:42:07PM +0800, Yujia Qiao wrote:
-> Replace camel case variable names with snake case in baseband.c.
+On Wed, Feb 10, 2021 at 05:00:03PM +0000, Phillip Potter wrote:
+> Remove do/while loops from DBG_871X, MSG_8192C and DBG_8192C.
+
+I'm pretty hip to checkpatch.pl warnings, but I had forgotten what the
+warning was for this:
+
+WARNING: Single statement macros should not use a do {} while (0) loop
+
+Please, include it for people who are forgetful like I am.
+
+> Also
+> fix opening brace placements and trailing single statement layout within
+> RT_PRINT_DATA, as well as making newline character placement more
+> consistent and removing camel case where possible. Finally, add
+> parentheses for DBG_COUNTER definition.
 > 
-> Signed-off-by: Yujia Qiao <rapiz@foxmail.com>
+> This fixes 3 checkpatch warnings, 5 checkpatch errors and 3 checkpatch
+> checks.
+
+This patch would be easier to review if it were split into multiple
+patches.
+
+> 
+> Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
 > ---
->  drivers/staging/vt6655/baseband.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/staging/rtl8723bs/include/rtw_debug.h | 40 +++++++++----------
+>  1 file changed, 19 insertions(+), 21 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/include/rtw_debug.h b/drivers/staging/rtl8723bs/include/rtw_debug.h
+> index c90adfb87261..d06ac9540cf7 100644
+> --- a/drivers/staging/rtl8723bs/include/rtw_debug.h
+> +++ b/drivers/staging/rtl8723bs/include/rtw_debug.h
+> @@ -201,19 +201,16 @@
+>  #ifdef DEBUG
+>  #if	defined(_dbgdump)
+>  	#undef DBG_871X
+> -	#define DBG_871X(...)     do {\
+> -		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+> -	} while (0)
+> +	#define DBG_871X(...)\
+> +		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
 
-This doesn't apply cleanly to my staging-next branch, can you please
-rebase it and resend?
+This can fit on one line:
 
-thanks,
+	#define DBG_871X(...) _dbgdump(DRIVER_PREFIX __VA_ARGS__)
 
-greg k-h
+It's tough with staging code to know how much to change at one time
+because even after you change the code then it still looks rubbish.
+This define shouldn't be indented.  The _dbgdump() macro is just
+
+#define _dbgdump printk
+
+so you know, no printk level.  Wow.  etc.  This code is crap.
+
+>  
+>  	#undef MSG_8192C
+> -	#define MSG_8192C(...)     do {\
+> -		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+> -	} while (0)
+> +	#define MSG_8192C(...)\
+> +		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
+>  
+>  	#undef DBG_8192C
+> -	#define DBG_8192C(...)     do {\
+> -		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
+> -	} while (0)
+> +	#define DBG_8192C(...)\
+> +		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
+>  #endif /* defined(_dbgdump) */
+>  #endif /* DEBUG */
+>  
+
+Yeah.  Do all the above as one patch.
+
+> @@ -235,25 +232,26 @@
+>  
+>  #if	defined(_dbgdump)
+>  	#undef RT_PRINT_DATA
+> -	#define RT_PRINT_DATA(_Comp, _Level, _TitleString, _HexData, _HexDataLen)			\
+> -		if (((_Comp) & GlobalDebugComponents) && (_Level <= GlobalDebugLevel))	\
+> -		{									\
+> +	#define RT_PRINT_DATA(_comp, _level, _title_string, _hex_data, _hex_data_len)		\
+> +	do {											\
+> +		if (((_comp) & GlobalDebugComponents) && ((_level) <= GlobalDebugLevel)) {	\
+>  			int __i;								\
+> -			u8 *ptr = (u8 *)_HexData;				\
+> +			u8 *ptr = (u8 *)_hex_data;						\
+>  			_dbgdump("%s", DRIVER_PREFIX);						\
+> -			_dbgdump(_TitleString);						\
+> -			for (__i = 0; __i < (int)_HexDataLen; __i++)				\
+> -			{								\
+> +			_dbgdump(_title_string);						\
+> +			for (__i = 0; __i < (int)_hex_data_len; __i++) {			\
+>  				_dbgdump("%02X%s", ptr[__i], (((__i + 1) % 4) == 0)?"  ":" ");	\
+> -				if (((__i + 1) % 16) == 0)	_dbgdump("\n");			\
+> -			}								\
+> -			_dbgdump("\n");							\
+> -		}
+> +				if (((__i + 1) % 16) == 0)					\
+> +					_dbgdump("\n");						\
+> +			}									\
+> +			_dbgdump("\n");								\
+> +		}										\
+> +	} while (0)
+
+This is okay, I suppose but we have functions to dump hex data.  I can't
+remember what they are...  One patch for this.
+
+>  #endif /* defined(_dbgdump) */
+>  #endif /* DEBUG_RTL871X */
+>  
+>  #ifdef CONFIG_DBG_COUNTER
+> -#define DBG_COUNTER(counter) counter++
+> +#define DBG_COUNTER(counter) ((counter)++)
+
+Heh...  I think these counters are write only variables.  Double check
+and then just delete everything to do with CONFIG_DBG_COUNTER.
+(In a separate patch).
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
