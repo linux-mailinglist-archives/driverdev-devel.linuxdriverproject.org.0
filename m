@@ -2,82 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E96AB316F4F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 19:55:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B193316FB1
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 20:10:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9249486FA2;
-	Wed, 10 Feb 2021 18:55:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 24FCE86FB2;
+	Wed, 10 Feb 2021 19:10:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n3n+Ms2j04iF; Wed, 10 Feb 2021 18:55:52 +0000 (UTC)
+	with ESMTP id xhlYry8xSTJs; Wed, 10 Feb 2021 19:10:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7EB2786EC8;
-	Wed, 10 Feb 2021 18:55:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 20D2C86F84;
+	Wed, 10 Feb 2021 19:10:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 98E161BF419
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 18:55:49 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9524D1BF403
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 19:10:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 950F4847EB
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 18:55:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 900E186F80
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 19:10:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 83VuvBbSvkUV for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 18:55:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com
- [209.85.128.49])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 79A7F84471
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 18:55:48 +0000 (UTC)
-Received: by mail-wm1-f49.google.com with SMTP id o15so927119wmq.5
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 10:55:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=AAePRhaYdh8IR3fav5qzi16yCJ4dvJcD8Hr4awo6sqg=;
- b=xzE1+Zfo6WjzIVQ6sQPRizZxaH8vtOoI8fCXALfGd1f4NR0zmslqKN0sdCDN1aaYMe
- mHu+1+q772zg5sruTt9S0Ue/8NYj8h3fUqgzRksH3sYffeYnDE4yDS9hJdPl3x3G/WkD
- Swp6Smn6D0rMrqd0v2X852p45xy+VBAfGm0FFwBliyS6SK+k0Jre0Dd7UU31YDP+njOe
- I2YUkI1K6M0EHNs2NVfzPJZyuDiR+OT9TeDJ0weNBKuzFOHUY1r5V+OjGdtpfjD7zlGX
- y2sHolQDeWDERnUcmDv3Du9t18KeC4BRula4wk+UfNuu/99K9LtUcZmQuFnreHLnatS2
- 8byA==
+ with ESMTP id S-6QnHZreJOY for <devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 19:10:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f177.google.com (mail-pf1-f177.google.com
+ [209.85.210.177])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7D25A86F75
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 19:10:21 +0000 (UTC)
+Received: by mail-pf1-f177.google.com with SMTP id q20so1895379pfu.8
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 11:10:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AAePRhaYdh8IR3fav5qzi16yCJ4dvJcD8Hr4awo6sqg=;
- b=U9JcWXKZMqaYjI84gPx4vNZsB7YWDzXY6Ii5c9bGdmHQ4grlQuil+lYFJrmFCX7kOm
- q1O6KlSX4qfcmII7X0Vztbu8CyLRLaAWdqUyFcmydaVscXfpMWpOae7yv/o9j6LxS8HW
- s0FSwTOQubKFb0Oli+O4NAGDxSfGNf0Vr3g2m/ZvwTUPj8gk10E4oHbbu+S7pdlW9Ngt
- Qd3lP63Upcy/Kw1BOHxd6IpOD38waYgZHG0N5Q8nr+XPBsVxUyX0ZNFiJ9UrFbqpgg+e
- hXiFAdyHtoQbbfVpT5cqUkybUPz17iJHF5fWGaIo30Yinux2+Sl4ygNm6rfvnBdoTqNq
- bUBQ==
-X-Gm-Message-State: AOAM530z0Jwubr76zYdaIxuV8xIXKFhlEp9tyTtJY/1/j3jZP0e0txHm
- ho8t3Uc7HaLNN3RBvtpWnWXhtg==
-X-Google-Smtp-Source: ABdhPJypOD8g1AAXNkZV9oOdvxbuXUW5wGmn8pO4JVXtoSW08tacbgMuvcZ8UbiM5jtefiHXSXzsdA==
-X-Received: by 2002:a1c:f001:: with SMTP id a1mr338842wmb.21.1612983346932;
- Wed, 10 Feb 2021 10:55:46 -0800 (PST)
-Received: from kernelvm
- (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
- [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
- by smtp.gmail.com with ESMTPSA id u142sm3812064wmu.3.2021.02.10.10.55.45
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=6uhamtRDVQ5W7PuL+OxgzVNnY2TIw/W8O7lDC5/cd6Y=;
+ b=FO6+RRCbF4nreyUlgeqcWcVYmd2URuO40SNQGPO3uxEyQQQc0e3Jd1u+N20XqeOMub
+ ZpqKH92iprdXvpO1SNgEiz1DZhCfin97od1ZzsKsWl7Dt+I3utbi8y6NLazRYUWixiZN
+ WzlMR72rv8koENLWnu4n3U+Br0aubvUfTCGcGZy8rfwfSW0Zh82wRqHHDiGBqYFXZz7h
+ Xs7Dno2teD8bFPiae+q7lWSh7LO26a7svU1t0bcRcm1WCJn4cDcde5ZhI1YlNnsaaSzn
+ +1LsvD7zunt05Ffv0GwqIcomvoxqzV+4p80hWZsJNo5y5s3TAdDG/xLFYhoJUqLTn1TU
+ jxPg==
+X-Gm-Message-State: AOAM53188yt6qBthsPZdYYlqBwutjw7FLfPq3892NfxxP+o1M5UjvxqG
+ RzrsJ90DMmNQmH5PVhK+eM8=
+X-Google-Smtp-Source: ABdhPJy23PXtEfK2WIswIgCWg1HLrUZnehshOr1ru8LGxo6fJg0NJ/9/O/bI5O1T7S2fiu2U61FwYA==
+X-Received: by 2002:a62:5a07:0:b029:1cf:f54d:6e59 with SMTP id
+ o7-20020a625a070000b02901cff54d6e59mr4556005pfb.49.1612984220926; 
+ Wed, 10 Feb 2021 11:10:20 -0800 (PST)
+Received: from karthik-strix-linux.karthek.com ([192.140.155.38])
+ by smtp.gmail.com with ESMTPSA id h15sm3105444pfo.193.2021.02.10.11.10.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 10:55:46 -0800 (PST)
-Date: Wed, 10 Feb 2021 18:55:44 +0000
-From: Phillip Potter <phil@philpotter.co.uk>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] staging: rtl8723bs: cleanup macros within
- include/rtw_debug.h
-Message-ID: <20210210185544.GA1786@kernelvm>
-References: <20210210170003.100880-1-phil@philpotter.co.uk>
- <20210210184027.GZ2696@kadam>
+ Wed, 10 Feb 2021 11:10:20 -0800 (PST)
+Date: Thu, 11 Feb 2021 00:40:15 +0530
+From: karthik alapati <mail@karthek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [PATCH] staging: rtl8723bs: fix function comments to follow kernel-doc
+Message-ID: <YCQvl3+KviQNh2JI@karthik-strix-linux.karthek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210210184027.GZ2696@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,153 +75,276 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, luk@wybcz.pl,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 10, 2021 at 09:40:27PM +0300, Dan Carpenter wrote:
-> On Wed, Feb 10, 2021 at 05:00:03PM +0000, Phillip Potter wrote:
-> > Remove do/while loops from DBG_871X, MSG_8192C and DBG_8192C.
-> 
-> I'm pretty hip to checkpatch.pl warnings, but I had forgotten what the
-> warning was for this:
-> 
-> WARNING: Single statement macros should not use a do {} while (0) loop
-> 
-> Please, include it for people who are forgetful like I am.
-> 
-> > Also
-> > fix opening brace placements and trailing single statement layout within
-> > RT_PRINT_DATA, as well as making newline character placement more
-> > consistent and removing camel case where possible. Finally, add
-> > parentheses for DBG_COUNTER definition.
-> > 
-> > This fixes 3 checkpatch warnings, 5 checkpatch errors and 3 checkpatch
-> > checks.
-> 
-> This patch would be easier to review if it were split into multiple
-> patches.
-> 
-> > 
-> > Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
-> > ---
-> >  drivers/staging/rtl8723bs/include/rtw_debug.h | 40 +++++++++----------
-> >  1 file changed, 19 insertions(+), 21 deletions(-)
-> > 
-> > diff --git a/drivers/staging/rtl8723bs/include/rtw_debug.h b/drivers/staging/rtl8723bs/include/rtw_debug.h
-> > index c90adfb87261..d06ac9540cf7 100644
-> > --- a/drivers/staging/rtl8723bs/include/rtw_debug.h
-> > +++ b/drivers/staging/rtl8723bs/include/rtw_debug.h
-> > @@ -201,19 +201,16 @@
-> >  #ifdef DEBUG
-> >  #if	defined(_dbgdump)
-> >  	#undef DBG_871X
-> > -	#define DBG_871X(...)     do {\
-> > -		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
-> > -	} while (0)
-> > +	#define DBG_871X(...)\
-> > +		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
-> 
-> This can fit on one line:
-> 
-> 	#define DBG_871X(...) _dbgdump(DRIVER_PREFIX __VA_ARGS__)
-> 
-> It's tough with staging code to know how much to change at one time
-> because even after you change the code then it still looks rubbish.
-> This define shouldn't be indented.  The _dbgdump() macro is just
-> 
-> #define _dbgdump printk
-> 
-> so you know, no printk level.  Wow.  etc.  This code is crap.
+fix checkpatch.pl warning for "block comments should align the
+ * on each line" and make function comments follow kernel-doc
 
-So I'm in the process of stripping out _dbgdump entirely as per Greg
-K-H's suggestion - am I to understand raw printk is frowned upon though,
-even with the correct KERN_x level specified?
+Signed-off-by: karthik alapati <mail@karthek.com>
+---
+ .../staging/rtl8723bs/hal/rtl8723b_phycfg.c   | 185 +++++++-----------
+ 1 file changed, 73 insertions(+), 112 deletions(-)
 
-> 
-> >  
-> >  	#undef MSG_8192C
-> > -	#define MSG_8192C(...)     do {\
-> > -		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
-> > -	} while (0)
-> > +	#define MSG_8192C(...)\
-> > +		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
-> >  
-> >  	#undef DBG_8192C
-> > -	#define DBG_8192C(...)     do {\
-> > -		_dbgdump(DRIVER_PREFIX __VA_ARGS__);\
-> > -	} while (0)
-> > +	#define DBG_8192C(...)\
-> > +		_dbgdump(DRIVER_PREFIX __VA_ARGS__)
-> >  #endif /* defined(_dbgdump) */
-> >  #endif /* DEBUG */
-> >  
-> 
-> Yeah.  Do all the above as one patch.
-> 
-> > @@ -235,25 +232,26 @@
-> >  
-> >  #if	defined(_dbgdump)
-> >  	#undef RT_PRINT_DATA
-> > -	#define RT_PRINT_DATA(_Comp, _Level, _TitleString, _HexData, _HexDataLen)			\
-> > -		if (((_Comp) & GlobalDebugComponents) && (_Level <= GlobalDebugLevel))	\
-> > -		{									\
-> > +	#define RT_PRINT_DATA(_comp, _level, _title_string, _hex_data, _hex_data_len)		\
-> > +	do {											\
-> > +		if (((_comp) & GlobalDebugComponents) && ((_level) <= GlobalDebugLevel)) {	\
-> >  			int __i;								\
-> > -			u8 *ptr = (u8 *)_HexData;				\
-> > +			u8 *ptr = (u8 *)_hex_data;						\
-> >  			_dbgdump("%s", DRIVER_PREFIX);						\
-> > -			_dbgdump(_TitleString);						\
-> > -			for (__i = 0; __i < (int)_HexDataLen; __i++)				\
-> > -			{								\
-> > +			_dbgdump(_title_string);						\
-> > +			for (__i = 0; __i < (int)_hex_data_len; __i++) {			\
-> >  				_dbgdump("%02X%s", ptr[__i], (((__i + 1) % 4) == 0)?"  ":" ");	\
-> > -				if (((__i + 1) % 16) == 0)	_dbgdump("\n");			\
-> > -			}								\
-> > -			_dbgdump("\n");							\
-> > -		}
-> > +				if (((__i + 1) % 16) == 0)					\
-> > +					_dbgdump("\n");						\
-> > +			}									\
-> > +			_dbgdump("\n");								\
-> > +		}										\
-> > +	} while (0)
-> 
-> This is okay, I suppose but we have functions to dump hex data.  I can't
-> remember what they are...  One patch for this.
-> 
-> >  #endif /* defined(_dbgdump) */
-> >  #endif /* DEBUG_RTL871X */
-> >  
-> >  #ifdef CONFIG_DBG_COUNTER
-> > -#define DBG_COUNTER(counter) counter++
-> > +#define DBG_COUNTER(counter) ((counter)++)
-> 
-> Heh...  I think these counters are write only variables.  Double check
-> and then just delete everything to do with CONFIG_DBG_COUNTER.
-> (In a separate patch).
-> 
-> regards,
-> dan carpenter
-> 
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
+index cf23414d7..1fd504181 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
+@@ -20,16 +20,11 @@
+ #define MAX_DOZE_WAITING_TIMES_9x 64
+ 
+ /**
+-* Function:	phy_CalculateBitShift
+-*
+-* OverView:	Get shifted position of the BitMask
+-*
+-* Input:
+-*		u32 	BitMask,
+-*
+-* Output:	none
+-* Return:		u32 	Return the shift bit bit position of the mask
+-*/
++ *	phy_CalculateBitShift - Get shifted position of the BitMask.
++ *	@BitMask: Bitmask.
++ *
++ *	Return:	Return the shift bit position of the mask
++ */
+ static	u32 phy_CalculateBitShift(u32 BitMask)
+ {
+ 	u32 i;
+@@ -43,19 +38,17 @@ static	u32 phy_CalculateBitShift(u32 BitMask)
+ 
+ 
+ /**
+-* Function:	PHY_QueryBBReg
+-*
+-* OverView:	Read "specific bits" from BB register
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		u32 		RegAddr,	The target address to be readback
+-*		u32 		BitMask		The target bit position in the target address
+-*							to be readback
+-* Output:	None
+-* Return:		u32 		Data		The readback register value
+-* Note:		This function is equal to "GetRegSetting" in PHY programming guide
+-*/
++ *	PHY_QueryBBReg - Read "specific bits" from BB register.
++ *	@Adapter:
++ *	@RegAddr:	The target address to be readback
++ *	@BitMask:	The target bit position in the target address
++ *				to be readback
++ *
++ * Return:	The readback register value
++ *
++ * .. Note::	This function is equal to "GetRegSetting" in PHY programming
++ *			guide
++ */
+ u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask)
+ {
+ 	u32 OriginalValue, BitShift;
+@@ -75,22 +68,17 @@ u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask)
+ 
+ 
+ /**
+-* Function:	PHY_SetBBReg
+-*
+-* OverView:	Write "Specific bits" to BB register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		u32 		RegAddr,	The target address to be modified
+-*		u32 		BitMask		The target bit position in the target address
+-*								to be modified
+-*		u32 		Data		The new register value in the target bit position
+-*								of the target address
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		This function is equal to "PutRegSetting" in PHY programming guide
+-*/
++ *	PHY_SetBBReg - Write "Specific bits" to BB register (page 8~).
++ *	@Adapter:
++ *	@RegAddr:	The target address to be modified
++ *	@BitMask:	The target bit position in the target address
++ *				to be modified
++ *	@Data:		The new register value in the target bit position
++ *				of the target address
++ *
++ * .. Note::	This function is equal to "PutRegSetting" in PHY programming
++ *			guide
++ */
+ 
+ void PHY_SetBBReg_8723B(
+ 	struct adapter *Adapter,
+@@ -184,27 +172,21 @@ static u32 phy_RFSerialRead_8723B(
+ }
+ 
+ /**
+-* Function:	phy_RFSerialWrite_8723B
+-*
+-* OverView:	Write data to RF register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		RF_PATH			eRFPath,	Radio path of A/B/C/D
+-*		u32 		Offset,		The target address to be read
+-*		u32 		Data		The new register Data in the target bit position
+-*								of the target to be read
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		Threre are three types of serial operations:
+-*		1. Software serial write
+-*		2. Hardware LSSI-Low Speed Serial Interface
+-*		3. Hardware HSSI-High speed
+-*		serial write. Driver need to implement (1) and (2).
+-*		This function is equal to the combination of RF_ReadReg() and  RFLSSIRead()
++ *	phy_RFSerialWrite_8723B - Write data to RF register (page 8~).
++ *	@Adapter:
++ *	@eRFPath:	Radio path of A/B/C/D
++ *	@Offset:	The target address to be read
++ *	@Data:	The new register Data in the target bit position
++ *			of the target to be read
++ *
++ * .. Note::	Threre are three types of serial operations:
++ *		1. Software serial write
++ *		2. Hardware LSSI-Low Speed Serial Interface
++ *		3. Hardware HSSI-High speed
++ *		serial write. Driver need to implement (1) and (2).
++ *		This function is equal to the combination of RF_ReadReg() and  RFLSSIRead()
+  *
+- * Note:		  For RF8256 only
++ * .. Note::		  For RF8256 only
+  *		 The total count of RTL8256(Zebra4) register is around 36 bit it only employs
+  *		 4-bit RF address. RTL8256 uses "register mode control bit" (Reg00[12], Reg00[10])
+  *		 to access register address bigger than 0xf. See "Appendix-4 in PHY Configuration
+@@ -225,7 +207,7 @@ static u32 phy_RFSerialRead_8723B(
+  *
+  *
+  *
+-*/
++ */
+ static void phy_RFSerialWrite_8723B(
+ 	struct adapter *Adapter,
+ 	enum RF_PATH eRFPath,
+@@ -261,21 +243,18 @@ static void phy_RFSerialWrite_8723B(
+ 
+ 
+ /**
+-* Function:	PHY_QueryRFReg
+-*
+-* OverView:	Query "Specific bits" to RF register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		RF_PATH			eRFPath,	Radio path of A/B/C/D
+-*		u32 		RegAddr,	The target address to be read
+-*		u32 		BitMask		The target bit position in the target address
+-*								to be read
+-*
+-* Output:	None
+-* Return:		u32 		Readback value
+-* Note:		This function is equal to "GetRFRegSetting" in PHY programming guide
+-*/
++ *	PHY_QueryRFReg - Query "Specific bits" to RF register (page 8~).
++ *	@Adapter:
++ *	@eRFPath:	Radio path of A/B/C/D
++ *	@RegAdd:	The target address to be read
++ *	@BitMask:	The target bit position in the target address
++ *				to be read
++ *
++ *	Return:	Readback value
++ *
++ * .. Note::	This function is equal to "GetRFRegSetting" in PHY
++ *			programming guide
++ */
+ u32 PHY_QueryRFReg_8723B(
+ 	struct adapter *Adapter,
+ 	u8 eRFPath,
+@@ -296,23 +275,18 @@ u32 PHY_QueryRFReg_8723B(
+ }
+ 
+ /**
+-* Function:	PHY_SetRFReg
+-*
+-* OverView:	Write "Specific bits" to RF register (page 8~)
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*		RF_PATH			eRFPath,	Radio path of A/B/C/D
+-*		u32 		RegAddr,	The target address to be modified
+-*		u32 		BitMask		The target bit position in the target address
+-*								to be modified
+-*		u32 		Data		The new register Data in the target bit position
+-*								of the target address
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		This function is equal to "PutRFRegSetting" in PHY programming guide
+-*/
++ *	PHY_SetRFReg - Write "Specific bits" to RF register (page 8~).
++ *	@Adapter:
++ *	@eRFPath:	Radio path of A/B/C/D
++ *	@RegAddr:	The target address to be modified
++ *	@BitMask:	The target bit position in the target address
++ *				to be modified
++ *	@Data:	The new register Data in the target bit position
++ *								of the target address
++ *
++ *	.. Note::	This function is equal to "PutRFRegSetting" in PHY
++ *			programming guide.
++ */
+ void PHY_SetRFReg_8723B(
+ 	struct adapter *Adapter,
+ 	u8 eRFPath,
+@@ -344,15 +318,7 @@ void PHY_SetRFReg_8723B(
+ 
+ 
+ /*-----------------------------------------------------------------------------
+- * Function:    PHY_MACConfig8192C
+- *
+- * Overview:	Condig MAC by header file or parameter file.
+- *
+- * Input:       NONE
+- *
+- * Output:      NONE
+- *
+- * Return:      NONE
++ *	PHY_MACConfig8192C - Condig MAC by header file or parameter file.
+  *
+  * Revised History:
+  *  When		Who		Remark
+@@ -369,17 +335,12 @@ s32 PHY_MACConfig8723B(struct adapter *Adapter)
+ }
+ 
+ /**
+-* Function:	phy_InitBBRFRegisterDefinition
+-*
+-* OverView:	Initialize Register definition offset for Radio Path A/B/C/D
+-*
+-* Input:
+-*		struct adapter *	Adapter,
+-*
+-* Output:	None
+-* Return:		None
+-* Note:		The initialization value is constant and it should never be changes
+-*/
++ *	phy_InitBBRFRegisterDefinition - Initialize Register definition offset for
++ *									Radio Path A/B/C/D
++ *	@Adapter:
++ *
++ *	.. Note::		The initialization value is constant and it should never be changes
++ */
+ static void phy_InitBBRFRegisterDefinition(struct adapter *Adapter)
+ {
+ 	struct hal_com_data		*pHalData = GET_HAL_DATA(Adapter);
+-- 
+2.30.0
 
-Thank you for your feedback (and thank you Greg for yours also). I
-hugely appreciate it as a novice/newb.
-
-One query I have is that individual patches I'm working on for this file are
-generating an awful lot of checkpatch warnings themselves due to the
-nature of the existing violations on the relevant lines. Is it
-considered acceptable for me to still submit these, providing I do so in
-a series which cleans up the other violations in separate patches?
-
-Regards,
-Phil
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
