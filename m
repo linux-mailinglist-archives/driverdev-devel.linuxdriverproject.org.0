@@ -1,90 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7244A316565
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 12:42:40 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C67D3165EC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 13:04:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 09A6B6F568
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 11:42:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7FF37872A3;
+	Wed, 10 Feb 2021 12:04:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CQQ0Ojt6b4Fh for <lists+driverdev-devel@lfdr.de>;
-	Wed, 10 Feb 2021 11:42:37 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id D36A26F5A5; Wed, 10 Feb 2021 11:42:37 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g9BUuynH9Eyp; Wed, 10 Feb 2021 12:04:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 87B6A6F48E;
-	Wed, 10 Feb 2021 11:42:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 33F5687285;
+	Wed, 10 Feb 2021 12:04:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0B79A1BF479
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 11:42:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 51B6A1BF9B6
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 12:04:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 073906F48E
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 11:42:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4BBB08064C
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 12:04:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pjV_59hRHFwo for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 11:42:10 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 4B6ED6F495; Wed, 10 Feb 2021 11:42:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com
- [209.85.128.50])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D43776F48E
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 11:42:08 +0000 (UTC)
-Received: by mail-wm1-f50.google.com with SMTP id j21so1574853wmj.0
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 03:42:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=IN+db2cORNt7VkGGcBYrI5DAOlBAd7luCiB6c6UTORg=;
- b=A+lqcb1Mco2IH4sWZvbvEORyp44FjHIA2kKgYhWKHPRcBkihslWgY+eyCxjObLl4xM
- IJdLu77vzz0H46AfAyGLrLZ3P1y6a5z1GwgMJhI4clGjeFf+PyAsCenM3g5U2vflKhew
- Ju+igjclW8aHFZvW5zgCxQyfWMS4Xu5pD9ywx63JFAYNlS4WSR6nbO70ZKcfoghRGb4z
- Rf0JtLIheyrZWr3WvWIiahz7R05/j8oqaJTIUkNIo+kjiEWRTPpEAZUcmb+bwwR3TthY
- w8gny9neoDuQOvARwJ0yj7al35enKLxoqYkPmwR0BkgrFFw+H8Knypppuo27DmWcolMY
- g6AA==
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9uuqZ1jhAcyX for <devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 12:04:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com
+ [209.85.221.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A715B84627
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 12:04:18 +0000 (UTC)
+Received: by mail-wr1-f43.google.com with SMTP id u14so2226579wri.3
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 04:04:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rJ/fTja9mKD4KGroCmj04WxehP7kOKRd+7I/05Mbq4M=;
+ b=eJNnrdbROY/AGjV55wNNaknvjSt8hJpicfMFtrcXgdTyFJmqpIaHusDBb6lLW31/CZ
+ ZmxfvmYvy/ApYALBZnb4vj4x2QRgYoJXpl/v/cBecrscBqCs3RkqaM06Bqfvap61XIvk
+ T8Ce8CL68S4E71Oi6EpucQ/oNuWHaeNJHzf7yzo+aZUOzIS2oYIujpS3u9TWHRKX3wtV
+ ilh5fn9C40JBv1O7sklmbN5iRBTrvdoHAK5qSGvYuvr/avyhTXQ45hQevJXK5cJ8dEXi
+ y3uweFvSazUr3ynpR6vPjAgNqpx+Un2eNco96FBxNTKmAMq1Xv6u7FkmDgsAt7ToOSPl
+ 8OPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=IN+db2cORNt7VkGGcBYrI5DAOlBAd7luCiB6c6UTORg=;
- b=Iyf7hbgMNbbUzDLikDk02gP4pMOmiAlJBnQFHcu0GGhtBzj2l0BRcuyrFGFDn9PQ1w
- WT4I/EgceEnPAQQ/HOK4WY6t/bDGiT0GzASjIX6iazGrAv/d8e446e5KwzQYBYPzcRdF
- 3+alPcBj6fqKY5HCvCRBoO1+gn3JSoZcH5ZpMZiMaRu/dwPWz71v7H7Qmfkfvk6raWZ3
- EuQGcFFfx4ulg4Tv87j6sgU6ZbCEtR2urXyIBKsO+GdycjNl/nt9+cxi3sM97M0g0sx6
- J8zylM+Uzd5EvfYLtoJxU7OEFF4sGY6kxBfEguZO6UG7li6hDSntAIC8eMi5sSQCICqy
- j19A==
-X-Gm-Message-State: AOAM531X9L6GBvsCYz9eR+CWrGjmiMRta9ATqNovNAkCXxYPj6kedIFS
- izSfNWU9ITnHlqCI2g1Vcpvfeg==
-X-Google-Smtp-Source: ABdhPJzcqeZvzBcu69WDOYa0AXEj+jkTjIK/0ivShR9A511clPVo2aBOAWDwimsl6o1C8uR6vnac8Q==
-X-Received: by 2002:a7b:c215:: with SMTP id x21mr2619209wmi.61.1612957326535; 
- Wed, 10 Feb 2021 03:42:06 -0800 (PST)
-Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net.
- [80.7.220.175])
- by smtp.gmail.com with ESMTPSA id y63sm2154970wmd.21.2021.02.10.03.42.04
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rJ/fTja9mKD4KGroCmj04WxehP7kOKRd+7I/05Mbq4M=;
+ b=pj1+yJE6Smhk6pfse+IGR5ibhtrbjEyt1UfPu0uPeoGgdkE5X8xHM+wPQ2TzenJ+jl
+ JAz5Eafr8WEU45QBHW9eUbxZStpprgT7gPdYoNqCeIulllILKGctQWL4gL1eXaXcCs9t
+ VmIqpK8+L82cBqoI+vmY57/UwMkNJVx+mwNwTZUMJ83OP+82GVnvku3ZbFzm81/79PBA
+ dt+ODNPlwvy2QhGQOSAsH9wJf5oDbOhjq4ULi577QU3hgc2xLwBz4bEnAt/Jhfb/CU0m
+ D1JhAey9wUkdYL48SjBkToR7CUMgx/xf8nOrYmAK1AqSg+jXFTqYgI0JHryn6soemiS1
+ QVqQ==
+X-Gm-Message-State: AOAM533b0lpr1996Y3oYCPSGsJSSxPYgz+Btun2duf8xQ8S8tUFJJyRP
+ 8VkTdrAKahmRd1e1Tdgjpnk=
+X-Google-Smtp-Source: ABdhPJwIkpRJMNidPY7E8t77YNkSjglI/0+vLjMQRtxMoAor2nPGNhM0AYpSxXSb6En7s3W2Jn8oGA==
+X-Received: by 2002:adf:97d3:: with SMTP id t19mr2308218wrb.164.1612958657043; 
+ Wed, 10 Feb 2021 04:04:17 -0800 (PST)
+Received: from xps.yggdrail ([2409:4072:301:1438:3689:6d67:ef18:b9a7])
+ by smtp.gmail.com with ESMTPSA id f7sm2822529wre.78.2021.02.10.04.04.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 03:42:05 -0800 (PST)
-Date: Wed, 10 Feb 2021 11:42:03 +0000
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Yicong Yang <yangyicong@hisilicon.com>
-Subject: Re: [PATCH 1/4] driver core: Use subdir-ccflags-* to inherit debug
- flag
-Message-ID: <20210210114203.jvhst2veqbx73r5g@maple.lan>
-References: <1612518255-23052-1-git-send-email-yangyicong@hisilicon.com>
- <1612518255-23052-2-git-send-email-yangyicong@hisilicon.com>
- <YB0Vk6ERJ3lFc3WD@kroah.com>
- <08017751-a1be-ea07-50de-73d14ab6d57e@hisilicon.com>
- <YCEWtxYgbRPET4Sr@kroah.com>
- <1f0b2f37-db56-c220-dfe1-8c376031404f@hisilicon.com>
+ Wed, 10 Feb 2021 04:04:16 -0800 (PST)
+From: Aakash Hemadri <aakashhemadri123@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: ralink-gdma: Fix checkpatch.pl CHECK
+Date: Wed, 10 Feb 2021 17:33:48 +0530
+Message-Id: <20210210120348.262328-1-aakashhemadri123@gmail.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1f0b2f37-db56-c220-dfe1-8c376031404f@hisilicon.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,44 +83,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
- jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
- Greg KH <gregkh@linuxfoundation.org>, masahiroy@kernel.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-kbuild@vger.kernel.org, linuxarm@openeuler.org, abbotti@mev.co.uk,
- michal.lkml@markovi.net, helgaas@kernel.org, linux@roeck-us.net
+Cc: devel@driverdev.osuosl.org, linux-kernel-mentees@lists.linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Shuah Khan <skhan@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Feb 08, 2021 at 09:09:20PM +0800, Yicong Yang wrote:
-> On 2021/2/8 18:47, Greg KH wrote:
-> > On Mon, Feb 08, 2021 at 06:44:52PM +0800, Yicong Yang wrote:
-> >> On 2021/2/5 17:53, Greg KH wrote:
-> >>> What does this offer in benefit of the existing way?  What is it fixing?
-> >>> Why do this "churn"?
-> >>
-> >> currently we have added ccflags-$(CONFIG_DEBUG_DRIVER) := -DDEBUG in the Makefile
-> >> of driver/base and driver/base/power, but not in the subdirectory
-> >> driver/base/firmware_loader. we cannot turn the debug on for subdirectory
-> >> firmware_loader if we config DEBUG_DRIVER and there is no kconfig option
-> >> for the it.
-> > 
-> > Is that necessary?  Does that directory need it?
-> 
-> there are several debug prints in firmware_loader/main.c:
-> 
-> ./main.c:207:   pr_debug("%s: fw-%s fw_priv=%p\n", __func__, fw_name, fw_priv);
-> ./main.c:245:                   pr_debug("batched request - sharing the same struct fw_priv and lookup for multiple requests\n");
-> <snip>
+Remove CHECK: Lines should not end with a '('
 
-Even if these are not in scope for CONFIG_DEBUG_DRVIER there is a
-config option that would allow you to observe them without changing
-any code (CONFIG_DYNAMIC_DEBUG).
+Signed-off-by: Aakash Hemadri <aakashhemadri123@gmail.com>
+---
 
+ drivers/staging/ralink-gdma/ralink-gdma.c | 28 ++++++++++++-----------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-Daniel.
+diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
+index 655df317d0ee..a11f915f3308 100644
+--- a/drivers/staging/ralink-gdma/ralink-gdma.c
++++ b/drivers/staging/ralink-gdma/ralink-gdma.c
+@@ -135,8 +135,7 @@ struct gdma_data {
+ 	int (*start_transfer)(struct gdma_dmaengine_chan *chan);
+ };
+
+-static struct gdma_dma_dev *gdma_dma_chan_get_dev(
+-	struct gdma_dmaengine_chan *chan)
++static struct gdma_dma_dev *gdma_dma_chan_get_dev(struct gdma_dmaengine_chan *chan)
+ {
+ 	return container_of(chan->vchan.chan.device, struct gdma_dma_dev,
+ 		ddev);
+@@ -510,10 +509,11 @@ static void gdma_dma_issue_pending(struct dma_chan *c)
+ 	spin_unlock_irqrestore(&chan->vchan.lock, flags);
+ }
+
+-static struct dma_async_tx_descriptor *gdma_dma_prep_slave_sg(
+-		struct dma_chan *c, struct scatterlist *sgl,
+-		unsigned int sg_len, enum dma_transfer_direction direction,
+-		unsigned long flags, void *context)
++static struct dma_async_tx_descriptor
++	*gdma_dma_prep_slave_sg(struct dma_chan *c, struct scatterlist *sgl,
++				unsigned int sg_len,
++				enum dma_transfer_direction direction,
++				unsigned long flags, void *context)
+ {
+ 	struct gdma_dmaengine_chan *chan = to_gdma_dma_chan(c);
+ 	struct gdma_dma_desc *desc;
+@@ -558,9 +558,10 @@ static struct dma_async_tx_descriptor *gdma_dma_prep_slave_sg(
+ 	return NULL;
+ }
+
+-static struct dma_async_tx_descriptor *gdma_dma_prep_dma_memcpy(
+-		struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
+-		size_t len, unsigned long flags)
++static struct dma_async_tx_descriptor
++	*gdma_dma_prep_dma_memcpy(struct dma_chan *c,
++				  dma_addr_t dest, dma_addr_t src,
++				  size_t len, unsigned long flags)
+ {
+ 	struct gdma_dmaengine_chan *chan = to_gdma_dma_chan(c);
+ 	struct gdma_dma_desc *desc;
+@@ -601,10 +602,11 @@ static struct dma_async_tx_descriptor *gdma_dma_prep_dma_memcpy(
+ 	return vchan_tx_prep(&chan->vchan, &desc->vdesc, flags);
+ }
+
+-static struct dma_async_tx_descriptor *gdma_dma_prep_dma_cyclic(
+-	struct dma_chan *c, dma_addr_t buf_addr, size_t buf_len,
+-	size_t period_len, enum dma_transfer_direction direction,
+-	unsigned long flags)
++static struct dma_async_tx_descriptor
++	*gdma_dma_prep_dma_cyclic(struct dma_chan *c, dma_addr_t buf_addr,
++				  size_t buf_len, size_t period_len,
++				  enum dma_transfer_direction direction,
++				  unsigned long flags)
+ {
+ 	struct gdma_dmaengine_chan *chan = to_gdma_dma_chan(c);
+ 	struct gdma_dma_desc *desc;
+--
+2.30.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
