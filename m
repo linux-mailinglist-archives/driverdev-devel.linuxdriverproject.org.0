@@ -1,81 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8922D316461
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 11:55:02 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7244A316565
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 12:42:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 06EC184B1F;
-	Wed, 10 Feb 2021 10:55:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 09A6B6F568
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 11:42:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1SGts8DlydMs; Wed, 10 Feb 2021 10:55:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CQQ0Ojt6b4Fh for <lists+driverdev-devel@lfdr.de>;
+	Wed, 10 Feb 2021 11:42:37 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id D36A26F5A5; Wed, 10 Feb 2021 11:42:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AE69D84AE1;
-	Wed, 10 Feb 2021 10:54:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 87B6A6F48E;
+	Wed, 10 Feb 2021 11:42:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DAB901BF47D
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 10:54:57 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B79A1BF479
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 11:42:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D2EEA84B1F
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 10:54:57 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 073906F48E
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 11:42:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6r_Nnjni5T8b for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 10:54:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f170.google.com (mail-pg1-f170.google.com
- [209.85.215.170])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6499C84AE1
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 10:54:57 +0000 (UTC)
-Received: by mail-pg1-f170.google.com with SMTP id o63so982238pgo.6
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 02:54:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pjV_59hRHFwo for <devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 11:42:10 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 4B6ED6F495; Wed, 10 Feb 2021 11:42:10 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com
+ [209.85.128.50])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D43776F48E
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 11:42:08 +0000 (UTC)
+Received: by mail-wm1-f50.google.com with SMTP id j21so1574853wmj.0
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 03:42:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=jBIUHOWtg2dF5e3zXMZeQ47GV+A9ufzsrhcBdcwlOIo=;
- b=PbcnLvfL7EHMpCXcXx+QTCQp2HAv0KSKug3hp/01z9XnzXtjBy8t7wN3PJ8eGZjY6q
- 6de8pm2zJtdayjbLy87dafKVYOPvXFhtMK1D8gvRSXxeq5BnytQLM/0pMOwuv9ZZLipK
- DB3xXjXdOuboVfXx/o1U604M9QCJWHPunzVPLS8OSjMYyiDdR035eLT39EM0rVL0dSyI
- 3X0giWKXciV1u6YFxuluFkjRnPjSscWo1YpeVqZJ4WlixccDQDyqZWJ4A5Oy4mHP92xD
- XrWzaa4SVG+aI5JSDODUH8CXlTpSbeIqPDgVmRyrp6FKfSZP02JWSQsky0unqbCP8zSL
- Ph+Q==
+ bh=IN+db2cORNt7VkGGcBYrI5DAOlBAd7luCiB6c6UTORg=;
+ b=A+lqcb1Mco2IH4sWZvbvEORyp44FjHIA2kKgYhWKHPRcBkihslWgY+eyCxjObLl4xM
+ IJdLu77vzz0H46AfAyGLrLZ3P1y6a5z1GwgMJhI4clGjeFf+PyAsCenM3g5U2vflKhew
+ Ju+igjclW8aHFZvW5zgCxQyfWMS4Xu5pD9ywx63JFAYNlS4WSR6nbO70ZKcfoghRGb4z
+ Rf0JtLIheyrZWr3WvWIiahz7R05/j8oqaJTIUkNIo+kjiEWRTPpEAZUcmb+bwwR3TthY
+ w8gny9neoDuQOvARwJ0yj7al35enKLxoqYkPmwR0BkgrFFw+H8Knypppuo27DmWcolMY
+ g6AA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=jBIUHOWtg2dF5e3zXMZeQ47GV+A9ufzsrhcBdcwlOIo=;
- b=mm3NfY9ng2MyP8cz4YvISQwe7//RtjiIwpCdOzJUX1g8wbLKk2A55Ww3SyX01LC0Ji
- JBY62imYxDw6SOKwLucvbSdVP0ng8NohgPJJrydtjLySMT1UtjVpQxCim15C1xGRpISk
- smTC38hmMo07Vb3mDbqeN7/GeYAV36hColRy98+TKMVKpPqA9z5dsxwpWC4fcz+XJO+g
- r6ySejS+M783DOkz39kGCFDlkmZhFF0FTADIfAK+zzAHWkPHEzJPhwCYqQjl+eItnAHd
- 51ObGSW9qiVsbALnMgJb64fUVAzHnXQ525BvKRfbRQYDbU1yju2vHn6NaOsijXYJpMpy
- tUDw==
-X-Gm-Message-State: AOAM532YJsPwQ+id31dtU4ZyaGHhDbxAKEUc/rdHKaJQI4h1lyE6A0XJ
- nNRsKHlq3SSZ7g6rbs7vCvk=
-X-Google-Smtp-Source: ABdhPJzpgEDu8+JvRLSOi20pp034PJU0empTTSivHkAp73/RAwLGw3QhYWOtK3oKl1hKpRlNQ42WGA==
-X-Received: by 2002:a05:6a00:16cd:b029:1c9:6f5b:3d8c with SMTP id
- l13-20020a056a0016cdb02901c96f5b3d8cmr2776402pfc.1.1612954497049; 
- Wed, 10 Feb 2021 02:54:57 -0800 (PST)
-Received: from localhost ([103.200.106.135])
- by smtp.gmail.com with ESMTPSA id y73sm2067698pfb.17.2021.02.10.02.54.56
+ bh=IN+db2cORNt7VkGGcBYrI5DAOlBAd7luCiB6c6UTORg=;
+ b=Iyf7hbgMNbbUzDLikDk02gP4pMOmiAlJBnQFHcu0GGhtBzj2l0BRcuyrFGFDn9PQ1w
+ WT4I/EgceEnPAQQ/HOK4WY6t/bDGiT0GzASjIX6iazGrAv/d8e446e5KwzQYBYPzcRdF
+ 3+alPcBj6fqKY5HCvCRBoO1+gn3JSoZcH5ZpMZiMaRu/dwPWz71v7H7Qmfkfvk6raWZ3
+ EuQGcFFfx4ulg4Tv87j6sgU6ZbCEtR2urXyIBKsO+GdycjNl/nt9+cxi3sM97M0g0sx6
+ J8zylM+Uzd5EvfYLtoJxU7OEFF4sGY6kxBfEguZO6UG7li6hDSntAIC8eMi5sSQCICqy
+ j19A==
+X-Gm-Message-State: AOAM531X9L6GBvsCYz9eR+CWrGjmiMRta9ATqNovNAkCXxYPj6kedIFS
+ izSfNWU9ITnHlqCI2g1Vcpvfeg==
+X-Google-Smtp-Source: ABdhPJzcqeZvzBcu69WDOYa0AXEj+jkTjIK/0ivShR9A511clPVo2aBOAWDwimsl6o1C8uR6vnac8Q==
+X-Received: by 2002:a7b:c215:: with SMTP id x21mr2619209wmi.61.1612957326535; 
+ Wed, 10 Feb 2021 03:42:06 -0800 (PST)
+Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net.
+ [80.7.220.175])
+ by smtp.gmail.com with ESMTPSA id y63sm2154970wmd.21.2021.02.10.03.42.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 02:54:56 -0800 (PST)
-Date: Wed, 10 Feb 2021 16:24:41 +0530
-From: Amey Narkhede <ameynarkhede03@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] staging: gdm724x: Fix DMA from stack
-Message-ID: <20210210105441.56pvgjes3txfwn6c@archlinux>
-References: <20210210080134.1978-1-ameynarkhede03@gmail.com>
- <YCOUIFVuvJuPP3lX@kroah.com>
- <20210210085811.7dunnfly6cqw67m3@archlinux>
- <YCOit8SI7k1Gv7dl@kroah.com>
+ Wed, 10 Feb 2021 03:42:05 -0800 (PST)
+Date: Wed, 10 Feb 2021 11:42:03 +0000
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Yicong Yang <yangyicong@hisilicon.com>
+Subject: Re: [PATCH 1/4] driver core: Use subdir-ccflags-* to inherit debug
+ flag
+Message-ID: <20210210114203.jvhst2veqbx73r5g@maple.lan>
+References: <1612518255-23052-1-git-send-email-yangyicong@hisilicon.com>
+ <1612518255-23052-2-git-send-email-yangyicong@hisilicon.com>
+ <YB0Vk6ERJ3lFc3WD@kroah.com>
+ <08017751-a1be-ea07-50de-73d14ab6d57e@hisilicon.com>
+ <YCEWtxYgbRPET4Sr@kroah.com>
+ <1f0b2f37-db56-c220-dfe1-8c376031404f@hisilicon.com>
 MIME-Version: 1.0
-In-Reply-To: <YCOit8SI7k1Gv7dl@kroah.com>
+Content-Disposition: inline
+In-Reply-To: <1f0b2f37-db56-c220-dfe1-8c376031404f@hisilicon.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,110 +97,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- dan.carpenter@oracle.com
-Content-Type: multipart/mixed; boundary="===============1801484823663054040=="
+Cc: linux-hwmon@vger.kernel.org, kw@linux.com, giometti@enneenne.com,
+ jdelvare@suse.com, prime.zeng@huawei.com, linux-pm@vger.kernel.org,
+ Greg KH <gregkh@linuxfoundation.org>, masahiroy@kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-kbuild@vger.kernel.org, linuxarm@openeuler.org, abbotti@mev.co.uk,
+ michal.lkml@markovi.net, helgaas@kernel.org, linux@roeck-us.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Mon, Feb 08, 2021 at 09:09:20PM +0800, Yicong Yang wrote:
+> On 2021/2/8 18:47, Greg KH wrote:
+> > On Mon, Feb 08, 2021 at 06:44:52PM +0800, Yicong Yang wrote:
+> >> On 2021/2/5 17:53, Greg KH wrote:
+> >>> What does this offer in benefit of the existing way?  What is it fixing?
+> >>> Why do this "churn"?
+> >>
+> >> currently we have added ccflags-$(CONFIG_DEBUG_DRIVER) := -DDEBUG in the Makefile
+> >> of driver/base and driver/base/power, but not in the subdirectory
+> >> driver/base/firmware_loader. we cannot turn the debug on for subdirectory
+> >> firmware_loader if we config DEBUG_DRIVER and there is no kconfig option
+> >> for the it.
+> > 
+> > Is that necessary?  Does that directory need it?
+> 
+> there are several debug prints in firmware_loader/main.c:
+> 
+> ./main.c:207:   pr_debug("%s: fw-%s fw_priv=%p\n", __func__, fw_name, fw_priv);
+> ./main.c:245:                   pr_debug("batched request - sharing the same struct fw_priv and lookup for multiple requests\n");
+> <snip>
 
---===============1801484823663054040==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="npqdei4u57mrjtde"
-Content-Disposition: inline
+Even if these are not in scope for CONFIG_DEBUG_DRVIER there is a
+config option that would allow you to observe them without changing
+any code (CONFIG_DYNAMIC_DEBUG).
 
 
---npqdei4u57mrjtde
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On 21/02/10 10:09AM, Greg KH wrote:
-> On Wed, Feb 10, 2021 at 02:28:11PM +0530, Amey Narkhede wrote:
-> > On 21/02/10 09:06AM, Greg KH wrote:
-> > > On Wed, Feb 10, 2021 at 01:31:34PM +0530, Amey Narkhede wrote:
-> > > > Stack allocated buffers cannot be used for DMA
-> > > > on all architectures so allocate hci_packet buffer
-> > > > using kzalloc().
-> > > >
-> > > > Signed-off-by: Amey Narkhede <ameynarkhede03@gmail.com>
-> > > > ---
-> > > > Changes in v2:
-> > > > 	- Fixed build warning
-> > > > 	- Fixed memory leak using kfree
-> > > >
-> > > >  drivers/staging/gdm724x/gdm_usb.c | 9 +++++++--
-> > > >  1 file changed, 7 insertions(+), 2 deletions(-)
-> > > >
-> > > > diff --git a/drivers/staging/gdm724x/gdm_usb.c b/drivers/staging/gdm724x/gdm_usb.c
-> > > > index dc4da66c3..c4a9b90c5 100644
-> > > > --- a/drivers/staging/gdm724x/gdm_usb.c
-> > > > +++ b/drivers/staging/gdm724x/gdm_usb.c
-> > > > @@ -56,11 +56,15 @@ static int gdm_usb_recv(void *priv_dev,
-> > > >
-> > > >  static int request_mac_address(struct lte_udev *udev)
-> > > >  {
-> > > > -	u8 buf[16] = {0,};
-> > > > -	struct hci_packet *hci = (struct hci_packet *)buf;
-> > > > +	u8 *buf;
-> > > > +	struct hci_packet *hci;
-> > > >  	struct usb_device *usbdev = udev->usbdev;
-> > > >  	int actual;
-> > > >  	int ret = -1;
-> > > > +	buf = kzalloc(16, GFP_KERNEL);
-> > >
-> > > checkpatch did not complain about this?
-> > No. checkpatch shows no errors and warnings.
->
-> Please add a blank line after variables and before logic.
->
-Will do thanks.
-> > > And why do you need 'buf' anymore now?  Why not just allocate hci and
-> > > pass that to the request instead?  Saves you an extra cast and an extra
-> > > pointer.
-> > >
-> > > thanks,
-> > >
-> > > greg k-h
-> > Thanks. I'll send v3. I assume now we don't need kzalloc anymore as we initialize
-> > the hci_packet so kmalloc(sizeof(struct hci_packet),..) will do.
->
-> Why is it needed now?  And why would that change?
->
-> thanks,
->
-> greg k-h
-I was thinking about allcoating hci_packet(hci) but as Dan said
-we only use first five bytes so kmalloc(5, ...) should work.
-
-Thanks,
-Amey
-
---npqdei4u57mrjtde
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEb5tNK+B4oWmn+0Z9BBTsy/Z3yzYFAmAju3EACgkQBBTsy/Z3
-yzaCXgf/TkdeP+yE2c++y1LMX2H1wbyMJPaAsXWCaefA2pwj6IZbzoMV9d8E3RoE
-9zZBBPzr88FQ3QVapx8mcfnnFv5sAMFLpJCm0n2c8lnC7pmIICwKr2ZTck9tLcXU
-Mx7nYzBxVAunkn90KMkfjFy19J18BYi56Tca7FN+GHqlNR3Qd7wIy9EODk4krgU2
-voAHnwhq/15MzCL20hC7Zn3VEnZnAMXYYSZ33DETvcW3/0nobh/Nx5pWHw1vEwmL
-Ki7Pt4jjBMd48ht82jNMLkWd8IJYWAreSdN1iDKyq3jDzc52Op+wc8lGdZKg17q/
-WIGwoSfzcRmFz8hIk/lVXIj0Wkr0qg==
-=YyVo
------END PGP SIGNATURE-----
-
---npqdei4u57mrjtde--
-
---===============1801484823663054040==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Daniel.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1801484823663054040==--
