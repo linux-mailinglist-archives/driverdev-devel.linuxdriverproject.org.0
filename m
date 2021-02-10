@@ -1,79 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9129316BF2
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 18:00:35 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DD79316C09
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Feb 2021 18:04:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1ED5D86EB2;
-	Wed, 10 Feb 2021 17:00:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E2E586C04;
+	Wed, 10 Feb 2021 17:04:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 21Wz1FKTg55k; Wed, 10 Feb 2021 17:00:33 +0000 (UTC)
+	with ESMTP id Ro29AHtEDziT; Wed, 10 Feb 2021 17:04:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3BFB686D18;
-	Wed, 10 Feb 2021 17:00:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B51286B6D;
+	Wed, 10 Feb 2021 17:04:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 48AA61BF41C
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:00:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C07491BF860
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:04:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 463E886D18
- for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:00:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BD2AE872AF
+ for <devel@linuxdriverproject.org>; Wed, 10 Feb 2021 17:04:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vxr377n3tkuf for <devel@linuxdriverproject.org>;
- Wed, 10 Feb 2021 17:00:30 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com
- [209.85.128.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 72CDB86CE0
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 17:00:29 +0000 (UTC)
-Received: by mail-wm1-f43.google.com with SMTP id y134so2432666wmd.3
- for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 09:00:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZcMpsIok+hiSaO1SUKncalhw3n5LvdHZipOyoQRgJxQ=;
- b=zRfhwShUvUJfkBWUzkGm0izYVluBz/HUmhopEh5/rqELh1hr4uRlvYTEL/7ykXztDW
- 503gCvXXekXn2mUViz10wEwU48OMpSf4Ms7cqukL4svm1VLXjuvHXhR+EDJy23E1k1jM
- MlygBUkOkMGDhw6lXdipkUwQFtQPcMqZ/marlTmAxv0AXzR/7se1gSDVxL2LbNvBAZ/F
- Ysr/OA9kMQ8k3pG+OODdRwX1HN6sKCu7HhEkjsDyJJaLV63ICSHvV+2LQ0+YHDpgy7vB
- xDC+ty4heEaiW6Bvk80Z+GUbJyDzs4/f/TLxa9eBkq7ujDnXVLZAzuH6OQhC4j1YrT4w
- Jr9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZcMpsIok+hiSaO1SUKncalhw3n5LvdHZipOyoQRgJxQ=;
- b=ibIRxni7Z1vGL1vp0SGehx8UCeP4z37jZl/7J7wMDACDtJxTj2jyM6Uhdqqru2yJ5L
- 2KIISmrrzYAZR9oRTwzRBNLdxMSLZmIsf3/qf8yyCGCqDqaDzi+WUibv77QUNfpwLKCV
- hwuVZmGqIqfcFe/AoYOx5hyt3pCJHfw/AEV9nqa6KPa7FCsheav1p4cLl3ETVUkI3gNv
- V7MVv8SxH7XUzN8E2p4T4PpZw3OKJIlr6EQQOfdX8cpp3ulqfe8YmxIqGcHoQyaHTpvP
- LUoWSeSgGEe4XELUlcUse60EvhONQWNAvKYUPF9ldHvM40d31HoYAQDFc5K7ReY7Uf0m
- jBHg==
-X-Gm-Message-State: AOAM531NNG3+s36gMQPHSeaiq8iSo14LzzYXyVU42o4Une+li0aD0eka
- 9g4yl2JtDO9a8BlFgTka43K+Wg==
-X-Google-Smtp-Source: ABdhPJwoTNiNDBlw6GvBoxPFCy9ADtEZvxhrUgkoESKJ1QDiX6oG4WcQ/XlBSznWpYBqCKitRm6J1g==
-X-Received: by 2002:a7b:cd08:: with SMTP id f8mr3755835wmj.142.1612976427988; 
- Wed, 10 Feb 2021 09:00:27 -0800 (PST)
-Received: from localhost.localdomain
- (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
- [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
- by smtp.gmail.com with ESMTPSA id u14sm4349739wro.10.2021.02.10.09.00.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 09:00:27 -0800 (PST)
-From: Phillip Potter <phil@philpotter.co.uk>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: remove blank line from include/autoconf.h
-Date: Wed, 10 Feb 2021 17:00:24 +0000
-Message-Id: <20210210170024.100937-1-phil@philpotter.co.uk>
-X-Mailer: git-send-email 2.29.2
+ with ESMTP id VXeiPMSnxEZU for <devel@linuxdriverproject.org>;
+ Wed, 10 Feb 2021 17:04:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6C82E87459
+ for <devel@driverdev.osuosl.org>; Wed, 10 Feb 2021 17:04:43 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 731B964E77;
+ Wed, 10 Feb 2021 17:04:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1612976683;
+ bh=sqLJQB5qbe+Y6SsNKWJZfY3Q/pijUWUYYHnOJleb87w=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=iG/pvFPdebDEDllFMOFF+Q5Dp3h6Gp7rdgI0bAPYUH85T0luSDpSjnYJd7rj6ubZD
+ ezL2ibq3AkKQQ7sjiaQ+3UhrysAPU+KzcBYH4UndpsSPUyK3fQQbXDRiTKy/y6PFRY
+ ofL7t37ZUrJfpOazOKv2IJlx/pMRAG8O9x9Qwp3s=
+Date: Wed, 10 Feb 2021 18:04:40 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mairo Paul Rufus <akoudanilo@gmail.com>
+Subject: Re: [PATCH] staging: wlan-ng: Fix comments typos
+Message-ID: <YCQSKNYU7zhcKHHl@kroah.com>
+References: <20210210145952.722586-1-akoudanilo@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210210145952.722586-1-akoudanilo@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,35 +61,105 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, trivial@kernel.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove additional blank line from include/autoconf.h, fixes one
-checkpatch check notice.
+On Wed, Feb 10, 2021 at 03:59:52PM +0100, Mairo Paul Rufus wrote:
+> Signed-off-by: Mairo Paul Rufus <akoudanilo@gmail.com>
+> ---
+>  drivers/staging/wlan-ng/p80211netdev.c | 2 +-
+>  drivers/staging/wlan-ng/prism2mib.c    | 2 +-
+>  drivers/staging/wlan-ng/prism2sta.c    | 4 ++--
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
+> index 7b091c5a2984..4a6813e89916 100644
+> --- a/drivers/staging/wlan-ng/p80211netdev.c
+> +++ b/drivers/staging/wlan-ng/p80211netdev.c
+> @@ -274,7 +274,7 @@ static void p80211netdev_rx_bh(unsigned long arg)
+>  	struct sk_buff *skb = NULL;
+>  	struct net_device *dev = wlandev->netdev;
+>  
+> -	/* Let's empty our our queue */
+> +	/* Let's empty our queue */
+>  	while ((skb = skb_dequeue(&wlandev->nsd_rxq))) {
+>  		if (wlandev->state == WLAN_DEVICE_OPEN) {
+>  			if (dev->type != ARPHRD_ETHER) {
+> diff --git a/drivers/staging/wlan-ng/prism2mib.c b/drivers/staging/wlan-ng/prism2mib.c
+> index 7d7d77b04255..875812a391c9 100644
+> --- a/drivers/staging/wlan-ng/prism2mib.c
+> +++ b/drivers/staging/wlan-ng/prism2mib.c
+> @@ -292,7 +292,7 @@ int prism2mgmt_mibset_mibget(struct wlandevice *wlandev, void *msgp)
+>  	/*
+>  	 ** Determine if this is a "mibget" or a "mibset".  If this is a
+>  	 ** "mibget", then make sure that the MIB may be read.  Otherwise,
+> -	 ** this is a "mibset" so make make sure that the MIB may be written.
+> +	 ** this is a "mibset" so make sure that the MIB may be written.
+>  	 */
+>  
+>  	isget = (msg->msgcode == DIDMSG_DOT11REQ_MIBGET);
+> diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+> index 8f25496188aa..e6dcb687e7a1 100644
+> --- a/drivers/staging/wlan-ng/prism2sta.c
+> +++ b/drivers/staging/wlan-ng/prism2sta.c
+> @@ -461,7 +461,7 @@ u32 prism2sta_ifstate(struct wlandevice *wlandev, u32 ifstate)
+>  		case WLAN_MSD_FWLOAD:
+>  			wlandev->msdstate = WLAN_MSD_RUNNING_PENDING;
+>  			/* Initialize the device+driver for full
+> -			 * operation. Note that this might me an FWLOAD to
+> +			 * operation. Note that this might me an FWLOAD
+>  			 * to RUNNING transition so we must not do a chip
+>  			 * or board level reset.  Note that on failure,
+>  			 * the MSD state is set to HWPRESENT because we
+> @@ -1352,7 +1352,7 @@ void prism2sta_processing_defer(struct work_struct *data)
+>  		 * we get back in range.  We should block transmits and
+>  		 * receives in this state.  Do we need an indication here?
+>  		 * Probably not since a polling user-mode element would
+> -		 * get this status from from p2PortStatus(FD40). What about
+> +		 * get this status from p2PortStatus(FD40). What about
+>  		 * p80211?
+>  		 * Response:
+>  		 * Block Transmits, Ignore receives of data frames
+> -- 
+> 2.26.2
 
-Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
----
- drivers/staging/rtl8723bs/include/autoconf.h | 1 -
- 1 file changed, 1 deletion(-)
+Hi,
 
-diff --git a/drivers/staging/rtl8723bs/include/autoconf.h b/drivers/staging/rtl8723bs/include/autoconf.h
-index 8f4c1e734473..86cf09ca5f06 100644
---- a/drivers/staging/rtl8723bs/include/autoconf.h
-+++ b/drivers/staging/rtl8723bs/include/autoconf.h
-@@ -5,7 +5,6 @@
-  *
-  ******************************************************************************/
- 
--
- /*
-  * Automatically generated C config: don't edit
-  */
--- 
-2.29.2
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
+
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
