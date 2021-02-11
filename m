@@ -2,69 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EAF5319493
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 21:38:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACB7C3194AB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 21:44:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F40C86DE5;
-	Thu, 11 Feb 2021 20:38:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 24AE486AE9;
+	Thu, 11 Feb 2021 20:44:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0i9GFVjPFUXM; Thu, 11 Feb 2021 20:38:00 +0000 (UTC)
+	with ESMTP id J9-0xrav2mIG; Thu, 11 Feb 2021 20:44:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E35486A90;
-	Thu, 11 Feb 2021 20:37:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7A05186A02;
+	Thu, 11 Feb 2021 20:44:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C213F1BF41A
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 98AA51BF41A
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:44:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B9BAD875EB
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 94C8F875EB
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:44:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id N0t3r5nWUdWU for <devel@linuxdriverproject.org>;
- Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
+ with ESMTP id BJHudzC9doWe for <devel@linuxdriverproject.org>;
+ Thu, 11 Feb 2021 20:44:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from pv50p00im-zteg10021301.me.com (pv50p00im-zteg10021301.me.com
- [17.58.6.46])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4785D875E8
- for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
- s=1a1hai; t=1613075876;
- bh=+UqQfeVaYIVGyWxiq1h9v749UZHZAQFSnLtzkXJ9+PE=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type;
- b=WO21kUgZgUTk0G7hVFeat58bpckwW2lz+GmBh9Zbk8KKotz9b1pNm9CgtCnrb0kda
- tMdYdYcm0kp+b3VdqiGzW8zJDMrXF7+dqlmos+Gofv/xRaIQZMtlw/p2hurCaRD4Dc
- +T/5RIF9Drs2MdtXPPDTU2x9QjwL80fNxoRn7NARb+EANRrDy1Tv1gnf9CRz/h/VSm
- zuVlh3FbN7ig49oklLVjgBPu9/0/ycxbzaaS+aldYjpVaunm48MRYFXDQ/Wuseqh2b
- K8w9cPR3yANGI/mQa/o/fwYpKE55lQg6YRNNBfQtkRkS9WjAq8DyHCkGq8z0h3libT
- tOcnr730kaGvQ==
-Received: from [192.168.31.114] (unknown [45.250.50.68])
- by pv50p00im-zteg10021301.me.com (Postfix) with ESMTPSA id 11AFACC0562;
- Thu, 11 Feb 2021 20:37:53 +0000 (UTC)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 23162875E8
+ for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 20:44:19 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 29CED64DA8;
+ Thu, 11 Feb 2021 20:44:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1613076258;
+ bh=FtVPNbEO5qXmF5tcWfuPaV62+LSEKiJm7Eq3dBGfqnI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=KdpIAIFg4r+l68fJ5GYFst7DlovuGpweTusBDutQrnhacw626p5eRNJ8Z/VqkaELP
+ GzoEoA/uuKh7gBXeXm9ic/PCjTYE7Zs5GmkSN6ioyJt+gUhjWCWCcyRSYoVsw2/m9S
+ /sh7k4pDJN0ZYP2nKLwE+Tf/i7tgIAUZo2U50qK8=
+Date: Thu, 11 Feb 2021 21:44:15 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Pritthijit Nath <pritthijit.nath@icloud.com>
 Subject: Re: [PATCH] staging: vt6656: Fixed issue with alignment in rf.c
-To: Greg KH <gregkh@linuxfoundation.org>
+Message-ID: <YCWXH1MZy0cbDB3G@kroah.com>
 References: <20210211152426.10008-1-pritthijit.nath@icloud.com>
  <YCWTlWj4KHT6Okq/@kroah.com>
-From: Pritthijit Nath <pritthijit.nath@icloud.com>
-Message-ID: <141aa6fe-972c-a9a2-f321-65a98ebccc41@icloud.com>
-Date: Fri, 12 Feb 2021 02:07:50 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <141aa6fe-972c-a9a2-f321-65a98ebccc41@icloud.com>
 MIME-Version: 1.0
-In-Reply-To: <YCWTlWj4KHT6Okq/@kroah.com>
-Content-Language: en-US
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.737
- definitions=2021-02-11_07:2021-02-11,
- 2021-02-11 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 clxscore=1015 mlxscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-2006250000 definitions=main-2102110162
+Content-Disposition: inline
+In-Reply-To: <141aa6fe-972c-a9a2-f321-65a98ebccc41@icloud.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,62 +70,70 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 12/02/21 1:59 am, Greg KH wrote:
-> On Thu, Feb 11, 2021 at 08:54:26PM +0530, Pritthijit Nath wrote:
->> This change fixes a checkpatch CHECK style issue for "Alignment should match open parenthesis".
->>
->> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
->> ---
->>  drivers/staging/vt6656/rf.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
->> index 5b8da06e3916..bcd4d467e03a 100644
->> --- a/drivers/staging/vt6656/rf.c
->> +++ b/drivers/staging/vt6656/rf.c
->> @@ -687,7 +687,7 @@ static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
->>  
->>  			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
->>  				ret = vnt_rf_write_embedded(priv,
->> -					vt3226d0_lo_current_table[hw_value]);
->> +							    vt3226d0_lo_current_table[hw_value]);
->>  				if (ret)
->>  					return ret;
->>  			}
->> -- 
->> 2.25.1
+On Fri, Feb 12, 2021 at 02:07:50AM +0530, Pritthijit Nath wrote:
+> On 12/02/21 1:59 am, Greg KH wrote:
+> > On Thu, Feb 11, 2021 at 08:54:26PM +0530, Pritthijit Nath wrote:
+> >> This change fixes a checkpatch CHECK style issue for "Alignment should match open parenthesis".
+> >>
+> >> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+> >> ---
+> >>  drivers/staging/vt6656/rf.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+> >> index 5b8da06e3916..bcd4d467e03a 100644
+> >> --- a/drivers/staging/vt6656/rf.c
+> >> +++ b/drivers/staging/vt6656/rf.c
+> >> @@ -687,7 +687,7 @@ static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
+> >>  
+> >>  			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
+> >>  				ret = vnt_rf_write_embedded(priv,
+> >> -					vt3226d0_lo_current_table[hw_value]);
+> >> +							    vt3226d0_lo_current_table[hw_value]);
+> >>  				if (ret)
+> >>  					return ret;
+> >>  			}
+> >> -- 
+> >> 2.25.1
+> > 
+> > Please run this change, with the changelog above, through
+> > checkpatch.pl, fix that, and resend.
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> > 
 > 
-> Please run this change, with the changelog above, through
-> checkpatch.pl, fix that, and resend.
+> This change fixes a checkpatch CHECK style issue for "Alignment should 
+> match open parenthesis".
 > 
-> thanks,
+> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+> ---
+>  drivers/staging/vt6656/rf.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> greg k-h
-> 
+> diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+> index 5b8da06e3916..bcd4d467e03a 100644
+> --- a/drivers/staging/vt6656/rf.c
+> +++ b/drivers/staging/vt6656/rf.c
+> @@ -687,7 +687,7 @@ static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
+>  
+>  			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
+>  				ret = vnt_rf_write_embedded(priv,
+> -					vt3226d0_lo_current_table[hw_value]);
+> +							    vt3226d0_lo_current_table[hw_value]);
+>  				if (ret)
+>  					return ret;
+>  			}
 
-This change fixes a checkpatch CHECK style issue for "Alignment should 
-match open parenthesis".
+I can't take this type of submission, do you see other patches submitted
+this way on the mailing list?
 
-Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
----
- drivers/staging/vt6656/rf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Also, you have a trailing space in your changelog text :(
 
-diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
-index 5b8da06e3916..bcd4d467e03a 100644
---- a/drivers/staging/vt6656/rf.c
-+++ b/drivers/staging/vt6656/rf.c
-@@ -687,7 +687,7 @@ static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
- 
- 			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
- 				ret = vnt_rf_write_embedded(priv,
--					vt3226d0_lo_current_table[hw_value]);
-+							    vt3226d0_lo_current_table[hw_value]);
- 				if (ret)
- 					return ret;
- 			}
--- 
-2.25.1
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
