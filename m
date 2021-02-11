@@ -2,54 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2619531948C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 21:35:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EAF5319493
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 21:38:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 769E886E51;
-	Thu, 11 Feb 2021 20:35:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F40C86DE5;
+	Thu, 11 Feb 2021 20:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0awhVFU41Ctr; Thu, 11 Feb 2021 20:35:35 +0000 (UTC)
+	with ESMTP id 0i9GFVjPFUXM; Thu, 11 Feb 2021 20:38:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4AAAB86A90;
-	Thu, 11 Feb 2021 20:35:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E35486A90;
+	Thu, 11 Feb 2021 20:37:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 552861BF41A
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:35:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C213F1BF41A
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 51B24875DB
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:35:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B9BAD875EB
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HwPaR4kFyM9L for <devel@linuxdriverproject.org>;
- Thu, 11 Feb 2021 20:35:31 +0000 (UTC)
+ with ESMTP id N0t3r5nWUdWU for <devel@linuxdriverproject.org>;
+ Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A1DD28758E
- for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 20:35:31 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 89D7C64D73;
- Thu, 11 Feb 2021 20:35:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613075731;
- bh=09XWYIqyUCLDxvi5gQzO/ldzLZFs0vKFvLJwHYRvx2k=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RqZTSeWhnVoY7SOKERAfHik04eTojWSyJI9La+60zSsB7NNWbmyB1AoTcvmYNseX9
- f75SCZMW7seTcfe4RvtQzTHv6Si7prB6NF9tUOcCTJ7NegQKmh1Y7b+Kzm9TgZ7GtG
- plby2Tgd/muiO8noNzKyyxDM85HmLjNs6Al4hlYc=
-Date: Thu, 11 Feb 2021 21:35:27 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Anirudh Rayabharam <mail@anirudhrb.com>
-Subject: Re: [PATCH] staging: wimax/i2400m: fix some byte order issues found
- by sparse
-Message-ID: <YCWVD34rU5Lu71/S@kroah.com>
-References: <20210211202908.4604-1-mail@anirudhrb.com>
+Received: from pv50p00im-zteg10021301.me.com (pv50p00im-zteg10021301.me.com
+ [17.58.6.46])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4785D875E8
+ for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 20:37:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+ s=1a1hai; t=1613075876;
+ bh=+UqQfeVaYIVGyWxiq1h9v749UZHZAQFSnLtzkXJ9+PE=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type;
+ b=WO21kUgZgUTk0G7hVFeat58bpckwW2lz+GmBh9Zbk8KKotz9b1pNm9CgtCnrb0kda
+ tMdYdYcm0kp+b3VdqiGzW8zJDMrXF7+dqlmos+Gofv/xRaIQZMtlw/p2hurCaRD4Dc
+ +T/5RIF9Drs2MdtXPPDTU2x9QjwL80fNxoRn7NARb+EANRrDy1Tv1gnf9CRz/h/VSm
+ zuVlh3FbN7ig49oklLVjgBPu9/0/ycxbzaaS+aldYjpVaunm48MRYFXDQ/Wuseqh2b
+ K8w9cPR3yANGI/mQa/o/fwYpKE55lQg6YRNNBfQtkRkS9WjAq8DyHCkGq8z0h3libT
+ tOcnr730kaGvQ==
+Received: from [192.168.31.114] (unknown [45.250.50.68])
+ by pv50p00im-zteg10021301.me.com (Postfix) with ESMTPSA id 11AFACC0562;
+ Thu, 11 Feb 2021 20:37:53 +0000 (UTC)
+Subject: Re: [PATCH] staging: vt6656: Fixed issue with alignment in rf.c
+To: Greg KH <gregkh@linuxfoundation.org>
+References: <20210211152426.10008-1-pritthijit.nath@icloud.com>
+ <YCWTlWj4KHT6Okq/@kroah.com>
+From: Pritthijit Nath <pritthijit.nath@icloud.com>
+Message-ID: <141aa6fe-972c-a9a2-f321-65a98ebccc41@icloud.com>
+Date: Fri, 12 Feb 2021 02:07:50 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210211202908.4604-1-mail@anirudhrb.com>
+In-Reply-To: <YCWTlWj4KHT6Okq/@kroah.com>
+Content-Language: en-US
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.737
+ definitions=2021-02-11_07:2021-02-11,
+ 2021-02-11 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 clxscore=1015 mlxscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-2006250000 definitions=main-2102110162
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,52 +77,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, arnd@arndb.de, linux-kernel@vger.kernel.org,
- colin.king@canonical.com, kuba@kernel.org, johannes@sipsolutions.net,
- lee.jones@linaro.org
+Cc: tvboxspy@gmail.com, devel@driverdev.osuosl.org, oscar.carter@gmx.com,
+ forest@alittletooquiet.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 12, 2021 at 01:59:08AM +0530, Anirudh Rayabharam wrote:
-> Fix sparse byte-order warnings in the i2400m_bm_cmd_prepare()
-> function:
+On 12/02/21 1:59 am, Greg KH wrote:
+> On Thu, Feb 11, 2021 at 08:54:26PM +0530, Pritthijit Nath wrote:
+>> This change fixes a checkpatch CHECK style issue for "Alignment should match open parenthesis".
+>>
+>> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+>> ---
+>>  drivers/staging/vt6656/rf.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+>> index 5b8da06e3916..bcd4d467e03a 100644
+>> --- a/drivers/staging/vt6656/rf.c
+>> +++ b/drivers/staging/vt6656/rf.c
+>> @@ -687,7 +687,7 @@ static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
+>>  
+>>  			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
+>>  				ret = vnt_rf_write_embedded(priv,
+>> -					vt3226d0_lo_current_table[hw_value]);
+>> +							    vt3226d0_lo_current_table[hw_value]);
+>>  				if (ret)
+>>  					return ret;
+>>  			}
+>> -- 
+>> 2.25.1
 > 
-> wimax/i2400m/fw.c:194:36: warning: restricted __le32 degrades to integer
-> wimax/i2400m/fw.c:195:34: warning: invalid assignment: +=
-> wimax/i2400m/fw.c:195:34:    left side has type unsigned int
-> wimax/i2400m/fw.c:195:34:    right side has type restricted __le32
-> wimax/i2400m/fw.c:196:32: warning: restricted __le32 degrades to integer
-> wimax/i2400m/fw.c:196:47: warning: restricted __le32 degrades to integer
-> wimax/i2400m/fw.c:196:66: warning: restricted __le32 degrades to integer
+> Please run this change, with the changelog above, through
+> checkpatch.pl, fix that, and resend.
 > 
-> Signed-off-by: Anirudh Rayabharam <mail@anirudhrb.com>
-> ---
->  drivers/staging/wimax/i2400m/fw.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
+> thanks,
 > 
-> diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
-> index b2fd4bd2c5f9..bce651a6b543 100644
-> --- a/drivers/staging/wimax/i2400m/fw.c
-> +++ b/drivers/staging/wimax/i2400m/fw.c
-> @@ -189,12 +189,16 @@ void i2400m_bm_cmd_prepare(struct i2400m_bootrom_header *cmd)
->  {
->  	if (i2400m_brh_get_use_checksum(cmd)) {
->  		int i;
-> -		u32 checksum = 0;
-> +		__le32 checksum = 0;
+> greg k-h
+> 
 
-__le32 is only for when the data crosses the kernel/user boundry, just
-use le32 in the kernel for stuff like this.
+This change fixes a checkpatch CHECK style issue for "Alignment should 
+match open parenthesis".
 
->  		const u32 *checksum_ptr = (void *) cmd->payload;
+Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+---
+ drivers/staging/vt6656/rf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Add a blank line here, right?
-
-thanks,
-
-greg k-h
+diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+index 5b8da06e3916..bcd4d467e03a 100644
+--- a/drivers/staging/vt6656/rf.c
++++ b/drivers/staging/vt6656/rf.c
+@@ -687,7 +687,7 @@ static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
+ 
+ 			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
+ 				ret = vnt_rf_write_embedded(priv,
+-					vt3226d0_lo_current_table[hw_value]);
++							    vt3226d0_lo_current_table[hw_value]);
+ 				if (ret)
+ 					return ret;
+ 			}
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
