@@ -1,46 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4187E319158
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 18:44:58 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B6F91319479
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 21:29:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DA8C86F663
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 17:44:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FD9C86E9F;
+	Thu, 11 Feb 2021 20:29:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RnPsGhd3JN8N for <lists+driverdev-devel@lfdr.de>;
-	Thu, 11 Feb 2021 17:44:55 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 4DF736F6C5; Thu, 11 Feb 2021 17:44:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DQBHj6QO7hWi; Thu, 11 Feb 2021 20:29:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 40E246F510;
-	Thu, 11 Feb 2021 17:44:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A68F86DF8;
+	Thu, 11 Feb 2021 20:29:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D64931BF471
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F23C1BF3F6
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:29:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C59C16F55A
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4C58886E44
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 20:29:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zgAT-mo85WIZ for <devel@linuxdriverproject.org>;
- Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 067636F5CB; Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
-Received: from localhost by smtp3.osuosl.org with SpamAssassin (version 3.4.2);
- Thu, 11 Feb 2021 17:44:22 +0000
-From: "Ms. Reem" <johnpinto@jvpinto.com>
-To: Undisclosed recipients:;
-Subject: Hello okay
-Date: Thu, 11 Feb 2021 17:44:19 +0000
-Message-Id: <56a2d9b2938d475fb7d13c15595217b4@RW-EXC1.JVPinto.com>
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HiQL35n3bh0I for <devel@linuxdriverproject.org>;
+ Thu, 11 Feb 2021 20:29:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sender4-of-o53.zoho.com (sender4-of-o53.zoho.com
+ [136.143.188.53])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3B69286DDA
+ for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 20:29:49 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; t=1613075385; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=Nl8lnYSomWul+PxseJtO1bAT0ivdAV7voSyTGNfk4k74tRBkqWvP02f/gokxPw/CnzU7HoHWvZm3INaELhqtn/2LvPCq/CN9T3+3le0C06WwG7++Kuypql0vGQeUequzZPjr+eUwnGIWWI24yZxubIkaGMDorLiRTz0IHyOzH3s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1613075385;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To;
+ bh=QL6scrjpr0rKzcnmUg99LHglhMJLPiiSDVWbEgsLSHw=; 
+ b=mT+K789bY4NH9lDG/CBs5cEc4BHCUmvuK4KIoooS+yU4VYnMvKL0JT4qHBls5+iMg71UP2cL/dliK51FUu96hRbEfXTEsFCyUK2duL0xUF/GRep7CJLyTcaW+j4wQ+C35IxLyFtLaNkObDnYmj1ZscaAavAlGBTkZQLj/dPakTQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=anirudhrb.com;
+ spf=pass  smtp.mailfrom=mail@anirudhrb.com;
+ dmarc=pass header.from=<mail@anirudhrb.com> header.from=<mail@anirudhrb.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1613075385; 
+ s=zoho; d=anirudhrb.com; i=mail@anirudhrb.com;
+ h=From:To:Cc:Message-ID:Subject:Date:MIME-Version:Content-Transfer-Encoding:Content-Type;
+ bh=QL6scrjpr0rKzcnmUg99LHglhMJLPiiSDVWbEgsLSHw=;
+ b=jRqGwqZMKscaJSxiYPXObkqOLwiDzRDidfJOxPjslUAqgMVwVVxbsqjO1P5ogWRV
+ bR4I5+KDD4rZJNzxqApoY2vwwlh5XoKssKGLHQsVBvVT7Mi1l3TKOBHjEctRRZNmEJ5
+ Md8u5R6d2IMTiDcEdF5wYwf3SOTrQgQh/j59nQpk=
+Received: from localhost.localdomain (49.207.58.1 [49.207.58.1]) by
+ mx.zohomail.com with SMTPS id 1613075380231560.0918248835499;
+ Thu, 11 Feb 2021 12:29:40 -0800 (PST)
+From: Anirudh Rayabharam <mail@anirudhrb.com>
+To: lee.jones@linaro.org, kuba@kernel.org, johannes@sipsolutions.net,
+ colin.king@canonical.com, arnd@arndb.de, gregkh@linuxfoundation.org
+Message-ID: <20210211202908.4604-1-mail@anirudhrb.com>
+Subject: [PATCH] staging: wimax/i2400m: fix some byte order issues found by
+ sparse
+Date: Fri, 12 Feb 2021 01:59:08 +0530
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="----------=_60256CF6.CDE48AAB"
+X-ZohoMailClient: External
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,119 +76,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Anirudh Rayabharam <mail@anirudhrb.com>,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is a multi-part message in MIME format.
+Fix sparse byte-order warnings in the i2400m_bm_cmd_prepare()
+function:
 
-------------=_60256CF6.CDE48AAB
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+wimax/i2400m/fw.c:194:36: warning: restricted __le32 degrades to integer
+wimax/i2400m/fw.c:195:34: warning: invalid assignment: +=
+wimax/i2400m/fw.c:195:34:    left side has type unsigned int
+wimax/i2400m/fw.c:195:34:    right side has type restricted __le32
+wimax/i2400m/fw.c:196:32: warning: restricted __le32 degrades to integer
+wimax/i2400m/fw.c:196:47: warning: restricted __le32 degrades to integer
+wimax/i2400m/fw.c:196:66: warning: restricted __le32 degrades to integer
 
-Spam detection software, running on the system "smtp3.osuosl.org",
-has identified this incoming email as possible spam.  The original
-message has been attached to this so you can view it or label
-similar future email.  If you have any questions, see
-the administrator of that system for details.
+Signed-off-by: Anirudh Rayabharam <mail@anirudhrb.com>
+---
+ drivers/staging/wimax/i2400m/fw.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-Content preview:  Hello, My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister
-   of state and Petroleum" also "Minister of State for International Cooperation"
-   in UAE. I write to you on behalf of my other "three (3) collea [...] 
+diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
+index b2fd4bd2c5f9..bce651a6b543 100644
+--- a/drivers/staging/wimax/i2400m/fw.c
++++ b/drivers/staging/wimax/i2400m/fw.c
+@@ -189,12 +189,16 @@ void i2400m_bm_cmd_prepare(struct i2400m_bootrom_header *cmd)
+ {
+ 	if (i2400m_brh_get_use_checksum(cmd)) {
+ 		int i;
+-		u32 checksum = 0;
++		__le32 checksum = 0;
+ 		const u32 *checksum_ptr = (void *) cmd->payload;
+-		for (i = 0; i < cmd->data_size / 4; i++)
+-			checksum += cpu_to_le32(*checksum_ptr++);
+-		checksum += cmd->command + cmd->target_addr + cmd->data_size;
+-		cmd->block_checksum = cpu_to_le32(checksum);
++		for (i = 0; i < le32_to_cpu(cmd->data_size) / 4; i++)
++			le32_add_cpu(&checksum, *checksum_ptr++);
++
++		le32_add_cpu(&checksum, le32_to_cpu(cmd->command));
++		le32_add_cpu(&checksum, le32_to_cpu(cmd->target_addr));
++		le32_add_cpu(&checksum, le32_to_cpu(cmd->data_size));
++
++		cmd->block_checksum = checksum;
+ 	}
+ }
+ EXPORT_SYMBOL_GPL(i2400m_bm_cmd_prepare);
+-- 
+2.26.2
 
-Content analysis details:   (15.7 points, 5.0 required)
-
- pts rule name              description
----- ---------------------- --------------------------------------------------
- 3.3 RCVD_IN_SBL_CSS        RBL: Received via a relay in Spamhaus SBL-CSS
-                            [52.231.198.195 listed in zen.spamhaus.org]
- 0.8 BAYES_50               BODY: Bayes spam probability is 40 to 60%
-                            [score: 0.5000]
- 0.0 FSL_CTYPE_WIN1251      Content-Type only seen in 419 spam
- 0.0 NSL_RCVD_FROM_USER     Received from User
- 2.7 RCVD_IN_PSBL           RBL: Received via a relay in PSBL
-                            [65.49.11.60 listed in psbl.surriel.com]
- 0.0 RCVD_IN_MSPIKE_L5      RBL: Very bad reputation (-5)
-                            [65.49.11.60 listed in bl.mailspike.net]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
--0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
- 0.0 FSL_NEW_HELO_USER      Spam's using Helo and User
- 0.0 AXB_XMAILER_MIMEOLE_OL_024C2 Yet another X header trait
- 2.1 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- 1.9 FORGED_MUA_OUTLOOK     Forged mail pretending to be from MS Outlook
- 1.6 ADVANCE_FEE_3_NEW      Appears to be advance fee fraud (Nigerian 419)
- 3.2 UNDISC_MONEY           Undisclosed recipients + money/fraud signs
-
-
-
-------------=_60256CF6.CDE48AAB
-Content-Type: message/rfc822; x-spam-type=original
-Content-Description: original message before SpamAssassin
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-
-Return-Path: <johnpinto@jvpinto.com>
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
-	by smtp3.osuosl.org (Postfix) with ESMTPS id CA3206F510
-	for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:44:21 +0000 (UTC)
-Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
- RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
- (TLS) id 15.0.1497.2; Thu, 11 Feb 2021 09:44:21 -0800
-Received: from User (52.231.198.195) by RW-EXC1.JVPinto.com (172.32.1.13) with
- Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport; Thu, 11 Feb 2021
- 09:44:06 -0800
-Reply-To: <ms.reem@yandex.com>
-From: "Ms. Reem" <johnpinto@jvpinto.com>
-Subject: Hello okay
-Date: Thu, 11 Feb 2021 17:44:19 +0000
-MIME-Version: 1.0
-Content-Type: text/plain; charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <56a2d9b2938d475fb7d13c15595217b4@RW-EXC1.JVPinto.com>
-To: Undisclosed recipients:;
-
-Hello,
-
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state
-and Petroleum" also "Minister of State for International Cooperation"
-in UAE. I write to you on behalf of my other "three (3) colleagues"
-who has approved me to solicit for your "partnership in claiming of
-{us$47=Million}" from a Financial Home in Cambodia on their behalf and
-for our "Mutual Benefits".
-
-The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas
-deal with Cambodian/Vietnam Government within 2013/2014, however, we
-don't want our government to know about the fund. If this proposal
-interests you, let me know, by sending me an email and I will send to
-you detailed information on how this business would be successfully
-transacted. Be informed that nobody knows about the secret of this
-fund except us, and we know how to carry out the entire transaction.
-So I am compelled to ask, that you will stand on our behalf and
-receive this fund into any account that is solely controlled by you.
-
-We will compensate you with 15% of the total amount involved as
-gratification for being our partner in this transaction. Reply to:
-ms.reem@yandex.com
-
-Regards,
-Ms. Reem.
-
-------------=_60256CF6.CDE48AAB
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
-------------=_60256CF6.CDE48AAB--
-
