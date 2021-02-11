@@ -1,68 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64D373183C7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 03:57:14 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94BF93183DF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 04:13:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2DDB9874C9;
-	Thu, 11 Feb 2021 02:57:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9EE04873F7;
+	Thu, 11 Feb 2021 03:12:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YsVw1qsFgcPe; Thu, 11 Feb 2021 02:57:11 +0000 (UTC)
+	with ESMTP id WC41-Zue5Yns; Thu, 11 Feb 2021 03:12:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 85D6687450;
-	Thu, 11 Feb 2021 02:57:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AEB10873F9;
+	Thu, 11 Feb 2021 03:12:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 67F741BF83C
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 02:57:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E81551BF85D
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 03:12:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6254D86F75
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 02:57:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E4F1C873D7
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 03:12:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9hhrPB90z0jr for <devel@linuxdriverproject.org>;
- Thu, 11 Feb 2021 02:57:03 +0000 (UTC)
+ with ESMTP id zqsgTVYLk1NP for <devel@linuxdriverproject.org>;
+ Thu, 11 Feb 2021 03:12:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from qq.com (out203-205-251-66.mail.qq.com [203.205.251.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8B9A386F64
- for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 02:57:01 +0000 (UTC)
+Received: from qq.com (out203-205-221-231.mail.qq.com [203.205.221.231])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2C434873D4
+ for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 03:12:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foxmail.com;
- s=s201512; t=1613012208;
- bh=BATEy4T2ThqSk1g+ELAw4ooT8ENat4w7aPouGGo1Xw0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=UvpEPtn4TJE9QuPgmQyVMa6ubFfE3hNk5p8zrVrTz0cxSRyDUzQgAuBFe3q79/uvN
- QQ12gTxIPByuSmQM/qqdcDxlex7iA0url79wQ8aYOZ/V9/ZsIqQQsYDojGs3nSxtXN
- 618PelQkoDZIBaXjSTqCFWvC8hfuPy4j6rdCi+6s=
+ s=s201512; t=1613013162;
+ bh=knNJrx3LVxOuEdABE50vJvQR8RErcZaar4R94plm5JE=;
+ h=From:To:Cc:Subject:Date;
+ b=JfT117oRG0f5yKphgpVZm0kFmhEwF7lqIDEEIB2zM9KMX4j1cidDQ88ciV4HnR1J8
+ pLHhJBOWroxs8RTE9p19/+gXhR+Hb6pkFMpq07Tg7R20IrwC0VEy7cDRwT2DrVq0hU
+ 7SK5iYImWIVymc3YNMkBliT4jOHIJ/4KMkzZl0NU=
 Received: from sig.localdomain ([1.193.79.12])
- by newxmesmtplogicsvrszb5.qq.com (NewEsmtp) with SMTP
- id E2E0C22C; Thu, 11 Feb 2021 10:56:46 +0800
-X-QQ-mid: xmsmtpt1613012207tb9mxhmaj
-Message-ID: <tencent_D16327B2096F3DA0548367391625B987E705@qq.com>
-X-QQ-XMAILINFO: NN9UNVzD7YXODqu+Qy5hOMKmcDa7QllZFIUoTf+7C9vLb4JzqjyfuyWsfzS4m+
- 2mIFakY2Cg6LK2lLDXmst9fPAe3yk3jHoR15mFWGVh7v/zNXau2c8rKi1gb1m8z3fSGpL5qKf/U+
- DpXKB86sPZdYgu3vG/UBj6FsmGwjqSegG7A4UNlWbhEX9xT7lkO4RDP7UrDnP6MpUz6RTxnxBbKp
- 5NCobjoHhLkTYkg/hQ9xMtb8pQ8GetkNwBb5RGZ4eXXCPGfeU7F1VHN6Nlua67VmEiXCkEsrgd6V
- zYDkVFIe/riWgln7AfIzMchhFCmEeYpaWORgIoZXOeyBMsdyAGo0WkPFfno8RQVpaNTDsAGMJ/mZ
- Zrq/d8GFDukHofXvjc0TOP99UTheZMJOYqFrZJG2hLI7u0hZsEA2DLag2TEAScwhPQmLksw6cuF6
- c6AHe+0/PamULKo9uTriQ3Yy5ctOXn0druYSpqeBINbpRUQ2y38nGLPrdlyTD9TG4w018ZnJMB0p
- I/kuUwlOf5hHE8q0X0fuZeMPiVIpkkyjwmeHenX8/fAaGeIjXegZWneMyBJodaEDN9Y2bRU/zRHU
- MTOvdlEUz8c4YsaM3Q9I3fgegv639eIW+rq6rIzLkhqeTiihEAZ/KIoRjEJ52b2r/KeiefVXRmWV
- ETgI6i+MjDockIzxiSnZWyYAnt7F9aJSK7l0VII5xZ0EaWvvTxKf4nzwiltkd7owBpL51oULYXVP
- 9NHzS2BnjBXWL1ARR+2FufNm11g6j7rk4zSVErWb7XVh1jBk7s3+/83g==
+ by newxmesmtplogicsvrsza8.qq.com (NewEsmtp) with SMTP
+ id 32719440; Thu, 11 Feb 2021 11:12:39 +0800
+X-QQ-mid: xmsmtpt1613013159toexcuqn7
+Message-ID: <tencent_21CFC58E6013D47A55691E4F4C6C4CF20706@qq.com>
+X-QQ-XMAILINFO: MgmB7lY4LTHyqn6kOSvJxgv3sMkhNOvcSt1AQHuzwmipRLc5qr+aOhkrsQ6wUv
+ EJUjgkwEHU2rioI6vqgDM5STFeWGltCxvD3Ua06Z8TL1Boi6VzBoSWN46BwVm/tTWVO0Pd34+9jH
+ Ewln/0YC573T896GQNAhmlt80fiEi1VY6P2YmF3z+wpt2u7SJ/kS8ToY8x1+O70Dr0b+0cf/usHH
+ Re/xPi8WQHOwOwWNYfQmLKqNkkZ6bfLYo9T7jDDvAm/OyGLkNbchFAii9iruhMUaDieWtbynV2zv
+ BpuRV2Lhf2+l2rptnKOBgHEr5begJrW0R8V5T7xzyr++GxK7lXnGeu8tQNom+9glc1stLEodkWd7
+ smLR4x2Cp0uQlIaW9whmr/UcVcstSpklPQqZlSvdFWTmO0HLjU5S9WYofytpCQMkV58Ox1aQVt7L
+ 1wtEMu3Dnz5D0BMNs9T46ZUsGZGLaxXuoebvBioPn+O68DZ04TCstbJ/KfVkBm2vQAjbUFyV/Rlm
+ sXbll2axSr9agzSkacOvr34FPGT8wtLiDxLoXRMyTxhUR/OGHX0pUUEBlIVkqSsWSaL0v8iWCh4D
+ rrXJ93V3Y/kGaStWOtw/7qEi7Z0kjLS7ymS+T+SbaFdpLXPtm7jaOlD9u5wd1vZlBZ2WIl9fBB1y
+ VxoF7pg7ZhKMsoxdzBWScH2mS7ItQB6JXS9EanuJM5tEjmRYpypWVOMsURa4g77H9r/Kzrm/o6a8
+ QecyvHoEXFpKlfe6C47KbPYIFF/GQnsqUkFALVu7EQMJ87IFQijy2rYW4ML2dtwPzkLNkcB2yqWZ
+ AfQOCKLiBBIA==
 From: Yujia Qiao <rapiz@foxmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Forest Bond <forest@alittletooquiet.net>
-Subject: [PATCH] Fix the naming of one variable
-Date: Thu, 11 Feb 2021 10:56:36 +0800
-X-OQ-MSGID: <20210211025635.621350-2-rapiz@foxmail.com>
+Subject: [PATCH] Staging: vt6655: Replace a camel case variable name
+Date: Thu, 11 Feb 2021 11:12:39 +0800
+X-OQ-MSGID: <20210211031239.629129-1-rapiz@foxmail.com>
 X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210211025635.621350-1-rapiz@foxmail.com>
-References: <20210211025635.621350-1-rapiz@foxmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,10 +81,14 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CamelCase should be avoided for variable naming.
+Replace camel case variable names with snake case in baseband.c.
 
 Signed-off-by: Yujia Qiao <rapiz@foxmail.com>
 ---
+So I screwed up last two emails too. One with no subject and one with
+the wrong commit message. This times...I hope it's the last email for
+this patch. Sorry for the bother again.
+
  drivers/staging/vt6655/baseband.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
