@@ -1,54 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E45A319107
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 18:29:00 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4187E319158
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 18:44:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15305871CE;
-	Thu, 11 Feb 2021 17:28:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DA8C86F663
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Feb 2021 17:44:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RKqd+WNIVm6F; Thu, 11 Feb 2021 17:28:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RnPsGhd3JN8N for <lists+driverdev-devel@lfdr.de>;
+	Thu, 11 Feb 2021 17:44:55 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 4DF736F6C5; Thu, 11 Feb 2021 17:44:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0C67386EA0;
-	Thu, 11 Feb 2021 17:28:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 40E246F510;
+	Thu, 11 Feb 2021 17:44:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D74961BF471
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:28:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D64931BF471
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D371D8759D
- for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:28:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C59C16F55A
+ for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vYWqMRIGU+5G for <devel@linuxdriverproject.org>;
- Thu, 11 Feb 2021 17:28:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 659EF87591
- for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 17:28:55 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7013364E7A;
- Thu, 11 Feb 2021 17:28:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613064535;
- bh=YGhTFXKEWgd7dqY4W1LGarZMEsIro2Rz2rQ+w3qtQCw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YkGs0ryRSaWrxTpFIGLjnqYiIXSNCPu9jB6l9ax+VY1KUUS+dCriGAzI3JqQxCR61
- DjcsTjgIrSUvLs8xrBMoE+O5QSEqZmTB8l8Xi6EUXa0py4vPFbTwlY3GFDmffguq4h
- KYQJA79MAISKexkwmuI9sXcbpIF+YNQXzYtC3T/0=
-Date: Thu, 11 Feb 2021 18:28:52 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: "Mairo P. Rufus" <akoudanilo@gmail.com>
-Subject: Re: [PATCH] staging: wlan-ng: Fix comments typos
-Message-ID: <YCVpVDrga1QYbKWN@kroah.com>
-References: <YCQSKNYU7zhcKHHl@kroah.com> <C96UXUQZSWD6.1BZ2DYOVBDNYL@uncertain>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zgAT-mo85WIZ for <devel@linuxdriverproject.org>;
+ Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 067636F5CB; Thu, 11 Feb 2021 17:44:23 +0000 (UTC)
+Received: from localhost by smtp3.osuosl.org with SpamAssassin (version 3.4.2);
+ Thu, 11 Feb 2021 17:44:22 +0000
+From: "Ms. Reem" <johnpinto@jvpinto.com>
+To: Undisclosed recipients:;
+Subject: Hello okay
+Date: Thu, 11 Feb 2021 17:44:19 +0000
+Message-Id: <56a2d9b2938d475fb7d13c15595217b4@RW-EXC1.JVPinto.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <C96UXUQZSWD6.1BZ2DYOVBDNYL@uncertain>
+Content-Type: multipart/mixed; boundary="----------=_60256CF6.CDE48AAB"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,61 +53,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, trivial@kernel.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Feb 11, 2021 at 05:55:18PM +0100, Mairo P. Rufus wrote:
-> > Hi,
-> >
-> > This is the friendly patch-bot of Greg Kroah-Hartman. You have sent him
-> > a patch that has triggered this response. He used to manually respond
-> > to these common problems, but in order to save his sanity (he kept
-> > writing the same thing over and over, yet to different people), I was
-> > created. Hopefully you will not take offence and will fix the problem
-> > in your patch and resubmit it so that it can be accepted into the Linux
-> > kernel tree.
-> >
-> > You are receiving this message because of the following common error(s)
-> > as indicated below:
-> >
-> > - You did not specify a description of why the patch is needed, or
-> > possibly, any description at all, in the email body. Please read the
-> > section entitled "The canonical patch format" in the kernel file,
-> > Documentation/SubmittingPatches for what is needed in order to
-> > properly describe the change.
-> >
-> > - You did not write a descriptive Subject: for the patch, allowing Greg,
-> > and everyone else, to know what this patch is all about. Please read
-> > the section entitled "The canonical patch format" in the kernel file,
-> > Documentation/SubmittingPatches for what a proper Subject: line should
-> > look like.
-> >
-> > If you wish to discuss this problem further, or you have questions about
-> > how to resolve this issue, please feel free to respond to this email and
-> > Greg will reply once he has dug out from the pending patches received
-> > from other developers.
-> >
-> > thanks,
-> >
-> > greg k-h's patch email bot
-> 
-> After double checking, I still can't figure out what I did wrong. I'm
-> sorry for abusing your time, but can you help me on this one?
+This is a multi-part message in MIME format.
 
-You don't quote your changelog text here, so it's hard to determine what
-needs to be done.
+------------=_60256CF6.CDE48AAB
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-But your subject line could use a lot of work, don't you agree?  Read
-the above links for how to write a good one.
+Spam detection software, running on the system "smtp3.osuosl.org",
+has identified this incoming email as possible spam.  The original
+message has been attached to this so you can view it or label
+similar future email.  If you have any questions, see
+the administrator of that system for details.
 
-thanks,
+Content preview:  Hello, My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister
+   of state and Petroleum" also "Minister of State for International Cooperation"
+   in UAE. I write to you on behalf of my other "three (3) collea [...] 
 
-greg k-h
+Content analysis details:   (15.7 points, 5.0 required)
+
+ pts rule name              description
+---- ---------------------- --------------------------------------------------
+ 3.3 RCVD_IN_SBL_CSS        RBL: Received via a relay in Spamhaus SBL-CSS
+                            [52.231.198.195 listed in zen.spamhaus.org]
+ 0.8 BAYES_50               BODY: Bayes spam probability is 40 to 60%
+                            [score: 0.5000]
+ 0.0 FSL_CTYPE_WIN1251      Content-Type only seen in 419 spam
+ 0.0 NSL_RCVD_FROM_USER     Received from User
+ 2.7 RCVD_IN_PSBL           RBL: Received via a relay in PSBL
+                            [65.49.11.60 listed in psbl.surriel.com]
+ 0.0 RCVD_IN_MSPIKE_L5      RBL: Very bad reputation (-5)
+                            [65.49.11.60 listed in bl.mailspike.net]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+-0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
+ 0.0 FSL_NEW_HELO_USER      Spam's using Helo and User
+ 0.0 AXB_XMAILER_MIMEOLE_OL_024C2 Yet another X header trait
+ 2.1 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
+ 1.9 FORGED_MUA_OUTLOOK     Forged mail pretending to be from MS Outlook
+ 1.6 ADVANCE_FEE_3_NEW      Appears to be advance fee fraud (Nigerian 419)
+ 3.2 UNDISC_MONEY           Undisclosed recipients + money/fraud signs
+
+
+
+------------=_60256CF6.CDE48AAB
+Content-Type: message/rfc822; x-spam-type=original
+Content-Description: original message before SpamAssassin
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <johnpinto@jvpinto.com>
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
+	by smtp3.osuosl.org (Postfix) with ESMTPS id CA3206F510
+	for <devel@linuxdriverproject.org>; Thu, 11 Feb 2021 17:44:21 +0000 (UTC)
+Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
+ RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
+ (TLS) id 15.0.1497.2; Thu, 11 Feb 2021 09:44:21 -0800
+Received: from User (52.231.198.195) by RW-EXC1.JVPinto.com (172.32.1.13) with
+ Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport; Thu, 11 Feb 2021
+ 09:44:06 -0800
+Reply-To: <ms.reem@yandex.com>
+From: "Ms. Reem" <johnpinto@jvpinto.com>
+Subject: Hello okay
+Date: Thu, 11 Feb 2021 17:44:19 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <56a2d9b2938d475fb7d13c15595217b4@RW-EXC1.JVPinto.com>
+To: Undisclosed recipients:;
+
+Hello,
+
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state
+and Petroleum" also "Minister of State for International Cooperation"
+in UAE. I write to you on behalf of my other "three (3) colleagues"
+who has approved me to solicit for your "partnership in claiming of
+{us$47=Million}" from a Financial Home in Cambodia on their behalf and
+for our "Mutual Benefits".
+
+The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas
+deal with Cambodian/Vietnam Government within 2013/2014, however, we
+don't want our government to know about the fund. If this proposal
+interests you, let me know, by sending me an email and I will send to
+you detailed information on how this business would be successfully
+transacted. Be informed that nobody knows about the secret of this
+fund except us, and we know how to carry out the entire transaction.
+So I am compelled to ask, that you will stand on our behalf and
+receive this fund into any account that is solely controlled by you.
+
+We will compensate you with 15% of the total amount involved as
+gratification for being our partner in this transaction. Reply to:
+ms.reem@yandex.com
+
+Regards,
+Ms. Reem.
+
+------------=_60256CF6.CDE48AAB
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+------------=_60256CF6.CDE48AAB--
+
