@@ -1,61 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ACA55319AFC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 09:03:13 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FD45319B14
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 09:17:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 15B7A6F613
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 08:03:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B221C874F7;
+	Fri, 12 Feb 2021 08:17:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id txWqsI9m0me4 for <lists+driverdev-devel@lfdr.de>;
-	Fri, 12 Feb 2021 08:03:09 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 47B696F6FC; Fri, 12 Feb 2021 08:03:09 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GELJNVfySSqy; Fri, 12 Feb 2021 08:17:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 523F86F574;
-	Fri, 12 Feb 2021 08:02:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E7328743D;
+	Fri, 12 Feb 2021 08:17:16 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E7C261BF9B2
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B87C21BF3F6
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 08:02:34 +0000 (UTC)
+ Fri, 12 Feb 2021 08:17:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E4AA986ACA
+ by hemlock.osuosl.org (Postfix) with ESMTP id B025987450
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 08:02:34 +0000 (UTC)
+ Fri, 12 Feb 2021 08:17:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bPJ043qt95O8
+ with ESMTP id 0n3E6SREoHSD
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 08:02:32 +0000 (UTC)
+ Fri, 12 Feb 2021 08:17:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 34ACA86B09
+Received: from mail-pj1-f42.google.com (mail-pj1-f42.google.com
+ [209.85.216.42])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3B3208743D
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 08:02:32 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 66E9C60235;
- Fri, 12 Feb 2021 08:02:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613116952;
- bh=94yuXZN/0myQvsYU2RPfafDcSSYpKwalpnyiOnEtQIA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=WjHpAh4d+jDil0LAMf+eOamTQ77lxht9D2+SfB58k4uHqC+H6u34EHQz2UKwKLPJs
- xNRMLfkbR7iYL746ZXU/6Es03m50JW+urymh9rEHT6YcqaSObPq+OXqjNqeSgWRF4Q
- 6D+jKNWz9hmhs4TkL2HdGPStPmKhWFiB764ywdtA=
-Date: Fri, 12 Feb 2021 09:02:29 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: shivang upadhyay <oroz3x@gmail.com>
-Subject: Re: [PATCH] ks7010: removed checkpatch.pl format errors
-Message-ID: <YCY2FTmycppYXY0O@kroah.com>
-References: <20210212075845.14180-1-oroz3x@gmail.com>
+ Fri, 12 Feb 2021 08:17:13 +0000 (UTC)
+Received: by mail-pj1-f42.google.com with SMTP id d2so39068pjs.4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 12 Feb 2021 00:17:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=egXrthJImNUxIC6zqIS4jRU+/D0rG/8Im//Z+CJZHg8=;
+ b=W1957gwnnueUJLnezCsvJBokvEbRHoFm7S08tIM0J1oKV/6yfaPR98nwfRIjaqYvAc
+ RzaCnb/hlAADaRRqAN39itj4G9LwL5sHGPv6C/JFpDMHADzaXPR5ne8jzHvzkVXCPVvD
+ kAnFb8aIkAmiuozUmbRiK501DqjJKHbQWCS4ufWfy7g2srUim6MjYJwbPx/k2BrYVEMJ
+ DVrO+TZHU/YewkE8mivv52bScGSzP0VZzppgjzo1rqn8NCyXOcpMTr+QyySEUaTPhmO5
+ H2+ryLvngzGHoUPLbmsPy3rgYZsbkSUcZQORf2Q0u+n+4YoPTFmHAIccO7XvL0536gGx
+ nm1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=egXrthJImNUxIC6zqIS4jRU+/D0rG/8Im//Z+CJZHg8=;
+ b=S5nNKQe9Srf3sU4K44QADX4bjTKy8kLYV3YWfwUlvucU/NzQnSkT118n1g2s3V0RLL
+ zyiHFi7c3I5zaizn0J3QRkV6UtZDmmjw6aHmRrf2b1MPxH8nAhPwKwMfeCK0AEHugvbl
+ I8SnWsubGGcMTlS7R+jM+MCQKgaTFgQa7NEP+HsqmxbQNpQ5pPnsTlKiAE3fqVJ4zv8X
+ RyMi/mGvgzhxuRC5qNjBz8B5CzIuMJKNxYZOrF8ZDL6Zou0c8pPM92CwvdiOeJKovq1V
+ GfkvlFfEEITPCrYcsZ6VVsYcotPO43SGZDWPQapLem0MyVjJh5upYk8T5TcCrp0oISO2
+ 8sbw==
+X-Gm-Message-State: AOAM531bAosmmliXVoR0UEtiBpj2rsY1jQn/zLZP+vjhNi5og+v3FTxf
+ FCnb+1VEWudDY9b9RnVBYV+MYl4KXCdKcHeJggU=
+X-Google-Smtp-Source: ABdhPJzUw3HQsWYQ5GssX8uWttq2tjrpdqddvBL+/qWVoZmobCmf3q62Hc3QnDuqc2erksszwiEIPRG1wakNV0z+3bY=
+X-Received: by 2002:a17:90b:4905:: with SMTP id
+ kr5mr1707002pjb.135.1613117832828; 
+ Fri, 12 Feb 2021 00:17:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
+References: <20210212075845.14180-1-oroz3x@gmail.com>
 In-Reply-To: <20210212075845.14180-1-oroz3x@gmail.com>
+From: Frans Klaver <fransklaver@gmail.com>
+Date: Fri, 12 Feb 2021 09:17:01 +0100
+Message-ID: <CAH6sp9MmsJNkqMjtHbe59o8P8JMA9pSsxEo6VQAMNRNGsLT+4w@mail.gmail.com>
+Subject: Re: [PATCH] ks7010: removed checkpatch.pl format errors
+To: shivang upadhyay <oroz3x@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,101 +85,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+ driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 12, 2021 at 01:28:45PM +0530, shivang upadhyay wrote:
-> Signed-off-by: shivang upadhyay <oroz3x@gmail.com>
-> ---
->  drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
->  1 file changed, 12 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
-> index 39138191a556..c62a494ed6bb 100644
-> --- a/drivers/staging/ks7010/ks_hostif.h
-> +++ b/drivers/staging/ks7010/ks_hostif.h
-> @@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
->  #define TX_RATE_FIXED		5
->  
->  /* 11b rate */
-> -#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
-> -#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
-> -#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
-> -#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
-> +#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
-> +#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
-> +#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
-> +#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
->  
->  /* 11g rate */
-> -#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
-> -#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
-> -#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
-> -#define TX_RATE_9M	(u8)(90 / 5)
-> -#define TX_RATE_18M	(u8)(180 / 5)
-> -#define TX_RATE_36M	(u8)(360 / 5)
-> -#define TX_RATE_48M	(u8)(480 / 5)
-> -#define TX_RATE_54M	(u8)(540 / 5)
-> +#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
-> +#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
-> +#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
-> +#define TX_RATE_9M	((u8)(90 / 5))
-> +#define TX_RATE_18M	((u8)(180 / 5))
-> +#define TX_RATE_36M	((u8)(360 / 5))
-> +#define TX_RATE_48M	((u8)(480 / 5))
-> +#define TX_RATE_54M	((u8)(540 / 5))
->  
->  static inline bool is_11b_rate(u8 rate)
->  {
-> -- 
-> 2.27.0
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
 Hi,
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+On Fri, Feb 12, 2021 at 8:59 AM shivang upadhyay <oroz3x@gmail.com> wrote:
+>
+> Signed-off-by: shivang upadhyay <oroz3x@gmail.com>
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+There's no description here. Even though this seems like a trivial
+patch, it should still be there. Your commit message would look
+something like
 
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
+    ks7010: enclose non-trivial defines in parentheses
 
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
+    Checkpatch complains that parentheses are missing:
+    <quote the checkpatch warning or something>
+    Fix that.
 
-- You sent a patch that has been sent multiple times in the past few
-  days, and is identical to ones that has been recently rejected.
-  Please always look at the mailing list traffic to determine if you are
-  duplicating other people's work.
+Also, if you're sending new versions of your patch, make sure to
+include the patch version in your subject:
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+    [PATCH v3] ks7010: enclose non-trivial defines in parentheses
 
-thanks,
+You can use the '--reroll-count=N' option from git-format-patch to
+automate that.
 
-greg k-h's patch email bot
+Good luck on your next roll,
+Frans
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
