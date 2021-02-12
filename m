@@ -2,56 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7E2D319BF0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 10:37:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C3BD319C0C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 10:46:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E0B4186BAE;
-	Fri, 12 Feb 2021 09:37:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D444F86B7C;
+	Fri, 12 Feb 2021 09:46:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P5kN7YyyLygd; Fri, 12 Feb 2021 09:37:04 +0000 (UTC)
+	with ESMTP id G0oiRMnnz45F; Fri, 12 Feb 2021 09:46:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 858478651A;
-	Fri, 12 Feb 2021 09:37:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C994B86A5D;
+	Fri, 12 Feb 2021 09:46:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4389E1BF372
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 09:37:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E2641BF372
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 09:46:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 406D687120
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 09:37:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 88246870FD
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 09:46:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q6ldCvswGb7a for <devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 09:37:00 +0000 (UTC)
+ with ESMTP id ukraBWlhA3Lf for <devel@linuxdriverproject.org>;
+ Fri, 12 Feb 2021 09:46:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A13728711F
- for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 09:37:00 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BFFF564E35;
- Fri, 12 Feb 2021 09:36:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613122620;
- bh=k+sD9g+C9OoEZjpy98wT9p5d57Ljl1iCOjkEB7l8r5E=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VS1dHBF7Y0JLEvlrqgySoazU9r/jeE/VIBjABUsx2juDNgoJdgAKKibxqPsizzToo
- HcU/juhsbiGN9DIVSZJL2DdVrIWLUJBwQRqakSO9mlmUqZ0Ice0NrCnzaWR9rZgc9w
- vOTrhY0+CJI3qbB4EuC/d1U/ddj7rFgo08Px340I=
-Date: Fri, 12 Feb 2021 10:36:57 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 1/2] staging: greybus: Fixed alignment issue in hid.c
-Message-ID: <YCZMOQdVDk7mStBy@kroah.com>
-References: <20210212081835.9497-1-pritthijit.nath@icloud.com>
- <20210212090926.ox763j3btrqfzzzj@vireshk-i7>
- <YCZHsMPgyqtRMTII@kroah.com>
- <20210212092130.cxo6tuess6msf4kb@vireshk-i7>
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A6A2F870CF
+ for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 09:46:22 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11C9YeU1042176;
+ Fri, 12 Feb 2021 09:46:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=NfvQ9ws4X6o6uCqH9n7aJ5xoug6FquVYBUBrDnHRfIs=;
+ b=YyVrTzZVY5mUcCFWXKVwRBy1zWRfjVu1uH/Gw85kQSK6zFoEysQx9YF+uEHDQEbKcSU/
+ mlsRidkS56WJeDsXsYxLKE43ysysW/lJupyuYa5aiKf24qAdaQaZcQSzZCPl/FjUsPdJ
+ LfjRXl1z6fA6jZ1jaRKyRwj9mzXfwODWHMI7J5ayb83r1ZQywJ72TBzFcUboHEeQbmSv
+ g3iYBYNECBw4AbrJ5zTvpVJaEe39Bzp6wLeS34GjPqDfkBbm8aJH7RLrjpsH/0FILzrQ
+ FMfDTTZORtC2KQbHz+l69KxErMNgZhfxTFnfSH+aWMfscD4BViMT/kvVHWZLOhrLdAZM ag== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 36mv9dvrvb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 12 Feb 2021 09:46:13 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11C9TaWl087880;
+ Fri, 12 Feb 2021 09:46:11 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 36j5159h25-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 12 Feb 2021 09:46:11 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11C9k67g006243;
+ Fri, 12 Feb 2021 09:46:06 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 12 Feb 2021 01:46:05 -0800
+Date: Fri, 12 Feb 2021 12:45:58 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: karthik alapati <mail@karthek.com>
+Subject: Re: [PATCH v4 2/2] staging: rtl8723bs: remove obsolete commented out
+ code
+Message-ID: <20210212094558.GJ2696@kadam>
+References: <cover.1613048573.git.mail@karthek.com>
+ <485415dbafc32710f1a8e3f7c951868f7738efe9.1613048573.git.mail@karthek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210212092130.cxo6tuess6msf4kb@vireshk-i7>
+In-Reply-To: <485415dbafc32710f1a8e3f7c951868f7738efe9.1613048573.git.mail@karthek.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9892
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ bulkscore=0 adultscore=0
+ mlxlogscore=999 phishscore=0 spamscore=0 suspectscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102120074
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9892
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 mlxlogscore=999
+ bulkscore=0 suspectscore=0 phishscore=0 adultscore=0 impostorscore=0
+ mlxscore=0 clxscore=1015 lowpriorityscore=0 malwarescore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102120074
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,60 +100,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, elder@kernel.org, vireshk@kernel.org,
- johan@kernel.org, linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org,
- Pritthijit Nath <pritthijit.nath@icloud.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Stephen Rothwell <sfr@canb.auug.org.au>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 12, 2021 at 02:51:30PM +0530, Viresh Kumar wrote:
-> On 12-02-21, 10:17, Greg KH wrote:
-> > On Fri, Feb 12, 2021 at 02:39:26PM +0530, Viresh Kumar wrote:
-> > > On 12-02-21, 13:48, Pritthijit Nath wrote:
-> > > > This change fixes a checkpatch CHECK style issue for "Alignment should match
-> > > > open parenthesis".
-> > > > 
-> > > > Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
-> > > > ---
-> > > >  drivers/staging/greybus/hid.c | 4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/staging/greybus/hid.c b/drivers/staging/greybus/hid.c
-> > > > index ed706f39e87a..a56c3fb5d35a 100644
-> > > > --- a/drivers/staging/greybus/hid.c
-> > > > +++ b/drivers/staging/greybus/hid.c
-> > > > @@ -221,8 +221,8 @@ static void gb_hid_init_reports(struct gb_hid *ghid)
-> > > >  }
-> > > > 
-> > > >  static int __gb_hid_get_raw_report(struct hid_device *hid,
-> > > > -		unsigned char report_number, __u8 *buf, size_t count,
-> > > > -		unsigned char report_type)
-> > > > +				   unsigned char report_number, __u8 *buf, size_t count,
-> > > > +				   unsigned char report_type)
-> > > >  {
-> > > >  	struct gb_hid *ghid = hid->driver_data;
-> > > >  	int ret;
-> > > 
-> > > I can't even count the number of attempts we have seen in previous
-> > > years to make checkpatch --strict happy for greybus.
-> > > 
-> > > I say we make this change once and for all across greybus, so we don't
-> > > have to review or NAK someone afterwards.
-> > > 
-> > > Should I send a patch for this ?
-> > 
-> > Sure, but note that over time, checkpatch adds new things so there will
-> > always be something to change in here, until we move it out of the
-> > drivers/staging/ area :)
+On Thu, Feb 11, 2021 at 06:36:04PM +0530, karthik alapati wrote:
+> There is a bunch of messy, commented out code.  Just delete it.
 > 
-> Right, though I wasn't worried about other checkpatch warning but
-> specially the "alignment - parenthesis" one. Everyone (specially
-> newbies) want to fix that everywhere :)
+> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: karthik alapati <mail@karthek.com>
 
-Sure, fix it up "right" if you want to, I'll take coding style fixes
-from anyone :)
+Perfect, thanks.  Greg already merged this as well so good job.
+
+regards,
+dan carepnter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
