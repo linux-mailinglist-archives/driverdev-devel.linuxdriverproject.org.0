@@ -1,57 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E250D319C44
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 11:03:33 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6CD8B6F66A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 10:03:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HbBNKlyU01MN for <lists+driverdev-devel@lfdr.de>;
-	Fri, 12 Feb 2021 10:03:28 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id CE5F86F654; Fri, 12 Feb 2021 10:03:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CC7D76F5CE;
-	Fri, 12 Feb 2021 10:03:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0221A1BF334
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:02:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 12F98319C52
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 11:05:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F32C786A5D
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:02:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9E4C186BAE;
+	Fri, 12 Feb 2021 10:05:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HfJ6kjWzkFiF; Fri, 12 Feb 2021 10:05:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BD4D486A0F;
+	Fri, 12 Feb 2021 10:05:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 783E41BF2FE
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 73DAF8743A
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kfja4JhkxWqJ for <devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 10:02:55 +0000 (UTC)
+ with ESMTP id jiABZf7vLBYn for <devel@linuxdriverproject.org>;
+ Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7A0B786A59
- for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 10:02:55 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BD0C464E6B;
- Fri, 12 Feb 2021 10:02:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613124175;
- bh=fWVq8k8RFQBMENGPdSVHmwC5EnHdxReFRfSG9FAZbsw=;
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0688B8719E
+ for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8B0F664E6C;
+ Fri, 12 Feb 2021 10:05:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1613124346;
+ bh=6bki0Au+K2JaECcmUHQQU+dhCdZZhRL3yqcY8rcUtsE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VdT6hoQFVFdL97sGhbqS92xz1H0jA9mbFRs536tQn5jrrZ+QruTR7DGTPzpuXHUPH
- SdrFqKSHPLqjpenJ5GVrQq8RGO/R/8yZSRGv+/wAKqoCYCVYfpIQlo9WyAvQMC00r7
- QuKQw453pNxGUXurKkSinXEls8quW+RMPVF8OE84=
-Date: Fri, 12 Feb 2021 11:02:52 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Pritthijit Nath <pritthijit.nath@icloud.com>
-Subject: Re: [PATCH 2/2] staging: greybus: Fixed a misspelling in hid.c
-Message-ID: <YCZSTJuDiPGaQ1yV@kroah.com>
-References: <20210212095008.11741-1-pritthijit.nath@icloud.com>
+ b=b0iX8pRA6j+ZQ5YeUbwZ2KbYkIJHl4IsI2y/6G4MIDpQtX4GkbCWnnFeRwu8VYubV
+ a7KWhIlPzqXtFlsYCce6DGBV+Apj7QKhUiWN+M3s+WDSgAdsDbN58E+yHmcOgBovET
+ /C9tfDteHrNwrWy3357JirJUhBmuga2l7c75T6Jg0xAz5EW7SymWUqqZOAIMkZzVnh
+ YMOKZPlDbnbGcyGxyuppbAyj32CGqV1sOSXq26Zn4trOTxfScP/9mFj/PsOksYIGYB
+ vG2P9nqZeMKcW8430de2uMcc3Hl3s1+YqBXr0QCGHGuGVetWgJqtckpI+93iuEXNDR
+ DXyRPqEC0xGOA==
+Received: from johan by xi.lan with local (Exim 4.93.0.4)
+ (envelope-from <johan@kernel.org>)
+ id 1lAVKs-0002VJ-Ec; Fri, 12 Feb 2021 11:06:02 +0100
+Date: Fri, 12 Feb 2021 11:06:02 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH 1/2] staging: greybus: Fixed alignment issue in hid.c
+Message-ID: <YCZTCs7MU2J4F2/r@hovoldconsulting.com>
+References: <20210212081835.9497-1-pritthijit.nath@icloud.com>
+ <20210212090926.ox763j3btrqfzzzj@vireshk-i7>
+ <YCZHsMPgyqtRMTII@kroah.com>
+ <20210212092130.cxo6tuess6msf4kb@vireshk-i7>
+ <YCZPzV7KiT/y//m2@hovoldconsulting.com>
+ <20210212095529.2nsjc5wacegnd757@vireshk-i7>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210212095008.11741-1-pritthijit.nath@icloud.com>
+In-Reply-To: <20210212095529.2nsjc5wacegnd757@vireshk-i7>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,74 +72,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, elder@kernel.org, vireshk@kernel.org,
- johan@kernel.org, linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org
+Cc: devel@driverdev.osuosl.org, Pritthijit Nath <pritthijit.nath@icloud.com>,
+ Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ greybus-dev@lists.linaro.org, elder@kernel.org, vireshk@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 12, 2021 at 03:20:08PM +0530, Pritthijit Nath wrote:
-> Fixed the spelling of 'transfered' to 'transferred'.
+On Fri, Feb 12, 2021 at 03:25:29PM +0530, Viresh Kumar wrote:
+> On 12-02-21, 10:52, Johan Hovold wrote:
+> > But what will the checkpatch crew then work on?
 > 
-> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
-> ---
->  Fixed the typo in the patch which was meant to fix that very typo.
->  Really sorry for last time.
->  Hope this does not have any other typo.
+> Lol..
 > 
->  drivers/staging/greybus/hid.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> > Better staging than the rest of the kernel.
 > 
-> diff --git a/drivers/staging/greybus/hid.c b/drivers/staging/greybus/hid.c
-> index a56c3fb5d35a..adb91286803a 100644
-> --- a/drivers/staging/greybus/hid.c
-> +++ b/drivers/staging/greybus/hid.c
-> @@ -254,7 +254,7 @@ static int __gb_hid_output_raw_report(struct hid_device *hid, __u8 *buf,
->  
->  	ret = gb_hid_set_report(ghid, report_type, report_id, buf, len);
->  	if (report_id && ret >= 0)
-> -		ret++; /* add report_id to the number of transfered bytes */
-> +		ret++; /* add report_id to the number of transferred bytes */
->  
->  	return 0;
->  }
-> -- 
-> 2.25.1
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+> [ /me wondering on who stops them from sending patches for rest of the
+> kernel ? ]
 
-Hi,
+Ideally maintainers should at least push back when they do.
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version,
-  or properly version the subject line of your patch.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what needs to be done here to
-  properly describe this.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+Johan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
