@@ -1,43 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3CA9731A035
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 15:01:53 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD23331A09A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 15:30:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D59B4875E0;
-	Fri, 12 Feb 2021 14:01:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0867A872E0;
+	Fri, 12 Feb 2021 14:30:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LiCoty9kMcf5; Fri, 12 Feb 2021 14:01:51 +0000 (UTC)
+	with ESMTP id R2NAp6qOcZGb; Fri, 12 Feb 2021 14:30:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 118FF873D6;
-	Fri, 12 Feb 2021 14:01:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 22A8487041;
+	Fri, 12 Feb 2021 14:30:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C721A1BF470
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 14:01:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 347B31BF834
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 14:30:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B6AB16F48B
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 14:01:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2A75A87041
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 14:30:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Tq07UGsnOeDR for <devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 14:01:47 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id BB1826F654; Fri, 12 Feb 2021 14:01:47 +0000 (UTC)
-Received: from localhost by smtp3.osuosl.org with SpamAssassin (version 3.4.2);
- Fri, 12 Feb 2021 14:01:47 +0000
-From: "Ms. Reem" <johnpinto@jvpinto.com>
-To: Undisclosed recipients:;
-Subject: Re:ok
-Date: Fri, 12 Feb 2021 14:00:26 +0000
-Message-Id: <1cf77f0ab9934455b7be008479e58b74@RW-EXC1.JVPinto.com>
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C9oFs7+ZifIP for <devel@linuxdriverproject.org>;
+ Fri, 12 Feb 2021 14:30:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sender4-of-o53.zoho.com (sender4-of-o53.zoho.com
+ [136.143.188.53])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6DA458701A
+ for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 14:30:41 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; t=1613140236; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=Ondve+616aga3AP+JJu9qmuv9Y4zDGq37O7hDNUoa5d/GbqXgPHlhsFJHf8P0o/Vu0S1eZBTMK3Mr28sASaFggYICAveYCwPU75K4fhX5vV/F7BZpAR5UaPg1dD/fzsxik3sbdfsR7Jv54HO9Xo+273OKkJVLwFpKWBxwq4/L9w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1613140236;
+ h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
+ bh=Q8O5Qs3111yoIb9wYiJMFK7cbtbsKWkl/sUb8tdzYTg=; 
+ b=bw1doOuHka2+cOHF/fO3vFUdGUR/LSQAWM2GNzy0/rAkMpOkq8ibsHuAQGwosA+ATf0OdY1BJgO/YomsGQqACzztSSD4IizUD4HfpcikQFb584SAlt7TolOWkKlr2bKi2wFNH10APcCwEDn3YyV0JOd9Jy0foprnhHLmVY83Q5k=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=anirudhrb.com;
+ spf=pass  smtp.mailfrom=mail@anirudhrb.com;
+ dmarc=pass header.from=<mail@anirudhrb.com> header.from=<mail@anirudhrb.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1613140236; 
+ s=zoho; d=anirudhrb.com; i=mail@anirudhrb.com;
+ h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+ bh=Q8O5Qs3111yoIb9wYiJMFK7cbtbsKWkl/sUb8tdzYTg=;
+ b=oErKEv2OVnJC35kqOKFhd3R34X/1p7jVTlqT5SgD1C1AwVG/91y4GktQEOer9nUa
+ +sK8sQ0JGs8abhekaaSHJHtIqQPuzwHD/4slS6L+9R7QL6XukmLK2GIntUsyfGoB+B4
+ svfOdOq00JOtITE39F9JQNk+9m0zehNH87FA5Ldo=
+Received: from anirudhrb.com (106.51.107.38 [106.51.107.38]) by mx.zohomail.com
+ with SMTPS id 1613140233736897.9350951376649;
+ Fri, 12 Feb 2021 06:30:33 -0800 (PST)
+Date: Fri, 12 Feb 2021 20:00:25 +0530
+From: Anirudh Rayabharam <mail@anirudhrb.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: wimax/i2400m: fix some byte order issues found
+ by sparse
+Message-ID: <YCaRAYjiz0TJH+4L@anirudhrb.com>
+References: <20210211202908.4604-1-mail@anirudhrb.com>
+ <YCWVD34rU5Lu71/S@kroah.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="----------=_60268A4B.773DC22E"
+Content-Disposition: inline
+In-Reply-To: <YCWVD34rU5Lu71/S@kroah.com>
+X-ZohoMailClient: External
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,120 +78,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, arnd@arndb.de, linux-kernel@vger.kernel.org,
+ colin.king@canonical.com, kuba@kernel.org, johannes@sipsolutions.net,
+ lee.jones@linaro.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is a multi-part message in MIME format.
+On Thu, Feb 11, 2021 at 09:35:27PM +0100, Greg KH wrote:
+> On Fri, Feb 12, 2021 at 01:59:08AM +0530, Anirudh Rayabharam wrote:
+> > Fix sparse byte-order warnings in the i2400m_bm_cmd_prepare()
+> > function:
+> > 
+> > wimax/i2400m/fw.c:194:36: warning: restricted __le32 degrades to integer
+> > wimax/i2400m/fw.c:195:34: warning: invalid assignment: +=
+> > wimax/i2400m/fw.c:195:34:    left side has type unsigned int
+> > wimax/i2400m/fw.c:195:34:    right side has type restricted __le32
+> > wimax/i2400m/fw.c:196:32: warning: restricted __le32 degrades to integer
+> > wimax/i2400m/fw.c:196:47: warning: restricted __le32 degrades to integer
+> > wimax/i2400m/fw.c:196:66: warning: restricted __le32 degrades to integer
+> > 
+> > Signed-off-by: Anirudh Rayabharam <mail@anirudhrb.com>
+> > ---
+> >  drivers/staging/wimax/i2400m/fw.c | 14 +++++++++-----
+> >  1 file changed, 9 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
+> > index b2fd4bd2c5f9..bce651a6b543 100644
+> > --- a/drivers/staging/wimax/i2400m/fw.c
+> > +++ b/drivers/staging/wimax/i2400m/fw.c
+> > @@ -189,12 +189,16 @@ void i2400m_bm_cmd_prepare(struct i2400m_bootrom_header *cmd)
+> >  {
+> >  	if (i2400m_brh_get_use_checksum(cmd)) {
+> >  		int i;
+> > -		u32 checksum = 0;
+> > +		__le32 checksum = 0;
+> 
+> __le32 is only for when the data crosses the kernel/user boundry, just
+> use le32 in the kernel for stuff like this.
+> 
+But that throws a compile error. Also, I don't see le32 defined
+in any common header. It is defined in fs/ntfs/types.h but that's not
+accessible here.
 
-------------=_60268A4B.773DC22E
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+> >  		const u32 *checksum_ptr = (void *) cmd->payload;
+> 
+> Add a blank line here, right?
+It wasn't there before but makes sense. I'll send v2 with this change.
 
-Spam detection software, running on the system "smtp3.osuosl.org",
-has identified this incoming email as possible spam.  The original
-message has been attached to this so you can view it or label
-similar future email.  If you have any questions, see
-the administrator of that system for details.
+Thanks!
 
-Content preview:  Hello, My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister
-   of state and Petroleum" also "Minister of State for International Cooperation"
-   in UAE. I write to you on behalf of my other "three (3) collea [...] 
-
-Content analysis details:   (17.1 points, 5.0 required)
-
- pts rule name              description
----- ---------------------- --------------------------------------------------
- 3.3 RCVD_IN_SBL_CSS        RBL: Received via a relay in Spamhaus SBL-CSS
-                            [52.231.216.47 listed in zen.spamhaus.org]
- 0.8 BAYES_50               BODY: Bayes spam probability is 40 to 60%
-                            [score: 0.5000]
- 0.0 NSL_RCVD_FROM_USER     Received from User
- 0.0 FSL_CTYPE_WIN1251      Content-Type only seen in 419 spam
- 2.7 RCVD_IN_PSBL           RBL: Received via a relay in PSBL
-                            [65.49.11.60 listed in psbl.surriel.com]
- 0.0 RCVD_IN_MSPIKE_L5      RBL: Very bad reputation (-5)
-                            [65.49.11.60 listed in bl.mailspike.net]
--0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FSL_NEW_HELO_USER      Spam's using Helo and User
- 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
- 0.0 AXB_XMAILER_MIMEOLE_OL_024C2 Yet another X header trait
- 1.5 FAKE_REPLY_C           No description available.
- 2.1 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- 1.9 FORGED_MUA_OUTLOOK     Forged mail pretending to be from MS Outlook
- 1.6 ADVANCE_FEE_3_NEW      Appears to be advance fee fraud (Nigerian 419)
- 3.2 UNDISC_MONEY           Undisclosed recipients + money/fraud signs
-
-
-
-------------=_60268A4B.773DC22E
-Content-Type: message/rfc822; x-spam-type=original
-Content-Description: original message before SpamAssassin
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-
-Return-Path: <johnpinto@jvpinto.com>
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
-	by smtp3.osuosl.org (Postfix) with ESMTPS id 6ECE56F5FB
-	for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 14:01:46 +0000 (UTC)
-Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
- RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
- (TLS) id 15.0.1497.2; Fri, 12 Feb 2021 06:00:26 -0800
-Received: from User (52.231.216.47) by RW-EXC1.JVPinto.com (172.32.1.13) with
- Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport; Fri, 12 Feb 2021
- 06:00:12 -0800
-Reply-To: <ms.reem@yandex.com>
-From: "Ms. Reem" <johnpinto@jvpinto.com>
-Subject: Re:ok
-Date: Fri, 12 Feb 2021 14:00:26 +0000
-MIME-Version: 1.0
-Content-Type: text/plain; charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <1cf77f0ab9934455b7be008479e58b74@RW-EXC1.JVPinto.com>
-To: Undisclosed recipients:;
-
-Hello,
-
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state
-and Petroleum" also "Minister of State for International Cooperation"
-in UAE. I write to you on behalf of my other "three (3) colleagues"
-who has approved me to solicit for your "partnership in claiming of
-{us$47=Million}" from a Financial Home in Cambodia on their behalf and
-for our "Mutual Benefits".
-
-The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas
-deal with Cambodian/Vietnam Government within 2013/2014, however, we
-don't want our government to know about the fund. If this proposal
-interests you, let me know, by sending me an email and I will send to
-you detailed information on how this business would be successfully
-transacted. Be informed that nobody knows about the secret of this
-fund except us, and we know how to carry out the entire transaction.
-So I am compelled to ask, that you will stand on our behalf and
-receive this fund into any account that is solely controlled by you.
-
-We will compensate you with 15% of the total amount involved as
-gratification for being our partner in this transaction. Reply to:
-ms.reem@yandex.com
-
-Regards,
-Ms. Reem.
-
-------------=_60268A4B.773DC22E
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+	- Anirudh.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
-------------=_60268A4B.773DC22E--
-
