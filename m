@@ -1,65 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12F98319C52
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 11:05:52 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAACE319C6A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 11:14:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9E4C186BAE;
-	Fri, 12 Feb 2021 10:05:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4B1356F614
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 10:14:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HfJ6kjWzkFiF; Fri, 12 Feb 2021 10:05:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yQz1VXVq4IXK for <lists+driverdev-devel@lfdr.de>;
+	Fri, 12 Feb 2021 10:14:18 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 69E9B6F6D8; Fri, 12 Feb 2021 10:14:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD4D486A0F;
-	Fri, 12 Feb 2021 10:05:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B64CB6F528;
+	Fri, 12 Feb 2021 10:14:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 783E41BF2FE
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8604E1BF2FE
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:13:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 73DAF8743A
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 830E2872EC
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 10:13:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jiABZf7vLBYn for <devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
+ with ESMTP id 8brGMHraxNnY for <devel@linuxdriverproject.org>;
+ Fri, 12 Feb 2021 10:13:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0688B8719E
- for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 10:05:47 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8B0F664E6C;
- Fri, 12 Feb 2021 10:05:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1613124346;
- bh=6bki0Au+K2JaECcmUHQQU+dhCdZZhRL3yqcY8rcUtsE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=b0iX8pRA6j+ZQ5YeUbwZ2KbYkIJHl4IsI2y/6G4MIDpQtX4GkbCWnnFeRwu8VYubV
- a7KWhIlPzqXtFlsYCce6DGBV+Apj7QKhUiWN+M3s+WDSgAdsDbN58E+yHmcOgBovET
- /C9tfDteHrNwrWy3357JirJUhBmuga2l7c75T6Jg0xAz5EW7SymWUqqZOAIMkZzVnh
- YMOKZPlDbnbGcyGxyuppbAyj32CGqV1sOSXq26Zn4trOTxfScP/9mFj/PsOksYIGYB
- vG2P9nqZeMKcW8430de2uMcc3Hl3s1+YqBXr0QCGHGuGVetWgJqtckpI+93iuEXNDR
- DXyRPqEC0xGOA==
-Received: from johan by xi.lan with local (Exim 4.93.0.4)
- (envelope-from <johan@kernel.org>)
- id 1lAVKs-0002VJ-Ec; Fri, 12 Feb 2021 11:06:02 +0100
-Date: Fri, 12 Feb 2021 11:06:02 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 1/2] staging: greybus: Fixed alignment issue in hid.c
-Message-ID: <YCZTCs7MU2J4F2/r@hovoldconsulting.com>
-References: <20210212081835.9497-1-pritthijit.nath@icloud.com>
- <20210212090926.ox763j3btrqfzzzj@vireshk-i7>
- <YCZHsMPgyqtRMTII@kroah.com>
- <20210212092130.cxo6tuess6msf4kb@vireshk-i7>
- <YCZPzV7KiT/y//m2@hovoldconsulting.com>
- <20210212095529.2nsjc5wacegnd757@vireshk-i7>
+Received: from pv50p00im-ztdg10021901.me.com (pv50p00im-ztdg10021901.me.com
+ [17.58.6.55])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 321F48730E
+ for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 10:13:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+ s=1a1hai; t=1613124830;
+ bh=zKxn6CR/gmXhVeTG2aKkLvzoS7M7r385JLEcPBaeWp8=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version;
+ b=r83pITR4RBAHpGZED7IN+IVT3ijUdmE5PZh3GB9EcoRaWsIa5sZKi/NJ1LzM/tCYk
+ zoQ3OEg0bL2DxUQw65zVLorZlwZJoaoLp/a9LRoF4GbqlxdLTQJwDB2b8ScMC0fv5+
+ DThfJp6xoqd0AN8dQWqhMEY5HyBwFVt4zXS+GSIEp+Mwm5r4b6Ovm9OFA4HchUCO0p
+ P+RMpu9SR8ZKmqGiFsi2WlPvElbRmUTk8kmKomUXRK/fTveBYksgSpFKxyRngcTDei
+ 5ptNdy1/tKGb7pe+Xn87lShwlNBeESr+n52wcCs2BZ+/6Dzx8QdzaiQogy/al4E/pa
+ uEYF5CBIJ5pGw==
+Received: from everest.nathzi1505 (unknown [103.17.84.167])
+ by pv50p00im-ztdg10021901.me.com (Postfix) with ESMTPSA id 53AA788034D;
+ Fri, 12 Feb 2021 10:13:46 +0000 (UTC)
+From: Pritthijit Nath <pritthijit.nath@icloud.com>
+To: vireshk@kernel.org, gregkh@linuxfoundation.org, johan@kernel.org,
+ elder@kernel.org
+Subject: [PATCH 2/2] staging: greybus: Fixed a misspelling in hid.c
+Date: Fri, 12 Feb 2021 15:43:24 +0530
+Message-Id: <20210212101324.12391-1-pritthijit.nath@icloud.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210212095529.2nsjc5wacegnd757@vireshk-i7>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.737
+ definitions=2021-02-12_03:2021-02-12,
+ 2021-02-12 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 clxscore=1015 mlxscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-2006250000 definitions=main-2102120077
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,28 +76,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Pritthijit Nath <pritthijit.nath@icloud.com>,
- Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- greybus-dev@lists.linaro.org, elder@kernel.org, vireshk@kernel.org
+Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
+ Pritthijit Nath <pritthijit.nath@icloud.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 12, 2021 at 03:25:29PM +0530, Viresh Kumar wrote:
-> On 12-02-21, 10:52, Johan Hovold wrote:
-> > But what will the checkpatch crew then work on?
-> 
-> Lol..
-> 
-> > Better staging than the rest of the kernel.
-> 
-> [ /me wondering on who stops them from sending patches for rest of the
-> kernel ? ]
+Fixed the spelling of 'transfered' to 'transferred'.
 
-Ideally maintainers should at least push back when they do.
+Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+---
+ Fixed the typo in 'transferred' which crept in last time.
 
-Johan
+ drivers/staging/greybus/hid.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/greybus/hid.c b/drivers/staging/greybus/hid.c
+index a56c3fb5d35a..adb91286803a 100644
+--- a/drivers/staging/greybus/hid.c
++++ b/drivers/staging/greybus/hid.c
+@@ -254,7 +254,7 @@ static int __gb_hid_output_raw_report(struct hid_device *hid, __u8 *buf,
+ 
+ 	ret = gb_hid_set_report(ghid, report_type, report_id, buf, len);
+ 	if (report_id && ret >= 0)
+-		ret++; /* add report_id to the number of transfered bytes */
++		ret++; /* add report_id to the number of transferred bytes */
+ 
+ 	return 0;
+ }
+-- 
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
