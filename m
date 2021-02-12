@@ -2,76 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF934319AAC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 08:43:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ECC7A319AAE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Feb 2021 08:44:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B81A5875A7;
-	Fri, 12 Feb 2021 07:43:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9237F87591;
+	Fri, 12 Feb 2021 07:44:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hqmp-sZdxLsQ; Fri, 12 Feb 2021 07:43:53 +0000 (UTC)
+	with ESMTP id pPkN2-6ymsT8; Fri, 12 Feb 2021 07:44:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3ECD88751B;
-	Fri, 12 Feb 2021 07:43:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2CFDE87300;
+	Fri, 12 Feb 2021 07:44:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BE40C1BF33F
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 07:43:39 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 31FF41BF33F
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 07:43:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BB72C86CA1
- for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 07:43:39 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 17FD46F654
+ for <devel@linuxdriverproject.org>; Fri, 12 Feb 2021 07:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6mhQgQ68S4Mx for <devel@linuxdriverproject.org>;
- Fri, 12 Feb 2021 07:43:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com
- [209.85.128.49])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7C63A87046
- for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 07:43:37 +0000 (UTC)
-Received: by mail-wm1-f49.google.com with SMTP id m1so9748wml.2
- for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 23:43:37 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VmMUyKU8AjWJ for <devel@linuxdriverproject.org>;
+ Fri, 12 Feb 2021 07:43:58 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 01E346F677; Fri, 12 Feb 2021 07:43:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-wr1-f46.google.com (mail-wr1-f46.google.com
+ [209.85.221.46])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B0D426F614
+ for <devel@driverdev.osuosl.org>; Fri, 12 Feb 2021 07:43:38 +0000 (UTC)
+Received: by mail-wr1-f46.google.com with SMTP id l12so6821860wry.2
+ for <devel@driverdev.osuosl.org>; Thu, 11 Feb 2021 23:43:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nmBdTpjz9wyfDCBLaCOK+MVTcCIjG0wuVatvuQrHLh0=;
- b=sB1lzyT5Zr/jkAEhS3R6B5B1q0K26TjeqWHJmVw2KStoqjP1r+y7SHQ3D6yo6IQcrt
- SRZhRsXiKO/+pw7ntZrZktb3/H8vj3N1KA5db8qulHROmJOKpsrsuwU+kyYPLSOSPyvm
- tG5Ectw27+0cyfC9XlrK+LWjcv5K49PJ4BF5PttT0XdvCvCt2fmEZrYGR3jYz8iyHuBr
- JeB5Tkk77CSOqbVfznaw8sH0DcA37ZyMsZ1iCUYdLRruTTUTvMHDYz9EZLiIHBdArH5a
- 0OLPeVfMqkEXb3ahv2BeGddmCc8NJnU4s0hEOKnYGFg2NI9ZQFFJ6+FOQgFp1D/Qv0yw
- xOXA==
+ bh=m10UBKJBthWio+4ksO5Z9Dkd3ZlCqAP161BEeEUt8Io=;
+ b=f6wLsGMhI6Z139SNVZQLqJAe8av558XjZ9b+fCIV8LGKgJGDIqEm/JBW0XvqPUOZqY
+ KhoNVH7rL5FKgf2ucb74TDsPs/quFx54Kr0Dq2UzfLiCg+0lOjNHXjpaZe7sx+b+fZ9H
+ Tm/r0EslGIH59r/DifvnA9QSqMz80zjReZb0wN80MvJSxhPHB6ZIB5vYogw/pQZQpgm7
+ IaHaDDj1A5KZUfBi8cnC8mfOJpN3k/FAfyTfjQjPLse9Tq9/8qLtzPq4L+oqw0E8g5Mj
+ ulStsPewdShNTd3s87dSx5RnTLeU3Zpgxm1jfmIESHh5HXNmyiieSAisFkOqRNqMMGUX
+ Me3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nmBdTpjz9wyfDCBLaCOK+MVTcCIjG0wuVatvuQrHLh0=;
- b=Nr2luu462Z5KKHuu/RHCGvp1HT+71pwjMObeq8IjP/H5c29yDRrszVjnuUh5wAJVrT
- TVJ58BLVZijV11znSbF8lxMZ1qJG/2xCXJIdbgcStboLgkLflIU7okWS3voq4PesMeIQ
- LddkoIODSBHtiCgsqMk+UI7ZhFsU0qQ9pwTFBi/+uCfJk3UHKGa0RLQy49Pn65toSUaR
- pNZ2lE0ltIsoEWN62wRBa4Tw8BGPsUhgU/YuYnO+z57YtsW441gQZFRzGEk9ERcMK/Ls
- JYELVLX1+n1d6VTN5K1pu6kGJt3MJe+HzQD5CVzx2iAlgswYkSR3Qck5s1X3o3YAc5kF
- b2yg==
-X-Gm-Message-State: AOAM530nCsen1Kg3/FRGXPl50u71+Fu7nmE6Pm3EFe1sEtlcWMkiMPPD
- AoDY0sKeiiLQSl5NpkW3EyY=
-X-Google-Smtp-Source: ABdhPJx/kUkORetR1vkDRcUgRn5xwtK4M7GJCrELov6ssUxoR06/6IbKKRdd22ZniEr6mPl1l6/8Eg==
-X-Received: by 2002:a05:600c:33a7:: with SMTP id
- o39mr1490650wmp.10.1613115816063; 
- Thu, 11 Feb 2021 23:43:36 -0800 (PST)
+ bh=m10UBKJBthWio+4ksO5Z9Dkd3ZlCqAP161BEeEUt8Io=;
+ b=UVQSUfBQuxK9TN1H0slVpS94IfpMRo7gB4w7SV6pHHKCH0tCQWuhkxwKXiABTd9tyr
+ 82E4Ozsht7cyBWqvX/BiKFZrB/JX/H1QSIwXzkBiOfzo+yl4b/09XZK+iCU23ymI4neG
+ gkHmPtJid+9fJ9vqPB++Z8ZVdEErTRZ/548Ug5EToydrQmV+DYnnHSJKTaDwZmG+qYyx
+ oX2kT/8g58lALIHnBIRLd6iYyqvCn8qyDPpzTyCJGxUA8nazKdMUbcdSbXA0lZCAXL+d
+ 40p0JMXcDmPb/yM4WWjjMWzCKINVTABqUYdG2VyUg9PMQWr7fZfQ76Z1Cxws2BBLCca5
+ pmjg==
+X-Gm-Message-State: AOAM531c6CZdlkIdYXK8b3Qif4Kp0wwFld1Bft8eD77vHqM1p+z7YGAH
+ JD6kM0nHddU5ukoj3JKjlGzqhIAhuS7LMA==
+X-Google-Smtp-Source: ABdhPJwaIyU5WDqbb7ACB6YCXWk2H6LmrqTYmJsjC1DVjAHVYfNpHIqezw+x0S7+W3tzYbES0hVX0Q==
+X-Received: by 2002:a5d:6807:: with SMTP id w7mr1921499wru.0.1613115817029;
+ Thu, 11 Feb 2021 23:43:37 -0800 (PST)
 Received: from localhost.localdomain (67.red-83-54-30.dynamicip.rima-tde.net.
  [83.54.30.67])
- by smtp.gmail.com with ESMTPSA id a17sm9663858wrx.63.2021.02.11.23.43.35
+ by smtp.gmail.com with ESMTPSA id a17sm9663858wrx.63.2021.02.11.23.43.36
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 11 Feb 2021 23:43:35 -0800 (PST)
+ Thu, 11 Feb 2021 23:43:36 -0800 (PST)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: sboyd@kernel.org
-Subject: [RESEND PATCH v5 5/6] staging: mt7621-dts: use valid vendor
- 'mediatek' instead of invalid 'mtk'
-Date: Fri, 12 Feb 2021 08:43:29 +0100
-Message-Id: <20210212074330.4650-6-sergio.paracuellos@gmail.com>
+Subject: [RESEND PATCH v5 6/6] MAINTAINERS: add MT7621 CLOCK maintainer
+Date: Fri, 12 Feb 2021 08:43:30 +0100
+Message-Id: <20210212074330.4650-7-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210212074330.4650-1-sergio.paracuellos@gmail.com>
 References: <20210212074330.4650-1-sergio.paracuellos@gmail.com>
@@ -97,97 +97,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Vendor listed for mediatek in kernel vendor file 'vendor-prefixes.yaml'
-contains 'mediatek' as a valid vendor string. Some nodes in the device
-tree are using an invalid vendor string vfor 'mtk' instead. Fix all of
-them in dts file. Update also ralink mt7621 related code to properly
-match new strings. Even there are used in the device tree there are
-some strings that are not referred anywhere but have been also updated
-with new vendor name. These are 'mtk,mt7621-wdt', 'mtk,mt7621-nand',
-'mtk,mt7621-mc', and 'mtk,mt7621-cpc'.
+Adding myself as maintainer for mt7621 clock driver.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- arch/mips/ralink/mt7621.c              |  6 +++---
- drivers/staging/mt7621-dts/mt7621.dtsi | 12 ++++++------
- 2 files changed, 9 insertions(+), 9 deletions(-)
+ MAINTAINERS | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
-index ca0ac607b0f3..5d74fc1c96ac 100644
---- a/arch/mips/ralink/mt7621.c
-+++ b/arch/mips/ralink/mt7621.c
-@@ -112,8 +112,8 @@ phys_addr_t mips_cpc_default_phys_base(void)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f5eafee83bc6..f0c51d9760ec 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11247,6 +11247,12 @@ L:	linux-wireless@vger.kernel.org
+ S:	Maintained
+ F:	drivers/net/wireless/mediatek/mt7601u/
  
- void __init ralink_of_remap(void)
- {
--	rt_sysc_membase = plat_of_remap_node("mtk,mt7621-sysc");
--	rt_memc_membase = plat_of_remap_node("mtk,mt7621-memc");
-+	rt_sysc_membase = plat_of_remap_node("mediatek,mt7621-sysc");
-+	rt_memc_membase = plat_of_remap_node("mediatek,mt7621-memc");
- 
- 	if (!rt_sysc_membase || !rt_memc_membase)
- 		panic("Failed to remap core resources");
-@@ -181,7 +181,7 @@ void prom_soc_init(struct ralink_soc_info *soc_info)
- 
- 	if (n0 == MT7621_CHIP_NAME0 && n1 == MT7621_CHIP_NAME1) {
- 		name = "MT7621";
--		soc_info->compatible = "mtk,mt7621-soc";
-+		soc_info->compatible = "mediatek,mt7621-soc";
- 	} else {
- 		panic("mt7621: unknown SoC, n0:%08x n1:%08x\n", n0, n1);
- 	}
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index 51d83cb3b4ee..ba113e5ced51 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -56,7 +56,7 @@ palmbus: palmbus@1E000000 {
- 		#size-cells = <1>;
- 
- 		sysc: sysc@0 {
--			compatible = "mtk,mt7621-sysc";
-+			compatible = "mediatek,mt7621-sysc";
- 			reg = <0x0 0x100>;
- 		};
- 
-@@ -69,7 +69,7 @@ pll: pll {
- 		};
- 
- 		wdt: wdt@100 {
--			compatible = "mtk,mt7621-wdt";
-+			compatible = "mediatek,mt7621-wdt";
- 			reg = <0x100 0x100>;
- 		};
- 
-@@ -126,17 +126,17 @@ i2s: i2s@a00 {
- 		};
- 
- 		memc: memc@5000 {
--			compatible = "mtk,mt7621-memc";
-+			compatible = "mediatek,mt7621-memc";
- 			reg = <0x5000 0x1000>;
- 		};
- 
- 		cpc: cpc@1fbf0000 {
--			     compatible = "mtk,mt7621-cpc";
-+			     compatible = "mediatek,mt7621-cpc";
- 			     reg = <0x1fbf0000 0x8000>;
- 		};
- 
- 		mc: mc@1fbf8000 {
--			    compatible = "mtk,mt7621-mc";
-+			    compatible = "mediatek,mt7621-mc";
- 			    reg = <0x1fbf8000 0x8000>;
- 		};
- 
-@@ -369,7 +369,7 @@ timer {
- 	nand: nand@1e003000 {
- 		status = "disabled";
- 
--		compatible = "mtk,mt7621-nand";
-+		compatible = "mediatek,mt7621-nand";
- 		bank-width = <2>;
- 		reg = <0x1e003000 0x800
- 			0x1e003800 0x800>;
++MEDIATEK MT7621 CLOCK DRIVER
++M:	Sergio Paracuellos <sergio.paracuellos@gmail.com>
++S:	Maintained
++F:	Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
++F:	drivers/clk/ralink/clk-mt7621.c
++
+ MEDIATEK MT7621/28/88 I2C DRIVER
+ M:	Stefan Roese <sr@denx.de>
+ L:	linux-i2c@vger.kernel.org
 -- 
 2.25.1
 
