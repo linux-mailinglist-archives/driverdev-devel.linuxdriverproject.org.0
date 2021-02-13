@@ -1,55 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56AE631AA73
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Feb 2021 09:12:32 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B337731AB31
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Feb 2021 13:09:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56EE98716D;
-	Sat, 13 Feb 2021 08:12:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 95CBD8763B;
+	Sat, 13 Feb 2021 12:09:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CAy2f8usjAub; Sat, 13 Feb 2021 12:09:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1AABA8756F;
+	Sat, 13 Feb 2021 12:09:07 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C9B91BF2B4
+ for <devel@linuxdriverproject.org>; Sat, 13 Feb 2021 12:09:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 95BC28697E
+ for <devel@linuxdriverproject.org>; Sat, 13 Feb 2021 12:09:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LdwNH44uDR5q; Sat, 13 Feb 2021 08:12:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C99F86B62;
-	Sat, 13 Feb 2021 08:12:29 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BAE651BF291
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 13 Feb 2021 08:12:27 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B1B3587834
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 13 Feb 2021 08:12:27 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CBFDiQOexuda
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 13 Feb 2021 08:12:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sonjokomz.com (unknown [161.35.232.202])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 164A287804
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 13 Feb 2021 08:12:27 +0000 (UTC)
-Received: from 31-161-150-247.mobile.kpn.net ([31.161.150.247] helo=User)
- by sonjokomz.com with esmtpa (Exim 4.86_2)
- (envelope-from <kasimachma@gmail.com>)
- id 1lAq2M-00014e-5m; Sat, 13 Feb 2021 08:12:18 +0000
-From: "MR Ho-Seok Yang"<kasimachma@gmail.com>
-Subject: working together
-Date: Sat, 13 Feb 2021 09:12:16 +0100
+ with ESMTP id OUYJ5og-GN3X for <devel@linuxdriverproject.org>;
+ Sat, 13 Feb 2021 12:09:03 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f42.google.com (mail-pj1-f42.google.com
+ [209.85.216.42])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E04D867C6
+ for <devel@driverdev.osuosl.org>; Sat, 13 Feb 2021 12:09:03 +0000 (UTC)
+Received: by mail-pj1-f42.google.com with SMTP id t2so1149015pjq.2
+ for <devel@driverdev.osuosl.org>; Sat, 13 Feb 2021 04:09:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oO7vMSW0bfsJGTS5Qqt+bC8w+pkLjeLaJvk90+zKPLE=;
+ b=GoQUPu9CaYvcu1GOJ9LBhCTwuu/1xBbtZrbhMjLjs9jVEJCDnivL4IPsVqJIvCB2ik
+ wqq8Fs2UP/ucjrrtlqPPqNSSNunw47guJ0vj5RP6Yktrxk7VHaJoIkLDeUl6Bt06VDHl
+ W0lsjD4+QUL9C0UUn2NUJVQsXgGoFMihrA0X7gFgSSNmqMAFwr1MeJpikLrBjqyf8fSR
+ izp9r9X+jEpiXFt3Pt98Aoa8GXiOprlupuuIIWc5DD+Z07rjrylblkEPcFPf3gceSacJ
+ 8Y52f9Tk+q3npTZFwUIyMOK54OQ/B8sQU9nXLd0bx4Op5aDlPyaMM8bhrxY7FUkA7OYK
+ OKkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oO7vMSW0bfsJGTS5Qqt+bC8w+pkLjeLaJvk90+zKPLE=;
+ b=at2FUdu9yXZHmIDinCpTdkA32/QuXko+/hyHPzZZcmCJSHU7JApxPk0iLIK2SS/hRm
+ i2DAzdR7Mmm7VAWiqtMM0fuVhZDSS+jixoXETDevF5xa49JREUFFOX8T56exgDqNmo98
+ tV4LlU7ce7Xl+0RGsXa2qkmiOvG/ZGMykdpD6v9NPhiQP42MJIBry6rpFsbsOpIk6OuF
+ BqnZAwxCOTrouPgHX2z5RyQrmGpNuKvNB+06jDxy7BH5zTsKWn3iXixsHMi0BFHhBVSq
+ aEAy2TLstvLZG2rxYteEOLEgkfxUVjOy+S+zGkboLxlGOAj7MEApV0TEaEeZmV2yHcaK
+ 3gxA==
+X-Gm-Message-State: AOAM533qv0yVZIDUqx5xB9o7jI33KRIA3CKHUJLoDoCGKdpEWVgSFC2B
+ Mi12/dczzH+XM8HcJI4O5rE=
+X-Google-Smtp-Source: ABdhPJzUs5hnvIVxNPFD/RV2FAt44Ws9Cuiv/FRwlwtBLt8MnWLlpM+onpPR4m/5Qf7kmKeUk8JSxg==
+X-Received: by 2002:a17:902:e309:b029:e2:86e9:cc75 with SMTP id
+ q9-20020a170902e309b02900e286e9cc75mr6532272plc.59.1613218143063; 
+ Sat, 13 Feb 2021 04:09:03 -0800 (PST)
+Received: from localhost.localdomain ([2405:201:5c0a:f013:e601:5200:b1d8:3ee7])
+ by smtp.gmail.com with ESMTPSA id gt2sm154470pjb.0.2021.02.13.04.09.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 13 Feb 2021 04:09:02 -0800 (PST)
+From: Mukul Mehar <mukulmehar02@gmail.com>
+To: mchehab+huawei@kernel.org,
+	gregkh@linuxfoundation.org
+Subject: [PATCH]: staging: hikey9xx: Fix alignment of function parameters
+Date: Sat, 13 Feb 2021 17:35:59 +0530
+Message-Id: <20210213120556.73579-1-mukulmehar02@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1081
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-X-Antivirus: AVG (VPS 210212-16, 12/02/2021), Outbound message
-X-Antivirus-Status: Clean
-Message-Id: <E1lAq2M-00014e-5m@sonjokomz.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,20 +85,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: yanghoseok5@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Mukul Mehar <mukulmehar02@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29vZCBEYXkKSSBhbSBIby1TZW9rIFlhbmcsbXkgcHJpbmNpcGFsknMgd2lzaCwgdG8gbWFrZSBo
-dWdlIGZpbmFuY2lhbCBpbnZlc3RtZW50IGluIHlvdXIgaG9tZSBjb3VudHJ5IFBsZWFzZSwgSSB3
-aWxsIHByb3ZpZGUgbW9yZSBkZXRhaWxzIGFib3V0IHRoZSB0cmFuc2FjdGlvbiBpZiB5b3UgYXJl
-IHN1cmUgeW91IGNhbiBoYW5kbGUgY2xhc3NpZmllZCBpbmZvcm1hdGlvbiBhbmQgYWxzbyBsZXQg
-bWUga25vdyB5b3VyIGVudGl0bGVtZW50IGZvciB0aGUgc29saWNpdGVkIHJvbGUKSSBzaGFsbCBi
-ZSBleHBlY3RpbmcgeW91ciBxdWljayByZXNwb25zZSB5YW5naG9zZW9rNUBnbWFpbC5jb20KQmVz
-dCBSZWdhcmRzLApIby1TZW9rIFlhbmcuCgoKCgoKLS0gClRoaXMgZW1haWwgaGFzIGJlZW4gY2hl
-Y2tlZCBmb3IgdmlydXNlcyBieSBBVkcuCmh0dHBzOi8vd3d3LmF2Zy5jb20KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApk
-ZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJw
-cm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+This patch fixes the following checkpatch.pl check:
+
+CHECK: Alignment should match open parenthesis
+
+Signed-off-by: Mukul Mehar <mukulmehar02@gmail.com>
+---
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+index 9c5e113e1a81..4ebcfea9f3bf 100644
+--- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
++++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+@@ -177,7 +177,7 @@ static void hi6421_spmi_pmic_irq_init(struct hi6421_spmi_pmic *ddata)
+ 
+ 	for (i = 0; i < HISI_IRQ_ARRAY; i++)
+ 		regmap_write(ddata->regmap, SOC_PMIC_IRQ_MASK_0_ADDR + i,
+-					HISI_MASK);
++			     HISI_MASK);
+ 
+ 	for (i = 0; i < HISI_IRQ_ARRAY; i++) {
+ 		regmap_read(ddata->regmap, SOC_PMIC_IRQ0_ADDR + i, &pending);
+@@ -235,7 +235,7 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	ddata->domain = irq_domain_add_simple(np, HISI_IRQ_NUM, 0,
+-					     &hi6421_spmi_domain_ops, ddata);
++					      &hi6421_spmi_domain_ops, ddata);
+ 	if (!ddata->domain) {
+ 		dev_err(dev, "Failed to create IRQ domain\n");
+ 		return -ENODEV;
+-- 
+2.25.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
