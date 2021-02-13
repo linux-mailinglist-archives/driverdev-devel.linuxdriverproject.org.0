@@ -1,80 +1,106 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03FD531AB91
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Feb 2021 14:16:39 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0E8131AD12
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Feb 2021 17:24:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 36EF58766D;
-	Sat, 13 Feb 2021 13:16:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 26AEB8623E;
+	Sat, 13 Feb 2021 16:24:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UVGkxdLTuZJr; Sat, 13 Feb 2021 13:16:36 +0000 (UTC)
+	with ESMTP id IYoqcCoeXesO; Sat, 13 Feb 2021 16:24:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3B93787729;
-	Sat, 13 Feb 2021 13:16:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BEB1985E43;
+	Sat, 13 Feb 2021 16:23:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 04A071BF228
- for <devel@linuxdriverproject.org>; Sat, 13 Feb 2021 13:16:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CF3B71BF405
+ for <devel@linuxdriverproject.org>; Sat, 13 Feb 2021 16:23:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F40606F5B3
- for <devel@linuxdriverproject.org>; Sat, 13 Feb 2021 13:16:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CBC4A85E47
+ for <devel@linuxdriverproject.org>; Sat, 13 Feb 2021 16:23:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IwZ6xlZVTyLT for <devel@linuxdriverproject.org>;
- Sat, 13 Feb 2021 13:16:33 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 232EB6F5CA; Sat, 13 Feb 2021 13:16:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com
- [209.85.167.51])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 81EC86F5B3
- for <devel@driverdev.osuosl.org>; Sat, 13 Feb 2021 13:16:31 +0000 (UTC)
-Received: by mail-lf1-f51.google.com with SMTP id b2so3546611lfq.0
- for <devel@driverdev.osuosl.org>; Sat, 13 Feb 2021 05:16:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1IwuTREhFP8d9ZWKkA5JdYA4S8M6KiAe3Ff0MI1TUoM=;
- b=NgAgtxrEUm9ITgTHJj0GiOn1zOWEy/HFxLmf1EFIg6/d+/sVEG3GObVARsQu9rNti8
- u7Mf/C4xe50kxW6jKQhAIHWEfXsMu5R0Ew0ahObfJIQjxX1Jys4XYAtbhm70aYKvqKcJ
- Ib59T/l+76kgo/6nBg8960HyaY+cV6KBcWrB1YmBJgMDBRb1Knt2el3e+HgkB5L7ZjQe
- NYqgz4RC0qgyeyvyVL1XOEEFEs6T1ZXDMEk9Z7LOpn3la/KL5ESdPPSQHIFj4qJL15Bc
- rEaDoBHbyCDUMCPjKj6MHStTkMNfRjrQqhpNoVpcmFT3LXjSnAFZRvjyGjABlOLEx8Rg
- 0XEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1IwuTREhFP8d9ZWKkA5JdYA4S8M6KiAe3Ff0MI1TUoM=;
- b=N71JRxFS6WQbBq+r59l2fnn/7CfzxDRdRTQMU51c9LrRffeGBJ/s6AI/o38u7RqElt
- UQnd5wBbc+YkVjN9G+AADADt0xiw9w2RcBQM86KhQP2zv6BluFlv8O4DhNDXgfvkV6zo
- i27CP1CXRSRbisDQLCwm4DQz3jTb4eruuoEwRQQNHn4f8QDzkNDD8Sff/Qvs3vb4SgVE
- 4JosZPZktewu5RECqrgr4jwYfCX4RTwGD8iMHeGB6QwrSwgonisXBTnUyuv3N86kD/uB
- 7Bl7uTbTBLbO+edu6EsEzo/7SlBa+q4TrhZ0+PC24k/CPfY0oQ/66Cq1G1DJeJJ0Cw68
- HIgA==
-X-Gm-Message-State: AOAM5323AGFo1HNQlGP+x2UAJMjSMIXq/QCYwr5SGYFs8jVaWz8FjoLt
- cPq62FAnOkt6aC8MB7X40SRx7w8oGsI=
-X-Google-Smtp-Source: ABdhPJzEVQ1wpZr4fBxdHTc5Yy0aYa9wxrH0QX12OI8rH4V7QRx0LpioWap+nT9kKnkZOE8bOtu5cA==
-X-Received: by 2002:ac2:5d51:: with SMTP id w17mr3850510lfd.343.1613222189270; 
- Sat, 13 Feb 2021 05:16:29 -0800 (PST)
-Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
- by smtp.gmail.com with ESMTPSA id k9sm1875142lfm.224.2021.02.13.05.16.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 13 Feb 2021 05:16:28 -0800 (PST)
-Received: (nullmailer pid 458778 invoked by uid 1000);
- Sat, 13 Feb 2021 13:12:52 -0000
-From: Ivan Safonov <insafonov@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH] staging:r8188eu: use IEEE80211_FCTL_* kernel definitions
-Date: Sat, 13 Feb 2021 16:11:50 +0300
-Message-Id: <20210213131148.458582-1-insafonov@gmail.com>
-X-Mailer: git-send-email 2.26.2
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZTIf7yp8EA7B for <devel@linuxdriverproject.org>;
+ Sat, 13 Feb 2021 16:23:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from APC01-PU1-obe.outbound.protection.outlook.com
+ (mail-oln040092254013.outbound.protection.outlook.com [40.92.254.13])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6B51185E43
+ for <devel@driverdev.osuosl.org>; Sat, 13 Feb 2021 16:23:56 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jkFhV+/HZi974THXDt48c/evZOh/sxkcTVzMQUCkp2ndHkWPZrM0kynNH2FM67LzNfYZYP1XeizsCi/RCBaOcoy7NGKGj+RhC9CD5Przr6hXf8wGHvVqtpiRaxuON344Z1BwdVf551EStxrIVv45n/dO0wHckDoZe7eDRFWAQkVLDDAEK8oFI3JxTPWuZ+Z2wuR8YRWiBi8BPXP2/9uXhtD1+/QleP+40iMd/mBx7zdSH3X7mpbjtQDDxPRiqFlRmFt8Q1/d4yp7SEplpVsqer+7xPvdAmDtuE7CKJBJmpD32/GDqFzUcuXgUCGW6/CbXNMLG7TvDRgwxzVxIR91dQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BVPFH98Z495Jq2I7NQzRt5MPZ/iU3qNL3a3nZW9+11E=;
+ b=coUgBNX5RMXiy5r3A46f0Sc2n7giRaJrwY8PLWfe9u1ukCmr7sGNxfxRMdT2vFtRmo/L0d5QSUr0i2grA+j7o+VLzV+zJKjabOaPLlIg9mULl18qOlVFCQEqMT8KXiLITEV4k/DcZW8VyoQ7R7LRFcpE7iMs2i4QH41aqZEnAFZcqqI0QzBUwDQ4qE1CwDezn4ZHrqxyDY+/WQ5gbJsOP4TuX5be+u8CGB0hBu4avv90mzk6FWV20ImD39uQoJIFwIIH5iBJzGzwf/FfphoaS2sB/8ENtgQ388RGaZcdCR6dnCE5uxnPLK/CQ9MkX0ZUlgWHZVxJKPLjwJXF5nseBg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BVPFH98Z495Jq2I7NQzRt5MPZ/iU3qNL3a3nZW9+11E=;
+ b=DS8FJXaqJYtVkT9V73WXe8Iizmdbr48iEjXApQTMxuZEdyvw1PFRSwwqziSZdi8GqcCGfaNqO5fxn9Dc9BZaJD9TTBtsdTw3OFDbN06YhSyEeIP7DKV6FTA1ddH68rZ4SVWXz0p1IBl+igX7vK4iU+r5/o1+Z7pAiw5kBLY5W1SUr0LtLkOm7+sLN6tlLkrKDxMdgp2NHaihxQeswIF3vFtu5nhEnvO9IRz61Cc4JF0lxvqG0GRm4VekuNTZj1OSr4ACQ9PVw3e/BQiRjZIX3HyqhSeWmREAe9dxw5gdZWoQR9BSXnjkCmrAv2GYuwsiy9xpUg+f0PMBF/tEcCH13w==
+Received: from HK2APC01FT054.eop-APC01.prod.protection.outlook.com
+ (2a01:111:e400:7ebc::44) by
+ HK2APC01HT240.eop-APC01.prod.protection.outlook.com (2a01:111:e400:7ebc::261)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3846.25; Sat, 13 Feb
+ 2021 16:23:47 +0000
+Received: from ME4P282MB0808.AUSP282.PROD.OUTLOOK.COM (2a01:111:e400:7ebc::47)
+ by HK2APC01FT054.mail.protection.outlook.com
+ (2a01:111:e400:7ebc::284) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3846.25 via Frontend
+ Transport; Sat, 13 Feb 2021 16:23:47 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:6E6B0AE1FB99351FC6162A763B732D97ACF69DE0832CF5B19BE68B63F395524A;
+ UpperCasedChecksum:096662DE0B87B02E3AA6C7140DE0DA5E92AD3BA7CDA175238E753D0074B9440A;
+ SizeAsReceived:8448; Count:44
+Received: from ME4P282MB0808.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::e47e:4c81:d07b:847f]) by ME4P282MB0808.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::e47e:4c81:d07b:847f%9]) with mapi id 15.20.3846.038; Sat, 13 Feb 2021
+ 16:23:46 +0000
+Message-ID: <ME4P282MB0808D827E83D8DCB58313565F98A9@ME4P282MB0808.AUSP282.PROD.OUTLOOK.COM>
+Subject: [PATCH] staging: wfx: logical continuations should be on the
+ previous line
+From: zhuo1angt@outlook.com
+To: "<jerome.pouiller@silabs.com>  <gregkh@linuxfoundation.org>"
+ <devel@driverdev.osuosl.org>
+Date: Sun, 14 Feb 2021 00:23:57 +0800
+User-Agent: Evolution 3.38.4 
+X-TMN: [YePIuwgP3GogM6BzlAa4yxQYcNRFw1RM]
+X-ClientProxiedBy: TYCPR01CA0073.jpnprd01.prod.outlook.com
+ (2603:1096:405:3::13) To ME4P282MB0808.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:220:98::11)
+X-Microsoft-Original-Message-ID: <d319b4b35a9f1f3850dcbcff24f30ca233448284.camel@outlook.com>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [127.0.0.1] (104.238.148.79) by
+ TYCPR01CA0073.jpnprd01.prod.outlook.com (2603:1096:405:3::13) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3846.25 via Frontend Transport; Sat, 13 Feb 2021 16:23:44 +0000
+X-MS-PublicTrafficType: Email
+X-IncomingHeaderCount: 44
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-Correlation-Id: f0926284-11b0-4357-886a-08d8d03bbcae
+X-MS-TrafficTypeDiagnostic: HK2APC01HT240:
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: +ou8foZg8b86UIsuXHazr0nj/wrVMSEoF6YzwlPnOA95KSozSoU63bDW0zmyiGvDxRz5y3v+7wNqmbB6c5Clty7iYFZChYrl0QJ1zK9QQ7/E0gYHs0FztDAlDwHFkCy+MXVjzlWSsMVTPnWiCdRtT9e6eHJ9zV881++EikB+kaIUc4lhTVM/8m5oDQQQmjz37K260Lp5K0US4oo9CQj6vDK84V1c/G47TMH0SZILtfPuSjOC+VDYUHS8WwnqjfU/dNAAfGHMZgAOK8eZ2Zg07DLaiGbhgNrbDHX3DLxe9chyOqgD9Ss8G14ZEhR3yhjasMO3A+2+xekzuZFbpI6E4L2d9ynD6Dbcp0F8dX6e8GFnLsWa048ym6XgLvKqAmcA9sM0RLt0S9gcGqEs3+IQ8A==
+X-MS-Exchange-AntiSpam-MessageData: IUmOJrMz1gp4rs0lIBoc/LCXNZNnNAyqLPnQabZPWBWsZhiBpZf+eoxukBAMQiOdkd7J3NC6Xj4SxaCmp6Eb+zzn3bPcA9bnIiYdgcomYLqfdUQPxrF93ku2f8SKrRb9ySlAa9THIwfHi0KkDx1TUA==
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f0926284-11b0-4357-886a-08d8d03bbcae
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Feb 2021 16:23:46.1710 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: HK2APC01FT054.eop-APC01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HK2APC01HT240
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,123 +113,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Ivan Safonov <insafonov@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-_TO_DS_, _FROM_DS_, _MORE_FRAG_, _RETRY_, _PWRMGT_, _MORE_DATA_,
-_PRIVACY_, _ORDER_ definitions are duplicate IEEE80211_FCTL_*
-kernel definitions.
+Move logical or operator to previous line to comply with
+the standard kernel coding style.
 
-Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+Signed-off-by: Zhuoran He <zhuo1angt@outlook.com>
 ---
- drivers/staging/rtl8188eu/include/wifi.h | 51 ++++++++++--------------
- 1 file changed, 21 insertions(+), 30 deletions(-)
+ drivers/staging/wfx/hif_rx.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl8188eu/include/wifi.h
-index d0380f7f1bab..1b9006879a11 100644
---- a/drivers/staging/rtl8188eu/include/wifi.h
-+++ b/drivers/staging/rtl8188eu/include/wifi.h
-@@ -88,73 +88,64 @@ enum WIFI_REG_DOMAIN {
- 	DOMAIN_MAX
- };
- 
--#define _TO_DS_		BIT(8)
--#define _FROM_DS_	BIT(9)
--#define _MORE_FRAG_	BIT(10)
--#define _RETRY_		BIT(11)
--#define _PWRMGT_	BIT(12)
--#define _MORE_DATA_	BIT(13)
--#define _PRIVACY_	BIT(14)
--#define _ORDER_		BIT(15)
--
- #define SetToDs(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_TO_DS_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_TODS)
- 
--#define GetToDs(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_TO_DS_)) != 0)
-+#define GetToDs(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_TODS)) != 0)
- 
- #define ClearToDs(pbuf)	\
--	*(__le16 *)(pbuf) &= (~cpu_to_le16(_TO_DS_))
-+	*(__le16 *)(pbuf) &= (~cpu_to_le16(IEEE80211_FCTL_TODS))
- 
- #define SetFrDs(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_FROM_DS_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_FROMDS)
- 
--#define GetFrDs(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_FROM_DS_)) != 0)
-+#define GetFrDs(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_FROMDS)) != 0)
- 
- #define ClearFrDs(pbuf)	\
--	*(__le16 *)(pbuf) &= (~cpu_to_le16(_FROM_DS_))
-+	*(__le16 *)(pbuf) &= (~cpu_to_le16(IEEE80211_FCTL_FROMDS))
- 
- #define get_tofr_ds(pframe)	((GetToDs(pframe) << 1) | GetFrDs(pframe))
- 
- #define SetMFrag(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_MORE_FRAG_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_MOREFRAGS)
- 
--#define GetMFrag(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_MORE_FRAG_)) != 0)
-+#define GetMFrag(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_MOREFRAGS)) != 0)
- 
- #define ClearMFrag(pbuf)	\
--	*(__le16 *)(pbuf) &= (~cpu_to_le16(_MORE_FRAG_))
-+	*(__le16 *)(pbuf) &= (~cpu_to_le16(IEEE80211_FCTL_MOREFRAGS))
- 
- #define SetRetry(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_RETRY_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_RETRY)
- 
--#define GetRetry(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_RETRY_)) != 0)
-+#define GetRetry(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_RETRY)) != 0)
- 
- #define ClearRetry(pbuf)	\
--	*(__le16 *)(pbuf) &= (~cpu_to_le16(_RETRY_))
-+	*(__le16 *)(pbuf) &= (~cpu_to_le16(IEEE80211_FCTL_RETRY))
- 
- #define SetPwrMgt(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_PWRMGT_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_PM)
- 
--#define GetPwrMgt(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_PWRMGT_)) != 0)
-+#define GetPwrMgt(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_PM)) != 0)
- 
- #define ClearPwrMgt(pbuf)	\
--	*(__le16 *)(pbuf) &= (~cpu_to_le16(_PWRMGT_))
-+	*(__le16 *)(pbuf) &= (~cpu_to_le16(IEEE80211_FCTL_PM))
- 
- #define SetMData(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_MORE_DATA_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_MOREDATA)
- 
--#define GetMData(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_MORE_DATA_)) != 0)
-+#define GetMData(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_MOREDATA)) != 0)
- 
- #define ClearMData(pbuf)	\
--	*(__le16 *)(pbuf) &= (~cpu_to_le16(_MORE_DATA_))
-+	*(__le16 *)(pbuf) &= (~cpu_to_le16(IEEE80211_FCTL_MOREDATA))
- 
- #define SetPrivacy(pbuf)	\
--	*(__le16 *)(pbuf) |= cpu_to_le16(_PRIVACY_)
-+	*(__le16 *)(pbuf) |= cpu_to_le16(IEEE80211_FCTL_PROTECTED)
- 
- #define GetPrivacy(pbuf)					\
--	(((*(__le16 *)(pbuf)) & cpu_to_le16(_PRIVACY_)) != 0)
-+	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_PROTECTED)) != 0)
- 
- #define GetOrder(pbuf)					\
--	(((*(__le16 *)(pbuf)) & cpu_to_le16(_ORDER_)) != 0)
-+	(((*(__le16 *)(pbuf)) & cpu_to_le16(IEEE80211_FCTL_ORDER)) != 0)
- 
- #define GetFrameType(pbuf)				\
- 	(le16_to_cpu(*(__le16 *)(pbuf)) & (BIT(3) | BIT(2)))
--- 
-2.26.2
+diff --git a/drivers/staging/wfx/hif_rx.c b/drivers/staging/wfx/hif_rx.c
+index 56a5f8914..9fca7f263 100644
+--- a/drivers/staging/wfx/hif_rx.c
++++ b/drivers/staging/wfx/hif_rx.c
+@@ -391,9 +391,9 @@ void wfx_handle_rx(struct wfx_dev *wdev, struct sk_buff *skb)
+ 	}
+ 	// Note: mutex_is_lock cause an implicit memory barrier that protect
+ 	// buf_send
+-	if (mutex_is_locked(&wdev->hif_cmd.lock)
+-	    && wdev->hif_cmd.buf_send
+-	    && wdev->hif_cmd.buf_send->id == hif_id) {
++	if (mutex_is_locked(&wdev->hif_cmd.lock) &&
++	    wdev->hif_cmd.buf_send &&
++	    wdev->hif_cmd.buf_send->id == hif_id) {
+ 		hif_generic_confirm(wdev, hif, hif->body);
+ 		goto free;
+ 	}
+--
+2.30.1
+
+
 
 _______________________________________________
 devel mailing list
