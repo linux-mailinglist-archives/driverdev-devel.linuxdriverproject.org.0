@@ -2,80 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FFF031B013
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Feb 2021 11:29:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 24F7831B02C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Feb 2021 12:08:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9EE768698C;
-	Sun, 14 Feb 2021 10:29:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 023E0869A4;
+	Sun, 14 Feb 2021 11:08:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UeixGFO8v6Oi; Sun, 14 Feb 2021 10:29:15 +0000 (UTC)
+	with ESMTP id KcIfnTOgsAZK; Sun, 14 Feb 2021 11:08:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BD82686948;
-	Sun, 14 Feb 2021 10:29:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CE75386987;
+	Sun, 14 Feb 2021 11:08:31 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A4261BF3DB
+ by ash.osuosl.org (Postfix) with ESMTP id 23E1E1BF57B
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 Feb 2021 10:29:12 +0000 (UTC)
+ Sun, 14 Feb 2021 11:08:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 35CD4868DA
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1AA0B8697A
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 Feb 2021 10:29:12 +0000 (UTC)
+ Sun, 14 Feb 2021 11:08:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MtHdmQ0rCXwB
+ with ESMTP id nnoYOYAOik+w
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 Feb 2021 10:29:11 +0000 (UTC)
+ Sun, 14 Feb 2021 11:08:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com
- [209.85.128.53])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 230F9868C3
+Received: from mail-il1-f175.google.com (mail-il1-f175.google.com
+ [209.85.166.175])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8B0748670A
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 Feb 2021 10:29:11 +0000 (UTC)
-Received: by mail-wm1-f53.google.com with SMTP id h67so266874wmh.1
+ Sun, 14 Feb 2021 11:08:29 +0000 (UTC)
+Received: by mail-il1-f175.google.com with SMTP id a16so3233055ilq.5
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 Feb 2021 02:29:11 -0800 (PST)
+ Sun, 14 Feb 2021 03:08:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=piPRYGmJscMe4DmZidcBbVydk/59uhd0GTC8oxYrasc=;
- b=ozBbvpb0cKSrE+wRzajvGM3OILJW0dRswVR3OZljw4/hkww9QR/n4dQJnHSvwwCimY
- momah/B7v4rIcR57JGzD2VsAkSo7YUNDcBVAyfJUEbl8ruCdu1EegiPtuUP9Q/xRehcC
- z5Et2YA3abB2OZqkcbv531DMAb1dJQvc+ZU9ClTMqgH/lmoANXX10OBy4hFdUXiAxmaX
- UplMnHfCrxlYOS2js6wdYunPcInap8ybNtnwdGaKiJgRZgvPCGe6GJmiRk8xoD+A4ceT
- nz1BPIG3Q4anMmX+IenOrxe8fbtI7wnfgGuQZXl0tXX5iiZu92wQYogDp3yV5qIF69lh
- DT4A==
+ bh=bxwXJ8ENn68ovbCALSdFDVdqnLgoFVTQqQ/EEyjRC7Q=;
+ b=l+1C4/xQ070glWRIbYOI3qPw3aV6Kgolp7KV+OJ0SzjrT20iKXZ7BSxnruo9cFnuG3
+ t/jfdvRnixtL3A0eAbZ/RfN/lG+aaSMI2gyNKfWJsNWh3kjV1yRbVeG9CMvy7oT+vNXu
+ WO5lRwQqakzp99jHyuN8si8iV+sik9tHiMf/yksqau+SaAnywgv8CDjqHzKY7xIrgtYG
+ C85GYbtyzLfnPgNDmKfBGjaOE1xtGk762vLle89VeGOBtVEmD90vvUTejTub4Et7sj8Q
+ 0NN8vEvJmf3Su90vBtRFtQkln10TS5RA7fSRe1237Ktiaka+oONHuDkNw80+wYxfc5Un
+ oHPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=piPRYGmJscMe4DmZidcBbVydk/59uhd0GTC8oxYrasc=;
- b=URfthFZx0NpfaVbfRlu2khIAKFff+8TIO9zZjg6n9JURKXvSfIFbiWTkiXzFs3SROO
- H8FMfOFJqfOpN+BO8psEpf3Ti2Tcv3cqGLtvS5/kfKuQZKRb0Vdvs9wbH4DHhGe1vTG9
- jxX1HuWxvqoVTERTHRVXGiyrd4bbNSACdMFB+9H39MZb2ELRRhxtIGNrykUa4iQJpOjZ
- yC2gpQ6B1qSy2jHNGQLuYYZ+z/pvNCWoHIJVSbVOTG8tdfWjDBmAyS2sZkKi2zkrgyla
- GGQBkgtV6vr361qjTomZiqlGOtu2uO8zPoHzKdwNABUrfKntuiV86hZ7FXivujgGp4Vk
- DE7A==
-X-Gm-Message-State: AOAM533dVH4/VX21fQE3kexbcolTmVEpWoSYP1Fu/lz7KVy8CJ0PLi32
- qxWiFpimWyVg5w3rYx7HdOc=
-X-Google-Smtp-Source: ABdhPJxJlqaTCPgLE8zPy1u0g5lcpD87EqxN/KkStGYEzSb4oXqTugFx41UQs9Q3yDMg+bS5X3I0UA==
-X-Received: by 2002:a7b:cb8c:: with SMTP id m12mr2661619wmi.1.1613298549527;
- Sun, 14 Feb 2021 02:29:09 -0800 (PST)
+ bh=bxwXJ8ENn68ovbCALSdFDVdqnLgoFVTQqQ/EEyjRC7Q=;
+ b=nXSECtL8MY+ad4s42VjNJT7ezdY5x21kXpxGQDdZ8DfqKS4HhiQKoZ8wrc4mCBtaaf
+ Dnc8+INjLW7V/NjzLDY2wv3jlKUsPdVZvRCJOIHLb2Do6V6nL8wmYmSQTNbsLdKhqE79
+ z6W7vIdBL3+cWAyOWryXkZcx44qI7sKFMlLCZLHyrZTRVM3snnGmZ26rCQwdxxW4mjOt
+ Bn8gu9aaH8EexxCogY+fge8VWIlQnnfS+5ok9XaDY2MdsVzrEI4tgClnfgnV2LwOCnO/
+ I/wOQChIzOc+xWLFy92RJK33tY5XepG4Kxp6RpoIqd25H+hT9NYF0Qbu9YrMjibDrkC1
+ UFlQ==
+X-Gm-Message-State: AOAM530Jz7+fzXZ8/P6w2ztp8YMcJQ41DHV9d+7E4cu5MC0xP+IKX1sJ
+ cERmyfIg/x9zB45KfEQp9rg=
+X-Google-Smtp-Source: ABdhPJzdVpHBCU7I1qv2pNDBTk+5rSbbTHRZbOB2X5WEwKmrSntrmPi3rADqzIzMkTu46lHSfJoIAg==
+X-Received: by 2002:a05:6e02:78e:: with SMTP id
+ q14mr9188331ils.195.1613300908886; 
+ Sun, 14 Feb 2021 03:08:28 -0800 (PST)
 Received: from localhost.localdomain ([106.51.142.63])
- by smtp.gmail.com with ESMTPSA id j17sm19923263wmc.28.2021.02.14.02.29.06
+ by smtp.gmail.com with ESMTPSA id i3sm7486376ilm.56.2021.02.14.03.08.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Feb 2021 02:29:09 -0800 (PST)
+ Sun, 14 Feb 2021 03:08:28 -0800 (PST)
 From: Shreesh Adiga <16567adigashreesh@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Larry Finger <Larry.Finger@lwfinger.net>,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>
-Subject: [PATCH] staging: rtl8712: cleanup checkpatch.pl warnings
-Date: Sun, 14 Feb 2021 15:56:01 +0530
-Message-Id: <20210214102601.509326-1-16567adigashreesh@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: ks7010: cleanup checkpatch.pl macro error
+Date: Sun, 14 Feb 2021 16:35:23 +0530
+Message-Id: <20210214110523.558214-1-16567adigashreesh@gmail.com>
 X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -97,198 +96,51 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleanup warnings displayed by checkpatch.pl for the
-file rtl8171x_mlme.c for the below warning:
-WARNING: Avoid multiple line dereference
+Add parentheses around the macro definitions in ks_hostif.h
+to clear the error output by checkpatch.pl
 
 Signed-off-by: Shreesh Adiga <16567adigashreesh@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mlme.c | 112 +++++++++----------------
- 1 file changed, 39 insertions(+), 73 deletions(-)
+ drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 6074383ec0b5..91d32c3d4866 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -433,8 +433,7 @@ static int is_desired_network(struct _adapter *adapter,
- 		bselected = false;
- 	if (check_fwstate(&adapter->mlmepriv, WIFI_ADHOC_STATE)) {
- 		if (pnetwork->network.InfrastructureMode !=
--			adapter->mlmepriv.cur_network.network.
--			InfrastructureMode)
-+		    adapter->mlmepriv.cur_network.network.InfrastructureMode)
- 			bselected = false;
- 	}
- 	return bselected;
-@@ -540,19 +539,15 @@ void r8712_surveydone_event_callback(struct _adapter *adapter, u8 *pbuf)
- 				} else {
- 					struct wlan_bssid_ex *pdev_network =
- 					  &(adapter->registrypriv.dev_network);
--					u8 *pibss =
--						 adapter->registrypriv.
--							dev_network.MacAddress;
-+					u8 *pibss = adapter->registrypriv.dev_network.MacAddress;
-+
- 					pmlmepriv->fw_state ^= _FW_UNDER_SURVEY;
- 					memcpy(&pdev_network->Ssid,
--						&pmlmepriv->assoc_ssid,
--						sizeof(struct
--							 ndis_802_11_ssid));
--					r8712_update_registrypriv_dev_network
--						(adapter);
-+					       &pmlmepriv->assoc_ssid,
-+					       sizeof(struct ndis_802_11_ssid));
-+					r8712_update_registrypriv_dev_network(adapter);
- 					r8712_generate_random_ibss(pibss);
--					pmlmepriv->fw_state =
--						 WIFI_ADHOC_MASTER_STATE;
-+					pmlmepriv->fw_state = WIFI_ADHOC_MASTER_STATE;
- 					pmlmepriv->to_join = false;
- 				}
- 			}
-@@ -691,11 +686,9 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
- 	pnetwork->network.Configuration.DSConfig =
- 		 le32_to_cpu(pnetwork->network.Configuration.DSConfig);
- 	pnetwork->network.Configuration.FHConfig.DwellTime =
--		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.
--			     DwellTime);
-+		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.DwellTime);
- 	pnetwork->network.Configuration.FHConfig.HopPattern =
--		 le32_to_cpu(pnetwork->network.Configuration.
--			     FHConfig.HopPattern);
-+		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.HopPattern);
- 	pnetwork->network.Configuration.FHConfig.HopSet =
- 		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.HopSet);
- 	pnetwork->network.Configuration.FHConfig.Length =
-@@ -720,36 +713,29 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
- 			if (check_fwstate(pmlmepriv, _FW_LINKED)) {
- 				if (the_same_macaddr) {
- 					ptarget_wlan =
--					    r8712_find_network(&pmlmepriv->
--					    scanned_queue,
--					    cur_network->network.MacAddress);
-+					    r8712_find_network(&pmlmepriv->scanned_queue,
-+							       cur_network->network.MacAddress);
- 				} else {
- 					pcur_wlan =
--					     r8712_find_network(&pmlmepriv->
--					     scanned_queue,
--					     cur_network->network.MacAddress);
-+					     r8712_find_network(&pmlmepriv->scanned_queue,
-+								cur_network->network.MacAddress);
- 					pcur_wlan->fixed = false;
+diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
+index 39138191a556..c62a494ed6bb 100644
+--- a/drivers/staging/ks7010/ks_hostif.h
++++ b/drivers/staging/ks7010/ks_hostif.h
+@@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
+ #define TX_RATE_FIXED		5
  
- 					pcur_sta = r8712_get_stainfo(pstapriv,
- 					     cur_network->network.MacAddress);
--					spin_lock_irqsave(&pstapriv->
--						sta_hash_lock, irqL2);
-+					spin_lock_irqsave(&pstapriv->sta_hash_lock, irqL2);
- 					r8712_free_stainfo(adapter, pcur_sta);
--					spin_unlock_irqrestore(&(pstapriv->
--						sta_hash_lock), irqL2);
-+					spin_unlock_irqrestore(&(pstapriv->sta_hash_lock), irqL2);
+ /* 11b rate */
+-#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
+-#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
+-#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
+-#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
++#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
++#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
++#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
++#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
  
- 					ptarget_wlan =
--						 r8712_find_network(&pmlmepriv->
--						 scanned_queue,
--						 pnetwork->network.
--						 MacAddress);
-+						 r8712_find_network(&pmlmepriv->scanned_queue,
-+								    pnetwork->network.MacAddress);
- 					if (ptarget_wlan)
- 						ptarget_wlan->fixed = true;
- 				}
- 			} else {
--				ptarget_wlan = r8712_find_network(&pmlmepriv->
--						scanned_queue,
--						pnetwork->network.MacAddress);
-+				ptarget_wlan = r8712_find_network(&pmlmepriv->scanned_queue,
-+								  pnetwork->network.MacAddress);
- 				if (ptarget_wlan)
- 					ptarget_wlan->fixed = true;
- 			}
-@@ -781,40 +767,23 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
- 					ptarget_sta->aid = pnetwork->join_res;
- 					ptarget_sta->qos_option = 1;
- 					ptarget_sta->mac_id = 5;
--					if (adapter->securitypriv.
--					    AuthAlgrthm == 2) {
--						adapter->securitypriv.
--							binstallGrpkey =
--							 false;
--						adapter->securitypriv.
--							busetkipkey =
--							 false;
--						adapter->securitypriv.
--							bgrpkey_handshake =
--							 false;
--						ptarget_sta->ieee8021x_blocked
--							 = true;
-+					if (adapter->securitypriv.AuthAlgrthm == 2) {
-+						adapter->securitypriv.binstallGrpkey = false;
-+						adapter->securitypriv.busetkipkey = false;
-+						adapter->securitypriv.bgrpkey_handshake = false;
-+						ptarget_sta->ieee8021x_blocked = true;
- 						ptarget_sta->XPrivacy =
--							 adapter->securitypriv.
--							 PrivacyAlgrthm;
--						memset((u8 *)&ptarget_sta->
--							 x_UncstKey,
--							 0,
--							 sizeof(union Keytype));
--						memset((u8 *)&ptarget_sta->
--							 tkiprxmickey,
--							 0,
--							 sizeof(union Keytype));
--						memset((u8 *)&ptarget_sta->
--							 tkiptxmickey,
--							 0,
--							 sizeof(union Keytype));
--						memset((u8 *)&ptarget_sta->
--							 txpn, 0,
--							 sizeof(union pn48));
--						memset((u8 *)&ptarget_sta->
--							 rxpn, 0,
--							 sizeof(union pn48));
-+							 adapter->securitypriv.PrivacyAlgrthm;
-+						memset((u8 *)&ptarget_sta->x_UncstKey, 0,
-+						       sizeof(union Keytype));
-+						memset((u8 *)&ptarget_sta->tkiprxmickey, 0,
-+						       sizeof(union Keytype));
-+						memset((u8 *)&ptarget_sta->tkiptxmickey, 0,
-+						       sizeof(union Keytype));
-+						memset((u8 *)&ptarget_sta->txpn, 0,
-+						       sizeof(union pn48));
-+						memset((u8 *)&ptarget_sta->rxpn, 0,
-+						       sizeof(union pn48));
- 					}
- 				} else {
- 					if (check_fwstate(pmlmepriv,
-@@ -944,11 +913,9 @@ void r8712_stadel_event_callback(struct _adapter *adapter, u8 *pbuf)
- 			pdev_network = &(adapter->registrypriv.dev_network);
- 			pibss = adapter->registrypriv.dev_network.MacAddress;
- 			memcpy(pdev_network, &tgt_network->network,
--				r8712_get_wlan_bssid_ex_sz(&tgt_network->
--							network));
--			memcpy(&pdev_network->Ssid,
--				&pmlmepriv->assoc_ssid,
--				sizeof(struct ndis_802_11_ssid));
-+			       r8712_get_wlan_bssid_ex_sz(&tgt_network->network));
-+			memcpy(&pdev_network->Ssid, &pmlmepriv->assoc_ssid,
-+			       sizeof(struct ndis_802_11_ssid));
- 			r8712_update_registrypriv_dev_network(adapter);
- 			r8712_generate_random_ibss(pibss);
- 			if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE)) {
-@@ -1094,8 +1061,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
- 			src_ssid = pmlmepriv->assoc_bssid;
- 			if (!memcmp(dst_ssid, src_ssid, ETH_ALEN)) {
- 				if (check_fwstate(pmlmepriv, _FW_LINKED)) {
--					if (is_same_network(&pmlmepriv->
--					    cur_network.network,
-+					if (is_same_network(&pmlmepriv->cur_network.network,
- 					    &pnetwork->network)) {
- 						_clr_fwstate_(pmlmepriv,
- 							_FW_UNDER_LINKING);
+ /* 11g rate */
+-#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
+-#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
+-#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
+-#define TX_RATE_9M	(u8)(90 / 5)
+-#define TX_RATE_18M	(u8)(180 / 5)
+-#define TX_RATE_36M	(u8)(360 / 5)
+-#define TX_RATE_48M	(u8)(480 / 5)
+-#define TX_RATE_54M	(u8)(540 / 5)
++#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
++#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
++#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
++#define TX_RATE_9M	((u8)(90 / 5))
++#define TX_RATE_18M	((u8)(180 / 5))
++#define TX_RATE_36M	((u8)(360 / 5))
++#define TX_RATE_48M	((u8)(480 / 5))
++#define TX_RATE_54M	((u8)(540 / 5))
+ 
+ static inline bool is_11b_rate(u8 rate)
+ {
 -- 
 2.30.0
 
