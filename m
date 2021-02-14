@@ -1,67 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6026731E172
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 22:34:40 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E41CE31E171
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 22:34:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4F0DE605C0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 21:34:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9AC4885F7B;
+	Wed, 17 Feb 2021 21:34:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vvVtQsslTH7t for <lists+driverdev-devel@lfdr.de>;
-	Wed, 17 Feb 2021 21:34:37 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 54891605DF; Wed, 17 Feb 2021 21:34:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id u9Fv7TKZEJZk; Wed, 17 Feb 2021 21:34:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AE8AB60597;
-	Wed, 17 Feb 2021 21:34:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 12BEB847D5;
+	Wed, 17 Feb 2021 21:34:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 464DB1BF9D1
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 21:33:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E01D31BF869
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 21:34:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 41CE38660A
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 21:33:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D98078588A
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 21:34:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iElsONWh4Yty for <devel@linuxdriverproject.org>;
- Wed, 17 Feb 2021 21:33:55 +0000 (UTC)
+ with ESMTP id QWBpLw9susux for <devel@linuxdriverproject.org>;
+ Wed, 17 Feb 2021 21:33:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com
  [66.111.4.25])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7544187234
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 21:33:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 076A48583C
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 21:33:56 +0000 (UTC)
 Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id D4BFF5C00F9;
- Wed, 17 Feb 2021 16:33:54 -0500 (EST)
+ by mailout.nyi.internal (Postfix) with ESMTP id 772EB5C009B;
+ Wed, 17 Feb 2021 16:33:55 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 17 Feb 2021 16:33:54 -0500
+ by compute3.internal (MEProxy); Wed, 17 Feb 2021 16:33:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
  :to:cc:subject:date:message-id:in-reply-to:references; s=fm2;
- bh=0DPt8T+IrQKOkEiQ1EPlTZOferGKmocm4fwWAE5D5bs=; b=bKvX3COYgLTR
- sXoB8fJlRlnbjvYP/Ed8QRLW1Z2ischDqBdgHvzSHQhgMCD7W5BW2kyMvt1UUsvU
- ssf5YV98UoOQzn7c0JkJbwzFJyi9zQTNVzfMZ6reThTFBFXwcTvcaLD2R7lvTZvt
- vw9EUfWzSgjOyIfSaEl2K75O86KkrdwkzoIPjaR2qfzFWWX84TwpiUMIPkhHoZ6h
- gSoZVaVV+AbWH5O3rVMscVlV03/h6kKo55g2XJyElbEpVys+dxznw3noPVfpncsY
- +aH7MKixmfpQb2/I95Vp0UGn855y2jesvDm8WQBKf7UAQ/38inAG+tey/4wJ9X3m
- 6wElwJJhHw==
+ bh=P+dZkE4/V1YEaQ1e+yPPwSpoog8qY7gLxOog0jgZ09I=; b=lxTFTFwVhe3Y
+ uOiwiO6la8pZJBT2NzPHL7THqW7RJPvrRmpTQEh9NJ8dyGG/GVge0PwnlaaksTAA
+ D8hwTGofGw/1o33HpsTApSuDn42RKJCxJlm15xt/yc9SDIuKBEY3dYgCeufC7Y8M
+ pymnH+n11vumprrLP2Kr/nJnrzDKQzjIAAPB5aqvPyWtvB0V/T4jIDwTZ/Oig3uA
+ SliKaIfRcnhYzdmGIeWh7rGfb7MWUS8CKEsdQkI8WEm782Tx8OKfWtWXaN6aLv1W
+ YgjcZC+ImU6SlNkjNnZsW3zDt5FWo0/mMRDJ00Hu+rCPavNu0w9WuPFawmrTuGe9
+ JRK6DD4nwA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:date:from:in-reply-to:message-id
  :references:subject:to:x-me-proxy:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm2; bh=0DPt8T+IrQKOkEiQ1EPlTZOferGKm
- ocm4fwWAE5D5bs=; b=PxhZSFhPJxer46Xo1H2DS/cDc3nDPTQrq24dqB6PRrCkC
- yjjLnt20xKYJVnNLAEWR7UGLNLMgZPnx+JnDh+vxk29lU1ruEgB++qCua0Zak/mt
- 5JDgq7rFKe2w6radFwCbTtbUuh9wBmU3PcnJ+bOBtJVZrdAukmPPKsCWDcFRK4XR
- pWBOBEGkIpTZ7/C2fw6lGbjUfxrtE8SUjT1MMlnKFRnViagkZ5I1bpzqvpdXjZx6
- IE0w9ZcORGF6qByIehHKljItKdSfrDmN59SlZT4r2shvTPv4y7eyY+Ts+ntXpRnI
- d/6BfRQooVtYWLDZFJG1rG0BiqBWzUEUZIvAbJdxQ==
-X-ME-Sender: <xms:wostYIL1aQ-UdEwPtAyTZpu87wtuuq9hBA5kfdjLjH3ai-4aXvuUFw>
- <xme:wostYO6kS1VKDqcmxXLaeC9OSKTS3gV0iQPWqUHdAmvpMlbDMzCKreURItStQy5M3
- bkTtHYR-JFOTrKzDg>
+ :x-me-sender:x-sasl-enc; s=fm2; bh=P+dZkE4/V1YEaQ1e+yPPwSpoog8qY
+ 7gLxOog0jgZ09I=; b=aDj5sdT5KKXaARf/jRmwyRts9Ntd/fm9EhG5zAg6YM1ag
+ 1CMoog0x2V/U8BCt/boBGoe4c331kZA+iYOockr9jY05nFUEZ7/EdnwumNel7Zoh
+ vCyOBxKP1KEg5L6lBVYdRqevu8oaVdfvlC2wyA3hMgKufbsUJR3DszxpHbKzz7LK
+ gX2Lg06BaALKS7Qwg81XOSsD5/lsAdrcv5zM7upQcRae14p4nX04Pe7iV01MehnS
+ 8vhOwzH8uErx+xMDh53PDfrOmgFJmyRN7sNB3aA+ANd3iczMnK+YbOL9WoAw3bu/
+ KAt/3P4j9dgmcuUdxVsr526BlR4zQBhv0sMjrM0fQ==
+X-ME-Sender: <xms:w4stYGLgh0LZLaqmZnUsGoWOpJKLz71k9xW7_z7LeGV5ss4_O67hbQ>
+ <xme:w4stYFmNnO8Jk87jVDBc2miNC84QRKEzu-UMAQrgfD0DnZ1xwhzXDUpLGTsEeiKU_
+ MbjGxAudv8gUqB0sQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjedvgdduvdegucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -70,19 +67,19 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjedvgdduvdegucetufdoteggod
  hrnhepfffgkeduffdtieeltddtgeetgfdujeekhfegfeegudduffffgedtvddufeelveev
  necukfhppedvudejrddvfeekrddvtdekrdejgeenucevlhhushhtvghrufhiiigvpedtne
  curfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
-X-ME-Proxy: <xmx:wostYKftfuljmnLLipbBGMkb9dZ5nLsV-FSWq_ExArwHHqXZf66pyA>
- <xmx:wostYBEPoeNmDBAbEJbZO-JeardBbE0LeL2_RxaaV6NPSTukvED86Q>
- <xmx:wostYLRlVU6rHExCkExRfJ9yQ5vFzKmEcPlgEzl9EAw0Ueu2b8Hb0g>
- <xmx:wostYAs0ErD68Y_OljXZLovZSndulMUdip46yXNjGogQE-1mW1b8jw>
+X-ME-Proxy: <xmx:w4stYEEtMF0-orEJSOSvm3YTTvMBUgyfMfOF474VJACC7JQZYKMROA>
+ <xmx:w4stYFEu4vT6CJNfjDqvxM0qL0ZtgHGvURYsmMMfhIZtOs8qGSgUoA>
+ <xmx:w4stYBP699QpYsvr_O84S0SjdPFtXcC5mRGA4EwgBCCP76BMFZ7ajw>
+ <xmx:w4stYMQFD-gQrT5eDyCICH93X3dJWoYw54aFthxEGDbmsaAy2lHT_Q>
 Received: from vagrant.vm (pd9eed04a.dip0.t-ipconnect.de [217.238.208.74])
- by mail.messagingengine.com (Postfix) with ESMTPA id 5FD3A240057;
+ by mail.messagingengine.com (Postfix) with ESMTPA id 04F9A240057;
  Wed, 17 Feb 2021 16:33:54 -0500 (EST)
 From: William Durand <will+git@drnd.me>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/3] staging: rtl8192e: rename FragNum to frag_num in
+Subject: [PATCH 3/3] staging: rtl8192e: rename SeqNum to seq_num in
  sequence_control union
-Date: Sun, 14 Feb 2021 14:03:31 +0000
-Message-Id: <20210214140332.16175-3-will+git@drnd.me>
+Date: Sun, 14 Feb 2021 14:03:32 +0000
+Message-Id: <20210214140332.16175-4-will+git@drnd.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210214140332.16175-1-will+git@drnd.me>
 References: <20210214140332.16175-1-will+git@drnd.me>
@@ -109,22 +106,50 @@ Fixes a checkpatch CHECK message.
 
 Signed-off-by: William Durand <will+git@drnd.me>
 ---
- drivers/staging/rtl8192e/rtl819x_BA.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8192e/rtl819x_BA.h     | 2 +-
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 2 +-
+ drivers/staging/rtl8192e/rtllib_tx.c      | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8192e/rtl819x_BA.h b/drivers/staging/rtl8192e/rtl819x_BA.h
-index 34d66b8f5155..3e5bd3fc78ce 100644
+index 3e5bd3fc78ce..b2a784fa051e 100644
 --- a/drivers/staging/rtl8192e/rtl819x_BA.h
 +++ b/drivers/staging/rtl8192e/rtl819x_BA.h
-@@ -22,7 +22,7 @@
- union sequence_control {
+@@ -23,7 +23,7 @@ union sequence_control {
  	u16 short_data;
  	struct {
--		u16	FragNum:4;
-+		u16	frag_num:4;
- 		u16	SeqNum:12;
+ 		u16	frag_num:4;
+-		u16	SeqNum:12;
++		u16	seq_num:12;
  	} field;
  };
+
+diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+index b3f0f64c7711..07dade37d4eb 100644
+--- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+@@ -489,7 +489,7 @@ void TsInitAddBA(struct rtllib_device *ieee, struct tx_ts_record *pTS,
+ 			 pTS->TsCommonInfo.TSpec.f.TSInfo.field.ucTSID;
+ 	pBA->BaParamSet.field.BufferSize = 32;
+ 	pBA->BaTimeoutValue = 0;
+-	pBA->BaStartSeqCtrl.field.SeqNum = (pTS->TxCurSeq + 3) % 4096;
++	pBA->BaStartSeqCtrl.field.seq_num = (pTS->TxCurSeq + 3) % 4096;
+
+ 	ActivateBAEntry(ieee, pBA, BA_SETUP_TIMEOUT);
+
+diff --git a/drivers/staging/rtl8192e/rtllib_tx.c b/drivers/staging/rtl8192e/rtllib_tx.c
+index 50cf10201fdd..30596b9702c3 100644
+--- a/drivers/staging/rtl8192e/rtllib_tx.c
++++ b/drivers/staging/rtl8192e/rtllib_tx.c
+@@ -308,7 +308,7 @@ static void rtllib_tx_query_agg_cap(struct rtllib_device *ieee,
+ 			}
+ 			goto FORCED_AGG_SETTING;
+ 		} else if (!pTxTs->bUsingBa) {
+-			if (SN_LESS(pTxTs->TxAdmittedBARecord.BaStartSeqCtrl.field.SeqNum,
++			if (SN_LESS(pTxTs->TxAdmittedBARecord.BaStartSeqCtrl.field.seq_num,
+ 			   (pTxTs->TxCurSeq+1)%4096))
+ 				pTxTs->bUsingBa = true;
+ 			else
 --
 2.17.1
 
