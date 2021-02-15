@@ -1,83 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F73131C466
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Feb 2021 00:35:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A703231C46A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Feb 2021 00:35:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AE05686A01;
-	Mon, 15 Feb 2021 23:35:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 345046F5A4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 23:35:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WSkihrkJlaci; Mon, 15 Feb 2021 23:34:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eTACDVQeoIgb for <lists+driverdev-devel@lfdr.de>;
+	Mon, 15 Feb 2021 23:35:34 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id A47856F551; Mon, 15 Feb 2021 23:35:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3E98686BAE;
-	Mon, 15 Feb 2021 23:34:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A8AAD6F478;
+	Mon, 15 Feb 2021 23:35:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 58ADF1BF362
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 23:34:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BE7791BF362
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 23:34:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5605F87031
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 23:34:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BA3B286B6F
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 23:34:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fI59bf-dJqwN for <devel@linuxdriverproject.org>;
+ with ESMTP id wjcFLKisNQi7 for <devel@linuxdriverproject.org>;
  Mon, 15 Feb 2021 23:34:47 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com
- [209.85.221.45])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AF8428701D
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 23:34:46 +0000 (UTC)
-Received: by mail-wr1-f45.google.com with SMTP id 7so11093899wrz.0
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 15:34:46 -0800 (PST)
+Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com
+ [209.85.221.48])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6E14587022
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 23:34:47 +0000 (UTC)
+Received: by mail-wr1-f48.google.com with SMTP id 7so11093921wrz.0
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 15:34:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=D9wTZMf8mQHvDXBNmWGbo0MVXVjpNRR85eN+LgHXS78=;
- b=1BIvA2h0dh11p09lal3FzhJVxf2GFil1DITQMUw8AUcax3cGLbQl4ENLVjwoX7icYy
- W6WVCeUJLqL3HkZXm6AFr4b3ueDQPgwhL19zVZC9B18l4CrTPErbmjtLisq71b7KxC5h
- maRkqJSSbIwRN+nglrw8VdBho96tPiJB9xuCBkFQUVedtwbfobIJTV937kD1AEVp8EPK
- qU5w4QbRzO/JKzLqWl3BLkHiVYwXeHC5Sm7sLWrvbka5+U4FP2Bozs1pcJhH147agLcj
- /m7xhuEh+EAKv3fB6kr9ku3Izh0t9y4/8PVE+RlYb8IrO8ScTXanx+DKmj20aPJf/tVF
- y/Og==
+ bh=bzbpcdq/dkKcny8MGodRWgkz1+6QNROkO4oO0Mby704=;
+ b=UID8bV3ueo4W1DanTHMoGnFKHa3bEhbnqa04M9l5zKEgvDVUSOEEFkRlMHmZDUBnSP
+ Grg3IuIw161AuXHiIhxfe7fGcb8dm8fjOr/v1eL4c+lGqevy+NuSj95PKC0K3KVbOGGz
+ HFFEGQf5MIpa1WpI9id+L7/Jtalh9WZtidNuaYDVZ5jCKTCa0F47/LZHiKxsKKu5pIWJ
+ iFvr7GSHzwQc5ogfktz+GdW6QRDWqBdsCtgunym+Kopdc1IBFDqKVNu8dyQIA2SHifNb
+ vrkBNROXzOaKuiFqxmuvP9e85y7b4dbj/Rog7IzfflmZwblAmy8zYwZoHfAd7EeE3cOt
+ iNrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=D9wTZMf8mQHvDXBNmWGbo0MVXVjpNRR85eN+LgHXS78=;
- b=SeHw78gCBUhpOyMVagv50jd9M3UrbP0Ik/l5oLwgFL7cdxYZpJCGhcniK1n0IkdqHr
- XO9/dfmfeYAYTtLxO4d3XgVNzcSKMuWBdwZsSdf571r9iGziTG6elKlqhtX76Bd+HTta
- xp3PLgW3W+VR1KeASc8kziGgDhOQnSFqLHL3Kfwaur7BjpdRrKGdsqznxo6SsVEyBrAK
- XrpUiwac9DXOWpbOTxz+alGgT/P9WgTyDPhp976YmKvMg4D8AebrXKNeEKuJxHo/qQch
- ivPp6OE7P++njrplSngYwuN/NDMYr2md6cb6g10c3+aj00jJXSMTtutDI3GO4U4s3OIG
- jSSQ==
-X-Gm-Message-State: AOAM533Q3z1CI25X2U2fPr6YLxxcnqWs9/zmWgxK6vasdPA9T+J67etA
- cuwc7AvQ0Ej1tgd9PrxiWcG7Xg==
-X-Google-Smtp-Source: ABdhPJxcQZvnKQt4lCt1bg7HPEmFukJeG+jjlhiF3g/fgrXvFLHM5QtOHjRGRh788BqgBsGgKCqjLQ==
-X-Received: by 2002:a5d:500d:: with SMTP id e13mr20416403wrt.307.1613432085299; 
- Mon, 15 Feb 2021 15:34:45 -0800 (PST)
+ bh=bzbpcdq/dkKcny8MGodRWgkz1+6QNROkO4oO0Mby704=;
+ b=PLO1epD3YOkDi36kMIxW0TnWoSxLwxtbEUlfxXb9hXO/VeQZJJ2yie/xB87szjhbXP
+ 3csacSUBRK2sT/K5boePYOTj8mhiFNG9n/HAHRd8LKyR8+fP+xMVRWGyEU6vnTnb48Qr
+ ChfRMbb5JL/WH8awqnlweTI7MCVNtqcgMqa7N6RYd8Y0C+KP0+yTrWL8nCiDB2ZfxgYN
+ aF9/IeV/IDZ4QnE2VXZKc3L6D4V43viGebt3fg/eFLRfW2fBAOjJ8BkkxlerKgzTcFVy
+ OIouyLFh3xSOOv5WrGmz2Bb7onAc6hzDUwTF/RxSgtjHctXQ+3PE7ySU5KNrDUbBUSnf
+ FhrQ==
+X-Gm-Message-State: AOAM5307MnSP2NfG3CjK/FQFr3rCjaru5Bz3nAy1Ip3Kby5QG3klbVXP
+ 0oTqdr03FIaz+WKgvMfJYXod5Q==
+X-Google-Smtp-Source: ABdhPJyZbrGyAbZkSUk4kAoWWPlNNiEZjA3kzdqe5xwI39Xg7to6aExb5w8gUOsRlyqc7Gzzh2wnVw==
+X-Received: by 2002:adf:d239:: with SMTP id k25mr22026364wrh.308.1613432086038; 
+ Mon, 15 Feb 2021 15:34:46 -0800 (PST)
 Received: from localhost.localdomain
  (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
  [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
- by smtp.gmail.com with ESMTPSA id y16sm21691445wrw.46.2021.02.15.15.34.44
+ by smtp.gmail.com with ESMTPSA id y16sm21691445wrw.46.2021.02.15.15.34.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 15:34:44 -0800 (PST)
+ Mon, 15 Feb 2021 15:34:45 -0800 (PST)
 From: Phillip Potter <phil@philpotter.co.uk>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 3/6] staging: rtl8723bs: remove DBG_COUNTER calls from
- core/rtw_xmit.c
-Date: Mon, 15 Feb 2021 23:34:37 +0000
-Message-Id: <20210215233440.80617-4-phil@philpotter.co.uk>
+Subject: [PATCH 4/6] staging: rtl8723bs: remove DBG_COUNTER calls from
+ core/rtw_recv.c
+Date: Mon, 15 Feb 2021 23:34:38 +0000
+Message-Id: <20210215233440.80617-5-phil@philpotter.co.uk>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210215233440.80617-3-phil@philpotter.co.uk>
+In-Reply-To: <20210215233440.80617-4-phil@philpotter.co.uk>
 References: <20210215233440.80617-1-phil@philpotter.co.uk>
  <20210215233440.80617-2-phil@philpotter.co.uk>
  <20210215233440.80617-3-phil@philpotter.co.uk>
+ <20210215233440.80617-4-phil@philpotter.co.uk>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -99,228 +103,225 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove all DBG_COUNTER macro calls from core/rtw_xmit.c, as the
+Remove all DBG_COUNTER macro calls from core/rtw_recv.c, as the
 corresponding variables are only ever written to and not used. This
 makes the code cleaner, and is necessary prior to removing the
 DBG_COUNTER definition itself.
 
 Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
 ---
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 44 ++---------------------
+ drivers/staging/rtl8723bs/core/rtw_recv.c | 44 ++---------------------
  1 file changed, 3 insertions(+), 41 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 41632fa0b3c8..19aecbabbc4d 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -653,8 +653,6 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 	struct qos_priv *pqospriv = &pmlmepriv->qospriv;
- 	sint res = _SUCCESS;
+diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+index 3c9dbd7443d9..f35a134bb75f 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_recv.c
++++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+@@ -445,8 +445,6 @@ union recv_frame *decryptor(struct adapter *padapter, union recv_frame *precv_fr
+ 	union recv_frame *return_packet = precv_frame;
+ 	u32  res = _SUCCESS;
  
--	DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib);
+-	DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt);
 -
- 	_rtw_open_pktfile(pkt, &pktfile);
- 	_rtw_pktfile_read(&pktfile, (u8 *)&etherhdr, ETH_HLEN);
+ 	RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("prxstat->decrypted =%x prxattrib->encrypt = 0x%03x\n", prxattrib->bdecrypted, prxattrib->encrypt));
  
-@@ -667,17 +665,12 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 		(check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true)) {
- 		memcpy(pattrib->ra, pattrib->dst, ETH_ALEN);
- 		memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_adhoc);
- 	} else if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)) {
- 		memcpy(pattrib->ra, get_bssid(pmlmepriv), ETH_ALEN);
- 		memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_sta);
- 	} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
- 		memcpy(pattrib->ra, pattrib->dst, ETH_ALEN);
- 		memcpy(pattrib->ta, get_bssid(pmlmepriv), ETH_ALEN);
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_ap);
--	} else {
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_unknown);
- 	}
+ 	if (prxattrib->encrypt > 0) {
+@@ -485,15 +483,12 @@ union recv_frame *decryptor(struct adapter *padapter, union recv_frame *precv_fr
+ 		switch (prxattrib->encrypt) {
+ 		case _WEP40_:
+ 		case _WEP104_:
+-			DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt_wep);
+ 			rtw_wep_decrypt(padapter, (u8 *)precv_frame);
+ 			break;
+ 		case _TKIP_:
+-			DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt_tkip);
+ 			res = rtw_tkip_decrypt(padapter, (u8 *)precv_frame);
+ 			break;
+ 		case _AES_:
+-			DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt_aes);
+ 			res = rtw_aes_decrypt(padapter, (u8 *)precv_frame);
+ 			break;
+ 		default:
+@@ -502,8 +497,6 @@ union recv_frame *decryptor(struct adapter *padapter, union recv_frame *precv_fr
+ 	} else if (prxattrib->bdecrypted == 1 && prxattrib->encrypt > 0 &&
+ 		   (psecuritypriv->busetkipkey == 1 || prxattrib->encrypt != _TKIP_)
+ 		) {
+-		DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt_hw);
+-
+ 		psecuritypriv->hw_decrypted = true;
+ 		#ifdef DBG_RX_DECRYPTOR
+ 		DBG_871X("[%s] %d:prxstat->bdecrypted:%d,  prxattrib->encrypt:%d,  Setting psecuritypriv->hw_decrypted = %d\n",
+@@ -515,7 +508,6 @@ union recv_frame *decryptor(struct adapter *padapter, union recv_frame *precv_fr
  
- 	pattrib->pktlen = pktfile.pkt_len;
-@@ -699,7 +692,6 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 					/*  67 : UDP BOOTP server */
- 					RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("======================update_attrib: get DHCP Packet\n"));
- 					pattrib->dhcp_pkt = 1;
--					DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_dhcp);
- 				}
- 			}
- 		}
-@@ -709,10 +701,8 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 			struct iphdr *piphdr = (struct iphdr *)tmp;
- 
- 			pattrib->icmp_pkt = 0;
--			if (piphdr->protocol == 0x1) { /*  protocol type in ip header 0x1 is ICMP */
-+			if (piphdr->protocol == 0x1) /*  protocol type in ip header 0x1 is ICMP */
- 				pattrib->icmp_pkt = 1;
--				DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_icmp);
--			}
- 		}
- 	} else if (0x888e == pattrib->ether_type) {
- 		DBG_871X_LEVEL(_drv_always_, "send eapol packet\n");
-@@ -724,10 +714,8 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 	/*  If EAPOL , ARP , OR DHCP packet, driver must be in active mode. */
- 	if (pattrib->icmp_pkt == 1)
- 		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_LEAVE, 1);
--	else if (pattrib->dhcp_pkt == 1) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_active);
-+	else if (pattrib->dhcp_pkt == 1)
- 		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SPECIAL_PACKET, 1);
--	}
- 
- 	bmcast = IS_MCAST(pattrib->ra);
- 
-@@ -737,7 +725,6 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
+ 		#endif
  	} else {
- 		psta = rtw_get_stainfo(pstapriv, pattrib->ra);
- 		if (!psta)	{ /*  if we cannot get psta => drop the pkt */
--			DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_err_ucast_sta);
- 			RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("\nupdate_attrib => get sta_info fail, ra:%pM\n", MAC_ARG(pattrib->ra)));
- 			#ifdef DBG_TX_DROP_FRAME
- 			DBG_871X("DBG_TX_DROP_FRAME %s get sta_info fail, ra:%pM\n", __func__, MAC_ARG(pattrib->ra));
-@@ -745,7 +732,6 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 			res = _FAIL;
- 			goto exit;
- 		} else if ((check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) && (!(psta->state & _FW_LINKED))) {
--			DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_err_ucast_ap_link);
- 			res = _FAIL;
- 			goto exit;
- 		}
-@@ -753,7 +739,6 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 
- 	if (!psta) {
- 		/*  if we cannot get psta => drop the pkt */
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_err_sta);
- 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("\nupdate_attrib => get sta_info fail, ra:%pM\n", MAC_ARG(pattrib->ra)));
- 		#ifdef DBG_TX_DROP_FRAME
- 		DBG_871X("DBG_TX_DROP_FRAME %s get sta_info fail, ra:%pM\n", __func__, MAC_ARG(pattrib->ra));
-@@ -763,14 +748,12 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 	}
- 
- 	if (!(psta->state & _FW_LINKED)) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_err_link);
- 		DBG_871X("%s, psta(%pM)->state(0x%x) != _FW_LINKED\n", __func__, MAC_ARG(psta->hwaddr), psta->state);
- 		return _FAIL;
- 	}
- 
- 	/* TODO:_lock */
- 	if (update_attrib_sec_info(padapter, pattrib, psta) == _FAIL) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_upd_attrib_err_sec);
- 		res = _FAIL;
+-		DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt_unknown);
+ 		#ifdef DBG_RX_DECRYPTOR
+ 		DBG_871X("[%s] %d:prxstat->bdecrypted:%d,  prxattrib->encrypt:%d,  Setting psecuritypriv->hw_decrypted = %d\n",
+ 			__func__,
+@@ -1488,7 +1480,6 @@ sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
+ 	if (ver != 0) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("validate_recv_data_frame fail! (ver!= 0)\n"));
+ 		retval = _FAIL;
+-		DBG_COUNTER(adapter->rx_logs.core_rx_pre_ver_err);
  		goto exit;
  	}
-@@ -1892,7 +1875,6 @@ void rtw_free_xmitframe_queue(struct xmit_priv *pxmitpriv, struct __queue *pfram
  
- s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitframe)
- {
--	DBG_COUNTER(padapter->tx_logs.core_tx_enqueue);
- 	if (rtw_xmit_classifier(padapter, pxmitframe) == _FAIL) {
- 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
- 			 ("rtw_xmitframe_enqueue: drop xmit pkt for classifier fail\n"));
-@@ -1953,17 +1935,13 @@ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
- 	struct hw_xmit	*phwxmits =  padapter->xmitpriv.hwxmits;
- 	sint res = _SUCCESS;
+@@ -1515,39 +1506,29 @@ sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
  
--	DBG_COUNTER(padapter->tx_logs.core_tx_enqueue_class);
--
- 	psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
- 	if (pattrib->psta != psta) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_enqueue_class_err_sta);
- 		DBG_871X("%s, pattrib->psta(%p) != psta(%p)\n", __func__, pattrib->psta, psta);
- 		return _FAIL;
- 	}
- 
- 	if (!psta) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_enqueue_class_err_nosta);
- 		res = _FAIL;
- 		DBG_8192C("rtw_xmit_classifier: psta == NULL\n");
- 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("rtw_xmit_classifier: psta == NULL\n"));
-@@ -1971,7 +1949,6 @@ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
- 	}
- 
- 	if (!(psta->state & _FW_LINKED)) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_enqueue_class_err_fwlink);
- 		DBG_871X("%s, psta->state(0x%x) != _FW_LINKED\n", __func__, psta->state);
- 		return _FAIL;
- 	}
-@@ -2110,8 +2087,6 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
- 
- 	s32 res;
- 
--	DBG_COUNTER(padapter->tx_logs.core_tx);
--
- 	if (start == 0)
- 		start = jiffies;
- 
-@@ -2127,7 +2102,6 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
- 	if (!pxmitframe) {
- 		drop_cnt++;
- 		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("%s: no more pxmitframe\n", __func__));
--		DBG_COUNTER(padapter->tx_logs.core_tx_err_pxmitframe);
- 		return -1;
- 	}
- 
-@@ -2148,7 +2122,6 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
- 	spin_lock_bh(&pxmitpriv->lock);
- 	if (xmitframe_enqueue_for_sleeping_sta(padapter, pxmitframe) == true) {
- 		spin_unlock_bh(&pxmitpriv->lock);
--		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue);
- 		return 1;
- 	}
- 	spin_unlock_bh(&pxmitpriv->lock);
-@@ -2200,32 +2173,25 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
- 	sint bmcst = IS_MCAST(pattrib->ra);
- 	bool update_tim = false;
- 
--	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == false) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_fwstate);
-+	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == false)
- 		return ret;
--	}
- 	psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
- 	if (pattrib->psta != psta) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_sta);
- 		DBG_871X("%s, pattrib->psta(%p) != psta(%p)\n", __func__, pattrib->psta, psta);
- 		return false;
- 	}
- 
- 	if (!psta) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_nosta);
- 		DBG_871X("%s, psta ==NUL\n", __func__);
- 		return false;
- 	}
- 
- 	if (!(psta->state & _FW_LINKED)) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_link);
- 		DBG_871X("%s, psta->state(0x%x) != _FW_LINKED\n", __func__, psta->state);
- 		return false;
- 	}
- 
- 	if (pattrib->triggered == 1) {
--		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_trigger);
--
- 		if (bmcst && xmitframe_hiq_filter(pxmitframe))
- 			pattrib->qsel = 0x11;/* HIQ */
- 
-@@ -2256,8 +2222,6 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
- 				chk_bmc_sleepq_cmd(padapter);
- 
- 			ret = true;
--
--			DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_mcast);
+ 	switch (type) {
+ 	case WIFI_MGT_TYPE: /* mgnt */
+-		DBG_COUNTER(adapter->rx_logs.core_rx_pre_mgmt);
+ 		if (validate_80211w_mgmt(adapter, precv_frame) == _FAIL) {
+ 			retval = _FAIL;
+-			DBG_COUNTER(padapter->rx_logs.core_rx_pre_mgmt_err_80211w);
+ 			break;
  		}
  
- 		spin_unlock_bh(&psta->sleep_q.lock);
-@@ -2312,8 +2276,6 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
- 			}
- 
- 			ret = true;
+ 		retval = validate_recv_mgnt_frame(adapter, precv_frame);
+-		if (retval == _FAIL) {
++		if (retval == _FAIL)
+ 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("validate_recv_mgnt_frame fail\n"));
+-			DBG_COUNTER(adapter->rx_logs.core_rx_pre_mgmt_err);
+-		}
+ 		retval = _FAIL; /*  only data frame return _SUCCESS */
+ 		break;
+ 	case WIFI_CTRL_TYPE: /* ctrl */
+-		DBG_COUNTER(adapter->rx_logs.core_rx_pre_ctrl);
+ 		retval = validate_recv_ctrl_frame(adapter, precv_frame);
+-		if (retval == _FAIL) {
++		if (retval == _FAIL)
+ 			RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("validate_recv_ctrl_frame fail\n"));
+-			DBG_COUNTER(adapter->rx_logs.core_rx_pre_ctrl_err);
+-		}
+ 		retval = _FAIL; /*  only data frame return _SUCCESS */
+ 		break;
+ 	case WIFI_DATA_TYPE: /* data */
+-		DBG_COUNTER(adapter->rx_logs.core_rx_pre_data);
 -
--			DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_ucast);
- 		}
+ 		pattrib->qos = (subtype & BIT(7)) ? 1:0;
+ 		retval = validate_recv_data_frame(adapter, precv_frame);
+ 		if (retval == _FAIL) {
+ 			struct recv_priv *precvpriv = &adapter->recvpriv;
+ 			/* RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("validate_recv_data_frame fail\n")); */
+ 			precvpriv->rx_drop++;
+-			DBG_COUNTER(adapter->rx_logs.core_rx_pre_data_err);
+ 		} else if (retval == _SUCCESS) {
+ #ifdef DBG_RX_DUMP_EAP
+ 			u8 bDumpRxPkt;
+@@ -1561,11 +1542,9 @@ sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
+ 			if ((bDumpRxPkt == 4) && (eth_type == 0x888e))
+ 				dump_rx_packet(ptr);
+ #endif
+-		} else
+-			DBG_COUNTER(adapter->rx_logs.core_rx_pre_data_handled);
++		}
+ 		break;
+ 	default:
+-		DBG_COUNTER(adapter->rx_logs.core_rx_pre_unknown);
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("validate_recv_data_frame fail! type = 0x%x\n", type));
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME validate_recv_data_frame fail! type = 0x%x\n", type);
+@@ -2083,8 +2062,6 @@ int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reorder_ctr
+ 	struct dvobj_priv *psdpriv = padapter->dvobj;
+ 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
+ 
+-	DBG_COUNTER(padapter->rx_logs.core_rx_post_indicate_in_oder);
+-
+ 	/* DbgPrint("+recv_indicatepkts_in_order\n"); */
+ 
+ 	/* spin_lock_irqsave(&ppending_recvframe_queue->lock, irql); */
+@@ -2190,8 +2167,6 @@ int recv_indicatepkt_reorder(struct adapter *padapter, union recv_frame *prframe
+ 	struct dvobj_priv *psdpriv = padapter->dvobj;
+ 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
+ 
+-	DBG_COUNTER(padapter->rx_logs.core_rx_post_indicate_reoder);
+-
+ 	if (!pattrib->amsdu) {
+ 		/* s1. */
+ 		wlanhdr_to_ethhdr(prframe);
+@@ -2345,8 +2320,6 @@ int process_recv_indicatepkts(struct adapter *padapter, union recv_frame *prfram
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	struct ht_priv *phtpriv = &pmlmepriv->htpriv;
+ 
+-	DBG_COUNTER(padapter->rx_logs.core_rx_post_indicate);
+-
+ 	if (phtpriv->ht_option == true) { /* B/G/N Mode */
+ 		/* prframe->u.hdr.preorder_ctrl = &precvpriv->recvreorder_ctrl[pattrib->priority]; */
+ 
+@@ -2396,8 +2369,6 @@ static int recv_func_prehandle(struct adapter *padapter, union recv_frame *rfram
+ 	int ret = _SUCCESS;
+ 	struct __queue *pfree_recv_queue = &padapter->recvpriv.free_recv_queue;
+ 
+-	DBG_COUNTER(padapter->rx_logs.core_rx_pre);
+-
+ 	/* check the frame crtl field and decache */
+ 	ret = validate_recv_frame(padapter, rframe);
+ 	if (ret != _SUCCESS) {
+@@ -2417,8 +2388,6 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 	struct recv_priv *precvpriv = &padapter->recvpriv;
+ 	struct __queue *pfree_recv_queue = &padapter->recvpriv.free_recv_queue;
+ 
+-	DBG_COUNTER(padapter->rx_logs.core_rx_post);
+-
+ 	prframe = decryptor(padapter, prframe);
+ 	if (!prframe) {
+ 		RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("decryptor: drop pkt\n"));
+@@ -2426,7 +2395,6 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 		DBG_871X("DBG_RX_DROP_FRAME %s decryptor: drop pkt\n", __func__);
+ 		#endif
+ 		ret = _FAIL;
+-		DBG_COUNTER(padapter->rx_logs.core_rx_post_decrypt_err);
+ 		goto _recv_data_drop;
  	}
+ 
+@@ -2436,7 +2404,6 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 		#ifdef DBG_RX_DROP_FRAME
+ 		DBG_871X("DBG_RX_DROP_FRAME %s recvframe_chk_defrag: drop pkt\n", __func__);
+ 		#endif
+-		DBG_COUNTER(padapter->rx_logs.core_rx_post_defrag_err);
+ 		goto _recv_data_drop;
+ 	}
+ 
+@@ -2447,7 +2414,6 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 		DBG_871X("DBG_RX_DROP_FRAME %s portctrl: drop pkt\n", __func__);
+ 		#endif
+ 		ret = _FAIL;
+-		DBG_COUNTER(padapter->rx_logs.core_rx_post_portctrl_err);
+ 		goto _recv_data_drop;
+ 	}
+ 
+@@ -2460,7 +2426,6 @@ static int recv_func_posthandle(struct adapter *padapter, union recv_frame *prfr
+ 		DBG_871X("DBG_RX_DROP_FRAME %s process_recv_indicatepkts fail!\n", __func__);
+ 		#endif
+ 		rtw_free_recvframe(orig_prframe, pfree_recv_queue);/* free this recv_frame */
+-		DBG_COUNTER(padapter->rx_logs.core_rx_post_indicate_err);
+ 		goto _recv_data_drop;
+ 	}
+ 
+@@ -2486,7 +2451,6 @@ int recv_func(struct adapter *padapter, union recv_frame *rframe)
+ 
+ 		while ((pending_frame = rtw_alloc_recvframe(&padapter->recvpriv.uc_swdec_pending_queue))) {
+ 			cnt++;
+-			DBG_COUNTER(padapter->rx_logs.core_rx_dequeue);
+ 			recv_func_posthandle(padapter, pending_frame);
+ 		}
+ 
+@@ -2495,7 +2459,6 @@ int recv_func(struct adapter *padapter, union recv_frame *rframe)
+ 				FUNC_ADPT_ARG(padapter), cnt);
+ 	}
+ 
+-	DBG_COUNTER(padapter->rx_logs.core_rx);
+ 	ret = recv_func_prehandle(padapter, rframe);
+ 
+ 	if (ret == _SUCCESS) {
+@@ -2506,7 +2469,6 @@ int recv_func(struct adapter *padapter, union recv_frame *rframe)
+ 			(prxattrib->bdecrypted == 0 || psecuritypriv->sw_decrypt == true) &&
+ 			psecuritypriv->ndisauthtype == Ndis802_11AuthModeWPAPSK &&
+ 			!psecuritypriv->busetkipkey) {
+-			DBG_COUNTER(padapter->rx_logs.core_rx_enqueue);
+ 			rtw_enqueue_recvframe(rframe, &padapter->recvpriv.uc_swdec_pending_queue);
+ 			/* DBG_871X("%s: no key, enqueue uc_swdec_pending_queue\n", __func__); */
  
 -- 
 2.29.2
