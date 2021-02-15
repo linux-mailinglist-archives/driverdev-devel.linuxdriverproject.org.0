@@ -1,84 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A400131BA46
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 14:27:19 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ECAF31BB31
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 15:37:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EF24C86AC2;
-	Mon, 15 Feb 2021 13:27:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A460485EBF;
+	Mon, 15 Feb 2021 14:37:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8fSG1F1j7uNY; Mon, 15 Feb 2021 13:27:17 +0000 (UTC)
+	with ESMTP id T3sTK_E2QInH; Mon, 15 Feb 2021 14:37:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBA6C86A72;
-	Mon, 15 Feb 2021 13:27:15 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 83FF285660;
+	Mon, 15 Feb 2021 14:37:03 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 80F5A1BF3CB
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 13:27:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6BC6C1BF3BB
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 14:37:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6FC7F6E769
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 13:27:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 679CF600BB
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 14:37:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zwccdM4woiq7
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 13:27:12 +0000 (UTC)
+ with ESMTP id dmHvuHu62mX7 for <devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 14:37:00 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 989C36EE84; Mon, 15 Feb 2021 13:27:12 +0000 (UTC)
+ id 9223B6F4AA; Mon, 15 Feb 2021 14:37:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com
- [209.85.216.41])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4F8AB6E769
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 13:27:11 +0000 (UTC)
-Received: by mail-pj1-f41.google.com with SMTP id q72so3737135pjq.2
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 05:27:11 -0800 (PST)
+Received: from mail-wr1-f41.google.com (mail-wr1-f41.google.com
+ [209.85.221.41])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 322E5600BB
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 14:36:59 +0000 (UTC)
+Received: by mail-wr1-f41.google.com with SMTP id r21so9147156wrr.9
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 06:36:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=vK3VNGNMpgrZLER7s3R4g3bgjix4vq8bvkDCeY6NaQM=;
- b=L7WSqA5drB4T+sF6bGyd+6pvevP36wVLsHYxlECddsD/vFolICM64wlxK/8Kv4aFt6
- mO0MLAo7HBty5xh02B/ROt7u5Hw7OHpsT6Sm9nU6D7sP6iLiCRuTBQw1HnZxn1LMx4ha
- vpxz9YkcIMdQA1WMWNArccfcT07kFx4/nlREAp5Er3Ilm5YkV2dULH5jJllPi8geYTC5
- /hpPE5qN55/Hod6yDlby7+auLp82GEsxk45GMCqvgBrpyB+zi2Apxe3DLwvgQCbmfGSk
- MsJpRw4+WFQlnLvBUwnx8FT5QicOBAlTiOqCSjiSh4MEP/I9hKl+G/l3Vhg3ORZKgUEZ
- fjdA==
+ bh=Do2tQb63bcwLymaHKmZud23cc7ctdAohkzhpdwoDJ3M=;
+ b=TXZxOMoO6m73IpOCtYlqYKg1OilB6K/peHgJVxGleqgbHnI42xxKv59/DeT+8Oy0b6
+ v+JDtsNBUfj1TErC15PmPLuLNd851IZrSBAMfWOHT6nE9lLJ6TudaRAt4eCVVEPKdjMO
+ fpRBjigw+cGCTuVuysYHIR/lgN5wa5Off7KrEwvm5bCgxRmVdeEkwv9Vi0txsX1+tOlc
+ WKUplZGX2OrsO1oTszq1iJR4sDGJfK8IzrMRIpMgmfVVM1FrRtyQTBOieso1Y5aKArUr
+ ov0/wefloQJ0VZ6haNad/2aK3fXNQoFl2jG2dDIDpTralSZRptf5DxC2/kkdcbQxgXSX
+ hqqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=vK3VNGNMpgrZLER7s3R4g3bgjix4vq8bvkDCeY6NaQM=;
- b=tfZit/PTxQKoe+x4pLChvctOnl8zj1i9LdR9lrtc2BrOZS9z7naxp4V2MiW/ztH4a1
- 3Exy6Z0ZcxvkKW8YVstAF0SSNSZc5TofeXhJ6ob/Lg1cNDoUjlwHK0X2x2hxrRRbGBFh
- FSAQW2VdhQTgsn+eh0Oz1kPOWI9GrvsA2nxtTad9ZVsyFaJEBpPoaI9mVwdGTcFnHzyI
- cpIwgR2sUtRPbR+osEiTMVaCUPWeZupc7mVOTiV//DX4WD5y32wDEor0bQWrQOlCut/3
- 2UXCRoT3x/kCP5534Xs+IJNeXaL/hOo5fh82slVnInu2Nwa10IeHlsi7hyeN2JDiIuj0
- S/dA==
-X-Gm-Message-State: AOAM533iXLPTpROQmcMGPTfF4qN5PJUr2G76OCbfY0ktDNJzbguJo9e0
- iTJWvuwXDV+PLoaPiXdy4VMqRYOVN/SB
-X-Google-Smtp-Source: ABdhPJzQFswz2W7SQscKsEtm0j1ZD6sZmLxbXL6ApfInlIWIbjQ9fZmQxDF2Xsl/pfZHBd4qbpmo0w==
-X-Received: by 2002:a17:90a:1542:: with SMTP id
- y2mr16594054pja.123.1613395630583; 
- Mon, 15 Feb 2021 05:27:10 -0800 (PST)
-Received: from localhost.localdomain ([2405:201:7000:69ad:718a:7103:c6a3:4d43])
- by smtp.gmail.com with ESMTPSA id x8sm4280582pjf.55.2021.02.15.05.27.07
+ bh=Do2tQb63bcwLymaHKmZud23cc7ctdAohkzhpdwoDJ3M=;
+ b=SeEOLw6DQNzN7qS+jnYKyOqw4yo3fmNgHazowxpLcqO3wbDSqOG9+bd0BLvadVi0Gf
+ xUwfeJdTLL+wPG04mK+quK1K9zJqekTIorMqiEQq4vGWA1eBLSSz7JEZFU19QvhRFOR8
+ 7+p9rJRsVJyjPX0MNvyw6vr1P6fl+fr+z9rYuO/SwPospbQ9/3eY/Yy7/GH5ARNSEZfY
+ 7EeMe8agh0w/EpoqfKtC/JZpoAzN7JuUVoZIfb8DhOaSW3gygKCz+fc9/2vYQSvVoWMx
+ 7TSZ+1azczFwISbRBupjBuFUmt5FAdOE8YvFo/dSvHM/vCXt+fwGM9g8WrNmwCdBRF7a
+ liOw==
+X-Gm-Message-State: AOAM532Yi3McIzaA4yd4pkiIfZDjY8lU5T5FyhmDigJ8yz6A9C1uQHyd
+ SvH1QsrSk7ovzBbcUI6pAIU=
+X-Google-Smtp-Source: ABdhPJyVrllvu0jnkSV2PuUg7VLVVBhu4Oxn4Yc5Gg9oPawn4jnCNuYSHdGS9M6Pp6GuOoFnsMt1QA==
+X-Received: by 2002:a5d:444a:: with SMTP id x10mr12782905wrr.409.1613399817374; 
+ Mon, 15 Feb 2021 06:36:57 -0800 (PST)
+Received: from alaa ([197.57.74.212])
+ by smtp.gmail.com with ESMTPSA id o13sm9274347wro.15.2021.02.15.06.36.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 05:27:10 -0800 (PST)
-From: shivang upadhyay <oroz3x@gmail.com>
-To: gregkh@linuxfoundation.org,
-	driverdev-devel@linuxdriverproject.org
-Subject: [PATCH v4] ks7010: enclose non-trivial defines in parentheses
-Date: Mon, 15 Feb 2021 18:57:01 +0530
-Message-Id: <20210215132701.42748-1-oroz3x@gmail.com>
-X-Mailer: git-send-email 2.27.0
+ Mon, 15 Feb 2021 06:36:56 -0800 (PST)
+From: Alaa Emad <alaaemadhossney.ae@gmail.com>
+To: mchehab+huawei@kernel.org,
+	gregkh@linuxfoundation.org
+Subject: [PATCH resend] staging: hikey9xx: hi6421-spmi-pmic: fixing 
+Date: Mon, 15 Feb 2021 16:36:52 +0200
+Message-Id: <20210215143652.14122-1-alaaemadhossney.ae@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,65 +86,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: shivang upadhyay <oroz3x@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Alaa Emad <alaaemadhossney.ae@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+This patch fix the following issues in hi6421-spmi-pmic.c file:
 
-Checkpatch complains that parentheses are missing:
-"Macros with complex values should be enclosed in parentheses".
-Fixed that.
+drivers/staging/hikey9xx/hi6421-spmi-pmic.c:51: WARNING: please, no space before tabs
+drivers/staging/hikey9xx/hi6421-spmi-pmic.c:52: WARNING: please, no space before tabs
+drivers/staging/hikey9xx/hi6421-spmi-pmic.c:53: WARNING: please, no space before tabs
+drivers/staging/hikey9xx/hi6421-spmi-pmic.c:69: WARNING: please, no space before tabs
+drivers/staging/hikey9xx/hi6421-spmi-pmic.c:180: CHECK: Alignment should match open parenthesis
+drivers/staging/hikey9xx/hi6421-spmi-pmic.c:238: CHECK: Alignment should match open parenthesis
 
-Signed-off-by: shivang upadhyay <oroz3x@gmail.com>
+
+Signed-off-by: Alaa Emad <alaaemadhossney.ae@gmail.com>
+
 ---
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Previous versions of the patch were rejected due to lack of
-discription in patch emails.
-
- drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
-index 39138191a556..c62a494ed6bb 100644
---- a/drivers/staging/ks7010/ks_hostif.h
-+++ b/drivers/staging/ks7010/ks_hostif.h
-@@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
- #define TX_RATE_FIXED		5
+diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+index 9c5e113e1a81..626140cb96f2 100644
+--- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
++++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+@@ -48,9 +48,9 @@ enum hi6421_spmi_pmic_irq_list {
+ /*
+  * The IRQs are mapped as:
+  *
+- * 	======================  =============   ============	=====
+- *	IRQ			MASK REGISTER 	IRQ REGISTER	BIT
+- * 	======================  =============   ============	=====
++ *	======================  =============   ============	=====
++ *	IRQ			MASK REGISTER	IRQ REGISTER	BIT
++ *	======================  =============   ============	=====
+  *	OTMP			0x0202		0x212		bit 0
+  *	VBUS_CONNECT		0x0202		0x212		bit 1
+  *	VBUS_DISCONNECT		0x0202		0x212		bit 2
+@@ -66,7 +66,7 @@ enum hi6421_spmi_pmic_irq_list {
+  *	SIM0_HPD_F		0x0203		0x213		bit 3
+  *	SIM1_HPD_R		0x0203		0x213		bit 4
+  *	SIM1_HPD_F		0x0203		0x213		bit 5
+- * 	======================  =============   ============	=====
++ *	======================  =============   ============	=====
+  */
+ #define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
+ #define SOC_PMIC_IRQ0_ADDR		0x0212
+@@ -177,7 +177,7 @@ static void hi6421_spmi_pmic_irq_init(struct hi6421_spmi_pmic *ddata)
  
- /* 11b rate */
--#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
--#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
--#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
--#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
-+#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
-+#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
-+#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
-+#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
+ 	for (i = 0; i < HISI_IRQ_ARRAY; i++)
+ 		regmap_write(ddata->regmap, SOC_PMIC_IRQ_MASK_0_ADDR + i,
+-					HISI_MASK);
++			     HISI_MASK);
  
- /* 11g rate */
--#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
--#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
--#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
--#define TX_RATE_9M	(u8)(90 / 5)
--#define TX_RATE_18M	(u8)(180 / 5)
--#define TX_RATE_36M	(u8)(360 / 5)
--#define TX_RATE_48M	(u8)(480 / 5)
--#define TX_RATE_54M	(u8)(540 / 5)
-+#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
-+#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
-+#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
-+#define TX_RATE_9M	((u8)(90 / 5))
-+#define TX_RATE_18M	((u8)(180 / 5))
-+#define TX_RATE_36M	((u8)(360 / 5))
-+#define TX_RATE_48M	((u8)(480 / 5))
-+#define TX_RATE_54M	((u8)(540 / 5))
+ 	for (i = 0; i < HISI_IRQ_ARRAY; i++) {
+ 		regmap_read(ddata->regmap, SOC_PMIC_IRQ0_ADDR + i, &pending);
+@@ -235,7 +235,7 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
+ 		return -ENOMEM;
  
- static inline bool is_11b_rate(u8 rate)
- {
+ 	ddata->domain = irq_domain_add_simple(np, HISI_IRQ_NUM, 0,
+-					     &hi6421_spmi_domain_ops, ddata);
++					      &hi6421_spmi_domain_ops, ddata);
+ 	if (!ddata->domain) {
+ 		dev_err(dev, "Failed to create IRQ domain\n");
+ 		return -ENODEV;
 -- 
-2.27.0
+2.25.1
 
 _______________________________________________
 devel mailing list
