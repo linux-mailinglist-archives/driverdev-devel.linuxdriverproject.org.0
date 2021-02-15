@@ -1,43 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4630131B427
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 04:02:39 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 01CBC8709F;
-	Mon, 15 Feb 2021 03:02:37 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cfp+pZfoSZAw; Mon, 15 Feb 2021 03:02:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C6BF987078;
-	Mon, 15 Feb 2021 03:02:35 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F00E51BF3B9
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:02:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB11131B429
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 04:02:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DC9866F4D5
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:02:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B34626F5B5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 03:02:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ir67Pq95w6aV for <devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 03:02:23 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2FrDrNSwEUgU for <lists+driverdev-devel@lfdr.de>;
+	Mon, 15 Feb 2021 03:02:45 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 3E5036F512; Mon, 15 Feb 2021 03:02:23 +0000 (UTC)
-Received: from localhost by smtp3.osuosl.org with SpamAssassin (version 3.4.2);
- Mon, 15 Feb 2021 03:02:23 +0000
-From: Sofia Gabriel <sofiagabriel4221@gmail.com>
-To: undisclosed-recipients:;
-Subject: KONTAKTIEREN SIE DEN BANKDIREKTOR.
-Date: Mon, 15 Feb 2021 03:02:19 +0000
-Message-Id: <CAEDCS5qcwN8-Yg+FpHXEazYAPhK8A1vQyEAn-HUhH=XAvD-_Mw@mail.gmail.com>
+	id DEC1B6F5C2; Mon, 15 Feb 2021 03:02:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5AF76F4B7;
+	Mon, 15 Feb 2021 03:02:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 71FD81BF3B9
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:02:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6E47685CA3
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:02:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XYVEBa6PaP1Y for <devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 03:02:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com
+ [209.85.208.42])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A83CA85C7A
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:02:21 +0000 (UTC)
+Received: by mail-ed1-f42.google.com with SMTP id c6so6472219ede.0
+ for <devel@linuxdriverproject.org>; Sun, 14 Feb 2021 19:02:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=Zu93Vh3+vxZT7d/SIhdLH8IwRM+fh5vsSXAnCjPrQCI=;
+ b=YrfhGPNKqH4Koy+1L5joE07ebOl9tMcSDwkjvq/KbPXPqETXU3aiu7LhzRYJQwVicT
+ mhWUwo0ysDryRAl1vsRUCQeTGYRczI81aoA9PcZFb0x4czy9ZNWgXcTa4bK2pHlFHbjP
+ rprlRdEtmP0O7AMQmtDgnYmgNSgI8hjonN+euNt3cs9UYha7+wF1BSZbGsc8TjgfHqPv
+ +iFc2HaISdvdSFO4Dmhd2HhCNlc6JwvIclJqHX4QJ3Qtp4MQA0+DMAIH7rnDdjqvZuEg
+ zHixjw8kbDrtZfgM6WS9/UIK3ndzkDY3ieaaWlHab1FjS/nkJesjfwl0V7HWW3tOxsy0
+ /gxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=Zu93Vh3+vxZT7d/SIhdLH8IwRM+fh5vsSXAnCjPrQCI=;
+ b=NklA7UC5m2SaEokQGudoYU7pZl5lgWLHVCbpCXqSJW804gecor/aImYgnwihc2+zY8
+ JV3umsb5p/RH9q745Epmud6A8sNNKns2kwC38U8bz84m+Jq7SMpAjflGg7Z9ZmpQcajz
+ D31VZGyAy9By3aIyWuXj7JMOnSULmJULi0WtV16AIfROKb7xOmhmwoWSslWu0BQrmH1o
+ fsP6PwshWXPxOAa8Ry/dT8E56wsy1L9kAJfA0CuL5abCQ2eOgK8ZzhrLMWw/IpqUG87f
+ RFZamH0PU+nHZq9xA2v0Cg6tyoeP5/9Q200TZZlmHgl0AW+uRotQSzgV+yl8wZLaZLOM
+ 4pjA==
+X-Gm-Message-State: AOAM530+uc8p4uvjCtuDYAGjh0GB0I8kWpIwsp69HADVzlZWktyLeWkK
+ FehllGVHQjckNkGADf5Mdmg3LB1pehVuucixJPY=
+X-Google-Smtp-Source: ABdhPJz5+2IB0sgvHXqdouzUfCuDQug8PMuS5wBe0rF0LMLcy1VaDCXDYD8h68OGeF1bEVD4qn7VjOc8gtRz64Oalwg=
+X-Received: by 2002:a05:6402:202a:: with SMTP id
+ ay10mr13847676edb.93.1613358139699; 
+ Sun, 14 Feb 2021 19:02:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="----------=_6029E43F.B83CD9E9"
+Received: by 2002:a54:210c:0:0:0:0:0 with HTTP; Sun, 14 Feb 2021 19:02:19
+ -0800 (PST)
+From: Sofia Gabriel <sofiagabriel4221@gmail.com>
+Date: Mon, 15 Feb 2021 03:02:19 +0000
+Message-ID: <CAEDCS5qcwN8-Yg+FpHXEazYAPhK8A1vQyEAn-HUhH=XAvD-_Mw@mail.gmail.com>
+Subject: KONTAKTIEREN SIE DEN BANKDIREKTOR.
+To: undisclosed-recipients:;
+Content-Type: multipart/mixed; boundary="000000000000d00c9005bb573681"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,115 +84,9 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: lindawilliam2026@gmail.com
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-
-This is a multi-part message in MIME format.
-
-------------=_6029E43F.B83CD9E9
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-
-Spam detection software, running on the system "smtp3.osuosl.org",
-has identified this incoming email as possible spam.  The original
-message has been attached to this so you can view it or label
-similar future email.  If you have any questions, see
-the administrator of that system for details.
-
-Content preview:  
-
-Content analysis details:   (5.6 points, 5.0 required)
-
- pts rule name              description
----- ---------------------- --------------------------------------------------
- 0.8 BAYES_50               BODY: Bayes spam probability is 40 to 60%
-                            [score: 0.4814]
--0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
-                             no trust
-                            [209.85.208.52 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
-                            provider (sofiagabriel4221[at]gmail.com)
- 0.5 SUBJ_ALL_CAPS          Subject is all capitals
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
-                            in digit (sofiagabriel4221[at]gmail.com)
--0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in
-                            digit (lindawilliam2026[at]gmail.com)
--0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
-                            [209.85.208.52 listed in wl.mailspike.net]
--0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
-                            envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
-                            valid
--0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
-                            author's domain
--0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
- 0.0 TVD_SPACE_RATIO        No description available.
- 0.0 T_HK_SPAMMY_FILENAME   No description available.
- 3.0 UNDISC_FREEM           Undisclosed recipients + freemail reply-to
- 1.0 FREEMAIL_REPLYTO       Reply-To/From or Reply-To/body contain
-                            different freemails
- 0.0 T_FREEMAIL_DOC_PDF_BCC MS document or PDF attachment, from
-                            freemail, all recipients hidden
- 0.0 T_FREEMAIL_DOC_PDF     MS document or PDF attachment, from freemail
-
-The original message was not completely plain text, and may be unsafe to
-open with some email clients; in particular, it may contain a virus,
-or confirm that your address can receive spam.  If you wish to view
-it, it may be safer to save it to a file and open it with an editor.
-
-
-------------=_6029E43F.B83CD9E9
-Content-Type: message/rfc822; x-spam-type=original
-Content-Description: original message before SpamAssassin
-Content-Disposition: attachment
-Content-Transfer-Encoding: 8bit
-
-Return-Path: <sofiagabriel4221@gmail.com>
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
-	by smtp3.osuosl.org (Postfix) with ESMTPS id DC0766F513
-	for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 03:02:21 +0000 (UTC)
-Received: by mail-ed1-f52.google.com with SMTP id s11so6418241edd.5
-        for <devel@driverdev.osuosl.org>; Sun, 14 Feb 2021 19:02:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:reply-to:from:date:message-id:subject:to;
-        bh=Zu93Vh3+vxZT7d/SIhdLH8IwRM+fh5vsSXAnCjPrQCI=;
-        b=YrfhGPNKqH4Koy+1L5joE07ebOl9tMcSDwkjvq/KbPXPqETXU3aiu7LhzRYJQwVicT
-         mhWUwo0ysDryRAl1vsRUCQeTGYRczI81aoA9PcZFb0x4czy9ZNWgXcTa4bK2pHlFHbjP
-         rprlRdEtmP0O7AMQmtDgnYmgNSgI8hjonN+euNt3cs9UYha7+wF1BSZbGsc8TjgfHqPv
-         +iFc2HaISdvdSFO4Dmhd2HhCNlc6JwvIclJqHX4QJ3Qtp4MQA0+DMAIH7rnDdjqvZuEg
-         zHixjw8kbDrtZfgM6WS9/UIK3ndzkDY3ieaaWlHab1FjS/nkJesjfwl0V7HWW3tOxsy0
-         /gxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:reply-to:from:date:message-id
-         :subject:to;
-        bh=Zu93Vh3+vxZT7d/SIhdLH8IwRM+fh5vsSXAnCjPrQCI=;
-        b=ix2ti+2xjFribEeQbniGRrzmOytbehtr6KPkceuY7pOpqOzzBAqDI59L00pz6WoZMz
-         +Z0pXuVhOe0MzbXcb/KAvnla/dmoYWzbDWWb+TqsbXgM3nNGJQK9Z6SU6GRXu6foJqch
-         +v80oogJHeHId2TPQWZKTOi/Nkc7FY9Dpg+Ddir8jAcsC+DiWYz90RYfgKgtAXZENlQF
-         SKw6doHbCNRE2BdQXEKWGhibErAXIY0lFZTMfBMCkFBzZ6hbfAz1a2+n9Msvr1+tP2x2
-         gU3Q72OlmNZYBG38y1XZQZQ/W0G2ytJbOW1+sDoGiaqPsmcPlF2Ku+7Wy9gARfEMCS+y
-         Lbsg==
-X-Gm-Message-State: AOAM533Y3RDU3carVzyH3jAkGrWdniEGQA8Mwgm2FvfYupoBCh8d5EXg
-	mC34VzTzQoG1Y4fx8YNqqQPSme5/yEPkEHKas30=
-X-Google-Smtp-Source: ABdhPJz5+2IB0sgvHXqdouzUfCuDQug8PMuS5wBe0rF0LMLcy1VaDCXDYD8h68OGeF1bEVD4qn7VjOc8gtRz64Oalwg=
-X-Received: by 2002:a05:6402:202a:: with SMTP id ay10mr13847676edb.93.1613358139699;
- Sun, 14 Feb 2021 19:02:19 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a54:210c:0:0:0:0:0 with HTTP; Sun, 14 Feb 2021 19:02:19
- -0800 (PST)
-Reply-To: lindawilliam2026@gmail.com
-From: Sofia Gabriel <sofiagabriel4221@gmail.com>
-Date: Mon, 15 Feb 2021 03:02:19 +0000
-Message-ID: <CAEDCS5qcwN8-Yg+FpHXEazYAPhK8A1vQyEAn-HUhH=XAvD-_Mw@mail.gmail.com>
-Subject: KONTAKTIEREN SIE DEN BANKDIREKTOR.
-To: undisclosed-recipients:;
-Content-Type: multipart/mixed; boundary="000000000000d00c9005bb573681"
 
 --000000000000d00c9005bb573681
 Content-Type: text/plain; charset="UTF-8"
@@ -476,9 +404,7 @@ LQAUAAYACAAAACEATiONhTsHAABtOgAADwAAAAAAAAAAAAAAAACqMwAAd29yZC9zdHlsZXMueG1s
 UEsBAi0AFAAGAAgAAAAhAKBUmy7rAQAArAUAABIAAAAAAAAAAAAAAAAAEjsAAHdvcmQvZm9udFRh
 YmxlLnhtbFBLAQItABQABgAIAAAAIQBp+YP33gEAANoDAAAQAAAAAAAAAAAAAAAAAC09AABkb2NQ
 cm9wcy9hcHAueG1sUEsFBgAAAAAMAAwACQMAAEFAAAAAAA==
---000000000000d00c9005bb573681--
-
-------------=_6029E43F.B83CD9E9
+--000000000000d00c9005bb573681
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -489,5 +415,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------------=_6029E43F.B83CD9E9--
-
+--000000000000d00c9005bb573681--
