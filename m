@@ -1,59 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B98B031BA37
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 14:21:07 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D652D31B9EC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 14:03:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 107D486F9C;
-	Mon, 15 Feb 2021 13:21:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 56B458574A;
+	Mon, 15 Feb 2021 13:03:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8h1muv8Bu62o; Mon, 15 Feb 2021 13:21:05 +0000 (UTC)
+	with ESMTP id m7IGcYWrm2mA; Mon, 15 Feb 2021 13:03:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 385C1859ED;
-	Mon, 15 Feb 2021 13:21:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A1CB185784;
+	Mon, 15 Feb 2021 13:03:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 556F71BF27C
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 13:21:03 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DD22E1BF962
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 13:03:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5202A8687B
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 13:21:03 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C803E6F508
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 13:03:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8XmM93o132PG for <devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 13:21:02 +0000 (UTC)
-X-Greylist: delayed 00:17:39 by SQLgrey-1.7.6
-Received: from m12-12.163.com (m12-12.163.com [220.181.12.12])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3C2D386870
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 13:21:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id; bh=jn5wFcSnmHdT53x+ii
- MLKfUla40lhRJCtIiyrfo//Ws=; b=KDqFfmZAXyjBHk/duvm36y+5BNTvSf1mLX
- m9Nt9b9wtWaVdtd6oHf1iM0ZFmdY3ekqBeY79Qmi1/99Nbd068aKoVKJ3ELcMcKx
- L+ZNnyczg3stPmguqEML1ltvhJPW0FVMbDUUbFDJycgils9/ex0Sw7+PXL11miEI
- ud+A35qEs=
-Received: from localhost.localdomain (unknown [125.70.196.55])
- by smtp8 (Coremail) with SMTP id DMCowAAXWOMOcSpgGXoLQw--.51584S2;
- Mon, 15 Feb 2021 21:03:14 +0800 (CST)
-From: Chen Lin <chen45464546@163.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: Remove unused function pointer typedef
- wi_act_func
-Date: Mon, 15 Feb 2021 21:02:54 +0800
-Message-Id: <1613394174-3826-1-git-send-email-chen45464546@163.com>
-X-Mailer: git-send-email 1.7.9.5
-X-CM-TRANSID: DMCowAAXWOMOcSpgGXoLQw--.51584S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Xw1xuF4rXF4DXF1xXry5Arb_yoWxAFc_C3
- yftrs7Gry8AF1Syw47trZ5X3y0gF1xXw4vq3Z0vrZ8Zan09FW5C34qqr17CF45W397KF93
- Ca1vvrZakry8JjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUn5GYPUUUUU==
-X-Originating-IP: [125.70.196.55]
-X-CM-SenderInfo: hfkh0kqvuwkkiuw6il2tof0z/1tbiyhI6nlQHLJEUfgAAs4
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IcMHAp5dss3f for <devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 13:03:48 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id EF02A6F503; Mon, 15 Feb 2021 13:03:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9F0716F513
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 13:03:46 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11FCpV8d070029;
+ Mon, 15 Feb 2021 13:03:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=a7O2AzcgdmNTLSB0e5P7HJf4199xphcSBLjlzcGk4lQ=;
+ b=mqp5i/e8p+nbIW4JH+GQUQ2yH1WFEeaRxh6cnN1M9432Hpqak2gEYRvRQQGUeAbLslw1
+ h22l3r95hm44iR0dwEXnL53cWOXFKPIGB9SPD6jE5Gxzky9H5yE3n2Psptn1O7Ml6BBq
+ lj3JOmNS1qCWPGuNhqMO8cLnEORSJguUP5qNHAwBhS9Io8/fYPU61SmXgReNU3Zs8Obg
+ bc/3GsRDozIAz6OaBdTQ5QmTPTMxeYM9FX4NvkAr+Ng0NsbYsXx80TG6sQzjfDo7LrBK
+ bwZq7wEw9hhJDsK2k/pABBDAChwEEoBOcAt7CU+iJDRSjPKnMyz5qg2x4zlIfkAeiDq8 eg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 36p49b44yx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 15 Feb 2021 13:03:45 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11FCkIlQ042787;
+ Mon, 15 Feb 2021 13:03:44 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 36prbm0yx5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 15 Feb 2021 13:03:43 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11FD3fEs030201;
+ Mon, 15 Feb 2021 13:03:42 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 15 Feb 2021 05:03:40 -0800
+Date: Mon, 15 Feb 2021 16:03:34 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: William Durand <will+git@drnd.me>
+Subject: Re: [PATCH] staging: rtl8192e: fix typo in a function name
+Message-ID: <20210215130334.GM2087@kadam>
+References: <20210213092014.29466-1-will+git@drnd.me>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210213092014.29466-1-will+git@drnd.me>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9895
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102150105
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9895
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ priorityscore=1501
+ lowpriorityscore=0 bulkscore=0 impostorscore=0 mlxlogscore=999
+ adultscore=0 malwarescore=0 phishscore=0 clxscore=1011 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2102150105
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,39 +100,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Chen Lin <chen.lin5@zte.com.cn>,
- foxhlchen@gmail.com, linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Chen Lin <chen.lin5@zte.com.cn>
+On Sat, Feb 13, 2021 at 09:20:14AM +0000, William Durand wrote:
+> Other function names use the verb 'query' so this function should
+> probably use it too and that's what this patch is about. I didn't
+> find any other occurrence and the code compiles.
+> 
 
-Remove the 'wi_act_func' typedef as it is not used.
+It's really just assumed that the code still compiles afterwards.
+Sometimes, it's hard for me to right commit messages confidently because
+I don't know if static checker bugs affect real life.  But in this case
+I really think the commit message could be written more confidently.
 
-Signed-off-by: Chen Lin <chen.lin5@zte.com.cn>
----
- drivers/staging/rtl8723bs/include/rtw_mp.h |    2 --
- 1 file changed, 2 deletions(-)
+Please write it like this:
+"There is a typo here where it says "qurey" but "query" was intended."
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mp.h b/drivers/staging/rtl8723bs/include/rtw_mp.h
-index ab7cd51..2ea7100 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mp.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mp.h
-@@ -31,8 +31,6 @@ struct mp_wiparam {
- 	u32 io_value;
- };
- 
--typedef void(*wi_act_func)(void *padapter);
--
- struct mp_tx {
- 	u8 stop;
- 	u32 count, sended;
--- 
-1.7.9.5
-
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
