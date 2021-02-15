@@ -1,93 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0861C31BA45
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 14:26:26 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5DEDE8703D;
-	Mon, 15 Feb 2021 13:26:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OelTwyn3gp8i; Mon, 15 Feb 2021 13:26:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D5CCC86FF1;
-	Mon, 15 Feb 2021 13:26:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 583931BF3CB
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 13:26:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A400131BA46
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 14:27:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 54C1F86A48
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 13:26:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EF24C86AC2;
+	Mon, 15 Feb 2021 13:27:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id patSeAPcNQlp for <devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 13:26:20 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B56D486A35
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 13:26:20 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11FDKmwd078977;
- Mon, 15 Feb 2021 13:26:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=kC3ddnFu7KnCeXK7Jaz9eWQ6Ye55HYcSZKJgSfoX+fs=;
- b=DLdDKT5PN9lNzsAfbYyaCmtyt5MC5Tux/bC4jwCvdjJG1XnFxBpMf3srXOC1vlKlxPep
- JTBdjiHbScMQcaGp7pnt5e2F4U0Q832wgj+lB7+kxWRY3aAVQl+2Xi1VJtVlEfsGfCGz
- R23XSUbg74MTGmTJ7MvB2f8C5xmxVwgbG8pmejTBod3vxmRyrGHzukMR9su7X4W8JYvP
- 09n2Y3l1f7wIZpjw5mmmpmS2xL+lH2mAnQvHiWJv+F4bop86k9zcHriq7WXNK+ImxBX/
- 0RK75vHUd4lA0V1cHJZjWK+K+2B2m7Physq2DGW8fLhrVsl9jdK3J65V4HWSbTNwIGha 7A== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 36p7dnbyp4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 Feb 2021 13:26:18 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11FDK3QN149398;
- Mon, 15 Feb 2021 13:26:16 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 36prnwsff8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 Feb 2021 13:26:16 +0000
-Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11FDQDsD005133;
- Mon, 15 Feb 2021 13:26:13 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 15 Feb 2021 05:26:12 -0800
-Date: Mon, 15 Feb 2021 16:26:04 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Michal Hocko <mhocko@suse.com>
-Subject: Re: [PATCH] staging:wlan-ng: use memdup_user instead of
- kmalloc/copy_from_user
-Message-ID: <20210215132604.GO2087@kadam>
-References: <20210213120527.451531-1-insafonov@gmail.com>
- <YCo0aAMajx0AG7JM@dhcp22.suse.cz>
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8fSG1F1j7uNY; Mon, 15 Feb 2021 13:27:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id EBA6C86A72;
+	Mon, 15 Feb 2021 13:27:15 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 80F5A1BF3CB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 13:27:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6FC7F6E769
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 13:27:13 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zwccdM4woiq7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 13:27:12 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 989C36EE84; Mon, 15 Feb 2021 13:27:12 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com
+ [209.85.216.41])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4F8AB6E769
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 13:27:11 +0000 (UTC)
+Received: by mail-pj1-f41.google.com with SMTP id q72so3737135pjq.2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 05:27:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vK3VNGNMpgrZLER7s3R4g3bgjix4vq8bvkDCeY6NaQM=;
+ b=L7WSqA5drB4T+sF6bGyd+6pvevP36wVLsHYxlECddsD/vFolICM64wlxK/8Kv4aFt6
+ mO0MLAo7HBty5xh02B/ROt7u5Hw7OHpsT6Sm9nU6D7sP6iLiCRuTBQw1HnZxn1LMx4ha
+ vpxz9YkcIMdQA1WMWNArccfcT07kFx4/nlREAp5Er3Ilm5YkV2dULH5jJllPi8geYTC5
+ /hpPE5qN55/Hod6yDlby7+auLp82GEsxk45GMCqvgBrpyB+zi2Apxe3DLwvgQCbmfGSk
+ MsJpRw4+WFQlnLvBUwnx8FT5QicOBAlTiOqCSjiSh4MEP/I9hKl+G/l3Vhg3ORZKgUEZ
+ fjdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vK3VNGNMpgrZLER7s3R4g3bgjix4vq8bvkDCeY6NaQM=;
+ b=tfZit/PTxQKoe+x4pLChvctOnl8zj1i9LdR9lrtc2BrOZS9z7naxp4V2MiW/ztH4a1
+ 3Exy6Z0ZcxvkKW8YVstAF0SSNSZc5TofeXhJ6ob/Lg1cNDoUjlwHK0X2x2hxrRRbGBFh
+ FSAQW2VdhQTgsn+eh0Oz1kPOWI9GrvsA2nxtTad9ZVsyFaJEBpPoaI9mVwdGTcFnHzyI
+ cpIwgR2sUtRPbR+osEiTMVaCUPWeZupc7mVOTiV//DX4WD5y32wDEor0bQWrQOlCut/3
+ 2UXCRoT3x/kCP5534Xs+IJNeXaL/hOo5fh82slVnInu2Nwa10IeHlsi7hyeN2JDiIuj0
+ S/dA==
+X-Gm-Message-State: AOAM533iXLPTpROQmcMGPTfF4qN5PJUr2G76OCbfY0ktDNJzbguJo9e0
+ iTJWvuwXDV+PLoaPiXdy4VMqRYOVN/SB
+X-Google-Smtp-Source: ABdhPJzQFswz2W7SQscKsEtm0j1ZD6sZmLxbXL6ApfInlIWIbjQ9fZmQxDF2Xsl/pfZHBd4qbpmo0w==
+X-Received: by 2002:a17:90a:1542:: with SMTP id
+ y2mr16594054pja.123.1613395630583; 
+ Mon, 15 Feb 2021 05:27:10 -0800 (PST)
+Received: from localhost.localdomain ([2405:201:7000:69ad:718a:7103:c6a3:4d43])
+ by smtp.gmail.com with ESMTPSA id x8sm4280582pjf.55.2021.02.15.05.27.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Feb 2021 05:27:10 -0800 (PST)
+From: shivang upadhyay <oroz3x@gmail.com>
+To: gregkh@linuxfoundation.org,
+	driverdev-devel@linuxdriverproject.org
+Subject: [PATCH v4] ks7010: enclose non-trivial defines in parentheses
+Date: Mon, 15 Feb 2021 18:57:01 +0530
+Message-Id: <20210215132701.42748-1-oroz3x@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YCo0aAMajx0AG7JM@dhcp22.suse.cz>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9895
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- mlxlogscore=999
- bulkscore=0 suspectscore=0 spamscore=0 malwarescore=0 mlxscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102150108
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9895
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- suspectscore=0 mlxscore=0
- phishscore=0 spamscore=0 adultscore=0 clxscore=1011 impostorscore=0
- priorityscore=1501 lowpriorityscore=0 malwarescore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102150108
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,91 +92,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Johannes Weiner <hannes@cmpxchg.org>, Waiman Long <longman@redhat.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Allen Pais <apais@linux.microsoft.com>,
- Abheek Dhawan <adawesomeguy222@gmail.com>
+Cc: shivang upadhyay <oroz3x@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Feb 15, 2021 at 09:44:24AM +0100, Michal Hocko wrote:
-> On Sat 13-02-21 15:05:28, Ivan Safonov wrote:
-> > memdup_user() is shorter and safer equivalent
-> > of kmalloc/copy_from_user pair.
-> > 
-> > Signed-off-by: Ivan Safonov <insafonov@gmail.com>
-> > ---
-> >  drivers/staging/wlan-ng/p80211netdev.c | 28 ++++++++++++--------------
-> >  1 file changed, 13 insertions(+), 15 deletions(-)
-> > 
-> > diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
-> > index a15abb2c8f54..6f9666dc0277 100644
-> > --- a/drivers/staging/wlan-ng/p80211netdev.c
-> > +++ b/drivers/staging/wlan-ng/p80211netdev.c
-> > @@ -569,24 +569,22 @@ static int p80211knetdev_do_ioctl(struct net_device *dev,
-> >  		goto bail;
-> >  	}
-> >  
-> > -	/* Allocate a buf of size req->len */
-> > -	msgbuf = kmalloc(req->len, GFP_KERNEL);
-> > -	if (msgbuf) {
-> > -		if (copy_from_user(msgbuf, (void __user *)req->data, req->len))
-> > -			result = -EFAULT;
-> > -		else
-> > -			result = p80211req_dorequest(wlandev, msgbuf);
-> > +	msgbuf = memdup_user(req->data, req->len);
-> 
-> Move to memdup_user is definitely a right step. What is the range of
-> req->len though? If this can be larger than PAGE_SIZE then vmemdup_user
-> would be a better alternative.
 
-req->len shoudn't be anywhere close to PAGE_SIZE but it's actually
-important to check req->len and this code does not do that which leads
-to memory corruption:
+Checkpatch complains that parentheses are missing:
+"Macros with complex values should be enclosed in parentheses".
+Fixed that.
 
-drivers/staging/wlan-ng/p80211netdev.c
-   566                  goto bail;
-   567          } else if (cmd != P80211_IFREQ) {
-   568                  result = -EINVAL;
-   569                  goto bail;
-   570          }
-   571  
-   572          msgbuf = memdup_user(req->data, req->len);
-   573          if (IS_ERR(msgbuf)) {
-   574                  result = PTR_ERR(msgbuf);
-   575                  goto bail;
-   576          }
-   577  
-   578          result = p80211req_dorequest(wlandev, msgbuf);
+Signed-off-by: shivang upadhyay <oroz3x@gmail.com>
+---
 
-We don't know that "req->len" is >= sizeof(*msgbuf), and then we pass
-msgbuf top80211req_dorequest() which calls p80211req_handlemsg().  In
-p80211req_handlemsg() then "req->len" has to be larger than
-sizeof(struct p80211msg_lnxreq_hostwep).
+Previous versions of the patch were rejected due to lack of
+discription in patch emails.
 
-   579  
-   580          if (result == 0) {
-   581                  if (copy_to_user
-   582                      ((void __user *)req->data, msgbuf, req->len)) {
-   583                          result = -EFAULT;
-   584                  }
-   585          }
-   586          kfree(msgbuf);
-   587  
-   588  bail:
-   589          /* If allocate,copyfrom or copyto fails, return errno */
-   590          return result;
-   591  }
+ drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-Smatch has a problem parsing this code because struct ifreq *ifr is a
-union and Smatch gets confused.  :/
+diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
+index 39138191a556..c62a494ed6bb 100644
+--- a/drivers/staging/ks7010/ks_hostif.h
++++ b/drivers/staging/ks7010/ks_hostif.h
+@@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
+ #define TX_RATE_FIXED		5
+ 
+ /* 11b rate */
+-#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
+-#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
+-#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
+-#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
++#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
++#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
++#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
++#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
+ 
+ /* 11g rate */
+-#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
+-#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
+-#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
+-#define TX_RATE_9M	(u8)(90 / 5)
+-#define TX_RATE_18M	(u8)(180 / 5)
+-#define TX_RATE_36M	(u8)(360 / 5)
+-#define TX_RATE_48M	(u8)(480 / 5)
+-#define TX_RATE_54M	(u8)(540 / 5)
++#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
++#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
++#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
++#define TX_RATE_9M	((u8)(90 / 5))
++#define TX_RATE_18M	((u8)(180 / 5))
++#define TX_RATE_36M	((u8)(360 / 5))
++#define TX_RATE_48M	((u8)(480 / 5))
++#define TX_RATE_54M	((u8)(540 / 5))
+ 
+ static inline bool is_11b_rate(u8 rate)
+ {
+-- 
+2.27.0
 
-regards,
-dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
