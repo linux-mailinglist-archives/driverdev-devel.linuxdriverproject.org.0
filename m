@@ -1,49 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A29FB31B470
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 04:42:35 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4122A31B5F7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 09:44:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4983D85D45;
-	Mon, 15 Feb 2021 03:42:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9A5E186899;
+	Mon, 15 Feb 2021 08:44:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z-csC3bG0TNQ; Mon, 15 Feb 2021 03:42:32 +0000 (UTC)
+	with ESMTP id ZrdnStEjTnUR; Mon, 15 Feb 2021 08:44:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F11F85A56;
-	Mon, 15 Feb 2021 03:42:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C278186887;
+	Mon, 15 Feb 2021 08:44:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2A12F1BF333
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:42:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 986011BF3A1
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 08:44:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 271A185A56
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 03:42:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 94E5C848C2
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 08:44:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x1L3W8cHKu4P for <devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 03:42:28 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from dplaws-server.dplaws.local (unknown [64.222.143.70])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0A804857FB
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 03:42:27 +0000 (UTC)
-Received: from User (36.37.140.74) by dplaws-server.dplaws.local
- (192.168.130.1) with Microsoft SMTP Server id 8.3.485.1; Sun, 14 Feb 2021
- 22:42:30 -0500
-From: Sun Hor <donna@dplaws.local>
-Subject: I NEED YOUR ASSISTANCE !!!
-Date: Mon, 15 Feb 2021 10:42:23 +0700
+ with ESMTP id PDwX3701q4bK for <devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 08:44:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3768F848A9
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 08:44:27 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1613378665; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=7p0ZgJ7y6ZYSp40cSR2HClicIs9V9AmTmeD/P0zrzfM=;
+ b=jR+Ajl9qThbiHeigkerXV0mkqJhMebC+WU2WKgJwC+evDZjAkMvChSzoKIJTaZd1NNOzBm
+ e055hpfXlrJirRBuSzYrMeJvD0SOeSNpaI4DPTAfe6l+UNcpINMj7gDQ0SzsxV1H6Uf7lb
+ SeZrlXHJmXen2taNgw8BLT2CjlyeqpI=
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id E0FC3AD78;
+ Mon, 15 Feb 2021 08:44:24 +0000 (UTC)
+Date: Mon, 15 Feb 2021 09:44:24 +0100
+From: Michal Hocko <mhocko@suse.com>
+To: Ivan Safonov <insafonov@gmail.com>
+Subject: Re: [PATCH] staging:wlan-ng: use memdup_user instead of
+ kmalloc/copy_from_user
+Message-ID: <YCo0aAMajx0AG7JM@dhcp22.suse.cz>
+References: <20210213120527.451531-1-insafonov@gmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <eae3b2bf-b0f0-4b32-9444-a3d367008ef6@dplaws-server.dplaws.local>
-To: Undisclosed recipients:;
+Content-Disposition: inline
+In-Reply-To: <20210213120527.451531-1-insafonov@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,28 +65,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sun.hor20@gmail.com
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Johannes Weiner <hannes@cmpxchg.org>,
+ Waiman Long <longman@redhat.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Allen Pais <apais@linux.microsoft.com>,
+ Abheek Dhawan <adawesomeguy222@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend ,
+On Sat 13-02-21 15:05:28, Ivan Safonov wrote:
+> memdup_user() is shorter and safer equivalent
+> of kmalloc/copy_from_user pair.
+> 
+> Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+> ---
+>  drivers/staging/wlan-ng/p80211netdev.c | 28 ++++++++++++--------------
+>  1 file changed, 13 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
+> index a15abb2c8f54..6f9666dc0277 100644
+> --- a/drivers/staging/wlan-ng/p80211netdev.c
+> +++ b/drivers/staging/wlan-ng/p80211netdev.c
+> @@ -569,24 +569,22 @@ static int p80211knetdev_do_ioctl(struct net_device *dev,
+>  		goto bail;
+>  	}
+>  
+> -	/* Allocate a buf of size req->len */
+> -	msgbuf = kmalloc(req->len, GFP_KERNEL);
+> -	if (msgbuf) {
+> -		if (copy_from_user(msgbuf, (void __user *)req->data, req->len))
+> -			result = -EFAULT;
+> -		else
+> -			result = p80211req_dorequest(wlandev, msgbuf);
+> +	msgbuf = memdup_user(req->data, req->len);
 
-I am Sun Hor and a personal Accountant/Executive board of Directors with Foreign Trade Bank of Cambodia (FTB).
-it is with good spirit of heart i opened up this great opportunity to you A deceased client of mine that shares almost the same name as yours died as a result of heart-related condition on march 2005.His heart condition was duo to the death of the members of his family in the tsunami disaster on the 26 December 2004 in Sumatra Indonesia where they all lost their lives..
+Move to memdup_user is definitely a right step. What is the range of
+req->len though? If this can be larger than PAGE_SIZE then vmemdup_user
+would be a better alternative.
 
-There is a draft account opened in my bank in 1999 by a long-time client our bank,a national of your country.he was a CEO/a textile company owner,business man,a miner at kruger mining company here in Cambodia. he was a geologist and consultant to several other mining conglomerates operating in Cambodia,China,Taiwan,Japan,Indonesia,Pakistan,Vietnam all in Asia,before he passed away on 12th march 2005 leaving nobody as the next of kin of his account after his death.
-
-The amount in this account is currently $32,640,000 (Thirty Two Million Six Hundred and Forty Thousand United States Dollars) I want to present you as a beneficiary,I will use my position and influence in our bank to make they release this money to you for us to share.If i wait for days and i do not hear from you,I shall look for another person.
-
-Kindly get back to me for more details
-
-Yours sincerely
-Mr Sun Hor
-Board member
-Foreign Trade Bank of Cambodia
-Phnom Penh
+-- 
+Michal Hocko
+SUSE Labs
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
