@@ -1,54 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C09031BB65
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 15:51:53 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01AB731BC2E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Feb 2021 16:22:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ECDEA86B05;
-	Mon, 15 Feb 2021 14:51:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5BBED87146;
+	Mon, 15 Feb 2021 15:22:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aexCopR4PkDs; Mon, 15 Feb 2021 14:51:51 +0000 (UTC)
+	with ESMTP id NI5Tdo5b5RZa; Mon, 15 Feb 2021 15:22:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B051386A7B;
-	Mon, 15 Feb 2021 14:51:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E006F86FFB;
+	Mon, 15 Feb 2021 15:22:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ECFC21BF3BB
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 14:51:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AF3C91BF3AE
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 15:22:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E9B2885B0D
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 14:51:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A649886877
+ for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 15:22:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7h55MVSjkbud for <devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 14:51:47 +0000 (UTC)
+ with ESMTP id g4uieD7YS4ZA for <devel@linuxdriverproject.org>;
+ Mon, 15 Feb 2021 15:22:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E594E85ABB
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 14:51:47 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E57BD64DF4;
- Mon, 15 Feb 2021 14:51:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 25BEE867F9
+ for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 15:22:51 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 155AD64DA8;
+ Mon, 15 Feb 2021 15:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613400707;
- bh=cmvN9HzH4BR1Cs5d66pNovNDeUIP8+tTBh8GRES+jhk=;
+ s=korg; t=1613402571;
+ bh=iNB1WC3wUGi26SUhsBoDGB0vzb+NLWwq/Cl4l6L6OXA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=i9jf/TrU7ovhWBnvTeiwLXtib7zknqE0raAQtIl0SBdpqqWjNu/0OYYvTbEFlSDmw
- h2sR48B+LzEaskYnS+r8aUmfc17mMmwa5oZcj+CESQY95cn2Lma+nbm7RjWn7tDG+P
- rXkuDjmFz+hTb3NRv2y/XhsAtnpsrndvCPVJN1MY=
-Date: Mon, 15 Feb 2021 15:51:44 +0100
+ b=TakcIT6C5at7HLfdzcK3BNMR9JhcEslIrVJKezH6NUHOwRi0rB/T6Q8rkuaq8+32F
+ lPWKUcPJ1oxqNQeH7reKS5q9e7tmyjzbsHlVEZRXD6DI1lGSnDXQ6IsTa3arg2y009
+ dYuSvUcItJkRq9Y6+6JP22f03OgOAHt9l4HM751Y=
+Date: Mon, 15 Feb 2021 16:22:49 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Alaa Emad <alaaemadhossney.ae@gmail.com>
 Subject: Re: [PATCH resend] staging: hikey9xx: hi6421-spmi-pmic: fixing
-Message-ID: <YCqKgM4RD8nGCS7E@kroah.com>
+Message-ID: <YCqRyapToC1bejfg@kroah.com>
 References: <20210215143652.14122-1-alaaemadhossney.ae@gmail.com>
+ <YCqKgM4RD8nGCS7E@kroah.com>
+ <CAM1DhOiS7M6sqkUtKy9aDTmUEVFwBxOhuzk=iKyUax8U+nsR9g@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210215143652.14122-1-alaaemadhossney.ae@gmail.com>
+In-Reply-To: <CAM1DhOiS7M6sqkUtKy9aDTmUEVFwBxOhuzk=iKyUax8U+nsR9g@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,27 +70,15 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Feb 15, 2021 at 04:36:52PM +0200, Alaa Emad wrote:
-> This patch fix the following issues in hi6421-spmi-pmic.c file:
-> 
-> drivers/staging/hikey9xx/hi6421-spmi-pmic.c:51: WARNING: please, no space before tabs
-> drivers/staging/hikey9xx/hi6421-spmi-pmic.c:52: WARNING: please, no space before tabs
-> drivers/staging/hikey9xx/hi6421-spmi-pmic.c:53: WARNING: please, no space before tabs
-> drivers/staging/hikey9xx/hi6421-spmi-pmic.c:69: WARNING: please, no space before tabs
-> drivers/staging/hikey9xx/hi6421-spmi-pmic.c:180: CHECK: Alignment should match open parenthesis
-> drivers/staging/hikey9xx/hi6421-spmi-pmic.c:238: CHECK: Alignment should match open parenthesis
-> 
-> 
-> Signed-off-by: Alaa Emad <alaaemadhossney.ae@gmail.com>
-> 
-> ---
->  drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
+On Mon, Feb 15, 2021 at 05:02:50PM +0200, Alaa Emad wrote:
+> sorry ,i thought it needs to change the description so i resent .
 
-Why is this a "resend"?  What caused it to be needed to be resent?
+If so, then say what you changed below the --- line and make it a v2
+patch, like the Documentation tells you to do, right?
 
-And your subject line is really odd, how does it match up with other
-commits for this file?
+> please guide me how to fix this or it is good?
+
+No, see above.
 
 thanks,
 
