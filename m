@@ -1,84 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BAA331CCF6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Feb 2021 16:32:04 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B7F331CCF8
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Feb 2021 16:32:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D91C586B03;
-	Tue, 16 Feb 2021 15:32:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FD9A87190;
+	Tue, 16 Feb 2021 15:32:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WgK-B604obIS; Tue, 16 Feb 2021 15:32:01 +0000 (UTC)
+	with ESMTP id XtaK8HHHNl-X; Tue, 16 Feb 2021 15:32:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 43AEF8685A;
-	Tue, 16 Feb 2021 15:32:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3613786F90;
+	Tue, 16 Feb 2021 15:32:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4685D1BF59E
- for <devel@linuxdriverproject.org>; Tue, 16 Feb 2021 15:31:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 210CC1BF59E
+ for <devel@linuxdriverproject.org>; Tue, 16 Feb 2021 15:32:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 361FE6F526
- for <devel@linuxdriverproject.org>; Tue, 16 Feb 2021 15:31:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1A31E86A01
+ for <devel@linuxdriverproject.org>; Tue, 16 Feb 2021 15:32:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cvoPxS5wWs9r for <devel@linuxdriverproject.org>;
- Tue, 16 Feb 2021 15:31:57 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 63B0F6F503; Tue, 16 Feb 2021 15:31:57 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-io1-f50.google.com (mail-io1-f50.google.com
- [209.85.166.50])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B175F6F503
- for <devel@driverdev.osuosl.org>; Tue, 16 Feb 2021 15:31:55 +0000 (UTC)
-Received: by mail-io1-f50.google.com with SMTP id n201so10498906iod.12
- for <devel@driverdev.osuosl.org>; Tue, 16 Feb 2021 07:31:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ieee.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bePSxi8P+mopBsJyKhZfJ0ylENCPirau9uKWEklbXfU=;
- b=PiBnwMMkI8Z0xJz4NSxr7IlBW3KAIOw/SSFDqK3qw21H0AVBmvLCKMzqRWNsEjwHgI
- 2XJrBVD4ayDdk/LqYY08O29r8Bhqk+kpswdloGfRB+ieVHj25LeVNNhPSr6AL0c7DfHR
- AyWT/22s202VskApoPuzInKSsb9lWFVGGXStY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=bePSxi8P+mopBsJyKhZfJ0ylENCPirau9uKWEklbXfU=;
- b=D7ofN4yQ3bEjhALJQUvXz6eWayGAMH5wl6U0Gz8SYMmH1oXR0TVDXPRRhmmkUNULRc
- tV1FyPBkk/QJ3nK69yudyKlqZiRFU3cWQJ0e2Z4drxhu5qiGau/xLOatwG6gw5dU1LrX
- A81C0xsaJGAjdsOgZZ3Ry4HdV7w4QpRNpAPf+BFMh0divTyUiRokDz1cDdAwCra7kVwl
- cwHgy/A2XEtOSA4H0J29P/mFP0SnCy9Fr/AVKD5fiv3eEi73xyb/yRAoWsgyhzTJJ5EM
- 6zFrlDkXnpJR8+AXBQ4G+ieGIeGYOeNxgWoVK9cBy95syX/wj8qrTyVbwuXAsdpb/NbU
- TluQ==
-X-Gm-Message-State: AOAM531pCg4NZb/bm3cz4FaiqfRNbA1aoxA5iTqR1MTHciGLb+vvZYsK
- 65ibBsh6sxjSlAdT6LYzebfJzsTgss46aqm9
-X-Google-Smtp-Source: ABdhPJwoqQ029vOtAseft2NEwBaD7TLrVcTkRURos0sC8/KIa3QTnbWUF1Zy/JG8lsXU9hTL+Dcw5w==
-X-Received: by 2002:a05:6638:58:: with SMTP id
- a24mr21031085jap.40.1613489514697; 
- Tue, 16 Feb 2021 07:31:54 -0800 (PST)
-Received: from [172.22.22.4] (c-73-185-129-58.hsd1.mn.comcast.net.
- [73.185.129.58])
- by smtp.googlemail.com with ESMTPSA id o16sm1326647ilt.21.2021.02.16.07.31.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Feb 2021 07:31:54 -0800 (PST)
-Subject: Re: [PATCH] staging: greybus: minor code style fix
-To: Manikantan Ravichandran <ravman1991@gmail.com>, vaibhav.sr@gmail.com,
- mgreer@animalcreek.com, johan@kernel.org, elder@kernel.org,
- gregkh@linuxfoundation.org
-References: <20210212225035.GA16260@whach>
-From: Alex Elder <elder@ieee.org>
-Message-ID: <356e8c33-36d9-95f3-1a30-322e7ef6e168@ieee.org>
-Date: Tue, 16 Feb 2021 09:31:53 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YNxaZHUez2yi for <devel@linuxdriverproject.org>;
+ Tue, 16 Feb 2021 15:32:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8DCE786998
+ for <devel@driverdev.osuosl.org>; Tue, 16 Feb 2021 15:32:16 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9593664DF0;
+ Tue, 16 Feb 2021 15:32:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1613489536;
+ bh=l16aNZMSc2rCZxLVWsZR42LAl9UPXEHIK5i0X/8DpDM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=dSjKPp3m5DMu/glunIFyV8Jz8HNL2Uvh/0b6Ujtu3uArN0HEJO5009rWsvnAgW0ay
+ 8y+whZ5thkxD1x0F8LMYklAvI5n5J7IQVL0ouhRjVkMtG3jhxV+vEz1bw2/L1RefXb
+ eZa7ej/ZTXmwjVciLJzpr6Q6IIblXhkTx6AvaYog=
+Date: Tue, 16 Feb 2021 16:32:13 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Selvakumar Elangovan <selvakumar16197@gmail.com>
+Subject: Re: [PATCH] Staging: ks7010: ks_hostif: fixed parentheses coding
+ style issue
+Message-ID: <YCvlfUO0DA2xGwzn@kroah.com>
+References: <20210216151058.12638-1-selvakumar16197@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210212225035.GA16260@whach>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210216151058.12638-1-selvakumar16197@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,51 +62,85 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ gustavo@embeddedor.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2/12/21 4:50 PM, Manikantan Ravichandran wrote:
-> checkpatch warning fix for string split across lines
+On Tue, Feb 16, 2021 at 08:40:58PM +0530, Selvakumar Elangovan wrote:
+> Fixed a coding style issue.
 > 
-> Signed-off-by: Manikantan Ravichandran <ravman1991@gmail.com>
-
-I think what you're doing here *looks* reasonable.  But
-the GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF symbol is
-a (string) numeric value that is associated with the
-"s" that immediately follows it.
-
-So I don't think your change makes sense, given the
-meaning of the line you're changing.
-
-Thanks.
-
-					-Alex
-
+> Signed-off-by: Selvakumar Elangovan <selvakumar16197@gmail.com>
 > ---
->   drivers/staging/greybus/audio_manager_sysfs.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
+>  1 file changed, 12 insertions(+), 12 deletions(-)
 > 
-> diff --git a/drivers/staging/greybus/audio_manager_sysfs.c b/drivers/staging/greybus/audio_manager_sysfs.c
-> index ab882cc49b41..fcd518f9540c 100644
-> --- a/drivers/staging/greybus/audio_manager_sysfs.c
-> +++ b/drivers/staging/greybus/audio_manager_sysfs.c
-> @@ -18,8 +18,8 @@ static ssize_t manager_sysfs_add_store(struct kobject *kobj,
->   	struct gb_audio_manager_module_descriptor desc = { {0} };
->   
->   	int num = sscanf(buf,
-> -			"name=%" GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF "s "
-> -			"vid=%d pid=%d intf_id=%d i/p devices=0x%X o/p devices=0x%X",
-> +			"name=%" GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF
-> +			"s vid=%d pid=%d intf_id=%d i/p devices=0x%X o/p devices=0x%X",
->   			desc.name, &desc.vid, &desc.pid, &desc.intf_id,
->   			&desc.ip_devices, &desc.op_devices);
->   
-> 
+> diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
+> index 39138191a556..c62a494ed6bb 100644
+> --- a/drivers/staging/ks7010/ks_hostif.h
+> +++ b/drivers/staging/ks7010/ks_hostif.h
+> @@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
+>  #define TX_RATE_FIXED		5
+>  
+>  /* 11b rate */
+> -#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
+> -#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
+> -#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
+> -#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
+> +#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
+> +#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
+> +#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
+> +#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
+>  
+>  /* 11g rate */
+> -#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
+> -#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
+> -#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
+> -#define TX_RATE_9M	(u8)(90 / 5)
+> -#define TX_RATE_18M	(u8)(180 / 5)
+> -#define TX_RATE_36M	(u8)(360 / 5)
+> -#define TX_RATE_48M	(u8)(480 / 5)
+> -#define TX_RATE_54M	(u8)(540 / 5)
+> +#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
+> +#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
+> +#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
+> +#define TX_RATE_9M	((u8)(90 / 5))
+> +#define TX_RATE_18M	((u8)(180 / 5))
+> +#define TX_RATE_36M	((u8)(360 / 5))
+> +#define TX_RATE_48M	((u8)(480 / 5))
+> +#define TX_RATE_54M	((u8)(540 / 5))
+>  
+>  static inline bool is_11b_rate(u8 rate)
+>  {
 
+Hi,
+
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
+
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- You sent a patch that has been sent multiple times in the past few
+  days, and is identical to ones that has been recently rejected.
+  Please always look at the mailing list traffic to determine if you are
+  duplicating other people's work.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
