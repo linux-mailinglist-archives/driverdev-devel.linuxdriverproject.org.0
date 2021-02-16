@@ -1,86 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2ABD31C468
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Feb 2021 00:35:15 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62B5331C485
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Feb 2021 01:12:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5441484D2E;
-	Mon, 15 Feb 2021 23:35:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DF1FD8703C;
+	Tue, 16 Feb 2021 00:12:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LqDamVpJj9TR; Mon, 15 Feb 2021 23:35:12 +0000 (UTC)
+	with ESMTP id uBihKtqQnlIF; Tue, 16 Feb 2021 00:12:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3071484AC5;
-	Mon, 15 Feb 2021 23:35:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63C1F87013;
+	Tue, 16 Feb 2021 00:12:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AE7BC1BF362
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 23:34:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BFE91BF97E
+ for <devel@linuxdriverproject.org>; Tue, 16 Feb 2021 00:12:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ABF4985EA5
- for <devel@linuxdriverproject.org>; Mon, 15 Feb 2021 23:34:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 17A2C85BD3
+ for <devel@linuxdriverproject.org>; Tue, 16 Feb 2021 00:12:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Htt-0z7JPYV8 for <devel@linuxdriverproject.org>;
- Mon, 15 Feb 2021 23:34:49 +0000 (UTC)
+ with ESMTP id X+BNSwnoMvyb for <devel@linuxdriverproject.org>;
+ Tue, 16 Feb 2021 00:12:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com
- [209.85.221.47])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F1FF84C19
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 23:34:49 +0000 (UTC)
-Received: by mail-wr1-f47.google.com with SMTP id b3so11030203wrj.5
- for <devel@driverdev.osuosl.org>; Mon, 15 Feb 2021 15:34:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philpotter-co-uk.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=b8KUdY/ZnIyiQBur3FBDnWD4fwaw0zMzf9dAARZwipU=;
- b=Y/k103D7E3p0MiDVMk4VvKOvAw7QgEfJfIsnNBHIBKkxDlOQaBqPUwMjwniAF8VhQr
- LQ3lMnxW9UCHED1x8VKWzWt4TnhBBf3CgqaanN63vVmpy71RpfayfMDR7CGE53ofPdsh
- mUC1DGjaoO4RqoxISWxfj/LWnz8/+rY33rDA4Yy3J/zYx/SQGOJwgQNINPnRmooXvd+r
- wDjfjrfwk/taCbpGjg7NR2NGdJi9ntLMEjzA8bORysTxtD/qGMCRH4BvX4yjPca75YbW
- Z1yjP6KxCxcIa4dl4+QaOR8MmHnBDL4D7LmVS7lR9MdmDZyYDlkxP5KjYrik3cRVmmm4
- fYjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=b8KUdY/ZnIyiQBur3FBDnWD4fwaw0zMzf9dAARZwipU=;
- b=tUveDPEjoCp3OlMxLn4Meky8KayuUVfOuoXIogf5BbdaPfxoiklkJCmq/ScjWqFLZu
- SX1HTM8Q+Slu4tcH9WGWnEfvR7EvbENxXpoPD+zSA2jMBKfCptsW0eo3eFqffM2vxuUm
- 95NMyYLx8FkFieLGs22wcxh2MSMYSKd/PFmEyuzYthcG4uvoqiPqqBIV/lQnHpFpl2vz
- K2yyeh11rtYxpNl39V1aBPuJ9SclxLGql79EoIPEYAl+YiLeF53aHDchKFFBCJYJCuHu
- 5Bug33NPDewvmdr89vQsfgj4Vg/Fos42y0P3ck+6D11AIBGDGewidJf9gdycinYXZBtN
- C9cQ==
-X-Gm-Message-State: AOAM530cBeOJIZc/rAj0ZtRA8mVqSnlh/jVZDqsqTnOGjxEZL9dUQztE
- oPNxnuTWS1/0F9V8CWalgs1cqA==
-X-Google-Smtp-Source: ABdhPJxFnLXj/3cI5b01dpWoUMfhnkSL1IsDWEW96TLtJ67Z8TzLUfUZVK2/kFc/0qP+ZYx2yrYVxg==
-X-Received: by 2002:adf:e80d:: with SMTP id o13mr21463271wrm.113.1613432087505; 
- Mon, 15 Feb 2021 15:34:47 -0800 (PST)
-Received: from localhost.localdomain
- (2.0.5.1.1.6.3.8.5.c.c.3.f.b.d.3.0.0.0.0.6.1.f.d.0.b.8.0.1.0.0.2.ip6.arpa.
- [2001:8b0:df16:0:3dbf:3cc5:8361:1502])
- by smtp.gmail.com with ESMTPSA id y16sm21691445wrw.46.2021.02.15.15.34.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 15:34:47 -0800 (PST)
-From: Phillip Potter <phil@philpotter.co.uk>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 6/6] staging: rtl8723bs: remove rx_logs/tx_logs/int_logs from
- drv_types.h
-Date: Mon, 15 Feb 2021 23:34:40 +0000
-Message-Id: <20210215233440.80617-7-phil@philpotter.co.uk>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210215233440.80617-6-phil@philpotter.co.uk>
-References: <20210215233440.80617-1-phil@philpotter.co.uk>
- <20210215233440.80617-2-phil@philpotter.co.uk>
- <20210215233440.80617-3-phil@philpotter.co.uk>
- <20210215233440.80617-4-phil@philpotter.co.uk>
- <20210215233440.80617-5-phil@philpotter.co.uk>
- <20210215233440.80617-6-phil@philpotter.co.uk>
+Received: from relay11.mail.gandi.net (relay11.mail.gandi.net [217.70.178.231])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DBF3E8665D
+ for <devel@driverdev.osuosl.org>; Tue, 16 Feb 2021 00:12:23 +0000 (UTC)
+Received: from bagend.localnet (92-110-45-68.cable.dynamic.v4.ziggo.nl
+ [92.110.45.68]) (Authenticated sender: didi.debian@cknow.org)
+ by relay11.mail.gandi.net (Postfix) with ESMTPSA id E7C82100004;
+ Tue, 16 Feb 2021 00:12:15 +0000 (UTC)
+From: Diederik de Haas <didi.debian@cknow.org>
+To: linux-rpi-kernel@lists.infradead.org,
+ Stefan Wahren <stefan.wahren@i2se.com>
+Subject: Re: Sound issues with the 5.10.x kernel (alsa)
+Date: Tue, 16 Feb 2021 01:12:12 +0100
+Message-ID: <11208610.7f3IsiomVT@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <b0be09a0-5ec3-b716-4b77-1dde43719273@i2se.com>
+References: <3165951.nLcn7dHqa8@bagend>
+ <b0be09a0-5ec3-b716-4b77-1dde43719273@i2se.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,179 +58,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, vkor@vkten.in, insafonov@gmail.com,
- foxhlchen@gmail.com, linux-kernel@vger.kernel.org, yujian.wu1@gmail.com,
- matthew.v.deangelis@gmail.com, amarjargal16@gmail.com, pterjan@google.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: multipart/mixed; boundary="===============2675754867735144679=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the rx_logs/tx_logs/int_logs struct definitions and their
-inclusion within struct adapter as fields, from include/drv_types.h.
-They were conditionally compiled based on CONFIG_DBG_COUNTER which
-now has no other users in the driver, and were only ever accessed
-in a write only fashion via the DBG_COUNTER macro, which has also
-been removed.
+--===============2675754867735144679==
+Content-Type: multipart/signed; boundary="nextPart2844758.jcCGFL8tJk"; micalg="pgp-sha512"; protocol="application/pgp-signature"
 
-Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
----
- drivers/staging/rtl8723bs/include/drv_types.h | 131 ------------------
- 1 file changed, 131 deletions(-)
+--nextPart2844758.jcCGFL8tJk
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+To: linux-rpi-kernel@lists.infradead.org, Stefan Wahren <stefan.wahren@i2se.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: Sound issues with the 5.10.x kernel (alsa)
+Date: Tue, 16 Feb 2021 01:12:12 +0100
+Message-ID: <11208610.7f3IsiomVT@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <b0be09a0-5ec3-b716-4b77-1dde43719273@i2se.com>
+References: <3165951.nLcn7dHqa8@bagend> <b0be09a0-5ec3-b716-4b77-1dde43719273@i2se.com>
 
-diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
-index c73f581aea06..cfde6e3ba400 100644
---- a/drivers/staging/rtl8723bs/include/drv_types.h
-+++ b/drivers/staging/rtl8723bs/include/drv_types.h
-@@ -219,131 +219,6 @@ struct registry_priv {
- #define GET_IFACE_NUMS(padapter) (((struct adapter *)padapter)->dvobj->iface_nums)
- #define GET_ADAPTER(padapter, iface_id) (((struct adapter *)padapter)->dvobj->padapters[iface_id])
- 
--#ifdef CONFIG_DBG_COUNTER
--
--struct rx_logs {
--	u32 intf_rx;
--	u32 intf_rx_err_recvframe;
--	u32 intf_rx_err_skb;
--	u32 intf_rx_report;
--	u32 core_rx;
--	u32 core_rx_pre;
--	u32 core_rx_pre_ver_err;
--	u32 core_rx_pre_mgmt;
--	u32 core_rx_pre_mgmt_err_80211w;
--	u32 core_rx_pre_mgmt_err;
--	u32 core_rx_pre_ctrl;
--	u32 core_rx_pre_ctrl_err;
--	u32 core_rx_pre_data;
--	u32 core_rx_pre_data_wapi_seq_err;
--	u32 core_rx_pre_data_wapi_key_err;
--	u32 core_rx_pre_data_handled;
--	u32 core_rx_pre_data_err;
--	u32 core_rx_pre_data_unknown;
--	u32 core_rx_pre_unknown;
--	u32 core_rx_enqueue;
--	u32 core_rx_dequeue;
--	u32 core_rx_post;
--	u32 core_rx_post_decrypt;
--	u32 core_rx_post_decrypt_wep;
--	u32 core_rx_post_decrypt_tkip;
--	u32 core_rx_post_decrypt_aes;
--	u32 core_rx_post_decrypt_wapi;
--	u32 core_rx_post_decrypt_hw;
--	u32 core_rx_post_decrypt_unknown;
--	u32 core_rx_post_decrypt_err;
--	u32 core_rx_post_defrag_err;
--	u32 core_rx_post_portctrl_err;
--	u32 core_rx_post_indicate;
--	u32 core_rx_post_indicate_in_oder;
--	u32 core_rx_post_indicate_reoder;
--	u32 core_rx_post_indicate_err;
--	u32 os_indicate;
--	u32 os_indicate_ap_mcast;
--	u32 os_indicate_ap_forward;
--	u32 os_indicate_ap_self;
--	u32 os_indicate_err;
--	u32 os_netif_ok;
--	u32 os_netif_err;
--};
--
--struct tx_logs {
--	u32 os_tx;
--	u32 os_tx_err_up;
--	u32 os_tx_err_xmit;
--	u32 os_tx_m2u;
--	u32 os_tx_m2u_ignore_fw_linked;
--	u32 os_tx_m2u_ignore_self;
--	u32 os_tx_m2u_entry;
--	u32 os_tx_m2u_entry_err_xmit;
--	u32 os_tx_m2u_entry_err_skb;
--	u32 os_tx_m2u_stop;
--	u32 core_tx;
--	u32 core_tx_err_pxmitframe;
--	u32 core_tx_err_brtx;
--	u32 core_tx_upd_attrib;
--	u32 core_tx_upd_attrib_adhoc;
--	u32 core_tx_upd_attrib_sta;
--	u32 core_tx_upd_attrib_ap;
--	u32 core_tx_upd_attrib_unknown;
--	u32 core_tx_upd_attrib_dhcp;
--	u32 core_tx_upd_attrib_icmp;
--	u32 core_tx_upd_attrib_active;
--	u32 core_tx_upd_attrib_err_ucast_sta;
--	u32 core_tx_upd_attrib_err_ucast_ap_link;
--	u32 core_tx_upd_attrib_err_sta;
--	u32 core_tx_upd_attrib_err_link;
--	u32 core_tx_upd_attrib_err_sec;
--	u32 core_tx_ap_enqueue_warn_fwstate;
--	u32 core_tx_ap_enqueue_warn_sta;
--	u32 core_tx_ap_enqueue_warn_nosta;
--	u32 core_tx_ap_enqueue_warn_link;
--	u32 core_tx_ap_enqueue_warn_trigger;
--	u32 core_tx_ap_enqueue_mcast;
--	u32 core_tx_ap_enqueue_ucast;
--	u32 core_tx_ap_enqueue;
--	u32 intf_tx;
--	u32 intf_tx_pending_ac;
--	u32 intf_tx_pending_fw_under_survey;
--	u32 intf_tx_pending_fw_under_linking;
--	u32 intf_tx_pending_xmitbuf;
--	u32 intf_tx_enqueue;
--	u32 core_tx_enqueue;
--	u32 core_tx_enqueue_class;
--	u32 core_tx_enqueue_class_err_sta;
--	u32 core_tx_enqueue_class_err_nosta;
--	u32 core_tx_enqueue_class_err_fwlink;
--	u32 intf_tx_direct;
--	u32 intf_tx_direct_err_coalesce;
--	u32 intf_tx_dequeue;
--	u32 intf_tx_dequeue_err_coalesce;
--	u32 intf_tx_dump_xframe;
--	u32 intf_tx_dump_xframe_err_txdesc;
--	u32 intf_tx_dump_xframe_err_port;
--};
--
--struct int_logs {
--	u32 all;
--	u32 err;
--	u32 tbdok;
--	u32 tbder;
--	u32 bcnderr;
--	u32 bcndma;
--	u32 bcndma_e;
--	u32 rx;
--	u32 rx_rdu;
--	u32 rx_fovw;
--	u32 txfovw;
--	u32 mgntok;
--	u32 highdok;
--	u32 bkdok;
--	u32 bedok;
--	u32 vidok;
--	u32 vodok;
--};
--
--#endif /*  CONFIG_DBG_COUNTER */
--
- struct debug_priv {
- 	u32 dbg_sdio_free_irq_error_cnt;
- 	u32 dbg_sdio_alloc_irq_error_cnt;
-@@ -608,12 +483,6 @@ struct adapter {
- 	u8 driver_rx_ampdu_factor;/* 0xff: disable drv ctrl, 0:8k, 1:16k, 2:32k, 3:64k; */
- 
- 	unsigned char     in_cta_test;
--
--#ifdef CONFIG_DBG_COUNTER
--	struct rx_logs rx_logs;
--	struct tx_logs tx_logs;
--	struct int_logs int_logs;
--#endif
- };
- 
- #define adapter_to_dvobj(adapter) (adapter->dvobj)
--- 
-2.29.2
+On maandag 8 februari 2021 13:22:56 CET Stefan Wahren wrote:
+> Currently i cannot see any of the fixes by Phil
+> Elwell in linux-stable. Maybe they won't apply and needs to be backport
+> manually.
+> 
+> Just for reference here are the revelant patches:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/d
+> rivers/staging/vc04_services?h=next-20210205&id=96ae327678eceabf455b11a88ba1
+> 4ad540d4b046
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/d
+> rivers/staging/vc04_services?h=next-20210205&id=88753cc19f087abe0d39644b844e
+> 67a59cfb5a3d
+> 
+> Could you please try?
+
+I've now successfully build and booted a 5.10.16 kernel 'pristine' and with 
+the above mentioned patches.
+In the 'pristine' variant, I had the same bad/horrible quality as I 
+experienced with Debian's 5.10 kernels.
+The 'patched' variant seems to be a tad better, but didn't completely solve 
+the audio problem. There's still some noise intermixed with the music and 
+other artifacts, but I'm inclined to think it's not as horrible as before.
+
+I'll do some more hearing tests tomorrow when I'm fresh again, but figured I'd 
+share these preliminary results already.
+
+Cheers,
+  Diederik
+--nextPart2844758.jcCGFL8tJk
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEf+PJh5LtCd6LDwjYE45BkVx+/tYFAmArDdwACgkQE45BkVx+
+/tauLA//Vx7K5ibOC8isKBDR/Wd2nF3jnmVftQun2tQ+nh/Pen0RLHY1Sc1kCzYG
+xaGeceHoJHSvq4PXElgnoYjvkp842IeOFOUNMNUuE3Zlm/QVnQ1kQ1BNuKYLuh1t
+bJmdX04kEH7sHVsiWkmdL1gDhAgrDDN/GQLHaxs3rGCqGaMUcv8CLCU379WIEW4w
+Kxuzy07H5Msq25tB4DRlXzGUwwTSkUZoNyxSCx0GZJqBZcEO9ShkV/mjHP9Gucx1
+ABgyJJk2lnJQbxDY/t/xJBQt1FVtCBlqZT5Z8UDigprkBZX56A1OopntdB0GkFra
+jtQ+geonZaLIr5fFQRrHOdW3vwSFtZOmB1SDjHCoRPYxT71Xu9KlVAOd9hEyHoAR
+TRESRB4WmHjlPs8fFn75Cu/nVgtzNHw6/gLuhI3vELkVV/ESXk2W05xlxVzlxsor
+xbSQWWfMyryjvbuoTDn87ljEdexe3cW0RwrsHNrxLXluCrGkqcvuDlFcNu9IedsT
+Z7thfr793E57U+uZiNPczUA1M7zWlDHr/UHOzrGVSVUHeGnVM6FiG3cOnSyQSCMB
+BzVux7lUvqZZ0VcFWc7eKTCA6fCT2u+ctFPvyCS/PpmPRs7qw0wu2VEr0LGlpWZK
++rgs26c/ryabDjzqVlB2uyHPd0UULGCMCHoYjIdm9GDwzTbDERk=
+=W0K/
+-----END PGP SIGNATURE-----
+
+--nextPart2844758.jcCGFL8tJk--
+
+
+
+
+--===============2675754867735144679==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============2675754867735144679==--
+
+
+
