@@ -1,48 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF061320EDF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 02:05:00 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E882A320FFF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 05:19:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3116F8345D;
-	Mon, 22 Feb 2021 01:04:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 83446870A1;
+	Mon, 22 Feb 2021 04:19:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zSgzpdRyknyU; Mon, 22 Feb 2021 01:04:57 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xV+xBu-44DPn; Mon, 22 Feb 2021 04:19:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 229428343E;
-	Mon, 22 Feb 2021 01:04:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A731E8708E;
+	Mon, 22 Feb 2021 04:19:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 69DED1BF3CD
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 01:04:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2737A1BF4DD
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 04:19:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4CA318345D
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 01:04:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 164D96F501
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 04:19:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hOvWCLBVK85G for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 01:04:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ikg5GEi-AHkE for <devel@linuxdriverproject.org>;
+ Mon, 22 Feb 2021 04:19:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.c919ima.cn (unknown [118.25.151.189])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4AD5A83449
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 01:04:44 +0000 (UTC)
-Received: from User (unknown [154.127.53.41])
- by mail.c919ima.cn (Postfix) with SMTP id 39BE410EC8E;
- Mon, 22 Feb 2021 02:14:03 +0800 (CST)
-From: "erenich ekaterina"<verenichekaterinaekaterina4@gmail.com>
-Subject: Dear Beloved
-Date: Sun, 21 Feb 2021 10:14:11 -0800
+Received: from mail.shezartech.in (mail.shezartech.in [139.59.75.255])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AF8DE6ED1C
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 04:19:34 +0000 (UTC)
+Received: from [103.99.1.174] (unknown [103.99.1.174])
+ (Authenticated sender: bitdefender@shezartech.in)
+ by mail.shezartech.in (Postfix) with ESMTPA id BD96E382187
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 17:36:44 +0530 (IST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210222010445.4CA318345D@smtp1.osuosl.org>
+Content-Description: Mail message body
+Subject: Congratulation: You're a winner!
+To: devel@linuxdriverproject.org
+From: "Euro Millions" <acc@namakaran-alu.com>
+Date: Wed, 17 Feb 2021 04:06:43 -0800
+Message-Id: <20210222041936.164D96F501@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,27 +54,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: verenichekaterina35@yahoo.com
+Reply-To: ste68ven@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Beloved
-
-Life is gradually passing away from me as a result of my present medical condition and my personal doctor confided in me yesterday that I have only but few more weeks to live.
-
-In view of this setback, I want to donate my estate for humanitarian assistance, since this has always been the plan of my late husband and besides I have no child.
-
-In an effort to compliment the good work of God almighty and the wish of my late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred Thousand United States Dollars) to you.
-
-On your acknowledgment of this mail and informing me of your nationality and current place of resident, my Bank will facilitate due processes for transfer of this legacy to you.
-
-May God bless you as you use this money judiciously for the work of charity.
-
-Sincere regards,
-
-Mrs.verenich ekaterina
+CONGRATULATION!!!
+ 
+With reference to the 1,377th EuroMillions draw which took place on Tuesday 1st December 2020 at 21:00 CEST (20:00 BST) and the winning numbers drawn were:
+ 
+Lucky numbers 14-20-29-47-49 Star Number 4-12 Millionaire Maker: MNHF52876 serial number ZWWD49193 Prize credited to file EURO/86169/2021
+ 
+An official letter was sent to your address. Your email address has been awarded the sum of 2,713,908.40 GB pounds. Kindly, confirm receipt of this notification by contacting your claims officer Mr. Kennith William for more details.
+ 
+visit the link https://www.euro-millions.com/results/01-12-2020 to view your winning details as published on the Euro-Millions site.
+ 
+Euro-Millions prizes must be claimed within 180 days of the draw date. This is a confidential mail sent to ONLY winners of this draws.
+ 
+If you have any questions, please contact our customer support.
+ 
+ 
+Kind regards,
+Peter Jones
+Customer Support
+EURO-MILLIONS
+Customer Service
+UK Regional Office
+Acorns Oakwood Park Business Center
+Fountains Road Bishop Thornton, Harrogate
+HG3 3BF, UK.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
