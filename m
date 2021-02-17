@@ -1,43 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E81CF31D5FF
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 09:04:08 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B05B31D5FD
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 09:04:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9AFA185F97;
-	Wed, 17 Feb 2021 08:04:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D63D1871DE;
+	Wed, 17 Feb 2021 08:04:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xxgr8b7OQ_5C; Wed, 17 Feb 2021 08:04:04 +0000 (UTC)
+	with ESMTP id 8czRrn3eVzOy; Wed, 17 Feb 2021 08:04:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5552C858BF;
-	Wed, 17 Feb 2021 08:04:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6F7F6871B8;
+	Wed, 17 Feb 2021 08:04:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 504E41BF306
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:03:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CBC891BF306
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:03:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4B3DF859CF
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:03:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C5648858D4
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:03:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E2ngdtI_6L7O for <devel@linuxdriverproject.org>;
- Wed, 17 Feb 2021 08:03:46 +0000 (UTC)
+ with ESMTP id nM6VprenYHdz for <devel@linuxdriverproject.org>;
+ Wed, 17 Feb 2021 08:03:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 42570859D5
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 08:03:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3287D858BF
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 08:03:51 +0000 (UTC)
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:fd6e:12cd:95d7:3350])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 80CB21F4503E;
- Wed, 17 Feb 2021 08:03:41 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 506761F45040;
+ Wed, 17 Feb 2021 08:03:45 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -47,9 +47,9 @@ To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  krzk@kernel.org, shengjiu.wang@nxp.com, adrian.ratiu@collabora.com,
  aisheng.dong@nxp.com, peng.fan@nxp.com, Anson.Huang@nxp.com,
  hverkuil-cisco@xs4all.nl
-Subject: [PATCH v1 05/18] media: controls: Add control for HEVC codec
-Date: Wed, 17 Feb 2021 09:02:53 +0100
-Message-Id: <20210217080306.157876-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v1 06/18] media: hantro: Make sure that ctx->codex_ops is set
+Date: Wed, 17 Feb 2021 09:02:54 +0100
+Message-Id: <20210217080306.157876-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
 References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
@@ -76,103 +76,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add HEVC decode params and scaling matrix controls.
+Do not try to call ctx->codec_ops->done if ctx->codec_ops is not set.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
 ---
- drivers/media/v4l2-core/v4l2-ctrls.c | 36 ++++++++++++++++++++++------
- 1 file changed, 29 insertions(+), 7 deletions(-)
+ drivers/staging/media/hantro/hantro_drv.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
-index 016cf6204cbb..5e45333fd862 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls.c
-@@ -1028,6 +1028,8 @@ const char *v4l2_ctrl_get_name(u32 id)
- 	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:			return "HEVC Sequence Parameter Set";
- 	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:			return "HEVC Picture Parameter Set";
- 	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
-+	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
-+	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:		return "HEVC Scaling Matrix";
- 	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
- 	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:		return "HEVC Start Code";
- 
-@@ -1482,6 +1484,12 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
- 	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:
- 		*type = V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS;
- 		break;
-+	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:
-+		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
-+		break;
-+	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:
-+		*type = V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX;
-+		break;
- 	case V4L2_CID_UNIT_CELL_SIZE:
- 		*type = V4L2_CTRL_TYPE_AREA;
- 		*flags |= V4L2_CTRL_FLAG_READ_ONLY;
-@@ -1833,6 +1841,7 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
- 	struct v4l2_ctrl_hevc_sps *p_hevc_sps;
- 	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
- 	struct v4l2_ctrl_hevc_slice_params *p_hevc_slice_params;
-+	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
- 	struct v4l2_area *area;
- 	void *p = ptr.p + idx * ctrl->elem_size;
- 	unsigned int i;
-@@ -2108,26 +2117,33 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
- 		zero_padding(*p_hevc_pps);
- 		break;
- 
--	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
--		p_hevc_slice_params = p;
-+	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
-+		p_hevc_decode_params = p;
- 
--		if (p_hevc_slice_params->num_active_dpb_entries >
-+		if (p_hevc_decode_params->num_active_dpb_entries >
- 		    V4L2_HEVC_DPB_ENTRIES_NUM_MAX)
- 			return -EINVAL;
- 
--		zero_padding(p_hevc_slice_params->pred_weight_table);
--
--		for (i = 0; i < p_hevc_slice_params->num_active_dpb_entries;
-+		for (i = 0; i < p_hevc_decode_params->num_active_dpb_entries;
- 		     i++) {
- 			struct v4l2_hevc_dpb_entry *dpb_entry =
--				&p_hevc_slice_params->dpb[i];
-+				&p_hevc_decode_params->dpb[i];
- 
- 			zero_padding(*dpb_entry);
- 		}
- 
-+		break;
-+
-+	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
-+		p_hevc_slice_params = p;
-+
-+		zero_padding(p_hevc_slice_params->pred_weight_table);
- 		zero_padding(*p_hevc_slice_params);
- 		break;
- 
-+	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-+		break;
-+
- 	case V4L2_CTRL_TYPE_AREA:
- 		area = p;
- 		if (!area->width || !area->height)
-@@ -2821,6 +2837,12 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
- 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
- 		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
- 		break;
-+	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
-+		elem_size = sizeof(struct v4l2_ctrl_hevc_decode_params);
-+		break;
-+	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-+		elem_size = sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
-+		break;
- 	case V4L2_CTRL_TYPE_AREA:
- 		elem_size = sizeof(struct v4l2_area);
- 		break;
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 0d58209fc55c..0570047c7fa0 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -93,7 +93,8 @@ void hantro_irq_done(struct hantro_dev *vpu,
+ 	 * and will take care of finishing the job.
+ 	 */
+ 	if (cancel_delayed_work(&vpu->watchdog_work)) {
+-		if (result == VB2_BUF_STATE_DONE && ctx->codec_ops->done)
++		if (result == VB2_BUF_STATE_DONE &&
++		    ctx->codec_ops && ctx->codec_ops->done)
+ 			ctx->codec_ops->done(ctx);
+ 		hantro_job_finish(vpu, ctx, result);
+ 	}
 -- 
 2.25.1
 
