@@ -1,45 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7091F31D608
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 09:05:06 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D87E31D600
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 09:04:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 216D0859D9;
-	Wed, 17 Feb 2021 08:05:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0C604871CF;
+	Wed, 17 Feb 2021 08:04:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LOA35CIRlqPm; Wed, 17 Feb 2021 08:05:02 +0000 (UTC)
+	with ESMTP id P5dK4FJA4rkM; Wed, 17 Feb 2021 08:04:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D329C85F2D;
-	Wed, 17 Feb 2021 08:04:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E2A08871FB;
+	Wed, 17 Feb 2021 08:04:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 665771BF59C
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:04:34 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CBFF51BF306
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:04:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 513A76F4CF
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:04:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C7FB5871BA
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 08:04:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ygPbTe4Ml8C3 for <devel@linuxdriverproject.org>;
- Wed, 17 Feb 2021 08:04:30 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 060616F647; Wed, 17 Feb 2021 08:04:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n147SpJzQYam for <devel@linuxdriverproject.org>;
+ Wed, 17 Feb 2021 08:04:03 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2DD0D6F569
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 08:04:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8FF94871B4
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 08:04:03 +0000 (UTC)
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:fd6e:12cd:95d7:3350])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B56251F4507A;
- Wed, 17 Feb 2021 08:03:55 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 7382F1F4507D;
+ Wed, 17 Feb 2021 08:03:59 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -49,9 +47,9 @@ To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  krzk@kernel.org, shengjiu.wang@nxp.com, adrian.ratiu@collabora.com,
  aisheng.dong@nxp.com, peng.fan@nxp.com, Anson.Huang@nxp.com,
  hverkuil-cisco@xs4all.nl
-Subject: [PATCH v1 08/18] media: hantro: Add HEVC structures
-Date: Wed, 17 Feb 2021 09:02:56 +0100
-Message-Id: <20210217080306.157876-9-benjamin.gaignard@collabora.com>
+Subject: [PATCH v1 09/18] media: hantro: move hantro_needs_postproc function
+Date: Wed, 17 Feb 2021 09:02:57 +0100
+Message-Id: <20210217080306.157876-10-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
 References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
@@ -78,90 +76,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add structures and context for HEVC support
+hantro_needs_postproc function becoming to much complex to
+stray inline in .h file move it to .c file.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
 ---
- drivers/staging/media/hantro/hantro.h    |  3 ++
- drivers/staging/media/hantro/hantro_hw.h | 35 ++++++++++++++++++++++++
- 2 files changed, 38 insertions(+)
+ drivers/staging/media/hantro/hantro.h          |  8 ++------
+ drivers/staging/media/hantro/hantro_postproc.c | 17 +++++++++++++++++
+ 2 files changed, 19 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index 2a566dfc2fe3..8459643657ab 100644
+index 8459643657ab..2523c0d010df 100644
 --- a/drivers/staging/media/hantro/hantro.h
 +++ b/drivers/staging/media/hantro/hantro.h
-@@ -34,6 +34,7 @@ struct hantro_codec_ops;
- #define HANTRO_MPEG2_DECODER	BIT(16)
- #define HANTRO_VP8_DECODER	BIT(17)
- #define HANTRO_H264_DECODER	BIT(18)
-+#define HANTRO_HEVC_DECODER	BIT(19)
- #define HANTRO_DECODERS		0xffff0000
+@@ -419,12 +419,8 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
+ 	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ }
  
- #define HANTRO_G1_REV		0x6731
-@@ -224,6 +225,7 @@ struct hantro_dev {
-  * @jpeg_enc:		JPEG-encoding context.
-  * @mpeg2_dec:		MPEG-2-decoding context.
-  * @vp8_dec:		VP8-decoding context.
-+ * @hevc_dec:		HEVC-decoding context.
-  */
- struct hantro_ctx {
- 	struct hantro_dev *dev;
-@@ -250,6 +252,7 @@ struct hantro_ctx {
- 		struct hantro_jpeg_enc_hw_ctx jpeg_enc;
- 		struct hantro_mpeg2_dec_hw_ctx mpeg2_dec;
- 		struct hantro_vp8_dec_hw_ctx vp8_dec;
-+		struct hantro_hevc_dec_hw_ctx hevc_dec;
- 	};
+-static inline bool
+-hantro_needs_postproc(const struct hantro_ctx *ctx,
+-		      const struct hantro_fmt *fmt)
+-{
+-	return !ctx->is_encoder && fmt->fourcc != V4L2_PIX_FMT_NV12;
+-}
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt);
+ 
+ static inline dma_addr_t
+ hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index 6d2a8f2a8f0b..050880f720d6 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -50,6 +50,23 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
+ 	.display_width = {G1_REG_PP_DISPLAY_WIDTH, 0, 0xfff},
  };
  
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 34c9e4649a25..191c5ba4a599 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -90,6 +90,41 @@ struct hantro_h264_dec_hw_ctx {
- 	struct hantro_h264_dec_ctrls ctrls;
- };
- 
-+/**
-+ * struct hantro_hevc_dec_ctrls
-+ * @scaling:	Scaling info
-+ * @decode_params: Decode params
-+ * @sps:	SPS info
-+ * @pps:	PPS info
-+ */
-+struct hantro_hevc_dec_ctrls {
-+	const struct v4l2_ctrl_hevc_scaling_matrix *scaling;
-+	const struct v4l2_ctrl_hevc_decode_params *decode_params;
-+	const struct v4l2_ctrl_hevc_sps *sps;
-+	const struct v4l2_ctrl_hevc_pps *pps;
-+};
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt)
++{
++	struct hantro_dev *vpu = ctx->dev;
 +
-+/**
-+ * struct hantro_hevc_dec_hw_ctx
-+ * @scaling_lists:	Scaling lists buffer
-+ * @tile_sizes:		Tile sizes buffer
-+ * @tile_filter:	Tile vertical filter buffer
-+ * @tile_sao:		Tile SAO buffer
-+ * @tile_bsd:		Tile BSD control buffer
-+ * @dpb:	DPB
-+ * @reflists:	P/B0/B1 reflists
-+ * @ctrls:	V4L2 controls attached to a run
-+ */
-+struct hantro_hevc_dec_hw_ctx {
-+	struct hantro_aux_buf scaling_lists;
-+	struct hantro_aux_buf tile_sizes;
-+	struct hantro_aux_buf tile_filter;
-+	struct hantro_aux_buf tile_sao;
-+	struct hantro_aux_buf tile_bsd;
-+	struct hantro_hevc_dec_ctrls ctrls;
-+	unsigned int num_tile_cols_allocated;
-+};
++	if (ctx->is_encoder)
++		return false;
 +
- /**
-  * struct hantro_mpeg2_dec_hw_ctx
-  * @qtable:		Quantization table
++	if (vpu->core_hw_dec_rev == HANTRO_G1_REV)
++		return fmt->fourcc != V4L2_PIX_FMT_NV12;
++
++	if (vpu->core_hw_dec_rev == HANTRO_G2_REV)
++		return false;
++
++	return false;
++}
++
+ void hantro_postproc_enable(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
 -- 
 2.25.1
 
