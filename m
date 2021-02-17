@@ -1,75 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D700A31D6D1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 10:10:56 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5DF031D6EF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 10:24:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 490DF8721C;
-	Wed, 17 Feb 2021 09:10:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A60DF85F5D;
+	Wed, 17 Feb 2021 09:24:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dAf6CrBELL-W; Wed, 17 Feb 2021 09:10:54 +0000 (UTC)
+	with ESMTP id 2fcSYn0Yb0YW; Wed, 17 Feb 2021 09:24:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 25B5787203;
-	Wed, 17 Feb 2021 09:10:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3787585F34;
+	Wed, 17 Feb 2021 09:24:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E76211BF865
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 09:10:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F67F1BF865
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 09:24:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DDFB086110
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 09:10:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 60F3D86D37
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 09:24:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WrvSBPkPhYGV for <devel@linuxdriverproject.org>;
- Wed, 17 Feb 2021 09:10:48 +0000 (UTC)
+ with ESMTP id cVwCTR0oYg9W for <devel@linuxdriverproject.org>;
+ Wed, 17 Feb 2021 09:23:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb1-smtp-cloud9.xs4all.net (lb1-smtp-cloud9.xs4all.net
- [194.109.24.22])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9058C811D0
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 09:10:48 +0000 (UTC)
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id CIqxl7UkCZvk6CIr0l6rUq; Wed, 17 Feb 2021 10:10:46 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1613553046; bh=uSxzPPyVvXNWM+WQDeaRwP48PE6c7mphNoRppLem0rY=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=e3CJEEyAjmSERDt8Inx1KHZ0hF2Wo0JERbLmD7awKrEGqC+gkG1qYyw55ux8La0kO
- W6n3lTXO50JP00pI115gXNMncz2Z+YMN+zXSZ22YZCp2FsQJVsgq3gbff/SjH9NGPk
- 1pJlCIa5jgFg9unlqFvjRiAYzXrbpsYd8SK96Kd69YzIiOhyEF3pyj/VZnJFS7a1UH
- 7Fs/cE2nO5OGBuC4zN+/mQQVBx8i5Kfp+25nT/MIVwypToL5iiJRaqNTX/P3k6wdPD
- FrQPLSm0Krod9bbO5pQvL9De7DBvsipUJFp4tJVajwmAiWKhs5q660PaAjBDP0crNg
- 0MTl7iH9ZtVzA==
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B89C386C03
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 09:23:59 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9CD2664E33;
+ Wed, 17 Feb 2021 09:23:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1613553839;
+ bh=FD7WhxzDm+JDUfR6hgpEBF+USlSpiOrjLGWZu2X98cI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jF0NlVSCU9pO4orJwFctgDl16Qz2q2xtNLtJz1DaP0buysksSPJFRfQZaeyvNHuJC
+ bWg6BJByx2Um/j+t1QKHcL4nCqILFeEcl0KBWCZ0NTtWvCyVZbQCHShrxjkS/D1663
+ kEFHpQqChcLhQHnuNstCKZ+Z5w5oZm7MHbJhrH2I=
+Date: Wed, 17 Feb 2021 10:23:56 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Subject: Re: [PATCH v1 00/18] Add HANTRO G2/HEVC decoder support for IMX8MQ
-To: Greg KH <gregkh@linuxfoundation.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <YCzgrGr8JpUYcQ+L@kroah.com>
 References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
  <YCzO7SRmBKzGeMUS@kroah.com>
  <04dfae0b-92e5-e02d-c687-ba4d28b7aaf2@collabora.com>
  <YCzVmRVL79KMkxXQ@kroah.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <63b62e9e-b95f-59a4-b830-c56d2cb9e4f8@xs4all.nl>
-Date: Wed, 17 Feb 2021 10:10:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.7.0
+ <63b62e9e-b95f-59a4-b830-c56d2cb9e4f8@xs4all.nl>
 MIME-Version: 1.0
-In-Reply-To: <YCzVmRVL79KMkxXQ@kroah.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfCWTvvS3ntp+Ze+ND5twq3FMCVE1sSa/yxM9eKULJNJNKc944I4NbpFvKDCdcH0V3BJX+oU7FTwzESJgXnCwL77Ih7EB0zX0uU5PzaBLnRI9R34LXBgd
- zrERyF1rcsEuHD8tIo3a/zrZt3UKpKGOIRrhjSgachV2bh2GtGg0coYnosYcgp4hFp19eDpk7JOzbBEBv/X6IafM3sfhJ8HRNe8VJJBtJN0K/3Dj7Oz7KrIt
- 9p96GxBx56YG3x9fF4JSrMs56oXPz/47sMw/RWnptfoUPtQp1og8S8Ot9ZgYgsYTxu8fMZlcwxR/FDSAjoWZMjrXQT1A0Jl2dlR1cQFx8qvyY0fvHOJNg5D9
- Xc7DBRcN1PAplu7kW3gBTE2PG+fczJEsvL4D274Rvzc8RW2PjcvGfvaUkmIpniCljdI8ulw8s4KEMEOVUoxBLowsYcZW7+rlBflkkRGTBGFlu1Wg2hhfpkKX
- SDYJBx+xlR8GQDQ+KiP5ACFgmAlp0rTazN0fVEylVdiQpAVNb5OwNLXH9Zx9hKooOx3RoHR+EVkXbcuN+RXrGavzcEMTc57e/cXOcPEAxTagUSVakKKjPdb9
- Qb3YjD+Ei02mNV22HyYJKc35N7RjJsqjMVHIsrmkAhETKdf9d0EcNfak/03J5poePHe/Z34EGlNCJPKx6NCXUymZ+Uq/1cTuknrzBNfzBI7tQV1E17N7WAed
- TU2+X66uywWoAkmwNDUG2DL8yEfZcxl8utD1JLcaflcPqJ2+xqgkn/XugDGZrw1SOjhEv2aqWZo45b1yIPvrim6FAfod8J7pu2LAXaKZgYxH+XEQu58OdsFK
- 3GCh+CHxbluTV8FThcw2AybhlCuBA2tF3p1on9HIoIhmu7sen7TQLidyHl2SSz3pnDD5uwA+hsclFq0z6BPpt4s7Tip35a3/A1d+Lp6jMUqjXYqhfW6wmfQL
- 14tRqoyYAqkj1ODAACQ70Q0pMXUBxpy5weS2QLm3HdQUYTMJ5QuvXBkDPIu1G79dDRnWNWRt2rHvQhM+5Vp0qRFajwvRSOE1TRlyXlKUMegPOp+OanOGF1P0
- o55OSHtLD1cW+cIAyA4FEkSpQ99E0StnZ9jTLY68N/ZwXgc253cpprT8
+Content-Disposition: inline
+In-Reply-To: <63b62e9e-b95f-59a4-b830-c56d2cb9e4f8@xs4all.nl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,86 +66,125 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: peng.fan@nxp.com, kernel@collabora.com, devel@driverdev.osuosl.org,
- Anson.Huang@nxp.com, krzk@kernel.org, linux-rockchip@lists.infradead.org,
- wens@csie.org, linux-imx@nxp.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de, s.hauer@pengutronix.de,
- mripard@kernel.org, robh+dt@kernel.org, mchehab@kernel.org,
- ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
- aisheng.dong@nxp.com, jernej.skrabec@siol.net, adrian.ratiu@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Anson.Huang@nxp.com,
+ krzk@kernel.org, linux-rockchip@lists.infradead.org, wens@csie.org,
+ linux-imx@nxp.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ p.zabel@pengutronix.de, s.hauer@pengutronix.de, mripard@kernel.org,
+ robh+dt@kernel.org, mchehab@kernel.org, ezequiel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, aisheng.dong@nxp.com,
+ jernej.skrabec@siol.net, adrian.ratiu@collabora.com,
  linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com,
- p.zabel@pengutronix.de, shawnguo@kernel.org, shengjiu.wang@nxp.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ kernel@pengutronix.de, shawnguo@kernel.org, shengjiu.wang@nxp.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMTcvMDIvMjAyMSAwOTozNiwgR3JlZyBLSCB3cm90ZToKPiBPbiBXZWQsIEZlYiAxNywgMjAy
-MSBhdCAwOToyODowOUFNICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4KPj4gTGUg
-MTcvMDIvMjAyMSDDoCAwOTowOCwgR3JlZyBLSCBhIMOpY3JpdMKgOgo+Pj4gT24gV2VkLCBGZWIg
-MTcsIDIwMjEgYXQgMDk6MDI6NDhBTSArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4+
-Pj4gVGhlIElNWDhNUSBnb3QgdHdvIFZQVXMgYnV0IHVudGlsIG5vdyBvbmx5IEcxIGhhcyBiZWVu
-IGVuYWJsZWQuCj4+Pj4gVGhpcyBzZXJpZXMgYWltIHRvIGFkZCB0aGUgc2Vjb25kIFZQVSAoYWth
-IEcyKSBhbmQgcHJvdmlkZSBiYXNpYwo+Pj4+IEhFVkMgZGVjb2Rpbmcgc3VwcG9ydC4KPj4+IFdo
-eSBhcmUgeW91IGFkZGluZyB0aGlzIGRpcmVjdGx5IHRvIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS8g
-YW5kIG5vdAo+Pj4gZHJpdmVycy9tZWRpYS8/ICBXaHkgY2FuJ3QgdGhpcyBqdXN0IGdvIHRvIHRo
-ZSBtYWluIGxvY2F0aW9uIGFuZCBub3QKPj4+IGxpdmUgaW4gc3RhZ2luZz8KPj4KPj4gRzIvSEVW
-QyBpcyBhZGRlZCBpbnNpZGUgdGhlIGFscmVhZHkgZXhpdGluZyBIYW50cm8gZHJpdmVyLCBpdCBp
-cyAianVzdCIKPj4gYW4gb3RoZXIgY29kZWMgZnJvbSBIYW50cm8gZHJpdmVyIHBvaW50IG9mIHZp
-ZXcuCj4+IEluIGFkZGl0aW9uIG9mIHRoYXQgdjRsMi1oZXZjIHVBUEkgaXMgc3RpbGwgdW5zdGFi
-bGUuCj4+IE9uZSBnb2FsIG9mIHRoaXMgc2VyaWVzIGlzIHRvIGhhdmUgb25lIG1vcmUgY29uc3Vt
-ZXIgb2YgdGhpcyB2NGwyLWhldmMKPj4gdUFQSSBzbyBtYXliZSB3ZSBjYW4gY2xhaW0gaXQgdG8g
-YmUgc3RhYmxlIGVub3VnaCB0byBtb3ZlIGF3YXkgZnJvbSBzdGFnaW5nCj4+IGFuZCB0aGVuIGRv
-IHRoZSBzYW1lIGZvciBIYW50cm8gZHJpdmVyLiBUaGF0IHdvdWxkIGJlIGEgZ3JlYXQgYWNoaWV2
-ZW1lbnQgIQo+IAo+IEkga25vdyBJIGRvIG5vdCBsaWtlIHNlZWluZyBuZXcgYWRkaXRpb25zL2Zl
-YXR1cmVzL3doYXRldmVyIGJlaW5nIGFkZGVkCj4gdG8gc3RhZ2luZyBkcml2ZXJzIGFzIHRoYXQg
-ZW5jb3VyYWdlcyBwZW9wbGUgdG8gZG8gbmV3IHN0dWZmIG9uIHRoZW0KPiB3aXRob3V0IGRvaW5n
-IHRoZSByZWFsIHdvcmsgbmVlZGVkIHRvIGdldCB0aGVtIG91dCBvZiBzdGFnaW5nLgoKSW4gb3Jk
-ZXIgdG8gc3VwcG9ydCBhIHNwZWNpZmljIGNvZGVjIChNUEVHLTIsIEguMjY0LCBIRVZDLCBWUDgs
-IGV0Yy4pIGZvcgpzdGF0ZWxlc3MgY29kZWMgaGFyZHdhcmUgbGlrZSB0aGUgaGFudHJvLCBWNEwy
-IGNvbnRyb2xzIG5lZWQgdG8gYmUgZGVmaW5lZC4KVGhlIGNvbnRlbnRzIG9mIHRoZXNlIGNvbnRy
-b2xzIGlzIGRlcml2ZWQgZGlyZWN0bHkgZnJvbSB0aGUgdW5kZXJseWluZyBjb2RlYwpzdGFuZGFy
-ZHMsIGJ1dCBpdCBpcyBxdWl0ZSBkaWZmaWN1bHQgdG8gZ2V0IHRoaXMgcmlnaHQgd2l0aCB0aGUg
-Zmlyc3QgYXR0ZW1wdCwKc2luY2UgdGhlc2Ugc3RhbmRhcmRzIGFyZSB2ZXJ5IGNvbXBsZXguCgpT
-byB3ZSB3ZW50IGZvciB0aGUgc3RyYXRlZ3kgb2Yga2VlcGluZyB0aGVzZSBkcml2ZXJzIGluIHN0
-YWdpbmcgdG8gbWFrZSBpdAplYXN5IHRvIHdvcmsgb24sIHdoaWxlIGtlZXBpbmcgdGhlIEFQSXMg
-Zm9yIGVhY2ggY29kZWMgcHJpdmF0ZSAoaS5lLiwgdGhleSBhcmUKbm90IGV4cG9zZWQgaW4gaW5j
-bHVkZS91YXBpL2xpbnV4KS4KCk9uY2Ugd2UgaGF2ZSBzdWZmaWNpZW50IGNvbmZpZGVuY2UgaW4g
-dGhlIEFQSSBmb3IgYSBzcGVjaWZpYyBjb2RlYyB3ZSBtb3ZlCml0IHRvIHVhcGkgYW5kIHRodXMg
-Zml4IHRoZSBBUEkuIFdlIGFsc28gcmVudW1iZXIgdGhlIGNvbnRyb2wgSURzIGF0IHRoYXQKdGlt
-ZSB0byBhdm9pZCBhbnkgY29uZnVzaW9uIGJldHdlZW4gdGhlIHN0YWdpbmcgdmVyc2lvbiBhbmQg
-dGhlIGZpbmFsIHZlcnNpb24uCgpXZSBkaWQgdGhhdCBmb3IgSC4yNjQgYW5kIEkgaG9wZSB3ZSBj
-YW4gc29vbiBkbyB0aGUgc2FtZSBmb3IgTVBFRy0yIGFuZCBWUDguCgpIRVZDIGlzIGRlZmluaXRl
-bHkgbm90IHJlYWR5IGZvciB0aGF0IHlldC4KClRoZSBrZXkgcGhyYXNlIGlzICdzdWZmaWNpZW50
-IGNvbmZpZGVuY2UnOiBvbmUgcmVxdWlyZW1lbnQgaXMgdGhhdCBpdCBpcyBzdXBwb3J0ZWQKYnkg
-YXQgbGVhc3QgdHdvIGRyaXZlcnMgdG8gYmUgcmVhc29uYWJseSBjZXJ0YWluIHRoZSBBUEkgZG9l
-c24ndCBjb250YWluIGFueSBIVwpzcGVjaWZpYyBzdHVmZiwgYW5kIGl0IHBhc3NlcyB0ZXN0IHN1
-aXRlcyBhbmQgcmV2aWV3IGJ5IGNvZGVjIGV4cGVydHMuCgpBbGwgdGhpcyBpcyBhY3RpdmVseSBi
-ZWluZyB3b3JrZWQgb24sIHNvIHRoaXMgaXMgdmVyeSBtdWNoIGFsaXZlLCBidXQgaXQgaXMKY29t
-cGxleCBhbmQgdGltZSBjb25zdW1pbmcuCgo+IFNvIHdoYXQgaXMgcHJldmVudGluZyB0aGUgZXhp
-c3RpbmcgZHJpdmVyIGZyb20gZ2V0dGluZyBvdXQgb2Ygc3RhZ2luZwo+IG5vdz8KCk9uY2UgTVBF
-Ry0yIGFuZCBWUDggYXJlIGZpbmFsaXplZCBpdCBpcyBwcm9iYWJseSB0aW1lIHRvIG1vdmUgdGhl
-c2UgZHJpdmVycwpvdXQgb2Ygc3RhZ2luZywgd2hpbGUgc3RpbGwga2VlcGluZyB0aGUgSEVWQyBB
-UEkgcGFydCBwcml2YXRlLgoKPiAKPiBBbmQgaG93IGFyZSB5b3UgYWxsIGNyZWF0aW5nIG5ldyB1
-c2Vyc3BhY2UgYXBpcyBmb3Igc3RhZ2luZyBkcml2ZXJzIHRvCj4gdGhlIHY0bCBsYXllcj8gIFdo
-YXQgaGFwcGVucyB3aGVuIHlvdSBleHBvcnQgc29tZXRoaW5nIG5ldyBhbmQgdGhlbgo+IHVzZXJz
-cGFjZSBzdGFydHMgdG8gcmVseSBvbiBpdCBhbmQgdGhlbiB5b3UgY2hhbmdlIGl0PwoKTm90aGlu
-ZyBpcyBleHBvcnRlZC4gU28gaWYgdXNlcnNwYWNlIHdhbnQgdG8gdXNlIGl0IHRoZXkgaGF2ZSB0
-byBtYW51YWxseQpjb3B5IGhlYWRlcnMgZnJvbSBpbmNsdWRlL21lZGlhIHRvIHRoZWlyIGFwcGxp
-Y2F0aW9uLgoKPiAKPiBBbnl3YXksIHRoZSBtZWRpYSBzdGFnaW5nIGRyaXZlcnMgYXJlIG9uIHRo
-ZWlyIG93biwgSSBkb24ndCB0b3VjaCB0aGVtLAo+IGl0IGp1c3QgZmVlbHMgb2RkIHRvIG1lLi4u
-CgpJdCdzIGFuIHVudXN1YWwgc2l0dWF0aW9uLiBCdXQgcHV0dGluZyB0aGUgZHJpdmVycyBpbiBz
-dGFnaW5nIGFuZCBrZWVwaW5nCnRoZSBjb2RlYyBBUEkgaGVhZGVycyBwcml2YXRlIHR1cm5zIG91
-dCB0byBiZSB0aGUgbW9zdCBlZmZlY3RpdmUgd2F5IHRvCmRldmVsb3AgdGhpcy4KClJlZ2FyZHMs
-CgoJSGFucwoKUFM6IHN0YXRlZnVsIHZzIHN0YXRlbGVzcyBkZWNvZGVyczogc3RhdGVmdWwgZGVj
-b2RlcnMgYXJlIGZ1bGx5IHN1cHBvcnRlZAp0b2RheTogeW91IGp1c3QgZmVlZCB0aGUgZGVjb2Rl
-ciB0aGUgY29tcHJlc3NlZCBzdHJlYW0gYW5kIHRoZSBkZWNvZGVkIGZyYW1lcwphcmUgcHJvZHVj
-ZWQgYnkgdGhlIGZpcm13YXJlL2hhcmR3YXJlLiBJLmUuIHRoZSBIVyB0YWtlcyBjYXJlIG9mIHRo
-ZSBkZWNvZGVyCnN0YXRlLiBTdGF0ZWxlc3MgZGVjb2RlcnMgcmVxdWlyZSB5b3UgdG8gcGFzcyB0
-aGUgY29tcHJlc3NlZCBmcmFtZSArIGRlY29kZXIKc3RhdGUgdG8gdGhlIGhhcmR3YXJlLCBzbyB0
-aGV5IGRvIG5vdCBrZWVwIHRyYWNrIG9mIHRoZSBkZWNvZGVyIHN0YXRlLCB0aGF0Cm5lZWRzIHRv
-IGJlIGRvbmUgaW4gc29mdHdhcmUuIEFuZCB0aGF0IHJlcXVpcmVzIHN0cnVjdHVyZXMgdG8gYmUg
-Y3JlYXRlZCB0aGF0CnN0b3JlIHRoZSBzdGF0ZSwgd2hpY2ggbHVja2lseSBjYW4gYmUgZGVyaXZl
-ZCBmcm9tIHRoZSBjb2RlYyBzdGFuZGFyZHMuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
-b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Wed, Feb 17, 2021 at 10:10:35AM +0100, Hans Verkuil wrote:
+> On 17/02/2021 09:36, Greg KH wrote:
+> > On Wed, Feb 17, 2021 at 09:28:09AM +0100, Benjamin Gaignard wrote:
+> >>
+> >> Le 17/02/2021 =E0 09:08, Greg KH a =E9crit=A0:
+> >>> On Wed, Feb 17, 2021 at 09:02:48AM +0100, Benjamin Gaignard wrote:
+> >>>> The IMX8MQ got two VPUs but until now only G1 has been enabled.
+> >>>> This series aim to add the second VPU (aka G2) and provide basic
+> >>>> HEVC decoding support.
+> >>> Why are you adding this directly to drivers/staging/media/ and not
+> >>> drivers/media/?  Why can't this just go to the main location and not
+> >>> live in staging?
+> >>
+> >> G2/HEVC is added inside the already exiting Hantro driver, it is "just"
+> >> an other codec from Hantro driver point of view.
+> >> In addition of that v4l2-hevc uAPI is still unstable.
+> >> One goal of this series is to have one more consumer of this v4l2-hevc
+> >> uAPI so maybe we can claim it to be stable enough to move away from st=
+aging
+> >> and then do the same for Hantro driver. That would be a great achievem=
+ent !
+> > =
+
+> > I know I do not like seeing new additions/features/whatever being added
+> > to staging drivers as that encourages people to do new stuff on them
+> > without doing the real work needed to get them out of staging.
+> =
+
+> In order to support a specific codec (MPEG-2, H.264, HEVC, VP8, etc.) for
+> stateless codec hardware like the hantro, V4L2 controls need to be define=
+d.
+> The contents of these controls is derived directly from the underlying co=
+dec
+> standards, but it is quite difficult to get this right with the first att=
+empt,
+> since these standards are very complex.
+> =
+
+> So we went for the strategy of keeping these drivers in staging to make it
+> easy to work on, while keeping the APIs for each codec private (i.e., the=
+y are
+> not exposed in include/uapi/linux).
+> =
+
+> Once we have sufficient confidence in the API for a specific codec we move
+> it to uapi and thus fix the API. We also renumber the control IDs at that
+> time to avoid any confusion between the staging version and the final ver=
+sion.
+> =
+
+> We did that for H.264 and I hope we can soon do the same for MPEG-2 and V=
+P8.
+> =
+
+> HEVC is definitely not ready for that yet.
+> =
+
+> The key phrase is 'sufficient confidence': one requirement is that it is =
+supported
+> by at least two drivers to be reasonably certain the API doesn't contain =
+any HW
+> specific stuff, and it passes test suites and review by codec experts.
+> =
+
+> All this is actively being worked on, so this is very much alive, but it =
+is
+> complex and time consuming.
+> =
+
+> > So what is preventing the existing driver from getting out of staging
+> > now?
+> =
+
+> Once MPEG-2 and VP8 are finalized it is probably time to move these drive=
+rs
+> out of staging, while still keeping the HEVC API part private.
+> =
+
+> > =
+
+> > And how are you all creating new userspace apis for staging drivers to
+> > the v4l layer?  What happens when you export something new and then
+> > userspace starts to rely on it and then you change it?
+> =
+
+> Nothing is exported. So if userspace want to use it they have to manually
+> copy headers from include/media to their application.
+> =
+
+> > =
+
+> > Anyway, the media staging drivers are on their own, I don't touch them,
+> > it just feels odd to me...
+> =
+
+> It's an unusual situation. But putting the drivers in staging and keeping
+> the codec API headers private turns out to be the most effective way to
+> develop this.
+
+Ah, ok, thanks for the explaination, makes sense.
+
+good luck!
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
