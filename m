@@ -1,59 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3AA8731DB51
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 15:21:48 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D624731DB63
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 15:24:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DE66D86365;
-	Wed, 17 Feb 2021 14:21:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7DEF36F5F7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 14:24:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id swlAMNeqNlr0; Wed, 17 Feb 2021 14:21:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JM02RYX2g59p for <lists+driverdev-devel@lfdr.de>;
+	Wed, 17 Feb 2021 14:24:55 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 5610B6F537; Wed, 17 Feb 2021 14:24:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 252CE8630A;
-	Wed, 17 Feb 2021 14:21:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C73CB6F4BB;
+	Wed, 17 Feb 2021 14:24:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B47BD1BF3A0
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:21:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0E9FA1BF3A0
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:24:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A2DAE6F4CF
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:21:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0AD616F4B8
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:24:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C6kJPvz1up2M for <devel@linuxdriverproject.org>;
- Wed, 17 Feb 2021 14:21:42 +0000 (UTC)
+ with ESMTP id SwCy0Z1ZmDFw for <devel@linuxdriverproject.org>;
+ Wed, 17 Feb 2021 14:24:28 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 0799F6F4D7; Wed, 17 Feb 2021 14:21:42 +0000 (UTC)
+ id 4ED066F4CF; Wed, 17 Feb 2021 14:24:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mx1.riseup.net (mx1.riseup.net [198.252.153.129])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E1B4E6F4BA
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 14:21:40 +0000 (UTC)
-Received: from fews1.riseup.net (fews1-pn.riseup.net [10.0.1.83])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 43D576F4B8
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 14:24:27 +0000 (UTC)
+Received: from fews2.riseup.net (fews2-pn.riseup.net [10.0.1.84])
  (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
  (Client CN "*.riseup.net",
  Issuer "Sectigo RSA Domain Validation Secure Server CA" (not verified))
- by mx1.riseup.net (Postfix) with ESMTPS id 4Dgg4s0RpBzFq23;
- Wed, 17 Feb 2021 06:21:33 -0800 (PST)
+ by mx1.riseup.net (Postfix) with ESMTPS id 4Dgg8B5g07zFsdg;
+ Wed, 17 Feb 2021 06:24:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
- t=1613571693; bh=u27Lmkch+nLAvkxu4mMmLX/k/KYjiLg3s+1a0hp5aaQ=;
+ t=1613571866; bh=IvnMCcmHCehGjNcRNbIEXbEAqemDFdZA+8ZJfN+1v/4=;
  h=From:To:Cc:Subject:Date:From;
- b=l0imE2kCPxvZkf9syb4FzORAKYgtsQply9XrkYmI4StSmBX/ErJrxcZjSw8Xjj02/
- ICzs/pRDzwWRhi3/Y8NvRJWITWlED8wraFGr+Q4+GtjFKr8laxPr5U9HwWsEi5wZTw
- NKDmqStQZcvREtG0ZoTGyqj61NgRX0OOAGewT/MI=
-X-Riseup-User-ID: D64CE3937C4F71BCD8F1ECFC31DB49ABD2AC12BB883715A829BDA0B93E3618FF
+ b=oa67nUtDN1Dm8+cAmsXGdRoSLrI8fUwq6FE4ZSJ/dmlg36BJjdKmQLEqEpaAjpYo8
+ +bLt55VkNwndf6mIz2RnsXY2ua0Q1KiUgVWvB239Bep9Z2jPX9p6uTYPfFEaTzYf63
+ PNEcqXULwy19U/hP7ghbWqbmo9SloNQBaeV+cD2Q=
+X-Riseup-User-ID: 63C4401FEF5013B3DFBAE15EC29B9EB16668EE0B6C5B9DA2BBE993DAA83FB869
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- by fews1.riseup.net (Postfix) with ESMTPSA id 4Dgg4m147lz5vNX;
- Wed, 17 Feb 2021 06:21:28 -0800 (PST)
+ by fews2.riseup.net (Postfix) with ESMTPSA id 4Dgg894VZcz20Rp;
+ Wed, 17 Feb 2021 06:24:25 -0800 (PST)
 From: Sean Behan <codebam@riseup.net>
 To: 
 Subject: [PATCH] staging: emxx_udc: remove unused variable driver_desc
-Date: Wed, 17 Feb 2021 09:21:15 -0500
-Message-Id: <20210217142118.7107-1-codebam@riseup.net>
+Date: Wed, 17 Feb 2021 09:24:17 -0500
+Message-Id: <20210217142420.7350-1-codebam@riseup.net>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,10 +79,11 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When building with W=1 (or however you found it), there is a warning
-that this variable is unused.
+When building with W=1, there is a warning that this variable is unused.
 
 It is not used so remove it to fix the warning.
+
+Thanks to nathan@kernel.org for helping me submit my first patch.
 
 Signed-off-by: Sean Behan <codebam@riseup.net>
 ---
