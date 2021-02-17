@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02E7A31DB1E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 15:08:25 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A07B731DB50
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 15:21:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7EE79871CC;
-	Wed, 17 Feb 2021 14:08:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2033B6F61E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Feb 2021 14:21:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gK6pu7XM8Sya; Wed, 17 Feb 2021 14:08:23 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0qS8AnGxOoEz for <lists+driverdev-devel@lfdr.de>;
+	Wed, 17 Feb 2021 14:21:15 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id E073E6F61F; Wed, 17 Feb 2021 14:21:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 80AED87244;
-	Wed, 17 Feb 2021 14:08:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1556C6F4B8;
+	Wed, 17 Feb 2021 14:21:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4757C1BF3A0
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:08:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 622271BF3A0
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:20:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4222E86738
- for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:08:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5B9E38630A
+ for <devel@linuxdriverproject.org>; Wed, 17 Feb 2021 14:20:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MxUGm1cW2M88 for <devel@linuxdriverproject.org>;
- Wed, 17 Feb 2021 14:08:03 +0000 (UTC)
+ with ESMTP id j8EZ1DLxSqYJ for <devel@linuxdriverproject.org>;
+ Wed, 17 Feb 2021 14:20:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com
- [209.85.128.47])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 455BE86457
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 14:08:03 +0000 (UTC)
-Received: by mail-wm1-f47.google.com with SMTP id o82so2231512wme.1
- for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 06:08:03 -0800 (PST)
+Received: from mail-pg1-f176.google.com (mail-pg1-f176.google.com
+ [209.85.215.176])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EF86C862ED
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 14:20:47 +0000 (UTC)
+Received: by mail-pg1-f176.google.com with SMTP id p21so2915465pgl.12
+ for <devel@driverdev.osuosl.org>; Wed, 17 Feb 2021 06:20:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jiX7X0M+t1Zm8HAFufsMGCFO60ftU2nIQxPg0v/LgAc=;
- b=S7/rTx9uAE7nU43FzuKk4H4CEBU2du4dQVIjNNGuhZzRe3ta2fmRfgVY2JwNELBVpc
- nmjY59xfSPvmggrQQdhyHjLb69F900As5dBIdVkRCvc6YSfCi49sZ2t/gWGpJtPr6Z61
- dFRBkLrEK8go2QKkf4qpt6cO//DDHepKvQrFMTPSmqziYTbOauD4H8R5q/GfcQpMVQYz
- 5m+OeZUokF7aPHrKSTArIryuaMAUH3YxlJAP7JcnODmEc+7lbi3p7Fm6gBxWJD80yIV6
- Smh32aTK51ql+vCZzFyXfNZB6GgBCmgvG64iLeYBC7lsJ3lqn4949MsLRVsC5s/4oklG
- /5BQ==
+ h=from:to:cc:subject:date:message-id;
+ bh=tkR3nWvQ+KA65XhBWc3ZlKt+YgDPlZLa5MC3BGSdyyQ=;
+ b=jvUwXMP/BUoo0aubC202imi3Ptt9jD+nY4BVmsw1Juq/TtwA1c+qv+Q4/3kHKTSUid
+ PHfvQ4Y4KaMSXs3FbbBeJA6ehOfOYo8EeW0/2oWhn4i2STe6GjnvGBH6y6MIJnBvGvi2
+ jrNqAeBeSKGkqjRBzkHHen8shwj1Z4J9eevXJEq09A5wzQ1bj6PAUnrbkI8pnbXeuTeq
+ GxP12dbmuxxUWTtXUc9BGR2ohigN1UZVt98j+Ln0AsIj58lB5/DFtX5pl1OI7Dzc23hN
+ 9l0vW9vpEWwqG8bcYONAFN/6pvKke8gfTVJ3haUOTrYhiTBgawbXOznN0VekO1yPMTCZ
+ Zcvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=jiX7X0M+t1Zm8HAFufsMGCFO60ftU2nIQxPg0v/LgAc=;
- b=OTsE4CkgRISMB5UE+F+BndSjoadAveQxX1Eqy7coAn20QueD+Pec4RPhAPJBB4+vk2
- 4LOTNAEu5gYdub+Bq+6HKM9iEEbq8A2S/NyevgkLNNob3YSTkkzmvJ8nivoDP8A19jAB
- +Blb3/BooxP/2PozGt0tAEwgzc6DOh8ltc4ZtJYMCBBNArlbzK+WrK8z1ZYZkyYaY30B
- vIx7yozMAI835xGbSOfVec2puEuI4wzzl1ke7gsfo07dTGB9fu03mIC+BlqdgEu2zp4r
- kV29dZ0xYFZ/Sl3/tFT6haHK9RqwWcmX42roPXXql49ZqzJ96a02iSVeXx0Df2GOepmm
- NhiA==
-X-Gm-Message-State: AOAM530GnpuUn/qThMEIdEtGgdWoS+VH5bV/WNylUU57vT0IggjsKWtk
- k7zzjiYdmanE90EqhYBVQLI=
-X-Google-Smtp-Source: ABdhPJxXd+xHoijDXHWXCpESq3QScnr52RJTaYoIeNrrPXha9fSumedEDetlZ8LG7s+FBw7CiQ3N9Q==
-X-Received: by 2002:a05:600c:2351:: with SMTP id
- 17mr7340043wmq.2.1613570881854; 
- Wed, 17 Feb 2021 06:08:01 -0800 (PST)
-Received: from localhost.localdomain (67.red-83-54-30.dynamicip.rima-tde.net.
- [83.54.30.67])
- by smtp.gmail.com with ESMTPSA id n66sm3274099wmn.25.2021.02.17.06.08.00
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 17 Feb 2021 06:08:01 -0800 (PST)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: sboyd@kernel.org
-Subject: [PATCH v8 6/6] MAINTAINERS: add MT7621 CLOCK maintainer
-Date: Wed, 17 Feb 2021 15:07:52 +0100
-Message-Id: <20210217140752.15712-7-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210217140752.15712-1-sergio.paracuellos@gmail.com>
-References: <20210217140752.15712-1-sergio.paracuellos@gmail.com>
-MIME-Version: 1.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=tkR3nWvQ+KA65XhBWc3ZlKt+YgDPlZLa5MC3BGSdyyQ=;
+ b=oCvXak8OhvZFGcRfex9a8N5UUmPDcM8aHaLxgBI7bK4HxDlgOcI9WxTe2ezIUFSc7L
+ K/eag5H1nu39O7zkxmO9jw3MLOO/roGctRb0dgSs72+P9o0YNRp7xDcggpmuwXB4Gtm5
+ p7ce03IQgD1wjKe1TLCEbCrWjVtF1Cl3McngicNVhL5Tq1tb3xvBzP6V4Ojc7471j6fJ
+ Rk5/6KNVVjCmIcI7gP1sKR9+03nKEC+L/andnM8FAbalFqTnEJUlRoQ0ONHgBwtvlkSm
+ Fnx2KiBC1evhCuqNhwjTWiNmkXvoJFJDtfCm/295Xqa23LWicg5IjiQ1yTd2+l9XRqer
+ qmag==
+X-Gm-Message-State: AOAM532FDpE+Nwq4nX7wVcN5RWoJiSQSl8t3FNvWsHUi7VeKRCmd+ZGl
+ +qCL8FKUrZbIM7iJb0vGedo=
+X-Google-Smtp-Source: ABdhPJwCqI/M4I79QFL+Lt06dPO+AT9Bsbu9mQ8wmy9KrLsNWG2u5Zz4kfkQCYP0Xu4xUJgf0sdq1A==
+X-Received: by 2002:a63:9314:: with SMTP id b20mr23841434pge.411.1613571647606; 
+ Wed, 17 Feb 2021 06:20:47 -0800 (PST)
+Received: from rayare.domain.name ([106.51.141.71])
+ by smtp.googlemail.com with ESMTPSA id w196sm2704814pfd.23.2021.02.17.06.20.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Feb 2021 06:20:47 -0800 (PST)
+From: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
+To: 
+Subject: [PATCH] drivers: staging: comedi: Fixed side effects from macro
+ definition.
+Date: Wed, 17 Feb 2021 19:50:05 +0530
+Message-Id: <20210217142008.29699-1-chakravarthikulkarni2021@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,41 +84,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- tsbogend@alpha.franken.de, gregkh@linuxfoundation.org,
- linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- john@phrozen.org, neil@brown.name, linux-clk@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Ethan Edwards <ethancarteredwards@gmail.com>,
+ Ian Abbott <abbotti@mev.co.uk>, chakravarthikulkarni2021@gmail.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Adding myself as maintainer for mt7621 clock driver.
+Warning found by checkpatch.pl script.
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Signed-off-by: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
 ---
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/staging/comedi/comedi.h | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 809a68af5efd..be5ada6b4309 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -11288,6 +11288,12 @@ L:	linux-wireless@vger.kernel.org
- S:	Maintained
- F:	drivers/net/wireless/mediatek/mt7601u/
+diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
+index b5d00a006dbb..b2af6a88d389 100644
+--- a/drivers/staging/comedi/comedi.h
++++ b/drivers/staging/comedi/comedi.h
+@@ -1103,9 +1103,12 @@ enum ni_common_signal_names {
  
-+MEDIATEK MT7621 CLOCK DRIVER
-+M:	Sergio Paracuellos <sergio.paracuellos@gmail.com>
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/clock/mediatek,mt7621-clk.yaml
-+F:	drivers/clk/ralink/clk-mt7621.c
-+
- MEDIATEK MT7621/28/88 I2C DRIVER
- M:	Stefan Roese <sr@denx.de>
- L:	linux-i2c@vger.kernel.org
+ /* *** END GLOBALLY-NAMED NI TERMINALS/SIGNALS *** */
+ 
+-#define NI_USUAL_PFI_SELECT(x)	(((x) < 10) ? (0x1 + (x)) : (0xb + (x)))
+-#define NI_USUAL_RTSI_SELECT(x)	(((x) < 7) ? (0xb + (x)) : 0x1b)
+-
++#define NI_USUAL_PFI_SELECT(x) \
++	({ typeof(x) _x = x; \
++	 (((_x) < 10) ? (0x1 + (_x)) : (0xb + (_x))); })
++#define NI_USUAL_RTSI_SELECT(x)	\
++	({ typeof(x) _x = x; \
++	 (((_x) < 7) ? (0xb + (_x)) : 0x1b); })
+ /*
+  * mode bits for NI general-purpose counters, set with
+  * INSN_CONFIG_SET_COUNTER_MODE
 -- 
-2.25.1
+2.17.1
 
 _______________________________________________
 devel mailing list
