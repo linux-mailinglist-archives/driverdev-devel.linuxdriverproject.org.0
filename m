@@ -1,76 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDF9C31E877
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:29:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59E1A31E883
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:42:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CD847864A6;
-	Thu, 18 Feb 2021 10:29:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 50A5B60635
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:42:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RoPfyX-7677h; Thu, 18 Feb 2021 10:29:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YW4Kc3RrJVeo for <lists+driverdev-devel@lfdr.de>;
+	Thu, 18 Feb 2021 10:42:22 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 7FF3960642; Thu, 18 Feb 2021 10:42:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8899486448;
-	Thu, 18 Feb 2021 10:29:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 721AD6059A;
+	Thu, 18 Feb 2021 10:42:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A0BC41BF2B9
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:28:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AB2191BF2B9
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:41:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9DAD286451
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:28:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A7E7586F67
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:41:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UUl4jHEj8Jhn for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 10:28:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com
- [209.85.216.47])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9BAB486448
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:28:57 +0000 (UTC)
-Received: by mail-pj1-f47.google.com with SMTP id my11so2670662pjb.1
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 02:28:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=Y+cLMPGA1ovWbd6aZihF/dFMXZT41mz8HPHEusHOvRE=;
- b=nJcr/LSt0ixdNwqvQgze/hwDVq66IFQJomqsDqUvLovainOKHIdoapFNhkMpp38gmR
- st9HlD2OoGMhHlVSEuaRJ4BOoHm1pUThRRKW1aUpDUbySFhO+AAAdcjKv+sqKysMREI6
- Tycda8CKlbHeHsmhiCW1ARzMimX7d9ifUiozXYW0OJ3NLLGQP2uVwasMM88q8joF0+yz
- +HXB8V1ZDcDsuLxedxVTKaHVUW3eDpA/mJ5uuoeaCbBraZovrnnq+mbJgEP7ANmEzbBV
- QdpgDwJbbXBmLuwMeE2AumRqif86Bp3swM6XZmLL9vpqv3JtL7I0Xwl0bVW+wGuYz3xm
- A1ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=Y+cLMPGA1ovWbd6aZihF/dFMXZT41mz8HPHEusHOvRE=;
- b=OAxqgnE17k9A2gR0MIeJKb2vvDYR28a2DhyLK41xpO59TWUUoYYmrzrvY8Ib0/r+nT
- elnmvQTML9qHHtOeciVOVE/3kkAmG7kjm5D3sd9Efqthg4f4eSuaJpI1b6QZxcRyo5Ks
- OsQQPyZg1/+PByzM5DGV4xBNFBlaLtoqAKbj+qJxTiSTAXY8xr0awKf13D2rsZf1hhfr
- kuA8o3Iua0LETlkjMRZ6BZMOqBayJm29UPNpaveSPg7QZxDbpeYKedhANCpOAak1aZAZ
- aI38FNKJ5Inz5Sx89KhAwRIDxg2CT+LKrjRS5sY7ahsBZG+MBHLECqpWNs4NQnjhKYzd
- eGuQ==
-X-Gm-Message-State: AOAM5322H3PPmW7EMr80R2zrwCmtf3r1wcJkLQ5+foXtvRTzrJ9YkVer
- HxoUfqPFQEgFEcc1ykFuYxpVqX+9n5KSnmJf
-X-Google-Smtp-Source: ABdhPJyXFfWod8W9CGiCjVEvPDlmUemJyL0QZwm6apZ+Rs2UVDm96wFBZFmM+oxIwbAC9Ytio/3DqA==
-X-Received: by 2002:a17:902:7b89:b029:e1:1b46:bcec with SMTP id
- w9-20020a1709027b89b02900e11b46bcecmr3641890pll.5.1613644137152; 
- Thu, 18 Feb 2021 02:28:57 -0800 (PST)
-Received: from gmail.com ([2401:4900:3847:831e:5f3:b644:ce80:c8ab])
- by smtp.gmail.com with ESMTPSA id g68sm6271235pfb.29.2021.02.18.02.28.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Feb 2021 02:28:56 -0800 (PST)
-Date: Thu, 18 Feb 2021 15:58:51 +0530
-From: Prakash Dubey <prakashdubey1999@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: fwserial: Fix alignment of function parameters
-Message-ID: <20210218102851.GA20810@gmail.com>
+ with ESMTP id Qq3-SScSAKXM for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 10:41:51 +0000 (UTC)
+X-Greylist: delayed 00:10:34 by SQLgrey-1.7.6
+Received: from smtp85.ord1d.emailsrvr.com (smtp85.ord1d.emailsrvr.com
+ [184.106.54.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C42A686E88
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:41:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1613644276;
+ bh=8ZWVQO/9PZxft2IdiNPG2quxmA7J4sIfRwugGqJyqUA=;
+ h=Subject:To:From:Date:From;
+ b=OvFu9kgNuzR1i/BkRnPVIovr4XZOMmk3qHLM0i/meDCEyGqqINMiXVZnGgFJzU/tJ
+ rL7w2f2Z8f7z8Y4rvfJrnIjmkawzh4oVfVHFDhAorcciNZn9T0Z99w+S5wTNBoEONe
+ Kib78/o2GqtVADGYAihe+PPZKxjZ+r3P0ySbjQe8=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1613644276;
+ bh=8ZWVQO/9PZxft2IdiNPG2quxmA7J4sIfRwugGqJyqUA=;
+ h=Subject:To:From:Date:From;
+ b=Kuns5u1VNsImKPNCPbcBOcBy+5f+p4x8xHmWrbk8dAM/MK8RYVqWiXncROPH0YVJy
+ pGGrXM810BJyCRAuxVXA1ace0G1TDhVVFA0AgfYttltGhd6WTQ4UY4SlRAUFImbr2F
+ WhDpNI0Pzcr3VBQGntUwp5bZJxzMIdyEfgkJYivA=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp3.relay.ord1d.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 0F9A8601CC; 
+ Thu, 18 Feb 2021 05:31:15 -0500 (EST)
+Subject: Re: [PATCH v2 1/2] staging: comedi: cast function output to assigned
+ variable type
+To: Atul Gopinathan <atulgopinathan@gmail.com>, gregkh@linuxfoundation.org
+References: <20210218084404.16591-1-atulgopinathan@gmail.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <8f73b7a1-02dd-32ef-8115-ad0f38868692@mev.co.uk>
+Date: Thu, 18 Feb 2021 10:31:15 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
+In-Reply-To: <20210218084404.16591-1-atulgopinathan@gmail.com>
+Content-Language: en-GB
+X-Classification-ID: 23395ef8-f0af-4618-b651-66986ee57ebb-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,38 +80,56 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the following checkpatch.pl check:
+On 18/02/2021 08:44, Atul Gopinathan wrote:
+> Fix the following warning generated by sparse:
+> 
+> drivers/staging//comedi/comedi_fops.c:2956:23: warning: incorrect type in assignment (different address spaces)
+> drivers/staging//comedi/comedi_fops.c:2956:23:    expected unsigned int *chanlist
+> drivers/staging//comedi/comedi_fops.c:2956:23:    got void [noderef] <asn:1> *
+> 
+> compat_ptr() has a return type of "void __user *"
+> as defined in "include/linux/compat.h"
+> 
+> cmd->chanlist is of type "unsigned int *" as defined
+> in drivers/staging/comedi/comedi.h" in struct
+> comedi_cmd.
+> 
+> Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
+> ---
+>   drivers/staging/comedi/comedi_fops.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+> index e85a99b68f31..fc4ec38012b4 100644
+> --- a/drivers/staging/comedi/comedi_fops.c
+> +++ b/drivers/staging/comedi/comedi_fops.c
+> @@ -2953,7 +2953,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
+>   	cmd->scan_end_arg = v32.scan_end_arg;
+>   	cmd->stop_src = v32.stop_src;
+>   	cmd->stop_arg = v32.stop_arg;
+> -	cmd->chanlist = compat_ptr(v32.chanlist);
+> +	cmd->chanlist = (unsigned int __force *)compat_ptr(v32.chanlist);
+>   	cmd->chanlist_len = v32.chanlist_len;
+>   	cmd->data = compat_ptr(v32.data);
+>   	cmd->data_len = v32.data_len;
+> 
 
-CHECK: Alignment should match open parenthesis
+This patch and the other one in your series clash with commit 
+9d5d041eebe3 ("staging: comedi: comedi_fops.c: added casts to get rid of 
+sparse warnings") by B K Karthik.
 
-Signed-off-by: Prakash Dubey <prakashdubey1999@gmail.com>
----
- drivers/staging/fwserial/fwserial.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9d5d041eebe3dcf7591ff7004896c329eb841ca6
 
-diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-index c368082aae1a..a92741b8b6c6 100644
---- a/drivers/staging/fwserial/fwserial.c
-+++ b/drivers/staging/fwserial/fwserial.c
-@@ -1318,8 +1318,8 @@ static int fwtty_break_ctl(struct tty_struct *tty, int state)
- 	if (state == -1) {
- 		set_bit(STOP_TX, &port->flags);
- 		ret = wait_event_interruptible_timeout(port->wait_tx,
--					       !test_bit(IN_TX, &port->flags),
--					       10);
-+							!test_bit(IN_TX, &port->flags),
-+							10);
- 		if (ret == 0 || ret == -ERESTARTSYS) {
- 			clear_bit(STOP_TX, &port->flags);
- 			fwtty_restart_tx(port);
 -- 
-2.25.1
-
+-=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
+-=( registered in England & Wales.  Regd. number: 02862268.  )=-
+-=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
+-=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
