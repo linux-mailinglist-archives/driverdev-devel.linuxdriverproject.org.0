@@ -1,82 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9848731EE35
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 19:25:26 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA08C31EE3D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 19:29:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0DAE360694
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 18:25:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 31D0E868B4;
+	Thu, 18 Feb 2021 18:29:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W-DMQW9TMYqo for <lists+driverdev-devel@lfdr.de>;
-	Thu, 18 Feb 2021 18:25:21 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 441BA60688; Thu, 18 Feb 2021 18:25:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UNA2wO5w76Bm; Thu, 18 Feb 2021 18:29:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 33B9360673;
-	Thu, 18 Feb 2021 18:24:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 99DA08625F;
+	Thu, 18 Feb 2021 18:29:46 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D80031BF33A
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 18:24:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A7E491BF33A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:29:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D3B33873CA
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 18:24:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A113387351
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:29:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id raqOWugqzAsw for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 18:24:34 +0000 (UTC)
+ with ESMTP id wxnRyDDKVr9F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:29:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f170.google.com (mail-pf1-f170.google.com
- [209.85.210.170])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9FE87873CF
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 18:24:34 +0000 (UTC)
-Received: by mail-pf1-f170.google.com with SMTP id m6so1887095pfk.1
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:24:34 -0800 (PST)
+Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com
+ [209.85.214.169])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0E0F187349
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:29:44 +0000 (UTC)
+Received: by mail-pl1-f169.google.com with SMTP id a24so1698836plm.11
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 10:29:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nmYatdd9Kvf8g3bNRTakGJ8JnaKdh6hW5vuFhAf8L1w=;
- b=Q+LFMDuMt+asXUyu4RIxtSVL/rO0zZkcfVys/19i83XSrTlLf0JoHpryNuQUpjsQGV
- WzN2YjYzVAkxD6GGhW4FnDJrEIyU7suLhi0GKiVgrqhfaw13HuKd5+xZwBc0/4RKy8F7
- 4hJEULvZfezon9W3GHupqWIb89eSVNM0btvavj+VKXFx+lCgom4uF0GGnbj8oH2W7HRq
- XfBSxYE5wrlunha4JA6Fv7wBL7/DXqv0ndNIUH+p++kyUdCbtVxPr0gDdfJfZv43nSsc
- OmYO7PVR/mK7b/6/rDbSWQNqR6FRSndEpz7kIGla1eIK3dtpajuW6iJ/TE+YOrChy/Iu
- uK6A==
+ h=date:from:subject:to:message-id:in-reply-to:references:mime-version;
+ bh=MWOzSkwpWhDdpE2dkjPkQG+1sa2FX0n46Lp8hXOM6es=;
+ b=XflAOJq9bREhpnXO3WosRsmK6B9gHxTDw8Rlq/vJCo2aFQiufw/GSDPWyDjx1tNb4E
+ TDm57Cwh6l5WAMT2RxqRXAVJpqG84Mpc+Za0lr/T+xV6fX1XCCeePsnhj72Q/uULOK+G
+ kjV0IEsycAdqAi9hHz/iTCtrLx1VcriD5/27fFu1UXS6zPoHS+pgqe/W0CBb2HNywSXL
+ pzq1S8sLSZt7LLuIO908hiPZSBZa1kp1gu2QS06yXXvYsFyNskaVxDbxSXdVR8gVsy96
+ wh6Lts1JGXv/0Hu2ucZ8DGknTIFBcHJxHuZdDm8/DTLRf8zkohbS+K343/Si3KWDvxFf
+ 31bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nmYatdd9Kvf8g3bNRTakGJ8JnaKdh6hW5vuFhAf8L1w=;
- b=Zi+HkwDXeDLkPPwwH3KT3ru/nMW8iUbpzurzvRtoR1gG/apAy6Cq1prHxliv5xgWwy
- IroddNH5+dNGg/h1qojThCA7TBgxdmT8Z9ctBRbdSrVk/SducqqCi2d2wlkprYTDrdzj
- 8qMJIOJ8kTAmIFWTgDhUQjrWsok9SW5HfTn+3Nrq1pZb2xPWlhcDZjSqlr+lWmh6LvHN
- vUbUh5C6ImatDl8LZ50wpiyi6XaA/WTOcd0RHZ3yxo/mtqxgEEXnV7KkVrfOppYMOcOt
- ZOjcYBZw0zekXmUNUNWsc4O71jPesTDDKuribS/Fr8gpFYrXdVEy4mkqzpYBm/CfuVBR
- DOGQ==
-X-Gm-Message-State: AOAM530Ae75QwZqJWt2VNUla78VsXy5kLtzCO6FuH9ihrR1Xn4FO8CS8
- rLHfzIKkFe6F3M1lm9A2XYA=
-X-Google-Smtp-Source: ABdhPJxkCcgci/1ZZN4IINUm8J3Sz606oKW6ZItoR8ELQUIZr7S/s865+Dh8wNz4KB9wLBQwMZV4+Q==
-X-Received: by 2002:a62:e808:0:b029:1e5:f10a:e6d8 with SMTP id
- c8-20020a62e8080000b02901e5f10ae6d8mr5521210pfi.23.1613672674180; 
- Thu, 18 Feb 2021 10:24:34 -0800 (PST)
-Received: from localhost ([115.96.167.252])
- by smtp.gmail.com with ESMTPSA id c26sm7988281pfj.183.2021.02.18.10.24.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Feb 2021 10:24:33 -0800 (PST)
-From: Suryashankar Das <suryashankardas.2002@gmail.com>
-To: gregkh@linuxfoundation.org,
-	Larry.Finger@lwfinger.net
-Subject: [PATCH] staging: rtl8188eu: Format comments
-Date: Thu, 18 Feb 2021 23:54:15 +0530
-Message-Id: <20210218182414.49107-1-suryashankardas.2002@gmail.com>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <YC6oONjckmrSP2ip@kroah.com>
-References: <YC6oONjckmrSP2ip@kroah.com>
+ h=x-gm-message-state:date:from:subject:to:message-id:in-reply-to
+ :references:mime-version;
+ bh=MWOzSkwpWhDdpE2dkjPkQG+1sa2FX0n46Lp8hXOM6es=;
+ b=bAxub77/F846eTV6w9eRRGHWqJTdNlAaQM+X3k46UPrkCL0qAJOfDtUjwQfu3rtnA1
+ iz4FVrB0b/EHJKh7PvqoEZksxyAHaMa+pew731dLl6bwVGTcDfQK1iCfEcK3dYMueAjF
+ 1ObYjyOB1z0I7Dw8mTjSn1aVG6jY2kh9vdo1OuyV7TO270Jao66YzhkA8eX4JR5Ze3r+
+ gzTL5wG5VBUyI1vahoz0/8q0svqWgObLtZqMKn54PCQBPV3LFX2O+ftNzrZtAKm9R6Yr
+ S74REUYyZjUrIkvieMro6lCWL677mWNkGnBe8pPUDXy7akHcJB91xOrvaBSQxAD/vST4
+ a8Xg==
+X-Gm-Message-State: AOAM532tJ+8tQUpbNrOBU5eYhfmM0D0T4xG8MGHqmpRMD7QZp3n9BPsq
+ yJHGCBSiy+K4Jr/r1QKzRYgvzFuznhVc
+X-Google-Smtp-Source: ABdhPJwCtaHUAtTjHJILirCCH8enZdWN9dTBzndin0ALQwlk1gPiAcMmbiLXzjbpZ5cDUxbyb2mFVw==
+X-Received: by 2002:a17:902:10a:b029:e2:e8f7:2988 with SMTP id
+ 10-20020a170902010ab02900e2e8f72988mr5181737plb.4.1613672983272; 
+ Thu, 18 Feb 2021 10:29:43 -0800 (PST)
+Received: from chill ([2405:201:7000:69ad:34c5:7e1d:737:8f71])
+ by smtp.gmail.com with ESMTPSA id t15sm6104282pjy.37.2021.02.18.10.29.41
+ for <driverdev-devel@linuxdriverproject.org>
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Feb 2021 10:29:42 -0800 (PST)
+Date: Thu, 18 Feb 2021 23:59:34 +0530
+From: roz <oroz3x@gmail.com>
+Subject: Re: [PATCH v4] ks7010: enclose non-trivial defines in parentheses
+To: driverdev-devel@linuxdriverproject.org
+Message-Id: <A1MQOQ.EDMUBBX5O0OU1@gmail.com>
+In-Reply-To: <20210215132701.42748-1-oroz3x@gmail.com>
+References: <20210215132701.42748-1-oroz3x@gmail.com>
+X-Mailer: geary/3.38.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,122 +91,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Suryashankar Das <suryashankardas.2002@gmail.com>,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the checkpatch.pl warnings:
-WARNING: Block comments use * on subsequent lines
-WARNING: Block comments should align the * on each line
+Hi,
 
-Signed-off-by: Suryashankar Das <suryashankardas.2002@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_security.c | 72 ++++++++-----------
- 1 file changed, 29 insertions(+), 43 deletions(-)
+I wanted to check the status on the following patch.
+I wanted the result for eudyptula task 10 submission.
+It would be great if i can check if the mail is being
+processed or rejected. I appologise for any troubles.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
-index 46ba55a8952a..da26a3c705f8 100644
---- a/drivers/staging/rtl8188eu/core/rtw_security.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_security.c
-@@ -126,9 +126,7 @@ static __le32 getcrc32(u8 *buf, int len)
- 	return cpu_to_le32(~crc);    /* transmit complement, per CRC-32 spec */
- }
- 
--/*
--	Need to consider the fragment  situation
--*/
-+/* Need to consider the fragment  situation */
- void rtw_wep_encrypt(struct adapter *padapter, struct xmit_frame *pxmitframe)
- {
- 	int	curfragnum, length;
-@@ -465,23 +463,17 @@ static const unsigned short Sbox1[2][256] = {  /* Sbox for hash (can be in ROM)
-   }
- };
- 
-- /*
--**********************************************************************
--* Routine: Phase 1 -- generate P1K, given TA, TK, IV32
--*
--* Inputs:
--*     tk[]      = temporal key			 [128 bits]
--*     ta[]      = transmitter's MAC address	    [ 48 bits]
--*     iv32      = upper 32 bits of IV		  [ 32 bits]
--* Output:
--*     p1k[]     = Phase 1 key			  [ 80 bits]
--*
--* Note:
--*     This function only needs to be called every 2**16 packets,
--*     although in theory it could be called every packet.
--*
--**********************************************************************
--*/
-+/**
-+ * phase1() - generate P1K, given TA, TK, IV32
-+ * @tk[]: temporal key [128 bits]
-+ * @ta[]: transmitter's MAC address [ 48 bits]
-+ * @iv32: upper 32 bits of IV [ 32 bits]
-+ *
-+ * This function only needs to be called every 2**16 packets,
-+ * although in theory it could be called every packet.
-+ *
-+ * Return: p1k[] - Phase 1 key [ 80 bits]
-+ */
- static void phase1(u16 *p1k, const u8 *tk, const u8 *ta, u32 iv32)
- {
- 	int  i;
-@@ -504,29 +496,23 @@ static void phase1(u16 *p1k, const u8 *tk, const u8 *ta, u32 iv32)
- 	}
- }
- 
--/*
--**********************************************************************
--* Routine: Phase 2 -- generate RC4KEY, given TK, P1K, IV16
--*
--* Inputs:
--*     tk[]      = Temporal key			 [128 bits]
--*     p1k[]     = Phase 1 output key		   [ 80 bits]
--*     iv16      = low 16 bits of IV counter	    [ 16 bits]
--* Output:
--*     rc4key[]  = the key used to encrypt the packet   [128 bits]
--*
--* Note:
--*     The value {TA, IV32, IV16} for Phase1/Phase2 must be unique
--*     across all packets using the same key TK value. Then, for a
--*     given value of TK[], this TKIP48 construction guarantees that
--*     the final RC4KEY value is unique across all packets.
--*
--* Suggested implementation optimization: if PPK[] is "overlaid"
--*     appropriately on RC4KEY[], there is no need for the final
--*     for loop below that copies the PPK[] result into RC4KEY[].
--*
--**********************************************************************
--*/
-+/**
-+ * phase2() - generate RC4KEY, given TK, P1K, IV16
-+ * @tk[]: Temporal key [128 bits]
-+ * @p1k[]: Phase 1 output key [ 80 bits]
-+ * @iv16: low 16 bits of IV counter [ 16 bits]
-+ *
-+ * The value {TA, IV32, IV16} for Phase1/Phase2 must be unique
-+ * across all packets using the same key TK value. Then, for a
-+ * given value of TK[], this TKIP48 construction guarantees that
-+ * the final RC4KEY value is unique across all packets.
-+ *
-+ * Suggested implementation optimization: if PPK[] is "overlaid"
-+ * appropriately on RC4KEY[], there is no need for the final
-+ * for loop below that copies the PPK[] result into RC4KEY[].
-+ *
-+ * Return: rc4key[] - the key used to encrypt the packet [128 bits]
-+ */
- static void phase2(u8 *rc4key, const u8 *tk, const u16 *p1k, u16 iv16)
- {
- 	int  i;
--- 
-2.30.1
+
+On Mon, Feb 15, 2021 at 6:57 pm, shivang upadhyay <oroz3x@gmail.com> 
+wrote:
+> 
+> Checkpatch complains that parentheses are missing:
+> "Macros with complex values should be enclosed in parentheses".
+> Fixed that.
+> 
+> Signed-off-by: shivang upadhyay <oroz3x@gmail.com>
+> ---
+> 
+> Previous versions of the patch were rejected due to lack of
+> discription in patch emails.
+> 
+>  drivers/staging/ks7010/ks_hostif.h | 24 ++++++++++++------------
+>  1 file changed, 12 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/staging/ks7010/ks_hostif.h 
+> b/drivers/staging/ks7010/ks_hostif.h
+> index 39138191a556..c62a494ed6bb 100644
+> --- a/drivers/staging/ks7010/ks_hostif.h
+> +++ b/drivers/staging/ks7010/ks_hostif.h
+> @@ -498,20 +498,20 @@ struct hostif_mic_failure_request {
+>  #define TX_RATE_FIXED		5
+> 
+>  /* 11b rate */
+> -#define TX_RATE_1M	(u8)(10 / 5)	/* 11b 11g basic rate */
+> -#define TX_RATE_2M	(u8)(20 / 5)	/* 11b 11g basic rate */
+> -#define TX_RATE_5M	(u8)(55 / 5)	/* 11g basic rate */
+> -#define TX_RATE_11M	(u8)(110 / 5)	/* 11g basic rate */
+> +#define TX_RATE_1M	((u8)(10 / 5))	/* 11b 11g basic rate */
+> +#define TX_RATE_2M	((u8)(20 / 5))	/* 11b 11g basic rate */
+> +#define TX_RATE_5M	((u8)(55 / 5))	/* 11g basic rate */
+> +#define TX_RATE_11M	((u8)(110 / 5))	/* 11g basic rate */
+> 
+>  /* 11g rate */
+> -#define TX_RATE_6M	(u8)(60 / 5)	/* 11g basic rate */
+> -#define TX_RATE_12M	(u8)(120 / 5)	/* 11g basic rate */
+> -#define TX_RATE_24M	(u8)(240 / 5)	/* 11g basic rate */
+> -#define TX_RATE_9M	(u8)(90 / 5)
+> -#define TX_RATE_18M	(u8)(180 / 5)
+> -#define TX_RATE_36M	(u8)(360 / 5)
+> -#define TX_RATE_48M	(u8)(480 / 5)
+> -#define TX_RATE_54M	(u8)(540 / 5)
+> +#define TX_RATE_6M	((u8)(60 / 5))	/* 11g basic rate */
+> +#define TX_RATE_12M	((u8)(120 / 5))	/* 11g basic rate */
+> +#define TX_RATE_24M	((u8)(240 / 5))	/* 11g basic rate */
+> +#define TX_RATE_9M	((u8)(90 / 5))
+> +#define TX_RATE_18M	((u8)(180 / 5))
+> +#define TX_RATE_36M	((u8)(360 / 5))
+> +#define TX_RATE_48M	((u8)(480 / 5))
+> +#define TX_RATE_54M	((u8)(540 / 5))
+> 
+>  static inline bool is_11b_rate(u8 rate)
+>  {
+> --
+> 2.27.0
+> 
+
 
 _______________________________________________
 devel mailing list
