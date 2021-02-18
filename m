@@ -1,63 +1,98 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3C0531EBB5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 16:47:20 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1799F31EBDF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 16:55:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2513B87357;
-	Thu, 18 Feb 2021 15:47:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EAF5D60664
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 15:55:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wZlKLNZnjpMo; Thu, 18 Feb 2021 15:47:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eTPDNS7ThWCH for <lists+driverdev-devel@lfdr.de>;
+	Thu, 18 Feb 2021 15:55:00 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id F3534605A1; Thu, 18 Feb 2021 15:54:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 48BA187316;
-	Thu, 18 Feb 2021 15:47:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 95B8C60683;
+	Thu, 18 Feb 2021 15:52:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B71EF1BF391
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 15:47:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 22EE51BF391
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 15:52:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B350786EA3
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 15:47:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1F5E386EA6
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 15:52:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fyuQSIO9G-YN for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 15:47:14 +0000 (UTC)
+ with ESMTP id ytal9PWT4rrE for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 15:52:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4CDA986EA0
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 15:47:14 +0000 (UTC)
-Received: from [IPv6:2a01:e0a:4cb:a870:851a:1dfb:a143:80e] (unknown
- [IPv6:2a01:e0a:4cb:a870:851a:1dfb:a143:80e])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id AFFDF1F45D55;
- Thu, 18 Feb 2021 15:47:10 +0000 (GMT)
-Subject: Re: [PATCH v1 18/18] arm64: dts: imx8mq: Add node to G2 hardware
-To: Ezequiel Garcia <ezequiel@collabora.com>, p.zabel@pengutronix.de,
- mchehab@kernel.org, robh+dt@kernel.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com, gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- krzk@kernel.org, shengjiu.wang@nxp.com, adrian.ratiu@collabora.com,
- aisheng.dong@nxp.com, peng.fan@nxp.com, Anson.Huang@nxp.com,
- hverkuil-cisco@xs4all.nl
-References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
- <20210217080306.157876-19-benjamin.gaignard@collabora.com>
- <b7338896a344ac06f41d782b6b56db227e359348.camel@collabora.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <49b162a6-5b13-5b55-4c84-2d6e354a8ad4@collabora.com>
-Date: Thu, 18 Feb 2021 16:47:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2B88F86EA4
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 15:52:12 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11IFfXiG164203;
+ Thu, 18 Feb 2021 15:52:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=EckJQMJCIrN0lgGMXmDPFBCLlGKJ6+RiOfY/TQd09T0=;
+ b=Be2Rt6vZJe/tUxWhefIS/tlesADf2JYUrjVcHNv7jDP/MttIIG3sQpX7VvK6xhnZLVlL
+ vu3/fVwnNDJWPNu644C6Myl8rwoO/GiXskRXgP7WtA56nW+T4OnL6xZKzIQAyMgUCRbE
+ 7xCIGI9Hdhtw1pydDlUGGw0HAFkaXA+aV5Nvwg0o2klRL//bVK1VbOoHeRe+Ti4/q/gr
+ 1b4k2kzoPJwegI56WEJDfsBnK3Wl+8GG+P1kfFZ2Q8QuIriW+PNZLLP70TR9VzrTHsme
+ /3KFGitWA5j4ImluALoaSuZ9r7WERqkvNWSdc7Q/0WGgpDzSBU74Ffr2YAZ00/2fCGGy IA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 36p49bej91-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 18 Feb 2021 15:52:12 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11IFoTiJ115432;
+ Thu, 18 Feb 2021 15:52:10 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 36prbqx0v3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 18 Feb 2021 15:52:10 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11IFq8MT022652;
+ Thu, 18 Feb 2021 15:52:09 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 18 Feb 2021 07:52:08 -0800
+Date: Thu, 18 Feb 2021 18:51:59 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Atul Gopinathan <atulgopinathan@gmail.com>
+Subject: Re: [PATCH v2 1/2] staging: comedi: cast function output to assigned
+ variable type
+Message-ID: <20210218155159.GL2087@kadam>
+References: <20210218084404.16591-1-atulgopinathan@gmail.com>
+ <8f73b7a1-02dd-32ef-8115-ad0f38868692@mev.co.uk>
+ <20210218104755.GA7571@atulu-nitro> <YC5bsXa+1KSuIh+v@kroah.com>
+ <20210218125220.GA19456@atulu-nitro>
 MIME-Version: 1.0
-In-Reply-To: <b7338896a344ac06f41d782b6b56db227e359348.camel@collabora.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210218125220.GA19456@atulu-nitro>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9898
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102180139
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9898
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ priorityscore=1501
+ lowpriorityscore=0 bulkscore=0 impostorscore=0 mlxlogscore=999
+ adultscore=0 malwarescore=0 phishscore=0 clxscore=1011 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2102180138
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,95 +105,106 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkxlIDE3LzAyLzIwMjEgw6AgMjE6NDMsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+IE9u
-IFdlZCwgMjAyMS0wMi0xNyBhdCAwOTowMyArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6
-Cj4+IFNwbGl0IFZQVSBub2RlIGluIHR3bzogb25lIGZvciBHMSBhbmQgb25lIGZvciBHMiBzaW5j
-ZSB0aGV5IGFyZQo+PiBkaWZmZXJlbnQgaGFyZHdhcmUgYmxvY2tzLgo+Pgo+PiBTaWduZWQtb2Zm
-LWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4K
-Pj4gLS0tCj4+ICDCoGFyY2gvYXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpIHwg
-NDMgKysrKysrKysrKysrKysrKystLS0tLS0KPj4gIMKgMSBmaWxlIGNoYW5nZWQsIDMzIGluc2Vy
-dGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9i
-b290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVz
-Y2FsZS9pbXg4bXEuZHRzaQo+PiBpbmRleCBkOWQ5ZWZjODU5MmQuLjNjYWIzZjBiOTEzMSAxMDA2
-NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kKPj4g
-KysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kKPj4gQEAgLTEy
-ODcsMTcgKzEyODcsMTYgQEAgdnB1X3Jlc2V0OiB2cHUtcmVzZXRAMzgzMjAwMDAgewo+PiAgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgI3Jlc2V0LWNlbGxz
-ID0gPDE+Owo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+PiAgIAo+PiAt
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdnB1OiB2aWRlby1jb2RlY0AzODMwMDAwMCB7
-Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfZzE6IHZpZGVvLWNvZGVjQDM4
-MzAwMDAwIHsKPj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoGNvbXBhdGlibGUgPSAibnhwLGlteDhtcS12cHUiOwo+PiAtwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJlZyA9IDwweDM4MzAwMDAwIDB4MTAwMDA+LAo+
-PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgPDB4MzgzMTAwMDAgMHgxMDAwMD47Cj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgcmVnLW5hbWVzID0gImcxIiwgImcyIjsKPj4gLcKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHRzID0gPEdJQ19TUEkg
-NyBJUlFfVFlQRV9MRVZFTF9ISUdIPiwKPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPEdJQ19TUEkgOCBJUlFf
-VFlQRV9MRVZFTF9ISUdIPjsKPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqBpbnRlcnJ1cHQtbmFtZXMgPSAiZzEiLCAiZzIiOwo+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJlZyA9IDwweDM4MzAwMDAwIDB4MTAw
-MDA+Owo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJl
-Zy1uYW1lcyA9ICJnMSI7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDcgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50ZXJydXB0
-LW5hbWVzID0gImcxIjsKPj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoGNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+PiAtwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD47Cj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiOwo+PiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsayBJTVg4
-TVFfQ0xLX1ZQVV9ERUNfUk9PVD47Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiLCAiYnVzIjsKPiBIb3cgY29t
-ZSB0aGUgRzEgYmxvY2sgbmVlZHMgdGhlIEcyIGNsb2NrPwoKSXQgZG9lc24ndCwgSSB3aWxsIHJl
-bW92ZSBpdCBpbiB2MgoKPgo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgYXNzaWduZWQtY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzE+LAo+
-PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsayBJTVg4TVFfQ0xLX1ZQVV9HMj4sCj4+
-ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9DTEtfVlBVX0JVUz4sCj4+
-IEBAIC0xMzA2LDEyICsxMzA1LDM2IEBAIHZwdTogdmlkZW8tY29kZWNAMzgzMDAwMDAgewo+PiAg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9WUFVf
-UExMX09VVD4sCj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZj
-bGsgSU1YOE1RX1NZUzFfUExMXzgwME0+LAo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9WUFVfUExMPjsKPj4gLcKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDw2MDAw
-MDAwMDA+LCA8NjAwMDAwMDAwPiwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8MzAwMDAw
-MDAwPiwKPj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDw4MDAwMDAwMDA+
-LCA8MD47Cj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqByZXNldHMgPSA8JnZwdV9yZXNldCBJTVg4TVFfUkVTRVRfVlBVX1JFU0VUX0cxPjsKPj4gIMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHBvd2VyLWRvbWFp
-bnMgPSA8JnBnY192cHU+Owo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+
-PiAgIAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdnB1X2cyOiB2aWRlby1jb2Rl
-Y0AzODMxMDAwMCB7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgY29tcGF0aWJsZSA9ICJueHAsaW14OG1xLXZwdS1nMiI7Cj4+ICvCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnID0gPDB4MzgzMTAwMDAgMHgxMDAw
-MD47Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVn
-LW5hbWVzID0gImcyIjsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgOCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPj4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHQt
-bmFtZXMgPSAiZzIiOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoGNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+PiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-PCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gRGl0dG8sIHRoZSBHMiBibG9jayBuZWVk
-cyB0aGUgRzEgY2xvY2s/Cj4KPiBUaGFua3MsCj4gRXplcXVpZWwKPgo+Cl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
-bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Thu, Feb 18, 2021 at 06:22:20PM +0530, Atul Gopinathan wrote:
+> On Thu, Feb 18, 2021 at 01:21:05PM +0100, Greg KH wrote:
+> > On Thu, Feb 18, 2021 at 04:17:55PM +0530, Atul Gopinathan wrote:
+> > > On Thu, Feb 18, 2021 at 10:31:15AM +0000, Ian Abbott wrote:
+> > > > On 18/02/2021 08:44, Atul Gopinathan wrote:
+> > > > > Fix the following warning generated by sparse:
+> > > > > 
+> > > > > drivers/staging//comedi/comedi_fops.c:2956:23: warning: incorrect type in assignment (different address spaces)
+> > > > > drivers/staging//comedi/comedi_fops.c:2956:23:    expected unsigned int *chanlist
+> > > > > drivers/staging//comedi/comedi_fops.c:2956:23:    got void [noderef] <asn:1> *
+> > > > > 
+> > > > > compat_ptr() has a return type of "void __user *"
+> > > > > as defined in "include/linux/compat.h"
+> > > > > 
+> > > > > cmd->chanlist is of type "unsigned int *" as defined
+> > > > > in drivers/staging/comedi/comedi.h" in struct
+> > > > > comedi_cmd.
+> > > > > 
+> > > > > Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
+> > > > > ---
+> > > > >   drivers/staging/comedi/comedi_fops.c | 2 +-
+> > > > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+> > > > > index e85a99b68f31..fc4ec38012b4 100644
+> > > > > --- a/drivers/staging/comedi/comedi_fops.c
+> > > > > +++ b/drivers/staging/comedi/comedi_fops.c
+> > > > > @@ -2953,7 +2953,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
+> > > > >   	cmd->scan_end_arg = v32.scan_end_arg;
+> > > > >   	cmd->stop_src = v32.stop_src;
+> > > > >   	cmd->stop_arg = v32.stop_arg;
+> > > > > -	cmd->chanlist = compat_ptr(v32.chanlist);
+> > > > > +	cmd->chanlist = (unsigned int __force *)compat_ptr(v32.chanlist);
+> > > > >   	cmd->chanlist_len = v32.chanlist_len;
+> > > > >   	cmd->data = compat_ptr(v32.data);
+> > > > >   	cmd->data_len = v32.data_len;
+> > > > > 
+> > > > 
+> > > > This patch and the other one in your series clash with commit 9d5d041eebe3
+> > > > ("staging: comedi: comedi_fops.c: added casts to get rid of sparse
+> > > > warnings") by B K Karthik.
+> > > 
+> > > Oh I see. Not sure if this is the right place to ask, but which tree and
+> > > branch should one work with when messing with the code in staging/
+> > > directory? (wanted to avoid such clashes in future)
+> > 
+> > staging-next is the best one to use from the staging.git tree.  But as
+> > the above commit was merged in 5.9-rc1, way back in July of last year, I
+> > have no idea what tree you are currently using to not hit that...
+> 
+> I'm using the staging tree alright, cloned it yesterday. Except I used the
+> --depth parameter. I believe that is the culprit. How bad a mistake is
+> that?
+> 
+> (Why depth? I'm currently staying in a remote area where internet
+> download speeds are less than 100Kbps. I tried a normal git clone of
+> the staging tree and it's estimated time was more than half a day. Not
+> to mention, it fails due to loss of connection midway every time)
+
+I live in Africa and used to have this problem before Africa got
+connected to fibre optic.  Greg's suggestion of using `wget -c` to
+download a git bundle is a good one.  However, in my experience
+`wget -c` is not 100% accurate on super flakey internet.  Then if it
+fails the verify will fail and you'll have to re-download the entire
+thing.
+
+If you want I have a different option.  What I made a clone of Linus's
+tree.  Then I did:
+
+tar cvvf linux.tar linux/.git
+for i in $(seq 0 116) ; do dd if=linux.tar of=linux.tar.${i} ibs=1M count=20 skip=$((20 * $i)) ; done
+
+Now I have put those on a private webserver I have.  You can download
+them by doing:
+
+for i in $(seq 0 116) ; do wget -c http://51.158.124.72/kernel_split/linux.tar.${i} ; done
+md5sum * > my_md5s
+wget http://51.158.124.72/kernel_split/md5sums
+diff -u md5sum my_md5s
+
+Re-download files which don't match
+
+for i in $(seq 0 116) ; do cat linux.tar.${i} >> linux.tar ; done
+cat linux.tar | tar xv
+cd linux
+git reset --hard
+
+Let me know if this works for you.  I will leave the source up for a
+week or two before I delete it.
+
+regards,
+dan carpenter
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
