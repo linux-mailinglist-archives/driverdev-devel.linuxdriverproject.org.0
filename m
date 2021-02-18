@@ -1,55 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C7B831E80F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:39:29 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3CA731E811
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:40:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6A11386DFF;
-	Thu, 18 Feb 2021 09:39:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B0BA863A1;
+	Thu, 18 Feb 2021 09:40:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BJ4aEJ4bkGSc; Thu, 18 Feb 2021 09:39:26 +0000 (UTC)
+	with ESMTP id 4u0F3hg7n_HL; Thu, 18 Feb 2021 09:40:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5225C86DF3;
-	Thu, 18 Feb 2021 09:39:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0832086101;
+	Thu, 18 Feb 2021 09:40:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 910A91BF3C5
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:39:24 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 050611BF3C5
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:40:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8D9E9872F7
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:39:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0239E8610E
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:40:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vWS3ldVVMHls for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 09:39:24 +0000 (UTC)
+ with ESMTP id 1xOl9QQyp1OL for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 09:40:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F043C872F4
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 09:39:23 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C2F4964D9C;
- Thu, 18 Feb 2021 09:39:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7FD8186101
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 09:40:35 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7537464DF0;
+ Thu, 18 Feb 2021 09:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613641163;
- bh=nAUhkT0wUd/wJ/k3Y88bx0GkXeajCCVI6lcV/Kg1tRE=;
+ s=korg; t=1613641235;
+ bh=FBgOPfIf3FC5lff30PU6rn5fUjdaBUeL1E0K+BMPxKI=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=b2TM2VZQsgF9iPVLT7FlE/izkIBxsUYR4XsU+r6aaHPucz9ycskc+TLA8AbOOyh23
- ISl9yDUC7L1FY3dTpSUZRrNsdsogDkjb3XqHQOB/KwQIolsMB4UHUnRu/cgfVtIMs2
- 8+qHhr/WdHp+j53EXyedJ9zFdcWXFsA7B913mwls=
-Date: Thu, 18 Feb 2021 10:39:20 +0100
+ b=tL+9kgJaEcLuwkMVwNo0aCdBiv1m/MfJrHr86iQbWTzYp2ed7cdgaed7uJ2SOcl5s
+ TckTA6KZ0woMrehJxyI3OtYKUOsIt17vuAdNqKLl2BRgHRIdNPK7VF+IW87ZOClCvg
+ V5wJdqXFCcwLvdAJ8EmPQVGc32X+YU96KS2h1f/s=
+Date: Thu, 18 Feb 2021 10:40:32 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Pritthijit Nath <pritthijit.nath@icloud.com>
-Subject: Re: [PATCH] staging: vc04_services: Fixed address type mismatch in
- vchiq_arm.c
-Message-ID: <YC41yC7+TYXaD/R+@kroah.com>
-References: <20210218091015.92467-1-pritthijit.nath@icloud.com>
+To: Muhammad Usama Anjum <musamaanjum@gmail.com>
+Subject: Re: [PATCH] staging: wimax/i2400m: don't change the endianness of
+ one byte variable
+Message-ID: <YC42ECUUtX1Ah90v@kroah.com>
+References: <20210218092154.GA46388@LEGION>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210218091015.92467-1-pritthijit.nath@icloud.com>
+In-Reply-To: <20210218092154.GA46388@LEGION>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,48 +62,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, arnd@arndb.de,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, nsaenzjulienne@suse.de,
- amarjargal16@gmail.com, phil@raspberrypi.com, dan.carpenter@oracle.com,
- linux-rpi-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, wanghai38@huawei.com, arnd@arndb.de,
+ gustavoars@kernel.org, linux-kernel@vger.kernel.org, kuba@kernel.org,
+ johannes@sipsolutions.net, lee.jones@linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Feb 18, 2021 at 02:40:15PM +0530, Pritthijit Nath wrote:
-> This change fixes a sparse address type mismatch warning "incorrect type
-> in assignment (different address spaces)".
+On Thu, Feb 18, 2021 at 02:21:54PM +0500, Muhammad Usama Anjum wrote:
+> It is wrong to change the endianness of a variable which has just one
+> byte size.
 > 
-> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+> Sparse warnings fixed:
+> drivers/staging//wimax/i2400m/control.c:452:17: warning: cast to restricted __le32
+> drivers/staging//wimax/i2400m/control.c:452:17: warning: cast to restricted __le32
+> drivers/staging//wimax/i2400m/op-rfkill.c:159:14: warning: cast to restricted __le32
+> drivers/staging//wimax/i2400m/op-rfkill.c:160:14: warning: cast to restricted __le32
+> 
+> Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
 > ---
->  .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
+>  drivers/staging/wimax/i2400m/control.c   | 4 ++--
+>  drivers/staging/wimax/i2400m/op-rfkill.c | 4 ++--
+>  2 files changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> index 59e45dc03a97..3c715b926a57 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> @@ -1214,11 +1214,7 @@ static int vchiq_ioc_await_completion(struct vchiq_instance *instance,
->  		    !instance->use_close_delivered)
->  			unlock_service(service);
+> diff --git a/drivers/staging/wimax/i2400m/control.c b/drivers/staging/wimax/i2400m/control.c
+> index 1e270b2101e8..b6b2788af162 100644
+> --- a/drivers/staging/wimax/i2400m/control.c
+> +++ b/drivers/staging/wimax/i2400m/control.c
+> @@ -452,8 +452,8 @@ void i2400m_report_state_parse_tlv(struct i2400m *i2400m,
+>  		d_printf(2, dev, "%s: RF status TLV "
+>  			 "found (0x%04x), sw 0x%02x hw 0x%02x\n",
+>  			 tag, I2400M_TLV_RF_STATUS,
+> -			 le32_to_cpu(rfss->sw_rf_switch),
+> -			 le32_to_cpu(rfss->hw_rf_switch));
+> +			 rfss->sw_rf_switch,
+> +			 rfss->hw_rf_switch);
+
+What do you mean by "one byte"?  This is a le32 sized variable, right?
+If not, why isn't the le32_to_cpu() call complaining?
+
+>  		i2400m_report_tlv_rf_switches_status(i2400m, rfss);
+>  	}
+>  	if (0 == i2400m_tlv_match(tlv, I2400M_TLV_MEDIA_STATUS, sizeof(*ms))) {
+> diff --git a/drivers/staging/wimax/i2400m/op-rfkill.c b/drivers/staging/wimax/i2400m/op-rfkill.c
+> index fbddf2e18c14..a159808f0ec2 100644
+> --- a/drivers/staging/wimax/i2400m/op-rfkill.c
+> +++ b/drivers/staging/wimax/i2400m/op-rfkill.c
+> @@ -156,8 +156,8 @@ void i2400m_report_tlv_rf_switches_status(
+>  	enum i2400m_rf_switch_status hw, sw;
+>  	enum wimax_st wimax_state;
 >  
-> -		/*
-> -		 * FIXME: address space mismatch, does bulk_userdata
-> -		 * actually point to user or kernel memory?
-> -		 */
-> -		user_completion.bulk_userdata = completion->bulk_userdata;
-> +		user_completion.bulk_userdata = (void __user *)completion->bulk_userdata;
+> -	sw = le32_to_cpu(rfss->sw_rf_switch);
+> -	hw = le32_to_cpu(rfss->hw_rf_switch);
+> +	sw = rfss->sw_rf_switch;
+> +	hw = rfss->hw_rf_switch;
 
-So, this pointer really is user memory?
-
-How did you determine that?
-
-If so, why isn't this a __user * in the first place?
-
-You can't just paper over the FIXME by doing a cast without doing the
-real work here, otherwise someone wouldn't have written the FIXME :)
+Same here.
 
 thanks,
 
