@@ -1,81 +1,96 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03F1F31E88B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:48:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49D9C31E890
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:54:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 89A6B86463;
-	Thu, 18 Feb 2021 10:48:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BAB22605F5
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:54:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lNWs_BaE1obF; Thu, 18 Feb 2021 10:48:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ESgXO4-M66O7 for <lists+driverdev-devel@lfdr.de>;
+	Thu, 18 Feb 2021 10:54:52 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 839CB60632; Thu, 18 Feb 2021 10:54:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6168D86433;
-	Thu, 18 Feb 2021 10:48:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BAD72605D5;
+	Thu, 18 Feb 2021 10:54:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B76491BF2B9
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:48:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EC3321BF2B9
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:54:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B321D872FD
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:48:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E8134872E7
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:54:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GnWVkmVWu--A for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 10:48:02 +0000 (UTC)
+ with ESMTP id IDoAPsxSZUkU for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 10:54:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f45.google.com (mail-pj1-f45.google.com
- [209.85.216.45])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6E227872ED
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:48:02 +0000 (UTC)
-Received: by mail-pj1-f45.google.com with SMTP id lw17so2697003pjb.0
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 02:48:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=+4Ty2EC198TjRC3tjzE5cKKjZBp6T/djTh3O24sLzhI=;
- b=i//we/OJgxeAvuLnkMneVfbe0TSZd+ReXSLdt5P9W0bmimlWZu7mOgTtijigZM70i7
- caUQbROjdTHl77DWGZlWxPd1aEyJ6od8s7ynMoS6dZD6LT5mKYr+jWahEp5nhNsgk3Hg
- p+Yc+MoGOx6CtCAJMFRto5Nt0yU8rE5wnhBBggwRrijJufSpLyJ6zrYpW1QVb3FIBpg5
- p7RUIFrPjgP7P6GHMA5dGLorwyz+S0ypHk6BvBhm2Zv8grjmIYYbipV2ahwBX2bq27o3
- yj+c3qS6SzoAwbfatCfM8JiDgnUW8vW1dleN+I8PoGuj9o4U3El+aBgCpNoGehlSk1zi
- bnYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=+4Ty2EC198TjRC3tjzE5cKKjZBp6T/djTh3O24sLzhI=;
- b=unwS99JTFW49Xbd0o74DUcozFeuDD3ReD9MIFYBJvxTlsuUp9vPAxCEMlaO2ZZgOOM
- X3CyX0/jlI7SbyHjz7j3vbBoVcMSmnMTHVCY6L+mg6kid7qtN5G//sjwvGOxLUr3eDg9
- SbP/L4RCElDIYVGm1HFHC7upDpzgKRuYDQA2i3gbnmlDcd0/K352XFVMaUyxYqarJ9WS
- EVvOENnK9hV6vs0qsqAaP9a+MvNd3ZKmLOoO3pnZbszNDlnyEc/0GJjoSqXpe08YMqEs
- aLYiWuaIPf/0iw69S00oZwqFnIg9aIUfF4Vy4K0Yllq9/cHIz/wH6flwbd3soXdbjap7
- A5ug==
-X-Gm-Message-State: AOAM5336cF5/NGiIhmqOZDEfn2/N992/oVCU1Uwd34MAaTiXH7wCtkdm
- jlSdz88Lm/dWfWCBYGO6Ebo=
-X-Google-Smtp-Source: ABdhPJxeHdRECmk1nueMkn3Ncc6IrRQ+cTGJWx1gNCT2bKlWeEOSxOAikP+7f90KUsYupKKGD3YEgA==
-X-Received: by 2002:a17:90a:d48c:: with SMTP id
- s12mr3548307pju.123.1613645281914; 
- Thu, 18 Feb 2021 02:48:01 -0800 (PST)
-Received: from atulu-nitro ([2401:4900:3155:553b:559f:4399:2a05:67d4])
- by smtp.gmail.com with ESMTPSA id t15sm5097592pjy.37.2021.02.18.02.47.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Feb 2021 02:48:01 -0800 (PST)
-Date: Thu, 18 Feb 2021 16:17:55 +0530
-From: Atul Gopinathan <atulgopinathan@gmail.com>
-To: Ian Abbott <abbotti@mev.co.uk>, gregkh@linuxfoundation.org
-Subject: Re: [PATCH v2 1/2] staging: comedi: cast function output to assigned
- variable type
-Message-ID: <20210218104755.GA7571@atulu-nitro>
-References: <20210218084404.16591-1-atulgopinathan@gmail.com>
- <8f73b7a1-02dd-32ef-8115-ad0f38868692@mev.co.uk>
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6B8B28728F
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:54:22 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11IAosOx086946;
+ Thu, 18 Feb 2021 10:54:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=u+EbeWY0kC8yKqPJItRN34NJeUG7sw3ukrKrK2+AkTs=;
+ b=EgOO2Lbi1r9oydC78SZADWrrncDu6rXN8Sdfy/IAoWF/lig4EHku9CJ0b+PLv0MtowBK
+ J1qNK5QoMf60oUQzRs3q0/zGvexsq8X5mARzjYxmD8H1QHleptKmxy20mSMF/sIcJpN8
+ PiA7X0042KbGj1/zDRlKKXgMl9JwVYgxAvDz7b9FWLu4Z1E3JFH+AR8IsYEiHMBr/zin
+ Sv7rBWOdvEaMSUKMNObUng7AI3qm7mLUb4Owbj+cNm//xwe2hHNLpNzDxi8jD9U9Vw1C
+ 3C6VHDqb8l0M+dvevSoIujhBXMLs4B2FRh0czxJuyw3ykgJPTYB1CI21a7IoIkV6gWxd jw== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 36p49bdpf0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 18 Feb 2021 10:54:14 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11IAkQAJ188535;
+ Thu, 18 Feb 2021 10:54:13 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 36prbqm72c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 18 Feb 2021 10:54:13 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11IAs9TV015168;
+ Thu, 18 Feb 2021 10:54:09 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 18 Feb 2021 02:54:08 -0800
+Date: Thu, 18 Feb 2021 13:53:52 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v1 06/18] media: hantro: Make sure that ctx->codex_ops is
+ set
+Message-ID: <20210218105352.GE2087@kadam>
+References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
+ <20210217080306.157876-7-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <8f73b7a1-02dd-32ef-8115-ad0f38868692@mev.co.uk>
+In-Reply-To: <20210217080306.157876-7-benjamin.gaignard@collabora.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9898
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102180095
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9898
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ priorityscore=1501
+ lowpriorityscore=0 bulkscore=0 impostorscore=0 mlxlogscore=999
+ adultscore=0 malwarescore=0 phishscore=0 clxscore=1015 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2102180095
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,57 +103,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: peng.fan@nxp.com, kernel@collabora.com, devel@driverdev.osuosl.org,
+ Anson.Huang@nxp.com, krzk@kernel.org, linux-rockchip@lists.infradead.org,
+ wens@csie.org, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, p.zabel@pengutronix.de, s.hauer@pengutronix.de,
+ mripard@kernel.org, robh+dt@kernel.org, mchehab@kernel.org,
+ ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ aisheng.dong@nxp.com, jernej.skrabec@siol.net, gregkh@linuxfoundation.org,
+ adrian.ratiu@collabora.com, linux-kernel@vger.kernel.org,
+ paul.kocialkowski@bootlin.com, kernel@pengutronix.de, hverkuil-cisco@xs4all.nl,
+ shawnguo@kernel.org, shengjiu.wang@nxp.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Feb 18, 2021 at 10:31:15AM +0000, Ian Abbott wrote:
-> On 18/02/2021 08:44, Atul Gopinathan wrote:
-> > Fix the following warning generated by sparse:
-> > 
-> > drivers/staging//comedi/comedi_fops.c:2956:23: warning: incorrect type in assignment (different address spaces)
-> > drivers/staging//comedi/comedi_fops.c:2956:23:    expected unsigned int *chanlist
-> > drivers/staging//comedi/comedi_fops.c:2956:23:    got void [noderef] <asn:1> *
-> > 
-> > compat_ptr() has a return type of "void __user *"
-> > as defined in "include/linux/compat.h"
-> > 
-> > cmd->chanlist is of type "unsigned int *" as defined
-> > in drivers/staging/comedi/comedi.h" in struct
-> > comedi_cmd.
-> > 
-> > Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
-> > ---
-> >   drivers/staging/comedi/comedi_fops.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-> > index e85a99b68f31..fc4ec38012b4 100644
-> > --- a/drivers/staging/comedi/comedi_fops.c
-> > +++ b/drivers/staging/comedi/comedi_fops.c
-> > @@ -2953,7 +2953,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
-> >   	cmd->scan_end_arg = v32.scan_end_arg;
-> >   	cmd->stop_src = v32.stop_src;
-> >   	cmd->stop_arg = v32.stop_arg;
-> > -	cmd->chanlist = compat_ptr(v32.chanlist);
-> > +	cmd->chanlist = (unsigned int __force *)compat_ptr(v32.chanlist);
-> >   	cmd->chanlist_len = v32.chanlist_len;
-> >   	cmd->data = compat_ptr(v32.data);
-> >   	cmd->data_len = v32.data_len;
-> > 
+On Wed, Feb 17, 2021 at 09:02:54AM +0100, Benjamin Gaignard wrote:
+> Do not try to call ctx->codec_ops->done if ctx->codec_ops is not set.
 > 
-> This patch and the other one in your series clash with commit 9d5d041eebe3
-> ("staging: comedi: comedi_fops.c: added casts to get rid of sparse
-> warnings") by B K Karthik.
 
-Oh I see. Not sure if this is the right place to ask, but which tree and
-branch should one work with when messing with the code in staging/
-directory? (wanted to avoid such clashes in future)
+When you're writing a patch like this please say in the commit message
+if this can happen or not.  Option 1:
 
-Thanks,
-Atul
+Option 1: sometimes this is NULL in <some situation>
+Option 2: this can't be NULL, but we are planning to allow that.
+Option 3: I don't know if this can be NULL but do it for consistency
+
+As we review and packport patches we have to figure out why you are
+adding NULL checks so it really helps if you just tell us.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
