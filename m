@@ -2,68 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98E6131E86F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:21:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CB7A31E868
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:15:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1625986457;
-	Thu, 18 Feb 2021 10:21:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D0A9486433;
+	Thu, 18 Feb 2021 10:15:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id agLon8h1a5F5; Thu, 18 Feb 2021 10:21:49 +0000 (UTC)
+	with ESMTP id XQ-Tlje0G38M; Thu, 18 Feb 2021 10:15:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CCEF786433;
-	Thu, 18 Feb 2021 10:21:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1CBE863FF;
+	Thu, 18 Feb 2021 10:15:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 74F551BF2B9
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:21:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 03DA41BF2B9
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:15:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7149586239
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:21:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F2DA76059A
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:15:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QvvkWiEQIDak for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 10:21:44 +0000 (UTC)
-X-Greylist: delayed 00:08:38 by SQLgrey-1.7.6
-Received: from smtp104.iad3a.emailsrvr.com (smtp104.iad3a.emailsrvr.com
- [173.203.187.104])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A62DD861AB
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:21:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1613643185;
- bh=m8t/XvYW9G95yu9XimEdQKxasSEtsFIC/kxyuxGznXQ=;
- h=Subject:To:From:Date:From;
- b=yA6Z0QaT4Ycd/kgyfT6p/CRzVhqj+XQlFw/KcCy8Rv4VEoufamI5JAaBYjYlShTd+
- m3WGGaCUINsdB/RxQN8mR3sGCBtdqyFrL//CM178XYRYvSZPLfRNYxMi3ixwbZ9auN
- GIfQl1dRBA+9+DyeKv2livU6AHcScfGGC6qBEMFI=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1613643185;
- bh=m8t/XvYW9G95yu9XimEdQKxasSEtsFIC/kxyuxGznXQ=;
- h=Subject:To:From:Date:From;
- b=EaDRJM9YUnPRxXAlMwcJ+Q/sy4Z6YrgcX+hS6Va3bRlf8DGNKiQwJnpHne+0VxRx8
- JhcKzWlIXGnvif/45YEpqcLM+4rsmvbXxkAuvjWHuyKaXVHZ1JNCXuLufgFxwlaZ+B
- m9MLRLgx4R/Cc7zKtZes/7kUYWcUg9sjCp+YTTdo=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp22.relay.iad3a.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id F1CB8195C; 
- Thu, 18 Feb 2021 05:13:04 -0500 (EST)
-Subject: Re: [PATCH] drivers: staging: comedi: Fixed side effects from macro
- definition.
-To: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
-References: <20210217142008.29699-1-chakravarthikulkarni2021@gmail.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <3c1ddf91-da6c-5620-61e7-1ec453b2aa93@mev.co.uk>
-Date: Thu, 18 Feb 2021 10:13:04 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vGAmY9TlYX1v for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 10:15:37 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id CDC23605E6; Thu, 18 Feb 2021 10:15:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [85.220.165.71])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C82966059A
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:15:35 +0000 (UTC)
+Received: from gallifrey.ext.pengutronix.de
+ ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=[IPv6:::1])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <l.stach@pengutronix.de>)
+ id 1lCgL8-0002zv-7T; Thu, 18 Feb 2021 11:15:18 +0100
+Message-ID: <c029c980937ab50847bd0fcf86501e85bdb91fd3.camel@pengutronix.de>
+Subject: Re: [PATCH v1 03/18] arm64: dts: imx8mq-evk: add reserve memory
+ node for CMA region
+From: Lucas Stach <l.stach@pengutronix.de>
+To: Ezequiel Garcia <ezequiel@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, p.zabel@pengutronix.de,
+ mchehab@kernel.org,  robh+dt@kernel.org, shawnguo@kernel.org,
+ s.hauer@pengutronix.de,  kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com,  gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com,  wens@csie.org, jernej.skrabec@siol.net,
+ krzk@kernel.org, shengjiu.wang@nxp.com,  adrian.ratiu@collabora.com,
+ aisheng.dong@nxp.com, peng.fan@nxp.com,  Anson.Huang@nxp.com,
+ hverkuil-cisco@xs4all.nl
+Date: Thu, 18 Feb 2021 11:15:13 +0100
+In-Reply-To: <ab14f5a0bde2bdcd4bb0128f76e5a3ba8e7b0894.camel@collabora.com>
+References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
+ <20210217080306.157876-4-benjamin.gaignard@collabora.com>
+ <ab14f5a0bde2bdcd4bb0128f76e5a3ba8e7b0894.camel@collabora.com>
+User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
 MIME-Version: 1.0
-In-Reply-To: <20210217142008.29699-1-chakravarthikulkarni2021@gmail.com>
-Content-Language: en-GB
-X-Classification-ID: d7105027-4594-4034-967a-e94a4fffd174-1-1
+X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
+X-SA-Exim-Mail-From: l.stach@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: devel@driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,54 +77,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Ethan Edwards <ethancarteredwards@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 17/02/2021 14:20, chakravarthikulkarni wrote:
-> Warning found by checkpatch.pl script.
-> 
-> Signed-off-by: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
-> ---
->   drivers/staging/comedi/comedi.h | 9 ++++++---
->   1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
-> index b5d00a006dbb..b2af6a88d389 100644
-> --- a/drivers/staging/comedi/comedi.h
-> +++ b/drivers/staging/comedi/comedi.h
-> @@ -1103,9 +1103,12 @@ enum ni_common_signal_names {
->   
->   /* *** END GLOBALLY-NAMED NI TERMINALS/SIGNALS *** */
->   
-> -#define NI_USUAL_PFI_SELECT(x)	(((x) < 10) ? (0x1 + (x)) : (0xb + (x)))
-> -#define NI_USUAL_RTSI_SELECT(x)	(((x) < 7) ? (0xb + (x)) : 0x1b)
-> -
-> +#define NI_USUAL_PFI_SELECT(x) \
-> +	({ typeof(x) _x = x; \
-> +	 (((_x) < 10) ? (0x1 + (_x)) : (0xb + (_x))); })
-> +#define NI_USUAL_RTSI_SELECT(x)	\
-> +	({ typeof(x) _x = x; \
-> +	 (((_x) < 7) ? (0xb + (_x)) : 0x1b); })
->   /*
->    * mode bits for NI general-purpose counters, set with
->    * INSN_CONFIG_SET_COUNTER_MODE
-> 
-
-I'd rather not do that because this is intended to be a userspace 
-header.  This change adds GCC extensions and prohibits the use of the 
-macros in constant expressions.
-
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
--=( registered in England & Wales.  Regd. number: 02862268.  )=-
--=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
--=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QW0gTWl0dHdvY2gsIGRlbSAxNy4wMi4yMDIxIHVtIDE2OjM5IC0wMzAwIHNjaHJpZWIgRXplcXVp
+ZWwgR2FyY2lhOgo+IEhpIEJlbmphbWluLAo+IAo+IE9uIFdlZCwgMjAyMS0wMi0xNyBhdCAwOTow
+MiArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gPiBEZWZpbmUgYWxsb2NhdGlvbiBy
+YW5nZSBmb3IgdGhlIGRlZmF1bHQgQ01BIHJlZ2lvbi4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTog
+QmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4gPiBT
+aWduZWQtb2ZmLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxhYm9yYS5jb20+Cj4g
+Cj4gRGVzcGl0ZSBpdCBzZWVtcyBsaWtlIEkgc2lnbmVkLW9mZiB0aGlzIG9uZS4uLgo+IAo+ID4g
+U2lnbmVkLW9mZi1ieTogQWRyaWFuIFJhdGl1IDxhZHJpYW4ucmF0aXVAY29sbGFib3JhLmNvbT4K
+PiA+IC0tLQo+ID4gwqBhcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEtZXZrLmR0
+cyB8IDE1ICsrKysrKysrKysrKysrKwo+ID4gwqAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9u
+cygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUv
+aW14OG1xLWV2ay5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEtZXZr
+LmR0cwo+ID4gaW5kZXggODViMDQ1MjUzYTBlLi4wNDdkZmQ0YTFmZmQgMTAwNjQ0Cj4gPiAtLS0g
+YS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEtZXZrLmR0cwo+ID4gKysrIGIv
+YXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLWV2ay5kdHMKPiA+IEBAIC0yMSw2
+ICsyMSwyMSBAQCBtZW1vcnlANDAwMDAwMDAgewo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqByZWcgPSA8MHgwMDAwMDAwMCAweDQwMDAwMDAwIDAgMHhjMDAwMDAwMD47Cj4gPiDC
+oMKgwqDCoMKgwqDCoMKgfTsKPiA+IAo+ID4gwqAKPiA+ICvCoMKgwqDCoMKgwqDCoHJlc21lbTog
+cmVzZXJ2ZWQtbWVtb3J5IHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAjYWRk
+cmVzcy1jZWxscyA9IDwyPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAjc2l6
+ZS1jZWxscyA9IDwyPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByYW5nZXM7
+Cj4gPiArCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLyogZ2xvYmFsIGF1dG9j
+b25maWd1cmVkIHJlZ2lvbiBmb3IgY29udGlndW91cyBhbGxvY2F0aW9ucyAqLwo+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGxpbnV4LGNtYSB7Cj4gPiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGNvbXBhdGlibGUgPSAic2hhcmVkLWRtYS1w
+b29sIjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+cmV1c2FibGU7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoHNpemUgPSA8MCAweDNjMDAwMDAwPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgYWxsb2MtcmFuZ2VzID0gPDAgMHg0MDAwMDAwMCAwIDB4NDAw
+MDAwMDA+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBsaW51eCxjbWEtZGVmYXVsdDsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9
+Owo+IAo+IC4uLiBJJ20gbm90IGEgZmFuIG9mIHRoZSBjaGFuZ2UgOikKPiAKPiBIb3BlZnVsbHkg
+c29tZW9uZSBmcm9tIE5YUCBjYW4gcHJvdmlkZSBzb21lIGluc2lnaHQgaGVyZT8KPiAKPiBJZiBp
+dCdzIGFic29sdXRlbHkgbmVlZGVkIGZvciB0aGUgVlBVLCB0aGVuIEkgZ3Vlc3MgaXQgc2hvdWxk
+Cj4gYmUgMSkgdmVyeSB3ZWxsIGRvY3VtZW50ZWQgYW5kIDIpIG1vdmVkIHRvIHRoZSB0b3AtbG92
+ZWwgZHRzaS4KPiAKPiBCdXQgaWYgd2UgY2FuIGRyb3AgaXQsIHRoYXQnZCBiZSBuaWNlci4KCldo
+YXQncyB0aGUganVzdGlmaWNhdGlvbiBmb3IgdGhpcyBDTUEgYXJlYT8KCkkgY291bGQgb25seSBp
+bWFnaW5lIHRoZSBETUEgYWRkcmVzc2luZyByZXN0cmljdGlvbnMgb24gdGhlIHBsYXRmb3JtLgpE
+TUEgbWFzdGVycyBvbiB0aGUgaS5NWDhNUSBjYW4gbm90IGFjY2VzcyBtZW1vcnkgYmV5b25kIHRo
+ZSA0R0IgbWFyawphbmQgMUdCIG9mIGFkZHJlc3Mgc3BhY2UgaXMgcmVzZXJ2ZWQgZm9yIE1NSU8s
+IHNvIGlmIHlvdSBoYXZlIDRHQgppbnN0YWxsZWQgdGhlIHVwcGVyIDFHQiBvZiBEUkFNIGlzIG9u
+bHkgYWNjZXNzaWJsZSB0byB0aGUgQ1BVLiBCdXQgdGhpcwpyZXN0cmljdGlvbiBpcyBhbHJlYWR5
+IHByb3Blcmx5IGNvbW11bmljYXRlZCB0byB0aGUgTGludXggRE1BIGZyYW1ld29yawpieSB0aGUg
+ZG1hLXJhbmdlcyBpbiB0aGUgdG9wIGxldmVsIFNvQyBidXMgbm9kZSBpbiB0aGUgRFQsIHNvIEkg
+ZG9uJ3QKdGhpbmsgdGhpcyBDTUEgc2V0dXAgaXMgbmVjZXNzYXJ5LgoKUmVnYXJkcywKTHVjYXMK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1h
+aWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYu
+bGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
