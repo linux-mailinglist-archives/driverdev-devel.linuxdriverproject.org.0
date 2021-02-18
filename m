@@ -1,66 +1,98 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C1E631EE50
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 19:33:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7703431EE67
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 19:35:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BBD58869C9;
-	Thu, 18 Feb 2021 18:33:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 17C3060663
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 18:35:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mvGNFcyJRWY5; Thu, 18 Feb 2021 18:32:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hQYIXtzrtdg0 for <lists+driverdev-devel@lfdr.de>;
+	Thu, 18 Feb 2021 18:35:19 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 11C2F60685; Thu, 18 Feb 2021 18:35:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A5965869F8;
-	Thu, 18 Feb 2021 18:32:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id EDE386064C;
+	Thu, 18 Feb 2021 18:35:00 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E81431BF33A
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 18:32:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BEA2C1BF33A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:34:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E53E486C14
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 18:32:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B9C3186BFA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:34:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gSDPnbrf6Ocv for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 18:32:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4BEC786738
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 18:32:55 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8E27E64EB6
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 18:32:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1613673174;
- bh=3nApWYaYT6uKLdVo8ZivGJbPBdIQTHvCvFWsSwJeRSE=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Cojte3qpDBph2vi6sJqqlwKaFr/r6xvLHBVaiWWnt/yYm/BJ6IRLsfNFzfUAhvVh0
- +A9uf1ToDe2OFfWhe6SQOzYsrLmTNZW46X20RMfTSifWXdA7PPFlUCZ8G35F5dbkRs
- IdCDZEQm2KBtIJ2bJ1G//CaJgKT1UnrPU87L/zJRTsLySDtheZi0Ry4tEjtzoHYx4K
- qabXokMqsaGEcAnadt2VWQ/eJZLGlWW2QSpkYWTDaCx0gqJuTHQXlayGDQKViU+68M
- mwM71bo3z43VWROnRQLBrcVmdcw2imDA7MWQRx1iSq0wag8YEnj3M/udn/wPT1Pw4U
- QE0lB86SPao8A==
-Received: by mail-oi1-f177.google.com with SMTP id h17so3045697oih.5
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:32:54 -0800 (PST)
-X-Gm-Message-State: AOAM532OuMXpkAjSYGojFnRTNHfEokPwRQ2MHnpMoTQ2QwUlCyHu9QF4
- exvbd0V74/0uYUJlsY/aqMW/6/8iaKl511fiZiM=
-X-Google-Smtp-Source: ABdhPJzWc8JGGWrGZV52RofpCpoCpUMCOmaFnEv3uRVLCUCOuOdQeH0/ye62sd6+ICOX91qmQshhHCIlAO3G1dCFBgY=
-X-Received: by 2002:aca:aad4:: with SMTP id t203mr3596853oie.67.1613673173738; 
- Thu, 18 Feb 2021 10:32:53 -0800 (PST)
+ with ESMTP id k9-OkxKfgNwY
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:34:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com
+ [66.111.4.27])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F07D78692C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 18:34:44 +0000 (UTC)
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailout.nyi.internal (Postfix) with ESMTP id DAB1E5C0175;
+ Thu, 18 Feb 2021 13:34:42 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Thu, 18 Feb 2021 13:34:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=8OWJLHCZzNZu/3B7EBrKTysE8lz
+ IQvJZPntuTiG2YOE=; b=MTbupi+vPWYvkYRjDQHqOuEblnnp0DXdGnzj/wJ2mtj
+ qosSRg/VoCkXdwoeW5ZQMcrs9cmqRs0mLQV7jAEgqw7CMcPq2Yjzs87YYNC+FJJz
+ 3dbRt2G+1EBpbmC/hn6yZ3wtoHdhkmAHO0P6lnzeRWtKs/+UDhxoovYNlzq/AHiD
+ /EI7xeEGTIEA0RydVTVfHJYCa5kLf6/Y+t9NXWQ3k2r9Rgsa61Ykv8yPPjGFiLc5
+ RXRwKdbINpHb8FDX3xHtArufn1bVnomhtRBdyV4E0KCKpjgA0+wjwqbMKQJBQF1C
+ AODpQZgaxB2XcIGeQkD4/8LdxB0/0le3ACaITFOvJbA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=8OWJLH
+ CZzNZu/3B7EBrKTysE8lzIQvJZPntuTiG2YOE=; b=dArdCjia+1E4ez5O8McpLE
+ jch+osKjqOiWmevfqmhVlAtUt5zK/Y2PaUy7qXLPWAXElsSas6JwiWJAYlC4BrNl
+ PPkOX7kCUE1UcuQyxSZ6ESt5d2SifZfQkXFGFNmEOkv1hbc805UgQwvIjaLij7YG
+ 79Z12Xl6R7rNQIKa1IfFg+Pqhp6NqTu4pyCGbzPNAhB+qnR05hsc6UCPgUk5vE4e
+ XEm4gjbT0rhchC9iKn38Q+rmuW/idP8gVZrF/wro0J+M3ZeXAOrJK7OLwCTm3k/K
+ OqIIlxn4B57PM8ExYFr1YAiEXG5S3LV/48n8K5+mkSS44WtW7jahmS7JmU6Kj6JA
+ ==
+X-ME-Sender: <xms:QrMuYJ8ErPe6qQYKJoCEgo0kdWHKf59mSJz8EHHAsLn7831FWD6bPg>
+ <xme:QrMuYOVB3IWl5mehPgbC-TOezXmKWgJhKIAY0mrna0q3EzGmuhC-mpoE8mSdGD9P2
+ LFGmfu8y2AeOA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjeeggdduuddvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
+ dttddtvdenucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheq
+ necuggftrfgrthhtvghrnhepieeiledttdduleduvdeugeetvdefvdeifeegkeelffetud
+ eggefgudektdetvdfhnecuffhomhgrihhnpeifihhkihhpvgguihgrrdhorhhgpdgurghr
+ ihhnghhfihhrvggsrghllhdrnhgvthdpkhgvrhhnvghlrdhorhhgnecukfhppeekfedrke
+ eirdejgedrieegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhf
+ rhhomhepghhrvghgsehkrhhorghhrdgtohhm
+X-ME-Proxy: <xmx:QrMuYCKcqY35XAFXWvPblrIAXR4OAQJ1R2Zv0lJDU_rrggp7Ul9TEg>
+ <xmx:QrMuYCARgTkKsD0Acx2YzW3NATAlIHS4G3aJgKwBRMTKg2rA0JUHfQ>
+ <xmx:QrMuYCFqiq4rHakrlj0ZRHo2MDXuiWFLLTQo0I6xO-qjXra5E1wxLQ>
+ <xmx:QrMuYOkkbzFok83RdGBllKl8ewBPzFyWU0imhhNLD3azEdux0NAJag>
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 8281B240065;
+ Thu, 18 Feb 2021 13:34:42 -0500 (EST)
+Date: Thu, 18 Feb 2021 19:34:40 +0100
+From: Greg KH <greg@kroah.com>
+To: roz <oroz3x@gmail.com>
+Subject: Re: [PATCH v4] ks7010: enclose non-trivial defines in parentheses
+Message-ID: <YC6zQJzUwn1cgai2@kroah.com>
+References: <20210215132701.42748-1-oroz3x@gmail.com>
+ <A1MQOQ.EDMUBBX5O0OU1@gmail.com>
 MIME-Version: 1.0
-References: <20210218092154.GA46388@LEGION> <YC42ECUUtX1Ah90v@kroah.com>
- <f44c413467df665de9bd1ecbee6d76222518c0c7.camel@gmail.com>
-In-Reply-To: <f44c413467df665de9bd1ecbee6d76222518c0c7.camel@gmail.com>
-From: Arnd Bergmann <arnd@kernel.org>
-Date: Thu, 18 Feb 2021 19:32:37 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a0+dD99CfuZYHkZNHjmZhvZqGt-j=X1v=N7DH4Ac_OAMQ@mail.gmail.com>
-Message-ID: <CAK8P3a0+dD99CfuZYHkZNHjmZhvZqGt-j=X1v=N7DH4Ac_OAMQ@mail.gmail.com>
-Subject: Re: [PATCH] staging: wimax/i2400m: don't change the endianness of one
- byte variable
-To: Muhammad Usama Anjum <musamaanjum@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <A1MQOQ.EDMUBBX5O0OU1@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,71 +105,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, wanghai38@huawei.com,
- Arnd Bergmann <arnd@arndb.de>, Greg KH <gregkh@linuxfoundation.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Johannes Berg <johannes@sipsolutions.net>,
- Lee Jones <lee.jones@linaro.org>
+Cc: driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Feb 18, 2021 at 10:54 AM Muhammad Usama Anjum
-<musamaanjum@gmail.com> wrote:
->
-> On Thu, 2021-02-18 at 10:40 +0100, Greg KH wrote:
-> > On Thu, Feb 18, 2021 at 02:21:54PM +0500, Muhammad Usama Anjum wrote:
-> > > It is wrong to change the endianness of a variable which has just one
-> > > byte size.
-> > >
-> > > Sparse warnings fixed:
-> > > drivers/staging//wimax/i2400m/control.c:452:17: warning: cast to restricted __le32
-> > > drivers/staging//wimax/i2400m/control.c:452:17: warning: cast to restricted __le32
-> > > drivers/staging//wimax/i2400m/op-rfkill.c:159:14: warning: cast to restricted __le32
-> > > drivers/staging//wimax/i2400m/op-rfkill.c:160:14: warning: cast to restricted __le32
-> > >
-> > > Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
-> > > ---
-> > >  drivers/staging/wimax/i2400m/control.c   | 4 ++--
-> > >  drivers/staging/wimax/i2400m/op-rfkill.c | 4 ++--
-> > >  2 files changed, 4 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/wimax/i2400m/control.c b/drivers/staging/wimax/i2400m/control.c
-> > > index 1e270b2101e8..b6b2788af162 100644
-> > > --- a/drivers/staging/wimax/i2400m/control.c
-> > > +++ b/drivers/staging/wimax/i2400m/control.c
-> > > @@ -452,8 +452,8 @@ void i2400m_report_state_parse_tlv(struct i2400m *i2400m,
-> > >             d_printf(2, dev, "%s: RF status TLV "
-> > >                      "found (0x%04x), sw 0x%02x hw 0x%02x\n",
-> > >                      tag, I2400M_TLV_RF_STATUS,
-> > > -                    le32_to_cpu(rfss->sw_rf_switch),
-> > > -                    le32_to_cpu(rfss->hw_rf_switch));
-> > > +                    rfss->sw_rf_switch,
-> > > +                    rfss->hw_rf_switch);
-> >
-> > What do you mean by "one byte"?  This is a le32 sized variable, right?
-> > If not, why isn't the le32_to_cpu() call complaining?
->
-> These two variables are of type _u8, one byte.
->         __u8 sw_rf_switch;
->         __u8 hw_rf_switch;
-> They aren't of type __le32. le32_to_cpu() macro should have
-> complained. But it isn't complaining. It seems like whatever we pass
-> to this macro, it casts it to __le32 forcefully (it seems like wrong).
-> So we'll never get any complain from this macro directly. But we are
-> getting complain from the sparse.
->
-> For big endian:
-> #define __le32_to_cpu(x) __swab32((__force __u32)(__le32)(x))
-> For little endian:
-> #define __le32_to_cpu(x) ((__force __u32)(__le32)(x))
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-Right, it seems this driver has been broken on big-endian ever since
-it was first merged in 2008.
+A: No.
+Q: Should I include quotations after my reply?
 
-        Arnd
+http://daringfireball.net/2007/07/on_top
+
+On Thu, Feb 18, 2021 at 11:59:34PM +0530, roz wrote:
+> Hi,
+> 
+> I wanted to check the status on the following patch.
+> I wanted the result for eudyptula task 10 submission.
+
+There's no deadlines here, and the first rule of the eudyptula challenge
+is that you can not talk about the eudyptula challenge without getting
+in trouble :(
+
+> It would be great if i can check if the mail is being
+> processed or rejected. I appologise for any troubles.
+
+I rejected it a while ago, you got the email from my patch bot, right?
+See here:
+	https://lore.kernel.org/r/YCY2FTmycppYXY0O@kroah.com
+
+Why did you resend it if you didn't do what that email said to do?
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
