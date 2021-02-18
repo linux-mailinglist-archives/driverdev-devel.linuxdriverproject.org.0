@@ -1,80 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0887D31E762
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 09:25:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9E97086C25;
-	Thu, 18 Feb 2021 08:25:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u97yGUAbQkub; Thu, 18 Feb 2021 08:25:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0F2B8866B9;
-	Thu, 18 Feb 2021 08:25:11 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CD0C1BF2C5
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 08:25:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AB4631E793
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 09:44:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0946E860E0
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 08:25:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 74903861AA;
+	Thu, 18 Feb 2021 08:44:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wyhgFuzKuR6y; Thu, 18 Feb 2021 08:44:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 59D288615E;
+	Thu, 18 Feb 2021 08:44:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8746F1BF312
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 08:44:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7FCED872CF
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 08:44:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RQubL_vOxaqp for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 08:25:08 +0000 (UTC)
+ with ESMTP id JD8XrEfJfC5H for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 08:44:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com
- [209.85.214.182])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 76B9085F9B
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 08:25:08 +0000 (UTC)
-Received: by mail-pl1-f182.google.com with SMTP id e9so848123plh.3
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 00:25:08 -0800 (PST)
+Received: from mail-pj1-f43.google.com (mail-pj1-f43.google.com
+ [209.85.216.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 34F93872BE
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 08:44:33 +0000 (UTC)
+Received: by mail-pj1-f43.google.com with SMTP id gx20so1026816pjb.1
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 00:44:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ZXmJoWMTsUrH2ZYtYp6YioWvsZMFTlZD5M/gphHqrR0=;
- b=Hc4WfW2OwdvOfAd4uK/tsJFBw9Y3KnhIHI15RQioABsLIYYJ/F0keIOX4rFXdiTdPA
- 3oF6krSEpCdiFEoF+R6hRv6c10f0Kh77dxSGhGkVvAmNWNnSDsRhtpTX27g6SUtHMZ1D
- 9AEyQTMzteT2PtGkgLjLV9v49y316FbgxGlQzyfRJu+b9PBsYucAf2fIHMBjOZ/G9EbC
- CGFUXXJ6Lc7VnIG5CDYG+TSwQCi6gS33E+k2WEwpodQP/FyPSC2N/Com0PD5W8xd1003
- 8bjep+nikHR8OdnsB1NdNmPGDMr+B97t3gnaARMA6P7jCmrSRLOrp/7jqSO78BWGq/YN
- xZVA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ed3oT+OewzwPMtx3xp3F8acYmpBybfyINlaZN6Lx5c4=;
+ b=hqjskiM1dcTdIdLHKY6FqQx9B2WAf4ATIFDry3FEwSvqDP2jExxzydONzGn/fwQJnX
+ 1mU63R8Z5HstVm8M/AmDpsq8eSGLxz/wOYPf2pvGICbcgu5djbu6A8epIrNqiJL/Tk04
+ C0L5YDCvtU90evEj2rHHYnZTpD3irmUSfW2Ls7gE4b8pc2u3hPH3lNf7UEnLMT1jEvhQ
+ qA0YH+dIXRH6wwIu9zkYi9VmfIuvngWIP8WAZqJhBzst16PkcT5rTwSTU9aAwI/8bl6J
+ rE2Xj7eXOcr60Geok91+1V8yxSY3uUlKvXPL6AhNQd8k2JazEWfrx0MkyuE3+2otg+3+
+ nKtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZXmJoWMTsUrH2ZYtYp6YioWvsZMFTlZD5M/gphHqrR0=;
- b=Mi6mUnEtSaWFTsqy4n6Xo4qvju0r7iCvsVY4J02DqXXsliL7kZ9JXFKBM2CzOoasAE
- zmarb6RyR5Y38QpXyNvyCz7hofMtOdUnKdSzCnAjThL4tNkoTsS7Vd++zS9uXjY0LF6F
- Rx+fVClAlKUZkCkS6x1MYZhaT1I63nvh0i/eZdj/WmCJylp9be7bx4d/j0amsGcx2Cj2
- u1UL2DNuA5w5aVhZFYmFFPnx9REmaPkBfAcDcYPCw+T6fZSPqIbs5dJuHzROQ8BlsYTq
- BM/vNjcaYwIS9ZSDaALI+Ut4eYWFp2nTCdTrsv+Bn8a5IlxUxPcZS9Q2AxQeN9lqlQTZ
- KvLg==
-X-Gm-Message-State: AOAM531clTc5+QkV+8e/t5SdfjCB0vazZEVZbBGjggyTdoBe9VDGvpOD
- aCYym/Kz0ZkMygddG5y72n0eMpDI9rc=
-X-Google-Smtp-Source: ABdhPJyhhnf+/pc2nHrJk1TK1bIScUijp1RLFu+59a3U8HAj4ag5pQwqLlGugrMlUa9+kap5neQc+Q==
-X-Received: by 2002:a17:90a:de97:: with SMTP id
- n23mr2973053pjv.165.1613636708080; 
- Thu, 18 Feb 2021 00:25:08 -0800 (PST)
-Received: from atulu-ubuntu ([27.61.13.238])
- by smtp.gmail.com with ESMTPSA id l11sm4602059pfd.194.2021.02.18.00.25.05
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ed3oT+OewzwPMtx3xp3F8acYmpBybfyINlaZN6Lx5c4=;
+ b=nQHzRW9iEGl7gPQpNQTPwBUDWA0l8j82t6xlZGn1lbLgcSp6fil8kAYeigh5xEAmF9
+ TwvZaUJGIgT4OcWkawidjRU4lIznhax9vjvirW2Z2qCSbshwlwW0JGqcDJ2X07s7mmXN
+ OqyH/ZfNGI0e6MDC9atX8uQB97sg9DzDgruiYRSlCn1xEa9uJqePIZuO09XxFGPo5Zi8
+ vmSvIPGP3mBmWbB1Wn2sL+pedLZwgEVh7ZYWTpVB1NCjcGZ1aYA8Hk0H3QAQdbotlfMw
+ qM/2Co7Q5cDfGLG2+L0Au/9R3xQGGKwhk7DYU0G4j7sNGTHho2nT/uYnUB+9scyKvMvA
+ S4vw==
+X-Gm-Message-State: AOAM530xs8OD0idx4nqXU2QwCPwyJVimLxO8ZtMjc6PtZBs5l2BNcb+f
+ 62vN3/AXrUaFZwZogiHTB/Y=
+X-Google-Smtp-Source: ABdhPJwEXv7DYrOjgQZNRGKO+GCDcYpgQpIRlfSpKHeEhbxRz/SXiEM3Uof1IEQ6CiAy/3tYM5XSRA==
+X-Received: by 2002:a17:902:bd85:b029:e3:11d0:367f with SMTP id
+ q5-20020a170902bd85b02900e311d0367fmr3326951pls.12.1613637872814; 
+ Thu, 18 Feb 2021 00:44:32 -0800 (PST)
+Received: from localhost.localdomain ([106.200.12.142])
+ by smtp.gmail.com with ESMTPSA id u20sm4941761pjy.36.2021.02.18.00.44.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Feb 2021 00:25:07 -0800 (PST)
-Date: Thu, 18 Feb 2021 13:55:02 +0530
+ Thu, 18 Feb 2021 00:44:32 -0800 (PST)
 From: Atul Gopinathan <atulgopinathan@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: comedi: cast to (void __user *)
-Message-ID: <20210218082502.GA2257@atulu-ubuntu>
-References: <20210218062839.32650-1-atulgopinathan@gmail.com>
- <YC4S5Pxw341zw9DL@kroah.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2 1/2] staging: comedi: cast function output to assigned
+ variable type
+Date: Thu, 18 Feb 2021 14:14:03 +0530
+Message-Id: <20210218084404.16591-1-atulgopinathan@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YC4S5Pxw341zw9DL@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,47 +85,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, abbotti@mev.co.uk, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, abbotti@mev.co.uk, linux-kernel@vger.kernel.org,
+ Atul Gopinathan <atulgopinathan@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Feb 18, 2021 at 08:10:28AM +0100, Greg KH wrote:
-> On Thu, Feb 18, 2021 at 11:58:40AM +0530, Atul Gopinathan wrote:
-> > Resolve the following sparse warning:
-> > drivers/staging//comedi/comedi_fops.c:2983:41: warning: incorrect type in argument 1 (different address spaces)
-> > drivers/staging//comedi/comedi_fops.c:2983:41:    expected void [noderef] <asn:1> *uptr
-> > drivers/staging//comedi/comedi_fops.c:2983:41:    got unsigned int *chanlist
-> > 
-> > cmd->chanlist is of type (unsigned int *) as defined in
-> > "struct comedi_cmd" in file drivers/staging/comedi/comedi.h
-> > 
-> > The function "ptr_to_compat()" expects argument of type
-> > (void __user *) as defined in include/linux/compat.h
-> > 
-> > Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
-> > ---
-> >  drivers/staging/comedi/comedi_fops.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> Is this different from your previous patch:
-> 	https://lore.kernel.org/r/20210217165907.9777-1-atulgopinathan@gmail.com
-> 
-> if so, you might need a better subject line here, and for that one, as
-> they look alike at a quick glance.
-> 
-> Which one goes first?
-> 
-> Can you resend both of these as a patch series with better subjects as a
-> v2 patch set?
+Fix the following warning generated by sparse:
 
-Sure! That subject line was a terrible result of me trying really hard
-to make it concise and fit within git's recommended 50 character limit
-for commit headings. I will make sure to prioritize on quality more. :D
+drivers/staging//comedi/comedi_fops.c:2956:23: warning: incorrect type in assignment (different address spaces)
+drivers/staging//comedi/comedi_fops.c:2956:23:    expected unsigned int *chanlist
+drivers/staging//comedi/comedi_fops.c:2956:23:    got void [noderef] <asn:1> *
 
-Thanks for the feedback!
-Atul
+compat_ptr() has a return type of "void __user *"
+as defined in "include/linux/compat.h"
+
+cmd->chanlist is of type "unsigned int *" as defined
+in drivers/staging/comedi/comedi.h" in struct
+comedi_cmd.
+
+Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
+---
+ drivers/staging/comedi/comedi_fops.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+index e85a99b68f31..fc4ec38012b4 100644
+--- a/drivers/staging/comedi/comedi_fops.c
++++ b/drivers/staging/comedi/comedi_fops.c
+@@ -2953,7 +2953,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
+ 	cmd->scan_end_arg = v32.scan_end_arg;
+ 	cmd->stop_src = v32.stop_src;
+ 	cmd->stop_arg = v32.stop_arg;
+-	cmd->chanlist = compat_ptr(v32.chanlist);
++	cmd->chanlist = (unsigned int __force *)compat_ptr(v32.chanlist);
+ 	cmd->chanlist_len = v32.chanlist_len;
+ 	cmd->data = compat_ptr(v32.data);
+ 	cmd->data_len = v32.data_len;
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
