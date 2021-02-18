@@ -1,71 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7CEF31EC6A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 17:46:08 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3985F606B4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 16:46:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vA01htHE5cnv for <lists+driverdev-devel@lfdr.de>;
-	Thu, 18 Feb 2021 16:46:05 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 4FAB7606BF; Thu, 18 Feb 2021 16:46:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DFBBA606B3;
-	Thu, 18 Feb 2021 16:45:47 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 31A501BF3D9
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 16:45:35 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A27F31ECEC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 18:11:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2E2B786903
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 16:45:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B7881868D3;
+	Thu, 18 Feb 2021 17:11:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uR6n_mvUwQUt; Thu, 18 Feb 2021 17:11:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B28886637;
+	Thu, 18 Feb 2021 17:11:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 971891BF47E
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 17:11:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8D77E87311
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 17:11:06 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EpIly-5Xkwfn for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 16:45:34 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp119.ord1c.emailsrvr.com (smtp119.ord1c.emailsrvr.com
- [108.166.43.119])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E9B3486A8D
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 16:45:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1613666733;
- bh=S1Fq+tox9MWcUqvYO7gs5705kiM9wMsNW7MjUawCZy4=;
- h=Subject:To:From:Date:From;
- b=PhgcptYevAjOOqtTfJe9xAWMQ4jHc9GUy2VcDPCvyyjGhOxENORLlzwO0Ekx5sYhs
- GJHPZan9poZc1GYObbIEhnKkeXd/TAmiZtz0XY84rUdrpXGgg+oZEu00BUu+TuQPLj
- v/apwnpVZbUpMKBvxR3tIb2JnVHt3jhaoj69u8yc=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1613666733;
- bh=S1Fq+tox9MWcUqvYO7gs5705kiM9wMsNW7MjUawCZy4=;
- h=Subject:To:From:Date:From;
- b=auWMYbr66PL4muUl7BX5naim5F3JKkx+n2dvf7romJdMyTRGOgCx6BUhZ29EP+ChQ
- aAhXw5rsj9Di7QUt8gQy5Kx1Rw6GkAnjBgXKJqEJUJGLGMYj9bV5O9FuWud7kIQTBP
- X9LAghWP+ec/GctA5gPVU1z0vgW6Anks+YhADaO4=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp7.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 88B10A0225; 
- Thu, 18 Feb 2021 11:45:31 -0500 (EST)
-Subject: Re: [PATCH] Staging: comedi: Replaced strlcpy to strscpy
-To: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
-References: <20210218143152.3957-1-chakravarthikulkarni2021@gmail.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <43b0f966-9d88-3c92-28ce-6dfce755a1be@mev.co.uk>
-Date: Thu, 18 Feb 2021 16:45:30 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ with ESMTP id juTgBXjtDfIV for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 17:11:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 999478730F
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 17:11:05 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id F28A764EB1
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 17:11:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1613668265;
+ bh=RV2hABDdoHPmTI0yk3PA6j+sQ8ooG6Zveggz914ksQc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=hZu8V3IiKGJNRC2hWCTiDosKbM1VpF97VfyoLIp7sq44xZ3QJ1QfjN7W2bPQQ52hR
+ nAe7g8CNo7WC9a4rkRiN7hA1M23fxwwjiIXXB47UPDJTQibkgDpJFxhXskzylnEhdC
+ 1ypnANg/fUUstF080YePGLpJSjy5eZ5LF9iKIMPydk9NcmpZo73sAKOsgVJ8X8k9wV
+ COVTxEksHnF4YGe+lvfhvr1tS0V0g8eFNk7PuzzQ5ySeD0PUJ9xjKUOpiz8ySfu9je
+ lX41mgqvHEvgj8cjtAfk2vejA58UqfAVr3qS1PULTGt4PccR+tw31/5N9Hqw64VfVn
+ IA7IpGvU73MTA==
+Received: by mail-oo1-f47.google.com with SMTP id z36so619105ooi.6
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 09:11:04 -0800 (PST)
+X-Gm-Message-State: AOAM5339/DU9n3GpV3mcvftak+TJGuxgDvHZ4nrUEGiIft/vYWE95E3e
+ Pna87Bwo6wEp9cMBikOzDZ9XeF8MODwVSJmfgbU=
+X-Google-Smtp-Source: ABdhPJz8VRVCKvefO1jPsDKa4MFdmrN50u9t1R6eTFJ5dhrMXI94Qd70DLHRPSk+UkR1C91U9eJLLX0bkfG34EH8cCw=
+X-Received: by 2002:a4a:870c:: with SMTP id z12mr3736151ooh.15.1613668264033; 
+ Thu, 18 Feb 2021 09:11:04 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210218143152.3957-1-chakravarthikulkarni2021@gmail.com>
-Content-Language: en-GB
-X-Classification-ID: d6d0b856-a613-4e54-8f8c-36e84e572270-1-1
+References: <20210218091015.92467-1-pritthijit.nath@icloud.com>
+ <YC41yC7+TYXaD/R+@kroah.com>
+In-Reply-To: <YC41yC7+TYXaD/R+@kroah.com>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Thu, 18 Feb 2021 18:10:48 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a09TXVwZYz+ohU1uJh5XvEJ=aHqUq+hs2K-4nvppbTPSA@mail.gmail.com>
+Message-ID: <CAK8P3a09TXVwZYz+ohU1uJh5XvEJ=aHqUq+hs2K-4nvppbTPSA@mail.gmail.com>
+Subject: Re: [PATCH] staging: vc04_services: Fixed address type mismatch in
+ vchiq_arm.c
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,50 +73,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Xin Tan <tanxin.ctf@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- B K Karthik <bkkarthik@pesu.pes.edu>, linux-kernel@vger.kernel.org,
- Daniel Jordan <daniel.m.jordan@oracle.com>, Al Viro <viro@zeniv.linux.org.uk>,
- "Alexander A. Klimov" <grandmaster@al2klimov.de>,
- Michel Lespinasse <walken@google.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: driverdevel <devel@driverdev.osuosl.org>,
+ Pritthijit Nath <pritthijit.nath@icloud.com>, Arnd Bergmann <arnd@arndb.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Amarjargal Gundjalam <amarjargal16@gmail.com>,
+ Phil Elwell <phil@raspberrypi.com>, Dan Carpenter <dan.carpenter@oracle.com>,
+ "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 18/02/2021 14:31, chakravarthikulkarni wrote:
-> Warning found by checkpath.pl script.
-> 
-> Signed-off-by: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
-> ---
->  drivers/staging/comedi/comedi_fops.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-> index 80d74cce2a01..df77b6bf5c64 100644
-> --- a/drivers/staging/comedi/comedi_fops.c
-> +++ b/drivers/staging/comedi/comedi_fops.c
-> @@ -939,8 +939,8 @@ static int do_devinfo_ioctl(struct comedi_device *dev,
->  	/* fill devinfo structure */
->  	devinfo.version_code = COMEDI_VERSION_CODE;
->  	devinfo.n_subdevs = dev->n_subdevices;
-> -	strlcpy(devinfo.driver_name, dev->driver->driver_name, COMEDI_NAMELEN);
-> -	strlcpy(devinfo.board_name, dev->board_name, COMEDI_NAMELEN);
-> +	strscpy(devinfo.driver_name, dev->driver->driver_name, COMEDI_NAMELEN);
-> +	strscpy(devinfo.board_name, dev->board_name, COMEDI_NAMELEN);
->  
->  	s = comedi_file_read_subdevice(file);
->  	if (s)
-> 
+On Thu, Feb 18, 2021 at 10:39 AM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Thu, Feb 18, 2021 at 02:40:15PM +0530, Pritthijit Nath wrote:
+> > This change fixes a sparse address type mismatch warning "incorrect type
+> > in assignment (different address spaces)".
+> >
+> > Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+> > ---
+> >  .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 6 +-----
+> >  1 file changed, 1 insertion(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> > index 59e45dc03a97..3c715b926a57 100644
+> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> > @@ -1214,11 +1214,7 @@ static int vchiq_ioc_await_completion(struct vchiq_instance *instance,
+> >                   !instance->use_close_delivered)
+> >                       unlock_service(service);
+> >
+> > -             /*
+> > -              * FIXME: address space mismatch, does bulk_userdata
+> > -              * actually point to user or kernel memory?
+> > -              */
+> > -             user_completion.bulk_userdata = completion->bulk_userdata;
+> > +             user_completion.bulk_userdata = (void __user *)completion->bulk_userdata;
+>
+> So, this pointer really is user memory?
+>
+> How did you determine that?
+>
+> If so, why isn't this a __user * in the first place?
+>
+> You can't just paper over the FIXME by doing a cast without doing the
+> real work here, otherwise someone wouldn't have written the FIXME :)
 
-Thanks, but you are too late.  It has already been fixed in linux-next.
+Agreed. I added the FIXME as part of a cleanup work I did last year.
+The obvious step is to mark the corresponding field in
+vchiq_completion_data_kernel as a __user pointer, and then check
+all assignments *to* that members to ensure they all refer to __user
+pointers as well.
 
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
--=( registered in England & Wales.  Regd. number: 02862268.  )=-
--=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
--=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
+At some point I gave up here, as far as I recall there were certain
+assignments that were clearly kernel data, in particular the
+vchiq_service_params_kernel->callback() argument seems to
+sometimes come from kmalloc() and must not be passed down
+to user space.
+
+The alternative would be to look at the user space side to figure
+out how the returned data is actually used. If user space doesn't
+rely on it, it can simply get set to NULL, and if it does use it,
+then the question is which code path in the kernel correctly
+assigns it.
+
+        Arnd
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
