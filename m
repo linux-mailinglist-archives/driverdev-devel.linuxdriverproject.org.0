@@ -1,56 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52F2B31E7A1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 09:49:54 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1336431E7C4
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:11:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B88EE861FF;
-	Thu, 18 Feb 2021 08:49:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AE74160617
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 09:11:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jfTqbDd-NPNp; Thu, 18 Feb 2021 08:49:52 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0Y9M4V75Zbiq for <lists+driverdev-devel@lfdr.de>;
+	Thu, 18 Feb 2021 09:11:04 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 6ECCF605E6; Thu, 18 Feb 2021 09:11:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D7AD384647;
-	Thu, 18 Feb 2021 08:49:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B53A8605CD;
+	Thu, 18 Feb 2021 09:10:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A1E141BF312
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 08:49:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 85ADF1BF3C5
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:10:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9EA8384647
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 08:49:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 828358634C
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:10:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I0MtzT23_BK5 for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 08:49:49 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.iigroup.ru (mail.iigroup.ru [79.99.17.52])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 862398461B
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 08:49:49 +0000 (UTC)
-Received: from [103.153.182.162] (103.153.182.162.static.snthostings.com
- [103.153.182.162]) by iigroup.ru ([79.99.17.52])
- (MDaemon PRO v15.0.3) 
- with ESMTP id md50002467595.msg for <devel@driverdev.osuosl.org>;
- Thu, 18 Feb 2021 11:51:31 +0300
-X-Spam-Processed: iigroup.ru, Thu, 18 Feb 2021 11:51:31 +0300
- (not processed: message from valid local sender)
-X-MDRemoteIP: 103.153.182.162
-X-MDHelo: [103.153.182.162]
-X-MDArrival-Date: Thu, 18 Feb 2021 11:51:31 +0300
-X-Return-Path: prvs=1683153fca=devops@iigroup.ru
-X-Envelope-From: devops@iigroup.ru
-X-MDaemon-Deliver-To: devel@driverdev.osuosl.org
+ with ESMTP id 1Dn-6Ol3riHy for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 09:10:36 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from pv50p00im-ztbu10011701.me.com (pv50p00im-ztbu10011701.me.com
+ [17.58.6.53])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 26591862B4
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 09:10:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+ s=1a1hai; t=1613639435;
+ bh=p7EGsARMs8loX+nsASACt4s7/oUqHQ9NEmCad21rcOc=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version;
+ b=vm129guHsQpLa3P91QHDdHQn3tf9n8kJXCEuO0hzQhob+nFPmzxJJiHftJnHQCQXx
+ jGUxXLx4LU9k30VhhzoRgiL1gZnXDlYHwjjbBp5NHys8fuVkjyUCJRWfdfVFCvtg87
+ hr7ZK65bflEYp4xfVDsfSWDaBPUidQiQwaYx2CWuoYg00V+N8oX4/vqzbGopDhpMdl
+ cNEIkdCikSBCml16vu2C7KW4LcUUw0YHk7ri/xpuWVUdmVAY0IHFl+MnoiRwjfneYW
+ Ck0p3oYvWqibhRaH8jN3Pnm1vg+En703zJAkuVH7r8qN/cljY+P8/nRaovxD2w1AfX
+ UdtnJTC2qSlow==
+Received: from everest.nathzi1505 (unknown [43.231.242.253])
+ by pv50p00im-ztbu10011701.me.com (Postfix) with ESMTPSA id 52C288A04DE;
+ Thu, 18 Feb 2021 09:10:29 +0000 (UTC)
+From: Pritthijit Nath <pritthijit.nath@icloud.com>
+To: nsaenzjulienne@suse.de, arnd@arndb.de, dan.carpenter@oracle.com,
+ amarjargal16@gmail.com, phil@raspberrypi.com, gregkh@linuxfoundation.org
+Subject: [PATCH] staging: vc04_services: Fixed address type mismatch in
+ vchiq_arm.c
+Date: Thu, 18 Feb 2021 14:40:15 +0530
+Message-Id: <20210218091015.92467-1-pritthijit.nath@icloud.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: World Covid-19 Support Program (WCSP).
-To: Recipients <devops@iigroup.ru>
-From: devops@iigroup.ru <(WCSP)>
-Date: Thu, 18 Feb 2021 02:41:22 -0800
-Message-Id: <20210218084950.9EA8384647@fraxinus.osuosl.org>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.761
+ definitions=2021-02-18_04:2021-02-18,
+ 2021-02-18 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 clxscore=1011 mlxscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-2006250000 definitions=main-2102180078
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,45 +77,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reply246@yahoo.com
+Cc: devel@driverdev.osuosl.org, Pritthijit Nath <pritthijit.nath@icloud.com>,
+ linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-World Covid-19 Support Program (WCSP).
-Covid Award Number: #865443009766COVID
-Approval Number: RU/USA/COVID/097666
-Batch Number: #8776/20990976/COVID
- 
-OFFICIAL NOTIFICATION:
- 
-Because of the corona-virus pandemic accelerates, killing thousands of people everyday, Russian and United States Of America, brought out EUR.955 billion for its urgent push to reduce the risk and help to impact on COVID-19 outbreaks in the world. We wish to officially announce to you that your name was selected as a beneficiary, You have been awarded the sum of EUR.5,000,000.00 (Five Million Euro), For the 2021 Russian/USA World Covid-19 Global Humanitarian support program. Your personal Covid Award Number is: #865443009766COVID. 
+This change fixes a sparse address type mismatch warning "incorrect type
+in assignment (different address spaces)".
 
-General Payment Terms And Conditions (GPTCs):
- 
-Your fund will be released to you through any of our regional payment banks within Europe, your file will be processed simultaneously, as directed by the authority. You are to contact the procession department through the Coordinator, Email: coordinatoradrik@yahoo.com
+Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
+---
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-You have to send these following information's to the procession department, through the General Coordinator (Prof.Adrik Tolinyev) for further procession:
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index 59e45dc03a97..3c715b926a57 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -1214,11 +1214,7 @@ static int vchiq_ioc_await_completion(struct vchiq_instance *instance,
+ 		    !instance->use_close_delivered)
+ 			unlock_service(service);
  
-** Full Name:
-** Address:
-** Date of birth:
-** Age:
-** Tel No:
-** Occupation:
-** Sex:
-** Country:
-** Covid Award Number: #865443009766COVID
+-		/*
+-		 * FIXME: address space mismatch, does bulk_userdata
+-		 * actually point to user or kernel memory?
+-		 */
+-		user_completion.bulk_userdata = completion->bulk_userdata;
++		user_completion.bulk_userdata = (void __user *)completion->bulk_userdata;
  
-Be assured that your award fund of EUR.5,000,000.00 (Five Million Euro), is available to be released to you.
-
-Thanks for keeping your social distance !
- 
-Yours in service,
-Prof.Adrik Tolinyev.
-Email: coordinatoradrik@yahoo.com
-(General Coordinator).
+ 		if (vchiq_put_completion(args->buf, &user_completion, ret)) {
+ 			if (ret == 0)
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
