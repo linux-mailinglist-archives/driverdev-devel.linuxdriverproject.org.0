@@ -2,55 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBCF231E812
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:40:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98E6131E86F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:21:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AAF8A863DD;
-	Thu, 18 Feb 2021 09:40:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1625986457;
+	Thu, 18 Feb 2021 10:21:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xs2J7nf337Xh; Thu, 18 Feb 2021 09:40:44 +0000 (UTC)
+	with ESMTP id agLon8h1a5F5; Thu, 18 Feb 2021 10:21:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE0C18610E;
-	Thu, 18 Feb 2021 09:40:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CCEF786433;
+	Thu, 18 Feb 2021 10:21:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 399E81BF3C5
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:40:42 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 74F551BF2B9
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:21:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 362CA872F7
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:40:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7149586239
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:21:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rTl4Ldy-SoS5 for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 09:40:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.iigroup.ru (mail.iigroup.ru [79.99.17.52])
- by hemlock.osuosl.org (Postfix) with ESMTP id 13055872F3
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 09:40:40 +0000 (UTC)
-Received: from [103.153.182.162] (103.153.182.162.static.snthostings.com
- [103.153.182.162]) by iigroup.ru ([79.99.17.52])
- (MDaemon PRO v15.0.3) 
- with ESMTP id md50002467511.msg for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 11:40:26 +0300
-X-Spam-Processed: iigroup.ru, Thu, 18 Feb 2021 11:40:26 +0300
- (not processed: message from valid local sender)
-X-MDRemoteIP: 103.153.182.162
-X-MDHelo: [103.153.182.162]
-X-MDArrival-Date: Thu, 18 Feb 2021 11:40:26 +0300
-X-Return-Path: prvs=1683153fca=devops@iigroup.ru
-X-Envelope-From: devops@iigroup.ru
-X-MDaemon-Deliver-To: devel@linuxdriverproject.org
+ with ESMTP id QvvkWiEQIDak for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 10:21:44 +0000 (UTC)
+X-Greylist: delayed 00:08:38 by SQLgrey-1.7.6
+Received: from smtp104.iad3a.emailsrvr.com (smtp104.iad3a.emailsrvr.com
+ [173.203.187.104])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A62DD861AB
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:21:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1613643185;
+ bh=m8t/XvYW9G95yu9XimEdQKxasSEtsFIC/kxyuxGznXQ=;
+ h=Subject:To:From:Date:From;
+ b=yA6Z0QaT4Ycd/kgyfT6p/CRzVhqj+XQlFw/KcCy8Rv4VEoufamI5JAaBYjYlShTd+
+ m3WGGaCUINsdB/RxQN8mR3sGCBtdqyFrL//CM178XYRYvSZPLfRNYxMi3ixwbZ9auN
+ GIfQl1dRBA+9+DyeKv2livU6AHcScfGGC6qBEMFI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1613643185;
+ bh=m8t/XvYW9G95yu9XimEdQKxasSEtsFIC/kxyuxGznXQ=;
+ h=Subject:To:From:Date:From;
+ b=EaDRJM9YUnPRxXAlMwcJ+Q/sy4Z6YrgcX+hS6Va3bRlf8DGNKiQwJnpHne+0VxRx8
+ JhcKzWlIXGnvif/45YEpqcLM+4rsmvbXxkAuvjWHuyKaXVHZ1JNCXuLufgFxwlaZ+B
+ m9MLRLgx4R/Cc7zKtZes/7kUYWcUg9sjCp+YTTdo=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp22.relay.iad3a.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id F1CB8195C; 
+ Thu, 18 Feb 2021 05:13:04 -0500 (EST)
+Subject: Re: [PATCH] drivers: staging: comedi: Fixed side effects from macro
+ definition.
+To: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
+References: <20210217142008.29699-1-chakravarthikulkarni2021@gmail.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <3c1ddf91-da6c-5620-61e7-1ec453b2aa93@mev.co.uk>
+Date: Thu, 18 Feb 2021 10:13:04 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: World Covid-19 Support Program (WCSP).
-To: Recipients <devops@iigroup.ru>
-From: devops@iigroup.ru <(WCSP)>
-Date: Thu, 18 Feb 2021 02:31:06 -0800
-Message-Id: <20210218094042.362CA872F7@hemlock.osuosl.org>
+In-Reply-To: <20210217142008.29699-1-chakravarthikulkarni2021@gmail.com>
+Content-Language: en-GB
+X-Classification-ID: d7105027-4594-4034-967a-e94a4fffd174-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,46 +76,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reply246@yahoo.com
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Ethan Edwards <ethancarteredwards@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-World Covid-19 Support Program (WCSP).
-Covid Award Number: #865443009766COVID
-Approval Number: RU/USA/COVID/097666
-Batch Number: #8776/20990976/COVID
- 
-OFFICIAL NOTIFICATION:
- 
-Because of the corona-virus pandemic accelerates, killing thousands of people everyday, Russian and United States Of America, brought out EUR.955 billion for its urgent push to reduce the risk and help to impact on COVID-19 outbreaks in the world. We wish to officially announce to you that your name was selected as a beneficiary, You have been awarded the sum of EUR.5,000,000.00 (Five Million Euro), For the 2021 Russian/USA World Covid-19 Global Humanitarian support program. Your personal Covid Award Number is: #865443009766COVID. 
+On 17/02/2021 14:20, chakravarthikulkarni wrote:
+> Warning found by checkpatch.pl script.
+> 
+> Signed-off-by: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
+> ---
+>   drivers/staging/comedi/comedi.h | 9 ++++++---
+>   1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
+> index b5d00a006dbb..b2af6a88d389 100644
+> --- a/drivers/staging/comedi/comedi.h
+> +++ b/drivers/staging/comedi/comedi.h
+> @@ -1103,9 +1103,12 @@ enum ni_common_signal_names {
+>   
+>   /* *** END GLOBALLY-NAMED NI TERMINALS/SIGNALS *** */
+>   
+> -#define NI_USUAL_PFI_SELECT(x)	(((x) < 10) ? (0x1 + (x)) : (0xb + (x)))
+> -#define NI_USUAL_RTSI_SELECT(x)	(((x) < 7) ? (0xb + (x)) : 0x1b)
+> -
+> +#define NI_USUAL_PFI_SELECT(x) \
+> +	({ typeof(x) _x = x; \
+> +	 (((_x) < 10) ? (0x1 + (_x)) : (0xb + (_x))); })
+> +#define NI_USUAL_RTSI_SELECT(x)	\
+> +	({ typeof(x) _x = x; \
+> +	 (((_x) < 7) ? (0xb + (_x)) : 0x1b); })
+>   /*
+>    * mode bits for NI general-purpose counters, set with
+>    * INSN_CONFIG_SET_COUNTER_MODE
+> 
 
-General Payment Terms And Conditions (GPTCs):
- 
-Your fund will be released to you through any of our regional payment banks within Europe, your file will be processed simultaneously, as directed by the authority. You are to contact the procession department through the Coordinator, Email: coordinatoradrik@yahoo.com
+I'd rather not do that because this is intended to be a userspace 
+header.  This change adds GCC extensions and prohibits the use of the 
+macros in constant expressions.
 
-You have to send these following information's to the procession department, through the General Coordinator (Prof.Adrik Tolinyev) for further procession:
- 
-** Full Name:
-** Address:
-** Date of birth:
-** Age:
-** Tel No:
-** Occupation:
-** Sex:
-** Country:
-** Covid Award Number: #865443009766COVID
- 
-Be assured that your award fund of EUR.5,000,000.00 (Five Million Euro), is available to be released to you.
-
-Thanks for keeping your social distance !
- 
-Yours in service,
-Prof.Adrik Tolinyev.
-Email: coordinatoradrik@yahoo.com
-(General Coordinator).
-
+-- 
+-=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
+-=( registered in England & Wales.  Regd. number: 02862268.  )=-
+-=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
+-=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
