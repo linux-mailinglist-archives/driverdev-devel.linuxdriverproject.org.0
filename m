@@ -1,72 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59E1A31E883
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:42:25 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38A4A31E886
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 11:43:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 50A5B60635
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 10:42:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 51CE386DDB;
+	Thu, 18 Feb 2021 10:43:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YW4Kc3RrJVeo for <lists+driverdev-devel@lfdr.de>;
-	Thu, 18 Feb 2021 10:42:22 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 7FF3960642; Thu, 18 Feb 2021 10:42:22 +0000 (UTC)
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id e6l8Vk0qT3C1; Thu, 18 Feb 2021 10:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 721AD6059A;
-	Thu, 18 Feb 2021 10:42:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 28DF586483;
+	Thu, 18 Feb 2021 10:43:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AB2191BF2B9
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:41:52 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 744D21BF2B9
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:43:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A7E7586F67
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:41:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6BA79863EE
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 10:43:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qq3-SScSAKXM for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 10:41:51 +0000 (UTC)
-X-Greylist: delayed 00:10:34 by SQLgrey-1.7.6
-Received: from smtp85.ord1d.emailsrvr.com (smtp85.ord1d.emailsrvr.com
- [184.106.54.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C42A686E88
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:41:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1613644276;
- bh=8ZWVQO/9PZxft2IdiNPG2quxmA7J4sIfRwugGqJyqUA=;
- h=Subject:To:From:Date:From;
- b=OvFu9kgNuzR1i/BkRnPVIovr4XZOMmk3qHLM0i/meDCEyGqqINMiXVZnGgFJzU/tJ
- rL7w2f2Z8f7z8Y4rvfJrnIjmkawzh4oVfVHFDhAorcciNZn9T0Z99w+S5wTNBoEONe
- Kib78/o2GqtVADGYAihe+PPZKxjZ+r3P0ySbjQe8=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1613644276;
- bh=8ZWVQO/9PZxft2IdiNPG2quxmA7J4sIfRwugGqJyqUA=;
- h=Subject:To:From:Date:From;
- b=Kuns5u1VNsImKPNCPbcBOcBy+5f+p4x8xHmWrbk8dAM/MK8RYVqWiXncROPH0YVJy
- pGGrXM810BJyCRAuxVXA1ace0G1TDhVVFA0AgfYttltGhd6WTQ4UY4SlRAUFImbr2F
- WhDpNI0Pzcr3VBQGntUwp5bZJxzMIdyEfgkJYivA=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp3.relay.ord1d.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 0F9A8601CC; 
- Thu, 18 Feb 2021 05:31:15 -0500 (EST)
-Subject: Re: [PATCH v2 1/2] staging: comedi: cast function output to assigned
- variable type
-To: Atul Gopinathan <atulgopinathan@gmail.com>, gregkh@linuxfoundation.org
-References: <20210218084404.16591-1-atulgopinathan@gmail.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <8f73b7a1-02dd-32ef-8115-ad0f38868692@mev.co.uk>
-Date: Thu, 18 Feb 2021 10:31:15 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ with ESMTP id XPdCTs49rPTW for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 10:43:50 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ED631863CC
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 10:43:49 +0000 (UTC)
+Received: from [IPv6:2a01:e0a:4cb:a870:fd6e:12cd:95d7:3350] (unknown
+ [IPv6:2a01:e0a:4cb:a870:fd6e:12cd:95d7:3350])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id F21B81F45A1F;
+ Thu, 18 Feb 2021 10:43:45 +0000 (GMT)
+Subject: Re: [PATCH v1 13/18] media: hantro: Introduce G2/HEVC decoder
+To: Ezequiel Garcia <ezequiel@collabora.com>, p.zabel@pengutronix.de,
+ mchehab@kernel.org, robh+dt@kernel.org, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ krzk@kernel.org, shengjiu.wang@nxp.com, adrian.ratiu@collabora.com,
+ aisheng.dong@nxp.com, peng.fan@nxp.com, Anson.Huang@nxp.com,
+ hverkuil-cisco@xs4all.nl
+References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
+ <20210217080306.157876-14-benjamin.gaignard@collabora.com>
+ <bb410fde0a2f50cc34840e091c3d9c1395601514.camel@collabora.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <1fab0734-f1db-21ee-152c-4b289be31e4a@collabora.com>
+Date: Thu, 18 Feb 2021 11:43:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210218084404.16591-1-atulgopinathan@gmail.com>
-Content-Language: en-GB
-X-Classification-ID: 23395ef8-f0af-4618-b651-66986ee57ebb-1-1
+In-Reply-To: <bb410fde0a2f50cc34840e091c3d9c1395601514.camel@collabora.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,58 +70,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 18/02/2021 08:44, Atul Gopinathan wrote:
-> Fix the following warning generated by sparse:
-> 
-> drivers/staging//comedi/comedi_fops.c:2956:23: warning: incorrect type in assignment (different address spaces)
-> drivers/staging//comedi/comedi_fops.c:2956:23:    expected unsigned int *chanlist
-> drivers/staging//comedi/comedi_fops.c:2956:23:    got void [noderef] <asn:1> *
-> 
-> compat_ptr() has a return type of "void __user *"
-> as defined in "include/linux/compat.h"
-> 
-> cmd->chanlist is of type "unsigned int *" as defined
-> in drivers/staging/comedi/comedi.h" in struct
-> comedi_cmd.
-> 
-> Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
-> ---
->   drivers/staging/comedi/comedi_fops.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-> index e85a99b68f31..fc4ec38012b4 100644
-> --- a/drivers/staging/comedi/comedi_fops.c
-> +++ b/drivers/staging/comedi/comedi_fops.c
-> @@ -2953,7 +2953,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
->   	cmd->scan_end_arg = v32.scan_end_arg;
->   	cmd->stop_src = v32.stop_src;
->   	cmd->stop_arg = v32.stop_arg;
-> -	cmd->chanlist = compat_ptr(v32.chanlist);
-> +	cmd->chanlist = (unsigned int __force *)compat_ptr(v32.chanlist);
->   	cmd->chanlist_len = v32.chanlist_len;
->   	cmd->data = compat_ptr(v32.data);
->   	cmd->data_len = v32.data_len;
-> 
-
-This patch and the other one in your series clash with commit 
-9d5d041eebe3 ("staging: comedi: comedi_fops.c: added casts to get rid of 
-sparse warnings") by B K Karthik.
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9d5d041eebe3dcf7591ff7004896c329eb841ca6
-
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
--=( registered in England & Wales.  Regd. number: 02862268.  )=-
--=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
--=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CkxlIDE3LzAyLzIwMjEgw6AgMjE6NDUsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+IEhp
+IEJlbmphbWluLAo+Cj4gQmVmb3JlIEkgcmV2aWV3IHRoZSBpbXBsZW1lbnRhdGlvbiBpbiBkZXRh
+aWwsCj4gdGhlcmUncyBvbmUgdGhpbmcgdGhhdCBsb29rcyBzdXNwaWNpb3VzLgo+Cj4gT24gV2Vk
+LCAyMDIxLTAyLTE3IGF0IDA5OjAzICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4g
+SW1wbGVtZW50IGFsbCB0aGUgbG9naWMgdG8gZ2V0IEcyIGhhcmR3YXJlIGRlY29kaW5nIEhFVkMg
+ZnJhbWVzLgo+PiBJdCBzdXBwb3J0IHVwIGxldmVsIDUuMSBIRVZDIHN0cmVhbS4KPj4gSXQgZG9l
+c24ndCBzdXBwb3J0IHlldCAxMCBiaXRzIGZvcm1hdHMgb3Igc2NhbGluZyBmZWF0dXJlLgo+Pgo+
+PiBBZGQgSEFOVFJPIEhFVkMgZGVkaWNhdGVkIGNvbnRyb2wgdG8gc2tpcCBzb21lIGJpdHMgYXQg
+dGhlIGJlZ2lubmluZwo+PiBvZiB0aGUgc2xpY2UgaGVhZGVyLiBUaGF0IGlzIHZlcnkgc3BlY2lm
+aWMgdG8gdGhpcyBoYXJkd2FyZSBzbyBjYW4ndAo+PiBnbyBpbnRvIHVhcGkgc3RydWN0dXJlcy4g
+Q29tcHV0ZSB0aGUgbmVlZGVkIHZhbHVlIGlzIGNvbXBsZXggYW5kIHJlcXVpcmUKPj4gaW5mb3Jt
+YXRpb24gZnJvbSB0aGUgc3RyZWFtIHRoYXQgb25seSB0aGUgdXNlcmxhbmQga25vd3Mgc28gbGV0
+IGl0Cj4+IHByb3ZpZGUgdGhlIGNvcnJlY3QgdmFsdWUgdG8gdGhlIGRyaXZlci4KPj4KPj4gU2ln
+bmVkLW9mZi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9y
+YS5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFi
+b3JhLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogQWRyaWFuIFJhdGl1IDxhZHJpYW4ucmF0aXVAY29s
+bGFib3JhLmNvbT4KPj4gLS0tCj4+ICDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vTWFr
+ZWZpbGXCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDIgKwo+PiAgwqBkcml2ZXJzL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL2hhbnRyb19kcnYuY8KgwqDCoMKgIHzCoCA0MSArKwo+PiAgwqAuLi4vc3RhZ2lu
+Zy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMgfCA2MzcgKysrKysrKysrKysrKysr
+KysrCj4+ICDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX3JlZ3MuaCB8
+IDE5OCArKysrKysKPj4gIMKgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faGV2
+Yy5jwqDCoMKgIHwgMjc0ICsrKysrKysrCj4+ICDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
+cm8vaGFudHJvX2h3LmjCoMKgwqDCoMKgIHzCoCAxNCArCj4+ICDCoDYgZmlsZXMgY2hhbmdlZCwg
+MTE2NiBpbnNlcnRpb25zKCspCj4+ICDCoGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdp
+bmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jCj4+ICDCoGNyZWF0ZSBtb2RlIDEw
+MDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9yZWdzLmgKPj4gIMKg
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2hl
+dmMuYwo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9NYWtl
+ZmlsZSBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vTWFrZWZpbGUKPj4gaW5kZXggNzQz
+Y2UwOGViMTg0Li4wMzU3ZjE3NzIyNjcgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9t
+ZWRpYS9oYW50cm8vTWFrZWZpbGUKPj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
+by9NYWtlZmlsZQo+PiBAQCAtOSwxMiArOSwxNCBAQCBoYW50cm8tdnB1LXkgKz0gXAo+PiAgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBoYW50cm9faDFfanBlZ19lbmMubyBcCj4+ICDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGhhbnRyb19nMV9oMjY0X2RlYy5vIFwKPj4g
+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaGFudHJvX2cxX21wZWcyX2RlYy5vIFwK
+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGhhbnRyb19nMl9oZXZjX2RlYy5vIFwK
+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaGFudHJvX2cxX3ZwOF9kZWMubyBc
+Cj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJrMzM5OV92cHVfaHdfanBlZ19l
+bmMubyBcCj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJrMzM5OV92cHVfaHdf
+bXBlZzJfZGVjLm8gXAo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByazMzOTlf
+dnB1X2h3X3ZwOF9kZWMubyBcCj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGhh
+bnRyb19qcGVnLm8gXAo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBoYW50cm9f
+aDI2NC5vIFwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGhhbnRyb19oZXZjLm8g
+XAo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBoYW50cm9fbXBlZzIubyBcCj4+
+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGhhbnRyb192cDgubwo+PiAgIAo+PiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgYi9k
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwo+PiBpbmRleCBlMTQ0M2Mz
+OTRmNjIuLmQxNzFmYjgwODc2YSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlh
+L2hhbnRyby9oYW50cm9fZHJ2LmMKPj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
+by9oYW50cm9fZHJ2LmMKPj4gQEAgLTI4MCw2ICsyODAsMjAgQEAgc3RhdGljIGludCBoYW50cm9f
+anBlZ19zX2N0cmwoc3RydWN0IHY0bDJfY3RybCAqY3RybCkKPj4gIMKgwqDCoMKgwqDCoMKgwqBy
+ZXR1cm4gMDsKPj4gIMKgfQo+PiAgIAo+PiArc3RhdGljIGludCBoYW50cm9fZXh0cmFfc19jdHJs
+KHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4+ICt7Cj4+ICvCoMKgwqDCoMKgwqDCoGNvbnN0IHN0
+cnVjdCBoYW50cm9faGV2Y19leHRyYV9kZWNvZGVfcGFyYW1zICpleHRyYV9wYXJhbXM7Cj4+ICvC
+oMKgwqDCoMKgwqDCoHN0cnVjdCBoYW50cm9fY3R4ICpjdHg7Cj4+ICsKPj4gK8KgwqDCoMKgwqDC
+oMKgY3R4ID0gY29udGFpbmVyX29mKGN0cmwtPmhhbmRsZXIsCj4+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaGFudHJvX2N0eCwgY3Ry
+bF9oYW5kbGVyKTsKPj4gK8KgwqDCoMKgwqDCoMKgZXh0cmFfcGFyYW1zID0gJmN0eC0+aGV2Y19k
+ZWMuY3RybHMuZXh0cmFfcGFyYW1zOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoG1lbWNweSgodm9p
+ZCAqKWV4dHJhX3BhcmFtcywgY3RybC0+cF9uZXcucF91OCwgc2l6ZW9mKGV4dHJhX3BhcmFtcykp
+Owo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoHJldHVybiAwOwo+PiArfQo+PiArCj4+ICDCoHN0YXRp
+YyBjb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX29wcyBoYW50cm9fY3RybF9vcHMgPSB7Cj4+ICDCoMKg
+wqDCoMKgwqDCoMKgLnRyeV9jdHJsID0gaGFudHJvX3RyeV9jdHJsLAo+PiAgwqB9Owo+PiBAQCAt
+Mjg4LDYgKzMwMiwxMCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHY0bDJfY3RybF9vcHMgaGFudHJv
+X2pwZWdfY3RybF9vcHMgPSB7Cj4+ICDCoMKgwqDCoMKgwqDCoMKgLnNfY3RybCA9IGhhbnRyb19q
+cGVnX3NfY3RybCwKPj4gIMKgfTsKPj4gICAKPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgdjRsMl9j
+dHJsX29wcyBoYW50cm9fZXh0cmFfY3RybF9vcHMgPSB7Cj4+ICvCoMKgwqDCoMKgwqDCoC5zX2N0
+cmwgPSBoYW50cm9fZXh0cmFfc19jdHJsLAo+PiArfTsKPj4gKwo+PiAgwqBzdGF0aWMgY29uc3Qg
+c3RydWN0IGhhbnRyb19jdHJsIGNvbnRyb2xzW10gPSB7Cj4+ICDCoMKgwqDCoMKgwqDCoMKgewo+
+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuY29kZWMgPSBIQU5UUk9fSlBFR19F
+TkNPREVSLAo+PiBAQCAtNDEzLDYgKzQzMSwyOSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRy
+b19jdHJsIGNvbnRyb2xzW10gPSB7Cj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oC5jZmcgPSB7Cj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAuaWQgPSBWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNfREVDT0RFX1BBUkFNUywKPj4gIMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfSwKPj4gK8KgwqDCoMKgwqDCoMKgfSwgewo+
+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmNvZGVjID0gSEFOVFJPX0hFVkNfREVD
+T0RFUiwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5jZmcgPSB7Cj4+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmlkID0gVjRMMl9DSURf
+SEFOVFJPX0hFVkNfRVhUUkFfREVDT0RFX1BBUkFNUywKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAubmFtZSA9ICJIQU5UUk8gZXh0cmEgZGVjb2RlIHBh
+cmFtcyIsCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+LnR5cGUgPSBWNEwyX0NUUkxfVFlQRV9VOCwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAubWluID0gMCwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuZGVmID0gMCwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAubWF4ID0gMjU1LAo+PiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5zdGVwID0gMSwKPj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuZGltcyA9IHsgc2l6ZW9mKHN0cnVj
+dCBoYW50cm9faGV2Y19leHRyYV9kZWNvZGVfcGFyYW1zKSB9LAo+PiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5vcHMgPSAmaGFudHJvX2V4dHJhX2N0cmxf
+b3BzLAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfSwKPj4gK8KgwqDCoMKgwqDC
+oMKgfSwgewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmNvZGVjID0gSEFOVFJP
+X0pQRUdfRU5DT0RFUiB8IEhBTlRST19NUEVHMl9ERUNPREVSIHwKPj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgSEFOVFJPX1ZQOF9ERUNPREVSIHwgSEFO
+VFJPX0gyNjRfREVDT0RFUiB8Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIEhBTlRST19IRVZDX0RFQ09ERVIsCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAuY2ZnID0gewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoC5pZCA9IFY0TDJfQ0lEX1VTRVJfQ0xBU1MsCj4gQXJlIHlvdSBzdXJlIHlv
+dSBuZWVkIHRvIGV4cG9zZSB0aGUgVjRMMl9DSURfVVNFUl9DTEFTUz8KPiBNYXliZSBJJ20gbWlz
+c2luZyBzb21ldGhpbmcsIGJ1dCB0aGlzIGxvb2tzIG9kZC4KCnY0bDItY29tcGxpYW5jZSBjb21w
+bGFpbnMgaWYgdGhpcyBpc24ndCBleHBvc2VkIHdoZW4gYWRkaW5nIFY0TDJfQ0lEX0hBTlRST19I
+RVZDX0VYVFJBX0RFQ09ERV9QQVJBTVMuCk90aGVyIGRyaXZlcnMgd2l0aCBkZWRpY2F0ZWQgY29u
+dHJvbCBoYXZlIGR1cGxpY2F0ZWQgdGhpcyBkZWZpbml0aW9uIGJ1dCBJIHByZWZlciB1c2UgaXQg
+ZGlyZWN0bHkuCgpCZW5qYW1pbgoKPgo+IFRoYW5rcywKPiBFemVxdWllbAo+Cj4KX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
+CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
+cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
