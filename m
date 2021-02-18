@@ -1,97 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CA6131E975
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 13:06:19 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C03CC31E99A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 13:21:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1792B60687
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 12:06:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B30428732D;
+	Thu, 18 Feb 2021 12:21:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oM0MXMJcvhPs for <lists+driverdev-devel@lfdr.de>;
-	Thu, 18 Feb 2021 12:06:16 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 8CFE66066F; Thu, 18 Feb 2021 12:06:16 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id karpw5-juMcb; Thu, 18 Feb 2021 12:21:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C79FC606C8;
-	Thu, 18 Feb 2021 12:05:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CDE438732F;
+	Thu, 18 Feb 2021 12:21:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6F15A1BF3BA
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 12:05:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 39D9D1BF3BA
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 12:21:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4E79B60615
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 12:05:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6590386E15
+ for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 12:21:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZuwlWXFkJp-S for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 12:05:36 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id B19D76064D; Thu, 18 Feb 2021 12:05:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 577CD606CA
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 12:05:07 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11IC0kw3000905;
- Thu, 18 Feb 2021 12:05:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=mzYLSDFdXXIl7ci/FLKSbqpMzibR10demEE2x4c6jmc=;
- b=Bg72+X7oDxRxUKZRrq60IAY6Y8BWwsWkFAq80oOOx6us4hsbH/Hm9Bjz6FM+JeKHDAk2
- ApKm72zICMvf74aFl7KmLz5D/mmVX60z71FpIulXYG3QZJo4bAwXFOQbzRfq2Lllvcv5
- Gr4fd0XC4gRasO/pA4Kn2aISmVG7q86b2PL/pwsDAhmqyaPLZO4507FvfGes483AtWUh
- 6HuUy2SxqHGL7/KgX6M1CDjcOCAmwWczaJV4fqccWxll+8XQMBTtW1PwO6SozfCiDQ2u
- iiRhrghmo8f+dA18nbLzDvEi9ghnvLQ3jdqX0RjthfYayE8FnvrNFGzmJ/XnCIe/poGL Xw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2130.oracle.com with ESMTP id 36p49bduxt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 18 Feb 2021 12:05:06 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11IC0TOo089843;
- Thu, 18 Feb 2021 12:05:04 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 36prbqpcx5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 18 Feb 2021 12:05:04 +0000
-Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11IC53mM006588;
- Thu, 18 Feb 2021 12:05:03 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 18 Feb 2021 04:05:02 -0800
-Date: Thu, 18 Feb 2021 15:04:55 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Pritthijit Nath <pritthijit.nath@icloud.com>
-Subject: Re: [PATCH] staging: wlan-ng: Fixed incorrect type warning in
- p80211netdev.c
-Message-ID: <20210218120455.GI2087@kadam>
-References: <20210217154255.112115-1-pritthijit.nath@icloud.com>
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pM4Aam7eLvVo for <devel@linuxdriverproject.org>;
+ Thu, 18 Feb 2021 12:21:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A4BA786DCA
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 12:21:08 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A269560C3D;
+ Thu, 18 Feb 2021 12:21:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1613650868;
+ bh=1efNp6iCqT0cKOViZRtDzICFQx9Ge9hJLe5WpeuUQY0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QGkRbO03z31FYI3sQ+BYTy4nZswN96ywJq44CWoNIJhfrY1g4iG+tb4M3rWsAgPYL
+ y9WbrXLW/2HPh/sPq/wiwDPeYl36fGj1CLm5WWjAd6oGtfjlNgQKWO1srjDvd7W0oz
+ 2izAQ9XUX8BMbF+6p6Q1MTmsx8tsgIxZt9n/lIoU=
+Date: Thu, 18 Feb 2021 13:21:05 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Atul Gopinathan <atulgopinathan@gmail.com>
+Subject: Re: [PATCH v2 1/2] staging: comedi: cast function output to assigned
+ variable type
+Message-ID: <YC5bsXa+1KSuIh+v@kroah.com>
+References: <20210218084404.16591-1-atulgopinathan@gmail.com>
+ <8f73b7a1-02dd-32ef-8115-ad0f38868692@mev.co.uk>
+ <20210218104755.GA7571@atulu-nitro>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210217154255.112115-1-pritthijit.nath@icloud.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9898
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 mlxscore=0
- phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102180108
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9898
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- priorityscore=1501
- lowpriorityscore=0 bulkscore=0 impostorscore=0 mlxlogscore=999
- adultscore=0 malwarescore=0 phishscore=0 clxscore=1011 mlxscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102180108
+In-Reply-To: <20210218104755.GA7571@atulu-nitro>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,41 +64,68 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+Cc: devel@driverdev.osuosl.org, Ian Abbott <abbotti@mev.co.uk>,
  linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 17, 2021 at 09:12:55PM +0530, Pritthijit Nath wrote:
-> This change fixes a sparse warning "incorrect type in argument 1
-> (different address spaces)".
+On Thu, Feb 18, 2021 at 04:17:55PM +0530, Atul Gopinathan wrote:
+> On Thu, Feb 18, 2021 at 10:31:15AM +0000, Ian Abbott wrote:
+> > On 18/02/2021 08:44, Atul Gopinathan wrote:
+> > > Fix the following warning generated by sparse:
+> > > 
+> > > drivers/staging//comedi/comedi_fops.c:2956:23: warning: incorrect type in assignment (different address spaces)
+> > > drivers/staging//comedi/comedi_fops.c:2956:23:    expected unsigned int *chanlist
+> > > drivers/staging//comedi/comedi_fops.c:2956:23:    got void [noderef] <asn:1> *
+> > > 
+> > > compat_ptr() has a return type of "void __user *"
+> > > as defined in "include/linux/compat.h"
+> > > 
+> > > cmd->chanlist is of type "unsigned int *" as defined
+> > > in drivers/staging/comedi/comedi.h" in struct
+> > > comedi_cmd.
+> > > 
+> > > Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
+> > > ---
+> > >   drivers/staging/comedi/comedi_fops.c | 2 +-
+> > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > 
+> > > diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+> > > index e85a99b68f31..fc4ec38012b4 100644
+> > > --- a/drivers/staging/comedi/comedi_fops.c
+> > > +++ b/drivers/staging/comedi/comedi_fops.c
+> > > @@ -2953,7 +2953,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
+> > >   	cmd->scan_end_arg = v32.scan_end_arg;
+> > >   	cmd->stop_src = v32.stop_src;
+> > >   	cmd->stop_arg = v32.stop_arg;
+> > > -	cmd->chanlist = compat_ptr(v32.chanlist);
+> > > +	cmd->chanlist = (unsigned int __force *)compat_ptr(v32.chanlist);
+> > >   	cmd->chanlist_len = v32.chanlist_len;
+> > >   	cmd->data = compat_ptr(v32.data);
+> > >   	cmd->data_len = v32.data_len;
+> > > 
+> > 
+> > This patch and the other one in your series clash with commit 9d5d041eebe3
+> > ("staging: comedi: comedi_fops.c: added casts to get rid of sparse
+> > warnings") by B K Karthik.
 > 
-> Signed-off-by: Pritthijit Nath <pritthijit.nath@icloud.com>
-> ---
->  drivers/staging/wlan-ng/p80211netdev.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
-> index 6f9666dc0277..70570e8a5ad2 100644
-> --- a/drivers/staging/wlan-ng/p80211netdev.c
-> +++ b/drivers/staging/wlan-ng/p80211netdev.c
-> @@ -569,7 +569,7 @@ static int p80211knetdev_do_ioctl(struct net_device *dev,
->  		goto bail;
->  	}
->  
-> -	msgbuf = memdup_user(req->data, req->len);
-> +	msgbuf = memdup_user((void __user *)req->data, req->len);
+> Oh I see. Not sure if this is the right place to ask, but which tree and
+> branch should one work with when messing with the code in staging/
+> directory? (wanted to avoid such clashes in future)
 
-Probably the correct fix is to just change the type of
-(struct p80211ioctl_req)->data from caddr_t to "void __user *data;".
+staging-next is the best one to use from the staging.git tree.  But as
+the above commit was merged in 5.9-rc1, way back in July of last year, I
+have no idea what tree you are currently using to not hit that...
 
-I haven't looked at this though, so double check.
+You should always be able to find the subsystem git trees in the
+MAINTAINERS file, or if not, just work off of what is in linux-next as
+that should have all subsystem's trees merged into it.
 
-regards,
-dan carpenter
+thanks,
 
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
