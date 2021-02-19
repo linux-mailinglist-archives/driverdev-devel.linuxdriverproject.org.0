@@ -1,98 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0139731F68F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 10:30:09 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28DB631F692
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 10:31:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 71D2A606F7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 09:30:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 945B086B96;
+	Fri, 19 Feb 2021 09:31:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0t1VKnSFwb0Q for <lists+driverdev-devel@lfdr.de>;
-	Fri, 19 Feb 2021 09:30:06 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 36E38606F0; Fri, 19 Feb 2021 09:30:06 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SivymLSyIg21; Fri, 19 Feb 2021 09:31:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7402E600BB;
-	Fri, 19 Feb 2021 09:29:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CB33986B93;
+	Fri, 19 Feb 2021 09:31:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6DF681BF853
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 09:29:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BC7C01BF853
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 09:31:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 55747605F3
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 09:29:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B88A58700D
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 09:31:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MHtlhCyYao-a for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 09:29:37 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id AE038606BD; Fri, 19 Feb 2021 09:29:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 81C256064C
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 09:29:36 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11J9OGcV136160;
- Fri, 19 Feb 2021 09:29:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=uEvDR6iEpvcnB2NVWUiZUFmWvogbhov45lrrnx2ri0g=;
- b=atzN55G24QS1hqwNj/djdC8BksvwywD7eX/pPiInGMNpMG7iYTP2vGunD0F50eN3q8Eq
- zOHMwvZBGz7PC0FnCK0qEqOAl6tFScE2ul6szAtZbSP5TjBxIUntw6GxJKoSoGu3Uaen
- sJLXfwJaW66if0uPWMJN/Vya0rslmqEQ5fqkXRqrHsZNa/aCWbwIitQoKal1dcxtI6l9
- uJJ598HKICxj1jR7/xLUHH+hYyflfgLhmSIYeIZv82JkBZtnUJbqpyxghBp+P0Gtxf0x
- DwcTLWOhAxTz8zgnSaACJMdqjb2pvhfvVoq9JdUZiaJ3mrHQRY2DJa0NdGumUJ3Zus32 wA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 36p7dnrq2p-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 19 Feb 2021 09:29:35 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11J9KVNw115305;
- Fri, 19 Feb 2021 09:29:34 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 36prbrxf3x-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 19 Feb 2021 09:29:33 +0000
-Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11J9TSv1016782;
- Fri, 19 Feb 2021 09:29:28 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 19 Feb 2021 01:29:28 -0800
-Date: Fri, 19 Feb 2021 12:29:18 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nikolay Kyx <knv418@gmail.com>
-Subject: Re: [PATCH v2] staging: fwserial: match alignment with open
- parenthesis
-Message-ID: <20210219092918.GV2087@kadam>
-References: <YC9zX1aIgj/sVnQY@kroah.com>
- <20210219090318.20795-1-knv418@gmail.com>
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yQbFCkyv4xvL for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 09:31:18 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp95.iad3b.emailsrvr.com (smtp95.iad3b.emailsrvr.com
+ [146.20.161.95])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B4E8E85DB1
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 09:31:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1613727077;
+ bh=S+dJPTKN+EhVQm/f0xJ8YQU7u1kFlh0tuWCSQHpuENE=;
+ h=Subject:To:From:Date:From;
+ b=lEfK3pruzk2zZpa4BZXgeGnwnjIM7Y/46Fl/vxL+TLPnKWBCJplQoVHKiTtWQeybW
+ 4cdUA7KZbSMlzS/7VV+gRm24rydkj/Ozh1CGV2e3oDzbq851iIWViFUOQYrXLqugN3
+ 4GWW5tyQLyBg+08f1WPnAmxZyE/pTXHvNC/2cLKE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1613727077;
+ bh=S+dJPTKN+EhVQm/f0xJ8YQU7u1kFlh0tuWCSQHpuENE=;
+ h=Subject:To:From:Date:From;
+ b=C8o0taraGqg6XxLTopMmXgB8CtZj3WjK+ewkvHM4PLSa+tRxcgLJwHBIyM+Igvfav
+ /I7l6zqfcTBb72oN4jGy8wJhS/GToGjp2Sf0ZcsJuhmzU/QncZsXbKMBFoMfxHhKjh
+ Gc2OiY1KtOCxb/8tR6cv4gWIMgZ+IESvgC9yLf80=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp4.relay.iad3b.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 1ADB52071B; 
+ Fri, 19 Feb 2021 04:31:16 -0500 (EST)
+Subject: Re: [PATCH] staging: comedi: cast to (unsigned int *)
+To: David Laight <David.Laight@ACULAB.COM>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ Atul Gopinathan <atulgopinathan@gmail.com>
+References: <20210217165907.9777-1-atulgopinathan@gmail.com>
+ <YC1T06VCh0K2BBW5@kroah.com> <20210217181000.GB10124@atulu-ubuntu>
+ <YC1fzjVOwiqzO1nb@kroah.com> <3cfef23d-8d4a-205c-61e8-cbe8c9a0c0f4@mev.co.uk>
+ <21a953261eb44e7ba302cfe74d8efa2d@AcuMS.aculab.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <94917044-ba8f-7044-42f6-7e8d5ef1e10b@mev.co.uk>
+Date: Fri, 19 Feb 2021 09:31:16 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210219090318.20795-1-knv418@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9899
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 mlxscore=0
- phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102190073
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9899
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- suspectscore=0 mlxscore=0
- phishscore=0 spamscore=0 adultscore=0 clxscore=1011 impostorscore=0
- priorityscore=1501 lowpriorityscore=0 malwarescore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102190073
+In-Reply-To: <21a953261eb44e7ba302cfe74d8efa2d@AcuMS.aculab.com>
+Content-Language: en-GB
+X-Classification-ID: 859589ae-0f4d-437d-8685-e5f2ac50e4f5-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,32 +80,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, dinghao.liu@zju.edu.cn,
- adawesomeguy222@gmail.com
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 19, 2021 at 12:03:18PM +0300, Nikolay Kyx wrote:
-> This patch fixes the following checkpatch.pl check:
+On 19/02/2021 09:03, David Laight wrote:
+>> It's kind of moot anyway because the patch is outdated.  But the reason
+>> for the ___force is that the same `struct comedi_cmd` is used in both
+>> user and kernel contexts.  In user contexts, the `chanlist` member
+>> points to user memory and in kernel contexts it points to kernel memory
+>> (copied from userspace).
 > 
-> CHECK: Alignment should match open parenthesis
-> 
-> in file fwserial.c
-> 
-> Additionally some style warnings remain valid here and could be fixed by
-> another patch.
-> 
+> Can't you use a union of the user and kernel pointers?
+> (Possibly even anonymous?)
+> Although, ideally, keeping them in separate fields is better.
+> 8 bytes for a pointer isn't going make a fat lot of difference.
 
-Don't put comments like this in the git log, put them under the ---
-cut off line.
+This is for a UAPI header (eventually), so cannot add a new field.  For
+an anonymous union, one tagged with __user and one not, the __user tag
+would be removed during conversion from UAPI headers to
+/usr/include/linux headers, leaving a union of two identically typed
+members, which would look a bit odd.  The union also kind of hides the
+problem.
 
-> Signed-off-by: Nikolay Kyx <knv418@gmail.com>
-> ---
-> 
-
+-- 
+-=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
+-=( registered in England & Wales.  Regd. number: 02862268.  )=-
+-=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
+-=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
