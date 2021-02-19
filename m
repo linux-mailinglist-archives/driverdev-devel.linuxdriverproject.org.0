@@ -1,80 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E28DB31FFC7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 21:26:23 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5082B320032
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 22:17:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 331646072E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 20:26:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C53858752C;
+	Fri, 19 Feb 2021 21:17:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gtDtmrlPp6mn for <lists+driverdev-devel@lfdr.de>;
-	Fri, 19 Feb 2021 20:26:21 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 3699060720; Fri, 19 Feb 2021 20:26:21 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sF21JV+a+9zK; Fri, 19 Feb 2021 21:17:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B754960701;
-	Fri, 19 Feb 2021 20:26:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F11CA87522;
+	Fri, 19 Feb 2021 21:17:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 22F0C1BF3C0
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 20:25:54 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E89141C113E
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 21:16:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1D6B8872D4
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 20:25:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E64678751C
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 21:16:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1Ov7Qz6RSN4O for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 20:25:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f176.google.com (mail-pg1-f176.google.com
- [209.85.215.176])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AF1DE872B9
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 20:25:53 +0000 (UTC)
-Received: by mail-pg1-f176.google.com with SMTP id o63so5627983pgo.6
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 12:25:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=6dVHk96AcArKaN/SteHJiGOj0BkhTaJ4SHAFKAMGMno=;
- b=US8UsJfdfwgQ5VJMv+ws5DQdc7kWG+09VFpbjL8+QlLWWI4BEGXOdeRn59ENUfPza3
- LARhRjYeoO5MoA4+Gxyl2KuUUNjmtsOXlNa9i91ENpAp0DvCTELgAtTIamw8ELLtUhKw
- 2EKkb8GqyPZmrS24NOI97ZF1zsIQzzGUvFXPjk4c7F5ChrdWlvpiagQDunNuTEo18SoL
- Lz8GB7amTN9R8sXnXqh2hwL0BQy8fLnlKChlzTEaoA+eZw3wY/J67aTmxWyKvQDKXfGO
- gItrkElzsyLHdvYUxWmehMfUnjjPfUxIoTGHVlaalIycqBeCAHCOVY8pVCZE6V9IvJBb
- 4ISg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=6dVHk96AcArKaN/SteHJiGOj0BkhTaJ4SHAFKAMGMno=;
- b=TZo+/yVDtJZJUJ2E86y/c3NpaE3p272YXWCDbHpYs02czY3WhvpZRv9/cWr9dUONda
- WUtMLkv61gUDU0zxufvZjUin90v9D09V1MRvrdW6nwP6tcYjJo4dAo1sMAxfgIFY4Sy7
- PLRYkncJSoQR2jn9zidZ+gbWnQTLLF7UPxBQdeUAfrO2ScnE0jnARnAzUxGyX6qUWjEA
- y2dIzpZ2xLmXhQow3f9pDbukqYjHSGBGfuM8OXidDuXZiytlDpD/OHuYax8DWamvWAdx
- 5HcKgGKxmzXbdzmuowozDyxEDMcHfmgUKH+1dH74Cae3vRZyGtjVoyXllPceM6FOd5+w
- R1Jg==
-X-Gm-Message-State: AOAM531GlaXcGzEeGa+WzQMhzeCoRJOXrLAdFlHHTjrK/POS2JEzfMNU
- DTTJfySizhPMNteuf3GSA6g=
-X-Google-Smtp-Source: ABdhPJxlFJJmRCqw1LJ4pqMIv8LiowF3wCbrm7Xzuz9QimAsiezEFTTBfr9clmbpjYdjjIIcXIwD6A==
-X-Received: by 2002:aa7:82cf:0:b029:1cc:5393:ad8e with SMTP id
- f15-20020aa782cf0000b02901cc5393ad8emr11258170pfn.3.1613766353128; 
- Fri, 19 Feb 2021 12:25:53 -0800 (PST)
-Received: from localhost.localdomain ([49.36.144.93])
- by smtp.gmail.com with ESMTPSA id g62sm10504199pgc.32.2021.02.19.12.25.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 12:25:52 -0800 (PST)
-From: Amrit Khera <amritkhera98@gmail.com>
-To: gregkh@linuxfoundation.org, lee.jones@linaro.org, arnd@arndb.de,
- kuba@kernel.org, mail@anirudhrb.com, ayush@disroot.org
-Subject: [PATCH] staging: wimax: Fix block comment style issue in stack.c
-Date: Sat, 20 Feb 2021 01:55:25 +0530
-Message-Id: <20210219202524.14642-1-amritkhera98@gmail.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id TvXRMOVFzQ6m for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 21:16:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com
+ [66.111.4.26])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3D6BF87517
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 21:16:53 +0000 (UTC)
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id 3678A5C00C4;
+ Fri, 19 Feb 2021 16:16:51 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Fri, 19 Feb 2021 16:16:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
+ :to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=fm2; bh=yincU3GcJrYaiYziC87umqtuVT
+ EM9x213UyzTgpRjjs=; b=v9KL0zDZ/Lt4uRxhkkrcM36KbZKH1Xx0tC60UOma7w
+ 2CIeBraIDYD/8kL0GJWq0hOGpwlNklubrMQCdHYNDxrCSBZGXhW+dizh7XXR4gSy
+ Egu7ptXgi9WhlFpgu+5wx3M8uL3Q7m4HXoOiMgiEX1v5o/+Oeczy+kqzPsiCT5eR
+ mb1NsKnQUx6ZtgHxb2WL81b5S/Wjy5cl+4oUMd14fsWZ8oXMj+a86wp3jmaLBG2i
+ QuMrWX5TW9g84Fbw54Rry77lDHMO/IcJ02pPhHT8CNI+HIymbs3NaoZ9ji5ER/Y1
+ VendUI0I55L9wtF7pY9yGqf44+YGXpVFW/6QC4L6xi2A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=yincU3GcJrYaiYziC
+ 87umqtuVTEM9x213UyzTgpRjjs=; b=DXCdzStWwYFllUK3V43KZf1mQBGO13lHa
+ MuDyDgdVRGeDu/s96h7aEXP6n7H++F4lliUgcb+HOsU8S+9RZUiIMhdRHHswypC4
+ hc4H/Q1A7SjkT4delTtt4h/pO5bWN51rB+KAAEgWoQVU5PVFQabaZpSBJwdTTXdx
+ z7H4dsTNbgM+e9L9PvZn2TAfCGPoScnvnWLC9muTqbKWISN6tICxIudlRnMENTlV
+ yUZOvwhvRXRR9j0uvP6AnfiLRtucIIs6Rq9Gt4HVcWoNiGrcwBc8DJUXsuy47b8u
+ TKTgMSgdPgxp3MuTo+/V2L5u09if8qFBIo0r83LMtGBvKo1dbE90A==
+X-ME-Sender: <xms:wiowYKdtmkSIZy6Pld9LnUjlWK7bB-LEOD36Nr8xvIWwS16_nwbmUA>
+ <xme:wiowYEPWLiRL2glnXqlKvtI9T0PwjjTOLOWPpXdPXk7UDXsEl7VMWEP_uj8g6C_tD
+ 4duUnvFOwVRyWCs4Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjeeigddugeeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephffvufffkffoggfgsedtkeertdertddtnecuhfhrohhmpeghihhllhhirghm
+ ucffuhhrrghnugcuoeifihhllhdoghhithesughrnhgurdhmvgeqnecuggftrfgrthhtvg
+ hrnhepffehieekueeileeufeeuteegveeugeejfeelhfevkefhhfdvtddvjedufeekfeeu
+ necukfhppedvudejrddvfeekrddvtdekrdejgeenucevlhhushhtvghrufhiiigvpedtne
+ curfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
+X-ME-Proxy: <xmx:wiowYLjElRP6WFunRBt8fqcwbEv1kxKVdeCBtezQUUtbUKLqtKgjrg>
+ <xmx:wiowYH9-BRTbJZBe9BdOhrSF9n2OnHwwRX1dVIuFhhYz8M2dRcUFpQ>
+ <xmx:wiowYGu6VHEfu7xQ_vNLetRhXxhk63ayfy6SgrfrH9ngjoFgiblqDw>
+ <xmx:wyowYM3AYWpJ4BxT5dgL_Ep2dYDZd6f1ZdxBq0zmvQQHBqGOwZd1LQ>
+Received: from vagrant.vm (pd9eed04a.dip0.t-ipconnect.de [217.238.208.74])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 59B21240057;
+ Fri, 19 Feb 2021 16:16:50 -0500 (EST)
+From: William Durand <will+git@drnd.me>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/5] staging: rtl8192e: delba_param_set union cleanups
+Date: Fri, 19 Feb 2021 16:13:55 +0000
+Message-Id: <20210219161400.29316-1-will+git@drnd.me>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -88,45 +93,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Amrit Khera <amritkhera98@gmail.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This change fixes a checkpatch warning for "Block comments
-use * on subsequent lines".
+This patchset fixes the checkpatch issues related to the `delba_param_set`
+union defined in `rtl8192e/rtl819x_BA.h` (avoid camelcase).
 
-Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
----
- drivers/staging/wimax/stack.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+William Durand (5):
+  staging: rtl8192e: rename charData to char_data in delba_param_set union
+  staging: rtl8192e: rename shortData to short_data in delba_param_set union
+  staging: rtl8192e: rename Reserved to reserved in delba_param_set union
+  staging: rtl8192e: rename Initiator to initiator in delba_param_set union
+  staging: rtl8192e: rename TID to tid in delba_param_set union
 
-diff --git a/drivers/staging/wimax/stack.c b/drivers/staging/wimax/stack.c
-index ace24a6dfd2d..781426000015 100644
---- a/drivers/staging/wimax/stack.c
-+++ b/drivers/staging/wimax/stack.c
-@@ -62,11 +62,12 @@ MODULE_PARM_DESC(debug,
-  * close to where the data is generated.
-  */
- /*
--static const struct nla_policy wimax_gnl_re_status_change[WIMAX_GNL_ATTR_MAX + 1] = {
--	[WIMAX_GNL_STCH_STATE_OLD] = { .type = NLA_U8 },
--	[WIMAX_GNL_STCH_STATE_NEW] = { .type = NLA_U8 },
--};
--*/
-+ * static const struct nla_policy
-+ * wimax_gnl_re_status_change[WIMAX_GNL_ATTR_MAX + 1] = {
-+ *	[WIMAX_GNL_STCH_STATE_OLD] = { .type = NLA_U8 },
-+ *	[WIMAX_GNL_STCH_STATE_NEW] = { .type = NLA_U8 },
-+ * };
-+ */
- 
- 
- /*
--- 
-2.20.1
+ drivers/staging/rtl8192e/rtl819x_BA.h     | 10 +++++-----
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 14 +++++++-------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+--
+2.30.0
 
 _______________________________________________
 devel mailing list
