@@ -2,88 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B25E531F722
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:13:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E635231F727
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:14:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4CB5B606F5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 10:13:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 82F10605C9
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 10:14:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CLuu6pIIH2K6 for <lists+driverdev-devel@lfdr.de>;
-	Fri, 19 Feb 2021 10:13:06 +0000 (UTC)
+	with ESMTP id 6l-H6TkWzAX3 for <lists+driverdev-devel@lfdr.de>;
+	Fri, 19 Feb 2021 10:13:59 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id C8A98606FD; Fri, 19 Feb 2021 10:13:06 +0000 (UTC)
+	id 85B87606EC; Fri, 19 Feb 2021 10:13:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 96A58606F8;
-	Fri, 19 Feb 2021 10:12:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 29BD4606D6;
+	Fri, 19 Feb 2021 10:13:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E8AA1BF2CC
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:12:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5B7041BF2CC
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:12:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 78B1487038
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:12:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 57EEE86E70
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:12:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A9CpQaYHScLP for <devel@linuxdriverproject.org>;
+ with ESMTP id 06ZsY1Y-teBE for <devel@linuxdriverproject.org>;
  Fri, 19 Feb 2021 10:12:12 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com
  [66.111.4.27])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 702C686E70
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6DFEF86E59
  for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 10:12:12 +0000 (UTC)
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 67BFE5C0067;
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailout.nyi.internal (Postfix) with ESMTP id 9A5295C00CF;
  Fri, 19 Feb 2021 05:12:10 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Fri, 19 Feb 2021 05:12:10 -0500
+ by compute2.internal (MEProxy); Fri, 19 Feb 2021 05:12:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
- :to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm2; bh=noauOSqHA0OnOCd+HOhkFdK4W1
- n9NJ/pdqNhatTbfmA=; b=gKHgGNVYWsMPVK95WZk3o730KT2NIRsEwhlDYxRxDN
- U/RmFEE8+2avzuPMIumiLx7ViGsblo4pPtE3lqYW6t86oUyiRKg4a4y9CgGiLv0+
- 28k1uivnNQI9OEYdRm1ub393iZBRA8SuoYxW7veoqnd9m4rK5/B5qx+QISLdKwv7
- n/QqckRjOCUAgSnoxhfqJO55mJX6is9xiL/lRJCMEw/hmbCm0Cy27QwhfQGlxTJO
- GVaJaGir9Y4n6PHLlwetJyr8oCQz5Yx9PP5dyV/2EZxz9FzKk6nLH2Au1slmdgfV
- K2PDo5ZX6soIkd4JkemGADyUwVW3iKEX14aGN49ZVHog==
+ :to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding; s=fm2; bh=GXJPno7jlQ6lx
+ 30/f6IQjHMlSbMWtrJPdhY2j80BYQ8=; b=gkuHlMTIuVLLI9zPuudxwm3fGnBx6
+ V1IhTJygcnzR7HDrGJ7M3Fjw5aFOKJfC5XOC1C2fN+L1lTTm3iMecPF1hBcywzMf
+ 3zOGlG82EVxeuPeN/plwdymj+fywnm+YbCrgYwtGesMijIj71yjSfQhlEr0M9F7j
+ MPQFb7lQeoDJn5hFHVEbKreyHFYZ4Io1w4OW/1ZlQre3hwSdWpWmCanLCnN+Qi8h
+ N8RsH6pwFTB5a+V5WTdrJFtnqdgjrYCZsUT12y4RIgve8x2WKPqw6JWhrEm3QuX3
+ o8+2bSvVGCKrpQb9ObJoGTcES12KIDwglBkJbmNr9PZxHGAUeg0pjIwfg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=noauOSqHA0OnOCd+H
- OhkFdK4W1n9NJ/pdqNhatTbfmA=; b=G/Bl4wz6dT20ThMe9LphKL0akFtgzIEjh
- RA/iIZidOOQlOF3lP+FUAQ2ChO/hnOlIULDdVY09pV4YXsuf1785qmRs9U2i8zj5
- qgmFJKSGJIKDjh4DAEKZnfwLnl/AHfbGKbrOqviTFAuwGtItzr5OJTrdYKHwhCY1
- XjedAAlAAcIUtyxPb2vTVNQM0/chWwyolLqBruIw+6lNfqsMuTRfoFMyv31GOEPH
- uTJ0snE2j5+UyXmdTqtg5860MDNv/LUzSPrWDmcYlq89RkVbjZCpbDvM4kkCs6z1
- cLfDuKCqeTrvSSO+lKuc1ewSdwOB+eddln4sO/lyRWvbYkpfM9zpw==
-X-ME-Sender: <xms:-Y4vYPWPaEIg71BxnbZNWr6KSmoU21qJ8Y96WA0ZlDkWYfcHb9O55A>
- <xme:-Y4vYFix8Lm9BGJZkZWieMv4_f93kX01ks_jPXE6tto2BV2OViIFnFPBRHEljKj7t
- SWuhV5Sm5hML9xYDA>
+ :in-reply-to:message-id:mime-version:references:subject:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm2; bh=GXJPno7jlQ6lx30/f6IQjHMlSbMWtrJPdhY2j80BYQ8=; b=q/WHWxOW
+ gfIxgm8QoNeROtMk9ITiJVKIFYph1kHKkNEL3LnTPlm7BOFuTqyBA+EKXiG3kst2
+ afFhvUS3O9Ck5Htq/kYr2SyChOgMhHpxvDsZCiUkzUtIDJ2i3oCBV3rElPQVlV7s
+ 7cMg7yzbbomPJhaOhnJ0XYWMEn2DZQWlmiB9x0221nTapo49B+2/1qawqqAl34as
+ O7N2q5ujq/GHT6qnoTRonEcSqUAIl0jcxuuGRvdcDdRhfxtRBxAFmIg9pTVZ2ozh
+ QoQZyABhCHYbP2oVLvq6bJ17UFvs7+pyLnXwoI5TCJU7Q8tWnQkEUte6RvI1AQRP
+ H/Q8wZbqR74mEw==
+X-ME-Sender: <xms:-o4vYE4RYR_tPfxWbjfsj15M7ws0FuzNqyLfnjwXKUGP7H4W61bp3g>
+ <xme:-o4vYGQm1_MXJEUOxMa1eX1m7WdXzvO-UIVqV6RCq1dYtpl_QbhgpK4kkuRM29il_
+ -U6wdKef-_eLUDXHw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjeeigdduvdcutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefhvffufffkofgggfestdekredtredttdenucfhrhhomhephghilhhlihgrmhcu
- ffhurhgrnhguuceofihilhhlodhgihhtsegurhhnugdrmhgvqeenucggtffrrghtthgvrh
- hnpeffheeikeeuieelueefueetgeevueegjeeflefhveekhffhvddtvdejudefkeefueen
- ucfkphepudefvddrvdeftddrudelgedrjeefnecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepfihilhhlodhgihhtsegurhhnugdrmhgv
-X-ME-Proxy: <xmx:-Y4vYNvTYS88Qwx1HOm4hJ27o63XbCE4Luk16r5JgmR0WNR2x7RaYA>
- <xmx:-Y4vYO5QpZFIjuzFIbUTk7IZ3I2wRXNq-m8CF-LdAqAzpuT2huKyCg>
- <xmx:-Y4vYBO5bm0pjvwSSPTaDKnQGeOZGP5d1E48b2Z4Ka_hUnAolRiMRA>
- <xmx:-o4vYKguykz5o0vVJHsI9FQ1NWap0xmUIjHqe4DVxjzgKWB8Wf21YA>
+ fjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhephghilhhlihgr
+ mhcuffhurhgrnhguuceofihilhhlodhgihhtsegurhhnugdrmhgvqeenucggtffrrghtth
+ gvrhhnpeejvdegffeiiedvfeelkedvvdduffevhfeigfeuueejvdfggeefleekudffleff
+ feenucfkphepudefvddrvdeftddrudelgedrjeefnecuvehluhhsthgvrhfuihiivgeptd
+ enucfrrghrrghmpehmrghilhhfrhhomhepfihilhhlodhgihhtsegurhhnugdrmhgv
+X-ME-Proxy: <xmx:-o4vYEk-A7pkLQsS-xy6b9XE-dAezdNmeW3nDaQMUVzsV967HR38Yw>
+ <xmx:-o4vYFLMdHQbj5tYww8NT3TZ84GLh4_9-IqIxKV-L6U-pn-bQyuOYw>
+ <xmx:-o4vYHSvE5gwa3mrvvQnNg7xV1HEW6zE4-bCJ-7OU8L6VkW8lqr2Pw>
+ <xmx:-o4vYO1XKsloxjz65Z8H_KZ-DNHoGm0cjjlK2w2WBT1EqIsZR4ZI-A>
 Received: from vagrant.eduroam-fp.privat
  (ufr-132-230-194-73.eduroam-nat.uni-freiburg.de [132.230.194.73])
- by mail.messagingengine.com (Postfix) with ESMTPA id 61BF9108005F;
+ by mail.messagingengine.com (Postfix) with ESMTPA id 098A61080066;
  Fri, 19 Feb 2021 05:12:09 -0500 (EST)
 From: William Durand <will+git@drnd.me>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/6] staging: rtl8192e: ba_param_set union cleanups
-Date: Fri, 19 Feb 2021 10:12:00 +0000
-Message-Id: <20210219101206.18036-1-will+git@drnd.me>
+Subject: [PATCH 1/6] staging: rtl8192e: rename charData to char_data in
+ ba_param_set union
+Date: Fri, 19 Feb 2021 10:12:01 +0000
+Message-Id: <20210219101206.18036-2-will+git@drnd.me>
 X-Mailer: git-send-email 2.30.0
+In-Reply-To: <20210219101206.18036-1-will+git@drnd.me>
+References: <20210219101206.18036-1-will+git@drnd.me>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -103,24 +107,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patchset fixes the checkpatch issues related to the `ba_param_set`
-union defined in `rtl8192e/rtl819x_BA.h` (avoid camelcase).
+Fixes a checkpatch CHECK message.
 
-William Durand (6):
-  staging: rtl8192e: rename charData to char_data in ba_param_set union
-  staging: rtl8192e: rename shortData to short_data in ba_param_set
-    union
-  staging: rtl8192e: rename BAPolicy to ba_policy in ba_param_set union
-  staging: rtl8192e: rename BufferSize to buffer_size in ba_param_set
-    union
-  staging: rtl8192e: rename AMSDU_Support to amsdu_support in
-    ba_param_set union
-  staging: rtl8192e: rename TID to tid in ba_param_set union
+Signed-off-by: William Durand <will+git@drnd.me>
+---
+ drivers/staging/rtl8192e/rtl819x_BA.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/rtl8192e/rtl819x_BA.h     | 12 +++++-----
- drivers/staging/rtl8192e/rtl819x_BAProc.c | 29 +++++++++++------------
- 2 files changed, 20 insertions(+), 21 deletions(-)
+diff --git a/drivers/staging/rtl8192e/rtl819x_BA.h b/drivers/staging/rtl8192e/rtl819x_BA.h
+index b2a784fa051e..4fdff19bb4ae 100644
+--- a/drivers/staging/rtl8192e/rtl819x_BA.h
++++ b/drivers/staging/rtl8192e/rtl819x_BA.h
+@@ -28,7 +28,7 @@ union sequence_control {
+ };
 
+ union ba_param_set {
+-	u8 charData[2];
++	u8 char_data[2];
+ 	u16 shortData;
+ 	struct {
+ 		u16 AMSDU_Support:1;
 --
 2.30.0
 
