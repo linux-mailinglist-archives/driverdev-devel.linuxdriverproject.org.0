@@ -1,76 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 953E031F79C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:51:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06A4F31F7ED
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 12:08:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D70A187098;
-	Fri, 19 Feb 2021 10:51:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 992CA606E3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:08:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ihPov0OHW8n9; Fri, 19 Feb 2021 10:51:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5pR_8onYOp03 for <lists+driverdev-devel@lfdr.de>;
+	Fri, 19 Feb 2021 11:08:31 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 8BC97606F8; Fri, 19 Feb 2021 11:08:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CDE438706D;
-	Fri, 19 Feb 2021 10:51:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 756056068A;
+	Fri, 19 Feb 2021 11:08:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CDD5F1BF2CC
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:51:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F7AE1BF2C2
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 11:08:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C86008747C
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:51:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0CFA660590
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 11:08:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lpvgwjHvo+Dm for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 10:51:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com
- [209.85.214.176])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 566C88747A
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 10:51:18 +0000 (UTC)
-Received: by mail-pl1-f176.google.com with SMTP id u11so3133073plg.13
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 02:51:18 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hkeH8ztZA_re for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 11:08:02 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 545C6606C4; Fri, 19 Feb 2021 11:08:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-f174.google.com (mail-pg1-f174.google.com
+ [209.85.215.174])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 299A460590
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 11:08:00 +0000 (UTC)
+Received: by mail-pg1-f174.google.com with SMTP id z68so3831757pgz.0
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 03:08:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=KpqDPrrwgSpJ0Jz+q1yA1PKOl7u983OV0CZZHBiD6uA=;
- b=CgaPuwcsXSa3rYSPFg4xNH+VojfgUAuQjRTWg61bCDiC8tt2m7Q55lE6n19K8Q2Ztv
- JExIG99WunwTL/AOkcDgFHty33pC59ZQcQiuEIuXWsntZH/uoLR39FGOFhMiXS8TdF8R
- R8V4rrtzmfMme0oKfNP9xvBQE5ObBRFzw2ngKIVNyj7q2rgP+nUOy/0cCFpqABjc+t36
- MluUoZTWGh4m3/HoeF5Tuw8+q3hHz5RuUwytOtFDglNi2XfMYluxyfu35UYEFmyOebtp
- mNmQWZlyvmcCW3Gmy64i93ClDPQ4v8vUmEk3s8mUsg4fjrI7TKTq6FPcxAvVl9Ldb5Z9
- dedw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NH8nJLseGbJKdWpzwLWPfIlJFkrysRID4hRNSais6WE=;
+ b=JPcNC8V1Q4wYLMSPgV3F5FdVWhw1JB8EEWuPNUFxl/7t+WIydN3cxpezvrbGj7sQwm
+ i+zKw+QLPRrx5LyQdls8UOssPiBrHEt7Dpbsbol9jgaKhzNTTVz2E4tOdrwXXjaq+3zf
+ PxBnHkxUTNfe8mdQhj0zWTOQdVubumAMiXIviFal6xt6a6jcfYl+yspfMZR+0YDQmgwm
+ vAuVm0/wTuYe71EuBtrkncBj4oCPoYc8gfBY5pZlqItee8kwsQ9LWqeiri0feicT5pfQ
+ Zc9Vjq9zCEEntPPP6NfDLMB+LQumrbnsJh97hVdbQZDFsQ9zxXDj7eFHbAjpBDneaBtH
+ DTfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=KpqDPrrwgSpJ0Jz+q1yA1PKOl7u983OV0CZZHBiD6uA=;
- b=J5VnHqMAGaawgkM6wjh4YHGMbWTtGkwABAozzfD+LEYoXNBZrR4L7vZVF4GewbWOUu
- uwV+oft2r/FGDFUFFrTR5kLYHaG72wPq8bMRBkH2jW9SDK0ML7Jhu53p/hivFSKgT7tj
- MSKxT+LiPZmY7n1P46IcqYrsgEPTG7fACWp/T4fwvOKCmqQ8MyegsSfGBNoGWU40cvw9
- I6DmThA3GMUezhsfJC/tDXeudLAffIgWw9bKgFrNSdRhF7zAzWJOE+rkrgRkbnCXIGpM
- 90MUdcgD8QiueZU2O2K7Tc5MtTy4p0KUx22Lkn35K3vrLpj4yzPwY1WMVOrfiPMf3oSj
- oXDA==
-X-Gm-Message-State: AOAM530SEjzVx1ZldIRoc9W1Tr/aDvjSD3A4BZPk8V6qr6XxNT07QLke
- FY4OQo8pUcSVg7SBHBkOfzZSf2tNJgcxj/x7
-X-Google-Smtp-Source: ABdhPJz0g9Cc0Ya0mhA5JNyXWod/f5fmyAfNmJgO5GgK+0zMBgx/qng58tTr0JUlNAYHhmJ0CKSI4g==
-X-Received: by 2002:a17:90b:33c4:: with SMTP id
- lk4mr8997503pjb.157.1613731877797; 
- Fri, 19 Feb 2021 02:51:17 -0800 (PST)
-Received: from gmail.com ([2401:4900:3847:831e:690e:964b:81e9:e810])
- by smtp.gmail.com with ESMTPSA id i7sm8233633pjs.1.2021.02.19.02.51.15
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NH8nJLseGbJKdWpzwLWPfIlJFkrysRID4hRNSais6WE=;
+ b=mLb7Ut0/OMb5cK1fUIG42RtT6o/JNj/0obYxNjCH2n3XMdlRnGOP95iB6hOBWmO6o3
+ RtEvn3qKAxWm/p0dhHk4WWrcwOTBS9LSdqCF6RtHD0sOsmQQx4R80uD5wkf4bA/zYk5s
+ stOp8v673o0wTr/YUOsldGcPhPWi26Yx9pJ8C2YmR9Vs1Z9y7/+SIGhzYH8kfhb1WkGX
+ 4vbgoISJE/A2Zb/CNXCGBvr/5G2okylbZtnxCCzWQ7oOW+P92hSOn0t+tkEgfJBP+Wib
+ QevruEHhk0qzIRbEUALXkJsdTJX00zrBcb4ACbNuVuMAlQmhiZBfXc43pJHo0JrUj4W/
+ 94hQ==
+X-Gm-Message-State: AOAM531PVzAMfxnRYfskM1QUoRQRLrOkNpwETdtxYBEypHkIe2JLysOe
+ 2I/IL0YvRDz62SIDn6LfThk=
+X-Google-Smtp-Source: ABdhPJz1JmpCPnWcrujxZRxIH/eihCZpExohrVgiP4cItpNnDjIU1/239LHzyPJ+ZekScrJLKAHs/g==
+X-Received: by 2002:a65:4942:: with SMTP id q2mr7989803pgs.34.1613732880505;
+ Fri, 19 Feb 2021 03:08:00 -0800 (PST)
+Received: from ThinkCentre-M83.wg.ducheng.me ([202.133.196.154])
+ by smtp.gmail.com with ESMTPSA id t21sm9555113pfe.174.2021.02.19.03.07.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 02:51:17 -0800 (PST)
-Date: Fri, 19 Feb 2021 16:21:12 +0530
-From: Prakash Dubey <prakashdubey1999@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: fwserial: fix alignment of function parameters
-Message-ID: <20210219105112.GA8315@gmail.com>
+ Fri, 19 Feb 2021 03:08:00 -0800 (PST)
+From: Du Cheng <ducheng2@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3 1/3] staging: rtl8192u: fixed coding style of
+ r8190_rtl8256.c
+Date: Fri, 19 Feb 2021 19:07:53 +0800
+Message-Id: <20210219110755.4993-1-ducheng2@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,38 +89,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Du Cheng <ducheng2@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the following checkpatch.pl check:
+use MACRO __func__ instead of "phy_set_rf8256_bandwidth" for RT_TRACE()
+inside phy_set_rf8256_bandwidth(), reported by scripts/checkpatch.pl.
 
-CHECK: Alignment should match open parenthesis
-
-Signed-off-by: Prakash Dubey <prakashdubey1999@gmail.com>
+Signed-off-by: Du Cheng <ducheng2@gmail.com>
 ---
- drivers/staging/fwserial/fwserial.c | 4 ++--
+changes v3:
+* break up changes into 3 patches
+
+changes v2:
+* improve description
+
+changes v1:
+* fix coding style
+
+ drivers/staging/rtl8192u/r8190_rtl8256.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-index a92741b8b6c6..137e97c9406c 100644
---- a/drivers/staging/fwserial/fwserial.c
-+++ b/drivers/staging/fwserial/fwserial.c
-@@ -1318,8 +1318,8 @@ static int fwtty_break_ctl(struct tty_struct *tty, int state)
- 	if (state == -1) {
- 		set_bit(STOP_TX, &port->flags);
- 		ret = wait_event_interruptible_timeout(port->wait_tx,
--							!test_bit(IN_TX, &port->flags),
--							10);
-+						       !test_bit(IN_TX, &port->flags),
-+						       10);
- 		if (ret == 0 || ret == -ERESTARTSYS) {
- 			clear_bit(STOP_TX, &port->flags);
- 			fwtty_restart_tx(port);
+diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
+index fee3bfb99075..7294a3fbe205 100644
+--- a/drivers/staging/rtl8192u/r8190_rtl8256.c
++++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
+@@ -73,11 +73,11 @@ void phy_set_rf8256_bandwidth(struct net_device *dev, enum ht_channel_width Band
+ 					else
+ 						rtl8192_phy_SetRFReg(dev, (enum rf90_radio_path_e)eRFPath, 0x14, bMask12Bits, 0x5ab);
+ 				} else {
+-					RT_TRACE(COMP_ERR, "phy_set_rf8256_bandwidth(): unknown hardware version\n");
++					RT_TRACE(COMP_ERR, "%s(): unknown hardware version\n", __func__);
+ 					}
+ 				break;
+ 		default:
+-				RT_TRACE(COMP_ERR, "phy_set_rf8256_bandwidth(): unknown Bandwidth: %#X\n", Bandwidth);
++				RT_TRACE(COMP_ERR, "%s(): unknown Bandwidth: %#X\n", __func__, Bandwidth);
+ 				break;
+ 		}
+ 	}
 -- 
-2.25.1
+2.27.0
 
 _______________________________________________
 devel mailing list
