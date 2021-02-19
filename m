@@ -2,77 +2,90 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D6F131FD9A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 18:10:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C2F8F31FDB6
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 18:14:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5471787494;
-	Fri, 19 Feb 2021 17:10:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 01AA58748F;
+	Fri, 19 Feb 2021 17:14:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QD6dp2-fifxs; Fri, 19 Feb 2021 17:10:53 +0000 (UTC)
+	with ESMTP id AqoAnAUQiiyn; Fri, 19 Feb 2021 17:14:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ADD81873DC;
-	Fri, 19 Feb 2021 17:10:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0727787478;
+	Fri, 19 Feb 2021 17:14:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A92A81BF577
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 17:10:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D1AA41BF577
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 17:14:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A5979873E0
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 17:10:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE6DC86C24
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 17:14:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QG9zXtyhpW+W for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 17:10:50 +0000 (UTC)
+ with ESMTP id 51cityWQUHi1 for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 17:14:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com
- [209.85.214.177])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3D5EF873DC
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 17:10:50 +0000 (UTC)
-Received: by mail-pl1-f177.google.com with SMTP id k22so3702014pll.6
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 09:10:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3T+n7MMMkPAgUMPVgTYwVKGO+36GBsdg6t9UxvEW8XU=;
- b=aJSnAHAcvGNM1IohGEapLVzbb4l+X+BOyFYNsk/U6ofrMj0C+AAGKf0Cz5xfmN7Y5/
- mqeHF9a3m66uSEI6wJMMKXb1f7yn3Gs04+Smq43gJoFewF7RtEQSWIleSIyc3vz+AdND
- ZxVIMAK8fHLWnPjwN09l973MQ8lR8gLarZX3+hRqDBY641vX1IQjTttnDM1uVsk6df7P
- ik3Tp7yLxOIGuEIU0HaUrD5pASz4l83S/xNisQYN7qD2kIRfscn+FlNIKSe3UWbA5bD2
- AftaaHrvNev1sxALlqu3RSXdgx63pjQ8bB6fDWd4TPld436SJ2uCqblTXrEuLHmB94cm
- 8JJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3T+n7MMMkPAgUMPVgTYwVKGO+36GBsdg6t9UxvEW8XU=;
- b=WpcDiQstWk0tNG4ldVs4nsp/zQHLgXtX4puL/raLcN8io30RWXWeErNmLN+WvjhGjT
- H9lQ/mu1pgq5gbODyEr28R1jmZWHGPT3SPCUJxQ3vByzusCS+S4xT3CQQr3z+XkSoYik
- 43wMxpXCOhE/sSkyxb9FF4cJ3n8ijlfKUZhgMhbrAAR/HDuiBfD8xrpTqj7vU/AJ7tDs
- REG1v/8JB8B7IqwqScDmnBSZwFXRf6LaUYhG9sfF+UKS2t67iY2mASRGKgw3DganwcEj
- 2yCxsqcfBtbbVUSd2AWzQp+rXeX0gffp83MXReWRDFlLdETukaFsPqzYZDLG7AwcrtgY
- IexA==
-X-Gm-Message-State: AOAM533hKFN7TWWzz432fsxVZoQcYXlmGn1efpf64U/bAo/meLSRK31t
- Q8ghwG79vGg0RKg9MH57sE+joyxeLRZOjA==
-X-Google-Smtp-Source: ABdhPJxT1R+K3Hl7k1Uv6dL2RXz+cPBeNRMe37JCn17iaOGOUgcxogqAU/37T0Ato3pkcDWaGgK3Xg==
-X-Received: by 2002:a17:90a:ba02:: with SMTP id
- s2mr10253477pjr.53.1613754649304; 
- Fri, 19 Feb 2021 09:10:49 -0800 (PST)
-Received: from localhost.localdomain ([106.51.140.97])
- by smtp.gmail.com with ESMTPSA id x13sm10042387pfq.34.2021.02.19.09.10.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 09:10:48 -0800 (PST)
-From: Shreesh Adiga <16567adigashreesh@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: octeon: cleanup unnecessary parentheses in
- ethernet-spmi.c
-Date: Fri, 19 Feb 2021 22:37:37 +0530
-Message-Id: <20210219170737.1138083-1-16567adigashreesh@gmail.com>
-X-Mailer: git-send-email 2.30.0
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3904786C19
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 17:14:51 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11JH928T060455;
+ Fri, 19 Feb 2021 17:14:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=mmc+9jh3DlnpvQDmKTq0Eb72B6qDkY4YnrhNxDoCtmM=;
+ b=lKLeh9R1dirOQZ9cd4AqXSlAVJOX2cVONP9bE9Xg3+2sgCZnv6W5L/2G0YFk99JYze56
+ oJqvkYv/9cfQEWewtklSDqG+ITbRQi6X6BU/vwFWppMKO7y3mCn6vjdjGKM9WnSX3Aoy
+ cRIsZarq7qJapTyg0nJctf3jPUl1t3PVj4CKc5oFB4udb3biKzRipkzOynSB3QfPoFi0
+ LwmvMbBbV4qua6odVW5TmmuqHFK0Jyrua44rj3fE+Bs0dI+g3Sa5PNCInAvvVLSuek+o
+ 1f1ar1TsoUf8tQvnLFDwWUEVJu3Rjj+LjdF+s6Tyhq8G6EQe7kFPRrux5eduARI0f7xH Jg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 36p66ra8am-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 19 Feb 2021 17:14:50 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11JHEXMr069451;
+ Fri, 19 Feb 2021 17:14:48 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 36prbsbq4u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 19 Feb 2021 17:14:48 +0000
+Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11JHEis3005778;
+ Fri, 19 Feb 2021 17:14:45 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 19 Feb 2021 09:14:43 -0800
+Date: Fri, 19 Feb 2021 20:14:32 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Kurt Manucredo <fuzzybritches@protonmail.com>
+Subject: Re: [PATCH v2] staging: rtl8723bs: fix code style comparison warning
+Message-ID: <20210219171432.GA2087@kadam>
+References: <20210219144928.8-1-fuzzybritches@protonmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210219144928.8-1-fuzzybritches@protonmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9900
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102190134
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9900
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 suspectscore=0
+ impostorscore=0 priorityscore=1501 clxscore=1015 spamscore=0 mlxscore=0
+ phishscore=0 malwarescore=0 bulkscore=0 adultscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102190133
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,35 +98,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, tiwai@suse.de, gregkh@linuxfoundation.org,
+ d.straghkov@ispras.ru, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-checkpatch.pl reported issue of unnecessary parentheses for the
-expression. It has been removed to fix the report.
+On Fri, Feb 19, 2021 at 02:50:53PM +0000, Kurt Manucredo wrote:
+> 
+> 
+> changes since previous version:
+> - change Subject line
+> - change commit message
+> - change commit message position to above signed-off-by
+> 
 
-Signed-off-by: Shreesh Adiga <16567adigashreesh@gmail.com>
----
- drivers/staging/octeon/ethernet-spi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+These comments need to go below the --- cut off line.
 
-diff --git a/drivers/staging/octeon/ethernet-spi.c b/drivers/staging/octeon/ethernet-spi.c
-index c582403e6a1f..699c98c5ec13 100644
---- a/drivers/staging/octeon/ethernet-spi.c
-+++ b/drivers/staging/octeon/ethernet-spi.c
-@@ -202,7 +202,7 @@ int cvm_oct_spi_init(struct net_device *dev)
- 	}
- 	number_spi_ports++;
- 
--	if ((priv->port == 0) || (priv->port == 16)) {
-+	if (priv->port == 0 || priv->port == 16) {
- 		cvm_oct_spi_enable_error_reporting(INTERFACE(priv->port));
- 		priv->poll = cvm_oct_spi_poll;
- 	}
--- 
-2.30.0
+> checkpatch gives the following WARNING:
+> WARNING: Comparisons should place the constant on the right side of the test
+> this patch fixes the coding style warning.
+> 
+> Signed-off-by: Kurt Manucredo <fuzzybritches@protonmail.com>
+> ---
+  ^^^
+
+This one here.
+
+>  drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
