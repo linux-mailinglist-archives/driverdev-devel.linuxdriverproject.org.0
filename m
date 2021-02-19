@@ -1,82 +1,89 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4613B31F716
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:10:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B25E531F722
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:13:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8B2B186E72;
-	Fri, 19 Feb 2021 10:10:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4CB5B606F5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 10:13:08 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CLuu6pIIH2K6 for <lists+driverdev-devel@lfdr.de>;
+	Fri, 19 Feb 2021 10:13:06 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id C8A98606FD; Fri, 19 Feb 2021 10:13:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 96A58606F8;
+	Fri, 19 Feb 2021 10:12:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E8AA1BF2CC
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:12:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 78B1487038
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:12:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vdnuctg3sMNR; Fri, 19 Feb 2021 10:10:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C61E686E70;
-	Fri, 19 Feb 2021 10:10:02 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0B0021BF2CC
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 10:10:00 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 06E3F86928
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 10:10:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s8-roWJhgM_g
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 10:09:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f171.google.com (mail-pg1-f171.google.com
- [209.85.215.171])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CE49D86044
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 10:09:16 +0000 (UTC)
-Received: by mail-pg1-f171.google.com with SMTP id z68so3664437pgz.0
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 02:09:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SIWLmGOvp66f/U2UVVcWV2eWaP6CYTCSh0FY9HfRF2k=;
- b=SNXqEboqURjzDXLxuVnqDuEjsuIOFHPgbnDSD4/ZrWyHnojYYm2hXFWeDeN95L+oDm
- /vwoYG5kWGttZt8JxfhVTGf3IVrTEuCckilczHxJ0ymFaTAh/sTZjKpJD0FBCYW5o5ej
- JeU/RvrSjvl2hwmctqeeine5SUjUbzT/0BQ+T+wn8ylnFyBZWk/F9XrJplVbYcWA5BT3
- BUqtB7zI68neVOkIoFAgHFQqnJP+YPaEfyAAI19RFSEICtBdN/B28ysVElz0eP+Z1WtV
- ErAkpp2EwsytyjxmSpr7u699zvMu6cyBEcmPPmhIE8s13i0rBgMfuVc1R/YvEsKEzFwL
- hbGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SIWLmGOvp66f/U2UVVcWV2eWaP6CYTCSh0FY9HfRF2k=;
- b=pUEjU/r6n6FCO3JvaSUzAfy1NTy8GJcq1YnzoK7qB04kcoqXLpys7KEy3539fQROK2
- zgY8A2zS6ixTtzvpHhWoaTQ3clLfE+BmpeJG/8NOpLqNdefZoFHZBWcEpGRlNOoIgVZU
- 35+frnup/SX8dI2xQSvm2arZJo6dfP3RsNPiN8snCRxT+lJ6NftnUD/2q1pgUrtjomDJ
- WEWkIcE6kOYLbYCBtXMLC5YzCjwiBuKIv9PRCj1g+wDPifyMDNTD2Agy3O/NvPwWG6yv
- fw+g5jvRhDxTxomGTUWuun74X5UjdiHG4qWWCQY0m7Lby018CGg1r8KwXdLjptq4UoXa
- dyhg==
-X-Gm-Message-State: AOAM533nwgm/4HNVjLAe+T6OK84Z6Rgmd/3RDi56JzPRoj6LCimxkJgu
- Zg9l1qe3rQPhKgB+9kmTig==
-X-Google-Smtp-Source: ABdhPJzYAThq7lpK5n+fLYJT2aaTF1SC7b+IL3rE8y8xkXtRuFVZaG/F6JNnNWm1ECOEm3mm00JIOQ==
-X-Received: by 2002:a63:1b1b:: with SMTP id b27mr7580888pgb.377.1613729356264; 
- Fri, 19 Feb 2021 02:09:16 -0800 (PST)
-Received: from localhost.localdomain ([2405:201:7000:69ad:68c2:e0a0:9441:6688])
- by smtp.gmail.com with ESMTPSA id 8sm5172322pge.92.2021.02.19.02.09.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 02:09:15 -0800 (PST)
-From: shivang upadhyay <oroz3x@gmail.com>
-To: greg@kroah.com, sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
- driverdev-devel@linuxdriverproject.org
-Subject: [PATCH] staging: sm750fb: added identifier names for function
- declarations
-Date: Fri, 19 Feb 2021 15:38:03 +0530
-Message-Id: <20210219100803.5311-1-oroz3x@gmail.com>
-X-Mailer: git-send-email 2.27.0
+ with ESMTP id A9CpQaYHScLP for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 10:12:12 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com
+ [66.111.4.27])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 702C686E70
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 10:12:12 +0000 (UTC)
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 67BFE5C0067;
+ Fri, 19 Feb 2021 05:12:10 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Fri, 19 Feb 2021 05:12:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
+ :to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=fm2; bh=noauOSqHA0OnOCd+HOhkFdK4W1
+ n9NJ/pdqNhatTbfmA=; b=gKHgGNVYWsMPVK95WZk3o730KT2NIRsEwhlDYxRxDN
+ U/RmFEE8+2avzuPMIumiLx7ViGsblo4pPtE3lqYW6t86oUyiRKg4a4y9CgGiLv0+
+ 28k1uivnNQI9OEYdRm1ub393iZBRA8SuoYxW7veoqnd9m4rK5/B5qx+QISLdKwv7
+ n/QqckRjOCUAgSnoxhfqJO55mJX6is9xiL/lRJCMEw/hmbCm0Cy27QwhfQGlxTJO
+ GVaJaGir9Y4n6PHLlwetJyr8oCQz5Yx9PP5dyV/2EZxz9FzKk6nLH2Au1slmdgfV
+ K2PDo5ZX6soIkd4JkemGADyUwVW3iKEX14aGN49ZVHog==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=noauOSqHA0OnOCd+H
+ OhkFdK4W1n9NJ/pdqNhatTbfmA=; b=G/Bl4wz6dT20ThMe9LphKL0akFtgzIEjh
+ RA/iIZidOOQlOF3lP+FUAQ2ChO/hnOlIULDdVY09pV4YXsuf1785qmRs9U2i8zj5
+ qgmFJKSGJIKDjh4DAEKZnfwLnl/AHfbGKbrOqviTFAuwGtItzr5OJTrdYKHwhCY1
+ XjedAAlAAcIUtyxPb2vTVNQM0/chWwyolLqBruIw+6lNfqsMuTRfoFMyv31GOEPH
+ uTJ0snE2j5+UyXmdTqtg5860MDNv/LUzSPrWDmcYlq89RkVbjZCpbDvM4kkCs6z1
+ cLfDuKCqeTrvSSO+lKuc1ewSdwOB+eddln4sO/lyRWvbYkpfM9zpw==
+X-ME-Sender: <xms:-Y4vYPWPaEIg71BxnbZNWr6KSmoU21qJ8Y96WA0ZlDkWYfcHb9O55A>
+ <xme:-Y4vYFix8Lm9BGJZkZWieMv4_f93kX01ks_jPXE6tto2BV2OViIFnFPBRHEljKj7t
+ SWuhV5Sm5hML9xYDA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjeeigdduvdcutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefhvffufffkofgggfestdekredtredttdenucfhrhhomhephghilhhlihgrmhcu
+ ffhurhgrnhguuceofihilhhlodhgihhtsegurhhnugdrmhgvqeenucggtffrrghtthgvrh
+ hnpeffheeikeeuieelueefueetgeevueegjeeflefhveekhffhvddtvdejudefkeefueen
+ ucfkphepudefvddrvdeftddrudelgedrjeefnecuvehluhhsthgvrhfuihiivgeptdenuc
+ frrghrrghmpehmrghilhhfrhhomhepfihilhhlodhgihhtsegurhhnugdrmhgv
+X-ME-Proxy: <xmx:-Y4vYNvTYS88Qwx1HOm4hJ27o63XbCE4Luk16r5JgmR0WNR2x7RaYA>
+ <xmx:-Y4vYO5QpZFIjuzFIbUTk7IZ3I2wRXNq-m8CF-LdAqAzpuT2huKyCg>
+ <xmx:-Y4vYBO5bm0pjvwSSPTaDKnQGeOZGP5d1E48b2Z4Ka_hUnAolRiMRA>
+ <xmx:-o4vYKguykz5o0vVJHsI9FQ1NWap0xmUIjHqe4DVxjzgKWB8Wf21YA>
+Received: from vagrant.eduroam-fp.privat
+ (ufr-132-230-194-73.eduroam-nat.uni-freiburg.de [132.230.194.73])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 61BF9108005F;
+ Fri, 19 Feb 2021 05:12:09 -0500 (EST)
+From: William Durand <will+git@drnd.me>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/6] staging: rtl8192e: ba_param_set union cleanups
+Date: Fri, 19 Feb 2021 10:12:00 +0000
+Message-Id: <20210219101206.18036-1-will+git@drnd.me>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,70 +97,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: shivang upadhyay <oroz3x@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+This patchset fixes the checkpatch issues related to the `ba_param_set`
+union defined in `rtl8192e/rtl819x_BA.h` (avoid camelcase).
 
-checkpatch.pl complains about not having identifiers names in
-function declarations . This patch uses the same names as are
-used in source file sm750_accel.c , but with snake case.
+William Durand (6):
+  staging: rtl8192e: rename charData to char_data in ba_param_set union
+  staging: rtl8192e: rename shortData to short_data in ba_param_set
+    union
+  staging: rtl8192e: rename BAPolicy to ba_policy in ba_param_set union
+  staging: rtl8192e: rename BufferSize to buffer_size in ba_param_set
+    union
+  staging: rtl8192e: rename AMSDU_Support to amsdu_support in
+    ba_param_set union
+  staging: rtl8192e: rename TID to tid in ba_param_set union
 
+ drivers/staging/rtl8192e/rtl819x_BA.h     | 12 +++++-----
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 29 +++++++++++------------
+ 2 files changed, 20 insertions(+), 21 deletions(-)
 
-Signed-off-by: shivang upadhyay <oroz3x@gmail.com>
----
- drivers/staging/sm750fb/sm750.h | 30 ++++++++++++++++++------------
- 1 file changed, 18 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
-index 19823c7277a4..38b85a171182 100644
---- a/drivers/staging/sm750fb/sm750.h
-+++ b/drivers/staging/sm750fb/sm750.h
-@@ -55,23 +55,28 @@ struct lynx_accel {
- 	volatile unsigned char __iomem *dpPortBase;
- 
- 	/* function pointers */
--	void (*de_init)(struct lynx_accel *);
-+	void (*de_init)(struct lynx_accel *accel);
- 
- 	int (*de_wait)(void);/* see if hardware ready to work */
- 
--	int (*de_fillrect)(struct lynx_accel *,
--			   u32, u32, u32, u32,
--			   u32, u32, u32, u32, u32);
-+	int (*de_fillrect)(struct lynx_accel *accel,
-+			   u32 base, u32 pitch, u32 bpp,
-+			   u32 x, u32 y, u32 width, u32 height,
-+			   u32 color, u32 rop);
- 
--	int (*de_copyarea)(struct lynx_accel *,
--			   u32, u32, u32, u32,
--			   u32, u32, u32, u32,
--			   u32, u32, u32, u32);
- 
--	int (*de_imageblit)(struct lynx_accel *, const char *,
--			    u32, u32, u32, u32,
--			    u32, u32, u32, u32,
--			    u32, u32, u32, u32);
-+	int (*de_copyarea)(struct lynx_accel *accel,
-+			   u32 s_base, u32 s_pitch,
-+			   u32 sx, u32 sy,
-+			   u32 d_base, u32 d_pitch,
-+			   u32 bpp, u32 dx, u32 dy,
-+			   u32 width, u32 height,
-+			   u32 rop2);
-+
-+	int (*de_imageblit)(struct lynx_accel *accel, const char *p_srcbuf,
-+			    u32 src_delta, u32 start_bit, u32 d_base, u32 d_pitch,
-+			    u32 byte_per_pixel, u32 dx, u32 dy, u32 width,
-+			    u32 height, u32 f_color, u32 b_color, u32 rop2);
- 
- };
- 
--- 
-2.27.0
+--
+2.30.0
 
 _______________________________________________
 devel mailing list
