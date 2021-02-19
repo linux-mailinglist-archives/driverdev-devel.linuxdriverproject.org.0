@@ -1,55 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC6F431FC4B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 16:43:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE46E31FC67
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 16:51:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9201386C5D;
-	Fri, 19 Feb 2021 15:43:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2046960705
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 15:51:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PRGQ4fIYxrZa; Fri, 19 Feb 2021 15:43:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id E_-ZCE3aJ8Nw for <lists+driverdev-devel@lfdr.de>;
+	Fri, 19 Feb 2021 15:51:43 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 3F1536070F; Fri, 19 Feb 2021 15:51:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 127FD86C41;
-	Fri, 19 Feb 2021 15:43:44 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2671F606E5;
+	Fri, 19 Feb 2021 15:51:26 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C8F3F1BF3C1
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 15:43:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7791F1BF3C1
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 15:51:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8D95786C5A
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 15:43:25 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7433086C1B
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 15:51:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5BmnQ43woH82
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 15:43:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from 17781608.hospedagemdesite.com (pop.hostlocation.com.br
- [189.1.160.103])
- by fraxinus.osuosl.org (Postfix) with SMTP id 4BA2D86C41
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 15:43:24 +0000 (UTC)
-Received: (qmail 9988 invoked by uid 48); 19 Feb 2021 11:26:23 -0200
-Cc: recipient list not shown: ;
-Received: from 105.12.7.116
- (SquirrelMail authenticated user diretoria@dmonegatto.com.br)
- by mail.dmonegatto.com.br with HTTP;
- Fri, 19 Feb 2021 11:26:23 -0200 (BRST)
-Message-ID: <12058.105.12.7.116.1613741183.squirrel@mail.dmonegatto.com.br>
-Date: Fri, 19 Feb 2021 11:26:23 -0200 (BRST)
-Subject: International Relief Fund (Award Notice)
-From: diretoria@dmonegatto.com.br
-User-Agent: SquirrelMail/1.4.10a
+ with ESMTP id kPnv4UzRq-Q9 for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 15:51:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com
+ [209.85.208.170])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9EE1F86C19
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 15:51:13 +0000 (UTC)
+Received: by mail-lj1-f170.google.com with SMTP id c17so22701382ljn.0
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 07:51:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=/DFMlkrlKAPVKNGX9tkzf+XGf19LwdcZfmqYome26jY=;
+ b=uBS2cKH9qW9PEmRZFYHgD0+04R9BLox8kgC/Css492pBnVKv/ojUQwDUhd1D/tTVur
+ 33CMGsq/TNFRoRLBLu7dGJWObDrIU2radpUKhwmuJZsThdlY3LIRjtfgMzcbobw7B09q
+ NAiRv5Ora91RRO7vLcxBYGer1tvxzjru+gxLXGyRPMqe3aCxB8PfRu524iFh8EniPrU+
+ 871izwGyROvY6O7md5RmrF11iRuPuobq9d93DiRoDFZQQSQ2Kdkfo8NJ0EEmgZ4aPGxQ
+ O8n//+HyM9DatnqoDv1ErxSOF/vbb96Ora3ksXgS7lH32Jvjl3dOpY3pABWJn22ju+hq
+ lPIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=/DFMlkrlKAPVKNGX9tkzf+XGf19LwdcZfmqYome26jY=;
+ b=RaYK9ECzj1G3e634QZOYmQ1vbT2jrEdvRaAkMHbndSen8LdeBmViRkPi3AjrCLo5E5
+ 2wbhUx19DUHpLg5AH6lU95DqqRpFpzxmxKg6XmSlOTBPp5jWUKdElgpKcp2ms9xeqZwB
+ XElJnMbHO9tWZ8Rr2HlChMgVW+GrW0nZ4YgtDlth0Ey4emaMOxYlf85KtPsDykifZaza
+ oAGNPLxVdC0sEwPCi48L6890HsHWASOeNBRj5ToNHZtkdwSKIQ9u9krZUpuq4CSZhqOR
+ iw+BR42xTtQKy8YKcI+mQPMFt495SkoHuufJZiHFKWZoliNitBzoVAV3BCe7UA4CqTGV
+ qbsQ==
+X-Gm-Message-State: AOAM533fP/SIZNLdZVtzWATCTKVSxhPx9ZEVAMG0hilQGQ0ClPTA7pPR
+ L2BXZMOlGjQQrmrCkoVC6WY=
+X-Google-Smtp-Source: ABdhPJw95RAgf6JuPma0lqmnaUwqpYDJfnfVpbmoTqLjPufexGNReFxhevmJ5qYAetj3hSlIzo4Hcw==
+X-Received: by 2002:a19:c201:: with SMTP id l1mr5776989lfc.613.1613749871514; 
+ Fri, 19 Feb 2021 07:51:11 -0800 (PST)
+Received: from msi.localdomain (vmpool.ut.mephi.ru. [85.143.112.90])
+ by smtp.gmail.com with ESMTPSA id v25sm1011690ljc.92.2021.02.19.07.51.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Feb 2021 07:51:11 -0800 (PST)
+From: Nikolay Kyx <knv418@gmail.com>
+To: gregkh@linuxfoundation.org, adawesomeguy222@gmail.com,
+ dinghao.liu@zju.edu.cn
+Subject: [PATCH v3] staging: fwserial: match alignment with open parenthesis
+Date: Fri, 19 Feb 2021 18:49:17 +0300
+Message-Id: <20210219154917.23388-1-knv418@gmail.com>
+X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210219092918.GV2087@kadam>
+References: <20210219092918.GV2087@kadam>
 MIME-Version: 1.0
-X-Priority: 3 (Normal)
-Importance: Normal
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,65 +89,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: cmhlanga@starmail.co.za
+Cc: devel@driverdev.osuosl.org, Nikolay Kyx <knv418@gmail.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+This patch fixes the following checkpatch.pl check:
 
+CHECK: Alignment should match open parenthesis
 
+in file fwserial.c
 
-Hello Dear ,
+Signed-off-by: Nikolay Kyx <knv418@gmail.com>
+---
 
-COVID-19 RELIEF FUND DONATION.
+Additionally some style warnings remain valid here and could be fixed by
+another patch.
 
-You have been awarded the sum of US$2,000,000 (Two Million Dollars) as
-Covid-19 Economic Devastation Relief.
+v2: Edited changelog, as suggested by Greg KH <gregkh@linuxfoundation.org>
 
-The COVID-19 pandemic marks an unprecedented time in modern history that
-will require the best of humanity to overcome. Our Global Donation will
-support immediate and long-term relief and recovery to vulnerable
-individuals, businesses and communities during one of the most challenging
-times we have collectively faced. The crisis has brought so many
-businesses, companies and small scale businesses to a devastating halt. It
-has threatened everyone's way of life, but it is especially difficult for
-people who are already vulnerable. Some people around the globe,
-especially migrants, wage workers, and those with flexible jobs and small
-scale businesses have already started feeling the devastating economic
-impact.
+v3: Moved comment about remaining warnings under the cut-off line,
+as suggested by Dan Carpenter <dan.carpenter@oracle.com> 
 
-We have received Billions of Dollars from Donors to help in this poverty
-alleviation program. We will work with our partners on the ground to
-allocate funds where they're most needed. We believe that organizations
-that are deeply rooted are best positioned to lead long-term plans to stop
-COVID-19 and the devastating economic effect of the Global Lockdowns. Our
-funds have been delivered down to our distribution points and currently
-secured by the International Committee of Red Cross (ICRC) Vault
-Operations, Centurion, South Africa. Our Payment Administrator will help
-to process and release to you the sum of US$2, 000,000 (Two Million United
-States Dollars) to enable you boost your business, stabilize your region,
-help the vulnerable and less-privileged and help stop the spread of
-Covid-19.  Kindly contact the payment administrator to her email:
-cmhlanga@starmail.co.za (Mrs. Cynthia Mhlanga).  Ensure to provide her
-with your following information:
+ drivers/staging/fwserial/fwserial.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-1. Your full names.
-2. Your address.
-3. Your telephone.
-4. Your age.
-5. Your occupation.
-6. Your bank account information where to receive funds.
-
-We thank you and congratulate you once again!
-
-Dr. Domingos Monegatto
-(Director)
-Relief International Giving and Donation
-
-
-
-
+diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+index c368082aae1a..137e97c9406c 100644
+--- a/drivers/staging/fwserial/fwserial.c
++++ b/drivers/staging/fwserial/fwserial.c
+@@ -1318,8 +1318,8 @@ static int fwtty_break_ctl(struct tty_struct *tty, int state)
+ 	if (state == -1) {
+ 		set_bit(STOP_TX, &port->flags);
+ 		ret = wait_event_interruptible_timeout(port->wait_tx,
+-					       !test_bit(IN_TX, &port->flags),
+-					       10);
++						       !test_bit(IN_TX, &port->flags),
++						       10);
+ 		if (ret == 0 || ret == -ERESTARTSYS) {
+ 			clear_bit(STOP_TX, &port->flags);
+ 			fwtty_restart_tx(port);
+-- 
+2.30.1
 
 _______________________________________________
 devel mailing list
