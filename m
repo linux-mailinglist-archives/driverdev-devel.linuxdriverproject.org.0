@@ -1,65 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE65E320D72
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 21:11:39 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80B06320D78
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 21:12:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9503E85A58;
-	Sun, 21 Feb 2021 20:11:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0DC0182FAE
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 20:12:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RpyNZ1OnrJGN; Sun, 21 Feb 2021 20:11:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VohqyJ_-6NI3 for <lists+driverdev-devel@lfdr.de>;
+	Sun, 21 Feb 2021 20:12:35 +0000 (UTC)
+Received: by smtp1.osuosl.org (Postfix, from userid 1001)
+	id 8045582F9B; Sun, 21 Feb 2021 20:12:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 21DFA847AC;
-	Sun, 21 Feb 2021 20:11:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8D58382EF0;
+	Sun, 21 Feb 2021 20:12:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CBEE21BF4E4
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 20:11:21 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B613D1BF4E4
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 20:11:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C8D9F855A1
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 20:11:21 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A5BE36F4A5
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 20:11:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 334Prp55b6wd for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 20:11:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AdbxoUSsW3GI for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 20:11:24 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id BD8B06F4E4; Sun, 21 Feb 2021 20:11:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com
  [66.111.4.26])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B114084693
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 20:11:20 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5FC656F47A
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 20:11:23 +0000 (UTC)
 Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 2B7745C0078;
+ by mailout.nyi.internal (Postfix) with ESMTP id ACECE5C0099;
  Sun, 21 Feb 2021 15:11:19 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
  by compute3.internal (MEProxy); Sun, 21 Feb 2021 15:11:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
  :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=9FRYqHJiRnfQA
- YufYGV/PBlNcT7o2BKr2KCsAoq/tg0=; b=RXfiXayKf8x8aUjWNC4j4bZL8r1Ph
- jjKeLjaTWvyLG0+eyG8CptSHNGpk+DL2C0at9QD4rJ6nBaj173aWpFxY0Sw/5wRg
- chITmqOuaaBTC5U52Hb2vRWWMp+2lQj18M8RT9uglCKddFxOjEVpIFLi+WCFiNHI
- 3xBh4bNNGyw/qIRfTxuxC9lAv6pUyaCbH4geOZMBsO8K1zigde/Xsp4/2C8Hlslc
- 4LXxDKC6mWBQNZa0/bvpzZQRGXUGRW5E++2JWBLYYpkPpdI+mNPZR8uWXGp9b85t
- 64vKWu9Ee579Uc+e2c/QhWzpKdo0cTH0Q+3coFCtfNPARZrvi5OJASEDQ==
+ :mime-version:content-transfer-encoding; s=fm2; bh=PVjY3iIhwL4pF
+ Cqtj9NbCozucXT49Ieb3goPD/84Ghc=; b=rsv2ptKi8HAOO3uQDhG+Mluj9iJjG
+ b5MfUOEvtlQkoMXc6N2FE1uELGmC6Ss1o6S81dzqRyCTcfhq4p7S2ClA6dZf5wCI
+ Mr94IJgoP5xR7DutglDCw0IXQtRmTN9CgytPhJIbNCMfZ98wWm8cf+jXMM4bo//b
+ pUZjqGpF/Zm5J4MQvhHzM6Lz3OuIwoBtEaypb7uSDyL7CyC5/wg5uitf3NlJhVkf
+ wfNL27UlWi98gg+IvpxOjrkZfG6FHOOOHf4j4DaOVhzS81Hdb88xOOTI/bGUcmhf
+ rkukqZbvRkvn7XtwlboRU0iKD8XXHENyJ8j2FLEvaXUsFZTTcsXlamhiw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
  :in-reply-to:message-id:mime-version:references:subject:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; bh=9FRYqHJiRnfQAYufYGV/PBlNcT7o2BKr2KCsAoq/tg0=; b=GVR+lmxV
- tDaoiPbNWxd8SPouqCyyxxpAAXf/93LWiYHTl3FYLGtQJ0jiuGa6C0bjcKigmnZl
- Dp8YVJty2JTDt/aacwz9awODhs/lwXsDpM1I2+23Dp9XbVxHu6KvPBUNjyjHMwAF
- KatkuDI5XGpHO6nYmX63oX+3zYqDl8UIDexPIIWZWXYRzSKsg74lWEcSOnKLE5Os
- HAVFWV9TBJrVYvL3g/Kxb2JASNpMq3JptA7Ycm/PdaC6T1VyEoNel0FT9bg0K8+e
- 795y3a7SqDApsKr/ojzWCGlmiPO5qKGrlrTZX362Uts80uunGGSe/0IFNnup64H8
- 24TF227iIztlJw==
-X-ME-Sender: <xms:Z74yYN2jr0f2TmWFThRTDbWsKDutTw6BzaYfU042tCTLhI5ODGnfRg>
- <xme:Z74yYEFvs1D3SR-n6GiT_HD6Ba2FyFw8QCwN47TwmxUBjt8DSObapxwO3qBIF0rdA
- OQUcWBNCkMO8anQ6Q>
+ fm2; bh=PVjY3iIhwL4pFCqtj9NbCozucXT49Ieb3goPD/84Ghc=; b=Z6vRD6CG
+ 6+DFmQ3fb4HPAxtyglxS45H3Ww3YgWANk/pUOwrbMJKxBL/INI27zoSWByBTgvqq
+ m1Fep+vJF2NTix5+Nxyxe9gxUTNX+6SC9gaYp2xDlXYlbC4LIIJYYTvyHAogA8WY
+ +BAqMaVmgEt/6c8L4DWmoJbreZNpb6bD5PB5xH4uyMq96Kep67WSkXigQa0O/blG
+ cY+/CDJB30QNOxnXZk+6sqiI0WIi/O6kE7rS+sTBlshJuk2aagcc+LBlJ/asOr6g
+ VAm/pRdwS32pEJO0DW3szPexeO/GGnSU0HUecSIZgR8giCV8j+H5VcMLqK7WmTT6
+ 0sT29emjM6jsfQ==
+X-ME-Sender: <xms:Z74yYKP-wGHrzMcCW74h4o3mn0wP5SjN27vjMyJWLL23lxl9Q07I-g>
+ <xme:Z74yYFTK4d3nRxGElZ8wPhJB07lDGNOSE8iT0jm-f7z3XzRoSXGMj0frugSYnKRsB
+ Y28TEtrIOeCnrMaEg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrkedugddufedvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -68,19 +73,19 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrkedugddufedvucetufdoteggod
  htvghrnhepjedvgeffieeivdefleekvddvudffvefhiefgueeujedvgfegfeelkeduffel
  ffefnecukfhppedvudejrddvfeekrddvtdekrdejgeenucevlhhushhtvghrufhiiigvpe
  dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
-X-ME-Proxy: <xmx:Z74yYN4cp3cvoqdsPELD3WqjvvjnbuNM3TE1Ww_PhQNvpkNWWqHnAQ>
- <xmx:Z74yYK0qontCVeMDdsIVGa9dWroaBoeYq40ilMWs6LkQPtp_8a8A0A>
- <xmx:Z74yYAFeI_Dp-V75lhobVxflh17OrT4iP4bbqegC-vnuvo9tqxDShw>
- <xmx:Z74yYLO3221kwnBf7mjwBpwAk6eIvprqNy4SO34izZcZnx7UxolWgw>
+X-ME-Proxy: <xmx:Z74yYECnWcHlj5OvTzoSvT-kgttFwVmhDkINymv3RAtgyD63rcX8YA>
+ <xmx:Z74yYMhVA2dQgXQEIxb7vEEl43Zdqu9AfSDTdnxELuQjKhsPv3TKqA>
+ <xmx:Z74yYFMsJpRLW0Y0Hr8OPS1diJMktd8KwWmlx4YncGw5UldSVM8KjA>
+ <xmx:Z74yYD9JLOX5gShsbha4J-9z9V32dh8R9qERs7nqnDVzZ4BA4BShCw>
 Received: from vagrant.vm (pd9eed04a.dip0.t-ipconnect.de [217.238.208.74])
- by mail.messagingengine.com (Postfix) with ESMTPA id 8CE971080066;
- Sun, 21 Feb 2021 15:11:18 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id 31CC31080057;
+ Sun, 21 Feb 2021 15:11:19 -0500 (EST)
 From: William Durand <will+git@drnd.me>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/7] staging: rtl8192e: rename Timer to timer in ba_record
+Subject: [PATCH 2/7] staging: rtl8192e: rename bValid to b_valid in ba_record
  struct
-Date: Fri, 19 Feb 2021 23:11:22 +0000
-Message-Id: <20210219231128.27119-2-will+git@drnd.me>
+Date: Fri, 19 Feb 2021 23:11:23 +0000
+Message-Id: <20210219231128.27119-3-will+git@drnd.me>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210219231128.27119-1-will+git@drnd.me>
 References: <20210219231128.27119-1-will+git@drnd.me>
@@ -108,95 +113,131 @@ Fixes a checkpatch CHECK issue.
 Signed-off-by: William Durand <will+git@drnd.me>
 ---
  drivers/staging/rtl8192e/rtl819x_BA.h     |  2 +-
- drivers/staging/rtl8192e/rtl819x_BAProc.c | 10 +++++-----
- drivers/staging/rtl8192e/rtl819x_TSProc.c |  6 +++---
- 3 files changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 22 +++++++++++-----------
+ drivers/staging/rtl8192e/rtllib_tx.c      |  2 +-
+ 3 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/staging/rtl8192e/rtl819x_BA.h b/drivers/staging/rtl8192e/rtl819x_BA.h
-index 67574e26cdfc..61e820e2ffb9 100644
+index 61e820e2ffb9..fe85237e2ea9 100644
 --- a/drivers/staging/rtl8192e/rtl819x_BA.h
 +++ b/drivers/staging/rtl8192e/rtl819x_BA.h
-@@ -49,7 +49,7 @@ union delba_param_set {
- };
+@@ -50,7 +50,7 @@ union delba_param_set {
 
  struct ba_record {
--	struct timer_list		Timer;
-+	struct timer_list		timer;
- 	u8				bValid;
+ 	struct timer_list		timer;
+-	u8				bValid;
++	u8				b_valid;
  	u8				DialogToken;
  	union ba_param_set BaParamSet;
+ 	u16				BaTimeoutValue;
 diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-index 3455fd210372..f66d11263f95 100644
+index f66d11263f95..9a865f553193 100644
 --- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
 +++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-@@ -15,13 +15,13 @@ static void ActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA,
+@@ -13,14 +13,14 @@
+ static void ActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA,
+ 			    u16 Time)
  {
- 	pBA->bValid = true;
+-	pBA->bValid = true;
++	pBA->b_valid = true;
  	if (Time != 0)
--		mod_timer(&pBA->Timer, jiffies + msecs_to_jiffies(Time));
-+		mod_timer(&pBA->timer, jiffies + msecs_to_jiffies(Time));
+ 		mod_timer(&pBA->timer, jiffies + msecs_to_jiffies(Time));
  }
 
  static void DeActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA)
  {
- 	pBA->bValid = false;
--	del_timer_sync(&pBA->Timer);
-+	del_timer_sync(&pBA->timer);
+-	pBA->bValid = false;
++	pBA->b_valid = false;
+ 	del_timer_sync(&pBA->timer);
  }
 
- static u8 TxTsDeleteBA(struct rtllib_device *ieee, struct tx_ts_record *pTxTs)
-@@ -522,7 +522,7 @@ void TsInitDelBA(struct rtllib_device *ieee,
- void BaSetupTimeOut(struct timer_list *t)
+@@ -30,12 +30,12 @@ static u8 TxTsDeleteBA(struct rtllib_device *ieee, struct tx_ts_record *pTxTs)
+ 	struct ba_record *pPendingBa = &pTxTs->TxPendingBARecord;
+ 	u8 bSendDELBA = false;
+
+-	if (pPendingBa->bValid) {
++	if (pPendingBa->b_valid) {
+ 		DeActivateBAEntry(ieee, pPendingBa);
+ 		bSendDELBA = true;
+ 	}
+
+-	if (pAdmittedBa->bValid) {
++	if (pAdmittedBa->b_valid) {
+ 		DeActivateBAEntry(ieee, pAdmittedBa);
+ 		bSendDELBA = true;
+ 	}
+@@ -47,7 +47,7 @@ static u8 RxTsDeleteBA(struct rtllib_device *ieee, struct rx_ts_record *pRxTs)
+ 	struct ba_record *pBa = &pRxTs->RxAdmittedBARecord;
+ 	u8			bSendDELBA = false;
+
+-	if (pBa->bValid) {
++	if (pBa->b_valid) {
+ 		DeActivateBAEntry(ieee, pBa);
+ 		bSendDELBA = true;
+ 	}
+@@ -57,7 +57,7 @@ static u8 RxTsDeleteBA(struct rtllib_device *ieee, struct rx_ts_record *pRxTs)
+
+ void ResetBaEntry(struct ba_record *pBA)
  {
- 	struct tx_ts_record *pTxTs = from_timer(pTxTs, t,
--					      TxPendingBARecord.Timer);
-+					      TxPendingBARecord.timer);
+-	pBA->bValid			= false;
++	pBA->b_valid			= false;
+ 	pBA->BaParamSet.short_data	= 0;
+ 	pBA->BaTimeoutValue		= 0;
+ 	pBA->DialogToken		= 0;
+@@ -357,11 +357,11 @@ int rtllib_rx_ADDBARsp(struct rtllib_device *ieee, struct sk_buff *skb)
+ 	pAdmittedBA = &pTS->TxAdmittedBARecord;
+
+
+-	if (pAdmittedBA->bValid) {
++	if (pAdmittedBA->b_valid) {
+ 		netdev_dbg(ieee->dev, "%s(): ADDBA response already admitted\n",
+ 			   __func__);
+ 		return -1;
+-	} else if (!pPendingBA->bValid ||
++	} else if (!pPendingBA->b_valid ||
+ 		   (*pDialogToken != pPendingBA->DialogToken)) {
+ 		netdev_warn(ieee->dev,
+ 			    "%s(): ADDBA Rsp. BA invalid, DELBA!\n",
+@@ -477,7 +477,7 @@ void TsInitAddBA(struct rtllib_device *ieee, struct tx_ts_record *pTS,
+ {
+ 	struct ba_record *pBA = &pTS->TxPendingBARecord;
+
+-	if (pBA->bValid && !bOverwritePending)
++	if (pBA->b_valid && !bOverwritePending)
+ 		return;
+
+ 	DeActivateBAEntry(ieee, pBA);
+@@ -505,7 +505,7 @@ void TsInitDelBA(struct rtllib_device *ieee,
+
+ 		if (TxTsDeleteBA(ieee, pTxTs))
+ 			rtllib_send_DELBA(ieee, pTsCommonInfo->Addr,
+-					  (pTxTs->TxAdmittedBARecord.bValid) ?
++					  (pTxTs->TxAdmittedBARecord.b_valid) ?
+ 					 (&pTxTs->TxAdmittedBARecord) :
+ 					(&pTxTs->TxPendingBARecord),
+ 					 TxRxSelect, DELBA_REASON_END_BA);
+@@ -526,7 +526,7 @@ void BaSetupTimeOut(struct timer_list *t)
 
  	pTxTs->bAddBaReqInProgress = false;
  	pTxTs->bAddBaReqDelayed = true;
-@@ -532,7 +532,7 @@ void BaSetupTimeOut(struct timer_list *t)
+-	pTxTs->TxPendingBARecord.bValid = false;
++	pTxTs->TxPendingBARecord.b_valid = false;
+ }
+
  void TxBaInactTimeout(struct timer_list *t)
- {
- 	struct tx_ts_record *pTxTs = from_timer(pTxTs, t,
--					      TxAdmittedBARecord.Timer);
-+					      TxAdmittedBARecord.timer);
- 	struct rtllib_device *ieee = container_of(pTxTs, struct rtllib_device,
- 				     TxTsRecord[pTxTs->num]);
- 	TxTsDeleteBA(ieee, pTxTs);
-@@ -544,7 +544,7 @@ void TxBaInactTimeout(struct timer_list *t)
- void RxBaInactTimeout(struct timer_list *t)
- {
- 	struct rx_ts_record *pRxTs = from_timer(pRxTs, t,
--					      RxAdmittedBARecord.Timer);
-+					      RxAdmittedBARecord.timer);
- 	struct rtllib_device *ieee = container_of(pRxTs, struct rtllib_device,
- 				     RxTsRecord[pRxTs->num]);
-
-diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-index 47b2669a3a8e..ff65aa45abe0 100644
---- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-@@ -151,9 +151,9 @@ void TSInitialize(struct rtllib_device *ieee)
-
- 		timer_setup(&pTxTS->TsAddBaTimer, TsAddBaProcess, 0);
-
--		timer_setup(&pTxTS->TxPendingBARecord.Timer, BaSetupTimeOut,
-+		timer_setup(&pTxTS->TxPendingBARecord.timer, BaSetupTimeOut,
- 			    0);
--		timer_setup(&pTxTS->TxAdmittedBARecord.Timer,
-+		timer_setup(&pTxTS->TxAdmittedBARecord.timer,
- 			    TxBaInactTimeout, 0);
-
- 		ResetTxTsEntry(pTxTS);
-@@ -175,7 +175,7 @@ void TSInitialize(struct rtllib_device *ieee)
- 		timer_setup(&pRxTS->TsCommonInfo.InactTimer, TsInactTimeout,
- 			    0);
-
--		timer_setup(&pRxTS->RxAdmittedBARecord.Timer,
-+		timer_setup(&pRxTS->RxAdmittedBARecord.timer,
- 			    RxBaInactTimeout, 0);
-
- 		timer_setup(&pRxTS->RxPktPendingTimer, RxPktPendingTimeout, 0);
+diff --git a/drivers/staging/rtl8192e/rtllib_tx.c b/drivers/staging/rtl8192e/rtllib_tx.c
+index 30596b9702c3..3ac5fd845d1d 100644
+--- a/drivers/staging/rtl8192e/rtllib_tx.c
++++ b/drivers/staging/rtl8192e/rtllib_tx.c
+@@ -297,7 +297,7 @@ static void rtllib_tx_query_agg_cap(struct rtllib_device *ieee,
+ 			netdev_info(ieee->dev, "%s: can't get TS\n", __func__);
+ 			return;
+ 		}
+-		if (!pTxTs->TxAdmittedBARecord.bValid) {
++		if (!pTxTs->TxAdmittedBARecord.b_valid) {
+ 			if (ieee->wpa_ie_len && (ieee->pairwise_key_type ==
+ 			    KEY_TYPE_NA)) {
+ 				;
 --
 2.30.0
 
