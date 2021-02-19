@@ -1,69 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A50731F34B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 01:22:16 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93B9B31F359
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 01:30:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B531D86FC2;
-	Fri, 19 Feb 2021 00:22:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 56A7687453;
+	Fri, 19 Feb 2021 00:30:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BbeA1v3hsmWu; Fri, 19 Feb 2021 00:22:13 +0000 (UTC)
+	with ESMTP id 7rjK2Bxy9Lwd; Fri, 19 Feb 2021 00:30:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6ADEC86CEA;
-	Fri, 19 Feb 2021 00:22:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8F078743B;
+	Fri, 19 Feb 2021 00:30:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1F1131C113E
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 00:22:08 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AA9AC1C113E
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 00:30:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0F1536059B
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 00:22:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A74FB86AFD
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 00:30:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j6gGeRbOJgoD for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 00:22:07 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 64E3460690; Fri, 19 Feb 2021 00:22:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-f54.google.com (mail-pj1-f54.google.com
- [209.85.216.54])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0F1016059B
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 00:22:05 +0000 (UTC)
-Received: by mail-pj1-f54.google.com with SMTP id kr16so2615950pjb.2
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 16:22:05 -0800 (PST)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8McQr0JywCRZ for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 00:30:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com
+ [209.85.214.180])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 083F086AC9
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 00:30:53 +0000 (UTC)
+Received: by mail-pl1-f180.google.com with SMTP id d15so2344001plh.4
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 16:30:53 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition;
  bh=Fi3lkWmDbfwcEUbMyKdDvWBwmJ2EybxjUw9j5c75a9o=;
- b=SQGJmSJjET3e1Dwl91HJxmrLGIU6p5bnhtg+sTGKguTdgOIigMoDFdoE5TovmyEWhP
- cfH//xp0Xl6PwSY9/0916BJdpkxWIIEksXzuSIpUX4vlXNDb3ECo4pSEGHBhPM47hfP7
- qOpw3M4CxEr5QfhKkZKxpeOhCMZo0FwcsvoL9cIpgQMBHN6KfTctzfun/SUfhYLJB4Lw
- 6naWNic90bzuS1vPQr6sdGXvGUU3ZhoZMNpwZbHSXJg3FzYR3+UruO+3QGDyQvM6djRk
- xXW9/3c1ZRkLRhZ0djB4MflEk7LiQON4S76jJzPT+77PxlmEt6oxmOQfCha02j90Xjwa
- 8hZw==
-X-Gm-Message-State: AOAM533TySgQP69ndWL+FQi30S0uYrPqLZPvzyLEokJRhPlQz+ju4AZt
- Dx0Islqfa7vm5gOBMPovLY0=
-X-Google-Smtp-Source: ABdhPJzXj0ujLA8CBLnyVfKWNJix0HkkUPqXGCuTNHkObdRGdYHeows4ZIX7h1jjdA0bH6//g446Ww==
-X-Received: by 2002:a17:903:141:b029:e3:9ade:bbe5 with SMTP id
- r1-20020a1709030141b02900e39adebbe5mr6594391plc.6.1613694125431; 
- Thu, 18 Feb 2021 16:22:05 -0800 (PST)
+ b=CormmXPrFceE23mpfIARArY4PoGBixvejur+/IYNOZPpKF12Zvf2QRWFgcjRXiql9b
+ Ci6CTjtSomf5d9L81QzX81ZYBP/dBmsKsomchZh81PqfSr2hf0SeeQByIHmqiv9kJ6Ag
+ 8WCkSflR5PJGNB1SLDJvZ8Qg7zEpxv9CTG8BHvXfdB5jB6VAEIms0jntVldByW0+/AwZ
+ jJcMNF3cFJyDyFK08ic/xvzfJ2vkE7GRbGx825yIeo8GYmki6O//H3wDc67l3gO7+v66
+ NC8jD5jONuWImnuJW/W7BSP6v4CIlJz78TmAZeebsD2O2oPOSal1/RXfZDbQ7tGelmxO
+ 8vuQ==
+X-Gm-Message-State: AOAM53119rP/fs2FanVaW3i8gf+lm2G/K3bRdGD+IdItrAIGaQS5052G
+ +nP38qisctM7gAkTIhxYFkw=
+X-Google-Smtp-Source: ABdhPJwfaO7wyk2x33cAYQilsTacbXLBVLzhAUmAcZS0JFW5RAsac8zjL2P5ggEQg9fMfYzh+Pn4nA==
+X-Received: by 2002:a17:90a:1109:: with SMTP id
+ d9mr6309805pja.94.1613694652586; 
+ Thu, 18 Feb 2021 16:30:52 -0800 (PST)
 Received: from karthik-strix-linux.karthek.com ([192.140.154.17])
- by smtp.gmail.com with ESMTPSA id 11sm6944525pgz.22.2021.02.18.16.22.01
+ by smtp.gmail.com with ESMTPSA id c26sm8485162pfj.183.2021.02.18.16.30.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Feb 2021 16:22:04 -0800 (PST)
-Date: Fri, 19 Feb 2021 05:51:59 +0530
+ Thu, 18 Feb 2021 16:30:52 -0800 (PST)
+Date: Fri, 19 Feb 2021 06:00:47 +0530
 From: karthik alapati <mail@karthek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Lee Jones <lee.jones@linaro.org>,
  Johannes Berg <johannes@sipsolutions.net>, Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] use explicit host byte-order types in comparison
-Message-ID: <YC8EpxR+ZVYQlshH@karthik-strix-linux.karthek.com>
+Subject: [PATCH] staging: i2400m: use explicit host byte-order types in
+ comparison
+Message-ID: <YC8Gt4sawUiuTTE3@karthik-strix-linux.karthek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
