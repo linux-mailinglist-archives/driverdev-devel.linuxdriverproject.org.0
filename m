@@ -1,62 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 522A631F314
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 00:30:49 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E46F5606B3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Feb 2021 23:30:47 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bi_doqmPg26F for <lists+driverdev-devel@lfdr.de>;
-	Thu, 18 Feb 2021 23:30:47 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 14177606C4; Thu, 18 Feb 2021 23:30:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 32F1E6069A;
-	Thu, 18 Feb 2021 23:30:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0FC6A1BF861
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 23:30:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A50731F34B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 01:22:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0C21E86EA4
- for <devel@linuxdriverproject.org>; Thu, 18 Feb 2021 23:30:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B531D86FC2;
+	Fri, 19 Feb 2021 00:22:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S1WswWCc6z2J for <devel@linuxdriverproject.org>;
- Thu, 18 Feb 2021 23:30:17 +0000 (UTC)
-X-Greylist: delayed 00:07:40 by SQLgrey-1.7.6
-Received: from mout02.posteo.de (mout02.posteo.de [185.67.36.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 84B0F86EA3
- for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 23:30:17 +0000 (UTC)
-Received: from submission (posteo.de [89.146.220.130]) 
- by mout02.posteo.de (Postfix) with ESMTPS id AF9192400FD
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 00:22:33 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.de; s=2017;
- t=1613690553; bh=yEXRlc/sSYKM3VIaDtPwOZa/sbjN+qoXAvWzOZjB3BU=;
- h=From:To:Cc:Subject:Date:From;
- b=TiJxdOXdaAEHQ5TQX/VJevysFpmWwOdZR2DJYfhq2igdClm1TtBRY3UTysruv2wRl
- apFZcDB5FsZy4MuBoQnz3na2A3fpzH2ZPq/t3NzMQk7WZun1h6DIb6MmBTBei+t/jM
- iPqMhrKt4KSyzsD8XyBhomhQI407Bcqt4tN8KQwAkVmJM/lMjEyxX6aiTGpS31miSc
- kIPlvIcSHyiunT/9qKwzlBZY8o8MQ96OOPNVLoHpDkCIenEhbGvR9BpXShxWzygIng
- 3l4xxajTLvlKlbhF8iIqaiUD8VuabQg2mpQ/nKk94ZRlx4vVQzC9stHwxSC6jf3FXK
- cK/zQoG4wo2DA==
-Received: from customer (localhost [127.0.0.1])
- by submission (posteo.de) with ESMTPSA id 4DhW2c072nz6tm9;
- Fri, 19 Feb 2021 00:22:31 +0100 (CET)
-From: Florian Ziegler <florian.ziegler@posteo.de>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: vt6656: Fix alignment of function args
-Date: Fri, 19 Feb 2021 00:22:15 +0100
-Message-Id: <20210218232215.17508-1-florian.ziegler@posteo.de>
-X-Mailer: git-send-email 2.30.1
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BbeA1v3hsmWu; Fri, 19 Feb 2021 00:22:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6ADEC86CEA;
+	Fri, 19 Feb 2021 00:22:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F1131C113E
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 00:22:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0F1536059B
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 00:22:08 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id j6gGeRbOJgoD for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 00:22:07 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 64E3460690; Fri, 19 Feb 2021 00:22:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-f54.google.com (mail-pj1-f54.google.com
+ [209.85.216.54])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0F1016059B
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 00:22:05 +0000 (UTC)
+Received: by mail-pj1-f54.google.com with SMTP id kr16so2615950pjb.2
+ for <devel@driverdev.osuosl.org>; Thu, 18 Feb 2021 16:22:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=Fi3lkWmDbfwcEUbMyKdDvWBwmJ2EybxjUw9j5c75a9o=;
+ b=SQGJmSJjET3e1Dwl91HJxmrLGIU6p5bnhtg+sTGKguTdgOIigMoDFdoE5TovmyEWhP
+ cfH//xp0Xl6PwSY9/0916BJdpkxWIIEksXzuSIpUX4vlXNDb3ECo4pSEGHBhPM47hfP7
+ qOpw3M4CxEr5QfhKkZKxpeOhCMZo0FwcsvoL9cIpgQMBHN6KfTctzfun/SUfhYLJB4Lw
+ 6naWNic90bzuS1vPQr6sdGXvGUU3ZhoZMNpwZbHSXJg3FzYR3+UruO+3QGDyQvM6djRk
+ xXW9/3c1ZRkLRhZ0djB4MflEk7LiQON4S76jJzPT+77PxlmEt6oxmOQfCha02j90Xjwa
+ 8hZw==
+X-Gm-Message-State: AOAM533TySgQP69ndWL+FQi30S0uYrPqLZPvzyLEokJRhPlQz+ju4AZt
+ Dx0Islqfa7vm5gOBMPovLY0=
+X-Google-Smtp-Source: ABdhPJzXj0ujLA8CBLnyVfKWNJix0HkkUPqXGCuTNHkObdRGdYHeows4ZIX7h1jjdA0bH6//g446Ww==
+X-Received: by 2002:a17:903:141:b029:e3:9ade:bbe5 with SMTP id
+ r1-20020a1709030141b02900e39adebbe5mr6594391plc.6.1613694125431; 
+ Thu, 18 Feb 2021 16:22:05 -0800 (PST)
+Received: from karthik-strix-linux.karthek.com ([192.140.154.17])
+ by smtp.gmail.com with ESMTPSA id 11sm6944525pgz.22.2021.02.18.16.22.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Feb 2021 16:22:04 -0800 (PST)
+Date: Fri, 19 Feb 2021 05:51:59 +0530
+From: karthik alapati <mail@karthek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>,
+ Johannes Berg <johannes@sipsolutions.net>, Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] use explicit host byte-order types in comparison
+Message-ID: <YC8EpxR+ZVYQlshH@karthik-strix-linux.karthek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,35 +78,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Florian Ziegler <florian.ziegler@posteo.de>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Align function arguments to fix checkpatch.pl CHECK message and rewrap
-to match the file's style.
+convert le32 types to host byte-order types before
+comparison
 
-Signed-off-by: Florian Ziegler <florian.ziegler@posteo.de>
+Signed-off-by: karthik alapati <mail@karthek.com>
 ---
- drivers/staging/vt6656/card.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+i wonder how these could be false-positives
+ drivers/staging/wimax/i2400m/fw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 10f3dfda83b5..396736eee690 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -375,7 +375,8 @@ int vnt_radio_power_off(struct vnt_private *priv)
- 	case RF_VT3226D0:
- 	case RF_VT3342A0:
- 		ret = vnt_mac_reg_bits_off(priv, MAC_REG_SOFTPWRCTL,
--					(SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
-+					   (SOFTPWRCTL_SWPE2 |
-+					    SOFTPWRCTL_SWPE3));
- 		break;
+diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
+index edb5eba0898b..13207c985a87 100644
+--- a/drivers/staging/wimax/i2400m/fw.c
++++ b/drivers/staging/wimax/i2400m/fw.c
+@@ -191,7 +191,7 @@ void i2400m_bm_cmd_prepare(struct i2400m_bootrom_header *cmd)
+ 		int i;
+ 		u32 checksum = 0;
+ 		const u32 *checksum_ptr = (void *) cmd->payload;
+-		for (i = 0; i < cmd->data_size / 4; i++)
++		for (i = 0; i < le32_to_cpu(cmd->data_size) / 4; i++)
+ 			checksum += cpu_to_le32(*checksum_ptr++);
+ 		checksum += cmd->command + cmd->target_addr + cmd->data_size;
+ 		cmd->block_checksum = cpu_to_le32(checksum);
+@@ -506,7 +506,7 @@ ssize_t __i2400m_bm_ack_verify(struct i2400m *i2400m, int opcode,
+ 			opcode, i2400m_brh_get_response(ack));
+ 		goto error_ack_failed;
  	}
- 
+-	if (ack_size < ack->data_size + sizeof(*ack)) {
++	if (ack_size < le32_to_cpu(ack->data_size) + sizeof(*ack)) {
+ 		dev_err(dev, "boot-mode cmd %d: SW BUG "
+ 			"driver provided only %zu bytes for %zu bytes "
+ 			"of data\n", opcode, ack_size,
 -- 
 2.30.1
 
