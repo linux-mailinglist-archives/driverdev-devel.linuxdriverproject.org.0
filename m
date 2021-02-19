@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4B1631F7EB
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 12:08:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D78531F7EC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 12:08:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 05369870AC;
-	Fri, 19 Feb 2021 11:08:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 186F4870AA;
+	Fri, 19 Feb 2021 11:08:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cSkGTi6I+L8s; Fri, 19 Feb 2021 11:08:17 +0000 (UTC)
+	with ESMTP id BQ7bJ9aSyWhu; Fri, 19 Feb 2021 11:08:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9A32086C5D;
-	Fri, 19 Feb 2021 11:08:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 23E90870B1;
+	Fri, 19 Feb 2021 11:08:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F1B81BF2C2
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 11:08:03 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 67C9D1BF2C2
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 11:08:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7AD7C86C5D
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 11:08:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 629DE86BA4
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 11:08:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FLKiita2c9J9 for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 11:08:02 +0000 (UTC)
+ with ESMTP id qZrGPjlvmj1W for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 11:08:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f179.google.com (mail-pl1-f179.google.com
- [209.85.214.179])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 51EC386B9B
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 11:08:02 +0000 (UTC)
-Received: by mail-pl1-f179.google.com with SMTP id k22so3174633pll.6
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 03:08:02 -0800 (PST)
+Received: from mail-pl1-f174.google.com (mail-pl1-f174.google.com
+ [209.85.214.174])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C3E5086B33
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 11:08:03 +0000 (UTC)
+Received: by mail-pl1-f174.google.com with SMTP id r2so3166562plr.10
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 03:08:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nd7DWDOBk3KOVhiLvQXXldN7BSGr9OYiQ0nQfAQp6/0=;
- b=HpKeZmJf5U7qlxVB4T68dnLwKGVrfgc1VcL4MCYVoBd9GGlXaFcQi/tnZNXkTYIPmf
- cfQ7IPb3TD6RGxWxQhAqXKkjjTh04AoOL3SGWMo7ZzOVQBzAf+Xy7Zc7tH/RCgHeeltR
- HHjomx63rUnYqabFiqqymL80kboLD/uihqJMGM0B2HbRSY40Rj3bSWQw1Kc0XzAc0Vqd
- e/NNL60+D/EBetXLKmgp26qDiInw4GvW7jkJarA2tV5KL2KHiM0ZDlZQ12wJgJmxGgr3
- q4KGMY9UwmZLmKv5owr2rZbcB2fxZH8tiVxoF6rABQro2Xd8Z7IR3Xvjqf0gLc9Q3jpI
- MWlQ==
+ bh=u5F72tWqz3dbWWau6aSsgoog6J6+mBzVvjp77XY1zTQ=;
+ b=BKf5uhQHsJELvSI4S0XcpgEY5puijd14YYKq23NCH8ly25PUz/kV+g07FXlDZfRMiG
+ k2KmNT5v5rWbOuWq/kahtq7siVLVOaglFy9fAmiRssAYAHbbv7xWgGiIB+8qEZMn2Ubv
+ TFq85UT3N7/l4lLU2rHVwjvUbu9kZG7MAocexjjjOCQuPMIbmG0YrdDHIJC7hTFSlTDb
+ pZCo+/WmN2y7Kj6ogjpcwS4WZaY7vEa6ftjOxzdp6O55Emhm31rP5PIhSNP6qxkC9MMJ
+ FtZFmKOmLFiN46FvOz8olUZfWqb2kjCNWfhF7cEzETRve5X6GnbIrDs0aDD64Kr0fhP1
+ biJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nd7DWDOBk3KOVhiLvQXXldN7BSGr9OYiQ0nQfAQp6/0=;
- b=H1pgkU8EraQBbh/Q72BAfU2igKUYh/+a+lcRGrHgOrIbQ6krRHfhRsbv4j3+YiVjcy
- mMYSIO/ytAMsJLQJyHt9Q0JllaSEFX1vKA65NEpLUiMHkVv1opW2SGntBu9xBhQHvGwN
- LkekMMwtjhm3suiRNL+IBn3IQ+jGkVzLVm2ZGylfTXwGy+ZjjzSRECkAywM6wgbPtBrU
- l9KnhjDpsa5lH4s44PR4Qra9wKonqrglUoQk7hsna/VtDH1leLn9WcJ0LgJ234xNv0lZ
- gI73nWjZD2n41BNEd583/hvKw9DltcOXZ9MhYuorEy8oqnB6/PxxwaL8QyjPI+eJ4x0q
- 8RcQ==
-X-Gm-Message-State: AOAM532Q95MjgfcE3RGdi75sxX4geDG0htRLUiiQLRRQ4JTVF3m2gYJX
- MMDsKIC2G0xsAh4NkAU85wU=
-X-Google-Smtp-Source: ABdhPJwmUNtIOjy1VvYprmsNroSw1Qf7ZWDsS9BbgdiM+oF0Oyrt/AHfwAYfHz3cgNiruNTs+H+PeQ==
-X-Received: by 2002:a17:902:b213:b029:db:3a3e:d8ad with SMTP id
- t19-20020a170902b213b02900db3a3ed8admr8934133plr.73.1613732881944; 
- Fri, 19 Feb 2021 03:08:01 -0800 (PST)
+ bh=u5F72tWqz3dbWWau6aSsgoog6J6+mBzVvjp77XY1zTQ=;
+ b=aBbVbOdF5huWb0mvCbJ3MdmkSFMG/9SardUkAmDZS0aFX4stdYl1U0GhyDYNdXvPvD
+ Z81jYT4B8FQxnlT3LxZ5qM/HQyCPbPW/z0Z5K79r/Dlnvae2gwBlhRRao0WEKRjtftq7
+ Zaegx31S0kCpM3DR6OFeDacjQrjaWNol1eDtfpqDyRXCn/wdUQqr9ImmYa4AZI0DrbYZ
+ 4ApDK3aD1pFlMaq7ENh0FuHEvtfmVHH+OLSC6np60cmvv1szWb1dEGBBVVFA5ftQVxxZ
+ NgXepSqqkURftMHHBrigy/JaWxOgOtjYXkpS+VZVLACh3U6PQYVUmUYXLBhQ0AE1lD0j
+ pkYg==
+X-Gm-Message-State: AOAM532vCAkMG83zrvbdl0dEPhw/sn0kWq9c0lq0DiRYRAejPHxnyWaW
+ psCRSBqLFmCgVzBfVOWVygY=
+X-Google-Smtp-Source: ABdhPJx5IatJrigs8jbbZXEDSasj/jqHYo1082PYknUB5GczJsReUXehYD7C7gt3VLcx93CN065Ecg==
+X-Received: by 2002:a17:902:7e02:b029:e3:7810:a78d with SMTP id
+ b2-20020a1709027e02b02900e37810a78dmr8741714plm.17.1613732883411; 
+ Fri, 19 Feb 2021 03:08:03 -0800 (PST)
 Received: from ThinkCentre-M83.wg.ducheng.me ([202.133.196.154])
- by smtp.gmail.com with ESMTPSA id t21sm9555113pfe.174.2021.02.19.03.08.00
+ by smtp.gmail.com with ESMTPSA id t21sm9555113pfe.174.2021.02.19.03.08.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 03:08:01 -0800 (PST)
+ Fri, 19 Feb 2021 03:08:03 -0800 (PST)
 From: Du Cheng <ducheng2@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3 2/3] staging: rtl8192u: fixed coding style of
+Subject: [PATCH v3 3/3] staging: rtl8192u: fixed coding style of
  r8190_rtl8256.c
-Date: Fri, 19 Feb 2021 19:07:54 +0800
-Message-Id: <20210219110755.4993-2-ducheng2@gmail.com>
+Date: Fri, 19 Feb 2021 19:07:55 +0800
+Message-Id: <20210219110755.4993-3-ducheng2@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210219110755.4993-1-ducheng2@gmail.com>
 References: <20210219110755.4993-1-ducheng2@gmail.com>
@@ -93,27 +93,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-use MACRO __func__ instead of "phy_rf8256_config_para_file" for RT_TRACE()
-inside phy_rf8256_config_para_file(), reported by scripts/checkpatch.pl.
+remove the unnecessary return at the end of function
+phy_set_rf8256_ofdm_tx_power(), reported by scripts/checkpatch.pl.
 
 Signed-off-by: Du Cheng <ducheng2@gmail.com>
 ---
- drivers/staging/rtl8192u/r8190_rtl8256.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8192u/r8190_rtl8256.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
-index 7294a3fbe205..3e6bd6caf9da 100644
+index 3e6bd6caf9da..54747fda552f 100644
 --- a/drivers/staging/rtl8192u/r8190_rtl8256.c
 +++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
-@@ -213,7 +213,7 @@ static void phy_rf8256_config_para_file(struct net_device *dev)
+@@ -291,5 +291,4 @@ void phy_set_rf8256_ofdm_tx_power(struct net_device *dev, u8 powerlevel)
  		}
- 
- 		if (ret) {
--			RT_TRACE(COMP_ERR, "phy_rf8256_config_para_file():Radio[%d] Fail!!", eRFPath);
-+			RT_TRACE(COMP_ERR, "%s():Radio[%d] Fail!!", __func__, eRFPath);
- 			goto phy_RF8256_Config_ParaFile_Fail;
- 		}
+ 		rtl8192_setBBreg(dev, RegOffset[index], 0x7f7f7f7f, writeVal);
  	}
+-	return;
+ }
 -- 
 2.27.0
 
