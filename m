@@ -1,54 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90E6A31F9B9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 14:18:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 585BA31FA09
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 14:43:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CC2F786C20;
-	Fri, 19 Feb 2021 13:18:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BF78B60707
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 13:43:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YYYgr68W2Nbl; Fri, 19 Feb 2021 13:18:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Uu1l0cii3zlr for <lists+driverdev-devel@lfdr.de>;
+	Fri, 19 Feb 2021 13:43:30 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 2CA8D606FE; Fri, 19 Feb 2021 13:43:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C610E86B92;
-	Fri, 19 Feb 2021 13:18:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2D113605D7;
+	Fri, 19 Feb 2021 13:43:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EF1291BF393
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 13:18:16 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E31C1BF393
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 13:43:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EBB3186816
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 13:18:16 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F192B605C6
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 13:43:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oBGA1wwnFW19 for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 13:16:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 78E588711B
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 13:16:55 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 55ACA64EB1;
- Fri, 19 Feb 2021 13:16:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613740615;
- bh=fPbHxMLrEmvBJRzhGkUecG7yzmcuMrZN/Qxn/XfmJEk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=NVNrJ09Gn2etYs5h0w42h6cJ2Gi7vPhxLqTj+ww6kvYvN7dLDfLPMgzQzZuZSs/aq
- p059IA59YlA5+FE7Eia3D6T6XC7D7HbEYL5H+/ZnvkU/3ji0ZAk8IUgvSU4Fg9GvXk
- o29+DDs29xHcn5MhxIhPpB3KleHOLlIHdzzeJUX4=
-Date: Fri, 19 Feb 2021 14:16:51 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Prakash Dubey <prakashdubey1999@gmail.com>
-Subject: Re: [PATCH v2] staging: fwserial: fix alignment of function parameters
-Message-ID: <YC+6QxVMfl2cq7QC@kroah.com>
-References: <20210219105112.GA8315@gmail.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uhzB-LQB4qSJ for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 13:43:02 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id 280216068A; Fri, 19 Feb 2021 13:43:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com
+ [209.85.215.177])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E86D7605C6
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 13:43:00 +0000 (UTC)
+Received: by mail-pg1-f177.google.com with SMTP id p21so4257603pgl.12
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 05:43:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:date:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=fF/l9GNDkFGA7iWke5utB4iGCtSkQ0+416veSvVe1Xc=;
+ b=Ls+CxRRjfhhnhwhZ86f/IoT6Mf5Y2cn9JQfrMvKEjmb7DXLNUYyR0hFyMkn0nWJESz
+ FF7wAVCvZJnhE4FQpxAnpCHXwHlXdVOX6BeRg4DT9zOSqqTTImxYNUd3b6A2Q7NJnowX
+ oB8IEt7vf1mTCkL80bdzKw2ZQQFy3nX/1h4b/PQDF2xzgE5DqT37FgFuXVwL1oJU9+lG
+ U1ddBHqIPQ8Ps+G3liJxCAN/8eFga0wPsqJfv+Bxyl/YdLs8Pc+GKss4CvYxDbvC7c31
+ iBHC9Fs/gDcC9Pyw9KpyQ00/OaM+FnEZlRHa/YjZKVq4B+ePs9AIBYpqPl+LXvSmazUL
+ i5HA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:date:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=fF/l9GNDkFGA7iWke5utB4iGCtSkQ0+416veSvVe1Xc=;
+ b=qGQgStseFTMcl825gIjVhx5K7twBFgPghRWHuOXK/avWqnwQwgghdWTC2DjsBLvxhm
+ YDZ6/QJn+5RObeBw3qMfitDl25csWOBPCKpGeZ4I3WFUj/KyrbFC3NR3gzqhDycIaFSj
+ o3kL0E0UR1m9QHX2FV/cdQUFpgspoNUI5yrrt4qyV4BNoNlNa6xCv60uKqvvMvVNIc+e
+ S9NFPwunuQaPxqVnQ/KXd6MMuFVk8Vd+EBsL2WyWKnAy/mNsipw8CDYN8+yucFdBhY7U
+ suuAOLjXBMW7HT73Gob8LV5trmgymRbSJM632QqSRzfZP9p2Fb1xvPPLSYWPFymOqoBv
+ XxeA==
+X-Gm-Message-State: AOAM530KRW89y1uQeB0OAK2GkUoYJLIOLqaMHRuVPt0cWZWwPkN1Y8q6
+ 0glAQMqNnAOBblWLqEtSKNo=
+X-Google-Smtp-Source: ABdhPJyZcXFAu9Vo0fwlCIcLHRFiIPRLTt+cK56Il2JoY/G8Xa9b+8HCXYB7Zhv8BhkJlXTodQfAAA==
+X-Received: by 2002:a65:4781:: with SMTP id e1mr8635474pgs.30.1613742180006;
+ Fri, 19 Feb 2021 05:43:00 -0800 (PST)
+Received: from amrit ([49.36.144.93])
+ by smtp.gmail.com with ESMTPSA id w187sm9251403pfb.208.2021.02.19.05.42.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Feb 2021 05:42:59 -0800 (PST)
+From: Amrit Khera <amritkhera98@gmail.com>
+X-Google-Original-From: Amrit Khera <amritk10>
+Date: Fri, 19 Feb 2021 19:10:03 +0530
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] staging: android: Fix const keyword style issue in
+ ashmem.c
+Message-ID: <20210219134000.GA25666@amrit>
+References: <20210219114237.5720-1-amritkhera98@gmail.com>
+ <YC+rQZoFaT+mPxVL@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210219105112.GA8315@gmail.com>
+In-Reply-To: <YC+rQZoFaT+mPxVL@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,47 +94,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, tkjos@android.com, surenb@google.com,
+ Amrit Khera <amritkhera98@gmail.com>, linux-kernel@vger.kernel.org,
+ hridya@google.com, arve@android.com, dan.carpenter@oracle.com,
+ joel@joelfernandes.org, maco@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 19, 2021 at 04:21:12PM +0530, Prakash Dubey wrote:
-> This patch fixes the following checkpatch.pl check:
+On Fri, Feb 19, 2021 at 01:12:49PM +0100, Greg KH wrote:
+> On Fri, Feb 19, 2021 at 05:12:38PM +0530, Amrit Khera wrote:
+> > This change fixes a checkpatch warning for "struct file_operations
+> > should normally be const".
+> > 
+> > Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
+> > ---
+> > Changes in v2:
+> >  - Wrapped the commit description
+> >  - Build tested
 > 
-> CHECK: Alignment should match open parenthesis
+> If you tested it, what changed in the diff itself?  Looks the same to
+> me...
 > 
-> Signed-off-by: Prakash Dubey <prakashdubey1999@gmail.com>
-> ---
->  drivers/staging/fwserial/fwserial.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-> index a92741b8b6c6..137e97c9406c 100644
-> --- a/drivers/staging/fwserial/fwserial.c
-> +++ b/drivers/staging/fwserial/fwserial.c
-> @@ -1318,8 +1318,8 @@ static int fwtty_break_ctl(struct tty_struct *tty, int state)
->  	if (state == -1) {
->  		set_bit(STOP_TX, &port->flags);
->  		ret = wait_event_interruptible_timeout(port->wait_tx,
-> -							!test_bit(IN_TX, &port->flags),
-> -							10);
-> +						       !test_bit(IN_TX, &port->flags),
-> +						       10);
->  		if (ret == 0 || ret == -ERESTARTSYS) {
->  			clear_bit(STOP_TX, &port->flags);
->  			fwtty_restart_tx(port);
-> -- 
-> 2.25.1
 
-Does not apply to my tree at all, please be sure to always work off of
-linux-next or my staging-next tree so as not to duplicate work that
-others have already done.
+After further investigating I found that the particular kernel module
+was not set in the config file. This did not build it when I built the
+kernel. This was making me think that the module was building correctly.
 
-thanks,
+After updating the config, the build indeed breaks. The reason is that
+the const keyword cannot be applied here without changing the structure
+and flow of the code as the particular variable is later being set in a
+condition. Hence, I will be dropping this path for now.
 
-greg k-h
+Apologies for the inconvenience caused and thank you for the prompt
+replies.
+
+Best Regards,
+Amrit Khera
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
