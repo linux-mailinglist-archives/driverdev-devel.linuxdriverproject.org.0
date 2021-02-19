@@ -1,87 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 585BA31FA09
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 14:43:33 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7DCE31FB0B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 15:39:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BF78B60707
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 13:43:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8F0A2873B4;
+	Fri, 19 Feb 2021 14:39:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Uu1l0cii3zlr for <lists+driverdev-devel@lfdr.de>;
-	Fri, 19 Feb 2021 13:43:30 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 2CA8D606FE; Fri, 19 Feb 2021 13:43:30 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RHKewaw9+cj0; Fri, 19 Feb 2021 14:39:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D113605D7;
-	Fri, 19 Feb 2021 13:43:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 03B608738D;
+	Fri, 19 Feb 2021 14:39:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0E31C1BF393
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 13:43:03 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E9281BF846
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 14:39:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F192B605C6
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 13:43:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 26821873BE
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 14:39:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uhzB-LQB4qSJ for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 13:43:02 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 280216068A; Fri, 19 Feb 2021 13:43:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com
- [209.85.215.177])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E86D7605C6
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 13:43:00 +0000 (UTC)
-Received: by mail-pg1-f177.google.com with SMTP id p21so4257603pgl.12
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 05:43:00 -0800 (PST)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id W6XQ1sTanEXP for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 14:39:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com
+ [209.85.128.49])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2D3468738A
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 14:39:05 +0000 (UTC)
+Received: by mail-wm1-f49.google.com with SMTP id v62so7847375wmg.4
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 06:39:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=fF/l9GNDkFGA7iWke5utB4iGCtSkQ0+416veSvVe1Xc=;
- b=Ls+CxRRjfhhnhwhZ86f/IoT6Mf5Y2cn9JQfrMvKEjmb7DXLNUYyR0hFyMkn0nWJESz
- FF7wAVCvZJnhE4FQpxAnpCHXwHlXdVOX6BeRg4DT9zOSqqTTImxYNUd3b6A2Q7NJnowX
- oB8IEt7vf1mTCkL80bdzKw2ZQQFy3nX/1h4b/PQDF2xzgE5DqT37FgFuXVwL1oJU9+lG
- U1ddBHqIPQ8Ps+G3liJxCAN/8eFga0wPsqJfv+Bxyl/YdLs8Pc+GKss4CvYxDbvC7c31
- iBHC9Fs/gDcC9Pyw9KpyQ00/OaM+FnEZlRHa/YjZKVq4B+ePs9AIBYpqPl+LXvSmazUL
- i5HA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xmA/KV9e2ZyA8lcC+WdH41u9opqrjZNkfCRBCxD5ZNk=;
+ b=cxbgewZ+RPJiWcAUAkXPEywDNxuM8rjqCG/rwZgzCLyLrRfv1FEfE7mcUBTzM2cgux
+ wNvTv2Xz4fM+1FFDjqyjPpAUX3chnK9DmpUOT0+VxEmlpj83QI9gLCRI4hmNcHRRsZyQ
+ uE1LpkSUsRKqqmlWHRAyE1X2t40kROfatOfO5vc8BfDMJu1o2LKoHvjBvz3ZgdfqwIdr
+ qg2qEua0ru1+Y7rtw2tuYQirWRLaQg4sIXrxUotnGMFa/eefhzaTH3RYq3OFGa9Rn6cI
+ q+NfH/s94yKjL7UIklAt4RtgqIcvblhsDUurWlr9c8tXVhDxFT8dhVuAKm3A1EJETCIy
+ fF3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=fF/l9GNDkFGA7iWke5utB4iGCtSkQ0+416veSvVe1Xc=;
- b=qGQgStseFTMcl825gIjVhx5K7twBFgPghRWHuOXK/avWqnwQwgghdWTC2DjsBLvxhm
- YDZ6/QJn+5RObeBw3qMfitDl25csWOBPCKpGeZ4I3WFUj/KyrbFC3NR3gzqhDycIaFSj
- o3kL0E0UR1m9QHX2FV/cdQUFpgspoNUI5yrrt4qyV4BNoNlNa6xCv60uKqvvMvVNIc+e
- S9NFPwunuQaPxqVnQ/KXd6MMuFVk8Vd+EBsL2WyWKnAy/mNsipw8CDYN8+yucFdBhY7U
- suuAOLjXBMW7HT73Gob8LV5trmgymRbSJM632QqSRzfZP9p2Fb1xvPPLSYWPFymOqoBv
- XxeA==
-X-Gm-Message-State: AOAM530KRW89y1uQeB0OAK2GkUoYJLIOLqaMHRuVPt0cWZWwPkN1Y8q6
- 0glAQMqNnAOBblWLqEtSKNo=
-X-Google-Smtp-Source: ABdhPJyZcXFAu9Vo0fwlCIcLHRFiIPRLTt+cK56Il2JoY/G8Xa9b+8HCXYB7Zhv8BhkJlXTodQfAAA==
-X-Received: by 2002:a65:4781:: with SMTP id e1mr8635474pgs.30.1613742180006;
- Fri, 19 Feb 2021 05:43:00 -0800 (PST)
-Received: from amrit ([49.36.144.93])
- by smtp.gmail.com with ESMTPSA id w187sm9251403pfb.208.2021.02.19.05.42.54
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xmA/KV9e2ZyA8lcC+WdH41u9opqrjZNkfCRBCxD5ZNk=;
+ b=Z1GK13MLrNjIK34+boLm038KuX/smC8vXiJISaMBQUCm7fVbWqV/X7SB+i6vEmwBJH
+ FQILjIWiTAc9sWiZ5mvKZIMITV+uEMIt0gHsHwBSbuan4yguKlIDtITDdIo5iEx9ak4N
+ K6zJYWy89/ApO56NBRdyGONHJjN9uACp5zyDX3qYEQ+/oNcxQq68jaGsQB5QQF3hPxMY
+ qAXILJIR6DyBxitxEoaBEz93gvJvHH3ZGqF2IW9nfUJgzXkG3PLgKoB3v7l+bnEoc58G
+ ASxkSfEyh/02LTZk4fJRWM7WZwp7H+mzQvpWc7LjPNAmnCVUStyNVS99LIjswV2Xpost
+ Xn/A==
+X-Gm-Message-State: AOAM533plzDXeQJx5MEPnznkdhdPe4ibhuqBhLLxQK7Lda/AHSC017xH
+ 0T/n/3T7GZKwexQQyGjhEQc=
+X-Google-Smtp-Source: ABdhPJyBOJobgDyI4nY0tMF/lTWSKS2eZrzryQBmz5QcUFuGrzd6EPuqh8J63on+3nD3BuilAYvLgw==
+X-Received: by 2002:a05:600c:3588:: with SMTP id
+ p8mr8423631wmq.71.1613745543530; 
+ Fri, 19 Feb 2021 06:39:03 -0800 (PST)
+Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
+ [217.32.158.205])
+ by smtp.gmail.com with ESMTPSA id m23sm11530694wmc.31.2021.02.19.06.39.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 05:42:59 -0800 (PST)
-From: Amrit Khera <amritkhera98@gmail.com>
-X-Google-Original-From: Amrit Khera <amritk10>
-Date: Fri, 19 Feb 2021 19:10:03 +0530
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] staging: android: Fix const keyword style issue in
- ashmem.c
-Message-ID: <20210219134000.GA25666@amrit>
-References: <20210219114237.5720-1-amritkhera98@gmail.com>
- <YC+rQZoFaT+mPxVL@kroah.com>
+ Fri, 19 Feb 2021 06:39:03 -0800 (PST)
+From: Lee Gibson <leegib@gmail.com>
+To: mchehab+huawei@kernel.org
+Subject: [PATCH] staging: hikey9xx: Fix space tab style warnings
+Date: Fri, 19 Feb 2021 14:38:51 +0000
+Message-Id: <20210219143851.83672-1-leegib@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YC+rQZoFaT+mPxVL@kroah.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,44 +85,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com, surenb@google.com,
- Amrit Khera <amritkhera98@gmail.com>, linux-kernel@vger.kernel.org,
- hridya@google.com, arve@android.com, dan.carpenter@oracle.com,
- joel@joelfernandes.org, maco@android.com, christian@brauner.io
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Lee Gibson <leegib@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 19, 2021 at 01:12:49PM +0100, Greg KH wrote:
-> On Fri, Feb 19, 2021 at 05:12:38PM +0530, Amrit Khera wrote:
-> > This change fixes a checkpatch warning for "struct file_operations
-> > should normally be const".
-> > 
-> > Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
-> > ---
-> > Changes in v2:
-> >  - Wrapped the commit description
-> >  - Build tested
-> 
-> If you tested it, what changed in the diff itself?  Looks the same to
-> me...
-> 
+This patch fixes the checkpatch warnings such as:
 
-After further investigating I found that the particular kernel module
-was not set in the config file. This did not build it when I built the
-kernel. This was making me think that the module was building correctly.
+hi6421-spmi-pmic.c:51: WARNING: please, no space before tabs
 
-After updating the config, the build indeed breaks. The reason is that
-the const keyword cannot be applied here without changing the structure
-and flow of the code as the particular variable is later being set in a
-condition. Hence, I will be dropping this path for now.
+Signed-off-by: Lee Gibson <leegib@gmail.com>
+---
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Apologies for the inconvenience caused and thank you for the prompt
-replies.
+diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+index 4ebcfea9f3bf..626140cb96f2 100644
+--- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
++++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+@@ -48,9 +48,9 @@ enum hi6421_spmi_pmic_irq_list {
+ /*
+  * The IRQs are mapped as:
+  *
+- * 	======================  =============   ============	=====
+- *	IRQ			MASK REGISTER 	IRQ REGISTER	BIT
+- * 	======================  =============   ============	=====
++ *	======================  =============   ============	=====
++ *	IRQ			MASK REGISTER	IRQ REGISTER	BIT
++ *	======================  =============   ============	=====
+  *	OTMP			0x0202		0x212		bit 0
+  *	VBUS_CONNECT		0x0202		0x212		bit 1
+  *	VBUS_DISCONNECT		0x0202		0x212		bit 2
+@@ -66,7 +66,7 @@ enum hi6421_spmi_pmic_irq_list {
+  *	SIM0_HPD_F		0x0203		0x213		bit 3
+  *	SIM1_HPD_R		0x0203		0x213		bit 4
+  *	SIM1_HPD_F		0x0203		0x213		bit 5
+- * 	======================  =============   ============	=====
++ *	======================  =============   ============	=====
+  */
+ #define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
+ #define SOC_PMIC_IRQ0_ADDR		0x0212
+-- 
+2.25.1
 
-Best Regards,
-Amrit Khera
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
