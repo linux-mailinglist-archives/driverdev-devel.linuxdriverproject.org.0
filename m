@@ -1,57 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB5DD31F771
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:40:49 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B56231F776
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 11:41:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 45C4760701
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 10:40:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 099DB86BA5;
+	Fri, 19 Feb 2021 10:41:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s1ovjgPSzvgS for <lists+driverdev-devel@lfdr.de>;
-	Fri, 19 Feb 2021 10:40:47 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id 2D5F5606FA; Fri, 19 Feb 2021 10:40:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id acS5V-aLFher; Fri, 19 Feb 2021 10:41:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E65E96069A;
-	Fri, 19 Feb 2021 10:40:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6DD7686B9E;
+	Fri, 19 Feb 2021 10:41:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C3E2A1BF2CC
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:40:15 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D4691BF2CC
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:41:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BD25C872F3
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:40:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1A1CC8704C
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 10:41:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lWE-miSLE-FM for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 10:40:14 +0000 (UTC)
+ with ESMTP id KOka3aVv7qdX for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 10:40:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1FE2F872AC
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 10:40:14 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A173264EB7;
- Fri, 19 Feb 2021 10:40:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 81B5E87038
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 10:40:59 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8207464EAF;
+ Fri, 19 Feb 2021 10:40:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613731213;
- bh=RErC9QubHxzQe6XsyUGu3rb6BZK6OYuteFLCp8HvQek=;
+ s=korg; t=1613731259;
+ bh=eVO2HD34oqjPxE4D8k4YzK7H3mbnN08+5UHMMbGmNkk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=vGK43yxv3kz5h9SA9UZG1tcj6GOBLFZeMtjfjuCFnDzFpb440fVwmDdNpouB9mXHv
- s+c6SMKum2sA6x1Y97jcipBUrupBIMNL6Sp2gZC5vI19/ZWsFE/dxlouxKr7dxATFL
- E2pKQNs/XNptXI9blNNzv3OY8wdQDrm6c1UZ63wY=
-Date: Fri, 19 Feb 2021 11:40:10 +0100
+ b=jeE0V6mQ4HY0+J8qY39MMjuC/hFrku7azSwseFci48NNxZWxDxXAWpLHjh7jBh73F
+ LrBpfvsu8egXYahoLDHqEBNzdNbVf4IMfP3ENwzuWYpHXPvvIz/iDW+suJvqNz0Iuz
+ jE/vHBvI7HktVdK3fxYW69jfiU7IPRcyHrkCoH0s=
+Date: Fri, 19 Feb 2021 11:40:55 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Selvakumar Elangovan <selvakumar16197@gmail.com>
-Subject: Re: [PATCH] staging: vt6656: fixed a CamelCase coding style issue.
-Message-ID: <YC+Vii75qR3Mz48k@kroah.com>
-References: <20210219095835.9687-1-selvakumar16197@gmail.com>
+To: Amrit Khera <amritkhera98@gmail.com>
+Subject: Re: [PATCH] staging: android: Fix const keyword style issue in
+ ashmem.c
+Message-ID: <YC+Vt0qJbkCLPZfo@kroah.com>
+References: <20210219101338.2670-1-amritkhera98@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210219095835.9687-1-selvakumar16197@gmail.com>
+In-Reply-To: <20210219101338.2670-1-amritkhera98@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,48 +62,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, oscar.carter@gmx.com, tvboxspy@gmail.com,
- linux-kernel@vger.kernel.org, forest@alittletooquiet.net,
- linux-kernel-mentees@lists.linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, tkjos@android.com, surenb@google.com,
+ linux-kernel@vger.kernel.org, hridya@google.com, arve@android.com,
+ joel@joelfernandes.org, maco@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 19, 2021 at 03:28:35PM +0530, Selvakumar Elangovan wrote:
-> This patch renames CamelCase macros uVar and uModulo into u_var and
-> u_module in device.h
+On Fri, Feb 19, 2021 at 03:43:39PM +0530, Amrit Khera wrote:
+> This change fixes a checkpatch warning for "struct file_operations should normally be const".
 > 
-> This issue was reported by checkpatch.pl
-> 
-> Signed-off-by: Selvakumar Elangovan <selvakumar16197@gmail.com>
+> Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
 > ---
->  drivers/staging/vt6656/device.h | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/staging/android/ashmem.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-> index 947530fefe94..6615d356f74a 100644
-> --- a/drivers/staging/vt6656/device.h
-> +++ b/drivers/staging/vt6656/device.h
-> @@ -385,11 +385,11 @@ struct vnt_private {
->  	struct ieee80211_low_level_stats low_stats;
->  };
+> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+> index d66a64e42273..7854fd410efa 100644
+> --- a/drivers/staging/android/ashmem.c
+> +++ b/drivers/staging/android/ashmem.c
+> @@ -376,7 +376,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
 >  
-> -#define ADD_ONE_WITH_WRAP_AROUND(uVar, uModulo) {	\
-> -	if ((uVar) >= ((uModulo) - 1))			\
-> -		(uVar) = 0;				\
-> +#define ADD_ONE_WITH_WRAP_AROUND(u_var, u_modulo) {	\
+>  static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+>  {
+> -	static struct file_operations vmfile_fops;
+> +	static const struct file_operations vmfile_fops;
+>  	struct ashmem_area *asma = file->private_data;
+>  	int ret = 0;
+>  
 
-"u_" does not really make any sense, right?
+Always test-build your patches before sending them out, otherwise you
+are wasting reviewer's time, right?
 
-Just use "var" and "modulo" please.
-
-But first, why is this needed at all?  Isn't there an in-kernel function
-that should be used instead?
-
-thanks,
-
-greg k-h
+:(
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
