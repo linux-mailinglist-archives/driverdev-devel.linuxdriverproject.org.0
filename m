@@ -1,77 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7DCE31FB0B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 15:39:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 132EC31FB2B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 15:46:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8F0A2873B4;
-	Fri, 19 Feb 2021 14:39:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 846B060711
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Feb 2021 14:46:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RHKewaw9+cj0; Fri, 19 Feb 2021 14:39:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8VCMuyQ0TPUw for <lists+driverdev-devel@lfdr.de>;
+	Fri, 19 Feb 2021 14:46:38 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 7630960701; Fri, 19 Feb 2021 14:46:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 03B608738D;
-	Fri, 19 Feb 2021 14:39:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 698F1606EC;
+	Fri, 19 Feb 2021 14:46:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2E9281BF846
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 14:39:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D06D1BF846
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 14:46:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 26821873BE
- for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 14:39:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 59BED86C02
+ for <devel@linuxdriverproject.org>; Fri, 19 Feb 2021 14:46:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W6XQ1sTanEXP for <devel@linuxdriverproject.org>;
- Fri, 19 Feb 2021 14:39:05 +0000 (UTC)
+ with ESMTP id 89uD6FNrl4+c for <devel@linuxdriverproject.org>;
+ Fri, 19 Feb 2021 14:46:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com
- [209.85.128.49])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2D3468738A
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 14:39:05 +0000 (UTC)
-Received: by mail-wm1-f49.google.com with SMTP id v62so7847375wmg.4
- for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 06:39:05 -0800 (PST)
+Received: from mail-pl1-f174.google.com (mail-pl1-f174.google.com
+ [209.85.214.174])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E301B86C25
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 14:46:11 +0000 (UTC)
+Received: by mail-pl1-f174.google.com with SMTP id k22so3480622pll.6
+ for <devel@driverdev.osuosl.org>; Fri, 19 Feb 2021 06:46:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=xmA/KV9e2ZyA8lcC+WdH41u9opqrjZNkfCRBCxD5ZNk=;
- b=cxbgewZ+RPJiWcAUAkXPEywDNxuM8rjqCG/rwZgzCLyLrRfv1FEfE7mcUBTzM2cgux
- wNvTv2Xz4fM+1FFDjqyjPpAUX3chnK9DmpUOT0+VxEmlpj83QI9gLCRI4hmNcHRRsZyQ
- uE1LpkSUsRKqqmlWHRAyE1X2t40kROfatOfO5vc8BfDMJu1o2LKoHvjBvz3ZgdfqwIdr
- qg2qEua0ru1+Y7rtw2tuYQirWRLaQg4sIXrxUotnGMFa/eefhzaTH3RYq3OFGa9Rn6cI
- q+NfH/s94yKjL7UIklAt4RtgqIcvblhsDUurWlr9c8tXVhDxFT8dhVuAKm3A1EJETCIy
- fF3g==
+ bh=slTXshU8vidGGVMSxD6AxHpQCaGZpeJQ08PMj6GSx14=;
+ b=mOadbSwJ+lN9/8jOAuB+LIN+eQWxBpaU2nHGShDsNkBu2OSL8S3R+PzRAqWtxF/AyT
+ MoZBbqj4PNdvabwxpbOinc8JfA6nKUqhMIZsz+x4ddILZLMsvl+giO01S5Y4tnL6ZKqc
+ TDFhNs0uCazV1NrTKzk6q8TXXhGnfLtXzf/R1JxM/eDcceLtxhmInB2xavxQA7ihcMN/
+ M8EW+PUuCgD3Zi9tnpVZfEqajheLedQjk9P4m3jHuhDmoeT1CmY+lechFOw+2K6zyTeu
+ AKcKeVUEES2U/eS29EdHRxj/FNDu+X0Wae+KR1HXCMTFTCwaTFu95fQoh6M+MuIRN8m0
+ Pe1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=xmA/KV9e2ZyA8lcC+WdH41u9opqrjZNkfCRBCxD5ZNk=;
- b=Z1GK13MLrNjIK34+boLm038KuX/smC8vXiJISaMBQUCm7fVbWqV/X7SB+i6vEmwBJH
- FQILjIWiTAc9sWiZ5mvKZIMITV+uEMIt0gHsHwBSbuan4yguKlIDtITDdIo5iEx9ak4N
- K6zJYWy89/ApO56NBRdyGONHJjN9uACp5zyDX3qYEQ+/oNcxQq68jaGsQB5QQF3hPxMY
- qAXILJIR6DyBxitxEoaBEz93gvJvHH3ZGqF2IW9nfUJgzXkG3PLgKoB3v7l+bnEoc58G
- ASxkSfEyh/02LTZk4fJRWM7WZwp7H+mzQvpWc7LjPNAmnCVUStyNVS99LIjswV2Xpost
- Xn/A==
-X-Gm-Message-State: AOAM533plzDXeQJx5MEPnznkdhdPe4ibhuqBhLLxQK7Lda/AHSC017xH
- 0T/n/3T7GZKwexQQyGjhEQc=
-X-Google-Smtp-Source: ABdhPJyBOJobgDyI4nY0tMF/lTWSKS2eZrzryQBmz5QcUFuGrzd6EPuqh8J63on+3nD3BuilAYvLgw==
-X-Received: by 2002:a05:600c:3588:: with SMTP id
- p8mr8423631wmq.71.1613745543530; 
- Fri, 19 Feb 2021 06:39:03 -0800 (PST)
-Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
- [217.32.158.205])
- by smtp.gmail.com with ESMTPSA id m23sm11530694wmc.31.2021.02.19.06.39.02
+ bh=slTXshU8vidGGVMSxD6AxHpQCaGZpeJQ08PMj6GSx14=;
+ b=KheBxSCyzGw4rewuh++DYZSiwI2jYiJiXvDu0w2YgYpdKFnchosjr/AueyZX+/5KL/
+ 0eBZGTq7iLZCW7GTaRYGwuQqUwesQaoFSGMU0BRs9SMLMwMBjYlYWpAQU8wxNHLWdCDR
+ Ubr/cqY8j//kxMY7mQsDpwJ7yBBR3lvTeMnRaXS3yFHY6U6zm+6Wa4CVRI8dT7Zuc4JN
+ b7C4r/Q0DCuZcXHyKatVM/aQdQenRj6arFf88CmbbnQl5ihvmq/rjLwWWGb0LIyanM0p
+ AJTaDQvWspEfOojiZvmOK0AlyGkQcrdsyJWEyjQ8rt7idKDxDgi9Ug2YhczAZO+/MlL+
+ BDLA==
+X-Gm-Message-State: AOAM530Sj/pb6zvJ7zeM+tJBQgIr2O6zN7ssk6uiPDmtcr2MyHTGIIhF
+ XwNmmQqb3U7GRSfU8loSWOw=
+X-Google-Smtp-Source: ABdhPJyqHMbC6dTR+BB6SR6heG0MwTmAa5lseJ80Z8WddGX3n6NsiVuKO/5qiPoAnmthmOTWLND8Pw==
+X-Received: by 2002:a17:90a:2a4e:: with SMTP id
+ d14mr9797342pjg.36.1613745971421; 
+ Fri, 19 Feb 2021 06:46:11 -0800 (PST)
+Received: from localhost.localdomain ([49.36.144.93])
+ by smtp.gmail.com with ESMTPSA id k13sm10457329pfg.146.2021.02.19.06.46.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:39:03 -0800 (PST)
-From: Lee Gibson <leegib@gmail.com>
-To: mchehab+huawei@kernel.org
-Subject: [PATCH] staging: hikey9xx: Fix space tab style warnings
-Date: Fri, 19 Feb 2021 14:38:51 +0000
-Message-Id: <20210219143851.83672-1-leegib@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ Fri, 19 Feb 2021 06:46:10 -0800 (PST)
+From: Amrit Khera <amritkhera98@gmail.com>
+To: johan@kernel.org,
+	elder@kernel.org,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: greybus: Fix blank line style issue in sdio.c
+Date: Fri, 19 Feb 2021 20:12:31 +0530
+Message-Id: <20210219144230.32055-1-amritkhera98@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,50 +89,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Lee Gibson <leegib@gmail.com>
+Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
+ Amrit Khera <amritkhera98@gmail.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the checkpatch warnings such as:
+This change fixes a checkpatch check for "Please don't use
+multiple blank lines".
 
-hi6421-spmi-pmic.c:51: WARNING: please, no space before tabs
-
-Signed-off-by: Lee Gibson <leegib@gmail.com>
+Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/greybus/sdio.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index 4ebcfea9f3bf..626140cb96f2 100644
---- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-+++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -48,9 +48,9 @@ enum hi6421_spmi_pmic_irq_list {
- /*
-  * The IRQs are mapped as:
-  *
-- * 	======================  =============   ============	=====
-- *	IRQ			MASK REGISTER 	IRQ REGISTER	BIT
-- * 	======================  =============   ============	=====
-+ *	======================  =============   ============	=====
-+ *	IRQ			MASK REGISTER	IRQ REGISTER	BIT
-+ *	======================  =============   ============	=====
-  *	OTMP			0x0202		0x212		bit 0
-  *	VBUS_CONNECT		0x0202		0x212		bit 1
-  *	VBUS_DISCONNECT		0x0202		0x212		bit 2
-@@ -66,7 +66,7 @@ enum hi6421_spmi_pmic_irq_list {
-  *	SIM0_HPD_F		0x0203		0x213		bit 3
-  *	SIM1_HPD_R		0x0203		0x213		bit 4
-  *	SIM1_HPD_F		0x0203		0x213		bit 5
-- * 	======================  =============   ============	=====
-+ *	======================  =============   ============	=====
-  */
- #define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
- #define SOC_PMIC_IRQ0_ADDR		0x0212
+diff --git a/drivers/staging/greybus/sdio.c b/drivers/staging/greybus/sdio.c
+index 0939f4a4c963..37bf04c22dbc 100644
+--- a/drivers/staging/greybus/sdio.c
++++ b/drivers/staging/greybus/sdio.c
+@@ -33,7 +33,6 @@ struct gb_sdio_host {
+ 	bool			read_only;
+ };
+ 
+-
+ #define GB_SDIO_RSP_R1_R5_R6_R7	(GB_SDIO_RSP_PRESENT | GB_SDIO_RSP_CRC | \
+ 				 GB_SDIO_RSP_OPCODE)
+ #define GB_SDIO_RSP_R3_R4	(GB_SDIO_RSP_PRESENT)
 -- 
-2.25.1
+2.20.1
 
 _______________________________________________
 devel mailing list
