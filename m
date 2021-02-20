@@ -1,87 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3E37323259
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 21:48:29 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE632323258
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 21:48:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2E97A60687;
-	Tue, 23 Feb 2021 20:48:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6DF5643024;
+	Tue, 23 Feb 2021 20:48:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b1V5-sTsdy2V; Tue, 23 Feb 2021 20:48:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MlHngwxgKpZL; Tue, 23 Feb 2021 20:48:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7528E6066B;
-	Tue, 23 Feb 2021 20:48:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 66D8342FFB;
+	Tue, 23 Feb 2021 20:48:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DB96B1BF9B5
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C74281BF9B4
  for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 20:47:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CF8FF4DD08
+ by smtp3.osuosl.org (Postfix) with ESMTP id B2C196066A
  for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 20:47:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9DpwAmIs2m0V for <devel@linuxdriverproject.org>;
- Tue, 23 Feb 2021 20:47:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ul7MHTz8JYmc for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 20:47:32 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from wout5-smtp.messagingengine.com (wout5-smtp.messagingengine.com
  [64.147.123.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 056644DF56
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EDA6060666
  for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 20:47:32 +0000 (UTC)
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.west.internal (Postfix) with ESMTP id 7D97882B;
- Tue, 23 Feb 2021 15:47:30 -0500 (EST)
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.west.internal (Postfix) with ESMTP id 46881302;
+ Tue, 23 Feb 2021 15:47:31 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Tue, 23 Feb 2021 15:47:30 -0500
+ by compute1.internal (MEProxy); Tue, 23 Feb 2021 15:47:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
  :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=KsUsx0Hz9lGQO
- VvBBFgUkiZwFrRoQsVq8O5pTnwoALs=; b=F9Txl/ni08+DRObSRzi8QQHPvy6ZF
- H6HVoIN6V40hEM97YcsniQEguXzaDXjJW2LYlJmu+w0LHoQswcIHzT1adZITwteo
- g6sch3A2IpQd90vG7hTikhNHWqhrn0MZx1YuC5/bgMtMDCOa2+iayqYB5eLD5ZOE
- G54ayB7yB0vP8N5Sm3nCRvp/ssK1W3F01+l9jzyHqk35F2SZ5mDT0Gut2fQoPFPv
- CKMtH8GPSjKdfpSt/c0UX0GWnxPTXkvOifywZ8SM0N2WIBGEiWsR6b2g5HGDEr4u
- WnAu34eDfZJzZdWXja+xr7yr51iYwDSQLTcZNESsF5IP9m14rg0adQTsg==
+ :mime-version:content-transfer-encoding; s=fm2; bh=WINPLm8jkOdds
+ GOUk4yy+cws4q7fDNLcukIb8EXr7kU=; b=IVDNW/OpMnuFXH4oYvoA3rrD1Qxy2
+ t62+N++qynoSShULqSo5IYXP0rRPKgGQPfe6y8P3o98XEiEEs7OLOTY4eVNiRb5L
+ Y4fH/Or/tAaCNjPj2V0BihEAIrhlrjrWkoqGUx4f43ci4hGsYKlaGKyL8hqItE6X
+ VMXWnexY7IcmHQXEdk0GtPNdwV8BXb5z1WQzaHx2Z6oPriLbWao4o9ZTnC7RvLR4
+ ItxirbnzaqMNGhQmnN0ASLh588YhOPI691FsGoxcaWmTe3B8BOJkOL7Va9AqnhHZ
+ 1XmO+978VkR8zw1ExhA/BC7/g31rLA/haPrW6zxbR1TmTbDDUrp0Hx33A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
  :in-reply-to:message-id:mime-version:references:subject:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; bh=KsUsx0Hz9lGQOVvBBFgUkiZwFrRoQsVq8O5pTnwoALs=; b=Ga5iaDPr
- y3E/BwYS653S0rMOX0Jyy2wZ19v0xyfDvuTYDpmqE+aDm9JoeRSqARnACxrg25th
- Gmh0RNkEwJzafp8ZcND3kEGKo4uJM3Tvt1iluSvGQVIJyxk0uHlvpZ1XDA/Ja7xB
- rs8irBG2kFTS9mh9Vuv7Ru4lCfOpCiO0Y78O8Ita3kpF8yZDH+IMff/MsWVNZ/1i
- 62/8op775lZOb38wfHoct4mtTQZ0R6p+kHySzOkAn6XgR4vJWjoYntzJknENZXsU
- LimY07iv7jQvLNrGszBMjyMG7ZGNCje18oDuMotGAICD61leb8auIAvqUA5B1CIP
- r2jyqdh6yLZdwg==
-X-ME-Sender: <xms:4mk1YKj4KBLVdNDIfqoGA9NX5U8Wl3cR-wae0tRQNCfCoKRtVhYO4w>
- <xme:4mk1YLDrrr14-ekVK4qrKptwJbdImi9mzlEfRIdBAiOOBSb3dNmYqg-R220evEp1g
- kCX9A7eyYkqiW662w>
+ fm2; bh=WINPLm8jkOddsGOUk4yy+cws4q7fDNLcukIb8EXr7kU=; b=ig7Y48t8
+ 3LXd5pCG3ehRsocDNKAMkFpCaoKRYgz2IKaCrrY1Z/2oZmde8DbpPlPsAzUi2M/m
+ VpX+NM5Uzl6+UoZguXTBwIeYyMRdWccuoMKCwSVPormIhYCG2Xr+SF9QAggJnE1B
+ 8pDnfy9HZnUW0ciGcRO6JyTn1J++rAD2Xr5eGiTl1TdGTsDAH9yG/4nz+GH0adax
+ W0iDsY82IQTOBZS2ztQQfCcH2DQTHYBzRYQEAqU1eDFF4Kwh267BxJqD2cOD0y4k
+ Ks1/ot/uOMiXXlNF6dnxFt8nMeW5PttM4A9hEVKa+tdCgG+P1/5EJhw0kAaQiX05
+ zQclZF/FI0OSOg==
+X-ME-Sender: <xms:4mk1YGIltvVmJsi9XTpr2LrOWxh1d3ybAI3DESxtXJtdSLAqcwE0EQ>
+ <xme:4mk1YOF38R6NiEDxwGtPTUcn-ftbCW2FYhpq6-HjEGHEgyvbhJ2vMYZaxGPZJ86vr
+ fbWeWqdFCUgyjHm_g>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrkeehgddugedtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeghihhllhhi
  rghmucffuhhrrghnugcuoeifihhllhdoghhithesughrnhgurdhmvgeqnecuggftrfgrth
- htvghrnhepgfevjeejheejgfefvdffgeeikedtleekffekkeegheegieevledvgeegtedt
- teejnecuffhomhgrihhnpegsshhshhhtrdgsugenucfkphepvddujedrvdefkedrvddtke
- drjeegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhep
- fihilhhlodhgihhtsegurhhnugdrmhgv
-X-ME-Proxy: <xmx:4mk1YCHS2shBv0GJ-XJ4ACtwm-Tzi7OyCjyCyku6S6HmHTFa_LMCwA>
- <xmx:4mk1YDSKRLd232cYuV6ACnZ50QNZ3UET5Q-MqsYPs4xdh9a7AmbGLg>
- <xmx:4mk1YHxUjVjUkCH8A6MgZPfRZSd0B4rYdFMv5poUM7_0d2SbvCkSjQ>
- <xmx:4mk1YFayydKPVI9ce9tV-cpGuqW9ktExDz7i-0Y4oNWeKpYb-iGNsg>
+ htvghrnhepjedvgeffieeivdefleekvddvudffvefhiefgueeujedvgfegfeelkeduffel
+ ffefnecukfhppedvudejrddvfeekrddvtdekrdejgeenucevlhhushhtvghrufhiiigvpe
+ dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
+X-ME-Proxy: <xmx:4mk1YDkmFWG1Etjq3YVByACGNFpc91Znx8-znzBNvX2Li5RvyoMkmA>
+ <xmx:4mk1YDJpj8IgR8riEFIOxMu4QFxD8brbqYLOBB2dSXvGvobpbUkkWw>
+ <xmx:4mk1YMa_qRSg9kS-Tc2t0dSQ9W7jvrP6YV_a-jBkZjvE5mEwWnFOHg>
+ <xmx:4mk1YAaVGA1yU0SZUnk0KUwc1a-ojDqFufhASDIBvRQe1KjdR6fkJw>
 Received: from vagrant.vm (pd9eed04a.dip0.t-ipconnect.de [217.238.208.74])
- by mail.messagingengine.com (Postfix) with ESMTPA id 8BF1424005E;
- Tue, 23 Feb 2021 15:47:29 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id 31F78240057;
+ Tue, 23 Feb 2021 15:47:30 -0500 (EST)
 From: William Durand <will+git@drnd.me>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 02/13] staging: rtl8192e: rename bdSupportHT to bd_support_ht
+Subject: [PATCH 03/13] staging: rtl8192e: rename bdHTCapBuf to bd_ht_cap_buf
  in bss_ht struct
-Date: Sat, 20 Feb 2021 15:54:06 +0000
-Message-Id: <20210220155418.12282-3-will+git@drnd.me>
+Date: Sat, 20 Feb 2021 15:54:07 +0000
+Message-Id: <20210220155418.12282-4-will+git@drnd.me>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210220155418.12282-1-will+git@drnd.me>
 References: <20210220155418.12282-1-will+git@drnd.me>
@@ -110,129 +109,133 @@ Signed-off-by: William Durand <will+git@drnd.me>
 ---
  drivers/staging/rtl8192e/rtl819x_HT.h     |  2 +-
  drivers/staging/rtl8192e/rtl819x_HTProc.c |  4 ++--
- drivers/staging/rtl8192e/rtllib_rx.c      | 14 +++++++-------
- drivers/staging/rtl8192e/rtllib_softmac.c |  4 ++--
- 4 files changed, 12 insertions(+), 12 deletions(-)
+ drivers/staging/rtl8192e/rtllib_rx.c      | 17 +++++++++--------
+ drivers/staging/rtl8192e/rtllib_softmac.c |  2 +-
+ drivers/staging/rtl8192e/rtllib_wx.c      |  6 +++---
+ 5 files changed, 16 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/staging/rtl8192e/rtl819x_HT.h b/drivers/staging/rtl8192e/rtl819x_HT.h
-index 1bbb9ed18e6d..71a078c0d5f5 100644
+index 71a078c0d5f5..3b7b480a42b3 100644
 --- a/drivers/staging/rtl8192e/rtl819x_HT.h
 +++ b/drivers/staging/rtl8192e/rtl819x_HT.h
-@@ -179,7 +179,7 @@ struct rt_hi_throughput {
- } __packed;
-
+@@ -181,7 +181,7 @@ struct rt_hi_throughput {
  struct bss_ht {
--	u8				bdSupportHT;
-+	u8				bd_support_ht;
+ 	u8				bd_support_ht;
 
- 	u8					bdHTCapBuf[32];
+-	u8					bdHTCapBuf[32];
++	u8					bd_ht_cap_buf[32];
  	u16					bdHTCapLen;
+ 	u8					bdHTInfoBuf[32];
+ 	u16					bdHTInfoLen;
 diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-index 9377e48c3f32..444f8ce6a170 100644
+index 444f8ce6a170..14c00c6f7df5 100644
 --- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
 +++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-@@ -689,7 +689,7 @@ void HTInitializeHTInfo(struct rtllib_device *ieee)
- void HTInitializeBssDesc(struct bss_ht *pBssHT)
+@@ -690,7 +690,7 @@ void HTInitializeBssDesc(struct bss_ht *pBssHT)
  {
 
--	pBssHT->bdSupportHT = false;
-+	pBssHT->bd_support_ht = false;
- 	memset(pBssHT->bdHTCapBuf, 0, sizeof(pBssHT->bdHTCapBuf));
+ 	pBssHT->bd_support_ht = false;
+-	memset(pBssHT->bdHTCapBuf, 0, sizeof(pBssHT->bdHTCapBuf));
++	memset(pBssHT->bd_ht_cap_buf, 0, sizeof(pBssHT->bd_ht_cap_buf));
  	pBssHT->bdHTCapLen = 0;
  	memset(pBssHT->bdHTInfoBuf, 0, sizeof(pBssHT->bdHTInfoBuf));
-@@ -712,7 +712,7 @@ void HTResetSelfAndSavePeerSetting(struct rtllib_device *ieee,
- 	/* unmark bEnableHT flag here is the same reason why unmarked in
- 	 * function rtllib_softmac_new_net. WB 2008.09.10
- 	 */
--	if (pNetwork->bssht.bdSupportHT) {
-+	if (pNetwork->bssht.bd_support_ht) {
- 		pHTInfo->bCurrentHTSupport = true;
- 		pHTInfo->ePeerHTSpecVer = pNetwork->bssht.bdHTSpecVer;
+ 	pBssHT->bdHTInfoLen = 0;
+@@ -719,7 +719,7 @@ void HTResetSelfAndSavePeerSetting(struct rtllib_device *ieee,
+ 		if (pNetwork->bssht.bdHTCapLen > 0 &&
+ 		    pNetwork->bssht.bdHTCapLen <= sizeof(pHTInfo->PeerHTCapBuf))
+ 			memcpy(pHTInfo->PeerHTCapBuf,
+-			       pNetwork->bssht.bdHTCapBuf,
++			       pNetwork->bssht.bd_ht_cap_buf,
+ 			       pNetwork->bssht.bdHTCapLen);
 
+ 		if (pNetwork->bssht.bdHTInfoLen > 0 &&
 diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
-index 66c135321da4..98d7b9ba6099 100644
+index 98d7b9ba6099..2abda3d3174f 100644
 --- a/drivers/staging/rtl8192e/rtllib_rx.c
 +++ b/drivers/staging/rtl8192e/rtllib_rx.c
-@@ -1858,10 +1858,10 @@ static void rtllib_parse_mife_generic(struct rtllib_device *ieee,
+@@ -1851,15 +1851,16 @@ static void rtllib_parse_mife_generic(struct rtllib_device *ieee,
+ 					       MAX_IE_LEN);
+ 			if (*tmp_htcap_len != 0) {
+ 				network->bssht.bdHTSpecVer = HT_SPEC_VER_EWC;
+-				network->bssht.bdHTCapLen = min_t(u16, *tmp_htcap_len, sizeof(network->bssht.bdHTCapBuf));
+-				memcpy(network->bssht.bdHTCapBuf,
++				network->bssht.bdHTCapLen = min_t(u16, *tmp_htcap_len,
++								  sizeof(network->bssht.bd_ht_cap_buf));
++				memcpy(network->bssht.bd_ht_cap_buf,
+ 				       info_element->data,
+ 				       network->bssht.bdHTCapLen);
  			}
  		}
  		if (*tmp_htcap_len != 0) {
--			network->bssht.bdSupportHT = true;
-+			network->bssht.bd_support_ht = true;
- 			network->bssht.bdHT1R = ((((struct ht_capab_ele *)(network->bssht.bdHTCapBuf))->MCS[1]) == 0);
+ 			network->bssht.bd_support_ht = true;
+-			network->bssht.bdHT1R = ((((struct ht_capab_ele *)(network->bssht.bdHTCapBuf))->MCS[1]) == 0);
++			network->bssht.bdHT1R = ((((struct ht_capab_ele *)(network->bssht.bd_ht_cap_buf))->MCS[1]) == 0);
  		} else {
--			network->bssht.bdSupportHT = false;
-+			network->bssht.bd_support_ht = false;
+ 			network->bssht.bd_support_ht = false;
  			network->bssht.bdHT1R = false;
- 		}
- 	}
-@@ -1885,7 +1885,7 @@ static void rtllib_parse_mife_generic(struct rtllib_device *ieee,
- 		}
- 	}
+@@ -2022,16 +2023,16 @@ static void rtllib_parse_mfie_ht_cap(struct rtllib_info_element *info_element,
+ 	if (*tmp_htcap_len != 0) {
+ 		ht->bdHTSpecVer = HT_SPEC_VER_EWC;
+ 		ht->bdHTCapLen = min_t(u16, *tmp_htcap_len,
+-				       sizeof(ht->bdHTCapBuf));
+-		memcpy(ht->bdHTCapBuf, info_element->data, ht->bdHTCapLen);
++				       sizeof(ht->bd_ht_cap_buf));
++		memcpy(ht->bd_ht_cap_buf, info_element->data, ht->bdHTCapLen);
 
--	if (network->bssht.bdSupportHT) {
-+	if (network->bssht.bd_support_ht) {
- 		if (info_element->len >= 4 &&
- 		    info_element->data[0] == 0x00 &&
- 		    info_element->data[1] == 0xe0 &&
-@@ -2025,7 +2025,7 @@ static void rtllib_parse_mfie_ht_cap(struct rtllib_info_element *info_element,
- 				       sizeof(ht->bdHTCapBuf));
- 		memcpy(ht->bdHTCapBuf, info_element->data, ht->bdHTCapLen);
-
--		ht->bdSupportHT = true;
-+		ht->bd_support_ht = true;
+ 		ht->bd_support_ht = true;
  		ht->bdHT1R = ((((struct ht_capab_ele *)
- 				ht->bdHTCapBuf))->MCS[1]) == 0;
+-				ht->bdHTCapBuf))->MCS[1]) == 0;
++				ht->bd_ht_cap_buf))->MCS[1]) == 0;
 
-@@ -2033,7 +2033,7 @@ static void rtllib_parse_mfie_ht_cap(struct rtllib_info_element *info_element,
+ 		ht->bdBandWidth = (enum ht_channel_width)
  					     (((struct ht_capab_ele *)
- 					     (ht->bdHTCapBuf))->ChlWidth);
+-					     (ht->bdHTCapBuf))->ChlWidth);
++					     (ht->bd_ht_cap_buf))->ChlWidth);
  	} else {
--		ht->bdSupportHT = false;
-+		ht->bd_support_ht = false;
+ 		ht->bd_support_ht = false;
  		ht->bdHT1R = false;
- 		ht->bdBandWidth = HT_CHANNEL_WIDTH_20;
- 	}
-@@ -2380,7 +2380,7 @@ static inline int rtllib_network_init(
- 		return 1;
- 	}
-
--	if (network->bssht.bdSupportHT) {
-+	if (network->bssht.bd_support_ht) {
- 		if (network->mode == IEEE_A)
- 			network->mode = IEEE_N_5G;
- 		else if (network->mode & (IEEE_G | IEEE_B))
-@@ -2456,7 +2456,7 @@ static inline void update_network(struct rtllib_device *ieee,
- 	dst->last_dtim_sta_time = src->last_dtim_sta_time;
- 	memcpy(&dst->tim, &src->tim, sizeof(struct rtllib_tim_parameters));
-
--	dst->bssht.bdSupportHT = src->bssht.bdSupportHT;
-+	dst->bssht.bd_support_ht = src->bssht.bd_support_ht;
+@@ -2459,7 +2460,7 @@ static inline void update_network(struct rtllib_device *ieee,
+ 	dst->bssht.bd_support_ht = src->bssht.bd_support_ht;
  	dst->bssht.bdRT2RTAggregation = src->bssht.bdRT2RTAggregation;
  	dst->bssht.bdHTCapLen = src->bssht.bdHTCapLen;
- 	memcpy(dst->bssht.bdHTCapBuf, src->bssht.bdHTCapBuf,
+-	memcpy(dst->bssht.bdHTCapBuf, src->bssht.bdHTCapBuf,
++	memcpy(dst->bssht.bd_ht_cap_buf, src->bssht.bd_ht_cap_buf,
+ 	       src->bssht.bdHTCapLen);
+ 	dst->bssht.bdHTInfoLen = src->bssht.bdHTInfoLen;
+ 	memcpy(dst->bssht.bdHTInfoBuf, src->bssht.bdHTInfoBuf,
 diff --git a/drivers/staging/rtl8192e/rtllib_softmac.c b/drivers/staging/rtl8192e/rtllib_softmac.c
-index ab4b9817888c..b348316b2784 100644
+index b348316b2784..6f8f88207694 100644
 --- a/drivers/staging/rtl8192e/rtllib_softmac.c
 +++ b/drivers/staging/rtl8192e/rtllib_softmac.c
-@@ -1692,7 +1692,7 @@ inline void rtllib_softmac_new_net(struct rtllib_device *ieee,
- 				    ieee->current_network.channel,
- 				    ieee->current_network.qos_data.supported,
- 				    ieee->pHTInfo->bEnableHT,
--				    ieee->current_network.bssht.bdSupportHT,
-+				    ieee->current_network.bssht.bd_support_ht,
- 				    ieee->current_network.mode,
- 				    ieee->current_network.flags);
+@@ -2238,7 +2238,7 @@ rtllib_rx_assoc_resp(struct rtllib_device *ieee, struct sk_buff *skb,
+ 					return 1;
+ 				}
+ 				memcpy(ieee->pHTInfo->PeerHTCapBuf,
+-				       network->bssht.bdHTCapBuf,
++				       network->bssht.bd_ht_cap_buf,
+ 				       network->bssht.bdHTCapLen);
+ 				memcpy(ieee->pHTInfo->PeerHTInfoBuf,
+ 				       network->bssht.bdHTInfoBuf,
+diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
+index ce095febc9ed..ab1b8217c4e0 100644
+--- a/drivers/staging/rtl8192e/rtllib_wx.c
++++ b/drivers/staging/rtl8192e/rtllib_wx.c
+@@ -140,12 +140,12 @@ static inline char *rtl819x_translate_scan(struct rtllib_device *ieee,
+ 		bool is40M = false, isShortGI = false;
+ 		u8 max_mcs = 0;
 
-@@ -1706,7 +1706,7 @@ inline void rtllib_softmac_new_net(struct rtllib_device *ieee,
- 				/* Join the network for the first time */
- 				ieee->AsocRetryCount = 0;
- 				if ((ieee->current_network.qos_data.supported == 1) &&
--				    ieee->current_network.bssht.bdSupportHT)
-+				    ieee->current_network.bssht.bd_support_ht)
- 					HTResetSelfAndSavePeerSetting(ieee,
- 						 &(ieee->current_network));
- 				else
+-		if (!memcmp(network->bssht.bdHTCapBuf, EWC11NHTCap, 4))
++		if (!memcmp(network->bssht.bd_ht_cap_buf, EWC11NHTCap, 4))
+ 			ht_cap = (struct ht_capab_ele *)
+-				 &network->bssht.bdHTCapBuf[4];
++				 &network->bssht.bd_ht_cap_buf[4];
+ 		else
+ 			ht_cap = (struct ht_capab_ele *)
+-				 &network->bssht.bdHTCapBuf[0];
++				 &network->bssht.bd_ht_cap_buf[0];
+ 		is40M = (ht_cap->ChlWidth) ? 1 : 0;
+ 		isShortGI = (ht_cap->ChlWidth) ?
+ 				((ht_cap->ShortGI40Mhz) ? 1 : 0) :
 --
 2.30.0
 
