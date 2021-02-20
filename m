@@ -1,65 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87101323265
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 21:49:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4162F4302E;
-	Tue, 23 Feb 2021 20:49:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NDPVQXMLGsjm; Tue, 23 Feb 2021 20:49:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8A3BA43026;
-	Tue, 23 Feb 2021 20:49:49 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2DF301BF25F
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 20:47:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C58CF32326C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 21:50:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1BB606066A
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 20:47:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C7292606A9;
+	Tue, 23 Feb 2021 20:50:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qTZbb6PQaRH8 for <devel@linuxdriverproject.org>;
- Tue, 23 Feb 2021 20:47:37 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5MFF4mJN8grP; Tue, 23 Feb 2021 20:50:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1751F6066C;
+	Tue, 23 Feb 2021 20:49:59 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 051B11BF25F
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 20:47:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 00D4643025
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 20:47:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XU7Dca8cj8Ow for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 20:47:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from wout5-smtp.messagingengine.com (wout5-smtp.messagingengine.com
  [64.147.123.21])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 889CC60666
- for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 20:47:37 +0000 (UTC)
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 0B60BA93;
- Tue, 23 Feb 2021 15:47:36 -0500 (EST)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7D8CC43024
+ for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 20:47:38 +0000 (UTC)
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id AE81DAFC;
+ Tue, 23 Feb 2021 15:47:37 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Tue, 23 Feb 2021 15:47:37 -0500
+ by compute3.internal (MEProxy); Tue, 23 Feb 2021 15:47:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
  :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=0AV7DOJs/BB2G
- 2+ZYpebkDXv9Eoiz/bZoB3mZuyHh3Q=; b=t0DhBwW2VU3qVCdrUcIw7ymuslIX5
- DYQRnMHgsNWD9GTMvNt+7ctn0dJaGBTckAvPKmn24kw7C3Fk4cf5VJpmx3bT7tFF
- pocHwz3bYWhtt2SXeenc+u2Zio9f/BnXQEA6pJP+Xfjpiy+TK+36QYnoD/gZT9ty
- 1w47Ffhkn77CmM1XoDHis7daBPJjTjVAK+6Kr1oOjXaMXa16CRZbrWMZk7CEaQaW
- RmnkHOVzfu1EaZb0SuF1JcKSoqyfGM4D7iGZ+ZAF/LK8jKi6np2YBWKpP0P5f27v
- H9Zb4ULwpaCm/YQqXNH7nkXNMeyuJdWyoBOhjIXVTz0yLjDNiBVeTOQYQ==
+ :mime-version:content-transfer-encoding; s=fm2; bh=doruJhczG0yJ4
+ EN8JQu3N66tK/shwjEF6ktp55ZkXOM=; b=LW7dQJvTCpEyDG1scV+oj2S07g0/9
+ /0iXd4DwpKRewI8+DChUJzursfNOHANySUmHmHcvDk6/KvT6d2WrJAqTVX/UEbTO
+ qVTctUyQIYSNUOA5y/fpQ2t9xIWX+bcSkCEJb1h7BINnDAY5KuwaarbKetjcZkWM
+ Hqlf5mSP6zIV2A5/bc6dDdd3W2RrqRcpCcXBy6PM+wQMaWoDaH+XdHNQoTjJeVRq
+ o27/Kg9zsFxDPcmw/ZrMtIl/GgJzxnGRBxStKN4cDMRqI+0f2zdLURwZWfc0gaXv
+ 2APRevw+Zgg646T/H3zApeGL/7XNP9x1x5Azz6rVT3EtFgqdzCuFHbuPA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
  :in-reply-to:message-id:mime-version:references:subject:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; bh=0AV7DOJs/BB2G2+ZYpebkDXv9Eoiz/bZoB3mZuyHh3Q=; b=ZhAuVnPb
- jcB6u7UzKjLsDfKDifXJsC+NrUhy8D5habR41GY67CZqoan+ITrH1t6Ndtaj6BA3
- hgcNWxbKRsXewLsVckTpdIj8AMBjGEovNDXf5HzZCZ9aT5PGlJQAXZBAItAF30+T
- LfJ7n5VnwzgIcax909s7ZG/OV4r7olvfy864Z3FAGq/KuNyqbbivYduU1/+J4kkt
- R0PtfNwLVLDxK8rVtfBSR/v5+uewJZ8pATuvpg+iySrUPR9fPG8Es3yLcVxTAvlJ
- Z9h+78UtzNu3Fz1gozvAFU5bPYPxhzQrSUWIKE3+EfzcEA11XVI2iGyyIegxd/iL
- 2dXFUoOsIruz+w==
-X-ME-Sender: <xms:6Gk1YEbbIwFd0yvXK3D1JEW4lEVkiUQt0SL_Bgy_G7TG4Q7j8H5dOg>
- <xme:6Gk1YM8cEXc5Jh8M9DCyot8Gh5JKqTuQhlfvkrOC8o7zjycDLz8Fdr1KesqJsTQCN
- Meh8ZhjyIQELIQZEQ>
+ fm2; bh=doruJhczG0yJ4EN8JQu3N66tK/shwjEF6ktp55ZkXOM=; b=O7X2YT1U
+ GcMNQBfJXxgkrl9vamyrvh7hoQlro7WgFCl9GYCP1PvsdvUePKUY7bhnH0jaReXL
+ qiuhocp+yHPoyqHy7PFxQ8gabJjOdCfZzRjNUvzP4uKXHRjyo9PCZkD5QpDzAwt1
+ iObbsmmYSWP4IXnl/Vgfl/d7d+astDqm/sj7vMGD2SkVggJdLWL1Ekq6x17HaKvd
+ XuYzI5lfm7Ln2csUG1uA5XOWfNIYYnryMGIPuzVnXDnXlqwIKSlvdaYWNKUj0CmB
+ g5M6++JLmqbl03C+H7cY7pb5KVLoI0ezhAb2NU32qjDkfupODa4GzT3tG0LHKtpO
+ AMda+DlKHDERBQ==
+X-ME-Sender: <xms:6Wk1YI4W4nYPxbwYWWtSeuWCr0rJBcNPv-vFQE775uNAO7MuN4dRRA>
+ <xme:6Wk1YNI27eF2ReM0bez-TSlJT0-dBBT_lXWIKp2UVVFa5WNnvY-b4KJhXSScuCclD
+ pKfEMPu9_Y5L6xV6g>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrkeehgddugedtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -67,20 +67,19 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrkeehgddugedtucetufdoteggod
  rghmucffuhhrrghnugcuoeifihhllhdoghhithesughrnhgurdhmvgeqnecuggftrfgrth
  htvghrnhepjedvgeffieeivdefleekvddvudffvefhiefgueeujedvgfegfeelkeduffel
  ffefnecukfhppedvudejrddvfeekrddvtdekrdejgeenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
-X-ME-Proxy: <xmx:6Gk1YFasrrE42W4T-HxPbM7VbgtQHloNJPgNMFgpWcf6FWGhT9VNSA>
- <xmx:6Gk1YAN5MVHzFINVGaIs0z8N8OrbIacUi2Syex3V8xo_m7npuQYyEg>
- <xmx:6Gk1YBCY2n8DtTUYoE9jw9KJjSYRDnzFP8ShjuLw7V3v60JP6O1xYQ>
- <xmx:6Gk1YMU9SNqSGiozQQr__fgkS8lHiwrmedYtUsOa3hDLBsLvA264Aw>
+ ehnecurfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
+X-ME-Proxy: <xmx:6Wk1YA6Ho9-_NG1wkf1C-lbC3h4edd_MNsNZrfY_H6xteG15XMhdJA>
+ <xmx:6Wk1YIyQQDOkZNATG-_FtlCBQtuzgFYLWNCfou4aJwuvkulLvrzlgw>
+ <xmx:6Wk1YMbU_If7O8Ggef1aJzl7isad5p9UWTOtA9waZ6KGIxDSBu-9Ew>
+ <xmx:6Wk1YLCtNHT1jTpGKRpKul8WVWAs_-MruQCvtxEzLDMCKqlKGtPSkA>
 Received: from vagrant.vm (pd9eed04a.dip0.t-ipconnect.de [217.238.208.74])
- by mail.messagingengine.com (Postfix) with ESMTPA id 340A424005E;
+ by mail.messagingengine.com (Postfix) with ESMTPA id D0AD7240062;
  Tue, 23 Feb 2021 15:47:36 -0500 (EST)
 From: William Durand <will+git@drnd.me>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 12/13] staging: rtl8192e: rename bdHT1R to bd_ht_1r in bss_ht
- struct
-Date: Sat, 20 Feb 2021 15:54:16 +0000
-Message-Id: <20210220155418.12282-13-will+git@drnd.me>
+Subject: [PATCH 13/13] staging: rtl8192e: reformat bss_ht struct
+Date: Sat, 20 Feb 2021 15:54:17 +0000
+Message-Id: <20210220155418.12282-14-will+git@drnd.me>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210220155418.12282-1-will+git@drnd.me>
 References: <20210220155418.12282-1-will+git@drnd.me>
@@ -103,62 +102,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixes a checkpatch CHECK issue.
+This change uses a space instead of tabs between the type and name of
+each member of the struct.
 
 Signed-off-by: William Durand <will+git@drnd.me>
 ---
- drivers/staging/rtl8192e/rtl819x_HT.h | 2 +-
- drivers/staging/rtl8192e/rtllib_rx.c  | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8192e/rtl819x_HT.h | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/staging/rtl8192e/rtl819x_HT.h b/drivers/staging/rtl8192e/rtl819x_HT.h
-index 0b4ff153fdb6..33a58c87f4c1 100644
+index 33a58c87f4c1..ce13b41074a7 100644
 --- a/drivers/staging/rtl8192e/rtl819x_HT.h
 +++ b/drivers/staging/rtl8192e/rtl819x_HT.h
-@@ -192,7 +192,7 @@ struct bss_ht {
- 	u8					bd_rt2rt_aggregation;
- 	u8					bd_rt2rt_long_slot_time;
- 	u8					rt2rt_ht_mode;
--	u8					bdHT1R;
-+	u8					bd_ht_1r;
+@@ -179,20 +179,20 @@ struct rt_hi_throughput {
+ } __packed;
+
+ struct bss_ht {
+-	u8				bd_support_ht;
++	u8 bd_support_ht;
+
+-	u8					bd_ht_cap_buf[32];
+-	u16					bd_ht_cap_len;
+-	u8					bd_ht_info_buf[32];
+-	u16					bd_ht_info_len;
++	u8 bd_ht_cap_buf[32];
++	u16 bd_ht_cap_len;
++	u8 bd_ht_info_buf[32];
++	u16 bd_ht_info_len;
+
+ 	enum ht_spec_ver bd_ht_spec_ver;
+ 	enum ht_channel_width bd_bandwidth;
+
+-	u8					bd_rt2rt_aggregation;
+-	u8					bd_rt2rt_long_slot_time;
+-	u8					rt2rt_ht_mode;
+-	u8					bd_ht_1r;
++	u8 bd_rt2rt_aggregation;
++	u8 bd_rt2rt_long_slot_time;
++	u8 rt2rt_ht_mode;
++	u8 bd_ht_1r;
  };
 
  extern u8 MCS_FILTER_ALL[16];
-diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
-index af93eee57038..b8ab34250e6a 100644
---- a/drivers/staging/rtl8192e/rtllib_rx.c
-+++ b/drivers/staging/rtl8192e/rtllib_rx.c
-@@ -1860,10 +1860,10 @@ static void rtllib_parse_mife_generic(struct rtllib_device *ieee,
- 		}
- 		if (*tmp_htcap_len != 0) {
- 			network->bssht.bd_support_ht = true;
--			network->bssht.bdHT1R = ((((struct ht_capab_ele *)(network->bssht.bd_ht_cap_buf))->MCS[1]) == 0);
-+			network->bssht.bd_ht_1r = ((((struct ht_capab_ele *)(network->bssht.bd_ht_cap_buf))->MCS[1]) == 0);
- 		} else {
- 			network->bssht.bd_support_ht = false;
--			network->bssht.bdHT1R = false;
-+			network->bssht.bd_ht_1r = false;
- 		}
- 	}
-
-@@ -2028,7 +2028,7 @@ static void rtllib_parse_mfie_ht_cap(struct rtllib_info_element *info_element,
- 		memcpy(ht->bd_ht_cap_buf, info_element->data, ht->bd_ht_cap_len);
-
- 		ht->bd_support_ht = true;
--		ht->bdHT1R = ((((struct ht_capab_ele *)
-+		ht->bd_ht_1r = ((((struct ht_capab_ele *)
- 				ht->bd_ht_cap_buf))->MCS[1]) == 0;
-
- 		ht->bd_bandwidth = (enum ht_channel_width)
-@@ -2036,7 +2036,7 @@ static void rtllib_parse_mfie_ht_cap(struct rtllib_info_element *info_element,
- 					     (ht->bd_ht_cap_buf))->ChlWidth);
- 	} else {
- 		ht->bd_support_ht = false;
--		ht->bdHT1R = false;
-+		ht->bd_ht_1r = false;
- 		ht->bd_bandwidth = HT_CHANNEL_WIDTH_20;
- 	}
- }
 --
 2.30.0
 
