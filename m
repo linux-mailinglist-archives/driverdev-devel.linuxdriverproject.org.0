@@ -1,49 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0952F32021C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Feb 2021 01:09:10 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DCFEA320449
+	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Feb 2021 08:02:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6433084027
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Feb 2021 00:09:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7AD628751F;
+	Sat, 20 Feb 2021 07:02:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id beuoKoHiD_um for <lists+driverdev-devel@lfdr.de>;
-	Sat, 20 Feb 2021 00:09:06 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
-	id 5A98D84040; Sat, 20 Feb 2021 00:09:06 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1nVKGByh63Vm; Sat, 20 Feb 2021 07:02:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 75E2B84016;
-	Sat, 20 Feb 2021 00:08:49 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id EFDBA874FE;
+	Sat, 20 Feb 2021 07:02:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3D1E31BF844
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 Feb 2021 00:08:36 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3709F1BF83B
+ for <devel@linuxdriverproject.org>; Sat, 20 Feb 2021 07:02:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2927984016
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 Feb 2021 00:08:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3149E874B9
+ for <devel@linuxdriverproject.org>; Sat, 20 Feb 2021 07:02:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aKbqOS3Qrppn
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 Feb 2021 00:08:35 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
- id 4538B84019; Sat, 20 Feb 2021 00:08:35 +0000 (UTC)
-Received: from localhost by smtp1.osuosl.org with SpamAssassin (version 3.4.2);
- Sat, 20 Feb 2021 00:08:35 +0000
-From: "Nicholas Toms" <service@real-ptt.net>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Low-Cost Loans for SMEs & Investment Funding.
-Date: Fri, 19 Feb 2021 16:08:22 -0800
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lid9dz0WSDLl for <devel@linuxdriverproject.org>;
+ Sat, 20 Feb 2021 07:02:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BA35187351
+ for <devel@driverdev.osuosl.org>; Sat, 20 Feb 2021 07:02:26 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D8C7864EB8;
+ Sat, 20 Feb 2021 07:02:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1613804546;
+ bh=Pvh5cvdWKO1LNmyetgVB1YyxbpJdDKcFN/Tg6OGL7+E=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jmEaiT3r/F6fl71Sc7Hqap7ot1RTVLGh1ddbcZ03dVUXbg2yw6DhnQBAHtzdwzKWj
+ pHRHxHJohqqkFnsAIOWK9oMMCXUueYM39jYhs4pl/B4sEXMJv7MSYaC8g9u+IYNBPW
+ ep4njqFYZg12q0E39j6RthsylaOujRIHSjUewA2E=
+Date: Sat, 20 Feb 2021 08:02:23 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Julian Braha <julianbraha@gmail.com>
+Subject: Re: [PATCH] Staging: rtl8192e: fix kconfig dependency on CRYPTO
+Message-ID: <YDCz/6gQgp07NGw2@kroah.com>
+References: <8483722.hVsnvgcxvV@ubuntu-mate-laptop>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="----------=_60305303.8318482E"
-Message-Id: <20210220000835.4538B84019@smtp1.osuosl.org>
+Content-Disposition: inline
+In-Reply-To: <8483722.hVsnvgcxvV@ubuntu-mate-laptop>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,90 +61,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is a multi-part message in MIME format.
+On Fri, Feb 19, 2021 at 06:14:57PM -0500, Julian Braha wrote:
+> commit 1a3f343027d7f5a6475a019aa20be89795b8c8e0
+> Author: Julian Braha <julianbraha@gmail.com>
+> Date:   Fri Feb 19 17:02:24 2021 -0500
+> 
+>     staging: rtl8192e: fix kconfig dependency on CRYPTO
+>     
+>     When RTLLIB_CRYPTO_TKIP is enabled and CRYPTO is disabled,
+>     Kbuild gives the following warning:
+>     
+>     WARNING: unmet direct dependencies detected for CRYPTO_MICHAEL_MIC
+>       Depends on [n]: CRYPTO [=n]
+>       Selected by [m]:
+>       - RTLLIB_CRYPTO_TKIP [=m] && STAGING [=y] && RTLLIB [=m]
+>     
+>     WARNING: unmet direct dependencies detected for CRYPTO_LIB_ARC4
+>       Depends on [n]: CRYPTO [=n]
+>       Selected by [m]:
+>       - RTLLIB_CRYPTO_TKIP [=m] && STAGING [=y] && RTLLIB [=m]
+>       - RTLLIB_CRYPTO_WEP [=m] && STAGING [=y] && RTLLIB [=m]
+>     
+>     This is because RTLLIB_CRYPTO_TKIP selects CRYPTO_MICHAEL_MIC and CRYPTO_LIB_ARC4,
+>     without depending on or selecting CRYPTO, despite those config options
+>     being subordinate to CRYPTO.
+>     
+>     Signed-off-by: Julian Braha <julianbraha@gmail.com>
+> 
+> diff --git a/drivers/staging/rtl8192e/Kconfig b/drivers/staging/rtl8192e/Kconfig
+> index 03fcc23516fd..6e7d84ac06f5 100644
+> --- a/drivers/staging/rtl8192e/Kconfig
+> +++ b/drivers/staging/rtl8192e/Kconfig
+> @@ -26,6 +26,7 @@ config RTLLIB_CRYPTO_CCMP
+>  config RTLLIB_CRYPTO_TKIP
+>         tristate "Support for rtllib TKIP crypto"
+>         depends on RTLLIB
+> +      select CRYPTO
+>         select CRYPTO_LIB_ARC4
+>         select CRYPTO_MICHAEL_MIC
+>         default y
 
-------------=_60305303.8318482E
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-
-Spam detection software, running on the system "smtp1.osuosl.org",
-has identified this incoming email as possible spam.  The original
-message has been attached to this so you can view it or label
-similar future email.  If you have any questions, see
-the administrator of that system for details.
-
-Content preview:  My name is Nicholas Toms, an investment portfolio manage.
-  We offer the right loan Investment funding with low interest to finance your
-   business or project ranging from US$1M to US$2BIllion. Kindly con [...] 
-
-Content analysis details:   (10.3 points, 5.0 required)
-
- pts rule name              description
----- ---------------------- --------------------------------------------------
- 1.5 RCVD_IN_SORBS_WEB      RBL: SORBS: sender is an abusable web server
-                            [103.99.1.174 listed in dnsbl.sorbs.net]
- 2.6 RCVD_IN_SBL            RBL: Received via a relay in Spamhaus SBL
-                            [103.99.1.174 listed in zen.spamhaus.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
--0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 LOTS_OF_MONEY          Huge... sums of money
- 1.3 RDNS_NONE              Delivered to internal network by a host with no rDNS
- 0.1 MISSING_MID            Missing Message-Id: header
- 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- 2.1 MONEY_NOHTML           Lots of money in plain text
- 0.1 MONEY_FREEMAIL_REPTO   Lots of money from someone using free
-                            email?
-
-
-
-------------=_60305303.8318482E
-Content-Type: message/rfc822; x-spam-type=original
-Content-Description: original message before SpamAssassin
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-
-Return-Path: <service@real-ptt.net>
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.real-ptt.net (unknown [8.211.43.121])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9F53284016
-	for <driverdev-devel@linuxdriverproject.org>; Sat, 20 Feb 2021 00:08:32 +0000 (UTC)
-Received: from [103.99.1.174] (unknown [103.99.1.174])
-	by mail.real-ptt.net (Postfix) with ESMTPA id B0F3B86DE3
-	for <driverdev-devel@linuxdriverproject.org>; Sat, 20 Feb 2021 08:08:24 +0800 (CST)
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: Low-Cost Loans for SMEs & Investment Funding.
-To: driverdev-devel@linuxdriverproject.org
-From: "Nicholas Toms" <service@real-ptt.net>
-Date: Fri, 19 Feb 2021 16:08:22 -0800
-Reply-To: nchlstoms@gmail.com
-
-My name is Nicholas Toms, an investment portfolio manage. We offer the righ=
-t loan Investment funding with low interest to finance your business or pro=
-ject ranging from US$1M to US$2BIllion. Kindly contact me for more details =
-as I am open to questions. =
-
-
-Sincerely, =
-
-Nicholas Toms
-
-------------=_60305303.8318482E
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Odd indentation :(
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
-------------=_60305303.8318482E--
-
