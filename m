@@ -1,140 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 964343206BC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Feb 2021 19:59:08 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E2ED320868
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 06:22:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A504E836F0
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Feb 2021 18:59:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 95CF985F9C;
+	Sun, 21 Feb 2021 05:21:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NxgECgGPj0CB for <lists+driverdev-devel@lfdr.de>;
-	Sat, 20 Feb 2021 18:59:04 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
-	id 8DF4C83704; Sat, 20 Feb 2021 18:59:04 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tayWabOMxd-D; Sun, 21 Feb 2021 05:21:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ABC97835E0;
-	Sat, 20 Feb 2021 18:58:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2823D85F3D;
+	Sun, 21 Feb 2021 05:21:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 727F81BF318
- for <devel@linuxdriverproject.org>; Sat, 20 Feb 2021 18:58:34 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0432B1BF5A3
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 05:21:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5EF0183578
- for <devel@linuxdriverproject.org>; Sat, 20 Feb 2021 18:58:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 00678870C7
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 05:21:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nj7F7MDYkG4y for <devel@linuxdriverproject.org>;
- Sat, 20 Feb 2021 18:58:33 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
- id 67CE583639; Sat, 20 Feb 2021 18:58:33 +0000 (UTC)
-X-Greylist: delayed 00:24:10 by SQLgrey-1.8.0
-Received: from gateway24.websitewelcome.com (gateway24.websitewelcome.com
- [192.185.50.73])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C303283578
- for <devel@driverdev.osuosl.org>; Sat, 20 Feb 2021 18:58:31 +0000 (UTC)
-Received: from cm16.websitewelcome.com (cm16.websitewelcome.com [100.42.49.19])
- by gateway24.websitewelcome.com (Postfix) with ESMTP id 994CD5A1F
- for <devel@driverdev.osuosl.org>; Sat, 20 Feb 2021 12:34:20 -0600 (CST)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id DX5AlcKinHPnUDX5Al3AWy; Sat, 20 Feb 2021 12:34:20 -0600
-X-Authority-Reason: nr=8
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Bfed4t/yMlcmSfLpHUHsr7m5R2E5tti1FbnPMH4NX1c=; b=ucCsGV9AoYeixG18jupmVgBGkt
- c8CIZVQ/5uHbH8QvU4tTSuiczQA3E0Js8H34L+JFuxkmnDgBKLK7v8r3TESlwevJvcecMEJJIIVQD
- P2LsFvnFrbepSKhUiBfdhxdH++Mu6fg+75UI0ofqoyKWTDgBYN1IUbyIlworVYQ9AXryIi9e7dv1o
- wwKWtAZtP8VeTWgreeP1ubV4beR0dkpQU7aF5LGwq2dyfvbY94Fte3S+GuIExDSD6DpDM65vZmXVr
- JqLTlWa6WTCbjBDUuU54Spjf5qrH8Shrdoo5cz6EfnSI1HvbYOZ1Gzk8eugp1mkuwkyzJUxC/g4xH
- 5TxTP8CQ==;
-Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:47462
- helo=[192.168.15.8])
- by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
- (envelope-from <gustavo@embeddedor.com>)
- id 1lDX5A-001aD5-5s; Sat, 20 Feb 2021 12:34:20 -0600
-Subject: Re: [PATCH 1/2] staging: rtl8192e: Pass array value to memcpy instead
- of struct pointer
-To: Atul Gopinathan <atulgopinathan@gmail.com>, gregkh@linuxfoundation.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iKHjbwF4dQ7s for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 05:21:54 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com
+ [209.85.214.176])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EB0B5870A4
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 05:21:53 +0000 (UTC)
+Received: by mail-pl1-f176.google.com with SMTP id d11so696268plo.8
+ for <devel@driverdev.osuosl.org>; Sat, 20 Feb 2021 21:21:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=tdDDTC9i/6ye73xcvRlpFEFNsqugG4QfC+jRPvsYSVc=;
+ b=p6XXoWknWAlsq+ddQq9GtUXiRZKlib/RN5qL7xAT3mLuw5moASxmLXxVOBpeS5REAZ
+ qNZ5DOMfIsHARmZu0pVgMNbsYlOLOo/ppRN/NLmJIJh0ldhHyU9DMvgbuj3BI/zNyKD5
+ wk3l0fwgCgv5j2CdoJ4jMgEBSeRfSo0M9P+KbXydiQ2/kHtyLS5xchSeDaJXRpho1M5v
+ ouLDflhJbR154x9u2r2iGm+foDTeV1OusYMuUZDI8g6IyBFjLG3qc9kv0TVYrwneyHE1
+ 56/VDLSpnr6GbI7jxgRwrSttsGyEDHPlK336G1jSQGdGTKuaXZ9XqEeHqQfl4vLfP+Y3
+ kkHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=tdDDTC9i/6ye73xcvRlpFEFNsqugG4QfC+jRPvsYSVc=;
+ b=sctp52N/f8QS62+90M57xRaus2x7rrbAvaozGBW/Yld3krTY44FvDDmnb4hZRiZAVt
+ KF+0nJsXORyG2iEUdeyBqoVxOONApbRJPOC4jgz2yZRtFb5E6aVSemJg4FdwT6PI8j0i
+ mRXaLwDjWCgL1Olbiy67kaY7nGNTu14jF6V9HSlYSEbpn7F9nZJTZe1eYY1sd1TsUNbN
+ j5jNW3sKxYztQw6J0w3eYB8imsGZDNcC6UqhKhV8TtoPnLT5KH6BL7Lg5E53ozZ8HlA/
+ PzQVdzTYNgcoRofnryJHudzPRFDLlpqh/zbU3cHcN43ydpBp6G26HTtl8EOx7g4RObN4
+ EMKg==
+X-Gm-Message-State: AOAM533szdn0Rg1eUwqJYKNa/MJPrfCLaSsxobRuS0nzwPdpQC7MhdNU
+ s58khWJL/Q3f6m/rUxijWJg=
+X-Google-Smtp-Source: ABdhPJzDa83p1tU08hrXoP62X2+urlPl4aLkJM+23Kkbp/uud7LmSKliu8phWsqxdfaQoV+S9FqlXQ==
+X-Received: by 2002:a17:902:b583:b029:e3:dc0b:d409 with SMTP id
+ a3-20020a170902b583b02900e3dc0bd409mr4659696pls.9.1613884913506; 
+ Sat, 20 Feb 2021 21:21:53 -0800 (PST)
+Received: from atulu-nitro ([2401:4900:332e:6b18:a11b:5153:f04:2d23])
+ by smtp.gmail.com with ESMTPSA id t192sm14820098pgc.54.2021.02.20.21.21.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 20 Feb 2021 21:21:52 -0800 (PST)
+Date: Sun, 21 Feb 2021 10:51:47 +0530
+From: Atul Gopinathan <atulgopinathan@gmail.com>
+To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>, gregkh@linuxfoundation.org
+Subject: Re: [PATCH 1/2] staging: rtl8192e: Pass array value to memcpy
+ instead of struct pointer
+Message-ID: <20210221052147.GA15671@atulu-nitro>
 References: <20210220182154.9457-1-atulgopinathan@gmail.com>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Autocrypt: addr=gustavo@embeddedor.com; keydata=
- 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
- VtSixD1uOgytAP7RWS474w==
-Message-ID: <674cd5b3-531f-e5a9-b596-f70ccc63d1ad@embeddedor.com>
-Date: Sat, 20 Feb 2021 12:34:15 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <674cd5b3-531f-e5a9-b596-f70ccc63d1ad@embeddedor.com>
 MIME-Version: 1.0
-In-Reply-To: <20210220182154.9457-1-atulgopinathan@gmail.com>
-Content-Language: en-US
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 187.162.31.110
-X-Source-L: No
-X-Exim-ID: 1lDX5A-001aD5-5s
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.8])
- [187.162.31.110]:47462
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 4
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
+Content-Disposition: inline
+In-Reply-To: <674cd5b3-531f-e5a9-b596-f70ccc63d1ad@embeddedor.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,70 +94,53 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Sat, Feb 20, 2021 at 12:34:15PM -0600, Gustavo A. R. Silva wrote:
+> 
+> 
+> On 2/20/21 12:21, Atul Gopinathan wrote:
+> > The variable "info_element" is of the following type:
+> > struct rtllib_info_element *info_element
+> > 
+> > rtllib_info_element is a struct containing the following fields as
+> > defined in drivers/staging/rtl8192e/rtllib.h:
+> > 
+> > struct rtllib_info_element {
+> >         u8 id;
+> >         u8 len;
+> >         u8 data[];
+> > } __packed;
+> > 
+> > The following code of interest (to which this patch applies) is
+> > supposed to check if the "info_element->len" is greater than 4 and
+> > equal to 6, if this is satisfied then, the last two bytes (the
+> > 4th and 5th index of u8 "data" array) are copied into
+> > "network->CcxRmState".
+> > 
+> > Currently the code uses "memcpy()" with the source as
+> > "&info_element[4]" which would copy in wrong and unintended
+> > information.
+> > 
+> > This patch rectifies this error by using "&info_element->data[4]" which
+> > rightly copies the last two bytes as the required state information.
+> 
+> You should include a 'Fixes' tag for this.
 
+Sure! Will resend the patches.
+I have a doubt about the Fixes tag, the previous commit pertaining to the
+lines I'm modifying is a checkpatch.pl fix (found using simple "git blame").
+Should I write that as the Fixes <Commit ID>? Or should I write in the
+commit id which created that file and hence, that specific line?
 
-On 2/20/21 12:21, Atul Gopinathan wrote:
-> The variable "info_element" is of the following type:
-> struct rtllib_info_element *info_element
-> 
-> rtllib_info_element is a struct containing the following fields as
-> defined in drivers/staging/rtl8192e/rtllib.h:
-> 
-> struct rtllib_info_element {
->         u8 id;
->         u8 len;
->         u8 data[];
-> } __packed;
-> 
-> The following code of interest (to which this patch applies) is
-> supposed to check if the "info_element->len" is greater than 4 and
-> equal to 6, if this is satisfied then, the last two bytes (the
-> 4th and 5th index of u8 "data" array) are copied into
-> "network->CcxRmState".
-> 
-> Currently the code uses "memcpy()" with the source as
-> "&info_element[4]" which would copy in wrong and unintended
-> information.
-> 
-> This patch rectifies this error by using "&info_element->data[4]" which
-> rightly copies the last two bytes as the required state information.
+git blame -L1960,1980 -- rtllib_rx.c -> returns a single commit which
+was a checkpatch fix (1970, is the line my patch-1 modifies)
 
-You should include a 'Fixes' tag for this.
+git log -S'&info_element[4]' -- rtllib_rx.c -> returned the commit which
+created the file (the file which my patch-1 modifies)
 
-Also, is this code in -stable? If so, then tag this patch for stable, please.
+Which one should I write in the Fixes tag?
 
-Thanks
---
-Gustavo
-
-> 
-> Signed-off-by: Atul Gopinathan <atulgopinathan@gmail.com>
-> ---
->  drivers/staging/rtl8192e/rtllib_rx.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
-> index 66c135321da4..15bbb63ca130 100644
-> --- a/drivers/staging/rtl8192e/rtllib_rx.c
-> +++ b/drivers/staging/rtl8192e/rtllib_rx.c
-> @@ -1963,15 +1963,15 @@ static void rtllib_parse_mife_generic(struct rtllib_device *ieee,
->  
->  	if (info_element->len > 4 &&
->  	    info_element->data[0] == 0x00 &&
->  	    info_element->data[1] == 0x40 &&
->  	    info_element->data[2] == 0x96 &&
->  	    info_element->data[3] == 0x01) {
->  		if (info_element->len == 6) {
-> -			memcpy(network->CcxRmState, &info_element[4], 2);
-> +			memcpy(network->CcxRmState, &info_element->data[4], 2);
->  			if (network->CcxRmState[0] != 0)
->  				network->bCcxRmEnable = true;
->  			else
->  				network->bCcxRmEnable = false;
->  			network->MBssidMask = network->CcxRmState[1] & 0x07;
->  			if (network->MBssidMask != 0) {
->  				network->bMBssidValid = true;
-> 
+Thanks!
+Atul
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
