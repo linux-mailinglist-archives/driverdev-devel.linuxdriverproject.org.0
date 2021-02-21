@@ -1,72 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C424D320AE2
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 15:05:32 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5073320B2B
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 15:58:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5CC80838AB
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:05:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 83709870C6;
+	Sun, 21 Feb 2021 14:58:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PcmthZefyqo2 for <lists+driverdev-devel@lfdr.de>;
-	Sun, 21 Feb 2021 14:05:29 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
-	id DE686835B1; Sun, 21 Feb 2021 14:05:29 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qUOlkOFNY91v; Sun, 21 Feb 2021 14:58:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 32B40835E0;
-	Sun, 21 Feb 2021 14:05:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 85306870C4;
+	Sun, 21 Feb 2021 14:58:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3E6E11BF2F9
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 14:05:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2F6D01BF957
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 14:58:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3B3A984462
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 14:05:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2793C870BD
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 14:58:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 68vndEC9OzYk for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 14:05:01 +0000 (UTC)
+ with ESMTP id Mbk-5IDE5RgH for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 14:58:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f52.google.com (mail-pj1-f52.google.com
- [209.85.216.52])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8D542844CE
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 14:05:01 +0000 (UTC)
-Received: by mail-pj1-f52.google.com with SMTP id d2so7044864pjs.4
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 06:05:01 -0800 (PST)
+Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com
+ [209.85.215.177])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0791E870B6
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 14:58:21 +0000 (UTC)
+Received: by mail-pg1-f177.google.com with SMTP id b21so8469328pgk.7
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 06:58:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NeI6lcV4YdcFGOphuwk8TMF/Z31kIBB41epzBZ4svCE=;
+ b=kEkb0u/QvkvP5guHJYebj9rdDDAivXUjhIaq0/ZOBwuDE783a4gToZZhmQW16gSlUS
+ qqQXJRlXl2anhhXGgD9cfHBGwinpfFjrXc+26Lnf8J7qty89XM8cSkXzW6UVs2e2doF3
+ bkGJVYgx5dTIbWsUGAC/W88HNPHDBDUCWUjuZqGwPXW5oEdoBAToaxSI/83eyPkDIHpe
+ 2PwPA4Q1xH4MqqNFR56MMJaHe14wlc4f3DR1kg0ksr9hY1UpG6YlweWl9rWj+9FT6o6l
+ 2MMsUj0RsuBbHsYCrQHfvJzb07jlqLNA2Lt1Tjcco5CcEaZPhCaAPOr3DvHafpsh+ALm
+ xZNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ztDsdAIBTtQ1nkN7dw6CYE5xnJ1DaXEAMZjHk0Yhkkw=;
- b=onu8XAjRYpfgS1XmaGeFK8/i3BjjsIYZDm3eYYfKFBPD6KokpVxJZ/tvIazI5wbSsM
- wRExyj1tZ9mQGD/rE2rKkk5v+oZN1iFt9tv+kMiImWNnveDsMcZgnlMGa32wxpn6g4U+
- 3twzkOcqIvImyTChMmOqcjewmoxmiVDsCYbXnrJ0vYmngLxwUU9c0CuK+TvGDosonvpG
- k+VHua7gCpbwd+2cs8ciVCYds4l3zjqNSv/mpTCILd2CMdJExB8HAnPGKbcKKYHNHGSQ
- VfoNccsZWl8J5QMuFm+FEEG+k/X2Sl2xX4VBBvAwUEQP2Flc52dZB09CuoVf/pbjabr4
- vJ4g==
-X-Gm-Message-State: AOAM53183nurSa6L2zXC52zUAeleNS+0RAzd6uJHy3n0pRzGZrr/hTfT
- TVODxrMfi5/jaKJnb3STSw4=
-X-Google-Smtp-Source: ABdhPJwzZcsp9cJ7K4okRUk9bpxKQIxBd+1Jag4P8sKj8kZVI6r/mZByZEV4zL13h0d9nBbmPUPj1A==
-X-Received: by 2002:a17:903:31d1:b029:de:8361:739b with SMTP id
- v17-20020a17090331d1b02900de8361739bmr17605925ple.85.1613916301220; 
- Sun, 21 Feb 2021 06:05:01 -0800 (PST)
-Received: from karthik-strix-linux.karthek.com ([192.140.154.12])
- by smtp.gmail.com with ESMTPSA id e1sm11511838pjm.12.2021.02.21.06.04.59
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NeI6lcV4YdcFGOphuwk8TMF/Z31kIBB41epzBZ4svCE=;
+ b=B4iBt/c4cxmuRQDYVk7SHWHOUIyvBSGHOdcGq3++SiC5yyY4NRapqh/Bv//sOuCqzD
+ UeXhQAHfNF0qRU/a6lApMkJSFp4kQZZu5BQOA8bfQt4FlzTBi6HnOG3DFs2znlYIeI8J
+ Kii3sGb8egdQ5lAm7WBJMbuoXdfPEWnt+QEceRPCuiA8DnY6hADoI6WXr7zq+e06qaMj
+ +Q0MlBgWomRT+Gi+LUTf06GaXKrii9jQ9kpuL61jIrTFVTyZc05Y7dZhaqwbDM8pq3dD
+ 33mLM71mhhhHNrl+lKThD7xkzcfsdnjxeHT2oFPQK06pp0mhBsDAZewTtucp6Hn31O4n
+ g7pg==
+X-Gm-Message-State: AOAM530kVmn3C59RrPhk2z1ZS7CVKPt2HMXaHrPl5DXpZd9SWeF9rlMh
+ 9nLdQZE2d903DNPbiKx+mrGdz9PTs9zG3Snd
+X-Google-Smtp-Source: ABdhPJzyBucRpeMQwlDEh28RUln/x4ON3mcnJ16/lplRM2oqXYGH5FRqAi7hUwG5fUmp8o/mz+qvWA==
+X-Received: by 2002:a63:f704:: with SMTP id x4mr3912666pgh.137.1613919500480; 
+ Sun, 21 Feb 2021 06:58:20 -0800 (PST)
+Received: from localhost.localdomain ([106.51.142.238])
+ by smtp.gmail.com with ESMTPSA id a78sm15906536pfa.10.2021.02.21.06.58.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 06:05:00 -0800 (PST)
-Date: Sun, 21 Feb 2021 19:34:57 +0530
-From: karthik alapati <mail@karthek.com>
+ Sun, 21 Feb 2021 06:58:19 -0800 (PST)
+From: Shreesh Adiga <16567adigashreesh@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 3/3] staging: media/atomisp: don't compile unused code
-Message-ID: <90eb63796a8f8aca988efb33247ea01f4a860074.1613915981.git.mail@karthek.com>
-References: <cover.1613915981.git.mail@karthek.com>
+Subject: [PATCH] staging: octeon: refactor interface check logic in ethernet.c
+Date: Sun, 21 Feb 2021 20:25:05 +0530
+Message-Id: <20210221145505.2869928-1-16567adigashreesh@gmail.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1613915981.git.mail@karthek.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,46 +83,273 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-currently the functions defined in ibuf_ctrl_rmgr.c file are only
-used by isys_init.c when CONFIG_VIDEO_ATOMISP_ISP2401 is selected
-so dont't compile it when not needed, also fixes some sparse warnings
+The check for interface is duplicated in 3 places and has been refactored
+into a function. Also the if condition was wrapping the whole body in all
+three places, so it has been changed to return if the condition is false
+to reduce the indentation levels.
 
-Signed-off-by: karthik alapati <mail@karthek.com>
+Signed-off-by: Shreesh Adiga <16567adigashreesh@gmail.com>
 ---
- drivers/staging/media/atomisp/Makefile | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/staging/octeon/ethernet.c | 209 +++++++++++++++---------------
+ 1 file changed, 102 insertions(+), 107 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/Makefile b/drivers/staging/media/atomisp/Makefile
-index 1dfad0dd0..51498b2e8 100644
---- a/drivers/staging/media/atomisp/Makefile
-+++ b/drivers/staging/media/atomisp/Makefile
-@@ -126,7 +126,6 @@ atomisp-objs += \
- 	pci/runtime/inputfifo/src/inputfifo.o \
- 	pci/runtime/isp_param/src/isp_param.o \
- 	pci/runtime/isys/src/csi_rx_rmgr.o \
--	pci/runtime/isys/src/ibuf_ctrl_rmgr.o \
- 	pci/runtime/isys/src/isys_dma_rmgr.o \
- 	pci/runtime/isys/src/isys_init.o \
- 	pci/runtime/isys/src/isys_stream2mmio_rmgr.o \
-@@ -323,7 +322,9 @@ DEFINES := -DHRT_HW -DHRT_ISP_CSS_CUSTOM_HOST -DHRT_USE_VIR_ADDRS -D__HOST__
- #DEFINES += -DUSE_KMEM_CACHE
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 5dea6e96ec90..8357ce9bc11b 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -228,6 +228,12 @@ static struct net_device_stats *cvm_oct_common_get_stats(struct net_device *dev)
+ 	return &dev->stats;
+ }
  
- ifeq ($(CONFIG_VIDEO_ATOMISP_ISP2401),y)
--atomisp-objs += $(obj-cht)
-+atomisp-objs += \
-+	$(obj-cht) \
-+	pci/runtime/isys/src/ibuf_ctrl_rmgr.o
- DEFINES += -DISP2401 -DISP2401_NEW_INPUT_SYSTEM -DSYSTEM_hive_isp_css_2401_system
- else
- atomisp-objs += $(obj-byt)
++static int cvm_oct_validate_interface(int interface)
++{
++	return interface < 2 && (cvmx_helper_interface_get_mode(interface) !=
++				 CVMX_HELPER_INTERFACE_MODE_SPI);
++}
++
+ /**
+  * cvm_oct_common_change_mtu - change the link MTU
+  * @dev:     Device to change
+@@ -245,42 +251,42 @@ static int cvm_oct_common_change_mtu(struct net_device *dev, int new_mtu)
+ 	int vlan_bytes = 0;
+ #endif
+ 	int mtu_overhead = ETH_HLEN + ETH_FCS_LEN + vlan_bytes;
++	int index;
++	/* Add ethernet header and FCS, and VLAN if configured. */
++	int max_packet = new_mtu + mtu_overhead;
+ 
+ 	dev->mtu = new_mtu;
+ 
+-	if ((interface < 2) &&
+-	    (cvmx_helper_interface_get_mode(interface) !=
+-		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+-		int index = INDEX(priv->port);
+-		/* Add ethernet header and FCS, and VLAN if configured. */
+-		int max_packet = new_mtu + mtu_overhead;
+-
+-		if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
+-		    OCTEON_IS_MODEL(OCTEON_CN58XX)) {
+-			/* Signal errors on packets larger than the MTU */
+-			cvmx_write_csr(CVMX_GMXX_RXX_FRM_MAX(index, interface),
+-				       max_packet);
+-		} else {
+-			/*
+-			 * Set the hardware to truncate packets larger
+-			 * than the MTU and smaller the 64 bytes.
+-			 */
+-			union cvmx_pip_frm_len_chkx frm_len_chk;
+-
+-			frm_len_chk.u64 = 0;
+-			frm_len_chk.s.minlen = VLAN_ETH_ZLEN;
+-			frm_len_chk.s.maxlen = max_packet;
+-			cvmx_write_csr(CVMX_PIP_FRM_LEN_CHKX(interface),
+-				       frm_len_chk.u64);
+-		}
++	if (!cvm_oct_validate_interface(interface))
++		return 0;
++
++	index = INDEX(priv->port);
++
++	if (OCTEON_IS_MODEL(OCTEON_CN3XXX) || OCTEON_IS_MODEL(OCTEON_CN58XX)) {
++		/* Signal errors on packets larger than the MTU */
++		cvmx_write_csr(CVMX_GMXX_RXX_FRM_MAX(index, interface),
++			       max_packet);
++	} else {
+ 		/*
+-		 * Set the hardware to truncate packets larger than
+-		 * the MTU. The jabber register must be set to a
+-		 * multiple of 8 bytes, so round up.
++		 * Set the hardware to truncate packets larger
++		 * than the MTU and smaller the 64 bytes.
+ 		 */
+-		cvmx_write_csr(CVMX_GMXX_RXX_JABBER(index, interface),
+-			       (max_packet + 7) & ~7u);
++		union cvmx_pip_frm_len_chkx frm_len_chk;
++
++		frm_len_chk.u64 = 0;
++		frm_len_chk.s.minlen = VLAN_ETH_ZLEN;
++		frm_len_chk.s.maxlen = max_packet;
++		cvmx_write_csr(CVMX_PIP_FRM_LEN_CHKX(interface),
++			       frm_len_chk.u64);
+ 	}
++	/*
++	 * Set the hardware to truncate packets larger than
++	 * the MTU. The jabber register must be set to a
++	 * multiple of 8 bytes, so round up.
++	 */
++	cvmx_write_csr(CVMX_GMXX_RXX_JABBER(index, interface),
++		       (max_packet + 7) & ~7u);
++
+ 	return 0;
+ }
+ 
+@@ -293,51 +299,46 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
+ 	union cvmx_gmxx_prtx_cfg gmx_cfg;
+ 	struct octeon_ethernet *priv = netdev_priv(dev);
+ 	int interface = INTERFACE(priv->port);
++	union cvmx_gmxx_rxx_adr_ctl control;
++	int index;
+ 
+-	if ((interface < 2) &&
+-	    (cvmx_helper_interface_get_mode(interface) !=
+-		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+-		union cvmx_gmxx_rxx_adr_ctl control;
+-		int index = INDEX(priv->port);
+-
+-		control.u64 = 0;
+-		control.s.bcst = 1;	/* Allow broadcast MAC addresses */
+-
+-		if (!netdev_mc_empty(dev) || (dev->flags & IFF_ALLMULTI) ||
+-		    (dev->flags & IFF_PROMISC))
+-			/* Force accept multicast packets */
+-			control.s.mcst = 2;
+-		else
+-			/* Force reject multicast packets */
+-			control.s.mcst = 1;
+-
+-		if (dev->flags & IFF_PROMISC)
+-			/*
+-			 * Reject matches if promisc. Since CAM is
+-			 * shut off, should accept everything.
+-			 */
+-			control.s.cam_mode = 0;
+-		else
+-			/* Filter packets based on the CAM */
+-			control.s.cam_mode = 1;
+-
+-		gmx_cfg.u64 =
+-		    cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
+-		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
+-			       gmx_cfg.u64 & ~1ull);
+-
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CTL(index, interface),
+-			       control.u64);
+-		if (dev->flags & IFF_PROMISC)
+-			cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN
+-				       (index, interface), 0);
+-		else
+-			cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN
+-				       (index, interface), 1);
+-
+-		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
+-			       gmx_cfg.u64);
+-	}
++	if (!cvm_oct_validate_interface(interface))
++		return;
++
++	index = INDEX(priv->port);
++
++	control.u64 = 0;
++	control.s.bcst = 1;	/* Allow broadcast MAC addresses */
++
++	if (!netdev_mc_empty(dev) || (dev->flags & IFF_ALLMULTI) ||
++	    (dev->flags & IFF_PROMISC))
++		/* Force accept multicast packets */
++		control.s.mcst = 2;
++	else
++		/* Force reject multicast packets */
++		control.s.mcst = 1;
++
++	if (dev->flags & IFF_PROMISC)
++		/*
++		 * Reject matches if promisc. Since CAM is
++		 * shut off, should accept everything.
++		 */
++		control.s.cam_mode = 0;
++	else
++		/* Filter packets based on the CAM */
++		control.s.cam_mode = 1;
++
++	gmx_cfg.u64 = cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
++	cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
++		       gmx_cfg.u64 & ~1ull);
++
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CTL(index, interface), control.u64);
++	if (dev->flags & IFF_PROMISC)
++		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN(index, interface), 0);
++	else
++		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM_EN(index, interface), 1);
++
++	cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface), gmx_cfg.u64);
+ }
+ 
+ static int cvm_oct_set_mac_filter(struct net_device *dev)
+@@ -345,40 +346,34 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
+ 	struct octeon_ethernet *priv = netdev_priv(dev);
+ 	union cvmx_gmxx_prtx_cfg gmx_cfg;
+ 	int interface = INTERFACE(priv->port);
++	int i;
++	u64 mac = 0;
++	u8 *ptr;
++	int index;
++
++	if (!cvm_oct_validate_interface(interface))
++		return 0;
++
++	ptr = dev->dev_addr;
++	index = INDEX(priv->port);
++
++	for (i = 0; i < 6; i++)
++		mac = (mac << 8) | (u64)ptr[i];
++
++	gmx_cfg.u64 = cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
++	cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
++		       gmx_cfg.u64 & ~1ull);
++
++	cvmx_write_csr(CVMX_GMXX_SMACX(index, interface), mac);
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM0(index, interface), ptr[0]);
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM1(index, interface), ptr[1]);
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM2(index, interface), ptr[2]);
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM3(index, interface), ptr[3]);
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM4(index, interface), ptr[4]);
++	cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM5(index, interface), ptr[5]);
++	cvm_oct_common_set_multicast_list(dev);
++	cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface), gmx_cfg.u64);
+ 
+-	if ((interface < 2) &&
+-	    (cvmx_helper_interface_get_mode(interface) !=
+-		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+-		int i;
+-		u8 *ptr = dev->dev_addr;
+-		u64 mac = 0;
+-		int index = INDEX(priv->port);
+-
+-		for (i = 0; i < 6; i++)
+-			mac = (mac << 8) | (u64)ptr[i];
+-
+-		gmx_cfg.u64 =
+-		    cvmx_read_csr(CVMX_GMXX_PRTX_CFG(index, interface));
+-		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
+-			       gmx_cfg.u64 & ~1ull);
+-
+-		cvmx_write_csr(CVMX_GMXX_SMACX(index, interface), mac);
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM0(index, interface),
+-			       ptr[0]);
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM1(index, interface),
+-			       ptr[1]);
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM2(index, interface),
+-			       ptr[2]);
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM3(index, interface),
+-			       ptr[3]);
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM4(index, interface),
+-			       ptr[4]);
+-		cvmx_write_csr(CVMX_GMXX_RXX_ADR_CAM5(index, interface),
+-			       ptr[5]);
+-		cvm_oct_common_set_multicast_list(dev);
+-		cvmx_write_csr(CVMX_GMXX_PRTX_CFG(index, interface),
+-			       gmx_cfg.u64);
+-	}
+ 	return 0;
+ }
+ 
 -- 
-2.30.1
+2.30.0
 
 _______________________________________________
 devel mailing list
