@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 244C1320B86
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 16:48:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FE8D320BA6
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 17:09:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CBE7685D2B;
-	Sun, 21 Feb 2021 15:48:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B3BF683415
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 16:09:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JVRYR7EGoz8y; Sun, 21 Feb 2021 15:48:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eQI-FtdocMkY for <lists+driverdev-devel@lfdr.de>;
+	Sun, 21 Feb 2021 16:09:41 +0000 (UTC)
+Received: by smtp1.osuosl.org (Postfix, from userid 1001)
+	id 65B9983490; Sun, 21 Feb 2021 16:09:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 186EF85D17;
-	Sun, 21 Feb 2021 15:48:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C06A983410;
+	Sun, 21 Feb 2021 16:09:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3CE7A1BF954
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 15:48:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 269721BF95A
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 16:09:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 262B560596
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 15:48:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0F27D6F506
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 16:09:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X0hT0zeFr59W for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 15:48:29 +0000 (UTC)
+ with ESMTP id w4ypThpqWZPm for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 16:09:09 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id E7CC060701; Sun, 21 Feb 2021 15:48:29 +0000 (UTC)
+ id 3FCB760701; Sun, 21 Feb 2021 16:09:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 39F0660596
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 15:48:27 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id e9so6070514plh.3
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 07:48:27 -0800 (PST)
+Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com
+ [209.85.221.53])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6A92F6F4D5
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 16:09:04 +0000 (UTC)
+Received: by mail-wr1-f53.google.com with SMTP id v15so16523238wrx.4
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 08:09:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=gBYFtcJZcZKb20Kar3p64aL77O4EaWVVtcrsH+u69Zk=;
- b=d9obCbkDJqa0v5MTYG5Xa7DJ2NSf8UNLgwiBAVjWXeMk3zNqjmClrKWhHK1yWvKh31
- ojcSkxB+YtsZL3g5fbJqSn4+aD+TRY9dP+48eebDMiFa6ZaQC/d6/Up2u3gBIQwpkXzD
- PNu7z2ibulKv61xotsawidIrMPmgUHApPJfAnP24PKfKCaSBYdf05CN++D4jaxBQhRQk
- cMwb8z2EogZ8Vcvyy49wFG0c8735uNRZP17CZRiOl47MQEXNJZs2OfnX2ZMB4m+WWz82
- byzsp4hmKI8P7VNA76z+RsQzybFIxkvbbOKgl095go+7odtJrTBEq4DvUx5yyQ08hgUa
- 3K9Q==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Sv5R25tb69L5zIBRbD9nuQtFYamGcuLKxZMloYIB9r4=;
+ b=tWDixXkJaJu8Z9AG+QVMih7Oap/vmdfIG95G62gx/3D593HhcolUV3IOaN0xojjxaV
+ ieOTmedvdTrP8O91erVJYKaS/nL8UfkiQ3j4A/bx1zUCkpDKf3WeadhGYYTKqeAo0pvS
+ w1ncUMSc9QjxwVUvopFENmSpLF8TnDlFe6jGNarCcmaNbrO9vNxisZPSmPuaaATJA4ic
+ FcIPESMurFJZbF80/WBk7+gT9Ne1jDCVRXTNoNzSRGBCUw3WetAiNBe81qlZEdii5zLW
+ 2P/yEHG6sa4p/gBXQFeApdlazxe9/g0JOgM7q5QiIM9f0WeatUCFZDYsfV6p6KknjfT3
+ V0bQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gBYFtcJZcZKb20Kar3p64aL77O4EaWVVtcrsH+u69Zk=;
- b=RgSnQ824BWtt6Ybc8LNo/6keOVPwcYeOECT9v3PFLvm3NZV9WA1dNV5TQGMJX6ECl0
- mWMfzerbg7YHz4Cwm5pCAsVqjGp17ZCmYTfUBlzSEbMGU4uOXTcvJ3xF+Mx5xy8XfSJw
- O33zBkxhy7jqyJdJ4ovjki8kByBJip37L1Yi8oJoU81fZF3W5k5SZT8QcQJXTsBQzQLp
- /iMwZIyPIdbKNTRM6dd2qfBsQHf1nHnEzYwsmUo7fL8cTTZfqiSbRPOTqSWwpiSg8eES
- /9km97yZt2jw1LI6vWL4XBLQyJyJ5r8QLCzaSNrQtszrotmChvrAABzPVHTG862wuJH7
- e2GQ==
-X-Gm-Message-State: AOAM532sbc6umWvsmbrPN4ipK+Ys8DM8hXKFXPHSyINIHY/Ek/ypNXbm
- uR8/21CbBOu+W8ga1kXoMidSS3hOTco=
-X-Google-Smtp-Source: ABdhPJzyhpN4aJWn5k3wG1M156iVDl7M+1WgaPnz4rv4lodb6j2hFwdo7OnY2CNOmUk5f9UgG6ZeiQ==
-X-Received: by 2002:a17:90a:a08a:: with SMTP id
- r10mr18719275pjp.133.1613922506409; 
- Sun, 21 Feb 2021 07:48:26 -0800 (PST)
-Received: from localhost ([2402:3a80:11da:dffe:a2a4:c5ff:fe20:7222])
- by smtp.gmail.com with ESMTPSA id i2sm8348052pgs.82.2021.02.21.07.48.25
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Sv5R25tb69L5zIBRbD9nuQtFYamGcuLKxZMloYIB9r4=;
+ b=jNkbB77biCaDMIS2DZ3ZV4tWggtB8HFtRNJRSjIASsU7q93snnfBrxfloYwa1bkVxP
+ tPWodnWhtiWoxtPlN+0zGGH+ahe9fwtaQfvGB833G0q6JHvykskRPGxeJMYSANd6z0fM
+ 9FCtLLIviTBJdIm0prVe9RyeHPRcdxO1mzsieZihi2Y2RYa7KbuEx0X0Hp/mk80uPZ2x
+ L5rGNf6MWb2Zz+5V6U+EfMfivFEli4LLRGYRY/X3k7KqQpxJqStJ3M8PRwieW33zX6TV
+ eJCOKaAwaUCoIp+8RP7RQn14jy75/N+K5dCtgkp4CxPkWgCuu83dnUbDR/6hyekFZ7jo
+ z8LA==
+X-Gm-Message-State: AOAM533+QNIYWYJk+x3fvQPqUcWp/ajUx8G5KMTteVhd9aZVHjlMlTl2
+ v4kZEkrUzAi4bediqtqtZqA=
+X-Google-Smtp-Source: ABdhPJyZgiQzj33uipdLzTLJoyCAfH+9cAGWbq9n2MZ6/sSiUqlpsI6yz+RLSoLQwtC6deM0gDksJA==
+X-Received: by 2002:adf:ce85:: with SMTP id r5mr6617422wrn.18.1613923742362;
+ Sun, 21 Feb 2021 08:09:02 -0800 (PST)
+Received: from localhost.localdomain ([106.51.142.238])
+ by smtp.gmail.com with ESMTPSA id m4sm8961401wrb.87.2021.02.21.08.08.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 07:48:26 -0800 (PST)
-From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-To: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging/greybus: eliminate use of NAME_SIZE for strings
-Date: Sun, 21 Feb 2021 21:12:59 +0530
-Message-Id: <20210221154258.119503-1-memxor@gmail.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <b565bdae-10a9-9b6c-ae60-dcee88f7dedd@ieee.org>
-References: <b565bdae-10a9-9b6c-ae60-dcee88f7dedd@ieee.org>
+ Sun, 21 Feb 2021 08:09:01 -0800 (PST)
+From: Shreesh Adiga <16567adigashreesh@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 1/2] staging: octeon: refactor interface check logic in
+ ethernet.c
+Date: Sun, 21 Feb 2021 21:35:44 +0530
+Message-Id: <20210221160545.2967003-1-16567adigashreesh@gmail.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -89,95 +89,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Alex Elder <elder@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
- Mark Greer <mgreer@animalcreek.com>, Johan Hovold <johan@kernel.org>,
- greybus-dev@lists.linaro.org, Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Instead, depend on the size of the destination buffer for easier
-refactoring.
+The check for interface is duplicated in 3 places and has been refactored
+into a function.
 
-Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Signed-off-by: Shreesh Adiga <16567adigashreesh@gmail.com>
 ---
-Hopefully, this is more thorough. The only cases left now are where the
-destination string is represented by a pointer, otherwise all call sites with a
-fixed sized buffer have been changed.
----
- drivers/staging/greybus/audio_module.c   |  4 ++--
- drivers/staging/greybus/audio_topology.c | 12 ++++++------
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/octeon/ethernet.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
-index 0f9fdc077..12c376c47 100644
---- a/drivers/staging/greybus/audio_module.c
-+++ b/drivers/staging/greybus/audio_module.c
-@@ -260,7 +260,7 @@ static int gb_audio_probe(struct gb_bundle *bundle,
- 	INIT_LIST_HEAD(&gbmodule->widget_ctl_list);
- 	INIT_LIST_HEAD(&gbmodule->jack_list);
- 	gbmodule->dev = dev;
--	snprintf(gbmodule->name, NAME_SIZE, "%s.%s", dev->driver->name,
-+	snprintf(gbmodule->name, sizeof(gbmodule->name), "%s.%s", dev->driver->name,
- 		 dev_name(dev));
- 	greybus_set_drvdata(bundle, gbmodule);
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 5dea6e96ec90..af546ef41843 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -228,6 +228,12 @@ static struct net_device_stats *cvm_oct_common_get_stats(struct net_device *dev)
+ 	return &dev->stats;
+ }
  
-@@ -342,7 +342,7 @@ static int gb_audio_probe(struct gb_bundle *bundle,
- 	/* inform above layer for uevent */
- 	dev_dbg(dev, "Inform set_event:%d to above layer\n", 1);
- 	/* prepare for the audio manager */
--	strscpy(desc.name, gbmodule->name, GB_AUDIO_MANAGER_MODULE_NAME_LEN);
-+	strscpy(desc.name, gbmodule->name, sizeof(desc.name));
- 	desc.vid = 2; /* todo */
- 	desc.pid = 3; /* todo */
- 	desc.intf_id = gbmodule->dev_id;
-diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
-index e816e4db5..1fc7727ab 100644
---- a/drivers/staging/greybus/audio_topology.c
-+++ b/drivers/staging/greybus/audio_topology.c
-@@ -200,7 +200,7 @@ static int gbcodec_mixer_ctl_info(struct snd_kcontrol *kcontrol,
- 			return -EINVAL;
- 		name = gbaudio_map_controlid(module, data->ctl_id,
- 					     uinfo->value.enumerated.item);
--		strscpy(uinfo->value.enumerated.name, name, NAME_SIZE);
-+		strscpy(uinfo->value.enumerated.name, name, sizeof(uinfo->value.enumerated.name));
- 		break;
- 	default:
- 		dev_err(comp->dev, "Invalid type: %d for %s:kcontrol\n",
-@@ -363,7 +363,7 @@ static int gbcodec_mixer_dapm_ctl_info(struct snd_kcontrol *kcontrol,
- 	platform_min = le32_to_cpu(info->value.integer.min);
++static int cvm_oct_validate_interface(int interface)
++{
++	return interface < 2 && (cvmx_helper_interface_get_mode(interface) !=
++				 CVMX_HELPER_INTERFACE_MODE_SPI);
++}
++
+ /**
+  * cvm_oct_common_change_mtu - change the link MTU
+  * @dev:     Device to change
+@@ -248,9 +254,7 @@ static int cvm_oct_common_change_mtu(struct net_device *dev, int new_mtu)
  
- 	if (platform_max == 1 &&
--	    !strnstr(kcontrol->id.name, " Volume", NAME_SIZE))
-+	    !strnstr(kcontrol->id.name, " Volume", sizeof(kcontrol->id.name)))
- 		uinfo->type = SNDRV_CTL_ELEM_TYPE_BOOLEAN;
- 	else
- 		uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
-@@ -1047,8 +1047,8 @@ static int gbaudio_tplg_create_widget(struct gbaudio_module_info *module,
- 	}
+ 	dev->mtu = new_mtu;
  
- 	/* Prefix dev_id to widget control_name */
--	strscpy(temp_name, w->name, NAME_SIZE);
--	snprintf(w->name, NAME_SIZE, "GB %d %s", module->dev_id, temp_name);
-+	strscpy(temp_name, w->name, sizeof(temp_name));
-+	snprintf(w->name, sizeof(w->name), "GB %d %s", module->dev_id, temp_name);
+-	if ((interface < 2) &&
+-	    (cvmx_helper_interface_get_mode(interface) !=
+-		CVMX_HELPER_INTERFACE_MODE_SPI)) {
++	if (cvm_oct_validate_interface(interface)) {
+ 		int index = INDEX(priv->port);
+ 		/* Add ethernet header and FCS, and VLAN if configured. */
+ 		int max_packet = new_mtu + mtu_overhead;
+@@ -294,9 +298,7 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
+ 	struct octeon_ethernet *priv = netdev_priv(dev);
+ 	int interface = INTERFACE(priv->port);
  
- 	switch (w->type) {
- 	case snd_soc_dapm_spk:
-@@ -1169,8 +1169,8 @@ static int gbaudio_tplg_process_kcontrols(struct gbaudio_module_info *module,
- 		}
- 		control->id = curr->id;
- 		/* Prefix dev_id to widget_name */
--		strscpy(temp_name, curr->name, NAME_SIZE);
--		snprintf(curr->name, NAME_SIZE, "GB %d %s", module->dev_id,
-+		strscpy(temp_name, curr->name, sizeof(temp_name));
-+		snprintf(curr->name, sizeof(curr->name), "GB %d %s", module->dev_id,
- 			 temp_name);
- 		control->name = curr->name;
- 		if (curr->info.type == GB_AUDIO_CTL_ELEM_TYPE_ENUMERATED) {
+-	if ((interface < 2) &&
+-	    (cvmx_helper_interface_get_mode(interface) !=
+-		CVMX_HELPER_INTERFACE_MODE_SPI)) {
++	if (cvm_oct_validate_interface(interface)) {
+ 		union cvmx_gmxx_rxx_adr_ctl control;
+ 		int index = INDEX(priv->port);
+ 
+@@ -346,9 +348,7 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
+ 	union cvmx_gmxx_prtx_cfg gmx_cfg;
+ 	int interface = INTERFACE(priv->port);
+ 
+-	if ((interface < 2) &&
+-	    (cvmx_helper_interface_get_mode(interface) !=
+-		CVMX_HELPER_INTERFACE_MODE_SPI)) {
++	if (cvm_oct_validate_interface(interface)) {
+ 		int i;
+ 		u8 *ptr = dev->dev_addr;
+ 		u64 mac = 0;
 -- 
-2.29.2
+2.30.0
 
 _______________________________________________
 devel mailing list
