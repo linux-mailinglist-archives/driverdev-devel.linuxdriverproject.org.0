@@ -2,87 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A296320A85
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:23:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DC10320A9C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:41:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BB8986F4DA
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 13:23:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2FFB66F4DC
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 13:41:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LizWSwqswjEl for <lists+driverdev-devel@lfdr.de>;
-	Sun, 21 Feb 2021 13:23:39 +0000 (UTC)
+	with ESMTP id lMwVDrup61Rf for <lists+driverdev-devel@lfdr.de>;
+	Sun, 21 Feb 2021 13:41:32 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
-	id B9F4C6F4EA; Sun, 21 Feb 2021 13:23:39 +0000 (UTC)
+	id 0C5996F4E7; Sun, 21 Feb 2021 13:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 645DE6F478;
-	Sun, 21 Feb 2021 13:23:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 02A646F4A0;
+	Sun, 21 Feb 2021 13:41:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A9B31BF951
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:23:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5FBC41BF951
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:41:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8701885D72
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:23:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5C57B85868
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:41:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A7F6MTsnQXhi for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 13:23:12 +0000 (UTC)
+ with ESMTP id pHm0aYAonv4b for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 13:41:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f176.google.com (mail-pf1-f176.google.com
- [209.85.210.176])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 07BA485D61
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 13:23:12 +0000 (UTC)
-Received: by mail-pf1-f176.google.com with SMTP id 201so1802390pfw.5
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 05:23:12 -0800 (PST)
+Received: from mail-pj1-f48.google.com (mail-pj1-f48.google.com
+ [209.85.216.48])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AE731848A5
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 13:41:03 +0000 (UTC)
+Received: by mail-pj1-f48.google.com with SMTP id l18so7022557pji.3
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 05:41:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=DHV2IqAESmDmvK+skITBNU6iCUPe9/Bxc8okZh/sX10=;
- b=sZMagYH7p42jD47UvJ/SNJUYZygNeET71vZCajUmNEo5p6dXAmfrggMBhlXGWnx9SF
- aMpQDwaBjYxRJLwNtZd1kvdhjXKcM4HEyeE2EO7zM94NzjEOcFSGfLXWPChQeSVNu1GM
- jYv7UFREw/4ya0OfrXPJe0eQOV9vtSzFP30rydV0edkunEkvxGea0eWNcldS1ZT4JMnW
- OcQr/Ls0KIkQbXQQ3KaeohnpUDHx4EZoWMNF9Tto3KAtb45F/2b1DjTvf3pqizIa16SB
- G0smyoJzv+6u+S5AcNt8JGGDds5SdwVtkKhG4IFchvHygyCLhYRHCVhKN9Tr+pxjAVbO
- j4tw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=rYPWdfQDErM49hDyDe8HZEC/S9QGDrMuKNGM0lXXWH8=;
+ b=Lf0ILpNmVGQ1kwXwnOF64u30UufNZRlFj1c7loSM3+NAx2vUV1hdZGkYkl6M+pLWGN
+ TJsp+xQPvjbCys+SN9kNQ21zLT/2kyKpwCgv7WfV1na4YjWzwKXJ1szywyHxXudlBXdo
+ lf/iupzRWgWTU8p3DQHXhMNbC4V/CFhz0h7gNULQwT+/8e5iDcBYS42WV4bGZQkNumQ6
+ c6Z/GQOs1joVicArF74k/QpX23chfxgqE3FR0um49GgaRM51IVW59lfG8VRdGLpig8Qe
+ N5YDkAwazjsHLvMQH2yoRfkNc9F5zVELiDHe5QUNul0sOdU4AyfCZqdNxo43RX7bW7BZ
+ 8AgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=DHV2IqAESmDmvK+skITBNU6iCUPe9/Bxc8okZh/sX10=;
- b=sSXjmjlRcMu1qzMgi9srNtjcL/w1JnkWgxm5vbE2h+jzeYxkC+8WRWEAatX75ribfL
- L/GljqPXLRCD0NCmas3mAWNr/k5SEMZhDccVk/50qPzoAvg7mYbp8TGsFliOULo+F2Kh
- gP9o/N93l+8tPrnFdrDi69WbeN0VojM/OOUPZ+fAwO9D/p07t2ZUl50PCZ57z4hIRLPY
- o91uEWcg1dYV0XHx0dF8A/EsB37gnsgBb7Wn5J6VAIloz6iRAj059zSGvNopTZ5Af4fj
- Hfuim5Qh7caBm2K/Z1nsXP1E7M4ZdbntIxM94G5bHPSSCv6YX1LdFDzA3u8Jg3RlbHc0
- LhYQ==
-X-Gm-Message-State: AOAM5303jf1HdTRWcqnN1F5ACBhE9n6fXviFDYauyvjJZzmo4LQKo4Qe
- jXBAy1iaoxH7Y+FhNdzmxFg=
-X-Google-Smtp-Source: ABdhPJzNjkdyRxo47eHtEpwfdVPu/g2m8LjWdkdz09hh12N5btTpSvWDhRfJdOIk/NoraTJ9xVCuhQ==
-X-Received: by 2002:a62:e808:0:b029:1e5:f10a:e6d8 with SMTP id
- c8-20020a62e8080000b02901e5f10ae6d8mr17757411pfi.23.1613913791447; 
- Sun, 21 Feb 2021 05:23:11 -0800 (PST)
-Received: from ?IPv6:2409:4064:4e8b:6666:843b:eeba:783:b146?
- ([2409:4064:4e8b:6666:843b:eeba:783:b146])
- by smtp.gmail.com with ESMTPSA id c26sm17987124pfj.183.2021.02.21.05.23.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 Feb 2021 05:23:11 -0800 (PST)
-Subject: Re: [PATCH v2] staging: wimax: i2400m: add space before open
- parenthesis
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <20210220104816.13263-1-sssraj.sssraj@gmail.com>
- <20210220134652.16127-1-sssraj.sssraj@gmail.com> <YDJaw5p/VM2qhULU@kroah.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=rYPWdfQDErM49hDyDe8HZEC/S9QGDrMuKNGM0lXXWH8=;
+ b=ADnVp8oi4EFqNtaBeHTsGkJqr+Shfq08sA1hafnS2nSAt9543QbeqW2QbR7S6j+qdr
+ fcrJyn+0NfuLYSwUHeF69DxcKsyJJ7gxhH8nZ9ySoyEFW1o7hE1KDdtoTUqI4G5nE2cN
+ 7ZLCte+zC0ld6N64UlGdVXL2e/N0GQzzujkPz6Nlaevg1xJhcszeP7rrC2+j2vXCv05K
+ F3SaXeFGb+jChy79P1HiH07XvLlJtdZPY8BvISP7eUyIC/dhLWBet7U7fYq2mRrtVzve
+ wRM2SU9rkXc+Txg1o1brum0+eFGOcysHwuVna0DG1FP47oPOm/Bi7AB3qbaxMX3OB4b3
+ 4I0Q==
+X-Gm-Message-State: AOAM531Qa5SUHpjQTRWQa1Dh5CcYbbXx0t8soQFJ0XawUTK+puPwQ3r5
+ 5c777ldSYNSDBUPZ8esDK9Q=
+X-Google-Smtp-Source: ABdhPJxhQWbxltNb93GnJoFZbBVPCzJSO/5yxELzBDYYwXvkAejsfhQPzZ2V8NK4l5aWLkMBF8BwQw==
+X-Received: by 2002:a17:902:b941:b029:e3:1628:97b7 with SMTP id
+ h1-20020a170902b941b02900e3162897b7mr17660892pls.60.1613914863197; 
+ Sun, 21 Feb 2021 05:41:03 -0800 (PST)
+Received: from localhost ([103.106.200.55])
+ by smtp.gmail.com with ESMTPSA id w1sm14440356pjq.38.2021.02.21.05.41.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Feb 2021 05:41:02 -0800 (PST)
 From: Rajesh Kumbhakar <sssraj.sssraj@gmail.com>
-Message-ID: <a29fb121-2f22-fffa-630d-e99b380e4121@gmail.com>
-Date: Sun, 21 Feb 2021 18:53:06 +0530
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+To: gregkh@linuxfoundation.org, lee.jones@linaro.org, kuba@kernel.org,
+ johannes@sipsolutions.net, memxor@gmail.com, arnd@arndb.de
+Subject: [PATCH v3] staging: wimax: i2400m: add space before open parenthesis
+Date: Sun, 21 Feb 2021 05:39:51 -0800
+Message-Id: <20210221133951.21234-1-sssraj.sssraj@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210220134652.16127-1-sssraj.sssraj@gmail.com>
+References: <20210220134652.16127-1-sssraj.sssraj@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <YDJaw5p/VM2qhULU@kroah.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,27 +90,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, sfr@canb.auug.org.au,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Rajesh Kumbhakar <sssraj.sssraj@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+fixing ERROR: space required before the open parenthesis '('
 
-On 21-02-2021 18:36, Greg KH wrote:
-> On Sat, Feb 20, 2021 at 05:46:52AM -0800, Rajesh Kumbhakar wrote:
->> netdev.c
->>
->> fixing style ERROR: space required before the open parenthesis '('
->>
->> Signed-off-by: Rajesh Kumbhakar <sssraj.sssraj@gmail.com>
->> ---
->> Changes in v2:
->> 	- Removed filename from commit message.
-> filename is still in commit message :(
-aah, not again. please bare with me this last time, will surely never 
-repeat this.
+Signed-off-by: Rajesh Kumbhakar <sssraj.sssraj@gmail.com>
+---
+Changes in v3:
+	- Fixed commit message (removed filename).
+Changes in v2:
+	- Removed filename from commit message.
+
+ drivers/staging/wimax/i2400m/netdev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wimax/i2400m/netdev.c b/drivers/staging/wimax/i2400m/netdev.c
+index cd06eaf75e8b..5b53e59084c8 100644
+--- a/drivers/staging/wimax/i2400m/netdev.c
++++ b/drivers/staging/wimax/i2400m/netdev.c
+@@ -523,7 +523,7 @@ void i2400m_net_erx(struct i2400m *i2400m, struct sk_buff *skb,
+ 
+ 	d_fnstart(2, dev, "(i2400m %p skb %p [%u] cs %d)\n",
+ 		  i2400m, skb, skb->len, cs);
+-	switch(cs) {
++	switch (cs) {
+ 	case I2400M_CS_IPV4_0:
+ 	case I2400M_CS_IPV4:
+ 		i2400m_rx_fake_eth_header(i2400m->wimax_dev.net_dev,
+-- 
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
