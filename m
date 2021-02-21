@@ -2,53 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83BFA320A59
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:02:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D6B6320A5A
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:03:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 12DFC85D6F;
-	Sun, 21 Feb 2021 13:02:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4BD9D85D90;
+	Sun, 21 Feb 2021 13:03:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OOnM3MVa4cyM; Sun, 21 Feb 2021 13:02:43 +0000 (UTC)
+	with ESMTP id 9-JFG-HSNt8I; Sun, 21 Feb 2021 13:03:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8218C85C11;
-	Sun, 21 Feb 2021 13:02:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A918085D7E;
+	Sun, 21 Feb 2021 13:03:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3483F1BF4DA
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:02:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 310D01BF981
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:03:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2FE3986FC1
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:02:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2DD4087000
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:03:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ItSABnUxOm19 for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 13:02:40 +0000 (UTC)
+ with ESMTP id 3qDEAkIU20RA for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 13:03:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AB9518707C
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 13:02:40 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id F028F64F06;
- Sun, 21 Feb 2021 13:02:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 213EC86FC1
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 13:03:27 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6CA2C64F03;
+ Sun, 21 Feb 2021 13:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613912559;
- bh=PqaCurbTk7C7PNgYa86YlnmbN9I/E96rikO0Wib/WY8=;
+ s=korg; t=1613912606;
+ bh=+8YJso1d5U+qmCHLYyOR3A9yiMaPev5dqfSzbqYDd1g=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PyHB26EkP3rIRXTKptOk+uxlSFsP4XnNBH5dIXSFe+OtHZOVU0BYB95jIr+iJLr2Q
- lbuhKWuniwfBkzXZRLWE/IuirpoC+PCtPcq1xKoJDadGA1zYX3uHuWrxV0xL8OgHXp
- r9DCrXuDSXTSQnge75VH/nyNCXG6bW979+EhZkPU=
-Date: Sun, 21 Feb 2021 14:02:36 +0100
+ b=MWmg+Fbo2n4LLziiIcpqRyPwVFqLA8GaK7oPTw/ouQ6Bap9+C5IwWZbJFPy8p7nky
+ HhDzv87oMXlwY6g1Owyee4RHpITBKpxLFvEvRYbG8nFQdOHZmwsK8gwkUvM50jBlaL
+ AU3cw2MHrkHbzmPZRzaXJYsLdHbVJIuw6vCW4NaM=
+Date: Sun, 21 Feb 2021 14:03:24 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Lee Gibson <leegib@gmail.com>
-Subject: Re: [PATCH] staging: hikey9xx: Fix space tab style warnings
-Message-ID: <YDJZ7GTF/8tmJg4x@kroah.com>
-References: <20210219143851.83672-1-leegib@gmail.com>
+To: Nikolay Kyx <knv418@gmail.com>
+Subject: Re: [PATCH v3 01/02] staging: kpc2000: code style: fix alignment
+ issues
+Message-ID: <YDJaHNsT9zta2up2@kroah.com>
+References: <YC92OIgh6HTEexu4@kroah.com>
+ <20210219163411.24873-1-knv418@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210219143851.83672-1-leegib@gmail.com>
+In-Reply-To: <20210219163411.24873-1-knv418@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,54 +63,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mchehab+huawei@kernel.org, devel@driverdev.osuosl.org,
+Cc: sergiu.cuciurean@analog.com, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 19, 2021 at 02:38:51PM +0000, Lee Gibson wrote:
-> This patch fixes the checkpatch warnings such as:
+On Fri, Feb 19, 2021 at 07:34:11PM +0300, Nikolay Kyx wrote:
+> This patch fixes the following checkpatch.pl check:
 > 
-> hi6421-spmi-pmic.c:51: WARNING: please, no space before tabs
+> CHECK: Alignment should match open parenthesis
 > 
-> Signed-off-by: Lee Gibson <leegib@gmail.com>
+> in files kpc2000_i2c.c kpc2000_spi.c
+> 
+> Signed-off-by: Nikolay Kyx <knv418@gmail.com>
 > ---
->  drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-> index 4ebcfea9f3bf..626140cb96f2 100644
-> --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-> +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-> @@ -48,9 +48,9 @@ enum hi6421_spmi_pmic_irq_list {
->  /*
->   * The IRQs are mapped as:
->   *
-> - * 	======================  =============   ============	=====
-> - *	IRQ			MASK REGISTER 	IRQ REGISTER	BIT
-> - * 	======================  =============   ============	=====
-> + *	======================  =============   ============	=====
-> + *	IRQ			MASK REGISTER	IRQ REGISTER	BIT
-> + *	======================  =============   ============	=====
->   *	OTMP			0x0202		0x212		bit 0
->   *	VBUS_CONNECT		0x0202		0x212		bit 1
->   *	VBUS_DISCONNECT		0x0202		0x212		bit 2
-> @@ -66,7 +66,7 @@ enum hi6421_spmi_pmic_irq_list {
->   *	SIM0_HPD_F		0x0203		0x213		bit 3
->   *	SIM1_HPD_R		0x0203		0x213		bit 4
->   *	SIM1_HPD_F		0x0203		0x213		bit 5
-> - * 	======================  =============   ============	=====
-> + *	======================  =============   ============	=====
->   */
->  #define SOC_PMIC_IRQ_MASK_0_ADDR	0x0202
->  #define SOC_PMIC_IRQ0_ADDR		0x0212
-> -- 
-> 2.25.1
+> Additionally some style warnings remain valid here and could be fixed by
+> another patch.
+> 
+> v2: Edited changelog, as suggested by Greg KH <gregkh@linuxfoundation.org>
+> v3: Splitted patch in two parts, as suggested by Greg KH <gregkh@linuxfoundation.org>
 
-This patch doesn't apply to my staging-testing branch of staging.git
-right now, did someone else already make this change recently?
+You sent 2 different patches, that did different things, yet have the
+same exact subject line :(
+
+Please fix up and resend.
 
 thanks,
 
