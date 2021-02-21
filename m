@@ -1,70 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AE21320B60
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 16:31:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37689320B6A
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 16:32:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7F1E0834DB
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 15:31:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 98B7B6F527
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 15:32:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4y54jxX7n7jG for <lists+driverdev-devel@lfdr.de>;
-	Sun, 21 Feb 2021 15:31:41 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
-	id 7AC7A834D5; Sun, 21 Feb 2021 15:31:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8bjsBqANKh6H for <lists+driverdev-devel@lfdr.de>;
+	Sun, 21 Feb 2021 15:32:09 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 744C76F506; Sun, 21 Feb 2021 15:32:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0A1AC83339;
-	Sun, 21 Feb 2021 15:31:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6A62F606E5;
+	Sun, 21 Feb 2021 15:31:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B24861BF954
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 15:31:11 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8712C1BF954
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 15:31:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AF0B586FDC
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 15:31:11 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 75D6E83279
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 15:31:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IMpChU2mKHNN for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 15:31:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com
- [209.85.216.51])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3033F86BC1
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 15:31:11 +0000 (UTC)
-Received: by mail-pj1-f51.google.com with SMTP id kr16so6566264pjb.2
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 07:31:11 -0800 (PST)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ABSn7IEc1ci7 for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 15:31:43 +0000 (UTC)
+Received: by smtp1.osuosl.org (Postfix, from userid 1001)
+ id A4719833CE; Sun, 21 Feb 2021 15:31:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com
+ [209.85.215.179])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F0C4A833CE
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 15:31:34 +0000 (UTC)
+Received: by mail-pg1-f179.google.com with SMTP id b21so8500190pgk.7
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 07:31:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=j4mC5MODCK06jyeNOqSfzPWm9rkZjhjLLWSUaFuOWeQ=;
- b=W26YAow7MCQOmEFMxjjUMX0vE81zHxsrUpaNwBouWxpBWnhvSEursJ4W6H3/3iXs+j
- 7dU+0L31S345sQJfvF7MezO/FDRaIrKHwTxTIBewBq3IAlWmbaIm4qDP+dZ1sKY8H7uT
- HzZDkcx/Gp9Akn3UQexGQDhYyN17hyxESb3WQZ87CUn7n2cKpKFzskgV0Xo5pcvU9g4P
- l/tWztQrZap0jbVbE15GLk79wdHsxWkviYaqyqmqM6LHSBaHefsh6YQrMi2fU/URngn/
- HR6tWIac4Rpd3tcTiCeeBy5p8sDnQ/XtdWn6cVY96on5cBrnpERfeltOWzvyVkBuf19D
- F9Aw==
-X-Gm-Message-State: AOAM530+oKtXY0uOEzE8s7mQtuOPLV3wxG2UkrnZfd2WJDLYpaTLlRPZ
- urwo+Ck0YlbNMvYlCTOX6Pc=
-X-Google-Smtp-Source: ABdhPJxWm8B6PhdNK6eHSyEJYmv+ol5YYlcRFrGhdJvgf86fc8srcahaizaIN4OpNqiN/lY6Uuycug==
-X-Received: by 2002:a17:902:bf03:b029:e3:ac31:9c6 with SMTP id
- bi3-20020a170902bf03b02900e3ac3109c6mr15725830plb.55.1613921470823; 
- Sun, 21 Feb 2021 07:31:10 -0800 (PST)
+ bh=FJwLUK5Y+uvXnv0u3F+27KKfrXN2CvtQs9gB7otpFhU=;
+ b=LVOfcTrvpuxoLuoVaTtCPMz5itf4NIk6TmX3mjwpFumtTWxCKi0dVuPWBgf/JSoCZz
+ nfRL2cHHY8m3v9DzmXDmTIGZCyMnop9Zp8xSqBbppN9DuCbKjwNQ/ZSQ21l6lDI+XtlX
+ D+g5hwGaxfVUv1lMbmM1gGMqbPo4VMaO6OqwAkrTRxz2e6NvESIhug4YbN0/ilvqEag6
+ M6eSKorkIX7aU5lBX+0V/hgQ21JpW/BGXiwjTstBMFfwtbG92VfzxvzLFbFZhCKf/bYl
+ LqHEutughvf+vP7dFX9HXZJ8oOZJ0goI3cYhEfzLRyM2jbaL+fhiR0XssRC9pqQZ6bqY
+ yvxQ==
+X-Gm-Message-State: AOAM531ORtD4CkKih8IKSIAQp3o2zSgu0/g1jXTZPVIUWiIQ3c6s3dwg
+ BOiUgdOuOi6QvkxrowqhZkM=
+X-Google-Smtp-Source: ABdhPJyQfbpOGU2Lj4gfozHmRXJXahPKqV0HmUcLyQ7TPdrdAgEIhm6NIf+EIkFg7eE53tA9XWyOBA==
+X-Received: by 2002:a65:5c44:: with SMTP id v4mr16063998pgr.362.1613921494284; 
+ Sun, 21 Feb 2021 07:31:34 -0800 (PST)
 Received: from karthik-strix-linux.karthek.com ([192.140.154.12])
- by smtp.gmail.com with ESMTPSA id c8sm5418812pjv.18.2021.02.21.07.31.07
+ by smtp.gmail.com with ESMTPSA id b22sm75647pfo.23.2021.02.21.07.31.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 07:31:10 -0800 (PST)
-Date: Sun, 21 Feb 2021 21:01:05 +0530
+ Sun, 21 Feb 2021 07:31:33 -0800 (PST)
+Date: Sun, 21 Feb 2021 21:01:28 +0530
 From: karthik alapati <mail@karthek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Lee Jones <lee.jones@linaro.org>, Jakub Kicinski <kuba@kernel.org>,
  Arnd Bergmann <arnd@arndb.de>, Johannes Berg <johannes@sipsolutions.net>
-Subject: [PATCH 1/2] staging: wimax/i2400m: fix byte-order issue
-Message-ID: <0ae5c5c4c646506d8be871e7be5705542671a1d5.1613921277.git.mail@karthek.com>
+Subject: [PATCH 2/2] staging: wimax/i2400m: convert __le32 type to host
+ byte-order
+Message-ID: <87f93e091f736cb422f1d557fa5a2ac752f057a8.1613921277.git.mail@karthek.com>
 References: <cover.1613921277.git.mail@karthek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -87,27 +89,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix sparse byte-order warnings by converting host byte-order
-type to __le16 byte-order types before assigning to hdr.length
+fix sparse type warning by converting __le32 types
+to host byte-order types before comparison
 
 Signed-off-by: karthik alapati <mail@karthek.com>
 ---
- drivers/staging/wimax/i2400m/op-rfkill.c | 2 +-
+ drivers/staging/wimax/i2400m/fw.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wimax/i2400m/op-rfkill.c b/drivers/staging/wimax/i2400m/op-rfkill.c
-index a159808f0..0f438ae6a 100644
---- a/drivers/staging/wimax/i2400m/op-rfkill.c
-+++ b/drivers/staging/wimax/i2400m/op-rfkill.c
-@@ -86,7 +86,7 @@ int i2400m_op_rfkill_sw_toggle(struct wimax_dev *wimax_dev,
- 	if (cmd == NULL)
- 		goto error_alloc;
- 	cmd->hdr.type = cpu_to_le16(I2400M_MT_CMD_RF_CONTROL);
--	cmd->hdr.length = sizeof(cmd->sw_rf);
-+	cmd->hdr.length = cpu_to_le16(sizeof(cmd->sw_rf));
- 	cmd->hdr.version = cpu_to_le16(I2400M_L3L4_VERSION);
- 	cmd->sw_rf.hdr.type = cpu_to_le16(I2400M_TLV_RF_OPERATION);
- 	cmd->sw_rf.hdr.length = cpu_to_le16(sizeof(cmd->sw_rf.status));
+diff --git a/drivers/staging/wimax/i2400m/fw.c b/drivers/staging/wimax/i2400m/fw.c
+index 92ea5c101..f09de1810 100644
+--- a/drivers/staging/wimax/i2400m/fw.c
++++ b/drivers/staging/wimax/i2400m/fw.c
+@@ -511,7 +511,7 @@ ssize_t __i2400m_bm_ack_verify(struct i2400m *i2400m, int opcode,
+ 			opcode, i2400m_brh_get_response(ack));
+ 		goto error_ack_failed;
+ 	}
+-	if (ack_size < ack->data_size + sizeof(*ack)) {
++	if (ack_size < le32_to_cpu(ack->data_size) + sizeof(*ack)) {
+ 		dev_err(dev, "boot-mode cmd %d: SW BUG "
+ 			"driver provided only %zu bytes for %zu bytes "
+ 			"of data\n", opcode, ack_size,
 -- 
 2.30.1
 
