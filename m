@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D6B6320A5A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:03:32 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4BD9D85D90;
-	Sun, 21 Feb 2021 13:03:31 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9-JFG-HSNt8I; Sun, 21 Feb 2021 13:03:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A918085D7E;
-	Sun, 21 Feb 2021 13:03:29 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 310D01BF981
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:03:28 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7733320A60
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Feb 2021 14:06:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2DD4087000
- for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:03:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 89ED7870D0;
+	Sun, 21 Feb 2021 13:05:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3qDEAkIU20RA for <devel@linuxdriverproject.org>;
- Sun, 21 Feb 2021 13:03:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sIgrs-yXcdc0; Sun, 21 Feb 2021 13:05:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 17CF286FC1;
+	Sun, 21 Feb 2021 13:05:57 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A2D2B1BF951
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:05:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 90F516F478
+ for <devel@linuxdriverproject.org>; Sun, 21 Feb 2021 13:05:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 125bP-1cuOqn for <devel@linuxdriverproject.org>;
+ Sun, 21 Feb 2021 13:05:53 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+ id E5AC46F4A8; Sun, 21 Feb 2021 13:05:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 213EC86FC1
- for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 13:03:27 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6CA2C64F03;
- Sun, 21 Feb 2021 13:03:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D70A06F478
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 13:05:52 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E155D60238;
+ Sun, 21 Feb 2021 13:05:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613912606;
- bh=+8YJso1d5U+qmCHLYyOR3A9yiMaPev5dqfSzbqYDd1g=;
+ s=korg; t=1613912752;
+ bh=6MArVc78lof4Goy/3AP1erD3HDYrDJ0RUeIzBlh0BR8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MWmg+Fbo2n4LLziiIcpqRyPwVFqLA8GaK7oPTw/ouQ6Bap9+C5IwWZbJFPy8p7nky
- HhDzv87oMXlwY6g1Owyee4RHpITBKpxLFvEvRYbG8nFQdOHZmwsK8gwkUvM50jBlaL
- AU3cw2MHrkHbzmPZRzaXJYsLdHbVJIuw6vCW4NaM=
-Date: Sun, 21 Feb 2021 14:03:24 +0100
+ b=Fo/rGO3C9cdBKF63QHhJP8Ubf6EtOJ4pUJ2qvyvNp8NNUp1JC0/ruLKviBnpFFj+f
+ IZmvU4VA67sFZBN4+NaHm5uHTBn2j8vanbLyCg+xcErw5ZtPF2Wpuqg2Aacpfj55E6
+ C24Y5x7zgMbjuAQQ4Vy5pjl88Xtc2JzrBB8FotWE=
+Date: Sun, 21 Feb 2021 14:05:49 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Nikolay Kyx <knv418@gmail.com>
-Subject: Re: [PATCH v3 01/02] staging: kpc2000: code style: fix alignment
- issues
-Message-ID: <YDJaHNsT9zta2up2@kroah.com>
-References: <YC92OIgh6HTEexu4@kroah.com>
- <20210219163411.24873-1-knv418@gmail.com>
+To: Amrit Khera <amritkhera98@gmail.com>
+Subject: Re: [PATCH] staging: wimax: Fix block comment style issue in stack.c
+Message-ID: <YDJarRhaoA/WFIyd@kroah.com>
+References: <20210219202524.14642-1-amritkhera98@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210219163411.24873-1-knv418@gmail.com>
+In-Reply-To: <20210219202524.14642-1-amritkhera98@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,33 +63,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: sergiu.cuciurean@analog.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, arnd@arndb.de, linux-kernel@vger.kernel.org,
+ mail@anirudhrb.com, kuba@kernel.org, lee.jones@linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 19, 2021 at 07:34:11PM +0300, Nikolay Kyx wrote:
-> This patch fixes the following checkpatch.pl check:
+On Sat, Feb 20, 2021 at 01:55:25AM +0530, Amrit Khera wrote:
+> This change fixes a checkpatch warning for "Block comments
+> use * on subsequent lines".
 > 
-> CHECK: Alignment should match open parenthesis
-> 
-> in files kpc2000_i2c.c kpc2000_spi.c
-> 
-> Signed-off-by: Nikolay Kyx <knv418@gmail.com>
+> Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
 > ---
+>  drivers/staging/wimax/stack.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 > 
-> Additionally some style warnings remain valid here and could be fixed by
-> another patch.
-> 
-> v2: Edited changelog, as suggested by Greg KH <gregkh@linuxfoundation.org>
-> v3: Splitted patch in two parts, as suggested by Greg KH <gregkh@linuxfoundation.org>
+> diff --git a/drivers/staging/wimax/stack.c b/drivers/staging/wimax/stack.c
+> index ace24a6dfd2d..781426000015 100644
+> --- a/drivers/staging/wimax/stack.c
+> +++ b/drivers/staging/wimax/stack.c
+> @@ -62,11 +62,12 @@ MODULE_PARM_DESC(debug,
+>   * close to where the data is generated.
+>   */
+>  /*
+> -static const struct nla_policy wimax_gnl_re_status_change[WIMAX_GNL_ATTR_MAX + 1] = {
+> -	[WIMAX_GNL_STCH_STATE_OLD] = { .type = NLA_U8 },
+> -	[WIMAX_GNL_STCH_STATE_NEW] = { .type = NLA_U8 },
+> -};
+> -*/
+> + * static const struct nla_policy
+> + * wimax_gnl_re_status_change[WIMAX_GNL_ATTR_MAX + 1] = {
+> + *	[WIMAX_GNL_STCH_STATE_OLD] = { .type = NLA_U8 },
+> + *	[WIMAX_GNL_STCH_STATE_NEW] = { .type = NLA_U8 },
+> + * };
+> + */
 
-You sent 2 different patches, that did different things, yet have the
-same exact subject line :(
-
-Please fix up and resend.
+Why not just remove this variable entirely?  It's obviously not needed,
+so just delete the thing.
 
 thanks,
 
