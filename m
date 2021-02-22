@@ -2,90 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55E6A321084
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 06:43:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49A693210A2
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 07:02:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C7FB883868;
-	Mon, 22 Feb 2021 05:43:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B312C83841;
+	Mon, 22 Feb 2021 06:02:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cRUbNGaUk3Xu; Mon, 22 Feb 2021 05:43:41 +0000 (UTC)
+	with ESMTP id 8HBv7FQoJEHO; Mon, 22 Feb 2021 06:02:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 73561837AC;
-	Mon, 22 Feb 2021 05:43:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 57720837B6;
+	Mon, 22 Feb 2021 06:02:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 230461BF3C2
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 05:43:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A80561BF3C2
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 06:02:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1A2CA6F51A
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 05:43:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 978EC6F526
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 06:02:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NYpHtgaEqb_J for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 05:43:29 +0000 (UTC)
+ with ESMTP id aEa8flH86EMp for <devel@linuxdriverproject.org>;
+ Mon, 22 Feb 2021 06:02:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5DE506071B
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 05:43:29 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11M5cwLE010037;
- Mon, 22 Feb 2021 05:43:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=BGCMXtBu9a+0Ly6I6nTFxZbpghNrYOcmwKGRXQhYz1M=;
- b=FGklHZPf54cvhbO2AfPZ+HNTPySjCp4bYQR3TNHW2MSJ4d/WYMC4oJ1CvXPLqNZ/3wRC
- Es6Yke7Q2IKuN7ERoOBOuRjKZpeX1xdxmxW5G637+E/fMtdpStsVxY4nvvTJ/ySl8P6F
- TGRq4l0P4LpK0OswCqszTklLkj2HBv2ulRVl+98uARJy7sspkZ9dp5Rf/CHKBuXKsGCG
- JYuv7vlK3ktUzB9R+5a1F5cGOUxJFOFxDDHKCE2snCuaLLhpFt18nPMUYxSMbchD14oK
- 5tnHzlZ+Ta4B9HJAIMHrb5+5ikWIRpY/5vwBF730cs/K0EiH/Gjd4Y6fQ893Sk4+Ho0T 9w== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 36tqxbafnv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 22 Feb 2021 05:43:28 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11M5e1bn138061;
- Mon, 22 Feb 2021 05:43:25 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 36uc6pw2gm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 22 Feb 2021 05:43:25 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11M5hOqu001392;
- Mon, 22 Feb 2021 05:43:25 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Sun, 21 Feb 2021 21:43:24 -0800
-Date: Mon, 22 Feb 2021 08:43:16 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: karthik alapati <mail@karthek.com>
-Subject: Re: [PATCH] staging: wimax/i2400m: fix byte-order issue
-Message-ID: <20210222054316.GG2087@kadam>
-References: <YDEAB/QatfBX9vQN@karthik-strix-linux.karthek.com>
+Received: from mail-ej1-f43.google.com (mail-ej1-f43.google.com
+ [209.85.218.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2D5726F51A
+ for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 06:02:04 +0000 (UTC)
+Received: by mail-ej1-f43.google.com with SMTP id n20so1324530ejb.5
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 22:02:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ykFLf5yWwe+sB4RX2ZVcOTxdgfkTPnzYuHv9v6HvKj8=;
+ b=GKqAXrwFcpuQIckBNEBdQYXE4RdBx69vbXnThrCF16jLDFDb7YeZteKLe+y+oAwCcg
+ 8qqzPUBDkV0umkaYeOutYnc78SRB8rB6dXUxfsQBSLPZ5fFvrux5Vqp6AKbV2I4YAcaf
+ CruDyTtNgDB+I4WiVx8LKhAWu/n2KlmYB5EsuR8XtNc6h9/gXj3yNYjP9g+jGzqjZ+/U
+ KBc4ETDju8IUzU0FPDbb46aJVRmm7APvlS3xdiqGq2CqxVp/4Zw44OlLWXBS6I5AvCHE
+ hEAzqu9ZLfJXML8udyQpgDFbDTTg0geaWVqCc0Fn7RBZkTs+YQwgpKrfxdyBUufMJwKJ
+ yhnA==
+X-Gm-Message-State: AOAM530fqWTLAD24bMRFWoAMfNDKRx/C1e0KGvKoKspHrFiG33UuiE6J
+ XEASwynve6CvBFyp9u6ky0iyBGXmm97vwg==
+X-Google-Smtp-Source: ABdhPJxx6/39Lm9Uwq6vWdvHYcgheWHuR2uCcb8OoyPpOumYkVcetznUlijRkGeeU0kYys7wA4PjPQ==
+X-Received: by 2002:a17:906:380c:: with SMTP id
+ v12mr19276090ejc.65.1613973722683; 
+ Sun, 21 Feb 2021 22:02:02 -0800 (PST)
+Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com.
+ [209.85.208.49])
+ by smtp.gmail.com with ESMTPSA id t8sm3944206edv.16.2021.02.21.22.02.02
+ for <devel@driverdev.osuosl.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 21 Feb 2021 22:02:02 -0800 (PST)
+Received: by mail-ed1-f49.google.com with SMTP id h25so6677944eds.4
+ for <devel@driverdev.osuosl.org>; Sun, 21 Feb 2021 22:02:02 -0800 (PST)
+X-Received: by 2002:aa7:d8da:: with SMTP id k26mr20950996eds.364.1613973722162; 
+ Sun, 21 Feb 2021 22:02:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YDEAB/QatfBX9vQN@karthik-strix-linux.karthek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9902
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxscore=0 spamscore=0
- mlxlogscore=999 adultscore=0 bulkscore=0 malwarescore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102220051
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9902
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 impostorscore=0
- phishscore=0
- mlxlogscore=999 malwarescore=0 clxscore=1011 suspectscore=0
- lowpriorityscore=0 bulkscore=0 adultscore=0 priorityscore=1501 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102220051
+References: <YDDzqPT81QBGpTBB@karthik-strix-linux.karthek.com>
+ <20210222054029.GF2087@kadam>
+In-Reply-To: <20210222054029.GF2087@kadam>
+From: karthek <mail@karthek.com>
+Date: Mon, 22 Feb 2021 11:31:48 +0530
+X-Gmail-Original-Message-ID: <CAJ5zXr0_QE6JLZ+rGeoaETexqvhS7LXdtAH3fqpZ=i1zxQJUYg@mail.gmail.com>
+Message-ID: <CAJ5zXr0_QE6JLZ+rGeoaETexqvhS7LXdtAH3fqpZ=i1zxQJUYg@mail.gmail.com>
+Subject: Re: [PATCH] staging: wimax: fix sparse incorrect type issue
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,23 +84,56 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, shivang upadhyay <oroz3x@gmail.com>
+ linux-kernel@vger.kernel.org, Mukul Mehar <mukulmehar02@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Feb 20, 2021 at 05:56:47PM +0530, karthik alapati wrote:
-> fix sparse byte-order warnings by converting host byte-order
-> types to le32 types
-> 
-> Signed-off-by: karthik alapati <mail@karthek.com>
+On Mon, Feb 22, 2021 at 11:10 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> On Sat, Feb 20, 2021 at 05:04:00PM +0530, karthik alapati wrote:
+> > fix sparse warning by casting to explicit user address-space
+> > pointer type
+> >
+> > Signed-off-by: karthik alapati <mail@karthek.com>
+> > ---
+> >  drivers/staging/wlan-ng/p80211netdev.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
+> > index 6f9666dc0..70570e8a5 100644
+> > --- a/drivers/staging/wlan-ng/p80211netdev.c
+> > +++ b/drivers/staging/wlan-ng/p80211netdev.c
+> > @@ -569,7 +569,7 @@ static int p80211knetdev_do_ioctl(struct net_device *dev,
+> >               goto bail;
+> >       }
+> >
+> > -     msgbuf = memdup_user(req->data, req->len);
+> > +     msgbuf = memdup_user((void __user *)req->data, req->len);
+>
+> This doesn't fix anything it just silences the warning.  Linus Torvalds
+> worked very hard to create Sparse for the express purpose of printing
+> the warning.  People don't realize that warnings are very valuable
+> because they show where the bugs are.
+>
+> Please look at this some more and figure out how to fix the warning.
+>
+> To be honest, I'm tempted to not accept any patch which doesn't also fix
+> the buffer overflows when we pass:
+>
+>         result = p80211req_dorequest(wlandev, msgbuf);
+>
+> How do we know that "msgbuf" is large enough?
+>
+> regards,
+> dan carpenter
+>
 
-This is a v2 patch...
-
-regards,
-dan carpenter
-
+Thanks dan but right after sending this patch i immediately replied to
+it stating
+to ignore this patch as i found this already applied in staging-testing branch
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?h=staging-testing&id=3a8a144d2a754df45127c74e273fa166f690ba43
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
