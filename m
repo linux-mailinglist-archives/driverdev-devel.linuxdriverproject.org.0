@@ -1,79 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D73B3213E9
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 11:16:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35369321452
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 11:46:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D9E085F05;
-	Mon, 22 Feb 2021 10:16:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 626D083925;
+	Mon, 22 Feb 2021 10:46:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id stiKmuADEZvH; Mon, 22 Feb 2021 10:16:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gDCtwFKNxu8I; Mon, 22 Feb 2021 10:46:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DB56E85E5C;
-	Mon, 22 Feb 2021 10:16:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B0CE483916;
+	Mon, 22 Feb 2021 10:46:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6A6511BF39D
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 10:16:06 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CEBF01BF39D
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 10:46:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 66A9187141
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 10:16:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C8BB585D61
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 10:46:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Sexk7rHgU+mx for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 10:16:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f170.google.com (mail-pl1-f170.google.com
- [209.85.214.170])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DEE6C8711B
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 10:16:05 +0000 (UTC)
-Received: by mail-pl1-f170.google.com with SMTP id u11so7415993plg.13
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 02:16:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DEyKy5mx0dMuKE/TR0/MfCGJrJdUfSMNm7rgBnd8nC8=;
- b=ka5Mjfco5GPDZIy/EYuD06J9MmfbGkHtLRu76/NxtzUCZEMfkXQNn0pWhUCogc9+LI
- gynf0G3viWhdlJyBI9qNoMOUHYiA/FK8Pxy/QjwB1WyLN+Zw9OJUN8glc+Bg+T9mw1Ey
- RAST6dMBPCAvMMaPF3ovRtqMeAMybefqwXkQ56bqbQZuOkr4REsv8m4+pRZahyd50JvH
- DZWuHJpZ6rdw8hKxdkssclEllaGLdwGTHu22Pah5GXq9pZhqKcXsYrDx6ccUYVGg+VHd
- i1vrmwSugLBcFUjphpQxYVoOv5WhhwJlchfSi51tv4CaSR9TJU5dBmo592ujRaSNdz+E
- /Ncw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DEyKy5mx0dMuKE/TR0/MfCGJrJdUfSMNm7rgBnd8nC8=;
- b=gjavuJicc+ec6CkIF8cqmYq/H1sOWESuY9NtZM37Ch1B6puew8Atf+ZaMZwN2gp74J
- 5vind5Y7HDX2A8xkvmSfN5kt8uEBF8F3k/hVNrRmGjs/nc+odZ17UvOsBmrKKkXwPj4I
- U2STXdU1xzggjA3sT5C6tnWdhFfqQd2Xf0LTCMEZVgpHEtQsx7FyA3niLLNxGvwx/NfY
- sTsjHm4gbeL+4mMK251t4lQOaOoK8LUhoGZibpajKTHz5CuQYSFpVYX0o/D4mlhg+EnK
- 6GRq3Y8INX5Lc9VZpRNf9SXMtZtiuqxPMZm5x04j8F0bFeal/YY/++Ddt984Wc2zpE6f
- jPWw==
-X-Gm-Message-State: AOAM5331WTA1fg1cA70AL7X/FO1tHE82c/n1Z6gXaoPztHB8AeBXpMvA
- ixcUixeBbVlH1QvtIsilKAw=
-X-Google-Smtp-Source: ABdhPJwD2XP8n1aSRMGIyeJRfQ7R8q+ukTW9z6ndbeinSJuxwIHLPliSjfJ11aMk5dx5le7NNU4hxg==
-X-Received: by 2002:a17:902:8b89:b029:e3:dbc0:bc4c with SMTP id
- ay9-20020a1709028b89b02900e3dbc0bc4cmr9725220plb.5.1613988965368; 
- Mon, 22 Feb 2021 02:16:05 -0800 (PST)
-Received: from localhost.localdomain ([49.36.150.223])
- by smtp.gmail.com with ESMTPSA id mp20sm17229814pjb.34.2021.02.22.02.16.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 02:16:04 -0800 (PST)
-From: Amrit Khera <amritkhera98@gmail.com>
-To: gregkh@linuxfoundation.org, lee.jones@linaro.org,
- johannes@sipsolutions.net, mail@anirudhrb.com, arnd@arndb.de,
- amritkhera98@gmail.com, memxor@gmail.com
-Subject: [PATCH v3] staging: wimax: Fix block comment style issue in stack.c
-Date: Mon, 22 Feb 2021 15:45:42 +0530
-Message-Id: <20210222101541.2571-1-amritkhera98@gmail.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id iqLkWUOWDqRX for <devel@linuxdriverproject.org>;
+ Mon, 22 Feb 2021 10:46:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp76.ord1d.emailsrvr.com (smtp76.ord1d.emailsrvr.com
+ [184.106.54.76])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E98C185D17
+ for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 10:45:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1613990759;
+ bh=MlEdIWr3zQXOMI3lnebQjd7OtiF6wCGdOTLmgA4rsGc=;
+ h=Subject:To:From:Date:From;
+ b=PGjn8nkSohUk0vz1QYCqr917F38/mIJmKWhfoopUAp0OxGG9jQyAI0+/DJKAGu7UZ
+ aKPlOfAb9rR9AYXQjfQE/2HkUmXOV2kiFnnE0Nb3rUzYkCmgrQXm0Va7ru7vbUuF40
+ HWPwk0ec8k0aS+YOKymrbveqpRGpL7BXixU6GsaQ=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1613990759;
+ bh=MlEdIWr3zQXOMI3lnebQjd7OtiF6wCGdOTLmgA4rsGc=;
+ h=Subject:To:From:Date:From;
+ b=KPoeWymt5QWP+kyBa+Qnywi6c/XmJ0zMg4y7OVaYpcEzPo3yEJ4XmdBMdOvAHH8l3
+ kEJAaN/GbD8vqMrxoMfdq0st8MfxvfZwmHGvrL45myCZDt6t84Hl8zA+tUWf078jUK
+ W4l47+neeqLQ9vJX/tcH75KeGxOIx5+2fRNguHdo=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp18.relay.ord1d.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 4D249A00AF; 
+ Mon, 22 Feb 2021 05:45:58 -0500 (EST)
+Subject: Re: [PATCH -next] staging: comedi dt2814: Removed unused variables
+To: Fatih Yildirim <yildirim.fatih@gmail.com>, hsweeten@visionengravers.com,
+ gregkh@linuxfoundation.org, grandmaster@al2klimov.de
+References: <20210221202855.12442-1-yildirim.fatih@gmail.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <b4487d85-0657-5f55-1d4e-21264358c86a@mev.co.uk>
+Date: Mon, 22 Feb 2021 10:45:57 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
+In-Reply-To: <20210221202855.12442-1-yildirim.fatih@gmail.com>
+Content-Language: en-GB
+X-Classification-ID: ccc532c2-53bc-412c-975c-e7b0210c0716-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,46 +82,78 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This change fixes a checkpatch warning for "Block comments use
-* on subsequent lines". It removes the unnecessary block comment.
+On 21/02/2021 20:28, Fatih Yildirim wrote:
+> Removed unused variables.
+> 
+> Signed-off-by: Fatih Yildirim <yildirim.fatih@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers/dt2814.c | 13 ++++---------
+>  1 file changed, 4 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/drivers/dt2814.c b/drivers/staging/comedi/drivers/dt2814.c
+> index bcf4d5444faf..bd329d7b4893 100644
+> --- a/drivers/staging/comedi/drivers/dt2814.c
+> +++ b/drivers/staging/comedi/drivers/dt2814.c
+> @@ -186,21 +186,17 @@ static int dt2814_ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  
+>  static irqreturn_t dt2814_interrupt(int irq, void *d)
+>  {
+> -	int lo, hi;
+>  	struct comedi_device *dev = d;
+>  	struct dt2814_private *devpriv = dev->private;
+>  	struct comedi_subdevice *s = dev->read_subdev;
+> -	int data;
+>  
+>  	if (!dev->attached) {
+>  		dev_err(dev->class_dev, "spurious interrupt\n");
+>  		return IRQ_HANDLED;
+>  	}
+>  
+> -	hi = inb(dev->iobase + DT2814_DATA);
+> -	lo = inb(dev->iobase + DT2814_DATA);
+> -
+> -	data = (hi << 4) | (lo >> 4);
+> +	inb(dev->iobase + DT2814_DATA);
+> +	inb(dev->iobase + DT2814_DATA);
+>  
+>  	if (!(--devpriv->ntrig)) {
+>  		int i;
+> @@ -229,7 +225,6 @@ static int dt2814_attach(struct comedi_device *dev, struct comedi_devconfig *it)
+>  	struct dt2814_private *devpriv;
+>  	struct comedi_subdevice *s;
+>  	int ret;
+> -	int i;
+>  
+>  	ret = comedi_request_region(dev, it->options[0], 0x2);
+>  	if (ret)
+> @@ -241,8 +236,8 @@ static int dt2814_attach(struct comedi_device *dev, struct comedi_devconfig *it)
+>  		dev_err(dev->class_dev, "reset error (fatal)\n");
+>  		return -EIO;
+>  	}
+> -	i = inb(dev->iobase + DT2814_DATA);
+> -	i = inb(dev->iobase + DT2814_DATA);
+> +	inb(dev->iobase + DT2814_DATA);
+> +	inb(dev->iobase + DT2814_DATA);
+>  
+>  	if (it->options[1]) {
+>  		ret = request_irq(it->options[1], dt2814_interrupt, 0,
+> 
 
-Signed-off-by: Amrit Khera <amritkhera98@gmail.com>
----
- Changes in v3:
- - Updated commit message, as suggested by Greg KH <gregkh@linuxfoundation.org>
- - Removed the whole comment, as suggested by Dan Carpenter <dan.carpenter@oracle.com>
+I've no objection to this patch.  The interrupt handling to support
+Comedi asynchronous commands in this driver has always been broken.  I'm
+tempted to remove the code for handling asynchronous commands in this
+driver altogether for that reason.  (The naive fix of writing the data
+to the Comedi buffer is insufficient without an additional check that
+the command is running.  The end-of-conversion interrupt occurs
+regardless of any command being active.)
 
- drivers/staging/wimax/stack.c | 14 --------------
- 1 file changed, 14 deletions(-)
+Acked-by: Ian Abbott <abbotti@mev.co.uk>
 
-diff --git a/drivers/staging/wimax/stack.c b/drivers/staging/wimax/stack.c
-index ace24a6dfd2d..0d2e3d5f3691 100644
---- a/drivers/staging/wimax/stack.c
-+++ b/drivers/staging/wimax/stack.c
-@@ -55,20 +55,6 @@ MODULE_PARM_DESC(debug,
- 		 "are the different debug submodules and VALUE are the "
- 		 "initial debug value to set.");
- 
--/*
-- * Authoritative source for the RE_STATE_CHANGE attribute policy
-- *
-- * We don't really use it here, but /me likes to keep the definition
-- * close to where the data is generated.
-- */
--/*
--static const struct nla_policy wimax_gnl_re_status_change[WIMAX_GNL_ATTR_MAX + 1] = {
--	[WIMAX_GNL_STCH_STATE_OLD] = { .type = NLA_U8 },
--	[WIMAX_GNL_STCH_STATE_NEW] = { .type = NLA_U8 },
--};
--*/
--
--
- /*
-  * Allocate a Report State Change message
-  *
 -- 
-2.20.1
-
+-=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
+-=( registered in England & Wales.  Regd. number: 02862268.  )=-
+-=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
+-=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
