@@ -1,83 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96AB6321E00
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 18:23:46 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A29AD321E60
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 18:44:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C698B85FC9;
-	Mon, 22 Feb 2021 17:23:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5879A83449;
+	Mon, 22 Feb 2021 17:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4gP6Lj_WVMos; Mon, 22 Feb 2021 17:23:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Fy3dF13XT8Yj; Mon, 22 Feb 2021 17:43:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 961008600D;
-	Mon, 22 Feb 2021 17:23:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0BA21831FB;
+	Mon, 22 Feb 2021 17:43:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 106071BF981
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 17:23:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A6911BF3FB
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 17:43:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F36D26F510
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 17:23:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 12F9E85643
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 17:43:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 42rMSPRX2fLC for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 17:23:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com
- [209.85.214.169])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A6BAC6F487
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 17:23:39 +0000 (UTC)
-Received: by mail-pl1-f169.google.com with SMTP id k22so8154815pll.6
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 09:23:39 -0800 (PST)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i4b8c8eoXNcl for <devel@linuxdriverproject.org>;
+ Mon, 22 Feb 2021 17:43:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4F3B1855D1
+ for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 17:43:41 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id s16so8184656plr.9
+ for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 09:43:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=DUHGntaKFYzrq7NZkx3mWcd1ZCuicESk7vii1Ds1bwQ=;
- b=rx5gkdRFqp9yhSb7+6RWUSzvNoBfPNu5d27yhXnbQJDAoKap+icxeZ4adyPk0oRhAA
- 4j2d14G7xHkTJD9npx6E1UZ+BgeP9soxBveDiTuQ0lWQKmiTRFncVcvkfJdNWkaw3MvE
- GJbPWHtzxs1htljhabPzgO9rDiPDwd0dcw8hHXoLVCGsVcMiXJ6G8XFjViQ5Jz227dZt
- eF3nZCMt6bDlzQ1P6Gd/cSCZYIpUPb/zICoOS87ZIWemV58Ma38mxRQ/AsrrmhF45FKZ
- 06WQeDNHEO/e7nXcbStjdCDgxwfVdWEZAFphOcdgTGwwRcNtkeklhFq7IKrUfjGvc3n9
- bEKA==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=n3eH8fc7c63400pMFay9v4NYcLZ+o0vJKsl88V8S4Zg=;
+ b=H0uQxViryLxerqBZI5zEvoJGqobOFoSBuvzaayR5BcDPXO/xhN3ht3z/dhEXd4uREo
+ Zeg5LBTnRJICoSKIZq8b4KkHbPGUv2hFLrvr3+FzOew+JDgNCg+kxRDkkViPTJ1+CkK8
+ Bfhe8uQ04qcQYubB1T7qfxEkTdTILlwGo+6ChI7VXpyqjWd3F9NvY+PpkaqrvwxMlIFB
+ 6fvJGp9M0Ai2D3epeWonOfLfVlgokNpou4kgIxSIgAaEzFvVe3O6zIxJ2fRrUg+uPwP5
+ AS+OCN4OI6zqW4YqL76CDI1RvSga5io5F9oWkrSaeZg03IsI9Ahrw9NZAxScYDlAaU+a
+ 9J3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=DUHGntaKFYzrq7NZkx3mWcd1ZCuicESk7vii1Ds1bwQ=;
- b=CB1qm4FJj+zruBLXOnOpID9eOKqN/kaO+riH7C0RAd9C77m1jFccT9lerHKgDfnom4
- kotCvt8HXaMUTOMckG9DJG+bLJIbEmVNY6KHpT2KwfQq2TtHEdnK66D8uGveCqopLEwE
- IhIwlrgBbcqm76DguDAfQi0HYUjjio1ifTK8+AxJ08VJp981fIVY4+CZ4z6DxizsStUB
- 3K3TVNH3ewz0X6XO+GmDgVnMg98ZbsHqj8RCwfU9W6hXyaDRrI7p01u71JYSzj/HdqW4
- wkXaL2oROVglwNoeFKXzFyAePLOE6+SEvRvoz3apuqFpo41mo9u4V7vzUcLqfSirjY5N
- bISw==
-X-Gm-Message-State: AOAM533ZKtfJB+SKLqrA94uci3gqcDmr9wvGLuWh0vMINGQ1q3qZlGC0
- crtfIRAqmHk4ronmAREeLUA=
-X-Google-Smtp-Source: ABdhPJwkqR0nooNiBJVEp5Xxrif3+NWqYOdkzYMEOKJhg6OpIGXa6RgbvwDSdBvgXRNZZJIMlbKKrQ==
-X-Received: by 2002:a17:90a:602:: with SMTP id
- j2mr24221506pjj.65.1614014617069; 
- Mon, 22 Feb 2021 09:23:37 -0800 (PST)
-Received: from atulu-ubuntu ([27.61.20.212])
- by smtp.gmail.com with ESMTPSA id t15sm19044867pjy.37.2021.02.22.09.23.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 09:23:36 -0800 (PST)
-Date: Mon, 22 Feb 2021 22:53:30 +0530
-From: Atul Gopinathan <atulgopinathan@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 2/2] staging: rtl8192e: Change state information from u16
- to u8
-Message-ID: <20210222172330.GA2507@atulu-ubuntu>
-References: <20210220182154.9457-1-atulgopinathan@gmail.com>
- <20210220182154.9457-2-atulgopinathan@gmail.com>
- <YDJbSgqTpBpIsbVB@kroah.com> <20210221165721.GA10040@atulu-nitro>
- <YDPNKTHZqaS37XPe@kroah.com>
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=n3eH8fc7c63400pMFay9v4NYcLZ+o0vJKsl88V8S4Zg=;
+ b=C8uv6TqnuqeOsl81JfkKBWv6dxA+mOyPb7eUQE2ktqo7DO6aQBg+e2umarDvuTFIVX
+ AOrm9OEoIpyhqo2d1yybEUcQ1dvyBnHVj9mlm/79e3cUzWK86QlZV4BwdtT/gHzpsj3k
+ hp47o2qkMRcRtyU/3C6R3o+90e2KhgQhcbbYOJ29+TwnHaxr+Cia3UScj53hJ4FD0t2z
+ eySp/3dwWa79kikS3Xk70Rav5GgTU1oUykQFzqeZu4STPGcTKNGJtrb06dh465LbShl8
+ qsisowGE4/F+WB+3ae4g2JIf8E8a4QLRpRdZpnrLUxu/mtWan57Nk5INpV0O+iYPY7tX
+ vQjA==
+X-Gm-Message-State: AOAM530sO5z3LyqgmQHSS43jXtYiF5lpcvXoJEZDw6Lv9fez8AQ1dGQa
+ Ocew/6c9qCrEfC41IKPJJ5SzlP2FsULtvYyz/u0=
+X-Google-Smtp-Source: ABdhPJyax0cjxRrgZNMlkjkIrL7pxwBma1FHByalrW50qlF/Fs6y9ntDWyozn50JjGe2LrI3rKq78SaKvlCza6imhkQ=
+X-Received: by 2002:a17:90a:a585:: with SMTP id
+ b5mr24587621pjq.110.1614015820785; 
+ Mon, 22 Feb 2021 09:43:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YDPNKTHZqaS37XPe@kroah.com>
+Received: by 2002:a05:6a10:678b:0:0:0:0 with HTTP; Mon, 22 Feb 2021 09:43:40
+ -0800 (PST)
+From: Mark Jackson <chrisuche005@gmail.com>
+Date: Mon, 22 Feb 2021 09:43:40 -0800
+Message-ID: <CAOBPeD=tCc-dtzhhu7BZ+Zn+EELh=7Z8FEBbs4-Px0PnSWN-gw@mail.gmail.com>
+Subject: Your ATM CARD For Compensation
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,160 +79,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: tiwai@suse.de, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- gustavo@embeddedor.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Feb 22, 2021 at 04:26:33PM +0100, Greg KH wrote:
-> On Sun, Feb 21, 2021 at 10:27:21PM +0530, Atul Gopinathan wrote:
-> > On Sun, Feb 21, 2021 at 02:08:26PM +0100, Greg KH wrote:
-> > > On Sat, Feb 20, 2021 at 11:51:55PM +0530, Atul Gopinathan wrote:
-> > > > The "CcxRmState" field in struct "rtllib_network" is defined
-> > > > as a u16 array of size 2 (so, 4 bytes in total).
-> > > > 
-> > > > But the operations performed on this array throughout the code
-> > > > base (in rtl8192e/) are all in byte size 2 indicating that this
-> > > > array's type was defined wrongly.
-> > > > 
-> > > > There are two situation were u16 type of this field could yield
-> > > > incorrect behaviour:
-> > > > 
-> > > > 1. In rtllib_rx.c:1970:
-> > > > memcpy(network->CcxRmState, &info_element->data[4], 2);
-> > > > 
-> > > > Here last 2 bytes (index 4 and 5) from the info_element->data[]
-> > > > array are meant to be copied into CcxRmState[].
-> > > > Note that "data" array here is an array of type u8.
-> > > > 
-> > > > 2. In function "update_network()" in staging/rtl8192e/rtllib_rx.c:
-> > > > memcpy(dst->CcxRmState, src->CcxRmState, 2);
-> > > > 
-> > > > Here again, only 2 bytes are copied from the source state to
-> > > > destination state.
-> > > > 
-> > > > There are no instances of "CcxRmState" requiring u16 data type.
-> > > > Here is the output of "grep -IRn 'CcxRmState'" on the rtl8192e/
-> > > > directory for reviewing:
-> > > > 
-> > > > rtllib_rx.c:1970:			memcpy(network->CcxRmState, &info_element->data[4], 2);
-> > > > rtllib_rx.c:1971:			if (network->CcxRmState[0] != 0)
-> > > > rtllib_rx.c:1975:			network->MBssidMask = network->CcxRmState[1] & 0x07;
-> > > > rtllib_rx.c:2520:	memcpy(dst->CcxRmState, src->CcxRmState, 2);
-> > > > rtllib.h:1108:	u8	CcxRmState[2];
-> > > 
-> > > You just changed the logic in line 1975 in that file, right?  Are you
-> > > _SURE_ that is ok?  Do you have a device to test this on?
-> > 
-> > I'm sorry, I didn't quite get you. By line 1975 in rtllib_rx.c, did you mean
-> > the following line?:
-> > 
-> > network->MBssidMask = network->CcxRmState[1] & 0x07;
-> 
-> Yes.
-> 
-> > network->CcxRmState is being fed with 2 bytes of u8 data, in line 1970 (as
-> > seen above). I believe my patch doesn't change the logic of an "&" operation
-> > being performed on it with 0x07, right?
-> 
-> It changes the location of the [1] operation to point to a different
-> place in memory from what I can tell, as you changed the type of that
-> array.
+My Dear Friend
 
-Oh yes, earlier, the network->CcxRmState[] array had memory locations as:
-[x, x+16]. With this patch, it's locations are [x, x+8].
+This letter is to acknowledge the substantial contributions of time and
+energy you have made in trying to assist to claim the fund through
+your account, despite that it failed us because of your inability to
+continue financing the transaction.
 
-And I strongly believe this is how it should be based on how the original
-author is using the CcxRmState[] array throughout the codebase:
+Besides I'm happy to inform you that I have succeeded in transferring
+the fund out of my home Country with the help of a new partner from
+Tuvalu.
 
-Allow me to explain (Based on the output of "grep -IRn 'CcxRmState'" that
-I sent previously):
-1. At line 1970:
+I am now in Tuvalu for investment and Tuvalu is composed of 9 coral
+atolls along a 360 mile chain in Polynesia. They gained independence
+in 1978 the former Ellice Islands.
 
-    memcpy(network->CcxRmState, &info_element->data[4], 2);
+Therefore in appreciation of your earlier assistance, I have decided to
+compensate you with the sum of $850.000.00 USD which I raised in ATM
+CARD on your favour.
 
-this is where the array CcxRmState[] is being fed with
-data. And one can see the source is an array named "data" which itself
-has type u8. The third argument is "2", meaning 2 bytes of data should
-be written from "data" array to "CcxRmState".
+This fund I have given to you has been deposited with a bank which has
+already opened an account and issued to you ATM CARD worth
+US$850.000.00 (Eight Hundred and Fifty Thousand United States Dollars)
+The ATM CARD is withdrawable from any ATM Machine in the world.
 
-Also note that, the array CcxRmState has a size 2, as defined in
-rtllib.h, in struct "rtllib_network":
+So feel free and contact my Personal assistance (PA) in Benin
+Republic, his name is Mr.Stephen Pena
 
-    u16 CcxRmState[2];
+Address: Carre 1299, Ste Rita City
+Cotonou,Benin Republic
 
-Say if CcxRmState[] _was_ supposed to be u16 and not u8, then both elements
-of the source "data" array will only be written into the first element of
-"CcxRmState", i.e, "CcxRmState[0]". The 2nd element, "CcxRmState[1]" will
-never be fed with any data. The resultant CcxRmState[] array would look
-something like this:
+Email: ( spenaneoris@gmail.com )
 
-    [(u8-data and u8-data squashed), 0].
+and instruct him to send the ATM CARD to you.
 
-The 2 u8-data here refers to info_element->data[4] and
-info_element->data[5].
+Please do let me know immediately you receive it.
 
-Instead, if "CcxRmState" was of type u8, then both elements of source
-"data" array will be written into the 2 elements of "CcxRmState"
-respectively:
-
-    [u8 data, u8 data]
-
-This makes a lot more sense.
-
-2. Line 1975:
-    network->MBssidMask = network->CcxRmState[1] & 0x07;
-
-With point 1 clear, it should now be easy to understand that
-the the "&" operation in line 1975, will _always_ yield 0 if "CcxRmState"
-is u16, simply because CcxRmState[1] is never fed with any data at
-all.
-
-Oh and "network->MBssidMask" is also of type u8.
-
-3. Line 2520:
-memcpy(dst->CcxRmState, src->CcxRmState, 2);
-
-2 bytes, and not 4, again.:D
-The above line belongs to the following function:
-
-    static inline void update_network(struct rtllib_device *ieee,
-                      struct rtllib_network *dst,
-                      struct rtllib_network *src)
-
-As you can see, there is "dst" destination and a "src" source. The author
-is essentially copying all the data from "src" to "dst" in this function.
-Throughout the function, "memcpy()" is being used several times to copy
-the data of all arrays/structs existing in "src" into "dst". In each
-of those instances, the author is making sure to copy the entirety of
-the respective struct/array by passing all used up size of the struct/
-array in the third, size, argument. Here are a few lines from that
-function (posting the entire function defintion would be inappropriate)
-
-	instance 1: memcpy(dst->hidden_ssid, src->ssid, src->ssid_len);
-        instance 2: memcpy(&dst->stats, &src->stats, sizeof(struct rtllib_rx_stats));
-        instance 3: memcpy(&dst->tim, &src->tim, sizeof(struct rtllib_tim_parameters));
-        instance 4: memcpy(dst->wzc_ie, src->wzc_ie, src->wzc_ie_len);
-
-There are a LOT more instances, here is the elixir link to that
-function for a quick reference:
-https://elixir.bootlin.com/linux/v5.11/source/drivers/staging/rtl8192e/rtllib_rx.c#L2420
-
-My point is, it's clear that the intent of this function is to duplicate
-the data of src into dst. If "CcxRmState" really is supposed to be u16,
-then why only write down the first 2 bytes into "dst->CcxRmState"?
-
-What about "dst->CcxRmState[1]"? It never gets any value, again.
-
-These are the only places where CcxRmState is being used in the entire
-rtl8192e driver directory. I skipped line 1971 as it just checks whether
-"CcxRmState[0]" is 0 or not, this should not require any explanation.
-
-
-Thank you for your patience!
-Atul
+Regards,
+Mr.Mark Jackson
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
