@@ -2,71 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A29AD321E60
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 18:44:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D787321ECA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 19:06:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5879A83449;
-	Mon, 22 Feb 2021 17:43:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EFCF983837;
+	Mon, 22 Feb 2021 18:06:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Fy3dF13XT8Yj; Mon, 22 Feb 2021 17:43:58 +0000 (UTC)
+	with ESMTP id DPAO_dQs2WsN; Mon, 22 Feb 2021 18:06:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0BA21831FB;
-	Mon, 22 Feb 2021 17:43:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 85B65835EF;
+	Mon, 22 Feb 2021 18:06:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1A6911BF3FB
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 17:43:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 735CA1BF94B
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 18:06:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 12F9E85643
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 17:43:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 906278174C
+ for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 18:06:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i4b8c8eoXNcl for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 17:43:41 +0000 (UTC)
+ with ESMTP id b4EA1crwjR-d for <devel@linuxdriverproject.org>;
+ Mon, 22 Feb 2021 18:06:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4F3B1855D1
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 17:43:41 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id s16so8184656plr.9
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 09:43:41 -0800 (PST)
+Received: from mail-qk1-f177.google.com (mail-qk1-f177.google.com
+ [209.85.222.177])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1E48886F74
+ for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 18:06:19 +0000 (UTC)
+Received: by mail-qk1-f177.google.com with SMTP id t62so13494403qke.7
+ for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 10:06:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=n3eH8fc7c63400pMFay9v4NYcLZ+o0vJKsl88V8S4Zg=;
- b=H0uQxViryLxerqBZI5zEvoJGqobOFoSBuvzaayR5BcDPXO/xhN3ht3z/dhEXd4uREo
- Zeg5LBTnRJICoSKIZq8b4KkHbPGUv2hFLrvr3+FzOew+JDgNCg+kxRDkkViPTJ1+CkK8
- Bfhe8uQ04qcQYubB1T7qfxEkTdTILlwGo+6ChI7VXpyqjWd3F9NvY+PpkaqrvwxMlIFB
- 6fvJGp9M0Ai2D3epeWonOfLfVlgokNpou4kgIxSIgAaEzFvVe3O6zIxJ2fRrUg+uPwP5
- AS+OCN4OI6zqW4YqL76CDI1RvSga5io5F9oWkrSaeZg03IsI9Ahrw9NZAxScYDlAaU+a
- 9J3g==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=w/1v7qcxV6sXFq3hxXWf+zOxG2zTiP0+4CUMaFeTsMk=;
+ b=hh90LbgHh4HvFm440ikVfcEEOikR/+r7DS0iYKRlzm9tZKNHikQxp8biTqRYaBhgYE
+ 8b6FdvJegN2lSjQhNg4sn8cTY+fYHfwRtZAV5wOfM3v7N0N8+9X2Ml6LcjOF1ZFv5cNa
+ BGAHcVykRnvgR0eoUty0oE7GUYLECpZPcX5gY7gnwCtxsl1qh3lMBBJrBL+CpDL5cQfv
+ WbmhA1qrC/WLJGy+c5pjRopHnWsW8rKzfsHVG6yE/wkm1oixSm1hEZwILhgBV1HwLAto
+ 9xGVj90eU5+zG/Mu+xuDR3O9hT98U0rG2/A7c04DkFOsIpYmJgSx4is9UGKEc6Fx+th7
+ 8BNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=n3eH8fc7c63400pMFay9v4NYcLZ+o0vJKsl88V8S4Zg=;
- b=C8uv6TqnuqeOsl81JfkKBWv6dxA+mOyPb7eUQE2ktqo7DO6aQBg+e2umarDvuTFIVX
- AOrm9OEoIpyhqo2d1yybEUcQ1dvyBnHVj9mlm/79e3cUzWK86QlZV4BwdtT/gHzpsj3k
- hp47o2qkMRcRtyU/3C6R3o+90e2KhgQhcbbYOJ29+TwnHaxr+Cia3UScj53hJ4FD0t2z
- eySp/3dwWa79kikS3Xk70Rav5GgTU1oUykQFzqeZu4STPGcTKNGJtrb06dh465LbShl8
- qsisowGE4/F+WB+3ae4g2JIf8E8a4QLRpRdZpnrLUxu/mtWan57Nk5INpV0O+iYPY7tX
- vQjA==
-X-Gm-Message-State: AOAM530sO5z3LyqgmQHSS43jXtYiF5lpcvXoJEZDw6Lv9fez8AQ1dGQa
- Ocew/6c9qCrEfC41IKPJJ5SzlP2FsULtvYyz/u0=
-X-Google-Smtp-Source: ABdhPJyax0cjxRrgZNMlkjkIrL7pxwBma1FHByalrW50qlF/Fs6y9ntDWyozn50JjGe2LrI3rKq78SaKvlCza6imhkQ=
-X-Received: by 2002:a17:90a:a585:: with SMTP id
- b5mr24587621pjq.110.1614015820785; 
- Mon, 22 Feb 2021 09:43:40 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=w/1v7qcxV6sXFq3hxXWf+zOxG2zTiP0+4CUMaFeTsMk=;
+ b=nWd7b5ozawCXVGnUB1dtX20u1M+up2X1UjauKDiy3aeDi2se7RzoYBZkbD/SxwL9jZ
+ Z6JBB5CZQ76LxIxsw1J3Z+BzRO0g6uZcXlESwc0yVNn3eFm9R89auJzcvCM3ZPk49VcP
+ GCPgm6IM98znJU2EPyQcJgM5Bk13kQ4bn/zpdEIHxY570dIZYwAfmtel1XtyXKTxwLOf
+ xrGxevIDp0u2L5FSI9J6nao3Ha+6Dzr43Gekxh6y8KB14WIUMeAB33uVAIvAu0GAQMs8
+ luH0K8WEd3FWnxNsTKjjVfpCm+akqduF97bNN+5TnFA3BdivY1tQNsJ11JqoWc21A3Vj
+ 4lzw==
+X-Gm-Message-State: AOAM531qCpkILQjTAOJe1aRUJ5If71G9RggLXiDxjKitsi08V8TPHUUm
+ mjCXwdCX9H4Y/OlLhYYOR/s=
+X-Google-Smtp-Source: ABdhPJwz0uUQuS6SrOxnd9U5qO9ZiLgAHcC4GWDAyuSrpRSFXyQDaZW9Y29QL3L9YkZUF7/d+C+TcA==
+X-Received: by 2002:a05:620a:e16:: with SMTP id
+ y22mr2944198qkm.86.1614017178085; 
+ Mon, 22 Feb 2021 10:06:18 -0800 (PST)
+Received: from localhost.localdomain ([208.64.158.253])
+ by smtp.gmail.com with ESMTPSA id c63sm13109242qkf.8.2021.02.22.10.06.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Feb 2021 10:06:17 -0800 (PST)
+From: Julian Braha <julianbraha@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8192e: fix kconfig dependency on CRYPTO
+Date: Mon, 22 Feb 2021 13:06:07 -0500
+Message-Id: <20210222180607.399753-1-julianbraha@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:678b:0:0:0:0 with HTTP; Mon, 22 Feb 2021 09:43:40
- -0800 (PST)
-From: Mark Jackson <chrisuche005@gmail.com>
-Date: Mon, 22 Feb 2021 09:43:40 -0800
-Message-ID: <CAOBPeD=tCc-dtzhhu7BZ+Zn+EELh=7Z8FEBbs4-Px0PnSWN-gw@mail.gmail.com>
-Subject: Your ATM CARD For Compensation
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,49 +84,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My Dear Friend
+When RTLLIB_CRYPTO_TKIP is enabled and CRYPTO is disabled,
+Kbuild gives the following warning:
 
-This letter is to acknowledge the substantial contributions of time and
-energy you have made in trying to assist to claim the fund through
-your account, despite that it failed us because of your inability to
-continue financing the transaction.
+WARNING: unmet direct dependencies detected for CRYPTO_MICHAEL_MIC
+  Depends on [n]: CRYPTO [=n]
+  Selected by [m]:
+  - RTLLIB_CRYPTO_TKIP [=m] && STAGING [=y] && RTLLIB [=m]
 
-Besides I'm happy to inform you that I have succeeded in transferring
-the fund out of my home Country with the help of a new partner from
-Tuvalu.
+WARNING: unmet direct dependencies detected for CRYPTO_LIB_ARC4
+  Depends on [n]: CRYPTO [=n]
+  Selected by [m]:
+  - RTLLIB_CRYPTO_TKIP [=m] && STAGING [=y] && RTLLIB [=m]
+  - RTLLIB_CRYPTO_WEP [=m] && STAGING [=y] && RTLLIB [=m]
 
-I am now in Tuvalu for investment and Tuvalu is composed of 9 coral
-atolls along a 360 mile chain in Polynesia. They gained independence
-in 1978 the former Ellice Islands.
+This is because RTLLIB_CRYPTO_TKIP selects CRYPTO_MICHAEL_MIC and
+CRYPTO_LIB_ARC4, without depending on or selecting CRYPTO,
+despite those config options being subordinate to CRYPTO.
 
-Therefore in appreciation of your earlier assistance, I have decided to
-compensate you with the sum of $850.000.00 USD which I raised in ATM
-CARD on your favour.
+Signed-off-by: Julian Braha <julianbraha@gmail.com>
+---
+ drivers/staging/rtl8192e/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-This fund I have given to you has been deposited with a bank which has
-already opened an account and issued to you ATM CARD worth
-US$850.000.00 (Eight Hundred and Fifty Thousand United States Dollars)
-The ATM CARD is withdrawable from any ATM Machine in the world.
+diff --git a/drivers/staging/rtl8192e/Kconfig b/drivers/staging/rtl8192e/Kconfig
+index 03fcc23516fd..6e7d84ac06f5 100644
+--- a/drivers/staging/rtl8192e/Kconfig
++++ b/drivers/staging/rtl8192e/Kconfig
+@@ -26,6 +26,7 @@ config RTLLIB_CRYPTO_CCMP
+ config RTLLIB_CRYPTO_TKIP
+ 	tristate "Support for rtllib TKIP crypto"
+ 	depends on RTLLIB
++	select CRYPTO
+ 	select CRYPTO_LIB_ARC4
+ 	select CRYPTO_MICHAEL_MIC
+ 	default y
+-- 
+2.27.0
 
-So feel free and contact my Personal assistance (PA) in Benin
-Republic, his name is Mr.Stephen Pena
-
-Address: Carre 1299, Ste Rita City
-Cotonou,Benin Republic
-
-Email: ( spenaneoris@gmail.com )
-
-and instruct him to send the ATM CARD to you.
-
-Please do let me know immediately you receive it.
-
-Regards,
-Mr.Mark Jackson
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
