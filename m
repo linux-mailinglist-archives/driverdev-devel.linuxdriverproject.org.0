@@ -2,31 +2,31 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D787321ECA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 19:06:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DCAD0321ECB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 19:06:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EFCF983837;
-	Mon, 22 Feb 2021 18:06:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 78F4683829;
+	Mon, 22 Feb 2021 18:06:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DPAO_dQs2WsN; Mon, 22 Feb 2021 18:06:43 +0000 (UTC)
+	with ESMTP id iPp5JGQXIWXT; Mon, 22 Feb 2021 18:06:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 85B65835EF;
-	Mon, 22 Feb 2021 18:06:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3CD6283641;
+	Mon, 22 Feb 2021 18:06:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 735CA1BF94B
+ by ash.osuosl.org (Postfix) with ESMTP id 767AD1BF983
  for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 18:06:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 906278174C
+ by hemlock.osuosl.org (Postfix) with ESMTP id E68F881E1E
  for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 18:06:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b4EA1crwjR-d for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 18:06:29 +0000 (UTC)
+ with ESMTP id wEbtCQJvSjb7 for <devel@linuxdriverproject.org>;
+ Mon, 22 Feb 2021 18:06:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-qk1-f177.google.com (mail-qk1-f177.google.com
  [209.85.222.177])
