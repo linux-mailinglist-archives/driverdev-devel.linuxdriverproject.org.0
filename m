@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF53F322127
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Feb 2021 22:14:12 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13DC63224D0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 05:05:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1135A80ED1;
-	Mon, 22 Feb 2021 21:14:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0B3CC870CF;
+	Tue, 23 Feb 2021 04:05:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KntHlBxqQY79; Mon, 22 Feb 2021 21:14:08 +0000 (UTC)
+	with ESMTP id pXoB+blvIFT0; Tue, 23 Feb 2021 04:05:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BFC388567A;
-	Mon, 22 Feb 2021 21:14:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5BB1987030;
+	Tue, 23 Feb 2021 04:05:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 819111BF3F2
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 21:14:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2C30F1BF34F
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 04:05:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7DF688574F
- for <devel@linuxdriverproject.org>; Mon, 22 Feb 2021 21:14:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1B30B60087
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 04:05:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xuAxQ9fXeKoF for <devel@linuxdriverproject.org>;
- Mon, 22 Feb 2021 21:14:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 29A7E8567A
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 21:14:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=uvvxHpxjpRDChkcLEuz/w9isIoe8ffoa8WKElKGpxLg=; b=qcVt3B5qUZhOe1+3Fvy1vUW2UW
- IGVigTv5c/u0qDQL+9cL1hKNSu+vEkrGr3Y+Gxti77SpQlOLYV9BpAf00AsbW5Zil8KzpfONvIraK
- eykqUElkB12/bQldmhoABtRYV+8LTL0OKUQuPbu/gSFotUUmKieWAfV9fV+1MRIueVV0opRokVPZw
- j9ht9zXLmbvunpixo080IqgEHTpV+eDExj14gnpz3qpqrariiuFWS1VpNcQM1dmiPwSN4glZT3XOE
- Wnvs+KDUdMYbxvcfN6nWztObuUBEu2JKqEYBCa5xtePF3wGEDNIgvkrsgr6sikFLCmMcht2ETBdAT
- VFPoZ+cQ==;
-Received: from [2601:1c0:6280:3f0::d05b]
- by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEIWn-0001NA-VI; Mon, 22 Feb 2021 21:14:02 +0000
-Subject: Re: [PATCH] staging: rtl8192e: fix kconfig dependency on CRYPTO
-To: Julian Braha <julianbraha@gmail.com>, gregkh@linuxfoundation.org
-References: <20210222180607.399753-1-julianbraha@gmail.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <8e220235-6ef6-dd49-8333-d32bc0cdcf8f@infradead.org>
-Date: Mon, 22 Feb 2021 13:13:58 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FX1-deKTwXdd for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 04:05:36 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 02BDB605C7
+ for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 04:05:35 +0000 (UTC)
+IronPort-SDR: ihKjsY1tzgkzevqOCyKF83nvD/qqMc+Md1KOR9WC4XsBrtXZ11fXMHeU+wAqFLHK9Sf7jCu0x2
+ NNvmL6d3zinw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9903"; a="181242198"
+X-IronPort-AV: E=Sophos;i="5.81,199,1610438400"; d="scan'208";a="181242198"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2021 20:05:34 -0800
+IronPort-SDR: 7QjF/KZipQLOI/XtxJRdnj/GCPgs/NsU2ICeQvFtBm7xWSj0E0XOWFNf8I7wgA6+uqSfb2K559
+ tR09jC7tZ9hg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,199,1610438400"; d="scan'208";a="430514843"
+Received: from lkp-server01.sh.intel.com (HELO 16660e54978b) ([10.239.97.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 22 Feb 2021 20:05:33 -0800
+Received: from kbuild by 16660e54978b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lEOx2-0000tV-Ch; Tue, 23 Feb 2021 04:05:32 +0000
+Date: Tue, 23 Feb 2021 12:04:47 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 425d1dc163eedbfd92f108736cfaad67676af1a5
+Message-ID: <60347edf.d9t6DDA4MbB9qE4z%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20210222180607.399753-1-julianbraha@gmail.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,59 +67,138 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2/22/21 10:06 AM, Julian Braha wrote:
-> When RTLLIB_CRYPTO_TKIP is enabled and CRYPTO is disabled,
-> Kbuild gives the following warning:
-> 
-> WARNING: unmet direct dependencies detected for CRYPTO_MICHAEL_MIC
->   Depends on [n]: CRYPTO [=n]
->   Selected by [m]:
->   - RTLLIB_CRYPTO_TKIP [=m] && STAGING [=y] && RTLLIB [=m]
-> 
-> WARNING: unmet direct dependencies detected for CRYPTO_LIB_ARC4
->   Depends on [n]: CRYPTO [=n]
->   Selected by [m]:
->   - RTLLIB_CRYPTO_TKIP [=m] && STAGING [=y] && RTLLIB [=m]
->   - RTLLIB_CRYPTO_WEP [=m] && STAGING [=y] && RTLLIB [=m]
-> 
-> This is because RTLLIB_CRYPTO_TKIP selects CRYPTO_MICHAEL_MIC and
-> CRYPTO_LIB_ARC4, without depending on or selecting CRYPTO,
-> despite those config options being subordinate to CRYPTO.
-> 
-> Signed-off-by: Julian Braha <julianbraha@gmail.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 425d1dc163eedbfd92f108736cfaad67676af1a5  staging: wimax: Fix block comment style issue in stack.c
 
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
+elapsed time: 725m
 
-Thanks.
+configs tested: 108
+configs skipped: 3
 
-> ---
->  drivers/staging/rtl8192e/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/rtl8192e/Kconfig b/drivers/staging/rtl8192e/Kconfig
-> index 03fcc23516fd..6e7d84ac06f5 100644
-> --- a/drivers/staging/rtl8192e/Kconfig
-> +++ b/drivers/staging/rtl8192e/Kconfig
-> @@ -26,6 +26,7 @@ config RTLLIB_CRYPTO_CCMP
->  config RTLLIB_CRYPTO_TKIP
->  	tristate "Support for rtllib TKIP crypto"
->  	depends on RTLLIB
-> +	select CRYPTO
->  	select CRYPTO_LIB_ARC4
->  	select CRYPTO_MICHAEL_MIC
->  	default y
-> 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+powerpc                     akebono_defconfig
+x86_64                           alldefconfig
+mips                            gpr_defconfig
+s390                                defconfig
+powerpc                 mpc836x_mds_defconfig
+h8300                     edosk2674_defconfig
+mips                malta_qemu_32r6_defconfig
+m68k                          multi_defconfig
+alpha                            alldefconfig
+powerpc                      ppc64e_defconfig
+arm                           tegra_defconfig
+powerpc                     ksi8560_defconfig
+openrisc                    or1ksim_defconfig
+m68k                       m5475evb_defconfig
+powerpc                      mgcoge_defconfig
+m68k                          sun3x_defconfig
+arm                        multi_v5_defconfig
+arm                          simpad_defconfig
+powerpc                 mpc837x_rdb_defconfig
+sh                        sh7763rdp_defconfig
+sh                   secureedge5410_defconfig
+sparc                       sparc64_defconfig
+arm                     am200epdkit_defconfig
+powerpc                      bamboo_defconfig
+powerpc                mpc7448_hpc2_defconfig
+mips                         tb0226_defconfig
+arm                       multi_v4t_defconfig
+openrisc                 simple_smp_defconfig
+powerpc                   motionpro_defconfig
+s390                          debug_defconfig
+arm                            lart_defconfig
+powerpc                          g5_defconfig
+sh                        sh7785lcr_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a001-20210222
+x86_64               randconfig-a002-20210222
+x86_64               randconfig-a003-20210222
+x86_64               randconfig-a005-20210222
+x86_64               randconfig-a006-20210222
+x86_64               randconfig-a004-20210222
+i386                 randconfig-a005-20210222
+i386                 randconfig-a006-20210222
+i386                 randconfig-a004-20210222
+i386                 randconfig-a003-20210222
+i386                 randconfig-a001-20210222
+i386                 randconfig-a002-20210222
+i386                 randconfig-a013-20210222
+i386                 randconfig-a012-20210222
+i386                 randconfig-a011-20210222
+i386                 randconfig-a014-20210222
+i386                 randconfig-a016-20210222
+i386                 randconfig-a015-20210222
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
--- 
-~Randy
+clang tested configs:
+x86_64               randconfig-a015-20210222
+x86_64               randconfig-a011-20210222
+x86_64               randconfig-a012-20210222
+x86_64               randconfig-a016-20210222
+x86_64               randconfig-a014-20210222
+x86_64               randconfig-a013-20210222
 
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
