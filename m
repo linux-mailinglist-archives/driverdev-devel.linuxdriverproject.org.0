@@ -1,56 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4BFB322C49
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 15:31:24 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED5D8322C4A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 15:31:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BE4E287249;
-	Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EE16885F7D;
+	Tue, 23 Feb 2021 14:31:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CxH4bZx6ysHU; Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+	with ESMTP id 6oO9XRT5BMdC; Tue, 23 Feb 2021 14:31:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 00D058723B;
-	Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D101785F3D;
+	Tue, 23 Feb 2021 14:31:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5ED871BF36B
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AAF891BF36B
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5B80185F3D
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A79EA85F51
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rVrIV12GqWmY for <devel@linuxdriverproject.org>;
- Tue, 23 Feb 2021 14:31:18 +0000 (UTC)
+ with ESMTP id 4BmA5rlzjPJv for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 14:31:19 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp70.ord1c.emailsrvr.com (smtp70.ord1c.emailsrvr.com
- [108.166.43.70])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8EC4285DFD
- for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:18 +0000 (UTC)
+Received: from smtp64.ord1c.emailsrvr.com (smtp64.ord1c.emailsrvr.com
+ [108.166.43.64])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 71AC785DFD
+ for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1614090677;
- bh=5O8AqWycx5/wTyplXA32j1bAll6XzQYCRMuqEJg1PPU=;
+ s=20190130-41we5z8j; t=1614090678;
+ bh=Xg0XQm948RnX2mNORkN4jWNpvOmAQ4uZEFklw4yFCGI=;
  h=From:To:Subject:Date:From;
- b=PmnZz6fwG6OMLEPScoep9k3JWngsX3mivw0Rm5287LS7xnclWNmSY2BwEJwSH7kaU
- TJSJTwc3OY7Qyfe00SnDa6xzS4P317i5Y7KY8+abxWQ7LNsTBwuCJGouAZtf4Wk3Qb
- B37ms1lgRsZ3G1CKjHpIxnNS47q7ikpBtvvGYaMc=
+ b=GgSTc8byGc3+Pnf9S76Xu3nWqXnc8UAB38b9l+3Ta/1r1AeTjXN3TtT1/cStAmtNe
+ UIcMD65pKY2G2SYmcVsvguTFqR/xUMEyOghGbJBcItK/IhgpfssD6LsHmAqZidwnkl
+ q5YBIJ2gV2jpB815ziytvb6/py4FA1KcPaBDDDJ4=
 X-Auth-ID: abbotti@mev.co.uk
 Received: by smtp1.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id E5DF620184; 
- Tue, 23 Feb 2021 09:31:16 -0500 (EST)
+ abbotti-AT-mev.co.uk) with ESMTPSA id 132DA2019E; 
+ Tue, 23 Feb 2021 09:31:17 -0500 (EST)
 From: Ian Abbott <abbotti@mev.co.uk>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH 00/14] staging: comedi: Fix some command data endian problems
-Date: Tue, 23 Feb 2021 14:30:41 +0000
-Message-Id: <20210223143055.257402-1-abbotti@mev.co.uk>
+Subject: [PATCH 01/14] staging: comedi: addi_apci_1032: Fix endian problem for
+ COS sample
+Date: Tue, 23 Feb 2021 14:30:42 +0000
+Message-Id: <20210223143055.257402-2-abbotti@mev.co.uk>
 X-Mailer: git-send-email 2.30.0
+In-Reply-To: <20210223143055.257402-1-abbotti@mev.co.uk>
+References: <20210223143055.257402-1-abbotti@mev.co.uk>
 MIME-Version: 1.0
-X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-1-1
+X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-2-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,58 +67,50 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ian Abbott <abbotti@mev.co.uk>
+ Ian Abbott <abbotti@mev.co.uk>, stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The `comedi_buf_read_samples()` and `comedi_buf_write_samples()`
-functions can read/write either 16-bit or 32-bit values from/to the
-Comedi buffer used for Comedi asynchonous command data.  The width of
-the value depends on whether the subdevice sets the `SDF_LSAMPL` flag
-(indicating 32-bit samples, if set).
+The Change-Of-State (COS) subdevice supports Comedi asynchronous
+commands to read 16-bit change-of-state values.  However, the interrupt
+handler is calling `comedi_buf_write_samples()` with the address of a
+32-bit integer `&s->state`.  On bigendian architectures, it will copy 2
+bytes from the wrong end of the 32-bit integer.  Fix it by transferring
+the value via a 16-bit integer.
 
-Various Comedi drivers are calling `comedi_buf_write_samples()` with the
-address of an object of type `unsigned int` when the subdevice is set to
-use 16-bit wide samples (`SDF_LSAMPL` flag clear).  That will not work
-properly on bigendian machines because it will be transferring a 2-byte
-value from the wrong end of the 32-bit integer.  This patch series fixes
-those problems.
+Fixes: 6bb45f2b0c86 ("staging: comedi: addi_apci_1032: use comedi_buf_write_samples()"
+Cc: <stable@vger.kernel.org> # 3.19+
+Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
+---
+ drivers/staging/comedi/drivers/addi_apci_1032.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-For some of the drivers, the value being transferred is always 0 anyway,
-so it doesn't matter much, but fix them anyway in patches 10 thru 14.
-
-01) staging: comedi: addi_apci_1032: Fix endian problem for COS sample
-02) staging: comedi: addi_apci_1500: Fix endian problem for command sample
-03) staging: comedi: adv_pci1710: Fix endian problem for AI command data
-04) staging: comedi: das6402: Fix endian problem for AI command data
-05) staging: comedi: das800: Fix endian problem for AI command data
-06) staging: comedi: dmm32at: Fix endian problem for AI command data
-07) staging: comedi: me4000: Fix endian problem for AI command data
-08) staging: comedi: pcl711: Fix endian problem for AI command data
-09) staging: comedi: pcl818: Fix endian problem for AI command data
-10) staging: comedi: amplc_pc236_common: Use 16-bit 0 for interrupt data
-11) staging: comedi: comedi_parport: Use 16-bit 0 for interrupt data
-12) staging: comedi: ni_6527: Use 16-bit 0 for interrupt data
-13) staging: comedi: ni_65xx: Use 16-bit 0 for interrupt data
-14) staging: comedi: pcl726: Use 16-bit 0 for interrupt data
-
- drivers/staging/comedi/drivers/addi_apci_1032.c     |  4 +++-
- drivers/staging/comedi/drivers/addi_apci_1500.c     | 18 +++++++++---------
- drivers/staging/comedi/drivers/adv_pci1710.c        | 10 +++++-----
- drivers/staging/comedi/drivers/amplc_pc236_common.c |  4 +++-
- drivers/staging/comedi/drivers/comedi_parport.c     |  3 ++-
- drivers/staging/comedi/drivers/das6402.c            |  2 +-
- drivers/staging/comedi/drivers/das800.c             |  2 +-
- drivers/staging/comedi/drivers/dmm32at.c            |  2 +-
- drivers/staging/comedi/drivers/me4000.c             |  2 +-
- drivers/staging/comedi/drivers/ni_6527.c            |  4 +++-
- drivers/staging/comedi/drivers/ni_65xx.c            |  3 ++-
- drivers/staging/comedi/drivers/pcl711.c             |  2 +-
- drivers/staging/comedi/drivers/pcl726.c             |  4 +++-
- drivers/staging/comedi/drivers/pcl818.c             |  2 +-
- 14 files changed, 36 insertions(+), 26 deletions(-)
+diff --git a/drivers/staging/comedi/drivers/addi_apci_1032.c b/drivers/staging/comedi/drivers/addi_apci_1032.c
+index 35b75f0c9200..81a246fbcc01 100644
+--- a/drivers/staging/comedi/drivers/addi_apci_1032.c
++++ b/drivers/staging/comedi/drivers/addi_apci_1032.c
+@@ -260,6 +260,7 @@ static irqreturn_t apci1032_interrupt(int irq, void *d)
+ 	struct apci1032_private *devpriv = dev->private;
+ 	struct comedi_subdevice *s = dev->read_subdev;
+ 	unsigned int ctrl;
++	unsigned short val;
+ 
+ 	/* check interrupt is from this device */
+ 	if ((inl(devpriv->amcc_iobase + AMCC_OP_REG_INTCSR) &
+@@ -275,7 +276,8 @@ static irqreturn_t apci1032_interrupt(int irq, void *d)
+ 	outl(ctrl & ~APCI1032_CTRL_INT_ENA, dev->iobase + APCI1032_CTRL_REG);
+ 
+ 	s->state = inl(dev->iobase + APCI1032_STATUS_REG) & 0xffff;
+-	comedi_buf_write_samples(s, &s->state, 1);
++	val = s->state;
++	comedi_buf_write_samples(s, &val, 1);
+ 	comedi_handle_events(dev, s);
+ 
+ 	/* enable the interrupt */
+-- 
+2.30.0
 
 _______________________________________________
 devel mailing list
