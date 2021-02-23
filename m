@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BE55322C56
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 15:32:01 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B23B322C57
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 15:32:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 49A5287237;
-	Tue, 23 Feb 2021 14:32:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5E2D883AAF;
+	Tue, 23 Feb 2021 14:32:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uk3TMVlOmanU; Tue, 23 Feb 2021 14:32:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fEKI-hPwE8sl; Tue, 23 Feb 2021 14:32:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D87E0871B0;
-	Tue, 23 Feb 2021 14:31:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E3F983A69;
+	Tue, 23 Feb 2021 14:32:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E726A1BF36B
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 372741BF36B
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E405C87237
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 25F9F83A5D
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x1Vk90BEW-BQ for <devel@linuxdriverproject.org>;
- Tue, 23 Feb 2021 14:31:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp71.ord1c.emailsrvr.com (smtp71.ord1c.emailsrvr.com
- [108.166.43.71])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8698C87233
- for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TrycuM24O_2m for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 14:31:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp69.ord1c.emailsrvr.com (smtp69.ord1c.emailsrvr.com
+ [108.166.43.69])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D58A083A3C
+ for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1614090687;
- bh=Y8j+IZqemPUgjjom78J2vWWwz+yNUHdE7eD0lwervRI=;
+ s=20190130-41we5z8j; t=1614090688;
+ bh=/zS8GuCsjfi/XCFnJezZr8L/K+eFEkjt/mhIkjZCWtY=;
  h=From:To:Subject:Date:From;
- b=AM/VMP6F3skGsx9kKg/pcNnSief3KO6EipDXxfGhIxpVDYkwxw4rWhxpXFbMN6xqC
- IpcT67/yHthXk/jIfVDipvSLeyA0Fl8VL66UDlG9thQYV+GwGmZBPNBX8WtZ/3Wror
- nz2CzVKuLOSaE41QCMkPGrQms2ayJNaz+OdMn7qg=
+ b=O+n8Er+zo+SzTRzp1f5ixkvbBGq6fM0/f0NprqJJ/K3giBs3008Do1i5DW9geko+h
+ hc2+z+R5mhRPHnSS6lWJeZve+OR+A0bnekvM4/5KaGWc4JCvyzKkY5lwPPGnHLYtg7
+ GxUsk/3Tv5n5dVhrEVNWG/61R/8Q5fBT2+bgtUHc=
 X-Auth-ID: abbotti@mev.co.uk
 Received: by smtp1.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 3CDA9201C8; 
- Tue, 23 Feb 2021 09:31:26 -0500 (EST)
+ abbotti-AT-mev.co.uk) with ESMTPSA id 62A0D201D7; 
+ Tue, 23 Feb 2021 09:31:27 -0500 (EST)
 From: Ian Abbott <abbotti@mev.co.uk>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH 08/14] staging: comedi: pcl711: Fix endian problem for AI
+Subject: [PATCH 09/14] staging: comedi: pcl818: Fix endian problem for AI
  command data
-Date: Tue, 23 Feb 2021 14:30:49 +0000
-Message-Id: <20210223143055.257402-9-abbotti@mev.co.uk>
+Date: Tue, 23 Feb 2021 14:30:50 +0000
+Message-Id: <20210223143055.257402-10-abbotti@mev.co.uk>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210223143055.257402-1-abbotti@mev.co.uk>
 References: <20210223143055.257402-1-abbotti@mev.co.uk>
 MIME-Version: 1.0
-X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-9-1
+X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-10-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,30 +76,35 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 The analog input subdevice supports Comedi asynchronous commands that
 use Comedi's 16-bit sample format.  However, the call to
 `comedi_buf_write_samples()` is passing the address of a 32-bit integer
-variable.  On bigendian machines, this will copy 2 bytes from the wrong
-end of the 32-bit value.  Fix it by changing the type of the variable
+parameter.  On bigendian machines, this will copy 2 bytes from the wrong
+end of the 32-bit value.  Fix it by changing the type of the parameter
 holding the sample value to `unsigned short`.
 
-Fixes: 1f44c034de2e ("staging: comedi: pcl711: use comedi_buf_write_samples()")
-Cc: <stable@vger.kernel.org> # 3.19+
+[Note: the bug was introduced in commit edf4537bcbf5 ("staging: comedi:
+pcl818: use comedi_buf_write_samples()") but the patch applies better to
+commit d615416de615 ("staging: comedi: pcl818: introduce
+pcl818_ai_write_sample()").]
+
+Fixes: d615416de615 ("staging: comedi: pcl818: introduce pcl818_ai_write_sample()")
+Cc: <stable@vger.kernel.org> # 4.0+
 Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
 ---
- drivers/staging/comedi/drivers/pcl711.c | 2 +-
+ drivers/staging/comedi/drivers/pcl818.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/comedi/drivers/pcl711.c b/drivers/staging/comedi/drivers/pcl711.c
-index 2dbf69e30965..bd6f42fe9e3c 100644
---- a/drivers/staging/comedi/drivers/pcl711.c
-+++ b/drivers/staging/comedi/drivers/pcl711.c
-@@ -184,7 +184,7 @@ static irqreturn_t pcl711_interrupt(int irq, void *d)
- 	struct comedi_device *dev = d;
- 	struct comedi_subdevice *s = dev->read_subdev;
- 	struct comedi_cmd *cmd = &s->async->cmd;
--	unsigned int data;
-+	unsigned short data;
+diff --git a/drivers/staging/comedi/drivers/pcl818.c b/drivers/staging/comedi/drivers/pcl818.c
+index 63e3011158f2..f4b4a686c710 100644
+--- a/drivers/staging/comedi/drivers/pcl818.c
++++ b/drivers/staging/comedi/drivers/pcl818.c
+@@ -423,7 +423,7 @@ static int pcl818_ai_eoc(struct comedi_device *dev,
  
- 	if (!dev->attached) {
- 		dev_err(dev->class_dev, "spurious interrupt\n");
+ static bool pcl818_ai_write_sample(struct comedi_device *dev,
+ 				   struct comedi_subdevice *s,
+-				   unsigned int chan, unsigned int val)
++				   unsigned int chan, unsigned short val)
+ {
+ 	struct pcl818_private *devpriv = dev->private;
+ 	struct comedi_cmd *cmd = &s->async->cmd;
 -- 
 2.30.0
 
