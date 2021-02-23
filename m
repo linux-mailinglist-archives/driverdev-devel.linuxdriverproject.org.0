@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96C6D322C51
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 176EB322C4F
 	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 15:31:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 378C1600BA;
-	Tue, 23 Feb 2021 14:31:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BB56B85F83;
+	Tue, 23 Feb 2021 14:31:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WEi586PPC_fF; Tue, 23 Feb 2021 14:31:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bcN656soY3XZ; Tue, 23 Feb 2021 14:31:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EC10860622;
-	Tue, 23 Feb 2021 14:31:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9C39185F77;
+	Tue, 23 Feb 2021 14:31:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4D9151BF36B
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 211461BF36B
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3D3CB60618
+ by hemlock.osuosl.org (Postfix) with ESMTP id D3FBC8724C
  for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f1FZtBbjqvM5 for <devel@linuxdriverproject.org>;
- Tue, 23 Feb 2021 14:31:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp66.ord1c.emailsrvr.com (smtp66.ord1c.emailsrvr.com
- [108.166.43.66])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E32E26058B
- for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:20 +0000 (UTC)
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yLHEi7bDP6uA for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 14:31:21 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp71.ord1c.emailsrvr.com (smtp71.ord1c.emailsrvr.com
+ [108.166.43.71])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BF6548723E
+ for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1614090680;
- bh=ne9eCIiP9mnrfz4MCNNjieytJZ8uysslHZ0TYlQTC0w=;
+ s=20190130-41we5z8j; t=1614090681;
+ bh=/4hCyAy4rwu/yZTJptATBSKRQoImtoZ5GnCJxesSnUI=;
  h=From:To:Subject:Date:From;
- b=hlzX4YSn4+JeaSn/0604xXsnksJYR+4P3VvSHy7VTkfOeT8Cj2t4HEgls64cXB/EC
- RNVu/MEck2xIHFl1ANJVc2i5vBP/fDtT8+sII04V/pY54wdyQeXe+sbLyN6k/BRWNf
- DZXgH5OODM6gkUmmQHd0zSlhSij03arnZzFuLXBw=
+ b=Paoahx4syx5vnCIqEBkKwxiDNo4Inv90IxdHSmo34bTXmLiwdMRFOSSBA27brG0+l
+ R242i4CqXGaJr2ObxG9tS37+EDxeNWjVQPZVII4SWPYqg/DtI/BxExazjFyoi9tsJh
+ A/NaCFesWmNJQ98emVWCdio8UXrZ6IZkS0FXCD4k=
 X-Auth-ID: abbotti@mev.co.uk
 Received: by smtp1.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 3A1AE20158; 
- Tue, 23 Feb 2021 09:31:19 -0500 (EST)
+ abbotti-AT-mev.co.uk) with ESMTPSA id 5FD89201AD; 
+ Tue, 23 Feb 2021 09:31:20 -0500 (EST)
 From: Ian Abbott <abbotti@mev.co.uk>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH 02/14] staging: comedi: addi_apci_1500: Fix endian problem for
- command sample
-Date: Tue, 23 Feb 2021 14:30:43 +0000
-Message-Id: <20210223143055.257402-3-abbotti@mev.co.uk>
+Subject: [PATCH 03/14] staging: comedi: adv_pci1710: Fix endian problem for AI
+ command data
+Date: Tue, 23 Feb 2021 14:30:44 +0000
+Message-Id: <20210223143055.257402-4-abbotti@mev.co.uk>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210223143055.257402-1-abbotti@mev.co.uk>
 References: <20210223143055.257402-1-abbotti@mev.co.uk>
 MIME-Version: 1.0
-X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-3-1
+X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-4-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,57 +73,69 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The digital input subdevice supports Comedi asynchronous commands that
-read interrupt status information.  This uses 16-bit Comedi samples (of
-which only the bottom 8 bits contain status information).  However, the
-interrupt handler is calling `comedi_buf_write_samples()` with the
-address of a 32-bit variable `unsigned int status`.  On a bigendian
-machine, this will copy 2 bytes from the wrong end of the variable.  Fix
-it by changing the type of the variable to `unsigned short`.
+The analog input subdevice supports Comedi asynchronous commands that
+use Comedi's 16-bit sample format.  However, the calls to
+`comedi_buf_write_samples()` are passing the address of a 32-bit integer
+variable.  On bigendian machines, this will copy 2 bytes from the wrong
+end of the 32-bit value.  Fix it by changing the type of the variables
+holding the sample value to `unsigned short`.  The type of the `val`
+parameter of `pci1710_ai_read_sample()` is changed to `unsigned short *`
+accordingly.  The type of the `val` variable in `pci1710_ai_insn_read()`
+is also changed to `unsigned short` since its address is passed to
+`pci1710_ai_read_sample()`.
 
-Fixes: a8c66b684efa ("staging: comedi: addi_apci_1500: rewrite the subdevice support functions")
-Cc: <stable@vger.kernel.org> #4.0+
+Fixes: a9c3a015c12f ("staging: comedi: adv_pci1710: use comedi_buf_write_samples()")
+Cc: <stable@vger.kernel.org> # 4.0+
 Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
 ---
- .../staging/comedi/drivers/addi_apci_1500.c    | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/comedi/drivers/adv_pci1710.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/addi_apci_1500.c b/drivers/staging/comedi/drivers/addi_apci_1500.c
-index 11efb21555e3..b04c15dcfb57 100644
---- a/drivers/staging/comedi/drivers/addi_apci_1500.c
-+++ b/drivers/staging/comedi/drivers/addi_apci_1500.c
-@@ -208,7 +208,7 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
- 	struct comedi_device *dev = d;
- 	struct apci1500_private *devpriv = dev->private;
- 	struct comedi_subdevice *s = dev->read_subdev;
--	unsigned int status = 0;
-+	unsigned short status = 0;
- 	unsigned int val;
+diff --git a/drivers/staging/comedi/drivers/adv_pci1710.c b/drivers/staging/comedi/drivers/adv_pci1710.c
+index 692893c7e5c3..090607760be6 100644
+--- a/drivers/staging/comedi/drivers/adv_pci1710.c
++++ b/drivers/staging/comedi/drivers/adv_pci1710.c
+@@ -300,11 +300,11 @@ static int pci1710_ai_eoc(struct comedi_device *dev,
+ static int pci1710_ai_read_sample(struct comedi_device *dev,
+ 				  struct comedi_subdevice *s,
+ 				  unsigned int cur_chan,
+-				  unsigned int *val)
++				  unsigned short *val)
+ {
+ 	const struct boardtype *board = dev->board_ptr;
+ 	struct pci1710_private *devpriv = dev->private;
+-	unsigned int sample;
++	unsigned short sample;
+ 	unsigned int chan;
  
- 	val = inl(devpriv->amcc + AMCC_OP_REG_INTCSR);
-@@ -238,14 +238,14 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
- 	 *
- 	 *    Mask     Meaning
- 	 * ----------  ------------------------------------------
--	 * 0x00000001  Event 1 has occurred
--	 * 0x00000010  Event 2 has occurred
--	 * 0x00000100  Counter/timer 1 has run down (not implemented)
--	 * 0x00001000  Counter/timer 2 has run down (not implemented)
--	 * 0x00010000  Counter 3 has run down (not implemented)
--	 * 0x00100000  Watchdog has run down (not implemented)
--	 * 0x01000000  Voltage error
--	 * 0x10000000  Short-circuit error
-+	 * 0b00000001  Event 1 has occurred
-+	 * 0b00000010  Event 2 has occurred
-+	 * 0b00000100  Counter/timer 1 has run down (not implemented)
-+	 * 0b00001000  Counter/timer 2 has run down (not implemented)
-+	 * 0b00010000  Counter 3 has run down (not implemented)
-+	 * 0b00100000  Watchdog has run down (not implemented)
-+	 * 0b01000000  Voltage error
-+	 * 0b10000000  Short-circuit error
- 	 */
- 	comedi_buf_write_samples(s, &status, 1);
- 	comedi_handle_events(dev, s);
+ 	sample = inw(dev->iobase + PCI171X_AD_DATA_REG);
+@@ -345,7 +345,7 @@ static int pci1710_ai_insn_read(struct comedi_device *dev,
+ 	pci1710_ai_setup_chanlist(dev, s, &insn->chanspec, 1, 1);
+ 
+ 	for (i = 0; i < insn->n; i++) {
+-		unsigned int val;
++		unsigned short val;
+ 
+ 		/* start conversion */
+ 		outw(0, dev->iobase + PCI171X_SOFTTRG_REG);
+@@ -395,7 +395,7 @@ static void pci1710_handle_every_sample(struct comedi_device *dev,
+ {
+ 	struct comedi_cmd *cmd = &s->async->cmd;
+ 	unsigned int status;
+-	unsigned int val;
++	unsigned short val;
+ 	int ret;
+ 
+ 	status = inw(dev->iobase + PCI171X_STATUS_REG);
+@@ -455,7 +455,7 @@ static void pci1710_handle_fifo(struct comedi_device *dev,
+ 	}
+ 
+ 	for (i = 0; i < devpriv->max_samples; i++) {
+-		unsigned int val;
++		unsigned short val;
+ 		int ret;
+ 
+ 		ret = pci1710_ai_read_sample(dev, s, s->async->cur_chan, &val);
 -- 
 2.30.0
 
