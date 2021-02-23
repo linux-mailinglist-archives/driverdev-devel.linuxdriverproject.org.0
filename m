@@ -1,77 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7B85322605
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 07:44:01 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AEC0C60602;
-	Tue, 23 Feb 2021 06:43:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FbEvqNelALxZ; Tue, 23 Feb 2021 06:43:58 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5BE06605C3;
-	Tue, 23 Feb 2021 06:43:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 06ED41BF85D
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 06:43:47 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A4BFB322C49
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Feb 2021 15:31:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 035FB87146
- for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 06:43:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BE4E287249;
+	Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CxH4bZx6ysHU; Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 00D058723B;
+	Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5ED871BF36B
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5B80185F3D
+ for <devel@linuxdriverproject.org>; Tue, 23 Feb 2021 14:31:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xmNHrSrZq7FF for <devel@linuxdriverproject.org>;
- Tue, 23 Feb 2021 06:43:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com
- [209.85.167.50])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E324C87144
- for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 06:43:43 +0000 (UTC)
-Received: by mail-lf1-f50.google.com with SMTP id d24so9564607lfs.8
- for <devel@driverdev.osuosl.org>; Mon, 22 Feb 2021 22:43:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+TzOCAdEwWA3QxxBM+Z2WR+5WQ3jj+pgReYpklWmgk8=;
- b=Y0S3XTcLq+EFh5ihi+XrK4RzccttbfIVXNtXH/2cxLWWxX6JpdP62cyzgo4NDBI1E+
- 58mqgj/22I7yzUH3M4/Z4lymlgR22mPNuDBvMtkD+EIqIyGRMJeDRt0nQyf4fS9BEnPJ
- CySFJ9c1XQIj+7PO/kMs6e8ul6aUk7VehpObnTmrJ0dIEr6hSr18Z6+Ytlizsk81cFiX
- cB7ICQmvNZBVzSz5h6zqGr285kRnxdfkH6KaIuogx2jDKV13xqK2/viZlE830pyQAi5e
- IdlUd87XKYE9j7U0aiJF9qMkTk4IqnuM2ToiyQXucAKrSMfWuCZax4gsml9qgX6JykpS
- m0nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+TzOCAdEwWA3QxxBM+Z2WR+5WQ3jj+pgReYpklWmgk8=;
- b=ZgE9T70HENkjj4zDRgVUZrIrUW2K4Os9ylQAPuiEu8jwByfBAUMTTYRUaE3AM8YGog
- BNLLiPv+ILCSSUKCa+juEEHbDv2OJIgy3v3TEg5mQM2s51RV073H6ISRR4Qc+a0mrURB
- JE+l8zkMJHXcT+eVggx+0XmAUmpKZCh7gRau7gH3u/MCVjSNI8aJUvsmN0E+gmjdGPu5
- ZgEeBAckJr/DtziFpjkHJBGibzVc9GwA5yVLmFaWF9JDUp24q1mLqHB2tUdy3QIwki8m
- t9Wsy1wxOB4sVg1G5KfSjtOVKhzQWWTyLrfuFyc2FGiF/hX0GdeCkJTTLiVxsMtMNjHd
- pHNg==
-X-Gm-Message-State: AOAM532Wy/NdWgpGvWMJa8Y/ccEDS1+jR1bNiBiLFAQr6T4Z5qB1ffPN
- OqgmrFsOwQWUakmzRhbhm4M=
-X-Google-Smtp-Source: ABdhPJxRL1hRSxTPI+v0Fvh2bhJ9gzXMjm4xZjdZj02NMNox916xjKwB5LSZz0dgxfIjYZK5/PSaMg==
-X-Received: by 2002:ac2:4561:: with SMTP id k1mr701601lfm.544.1614062621805;
- Mon, 22 Feb 2021 22:43:41 -0800 (PST)
-Received: from localhost.localdomain (cable-hki-50dc98-67.dhcp.inet.fi.
- [80.220.152.67])
- by smtp.gmail.com with ESMTPSA id c9sm1574876lfc.208.2021.02.22.22.43.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 22:43:41 -0800 (PST)
-From: Hassan Shahbazi <h.shahbazi.git@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] drivers: staging: wimax: fix code style issues
-Date: Tue, 23 Feb 2021 08:42:29 +0200
-Message-Id: <20210223064227.62631-1-h.shahbazi.git@gmail.com>
-X-Mailer: git-send-email 2.26.2
+ with ESMTP id rVrIV12GqWmY for <devel@linuxdriverproject.org>;
+ Tue, 23 Feb 2021 14:31:18 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp70.ord1c.emailsrvr.com (smtp70.ord1c.emailsrvr.com
+ [108.166.43.70])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8EC4285DFD
+ for <devel@driverdev.osuosl.org>; Tue, 23 Feb 2021 14:31:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1614090677;
+ bh=5O8AqWycx5/wTyplXA32j1bAll6XzQYCRMuqEJg1PPU=;
+ h=From:To:Subject:Date:From;
+ b=PmnZz6fwG6OMLEPScoep9k3JWngsX3mivw0Rm5287LS7xnclWNmSY2BwEJwSH7kaU
+ TJSJTwc3OY7Qyfe00SnDa6xzS4P317i5Y7KY8+abxWQ7LNsTBwuCJGouAZtf4Wk3Qb
+ B37ms1lgRsZ3G1CKjHpIxnNS47q7ikpBtvvGYaMc=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp1.relay.ord1c.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id E5DF620184; 
+ Tue, 23 Feb 2021 09:31:16 -0500 (EST)
+From: Ian Abbott <abbotti@mev.co.uk>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH 00/14] staging: comedi: Fix some command data endian problems
+Date: Tue, 23 Feb 2021 14:30:41 +0000
+Message-Id: <20210223143055.257402-1-abbotti@mev.co.uk>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
+X-Classification-ID: a7362777-437e-4132-9c26-de9af4db62d3-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,44 +63,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Hassan Shahbazi <h.shahbazi.git@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-kernel@vger.kernel.org,
- skhan@linuxfoundation.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ian Abbott <abbotti@mev.co.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixes 'WARNING: Missing a blank line after declarations' generated by
-checkpatch.pl script.
+The `comedi_buf_read_samples()` and `comedi_buf_write_samples()`
+functions can read/write either 16-bit or 32-bit values from/to the
+Comedi buffer used for Comedi asynchonous command data.  The width of
+the value depends on whether the subdevice sets the `SDF_LSAMPL` flag
+(indicating 32-bit samples, if set).
 
-Signed-off-by: Hassan Shahbazi <h.shahbazi.git@gmail.com>
----
- drivers/staging/wimax/stack.c | 2 ++
- 1 file changed, 2 insertions(+)
+Various Comedi drivers are calling `comedi_buf_write_samples()` with the
+address of an object of type `unsigned int` when the subdevice is set to
+use 16-bit wide samples (`SDF_LSAMPL` flag clear).  That will not work
+properly on bigendian machines because it will be transferring a 2-byte
+value from the wrong end of the 32-bit integer.  This patch series fixes
+those problems.
 
-diff --git a/drivers/staging/wimax/stack.c b/drivers/staging/wimax/stack.c
-index ace24a6dfd2d..0d0f6ab79bf5 100644
---- a/drivers/staging/wimax/stack.c
-+++ b/drivers/staging/wimax/stack.c
-@@ -156,6 +156,7 @@ int wimax_gnl_re_state_change_send(
- {
- 	int result = 0;
- 	struct device *dev = wimax_dev_to_dev(wimax_dev);
-+
- 	d_fnstart(3, dev, "(wimax_dev %p report_skb %p)\n",
- 		  wimax_dev, report_skb);
- 	if (report_skb == NULL) {
-@@ -362,6 +363,7 @@ EXPORT_SYMBOL_GPL(wimax_state_change);
- enum wimax_st wimax_state_get(struct wimax_dev *wimax_dev)
- {
- 	enum wimax_st state;
-+
- 	mutex_lock(&wimax_dev->mutex);
- 	state = wimax_dev->state;
- 	mutex_unlock(&wimax_dev->mutex);
--- 
-2.26.2
+For some of the drivers, the value being transferred is always 0 anyway,
+so it doesn't matter much, but fix them anyway in patches 10 thru 14.
+
+01) staging: comedi: addi_apci_1032: Fix endian problem for COS sample
+02) staging: comedi: addi_apci_1500: Fix endian problem for command sample
+03) staging: comedi: adv_pci1710: Fix endian problem for AI command data
+04) staging: comedi: das6402: Fix endian problem for AI command data
+05) staging: comedi: das800: Fix endian problem for AI command data
+06) staging: comedi: dmm32at: Fix endian problem for AI command data
+07) staging: comedi: me4000: Fix endian problem for AI command data
+08) staging: comedi: pcl711: Fix endian problem for AI command data
+09) staging: comedi: pcl818: Fix endian problem for AI command data
+10) staging: comedi: amplc_pc236_common: Use 16-bit 0 for interrupt data
+11) staging: comedi: comedi_parport: Use 16-bit 0 for interrupt data
+12) staging: comedi: ni_6527: Use 16-bit 0 for interrupt data
+13) staging: comedi: ni_65xx: Use 16-bit 0 for interrupt data
+14) staging: comedi: pcl726: Use 16-bit 0 for interrupt data
+
+ drivers/staging/comedi/drivers/addi_apci_1032.c     |  4 +++-
+ drivers/staging/comedi/drivers/addi_apci_1500.c     | 18 +++++++++---------
+ drivers/staging/comedi/drivers/adv_pci1710.c        | 10 +++++-----
+ drivers/staging/comedi/drivers/amplc_pc236_common.c |  4 +++-
+ drivers/staging/comedi/drivers/comedi_parport.c     |  3 ++-
+ drivers/staging/comedi/drivers/das6402.c            |  2 +-
+ drivers/staging/comedi/drivers/das800.c             |  2 +-
+ drivers/staging/comedi/drivers/dmm32at.c            |  2 +-
+ drivers/staging/comedi/drivers/me4000.c             |  2 +-
+ drivers/staging/comedi/drivers/ni_6527.c            |  4 +++-
+ drivers/staging/comedi/drivers/ni_65xx.c            |  3 ++-
+ drivers/staging/comedi/drivers/pcl711.c             |  2 +-
+ drivers/staging/comedi/drivers/pcl726.c             |  4 +++-
+ drivers/staging/comedi/drivers/pcl818.c             |  2 +-
+ 14 files changed, 36 insertions(+), 26 deletions(-)
 
 _______________________________________________
 devel mailing list
