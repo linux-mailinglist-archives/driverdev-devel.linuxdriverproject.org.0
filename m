@@ -1,95 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4F79323803
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 08:41:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 941223238E3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 09:46:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7D92E6F5CD;
-	Wed, 24 Feb 2021 07:41:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id ABCC883CA8;
+	Wed, 24 Feb 2021 08:46:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XF-RJAvPq_os; Wed, 24 Feb 2021 07:41:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tz3aTLZhbEFM; Wed, 24 Feb 2021 08:46:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 783E660093;
-	Wed, 24 Feb 2021 07:41:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E26FD83AEC;
+	Wed, 24 Feb 2021 08:46:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 181731BF35E
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 07:41:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A96991BF47A
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 08:46:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1277E4EBD5
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 07:41:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 987D34308B
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 08:46:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=oracle.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vsKcRbhnXOMW for <devel@linuxdriverproject.org>;
- Wed, 24 Feb 2021 07:41:32 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PXVm4I8uZROo for <devel@linuxdriverproject.org>;
+ Wed, 24 Feb 2021 08:46:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3F24E4EBCE
- for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 07:41:32 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11O7eZEL065109;
- Wed, 24 Feb 2021 07:41:30 GMT
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 06EF9414ED
+ for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 08:46:14 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11O8eqNb166954;
+ Wed, 24 Feb 2021 08:46:14 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=5N9Zni7SESpGz83tWFRd5XihpHqYHf3ynWb5KcCbM+g=;
- b=T3VJuvYhu2DKEqdoBLvtB+b/A4K1OxEyFbP+OLlZeE3hFQe7swYvLUwGFJSmokEEEm3X
- MjTNm/VvXnAyFnHZ9/iMEO9iWTc9BwfiMbIiJRj/w9O0Yq6dFWjNmqvd+sMB0jyEc4bQ
- jG7hq+o8POsqtIk5MJnSt5qHNhdrnZO2XjYUnJUImqlI+5CTCThn3RQQ7QP+WudIcjdb
- LfBeaGG1YSkf0Q7L+mK3VeVdW4zhcym+7tmSP0LeUzbF1tysDzCPcsAzGEYeApEKjFTq
- fljhWuq7BP4HUDS9T6Bsz0MWWjRNKv1k91v1gv4C7y9/5DtqNPalMqf+yr+33gFDKcO7 fA== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 36tsur1yy9-1
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=ZtzMk5uBWu0YY0uHNXu5wD8ZlNbT4CAotv2RuoZhd+M=;
+ b=fzgzIB34XzmKozJbR0nU/wH+HRmcxPGjdgmDJ6WDawQYFl4ql6Tp7kFBvnZcWWbXQ156
+ ap54uAc8OLGeB1jPRqzDeS2J0RY3oI4tpIzXcO1FdB8GVT4zvatFqMOJCjfUEK9Hx46i
+ mAiv6lr63B/izeJZr1bSit5KnJbfXcWWfzR85vyu/Xy4YxnTR/3cRiQpZRT4mV3Q5RXB
+ D4WCMOysdcYVRycone/PYsDXmVjHRlSeK3xFPVJUwyYmfV0yG1SWgLOBczI7D80J9Pjv
+ rhklh1WMYp2KOv7NrOehQJi0Frb5F7BMLt8++bK+4TvT6UrL04IuFItZGqHB2JqewOj0 VA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 36ugq3gyx7-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Feb 2021 07:41:30 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11O7eXaw059050;
- Wed, 24 Feb 2021 07:41:28 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 36ucbyhen8-1
+ Wed, 24 Feb 2021 08:46:14 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11O8k9l2196145;
+ Wed, 24 Feb 2021 08:46:12 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3020.oracle.com with ESMTP id 36uc6suppw-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Feb 2021 07:41:28 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11O7fOOf006136;
- Wed, 24 Feb 2021 07:41:26 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 23 Feb 2021 23:41:23 -0800
-Date: Wed, 24 Feb 2021 10:41:17 +0300
+ Wed, 24 Feb 2021 08:46:12 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11O8k8q3007112;
+ Wed, 24 Feb 2021 08:46:10 GMT
+Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 24 Feb 2021 00:46:08 -0800
+Date: Wed, 24 Feb 2021 11:45:59 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: William Durand <will+git@drnd.me>
-Subject: Re: [PATCH 01/13] staging: rtl8192e: remove blank line in bss_ht
- struct
-Message-ID: <20210224074117.GR2087@kadam>
-References: <20210220155418.12282-1-will+git@drnd.me>
- <20210220155418.12282-2-will+git@drnd.me>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging: rtl8712: unterminated string leads to read overflow
+Message-ID: <YDYSR+1rj26NRhvb@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210220155418.12282-2-will+git@drnd.me>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Mailer: git-send-email haha only kidding
 X-Proofpoint-IMR: 1
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9904
  signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- adultscore=0
- phishscore=0 spamscore=0 suspectscore=0 bulkscore=0 malwarescore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102240060
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0 spamscore=0
+ mlxlogscore=999 adultscore=0 bulkscore=0 malwarescore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102240068
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9904
  signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0
- priorityscore=1501 impostorscore=0 bulkscore=0 mlxscore=0 malwarescore=0
- clxscore=1015 phishscore=0 mlxlogscore=999 lowpriorityscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102240060
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0
+ malwarescore=0 spamscore=0 mlxscore=0 suspectscore=0 priorityscore=1501
+ clxscore=1011 impostorscore=0 lowpriorityscore=0 mlxlogscore=999
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2102240067
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,28 +97,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
+Cc: Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ kernel-janitors@vger.kernel.org, devel@driverdev.osuosl.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ali Bahar <ali@internetdog.org>, Kumar Kartikeya Dwivedi <memxor@gmail.com>,
+ Pascal Terjan <pterjan@google.com>,
+ Ankit Baluni <b18007@students.iitmandi.ac.in>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Feb 20, 2021 at 03:54:05PM +0000, William Durand wrote:
-> Fixes a checkpatch CHECK issue.
-> 
+The memdup_user() function does not necessarily return a NUL terminated
+string so this can lead to a read overflow.  Switch from memdup_user()
+to strndup_user() to fix this bug.
 
-All these patches have the same vague commit message.  It's okay if the
-commit message basically restates the commit one line summary.  It
-should say something like:
+Fixes: c6dc001f2add ("staging: r8712u: Merging Realtek's latest (v2.6.6). Various fixes.")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Fix a checkpatch warning about a blank line after an open curly brace.
-
-Rename FooBar to foo_bar to silence a checkpatch warning about
-CamelCase.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+index 81de5a9e6b67..60dd798a6e51 100644
+--- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
++++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+@@ -924,7 +924,7 @@ static int r871x_wx_set_priv(struct net_device *dev,
+ 	struct iw_point *dwrq = (struct iw_point *)awrq;
+ 
+ 	len = dwrq->length;
+-	ext = memdup_user(dwrq->pointer, len);
++	ext = strndup_user(dwrq->pointer, len);
+ 	if (IS_ERR(ext))
+ 		return PTR_ERR(ext);
+ 
+-- 
+2.30.0
 
 _______________________________________________
 devel mailing list
