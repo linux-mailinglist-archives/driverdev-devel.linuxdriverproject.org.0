@@ -1,89 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9603E3244F5
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 21:10:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82DAE3237EF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 08:30:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 25E6F83EEF;
-	Wed, 24 Feb 2021 20:10:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8E32E6F5DF;
+	Wed, 24 Feb 2021 07:30:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J5wiCm1HH7ar; Wed, 24 Feb 2021 20:10:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jNfTc2VPPmoQ; Wed, 24 Feb 2021 07:30:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6EAC483EEE;
-	Wed, 24 Feb 2021 20:10:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 09363606AA;
+	Wed, 24 Feb 2021 07:30:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E8F81BF83A
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 20:07:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E89851BF35E
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 07:30:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6DB1983EE6
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 20:07:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D870143077
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 07:30:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PWJFmH-32C3G for <devel@linuxdriverproject.org>;
- Wed, 24 Feb 2021 20:07:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from wout3-smtp.messagingengine.com (wout3-smtp.messagingengine.com
- [64.147.123.19])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 000F483EE3
- for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 20:07:52 +0000 (UTC)
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.west.internal (Postfix) with ESMTP id 67DDEA30;
- Wed, 24 Feb 2021 15:07:52 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Wed, 24 Feb 2021 15:07:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drnd.me; h=from
- :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=doruJhczG0yJ4
- EN8JQu3N66tK/shwjEF6ktp55ZkXOM=; b=lSr2VG75LgUic+HDey7cnHvyp5j1O
- CT5pdZumoWISsVvRJ4+E+h+4yGbDaohixvEksAxBfP2G189j6FZhFkmTZTT2PLOv
- /fCwK0XmZ7V8kNCvktYT5A9SzhOOxpwgwjIvumNvVHXTdWRo+lNkXdFVIpXpZkau
- +1eM/+HVandEaFy5O8j7+0FGSyhIohiqJHd1VM10eFixwOQJyrPQSxyF1LUcMHY0
- RrTkfp7hV01QXnSyq/YoE2+6S7WlrhujQt6nUsqGG4H/c3oOf5D0rAs5TNWZcc+n
- vzMSfaWO5VfmfHLMI2eSq6KAjvvHJ7rAc6PlyeqrZtWNebCnUuxKHw1cg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :in-reply-to:message-id:mime-version:references:subject:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; bh=doruJhczG0yJ4EN8JQu3N66tK/shwjEF6ktp55ZkXOM=; b=SyFxbbdi
- AlG6Y5ubSAvKlxeLSKmDkuiOr9pZT1yxoBIrdLHUZ9xiNQmyOnrrraGt4e8D4DHK
- 9ZCEWuJUQZAsODUnrkmZFQ8KPi1dzJFu1SnOCf/DMAPcLkeyu7E431cJEVlGbjwX
- PGKsAqhW8A2Ts0gucwQFqa8QrvU7n2gihHt7NYfzMm0hmGERK7JWesZqwrtWHa3r
- pEaVJIQfgGyg5jTqyNS4Q4QXTutdfeBl5apoyasdmMR1ksVjUx7r57BudjLlOPgR
- xxXt8S4xPDtw9PG//RSU0vxz8BFmusP9yNeuy6DQDfPyRvIXuHKLJD8sPKRx1iek
- T2iAwYvpb9qGAw==
-X-ME-Sender: <xms:F7I2YHs8ZRF1jq0vECQ3h_9N2tPwJCHHnGWdSfcXx6vmvwg5z3G5_w>
- <xme:F7I2YP243dUmWPYqEipxgjduFOlTkyLn-KFAZ2JMnp31Gzw1X-SVpZjA43mKOHcGl
- wVZW8qAaaMdrc4uyA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrkeejgddufeduucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeghihhllhhi
- rghmucffuhhrrghnugcuoeifihhllhdoghhithesughrnhgurdhmvgeqnecuggftrfgrth
- htvghrnhepjedvgeffieeivdefleekvddvudffvefhiefgueeujedvgfegfeelkeduffel
- ffefnecukfhppedvudejrddvfeekrddvtdekrdejgeenucevlhhushhtvghrufhiiigvpe
- einecurfgrrhgrmhepmhgrihhlfhhrohhmpeifihhllhdoghhithesughrnhgurdhmvg
-X-ME-Proxy: <xmx:GLI2YAUWpTGFl6cMIhLYa9j0O2V7Snmkrjjs04kTS_dWYYdnTwBHHQ>
- <xmx:GLI2YCK68gJcORPpj0OOtsC3arZNv57x-O5hc2pPW3JoB5_QdvMl_w>
- <xmx:GLI2YK06m_bb4r2BIyYE6aJ96aXqBC5YAH2xIPJhHfveqUQfeZHjnw>
- <xmx:GLI2YG3vxGOBElbjscnlxOKB_5UgF0h4Dfn-WPofJBDeiH53JM4vWg>
-Received: from vagrant.vm (pd9eed04a.dip0.t-ipconnect.de [217.238.208.74])
- by mail.messagingengine.com (Postfix) with ESMTPA id 89A1E1080059;
- Wed, 24 Feb 2021 15:07:51 -0500 (EST)
-From: William Durand <will+git@drnd.me>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 13/13] staging: rtl8192e: reformat bss_ht struct
-Date: Sat, 20 Feb 2021 17:29:09 +0000
-Message-Id: <20210220172909.15812-14-will+git@drnd.me>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210220172909.15812-1-will+git@drnd.me>
-References: <20210220172909.15812-1-will+git@drnd.me>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i97pp7zFvVrk for <devel@linuxdriverproject.org>;
+ Wed, 24 Feb 2021 07:30:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 16F9B414ED
+ for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 07:30:38 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8E69E64ECB;
+ Wed, 24 Feb 2021 07:30:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1614151838;
+ bh=6KWcfVE7ehtOI43lndv+QRd+lKd96Y/+ShOkch0BvBo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=FZHdrLqNH9uYP4vwZ06tHXixoDEsOIIeNQG4EdVvL7nVAYr01/NALZADmr5WLBX66
+ l/CUvVBaVrpsn08NRUIVUuwwsveAAi8h5jwjMVegQNhbR8i5Q+R8cJiwkJuFQJXMVP
+ 7HC8e6PCqBmVISCDhgKqnWm+eaXrYAY4YLFxEu1w=
+Date: Wed, 24 Feb 2021 08:30:35 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: chakravarthi Kulkarni <chakravarthikulkarni2021@gmail.com>
+Subject: Re: [PATCH] drivers: staging: comedi: Fixed side effects from macro
+ definition.
+Message-ID: <YDYAm4GeMD/M4gic@kroah.com>
+References: <20210217142008.29699-1-chakravarthikulkarni2021@gmail.com>
+ <3c1ddf91-da6c-5620-61e7-1ec453b2aa93@mev.co.uk>
+ <CAEwrQWZEXYJDsTDiOAZLOr5jLXXyuZamwqRMquCyBdYPa8anow@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAEwrQWZEXYJDsTDiOAZLOr5jLXXyuZamwqRMquCyBdYPa8anow@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,57 +66,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Ian Abbott <abbotti@mev.co.uk>,
+ linux-kernel@vger.kernel.org, Ethan Edwards <ethancarteredwards@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This change uses a space instead of tabs between the type and name of
-each member of the struct.
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-Signed-off-by: William Durand <will+git@drnd.me>
----
- drivers/staging/rtl8192e/rtl819x_HT.h | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+A: No.
+Q: Should I include quotations after my reply?
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_HT.h b/drivers/staging/rtl8192e/rtl819x_HT.h
-index 33a58c87f4c1..ce13b41074a7 100644
---- a/drivers/staging/rtl8192e/rtl819x_HT.h
-+++ b/drivers/staging/rtl8192e/rtl819x_HT.h
-@@ -179,20 +179,20 @@ struct rt_hi_throughput {
- } __packed;
+http://daringfireball.net/2007/07/on_top
 
- struct bss_ht {
--	u8				bd_support_ht;
-+	u8 bd_support_ht;
+On Wed, Feb 24, 2021 at 12:47:26PM +0530, chakravarthi Kulkarni wrote:
+> Hi,
+> 
+> I tested it will unit test cases it looks fine.
+> int x = 10;
+> NI_USUAL_PFI_SELECT(x++)
+> 
+> will not have side effects as it is taken care using local variable in
+> macro.
 
--	u8					bd_ht_cap_buf[32];
--	u16					bd_ht_cap_len;
--	u8					bd_ht_info_buf[32];
--	u16					bd_ht_info_len;
-+	u8 bd_ht_cap_buf[32];
-+	u16 bd_ht_cap_len;
-+	u8 bd_ht_info_buf[32];
-+	u16 bd_ht_info_len;
+You ignored what Ian said about why this change was not ok :(
 
- 	enum ht_spec_ver bd_ht_spec_ver;
- 	enum ht_channel_width bd_bandwidth;
+It's long deleted from my review queue, sorry.
 
--	u8					bd_rt2rt_aggregation;
--	u8					bd_rt2rt_long_slot_time;
--	u8					rt2rt_ht_mode;
--	u8					bd_ht_1r;
-+	u8 bd_rt2rt_aggregation;
-+	u8 bd_rt2rt_long_slot_time;
-+	u8 rt2rt_ht_mode;
-+	u8 bd_ht_1r;
- };
-
- extern u8 MCS_FILTER_ALL[16];
---
-2.30.0
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
