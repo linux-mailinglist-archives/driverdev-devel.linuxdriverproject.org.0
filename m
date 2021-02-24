@@ -2,93 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA267323F5C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 16:07:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94E3F3241AB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 17:12:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9B54E4EC30;
-	Wed, 24 Feb 2021 15:07:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 089CD4EC91;
+	Wed, 24 Feb 2021 16:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yLKuCpxmvcPy; Wed, 24 Feb 2021 15:07:21 +0000 (UTC)
+	with ESMTP id QIurY9PsYn1c; Wed, 24 Feb 2021 16:12:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3DCFA4EC2F;
-	Wed, 24 Feb 2021 15:07:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 08B184EC96;
+	Wed, 24 Feb 2021 16:12:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 60C461BF2B6
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 15:07:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E85C61BF418
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 16:12:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5DC8B83C66
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 15:07:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D7F7A606D8
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 16:12:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T2R21Qkjk6-Q for <devel@linuxdriverproject.org>;
- Wed, 24 Feb 2021 15:07:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id A9PzakmINg1r for <devel@linuxdriverproject.org>;
+ Wed, 24 Feb 2021 16:12:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 386C983BB3
- for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 15:07:08 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11OF5IDj014479;
- Wed, 24 Feb 2021 15:07:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=yQ/9VJGRYC7HFFhoXhvUs5lWlOzidOwHTk2AtkXU7ak=;
- b=YiZKqeHm5szYWHOskDIGUeQQeLwjPF7UodXg+jpmW/lQdmxWwSReWhBS1ZGbk24BjGyJ
- WboDoB9ojcQHllvtnnJ9JDoEYo77G7sE8dpx2h5ERCEjToLl9zbJTOfs3D56KpVph5ML
- iWn/ao0PEjOPTi3a40z1W/dPjaJ53BMUIE67YOHIT2YleVCoY1Q5q9k27a+Y8pDkFegL
- mBVJaAYoD6EIWw6Hvz6ayrYx5ym11BSUDOsAPc/fAQmtIDsZ/J935IZRjJU+GVowfbie
- yXVcwroJUHYxmtCQ4SE+No8+X+WTKu7PQzev3k1p/DONgWSGuYdpN2uDyw+chi6iA5qJ jA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 36tsur3913-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Feb 2021 15:07:05 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11OF0f3Q129549;
- Wed, 24 Feb 2021 15:07:03 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 36ucb0uj3q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Feb 2021 15:07:03 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11OF6uG9011706;
- Wed, 24 Feb 2021 15:06:57 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 24 Feb 2021 07:06:56 -0800
-Date: Wed, 24 Feb 2021 18:06:48 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: karthek <mail@karthek.com>
+Received: from mail-pl1-f173.google.com (mail-pl1-f173.google.com
+ [209.85.214.173])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 461836073D
+ for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 16:12:16 +0000 (UTC)
+Received: by mail-pl1-f173.google.com with SMTP id d11so1465161plo.8
+ for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 08:12:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=znf/l1mfnTdzj1tAFt88yp752BGUtEl4XP2IYuaKZTs=;
+ b=OHSNgK98VD/x9FUdn1+H8qKxJUf7X7wAQtZxl8yJGwnr0GJrBhiwo8HM4g7IvZBz5+
+ z2+tvcVFsdEvhS7oNEUoWY+DnzYz1OMgA0p3+ccY3yxBvfDDgnNHLScOSJnR9zSpm6zw
+ fTwmutWr3Vv/l01cv8RcK80ydtqoPKSop2BIkVXQ3KdwsS0wB6aqS5k3fI4jqV7Tpxb5
+ Cx8s+CRsxvk7T4J7oRRx1tQy37xBD1jhiwXWFFRQRnZzxMF/rdhAJ83b7e7WjoCBXd4n
+ qDt/cFR2Cw6bnStQiGEEenFL6yOEjHfbMNzqtf3yPxCbMN7E9rK2GSfpNsWa4etw5j5f
+ eNgw==
+X-Gm-Message-State: AOAM531iRSsg07ueP+ZA0EaAyupQGMBFOxaBRLKdWLm6rr1wXyVFEOnO
+ jdRChCKtWHJ5I3gmirCYhAI=
+X-Google-Smtp-Source: ABdhPJx7IyGUAxjYTwnBqxStyxBOZONa0stTnIZV7U902QoSKg/lRFiLi65R1YP3dVCKVTuuxaEj/g==
+X-Received: by 2002:a17:90a:d149:: with SMTP id
+ t9mr5083231pjw.43.1614183135770; 
+ Wed, 24 Feb 2021 08:12:15 -0800 (PST)
+Received: from karthik-strix-linux.karthek.com ([192.140.155.67])
+ by smtp.gmail.com with ESMTPSA id y8sm3542994pfe.36.2021.02.24.08.12.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Feb 2021 08:12:15 -0800 (PST)
+Date: Wed, 24 Feb 2021 21:42:09 +0530
+From: karthek <mail@karthek.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
 Subject: Re: [PATCH 0/2] fix sparse warnings
-Message-ID: <20210224150648.GT2087@kadam>
+Message-ID: <YDZ62RMHotsPrF+R@karthik-strix-linux.karthek.com>
 References: <cover.1613921277.git.mail@karthek.com>
  <YDZpKcXLkiueequk@karthik-strix-linux.karthek.com>
+ <20210224150648.GT2087@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YDZpKcXLkiueequk@karthik-strix-linux.karthek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9904
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- suspectscore=0
- malwarescore=0 mlxlogscore=999 adultscore=0 bulkscore=0 mlxscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102240119
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9904
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0
- priorityscore=1501 impostorscore=0 bulkscore=0 mlxscore=0 malwarescore=0
- clxscore=1015 phishscore=0 mlxlogscore=999 lowpriorityscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102240119
+In-Reply-To: <20210224150648.GT2087@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,39 +87,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 24, 2021 at 08:26:41PM +0530, karthek wrote:
-> On Sun, Feb 21, 2021 at 09:00:48PM +0530, karthik alapati wrote:
-> > the following patches fixes two  byte-order issues
-> > and fixes these sparse warnings
-> > 
-> > 
-> > drivers/staging//wimax/i2400m/op-rfkill.c:89:25: warning: incorrect type in assignment (different base types)
-> > drivers/staging//wimax/i2400m/op-rfkill.c:89:25:    expected restricted __le16 [usertype] length
-> > drivers/staging//wimax/i2400m/op-rfkill.c:89:25:    got unsigned long
-> > .
-> > drivers/staging//wimax/i2400m/fw.c:514:27: warning: restricted __le32 degrades to integer
-> > 
-> > 
-> > karthik alapati (2):
-> >   staging: wimax/i2400m: fix byte-order issue
-> >   staging: wimax/i2400m: convert __le32 type to host byte-order
-> > 
-> >  drivers/staging/wimax/i2400m/fw.c        | 2 +-
-> >  drivers/staging/wimax/i2400m/op-rfkill.c | 2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > -- 
-> > 2.30.1
-> > 
-> ping?
-
-The merge window is open so no one is merging these types of fixes now.
-Wait until -rc1 is out, and then give the maintainer two weeks to look
-at your patch and get back to you.
-
-regards,
-dan carpenter
-
+On Wed, Feb 24, 2021 at 06:06:48PM +0300, Dan Carpenter wrote:
+> On Wed, Feb 24, 2021 at 08:26:41PM +0530, karthek wrote:
+> > On Sun, Feb 21, 2021 at 09:00:48PM +0530, karthik alapati wrote:
+> > > the following patches fixes two  byte-order issues
+> > > and fixes these sparse warnings
+> > > 
+> > > 
+> > > drivers/staging//wimax/i2400m/op-rfkill.c:89:25: warning: incorrect type in assignment (different base types)
+> > > drivers/staging//wimax/i2400m/op-rfkill.c:89:25:    expected restricted __le16 [usertype] length
+> > > drivers/staging//wimax/i2400m/op-rfkill.c:89:25:    got unsigned long
+> > > .
+> > > drivers/staging//wimax/i2400m/fw.c:514:27: warning: restricted __le32 degrades to integer
+> > > 
+> > > 
+> > > karthik alapati (2):
+> > >   staging: wimax/i2400m: fix byte-order issue
+> > >   staging: wimax/i2400m: convert __le32 type to host byte-order
+> > > 
+> > >  drivers/staging/wimax/i2400m/fw.c        | 2 +-
+> > >  drivers/staging/wimax/i2400m/op-rfkill.c | 2 +-
+> > >  2 files changed, 2 insertions(+), 2 deletions(-)
+> > > 
+> > > -- 
+> > > 2.30.1
+> > > 
+> > ping?
+> 
+> The merge window is open so no one is merging these types of fixes now.
+> Wait until -rc1 is out, and then give the maintainer two weeks to look
+> at your patch and get back to you.
+> 
+> regards,
+> dan carpenter
+>
+thanks dan, Got it.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
