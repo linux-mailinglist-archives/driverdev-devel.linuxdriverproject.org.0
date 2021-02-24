@@ -2,57 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F548323C4C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 13:53:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 918AB323C51
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Feb 2021 13:54:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3E4D9430DB;
-	Wed, 24 Feb 2021 12:53:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2E1D0430D6;
+	Wed, 24 Feb 2021 12:54:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hJhlfWwHCTV2; Wed, 24 Feb 2021 12:53:55 +0000 (UTC)
+	with ESMTP id cS9F2ngPtlCU; Wed, 24 Feb 2021 12:54:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AED36430C7;
-	Wed, 24 Feb 2021 12:53:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6B6FF430C7;
+	Wed, 24 Feb 2021 12:54:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 56C141BF5A7
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 12:53:44 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 642F61BF5A7
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 12:53:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 450AC4EC3C
- for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 12:53:44 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5361383D33
+ for <devel@linuxdriverproject.org>; Wed, 24 Feb 2021 12:53:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YEnf3io3NCsU for <devel@linuxdriverproject.org>;
- Wed, 24 Feb 2021 12:53:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LenYUEy4-QMP for <devel@linuxdriverproject.org>;
+ Wed, 24 Feb 2021 12:53:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F10814EBFD
- for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 12:53:42 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A8FF164F5A;
- Wed, 24 Feb 2021 12:53:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 896C683D2B
+ for <devel@driverdev.osuosl.org>; Wed, 24 Feb 2021 12:53:54 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 3796E64F6E;
+ Wed, 24 Feb 2021 12:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614171222;
- bh=p+lxkQWic3CI9G0twMBf/txJ+MWfriResU2klUeS94A=;
- h=From:To:Cc:Subject:Date:From;
- b=JphrkeRDpqQcxN4OJuXGIpzlmEqWCsV5SjPGgOHeG+kYZWsdGPJU6DWtDI4rMpDLP
- bLPUP88A/5MV6DefdHvr6Hc1oVuqNa9lgAUU68Iyu/LhTl0aMSEdr5Javej2ozZc6a
- Jmx5q8I69RPlaWMDtphEJvEtjai0VUNCiDLLSuz6fCS3NOCSpYVYmg4OotSGxpPItP
- ulcQ9te4OTAKgmc4URWCea8HtkzNo/i36swdFF2ihOLkPh0lUKSfzRag5lXmZxt0Qi
- jU0EJvyyHwun4nZjH1IbGOv2WFGGwLqZGM5xZqj2oo9QkDfzKZ99fXuyuLbYLnbRuV
- 7N8BQMA2klfjQ==
+ s=k20201202; t=1614171234;
+ bh=iFGODoxstryWh9z46Hsroy1kCvg8rG/P4tVB0R/u83A=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=W5qqzU/hgS26D6KpX8yxXfCRF584gSYfU+5u779/8wS4rmi5x289VmgPqW7m/YcVt
+ 0Sb/tGseSLZN+ogNlHP/izE2Bq3U6yco+b6Til85rGyP2Al2LOxHe34Q/WQUdkGTB7
+ 0/sUspYlB7eoM3zG8oVLRS2t9/3Zaq+rJhWy9kiLCIvoJH+29YocuT/KPyX7O2YHvo
+ N7TJGpVh0CSjKI4riW4ydINyu3q/CvnMKl8atsB+8kzT5JgIYjlhpxfUJbYZLGThgT
+ tOX2zal631DCfFz0a3pF068+5d5PTKCNjZzVq0pXgt0Tyo8GfUKllUrza74bmcvFfM
+ t3UDiBePpaXow==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 01/40] staging: fwserial: Fix error handling in
- fwserial_create
-Date: Wed, 24 Feb 2021 07:53:01 -0500
-Message-Id: <20210224125340.483162-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 10/40] staging: most: sound: add sanity check for
+ function argument
+Date: Wed, 24 Feb 2021 07:53:10 -0500
+Message-Id: <20210224125340.483162-10-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210224125340.483162-1-sashal@kernel.org>
+References: <20210224125340.483162-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -69,50 +71,43 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Dinghao Liu <dinghao.liu@zju.edu.cn>
+ Christian Gromm <christian.gromm@microchip.com>, devel@driverdev.osuosl.org,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dinghao Liu <dinghao.liu@zju.edu.cn>
+From: Christian Gromm <christian.gromm@microchip.com>
 
-[ Upstream commit f31559af97a0eabd467e4719253675b7dccb8a46 ]
+[ Upstream commit 45b754ae5b82949dca2b6e74fa680313cefdc813 ]
 
-When fw_core_add_address_handler() fails, we need to destroy
-the port by tty_port_destroy(). Also we need to unregister
-the address handler by fw_core_remove_address_handler() on
-failure.
+This patch checks the function parameter 'bytes' before doing the
+subtraction to prevent memory corruption.
 
-Signed-off-by: Dinghao Liu <dinghao.liu@zju.edu.cn>
-Link: https://lore.kernel.org/r/20201221122437.10274-1-dinghao.liu@zju.edu.cn
+Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Link: https://lore.kernel.org/r/1612282865-21846-1-git-send-email-christian.gromm@microchip.com
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/fwserial/fwserial.c | 2 ++
+ drivers/staging/most/sound/sound.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-index aec0f19597a94..4df6e3c1ea96c 100644
---- a/drivers/staging/fwserial/fwserial.c
-+++ b/drivers/staging/fwserial/fwserial.c
-@@ -2189,6 +2189,7 @@ static int fwserial_create(struct fw_unit *unit)
- 		err = fw_core_add_address_handler(&port->rx_handler,
- 						  &fw_high_memory_region);
- 		if (err) {
-+			tty_port_destroy(&port->port);
- 			kfree(port);
- 			goto free_ports;
- 		}
-@@ -2271,6 +2272,7 @@ static int fwserial_create(struct fw_unit *unit)
+diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
+index 79817061fcfa4..4225ee9fcf7bf 100644
+--- a/drivers/staging/most/sound/sound.c
++++ b/drivers/staging/most/sound/sound.c
+@@ -98,6 +98,8 @@ static void swap_copy24(u8 *dest, const u8 *source, unsigned int bytes)
+ {
+ 	unsigned int i = 0;
  
- free_ports:
- 	for (--i; i >= 0; --i) {
-+		fw_core_remove_address_handler(&serial->ports[i]->rx_handler);
- 		tty_port_destroy(&serial->ports[i]->port);
- 		kfree(serial->ports[i]);
- 	}
++	if (bytes < 2)
++		return;
+ 	while (i < bytes - 2) {
+ 		dest[i] = source[i + 2];
+ 		dest[i + 1] = source[i + 1];
 -- 
 2.27.0
 
