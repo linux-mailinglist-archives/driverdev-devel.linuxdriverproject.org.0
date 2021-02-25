@@ -2,92 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25540324ADB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Feb 2021 08:08:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E7EB8324D7E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Feb 2021 11:04:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B576F431FC;
-	Thu, 25 Feb 2021 07:08:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3EBDD43227;
+	Thu, 25 Feb 2021 10:04:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mLn8sL4y7IpU; Thu, 25 Feb 2021 07:08:40 +0000 (UTC)
+	with ESMTP id swl4PHmQjlZ1; Thu, 25 Feb 2021 10:04:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1DA33431B8;
-	Thu, 25 Feb 2021 07:08:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5499B4322A;
+	Thu, 25 Feb 2021 10:04:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D00D11BF350
- for <devel@linuxdriverproject.org>; Thu, 25 Feb 2021 07:08:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EE2241BF475
+ for <devel@linuxdriverproject.org>; Thu, 25 Feb 2021 10:04:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BEBCD6F6EE
- for <devel@linuxdriverproject.org>; Thu, 25 Feb 2021 07:08:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EAD3C6F680
+ for <devel@linuxdriverproject.org>; Thu, 25 Feb 2021 10:04:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aCOiSqCDi26b for <devel@linuxdriverproject.org>;
- Thu, 25 Feb 2021 07:08:28 +0000 (UTC)
+ with ESMTP id frXnmEtfDf28 for <devel@linuxdriverproject.org>;
+ Thu, 25 Feb 2021 10:04:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3137E6F6ED
- for <devel@driverdev.osuosl.org>; Thu, 25 Feb 2021 07:08:28 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11P74AsX193359;
- Thu, 25 Feb 2021 07:08:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=zBKsoyvZW42pljgNs2qIOF6TztDTbsqax0iQzIQWQUA=;
- b=HTkWMgw71P/uCefychW8VqYtMY5zRPMj4BnFIAQGW0GwYTBX5eMLVdtRZHYYGvSizjcO
- N5BnMkkyhImBV0AMy46s4EqdPeQLD4szf/h/ClOHq/SgyUWg/k+J/Yq8bwsfL+hkoPrX
- rd3n0q7o4ix6Qbj1mcWJQvCk14VfcGYdLmelMnMWwSNK9DKK0O6nRS4Ltd2QGPSgfR8O
- V26Nor9/PxNaDXPfrsf4GTQlCeK7ik/6jZPa29Bv56Rkk7Ob29sEPQckqFolhC5MLqq/
- WVrN3l7qnlSVnpBy3BgguWBfiSaUEv/cyMTYFbY8ZQc83MdJGuiomK+KJBfR4aUcnbIE 5Q== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 36ttcmddgu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 25 Feb 2021 07:08:26 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11P74bsS172733;
- Thu, 25 Feb 2021 07:08:25 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 36v9m6week-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 25 Feb 2021 07:08:25 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11P78Mkm019540;
- Thu, 25 Feb 2021 07:08:23 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 24 Feb 2021 23:08:22 -0800
-Date: Thu, 25 Feb 2021 10:08:15 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: William Durand <will+git@drnd.me>
-Subject: Re: [PATCH v2 00/13] bss_ht struct cleanups
-Message-ID: <20210225070815.GV2087@kadam>
-References: <20210220172909.15812-1-will+git@drnd.me>
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com
+ [209.85.208.41])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 45B4F6F652
+ for <devel@driverdev.osuosl.org>; Thu, 25 Feb 2021 10:04:11 +0000 (UTC)
+Received: by mail-ed1-f41.google.com with SMTP id l12so6074706edt.3
+ for <devel@driverdev.osuosl.org>; Thu, 25 Feb 2021 02:04:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=frJ+WzF1K1wG/yxdonqGNnv/EoSLYxyDv9oAC401akQ=;
+ b=slA0VDZIniRrGjVJ0k6Dqb9Dm0qtlTkyMFUR3LrPJdAgI8YABddEG5lPY/GaNhM2OQ
+ rR0xjB2dx0MbRAAWmehoL/46OyLxkLmFPJOqTWdckiR10S2dMzgPfxCWDt6sT96No9PK
+ ZNwLh44wh5LW4EYzK9bZ9jv0xV84qIOcwH/WsSm0u+08qg6uxuY5T7GZ+iz9bs0b4sji
+ lBNmLmnGiCyvbLtwzOBQUh4V/HLJcc0tr5ezUaKApemybWqPa9dKfC1NDzZw0OFedYfR
+ a7gPLMlH7NxPyWZHdO/zv8vTaqIr4BrQqbqiTdiYzCXxcGrlOlbGFgLNf++heac1bMeq
+ /5Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=frJ+WzF1K1wG/yxdonqGNnv/EoSLYxyDv9oAC401akQ=;
+ b=OKZCDD8RMztheVwf28x69FzJrsth1+eWF5H5WG/Cg6xSo4TYCPUuKV4rNG2J9Juxn8
+ 9/tRPQ5cVHpaLB/3lKbmZoTGMC/o37461Z49S4mreCGV6VpyvC8yeIAb1uHUia++sPAJ
+ WcJqdgY/XtTZWNNBvLEikq1e9DUpb5hCxVfvdGOsou2xkywGeIu5xFG0CpcJDHJtDzBR
+ 2QlNA90H68xWG/Tr6OC4fTlELIJh7OXumtumhburC6ToBQ9Z/IPt/kVO4oWOdBH4pc9F
+ JwEbuMr+qle6g+QVWwEdE4lv6XsvPQgqdmhSt3+qSdWbjCzmKHf22PqVHHBzoaF7Yo/N
+ 8sTg==
+X-Gm-Message-State: AOAM5333I68E9JCffSnDmOkmaiXQPZYPSjN0BdPX7ySCSzPtA1r6JTXr
+ GDqezeaaGK8KUBx9P15zzws=
+X-Google-Smtp-Source: ABdhPJwI3ZfJ/u0ynttp+nqwCvgC8NQrVCW5DuPTeCY818h+x5DO3jMpq5ap2PmfutUh/rRLoz2lFQ==
+X-Received: by 2002:a05:6402:ce:: with SMTP id
+ i14mr2070306edu.42.1614247449309; 
+ Thu, 25 Feb 2021 02:04:09 -0800 (PST)
+Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
+ [217.32.158.205])
+ by smtp.gmail.com with ESMTPSA id l6sm3298111edn.82.2021.02.25.02.04.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Feb 2021 02:04:08 -0800 (PST)
+From: Lee Gibson <leegib@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8192u: minor coding style fix
+Date: Thu, 25 Feb 2021 10:03:51 +0000
+Message-Id: <20210225100351.12199-1-leegib@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210220172909.15812-1-will+git@drnd.me>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9905
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- adultscore=0
- suspectscore=0 mlxlogscore=999 mlxscore=0 spamscore=0 bulkscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102250057
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9905
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- adultscore=0
- lowpriorityscore=0 spamscore=0 mlxscore=0 bulkscore=0 clxscore=1015
- priorityscore=1501 malwarescore=0 impostorscore=0 suspectscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102250057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,19 +87,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Lee Gibson <leegib@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Looks good.
+Fixes this checkpatch warning
+WARNING: Comparisons should place the constant on the right side of the test
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Lee Gibson <leegib@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
+index d853586705fc..175bb8b15389 100644
+--- a/drivers/staging/rtl8192u/r8192U_wx.c
++++ b/drivers/staging/rtl8192u/r8192U_wx.c
+@@ -726,7 +726,7 @@ static int r8192_wx_set_enc_ext(struct net_device *dev,
+ 			idx--;
+ 		group = ext->ext_flags & IW_ENCODE_EXT_GROUP_KEY;
+ 
+-		if ((!group) || (IW_MODE_ADHOC == ieee->iw_mode) || (alg ==  KEY_TYPE_WEP40)) {
++		if ((!group) || (ieee->iw_mode == IW_MODE_ADHOC) || (alg ==  KEY_TYPE_WEP40)) {
+ 			if ((ext->key_len == 13) && (alg == KEY_TYPE_WEP40))
+ 				alg = KEY_TYPE_WEP104;
+ 			ieee->pairwise_key_type = alg;
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
