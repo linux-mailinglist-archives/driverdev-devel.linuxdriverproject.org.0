@@ -2,40 +2,44 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8A12326595
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 17:32:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6613632660C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 18:05:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5DF51433AA;
-	Fri, 26 Feb 2021 16:32:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CD837433F1;
+	Fri, 26 Feb 2021 17:05:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OoZNHqK_chrL; Fri, 26 Feb 2021 16:32:19 +0000 (UTC)
+	with ESMTP id xhz8fh2ESQhi; Fri, 26 Feb 2021 17:05:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C466B433D4;
-	Fri, 26 Feb 2021 16:32:18 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 60C43433D4;
+	Fri, 26 Feb 2021 17:05:47 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6E9A21BF292
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 16:32:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 21B2F1BF280
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 17:05:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5B7A76F990
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 16:32:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 10D8B6F94A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 17:05:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id soatuwv7FmzE for <devel@linuxdriverproject.org>;
- Fri, 26 Feb 2021 16:32:07 +0000 (UTC)
+ with ESMTP id qLBLfJi2R_ez
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 17:05:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mmawarfare.com (unknown [173.254.228.69])
- by smtp3.osuosl.org (Postfix) with ESMTP id 179ED6F989
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 16:32:07 +0000 (UTC)
-To: devel@linuxdriverproject.org
-Subject: check again this smart drone
-Message-ID: <eb8ee4ee71319afe2daab56b27acbaaa@dronesgator.com>
-Date: Fri, 26 Feb 2021 16:43:30 +0100
-From: "Jan Wilson" <hsamseysonmoi@mmafightland.com>
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6273C6F6AF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 17:05:35 +0000 (UTC)
+To: driverdev-devel@linuxdriverproject.org
+Subject: 4k drone
+Message-ID: <e8941f36db61342dbfcb515e22969e43@dronesgator.com>
+Date: Fri, 26 Feb 2021 16:05:15 +0100
+From: "Jan Wilson" <hsameyfsonmoi@misstella.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
