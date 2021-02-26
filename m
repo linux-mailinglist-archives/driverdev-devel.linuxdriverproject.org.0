@@ -1,54 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 310BB325FB5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 10:12:49 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28DAC32621F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 12:48:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CC3A643308;
-	Fri, 26 Feb 2021 09:12:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 90E074EFD5;
+	Fri, 26 Feb 2021 11:48:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fsiFoJFNyNAj; Fri, 26 Feb 2021 09:12:47 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BdNrd8nV0sNy; Fri, 26 Feb 2021 11:48:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 179E8431CE;
-	Fri, 26 Feb 2021 09:12:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DA30A4EF23;
+	Fri, 26 Feb 2021 11:48:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 227AD1BF338
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 09:11:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F1BC31BF2A7
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 11:48:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 07EE284166
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 09:11:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EB10A6F89B
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 11:48:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lg9JLEZjBj9y for <devel@linuxdriverproject.org>;
- Fri, 26 Feb 2021 09:11:44 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qjpVUhHrhWC9 for <devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 11:48:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4D3DA84172
- for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 09:11:44 +0000 (UTC)
-Received: from localhost.localdomain (unknown
- [IPv6:2a01:e0a:4cb:a870:297a:447b:deb4:3f5c])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id C172E1F464D0;
- Fri, 26 Feb 2021 09:11:41 +0000 (GMT)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: p.zabel@pengutronix.de, robh+dt@kernel.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de, festevam@gmail.com, ezequiel@collabora.com,
- mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH v2 5/5] arm64: dts: imx8mq: Use reset driver for VPU hardware
- block
-Date: Fri, 26 Feb 2021 10:11:28 +0100
-Message-Id: <20210226091128.14379-6-benjamin.gaignard@collabora.com>
+Received: from mail-ed1-f51.google.com (mail-ed1-f51.google.com
+ [209.85.208.51])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AD6256F83A
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 11:48:06 +0000 (UTC)
+Received: by mail-ed1-f51.google.com with SMTP id w21so10581291edc.7
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 03:48:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p4qJGLkjE+ZTf4s2f/49t4kWBaGGOzuYYXQVPUg3WZI=;
+ b=FlzAqwfzLgX8RhWInKuCrnVfD5WpWalYUibUel9W/M5vZ2DqQIy4OnCnl1dOLZoicD
+ bSC+3Ku4ST/FPX4m4xELECRfA+GCzTkbdDmO/Q/ladLDX6D67VBhqtqeDEYx0OSnSHZs
+ wKB3sYGwJ1O02aX1tp15QuI3ChyjfA04FxIfQa36ItsRPjU5+rKPDNE+PhmT2KgcCcdx
+ 0TSTw4fHiDnCH5SUrR2vRq7auZ5VgF3RNtgne2fqcgvr/l1+KssYUaAHiyM/u5pKD4Ew
+ 6P9Tpxc1SuhaEapi4HpqDpSJYZZ70ztf4zz4o0PAAk2tM3nZqfGLkmlopOqzKZLPjDcH
+ 8iuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p4qJGLkjE+ZTf4s2f/49t4kWBaGGOzuYYXQVPUg3WZI=;
+ b=Tl8W+avNs9UDDuAF+SadUdH1XfvRrd0lDt56i3VXmF0UQq5745gCpvWVh0P0tQOExA
+ HMXBv3RXrFg4PU8XB7ECp7TpP52XlKHTdzL7sw6v8rrUbhUVkTkdukxgaJSKa8ZUGWgS
+ WCvlqwwsWXPZMO3H7cVFfaXREzC+ZD1cAJTfs8e9GINO9TWRTPvKbP1LjkFjn/ZiaUi6
+ s0jn2JkSITsLhFb7fzviPaMIUd/zhD6TBibiz9Pc7RZYt1tcMPPRj59xHY2rqs1rEPjM
+ 1SBtDaaaVChv2o7SHPweMG+97Hpl8EedIBWcmor+CIZ8N3eVq6LeOnHgLNxGhr4TE7gh
+ xl5g==
+X-Gm-Message-State: AOAM531oznzeaBf4FYip6aeBKFZcwXD3vhfC6ZnqldknqpdNQAqIimpg
+ 0sGlW9H7j914yeSz24MjV2Q=
+X-Google-Smtp-Source: ABdhPJzy2OC3XcGlKwr3feiGZ9P7GSKAcF8kyhJY8jSMNYfwjJzBJAHAE2kXrc/p2McMKovuTsJlzw==
+X-Received: by 2002:aa7:d5c4:: with SMTP id d4mr2764010eds.49.1614340084754;
+ Fri, 26 Feb 2021 03:48:04 -0800 (PST)
+Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
+ [217.32.158.205])
+ by smtp.gmail.com with ESMTPSA id t16sm5622442edi.60.2021.02.26.03.48.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Feb 2021 03:48:04 -0800 (PST)
+From: Lee Gibson <leegib@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: fwserial: minor coding style fix
+Date: Fri, 26 Feb 2021 11:48:00 +0000
+Message-Id: <20210226114800.316897-1-leegib@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
-References: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -62,86 +86,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- benjamin.gaignard@collabora.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Lee Gibson <leegib@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add a vpu reset hardware block node.
+Fixes this checkpatch warning
+WARNING: Integer promotion: Using 'h' in '%04hx' is unnecessary
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Lee Gibson <leegib@gmail.com>
 ---
- arch/arm64/boot/dts/freescale/imx8mq.dtsi | 31 ++++++++++++++++++-----
- 1 file changed, 25 insertions(+), 6 deletions(-)
+ drivers/staging/fwserial/fwserial.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-index a841a023e8e0..d9d9efc8592d 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/clock/imx8mq-clock.h>
- #include <dt-bindings/power/imx8mq-power.h>
- #include <dt-bindings/reset/imx8mq-reset.h>
-+#include <dt-bindings/reset/imx8mq-vpu-reset.h>
- #include <dt-bindings/gpio/gpio.h>
- #include "dt-bindings/input/input.h"
- #include <dt-bindings/interrupt-controller/arm-gic.h>
-@@ -1267,19 +1268,36 @@ usb3_phy1: usb-phy@382f0040 {
- 			status = "disabled";
- 		};
+diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+index c368082aae1a..a020f533c982 100644
+--- a/drivers/staging/fwserial/fwserial.c
++++ b/drivers/staging/fwserial/fwserial.c
+@@ -2632,7 +2632,7 @@ static int fwserial_parse_mgmt_write(struct fwtty_peer *peer,
  
-+		vpu_reset: vpu-reset@38320000 {
-+			compatible = "fsl,imx8mq-vpu-reset", "syscon";
-+			reg = <0x38320000 0x10000>;
-+			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
-+					  <&clk IMX8MQ_CLK_VPU_G2>,
-+					  <&clk IMX8MQ_CLK_VPU_BUS>,
-+					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_SYS1_PLL_800M>,
-+						 <&clk IMX8MQ_VPU_PLL>;
-+			assigned-clock-rates = <600000000>, <300000000>,
-+					       <800000000>, <0>;
-+			#reset-cells = <1>;
-+		};
-+
- 		vpu: video-codec@38300000 {
- 			compatible = "nxp,imx8mq-vpu";
- 			reg = <0x38300000 0x10000>,
--			      <0x38310000 0x10000>,
--			      <0x38320000 0x10000>;
--			reg-names = "g1", "g2", "ctrl";
-+			      <0x38310000 0x10000>;
-+			reg-names = "g1", "g2";
- 			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
- 				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
- 			interrupt-names = "g1", "g2";
- 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
--			clock-names = "g1", "g2", "bus";
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-+			clock-names = "g1", "g2";
- 			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
- 					  <&clk IMX8MQ_CLK_VPU_G2>,
- 					  <&clk IMX8MQ_CLK_VPU_BUS>,
-@@ -1290,6 +1308,7 @@ vpu: video-codec@38300000 {
- 						 <&clk IMX8MQ_VPU_PLL>;
- 			assigned-clock-rates = <600000000>, <600000000>,
- 					       <800000000>, <0>;
-+			resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G1>;
- 			power-domains = <&pgc_vpu>;
- 		};
+ 	rcode = RCODE_COMPLETE;
  
+-	fwtty_dbg(&peer->unit, "mgmt: hdr.code: %04hx\n", pkt->hdr.code);
++	fwtty_dbg(&peer->unit, "mgmt: hdr.code: %04x\n", pkt->hdr.code);
+ 
+ 	switch (be16_to_cpu(pkt->hdr.code) & FWSC_CODE_MASK) {
+ 	case FWSC_VIRT_CABLE_PLUG:
 -- 
 2.25.1
 
