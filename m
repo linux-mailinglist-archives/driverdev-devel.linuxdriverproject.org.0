@@ -2,49 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF777325FAC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 10:11:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 20801325FAF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 10:12:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EBE6484180;
-	Fri, 26 Feb 2021 09:11:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BE7AD8419E;
+	Fri, 26 Feb 2021 09:12:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dUgwdo9p2IKX; Fri, 26 Feb 2021 09:11:52 +0000 (UTC)
+	with ESMTP id sPNAYMEdiIQ2; Fri, 26 Feb 2021 09:12:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0E1DB83F49;
-	Fri, 26 Feb 2021 09:11:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB8F68416D;
+	Fri, 26 Feb 2021 09:12:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9932C1BF338
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 09:11:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 02D641BF338
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 09:11:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 95B276F8DE
+ by smtp3.osuosl.org (Postfix) with ESMTP id F3C7D6F89B
  for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 09:11:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nIKi8Vfa47J9 for <devel@linuxdriverproject.org>;
- Fri, 26 Feb 2021 09:11:39 +0000 (UTC)
+ with ESMTP id aUJCxhP6UfMr for <devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 09:11:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 76D666F89B
- for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 09:11:39 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 545ED6F8BB
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 09:11:40 +0000 (UTC)
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:297a:447b:deb4:3f5c])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 2E5461F464C9;
- Fri, 26 Feb 2021 09:11:37 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 21EB51F464CA;
+ Fri, 26 Feb 2021 09:11:38 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: p.zabel@pengutronix.de, robh+dt@kernel.org, shawnguo@kernel.org,
  s.hauer@pengutronix.de, festevam@gmail.com, ezequiel@collabora.com,
  mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH v2 1/5] dt-bindings: reset: IMX8MQ VPU reset
-Date: Fri, 26 Feb 2021 10:11:24 +0100
-Message-Id: <20210226091128.14379-2-benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 2/5] dt-bindings: media: IMX8MQ VPU: document reset usage
+Date: Fri, 26 Feb 2021 10:11:25 +0100
+Message-Id: <20210226091128.14379-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
 References: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
@@ -71,98 +71,79 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Document bindings for IMX8MQ VPU reset hardware block
+Document IMX8MQ VPU bindings to add the phandle to the reset driver.
+
+Provide an independent reset driver allow to the both VPUs to share
+their control/reset hardware block. The reset driver replace what
+was previously done be using the 'ctrl' registers inside the driver.
+
+This breaks the compatibility between DTB and kernel but the driver
+is still in staging directory and limited to IMX8MQ SoC.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../bindings/reset/fsl,imx8mq-vpu-reset.yaml  | 54 +++++++++++++++++++
- include/dt-bindings/reset/imx8mq-vpu-reset.h  | 16 ++++++
- 2 files changed, 70 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
- create mode 100644 include/dt-bindings/reset/imx8mq-vpu-reset.h
+ .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml     | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml b/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
-new file mode 100644
-index 000000000000..00020421c0e3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
-@@ -0,0 +1,54 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/reset/fsl,imx8mq-vpu-reset.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Freescale i.MX8MQ VPU Reset Controller
-+
-+maintainers:
-+  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
-+
-+description: |
-+  The VPU reset controller is used to reset the video processor
-+  unit peripherals. Device nodes that need access to reset lines should
-+  specify them as a reset phandle in their corresponding node as
-+  specified in reset.txt.
-+
-+  For list of all valid reset indices see
-+    <dt-bindings/reset/imx8mq-vpu-reset.h> for i.MX8MQ.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: fsl,imx8mq-vpu-reset
-+      - const: syscon
-+
-+  reg:
+diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+index 762be3f96ce9..c860f6b201f9 100644
+--- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+@@ -18,13 +18,12 @@ properties:
+     const: nxp,imx8mq-vpu
+ 
+   reg:
+-    maxItems: 3
++    maxItems: 2
+ 
+   reg-names:
+     items:
+       - const: g1
+       - const: g2
+-      - const: ctrl
+ 
+   interrupts:
+     maxItems: 2
+@@ -46,6 +45,9 @@ properties:
+   power-domains:
+     maxItems: 1
+ 
++  resets:
 +    maxItems: 1
 +
-+  clocks:
-+    minItems: 1
-+    maxItems: 3
-+
-+  '#reset-cells':
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - '#reset-cells'
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/imx8mq-clock.h>
-+
-+    vpu-reset@38320000 {
-+        compatible = "fsl,imx8mq-vpu-reset", "syscon";
-+        reg = <0x38320000 0x10000>;
-+        clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+        #reset-cells = <1>;
-+    };
-diff --git a/include/dt-bindings/reset/imx8mq-vpu-reset.h b/include/dt-bindings/reset/imx8mq-vpu-reset.h
-new file mode 100644
-index 000000000000..efcbe18177fe
---- /dev/null
-+++ b/include/dt-bindings/reset/imx8mq-vpu-reset.h
-@@ -0,0 +1,16 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2021, Collabora
-+ *
-+ * i.MX7 System Reset Controller (SRC) driver
-+ *
-+ * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-+ */
-+
-+#ifndef DT_BINDINGS_VPU_RESET_IMX8MQ
-+#define DT_BINDINGS_VPU_RESET_IMX8MQ
-+
-+#define IMX8MQ_RESET_VPU_RESET_G1	0
-+#define IMX8MQ_RESET_VPU_RESET_G2	1
-+
-+#endif
+ required:
+   - compatible
+   - reg
+@@ -54,6 +56,7 @@ required:
+   - interrupt-names
+   - clocks
+   - clock-names
++  - resets
+ 
+ additionalProperties: false
+ 
+@@ -61,13 +64,14 @@ examples:
+   - |
+         #include <dt-bindings/clock/imx8mq-clock.h>
+         #include <dt-bindings/interrupt-controller/arm-gic.h>
++        #include <dt-bindings/reset/imx8mq-vpu-reset.h>
+ 
+         vpu: video-codec@38300000 {
+                 compatible = "nxp,imx8mq-vpu";
+                 reg = <0x38300000 0x10000>,
+                       <0x38310000 0x10000>,
+                       <0x38320000 0x10000>;
+-                reg-names = "g1", "g2", "ctrl";
++                reg-names = "g1", "g2";
+                 interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+                              <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+                 interrupt-names = "g1", "g2";
+@@ -76,4 +80,5 @@ examples:
+                          <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+                 clock-names = "g1", "g2", "bus";
+                 power-domains = <&pgc_vpu>;
++                resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G1>;
+         };
 -- 
 2.25.1
 
