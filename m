@@ -1,93 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD2B03262BC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 13:31:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9BB25326342
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 14:27:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EAF884EFED;
-	Fri, 26 Feb 2021 12:31:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9AEFC841B7;
+	Fri, 26 Feb 2021 13:27:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4_yGjK6stV7j; Fri, 26 Feb 2021 12:31:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BreOjJ_pat17; Fri, 26 Feb 2021 13:27:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC5F14EF39;
-	Fri, 26 Feb 2021 12:30:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DDC0384183;
+	Fri, 26 Feb 2021 13:27:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E71EF1BF8C7
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 12:30:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A3B51BF3BD
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 13:27:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D61FB4EFB0
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 12:30:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3687D6F972
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 13:27:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JySqn_uhEV3z for <devel@linuxdriverproject.org>;
- Fri, 26 Feb 2021 12:30:47 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ED8N05-D0j_3 for <devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 13:27:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 052614EF39
- for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 12:30:46 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11QCU4wQ021722;
- Fri, 26 Feb 2021 12:30:45 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=kzH56SvqfZ/Spjf5JPCkjsjji76lV5I/b4NuhbWLkDQ=;
- b=oet8mwM/i3J7HqIP/WBha8CtH/ii8gykNQu8bD6pV5d2JDwq9F79TGy0zkRzsKW8VgcI
- sc8bCqA9vTJzUaItDl2treocb09krSKr9RpX6OPEl+1MrrbYm4YieN1vd9V7GZrgVgAi
- YO/QUzRqqI47qLcEKQuig2G8WCRDbfJ2WqBSBxZIQ6wqcaejRO0cqA5nb+ACEEzjNUXh
- 14vBVX5FJZiuoKorbhPqR/5ysWxUUnppUzCIHXsv6f3fuagSJhfoxlmmEllWa/hdJssJ
- /nOF2aRVR9vZjhzagZZquFYVpDMIae45rhdVMUhdPWjqSCWUqiiTZ8KXxQgySEn2fgC4 XQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 36tsur9t4f-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 26 Feb 2021 12:30:45 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11QCUgdO090734;
- Fri, 26 Feb 2021 12:30:44 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 36ucc2jcy8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 26 Feb 2021 12:30:43 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11QCUSFL020493;
- Fri, 26 Feb 2021 12:30:29 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 26 Feb 2021 04:30:28 -0800
-Date: Fri, 26 Feb 2021 15:30:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: rtl8192e: Fix possible buffer overflow in
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com
+ [209.85.208.42])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 699026F81F
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 13:27:33 +0000 (UTC)
+Received: by mail-ed1-f42.google.com with SMTP id p1so6438735edy.2
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 05:27:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eLLlvYr9QKdqQQnfxyPXzWw7zEpLbduYElS6GfnImdY=;
+ b=h87/cS62zMT74w+TwzbzqbBJdPMHLTmCzH5RkccgxHZj0m/HbMD3PubLD3SmYRU6+A
+ PS5w50QrqEmi02btDIVk0HZWrlU7T//7HDZa7I90yhmx9a6UwOH1blKu+PEopuCQl0wm
+ BPQGCTnYPM1KM1MlQ4WnLYKgm85o+Kcmh87bYjq729fp6Y2U2N5fDArgfwSWX4LIjZUt
+ 1dwQrhNNgha4VXk0QDG7k52j56jZtaqmkiiVUYGsSxj9DsGqTDNUXynsogvBF1p1qEQQ
+ 8EACM+FfNSaT3nmcbTkIolVvUj+p/MQb0zgAeACzElAYtLJJcKVsf6xccHZq3mZwsy/H
+ yGaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eLLlvYr9QKdqQQnfxyPXzWw7zEpLbduYElS6GfnImdY=;
+ b=sA8qIO/jgA74oJixAiyf16ZZWAwHT6thPcaf2aLlrI4xyd4SjxZkORA/BEFN4cj7e/
+ Llhe5wDMYdH5EwRq0ZseSm+JUQbuHp0BU5P/3LvtcDb3M/9gX0rEOwQwvkTu2mV4SvxA
+ eJOHNCIQo0Fpb+5qs4zQ5rOIRgguXGCE+p0e2HHM0Hk8jNaWBugvYu2EanPmq/PQTmMx
+ HwGK9/FvY9/qKhlh11fdnPxsJldpS2r8dhEeUC4Mce2dndKBwgFiki7Za48cy1uAVx9D
+ nm6kgeH7uBeSE4ZTdrTkVMXPmF7+Hu1AilVCGH6s1yUecgf2ZytUdzlkj5A/WF7pCvWd
+ Hd+A==
+X-Gm-Message-State: AOAM5310n+d9Nm4iyBxaEt6FeRxNbUwF1iUu/te/29CDVxraCssGmGaW
+ DiSb42wy8spKqo1WSBlDQwA=
+X-Google-Smtp-Source: ABdhPJw1JgBpVRK3GI27KYxAYcGDeV2InBiC/JLEkTODZ/zbRWCARoOnYGjRYk82Puvu7CMjo1n+8g==
+X-Received: by 2002:a05:6402:17d6:: with SMTP id
+ s22mr3309235edy.232.1614346051406; 
+ Fri, 26 Feb 2021 05:27:31 -0800 (PST)
+Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
+ [217.32.158.205])
+ by smtp.gmail.com with ESMTPSA id f20sm5328024ejx.16.2021.02.26.05.27.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Feb 2021 05:27:30 -0800 (PST)
+From: Lee Gibson <leegib@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: rtl8192e: Fix possible buffer overflow in
  _rtl92e_wx_set_scan
-Message-ID: <20210226123022.GZ2087@kadam>
-References: <20210226114829.316980-1-leegib@gmail.com>
- <YDjkVqPzcU6Z5zbK@kroah.com>
+Date: Fri, 26 Feb 2021 13:27:25 +0000
+Message-Id: <20210226132725.401813-1-leegib@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YDjkVqPzcU6Z5zbK@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9906
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- adultscore=0
- phishscore=0 spamscore=0 suspectscore=0 bulkscore=0 malwarescore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102260095
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9906
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0
- priorityscore=1501 impostorscore=0 bulkscore=0 mlxscore=0 malwarescore=0
- clxscore=1011 phishscore=0 mlxlogscore=999 lowpriorityscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2102260095
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,47 +89,44 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Lee Gibson <leegib@gmail.com>
+ dan.carpenter@oracle.com, Lee Gibson <leegib@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Feb 26, 2021 at 01:06:46PM +0100, Greg KH wrote:
-> On Fri, Feb 26, 2021 at 11:48:29AM +0000, Lee Gibson wrote:
-> > Function _rtl92e_wx_set_scan calls memcpy without checking the length.
-> > A user could control that length and trigger a buffer overflow.
-> > Fix by checking the length is within the maximum allowed size.
-> > 
-> > Signed-off-by: Lee Gibson <leegib@gmail.com>
-> > ---
-> >  drivers/staging/rtl8192e/rtl8192e/rtl_wx.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
-> > index 16bcee13f64b..2acc4f314732 100644
-> > --- a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
-> > +++ b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
-> > @@ -406,6 +406,9 @@ static int _rtl92e_wx_set_scan(struct net_device *dev,
-> >  		struct iw_scan_req *req = (struct iw_scan_req *)b;
-> >  
-> >  		if (req->essid_len) {
-> > +			if (req->essid_len > IW_ESSID_MAX_SIZE)
-> > +				req->essid_len = IW_ESSID_MAX_SIZE;
-> > +
-> 
-> How about using the "pattern" the other wireless drivers use of:
-> 
-> 		int len = min((int)req->essid_len, IW_ESSID_MAX_SIZE);
+Function _rtl92e_wx_set_scan calls memcpy without checking the length.
+A user could control that length and trigger a buffer overflow.
+Fix by checking the length is within the maximum allowed size.
 
+Changes in v2: 
+	Changed to use min_t as per useful suggestions
 
-I bet checkpatch complains that we should use min_t() instead (but I'm
-too lazy to verify).
+Signed-off-by: Lee Gibson <leegib@gmail.com>
+---
+ drivers/staging/rtl8192e/rtl8192e/rtl_wx.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-	int len = min_t(int, req->essid_len, IW_ESSID_MAX_SIZE);
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
+index 16bcee13f64b..407effde5e71 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
+@@ -406,9 +406,10 @@ static int _rtl92e_wx_set_scan(struct net_device *dev,
+ 		struct iw_scan_req *req = (struct iw_scan_req *)b;
+ 
+ 		if (req->essid_len) {
+-			ieee->current_network.ssid_len = req->essid_len;
+-			memcpy(ieee->current_network.ssid, req->essid,
+-			       req->essid_len);
++			int len = min_t(int, req->essid_len, IW_ESSID_MAX_SIZE);
++
++			ieee->current_network.ssid_len = len;
++			memcpy(ieee->current_network.ssid, req->essid, len);
+ 		}
+ 	}
+ 
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
