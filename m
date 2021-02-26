@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28DAC32621F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 12:48:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5423D326220
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Feb 2021 12:48:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 90E074EFD5;
-	Fri, 26 Feb 2021 11:48:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5259C6F95C;
+	Fri, 26 Feb 2021 11:48:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BdNrd8nV0sNy; Fri, 26 Feb 2021 11:48:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FdfHys8k9h_H; Fri, 26 Feb 2021 11:48:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DA30A4EF23;
-	Fri, 26 Feb 2021 11:48:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A4C896F89B;
+	Fri, 26 Feb 2021 11:48:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F1BC31BF2A7
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 11:48:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 503661BF2A7
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 11:48:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EB10A6F89B
- for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 11:48:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4CFB983FFB
+ for <devel@linuxdriverproject.org>; Fri, 26 Feb 2021 11:48:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qjpVUhHrhWC9 for <devel@linuxdriverproject.org>;
- Fri, 26 Feb 2021 11:48:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FpRuOMUoEqGp for <devel@linuxdriverproject.org>;
+ Fri, 26 Feb 2021 11:48:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-f51.google.com (mail-ed1-f51.google.com
- [209.85.208.51])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AD6256F83A
- for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 11:48:06 +0000 (UTC)
-Received: by mail-ed1-f51.google.com with SMTP id w21so10581291edc.7
- for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 03:48:06 -0800 (PST)
+Received: from mail-ej1-f48.google.com (mail-ej1-f48.google.com
+ [209.85.218.48])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5B79683FF8
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 11:48:35 +0000 (UTC)
+Received: by mail-ej1-f48.google.com with SMTP id gt32so2800054ejc.6
+ for <devel@driverdev.osuosl.org>; Fri, 26 Feb 2021 03:48:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=p4qJGLkjE+ZTf4s2f/49t4kWBaGGOzuYYXQVPUg3WZI=;
- b=FlzAqwfzLgX8RhWInKuCrnVfD5WpWalYUibUel9W/M5vZ2DqQIy4OnCnl1dOLZoicD
- bSC+3Ku4ST/FPX4m4xELECRfA+GCzTkbdDmO/Q/ladLDX6D67VBhqtqeDEYx0OSnSHZs
- wKB3sYGwJ1O02aX1tp15QuI3ChyjfA04FxIfQa36ItsRPjU5+rKPDNE+PhmT2KgcCcdx
- 0TSTw4fHiDnCH5SUrR2vRq7auZ5VgF3RNtgne2fqcgvr/l1+KssYUaAHiyM/u5pKD4Ew
- 6P9Tpxc1SuhaEapi4HpqDpSJYZZ70ztf4zz4o0PAAk2tM3nZqfGLkmlopOqzKZLPjDcH
- 8iuw==
+ bh=DBG5WvPZaDPwblLH9T9vz8x1fojhLKSAMhdgTzRHk+I=;
+ b=Sf73sbSRBO9rG9o0CTmQQrowLuD1E+c4VCkKYIPVcStPfLVZhmNCnt3uA7kLhrj9LC
+ qrrdvZ7wy8mRCADG3HhUvoHkSwHImrD6Wd/xqj/Khpu5Ecv+xN5ekKU8joFMW5pdwujE
+ 04yxGmP6+lrJpliRd3LgTSE6i2aKUQk5pZ23FdgG//tKmY758gDsSzlfC4oAYrMMJvII
+ 7+r1yuOMKtXt5r/os3gGAynV2s3gh8HsanuK6YJYEodTUTOjUcrBRdIVvWboPMX7x9J8
+ AqwaIUMuzfXblBO3GxQV4j1jb2YWo9AJAdr9sEnlRG/LmXx0skqJTNJHMCzG9w3Y5zNQ
+ AepA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=p4qJGLkjE+ZTf4s2f/49t4kWBaGGOzuYYXQVPUg3WZI=;
- b=Tl8W+avNs9UDDuAF+SadUdH1XfvRrd0lDt56i3VXmF0UQq5745gCpvWVh0P0tQOExA
- HMXBv3RXrFg4PU8XB7ECp7TpP52XlKHTdzL7sw6v8rrUbhUVkTkdukxgaJSKa8ZUGWgS
- WCvlqwwsWXPZMO3H7cVFfaXREzC+ZD1cAJTfs8e9GINO9TWRTPvKbP1LjkFjn/ZiaUi6
- s0jn2JkSITsLhFb7fzviPaMIUd/zhD6TBibiz9Pc7RZYt1tcMPPRj59xHY2rqs1rEPjM
- 1SBtDaaaVChv2o7SHPweMG+97Hpl8EedIBWcmor+CIZ8N3eVq6LeOnHgLNxGhr4TE7gh
- xl5g==
-X-Gm-Message-State: AOAM531oznzeaBf4FYip6aeBKFZcwXD3vhfC6ZnqldknqpdNQAqIimpg
- 0sGlW9H7j914yeSz24MjV2Q=
-X-Google-Smtp-Source: ABdhPJzy2OC3XcGlKwr3feiGZ9P7GSKAcF8kyhJY8jSMNYfwjJzBJAHAE2kXrc/p2McMKovuTsJlzw==
-X-Received: by 2002:aa7:d5c4:: with SMTP id d4mr2764010eds.49.1614340084754;
- Fri, 26 Feb 2021 03:48:04 -0800 (PST)
+ bh=DBG5WvPZaDPwblLH9T9vz8x1fojhLKSAMhdgTzRHk+I=;
+ b=mEeuEUaeNxadoRsAY9XyII3VACNhe/ZrK9X3EEc16EKdbS4r9PrfqgzVIQxxW3F0mE
+ CmnXLxY+AnVaVce4IHqjEuXMPXmLLDVmynK37qtoFDNT6GFi/BsDeHh2rXwG+fZ3wdNY
+ eE+7emPZOqB1EJ9nOFRezXh0YwOVYuJvqC2OMK5efQn8gzF9eX0nmys9AwO6uNwevpfC
+ wyziPucwJ9B8Vm2wPm9VZQsIxboMVUXS1o+3YapC3eDJkQwQPzaTj1MLcLORWtdkoqx6
+ u11iSYCJ//T8c1jCuBkmYWyKPXXsZgO5hSkXXrfcN83T/wYnwJLIG9sRCWXPpGqc1Kzj
+ d5iw==
+X-Gm-Message-State: AOAM530Lwku2Lp9cdjxOxYr2bVjnd9TISsOEI7ra1a7JAs+kkxO0SPEb
+ 9jknbEygCCaSu9nIDsi1ZUg=
+X-Google-Smtp-Source: ABdhPJzI0jJVXXO8VNqIFxaN2M/S15jyvoKq/t+1R3Kr5AWiX2eKWMjdnWp8S0VtgOphX0mDp38BeA==
+X-Received: by 2002:a17:906:4088:: with SMTP id
+ u8mr2944879ejj.208.1614340113486; 
+ Fri, 26 Feb 2021 03:48:33 -0800 (PST)
 Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
  [217.32.158.205])
- by smtp.gmail.com with ESMTPSA id t16sm5622442edi.60.2021.02.26.03.48.03
+ by smtp.gmail.com with ESMTPSA id l6sm2772013edw.90.2021.02.26.03.48.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Feb 2021 03:48:04 -0800 (PST)
+ Fri, 26 Feb 2021 03:48:33 -0800 (PST)
 From: Lee Gibson <leegib@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: fwserial: minor coding style fix
-Date: Fri, 26 Feb 2021 11:48:00 +0000
-Message-Id: <20210226114800.316897-1-leegib@gmail.com>
+Subject: [PATCH] staging: rtl8192e: Fix possible buffer overflow in
+ _rtl92e_wx_set_scan
+Date: Fri, 26 Feb 2021 11:48:29 +0000
+Message-Id: <20210226114829.316980-1-leegib@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -93,27 +95,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixes this checkpatch warning
-WARNING: Integer promotion: Using 'h' in '%04hx' is unnecessary
+Function _rtl92e_wx_set_scan calls memcpy without checking the length.
+A user could control that length and trigger a buffer overflow.
+Fix by checking the length is within the maximum allowed size.
 
 Signed-off-by: Lee Gibson <leegib@gmail.com>
 ---
- drivers/staging/fwserial/fwserial.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8192e/rtl8192e/rtl_wx.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-index c368082aae1a..a020f533c982 100644
---- a/drivers/staging/fwserial/fwserial.c
-+++ b/drivers/staging/fwserial/fwserial.c
-@@ -2632,7 +2632,7 @@ static int fwserial_parse_mgmt_write(struct fwtty_peer *peer,
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
+index 16bcee13f64b..2acc4f314732 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
+@@ -406,6 +406,9 @@ static int _rtl92e_wx_set_scan(struct net_device *dev,
+ 		struct iw_scan_req *req = (struct iw_scan_req *)b;
  
- 	rcode = RCODE_COMPLETE;
- 
--	fwtty_dbg(&peer->unit, "mgmt: hdr.code: %04hx\n", pkt->hdr.code);
-+	fwtty_dbg(&peer->unit, "mgmt: hdr.code: %04x\n", pkt->hdr.code);
- 
- 	switch (be16_to_cpu(pkt->hdr.code) & FWSC_CODE_MASK) {
- 	case FWSC_VIRT_CABLE_PLUG:
+ 		if (req->essid_len) {
++			if (req->essid_len > IW_ESSID_MAX_SIZE)
++				req->essid_len = IW_ESSID_MAX_SIZE;
++
+ 			ieee->current_network.ssid_len = req->essid_len;
+ 			memcpy(ieee->current_network.ssid, req->essid,
+ 			       req->essid_len);
 -- 
 2.25.1
 
