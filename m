@@ -1,79 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B63D4326F1E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 23:23:24 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B6F6326F1F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 23:23:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 423996F487;
-	Sat, 27 Feb 2021 22:23:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0243B840D6;
+	Sat, 27 Feb 2021 22:23:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7zSKTmBuqaJR; Sat, 27 Feb 2021 22:23:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DQLGsUf9Cbg1; Sat, 27 Feb 2021 22:23:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8403D6F482;
-	Sat, 27 Feb 2021 22:23:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 21C2B8409A;
+	Sat, 27 Feb 2021 22:23:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AEAA21BF41C
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:23:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3427A1BF41C
+ for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:23:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9E1EA4315B
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:23:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 307684ED58
+ for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:23:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ELqepp-LbwJs for <devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 22:23:10 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rjaEtKM_3Nwo for <devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 22:23:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com
- [209.85.167.53])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E963D43094
- for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 22:23:09 +0000 (UTC)
-Received: by mail-lf1-f53.google.com with SMTP id u4so19449974lfs.0
- for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 14:23:09 -0800 (PST)
+Received: from mail-lj1-f181.google.com (mail-lj1-f181.google.com
+ [209.85.208.181])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3946D4ED2B
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 22:23:13 +0000 (UTC)
+Received: by mail-lj1-f181.google.com with SMTP id e2so7718184ljo.7
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 14:23:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Mksrx6ET/Hi3zXR5ldh0btRvfU1cL3yeWq6vtOUAmxQ=;
- b=R+p9IfoeRbrkWOMrjUbmqPZI2Gks/lZnqT3xU5U/JOiUgMbBpj3P5DA/p1TYEmIs9Z
- G8hT78Oj9nzgSG68YfnOjVRqs0AFo0xL30oVaQQVM7F3+TMvApD1Rhaybz2bcfkOfjnT
- oXpBb4fsxB5rUnxBPKf57QuHFS48k1E6dHhhNEjuJTjnAc59MU/Zlbzdd0KetAirSbpl
- XePT5V5jQgi8b/0n41hXwWNwzIi2fLjyEJPbz2WOM/EO3rEJHH3vOHqsGyqJRcRUdF2Z
- RoHasZSU6CLilx/cO217rLMY8FjoiwQhRReKrIIPsgLSy0BZKqo8wDqGhO89umUPQ71L
- CDVg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=8kMhdvIdhbDz43HUBsLUfT2KZzfyvRCqBeoQrZQZUg0=;
+ b=D2MPLIf6TPmXIWXZoXs6a9mHwzAf4ff/75KanLAXE2KpNAlniYKoHcrG+PjeqM8Ksd
+ DaPv5DKx3tLdwpkvNg7n5/adal9Q9DJpbEjTE21T4KIZU4P1x0eM6MsOG21PJIuhcYMY
+ yn2FPN6AWdXwIDuhdn88tWB8AVhmNhWyNZKm/C/0GJo0pn/fe7hvPwiQXLs1iZMrDrIc
+ gY1qFleDplA7wPmJ1Du60A7tICkOWhlzPpqXVc0w6C6z7occDLPL54GllpdwBfkqfUrT
+ vlOX+Q6bQLYfPp4piy0u0M4d0FlLOJpfNs1+YNlnnNM0qnL4Swdxf4RzYlvgIK9DHZu+
+ fChQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Mksrx6ET/Hi3zXR5ldh0btRvfU1cL3yeWq6vtOUAmxQ=;
- b=gJkBcoQjZtIhkvi7pESBuykabPsKtW7HW7k+z4ab0Rss9qod9DWwYxDn+vgiDysdQb
- pbSul5H6BkRby+gemzi0hDwNC//5bI1e7PHS7lhukfh9ycZB4Rkz8J0ulKUzZVWdFdFg
- UzHZg2djP2tZs41r7Vw0wVutYWWpVUvHoJ92CVR5ArhRFEZ2GrfM+Z0rRoxQkP0xrsWn
- MGLy4tPv2TyQL0wgFjO/xi1902jAsumMDPhjp75DCrrScrp6AU9d0axs7B5YrasEh25o
- d71/WihL2dRJXzz/lpMxVWuZfaSWA9qssorm8cyP6FOTbF9KQi2mjEvdCToyGFGwNdHP
- v0eQ==
-X-Gm-Message-State: AOAM532zWYIIpz5aHXgjVh0qj3AvcOUUxDDnS1UvPKPLoih78mRuTDPd
- J0R0h5La+97hMcxBbXuNaFQ=
-X-Google-Smtp-Source: ABdhPJwocTf3bMMm/ErWN5uaeWhJ9aOlcfwhnkZL/WKpZo9hZIsoaD+BKCZ0jP0QdTgGwRZ0a6FfVw==
-X-Received: by 2002:a19:c74d:: with SMTP id x74mr4805280lff.223.1614464587761; 
- Sat, 27 Feb 2021 14:23:07 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8kMhdvIdhbDz43HUBsLUfT2KZzfyvRCqBeoQrZQZUg0=;
+ b=bmUCX144KeW3Dakh9Zgw649D4K+mEsLRBDl3Bcm4SIxRwXhTjoMCboxST8m5iwLIrp
+ k2+wr72HGtdsxy/B3/eEHoasdBy9ztT+O6eE8+iDTnb6+sx/l9G5yK/rs0sVSYDGCM6+
+ hy1qeWJG7JcSEK4GriKyf5UVo0T6isVKFoPeA0OiwX7FcYmMR94JNW9i3VFkqK2oSoHJ
+ 3SW6FNUCzFpQ8eID+H7VbQGscpE2zaDRsFMyFvSndRiqsDmWYr2FYv2jDYl+d5m/nwMs
+ 7knr98/OL4saZeLScVBil4/Q0tV5UG7Lghg1QOUD5CWPmXarlrqrlXBf8uPf4KCG2ki9
+ /Eyg==
+X-Gm-Message-State: AOAM530i9Cvt1Bgfa06lzsgIsxSOT0YH519UOFLp0tP5PMzZjirK5pdu
+ /ya2rBx8JOUsz4AnxE9hP54=
+X-Google-Smtp-Source: ABdhPJwMVPpvlUsx5RRd4Ifhi7BF3evaQBUuh0fKFTNMx/OPXpl3epAq6KhqTwDkJgAIc7k1AczRfQ==
+X-Received: by 2002:a2e:88cb:: with SMTP id a11mr5438089ljk.394.1614464590917; 
+ Sat, 27 Feb 2021 14:23:10 -0800 (PST)
 Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
- by smtp.gmail.com with ESMTPSA id 194sm765210lfd.116.2021.02.27.14.23.07
+ by smtp.gmail.com with ESMTPSA id w25sm1804278lfn.198.2021.02.27.14.23.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 27 Feb 2021 14:23:07 -0800 (PST)
-Received: (nullmailer pid 581541 invoked by uid 1000);
- Sat, 27 Feb 2021 22:23:06 -0000
+ Sat, 27 Feb 2021 14:23:10 -0800 (PST)
+Received: (nullmailer pid 581544 invoked by uid 1000);
+ Sat, 27 Feb 2021 22:23:09 -0000
 From: Ivan Safonov <insafonov@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/4] staging:rtl8712: avoid unnecessary definitions in wifi.h
-Date: Sun, 28 Feb 2021 01:22:33 +0300
-Message-Id: <20210227222236.581490-1-insafonov@gmail.com>
+Subject: [PATCH 1/4] staging:rtl8712: replace get_(d|s)a with
+ ieee80211_get_(D|S)A
+Date: Sun, 28 Feb 2021 01:22:34 +0300
+Message-Id: <20210227222236.581490-2-insafonov@gmail.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210227222236.581490-1-insafonov@gmail.com>
+References: <20210227222236.581490-1-insafonov@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -96,21 +99,86 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-wifi.h contains unnecessary definitions. Some of them are not used
-at all, some can be replaced with native definitions. 
+get_da()/get_sa() duplicate native ieee80211_get_(D|S)A functions.
+Remove get_(d|s)a, use ieee80211_get_(D|S)A instead.
 
-Ivan Safonov (4):
-  staging:rtl8712: replace get_(d|s)a with ieee80211_get_(D|S)A
-  staging:rtl8712: remove unused definitions from wifi.h
-  staging:rtl8712: use IEEE80211_FCTL_* kernel definitions
-  staging:rtl8712: replace cap_* definitions with native kernel
-    WLAN_CAPABILITY_*
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+---
+ drivers/staging/rtl8712/rtl871x_recv.c |  4 +--
+ drivers/staging/rtl8712/wifi.h         | 45 --------------------------
+ 2 files changed, 2 insertions(+), 47 deletions(-)
 
- drivers/staging/rtl8712/ieee80211.c    |   6 +-
- drivers/staging/rtl8712/rtl871x_recv.c |   4 +-
- drivers/staging/rtl8712/wifi.h         | 178 +++----------------------
- 3 files changed, 27 insertions(+), 161 deletions(-)
-
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
+index eb4e46a7f743..efd783e7ccbc 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.c
++++ b/drivers/staging/rtl8712/rtl871x_recv.c
+@@ -466,8 +466,8 @@ static sint validate_recv_data_frame(struct _adapter *adapter,
+ 	struct security_priv *psecuritypriv = &adapter->securitypriv;
+ 
+ 	bretry = GetRetry(ptr);
+-	pda = get_da(ptr);
+-	psa = get_sa(ptr);
++	pda = ieee80211_get_DA((struct ieee80211_hdr *)ptr);
++	psa = ieee80211_get_SA((struct ieee80211_hdr *)ptr);
+ 	pbssid = get_hdr_bssid(ptr);
+ 	if (!pbssid)
+ 		return _FAIL;
+diff --git a/drivers/staging/rtl8712/wifi.h b/drivers/staging/rtl8712/wifi.h
+index 1b32b3510093..5de0e67b1876 100644
+--- a/drivers/staging/rtl8712/wifi.h
++++ b/drivers/staging/rtl8712/wifi.h
+@@ -264,51 +264,6 @@ static inline unsigned char get_tofr_ds(unsigned char *pframe)
+ 
+ #define GetAddr4Ptr(pbuf)	((unsigned char *)((addr_t)(pbuf) + 24))
+ 
+-static inline unsigned char *get_da(unsigned char *pframe)
+-{
+-	unsigned char	*da;
+-	unsigned int	to_fr_ds = (GetToDs(pframe) << 1) | GetFrDs(pframe);
+-
+-	switch (to_fr_ds) {
+-	case 0x00:	/* ToDs=0, FromDs=0 */
+-		da = GetAddr1Ptr(pframe);
+-		break;
+-	case 0x01:	/* ToDs=0, FromDs=1 */
+-		da = GetAddr1Ptr(pframe);
+-		break;
+-	case 0x02:	/* ToDs=1, FromDs=0 */
+-		da = GetAddr3Ptr(pframe);
+-		break;
+-	default:	/* ToDs=1, FromDs=1 */
+-		da = GetAddr3Ptr(pframe);
+-		break;
+-	}
+-	return da;
+-}
+-
+-static inline unsigned char *get_sa(unsigned char *pframe)
+-{
+-	unsigned char	*sa;
+-	unsigned int	to_fr_ds = (GetToDs(pframe) << 1) | GetFrDs(pframe);
+-
+-	switch (to_fr_ds) {
+-	case 0x00:	/* ToDs=0, FromDs=0 */
+-		sa = GetAddr2Ptr(pframe);
+-		break;
+-	case 0x01:	/* ToDs=0, FromDs=1 */
+-		sa = GetAddr3Ptr(pframe);
+-		break;
+-	case 0x02:	/* ToDs=1, FromDs=0 */
+-		sa = GetAddr2Ptr(pframe);
+-		break;
+-	default:	/* ToDs=1, FromDs=1 */
+-		sa = GetAddr4Ptr(pframe);
+-		break;
+-	}
+-
+-	return sa;
+-}
+-
+ static inline unsigned char *get_hdr_bssid(unsigned char *pframe)
+ {
+ 	unsigned char	*sa;
 -- 
 2.26.2
 
