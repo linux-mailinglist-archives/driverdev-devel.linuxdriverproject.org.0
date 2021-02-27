@@ -1,51 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0972326CD8
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 12:06:22 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 959D7326D11
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 13:36:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BCB3A83DEB;
-	Sat, 27 Feb 2021 11:06:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4228B4ECEB;
+	Sat, 27 Feb 2021 12:36:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qQz_rx400xvn; Sat, 27 Feb 2021 11:06:19 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OqpBJt_7w1ph; Sat, 27 Feb 2021 12:36:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CBEF183E50;
-	Sat, 27 Feb 2021 11:06:18 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 023B54ED1C;
+	Sat, 27 Feb 2021 12:36:46 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B90E71BF94B
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 00F1F1BF2A5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 12:36:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A7D9F83D66
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F202B6F491
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 12:36:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2N9C1EOcEit7 for <devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1naHQNy2StnP
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 12:36:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3278883D64
- for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 58A146F48A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 12:36:36 +0000 (UTC)
 Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
  RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
- (TLS) id 15.0.1497.2; Sat, 27 Feb 2021 03:05:56 -0800
+ (TLS) id 15.0.1497.2; Sat, 27 Feb 2021 04:36:35 -0800
 Received: from User (52.231.198.195) by RW-EXC1.JVPinto.com (172.32.1.13) with
  Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport;
- Sat, 27 Feb 2021 03:05:42 -0800
+ Sat, 27 Feb 2021 04:36:20 -0800
 From: "Ms. Reem" <johnpinto@jvpinto.com>
 Subject: Hello okay
-Date: Sat, 27 Feb 2021 11:05:56 +0000
+Date: Sat, 27 Feb 2021 12:36:34 +0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <ee6e7d003abd4c7882764f7d8bf2d9d0@RW-EXC1.JVPinto.com>
+Message-ID: <22c17d96fe2748ac8bf98a7c018435a4@RW-EXC1.JVPinto.com>
 To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
