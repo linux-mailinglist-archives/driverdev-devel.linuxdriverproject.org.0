@@ -1,36 +1,36 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C097326CD7
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 12:06:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0972326CD8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 12:06:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BFF464347B;
-	Sat, 27 Feb 2021 11:06:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BCB3A83DEB;
+	Sat, 27 Feb 2021 11:06:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8Lm7Es3EL5Mb; Sat, 27 Feb 2021 11:06:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qQz_rx400xvn; Sat, 27 Feb 2021 11:06:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3549843467;
-	Sat, 27 Feb 2021 11:06:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CBEF183E50;
+	Sat, 27 Feb 2021 11:06:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF2FE1BF5A0
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B90E71BF94B
  for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9E2F86F54A
+ by smtp1.osuosl.org (Postfix) with ESMTP id A7D9F83D66
  for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KcsOMebhu9g9 for <devel@linuxdriverproject.org>;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2N9C1EOcEit7 for <devel@linuxdriverproject.org>;
  Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2FFDD6F540
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3278883D64
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 11:05:58 +0000 (UTC)
 Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
  RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
  (TLS) id 15.0.1497.2; Sat, 27 Feb 2021 03:05:56 -0800
