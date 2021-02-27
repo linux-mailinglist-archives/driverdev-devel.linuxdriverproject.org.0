@@ -1,56 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 959D7326D11
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 13:36:51 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4669A326EB8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 20:11:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4228B4ECEB;
-	Sat, 27 Feb 2021 12:36:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9D6096F9DA;
+	Sat, 27 Feb 2021 19:11:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OqpBJt_7w1ph; Sat, 27 Feb 2021 12:36:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ztlzhAlHcp3G; Sat, 27 Feb 2021 19:11:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 023B54ED1C;
-	Sat, 27 Feb 2021 12:36:46 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id B0D066ED88;
+	Sat, 27 Feb 2021 19:11:20 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 00F1F1BF2A5
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 12:36:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 65AE51BF31C
+ for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 19:11:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F202B6F491
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 12:36:36 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 553566ED88
+ for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 19:11:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1naHQNy2StnP
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 12:36:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 58A146F48A
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 12:36:36 +0000 (UTC)
-Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
- RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
- (TLS) id 15.0.1497.2; Sat, 27 Feb 2021 04:36:35 -0800
-Received: from User (52.231.198.195) by RW-EXC1.JVPinto.com (172.32.1.13) with
- Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport;
- Sat, 27 Feb 2021 04:36:20 -0800
-From: "Ms. Reem" <johnpinto@jvpinto.com>
-Subject: Hello okay
-Date: Sat, 27 Feb 2021 12:36:34 +0000
+ with ESMTP id cf_W00klppRR for <devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 19:11:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5757560709
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 19:11:08 +0000 (UTC)
+IronPort-SDR: LnkY23qCeG3BKa/oxlmGSgA4KsfMYNqfX+5Lji8EYhgLJQXKGkTZjfv3pIbuXA0oocBzQKem4K
+ Jrf5jyixVhtQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9908"; a="186269774"
+X-IronPort-AV: E=Sophos;i="5.81,211,1610438400"; d="scan'208";a="186269774"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2021 11:11:06 -0800
+IronPort-SDR: O18OxqLLf27wt96NAbiPV2vkBOMjWMfTNVdtCXS/vpzsxxynIshBjxb2r6+cqs8mxfRixPOUKf
+ BVlh9OgNujFw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,211,1610438400"; d="scan'208";a="434835781"
+Received: from lkp-server01.sh.intel.com (HELO 16660e54978b) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 27 Feb 2021 11:10:49 -0800
+Received: from kbuild by 16660e54978b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lG4zD-0003on-U8; Sat, 27 Feb 2021 19:10:43 +0000
+Date: Sun, 28 Feb 2021 03:09:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 051ad0e686630b642100e58904f79f49d61d1980
+Message-ID: <603a9905.sZEpbPogv2gJlBP6%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <22c17d96fe2748ac8bf98a7c018435a4@RW-EXC1.JVPinto.com>
-To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,37 +67,127 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ms.reem@yandex.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 051ad0e686630b642100e58904f79f49d61d1980  staging: clocking-wizard: Remove the hardcoding of the clock outputs
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state
-and Petroleum" also "Minister of State for International Cooperation"
-in UAE. I write to you on behalf of my other "three (3) colleagues"
-who has approved me to solicit for your "partnership in claiming of
-{us$47=Million}" from a Financial Home in Cambodia on their behalf and
-for our "Mutual Benefits".
+elapsed time: 725m
 
-The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas
-deal with Cambodian/Vietnam Government within 2013/2014, however, we
-don't want our government to know about the fund. If this proposal
-interests you, let me know, by sending me an email and I will send to
-you detailed information on how this business would be successfully
-transacted. Be informed that nobody knows about the secret of this
-fund except us, and we know how to carry out the entire transaction.
-So I am compelled to ask, that you will stand on our behalf and
-receive this fund into any account that is solely controlled by you.
+configs tested: 97
+configs skipped: 2
 
-We will compensate you with 15% of the total amount involved as
-gratification for being our partner in this transaction. Reply to:
-ms.reem@yandex.com
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Regards,
-Ms. Reem.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+sh                          polaris_defconfig
+arm                           corgi_defconfig
+sh                          sdk7786_defconfig
+arm                     am200epdkit_defconfig
+arm                             ezx_defconfig
+um                            kunit_defconfig
+nds32                               defconfig
+openrisc                  or1klitex_defconfig
+arm                       versatile_defconfig
+mips                           ip22_defconfig
+arm                          imote2_defconfig
+parisc                           alldefconfig
+mips                     loongson1b_defconfig
+arm                         assabet_defconfig
+mips                           ci20_defconfig
+arm                        multi_v7_defconfig
+powerpc                      chrp32_defconfig
+powerpc                      acadia_defconfig
+h8300                    h8300h-sim_defconfig
+arm                       imx_v4_v5_defconfig
+xtensa                          iss_defconfig
+arm                           viper_defconfig
+m68k                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+s390                             allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20210227
+i386                 randconfig-a006-20210227
+i386                 randconfig-a004-20210227
+i386                 randconfig-a001-20210227
+i386                 randconfig-a003-20210227
+i386                 randconfig-a002-20210227
+x86_64               randconfig-a015-20210227
+x86_64               randconfig-a011-20210227
+x86_64               randconfig-a012-20210227
+x86_64               randconfig-a016-20210227
+x86_64               randconfig-a013-20210227
+x86_64               randconfig-a014-20210227
+i386                 randconfig-a013-20210227
+i386                 randconfig-a012-20210227
+i386                 randconfig-a011-20210227
+i386                 randconfig-a014-20210227
+i386                 randconfig-a016-20210227
+i386                 randconfig-a015-20210227
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a001-20210227
+x86_64               randconfig-a002-20210227
+x86_64               randconfig-a003-20210227
+x86_64               randconfig-a005-20210227
+x86_64               randconfig-a004-20210227
+x86_64               randconfig-a006-20210227
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
