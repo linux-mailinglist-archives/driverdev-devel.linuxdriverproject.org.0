@@ -1,76 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93DB7326F1A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 23:03:02 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B63D4326F1E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Feb 2021 23:23:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3A02884052;
-	Sat, 27 Feb 2021 22:03:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 423996F487;
+	Sat, 27 Feb 2021 22:23:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fesgPUPr8zzz; Sat, 27 Feb 2021 22:02:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7zSKTmBuqaJR; Sat, 27 Feb 2021 22:23:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F268E83CCA;
-	Sat, 27 Feb 2021 22:02:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8403D6F482;
+	Sat, 27 Feb 2021 22:23:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EB7B91BF5F8
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:02:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AEAA21BF41C
+ for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:23:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DB45743178
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:02:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9E1EA4315B
+ for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 22:23:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KNXyfHYyDQNY for <devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 22:02:47 +0000 (UTC)
+ with ESMTP id ELqepp-LbwJs for <devel@linuxdriverproject.org>;
+ Sat, 27 Feb 2021 22:23:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com
- [209.85.215.179])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 65D57431A5
- for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 22:02:47 +0000 (UTC)
-Received: by mail-pg1-f179.google.com with SMTP id p21so8522252pgl.12
- for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 14:02:47 -0800 (PST)
+Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com
+ [209.85.167.53])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E963D43094
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 22:23:09 +0000 (UTC)
+Received: by mail-lf1-f53.google.com with SMTP id u4so19449974lfs.0
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 14:23:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=Mkan3JMKfxNYoG4rfnYGH7/Pk2eAhI86Q13ePVKjnns=;
- b=eNqSPEdxIXv9OuBgPovuLgvUXqAWiHNqCy2dXA2hJknCs9ip6Hid0bct5xs6iy1c7A
- qlf965G4LIVWKiwNF6RThNzAXC+fZdbrDT3483nvJUs0qGT9ZaHAA0C8juk666CZ6Tzu
- 6Qj0Q38Ndw1KYdYZgq1qzVerq+chh0xwwd2suqGLwM6Fx653hY256+hsz9SL2/DWaUbS
- RDocK+/nO/yOLzc4ZSLinhmH4yA1TZvQeM+nQ6y8SROnfJGt3tZbCVQKyUqPeBT4npZi
- 0EL+Zn24dI+HP6wSK1DhMBsSf8axOner+ISIUJP4dl8CBz7wWcuEVcxWTJRjag9qeOmt
- Qc+g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Mksrx6ET/Hi3zXR5ldh0btRvfU1cL3yeWq6vtOUAmxQ=;
+ b=R+p9IfoeRbrkWOMrjUbmqPZI2Gks/lZnqT3xU5U/JOiUgMbBpj3P5DA/p1TYEmIs9Z
+ G8hT78Oj9nzgSG68YfnOjVRqs0AFo0xL30oVaQQVM7F3+TMvApD1Rhaybz2bcfkOfjnT
+ oXpBb4fsxB5rUnxBPKf57QuHFS48k1E6dHhhNEjuJTjnAc59MU/Zlbzdd0KetAirSbpl
+ XePT5V5jQgi8b/0n41hXwWNwzIi2fLjyEJPbz2WOM/EO3rEJHH3vOHqsGyqJRcRUdF2Z
+ RoHasZSU6CLilx/cO217rLMY8FjoiwQhRReKrIIPsgLSy0BZKqo8wDqGhO89umUPQ71L
+ CDVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=Mkan3JMKfxNYoG4rfnYGH7/Pk2eAhI86Q13ePVKjnns=;
- b=SJZu3TB7aQPoYhE6ybCKwtSVrfqzkZCDLIJbxVc3kXQZDhKzA8Q8SZqGdk1L3CenKn
- jcWngVHhEDiYbs7H2X/YCLqJTZcczVdzqsw7B3xASMcAgX9HeBBjHXb3ozJsbPL7gvq5
- 511MvkHSlidMEEz2lZ1zyEu1MmM8akqrmyDmIygfmVH3NWBYWdBWRDw8gQk2/N2i4RhE
- 6rikLYJ5ndA1tEwyCMDzkUdG6n7u0foPAF1dG/m4bMOAJThajiNRQc7V9jAjEFoxXWQv
- NCewK2VDNtoE+FUjTx3fK9iP1PAbM22ChEZ0LDMJw1V7k1NCN6EiD2Ih/vHhetCK4trL
- IAVg==
-X-Gm-Message-State: AOAM531/Wv1wMieb+MZeA4Ll+6WhvziJzcaiCsW/n11FwdNllp93aCRQ
- T1K+hoHJu4IJQp6PhFW55MA=
-X-Google-Smtp-Source: ABdhPJyxzOdFcXfruhFLvm1j36aKPw2ycDWIEr+Ao1x1so7V6nulUMlQ2PSkvaXT47diGhYo8Eyrpw==
-X-Received: by 2002:a63:580d:: with SMTP id m13mr8039461pgb.342.1614463366866; 
- Sat, 27 Feb 2021 14:02:46 -0800 (PST)
-Received: from rayare.domain.name ([106.51.141.71])
- by smtp.googlemail.com with ESMTPSA id
- z13sm14293258pfk.178.2021.02.27.14.02.44
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Mksrx6ET/Hi3zXR5ldh0btRvfU1cL3yeWq6vtOUAmxQ=;
+ b=gJkBcoQjZtIhkvi7pESBuykabPsKtW7HW7k+z4ab0Rss9qod9DWwYxDn+vgiDysdQb
+ pbSul5H6BkRby+gemzi0hDwNC//5bI1e7PHS7lhukfh9ycZB4Rkz8J0ulKUzZVWdFdFg
+ UzHZg2djP2tZs41r7Vw0wVutYWWpVUvHoJ92CVR5ArhRFEZ2GrfM+Z0rRoxQkP0xrsWn
+ MGLy4tPv2TyQL0wgFjO/xi1902jAsumMDPhjp75DCrrScrp6AU9d0axs7B5YrasEh25o
+ d71/WihL2dRJXzz/lpMxVWuZfaSWA9qssorm8cyP6FOTbF9KQi2mjEvdCToyGFGwNdHP
+ v0eQ==
+X-Gm-Message-State: AOAM532zWYIIpz5aHXgjVh0qj3AvcOUUxDDnS1UvPKPLoih78mRuTDPd
+ J0R0h5La+97hMcxBbXuNaFQ=
+X-Google-Smtp-Source: ABdhPJwocTf3bMMm/ErWN5uaeWhJ9aOlcfwhnkZL/WKpZo9hZIsoaD+BKCZ0jP0QdTgGwRZ0a6FfVw==
+X-Received: by 2002:a19:c74d:: with SMTP id x74mr4805280lff.223.1614464587761; 
+ Sat, 27 Feb 2021 14:23:07 -0800 (PST)
+Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
+ by smtp.gmail.com with ESMTPSA id 194sm765210lfd.116.2021.02.27.14.23.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 27 Feb 2021 14:02:46 -0800 (PST)
-From: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
-To: 
-Subject: [PATCH] staging: rtl8723bs: Fixed indentation and coding style
-Date: Sun, 28 Feb 2021 03:32:30 +0530
-Message-Id: <20210227220233.10259-1-chakravarthikulkarni2021@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ Sat, 27 Feb 2021 14:23:07 -0800 (PST)
+Received: (nullmailer pid 581541 invoked by uid 1000);
+ Sat, 27 Feb 2021 22:23:06 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/4] staging:rtl8712: avoid unnecessary definitions in wifi.h
+Date: Sun, 28 Feb 2021 01:22:33 +0300
+Message-Id: <20210227222236.581490-1-insafonov@gmail.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,88 +87,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- chakravarthikulkarni2021@gmail.com, linux-kernel@vger.kernel.org,
- Fox Chen <foxhlchen@gmail.com>
-MIME-Version: 1.0
+Cc: Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
+ linux-kernel@vger.kernel.org, Pascal Terjan <pterjan@google.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This clean up indentaion issue as well as coding style issue.
+wifi.h contains unnecessary definitions. Some of them are not used
+at all, some can be replaced with native definitions. 
 
-Signed-off-by: chakravarthikulkarni <chakravarthikulkarni2021@gmail.com>
----
- drivers/staging/rtl8723bs/include/rtw_cmd.h | 30 ++++++++++-----------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+Ivan Safonov (4):
+  staging:rtl8712: replace get_(d|s)a with ieee80211_get_(D|S)A
+  staging:rtl8712: remove unused definitions from wifi.h
+  staging:rtl8712: use IEEE80211_FCTL_* kernel definitions
+  staging:rtl8712: replace cap_* definitions with native kernel
+    WLAN_CAPABILITY_*
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_cmd.h b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-index 56c77bc7ca81..3545a98ef94e 100644
---- a/drivers/staging/rtl8723bs/include/rtw_cmd.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-@@ -678,13 +678,13 @@ struct setratable_parm {
- };
- 
- struct getratable_parm {
--                uint rsvd;
-+	uint rsvd;
- };
- struct getratable_rsp {
--        u8 ss_ForceUp[NumRates];
--        u8 ss_ULevel[NumRates];
--        u8 ss_DLevel[NumRates];
--        u8 count_judge[NumRates];
-+	u8 ss_ForceUp[NumRates];
-+	u8 ss_ULevel[NumRates];
-+	u8 ss_DLevel[NumRates];
-+	u8 count_judge[NumRates];
- };
- 
- 
-@@ -786,7 +786,7 @@ struct TDLSoption_param {
- 
- /*H2C Handler index: 64 */
- struct RunInThread_param {
--	void (*func)(void*);
-+	void (*func)(void *);
- 	void *context;
- };
- 
-@@ -795,14 +795,14 @@ struct RunInThread_param {
- 
- 
- /*
--
--Result:
--0x00: success
--0x01: sucess, and check Response.
--0x02: cmd ignored due to duplicated sequcne number
--0x03: cmd dropped due to invalid cmd code
--0x04: reserved.
--
-+*
-+*Result:
-+*0x00: success
-+*0x01: sucess, and check Response.
-+*0x02: cmd ignored due to duplicated sequcne number
-+*0x03: cmd dropped due to invalid cmd code
-+*0x04: reserved.
-+*
- */
- 
- #define H2C_RSP_OFFSET			512
-@@ -824,7 +824,7 @@ struct sta_info;
- extern u8 rtw_setstakey_cmd(struct adapter  *padapter, struct sta_info *sta, u8 unicast_key, bool enqueue);
- extern u8 rtw_clearstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 enqueue);
- 
--extern u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network* pnetwork);
-+extern u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork);
- u8 rtw_disassoc_cmd(struct adapter *padapter, u32 deauth_timeout_ms, bool enqueue);
- extern u8 rtw_setopmode_cmd(struct adapter  *padapter, enum NDIS_802_11_NETWORK_INFRASTRUCTURE networktype, bool enqueue);
- extern u8 rtw_setdatarate_cmd(struct adapter  *padapter, u8 *rateset);
+ drivers/staging/rtl8712/ieee80211.c    |   6 +-
+ drivers/staging/rtl8712/rtl871x_recv.c |   4 +-
+ drivers/staging/rtl8712/wifi.h         | 178 +++----------------------
+ 3 files changed, 27 insertions(+), 161 deletions(-)
+
 -- 
-2.17.1
+2.26.2
 
 _______________________________________________
 devel mailing list
