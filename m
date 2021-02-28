@@ -1,49 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B902326F89
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Feb 2021 00:09:28 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E85E4326FDC
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Feb 2021 02:06:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CA6D26F569;
-	Sat, 27 Feb 2021 23:09:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 19784434B3;
+	Sun, 28 Feb 2021 01:06:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GnU3R0bNq_rm; Sat, 27 Feb 2021 23:09:26 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ktZMwlwbK7St; Sun, 28 Feb 2021 01:06:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 169406F513;
-	Sat, 27 Feb 2021 23:09:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 662F94346A;
+	Sun, 28 Feb 2021 01:06:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8B8381BF5E6
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 23:09:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B99A1BF403
+ for <devel@linuxdriverproject.org>; Sun, 28 Feb 2021 01:06:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 85B8483CFB
- for <devel@linuxdriverproject.org>; Sat, 27 Feb 2021 23:09:04 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 245794F01D
+ for <devel@linuxdriverproject.org>; Sun, 28 Feb 2021 01:06:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W6GeQE_yYnNd for <devel@linuxdriverproject.org>;
- Sat, 27 Feb 2021 23:09:03 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bg1ZYKCyJps2 for <devel@linuxdriverproject.org>;
+ Sun, 28 Feb 2021 01:06:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.tommy.331.com (ik1-406-35335.vs.sakura.ne.jp
- [153.127.17.89])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A3CA383CC4
- for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 23:09:03 +0000 (UTC)
-Received: from [192.168.8.100] (unknown [197.211.59.71])
- by mail.tommy.331.com (Postfix) with ESMTPA id 6D854146849;
- Sun, 28 Feb 2021 06:07:47 +0900 (JST)
+Received: from mail-ot1-f45.google.com (mail-ot1-f45.google.com
+ [209.85.210.45])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6AD004EF12
+ for <devel@driverdev.osuosl.org>; Sun, 28 Feb 2021 01:06:19 +0000 (UTC)
+Received: by mail-ot1-f45.google.com with SMTP id b8so12923035oti.7
+ for <devel@driverdev.osuosl.org>; Sat, 27 Feb 2021 17:06:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NNDK31GfhaZ5nts0uVy+F5CRFC//iVXkXv+G42hpuP8=;
+ b=Ac80NqiiAcpgSuoKUgfjMVQuUa8+QgeTvAwGg5NsOzb4iI/OhPBzXCFRWfgQa/XZkZ
+ Q1/C0iK2q9t7xcN9xiGEqVe9h+a4RYGYnqkD2NyGc6WkxMcJaWg0bG2mmJrps6bnMnCQ
+ qQe3H8wzHGzbbdbEtPbqHCSDPzHMbOX6LKE0lN5RYq9e5aySt0SB66t0LVRRDoAZ6VTY
+ L98YdbdEPsaCOi5Ido+w62EK2Q5DEsMpU6CxSsmibxmGEj8tFSeU+Am1KXtAcqd15p3y
+ 6ll0o9CtjEl4qNOULsXnLvhzlul5e3LuOJG6zkYNHrYLDfgdPLc53MPlXVHqMBAMUxgf
+ nuOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NNDK31GfhaZ5nts0uVy+F5CRFC//iVXkXv+G42hpuP8=;
+ b=DAGw0Yyteu3eIoZZvIXpWYbAqfeJiE+eCPRnDbH9cYYuey+jxzWwzfOp6epJ9ue1bT
+ ChNvT4lyQ5BDzWvZ6Xz2/OBILksj9gmNlvT1RpvA5CalXMay16qTOVDRGnohCl2MoNk8
+ R/y8PAkyxc7xvrw6+sgc4CqOBy1oVj7ehv9UGyivyoS4IKBY2sRoBSmGQDN13sFVywsA
+ +99JL//9cE03iRz+MWD/ETsITYI9B5uzA8v/0Hbzk85otnB/fHXOGXs1TNODHYLSFjby
+ cPhg0fmKRFb57RYv0ISRJcksF1yg9oOa+rGAp9Z2SwsiUq31VIAQ5tAPrIbJvd0boemy
+ JzwQ==
+X-Gm-Message-State: AOAM533/bJjfFtzP6HJvDRr/uMoMCHZMFFA7JsUjlbBXRcXuNw5q4d8N
+ XnF5V67JN8jLwbw99pVDg5tPlT6hqcDD4w==
+X-Google-Smtp-Source: ABdhPJw24NON9FnAIXdf/3n8JglhXjh0L3cMsGVdSoxzZy197BpVCIbF9KwZOLjUlgeO7XzfeWNlnA==
+X-Received: by 2002:a9d:6e8a:: with SMTP id a10mr7867664otr.356.1614474378004; 
+ Sat, 27 Feb 2021 17:06:18 -0800 (PST)
+Received: from elysium.agostinelli.home.saggio.net
+ (2603-8080-4208-0193-f7c3-366a-30e3-d407.res6.spectrum.com.
+ [2603:8080:4208:193:f7c3:366a:30e3:d407])
+ by smtp.gmail.com with ESMTPSA id k18sm2870332ots.24.2021.02.27.17.06.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 27 Feb 2021 17:06:17 -0800 (PST)
+From: "Darryl T. Agostinelli" <dagostinelli@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: rtl8192u avoid flex array of flex array
+Date: Sat, 27 Feb 2021 19:06:14 -0600
+Message-Id: <20210228010614.162998-1-dagostinelli@gmail.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: HELLO?               
-To: Recipients <richardsmith2132@yahoo.com>
-From: richardsmith2132@yahoo.com
-Date: Sat, 27 Feb 2021 22:07:37 +0100
-X-Antivirus: avast! (VPS 210227-8, 02/27/2021), Outbound message
-X-Antivirus-Status: Clean
-Message-Id: <20210227230904.85B8483CFB@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,37 +87,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alymohamed968@yahoo.com
+Cc: gregkh@linuxfoundation.org,
+ "Darryl T. Agostinelli" <dagostinelli@gmail.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Sir/Madam,
+Undo the flex array in struct ieee80211_info_element.  It is used as the flex
+array type in other structs (creating a flex array of flex arrays) making
+sparse unhappy.  This change maintains the intent of the code and satisfies
+sparse.
 
-
-
-I Am ALY MOHAMMED, an Accountant with the Nigerian National Petroleum
-Corporation (N.N.P.C.). I Headed A Seven-Man Tenders Board In Charge Of Contract Awards And Payment Approvals. I Came To Know Of You In My Search For A Reliable And Reputable Person To Handle A Very confidential Transaction Which Involves The Transfer Of A Huge Sum Of Money To A Foreign Account. There Were Series Of Contracts Executed By A Consortium Of Mufti-Nationals In The Oil Industry In Favor Of N.N.P.C. The Original Value Of This Contracts Were Deliberately Over-Invoiced To The Sum Of USD$30,000,000.00 (Thirty Million United States Dollars)this Amount Has Been Approved And Is Now Ready To Be Transferred, Being That The Companies That Actually Executed These Contracts Have Been Fully Paid And The Projects Officially Commissioned.
-
-Consequently, My Colleagues And I Are Willing To Transfer The Total Amount To Your Account For Subsequent Disbursement, Since We, Civil Servants Are Prohibited By The Code Of Conduct Bureau (Civil Service Law) From Operating And/or-opening Foreign Accounts In Our Names. Needless To Say, The Trust Reposed On You At This Juncture Is Enormous.
-
- In Return, We Have Agreed To Offer You 25% Of The Transferred Sum, While 10% Shall Be Set Aside For Incidental Expenses (Internal And External) Between Parties In The Course Of The Transaction.
-You Will Be Mandated To Remit The Balance To Other Accounts In Due Course. Modalities Have Been Worked Out At The Highest Level Of The Ministry Of Finance And The Central Bank Of Nigeria (C.B.N.) For The Immediate Transfer Of The Funds Within 14 Working Days Subject To Your Satisfaction Of The Above Stated Terms. Our Assurance Is That Your Role Is Risk Free. To Accord This Transaction The Legality It Deserves And For Mutual Security Of The Funds The Whole Approval Procedures Will Be Officially And Legally Processed With Your Name Or The Name Of Any Company You May Nominate As The Benefice Beneficiary.
-
-Once More, I Want You To Understand That Having Put In Over Ten Years In The Civil
-Service Of My Country, I Am Averse To Having My Image And Career Dented. This Matter Should Therefore Be Treated With The Utmost Secrecy And Urgency It Deserves. Kindly Expedite Action As We Are Behind Schedule To Enable Us Include This Transfer In This Batch Which Would Constitute The First Quarter Payments For The 2021 Financial Year.
-
-Possible For More Details Via email
-
-Yours Sincerely,
-
-
-ALY MOHAMMED
-
+Signed-off-by: Darryl T. Agostinelli <dagostinelli@gmail.com>
 ---
-This email is free from viruses and malware because avast! Antivirus protection is active.
-https://www.avast.com/antivirus
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 39f4ddd86796..43bb7aeb35e3 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -951,7 +951,7 @@ struct rtl_80211_hdr_4addrqos {
+ struct ieee80211_info_element {
+ 	u8 id;
+ 	u8 len;
+-	u8 data[];
++	u8 data[0];
+ } __packed;
+ 
+ struct ieee80211_authentication {
+-- 
+2.29.2
 
 _______________________________________________
 devel mailing list
