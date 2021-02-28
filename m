@@ -2,46 +2,54 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B1B9327113
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Feb 2021 07:24:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CFEA3271D9
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Feb 2021 11:16:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7899E83F9A;
-	Sun, 28 Feb 2021 06:24:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3CA2482A99;
+	Sun, 28 Feb 2021 10:16:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RI6VlPABZTXO; Sun, 28 Feb 2021 06:24:04 +0000 (UTC)
+	with ESMTP id OGexdXATcoyb; Sun, 28 Feb 2021 10:16:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BA99A83F9E;
-	Sun, 28 Feb 2021 06:24:03 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5CE498356C;
+	Sun, 28 Feb 2021 10:16:47 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7CCA81BF575
- for <devel@linuxdriverproject.org>; Sun, 28 Feb 2021 06:23:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DD7721BF402
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 28 Feb 2021 10:16:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6CAC683F98
- for <devel@linuxdriverproject.org>; Sun, 28 Feb 2021 06:23:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CC87D8331B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 28 Feb 2021 10:16:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kDYX8NZyRZCG for <devel@linuxdriverproject.org>;
- Sun, 28 Feb 2021 06:23:53 +0000 (UTC)
+ with ESMTP id BEN9IkefcVt7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 28 Feb 2021 10:16:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp-gw.bdo.com.pk (unknown [175.107.206.232])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 407BE83F74
- for <devel@driverdev.osuosl.org>; Sun, 28 Feb 2021 06:23:53 +0000 (UTC)
-Received: from [45.85.90.162] (slot0.goamiony.com [45.85.90.162])
- by smtp-gw.bdo.com.pk (Postfix) with ESMTP id 19566C18F23B;
- Sun, 28 Feb 2021 10:10:08 +0500 (PKT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp-gw.bdo.com.pk 19566C18F23B
+Received: from cunjimwen.com (unknown [161.35.15.117])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CE198832FF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 28 Feb 2021 10:16:34 +0000 (UTC)
+Received: from 188-206-100-209.mobile.kpn.net ([188.206.100.209] helo=User)
+ by cunjimwen.com with esmtpa (Exim 4.86_2)
+ (envelope-from <kasimachma@gmail.com>)
+ id 1lGJ7P-00050N-Hy; Sun, 28 Feb 2021 10:16:07 +0000
+From: "Mr. James Mcgregor"<kasimachma@gmail.com>
+Subject: Working together
+Date: Sun, 28 Feb 2021 11:16:06 +0100
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Nice to meet you 
-To: Recipients <test@bdo.com.pk>
-From: "Idris Ibrahim" <test@bdo.com.pk>
-Date: Sat, 27 Feb 2021 21:10:07 -0800
-Message-Id: <20210228062354.6CAC683F98@smtp1.osuosl.org>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+X-Antivirus: AVG (VPS 210227-8, 27/02/2021), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <E1lGJ7P-00050N-Hy@cunjimwen.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,18 +62,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info.idrisibrahim67@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mrjamesmc6@gmail.com
+Content-Type: text/plain; charset="cp1250"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Mr.Idris Ibrahim a bank officer with Ovrseas Investment Bank of United Kingdom. I have a business proposal to discuss with you. The business is all about transferring $30,000,000.00 to your favor for investment purposes which is the reason I am contacting with you for our own benefits. For more details, Also kindly promise me that you will never betray me and my family after assisting us to claim this fund from the Bank.
-
-Regards,
-Mr.Idris Ibrahim.
-info.idrisibrahim67@gmail.com
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBEYXkKSSBhbSBKYW1lcyBNY2dyZWdvcixteSBwcmluY2lwYWyScyB3aXNoLCB0byBtYWtl
+IGh1Z2UgZmluYW5jaWFsIGludmVzdG1lbnQgaW4geW91ciBob21lIGNvdW50cnkgLgpQbGVhc2Us
+IEkgd2lsbCBwcm92aWRlIG1vcmUgZGV0YWlscyBhYm91dCB0aGUgdHJhbnNhY3Rpb24gaWYgeW91
+IGFyZSBzdXJlIHlvdSBjYW4gaGFuZGxlIGNsYXNzaWZpZWQgaW5mb3JtYXRpb24gYW5kIGFsc28g
+bGV0IG1lIGtub3cgeW91ciBlbnRpdGxlbWVudCBmb3IgdGhlIHNvbGljaXRlZCByb2xlLApJIHNo
+YWxsIGJlIGV4cGVjdGluZyB5b3VyIHF1aWNrIHJlc3BvbnNlICBtcmphbWVzbWM2QGdtYWlsLmNv
+bQpCZXN0IFJlZ2FyZHMsCkphbWVzIE1jZ3JlZ29yCgotLSAKVGhpcyBlbWFpbCBoYXMgYmVlbiBj
+aGVja2VkIGZvciB2aXJ1c2VzIGJ5IEFWRy4KaHR0cHM6Ly93d3cuYXZnLmNvbQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
+CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
+cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
