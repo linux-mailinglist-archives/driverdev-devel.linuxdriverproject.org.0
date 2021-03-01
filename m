@@ -1,82 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B31A6328032
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Mar 2021 15:03:21 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF300328124
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Mar 2021 15:44:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CE61F4EC28;
-	Mon,  1 Mar 2021 14:03:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D3481430AA;
+	Mon,  1 Mar 2021 14:44:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id strWSsageSdo; Mon,  1 Mar 2021 14:03:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jkaUuQCbKXiY; Mon,  1 Mar 2021 14:44:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F3FA84B0ED;
-	Mon,  1 Mar 2021 14:03:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0C3174308F;
+	Mon,  1 Mar 2021 14:44:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7EC9F1BF372
- for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 14:03:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CFB631BF361
+ for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 14:44:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6DD824309D
- for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 14:03:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CB6364308F
+ for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 14:44:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W05RBOrVomXO for <devel@linuxdriverproject.org>;
- Mon,  1 Mar 2021 14:03:05 +0000 (UTC)
+ with ESMTP id 0EnnShGCVziw for <devel@linuxdriverproject.org>;
+ Mon,  1 Mar 2021 14:44:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-io1-f54.google.com (mail-io1-f54.google.com
- [209.85.166.54])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D1E1C4308B
- for <devel@driverdev.osuosl.org>; Mon,  1 Mar 2021 14:03:05 +0000 (UTC)
-Received: by mail-io1-f54.google.com with SMTP id n132so5983172iod.0
- for <devel@driverdev.osuosl.org>; Mon, 01 Mar 2021 06:03:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=8cjlGiMrapknGiyDRRumzTREtj0P+xU+/mIsRJmrVZE=;
- b=k74YN6G6JCyY0gwdS5D9tFn7NRveuJ8lKNf5MQKsdouZqYJ4haZpQdK8fn6qCA7OWX
- 5vf7qXYkMzXiH9c8bPbPdVGjnZKcDLfpVPqZW5TRehQj1qNB0w+R4JMVNJ04TeZl07nH
- ISvFdQdcDuhCW9iLv/JCa+Kmaoc8DW5mxnvwD1carCoT1/pp3TEkPHH1DEYtdzfgs8KL
- OvmQHMgu2NA12DhKxXuPP73meWzYyrcMf2225Q140XAMRTIOzVehv0KT4bE4Z5Ajwmf8
- xaiW7BNbDBMXESBGwloRz2HHXgkuPF5pN6RqGACoHFKq+G1NNcToDMcv8yxrlMgNe0w3
- RJcA==
+Received: from mail-oi1-f172.google.com (mail-oi1-f172.google.com
+ [209.85.167.172])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0661543084
+ for <devel@driverdev.osuosl.org>; Mon,  1 Mar 2021 14:44:28 +0000 (UTC)
+Received: by mail-oi1-f172.google.com with SMTP id w69so18269494oif.1
+ for <devel@driverdev.osuosl.org>; Mon, 01 Mar 2021 06:44:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=8cjlGiMrapknGiyDRRumzTREtj0P+xU+/mIsRJmrVZE=;
- b=PigxhavcNd0fWRPg/hGWA7mcMj8tJsXnaAcDGUuEAcE8o8m24aKh6r3k3cmYj7kiUD
- 9BJBFI5HY6H6fFNu+0IpvIyF7HosbI9Bty5swM3dcKOq+zXonC/qqsndr7zOWyvXIylJ
- nFiuRs7Cuaze5cNrcdOW6lReEBCGqjC7JIch3PwEDfoRJVmU+7CTiLWyK+s3addseVg3
- JLHKMSprUzpXsvFjU6w/q9J0IcuuVfOG63n2pqLvWfhUiIbFzhrwFnrD1ds7zY/YWzX0
- 5KhMHVUVwaoicPESpR2X7I5RWazbyPz8ooKE6EtGy4DywRp0QTGR7K52WPliTb2JeP2l
- 7joA==
-X-Gm-Message-State: AOAM532LPttTlvKJgiOj4ml/EUUj8Z8MH7Dqmny7bzh929huxqn65FZb
- Dg2736MSmUfgPFgl8ZyYzQ==
-X-Google-Smtp-Source: ABdhPJwPP687MnJmqNKUzCceQEFnT3QiR/VbLlWZx2DCeheYB+RYApkz/kWnGnVXiqPr5Mw46YOJoQ==
-X-Received: by 2002:a6b:6206:: with SMTP id f6mr13405262iog.18.1614607385110; 
- Mon, 01 Mar 2021 06:03:05 -0800 (PST)
-Received: from mainframe ([139.193.28.239])
- by smtp.gmail.com with ESMTPSA id h128sm9896819ioa.32.2021.03.01.06.03.01
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=J2ZIXJIHgZRZeDGR4OI2DHoLCDtP7CHTCmJZimg406g=;
+ b=n7mHJiuTqM7n+NJVhEq9lIf/ks7vCOhP0UlgDH+zTlzCR59hXyuYxGUhMOTQNu651D
+ eX61+rHegMJ0TbdXVAAApS9M8JIyZMHCiKagRIHayZh9Dsi8io0omKRbiIeTI+eweUvH
+ ITMBzp1YhC5hmqCISMYhI9TTyz57ZR1MDGXavuX5+nH1+c3kxcWLGPgckbMjo+qGnj4N
+ ht0CAJaX4D/t2h42lVXnqf2w3F5nHMw1HbIgXl6begWyojlNB2Ap7nZhtbKoo7lF3ZHS
+ vHiC7AZBVdg0oRCZF/roCK8KOHmnRVR8gVzXFf8jcRhgpDtLYFyktVh0n3VNMAmQBjQp
+ rhJw==
+X-Gm-Message-State: AOAM530M0GXCo0j3hlpoZ2TaEsqMsGXwhIVCPAFzAd6Xj771QNnV++B/
+ FmnSVWpqvdH9RRFpJhcmhw==
+X-Google-Smtp-Source: ABdhPJwdfoSh104CVJJRArrFpm/81kQs1A+e8U2RsvVCJfYlkMgYgzy/vlQGFHJIYsxPcGk+LpsC5w==
+X-Received: by 2002:aca:5fd4:: with SMTP id
+ t203mr11622994oib.121.1614609868060; 
+ Mon, 01 Mar 2021 06:44:28 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id n20sm1167413otj.3.2021.03.01.06.44.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Mar 2021 06:03:04 -0800 (PST)
-Date: Mon, 1 Mar 2021 21:02:57 +0700
-From: Candy Febriyanto <cfebriyanto@gmail.com>
-To: Hans de Goede <hdegoede@redhat.com>, gregkh@linuxfoundation.org,
- Larry.Finger@lwfinger.net, devel@driverdev.osuosl.org
-Subject: Re: [PATCH 0/3] staging: rtl8723bs: Replace sprintf with scnprintf
-Message-ID: <YDz0EdeYud+/vRQK@mainframe>
-References: <cover.1614603705.git.cfebriyanto@gmail.com>
- <6e6c21b1-ad40-4719-b9bb-989a36ea7b4e@redhat.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6e6c21b1-ad40-4719-b9bb-989a36ea7b4e@redhat.com>
+ Mon, 01 Mar 2021 06:44:26 -0800 (PST)
+Received: (nullmailer pid 37862 invoked by uid 1000);
+ Mon, 01 Mar 2021 14:44:21 -0000
+From: Rob Herring <robh@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20210226091128.14379-3-benjamin.gaignard@collabora.com>
+References: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
+ <20210226091128.14379-3-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v2 2/5] dt-bindings: media: IMX8MQ VPU: document reset
+ usage
+Date: Mon, 01 Mar 2021 08:44:21 -0600
+Message-Id: <1614609861.076244.37861.nullmailer@robh.at.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,42 +79,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ kernel@collabora.com, p.zabel@pengutronix.de, ezequiel@collabora.com,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-imx@nxp.com,
+ kernel@pengutronix.de, gregkh@linuxfoundation.org, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 01, 2021 at 02:45:00PM +0100, Hans de Goede wrote:
-> Hi,
+On Fri, 26 Feb 2021 10:11:25 +0100, Benjamin Gaignard wrote:
+> Document IMX8MQ VPU bindings to add the phandle to the reset driver.
 > 
-> On 3/1/21 2:12 PM, Candy Febriyanto wrote:
-> > This patchset replaces most calls to sprintf with scnprintf, thereby
-> > preventing potential buffer overflows. The rest I left alone because
-> > they write to a buffer passed by a caller that doesn't pass its size
-> > alongside it.
-> > 
-> > Candy Febriyanto (3):
-> >   staging: rtl8723bs: core: Replace sprintf with scnprintf
-> >   staging: rtl8723bs: hal: Replace sprintf with scnprintf
-> >   staging: rtl8723bs: os_dep: Replace sprintf with scnprintf
-> > 
-> >  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |  3 +-
-> >  drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  |  4 +-
-> >  drivers/staging/rtl8723bs/hal/hal_com.c       | 45 ++++++++++---------
-> >  .../staging/rtl8723bs/os_dep/ioctl_linux.c    | 20 +++++----
-> >  drivers/staging/rtl8723bs/os_dep/mlme_linux.c |  6 +--
-> >  5 files changed, 41 insertions(+), 37 deletions(-)
+> Provide an independent reset driver allow to the both VPUs to share
+> their control/reset hardware block. The reset driver replace what
+> was previously done be using the 'ctrl' registers inside the driver.
 > 
-> Thanks, the entire series looks good to me, for the series:
+> This breaks the compatibility between DTB and kernel but the driver
+> is still in staging directory and limited to IMX8MQ SoC.
 > 
-> Reviewed-by: Hans de Goede <hdegoede@redhat.com>
-> 
-> Regards,
-> 
-> Hans
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml     | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
 > 
 
-Thank you Hans.
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.example.dt.yaml: video-codec@38300000: reg: [[942669824, 65536], [942735360, 65536], [942800896, 65536]] is too long
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+
+See https://patchwork.ozlabs.org/patch/1444845
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
