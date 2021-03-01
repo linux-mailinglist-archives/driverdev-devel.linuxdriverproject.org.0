@@ -2,49 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 827DA32822A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Mar 2021 16:19:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C43832822B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Mar 2021 16:19:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 29B8D843B7;
-	Mon,  1 Mar 2021 15:19:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BE760843C2;
+	Mon,  1 Mar 2021 15:19:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L45Rdmr9zL1t; Mon,  1 Mar 2021 15:19:00 +0000 (UTC)
+	with ESMTP id tiN5s1_pAKi3; Mon,  1 Mar 2021 15:19:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 13F99843A1;
-	Mon,  1 Mar 2021 15:18:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F1410843A6;
+	Mon,  1 Mar 2021 15:19:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 84FF01BF95E
- for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 15:18:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 37DA11BF95E
+ for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 15:18:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 752F38439E
- for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 15:18:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3470C430A9
+ for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 15:18:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QwHruBhYTF7s for <devel@linuxdriverproject.org>;
- Mon,  1 Mar 2021 15:18:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EAd-vF3MdCOK for <devel@linuxdriverproject.org>;
+ Mon,  1 Mar 2021 15:18:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B37298439F
- for <devel@driverdev.osuosl.org>; Mon,  1 Mar 2021 15:18:11 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 93C34430A7
+ for <devel@driverdev.osuosl.org>; Mon,  1 Mar 2021 15:18:12 +0000 (UTC)
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:39a1:f0e7:a696:18c8])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 950421F44E74;
- Mon,  1 Mar 2021 15:18:09 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8622D1F44E76;
+ Mon,  1 Mar 2021 15:18:10 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: p.zabel@pengutronix.de, robh+dt@kernel.org, shawnguo@kernel.org,
  s.hauer@pengutronix.de, festevam@gmail.com, ezequiel@collabora.com,
  mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH v3 4/5] media: hantro: Use reset driver
-Date: Mon,  1 Mar 2021 16:17:53 +0100
-Message-Id: <20210301151754.104749-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v3 5/5] arm64: dts: imx8mq: Use reset driver for VPU hardware
+ block
+Date: Mon,  1 Mar 2021 16:17:54 +0100
+Message-Id: <20210301151754.104749-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
 References: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
@@ -71,143 +72,76 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rather use a reset like feature inside the driver use the reset
-controller API to get the same result.
+Add a vpu reset hardware block node.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/Kconfig        |  1 +
- drivers/staging/media/hantro/imx8m_vpu_hw.c | 61 ++++-----------------
- 2 files changed, 12 insertions(+), 50 deletions(-)
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi | 31 ++++++++++++++++++-----
+ 1 file changed, 25 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/Kconfig b/drivers/staging/media/hantro/Kconfig
-index 5b6cf9f62b1a..dd1d4dde2658 100644
---- a/drivers/staging/media/hantro/Kconfig
-+++ b/drivers/staging/media/hantro/Kconfig
-@@ -20,6 +20,7 @@ config VIDEO_HANTRO_IMX8M
- 	bool "Hantro VPU i.MX8M support"
- 	depends on VIDEO_HANTRO
- 	depends on ARCH_MXC || COMPILE_TEST
-+	select RESET_VPU_IMX8MQ
- 	default y
- 	help
- 	  Enable support for i.MX8M SoCs.
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index c222de075ef4..d5b4312b9391 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -7,49 +7,12 @@
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+index a841a023e8e0..d9d9efc8592d 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+@@ -7,6 +7,7 @@
+ #include <dt-bindings/clock/imx8mq-clock.h>
+ #include <dt-bindings/power/imx8mq-power.h>
+ #include <dt-bindings/reset/imx8mq-reset.h>
++#include <dt-bindings/reset/imx8mq-vpu-reset.h>
+ #include <dt-bindings/gpio/gpio.h>
+ #include "dt-bindings/input/input.h"
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+@@ -1267,19 +1268,36 @@ usb3_phy1: usb-phy@382f0040 {
+ 			status = "disabled";
+ 		};
  
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/reset.h>
++		vpu_reset: vpu-reset@38320000 {
++			compatible = "fsl,imx8mq-vpu-reset", "syscon";
++			reg = <0x38320000 0x10000>;
++			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
++				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
++				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
++			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
++					  <&clk IMX8MQ_CLK_VPU_G2>,
++					  <&clk IMX8MQ_CLK_VPU_BUS>,
++					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
++			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
++						 <&clk IMX8MQ_VPU_PLL_OUT>,
++						 <&clk IMX8MQ_SYS1_PLL_800M>,
++						 <&clk IMX8MQ_VPU_PLL>;
++			assigned-clock-rates = <600000000>, <300000000>,
++					       <800000000>, <0>;
++			#reset-cells = <1>;
++		};
++
+ 		vpu: video-codec@38300000 {
+ 			compatible = "nxp,imx8mq-vpu";
+ 			reg = <0x38300000 0x10000>,
+-			      <0x38310000 0x10000>,
+-			      <0x38320000 0x10000>;
+-			reg-names = "g1", "g2", "ctrl";
++			      <0x38310000 0x10000>;
++			reg-names = "g1", "g2";
+ 			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+ 			interrupt-names = "g1", "g2";
+ 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+-				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+-				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+-			clock-names = "g1", "g2", "bus";
++				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
++			clock-names = "g1", "g2";
+ 			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
+ 					  <&clk IMX8MQ_CLK_VPU_G2>,
+ 					  <&clk IMX8MQ_CLK_VPU_BUS>,
+@@ -1290,6 +1308,7 @@ vpu: video-codec@38300000 {
+ 						 <&clk IMX8MQ_VPU_PLL>;
+ 			assigned-clock-rates = <600000000>, <600000000>,
+ 					       <800000000>, <0>;
++			resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G1>;
+ 			power-domains = <&pgc_vpu>;
+ 		};
  
- #include "hantro.h"
- #include "hantro_jpeg.h"
- #include "hantro_g1_regs.h"
- 
--#define CTRL_SOFT_RESET		0x00
--#define RESET_G1		BIT(1)
--#define RESET_G2		BIT(0)
--
--#define CTRL_CLOCK_ENABLE	0x04
--#define CLOCK_G1		BIT(1)
--#define CLOCK_G2		BIT(0)
--
--#define CTRL_G1_DEC_FUSE	0x08
--#define CTRL_G1_PP_FUSE		0x0c
--#define CTRL_G2_DEC_FUSE	0x10
--
--static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
--{
--	u32 val;
--
--	/* Assert */
--	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
--	val &= ~reset_bits;
--	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
--
--	udelay(2);
--
--	/* Release */
--	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
--	val |= reset_bits;
--	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
--}
--
--static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
--{
--	u32 val;
--
--	val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
--	val |= clock_bits;
--	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
--}
--
- static int imx8mq_runtime_resume(struct hantro_dev *vpu)
- {
- 	int ret;
-@@ -60,13 +23,10 @@ static int imx8mq_runtime_resume(struct hantro_dev *vpu)
- 		return ret;
- 	}
- 
--	imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
--	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
-+	ret = device_reset(vpu->dev);
-+	if (ret)
-+		dev_err(vpu->dev, "Failed to reset Hantro VPU\n");
- 
--	/* Set values of the fuse registers */
--	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
--	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
--	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
- 
- 	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
- 
-@@ -151,16 +111,17 @@ static irqreturn_t imx8m_vpu_g1_irq(int irq, void *dev_id)
- static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
- {
- 	vpu->dec_base = vpu->reg_bases[0];
--	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
- 
- 	return 0;
- }
- 
--static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
-+static void imx8mq_vpu_reset(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
-+	int ret = device_reset(vpu->dev);
- 
--	imx8m_soft_reset(vpu, RESET_G1);
-+	if (ret)
-+		dev_err(vpu->dev, "Failed to reset Hantro VPU\n");
- }
- 
- /*
-@@ -170,19 +131,19 @@ static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
- static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
- 	[HANTRO_MODE_MPEG2_DEC] = {
- 		.run = hantro_g1_mpeg2_dec_run,
--		.reset = imx8m_vpu_g1_reset,
-+		.reset = imx8mq_vpu_reset,
- 		.init = hantro_mpeg2_dec_init,
- 		.exit = hantro_mpeg2_dec_exit,
- 	},
- 	[HANTRO_MODE_VP8_DEC] = {
- 		.run = hantro_g1_vp8_dec_run,
--		.reset = imx8m_vpu_g1_reset,
-+		.reset = imx8mq_vpu_reset,
- 		.init = hantro_vp8_dec_init,
- 		.exit = hantro_vp8_dec_exit,
- 	},
- 	[HANTRO_MODE_H264_DEC] = {
- 		.run = hantro_g1_h264_dec_run,
--		.reset = imx8m_vpu_g1_reset,
-+		.reset = imx8mq_vpu_reset,
- 		.init = hantro_h264_dec_init,
- 		.exit = hantro_h264_dec_exit,
- 	},
 -- 
 2.25.1
 
