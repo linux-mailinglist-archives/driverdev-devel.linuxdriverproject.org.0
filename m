@@ -2,79 +2,94 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ED7A327F70
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Mar 2021 14:27:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 26C43327FBD
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Mar 2021 14:41:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D18C8606E8;
-	Mon,  1 Mar 2021 13:27:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9993B6F5C6;
+	Mon,  1 Mar 2021 13:41:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bPLbyL2A9wa0; Mon,  1 Mar 2021 13:27:21 +0000 (UTC)
+	with ESMTP id wBpTKosrxK-F; Mon,  1 Mar 2021 13:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1D6CF60673;
-	Mon,  1 Mar 2021 13:27:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6A476009C;
+	Mon,  1 Mar 2021 13:41:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 613EA1BF372
- for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 13:27:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 43A951BF372
+ for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 13:41:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4F8E24F07E
- for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 13:27:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 30C4083AA2
+ for <devel@linuxdriverproject.org>; Mon,  1 Mar 2021 13:41:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lyBm17ZxDaQz for <devel@linuxdriverproject.org>;
- Mon,  1 Mar 2021 13:27:08 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=oracle.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PYuSe_Ptghwh for <devel@linuxdriverproject.org>;
+ Mon,  1 Mar 2021 13:41:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com
- [209.85.221.51])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E271A4ED66
- for <devel@driverdev.osuosl.org>; Mon,  1 Mar 2021 13:27:07 +0000 (UTC)
-Received: by mail-wr1-f51.google.com with SMTP id n4so16168354wrx.1
- for <devel@driverdev.osuosl.org>; Mon, 01 Mar 2021 05:27:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1XTQYvzenTvAy+uzJCG3RPCHtA1WmUP3E0AtneiJNGY=;
- b=Gmj4Jvo9jICmWc2pFSDtMVB76Lbb8gRC6Ty+B04Dn2d/dk0hbMYQEqJUmHFpt+77q9
- Jsn1OOzbczH7qxbGvgSHzIiwHJ0zYmVOUTJsvGM4ShrTn9kq0ZmbEwBXn0I9KCxMpgGZ
- ccgiTKE1ORTIa54/B+QOm9YqiWNP49LhOhEZ+NMLgZSzmk5mMDiX9OdJbyV1hgw5ySXt
- X172HtSbHDdHUSfBu76roE/r26QP5OhA49z8PZvZxdQ6PYH7klWR3/Qp8nZg8lIs84Xf
- 6kUr53onk/MunaCynNOW1Magv5ssOiQA7WbH+lJefpcCHSc5O70fNN/0rP2RpSE72KwE
- cRiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1XTQYvzenTvAy+uzJCG3RPCHtA1WmUP3E0AtneiJNGY=;
- b=pg0SnxCsBgDmOt8kYZhiuUf8F+RjncAz7csgm+E9+jgBidyBNu1wVMAnUoouQVyExs
- VxgUKnvniuHwn1Othk7ndvydeD0x8fygIeFLdjbyz0Nx+yGeo6XQoh73FHLOTWxBRT9S
- waCNSrmg8RWYE/U7KBjDIax0i9fl0hrfq7STQbn9jsLG/AdOQIRtvCdV+Buz9TIyhWOL
- 4mBldT0Vjsmkaeq+9UxcKd4wuPBbsWfyA26XJJ2NucI+gGYS8RnEWNuy6rpFCOzzQlXe
- QLQGwYFAxeJ90zKxHSomempDcCXvWfBSe+npscqvchnlzKItVW6a2cvNNyLnkPfbLj8W
- oTuQ==
-X-Gm-Message-State: AOAM530uAdeEtFuQZVenyyr6wHaoCWaCnfNJbF5W/Qim+dPDJTdqP9Sg
- V+0kdJpSyblUv2p9rWUk0LE=
-X-Google-Smtp-Source: ABdhPJyOEoYKKJ0kUS7Rk4hNwpcSBxHgqnu+ej6Kl63ww7AtMPsjhbnikAn1Hi5GE+XQxy8NqpAiXA==
-X-Received: by 2002:adf:f2c3:: with SMTP id d3mr17094844wrp.380.1614605226099; 
- Mon, 01 Mar 2021 05:27:06 -0800 (PST)
-Received: from ubuntudesktop.lan (205.158.32.217.dyn.plus.net.
- [217.32.158.205])
- by smtp.gmail.com with ESMTPSA id p10sm11253288wrw.33.2021.03.01.05.27.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Mar 2021 05:27:05 -0800 (PST)
-From: Lee Gibson <leegib@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8712: Fix possible buffer overflow in
- r8712_sitesurvey_cmd
-Date: Mon,  1 Mar 2021 13:26:48 +0000
-Message-Id: <20210301132648.420296-1-leegib@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 955608271A
+ for <devel@driverdev.osuosl.org>; Mon,  1 Mar 2021 13:41:21 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 121DdBVw024394;
+ Mon, 1 Mar 2021 13:41:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=n199ZK0YWzIfZGzCcnz0Np0WLuJOLo8VMYdM/nuzSfk=;
+ b=KbZVrzkuHlRFKAKDWvIcoTc7ni/o97dMNv5eDCxmEMVnuPTlY2YJ+JJPvKOkHSiw3XL5
+ IHnZoPHdI60wgBqW/AEw0bZ9Ft8bcHpf/2lsKiJRCl9VQXE3iN77fkExb8KIdQuam5vC
+ fqLsKmsNKlYyKogp2J12IG4HTLsGnxJxXBJoQ0gSq9MW2BW85gBfJeZUY31/VNqdTvlQ
+ Hmb2+Jh3IC+pUz6hHIyz5wjsCupq6LO4nJ7o3ErUdZv+39FvxUwUJaFQn0klSpV5lhhR
+ M/JxqrCeJu8zvc0n3XZzOqMN1TfbSpzBoc9Nfgn1vX8pVeLTRE7J/FT4iq8pN2gkjUuc HA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 36ybkb3y1p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 01 Mar 2021 13:41:19 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 121DesWl076538;
+ Mon, 1 Mar 2021 13:41:18 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 36yynmqt36-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 01 Mar 2021 13:41:18 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 121DfGhR013342;
+ Mon, 1 Mar 2021 13:41:17 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 01 Mar 2021 05:41:16 -0800
+Date: Mon, 1 Mar 2021 16:41:09 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Candy Febriyanto <cfebriyanto@gmail.com>
+Subject: Re: [PATCH 3/3] staging: rtl8723bs: os_dep: Replace sprintf with
+ scnprintf
+Message-ID: <20210301134109.GS2087@kadam>
+References: <cover.1614603705.git.cfebriyanto@gmail.com>
+ <502b559ee7d6a2736f10d8228002ac7780243cd1.1614603705.git.cfebriyanto@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <502b559ee7d6a2736f10d8228002ac7780243cd1.1614603705.git.cfebriyanto@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9909
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ mlxscore=0 spamscore=0
+ bulkscore=0 suspectscore=0 mlxlogscore=999 phishscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2103010114
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9909
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ impostorscore=0
+ suspectscore=0 phishscore=0 bulkscore=0 mlxscore=0 lowpriorityscore=0
+ clxscore=1011 mlxlogscore=999 adultscore=0 malwarescore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2103010114
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,42 +102,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Lee Gibson <leegib@gmail.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Larry.Finger@lwfinger.net, hdegoede@redhat.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Function r8712_sitesurvey_cmd calls memcpy without checking the length.
-A user could control that length and trigger a buffer overflow.
-Fix by checking the length is within the maximum allowed size.
+On Mon, Mar 01, 2021 at 08:13:54PM +0700, Candy Febriyanto wrote:
+> @@ -5082,7 +5084,7 @@ static int rtw_ioctl_wext_private(struct net_device *dev, union iwreq_data *wrq_
+>  		case IW_PRIV_TYPE_BYTE:
+>  			/* Display args */
+>  			for (j = 0; j < n; j++) {
+> -				sprintf(str, "%d  ", extra[j]);
+> +				scnprintf(str, sizeof(str), "%d  ", extra[j]);
+>  				len = strlen(str);
 
-Signed-off-by: Lee Gibson <leegib@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_cmd.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+You could save a little code and combine the two statements:
 
-diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 18116469bd31..75716f59044d 100644
---- a/drivers/staging/rtl8712/rtl871x_cmd.c
-+++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-@@ -192,8 +192,10 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
- 	psurveyPara->ss_ssidlen = 0;
- 	memset(psurveyPara->ss_ssid, 0, IW_ESSID_MAX_SIZE + 1);
- 	if (pssid && pssid->SsidLength) {
--		memcpy(psurveyPara->ss_ssid, pssid->Ssid, pssid->SsidLength);
--		psurveyPara->ss_ssidlen = cpu_to_le32(pssid->SsidLength);
-+		int len = min_t(int, pssid->SsidLength, IW_ESSID_MAX_SIZE);
-+
-+		memcpy(psurveyPara->ss_ssid, pssid->Ssid, len);
-+		psurveyPara->ss_ssidlen = cpu_to_le32(len);
- 	}
- 	set_fwstate(pmlmepriv, _FW_UNDER_SURVEY);
- 	r8712_enqueue_cmd(pcmdpriv, ph2c);
--- 
-2.25.1
+				len = scnprintf(str, sizeof(str), "%d  ", extra[j]);
 
+For bonus points, you could write a Coccinelle script to look for that
+pattern of calling strlen() on a freshly sprintfed string.
+
+>  				output_len = strlen(output);
+>  				if ((output_len + len + 1) > 4096) {
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
