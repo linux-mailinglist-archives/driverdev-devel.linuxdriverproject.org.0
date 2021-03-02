@@ -1,87 +1,132 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A8D432A6C5
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Mar 2021 17:53:33 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B93E32AC4E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Mar 2021 22:34:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8079160693;
-	Tue,  2 Mar 2021 16:53:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E88E2431EC;
+	Tue,  2 Mar 2021 21:34:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q60m67CnQb7z; Tue,  2 Mar 2021 16:53:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LffLvcEh0UwZ; Tue,  2 Mar 2021 21:34:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B466960699;
-	Tue,  2 Mar 2021 16:53:28 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0589A43156;
+	Tue,  2 Mar 2021 21:34:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5A8191BF281
- for <devel@linuxdriverproject.org>; Tue,  2 Mar 2021 16:53:19 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B7601BF966
+ for <devel@linuxdriverproject.org>; Tue,  2 Mar 2021 21:34:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 56F5683AB0
- for <devel@linuxdriverproject.org>; Tue,  2 Mar 2021 16:53:19 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 26CBF4D8E4
+ for <devel@linuxdriverproject.org>; Tue,  2 Mar 2021 21:34:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U2u0TCn7VJXN for <devel@linuxdriverproject.org>;
- Tue,  2 Mar 2021 16:53:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com
- [209.85.216.41])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1C79583AAB
- for <devel@driverdev.osuosl.org>; Tue,  2 Mar 2021 16:53:18 +0000 (UTC)
-Received: by mail-pj1-f41.google.com with SMTP id
- i4-20020a17090a7184b02900bfb60fbc6bso1477217pjk.0
- for <devel@driverdev.osuosl.org>; Tue, 02 Mar 2021 08:53:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=w2lrn8SUqxNfzC84EaeX9TN8+k9qRbRos6L2aqYZ3dA=;
- b=MnDO8knqMhCeYqnaSuC3HxS/t94USL7RLEw6ES1Io8EUkhvbIjxjJ08yl8vicfafh0
- MUziQeSuiltNXh2ZahjlM7QTvTpAJc8UkiTvK48g+sdhZIAfpKr7a279LRSaWkxaNsr7
- NWMy83uunNOj3KFeyte4xAoS8FciGyQRcUa8/pgkKusOMg3X5c1ZDFwGVEu8GiWDWRIU
- Rv1cP8shA+isXOgKw6hCzMj8BtOu5RTMEcOOW8Me+sda+51nolLF8AxGJ7o+19bX1ssD
- XZEHCzrK7ScpM/ta5SSV2j6qd3+QXpWNjU9/wnndqldnMp1dp95R549DW3LnBKop1zTO
- m6xA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=w2lrn8SUqxNfzC84EaeX9TN8+k9qRbRos6L2aqYZ3dA=;
- b=V/ciMkdvePk7TOcRWfUBa9wRdp40Gsc3QUJaSossI6HqNqT/DlHvUoDVuZUWnzAIAS
- kC8zVrrEtzXfvBxAN4mNX/MPQDhaqyP3Lzb9emPwr+0XnhjuWPuaMLXtnVehZEKPgwxg
- 0np/REkYQg8qA1yVdsqk2jz6avMgNe0v0CH0jz/d95kqOPfwufPHcT1Y7yI/reFAa2Fp
- mWK804HLN6nnExm6zE+++Pz2rxQMvNwi69wKy44pLqOLEspabZX+/UDKbWdg4kWis+DT
- 5vt6nawEp7HRQESlR5WpP+SroZTmlXhb9LnJbSlDK9Zh3LIIimGIWRZZKc7E0JP6YnVA
- 1uPg==
-X-Gm-Message-State: AOAM531OwrjqpfVklT0lCzwCMZ+rHn9c7E6TqFzGER3Dit+msNpRGips
- csfw1JNrE1H2NFtLo6RY9xQ4fLM/gjk=
-X-Google-Smtp-Source: ABdhPJw21qZpJl97L5Jj2D/Nj7erHU/Nl1Jagt5zYiKqXsqb7WBz7q41B4Tj3gdlWzfolo2Y5+MLww==
-X-Received: by 2002:a17:90a:f184:: with SMTP id
- bv4mr5154342pjb.43.1614703997092; 
- Tue, 02 Mar 2021 08:53:17 -0800 (PST)
-Received: from atulu-nitro ([2401:4900:3329:6249:29f7:b073:eb63:c320])
- by smtp.gmail.com with ESMTPSA id o3sm20081736pgm.60.2021.03.02.08.53.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 08:53:16 -0800 (PST)
-Date: Tue, 2 Mar 2021 22:23:10 +0530
-From: Atul Gopinathan <atulgopinathan@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 2/2] staging: rtl8192e: Change state information from u16
- to u8
-Message-ID: <20210302165310.GA3493@atulu-nitro>
-References: <20210220182154.9457-1-atulgopinathan@gmail.com>
- <20210220182154.9457-2-atulgopinathan@gmail.com>
- <YDJbSgqTpBpIsbVB@kroah.com> <20210221165721.GA10040@atulu-nitro>
- <YDPNKTHZqaS37XPe@kroah.com> <20210222172330.GA2507@atulu-ubuntu>
- <YD5N/LYgzQwYX+N1@kroah.com>
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lKiZE79Prc-g for <devel@linuxdriverproject.org>;
+ Tue,  2 Mar 2021 21:34:31 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11on2086.outbound.protection.outlook.com [40.107.236.86])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 72FC94D7ED
+ for <devel@driverdev.osuosl.org>; Tue,  2 Mar 2021 21:34:31 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gCrMwHbYJl1WpFxI5HWL2ekR2WI/6MgStunUCrgWdP+7IY7VYsZIQkd7YTJV9pBEyftOw3Ml9HvGB4ky46C5zbxRhXQgYvloLeeyBTQ4uyevrLBzl4pBtzPrQj1tEOSeFi4HwRJ8/E58e73MPwSsGclkwW7q9ROedO5RdgTf3U213mpXsP5eNuz1z3eoAVHjKQc61NC/vtIZ9CDYXh6of3eFSdEcjdAC6XaCn4oU1+hAihtNFth55iPVBjDhz/5mccY2HA/rZJGUyUHy6Lhmc3Oluctqyq313OyEaoveo3w4uGvyTQ2q3b1EGTTkGhI5nOjeT4Ks7FJGtoZtUQs6jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C7Cg5YD4X5pWXFCTqIba1wnvmbbaGqzcLuFpSoLmZpE=;
+ b=VBm5WJNQUJueXaFcKrdhb7kJFjjv+EmPAYUfzCPktQaqidwXg1WKTwh9/wqkB4cliujdCDLe8OAIeE7te6V0G8QPiAkbI2NDJE2CwsQHQ3EGUo+mmddYm8J5SBLx41F2H2T5Gl+C62j9hYcn5T4q7FWVCLAEuyUmGIeQk2aNivA45NlZPcx+PjM5SIhn4ytkd5gYIPDXYAKzVUo6pOVd0JbubERxeeH5DMzSBZfibGkl8pUbQlD1uLJf6JHhepwv9hDl1rnYTyDHHqPfQTLFR3+VE8lYXPxXmgbz5oRd3TtmnMRasCfer/iy8Wzvfo0wUk8nSehBXi1ngSTEgHTB+A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C7Cg5YD4X5pWXFCTqIba1wnvmbbaGqzcLuFpSoLmZpE=;
+ b=PL2sUTn92fAvg9tBhu6hGgTMxoVdimXQAwF3GDToSSZcZ4FtwWU7gHo2rUuPHM9mi+zWeadB+rDCr+u6fuKewEDX8lUhE4PSIEXweR7j2FaWoowArAHFpUQDlWBx2UlSaNl86av/aunQhRn4Own8n2le1IHKW4iQLdJLJXIit80=
+Authentication-Results: linuxfoundation.org; dkim=none (message not signed)
+ header.d=none;linuxfoundation.org; dmarc=none action=none
+ header.from=silabs.com;
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SN6PR11MB2654.namprd11.prod.outlook.com (2603:10b6:805:54::31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3890.19; Tue, 2 Mar
+ 2021 15:01:29 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::41bc:5ce:dfa0:9701]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::41bc:5ce:dfa0:9701%7]) with mapi id 15.20.3890.028; Tue, 2 Mar 2021
+ 15:01:29 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Muhammad Usama Anjum <musamaanjum@gmail.com>
+Subject: Re: [PATCH] staging: wfx: remove unused included header files
+Date: Tue, 02 Mar 2021 16:01:25 +0100
+Message-ID: <1722736.fQpYkz0vEs@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <20210211143637.GA177425@LEGION>
+References: <20210211143637.GA177425@LEGION>
+X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
+X-ClientProxiedBy: SA9PR11CA0001.namprd11.prod.outlook.com
+ (2603:10b6:806:6e::6) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YD5N/LYgzQwYX+N1@kroah.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.localnet (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
+ SA9PR11CA0001.namprd11.prod.outlook.com (2603:10b6:806:6e::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3890.23 via Frontend Transport; Tue, 2 Mar 2021 15:01:28 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e7719439-c67c-4528-708d-08d8dd8c0eec
+X-MS-TrafficTypeDiagnostic: SN6PR11MB2654:
+X-Microsoft-Antispam-PRVS: <SN6PR11MB26546B063C6BC60E1118C99693999@SN6PR11MB2654.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: L3dnSoQF6Qhe6jjELAYL4VeiMuyhIJVWVDeepJOTxwlp3dX4yHuS0avEPIinbWscUV9Hh66KoLTvzzqhtxQEp7J5Sxq7lPGlxhlfv9m9qkIvDATGZH+6XRQAa01E0mv4GnDpd8bmFakI1UIa7vV0t7DUZ7pe8mhVu+EZVdfnxgCzb8N88R7l5Z/X3UfKAsNVN7waJzsWUaOFReeoGOd8o9ZeWU2xql6KoNPhMFhkTNzOTFBV0a6irF/Z75vHQPEJjK79lclYpjb3s+FSJXA/W1KLinrJ0sLTtO63QvL/wohpNcCeCvFphHbrknK8Gdr5np1jRwWxZQchbFGP4WWqupvUMtAFA+lOLxG2N7sT6hHxWBrMW7VOx8UbpUxI1ojj92YtYyY1MfKbe7T0So9jIQFKWkaDeivyx9uQP5/MAT4a7zb8cWWuZM0Avr11Zax3+BwP+J2ttxHsjbZ5pZo3ugQ3U1NpmBl/3uXRsOo1FWU2RuCRLvwMgaGHZ7G9FZLJsOnk4hSfppxBEWQSlFPaqY9NUvgtZ9LI4+apihPqRenZCCG4O0Xwp0MMA0yvlpFm
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(136003)(346002)(366004)(396003)(39850400004)(376002)(52116002)(66946007)(2906002)(36916002)(6506007)(186003)(66556008)(66476007)(16526019)(478600001)(86362001)(6916009)(6486002)(5660300002)(83380400001)(8936002)(66574015)(9686003)(6512007)(8676002)(316002)(6666004)(33716001)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: =?iso-8859-1?Q?nlgmSL3kS1Ta5Eey54EBuTN3UV6InqWnfq8gHW6ayPEsDYJCXH87gQzpoJ?=
+ =?iso-8859-1?Q?p/eiTB4YGxzIu6qGIoeNRn75BK/4Xwsq+1KUCaHRm+sPKRtdcp41SkGnVQ?=
+ =?iso-8859-1?Q?1pq0K0scwpOtR70QfFh/Ag/sLlYXyiOIE9wft44dQ0Q0SlznNE41WglxOa?=
+ =?iso-8859-1?Q?io5Liyt0HJNwymAtU5RtgdCYDK5cQdo4TU4x/8L5yyHmLaGXCJYQhxEA6e?=
+ =?iso-8859-1?Q?CBTwHh2pDhfyrpAnd3CF68As7nX12QUjQ6LGJnkWvebqG9PTlarFDW6lfa?=
+ =?iso-8859-1?Q?EbRlMOGJBvfPQh7oz0grZAL03x20x4iK+Wx5XCXMNExXTd/KgAY5OROj3c?=
+ =?iso-8859-1?Q?yw97tkLBsxTd14BmYh1CLIKCY6mBqqtSGDOML6lMuv+sTqa5q2I0DtY6Yi?=
+ =?iso-8859-1?Q?798X9URfcCjqIuUEqGvdFlt/RVtd5Jt1+ee5iMkrrUjp4089il81id5lBJ?=
+ =?iso-8859-1?Q?9g0rzj0ArhIy9YSKg7GHOT1lQiPcWWxFueL0wXbFoDjs4P1RsTlmp7+uBr?=
+ =?iso-8859-1?Q?VQR7PtFG8invizcpFCWvP3/6axh/6K04yw19jgkpUj/vDKKMSGI6qzGr1b?=
+ =?iso-8859-1?Q?FQGph9VLzZ7BVowMykEStA2ALu0k96Y9pfXGY/LgeOYZGasB7fMDvY4GRD?=
+ =?iso-8859-1?Q?cnwqVD7VUkk04YmiaAVAxgF9KcmpW0nRKt0KZw/+vHb6cV0FzmTwh6ujZ6?=
+ =?iso-8859-1?Q?wMrO8PuyMZ2ND2EtH4P3JODBQRA3lycIct41zU6p1fo462veVzAOmUL6Ka?=
+ =?iso-8859-1?Q?wQ+Xap6qH//wfEigFtPNjb3zwdpYtm8t4ByV6zWTEej9/pkgcycPBWiRh8?=
+ =?iso-8859-1?Q?7MU9OSMBX8jom6M5HCf2YqU8m2Oj748wWhDiZmmRX0NZHHlRfuQ8t+D3hS?=
+ =?iso-8859-1?Q?hdW/nOLzSvBK0++Z7xQEZi4Amfj9csdo69jMWVCThTIBwkN6NjJXGZFwIY?=
+ =?iso-8859-1?Q?DhhwyiNTJGkWICAurIncmIBrrIY8Y5nqreJ50tq1RQarCGaLDT2mrA6bKn?=
+ =?iso-8859-1?Q?1/WXsLn1xzoMEe3rBQl5iSUvGyLG1X4MREWqR5w4TrIdFI4X0fXmlQFkzF?=
+ =?iso-8859-1?Q?QC8ghccFGVoIWwp84rMSKI2hBOPRiSlPoIsJY2LNmiH9TJ0dBhR7wbeOCw?=
+ =?iso-8859-1?Q?j9PGzur15G7WbmH7eLnD5EJduJEoSunF18CVPqGgRTnFHxHwjUAkF//u6w?=
+ =?iso-8859-1?Q?+CpoPS7W8gOPa+8P3Ud7ZdhimzQOordwW+5AcvltRtO0Rze3fiKX3u8qf5?=
+ =?iso-8859-1?Q?DF6VkbhlDlXIMfNY0/kwtcxwfBMzF3zOgjPr5fPf6xpT0bmChAnwGM7xtM?=
+ =?iso-8859-1?Q?2GB5ZDHV1gIBfBaNgww9TmScKbIDEVJ8NetsIX+G9MOry4fPQJ2MQPDu5b?=
+ =?iso-8859-1?Q?fDru5cHFUBziZ3ZiP/PEZQkVdwSu+99sTBqObNnIzWS/HbyImwRgNPubTW?=
+ =?iso-8859-1?Q?nQBSlblmphU27sVU?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e7719439-c67c-4528-708d-08d8dd8c0eec
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Mar 2021 15:01:28.9960 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VKwIQGH4xzBR4VUXP8Ue1rZF+gqc536q1lfiT/EUS/tT9cT7wFs24hbks+CPBCX9gxJkv5vTy0p7uoIGTxRXrA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2654
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,197 +139,105 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: tiwai@suse.de, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- gustavo@embeddedor.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Mar 02, 2021 at 03:38:52PM +0100, Greg KH wrote:
-> On Mon, Feb 22, 2021 at 10:53:30PM +0530, Atul Gopinathan wrote:
-> > On Mon, Feb 22, 2021 at 04:26:33PM +0100, Greg KH wrote:
-> > > On Sun, Feb 21, 2021 at 10:27:21PM +0530, Atul Gopinathan wrote:
-> > > > On Sun, Feb 21, 2021 at 02:08:26PM +0100, Greg KH wrote:
-> > > > > On Sat, Feb 20, 2021 at 11:51:55PM +0530, Atul Gopinathan wrote:
-> > > > > > The "CcxRmState" field in struct "rtllib_network" is defined
-> > > > > > as a u16 array of size 2 (so, 4 bytes in total).
-> > > > > > 
-> > > > > > But the operations performed on this array throughout the code
-> > > > > > base (in rtl8192e/) are all in byte size 2 indicating that this
-> > > > > > array's type was defined wrongly.
-> > > > > > 
-> > > > > > There are two situation were u16 type of this field could yield
-> > > > > > incorrect behaviour:
-> > > > > > 
-> > > > > > 1. In rtllib_rx.c:1970:
-> > > > > > memcpy(network->CcxRmState, &info_element->data[4], 2);
-> > > > > > 
-> > > > > > Here last 2 bytes (index 4 and 5) from the info_element->data[]
-> > > > > > array are meant to be copied into CcxRmState[].
-> > > > > > Note that "data" array here is an array of type u8.
-> > > > > > 
-> > > > > > 2. In function "update_network()" in staging/rtl8192e/rtllib_rx.c:
-> > > > > > memcpy(dst->CcxRmState, src->CcxRmState, 2);
-> > > > > > 
-> > > > > > Here again, only 2 bytes are copied from the source state to
-> > > > > > destination state.
-> > > > > > 
-> > > > > > There are no instances of "CcxRmState" requiring u16 data type.
-> > > > > > Here is the output of "grep -IRn 'CcxRmState'" on the rtl8192e/
-> > > > > > directory for reviewing:
-> > > > > > 
-> > > > > > rtllib_rx.c:1970:			memcpy(network->CcxRmState, &info_element->data[4], 2);
-> > > > > > rtllib_rx.c:1971:			if (network->CcxRmState[0] != 0)
-> > > > > > rtllib_rx.c:1975:			network->MBssidMask = network->CcxRmState[1] & 0x07;
-> > > > > > rtllib_rx.c:2520:	memcpy(dst->CcxRmState, src->CcxRmState, 2);
-> > > > > > rtllib.h:1108:	u8	CcxRmState[2];
-> > > > > 
-> > > > > You just changed the logic in line 1975 in that file, right?  Are you
-> > > > > _SURE_ that is ok?  Do you have a device to test this on?
-> > > > 
-> > > > I'm sorry, I didn't quite get you. By line 1975 in rtllib_rx.c, did you mean
-> > > > the following line?:
-> > > > 
-> > > > network->MBssidMask = network->CcxRmState[1] & 0x07;
-> > > 
-> > > Yes.
-> > > 
-> > > > network->CcxRmState is being fed with 2 bytes of u8 data, in line 1970 (as
-> > > > seen above). I believe my patch doesn't change the logic of an "&" operation
-> > > > being performed on it with 0x07, right?
-> > > 
-> > > It changes the location of the [1] operation to point to a different
-> > > place in memory from what I can tell, as you changed the type of that
-> > > array.
-> > 
-> > Oh yes, earlier, the network->CcxRmState[] array had memory locations as:
-> > [x, x+16]. With this patch, it's locations are [x, x+8].
-> > 
-> > And I strongly believe this is how it should be based on how the original
-> > author is using the CcxRmState[] array throughout the codebase:
-> 
-> Ok, but this has changed the way memory is addressed, which is what I
-> was trying to point out when you said that nothing had changed.
+Hello Muhammad,
 
-Ah sorry about that, It just wasn't clear to me what you meant and my
-mind was too fixated on the "&" operation.
+Sorry, I am a bit late for the review of this patch. Thank you for your =
 
-> 
-> > Allow me to explain (Based on the output of "grep -IRn 'CcxRmState'" that
-> > I sent previously):
-> > 1. At line 1970:
-> > 
-> >     memcpy(network->CcxRmState, &info_element->data[4], 2);
-> > 
-> > this is where the array CcxRmState[] is being fed with
-> > data. And one can see the source is an array named "data" which itself
-> > has type u8. The third argument is "2", meaning 2 bytes of data should
-> > be written from "data" array to "CcxRmState".
-> > 
-> > Also note that, the array CcxRmState has a size 2, as defined in
-> > rtllib.h, in struct "rtllib_network":
-> > 
-> >     u16 CcxRmState[2];
-> > 
-> > Say if CcxRmState[] _was_ supposed to be u16 and not u8, then both elements
-> > of the source "data" array will only be written into the first element of
-> > "CcxRmState", i.e, "CcxRmState[0]". The 2nd element, "CcxRmState[1]" will
-> > never be fed with any data. The resultant CcxRmState[] array would look
-> > something like this:
-> > 
-> >     [(u8-data and u8-data squashed), 0].
-> > 
-> > The 2 u8-data here refers to info_element->data[4] and
-> > info_element->data[5].
-> > 
-> > Instead, if "CcxRmState" was of type u8, then both elements of source
-> > "data" array will be written into the 2 elements of "CcxRmState"
-> > respectively:
-> > 
-> >     [u8 data, u8 data]
-> > 
-> > This makes a lot more sense.
-> > 
-> > 2. Line 1975:
-> >     network->MBssidMask = network->CcxRmState[1] & 0x07;
-> > 
-> > With point 1 clear, it should now be easy to understand that
-> > the the "&" operation in line 1975, will _always_ yield 0 if "CcxRmState"
-> > is u16, simply because CcxRmState[1] is never fed with any data at
-> > all.
-> > 
-> > Oh and "network->MBssidMask" is also of type u8.
-> > 
-> > 3. Line 2520:
-> > memcpy(dst->CcxRmState, src->CcxRmState, 2);
-> > 
-> > 2 bytes, and not 4, again.:D
-> > The above line belongs to the following function:
-> > 
-> >     static inline void update_network(struct rtllib_device *ieee,
-> >                       struct rtllib_network *dst,
-> >                       struct rtllib_network *src)
-> > 
-> > As you can see, there is "dst" destination and a "src" source. The author
-> > is essentially copying all the data from "src" to "dst" in this function.
-> > Throughout the function, "memcpy()" is being used several times to copy
-> > the data of all arrays/structs existing in "src" into "dst". In each
-> > of those instances, the author is making sure to copy the entirety of
-> > the respective struct/array by passing all used up size of the struct/
-> > array in the third, size, argument. Here are a few lines from that
-> > function (posting the entire function defintion would be inappropriate)
-> > 
-> > 	instance 1: memcpy(dst->hidden_ssid, src->ssid, src->ssid_len);
-> >         instance 2: memcpy(&dst->stats, &src->stats, sizeof(struct rtllib_rx_stats));
-> >         instance 3: memcpy(&dst->tim, &src->tim, sizeof(struct rtllib_tim_parameters));
-> >         instance 4: memcpy(dst->wzc_ie, src->wzc_ie, src->wzc_ie_len);
-> > 
-> > There are a LOT more instances, here is the elixir link to that
-> > function for a quick reference:
-> > https://elixir.bootlin.com/linux/v5.11/source/drivers/staging/rtl8192e/rtllib_rx.c#L2420
-> > 
-> > My point is, it's clear that the intent of this function is to duplicate
-> > the data of src into dst. If "CcxRmState" really is supposed to be u16,
-> > then why only write down the first 2 bytes into "dst->CcxRmState"?
-> > 
-> > What about "dst->CcxRmState[1]"? It never gets any value, again.
-> > 
-> > These are the only places where CcxRmState is being used in the entire
-> > rtl8192e driver directory. I skipped line 1971 as it just checks whether
-> > "CcxRmState[0]" is 0 or not, this should not require any explanation.
-> 
-> Ok, can you provide more information in the changelog text and resend
-> the commit so that it is easier to understand why you feel this change
-> is ok?
+contribution.
 
-Sure! Just a couple of doubts:
-1. Do you want me to include all the information I wrote in my previous
-e-mail into the body of new e-mail? (Is there a limit to how long the
-body of the mail should be?)
+On Thursday 11 February 2021 15:36:37 CET Muhammad Usama Anjum wrote:
+> =
 
-2. I was asked to add the Fixes tag and also tag in -stable in my patch.
-I had a small confusion with the "Fixes" tag which I asked earlier in
-the thread but couldn't get it clarified with anyone, so I'll ask again:
+> Many header files have been included, but never used. Those header
+> files have been removed.
+> =
 
-The previous commit pertaining to the lines I'm modifying is a
-checkpatch.pl fix (found using simple "git blame").
-Should I write _that_ as the Fixes <Commit ID>? Or should I write in the
-commit id which created that file and hence, that specific line? (which
-makes more sense.)
+> Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
+> ---
+>  drivers/staging/wfx/bh.c              | 1 -
+>  drivers/staging/wfx/bh.h              | 4 ----
+>  drivers/staging/wfx/bus.h             | 3 ---
+>  drivers/staging/wfx/bus_sdio.c        | 6 ------
+>  drivers/staging/wfx/bus_spi.c         | 7 -------
+>  drivers/staging/wfx/data_rx.c         | 5 -----
+>  drivers/staging/wfx/data_tx.c         | 5 -----
+>  drivers/staging/wfx/data_tx.h         | 3 ---
+>  drivers/staging/wfx/debug.c           | 6 ------
+>  drivers/staging/wfx/fwio.c            | 2 --
+>  drivers/staging/wfx/hif_api_cmd.h     | 4 ----
+>  drivers/staging/wfx/hif_api_general.h | 9 ---------
+>  drivers/staging/wfx/hif_tx.c          | 4 ----
+>  drivers/staging/wfx/hif_tx_mib.c      | 5 -----
+>  drivers/staging/wfx/hwio.c            | 3 ---
+>  drivers/staging/wfx/hwio.h            | 2 --
+>  drivers/staging/wfx/key.c             | 2 --
+>  drivers/staging/wfx/key.h             | 2 --
+>  drivers/staging/wfx/main.c            | 7 -------
+>  drivers/staging/wfx/main.h            | 3 ---
+>  drivers/staging/wfx/queue.c           | 4 ----
+>  drivers/staging/wfx/queue.h           | 3 ---
+>  drivers/staging/wfx/scan.h            | 2 --
+>  drivers/staging/wfx/sta.c             | 6 ------
+>  drivers/staging/wfx/sta.h             | 2 --
+>  drivers/staging/wfx/traces.h          | 3 ---
+>  drivers/staging/wfx/wfx.h             | 3 ---
+>  27 files changed, 106 deletions(-)
+> =
 
-    `git blame -L1960,1980 -- rtllib_rx.c`
-returns a single commit (80d2579d8608f) which was a checkpatch fix (1970,
-is the line my patch-1/1 modifies
+> diff --git a/drivers/staging/wfx/bh.c b/drivers/staging/wfx/bh.c
+> index ed53d0b45592..cd6bcfdfbe9a 100644
+> --- a/drivers/staging/wfx/bh.c
+> +++ b/drivers/staging/wfx/bh.c
+> @@ -5,7 +5,6 @@
+>   * Copyright (c) 2017-2020, Silicon Laboratories, Inc.
+>   * Copyright (c) 2010, ST-Ericsson
+>   */
+> -#include <linux/gpio/consumer.h>
+>  #include <net/mac80211.h>
 
-    `git log -S'&info_element[4]' -- rtllib_rx.c`
-returned the commit (94a799425eee8) which created the file (the file
-which my patch-1/1 modifies)
+Though bh.c refers to gpiod_set_value_cansleep()
 
-Which one should I write in the Fixes tag?
 
-Thanks for the review!
-Atul
+>  #include "bh.h"
+> diff --git a/drivers/staging/wfx/bh.h b/drivers/staging/wfx/bh.h
+> index 78c49329e22a..92ef3298d4ac 100644
+> --- a/drivers/staging/wfx/bh.h
+> +++ b/drivers/staging/wfx/bh.h
+> @@ -8,10 +8,6 @@
+>  #ifndef WFX_BH_H
+>  #define WFX_BH_H
+> =
+
+> -#include <linux/atomic.h>
+> -#include <linux/wait.h>
+> -#include <linux/workqueue.h>
+> -
+>  struct wfx_dev;
+> =
+
+>  struct wfx_hif {
+
+Ditto, bh.h refers to atomic_t, struct work_struct and struct =
+
+completion. If you try to compile bh.h alone (with something like
+gcc -xc .../bh.h) it won't work.
+
+Maybe it works now because we are lucky in the order the headers are =
+
+included, but I think it is not sufficient.
+
+[... same problem repeats multiple times in the following ...]
+
+-- =
+
+J=E9r=F4me Pouiller
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
