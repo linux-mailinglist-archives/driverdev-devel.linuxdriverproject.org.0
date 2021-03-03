@@ -1,52 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAD8132CD92
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Mar 2021 08:26:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4C0432D036
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Mar 2021 10:55:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7115F431D0;
-	Thu,  4 Mar 2021 07:26:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 66FD44EC14;
+	Thu,  4 Mar 2021 09:55:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ny8lUJkP7A9G; Thu,  4 Mar 2021 07:26:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RWRCentu1KU3; Thu,  4 Mar 2021 09:55:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BB149431D6;
-	Thu,  4 Mar 2021 07:26:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 74DA84EC07;
+	Thu,  4 Mar 2021 09:55:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 568141BF299
- for <devel@linuxdriverproject.org>; Thu,  4 Mar 2021 07:26:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BC01E1BF989
+ for <devel@linuxdriverproject.org>; Thu,  4 Mar 2021 09:55:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5261C6F5B7
- for <devel@linuxdriverproject.org>; Thu,  4 Mar 2021 07:26:31 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AA92B4EBDE
+ for <devel@linuxdriverproject.org>; Thu,  4 Mar 2021 09:55:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RQBYw83hnfqk for <devel@linuxdriverproject.org>;
- Thu,  4 Mar 2021 07:26:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ez4hcLigTwvi for <devel@linuxdriverproject.org>;
+ Thu,  4 Mar 2021 09:55:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.JVPinto.com (mail.jvpinto.com [65.49.11.60])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BF36F6F5A9
- for <devel@linuxdriverproject.org>; Thu,  4 Mar 2021 07:26:30 +0000 (UTC)
-Received: from RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) by
- RW-EXC1.JVPinto.com (2002:ac20:10d::ac20:10d) with Microsoft SMTP Server
- (TLS) id 15.0.1497.2; Wed, 3 Mar 2021 23:26:27 -0800
-Received: from User (52.142.15.110) by RW-EXC1.JVPinto.com (172.32.1.13) with
- Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport;
- Wed, 3 Mar 2021 23:26:24 -0800
-From: Hi <johnpinto@jvpinto.com>
-Subject: Investment Partner Required.
-Date: Thu, 4 Mar 2021 07:26:27 +0000
+Received: from mail.figher.com.cn (unknown [111.229.73.169])
+ by smtp4.osuosl.org (Postfix) with ESMTP id C81CD4E41B
+ for <devel@driverdev.osuosl.org>; Thu,  4 Mar 2021 09:55:19 +0000 (UTC)
+Received: from User (unknown [193.56.29.46])
+ by mail.figher.com.cn (Postfix) with SMTP id 8367617D8D8;
+ Thu,  4 Mar 2021 02:10:38 +0800 (CST)
+From: "Mr. Scott Grog"<contacto@beyoung.com.ar>
+Subject: Read Carefully..             
+Date: Wed, 3 Mar 2021 10:10:51 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <f9c2d10790104f97a34c132f9c37f60f@RW-EXC1.JVPinto.com>
-To: Undisclosed recipients:;
+Message-Id: <20210304095520.AA92B4EBDE@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,22 +55,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimy78@yandex.com
+Reply-To: info.officelink@mail.ru
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee which has been postponed to October 2021 to March 2022 because of the Covid-19 pandemic.
- 
-I am writing to you to manage the funds I received as financial gratification from various foreign companies I assisted to receive a participation approval to the coming event. The amount is $44,762,906.00 United States dollars. But I can not personally manage the fund in my country because of the sensitive nature of my office and the certain restriction on married Muslim women.
+This is National Crime Investigation Center USA.
 
-For this reason, an agreement was reached with a consulting firm to direct the various financial gifts into an open beneficiary account in my name with a bank where it will be possible for me to instruct the transfer of ownership right to a third party for investment purpose; which is the reason I am contacting you to receive the fund and manage it as my investment partner. Note that the fund is NOT connected to any criminal or terrorist activity.
- 
-On your indication of interest with your information to include your nahme, your phone number and contact mailing address; I will instruct the consulting firm to process the fund from the bank to your country for investment purposes.
+In our investigations from banks on International and National Funds Transfer (INFT) protocols in the past 10 years from all banks worldwide. We have come across your contact details and records with one of these Banks. In view of the carried investigations, we have contacted you confidentially for vital information toward your transaction with this bank. It was clear that the bank have delayed your payment thereby looking for a means to divert your fund to different individual account not belonging to you.
 
-Regards.
-Reem Hashimy.
+However, all bank officials who mishandled your transaction has been duly sacked and management dissolved and dismissed from bank work as a result of this attempt. Upon our investigation conclusion, we found out that your transaction was legitimate and for this reason, a compensation amount of $3,150,567.00 (Three million one hundred and fifty thousand, five hundred and sixty seven dollars) has been allocated to you for immediate payment through our accredited bank, EURO BANK- PAYMENT REQUIREMENTS.
+
+Kindly contact the compensation paying officer with the below details.
+
+Name: Mr. Larry Ellis
+Email: info.larryellisdept.org@mail.com
+
+Thanks.
+Yours sincerely,
+Mr. Scott
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
