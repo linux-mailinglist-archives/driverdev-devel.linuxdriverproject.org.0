@@ -1,58 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D4E432B8E5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Mar 2021 16:20:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6143C32B934
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Mar 2021 17:25:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 85A6E4011A;
-	Wed,  3 Mar 2021 15:20:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EFA6F4AD51;
+	Wed,  3 Mar 2021 16:25:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3xeUEyFDEhK7; Wed,  3 Mar 2021 15:20:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ok-R_X7pIX4t; Wed,  3 Mar 2021 16:25:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D9602400F4;
-	Wed,  3 Mar 2021 15:20:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B224C4AD93;
+	Wed,  3 Mar 2021 16:25:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 783AA1BF868
- for <devel@linuxdriverproject.org>; Wed,  3 Mar 2021 15:20:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2E72D1BF232
+ for <devel@linuxdriverproject.org>; Wed,  3 Mar 2021 16:25:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 66E26843C8
- for <devel@linuxdriverproject.org>; Wed,  3 Mar 2021 15:20:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2AA52843D9
+ for <devel@linuxdriverproject.org>; Wed,  3 Mar 2021 16:25:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MkDCCOym64ha for <devel@linuxdriverproject.org>;
- Wed,  3 Mar 2021 15:20:39 +0000 (UTC)
-X-Greylist: delayed 00:31:51 by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
- [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 07EAC843AE
- for <devel@driverdev.osuosl.org>; Wed,  3 Mar 2021 15:20:38 +0000 (UTC)
-Received: from [IPv6:2a01:e0a:4cb:a870:30e8:5098:73c5:2bfe] (unknown
- [IPv6:2a01:e0a:4cb:a870:30e8:5098:73c5:2bfe])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id EB8F91F45DD2;
- Wed,  3 Mar 2021 15:20:36 +0000 (GMT)
+ with ESMTP id BBnBy9ihBBDH for <devel@linuxdriverproject.org>;
+ Wed,  3 Mar 2021 16:25:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D6FA6843D3
+ for <devel@driverdev.osuosl.org>; Wed,  3 Mar 2021 16:25:39 +0000 (UTC)
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1lHUJL-00017T-6G; Wed, 03 Mar 2021 17:25:19 +0100
+Received: from pza by lupine with local (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1lHUJK-0003MJ-Ef; Wed, 03 Mar 2021 17:25:18 +0100
+Message-ID: <c12d84b955b0265dbcf89f2d7fc4d5c28bc74756.camel@pengutronix.de>
 Subject: Re: [PATCH v3 0/5] Reset driver for IMX8MQ VPU hardware block
-To: Philipp Zabel <p.zabel@pengutronix.de>, robh+dt@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, robh+dt@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com, 
  ezequiel@collabora.com, mchehab@kernel.org, gregkh@linuxfoundation.org
+Date: Wed, 03 Mar 2021 17:25:18 +0100
+In-Reply-To: <2d55ad69-9b93-ab0e-04af-cd775cc9248b@collabora.com>
 References: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
  <e6f8537d2a1f34d0a424b68e056c0ae556c93efd.camel@pengutronix.de>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <2d55ad69-9b93-ab0e-04af-cd775cc9248b@collabora.com>
-Date: Wed, 3 Mar 2021 16:20:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ <2d55ad69-9b93-ab0e-04af-cd775cc9248b@collabora.com>
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-In-Reply-To: <e6f8537d2a1f34d0a424b68e056c0ae556c93efd.camel@pengutronix.de>
-Content-Language: en-US
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: devel@driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,43 +75,58 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkxlIDAzLzAzLzIwMjEgw6AgMTU6MTcsIFBoaWxpcHAgWmFiZWwgYSDDqWNyaXTCoDoKPiBIaSBC
-ZW5qYW1pbiwKPgo+IE9uIE1vbiwgMjAyMS0wMy0wMSBhdCAxNjoxNyArMDEwMCwgQmVuamFtaW4g
-R2FpZ25hcmQgd3JvdGU6Cj4+IFRoZSB0d28gVlBVcyBpbnNpZGUgSU1YOE1RIHNoYXJlIHRoZSBz
-YW1lIGNvbnRyb2wgYmxvY2sgd2hpY2ggY2FuIGJlIHNlZQo+PiBhcyBhIHJlc2V0IGhhcmR3YXJl
-IGJsb2NrLgo+IFRoaXMgaXNuJ3QgYSByZXNldCBjb250cm9sbGVyIHRob3VnaC4gVGhlIGNvbnRy
-b2wgYmxvY2sgYWxzbyBjb250YWlucwo+IGNsb2NrIGdhdGVzIG9mIHNvbWUgc29ydCBhbmQgYSBm
-aWx0ZXIgcmVnaXN0ZXIgZm9yIHRoZSBmZWF0dXJlc2V0IGZ1c2VzLgo+IFRob3NlIHNob3VsZG4n
-dCBiZSBtYW5pcHVsYXRlZCB2aWEgdGhlIHJlc2V0IEFQSS4KClRoZXkgYXJlIGFsbCBwYXJ0IG9m
-IHRoZSBjb250cm9sIGJsb2NrIGFuZCBvZiB0aGUgcmVzZXQgcHJvY2VzcyBmb3IgdGhpcwpoYXJk
-d2FyZSB0aGF0IHdoeSBJIHB1dCB0aGVtIGhlcmUuIEkgZ3Vlc3MgaXQgaXMgYm9yZGVyIGxpbmUg
-Oi0pCgo+Cj4+IEluIG9yZGVyIHRvIGJlIGFibGUgdG8gYWRkIHRoZSBzZWNvbmQgVlBVIChmb3Ig
-SEVDViBkZWNvZGluZykgaXQgd2lsbCBiZQo+PiBtb3JlIGhhbmR5IGlmIHRoZSBib3RoIFZQVSBk
-cml2ZXJzIGluc3RhbmNlIGRvbid0IGhhdmUgdG8gc2hhcmUgdGhlCj4+IGNvbnRyb2wgYmxvY2sg
-cmVnaXN0ZXJzLiBUaGlzIGxlYWQgdG8gaW1wbGVtZW50IGl0IGFzIGFuIGluZGVwZW5kIHJlc2V0
-Cj4+IGRyaXZlciBhbmQgdG8gY2hhbmdlIHRoZSBWUFUgZHJpdmVyIHRvIHVzZSBpdC4KPiBXaHkg
-bm90IHN3aXRjaCB0byBhIHN5c2NvbiByZWdtYXAgZm9yIHRoZSBjb250cm9sIGJsb2NrPyBUaGF0
-IHNob3VsZAo+IGFsc28gYWxsb3cgdG8ga2VlcCBiYWNrd2FyZHMgY29tcGF0aWJpbGl0eSB3aXRo
-IHRoZSBvbGQgYmluZGluZyB3aXRoCj4gbWluaW1hbCBlZmZvcnQuCgpJIHdpbGwgZ2l2ZSBhIHRy
-eSBpbiB0aGlzIGRpcmVjdGlvbi4KCj4KPj4gUGxlYXNlIG5vdGUgdGhhdCB0aGlzIHNlcmllcyBi
-cmVhayB0aGUgY29tcGF0aWJpbGl0eSBiZXR3ZWVuIHRoZSBEVEIgYW5kCj4+IGtlcm5lbC4gVGhp
-cyBicmVhayBpcyBsaW1pdGVkIHRvIElNWDhNUSBTb0MgYW5kIGlzIGRvbmUgd2hlbiB0aGUgZHJp
-dmVyCj4+IGlzIHN0aWxsIGluIHN0YWdpbmcgZGlyZWN0b3J5Lgo+IEkga25vdyBpbiB0aGlzIGNh
-c2Ugd2UgYXJlIHByZXR0eSBzdXJlIHRoZXJlIGFyZSBubyB1c2VycyBvZiB0aGlzCj4gYmluZGlu
-ZyBleGNlcHQgZm9yIGEgc3RhZ2luZyBkcml2ZXIsIGJ1dCBpdCB3b3VsZCBzdGlsbCBiZSBuaWNl
-IHRvIGtlZXAKPiBzdXBwb3J0IGZvciB0aGUgZGVwcmVjYXRlZCBiaW5kaW5nLCB0byBhdm9pZCB0
-aGUgcmVxdWlyZW1lbnQgb2YgdXBkYXRpbmcKPiBrZXJuZWwgYW5kIERUIGluIGxvY2stc3RlcC4K
-CklmIEkgd2FudCB0byB1c2UgYSBzeXNjb24gKG9yIGEgcmVzZXQpIHRoZSBkcml2ZXIgbXVzdCBu
-b3QgaW9yZW1hcCB0aGUgImN0cmwiCnJlZ2lzdGVycy4gSXQgbWVhbnMgdGhhdCAiY3RybCIgaGFz
-IHRvIGJlIHJlbW92ZWQgZnJvbSB0aGUgZHJpdmVyIHJlcXVlc3RlZApyZWctbmFtZXMgKGlteDht
-cV9yZWdfbmFtZXNbXSkuIERvaW5nIHRoYXQgYnJlYWsgdGhlIGtlcm5lbC9EVCBjb21wYXRpYmls
-aXR5LgpTb21laG93IHN5c2NvbiBhbmQgImN0cmwiIGFyZSBleGNsdXNpdmUuCgpCZW5qYW1pbgoK
-Pgo+IHJlZ2FyZHMKPiBQaGlsaXBwCj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
-dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+T24gV2VkLCAyMDIxLTAzLTAzIGF0IDE2OjIwICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90
+ZToKPiBMZSAwMy8wMy8yMDIxIMOgIDE1OjE3LCBQaGlsaXBwIFphYmVsIGEgw6ljcml0IDoKPiA+
+IEhpIEJlbmphbWluLAo+ID4gCj4gPiBPbiBNb24sIDIwMjEtMDMtMDEgYXQgMTY6MTcgKzAxMDAs
+IEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+ID4gPiBUaGUgdHdvIFZQVXMgaW5zaWRlIElNWDhN
+USBzaGFyZSB0aGUgc2FtZSBjb250cm9sIGJsb2NrIHdoaWNoIGNhbiBiZSBzZWUKPiA+ID4gYXMg
+YSByZXNldCBoYXJkd2FyZSBibG9jay4KPiA+IFRoaXMgaXNuJ3QgYSByZXNldCBjb250cm9sbGVy
+IHRob3VnaC4gVGhlIGNvbnRyb2wgYmxvY2sgYWxzbyBjb250YWlucwo+ID4gY2xvY2sgZ2F0ZXMg
+b2Ygc29tZSBzb3J0IGFuZCBhIGZpbHRlciByZWdpc3RlciBmb3IgdGhlIGZlYXR1cmVzZXQgZnVz
+ZXMuCj4gPiBUaG9zZSBzaG91bGRuJ3QgYmUgbWFuaXB1bGF0ZWQgdmlhIHRoZSByZXNldCBBUEku
+Cj4gCj4gVGhleSBhcmUgYWxsIHBhcnQgb2YgdGhlIGNvbnRyb2wgYmxvY2sgYW5kIG9mIHRoZSBy
+ZXNldCBwcm9jZXNzIGZvciB0aGlzCj4gaGFyZHdhcmUgdGhhdCB3aHkgSSBwdXQgdGhlbSBoZXJl
+LiBJIGd1ZXNzIGl0IGlzIGJvcmRlciBsaW5lIDotKQoKSSdtIHB1c2hpbmcgYmFjayB0byBrZWVw
+IHRoZSByZXNldCBjb250cm9sIGZyYW1ld29yayBmb2N1c2VkIG9uCmNvbnRyb2xsaW5nIHJlc2V0
+IGxpbmVzLiBFdmVyeSBzaWRlIGVmZmVjdCAoc3VjaCBhcyB0aGUgYXN5bW1ldHJpYyBjbG9jawp1
+bmdhdGluZykgaW4gYSByYW5kb20gZHJpdmVyIG1ha2VzIGl0IGhhcmRlciB0byByZWFzb24gYWJv
+dXQgYmVoYXZpb3VyCmF0IHRoZSBBUEkgbGV2ZWwsIGFuZCB0byByZXZpZXcgcGF0Y2hlcyBmb3Ig
+aGFyZHdhcmUgSSBhbSBub3QgZmFtaWxpYXIKd2l0aC4KCj4gPiA+IEluIG9yZGVyIHRvIGJlIGFi
+bGUgdG8gYWRkIHRoZSBzZWNvbmQgVlBVIChmb3IgSEVDViBkZWNvZGluZykgaXQgd2lsbCBiZQo+
+ID4gPiBtb3JlIGhhbmR5IGlmIHRoZSBib3RoIFZQVSBkcml2ZXJzIGluc3RhbmNlIGRvbid0IGhh
+dmUgdG8gc2hhcmUgdGhlCj4gPiA+IGNvbnRyb2wgYmxvY2sgcmVnaXN0ZXJzLiBUaGlzIGxlYWQg
+dG8gaW1wbGVtZW50IGl0IGFzIGFuIGluZGVwZW5kIHJlc2V0Cj4gPiA+IGRyaXZlciBhbmQgdG8g
+Y2hhbmdlIHRoZSBWUFUgZHJpdmVyIHRvIHVzZSBpdC4KPiA+IFdoeSBub3Qgc3dpdGNoIHRvIGEg
+c3lzY29uIHJlZ21hcCBmb3IgdGhlIGNvbnRyb2wgYmxvY2s/IFRoYXQgc2hvdWxkCj4gPiBhbHNv
+IGFsbG93IHRvIGtlZXAgYmFja3dhcmRzIGNvbXBhdGliaWxpdHkgd2l0aCB0aGUgb2xkIGJpbmRp
+bmcgd2l0aAo+ID4gbWluaW1hbCBlZmZvcnQuCj4gCj4gSSB3aWxsIGdpdmUgYSB0cnkgaW4gdGhp
+cyBkaXJlY3Rpb24uCgpUaGFuayB5b3UuCgo+ID4gPiBQbGVhc2Ugbm90ZSB0aGF0IHRoaXMgc2Vy
+aWVzIGJyZWFrIHRoZSBjb21wYXRpYmlsaXR5IGJldHdlZW4gdGhlIERUQiBhbmQKPiA+ID4ga2Vy
+bmVsLiBUaGlzIGJyZWFrIGlzIGxpbWl0ZWQgdG8gSU1YOE1RIFNvQyBhbmQgaXMgZG9uZSB3aGVu
+IHRoZSBkcml2ZXIKPiA+ID4gaXMgc3RpbGwgaW4gc3RhZ2luZyBkaXJlY3RvcnkuCj4gPiBJIGtu
+b3cgaW4gdGhpcyBjYXNlIHdlIGFyZSBwcmV0dHkgc3VyZSB0aGVyZSBhcmUgbm8gdXNlcnMgb2Yg
+dGhpcwo+ID4gYmluZGluZyBleGNlcHQgZm9yIGEgc3RhZ2luZyBkcml2ZXIsIGJ1dCBpdCB3b3Vs
+ZCBzdGlsbCBiZSBuaWNlIHRvIGtlZXAKPiA+IHN1cHBvcnQgZm9yIHRoZSBkZXByZWNhdGVkIGJp
+bmRpbmcsIHRvIGF2b2lkIHRoZSByZXF1aXJlbWVudCBvZiB1cGRhdGluZwo+ID4ga2VybmVsIGFu
+ZCBEVCBpbiBsb2NrLXN0ZXAuCj4gCj4gSWYgSSB3YW50IHRvIHVzZSBhIHN5c2NvbiAob3IgYSBy
+ZXNldCkgdGhlIGRyaXZlciBtdXN0IG5vdCBpb3JlbWFwIHRoZSAiY3RybCIKPiByZWdpc3RlcnMu
+IEl0IG1lYW5zIHRoYXQgImN0cmwiIGhhcyB0byBiZSByZW1vdmVkIGZyb20gdGhlIGRyaXZlciBy
+ZXF1ZXN0ZWQKPiByZWctbmFtZXMgKGlteDhtcV9yZWdfbmFtZXNbXSkuIERvaW5nIHRoYXQgYnJl
+YWsgdGhlIGtlcm5lbC9EVCBjb21wYXRpYmlsaXR5Lgo+IFNvbWVob3cgc3lzY29uIGFuZCAiY3Ry
+bCIgYXJlIGV4Y2x1c2l2ZS4KClRoZSB3YXkgdGhlIGRyaXZlciBpcyBzZXQgdXAgY3VycmVudGx5
+LCB5ZXMuIFlvdSBjb3VsZCBhZGQgYSBiaXQgb2YKcGxhdGZvcm0gc3BlY2lmaWMgcHJvYmUgY29k
+ZSwgdGhvdWdoLCB0aGF0IHdvdWxkIHNldCB1cCB0aGUgcmVnbWFwCmVpdGhlciBieSBjYWxsaW5n
+CglzeXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKCk7CmZvciB0aGUgbmV3IGJpbmRpbmcs
+IG9yLCBpZiB0aGUgcGhhbmRsZSBpcyBub3QgYXZhaWxhYmxlLCBmYWxsIGJhY2sgdG8KCXBsYXRm
+b3JtX2dldF9yZXNvdXJjZV9ieW5hbWUoLi4uLCAiY3RybCIpOwoJZGV2bV9pb3JlbWFwX3Jlc291
+cmNlKCk7CglkZXZtX3JlZ21hcF9pbml0X21taW8oKTsKZm9yIHRoZSBvbGQgYmluZGluZy4KVGhl
+IGFjdHVhbCBjb2RlYyAucmVzZXQgYW5kIHZhcmlhbnQgLnJ1bnRpbWVfcmVzdW1lIG9wcyBjb3Vs
+ZCBiZQppZGVudGljYWwgdGhlbi4KCnJlZ2FyZHMKUGhpbGlwcApfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
+dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
