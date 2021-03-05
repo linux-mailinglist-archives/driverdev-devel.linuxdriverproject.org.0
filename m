@@ -1,89 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D36932E40B
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Mar 2021 09:58:31 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A20632E4F9
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Mar 2021 10:36:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 67AC54ECEA;
-	Fri,  5 Mar 2021 08:58:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F1EAB6FB74;
+	Fri,  5 Mar 2021 09:36:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iHEI5hlu9Cva; Fri,  5 Mar 2021 08:58:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AKv2IPUdYQfT; Fri,  5 Mar 2021 09:36:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 23CDE4EC7C;
-	Fri,  5 Mar 2021 08:58:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DA0D06F5A8;
+	Fri,  5 Mar 2021 09:36:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 73D071BF331
- for <devel@linuxdriverproject.org>; Fri,  5 Mar 2021 08:58:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2369A1BF294
+ for <devel@linuxdriverproject.org>; Fri,  5 Mar 2021 09:35:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 624FC4EC7C
- for <devel@linuxdriverproject.org>; Fri,  5 Mar 2021 08:58:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 201806F5A8
+ for <devel@linuxdriverproject.org>; Fri,  5 Mar 2021 09:35:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e9Wp8EOrjPDx for <devel@linuxdriverproject.org>;
- Fri,  5 Mar 2021 08:58:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Q_sjNbtY1uaS for <devel@linuxdriverproject.org>;
+ Fri,  5 Mar 2021 09:35:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9EF394EC7B
- for <devel@driverdev.osuosl.org>; Fri,  5 Mar 2021 08:58:16 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1258tjB2076918;
- Fri, 5 Mar 2021 08:58:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=nJ6xyN7tTx6zu1Wf8tmSZj7awmOmSqHSXODxHLNJySc=;
- b=eZuIxe0D8sdt0UpyK97q/cMkVZVftXmdlpRgN/aoQ66CyzZeNChy/luZP3oPFgdByRCr
- tlfMgHSrlNQLbwkZS7ZpOACfS1UZYLEKsTRoa96+c3xUBB7aTH+bS4dEIjoprmz+hqQ7
- 9TBf33jJ/O+z6x63d5CY0a5YPmBAGUTkofWw1dX7iMirqNcXLso78rq4cZMOaSDq8IUQ
- zHYkWXhlpU+dqnu3JUJ3ZqMuIifnjd0CG89SUAjKjcfZ2WmSdI8/4Z3UGwiYcp20Bx/j
- d21esqzWAgFeMBrewoIHW282Js2CEC9UQkDxe/ItMu/uOVg2CgLO2MbmZ/mxxlI8wL+0 GA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 371hhcb3y0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 05 Mar 2021 08:58:15 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1258pDkw185665;
- Fri, 5 Mar 2021 08:58:13 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 370003r6mb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 05 Mar 2021 08:58:13 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 1258wC58022487;
- Fri, 5 Mar 2021 08:58:12 GMT
-Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 05 Mar 2021 00:58:11 -0800
-Date: Fri, 5 Mar 2021 11:58:03 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH] staging: rtl8188eu: prevent ->ssid overflow in
- rtw_wx_set_scan()
-Message-ID: <YEHymwsnHewzoam7@mwanda>
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0E2556FB6E
+ for <devel@driverdev.osuosl.org>; Fri,  5 Mar 2021 09:35:51 +0000 (UTC)
+Received: from [IPv6:2a01:e0a:4cb:a870:b9e2:e9f:d661:5a2f] (unknown
+ [IPv6:2a01:e0a:4cb:a870:b9e2:e9f:d661:5a2f])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 79EF21F468C5;
+ Fri,  5 Mar 2021 09:35:47 +0000 (GMT)
+Subject: Re: [PATCH v3 0/5] Reset driver for IMX8MQ VPU hardware block
+To: Philipp Zabel <p.zabel@pengutronix.de>, robh+dt@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+ ezequiel@collabora.com, mchehab@kernel.org, gregkh@linuxfoundation.org
+References: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
+ <e6f8537d2a1f34d0a424b68e056c0ae556c93efd.camel@pengutronix.de>
+ <2d55ad69-9b93-ab0e-04af-cd775cc9248b@collabora.com>
+ <c12d84b955b0265dbcf89f2d7fc4d5c28bc74756.camel@pengutronix.de>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <f6cbb1e4-f288-36d0-a188-041093821f66@collabora.com>
+Date: Fri, 5 Mar 2021 10:35:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9913
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxlogscore=999
- phishscore=0 bulkscore=0 mlxscore=0 spamscore=0 suspectscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2103050043
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9913
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1015
- malwarescore=0
- mlxlogscore=999 spamscore=0 phishscore=0 lowpriorityscore=0
- impostorscore=0 mlxscore=0 suspectscore=0 bulkscore=0 adultscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2103050043
+In-Reply-To: <c12d84b955b0265dbcf89f2d7fc4d5c28bc74756.camel@pengutronix.de>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,45 +66,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
- Takashi Iwai <tiwai@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, Kumar Kartikeya Dwivedi <memxor@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This code has a check to prevent read overflow but it needs another
-check to prevent writing beyond the end of the ->ssid[] array.
-
-Fixes: a2c60d42d97c ("staging: r8188eu: Add files for new driver - part 16")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/staging/rtl8188eu/os_dep/ioctl_linux.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-index bf22f130d3e1..58954b88a817 100644
---- a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-@@ -1133,9 +1133,11 @@ static int rtw_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
- 						break;
- 					}
- 					sec_len = *(pos++); len -= 1;
--					if (sec_len > 0 && sec_len <= len) {
-+					if (sec_len > 0 &&
-+					    sec_len <= len &&
-+					    sec_len <= 32) {
- 						ssid[ssid_index].ssid_length = sec_len;
--						memcpy(ssid[ssid_index].ssid, pos, ssid[ssid_index].ssid_length);
-+						memcpy(ssid[ssid_index].ssid, pos, sec_len);
- 						ssid_index++;
- 					}
- 					pos += sec_len;
--- 
-2.30.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CkxlIDAzLzAzLzIwMjEgw6AgMTc6MjUsIFBoaWxpcHAgWmFiZWwgYSDDqWNyaXTCoDoKPiBPbiBX
+ZWQsIDIwMjEtMDMtMDMgYXQgMTY6MjAgKzAxMDAsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+
+PiBMZSAwMy8wMy8yMDIxIMOgIDE1OjE3LCBQaGlsaXBwIFphYmVsIGEgw6ljcml0IDoKPj4+IEhp
+IEJlbmphbWluLAo+Pj4KPj4+IE9uIE1vbiwgMjAyMS0wMy0wMSBhdCAxNjoxNyArMDEwMCwgQmVu
+amFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4+Pj4gVGhlIHR3byBWUFVzIGluc2lkZSBJTVg4TVEgc2hh
+cmUgdGhlIHNhbWUgY29udHJvbCBibG9jayB3aGljaCBjYW4gYmUgc2VlCj4+Pj4gYXMgYSByZXNl
+dCBoYXJkd2FyZSBibG9jay4KPj4+IFRoaXMgaXNuJ3QgYSByZXNldCBjb250cm9sbGVyIHRob3Vn
+aC4gVGhlIGNvbnRyb2wgYmxvY2sgYWxzbyBjb250YWlucwo+Pj4gY2xvY2sgZ2F0ZXMgb2Ygc29t
+ZSBzb3J0IGFuZCBhIGZpbHRlciByZWdpc3RlciBmb3IgdGhlIGZlYXR1cmVzZXQgZnVzZXMuCj4+
+PiBUaG9zZSBzaG91bGRuJ3QgYmUgbWFuaXB1bGF0ZWQgdmlhIHRoZSByZXNldCBBUEkuCj4+IFRo
+ZXkgYXJlIGFsbCBwYXJ0IG9mIHRoZSBjb250cm9sIGJsb2NrIGFuZCBvZiB0aGUgcmVzZXQgcHJv
+Y2VzcyBmb3IgdGhpcwo+PiBoYXJkd2FyZSB0aGF0IHdoeSBJIHB1dCB0aGVtIGhlcmUuIEkgZ3Vl
+c3MgaXQgaXMgYm9yZGVyIGxpbmUgOi0pCj4gSSdtIHB1c2hpbmcgYmFjayB0byBrZWVwIHRoZSBy
+ZXNldCBjb250cm9sIGZyYW1ld29yayBmb2N1c2VkIG9uCj4gY29udHJvbGxpbmcgcmVzZXQgbGlu
+ZXMuIEV2ZXJ5IHNpZGUgZWZmZWN0IChzdWNoIGFzIHRoZSBhc3ltbWV0cmljIGNsb2NrCj4gdW5n
+YXRpbmcpIGluIGEgcmFuZG9tIGRyaXZlciBtYWtlcyBpdCBoYXJkZXIgdG8gcmVhc29uIGFib3V0
+IGJlaGF2aW91cgo+IGF0IHRoZSBBUEkgbGV2ZWwsIGFuZCB0byByZXZpZXcgcGF0Y2hlcyBmb3Ig
+aGFyZHdhcmUgSSBhbSBub3QgZmFtaWxpYXIKPiB3aXRoLgo+Cj4+Pj4gSW4gb3JkZXIgdG8gYmUg
+YWJsZSB0byBhZGQgdGhlIHNlY29uZCBWUFUgKGZvciBIRUNWIGRlY29kaW5nKSBpdCB3aWxsIGJl
+Cj4+Pj4gbW9yZSBoYW5keSBpZiB0aGUgYm90aCBWUFUgZHJpdmVycyBpbnN0YW5jZSBkb24ndCBo
+YXZlIHRvIHNoYXJlIHRoZQo+Pj4+IGNvbnRyb2wgYmxvY2sgcmVnaXN0ZXJzLiBUaGlzIGxlYWQg
+dG8gaW1wbGVtZW50IGl0IGFzIGFuIGluZGVwZW5kIHJlc2V0Cj4+Pj4gZHJpdmVyIGFuZCB0byBj
+aGFuZ2UgdGhlIFZQVSBkcml2ZXIgdG8gdXNlIGl0Lgo+Pj4gV2h5IG5vdCBzd2l0Y2ggdG8gYSBz
+eXNjb24gcmVnbWFwIGZvciB0aGUgY29udHJvbCBibG9jaz8gVGhhdCBzaG91bGQKPj4+IGFsc28g
+YWxsb3cgdG8ga2VlcCBiYWNrd2FyZHMgY29tcGF0aWJpbGl0eSB3aXRoIHRoZSBvbGQgYmluZGlu
+ZyB3aXRoCj4+PiBtaW5pbWFsIGVmZm9ydC4KPj4gSSB3aWxsIGdpdmUgYSB0cnkgaW4gdGhpcyBk
+aXJlY3Rpb24uCj4gVGhhbmsgeW91Lgo+Cj4+Pj4gUGxlYXNlIG5vdGUgdGhhdCB0aGlzIHNlcmll
+cyBicmVhayB0aGUgY29tcGF0aWJpbGl0eSBiZXR3ZWVuIHRoZSBEVEIgYW5kCj4+Pj4ga2VybmVs
+LiBUaGlzIGJyZWFrIGlzIGxpbWl0ZWQgdG8gSU1YOE1RIFNvQyBhbmQgaXMgZG9uZSB3aGVuIHRo
+ZSBkcml2ZXIKPj4+PiBpcyBzdGlsbCBpbiBzdGFnaW5nIGRpcmVjdG9yeS4KPj4+IEkga25vdyBp
+biB0aGlzIGNhc2Ugd2UgYXJlIHByZXR0eSBzdXJlIHRoZXJlIGFyZSBubyB1c2VycyBvZiB0aGlz
+Cj4+PiBiaW5kaW5nIGV4Y2VwdCBmb3IgYSBzdGFnaW5nIGRyaXZlciwgYnV0IGl0IHdvdWxkIHN0
+aWxsIGJlIG5pY2UgdG8ga2VlcAo+Pj4gc3VwcG9ydCBmb3IgdGhlIGRlcHJlY2F0ZWQgYmluZGlu
+ZywgdG8gYXZvaWQgdGhlIHJlcXVpcmVtZW50IG9mIHVwZGF0aW5nCj4+PiBrZXJuZWwgYW5kIERU
+IGluIGxvY2stc3RlcC4KPj4gSWYgSSB3YW50IHRvIHVzZSBhIHN5c2NvbiAob3IgYSByZXNldCkg
+dGhlIGRyaXZlciBtdXN0IG5vdCBpb3JlbWFwIHRoZSAiY3RybCIKPj4gcmVnaXN0ZXJzLiBJdCBt
+ZWFucyB0aGF0ICJjdHJsIiBoYXMgdG8gYmUgcmVtb3ZlZCBmcm9tIHRoZSBkcml2ZXIgcmVxdWVz
+dGVkCj4+IHJlZy1uYW1lcyAoaW14OG1xX3JlZ19uYW1lc1tdKS4gRG9pbmcgdGhhdCBicmVhayB0
+aGUga2VybmVsL0RUIGNvbXBhdGliaWxpdHkuCj4+IFNvbWVob3cgc3lzY29uIGFuZCAiY3RybCIg
+YXJlIGV4Y2x1c2l2ZS4KPiBUaGUgd2F5IHRoZSBkcml2ZXIgaXMgc2V0IHVwIGN1cnJlbnRseSwg
+eWVzLiBZb3UgY291bGQgYWRkIGEgYml0IG9mCj4gcGxhdGZvcm0gc3BlY2lmaWMgcHJvYmUgY29k
+ZSwgdGhvdWdoLCB0aGF0IHdvdWxkIHNldCB1cCB0aGUgcmVnbWFwCj4gZWl0aGVyIGJ5IGNhbGxp
+bmcKPiAJc3lzY29uX3JlZ21hcF9sb29rdXBfYnlfcGhhbmRsZSgpOwo+IGZvciB0aGUgbmV3IGJp
+bmRpbmcsIG9yLCBpZiB0aGUgcGhhbmRsZSBpcyBub3QgYXZhaWxhYmxlLCBmYWxsIGJhY2sgdG8K
+PiAJcGxhdGZvcm1fZ2V0X3Jlc291cmNlX2J5bmFtZSguLi4sICJjdHJsIik7Cj4gCWRldm1faW9y
+ZW1hcF9yZXNvdXJjZSgpOwo+IAlkZXZtX3JlZ21hcF9pbml0X21taW8oKTsKPiBmb3IgdGhlIG9s
+ZCBiaW5kaW5nLgo+IFRoZSBhY3R1YWwgY29kZWMgLnJlc2V0IGFuZCB2YXJpYW50IC5ydW50aW1l
+X3Jlc3VtZSBvcHMgY291bGQgYmUKPiBpZGVudGljYWwgdGhlbi4KCkkgbWFkZSBpdCB3b3JrcyB3
+aXRoIHN5c2NvbiBhbmQgeW91ciBwcm9wb3NhbC4KVGhlIG5leHQgdmVyc2lvbiBvZiB0aGUgcGF0
+Y2hlcyB3aWxsIGJlIHdpdGhvdXQgcmVzZXQgYW5kIHdvbid0IGJyZWFrCkRUIGNvbXBhdGliaWxp
+dHkuCgpUaGFua3MgZm9yIHlvdXIgaGVscCwKQmVuamFtaW4KCj4KPiByZWdhcmRzCj4gUGhpbGlw
+cAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
+IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
+ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
+bAo=
