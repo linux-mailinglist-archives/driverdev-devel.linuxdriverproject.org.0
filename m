@@ -2,76 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3ED532FAD4
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Mar 2021 14:23:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0F1D32FB2A
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Mar 2021 15:27:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AFF258455F;
-	Sat,  6 Mar 2021 13:23:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B8A16843C5;
+	Sat,  6 Mar 2021 14:27:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tik7IZldTRJv; Sat,  6 Mar 2021 13:23:48 +0000 (UTC)
+	with ESMTP id eT4Wlb1GnqZg; Sat,  6 Mar 2021 14:27:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EBD8684541;
-	Sat,  6 Mar 2021 13:23:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D3F984365;
+	Sat,  6 Mar 2021 14:27:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C83451BF306
- for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F46E1BF5DC
+ for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 14:27:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B7EAB6066D
- for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F265742FB0
+ for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 14:27:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f0eympxyiBzU for <devel@linuxdriverproject.org>;
- Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x534.google.com (mail-pg1-x534.google.com
- [IPv6:2607:f8b0:4864:20::534])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 28D1D60657
- for <devel@driverdev.osuosl.org>; Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
-Received: by mail-pg1-x534.google.com with SMTP id n9so2316876pgi.7
- for <devel@driverdev.osuosl.org>; Sat, 06 Mar 2021 05:23:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=QNie7fvacg0VcMhJUcIkQPujOIJJT3GPp44PryGFraY=;
- b=ZsSwrn2q6uVcmRI4L15LCpuu4OkwZCBLAt3XsMRWKPvxSEYMnpHxcC7SqeIMi7E+Nk
- Ll2WgneSd9qFq/aARfpAFiyMqFRb5Mi6F5y8wUQLNAr2/EnW1MWBCWNf+jie8pDiJ10y
- S6IXVOFUOweMyB1aq2WdB0P3zgvoehcKyhxYbKJTKrmi1qtKTF4laUYHLbLJV7fB/frq
- v57hn/dMwo/LChiM5RNqfGww5xRZ33Xdz9nv4TakWeErcJjrekiS/U6DYbXDeElzPtN5
- CYiVseQpB3ukpnD3khsvwtCCMCqupNKpvRRbqCtdw1tbZgN1yQMf93YBzNk/U0+OXybq
- 8hhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=QNie7fvacg0VcMhJUcIkQPujOIJJT3GPp44PryGFraY=;
- b=GPMM7iQC96ym3AgHCQ02y8Beayd8UVj13wbvYMBA4kKKCzee+Cu+uSnzX79/uJQIE9
- vYXPvgxCVOVTcx09xdzdNjNl+9GUBmbPWkCFq6yacflb1yFB1CuOqTr4FqQGMVg7/iIu
- I1ejxd5Vw1pvNjHzLQ/eoWe4nHZFIV3daA1ZuD3458Rcd5ZVUR0lfBtkb0f2GKWc9xeF
- irqWUSWYwQUrdvWpQLbWAiMCEFuY1jIomPKklgHvYFw3Df365GwkaNJrAcgghp3zgMiO
- qyBYPvmG26V6jh0llkYsTNn2ipZcRgNWhRTtiFHN0rJQRgnSNfhG2sOQcC7xQWe0blCg
- +ZrQ==
-X-Gm-Message-State: AOAM532OIBZyz1TkEwHKHd2SCllriZGdPOy3ruCHoYljm+PGywxo41If
- hXi0ZAJ8YZwJer1SHB7eCWE=
-X-Google-Smtp-Source: ABdhPJxzeo+9H4+p0uAsSY2mO7pJES8TJr7rANuMY+Kq3XAv2Qz8x68JaHIM9oiVv9/CGktzV7yyuw==
-X-Received: by 2002:a65:4243:: with SMTP id d3mr13351432pgq.180.1615037016632; 
- Sat, 06 Mar 2021 05:23:36 -0800 (PST)
-Received: from localhost.localdomain ([45.135.186.66])
- by smtp.gmail.com with ESMTPSA id d24sm5672441pfn.54.2021.03.06.05.23.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 Mar 2021 05:23:36 -0800 (PST)
-From: Jia-Ju Bai <baijiaju1990@gmail.com>
-To: nsaenzjulienne@suse.de, gregkh@linuxfoundation.org, arnd@arndb.de,
- dan.carpenter@oracle.com, phil@raspberrypi.com, amarjargal16@gmail.com
-Subject: [PATCH] staging: vc04_services: vchiq_arm: fix error return code of
- vchiq_release_internal() and vchiq_use_internal()
-Date: Sat,  6 Mar 2021 05:22:45 -0800
-Message-Id: <20210306132245.16811-1-baijiaju1990@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=seznam.cz
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4JgZVH5TkYcP for <devel@linuxdriverproject.org>;
+ Sat,  6 Mar 2021 14:27:26 +0000 (UTC)
+X-Greylist: delayed 00:13:41 by SQLgrey-1.8.0
+Received: from mxe2.seznam.cz (mxe2.seznam.cz [IPv6:2a02:598:2::34])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4D59942FFD
+ for <devel@driverdev.osuosl.org>; Sat,  6 Mar 2021 14:27:25 +0000 (UTC)
+Received: from email.seznam.cz
+ by email-smtpc22a.ng.seznam.cz (email-smtpc22a.ng.seznam.cz [10.23.18.28])
+ id 242d44d70f24fcd520745860; Sat, 06 Mar 2021 15:27:22 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=seznam.cz; s=beta;
+ t=1615040842; bh=6J8EgNHJnWziHVT9MNKzvy5L2WLLJqTPisB4qjoONwo=;
+ h=Received:From:To:Cc:Subject:Date:Message-Id:X-Mailer:MIME-Version:
+ Content-Transfer-Encoding;
+ b=dYoyM918hyrJzGh8RLih2279bJHsdoEXAyXpS8Y+CwqAnzZ+ECPuAjxiqb1kUjDWM
+ NO7kxxwmAT+z2SsCh38x9UuXmiAM7VZaEK68vnG/HoeTqnvKXoYH7yhekFKBI93tEV
+ V7W1VHsryBdt5PJ+/g9AjOa2Zq8iohXaaeCdhfxs=
+Received: from linux.local (cst-prg-27-252.cust.vodafone.cz [46.135.27.252])
+ by email-relay10.ng.seznam.cz (Seznam SMTPD 1.3.124) with ESMTP;
+ Sat, 06 Mar 2021 15:13:35 +0100 (CET)  
+From: Giovanni Gherdovich <bobdc9664@seznam.cz>
+To: George Hilliard <thirtythreeforty@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: ralink-gdma: Check return code of device_reset
+Date: Sat,  6 Mar 2021 15:13:22 +0100
+Message-Id: <20210306141322.7516-1-bobdc9664@seznam.cz>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,55 +66,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Jia-Ju Bai <baijiaju1990@gmail.com>, bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Neil Brown <neil@brown.name>, Giovanni Gherdovich <bobdc9664@seznam.cz>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ John Crispin <blogic@openwrt.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When arm_state is NULL, no error return code of vchiq_release_internal()
-and vchiq_use_internal() is assigned.
-To fix this bug, ret is assigned with VCHIQ_ERROR.
+The device_reset() function is marked as "__must_check", thus the static
+analysis tool "sparse" complains that in ralink-gdma its return value is
+ignored. Log a warning in case it returns an error.
 
-Reported-by: TOTE Robot <oslab@tsinghua.edu.cn>
-Signed-off-by: Jia-Ju Bai <baijiaju1990@gmail.com>
+Signed-off-by: Giovanni Gherdovich <bobdc9664@seznam.cz>
 ---
- .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/staging/ralink-gdma/ralink-gdma.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index 59e45dc03a97..8b2b4771f420 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -2332,8 +2332,10 @@ vchiq_use_internal(struct vchiq_state *state, struct vchiq_service *service,
- 	int *entity_uc;
- 	int local_uc;
+diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
+index 655df317d0ee..3c26b665ee7c 100644
+--- a/drivers/staging/ralink-gdma/ralink-gdma.c
++++ b/drivers/staging/ralink-gdma/ralink-gdma.c
+@@ -833,7 +833,9 @@ static int gdma_dma_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
--	if (!arm_state)
-+	if (!arm_state) {
-+		ret = VCHIQ_ERROR;
- 		goto out;
-+	}
+-	device_reset(&pdev->dev);
++	ret = device_reset(&pdev->dev);
++	if (ret)
++		dev_err(&pdev->dev, "failed to reset: %d\n", ret);
  
- 	vchiq_log_trace(vchiq_susp_log_level, "%s", __func__);
- 
-@@ -2389,8 +2391,10 @@ vchiq_release_internal(struct vchiq_state *state, struct vchiq_service *service)
- 	char entity[16];
- 	int *entity_uc;
- 
--	if (!arm_state)
-+	if (!arm_state) {
-+		ret = VCHIQ_ERROR;
- 		goto out;
-+	}
- 
- 	vchiq_log_trace(vchiq_susp_log_level, "%s", __func__);
- 
+ 	dd = &dma_dev->ddev;
+ 	dma_cap_set(DMA_MEMCPY, dd->cap_mask);
 -- 
-2.17.1
+2.26.2
 
 _______________________________________________
 devel mailing list
