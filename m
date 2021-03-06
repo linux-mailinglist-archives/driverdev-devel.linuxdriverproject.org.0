@@ -1,79 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC93732FA6E
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Mar 2021 13:11:25 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B3ED532FAD4
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Mar 2021 14:23:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BC5588455F;
-	Sat,  6 Mar 2021 12:11:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AFF258455F;
+	Sat,  6 Mar 2021 13:23:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bddesofTnSVd; Sat,  6 Mar 2021 12:11:23 +0000 (UTC)
+	with ESMTP id tik7IZldTRJv; Sat,  6 Mar 2021 13:23:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1B94D84433;
-	Sat,  6 Mar 2021 12:11:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBD8684541;
+	Sat,  6 Mar 2021 13:23:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 54EDE1BF589
- for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 12:11:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C83451BF306
+ for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 43FE643022
- for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 12:11:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B7EAB6066D
+ for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id grFweZ9DJ1_n for <devel@linuxdriverproject.org>;
- Sat,  6 Mar 2021 12:11:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id f0eympxyiBzU for <devel@linuxdriverproject.org>;
+ Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com
- [IPv6:2607:f8b0:4864:20::441])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A83D5414F6
- for <devel@driverdev.osuosl.org>; Sat,  6 Mar 2021 12:11:11 +0000 (UTC)
-Received: by mail-pf1-x441.google.com with SMTP id a188so4060982pfb.4
- for <devel@driverdev.osuosl.org>; Sat, 06 Mar 2021 04:11:11 -0800 (PST)
+Received: from mail-pg1-x534.google.com (mail-pg1-x534.google.com
+ [IPv6:2607:f8b0:4864:20::534])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 28D1D60657
+ for <devel@driverdev.osuosl.org>; Sat,  6 Mar 2021 13:23:37 +0000 (UTC)
+Received: by mail-pg1-x534.google.com with SMTP id n9so2316876pgi.7
+ for <devel@driverdev.osuosl.org>; Sat, 06 Mar 2021 05:23:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BVyrDkDYNfdYuIzuJBagkTAPrMEkMX8z2zUgIheSJaU=;
- b=ASAXRCI+vRWIwdq9xkZXcMsd99MrrgfVm4z+J5v8l6sF87zpwZB019+nwVXr53ewgt
- eX2fm/lft4j7MxtjfjEZOTmdJDfLPOgphMZu/bDs0NLEYgaZnxqO98QA1sizq3ucwUEi
- bNXwuZf0DgkxXN0Gb6XpQq6LWikcJvT7MwsT9tdAddNITrPEFb6UWz3Y4fjCSkBbVMYT
- yh31V7MMgBzz9jYnDkjhwNWsgarWra3ehNufqdDVFZztKExeWQPBdPSyclhyow+qLmpr
- Jum8yEmL8TYfG/xcUfdqjNTcM5s+/I62LMbqjkOE/9LD7T64/0+xmBMAMPFDAenK/22y
- hyhg==
+ h=from:to:cc:subject:date:message-id;
+ bh=QNie7fvacg0VcMhJUcIkQPujOIJJT3GPp44PryGFraY=;
+ b=ZsSwrn2q6uVcmRI4L15LCpuu4OkwZCBLAt3XsMRWKPvxSEYMnpHxcC7SqeIMi7E+Nk
+ Ll2WgneSd9qFq/aARfpAFiyMqFRb5Mi6F5y8wUQLNAr2/EnW1MWBCWNf+jie8pDiJ10y
+ S6IXVOFUOweMyB1aq2WdB0P3zgvoehcKyhxYbKJTKrmi1qtKTF4laUYHLbLJV7fB/frq
+ v57hn/dMwo/LChiM5RNqfGww5xRZ33Xdz9nv4TakWeErcJjrekiS/U6DYbXDeElzPtN5
+ CYiVseQpB3ukpnD3khsvwtCCMCqupNKpvRRbqCtdw1tbZgN1yQMf93YBzNk/U0+OXybq
+ 8hhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BVyrDkDYNfdYuIzuJBagkTAPrMEkMX8z2zUgIheSJaU=;
- b=MOge+aHWQjadp6JYaR+wh1kck1DEBifHWv5+gdg5ZAq6UCPKPNR0vM+G5Amj9HjctI
- vCS7MDLruGzhRusgEcD/O0U5lEnubOICdyX6RlK7GTJdG+Y2idswP56Qi1iMaQIAUvq6
- K9JZm9bj9canLWp4uUpWtkcqU5zBq/nE8vaQ2W7bkusw1x7n+3wcyV5A5HX07h0cq1vA
- 8PLjBwQfVSpggHnIlwmwcyMUoQocgOQByts1uh3VJVwiTF9icKMq2jCb4eueJevju8Tt
- aezAvY0JExhUs/CdBa0Pe6oZ+1ZUuarvc9BcvfVKXSYk8djw+xtR9HlenYQHxKA2eZtE
- SUMQ==
-X-Gm-Message-State: AOAM533snfWeJljRn8pqN8F7hYyj2mYqoiSKueF9OK20kg6otdRXkKCT
- ajWC6VP3WruFF3y9Tgt/MRM=
-X-Google-Smtp-Source: ABdhPJyAt3pUMHH9D43EtcoFrV+BCXDQyqG82hlYEpMq4QSieYKHqZ+tNyuLiHwIjNTS5dnnE4XM8A==
-X-Received: by 2002:a63:c702:: with SMTP id n2mr12426084pgg.382.1615032671174; 
- Sat, 06 Mar 2021 04:11:11 -0800 (PST)
-Received: from localhost.localdomain ([178.236.46.205])
- by smtp.gmail.com with ESMTPSA id b14sm5209799pji.14.2021.03.06.04.11.09
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=QNie7fvacg0VcMhJUcIkQPujOIJJT3GPp44PryGFraY=;
+ b=GPMM7iQC96ym3AgHCQ02y8Beayd8UVj13wbvYMBA4kKKCzee+Cu+uSnzX79/uJQIE9
+ vYXPvgxCVOVTcx09xdzdNjNl+9GUBmbPWkCFq6yacflb1yFB1CuOqTr4FqQGMVg7/iIu
+ I1ejxd5Vw1pvNjHzLQ/eoWe4nHZFIV3daA1ZuD3458Rcd5ZVUR0lfBtkb0f2GKWc9xeF
+ irqWUSWYwQUrdvWpQLbWAiMCEFuY1jIomPKklgHvYFw3Df365GwkaNJrAcgghp3zgMiO
+ qyBYPvmG26V6jh0llkYsTNn2ipZcRgNWhRTtiFHN0rJQRgnSNfhG2sOQcC7xQWe0blCg
+ +ZrQ==
+X-Gm-Message-State: AOAM532OIBZyz1TkEwHKHd2SCllriZGdPOy3ruCHoYljm+PGywxo41If
+ hXi0ZAJ8YZwJer1SHB7eCWE=
+X-Google-Smtp-Source: ABdhPJxzeo+9H4+p0uAsSY2mO7pJES8TJr7rANuMY+Kq3XAv2Qz8x68JaHIM9oiVv9/CGktzV7yyuw==
+X-Received: by 2002:a65:4243:: with SMTP id d3mr13351432pgq.180.1615037016632; 
+ Sat, 06 Mar 2021 05:23:36 -0800 (PST)
+Received: from localhost.localdomain ([45.135.186.66])
+ by smtp.gmail.com with ESMTPSA id d24sm5672441pfn.54.2021.03.06.05.23.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 Mar 2021 04:11:10 -0800 (PST)
-From: menglong8.dong@gmail.com
-X-Google-Original-From: zhang.yunkai@zte.com.cn
-To: mchehab@kernel.org
-Subject: [PATCH] media:atomisp: remove duplicate include in sh_css
-Date: Sat,  6 Mar 2021 04:11:04 -0800
-Message-Id: <20210306121104.218696-1-zhang.yunkai@zte.com.cn>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
+ Sat, 06 Mar 2021 05:23:36 -0800 (PST)
+From: Jia-Ju Bai <baijiaju1990@gmail.com>
+To: nsaenzjulienne@suse.de, gregkh@linuxfoundation.org, arnd@arndb.de,
+ dan.carpenter@oracle.com, phil@raspberrypi.com, amarjargal16@gmail.com
+Subject: [PATCH] staging: vc04_services: vchiq_arm: fix error return code of
+ vchiq_release_internal() and vchiq_use_internal()
+Date: Sat,  6 Mar 2021 05:22:45 -0800
+Message-Id: <20210306132245.16811-1-baijiaju1990@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,40 +84,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Zhang Yunkai <zhang.yunkai@zte.com.cn>,
- sakari.ailus@linux.intel.com, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Jia-Ju Bai <baijiaju1990@gmail.com>, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Zhang Yunkai <zhang.yunkai@zte.com.cn>
+When arm_state is NULL, no error return code of vchiq_release_internal()
+and vchiq_use_internal() is assigned.
+To fix this bug, ret is assigned with VCHIQ_ERROR.
 
-'ia_css_isys.h' included in 'sh_css.c' is duplicated.
-It is also included in the 30th line.
-
-Signed-off-by: Zhang Yunkai <zhang.yunkai@zte.com.cn>
+Reported-by: TOTE Robot <oslab@tsinghua.edu.cn>
+Signed-off-by: Jia-Ju Bai <baijiaju1990@gmail.com>
 ---
- drivers/staging/media/atomisp/pci/sh_css.c | 3 ---
- 1 file changed, 3 deletions(-)
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/sh_css.c b/drivers/staging/media/atomisp/pci/sh_css.c
-index ddee04c8248d..afddc54094e9 100644
---- a/drivers/staging/media/atomisp/pci/sh_css.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css.c
-@@ -49,9 +49,6 @@
- #include "ia_css_pipe_util.h"
- #include "ia_css_pipe_binarydesc.h"
- #include "ia_css_pipe_stagedesc.h"
--#ifndef ISP2401
--#include "ia_css_isys.h"
--#endif
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index 59e45dc03a97..8b2b4771f420 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -2332,8 +2332,10 @@ vchiq_use_internal(struct vchiq_state *state, struct vchiq_service *service,
+ 	int *entity_uc;
+ 	int local_uc;
  
- #include "tag.h"
- #include "assert_support.h"
+-	if (!arm_state)
++	if (!arm_state) {
++		ret = VCHIQ_ERROR;
+ 		goto out;
++	}
+ 
+ 	vchiq_log_trace(vchiq_susp_log_level, "%s", __func__);
+ 
+@@ -2389,8 +2391,10 @@ vchiq_release_internal(struct vchiq_state *state, struct vchiq_service *service)
+ 	char entity[16];
+ 	int *entity_uc;
+ 
+-	if (!arm_state)
++	if (!arm_state) {
++		ret = VCHIQ_ERROR;
+ 		goto out;
++	}
+ 
+ 	vchiq_log_trace(vchiq_susp_log_level, "%s", __func__);
+ 
 -- 
-2.25.1
+2.17.1
 
 _______________________________________________
 devel mailing list
