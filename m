@@ -1,93 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FC2D32FC47
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Mar 2021 18:26:25 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12C6932FD14
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Mar 2021 21:20:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5F7FA83955;
-	Sat,  6 Mar 2021 17:26:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D385983D39;
+	Sat,  6 Mar 2021 20:20:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7SsfVaqk9X7s; Sat,  6 Mar 2021 17:26:22 +0000 (UTC)
+	with ESMTP id llMTU2wUdORH; Sat,  6 Mar 2021 20:20:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 56DBF836C8;
-	Sat,  6 Mar 2021 17:26:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F152B83D16;
+	Sat,  6 Mar 2021 20:20:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 347FB1BF313
- for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 17:26:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3AC8F1BF3A0
+ for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 20:20:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 23DAD6064B
- for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 17:26:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2985960675
+ for <devel@linuxdriverproject.org>; Sat,  6 Mar 2021 20:20:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kroah.com header.b="wLL8kHKg";
- dkim=pass (2048-bit key) header.d=messagingengine.com
- header.b="Ixai+4xN"
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q32ORN00nl23 for <devel@linuxdriverproject.org>;
- Sat,  6 Mar 2021 17:26:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from wout5-smtp.messagingengine.com (wout5-smtp.messagingengine.com
- [64.147.123.21])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E68F9605E2
- for <devel@driverdev.osuosl.org>; Sat,  6 Mar 2021 17:26:10 +0000 (UTC)
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 670132918;
- Sat,  6 Mar 2021 12:26:08 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Sat, 06 Mar 2021 12:26:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=PGwBIPF5IiqJcixqzcqLpEj81T8
- qJhkY5ns3fEHL59M=; b=wLL8kHKgVP7cIt4/5aCfj69xz4+hdb4HErbWVrvUXaM
- GbQlWOKS6R64mAbLhUhDiMFvxENFVemx9BcjZy1L5NGmlbp3547IlkbXmaA4rXz5
- s48VyxhYjQRk2Xaor92tjNnd998RQX6yhyJVF+s4CbtTAcdWPPAJ1uLgqHlcHf8V
- lN9Y6busvn85MmlcziZl3g27bKtb9hUKEahUxpZni1uTCpBzf6HFWlfhm1t4Npb+
- sP0BQae7vX41Qp91r3XNpPDVjiKRlk9f2Tke1gjkFn+BUY2unkXIaaZWQO2a/HJW
- TmyEkjwMMr1YaGj8//TgnMl4moU8aT6iL12Jvhhpg8g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=PGwBIP
- F5IiqJcixqzcqLpEj81T8qJhkY5ns3fEHL59M=; b=Ixai+4xN53J3ZT/C3imZCT
- h7WsqJXY/vIziofz7aSRGs2fK7UunC9Onr6vKKVJaa8XW6weKrY6jKGPu/X3Wg0H
- kcNjwf/DdLOHJwvLMTlK5TIgoMF0mv+vixegUsNNmKUQInHNldN+fw/VkvUIrF2e
- zZol+AIrO86Ov01hcqDn5WMIZLAPbizLoEGb4jwB2aBeehm4zmEeQDKqjwJ46Cxx
- zdLYx4XJOK+4C6pDQvhOqvYk16/+DKL1FlifAEqXyp+b4JAaQW3wHkxvcPZBS2D5
- EQKJi0krzcg1w1OQYTnSH0m4n5kJ9YXhRH0O52EGTtx2uXOCixU9BppVFpZ1QKow
- ==
-X-ME-Sender: <xms:L7tDYN4pAI0MiMjq8a975Mjq56zVJzW1NaDHRT28hspXPIzuRqBTdA>
- <xme:L7tDYK5jTZNMe86C_9wVo96ApJgg3OtBWec32ucBKJ_lEGtoYvCmTJqYFC0-PQOuX
- WNsGaT8-2Dd0g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledruddtkedgleegucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
- dttddtvdenucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheq
- necuggftrfgrthhtvghrnhepjeevgeetueevjeduudehffelgfeiffehgfegudefgeffte
- euuefgtddvteefkeffnecuffhomhgrihhnpehlihhnuhigughrihhvvghrphhrohhjvggt
- thdrohhrghenucfkphepkeefrdekiedrjeegrdeigeenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
-X-ME-Proxy: <xmx:L7tDYEcdSv-Hj5xlPI0vFRvaDocefIlCRDX633wWYTmm7Q8xoglYCA>
- <xmx:L7tDYGKtMx0ACGQXHhwEUathrQjO8AJOYKCmYYicyC718w7Wk0zHHw>
- <xmx:L7tDYBKjYusgvXRiSpoFLTDmplfi3SclPQYD4Z6GoNMiOoLzMvRDIQ>
- <xmx:MLtDYDz8TG2TZda7Put-cIV-LQ0hWhHPkTF_nM4BOAbqOlOUfJ8syw>
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- by mail.messagingengine.com (Postfix) with ESMTPA id 78F4724005A;
- Sat,  6 Mar 2021 12:26:07 -0500 (EST)
-Date: Sat, 6 Mar 2021 18:26:05 +0100
-From: Greg KH <greg@kroah.com>
-To: gabriele.modena@gmail.com
-Subject: Re: [PATCH] staging: wimax: fix style check warnings
-Message-ID: <YEO7LRTeRFiyldyi@kroah.com>
-References: <20210305195508.3543-1-gabriele.modena@gmail.com>
+ with ESMTP id sgUzsNmLdHJp for <devel@linuxdriverproject.org>;
+ Sat,  6 Mar 2021 20:20:32 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-qk1-f169.google.com (mail-qk1-f169.google.com
+ [209.85.222.169])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 63D9B6066D
+ for <devel@driverdev.osuosl.org>; Sat,  6 Mar 2021 20:20:32 +0000 (UTC)
+Received: by mail-qk1-f169.google.com with SMTP id g185so5610155qkf.6
+ for <devel@driverdev.osuosl.org>; Sat, 06 Mar 2021 12:20:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=zWfn7H/UEf+l7pWxANCNIEOtNbl8gBUKRtLIogG6HU4=;
+ b=GUSEeK2IIHSk+2qR2zBb8NySLYtJe9VqNAF0D9eeveEPHOpAUKE8dgZ72m3ZrvTGLD
+ jntRLbkGqQosAjYBl07lIypp9uq8PiU3O7fx+wh/o9cRv3FpIDgsDRgzxFH681dHbVsW
+ VGUPrLLlknK2RYfdUurxYRLKnBEK7Ayphpw+ISv7m5xnliQuyv15KibaJ55c+5q1Rf4g
+ BwSNCNLmDUGo2OMR6wum8i2QHAyXsJroCpWpRSPYrigULa9D7fh9LrfOol40bz94f3ZH
+ LUUkaksV6n8W46qCa+EmJF5MBMVoGlrUcV5W+8sM5M40R2bFB+mECFvaanlWNzrZl4OF
+ Vl0A==
+X-Gm-Message-State: AOAM530isWhxIMnthKnMgXImjicRzUtshrmf+XhFRoGgmMBelHxzv1TG
+ IFfVPnf+dr9RYTcwfj/e4g==
+X-Google-Smtp-Source: ABdhPJw26Xz201By6e4mJ0f7HTFQskHAuUpIAQYA5A5yuiz6PQxGnYdEUczCOCgU8Xafebhb5xFZtA==
+X-Received: by 2002:a05:620a:164c:: with SMTP id
+ c12mr15761060qko.285.1615062031242; 
+ Sat, 06 Mar 2021 12:20:31 -0800 (PST)
+Received: from robh.at.kernel.org ([172.58.27.98])
+ by smtp.gmail.com with ESMTPSA id e18sm4491041qtr.69.2021.03.06.12.20.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 06 Mar 2021 12:20:30 -0800 (PST)
+Received: (nullmailer pid 1151680 invoked by uid 1000);
+ Sat, 06 Mar 2021 20:20:22 -0000
+Date: Sat, 6 Mar 2021 13:20:22 -0700
+From: Rob Herring <robh@kernel.org>
+To: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
+Subject: Re: [PATCH v10 8/9] dt-bindings: add documentation of xilinx
+ clocking wizard
+Message-ID: <20210306202022.GA1146983@robh.at.kernel.org>
+References: <1614172241-17326-1-git-send-email-shubhrajyoti.datta@xilinx.com>
+ <1614172241-17326-9-git-send-email-shubhrajyoti.datta@xilinx.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210305195508.3543-1-gabriele.modena@gmail.com>
+In-Reply-To: <1614172241-17326-9-git-send-email-shubhrajyoti.datta@xilinx.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,94 +80,130 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, trivial@kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ shubhrajyoti.datta@gmail.com, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ mturquette@baylibre.com, git@xilinx.com, miquel.raynal@bootlin.com,
+ linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Mar 05, 2021 at 08:55:09PM +0100, gabriele.modena@gmail.com wrote:
-> From: Gabriele Modena <gabriele.modena@gmail.com>
+On Wed, Feb 24, 2021 at 06:40:40PM +0530, Shubhrajyoti Datta wrote:
+> Add the devicetree binding for the xilinx clocking wizard.
 > 
-> Fix style warnings reported by checkpatch.pl on op-rfkill.c
-> by moving */ on a separate line in a block comment,
-> adding a missing blank line after declarations,
-> and reformatting a quoted string split across lines.
-> 
-> Signed-off-by: Gabriele Modena <gabriele.modena@gmail.com>
+> Signed-off-by: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
 > ---
->  drivers/staging/wimax/op-rfkill.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+>  v6:
+>  Fix a yaml warning
+>  v7:
+>  Add vendor prefix speed-grade
+>  v8:
+>  Fix the warnings
+>  v10:
+>  Add nr-outputs
 > 
-> diff --git a/drivers/staging/wimax/op-rfkill.c b/drivers/staging/wimax/op-rfkill.c
-> index 78b294481a59..52612ed09183 100644
-> --- a/drivers/staging/wimax/op-rfkill.c
-> +++ b/drivers/staging/wimax/op-rfkill.c
-> @@ -294,7 +294,8 @@ int wimax_rfkill(struct wimax_dev *wimax_dev, enum wimax_rf_state state)
->  		/* While initializing, < 1.4.3 wimax-tools versions use
->  		 * this call to check if the device is a valid WiMAX
->  		 * device; so we allow it to proceed always,
-> -		 * considering the radios are all off. */
-> +		 * considering the radios are all off.
-> +		 */
->  		if (result == -ENOMEDIUM && state == WIMAX_RF_QUERY)
->  			result = WIMAX_RF_OFF << 1 | WIMAX_RF_OFF;
->  		goto error_not_ready;
-> @@ -378,6 +379,7 @@ int wimax_rfkill_add(struct wimax_dev *wimax_dev)
->  void wimax_rfkill_rm(struct wimax_dev *wimax_dev)
->  {
->  	struct device *dev = wimax_dev_to_dev(wimax_dev);
+>  .../bindings/clock/xlnx,clocking-wizard.yaml       | 72 ++++++++++++++++++++++
+>  1 file changed, 72 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml b/Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml
+> new file mode 100644
+> index 0000000..280eb09
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml
+> @@ -0,0 +1,72 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/clock/xlnx,clocking-wizard.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 > +
->  	d_fnstart(3, dev, "(wimax_dev %p)\n", wimax_dev);
->  	rfkill_unregister(wimax_dev->rfkill);
->  	rfkill_destroy(wimax_dev->rfkill);
-> @@ -415,8 +417,7 @@ int wimax_gnl_doit_rfkill(struct sk_buff *skb, struct genl_info *info)
->  	dev = wimax_dev_to_dev(wimax_dev);
->  	result = -EINVAL;
->  	if (info->attrs[WIMAX_GNL_RFKILL_STATE] == NULL) {
-> -		dev_err(dev, "WIMAX_GNL_RFKILL: can't find RFKILL_STATE "
-> -			"attribute\n");
-> +		dev_err(dev, "WIMAX_GNL_RFKILL: can't find RFKILL_STATE attribute\n");
->  		goto error_no_pid;
->  	}
->  	new_state = nla_get_u32(info->attrs[WIMAX_GNL_RFKILL_STATE]);
+> +title: Xilinx clocking wizard
+> +
+> +maintainers:
+> +  - Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
+> +
+> +description:
+> +  The clocking wizard is a soft ip clocking block of Xilinx versal. It
+> +  reads required input clock frequencies from the devicetree and acts as clock
+> +  clock output.
+> +
+> +properties:
+> +  compatible:
+> +    const: xlnx,clocking-wizard
+
+Not very specific. Only 1 version of this h/w?
+
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#clock-cells":
+> +    const: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: clock input
+> +      - description: axi clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: clk_in1
+> +      - const: s_axi_aclk
+> +
+> +
+> +  xlnx,speed-grade:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    enum: [1, 2, 3]
+> +    description:
+> +      Speed grade of the device. Higher the speed grade faster is the FPGA device.
+
+How does one decide what value?
+
+> +
+> +  nr-outputs:
+
+xlnx,nr-outputs
+
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    enum: [1, 2, 3, 4, 5, 6, 7, 8]
+
+minimum: 1
+maximum: 8
+
+> +    description:
+> +      Number of outputs.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - "#clock-cells"
+> +  - clocks
+> +  - clock-names
+> +  - xlnx,speed-grade
+> +  - nr-outputs
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    wizard@b0000000  {
+
+clock-controller@...
+
+> +        compatible = "xlnx,clocking-wizard";
+> +        reg = <0xb0000000 0x10000>;
+> +        #clock-cells = <1>;
+> +        xlnx,speed-grade = <1>;
+> +        nr-outputs = <6>;
+> +        clock-names = "clk_in1", "s_axi_aclk";
+> +        clocks = <&clkc 15>, <&clkc 15>;
+> +    };
+> +...
 > -- 
-> 2.11.0
+> 2.1.1
 > 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
-Hi,
-
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
