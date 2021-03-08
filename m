@@ -1,72 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BA8B3315DD
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 19:24:15 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CCB513315F9
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 19:27:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 825DE40101;
-	Mon,  8 Mar 2021 18:24:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C1E9B6F5E0;
+	Mon,  8 Mar 2021 18:27:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DkwzSY0HAlEN; Mon,  8 Mar 2021 18:24:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PIx7nekdWcDL; Mon,  8 Mar 2021 18:27:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8B49D40100;
-	Mon,  8 Mar 2021 18:24:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C567C6F5C6;
+	Mon,  8 Mar 2021 18:27:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B89DC1BF364
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 18:24:01 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 143BC1BF364
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 18:26:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A82CB82BA1
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 18:24:01 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F2C9D400FF
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 18:26:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XE3SrOKgEwe0 for <devel@linuxdriverproject.org>;
- Mon,  8 Mar 2021 18:24:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id p5-ceB1EEHGt for <devel@linuxdriverproject.org>;
+ Mon,  8 Mar 2021 18:26:56 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-il1-f173.google.com (mail-il1-f173.google.com
- [209.85.166.173])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C9BF682846
- for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 18:24:00 +0000 (UTC)
-Received: by mail-il1-f173.google.com with SMTP id h18so9747929ils.2
- for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 10:24:00 -0800 (PST)
+Received: from mail-io1-f42.google.com (mail-io1-f42.google.com
+ [209.85.166.42])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 66A08400D5
+ for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 18:26:56 +0000 (UTC)
+Received: by mail-io1-f42.google.com with SMTP id p16so11030972ioj.4
+ for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 10:26:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=PLiShrgEDa+YZGxymkcoz3r/gBAUf5KhORptv57Q7PU=;
- b=p/cJpi1WZ7is9hWBfpvELZ8WnDW8hUSFKUOvq/tEOVwnBnSPNJR6jFj/bxswAuEOk/
- 0KbCNz+v7dNRogXVSCCHbVi0yFoL7LT2sXFzrCru9cpcibUH+5a8PqLttrcIB4wrWJ2G
- TOMAahQPPznQrCOSU2VfNuiGrq4Dx2QbXfAd5qciZN1GMyh7xAqSM8QoFAWoVvztiGxp
- sukBjuoWrlC2K9a9ON3i7BioUYd5CchEnIOvjn/AqAPnOaxAIlZBIW9BVi/iKKtvFqij
- ES3bP0dX996hObX3yKZyjUxsuRMU7RagQCZX77D0XnMJ9NE7DQXrs1gh7mWo2e3PtZXN
- aCuQ==
-X-Gm-Message-State: AOAM532O7+brZ3jVNd5dCWynLMrjnkRmoRaWM8n6VnSaxAb0xQr64U2m
- eYxxNK99Rp3bn2m1G7QWPg==
-X-Google-Smtp-Source: ABdhPJxwGUCavMylqrxYrtCaf9JyknJB34LVNHlt+wpP3oXmyDFpN7LHxPrWUPGRxrzRYjnckByvUg==
-X-Received: by 2002:a05:6e02:d53:: with SMTP id
- h19mr21756929ilj.157.1615227839943; 
- Mon, 08 Mar 2021 10:23:59 -0800 (PST)
+ bh=QuSkewPTpe0085TNG2W2Oa8CDkZlQPGzs8cqLJpUUBA=;
+ b=lxM5L7X6FfRJbX/P5BCZjuFCZgXFOZ8AOhDLt9KaXLsrfPk91FLDEzI5FxPwth4l/R
+ rrtC6MlnYeh78BO7aa4NOODoKba212bXkeMeT2UpkoQLzf0cJgQXxn9Q5NkDoXMXOkhV
+ hH6/lFVBgQQKZ+kPStA+DfjsVWH5uTWcSxmi4TraCa7SQh7yjTKY3FCYCjrRMnapKiVa
+ lvXQpz2a9mfeKMtAGYmclRnc49Jt2c+Dmy53lrj74lY/BLvtpOqIsKfOYU6gjp8Z/r30
+ NyiDa9Gi5UEBV8YuQyGtb/HY4Wj9aNQinvhKa0whbQQ5p1Ckf4IdNXpYHZMy8Eqn1H3Y
+ U6zA==
+X-Gm-Message-State: AOAM530ADDjotH1bTLDW88ukshK50m3NWHuLjQUzSpva9PXR1eiKQ12S
+ 5fsB5LpyaZd0fkFYW9ZQEw==
+X-Google-Smtp-Source: ABdhPJzjTtDhSDB3XWXDb5ygvtpGkDlzRkFu6tzU5LP8yUrH3ZVysbAhFaWWZoDnzHDhQvS2pjs7Gw==
+X-Received: by 2002:a02:cad9:: with SMTP id f25mr24409763jap.26.1615228015582; 
+ Mon, 08 Mar 2021 10:26:55 -0800 (PST)
 Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id n7sm6636715ile.12.2021.03.08.10.23.56
+ by smtp.gmail.com with ESMTPSA id h193sm6546637iof.9.2021.03.08.10.26.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Mar 2021 10:23:59 -0800 (PST)
-Received: (nullmailer pid 2741091 invoked by uid 1000);
- Mon, 08 Mar 2021 18:23:56 -0000
-Date: Mon, 8 Mar 2021 11:23:56 -0700
+ Mon, 08 Mar 2021 10:26:55 -0800 (PST)
+Received: (nullmailer pid 2744943 invoked by uid 1000);
+ Mon, 08 Mar 2021 18:26:51 -0000
+Date: Mon, 8 Mar 2021 11:26:51 -0700
 From: Rob Herring <robh@kernel.org>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v3 1/5] dt-bindings: reset: IMX8MQ VPU reset
-Message-ID: <20210308182356.GB2735443@robh.at.kernel.org>
+Subject: Re: [PATCH v3 0/5] Reset driver for IMX8MQ VPU hardware block
+Message-ID: <20210308182651.GA2741282@robh.at.kernel.org>
 References: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
- <20210301151754.104749-2-benjamin.gaignard@collabora.com>
+ <20210308182217.GA2735443@robh.at.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210301151754.104749-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20210308182217.GA2735443@robh.at.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,112 +89,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 01, 2021 at 04:17:50PM +0100, Benjamin Gaignard wrote:
-> Document bindings for IMX8MQ VPU reset hardware block
+On Mon, Mar 08, 2021 at 11:22:17AM -0700, Rob Herring wrote:
+> On Mon, Mar 01, 2021 at 04:17:49PM +0100, Benjamin Gaignard wrote:
+> > The two VPUs inside IMX8MQ share the same control block which can be see
+> > as a reset hardware block.
+> > In order to be able to add the second VPU (for HECV decoding) it will be
+> > more handy if the both VPU drivers instance don't have to share the
+> > control block registers. This lead to implement it as an independ reset 
+> > driver and to change the VPU driver to use it.
+> > 
+> > Please note that this series break the compatibility between the DTB and
+> > kernel. This break is limited to IMX8MQ SoC and is done when the driver
+> > is still in staging directory.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../bindings/reset/fsl,imx8mq-vpu-reset.yaml  | 54 +++++++++++++++++++
->  include/dt-bindings/reset/imx8mq-vpu-reset.h  | 16 ++++++
->  2 files changed, 70 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
->  create mode 100644 include/dt-bindings/reset/imx8mq-vpu-reset.h
+> As this information will be lost, please put in the binding and dts 
+> patch.
+
+Actually, the adding the VPU reset binding doesn't break compatibility, 
+so just the dts file changes needs it.
+
 > 
-> diff --git a/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml b/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
-> new file mode 100644
-> index 000000000000..00020421c0e3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
-> @@ -0,0 +1,54 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/reset/fsl,imx8mq-vpu-reset.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Freescale i.MX8MQ VPU Reset Controller
-> +
-> +maintainers:
-> +  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> +
-> +description: |
-> +  The VPU reset controller is used to reset the video processor
-> +  unit peripherals. Device nodes that need access to reset lines should
-> +  specify them as a reset phandle in their corresponding node as
-> +  specified in reset.txt.
-> +
-> +  For list of all valid reset indices see
-> +    <dt-bindings/reset/imx8mq-vpu-reset.h> for i.MX8MQ.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: fsl,imx8mq-vpu-reset
-> +      - const: syscon
-
-Is there other functionality in the block? If so, add some details in 
-'description' above.
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 3
-
-Need to say what each clock is.
-
-> +
-> +  '#reset-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - '#reset-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/imx8mq-clock.h>
-> +
-> +    vpu-reset@38320000 {
-
-reset-controller@...
-
-> +        compatible = "fsl,imx8mq-vpu-reset", "syscon";
-> +        reg = <0x38320000 0x10000>;
-> +        clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> +        #reset-cells = <1>;
-> +    };
-> diff --git a/include/dt-bindings/reset/imx8mq-vpu-reset.h b/include/dt-bindings/reset/imx8mq-vpu-reset.h
-> new file mode 100644
-> index 000000000000..efcbe18177fe
-> --- /dev/null
-> +++ b/include/dt-bindings/reset/imx8mq-vpu-reset.h
-> @@ -0,0 +1,16 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2021, Collabora
-> + *
-> + * i.MX7 System Reset Controller (SRC) driver
-> + *
-> + * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> + */
-> +
-> +#ifndef DT_BINDINGS_VPU_RESET_IMX8MQ
-> +#define DT_BINDINGS_VPU_RESET_IMX8MQ
-> +
-> +#define IMX8MQ_RESET_VPU_RESET_G1	0
-> +#define IMX8MQ_RESET_VPU_RESET_G2	1
-> +
-> +#endif
-> -- 
-> 2.25.1
-> 
+> > 
+> > version 3:
+> > - Fix error in VPU example node
+> > 
+> > version 2:
+> > - Document the change in VPU bindings
+> >  
+> > Benjamin Gaignard (5):
+> >   dt-bindings: reset: IMX8MQ VPU reset
+> >   dt-bindings: media: IMX8MQ VPU: document reset usage
+> >   reset: Add reset driver for IMX8MQ VPU block
+> >   media: hantro: Use reset driver
+> >   arm64: dts: imx8mq: Use reset driver for VPU hardware block
+> > 
+> >  .../bindings/media/nxp,imx8mq-vpu.yaml        |  14 +-
+> >  .../bindings/reset/fsl,imx8mq-vpu-reset.yaml  |  54 ++++++
+> >  arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  31 +++-
+> >  drivers/reset/Kconfig                         |   8 +
+> >  drivers/reset/Makefile                        |   1 +
+> >  drivers/reset/reset-imx8mq-vpu.c              | 169 ++++++++++++++++++
+> >  drivers/staging/media/hantro/Kconfig          |   1 +
+> >  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  61 ++-----
+> >  include/dt-bindings/reset/imx8mq-vpu-reset.h  |  16 ++
+> >  9 files changed, 294 insertions(+), 61 deletions(-)
+> >  create mode 100644 Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
+> >  create mode 100644 drivers/reset/reset-imx8mq-vpu.c
+> >  create mode 100644 include/dt-bindings/reset/imx8mq-vpu-reset.h
+> > 
+> > -- 
+> > 2.25.1
+> > 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
