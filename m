@@ -1,83 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B838B331179
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 15:57:28 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4C0C331422
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 18:07:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3E2098372B;
-	Mon,  8 Mar 2021 14:57:27 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D73CA400E3;
+	Mon,  8 Mar 2021 17:07:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9CLqaw_TFn7S; Mon,  8 Mar 2021 14:57:26 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N0hMklV-wYpI; Mon,  8 Mar 2021 17:07:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6C8AD82C7D;
-	Mon,  8 Mar 2021 14:57:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1CAE7400D6;
+	Mon,  8 Mar 2021 17:07:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D1ACC1BF20B
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 14:55:41 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 050C71BF3A9
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 17:07:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C169260710
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 14:55:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E783783863
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 17:07:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=deviqon.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WUY3svtkRUr0 for <devel@linuxdriverproject.org>;
- Mon,  8 Mar 2021 14:55:41 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
- [IPv6:2a00:1450:4864:20::629])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 04EE9606A0
- for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 14:55:40 +0000 (UTC)
-Received: by mail-ej1-x629.google.com with SMTP id hs11so20961766ejc.1
- for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 06:55:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=deviqon.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=lLj7Gp4AXNBIRfM05Fb/npNKmdzGnIj+j8T+QIUmIp0=;
- b=GYwAt5N11Htctvk5vaStUU1oMV8AcHJat8k+JeWcUlAP6NIzKfpP2octcY7sipgk3Q
- q2JbUqobc5/wdXMc3ss58YGJM1/dfaYyxxVtxbzbXRmGPABKNLCY4f8p9dE17XRZWR4P
- G4eWbUvaydrHkOhcAKITzQ4XatIdcCRogDyorfkg9j9xZPTLwSBwVpPrx36/8lCWs64y
- AmnbbHYZYZRjlVXrAFO8UFbyNEm3nAGU280MlSxCdKPqrVn6TGqZM6/tk9WeB3xyULdp
- duSPWwZG4Bs2YEcTeTv9hOjWQC+g8vtDuFJLHkEArTfM+f7c3u1IiTVgSOgSM1mvqH1E
- MAUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=lLj7Gp4AXNBIRfM05Fb/npNKmdzGnIj+j8T+QIUmIp0=;
- b=Iv8iC5U8Cr/y2w5ereZd6aIUYfbyf4zyRmwBCKfq0nNSIqEG2/3FGwYpJh3mpJkE8v
- dE6TIxGVuX9C33EcjtDL6xI8XlqhhrOVxVIGVfMTfSPA9ZVEM9Ea0iG1sT8Y6XG9kEJY
- aBV9kJDy9h4MyTIlmq7ol+FCX3T2T+2Dmop6Ksx8zrNFXjGaO/7+jKOdZUCO65c4la4G
- P8mvt/J4IIXUmv8aNoE9cnYWGEzZAIlxlJrxkwDXpw2gWKUY52LmVMWw/1Y1k5k9ojPj
- c7oMlLSm+/FCFcRsrZHoRpC33GpxQPNR4Q57Lnv++IrkETAhiv+SptRzWggR7Im2eEtZ
- Ef8Q==
-X-Gm-Message-State: AOAM533smC5P98uW20tEareN1vvGI9G+yPhdOUhiW8oHCXfnLA3WFuiF
- ERD7eTQXdixE1++Te8zaXGen7w==
-X-Google-Smtp-Source: ABdhPJwujoxKBULC2TiDF0uTmZ725nCMJDdNLnOASHbIowxRxu7/T7o0BEees1GbdUH3W536CdvnxQ==
-X-Received: by 2002:a17:906:2804:: with SMTP id
- r4mr15241523ejc.521.1615215339299; 
- Mon, 08 Mar 2021 06:55:39 -0800 (PST)
-Received: from localhost.localdomain ([5.2.193.191])
- by smtp.gmail.com with ESMTPSA id bt14sm7411234edb.92.2021.03.08.06.55.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Mar 2021 06:55:38 -0800 (PST)
-From: Alexandru Ardelean <aardelean@deviqon.com>
-To: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
- greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org,
- linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com
-Subject: [PATCH 10/10] spi: docs: update info about 'delay_usecs'
-Date: Mon,  8 Mar 2021 16:55:02 +0200
-Message-Id: <20210308145502.1075689-11-aardelean@deviqon.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210308145502.1075689-1-aardelean@deviqon.com>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=metafoo.de
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 31wVr8s0e4EZ for <devel@linuxdriverproject.org>;
+ Mon,  8 Mar 2021 17:07:26 +0000 (UTC)
+X-Greylist: delayed 00:25:14 by SQLgrey-1.8.0
+Received: from www381.your-server.de (www381.your-server.de [78.46.137.84])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 04BDA81CDB
+ for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 17:07:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=metafoo.de; 
+ s=default2002;
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=TzaqzNZ5/Fp8lTYyeKtH9GBmnc2sIncwn71iQvdnlBA=; b=fQ5ZX63LM3J4j/xr/WKkGBW97u
+ pLCR+JdYGE5oAFeNLpqhzoYZmzEKLwmerJmarikSJ/sHl9o8wvZ/OUOLPnFqLa/cuV/+wxylNSzb9
+ wnb1a7viLJ4fXVqTqDEixl3P4vzVN/a0CT71oj3R1+4sMNkkZDHKM6yNyRSGN+uey08bF2pURA5pC
+ guXumxSvr4e2ALghBd4BLRxe+WEW6wgx+atUQHIZu09Jp6F+x5o9a8QZ1hXwqqKh1eQXcYxrfUtzn
+ SxC76aTOTVL0RbTfdN1Cis0i0MP87mmnfPGihVQuiPDfKroXcsrM68S9pqDeYVpGVi+VbgAomQ+Oq
+ uFrjkRwQ==;
+Received: from sslproxy01.your-server.de ([78.46.139.224])
+ by www381.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92.3) (envelope-from <lars@metafoo.de>)
+ id 1lJIxL-0007HI-1U; Mon, 08 Mar 2021 17:42:07 +0100
+Received: from [62.216.202.180] (helo=[192.168.178.20])
+ by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <lars@metafoo.de>)
+ id 1lJIxK-000WTg-OM; Mon, 08 Mar 2021 17:42:06 +0100
+Subject: Re: [PATCH 01/10] spi: spi-axi-spi-engine: remove usage of delay_usecs
+To: Alexandru Ardelean <aardelean@deviqon.com>, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org,
+ devel@driverdev.osuosl.org, linux-tegra@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com
 References: <20210308145502.1075689-1-aardelean@deviqon.com>
+ <20210308145502.1075689-2-aardelean@deviqon.com>
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <8a6ec9a1-71f8-ce1d-600a-66eba9244a54@metafoo.de>
+Date: Mon, 8 Mar 2021 17:42:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
+In-Reply-To: <20210308145502.1075689-2-aardelean@deviqon.com>
+Content-Language: en-US
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.102.4/26102/Mon Mar  8 13:03:13 2021)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,42 +84,53 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: thierry.reding@gmail.com, elder@kernel.org, gregkh@linuxfoundation.org,
  johan@kernel.org, jonathanh@nvidia.com, broonie@kernel.org,
- ldewangan@nvidia.com, Alexandru Ardelean <aardelean@deviqon.com>,
- vireshk@kernel.org, f.fainelli@gmail.com, linux@deviqon.com
-Content-Type: text/plain; charset="us-ascii"
+ ldewangan@nvidia.com, vireshk@kernel.org, f.fainelli@gmail.com,
+ linux@deviqon.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The 'delay_usecs' field is no longer present on the spi_transfer struct.
-This change updates the doc to mention the usage of the (relatively) new
-'delay' field.
+On 3/8/21 3:54 PM, Alexandru Ardelean wrote:
+> The 'delay_usecs' field was handled for backwards compatibility in case
+> there were some users that still configured SPI delay transfers with
+> this field.
+>
+> They should all be removed by now.
+>
+> Signed-off-by: Alexandru Ardelean <aardelean@deviqon.com>
+> ---
+>   drivers/spi/spi-axi-spi-engine.c | 12 ++++--------
+>   1 file changed, 4 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/spi/spi-axi-spi-engine.c b/drivers/spi/spi-axi-spi-engine.c
+> index af86e6d6e16b..80c3e38f5c1b 100644
+> --- a/drivers/spi/spi-axi-spi-engine.c
+> +++ b/drivers/spi/spi-axi-spi-engine.c
+> @@ -170,14 +170,10 @@ static void spi_engine_gen_sleep(struct spi_engine_program *p, bool dry,
+>   	unsigned int t;
+>   	int delay;
+>   
+> -	if (xfer->delay_usecs) {
+> -		delay = xfer->delay_usecs;
+> -	} else {
+> -		delay = spi_delay_to_ns(&xfer->delay, xfer);
+> -		if (delay < 0)
+> -			return;
+> -		delay /= 1000;
+> -	}
+> +	delay = spi_delay_to_ns(&xfer->delay, xfer);
+> +	if (delay < 0)
+> +		return;
 
-Signed-off-by: Alexandru Ardelean <aardelean@deviqon.com>
----
- Documentation/spi/spi-summary.rst | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Bit of a nit, but this could be `delay <= 0` and then drop the check for 
+`delay == 0` below.
 
-diff --git a/Documentation/spi/spi-summary.rst b/Documentation/spi/spi-summary.rst
-index f1daffe10d78..d4239025461d 100644
---- a/Documentation/spi/spi-summary.rst
-+++ b/Documentation/spi/spi-summary.rst
-@@ -411,8 +411,11 @@ any more such messages.
-         duplex (one pointer is NULL) transfers;
- 
-       + optionally defining short delays after transfers ... using
--        the spi_transfer.delay_usecs setting (this delay can be the
--        only protocol effect, if the buffer length is zero);
-+        the spi_transfer.delay.value setting (this delay can be the
-+        only protocol effect, if the buffer length is zero) ...
-+        when specifying this delay the default spi_transfer.delay.unit
-+        is microseconds, however this can be adjusted to clock cycles
-+        or nanoseconds if needed;
- 
-       + whether the chipselect becomes inactive after a transfer and
-         any delay ... by using the spi_transfer.cs_change flag;
--- 
-2.29.2
+> +	delay /= 1000;
+>   
+>   	if (delay == 0)
+>   		return;
+
 
 _______________________________________________
 devel mailing list
