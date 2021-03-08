@@ -1,75 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4C0C331422
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 18:07:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03B893315D0
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 19:22:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D73CA400E3;
-	Mon,  8 Mar 2021 17:07:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 58CE483C7D;
+	Mon,  8 Mar 2021 18:22:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N0hMklV-wYpI; Mon,  8 Mar 2021 17:07:38 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hGgHI00bs0O6; Mon,  8 Mar 2021 18:22:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1CAE7400D6;
-	Mon,  8 Mar 2021 17:07:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7710E83A8B;
+	Mon,  8 Mar 2021 18:22:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 050C71BF3A9
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 17:07:27 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0ED011BF364
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 18:22:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E783783863
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 17:07:26 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 09F3340100
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 18:22:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=metafoo.de
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 31wVr8s0e4EZ for <devel@linuxdriverproject.org>;
- Mon,  8 Mar 2021 17:07:26 +0000 (UTC)
-X-Greylist: delayed 00:25:14 by SQLgrey-1.8.0
-Received: from www381.your-server.de (www381.your-server.de [78.46.137.84])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 04BDA81CDB
- for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 17:07:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=metafoo.de; 
- s=default2002;
- h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID;
- bh=TzaqzNZ5/Fp8lTYyeKtH9GBmnc2sIncwn71iQvdnlBA=; b=fQ5ZX63LM3J4j/xr/WKkGBW97u
- pLCR+JdYGE5oAFeNLpqhzoYZmzEKLwmerJmarikSJ/sHl9o8wvZ/OUOLPnFqLa/cuV/+wxylNSzb9
- wnb1a7viLJ4fXVqTqDEixl3P4vzVN/a0CT71oj3R1+4sMNkkZDHKM6yNyRSGN+uey08bF2pURA5pC
- guXumxSvr4e2ALghBd4BLRxe+WEW6wgx+atUQHIZu09Jp6F+x5o9a8QZ1hXwqqKh1eQXcYxrfUtzn
- SxC76aTOTVL0RbTfdN1Cis0i0MP87mmnfPGihVQuiPDfKroXcsrM68S9pqDeYVpGVi+VbgAomQ+Oq
- uFrjkRwQ==;
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www381.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92.3) (envelope-from <lars@metafoo.de>)
- id 1lJIxL-0007HI-1U; Mon, 08 Mar 2021 17:42:07 +0100
-Received: from [62.216.202.180] (helo=[192.168.178.20])
- by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <lars@metafoo.de>)
- id 1lJIxK-000WTg-OM; Mon, 08 Mar 2021 17:42:06 +0100
-Subject: Re: [PATCH 01/10] spi: spi-axi-spi-engine: remove usage of delay_usecs
-To: Alexandru Ardelean <aardelean@deviqon.com>, linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org,
- devel@driverdev.osuosl.org, linux-tegra@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com
-References: <20210308145502.1075689-1-aardelean@deviqon.com>
- <20210308145502.1075689-2-aardelean@deviqon.com>
-From: Lars-Peter Clausen <lars@metafoo.de>
-Message-ID: <8a6ec9a1-71f8-ce1d-600a-66eba9244a54@metafoo.de>
-Date: Mon, 8 Mar 2021 17:42:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hMSE6bp2xgVz for <devel@linuxdriverproject.org>;
+ Mon,  8 Mar 2021 18:22:21 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-f51.google.com (mail-io1-f51.google.com
+ [209.85.166.51])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4D9F2400D5
+ for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 18:22:21 +0000 (UTC)
+Received: by mail-io1-f51.google.com with SMTP id o11so11023232iob.1
+ for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 10:22:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Pq15jcwTEBECLbFVPJ1zaHWvf20RZ6s1s9fGsnrhjPg=;
+ b=XNG9mynYkerhtXHFBuRclfCeZVhOG/B2JWQ6gW/E9i2hfBB1gUiqnr+AQary7PUdoU
+ IHuURTmpdUqZccuxTuADobMFnCC/8tIa4LNcuoHJWiboMVNtxv24S44qWi6a081C6qrA
+ BlfXxYl0JSVsEpc2dKPBqBcvMDa+mVGfpWFHBA0un+72sMAgiHtHYWMl+b7fUn1SwAjD
+ C9agJkumPVMDLMuauwD19WItb2z6jMlR901MVeAm1VP+Borphnh+88OV9NzMVp+gZiyG
+ NAJfCpwHlHTuZfEO5xErcsu2pkdQccfGG8ic66Luc/ZbqFe96BoGIOExmV8Frd7fn4ri
+ t8fg==
+X-Gm-Message-State: AOAM530MQdtYm2E+D3xFPhRxnmfMB8rI167eEuDtWpRW/uchkVH6kzUo
+ vQzFVYJnZ0U/avZTco8+Lg==
+X-Google-Smtp-Source: ABdhPJyUGYEl6elYvRaF78SgykrT1EbiNGGNHSkzsW41shl8b7neRG3JF3Scv/qM1s2j+IT1Cg/MZw==
+X-Received: by 2002:a05:6602:2018:: with SMTP id
+ y24mr12056432iod.74.1615227740322; 
+ Mon, 08 Mar 2021 10:22:20 -0800 (PST)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id r12sm6521797ile.59.2021.03.08.10.22.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Mar 2021 10:22:19 -0800 (PST)
+Received: (nullmailer pid 2738951 invoked by uid 1000);
+ Mon, 08 Mar 2021 18:22:17 -0000
+Date: Mon, 8 Mar 2021 11:22:17 -0700
+From: Rob Herring <robh@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3 0/5] Reset driver for IMX8MQ VPU hardware block
+Message-ID: <20210308182217.GA2735443@robh.at.kernel.org>
+References: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20210308145502.1075689-2-aardelean@deviqon.com>
-Content-Language: en-US
-X-Authenticated-Sender: lars@metafoo.de
-X-Virus-Scanned: Clear (ClamAV 0.102.4/26102/Mon Mar  8 13:03:13 2021)
+Content-Disposition: inline
+In-Reply-To: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,56 +78,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: thierry.reding@gmail.com, elder@kernel.org, gregkh@linuxfoundation.org,
- johan@kernel.org, jonathanh@nvidia.com, broonie@kernel.org,
- ldewangan@nvidia.com, vireshk@kernel.org, f.fainelli@gmail.com,
- linux@deviqon.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ kernel@collabora.com, kernel@pengutronix.de, s.hauer@pengutronix.de,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-imx@nxp.com, p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
+ shawnguo@kernel.org, mchehab@kernel.org, ezequiel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 3/8/21 3:54 PM, Alexandru Ardelean wrote:
-> The 'delay_usecs' field was handled for backwards compatibility in case
-> there were some users that still configured SPI delay transfers with
-> this field.
->
-> They should all be removed by now.
->
-> Signed-off-by: Alexandru Ardelean <aardelean@deviqon.com>
-> ---
->   drivers/spi/spi-axi-spi-engine.c | 12 ++++--------
->   1 file changed, 4 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/spi/spi-axi-spi-engine.c b/drivers/spi/spi-axi-spi-engine.c
-> index af86e6d6e16b..80c3e38f5c1b 100644
-> --- a/drivers/spi/spi-axi-spi-engine.c
-> +++ b/drivers/spi/spi-axi-spi-engine.c
-> @@ -170,14 +170,10 @@ static void spi_engine_gen_sleep(struct spi_engine_program *p, bool dry,
->   	unsigned int t;
->   	int delay;
->   
-> -	if (xfer->delay_usecs) {
-> -		delay = xfer->delay_usecs;
-> -	} else {
-> -		delay = spi_delay_to_ns(&xfer->delay, xfer);
-> -		if (delay < 0)
-> -			return;
-> -		delay /= 1000;
-> -	}
-> +	delay = spi_delay_to_ns(&xfer->delay, xfer);
-> +	if (delay < 0)
-> +		return;
+On Mon, Mar 01, 2021 at 04:17:49PM +0100, Benjamin Gaignard wrote:
+> The two VPUs inside IMX8MQ share the same control block which can be see
+> as a reset hardware block.
+> In order to be able to add the second VPU (for HECV decoding) it will be
+> more handy if the both VPU drivers instance don't have to share the
+> control block registers. This lead to implement it as an independ reset 
+> driver and to change the VPU driver to use it.
+> 
+> Please note that this series break the compatibility between the DTB and
+> kernel. This break is limited to IMX8MQ SoC and is done when the driver
+> is still in staging directory.
 
-Bit of a nit, but this could be `delay <= 0` and then drop the check for 
-`delay == 0` below.
+As this information will be lost, please put in the binding and dts 
+patch.
 
-> +	delay /= 1000;
->   
->   	if (delay == 0)
->   		return;
-
-
+> 
+> version 3:
+> - Fix error in VPU example node
+> 
+> version 2:
+> - Document the change in VPU bindings
+>  
+> Benjamin Gaignard (5):
+>   dt-bindings: reset: IMX8MQ VPU reset
+>   dt-bindings: media: IMX8MQ VPU: document reset usage
+>   reset: Add reset driver for IMX8MQ VPU block
+>   media: hantro: Use reset driver
+>   arm64: dts: imx8mq: Use reset driver for VPU hardware block
+> 
+>  .../bindings/media/nxp,imx8mq-vpu.yaml        |  14 +-
+>  .../bindings/reset/fsl,imx8mq-vpu-reset.yaml  |  54 ++++++
+>  arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  31 +++-
+>  drivers/reset/Kconfig                         |   8 +
+>  drivers/reset/Makefile                        |   1 +
+>  drivers/reset/reset-imx8mq-vpu.c              | 169 ++++++++++++++++++
+>  drivers/staging/media/hantro/Kconfig          |   1 +
+>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  61 ++-----
+>  include/dt-bindings/reset/imx8mq-vpu-reset.h  |  16 ++
+>  9 files changed, 294 insertions(+), 61 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
+>  create mode 100644 drivers/reset/reset-imx8mq-vpu.c
+>  create mode 100644 include/dt-bindings/reset/imx8mq-vpu-reset.h
+> 
+> -- 
+> 2.25.1
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
