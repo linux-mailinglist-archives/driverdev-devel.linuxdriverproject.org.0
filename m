@@ -1,79 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5D4433114B
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 15:55:51 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 407E933114C
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Mar 2021 15:56:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1B547400DE;
-	Mon,  8 Mar 2021 14:55:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B064B45D94;
+	Mon,  8 Mar 2021 14:56:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l9g5NgZo8c7K; Mon,  8 Mar 2021 14:55:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vnv3tk6N1k35; Mon,  8 Mar 2021 14:55:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 89EDB400D0;
-	Mon,  8 Mar 2021 14:55:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5E08646493;
+	Mon,  8 Mar 2021 14:55:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9DC921BF20B
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 14:55:29 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BD821BF20B
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 14:55:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8CAD560710
- for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 14:55:29 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2A32C44C77
+ for <devel@linuxdriverproject.org>; Mon,  8 Mar 2021 14:55:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=deviqon.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G7ZasrOGLTEH for <devel@linuxdriverproject.org>;
- Mon,  8 Mar 2021 14:55:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PFaoTOFoQuRB for <devel@linuxdriverproject.org>;
+ Mon,  8 Mar 2021 14:55:30 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x52f.google.com (mail-ed1-x52f.google.com
- [IPv6:2a00:1450:4864:20::52f])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DF509606A0
- for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 14:55:28 +0000 (UTC)
-Received: by mail-ed1-x52f.google.com with SMTP id w9so15125227edc.11
- for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 06:55:28 -0800 (PST)
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 38378447DA
+ for <devel@driverdev.osuosl.org>; Mon,  8 Mar 2021 14:55:30 +0000 (UTC)
+Received: by mail-ed1-x52c.google.com with SMTP id bd6so15097818edb.10
+ for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 06:55:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=deviqon.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WJxdRpdzofsaI6pJC87KN8qfD7oiIuHmhf+Ws3rK5bo=;
- b=MTQFoIjgyIhVpuBWjNoJU3fO+5NyJAQOscZ0AdWbRLqL1HdjvnrdB3/XxCfdMJJn56
- bDPG9W0kPMVeyC58dnlnVBca784ue4kWFPXvaXSEfFdn9Tj3qTtg4RotQD5idpaVH7SL
- URqCkfltpUY/xyaBJlhc8SRDGn02/O7WZJvHB/VXkbTHqtEV8vEwxZIxINl3ftaK207d
- LSHGATqqKJlme/7/BqKSKs8KGoyGOGtbkCXXwN+E/OPGxumgQNBVj1H4TPnKMLvtg6fD
- 9FYM+6AKbruxKNEfadoYb/EudkSTyPH1m/pS5dxVx+CpKfXemde9q2WnUZZItwajJHhZ
- Gr1Q==
+ bh=K1kerxlBQXsnkBW66DYRSLvt3f+bVaEYRPTXorPAb2o=;
+ b=rFtmC2lX9bx1OJQsukKFxbVFYmys8q4JZilYPWNowCRpc+e/TA9cZqZuTTmo16QaR3
+ Zts0P3qeGkvIV/+kY5d/R0/Gw7urqV7JEVAcqMz4uNzUhyurQ0hxY1RtoW1q0pXyENR2
+ w2LLt4h6lI238BNd0PG6+9Q0us3AzZyEyTMu6vptP6nzK+wfcPqaXSegsOW7yGGHWTs4
+ vqBks9FDZgZ3wwSatAgxdylkY+t4TBwvAV4tOIZ6nmLIL5Gc8pNQrKR+rl0KStooCfyt
+ 28nw+vmJGXOmQBlF/aBAwnrusLCaNg8aOw8HMdOocFZq4TxTqx7MmHm2sHqz19j4+89R
+ kvbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WJxdRpdzofsaI6pJC87KN8qfD7oiIuHmhf+Ws3rK5bo=;
- b=o4vyr0fui+N/sc/Lh0B3dd0EhrffGzYEjqgVD3yUuYgdxMzEbcFo9iFIVYHu7ULykO
- 9Pfpi5tISlQ4k1iAwQliAVD5RKgU5u9s3f/QoCXuch13Vy6WeVoCr0sehXWZ1sYHfqTF
- an40SoohJMNQee1O9MueEq3kA3wonKgfxpdCux95Ryh/BUa4ak7XCOsPgcLwkXoAfLGg
- HTvgiUytIXhZ4dTlKk+CENqfeaIE3FSNfZVzfVATGSgmGObA3ii2c/z7zo7ECCIN1d3g
- rhl74SwCIkYVEF9vDQVzJb1Pzam7SWP5vYbDGrfC7b+7RZZcJFku+NX4V92kpdzO9ldm
- a+yQ==
-X-Gm-Message-State: AOAM5325l+SMNtwClXvzrYzc2M1aCbSqd6jRRXCdBSJPE6Mgyl97xAYK
- +3/50pWgty9gFgCeWgYuDR8RFg==
-X-Google-Smtp-Source: ABdhPJwlgot4NbjzzuYuRheze893HpYfgoXITowLPS3t6zG7Qok0RqmnNpkbz3PPbWWOQb7cwfKxaw==
-X-Received: by 2002:a05:6402:10c6:: with SMTP id
- p6mr15045774edu.241.1615215327135; 
- Mon, 08 Mar 2021 06:55:27 -0800 (PST)
+ bh=K1kerxlBQXsnkBW66DYRSLvt3f+bVaEYRPTXorPAb2o=;
+ b=M3E3UuOXSv1qRm0z/pmyeZ6bZ353WEG3U7DUvgTe5UvzgZGvzmGBf3sr1cC24b7dfw
+ G/bNYofnAfdgbEpeNtMos47Nm5D6JdDATqrSqNLcIP+cMpg0ynqb9OkBEV1C95Lwx3Lp
+ hJRESjPkcXWe6s97PgRMZjmmS/vWGiKMDuFONqZ7y8V1k+Ia3ZtkKKM0zuzWiguz5ybH
+ CYHLmDK41Y5W5rCbaiS3szy/ouEY44+DGqwxHUHnz8PqcNmlhH13DUm8woYyDDFrN/F7
+ kNaD0qGIAkIS2NO1Cvqa8imOtaz+mmI6ue9yndh7YCElR9w7e700AzeGfiTQGlylR2+L
+ clOw==
+X-Gm-Message-State: AOAM531p8STu5eXpXXJUzQET9urIAgJnm2kxwq3sHOQ9dst3SOBkGxa6
+ PE2VrQBlnIBTU4dVyT7FybvF8w==
+X-Google-Smtp-Source: ABdhPJxEzekHbaS2S5/KEJAyRUXUwCnOcpb8YwShTRdZxuCkPKC3qM7GvCvE1zMb6YSlbV7UXjYPrg==
+X-Received: by 2002:a50:e0c3:: with SMTP id j3mr23091988edl.32.1615215328449; 
+ Mon, 08 Mar 2021 06:55:28 -0800 (PST)
 Received: from localhost.localdomain ([5.2.193.191])
- by smtp.gmail.com with ESMTPSA id bt14sm7411234edb.92.2021.03.08.06.55.25
+ by smtp.gmail.com with ESMTPSA id bt14sm7411234edb.92.2021.03.08.06.55.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Mar 2021 06:55:26 -0800 (PST)
+ Mon, 08 Mar 2021 06:55:28 -0800 (PST)
 From: Alexandru Ardelean <aardelean@deviqon.com>
 To: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
  greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org,
  linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com
-Subject: [PATCH 01/10] spi: spi-axi-spi-engine: remove usage of delay_usecs
-Date: Mon,  8 Mar 2021 16:54:53 +0200
-Message-Id: <20210308145502.1075689-2-aardelean@deviqon.com>
+Subject: [PATCH 02/10] spi: bcm63xx-spi: don't check 'delay_usecs' field
+Date: Mon,  8 Mar 2021 16:54:54 +0200
+Message-Id: <20210308145502.1075689-3-aardelean@deviqon.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210308145502.1075689-1-aardelean@deviqon.com>
 References: <20210308145502.1075689-1-aardelean@deviqon.com>
@@ -107,32 +104,22 @@ They should all be removed by now.
 
 Signed-off-by: Alexandru Ardelean <aardelean@deviqon.com>
 ---
- drivers/spi/spi-axi-spi-engine.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ drivers/spi/spi-bcm63xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/spi/spi-axi-spi-engine.c b/drivers/spi/spi-axi-spi-engine.c
-index af86e6d6e16b..80c3e38f5c1b 100644
---- a/drivers/spi/spi-axi-spi-engine.c
-+++ b/drivers/spi/spi-axi-spi-engine.c
-@@ -170,14 +170,10 @@ static void spi_engine_gen_sleep(struct spi_engine_program *p, bool dry,
- 	unsigned int t;
- 	int delay;
+diff --git a/drivers/spi/spi-bcm63xx.c b/drivers/spi/spi-bcm63xx.c
+index d08bb7600150..80fa0ef8909c 100644
+--- a/drivers/spi/spi-bcm63xx.c
++++ b/drivers/spi/spi-bcm63xx.c
+@@ -369,7 +369,7 @@ static int bcm63xx_spi_transfer_one(struct spi_master *master,
+ 		}
  
--	if (xfer->delay_usecs) {
--		delay = xfer->delay_usecs;
--	} else {
--		delay = spi_delay_to_ns(&xfer->delay, xfer);
--		if (delay < 0)
--			return;
--		delay /= 1000;
--	}
-+	delay = spi_delay_to_ns(&xfer->delay, xfer);
-+	if (delay < 0)
-+		return;
-+	delay /= 1000;
- 
- 	if (delay == 0)
- 		return;
+ 		/* CS will be deasserted directly after transfer */
+-		if (t->delay_usecs || t->delay.value) {
++		if (t->delay.value) {
+ 			dev_err(&spi->dev, "unable to keep CS asserted after transfer\n");
+ 			status = -EINVAL;
+ 			goto exit;
 -- 
 2.29.2
 
