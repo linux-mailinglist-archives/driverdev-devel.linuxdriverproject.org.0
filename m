@@ -1,83 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08C4E331E6D
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Mar 2021 06:23:55 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D6BF3321F3
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Mar 2021 10:29:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A6FDF4016A;
-	Tue,  9 Mar 2021 05:23:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9D71D4B2D8;
+	Tue,  9 Mar 2021 09:29:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QvvKoNcRNQRE; Tue,  9 Mar 2021 05:23:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RpG1ASg-cgH3; Tue,  9 Mar 2021 09:29:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CDCF940166;
-	Tue,  9 Mar 2021 05:23:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4C2F0483C3;
+	Tue,  9 Mar 2021 09:29:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3DC581BF2FF
- for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 05:22:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 456181BF406
+ for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 09:29:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3A4E16F562
- for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 05:22:39 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2E8126F4F9
+ for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 09:29:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m5KqDMiMitCL for <devel@linuxdriverproject.org>;
- Tue,  9 Mar 2021 05:22:38 +0000 (UTC)
+ with ESMTP id LVQd5xGSxWgF for <devel@linuxdriverproject.org>;
+ Tue,  9 Mar 2021 09:29:37 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
- [IPv6:2a00:1450:4864:20::329])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5FB9E6F500
- for <devel@driverdev.osuosl.org>; Tue,  9 Mar 2021 05:22:38 +0000 (UTC)
-Received: by mail-wm1-x329.google.com with SMTP id
- t5-20020a1c77050000b029010e62cea9deso5149034wmi.0
- for <devel@driverdev.osuosl.org>; Mon, 08 Mar 2021 21:22:38 -0800 (PST)
+Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com
+ [IPv6:2a00:1450:4864:20::429])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3F92C6F4A4
+ for <devel@driverdev.osuosl.org>; Tue,  9 Mar 2021 09:29:36 +0000 (UTC)
+Received: by mail-wr1-x429.google.com with SMTP id h98so14376648wrh.11
+ for <devel@driverdev.osuosl.org>; Tue, 09 Mar 2021 01:29:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=TQPV/D5Slla4tO1OZEdplYJsUdKoA4adaddnoqiUdzE=;
- b=j4nx9wi2uDYxsUVnmo9+5g9FZwURUigLvfcxKssOyiTLzdGf0nJf/BKNn6jBiylSle
- U8aK52HsqECZTfVKnL0q9HgbQOtEo804zwcyrUdnuAPBC4Mcak9hP6JcfuXFxSPIjuz4
- 3kzhKt/UtYwealsmYwSvy6I2XdAG42b0gwTqbzhcMZjBO3En1LpvLcj1cbuLyBQ2wX5D
- jpw9AgQq8sX2qGVtAbnqeDMZPcmBk7VdcEoKje+lfYBwd5DQICQ7jTxtgEbteB3QdLqB
- szLHy+4mpEkGclJUVuR/9wagGP2ZOneWzArX/p70bv2IckJibwLWPNSpv+4RPVxX2ThB
- A6aQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=sO+epgmRhJDMZTjy7AJEtlpTCWTyWl78HxLY6u7YYT4=;
+ b=K3v2aelY32sKpTuZ0I7x4JWtpKiNpmfBFly7VryV6+xxpJe4g7wPS7xh5S/doLXKcb
+ mo03VIkPcwsmyDMuTKEflW0IX9bQz3bdkpAB8lwn4gHX3Yk/24v3TkRJra1g9MVRDVfr
+ RshKTZw4JxQOHU32eMgwYbxaCNl0qhd5/P7GOvgGILcxFqzGPuyRG274SU6ZXMzZl3/2
+ h5I8RdgVlBNapJaRIhb10UL+wE0BH2uKm4DAHjEIGJbTANjZCF5F5JCUfD1METY6HZv3
+ XN9Gu51SLvvM/NoFw80hy0vNU50IQEDciM2LMZJcycbhpAt5YhLGv3J3l0j0GSzOtIoD
+ sbbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=TQPV/D5Slla4tO1OZEdplYJsUdKoA4adaddnoqiUdzE=;
- b=eOCEFCEHX6R7IkovobdJ7LFEWbKwBsdE0PEI/zO7Fda7gVe2+68XFIo5LKDZP1KaZp
- Kg1WG3gUIVA4ttnWmYLKrtMTW9nnllN2Trxo9FaoTmygWUwkzsSGmWH+RIAC5SesPGqn
- fh0rCnwWG2w516s7PLlgxpL9ArGMhS98TzOm8e5zaiC6gVRlDoF8s1aU68Rpd8bqpts9
- kODirm9wWCa3OwiU/jPmzruGjoQJ5hZM7YSHLj3XhgVTkAtvmyhAIbEdP1EBKZxpMJTM
- XExlnY64uhfcbwiqHaF9NVgFPRdEnyur5oKCcXl0OjCy5/TPFtCwh7ed933NzvWszDhZ
- UeyQ==
-X-Gm-Message-State: AOAM5315dMgKDT+9EBCeN7CAKmwR4oONdsz0Zeig+hE+gaf5uQSQFvE4
- uKPc9GL46vHy2US0cEKct2I=
-X-Google-Smtp-Source: ABdhPJwr04NnozIaTUbjHRSOni9XcQDzRZS5zaH95MTIJP/0BiEEHYQCPeg17eIMZqefkx1YwjHujA==
-X-Received: by 2002:a05:600c:4a06:: with SMTP id
- c6mr1969051wmp.35.1615267356763; 
- Mon, 08 Mar 2021 21:22:36 -0800 (PST)
-Received: from localhost.localdomain (67.red-83-54-30.dynamicip.rima-tde.net.
- [83.54.30.67])
- by smtp.gmail.com with ESMTPSA id c11sm23450743wrm.67.2021.03.08.21.22.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 08 Mar 2021 21:22:36 -0800 (PST)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: sboyd@kernel.org
-Subject: [PATCH v11 6/6] MAINTAINERS: add MT7621 CLOCK maintainer
-Date: Tue,  9 Mar 2021 06:22:26 +0100
-Message-Id: <20210309052226.29531-7-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210309052226.29531-1-sergio.paracuellos@gmail.com>
-References: <20210309052226.29531-1-sergio.paracuellos@gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=sO+epgmRhJDMZTjy7AJEtlpTCWTyWl78HxLY6u7YYT4=;
+ b=p+z06kwicFUoG6denInK3ev3XnHFlUwUzuxh9WwnFhsSWFgPevY1zvFIfl5Op+/jLk
+ S5wLLicWLs3LKqxl/MeTnPml5cKrMtmZVMR2FK6qDg/fVUP+y6U4G8KeZZalVKtIuaUh
+ HurQWpPiSKyokTWLqQru7rpjN7n3Cubq0VhP7P3zatAQNNHawhKi2y/N7Zd2No8ggBMr
+ NmJPORlCrOWMliKDabyenIvC+yLr5UavAOulpEmoySonf38Pq/LEQrkfIWJwUJHWSGBp
+ bjGNz9IxNPjus0hKP5mhiQrbzq7dfo+9DizjqCqnRsjPH+pPUVEi/fnmJ3WlpO8KQRrX
+ qwAg==
+X-Gm-Message-State: AOAM530RZ1HI55jxn7GNjfCXV60gSSl6WKCchyYnFZE9dUfhrHpWr8YH
+ da6OD3cJ7n1BGZ4VIih0aKI=
+X-Google-Smtp-Source: ABdhPJxRf5rC6bFM/jX0jWPH/MjxZL5FZ/8xf3aU9Yy6CPERflbdpoh/R7KczYhwdnyHNlKIBhJKmg==
+X-Received: by 2002:adf:f841:: with SMTP id d1mr26884305wrq.36.1615282175248; 
+ Tue, 09 Mar 2021 01:29:35 -0800 (PST)
+Received: from arch-thunder.localdomain (a109-49-46-234.cpe.netcabo.pt.
+ [109.49.46.234])
+ by smtp.gmail.com with ESMTPSA id o9sm3154597wmc.8.2021.03.09.01.29.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Mar 2021 01:29:34 -0800 (PST)
+Date: Tue, 9 Mar 2021 09:29:32 +0000
+From: Rui Miguel Silva <rmfrfs@gmail.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH 06/10] staging: greybus: spilib: use 'spi_delay_to_ns'
+ for getting xfer delay
+Message-ID: <20210309092932.kliwq6ylqlnpqekk@arch-thunder.localdomain>
+References: <20210308145502.1075689-1-aardelean@deviqon.com>
+ <20210308145502.1075689-7-aardelean@deviqon.com>
+ <20210309042809.dgop5dli36z27sj2@vireshk-i7>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210309042809.dgop5dli36z27sj2@vireshk-i7>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,42 +91,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- tsbogend@alpha.franken.de, gregkh@linuxfoundation.org,
- linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- john@phrozen.org, neil@brown.name, linux-clk@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, elder@kernel.org, gregkh@linuxfoundation.org,
+ ldewangan@nvidia.com, linux-kernel@vger.kernel.org, jonathanh@nvidia.com,
+ linux-spi@vger.kernel.org, greybus-dev@lists.linaro.org, broonie@kernel.org,
+ bcm-kernel-feedback-list@broadcom.com,
+ Alexandru Ardelean <aardelean@deviqon.com>, vireshk@kernel.org,
+ linux-tegra@vger.kernel.org, f.fainelli@gmail.com, johan@kernel.org,
+ thierry.reding@gmail.com, linux@deviqon.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Adding myself as maintainer for mt7621 clock driver.
+Hi,
+On Tue, Mar 09, 2021 at 09:58:09AM +0530, Viresh Kumar wrote:
+> On 08-03-21, 16:54, Alexandru Ardelean wrote:
+> > The intent is the removal of the 'delay_usecs' field from the
+> > spi_transfer struct, as there is a 'delay' field that does the same
+> > thing.
+> > 
+> > The spi_delay_to_ns() can be used to get the transfer delay. It works by
+> > using the 'delay_usecs' field first (if it is non-zero), and finally
+> > uses the 'delay' field.
+> > 
+> > Since the 'delay_usecs' field is going away, this change makes use of the
+> > spi_delay_to_ns() function. This also means dividing the return value of
+> > the function by 1000, to convert it to microseconds.
+> > To prevent any potential faults when converting to microseconds and since
+> > the result of spi_delay_to_ns() is int, the delay is being computed in 32
+> > bits and then clamped between 0 & U16_MAX.
+> > 
+> > Signed-off-by: Alexandru Ardelean <aardelean@deviqon.com>
+> > ---
+> >  drivers/staging/greybus/spilib.c | 5 ++++-
+> >  1 file changed, 4 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/greybus/spilib.c b/drivers/staging/greybus/spilib.c
+> > index 672d540d3365..30655153df6a 100644
+> > --- a/drivers/staging/greybus/spilib.c
+> > +++ b/drivers/staging/greybus/spilib.c
+> > @@ -245,6 +245,7 @@ static struct gb_operation *gb_spi_operation_create(struct gb_spilib *spi,
+> >  	/* Fill in the transfers array */
+> >  	xfer = spi->first_xfer;
+> >  	while (msg->state != GB_SPI_STATE_OP_DONE) {
+> > +		int xfer_delay;
+> >  		if (xfer == spi->last_xfer)
+> >  			xfer_len = spi->last_xfer_size;
+> >  		else
+> > @@ -259,7 +260,9 @@ static struct gb_operation *gb_spi_operation_create(struct gb_spilib *spi,
+> >  
+> >  		gb_xfer->speed_hz = cpu_to_le32(xfer->speed_hz);
+> >  		gb_xfer->len = cpu_to_le32(xfer_len);
+> > -		gb_xfer->delay_usecs = cpu_to_le16(xfer->delay_usecs);
+> > +		xfer_delay = spi_delay_to_ns(&xfer->delay, xfer) / 1000;
+> > +		xfer_delay = clamp_t(u16, xfer_delay, 0, U16_MAX);
+> > +		gb_xfer->delay_usecs = cpu_to_le16(xfer_delay);
+> >  		gb_xfer->cs_change = xfer->cs_change;
+> >  		gb_xfer->bits_per_word = xfer->bits_per_word;
+> 
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
+Acked-by: Rui Miguel Silva <rmfrfs@gmail.com>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 809a68af5efd..ecad5d972122 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -11288,6 +11288,12 @@ L:	linux-wireless@vger.kernel.org
- S:	Maintained
- F:	drivers/net/wireless/mediatek/mt7601u/
- 
-+MEDIATEK MT7621 CLOCK DRIVER
-+M:	Sergio Paracuellos <sergio.paracuellos@gmail.com>
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/clock/mediatek,mt7621-sysc.yaml
-+F:	drivers/clk/ralink/clk-mt7621.c
-+
- MEDIATEK MT7621/28/88 I2C DRIVER
- M:	Stefan Roese <sr@denx.de>
- L:	linux-i2c@vger.kernel.org
--- 
-2.25.1
-
+------
+Cheers,
+     Rui
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
