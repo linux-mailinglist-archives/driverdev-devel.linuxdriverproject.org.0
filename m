@@ -2,83 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D6BF3321F3
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Mar 2021 10:29:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC3F333226B
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Mar 2021 10:59:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9D71D4B2D8;
-	Tue,  9 Mar 2021 09:29:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 181DD4A262;
+	Tue,  9 Mar 2021 09:59:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RpG1ASg-cgH3; Tue,  9 Mar 2021 09:29:49 +0000 (UTC)
+	with ESMTP id O3AluSJnIEcf; Tue,  9 Mar 2021 09:59:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4C2F0483C3;
-	Tue,  9 Mar 2021 09:29:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 43E54471B5;
+	Tue,  9 Mar 2021 09:59:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 456181BF406
- for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 09:29:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 80DD91BF20B
+ for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 09:59:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2E8126F4F9
- for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 09:29:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6F29340178
+ for <devel@linuxdriverproject.org>; Tue,  9 Mar 2021 09:59:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LVQd5xGSxWgF for <devel@linuxdriverproject.org>;
- Tue,  9 Mar 2021 09:29:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com
- [IPv6:2a00:1450:4864:20::429])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3F92C6F4A4
- for <devel@driverdev.osuosl.org>; Tue,  9 Mar 2021 09:29:36 +0000 (UTC)
-Received: by mail-wr1-x429.google.com with SMTP id h98so14376648wrh.11
- for <devel@driverdev.osuosl.org>; Tue, 09 Mar 2021 01:29:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=sO+epgmRhJDMZTjy7AJEtlpTCWTyWl78HxLY6u7YYT4=;
- b=K3v2aelY32sKpTuZ0I7x4JWtpKiNpmfBFly7VryV6+xxpJe4g7wPS7xh5S/doLXKcb
- mo03VIkPcwsmyDMuTKEflW0IX9bQz3bdkpAB8lwn4gHX3Yk/24v3TkRJra1g9MVRDVfr
- RshKTZw4JxQOHU32eMgwYbxaCNl0qhd5/P7GOvgGILcxFqzGPuyRG274SU6ZXMzZl3/2
- h5I8RdgVlBNapJaRIhb10UL+wE0BH2uKm4DAHjEIGJbTANjZCF5F5JCUfD1METY6HZv3
- XN9Gu51SLvvM/NoFw80hy0vNU50IQEDciM2LMZJcycbhpAt5YhLGv3J3l0j0GSzOtIoD
- sbbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=sO+epgmRhJDMZTjy7AJEtlpTCWTyWl78HxLY6u7YYT4=;
- b=p+z06kwicFUoG6denInK3ev3XnHFlUwUzuxh9WwnFhsSWFgPevY1zvFIfl5Op+/jLk
- S5wLLicWLs3LKqxl/MeTnPml5cKrMtmZVMR2FK6qDg/fVUP+y6U4G8KeZZalVKtIuaUh
- HurQWpPiSKyokTWLqQru7rpjN7n3Cubq0VhP7P3zatAQNNHawhKi2y/N7Zd2No8ggBMr
- NmJPORlCrOWMliKDabyenIvC+yLr5UavAOulpEmoySonf38Pq/LEQrkfIWJwUJHWSGBp
- bjGNz9IxNPjus0hKP5mhiQrbzq7dfo+9DizjqCqnRsjPH+pPUVEi/fnmJ3WlpO8KQRrX
- qwAg==
-X-Gm-Message-State: AOAM530RZ1HI55jxn7GNjfCXV60gSSl6WKCchyYnFZE9dUfhrHpWr8YH
- da6OD3cJ7n1BGZ4VIih0aKI=
-X-Google-Smtp-Source: ABdhPJxRf5rC6bFM/jX0jWPH/MjxZL5FZ/8xf3aU9Yy6CPERflbdpoh/R7KczYhwdnyHNlKIBhJKmg==
-X-Received: by 2002:adf:f841:: with SMTP id d1mr26884305wrq.36.1615282175248; 
- Tue, 09 Mar 2021 01:29:35 -0800 (PST)
-Received: from arch-thunder.localdomain (a109-49-46-234.cpe.netcabo.pt.
- [109.49.46.234])
- by smtp.gmail.com with ESMTPSA id o9sm3154597wmc.8.2021.03.09.01.29.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Mar 2021 01:29:34 -0800 (PST)
-Date: Tue, 9 Mar 2021 09:29:32 +0000
-From: Rui Miguel Silva <rmfrfs@gmail.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 06/10] staging: greybus: spilib: use 'spi_delay_to_ns'
- for getting xfer delay
-Message-ID: <20210309092932.kliwq6ylqlnpqekk@arch-thunder.localdomain>
-References: <20210308145502.1075689-1-aardelean@deviqon.com>
- <20210308145502.1075689-7-aardelean@deviqon.com>
- <20210309042809.dgop5dli36z27sj2@vireshk-i7>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PD1KMfLhssjH for <devel@linuxdriverproject.org>;
+ Tue,  9 Mar 2021 09:59:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E9ABF40177
+ for <devel@driverdev.osuosl.org>; Tue,  9 Mar 2021 09:59:04 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id D23F1AB8C;
+ Tue,  9 Mar 2021 09:59:02 +0000 (UTC)
+Message-ID: <957566acbdbe1155eeb561c324d2404bbbf7e7af.camel@suse.de>
+Subject: Re: [PATCH v7 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: u.kleine-koenig@pengutronix.de
+Date: Tue, 09 Mar 2021 10:59:00 +0100
+In-Reply-To: <20210118123244.13669-12-nsaenzjulienne@suse.de>
+References: <20210118123244.13669-1-nsaenzjulienne@suse.de>
+ <20210118123244.13669-12-nsaenzjulienne@suse.de>
+User-Agent: Evolution 3.38.4 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210309042809.dgop5dli36z27sj2@vireshk-i7>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,72 +57,369 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, elder@kernel.org, gregkh@linuxfoundation.org,
- ldewangan@nvidia.com, linux-kernel@vger.kernel.org, jonathanh@nvidia.com,
- linux-spi@vger.kernel.org, greybus-dev@lists.linaro.org, broonie@kernel.org,
- bcm-kernel-feedback-list@broadcom.com,
- Alexandru Ardelean <aardelean@deviqon.com>, vireshk@kernel.org,
- linux-tegra@vger.kernel.org, f.fainelli@gmail.com, johan@kernel.org,
- thierry.reding@gmail.com, linux@deviqon.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
+ devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
+ wahrenst@gmx.net, p.zabel@pengutronix.de, linux-input@vger.kernel.org,
+ bgolaszewski@baylibre.com, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============4211356913777513473=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
-On Tue, Mar 09, 2021 at 09:58:09AM +0530, Viresh Kumar wrote:
-> On 08-03-21, 16:54, Alexandru Ardelean wrote:
-> > The intent is the removal of the 'delay_usecs' field from the
-> > spi_transfer struct, as there is a 'delay' field that does the same
-> > thing.
-> > 
-> > The spi_delay_to_ns() can be used to get the transfer delay. It works by
-> > using the 'delay_usecs' field first (if it is non-zero), and finally
-> > uses the 'delay' field.
-> > 
-> > Since the 'delay_usecs' field is going away, this change makes use of the
-> > spi_delay_to_ns() function. This also means dividing the return value of
-> > the function by 1000, to convert it to microseconds.
-> > To prevent any potential faults when converting to microseconds and since
-> > the result of spi_delay_to_ns() is int, the delay is being computed in 32
-> > bits and then clamped between 0 & U16_MAX.
-> > 
-> > Signed-off-by: Alexandru Ardelean <aardelean@deviqon.com>
-> > ---
-> >  drivers/staging/greybus/spilib.c | 5 ++++-
-> >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/greybus/spilib.c b/drivers/staging/greybus/spilib.c
-> > index 672d540d3365..30655153df6a 100644
-> > --- a/drivers/staging/greybus/spilib.c
-> > +++ b/drivers/staging/greybus/spilib.c
-> > @@ -245,6 +245,7 @@ static struct gb_operation *gb_spi_operation_create(struct gb_spilib *spi,
-> >  	/* Fill in the transfers array */
-> >  	xfer = spi->first_xfer;
-> >  	while (msg->state != GB_SPI_STATE_OP_DONE) {
-> > +		int xfer_delay;
-> >  		if (xfer == spi->last_xfer)
-> >  			xfer_len = spi->last_xfer_size;
-> >  		else
-> > @@ -259,7 +260,9 @@ static struct gb_operation *gb_spi_operation_create(struct gb_spilib *spi,
-> >  
-> >  		gb_xfer->speed_hz = cpu_to_le32(xfer->speed_hz);
-> >  		gb_xfer->len = cpu_to_le32(xfer_len);
-> > -		gb_xfer->delay_usecs = cpu_to_le16(xfer->delay_usecs);
-> > +		xfer_delay = spi_delay_to_ns(&xfer->delay, xfer) / 1000;
-> > +		xfer_delay = clamp_t(u16, xfer_delay, 0, U16_MAX);
-> > +		gb_xfer->delay_usecs = cpu_to_le16(xfer_delay);
-> >  		gb_xfer->cs_change = xfer->cs_change;
-> >  		gb_xfer->bits_per_word = xfer->bits_per_word;
-> 
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Acked-by: Rui Miguel Silva <rmfrfs@gmail.com>
+--===============4211356913777513473==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-XkvVwEIv7TyrTi24H2y+"
 
-------
-Cheers,
-     Rui
+
+--=-XkvVwEIv7TyrTi24H2y+
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, 2021-01-18 at 13:32 +0100, Nicolas Saenz Julienne wrote:
+> Adds support to control the PWM bus available in official Raspberry Pi
+> PoE HAT. Only RPi's co-processor has access to it, so commands have to
+> be sent through RPi's firmware mailbox interface.
+>=20
+> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+>=20
+> ---
+
+ping :)
+
+> Changes since v6:
+> - Use %pe
+> - Round divisions properly
+> - Use dev_err_probe()
+> - Pass check_patch
+>=20
+> Changes since v3:
+> =C2=A0- Rename compatible string to be more explicit WRT to bus's limitat=
+ions
+>=20
+> Changes since v2:
+> =C2=A0- Use devm_rpi_firmware_get()
+> =C2=A0- Rename driver
+> =C2=A0- Small cleanups
+>=20
+> Changes since v1:
+> =C2=A0- Use default pwm bindings and get rid of xlate() function
+> =C2=A0- Correct spelling errors
+> =C2=A0- Correct apply() function
+> =C2=A0- Round values
+> =C2=A0- Fix divisions in arm32 mode
+> =C2=A0- Small cleanups
+>=20
+> =C2=A0drivers/pwm/Kconfig               |   9 ++
+> =C2=A0drivers/pwm/Makefile              |   1 +
+> =C2=A0drivers/pwm/pwm-raspberrypi-poe.c | 220 +++++++++++++++++++++++++++=
++++
+> =C2=A03 files changed, 230 insertions(+)
+> =C2=A0create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
+>=20
+> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> index 0937e1c047ac..75e2344703b3 100644
+> --- a/drivers/pwm/Kconfig
+> +++ b/drivers/pwm/Kconfig
+> @@ -423,6 +423,15 @@ config PWM_PXA
+> =C2=A0	  To compile this driver as a module, choose M here: the module
+> =C2=A0	  will be called pwm-pxa.
+> =C2=A0
+>=20
+> +config PWM_RASPBERRYPI_POE
+> +	tristate "Raspberry Pi Firwmware PoE Hat PWM support"
+> +	# Make sure not 'y' when RASPBERRYPI_FIRMWARE is 'm'. This can only
+> +	# happen when COMPILE_TEST=3Dy, hence the added !RASPBERRYPI_FIRMWARE.
+> +	depends on RASPBERRYPI_FIRMWARE || (COMPILE_TEST && !RASPBERRYPI_FIRMWA=
+RE)
+> +	help
+> +	  Enable Raspberry Pi firmware controller PWM bus used to control the
+> +	  official RPI PoE hat
+> +
+> =C2=A0config PWM_RCAR
+> =C2=A0	tristate "Renesas R-Car PWM support"
+> =C2=A0	depends on ARCH_RENESAS || COMPILE_TEST
+> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> index 18b89d7fd092..ed28d7bd4c64 100644
+> --- a/drivers/pwm/Makefile
+> +++ b/drivers/pwm/Makefile
+> @@ -38,6 +38,7 @@ obj-$(CONFIG_PWM_MXS)		+=3D pwm-mxs.o
+> =C2=A0obj-$(CONFIG_PWM_OMAP_DMTIMER)	+=3D pwm-omap-dmtimer.o
+> =C2=A0obj-$(CONFIG_PWM_PCA9685)	+=3D pwm-pca9685.o
+> =C2=A0obj-$(CONFIG_PWM_PXA)		+=3D pwm-pxa.o
+> +obj-$(CONFIG_PWM_RASPBERRYPI_POE)	+=3D pwm-raspberrypi-poe.o
+> =C2=A0obj-$(CONFIG_PWM_RCAR)		+=3D pwm-rcar.o
+> =C2=A0obj-$(CONFIG_PWM_RENESAS_TPU)	+=3D pwm-renesas-tpu.o
+> =C2=A0obj-$(CONFIG_PWM_ROCKCHIP)	+=3D pwm-rockchip.o
+> diff --git a/drivers/pwm/pwm-raspberrypi-poe.c b/drivers/pwm/pwm-raspberr=
+ypi-poe.c
+> new file mode 100644
+> index 000000000000..ca845e8fabe6
+> --- /dev/null
+> +++ b/drivers/pwm/pwm-raspberrypi-poe.c
+> @@ -0,0 +1,220 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright 2020 Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> + * For more information on Raspberry Pi's PoE hat see:
+> + * https://www.raspberrypi.org/products/poe-hat/
+> + *
+> + * Limitations:
+> + *  - No disable bit, so a disabled PWM is simulated by duty_cycle 0
+> + *  - Only normal polarity
+> + *  - Fixed 12.5 kHz period
+> + *
+> + * The current period is completed when HW is reconfigured.
+> + */
+> +
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pwm.h>
+> +
+> +#include <soc/bcm2835/raspberrypi-firmware.h>
+> +#include <dt-bindings/pwm/raspberrypi,firmware-poe-pwm.h>
+> +
+> +#define RPI_PWM_MAX_DUTY		255
+> +#define RPI_PWM_PERIOD_NS		80000 /* 12.5 kHz */
+> +
+> +#define RPI_PWM_CUR_DUTY_REG		0x0
+> +#define RPI_PWM_DEF_DUTY_REG		0x1
+> +
+> +struct raspberrypi_pwm {
+> +	struct rpi_firmware *firmware;
+> +	struct pwm_chip chip;
+> +	unsigned int duty_cycle;
+> +};
+> +
+> +struct raspberrypi_pwm_prop {
+> +	__le32 reg;
+> +	__le32 val;
+> +	__le32 ret;
+> +} __packed;
+> +
+> +static inline
+> +struct raspberrypi_pwm *raspberrypi_pwm_from_chip(struct pwm_chip *chip)
+> +{
+> +	return container_of(chip, struct raspberrypi_pwm, chip);
+> +}
+> +
+> +static int raspberrypi_pwm_set_property(struct rpi_firmware *firmware,
+> +					u32 reg, u32 val)
+> +{
+> +	struct raspberrypi_pwm_prop msg =3D {
+> +		.reg =3D cpu_to_le32(reg),
+> +		.val =3D cpu_to_le32(val),
+> +	};
+> +	int ret;
+> +
+> +	ret =3D rpi_firmware_property(firmware, RPI_FIRMWARE_SET_POE_HAT_VAL,
+> +				    &msg, sizeof(msg));
+> +	if (ret)
+> +		return ret;
+> +	if (msg.ret)
+> +		return -EIO;
+> +
+> +	return 0;
+> +}
+> +
+> +static int raspberrypi_pwm_get_property(struct rpi_firmware *firmware,
+> +					u32 reg, u32 *val)
+> +{
+> +	struct raspberrypi_pwm_prop msg =3D {
+> +		.reg =3D reg
+> +	};
+> +	int ret;
+> +
+> +	ret =3D rpi_firmware_property(firmware, RPI_FIRMWARE_GET_POE_HAT_VAL,
+> +				    &msg, sizeof(msg));
+> +	if (ret)
+> +		return ret;
+> +	if (msg.ret)
+> +		return -EIO;
+> +
+> +	*val =3D le32_to_cpu(msg.val);
+> +
+> +	return 0;
+> +}
+> +
+> +static void raspberrypi_pwm_get_state(struct pwm_chip *chip,
+> +				      struct pwm_device *pwm,
+> +				      struct pwm_state *state)
+> +{
+> +	struct raspberrypi_pwm *rpipwm =3D raspberrypi_pwm_from_chip(chip);
+> +
+> +	state->period =3D RPI_PWM_PERIOD_NS;
+> +	state->duty_cycle =3D DIV_ROUND_UP(rpipwm->duty_cycle * RPI_PWM_PERIOD_=
+NS,
+> +					 RPI_PWM_MAX_DUTY);
+> +	state->enabled =3D !!(rpipwm->duty_cycle);
+> +	state->polarity =3D PWM_POLARITY_NORMAL;
+> +}
+> +
+> +static int raspberrypi_pwm_apply(struct pwm_chip *chip, struct pwm_devic=
+e *pwm,
+> +				 const struct pwm_state *state)
+> +{
+> +	struct raspberrypi_pwm *rpipwm =3D raspberrypi_pwm_from_chip(chip);
+> +	unsigned int duty_cycle;
+> +	int ret;
+> +
+> +	if (state->period < RPI_PWM_PERIOD_NS ||
+> +	    state->polarity !=3D PWM_POLARITY_NORMAL)
+> +		return -EINVAL;
+> +
+> +	if (!state->enabled)
+> +		duty_cycle =3D 0;
+> +	else if (state->duty_cycle < RPI_PWM_PERIOD_NS)
+> +		duty_cycle =3D DIV_ROUND_DOWN_ULL(state->duty_cycle * RPI_PWM_MAX_DUTY=
+,
+> +						RPI_PWM_PERIOD_NS);
+> +	else
+> +		duty_cycle =3D RPI_PWM_MAX_DUTY;
+> +
+> +	if (duty_cycle =3D=3D rpipwm->duty_cycle)
+> +		return 0;
+> +
+> +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_CUR_DUTY=
+_REG,
+> +					   duty_cycle);
+> +	if (ret) {
+> +		dev_err(chip->dev, "Failed to set duty cycle: %pe\n",
+> +			ERR_PTR(ret));
+> +		return ret;
+> +	}
+> +
+> +	/*
+> +	 * This sets the default duty cycle after resetting the board, we
+> +	 * updated it every time to mimic Raspberry Pi's downstream's driver
+> +	 * behaviour.
+> +	 */
+> +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_DEF_DUTY=
+_REG,
+> +					   duty_cycle);
+> +	if (ret) {
+> +		dev_err(chip->dev, "Failed to set default duty cycle: %pe\n",
+> +			ERR_PTR(ret));
+> +		return ret;
+> +	}
+> +
+> +	rpipwm->duty_cycle =3D duty_cycle;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct pwm_ops raspberrypi_pwm_ops =3D {
+> +	.get_state =3D raspberrypi_pwm_get_state,
+> +	.apply =3D raspberrypi_pwm_apply,
+> +	.owner =3D THIS_MODULE,
+> +};
+> +
+> +static int raspberrypi_pwm_probe(struct platform_device *pdev)
+> +{
+> +	struct device_node *firmware_node;
+> +	struct device *dev =3D &pdev->dev;
+> +	struct rpi_firmware *firmware;
+> +	struct raspberrypi_pwm *rpipwm;
+> +	int ret;
+> +
+> +	firmware_node =3D of_get_parent(dev->of_node);
+> +	if (!firmware_node) {
+> +		dev_err(dev, "Missing firmware node\n");
+> +		return -ENOENT;
+> +	}
+> +
+> +	firmware =3D devm_rpi_firmware_get(&pdev->dev, firmware_node);
+> +	of_node_put(firmware_node);
+> +	if (!firmware)
+> +		return dev_err_probe(dev, -EPROBE_DEFER,
+> +				     "Failed to get firmware handle\n");
+> +
+> +	rpipwm =3D devm_kzalloc(&pdev->dev, sizeof(*rpipwm), GFP_KERNEL);
+> +	if (!rpipwm)
+> +		return -ENOMEM;
+> +
+> +	rpipwm->firmware =3D firmware;
+> +	rpipwm->chip.dev =3D dev;
+> +	rpipwm->chip.ops =3D &raspberrypi_pwm_ops;
+> +	rpipwm->chip.base =3D -1;
+> +	rpipwm->chip.npwm =3D RASPBERRYPI_FIRMWARE_PWM_NUM;
+> +
+> +	platform_set_drvdata(pdev, rpipwm);
+> +
+> +	ret =3D raspberrypi_pwm_get_property(rpipwm->firmware, RPI_PWM_CUR_DUTY=
+_REG,
+> +					   &rpipwm->duty_cycle);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to get duty cycle: %pe\n", ERR_PTR(ret));
+> +		return ret;
+> +	}
+> +
+> +	return pwmchip_add(&rpipwm->chip);
+> +}
+> +
+> +static int raspberrypi_pwm_remove(struct platform_device *pdev)
+> +{
+> +	struct raspberrypi_pwm *rpipwm =3D platform_get_drvdata(pdev);
+> +
+> +	return pwmchip_remove(&rpipwm->chip);
+> +}
+> +
+> +static const struct of_device_id raspberrypi_pwm_of_match[] =3D {
+> +	{ .compatible =3D "raspberrypi,firmware-poe-pwm", },
+> +	{ }
+> +};
+> +MODULE_DEVICE_TABLE(of, raspberrypi_pwm_of_match);
+> +
+> +static struct platform_driver raspberrypi_pwm_driver =3D {
+> +	.driver =3D {
+> +		.name =3D "raspberrypi-poe-pwm",
+> +		.of_match_table =3D raspberrypi_pwm_of_match,
+> +	},
+> +	.probe =3D raspberrypi_pwm_probe,
+> +	.remove =3D raspberrypi_pwm_remove,
+> +};
+> +module_platform_driver(raspberrypi_pwm_driver);
+> +
+> +MODULE_AUTHOR("Nicolas Saenz Julienne <nsaenzjulienne@suse.de>");
+> +MODULE_DESCRIPTION("Raspberry Pi Firmware Based PWM Bus Driver");
+> +MODULE_LICENSE("GPL v2");
+
+
+
+--=-XkvVwEIv7TyrTi24H2y+
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAmBHRuQACgkQlfZmHno8
+x/6bhAgAjegsPioj3j6MWcBDKcu5q9aMkfekHwUUrVQTw97Ee7H4pzxnrprNHUSx
+cBkz+ZkNh1wcjq3CBgicqP2au9oQVvadK59lOPd09lsuaYgOuS2umWQAmEm0ei1j
+1l+3R93k1yBEGT61bkAA75n6ygFugkjgHyQ3kffUlrHCNH2A582pwYdFLbuGa/4P
+j44MNokRo6uWKxVp9dQ5WgyQM6IN9Iwz6Kfyl9Bah7YcLiv+RMwHv+k6DW9Fnqm1
+mzahMTf/vJ/7NQyXwl0XFsyaYnDGfTxExce8i83Yyke1eLY32HWBkzJA4r8k0TIt
+DjouL9S4PLDtkSLmje4Caiapg1s+ng==
+=3nSG
+-----END PGP SIGNATURE-----
+
+--=-XkvVwEIv7TyrTi24H2y+--
+
+
+--===============4211356913777513473==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4211356913777513473==--
+
