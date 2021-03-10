@@ -1,76 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1782E334B9F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Mar 2021 23:32:58 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 872B7334C34
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 00:07:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BA1F7431BB;
-	Wed, 10 Mar 2021 22:32:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EEF6242FF5;
+	Wed, 10 Mar 2021 23:07:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 865Yej3kXCMP; Wed, 10 Mar 2021 22:32:51 +0000 (UTC)
+	with ESMTP id f_fy8sCJvoGI; Wed, 10 Mar 2021 23:07:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C7A37431ED;
-	Wed, 10 Mar 2021 22:32:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 25B4240175;
+	Wed, 10 Mar 2021 23:06:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 990A41BF29E
- for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 22:27:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E93781BF29E
+ for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 22:53:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9475A42FF4
- for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 22:27:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E1BFC4AA2C
+ for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 22:52:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1Q-H8ufsxyNS for <devel@linuxdriverproject.org>;
- Wed, 10 Mar 2021 22:27:40 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=chromium.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ixa-2WmFvL72 for <devel@linuxdriverproject.org>;
+ Wed, 10 Mar 2021 22:52:58 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com
- [IPv6:2a00:1450:4864:20::435])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C5DAC42FF2
- for <devel@driverdev.osuosl.org>; Wed, 10 Mar 2021 22:27:35 +0000 (UTC)
-Received: by mail-wr1-x435.google.com with SMTP id w11so25105995wrr.10
- for <devel@driverdev.osuosl.org>; Wed, 10 Mar 2021 14:27:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=87k2e/RW0d520c+kOrMfvUjoXVowQB+P8Fhwo1lIzWg=;
- b=MPdn/zzkA9cSAtCRL3Zk323wBXDzpRAhZ6bKHmhjnCBn8t5yjtjnqYbNxD84jPi8uE
- gCghBbBxxMjLwLs3pspgnf4POv9fSc2v97h5U3SCvsL3kNJuurE9aly+gjmXZ+QytWoF
- bhvtdLFuFFBVKY2fX3XbES6t+ilkpUkjfTVjEKUc4ByYZX5fuJr4Cg0O9vEGNkL2THgW
- Kw6tYvNVgXfMr0KVdv5AXLaIplS4gZ79dajTXnra4jplzrQK95l+zFLgQzjFqYl6HMSr
- PFVUpQ5kDqAMENyll+e8BCvPuQncXS8xO1g+RylwNy7zPngtd65idL215ZYTf8slmNlr
- 1pgw==
+Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com
+ [IPv6:2607:f8b0:4864:20::102b])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2A76249771
+ for <devel@driverdev.osuosl.org>; Wed, 10 Mar 2021 22:52:54 +0000 (UTC)
+Received: by mail-pj1-x102b.google.com with SMTP id t18so2460594pjs.3
+ for <devel@driverdev.osuosl.org>; Wed, 10 Mar 2021 14:52:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xceL2rrz5muxxXaFpXKbAe7z2y2J/Hz3q5dv+FSBpyg=;
+ b=hS8aIW+Yt/OFEMTo4xIu6Tvk1YCBuq127Ex1VhmNXR+TaOpmB5tCs5UGwsvuzoexHQ
+ UWuClhqUrTHb5mNaZlox6Ht8wZgpW98eIB4wBE3IrObOif/XbeGoI3m2aFa5ukFWiLtm
+ swDj+r0/8dIhdku09dEqShdqYG/ScIzLPLqug=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=87k2e/RW0d520c+kOrMfvUjoXVowQB+P8Fhwo1lIzWg=;
- b=c8UerDY9XWz7brsp9BxGRPK9UUEjV+5bNnSDSTKYN8uNKuHWIvXX6MCRI4GsDwHvOg
- hpKjqdKNsyKlTAjI6ZuN2Cn0PZ6+w+aHBdWIWpJM7p78cl85v0+a2k+B2egQMYGi1lKM
- +W/zjVapSA8YIy/X+H5/KNCVGNoLAZGLALtJ7lCciK3Of5ed2uSnCX7921sgngWZjFdd
- ms7ygDn/bBDX2BFXZmTXSkVMXxXVzjHJ2TRaLrP6guC0ZHBSB0ld2YOsrBcuzB8VipAl
- bQm+hG+ji2VTO5tLYIbPd36DFfvGbdi4S6P8n89ETEzFw+pU9OGCUbX2R3yqq71CcAUr
- d73A==
-X-Gm-Message-State: AOAM5324uIQh3sQ8MOhynrmdALYkWpJSQLqJcVexSsYMzYbcoG0GtssH
- TIIlFO9WqEFBUb71R4JL9xC4fUK7MFo=
-X-Google-Smtp-Source: ABdhPJxlGD3c8eGIZ+4Qd29Gun6laMCmO2yRYRW9dNlFLOzHNu62vhwO1y+Qz2RBFflEzIZN1Oz6kg==
-X-Received: by 2002:adf:ed12:: with SMTP id a18mr5681195wro.249.1615415254202; 
- Wed, 10 Mar 2021 14:27:34 -0800 (PST)
-Received: from agape.jhs ([5.171.72.165])
- by smtp.gmail.com with ESMTPSA id z82sm744157wmg.19.2021.03.10.14.27.33
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xceL2rrz5muxxXaFpXKbAe7z2y2J/Hz3q5dv+FSBpyg=;
+ b=bmmMUL2Med6woSSCThOP/f3jI5PoCgq/LGqlDijxWwSl7qR/yeqPNH78HdeEOAB0Si
+ HKSajGU9SDtftIKIhpGR+qPb4EC5Zh1Slt8fjbdJWzZ9kARRuFf7nX7lpt6slSTDwR1X
+ QZ04RsIyPhtqFLzYo1XxHMgjueXMu4e0ox+WnLLAtRKtryDOqgwyrfcjf+BKmK5orWOM
+ w3JXW5FeQwsPyxxSEKaml6PmLn6RkXkDaSBdESLg3BnM0G9dgWlRcIGaRTyTIJvFIGwn
+ m/dOqm64uCJJZFK5Ac+owi7iUW/R1whnm3HD+Km3vlB51m7KQJ9MPieqyBFpCFkKUryP
+ K+HQ==
+X-Gm-Message-State: AOAM531W/UwUttYt+/NU68Sp1zB65Mw+uNyJvXf+eA0Ro4R8x9tt69dP
+ yBWZRy4AaEBkv24wWPf7nZnRfA==
+X-Google-Smtp-Source: ABdhPJztd6S7CLxtE4/aHpkKlretTOkcV598udASVtD7x6Jq37Ei7re5BnZbxujJLo5zhHf4dyKQBA==
+X-Received: by 2002:a17:90b:e18:: with SMTP id
+ ge24mr5804981pjb.199.1615416773769; 
+ Wed, 10 Mar 2021 14:52:53 -0800 (PST)
+Received: from li-cloudtop.c.googlers.com.com
+ (254.80.82.34.bc.googleusercontent.com. [34.82.80.254])
+ by smtp.gmail.com with ESMTPSA id t22sm353384pjo.45.2021.03.10.14.52.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Mar 2021 14:27:33 -0800 (PST)
-Date: Wed, 10 Mar 2021 23:27:31 +0100
-From: Fabio Aiuto <fabioaiuto83@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: rtl8723bs: align and beautify comments
-Message-ID: <20210310222728.GA3246@agape.jhs>
+ Wed, 10 Mar 2021 14:52:53 -0800 (PST)
+From: Li Li <dualli@chromium.org>
+To: dualli@google.com, tkjos@google.com, gregkh@linuxfoundation.org,
+ christian@brauner.io, arve@android.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, maco@google.com, hridya@google.com,
+ surenb@google.com
+Subject: [PATCH v1 0/3] Binder: Enable App Freezing Capability
+Date: Wed, 10 Mar 2021 14:52:48 -0800
+Message-Id: <20210310225251.2577580-1-dualli@chromium.org>
+X-Mailer: git-send-email 2.31.0.rc1.246.gcd05c9c855-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,80 +87,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- dan.carpenter@oracle.com
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix the following checkpatch warnings:
+From: Li Li <dualli@google.com>
 
-WARNING: Block comments use * on subsequent lines
-+	/*
-+		AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
---
-WARNING: Block comments use * on subsequent lines
-+/*
-+op_mode
+To improve the user experience when switching between recently used
+applications, the background applications which are not currently needed
+are cached in the memory. Normally, a well designed application will not
+consume valuable CPU resources in the background. However, it's possible
+some applications are not able or willing to behave as expected, wasting
+energy even after being cached.
 
-Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_ap.c | 32 ++++++++++++-------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+It is a good idea to freeze those applications when they're only being
+kept alive for the sake of faster startup and energy saving. These kernel
+patches will provide the necessary infrastructure for user space framework
+to freeze and thaw a cached process, check the current freezing status and
+correctly deal with outstanding binder transactions to frozen processes.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index b6f944b37b08..6d203814260f 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -719,11 +719,11 @@ static void update_hw_ht_param(struct adapter *padapter)
- 
- 	DBG_871X("%s\n", __func__);
- 
--	/* handle A-MPDU parameter field */
--	/*
--		AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
--		AMPDU_para [4:2]:Min MPDU Start Spacing
--	*/
-+	/* handle A-MPDU parameter field
-+	 *
-+	 *	AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
-+	 *	AMPDU_para [4:2]:Min MPDU Start Spacing
-+	 */
- 	max_AMPDU_len = pmlmeinfo->HT_caps.u.HT_cap_element.AMPDU_para & 0x03;
- 
- 	min_MPDU_spacing = (
-@@ -1815,17 +1815,17 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
- }
- 
- /*
--op_mode
--Set to 0 (HT pure) under the following conditions
--	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
--	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
--Set to 1 (HT non-member protection) if there may be non-HT STAs
--	in both the primary and the secondary channel
--Set to 2 if only HT STAs are associated in BSS,
--	however and at least one 20 MHz HT STA is associated
--Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
--	(currently non-GF HT station is considered as non-HT STA also)
--*/
-+ * op_mode
-+ * Set to 0 (HT pure) under the following conditions
-+ *	  - all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
-+ *	  - all STAs in the BSS are 20 MHz HT in 20 MHz BSS
-+ * Set to 1 (HT non-member protection) if there may be non-HT STAs
-+ *	  in both the primary and the secondary channel
-+ * Set to 2 if only HT STAs are associated in BSS,
-+ *	  however and at least one 20 MHz HT STA is associated
-+ * Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
-+ *	  (currently non-GF HT station is considered as non-HT STA also)
-+ */
- static int rtw_ht_operation_update(struct adapter *padapter)
- {
- 	u16 cur_op_mode, new_op_mode;
+Marco Ballesio (3):
+  binder: BINDER_FREEZE ioctl
+  binder: use EINTR for interrupted wait for work
+  binder: BINDER_GET_FROZEN_INFO ioctl
+
+ drivers/android/binder.c            | 196 ++++++++++++++++++++++++++--
+ drivers/android/binder_internal.h   |  18 +++
+ include/uapi/linux/android/binder.h |  20 +++
+ 3 files changed, 222 insertions(+), 12 deletions(-)
+
 -- 
-2.20.1
+2.31.0.rc1.246.gcd05c9c855-goog
 
 _______________________________________________
 devel mailing list
