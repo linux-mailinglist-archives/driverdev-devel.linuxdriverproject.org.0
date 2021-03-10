@@ -1,54 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF2EB334218
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Mar 2021 16:52:04 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EAE1334264
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Mar 2021 17:04:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4D0786F4A6;
-	Wed, 10 Mar 2021 15:52:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B33074EC72;
+	Wed, 10 Mar 2021 16:04:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Utlyn5en7ZQG; Wed, 10 Mar 2021 15:52:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KKFN2wwaGFUP; Wed, 10 Mar 2021 16:04:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 51A676F49E;
-	Wed, 10 Mar 2021 15:52:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9EF88454B4;
+	Wed, 10 Mar 2021 16:04:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 00AD81BF873
- for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 15:51:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D7C8F1BF873
+ for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 16:04:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DF40B6F49E
- for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 15:51:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C7E9C431C4
+ for <devel@linuxdriverproject.org>; Wed, 10 Mar 2021 16:04:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Hj8vbICpKY2f for <devel@linuxdriverproject.org>;
- Wed, 10 Mar 2021 15:51:49 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id O47NnmwuRlSb for <devel@linuxdriverproject.org>;
+ Wed, 10 Mar 2021 16:04:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 564306F48C
- for <devel@driverdev.osuosl.org>; Wed, 10 Mar 2021 15:51:49 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7D79164E86;
- Wed, 10 Mar 2021 15:51:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 419D8431BE
+ for <devel@driverdev.osuosl.org>; Wed, 10 Mar 2021 16:04:21 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9311964EFC;
+ Wed, 10 Mar 2021 16:04:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1615391507;
- bh=cx2k3zIevdtlZosOIu0f6rmjRxaYgbMOD0ua7N3lBQg=;
+ s=korg; t=1615392260;
+ bh=R3nAU4oVFrRwftJI5JeDSFqVV4m8k4B7Lvbt1v2OarE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JuPixlUojewCJxizHFgv508Mf/dCoggWsL9Rd9zsfbnmVi3fCQSMse04AwoRkPsDE
- u0Oc22drHPorD2NLTpowMmAPsK/D2lodUeDhvJ9qlgObXQXNQqTWKwKtJEt9eKz3/o
- ciFn+92WIh81f3kHgIpyfn3yLEUrcvyBtOvZSaMc=
-Date: Wed, 10 Mar 2021 16:51:44 +0100
+ b=dOEVCC5QgsCOXP3AnAXgwYzvpFav7dN7o4G9iuNgYWNG4CteV01kAdYe8b1xNW6Gb
+ LR2W/31F29lkIQFxPatQy3Kq/BahHPGxtsS3HYuNI0aLkpEXbHZhadJsF6lmJfuauy
+ O+Up51d83JDGOKt56vFQ/PPnutq9/UwUj12pjYq4=
+Date: Wed, 10 Mar 2021 17:04:17 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Fabio Aiuto <fabioaiuto83@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: align comments
-Message-ID: <YEjrEErDZTH47gto@kroah.com>
-References: <20210310153717.GA5741@agape.jhs>
+To: Mahak Gupta <gmahak1@gmail.com>
+Subject: Re: [PATCH] Match alignment with open parenthesis
+Message-ID: <YEjuAbShCtldatvT@kroah.com>
+References: <20210221234409.11627-1-gmahak1@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210310153717.GA5741@agape.jhs>
+In-Reply-To: <20210221234409.11627-1-gmahak1@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,67 +69,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Mar 10, 2021 at 04:37:21PM +0100, Fabio Aiuto wrote:
-> fix the following checkpatch warnings:
+On Mon, Feb 22, 2021 at 05:14:09AM +0530, Mahak Gupta wrote:
+> This patches fixes the checks- 'Alignment should match open parenthesis'
+> of 'checkpatch.pl'.
 > 
-> WARNING: Block comments use * on subsequent lines
-> +	/*
-> +		AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
-> --
-> WARNING: Block comments use * on subsequent lines
-> +/*
-> +op_mode
-> 
-> Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
+> Signed-off-by: Mahak Gupta <gmahak1@gmail.com>
 > ---
->  drivers/staging/rtl8723bs/core/rtw_ap.c | 28 ++++++++++++-------------
->  1 file changed, 14 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-> index b6f944b37b08..3a0e4f64466a 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-> @@ -721,9 +721,9 @@ static void update_hw_ht_param(struct adapter *padapter)
->  
->  	/* handle A-MPDU parameter field */
->  	/*
-> -		AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
-> -		AMPDU_para [4:2]:Min MPDU Start Spacing
-> -	*/
-> +	 *	AMPDU_para [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
-> +	 *	AMPDU_para [4:2]:Min MPDU Start Spacing
-> +	 */
->  	max_AMPDU_len = pmlmeinfo->HT_caps.u.HT_cap_element.AMPDU_para & 0x03;
->  
->  	min_MPDU_spacing = (
-> @@ -1815,17 +1815,17 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
->  }
->  
->  /*
-> -op_mode
-> -Set to 0 (HT pure) under the following conditions
-> -	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
-> -	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
-> -Set to 1 (HT non-member protection) if there may be non-HT STAs
-> -	in both the primary and the secondary channel
-> -Set to 2 if only HT STAs are associated in BSS,
-> -	however and at least one 20 MHz HT STA is associated
-> -Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
-> -	(currently non-GF HT station is considered as non-HT STA also)
-> -*/
-> + *op_mode
-> + *Set to 0 (HT pure) under the following conditions
-> + *	 - all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
-> + *	 - all STAs in the BSS are 20 MHz HT in 20 MHz BSS
-> + *Set to 1 (HT non-member protection) if there may be non-HT STAs
-> + *	 in both the primary and the secondary channel
-> + *Set to 2 if only HT STAs are associated in BSS,
-> + *	 however and at least one 20 MHz HT STA is associated
-> + *Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
-> + *	 (currently non-GF HT station is considered as non-HT STA also)
-> + */
+>  drivers/staging/octeon-usb/octeon-hcd.c | 32 +++++++++++++------------
+>  1 file changed, 17 insertions(+), 15 deletions(-)
 
-Add a space after the ' ' to make it look correct please.
+This got lost as you didn't put the subsystem on the subject line :(
+
+Please resend with "staging: " as a prefix on the subject line so our
+tools can pick this up properly.
 
 thanks,
 
