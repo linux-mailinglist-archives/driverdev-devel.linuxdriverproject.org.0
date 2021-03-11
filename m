@@ -1,61 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B648B337399
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 14:19:15 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C90533742C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 14:41:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0C7A4431CF;
-	Thu, 11 Mar 2021 13:19:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B591E6F5A1;
+	Thu, 11 Mar 2021 13:41:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K3QI-N6oS-cB; Thu, 11 Mar 2021 13:19:13 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id U1sqHs8dD2SU; Thu, 11 Mar 2021 13:41:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0889C43058;
-	Thu, 11 Mar 2021 13:19:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DBF5C60639;
+	Thu, 11 Mar 2021 13:41:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 347AD1BF82B
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 13:19:02 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F29E51BF82B
+ for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 13:41:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 304E6439BF
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 13:19:02 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E18A4431CF
+ for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 13:41:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pGQKpnSUrKMl for <devel@linuxdriverproject.org>;
- Thu, 11 Mar 2021 13:19:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1CouUgU3uL1L for <devel@linuxdriverproject.org>;
+ Thu, 11 Mar 2021 13:41:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [85.220.165.71])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DF42E42FE4
- for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 13:18:59 +0000 (UTC)
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1lKLDI-0008Jt-7H; Thu, 11 Mar 2021 14:18:52 +0100
-Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1lKLDE-0002l3-Lz; Thu, 11 Mar 2021 14:18:48 +0100
-Date: Thu, 11 Mar 2021 14:18:45 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E8D3543022
+ for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 13:41:13 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 51724AC23;
+ Thu, 11 Mar 2021 13:41:12 +0000 (UTC)
+Message-ID: <865b4bb56cb9b0a9041c61f1ae7c9c76e807ebd3.camel@suse.de>
 Subject: Re: [PATCH v7 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
-Message-ID: <20210311131845.x3zybis3x2liu2uk@pengutronix.de>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Date: Thu, 11 Mar 2021 14:41:10 +0100
+In-Reply-To: <20210311131845.x3zybis3x2liu2uk@pengutronix.de>
 References: <20210118123244.13669-1-nsaenzjulienne@suse.de>
  <20210118123244.13669-12-nsaenzjulienne@suse.de>
  <20210310115041.s7tzvgdpksws6yss@pengutronix.de>
  <fc60ac5ab9760d791aa5e184258accf53e07ce1e.camel@suse.de>
+ <20210311131845.x3zybis3x2liu2uk@pengutronix.de>
+User-Agent: Evolution 3.38.4 
 MIME-Version: 1.0
-In-Reply-To: <fc60ac5ab9760d791aa5e184258accf53e07ce1e.camel@suse.de>
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: devel@driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,97 +68,102 @@ Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
  wahrenst@gmx.net, p.zabel@pengutronix.de, linux-input@vger.kernel.org,
  bgolaszewski@baylibre.com, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============4263842486800641742=="
+Content-Type: multipart/mixed; boundary="===============4968518062038169661=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============4263842486800641742==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jhlssdtxmegt66au"
-Content-Disposition: inline
+--===============4968518062038169661==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-DIhE4Ec/fO1HMXckfvC/"
 
 
---jhlssdtxmegt66au
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+--=-DIhE4Ec/fO1HMXckfvC/
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hello Nicolas,
-
-On Thu, Mar 11, 2021 at 02:01:00PM +0100, Nicolas Saenz Julienne wrote:
-> On Wed, 2021-03-10 at 12:50 +0100, Uwe Kleine-K=F6nig wrote:
-> > On Mon, Jan 18, 2021 at 01:32:44PM +0100, Nicolas Saenz Julienne wrote:
+On Thu, 2021-03-11 at 14:18 +0100, Uwe Kleine-K=C3=B6nig wrote:
+> Hello Nicolas,
 >=20
-> [...]
->=20
-> > > +	/*
-> > > +	 * This sets the default duty cycle after resetting the board, we
-> > > +	 * updated it every time to mimic Raspberry Pi's downstream's driver
-> > > +	 * behaviour.
-> > > +	 */
-> > > +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_DEF_=
-DUTY_REG,
-> > > +					   duty_cycle);
-> > > +	if (ret) {
-> > > +		dev_err(chip->dev, "Failed to set default duty cycle: %pe\n",
-> > > +			ERR_PTR(ret));
-> > > +		return ret;
+> On Thu, Mar 11, 2021 at 02:01:00PM +0100, Nicolas Saenz Julienne wrote:
+> > On Wed, 2021-03-10 at 12:50 +0100, Uwe Kleine-K=C3=B6nig wrote:
+> > > On Mon, Jan 18, 2021 at 01:32:44PM +0100, Nicolas Saenz Julienne wrot=
+e:
 > >=20
-> > This only has an effect for the next reboot, right?
+> > [...]
+> >=20
+> > > > +	/*
+> > > > +	 * This sets the default duty cycle after resetting the board, we
+> > > > +	 * updated it every time to mimic Raspberry Pi's downstream's dri=
+ver
+> > > > +	 * behaviour.
+> > > > +	 */
+> > > > +	ret =3D raspberrypi_pwm_set_property(rpipwm->firmware, RPI_PWM_DE=
+F_DUTY_REG,
+> > > > +					   duty_cycle);
+> > > > +	if (ret) {
+> > > > +		dev_err(chip->dev, "Failed to set default duty cycle: %pe\n",
+> > > > +			ERR_PTR(ret));
+> > > > +		return ret;
+> > >=20
+> > > This only has an effect for the next reboot, right?
+> >=20
+> > It effects all reboots until it's further changed.
+> >=20
+> > > If so I wonder if it is a good idea in general. (Think: The current P=
+WM
+> > > setting enables a motor that makes a self-driving car move at 100 km/=
+h.
+> > > Consider the rpi crashes, do I want to car to pick up driving 100 km/=
+h at
+> > > power up even before Linux is up again?)
+> >=20
+> > I get your point. But this isn't used as a general purpose PWM. For now=
+ the
+> > interface is solely there to drive a PWM fan that's arguably harmless. =
+This
+> > doesn't mean that the RPi foundation will not reuse the firmware interf=
+ace for
+> > other means in the future. In such case we can always use a new DT comp=
+atible
+> > and bypass this feature (the current DT string is
+> > 'raspberrypi,firmware-poe-pwm', which is specific to this use-case).
+> >=20
+> > My aim here is to be on par feature wise with RPi's downstream implemen=
+tation.
 >=20
-> It effects all reboots until it's further changed.
->=20
-> > If so I wonder if it is a good idea in general. (Think: The current PWM
-> > setting enables a motor that makes a self-driving car move at 100 km/h.
-> > Consider the rpi crashes, do I want to car to pick up driving 100 km/h =
-at
-> > power up even before Linux is up again?)
->=20
-> I get your point. But this isn't used as a general purpose PWM. For now t=
-he
-> interface is solely there to drive a PWM fan that's arguably harmless. Th=
-is
-> doesn't mean that the RPi foundation will not reuse the firmware interfac=
-e for
-> other means in the future. In such case we can always use a new DT compat=
-ible
-> and bypass this feature (the current DT string is
-> 'raspberrypi,firmware-poe-pwm', which is specific to this use-case).
->=20
-> My aim here is to be on par feature wise with RPi's downstream implementa=
-tion.
+> Just because the downstream kernel does it should not be the (single)
+> reason to do that. My gut feeling is: For a motor restoring the PWM
+> config on reboot is bad and for a fan it doesn't really hurt if it
+> doesn't restart automatically. So I'd prefer to to drop this feature.
 
-Just because the downstream kernel does it should not be the (single)
-reason to do that. My gut feeling is: For a motor restoring the PWM
-config on reboot is bad and for a fan it doesn't really hurt if it
-doesn't restart automatically. So I'd prefer to to drop this feature.
+Fair enough, I'll remove it then.
 
-Best regards
-Uwe
+Regards,
+Nicolas
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
---jhlssdtxmegt66au
+--=-DIhE4Ec/fO1HMXckfvC/
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmBKGLIACgkQwfwUeK3K
-7AmVtwf/VJTFZ6KfFb0/nBuZLz71q/mBcEZrZwWPlKFMsb9C2jLRRJpnJ/1+zUoM
-Q41GHxf9j/O0tW/e7Hl8gR/ri8qMtJN6a4LOI31Icx7b4d3jFuiWVSIg+9UfhLwN
-Oq6m1B3VzzUmL4LWK+9qsfHwKJi/1FozbnMFFDCs7tnN4b9OmmZn2JkGNInxK5FT
-NQyA3wL9Pv+HyVliXk4948HvKO73dzj9yZCVfY3cb/XTb3HADs5+kwa3IT+l/g74
-nFj5qaKNNR4+QUibzclk9PGoj63N2XsS6vDEsncDoV2QHtJumODIQat6920OyNqh
-UvNUyCqUmLZntZ28GK0jzSeX+Kz3IA==
-=DtDQ
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAmBKHfYACgkQlfZmHno8
+x/7bvgf/VG7JeLwSwJu4LqZq0TnHZ6NiWfAfSZT+RMslpHsQjbaEQd9S0FehwN2a
+fvtdylnnGHKlJadP2QvfRGX7KYw4sGy8dsZZJn3LLVcIjO7cUCunmBkBZcaoy3mI
+edfLymaeNEnzuzaURI37lQTxNMVXQyXz3uzbHQG913kpi9Nex8ywwNFqAKoDGzyx
+k+NAYQHAh6wxkn8Ni7+6EpVpKZ7TIToIltlzd/Gn/ooycT1nO9OkSJKZkiIs4a0J
+uvuX9rLysjzr42l3hRpn7l+WZGfegorm7a/QzRFTjSKKlKYJVgzShiVR3XXpUYkk
+72pRuu76vC0ImQlL6Xa5qzbrQsRxNg==
+=k+NC
 -----END PGP SIGNATURE-----
 
---jhlssdtxmegt66au--
+--=-DIhE4Ec/fO1HMXckfvC/--
 
---===============4263842486800641742==
+
+--===============4968518062038169661==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -177,4 +174,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============4263842486800641742==--
+--===============4968518062038169661==--
+
