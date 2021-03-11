@@ -1,46 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5317333694F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 01:55:54 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52B593369C7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 02:37:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 49EF543019;
-	Thu, 11 Mar 2021 00:55:52 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yphpkaQ8vkdW; Thu, 11 Mar 2021 00:55:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4EDE343000;
-	Thu, 11 Mar 2021 00:55:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5E32C1BF9B4
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 00:55:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4CC8A60649
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 00:55:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A9D160730;
+	Thu, 11 Mar 2021 01:37:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jAkrf46Fk4KE for <devel@linuxdriverproject.org>;
- Thu, 11 Mar 2021 00:55:39 +0000 (UTC)
-X-Greylist: delayed 00:08:58 by SQLgrey-1.8.0
-Received: from 187119.cloudwaysapps.com (unknown [178.128.12.46])
- by smtp3.osuosl.org (Postfix) with ESMTP id 788EC605F2
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 00:55:39 +0000 (UTC)
-Received: from qv6tc8f.com (187119.cloudwaysapps.com [127.0.0.1])
- by 187119.cloudwaysapps.com (Postfix) with ESMTP id BC3C32C3CF
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 00:45:37 +0000 (UTC)
-From: "International Remittance Department."
- <Markintldmmutualcredit@consultant.com>
-Subject: International Remittance Department
-To: devel@linuxdriverproject.org
-Date: Wed, 10 Mar 2021 16:45:28 -0800
-X-Priority: 3
-Message-Id: <20210311004537.BC3C32C3CF@187119.cloudwaysapps.com>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CI84b3IjBI5U; Thu, 11 Mar 2021 01:37:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A1FAC60649;
+	Thu, 11 Mar 2021 01:37:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5201B1BF38B
+ for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 01:36:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4127345D94
+ for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 01:36:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rpTY6yygKSkI for <devel@linuxdriverproject.org>;
+ Thu, 11 Mar 2021 01:36:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E14F3454B4
+ for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 01:36:52 +0000 (UTC)
+IronPort-SDR: WjlPP/ZcUAIJM/QWsqVLXTfa9nDMmUo12R7gajjrgbcCsXbKL6H89Psdls1qBIVSPRO5cfe3k5
+ 0Jiwbwd+DtlA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9919"; a="176190960"
+X-IronPort-AV: E=Sophos;i="5.81,238,1610438400"; d="scan'208";a="176190960"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2021 17:36:52 -0800
+IronPort-SDR: Je+DDTOD8ojnoYbAFddIZWX8fDclFiU0ryicjYou9SJYC84XGKSHCAuuw+p8X6LfvIIwwr1cQJ
+ XZ6TIfML2NGQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,238,1610438400"; d="scan'208";a="600026420"
+Received: from lkp-server02.sh.intel.com (HELO ce64c092ff93) ([10.239.97.151])
+ by fmsmga006.fm.intel.com with ESMTP; 10 Mar 2021 17:36:50 -0800
+Received: from kbuild by ce64c092ff93 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lKAFt-0000VL-UV; Thu, 11 Mar 2021 01:36:49 +0000
+Date: Thu, 11 Mar 2021 09:36:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 31673785d5353b8a8e882fc51ef315cc197f4483
+Message-ID: <6049741e.z9UTgvudV/5Nlx/D%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,57 +67,170 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: "International Remittance Department."
- <Markintldmmutualcredit@consultant.com>
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0729162488358319762=="
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============0729162488358319762==
-Content-Type: text/plain; charset=us-ascii
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 31673785d5353b8a8e882fc51ef315cc197f4483  staging: dpaa2-switch: prevent joining a bridge while VLAN uppers are present
 
-International Remittance Department.
-Int' London Mutual Credit Union Bank 
-Add-4 Heaton Road Peckham, SE15 13TH London United Kingdom.
+elapsed time: 729m
 
-Dear Beneficiary
+configs tested: 139
+configs skipped: 2
 
-Your ATM Visa Card will be shipped through USPS to your Address. I am Mr. Roland de Marcellus, Acting Deputy Assistant Secretary of State for International Finance & Development (BUREAU OF ECONOMIC AND BUSINESS AFFAIRS). This is to inform you officially that after our investigations with the Federal Bureau of Investigation (FBI), Central Intelligence Agency (CIA), and other Security Agencies in the Countries for the year 2017 and 2018, we discovered that you have not yet received yours over due fund. I have made it my first point of call since taking office to settle all Outstanding Payments accrued to Individuals or Corporations with respect to local and overseas contract payment, Debt Rescheduling, and Outstanding Compensation payment. This is to make sure all Outstanding payments are settled this fiscal year 2018. On Behalf of the entire staff of the U.S. Department of State and the United Nations in collaboration with World Bank, we apologize for the delay in your contract paymen
- t, Winning or Inheritance funds from most the African Countries, and all the inconveniences you encountered while pursuing this payment. However, from the records of outstanding beneficiaries due for payment with the U.S Secretary of State, your name was discovered as next on the list of beneficiaries who has not yet received their payments. I have your file here in my office and it says that you are yet to receive your funds valued at US$1,850,000.00 (One Million, Eight Hundred And Fifty Thousand United States Dollars). This Funds will now be delivered to your designated address on your preferred payment option. We have perfected all modules on how to bring this fund to your designated address without any problem, but be aware that the United Nations and the United States Government have only authorized my office to release the Sum of US$1,850,000.00 to you as true beneficiary of the Funds. Note that your loaded ATM Visa Card will be mailed to you through Priority Mail Express (USP
- S) to your designated address immediately you admit full compliance to this email. Due to my busy schedules, you are advised to kindly get in contact with our correspondent Mr. Mark Christopher with the below details enclosed to help ensure safe mailing of your ATM Visa Card:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-– Your Full Name:
-– Your Contact House Address:
-– Name of City of Residence:
-– Country of Residence:
-– Direct Mobile Telephone Number:
-– ID Card, DL, or Passport Copy:
-– Age and Occupation:
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+m68k                          hp300_defconfig
+powerpc                    adder875_defconfig
+powerpc                 mpc8313_rdb_defconfig
+powerpc                      ppc40x_defconfig
+mips                      pistachio_defconfig
+powerpc                 mpc837x_rdb_defconfig
+powerpc                     pq2fads_defconfig
+powerpc                      obs600_defconfig
+powerpc                       holly_defconfig
+powerpc                     kmeter1_defconfig
+riscv                          rv32_defconfig
+arm                             mxs_defconfig
+sh                         microdev_defconfig
+mips                       capcella_defconfig
+arm                        mvebu_v7_defconfig
+xtensa                  cadence_csp_defconfig
+arm                             pxa_defconfig
+powerpc                     tqm8541_defconfig
+sh                          polaris_defconfig
+powerpc                      ep88xc_defconfig
+mips                       rbtx49xx_defconfig
+powerpc                     mpc512x_defconfig
+sh                           se7750_defconfig
+arm                     eseries_pxa_defconfig
+sh                               alldefconfig
+powerpc                      katmai_defconfig
+m68k                       m5275evb_defconfig
+sh                        dreamcast_defconfig
+microblaze                          defconfig
+powerpc                      ppc44x_defconfig
+powerpc                 mpc836x_mds_defconfig
+sh                          lboxre2_defconfig
+sh                      rts7751r2d1_defconfig
+powerpc                    ge_imp3a_defconfig
+arm                         hackkit_defconfig
+mips                     loongson1b_defconfig
+h8300                            alldefconfig
+arm                            xcep_defconfig
+arc                           tb10x_defconfig
+arm                          ep93xx_defconfig
+powerpc                     stx_gp3_defconfig
+arm                          pxa910_defconfig
+powerpc                        icon_defconfig
+arm                  colibri_pxa300_defconfig
+arm                         at91_dt_defconfig
+arm                          pcm027_defconfig
+sh                          rsk7201_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20210309
+i386                 randconfig-a003-20210309
+i386                 randconfig-a002-20210309
+i386                 randconfig-a006-20210309
+i386                 randconfig-a004-20210309
+i386                 randconfig-a001-20210309
+x86_64               randconfig-a013-20210309
+x86_64               randconfig-a016-20210309
+x86_64               randconfig-a015-20210309
+x86_64               randconfig-a014-20210309
+x86_64               randconfig-a011-20210309
+x86_64               randconfig-a012-20210309
+x86_64               randconfig-a011-20210310
+x86_64               randconfig-a016-20210310
+x86_64               randconfig-a013-20210310
+x86_64               randconfig-a015-20210310
+x86_64               randconfig-a014-20210310
+x86_64               randconfig-a012-20210310
+i386                 randconfig-a016-20210309
+i386                 randconfig-a012-20210309
+i386                 randconfig-a014-20210309
+i386                 randconfig-a013-20210309
+i386                 randconfig-a011-20210309
+i386                 randconfig-a015-20210309
+x86_64               randconfig-a006-20210308
+x86_64               randconfig-a001-20210308
+x86_64               randconfig-a004-20210308
+x86_64               randconfig-a002-20210308
+x86_64               randconfig-a005-20210308
+x86_64               randconfig-a003-20210308
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-Contact Mr. Mark Christopher immediately by emailing the address below:
+clang tested configs:
+x86_64               randconfig-a006-20210309
+x86_64               randconfig-a001-20210309
+x86_64               randconfig-a004-20210309
+x86_64               randconfig-a002-20210309
+x86_64               randconfig-a005-20210309
+x86_64               randconfig-a003-20210309
+x86_64               randconfig-a013-20210308
+x86_64               randconfig-a016-20210308
+x86_64               randconfig-a015-20210308
+x86_64               randconfig-a014-20210308
+x86_64               randconfig-a011-20210308
+x86_64               randconfig-a012-20210308
 
-– Name: Mr.Mark Christopher.
-– Email: Markintldmmutualcredit@consultant.com
-– Telephone: +1 (915) 229-3346/+447452378992
-
-He is obliged to treat your case with utmost urgency as soon as you contact him and fill out your correct details including all reachable phone numbers for him to get in touch with you via phone and email.
-
-NOTE: Every documentation proof for your fund has been packaged and sealed to be mailed together with your Visa Card to your address. Therefore, the only obligation required of you by the laws of the Government of the United States and the financial Monetary Policy of the Supreme Court, states that; you as a beneficiary must officially obtain the irrevocable LEGAL STAY OF PROCEED from the Supreme Court of USA, as a means to justify the legitimacy, transparency and clean bill of funds from the USA so that by the time your funds gets to you, no authority will question the funds as it has been legally certified free from all financial Malpractices and facets. The LEGAL STAY OF PROCEED is valued at a cost of ($550) please take note of that. As soon as the above-mentioned $550 is received, The LEGAL STAY OF PROCEED will be secured on your behalf immediately. I need all the compliance that I can get from you to ensure we get this project accomplished. Personally, I am very sorry for the de
- lay you have gone through in the past years. Thanks for adhering to this instruction which is meant for your sole benefit, once again accept my congratulations in advance. Thanks for your cooperation as your quick response to this email notice with adherence to the above instructions is highly anticipated.
-
-Yours Sincerely,
-Mr Roland de Marcellus.
-
---===============0729162488358319762==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0729162488358319762==--
