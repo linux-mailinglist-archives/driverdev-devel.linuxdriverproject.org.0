@@ -1,51 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58FD2336EF1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 10:33:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CCAE6336EFF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Mar 2021 10:36:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8310A430DC;
-	Thu, 11 Mar 2021 09:33:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0EF456F82D;
+	Thu, 11 Mar 2021 09:36:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A4kjdhmEFYf3; Thu, 11 Mar 2021 09:33:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vCvlE3RURIqZ; Thu, 11 Mar 2021 09:36:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CA624400D6;
-	Thu, 11 Mar 2021 09:33:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CD3C6F502;
+	Thu, 11 Mar 2021 09:36:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 54CB41BF395
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 09:33:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9500D1BF395
+ for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 09:36:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4D4EB6F5A4
- for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 09:33:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 841F56F502
+ for <devel@linuxdriverproject.org>; Thu, 11 Mar 2021 09:36:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uts2C539f0Wn for <devel@linuxdriverproject.org>;
- Thu, 11 Mar 2021 09:33:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 903C36F502
- for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 09:33:07 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1lKHgn-0002l7-3v; Thu, 11 Mar 2021 09:33:05 +0000
-From: Colin King <colin.king@canonical.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ross Schmidt <ross.schm.dev@gmail.com>, devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8723bs: Fix spelling mistake "disabed" ->
- "disabled"
-Date: Thu, 11 Mar 2021 09:33:04 +0000
-Message-Id: <20210311093304.5573-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.30.2
+ with ESMTP id BTFpiiwSq2gS for <devel@linuxdriverproject.org>;
+ Thu, 11 Mar 2021 09:36:41 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-oi1-x22c.google.com (mail-oi1-x22c.google.com
+ [IPv6:2607:f8b0:4864:20::22c])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D27106F598
+ for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 09:36:41 +0000 (UTC)
+Received: by mail-oi1-x22c.google.com with SMTP id u6so15128154oic.2
+ for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 01:36:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=z/yJc2SsfEWziBZ1LArgu9WV9K8NEngQzg7n/JFp0cM=;
+ b=RnMEZOtkbouSIgAcWgcLjYn+e8sSOQsk+gwKETZkeyO6CxfoGJomwqfueCC/TMkell
+ 2ZF/GXXxdfoZlarfmCfCXhmWTv5EjeLw1PsCv1WLdMxi5V66om9ILEZmohPTVutCAadr
+ 3U26F0jjA2mtiraU35ghuye85+lEj7OTtoKsk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=z/yJc2SsfEWziBZ1LArgu9WV9K8NEngQzg7n/JFp0cM=;
+ b=oJJcu0TRq9v7V0QLWQuxPoSddd5+9s6MiCOL7Tt0DHqlOxipzOhxTBO6fNJ41OyV5i
+ wvWjo1LwpLkF+0wfkDL/nVHXoZqXQq9+v6WZ1U9b02puT/vVc7Jfg5arRBMqbfYbfu3B
+ pz2Jk6KHIEqRBeR8yzmVMIMHPs3Kal2MYx73bmOQGyVuJ0t11mYIeDpooqsFKjGe5BFp
+ Y3/AZ4Z4wWqTfYQhFyLC84lwTRMSbI5Wutdo6rJugrK1GswXaXuv0KVQWUtUaiY62JRU
+ zsSncLix6qeG+6OtsmwicRaXU24Uz01/cprUoblOtgd3y4cfRjGRRGKqu2/Ak0AXuLXQ
+ W3bA==
+X-Gm-Message-State: AOAM5333JuK9CTRSpO41mdTLlXX8d83uKbVNdm/oVlAS7LoXx1jxAPNN
+ 4yrCB4wLgTThrs+eJvCdDWddbreBHpV4I7mf
+X-Google-Smtp-Source: ABdhPJyUpbgwxvXTb+04sK2UHmSdwNHs55O9K7GCVThPE4XWlXenyqoF62/p3BYR1OSpYov5pdlHcQ==
+X-Received: by 2002:aca:6204:: with SMTP id w4mr5773718oib.86.1615455400209;
+ Thu, 11 Mar 2021 01:36:40 -0800 (PST)
+Received: from mail-ot1-f52.google.com (mail-ot1-f52.google.com.
+ [209.85.210.52])
+ by smtp.gmail.com with ESMTPSA id v1sm558674otk.67.2021.03.11.01.36.38
+ for <devel@driverdev.osuosl.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Mar 2021 01:36:39 -0800 (PST)
+Received: by mail-ot1-f52.google.com with SMTP id f8so883573otp.8
+ for <devel@driverdev.osuosl.org>; Thu, 11 Mar 2021 01:36:38 -0800 (PST)
+X-Received: by 2002:a05:6830:144e:: with SMTP id
+ w14mr6263501otp.0.1615455398529; 
+ Thu, 11 Mar 2021 01:36:38 -0800 (PST)
 MIME-Version: 1.0
+References: <20210310225251.2577580-1-dualli@chromium.org>
+ <20210310225251.2577580-2-dualli@chromium.org>
+ <YEnH1qd527g/neY4@kroah.com>
+In-Reply-To: <YEnH1qd527g/neY4@kroah.com>
+From: Li Li <dualli@chromium.org>
+Date: Thu, 11 Mar 2021 01:36:26 -0800
+X-Gmail-Original-Message-ID: <CA+xfxX4tD30BJLgwLAoiMzF7xTC-4q1i0A5Znp3tJzyi3ATLzQ@mail.gmail.com>
+Message-ID: <CA+xfxX4tD30BJLgwLAoiMzF7xTC-4q1i0A5Znp3tJzyi3ATLzQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] binder: BINDER_FREEZE ioctl
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,37 +90,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, kernel-team@android.com,
+ linux-kernel@vger.kernel.org, joel@joelfernandes.org, arve@android.com,
+ Martijn Coenen <maco@google.com>, hridya@google.com, surenb@google.com,
+ christian@brauner.io, Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On Wed, Mar 10, 2021 at 11:33 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Mar 10, 2021 at 02:52:49PM -0800, Li Li wrote:
+> >       if (target_proc) {
+> >               binder_inner_proc_lock(target_proc);
+> > +             target_proc->outstanding_txns--;
+> > +             WARN_ON(target_proc->outstanding_txns < 0);
+>
+> WARN_* is a huge crutch, please just handle stuff like this properly and
+> if you really need to, warn userspace (but what can they do about it?)
+>
+> You also just rebooted all systems that have panic-on-warn set, so if
+> this can be triggered by userspace, you caused a DoS of things :(
+>
+> So please remove all of the WARN_ON() you add in this patch series to
+> properly handle the error conditions and deal with them correctly.
+>
+> And if these were here just for debugging, hopefully the code works
+> properly now and you do not need debugging anymore so they can all just
+> be dropped.
 
-There is a spelling mistake in a comment, fix it.
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/rtl8723bs/include/wifi.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index fe984fcb66a9..4080803d9b1b 100644
---- a/drivers/staging/rtl8723bs/include/wifi.h
-+++ b/drivers/staging/rtl8723bs/include/wifi.h
-@@ -719,7 +719,7 @@ struct ADDBA_request {
- 
- #define	P2P_WILDCARD_SSID_LEN				7
- 
--#define	P2P_FINDPHASE_EX_NONE				0	/*  default value, used when: (1)p2p disabed or (2)p2p enabled but only do 1 scan phase */
-+#define	P2P_FINDPHASE_EX_NONE				0	/*  default value, used when: (1)p2p disabled or (2)p2p enabled but only do 1 scan phase */
- #define	P2P_FINDPHASE_EX_FULL				1	/*  used when p2p enabled and want to do 1 scan phase and P2P_FINDPHASE_EX_MAX-1 find phase */
- #define	P2P_FINDPHASE_EX_SOCIAL_FIRST		(P2P_FINDPHASE_EX_FULL+1)
- #define	P2P_FINDPHASE_EX_MAX					4
--- 
-2.30.2
-
+When the target_proc is freed, there's no outstanding transactions already.
+The FREEZE ioctl from userspace won't trigger this. It's for debugging.
+And I'll remove it in v2. Thanks for the suggestion!
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
