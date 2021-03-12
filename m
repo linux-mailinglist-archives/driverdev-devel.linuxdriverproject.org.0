@@ -1,81 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 555063393D2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 17:43:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B876A3396A3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 19:33:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CCF334ED9A;
-	Fri, 12 Mar 2021 16:43:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AE6A78430B;
+	Fri, 12 Mar 2021 18:33:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eGYFFtfNDNOs; Fri, 12 Mar 2021 16:43:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3dNDAHJjysTj; Fri, 12 Mar 2021 18:33:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B72194ED47;
-	Fri, 12 Mar 2021 16:43:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9193083F69;
+	Fri, 12 Mar 2021 18:33:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 434CE1BF9B2
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 16:43:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C0AB1BF3C0
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 18:33:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 329AE84400
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 16:43:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0B164840B9
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 18:33:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=infradead.org header.b="WBOVImtx";
- dkim=pass (2048-bit key) header.d=infradead.org header.b="lWS3dw4a"
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W6Tp47RXlR4i for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 16:43:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from desiato.infradead.org (desiato.infradead.org
- [IPv6:2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D7D94843DD
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 16:43:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
- Reply-To:Cc:Content-ID:Content-Description;
- bh=DdN12y8wew+vZHpjKJtDD1enNtaDHjC1Mg2RbmuJ80M=; b=WBOVImtxdtH6KR0SfeWR22+u5J
- /zlCZiknZpLqMNHUwOu3eDDewHboFOAq248h83r87IkCUNJMZtt+aYf+cCmpXMZgyThQ6bWVDbCM+
- RRsr/iqRrbKtC62wcNq87PPP8PxX0jqnDQecN9cRDYZemx2gzaSw1ypYnHwTjaLl0lLLpvlzxRB2C
- 17r9NOR5o6JIBR4azoaU84oflPl8ErGt41TgeWiYwAahGnKGrZvnyPp/2gVk1MB73xQbD6VWId0pb
- EwDgK7xdWL8z22udods7S5gGYSLmnS8eq2Y+W9gOo2kU64NCl06l1dVeHVA/FKDFo315KIUgrOfAn
- +HwXKFWg==;
-Received: from merlin.infradead.org ([2001:8b0:10b:1234::107])
- by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKksa-00C2Og-SZ
- for devel@driverdev.osuosl.org; Fri, 12 Mar 2021 16:43:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
- Reply-To:Cc:Content-ID:Content-Description;
- bh=DdN12y8wew+vZHpjKJtDD1enNtaDHjC1Mg2RbmuJ80M=; b=lWS3dw4aHMJnZqoZ3fkNkSwd66
- vUX0mszaoHHZ4s+57TcHvsYFPCEXBilwlMlBoEXZ1KBFc9+Ff92W+tiHavdWcdT/b1PLN4MB4ME9F
- YKXIkEu51hIECOiuAJY5fJzVjQC6IeAj1v35MYAk38+GYdEsAJYyjcRN1YeRhjunlCWbgK1/gU8E0
- pC7Bsh3ddMCzrUVKg4srxF3vkOsZhrghElhGfKc4PknKYSlyVsfrLV9X+sshKehnt7XEnzLqSrpZK
- wp6hbNqiTJvcKDUZxGHHaaUwxL2CY2mPe8d79jALo7JdS9twXiY7WI88bZEbaBBsGmm/fAQYVkkFU
- 1GUPduAg==;
-Received: from [2601:1c0:6280:3f0::3ba4]
- by merlin.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
- id 1lKksM-0014Jd-5G; Fri, 12 Mar 2021 16:42:58 +0000
-Subject: Re: [PATCH] staging: wimax: i2400m: Mundane typos fix in the file tx.c
-To: Bhaskar Chowdhury <unixbhaskar@gmail.com>, gregkh@linuxfoundation.org,
- arnd@arndb.de, lee.jones@linaro.org, kuba@kernel.org,
- johannes@sipsolutions.net, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-References: <20210312114207.3624-1-unixbhaskar@gmail.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <a6d52732-917c-c679-d7be-6454b316ea40@infradead.org>
-Date: Fri, 12 Mar 2021 08:42:55 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ with ESMTP id fpNHiibmRj2d for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 18:33:19 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com
+ [IPv6:2a00:1450:4864:20::32d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 381818404A
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 18:33:19 +0000 (UTC)
+Received: by mail-wm1-x32d.google.com with SMTP id
+ m20-20020a7bcb940000b029010cab7e5a9fso16361475wmi.3
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 10:33:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=KgZGZquzp5af/SHw1iWV2nRB1+CRMBJEbwCFEObh3NM=;
+ b=VDDL6Ua0hzlTTGNcpWRtmN8dLMeoEkJcWpgkRm31GRw96kaaG3d1T1dAs/OTOH66Xw
+ LuyPcyA5pF8k8lfQUDjeldNLpZCixGyu/llbp15CPxAtswQzt9WVkXEHPaXyZY2S/L6a
+ j1WwOVZaaBt8VKYHZ6tdHxZejaV7/xnI1y5zafxXCrHx7w0aTBSvxNfhsZdhgNGNMuYb
+ vGmqITWHv6WkpqKx9sen3wdzB7LlTHDYy5EVKDrSOVQNIPz3XTkHFrXWYMbCjtIH/U+p
+ Nk/ashmVmRW+2vI1ASl+ASsqc9KqqVF2rRRd1WaYsbtWsyF76yqKPcrXcNmgXoOLJX9a
+ 6Sng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=KgZGZquzp5af/SHw1iWV2nRB1+CRMBJEbwCFEObh3NM=;
+ b=mDmAv4/Qfx7A3S4NMmo6Y5BtcpShGu6yTt7RnVgtOqYCDKdY8gMNiVxGFUWeSEddhf
+ BonA6WkI82cKNEj1VVIsLAwCzezR6bDwxG5wtqZM106NlWGt8cDZg1z0KgxxsbD4ElLy
+ 3evJizpjkwkT/y8af2ibzQRY+zdRvDzU5dYasBU+skjkuNlASMPVuz4AxziBBb30C4DU
+ /L1Xd9JORXVNTRVsJVITgyWT1Te0+Sc6F3h4XGwCSTp3tqjMNnUcWVr4arNYCgfBAt7E
+ dnOcK52Hdxn1QXR+m1rBUSNCq8ELcDpBjTtD4TS5VvpiqCnAoGEXJkg+RWAg/aSIC/dA
+ 3FsA==
+X-Gm-Message-State: AOAM5314dcJIP5UQi6MHrT9dQxCXsFzIrfjFkjfZC3z4usQ2nboQigm7
+ Pm56dO8ALNuTTjTAgiOlnEzUVQrJLHe1NA==
+X-Google-Smtp-Source: ABdhPJyZ5qpiW6Y9BFniryM+5gZi/dKyEJmSWOQ4Hs/w4TJVWfbPB+O2i/a+7zMwB/rr3KQ8RQqX8g==
+X-Received: by 2002:a1c:f20f:: with SMTP id s15mr14000151wmc.35.1615573997384; 
+ Fri, 12 Mar 2021 10:33:17 -0800 (PST)
+Received: from agape.jhs ([151.57.163.80])
+ by smtp.gmail.com with ESMTPSA id s18sm9821074wrr.27.2021.03.12.10.33.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Mar 2021 10:33:17 -0800 (PST)
+Date: Fri, 12 Mar 2021 19:33:13 +0100
+From: Fabio Aiuto <fabioaiuto83@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2 0/4] staging: rtl8723bs: remove unused code blocks
+Message-ID: <cover.1615572985.git.fabioaiuto83@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210312114207.3624-1-unixbhaskar@gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,51 +84,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 3/12/21 3:42 AM, Bhaskar Chowdhury wrote:
-> 
-> s/exahusted/exhausted/
-> s/caleed/called/
-> 
-> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+This patch set removes unused code blocks as required in TODO file:
 
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
+	find and remove code blocks guarded by never set CONFIG_FOO defines
 
-> ---
->  drivers/staging/wimax/i2400m/tx.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/wimax/i2400m/tx.c b/drivers/staging/wimax/i2400m/tx.c
-> index e9436212fe54..2d15de653951 100644
-> --- a/drivers/staging/wimax/i2400m/tx.c
-> +++ b/drivers/staging/wimax/i2400m/tx.c
-> @@ -85,7 +85,7 @@
->   *       can keep adding payloads to it.
->   *
->   *     Closed: we are not appending more payloads to this TX message
-> - *       (exahusted space in the queue, too many payloads or
-> + *       (exhausted space in the queue, too many payloads or
->   *       whichever).  We have appended padding so the whole message
->   *       length is aligned to i2400m->bus_tx_block_size (as set by the
->   *       bus/transport layer).
-> @@ -295,7 +295,7 @@ enum {
->  /*
->   * Calculate how much tail room is available
->   *
-> - * Note the trick here. This path is ONLY caleed for Case A (see
-> + * Note the trick here. This path is ONLY called for Case A (see
->   * i2400m_tx_fifo_push() below), where we have:
->   *
->   *       Case A
-> --
+Changes in v2:
+	- modified sunject lines to make them unique
+	- added a patch previously excluded (removal of
+	  CONFIG_PNO_SET_DEBUG code)
 
+Fabio Aiuto (4):
+  staging: rtl8723bs: remove unused code blocks conditioned by never set
+    CONFIG_PNO_SET_DEBUG
+  staging: rtl8723bs: remove unused code blocks conditioned by never set
+    CONFIG_PNO_SUPPORT
+  staging: rtl8723bs: remove unused code blocks conditioned by never set
+    CONFIG_WOWLAN
+  staging: rtl8723bs: remove unused code blocks conditioned by never set
+    CONFIG_TCP_CSUM_OFFLOAD_RX
+
+ drivers/staging/rtl8723bs/core/rtw_mlme.c     |   3 -
+ drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  |  24 +-
+ .../staging/rtl8723bs/core/rtw_wlan_util.c    |  61 +-
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c  | 872 +-----------------
+ .../staging/rtl8723bs/hal/rtl8723b_hal_init.c |  43 +-
+ drivers/staging/rtl8723bs/hal/sdio_halinit.c  | 253 +----
+ drivers/staging/rtl8723bs/hal/sdio_ops.c      |   4 +-
+ drivers/staging/rtl8723bs/include/autoconf.h  |   3 -
+ drivers/staging/rtl8723bs/include/drv_types.h |   5 -
+ .../rtl8723bs/include/drv_types_sdio.h        |   2 +-
+ .../staging/rtl8723bs/include/hal_com_h2c.h   |  88 +-
+ drivers/staging/rtl8723bs/include/hal_intf.h  |   5 -
+ .../staging/rtl8723bs/include/rtl8723b_cmd.h  |   4 +-
+ .../staging/rtl8723bs/include/rtl8723b_hal.h  |  17 -
+ .../staging/rtl8723bs/include/rtl8723b_spec.h |  10 -
+ drivers/staging/rtl8723bs/include/rtw_mp.h    |   3 -
+ .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  62 --
+ drivers/staging/rtl8723bs/include/rtw_recv.h  |   5 -
+ .../staging/rtl8723bs/include/rtw_security.h  |   3 -
+ drivers/staging/rtl8723bs/include/sdio_ops.h  |   8 +-
+ drivers/staging/rtl8723bs/include/sta_info.h  |   5 -
+ .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c |  56 --
+ .../staging/rtl8723bs/os_dep/ioctl_linux.c    |   3 -
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   | 238 +----
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c |   8 -
+ drivers/staging/rtl8723bs/os_dep/sdio_intf.c  |   5 -
+ 26 files changed, 28 insertions(+), 1762 deletions(-)
 
 -- 
-~Randy
+2.20.1
 
 _______________________________________________
 devel mailing list
