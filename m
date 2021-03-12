@@ -1,80 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71312338767
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:32:23 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 833D8338768
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:32:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0F03443259;
-	Fri, 12 Mar 2021 08:32:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0FB604ED53;
+	Fri, 12 Mar 2021 08:32:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pNDZ1hctHJt8; Fri, 12 Mar 2021 08:32:19 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k64REIKbc06F; Fri, 12 Mar 2021 08:32:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4D65640025;
-	Fri, 12 Mar 2021 08:32:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3EF8E4ED64;
+	Fri, 12 Mar 2021 08:32:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8A991BF59B
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 12DE01C1135
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CE04C6F9BC
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0228D8450D
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tN2RNODYh-iE for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 08:27:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xpFBpYtoNb1Z for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 08:27:09 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
- [IPv6:2a00:1450:4864:20::42f])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C25A96067E
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:27:07 +0000 (UTC)
-Received: by mail-wr1-x42f.google.com with SMTP id e9so1273045wrw.10
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:27:07 -0800 (PST)
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
+ [IPv6:2a00:1450:4864:20::32f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9494B844F8
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:27:08 +0000 (UTC)
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 124-20020a1c00820000b029010b871409cfso15240945wma.4
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:27:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=0fzor9W8X7UXlrdB+HLVev43AKbZ1+zw2rVK7NYTlms=;
- b=oSuxjDgCx2UEPAy/9cHx7YkVzfI5jpUv1EBVbmU0guW/0vGEEiKKOk2Ir2KBjOtPtA
- QBmWHNrbGhiyScfg4YFoeOOZ6cX2qV1XaEcd+kJQCXHJoK3f23W/74lqmCYMYeLFJXd5
- R7VpTzyOBzEvIndflWdkIjx0jkP1UaHoW9p4zQdTJvnDd2FddKwBS9Qa6EXJKwAbCpMj
- w6jUZgCTj42jTp5aMgNBvKftXyIv1ae+sCFnIKWEDs0PbVbqmJgqp0sxctKhe1DjUsdA
- xxHT1ixaIf3ZHwU96sDKy9ZNQYq2MfaKYUQHeaXfakvnPC1CntI76uW3umgjTQXX1DEK
- 3z9g==
+ bh=nsmDdSM/+3Y4nWnUg/H1lXm5FP9mjucoYZigMKaJuOk=;
+ b=JPOdSsacnnQNtNnMPDLq5XP6hz83oB4i6YDbYSo9+SZWoEav7hLOHWLJ2BzoC+4ijr
+ V8BGFthfa5seQ/XhqquJarK+Pu6rRpLWk0afwEH5PzBQCBC/60MzlEO5sMAMtIhbkK4y
+ aUNi9Zl9TZLRepXUQ+qL/I74a0zBQy9MVQostyhSkQPfpRzlMGN7AMVnu4sfJk29d1PC
+ Mcev2w2z62bHgOr3O5Ltc/KzYN7AdabzNmcqQEmUIEuuAVUYDmU8wGApJLoUeJIim7ka
+ 2PV1nAbMO4H6fBCgn8tc3Pl2hsHGIEfQ1fNnpCIals0X8eRkuW3GRmvOJ8zXZ/hKvx+g
+ ZxDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0fzor9W8X7UXlrdB+HLVev43AKbZ1+zw2rVK7NYTlms=;
- b=qWojZ6jC56CGiIhytKxmgyY5L6/5XVdVLPRsix4Qeo5KEvtrR2soeInZzrMhh7y7AD
- DwY4Q5LQV9M37fbeRtS2ZgaQILoAoxM36Bf2HiufmYcxyPhtIPONgIecVWe+2pflsIZj
- hrecIR5UuuIWwvJm7AJOAz+/jjj13ZboT/u7DFjv7O58NJDZQZHs7DCRiCGR+gJkumzl
- oSwsNtPTgcM8d9JuCKAGYQb7ociMK5oOI4Ze18oZmbGwxAGRDq8+WWDpUc7WHBA1dU/w
- fLdvmauH19Gu4Pq+apUIQlequO4XqrlxWfFm0cOJTC9DC5i9KWxD0YL9neVMnoLy7Qpk
- KdOg==
-X-Gm-Message-State: AOAM530B62/lrE4yu1H67gab5R4Mt2HziVLhmvkPBV8O06WmwvKYszf3
- JoxF70XqgW8W0GYu5NE0Rxw=
-X-Google-Smtp-Source: ABdhPJzF1cBRswm+e5FXU9+bkxZaaa7HKzobGvzaP6QT8r+uBF+fCQT7tL93dAnEEIh//JZdX05C+Q==
-X-Received: by 2002:a5d:404f:: with SMTP id w15mr13233046wrp.106.1615537625921; 
- Fri, 12 Mar 2021 00:27:05 -0800 (PST)
+ bh=nsmDdSM/+3Y4nWnUg/H1lXm5FP9mjucoYZigMKaJuOk=;
+ b=kF3/WFdUSahGwodZNYBf23elDAUWpcNrj7ib1hFArorn8jhK5Idd5uOrb9dXInwhT+
+ kDeJLV4cNlT5ioEj0dGNc0xn2kUfevuqcKaGGFt+AEhyHOt4dEz1P8C9zjqSyfXebYMj
+ efW57LCifXyNjrhHi6NRHENbVX8a8ze/c/oMcU8r3gnOWOMi9c7ako26dNBCQ+v/u+Dj
+ bHavsDNv4jX/OQZ0IsIsqn4naRqRTX6IfDhRZIlgYBHcf1fp8atdtEo5IlzJVf/4BZPB
+ viyaI3+VTJxIFz8fEjxZt2EIxkFIMGTTZ7ZOzGcXPLHgWzXz7YbSgm6Ob1WlKd7t0ZnE
+ dYrA==
+X-Gm-Message-State: AOAM530EbLfqXaJkzOOg5ZoQzI2FfkUvm3UprZrBY3qtIJ69QzXVc4fM
+ 1/5JyCwnCbBAyWzKxVBPNGM=
+X-Google-Smtp-Source: ABdhPJyTSY/bnhzikuno7NxuY8e1HBqJWJYFJ1i7jQtRHbQPaXEoDAs1QVEz/GgoMvfsy46RKV6rRg==
+X-Received: by 2002:a1c:4382:: with SMTP id q124mr12065953wma.16.1615537626681; 
+ Fri, 12 Mar 2021 00:27:06 -0800 (PST)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.27.05
+ by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.27.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Mar 2021 00:27:05 -0800 (PST)
+ Fri, 12 Mar 2021 00:27:06 -0800 (PST)
 From: Marco Cesati <marcocesati@gmail.com>
 X-Google-Original-From: Marco Cesati <marco.cesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 27/33] staging: rtl8723bs: remove typedefs in basic_types.h
-Date: Fri, 12 Mar 2021 09:26:32 +0100
-Message-Id: <20210312082638.25512-28-marco.cesati@gmail.com>
+Subject: [PATCH 28/33] staging: rtl8723bs: remove typedefs in
+ osdep_service_linux.h
+Date: Fri, 12 Mar 2021 09:26:33 +0100
+Message-Id: <20210312082638.25512-29-marco.cesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210312082638.25512-1-marco.cesati@gmail.com>
 References: <20210312082638.25512-1-marco.cesati@gmail.com>
@@ -96,1285 +98,1015 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This commit fixes the following checkpatch.pl warning:
+This commit fixes the following checkpatch.pl warnings:
 
     WARNING: do not add new typedefs
-    #16: FILE: include/basic_types.h:16:
-    +typedef	signed int sint;
+    #43: FILE: include/osdep_service_linux.h:43:
+    +	typedef	spinlock_t	_lock;
+
+    WARNING: do not add new typedefs
+    #44: FILE: include/osdep_service_linux.h:44:
+    +	typedef struct mutex		_mutex;
+
+    WARNING: do not add new typedefs
+    #45: FILE: include/osdep_service_linux.h:45:
+    +	typedef struct timer_list _timer;
+
+    WARNING: do not add new typedefs
+    #52: FILE: include/osdep_service_linux.h:52:
+    +	typedef	struct sk_buff	_pkt;
+
+    WARNING: do not add new typedefs
+    #53: FILE: include/osdep_service_linux.h:53:
+    +	typedef unsigned char _buffer;
+
+    WARNING: do not add new typedefs
+    #55: FILE: include/osdep_service_linux.h:55:
+    +	typedef	int	_OS_STATUS;
+
+    WARNING: do not add new typedefs
+    #57: FILE: include/osdep_service_linux.h:57:
+    +	typedef unsigned long _irqL;
+
+    WARNING: do not add new typedefs
+    #58: FILE: include/osdep_service_linux.h:58:
+    +	typedef	struct	net_device * _nic_hdl;
+
+    WARNING: do not add new typedefs
+    #62: FILE: include/osdep_service_linux.h:62:
+    +	typedef void timer_hdl_return;
+
+    WARNING: do not add new typedefs
+    #63: FILE: include/osdep_service_linux.h:63:
+    +	typedef void* timer_hdl_context;
+
+    WARNING: do not add new typedefs
+    #65: FILE: include/osdep_service_linux.h:65:
+    +	typedef struct work_struct _workitem;
 
 Signed-off-by: Marco Cesati <marco.cesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_ap.c       |  2 +-
- .../staging/rtl8723bs/core/rtw_ieee80211.c    |  6 +-
- .../staging/rtl8723bs/core/rtw_ioctl_set.c    |  2 +-
- drivers/staging/rtl8723bs/core/rtw_mlme.c     | 16 ++--
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |  6 +-
- drivers/staging/rtl8723bs/core/rtw_recv.c     | 82 ++++++++---------
- drivers/staging/rtl8723bs/core/rtw_security.c | 88 +++++++++----------
- drivers/staging/rtl8723bs/core/rtw_xmit.c     | 38 ++++----
- drivers/staging/rtl8723bs/hal/hal_intf.c      |  2 +-
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c  |  4 +-
- .../staging/rtl8723bs/include/basic_types.h   |  2 -
- drivers/staging/rtl8723bs/include/ieee80211.h |  4 +-
- .../staging/rtl8723bs/include/recv_osdep.h    |  2 +-
- drivers/staging/rtl8723bs/include/rtw_cmd.h   |  2 +-
- drivers/staging/rtl8723bs/include/rtw_mlme.h  | 26 +++---
- drivers/staging/rtl8723bs/include/rtw_recv.h  | 14 +--
- drivers/staging/rtl8723bs/include/rtw_xmit.h  | 26 +++---
- .../staging/rtl8723bs/include/xmit_osdep.h    |  2 +-
- .../staging/rtl8723bs/os_dep/ioctl_linux.c    |  4 +-
- drivers/staging/rtl8723bs/os_dep/recv_linux.c |  2 +-
- drivers/staging/rtl8723bs/os_dep/xmit_linux.c |  2 +-
- 21 files changed, 165 insertions(+), 167 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_cmd.c      |  8 ++---
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |  2 +-
+ drivers/staging/rtl8723bs/core/rtw_recv.c     |  2 +-
+ drivers/staging/rtl8723bs/core/rtw_xmit.c     | 18 +++++------
+ .../staging/rtl8723bs/hal/rtl8723bs_recv.c    |  4 +--
+ drivers/staging/rtl8723bs/include/drv_types.h | 18 +++++------
+ drivers/staging/rtl8723bs/include/hal_data.h  |  2 +-
+ .../rtl8723bs/include/ioctl_cfg80211.h        |  2 +-
+ .../staging/rtl8723bs/include/osdep_intf.h    |  4 +--
+ .../staging/rtl8723bs/include/osdep_service.h |  2 +-
+ .../rtl8723bs/include/osdep_service_linux.h   | 27 ++++-------------
+ .../staging/rtl8723bs/include/recv_osdep.h    |  6 ++--
+ drivers/staging/rtl8723bs/include/rtw_cmd.h   |  4 +--
+ drivers/staging/rtl8723bs/include/rtw_io.h    |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_mlme.h  | 30 +++++++++----------
+ .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  8 ++---
+ drivers/staging/rtl8723bs/include/rtw_mp.h    |  4 +--
+ .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  8 ++---
+ drivers/staging/rtl8723bs/include/rtw_recv.h  | 16 +++++-----
+ drivers/staging/rtl8723bs/include/rtw_xmit.h  | 18 +++++------
+ drivers/staging/rtl8723bs/include/sta_info.h  | 10 +++----
+ .../staging/rtl8723bs/include/xmit_osdep.h    | 12 ++++----
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   |  2 +-
+ .../staging/rtl8723bs/os_dep/osdep_service.c  |  2 +-
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c | 12 ++++----
+ drivers/staging/rtl8723bs/os_dep/xmit_linux.c | 10 +++----
+ 26 files changed, 108 insertions(+), 125 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index b6f944b37b08..7c765380a8c1 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -85,7 +85,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 
- 			premainder_ie = p + tim_ielen;
- 
--			tim_ie_offset = (sint)(p - pie);
-+			tim_ie_offset = (signed int)(p - pie);
- 
- 			remainder_ielen = pnetwork_mlmeext->IELength - tim_ie_offset - tim_ielen;
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index a2a97826197a..cccbea555a32 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -120,7 +120,7 @@ u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *sourc
- 
- /*  rtw_set_ie will update frame length */
- u8 *rtw_set_ie(u8 *pbuf,
--	       sint index,
-+	       signed int index,
- 	       uint len,
- 	       u8 *source,
- 	       uint *frlen) /* frame length */
-@@ -140,9 +140,9 @@ u8 *rtw_set_ie(u8 *pbuf,
- /*----------------------------------------------------------------------------
- index: the information element id index, limit is the limit for search
- -----------------------------------------------------------------------------*/
--u8 *rtw_get_ie(u8 *pbuf, sint index, sint *len, sint limit)
-+u8 *rtw_get_ie(u8 *pbuf, signed int index, signed int *len, signed int limit)
- {
--	sint tmp, i;
-+	signed int tmp, i;
- 	u8 *p;
- 
- 	if (limit < 1)
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-index 1cfdf7c93662..c9418bfb2a00 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-@@ -567,7 +567,7 @@ u8 rtw_set_802_11_authentication_mode(struct adapter *padapter, enum NDIS_802_11
- u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep)
- {
- 
--	sint		keyid, res;
-+	signed int		keyid, res;
- 	struct security_priv *psecuritypriv = &(padapter->securitypriv);
- 	u8 ret = _SUCCESS;
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 2c9425e2a1e9..57370091dc9f 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -298,9 +298,9 @@ void rtw_free_network_queue(struct adapter *padapter, u8 isfreeall)
- 	spin_unlock_bh(&scanned_queue->lock);
- }
- 
--sint rtw_if_up(struct adapter *padapter)
-+signed int rtw_if_up(struct adapter *padapter)
- {
--	sint res;
-+	signed int res;
- 
- 	if (padapter->bDriverStopped || padapter->bSurpriseRemoved ||
- 		(check_fwstate(&padapter->mlmepriv, _FW_LINKED) == false)) {
-@@ -2129,12 +2129,12 @@ int rtw_select_and_join_from_scanned_queue(struct mlme_priv *pmlmepriv)
- 	return ret;
- }
- 
--sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
-+signed int rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
- {
- 	struct	cmd_obj *pcmd;
- 	struct	setauth_parm *psetauthparm;
- 	struct	cmd_priv *pcmdpriv = &(adapter->cmdpriv);
--	sint		res = _SUCCESS;
-+	signed int		res = _SUCCESS;
- 
- 	pcmd = rtw_zmalloc(sizeof(struct cmd_obj));
- 	if (!pcmd) {
-@@ -2167,13 +2167,13 @@ sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+index 3fe79169a811..bdb77bd46a20 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+@@ -203,7 +203,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
  	return res;
  }
  
--sint rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, sint keyid, u8 set_tx, bool enqueue)
-+signed int rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, signed int keyid, u8 set_tx, bool enqueue)
+-static void c2h_wk_callback(_workitem * work);
++static void c2h_wk_callback(struct work_struct * work);
+ int rtw_init_evt_priv(struct evt_priv *pevtpriv)
  {
- 	u8 keylen;
- 	struct cmd_obj		*pcmd;
- 	struct setkey_parm	*psetkeyparm;
- 	struct cmd_priv 	*pcmdpriv = &(adapter->cmdpriv);
--	sint	res = _SUCCESS;
-+	signed int	res = _SUCCESS;
+ 	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
+@@ -260,7 +260,7 @@ ISR/Call-Back functions can't call this sub-function.
  
- 	psetkeyparm = rtw_zmalloc(sizeof(struct setkey_parm));
- 	if (!psetkeyparm) {
-@@ -2342,7 +2342,7 @@ static int rtw_append_pmkid(struct adapter *Adapter, int iEntry, u8 *ie, uint ie
- 	return ie_len;
+ int _rtw_enqueue_cmd(struct __queue *queue, struct cmd_obj *obj)
+ {
+-	_irqL irqL;
++	unsigned long irqL;
+ 
+ 	if (obj == NULL)
+ 		goto exit;
+@@ -279,7 +279,7 @@ int _rtw_enqueue_cmd(struct __queue *queue, struct cmd_obj *obj)
+ 
+ struct	cmd_obj	*_rtw_dequeue_cmd(struct __queue *queue)
+ {
+-	_irqL irqL;
++	unsigned long irqL;
+ 	struct cmd_obj *obj;
+ 
+ 	/* spin_lock_bh(&(queue->lock)); */
+@@ -1875,7 +1875,7 @@ u8 rtw_c2h_wk_cmd(struct adapter *padapter, u8 *c2h_evt)
+ 	return res;
  }
  
--sint rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_len)
-+signed int rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_len)
+-static void c2h_wk_callback(_workitem *work)
++static void c2h_wk_callback(struct work_struct *work)
  {
- 	u8 authmode = 0x0;
- 	uint	ielength;
-@@ -2976,7 +2976,7 @@ void _rtw_roaming(struct adapter *padapter, struct wlan_network *tgt_network)
- 
- }
- 
--sint rtw_linked_check(struct adapter *padapter)
-+signed int rtw_linked_check(struct adapter *padapter)
- {
- 	if ((check_fwstate(&padapter->mlmepriv, WIFI_AP_STATE) == true) ||
- 			(check_fwstate(&padapter->mlmepriv, WIFI_ADHOC_STATE|WIFI_ADHOC_MASTER_STATE) == true)) {
+ 	struct evt_priv *evtpriv = container_of(work, struct evt_priv, c2h_wk);
+ 	struct adapter *adapter = container_of(evtpriv, struct adapter, evtpriv);
 diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index f542805a461c..ca79e60838fe 100644
+index ca79e60838fe..23362b39082b 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -2398,7 +2398,7 @@ s32 dump_mgntframe_and_wait_ack(struct adapter *padapter, struct xmit_frame *pmg
- static int update_hidden_ssid(u8 *ies, u32 ies_len, u8 hidden_ssid_mode)
+@@ -2340,7 +2340,7 @@ void dump_mgntframe(struct adapter *padapter, struct xmit_frame *pmgntframe)
+ s32 dump_mgntframe_and_wait(struct adapter *padapter, struct xmit_frame *pmgntframe, int timeout_ms)
  {
- 	u8 *ssid_ie;
--	sint ssid_len_ori;
-+	signed int ssid_len_ori;
- 	int len_diff = 0;
- 
- 	ssid_ie = rtw_get_ie(ies,  WLAN_EID_SSID, &ssid_len_ori, ies_len);
-@@ -2686,8 +2686,8 @@ void issue_probersp(struct adapter *padapter, unsigned char *da, u8 is_valid_p2p
- 		/* retrieve SSID IE from cur_network->Ssid */
- 		{
- 			u8 *ssid_ie;
--			sint ssid_ielen;
--			sint ssid_ielen_diff;
-+			signed int ssid_ielen;
-+			signed int ssid_ielen_diff;
- 			u8 buf[MAX_IE_SZ];
- 			u8 *ies = pmgntframe->buf_addr+TXDESC_OFFSET+sizeof(struct ieee80211_hdr_3addr);
- 
+ 	s32 ret = _FAIL;
+-	_irqL irqL;
++	unsigned long irqL;
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 	struct xmit_buf *pxmitbuf = pmgntframe->pxmitbuf;
+ 	struct submit_ctx sctx;
 diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index f35a134bb75f..c8353405d11f 100644
+index c8353405d11f..697da6834810 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -30,11 +30,11 @@ void _rtw_init_sta_recv_priv(struct sta_recv_priv *psta_recvpriv)
- 	_rtw_init_queue(&psta_recvpriv->defrag_q);
- }
+@@ -1846,7 +1846,7 @@ static int amsdu_to_msdu(struct adapter *padapter, union recv_frame *prframe)
+ 	u16 nSubframe_Length;
+ 	u8 nr_subframes, i;
+ 	u8 *pdata;
+-	_pkt *sub_pkt, *subframes[MAX_SUBFRAME_COUNT];
++	struct sk_buff *sub_pkt, *subframes[MAX_SUBFRAME_COUNT];
+ 	struct recv_priv *precvpriv = &padapter->recvpriv;
+ 	struct __queue *pfree_recv_queue = &(precvpriv->free_recv_queue);
  
--sint _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
-+signed int _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
- {
--	sint i;
-+	signed int i;
- 	union recv_frame *precvframe;
--	sint	res = _SUCCESS;
-+	signed int	res = _SUCCESS;
- 
- 	spin_lock_init(&precvpriv->lock);
- 
-@@ -168,7 +168,7 @@ int rtw_free_recvframe(union recv_frame *precvframe, struct __queue *pfree_recv_
- 
- 
- 
--sint _rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
-+signed int _rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
- {
- 
- 	struct adapter *padapter = precvframe->u.hdr.adapter;
-@@ -187,9 +187,9 @@ sint _rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
- 	return _SUCCESS;
- }
- 
--sint rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
-+signed int rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
- {
--	sint ret;
-+	signed int ret;
- 
- 	/* _spinlock(&pfree_recv_queue->lock); */
- 	spin_lock_bh(&queue->lock);
-@@ -201,7 +201,7 @@ sint rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
- }
- 
- /*
--sint	rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
-+signed int	rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *queue)
- {
- 	return rtw_free_recvframe(precvframe, queue);
- }
-@@ -255,7 +255,7 @@ u32 rtw_free_uc_swdec_pending_queue(struct adapter *adapter)
- }
- 
- 
--sint rtw_enqueue_recvbuf_to_head(struct recv_buf *precvbuf, struct __queue *queue)
-+signed int rtw_enqueue_recvbuf_to_head(struct recv_buf *precvbuf, struct __queue *queue)
- {
- 	spin_lock_bh(&queue->lock);
- 
-@@ -267,7 +267,7 @@ sint rtw_enqueue_recvbuf_to_head(struct recv_buf *precvbuf, struct __queue *queu
- 	return _SUCCESS;
- }
- 
--sint rtw_enqueue_recvbuf(struct recv_buf *precvbuf, struct __queue *queue)
-+signed int rtw_enqueue_recvbuf(struct recv_buf *precvbuf, struct __queue *queue)
- {
- 	spin_lock_bh(&queue->lock);
- 
-@@ -305,11 +305,11 @@ struct recv_buf *rtw_dequeue_recvbuf(struct __queue *queue)
- 
- }
- 
--sint recvframe_chkmic(struct adapter *adapter,  union recv_frame *precvframe);
--sint recvframe_chkmic(struct adapter *adapter,  union recv_frame *precvframe)
-+signed int recvframe_chkmic(struct adapter *adapter,  union recv_frame *precvframe);
-+signed int recvframe_chkmic(struct adapter *adapter,  union recv_frame *precvframe)
- {
- 
--	sint	i, res = _SUCCESS;
-+	signed int	i, res = _SUCCESS;
- 	u32 datalen;
- 	u8 miccode[8];
- 	u8 bmic_err = false, brpt_micerror = true;
-@@ -606,10 +606,10 @@ union recv_frame *portctrl(struct adapter *adapter, union recv_frame *precv_fram
- 	return prtnframe;
- }
- 
--sint recv_decache(union recv_frame *precv_frame, u8 bretry, struct stainfo_rxcache *prxcache);
--sint recv_decache(union recv_frame *precv_frame, u8 bretry, struct stainfo_rxcache *prxcache)
-+signed int recv_decache(union recv_frame *precv_frame, u8 bretry, struct stainfo_rxcache *prxcache);
-+signed int recv_decache(union recv_frame *precv_frame, u8 bretry, struct stainfo_rxcache *prxcache)
- {
--	sint tid = precv_frame->u.hdr.attrib.priority;
-+	signed int tid = precv_frame->u.hdr.attrib.priority;
- 
- 	u16 seq_ctrl = ((precv_frame->u.hdr.attrib.seq_num&0xffff) << 4) |
- 		(precv_frame->u.hdr.attrib.frag_num & 0xf);
-@@ -755,20 +755,20 @@ void count_rx_stats(struct adapter *padapter, union recv_frame *prframe, struct
- 	traffic_check_for_leave_lps(padapter, false, 0);
- }
- 
--sint sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+signed int sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 			struct sta_info **psta);
--sint sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+signed int sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 			struct sta_info **psta)
- {
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
--	sint ret = _SUCCESS;
-+	signed int ret = _SUCCESS;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
- 	struct sta_priv *pstapriv = &adapter->stapriv;
- 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
- 	u8 *mybssid  = get_bssid(pmlmepriv);
- 	u8 *myhwaddr = myid(&adapter->eeprompriv);
- 	u8 *sta_addr = NULL;
--	sint bmcast = IS_MCAST(pattrib->dst);
-+	signed int bmcast = IS_MCAST(pattrib->dst);
- 
- 	/* DBG_871X("[%s] %d, seqnum:%d\n", __func__, __LINE__, pattrib->seq_num); */
- 
-@@ -850,19 +850,19 @@ sint sta2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 	return ret;
- }
- 
--sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+signed int ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 		       struct sta_info **psta);
--sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+signed int ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 		       struct sta_info **psta)
- {
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
--	sint ret = _SUCCESS;
-+	signed int ret = _SUCCESS;
- 	struct sta_priv *pstapriv = &adapter->stapriv;
- 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
- 	u8 *mybssid  = get_bssid(pmlmepriv);
- 	u8 *myhwaddr = myid(&adapter->eeprompriv);
--	sint bmcast = IS_MCAST(pattrib->dst);
-+	signed int bmcast = IS_MCAST(pattrib->dst);
- 
- 	if ((check_fwstate(pmlmepriv, WIFI_STATION_STATE) == true) &&
- 	    (check_fwstate(pmlmepriv, _FW_LINKED) == true ||
-@@ -992,9 +992,9 @@ sint ap2sta_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 	return ret;
- }
- 
--sint sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+signed int sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 		       struct sta_info **psta);
--sint sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
-+signed int sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 		       struct sta_info **psta)
- {
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
-@@ -1002,7 +1002,7 @@ sint sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 	struct sta_priv *pstapriv = &adapter->stapriv;
- 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
- 	unsigned char *mybssid  = get_bssid(pmlmepriv);
--	sint ret = _SUCCESS;
-+	signed int ret = _SUCCESS;
- 
- 	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
- 		/* For AP mode, RA =BSSID, TX =STA(SRC_ADDR), A3 =DST_ADDR */
-@@ -1049,8 +1049,8 @@ sint sta2ap_data_frame(struct adapter *adapter, union recv_frame *precv_frame,
- 	return ret;
- }
- 
--sint validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_frame);
--sint validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_frame)
-+signed int validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_frame);
-+signed int validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_frame)
- {
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
-@@ -1187,8 +1187,8 @@ sint validate_recv_ctrl_frame(struct adapter *padapter, union recv_frame *precv_
- }
- 
- union recv_frame *recvframe_chk_defrag(struct adapter *padapter, union recv_frame *precv_frame);
--sint validate_recv_mgnt_frame(struct adapter *padapter, union recv_frame *precv_frame);
--sint validate_recv_mgnt_frame(struct adapter *padapter, union recv_frame *precv_frame)
-+signed int validate_recv_mgnt_frame(struct adapter *padapter, union recv_frame *precv_frame);
-+signed int validate_recv_mgnt_frame(struct adapter *padapter, union recv_frame *precv_frame)
- {
- 	/* struct mlme_priv *pmlmepriv = &adapter->mlmepriv; */
- 
-@@ -1227,8 +1227,8 @@ sint validate_recv_mgnt_frame(struct adapter *padapter, union recv_frame *precv_
- 
- }
- 
--sint validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_frame);
--sint validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_frame)
-+signed int validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_frame);
-+signed int validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_frame)
- {
- 	u8 bretry;
- 	u8 *psa, *pda, *pbssid;
-@@ -1236,7 +1236,7 @@ sint validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_f
- 	u8 *ptr = precv_frame->u.hdr.rx_data;
- 	struct rx_pkt_attrib	*pattrib = &precv_frame->u.hdr.attrib;
- 	struct security_priv *psecuritypriv = &adapter->securitypriv;
--	sint ret = _SUCCESS;
-+	signed int ret = _SUCCESS;
- 
- 	bretry = GetRetry(ptr);
- 	pda = get_da(ptr);
-@@ -1364,7 +1364,7 @@ sint validate_recv_data_frame(struct adapter *adapter, union recv_frame *precv_f
- 	return ret;
- }
- 
--static sint validate_80211w_mgmt(struct adapter *adapter, union recv_frame *precv_frame)
-+static signed int validate_80211w_mgmt(struct adapter *adapter, union recv_frame *precv_frame)
- {
- 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
-@@ -1410,7 +1410,7 @@ static sint validate_80211w_mgmt(struct adapter *adapter, union recv_frame *prec
- 			}
- 		} else if (IS_MCAST(GetAddr1Ptr(ptr)) &&
- 			(subtype == WIFI_DEAUTH || subtype == WIFI_DISASSOC)) {
--			sint BIP_ret = _SUCCESS;
-+			signed int BIP_ret = _SUCCESS;
- 			/* verify BIP MME IE of broadcast/multicast de-auth/disassoc packet */
- 			BIP_ret = rtw_BIP_verify(adapter, (u8 *)precv_frame);
- 			if (BIP_ret == _FAIL) {
-@@ -1459,8 +1459,8 @@ static inline void dump_rx_packet(u8 *ptr)
- 	DBG_871X("#############################\n");
- }
- 
--sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame);
--sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
-+signed int validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame);
-+signed int validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
- {
- 	/* shall check frame subtype, to / from ds, da, bssid */
- 
-@@ -1468,7 +1468,7 @@ sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
- 
- 	u8 type;
- 	u8 subtype;
--	sint retval = _SUCCESS;
-+	signed int retval = _SUCCESS;
- 	u8 bDumpRxPkt;
- 
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
-@@ -1559,10 +1559,10 @@ sint validate_recv_frame(struct adapter *adapter, union recv_frame *precv_frame)
- 
- 
- /* remove the wlanhdr and add the eth_hdr */
--sint wlanhdr_to_ethhdr(union recv_frame *precvframe);
--sint wlanhdr_to_ethhdr(union recv_frame *precvframe)
-+signed int wlanhdr_to_ethhdr(union recv_frame *precvframe);
-+signed int wlanhdr_to_ethhdr(union recv_frame *precvframe)
- {
--	sint	rmv_len;
-+	signed int	rmv_len;
- 	u16 eth_type, len;
- 	u8 bsnaphdr;
- 	u8 *psnap_type;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
-index a311595deafb..4550113a55a2 100644
---- a/drivers/staging/rtl8723bs/core/rtw_security.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_security.c
-@@ -148,7 +148,7 @@ static void arcfour_encrypt(struct arc4context *parc4ctx, u8 *dest, u8 *src, u32
- 		dest[i] = src[i] ^ (unsigned char)arcfour_byte(parc4ctx);
- }
- 
--static sint bcrc32initialized;
-+static signed int bcrc32initialized;
- static u32 crc32_table[256];
- 
- 
-@@ -162,7 +162,7 @@ static void crc32_init(void)
- 	if (bcrc32initialized == 1)
- 		return;
- 	else {
--		sint i, j;
-+		signed int i, j;
- 		u32 c;
- 		u8 *p = (u8 *)&c, *p1;
- 		u8 k;
-@@ -184,7 +184,7 @@ static void crc32_init(void)
- 	}
- }
- 
--static __le32 getcrc32(u8 *buf, sint len)
-+static __le32 getcrc32(u8 *buf, signed int len)
- {
- 	u8 *p;
- 	u32  crc;
-@@ -209,7 +209,7 @@ void rtw_wep_encrypt(struct adapter *padapter, u8 *pxmitframe)
- 	unsigned char crc[4];
- 	struct arc4context	 mycontext;
- 
--	sint	curfragnum, length;
-+	signed int	curfragnum, length;
- 	u32 keylength;
- 
- 	u8 *pframe, *payload, *iv;    /* wepkey */
-@@ -266,7 +266,7 @@ void rtw_wep_decrypt(struct adapter  *padapter, u8 *precvframe)
- 	/*  exclude ICV */
- 	u8 crc[4];
- 	struct arc4context	 mycontext;
--	sint	length;
-+	signed int	length;
- 	u32 keylength;
- 	u8 *pframe, *payload, *iv, wepkey[16];
- 	u8  keyindex;
-@@ -549,7 +549,7 @@ static const unsigned short Sbox1[2][256] = {      /* Sbox for hash (can be in R
- */
- static void phase1(u16 *p1k, const u8 *tk, const u8 *ta, u32 iv32)
- {
--	sint  i;
-+	signed int  i;
- 
- 	/* Initialize the 80 bits of P1K[] from IV32 and TA[0..5]     */
- 	p1k[0]      = Lo16(iv32);
-@@ -597,7 +597,7 @@ static void phase1(u16 *p1k, const u8 *tk, const u8 *ta, u32 iv32)
- */
- static void phase2(u8 *rc4key, const u8 *tk, const u16 *p1k, u16 iv16)
- {
--	sint  i;
-+	signed int  i;
- 	u16 PPK[6];                          /* temporary key for mixing    */
- 
- 	/* Note: all adds in the PPK[] equations below are mod 2**16         */
-@@ -651,7 +651,7 @@ u32 rtw_tkip_encrypt(struct adapter *padapter, u8 *pxmitframe)
- 	u8 crc[4];
- 	u8   hw_hdr_offset = 0;
- 	struct arc4context mycontext;
--	sint			curfragnum, length;
-+	signed int			curfragnum, length;
- 
- 	u8 *pframe, *payload, *iv, *prwskey;
- 	union pn48 dot11txpn;
-@@ -727,7 +727,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
- 	u8   ttkey[16];
- 	u8 crc[4];
- 	struct arc4context mycontext;
--	sint			length;
-+	signed int			length;
- 
- 	u8 *pframe, *payload, *iv, *prwskey;
- 	union pn48 dot11txpn;
-@@ -874,31 +874,31 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
- 
- static void bitwise_xor(u8 *ina, u8 *inb, u8 *out);
- static void construct_mic_iv(u8 *mic_header1,
--			     sint qc_exists,
--			     sint a4_exists,
-+			     signed int qc_exists,
-+			     signed int a4_exists,
- 			     u8 *mpdu,
- 			     uint payload_length,
- 			     u8 *pn_vector,
- 			     uint frtype); /*  add for CONFIG_IEEE80211W, none 11w also can use */
- static void construct_mic_header1(u8 *mic_header1,
--				  sint header_length,
-+				  signed int header_length,
- 				  u8 *mpdu,
- 				  uint frtype); /* for CONFIG_IEEE80211W, none 11w also can use */
- static void construct_mic_header2(u8 *mic_header2,
- 				  u8 *mpdu,
--				  sint a4_exists,
--				  sint qc_exists);
-+				  signed int a4_exists,
-+				  signed int qc_exists);
- static void construct_ctr_preload(u8 *ctr_preload,
--				  sint a4_exists,
--				  sint qc_exists,
-+				  signed int a4_exists,
-+				  signed int qc_exists,
- 				  u8 *mpdu,
- 				  u8 *pn_vector,
--				  sint c,
-+				  signed int c,
- 				  uint frtype); /* for CONFIG_IEEE80211W, none 11w also can use */
- static void xor_128(u8 *a, u8 *b, u8 *out);
- static void xor_32(u8 *a, u8 *b, u8 *out);
- static u8 sbox(u8 a);
--static void next_key(u8 *key, sint round);
-+static void next_key(u8 *key, signed int round);
- static void byte_sub(u8 *in, u8 *out);
- static void shift_row(u8 *in, u8 *out);
- static void mix_column(u8 *in, u8 *out);
-@@ -912,7 +912,7 @@ static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext);
- /****************************************/
- static void xor_128(u8 *a, u8 *b, u8 *out)
- {
--		sint i;
-+		signed int i;
- 
- 		for (i = 0; i < 16; i++)
- 			out[i] = a[i] ^ b[i];
-@@ -921,7 +921,7 @@ static void xor_128(u8 *a, u8 *b, u8 *out)
- 
- static void xor_32(u8 *a, u8 *b, u8 *out)
- {
--		sint i;
-+		signed int i;
- 
- 		for (i = 0; i < 4; i++)
- 			out[i] = a[i] ^ b[i];
-@@ -930,11 +930,11 @@ static void xor_32(u8 *a, u8 *b, u8 *out)
- 
- static u8 sbox(u8 a)
- {
--		return sbox_table[(sint)a];
-+		return sbox_table[(signed int)a];
- }
- 
- 
--static void next_key(u8 *key, sint round)
-+static void next_key(u8 *key, signed int round)
- {
- 		u8 rcon;
- 		u8 sbox_key[4];
-@@ -961,7 +961,7 @@ static void next_key(u8 *key, sint round)
- 
- static void byte_sub(u8 *in, u8 *out)
- {
--		sint i;
-+		signed int i;
- 
- 		for (i = 0; i < 16; i++)
- 			out[i] = sbox(in[i]);
-@@ -990,7 +990,7 @@ static void shift_row(u8 *in, u8 *out)
- 
- static void mix_column(u8 *in, u8 *out)
- {
--		sint i;
-+		signed int i;
- 		u8 add1b[4];
- 		u8 add1bf7[4];
- 		u8 rotl[4];
-@@ -1047,8 +1047,8 @@ static void mix_column(u8 *in, u8 *out)
- 
- static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext)
- {
--		sint round;
--		sint i;
-+		signed int round;
-+		signed int i;
- 		u8 intermediatea[16];
- 		u8 intermediateb[16];
- 		u8 round_key[16];
-@@ -1084,14 +1084,14 @@ static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext)
- /* nonce                                        */
- /************************************************/
- static void construct_mic_iv(u8 *mic_iv,
--			     sint qc_exists,
--			     sint a4_exists,
-+			     signed int qc_exists,
-+			     signed int a4_exists,
- 			     u8 *mpdu,
- 			     uint payload_length,
- 			     u8 *pn_vector,
- 			     uint frtype) /* add for CONFIG_IEEE80211W, none 11w also can use */
- {
--		sint i;
-+		signed int i;
- 
- 		mic_iv[0] = 0x59;
- 
-@@ -1128,7 +1128,7 @@ static void construct_mic_iv(u8 *mic_iv,
- /* Build AAD SC, A1, A2                           */
- /************************************************/
- static void construct_mic_header1(u8 *mic_header1,
--				  sint header_length,
-+				  signed int header_length,
- 				  u8 *mpdu,
- 				  uint frtype) /* for CONFIG_IEEE80211W, none 11w also can use */
- {
-@@ -1163,10 +1163,10 @@ static void construct_mic_header1(u8 *mic_header1,
- /************************************************/
- static void construct_mic_header2(u8 *mic_header2,
- 				  u8 *mpdu,
--				  sint a4_exists,
--				  sint qc_exists)
-+				  signed int a4_exists,
-+				  signed int qc_exists)
- {
--		sint i;
-+		signed int i;
- 
- 		for (i = 0; i < 16; i++)
- 			mic_header2[i] = 0x00;
-@@ -1208,14 +1208,14 @@ static void construct_mic_header2(u8 *mic_header2,
- /* nonce                                        */
- /************************************************/
- static void construct_ctr_preload(u8 *ctr_preload,
--				  sint a4_exists,
--				  sint qc_exists,
-+				  signed int a4_exists,
-+				  signed int qc_exists,
- 				  u8 *mpdu,
- 				  u8 *pn_vector,
--				  sint c,
-+				  signed int c,
- 				  uint frtype) /* for CONFIG_IEEE80211W, none 11w also can use */
- {
--	sint i = 0;
-+	signed int i = 0;
- 
- 	for (i = 0; i < 16; i++)
- 		ctr_preload[i] = 0x00;
-@@ -1250,13 +1250,13 @@ static void construct_ctr_preload(u8 *ctr_preload,
- /************************************/
- static void bitwise_xor(u8 *ina, u8 *inb, u8 *out)
- {
--		sint i;
-+		signed int i;
- 
- 		for (i = 0; i < 16; i++)
- 			out[i] = ina[i] ^ inb[i];
- }
- 
--static sint aes_cipher(u8 *key, uint	hdrlen,
-+static signed int aes_cipher(u8 *key, uint	hdrlen,
- 			u8 *pframe, uint plen)
- {
- 	uint	qc_exists, a4_exists, i, j, payload_remainder,
-@@ -1428,7 +1428,7 @@ u32 rtw_aes_encrypt(struct adapter *padapter, u8 *pxmitframe)
- 	/* unsigned char message[MAX_MSG_SIZE]; */
- 
- 	/* Intermediate Buffers */
--	sint curfragnum, length;
-+	signed int curfragnum, length;
- 	u8 *pframe, *prwskey;	/*  *payload,*iv */
- 	u8 hw_hdr_offset = 0;
- 	struct pkt_attrib *pattrib = &((struct xmit_frame *)pxmitframe)->attrib;
-@@ -1471,13 +1471,13 @@ u32 rtw_aes_encrypt(struct adapter *padapter, u8 *pxmitframe)
- 	return res;
- }
- 
--static sint aes_decipher(u8 *key, uint	hdrlen,
-+static signed int aes_decipher(u8 *key, uint	hdrlen,
- 			 u8 *pframe, uint plen)
- {
- 	static u8 message[MAX_MSG_SIZE];
- 	uint qc_exists, a4_exists, i, j, payload_remainder,
- 			num_blocks, payload_index;
--	sint res = _SUCCESS;
-+	signed int res = _SUCCESS;
- 	u8 pn_vector[6];
- 	u8 mic_iv[16];
- 	u8 mic_header1[16];
-@@ -1704,7 +1704,7 @@ u32 rtw_aes_decrypt(struct adapter *padapter, u8 *precvframe)
- 
- 	/* Intermediate Buffers */
- 
--	sint length;
-+	signed int length;
- 	u8 *pframe, *prwskey;	/*  *payload,*iv */
- 	struct sta_info *stainfo;
- 	struct rx_pkt_attrib *prxattrib = &((union recv_frame *)precvframe)->u.hdr.attrib;
-@@ -2241,7 +2241,7 @@ int omac1_aes_128(u8 *key, u8 *data, size_t data_len, u8 *mac)
- void rtw_sec_restore_wep_key(struct adapter *adapter)
- {
- 	struct security_priv *securitypriv = &(adapter->securitypriv);
--	sint keyid;
-+	signed int keyid;
- 
- 	if ((_WEP40_ == securitypriv->dot11PrivacyAlgrthm) || (_WEP104_ == securitypriv->dot11PrivacyAlgrthm)) {
- 		for (keyid = 0; keyid < 4; keyid++) {
 diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 19aecbabbc4d..0644b85c6f4c 100644
+index 0644b85c6f4c..9d45484acdeb 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -38,7 +38,7 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
- 	int i;
- 	struct xmit_buf *pxmitbuf;
- 	struct xmit_frame *pxframe;
--	sint	res = _SUCCESS;
-+	signed int	res = _SUCCESS;
+@@ -641,7 +641,7 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
+ 	pattrib->subtype = WIFI_QOS_DATA_TYPE;
+ }
  
- 	spin_lock_init(&pxmitpriv->lock);
- 	spin_lock_init(&pxmitpriv->lock_sctx);
-@@ -476,10 +476,10 @@ static void update_attrib_phy_info(struct adapter *padapter, struct pkt_attrib *
- 
- static s32 update_attrib_sec_info(struct adapter *padapter, struct pkt_attrib *pattrib, struct sta_info *psta)
+-static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib *pattrib)
++static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct pkt_attrib *pattrib)
  {
--	sint res = _SUCCESS;
-+	signed int res = _SUCCESS;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
--	sint bmcast = IS_MCAST(pattrib->ra);
-+	signed int bmcast = IS_MCAST(pattrib->ra);
- 
- 	memset(pattrib->dot118021x_UncstKey.skey,  0, 16);
- 	memset(pattrib->dot11tkiptxmickey.skey,  0, 16);
-@@ -647,11 +647,11 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
+ 	struct pkt_file pktfile;
  	struct sta_info *psta = NULL;
- 	struct ethhdr etherhdr;
+@@ -1085,7 +1085,7 @@ This sub-routine will perform all the following:
+ 6. apply sw-encrypt, if necessary.
  
--	sint bmcast;
-+	signed int bmcast;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	struct qos_priv *pqospriv = &pmlmepriv->qospriv;
--	sint res = _SUCCESS;
-+	signed int res = _SUCCESS;
- 
- 	_rtw_open_pktfile(pkt, &pktfile);
- 	_rtw_pktfile_read(&pktfile, (u8 *)&etherhdr, ETH_HLEN);
-@@ -793,7 +793,7 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
- 
- static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ */
+-s32 rtw_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_frame *pxmitframe)
++s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct xmit_frame *pxmitframe)
  {
--	sint			curfragnum, length;
-+	signed int			curfragnum, length;
- 	u8 *pframe, *payload, mic[8];
- 	struct mic_data micdata;
- 	struct pkt_attrib *pattrib = &pxmitframe->attrib;
-@@ -801,7 +801,7 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
- 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
- 	u8 priority[4] = {0x0, 0x0, 0x0, 0x0};
- 	u8 hw_hdr_offset = 0;
--	sint bmcst = IS_MCAST(pattrib->ra);
-+	signed int bmcst = IS_MCAST(pattrib->ra);
+ 	struct pkt_file pktfile;
  
- 	hw_hdr_offset = TXDESC_OFFSET;
- 
-@@ -922,7 +922,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	struct qos_priv *pqospriv = &pmlmepriv->qospriv;
- 	u8 qos_option = false;
--	sint res = _SUCCESS;
-+	signed int res = _SUCCESS;
- 	__le16 *fctrl = &pwlanhdr->frame_control;
- 
- 	memset(hdr, 0, WLANHDR_OFFSET);
-@@ -1416,7 +1416,7 @@ void rtw_update_protection(struct adapter *padapter, u8 *ie, uint ie_len)
- {
- 	uint	protection;
- 	u8 *perp;
--	sint	 erp_len;
-+	signed int	 erp_len;
- 	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
- 	struct	registry_priv *pregistrypriv = &padapter->registrypriv;
- 
-@@ -1884,7 +1884,7 @@ s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitfram
- 	return _SUCCESS;
+@@ -1216,7 +1216,7 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_fram
  }
  
--struct tx_servq *rtw_get_sta_pending(struct adapter *padapter, struct sta_info *psta, sint up, u8 *ac)
-+struct tx_servq *rtw_get_sta_pending(struct adapter *padapter, struct sta_info *psta, signed int up, u8 *ac)
+ /* broadcast or multicast management pkt use BIP, unicast management pkt use CCMP encryption */
+-s32 rtw_mgmt_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_frame *pxmitframe)
++s32 rtw_mgmt_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct xmit_frame *pxmitframe)
  {
- 	struct tx_servq *ptxservq = NULL;
+ 	u8 *pframe, *mem_start = NULL, *tmp_buf = NULL;
+ 	u8 subtype;
+@@ -1534,7 +1534,7 @@ struct xmit_frame *__rtw_alloc_cmdxmitframe(struct xmit_priv *pxmitpriv,
  
-@@ -1933,7 +1933,7 @@ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
- 	struct tx_servq	*ptxservq;
- 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
- 	struct hw_xmit	*phwxmits =  padapter->xmitpriv.hwxmits;
--	sint res = _SUCCESS;
-+	signed int res = _SUCCESS;
- 
- 	psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
- 	if (pattrib->psta != psta) {
-@@ -2014,9 +2014,9 @@ void rtw_free_hwxmits(struct adapter *padapter)
- 	kfree(pxmitpriv->hwxmits);
- }
- 
--void rtw_init_hwxmits(struct hw_xmit *phwxmit, sint entry)
-+void rtw_init_hwxmits(struct hw_xmit *phwxmit, signed int entry)
+ struct xmit_buf *rtw_alloc_xmitbuf_ext(struct xmit_priv *pxmitpriv)
  {
--	sint i;
-+	signed int i;
+-	_irqL irqL;
++	unsigned long irqL;
+ 	struct xmit_buf *pxmitbuf =  NULL;
+ 	struct list_head *plist, *phead;
+ 	struct __queue *pfree_queue = &pxmitpriv->free_xmit_extbuf_queue;
+@@ -1578,7 +1578,7 @@ struct xmit_buf *rtw_alloc_xmitbuf_ext(struct xmit_priv *pxmitpriv)
  
- 	for (i = 0; i < entry; i++, phwxmit++)
- 		phwxmit->accnt = 0;
-@@ -2163,14 +2163,14 @@ inline bool xmitframe_hiq_filter(struct xmit_frame *xmitframe)
- 	return allow;
- }
- 
--sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_frame *pxmitframe)
-+signed int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ s32 rtw_free_xmitbuf_ext(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
  {
--	sint ret = false;
-+	signed int ret = false;
- 	struct sta_info *psta = NULL;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	struct pkt_attrib *pattrib = &pxmitframe->attrib;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
--	sint bmcst = IS_MCAST(pattrib->ra);
-+	signed int bmcst = IS_MCAST(pattrib->ra);
- 	bool update_tim = false;
+-	_irqL irqL;
++	unsigned long irqL;
+ 	struct __queue *pfree_queue = &pxmitpriv->free_xmit_extbuf_queue;
  
- 	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == false)
-@@ -2286,7 +2286,7 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 	if (!pxmitbuf)
+@@ -1601,7 +1601,7 @@ s32 rtw_free_xmitbuf_ext(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
  
- static void dequeue_xmitframes_to_sleeping_queue(struct adapter *padapter, struct sta_info *psta, struct __queue *pframequeue)
+ struct xmit_buf *rtw_alloc_xmitbuf(struct xmit_priv *pxmitpriv)
  {
--	sint ret;
-+	signed int ret;
- 	struct list_head	*plist, *phead;
- 	u8 ac_index;
- 	struct tx_servq	*ptxservq;
-@@ -2639,10 +2639,10 @@ struct xmit_buf *dequeue_pending_xmitbuf_under_survey(struct xmit_priv *pxmitpri
- 	return pxmitbuf;
- }
+-	_irqL irqL;
++	unsigned long irqL;
+ 	struct xmit_buf *pxmitbuf =  NULL;
+ 	struct list_head *plist, *phead;
+ 	struct __queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
+@@ -1650,7 +1650,7 @@ struct xmit_buf *rtw_alloc_xmitbuf(struct xmit_priv *pxmitpriv)
  
--sint check_pending_xmitbuf(struct xmit_priv *pxmitpriv)
-+signed int check_pending_xmitbuf(struct xmit_priv *pxmitpriv)
+ s32 rtw_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
  {
- 	struct __queue *pqueue;
--	sint	ret = false;
-+	signed int	ret = false;
+-	_irqL irqL;
++	unsigned long irqL;
+ 	struct __queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
  
- 	pqueue = &pxmitpriv->pending_xmitbuf_queue;
- 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c b/drivers/staging/rtl8723bs/hal/hal_intf.c
-index ac3066a91c84..b3c40dde2cb5 100644
---- a/drivers/staging/rtl8723bs/hal/hal_intf.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
-@@ -65,7 +65,7 @@ static void rtw_hal_init_opmode(struct adapter *padapter)
+ 	if (!pxmitbuf)
+@@ -1804,7 +1804,7 @@ s32 rtw_free_xmitframe(struct xmit_priv *pxmitpriv, struct xmit_frame *pxmitfram
  {
- 	enum NDIS_802_11_NETWORK_INFRASTRUCTURE networkType = Ndis802_11InfrastructureMax;
- 	struct  mlme_priv *pmlmepriv = &(padapter->mlmepriv);
--	sint fw_state;
-+	signed int fw_state;
+ 	struct __queue *queue = NULL;
+ 	struct adapter *padapter = pxmitpriv->adapter;
+-	_pkt *pndis_pkt = NULL;
++	struct sk_buff *pndis_pkt = NULL;
  
- 	fw_state = get_fwstate(pmlmepriv);
+ 	if (!pxmitframe) {
+ 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("======rtw_free_xmitframe():pxmitframe == NULL!!!!!!!!!!\n"));
+@@ -2077,7 +2077,7 @@ static void do_queue_select(struct adapter	*padapter, struct pkt_attrib *pattrib
+  *0	success, hardware will handle this xmit frame(packet)
+  *<0	fail
+  */
+-s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
++s32 rtw_xmit(struct adapter *padapter, struct sk_buff **ppkt)
+ {
+ 	static unsigned long start;
+ 	static u32 drop_cnt;
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+index 415e519e8aa0..9e1b33c71710 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+@@ -98,7 +98,7 @@ static void update_recvframe_phyinfo(union recv_frame *precvframe,
+ 		.is_beacon   = false,
+ 	};
  
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-index 515b56ae9df0..d8b764fc97ea 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-@@ -788,8 +788,8 @@ static void ConstructProbeRsp(struct adapter *padapter, u8 *pframe, u32 *pLength
- 	/* retrieve SSID IE from cur_network->Ssid */
- 	{
- 		u8 *ssid_ie;
--		sint ssid_ielen;
--		sint ssid_ielen_diff;
-+		signed int ssid_ielen;
-+		signed int ssid_ielen_diff;
- 		u8 buf[MAX_IE_SZ];
- 		u8 *ies = pframe + sizeof(struct ieee80211_hdr_3addr);
+-	/* _irqL		irqL; */
++	/* unsigned long		irqL; */
+ 	struct sta_priv *pstapriv;
+ 	struct sta_info *psta;
  
-diff --git a/drivers/staging/rtl8723bs/include/basic_types.h b/drivers/staging/rtl8723bs/include/basic_types.h
-index bab9811aeb5f..d0b2ec25327a 100644
---- a/drivers/staging/rtl8723bs/include/basic_types.h
-+++ b/drivers/staging/rtl8723bs/include/basic_types.h
-@@ -13,8 +13,6 @@
+@@ -242,7 +242,7 @@ static void rtl8723bs_recv_tasklet(struct tasklet_struct *t)
+ 	struct __queue *recv_buf_queue;
+ 	u8 *ptr;
+ 	u32 pkt_offset, skb_len, alloc_sz;
+-	_pkt *pkt_copy = NULL;
++	struct sk_buff *pkt_copy = NULL;
+ 	u8 shift_sz = 0, rx_report_sz = 0;
  
- #include <linux/types.h>
- 
--typedef	signed int sint;
--
- #define FIELD_OFFSET(s, field)	((__kernel_ssize_t)&((s*)(0))->field)
- 
- #define SIZE_PTR __kernel_size_t
-diff --git a/drivers/staging/rtl8723bs/include/ieee80211.h b/drivers/staging/rtl8723bs/include/ieee80211.h
-index 10b599f835bb..bda5712aac62 100644
---- a/drivers/staging/rtl8723bs/include/ieee80211.h
-+++ b/drivers/staging/rtl8723bs/include/ieee80211.h
-@@ -990,7 +990,7 @@ enum ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
- 				int show_errors);
- 
- u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *source, unsigned int *frlen);
--u8 *rtw_set_ie(u8 *pbuf, sint index, uint len, u8 *source, uint *frlen);
-+u8 *rtw_set_ie(u8 *pbuf, signed int index, uint len, u8 *source, uint *frlen);
- 
- enum secondary_ch_offset {
- 	SCN = 0, /* no secondary channel */
-@@ -998,7 +998,7 @@ enum secondary_ch_offset {
- 	SCB = 3,  /* secondary channel below */
+ 	p_hal_data = GET_HAL_DATA(padapter);
+diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
+index 59d7e22cddca..97e8e462d718 100644
+--- a/drivers/staging/rtl8723bs/include/drv_types.h
++++ b/drivers/staging/rtl8723bs/include/drv_types.h
+@@ -277,7 +277,7 @@ struct rtw_traffic_statistics {
  };
  
--u8 *rtw_get_ie(u8*pbuf, sint index, sint *len, sint limit);
-+u8 *rtw_get_ie(u8*pbuf, signed int index, signed int *len, signed int limit);
- u8 *rtw_get_ie_ex(u8 *in_ie, uint in_len, u8 eid, u8 *oui, u8 oui_len, u8 *ie, uint *ielen);
- int rtw_ies_remove_ie(u8 *ies, uint *ies_len, uint offset, u8 eid, u8 *oui, u8 oui_len);
+ struct cam_ctl_t {
+-	_lock lock;
++	spinlock_t lock;
+ 	u64 bitmap;
+ };
  
+@@ -303,13 +303,13 @@ struct dvobj_priv {
+ 
+ 	/* for local/global synchronization */
+ 	/*  */
+-	_lock	lock;
++	spinlock_t	lock;
+ 	int macid[NUM_STA];
+ 
+-	_mutex hw_init_mutex;
+-	_mutex h2c_fwcmd_mutex;
+-	_mutex setch_mutex;
+-	_mutex setbw_mutex;
++	struct mutex hw_init_mutex;
++	struct mutex h2c_fwcmd_mutex;
++	struct mutex setch_mutex;
++	struct mutex setbw_mutex;
+ 
+ 	unsigned char oper_channel; /* saved channel info when call set_channel_bw */
+ 	unsigned char oper_bwmode;
+@@ -393,7 +393,7 @@ struct adapter {
+ 	struct	recv_priv recvpriv;
+ 	struct	sta_priv stapriv;
+ 	struct	security_priv securitypriv;
+-	_lock   security_key_mutex; /*  add for CONFIG_IEEE80211W, none 11w also can use */
++	spinlock_t   security_key_mutex; /*  add for CONFIG_IEEE80211W, none 11w also can use */
+ 	struct	registry_priv registrypriv;
+ 	struct	eeprom_priv eeprompriv;
+ 
+@@ -432,12 +432,12 @@ struct adapter {
+ 	void (*intf_start)(struct adapter * adapter);
+ 	void (*intf_stop)(struct adapter * adapter);
+ 
+-	_nic_hdl pnetdev;
++	struct net_device * pnetdev;
+ 	char old_ifname[IFNAMSIZ];
+ 
+ 	/*  used by rtw_rereg_nd_name related function */
+ 	struct rereg_nd_name_data {
+-		_nic_hdl old_pnetdev;
++		struct net_device * old_pnetdev;
+ 		char old_ifname[IFNAMSIZ];
+ 		u8 old_ips_mode;
+ 		u8 old_bRegUseLed;
+diff --git a/drivers/staging/rtl8723bs/include/hal_data.h b/drivers/staging/rtl8723bs/include/hal_data.h
+index c933dc6cada2..9c21208765ef 100644
+--- a/drivers/staging/rtl8723bs/include/hal_data.h
++++ b/drivers/staging/rtl8723bs/include/hal_data.h
+@@ -419,7 +419,7 @@ struct hal_com_data {
+ 	/*  SDIO Tx FIFO related. */
+ 	/*  HIQ, MID, LOW, PUB free pages; padapter->xmitpriv.free_txpg */
+ 	u8 	SdioTxFIFOFreePage[SDIO_TX_FREE_PG_QUEUE];
+-	_lock		SdioTxFIFOFreePageLock;
++	spinlock_t		SdioTxFIFOFreePageLock;
+ 	u8 	SdioTxOQTMaxFreeSpace;
+ 	u8 	SdioTxOQTFreeSpace;
+ 
+diff --git a/drivers/staging/rtl8723bs/include/ioctl_cfg80211.h b/drivers/staging/rtl8723bs/include/ioctl_cfg80211.h
+index 44d0a0982659..2907a6fce7a9 100644
+--- a/drivers/staging/rtl8723bs/include/ioctl_cfg80211.h
++++ b/drivers/staging/rtl8723bs/include/ioctl_cfg80211.h
+@@ -67,7 +67,7 @@ struct rtw_wdev_priv {
+ 	struct adapter *padapter;
+ 
+ 	struct cfg80211_scan_request *scan_request;
+-	_lock scan_req_lock;
++	spinlock_t scan_req_lock;
+ 
+ 	struct net_device *pmon_ndev;/* for monitor interface */
+ 	char ifname_mon[IFNAMSIZ + 1]; /* interface name for monitor interface */
+diff --git a/drivers/staging/rtl8723bs/include/osdep_intf.h b/drivers/staging/rtl8723bs/include/osdep_intf.h
+index c59c1384944b..e9fee6bf8d43 100644
+--- a/drivers/staging/rtl8723bs/include/osdep_intf.h
++++ b/drivers/staging/rtl8723bs/include/osdep_intf.h
+@@ -32,7 +32,7 @@ Under Async. IRP (SDIO/USB)
+ The protection mechanism is through the pending queue.
+ */
+ 
+-	_mutex ioctl_mutex;
++	struct mutex ioctl_mutex;
+ };
+ 
+ 
+@@ -70,7 +70,7 @@ int rtw_ips_pwr_up(struct adapter *padapter);
+ void rtw_ips_pwr_down(struct adapter *padapter);
+ 
+ int rtw_drv_register_netdev(struct adapter *padapter);
+-void rtw_ndev_destructor(_nic_hdl ndev);
++void rtw_ndev_destructor(struct net_device * ndev);
+ 
+ int rtw_suspend_common(struct adapter *padapter);
+ int rtw_resume_common(struct adapter *padapter);
+diff --git a/drivers/staging/rtl8723bs/include/osdep_service.h b/drivers/staging/rtl8723bs/include/osdep_service.h
+index c241bb66a23e..63971fd691ed 100644
+--- a/drivers/staging/rtl8723bs/include/osdep_service.h
++++ b/drivers/staging/rtl8723bs/include/osdep_service.h
+@@ -94,7 +94,7 @@ void _kfree(u8 *pbuf, u32 sz);
+ 
+ struct sk_buff *_rtw_skb_alloc(u32 sz);
+ struct sk_buff *_rtw_skb_copy(const struct sk_buff *skb);
+-int _rtw_netif_rx(_nic_hdl ndev, struct sk_buff *skb);
++int _rtw_netif_rx(struct net_device * ndev, struct sk_buff *skb);
+ 
+ #define rtw_malloc(sz)			_rtw_malloc((sz))
+ #define rtw_zmalloc(sz)			_rtw_zmalloc((sz))
+diff --git a/drivers/staging/rtl8723bs/include/osdep_service_linux.h b/drivers/staging/rtl8723bs/include/osdep_service_linux.h
+index 9194dea217fb..6454625d6bcf 100644
+--- a/drivers/staging/rtl8723bs/include/osdep_service_linux.h
++++ b/drivers/staging/rtl8723bs/include/osdep_service_linux.h
+@@ -40,30 +40,13 @@
+         #include <net/ieee80211_radiotap.h>
+ 	#include <net/cfg80211.h>
+ 
+-	typedef	spinlock_t	_lock;
+-	typedef struct mutex		_mutex;
+-	typedef struct timer_list _timer;
+-
+ 	struct	__queue	{
+ 		struct	list_head	queue;
+-		_lock	lock;
++		spinlock_t	lock;
+ 	};
+ 
+-	typedef	struct sk_buff	_pkt;
+-	typedef unsigned char _buffer;
+-
+-	typedef	int	_OS_STATUS;
+-	/* typedef u32 _irqL; */
+-	typedef unsigned long _irqL;
+-	typedef	struct	net_device * _nic_hdl;
+-
+ 	#define thread_exit() complete_and_exit(NULL, 0)
+ 
+-	typedef void timer_hdl_return;
+-	typedef void* timer_hdl_context;
+-
+-	typedef struct work_struct _workitem;
+-
+ static inline struct list_head *get_next(struct list_head	*list)
+ {
+ 	return list->next;
+@@ -74,22 +57,22 @@ static inline struct list_head	*get_list_head(struct __queue	*queue)
+ 	return (&(queue->queue));
+ }
+ 
+-static inline void _set_timer(_timer *ptimer, u32 delay_time)
++static inline void _set_timer(struct timer_list *ptimer, u32 delay_time)
+ {
+ 	mod_timer(ptimer, (jiffies + (delay_time * HZ / 1000)));
+ }
+ 
+-static inline void _init_workitem(_workitem *pwork, void *pfunc, void *cntx)
++static inline void _init_workitem(struct work_struct *pwork, void *pfunc, void *cntx)
+ {
+ 	INIT_WORK(pwork, pfunc);
+ }
+ 
+-static inline void _set_workitem(_workitem *pwork)
++static inline void _set_workitem(struct work_struct *pwork)
+ {
+ 	schedule_work(pwork);
+ }
+ 
+-static inline void _cancel_workitem_sync(_workitem *pwork)
++static inline void _cancel_workitem_sync(struct work_struct *pwork)
+ {
+ 	cancel_work_sync(pwork);
+ }
 diff --git a/drivers/staging/rtl8723bs/include/recv_osdep.h b/drivers/staging/rtl8723bs/include/recv_osdep.h
-index e85aafc93f6d..5f686cb339ba 100644
+index 5f686cb339ba..82830ffc530a 100644
 --- a/drivers/staging/rtl8723bs/include/recv_osdep.h
 +++ b/drivers/staging/rtl8723bs/include/recv_osdep.h
-@@ -8,7 +8,7 @@
- #define __RECV_OSDEP_H_
+@@ -14,7 +14,7 @@ extern void _rtw_free_recv_priv(struct recv_priv *precvpriv);
  
+ extern s32  rtw_recv_entry(union recv_frame *precv_frame);
+ extern int rtw_recv_indicatepkt(struct adapter *adapter, union recv_frame *precv_frame);
+-extern void rtw_recv_returnpacket(_nic_hdl cnxt, _pkt *preturnedpkt);
++extern void rtw_recv_returnpacket(struct net_device * cnxt, struct sk_buff *preturnedpkt);
  
--extern sint _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter);
-+extern signed int _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter);
- extern void _rtw_free_recv_priv(struct recv_priv *precvpriv);
+ extern void rtw_handle_tkip_mic_err(struct adapter *padapter, u8 bgroup);
  
+@@ -31,8 +31,8 @@ void rtw_os_free_recvframe(union recv_frame *precvframe);
+ 
+ void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *precvbuf);
+ 
+-_pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata);
+-void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt_attrib *pattrib);
++struct sk_buff *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata);
++void rtw_os_recv_indicate_pkt(struct adapter *padapter, struct sk_buff *pkt, struct rx_pkt_attrib *pattrib);
+ 
+ void rtw_init_recv_timer(struct recv_reorder_ctrl *preorder_ctrl);
  
 diff --git a/drivers/staging/rtl8723bs/include/rtw_cmd.h b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-index 56c77bc7ca81..f2459ad8c1e8 100644
+index f2459ad8c1e8..9e42731f8fa3 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_cmd.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-@@ -265,7 +265,7 @@ Command-Event Mode
- #define RTW_SSID_SCAN_AMOUNT 9 /*  for WEXT_CSCAN_AMOUNT 9 */
- #define RTW_CHANNEL_SCAN_AMOUNT (14+37)
- struct sitesurvey_parm {
--	sint scan_mode;	/* active: 1, passive: 0 */
-+	signed int scan_mode;	/* active: 1, passive: 0 */
- 	u8 ssid_num;
- 	u8 ch_num;
- 	struct ndis_802_11_ssid ssid[RTW_SSID_SCAN_AMOUNT];
+@@ -53,11 +53,11 @@
+ 		/* u8 cmdthd_running; */
+ 		u8 stop_req;
+ 		struct adapter *padapter;
+-		_mutex sctx_mutex;
++		struct mutex sctx_mutex;
+ 	};
+ 
+ 	struct	evt_priv {
+-		_workitem c2h_wk;
++		struct work_struct c2h_wk;
+ 		bool c2h_wk_alive;
+ 		struct rtw_cbuf *c2h_queue;
+ 		#define C2H_QUEUE_MAX_LEN 10
+diff --git a/drivers/staging/rtl8723bs/include/rtw_io.h b/drivers/staging/rtl8723bs/include/rtw_io.h
+index b7076b590d84..c83d8c66bd86 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_io.h
++++ b/drivers/staging/rtl8723bs/include/rtw_io.h
+@@ -250,7 +250,7 @@ Below is the data structure used by _io_handler
+ */
+ 
+ struct io_queue {
+-	_lock	lock;
++	spinlock_t	lock;
+ 	struct list_head	free_ioreqs;
+ 	struct list_head		pending;		/* The io_req list that will be served in the single protocol read/write. */
+ 	struct list_head		processing;
 diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-index 2f9c2a03e385..18f1653fc975 100644
+index 18f1653fc975..1ebc1e183381 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-@@ -130,7 +130,7 @@ SHALL not lock up more than one locks at a time!
- struct sitesurvey_ctrl {
+@@ -131,7 +131,7 @@ struct sitesurvey_ctrl {
  	u64	last_tx_pkts;
  	uint	last_rx_pkts;
--	sint	traffic_busy;
-+	signed int	traffic_busy;
- 	_timer	sitesurvey_ctrl_timer;
+ 	signed int	traffic_busy;
+-	_timer	sitesurvey_ctrl_timer;
++	struct timer_list	sitesurvey_ctrl_timer;
  };
  
-@@ -330,7 +330,7 @@ enum {
+ struct RT_LINK_DETECT_T {
+@@ -203,7 +203,7 @@ struct scan_limit_info {
+ };
+ 
+ struct cfg80211_wifidirect_info {
+-	_timer					remain_on_ch_timer;
++	struct timer_list					remain_on_ch_timer;
+ 	u8 				restore_channel;
+ 	struct ieee80211_channel	remain_on_ch_channel;
+ 	enum nl80211_channel_type	remain_on_ch_type;
+@@ -214,13 +214,13 @@ struct cfg80211_wifidirect_info {
+ 
+ struct wifidirect_info {
+ 	struct adapter				*padapter;
+-	_timer					find_phase_timer;
+-	_timer					restore_p2p_state_timer;
++	struct timer_list					find_phase_timer;
++	struct timer_list					restore_p2p_state_timer;
+ 
+ 	/* 	Used to do the scanning. After confirming the peer is availalble, the driver transmits the P2P frame to peer. */
+-	_timer					pre_tx_scan_timer;
+-	_timer					reset_ch_sitesurvey;
+-	_timer					reset_ch_sitesurvey2;	/* 	Just for resetting the scan limit function by using p2p nego */
++	struct timer_list					pre_tx_scan_timer;
++	struct timer_list					reset_ch_sitesurvey;
++	struct timer_list					reset_ch_sitesurvey2;	/* 	Just for resetting the scan limit function by using p2p nego */
+ 	struct tx_provdisc_req_info tx_prov_disc_info;
+ 	struct rx_provdisc_req_info rx_prov_disc_info;
+ 	struct tx_invite_req_info invitereq_info;
+@@ -302,8 +302,8 @@ struct tdls_info {
+ 	u8 			cur_channel;
+ 	u8 			candidate_ch;
+ 	u8 			collect_pkt_num[MAX_CHANNEL_NUM];
+-	_lock				cmd_lock;
+-	_lock				hdl_lock;
++	spinlock_t				cmd_lock;
++	spinlock_t				hdl_lock;
+ 	u8 			watchdog_count;
+ 	u8 			dev_discovered;		/* WFD_TDLS: for sigma test */
+ 	u8 			tdls_enable;
+@@ -329,7 +329,7 @@ enum {
+ 
  struct mlme_priv {
  
- 	_lock	lock;
--	sint	fw_state;	/* shall we protect this variable? maybe not necessarily... */
-+	signed int	fw_state;	/* shall we protect this variable? maybe not necessarily... */
+-	_lock	lock;
++	spinlock_t	lock;
+ 	signed int	fw_state;	/* shall we protect this variable? maybe not necessarily... */
  	u8 bScanInProcess;
  	u8 to_join; /* flag */
+@@ -361,15 +361,15 @@ struct mlme_priv {
  
-@@ -490,9 +490,9 @@ extern int rtw_init_mlme_priv(struct adapter *adapter);/*  (struct mlme_priv *pm
- extern void rtw_free_mlme_priv(struct mlme_priv *pmlmepriv);
+ 	u32 auto_scan_int_ms;
  
+-	_timer assoc_timer;
++	struct timer_list assoc_timer;
  
--extern sint rtw_select_and_join_from_scanned_queue(struct mlme_priv *pmlmepriv);
--extern sint rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, sint keyid, u8 set_tx, bool enqueue);
--extern sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv);
-+extern signed int rtw_select_and_join_from_scanned_queue(struct mlme_priv *pmlmepriv);
-+extern signed int rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, signed int keyid, u8 set_tx, bool enqueue);
-+extern signed int rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv);
+ 	uint assoc_by_bssid;
+ 	uint assoc_by_rssi;
  
- static inline u8 *get_bssid(struct mlme_priv *pmlmepriv)
- {	/* if sta_mode:pmlmepriv->cur_network.network.MacAddress => bssid */
-@@ -500,7 +500,7 @@ static inline u8 *get_bssid(struct mlme_priv *pmlmepriv)
- 	return pmlmepriv->cur_network.network.MacAddress;
- }
+-	_timer scan_to_timer; /*  driver itself handles scan_timeout status. */
++	struct timer_list scan_to_timer; /*  driver itself handles scan_timeout status. */
+ 	unsigned long scan_start_time; /*  used to evaluate the time spent in scanning */
  
--static inline sint check_fwstate(struct mlme_priv *pmlmepriv, sint state)
-+static inline signed int check_fwstate(struct mlme_priv *pmlmepriv, signed int state)
- {
- 	if (pmlmepriv->fw_state & state)
- 		return true;
-@@ -508,7 +508,7 @@ static inline sint check_fwstate(struct mlme_priv *pmlmepriv, sint state)
- 	return false;
- }
+-	_timer set_scan_deny_timer;
++	struct timer_list set_scan_deny_timer;
+ 	atomic_t set_scan_deny; /* 0: allowed, 1: deny */
  
--static inline sint get_fwstate(struct mlme_priv *pmlmepriv)
-+static inline signed int get_fwstate(struct mlme_priv *pmlmepriv)
- {
- 	return pmlmepriv->fw_state;
- }
-@@ -520,7 +520,7 @@ static inline sint get_fwstate(struct mlme_priv *pmlmepriv)
-  * ### NOTE:#### (!!!!)
-  * MUST TAKE CARE THAT BEFORE CALLING THIS FUNC, YOU SHOULD HAVE LOCKED pmlmepriv->lock
-  */
--static inline void set_fwstate(struct mlme_priv *pmlmepriv, sint state)
-+static inline void set_fwstate(struct mlme_priv *pmlmepriv, signed int state)
- {
- 	pmlmepriv->fw_state |= state;
- 	/* FOR HW integration */
-@@ -528,7 +528,7 @@ static inline void set_fwstate(struct mlme_priv *pmlmepriv, sint state)
- 		pmlmepriv->bScanInProcess = true;
- }
+ 	struct qos_priv qospriv;
+@@ -386,7 +386,7 @@ struct mlme_priv {
+ 	struct ht_priv htpriv;
  
--static inline void _clr_fwstate_(struct mlme_priv *pmlmepriv, sint state)
-+static inline void _clr_fwstate_(struct mlme_priv *pmlmepriv, signed int state)
- {
- 	pmlmepriv->fw_state &= ~state;
- 	/* FOR HW integration */
-@@ -540,7 +540,7 @@ static inline void _clr_fwstate_(struct mlme_priv *pmlmepriv, sint state)
-  * No Limit on the calling context,
-  * therefore set it to be the critical section...
-  */
--static inline void clr_fwstate(struct mlme_priv *pmlmepriv, sint state)
-+static inline void clr_fwstate(struct mlme_priv *pmlmepriv, signed int state)
- {
- 	spin_lock_bh(&pmlmepriv->lock);
- 	if (check_fwstate(pmlmepriv, state) == true)
-@@ -548,7 +548,7 @@ static inline void clr_fwstate(struct mlme_priv *pmlmepriv, sint state)
- 	spin_unlock_bh(&pmlmepriv->lock);
- }
+ 	struct RT_LINK_DETECT_T	LinkDetectInfo;
+-	_timer	dynamic_chk_timer; /* dynamic/periodic check timer */
++	struct timer_list	dynamic_chk_timer; /* dynamic/periodic check timer */
  
--static inline void set_scanned_network_val(struct mlme_priv *pmlmepriv, sint val)
-+static inline void set_scanned_network_val(struct mlme_priv *pmlmepriv, signed int val)
- {
- 	spin_lock_bh(&pmlmepriv->lock);
- 	pmlmepriv->num_of_scanned = val;
-@@ -600,9 +600,9 @@ extern void _rtw_free_network_nolock(struct mlme_priv *pmlmepriv, struct wlan_ne
+ 	u8 acm_mask; /*  for wmm acm mask */
+ 	u8 ChannelPlan;
+@@ -448,7 +448,7 @@ struct mlme_priv {
+ 	u32 p2p_go_probe_resp_ie_len; /* for GO */
+ 	u32 p2p_assoc_req_ie_len;
  
- extern struct wlan_network *_rtw_find_network(struct __queue *scanned_queue, u8 *addr);
+-	_lock	bcn_update_lock;
++	spinlock_t	bcn_update_lock;
+ 	u8 update_bcn;
  
--extern sint rtw_if_up(struct adapter *padapter);
-+extern signed int rtw_if_up(struct adapter *padapter);
+ 	u8 NumOfBcnInfoChkFail;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+index 6aa3805b7abd..b7bf92d1328f 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+@@ -483,10 +483,10 @@ struct mlme_ext_priv {
+ 	struct ss_res		sitesurvey_res;
+ 	struct mlme_ext_info mlmext_info;/* for sta/adhoc mode, including current scanning/connecting/connected related info. */
+                                                      /* for ap mode, network includes ap's cap_info */
+-	_timer		survey_timer;
+-	_timer		link_timer;
+-	_timer		sa_query_timer;
+-	/* _timer		ADDBA_timer; */
++	struct timer_list		survey_timer;
++	struct timer_list		link_timer;
++	struct timer_list		sa_query_timer;
++	/* struct timer_list		ADDBA_timer; */
+ 	u16 		chan_scan_time;
+ 	unsigned long last_scan_time;
+ 	u8 scan_abort;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mp.h b/drivers/staging/rtl8723bs/include/rtw_mp.h
+index 6cf598439e5c..a7fa82586967 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mp.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mp.h
+@@ -15,7 +15,7 @@ struct mp_xmit_frame {
  
--sint rtw_linked_check(struct adapter *padapter);
-+signed int rtw_linked_check(struct adapter *padapter);
+ 	struct pkt_attrib attrib;
  
- u8 *rtw_get_capability_from_ie(u8 *ie);
- u8 *rtw_get_beacon_interval_from_ie(u8 *ie);
+-	_pkt *pkt;
++	struct sk_buff *pkt;
+ 
+ 	int frame_tag;
+ 
+@@ -56,7 +56,7 @@ struct MPT_CONTEXT {
+ 	/*  Indicate if the driver is unloading or unloaded. */
+ 	bool			bMptDrvUnload;
+ 
+-	_timer			MPh2c_timeout_timer;
++	struct timer_list			MPh2c_timeout_timer;
+ /*  Event used to sync H2c for BT control */
+ 
+ 	bool		MptH2cRspEvent;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+index 0987891e85ae..b1ef4e0ba9fe 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+@@ -212,10 +212,10 @@ struct pwrctrl_priv {
+ 	u8 dtim;
+ 
+ 	u32 alives;
+-	_workitem cpwm_event;
++	struct work_struct cpwm_event;
+ 	u8 brpwmtimeout;
+-	_workitem rpwmtimeoutwi;
+-	_timer pwr_rpwm_timer;
++	struct work_struct rpwmtimeoutwi;
++	struct timer_list pwr_rpwm_timer;
+ 	u8 bpower_saving; /* for LPS/IPS */
+ 
+ 	u8 b_hw_radio_off;
+@@ -282,7 +282,7 @@ struct pwrctrl_priv {
+ 	u32 	wowlan_pattern_context[8][5];
+ 	u64		wowlan_fw_iv;
+ #endif /*  CONFIG_WOWLAN */
+-	_timer	pwr_state_check_timer;
++	struct timer_list	pwr_state_check_timer;
+ 	struct adapter *adapter;
+ 	int		pwr_state_check_interval;
+ 	u8 pwr_state_check_cnts;
 diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
-index b4aeb44d5d6e..7737e3a0e105 100644
+index 7737e3a0e105..2cc5e0beb90b 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_recv.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
-@@ -276,7 +276,7 @@ struct recv_priv {
+@@ -47,7 +47,7 @@ struct recv_reorder_ctrl {
+ 	u16 wend_b;
+ 	u8 wsize_b;
+ 	struct __queue pending_recvframe_queue;
+-	_timer reordering_ctrl_timer;
++	struct timer_list reordering_ctrl_timer;
+ };
+ 
+ struct	stainfo_rxcache	{
+@@ -214,7 +214,7 @@ accesser of recv_priv: rtw_recv_entry(dispatch / passive level); recv_thread(pas
+ using enter_critical section to protect
+ */
+ struct recv_priv {
+-	_lock	lock;
++	spinlock_t	lock;
+ 	struct __queue	free_recv_queue;
+ 	struct __queue	recv_pending_queue;
+ 	struct __queue	uc_swdec_pending_queue;
+@@ -264,7 +264,7 @@ struct recv_priv {
+ 	/* int FalseAlmCnt_all; */
+ 
+ 
+-	_timer signal_stat_timer;
++	struct timer_list signal_stat_timer;
+ 	u32 signal_stat_sampling_interval;
+ 	/* u32 signal_stat_converging_constant; */
+ 	struct signal_stat signal_qual_data;
+@@ -275,7 +275,7 @@ struct recv_priv {
+ 
  struct sta_recv_priv {
  
- 	_lock	lock;
--	sint	option;
-+	signed int	option;
+-	_lock	lock;
++	spinlock_t	lock;
+ 	signed int	option;
  
  	/* struct __queue	blk_strms[MAX_RX_NUMBLKS]; */
- 	struct __queue defrag_q;	 /* keeping the fragment frame until defrag */
-@@ -393,8 +393,8 @@ extern int rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *q
- extern void rtw_free_recvframe_queue(struct __queue *pframequeue,  struct __queue *pfree_recv_queue);
- u32 rtw_free_uc_swdec_pending_queue(struct adapter *adapter);
+@@ -293,7 +293,7 @@ struct sta_recv_priv {
+ struct recv_buf {
+ 	struct list_head list;
  
--sint rtw_enqueue_recvbuf_to_head(struct recv_buf *precvbuf, struct __queue *queue);
--sint rtw_enqueue_recvbuf(struct recv_buf *precvbuf, struct __queue *queue);
-+signed int rtw_enqueue_recvbuf_to_head(struct recv_buf *precvbuf, struct __queue *queue);
-+signed int rtw_enqueue_recvbuf(struct recv_buf *precvbuf, struct __queue *queue);
- struct recv_buf *rtw_dequeue_recvbuf(struct __queue *queue);
+-	_lock recvbuf_lock;
++	spinlock_t recvbuf_lock;
  
- void rtw_reordering_ctrl_timeout_handler(struct timer_list *t);
-@@ -419,7 +419,7 @@ static inline u8 *get_recvframe_data(union recv_frame *precvframe)
+ 	u32 ref_cnt;
  
- }
+@@ -308,7 +308,7 @@ struct recv_buf {
+ 	u8 *ptail;
+ 	u8 *pend;
  
--static inline u8 *recvframe_pull(union recv_frame *precvframe, sint sz)
-+static inline u8 *recvframe_pull(union recv_frame *precvframe, signed int sz)
- {
- 	/*  rx_data += sz; move rx_data sz bytes  hereafter */
+-	_pkt	*pskb;
++	struct sk_buff	*pskb;
+ 	u8 reuse;
+ };
  
-@@ -444,7 +444,7 @@ static inline u8 *recvframe_pull(union recv_frame *precvframe, sint sz)
+@@ -334,8 +334,8 @@ struct recv_frame_hdr {
+ 	struct sk_buff	 *pkt;
+ 	struct sk_buff	 *pkt_newalloc;
+ #else /*  CONFIG_BSD_RX_USE_MBUF */
+-	_pkt	*pkt;
+-	_pkt *pkt_newalloc;
++	struct sk_buff	*pkt;
++	struct sk_buff *pkt_newalloc;
+ #endif /*  CONFIG_BSD_RX_USE_MBUF */
  
- }
- 
--static inline u8 *recvframe_put(union recv_frame *precvframe, sint sz)
-+static inline u8 *recvframe_put(union recv_frame *precvframe, signed int sz)
- {
- 	/*  rx_tai += sz; move rx_tail sz bytes  hereafter */
- 
-@@ -473,7 +473,7 @@ static inline u8 *recvframe_put(union recv_frame *precvframe, sint sz)
- 
- 
- 
--static inline u8 *recvframe_pull_tail(union recv_frame *precvframe, sint sz)
-+static inline u8 *recvframe_pull_tail(union recv_frame *precvframe, signed int sz)
- {
- 	/*  rmv data from rx_tail (by yitsen) */
- 
-@@ -507,7 +507,7 @@ static inline union recv_frame *rxmem_to_recvframe(u8 *rxmem)
- 
- }
- 
--static inline sint get_recvframe_len(union recv_frame *precvframe)
-+static inline signed int get_recvframe_len(union recv_frame *precvframe)
- {
- 	return precvframe->u.hdr.len;
- }
+ 	struct adapter  *adapter;
 diff --git a/drivers/staging/rtl8723bs/include/rtw_xmit.h b/drivers/staging/rtl8723bs/include/rtw_xmit.h
-index c04318573f8f..db5884a8a707 100644
+index db5884a8a707..a6fb8be8c63a 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_xmit.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_xmit.h
-@@ -132,7 +132,7 @@ struct	hw_xmit	{
+@@ -128,7 +128,7 @@ union txdesc {
+ };
+ 
+ struct	hw_xmit	{
+-	/* _lock xmit_lock; */
++	/* spinlock_t xmit_lock; */
  	/* struct list_head	pending; */
  	struct __queue *sta_queue;
  	/* struct hw_txqueue *phwtxqueue; */
--	/* sint	txcmdcnt; */
-+	/* signed int	txcmdcnt; */
- 	int	accnt;
- };
+@@ -284,7 +284,7 @@ struct xmit_frame {
  
-@@ -313,8 +313,8 @@ struct tx_servq {
+ 	struct pkt_attrib attrib;
+ 
+-	_pkt *pkt;
++	struct sk_buff *pkt;
+ 
+ 	int	frame_tag;
+ 
+@@ -312,7 +312,7 @@ struct tx_servq {
+ 
  
  struct sta_xmit_priv {
- 	_lock	lock;
--	sint	option;
--	sint	apsd_setting;	/* When bit mask is on, the associated edca queue supports APSD. */
-+	signed int	option;
-+	signed int	apsd_setting;	/* When bit mask is on, the associated edca queue supports APSD. */
+-	_lock	lock;
++	spinlock_t	lock;
+ 	signed int	option;
+ 	signed int	apsd_setting;	/* When bit mask is on, the associated edca queue supports APSD. */
  
+@@ -359,7 +359,7 @@ enum cmdbuf_type {
  
- 	/* struct tx_servq blk_q[MAX_NUMBLKS]; */
-@@ -336,14 +336,14 @@ struct sta_xmit_priv {
+ struct	xmit_priv {
  
+-	_lock	lock;
++	spinlock_t	lock;
  
- struct	hw_txqueue	{
--	volatile sint	head;
--	volatile sint	tail;
--	volatile sint	free_sz;	/* in units of 64 bytes */
--	volatile sint      free_cmdsz;
--	volatile sint	 txsz[8];
-+	volatile signed int	head;
-+	volatile signed int	tail;
-+	volatile signed int	free_sz;	/* in units of 64 bytes */
-+	volatile signed int      free_cmdsz;
-+	volatile signed int	 txsz[8];
- 	uint	ff_hwaddr;
- 	uint	cmd_hwaddr;
--	sint	ac_tag;
-+	signed int	ac_tag;
+ 	struct completion xmit_comp;
+ 	struct completion terminate_xmitthread_comp;
+@@ -436,10 +436,10 @@ struct	xmit_priv {
+ 	u16 nqos_ssn;
+ 
+ 	int	ack_tx;
+-	_mutex ack_tx_mutex;
++	struct mutex ack_tx_mutex;
+ 	struct submit_ctx ack_tx_ops;
+ 	u8 seq_no;
+-	_lock lock_sctx;
++	spinlock_t lock_sctx;
  };
  
- struct agg_pkt_info {
-@@ -463,7 +463,7 @@ struct xmit_frame *rtw_alloc_xmitframe_ext(struct xmit_priv *pxmitpriv);
- struct xmit_frame *rtw_alloc_xmitframe_once(struct xmit_priv *pxmitpriv);
- extern s32 rtw_free_xmitframe(struct xmit_priv *pxmitpriv, struct xmit_frame *pxmitframe);
- extern void rtw_free_xmitframe_queue(struct xmit_priv *pxmitpriv, struct __queue *pframequeue);
--struct tx_servq *rtw_get_sta_pending(struct adapter *padapter, struct sta_info *psta, sint up, u8 *ac);
-+struct tx_servq *rtw_get_sta_pending(struct adapter *padapter, struct sta_info *psta, signed int up, u8 *ac);
- extern s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitframe);
- 
+ extern struct xmit_frame *__rtw_alloc_cmdxmitframe(struct xmit_priv *pxmitpriv,
+@@ -469,8 +469,8 @@ extern s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *px
  extern s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe);
-@@ -476,7 +476,7 @@ void _rtw_init_sta_xmit_priv(struct sta_xmit_priv *psta_xmitpriv);
+ extern u32 rtw_calculate_wlan_pkt_size_by_attribue(struct pkt_attrib *pattrib);
+ #define rtw_wlan_pkt_size(f) rtw_calculate_wlan_pkt_size_by_attribue(&f->attrib)
+-extern s32 rtw_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_frame *pxmitframe);
+-extern s32 rtw_mgmt_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_frame *pxmitframe);
++extern s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct xmit_frame *pxmitframe);
++extern s32 rtw_mgmt_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct xmit_frame *pxmitframe);
+ s32 _rtw_init_hw_txqueue(struct hw_txqueue *phw_txqueue, u8 ac_tag);
+ void _rtw_init_sta_xmit_priv(struct sta_xmit_priv *psta_xmitpriv);
+ 
+@@ -487,7 +487,7 @@ s32 rtw_alloc_hwxmits(struct adapter *padapter);
+ void rtw_free_hwxmits(struct adapter *padapter);
  
  
- s32 rtw_txframes_pending(struct adapter *padapter);
--void rtw_init_hwxmits(struct hw_xmit *phwxmit, sint entry);
-+void rtw_init_hwxmits(struct hw_xmit *phwxmit, signed int entry);
- 
- 
- s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter);
-@@ -490,7 +490,7 @@ void rtw_free_hwxmits(struct adapter *padapter);
- s32 rtw_xmit(struct adapter *padapter, _pkt **pkt);
+-s32 rtw_xmit(struct adapter *padapter, _pkt **pkt);
++s32 rtw_xmit(struct adapter *padapter, struct sk_buff **pkt);
  bool xmitframe_hiq_filter(struct xmit_frame *xmitframe);
  
--sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_frame *pxmitframe);
-+signed int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_frame *pxmitframe);
- void stop_sta_xmit(struct adapter *padapter, struct sta_info *psta);
- void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta);
- void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *psta);
-@@ -503,7 +503,7 @@ void enqueue_pending_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmit
- void enqueue_pending_xmitbuf_to_head(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf);
- struct xmit_buf *dequeue_pending_xmitbuf(struct xmit_priv *pxmitpriv);
- struct xmit_buf *dequeue_pending_xmitbuf_under_survey(struct xmit_priv *pxmitpriv);
--sint	check_pending_xmitbuf(struct xmit_priv *pxmitpriv);
-+signed int	check_pending_xmitbuf(struct xmit_priv *pxmitpriv);
- int	rtw_xmit_thread(void *context);
+ signed int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_frame *pxmitframe);
+diff --git a/drivers/staging/rtl8723bs/include/sta_info.h b/drivers/staging/rtl8723bs/include/sta_info.h
+index 1dbbe6cbf174..28fb9f26466b 100644
+--- a/drivers/staging/rtl8723bs/include/sta_info.h
++++ b/drivers/staging/rtl8723bs/include/sta_info.h
+@@ -69,7 +69,7 @@ struct	stainfo_stats	{
  
- u32 rtw_get_ff_hwaddr(struct xmit_frame	*pxmitframe);
+ struct sta_info {
+ 
+-	_lock	lock;
++	spinlock_t	lock;
+ 	struct list_head	list; /* free_sta_queue */
+ 	struct list_head	hash_list; /* sta_hash */
+ 	struct adapter *padapter;
+@@ -121,7 +121,7 @@ struct sta_info {
+ 	struct stainfo_stats sta_stats;
+ 
+ 	/* for A-MPDU TX, ADDBA timeout check */
+-	_timer addba_retry_timer;
++	struct timer_list addba_retry_timer;
+ 
+ 	/* for A-MPDU Rx reordering buffer control */
+ 	struct recv_reorder_ctrl recvreorder_ctrl[16];
+@@ -314,7 +314,7 @@ struct	sta_priv {
+ 	u8 *pstainfo_buf;
+ 	struct __queue	free_sta_queue;
+ 
+-	_lock sta_hash_lock;
++	spinlock_t sta_hash_lock;
+ 	struct list_head   sta_hash[NUM_STA];
+ 	int asoc_sta_count;
+ 	struct __queue sleep_q;
+@@ -324,8 +324,8 @@ struct	sta_priv {
+ 
+ 	struct list_head asoc_list;
+ 	struct list_head auth_list;
+-	_lock asoc_list_lock;
+-	_lock auth_list_lock;
++	spinlock_t asoc_list_lock;
++	spinlock_t auth_list_lock;
+ 	u8 asoc_list_cnt;
+ 	u8 auth_list_cnt;
+ 
 diff --git a/drivers/staging/rtl8723bs/include/xmit_osdep.h b/drivers/staging/rtl8723bs/include/xmit_osdep.h
-index e9ff274f7474..78109c633c10 100644
+index 78109c633c10..0e0d8d150f78 100644
 --- a/drivers/staging/rtl8723bs/include/xmit_osdep.h
 +++ b/drivers/staging/rtl8723bs/include/xmit_osdep.h
-@@ -36,7 +36,7 @@ void rtw_os_xmit_resource_free(struct adapter *padapter, struct xmit_buf *pxmitb
+@@ -9,9 +9,9 @@
+ 
+ 
+ struct pkt_file {
+-	_pkt *pkt;
++	struct sk_buff *pkt;
+ 	__kernel_size_t pkt_len;	 /* the remainder length of the open_file */
+-	_buffer *cur_buffer;
++	unsigned char *cur_buffer;
+ 	u8 *buf_start;
+ 	u8 *cur_addr;
+ 	__kernel_size_t buf_len;
+@@ -25,8 +25,8 @@ struct sta_xmit_priv;
+ struct xmit_frame;
+ struct xmit_buf;
+ 
+-extern int _rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev);
+-extern int rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev);
++extern int _rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev);
++extern int rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev);
+ 
+ void rtw_os_xmit_schedule(struct adapter *padapter);
+ 
+@@ -34,11 +34,11 @@ int rtw_os_xmit_resource_alloc(struct adapter *padapter, struct xmit_buf *pxmitb
+ void rtw_os_xmit_resource_free(struct adapter *padapter, struct xmit_buf *pxmitbuf, u32 free_sz, u8 flag);
+ 
  extern uint rtw_remainder_len(struct pkt_file *pfile);
- extern void _rtw_open_pktfile(_pkt *pkt, struct pkt_file *pfile);
+-extern void _rtw_open_pktfile(_pkt *pkt, struct pkt_file *pfile);
++extern void _rtw_open_pktfile(struct sk_buff *pkt, struct pkt_file *pfile);
  extern uint _rtw_pktfile_read(struct pkt_file *pfile, u8 *rmem, uint rlen);
--extern sint rtw_endofpktfile(struct pkt_file *pfile);
-+extern signed int rtw_endofpktfile(struct pkt_file *pfile);
+ extern signed int rtw_endofpktfile(struct pkt_file *pfile);
  
- extern void rtw_os_pkt_complete(struct adapter *padapter, _pkt *pkt);
+-extern void rtw_os_pkt_complete(struct adapter *padapter, _pkt *pkt);
++extern void rtw_os_pkt_complete(struct adapter *padapter, struct sk_buff *pkt);
  extern void rtw_os_xmit_complete(struct adapter *padapter, struct xmit_frame *pxframe);
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index e1d168d6ac86..6a28420cdb2f 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -1423,7 +1423,7 @@ static int rtw_wx_get_scan(struct net_device *dev, struct iw_request_info *a,
- 	char *ev = extra;
- 	char *stop = ev + wrqu->data.length;
- 	u32 ret = 0;
--	sint wait_status;
-+	signed int wait_status;
  
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_wx_get_scan\n"));
- 	RT_TRACE(_module_rtl871x_ioctl_os_c, _drv_info_, (" Start of Query SIOCGIWSCAN .\n"));
-@@ -4086,7 +4086,7 @@ static int rtw_set_hidden_ssid(struct net_device *dev, struct ieee_param *param,
- 	int ie_len;
- 	u8 *ssid_ie;
- 	char ssid[NDIS_802_11_LENGTH_SSID + 1];
--	sint ssid_len;
-+	signed int ssid_len;
- 	u8 ignore_broadcast_ssid;
+ #endif /* __XMIT_OSDEP_H_ */
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index b62fe9238e6d..4ece23737712 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -205,7 +205,7 @@ int _netdev_open(struct net_device *pnetdev);
+ int netdev_open(struct net_device *pnetdev);
+ static int netdev_close(struct net_device *pnetdev);
  
- 	if (check_fwstate(mlmepriv, WIFI_AP_STATE) != true)
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index f52802f24466..e77cd2cc29b1 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -30,7 +30,7 @@ void rtw_os_recv_resource_alloc(struct adapter *padapter, union recv_frame *prec
- /* free os related resource in union recv_frame */
- void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
+-static void loadparam(struct adapter *padapter, _nic_hdl pnetdev)
++static void loadparam(struct adapter *padapter, struct net_device * pnetdev)
  {
--	sint i;
-+	signed int i;
- 	union recv_frame *precvframe;
+ 	struct registry_priv  *registry_par = &padapter->registrypriv;
  
- 	precvframe = (union recv_frame *) precvpriv->precv_frame_buf;
-diff --git a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-index a89b88eaed39..79c477f559de 100644
---- a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-@@ -39,7 +39,7 @@ uint _rtw_pktfile_read(struct pkt_file *pfile, u8 *rmem, uint rlen)
- 	return len;
+diff --git a/drivers/staging/rtl8723bs/os_dep/osdep_service.c b/drivers/staging/rtl8723bs/os_dep/osdep_service.c
+index 3c71d2fafabf..e2b8923df129 100644
+--- a/drivers/staging/rtl8723bs/os_dep/osdep_service.c
++++ b/drivers/staging/rtl8723bs/os_dep/osdep_service.c
+@@ -47,7 +47,7 @@ inline struct sk_buff *_rtw_skb_copy(const struct sk_buff *skb)
+ 	return skb_copy(skb, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
  }
  
--sint rtw_endofpktfile(struct pkt_file *pfile)
-+signed int rtw_endofpktfile(struct pkt_file *pfile)
+-inline int _rtw_netif_rx(_nic_hdl ndev, struct sk_buff *skb)
++inline int _rtw_netif_rx(struct net_device * ndev, struct sk_buff *skb)
  {
- 	if (pfile->pkt_len == 0)
- 		return true;
+ 	skb->dev = ndev;
+ 	return netif_rx(skb);
+diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+index e77cd2cc29b1..160653c0cc91 100644
+--- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+@@ -53,10 +53,10 @@ void rtw_os_recvbuf_resource_free(struct adapter *padapter, struct recv_buf *pre
+ 	}
+ }
+ 
+-_pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata)
++struct sk_buff *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8 *pdata)
+ {
+ 	u16 eth_type;
+-	_pkt *sub_skb;
++	struct sk_buff *sub_skb;
+ 	struct rx_pkt_attrib *pattrib;
+ 
+ 	pattrib = &prframe->u.hdr.attrib;
+@@ -95,7 +95,7 @@ _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8
+ 	return sub_skb;
+ }
+ 
+-void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt_attrib *pattrib)
++void rtw_os_recv_indicate_pkt(struct adapter *padapter, struct sk_buff *pkt, struct rx_pkt_attrib *pattrib)
+ {
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	int ret;
+@@ -103,7 +103,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 	/* Indicate the packets to upper layer */
+ 	if (pkt) {
+ 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
+-			_pkt *pskb2 = NULL;
++			struct sk_buff *pskb2 = NULL;
+ 			struct sta_info *psta = NULL;
+ 			struct sta_priv *pstapriv = &padapter->stapriv;
+ 			int bmcast = IS_MCAST(pattrib->dst);
+@@ -201,7 +201,7 @@ void rtw_handle_tkip_mic_err(struct adapter *padapter, u8 bgroup)
+ #ifdef CONFIG_AUTO_AP_MODE
+ static void rtw_os_ksocket_send(struct adapter *padapter, union recv_frame *precv_frame)
+ {
+-	_pkt *skb = precv_frame->u.hdr.pkt;
++	struct sk_buff *skb = precv_frame->u.hdr.pkt;
+ 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
+ 	struct sta_info *psta = precv_frame->u.hdr.psta;
+ 
+@@ -235,7 +235,7 @@ int rtw_recv_indicatepkt(struct adapter *padapter, union recv_frame *precv_frame
+ {
+ 	struct recv_priv *precvpriv;
+ 	struct __queue	*pfree_recv_queue;
+-	_pkt *skb;
++	struct sk_buff *skb;
+ 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
+ 
+ 	precvpriv = &(padapter->recvpriv);
+diff --git a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
+index 79c477f559de..83d7cbbcdf93 100644
+--- a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
+@@ -15,7 +15,7 @@ uint rtw_remainder_len(struct pkt_file *pfile)
+ 	return (pfile->buf_len - ((SIZE_PTR)(pfile->cur_addr) - (SIZE_PTR)(pfile->buf_start)));
+ }
+ 
+-void _rtw_open_pktfile(_pkt *pktptr, struct pkt_file *pfile)
++void _rtw_open_pktfile(struct sk_buff *pktptr, struct pkt_file *pfile)
+ {
+ 	pfile->pkt = pktptr;
+ 	pfile->cur_addr = pfile->buf_start = pktptr->data;
+@@ -67,7 +67,7 @@ void rtw_os_xmit_resource_free(struct adapter *padapter, struct xmit_buf *pxmitb
+ 
+ #define WMM_XMIT_THRESHOLD	(NR_XMITFRAME * 2 / 5)
+ 
+-void rtw_os_pkt_complete(struct adapter *padapter, _pkt *pkt)
++void rtw_os_pkt_complete(struct adapter *padapter, struct sk_buff *pkt)
+ {
+ 	u16 queue;
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+@@ -104,7 +104,7 @@ void rtw_os_xmit_schedule(struct adapter *padapter)
+ 		complete(&pri_adapter->xmitpriv.xmit_comp);
+ }
+ 
+-static void rtw_check_xmit_resource(struct adapter *padapter, _pkt *pkt)
++static void rtw_check_xmit_resource(struct adapter *padapter, struct sk_buff *pkt)
+ {
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 	u16 queue;
+@@ -189,7 +189,7 @@ static int rtw_mlcst2unicst(struct adapter *padapter, struct sk_buff *skb)
+ 	return true;
+ }
+ 
+-int _rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev)
++int _rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
+ {
+ 	struct adapter *padapter = rtw_netdev_priv(pnetdev);
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+@@ -244,7 +244,7 @@ int _rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev)
+ 	return 0;
+ }
+ 
+-int rtw_xmit_entry(_pkt *pkt, _nic_hdl pnetdev)
++int rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
+ {
+ 	int ret = 0;
+ 
 -- 
 2.30.2
+
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
