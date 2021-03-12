@@ -1,85 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B59D33876F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:33:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67998338990
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 11:03:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4F8DD84539;
-	Fri, 12 Mar 2021 08:33:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 08B836FAD1;
+	Fri, 12 Mar 2021 10:03:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CBNTqqwuh_ak; Fri, 12 Mar 2021 08:33:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5T5V5BUM83Hs; Fri, 12 Mar 2021 10:03:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8563C84521;
-	Fri, 12 Mar 2021 08:33:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5CF656F9BA;
+	Fri, 12 Mar 2021 10:03:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D68581BF59B
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 820621BF383
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 10:02:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DFB498450D
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6D9A58450F
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 10:02:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=oracle.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eLqAsy_nVjw2 for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 08:27:12 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com
- [IPv6:2a00:1450:4864:20::331])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 112F684521
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:27:11 +0000 (UTC)
-Received: by mail-wm1-x331.google.com with SMTP id
- r10-20020a05600c35cab029010c946c95easo14626960wmq.4
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:27:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=CyxYyA2rkqtx8M4+Wl6S8BetX7ZKMAxstPiHRGo/rmA=;
- b=Am54LdX4kCKiBW9zutcNsK+rCL1g/cGBSmoL1MGsSGWoFDfQ9VbxhsGf/3NIdz1FSc
- lcYyrjj7XwJsj7m3VfcLZZ8CNwlCfKYq4cnu/8tDKl/LkM3xrTvxBxtMAwkEqXsJEIfd
- isZrjXFdJuNmUCAv7dj7FhffftBTzgLuOj4O1jiu406frn9PlHBxrRGyhrV1Cx2BoHc9
- dMFHvsgamnSt1Wcd3KRRXUvser9Hgt/+bff3bG4mTVWPP7IOB9J8uEHpLOFvApmcZCXZ
- 0fhZ871AxSQ/IFGb8noSmUaxk9tozE+n1A0B6bdWKrEjEHPK3nDqEee7jztzMX2JM1KK
- RRGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CyxYyA2rkqtx8M4+Wl6S8BetX7ZKMAxstPiHRGo/rmA=;
- b=HWZKPSTuc6jWmkArs7nyR3JUyFoQO2hh7uNscQsTaD8imzL+A9svfe469BKfnKlPzD
- 6WTCuqKd9Oeq8n61a34Qtsh2wmcAqhpM1tDANGdkcFyQS6IM7uVs3F3QHNy/4C+xfpN0
- WOIPD+S+inKRfoi1828ligmXMh5+dO/xFLYaxK0ePjhct41mv7d8mz3tm01xkk5nA1/3
- YuYNQvSQ2s4tkeuEGo71KfIJo6/GGYo8vXyCnwqLEzaPwePJrIrzEPfTfqa5PYzmgcad
- oChxsydGkKXPdatnD4fz5KRORpdBJIrqBpt3CfCU5jZQau7RRvJIIif3XsCuJ+dVRyf8
- uURA==
-X-Gm-Message-State: AOAM5306XrgG1/SHeBUrGc1aOYU07GwBjRmTqeyWcVqOileh57vbcaqf
- Wxlmryd5UQADbul4CxP2VSA=
-X-Google-Smtp-Source: ABdhPJxt3A4FvAXyGC2Xygw166iuNlghEXNQjcMl+iDY2rj6eEIPJXf541dh1VuaJ46e9ovWoBOO3g==
-X-Received: by 2002:a1c:ddc6:: with SMTP id
- u189mr12123176wmg.171.1615537630337; 
- Fri, 12 Mar 2021 00:27:10 -0800 (PST)
-Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
- [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.27.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Mar 2021 00:27:10 -0800 (PST)
-From: Marco Cesati <marcocesati@gmail.com>
-X-Google-Original-From: Marco Cesati <marco.cesati@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans de Goede <hdegoede@redhat.com>,
- Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 33/33] staging: rtl8723bs: remove typedefs in
- odm_DynamicBBPowerSaving.h
-Date: Fri, 12 Mar 2021 09:26:38 +0100
-Message-Id: <20210312082638.25512-34-marco.cesati@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210312082638.25512-1-marco.cesati@gmail.com>
-References: <20210312082638.25512-1-marco.cesati@gmail.com>
+ with ESMTP id 14fbB-tio1ZW for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 10:02:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C008884506
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 10:02:57 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12CA0EsK143158;
+ Fri, 12 Mar 2021 10:02:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=akbLYMZRzQqZZpbJ+DtKwfG0zRi+SfnjQjeinw9NplI=;
+ b=lYovsrs/X7GBkXTV9OEcuVPPBDNJLx1JaWxYK/kSgyQMi7uRNDQl5P9N5ZxOoVhXFAQP
+ KPrWsnUpXfNgTQENI349Gi0EBewCqObDWW1eteu9i1iXnbSUrvV4sQXZmk5n1EUkrHeV
+ dVr0F1jIznWu5PYUxzMjCIeM3rXQSHIszFau0x/4YKuYcn274SSgPkm9bj4msNCUQwLr
+ /YJ94OON4U+aWefd8yVRplPRR6dfC/Wluxg2+w81U91nLA7RgdSHDixuCC6QwqcA124F
+ bPOdqtvPUF8KXWB/Gg7AyC9gwzmPFVdqD4cABezfaPJ0PNUSues5Z8SMCmDB73GuFPKg 0g== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 37415rhhgc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 12 Mar 2021 10:02:56 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12CA1E9T070444;
+ Fri, 12 Mar 2021 10:02:54 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 374kgwa7ax-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 12 Mar 2021 10:02:54 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 12CA2rBe026796;
+ Fri, 12 Mar 2021 10:02:53 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 12 Mar 2021 02:02:52 -0800
+Date: Fri, 12 Mar 2021 13:02:44 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Hao Peng <penghaob@uniontech.com>
+Subject: Re: [PATCH] staging: rtl8723bs: add initial value
+Message-ID: <20210312100244.GN2087@kadam>
+References: <20210311063838.19756-1-penghaob@uniontech.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210311063838.19756-1-penghaob@uniontech.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9920
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ adultscore=0
+ malwarescore=0 bulkscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2103120067
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9920
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ lowpriorityscore=0
+ impostorscore=0 mlxlogscore=999 malwarescore=0 suspectscore=0 adultscore=0
+ phishscore=0 spamscore=0 priorityscore=1501 bulkscore=0 clxscore=1011
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2103120067
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,83 +100,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ izabela.bakollari@gmail.com, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This commit fixes the following checkpatch.pl warning:
+On Thu, Mar 11, 2021 at 02:38:38PM +0800, Hao Peng wrote:
+> Add initial value for some uninitialized variable and array.
+> 
 
-    WARNING: do not add new typedefs
-    #11: FILE: hal/odm_DynamicBBPowerSaving.h:11:
-    +typedef struct _Dynamic_Power_Saving_ {
+None of these are ever used uninitialized.  It's weird that you would
+even think that.
 
-Signed-off-by: Marco Cesati <marco.cesati@gmail.com>
----
- drivers/staging/rtl8723bs/hal/odm.h                      | 2 +-
- drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.c | 4 ++--
- drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.h | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+>  			if (pmlmeext->active_keep_alive_check) {
+> -				int stainfo_offset;
+> +				int stainfo_offset = 0;
+>  
+>  				stainfo_offset = rtw_stainfo_offset(pstapriv, psta);
+                                ^^^^^^^^^^^^^^^^
+This one is initialized on the very next line so all the patch does is
+introduce static checker warnings for no reason.
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
-index 2bcb55878b12..8b8fe2c406f5 100644
---- a/drivers/staging/rtl8723bs/hal/odm.h
-+++ b/drivers/staging/rtl8723bs/hal/odm.h
-@@ -1111,7 +1111,7 @@ struct DM_ODM_T { /* DM_Out_Source_Dynamic_Mechanism_Structure */
- 	/*  */
- 	struct FAT_T DM_FatTable;
- 	struct DIG_T DM_DigTable;
--	PS_T DM_PSTable;
-+	struct PS_T DM_PSTable;
- 	struct dynamic_primary_CCA DM_PriCCA;
- 	struct RXHP_T DM_RXHP_Table;
- 	struct RA_T DM_RA_Table;
-diff --git a/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.c b/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.c
-index cc0bf4c1c777..2cc9518c4ae8 100644
---- a/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.c
-+++ b/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.c
-@@ -10,7 +10,7 @@
- void odm_DynamicBBPowerSavingInit(void *pDM_VOID)
- {
- 	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
--	pPS_T pDM_PSTable = &pDM_Odm->DM_PSTable;
-+	struct PS_T *pDM_PSTable = &pDM_Odm->DM_PSTable;
- 
- 	pDM_PSTable->PreCCAState = CCA_MAX;
- 	pDM_PSTable->CurCCAState = CCA_MAX;
-@@ -23,7 +23,7 @@ void odm_DynamicBBPowerSavingInit(void *pDM_VOID)
- void ODM_RF_Saving(void *pDM_VOID, u8 bForceInNormal)
- {
- 	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
--	pPS_T pDM_PSTable = &pDM_Odm->DM_PSTable;
-+	struct PS_T *pDM_PSTable = &pDM_Odm->DM_PSTable;
- 	u8 Rssi_Up_bound = 30;
- 	u8 Rssi_Low_bound = 25;
- 
-diff --git a/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.h b/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.h
-index dba19271d526..90b9c7659084 100644
---- a/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.h
-+++ b/drivers/staging/rtl8723bs/hal/odm_DynamicBBPowerSaving.h
-@@ -8,7 +8,7 @@
- #ifndef	__ODMDYNAMICBBPOWERSAVING_H__
- #define    __ODMDYNAMICBBPOWERSAVING_H__
- 
--typedef struct _Dynamic_Power_Saving_ {
-+struct PS_T { /* _Dynamic_Power_Saving_ */
- 	u8 PreCCAState;
- 	u8 CurCCAState;
- 
-@@ -20,7 +20,7 @@ typedef struct _Dynamic_Power_Saving_ {
- 	u8 initialize;
- 	u32 Reg874, RegC70, Reg85C, RegA74;
- 
--} PS_T, *pPS_T;
-+};
- 
- #define dm_RF_Saving ODM_RF_Saving
- 
--- 
-2.30.2
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
