@@ -1,45 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AB3E338CB2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 13:26:04 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27708338CC7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 13:26:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6692F4327C;
-	Fri, 12 Mar 2021 12:26:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9E43584586;
+	Fri, 12 Mar 2021 12:26:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rmFIKpXy9PPs; Fri, 12 Mar 2021 12:26:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RPleJHQuTDVu; Fri, 12 Mar 2021 12:26:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B17CC43269;
-	Fri, 12 Mar 2021 12:26:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C65D784544;
+	Fri, 12 Mar 2021 12:26:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B446F1BF303
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 12:25:21 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E45841BF303
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 12:25:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A380A6F9BA
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 12:25:21 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CE6EA84549
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 12:25:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ytvkS3jrcu-I for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 12:25:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Y3EUCQsgdyXd for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 12:25:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 035D0606B4
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 12:25:21 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1C05884546
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 12:25:22 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 81804B0B8;
- Fri, 12 Mar 2021 12:25:19 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 7D748B0CC;
+ Fri, 12 Mar 2021 12:25:20 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: u.kleine-koenig@pengutronix.de
-Subject: [PATCH v8 03/11] clk: bcm: rpi: Release firmware handle on unbind
-Date: Fri, 12 Mar 2021 13:24:46 +0100
-Message-Id: <20210312122454.24480-4-nsaenzjulienne@suse.de>
+Subject: [PATCH v8 04/11] gpio: raspberrypi-exp: Release firmware handle on
+ unbind
+Date: Fri, 12 Mar 2021 13:24:47 +0100
+Message-Id: <20210312122454.24480-5-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210312122454.24480-1-nsaenzjulienne@suse.de>
 References: <20210312122454.24480-1-nsaenzjulienne@suse.de>
@@ -75,26 +76,23 @@ interface when unbinding the device.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-Acked-by: Stephen Boyd <sboyd@kernel.org>
-
- drivers/clk/bcm/clk-raspberrypi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Acked-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- drivers/clk/bcm/clk-raspberrypi.c | 2 +-
+ drivers/gpio/gpio-raspberrypi-exp.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/bcm/clk-raspberrypi.c b/drivers/clk/bcm/clk-raspberrypi.c
-index f89b9cfc4309..dd3b71eafabf 100644
---- a/drivers/clk/bcm/clk-raspberrypi.c
-+++ b/drivers/clk/bcm/clk-raspberrypi.c
-@@ -314,7 +314,7 @@ static int raspberrypi_clk_probe(struct platform_device *pdev)
+diff --git a/drivers/gpio/gpio-raspberrypi-exp.c b/drivers/gpio/gpio-raspberrypi-exp.c
+index bb100e0124e6..64a552ecc2ad 100644
+--- a/drivers/gpio/gpio-raspberrypi-exp.c
++++ b/drivers/gpio/gpio-raspberrypi-exp.c
+@@ -208,7 +208,7 @@ static int rpi_exp_gpio_probe(struct platform_device *pdev)
  		return -ENOENT;
  	}
  
--	firmware = rpi_firmware_get(firmware_node);
-+	firmware = devm_rpi_firmware_get(&pdev->dev, firmware_node);
- 	of_node_put(firmware_node);
- 	if (!firmware)
+-	fw = rpi_firmware_get(fw_node);
++	fw = devm_rpi_firmware_get(&pdev->dev, fw_node);
+ 	of_node_put(fw_node);
+ 	if (!fw)
  		return -EPROBE_DEFER;
 -- 
 2.30.1
