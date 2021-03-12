@@ -1,71 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45A06338756
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:29:55 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AE01338758
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:30:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D57DB43262;
-	Fri, 12 Mar 2021 08:29:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B37344326B;
+	Fri, 12 Mar 2021 08:30:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9fsnkmgdJ0VM; Fri, 12 Mar 2021 08:29:53 +0000 (UTC)
+	with ESMTP id poiz_sPnqtkD; Fri, 12 Mar 2021 08:30:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 106B742C27;
-	Fri, 12 Mar 2021 08:29:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id ECCBB43254;
+	Fri, 12 Mar 2021 08:30:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6D5771BF59B
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 906841C1135
  for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6972984535
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7FDE56067E
  for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OVfHqGiSrxsU for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 08:26:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Vxph1cO5P0pr for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 08:27:00 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
- [IPv6:2a00:1450:4864:20::32f])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 29E178451D
+Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
+ [IPv6:2a00:1450:4864:20::42f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BDB9160607
  for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:26:59 +0000 (UTC)
-Received: by mail-wm1-x32f.google.com with SMTP id
- y124-20020a1c32820000b029010c93864955so15242777wmy.5
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:26:58 -0800 (PST)
+Received: by mail-wr1-x42f.google.com with SMTP id l11so4299370wrp.7
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:26:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=C3gUkDOi+Q8MW7Z2MY1SA5DiZa+NSzuT6jz76lowyJI=;
- b=CqV0nsDENUTl0AbamsKd6OHil91X408JBl9eOMYVEXLIPq8IppLWpHR/EkHcYSxS5p
- 8UVsK2tGdpPDpW6U/M6Dk8zJhxab1SwWtjCGttTa6ijyaC8UCenXrzfoA6DxSey4UCLN
- YhOKJON/zjf7Z2K9J/tbqMNRCWPdGFeWLRiSanIiePCn5sj1U0Epuh/by+ekvan7y8uh
- 2vHYGwS7WD8QZn3WdzugqHnzpzcosxdj9riCnMWg0d/R38X/b+idDF/KH2bN4uvwDsAV
- 7xKN4CsNQsRIX033IGs1+9+d53LuzcwAxlyNRC9asYo+K6kz77V/YsY9ZSdubaK16LFr
- W2Tg==
+ bh=Zotet6DrtX2E5iKmIxRo5F7jgyqfRbll9nhgXMq/FoU=;
+ b=FhL9v7enqVpippQBhRb57TLdYJ/zC7YTJA6rz9hYAsvaEo436fslLGzJzFhYo0wK8W
+ wfPpUL5W+yME6+8o/G9WcJexjnnjisHeDnT9JEDnv8WiyBnIU4zwCUK/K4B32dGDbWWo
+ aO7NzzXqfXnfa0WwcJRnu32l2COfNSUCtf1hStUhGGn5jiu1G9Jh6lvk/jlz67lsgH83
+ hByDSUp63ktxQ9HdTwLxou7YFPO6NmBhNuh4fPVc/Xjgk6eQi40KIxjT8B3LbC1b/MvL
+ /0P6/wQhUkPkQdELMzzto3G2Xlv1Jf4X6d3gvSU4MMYDXsWmEOPKnaPkDTr8WhrodUo0
+ BRxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=C3gUkDOi+Q8MW7Z2MY1SA5DiZa+NSzuT6jz76lowyJI=;
- b=BviJ3/4nDKrj+odhU5TaxCK4HSXL3GA0X4SPWUunMi/cickGfFf+iESs6p8FzBvzlq
- m5n88L8/HxI1RK+8z52KN8SApaeXOmnoFDgRmVbBFKnk4UsA4bl8HbblOwXTKugsZiXo
- CMqCTFbZ5I4U1dD+TEA6pTDQqmbXRU4ipZsuxNDtqRimxYlpZg9YuJnQbQem173gpilL
- ohlz+dK2qCGrhQcXZMbi/bvV0bd8O/nSChUQkOgLWNb05FrBeeH75bZr4sx4LNaeJlpT
- xCbgclf3kXjhaEwDVGvdcpS1ec10t0ydxR1NUr4dVDvnKX4EQL6/gidD2yEToJYkqkVP
- tfFg==
-X-Gm-Message-State: AOAM532IG8dnJZQCxMzw5SSUMq4c6JpidrYVdDJSWmKKiiApcHSQmSt+
- eRcXrwmyp+CIJZEdBnIKB+0=
-X-Google-Smtp-Source: ABdhPJxA1WJ6B2wlOrxmNzxZUk818u+W7oQGgLv+kZET+FpB0KC9B/JCMK/Q/qpheLOPli5X+kJi/w==
-X-Received: by 2002:a1c:c904:: with SMTP id f4mr12102445wmb.14.1615537617357; 
- Fri, 12 Mar 2021 00:26:57 -0800 (PST)
+ bh=Zotet6DrtX2E5iKmIxRo5F7jgyqfRbll9nhgXMq/FoU=;
+ b=J+D9SSRFg9Fe0NcMdE2A+UCpzJ7Y5AhoEGbwFPKvLGNW5zh2eOc3bkrMeW09J3KG1X
+ 1/6g91hnQ4u4wWE5abFDQpOUu/fHZmLOZxQe844FREkP5TbHnhyV6xSWeUcHseLt0GDs
+ Fa/yUrihBa5+FWOuFPheaWo2h+P9y47bshqhTRFGlIZ/lAZk96BdpSxlte6lxPIYoRUP
+ o0D/fjbduXYpbR4UHcQm7j3RYKYqPAv6bR17f3sumG1XZDyR+XD6mLMeCpP0W2GiZ/8U
+ k59DykNMkTorzB2SbvyfbpdxKcIAcSvMR5/goeyKnPXVabC02NYig2ItW+UwUXUOQ86v
+ 7niA==
+X-Gm-Message-State: AOAM5329M5XtW9z9wO5X9dmgFIr+t/BcThnAySOIBzB/kakibbWyddHP
+ 7nmTokC8efp1NSEOSJqzzUU=
+X-Google-Smtp-Source: ABdhPJxBW93aZ0W8Te5ycvgVjakxjEhw0jyv4QfZRUmXn5eV0EKIzRm9sA8gri4PqTPRNDrXiwgY3Q==
+X-Received: by 2002:a5d:4592:: with SMTP id p18mr13592778wrq.244.1615537618045; 
+ Fri, 12 Mar 2021 00:26:58 -0800 (PST)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.26.56
+ by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.26.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 12 Mar 2021 00:26:57 -0800 (PST)
 From: Marco Cesati <marcocesati@gmail.com>
@@ -73,9 +72,9 @@ X-Google-Original-From: Marco Cesati <marco.cesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 15/33] staging: rtl8723bs: remove typedefs in wlan_bssdef.h
-Date: Fri, 12 Mar 2021 09:26:20 +0100
-Message-Id: <20210312082638.25512-16-marco.cesati@gmail.com>
+Subject: [PATCH 16/33] staging: rtl8723bs: remove typedefs in rtw_mp.h
+Date: Fri, 12 Mar 2021 09:26:21 +0100
+Message-Id: <20210312082638.25512-17-marco.cesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210312082638.25512-1-marco.cesati@gmail.com>
 References: <20210312082638.25512-1-marco.cesati@gmail.com>
@@ -100,69 +99,60 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This commit fixes the following checkpatch.pl warnings:
 
     WARNING: do not add new typedefs
-    #130: FILE: include/wlan_bssdef.h:130:
-    +typedef struct _NDIS_802_11_ASSOCIATION_INFORMATION {
+    #52: FILE: include/rtw_mp.h:52:
+    +typedef struct _MPT_CONTEXT {
 
     WARNING: do not add new typedefs
-    #148: FILE: include/wlan_bssdef.h:148:
-    +typedef struct _NDIS_802_11_KEY {
-
-    WARNING: do not add new typedefs
-    #157: FILE: include/wlan_bssdef.h:157:
-    +typedef struct _NDIS_802_11_REMOVE_KEY {
+    #268: FILE: include/rtw_mp.h:268:
+    +typedef struct _IOCMD_STRUCT_ {
 
 Signed-off-by: Marco Cesati <marco.cesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/wlan_bssdef.h | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8723bs/include/rtw_mp.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/wlan_bssdef.h b/drivers/staging/rtl8723bs/include/wlan_bssdef.h
-index 27cd2c5d90af..b9bc8ba21914 100644
---- a/drivers/staging/rtl8723bs/include/wlan_bssdef.h
-+++ b/drivers/staging/rtl8723bs/include/wlan_bssdef.h
-@@ -127,7 +127,7 @@ struct ndis_801_11_ai_resfi {
- 	u16 AssociationId;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mp.h b/drivers/staging/rtl8723bs/include/rtw_mp.h
+index 2ea7100c3a4c..6cf598439e5c 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mp.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mp.h
+@@ -49,7 +49,7 @@ struct mp_tx {
+ #define MP_MAX_LINES_BYTES	256
+ 
+ typedef void (*MPT_WORK_ITEM_HANDLER)(void *Adapter);
+-typedef struct _MPT_CONTEXT {
++struct MPT_CONTEXT {
+ 	/*  Indicate if we have started Mass Production Test. */
+ 	bool			bMassProdTest;
+ 
+@@ -148,7 +148,7 @@ typedef struct _MPT_CONTEXT {
+ 	u32 		mptOutLen;
+     u8          mptOutBuf[100];
+ 
+-} MPT_CONTEXT, *PMPT_CONTEXT;
++};
+ /* endif */
+ 
+ /* E-Fuse */
+@@ -260,16 +260,16 @@ struct mp_priv {
+ 	bool bSetRxBssid;
+ 	bool bTxBufCkFail;
+ 
+-	MPT_CONTEXT MptCtx;
++	struct MPT_CONTEXT MptCtx;
+ 
+ 	u8 *TXradomBuffer;
  };
  
--typedef struct _NDIS_802_11_ASSOCIATION_INFORMATION {
-+struct NDIS_802_11_ASSOCIATION_INFORMATION {
- 	u32                   Length;
- 	u16                  AvailableRequestFixedIEs;
- 	struct ndis_802_11_ai_reqfi    RequestFixedIEs;
-@@ -137,7 +137,7 @@ typedef struct _NDIS_802_11_ASSOCIATION_INFORMATION {
- 	struct ndis_801_11_ai_resfi    ResponseFixedIEs;
- 	u32                   ResponseIELength;
- 	u32                   OffsetResponseIEs;
--} NDIS_802_11_ASSOCIATION_INFORMATION, *PNDIS_802_11_ASSOCIATION_INFORMATION;
+-typedef struct _IOCMD_STRUCT_ {
++struct IOCMD_STRUCT {
+ 	u8 cmdclass;
+ 	u16 value;
+ 	u8 index;
+-} IOCMD_STRUCT;
 +};
  
- enum NDIS_802_11_RELOAD_DEFAULTS {
- 	Ndis802_11ReloadWEPKeys
-@@ -145,20 +145,20 @@ enum NDIS_802_11_RELOAD_DEFAULTS {
- 
- 
- /*  Key mapping keys require a BSSID */
--typedef struct _NDIS_802_11_KEY {
-+struct NDIS_802_11_KEY {
- 	u32           Length;             /*  Length of this structure */
- 	u32           KeyIndex;
- 	u32           KeyLength;          /*  length of key in bytes */
- 	NDIS_802_11_MAC_ADDRESS BSSID;
- 	unsigned long long KeyRSC;
- 	u8           KeyMaterial[32];     /*  variable length depending on above field */
--} NDIS_802_11_KEY, *PNDIS_802_11_KEY;
-+};
- 
--typedef struct _NDIS_802_11_REMOVE_KEY {
-+struct NDIS_802_11_REMOVE_KEY {
- 	u32                   Length;        /*  Length of this structure */
- 	u32                   KeyIndex;
- 	NDIS_802_11_MAC_ADDRESS BSSID;
--} NDIS_802_11_REMOVE_KEY, *PNDIS_802_11_REMOVE_KEY;
-+};
- 
- struct ndis_802_11_wep {
- 	u32 Length;        /*  Length of this structure */
+ struct rf_reg_param {
+ 	u32 path;
 -- 
 2.30.2
 
