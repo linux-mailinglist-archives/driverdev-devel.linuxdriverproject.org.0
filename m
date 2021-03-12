@@ -1,81 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2765C338760
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:31:00 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 487CF338761
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:31:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B0A286F9BA;
-	Fri, 12 Mar 2021 08:30:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BF9EC6F972;
+	Fri, 12 Mar 2021 08:31:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ie58jwc2s-xw; Fri, 12 Mar 2021 08:30:57 +0000 (UTC)
+	with ESMTP id 5dwzNisQ4JHF; Fri, 12 Mar 2021 08:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3DF226FA06;
-	Fri, 12 Mar 2021 08:30:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 86FD66F593;
+	Fri, 12 Mar 2021 08:31:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8E2441BF59B
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:04 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 203991BF59B
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8AC888450D
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:04 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0E0356067E
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QBlMqlG7u083 for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 08:27:03 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qhr93CzWwXJq for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 08:27:04 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
 Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com
  [IPv6:2a00:1450:4864:20::332])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 92157844F8
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:27:03 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 352C460607
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:27:04 +0000 (UTC)
 Received: by mail-wm1-x332.google.com with SMTP id
- j4-20020a05600c4104b029010c62bc1e20so14648164wmi.3
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:27:03 -0800 (PST)
+ f22-20020a7bc8d60000b029010c024a1407so15256713wml.2
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:27:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=jhHUcse1nKTQmmrbtYHbNi6uzZDxGnUuq57jeXSJrm8=;
- b=csLPpdnsHMS4Pg9M0enX51NWCt8fo+AoTjvG4pAYJqAqbzdYyeKQSLBaDezDs7JQlD
- KJZJ+0JPtbPGtqjjtCwVpj9ouBcT1SO/ra0OgGI9eIivbjRcijC9U9BeLcEXGXL4kvfC
- jW3YzgtP4ACQYPN8LQ5v5WdEADMXtTCb6SzchOOjCBUX09NG8zRd+KET9RieUY2OOFB/
- wUdVSVbV/0c6zA+QCn/HgHDSSy/vZB38tLfmxQJeK612pV5x7WMq5nruDuZDkAbDc2OT
- kFs+1B3Jun3TdHkHdTVor/b5zQsj/dhvclzwXlIQORDv/q3Ni4vdItiR0kcBCVoHOaBE
- 6Izg==
+ bh=+DUajT8D6GfJ/NUWK412xKj6f5zIZw/xXuUsj//7XRQ=;
+ b=JW5Qia2bWiXA6OvX8BB2IBgEcfpqxy2IKw2OBOJx5zRuEiUiYiL0rLVxuGK5hWZJRP
+ lIVRpkDLEHQHT1QbisCFTpUM08UbS3QgGFHo/S0YatVVweFvyShL/BEO/7w/q7bVuEi1
+ xiJYG38Kc/AEb92S3KNfmLOL+c5NpoPFbeT6hoHsYAlep02G+VIRJvdtDpruSjx+Q6dB
+ t3zvgA2zjCjn6Lb+MqP5oCIAAnjDt4h65xpnz5Y45vos/HWyWsYwoluPGdkOcS7nHF6r
+ VxXS6VSfc113oIk1baSLrhN/5C3xdc+rI7gCpX8CPO+VQzXH+YuInWgTOu3tP7/lXHX3
+ 9QaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jhHUcse1nKTQmmrbtYHbNi6uzZDxGnUuq57jeXSJrm8=;
- b=HMnNPY8h40y7EpZi8r4VY0ZSy6ZbqHmkJd1+0UgHxI5o4zvVLjuuzY1fCI8w0GzDB9
- uxcm261YsInU52CxyTgUy1CuKW6YQYJ0GkBgYZk65Rfs+Zb23fS++x5Lmr8oAI0RQBS5
- 3wRl41tNDWVhcgw4fcIFag/u2SKlpvNO0OcscSyJOjoUXh1FAUAbTACJXsSlL0M0UWr8
- ZkJXniRb6soT+ycBtzdA/g1V8WtUI9CYjAVlRls+6fb5DzNYeZp1OUDh56/9CWg15sds
- WHykajsR+L1BslajmNN+onaYWs41GbXBDJb8kUATi+qTbaeEoTH70yLeshCiXKTjiYfI
- N2lA==
-X-Gm-Message-State: AOAM533NXra+7RkTHGEsGFSjuTjQkT3CJXSKCYKjnvSIa0aG7+3FJU8A
- rF4XxOdUh9pcJBeiJB5qZ+M=
-X-Google-Smtp-Source: ABdhPJwQKN4dwk+ieN4vhLGPD5m/5zITv8xsfIfaK+pGIfPTUnVsm6yLTqUt5e6U1gQb8mSN+safZg==
-X-Received: by 2002:a7b:c75a:: with SMTP id w26mr12239193wmk.49.1615537621816; 
- Fri, 12 Mar 2021 00:27:01 -0800 (PST)
+ bh=+DUajT8D6GfJ/NUWK412xKj6f5zIZw/xXuUsj//7XRQ=;
+ b=GZ4wK4D2ajBp394BnfYA8scQi7gqZ4yDP8WDY3kthNFFK4P8BsLK485V/uKgrrjDX0
+ 6GpqCl9IEiEd8AoMl4H24857cRtnXgRWqWr3uOFnXmC8P7MWw+xlOKlN8IpM7OSqnrBe
+ 62pQ2LL/qYxY7tLRLmuSY2JU4TjMYxHwM3CNRb4GUTWyaMECJodJnKWRyPAkPzYCBOoE
+ jP+fJWggH3CwPZ/4I7jqsuSvxDtcu0CUCxrt6iDW9rqNBKBQ4JB8ZfggXizhzzVBhUjx
+ 4RTRBKMXE3Gs1pdoczwT1HKgy4KKTLoMsgMWxN1wZSb5ddtSDOicAi0U/4n7l4Df+fgS
+ Re9Q==
+X-Gm-Message-State: AOAM5319+Y6hn5J46lMh27mrwyid7ZzR9osm4gr3trBR35Hr4JSQ3wT6
+ sZlh9OtV1uqjKBkYeJZ/6hA=
+X-Google-Smtp-Source: ABdhPJxOXrxzDjafpaye23sGP6mm+Ar6a6/stM5JZO2QW1tPDOzMS1qwQpW63GQjFqkAibIMQuwTxQ==
+X-Received: by 2002:a7b:c396:: with SMTP id s22mr11738014wmj.38.1615537622507; 
+ Fri, 12 Mar 2021 00:27:02 -0800 (PST)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.27.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Mar 2021 00:27:01 -0800 (PST)
+ Fri, 12 Mar 2021 00:27:02 -0800 (PST)
 From: Marco Cesati <marcocesati@gmail.com>
 X-Google-Original-From: Marco Cesati <marco.cesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 21/33] staging: rtl8723bs: remove typedefs in HalVerDef.h
-Date: Fri, 12 Mar 2021 09:26:26 +0100
-Message-Id: <20210312082638.25512-22-marco.cesati@gmail.com>
+Subject: [PATCH 22/33] staging: rtl8723bs: remove typedefs in rtl8723b_hal.h
+Date: Fri, 12 Mar 2021 09:26:27 +0100
+Message-Id: <20210312082638.25512-23-marco.cesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210312082638.25512-1-marco.cesati@gmail.com>
 References: <20210312082638.25512-1-marco.cesati@gmail.com>
@@ -100,190 +98,99 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This commit fixes the following checkpatch.pl warnings:
 
     WARNING: do not add new typedefs
-    #11: FILE: include/HalVerDef.h:11:
-    +typedef enum tag_HAL_IC_Type_Definition {
+    #173: FILE: include/rtl8723b_hal.h:173:
+    +typedef enum _C2H_EVT {
 
     WARNING: do not add new typedefs
-    #25: FILE: include/HalVerDef.h:25:
-    +typedef enum tag_HAL_CHIP_Type_Definition {
+    #189: FILE: include/rtl8723b_hal.h:189:
+    +typedef struct _C2H_EVT_HDR {
 
     WARNING: do not add new typedefs
-    #32: FILE: include/HalVerDef.h:32:
-    +typedef enum tag_HAL_Cut_Version_Definition {
-
-    WARNING: do not add new typedefs
-    #47: FILE: include/HalVerDef.h:47:
-    +typedef enum tag_HAL_Manufacturer_Version_Definition {
-
-    WARNING: do not add new typedefs
-    #53: FILE: include/HalVerDef.h:53:
-    +typedef enum tag_HAL_RF_Type_Definition {
-
-    WARNING: do not add new typedefs
-    #64: FILE: include/HalVerDef.h:64:
-    +typedef	struct tag_HAL_VERSION {
+    #195: FILE: include/rtl8723b_hal.h:195:
+    +typedef enum tag_Package_Definition {
 
 Signed-off-by: Marco Cesati <marco.cesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_com.c       |  2 +-
- .../staging/rtl8723bs/hal/rtl8723b_hal_init.c |  4 +-
- drivers/staging/rtl8723bs/include/HalVerDef.h | 44 +++++++++----------
- drivers/staging/rtl8723bs/include/hal_com.h   |  2 +-
- drivers/staging/rtl8723bs/include/hal_data.h  |  2 +-
- 5 files changed, 27 insertions(+), 27 deletions(-)
+ drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c |  4 ++--
+ drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c    |  2 +-
+ drivers/staging/rtl8723bs/include/rtl8723b_hal.h  | 12 ++++++------
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com.c b/drivers/staging/rtl8723bs/hal/hal_com.c
-index 34b8354dbc03..9eaf35e8e442 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com.c
-@@ -38,7 +38,7 @@ void rtw_hal_data_deinit(struct adapter *padapter)
- }
- 
- 
--void dump_chip_info(HAL_VERSION	ChipVersion)
-+void dump_chip_info(struct HAL_VERSION	ChipVersion)
- {
- 	char buf[128];
- 	size_t cnt = 0;
 diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-index 26f432ea7012..55c95b38a452 100644
+index 55c95b38a452..8d4b87131f54 100644
 --- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
 +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-@@ -1880,10 +1880,10 @@ static bool Hal_EfusePgPacketWrite_BT(
- 	return true;
+@@ -3706,7 +3706,7 @@ s32 c2h_handler_8723b(struct adapter *padapter, u8 *buf)
+ 	return ret;
  }
  
--static HAL_VERSION ReadChipVersion8723B(struct adapter *padapter)
-+static struct HAL_VERSION ReadChipVersion8723B(struct adapter *padapter)
+-static void process_c2h_event(struct adapter *padapter, PC2H_EVT_HDR pC2hEvent, u8 *c2hBuf)
++static void process_c2h_event(struct adapter *padapter, struct C2H_EVT_HDR *pC2hEvent, u8 *c2hBuf)
  {
- 	u32 value32;
--	HAL_VERSION ChipVersion;
-+	struct HAL_VERSION ChipVersion;
- 	struct hal_com_data *pHalData;
+ 	u8 index = 0;
  
- /* YJ, TODO, move read chip type here */
-diff --git a/drivers/staging/rtl8723bs/include/HalVerDef.h b/drivers/staging/rtl8723bs/include/HalVerDef.h
-index b4744be2cbe1..11055147a2a2 100644
---- a/drivers/staging/rtl8723bs/include/HalVerDef.h
-+++ b/drivers/staging/rtl8723bs/include/HalVerDef.h
-@@ -8,7 +8,7 @@
- #define __HAL_VERSION_DEF_H__
+@@ -3750,7 +3750,7 @@ static void process_c2h_event(struct adapter *padapter, PC2H_EVT_HDR pC2hEvent,
  
- /*  HAL_IC_TYPE_E */
--typedef enum tag_HAL_IC_Type_Definition {
-+enum HAL_IC_TYPE_E { /* tag_HAL_IC_Type_Definition */
- 	CHIP_8192S	=	0,
- 	CHIP_8188C	=	1,
- 	CHIP_8192C	=	2,
-@@ -19,17 +19,17 @@ typedef enum tag_HAL_IC_Type_Definition {
- 	CHIP_8821	=	7,
- 	CHIP_8723B	=	8,
- 	CHIP_8192E	=	9,
--} HAL_IC_TYPE_E;
+ void C2HPacketHandler_8723B(struct adapter *padapter, u8 *pbuffer, u16 length)
+ {
+-	C2H_EVT_HDR	C2hEvent;
++	struct C2H_EVT_HDR	C2hEvent;
+ 	u8 *tmpBuf = NULL;
+ #ifdef CONFIG_WOWLAN
+ 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+index 2d15a5f7648d..415e519e8aa0 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+@@ -349,7 +349,7 @@ static void rtl8723bs_recv_tasklet(struct tasklet_struct *t)
+ 						RT_TRACE(_module_rtl871x_recv_c_, _drv_dump_, ("%s: rtw_recv_entry(precvframe) != _SUCCESS\n", __func__));
+ 					}
+ 				} else if (pattrib->pkt_rpt_type == C2H_PACKET) {
+-					C2H_EVT_HDR	C2hEvent;
++					struct C2H_EVT_HDR	C2hEvent;
+ 
+ 					u16 len_c2h = pattrib->pkt_len;
+ 					u8 *pbuf_c2h = precvframe->u.hdr.rx_data;
+diff --git a/drivers/staging/rtl8723bs/include/rtl8723b_hal.h b/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
+index 8e6e972dd843..03024eea46d2 100644
+--- a/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
++++ b/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
+@@ -170,7 +170,7 @@ struct rt_firmware_hdr {
+ /* Description: Determine the types of C2H events that are the same in driver
+  * and FW; First constructed by tynli. 2009.10.09.
+  */
+-typedef enum _C2H_EVT {
++enum C2H_EVT {
+ 	C2H_DBG = 0,
+ 	C2H_TSF = 1,
+ 	C2H_AP_RPT_RSP = 2,
+@@ -184,21 +184,21 @@ typedef enum _C2H_EVT {
+ 	C2H_HW_INFO_EXCH = 10,
+ 	C2H_8723B_BT_MP_INFO = 11,
+ 	MAX_C2HEVENT
+-} C2H_EVT;
 +};
  
- /* HAL_CHIP_TYPE_E */
--typedef enum tag_HAL_CHIP_Type_Definition {
-+enum HAL_CHIP_TYPE_E { /* tag_HAL_CHIP_Type_Definition */
- 	TEST_CHIP		=	0,
- 	NORMAL_CHIP	=	1,
- 	FPGA			=	2,
--} HAL_CHIP_TYPE_E;
+-typedef struct _C2H_EVT_HDR {
++struct C2H_EVT_HDR {
+ 	u8 CmdID;
+ 	u8 CmdLen;
+ 	u8 CmdSeq;
+-} __attribute__((__packed__)) C2H_EVT_HDR, *PC2H_EVT_HDR;
++} __attribute__((__packed__));
+ 
+-typedef enum tag_Package_Definition {
++enum PACKAGE_TYPE_E { /* tag_Package_Definition */
+ 	PACKAGE_DEFAULT,
+ 	PACKAGE_QFN68,
+ 	PACKAGE_TFBGA90,
+ 	PACKAGE_TFBGA80,
+ 	PACKAGE_TFBGA79
+-} PACKAGE_TYPE_E;
 +};
  
- /* HAL_CUT_VERSION_E */
--typedef enum tag_HAL_Cut_Version_Definition {
-+enum HAL_CUT_VERSION_E { /* tag_HAL_Cut_Version_Definition */
- 	A_CUT_VERSION		=	0,
- 	B_CUT_VERSION		=	1,
- 	C_CUT_VERSION		=	2,
-@@ -41,16 +41,16 @@ typedef enum tag_HAL_Cut_Version_Definition {
- 	I_CUT_VERSION		=	8,
- 	J_CUT_VERSION		=	9,
- 	K_CUT_VERSION		=	10,
--} HAL_CUT_VERSION_E;
-+};
- 
- /*  HAL_Manufacturer */
--typedef enum tag_HAL_Manufacturer_Version_Definition {
-+enum HAL_VENDOR_E { /* tag_HAL_Manufacturer_Version_Definition */
- 	CHIP_VENDOR_TSMC	=	0,
- 	CHIP_VENDOR_UMC		=	1,
- 	CHIP_VENDOR_SMIC	=	2,
--} HAL_VENDOR_E;
-+};
- 
--typedef enum tag_HAL_RF_Type_Definition {
-+enum HAL_RF_TYPE_E { /* tag_HAL_RF_Type_Definition */
- 	RF_TYPE_1T1R	=	0,
- 	RF_TYPE_1T2R	=	1,
- 	RF_TYPE_2T2R	=	2,
-@@ -59,26 +59,26 @@ typedef enum tag_HAL_RF_Type_Definition {
- 	RF_TYPE_3T3R	=	5,
- 	RF_TYPE_3T4R	=	6,
- 	RF_TYPE_4T4R	=	7,
--} HAL_RF_TYPE_E;
-+};
- 
--typedef	struct tag_HAL_VERSION {
--	HAL_IC_TYPE_E		ICType;
--	HAL_CHIP_TYPE_E		ChipType;
--	HAL_CUT_VERSION_E	CUTVersion;
--	HAL_VENDOR_E		VendorType;
--	HAL_RF_TYPE_E		RFType;
-+struct HAL_VERSION { /* tag_HAL_VERSION */
-+	enum HAL_IC_TYPE_E		ICType;
-+	enum HAL_CHIP_TYPE_E		ChipType;
-+	enum HAL_CUT_VERSION_E	CUTVersion;
-+	enum HAL_VENDOR_E		VendorType;
-+	enum HAL_RF_TYPE_E		RFType;
- 	u8 			ROMVer;
--} HAL_VERSION, *PHAL_VERSION;
-+};
- 
- /* VERSION_8192C			VersionID; */
- /* HAL_VERSION			VersionID; */
- 
- /*  Get element */
--#define GET_CVID_IC_TYPE(version)			((HAL_IC_TYPE_E)((version).ICType))
--#define GET_CVID_CHIP_TYPE(version)			((HAL_CHIP_TYPE_E)((version).ChipType))
--#define GET_CVID_RF_TYPE(version)			((HAL_RF_TYPE_E)((version).RFType))
--#define GET_CVID_MANUFACTUER(version)		((HAL_VENDOR_E)((version).VendorType))
--#define GET_CVID_CUT_VERSION(version)		((HAL_CUT_VERSION_E)((version).CUTVersion))
-+#define GET_CVID_IC_TYPE(version)			((enum HAL_IC_TYPE_E)((version).ICType))
-+#define GET_CVID_CHIP_TYPE(version)			((enum HAL_CHIP_TYPE_E)((version).ChipType))
-+#define GET_CVID_RF_TYPE(version)			((enum HAL_RF_TYPE_E)((version).RFType))
-+#define GET_CVID_MANUFACTUER(version)		((enum HAL_VENDOR_E)((version).VendorType))
-+#define GET_CVID_CUT_VERSION(version)		((enum HAL_CUT_VERSION_E)((version).CUTVersion))
- #define GET_CVID_ROM_VERSION(version)		(((version).ROMVer) & ROM_VERSION_MASK)
- 
- /*  */
-diff --git a/drivers/staging/rtl8723bs/include/hal_com.h b/drivers/staging/rtl8723bs/include/hal_com.h
-index 5c4268955275..c4b83eb16326 100644
---- a/drivers/staging/rtl8723bs/include/hal_com.h
-+++ b/drivers/staging/rtl8723bs/include/hal_com.h
-@@ -193,7 +193,7 @@ enum FIRMWARE_SOURCE {
- u8 rtw_hal_data_init(struct adapter *padapter);
- void rtw_hal_data_deinit(struct adapter *padapter);
- 
--void dump_chip_info(HAL_VERSION	ChipVersion);
-+void dump_chip_info(struct HAL_VERSION	ChipVersion);
- 
- u8 /* return the final channel plan decision */
- hal_com_config_channel_plan(
-diff --git a/drivers/staging/rtl8723bs/include/hal_data.h b/drivers/staging/rtl8723bs/include/hal_data.h
-index 04efd09fc628..c933dc6cada2 100644
---- a/drivers/staging/rtl8723bs/include/hal_data.h
-+++ b/drivers/staging/rtl8723bs/include/hal_data.h
-@@ -176,7 +176,7 @@ struct dm_priv {
- 
- 
- struct hal_com_data {
--	HAL_VERSION VersionID;
-+	struct HAL_VERSION VersionID;
- 	enum RT_MULTI_FUNC MultiFunc; /*  For multi-function consideration. */
- 	enum RT_POLARITY_CTL PolarityCtl; /*  For Wifi PDn Polarity control. */
- 	enum RT_REGULATOR_MODE	RegulatorMode; /*  switching regulator or LDO */
+ #define INCLUDE_MULTI_FUNC_BT(_Adapter)  \
+ 	(GET_HAL_DATA(_Adapter)->MultiFunc & RT_MULTI_FUNC_BT)
 -- 
 2.30.2
 
