@@ -1,93 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67998338990
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 11:03:13 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E5F4338A93
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 11:51:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 08B836FAD1;
-	Fri, 12 Mar 2021 10:03:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 951334ED6C;
+	Fri, 12 Mar 2021 10:51:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5T5V5BUM83Hs; Fri, 12 Mar 2021 10:03:10 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TfhrH05FJv95; Fri, 12 Mar 2021 10:51:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5CF656F9BA;
-	Fri, 12 Mar 2021 10:03:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 72CE84ED27;
+	Fri, 12 Mar 2021 10:51:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 820621BF383
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 10:02:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 732DA1BF34F
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 10:51:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6D9A58450F
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 10:02:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6FA38844F4
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 10:51:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 14fbB-tio1ZW for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 10:02:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C008884506
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 10:02:57 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12CA0EsK143158;
- Fri, 12 Mar 2021 10:02:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=akbLYMZRzQqZZpbJ+DtKwfG0zRi+SfnjQjeinw9NplI=;
- b=lYovsrs/X7GBkXTV9OEcuVPPBDNJLx1JaWxYK/kSgyQMi7uRNDQl5P9N5ZxOoVhXFAQP
- KPrWsnUpXfNgTQENI349Gi0EBewCqObDWW1eteu9i1iXnbSUrvV4sQXZmk5n1EUkrHeV
- dVr0F1jIznWu5PYUxzMjCIeM3rXQSHIszFau0x/4YKuYcn274SSgPkm9bj4msNCUQwLr
- /YJ94OON4U+aWefd8yVRplPRR6dfC/Wluxg2+w81U91nLA7RgdSHDixuCC6QwqcA124F
- bPOdqtvPUF8KXWB/Gg7AyC9gwzmPFVdqD4cABezfaPJ0PNUSues5Z8SMCmDB73GuFPKg 0g== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 37415rhhgc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 12 Mar 2021 10:02:56 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12CA1E9T070444;
- Fri, 12 Mar 2021 10:02:54 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 374kgwa7ax-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 12 Mar 2021 10:02:54 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 12CA2rBe026796;
- Fri, 12 Mar 2021 10:02:53 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 12 Mar 2021 02:02:52 -0800
-Date: Fri, 12 Mar 2021 13:02:44 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Hao Peng <penghaob@uniontech.com>
-Subject: Re: [PATCH] staging: rtl8723bs: add initial value
-Message-ID: <20210312100244.GN2087@kadam>
-References: <20210311063838.19756-1-penghaob@uniontech.com>
+ with ESMTP id IQbwTVN9wHYF for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 10:51:41 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
+ [IPv6:2a00:1450:4864:20::32c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AC3B9844F0
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 10:51:41 +0000 (UTC)
+Received: by mail-wm1-x32c.google.com with SMTP id
+ b2-20020a7bc2420000b029010be1081172so14902060wmj.1
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 02:51:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=1xqbdJpzo9WZ92Ur0/uK5J2PqPmNSDd9F341QSbm7Dc=;
+ b=Uednlt9G1tV+9cEcaaO0SYY595OIOPWY2an+lijefiDCw63Slkl4s3uLeIjeZ+kcJs
+ UMXDatma8bhnWRY3BDLMJCDcKKHqlhwVRytm6MhgpuAIJ7sDfma/3l/FqsXkOIi8z7Tk
+ 0PVT9AGsMg2MAHfkoPgRZ0eTF89vf0Pr3A9s8wbsBCHChJ7Sdo5H3RdvbguBliYy3Rjz
+ b/TnzvPVRuq4ZZC7l6NkWgQsc4wG44EM2jjt4sqSTXE6P3b7M8/1DXuxInh32oDpek+p
+ Pgyb1GSjO/lZjWpFRBgd8DUy9GpscmKKoXfwIK7jrUCdNrJYnY+oXVhHQnIJ71dgrB46
+ j8UQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=1xqbdJpzo9WZ92Ur0/uK5J2PqPmNSDd9F341QSbm7Dc=;
+ b=N2gAoAbtzN4HShnxSjq9bvXwtMAxZOJljfSaapajkGGrNBQ1D4HBIRLFcLzeZU+FYm
+ MsfmMV7VetQd56OAj+aNvR3/SyJDYd7cmw5660spjHeafLoH9pNVOwVBrqKfX8g6FiNl
+ zShyBum2TeT3Rl2hq0GG1ckDJtcHfo2tau1d2eD7wVeB6WanKg5qxtIzNLQBJRY81j9t
+ OrgcXzmZllKhNt7YG1U82oFY7TNiq8lORJIZhRQgCCzoBWY7M1XDGYAYFKRX5aSb9Mmi
+ 3O36wRQbT+XZGZEQ5geDwcOj8Hiu3iF5FkIgoWlX3xbIG0xQuKslWb4KOOGpJKWndB+6
+ F8ig==
+X-Gm-Message-State: AOAM531KNF24bj9N+b2hW9anJ7Z+mUtjhXAdOk8urDHb3wkC8a/zLb1h
+ R6iYHoHnlyJl7bBsx4srAOc=
+X-Google-Smtp-Source: ABdhPJz8WmWHma02Qb3eE+57SlmK2DG0BHdrPgW/wZYw4VMHeb/PSXzvltZe0dT2YwqDuAhm+KdUUA==
+X-Received: by 2002:a1c:7519:: with SMTP id o25mr12440710wmc.103.1615546300066; 
+ Fri, 12 Mar 2021 02:51:40 -0800 (PST)
+Received: from agape.jhs ([5.171.81.107])
+ by smtp.gmail.com with ESMTPSA id n6sm8481257wrw.63.2021.03.12.02.51.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Mar 2021 02:51:39 -0800 (PST)
+Date: Fri, 12 Mar 2021 11:51:37 +0100
+From: Fabio Aiuto <fabioaiuto83@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8723bs: put quoted string in a single line
+Message-ID: <20210312105134.GA6079@agape.jhs>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210311063838.19756-1-penghaob@uniontech.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9920
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- adultscore=0
- malwarescore=0 bulkscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2103120067
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9920
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- lowpriorityscore=0
- impostorscore=0 mlxlogscore=999 malwarescore=0 suspectscore=0 adultscore=0
- phishscore=0 spamscore=0 priorityscore=1501 bulkscore=0 clxscore=1011
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2103120067
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,31 +86,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- izabela.bakollari@gmail.com, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 11, 2021 at 02:38:38PM +0800, Hao Peng wrote:
-> Add initial value for some uninitialized variable and array.
-> 
+fix the following checkpatch issues:
 
-None of these are ever used uninitialized.  It's weird that you would
-even think that.
+WARNING: quoted string split across lines
++		DBG_871X("HT: STA %pM HT Capabilities "
++			   "Info: 0x%04x\n", MAC_ARG(psta->hwaddr), ht_capab);
 
->  			if (pmlmeext->active_keep_alive_check) {
-> -				int stainfo_offset;
-> +				int stainfo_offset = 0;
->  
->  				stainfo_offset = rtw_stainfo_offset(pstapriv, psta);
-                                ^^^^^^^^^^^^^^^^
-This one is initialized on the very next line so all the patch does is
-introduce static checker warnings for no reason.
+WARNING: quoted string split across lines
++			DBG_871X("%s STA %pM - no "
++				   "greenfield, num of non-gf stations %d\n",
 
-regards,
-dan carpenter
+WARNING: quoted string split across lines
++			DBG_871X("%s STA %pM - 20 MHz HT, "
++				   "num of 20MHz HT STAs %d\n",
+
+Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index b6f944b37b08..b8706e1eb8ca 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -2009,8 +2009,8 @@ void bss_cap_update_on_sta_join(struct adapter *padapter, struct sta_info *psta)
+ 	if (psta->flags & WLAN_STA_HT) {
+ 		u16 ht_capab = le16_to_cpu(psta->htpriv.ht_cap.cap_info);
+ 
+-		DBG_871X("HT: STA %pM HT Capabilities "
+-			   "Info: 0x%04x\n", MAC_ARG(psta->hwaddr), ht_capab);
++		DBG_871X("HT: STA %pM HT Capabilities Info: 0x%04x\n",
++			 MAC_ARG(psta->hwaddr), ht_capab);
+ 
+ 		if (psta->no_ht_set) {
+ 			psta->no_ht_set = 0;
+@@ -2022,10 +2022,9 @@ void bss_cap_update_on_sta_join(struct adapter *padapter, struct sta_info *psta)
+ 				psta->no_ht_gf_set = 1;
+ 				pmlmepriv->num_sta_ht_no_gf++;
+ 			}
+-			DBG_871X("%s STA %pM - no "
+-				   "greenfield, num of non-gf stations %d\n",
+-				   __func__, MAC_ARG(psta->hwaddr),
+-				   pmlmepriv->num_sta_ht_no_gf);
++			DBG_871X("%s STA %pM - no greenfield, num of non-gf stations %d\n",
++				 __func__, MAC_ARG(psta->hwaddr),
++				 pmlmepriv->num_sta_ht_no_gf);
+ 		}
+ 
+ 		if ((ht_capab & IEEE80211_HT_CAP_SUP_WIDTH) == 0) {
+@@ -2033,10 +2032,9 @@ void bss_cap_update_on_sta_join(struct adapter *padapter, struct sta_info *psta)
+ 				psta->ht_20mhz_set = 1;
+ 				pmlmepriv->num_sta_ht_20mhz++;
+ 			}
+-			DBG_871X("%s STA %pM - 20 MHz HT, "
+-				   "num of 20MHz HT STAs %d\n",
+-				   __func__, MAC_ARG(psta->hwaddr),
+-				   pmlmepriv->num_sta_ht_20mhz);
++			DBG_871X("%s STA %pM - 20 MHz HT, num of 20MHz HT STAs %d\n",
++				 __func__, MAC_ARG(psta->hwaddr),
++				 pmlmepriv->num_sta_ht_20mhz);
+ 		}
+ 
+ 	} else {
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
