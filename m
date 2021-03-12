@@ -1,82 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5275E338765
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:31:59 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56C12338764
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 09:31:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E47D44ED6C;
-	Fri, 12 Mar 2021 08:31:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EF0E16FA78;
+	Fri, 12 Mar 2021 08:31:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IuVMlvGEFeED; Fri, 12 Mar 2021 08:31:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vRuncjhdWr92; Fri, 12 Mar 2021 08:31:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EE4554ED57;
-	Fri, 12 Mar 2021 08:31:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0613C6F593;
+	Fri, 12 Mar 2021 08:31:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F34D41C1135
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DF5461BF59B
  for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EE3A260607
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CEA374ED4E
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 08:27:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xq9SXQPmvbUE for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 08:27:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id v3bM9Yiqmhyt for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 08:27:07 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com
- [IPv6:2a00:1450:4864:20::335])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3F50B6067E
+Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
+ [IPv6:2a00:1450:4864:20::333])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D1CE04ED4D
  for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 08:27:06 +0000 (UTC)
-Received: by mail-wm1-x335.google.com with SMTP id
- b2-20020a7bc2420000b029010be1081172so14638823wmj.1
+Received: by mail-wm1-x333.google.com with SMTP id g20so3254955wmk.3
  for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 00:27:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=Ez+F5WCjFOOx5t8XZeJ520tcjODhLMDov2OJ/oSwr2c=;
- b=kxDucYzND1DILIEdAynNEEfiQyH3PM3AUQdlRBXQ/RoegyCi2k5Cmyt/QKksSn8iZi
- 1oUocmfqKleZybGQKsSM/oof8HfsZBWyhLE9Jc9G77/bw2lHeASnqf/8zJW0H9ceJzRa
- 0T05hPIQb0S3grn5b6APvR0gUQBbM6Vld/O1T5uPsFR0ztfCV1Jlb7HSxaAatVopWM0K
- NEt4eUHGrDt3mwm0RB1iDlub6R/EXsJ6g7Eru1aTIelgLIRxFDbPKdiFxvjJbecdoQn+
- +URz5IxAq7mu8f8a/lJwmx8NbEZaybxsNcZrTGMpEXWxFOLDFM+OQ8Rio8kCkQzwjI+e
- 9naw==
+ bh=DmIYAOSiaecbD99RCrcWKAhkMfAVuW9cIetu/J3pfIc=;
+ b=Yova+FIXHhw9jdqNiMf310Dqc07TqSJZtoGiiiDaMXL5mP8wyr9W4eF5zIDarJVG1q
+ HsgsWVpJtTGsrgZ4DbxXZzNQZ4OmKq2JC+8X8XsSu02hodO6ITCoYgJuvAffDSAkQK7y
+ Gh9wGgO1IvK1Ko7++Tu/QVtJRGEsKeOfB9/TAshpLWm2w7vepxp6792JbwuHoD/liN+g
+ Bmp4IvFkAMYHSbbiuWdgOJFllbyPbY7tXHiSsSxZd4Tz8CUUT04GDP7daNSnt3VTINKt
+ RrsVQu7wUaunUcU2lBcvYkkKQfVq81K2xma9TA5Bi/wF3r6DRJS4NftNM++Mxa/zIgcL
+ 8RtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Ez+F5WCjFOOx5t8XZeJ520tcjODhLMDov2OJ/oSwr2c=;
- b=luc8qJJH9SdFuZ/B4RPCz8bIQTrF8UBb9yq/+pTvkQhzUqafzruDbVT64LFhlgSXjO
- RPa7PeXm6pqT/ASQ1YRK9kKrLLI2/mkUPgCe0myDzJ2SycX/Zh8ojg5CeiyBT3g96rcL
- PTJKV/jZJ0XQZZzGovzXiwpCDfqUI36/3Mrh/4DEea6XeXFaFbIqcun6bs8ywxEfhT/g
- IiFL+yk441ZU1brdbG1hCLjUFDDpJbeOLW2d8ldKfT8I0bN6UvmMJ6VrfqKbORQWU8xI
- cF0Svp8JhIm8QFJxpNoMlt+ev63J2GICZZ2yRtk85hfUpDjoFuehJDRN1cD0/akJc5ef
- A4pQ==
-X-Gm-Message-State: AOAM530CLPUtTP5BEFWOBbvOHQwrIpQ1HRA88oli3CGM8T+EGDtKyeu4
- c2w0fSjgEsnoAiWwZGUW6w3c7PzXHWM=
-X-Google-Smtp-Source: ABdhPJwH85+ZbKp6GvM27BV60Tyw6GTnXSXkRuOcB/9tdOhVd5T/pLqsnn4MOksxp8shqCs/Yknafw==
-X-Received: by 2002:a05:600c:19d1:: with SMTP id
- u17mr11740926wmq.141.1615537624581; 
- Fri, 12 Mar 2021 00:27:04 -0800 (PST)
+ bh=DmIYAOSiaecbD99RCrcWKAhkMfAVuW9cIetu/J3pfIc=;
+ b=GiLmqK4z+NAeq0CSYFd2jDkfXm+iTIkVrHWk4jbcnL7KfgitT6I6Yic8aycTlzwRaQ
+ V3jwq77r7idCrnp1sJnnLrKMD+28bP1F0fOpvJVyXGW3S42UTZRq9YkWuwCU75EDBzxB
+ TiEcA0jYg8QDdj/bBT279bqFmwt73FV789UWupT6U1BQNSpCU3XsP7HAsDkiLRENnuLo
+ JPW/GPmmyGFvDm7anyY2YxijL+BoBUa5CUy7ch2Vb6ItTrooRPMq65QRNPgHAZLTWOgk
+ /zFfGCCCKWpHFUMYtxSG7NRYUOszvz/gKxOmMtBM3UaI3MZ1VpB5LsKCse+M8HPXDYuf
+ tn/w==
+X-Gm-Message-State: AOAM530+Kl34yzx1VZyvM/dJY6u6EsAnUOh04yEe19o0cYB9y4Jv47lT
+ XGvaRj2KiKa9sZLTy1KUkoI=
+X-Google-Smtp-Source: ABdhPJxN3zeTRzzzfjtwrtR1gyPVJ1s2b0f1HtEJMxJGq7/bx+ejJDZKaovYq/DTnDEiseRGzZ51vQ==
+X-Received: by 2002:a05:600c:22d9:: with SMTP id
+ 25mr11738308wmg.108.1615537625163; 
+ Fri, 12 Mar 2021 00:27:05 -0800 (PST)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id i8sm7743979wry.90.2021.03.12.00.27.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Mar 2021 00:27:04 -0800 (PST)
+ Fri, 12 Mar 2021 00:27:05 -0800 (PST)
 From: Marco Cesati <marcocesati@gmail.com>
 X-Google-Original-From: Marco Cesati <marco.cesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 25/33] staging: rtl8723bs: remove typedefs in sta_info.h
-Date: Fri, 12 Mar 2021 09:26:30 +0100
-Message-Id: <20210312082638.25512-26-marco.cesati@gmail.com>
+Subject: [PATCH 26/33] staging: rtl8723bs: remove typedefs in ieee80211.h
+Date: Fri, 12 Mar 2021 09:26:31 +0100
+Message-Id: <20210312082638.25512-27-marco.cesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210312082638.25512-1-marco.cesati@gmail.com>
 References: <20210312082638.25512-1-marco.cesati@gmail.com>
@@ -98,46 +97,85 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This commit fixes the following checkpatch.pl warning:
+This commit fixes the following checkpatch.pl warnings:
 
     WARNING: do not add new typedefs
-    #34: FILE: include/sta_info.h:34:
-    +typedef struct _RSSI_STA {
+    #128: FILE: include/ieee80211.h:128:
+    +typedef enum _RATEID_IDX_ {
+
+    WARNING: do not add new typedefs
+    #142: FILE: include/ieee80211.h:142:
+    +typedef enum _RATR_TABLE_MODE {
+
+    WARNING: do not add new typedefs
+    #986: FILE: include/ieee80211.h:986:
+    +typedef enum { ParseOK = 0, ParseUnknown = 1, ParseFailed = -1 } ParseRes;
 
 Signed-off-by: Marco Cesati <marco.cesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/sta_info.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ieee80211.c |  2 +-
+ drivers/staging/rtl8723bs/include/ieee80211.h  | 12 ++++++------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/sta_info.h b/drivers/staging/rtl8723bs/include/sta_info.h
-index 734f4e2ecd66..1dbbe6cbf174 100644
---- a/drivers/staging/rtl8723bs/include/sta_info.h
-+++ b/drivers/staging/rtl8723bs/include/sta_info.h
-@@ -31,13 +31,13 @@ struct wlan_acl_pool {
- 	struct __queue	acl_node_q;
- };
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+index be4cffce4f5d..a2a97826197a 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+@@ -958,7 +958,7 @@ static int rtw_ieee802_11_parse_vendor_specific(u8 *pos, uint elen,
+  * @show_errors: Whether to show parsing errors in debug log
+  * Returns: Parsing result
+  */
+-ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
++enum ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
+ 				struct rtw_ieee802_11_elems *elems,
+ 				int show_errors)
+ {
+diff --git a/drivers/staging/rtl8723bs/include/ieee80211.h b/drivers/staging/rtl8723bs/include/ieee80211.h
+index f80db2c984a4..10b599f835bb 100644
+--- a/drivers/staging/rtl8723bs/include/ieee80211.h
++++ b/drivers/staging/rtl8723bs/include/ieee80211.h
+@@ -125,7 +125,7 @@ extern u8 RSN_CIPHER_SUITE_CCMP[];
+ extern u8 RSN_CIPHER_SUITE_WEP104[];
  
--typedef struct _RSSI_STA {
-+struct RSSI_STA {
- 	s32	UndecoratedSmoothedPWDB;
- 	s32	UndecoratedSmoothedCCK;
- 	s32	UndecoratedSmoothedOFDM;
- 	u64	PacketMap;
- 	u8 ValidBit;
--} RSSI_STA, *PRSSI_STA;
+ 
+-typedef enum _RATEID_IDX_ {
++enum RATEID_IDX {
+ 	RATEID_IDX_BGN_40M_2SS = 0,
+ 	RATEID_IDX_BGN_40M_1SS = 1,
+ 	RATEID_IDX_BGN_20M_2SS_BN = 2,
+@@ -137,9 +137,9 @@ typedef enum _RATEID_IDX_ {
+ 	RATEID_IDX_B = 8,
+ 	RATEID_IDX_VHT_2SS = 9,
+ 	RATEID_IDX_VHT_1SS = 10,
+-} RATEID_IDX, *PRATEID_IDX;
 +};
  
- struct	stainfo_stats	{
+-typedef enum _RATR_TABLE_MODE {
++enum RATR_TABLE_MODE {
+ 	RATR_INX_WIRELESS_NGB = 0,	/*  BGN 40 Mhz 2SS 1SS */
+ 	RATR_INX_WIRELESS_NG = 1,		/*  GN or N */
+ 	RATR_INX_WIRELESS_NB = 2,		/*  BGN 20 Mhz 2SS 1SS  or BN */
+@@ -149,7 +149,7 @@ typedef enum _RATR_TABLE_MODE {
+ 	RATR_INX_WIRELESS_B = 6,
+ 	RATR_INX_WIRELESS_MC = 7,
+ 	RATR_INX_WIRELESS_AC_N = 8,
+-} RATR_TABLE_MODE, *PRATR_TABLE_MODE;
++};
  
-@@ -196,7 +196,7 @@ struct sta_info {
- 	u32 assoc_req_len;
  
- 	/* for DM */
--	RSSI_STA	 rssi_stat;
-+	struct RSSI_STA	 rssi_stat;
+ enum NETWORK_TYPE {
+@@ -983,9 +983,9 @@ struct rtw_ieee802_11_elems {
+ 	u8 vht_op_mode_notify_len;
+ };
  
- 	/* ODM_STA_INFO_T */
- 	/*  ================ODM Relative Info ======================= */
+-typedef enum { ParseOK = 0, ParseUnknown = 1, ParseFailed = -1 } ParseRes;
++enum ParseRes { ParseOK = 0, ParseUnknown = 1, ParseFailed = -1 };
+ 
+-ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
++enum ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
+ 				struct rtw_ieee802_11_elems *elems,
+ 				int show_errors);
+ 
 -- 
 2.30.2
 
