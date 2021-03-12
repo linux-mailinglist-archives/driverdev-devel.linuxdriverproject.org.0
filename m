@@ -1,81 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F8073396AB
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 19:34:31 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A11EB339808
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 21:12:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ADEE74EBC1;
-	Fri, 12 Mar 2021 18:34:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9473884108;
+	Fri, 12 Mar 2021 20:12:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5GoGunKEAzkZ; Fri, 12 Mar 2021 18:34:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kTj08NGpu4-O; Fri, 12 Mar 2021 20:12:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C635E4645A;
-	Fri, 12 Mar 2021 18:34:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7FC2283F69;
+	Fri, 12 Mar 2021 20:12:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 50A7B1BF3C0
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 18:34:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A20931BF580
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 20:12:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BCF7E4645A
- for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 18:34:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9CFF64ED9B
+ for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 20:12:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uCUaguv5tMQ6 for <devel@linuxdriverproject.org>;
- Fri, 12 Mar 2021 18:34:11 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com
- [IPv6:2a00:1450:4864:20::32a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F190446562
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 18:34:10 +0000 (UTC)
-Received: by mail-wm1-x32a.google.com with SMTP id o26so4370612wmc.5
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 10:34:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=gefUvqZ+PVzm20AG/CnQcxDANW6owChYqRkVVyHl7s0=;
- b=tNfaRqIQDc771K3h+DqnDik5p/3ktVZzOnsrDjc5aoWX8WfMrOAzxMvfKrdD54awI6
- rmXNInKLormdl+pXjtXo5BX9k2AGDOagyvx2ObXqF2/5fppPG35i+Tg5P8Eh8m3poUpU
- 3CIPNHyC+q6BRKs7iyBVP2pTYahlj0phPySyETbVDcS0GXS58sVYb/qCHJYmzlG3qdv2
- x8oJwtPCFCWmaJ1xdB9wAdEkGazaHyhcYOJ1UPu0LuNcxMcz7KCzv9g23WnQEKUvv2bz
- 63sc0pLttI7lwWElMMGugQVPEC7xHTYK+oKL/ZTRzZ1LcT9fSI3OvJN3lDFPUMDkWtkF
- PoZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=gefUvqZ+PVzm20AG/CnQcxDANW6owChYqRkVVyHl7s0=;
- b=f0+olh7D7wwko6eW3jJoKpO5DVLgrmHYy6tSgNJtKwY1NqE6NEQtwf8Ln1gDldpIo9
- oMdGDGeELI6e8QBM3VesBpM7B1X09sSvyjD+Od9zXh7ua5HfOM/2EOBkDzls8napJzxD
- qghQcvt3VF52g4ziO5s1lbJAeR3ZZeBiNje4OGQZt1uNqU4dIKo0I6IfUhjH233Xhggb
- VK4q+M+2JU9qGmT5RMWLsq1xp2tpOiesCXbOgdY8O+RlRDRulnGhOyVGS1yQ0hLMfmqw
- SOyoM94FlXQ7otp6xHRT9jyNf+rT3tSJrwlIDPTgpREV1wMfOn6Mio82b7gML1dzvvO1
- a49w==
-X-Gm-Message-State: AOAM530BLaxOp7lbQ01TkK0WRf3zjXABBhcdnyf3rbJbBuzbwDUQOrgF
- IpcOq287ZPDx8VHW6yvrS5w=
-X-Google-Smtp-Source: ABdhPJxPMHJAaDy3+9YtfH9VzWiqu8h81vx2+h496wEyPVDZPPqp4qsDpE3YZKpIZ3OQzPKYt2fbfg==
-X-Received: by 2002:a05:600c:4305:: with SMTP id
- p5mr14198573wme.58.1615574049308; 
- Fri, 12 Mar 2021 10:34:09 -0800 (PST)
-Received: from agape.jhs ([151.57.163.80])
- by smtp.gmail.com with ESMTPSA id v2sm24905188wmj.1.2021.03.12.10.34.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Mar 2021 10:34:09 -0800 (PST)
-Date: Fri, 12 Mar 2021 19:34:06 +0100
-From: Fabio Aiuto <fabioaiuto83@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 4/4] staging: rtl8723bs: remove unused code blocks
- conditioned by never set CONFIG_TCP_CSUM_OFFLOAD_RX
-Message-ID: <0975dcb60dfb6abdc6a3233283908bd57472c225.1615572985.git.fabioaiuto83@gmail.com>
-References: <cover.1615572985.git.fabioaiuto83@gmail.com>
+ with ESMTP id f-UK7UBNdnCU for <devel@linuxdriverproject.org>;
+ Fri, 12 Mar 2021 20:12:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [85.220.165.71])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 83FD74EDA4
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 20:12:27 +0000 (UTC)
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1lKo8y-0004RE-Cj; Fri, 12 Mar 2021 21:12:20 +0100
+Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1lKo8w-00089j-Gb; Fri, 12 Mar 2021 21:12:18 +0100
+Date: Fri, 12 Mar 2021 21:12:17 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v8 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
+Message-ID: <20210312201217.n2sav23swy7ii4uo@pengutronix.de>
+References: <20210312122454.24480-1-nsaenzjulienne@suse.de>
+ <20210312122454.24480-12-nsaenzjulienne@suse.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1615572985.git.fabioaiuto83@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20210312122454.24480-12-nsaenzjulienne@suse.de>
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: devel@driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,64 +66,173 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
+ devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
+ linus.walleij@linaro.org, dmitry.torokhov@gmail.com,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
+ wahrenst@gmx.net, p.zabel@pengutronix.de, linux-input@vger.kernel.org,
+ bgolaszewski@baylibre.com, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============1712947991724340568=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-remove conditional code blocks checked by unused CONFIG_TCP_CSUM_OFFLOAD_RX
 
-cleaning required in TODO file:
+--===============1712947991724340568==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="e6h2cu7dk3om4cg7"
+Content-Disposition: inline
 
-find and remove code blocks guarded by never set CONFIG_FOO defines
 
-Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
----
- drivers/staging/rtl8723bs/include/rtw_recv.h  | 5 -----
- drivers/staging/rtl8723bs/os_dep/recv_linux.c | 8 --------
- 2 files changed, 13 deletions(-)
+--e6h2cu7dk3om4cg7
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
-index b4aeb44d5d6e..078854a55a31 100644
---- a/drivers/staging/rtl8723bs/include/rtw_recv.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
-@@ -159,11 +159,6 @@ struct rx_pkt_attrib	{
- 
- 	u8 ack_policy;
- 
--/* ifdef CONFIG_TCP_CSUM_OFFLOAD_RX */
--	u8 tcpchk_valid; /*  0: invalid, 1: valid */
--	u8 ip_chkrpt; /* 0: incorrect, 1: correct */
--	u8 tcp_chkrpt; /* 0: incorrect, 1: correct */
--/* endif */
- 	u8 key_index;
- 
- 	u8 data_rate;
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index f52802f24466..78d5b6913467 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -138,15 +138,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
- 		pkt->protocol = eth_type_trans(pkt, padapter->pnetdev);
- 		pkt->dev = padapter->pnetdev;
- 
--#ifdef CONFIG_TCP_CSUM_OFFLOAD_RX
--		if ((pattrib->tcpchk_valid == 1) && (pattrib->tcp_chkrpt == 1))
--			pkt->ip_summed = CHECKSUM_UNNECESSARY;
--		else
--			pkt->ip_summed = CHECKSUM_NONE;
--
--#else /* !CONFIG_TCP_CSUM_OFFLOAD_RX */
- 		pkt->ip_summed = CHECKSUM_NONE;
--#endif /* CONFIG_TCP_CSUM_OFFLOAD_RX */
- 
- 		ret = rtw_netif_rx(padapter->pnetdev, pkt);
- 	}
--- 
-2.20.1
+Hello Nicolas,
+
+On Fri, Mar 12, 2021 at 01:24:54PM +0100, Nicolas Saenz Julienne wrote:
+> Adds support to control the PWM bus available in official Raspberry Pi
+> PoE HAT. Only RPi's co-processor has access to it, so commands have to
+> be sent through RPi's firmware mailbox interface.
+>=20
+> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+>=20
+> ---
+>=20
+> Changes since v7:
+>  - Remove unwarranted RPI_PWM_DEF_DUTY_REG usage
+>=20
+>  Changes since v6:
+> - Use %pe
+> - Round divisions properly
+> - Use dev_err_probe()
+> - Pass check_patch
+>=20
+> Changes since v3:
+>  - Rename compatible string to be more explicit WRT to bus's limitations
+>=20
+> Changes since v2:
+>  - Use devm_rpi_firmware_get()
+>  - Rename driver
+>  - Small cleanups
+>=20
+> Changes since v1:
+>  - Use default pwm bindings and get rid of xlate() function
+>  - Correct spelling errors
+>  - Correct apply() function
+>  - Round values
+>  - Fix divisions in arm32 mode
+>  - Small cleanups
+>=20
+>  drivers/pwm/Kconfig               |   9 ++
+>  drivers/pwm/Makefile              |   1 +
+>  drivers/pwm/pwm-raspberrypi-poe.c | 206 ++++++++++++++++++++++++++++++
+>  3 files changed, 216 insertions(+)
+>  create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
+>=20
+> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> index a7a7a9f26aef..d3371ac7b871 100644
+> --- a/drivers/pwm/Kconfig
+> +++ b/drivers/pwm/Kconfig
+> @@ -431,6 +431,15 @@ config PWM_PXA
+>  	  To compile this driver as a module, choose M here: the module
+>  	  will be called pwm-pxa.
+> =20
+> +config PWM_RASPBERRYPI_POE
+> +	tristate "Raspberry Pi Firwmware PoE Hat PWM support"
+> +	# Make sure not 'y' when RASPBERRYPI_FIRMWARE is 'm'. This can only
+> +	# happen when COMPILE_TEST=3Dy, hence the added !RASPBERRYPI_FIRMWARE.
+> +	depends on RASPBERRYPI_FIRMWARE || (COMPILE_TEST && !RASPBERRYPI_FIRMWA=
+RE)
+> +	help
+> +	  Enable Raspberry Pi firmware controller PWM bus used to control the
+> +	  official RPI PoE hat
+> +
+>  config PWM_RCAR
+>  	tristate "Renesas R-Car PWM support"
+>  	depends on ARCH_RENESAS || COMPILE_TEST
+> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> index 4e35a55fa7b6..d3879619bd76 100644
+> --- a/drivers/pwm/Makefile
+> +++ b/drivers/pwm/Makefile
+> @@ -39,6 +39,7 @@ obj-$(CONFIG_PWM_NTXEC)		+=3D pwm-ntxec.o
+>  obj-$(CONFIG_PWM_OMAP_DMTIMER)	+=3D pwm-omap-dmtimer.o
+>  obj-$(CONFIG_PWM_PCA9685)	+=3D pwm-pca9685.o
+>  obj-$(CONFIG_PWM_PXA)		+=3D pwm-pxa.o
+> +obj-$(CONFIG_PWM_RASPBERRYPI_POE)	+=3D pwm-raspberrypi-poe.o
+>  obj-$(CONFIG_PWM_RCAR)		+=3D pwm-rcar.o
+>  obj-$(CONFIG_PWM_RENESAS_TPU)	+=3D pwm-renesas-tpu.o
+>  obj-$(CONFIG_PWM_ROCKCHIP)	+=3D pwm-rockchip.o
+> diff --git a/drivers/pwm/pwm-raspberrypi-poe.c b/drivers/pwm/pwm-raspberr=
+ypi-poe.c
+> new file mode 100644
+> index 000000000000..71ade5e55069
+> --- /dev/null
+> +++ b/drivers/pwm/pwm-raspberrypi-poe.c
+> @@ -0,0 +1,206 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright 2020 Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+
+2021?
+
+> + * For more information on Raspberry Pi's PoE hat see:
+> + * https://www.raspberrypi.org/products/poe-hat/
+
+Out of personal interest: Is this hat also able to power a RPi CM4?
+
+> + * Limitations:
+> + *  - No disable bit, so a disabled PWM is simulated by duty_cycle 0
+> + *  - Only normal polarity
+> + *  - Fixed 12.5 kHz period
+> + *
+> + * The current period is completed when HW is reconfigured.
+> + */
+
+Other than that as mentioned in the previous round: This looks good,
+
+Reviewed-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+What is your thought about how to get this series merged? At least
+input, staging, armsoc, clk, reset anf firmware are touched. Do you
+prepare a branch for merging in the relevant trees (once you have all
+the necessary Acks)?
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--e6h2cu7dk3om4cg7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmBLyx0ACgkQwfwUeK3K
+7Ak+VQf+I16Pur4J8v1VK5J08zAGFG+/Lgxk4CBXKIV1Hs8zZ+Xj6Y7sobqkPmiG
+/75gKqcFB43BHDrOAwWVMNlE9OChTTrI9grjBHBTGl+46cJkuu5qus/xptp3mxQu
+zdTcmzfkrLYPdw3AQaofaLHg5IL0RZkvovBmiUa+JaN89EtjvuLRIFL8wtipt/0J
+rE8baVUKZd1ttRm+eotIk3iknzxFUe3xAVFJ8YRlNBwyGlEQQBsZFku3+rP2p47w
+6K30Tnft0JKiK+4fuMFhQ5xw3ugSSWThr6/kDYQnTk/BagTPeUyftRmh4/JNkc8X
+7OhSbf8srKbZC8859TEqJZ5M48RRxw==
+=bnOj
+-----END PGP SIGNATURE-----
+
+--e6h2cu7dk3om4cg7--
+
+--===============1712947991724340568==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============1712947991724340568==--
