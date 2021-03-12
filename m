@@ -1,46 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D9AD338CAE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 13:25:45 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E380338CAB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Mar 2021 13:25:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2FADA4ED55;
-	Fri, 12 Mar 2021 12:25:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BF3CB6FAD4;
+	Fri, 12 Mar 2021 12:25:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bUktZHXC0Vlm; Fri, 12 Mar 2021 12:25:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id v8n32XTZEqhw; Fri, 12 Mar 2021 12:25:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C66924ED1C;
-	Fri, 12 Mar 2021 12:25:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ADD9D6F9BA;
+	Fri, 12 Mar 2021 12:25:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 613A81BF59A
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4ED141BF303
  for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 12:25:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 50D8B43269
+ by smtp3.osuosl.org (Postfix) with ESMTP id 48ADB6F9BA
  for <devel@linuxdriverproject.org>; Fri, 12 Mar 2021 12:25:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wHhpWpyCpBT3 for <devel@linuxdriverproject.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TnF4vfCI-vWn for <devel@linuxdriverproject.org>;
  Fri, 12 Mar 2021 12:25:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 04CB143027
- for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 12:25:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4A233606B4
+ for <devel@driverdev.osuosl.org>; Fri, 12 Mar 2021 12:25:19 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id C8322B0AE;
- Fri, 12 Mar 2021 12:25:16 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id A5FD6B0B3;
+ Fri, 12 Mar 2021 12:25:17 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: u.kleine-koenig@pengutronix.de
-Subject: [PATCH v8 00/11] Raspberry Pi PoE HAT fan support
-Date: Fri, 12 Mar 2021 13:24:43 +0100
-Message-Id: <20210312122454.24480-1-nsaenzjulienne@suse.de>
+Subject: [PATCH v8 01/11] firmware: raspberrypi: Keep count of all consumers
+Date: Fri, 12 Mar 2021 13:24:44 +0100
+Message-Id: <20210312122454.24480-2-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210312122454.24480-1-nsaenzjulienne@suse.de>
+References: <20210312122454.24480-1-nsaenzjulienne@suse.de>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -63,125 +65,92 @@ Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
  Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, bgolaszewski@baylibre.com,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The aim of this series is to add support to the fan found on RPi's PoE
-HAT. Some commentary on the design can be found below. But the important
-part to the people CC'd here not involved with PWM is that, in order to
-achieve this properly, we also have to fix the firmware interface the
-driver uses to communicate with the PWM bus (and many other low level
-functions). Specifically, we have to make sure the firmware interface
-isn't unbound while consumers are still up. So, patch #1 & #2 introduce
-reference counting in the firmware interface driver and patches #3 to #8
-update all firmware users. Patches #9 to #11 introduce the new PWM
-driver.
-
-I sent everything as a single series as the final version of the PWM
-drivers depends on the firmware fixes, but I'll be happy to split this
-into two separate series if you think it's better.
-
---- Original cover letter below ---
-
-This series aims at adding support to RPi's official PoE HAT fan[1].
-
-The HW setup is the following:
-
-| Raspberry Pi                               | PoE HAT                    |
- arm core -> Mailbox -> RPi co-processor -> I2C -> Atmel MCU -> PWM -> FAN
-
-The arm cores have only access to the mailbox interface, as i2c0, even if
-physically accessible, is to be used solely by the co-processor
-(VideoCore 4/6).
-
-This series implements a PWM bus, and has pwm-fan sitting on top of it as per
-this discussion: https://lkml.org/lkml/2018/9/2/486. Although this design has a
-series of shortcomings:
-
-- It depends on a DT binding: it's not flexible if a new hat shows up with new
-  functionality, we're not 100% sure we'll be able to expand it without
-  breaking backwards compatibility. But without it we can't make use of DT
-  thermal-zones, which IMO is overkill.
-
-- We're using pwm-fan, writing a hwmon driver would, again, give us more
-  flexibility, but it's not really needed at the moment.
-
-I personally think that it's not worth the effort, it's unlikely we'll get
-things right in advance. And ultimately, if the RPi people come up with
-something new, we can always write a new driver/bindings from scratch (as in
-not reusing previous code).
-
-That said, I'm more than happy to change things if there is a consensus that
-another design will do the trick.
-
-[1] https://www.raspberrypi.org/blog/introducing-power-over-ethernet-poe-hat/
-
----
-
-Changes since v7:
- - Remove unwarranted RPI_PWM_DEF_DUTY_REG usage
-
-Changes since v6:
- - Address PWM driver comments
-
-Changes since v5:
- - Small cleanups
- - Add extra code comments
-
-Changes since v4:
- - Cleanup devm calls
- - Rename compatible string so it's unique to the PoE HAT
-
-Changes since v3:
- - Split first patch, #1 introduces refcount, then #2 the devm function
- - Fix touchscreen function
- - Use kref
-
-Changes since v2:
- - Introduce devm_rpi_firmware_get()
- - Small cleanups in PWM driver
-
-Changes since v1:
- - Address PWM driver changes
- - Fix binding, now with 2 cells
-
-Nicolas Saenz Julienne (11):
-  firmware: raspberrypi: Keep count of all consumers
-  firmware: raspberrypi: Introduce devm_rpi_firmware_get()
-  clk: bcm: rpi: Release firmware handle on unbind
-  gpio: raspberrypi-exp: Release firmware handle on unbind
-  reset: raspberrypi: Release firmware handle on unbind
-  soc: bcm: raspberrypi-power: Release firmware handle on unbind
-  staging: vchiq: Release firmware handle on unbind
-  input: raspberrypi-ts: Release firmware handle when not needed
-  dt-bindings: pwm: Add binding for RPi firmware PWM bus
-  DO NOT MERGE: ARM: dts: Add RPi's official PoE hat support
-  pwm: Add Raspberry Pi Firmware based PWM bus
-
- .../arm/bcm/raspberrypi,bcm2835-firmware.yaml |  20 ++
- arch/arm/boot/dts/bcm2711-rpi-4-b.dts         |  54 +++++
- drivers/clk/bcm/clk-raspberrypi.c             |   2 +-
- drivers/firmware/raspberrypi.c                |  69 +++++-
- drivers/gpio/gpio-raspberrypi-exp.c           |   2 +-
- drivers/input/touchscreen/raspberrypi-ts.c    |   2 +-
- drivers/pwm/Kconfig                           |   9 +
- drivers/pwm/Makefile                          |   1 +
- drivers/pwm/pwm-raspberrypi-poe.c             | 206 ++++++++++++++++++
- drivers/reset/reset-raspberrypi.c             |   2 +-
- drivers/soc/bcm/raspberrypi-power.c           |   2 +-
- .../interface/vchiq_arm/vchiq_arm.c           |   2 +-
- .../pwm/raspberrypi,firmware-poe-pwm.h        |  13 ++
- include/soc/bcm2835/raspberrypi-firmware.h    |  10 +
- 14 files changed, 385 insertions(+), 9 deletions(-)
- create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
- create mode 100644 include/dt-bindings/pwm/raspberrypi,firmware-poe-pwm.h
-
--- 
-2.30.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+V2hlbiB1bmJpbmRpbmcgdGhlIGZpcm13YXJlIGRldmljZSB3ZSBuZWVkIHRvIG1ha2Ugc3VyZSBp
+dCBoYXMgbm8KY29uc3VtZXJzIGxlZnQuIE90aGVyd2lzZSB3ZSdkIGxlYXZlIHRoZW0gd2l0aCBh
+IGZpcm13YXJlIGhhbmRsZQpwb2ludGluZyBhdCBmcmVlZCBtZW1vcnkuCgpLZWVwIGEgcmVmZXJl
+bmNlIGNvdW50IG9mIGFsbCBjb25zdW1lcnMgYW5kIGludHJvZHVjZSBycGlfZmlybXdhcmVfcHV0
+KCkKd2hpY2ggd2lsbCBwZXJtaXQgYXV0b21hdGljYWxseSBkZWNyZWFzZSB0aGUgcmVmZXJlbmNl
+IGNvdW50IHVwb24KdW5iaW5kaW5nIGNvbnN1bWVyIGRyaXZlcnMuCgpTdWdnZXN0ZWQtYnk6IFV3
+ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+ClNpZ25lZC1v
+ZmYtYnk6IE5pY29sYXMgU2FlbnogSnVsaWVubmUgPG5zYWVuemp1bGllbm5lQHN1c2UuZGU+ClJl
+dmlld2VkLWJ5OiBGbG9yaWFuIEZhaW5lbGxpIDxmLmZhaW5lbGxpQGdtYWlsLmNvbT4KUmV2aWV3
+ZWQtYnk6IFN0ZXBoZW4gQm95ZCA8c2JveWRAa2VybmVsLm9yZz4KUmV2aWV3ZWQtYnk6IEJhcnRv
+c3ogR29sYXN6ZXdza2kgPGJnb2xhc3pld3NraUBiYXlsaWJyZS5jb20+Ci0tLQoKQ2hhbmdlcyBz
+aW5jZSB2NToKIC0gQWRkIGNvbW1lbnQgdG8gYXZvaWQgcGVvcGxlIGJsaW5kbHkgc3dpdGNoaW5n
+IHRoZSBtZW1vcnkgYWxsb2NhdGlvbgogICB0byB0aGUgZGV2bSB2YXJpYW50LgogLSBGaXggZnVu
+Y3Rpb24gZG9jdW1lbnRhdGlvbiBhcyBwZXIgRmxvcmlhbidzIGNvbW1lbnQuCgpDaGFuZ2VzIHNp
+bmNlIHYzOgogLSBVc2Uga3JlZiBpbnN0ZWFkIG9mIHdhaXRpbmcgb24gcmVmY291bnQKCiBkcml2
+ZXJzL2Zpcm13YXJlL3Jhc3BiZXJyeXBpLmMgICAgICAgICAgICAgfCA0MCArKysrKysrKysrKysr
+KysrKysrKy0tCiBpbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBpLWZpcm13YXJlLmggfCAg
+MiArKwogMiBmaWxlcyBjaGFuZ2VkLCAzOSBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZmlybXdhcmUvcmFzcGJlcnJ5cGkuYyBiL2RyaXZlcnMvZmly
+bXdhcmUvcmFzcGJlcnJ5cGkuYwppbmRleCAzMDI1OWRjOWI4MDUuLmI2NWU0YzQ5NTc3MiAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9maXJtd2FyZS9yYXNwYmVycnlwaS5jCisrKyBiL2RyaXZlcnMvZmly
+bXdhcmUvcmFzcGJlcnJ5cGkuYwpAQCAtNyw2ICs3LDcgQEAKICAqLwogCiAjaW5jbHVkZSA8bGlu
+dXgvZG1hLW1hcHBpbmcuaD4KKyNpbmNsdWRlIDxsaW51eC9rcmVmLmg+CiAjaW5jbHVkZSA8bGlu
+dXgvbWFpbGJveF9jbGllbnQuaD4KICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KICNpbmNsdWRl
+IDxsaW51eC9vZl9wbGF0Zm9ybS5oPgpAQCAtMjcsNiArMjgsOCBAQCBzdHJ1Y3QgcnBpX2Zpcm13
+YXJlIHsKIAlzdHJ1Y3QgbWJveF9jaGFuICpjaGFuOyAvKiBUaGUgcHJvcGVydHkgY2hhbm5lbC4g
+Ki8KIAlzdHJ1Y3QgY29tcGxldGlvbiBjOwogCXUzMiBlbmFibGVkOworCisJc3RydWN0IGtyZWYg
+Y29uc3VtZXJzOwogfTsKIAogc3RhdGljIERFRklORV9NVVRFWCh0cmFuc2FjdGlvbl9sb2NrKTsK
+QEAgLTIyNSwxMiArMjI4LDMxIEBAIHN0YXRpYyB2b2lkIHJwaV9yZWdpc3Rlcl9jbGtfZHJpdmVy
+KHN0cnVjdCBkZXZpY2UgKmRldikKIAkJCQkJCS0xLCBOVUxMLCAwKTsKIH0KIAorc3RhdGljIHZv
+aWQgcnBpX2Zpcm13YXJlX2RlbGV0ZShzdHJ1Y3Qga3JlZiAqa3JlZikKK3sKKwlzdHJ1Y3QgcnBp
+X2Zpcm13YXJlICpmdyA9IGNvbnRhaW5lcl9vZihrcmVmLCBzdHJ1Y3QgcnBpX2Zpcm13YXJlLAor
+CQkJCQkgICAgICAgY29uc3VtZXJzKTsKKworCW1ib3hfZnJlZV9jaGFubmVsKGZ3LT5jaGFuKTsK
+KwlrZnJlZShmdyk7Cit9CisKK3ZvaWQgcnBpX2Zpcm13YXJlX3B1dChzdHJ1Y3QgcnBpX2Zpcm13
+YXJlICpmdykKK3sKKwlrcmVmX3B1dCgmZnctPmNvbnN1bWVycywgcnBpX2Zpcm13YXJlX2RlbGV0
+ZSk7Cit9CitFWFBPUlRfU1lNQk9MX0dQTChycGlfZmlybXdhcmVfcHV0KTsKKwogc3RhdGljIGlu
+dCBycGlfZmlybXdhcmVfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIHsKIAlz
+dHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2OwogCXN0cnVjdCBycGlfZmlybXdhcmUgKmZ3
+OwogCi0JZncgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKmZ3KSwgR0ZQX0tFUk5FTCk7CisJ
+LyoKKwkgKiBNZW1vcnkgd2lsbCBiZSBmcmVlZCBieSBycGlfZmlybXdhcmVfZGVsZXRlKCkgb25j
+ZSBhbGwgdXNlcnMgaGF2ZQorCSAqIHJlbGVhc2VkIHRoZWlyIGZpcm13YXJlIGhhbmRsZXMuIERv
+bid0IHVzZSBkZXZtX2t6YWxsb2MoKSBoZXJlLgorCSAqLworCWZ3ID0ga3phbGxvYyhzaXplb2Yo
+KmZ3KSwgR0ZQX0tFUk5FTCk7CiAJaWYgKCFmdykKIAkJcmV0dXJuIC1FTk9NRU07CiAKQEAgLTI0
+Nyw2ICsyNjksNyBAQCBzdGF0aWMgaW50IHJwaV9maXJtd2FyZV9wcm9iZShzdHJ1Y3QgcGxhdGZv
+cm1fZGV2aWNlICpwZGV2KQogCX0KIAogCWluaXRfY29tcGxldGlvbigmZnctPmMpOworCWtyZWZf
+aW5pdCgmZnctPmNvbnN1bWVycyk7CiAKIAlwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBmdyk7
+CiAKQEAgLTI3NSw3ICsyOTgsOCBAQCBzdGF0aWMgaW50IHJwaV9maXJtd2FyZV9yZW1vdmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAlycGlfaHdtb24gPSBOVUxMOwogCXBsYXRmb3Jt
+X2RldmljZV91bnJlZ2lzdGVyKHJwaV9jbGspOwogCXJwaV9jbGsgPSBOVUxMOwotCW1ib3hfZnJl
+ZV9jaGFubmVsKGZ3LT5jaGFuKTsKKworCXJwaV9maXJtd2FyZV9wdXQoZncpOwogCiAJcmV0dXJu
+IDA7CiB9CkBAIC0yODQsMTYgKzMwOCwyNiBAQCBzdGF0aWMgaW50IHJwaV9maXJtd2FyZV9yZW1v
+dmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKICAqIHJwaV9maXJtd2FyZV9nZXQgLSBH
+ZXQgcG9pbnRlciB0byBycGlfZmlybXdhcmUgc3RydWN0dXJlLgogICogQGZpcm13YXJlX25vZGU6
+ICAgIFBvaW50ZXIgdG8gdGhlIGZpcm13YXJlIERldmljZSBUcmVlIG5vZGUuCiAgKgorICogVGhl
+IHJlZmVyZW5jZSB0byBycGlfZmlybXdhcmUgaGFzIHRvIGJlIHJlbGVhc2VkIHdpdGggcnBpX2Zp
+cm13YXJlX3B1dCgpLgorICoKICAqIFJldHVybnMgTlVMTCBpcyB0aGUgZmlybXdhcmUgZGV2aWNl
+IGlzIG5vdCByZWFkeS4KICAqLwogc3RydWN0IHJwaV9maXJtd2FyZSAqcnBpX2Zpcm13YXJlX2dl
+dChzdHJ1Y3QgZGV2aWNlX25vZGUgKmZpcm13YXJlX25vZGUpCiB7CiAJc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldiA9IG9mX2ZpbmRfZGV2aWNlX2J5X25vZGUoZmlybXdhcmVfbm9kZSk7CisJ
+c3RydWN0IHJwaV9maXJtd2FyZSAqZnc7CiAKIAlpZiAoIXBkZXYpCiAJCXJldHVybiBOVUxMOwog
+Ci0JcmV0dXJuIHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOworCWZ3ID0gcGxhdGZvcm1fZ2V0
+X2RydmRhdGEocGRldik7CisJaWYgKCFmdykKKwkJcmV0dXJuIE5VTEw7CisKKwlpZiAoIWtyZWZf
+Z2V0X3VubGVzc196ZXJvKCZmdy0+Y29uc3VtZXJzKSkKKwkJcmV0dXJuIE5VTEw7CisKKwlyZXR1
+cm4gZnc7CiB9CiBFWFBPUlRfU1lNQk9MX0dQTChycGlfZmlybXdhcmVfZ2V0KTsKIApkaWZmIC0t
+Z2l0IGEvaW5jbHVkZS9zb2MvYmNtMjgzNS9yYXNwYmVycnlwaS1maXJtd2FyZS5oIGIvaW5jbHVk
+ZS9zb2MvYmNtMjgzNS9yYXNwYmVycnlwaS1maXJtd2FyZS5oCmluZGV4IGNjOWNkYmM2NjQwMy4u
+ZmRmZWY3ZmU0MGRmIDEwMDY0NAotLS0gYS9pbmNsdWRlL3NvYy9iY20yODM1L3Jhc3BiZXJyeXBp
+LWZpcm13YXJlLmgKKysrIGIvaW5jbHVkZS9zb2MvYmNtMjgzNS9yYXNwYmVycnlwaS1maXJtd2Fy
+ZS5oCkBAIC0xNDAsNiArMTQwLDcgQEAgaW50IHJwaV9maXJtd2FyZV9wcm9wZXJ0eShzdHJ1Y3Qg
+cnBpX2Zpcm13YXJlICpmdywKIAkJCSAgdTMyIHRhZywgdm9pZCAqZGF0YSwgc2l6ZV90IGxlbik7
+CiBpbnQgcnBpX2Zpcm13YXJlX3Byb3BlcnR5X2xpc3Qoc3RydWN0IHJwaV9maXJtd2FyZSAqZncs
+CiAJCQkgICAgICAgdm9pZCAqZGF0YSwgc2l6ZV90IHRhZ19zaXplKTsKK3ZvaWQgcnBpX2Zpcm13
+YXJlX3B1dChzdHJ1Y3QgcnBpX2Zpcm13YXJlICpmdyk7CiBzdHJ1Y3QgcnBpX2Zpcm13YXJlICpy
+cGlfZmlybXdhcmVfZ2V0KHN0cnVjdCBkZXZpY2Vfbm9kZSAqZmlybXdhcmVfbm9kZSk7CiAjZWxz
+ZQogc3RhdGljIGlubGluZSBpbnQgcnBpX2Zpcm13YXJlX3Byb3BlcnR5KHN0cnVjdCBycGlfZmly
+bXdhcmUgKmZ3LCB1MzIgdGFnLApAQCAtMTU0LDYgKzE1NSw3IEBAIHN0YXRpYyBpbmxpbmUgaW50
+IHJwaV9maXJtd2FyZV9wcm9wZXJ0eV9saXN0KHN0cnVjdCBycGlfZmlybXdhcmUgKmZ3LAogCXJl
+dHVybiAtRU5PU1lTOwogfQogCitzdGF0aWMgaW5saW5lIHZvaWQgcnBpX2Zpcm13YXJlX3B1dChz
+dHJ1Y3QgcnBpX2Zpcm13YXJlICpmdykgeyB9CiBzdGF0aWMgaW5saW5lIHN0cnVjdCBycGlfZmly
+bXdhcmUgKnJwaV9maXJtd2FyZV9nZXQoc3RydWN0IGRldmljZV9ub2RlICpmaXJtd2FyZV9ub2Rl
+KQogewogCXJldHVybiBOVUxMOwotLSAKMi4zMC4xCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
+ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
