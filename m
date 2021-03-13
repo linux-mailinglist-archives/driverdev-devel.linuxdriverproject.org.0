@@ -2,82 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39FB0339F8C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Mar 2021 18:36:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2245F339FDB
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Mar 2021 19:30:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CE7E4400DD;
-	Sat, 13 Mar 2021 17:36:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 53305400C7;
+	Sat, 13 Mar 2021 18:30:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jelCS9_I4u3T; Sat, 13 Mar 2021 17:36:46 +0000 (UTC)
+	with ESMTP id fSomSpUxjBR7; Sat, 13 Mar 2021 18:30:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 450D3400BC;
-	Sat, 13 Mar 2021 17:36:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8BE15400C8;
+	Sat, 13 Mar 2021 18:30:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D38A1BF573
- for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 17:36:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 267CE1BF44A
+ for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 18:30:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0CA34838D7
- for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 17:36:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 22FC1400C5
+ for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 18:30:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rbiXeo_12-ZN for <devel@linuxdriverproject.org>;
- Sat, 13 Mar 2021 17:36:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id m58hatzbN31k for <devel@linuxdriverproject.org>;
+ Sat, 13 Mar 2021 18:30:40 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com
- [IPv6:2a00:1450:4864:20::131])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3B5F2838DB
- for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 17:36:07 +0000 (UTC)
-Received: by mail-lf1-x131.google.com with SMTP id p21so50403632lfu.11
- for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 09:36:07 -0800 (PST)
+Received: from mail-oi1-x233.google.com (mail-oi1-x233.google.com
+ [IPv6:2607:f8b0:4864:20::233])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1982E400C4
+ for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 18:30:40 +0000 (UTC)
+Received: by mail-oi1-x233.google.com with SMTP id w65so30367215oie.7
+ for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 10:30:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=3g1RuIvADe2swcSz7np2JwGZs5MMGuUntc9U8vPMrPc=;
- b=JdhdPHnXZBA6bpSdWicWQnecgzXy7bH8C4dDHcxA3/YPFMmaApFq3BFjBh98ahclhB
- 8q5ey5/8gT4rLFNkOcvTzn9M+Tds7Ssq9DDMH6W51l9UOxnsTvDnhE2lIDxjRM3Ng81w
- oBqzxBuWX7ggwuPjDpyBPAbe19gmi0rzmQGhetv8vvSw08jTV74MPx+BqDwwpt0RvgZ/
- X0i3tc/3aWislig2NsB80U+FhIcKdWD6XYJHII+qvZDLp2Pn86rAU732hwghh4UG6QBe
- mXEkerxXhUsVedyZ+tFLpCFLiDnbQ6bL7V97jyiPTOn9qWN0LoOK1Uvcl70Z23JsICOw
- jj4Q==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=esEtWy9nM436CPDJLtFWuCh5LHQvPlgdcQs641np8Pk=;
+ b=XP8on/ZWNaaJyW18QgpGYeaCi+36r7oVSc/pUeP4SS16c3fQ9g4CLgz7m6kT/1scxF
+ 7FFlmVz7Hd6658q3YgnTkkt1zoILizGjH5dncQGeN69nSv8D1+f70NnEKwVRWsF5afpf
+ uyITP3x00bJJ8+DRhuNi/e2MRDtmIJ0H+Reozl4mNoPWqMTTm5Les1HzMuKcmmmIYBIf
+ NXmQiUxbRykx8iDt0fdrUIgUbluhNAwq+pKmM+oaghcECM6VtgHXrGSSzs1lFl+qEGCQ
+ 0XsJNljIEBeE4ncJGmZUEiClHMkpwBPhfHqqX5JcV/MrlpaS05dRLImiuwUZECHAR4/B
+ xZQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=3g1RuIvADe2swcSz7np2JwGZs5MMGuUntc9U8vPMrPc=;
- b=G1YYqvmWMZUybBk3V48iruQ7Bwxmm9Coraf674Pzw5TiyJ4yUmG/Oer2S6/Zt8/Y/P
- xdwyIWYpdIJ9e1dWa2LUHdoQialyiYO5qEA1tgCDnXU8lYnr2CW8qaKUULkMRuxdUUf3
- eeQMikbXBogQ/PMO8zjeJa7e0qd7Xlq5SPDoDD/A85UkxDoYPlPt9LnPTagE3xitFIYj
- Azu8gQxBY13bieGKaCedf7qQY16YemMSu2NbM/ouDjaJCBZvC6hTgBgrMPY/ZZgmQMkt
- cqzFRXceWY44SBOhPCu7/91J6xuck/mZEK8K72rB9iLdcW/auaHInohFBeMpVsvHpj2q
- QcYg==
-X-Gm-Message-State: AOAM5328kPB2bMBLWwcU6E+vFhMForE+3xdyvTUtDSkXMkrXFyPU0nkA
- bbQJZUMmgOXIsximMrC5G+/DZgyqD8w=
-X-Google-Smtp-Source: ABdhPJw4cLh6jPZCF7ZMwKeNYYsYKSuVFinXypQ340OfP6kK7ArPYwKMiux/+vyC7HoY3QRZI975+g==
-X-Received: by 2002:a05:6512:20cc:: with SMTP id
- u12mr2190429lfr.146.1615656965198; 
- Sat, 13 Mar 2021 09:36:05 -0800 (PST)
-Received: from localhost.localdomain
- (2a02-a456-df9f-1-f9b2-7163-4c2e-174.fixed6.kpn.net.
- [2a02:a456:df9f:1:f9b2:7163:4c2e:174])
- by smtp.gmail.com with ESMTPSA id g9sm2085065lfc.258.2021.03.13.09.36.04
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 13 Mar 2021 09:36:04 -0800 (PST)
-From: Gabriele Modena <gabriele.modena@gmail.com>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH v2 3/3] staging: wimax: fix quoted string split across lines
- in op-rfkill.c
-Date: Sat, 13 Mar 2021 18:35:32 +0100
-Message-Id: <590fcf33a97025019e5c3b3a915fec9bbe24aa4c.1615652628.git.gabriele.modena@gmail.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <cover.1615652628.git.gabriele.modena@gmail.com>
-References: <cover.1615652628.git.gabriele.modena@gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=esEtWy9nM436CPDJLtFWuCh5LHQvPlgdcQs641np8Pk=;
+ b=ArIvKJ7qiDsrx9vlEO7vRWyymmUbJewd8IKJP++FubuqO25sYCqilHsumlqR29Xfey
+ lXGR5yGKaUeN+mtl6mJ5rXCnyCscXrFdVZybBHPVeSc2xnllCjFV/sacaUMMvIz42q++
+ f4VqML1AEhB1D8pWpCPLI1K42CjkjV0i7a5LgZp5dJcFBtJjbMOkCw12WQ6cm7fsjqvY
+ JlORBkvAXz0nJyM4eH+8uImaOswBz8xAQ3mLN7j+8tbWxfxkhsAUzzFHI64XLO1H1H/9
+ UrCrFfeItzL/nbklOFYzFA5Nb+Ba2Nc+rWZ2q+pHaJIB3RhQO60om0YyQrlgFK85J3Uz
+ 6Gug==
+X-Gm-Message-State: AOAM530tCalm68lWJsPf04ho9C4tCN8mCnv296iro6pxaovcOPRv40BQ
+ /rQAvdOmFsJqrWoJwUqZ0dY=
+X-Google-Smtp-Source: ABdhPJxwZP7d9ngg67hP3VC+8ZmowUd6n5lBgFHup6+OYmKwdCDxbfk+DGSDChlwWie9gQbOycRUpw==
+X-Received: by 2002:aca:47c4:: with SMTP id
+ u187mr13814265oia.136.1615660239144; 
+ Sat, 13 Mar 2021 10:30:39 -0800 (PST)
+Received: from madhuleo.lan (cpe-24-27-52-237.austin.res.rr.com.
+ [24.27.52.237])
+ by smtp.googlemail.com with ESMTPSA id f192sm2438948oig.48.2021.03.13.10.30.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 13 Mar 2021 10:30:38 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net, gregkh@linuxfoundation.org, sbrivio@redhat.com,
+ briana.oursler@gmail.com, rapiz@foxmail.com
+Subject: [PATCH] staging: vt6655: Fix camelcase
+Date: Sat, 13 Mar 2021 12:30:19 -0600
+Message-Id: <20210313183019.368317-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,39 +86,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Gabriele Modena <gabriele.modena@gmail.com>, trivial@kernel.org
+Cc: madhumithabiw@gmail.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This commit fixes the following checkpatch.pl warning:
+Fix checkpatch.pl - Avoid CamelCase: <byVT3253InitTab_RFMD>
 
-WARNING: quoted string split across lines
-+		dev_err(dev, "WIMAX_GNL_RFKILL: can't find RFKILL_STATE "
-+			"attribute\n");
-
-Signed-off-by: Gabriele Modena <gabriele.modena@gmail.com>
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 ---
- drivers/staging/wimax/op-rfkill.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/vt6655/baseband.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/wimax/op-rfkill.c b/drivers/staging/wimax/op-rfkill.c
-index 50146f7b089e..52612ed09183 100644
---- a/drivers/staging/wimax/op-rfkill.c
-+++ b/drivers/staging/wimax/op-rfkill.c
-@@ -417,8 +417,7 @@ int wimax_gnl_doit_rfkill(struct sk_buff *skb, struct genl_info *info)
- 	dev = wimax_dev_to_dev(wimax_dev);
- 	result = -EINVAL;
- 	if (info->attrs[WIMAX_GNL_RFKILL_STATE] == NULL) {
--		dev_err(dev, "WIMAX_GNL_RFKILL: can't find RFKILL_STATE "
--			"attribute\n");
-+		dev_err(dev, "WIMAX_GNL_RFKILL: can't find RFKILL_STATE attribute\n");
- 		goto error_no_pid;
- 	}
- 	new_state = nla_get_u32(info->attrs[WIMAX_GNL_RFKILL_STATE]);
+diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+index 1aa675241599..d89163299172 100644
+--- a/drivers/staging/vt6655/baseband.c
++++ b/drivers/staging/vt6655/baseband.c
+@@ -52,7 +52,7 @@
+ /*---------------------  Static Variables  --------------------------*/
+ 
+ #define CB_VT3253_INIT_FOR_RFMD 446
+-static const unsigned char byVT3253InitTab_RFMD[CB_VT3253_INIT_FOR_RFMD][2] = {
++static const unsigned char by_vt3253_init_tab_rfmd[CB_VT3253_INIT_FOR_RFMD][2] = {
+ 	{0x00, 0x30},
+ 	{0x01, 0x00},
+ 	{0x02, 0x00},
+@@ -2002,8 +2002,8 @@ bool bb_vt3253_init(struct vnt_private *priv)
+ 		if (by_local_id <= REV_ID_VT3253_A1) {
+ 			for (ii = 0; ii < CB_VT3253_INIT_FOR_RFMD; ii++)
+ 				result &= bb_write_embedded(priv,
+-					byVT3253InitTab_RFMD[ii][0],
+-					byVT3253InitTab_RFMD[ii][1]);
++					by_vt3253_init_tab_rfmd[ii][0],
++					by_vt3253_init_tab_rfmd[ii][1]);
+ 
+ 		} else {
+ 			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
 -- 
-2.11.0
+2.25.1
 
 _______________________________________________
 devel mailing list
