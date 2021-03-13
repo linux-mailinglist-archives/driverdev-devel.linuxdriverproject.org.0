@@ -1,80 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48CF6339EEC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Mar 2021 16:29:56 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27233339EEB
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Mar 2021 16:29:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 64ADD400C6;
-	Sat, 13 Mar 2021 15:29:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 972864E50D;
+	Sat, 13 Mar 2021 15:29:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mMIJx-Ns-YCm; Sat, 13 Mar 2021 15:29:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N12K469im3v9; Sat, 13 Mar 2021 15:29:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 45CF2400AB;
-	Sat, 13 Mar 2021 15:29:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 394164BAEA;
+	Sat, 13 Mar 2021 15:29:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 988341BF35A
- for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 15:29:42 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 239DB1BF35A
+ for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 15:29:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 87B016062A
- for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 15:29:42 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 135CC83163
+ for <devel@linuxdriverproject.org>; Sat, 13 Mar 2021 15:29:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y0KQvACA3uDN for <devel@linuxdriverproject.org>;
- Sat, 13 Mar 2021 15:29:41 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com
- [IPv6:2607:f8b0:4864:20::1030])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8D7F3605E1
- for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 15:29:41 +0000 (UTC)
-Received: by mail-pj1-x1030.google.com with SMTP id
- ga23-20020a17090b0397b02900c0b81bbcd4so12181691pjb.0
- for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 07:29:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rRdJdmidiX1gZH+elVPiwUGDJVYMQEgUgXJ4vfO2Seg=;
- b=qo4ReIBpaOcEy24FPoC6pcQSGL7X7eO2Y0MZdVFBEJGFOx+t6Ylfj7/lXvyxTcNlgB
- Txt5ypeAzmOW0rFzHfvXpol80zWOwP3g+NlkVa45UoAuRxNSbNLDaYbOtSbqpUoxZpUn
- BqanbeqnjiLtf3KkCAATN9ZCmsvGpM7Pl17N79ZQjcOWibmRxwG8O/N52kL/c8JHn4KX
- dEbLfyhfFavd9qSPq1TZHPWhBmaIplq/sj6+FaA5k6M9l9yBuBlUUHo+iiiYheGbCoHI
- Y0DnreoEso9anxrL+J1MWc2M8Vt0ZooT2e0gV5OM9Q7Oakkbzr0Bal5feyL9ItjMxo9z
- FMuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rRdJdmidiX1gZH+elVPiwUGDJVYMQEgUgXJ4vfO2Seg=;
- b=RAaZH10FPFeGfnWPV6yG+K8W0jLTjOeAIe9Z2G1+Dc2OwKJ1HCMPnXrggDnt4n19f/
- VUVUeXjcLwu8zsRxDh7R+Kv/cFQkOEN5zedMpx4VsVkTnkYDFslpxlzmmUutSblMUMeH
- ECb3TyDgle/1ZpdMQXyUaBkuQ6Ql7oxwkPN29Inj8ZSTIdr9/GiSRuR8ExJEo3ujG82O
- EHK/5tAfIMJv3KcLuQsGGso7Zb5Kb52pLiHwdCCzc5nZ5dSZpICimBT0ZRqPnafwhzQH
- Z72l7+uXm4XFN2coML1DRLP0MHXanfswuwqEwaNmtOPSC2TgPRTuk4zw/BlpH3bWunFc
- 5e7w==
-X-Gm-Message-State: AOAM530akfjO7KOxAz2Cx5VoKDINe9BABg8FbPpUgTEMt6PJ2KsH7pYv
- CyaNMj88FsfjJZGsEzekwSqATqRCIR0kbVwE
-X-Google-Smtp-Source: ABdhPJxQoSf2M1XrSsD6j+HiQnSKDApBLFz9zt17eFclNDCRvgIhEOuG8oALGY/RcpunIcVVuaXNQg==
-X-Received: by 2002:a17:902:d487:b029:e4:a950:6df2 with SMTP id
- c7-20020a170902d487b02900e4a9506df2mr3544827plg.79.1615649380795; 
- Sat, 13 Mar 2021 07:29:40 -0800 (PST)
-Received: from localhost.localdomain ([183.99.11.150])
- by smtp.gmail.com with ESMTPSA id gb1sm5562481pjb.21.2021.03.13.07.29.39
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 13 Mar 2021 07:29:40 -0800 (PST)
-From: hygoni <42.hyeyoo@gmail.com>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH] staging: rtl8723bs: fix checkpatch warnings
-Date: Sun, 14 Mar 2021 00:29:34 +0900
-Message-Id: <20210313152934.87638-1-42.hyeyoo@gmail.com>
-X-Mailer: git-send-email 2.24.3 (Apple Git-128)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 78g_i8g_t1o0 for <devel@linuxdriverproject.org>;
+ Sat, 13 Mar 2021 15:29:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from ironportDMZ.econet.co.zw (smtp.econet.co.zw [77.246.51.158])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7F6BB83026
+ for <devel@driverdev.osuosl.org>; Sat, 13 Mar 2021 15:29:07 +0000 (UTC)
+IronPort-SDR: WQ0AT3hjEh1h855too+SDBDV3beWY85crYKPgrl6z30vcQQPi8VTyO9ptSj0JOQcvTJa7DlG9k
+ ygfn8UZ8hJiqPtQscKzfXJpyoj1uWrZim565Sp8XDtyHMJrwrJCYDpCwiIa22OTFgZx3YhQnoG
+ M8T09fKdc8K/mwquGroEjc8o4qo0CUI+YGmqDRsIarIEXfqc3n/GcSbfbAr267JZHGoYcJhJZA
+ xZQpD5RI3keRC6vHE0q17TwBaO87ezL5V5YZlunHC9WgPRQxJbJfnvC82y8UrY8b9i2+vGdAd8
+ 6Iw=
+IronPort-HdrOrdr: A9a23:jWTx7qCrzdbu75PlHejVtceALOonbusQ8zAX/mhLY1h8btGYm8
+ eynP4SyB/zj3IrVGs9nM2bUZPsfVr1zrQwxYUKJ7+tUE3duGWuJJx/9oeK+VfdMgXE3Kpm2a
+ 9kGpIUNPTZEUV6gcHm4AOxDtYnx529/Lq1gPrFpk0DcShBYchbnmNEIyycFVB7QxQDOIEwE4
+ CS6tECiz2rf3kWacrTPAh+Y8HoodrXmJX6JSMXHhJP0nj0sRqEyp7fVyKZ0BAXTi9Vzd4ZnV
+ TtvgTl6syY082T5QTb0wbonvdrsfvnjuBOHcmdzvUSQw+c7DqAQKREd/m8sCsuoOepgWxa5O
+ Xkhxs7Jcx85zfwUwiO0HzQ8jLt2jov9HPuoGXw6RWD0LrEbQk3BMZbiYVSfgGx0TtYgPhG3L
+ tPzyalsfNsfHH9tR/w+sTSUFVSnle0yEBS5NI7tWBVUocVddZq3PQi1X5Sea1weR7S2cQOOs
+ NJMObgoNZ6GGnqEEzxjy1G6vaLYlMPWiq3e2RqgL3k7xFm2Fp9z0ce2fUFmGYB+J8XW/B/lp
+ b5G5UtuJVnbupTUJJFKI46MLqKI12Ibj+JHGabIVGiPqkbN3zKsI6f2sRK2MiaPLMP15c8g5
+ LHTRdxsnMzYVvnDYm00IRM6Q2lehT9YR3djuVlo7RpsLz1Q7TmdQWFVVAVisOl59ESGNfSVf
+ qfMI9fasWTbVfGKMJs5UnTSpNSIX4RXIk+odAgQW+DpcrNN8nDqvHbWOy7HsuoLR8UHkfERl
+ cTVjn6I8tNqmqxXGXjvRTXU3TxPmTi4JNLFrTA9eR78vlJCqR89iwuzXip7MCCLjNP9oYsel
+ FlHb/hmqSn4Uas+2Ll6HhoJwp9Ak5Z7K6IaQINmSY6d2fPNZoTsdSWfm5fmFGdIAVkcs/QGA
+ lD43R7kJjHdqC49GQHMZaKI2iah3wcqDahVJEHgJCO4s/jZ9cdBpYiU6phKBXTG3VO6F5XgV
+ YGTDVBal7UFzvoh6ngpocTHvvje951hxruBsJIt3TFtwG5qds0TnUWGx6iOPTnwzoGdn5xvB
+ lc4qUfiL2PlXKEMm0kmtk1N1VKdSCwG7JJDAOMYa1OgbD1cARMTWOH7AbqzC0bSy7PzQE/l2
+ bhJSqbdbXgGVxGoE1V1a7s7RdJbGmHRllxbXp7qIV5MmzDth9IoLS2T5v291HURkoJw+kbPj
+ 2ARTcJOAthy+q60wOvlC+YGW8rwYgvOeLhHK0uGoujrU+FGcmtr+UrDvVU9JFqOJTVvugHXf
+ m2ViWVIDn7YtlZlzC9lzIAAm1ZuXMkmfTn1FnZ92C+xmc4GueXCk9hXasnL9aV6HXES/6E3I
+ 5it888ufK9PwzKG4S74JCSSwQGDBzdoWS7Fb517b9VuL8/r7t1Ed3wVyDS2HROwRU5K4PVmS
+ olMexGyYGEHrUqWcoYPx991B4Osv+kKUMwqAz4AuMkZzgW/jLmFuLMx4CNkKYlB02KmRD5Nl
+ ae+RBM5vutZVrL6ZcqT4YLZVlMYEcy6H5e7PqPWo3ZBgKtbfxC9jOBQzSAWY4YbKiOArMLqB
+ lmp/mOgu+MbiL9sTqg8gdTE+Zr82y9R9m1Dx/JMelU88aiMVDJpqex+sa8gHPWTjS8An5oy7
+ FtRAg1bs5ZjCMlg5By+i+uSrbvqkZgqmBg21hc5xTQ87njxnzaE0FAORDYhZsTfQA7CAn6se
+ 31tc6C1Hr85zBZ34LkD0k4RKAMJ/EgCrLQExxFBaErzcKV1rAihTkGZhBGNR9AtAzA
+X-IronPort-AV: E=Sophos;i="5.81,245,1610402400"; 
+   d="scan'208";a="3364773"
+Received: from unknown (HELO WVALE-MB-SVR-05.econetzw.local)
+ ([192.168.101.173])
+ by ironportLAN.econet.co.zw with ESMTP; 13 Mar 2021 17:29:05 +0200
+Received: from WVALE-CAS-SVR-9.econetzw.local (192.168.101.184) by
+ WVALE-MB-SVR-05.econetzw.local (192.168.101.173) with Microsoft SMTP Server
+ (TLS) id 15.0.1473.3; Sat, 13 Mar 2021 17:29:03 +0200
+Received: from User (165.231.148.189) by WVALE-CAS-SVR-9.econetzw.local
+ (10.10.11.230) with Microsoft SMTP Server id 15.0.1473.3 via Frontend
+ Transport; Sat, 13 Mar 2021 17:29:14 +0200
+From: "Reem E. A" <chawora@econet.co.zw>
+Subject: Re:
+Date: Sat, 13 Mar 2021 15:29:01 -0800
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <8bd610e62caf400783acd4309e54dad1@WVALE-CAS-SVR-9.econetzw.local>
+To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,294 +94,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: hygoni <42.hyeyoo@gmail.com>
+Reply-To: r19772744@daum.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix checkpatch warnings of core/rtw_cmd.c
-in detail, unnecessary braces, space before tab and wrongly formatted comments.
-Issues found by checkpatch
----
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 105 +++++++++++------------
- 1 file changed, 50 insertions(+), 55 deletions(-)
+Hello,
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 3fe79169a811..9ed1e83769b8 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -158,11 +158,9 @@ static struct cmd_hdl wlancmds[] = {
- 	GEN_MLME_EXT_HANDLER(sizeof(struct RunInThread_param), run_in_thread_hdl) /*63*/
- };
- 
--/*
--Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
--No irqsave is necessary.
--*/
--
-+/* Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
-+ * No irqsave is necessary.
-+ */
- int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- {
- 	int res = 0;
-@@ -229,6 +227,7 @@ void _rtw_free_evt_priv(struct	evt_priv *pevtpriv)
- 
- 	while (!rtw_cbuf_empty(pevtpriv->c2h_queue)) {
- 		void *c2h = rtw_cbuf_pop(pevtpriv->c2h_queue);
-+
- 		if (c2h && c2h != (void *)pevtpriv)
- 			kfree(c2h);
- 	}
-@@ -248,15 +247,14 @@ void _rtw_free_cmd_priv(struct	cmd_priv *pcmdpriv)
- 	}
- }
- 
--/*
--Calling Context:
--
--rtw_enqueue_cmd can only be called between kernel thread,
--since only spin_lock is used.
--
--ISR/Call-Back functions can't call this sub-function.
--
--*/
-+/* Calling Context:
-+ *
-+ * rtw_enqueue_cmd can only be called between kernel thread,
-+ * since only spin_lock is used.
-+ *
-+ * ISR/Call-Back functions can't call this sub-function.
-+ *
-+ */
- 
- int _rtw_enqueue_cmd(struct __queue *queue, struct cmd_obj *obj)
- {
-@@ -321,9 +319,9 @@ int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
- 		|| atomic_read(&(pcmdpriv->cmdthd_running)) == false	/* com_thread not running */
- 	) {
- 		/* DBG_871X("%s:%s: drop cmdcode:%u, hw_init_completed:%u, cmdthd_running:%u\n", caller_func, __func__, */
--		/* 	cmd_obj->cmdcode, */
--		/* 	pcmdpriv->padapter->hw_init_completed, */
--		/* 	pcmdpriv->cmdthd_running */
-+		/*	cmd_obj->cmdcode, */
-+		/*	pcmdpriv->padapter->hw_init_completed, */
-+		/*	pcmdpriv->cmdthd_running */
- 		/*  */
- 
- 		return _FAIL;
-@@ -554,18 +552,17 @@ int rtw_cmd_thread(void *context)
- 	thread_exit();
- }
- 
--/*
--rtw_sitesurvey_cmd(~)
--	### NOTE:#### (!!!!)
--	MUST TAKE CARE THAT BEFORE CALLING THIS FUNC, YOU SHOULD HAVE LOCKED pmlmepriv->lock
--*/
-+/* rtw_sitesurvey_cmd(~)
-+ * ### NOTE:#### (!!!!)
-+ * MUST TAKE CARE THAT BEFORE CALLING THIS FUNC, YOU SHOULD HAVE LOCKED pmlmepriv->lock
-+ */
- u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid, int ssid_num,
- 	struct rtw_ieee80211_channel *ch, int ch_num)
- {
- 	u8 res = _FAIL;
- 	struct cmd_obj		*ph2c;
- 	struct sitesurvey_parm	*psurveyPara;
--	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
-+	struct cmd_priv		*pcmdpriv = &padapter->cmdpriv;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 
- 	if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
-@@ -593,6 +590,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
- 	/* prepare ssid list */
- 	if (ssid) {
- 		int i;
-+
- 		for (i = 0; i < ssid_num && i < RTW_SSID_SCAN_AMOUNT; i++) {
- 			if (ssid[i].SsidLength) {
- 				memcpy(&psurveyPara->ssid[i], &ssid[i], sizeof(struct ndis_802_11_ssid));
-@@ -607,6 +605,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
- 	/* prepare channel list */
- 	if (ch) {
- 		int i;
-+
- 		for (i = 0; i < ch_num && i < RTW_CHANNEL_SCAN_AMOUNT; i++) {
- 			if (ch[i].hw_value && !(ch[i].flags & RTW_IEEE80211_CHAN_DISABLED)) {
- 				memcpy(&psurveyPara->ch[i], &ch[i], sizeof(struct rtw_ieee80211_channel));
-@@ -671,16 +670,15 @@ void rtw_getbbrfreg_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *p
- u8 rtw_createbss_cmd(struct adapter  *padapter)
- {
- 	struct cmd_obj *pcmd;
--	struct cmd_priv 			*pcmdpriv = &padapter->cmdpriv;
--	struct mlme_priv 		*pmlmepriv = &padapter->mlmepriv;
-+	struct cmd_priv				*pcmdpriv = &padapter->cmdpriv;
-+	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
- 	struct wlan_bssid_ex		*pdev_network = &padapter->registrypriv.dev_network;
- 	u8 res = _SUCCESS;
- 
--	if (pmlmepriv->assoc_ssid.SsidLength == 0) {
-+	if (pmlmepriv->assoc_ssid.SsidLength == 0)
- 		RT_TRACE(_module_rtl871x_cmd_c_, _drv_info_, (" createbss for Any SSid:%s\n", pmlmepriv->assoc_ssid.Ssid));
--	} else {
-+	else
- 		RT_TRACE(_module_rtl871x_cmd_c_, _drv_info_, (" createbss for SSid:%s\n", pmlmepriv->assoc_ssid.Ssid));
--	}
- 
- 	pcmd = rtw_zmalloc(sizeof(struct cmd_obj));
- 	if (pcmd == NULL) {
-@@ -755,23 +753,22 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	uint	t_len = 0;
- 	struct wlan_bssid_ex		*psecnetwork;
- 	struct cmd_obj		*pcmd;
--	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
--	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
--	struct qos_priv 	*pqospriv = &pmlmepriv->qospriv;
-+	struct cmd_priv		*pcmdpriv = &padapter->cmdpriv;
-+	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
-+	struct qos_priv		*pqospriv = &pmlmepriv->qospriv;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
- 	struct registry_priv *pregistrypriv = &padapter->registrypriv;
--	struct ht_priv 		*phtpriv = &pmlmepriv->htpriv;
-+	struct ht_priv		*phtpriv = &pmlmepriv->htpriv;
- 	enum NDIS_802_11_NETWORK_INFRASTRUCTURE ndis_network_mode = pnetwork->network.InfrastructureMode;
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
- 	u32 tmp_len;
- 	u8 *ptmp = NULL;
- 
--	if (pmlmepriv->assoc_ssid.SsidLength == 0) {
-+	if (pmlmepriv->assoc_ssid.SsidLength == 0)
- 		RT_TRACE(_module_rtl871x_cmd_c_, _drv_info_, ("+Join cmd: Any SSid\n"));
--	} else {
-+	else
- 		RT_TRACE(_module_rtl871x_cmd_c_, _drv_notice_, ("+Join cmd: SSid =[%s]\n", pmlmepriv->assoc_ssid.Ssid));
--	}
- 
- 	pcmd = rtw_zmalloc(sizeof(struct cmd_obj));
- 	if (pcmd == NULL) {
-@@ -810,11 +807,10 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 
- 	psecuritypriv->authenticator_ie[0] = (unsigned char)psecnetwork->IELength;
- 
--	if ((psecnetwork->IELength-12) < (256-1)) {
-+	if ((psecnetwork->IELength-12) < (256-1))
- 		memcpy(&psecuritypriv->authenticator_ie[1], &psecnetwork->IEs[12], psecnetwork->IELength-12);
--	} else {
-+	else
- 		memcpy(&psecuritypriv->authenticator_ie[1], &psecnetwork->IEs[12], (256-1));
--	}
- 
- 	psecnetwork->IELength = 0;
- 	/*  Added by Albert 2009/02/18 */
-@@ -844,9 +840,9 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	phtpriv->ht_option = false;
- 	ptmp = rtw_get_ie(&pnetwork->network.IEs[12], WLAN_EID_HT_CAPABILITY, &tmp_len, pnetwork->network.IELength-12);
- 	if (pregistrypriv->ht_enable && ptmp && tmp_len > 0) {
--		/* 	Added by Albert 2010/06/23 */
--		/* 	For the WEP mode, we will use the bg mode to do the connection to avoid some IOT issue. */
--		/* 	Especially for Realtek 8192u SoftAP. */
-+		/*	Added by Albert 2010/06/23 */
-+		/*	For the WEP mode, we will use the bg mode to do the connection to avoid some IOT issue. */
-+		/*	Especially for Realtek 8192u SoftAP. */
- 		if ((padapter->securitypriv.dot11PrivacyAlgrthm != _WEP40_) &&
- 			(padapter->securitypriv.dot11PrivacyAlgrthm != _WEP104_) &&
- 			(padapter->securitypriv.dot11PrivacyAlgrthm != _TKIP_)) {
-@@ -955,11 +951,11 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
- {
- 	struct cmd_obj *ph2c;
- 	struct set_stakey_parm	*psetstakey_para;
--	struct cmd_priv 			*pcmdpriv = &padapter->cmdpriv;
-+	struct cmd_priv				*pcmdpriv = &padapter->cmdpriv;
- 	struct set_stakey_rsp		*psetstakey_rsp = NULL;
- 
--	struct mlme_priv 		*pmlmepriv = &padapter->mlmepriv;
--	struct security_priv 	*psecuritypriv = &padapter->securitypriv;
-+	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
-+	struct security_priv	*psecuritypriv = &padapter->securitypriv;
- 	u8 res = _SUCCESS;
- 
- 	psetstakey_para = rtw_zmalloc(sizeof(struct set_stakey_parm));
-@@ -970,17 +966,15 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
- 
- 	memcpy(psetstakey_para->addr, sta->hwaddr, ETH_ALEN);
- 
--	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)) {
-+	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE))
- 		psetstakey_para->algorithm = (unsigned char) psecuritypriv->dot11PrivacyAlgrthm;
--	} else {
-+	else
- 		GET_ENCRY_ALGO(psecuritypriv, sta, psetstakey_para->algorithm, false);
--	}
- 
--	if (unicast_key == true) {
-+	if (unicast_key == true)
- 		memcpy(&psetstakey_para->key, &sta->dot118021x_UncstKey, 16);
--	} else {
-+	else
- 		memcpy(&psetstakey_para->key, &psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey, 16);
--	}
- 
- 	/* jeff: set this because at least sw key is ready */
- 	padapter->securitypriv.busetkipkey = true;
-@@ -1017,7 +1011,7 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 enqueu
- {
- 	struct cmd_obj *ph2c;
- 	struct set_stakey_parm	*psetstakey_para;
--	struct cmd_priv 			*pcmdpriv = &padapter->cmdpriv;
-+	struct cmd_priv				*pcmdpriv = &padapter->cmdpriv;
- 	struct set_stakey_rsp		*psetstakey_rsp = NULL;
- 	s16 cam_id = 0;
- 	u8 res = _SUCCESS;
-@@ -1068,7 +1062,7 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 enqueu
- 
- u8 rtw_addbareq_cmd(struct adapter *padapter, u8 tid, u8 *addr)
- {
--	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
-+	struct cmd_priv		*pcmdpriv = &padapter->cmdpriv;
- 	struct cmd_obj *ph2c;
- 	struct addBaReq_parm	*paddbareq_parm;
- 
-@@ -1296,7 +1290,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
- 	u8 bBusyTraffic = false, bTxBusyTraffic = false, bRxBusyTraffic = false;
- 	u8 bHigherBusyTraffic = false, bHigherBusyRxTraffic = false, bHigherBusyTxTraffic = false;
- 
--	struct mlme_priv 	*pmlmepriv = &(padapter->mlmepriv);
-+	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
- 
- 	collect_traffic_statistics(padapter);
- 
-@@ -1397,6 +1391,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
- static void dynamic_chk_wk_hdl(struct adapter *padapter)
- {
- 	struct mlme_priv *pmlmepriv;
-+
- 	pmlmepriv = &(padapter->mlmepriv);
- 
- 	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
-@@ -1495,7 +1490,7 @@ u8 rtw_lps_ctrl_wk_cmd(struct adapter *padapter, u8 lps_ctrl_type, u8 enqueue)
- 	u8 res = _SUCCESS;
- 
- 	/* if (!pwrctrlpriv->bLeisurePs) */
--	/* 	return res; */
-+	/*	return res; */
- 
- 	if (enqueue) {
- 		ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
-@@ -2035,7 +2030,7 @@ void rtw_createbss_cmd_callback(struct adapter *padapter, struct cmd_obj *pcmd)
- 	if (pcmd->parmbuf == NULL)
- 		goto exit;
- 
--	if ((pcmd->res != H2C_SUCCESS)) {
-+	if (pcmd->res != H2C_SUCCESS) {
- 		RT_TRACE(_module_rtl871x_cmd_c_, _drv_err_, ("\n ********Error: rtw_createbss_cmd_callback  Fail ************\n\n."));
- 		_set_timer(&pmlmepriv->assoc_timer, 1);
- 	}
--- 
-2.24.3 (Apple Git-128)
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state
+and Petroleum" also "Minister of State for International Cooperation"
+in UAE. I write to you on behalf of my other "three (2) colleagues"
+who has approved me to solicit for your "partnership in claiming of
+{us$47=Million}" from a Financial Home on their behalf and
+for our "Mutual Benefits".
 
+The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas
+deal with Turkish Government within 2013/2014, however, we
+don't want our government to know about the fund. If this proposal
+interests you, let me know, by sending me an email and I will send to
+you detailed information on how this business would be successfully
+transacted. Be informed that nobody knows about the secret of this
+fund except us, and we know how to carry out the entire transaction.
+So I am compelled to ask, that you will stand on our behalf and
+receive this fund into any account that is solely controlled by you.
+
+We will compensate you with 15% of the total amount involved as
+gratification for being our partner in this transaction. Reply to:
+reem.alhashimi@yandex.com
+
+Regards,
+Ms. Reem.
+This mail was sent through Econet Wireless, a Global telecoms leader.
+
+DISCLAIMER
+
+The information in this message is confidential and is legally privileged. It is intended solely for the addressee. Access to this message by anyone else is unauthorized. If received in error please accept our apologies and notify the sender immediately. You must also delete the original message from your machine. If you are not the intended recipient, any use, disclosure, copying, distribution or action taken in reliance of it, is prohibited and may be unlawful. The information, attachments, opinions or advice contained in this email are not the views or opinions of Econet Wireless, its subsidiaries or affiliates. Econet Wireless therefore accepts no liability for claims, losses, or damages arising from the inaccuracy, incorrectness, or lack of integrity of such information.
+[https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/AgileBanner.png]
+WORK ISN'T A PLACE
+IT'S WHAT WE DO
+________________________________
+
+
+
+
+
+[https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/telephone.png]
+
+
+
+
+[https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/email.png]
+
+<mailto:>
+
+
+[https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/location.png]
+
+
+
+
+[https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/website.png]
+
+www.econet.co.zw<https://www.econet.co.zw>
+
+
+[https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/inspired.jpg]
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
