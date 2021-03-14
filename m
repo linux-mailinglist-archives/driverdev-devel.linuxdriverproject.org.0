@@ -2,78 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40CAE33A751
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Mar 2021 19:12:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A746D33A752
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Mar 2021 19:12:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 851D083C9B;
-	Sun, 14 Mar 2021 18:12:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3B3CE83C5E;
+	Sun, 14 Mar 2021 18:12:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g4gh5hfRwEF4; Sun, 14 Mar 2021 18:12:23 +0000 (UTC)
+	with ESMTP id Y2rMSPIdAFnL; Sun, 14 Mar 2021 18:12:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8E7183AD5;
-	Sun, 14 Mar 2021 18:12:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AAC8583A97;
+	Sun, 14 Mar 2021 18:12:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2ED011BF414
- for <devel@linuxdriverproject.org>; Sun, 14 Mar 2021 18:12:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1D5301BF414
+ for <devel@linuxdriverproject.org>; Sun, 14 Mar 2021 18:12:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1600640167
- for <devel@linuxdriverproject.org>; Sun, 14 Mar 2021 18:12:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0C9D340166
+ for <devel@linuxdriverproject.org>; Sun, 14 Mar 2021 18:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mN5PQDM1oWqa for <devel@linuxdriverproject.org>;
- Sun, 14 Mar 2021 18:12:11 +0000 (UTC)
+ with ESMTP id GlRSQ3nyJ7pv for <devel@linuxdriverproject.org>;
+ Sun, 14 Mar 2021 18:12:28 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com
- [IPv6:2a00:1450:4864:20::336])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 60E1D40162
- for <devel@driverdev.osuosl.org>; Sun, 14 Mar 2021 18:12:11 +0000 (UTC)
-Received: by mail-wm1-x336.google.com with SMTP id
- c76-20020a1c9a4f0000b029010c94499aedso18917502wme.0
- for <devel@driverdev.osuosl.org>; Sun, 14 Mar 2021 11:12:11 -0700 (PDT)
+Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com
+ [IPv6:2a00:1450:4864:20::335])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8291940162
+ for <devel@driverdev.osuosl.org>; Sun, 14 Mar 2021 18:12:28 +0000 (UTC)
+Received: by mail-wm1-x335.google.com with SMTP id 12so1802033wmf.5
+ for <devel@driverdev.osuosl.org>; Sun, 14 Mar 2021 11:12:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=SYAbB9XrQfsURJ4pHZt6jSpiz+XrWOVC6B16BC7Az3E=;
- b=CPw0waUPUxTTA2v7BYebc42Sp9zi+3eZpIhLJvzVWfOeVzSVjdQU89pOGceOkGO7Zy
- FhlHGK3An2H6Bvna7PFmEVLUtX1czAjnWCKUDBWus2m+njgEX/S/edaPpbDW2Ai+p6GS
- S33cHHbWkHPC7G36DrKqZUdNzWxOIrXgcp2wJe3wNDpTSZznay2BXyfaCQqGzsSzP/Ub
- Dc8SceXByapmvdARIBBelLiRXAGhFelzaB6ml8VmEw3imAuvyY9Gjl378mD/htojsZlB
- GWcGfWBeHkG0XnqIrbPbWtA28f8Yy83IilgLRvsjTNMq++io0cl9v213VGn7OZA1QjHs
- Clgg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=uHeF5mKqo29SEP5PCgIubsIyo0Df9pgMAoxLOuXrGjA=;
+ b=p1NE659fn3D9mbFEBl3FujA/G6XFkwpZXFR47o2ei1ZT7BKbi+gEvP3YS4EYbcoa66
+ CB/FdPyRi8W5r1TZ/FCXdIH9zckXbcyHI4oeubiFlyx2pGvBVshJdqNPLvvYdUUt9vik
+ LYabo/LiE144VQzhJpSrHILWyz3v4HX3JGpiC6XmQo64SGBGvqjDZ5jKGzzm4BRn0p+p
+ rrvd6MaRZLCNvhRG5HKm3pGQCzH0X5uO7zJGDEExfiDfJ9CUy4GGzwsZbmT+/6CuJgWs
+ ku+sSUyDAwC8m3wU2h4sMKgFBHNHlEAGRWdODUA43ZpwwL5bgVV8hG3ZWEt03uGHvkb1
+ PYcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=SYAbB9XrQfsURJ4pHZt6jSpiz+XrWOVC6B16BC7Az3E=;
- b=OepCQ644Q3sRFGIqDjAIE/yJO5vWw8eQV8RISv/jAjd6c3aJgOimRwl8Q+enWz7DcS
- nnWKZra0lt5whzoewVzMojhZBgbz3+rPkk4pjclbDTKAllehFcnKXdzAbiIeGeWXlH9g
- F3aUWebu2I9Pq96NLCGn8vcF//rm3BxkI3Cx/wUaz8/d4B5FxFzOyvCzv2ieOfjJTcSR
- A+7RrUetAR94e0rjimMZr1qCDST0m6Jw26GCse1qok2TVaZdOYSgbmqNgwZ8okt4cWnY
- zB6UqVoIMVG5QxfGEScxjg93eTPuXahecGm0BXknttDfoarI83ns446lzLIgmVaCUl/7
- vttA==
-X-Gm-Message-State: AOAM533b6lNikQX1qMoLseaKDTDGaKUWtbt6Rr2Bgo5AWV6tgacVfnUd
- 4AuBwES5uMTzdkicdgf59M8=
-X-Google-Smtp-Source: ABdhPJx/mYM8jvNC+wUJ+EtT6juW0035mjOUQlEU+BR37tzR6MHP2psPqVIgwKZiduAW/zideFpEKg==
-X-Received: by 2002:a1c:df8a:: with SMTP id w132mr22504509wmg.53.1615745529550; 
- Sun, 14 Mar 2021 11:12:09 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=uHeF5mKqo29SEP5PCgIubsIyo0Df9pgMAoxLOuXrGjA=;
+ b=Hwk8WdYmLjuWfCofvNNa7CPYqO1MYLPo+ckIMTr5SR2drSN/+BKSBzmVkvL0ul9MmC
+ OUYntmSI0OYjHpaogzyIdoa9vswuf7Cx0NqVO7oPdAqfHmSHJryv6XhuaKgUssJfBxIi
+ f1R3hqYx48i3dkN4L60kppKS1S5F/L0GWdE/2zz64HfkLMHOz9YQDq1cQFip6ODEsWUI
+ koHYzpWSwd9B+bbf7xNJwLkRIGjBd8AQmZOMjQU0RkmDe4a9hv7MPW9bfi0ctVLEaks4
+ FvqVzUGlo/s0RS7zvPHtT0wyTId0MmPirA1uWlCQ9DTr7NtuNrp6PENUwuYmsp7gxYCi
+ 2lgQ==
+X-Gm-Message-State: AOAM532AbAFH/iBi1lcrwpXxelTMejXLQYSDDqQr+gUTmngoI01sSwAH
+ k3XPDGceQjljahZK6NKRu50=
+X-Google-Smtp-Source: ABdhPJywOBQA2M1QBlfTjSBbQ7tXn7ezU3CAWp5VVcNLOOV188vamqfRp0BxAJDu0A5CTcP5uc+WiQ==
+X-Received: by 2002:a1c:f702:: with SMTP id v2mr21976236wmh.131.1615745546672; 
+ Sun, 14 Mar 2021 11:12:26 -0700 (PDT)
 Received: from agape.jhs (an-19-176-195.service.infuturo.it. [151.19.176.195])
  by smtp.gmail.com with ESMTPSA id
- j13sm15872736wrt.29.2021.03.14.11.12.08
+ u4sm17029817wrm.24.2021.03.14.11.12.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Mar 2021 11:12:09 -0700 (PDT)
-Date: Sun, 14 Mar 2021 19:12:06 +0100
+ Sun, 14 Mar 2021 11:12:26 -0700 (PDT)
+Date: Sun, 14 Mar 2021 19:12:23 +0100
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v3 0/2] staging: rtl8723bs: remove unused code blocks
-Message-ID: <cover.1615744948.git.fabioaiuto83@gmail.com>
+Subject: [PATCH v3 1/2] staging: rtl8723bs: remove unused code blocks
+ conditioned by never set CONFIG_PNO_SUPPORT
+Message-ID: <a8ba6c7996ba3f08054c433860be2de66b25d942.1615744948.git.fabioaiuto83@gmail.com>
+References: <cover.1615744948.git.fabioaiuto83@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <cover.1615744948.git.fabioaiuto83@gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -93,50 +96,675 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch set removes unused code clocks as required in TODO file:
+Remove conditional code blocks checked by unused CONFIG_PNO_SUPPORT
 
-	find and remove code blocks guarded by never set CONFIG_FOO defines
+Cleaning required in TODO file:
 
-Changes in v3:
-	- rebase of remaining conflicting patches
+find and remove code blocks guarded by never set CONFIG_FOO defines
 
-Changes in v2:
-	- modified subject lines to make them unique
-	- added a patch previously excluded (removal of
-	  CONFIG_PNO_SET_DEBUG code) 
+Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  |  18 --
+ .../staging/rtl8723bs/core/rtw_wlan_util.c    |   8 -
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c  | 269 ------------------
+ drivers/staging/rtl8723bs/hal/sdio_halinit.c  |   8 -
+ .../staging/rtl8723bs/include/hal_com_h2c.h   |  17 --
+ .../staging/rtl8723bs/include/rtl8723b_hal.h  |  10 -
+ .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  53 ----
+ .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c |  56 ----
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   |   7 -
+ 9 files changed, 446 deletions(-)
 
-Fabio Aiuto (2):
-  staging: rtl8723bs: remove unused code blocks conditioned by never set
-    CONFIG_PNO_SUPPORT
-  staging: rtl8723bs: remove unused code blocks conditioned by never set
-    CONFIG_WOWLAN
-
- drivers/staging/rtl8723bs/core/rtw_mlme.c     |   3 -
- drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  |  24 +-
- .../staging/rtl8723bs/core/rtw_wlan_util.c    |  61 +-
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c  | 825 +-----------------
- .../staging/rtl8723bs/hal/rtl8723b_hal_init.c |  43 +-
- drivers/staging/rtl8723bs/hal/sdio_halinit.c  | 248 +-----
- drivers/staging/rtl8723bs/hal/sdio_ops.c      |   4 +-
- drivers/staging/rtl8723bs/include/autoconf.h  |   3 -
- drivers/staging/rtl8723bs/include/drv_types.h |   5 -
- .../rtl8723bs/include/drv_types_sdio.h        |   2 +-
- .../staging/rtl8723bs/include/hal_com_h2c.h   |  88 +-
- drivers/staging/rtl8723bs/include/hal_intf.h  |   5 -
- .../staging/rtl8723bs/include/rtl8723b_cmd.h  |   4 +-
- .../staging/rtl8723bs/include/rtl8723b_hal.h  |  17 -
- .../staging/rtl8723bs/include/rtl8723b_spec.h |  10 -
- drivers/staging/rtl8723bs/include/rtw_mp.h    |   3 -
- .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  62 --
- .../staging/rtl8723bs/include/rtw_security.h  |   3 -
- drivers/staging/rtl8723bs/include/sdio_ops.h  |   8 +-
- drivers/staging/rtl8723bs/include/sta_info.h  |   5 -
- .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c |  56 --
- .../staging/rtl8723bs/os_dep/ioctl_linux.c    |   3 -
- drivers/staging/rtl8723bs/os_dep/os_intfs.c   | 238 +----
- drivers/staging/rtl8723bs/os_dep/sdio_intf.c  |   5 -
- 24 files changed, 29 insertions(+), 1696 deletions(-)
-
+diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+index c9f4a18b24b9..8059aeea9d47 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
++++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+@@ -1149,29 +1149,11 @@ void rtw_init_pwrctrl_priv(struct adapter *padapter)
+ 
+ 	pwrctrlpriv->wowlan_mode = false;
+ 	pwrctrlpriv->wowlan_ap_mode = false;
+-
+-#ifdef CONFIG_PNO_SUPPORT
+-	pwrctrlpriv->pno_inited = false;
+-	pwrctrlpriv->pnlo_info = NULL;
+-	pwrctrlpriv->pscan_info = NULL;
+-	pwrctrlpriv->pno_ssid_list = NULL;
+-	pwrctrlpriv->pno_in_resume = true;
+-#endif
+ }
+ 
+ 
+ void rtw_free_pwrctrl_priv(struct adapter *adapter)
+ {
+-#ifdef CONFIG_PNO_SUPPORT
+-	if (pwrctrlpriv->pnlo_info)
+-		printk("****** pnlo_info memory leak********\n");
+-
+-	if (pwrctrlpriv->pscan_info)
+-		printk("****** pscan_info memory leak********\n");
+-
+-	if (pwrctrlpriv->pno_ssid_list)
+-		printk("****** pno_ssid_list memory leak********\n");
+-#endif
+ }
+ 
+ inline void rtw_set_ips_deny(struct adapter *padapter, u32 ms)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index 96feced698ac..ae577178534f 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -2189,11 +2189,3 @@ void rtw_set_sec_pn(struct adapter *padapter)
+ }
+ #endif /* CONFIG_WOWLAN */
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-#define	CSCAN_TLV_TYPE_SSID_IE	'S'
+-#define CIPHER_IE "key_mgmt ="
+-#define CIPHER_NONE "NONE"
+-#define CIPHER_WPA_PSK "WPA-PSK"
+-#define CIPHER_WPA_EAP "WPA-EAP IEEE8021X"
+-
+-#endif /* CONFIG_PNO_SUPPORT */
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+index d246ba2117b5..59d42bd4f032 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+@@ -462,125 +462,6 @@ static void ConstructARPResponse(
+ 	}
+ }
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-static void ConstructPnoInfo(
+-	struct adapter *padapter, u8 *pframe, u32 *pLength
+-)
+-{
+-
+-	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
+-
+-	u8 *pPnoInfoPkt = pframe;
+-	pPnoInfoPkt = (u8 *)(pframe + *pLength);
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->ssid_num, 4);
+-
+-	*pLength += 4;
+-	pPnoInfoPkt += 4;
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->fast_scan_period, 4);
+-
+-	*pLength += 4;
+-	pPnoInfoPkt += 4;
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->fast_scan_iterations, 4);
+-
+-	*pLength += 4;
+-	pPnoInfoPkt += 4;
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->slow_scan_period, 4);
+-
+-	*pLength += 4;
+-	pPnoInfoPkt += 4;
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->ssid_length,
+-			MAX_PNO_LIST_COUNT);
+-
+-	*pLength += MAX_PNO_LIST_COUNT;
+-	pPnoInfoPkt += MAX_PNO_LIST_COUNT;
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->ssid_cipher_info,
+-			MAX_PNO_LIST_COUNT);
+-
+-	*pLength += MAX_PNO_LIST_COUNT;
+-	pPnoInfoPkt += MAX_PNO_LIST_COUNT;
+-	memcpy(pPnoInfoPkt, &pwrctl->pnlo_info->ssid_channel_info,
+-			MAX_PNO_LIST_COUNT);
+-
+-	*pLength += MAX_PNO_LIST_COUNT;
+-	pPnoInfoPkt += MAX_PNO_LIST_COUNT;
+-}
+-
+-static void ConstructSSIDList(
+-	struct adapter *padapter, u8 *pframe, u32 *pLength
+-)
+-{
+-	int i = 0;
+-	u8 *pSSIDListPkt = pframe;
+-	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
+-
+-	pSSIDListPkt = (u8 *)(pframe + *pLength);
+-
+-	for (i = 0; i < pwrctl->pnlo_info->ssid_num ; i++) {
+-		memcpy(pSSIDListPkt, &pwrctl->pno_ssid_list->node[i].SSID,
+-			pwrctl->pnlo_info->ssid_length[i]);
+-
+-		*pLength += WLAN_SSID_MAXLEN;
+-		pSSIDListPkt += WLAN_SSID_MAXLEN;
+-	}
+-}
+-
+-static void ConstructScanInfo(
+-	struct adapter *padapter, u8 *pframe, u32 *pLength
+-)
+-{
+-	int i = 0;
+-	u8 *pScanInfoPkt = pframe;
+-	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
+-
+-	pScanInfoPkt = (u8 *)(pframe + *pLength);
+-
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->channel_num, 1);
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->orig_ch, 1);
+-
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->orig_bw, 1);
+-
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->orig_40_offset, 1);
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->orig_80_offset, 1);
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->periodScan, 1);
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->period_scan_time, 1);
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->enableRFE, 1);
+-
+-	*pLength += 1;
+-	pScanInfoPkt += 1;
+-	memcpy(pScanInfoPkt, &pwrctl->pscan_info->rfe_type, 8);
+-
+-	*pLength += 8;
+-	pScanInfoPkt += 8;
+-
+-	for (i = 0; i < MAX_SCAN_LIST_COUNT; i++) {
+-		memcpy(pScanInfoPkt, &pwrctl->pscan_info->ssid_channel_info[i], 4);
+-		*pLength += 4;
+-		pScanInfoPkt += 4;
+-	}
+-}
+-#endif
+-
+ #ifdef CONFIG_GTK_OL
+ static void ConstructGTKResponse(
+ 	struct adapter *padapter, u8 *pframe, u32 *pLength
+@@ -666,48 +547,6 @@ static void ConstructGTKResponse(
+ }
+ #endif /* CONFIG_GTK_OL */
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-static void ConstructProbeReq(struct adapter *padapter, u8 *pframe, u32 *pLength)
+-{
+-	struct ieee80211_hdr *pwlanhdr;
+-	u16 *fctrl;
+-	u32 pktlen;
+-	unsigned char *mac;
+-	unsigned char bssrate[NumRates];
+-	int bssrate_len = 0;
+-	u8 bc_addr[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+-
+-	pwlanhdr = (struct ieee80211_hdr *)pframe;
+-	mac = myid(&(padapter->eeprompriv));
+-
+-	fctrl = &(pwlanhdr->frame_control);
+-	*(fctrl) = 0;
+-
+-	/* broadcast probe request frame */
+-	memcpy(pwlanhdr->addr1, bc_addr, ETH_ALEN);
+-	memcpy(pwlanhdr->addr3, bc_addr, ETH_ALEN);
+-
+-	memcpy(pwlanhdr->addr2, mac, ETH_ALEN);
+-
+-	SetSeqNum(pwlanhdr, 0);
+-	SetFrameSubType(pframe, WIFI_PROBEREQ);
+-
+-	pktlen = sizeof(struct ieee80211_hdr_3addr);
+-	pframe += pktlen;
+-
+-	pframe = rtw_set_ie(pframe, WLAN_EID_SSID, 0, NULL, &pktlen);
+-
+-	get_rate_set(padapter, bssrate, &bssrate_len);
+-
+-	if (bssrate_len > 8) {
+-		pframe = rtw_set_ie(pframe, WLAN_EID_SUPP_RATES, 8, bssrate, &pktlen);
+-		pframe = rtw_set_ie(pframe, WLAN_EID_EXT_SUPP_RATES, (bssrate_len - 8), (bssrate + 8), &pktlen);
+-	} else
+-		pframe = rtw_set_ie(pframe, WLAN_EID_SUPP_RATES, bssrate_len, bssrate, &pktlen);
+-
+-	*pLength = pktlen;
+-}
+-#endif /* CONFIG_PNO_SUPPORT */
+ #endif /* CONFIG_WOWLAN */
+ 
+ #ifdef CONFIG_AP_WOWLAN
+@@ -875,15 +714,6 @@ static void rtl8723b_set_FwAoacRsvdPage_cmd(struct adapter *padapter, struct RSV
+ 		RT_PRINT_DATA(_module_hal_init_c_, _drv_always_, "u1H2CAoacRsvdPageParm:", u1H2CAoacRsvdPageParm, H2C_AOAC_RSVDPAGE_LOC_LEN);
+ 		FillH2CCmd8723B(padapter, H2C_8723B_AOAC_RSVD_PAGE, H2C_AOAC_RSVDPAGE_LOC_LEN, u1H2CAoacRsvdPageParm);
+ 	} else {
+-#ifdef CONFIG_PNO_SUPPORT
+-		if (!pwrpriv->pno_in_resume) {
+-			DBG_871X("NLO_INFO =%d\n", rsvdpageloc->LocPNOInfo);
+-			memset(&u1H2CAoacRsvdPageParm, 0, sizeof(u1H2CAoacRsvdPageParm));
+-			SET_H2CCMD_AOAC_RSVDPAGE_LOC_NLO_INFO(u1H2CAoacRsvdPageParm, rsvdpageloc->LocPNOInfo);
+-			FillH2CCmd8723B(padapter, H2C_AOAC_RSVDPAGE3, H2C_AOAC_RSVDPAGE_LOC_LEN, u1H2CAoacRsvdPageParm);
+-			msleep(10);
+-		}
+-#endif
+ 	}
+ 
+ #endif /*  CONFIG_WOWLAN */
+@@ -1183,11 +1013,6 @@ static void rtl8723b_set_FwWoWlanCtrl_Cmd(struct adapter *padapter, u8 bFuncEn)
+ 	u8 gpio_high_active = 0; /* 0: low active, 1: high active */
+ 	u8 magic_pkt = 0;
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-	if (!ppwrpriv->wowlan_pno_enable)
+-		magic_pkt = 1;
+-#endif
+-
+ 	if (psecpriv->dot11PrivacyAlgrthm == _WEP40_ || psecpriv->dot11PrivacyAlgrthm == _WEP104_)
+ 		hw_unicast = 1;
+ 
+@@ -1240,28 +1065,9 @@ static void rtl8723b_set_FwRemoteWakeCtrl_Cmd(struct adapter *padapter, u8 benab
+ 		else
+ 			SET_H2CCMD_REMOTE_WAKE_CTRL_ARP_ACTION(u1H2CRemoteWakeCtrlParm, 1);
+ 	}
+-#ifdef CONFIG_PNO_SUPPORT
+-	else {
+-		SET_H2CCMD_REMOTE_WAKECTRL_ENABLE(u1H2CRemoteWakeCtrlParm, benable);
+-		SET_H2CCMD_REMOTE_WAKE_CTRL_NLO_OFFLOAD_EN(u1H2CRemoteWakeCtrlParm, benable);
+-	}
+-#endif
+ 	RT_PRINT_DATA(_module_hal_init_c_, _drv_always_, "u1H2CRemoteWakeCtrlParm:", u1H2CRemoteWakeCtrlParm, H2C_REMOTE_WAKE_CTRL_LEN);
+ 	FillH2CCmd8723B(padapter, H2C_8723B_REMOTE_WAKE_CTRL,
+ 		H2C_REMOTE_WAKE_CTRL_LEN, u1H2CRemoteWakeCtrlParm);
+-#ifdef CONFIG_PNO_SUPPORT
+-	if (ppwrpriv->wowlan_pno_enable && !ppwrpriv->pno_in_resume) {
+-		res = rtw_read8(padapter, REG_PNO_STATUS);
+-		DBG_871X("cmd: 0x81 REG_PNO_STATUS: 0x%02x\n", res);
+-		while (!(res&BIT(7)) && count < 25) {
+-			DBG_871X("[%d] cmd: 0x81 REG_PNO_STATUS: 0x%02x\n", count, res);
+-			res = rtw_read8(padapter, REG_PNO_STATUS);
+-			count++;
+-			msleep(2);
+-		}
+-		DBG_871X("cmd: 0x81 REG_PNO_STATUS: 0x%02x\n", res);
+-	}
+-#endif /* CONFIG_PNO_SUPPORT */
+ }
+ 
+ static void rtl8723b_set_FwAOACGlobalInfo_Cmd(struct adapter *padapter,  u8 group_alg, u8 pairwise_alg)
+@@ -1278,26 +1084,6 @@ static void rtl8723b_set_FwAOACGlobalInfo_Cmd(struct adapter *padapter,  u8 grou
+ 	FillH2CCmd8723B(padapter, H2C_8723B_AOAC_GLOBAL_INFO, H2C_AOAC_GLOBAL_INFO_LEN, u1H2CAOACGlobalInfoParm);
+ }
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-static void rtl8723b_set_FwScanOffloadInfo_cmd(struct adapter *padapter, struct RSVDPAGE_LOC *rsvdpageloc, u8 enable)
+-{
+-	u8 u1H2CScanOffloadInfoParm[H2C_SCAN_OFFLOAD_CTRL_LEN] = {0};
+-
+-	DBG_871X("%s: loc_probe_packet:%d, loc_scan_info: %d loc_ssid_info:%d\n",
+-		__func__, rsvdpageloc->LocProbePacket, rsvdpageloc->LocScanInfo, rsvdpageloc->LocSSIDInfo);
+-
+-	SET_H2CCMD_AOAC_NLO_FUN_EN(u1H2CScanOffloadInfoParm, enable);
+-	SET_H2CCMD_AOAC_RSVDPAGE_LOC_SCAN_INFO(u1H2CScanOffloadInfoParm, rsvdpageloc->LocScanInfo);
+-	SET_H2CCMD_AOAC_RSVDPAGE_LOC_PROBE_PACKET(u1H2CScanOffloadInfoParm, rsvdpageloc->LocProbePacket);
+-	SET_H2CCMD_AOAC_RSVDPAGE_LOC_SSID_INFO(u1H2CScanOffloadInfoParm, rsvdpageloc->LocSSIDInfo);
+-
+-	RT_PRINT_DATA(_module_hal_init_c_, _drv_always_, "u1H2CScanOffloadInfoParm:", u1H2CScanOffloadInfoParm, H2C_SCAN_OFFLOAD_CTRL_LEN);
+-	FillH2CCmd8723B(padapter, H2C_8723B_D0_SCAN_OFFLOAD_INFO, H2C_SCAN_OFFLOAD_CTRL_LEN, u1H2CScanOffloadInfoParm);
+-
+-	msleep(20);
+-}
+-#endif /* CONFIG_PNO_SUPPORT */
+-
+ void rtl8723b_set_wowlan_cmd(struct adapter *padapter, u8 enable)
+ {
+ 	struct security_priv *psecpriv = &padapter->securitypriv;
+@@ -1656,55 +1442,8 @@ static void rtl8723b_set_FwRsvdPagePkt(
+ 	} else
+ #endif /* CONFIG_WOWLAN */
+ 	{
+-#ifdef CONFIG_PNO_SUPPORT
+-		if (!pwrctl->pno_in_resume && pwrctl->pno_inited) {
+-			/* Probe Request */
+-			RsvdPageLoc.LocProbePacket = TotalPageNum;
+-			ConstructProbeReq(
+-				padapter,
+-				&ReservedPagePacket[BufIndex],
+-				&ProbeReqLength);
+-
+-			rtl8723b_fill_fake_txdesc(padapter,
+-				&ReservedPagePacket[BufIndex-TxDescLen],
+-				ProbeReqLength, false, false, false);
+-			CurtPktPageNum =
+-				(u8)PageNum_128(TxDescLen + ProbeReqLength);
+-
+-			TotalPageNum += CurtPktPageNum;
+-
+-			BufIndex += (CurtPktPageNum*PageSize);
+-
+-			/* PNO INFO Page */
+-			RsvdPageLoc.LocPNOInfo = TotalPageNum;
+-			ConstructPnoInfo(padapter, &ReservedPagePacket[BufIndex-TxDescLen], &PNOLength);
+-
+-			CurtPktPageNum = (u8)PageNum_128(PNOLength);
+-			TotalPageNum += CurtPktPageNum;
+-			BufIndex += (CurtPktPageNum*PageSize);
+-
+-			/* SSID List Page */
+-			RsvdPageLoc.LocSSIDInfo = TotalPageNum;
+-			ConstructSSIDList(padapter, &ReservedPagePacket[BufIndex-TxDescLen], &SSIDLegnth);
+-			CurtPktPageNum = (u8)PageNum_128(SSIDLegnth);
+-			TotalPageNum += CurtPktPageNum;
+-			BufIndex += (CurtPktPageNum*PageSize);
+-
+-			/* Scan Info Page */
+-			RsvdPageLoc.LocScanInfo = TotalPageNum;
+-			ConstructScanInfo(padapter, &ReservedPagePacket[BufIndex-TxDescLen], &ScanInfoLength);
+-			CurtPktPageNum = (u8)PageNum_128(ScanInfoLength);
+-			TotalPageNum += CurtPktPageNum;
+-			BufIndex += (CurtPktPageNum*PageSize);
+-
+-			TotalPacketLen = BufIndex + ScanInfoLength;
+-		} else {
+ 		TotalPacketLen = BufIndex + BTQosNullLength;
+ 	}
+-#else /* CONFIG_PNO_SUPPORT */
+-		TotalPacketLen = BufIndex + BTQosNullLength;
+-#endif
+-	}
+ 
+ 	if (TotalPacketLen > MaxRsvdPageBufSize) {
+ 		DBG_871X("%s(): ERROR: The rsvd page size is not enough!!TotalPacketLen %d, MaxRsvdPageBufSize %d\n", __func__,
+@@ -1725,14 +1464,6 @@ static void rtl8723b_set_FwRsvdPagePkt(
+ 		rtl8723b_set_FwAoacRsvdPage_cmd(padapter, &RsvdPageLoc);
+ 	} else {
+ 		rtl8723b_set_FwAoacRsvdPage_cmd(padapter, &RsvdPageLoc);
+-#ifdef CONFIG_PNO_SUPPORT
+-		if (pwrctl->pno_in_resume)
+-			rtl8723b_set_FwScanOffloadInfo_cmd(padapter,
+-					&RsvdPageLoc, 0);
+-		else
+-			rtl8723b_set_FwScanOffloadInfo_cmd(padapter,
+-					&RsvdPageLoc, 1);
+-#endif
+ 	}
+ 	return;
+ 
+diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+index 3266839031f8..ced05bbfc906 100644
+--- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
++++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+@@ -1555,14 +1555,6 @@ static void SetHwReg8723BS(struct adapter *padapter, u8 variable, u8 *val)
+ 				if (psta)
+ 					rtl8723b_set_FwMediaStatusRpt_cmd(padapter, RT_MEDIA_CONNECT, psta->mac_id);
+ 			}
+-#ifdef CONFIG_PNO_SUPPORT
+-			rtw_write8(padapter, 0x1b8, 0);
+-			DBG_871X("reset 0x1b8: %d\n", rtw_read8(padapter, 0x1b8));
+-			rtw_write8(padapter, 0x1b9, 0);
+-			DBG_871X("reset 0x1b9: %d\n", rtw_read8(padapter, 0x1b9));
+-			rtw_write8(padapter, REG_PNO_STATUS, 0);
+-			DBG_871X("reset REG_PNO_STATUS: %d\n", rtw_read8(padapter, REG_PNO_STATUS));
+-#endif
+ 			break;
+ 
+ 		default:
+diff --git a/drivers/staging/rtl8723bs/include/hal_com_h2c.h b/drivers/staging/rtl8723bs/include/hal_com_h2c.h
+index 8970c59388bb..a6e49c5494e6 100644
+--- a/drivers/staging/rtl8723bs/include/hal_com_h2c.h
++++ b/drivers/staging/rtl8723bs/include/hal_com_h2c.h
+@@ -233,17 +233,6 @@ enum h2c_cmd {
+ #ifdef CONFIG_GTK_OL
+ #define SET_H2CCMD_AOAC_RSVDPAGE_LOC_GTK_EXT_MEM(__pH2CCmd, __Value)		SET_BITS_TO_LE_1BYTE_8BIT((__pH2CCmd)+5, 0, 8, __Value)
+ #endif /* CONFIG_GTK_OL */
+-#ifdef CONFIG_PNO_SUPPORT
+-#define SET_H2CCMD_AOAC_RSVDPAGE_LOC_NLO_INFO(__pH2CCmd, __Value)		SET_BITS_TO_LE_1BYTE_8BIT((__pH2CCmd), 0, 8, __Value)
+-#endif
+-
+-#ifdef CONFIG_PNO_SUPPORT
+-/*  D0_Scan_Offload_Info_0x86 */
+-#define SET_H2CCMD_AOAC_NLO_FUN_EN(__pH2CCmd, __Value)			SET_BITS_TO_LE_1BYTE((__pH2CCmd), 3, 1, __Value)
+-#define SET_H2CCMD_AOAC_RSVDPAGE_LOC_PROBE_PACKET(__pH2CCmd, __Value)	SET_BITS_TO_LE_1BYTE_8BIT((__pH2CCmd)+1, 0, 8, __Value)
+-#define SET_H2CCMD_AOAC_RSVDPAGE_LOC_SCAN_INFO(__pH2CCmd, __Value)	SET_BITS_TO_LE_1BYTE_8BIT((__pH2CCmd)+2, 0, 8, __Value)
+-#define SET_H2CCMD_AOAC_RSVDPAGE_LOC_SSID_INFO(__pH2CCmd, __Value)	SET_BITS_TO_LE_1BYTE_8BIT((__pH2CCmd)+3, 0, 8, __Value)
+-#endif /* CONFIG_PNO_SUPPORT */
+ 
+ /*  */
+ /*     Structure    -------------------------------------------------- */
+@@ -265,12 +254,6 @@ struct RSVDPAGE_LOC {
+ #ifdef CONFIG_GTK_OL
+ 	u8 LocGTKEXTMEM;
+ #endif /* CONFIG_GTK_OL */
+-#ifdef CONFIG_PNO_SUPPORT
+-	u8 LocPNOInfo;
+-	u8 LocScanInfo;
+-	u8 LocSSIDInfo;
+-	u8 LocProbePacket;
+-#endif /* CONFIG_PNO_SUPPORT */
+ #endif /* CONFIG_WOWLAN */
+ #ifdef CONFIG_AP_WOWLAN
+ 	u8 LocApOffloadBCN;
+diff --git a/drivers/staging/rtl8723bs/include/rtl8723b_hal.h b/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
+index 8b214a6e3077..5f2784c7cc16 100644
+--- a/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
++++ b/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
+@@ -92,11 +92,6 @@ struct rt_firmware_hdr {
+ #define BCNQ_PAGE_NUM_8723B  0x08
+ #define BCNQ1_PAGE_NUM_8723B 0x00
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-#undef BCNQ1_PAGE_NUM_8723B
+-#define BCNQ1_PAGE_NUM_8723B 0x00 /* 0x04 */
+-#endif
+-
+ #define MAX_RX_DMA_BUFFER_SIZE_8723B 0x2800 /* RX 10K */
+ 
+ /* For WoWLan, more reserved page */
+@@ -107,11 +102,6 @@ struct rt_firmware_hdr {
+ #define WOWLAN_PAGE_NUM_8723B 0x00
+ #endif
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-#undef WOWLAN_PAGE_NUM_8723B
+-#define WOWLAN_PAGE_NUM_8723B 0x0d
+-#endif
+-
+ #ifdef CONFIG_AP_WOWLAN
+ #define AP_WOWLAN_PAGE_NUM_8723B 0x02
+ #endif
+diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+index b1ef4e0ba9fe..20eafa1eeafa 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+@@ -46,11 +46,6 @@ enum Power_Mgnt {
+ 	PS_MODE_NUM,
+ };
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-#define MAX_PNO_LIST_COUNT 16
+-#define MAX_SCAN_LIST_COUNT 14 /* 2.4G only */
+-#endif
+-
+ /*
+ 	BIT[2:0] = HW state
+ 	BIT[3] = Protocol PS state,   0: register active state , 1: register sleep state
+@@ -158,47 +153,6 @@ enum PS_DENY_REASON {
+ 	PS_DENY_OTHERS = 31
+ };
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-struct pno_nlo_info {
+-	u32 fast_scan_period;				/* Fast scan period */
+-	u32 ssid_num;				/* number of entry */
+-	u32 slow_scan_period;			/* slow scan period */
+-	u32 fast_scan_iterations;			/* Fast scan iterations */
+-	u8 ssid_length[MAX_PNO_LIST_COUNT];	/* SSID Length Array */
+-	u8 ssid_cipher_info[MAX_PNO_LIST_COUNT];	/* Cipher information for security */
+-	u8 ssid_channel_info[MAX_PNO_LIST_COUNT];	/* channel information */
+-};
+-
+-struct pno_ssid {
+-	u32 	SSID_len;
+-	u8 SSID[32];
+-};
+-
+-struct pno_ssid_list {
+-	struct pno_ssid	node[MAX_PNO_LIST_COUNT];
+-};
+-
+-struct pno_scan_channel_info {
+-	u8 channel;
+-	u8 tx_power;
+-	u8 timeout;
+-	u8 active;				/* set 1 means active scan, or pasivite scan. */
+-};
+-
+-struct pno_scan_info {
+-	u8 enableRFE;			/* Enable RFE */
+-	u8 period_scan_time;		/* exclusive with fast_scan_period and slow_scan_period */
+-	u8 periodScan;			/* exclusive with fast_scan_period and slow_scan_period */
+-	u8 orig_80_offset;			/* original channel 80 offset */
+-	u8 orig_40_offset;			/* original channel 40 offset */
+-	u8 orig_bw;			/* original bandwidth */
+-	u8 orig_ch;			/* original channel */
+-	u8 channel_num;			/* number of channel */
+-	u64	rfe_type;			/* rfe_type && 0x00000000000000ff */
+-	struct pno_scan_channel_info ssid_channel_info[MAX_SCAN_LIST_COUNT];
+-};
+-#endif /* CONFIG_PNO_SUPPORT */
+-
+ struct pwrctrl_priv {
+ 	struct mutex lock;
+ 	volatile u8 rpwm; /*  requested power state for fw */
+@@ -272,13 +226,6 @@ struct pwrctrl_priv {
+ 	u8 wowlan_unicast;
+ 	u8 wowlan_pattern_idx;
+ 	u8 wowlan_pno_enable;
+-#ifdef CONFIG_PNO_SUPPORT
+-	u8 pno_in_resume;
+-	u8 pno_inited;
+-	struct pno_nlo_info *pnlo_info;
+-	struct pno_scan_info *pscan_info;
+-	struct pno_ssid_list *pno_ssid_list;
+-#endif
+ 	u32 	wowlan_pattern_context[8][5];
+ 	u64		wowlan_fw_iv;
+ #endif /*  CONFIG_WOWLAN */
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index f0e38303022d..2ff71d001c07 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -3095,54 +3095,6 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
+ 	return ret;
+ }
+ 
+-#if defined(CONFIG_PNO_SUPPORT)
+-static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy, struct net_device *dev,
+-					 struct cfg80211_sched_scan_request *request)
+-{
+-	struct adapter *padapter = rtw_netdev_priv(dev);
+-	struct	mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+-	int ret;
+-
+-	if (padapter->bup == false) {
+-		DBG_871X("%s: net device is down.\n", __func__);
+-		return -EIO;
+-	}
+-
+-	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true ||
+-		check_fwstate(pmlmepriv, _FW_LINKED) == true  ||
+-		check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true) {
+-		DBG_871X("%s: device is busy.\n", __func__);
+-		rtw_scan_abort(padapter);
+-	}
+-
+-	if (request == NULL) {
+-		DBG_871X("%s: invalid cfg80211_requests parameters.\n", __func__);
+-		return -EINVAL;
+-	}
+-
+-	ret = rtw_android_cfg80211_pno_setup(dev, request->ssids,
+-			request->n_ssids, request->interval);
+-
+-	if (ret < 0) {
+-		DBG_871X("%s ret: %d\n", __func__, ret);
+-		goto exit;
+-	}
+-
+-	ret = rtw_android_pno_enable(dev, true);
+-	if (ret < 0) {
+-		DBG_871X("%s ret: %d\n", __func__, ret);
+-		goto exit;
+-	}
+-exit:
+-	return ret;
+-}
+-
+-static int cfg80211_rtw_sched_scan_stop(struct wiphy *wiphy, struct net_device *dev)
+-{
+-	return rtw_android_pno_enable(dev, false);
+-}
+-#endif /* CONFIG_PNO_SUPPORT */
+-
+ static void rtw_cfg80211_init_ht_capab(struct ieee80211_sta_ht_cap *ht_cap, enum nl80211_band band, u8 rf_type)
+ {
+ 
+@@ -3248,9 +3200,6 @@ static void rtw_cfg80211_preinit_wiphy(struct adapter *padapter, struct wiphy *w
+ 
+ #if defined(CONFIG_PM)
+ 	wiphy->max_sched_scan_reqs = 1;
+-#ifdef CONFIG_PNO_SUPPORT
+-	wiphy->max_sched_scan_ssids = MAX_PNO_LIST_COUNT;
+-#endif
+ #endif
+ 
+ #if defined(CONFIG_PM)
+@@ -3297,11 +3246,6 @@ static struct cfg80211_ops rtw_cfg80211_ops = {
+ 	.change_bss = cfg80211_rtw_change_bss,
+ 
+ 	.mgmt_tx = cfg80211_rtw_mgmt_tx,
+-
+-#if defined(CONFIG_PNO_SUPPORT)
+-	.sched_scan_start = cfg80211_rtw_sched_scan_start,
+-	.sched_scan_stop = cfg80211_rtw_sched_scan_stop,
+-#endif /* CONFIG_PNO_SUPPORT */
+ };
+ 
+ int rtw_wdev_alloc(struct adapter *padapter, struct device *dev)
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 4ece23737712..b6977f6ece85 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -1505,10 +1505,6 @@ int rtw_resume_process_wow(struct adapter *padapter)
+ 		goto exit;
+ 	}
+ 
+-#ifdef CONFIG_PNO_SUPPORT
+-	pwrpriv->pno_in_resume = true;
+-#endif
+-
+ 	if (pwrpriv->wowlan_mode) {
+ 		rtw_set_ps_mode(padapter, PS_MODE_ACTIVE, 0, 0, "WOWLAN");
+ 
+@@ -1780,9 +1776,6 @@ int rtw_resume_common(struct adapter *padapter)
+ 
+ 	if (pwrpriv) {
+ 		pwrpriv->bInSuspend = false;
+-	#ifdef CONFIG_PNO_SUPPORT
+-		pwrpriv->pno_in_resume = false;
+-	#endif
+ 	}
+ 	DBG_871X_LEVEL(_drv_always_, "%s:%d in %d ms\n", __func__, ret,
+ 		jiffies_to_msecs(jiffies - start_time));
 -- 
 2.20.1
 
