@@ -1,80 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CEEA33C3C7
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:13:45 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B59533C3C8
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:13:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 914834DFF8;
-	Mon, 15 Mar 2021 17:13:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D5AB46F478;
+	Mon, 15 Mar 2021 17:13:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2MHPjteX72Ta; Mon, 15 Mar 2021 17:13:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0xqytsuI5GjL; Mon, 15 Mar 2021 17:13:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 551B34D751;
-	Mon, 15 Mar 2021 17:13:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1A757606AE;
+	Mon, 15 Mar 2021 17:13:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6B5321BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 030641BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 68954430C7
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 52C586F549
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id myLIxoIzlUEN for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Itiuy6RhYkoG for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:43 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
- [IPv6:2a00:1450:4864:20::62d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9A87D430C0
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:42 +0000 (UTC)
-Received: by mail-ej1-x62d.google.com with SMTP id p7so56192152eju.6
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:42 -0700 (PDT)
+Received: from mail-ej1-x634.google.com (mail-ej1-x634.google.com
+ [IPv6:2a00:1450:4864:20::634])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7EA266F576
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:43 +0000 (UTC)
+Received: by mail-ej1-x634.google.com with SMTP id p7so56192225eju.6
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=xB33FDO4UEYgYxHZECh5xA06icjAah7DgO/SAqbF9G8=;
- b=TRewqaDYealn9PXZ1zpRnIUsbshLvw+8MjiU0FzQYwTNr0hGqJJKSIr0MQSasv9HJA
- ZV63JnHXYTGoo3iCPKS0OywOXPcVI8OOuG6a1hqQtsgipO7D4aNBSDDqTfLl0RUWu6DD
- oskA89dcPSIyCOr/WkHMpZdNtRiHdrgfDNBYMPip4vDeSR+pjoqdJK/RznfQkX3p5Afh
- +l7jIVosUp/w07laFaBz0Yglor8h7S9dJLTP4/GSfb0YCwOrQXXWDvHss+7YPlyDhgz9
- HIJXhqtMUdneRiccjRaUgeb+BBVQejaASSOwEJ3RfXJ54E3fJ/hUl/voT5PwAWFLKuSN
- jcOQ==
+ bh=7TX01P5Ebv0u3enHckHZxlHD4ZJGxTqeUO5a7kSI1rQ=;
+ b=DAGE74v8JSnKbz0jMGEuW1lKc8Ao26DF+CQcyA+4uNmsNO6TWbWOpdPUi0sezq+o4k
+ CDZid77+mvOO1ilIRd0dhwS/OjVX2Wc0iitU/rN7uVigEqk777h8l1oGJcPN8KOs0Pr4
+ SDZHhYJ4+JSYKUorcss2Om0xmN4rXzf2ksYEvxI6cajMpsjrQTUv125cwKm/xJXNFlfD
+ PJRXtqU/Yr3KnXWf1VKaJvMXGVCGP/I2PEzt7hd8cT43hN/L4WGNnTg5W4nobO7j9KBU
+ SPZLccJmfyw+Hjne9ICg/8SRl88TaIVOkHvPcr7nuUiM3q75SvnSmuUWr2SvCF3Azqqy
+ GQHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xB33FDO4UEYgYxHZECh5xA06icjAah7DgO/SAqbF9G8=;
- b=l7/PgrN3I1VgW+lUwQ3ahWcACFVaYeIguV7hSyk4gDNuRKKUvkuSrzlh3EGUu2YmU8
- +OhCXpsg0PK7G/tIWjEBaJdTUz/jjqOUTntpDa902ETM91HQR1v1FA02djtINN6IUa+b
- IlmyI/HgF3YM+Chdg678uubD7CPkhD3B60J+u/TNQNG5MyjhAMWlmpFzCsuwso6hicnm
- Dp7nmQKx8NuTVGYp29Fr23YcLnNbhKPxy5JSz4Rf98qifXgX5oZp8LE3cuc71tBWwx7O
- wcn3l1RH0xwrIgasPfA0Vu0W6yKy9ASHoug4fNjkxa9BRMuwxhVQ1PKLV/sC0gFqE0//
- JFjw==
-X-Gm-Message-State: AOAM531UF+hSiJGOxITA+h7GA6LND/RKRIfNI+1wA0uvGIGUSWBcks2A
- AhDfEwKxk36ihp0mla7sX6A=
-X-Google-Smtp-Source: ABdhPJx2EXZIDJe8+ZooItBQDuZHGv0TxT817Url8H0IPdN+x6fqPVY63eT4YfdH50f8zCjsjY4/BQ==
-X-Received: by 2002:a17:906:2816:: with SMTP id
- r22mr24446292ejc.2.1615828000977; 
- Mon, 15 Mar 2021 10:06:40 -0700 (PDT)
+ bh=7TX01P5Ebv0u3enHckHZxlHD4ZJGxTqeUO5a7kSI1rQ=;
+ b=HAGyj35VdTxdNm1xe35Vx4C4RNu02hNSQrpixP4k2eex6jWYViYvm9aah0GO3kgggF
+ 644X0FeUlnwyXLg6Z44/HUJUB6WElWPKyA3X2Bd/XEL0rNd1Z7Mv0C4XN5zsKrZiCWyO
+ qyr7VtQrwZOZM3EyT8pmEXLTqgKt1H/9YQ1/L2q6IUhc7Zhahh6Yz7A4hRCaIiGfWrPg
+ 3jxCrJEbSlhux8zd18Fnzv9Y25WwXE1V/N/q77w/VLIHuY/f+bilqIxOea4IkzpNvyVe
+ RbhGA/JCbxPthxfqI4Z7IZT2uN1j7FGao+QUsGMlf5g/iJ7f/egzxkc6Veef9vXGSdEm
+ uIjg==
+X-Gm-Message-State: AOAM53108ueMWcYM00/rC7x4ku3PoYcPB61225nzOpAfdNDw2n253VB5
+ dziZkeBAOMn/T7WHUMoDpOY=
+X-Google-Smtp-Source: ABdhPJwNQEkkU/4e8BVIq/oZV2peZbkSX/t1liKiTVAPIaGWgzF6QgBzbCHAsorcHdgG2FqllHnFYA==
+X-Received: by 2002:a17:906:12db:: with SMTP id
+ l27mr24453377ejb.500.1615828001810; 
+ Mon, 15 Mar 2021 10:06:41 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.40
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:40 -0700 (PDT)
+ Mon, 15 Mar 2021 10:06:41 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 40/57] Staging: rtl8723bs: fix spaces in drv_types.h
-Date: Mon, 15 Mar 2021 18:06:01 +0100
-Message-Id: <20210315170618.2566-41-marcocesati@gmail.com>
+Subject: [PATCH 41/57] Staging: rtl8723bs: fix spaces in hal_com.h
+Date: Mon, 15 Mar 2021 18:06:02 +0100
+Message-Id: <20210315170618.2566-42-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
 References: <20210315170618.2566-1-marcocesati@gmail.com>
@@ -98,77 +96,78 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit fixes the following checkpatch.pl errors:
 
-    ERROR:POINTER_LOCATION: "(foo*)" should be "(foo *)"
-    #210: FILE: ./include/drv_types.h:210:
-    +#define RGTRY_SZ(field)   sizeof(((struct registry_priv*) 0)->field)
-
-    ERROR:POINTER_LOCATION: "foo *		bar" should be "foo *bar"
-    #404: FILE: ./include/drv_types.h:404:
-    +	void *		HalData;
+    ERROR:POINTER_LOCATION: "foo *	bar" should be "foo *bar"
+    #218: FILE: ./include/hal_com.h:218:
+    +	struct adapter *	Adapter,
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #432: FILE: ./include/drv_types.h:432:
-    +	void (*intf_start)(struct adapter * adapter);
+    #230: FILE: ./include/hal_com.h:230:
+    +void rtw_init_hal_com_default_value(struct adapter * Adapter);
 
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #433: FILE: ./include/drv_types.h:433:
-    +	void (*intf_stop)(struct adapter * adapter);
+    ERROR:POINTER_LOCATION: "foo *				bar" should be "foo *bar"
+    #282: FILE: ./include/hal_com.h:282:
+    +	void *				pValue1,
 
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #435: FILE: ./include/drv_types.h:435:
-    +	struct net_device * pnetdev;
+    ERROR:POINTER_LOCATION: "foo *				bar" should be "foo *bar"
+    #283: FILE: ./include/hal_com.h:283:
+    +	void *				pValue2);
 
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #440: FILE: ./include/drv_types.h:440:
-    +		struct net_device * old_pnetdev;
+    ERROR:POINTER_LOCATION: "foo *			bar" should be "foo *bar"
+    #285: FILE: ./include/hal_com.h:285:
+    +	struct adapter *			Adapter,
+
+    ERROR:POINTER_LOCATION: "foo *				bar" should be "foo *bar"
+    #287: FILE: ./include/hal_com.h:287:
+    +	void *				pValue1,
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/drv_types.h | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8723bs/include/hal_com.h | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
-index 97e8e462d718..649b2fd62abe 100644
---- a/drivers/staging/rtl8723bs/include/drv_types.h
-+++ b/drivers/staging/rtl8723bs/include/drv_types.h
-@@ -207,7 +207,7 @@ struct registry_priv {
+diff --git a/drivers/staging/rtl8723bs/include/hal_com.h b/drivers/staging/rtl8723bs/include/hal_com.h
+index c4b83eb16326..272d7ec4e15d 100644
+--- a/drivers/staging/rtl8723bs/include/hal_com.h
++++ b/drivers/staging/rtl8723bs/include/hal_com.h
+@@ -215,9 +215,9 @@ u8 MRateToHwRate(u8 rate);
+ u8 HwRateToMRate(u8 rate);
  
- /* For registry parameters */
- #define RGTRY_OFT(field) ((u32)FIELD_OFFSET(struct registry_priv, field))
--#define RGTRY_SZ(field)   sizeof(((struct registry_priv*) 0)->field)
-+#define RGTRY_SZ(field)   sizeof(((struct registry_priv *)0)->field)
- #define BSSID_OFT(field) ((u32)FIELD_OFFSET(struct wlan_bssid_ex, field))
- #define BSSID_SZ(field)   sizeof(((struct wlan_bssid_ex *) 0)->field)
+ void HalSetBrateCfg(
+-	struct adapter *	Adapter,
+-	u8 	*mBratesOS,
+-	u16 		*pBrateCfg);
++	struct adapter *Adapter,
++	u8 *mBratesOS,
++	u16	*pBrateCfg);
  
-@@ -401,7 +401,7 @@ struct adapter {
+ bool
+ Hal_MappingOutPipe(
+@@ -227,7 +227,7 @@ u8 NumOutPipe
  
- 	u32 setband;
+ void hal_init_macaddr(struct adapter *adapter);
  
--	void *		HalData;
-+	void *HalData;
- 	u32 hal_data_sz;
- 	struct hal_ops	HalFunc;
+-void rtw_init_hal_com_default_value(struct adapter * Adapter);
++void rtw_init_hal_com_default_value(struct adapter *Adapter);
  
-@@ -429,15 +429,15 @@ struct adapter {
- 	void (*intf_free_irq)(struct dvobj_priv *dvobj);
+ void c2h_evt_clear(struct adapter *adapter);
+ s32 c2h_evt_read_88xx(struct adapter *adapter, u8 *buf);
+@@ -279,12 +279,12 @@ void rtw_bb_rf_gain_offset(struct adapter *padapter);
  
+ void GetHalODMVar(struct adapter *Adapter,
+ 	enum HAL_ODM_VARIABLE		eVariable,
+-	void *				pValue1,
+-	void *				pValue2);
++	void *pValue1,
++	void *pValue2);
+ void SetHalODMVar(
+-	struct adapter *			Adapter,
++	struct adapter *Adapter,
+ 	enum HAL_ODM_VARIABLE		eVariable,
+-	void *				pValue1,
++	void *pValue1,
+ 	bool					bSet);
  
--	void (*intf_start)(struct adapter * adapter);
--	void (*intf_stop)(struct adapter * adapter);
-+	void (*intf_start)(struct adapter *adapter);
-+	void (*intf_stop)(struct adapter *adapter);
- 
--	struct net_device * pnetdev;
-+	struct net_device *pnetdev;
- 	char old_ifname[IFNAMSIZ];
- 
- 	/*  used by rtw_rereg_nd_name related function */
- 	struct rereg_nd_name_data {
--		struct net_device * old_pnetdev;
-+		struct net_device *old_pnetdev;
- 		char old_ifname[IFNAMSIZ];
- 		u8 old_ips_mode;
- 		u8 old_bRegUseLed;
+ #ifdef CONFIG_BACKGROUND_NOISE_MONITOR
 -- 
 2.30.2
 
