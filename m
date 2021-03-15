@@ -1,81 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE84433C34E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:06:26 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90AD733C34F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:06:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0AE3E4CF79;
-	Mon, 15 Mar 2021 17:06:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 966466F597;
+	Mon, 15 Mar 2021 17:06:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5tkRvFzW5IxW; Mon, 15 Mar 2021 17:06:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bDk-nkloeSDs; Mon, 15 Mar 2021 17:06:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC9D347489;
-	Mon, 15 Mar 2021 17:06:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D1D316F504;
+	Mon, 15 Mar 2021 17:06:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 16EE51BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 88E9B1BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 14017430B9
+ by smtp2.osuosl.org (Postfix) with ESMTP id 837EC40170
  for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kJyKHiItL-5O for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:09 +0000 (UTC)
+ with ESMTP id 9Opwr47XBi_l for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:10 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com
- [IPv6:2a00:1450:4864:20::62b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2B4CE40170
+Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
+ [IPv6:2a00:1450:4864:20::530])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C637441503
  for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:09 +0000 (UTC)
-Received: by mail-ej1-x62b.google.com with SMTP id ci14so67355353ejc.7
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:08 -0700 (PDT)
+Received: by mail-ed1-x530.google.com with SMTP id x21so18198257eds.4
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=5kkPHfLMJuEwBnwAYQK9hsZQI1TYbfCLZ0FHQppahV0=;
- b=l9YuTuIWNVtCzu2xbEb754SponWEj0o2s6QzmqGrBQTWU1m92ZMxmcrsDwILjtJkdZ
- 5QnTbeeluKbYl/cjBJapwArY3yFP4xVBcUToyuv8REd/6Bzy4AsPQNjcmKyIw2vmvB6X
- g4rPbrjkU+VyabC2R1nfLEfLHobtRudDFKH+s1hamgH9LbKOe3TqkxzJMg4Zcex2vhkw
- DWtzgBGDUUcTf9g7cdXfrwnrotsDsbswPlk11xrhiNtfQd/4lugOUcZyuM0o1Yj9X8sw
- IOGDSkzZMKIVVdl7Z/UnVhXTy8S8UzbbqNTj35sUbuECUt9B05fsugChub6OyaAVP3DY
- GM1Q==
+ bh=iZtib7C92hhfdrXtQb4LadYG1xZNnXU82QCKxlMZ9Bk=;
+ b=KAq5by1RkCw7lj9vY380qO5QmZT2t+d68MG+ugQryQhOPQyTOtQgK7Kf6EKrfX6xlm
+ pN0gU2MxCIipnD6GBxm5mesGSff8m0+S0Z7BYFeVxj/NnfWU5h2FkWe2z1vtUIy1VQyU
+ JRiIBthto/MpYKnBKv/Mo0IZfVZvejnqNr0sF2995JGUkPN2iVzW3VMKmqiDI+SPAvPQ
+ hkz2rGMiUe6kL7KWLPdPmkju6KD6L726IVdriHnCCGLj4skauWqu3W3SjzNUaoKn5ikk
+ mtM7oDsoKR5XpeW/XhYZ3RI/HieSpdAZYgE8Tu+V6MA/5oyoSKuIivVy8od2fnJBVFtg
+ R0mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=5kkPHfLMJuEwBnwAYQK9hsZQI1TYbfCLZ0FHQppahV0=;
- b=gAncLy9ll29skzYS0UqS8TAyFbLBnEMMiIYdbyKBi0sblMsEqT2O2mni2q0ThKmZXn
- bt/UOfFvm2xEzexTP5/notlOTapCkpc2A3hEczuOvr7+KWZQlxDSRQUcV+O4Sws2O4MX
- TUki7dqf1w01/P7hubQG32MWnXI2UsfLpFN4Q4p0D4nwc5GUNU05+eP1OBClZduDB8Mu
- F6HDFg8rCZWwmYdoBFBdPBV1+hWNUKL8xfn2hU3pW5adnlXziJ1rKrm+gYM5lDvwwkqc
- yOZv5FxnYvfMG0Cxe3+mBIleQES++sUwJ5d9y9+RZPcLFaF9gEvxG0HNO5WuVuFDRwl4
- 8eFQ==
-X-Gm-Message-State: AOAM530gFn0oj0UiN+bPjFPsqZtZ1D1/lkRI7I9x8BBktU9Gf+jkerGc
- KNP2UApZtXbKx7fJzTNS/2c=
-X-Google-Smtp-Source: ABdhPJx9vsRnoYqrzNW1bjtWUHYHiyWohKTEn/KNQ5IjF6SHSe1OgMBFmxWWYzEyrC8D3lZQPSQbQg==
-X-Received: by 2002:a17:906:144d:: with SMTP id
- q13mr23802065ejc.458.1615827967258; 
- Mon, 15 Mar 2021 10:06:07 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=iZtib7C92hhfdrXtQb4LadYG1xZNnXU82QCKxlMZ9Bk=;
+ b=YXz04IFwtdh3nGjx5jUdijYA/VamPUbItrgBL2jjn7tgsKUK3jEt2KeGZnneE7bK8k
+ 8TNh1sW76v+b2ypYV+FZPUk2PgFyb6YbNiwZd4otn9qnYfyLjDJPDwYsWrCCatScBJ3l
+ Bu3IFqI1hukI81rcEq0lHoCEnf1qTy5Lr/n4OmxSyEglPQh3DI7x9PteXN0pK+lWbMdl
+ BRjuZ59WgKGcC4sRlZJQj9TJjKJGhS4hw9aPIZixoXOi04xvBRDvtuKj7lfHtebmVI0u
+ XqTp0E2geV8KE1F0tQ8fK9P4aeYUVT5e+I8vXkOR+3DgtG4tiWcqoRqZxg7VoaaIbEL3
+ Li0A==
+X-Gm-Message-State: AOAM533St1GAaqzwSotg3YDxLxTdtwnUvqz1f7LKPSjMAX8IshhBSxEy
+ aaKUlBwY/yRsfnSgKRBmjpY=
+X-Google-Smtp-Source: ABdhPJwo55f4JxjLRwtzIH5WP+Qpqmp2qg94H38eOKCT+NW8XJ8F5ni3KWyjgyW7T8adERvorJy49Q==
+X-Received: by 2002:a50:f391:: with SMTP id g17mr30863036edm.26.1615827968052; 
+ Mon, 15 Mar 2021 10:06:08 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.06
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:06 -0700 (PDT)
+ Mon, 15 Mar 2021 10:06:07 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 00/57] Staging: rtl8723bs: fix POINTER_LOCATION whitespaces
-Date: Mon, 15 Mar 2021 18:05:21 +0100
-Message-Id: <20210315170618.2566-1-marcocesati@gmail.com>
+Subject: [PATCH 01/57] Staging: rtl8723bs: fix spaces in rtw_cmd.c
+Date: Mon, 15 Mar 2021 18:05:22 +0100
+Message-Id: <20210315170618.2566-2-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
+References: <20210315170618.2566-1-marcocesati@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,133 +95,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This set of patches fixes 522 checkpatch.pl errors of type
-POINTER_LOCATION in the staging/rtl8723bs souce code. Every patch is
-purely syntactical: it does not change the generated machine code.
-Furthermore, every single patch leaves the source code fully compilable,
-so that 'git bisect' will not be affected.
+This commit fixes the following checkpatch.pl errors:
 
-The checkpatch.pl script emits many errors and warnings for these
-patches, however all of them are caused by the original code. They shall
-be fixed in different patchsets.
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #206: FILE: ./core/rtw_cmd.c:206:
+    +static void c2h_wk_callback(struct work_struct * work);
 
-[PATCH 01/57] Staging: rtl8723bs: fix spaces in rtw_cmd.c
-[PATCH 02/57] Staging: rtl8723bs: fix spaces in HalBtc8723b1Ant.c
-[PATCH 03/57] Staging: rtl8723bs: fix spaces in HalBtc8723b1Ant.h
-[PATCH 04/57] Staging: rtl8723bs: fix spaces in HalBtc8723b2Ant.c
-[PATCH 05/57] Staging: rtl8723bs: fix spaces in HalBtc8723b2Ant.h
-[PATCH 06/57] Staging: rtl8723bs: fix spaces in HalBtcOutSrc.h
-[PATCH 07/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_BB.c
-[PATCH 08/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_BB.h
-[PATCH 09/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_MAC.c
-[PATCH 10/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_MAC.h
-[PATCH 11/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_RF.c
-[PATCH 12/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_RF.h
-[PATCH 13/57] Staging: rtl8723bs: fix spaces in HalPhyRf.c
-[PATCH 14/57] Staging: rtl8723bs: fix spaces in HalPhyRf.h
-[PATCH 15/57] Staging: rtl8723bs: fix spaces in HalPhyRf_8723B.c
-[PATCH 16/57] Staging: rtl8723bs: fix spaces in HalPhyRf_8723B.h
-[PATCH 17/57] Staging: rtl8723bs: fix spaces in hal_btcoex.c
-[PATCH 18/57] Staging: rtl8723bs: fix spaces in hal_com.c
-[PATCH 19/57] Staging: rtl8723bs: fix spaces in hal_com_phycfg.c
-[PATCH 20/57] Staging: rtl8723bs: fix spaces in odm.c
-[PATCH 21/57] Staging: rtl8723bs: fix spaces in odm.h
-[PATCH 22/57] Staging: rtl8723bs: fix spaces in odm_CfoTracking.c
-[PATCH 23/57] Staging: rtl8723bs: fix spaces in odm_DIG.c
-[PATCH 24/57] Staging: rtl8723bs: fix in odm_DynamicBBPowerSaving.c
-[PATCH 25/57] Staging: rtl8723bs: fix spaces in odm_DynamicTxPower.c
-[PATCH 26/57] Staging: rtl8723bs: fix spaces in odm_EdcaTurboCheck.c
-[PATCH 27/57] Staging: rtl8723bs: fix spaces in odm_HWConfig.c
-[PATCH 28/57] Staging: rtl8723bs: fix spaces in odm_HWConfig.h
-[PATCH 29/57] Staging: rtl8723bs: fix spaces in odm_NoiseMonitor.c
-[PATCH 30/57] Staging: rtl8723bs: fix spaces in odm_PathDiv.c
-[PATCH 31/57] Staging: rtl8723bs: fix spaces in odm_RegConfig8723B.c
-[PATCH 32/57] Staging: rtl8723bs: fix spaces in odm_RegConfig8723B.h
-[PATCH 33/57] Staging: rtl8723bs: fix spaces in odm_debug.c
-[PATCH 34/57] Staging: rtl8723bs: fix spaces in odm_debug.h
-[PATCH 35/57] Staging: rtl8723bs: fix spaces in rtl8723b_dm.c
-[PATCH 36/57] Staging: rtl8723bs: fix spaces in rtl8723b_hal_init.c
-[PATCH 37/57] Staging: rtl8723bs: fix spaces in rtl8723b_phycfg.c
-[PATCH 38/57] Staging: rtl8723bs: fix spaces in HalPwrSeqCmd.h
-[PATCH 39/57] Staging: rtl8723bs: fix spaces in basic_types.h
-[PATCH 40/57] Staging: rtl8723bs: fix spaces in drv_types.h
-[PATCH 41/57] Staging: rtl8723bs: fix spaces in hal_com.h
-[PATCH 42/57] Staging: rtl8723bs: fix spaces in hal_com_h2c.h
-[PATCH 43/57] Staging: rtl8723bs: fix spaces in hal_com_phycfg.h
-[PATCH 44/57] Staging: rtl8723bs: fix spaces in ieee80211.h
-[PATCH 45/57] Staging: rtl8723bs: fix spaces in ioctl_cfg80211.h
-[PATCH 46/57] Staging: rtl8723bs: fix spaces in osdep_intf.h
-[PATCH 47/57] Staging: rtl8723bs: fix spaces in osdep_service.h
-[PATCH 48/57] Staging: rtl8723bs: fix spaces in osdep_service_linux.h
-[PATCH 49/57] Staging: rtl8723bs: fix spaces in recv_osdep.h
-[PATCH 50/57] Staging: rtl8723bs: fix spaces in rtl8723b_xmit.h
-[PATCH 51/57] Staging: rtl8723bs: fix spaces in rtw_cmd.h
-[PATCH 52/57] Staging: rtl8723bs: fix spaces in rtw_ioctl_set.h
-[PATCH 53/57] Staging: rtl8723bs: fix spaces in rtw_mlme_ext.h
-[PATCH 54/57] Staging: rtl8723bs: fix spaces in xmit_osdep.h
-[PATCH 55/57] Staging: rtl8723bs: fix spaces in os_intfs.c
-[PATCH 56/57] Staging: rtl8723bs: fix spaces in osdep_service.c
-[PATCH 57/57] Staging: rtl8723bs: fix spaces in xmit_linux.c
+Signed-off-by: Marco Cesati <marcocesati@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c      |   2 +-
- .../staging/rtl8723bs/hal/HalBtc8723b1Ant.c   | 152 +++++++++---------
- .../staging/rtl8723bs/hal/HalBtc8723b1Ant.h   |  28 ++--
- .../staging/rtl8723bs/hal/HalBtc8723b2Ant.c   | 142 ++++++++--------
- .../staging/rtl8723bs/hal/HalBtc8723b2Ant.h   |  28 ++--
- drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h  |  28 ++--
- .../staging/rtl8723bs/hal/HalHWImg8723B_BB.c  |  10 +-
- .../staging/rtl8723bs/hal/HalHWImg8723B_BB.h  |   6 +-
- .../staging/rtl8723bs/hal/HalHWImg8723B_MAC.c |   6 +-
- .../staging/rtl8723bs/hal/HalHWImg8723B_MAC.h |   2 +-
- .../staging/rtl8723bs/hal/HalHWImg8723B_RF.c  |  12 +-
- .../staging/rtl8723bs/hal/HalHWImg8723B_RF.h  |   6 +-
- drivers/staging/rtl8723bs/hal/HalPhyRf.c      |   6 +-
- drivers/staging/rtl8723bs/hal/HalPhyRf.h      |   4 +-
- .../staging/rtl8723bs/hal/HalPhyRf_8723B.c    |  54 +++----
- .../staging/rtl8723bs/hal/HalPhyRf_8723B.h    |  10 +-
- drivers/staging/rtl8723bs/hal/hal_btcoex.c    |  89 +++++-----
- drivers/staging/rtl8723bs/hal/hal_com.c       |   2 +-
- .../staging/rtl8723bs/hal/hal_com_phycfg.c    |   6 +-
- drivers/staging/rtl8723bs/hal/odm.c           |  92 +++++------
- drivers/staging/rtl8723bs/hal/odm.h           |  32 ++--
- .../staging/rtl8723bs/hal/odm_CfoTracking.c   |  28 ++--
- drivers/staging/rtl8723bs/hal/odm_DIG.c       |  60 +++----
- .../rtl8723bs/hal/odm_DynamicBBPowerSaving.c  |   4 +-
- .../rtl8723bs/hal/odm_DynamicTxPower.c        |   2 +-
- .../rtl8723bs/hal/odm_EdcaTurboCheck.c        |   6 +-
- drivers/staging/rtl8723bs/hal/odm_HWConfig.c  |  18 +--
- drivers/staging/rtl8723bs/hal/odm_HWConfig.h  |  12 +-
- .../staging/rtl8723bs/hal/odm_NoiseMonitor.c  |   2 +-
- drivers/staging/rtl8723bs/hal/odm_PathDiv.c   |   4 +-
- .../rtl8723bs/hal/odm_RegConfig8723B.c        |  14 +-
- .../rtl8723bs/hal/odm_RegConfig8723B.h        |  14 +-
- drivers/staging/rtl8723bs/hal/odm_debug.c     |   2 +-
- drivers/staging/rtl8723bs/hal/odm_debug.h     |   2 +-
- drivers/staging/rtl8723bs/hal/rtl8723b_dm.c   |  12 +-
- .../staging/rtl8723bs/hal/rtl8723b_hal_init.c |  24 +--
- .../staging/rtl8723bs/hal/rtl8723b_phycfg.c   |   4 +-
- .../staging/rtl8723bs/include/HalPwrSeqCmd.h  |   2 +-
- .../staging/rtl8723bs/include/basic_types.h   |   2 +-
- drivers/staging/rtl8723bs/include/drv_types.h |  12 +-
- drivers/staging/rtl8723bs/include/hal_com.h   |  16 +-
- .../staging/rtl8723bs/include/hal_com_h2c.h   |   2 +-
- .../rtl8723bs/include/hal_com_phycfg.h        |  26 +--
- drivers/staging/rtl8723bs/include/ieee80211.h |   7 +-
- .../rtl8723bs/include/ioctl_cfg80211.h        |   2 +-
- .../staging/rtl8723bs/include/osdep_intf.h    |   2 +-
- .../staging/rtl8723bs/include/osdep_service.h |   4 +-
- .../rtl8723bs/include/osdep_service_linux.h   |   2 +-
- .../staging/rtl8723bs/include/recv_osdep.h    |   2 +-
- .../staging/rtl8723bs/include/rtl8723b_xmit.h |   4 +-
- drivers/staging/rtl8723bs/include/rtw_cmd.h   |   4 +-
- .../staging/rtl8723bs/include/rtw_ioctl_set.h |   4 +-
- .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  18 +--
- .../staging/rtl8723bs/include/xmit_osdep.h    |   4 +-
- drivers/staging/rtl8723bs/os_dep/os_intfs.c   |   2 +-
- .../staging/rtl8723bs/os_dep/osdep_service.c  |   2 +-
- drivers/staging/rtl8723bs/os_dep/xmit_linux.c |   4 +-
- 57 files changed, 524 insertions(+), 522 deletions(-)
-
+diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+index bdb77bd46a20..cc10bd5ffb31 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+@@ -203,7 +203,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
+ 	return res;
+ }
+ 
+-static void c2h_wk_callback(struct work_struct * work);
++static void c2h_wk_callback(struct work_struct *work);
+ int rtw_init_evt_priv(struct evt_priv *pevtpriv)
+ {
+ 	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
 -- 
 2.30.2
 
