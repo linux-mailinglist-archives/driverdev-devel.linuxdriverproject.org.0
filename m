@@ -1,80 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76D8E33C3B9
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:12:42 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 262F733C3BB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:13:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0C96583560;
-	Mon, 15 Mar 2021 17:12:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8003D4310D;
+	Mon, 15 Mar 2021 17:13:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5ANqSO5_dDoX; Mon, 15 Mar 2021 17:12:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s1KLwepWYsrs; Mon, 15 Mar 2021 17:13:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 32ED082C99;
-	Mon, 15 Mar 2021 17:12:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9C70C430E8;
+	Mon, 15 Mar 2021 17:13:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 627F51BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 688F31BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 52190430B9
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:39 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5826D430B9
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EzLn-Km30yZg for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:38 +0000 (UTC)
+ with ESMTP id mRx_4PQGF3pr for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:39 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
- [IPv6:2a00:1450:4864:20::636])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 85F6541503
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:38 +0000 (UTC)
-Received: by mail-ej1-x636.google.com with SMTP id p8so67494979ejb.10
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:38 -0700 (PDT)
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7D72A41503
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:39 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id e19so67606195ejt.3
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=SFl+lzuNE4fwCAVJgxtyAYA4cZbyRIDakQ5LWJXKTd8=;
- b=pzMeFv5aBMGB67entNCHk8UECIwZ04x4krqR1jVWTQw84RfNl83H+dLsO8D2pJe1gH
- qw6W1WHfshWW/hnfIg2V0ZrHTnllfupDSqXivZqw9XtckHBGrLehKSbyK1PvB67n9EIP
- yUJe0N2k/cnDqTMZz0pPy3RSl7dasTgiy/FtbmGcR6AKIAUcUve37xpjRpo6EmfYK47q
- W//Q2REuD35WY4Gnm7JJijpd1ajw4vUqmp5TE7iJzeRd3LN7Occga8evF/x5b+lTgjte
- ivEdIhOiiMWGXzIWkdbCvOA/m5HqSjHYsRzEEJ6qroQtQxznAZvFlHy6IqAsSLR3YsYf
- AF8w==
+ bh=gmzAJn8uRv/tlhkqVLQkuS5LCgXzj39VnsRvH9LHesM=;
+ b=TJAKMcsYX4HnXEILUNQxPCPIe1p1g6/KdZNm+Ixf0w4x4wTVtGYZaBBN+c3XRP0X8M
+ tMMBJXTiJ70XL0+T/45csfcAI+y/3oYgVPjfvmMSwJbH1s3VSf/ey5j7DiR8ImeU3zGy
+ SJ4scAfBPg+bNdFbBqsdrrL1UgT8Q56iy/7mwphISeeKXSSJGqZZEvWxKLGFQ78+dSAE
+ yuxiYHEjNASFCS6VUBgYB8QpGbhXC2W/YL9wSeKxHzptmcxrG04SvfgoK8/G1oRMbCt5
+ 90mGO3l78if+VoEGcyRHFDo0MzRQMDlr29HBmY690oKRj2NdPkAWwTDtO3yyvwvAVoVq
+ Yfvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=SFl+lzuNE4fwCAVJgxtyAYA4cZbyRIDakQ5LWJXKTd8=;
- b=V84TWLL30nffW18ccU/0YoHrh3hHJwJhxbNrEp8Qg2i5QMvS9CBM3gmubFxQYkvfzQ
- ZqF7qQDFsbN5KpcHGB+w5/ilZayZDxU8uMK1ouzxpVQM46xtTVwyhG1LXSaqQsGUJirz
- AgloyU8KUhMjTYQyIMXg/1yW4IpARdAdqYwR0adgg+xAgoSbPamvulhXoypt8Egr2bVC
- KamThU/69CNvhsrl2dMRN4tuYaxFouoeMd9O8gJZlIPBJkGfykSs/GaS0l9MZeDfd+BJ
- gpolGobP0agZiDXLtqDjCc/rrqL/fRvswDuiGEmQMOaChhWX4bzW6E3MD/QFKspnXoeA
- Rp/A==
-X-Gm-Message-State: AOAM5306fd5xCRUM+DXtLXowFbsZvjmmo80/Rvbf7dkZ2WfLhYDpeH3b
- 4sV4XpwexeoQEfOqBES1VJ4=
-X-Google-Smtp-Source: ABdhPJyIS3LelO4AgJOFTe0+BsHQYjUHpvDCwo8eWg+DfuD0pRBZ6ORsoy4gmT7cbQDNFdshp13Fcw==
-X-Received: by 2002:a17:906:8043:: with SMTP id
- x3mr24330680ejw.149.1615827996836; 
- Mon, 15 Mar 2021 10:06:36 -0700 (PDT)
+ bh=gmzAJn8uRv/tlhkqVLQkuS5LCgXzj39VnsRvH9LHesM=;
+ b=Voz6bqm64t5HDTMgQscTyW03pewHsHpWim1GmYgsYNrEBdc3eK4OhD8H18WwtsSNax
+ 5844MQkCglb4frpgIwZ2nmzjlzjTeqe00DlH6y4uOIXwbnSYx2bnuJEpKSYfBJVwe7ga
+ 2DrPlPybcZxTDIck1Or6khh1vA2OP8Zsdq0ayZfAa2LEyNAjXRr7h6mG22CQ/I97kJJ4
+ xUcGu8fy1lwU8gEPtjb9ApCypBiv8MSQoLQkcANImN8nAEGY1WP+2oTTD/Thxcf20L6X
+ uYNAXNdYDuQ9Z8E/7snZtwCKPdsmCsE8IlCzfUxabESe3zHH8AQ15NjvM7D6qMW+nYVq
+ gGWQ==
+X-Gm-Message-State: AOAM531Xbk5GOGLgZEBOHJx7LN/RbGHjeJzKeu60MQiTGSB1z82ZV2Bp
+ MzohZX/ErA+x84ObBOBLhdBYHC8zpus=
+X-Google-Smtp-Source: ABdhPJx98PtFfQrD893o27Goz8bu1MAz8ocwSTd6R+NR7f7ccelGsYogYqCy6isZG3MUOQyDQo/jEQ==
+X-Received: by 2002:a17:906:1f93:: with SMTP id
+ t19mr25356189ejr.443.1615827997744; 
+ Mon, 15 Mar 2021 10:06:37 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:36 -0700 (PDT)
+ Mon, 15 Mar 2021 10:06:37 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 35/57] Staging: rtl8723bs: fix spaces in rtl8723b_dm.c
-Date: Mon, 15 Mar 2021 18:05:56 +0100
-Message-Id: <20210315170618.2566-36-marcocesati@gmail.com>
+Subject: [PATCH 36/57] Staging: rtl8723bs: fix spaces in rtl8723b_hal_init.c
+Date: Mon, 15 Mar 2021 18:05:57 +0100
+Message-Id: <20210315170618.2566-37-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
 References: <20210315170618.2566-1-marcocesati@gmail.com>
@@ -99,85 +97,167 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This commit fixes the following checkpatch.pl errors:
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #28: FILE: ./hal/rtl8723b_dm.c:28:
-    +	struct DM_ODM_T * pDM_Odm = &(pHalData->odmpriv);
+    #586: FILE: ./hal/rtl8723b_hal_init.c:586:
+    +	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #77: FILE: ./hal/rtl8723b_dm.c:77:
-    +	struct DM_ODM_T * pDM_Odm = &(pHalData->odmpriv);
+    #867: FILE: ./hal/rtl8723b_hal_init.c:867:
+    +	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #132: FILE: ./hal/rtl8723b_dm.c:132:
-    +	struct DM_ODM_T * pDM_Odm = &(pHalData->odmpriv);
+    #1006: FILE: ./hal/rtl8723b_hal_init.c:1006:
+    +	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
+
+    ERROR:POINTER_LOCATION: "foo *		bar" should be "foo *bar"
+    #1149: FILE: ./hal/rtl8723b_hal_init.c:1149:
+    +	struct EFUSE_HAL *		pEfuseHal = &pHalData->EfuseHal;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #206: FILE: ./hal/rtl8723b_dm.c:206:
-    +	struct DM_ODM_T * pDM_Odm = &pHalData->odmpriv;
+    #1247: FILE: ./hal/rtl8723b_hal_init.c:1247:
+    +	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #232: FILE: ./hal/rtl8723b_dm.c:232:
-    +	struct DM_ODM_T * pDM_Odm = &pHalData->odmpriv;
+    #1552: FILE: ./hal/rtl8723b_hal_init.c:1552:
+    +	struct PGPKT_STRUCT * pTargetPkt
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #233: FILE: ./hal/rtl8723b_dm.c:233:
-    +	struct DIG_T * pDM_DigTable = &pDM_Odm->DM_DigTable;
+    #1566: FILE: ./hal/rtl8723b_hal_init.c:1566:
+    +	struct PGPKT_STRUCT * pTargetPkt,
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #1571: FILE: ./hal/rtl8723b_hal_init.c:1571:
+    +	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #1684: FILE: ./hal/rtl8723b_hal_init.c:1684:
+    +	struct PGPKT_STRUCT * pTargetPkt,
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #1721: FILE: ./hal/rtl8723b_hal_init.c:1721:
+    +	struct PGPKT_STRUCT * pTargetPkt,
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #1788: FILE: ./hal/rtl8723b_hal_init.c:1788:
+    +	struct PGPKT_STRUCT * pTargetPkt,
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #1806: FILE: ./hal/rtl8723b_hal_init.c:1806:
+    +	struct PGPKT_STRUCT * pTargetPkt,
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ .../staging/rtl8723bs/hal/rtl8723b_hal_init.c | 24 +++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-index dce70fff0fae..cf146f506155 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-@@ -25,7 +25,7 @@ static void Init_ODM_ComInfo_8723b(struct adapter *Adapter)
- {
- 
- 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
--	struct DM_ODM_T * pDM_Odm = &(pHalData->odmpriv);
-+	struct DM_ODM_T *pDM_Odm = &pHalData->odmpriv;
- 	struct dm_priv *pdmpriv = &pHalData->dmpriv;
- 	u8 cut_ver, fab_ver;
- 
-@@ -74,7 +74,7 @@ static void Update_ODM_ComInfo_8723b(struct adapter *Adapter)
- 	struct dvobj_priv *dvobj = adapter_to_dvobj(Adapter);
- 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(Adapter);
- 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
--	struct DM_ODM_T * pDM_Odm = &(pHalData->odmpriv);
-+	struct DM_ODM_T *pDM_Odm = &pHalData->odmpriv;
- 	struct dm_priv *pdmpriv = &pHalData->dmpriv;
- 	int i;
- 	u8 zero = 0;
-@@ -129,7 +129,7 @@ void rtl8723b_InitHalDm(struct adapter *Adapter)
- {
- 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
- 	struct dm_priv *pdmpriv = &pHalData->dmpriv;
--	struct DM_ODM_T * pDM_Odm = &(pHalData->odmpriv);
-+	struct DM_ODM_T *pDM_Odm = &pHalData->odmpriv;
- 
- 	pdmpriv->DM_Type = DM_Type_ByDriver;
- 	pdmpriv->DMFlag = DYNAMIC_FUNC_DISABLE;
-@@ -203,7 +203,7 @@ void rtl8723b_hal_dm_in_lps(struct adapter *padapter)
- 	u32 PWDB_rssi = 0;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+index 0eac9cb11cef..189c4a796b33 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -583,7 +583,7 @@ static u8 hal_EfuseSwitchToBank(
+ 	u32 value32 = 0;
+ #ifdef HAL_EFUSE_MEMORY
  	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
--	struct DM_ODM_T * pDM_Odm = &pHalData->odmpriv;
-+	struct DM_ODM_T *pDM_Odm = &pHalData->odmpriv;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	struct sta_info *psta = NULL;
+-	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
++	struct EFUSE_HAL *pEfuseHal = &pHalData->EfuseHal;
+ #endif
  
-@@ -229,8 +229,8 @@ void rtl8723b_HalDmWatchDog_in_LPS(struct adapter *Adapter)
- 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
- 	struct mlme_priv *pmlmepriv = &Adapter->mlmepriv;
- 	struct dm_priv *pdmpriv = &pHalData->dmpriv;
--	struct DM_ODM_T * pDM_Odm = &pHalData->odmpriv;
--	struct DIG_T * pDM_DigTable = &pDM_Odm->DM_DigTable;
-+	struct DM_ODM_T *pDM_Odm = &pHalData->odmpriv;
-+	struct DIG_T *pDM_DigTable = &pDM_Odm->DM_DigTable;
- 	struct sta_priv *pstapriv = &Adapter->stapriv;
- 	struct sta_info *psta = NULL;
  
+@@ -864,7 +864,7 @@ static void hal_ReadEFuse_WiFi(
+ {
+ #ifdef HAL_EFUSE_MEMORY
+ 	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
+-	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
++	struct EFUSE_HAL *pEfuseHal = &pHalData->EfuseHal;
+ #endif
+ 	u8 *efuseTbl = NULL;
+ 	u16 eFuse_Addr = 0;
+@@ -1003,7 +1003,7 @@ static void hal_ReadEFuse_BT(
+ {
+ #ifdef HAL_EFUSE_MEMORY
+ 	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
+-	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
++	struct EFUSE_HAL *pEfuseHal = &pHalData->EfuseHal;
+ #endif
+ 	u8 *efuseTbl;
+ 	u8 bank;
+@@ -1146,7 +1146,7 @@ static u16 hal_EfuseGetCurrentSize_WiFi(
+ {
+ #ifdef HAL_EFUSE_MEMORY
+ 	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
+-	struct EFUSE_HAL *		pEfuseHal = &pHalData->EfuseHal;
++	struct EFUSE_HAL *pEfuseHal = &pHalData->EfuseHal;
+ #endif
+ 	u16 efuse_addr = 0;
+ 	u16 start_addr = 0; /*  for debug */
+@@ -1244,7 +1244,7 @@ static u16 hal_EfuseGetCurrentSize_BT(struct adapter *padapter, u8 bPseudoTest)
+ {
+ #ifdef HAL_EFUSE_MEMORY
+ 	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
+-	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
++	struct EFUSE_HAL *pEfuseHal = &pHalData->EfuseHal;
+ #endif
+ 	u16 btusedbytes;
+ 	u16 efuse_addr;
+@@ -1549,7 +1549,7 @@ static void hal_EfuseConstructPGPkt(
+ 	u8 offset,
+ 	u8 word_en,
+ 	u8 *pData,
+-	struct PGPKT_STRUCT * pTargetPkt
++	struct PGPKT_STRUCT *pTargetPkt
+ )
+ {
+ 	memset(pTargetPkt->data, 0xFF, PGPKT_DATA_SIZE);
+@@ -1563,12 +1563,12 @@ static u8 hal_EfusePartialWriteCheck(
+ 	struct adapter *padapter,
+ 	u8 efuseType,
+ 	u16 *pAddr,
+-	struct PGPKT_STRUCT * pTargetPkt,
++	struct PGPKT_STRUCT *pTargetPkt,
+ 	u8 bPseudoTest
+ )
+ {
+ 	struct hal_com_data *pHalData = GET_HAL_DATA(padapter);
+-	struct EFUSE_HAL * pEfuseHal = &pHalData->EfuseHal;
++	struct EFUSE_HAL *pEfuseHal = &pHalData->EfuseHal;
+ 	u8 bRet = false;
+ 	u16 startAddr = 0, efuse_max_available_len = 0, efuse_max = 0;
+ 	u8 efuse_data = 0;
+@@ -1681,7 +1681,7 @@ static u8 hal_EfusePgPacketWrite1ByteHeader(
+ 	struct adapter *padapter,
+ 	u8 efuseType,
+ 	u16 *pAddr,
+-	struct PGPKT_STRUCT * pTargetPkt,
++	struct PGPKT_STRUCT *pTargetPkt,
+ 	u8 bPseudoTest
+ )
+ {
+@@ -1718,7 +1718,7 @@ static u8 hal_EfusePgPacketWrite2ByteHeader(
+ 	struct adapter *padapter,
+ 	u8 efuseType,
+ 	u16 *pAddr,
+-	struct PGPKT_STRUCT * pTargetPkt,
++	struct PGPKT_STRUCT *pTargetPkt,
+ 	u8 bPseudoTest
+ )
+ {
+@@ -1785,7 +1785,7 @@ static u8 hal_EfusePgPacketWriteHeader(
+ 	struct adapter *padapter,
+ 	u8 efuseType,
+ 	u16 *pAddr,
+-	struct PGPKT_STRUCT * pTargetPkt,
++	struct PGPKT_STRUCT *pTargetPkt,
+ 	u8 bPseudoTest
+ )
+ {
+@@ -1803,7 +1803,7 @@ static u8 hal_EfusePgPacketWriteData(
+ 	struct adapter *padapter,
+ 	u8 efuseType,
+ 	u16 *pAddr,
+-	struct PGPKT_STRUCT * pTargetPkt,
++	struct PGPKT_STRUCT *pTargetPkt,
+ 	u8 bPseudoTest
+ )
+ {
 -- 
 2.30.2
 
