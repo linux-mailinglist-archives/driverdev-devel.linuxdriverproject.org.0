@@ -1,76 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C39CA33C74C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 21:01:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA39A33C7BD
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 21:32:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5122B83842;
-	Mon, 15 Mar 2021 20:01:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 92D816F59F;
+	Mon, 15 Mar 2021 20:32:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E8ovtB7LDrf0; Mon, 15 Mar 2021 20:01:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xv4NOeTw-CZm; Mon, 15 Mar 2021 20:32:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5179E83760;
-	Mon, 15 Mar 2021 20:01:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D86606F52F;
+	Mon, 15 Mar 2021 20:32:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D86B61BF95A
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 20:00:28 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A68B71BF30A
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 20:31:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D46A0430E6
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 20:00:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 93A196F580
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 20:31:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UWoMCJpeaDNk for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 20:00:28 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-il1-x12b.google.com (mail-il1-x12b.google.com
- [IPv6:2607:f8b0:4864:20::12b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2CED940003
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 20:00:28 +0000 (UTC)
-Received: by mail-il1-x12b.google.com with SMTP id k2so10576914ili.4
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 13:00:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SaSOoIxes03bHpWUooj+6+ewuXi/Vmtw63TM+HLF9L8=;
- b=eS7HTA1CDl8ccn1pHkFmhPOk8/AlrZMfGwncoeCi7AQIQVOd79gAx9m6kj3QYnUb47
- MxlkV2rY2JMLdkoIdm6yz4mCVdgGgetyBtzMRVAis1d1g73dH5hjfofSB1CR5qCKLvJo
- 8TfKD/SIC92DISesqp7OPW25vs9bXG6kB+vHRLoZ4u6MO5JhIyCxwu/3ntQp4DB3KcY9
- yRKoTRYgguy5FukC/xT47rA0l5Se1jhjRTH91kzkMwMnCGiqwVsDtZYpZ9pRPOzF80yh
- vugMKOjJHGWs/UcaarhoQpq1ZKnHzeFvik4XQlwrat8noWxZP5ZfA0mSZdFjFFFPEvn5
- 0D1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SaSOoIxes03bHpWUooj+6+ewuXi/Vmtw63TM+HLF9L8=;
- b=E+BgJ2Uy2c4UK6e5FOElnLB/Lfq3YfjvzP7a2W9MGj8fDTZaD+FvSJxjae5woLjPx1
- 2zlcpAnj13zN5z662S9IUT7YSvllalvCTZAhIVcASKqzFKwkXDM2jV+QqIqkjTBh8SDn
- 6xPz97tausrNCgEAIuCod8Idht/kxnt4q9pLOgDe1iDP482/YhSDCkxiIKdvC2DS3DR6
- H3HI9AL+Qo+r6GVG2HWiGzTwt6vIRJvGC/iQVLsqRqW2Z7GhCB3kKx0+ouOIKxmqyaZb
- lkXHyBCyQ8cgdxre5OLJuBwANq5nFT6lEU5qHypHpqjqtG5tohmSVsBiztaHdMafOC0o
- UUEA==
-X-Gm-Message-State: AOAM533UkHitUnpAxyl+reF4mCqCFKiVTR+qnbbaQOdRW0Ku9r2TtaqF
- 0iUOBn0nUxU8y2WEa2fIyadnzHq6VfsOy2VkbzU=
-X-Google-Smtp-Source: ABdhPJypLcpbSKR4xnoaFP9F3f6VMO35r0f7ds36bijQO3NVnMxR3QAoAM5VGva8qRnVO5/aYWJWaZoKjg1/sdQSXEE=
-X-Received: by 2002:a92:740c:: with SMTP id p12mr1052065ilc.9.1615838427364;
- Mon, 15 Mar 2021 13:00:27 -0700 (PDT)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TjB7mT5wVI9H for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 20:31:54 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 92E206F52F
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 20:31:54 +0000 (UTC)
+IronPort-SDR: z1hkpW09B4e86Xrtk69vSdi9utpdsCjJG/TasA51dotus4lZPrTWtQa+XJyKk/iSJ8MSPhYb4z
+ TdSkxU7sW+Bw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9924"; a="186773131"
+X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="186773131"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2021 13:31:51 -0700
+IronPort-SDR: 7hLjIrOwv1OS6K9fXQWURvZejqTmeLtjwzJ/fEv7OF6QoxVT1O4sQP7VhZ1S2bbFBHMnO3zVXV
+ 7708SNIKwnLw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="410776603"
+Received: from lkp-server02.sh.intel.com (HELO 1dc5e1a854f4) ([10.239.97.151])
+ by orsmga007.jf.intel.com with ESMTP; 15 Mar 2021 13:31:48 -0700
+Received: from kbuild by 1dc5e1a854f4 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lLtsR-0000du-R3; Mon, 15 Mar 2021 20:31:47 +0000
+Date: Tue, 16 Mar 2021 04:31:04 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:debugfs_remove_return_value] BUILD SUCCESS
+ b927f68718ad932968b335981efa03f9960bf542
+Message-ID: <604fc408.2fkwdMbZhIICsJ2l%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <20210314035757.2740146-1-ztong0001@gmail.com>
- <5d7a5e1c-35ab-58cb-ebcd-da5b280c802e@mev.co.uk>
- <858341a6-c105-1440-aa4d-ea0217f2ec89@mev.co.uk>
-In-Reply-To: <858341a6-c105-1440-aa4d-ea0217f2ec89@mev.co.uk>
-From: Tong Zhang <ztong0001@gmail.com>
-Date: Mon, 15 Mar 2021 16:00:16 -0400
-Message-ID: <CAA5qM4AJRYndkXSiW5Y4OCFcH97mf6UiiEEox+TQs8-N957mJA@mail.gmail.com>
-Subject: Re: [PATCH] staging: comedi: replace slash in name
-To: Ian Abbott <abbotti@mev.co.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,52 +67,152 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, open list <linux-kernel@vger.kernel.org>,
- "Alexander A. Klimov" <grandmaster@al2klimov.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Thanks Ian,
-I have submitted a v2 patch based on your suggestions.
-Thanks,
-- Tong
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_remove_return_value
+branch HEAD: b927f68718ad932968b335981efa03f9960bf542  x86/tools/relocs: add __printf attribute to die()
 
-On Mon, Mar 15, 2021 at 6:48 AM Ian Abbott <abbotti@mev.co.uk> wrote:
->
-> On 15/03/2021 10:44, Ian Abbott wrote:
-> > On 14/03/2021 03:57, Tong Zhang wrote:
-> >> request_irq() wont accept a name which contains slash so we need to
-> >> repalce it with something else -- otherwise it will trigger a warning
-> >> and the entry in /proc/irq/ will not be created
-> >>
-> >> [    1.565966] name 'pci-das6402/16'
-> >> [    1.566149] WARNING: CPU: 0 PID: 184 at fs/proc/generic.c:180 __xlate_proc_name+0x93/0xb0
-> >> [    1.568923] RIP: 0010:__xlate_proc_name+0x93/0xb0
-> >> [    1.574200] Call Trace:
-> >> [    1.574722]  proc_mkdir+0x18/0x20
-> >> [    1.576629]  request_threaded_irq+0xfe/0x160
-> >> [    1.576859]  auto_attach+0x60a/0xc40 [cb_pcidas64]
-> >>
-> >> Signed-off-by: Tong Zhang <ztong0001@gmail.com>
-> [snip]
-> > Userspace applications can use these strings to determine the board
-> > type, so changing the strings would break those applications.
-> >
-> > I suggest passing the comedi driver name "cb_pcidas" to request_irq()
-> > for now.
->
-> Oops, I meant "cb_pcidas64".  But you could reach that via
-> dev->driver->driver_name if you want (where dev is the struct
-> comedi_device * parameter).
->
-> --
-> -=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
-> -=( registered in England & Wales.  Regd. number: 02862268.  )=-
-> -=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
-> -=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
+elapsed time: 721m
+
+configs tested: 122
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                            allyesconfig
+arm64                               defconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+sh                                  defconfig
+sh                               alldefconfig
+powerpc                     taishan_defconfig
+riscv             nommu_k210_sdcard_defconfig
+mips                      loongson3_defconfig
+m68k                          hp300_defconfig
+mips                     cu1830-neo_defconfig
+mips                        jmr3927_defconfig
+arm                           h5000_defconfig
+arm                          exynos_defconfig
+arc                      axs103_smp_defconfig
+m68k                       m5208evb_defconfig
+arm                           h3600_defconfig
+arc                 nsimosci_hs_smp_defconfig
+sparc                       sparc32_defconfig
+mips                   sb1250_swarm_defconfig
+arm                       mainstone_defconfig
+nios2                            allyesconfig
+arm                           omap1_defconfig
+arm                           spitz_defconfig
+arm                       omap2plus_defconfig
+powerpc                    socrates_defconfig
+powerpc                       ebony_defconfig
+sparc                       sparc64_defconfig
+arm                         vf610m4_defconfig
+m68k                        m5272c3_defconfig
+mips                           xway_defconfig
+arc                    vdk_hs38_smp_defconfig
+sparc64                          alldefconfig
+alpha                               defconfig
+sh                           se7780_defconfig
+sh                          urquell_defconfig
+xtensa                           alldefconfig
+sh                        sh7757lcr_defconfig
+s390                                defconfig
+sh                           se7206_defconfig
+mips                         mpc30x_defconfig
+mips                  decstation_64_defconfig
+sh                            migor_defconfig
+microblaze                      mmu_defconfig
+xtensa                  cadence_csp_defconfig
+xtensa                generic_kc705_defconfig
+parisc                           alldefconfig
+sh                            titan_defconfig
+arm                         assabet_defconfig
+mips                           ip32_defconfig
+arm                        multi_v7_defconfig
+h8300                       h8s-sim_defconfig
+sh                          r7785rp_defconfig
+mips                        maltaup_defconfig
+sh                        apsh4ad0a_defconfig
+sh                           se7721_defconfig
+powerpc                     mpc5200_defconfig
+powerpc                      chrp32_defconfig
+powerpc                      ppc40x_defconfig
+sh                          lboxre2_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a001-20210315
+i386                 randconfig-a005-20210315
+i386                 randconfig-a003-20210315
+i386                 randconfig-a002-20210315
+i386                 randconfig-a004-20210315
+i386                 randconfig-a006-20210315
+x86_64               randconfig-a006-20210315
+x86_64               randconfig-a001-20210315
+x86_64               randconfig-a005-20210315
+x86_64               randconfig-a004-20210315
+x86_64               randconfig-a002-20210315
+x86_64               randconfig-a003-20210315
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a011-20210315
+x86_64               randconfig-a016-20210315
+x86_64               randconfig-a013-20210315
+x86_64               randconfig-a015-20210315
+x86_64               randconfig-a014-20210315
+x86_64               randconfig-a012-20210315
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
