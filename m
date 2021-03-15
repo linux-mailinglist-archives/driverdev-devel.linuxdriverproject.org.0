@@ -1,86 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A94E333BBD6
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 15:21:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DA1233BF78
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 16:12:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8E998372B;
-	Mon, 15 Mar 2021 14:21:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 94B3B6F581;
+	Mon, 15 Mar 2021 15:12:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OHMmbaOFP0_6; Mon, 15 Mar 2021 14:21:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k0a4a8jV0EqW; Mon, 15 Mar 2021 15:12:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EA4008376B;
-	Mon, 15 Mar 2021 14:21:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D2D74605BB;
+	Mon, 15 Mar 2021 15:12:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C624E1BF29D
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 14:21:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 832811BF338
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 15:11:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B57FC6F559
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 14:21:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7F2BA475AA
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 15:11:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d0LFq702HZJY for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 14:21:35 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com
- [IPv6:2a00:1450:4864:20::335])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E3C03605C3
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 14:21:34 +0000 (UTC)
-Received: by mail-wm1-x335.google.com with SMTP id
- w203-20020a1c49d40000b029010c706d0642so2387774wma.0
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 07:21:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Ga/L4y7MvmQKT1EW+VXUakMEFFtc6tQt1JEqwsfn4GA=;
- b=b9zAXRM/d58UMUMO922/JHQVU6sBp7jrAFYCdYkEa6KeU+1rplffzoZgXHh6jahf/W
- OLyS5beKhSAk0h07t4bqVxlCp03l2XvLnC1AlA/9AZN7TLxqNa2J49jv5jhP8IujzFXV
- sFjJR3JHKpCyaKbR/FfJ3B5UinA4MgYfP2dkeveBLbj2pPf3fAsn2JjancvJ6YcRa3HV
- wO0WbDxjGbIJkUE9zQ6Z4znuq1Wh8ZjVCwlfu0wWj49yrFKE91gxGw2kLV+GYB/7ZJJP
- Btqg9tyTwDauG3p0+J8HphVxHhTQVNIFKUK3hzIeAVkrqNHuywJ2vvibxtyWhDq/JLpB
- AOcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Ga/L4y7MvmQKT1EW+VXUakMEFFtc6tQt1JEqwsfn4GA=;
- b=WFbXa/2lleFcwEX7Q56mdRrG8ljrTyHWOUvSw4gn45thURgfGZSqpgDUKS513gFpTR
- w5jSSipu4rAH4/f5fwWRjOB+LLjaVG6pej3NgDPmA0MD2n2ElmCNB1iBBMlsU6H+XOVb
- /JUKobNrDDD6Wkd+vnqD6zdTJ74wglSe3jWfIBOjtKPAedOAo827zyFb8fNKlewHibsS
- BC+65PWL+BvQkFB1OeU3nUcWz6x0qxoWAroyGB9s1FWFILLv6XfQQZ6Yb4FWvtsFONJX
- tvs+fjb9Swq48qDX2AiqHjiuNZCHKua33IS3TdoOxzRdeMExQg1V/+KRruMrWzp52W98
- 8DAQ==
-X-Gm-Message-State: AOAM53284yBEwP77eao6apspt56TFfPPuRKJ//7ZQfTuY3QTRTWmf8nA
- U1zpjNFy1hpSQmt4uUHhPfA=
-X-Google-Smtp-Source: ABdhPJwjtUhIIfq8nhkfrSZpZ/sVUT1Sz+on9TrvPUJA+ide+3BWlZL0VPtksn3tFSN25+xBKN9x/Q==
-X-Received: by 2002:a05:600c:47d7:: with SMTP id
- l23mr12173215wmo.155.1615818093132; 
- Mon, 15 Mar 2021 07:21:33 -0700 (PDT)
-Received: from cesati.gmail.com (93-48-145-141.ip257.fastwebnet.it.
- [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id h22sm14786659wmb.36.2021.03.15.07.21.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 07:21:32 -0700 (PDT)
-Date: Mon, 15 Mar 2021 15:21:44 +0100
-From: Marco Cesati <marcocesati@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH 01/33] staging: rtl8723bs: remove typedefs in
- HalBtcOutSrc.h
-Message-ID: <20210315142144.nxddidcvsyafyfuv@cesati.gmail.com>
-References: <20210312082638.25512-1-marco.cesati@gmail.com>
- <20210312082638.25512-2-marco.cesati@gmail.com>
- <20210315141414.GO2087@kadam>
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id s9mGVYDkaAFU for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 15:11:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C207747488
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 15:11:56 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AD03B64DF0;
+ Mon, 15 Mar 2021 15:11:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615821116;
+ bh=L7mnfgF+lb3L7iB9rSiuo2URmRNaFyzItGPOorf386w=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QVtsZts/cibSxdjb/Jr3vi8PXgNlYqDm55wHi7LqMy+T8agsvjuRMA+tQDeN+jlyq
+ O6r7vWYrtQ/zQRIH2ECqR7bKeAmZD7zO+ftKuY9dEoNpOVX9t1ECuUc+uNzibBSQ6q
+ NwD45oywH1vZddYlES25P956rTE6lENmxejcS1csz0UuW1iMg3XLGQb2CGCexAk0HA
+ tvdzBh/9KlhbnGlIFm2pm8aSL5BO9/GVWw8VBlrGKWRUsGnfhOJOcAWOke17+PKwRk
+ /2YwNxDmaJdhIo0qwkIwI9aygAK/B9byS2SneQHGeV1yVTyuFSK58tARWt0esHEiE/
+ eOT1ucJaKb9NQ==
+Date: Mon, 15 Mar 2021 17:11:52 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH v5 03/24] wfx: add Makefile/Kconfig
+Message-ID: <YE95OCx5hWRedi+W@unreal>
+References: <20210315132501.441681-1-Jerome.Pouiller@silabs.com>
+ <20210315132501.441681-4-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210315141414.GO2087@kadam>
+In-Reply-To: <20210315132501.441681-4-Jerome.Pouiller@silabs.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,49 +67,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Larry Finger <Larry.Finger@lwfinger.net>, Hans de Goede <hdegoede@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 15, 2021 at 05:14:15PM +0300, Dan Carpenter wrote:
-> On Fri, Mar 12, 2021 at 09:26:06AM +0100, Marco Cesati wrote:
-> > diff --git a/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c b/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c
-> > index ef8c6a0f31ae..87dc63408133 100644
-> > --- a/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c
-> > +++ b/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c
-> > @@ -151,7 +151,7 @@ static u8 halbtc8723b1ant_BtRssiState(
-> >  }
-> >  
-> >  static void halbtc8723b1ant_UpdateRaMask(
-> > -	PBTC_COEXIST pBtCoexist, bool bForceExec, u32 disRateMask
-> > +	struct BTC_COEXIST * pBtCoexist, bool bForceExec, u32 disRateMask
-> 
-> There is an extra space between the "* pBtCoexist" which checkpatch
-> warned you about.  :/  It makes me sad that you did all this work
-> without looking at the checkpatch output.
-> 
-> ERROR: "foo * bar" should be "foo *bar"
-> #146: FILE: drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:154:
-> +       struct BTC_COEXIST * pBtCoexist, bool bForceExec, u32 disRateMask
-> 
-> regards,
-> dan carpenter
+On Mon, Mar 15, 2021 at 02:24:40PM +0100, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+>
+> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> ---
+>  drivers/net/wireless/silabs/wfx/Kconfig  | 12 +++++++++++
+>  drivers/net/wireless/silabs/wfx/Makefile | 26 ++++++++++++++++++++++++
+>  2 files changed, 38 insertions(+)
+>  create mode 100644 drivers/net/wireless/silabs/wfx/Kconfig
+>  create mode 100644 drivers/net/wireless/silabs/wfx/Makefile
+>
+> diff --git a/drivers/net/wireless/silabs/wfx/Kconfig b/drivers/net/wirele=
+ss/silabs/wfx/Kconfig
+> new file mode 100644
+> index 000000000000..3be4b1e735e1
+> --- /dev/null
+> +++ b/drivers/net/wireless/silabs/wfx/Kconfig
+> @@ -0,0 +1,12 @@
+> +config WFX
+> +	tristate "Silicon Labs wireless chips WF200 and further"
+> +	depends on MAC80211
+> +	depends on MMC || !MMC # do not allow WFX=3Dy if MMC=3Dm
+> +	depends on (SPI || MMC)
+> +	help
+> +	  This is a driver for Silicons Labs WFxxx series (WF200 and further)
+> +	  chipsets. This chip can be found on SPI or SDIO buses.
+> +
+> +	  Silabs does not use a reliable SDIO vendor ID. So, to avoid conflicts,
+> +	  the driver won't probe the device if it is not also declared in the
+> +	  Device Tree.
+> diff --git a/drivers/net/wireless/silabs/wfx/Makefile b/drivers/net/wirel=
+ess/silabs/wfx/Makefile
+> new file mode 100644
+> index 000000000000..f399962c8619
+> --- /dev/null
+> +++ b/drivers/net/wireless/silabs/wfx/Makefile
+> @@ -0,0 +1,26 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +
+> +# Necessary for CREATE_TRACE_POINTS
+> +CFLAGS_debug.o =3D -I$(src)
 
-You are right, it was a fault of mine. However, I am sending another
-patchset that fixes all POINTER_LOCATION errors in staging/rtl8723bs.
+I wonder if it is still relevant outside of the staging tree.
 
-Marco
-
-
----- 
-Marco Cesati, PhD
-Dept. of Civil Engineering and Computer Science Engineering
-Univ. of Rome Tor Vergata
-via del Politecnico 1, I-00133 Rome, Italy
-Tel. +39 06 7259 7389
+Thanks
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
