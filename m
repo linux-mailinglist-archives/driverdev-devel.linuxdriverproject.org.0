@@ -1,84 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E99133C3F1
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:16:48 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6430B33C3F5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:16:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A324B43105;
-	Mon, 15 Mar 2021 17:16:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB12D4EB9A;
+	Mon, 15 Mar 2021 17:16:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B28UASrAAkFa; Mon, 15 Mar 2021 17:16:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M7GNirOYTp9m; Mon, 15 Mar 2021 17:16:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 03E8C40170;
-	Mon, 15 Mar 2021 17:16:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC1F84EB08;
+	Mon, 15 Mar 2021 17:16:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 184381BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F19C1BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:07:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 152BC6F59F
+ by smtp1.osuosl.org (Postfix) with ESMTP id F2831834B6
  for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OGEFmH78t8bT for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bcFlTTnq1RGh for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:59 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x634.google.com (mail-ej1-x634.google.com
- [IPv6:2a00:1450:4864:20::634])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 44E3C6F579
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:58 +0000 (UTC)
-Received: by mail-ej1-x634.google.com with SMTP id bm21so67504371ejb.4
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:58 -0700 (PDT)
+Received: from mail-ua1-x944.google.com (mail-ua1-x944.google.com
+ [IPv6:2607:f8b0:4864:20::944])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6389483478
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:59 +0000 (UTC)
+Received: by mail-ua1-x944.google.com with SMTP id j4so4414367uan.1
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=197iP1ypKA/3TYKMYUYtoUBkpvsNf90scRIsKgwzJMM=;
- b=IfVgqiWMPgWFWf+2MLIYAlGyPbXRX6JaXEum8a02vUGkaYeuIewjGM3X9ftiUZ64l0
- EhkGlQNEQr5TIZNrqBEwC6GJnIR2NB0I2b4NheqnITavUgg77SHG1Es/QCEcZzC2fkJ8
- c7dln0pH6WP8B2Vr+YHDQKVnvkXsnPrh97gzddoFvxcMITTLsC8Q8pSZPRPc0Toz0sQ0
- S7HHQyxRj1L8hGt8zwMAv9cvMwF7DAyMkYCxFPtxYejczwHt/nMtamy9/6yokN0iJLJ4
- 7g30eq6mwFQBtkHsxA3E+4D8jnPcmND8frg7RF+GkXp2R5q26ft4EHrLbM35sdDWunu2
- 7vrg==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=7Vrbe4gpVhb7cfcmpNanXi5E+OCzidx3VGMrGNR2bC4=;
+ b=IeztSHzwFXmZolftCfjFRG56pGeDsims74ZNrOy69DoxsYWGoDOf8BTYU1oihzpMjs
+ /UI0k2L0Qw3uMk8fxnCnza7S4kxuw+JHz2cJfu6pTZ0sITqTYvWJGTtVh2KwWkmjRaJy
+ oTsqALi8i98UbsZJ68pP2yxOMTP8DzeoQ8F9tJSRTRKzr7Z/qLAW+V3UqNTj4H1X6nI/
+ PmV4gS2F9+luv8LVHd613zQz/YI0VKn4OQSm+awZ9Ty028cbDK+a/CGJDynN7FOkoDYO
+ LOVsaPRK7onH069em311RQlabQWfJu0IClqpKWhZmgRyNcuRh2wyGe9w6vsdywtZEkI6
+ +lwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=197iP1ypKA/3TYKMYUYtoUBkpvsNf90scRIsKgwzJMM=;
- b=TggJhRINJgeV+V+BErz0CdGwHamJDq674LgEBww/hoN+O+qEEYLXQcqLL5SNFut8uy
- hDtYNd4uC9RUOqPCTYkmIIlKgLNJeuWlr8UZ6Cr5myzDZVuIqRPHgq4Xu2EcmVmD7LL3
- iNWGYY3B3lrrSRDWr9qU4YHIRYLurGdSTR64MZrGs77TAW2GJah3HBMUAFZEwHLPiZ/L
- RzWJU5BwS7neKxBEtTHEwOEt8ea1pNz4B90V40VaFXexccxweocK0wtP1qH5Sx4n4zoD
- Ed6zrA2Y3OIX6cXUt/TK5K4bhpT4D977PMoL91yqfUPUcjH/K3rQ596412uJOe2v3GYF
- vFxw==
-X-Gm-Message-State: AOAM533p6EdmTiOT/58agoaJub/E33qkgr4DJGkx1PWxBHZessdP8OIa
- l8I3MG9d/j1pzVXS6o0yUkmLBNu75Ic=
-X-Google-Smtp-Source: ABdhPJzs4dunrqC4kNczV22Q3Q5RfH5ehuegckqMvSr7bNsxe8JdVQ/I2Hgg/kWwj1sqtzWjlp7OrQ==
-X-Received: by 2002:a17:907:2bdd:: with SMTP id
- gv29mr23929292ejc.259.1615828016589; 
- Mon, 15 Mar 2021 10:06:56 -0700 (PDT)
-Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
- [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:56 -0700 (PDT)
-From: Marco Cesati <marcocesati@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans de Goede <hdegoede@redhat.com>,
- Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 57/57] Staging: rtl8723bs: fix spaces in xmit_linux.c
-Date: Mon, 15 Mar 2021 18:06:18 +0100
-Message-Id: <20210315170618.2566-58-marcocesati@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
-References: <20210315170618.2566-1-marcocesati@gmail.com>
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=7Vrbe4gpVhb7cfcmpNanXi5E+OCzidx3VGMrGNR2bC4=;
+ b=OAJ1sUe4UW9/thHSexezNbCCGyxTnIEJ7baRosr5G+Y1E2Jif10zvF0bKC8/7ID34l
+ HSyWfZwS1VDMfmknUZQA2CVMeuSZrgQSt+bhT3vFBgR7390INkSl1Kfr0F3jlPUmuQKh
+ 2Z1FEPU+9gTKkduHE2hJ1O7mj1KbzM0zMOCTog3QJbiiPVGynaHcgh2gd5LWojSKXtKZ
+ p2v/O8GI1YPqh0Qv2XaU21uLqGyZwMCJXSgyZYDVb15cy4/fpI5+sdGqbWREYOdL11pG
+ iVq5XMDYwjRzN2b6oN28fDjAM/Zg3rhFyiXeXxVLq8w/wrYST69ikXpkhgztyBkE5ZT5
+ 7UMA==
+X-Gm-Message-State: AOAM532ReztX7eCIkVoCZyeI65UORlcquFPjwiu7dZQqHWeeurX+SixO
+ nU7Ln8g2Qr67dZKt1A2qVjCJv22v8SymKpACtug=
+X-Google-Smtp-Source: ABdhPJwEfkQ2Vj8T+Ow2okUm+JjAfQUJvyZL+X+WzN8tH7luDQmnBYiNeC3HSx9EJovMuQf3n7FVpZyzmlmraCcCLv0=
+X-Received: by 2002:ab0:32cf:: with SMTP id f15mr5321130uao.68.1615828018158; 
+ Mon, 15 Mar 2021 10:06:58 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:ab0:2e8f:0:0:0:0:0 with HTTP; Mon, 15 Mar 2021 10:06:57
+ -0700 (PDT)
+From: "Mrs.E.Glenn" <mrganuserge654@gmail.com>
+Date: Mon, 15 Mar 2021 10:06:57 -0700
+Message-ID: <CAH16wSN_QM_RAUGGsZ7LC8VTEKhCu3+VnJoNqqTumu2QA95yEg@mail.gmail.com>
+Subject: From Mrs.Glenn
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,51 +81,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: ezbtg22@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This commit fixes the following checkpatch.pl errors:
-
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #192: FILE: ./os_dep/xmit_linux.c:192:
-    +int _rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
-
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #247: FILE: ./os_dep/xmit_linux.c:247:
-    +int rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
-
-Signed-off-by: Marco Cesati <marcocesati@gmail.com>
----
- drivers/staging/rtl8723bs/os_dep/xmit_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-index 83d7cbbcdf93..a3b6584ca0d0 100644
---- a/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/xmit_linux.c
-@@ -189,7 +189,7 @@ static int rtw_mlcst2unicst(struct adapter *padapter, struct sk_buff *skb)
- 	return true;
- }
- 
--int _rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
-+int _rtw_xmit_entry(struct sk_buff *pkt, struct net_device *pnetdev)
- {
- 	struct adapter *padapter = rtw_netdev_priv(pnetdev);
- 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
-@@ -244,7 +244,7 @@ int _rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
- 	return 0;
- }
- 
--int rtw_xmit_entry(struct sk_buff *pkt, struct net_device * pnetdev)
-+int rtw_xmit_entry(struct sk_buff *pkt, struct net_device *pnetdev)
- {
- 	int ret = 0;
- 
 -- 
-2.30.2
+Dear Beloved,
 
+I am Mrs Elizabet Glenn from Israel. I am a missionary but right now
+in a hospital bed in Israel. I am 59 years and childless; my husband
+is dead. I was diagnosed with terminal cancer. And my doctor just
+predicted that I have but very limited time to live due to damages in
+my system and as a result of that I decided to dispose my 10.5 million
+US dollars to a God-fearing one for the continuation of charitable
+work. This is why I located you.
+
+My guess about you may not be accurate because I came across your
+contact at the humanitarian calendar event of the year but I believe
+in God who divinely directed me to you for this solemn proposal of
+charitable work.
+
+Therefore I wholeheartedly wish to bequeath my fortune to you as a
+God-fearing person for the continuation of charitable work anywhere
+around the world.
+
+I shall be going in for a surgery operations soonest and desire this
+money to be transferred to you as I do not wish to leave this money in
+the bank because bankers might misuse it for their own interest after
+my death.
+
+As soon as I receive your quick reply assuring me that you will
+utilize the money as I instructed you for the benefit of the less
+privilege, I shall give you more details and also instruct my bank to
+release the money to you for the charity project. I hope you receive
+this mail in good health.
+
+Please contact me on this E-mail (ezbtg22@gmail.com) because I don t
+know what will be my situation in next minute,
+
+I am waiting for your reply.
+
+Yours sincerely,
+Mrs Elizabet Glenn.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
