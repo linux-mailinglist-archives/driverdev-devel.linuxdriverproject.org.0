@@ -1,133 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E831133C189
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 17:21:57 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE84433C34E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:06:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4D1B143130;
-	Mon, 15 Mar 2021 16:21:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0AE3E4CF79;
+	Mon, 15 Mar 2021 17:06:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3oCzi7GdoUsn; Mon, 15 Mar 2021 16:21:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5tkRvFzW5IxW; Mon, 15 Mar 2021 17:06:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 80ABD4019A;
-	Mon, 15 Mar 2021 16:21:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DC9D347489;
+	Mon, 15 Mar 2021 17:06:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CFEFD1BF2CF
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 16:21:44 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 16EE51BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BFA408343B
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 16:21:44 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 14017430B9
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Go7w60qrWAMR for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 16:21:43 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kJyKHiItL-5O for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:09 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2087.outbound.protection.outlook.com [40.107.93.87])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C035583372
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 16:21:43 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lDCa+FE2SlNaPQZOlJdyY5wCifHM8IKCs3WVGb1N1OqGuVMeM83Gm8/1ElstNISO8BdPp35CX/vQhZPDtb2jdZW1fHle5PmCYBk5SqeKG1u8XU7YUchQtQvuZtGguqqukTCQ10xjLgs56WcJYZvF+rTyZSEJot3hAAW0gsrtG3xkCh+cFYgRRtgPKXA5IeK8B51NPA4huAYJMdBRH6SCxa+R2XQI3hUBoapUjHFgjRDQcDSCFV6bUItDR17v/nRspRS/3okxAToDWoduSrWqByED+cW82h5Q+6UdECYS7PGpYpUSrTiFxslKzG1YAdZT6gHG/QxaylkRDANOMxHx/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U6pKbWCmNSZ3xR//zdNy6w6dycO84GzoenS4inDxOQU=;
- b=BlIptnu7x2DdZH73AxiOB3R9D7da9EZaq95OV/DoN+F+Gc02I/v6LuQxUSI5hTP0ZW/MvuYkUwl5XN25rOJKWHnEeZ+l+MRKxB0KXZpJlJQR53i41ZLW6Mlv/5tUMOvSjjz3CJgGon7nq44HpPxrGVCc1bxa+j3tcMc1QKPlGy1Cb/JwbK4aIVvDAwzryF2O2I6s3O9V4q2d7fT0RYyq6ocXgJYAZrKReBZFk/xL3cfK6zR8EkO/GHmuVlveNMn41gs0xyTIkBcTrLZBDYSp+Cg9Kh3bZAbGzl5YOMaalw5+9uTYYTKQwNHKEYEY8hKFifp9Y57YA/Nci+WE39h+AQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U6pKbWCmNSZ3xR//zdNy6w6dycO84GzoenS4inDxOQU=;
- b=mqx7cnoFjywfJJBV6UMt9zaF9EaAxPoHulLhJ7MzAyWy3Dmk+dcw0KUStxfycGBwBqi0vDiB6rL0LUxkme5HCeFN6GZs6MZLYv2UghFluHF3QWWARozaHg+x21rj4z0FN6TM+X3kJ6hVgHLGzLRqylviULil845knT6qSlhq1Dg=
-Authentication-Results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SA2PR11MB4988.namprd11.prod.outlook.com (2603:10b6:806:f8::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3933.32; Mon, 15 Mar
- 2021 16:21:41 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::41bc:5ce:dfa0:9701]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::41bc:5ce:dfa0:9701%7]) with mapi id 15.20.3933.032; Mon, 15 Mar 2021
- 16:21:41 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: Leon Romanovsky <leon@kernel.org>
-Subject: Re: [PATCH v5 03/24] wfx: add Makefile/Kconfig
-Date: Mon, 15 Mar 2021 17:21:35 +0100
-Message-ID: <1718324.Ee3sdLpQUQ@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <YE95OCx5hWRedi+W@unreal>
-References: <20210315132501.441681-1-Jerome.Pouiller@silabs.com>
- <20210315132501.441681-4-Jerome.Pouiller@silabs.com>
- <YE95OCx5hWRedi+W@unreal>
-X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
-X-ClientProxiedBy: SN4PR0501CA0026.namprd05.prod.outlook.com
- (2603:10b6:803:40::39) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com
+ [IPv6:2a00:1450:4864:20::62b])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2B4CE40170
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:09 +0000 (UTC)
+Received: by mail-ej1-x62b.google.com with SMTP id ci14so67355353ejc.7
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=5kkPHfLMJuEwBnwAYQK9hsZQI1TYbfCLZ0FHQppahV0=;
+ b=l9YuTuIWNVtCzu2xbEb754SponWEj0o2s6QzmqGrBQTWU1m92ZMxmcrsDwILjtJkdZ
+ 5QnTbeeluKbYl/cjBJapwArY3yFP4xVBcUToyuv8REd/6Bzy4AsPQNjcmKyIw2vmvB6X
+ g4rPbrjkU+VyabC2R1nfLEfLHobtRudDFKH+s1hamgH9LbKOe3TqkxzJMg4Zcex2vhkw
+ DWtzgBGDUUcTf9g7cdXfrwnrotsDsbswPlk11xrhiNtfQd/4lugOUcZyuM0o1Yj9X8sw
+ IOGDSkzZMKIVVdl7Z/UnVhXTy8S8UzbbqNTj35sUbuECUt9B05fsugChub6OyaAVP3DY
+ GM1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=5kkPHfLMJuEwBnwAYQK9hsZQI1TYbfCLZ0FHQppahV0=;
+ b=gAncLy9ll29skzYS0UqS8TAyFbLBnEMMiIYdbyKBi0sblMsEqT2O2mni2q0ThKmZXn
+ bt/UOfFvm2xEzexTP5/notlOTapCkpc2A3hEczuOvr7+KWZQlxDSRQUcV+O4Sws2O4MX
+ TUki7dqf1w01/P7hubQG32MWnXI2UsfLpFN4Q4p0D4nwc5GUNU05+eP1OBClZduDB8Mu
+ F6HDFg8rCZWwmYdoBFBdPBV1+hWNUKL8xfn2hU3pW5adnlXziJ1rKrm+gYM5lDvwwkqc
+ yOZv5FxnYvfMG0Cxe3+mBIleQES++sUwJ5d9y9+RZPcLFaF9gEvxG0HNO5WuVuFDRwl4
+ 8eFQ==
+X-Gm-Message-State: AOAM530gFn0oj0UiN+bPjFPsqZtZ1D1/lkRI7I9x8BBktU9Gf+jkerGc
+ KNP2UApZtXbKx7fJzTNS/2c=
+X-Google-Smtp-Source: ABdhPJx9vsRnoYqrzNW1bjtWUHYHiyWohKTEn/KNQ5IjF6SHSe1OgMBFmxWWYzEyrC8D3lZQPSQbQg==
+X-Received: by 2002:a17:906:144d:: with SMTP id
+ q13mr23802065ejc.458.1615827967258; 
+ Mon, 15 Mar 2021 10:06:07 -0700 (PDT)
+Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
+ [93.48.145.141])
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Mar 2021 10:06:06 -0700 (PDT)
+From: Marco Cesati <marcocesati@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans de Goede <hdegoede@redhat.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
+Subject: [PATCH 00/57] Staging: rtl8723bs: fix POINTER_LOCATION whitespaces
+Date: Mon, 15 Mar 2021 18:05:21 +0100
+Message-Id: <20210315170618.2566-1-marcocesati@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.localnet (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
- SN4PR0501CA0026.namprd05.prod.outlook.com (2603:10b6:803:40::39) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3955.10 via Frontend
- Transport; Mon, 15 Mar 2021 16:21:39 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 451c8c1a-81b0-4c90-1211-08d8e7ce6aa2
-X-MS-TrafficTypeDiagnostic: SA2PR11MB4988:
-X-Microsoft-Antispam-PRVS: <SA2PR11MB49887E7043FC68AE05E2C8F3936C9@SA2PR11MB4988.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8yws90bhY7xZB06uSIhmcuEWtAZ63WoYzyK0MUb+0pzsj/WmyAbNcYx/YR7HhfXCOHnS1rUpCektCjJbW62+Ay5wvQlhtPvVDysJ5Ifm6NkJdFH74xPXT7lapKd0Kz+nIZYhsBfIPjobLyBr6JEoIzKt55WtaZ+vn6cua85UPycYIEhn5trspHvGo3DAtQrDpcXRP/v6Fh2+ISZ+gR9Jojs6v9TXbgM55wLl7l/5VNOZrtveYgpnXFWdZemL209OabFmVnopSoy/2ZT3Sp7RORgMFlZapf5z1WyWJIWnFexc7W/zMIpCvOfV6AZZZ8WW0bSAR7nbXovl7WdGQaNdIZKVaJCE10gKWMTy23VZntuHZvt1SNmJTHqJpcA7NjTHBoDrLLy9DZpmgGmKwSyqlKkzKP7byyueXxcEYzqndsDPPCfkmmHsO4JXSSh9HYMrfn/wIMdFU93IDq3/aKYe0ewoHF11XjMPEQ6U3R/L4zXCYeoLhEns3O9pE74eir2JRhW+HVPIQjIJ4xOr8iCNsr/Ul55qkRtj5Oe84IEW/8MsbtNdMcQPxauA4UGtZ5fVfWwiHF3nRSdFsFV5odFq8DAKjacwRuwF8IF8qdqjqa8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(136003)(366004)(396003)(39850400004)(376002)(346002)(8676002)(54906003)(6666004)(8936002)(6506007)(66556008)(86362001)(52116002)(5660300002)(4326008)(66476007)(33716001)(7416002)(66946007)(16526019)(316002)(186003)(36916002)(2906002)(6486002)(6916009)(478600001)(66574015)(9686003)(6512007)(39026012);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: =?iso-8859-1?Q?DILDYqzm+VHU4BPrXmUBks5XwLyzWFfeixSsbRj6NmlrYIlMRACdRhIxTv?=
- =?iso-8859-1?Q?Z82Leow0o/BG7O1NbRc6lxrxqXF7jJLeMGsH8XLiB3r4+olh7Smy/iwu+y?=
- =?iso-8859-1?Q?CgYgIiBIWpNvHieQgSw6RKJrxpXUTLTpJeDCOe1aNMu4BXo2Uavek7qBB5?=
- =?iso-8859-1?Q?5rXPPXyumC2tTzp+8uxEVJJ0hJFiN7D4rnBxUwxa0yzT+PXlZsPd0xWmFp?=
- =?iso-8859-1?Q?5fDdUMIQGF2qlqsfhVngHb2Fhr/N1UJHq4do96XqLWhLvTU4x+Ckx4X8Yy?=
- =?iso-8859-1?Q?YWUKXcXu/gIC4JlnvheYTDhIrqajA/+7W1GSGA2c+bnpk+q061peR9wJB5?=
- =?iso-8859-1?Q?KQvmp3bcvkEoYxgbjPMaOAk+gl9j9B2VWBP8t5pptyXH/hWi/JiUyk+uoM?=
- =?iso-8859-1?Q?1P6D4r0F6zP9YiLIrLdJk+PJutu1uj2Pr2E67MtZr7xAif3VTYMqNk9iMP?=
- =?iso-8859-1?Q?qoWMRYHhaQcRYJ7VJuOwtgLPGwcISbP9wWs+byq4aaIy4yRqYM3kG+HZAr?=
- =?iso-8859-1?Q?AfvopAOlqS6aL85t0ww/RJIEpjPMPl/nl91vcF/KSfVhHa01ophcx4Z4vy?=
- =?iso-8859-1?Q?4fy0tGebNUgOuVcN/3HKTe+Pn8BkOeNOxanEOUvtpB5dGjlQnozYBL8iG+?=
- =?iso-8859-1?Q?Y7Ixxp/ePO52Iep7jPdzmtn6XAEK4/Qp0qZf9CIKGfxsGqEoh9eha9aoBJ?=
- =?iso-8859-1?Q?yisS49eyJQEKEmJ8K4Y+3qFRa7oORjkXSzRnvgqxnylluPiXLDqruhCkuT?=
- =?iso-8859-1?Q?Ckk4q47RSAO0zeJ2Gk3aAuCgoK/q+yddW/MJhYos3NfKn3FcGjVV2dF/2u?=
- =?iso-8859-1?Q?7SsGgNgYjtr85FfEQQvQr0p+iNnsYfP4GZFiGc0CDD2IC7DG5YpJS5Kenc?=
- =?iso-8859-1?Q?697BsZ/G/StSDc/tPGNO/EJjNcyfdwxKK0ei0GnUDIUIDhtKzzHpHzhguT?=
- =?iso-8859-1?Q?YnXiGnfL+catHna5MUSo2kiCfYo1kqsGTUq/Fa0YqkKe+vMIMisio7AqYh?=
- =?iso-8859-1?Q?a/cK3+Ltjl72/eyqxqHgcaHN31VO+uRuz7wFhRgBlHvHsgs4npzTJICFBX?=
- =?iso-8859-1?Q?lQKPK3x7K6b17HPDVYBL25B3Es0QGIXWQpXsy53nTtDuv5kLJL+j36uV7o?=
- =?iso-8859-1?Q?bxrMiiVMD2SW3Da8righAZuc36OnicNJpCPseH7Sk6kV5hOHuS3R2CCYO5?=
- =?iso-8859-1?Q?tk/AGX4QNkG1cy3phnWBJxTHHsuY9XrzwfWD6K9+NfPqfyMwKx9TMiOZ/N?=
- =?iso-8859-1?Q?IZx4TvStiq8U2nGUi1EWLmQIobD8GjNOb4pXOUwNnM0C1knYOI6ay2h0Hy?=
- =?iso-8859-1?Q?P+u1l9xOcDVzcyT+3EuQ8UDWmsnqRMU1D++ONfcRUxvQZHXSgQbIGpACCu?=
- =?iso-8859-1?Q?E8tj/Z9L7eEkYW6g9u7TykghXsl8vcBxyS79rcruEkf/rKKdPBZbnOavba?=
- =?iso-8859-1?Q?X0WuAob7VhoG/uPh?=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 451c8c1a-81b0-4c90-1211-08d8e7ce6aa2
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2021 16:21:41.3869 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: EEZxqvngO1emAD8foyJ5z3zpRwjozA2ncoA/rlu/pRthwMBXqaTST/ibg4VA7n+4KyK67v1FbnQdlwnhAiLmJw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4988
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,76 +89,140 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Leon,
+This set of patches fixes 522 checkpatch.pl errors of type
+POINTER_LOCATION in the staging/rtl8723bs souce code. Every patch is
+purely syntactical: it does not change the generated machine code.
+Furthermore, every single patch leaves the source code fully compilable,
+so that 'git bisect' will not be affected.
 
-On Monday 15 March 2021 16:11:52 CET Leon Romanovsky wrote:
-> On Mon, Mar 15, 2021 at 02:24:40PM +0100, Jerome Pouiller wrote:
-> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >
-> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> > ---
-> >  drivers/net/wireless/silabs/wfx/Kconfig  | 12 +++++++++++
-> >  drivers/net/wireless/silabs/wfx/Makefile | 26 ++++++++++++++++++++++++
-> >  2 files changed, 38 insertions(+)
-> >  create mode 100644 drivers/net/wireless/silabs/wfx/Kconfig
-> >  create mode 100644 drivers/net/wireless/silabs/wfx/Makefile
-> >
-> > diff --git a/drivers/net/wireless/silabs/wfx/Kconfig b/drivers/net/wire=
-less/silabs/wfx/Kconfig
-> > new file mode 100644
-> > index 000000000000..3be4b1e735e1
-> > --- /dev/null
-> > +++ b/drivers/net/wireless/silabs/wfx/Kconfig
-> > @@ -0,0 +1,12 @@
-> > +config WFX
-> > +     tristate "Silicon Labs wireless chips WF200 and further"
-> > +     depends on MAC80211
-> > +     depends on MMC || !MMC # do not allow WFX=3Dy if MMC=3Dm
-> > +     depends on (SPI || MMC)
-> > +     help
-> > +       This is a driver for Silicons Labs WFxxx series (WF200 and furt=
-her)
-> > +       chipsets. This chip can be found on SPI or SDIO buses.
-> > +
-> > +       Silabs does not use a reliable SDIO vendor ID. So, to avoid con=
-flicts,
-> > +       the driver won't probe the device if it is not also declared in=
- the
-> > +       Device Tree.
-> > diff --git a/drivers/net/wireless/silabs/wfx/Makefile b/drivers/net/wir=
-eless/silabs/wfx/Makefile
-> > new file mode 100644
-> > index 000000000000..f399962c8619
-> > --- /dev/null
-> > +++ b/drivers/net/wireless/silabs/wfx/Makefile
-> > @@ -0,0 +1,26 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +
-> > +# Necessary for CREATE_TRACE_POINTS
-> > +CFLAGS_debug.o =3D -I$(src)
-> =
+The checkpatch.pl script emits many errors and warnings for these
+patches, however all of them are caused by the original code. They shall
+be fixed in different patchsets.
 
-> I wonder if it is still relevant outside of the staging tree.
+[PATCH 01/57] Staging: rtl8723bs: fix spaces in rtw_cmd.c
+[PATCH 02/57] Staging: rtl8723bs: fix spaces in HalBtc8723b1Ant.c
+[PATCH 03/57] Staging: rtl8723bs: fix spaces in HalBtc8723b1Ant.h
+[PATCH 04/57] Staging: rtl8723bs: fix spaces in HalBtc8723b2Ant.c
+[PATCH 05/57] Staging: rtl8723bs: fix spaces in HalBtc8723b2Ant.h
+[PATCH 06/57] Staging: rtl8723bs: fix spaces in HalBtcOutSrc.h
+[PATCH 07/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_BB.c
+[PATCH 08/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_BB.h
+[PATCH 09/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_MAC.c
+[PATCH 10/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_MAC.h
+[PATCH 11/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_RF.c
+[PATCH 12/57] Staging: rtl8723bs: fix spaces in HalHWImg8723B_RF.h
+[PATCH 13/57] Staging: rtl8723bs: fix spaces in HalPhyRf.c
+[PATCH 14/57] Staging: rtl8723bs: fix spaces in HalPhyRf.h
+[PATCH 15/57] Staging: rtl8723bs: fix spaces in HalPhyRf_8723B.c
+[PATCH 16/57] Staging: rtl8723bs: fix spaces in HalPhyRf_8723B.h
+[PATCH 17/57] Staging: rtl8723bs: fix spaces in hal_btcoex.c
+[PATCH 18/57] Staging: rtl8723bs: fix spaces in hal_com.c
+[PATCH 19/57] Staging: rtl8723bs: fix spaces in hal_com_phycfg.c
+[PATCH 20/57] Staging: rtl8723bs: fix spaces in odm.c
+[PATCH 21/57] Staging: rtl8723bs: fix spaces in odm.h
+[PATCH 22/57] Staging: rtl8723bs: fix spaces in odm_CfoTracking.c
+[PATCH 23/57] Staging: rtl8723bs: fix spaces in odm_DIG.c
+[PATCH 24/57] Staging: rtl8723bs: fix in odm_DynamicBBPowerSaving.c
+[PATCH 25/57] Staging: rtl8723bs: fix spaces in odm_DynamicTxPower.c
+[PATCH 26/57] Staging: rtl8723bs: fix spaces in odm_EdcaTurboCheck.c
+[PATCH 27/57] Staging: rtl8723bs: fix spaces in odm_HWConfig.c
+[PATCH 28/57] Staging: rtl8723bs: fix spaces in odm_HWConfig.h
+[PATCH 29/57] Staging: rtl8723bs: fix spaces in odm_NoiseMonitor.c
+[PATCH 30/57] Staging: rtl8723bs: fix spaces in odm_PathDiv.c
+[PATCH 31/57] Staging: rtl8723bs: fix spaces in odm_RegConfig8723B.c
+[PATCH 32/57] Staging: rtl8723bs: fix spaces in odm_RegConfig8723B.h
+[PATCH 33/57] Staging: rtl8723bs: fix spaces in odm_debug.c
+[PATCH 34/57] Staging: rtl8723bs: fix spaces in odm_debug.h
+[PATCH 35/57] Staging: rtl8723bs: fix spaces in rtl8723b_dm.c
+[PATCH 36/57] Staging: rtl8723bs: fix spaces in rtl8723b_hal_init.c
+[PATCH 37/57] Staging: rtl8723bs: fix spaces in rtl8723b_phycfg.c
+[PATCH 38/57] Staging: rtl8723bs: fix spaces in HalPwrSeqCmd.h
+[PATCH 39/57] Staging: rtl8723bs: fix spaces in basic_types.h
+[PATCH 40/57] Staging: rtl8723bs: fix spaces in drv_types.h
+[PATCH 41/57] Staging: rtl8723bs: fix spaces in hal_com.h
+[PATCH 42/57] Staging: rtl8723bs: fix spaces in hal_com_h2c.h
+[PATCH 43/57] Staging: rtl8723bs: fix spaces in hal_com_phycfg.h
+[PATCH 44/57] Staging: rtl8723bs: fix spaces in ieee80211.h
+[PATCH 45/57] Staging: rtl8723bs: fix spaces in ioctl_cfg80211.h
+[PATCH 46/57] Staging: rtl8723bs: fix spaces in osdep_intf.h
+[PATCH 47/57] Staging: rtl8723bs: fix spaces in osdep_service.h
+[PATCH 48/57] Staging: rtl8723bs: fix spaces in osdep_service_linux.h
+[PATCH 49/57] Staging: rtl8723bs: fix spaces in recv_osdep.h
+[PATCH 50/57] Staging: rtl8723bs: fix spaces in rtl8723b_xmit.h
+[PATCH 51/57] Staging: rtl8723bs: fix spaces in rtw_cmd.h
+[PATCH 52/57] Staging: rtl8723bs: fix spaces in rtw_ioctl_set.h
+[PATCH 53/57] Staging: rtl8723bs: fix spaces in rtw_mlme_ext.h
+[PATCH 54/57] Staging: rtl8723bs: fix spaces in xmit_osdep.h
+[PATCH 55/57] Staging: rtl8723bs: fix spaces in os_intfs.c
+[PATCH 56/57] Staging: rtl8723bs: fix spaces in osdep_service.c
+[PATCH 57/57] Staging: rtl8723bs: fix spaces in xmit_linux.c
 
-It seems this pattern is common in the main tree. You suggest to relocate
-trace.h to include/trace/events?
+ drivers/staging/rtl8723bs/core/rtw_cmd.c      |   2 +-
+ .../staging/rtl8723bs/hal/HalBtc8723b1Ant.c   | 152 +++++++++---------
+ .../staging/rtl8723bs/hal/HalBtc8723b1Ant.h   |  28 ++--
+ .../staging/rtl8723bs/hal/HalBtc8723b2Ant.c   | 142 ++++++++--------
+ .../staging/rtl8723bs/hal/HalBtc8723b2Ant.h   |  28 ++--
+ drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h  |  28 ++--
+ .../staging/rtl8723bs/hal/HalHWImg8723B_BB.c  |  10 +-
+ .../staging/rtl8723bs/hal/HalHWImg8723B_BB.h  |   6 +-
+ .../staging/rtl8723bs/hal/HalHWImg8723B_MAC.c |   6 +-
+ .../staging/rtl8723bs/hal/HalHWImg8723B_MAC.h |   2 +-
+ .../staging/rtl8723bs/hal/HalHWImg8723B_RF.c  |  12 +-
+ .../staging/rtl8723bs/hal/HalHWImg8723B_RF.h  |   6 +-
+ drivers/staging/rtl8723bs/hal/HalPhyRf.c      |   6 +-
+ drivers/staging/rtl8723bs/hal/HalPhyRf.h      |   4 +-
+ .../staging/rtl8723bs/hal/HalPhyRf_8723B.c    |  54 +++----
+ .../staging/rtl8723bs/hal/HalPhyRf_8723B.h    |  10 +-
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c    |  89 +++++-----
+ drivers/staging/rtl8723bs/hal/hal_com.c       |   2 +-
+ .../staging/rtl8723bs/hal/hal_com_phycfg.c    |   6 +-
+ drivers/staging/rtl8723bs/hal/odm.c           |  92 +++++------
+ drivers/staging/rtl8723bs/hal/odm.h           |  32 ++--
+ .../staging/rtl8723bs/hal/odm_CfoTracking.c   |  28 ++--
+ drivers/staging/rtl8723bs/hal/odm_DIG.c       |  60 +++----
+ .../rtl8723bs/hal/odm_DynamicBBPowerSaving.c  |   4 +-
+ .../rtl8723bs/hal/odm_DynamicTxPower.c        |   2 +-
+ .../rtl8723bs/hal/odm_EdcaTurboCheck.c        |   6 +-
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c  |  18 +--
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.h  |  12 +-
+ .../staging/rtl8723bs/hal/odm_NoiseMonitor.c  |   2 +-
+ drivers/staging/rtl8723bs/hal/odm_PathDiv.c   |   4 +-
+ .../rtl8723bs/hal/odm_RegConfig8723B.c        |  14 +-
+ .../rtl8723bs/hal/odm_RegConfig8723B.h        |  14 +-
+ drivers/staging/rtl8723bs/hal/odm_debug.c     |   2 +-
+ drivers/staging/rtl8723bs/hal/odm_debug.h     |   2 +-
+ drivers/staging/rtl8723bs/hal/rtl8723b_dm.c   |  12 +-
+ .../staging/rtl8723bs/hal/rtl8723b_hal_init.c |  24 +--
+ .../staging/rtl8723bs/hal/rtl8723b_phycfg.c   |   4 +-
+ .../staging/rtl8723bs/include/HalPwrSeqCmd.h  |   2 +-
+ .../staging/rtl8723bs/include/basic_types.h   |   2 +-
+ drivers/staging/rtl8723bs/include/drv_types.h |  12 +-
+ drivers/staging/rtl8723bs/include/hal_com.h   |  16 +-
+ .../staging/rtl8723bs/include/hal_com_h2c.h   |   2 +-
+ .../rtl8723bs/include/hal_com_phycfg.h        |  26 +--
+ drivers/staging/rtl8723bs/include/ieee80211.h |   7 +-
+ .../rtl8723bs/include/ioctl_cfg80211.h        |   2 +-
+ .../staging/rtl8723bs/include/osdep_intf.h    |   2 +-
+ .../staging/rtl8723bs/include/osdep_service.h |   4 +-
+ .../rtl8723bs/include/osdep_service_linux.h   |   2 +-
+ .../staging/rtl8723bs/include/recv_osdep.h    |   2 +-
+ .../staging/rtl8723bs/include/rtl8723b_xmit.h |   4 +-
+ drivers/staging/rtl8723bs/include/rtw_cmd.h   |   4 +-
+ .../staging/rtl8723bs/include/rtw_ioctl_set.h |   4 +-
+ .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  18 +--
+ .../staging/rtl8723bs/include/xmit_osdep.h    |   4 +-
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   |   2 +-
+ .../staging/rtl8723bs/os_dep/osdep_service.c  |   2 +-
+ drivers/staging/rtl8723bs/os_dep/xmit_linux.c |   4 +-
+ 57 files changed, 524 insertions(+), 522 deletions(-)
 
--- =
-
-J=E9r=F4me Pouiller
-
+-- 
+2.30.2
 
 _______________________________________________
 devel mailing list
