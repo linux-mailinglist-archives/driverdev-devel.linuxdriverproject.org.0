@@ -1,78 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E08D233C394
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:10:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B03233C3A3
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:10:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 87C526F504;
-	Mon, 15 Mar 2021 17:10:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9E1104E3C5;
+	Mon, 15 Mar 2021 17:10:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xTH0xeM_5muC; Mon, 15 Mar 2021 17:10:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MD5H7ieFVbbs; Mon, 15 Mar 2021 17:10:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A1C34605A5;
-	Mon, 15 Mar 2021 17:10:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1750B47489;
+	Mon, 15 Mar 2021 17:10:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 35D3B1BF33C
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AE4D91BF33C
  for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E1D6C6F504
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9A101834B6
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RHF3jJ7KFt1E for <devel@linuxdriverproject.org>;
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mD7rSM_Pxvmy for <devel@linuxdriverproject.org>;
  Mon, 15 Mar 2021 17:06:27 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
- [IPv6:2a00:1450:4864:20::62a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 027316F557
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:26 +0000 (UTC)
-Received: by mail-ej1-x62a.google.com with SMTP id ci14so67357171ejc.7
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:26 -0700 (PDT)
+Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
+ [IPv6:2a00:1450:4864:20::62d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BBD0183486
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:27 +0000 (UTC)
+Received: by mail-ej1-x62d.google.com with SMTP id p8so67493943ejb.10
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=ZOU05KhefGus0wVRdtC2kR2CBJ6q/zRch4wBgEORKk0=;
- b=SuaO8Ga8zK9ye4iptJGXtOqD6rlyP+AaYnfAhpQAUxtWV5uCfHilggOPcsg40fkD7n
- p8YkL0kh+sLhtDfx/uC1Oq28aNBje6qgUIkvAwT1m4X5XuTM/MwTJ9cBTm02Aiz8/Szw
- ZtKyXA2ckDtVZLlMUQ304zzVjpZGiqSUO5Puk/Ylau+FWZy+3gXZ9GK/g46A6DuSH1cC
- HrGVjM1njfnF2rlzTbzZoVWwcs/8B6+waYLHhE9nNJoShkzgShad8zZleadvqTJlCnao
- aPmNOWlDrqOIRfnmWPRHd2WRtpA53tPTij3hKQ5fr79ZyL6JXb+dBzfKiTrrHOSf2k1i
- QQpw==
+ bh=TM+TDPMBbVhI7kpNroM//635XzXNtISDP6Yzvb5Is0k=;
+ b=WFEldDqI53G8Lo11f7p0Liu3b4WXReVxttN/ggxvINGPawznMuJ68tCsrZKSeBKtG8
+ HH/jlLCsVWri66a4NGJsh/Vi1snJ/JwKR2NxnDNKKzZikuyUBINSQ8OrB8IKVtbEZlK7
+ wYaeFy7uYEmTUnQFnCwQVJ2LoEhBWoVbZVTdrJqOKJTexi+FosPZppU/k90/yHi6Nsst
+ snQfFT9rzWSdVkIKfB2feVThIFp9S8vocsVphglJOfq3EOTCBl0XUreKZTogIrdYlULh
+ B2OkBI3IV2TkhZ/VCPEi9cyAkqcaH7bGTr+KDnuapX04dW4Kiw54lfGsCGgQWP40A/g4
+ OLzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZOU05KhefGus0wVRdtC2kR2CBJ6q/zRch4wBgEORKk0=;
- b=tKn1OD2NESuIdzdDvKy8JSgYaToyRlOdTB3/xUsvRIerpjk2tKgvyKIxthGjr8pF9u
- ZBDBXe1CLbpI3iVmiZR5c+Fann/0ZoQ50A81gO0A9wUz8/iq29FS6kIe3N5e8rBUNP13
- Umm/sEarhGmbV6d8rpTsqhPJaiZg4BBjwC3gkxdu2D88CYwuzyGaI1M3ED8hZIBP2yuc
- m2OXbx07+G3Q5luU+U97kaKfSml067mRhpfN43PJ6BPG+G544KkTQ6pDHQEoMqCRPcyd
- 9OzY6Hu51m+qz0L3v4M+fEL+xCAjhi1M9AM+aJlolaWZMvtG+8rDyYjscqPfZtXOTH/L
- qXRw==
-X-Gm-Message-State: AOAM53082M58V1+HvnLn8MpDgSKfxSH74/JLkZSigmDEGHRpm9FRcx1E
- 6k0+Hha18D9Bp1cD4qvC1Ec=
-X-Google-Smtp-Source: ABdhPJzAEB42fXqIx5OwDgZIQBnNQfAJ4IpewgWImtH4allyfZ5Law28p/MDAaurrh86f8bcYaJ7eg==
-X-Received: by 2002:a17:906:3395:: with SMTP id
- v21mr24738289eja.322.1615827985183; 
- Mon, 15 Mar 2021 10:06:25 -0700 (PDT)
+ bh=TM+TDPMBbVhI7kpNroM//635XzXNtISDP6Yzvb5Is0k=;
+ b=CUhiMrU03/1SD1O7H7LO736aJnELd53iYxdjNOU+xjrVk/l2tYcwVVV8BUH4YX41ik
+ XA21QMJAc4R6kW7vnROj16PcOViOOQzD71zHqsELSpe79LfvFzK4ZPp6iGaV3IVwsT7m
+ 0eZvXA9uqRrT03DMgirhQYLVIH9dtfue0gvIxKMaayJ4KcDB2gMdLfDXtQYVPCDyjidm
+ k7kgDpg62yFjN8Alrwbcnh4cKrB+nldAxFW3TubotQVVR8R1hH9teFPmRhMMi8W/nSgC
+ K440gJvVvZLxvI+Yattd2RKP3vRMFXkZn+L70JmeAhYZAmgy8YyIChNfBFjr+vnxj1lw
+ KKYQ==
+X-Gm-Message-State: AOAM533wz9QU/Xz6x9j4bkwnrQO6CgokXLQEvs7MuIfKb2QyoYcFWZ9F
+ ZdkM3UM46H9iD9pAMUdhK8g=
+X-Google-Smtp-Source: ABdhPJxhWpirC+stR5eeY1UI6TrW/AqYTuY1kp+SiLhiqP8Oc/9l64em6CEpvDDVMG13PrrrK4za8A==
+X-Received: by 2002:a17:906:b747:: with SMTP id
+ fx7mr25401825ejb.474.1615827986037; 
+ Mon, 15 Mar 2021 10:06:26 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.24
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:24 -0700 (PDT)
+ Mon, 15 Mar 2021 10:06:25 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 21/57] Staging: rtl8723bs: fix spaces in odm.h
-Date: Mon, 15 Mar 2021 18:05:42 +0100
-Message-Id: <20210315170618.2566-22-marcocesati@gmail.com>
+Subject: [PATCH 22/57] Staging: rtl8723bs: fix spaces in odm_CfoTracking.c
+Date: Mon, 15 Mar 2021 18:05:43 +0100
+Message-Id: <20210315170618.2566-23-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
 References: <20210315170618.2566-1-marcocesati@gmail.com>
@@ -97,158 +99,155 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This commit fixes the following checkpatch.pl errors:
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1371: FILE: ./hal/odm.h:1371:
-    +void ODM_TXPowerTrackingCheck(struct DM_ODM_T * pDM_Odm);
+    #12: FILE: ./hal/odm_CfoTracking.c:12:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1374: FILE: ./hal/odm.h:1374:
-    +	struct DM_ODM_T * pDM_Odm,
+    #13: FILE: ./hal/odm_CfoTracking.c:13:
+    +	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1382: FILE: ./hal/odm.h:1382:
-    +	struct DM_ODM_T * pDM_Odm,
+    #42: FILE: ./hal/odm_CfoTracking.c:42:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1388: FILE: ./hal/odm.h:1388:
-    +	struct DM_ODM_T * pDM_Odm,
+    #52: FILE: ./hal/odm_CfoTracking.c:52:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1398: FILE: ./hal/odm.h:1398:
-    +void odm_TXPowerTrackingInit(struct DM_ODM_T * pDM_Odm);
+    #53: FILE: ./hal/odm_CfoTracking.c:53:
+    +	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1400: FILE: ./hal/odm.h:1400:
-    +void ODM_DMInit(struct DM_ODM_T * pDM_Odm);
+    #70: FILE: ./hal/odm_CfoTracking.c:70:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1402: FILE: ./hal/odm.h:1402:
-    +void ODM_DMWatchdog(struct DM_ODM_T * pDM_Odm); /*  For common use in the future */
+    #82: FILE: ./hal/odm_CfoTracking.c:82:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1404: FILE: ./hal/odm.h:1404:
-    +void ODM_CmnInfoInit(struct DM_ODM_T * pDM_Odm, enum ODM_CMNINFO_E CmnInfo, u32 Value);
+    #83: FILE: ./hal/odm_CfoTracking.c:83:
+    +	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1406: FILE: ./hal/odm.h:1406:
-    +void ODM_CmnInfoHook(struct DM_ODM_T * pDM_Odm, enum ODM_CMNINFO_E CmnInfo, void *pValue);
+    #94: FILE: ./hal/odm_CfoTracking.c:94:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1409: FILE: ./hal/odm.h:1409:
-    +	struct DM_ODM_T * pDM_Odm,
+    #95: FILE: ./hal/odm_CfoTracking.c:95:
+    +	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1415: FILE: ./hal/odm.h:1415:
-    +void ODM_CmnInfoUpdate(struct DM_ODM_T * pDM_Odm, u32 CmnInfo, u64 Value);
+    #121: FILE: ./hal/odm_CfoTracking.c:121:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1417: FILE: ./hal/odm.h:1417:
-    +void ODM_InitAllTimers(struct DM_ODM_T * pDM_Odm);
+    #122: FILE: ./hal/odm_CfoTracking.c:122:
+    +	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1419: FILE: ./hal/odm.h:1419:
-    +void ODM_CancelAllTimers(struct DM_ODM_T * pDM_Odm);
+    #300: FILE: ./hal/odm_CfoTracking.c:300:
+    +	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1421: FILE: ./hal/odm.h:1421:
-    +void ODM_ReleaseAllTimers(struct DM_ODM_T * pDM_Odm);
-
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1424: FILE: ./hal/odm.h:1424:
-    +	struct DM_ODM_T * pDM_Odm,
-
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #1430: FILE: ./hal/odm.h:1430:
-    +void ODM_DynamicARFBSelect(struct DM_ODM_T * pDM_Odm, u8 rate, bool Collision_State);
+    #302: FILE: ./hal/odm_CfoTracking.c:302:
+    +	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/odm.h | 32 ++++++++++++++---------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ .../staging/rtl8723bs/hal/odm_CfoTracking.c   | 28 +++++++++----------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
-index 8b8fe2c406f5..8f457b0ea70d 100644
---- a/drivers/staging/rtl8723bs/hal/odm.h
-+++ b/drivers/staging/rtl8723bs/hal/odm.h
-@@ -1368,10 +1368,10 @@ extern  u32 TxScalingTable_Jaguar[TXSCALE_TABLE_SIZE];
- /* Remove BB power saving by Yuchen */
+diff --git a/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c b/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
+index a70b673bb4be..fc059822edd9 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
++++ b/drivers/staging/rtl8723bs/hal/odm_CfoTracking.c
+@@ -9,8 +9,8 @@
  
- #define dm_CheckTXPowerTracking ODM_TXPowerTrackingCheck
--void ODM_TXPowerTrackingCheck(struct DM_ODM_T * pDM_Odm);
-+void ODM_TXPowerTrackingCheck(struct DM_ODM_T *pDM_Odm);
+ static void odm_SetCrystalCap(void *pDM_VOID, u8 CrystalCap)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
+-	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct CFO_TRACKING *pCfoTrack = &pDM_Odm->DM_CfoTrack;
  
- bool ODM_RAStateCheck(
--	struct DM_ODM_T * pDM_Odm,
-+	struct DM_ODM_T *pDM_Odm,
- 	s32	RSSI,
- 	bool bForceUpdate,
- 	u8 *pRATRState
-@@ -1379,13 +1379,13 @@ bool ODM_RAStateCheck(
+ 	if (pCfoTrack->CrystalCap == CrystalCap)
+ 		return;
+@@ -39,7 +39,7 @@ static void odm_SetCrystalCap(void *pDM_VOID, u8 CrystalCap)
  
- #define dm_SWAW_RSSI_Check	ODM_SwAntDivChkPerPktRssi
- void ODM_SwAntDivChkPerPktRssi(
--	struct DM_ODM_T * pDM_Odm,
-+	struct DM_ODM_T *pDM_Odm,
- 	u8 StationID,
- 	struct odm_phy_info *pPhyInfo
- );
+ static u8 odm_GetDefaultCrytaltalCap(void *pDM_VOID)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
  
- u32 ODM_Get_Rate_Bitmap(
--	struct DM_ODM_T * pDM_Odm,
-+	struct DM_ODM_T *pDM_Odm,
- 	u32 macid,
- 	u32 ra_mask,
- 	u8 rssi_level
-@@ -1395,38 +1395,38 @@ u32 ODM_Get_Rate_Bitmap(
- BEAMFORMING_CAP Beamforming_GetEntryBeamCapByMacId(PMGNT_INFO pMgntInfo, u8 MacId);
- #endif
+ 	struct adapter *Adapter = pDM_Odm->Adapter;
+ 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
+@@ -49,8 +49,8 @@ static u8 odm_GetDefaultCrytaltalCap(void *pDM_VOID)
  
--void odm_TXPowerTrackingInit(struct DM_ODM_T * pDM_Odm);
-+void odm_TXPowerTrackingInit(struct DM_ODM_T *pDM_Odm);
+ static void odm_SetATCStatus(void *pDM_VOID, bool ATCStatus)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
+-	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct CFO_TRACKING *pCfoTrack = &pDM_Odm->DM_CfoTrack;
  
--void ODM_DMInit(struct DM_ODM_T * pDM_Odm);
-+void ODM_DMInit(struct DM_ODM_T *pDM_Odm);
+ 	if (pCfoTrack->bATCStatus == ATCStatus)
+ 		return;
+@@ -67,7 +67,7 @@ static void odm_SetATCStatus(void *pDM_VOID, bool ATCStatus)
+ static bool odm_GetATCStatus(void *pDM_VOID)
+ {
+ 	bool ATCStatus;
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
  
--void ODM_DMWatchdog(struct DM_ODM_T * pDM_Odm); /*  For common use in the future */
-+void ODM_DMWatchdog(struct DM_ODM_T *pDM_Odm); /*  For common use in the future */
+ 	ATCStatus = (bool)PHY_QueryBBReg(
+ 		pDM_Odm->Adapter,
+@@ -79,8 +79,8 @@ static bool odm_GetATCStatus(void *pDM_VOID)
  
--void ODM_CmnInfoInit(struct DM_ODM_T * pDM_Odm, enum ODM_CMNINFO_E CmnInfo, u32 Value);
-+void ODM_CmnInfoInit(struct DM_ODM_T *pDM_Odm, enum ODM_CMNINFO_E CmnInfo, u32 Value);
+ void ODM_CfoTrackingReset(void *pDM_VOID)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
+-	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct CFO_TRACKING *pCfoTrack = &pDM_Odm->DM_CfoTrack;
  
--void ODM_CmnInfoHook(struct DM_ODM_T * pDM_Odm, enum ODM_CMNINFO_E CmnInfo, void *pValue);
-+void ODM_CmnInfoHook(struct DM_ODM_T *pDM_Odm, enum ODM_CMNINFO_E CmnInfo, void *pValue);
+ 	pCfoTrack->DefXCap = odm_GetDefaultCrytaltalCap(pDM_Odm);
+ 	pCfoTrack->bAdjust = true;
+@@ -91,8 +91,8 @@ void ODM_CfoTrackingReset(void *pDM_VOID)
  
- void ODM_CmnInfoPtrArrayHook(
--	struct DM_ODM_T * pDM_Odm,
-+	struct DM_ODM_T *pDM_Odm,
- 	enum ODM_CMNINFO_E CmnInfo,
- 	u16 Index,
- 	void *pValue
- );
+ void ODM_CfoTrackingInit(void *pDM_VOID)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
+-	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct CFO_TRACKING *pCfoTrack = &pDM_Odm->DM_CfoTrack;
  
--void ODM_CmnInfoUpdate(struct DM_ODM_T * pDM_Odm, u32 CmnInfo, u64 Value);
-+void ODM_CmnInfoUpdate(struct DM_ODM_T *pDM_Odm, u32 CmnInfo, u64 Value);
+ 	pCfoTrack->DefXCap =
+ 		pCfoTrack->CrystalCap = odm_GetDefaultCrytaltalCap(pDM_Odm);
+@@ -118,8 +118,8 @@ void ODM_CfoTrackingInit(void *pDM_VOID)
  
--void ODM_InitAllTimers(struct DM_ODM_T * pDM_Odm);
-+void ODM_InitAllTimers(struct DM_ODM_T *pDM_Odm);
+ void ODM_CfoTracking(void *pDM_VOID)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
+-	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct CFO_TRACKING *pCfoTrack = &pDM_Odm->DM_CfoTrack;
+ 	int CFO_kHz_A, CFO_kHz_B, CFO_ave = 0;
+ 	int CFO_ave_diff;
+ 	int CrystalCap = (int)pCfoTrack->CrystalCap;
+@@ -297,9 +297,9 @@ void ODM_CfoTracking(void *pDM_VOID)
  
--void ODM_CancelAllTimers(struct DM_ODM_T * pDM_Odm);
-+void ODM_CancelAllTimers(struct DM_ODM_T *pDM_Odm);
+ void ODM_ParsingCFO(void *pDM_VOID, void *pPktinfo_VOID, s8 *pcfotail)
+ {
+-	struct DM_ODM_T * pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
++	struct DM_ODM_T *pDM_Odm = (struct DM_ODM_T *)pDM_VOID;
+ 	struct odm_packet_info *pPktinfo = pPktinfo_VOID;
+-	struct CFO_TRACKING * pCfoTrack = &pDM_Odm->DM_CfoTrack;
++	struct CFO_TRACKING *pCfoTrack = &pDM_Odm->DM_CfoTrack;
+ 	u8 i;
  
--void ODM_ReleaseAllTimers(struct DM_ODM_T * pDM_Odm);
-+void ODM_ReleaseAllTimers(struct DM_ODM_T *pDM_Odm);
- 
- void ODM_AntselStatistics_88C(
--	struct DM_ODM_T * pDM_Odm,
-+	struct DM_ODM_T *pDM_Odm,
- 	u8 MacId,
- 	u32 PWDBAll,
- 	bool isCCKrate
- );
- 
--void ODM_DynamicARFBSelect(struct DM_ODM_T * pDM_Odm, u8 rate, bool Collision_State);
-+void ODM_DynamicARFBSelect(struct DM_ODM_T *pDM_Odm, u8 rate, bool Collision_State);
- 
- #endif
+ 	if (!(pDM_Odm->SupportAbility & ODM_BB_CFO_TRACKING))
 -- 
 2.30.2
 
