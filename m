@@ -1,80 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C99A33C3E4
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:15:42 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D6E033C3E9
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:15:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B5724430E8;
-	Mon, 15 Mar 2021 17:15:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DFB2B83684;
+	Mon, 15 Mar 2021 17:15:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xYV76TWIlYsV; Mon, 15 Mar 2021 17:15:40 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iUIvYDavugtU; Mon, 15 Mar 2021 17:15:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 219F040170;
-	Mon, 15 Mar 2021 17:15:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0F1D834FE;
+	Mon, 15 Mar 2021 17:15:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BCBFB1BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D7E391BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B659183486
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C803F834B6
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dwkT29w6y8MH for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
+ with ESMTP id 5sd2jKL-34bd for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:55 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com
- [IPv6:2a00:1450:4864:20::52d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F388783478
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:53 +0000 (UTC)
-Received: by mail-ed1-x52d.google.com with SMTP id z1so18219773edb.8
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:53 -0700 (PDT)
+Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com
+ [IPv6:2a00:1450:4864:20::631])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C084883478
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
+Received: by mail-ej1-x631.google.com with SMTP id e19so67607667ejt.3
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=7TH3zqm15/bGSX3wSGitb74ZVvPXGU59G75w2D8W6J4=;
- b=pLqayzBXHmMolAPKZvrGD8ngfof5cuEwXarqabJ4f5bZ2Vrn1Y+6kjJ6qAo+VEIYzt
- lPwNpQUQcET4DhdAkwZkT0feSyJKkQinNhLt1VpFBT/4Ae3f1kbWgFN7q/4+J857THFU
- 7Vrhfr2g3rmgEk5zqwpvSd7JGsv6mKxPgvlMn0icqDUab9YsIygZGPDaQT+ZlcntAvm/
- OK10NVX8CBRg+bOi9m6EtWo0qLZCsw0Phh2HJll/A6MvnmrKYiX+edterZ/wOrtNyGj6
- sAgcrXRqnNlY+/gI8JGOa2Sf6ehn1hfrRdNiB9f7pWbkMb80Q7ernUQIegsPYUTzXjaR
- 7g4A==
+ bh=RxPUAX5RyTTLF8dc4LPYIQqpXorMVXFaK+cQkYQj7/o=;
+ b=Ug9KN1AFp6vOdNbpHybwf48iqSQOuAOU5TA3nAtsxO1jCASsQ6UvnQnJx9iLIzMVJ5
+ 12coeipg5h1HSTso3vswnq6YzwwEnwPf2Dz0OAKRIfWvsVjgKebeVpXZDVtEBoUzlIOm
+ NIYLyu1xCUk97MK7r2l4+UFI/EYlZSTZN/MD6cnSBxLEJMgDmVTBq8LuCwRF5klSxFwt
+ BMGVy9sGAfvRstzNWSgHb4/D7Gw+PL6MC4loCU1hC5JrFw/BqLl/YGfpezn6/Yi2bIHm
+ ku9rM4aJa7qe2TddYjb0PbMegErv6Z8BdiF7H2ZMG6teV+hkdWXqEBSeHIaZ+nEQHNcW
+ R1Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=7TH3zqm15/bGSX3wSGitb74ZVvPXGU59G75w2D8W6J4=;
- b=GfyMIpqAVooVhC0+wZQuIdhzDfUOt9biEKNGEmxIpcgmSErXFI3bnzq+nxb8zQUUfw
- FBYacOKrL/Sxm1uDopXVRdy5umQRRILG0ePf1DRafIwf2nm9MfJgyxjX9A39MV2pCDXT
- NKnvx/Q4DWuqdpI0ZmD+48QOF2xmRDI4teQPwyDDNkmXgC/MhLkOC+5QC8whUb7hj2Lw
- I2FShf3BMRM/QRAZMRoREnugfekdmJ7a2e40uB0PaBJ6dlzjJqWac2BHALgvGrgburjK
- P/xfFApy1Gr29FtZBdzYfGSlTMXDiNcnsUCyhLhpEy4GfYuyHRnDgb7Dq5gCguOlpnu/
- l/Xw==
-X-Gm-Message-State: AOAM533xpWLLiU8YollPhjpA2U6GbbRWJaRnbyd3aN72zquwU1O3+FAe
- ZdYUXrZVAVluA6mMASvfRmfY6J23JQY=
-X-Google-Smtp-Source: ABdhPJx05ato9GaZZ8+/xtkYoTwYKTnY8keAUc9TMFoGVieeFLg3lYAega9fKveapWRD8m6TCnMXgA==
-X-Received: by 2002:a05:6402:1393:: with SMTP id
- b19mr31098128edv.333.1615828012295; 
- Mon, 15 Mar 2021 10:06:52 -0700 (PDT)
+ bh=RxPUAX5RyTTLF8dc4LPYIQqpXorMVXFaK+cQkYQj7/o=;
+ b=JxMXiRYTuxBkCk49n5/7GuNVRVl1hIolCbTZAERhNzxkrr1jaGmTkFOnQkr74zsWAO
+ vubFX7jEBReKr2jIXyb/MwsZqRth7SK+iJv0+Vh0JSr4Tq1rb97gq5RtXb+fDfOmYct7
+ 41uD+IuchVATjryaKxjOm8SY5SDEYoQwannB30JpFfUYx5d1eROEyGSG7nKsIU/7n/IX
+ 19mv+oCWCxGwhoXHfMoyXDuyPuGUgqp2Y0uPDDfTvvh0yYSX1cKrev+GjMMXJKaUC7RY
+ WHBxD/+7lTFDqmbqrcQKzMJYUbxDkzbY5FP7Yoj3f2crqZjJdyweKT/pn7t+7ADpZLbl
+ WP6w==
+X-Gm-Message-State: AOAM533hPyB4/Bare3yVJnN9gHcurs2imxxLFReByllm7xxUba13jn4c
+ aA0wJQJ4eTvNBdwz3a9AD/o=
+X-Google-Smtp-Source: ABdhPJxYhJoiZZowHk+a+0oPI2HLspT/jhm64e8Tifn8ZWkKTWPkSgvr8xtNCd00QS6V7SJsdkEFLQ==
+X-Received: by 2002:a17:906:b747:: with SMTP id
+ fx7mr25404678ejb.474.1615828013083; 
+ Mon, 15 Mar 2021 10:06:53 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.51
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 15 Mar 2021 10:06:52 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 52/57] Staging: rtl8723bs: fix spaces in rtw_ioctl_set.h
-Date: Mon, 15 Mar 2021 18:06:13 +0100
-Message-Id: <20210315170618.2566-53-marcocesati@gmail.com>
+Subject: [PATCH 53/57] Staging: rtl8723bs: fix spaces in rtw_mlme_ext.h
+Date: Mon, 15 Mar 2021 18:06:14 +0100
+Message-Id: <20210315170618.2566-54-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
 References: <20210315170618.2566-1-marcocesati@gmail.com>
@@ -98,37 +96,105 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit fixes the following checkpatch.pl errors:
 
-    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #21: FILE: ./include/rtw_ioctl_set.h:21:
-    +u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep * wep);
+    ERROR:POINTER_LOCATION: "foo* bar" should be "foo *bar"
+    #307: FILE: ./include/rtw_mlme_ext.h:307:
+    +	char* str;
+
+    ERROR:POINTER_LOCATION: "foo* bar" should be "foo *bar"
+    #313: FILE: ./include/rtw_mlme_ext.h:313:
+    +	char* str;
+
+    ERROR:POINTER_LOCATION: "foo *	bar" should be "foo *bar"
+    #592: FILE: ./include/rtw_mlme_ext.h:592:
+    +int WMM_param_handler(struct adapter *padapter, struct ndis_80211_var_ie *	pIE);
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #25: FILE: ./include/rtw_ioctl_set.h:25:
-    +u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid * ssid);
+    #595: FILE: ./include/rtw_mlme_ext.h:595:
+    +void HT_caps_handler(struct adapter *padapter, struct ndis_80211_var_ie * pIE);
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #596: FILE: ./include/rtw_mlme_ext.h:596:
+    +void HT_info_handler(struct adapter *padapter, struct ndis_80211_var_ie * pIE);
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #599: FILE: ./include/rtw_mlme_ext.h:599:
+    +void ERP_IE_handler(struct adapter *padapter, struct ndis_80211_var_ie * pIE);
+
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #606: FILE: ./include/rtw_mlme_ext.h:606:
+    +void update_capinfo(struct adapter * Adapter, u16 updateCap);
+
+    ERROR:POINTER_LOCATION: "foo* bar" should be "foo *bar"
+    #633: FILE: ./include/rtw_mlme_ext.h:633:
+    +void report_del_sta_event(struct adapter *padapter, unsigned char* MacAddr, unsigned short reason);
+
+    ERROR:POINTER_LOCATION: "foo* bar" should be "foo *bar"
+    #634: FILE: ./include/rtw_mlme_ext.h:634:
+    +void report_add_sta_event(struct adapter *padapter, unsigned char* MacAddr, int cam_idx);
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/rtw_ioctl_set.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../staging/rtl8723bs/include/rtw_mlme_ext.h   | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h b/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h
-index b0cdee2df638..4db23b1c2d47 100644
---- a/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h
-@@ -18,11 +18,11 @@ struct BSSIDInfo {
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+index b7bf92d1328f..e593293bb9c4 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+@@ -304,13 +304,13 @@ enum SCAN_STATE {
  
- u8 rtw_set_802_11_authentication_mode(struct adapter *pdapter, enum NDIS_802_11_AUTHENTICATION_MODE authmode);
- u8 rtw_set_802_11_bssid(struct adapter *padapter, u8 *bssid);
--u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep * wep);
-+u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep);
- u8 rtw_set_802_11_disassociate(struct adapter *padapter);
- u8 rtw_set_802_11_bssid_list_scan(struct adapter *padapter, struct ndis_802_11_ssid *pssid, int ssid_max_num);
- u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter, enum NDIS_802_11_NETWORK_INFRASTRUCTURE networktype);
--u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid * ssid);
-+u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid *ssid);
- u8 rtw_set_802_11_connect(struct adapter *padapter, u8 *bssid, struct ndis_802_11_ssid *ssid);
+ struct mlme_handler {
+ 	unsigned int   num;
+-	char* str;
++	char *str;
+ 	unsigned int (*func)(struct adapter *padapter, union recv_frame *precv_frame);
+ };
  
- u8 rtw_validate_bssid(u8 *bssid);
+ struct action_handler {
+ 	unsigned int   num;
+-	char* str;
++	char *str;
+ 	unsigned int (*func)(struct adapter *padapter, union recv_frame *precv_frame);
+ };
+ 
+@@ -589,21 +589,21 @@ int is_IBSS_empty(struct adapter *padapter);
+ 
+ unsigned char check_assoc_AP(u8 *pframe, uint len);
+ 
+-int WMM_param_handler(struct adapter *padapter, struct ndis_80211_var_ie *	pIE);
++int WMM_param_handler(struct adapter *padapter, struct ndis_80211_var_ie *pIE);
+ void WMMOnAssocRsp(struct adapter *padapter);
+ 
+-void HT_caps_handler(struct adapter *padapter, struct ndis_80211_var_ie * pIE);
+-void HT_info_handler(struct adapter *padapter, struct ndis_80211_var_ie * pIE);
++void HT_caps_handler(struct adapter *padapter, struct ndis_80211_var_ie *pIE);
++void HT_info_handler(struct adapter *padapter, struct ndis_80211_var_ie *pIE);
+ void HTOnAssocRsp(struct adapter *padapter);
+ 
+-void ERP_IE_handler(struct adapter *padapter, struct ndis_80211_var_ie * pIE);
++void ERP_IE_handler(struct adapter *padapter, struct ndis_80211_var_ie *pIE);
+ void VCS_update(struct adapter *padapter, struct sta_info *psta);
+ void update_ldpc_stbc_cap(struct sta_info *psta);
+ 
+ void update_beacon_info(struct adapter *padapter, u8 *pframe, uint len, struct sta_info *psta);
+ int rtw_check_bcn_info(struct adapter *Adapter, u8 *pframe, u32 packet_len);
+ void update_IOT_info(struct adapter *padapter);
+-void update_capinfo(struct adapter * Adapter, u16 updateCap);
++void update_capinfo(struct adapter *Adapter, u16 updateCap);
+ void update_wireless_mode(struct adapter *padapter);
+ void update_sta_basic_rate(struct sta_info *psta, u8 wireless_mode);
+ int update_sta_support_rate(struct adapter *padapter, u8 *pvar_ie, uint var_ie_len, int cam_idx);
+@@ -630,8 +630,8 @@ extern u8 rtw_search_max_mac_id(struct adapter *padapter);
+ void report_join_res(struct adapter *padapter, int res);
+ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame);
+ void report_surveydone_event(struct adapter *padapter);
+-void report_del_sta_event(struct adapter *padapter, unsigned char* MacAddr, unsigned short reason);
+-void report_add_sta_event(struct adapter *padapter, unsigned char* MacAddr, int cam_idx);
++void report_del_sta_event(struct adapter *padapter, unsigned char *MacAddr, unsigned short reason);
++void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr, int cam_idx);
+ void report_wmm_edca_update(struct adapter *padapter);
+ 
+ u8 chk_bmc_sleepq_cmd(struct adapter *padapter);
 -- 
 2.30.2
 
