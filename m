@@ -2,74 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D00BC33AFBF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 11:15:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 958E033AFC0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 11:16:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 318E5834BA;
-	Mon, 15 Mar 2021 10:15:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2057D834C7;
+	Mon, 15 Mar 2021 10:16:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yg3xTxWhqgAl; Mon, 15 Mar 2021 10:15:57 +0000 (UTC)
+	with ESMTP id 3dqWGyJUOI8F; Mon, 15 Mar 2021 10:16:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 02843833DB;
-	Mon, 15 Mar 2021 10:15:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4EE0C83466;
+	Mon, 15 Mar 2021 10:16:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 847F61BF384
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 10:15:45 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EA4A21BF384
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 10:15:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 71A15833DB
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 10:15:45 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DA0AB40172
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 10:15:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H7ZHJdeVwElP for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 10:15:44 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NtfQp2cuRpe7 for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 10:15:55 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com
- [IPv6:2a00:1450:4864:20::429])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6F0E4833CA
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:15:44 +0000 (UTC)
-Received: by mail-wr1-x429.google.com with SMTP id 61so5378980wrm.12
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 03:15:44 -0700 (PDT)
+Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com
+ [IPv6:2a00:1450:4864:20::42d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2FF6D40139
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:15:55 +0000 (UTC)
+Received: by mail-wr1-x42d.google.com with SMTP id t9so5376222wrn.11
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 03:15:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=9SJsmNFn3+XibLj1Vrrh5Youe2JM8d55xgkNdLMqbXE=;
- b=kzDVr+6SYTF/mBaBMvBXA8iJLBC94bEKer0hErOnZEEc2n6UlYjblkzOQLkjuT7vuN
- NnlzC3K8Ea7a7xdYk8X2c0wteLKJ6mZXhBgx/rXI/ef2Q4bVqUmZLJhKcOWLANmRqE89
- uxufFFXOo4OmgI7mcHpSftghaxKa3DE+PBZUVhm+e3W3En4xRDORcnb2y+1W9ankA/t5
- rUGW/aV5RlA1X9dj4MGei7ctK9tndev+fRa427E4d/lAVXuzuYFBC20UEV+HqWuVXhNh
- /a2+dO1N/pVU8mUKRLTQviYxGi90nJrvrZy8aSQdhl6QTa7XjiPXcoNVby+zSY7DuUvg
- vFUQ==
+ bh=mi7e+Xch9BQgQv2YvbhHGhbW0OiQyFlrohsnv1hS94Y=;
+ b=REWKGj6m3kb/GyXtsobkUpv2GEXwPZjX3isS2KXC9X/cECHhgUyE1gP7aFhaDXaDZi
+ MJV1axMnCO16gvugOTcSz/Li+sLWllz+QoI0nJtXc3SfP1NFm8eVdC65vZh4zfAd04nX
+ 14OSku9F744aJJUsGP3owil1If8MxaIcrQFy970/430Gm57+hFqjiy4+4xkDryq+U21i
+ nZUTocpC+wNa5PZQfQF+WiZ6XJU15EJ7rQHJFIiWk898PoAmjZrFxbFRh78IH1G7JIZt
+ R9N2DqSIszkWE85B2WKZvXNxiiTQq642i41KJRbLp3xveGE8DBJv0Q/FH6boOw6jDMW9
+ 4bcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=9SJsmNFn3+XibLj1Vrrh5Youe2JM8d55xgkNdLMqbXE=;
- b=GAHdV3mWcpAIZkfvhpM2yye3S+IRfuN4bptW6T5r9iNIs8walQ6CEbRDulDLtZKpV9
- cV24U0aES2Ly/OHZQtjZYnt+x8cIbeqZzaBR7UsLw7a2TdhEO1/zLK/qnh5FqfwY4QrJ
- 0fKg3LQ3SnIeS1yExXKB8KwhAPNzP+SyQH9F1wnlkcudJZm8xfcNd2B2hQpDWd3BDf+/
- xUe/+6AfrXW/l8U1eStOK8BGh3HmdSdkMNCcgYSZTqzkkuhUJU9qpdTB/FPkWT0wQwxj
- +166ipl137+NiuXP5OlFKgFvC48qTb2oj1a0AMsSP3pezh4IiN+UWDaqSqgXpg1TwjDs
- 1p0Q==
-X-Gm-Message-State: AOAM5336iePWEKjrWabxqaF7vlfPPV7+rXJcW731e3UNEAem+awANFMZ
- BN/Ev+F9Xib7a9yNUgrnnko=
-X-Google-Smtp-Source: ABdhPJxj2/ewpYaxSLDUgUlrY0wganhs0zEM7NeRNLhR5jAn4aHcX486yDcjeNDVZXtqq/J6Jd/ytg==
-X-Received: by 2002:a5d:6290:: with SMTP id k16mr25470904wru.177.1615803342602; 
- Mon, 15 Mar 2021 03:15:42 -0700 (PDT)
+ bh=mi7e+Xch9BQgQv2YvbhHGhbW0OiQyFlrohsnv1hS94Y=;
+ b=i+b/Kz1n/VbYULHQPp6di1ulKxGiKnxy1JTUflTBVALqP7uj7jRT9STENcKWjj5M+7
+ Hbc1+KB7KVBG8FXL13IGE5slxzsjoxnxuzWKsyi5mwrWF6RvHRybJBZh0/PE/8Kl/XdA
+ l95qvfJRY20f/oRCzzZscdThS/LIgGzt4T4VTadi234PY18o9d9wMZEciAgxz5NEdXD+
+ YLzpxJ6WcE3tJ054hbXuiHpvGPuSdqOOx7jjKudqAStgQsZ8l9rZ336uAzzdnllghngH
+ o9u6EagP4fJrFsaVRWxYeB4um8DXzSnDCD34wIq7B/z76t4zevGBxoVmmmJzbhBD0BIc
+ ctzw==
+X-Gm-Message-State: AOAM532FW/GO4apuxTbR4LIiS1JSYhScFPQr0Ilv0kIydny+aGptvXtm
+ c6707Gq1TJC9U7ubte2djChaVmqKzNU=
+X-Google-Smtp-Source: ABdhPJx/8YxmsHoRbvtqJX9wzUxsQJI7OgwOOUvXI8yRlEJ16PCNMAWt5g8TmJRgaLlc3G3WN9P0nw==
+X-Received: by 2002:a5d:6049:: with SMTP id j9mr26212150wrt.117.1615803353354; 
+ Mon, 15 Mar 2021 03:15:53 -0700 (PDT)
 Received: from agape.jhs ([5.171.72.229])
- by smtp.gmail.com with ESMTPSA id e1sm18996902wrd.44.2021.03.15.03.15.41
+ by smtp.gmail.com with ESMTPSA id c11sm18621568wrm.67.2021.03.15.03.15.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 03:15:42 -0700 (PDT)
-Date: Mon, 15 Mar 2021 11:15:39 +0100
+ Mon, 15 Mar 2021 03:15:53 -0700 (PDT)
+Date: Mon, 15 Mar 2021 11:15:50 +0100
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 07/15] staging: rtl8723bs: remove unused code blocks
- conditioned by never set CONFIG_BACKGROUND_NOISE_MONITOR
-Message-ID: <2872c6f848b8b7aa0dc2d0399123d798f4b18820.1615801722.git.fabioaiuto83@gmail.com>
+Subject: [PATCH 08/15] staging: rtl8723bs: remove unused code blocks
+ conditioned by never set CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+Message-ID: <e21c0b175ba3d8e3310a1f7e94148c10dac7a63c.1615801722.git.fabioaiuto83@gmail.com>
 References: <cover.1615801721.git.fabioaiuto83@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -94,7 +96,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 remove conditional code blocks checked by unused
-CONFIG_BACKGROUND_NOISE_MONITOR
+CONFIG_SKIP_SIGNAL_SCALE_MAPPING
 
 cleaning required in TODO file:
 
@@ -102,207 +104,95 @@ find and remove code blocks guarded by never set CONFIG_FOO defines
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 12 -----
- drivers/staging/rtl8723bs/hal/hal_com.c       | 35 -------------
- drivers/staging/rtl8723bs/include/hal_com.h   | 10 ----
- drivers/staging/rtl8723bs/include/hal_data.h  |  5 --
- .../staging/rtl8723bs/os_dep/ioctl_linux.c    | 50 +------------------
- 5 files changed, 1 insertion(+), 111 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c  |  9 --------
+ drivers/staging/rtl8723bs/include/rtw_recv.h  |  5 -----
+ .../staging/rtl8723bs/os_dep/ioctl_linux.c    | 21 -------------------
+ 3 files changed, 35 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 5d0611c5119b..e60a2ed32de5 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -4211,18 +4211,6 @@ void site_survey(struct adapter *padapter)
- 		channel_scan_time_ms = pmlmeext->chan_scan_time;
- 
- 		set_survey_timer(pmlmeext, channel_scan_time_ms);
--#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--		{
--			struct noise_info info;
--
--			info.bPauseDIG = false;
--			info.IGIValue = 0;
--			info.max_time = channel_scan_time_ms/2;/* ms */
--			info.chan = survey_channel;
--			rtw_hal_set_odm_var(padapter, HAL_ODM_NOISE_MONITOR, &info, false);
--		}
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+index de63e4a2932e..5f2f17b49173 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+@@ -226,19 +226,10 @@ static void odm_RxPhyStatus92CSeries_Parsing(
+ 	/* UI BSS List signal strength(in percentage), make it good looking, from 0~100. */
+ 	/* It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp(). */
+ 	if (isCCKrate) {
+-#ifdef CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+-		pPhyInfo->SignalStrength = (u8)PWDB_ALL;
+-#else
+ 		pPhyInfo->signal_strength = (u8)(odm_SignalScaleMapping(pDM_Odm, PWDB_ALL));/* PWDB_ALL; */
 -#endif
--
  	} else {
- 
- 		/* 	channel number is 0 or this channel is not valid. */
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com.c b/drivers/staging/rtl8723bs/hal/hal_com.c
-index 7c65ec60a982..bf07251a07d7 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com.c
-@@ -1262,20 +1262,6 @@ void GetHalODMVar(
- )
- {
- 	switch (eVariable) {
--#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--	case HAL_ODM_NOISE_MONITOR:
--		{
--			struct hal_com_data	*pHalData = GET_HAL_DATA(Adapter);
--			u8 chan = *(u8 *)pValue1;
--			*(s16 *)pValue2 = pHalData->noise[chan];
--			#ifdef DBG_NOISE_MONITOR
--			DBG_8192C("### Noise monitor chan(%d)-noise:%d (dBm) ###\n",
--				chan, pHalData->noise[chan]);
--			#endif
--
--		}
--		break;
--#endif/* ifdef CONFIG_BACKGROUND_NOISE_MONITOR */
- 	default:
- 		break;
+ 		if (rf_rx_num != 0) {
+-#ifdef CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+-			total_rssi /= rf_rx_num;
+-			pPhyInfo->signal_strength = (u8)total_rssi;
+-#else
+ 			pPhyInfo->signal_strength = (u8)(odm_SignalScaleMapping(pDM_Odm, total_rssi /= rf_rx_num));
+-#endif
+ 		}
  	}
-@@ -1313,27 +1299,6 @@ void SetHalODMVar(
- 	case HAL_ODM_WIFI_DISPLAY_STATE:
- 			ODM_CmnInfoUpdate(podmpriv, ODM_CMNINFO_WIFI_DISPLAY, bSet);
- 		break;
--	#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--	case HAL_ODM_NOISE_MONITOR:
--		{
--			struct noise_info *pinfo = pValue1;
--
--			#ifdef DBG_NOISE_MONITOR
--			DBG_8192C("### Noise monitor chan(%d)-bPauseDIG:%d, IGIValue:0x%02x, max_time:%d (ms) ###\n",
--				pinfo->chan, pinfo->bPauseDIG, pinfo->IGIValue, pinfo->max_time);
--			#endif
--
--			pHalData->noise[pinfo->chan] = ODM_InbandNoise_Monitor(podmpriv, pinfo->bPauseDIG, pinfo->IGIValue, pinfo->max_time);
--			DBG_871X("chan_%d, noise = %d (dBm)\n", pinfo->chan, pHalData->noise[pinfo->chan]);
--			#ifdef DBG_NOISE_MONITOR
--			DBG_871X("noise_a = %d, noise_b = %d  noise_all:%d\n",
--				podmpriv->noise_level.noise[ODM_RF_PATH_A],
--				podmpriv->noise_level.noise[ODM_RF_PATH_B],
--				podmpriv->noise_level.noise_all);
--			#endif
--		}
--		break;
--	#endif/* ifdef CONFIG_BACKGROUND_NOISE_MONITOR */
  
- 	default:
- 		break;
-diff --git a/drivers/staging/rtl8723bs/include/hal_com.h b/drivers/staging/rtl8723bs/include/hal_com.h
-index c4b83eb16326..8669155dcddc 100644
---- a/drivers/staging/rtl8723bs/include/hal_com.h
-+++ b/drivers/staging/rtl8723bs/include/hal_com.h
-@@ -286,14 +286,4 @@ void SetHalODMVar(
- 	enum HAL_ODM_VARIABLE		eVariable,
- 	void *				pValue1,
- 	bool					bSet);
--
--#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--struct noise_info {
--	u8 bPauseDIG;
--	u8 IGIValue;
--	u32 max_time;/* ms */
--	u8 chan;
--};
--#endif
--
- #endif /* __HAL_COMMON_H__ */
-diff --git a/drivers/staging/rtl8723bs/include/hal_data.h b/drivers/staging/rtl8723bs/include/hal_data.h
-index 8f5de747ae4e..8e75a334c60b 100644
---- a/drivers/staging/rtl8723bs/include/hal_data.h
-+++ b/drivers/staging/rtl8723bs/include/hal_data.h
-@@ -439,11 +439,6 @@ struct hal_com_data {
- 	/*  Interrupt related register information. */
- 	u32 		SysIntrStatus;
- 	u32 		SysIntrMask;
--
--#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--	s16 noise[ODM_MAX_CHANNEL_NUM];
--#endif
--
- };
+diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
+index 484e9d62ef92..0a56c3a66ee8 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_recv.h
++++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
+@@ -512,14 +512,9 @@ static inline s32 translate_percentage_to_dbm(u32 SignalStrengthIndex)
+ {
+ 	s32	SignalPower; /*  in dBm. */
  
- #define GET_HAL_DATA(__padapter)	((struct hal_com_data *)((__padapter)->HalData))
+-#ifdef CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+-	/*  Translate to dBm (x =y-100) */
+-	SignalPower = SignalStrengthIndex - 100;
+-#else
+ 	/*  Translate to dBm (x = 0.5y-95). */
+ 	SignalPower = (s32)((SignalStrengthIndex + 1) >> 1);
+ 	SignalPower -= 95;
+-#endif
+ 
+ 	return SignalPower;
+ }
 diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index a52d04582aa1..b6ae7dfc51fe 100644
+index b6ae7dfc51fe..d0e77465ad9a 100644
 --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -313,12 +313,7 @@ static char *translate_scan(struct adapter *padapter,
- 	/* Add quality statistics */
- 	iwe.cmd = IWEVQUAL;
- 	iwe.u.qual.updated = IW_QUAL_QUAL_UPDATED | IW_QUAL_LEVEL_UPDATED
--	#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--		| IW_QUAL_NOISE_UPDATED
--	#else
--		| IW_QUAL_NOISE_INVALID
--	#endif
--	;
-+		| IW_QUAL_NOISE_INVALID;
+@@ -325,17 +325,7 @@ static char *translate_scan(struct adapter *padapter,
+ 	}
  
- 	if (check_fwstate(pmlmepriv, _FW_LINKED) == true &&
- 		is_same_network(&pmlmepriv->cur_network.network, &pnetwork->network, 0)) {
-@@ -344,15 +339,7 @@ static char *translate_scan(struct adapter *padapter,
+ 
+-	#ifdef CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+-	{
+-		/* Do signal scale mapping when using percentage as the unit of signal strength, since the scale mapping is skipped in odm */
+-
+-		struct hal_com_data *pHal = GET_HAL_DATA(padapter);
+-
+-		iwe.u.qual.level = (u8)odm_SignalScaleMapping(&pHal->odmpriv, ss);
+-	}
+-	#else
+ 	iwe.u.qual.level = (u8)ss;/*  */
+-	#endif
  
  	iwe.u.qual.qual = (u8)sq;   /*  signal quality */
  
--	#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--	{
--		s16 tmp_noise = 0;
--		rtw_hal_get_odm_var(padapter, HAL_ODM_NOISE_MONITOR, &(pnetwork->network.Configuration.DSConfig), &(tmp_noise));
--		iwe.u.qual.noise = tmp_noise;
--	}
--	#else
- 	iwe.u.qual.noise = 0; /*  noise level */
--	#endif
- 
- 	/* DBG_871X("iqual =%d, ilevel =%d, inoise =%d, iupdated =%d\n", iwe.u.qual.qual, iwe.u.qual.level , iwe.u.qual.noise, iwe.u.qual.updated); */
- 
-@@ -3076,23 +3063,6 @@ static int rtw_dbg_port(struct net_device *dev,
- 						}
- 					}
- 					break;
--#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--				case 0x1e:
--					{
--						struct hal_com_data	*pHalData = GET_HAL_DATA(padapter);
--						PDM_ODM_T pDM_Odm = &pHalData->odmpriv;
--						u8 chan = rtw_get_oper_ch(padapter);
--						DBG_871X("===========================================\n");
--						ODM_InbandNoise_Monitor(pDM_Odm, true, 0x1e, 100);
--						DBG_871X("channel(%d), noise_a = %d, noise_b = %d , noise_all:%d\n",
--							chan, pDM_Odm->noise_level.noise[ODM_RF_PATH_A],
--							pDM_Odm->noise_level.noise[ODM_RF_PATH_B],
--							pDM_Odm->noise_level.noise_all);
--						DBG_871X("===========================================\n");
+@@ -4691,18 +4681,7 @@ static struct iw_statistics *rtw_get_wireless_stats(struct net_device *dev)
+ 		piwstats->qual.noise = 0;
+ 		/* DBG_871X("No link  level:%d, qual:%d, noise:%d\n", tmp_level, tmp_qual, tmp_noise); */
+ 	} else {
+-		#ifdef CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+-		{
+-			/* Do signal scale mapping when using percentage as the unit of signal strength, since the scale mapping is skipped in odm */
 -
--					}
--					break;
--#endif
- 				case 0x23:
- 					{
- 						DBG_871X("turn %s the bNotifyChannelChange Variable\n", (extra_arg == 1)?"on":"off");
-@@ -4734,24 +4704,6 @@ static struct iw_statistics *rtw_get_wireless_stats(struct net_device *dev)
- 		#endif
- 
- 		tmp_qual = padapter->recvpriv.signal_qual;
--#ifdef CONFIG_BACKGROUND_NOISE_MONITOR
--		if (rtw_linked_check(padapter)) {
--			struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
--			struct noise_info info;
--			info.bPauseDIG = true;
--			info.IGIValue = 0x1e;
--			info.max_time = 100;/* ms */
--			info.chan = pmlmeext->cur_channel ;/* rtw_get_oper_ch(padapter); */
--			rtw_ps_deny(padapter, PS_DENY_IOCTL);
--			LeaveAllPowerSaveModeDirect(padapter);
+-			struct hal_com_data *pHal = GET_HAL_DATA(padapter);
 -
--			rtw_hal_set_odm_var(padapter, HAL_ODM_NOISE_MONITOR, &info, false);
--			/* ODM_InbandNoise_Monitor(podmpriv, true, 0x20, 100); */
--			rtw_ps_deny_cancel(padapter, PS_DENY_IOCTL);
--			rtw_hal_get_odm_var(padapter, HAL_ODM_NOISE_MONITOR, &(info.chan), &(padapter->recvpriv.noise));
--			DBG_871X("chan:%d, noise_level:%d\n", info.chan, padapter->recvpriv.noise);
+-			tmp_level = (u8)odm_SignalScaleMapping(&pHal->odmpriv, padapter->recvpriv.signal_strength);
 -		}
--#endif
+-		#else
+ 		tmp_level = padapter->recvpriv.signal_strength;
+-		#endif
+-
+ 		tmp_qual = padapter->recvpriv.signal_qual;
  		tmp_noise = padapter->recvpriv.noise;
  		DBG_871X("level:%d, qual:%d, noise:%d, rssi (%d)\n", tmp_level, tmp_qual, tmp_noise, padapter->recvpriv.rssi);
- 
 -- 
 2.20.1
 
