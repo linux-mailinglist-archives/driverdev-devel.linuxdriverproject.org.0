@@ -2,77 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A437633C3E1
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:15:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C99A33C3E4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:15:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3DBCE41503;
-	Mon, 15 Mar 2021 17:15:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B5724430E8;
+	Mon, 15 Mar 2021 17:15:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0KOHTx7hp5tK; Mon, 15 Mar 2021 17:15:30 +0000 (UTC)
+	with ESMTP id xYV76TWIlYsV; Mon, 15 Mar 2021 17:15:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9129940196;
-	Mon, 15 Mar 2021 17:15:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 219F040170;
+	Mon, 15 Mar 2021 17:15:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C4AD81BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BCBFB1BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C199E430B9
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B659183486
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m1tApmsXOCTl for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:53 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dwkT29w6y8MH for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:54 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
 Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com
  [IPv6:2a00:1450:4864:20::52d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 20A5F41503
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F388783478
  for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:53 +0000 (UTC)
-Received: by mail-ed1-x52d.google.com with SMTP id u4so18201450edv.9
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:52 -0700 (PDT)
+Received: by mail-ed1-x52d.google.com with SMTP id z1so18219773edb.8
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=x1G/KLoyEHocT2wia5KvoRsZiget39qALBdujqdsa30=;
- b=GQbJITYVqH/U2fKty4N9epHbANmNHpalt7PadLcaUlyPk4JHoGhvG9JMpQkr97M9fm
- gCcdvO7V60yZNudgimfBQ5Xn3qMqpdn3apQxkoPzGjNaLd8eiCScsSQJxHUERtwKPLHk
- 9C2IPqL7beGsREQSwX7W8b45HdgP2StrYX3OzeznjRM28VF471SBHB4HEeov4pG3P7+J
- mkdUHr7K3sFYFaA+SN9PDaJ6DldEWxTrh5Ia22rKhCoai0J4YAiYNcy3MwQi4jiFld2B
- 74TARgdpf1dK/QUcyYW1cl/uvUyBDzbBd3tDl9nITnISjLSDh2dQ4pKIJPQw622lcM6Y
- swAQ==
+ bh=7TH3zqm15/bGSX3wSGitb74ZVvPXGU59G75w2D8W6J4=;
+ b=pLqayzBXHmMolAPKZvrGD8ngfof5cuEwXarqabJ4f5bZ2Vrn1Y+6kjJ6qAo+VEIYzt
+ lPwNpQUQcET4DhdAkwZkT0feSyJKkQinNhLt1VpFBT/4Ae3f1kbWgFN7q/4+J857THFU
+ 7Vrhfr2g3rmgEk5zqwpvSd7JGsv6mKxPgvlMn0icqDUab9YsIygZGPDaQT+ZlcntAvm/
+ OK10NVX8CBRg+bOi9m6EtWo0qLZCsw0Phh2HJll/A6MvnmrKYiX+edterZ/wOrtNyGj6
+ sAgcrXRqnNlY+/gI8JGOa2Sf6ehn1hfrRdNiB9f7pWbkMb80Q7ernUQIegsPYUTzXjaR
+ 7g4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=x1G/KLoyEHocT2wia5KvoRsZiget39qALBdujqdsa30=;
- b=sDl6nTeB5GSt7/yv2cSHrtZpH2RCWippKKEzLdwUOS7KPR5QWDJ1UMYjoqJET93Dhi
- p0DvS4MLGKGnFNWoaAWmfX/IRNCOW8ofWtYHGfjsapSqsynwpcZvGPYK0UREX86y2R88
- h7dsjYfEdgGBAlYlz1Adg5JuqaqvPOUiOHW6WBI458TKRzw3FE+jFto2KF1SOqd88Ln2
- 1hhtfpYC/HAFNqJzdL1Kj2UdjMAzcMnBhcr+jeSowM+9h2wPyDKLTpXqG14wawj1W34r
- yxklfXARKVWH0XQmojiWywrLiNZtP+SpJKtfKmQngGnBgKNqcGfH/BfD9+pnTpWoC+hd
- nCQQ==
-X-Gm-Message-State: AOAM531zoh0mIjQaiiJ3UK6j6NzeOh0DWH/kds1xaIFw9aYvHwixmQF8
- h76YX9dI5R0J5LjoOm+syPW157OLIto=
-X-Google-Smtp-Source: ABdhPJyT+LD1F8W/9S3eKctbp/n9ydnfhIWJz0b+94SiPUuY2yvFfqoz8Kry5+mUWuqzixT2SRkBfg==
-X-Received: by 2002:a05:6402:270e:: with SMTP id
- y14mr31161453edd.283.1615828011394; 
- Mon, 15 Mar 2021 10:06:51 -0700 (PDT)
+ bh=7TH3zqm15/bGSX3wSGitb74ZVvPXGU59G75w2D8W6J4=;
+ b=GfyMIpqAVooVhC0+wZQuIdhzDfUOt9biEKNGEmxIpcgmSErXFI3bnzq+nxb8zQUUfw
+ FBYacOKrL/Sxm1uDopXVRdy5umQRRILG0ePf1DRafIwf2nm9MfJgyxjX9A39MV2pCDXT
+ NKnvx/Q4DWuqdpI0ZmD+48QOF2xmRDI4teQPwyDDNkmXgC/MhLkOC+5QC8whUb7hj2Lw
+ I2FShf3BMRM/QRAZMRoREnugfekdmJ7a2e40uB0PaBJ6dlzjJqWac2BHALgvGrgburjK
+ P/xfFApy1Gr29FtZBdzYfGSlTMXDiNcnsUCyhLhpEy4GfYuyHRnDgb7Dq5gCguOlpnu/
+ l/Xw==
+X-Gm-Message-State: AOAM533xpWLLiU8YollPhjpA2U6GbbRWJaRnbyd3aN72zquwU1O3+FAe
+ ZdYUXrZVAVluA6mMASvfRmfY6J23JQY=
+X-Google-Smtp-Source: ABdhPJx05ato9GaZZ8+/xtkYoTwYKTnY8keAUc9TMFoGVieeFLg3lYAega9fKveapWRD8m6TCnMXgA==
+X-Received: by 2002:a05:6402:1393:: with SMTP id
+ b19mr31098128edv.333.1615828012295; 
+ Mon, 15 Mar 2021 10:06:52 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.50
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:51 -0700 (PDT)
+ Mon, 15 Mar 2021 10:06:52 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 51/57] Staging: rtl8723bs: fix spaces in rtw_cmd.h
-Date: Mon, 15 Mar 2021 18:06:12 +0100
-Message-Id: <20210315170618.2566-52-marcocesati@gmail.com>
+Subject: [PATCH 52/57] Staging: rtl8723bs: fix spaces in rtw_ioctl_set.h
+Date: Mon, 15 Mar 2021 18:06:13 +0100
+Message-Id: <20210315170618.2566-53-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
 References: <20210315170618.2566-1-marcocesati@gmail.com>
@@ -96,41 +98,37 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit fixes the following checkpatch.pl errors:
 
-    ERROR:POINTER_LOCATION: "(foo*)" should be "(foo *)"
-    #789: FILE: ./include/rtw_cmd.h:789:
-    +	void (*func)(void*);
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #21: FILE: ./include/rtw_ioctl_set.h:21:
+    +u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep * wep);
 
-    ERROR:POINTER_LOCATION: "foo* bar" should be "foo *bar"
-    #827: FILE: ./include/rtw_cmd.h:827:
-    +extern u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network* pnetwork);
+    ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
+    #25: FILE: ./include/rtw_ioctl_set.h:25:
+    +u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid * ssid);
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/rtw_cmd.h | 4 ++--
+ drivers/staging/rtl8723bs/include/rtw_ioctl_set.h | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_cmd.h b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-index 9e42731f8fa3..b15a5abca17c 100644
---- a/drivers/staging/rtl8723bs/include/rtw_cmd.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-@@ -786,7 +786,7 @@ struct TDLSoption_param {
+diff --git a/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h b/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h
+index b0cdee2df638..4db23b1c2d47 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h
++++ b/drivers/staging/rtl8723bs/include/rtw_ioctl_set.h
+@@ -18,11 +18,11 @@ struct BSSIDInfo {
  
- /*H2C Handler index: 64 */
- struct RunInThread_param {
--	void (*func)(void*);
-+	void (*func)(void *);
- 	void *context;
- };
+ u8 rtw_set_802_11_authentication_mode(struct adapter *pdapter, enum NDIS_802_11_AUTHENTICATION_MODE authmode);
+ u8 rtw_set_802_11_bssid(struct adapter *padapter, u8 *bssid);
+-u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep * wep);
++u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep);
+ u8 rtw_set_802_11_disassociate(struct adapter *padapter);
+ u8 rtw_set_802_11_bssid_list_scan(struct adapter *padapter, struct ndis_802_11_ssid *pssid, int ssid_max_num);
+ u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter, enum NDIS_802_11_NETWORK_INFRASTRUCTURE networktype);
+-u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid * ssid);
++u8 rtw_set_802_11_ssid(struct adapter *padapter, struct ndis_802_11_ssid *ssid);
+ u8 rtw_set_802_11_connect(struct adapter *padapter, u8 *bssid, struct ndis_802_11_ssid *ssid);
  
-@@ -824,7 +824,7 @@ struct sta_info;
- extern u8 rtw_setstakey_cmd(struct adapter  *padapter, struct sta_info *sta, u8 unicast_key, bool enqueue);
- extern u8 rtw_clearstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 enqueue);
- 
--extern u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network* pnetwork);
-+extern u8 rtw_joinbss_cmd(struct adapter *padapter, struct wlan_network *pnetwork);
- u8 rtw_disassoc_cmd(struct adapter *padapter, u32 deauth_timeout_ms, bool enqueue);
- extern u8 rtw_setopmode_cmd(struct adapter  *padapter, enum NDIS_802_11_NETWORK_INFRASTRUCTURE networktype, bool enqueue);
- extern u8 rtw_setdatarate_cmd(struct adapter  *padapter, u8 *rateset);
+ u8 rtw_validate_bssid(u8 *bssid);
 -- 
 2.30.2
 
