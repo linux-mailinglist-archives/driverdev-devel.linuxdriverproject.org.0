@@ -1,80 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38E5033C3DC
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:15:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 020E133C3DE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Mar 2021 18:15:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B381A430F1;
-	Mon, 15 Mar 2021 17:15:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 82A66834DB;
+	Mon, 15 Mar 2021 17:15:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id epsETJeAo5qN; Mon, 15 Mar 2021 17:15:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id H5Ll9P02fnUa; Mon, 15 Mar 2021 17:15:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 16F3C40170;
-	Mon, 15 Mar 2021 17:15:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BD5A2834D3;
+	Mon, 15 Mar 2021 17:15:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2AEA51BF33C
- for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 01EF91BF33C
+ for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 279AB83486
+ by smtp3.osuosl.org (Postfix) with ESMTP id F10D56F557
  for <devel@linuxdriverproject.org>; Mon, 15 Mar 2021 17:06:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tgjl5XlSpdOm for <devel@linuxdriverproject.org>;
- Mon, 15 Mar 2021 17:06:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WCQtpbIaltW9 for <devel@linuxdriverproject.org>;
+ Mon, 15 Mar 2021 17:06:51 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com
- [IPv6:2a00:1450:4864:20::62c])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7846683478
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:50 +0000 (UTC)
-Received: by mail-ej1-x62c.google.com with SMTP id si25so11808257ejb.1
- for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:50 -0700 (PDT)
+Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
+ [IPv6:2a00:1450:4864:20::635])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 44BA06F504
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 17:06:51 +0000 (UTC)
+Received: by mail-ej1-x635.google.com with SMTP id mm21so67441391ejb.12
+ for <devel@driverdev.osuosl.org>; Mon, 15 Mar 2021 10:06:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=eVpiosVQaogqfXs0vbpMj+II5PNo1rnfT0Vu/RkGXmo=;
- b=MrjLmL8BtR1dV90FBXxgQfXOI+usFVgeIjEzh50AtemWNsLPY7KhyFFPI1DxXJYSct
- Mh4a0aMpPam2kF77yiajfIOS5Uw2NdfilI8tyzoAy/oRmPfasBK4u1zdsXrn2AJ3+c6P
- CQ576jvEGcqdf+CWw6iH0LYZnyODE0Ok8KFgNzploFZMeB2MrCtytR4KEwMVFaOEhqvi
- n5QBzgIF0Y8nZKjhec82Ehdwrf6Guy5kREIII/U3+aUdz4guFdNjdAOGlpY0zqYIVufU
- 1VhkTpD+UfoPiC/woDp3xsPiWLQqclOxkiiH+lF6kvDoPVsLMPq63typCK6hwxEt5CD3
- aFvA==
+ bh=9I/IKq+QWdt1iVSmn6ULlIKEAkCCPCFrN4a2p2v4cBc=;
+ b=M8gnsZjPcCCORwjl4jnV+9XF9fjsz0Wc3ch0x7ewW8pDgEjbckl9PYpt+75EMcKeAp
+ 8z+L7eAU09QCAFx14Rnus70ekJm9N5cxoLnOKPEhEkMuy5NQJPLLbPlRJjakUXtMweob
+ /u/tXCDgSMhpGcPE4Ax9PCzy47HdmCIL5ARXWj+/kHVlsTKaBtt+3K9UqKgmLlORQe96
+ vST7Uc2zvZh9MJfKoz2+qqUzWmlQeEFGSxhOxgVCZnS+Vad1mRwtc80m34YZKguBwwP1
+ KSWKh6Nbl6XoxFImlom4gkj3dEOYtF4iFIhsIS4+2df0wrinEVCfgP0fqIF++MsATusL
+ X87g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=eVpiosVQaogqfXs0vbpMj+II5PNo1rnfT0Vu/RkGXmo=;
- b=IuN1Ep9mlIbVfHoKvWUvA8Z2SJY3EY1TC+ON4/jiLa0WUNNTyo8gnUaXKnSLOYeHha
- Xs4iLwY5J76JQLqdeEyWisT8QbwoF5ccxFeYMR4Uoh/KcMHeDopvxW0fRbOf4Tl/AQA2
- xridgcj0NJ3KLtdgs2XI9K1cO9oKZKU5lKfrvxY+XYpMNXOBcEUa1tU/cn8aN9Pgnb3M
- e0OBR5Fln7cyCitv/TygCzm+M7cx9MHmSlJIj498Gt1hezG6i0LAHSffHJit4ldj6es5
- V2MS5NoO7iAMRdMbFP0t2iOAZPux0FVRCXxssdka4li/lv00G3jqvlnhPA3tQ24Br/Zu
- 908w==
-X-Gm-Message-State: AOAM53199u7sMQOOIv8U3MzmsnCY3MCYc00LA03OJpTSa8q6+dPwdwfL
- ewHtm/X5j5sb6P9NPcJAX/A=
-X-Google-Smtp-Source: ABdhPJzGJiz020y4mi072Zj9q2q6AXY5JwobVXuRHxBpVzLGhX7DvOn0laoQMILx4M6UIbWHx78+ng==
-X-Received: by 2002:a17:906:1408:: with SMTP id
- p8mr24476685ejc.89.1615828008789; 
- Mon, 15 Mar 2021 10:06:48 -0700 (PDT)
+ bh=9I/IKq+QWdt1iVSmn6ULlIKEAkCCPCFrN4a2p2v4cBc=;
+ b=ofgNidhJlquNRMvv8pCHC8E8qtsQhfA6ylWKk3m/q9XKU2HXmGmd1G7o80BtwilTaw
+ jC6i6yAEygzufBbF1zphh1+NxqQtHPJtQj+I48SixzenLty+rPDZ2iCRqI6vZW401WMK
+ 6Qgcy+WHiAgsOhNI1rMpYWeNc1Lfzzei/X/hMmnBW6QUhauBPujOU55nbvZVwITDDWfN
+ 6GgaWX/E8Gn//KRyXA8kVo5bqbiCGym4IKXVgcBF1aiI1vG99m31BPEGTfsbR+BIjM8u
+ +5fd9zNC0T0wqCQWm6nOK4IIPJByCwpTkTqfZdTlL8MOC2xF/V3bg90EZZpuYHMeg96/
+ yvqA==
+X-Gm-Message-State: AOAM530estTR42y4GaLEO0i+6sXE0zauDYW25cYANiT3e6FOATHkAEyK
+ P4O8T5zAwCNasFKvp/6WeKaCWDEooBs=
+X-Google-Smtp-Source: ABdhPJynNZaVB7uRVE56qZUn/ROThHcnW7Aq/i97FwdcAt4Km3mAZjfrm+PV37o8+H7liLguofEB4w==
+X-Received: by 2002:a17:906:eb89:: with SMTP id
+ mh9mr25318228ejb.122.1615828009590; 
+ Mon, 15 Mar 2021 10:06:49 -0700 (PDT)
 Received: from gimli.cesven (93-48-145-141.ip257.fastwebnet.it.
  [93.48.145.141])
- by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.47
+ by smtp.gmail.com with ESMTPSA id gq25sm7879608ejb.85.2021.03.15.10.06.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 10:06:48 -0700 (PDT)
+ Mon, 15 Mar 2021 10:06:49 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 48/57] Staging: rtl8723bs: fix spaces in osdep_service_linux.h
-Date: Mon, 15 Mar 2021 18:06:09 +0100
-Message-Id: <20210315170618.2566-49-marcocesati@gmail.com>
+Subject: [PATCH 49/57] Staging: rtl8723bs: fix spaces in recv_osdep.h
+Date: Mon, 15 Mar 2021 18:06:10 +0100
+Message-Id: <20210315170618.2566-50-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
 References: <20210315170618.2566-1-marcocesati@gmail.com>
@@ -99,26 +99,27 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This commit fixes the following checkpatch.pl error:
 
     ERROR:POINTER_LOCATION: "foo * bar" should be "foo *bar"
-    #123: FILE: ./include/osdep_service_linux.h:123:
-    +extern struct net_device * rtw_alloc_etherdev(int sizeof_priv);
+    #17: FILE: ./include/recv_osdep.h:17:
+    +extern void rtw_recv_returnpacket(struct net_device * cnxt, struct sk_buff *preturnedpkt);
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/osdep_service_linux.h | 2 +-
+ drivers/staging/rtl8723bs/include/recv_osdep.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/osdep_service_linux.h b/drivers/staging/rtl8723bs/include/osdep_service_linux.h
-index 6454625d6bcf..3492ec1efd1e 100644
---- a/drivers/staging/rtl8723bs/include/osdep_service_linux.h
-+++ b/drivers/staging/rtl8723bs/include/osdep_service_linux.h
-@@ -120,6 +120,6 @@ static inline struct adapter *rtw_netdev_priv(struct net_device *netdev)
- }
+diff --git a/drivers/staging/rtl8723bs/include/recv_osdep.h b/drivers/staging/rtl8723bs/include/recv_osdep.h
+index 82830ffc530a..83330ea98fbf 100644
+--- a/drivers/staging/rtl8723bs/include/recv_osdep.h
++++ b/drivers/staging/rtl8723bs/include/recv_osdep.h
+@@ -14,7 +14,7 @@ extern void _rtw_free_recv_priv(struct recv_priv *precvpriv);
  
- struct net_device *rtw_alloc_etherdev_with_old_priv(int sizeof_priv, void *old_priv);
--extern struct net_device * rtw_alloc_etherdev(int sizeof_priv);
-+extern struct net_device *rtw_alloc_etherdev(int sizeof_priv);
+ extern s32  rtw_recv_entry(union recv_frame *precv_frame);
+ extern int rtw_recv_indicatepkt(struct adapter *adapter, union recv_frame *precv_frame);
+-extern void rtw_recv_returnpacket(struct net_device * cnxt, struct sk_buff *preturnedpkt);
++extern void rtw_recv_returnpacket(struct net_device *cnxt, struct sk_buff *preturnedpkt);
  
- #endif
+ extern void rtw_handle_tkip_mic_err(struct adapter *padapter, u8 bgroup);
+ 
 -- 
 2.30.2
 
