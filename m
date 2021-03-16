@@ -1,75 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 830DB33D771
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 16:30:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEE7C33D772
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 16:30:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CAE934EC84;
-	Tue, 16 Mar 2021 15:30:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 690EE83DCB;
+	Tue, 16 Mar 2021 15:30:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P8uIbWmJDczj; Tue, 16 Mar 2021 15:30:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hWI0dTwr3DDF; Tue, 16 Mar 2021 15:30:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 839914EC5A;
-	Tue, 16 Mar 2021 15:30:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 51EDD838D3;
+	Tue, 16 Mar 2021 15:30:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1E2BE1BF301
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:30:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AEE1B1BF301
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:30:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0BF134EC5A
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:30:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9B3A64ED0E
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:30:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DzfFVrExdOov for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 15:30:24 +0000 (UTC)
+ with ESMTP id 0Y0y6sQc5VZc for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 15:30:37 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com
- [IPv6:2a00:1450:4864:20::432])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 293D34EBBD
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 15:30:24 +0000 (UTC)
-Received: by mail-wr1-x432.google.com with SMTP id e9so7655612wrw.10
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:30:24 -0700 (PDT)
+Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
+ [IPv6:2a00:1450:4864:20::32b])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A9B934ED97
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 15:30:37 +0000 (UTC)
+Received: by mail-wm1-x32b.google.com with SMTP id
+ c76-20020a1c9a4f0000b029010c94499aedso1723834wme.0
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:30:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=8Dp/YU7BjP7tuvO83iJhuaJJVbiqvNcU3OcxU2f06ms=;
- b=rKVhkwohaMSU3XoibbktudpzsJydYpm1Y/8dn31BNjp94HXr0OCQHKArMfYerOSP2p
- UftA4wD52BcLy6KesQ69JQYu+JtDT0Nt0Nr97ruTS2WgfC8TyqzHkZb7qBwjdzJV5HmT
- 5pby4HS0Pdb8T94WyFvycqHXrsnx7XDAppg1PE+RVaRQLRTe1q8x3LCC8CaSFzGm7WYY
- BIMnvyKYB1vwaEfetyV8Hjae1GheKL1gKg6BtbjWENa1FTMoUzrpPH5kErK5hAqj56WX
- xYgG6t10X9WxjzH5KBb7FdKyy+rbR9cllcwe1Z21C3LQR9TP7IhYu6Fe7YhtEeSSXUDZ
- xmEg==
+ bh=dS3wtgYoSrTn+JxDUWBgQjpo1/B60ctev1wnKqso3Hc=;
+ b=iuRnhZNzffLP5xnvM1MJy0HH0rYAYdeTj/yoTJC0aE5hk6HXGeEFcVhI2c2g/ZghLU
+ Mxh21Ki8NMMO3yyqjI3BLBfp/hJNQ+31lst2+v1EaQ5yo+yPtn5ctqnPLnj+XOBdrW+y
+ g6ZjsTVEbxdLhqiy7zWB4fD3UsgJsVRuQFosfKmiGMMwSZiHjX8SOT4tqfmqT6PdxbLG
+ mMmgxYyQ3rrgegy2VCzyk44Tky+Xf2k/eq7VeQypGW1vA8Y6RbMNQ0kgi/rtCLMAebin
+ I8uSKYxD0CIiMEhVizpzLiTqivUaBbR0qBu4gjgtV/2dwLlLVBuvNovRyc6k3cukwoVF
+ xaNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8Dp/YU7BjP7tuvO83iJhuaJJVbiqvNcU3OcxU2f06ms=;
- b=INfx7N9DTAOKWnZEixciIO0Shgs1OshKQDVnaPXuCuL/SuX78p3Igj6wuhKgj6ERIK
- /i90ZQd5N4jN5F7vUeJP9XDDPAs2eOTZpkQpZe9byeynqr95pjTg8r48U4zyzOvnZHI6
- pp+mMGuPW8dgn1tYWwOg//eHuZ7fh5EZIaef1pGaDLQsJByBdJG/t6MmbgDMLgHnAwtn
- Ffya0f36KQ3vL67ejGaVsfFMM4Qhl0QcdrsTSFsQhBxeQwBj03CNBKP3gd6wz1iBndHa
- K76v6+JD0zruoUaLDO6IaBxJ1r9+yaVO6zJ0TeVipQrVsRbTdWxrpKescM74Fv/oON+q
- 1k9w==
-X-Gm-Message-State: AOAM5334pEiZeO67yuLqXwtPl9v+NglHxQ5JWtwuci/x1sBDOzKZrMlT
- AS7mZ8S4HYm+7jodSEyfSzw=
-X-Google-Smtp-Source: ABdhPJz0PbsHJQqTs7QXhf3BH0KiecR5QtTyhYrhaH+fB4H0yE4v800v9Dl5Bavbr2n9HU8AvN7ceA==
-X-Received: by 2002:a5d:534e:: with SMTP id t14mr5494698wrv.202.1615908622424; 
- Tue, 16 Mar 2021 08:30:22 -0700 (PDT)
+ bh=dS3wtgYoSrTn+JxDUWBgQjpo1/B60ctev1wnKqso3Hc=;
+ b=TJXkZvsri03c9Gu33emZQTZEDlNZdynGzSf3v4jxuPsaIikqtmuxQtfDaoGUgwty1D
+ yO3vIxd8FDHzDQKXZXG2gvAR8ij989h5FUURm9xZvSZRhlKXfDJJFi0jH8P+N2GYOx1J
+ ETHblv1YjghOVi26PW2hi4ygHC7WrknSnmoeRiLbyLtXFRf2qC1/9NNzKsZJmpPpuJZi
+ IhnuI8b9Q16xz4hjjQ0uNBZrCZ/L/IOmLyZNy6EtxY6Jv9ZiPr8vSwM9/wZTquNNVuFK
+ klmyxedv2CqiOLj5VW7d4z9m2dv1QkwJ1jp+r0bYzUwmaJASofFcGK87OvdaerDwllBF
+ Fyog==
+X-Gm-Message-State: AOAM533IuDGUyUN2vXEJ64HlRQ7ry6ZyYmMBgkj/Ks9HUfadhxzc2zCW
+ i8JPr+wO+lvX6AWVxev8lxQ=
+X-Google-Smtp-Source: ABdhPJyKIBbf5DZj9ex/pewWUH2vyInifZTgiWV+bzhiLVr62vmJhIZoXoPbBUrAUdQY76+/u7PwsA==
+X-Received: by 2002:a7b:cc84:: with SMTP id p4mr241269wma.10.1615908635897;
+ Tue, 16 Mar 2021 08:30:35 -0700 (PDT)
 Received: from agape.jhs ([5.171.72.71])
- by smtp.gmail.com with ESMTPSA id v2sm333394wmj.1.2021.03.16.08.30.21
+ by smtp.gmail.com with ESMTPSA id a131sm3395163wmc.48.2021.03.16.08.30.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 08:30:22 -0700 (PDT)
-Date: Tue, 16 Mar 2021 16:30:19 +0100
+ Tue, 16 Mar 2021 08:30:35 -0700 (PDT)
+Date: Tue, 16 Mar 2021 16:30:33 +0100
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 01/12] staging: rtl8723bs: remove unused code blocks
- conditioned by never set CONFIG_CMCC_TEST
-Message-ID: <c5f84efa3c593a897f0498568a41d8638f7f0f8a.1615907632.git.fabioaiuto83@gmail.com>
+Subject: [PATCH 02/12] staging: rtl8723bs: remove unused code blocks
+ conditioned by never set CONFIG_INTERRUPT_BASED_TXBCN*
+Message-ID: <9157000821fd6febf25566b8c712fad1995c7c78.1615907632.git.fabioaiuto83@gmail.com>
 References: <cover.1615907632.git.fabioaiuto83@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -94,7 +97,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 remove conditional code blocks checked by unused
-CONFIG_CMCC_TEST
+CONFIG_INTERRUPT_BASED_TXBCN family defines
 
 cleaning required in TODO file:
 
@@ -102,53 +105,109 @@ find and remove code blocks guarded by never set CONFIG_FOO defines
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- .../staging/rtl8723bs/hal/rtl8723b_hal_init.c | 19 -------------------
- 1 file changed, 19 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ap.c       | 30 ++-----------------
+ .../staging/rtl8723bs/hal/rtl8723b_hal_init.c | 21 -------------
+ 2 files changed, 3 insertions(+), 48 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-index 6f08af686f9d..5904b7f9f134 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-@@ -2115,16 +2115,6 @@ static void UpdateHalRAMask8723B(struct adapter *padapter, u32 mac_id, u8 rssi_l
- 	rate_bitmap = hal_btcoex_GetRaMask(padapter);
- 	mask &= ~rate_bitmap;
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index 63b339484289..74f0f4d5a0b3 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -920,12 +920,10 @@ void start_bss_network(struct adapter *padapter, u8 *pbuf)
+ 	if (pmlmeext->bstart_bss) {
+ 		update_beacon(padapter, WLAN_EID_TIM, NULL, true);
  
--#ifdef CONFIG_CMCC_TEST
--	if (pmlmeext->cur_wireless_mode & WIRELESS_11G) {
--		if (mac_id == 0) {
--			DBG_871X("CMCC_BT update raid entry, mask = 0x%x\n", mask);
--			mask &= 0xffffff00; /* disable CCK & <24M OFDM rate for 11G mode for CMCC */
--			DBG_871X("CMCC_BT update raid entry, mask = 0x%x\n", mask);
+-#ifndef CONFIG_INTERRUPT_BASED_TXBCN /* other case will  tx beacon when bcn interrupt coming in. */
+-		/* issue beacon frame */
+-		if (send_beacon(padapter) == _FAIL)
+-			DBG_871X("issue_beacon, fail!\n");
++	/* issue beacon frame */
++	if (send_beacon(padapter) == _FAIL)
++		DBG_871X("issue_beacon, fail!\n");
+ 
+-#endif /* CONFIG_INTERRUPT_BASED_TXBCN */
+ 	}
+ 
+ 	/* update bc/mc sta_info */
+@@ -1685,26 +1683,6 @@ static void update_bcn_wps_ie(struct adapter *padapter)
+ 	}
+ 
+ 	kfree(pbackup_remainder_ie);
+-
+-	/*  deal with the case without set_tx_beacon_cmd() in update_beacon() */
+-#if defined(CONFIG_INTERRUPT_BASED_TXBCN)
+-	if ((pmlmeinfo->state & 0x03) == WIFI_FW_AP_STATE) {
+-		u8 sr = 0;
+-
+-		rtw_get_wps_attr_content(
+-			pwps_ie_src,
+-			wps_ielen,
+-			WPS_ATTR_SELECTED_REGISTRAR,
+-			(u8 *)(&sr),
+-			NULL
+-		);
+-
+-		if (sr) {
+-			set_fwstate(pmlmepriv, WIFI_UNDER_WPS);
+-			DBG_871X("%s, set WIFI_UNDER_WPS\n", __func__);
 -		}
 -	}
 -#endif
--
- 	if (pHalData->fw_ractrl) {
- 		rtl8723b_set_FwMacIdConfig_cmd(padapter, mac_id, psta->raid, psta->bw_mode, shortGIrate, mask);
- 	}
-@@ -3082,10 +3072,6 @@ static void rtl8723b_fill_default_txdesc(
- 				ptxdesc->data_ldpc = 1;
- 			if (pattrib->stbc)
- 				ptxdesc->data_stbc = 1;
--
--#ifdef CONFIG_CMCC_TEST
--			ptxdesc->data_short = 1; /* use cck short premble */
--#endif
- 		} else {
- 			/*  EAP data packet and ARP packet. */
- 			/*  Use the 1M data rate to send the EAP/ARP packet. */
-@@ -3767,11 +3753,6 @@ void SetHwReg8723B(struct adapter *padapter, u8 variable, u8 *val)
- 		BrateCfg &= rrsr_2g_allow_mask;
- 		masked = BrateCfg;
+ }
  
--		#ifdef CONFIG_CMCC_TEST
--		BrateCfg |= (RRSR_11M|RRSR_5_5M|RRSR_1M); /* use 11M to send ACK */
--		BrateCfg |= (RRSR_24M|RRSR_18M|RRSR_12M); /* CMCC_OFDM_ACK 12/18/24M */
--		#endif
+ static void update_bcn_p2p_ie(struct adapter *padapter)
+@@ -1802,12 +1780,10 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
+ 
+ 	spin_unlock_bh(&pmlmepriv->bcn_update_lock);
+ 
+-#ifndef CONFIG_INTERRUPT_BASED_TXBCN
+ 	if (tx) {
+ 		/* send_beacon(padapter);//send_beacon must execute on TSR level */
+ 		set_tx_beacon_cmd(padapter);
+ 	}
+-#endif /* CONFIG_INTERRUPT_BASED_TXBCN */
+ }
+ 
+ /*
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+index 5904b7f9f134..2b81be6f1b32 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -3272,17 +3272,6 @@ static void hw_var_set_opmode(struct adapter *padapter, u8 variable, u8 *val)
+ 		if ((mode == _HW_STATE_STATION_) || (mode == _HW_STATE_NOLINK_)) {
+ 			{
+ 				StopTxBeacon(padapter);
+-#ifdef CONFIG_INTERRUPT_BASED_TXBCN
+-#ifdef CONFIG_INTERRUPT_BASED_TXBCN_EARLY_INT
+-				rtw_write8(padapter, REG_DRVERLYINT, 0x05); /*  restore early int time to 5ms */
+-				UpdateInterruptMask8812AU(padapter, true, 0, IMR_BCNDMAINT0_8723B);
+-#endif /*  CONFIG_INTERRUPT_BASED_TXBCN_EARLY_INT */
 -
- 		/* IOT consideration */
- 		if (mlmext_info->assoc_AP_vendor == HT_IOT_PEER_CISCO) {
- 			/* if peer is cisco and didn't use ofdm rate, we enable 6M ack */
+-#ifdef CONFIG_INTERRUPT_BASED_TXBCN_BCN_OK_ERR
+-				UpdateInterruptMask8812AU(padapter, true, 0, (IMR_TXBCN0ERR_8723B|IMR_TXBCN0OK_8723B));
+-#endif /*  CONFIG_INTERRUPT_BASED_TXBCN_BCN_OK_ERR */
+-
+-#endif /*  CONFIG_INTERRUPT_BASED_TXBCN */
+ 			}
+ 
+ 			/*  disable atim wnd */
+@@ -3292,16 +3281,6 @@ static void hw_var_set_opmode(struct adapter *padapter, u8 variable, u8 *val)
+ 			ResumeTxBeacon(padapter);
+ 			rtw_write8(padapter, REG_BCN_CTRL, DIS_TSF_UDT|EN_BCN_FUNCTION|DIS_BCNQ_SUB);
+ 		} else if (mode == _HW_STATE_AP_) {
+-#ifdef CONFIG_INTERRUPT_BASED_TXBCN
+-#ifdef CONFIG_INTERRUPT_BASED_TXBCN_EARLY_INT
+-			UpdateInterruptMask8723BU(padapter, true, IMR_BCNDMAINT0_8723B, 0);
+-#endif /*  CONFIG_INTERRUPT_BASED_TXBCN_EARLY_INT */
+-
+-#ifdef CONFIG_INTERRUPT_BASED_TXBCN_BCN_OK_ERR
+-			UpdateInterruptMask8723BU(padapter, true, (IMR_TXBCN0ERR_8723B|IMR_TXBCN0OK_8723B), 0);
+-#endif /*  CONFIG_INTERRUPT_BASED_TXBCN_BCN_OK_ERR */
+-
+-#endif /*  CONFIG_INTERRUPT_BASED_TXBCN */
+ 
+ 			ResumeTxBeacon(padapter);
+ 
 -- 
 2.20.1
 
