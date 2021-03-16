@@ -1,64 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3137533D145
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 10:59:46 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E21733D1B4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 11:22:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5C50A4EC7D;
-	Tue, 16 Mar 2021 09:59:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0DA9E83AE8;
+	Tue, 16 Mar 2021 10:22:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4ppqYHasKuyJ; Tue, 16 Mar 2021 09:59:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SN0S_f_H1nmB; Tue, 16 Mar 2021 10:22:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2B46F4D8E4;
-	Tue, 16 Mar 2021 09:59:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4473083AB9;
+	Tue, 16 Mar 2021 10:22:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BCF751BF20B
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 09:59:30 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AB80A1BF23B
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 10:21:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AABD360654
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 09:59:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9B4F683AB9
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 10:21:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KX5XBjTunbaL for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 09:59:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from lucky1.263xmail.com (lucky1.263xmail.com [211.157.147.131])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 476EE60629
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 09:59:27 +0000 (UTC)
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id DEFB1B9C13;
- Tue, 16 Mar 2021 17:59:23 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED: 0
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [111.207.172.18])
- by smtp.263.net (postfix) whith ESMTP id
- P24307T139684751603456S1615888764106483_; 
- Tue, 16 Mar 2021 17:59:24 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <d7221418796d3fc50478431db0aa96c7>
-X-RL-SENDER: zhaoxiao@uniontech.com
-X-SENDER: zhaoxiao@uniontech.com
-X-LOGIN-NAME: zhaoxiao@uniontech.com
-X-FST-TO: gregkh@linuxfoundation.org
-X-SENDER-IP: 111.207.172.18
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: zhaoxiao <zhaoxiao@uniontech.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8192u: remove extra lines
-Date: Tue, 16 Mar 2021 17:59:22 +0800
-Message-Id: <20210316095922.21123-1-zhaoxiao@uniontech.com>
-X-Mailer: git-send-email 2.20.1
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qnM5JpsIc8_O for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 10:21:52 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from esa1.ssilver.iphmx.com (esa1.ssilver.iphmx.com [68.232.153.64])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 212B283A9F
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 10:21:52 +0000 (UTC)
+Message-Id: <ccb348$5i2cv@ob1.ssilver.iphmx.com>
+IronPort-SDR: iggiSGmwAsw6CIit5t8w+h8hjxWXnxLQEts9MOdfU5ZNZ4aOKkp2fLVvSyqVyuU3Iu3KuMvRXi
+ F7IlpnjR0hgMSo442NTf0wsJUegSotv/lBKGT333pIEDoDd1COaBPGKe8nlEhpCT72XJ3Reh8d
+ f73epQpEvjnfUzZhucIH5R8+WJ4qMYM2odGn+LqI9Jqap3JGKNZsVbB8K5T1yj3YwhYEmtYEhq
+ 6a93EN1OOZ5imeB2YCFkXaGjEASoQjmgsURL/KgshQVYBzWKMBtDJd623VxlJ2PKndngz+uqUB
+ eEE=
+Received: from unknown (HELO User) ([202.38.180.78])
+ by ob1.ssilver.iphmx.com with SMTP; 16 Mar 2021 05:21:44 -0500
+From: "Fred Grenville"<chiatatwah@camv.vn>
+Subject: Reply Asap!! 
+Date: Tue, 16 Mar 2021 03:21:50 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,51 +59,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, zhaoxiao <zhaoxiao@uniontech.com>,
- linux-kernel@vger.kernel.org, serrazimone@gmail.com, lu@pplo.net,
- dan.carpenter@oracle.com
+Reply-To: benobi236@yahoo.com.co
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove extra lines in the struct r8192_private_args.
+Good day
 
-Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
----
- drivers/staging/rtl8192u/r8192U_wx.c | 3 ---
- 1 file changed, 3 deletions(-)
+How are you today, did you receive the email I sent you three days ago? For important discussion on ( Investment ) If not please reply me back so that I will resend it again.
 
-diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
-index 6ead461e3279..e9de7dc8f049 100644
---- a/drivers/staging/rtl8192u/r8192U_wx.c
-+++ b/drivers/staging/rtl8192u/r8192U_wx.c
-@@ -879,12 +879,10 @@ static iw_handler r8192_wx_handlers[] = {
- 
- 
- static const struct iw_priv_args r8192_private_args[] = {
--
- 	{
- 		SIOCIWFIRSTPRIV + 0x0,
- 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "badcrc"
- 	},
--
- 	{
- 		SIOCIWFIRSTPRIV + 0x1,
- 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "activescan"
-@@ -897,7 +895,6 @@ static const struct iw_priv_args r8192_private_args[] = {
- 	{
- 		SIOCIWFIRSTPRIV + 0x3,
- 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "forcereset"
--
- 	}
- 
- };
--- 
-2.20.1
+Please confirm if you did ( u.abdulghani@yahoo.com.co ).
 
-
-
+Best Regards,
+Mr. Fred Grenville
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
