@@ -2,65 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46B1733D380
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 13:05:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4402433D43C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 13:51:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BCB3D6F59B;
-	Tue, 16 Mar 2021 12:05:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 75BA16F60D;
+	Tue, 16 Mar 2021 12:51:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xGIK4397pv21; Tue, 16 Mar 2021 12:05:27 +0000 (UTC)
+	with ESMTP id lkeIh4V7W7BP; Tue, 16 Mar 2021 12:51:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0FCA360586;
-	Tue, 16 Mar 2021 12:05:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AD92D60675;
+	Tue, 16 Mar 2021 12:51:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7D53D1BF868
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 12:05:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 967381BF868
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 12:51:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6BC6B838E0
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 12:05:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8566A60675
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 12:51:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id asI4AhGZl1tn for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 12:05:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from lucky1.263xmail.com (lucky1.263xmail.com [211.157.147.130])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 60CF783926
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 12:05:12 +0000 (UTC)
-Received: from localhost (unknown [192.168.167.13])
- by lucky1.263xmail.com (Postfix) with ESMTP id B472FD0F2F;
- Tue, 16 Mar 2021 20:05:06 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [111.207.172.18])
- by smtp.263.net (postfix) whith ESMTP id
- P13096T140547754784512S1615896302676772_; 
- Tue, 16 Mar 2021 20:05:07 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <afc6effab0856d2a4c2ad824966a2533>
-X-RL-SENDER: maqianga@uniontech.com
-X-SENDER: maqianga@uniontech.com
-X-LOGIN-NAME: maqianga@uniontech.com
-X-FST-TO: gregkh@linuxfoundation.org
-X-SENDER-IP: 111.207.172.18
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Qiang Ma <maqianga@uniontech.com>
-To: gregkh@linuxfoundation.org, ross.schm.dev@gmail.com, mhocko@suse.com,
- john.oldman@polehill.co.uk, joe@perches.com, longman@redhat.com,
- matthew.v.deangelis@gmail.com
-Subject: [PATCH] staging: rtl8723bs/core: add spaces between operators
-Date: Tue, 16 Mar 2021 20:05:00 +0800
-Message-Id: <20210316120500.351-1-maqianga@uniontech.com>
-X-Mailer: git-send-email 2.20.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ocFKo9CdYbjV for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 12:51:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EFB2360669
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 12:51:24 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0F95365036;
+ Tue, 16 Mar 2021 12:51:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1615899084;
+ bh=gmxqoMt9J/BIXwHRDd8I4NBJ+PNnpfBABT0cNtOxOts=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=NXl07EQioB4L+TaHyK4BhsKl3P2qBs5amJmsJyvwrw8RfOFJ38O9A7BCdMHVQVYTH
+ 5Vx0o8MZ6wjNmsxog7kMUzhbK73KdxkmvfVo3TwK9k2AlRb4NS8rdmLQlEDVVGKJhw
+ IHmo4I9mA89ClYgfpCmwh78V/oHkv51iiiEs9qdc=
+Date: Tue, 16 Mar 2021 12:43:15 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Fabio Aiuto <fabioaiuto83@gmail.com>
+Subject: Re: [PATCH 00/15] staging: rtl8723bs: remove unused code blocks
+Message-ID: <YFCZ04cYWwDUuwsi@kroah.com>
+References: <cover.1615801721.git.fabioaiuto83@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cover.1615801721.git.fabioaiuto83@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,49 +61,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Qiang Ma <maqianga@uniontech.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add spaces between operators for a better readability
-in function 'rtw_seccalctkipmic'.
+On Mon, Mar 15, 2021 at 11:13:49AM +0100, Fabio Aiuto wrote:
+> Remove unused code blocks as required in TODO file
+> 
+> Fabio Aiuto (15):
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_AUTO_AP_MODE
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_HW_PWRP_DETECTION
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_QOS_OPTIMIZATION
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_AP_WOWLAN
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_PM
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_SIGNAL_DISPLAY_DBM
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_BACKGROUND_NOISE_MONITOR
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_SKIP_SIGNAL_SCALE_MAPPING
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_GPIO_API
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_EXT_CLK
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_CHECK_BT_HANG
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_SDIO_TX_TASKLET
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_SW_CHANNEL_PLAN
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_C2H_PACKET_EN
+>   staging: rtl8723bs: remove unused code blocks conditioned by never set
+>     CONFIG_ODM_ADAPTIVITY
 
-Signed-off-by: Qiang Ma <maqianga@uniontech.com>
----
- drivers/staging/rtl8723bs/core/rtw_security.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Not all of these would apply, please rebase and resend the remaining
+ones.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
-index 3e576cbe4712..469e4d563da1 100644
---- a/drivers/staging/rtl8723bs/core/rtw_security.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_security.c
-@@ -413,15 +413,15 @@ void rtw_seccalctkipmic(u8 *key, u8 *header, u8 *data, u32 data_len, u8 *mic_cod
- 	priority[0] = pri;
- 
- 	/* Michael MIC pseudo header: DA, SA, 3 x 0, Priority */
--	if (header[1]&1) {   /* ToDS == 1 */
-+	if (header[1] & 1) {   /* ToDS == 1 */
- 		rtw_secmicappend(&micdata, &header[16], 6);  /* DA */
--		if (header[1]&2)  /* From Ds == 1 */
-+		if (header[1] & 2)  /* From Ds == 1 */
- 			rtw_secmicappend(&micdata, &header[24], 6);
- 		else
- 			rtw_secmicappend(&micdata, &header[10], 6);
- 	} else {	/* ToDS == 0 */
- 		rtw_secmicappend(&micdata, &header[4], 6);   /* DA */
--		if (header[1]&2)  /* From Ds == 1 */
-+		if (header[1] & 2)  /* From Ds == 1 */
- 			rtw_secmicappend(&micdata, &header[16], 6);
- 		else
- 			rtw_secmicappend(&micdata, &header[10], 6);
--- 
-2.20.1
+thanks,
 
-
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
