@@ -1,81 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 218F033CEF0
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 08:56:48 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E66B633CF34
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 09:03:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2A41483A55;
-	Tue, 16 Mar 2021 07:56:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 51FB34317A;
+	Tue, 16 Mar 2021 08:03:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fqJHj1YPuLoz; Tue, 16 Mar 2021 07:56:45 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YzZqSiTjcWzL; Tue, 16 Mar 2021 08:03:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 490F783A4B;
-	Tue, 16 Mar 2021 07:56:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 71C7F4300E;
+	Tue, 16 Mar 2021 08:03:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AD9F01BF387
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 07:56:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C81231BF378
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:03:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9C81160664
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 07:56:34 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B267E60641
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:03:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DBbr1SRkZ7Yn for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 07:56:34 +0000 (UTC)
+ with ESMTP id V9N6EumE7w1l for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 08:03:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E183260641
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 07:56:33 +0000 (UTC)
-Received: from mail-ed1-f70.google.com ([209.85.208.70])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <krzysztof.kozlowski@canonical.com>)
- id 1lM4Z5-0006SQ-FI
- for devel@driverdev.osuosl.org; Tue, 16 Mar 2021 07:56:31 +0000
-Received: by mail-ed1-f70.google.com with SMTP id n20so17303391edr.8
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 00:56:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Jeu86JaIUAOt2lkwOFI4m9LQf3S54ODIpa4kLZOARnM=;
- b=P03lqPjKjcCLI8dT2DKLNycZYA9Q9a5SaFbSZ9xZ69BPdexK7K8F5Lxo2fheLYwikw
- ri8M3qIxmh2+tYubALnl6S16wPRR2jThh0J33RuOZ0Uu3gfXwO0lNYaOWDKWt2FeKq0V
- 7K3jNVEPBFEABfDsBkO5sMLuXwB/6famkSMfzCOKB/Bs8UoAeFbc0dVwlkGj0WSy6in/
- VG7p1vgM3ZRLVmNTob1AZJHE8WhgHRxbztGPHyg7yteQYtIrmgoZwXA1z4ZkjwLNJsmA
- LA8iDDjmA7XjYxC1+v3kPQFlfMiXxCxBPJ1qR0oXw2dG14glC/SyCjCS/oDm6fhtJR5u
- /44g==
-X-Gm-Message-State: AOAM530E7x5flKJrYSndJsmxtyOSdYaU6D7D2A0MYvcPp15l8UzAEym+
- WbbyHivOlXWsoiNsUoV4qDkO+YvGJsp4ExLdiMAtDnvPA9jvR+RpJsGbvGcyEurHVqXTxMqMEII
- YkE0JZo3j8cin8PPt/Gur3XwkVpN/lk7IMZyBOrg=
-X-Received: by 2002:a17:906:1b42:: with SMTP id
- p2mr28178026ejg.236.1615881391219; 
- Tue, 16 Mar 2021 00:56:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSDWwhSMlE00SSQ6Q68j5cirvJIl8Apo64mYMNnE60g83O/scEiUPyZS5hkkQ+6/Z3THDjqA==
-X-Received: by 2002:a17:906:1b42:: with SMTP id
- p2mr28178003ejg.236.1615881390996; 
- Tue, 16 Mar 2021 00:56:30 -0700 (PDT)
-Received: from localhost.localdomain (adsl-84-226-167-205.adslplus.ch.
- [84.226.167.205])
- by smtp.gmail.com with ESMTPSA id r5sm9725026eds.49.2021.03.16.00.56.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 00:56:30 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND] media: atomisp: do not select COMMON_CLK to fix builds
-Date: Tue, 16 Mar 2021 08:56:25 +0100
-Message-Id: <20210316075625.10382-1-krzysztof.kozlowski@canonical.com>
-X-Mailer: git-send-email 2.25.1
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 720C2606E1
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:03:06 +0000 (UTC)
+IronPort-SDR: YWHHjMSqdNS5BdnjvMQoF1IR+tbYScKM7iCX6BdlEk5oLQc6eLOwq4E6Pa5tjVwMP88Gbn3JTr
+ hmnbknmQg7jA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9924"; a="168492619"
+X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="168492619"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2021 01:03:05 -0700
+IronPort-SDR: 4Mlf+xJkj70RZ08Adl2iC52T/Xk6/ENFhy59/2Pj5tyn0kcKwhlsNQJ8+GIkjBJu+nLCvAGJVR
+ VpXWdqS3Y8HQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="590576542"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by orsmga005.jf.intel.com with ESMTP; 16 Mar 2021 01:03:04 -0700
+Received: from shsmsx603.ccr.corp.intel.com (10.109.6.143) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Tue, 16 Mar 2021 01:03:03 -0700
+Received: from shsmsx601.ccr.corp.intel.com (10.109.6.141) by
+ SHSMSX603.ccr.corp.intel.com (10.109.6.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Tue, 16 Mar 2021 16:03:01 +0800
+Received: from shsmsx601.ccr.corp.intel.com ([10.109.6.141]) by
+ SHSMSX601.ccr.corp.intel.com ([10.109.6.141]) with mapi id 15.01.2106.013;
+ Tue, 16 Mar 2021 16:03:01 +0800
+From: "Li, Philip" <philip.li@intel.com>
+To: =?iso-8859-1?Q?J=E9r=F4me_Pouiller?= <jerome.pouiller@silabs.com>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, lkp <lkp@intel.com>
+Subject: RE: [kbuild-all] Re: [PATCH] wfx: fix irqf_oneshot.cocci warnings
+Thread-Topic: [kbuild-all] Re: [PATCH] wfx: fix irqf_oneshot.cocci warnings
+Thread-Index: AQHXGjluGKy1l/wG8EupGMY1Pavj+qqGQOCw
+Date: Tue, 16 Mar 2021 08:03:00 +0000
+Message-ID: <a8dba72b92a7407c9f2d531527137643@intel.com>
+References: <20210315132501.441681-25-Jerome.Pouiller@silabs.com>
+ <20210315210920.GA43634@d108da9836c5> <3096745.nmkoU2l6Xm@pc-42>
+In-Reply-To: <3096745.nmkoU2l6Xm@pc-42>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+x-originating-ip: [10.239.127.36]
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -89,43 +88,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Boyd <sboyd@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kbuild-all@lists.01.org" <kbuild-all@lists.01.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
+ Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Krzysztof Kozlowski <krzk@kernel.org>
+> Subject: [kbuild-all] Re: [PATCH] wfx: fix irqf_oneshot.cocci warnings
+> =
 
-COMMON_CLK is a user-selectable option with its own dependencies.  The
-most important dependency is !HAVE_LEGACY_CLK.  User-selectable drivers
-should not select COMMON_CLK because they will create a dependency cycle
-and build failures.
+> Hello,
+> =
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-Reviewed-by: Stephen Boyd <sboyd@kernel.org>
----
- drivers/staging/media/atomisp/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> On Monday 15 March 2021 22:09:20 CET kernel test robot wrote:
+> >
+> > From: kernel test robot <lkp@intel.com>
+> >
+> > drivers/net/wireless/silabs/wfx/bus_sdio.c:134:8-33: ERROR: Threaded IR=
+Q with no primary handler requested without
+> IRQF_ONESHOT
+> >
+> >  Since commit 1c6c69525b40 ("genirq: Reject bogus threaded irq requests=
+")
+> >  threaded IRQs without a primary handler need to be requested with
+> >  IRQF_ONESHOT, otherwise the request will fail.
+> >
+> >  So pass the IRQF_ONESHOT flag in this case.
+> >
+> > Generated by: scripts/coccinelle/misc/irqf_oneshot.cocci
+> >
+> > CC: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Signed-off-by: kernel test robot <lkp@intel.com>
+> > ---
+> >
+> > url:    https://github.com/0day-ci/linux/commits/Jerome-Pouiller/wfx-ge=
+t-out-from-the-staging-area/20210315-212855
+> > base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.=
+git b828324bba8f575fde487a91fec07303789dda8a
+> >
+> >  bus_sdio.c |    3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > --- a/drivers/net/wireless/silabs/wfx/bus_sdio.c
+> > +++ b/drivers/net/wireless/silabs/wfx/bus_sdio.c
+> > @@ -132,7 +132,8 @@ static int wfx_sdio_irq_subscribe(void *
+> >                 flags =3D IRQF_TRIGGER_HIGH;
+> >         flags |=3D IRQF_ONESHOT;
+> >         return devm_request_threaded_irq(&bus->func->dev, bus->of_irq, =
+NULL,
+> > -                                        wfx_sdio_irq_handler_ext, flag=
+s,
+> > +                                        wfx_sdio_irq_handler_ext,
+> > +                                        flags | IRQF_ONESHOT,
+> >                                          "wfx", bus);
+> >  }
+> >
+> >
+> =
 
-diff --git a/drivers/staging/media/atomisp/Kconfig b/drivers/staging/media/atomisp/Kconfig
-index 37577bb72998..742edb261d85 100644
---- a/drivers/staging/media/atomisp/Kconfig
-+++ b/drivers/staging/media/atomisp/Kconfig
-@@ -2,9 +2,9 @@
- menuconfig INTEL_ATOMISP
- 	bool "Enable support to Intel Atom ISP camera drivers"
- 	depends on X86 && EFI && PCI && ACPI
-+	depends on COMMON_CLK
- 	select IOSF_MBI
- 	select MEDIA_CONTROLLER
--	select COMMON_CLK
- 	help
- 	  Enable support for the Intel ISP2 camera interfaces and MIPI
- 	  sensor drivers.
--- 
-2.25.1
+> Obviously, "flags" always contains IRQF_ONESHOT. So, it is a false positi=
+ve.
+Thanks for the feedback. Sorry about this false positive, this had been dis=
+abled
+for auto report now.
 
+> =
+
+> =
+
+> --
+> J=E9r=F4me Pouiller
+> =
+
+> _______________________________________________
+> kbuild-all mailing list -- kbuild-all@lists.01.org
+> To unsubscribe send an email to kbuild-all-leave@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
