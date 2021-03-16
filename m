@@ -1,81 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E66B633CF34
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 09:03:21 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9189C33CFA5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 09:22:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 51FB34317A;
-	Tue, 16 Mar 2021 08:03:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1B43C4EC70;
+	Tue, 16 Mar 2021 08:22:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YzZqSiTjcWzL; Tue, 16 Mar 2021 08:03:19 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QiINUQGENyXn; Tue, 16 Mar 2021 08:22:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 71C7F4300E;
-	Tue, 16 Mar 2021 08:03:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CB2404EBD3;
+	Tue, 16 Mar 2021 08:22:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C81231BF378
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:03:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 15DD81BF44A
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:22:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B267E60641
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:03:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 118D74EBF4
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:22:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V9N6EumE7w1l for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 08:03:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kfU8ZaFOh-ye for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 08:22:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 720C2606E1
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:03:06 +0000 (UTC)
-IronPort-SDR: YWHHjMSqdNS5BdnjvMQoF1IR+tbYScKM7iCX6BdlEk5oLQc6eLOwq4E6Pa5tjVwMP88Gbn3JTr
- hmnbknmQg7jA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9924"; a="168492619"
-X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="168492619"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2021 01:03:05 -0700
-IronPort-SDR: 4Mlf+xJkj70RZ08Adl2iC52T/Xk6/ENFhy59/2Pj5tyn0kcKwhlsNQJ8+GIkjBJu+nLCvAGJVR
- VpXWdqS3Y8HQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="590576542"
-Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
- by orsmga005.jf.intel.com with ESMTP; 16 Mar 2021 01:03:04 -0700
-Received: from shsmsx603.ccr.corp.intel.com (10.109.6.143) by
- fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Tue, 16 Mar 2021 01:03:03 -0700
-Received: from shsmsx601.ccr.corp.intel.com (10.109.6.141) by
- SHSMSX603.ccr.corp.intel.com (10.109.6.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Tue, 16 Mar 2021 16:03:01 +0800
-Received: from shsmsx601.ccr.corp.intel.com ([10.109.6.141]) by
- SHSMSX601.ccr.corp.intel.com ([10.109.6.141]) with mapi id 15.01.2106.013;
- Tue, 16 Mar 2021 16:03:01 +0800
-From: "Li, Philip" <philip.li@intel.com>
-To: =?iso-8859-1?Q?J=E9r=F4me_Pouiller?= <jerome.pouiller@silabs.com>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, lkp <lkp@intel.com>
-Subject: RE: [kbuild-all] Re: [PATCH] wfx: fix irqf_oneshot.cocci warnings
-Thread-Topic: [kbuild-all] Re: [PATCH] wfx: fix irqf_oneshot.cocci warnings
-Thread-Index: AQHXGjluGKy1l/wG8EupGMY1Pavj+qqGQOCw
-Date: Tue, 16 Mar 2021 08:03:00 +0000
-Message-ID: <a8dba72b92a7407c9f2d531527137643@intel.com>
-References: <20210315132501.441681-25-Jerome.Pouiller@silabs.com>
- <20210315210920.GA43634@d108da9836c5> <3096745.nmkoU2l6Xm@pc-42>
-In-Reply-To: <3096745.nmkoU2l6Xm@pc-42>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-x-originating-ip: [10.239.127.36]
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 336FE4EBD3
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:21:59 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12G8JLFc061530;
+ Tue, 16 Mar 2021 08:21:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=WPqOs10vxLdfOS0/dMZowuYNwWIQI0GFuuttBriqaUM=;
+ b=QUC3bkOMpqJ74jJgYmqQsYeT9o2J8Xqngdubrqy163wYHz3kLGI7O3r0Orykbb3tRBrf
+ zu4BpB9eiyXJYv1CracZBi0wD2VEcAMSS9mcMDKBiJxExLAsc8MCuuje81TJh5OzVE8l
+ cTzs5ewQaPHLvTcE5eYKoliUnqqnOowtznOFxDrJ3aiMESc8XzEvLxhCWEmAw2imLLnT
+ TVTypjig44Ru+aun/hMQoIFavCsu5SASgD3cVgD2IN6uftZ3WAr/YviJmTTqdMBz8nQS
+ B/VnE9OHBDzjw3Sf8XhKYsY8zE5dx9Rz+b8u/WQ3N3ZLjUaCHhL679AELYpPxg+xrF19 LQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 378nbm6pwd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 Mar 2021 08:21:59 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12G8Joq5134140;
+ Tue, 16 Mar 2021 08:21:56 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 3797ayrg2p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 Mar 2021 08:21:56 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 12G8Lstc010770;
+ Tue, 16 Mar 2021 08:21:54 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 16 Mar 2021 08:21:54 +0000
+Date: Tue, 16 Mar 2021 11:21:46 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Marco Cesati <marcocesati@gmail.com>
+Subject: Re: [PATCH 00/57] Staging: rtl8723bs: fix POINTER_LOCATION whitespaces
+Message-ID: <20210316082146.GQ2087@kadam>
+References: <20210315170618.2566-1-marcocesati@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9924
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ spamscore=0 bulkscore=0
+ malwarescore=0 adultscore=0 mlxscore=0 mlxlogscore=999 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2103160056
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9924
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ impostorscore=0
+ malwarescore=0 adultscore=0 mlxscore=0 clxscore=1015 mlxlogscore=999
+ lowpriorityscore=0 phishscore=0 priorityscore=1501 spamscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2103160056
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,89 +98,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kbuild-all@lists.01.org" <kbuild-all@lists.01.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
- Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>, Hans de Goede <hdegoede@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-> Subject: [kbuild-all] Re: [PATCH] wfx: fix irqf_oneshot.cocci warnings
-> =
+On Mon, Mar 15, 2021 at 06:05:21PM +0100, Marco Cesati wrote:
+> This set of patches fixes 522 checkpatch.pl errors of type
+> POINTER_LOCATION in the staging/rtl8723bs souce code. Every patch is
+> purely syntactical: it does not change the generated machine code.
+> Furthermore, every single patch leaves the source code fully compilable,
+> so that 'git bisect' will not be affected.
 
-> Hello,
-> =
+Hopefully that part can be assumed.  :P
 
-> On Monday 15 March 2021 22:09:20 CET kernel test robot wrote:
-> >
-> > From: kernel test robot <lkp@intel.com>
-> >
-> > drivers/net/wireless/silabs/wfx/bus_sdio.c:134:8-33: ERROR: Threaded IR=
-Q with no primary handler requested without
-> IRQF_ONESHOT
-> >
-> >  Since commit 1c6c69525b40 ("genirq: Reject bogus threaded irq requests=
-")
-> >  threaded IRQs without a primary handler need to be requested with
-> >  IRQF_ONESHOT, otherwise the request will fail.
-> >
-> >  So pass the IRQF_ONESHOT flag in this case.
-> >
-> > Generated by: scripts/coccinelle/misc/irqf_oneshot.cocci
-> >
-> > CC: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > Signed-off-by: kernel test robot <lkp@intel.com>
-> > ---
-> >
-> > url:    https://github.com/0day-ci/linux/commits/Jerome-Pouiller/wfx-ge=
-t-out-from-the-staging-area/20210315-212855
-> > base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.=
-git b828324bba8f575fde487a91fec07303789dda8a
-> >
-> >  bus_sdio.c |    3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > --- a/drivers/net/wireless/silabs/wfx/bus_sdio.c
-> > +++ b/drivers/net/wireless/silabs/wfx/bus_sdio.c
-> > @@ -132,7 +132,8 @@ static int wfx_sdio_irq_subscribe(void *
-> >                 flags =3D IRQF_TRIGGER_HIGH;
-> >         flags |=3D IRQF_ONESHOT;
-> >         return devm_request_threaded_irq(&bus->func->dev, bus->of_irq, =
-NULL,
-> > -                                        wfx_sdio_irq_handler_ext, flag=
-s,
-> > +                                        wfx_sdio_irq_handler_ext,
-> > +                                        flags | IRQF_ONESHOT,
-> >                                          "wfx", bus);
-> >  }
-> >
-> >
-> =
+> 
+> The checkpatch.pl script emits many errors and warnings for these
+> patches, however all of them are caused by the original code. They shall
+> be fixed in different patchsets.
 
-> Obviously, "flags" always contains IRQF_ONESHOT. So, it is a false positi=
-ve.
-Thanks for the feedback. Sorry about this false positive, this had been dis=
-abled
-for auto report now.
+Yep.  You maybe went a tad too aggressive in fixing the checkpatch
+warnings about parentheses...  If you didn't introduce the warning, then
+you can just leave it as-is.
 
-> =
+Anyway, looks good.
 
-> =
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-> --
-> J=E9r=F4me Pouiller
-> =
+regards,
+dan carpenter
 
-> _______________________________________________
-> kbuild-all mailing list -- kbuild-all@lists.01.org
-> To unsubscribe send an email to kbuild-all-leave@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
