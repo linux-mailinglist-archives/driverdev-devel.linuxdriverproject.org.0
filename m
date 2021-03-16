@@ -1,79 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCBFF33DC6D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 19:19:09 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 219E433DC98
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 19:31:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1504A6F6A0;
-	Tue, 16 Mar 2021 18:19:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D726E4ECA3;
+	Tue, 16 Mar 2021 18:31:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HdPjeof-GO6H; Tue, 16 Mar 2021 18:19:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fss8gsCc7muE; Tue, 16 Mar 2021 18:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 57A8660659;
-	Tue, 16 Mar 2021 18:19:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D21C44EC16;
+	Tue, 16 Mar 2021 18:31:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 857481BF95A
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 18:18:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 71FDC1BF95A
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 18:30:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 743D44A061
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 18:18:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 60CAC83A96
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 18:30:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8XzNAzbV2_io for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 18:18:55 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-vs1-xe36.google.com (mail-vs1-xe36.google.com
- [IPv6:2607:f8b0:4864:20::e36])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 179114745D
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 18:18:54 +0000 (UTC)
-Received: by mail-vs1-xe36.google.com with SMTP id a12so18732098vsd.3
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 11:18:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hJ6aVWc+2DYRFh7JhiecPzBTeIWZ23kP9Ncj0Hgb5u8=;
- b=CA9XXZQczMr3rXVm8yBvfZlviUajE2P9RmYD55v7/5HZmsI9RJLEBNpxUAW69/JdGK
- RcawmblHvKnbl1zWqARjNf/4mP/lbpU0jFfAjK5pr4KlvdqTyiiq2/FWTrVpNTqDjwtX
- lgknb7fqIyR4oX0ns4ibzh1ZyPaKrC9TzOjuKAQ5Wc5bfRgV1Qyjb+Kb6ThpdwAQ8Npx
- ehIfCmGnnpvhMQF9BXMKsu6g39D5DIZ08D47dn8yoPzc/ScwKCghG2wA0GDjOKXl/po9
- Ejv8NJRq667QoNGYOkL4/zJlS/+T74+cFnNTp8HuRI85msPsUVlMH0xF/3fsAMQNK01V
- x4ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hJ6aVWc+2DYRFh7JhiecPzBTeIWZ23kP9Ncj0Hgb5u8=;
- b=qKADyRexfYp5Jl3md4OsRUJ8Q7UJlpYEDJqIycotvhGudJlvcyC0Un/wRIZuLub4Vx
- aTSLf80EJDAiFEb1ZuwHCyhhdzzEDM3eboQRPvkbRgh2kiSplnq89mmNnfO9WdfWrjgI
- ai/bzPrFh5uQZFkiU6bLLlQOtKN+iJ06J9l98PkMLpFMiGPTdaqvaDL2v41LKctolCI2
- TWX/Aqg3b5L1Lv7nmpQQoZiI+tr6USHz4FBg17NBfj/qRwGNF7jupyznIpnFJeZnD8ES
- lXJIEV1JenR+BuzOu1u9FFNyzbu5313j3ePciDwOSvG+NOdgepPn2QrxC/2dQVSZdLux
- f+eQ==
-X-Gm-Message-State: AOAM531d4Hu2LV9EY6ZIVqonE6gh69SZIiIneGtYtuXjI8+eu4Tr/3dR
- c9+2W3xlqslTByvskT9VBUY=
-X-Google-Smtp-Source: ABdhPJwgciPyvakkHVWuMsnARvEJ82PmlK7Y6zHc0RvtHYl1jiB55gmIjINAYv5NUEwMeAz94pB/Hg==
-X-Received: by 2002:a67:f842:: with SMTP id b2mr482841vsp.21.1615918733944;
- Tue, 16 Mar 2021 11:18:53 -0700 (PDT)
-Received: from linuxerio.localdomain ([186.32.194.42])
- by smtp.gmail.com with ESMTPSA id a198sm2527299vka.46.2021.03.16.11.18.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 11:18:53 -0700 (PDT)
-From: Edmundo Carmona Antoranz <eantoranz@gmail.com>
-To: forest@alittletooquiet.net, gregkh@linuxfoundation.org, arnd@arndb.de,
- devel@driverdev.osuosl.org
-Subject: [PATCH] staging: vt665x: fix alignment constraints
-Date: Tue, 16 Mar 2021 12:17:35 -0600
-Message-Id: <20210316181736.2553318-1-eantoranz@gmail.com>
-X-Mailer: git-send-email 2.30.2
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5OWiTw-1nkm3 for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 18:30:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.131])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B2A1F83A93
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 18:30:54 +0000 (UTC)
+Received: from mail-ot1-f43.google.com ([209.85.210.43]) by
+ mrelayeu.kundenserver.de (mreue012 [213.165.67.97]) with ESMTPSA (Nemesis) id
+ 1MCXhr-1lVp7f1Azz-009eMa for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021
+ 19:30:52 +0100
+Received: by mail-ot1-f43.google.com with SMTP id l11so6013556otq.7
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 11:30:51 -0700 (PDT)
+X-Gm-Message-State: AOAM5339ERoIwt/41JgqPBfmRD1qh5D6bwvJ9aA3Or5BIWp2ZCBF6MZb
+ 7kLPO9IFJCj+nMuQM/8ms12WDmUt3imrvl54kJ0=
+X-Google-Smtp-Source: ABdhPJy7zf/nwXCQeopMtr6VLSjP61d4PF+is99tvboBdN67xZV3noxqUb+4ubWjTpASNmkEsYVdKhVcDoCNuseYwho=
+X-Received: by 2002:a05:6830:14c1:: with SMTP id
+ t1mr78328otq.305.1615919450777; 
+ Tue, 16 Mar 2021 11:30:50 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210316181736.2553318-1-eantoranz@gmail.com>
+In-Reply-To: <20210316181736.2553318-1-eantoranz@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Tue, 16 Mar 2021 19:30:34 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a0aBauNqKRyzZ6d4kPGBPcMYqWUWrmmLXwbROFLkBf0nw@mail.gmail.com>
+Message-ID: <CAK8P3a0aBauNqKRyzZ6d4kPGBPcMYqWUWrmmLXwbROFLkBf0nw@mail.gmail.com>
+Subject: Re: [PATCH] staging: vt665x: fix alignment constraints
+To: Edmundo Carmona Antoranz <eantoranz@gmail.com>
+X-Provags-ID: V03:K1:Nlro1iZfurTuKLz/H2zVJHlKzotP5rokxGZZuQKKxQVHS3j0vKg
+ BQ/H78RodRosbQN0aXXIZNfPX5MBHZxFhvV/ruAeTsMrICoLwSnuC7T1drlYEFH1YQ8Dgtr
+ 9ko01E17as7NAl2sYvZ3ahc0PDsY21QQNsLhmBIqr/7bD4CGJyldWgpW3gjnxAj0nfLmX+I
+ jNJx5ub0A8P1aLrrwvu5Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XoWvKyIvQSI=:T8LPpRTA9dOjW7R3l5sOXo
+ jgX7DZBK+TVCRIl55vWHMv6N3AsWyQ8rbeje//4hPzWlnVUKh58xrq0jvDDNm78wPUyTi6vRX
+ 3GwLGHJqxDcc4uyyToKlsP4uYZdB8efd/VPUHEf8MyhwnV2HiedC/W2wRH8FhT22hIj244gpE
+ diXH4dX0AHz3YNmwo1pucAawDiJRb6BF1LgX3vbD1qgInRM1HJ556cCTCB4bjm/WB8KH/Zp0S
+ wXE300WvvKqO2IOAovOL6Map7XqiMdWk2h2ORwS/Qxqs3I7KLb4P6zm28/nF4sx+8/+vEkjK/
+ ZXIkrbSIyl8cmYcia/Yxv6FyDaC47W+yTqLpK3VBAtg+b+KVlVEi13HIgOxX32R9O5zoOe51V
+ KKFxPAvTP0l2xRx9hZnNyGiNbmwhWrlLaxlc6Ruaj5QgDy8KWYiPih/3nK0PQ
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,36 +75,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Edmundo Carmona Antoranz <eantoranz@gmail.com>,
- kernel-janitors@vger.kernel.org
+Cc: driverdevel <devel@driverdev.osuosl.org>,
+ gregkh <gregkh@linuxfoundation.org>, kernel-janitors@vger.kernel.org,
+ forest@alittletooquiet.net
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-UmVtb3ZpbmcgMiBpbnN0YW5jZXMgb2YgYWxpZ25tZW50IHdhcm5pbmdzCgpkcml2ZXJzL3N0YWdp
-bmcvdnQ2NjU1L3J4dHguaDoxNTM6MTogd2FybmluZzogYWxpZ25tZW50IDEgb2Yg4oCYc3RydWN0
-IHZudF9jdHPigJkgaXMgbGVzcyB0aGFuIDIgWy1XcGFja2VkLW5vdC1hbGlnbmVkXQpkcml2ZXJz
-L3N0YWdpbmcvdnQ2NjU1L3J4dHguaDoxNjM6MTogd2FybmluZzogYWxpZ25tZW50IDEgb2Yg4oCY
-c3RydWN0IHZudF9jdHNfZmLigJkgaXMgbGVzcyB0aGFuIDIgWy1XcGFja2VkLW5vdC1hbGlnbmVk
-XQoKVGhlIHJvb3QgY2F1c2Ugc2VlbXMgdG8gYmUgdGhhdCBfYmVjYXVzZV8gc3RydWN0IGllZWU4
-MDIxMV9jdHMgaXMgbWFya2VkIGFzIF9fYWxpZ25lZCgyKSwKdGhpcyByZXF1aXJlcyBhbnkgZW5j
-YXBzdWxhdGluZyBzdHJ1Y3QgdG8gYWxzbyBoYXZlIGFuIGFsaWdubWVudCBvZiAyLgoKRml4ZXM6
-IDJmYWYxMmM1N2VmZSAoInN0YWdpbmc6IHZ0NjY1eDogZml4IGFsaWdubWVudCBjb25zdHJhaW50
-cyIpClNpZ25lZC1vZmYtYnk6IEVkbXVuZG8gQ2FybW9uYSBBbnRvcmFueiA8ZWFudG9yYW56QGdt
-YWlsLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvdnQ2NjU1L3J4dHguaCB8IDQgKystLQogMSBm
-aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
-YS9kcml2ZXJzL3N0YWdpbmcvdnQ2NjU1L3J4dHguaCBiL2RyaXZlcnMvc3RhZ2luZy92dDY2NTUv
-cnh0eC5oCmluZGV4IGU3MDYxZDM4MzMwNi4uYzNjMmMxNTY2ODgyIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL3N0YWdpbmcvdnQ2NjU1L3J4dHguaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvdnQ2NjU1L3J4
-dHguaApAQCAtMTUwLDcgKzE1MCw3IEBAIHN0cnVjdCB2bnRfY3RzIHsKIAl1MTYgcmVzZXJ2ZWQ7
-CiAJc3RydWN0IGllZWU4MDIxMV9jdHMgZGF0YTsKIAl1MTYgcmVzZXJ2ZWQyOwotfSBfX3BhY2tl
-ZDsKK30gX19wYWNrZWQgX19hbGlnbmVkKDIpOwogCiBzdHJ1Y3Qgdm50X2N0c19mYiB7CiAJc3Ry
-dWN0IHZudF9waHlfZmllbGQgYjsKQEAgLTE2MCw3ICsxNjAsNyBAQCBzdHJ1Y3Qgdm50X2N0c19m
-YiB7CiAJX19sZTE2IGN0c19kdXJhdGlvbl9iYV9mMTsKIAlzdHJ1Y3QgaWVlZTgwMjExX2N0cyBk
-YXRhOwogCXUxNiByZXNlcnZlZDI7Ci19IF9fcGFja2VkOworfSBfX3BhY2tlZCBfX2FsaWduZWQo
-Mik7CiAKIHN0cnVjdCB2bnRfdHhfZmlmb19oZWFkIHsKIAl1OCB0eF9rZXlbV0xBTl9LRVlfTEVO
-X0NDTVBdOwotLSAKMi4zMC4yCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9y
-ZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcml2ZXJkZXYtZGV2ZWwK
+T24gVHVlLCBNYXIgMTYsIDIwMjEgYXQgNzoxNyBQTSBFZG11bmRvIENhcm1vbmEgQW50b3JhbnoK
+PGVhbnRvcmFuekBnbWFpbC5jb20+IHdyb3RlOgo+Cj4gUmVtb3ZpbmcgMiBpbnN0YW5jZXMgb2Yg
+YWxpZ25tZW50IHdhcm5pbmdzCj4KPiBkcml2ZXJzL3N0YWdpbmcvdnQ2NjU1L3J4dHguaDoxNTM6
+MTogd2FybmluZzogYWxpZ25tZW50IDEgb2Yg4oCYc3RydWN0IHZudF9jdHPigJkgaXMgbGVzcyB0
+aGFuIDIgWy1XcGFja2VkLW5vdC1hbGlnbmVkXQo+IGRyaXZlcnMvc3RhZ2luZy92dDY2NTUvcnh0
+eC5oOjE2MzoxOiB3YXJuaW5nOiBhbGlnbm1lbnQgMSBvZiDigJhzdHJ1Y3Qgdm50X2N0c19mYuKA
+mSBpcyBsZXNzIHRoYW4gMiBbLVdwYWNrZWQtbm90LWFsaWduZWRdCj4KPiBUaGUgcm9vdCBjYXVz
+ZSBzZWVtcyB0byBiZSB0aGF0IF9iZWNhdXNlXyBzdHJ1Y3QgaWVlZTgwMjExX2N0cyBpcyBtYXJr
+ZWQgYXMgX19hbGlnbmVkKDIpLAo+IHRoaXMgcmVxdWlyZXMgYW55IGVuY2Fwc3VsYXRpbmcgc3Ry
+dWN0IHRvIGFsc28gaGF2ZSBhbiBhbGlnbm1lbnQgb2YgMi4KPgo+IEZpeGVzOiAyZmFmMTJjNTdl
+ZmUgKCJzdGFnaW5nOiB2dDY2NXg6IGZpeCBhbGlnbm1lbnQgY29uc3RyYWludHMiKQo+IFNpZ25l
+ZC1vZmYtYnk6IEVkbXVuZG8gQ2FybW9uYSBBbnRvcmFueiA8ZWFudG9yYW56QGdtYWlsLmNvbT4K
+ClJldmlld2VkLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
+ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
