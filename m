@@ -2,90 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9189C33CFA5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 09:22:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3137533D145
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 10:59:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1B43C4EC70;
-	Tue, 16 Mar 2021 08:22:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5C50A4EC7D;
+	Tue, 16 Mar 2021 09:59:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QiINUQGENyXn; Tue, 16 Mar 2021 08:22:12 +0000 (UTC)
+	with ESMTP id 4ppqYHasKuyJ; Tue, 16 Mar 2021 09:59:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CB2404EBD3;
-	Tue, 16 Mar 2021 08:22:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2B46F4D8E4;
+	Tue, 16 Mar 2021 09:59:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 15DD81BF44A
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:22:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BCF751BF20B
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 09:59:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 118D74EBF4
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 08:22:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AABD360654
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 09:59:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kfU8ZaFOh-ye for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 08:22:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KX5XBjTunbaL for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 09:59:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 336FE4EBD3
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:21:59 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12G8JLFc061530;
- Tue, 16 Mar 2021 08:21:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=WPqOs10vxLdfOS0/dMZowuYNwWIQI0GFuuttBriqaUM=;
- b=QUC3bkOMpqJ74jJgYmqQsYeT9o2J8Xqngdubrqy163wYHz3kLGI7O3r0Orykbb3tRBrf
- zu4BpB9eiyXJYv1CracZBi0wD2VEcAMSS9mcMDKBiJxExLAsc8MCuuje81TJh5OzVE8l
- cTzs5ewQaPHLvTcE5eYKoliUnqqnOowtznOFxDrJ3aiMESc8XzEvLxhCWEmAw2imLLnT
- TVTypjig44Ru+aun/hMQoIFavCsu5SASgD3cVgD2IN6uftZ3WAr/YviJmTTqdMBz8nQS
- B/VnE9OHBDzjw3Sf8XhKYsY8zE5dx9Rz+b8u/WQ3N3ZLjUaCHhL679AELYpPxg+xrF19 LQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 378nbm6pwd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Mar 2021 08:21:59 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 12G8Joq5134140;
- Tue, 16 Mar 2021 08:21:56 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 3797ayrg2p-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Mar 2021 08:21:56 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 12G8Lstc010770;
- Tue, 16 Mar 2021 08:21:54 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 16 Mar 2021 08:21:54 +0000
-Date: Tue, 16 Mar 2021 11:21:46 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Marco Cesati <marcocesati@gmail.com>
-Subject: Re: [PATCH 00/57] Staging: rtl8723bs: fix POINTER_LOCATION whitespaces
-Message-ID: <20210316082146.GQ2087@kadam>
-References: <20210315170618.2566-1-marcocesati@gmail.com>
+Received: from lucky1.263xmail.com (lucky1.263xmail.com [211.157.147.131])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 476EE60629
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 09:59:27 +0000 (UTC)
+Received: from localhost (unknown [192.168.167.235])
+ by lucky1.263xmail.com (Postfix) with ESMTP id DEFB1B9C13;
+ Tue, 16 Mar 2021 17:59:23 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED: 0
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [111.207.172.18])
+ by smtp.263.net (postfix) whith ESMTP id
+ P24307T139684751603456S1615888764106483_; 
+ Tue, 16 Mar 2021 17:59:24 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <d7221418796d3fc50478431db0aa96c7>
+X-RL-SENDER: zhaoxiao@uniontech.com
+X-SENDER: zhaoxiao@uniontech.com
+X-LOGIN-NAME: zhaoxiao@uniontech.com
+X-FST-TO: gregkh@linuxfoundation.org
+X-SENDER-IP: 111.207.172.18
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: zhaoxiao <zhaoxiao@uniontech.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8192u: remove extra lines
+Date: Tue, 16 Mar 2021 17:59:22 +0800
+Message-Id: <20210316095922.21123-1-zhaoxiao@uniontech.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210315170618.2566-1-marcocesati@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9924
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0 bulkscore=0
- malwarescore=0 adultscore=0 mlxscore=0 mlxlogscore=999 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2103160056
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9924
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- impostorscore=0
- malwarescore=0 adultscore=0 mlxscore=0 clxscore=1015 mlxlogscore=999
- lowpriorityscore=0 phishscore=0 priorityscore=1501 spamscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2103160056
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,37 +71,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Larry Finger <Larry.Finger@lwfinger.net>, Hans de Goede <hdegoede@redhat.com>
+Cc: devel@driverdev.osuosl.org, zhaoxiao <zhaoxiao@uniontech.com>,
+ linux-kernel@vger.kernel.org, serrazimone@gmail.com, lu@pplo.net,
+ dan.carpenter@oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 15, 2021 at 06:05:21PM +0100, Marco Cesati wrote:
-> This set of patches fixes 522 checkpatch.pl errors of type
-> POINTER_LOCATION in the staging/rtl8723bs souce code. Every patch is
-> purely syntactical: it does not change the generated machine code.
-> Furthermore, every single patch leaves the source code fully compilable,
-> so that 'git bisect' will not be affected.
+Remove extra lines in the struct r8192_private_args.
 
-Hopefully that part can be assumed.  :P
+Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
+---
+ drivers/staging/rtl8192u/r8192U_wx.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-> 
-> The checkpatch.pl script emits many errors and warnings for these
-> patches, however all of them are caused by the original code. They shall
-> be fixed in different patchsets.
+diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
+index 6ead461e3279..e9de7dc8f049 100644
+--- a/drivers/staging/rtl8192u/r8192U_wx.c
++++ b/drivers/staging/rtl8192u/r8192U_wx.c
+@@ -879,12 +879,10 @@ static iw_handler r8192_wx_handlers[] = {
+ 
+ 
+ static const struct iw_priv_args r8192_private_args[] = {
+-
+ 	{
+ 		SIOCIWFIRSTPRIV + 0x0,
+ 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "badcrc"
+ 	},
+-
+ 	{
+ 		SIOCIWFIRSTPRIV + 0x1,
+ 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "activescan"
+@@ -897,7 +895,6 @@ static const struct iw_priv_args r8192_private_args[] = {
+ 	{
+ 		SIOCIWFIRSTPRIV + 0x3,
+ 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "forcereset"
+-
+ 	}
+ 
+ };
+-- 
+2.20.1
 
-Yep.  You maybe went a tad too aggressive in fixing the checkpatch
-warnings about parentheses...  If you didn't introduce the warning, then
-you can just leave it as-is.
 
-Anyway, looks good.
-
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-regards,
-dan carpenter
 
 _______________________________________________
 devel mailing list
