@@ -1,77 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A05B33D786
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 16:32:50 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D42F33D787
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Mar 2021 16:33:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0115183D40;
-	Tue, 16 Mar 2021 15:32:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 990344ED99;
+	Tue, 16 Mar 2021 15:33:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MyPIWfFxGo3b; Tue, 16 Mar 2021 15:32:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g6vS2BNpO7rP; Tue, 16 Mar 2021 15:33:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4846383DA8;
-	Tue, 16 Mar 2021 15:32:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 86F114EC80;
+	Tue, 16 Mar 2021 15:33:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 57C9F1BF97D
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:32:36 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C82471BF301
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:32:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 79B804319A
- for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:32:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B2E3C4EBBD
+ for <devel@linuxdriverproject.org>; Tue, 16 Mar 2021 15:32:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AbjvcuTvbeUf for <devel@linuxdriverproject.org>;
- Tue, 16 Mar 2021 15:32:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 36dM9vLu68Uc for <devel@linuxdriverproject.org>;
+ Tue, 16 Mar 2021 15:32:52 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
- [IPv6:2a00:1450:4864:20::32c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D2F6643003
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 15:32:34 +0000 (UTC)
-Received: by mail-wm1-x32c.google.com with SMTP id g20so10342088wmk.3
- for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:32:34 -0700 (PDT)
+Received: from mail-wr1-x433.google.com (mail-wr1-x433.google.com
+ [IPv6:2a00:1450:4864:20::433])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EBD8E4EC80
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 15:32:51 +0000 (UTC)
+Received: by mail-wr1-x433.google.com with SMTP id v11so7662822wro.7
+ for <devel@driverdev.osuosl.org>; Tue, 16 Mar 2021 08:32:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=fbhvIGnCMuZh+oOiKyd2X4ban09eYtOYnrdH/9nbbZM=;
- b=Tbk40TlS62DwaE6EvfTOODLCAnNH49T9slNVOQxvRDvGvApoGIbgjZ7M650QTrJK8y
- IiFtWB6P1bu9c8e1spndMlE782kkHW293Huci1PYvxFBA0kHk3j8LP8CdJBlGrrodf30
- WIKk+S4kHU9l0tdB3bzHURTQ62lq5PPirsQGTFlgR5OATcrV+NpjtnLzMOTf6xT7WweT
- MIUwuiBolvTQRl+/uKVqYQdDpc61PyR0vqWi6Nm4gvP6TTlYme7oyzktnh2wh0aP94Nq
- 1L0lB7eONEG+b947LOizaYGXMZ1RD9WqhFmTMlPDz8p6EVhQSBBTsBuKbnuLjQ98YbBd
- Aj8Q==
+ bh=oWQ6OIsRDcKO27uNJJ+4rAAZ4GQmFLXXw3hOBTbFDWY=;
+ b=fZvJW0AvwTfsbRqI8dznMHkiGQRN+fHxMnwNmoa/MjenBeViCQOIRx6GmPw4uy8PRC
+ Jnar7jX43ZNDt5KkD7uLqr/za11euvdXxtVkb0OdVpky1rXteDYo63+7Mcxvw4WRb2T3
+ o5AmKX5l4CjGdhUC/QFbvRp5s8dp76Nyrv514xGXoT+uDBNdrHaVOrP17LHN22E7BxHv
+ vNl5I4riH6MRrTkcAx95casBT3/3ZF/9xjTeLj0yG56FmelmfAa3kIgBn0KHbIMfyubK
+ kU0/lkTAXfRxVDdQdiFZfPLPoace0NwpmL79U78uudVksmRSH16pQGGML9suLtZOhGjz
+ HsBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=fbhvIGnCMuZh+oOiKyd2X4ban09eYtOYnrdH/9nbbZM=;
- b=f1g2JGttlihfCQogqeOi4bcp2ufC/RV7/opkUC1j1SJwqtPiXPrHmfGvQDSpc10VFG
- 02o5cyEjwquwfpq+TLqmsnRqXKcWW1WI9WhNPhIW24rrWan1ekR0u07vtPWmyLn+H4XX
- 2tfwSPBm8RDqhKD/SneVrJQSqNXV9VGrux+tgte8V9oZhiCjzo25v5z/vHJC4yY/ZuTq
- 8rPvie/ajLn6b60J9W0t4vU30cayjqa18pJF6SA66K/2wMIZtLeJmvLjtueeIjvyxp5x
- nhG28oGmx+AUMZ2QbOOm9wRgOFN1D4Iml50sSMK1v/H4pkcMhQQYfrs+m34QkCRlKFxT
- M7Eg==
-X-Gm-Message-State: AOAM530pukDcRkKziKtHd5K/u9sSBdQL1j6FqemgqeXUjyZcwDkabai7
- HQaSpYpk+y9vZ86IHm5A3tQ=
-X-Google-Smtp-Source: ABdhPJwZmUPnBi5HzR+A0RTMjPFOue1Y6/YS+fXQ8XiNZdOQjY4npSYWinh3DmjX80+G8SWnzXFa8Q==
-X-Received: by 2002:a1c:195:: with SMTP id 143mr192505wmb.147.1615908753138;
- Tue, 16 Mar 2021 08:32:33 -0700 (PDT)
+ bh=oWQ6OIsRDcKO27uNJJ+4rAAZ4GQmFLXXw3hOBTbFDWY=;
+ b=h9n+vGogh8/JMzcW6fSwMYjHjjdsuGOrYljNFaN9nGRyCU+tla/SZdmk71Ml/6lV4e
+ XMIZ92NkXZb5NrdRnLa7ChJXtwD4T0XydEBMsuMD/ZdjGwzg0quhltTYmmGpxTaDipes
+ UkfRkB58OFhnq8FtlXIMMtE6b1YIx9mA/Se65YCZ9o3Rzd/M/2wWPxtc+W/48/qlPP0l
+ x5KGaiFfZKIcy0s9WCOs19OlH0jio1HCJm+vtQQavcI3JnjU7Y+SjE2MYopq5ifH+RoR
+ 1nsyGrYZoHXmvWjK5J6YvnphMGcqClsmvORNKsRFGML/RkUHT79n8KaiqVrxAXlkTte/
+ vLFQ==
+X-Gm-Message-State: AOAM533gMUkyQ+YVT6TSzz9dIrPFINtEqeUQs2fsf5JNoBuh6AXJH/it
+ /O3/lr9pSkNoFLczZwqZJtQ=
+X-Google-Smtp-Source: ABdhPJyrKTWi6fmzZOmU08lMmubTx5kuRmyFj9aM5EI/mC4baczwD0iTjp86C57yDOnt3/Uv6m/c0Q==
+X-Received: by 2002:adf:e548:: with SMTP id z8mr5672857wrm.246.1615908770351; 
+ Tue, 16 Mar 2021 08:32:50 -0700 (PDT)
 Received: from agape.jhs ([5.171.72.71])
- by smtp.gmail.com with ESMTPSA id j136sm3525932wmj.35.2021.03.16.08.32.32
+ by smtp.gmail.com with ESMTPSA id s8sm23408659wrn.97.2021.03.16.08.32.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 08:32:32 -0700 (PDT)
-Date: Tue, 16 Mar 2021 16:32:30 +0100
+ Tue, 16 Mar 2021 08:32:50 -0700 (PDT)
+Date: Tue, 16 Mar 2021 16:32:47 +0100
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 09/12] staging: rtl8723bs: remove unused code blocks
- conditioned by never set CONFIG_RX_INDICATE_QUEUE
-Message-ID: <0f677a975f92b38f6ad1ff21c1006855a075692b.1615907632.git.fabioaiuto83@gmail.com>
+Subject: [PATCH 10/12] staging: rtl8723bs: remove unused code blocks
+ conditioned by never set CONFIG_BSD_RX_USE_MBUF
+Message-ID: <b65806d8bbbb686af247d945cc25e73234e4cbb4.1615907632.git.fabioaiuto83@gmail.com>
 References: <cover.1615907632.git.fabioaiuto83@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -96,7 +94,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 remove conditional code blocks checked by unused
-CONFIG_RX_INDICATE_QUEUE
+CONFIG_BSD_RX_USE_MBUF
 
 cleaning required in TODO file:
 
@@ -104,24 +102,27 @@ find and remove code blocks guarded by never set CONFIG_FOO defines
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/rtw_recv.h | 4 ----
- 1 file changed, 4 deletions(-)
+ drivers/staging/rtl8723bs/include/rtw_recv.h | 5 -----
+ 1 file changed, 5 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
-index acd7a7714740..3443cb7d0467 100644
+index 3443cb7d0467..b298ec121ee9 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_recv.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
-@@ -226,10 +226,6 @@ struct recv_priv {
- 	struct tasklet_struct recv_tasklet;
- 	struct sk_buff_head free_recv_skb_queue;
- 	struct sk_buff_head rx_skb_queue;
--#ifdef CONFIG_RX_INDICATE_QUEUE
--	struct task rx_indicate_tasklet;
--	struct ifqueue rx_indicate_queue;
--#endif	/*  CONFIG_RX_INDICATE_QUEUE */
+@@ -317,13 +317,8 @@ struct recv_buf {
+ */
+ struct recv_frame_hdr {
+ 	struct list_head	list;
+-#ifndef CONFIG_BSD_RX_USE_MBUF
+ 	struct sk_buff	 *pkt;
+ 	struct sk_buff	 *pkt_newalloc;
+-#else /*  CONFIG_BSD_RX_USE_MBUF */
+-	struct sk_buff	*pkt;
+-	struct sk_buff *pkt_newalloc;
+-#endif /*  CONFIG_BSD_RX_USE_MBUF */
  
- 	u8 *pallocated_recv_buf;
- 	u8 *precv_buf;    /*  4 alignment */
+ 	struct adapter  *adapter;
+ 
 -- 
 2.20.1
 
