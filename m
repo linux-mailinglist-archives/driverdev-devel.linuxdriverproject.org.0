@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2702133E324
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 01:56:36 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BE0D33E383
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 01:57:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 51DF7431E3;
-	Wed, 17 Mar 2021 00:56:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BBD5183A93;
+	Wed, 17 Mar 2021 00:57:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HB0T_opwnWYN; Wed, 17 Mar 2021 00:56:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ifxdpUGgUfOf; Wed, 17 Mar 2021 00:57:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A0A0C431C7;
-	Wed, 17 Mar 2021 00:56:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E2B608385D;
+	Wed, 17 Mar 2021 00:57:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B41731BF393
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 00:56:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 46BB31BF393
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 00:57:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B0F7D83870
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 00:56:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 362B260684
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 00:57:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SNwiTD9d4MuB for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 00:56:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JDM6zgMDmX27 for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 00:57:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8C45B83857
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 00:56:21 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5664A64FA5;
- Wed, 17 Mar 2021 00:56:20 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7752E60604
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 00:57:38 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8FB1564FD6;
+ Wed, 17 Mar 2021 00:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615942581;
+ s=k20201202; t=1615942657;
  bh=zAtzDfQAXaeOAB0+XE+qy9KzeC4/LjIy8j9dzfmTH9g=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=pSBAg+BpA5lMeHWF59kn3bYEY/XgfPhgxI4jvZfRPvAioN0wRa723hQFZRXrvHrrK
- +XDYuCV08z7C+Pea4Uy4V3+/++RsAe2ykQ8coZ+RxXIp+VsC2z3+JkPNZVGBkD4KzB
- WKvTSsINcOva0oKJ26EDVnv/il5/vhtLQ6vLvsLKgY65c1edhc+MIPz3QeyVEdTrZS
- DfeX7glj76fa/pmUu8DLIC6Hx0bSv2Frrcji8GsxWuEuWJkfXzx8BD1pAg887wRy9v
- eURtl8gchF+QCHhCEltUTpulVA9sGPRKL+TROL1eNnnzXkvjYKTMyJBkD1ipsmTynx
- VhPQgKu4jWkuQ==
+ b=gwaH8Cgpelyu4YVbaeEqNO7Vnp75Q7rrrHp19StjUswSdZX6ra/aOuUx1IMa/Zl/Q
+ 3cUWz1mJWFEGGZZuiRAdqaVkYYj+hYtylRyaVVvKC8ah3m7+ZCFs/JupaiSEi/APG0
+ SIEuoQtv01RDzNRwdwA8m72KJ8b3fHOYD5oELKSdIp0VlS1hz/0jt+5M4/Gz7UKAcO
+ hqyoUL9C8IwYQL/oEv90yNuOu+g+/vY/M6ocsKh3WLWCS2Tlg70RJQWubEk1/kX0ya
+ KouzcUHrDTg11KBdQOHKqXpHD8YNIW0fqTyXqnMqp+RFxY1K5JMqjz9VBF+d5ISC3g
+ 6E110De3M9YPQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.11 37/61] staging: rtl8192e: fix kconfig dependency
+Subject: [PATCH AUTOSEL 5.10 35/54] staging: rtl8192e: fix kconfig dependency
  on CRYPTO
-Date: Tue, 16 Mar 2021 20:55:11 -0400
-Message-Id: <20210317005536.724046-37-sashal@kernel.org>
+Date: Tue, 16 Mar 2021 20:56:34 -0400
+Message-Id: <20210317005654.724862-35-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210317005536.724046-1-sashal@kernel.org>
-References: <20210317005536.724046-1-sashal@kernel.org>
+In-Reply-To: <20210317005654.724862-1-sashal@kernel.org>
+References: <20210317005654.724862-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
