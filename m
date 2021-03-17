@@ -2,79 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A8FC33FB0E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:25:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AF9C33FB0F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:25:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1006F84172;
-	Wed, 17 Mar 2021 22:25:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DBADF8416D;
+	Wed, 17 Mar 2021 22:25:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sKnrCmhlgr43; Wed, 17 Mar 2021 22:25:20 +0000 (UTC)
+	with ESMTP id oeKdozt8w8uo; Wed, 17 Mar 2021 22:25:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 557F0836A5;
-	Wed, 17 Mar 2021 22:25:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C44EA84167;
+	Wed, 17 Mar 2021 22:25:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3852B1BF21A
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AEFC51BF21A
  for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 27418430A8
+ by smtp1.osuosl.org (Postfix) with ESMTP id AAB5A84150
  for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S6i2G2UBHO7h for <devel@linuxdriverproject.org>;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rzkWX-nSjJRO for <devel@linuxdriverproject.org>;
  Wed, 17 Mar 2021 22:21:36 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
- [IPv6:2a00:1450:4864:20::629])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 04F5B43096
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:35 +0000 (UTC)
-Received: by mail-ej1-x629.google.com with SMTP id va9so817083ejb.12
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:35 -0700 (PDT)
+Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com
+ [IPv6:2a00:1450:4864:20::631])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9D594840FE
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:36 +0000 (UTC)
+Received: by mail-ej1-x631.google.com with SMTP id a7so819467ejs.3
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=jcipTIjhdcQhOL3Be0TE1r3tRX5Z+83WhZg3pcaZmwI=;
- b=Q44L5wxPfsxbXZJ4iI7Rzs9OS4KIxpAd+S4LPz876Jn+RbaMX5vvNvvoq4l20eOMrK
- PRXRIo9Ko7J4DhfzvnI7D1zEyUWYezeqj1uUPRxSs2Y9R0my3hFY3BMtq+YFt0YbhFzX
- ByvYFLpWT0Twpvghmqn36oJn01LF9DZSfPuChiVu2ra8j+aFuoqd99otwPLjjLn2NpSj
- 7ZkZ4TxP6zKKLtwc5PDr/dRuKT91iPXy+fRK8kM4JUiUS+6KWwOQtQRH328T1+yRLFR4
- VjDjIWA+/MFK63Dkxy0v3EjD2gvA9odJnFken5RhQHKx/ZT0ytsrHQN3tYQOYrss2ozV
- LRJQ==
+ bh=vYKH2sDZU6+oV1GZMjwo+uF+z70EHasZAP4OlUrYLTU=;
+ b=YgtNjzYB4hNoq4Mh/VOT/GRWDnfb5M4MFKM/CDIiabk4/ybVH9vKPUPcbXk+Fgc6yN
+ K55w3Gi+DTFGHQS1KqRNAvpS2jU8Kc4w9UkvCrPnNu7STM8Ldgp2EDRt/gnpTrN9jsyJ
+ onCz8hoItuaK7DYzmUoUyIrJcMQLjSyvwbVdqAf6+EYcRPqPe5WCzieHtorxV2qoS+NK
+ d00cSK9X2J67w1tPu0/tD3rKMbPpbPKDB5pF9eyuaK8wh54YvKlM8jiheID+h7b/Z/3z
+ EEBDgOEvgXlYqwSKldQ4EgZyJ3RlawJdpU6QbMzFoBdLpCxE9ODZH5I7X4a7srgCIQ73
+ 8Ajw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jcipTIjhdcQhOL3Be0TE1r3tRX5Z+83WhZg3pcaZmwI=;
- b=ExKuza/OXIji24HGEEkhtRkkXKP7LjIixPRovNC/nbbyob1KvYY+vbJ2T1FyfwqOxb
- oP1f0RgxewKknjhdkEe7tbo4MX2cAem9fsUSJoOlrYZQueYxh7iv5VzEqLmgDsUYBGFN
- 9Tc2I0cKBYC6QnGef9xiPoOE6dwnTSozPEBB0iJ1OxGS3yqeh3Qbt34+fUx8qNndVyDo
- wn1VU5iCC7XiFLdHvF7Y7Pv7XbHJi5qiHiplEL7zzmXQyWtfAavXUbKSunP9o5gl2thg
- 3OW2pDbnM7CcHBCgLJrW2s7VSQ3svztLKiXHl7spCZULsWk6vlhrzndfTtLhHvyqx3ky
- 5yOw==
-X-Gm-Message-State: AOAM533W1oGptz8NYd/YvYCWvW0PLiLUhkci/CJxOIIExBYoE4n/e3ho
- SOPjWawmC4PrCjoin/ox0kE=
-X-Google-Smtp-Source: ABdhPJzm30BqS9HYdzI6Osh0yCt8a3VQQC4fIeWYtZ+OCZulIEMY/9d/jsFk3B0j5IIMlC2Fd00E5w==
-X-Received: by 2002:a17:906:ad96:: with SMTP id
- la22mr39191332ejb.237.1616019694066; 
+ bh=vYKH2sDZU6+oV1GZMjwo+uF+z70EHasZAP4OlUrYLTU=;
+ b=WMORluSiqAecyU4hY2QvMWZI6wdpaUxfZqRbBNg6NU5BXuY/d4JL9qoHXmXhPelA5Y
+ Z26hZm/jL2BNgmOHynlOf0Jt0UX10lC1qORhH2P3K4+YxWrt/HT22CVKkRlrpmtqMY3b
+ V9wnWWpKjYyly4rI7eVCs5OKQEJndPMJ+ETtMfxQRcnwDeZMa7vmsFzjJV6aHdGF4izf
+ ayKFyLekiBXyZXqNzunDfuze+fUGcThFl7Sk1D10XOK3vTQ0v5cx/E5YudLcotKVOKwA
+ ODkQOZ7NJfaQEIJj1JL1kUG7RJkIhjBvJXRyKShr2YceMAsetOV6SPIKnQDkWPzyRKxa
+ AISQ==
+X-Gm-Message-State: AOAM530PQvevtLorJ5coAkkWNyEK9SMRfA7zS8Mhm0NRzPSw6mFxE5So
+ DS8ifKmLIhaH5p3jdVYml8I=
+X-Google-Smtp-Source: ABdhPJyhkMHdG3VHJzYTKrZX4G0GF6gWZwMXv99mjjpCrUN4EjJkla1SDATCTVH95+d70HdMlhITzg==
+X-Received: by 2002:a17:906:8614:: with SMTP id
+ o20mr36677111ejx.386.1616019694908; 
  Wed, 17 Mar 2021 15:21:34 -0700 (PDT)
 Received: from gimli.home (93-48-145-141.ip257.fastwebnet.it. [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id
- cf4sm104304edb.19.2021.03.17.15.21.33
+ cf4sm104304edb.19.2021.03.17.15.21.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Mar 2021 15:21:33 -0700 (PDT)
+ Wed, 17 Mar 2021 15:21:34 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 22/43] Staging: rtl8723bs: fix names in rtw_rf.h
-Date: Wed, 17 Mar 2021 23:21:09 +0100
-Message-Id: <20210317222130.29528-23-marcocesati@gmail.com>
+Subject: [PATCH 23/43] Staging: rtl8723bs: fix names in HalPwrSeqCmd.h
+Date: Wed, 17 Mar 2021 23:21:10 +0100
+Message-Id: <20210317222130.29528-24-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210317222130.29528-1-marcocesati@gmail.com>
 References: <20210317222130.29528-1-marcocesati@gmail.com>
@@ -97,337 +95,194 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit converts names of structs / enums
-in include/rtw_rf.h from ALL_CAPS format to lowercase
+in include/HalPwrSeqCmd.h from ALL_CAPS format to lowercase
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_com_phycfg.c |  8 ++++----
- drivers/staging/rtl8723bs/hal/hal_intf.c       |  2 +-
- .../staging/rtl8723bs/hal/rtl8723b_phycfg.c    | 16 ++++++++--------
- .../staging/rtl8723bs/hal/rtl8723b_rf6052.c    |  2 +-
- .../staging/rtl8723bs/include/hal_com_phycfg.h |  6 +++---
- drivers/staging/rtl8723bs/include/hal_data.h   |  2 +-
- drivers/staging/rtl8723bs/include/hal_intf.h   |  6 +++---
- .../staging/rtl8723bs/include/hal_phy_cfg.h    |  6 +++---
- .../staging/rtl8723bs/include/rtl8723b_rf.h    |  2 +-
- drivers/staging/rtl8723bs/include/rtw_rf.h     | 18 +++++++++---------
- 10 files changed, 34 insertions(+), 34 deletions(-)
+ drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c  |  4 ++--
+ drivers/staging/rtl8723bs/hal/hal_pwr_seq.c   | 22 +++++++++----------
+ .../staging/rtl8723bs/include/HalPwrSeqCmd.h  |  6 ++---
+ .../staging/rtl8723bs/include/hal_pwr_seq.h   | 22 +++++++++----------
+ 4 files changed, 27 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
-index b46db8909cb4..586e3ded447f 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
-@@ -1039,7 +1039,7 @@ u8 PHY_GetTxPowerIndexBase(
- 	struct adapter *padapter,
- 	u8 RFPath,
- 	u8 Rate,
--	enum CHANNEL_WIDTH	BandWidth,
-+	enum channel_width	BandWidth,
- 	u8 Channel,
- 	bool *bIn24G
- )
-@@ -1556,7 +1556,7 @@ void PHY_SetTxPowerLevelByPath(struct adapter *Adapter, u8 channel, u8 path)
- void PHY_SetTxPowerIndexByRateArray(
- 	struct adapter *padapter,
- 	u8 RFPath,
--	enum CHANNEL_WIDTH BandWidth,
-+	enum channel_width BandWidth,
- 	u8 Channel,
- 	u8 *Rates,
- 	u8 RateArraySize
-@@ -1610,7 +1610,7 @@ static s8 phy_GetChannelIndexOfTxPowerLimit(u8 Band, u8 Channel)
- 	return channelIndex;
- }
- 
--static s16 get_bandwidth_idx(const enum CHANNEL_WIDTH bandwidth)
-+static s16 get_bandwidth_idx(const enum channel_width bandwidth)
- {
- 	switch (bandwidth) {
- 	case CHANNEL_WIDTH_20:
-@@ -1673,7 +1673,7 @@ static s16 get_rate_sctn_idx(const u8 rate)
- }
- 
- s8 phy_get_tx_pwr_lmt(struct adapter *adapter, u32 reg_pwr_tbl_sel,
--		      enum band_type band_type, enum CHANNEL_WIDTH bandwidth,
-+		      enum band_type band_type, enum channel_width bandwidth,
- 		      u8 rf_path, u8 data_rate, u8 channel)
- {
- 	s16 idx_band       = -1;
-diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c b/drivers/staging/rtl8723bs/hal/hal_intf.c
-index 8554baef95b8..aa4356327636 100644
---- a/drivers/staging/rtl8723bs/hal/hal_intf.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
-@@ -342,7 +342,7 @@ void rtw_hal_set_chan(struct adapter *padapter, u8 channel)
- }
- 
- void rtw_hal_set_chnl_bw(struct adapter *padapter, u8 channel,
--			 enum CHANNEL_WIDTH Bandwidth, u8 Offset40, u8 Offset80)
-+			 enum channel_width Bandwidth, u8 Offset40, u8 Offset80)
- {
- 	if (padapter->HalFunc.set_chnl_bw_handler)
- 		padapter->HalFunc.set_chnl_bw_handler(padapter, channel,
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
-index 9a41c185cf84..52cb58dc4e8d 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c
-@@ -559,7 +559,7 @@ u8 PHY_GetTxPowerIndex(
- 	struct adapter *padapter,
- 	u8 RFPath,
- 	u8 Rate,
--	enum CHANNEL_WIDTH BandWidth,
-+	enum channel_width BandWidth,
- 	u8 Channel
+diff --git a/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c b/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c
+index c1c9914d9b49..932b31fda6ad 100644
+--- a/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c
++++ b/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c
+@@ -39,10 +39,10 @@ u8 HalPwrSeqCmdParsing(
+ 	u8 CutVersion,
+ 	u8 FabVersion,
+ 	u8 InterfaceType,
+-	struct WLAN_PWR_CFG PwrSeqCmd[]
++	struct wlan_pwr_cfg PwrSeqCmd[]
  )
  {
-@@ -616,7 +616,7 @@ void PHY_GetTxPowerLevel8723B(struct adapter *Adapter, s32 *powerlevel)
- }
+-	struct WLAN_PWR_CFG PwrCfgCmd;
++	struct wlan_pwr_cfg PwrCfgCmd;
+ 	u8 bPollingBit = false;
+ 	u32 AryIdx = 0;
+ 	u8 value = 0;
+diff --git a/drivers/staging/rtl8723bs/hal/hal_pwr_seq.c b/drivers/staging/rtl8723bs/hal/hal_pwr_seq.c
+index 2a80da26f572..fba67a7c069c 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_pwr_seq.c
++++ b/drivers/staging/rtl8723bs/hal/hal_pwr_seq.c
+@@ -21,7 +21,7 @@ Major Change History:
  
- static void phy_SetRegBW_8723B(
--	struct adapter *Adapter, enum CHANNEL_WIDTH CurrentBW
-+	struct adapter *Adapter, enum channel_width CurrentBW
- )
- {
- 	u16 RegRfMod_BW, u2tmp = 0;
-@@ -806,16 +806,16 @@ static void PHY_HandleSwChnlAndSetBW8723B(
- 	bool bSwitchChannel,
- 	bool bSetBandWidth,
- 	u8 ChannelNum,
--	enum CHANNEL_WIDTH ChnlWidth,
--	enum EXTCHNL_OFFSET ExtChnlOffsetOf40MHz,
--	enum EXTCHNL_OFFSET ExtChnlOffsetOf80MHz,
-+	enum channel_width ChnlWidth,
-+	enum extchnl_offset ExtChnlOffsetOf40MHz,
-+	enum extchnl_offset ExtChnlOffsetOf80MHz,
- 	u8 CenterFrequencyIndex1
- )
- {
- 	/* static bool		bInitialzed = false; */
- 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
- 	u8 tmpChannel = pHalData->CurrentChannel;
--	enum CHANNEL_WIDTH tmpBW = pHalData->CurrentChannelBW;
-+	enum channel_width tmpBW = pHalData->CurrentChannelBW;
- 	u8 tmpnCur40MhzPrimeSC = pHalData->nCur40MhzPrimeSC;
- 	u8 tmpnCur80MhzPrimeSC = pHalData->nCur80MhzPrimeSC;
- 	u8 tmpCenterFrequencyIndex1 = pHalData->CurrentCenterFrequencyIndex1;
-@@ -874,7 +874,7 @@ static void PHY_HandleSwChnlAndSetBW8723B(
+ /* drivers should parse below arrays and do the corresponding actions */
+ /* 3 Power on  Array */
+-struct WLAN_PWR_CFG rtl8723B_power_on_flow[
++struct wlan_pwr_cfg rtl8723B_power_on_flow[
+ 	RTL8723B_TRANS_CARDEMU_TO_ACT_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+ ] = {
+@@ -30,7 +30,7 @@ struct WLAN_PWR_CFG rtl8723B_power_on_flow[
+ };
  
- void PHY_SetBWMode8723B(
- 	struct adapter *Adapter,
--	enum CHANNEL_WIDTH Bandwidth, /*  20M or 40M */
-+	enum channel_width Bandwidth, /*  20M or 40M */
- 	unsigned char Offset /*  Upper, Lower, or Don't care */
- )
- {
-@@ -892,7 +892,7 @@ void PHY_SwChnl8723B(struct adapter *Adapter, u8 channel)
- void PHY_SetSwChnlBWMode8723B(
- 	struct adapter *Adapter,
- 	u8 channel,
--	enum CHANNEL_WIDTH Bandwidth,
-+	enum channel_width Bandwidth,
- 	u8 Offset40,
- 	u8 Offset80
- )
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c b/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c
-index aafceaf9b139..73b47f053549 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c
-@@ -55,7 +55,7 @@
-  * Note:		For RF type 0222D
-  *---------------------------------------------------------------------------*/
- void PHY_RF6052SetBandwidth8723B(
--	struct adapter *Adapter, enum CHANNEL_WIDTH Bandwidth
-+	struct adapter *Adapter, enum channel_width Bandwidth
- ) /* 20M or 40M */
- {
- 	struct hal_com_data *pHalData = GET_HAL_DATA(Adapter);
-diff --git a/drivers/staging/rtl8723bs/include/hal_com_phycfg.h b/drivers/staging/rtl8723bs/include/hal_com_phycfg.h
-index 32fd050428db..979b621f4baa 100644
---- a/drivers/staging/rtl8723bs/include/hal_com_phycfg.h
-+++ b/drivers/staging/rtl8723bs/include/hal_com_phycfg.h
-@@ -140,7 +140,7 @@ void
- PHY_SetTxPowerIndexByRateArray(
- struct adapter *padapter,
- u8 		RFPath,
--enum CHANNEL_WIDTH	BandWidth,
-+enum channel_width	BandWidth,
- u8 		Channel,
- u8		*Rates,
- u8 		RateArraySize
-@@ -172,13 +172,13 @@ PHY_GetTxPowerIndexBase(
- struct adapter *padapter,
- u8 		RFPath,
- u8 		Rate,
--enum CHANNEL_WIDTH	BandWidth,
-+enum channel_width	BandWidth,
- u8 		Channel,
- 	bool		*bIn24G
- 	);
+ /* 3Radio off GPIO Array */
+-struct WLAN_PWR_CFG rtl8723B_radio_off_flow[
++struct wlan_pwr_cfg rtl8723B_radio_off_flow[
+ 	RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+ ] = {
+@@ -39,7 +39,7 @@ struct WLAN_PWR_CFG rtl8723B_radio_off_flow[
+ };
  
- s8 phy_get_tx_pwr_lmt(struct adapter *adapter, u32 RegPwrTblSel,
--			enum band_type Band, enum CHANNEL_WIDTH Bandwidth,
-+			enum band_type Band, enum channel_width Bandwidth,
- u8 		RfPath,
- u8 		DataRate,
- u8 		Channel
-diff --git a/drivers/staging/rtl8723bs/include/hal_data.h b/drivers/staging/rtl8723bs/include/hal_data.h
-index d731cec8ab81..83a538e5120b 100644
---- a/drivers/staging/rtl8723bs/include/hal_data.h
-+++ b/drivers/staging/rtl8723bs/include/hal_data.h
-@@ -188,7 +188,7 @@ struct hal_com_data {
+ /* 3Card Disable Array */
+-struct WLAN_PWR_CFG rtl8723B_card_disable_flow[
++struct wlan_pwr_cfg rtl8723B_card_disable_flow[
+ 	RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+
+ 	RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+@@ -50,7 +50,7 @@ struct WLAN_PWR_CFG rtl8723B_card_disable_flow[
+ };
  
- 	/* current WIFI_PHY values */
- 	enum wireless_mode CurrentWirelessMode;
--	enum CHANNEL_WIDTH CurrentChannelBW;
-+	enum channel_width CurrentChannelBW;
- 	enum band_type CurrentBandType;	/* 0:2.4G, 1:5G */
- 	enum band_type BandSet;
- 	u8 CurrentChannel;
-diff --git a/drivers/staging/rtl8723bs/include/hal_intf.h b/drivers/staging/rtl8723bs/include/hal_intf.h
-index f3be4eaa9685..bfbf5fd07711 100644
---- a/drivers/staging/rtl8723bs/include/hal_intf.h
-+++ b/drivers/staging/rtl8723bs/include/hal_intf.h
-@@ -197,9 +197,9 @@ struct hal_ops {
- 	u8 (*check_ips_status)(struct adapter *padapter);
- 	s32		(*interrupt_handler)(struct adapter *padapter);
- 	void    (*clear_interrupt)(struct adapter *padapter);
--	void (*set_bwmode_handler)(struct adapter *padapter, enum CHANNEL_WIDTH Bandwidth, u8 Offset);
-+	void (*set_bwmode_handler)(struct adapter *padapter, enum channel_width Bandwidth, u8 Offset);
- 	void (*set_channel_handler)(struct adapter *padapter, u8 channel);
--	void (*set_chnl_bw_handler)(struct adapter *padapter, u8 channel, enum CHANNEL_WIDTH Bandwidth, u8 Offset40, u8 Offset80);
-+	void (*set_chnl_bw_handler)(struct adapter *padapter, u8 channel, enum channel_width Bandwidth, u8 Offset40, u8 Offset80);
+ /* 3 Card Enable Array */
+-struct WLAN_PWR_CFG rtl8723B_card_enable_flow[
++struct wlan_pwr_cfg rtl8723B_card_enable_flow[
+ 	RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+
+ 	RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+@@ -61,7 +61,7 @@ struct WLAN_PWR_CFG rtl8723B_card_enable_flow[
+ };
  
- 	void (*set_tx_power_level_handler)(struct adapter *padapter, u8 channel);
- 	void (*get_tx_power_level_handler)(struct adapter *padapter, s32 *powerlevel);
-@@ -373,7 +373,7 @@ void rtw_hal_write_rfreg(struct adapter *padapter, u32 eRFPath, u32 RegAddr, u32
- #define PHY_QueryMacReg PHY_QueryBBReg
+ /* 3Suspend Array */
+-struct WLAN_PWR_CFG rtl8723B_suspend_flow[
++struct wlan_pwr_cfg rtl8723B_suspend_flow[
+ 	RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+
+ 	RTL8723B_TRANS_CARDEMU_TO_SUS_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+@@ -72,7 +72,7 @@ struct WLAN_PWR_CFG rtl8723B_suspend_flow[
+ };
  
- void rtw_hal_set_chan(struct adapter *padapter, u8 channel);
--void rtw_hal_set_chnl_bw(struct adapter *padapter, u8 channel, enum CHANNEL_WIDTH Bandwidth, u8 Offset40, u8 Offset80);
-+void rtw_hal_set_chnl_bw(struct adapter *padapter, u8 channel, enum channel_width Bandwidth, u8 Offset40, u8 Offset80);
- void rtw_hal_dm_watchdog(struct adapter *padapter);
- void rtw_hal_dm_watchdog_in_lps(struct adapter *padapter);
+ /* 3 Resume Array */
+-struct WLAN_PWR_CFG rtl8723B_resume_flow[
++struct wlan_pwr_cfg rtl8723B_resume_flow[
+ 	RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+
+ 	RTL8723B_TRANS_CARDEMU_TO_SUS_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+@@ -83,7 +83,7 @@ struct WLAN_PWR_CFG rtl8723B_resume_flow[
+ };
  
-diff --git a/drivers/staging/rtl8723bs/include/hal_phy_cfg.h b/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
-index ed3488a09d79..ea494bcf830b 100644
---- a/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
-+++ b/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
-@@ -47,20 +47,20 @@ void PHY_SetTxPowerIndex(struct adapter *Adapter, u32 PowerIndex,
- 			 u8 RFPath, u8 Rate);
+ /* 3HWPDN Array */
+-struct WLAN_PWR_CFG rtl8723B_hwpdn_flow[
++struct wlan_pwr_cfg rtl8723B_hwpdn_flow[
+ 	RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+
+ 	RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+
+ 	RTL8723B_TRANS_END_STEPS
+@@ -94,7 +94,7 @@ struct WLAN_PWR_CFG rtl8723B_hwpdn_flow[
+ };
  
- u8 PHY_GetTxPowerIndex(struct adapter *padapter, u8 RFPath, u8 Rate,
--			enum CHANNEL_WIDTH BandWidth, u8 Channel);
-+			enum channel_width BandWidth, u8 Channel);
+ /* 3 Enter LPS */
+-struct WLAN_PWR_CFG rtl8723B_enter_lps_flow[
++struct wlan_pwr_cfg rtl8723B_enter_lps_flow[
+ 	RTL8723B_TRANS_ACT_TO_LPS_STEPS+RTL8723B_TRANS_END_STEPS
+ ] = {
+ 	/* FW behavior */
+@@ -103,7 +103,7 @@ struct WLAN_PWR_CFG rtl8723B_enter_lps_flow[
+ };
  
- void PHY_GetTxPowerLevel8723B(struct adapter *Adapter, s32 *powerlevel);
+ /* 3 Leave LPS */
+-struct WLAN_PWR_CFG rtl8723B_leave_lps_flow[
++struct wlan_pwr_cfg rtl8723B_leave_lps_flow[
+ 	RTL8723B_TRANS_LPS_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS
+ ] = {
+ 	/* FW behavior */
+@@ -112,7 +112,7 @@ struct WLAN_PWR_CFG rtl8723B_leave_lps_flow[
+ };
  
- void PHY_SetTxPowerLevel8723B(struct adapter *Adapter, u8 channel);
+ /* 3 Enter SW LPS */
+-struct WLAN_PWR_CFG rtl8723B_enter_swlps_flow[
++struct wlan_pwr_cfg rtl8723B_enter_swlps_flow[
+ 	RTL8723B_TRANS_ACT_TO_SWLPS_STEPS+RTL8723B_TRANS_END_STEPS
+ ] = {
+ 	/* SW behavior */
+@@ -121,7 +121,7 @@ struct WLAN_PWR_CFG rtl8723B_enter_swlps_flow[
+ };
  
--void PHY_SetBWMode8723B(struct adapter *Adapter, enum CHANNEL_WIDTH Bandwidth,
-+void PHY_SetBWMode8723B(struct adapter *Adapter, enum channel_width Bandwidth,
- 			unsigned char Offset);
+ /* 3 Leave SW LPS */
+-struct WLAN_PWR_CFG rtl8723B_leave_swlps_flow[
++struct wlan_pwr_cfg rtl8723B_leave_swlps_flow[
+ 	RTL8723B_TRANS_SWLPS_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS
+ ] = {
+ 	/* SW behavior */
+diff --git a/drivers/staging/rtl8723bs/include/HalPwrSeqCmd.h b/drivers/staging/rtl8723bs/include/HalPwrSeqCmd.h
+index 7e8c2e511d0b..ba9b033685ec 100644
+--- a/drivers/staging/rtl8723bs/include/HalPwrSeqCmd.h
++++ b/drivers/staging/rtl8723bs/include/HalPwrSeqCmd.h
+@@ -82,12 +82,12 @@
+ #define	PWR_CUT_ALL_MSK			0xFF
  
- /*  Call after initialization */
- void PHY_SwChnl8723B(struct adapter *Adapter, u8 channel);
  
- void PHY_SetSwChnlBWMode8723B(struct adapter *Adapter, u8 channel,
--				enum CHANNEL_WIDTH Bandwidth,
-+				enum channel_width Bandwidth,
- 				u8 Offset40, u8 Offset80);
+-enum PWRSEQ_CMD_DELAY_UNIT {
++enum pwrseq_cmd_delay_unit {
+ 	PWRSEQ_DELAY_US,
+ 	PWRSEQ_DELAY_MS,
+ };
  
- /*--------------------------Exported Function prototype End---------------------*/
-diff --git a/drivers/staging/rtl8723bs/include/rtl8723b_rf.h b/drivers/staging/rtl8723bs/include/rtl8723b_rf.h
-index d712c6d36a08..525eb2facca0 100644
---- a/drivers/staging/rtl8723bs/include/rtl8723b_rf.h
-+++ b/drivers/staging/rtl8723bs/include/rtl8723b_rf.h
-@@ -12,6 +12,6 @@ int	PHY_RF6052_Config8723B(struct adapter *Adapter);
- 
- void
- PHY_RF6052SetBandwidth8723B(struct adapter *Adapter,
--	enum CHANNEL_WIDTH		Bandwidth);
-+	enum channel_width		Bandwidth);
+-struct WLAN_PWR_CFG {
++struct wlan_pwr_cfg {
+ 	u16 offset;
+ 	u8 cut_msk;
+ 	u8 fab_msk:4;
+@@ -117,6 +117,6 @@ u8 HalPwrSeqCmdParsing(
+ 	u8 		CutVersion,
+ 	u8 		FabVersion,
+ 	u8 		InterfaceType,
+-	struct WLAN_PWR_CFG	PwrCfgCmd[]);
++	struct wlan_pwr_cfg	PwrCfgCmd[]);
  
  #endif
-diff --git a/drivers/staging/rtl8723bs/include/rtw_rf.h b/drivers/staging/rtl8723bs/include/rtw_rf.h
-index d3a8e4b7069a..a8ddd6fe5f95 100644
---- a/drivers/staging/rtl8723bs/include/rtw_rf.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_rf.h
-@@ -49,7 +49,7 @@ struct	regulatory_class {
- 	u8 modem;
- };
+diff --git a/drivers/staging/rtl8723bs/include/hal_pwr_seq.h b/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
+index 7c5fbf0b9736..0837506b6be8 100644
+--- a/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
++++ b/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
+@@ -219,15 +219,15 @@
+ 	{0xFFFF, PWR_CUT_ALL_MSK, PWR_FAB_ALL_MSK, PWR_INTF_ALL_MSK, 0, PWR_CMD_END, 0, 0}, 
  
--enum CAPABILITY {
-+enum capability {
- 	cESS			= 0x0001,
- 	cIBSS			= 0x0002,
- 	cPollable		= 0x0004,
-@@ -68,13 +68,13 @@ enum CAPABILITY {
- 	cImmediateBA		= 0x8000,
- };
  
--enum	_REG_PREAMBLE_MODE {
-+enum	_reg_preamble_mode {
- 	PREAMBLE_LONG	= 1,
- 	PREAMBLE_AUTO	= 2,
- 	PREAMBLE_SHORT	= 3,
- };
- 
--enum _RTL8712_RF_MIMO_CONFIG_ {
-+enum _rtl8712_rf_mimo_config_ {
- 	RTL8712_RFCONFIG_1T = 0x10,
- 	RTL8712_RFCONFIG_2T = 0x20,
- 	RTL8712_RFCONFIG_1R = 0x01,
-@@ -85,7 +85,7 @@ enum _RTL8712_RF_MIMO_CONFIG_ {
- 	RTL8712_RFCONFIG_2T2R = 0x22
- };
- 
--enum RF90_RADIO_PATH {
-+enum rf90_radio_path {
- 	RF90_PATH_A = 0,		/* Radio Path A */
- 	RF90_PATH_B = 1,		/* Radio Path B */
- 	RF90_PATH_C = 2,		/* Radio Path C */
-@@ -98,7 +98,7 @@ enum RF90_RADIO_PATH {
- #define HAL_PRIME_CHNL_OFFSET_UPPER	2
- 
- /*  Represent Channel Width in HT Capabilities */
--enum CHANNEL_WIDTH {
-+enum channel_width {
- 	CHANNEL_WIDTH_20 = 0,
- 	CHANNEL_WIDTH_40 = 1,
- 	CHANNEL_WIDTH_80 = 2,
-@@ -109,14 +109,14 @@ enum CHANNEL_WIDTH {
- 
- /*  Represent Extension Channel Offset in HT Capabilities */
- /*  This is available only in 40Mhz mode. */
--enum EXTCHNL_OFFSET {
-+enum extchnl_offset {
- 	EXTCHNL_OFFSET_NO_EXT = 0,
- 	EXTCHNL_OFFSET_UPPER = 1,
- 	EXTCHNL_OFFSET_NO_DEF = 2,
- 	EXTCHNL_OFFSET_LOWER = 3,
- };
- 
--enum VHT_DATA_SC {
-+enum vht_data_sc {
- 	VHT_DATA_SC_DONOT_CARE = 0,
- 	VHT_DATA_SC_20_UPPER_OF_80MHZ = 1,
- 	VHT_DATA_SC_20_LOWER_OF_80MHZ = 2,
-@@ -130,14 +130,14 @@ enum VHT_DATA_SC {
- 	VHT_DATA_SC_40_LOWER_OF_80MHZ = 10,
- };
- 
--enum PROTECTION_MODE {
-+enum protection_mode {
- 	PROTECTION_MODE_AUTO = 0,
- 	PROTECTION_MODE_FORCE_ENABLE = 1,
- 	PROTECTION_MODE_FORCE_DISABLE = 2,
- };
- 
- /* 2007/11/15 MH Define different RF type. */
--enum RT_RF_TYPE_DEFINITION {
-+enum rt_rf_type_definition {
- 	RF_1T2R = 0,
- 	RF_2T4R = 1,
- 	RF_2T2R = 2,
+-extern struct WLAN_PWR_CFG rtl8723B_power_on_flow[RTL8723B_TRANS_CARDEMU_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_radio_off_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_card_disable_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_card_enable_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_suspend_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_SUS_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_resume_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_SUS_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_hwpdn_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_enter_lps_flow[RTL8723B_TRANS_ACT_TO_LPS_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_leave_lps_flow[RTL8723B_TRANS_LPS_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_enter_swlps_flow[RTL8723B_TRANS_ACT_TO_SWLPS_STEPS+RTL8723B_TRANS_END_STEPS];
+-extern struct WLAN_PWR_CFG rtl8723B_leave_swlps_flow[RTL8723B_TRANS_SWLPS_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_power_on_flow[RTL8723B_TRANS_CARDEMU_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_radio_off_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_card_disable_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_card_enable_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_suspend_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_SUS_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_resume_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_SUS_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_hwpdn_flow[RTL8723B_TRANS_ACT_TO_CARDEMU_STEPS+RTL8723B_TRANS_CARDEMU_TO_PDN_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_enter_lps_flow[RTL8723B_TRANS_ACT_TO_LPS_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_leave_lps_flow[RTL8723B_TRANS_LPS_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_enter_swlps_flow[RTL8723B_TRANS_ACT_TO_SWLPS_STEPS+RTL8723B_TRANS_END_STEPS];
++extern struct wlan_pwr_cfg rtl8723B_leave_swlps_flow[RTL8723B_TRANS_SWLPS_TO_ACT_STEPS+RTL8723B_TRANS_END_STEPS];
+ #endif
 -- 
 2.30.2
 
