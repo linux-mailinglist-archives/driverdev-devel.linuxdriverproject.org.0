@@ -1,80 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2496F33FB03
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:24:15 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9F6C33FB00
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:24:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B0DD484169;
-	Wed, 17 Mar 2021 22:24:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 85D566F9BA;
+	Wed, 17 Mar 2021 22:24:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2WrNCJRUn1Tp; Wed, 17 Mar 2021 22:24:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SoN3eMur6Vzd; Wed, 17 Mar 2021 22:24:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D21C483EB6;
-	Wed, 17 Mar 2021 22:24:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B74C46F998;
+	Wed, 17 Mar 2021 22:24:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 332FA1BF21A
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:32 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 608DA1BF21A
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 045644EDDA
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5DC206F998
  for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qr4ZDiSWfYoE for <devel@linuxdriverproject.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SD4lMv8sdO-W for <devel@linuxdriverproject.org>;
  Wed, 17 Mar 2021 22:21:30 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
- [IPv6:2a00:1450:4864:20::62d])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 122DB4EDD7
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:29 +0000 (UTC)
-Received: by mail-ej1-x62d.google.com with SMTP id hq27so817391ejc.9
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:29 -0700 (PDT)
+Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com
+ [IPv6:2a00:1450:4864:20::630])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9864260636
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:30 +0000 (UTC)
+Received: by mail-ej1-x630.google.com with SMTP id u5so818016ejn.8
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=f9FFHHgi4kiZnjvCHsB/XVwPhAjump5oOKUgea5Ap18=;
- b=IwdXcZceD0Yw3ciGd5r4VK+gU1YlD59iBeIzbACx86rybUOwFD8r4BC+FFmSWk1WfD
- 5mnruz9IneG2oBCz/y4oidUu/7/7hUxRiG8emy4pew0lsbx7qluKdhBeMCR3USBL5MFF
- SRWT01lBkmHOeYS5uddM7XtLxbCLlu+2n2TKdVZYrtAS7pKqpRf/4A/Dnq7bW3gAscZ/
- /pN7UaBkFPCmk8yYhxjBPWz68zJKRYgNAXuIC442jXpgE5GEtn15UsmiSL7RWzjyLjHf
- ksruIWh4O0MYQ82aq6CdvBSPxs+xDNYtR5SybxcT2Vpbpmxt+79lVuN028vEKuDxb2vn
- C6FA==
+ bh=A2NNcNPlSq8fUJiDs/0RCWlkutFrxtOg0m1ci2xZsHY=;
+ b=EFVfbp+P+pCH3fz34SQSJb3DWvUShVekKwy1+dZAmlmuai73wMCPbUVHaOMkFyjb1N
+ L1T8zgfoOqLTmjgakFQ9q6ZN/iTdCpfgs+0MK8GOMFPQVxRPVEDeE/Cd8DPPhxMW/jYe
+ 3AhzaOWtGSnBvdj5/SiLwr9W+/SkAZgIZvYeWAALiOX1acsYVkXqmsdaqKxUQ4l79A3m
+ dyCZS9q1wVwcS91h8VigwmrATSFwGW9MU7DKBGv0ucC4tGJDVPpGnYIjbdsbsBOsOLmS
+ L55/4Qb1f9HT4iiVDPiTmzuQ9riVMv5keCGZIo3XDqI9x6TELu9Vcnlecm3AH8cHiQjk
+ WXuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=f9FFHHgi4kiZnjvCHsB/XVwPhAjump5oOKUgea5Ap18=;
- b=tQ2mLXSvnbV04lu5Ezu/gFS6vFIpqGM8uVXTZJwQDmpm4nhdFdcJ18nRMB++7Ka7lX
- Pq3GSwKOpEKPgyv9tm0Zmx3Em/DuPA/bgV9c1aqedQ41vf6gN5pT3rTDIp317+1sNMYO
- c8xMB/xrZhAvaKh/KILxLqMuMGNB4EXELjW0OAQZphHrzlmpYjGukIa7sm3CdDZL0FfH
- H5RTY6id9OglRHORLgR1dP5bRJjthIFbsetnIb+XLouP4Kb3NpjIPgeYsn84Rb8ANpR4
- 3N5nCPSpOEtsdY0ssfsoROZo5NQOjXcNULfpIvG4d+vNnsjjeA1YiwiDwbQ0JGEW7u7m
- T93w==
-X-Gm-Message-State: AOAM531CmwJt6TEHTWpEpjF7AtU3Y4dMrIlmJ+u0a5uDO+kYDmvpSHQa
- qP6/GxOfAujQhCOuKolcfY4=
-X-Google-Smtp-Source: ABdhPJw+HdLhDBjBGmy7i6DcBrsAy7Iy8i7ee75n1bLUN05iiKzLdnYRKZb6xRPuo2TEnEGy1+Vgog==
-X-Received: by 2002:a17:906:948d:: with SMTP id
- t13mr36552940ejx.402.1616019688294; 
+ bh=A2NNcNPlSq8fUJiDs/0RCWlkutFrxtOg0m1ci2xZsHY=;
+ b=jfyWS4xjAQza2EQel2uqy2hr5+bsiAaU4PyHi0CAdVyboyF+MEgNp6iGKwS7fK9oJC
+ WqdiCNao98li+DFV1lri1yMLgzNGYmU6Bz/mjXNjLlfvXAdVghLM4isQSylamA2b/EFp
+ iWRLGmGsDdiJK5/ZV8WAhEGZzXwZdQxAaKDQr1aNmQhYkPFCx3lQxoq7ibTOQVV2dB+e
+ sZMKKkftT9XxyRMDQHFg0LMP59EHG/FuYsRS9tLjgMkXkXM4+8AJKTLB1YzVIgnHTWeq
+ DwbPpEmC3Wj5V2UPKvCIoukV6PBxYko+8vDVzvBhVCWCkjQZ5ktb6kWaRT5YH6mwUJyh
+ 8IWQ==
+X-Gm-Message-State: AOAM5331rvH7zhy6lIctDdi2Gn9TmJPZ946aS3tIiibWBI4dU+Q1LiL1
+ JqKPbyIkG9FbUAz/ZT3Adgs=
+X-Google-Smtp-Source: ABdhPJypl1Lf8X/4LRhlGGsY3HfgqUgYTcEts0BilXlq3+3U8NuMKEvMZygsDEG8l99QnVwXD3MmTA==
+X-Received: by 2002:a17:906:379b:: with SMTP id
+ n27mr38531047ejc.182.1616019688891; 
  Wed, 17 Mar 2021 15:21:28 -0700 (PDT)
 Received: from gimli.home (93-48-145-141.ip257.fastwebnet.it. [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id
- cf4sm104304edb.19.2021.03.17.15.21.27
+ cf4sm104304edb.19.2021.03.17.15.21.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Wed, 17 Mar 2021 15:21:28 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 14/43] Staging: rtl8723bs: fix names in hal_com_h2c.h
-Date: Wed, 17 Mar 2021 23:21:01 +0100
-Message-Id: <20210317222130.29528-15-marcocesati@gmail.com>
+Subject: [PATCH 15/43] Staging: rtl8723bs: fix names in rtl8723b_xmit.h
+Date: Wed, 17 Mar 2021 23:21:02 +0100
+Message-Id: <20210317222130.29528-16-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210317222130.29528-1-marcocesati@gmail.com>
 References: <20210317222130.29528-1-marcocesati@gmail.com>
@@ -97,85 +95,67 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit converts names of structs / enums
-in include/hal_com_h2c.h from ALL_CAPS format to lowercase
+in include/rtl8723b_xmit.h from ALL_CAPS format to lowercase
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c    | 12 ++++++------
- drivers/staging/rtl8723bs/include/hal_com_h2c.h |  2 +-
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 8 ++++----
+ drivers/staging/rtl8723bs/include/rtl8723b_xmit.h | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-index 61fd643c244f..6897fc49e649 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-@@ -434,7 +434,7 @@ void CheckFwRsvdPageContent(struct adapter *Adapter)
- {
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+index d30659a11236..9c30024fa984 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -2991,7 +2991,7 @@ static u8 fill_txdesc_sectype(struct pkt_attrib *pattrib)
+ 	return sectype;
  }
  
--static void rtl8723b_set_FwRsvdPage_cmd(struct adapter *padapter, struct RSVDPAGE_LOC *rsvdpageloc)
-+static void rtl8723b_set_FwRsvdPage_cmd(struct adapter *padapter, struct rsvdpage_loc *rsvdpageloc)
+-static void fill_txdesc_vcs_8723b(struct adapter *padapter, struct pkt_attrib *pattrib, struct TXDESC_8723B *ptxdesc)
++static void fill_txdesc_vcs_8723b(struct adapter *padapter, struct pkt_attrib *pattrib, struct txdesc_8723b *ptxdesc)
  {
- 	u8 u1H2CRsvdPageParm[H2C_RSVDPAGE_LOC_LEN] = {0};
+ 	/* DBG_8192C("cvs_mode =%d\n", pattrib->vcs_mode); */
  
-@@ -453,7 +453,7 @@ static void rtl8723b_set_FwRsvdPage_cmd(struct adapter *padapter, struct RSVDPAG
- 	FillH2CCmd8723B(padapter, H2C_8723B_RSVD_PAGE, H2C_RSVDPAGE_LOC_LEN, u1H2CRsvdPageParm);
- }
- 
--static void rtl8723b_set_FwAoacRsvdPage_cmd(struct adapter *padapter, struct RSVDPAGE_LOC *rsvdpageloc)
-+static void rtl8723b_set_FwAoacRsvdPage_cmd(struct adapter *padapter, struct rsvdpage_loc *rsvdpageloc)
- {
- }
- 
-@@ -789,7 +789,7 @@ static void rtl8723b_set_FwRsvdPagePkt(
- 	u16 BufIndex, PageSize = 128;
- 	u32 TotalPacketLen, MaxRsvdPageBufSize = 0;
- 
--	struct RSVDPAGE_LOC RsvdPageLoc;
-+	struct rsvdpage_loc RsvdPageLoc;
- 
- 	/* DBG_871X("%s---->\n", __func__); */
- 
-@@ -808,7 +808,7 @@ static void rtl8723b_set_FwRsvdPagePkt(
+@@ -3024,7 +3024,7 @@ static void fill_txdesc_vcs_8723b(struct adapter *padapter, struct pkt_attrib *p
  	}
+ }
  
- 	ReservedPagePacket = pcmdframe->buf_addr;
--	memset(&RsvdPageLoc, 0, sizeof(struct RSVDPAGE_LOC));
-+	memset(&RsvdPageLoc, 0, sizeof(struct rsvdpage_loc));
+-static void fill_txdesc_phy_8723b(struct adapter *padapter, struct pkt_attrib *pattrib, struct TXDESC_8723B *ptxdesc)
++static void fill_txdesc_phy_8723b(struct adapter *padapter, struct pkt_attrib *pattrib, struct txdesc_8723b *ptxdesc)
+ {
+ 	/* DBG_8192C("bwmode =%d, ch_off =%d\n", pattrib->bwmode, pattrib->ch_offset); */
  
- 	/* 3 (1) beacon */
- 	BufIndex = TxDescOffset;
-@@ -1267,7 +1267,7 @@ static void SetFwRsvdPagePkt_BTCoex(struct adapter *padapter)
- 	u8 TotalPageNum = 0, CurtPktPageNum = 0, RsvdPageNum = 0;
- 	u16 BufIndex, PageSize;
- 	u32 TotalPacketLen, MaxRsvdPageBufSize = 0;
--	struct RSVDPAGE_LOC RsvdPageLoc;
-+	struct rsvdpage_loc RsvdPageLoc;
+@@ -3044,7 +3044,7 @@ static void rtl8723b_fill_default_txdesc(
+ 	struct mlme_ext_priv *pmlmeext;
+ 	struct mlme_ext_info *pmlmeinfo;
+ 	struct pkt_attrib *pattrib;
+-	struct TXDESC_8723B *ptxdesc;
++	struct txdesc_8723b *ptxdesc;
+ 	s32 bmcst;
  
+ 	memset(pbuf, 0, TXDESC_SIZE);
+@@ -3057,7 +3057,7 @@ static void rtl8723b_fill_default_txdesc(
+ 	pattrib = &pxmitframe->attrib;
+ 	bmcst = IS_MCAST(pattrib->ra);
  
- /* 	DBG_8192C("+" FUNC_ADPT_FMT "\n", FUNC_ADPT_ARG(padapter)); */
-@@ -1287,7 +1287,7 @@ static void SetFwRsvdPagePkt_BTCoex(struct adapter *padapter)
- 	}
+-	ptxdesc = (struct TXDESC_8723B *)pbuf;
++	ptxdesc = (struct txdesc_8723b *)pbuf;
  
- 	ReservedPagePacket = pcmdframe->buf_addr;
--	memset(&RsvdPageLoc, 0, sizeof(struct RSVDPAGE_LOC));
-+	memset(&RsvdPageLoc, 0, sizeof(struct rsvdpage_loc));
- 
- 	/* 3 (1) beacon */
- 	BufIndex = TxDescOffset;
-diff --git a/drivers/staging/rtl8723bs/include/hal_com_h2c.h b/drivers/staging/rtl8723bs/include/hal_com_h2c.h
-index 1e1982621e2c..f8b5a53e90bc 100644
---- a/drivers/staging/rtl8723bs/include/hal_com_h2c.h
-+++ b/drivers/staging/rtl8723bs/include/hal_com_h2c.h
-@@ -180,7 +180,7 @@ enum h2c_cmd {
+ 	if (pxmitframe->frame_tag == DATA_FRAMETAG) {
+ 		u8 drv_userate = 0;
+diff --git a/drivers/staging/rtl8723bs/include/rtl8723b_xmit.h b/drivers/staging/rtl8723bs/include/rtl8723b_xmit.h
+index ccadc3d11644..56bdc14af47d 100644
+--- a/drivers/staging/rtl8723bs/include/rtl8723b_xmit.h
++++ b/drivers/staging/rtl8723bs/include/rtl8723b_xmit.h
+@@ -59,7 +59,7 @@
  /*  */
- /*     Structure    -------------------------------------------------- */
+ /* defined for TX DESC Operation */
  /*  */
--struct RSVDPAGE_LOC {
-+struct rsvdpage_loc {
- 	u8 LocProbeRsp;
- 	u8 LocPsPoll;
- 	u8 LocNullData;
+-struct TXDESC_8723B {
++struct txdesc_8723b {
+ 	/*  Offset 0 */
+ 	u32 pktlen:16;
+ 	u32 offset:8;
 -- 
 2.30.2
 
