@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D12B33F83A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 19:39:09 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C3E5833F9DD
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 21:18:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BB0F543258;
-	Wed, 17 Mar 2021 18:39:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 517E56F9A4;
+	Wed, 17 Mar 2021 20:18:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e1EJEQC9Q2v5; Wed, 17 Mar 2021 18:39:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MKB93xDUsgPL; Wed, 17 Mar 2021 20:17:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D0B9E4305A;
-	Wed, 17 Mar 2021 18:39:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6A82A6F995;
+	Wed, 17 Mar 2021 20:17:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DD9E91BF330
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:38:54 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 52B4D1BF3FF
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 20:17:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CA0404AAB4
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:38:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 40C7841504
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 20:17:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ULC87_C9mFQf for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 18:38:53 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=google.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id V3WnmzCli0WY for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 20:17:47 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
- [IPv6:2607:f8b0:4864:20::52c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CDC124935C
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 18:38:53 +0000 (UTC)
-Received: by mail-pg1-x52c.google.com with SMTP id x29so138301pgk.6
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 11:38:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=UAxYgTJ8xiP4XZVnDR92h/oyODoJt823YPaFX/5CcQk=;
- b=ioW0Mn1xhNkhgHjp4pzr50k54/EF8Enwpqtp1cEWvgnrcC+lNBwFe7qVqcWSFL4P2X
- 0hSHDw2yhwOMJfPjbnV9lit2wJ7ErPE/NVEfJz4g48Nt6dlm3ysihHbMgb511ntN6IG6
- kaThXQ6XinIP4vjMjzxJ2U4zZRpVTJeJQXYcnFS44VbaLMZjNrp3ohehc4fzCYe0wYX/
- Q1xKoCqU3dFz1ackTjkeeDuaOOzQj4CjKffRJ7BLNmNfwG+y+dL8Lkc2f/c+aaqpyaS3
- xtiinmJUURQBQw2b3vN3UKEM26sXml87ar+bpiZw3+/GtG7zE4b3BkPl6MNwk6Eev3P6
- RNhA==
+Received: from mail-lj1-x235.google.com (mail-lj1-x235.google.com
+ [IPv6:2a00:1450:4864:20::235])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6397B4150A
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 20:17:47 +0000 (UTC)
+Received: by mail-lj1-x235.google.com with SMTP id f16so4832135ljm.1
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 13:17:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=J6gJzCwpLyG7+14+e+3YoRVEedOSyoYsJ1d1aSm3u8s=;
+ b=Ot1J2LG0SujcfumGfz731vdJqKOxO4S52bTDK4ESl++y2B/qGrQJ3ZdY9Sabt4+qqD
+ CzWxpMj1luRIBQBFf/hyxd2opLMAqV+cwP7dETj1336+AfgOqmHKYaS1AhWtahJVwqlU
+ gN553b7yWZyHe+SWBQ9bi314J/UcXDnhrU4nma/KHf7eOaDPE89DCmyfYyjlFc58rtjR
+ whkrzXuDb3CPlElVyu7jaeUhUnKX65xuboxd3rKb2tS8bX9WpDZFAgettshbfdbaKNHH
+ u9gNjJ1sQ7q4evUHcE8LsEtu7/1CyNif50ADrZcWccijWbfuWsO0kK7olDowKVJPpK8j
+ RYmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=UAxYgTJ8xiP4XZVnDR92h/oyODoJt823YPaFX/5CcQk=;
- b=ubbDPEZI/iwVfy4z8RLWcaSe3wvA1Is/Lsc+UV1FvS0rFjoGxPuTNl2rETSUG9y51c
- +flFwPejkEndzIM6AeyBt3XHIitP6+JaoxdgfGn96Sd9ab0iQqpWVs+cyCvPSRO63Kwb
- wFAUlUqYNfBdD4OvxGyQj7+D1ifCA6jf9H13UKJTkItjc1BO4kW0ID62+eyjMNv876LF
- XBDkucsIewo/pzhoX68ywUTGmdR3TwkGVVwwUi2jDx7vxLFzbS7if791rUk1HSu1B/m7
- WFHr2s+PuI7cGtcKE6L7JF0Pq+f+RM7UBQuFQIRyvXwIuQwt2EBQg62gBptX0BBAKzSG
- P+lw==
-X-Gm-Message-State: AOAM530FuvQIHWGYbZN+PgEROI4FAMwKq6OryAXvWzZjAxUhMj45si5b
- dkcGFBF+Vpz9irSdevnks8E=
-X-Google-Smtp-Source: ABdhPJzoGLR/WnU8lAmQ5r8+4xzJPxLgSGecJIUOMByK2tLMna5pTLk9ejyjl55HqpKPqiFJo8G1iw==
-X-Received: by 2002:a63:e42:: with SMTP id 2mr3782293pgo.100.1616006333176;
- Wed, 17 Mar 2021 11:38:53 -0700 (PDT)
-Received: from mahak-Inspiron-7570 ([103.37.201.168])
- by smtp.gmail.com with ESMTPSA id z8sm3369883pjr.57.2021.03.17.11.38.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Mar 2021 11:38:52 -0700 (PDT)
-From: Mahak Gupta <gmahak1@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: octeon-usb: Match alignment with open parenthesis
-Date: Thu, 18 Mar 2021 00:08:46 +0530
-Message-Id: <20210317183846.4867-1-gmahak1@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=J6gJzCwpLyG7+14+e+3YoRVEedOSyoYsJ1d1aSm3u8s=;
+ b=shM1lNPUk8NFwD8iTkAO0rCLGmRSMdl0jUA6qWmcFBrp1+7HHpZIw9zQJOzG3UDV2m
+ L7nTGQ0RO9PbQW+zUH+6XgMQNn9I4Q7LCYl4nWAe87kIlMf/Oste523IYaotsp5QQvyQ
+ kFbWsKvnenDYwufekuNH9Az/YRbnsCqVSKfE2kfoh7zjJhowCmiGDupj4UVqBEYyB2Kt
+ z74/oxMvMWd9Hg4Jd16J3j5KoZQOJPYlSYF6AN6IKwkjayDqvJUIy93cq2fnvF/dUtu9
+ ifx1N8eRBOxF+Ee6O+kQ5vvxRKZs+kqxsyOaZ4G+YLxmwcMa+ban7J1ooSzfgs24N+0P
+ 73mg==
+X-Gm-Message-State: AOAM5337s/G4zbqOENVK5T9oey++1ds7/f40Kxnc9LQpWJF7rx4v87zN
+ Nz9qEgzq8Lw25QMTtXwzjt9J4oDgOez2reoDHYCzsg==
+X-Google-Smtp-Source: ABdhPJxm6guJ8ZzFVRuVVjxk9Ag12khXWuNxP2NxaZfEBJIJzMCqUEtP+HDMBvXMUishhGlf43z6gBFdhYMFqXivsG0=
+X-Received: by 2002:a2e:b6d4:: with SMTP id m20mr3432836ljo.448.1616012265057; 
+ Wed, 17 Mar 2021 13:17:45 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210316011630.1121213-1-dualli@chromium.org>
+ <20210317180048.inzdursqmnvxkgwp@wittgenstein>
+In-Reply-To: <20210317180048.inzdursqmnvxkgwp@wittgenstein>
+From: Jann Horn <jannh@google.com>
+Date: Wed, 17 Mar 2021 21:17:18 +0100
+Message-ID: <CAG48ez2ATadfuBjZDqjLa-Mzh669F-yDuBzV62aH=OHRt5g4Pg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] Binder: Enable App Freezing Capability
+To: Christian Brauner <christian.brauner@ubuntu.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,153 +82,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mahak Gupta <gmahak1@gmail.com>
-MIME-Version: 1.0
+Cc: dualli@google.com, "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ kernel-team <kernel-team@android.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel list <linux-kernel@vger.kernel.org>,
+ "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Martijn Coenen <maco@google.com>, Li Li <dualli@chromium.org>,
+ Hridya Valsaraju <hridya@google.com>, Suren Baghdasaryan <surenb@google.com>,
+ Christian Brauner <christian@brauner.io>, Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patches fixes the checks- 'Alignment should match open parenthesis'
-of 'checkpatch.pl'.
+On Wed, Mar 17, 2021 at 7:00 PM Christian Brauner
+<christian.brauner@ubuntu.com> wrote:
+> On Mon, Mar 15, 2021 at 06:16:27PM -0700, Li Li wrote:
+> > To improve the user experience when switching between recently used
+> > applications, the background applications which are not currently needed
+> > are cached in the memory. Normally, a well designed application will not
+> > consume valuable CPU resources in the background. However, it's possible
+> > some applications are not able or willing to behave as expected, wasting
+> > energy even after being cached.
+> >
+> > It is a good idea to freeze those applications when they're only being
+> > kept alive for the sake of faster startup and energy saving. These kernel
+> > patches will provide the necessary infrastructure for user space framework
+> > to freeze and thaw a cached process, check the current freezing status and
+> > correctly deal with outstanding binder transactions to frozen processes.
 
-Signed-off-by: Mahak Gupta <gmahak1@gmail.com>
----
- drivers/staging/octeon-usb/octeon-hcd.c | 32 +++++++++++++------------
- 1 file changed, 17 insertions(+), 15 deletions(-)
+I just have some comments on the overall design:
 
-diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
-index e2f8b6b67f75..f27f20a4aa2d 100644
---- a/drivers/staging/octeon-usb/octeon-hcd.c
-+++ b/drivers/staging/octeon-usb/octeon-hcd.c
-@@ -1258,7 +1258,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
- 		union cvmx_usbcx_hptxsts tx_status;
- 
- 		tx_status.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HPTXSTS(usb->index));
-+						    CVMX_USBCX_HPTXSTS(usb->index));
- 		if (cvmx_usb_fill_tx_hw(usb, &usb->periodic,
- 					tx_status.s.ptxfspcavail))
- 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
-@@ -1272,7 +1272,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
- 		union cvmx_usbcx_gnptxsts tx_status;
- 
- 		tx_status.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_GNPTXSTS(usb->index));
-+						    CVMX_USBCX_GNPTXSTS(usb->index));
- 		if (cvmx_usb_fill_tx_hw(usb, &usb->nonperiodic,
- 					tx_status.s.nptxfspcavail))
- 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
-@@ -1298,13 +1298,13 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
- 
- 	/* We only need to fill data on outbound channels */
- 	hcchar.u32 = cvmx_usb_read_csr32(usb,
--			CVMX_USBCX_HCCHARX(channel, usb->index));
-+					 CVMX_USBCX_HCCHARX(channel, usb->index));
- 	if (hcchar.s.epdir != CVMX_USB_DIRECTION_OUT)
- 		return;
- 
- 	/* OUT Splits only have data on the start and not the complete */
- 	usbc_hcsplt.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCSPLTX(channel, usb->index));
-+					      CVMX_USBCX_HCSPLTX(channel, usb->index));
- 	if (usbc_hcsplt.s.spltena && usbc_hcsplt.s.compsplt)
- 		return;
- 
-@@ -1313,7 +1313,7 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
- 	 * words.
- 	 */
- 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCTSIZX(channel, usb->index));
-+					      CVMX_USBCX_HCTSIZX(channel, usb->index));
- 	if (!usbc_hctsiz.s.xfersize)
- 		return;
- 
-@@ -1360,7 +1360,7 @@ static void cvmx_usb_start_channel_control(struct octeon_hcd *usb,
- 	union cvmx_usbcx_hctsizx usbc_hctsiz;
- 
- 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCTSIZX(channel, usb->index));
-+					      CVMX_USBCX_HCTSIZX(channel, usb->index));
- 
- 	switch (transaction->stage) {
- 	case CVMX_USB_STAGE_NON_CONTROL:
-@@ -1517,7 +1517,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
- 
- 		/* Clear all channel status bits */
- 		usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HCINTX(channel, usb->index));
-+						     CVMX_USBCX_HCINTX(channel, usb->index));
- 
- 		cvmx_usb_write_csr32(usb,
- 				     CVMX_USBCX_HCINTX(channel, usb->index),
-@@ -1552,7 +1552,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
- 
- 		/* Enable the channel interrupt to propagate */
- 		usbc_haintmsk.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HAINTMSK(usb->index));
-+							CVMX_USBCX_HAINTMSK(usb->index));
- 		usbc_haintmsk.s.haintmsk |= 1 << channel;
- 		cvmx_usb_write_csr32(usb, CVMX_USBCX_HAINTMSK(usb->index),
- 				     usbc_haintmsk.u32);
-@@ -1836,7 +1836,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
-  * Returns: Pipe or NULL if none are ready
-  */
- static struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(struct octeon_hcd *usb,
--		enum cvmx_usb_transfer xfer_type)
-+						      enum cvmx_usb_transfer xfer_type)
- {
- 	struct list_head *list = usb->active_pipes + xfer_type;
- 	u64 current_frame = usb->frame_number;
-@@ -2309,7 +2309,8 @@ static int cvmx_usb_cancel(struct octeon_hcd *usb,
- 		CVMX_SYNCW;
- 
- 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCCHARX(pipe->channel, usb->index));
-+						      CVMX_USBCX_HCCHARX(pipe->channel,
-+									 usb->index));
- 		/*
- 		 * If the channel isn't enabled then the transaction already
- 		 * completed.
-@@ -2605,11 +2606,12 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
- 
- 	/* Read the interrupt status bits for the channel */
- 	usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCINTX(channel, usb->index));
-+					     CVMX_USBCX_HCINTX(channel, usb->index));
- 
- 	if (usb->init_flags & CVMX_USB_INITIALIZE_FLAGS_NO_DMA) {
- 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
--				CVMX_USBCX_HCCHARX(channel, usb->index));
-+						      CVMX_USBCX_HCCHARX(channel,
-+									 usb->index));
- 
- 		if (usbc_hcchar.s.chena && usbc_hcchar.s.chdis) {
- 			/*
-@@ -2688,9 +2690,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
- 	 * transferred
- 	 */
- 	usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
--			CVMX_USBCX_HCCHARX(channel, usb->index));
-+					      CVMX_USBCX_HCCHARX(channel, usb->index));
- 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
--			CVMX_USBCX_HCTSIZX(channel, usb->index));
-+					      CVMX_USBCX_HCTSIZX(channel, usb->index));
- 
- 	/*
- 	 * Calculating the number of bytes successfully transferred is dependent
-@@ -3010,7 +3012,7 @@ static int cvmx_usb_poll(struct octeon_hcd *usb)
- 		union cvmx_usbcx_haint usbc_haint;
- 
- 		usbc_haint.u32 = cvmx_usb_read_csr32(usb,
--					CVMX_USBCX_HAINT(usb->index));
-+						     CVMX_USBCX_HAINT(usb->index));
- 		while (usbc_haint.u32) {
- 			int channel;
- 
--- 
-2.17.1
+This seems a bit convoluted to me; and I'm not sure whether this is
+really something the kernel should get involved in, or whether this
+patchset is operating at the right layer.
 
+If there are non-binder threads that are misbehaving, could you
+instead stop all those threads in pure userspace code (e.g. by sending
+a thread-directed signal to all of them and letting the signal handler
+sleep on a futex); and if the binder thread receives a transaction
+that should be handled, wake up those threads again?
+
+Or alternatively you could detect that the application is being woken
+up frequently even though it's supposed to be idle (e.g. using
+information from procfs), and kill it since you consider it to be
+misbehaving?
+
+Or if there are specific usage patterns you see frequently that you
+consider to be wasting CPU resources (e.g. setting an interval timer
+that fires in short intervals), you could try to delay such timers.
+
+
+With your current approach, you're baking the assumption that all IPC
+goes through binder into the kernel API; things like passing a file
+descriptor to a pipe through binder or using shared futexes are no
+longer usable for cross-process communication without making more
+kernel changes. I'm not sure whether that's a good idea. On top of
+that, if you freeze a process while it is in the middle of some
+operation, resources associated with the operation will probably stay
+in use for quite some time; for example, if an app is in the middle of
+downloading some data over HTTP, and you freeze it, this may cause the
+TCP connection to remain active and consume resources for send/receive
+buffers on both the device and the server.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
