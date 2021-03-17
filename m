@@ -1,65 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B72CA33E7A6
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 04:32:45 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B89FB33E866
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 05:26:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4771E4ECCB;
-	Wed, 17 Mar 2021 03:32:43 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3FBA9431F7;
+	Wed, 17 Mar 2021 04:26:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bzQU9LcHzl-x; Wed, 17 Mar 2021 03:32:42 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PmMLIzW9s5mM; Wed, 17 Mar 2021 04:26:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4D4FE4ECD1;
-	Wed, 17 Mar 2021 03:32:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7E40D431E7;
+	Wed, 17 Mar 2021 04:26:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2B7081BF9B2
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 03:32:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 13C221BF34B
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 04:26:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 27D0443182
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 03:32:30 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0C4CF431EC
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 04:26:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tRGchsxCyasq for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 03:32:28 +0000 (UTC)
+ with ESMTP id gSvCidmVad9n for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 04:25:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from lucky1.263xmail.com (lucky1.263xmail.com [211.157.147.131])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0C4DD43064
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 03:32:27 +0000 (UTC)
-Received: from localhost (unknown [192.168.167.13])
- by lucky1.263xmail.com (Postfix) with ESMTP id E90CBB9A87;
- Wed, 17 Mar 2021 11:32:22 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED: 0
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [111.207.172.18])
- by smtp.263.net (postfix) whith ESMTP id
- P13099T140547817723648S1615951943088443_; 
- Wed, 17 Mar 2021 11:32:23 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <47357c3924c758441315f34dc390340d>
-X-RL-SENDER: zhaoxiao@uniontech.com
-X-SENDER: zhaoxiao@uniontech.com
-X-LOGIN-NAME: zhaoxiao@uniontech.com
-X-FST-TO: gregkh@linuxfoundation.org
-X-SENDER-IP: 111.207.172.18
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: zhaoxiao <zhaoxiao@uniontech.com>
-To: gregkh@linuxfoundation.org, straube.linux@gmail.com, lu@pplo.net,
- dan.carpenter@oracle.com, serrazimone@gmail.com
-Subject: [PATCH v3] Staging: rtl8192u: fixed a whitespace coding style issue
-Date: Wed, 17 Mar 2021 11:32:19 +0800
-Message-Id: <20210317033219.621-1-zhaoxiao@uniontech.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5534142FC1
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 04:25:59 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 27F3764F9E;
+ Wed, 17 Mar 2021 04:25:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615955158;
+ bh=b0+guY3uHI/7UugdBIJZaedLb8084zSH7Fj2VTny2X0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZnTO7xz3vXP2Hf3iarFYTkOy0PTS63Wwsd6gQE4Sklk4G9sX/pd5jC78A3wO+QrNo
+ rCOBENUMFbAvxpj2Bdkrls0VFfqJ3FiRzw45r4MCdpzcC0vFkP1fXhlj6N+hod6RhI
+ 0caOQfvz+18hHQu6dcxqShjZ0CjLMxgyf1on3dpS7pKxBmpnbDF3PIoro33h5aAdnu
+ iiOJRlTEDqLRVzUN3V4iuKv8Vd6EvxHP82AN3+bG7xP81PHIujuNKe9bWWsBO11ak1
+ 0YcZEJDZNUQRdHtCvJDAz+T+800RykOSqCTdtghpS00lMdv1T/OxaLn07ALduFYk0W
+ htpuRlHqcfXhw==
+Date: Wed, 17 Mar 2021 06:25:54 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>
+Subject: Re: [PATCH v5 03/24] wfx: add Makefile/Kconfig
+Message-ID: <YFGE0t5LQuPp0M5h@unreal>
+References: <20210315132501.441681-1-Jerome.Pouiller@silabs.com>
+ <20210315132501.441681-4-Jerome.Pouiller@silabs.com>
+ <YE95OCx5hWRedi+W@unreal> <1718324.Ee3sdLpQUQ@pc-42>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1718324.Ee3sdLpQUQ@pc-42>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,53 +66,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, zhaoxiao <zhaoxiao@uniontech.com>,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Removed additional whitespaces in the r8192U_wx.c file.
+On Mon, Mar 15, 2021 at 05:21:35PM +0100, J=E9r=F4me Pouiller wrote:
+> Hi Leon,
+>
+> On Monday 15 March 2021 16:11:52 CET Leon Romanovsky wrote:
+> > On Mon, Mar 15, 2021 at 02:24:40PM +0100, Jerome Pouiller wrote:
+> > > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > >
+> > > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > > ---
+> > >  drivers/net/wireless/silabs/wfx/Kconfig  | 12 +++++++++++
+> > >  drivers/net/wireless/silabs/wfx/Makefile | 26 ++++++++++++++++++++++=
+++
+> > >  2 files changed, 38 insertions(+)
+> > >  create mode 100644 drivers/net/wireless/silabs/wfx/Kconfig
+> > >  create mode 100644 drivers/net/wireless/silabs/wfx/Makefile
+> > >
+> > > diff --git a/drivers/net/wireless/silabs/wfx/Kconfig b/drivers/net/wi=
+reless/silabs/wfx/Kconfig
+> > > new file mode 100644
+> > > index 000000000000..3be4b1e735e1
+> > > --- /dev/null
+> > > +++ b/drivers/net/wireless/silabs/wfx/Kconfig
+> > > @@ -0,0 +1,12 @@
+> > > +config WFX
+> > > +     tristate "Silicon Labs wireless chips WF200 and further"
+> > > +     depends on MAC80211
+> > > +     depends on MMC || !MMC # do not allow WFX=3Dy if MMC=3Dm
+> > > +     depends on (SPI || MMC)
+> > > +     help
+> > > +       This is a driver for Silicons Labs WFxxx series (WF200 and fu=
+rther)
+> > > +       chipsets. This chip can be found on SPI or SDIO buses.
+> > > +
+> > > +       Silabs does not use a reliable SDIO vendor ID. So, to avoid c=
+onflicts,
+> > > +       the driver won't probe the device if it is not also declared =
+in the
+> > > +       Device Tree.
+> > > diff --git a/drivers/net/wireless/silabs/wfx/Makefile b/drivers/net/w=
+ireless/silabs/wfx/Makefile
+> > > new file mode 100644
+> > > index 000000000000..f399962c8619
+> > > --- /dev/null
+> > > +++ b/drivers/net/wireless/silabs/wfx/Makefile
+> > > @@ -0,0 +1,26 @@
+> > > +# SPDX-License-Identifier: GPL-2.0
+> > > +
+> > > +# Necessary for CREATE_TRACE_POINTS
+> > > +CFLAGS_debug.o =3D -I$(src)
+> >
+> > I wonder if it is still relevant outside of the staging tree.
+>
+> It seems this pattern is common in the main tree. You suggest to relocate
+> trace.h to include/trace/events?
 
-Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
----
-v3: add the specify a description of why the patch is needed. 
- drivers/staging/rtl8192u/r8192U_wx.c | 4 ----
- 1 file changed, 4 deletions(-)
+No, leave it as it. Sorry for the noise.
 
-diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
-index 5211b2005763..e916cf3ea74c 100644
---- a/drivers/staging/rtl8192u/r8192U_wx.c
-+++ b/drivers/staging/rtl8192u/r8192U_wx.c
-@@ -879,12 +879,10 @@ static iw_handler r8192_wx_handlers[] = {
- 
- 
- static const struct iw_priv_args r8192_private_args[] = {
--
- 	{
- 		SIOCIWFIRSTPRIV + 0x0,
- 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "badcrc"
- 	},
--
- 	{
- 		SIOCIWFIRSTPRIV + 0x1,
- 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "activescan"
-@@ -897,9 +895,7 @@ static const struct iw_priv_args r8192_private_args[] = {
- 	{
- 		SIOCIWFIRSTPRIV + 0x3,
- 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "forcereset"
--
- 	}
--
- };
- 
- static iw_handler r8192_private_handler[] = {
--- 
-2.20.1
+Thanks
 
-
-
+>
+> --
+> J=E9r=F4me Pouiller
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
