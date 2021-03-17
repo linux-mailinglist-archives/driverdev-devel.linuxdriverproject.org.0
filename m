@@ -1,81 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8186E33ECF1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 10:26:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B66A33EDA6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 10:58:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 563016F6B5;
-	Wed, 17 Mar 2021 09:26:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E97B483F5E;
+	Wed, 17 Mar 2021 09:58:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uCPNv2GXlNJL; Wed, 17 Mar 2021 09:26:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lQ_Dr40_oKkD; Wed, 17 Mar 2021 09:58:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A82216F6B2;
-	Wed, 17 Mar 2021 09:26:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 224C68385D;
+	Wed, 17 Mar 2021 09:58:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C423C1BF831
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:26:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C240B1BF831
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:58:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AD5B083F21
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:26:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B15078385D
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:58:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kSh8gfhl244x for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 09:26:45 +0000 (UTC)
+ with ESMTP id XAxra9XeVCXx for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 09:58:16 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qk1-x731.google.com (mail-qk1-x731.google.com
- [IPv6:2607:f8b0:4864:20::731])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1084983F1B
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 09:26:44 +0000 (UTC)
-Received: by mail-qk1-x731.google.com with SMTP id n24so7999693qkh.9
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 02:26:44 -0700 (PDT)
+Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com
+ [IPv6:2a00:1450:4864:20::42a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F10F08354B
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 09:58:15 +0000 (UTC)
+Received: by mail-wr1-x42a.google.com with SMTP id z2so1142435wrl.5
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 02:58:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IrBUuxJ0/tOe5JMdV3oCdZMLR5yrFFt6tQhg6SF9S0A=;
- b=dE1SinEo08zAhMWg4UnYbEdt73S+JsqxL7ePe//MGRGo/jF76RBPZksVsKotwsRkI/
- iDezvBg0TBTIrASc1UE0m6ayW9GSMfVhVDXpb0V5jWEjqVhoOclFuHADK+evUBlvAp72
- 7Iqd1T8Z8NQ88yNmJTsX06/rzMi6gv+v4jEpPepPr16bLloTrdas1MKYQZe4IgO/fzzX
- rZdDLzx4acmNb/Be862nf2LM70PgxJxqgNCgBSjBi5WaZQHQ89HiWxxCLx2QqY5+9BRS
- qYb82yp9p76wIjj5XtSAi4PWIdUCeygHb6NNwQ3EMX4a/Lt4MLzjNoQRYlLPthhvnbo6
- qm9A==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=x4zh4SNUmcfd2PXUC3KyCVi6qa14IVpwvMxxZz19GaU=;
+ b=a+fxMkr21025v8KyzUdXrHu0dkOQedksKKsOdtCdbozifiP7HUxsiq8WwUYFv5yXqY
+ Dq9Ix4ayo29vQ81Q6uxaSlkUyLq/luxJaaceVjuNNHz1qpfUlE6+BvZRRAX0j81RDM+y
+ N88dn11gu8L5l0nNkQRK+fAxX09ViWrAF5FKriIM0WlOQjBqgB8hcYzHLH0KL0sVIzHZ
+ vU/0tkGnMMUd7n1G4V5hJHim0LuWHBTJI2gQsk0vTHELkPG5xBKeEeIWiUaqmnTzUxBy
+ CaQXIYKXWV0mH4M3HAkMPpQGpw7XqSWp7YvT1aI7B149oHdm0knz+JypbLgtIFRn7qsB
+ sdDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IrBUuxJ0/tOe5JMdV3oCdZMLR5yrFFt6tQhg6SF9S0A=;
- b=g4wEs2pUh7y8BPis43FxRxhDZppEqIzGtUL5KAhbdpXqj72/0euJxnwDLmU9IDNJ1E
- XCwH3w8CN8zn4TeKdkaK0lJcXmoR/PZXS3Ffuy3Qdtw1Pg2eGKoy1SfjaUM0tBLXIlWW
- ELIAA1wgDKtgy2iV/7n/fPn94dLbVrjOhcF6BLeq64VqDl4IlsR7K5d+NYfJltrxCIPp
- xuQli0Zq4T+9WidNwE/125//a5wywepF2W+JyVeReQ+C8LYvrrtyPO8ZdxT40Hie2K7a
- KDBXRPkxyurM6Aek/gnAOD2elFSHiYEAzTjpXNJTVm26HHgGTDfGakTIrX9M+Atz5vi5
- n6pw==
-X-Gm-Message-State: AOAM533RfVBtdj/fLBtCW1y4fQR+8y0z9+Y7DbjWyZSC7wbB0INLf5/3
- 8V5CZgwZhQbcf5VvWl5GIbg=
-X-Google-Smtp-Source: ABdhPJxTZ/kq8GIiLUeaxd9POUK/w++5tslHHZ3DZ0Y4syQpAclRJmIdQKDKwVf2q9AX7OHPLAPEJg==
-X-Received: by 2002:a37:7745:: with SMTP id s66mr3669503qkc.18.1615973203980; 
- Wed, 17 Mar 2021 02:26:43 -0700 (PDT)
-Received: from localhost.localdomain ([37.19.198.48])
- by smtp.gmail.com with ESMTPSA id 1sm7536340qtw.3.2021.03.17.02.26.39
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=x4zh4SNUmcfd2PXUC3KyCVi6qa14IVpwvMxxZz19GaU=;
+ b=UXWgTf5I3cyVa+Spxd3LC0i5Rv2I44abKNiMPGYlbF6XaFnT+VWVww6D7IhoiWxWlT
+ Z1ZkdKiXSHOfzG11F7ZCDYBiNPtVoN/hlZY13HXlJmE2l4XcCYHyaiBPWm29xNt4acSu
+ qwttNXzpHucK7JiWl0M62y6NJHwufuOVgYTIaMGQ7bbcbMlNrn7WLW8wSO14xAIYjntQ
+ P88Up/lMdTAZe64epw7EbR8MbFj9DPZ6h8nOhr1xw4IFm8JrTpI+KLFOGYhx0FE72CD9
+ rNBnsRW03zwY/vdyUy+S7T4Ss0EteU6Ww/3LGybmlbNr/VGo8v/O9BTTAPtnpg2E8Cuk
+ t1rQ==
+X-Gm-Message-State: AOAM530+/IZXdPWlsbDA7jaDBbKtPm8TQmmHFlzGkJpzmebj8TnD1fqk
+ CZUSg2ebvi3lE+rzpx4EhuA=
+X-Google-Smtp-Source: ABdhPJwTcvpEVOYb4EuzFW/uyLjNVrrSMdeNkMba8xfez82DYHzbAp0Qpw68j/p/jevJnjVKztXRww==
+X-Received: by 2002:a05:6000:1803:: with SMTP id
+ m3mr3610739wrh.50.1615975094162; 
+ Wed, 17 Mar 2021 02:58:14 -0700 (PDT)
+Received: from agape.jhs ([5.171.81.191])
+ by smtp.gmail.com with ESMTPSA id w131sm1998871wmb.8.2021.03.17.02.58.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Mar 2021 02:26:43 -0700 (PDT)
-From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-To: gregkh@linuxfoundation.org, colin.king@canonical.com, davem@davemloft.net,
- johannes@sipsolutions.net, arnd@arndb.de, unixbhaskar@gmail.com,
- lee.jones@linaro.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: wimax: i2400m: Mundane typo fix in the file driver.c
-Date: Wed, 17 Mar 2021 14:56:24 +0530
-Message-Id: <20210317092624.1138207-1-unixbhaskar@gmail.com>
-X-Mailer: git-send-email 2.30.2
+ Wed, 17 Mar 2021 02:58:13 -0700 (PDT)
+Date: Wed, 17 Mar 2021 10:58:12 +0100
+From: Fabio Aiuto <fabioaiuto83@gmail.com>
+To: gregkh@linuxfounddation.org
+Subject: staging: rtl8723bs: remove unused code blocks completed?
+Message-ID: <20210317095812.GA2270@agape.jhs>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,35 +84,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hi,
 
-s/procesing/processing/
+I'm trying to search other unused code blocks:
 
-Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
----
- drivers/staging/wimax/i2400m/driver.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+grep -r '^\(#ifdef \|#if defined(\|#ifndef \)CONFIG_' drivers/staging/rtl8723bs/
 
-diff --git a/drivers/staging/wimax/i2400m/driver.c b/drivers/staging/wimax/i2400m/driver.c
-index f5186458bb3d..8091106212f9 100644
---- a/drivers/staging/wimax/i2400m/driver.c
-+++ b/drivers/staging/wimax/i2400m/driver.c
-@@ -96,7 +96,7 @@ MODULE_PARM_DESC(barkers,
-  *
-  * This function just verifies that the header declaration and the
-  * payload are consistent and then deals with it, either forwarding it
-- * to the device or procesing it locally.
-+ * to the device or processing it locally.
-  *
-  * In the i2400m, messages are basically commands that will carry an
-  * ack, so we use i2400m_msg_to_dev() and then deliver the ack back to
---
-2.30.2
+drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c:#if defined(CONFIG_PM)
+drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c:#if defined(CONFIG_PM)
+drivers/staging/rtl8723bs/os_dep/ioctl_linux.c:#if defined(CONFIG_WEXT_PRIV)
+drivers/staging/rtl8723bs/include/drv_conf.h:#ifndef CONFIG_RTW_HIQ_FILTER
+drivers/staging/rtl8723bs/include/autoconf.h:#ifndef CONFIG_WIRELESS_EXT
 
+all blocks left are checked by existing defines.
+Could we apply this?
+
+thank you,
+
+fabio
+
+diff --git a/drivers/staging/rtl8723bs/TODO b/drivers/staging/rtl8723bs/TODO
+index 45065fd3fd5d..afa620ceb2d8 100644
+--- a/drivers/staging/rtl8723bs/TODO
++++ b/drivers/staging/rtl8723bs/TODO
+@@ -1,5 +1,4 @@
+ TODO:
+-- find and remove code blocks guarded by never set CONFIG_FOO defines
+ - find and remove remaining code valid only for 5 GHz. Most of the obvious
+   ones have been removed, but things like channel > 14 still exist.
+ - find and remove any code for other chips that is left over
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
