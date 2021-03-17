@@ -1,77 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64AAB33FAF3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:22:11 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E6CE33FAF4
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:22:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E106D4EDE5;
-	Wed, 17 Mar 2021 22:22:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 860D484167;
+	Wed, 17 Mar 2021 22:22:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fr9x5SmLwsUA; Wed, 17 Mar 2021 22:22:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eZIbaZPwJCwr; Wed, 17 Mar 2021 22:22:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F26AE4EDDA;
-	Wed, 17 Mar 2021 22:22:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C031084150;
+	Wed, 17 Mar 2021 22:22:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1BDD01BF21A
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 78E061BF21A
  for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 089D74EDE0
+ by smtp2.osuosl.org (Postfix) with ESMTP id 66D1D43096
  for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4pwlYGKhp8yT for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 22:21:23 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9pdLROl4Kjsn for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 22:21:24 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x535.google.com (mail-ed1-x535.google.com
- [IPv6:2a00:1450:4864:20::535])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 27F654EDD7
+Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com
+ [IPv6:2a00:1450:4864:20::633])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CBA8043061
  for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:23 +0000 (UTC)
-Received: by mail-ed1-x535.google.com with SMTP id e7so4186859edu.10
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:22 -0700 (PDT)
+Received: by mail-ej1-x633.google.com with SMTP id t18so815190ejc.13
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=AZ5hX6H0KfBxqhIe1qX+BSsySWb7RWojg0p3oTKnSsY=;
- b=MRsfDKGQ58PaA+gd0QDpsngWCRe776Gcqg0JRAHhYd1zkuyc5vR/CHH0vtgKXGgQet
- gFhdzsFm1fcv2g3Bh7nBDDXQGupSxPAUfIbbTaoOXtnUCX0I2uSzJJ5EuIsdqYETSXQq
- PSH8GEP8Hn/qeSkatv3wc0xWFv+SdsmmLvWrRYfcvB2T4RIIvMSurbHtaCJGzshb3joD
- 3p4U9FK5ooMOYq/JzbYvMBvf3uFVBAKEOXNbv5d5h+oFEYH+sj6HKBvEsgDZ7eRjrnlk
- i0R/Y02SxTqW3cx+1wEBbWcOJK1Jl16OqGqaW6amCAYJWlg/+DTsGN/BtI4pb8oOHuXa
- 3T8g==
+ bh=Bt8T88pEAVUZxQk85dKeiqXVslcgrOFC2H/olWG1kBE=;
+ b=PvIt3ej48ure8i0Y74DgGWjCoH4bXP7JQ5Z8B631yFmW7Cw1OC5UN7d36Thw4T5cBQ
+ 7SAHlKp7CvUtQthT0l127uNnEpgRo+ou1Zd3O7OW7T8rVHD/CNdbqnPQRKBeUHG/bZmR
+ Z+PJVh5GhxmpZGPMUzA7WkGl+HC9GNAgJWRJum+wXEAjxnL9ZUB59RmWWNZ4x/rIefOG
+ v0JaB7z9h4sXWftYroV/H4CeiOTMzpo/EveUYM019yQbSf9B4BxTP451kzB1DOhM6Cv1
+ zIq7UdozBkYnhQA4CFQgWE7KKEOuln1ysZ5HE4O+KMhsQbBAQU5ab4U0pflJq4OJ5Iso
+ e+Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AZ5hX6H0KfBxqhIe1qX+BSsySWb7RWojg0p3oTKnSsY=;
- b=bUeEE8z5wvHc24Lwe0fZ9B9T35w4QKCHH8PsuK8iV/dsDi0QGG+F284qKAgQEGCxLl
- +CafDuPPjtpZBfqCplth6U5VK5BfNQINYoSdGEcuCykq1vQUJ+kOYf1//wZNPDmId46F
- baDrBnkbQrWjtL2Ya7WJeoxQEkfAnn98F3gbNF3fy7zBMOJ6sY6pUD9UXH2TmuiKHxLu
- HO7bfh8JAxxeu4kKy8tvmuk2o7tT+MRNogoUrEu9hiGkeG8XG+Ypx7Kcp1OTEAIVKRgn
- l258cSlAEqTpfPcVN6WK8/Xq5zn9Z3Wd8El4Y1SwuuxSUGXO4BhEGHR/873uly6Rzn0R
- 8lmQ==
-X-Gm-Message-State: AOAM531OhmG6nDpgwm4OolgPlfbozjkeqzrDSUgpglMYNrcLCMRH8Pxb
- RcKwbExsEIXkLVIWNg2bU3Y=
-X-Google-Smtp-Source: ABdhPJxO27PHnsEQ/8mBpX9D8k4VEVTteFjO4+dFq167R9f+unvp+Hw5sbL8qoRzb9VIdYyZCF627Q==
-X-Received: by 2002:aa7:d296:: with SMTP id w22mr46409622edq.150.1616019681435; 
- Wed, 17 Mar 2021 15:21:21 -0700 (PDT)
+ bh=Bt8T88pEAVUZxQk85dKeiqXVslcgrOFC2H/olWG1kBE=;
+ b=mdY1j7PuVcTHnKQjyTj7FDZCC5RzQXAbea8EpAEPjb11//f2awWCyOF13fSaGRoajD
+ rT9ldL1JVl9qBFDqiQyEjccEOC+A+Ax0gRHotNVn0G2Br/ysulMwQFc95h3bVfDCFqyP
+ +94cUcAWZeDPt/SHUBz+fD4xrjBHDOacIwUArRVZl4UeFBR7pdYYV4LJDOiDQ19elsT/
+ BTUG9DShS8ptorBGY8CbIZ4L6DY+kIqKCglKzn4U3QB6RUsjq0bTtqvGvjGLsP7Yc8oM
+ 4KfZJs9L8r6aIJH3j3cDGycM0N38bXldXRAuqEZsvZ2JiqXIz19BGWYlDFVeF70fFykr
+ X3TQ==
+X-Gm-Message-State: AOAM533CF+5JfBpytjTAYWOAdKmueYNCaF6cwDI89LkMYw1KR5olosK0
+ tExNhWxdzdBaCeYCP81sAgU=
+X-Google-Smtp-Source: ABdhPJyMYCXc/7fj6JwcP5kqibFNefxl1fegh7z4HiwFzWG2HGNlXTpE5T2C4/iuoCrCXbuLQw+J/Q==
+X-Received: by 2002:a17:906:b747:: with SMTP id
+ fx7mr38631174ejb.474.1616019682141; 
+ Wed, 17 Mar 2021 15:21:22 -0700 (PDT)
 Received: from gimli.home (93-48-145-141.ip257.fastwebnet.it. [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id
- cf4sm104304edb.19.2021.03.17.15.21.20
+ cf4sm104304edb.19.2021.03.17.15.21.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Wed, 17 Mar 2021 15:21:21 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 04/43] Staging: rtl8723bs: fix names in hal_com.h
-Date: Wed, 17 Mar 2021 23:20:51 +0100
-Message-Id: <20210317222130.29528-5-marcocesati@gmail.com>
+Subject: [PATCH 05/43] Staging: rtl8723bs: fix names in rtw_eeprom.h
+Date: Wed, 17 Mar 2021 23:20:52 +0100
+Message-Id: <20210317222130.29528-6-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210317222130.29528-1-marcocesati@gmail.com>
 References: <20210317222130.29528-1-marcocesati@gmail.com>
@@ -94,61 +97,26 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit converts names of structs / enums
-in include/hal_com.h from ALL_CAPS format to lowercase
+in include/rtw_eeprom.h from ALL_CAPS format to lowercase
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h | 2 +-
- drivers/staging/rtl8723bs/hal/hal_btcoex.c   | 2 +-
- drivers/staging/rtl8723bs/include/hal_com.h  | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723bs/include/rtw_eeprom.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h b/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
-index c38baf2bc412..866667134cad 100644
---- a/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
-+++ b/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
-@@ -540,7 +540,7 @@ void EXhalbtcoutsrc_LpsNotify(struct BTC_COEXIST *pBtCoexist, u8 type);
- void EXhalbtcoutsrc_ScanNotify(struct BTC_COEXIST *pBtCoexist, u8 type);
- void EXhalbtcoutsrc_ConnectNotify(struct BTC_COEXIST *pBtCoexist, u8 action);
- void EXhalbtcoutsrc_MediaStatusNotify(
--	struct BTC_COEXIST *pBtCoexist, enum RT_MEDIA_STATUS mediaStatus
-+	struct BTC_COEXIST *pBtCoexist, enum rt_media_status mediaStatus
- );
- void EXhalbtcoutsrc_SpecialPacketNotify(struct BTC_COEXIST *pBtCoexist, u8 pktType);
- void EXhalbtcoutsrc_BtInfoNotify(
-diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index 0b339c155860..e524c775307f 100644
---- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -1106,7 +1106,7 @@ void EXhalbtcoutsrc_ConnectNotify(struct BTC_COEXIST *pBtCoexist, u8 action)
- }
- 
- void EXhalbtcoutsrc_MediaStatusNotify(struct BTC_COEXIST *pBtCoexist, enum
--	RT_MEDIA_STATUS mediaStatus)
-+	rt_media_status mediaStatus)
- {
- 	u8 mStatus;
- 
-diff --git a/drivers/staging/rtl8723bs/include/hal_com.h b/drivers/staging/rtl8723bs/include/hal_com.h
-index d71c26cfd54c..81c85ca3b402 100644
---- a/drivers/staging/rtl8723bs/include/hal_com.h
-+++ b/drivers/staging/rtl8723bs/include/hal_com.h
-@@ -165,13 +165,13 @@ enum{
- 	UP_LINK,
- 	DOWN_LINK,
- };
--enum RT_MEDIA_STATUS {
-+enum rt_media_status {
- 	RT_MEDIA_DISCONNECT = 0,
- 	RT_MEDIA_CONNECT       = 1
- };
- 
- #define MAX_DLFW_PAGE_SIZE			4096	/*  @ page : 4k bytes */
--enum FIRMWARE_SOURCE {
-+enum firmware_source {
- 	FW_SOURCE_IMG_FILE = 0,
- 	FW_SOURCE_HEADER_FILE = 1,		/* from header file */
- };
+diff --git a/drivers/staging/rtl8723bs/include/rtw_eeprom.h b/drivers/staging/rtl8723bs/include/rtw_eeprom.h
+index fb619e83217a..da7f14aadaa0 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_eeprom.h
++++ b/drivers/staging/rtl8723bs/include/rtw_eeprom.h
+@@ -42,7 +42,7 @@
+ /*  Besides, CustomerID of registry has precedence of that of EEPROM. */
+ /*  defined below. 060703, by rcnjko. */
+ /*  */
+-enum RT_CUSTOMER_ID {
++enum rt_customer_id {
+ 	RT_CID_DEFAULT = 0,
+ 	RT_CID_8187_ALPHA0 = 1,
+ 	RT_CID_8187_SERCOMM_PS = 2,
 -- 
 2.30.2
 
