@@ -1,52 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E5AA33F7FA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 19:15:37 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07E1333F822
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 19:30:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 31BE34ED25;
-	Wed, 17 Mar 2021 18:15:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 31CB343257;
+	Wed, 17 Mar 2021 18:30:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0dLH8g3bRKpr; Wed, 17 Mar 2021 18:15:35 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rUM7zL6NS3tH; Wed, 17 Mar 2021 18:30:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7BB3A4ED03;
-	Wed, 17 Mar 2021 18:15:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 49E8E4324F;
+	Wed, 17 Mar 2021 18:30:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C14C61BF330
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:15:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1487F1BF330
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:30:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BC9108344C
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:15:23 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0385883126
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:30:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4uVN8PMriaGf for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 18:15:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C89D882974
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 18:15:22 +0000 (UTC)
-Received: from ip5f5af0a0.dynamic.kabel-deutschland.de ([95.90.240.160]
- helo=wittgenstein) by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <christian.brauner@ubuntu.com>)
- id 1lMahT-0003WC-Re; Wed, 17 Mar 2021 18:15:20 +0000
-Date: Wed, 17 Mar 2021 19:15:18 +0100
-From: Christian Brauner <christian.brauner@ubuntu.com>
-To: Li Li <dualli@chromium.org>
-Subject: Re: [PATCH v3 1/3] binder: BINDER_FREEZE ioctl
-Message-ID: <20210317181518.zclcb5vmhxjuk52s@wittgenstein>
-References: <20210316011630.1121213-1-dualli@chromium.org>
- <20210316011630.1121213-2-dualli@chromium.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210316011630.1121213-2-dualli@chromium.org>
+ with ESMTP id VBYVWl2_5VP6 for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 18:30:06 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CE17482F6C
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 18:30:06 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id 30so1203777ple.4
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 11:30:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=UAxYgTJ8xiP4XZVnDR92h/oyODoJt823YPaFX/5CcQk=;
+ b=O7R9c2WVL3DtF3LatZ0VWcRSvZ+xM1Rz3Dg7NnRZYkAn5yXENuAgwo/e78WXjJXpnd
+ boo7rzIZNH/Fw5uc5hmEX9ZiXXufDm/o/B9wna3Hed952P21HPXdWWPrAGIh/ZGtLRrM
+ t39nfxeMwTg0r1DxDgUQX9yFgZ5vEsQj2eGUEkyN4oP3a1uKMhdljlyiQ8hI8azsm+Bi
+ B6QOQE4x8/xrB0mxwUpq1FV6VybbvHy7Vqz9iLCwLwli1upK6YasSDdRgqqBQJTQQ2r2
+ K0wJyod0B1aG3ImtCzz3I+v9iKWY2QhyZwvAB8EV71UPBq48llT2zOwEU/wrwuJFL1Ji
+ QfGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=UAxYgTJ8xiP4XZVnDR92h/oyODoJt823YPaFX/5CcQk=;
+ b=fteWYBL0EGxldvq0oMB7fOlmWenO0vb3amrA51lzC882VNer8rMishddpUZViejiDR
+ UN5iPjvIZKvXBfO2uigZJcbYk4H0xV+F77fU3IScYA1KadV64n5gQzUelxXdqA+6CaLo
+ fUTBNZ1nG5158UGoaOFSyLe7L5cZaCFfXsJNd59vKB/Kyb02Y+sm6KrkGVI6Jq9JVuJp
+ di/Wt02mNhcN/kea3wxzVttJYDzLYH48potQB9bZSZ+hyzMewxFIPYDjoNcfifNu7nfb
+ 4wFPHwuoaMlc6o5cqb3IeYIQ17zknn/v7LVvUzjZs4voresDMRlTHo5cW9DCkM0Q038b
+ 34YQ==
+X-Gm-Message-State: AOAM533rovTcwOiIBVmEvlZOOtonTPRS8xcCUyG/pQ9Ca2BHeqpNXPrW
+ kshuuUcANsPjMrrsGuBK1oc=
+X-Google-Smtp-Source: ABdhPJwHjwyxoeJUs9eLxkM9BwJnJs7cNI7fX+NEBcl44ZW+0XKKWRWkwqLi+BOGCAmF4vdXaYuIkg==
+X-Received: by 2002:a17:90b:e95:: with SMTP id
+ fv21mr130236pjb.217.1616005806178; 
+ Wed, 17 Mar 2021 11:30:06 -0700 (PDT)
+Received: from mahak-Inspiron-7570 ([103.37.201.168])
+ by smtp.gmail.com with ESMTPSA id w22sm19741366pfi.133.2021.03.17.11.30.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Mar 2021 11:30:05 -0700 (PDT)
+From: Mahak Gupta <gmahak1@gmail.com>
+To: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
+ Richard Yeh <rcy@google.com>, benchan@chromium.org, toddpoynor@google.com,
+ Rob Springer <rspringer@google.com>
+Subject: [PATCH] staging: octeon-usb: Match alignment with open parenthesis
+Date: Wed, 17 Mar 2021 23:59:53 +0530
+Message-Id: <20210317182953.3826-1-gmahak1@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,261 +85,153 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: dualli@google.com, devel@driverdev.osuosl.org, kernel-team@android.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- joel@joelfernandes.org, arve@android.com, maco@google.com, hridya@google.com,
- surenb@google.com, christian@brauner.io, tkjos@google.com
+Cc: Mahak Gupta <gmahak1@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 15, 2021 at 06:16:28PM -0700, Li Li wrote:
-> From: Marco Ballesio <balejs@google.com>
-> 
-> Frozen tasks can't process binder transactions, so a way is required to
-> inform transmitting ends of communication failures due to the frozen
-> state of their receiving counterparts. Additionally, races are possible
-> between transitions to frozen state and binder transactions enqueued to
-> a specific process.
-> 
-> Implement BINDER_FREEZE ioctl for user space to inform the binder driver
-> about the intention to freeze or unfreeze a process. When the ioctl is
-> called, block the caller until any pending binder transactions toward
-> the target process are flushed. Return an error to transactions to
-> processes marked as frozen.
-> 
-> Signed-off-by: Marco Ballesio <balejs@google.com>
-> Co-developed-by: Todd Kjos <tkjos@google.com>
-> Signed-off-by: Todd Kjos <tkjos@google.com>
-> Signed-off-by: Li Li <dualli@google.com>
-> ---
->  drivers/android/binder.c            | 139 ++++++++++++++++++++++++++--
->  drivers/android/binder_internal.h   |  12 +++
->  include/uapi/linux/android/binder.h |  13 +++
->  3 files changed, 154 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index c119736ca56a..b93ca53bb90f 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -1506,6 +1506,12 @@ static void binder_free_transaction(struct binder_transaction *t)
->  
->  	if (target_proc) {
->  		binder_inner_proc_lock(target_proc);
-> +		target_proc->outstanding_txns--;
-> +		if (target_proc->outstanding_txns < 0)
-> +			pr_warn("%s: Unexpected outstanding_txns %d\n",
-> +				__func__, target_proc->outstanding_txns);
-> +		if (!target_proc->outstanding_txns && target_proc->is_frozen)
-> +			wake_up_interruptible_all(&target_proc->freeze_wait);
->  		if (t->buffer)
->  			t->buffer->transaction = NULL;
->  		binder_inner_proc_unlock(target_proc);
-> @@ -2331,10 +2337,11 @@ static int binder_fixup_parent(struct binder_transaction *t,
->   * If the @thread parameter is not NULL, the transaction is always queued
->   * to the waitlist of that specific thread.
->   *
-> - * Return:	true if the transactions was successfully queued
-> - *		false if the target process or thread is dead
-> + * Return:	0 if the transaction was successfully queued
-> + *		BR_DEAD_REPLY if the target process or thread is dead
-> + *		BR_FROZEN_REPLY if the target process or thread is frozen
->   */
-> -static bool binder_proc_transaction(struct binder_transaction *t,
-> +static int binder_proc_transaction(struct binder_transaction *t,
->  				    struct binder_proc *proc,
->  				    struct binder_thread *thread)
->  {
-> @@ -2354,10 +2361,11 @@ static bool binder_proc_transaction(struct binder_transaction *t,
->  
->  	binder_inner_proc_lock(proc);
->  
-> -	if (proc->is_dead || (thread && thread->is_dead)) {
-> +	if ((proc->is_frozen && !oneway) || proc->is_dead ||
-> +			(thread && thread->is_dead)) {
->  		binder_inner_proc_unlock(proc);
->  		binder_node_unlock(node);
-> -		return false;
-> +		return proc->is_frozen ? BR_FROZEN_REPLY : BR_DEAD_REPLY;
->  	}
->  
->  	if (!thread && !pending_async)
-> @@ -2373,10 +2381,11 @@ static bool binder_proc_transaction(struct binder_transaction *t,
->  	if (!pending_async)
->  		binder_wakeup_thread_ilocked(proc, thread, !oneway /* sync */);
->  
-> +	proc->outstanding_txns++;
->  	binder_inner_proc_unlock(proc);
->  	binder_node_unlock(node);
->  
-> -	return true;
-> +	return 0;
->  }
->  
->  /**
-> @@ -3013,13 +3022,16 @@ static void binder_transaction(struct binder_proc *proc,
->  	if (reply) {
->  		binder_enqueue_thread_work(thread, tcomplete);
->  		binder_inner_proc_lock(target_proc);
-> -		if (target_thread->is_dead) {
-> +		if (target_thread->is_dead || target_proc->is_frozen) {
-> +			return_error = target_thread->is_dead ?
-> +				BR_DEAD_REPLY : BR_FROZEN_REPLY;
->  			binder_inner_proc_unlock(target_proc);
->  			goto err_dead_proc_or_thread;
->  		}
->  		BUG_ON(t->buffer->async_transaction != 0);
->  		binder_pop_transaction_ilocked(target_thread, in_reply_to);
->  		binder_enqueue_thread_work_ilocked(target_thread, &t->work);
-> +		target_proc->outstanding_txns++;
->  		binder_inner_proc_unlock(target_proc);
->  		wake_up_interruptible_sync(&target_thread->wait);
->  		binder_free_transaction(in_reply_to);
-> @@ -3038,7 +3050,9 @@ static void binder_transaction(struct binder_proc *proc,
->  		t->from_parent = thread->transaction_stack;
->  		thread->transaction_stack = t;
->  		binder_inner_proc_unlock(proc);
-> -		if (!binder_proc_transaction(t, target_proc, target_thread)) {
-> +		return_error = binder_proc_transaction(t,
-> +				target_proc, target_thread);
-> +		if (return_error) {
->  			binder_inner_proc_lock(proc);
->  			binder_pop_transaction_ilocked(thread, t);
->  			binder_inner_proc_unlock(proc);
-> @@ -3048,7 +3062,8 @@ static void binder_transaction(struct binder_proc *proc,
->  		BUG_ON(target_node == NULL);
->  		BUG_ON(t->buffer->async_transaction != 1);
->  		binder_enqueue_thread_work(thread, tcomplete);
-> -		if (!binder_proc_transaction(t, target_proc, NULL))
-> +		return_error = binder_proc_transaction(t, target_proc, NULL);
-> +		if (return_error)
->  			goto err_dead_proc_or_thread;
->  	}
->  	if (target_thread)
-> @@ -3065,7 +3080,6 @@ static void binder_transaction(struct binder_proc *proc,
->  	return;
->  
->  err_dead_proc_or_thread:
-> -	return_error = BR_DEAD_REPLY;
->  	return_error_line = __LINE__;
->  	binder_dequeue_work(proc, tcomplete);
->  err_translate_failed:
-> @@ -4298,6 +4312,9 @@ static void binder_free_proc(struct binder_proc *proc)
->  
->  	BUG_ON(!list_empty(&proc->todo));
->  	BUG_ON(!list_empty(&proc->delivered_death));
-> +	if (proc->outstanding_txns)
-> +		pr_warn("%s: Unexpected outstanding_txns %d\n",
-> +			__func__, proc->outstanding_txns);
->  	device = container_of(proc->context, struct binder_device, context);
->  	if (refcount_dec_and_test(&device->ref)) {
->  		kfree(proc->context->name);
-> @@ -4359,6 +4376,7 @@ static int binder_thread_release(struct binder_proc *proc,
->  			     (t->to_thread == thread) ? "in" : "out");
->  
->  		if (t->to_thread == thread) {
-> +			thread->proc->outstanding_txns--;
->  			t->to_proc = NULL;
->  			t->to_thread = NULL;
->  			if (t->buffer) {
-> @@ -4609,6 +4627,45 @@ static int binder_ioctl_get_node_debug_info(struct binder_proc *proc,
->  	return 0;
->  }
->  
-> +static int binder_ioctl_freeze(struct binder_freeze_info *info,
-> +			       struct binder_proc *target_proc)
-> +{
-> +	int ret = 0;
-> +
-> +	if (!info->enable) {
-> +		binder_inner_proc_lock(target_proc);
-> +		target_proc->is_frozen = false;
-> +		binder_inner_proc_unlock(target_proc);
-> +		return 0;
-> +	}
-> +
-> +	/*
-> +	 * Freezing the target. Prevent new transactions by
-> +	 * setting frozen state. If timeout specified, wait
-> +	 * for transactions to drain.
-> +	 */
-> +	binder_inner_proc_lock(target_proc);
-> +	target_proc->is_frozen = true;
-> +	binder_inner_proc_unlock(target_proc);
-> +
-> +	if (info->timeout_ms > 0)
-> +		ret = wait_event_interruptible_timeout(
-> +			target_proc->freeze_wait,
-> +			(!target_proc->outstanding_txns),
-> +			msecs_to_jiffies(info->timeout_ms));
-> +
-> +	if (!ret && target_proc->outstanding_txns)
-> +		ret = -EAGAIN;
-> +
-> +	if (ret < 0) {
-> +		binder_inner_proc_lock(target_proc);
-> +		target_proc->is_frozen = false;
-> +		binder_inner_proc_unlock(target_proc);
-> +	}
-> +
-> +	return ret;
-> +}
-> +
->  static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
->  {
->  	int ret;
-> @@ -4727,6 +4784,66 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
->  		}
->  		break;
->  	}
-> +	case BINDER_FREEZE: {
-> +		struct binder_freeze_info info;
-> +		struct binder_proc **target_procs = NULL, *target_proc;
-> +		int target_procs_count = 0, i = 0;
-> +
-> +		ret = 0;
-> +
-> +		if (copy_from_user(&info, ubuf, sizeof(info))) {
+This patches fixes the checks- 'Alignment should match open parenthesis'
+of 'checkpatch.pl'.
 
-This is not at all a blocker to this I just want to point out that if
-you wanted to you could ensure that this API is extensible with
-guaranteed forward- and backward compatibility by switching to the
-copy_struct_from_user() API that Aleksa and I added and that is nowadays
-used in a bunch of syscalls (openat2((), clone3(), mount_setattr(),
-sched_setattr() etc.). For the seccomp notifier work we did we extended
-this concept to ioctls(), see
+Signed-off-by: Mahak Gupta <gmahak1@gmail.com>
+---
+ drivers/staging/octeon-usb/octeon-hcd.c | 32 +++++++++++++------------
+ 1 file changed, 17 insertions(+), 15 deletions(-)
 
-kernel/seccomp.c:
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+index e2f8b6b67f75..f27f20a4aa2d 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.c
++++ b/drivers/staging/octeon-usb/octeon-hcd.c
+@@ -1258,7 +1258,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
+ 		union cvmx_usbcx_hptxsts tx_status;
+ 
+ 		tx_status.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HPTXSTS(usb->index));
++						    CVMX_USBCX_HPTXSTS(usb->index));
+ 		if (cvmx_usb_fill_tx_hw(usb, &usb->periodic,
+ 					tx_status.s.ptxfspcavail))
+ 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
+@@ -1272,7 +1272,7 @@ static void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
+ 		union cvmx_usbcx_gnptxsts tx_status;
+ 
+ 		tx_status.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_GNPTXSTS(usb->index));
++						    CVMX_USBCX_GNPTXSTS(usb->index));
+ 		if (cvmx_usb_fill_tx_hw(usb, &usb->nonperiodic,
+ 					tx_status.s.nptxfspcavail))
+ 			USB_SET_FIELD32(CVMX_USBCX_GINTMSK(usb->index),
+@@ -1298,13 +1298,13 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
+ 
+ 	/* We only need to fill data on outbound channels */
+ 	hcchar.u32 = cvmx_usb_read_csr32(usb,
+-			CVMX_USBCX_HCCHARX(channel, usb->index));
++					 CVMX_USBCX_HCCHARX(channel, usb->index));
+ 	if (hcchar.s.epdir != CVMX_USB_DIRECTION_OUT)
+ 		return;
+ 
+ 	/* OUT Splits only have data on the start and not the complete */
+ 	usbc_hcsplt.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCSPLTX(channel, usb->index));
++					      CVMX_USBCX_HCSPLTX(channel, usb->index));
+ 	if (usbc_hcsplt.s.spltena && usbc_hcsplt.s.compsplt)
+ 		return;
+ 
+@@ -1313,7 +1313,7 @@ static void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
+ 	 * words.
+ 	 */
+ 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCTSIZX(channel, usb->index));
++					      CVMX_USBCX_HCTSIZX(channel, usb->index));
+ 	if (!usbc_hctsiz.s.xfersize)
+ 		return;
+ 
+@@ -1360,7 +1360,7 @@ static void cvmx_usb_start_channel_control(struct octeon_hcd *usb,
+ 	union cvmx_usbcx_hctsizx usbc_hctsiz;
+ 
+ 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCTSIZX(channel, usb->index));
++					      CVMX_USBCX_HCTSIZX(channel, usb->index));
+ 
+ 	switch (transaction->stage) {
+ 	case CVMX_USB_STAGE_NON_CONTROL:
+@@ -1517,7 +1517,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+ 
+ 		/* Clear all channel status bits */
+ 		usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HCINTX(channel, usb->index));
++						     CVMX_USBCX_HCINTX(channel, usb->index));
+ 
+ 		cvmx_usb_write_csr32(usb,
+ 				     CVMX_USBCX_HCINTX(channel, usb->index),
+@@ -1552,7 +1552,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+ 
+ 		/* Enable the channel interrupt to propagate */
+ 		usbc_haintmsk.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HAINTMSK(usb->index));
++							CVMX_USBCX_HAINTMSK(usb->index));
+ 		usbc_haintmsk.s.haintmsk |= 1 << channel;
+ 		cvmx_usb_write_csr32(usb, CVMX_USBCX_HAINTMSK(usb->index),
+ 				     usbc_haintmsk.u32);
+@@ -1836,7 +1836,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+  * Returns: Pipe or NULL if none are ready
+  */
+ static struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(struct octeon_hcd *usb,
+-		enum cvmx_usb_transfer xfer_type)
++						      enum cvmx_usb_transfer xfer_type)
+ {
+ 	struct list_head *list = usb->active_pipes + xfer_type;
+ 	u64 current_frame = usb->frame_number;
+@@ -2309,7 +2309,8 @@ static int cvmx_usb_cancel(struct octeon_hcd *usb,
+ 		CVMX_SYNCW;
+ 
+ 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCCHARX(pipe->channel, usb->index));
++						      CVMX_USBCX_HCCHARX(pipe->channel,
++									 usb->index));
+ 		/*
+ 		 * If the channel isn't enabled then the transaction already
+ 		 * completed.
+@@ -2605,11 +2606,12 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
+ 
+ 	/* Read the interrupt status bits for the channel */
+ 	usbc_hcint.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCINTX(channel, usb->index));
++					     CVMX_USBCX_HCINTX(channel, usb->index));
+ 
+ 	if (usb->init_flags & CVMX_USB_INITIALIZE_FLAGS_NO_DMA) {
+ 		usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
+-				CVMX_USBCX_HCCHARX(channel, usb->index));
++						      CVMX_USBCX_HCCHARX(channel,
++									 usb->index));
+ 
+ 		if (usbc_hcchar.s.chena && usbc_hcchar.s.chdis) {
+ 			/*
+@@ -2688,9 +2690,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
+ 	 * transferred
+ 	 */
+ 	usbc_hcchar.u32 = cvmx_usb_read_csr32(usb,
+-			CVMX_USBCX_HCCHARX(channel, usb->index));
++					      CVMX_USBCX_HCCHARX(channel, usb->index));
+ 	usbc_hctsiz.u32 = cvmx_usb_read_csr32(usb,
+-			CVMX_USBCX_HCTSIZX(channel, usb->index));
++					      CVMX_USBCX_HCTSIZX(channel, usb->index));
+ 
+ 	/*
+ 	 * Calculating the number of bytes successfully transferred is dependent
+@@ -3010,7 +3012,7 @@ static int cvmx_usb_poll(struct octeon_hcd *usb)
+ 		union cvmx_usbcx_haint usbc_haint;
+ 
+ 		usbc_haint.u32 = cvmx_usb_read_csr32(usb,
+-					CVMX_USBCX_HAINT(usb->index));
++						     CVMX_USBCX_HAINT(usb->index));
+ 		while (usbc_haint.u32) {
+ 			int channel;
+ 
+-- 
+2.17.1
 
-static long seccomp_notify_ioctl(struct file *file, unsigned int cmd,
-				 unsigned long arg)
-{
-	struct seccomp_filter *filter = file->private_data;
-	void __user *buf = (void __user *)arg;
-
-	/* Fixed-size ioctls */
-	switch (cmd) {
-	case SECCOMP_IOCTL_NOTIF_RECV:
-		return seccomp_notify_recv(filter, buf);
-	case SECCOMP_IOCTL_NOTIF_SEND:
-		return seccomp_notify_send(filter, buf);
-	case SECCOMP_IOCTL_NOTIF_ID_VALID_WRONG_DIR:
-	case SECCOMP_IOCTL_NOTIF_ID_VALID:
-		return seccomp_notify_id_valid(filter, buf);
-	}
-
-	/* Extensible Argument ioctls */
-#define EA_IOCTL(cmd)	((cmd) & ~(IOC_INOUT | IOCSIZE_MASK))
-	switch (EA_IOCTL(cmd)) {
-	case EA_IOCTL(SECCOMP_IOCTL_NOTIF_ADDFD):
-		return seccomp_notify_addfd(filter, buf, _IOC_SIZE(cmd));
-	default:
-		return -EINVAL;
-	}
-}
-
-Christian
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
