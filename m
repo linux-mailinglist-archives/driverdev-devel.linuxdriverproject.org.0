@@ -1,80 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 752B233FB07
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:24:53 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 216CF33FB05
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:24:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 18FAA84169;
-	Wed, 17 Mar 2021 22:24:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BE69B43295;
+	Wed, 17 Mar 2021 22:24:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V96Yohm3PQYh; Wed, 17 Mar 2021 22:24:51 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1Q-T7yU5yKem; Wed, 17 Mar 2021 22:24:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3AD378336D;
-	Wed, 17 Mar 2021 22:24:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 200A84327C;
+	Wed, 17 Mar 2021 22:24:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9D4491BF21A
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:34 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7BEEA1BF9C6
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8D2404EDE7
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:34 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6B8AD6F9BA
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WeF-xqJ01ZTv for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 22:21:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NanVTQge0x5G for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 22:21:32 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com
- [IPv6:2a00:1450:4864:20::62c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 06A554EDD7
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:31 +0000 (UTC)
-Received: by mail-ej1-x62c.google.com with SMTP id w3so816142ejc.4
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:31 -0700 (PDT)
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A02FE60636
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:32 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id u9so819933ejj.7
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=Vv6MzJruLf6ENKWL6Nv2TxOA4CubhM0DXh/btYVmB8c=;
- b=stREO5MNrbWPisdP6UpM44VFp9FWregBTu0z5yX4Asn7U8piQZfKRwJmKsIcIBCK2z
- jkBuBcvwMuBR5snX7zqKaDoD+6Hsdy9KeZ/k6v/I+cuboldraaztOctUs0yOJB32eRGv
- XMH8s37baZ6Ojk4VvhHrk/JsbwDNkLG6B+esiUjw3kWUckQXfb8v0Dq2lr2Rm7Vf3rgS
- x04bm4GiDE38DHLBDclO+Cw+31Ie5Kwci6N6oFvssFqSAhQn+0INg+abN8aV2UnXnd6o
- nNqJggcgQI5cyHYzPUN2jbVaxOnlzeEn4wORS+o7upkKQKf2F/yFKbOAvLcgY1JBxs/v
- 9gUA==
+ bh=6r2bmypDTBOCpZ1FXxkS8cKovF8E1MvuCujcWVvaoGg=;
+ b=EK0mQv1k5GaBI44C/MPSKHo6cozInCkHxaquB/V9l1jU0pUzX56qJ4JJgLuJTLpal/
+ wY33E9Jq6Im2RABsbZq7H+co5KV5uOyRY5MYclh2PLJiY7T8eh98nD+MdI5DvgLcjV8W
+ 8A4O+IlNaY2xTD3G1b6UkRM8+IRRVyF0Dqaf2BMOZL6SGBzez1/3UaHMLVimIRLurUeU
+ 0UfYl7W5T7oAjSsa9AoG/aJKiETDNqAqV2J/8gxyUvMl/8H6FsvWgnWkDP0nXQ1mJVq9
+ AOPh5dLq2uS9r51hg7gvgh8OZvxWuvP2wSaQSqhsD3TS5InSlpdunXsIB/6rqbD9gCgL
+ EABQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Vv6MzJruLf6ENKWL6Nv2TxOA4CubhM0DXh/btYVmB8c=;
- b=aWIt0phV4ABl9jQimHLwxgJZE0skibdVv4GmCgFMvAEKQVwB1IwuVkcMz7uHDq2rj4
- JeeO5y8iBjSnYpvVx/VLVvQfwzvuNTAbzOPQo/FS5mgjQBhSDiY0yHXeKpydD3DmB0cR
- WcPVOAQCPG4TYUmzQWO+h6pgWR0+R33LV5+mU+ZROKsJ3TDkuQOUOxrfqZYWnGC/7J4F
- Zrjr7Hp6nUpPc+0g0c8BmS/ZNKxPlbPQdabOxPEl5fXK8rVu4FbYwDJGuHRObPq8Feum
- H2py9qqUbCOngDUeriyIPxsCfHKjg2GVbmxgojS46ygcT9htC5/N5u2BCEwVfieM4xUe
- ulhg==
-X-Gm-Message-State: AOAM533UD28OJJWInYhu6fxf0r5tO8u3xt5IruRxt4XSlzxHxNUps3z+
- h9DSUqkCzSgUWWmjgONAXoQ=
-X-Google-Smtp-Source: ABdhPJym1OXsEwG+K2m3xGr/bDwU5DeAOasYyKUIFQ17m7hbk04pLCp6eG1T6stxVLM615SnwLgm+w==
-X-Received: by 2002:a17:906:154f:: with SMTP id
- c15mr36915263ejd.142.1616019690270; 
+ bh=6r2bmypDTBOCpZ1FXxkS8cKovF8E1MvuCujcWVvaoGg=;
+ b=Pvw6H6Lc5fUScPGIqJ6AVcMBC2ei0AS4M+VpUFjPMP9OgP1Gjzbd4phCuw5j9E6imK
+ wS7CcUdCCLW6vQeU81mXdc/HtOpqAOsQHl7+31eGV9Z8FKfM9nwoaGzWcRIbpeBBcums
+ P2qgznYpdDvZHbiEmhDnJyvSl+Y9MUO3XO+5+mvzDmEs7Hx3+lIew04WpZdZ+jvXrtmn
+ iViKnoJvThPuyvF43IebWt52dI3VmBFVnwSoVCjIzQVnkdIdMT0IHlF+0DW1/mh26dd2
+ K96UNxEQWm0w6+cqc9a5xGqgIHaJm5x3021hoLRmtN7ZZL+xaZ3txU8tfx92YYPvQedP
+ m2Ig==
+X-Gm-Message-State: AOAM532kWTY4et66RCGKLz0iHBxVQPx2aOwh1ez2sI5oDh83wfQmzbtr
+ t4RVRKHiMSah/2XQXbgcg18=
+X-Google-Smtp-Source: ABdhPJz1VwB6rD5Ky3aXfPIdxsIwS3Tna5Ap0xoQ4D1nv2hWPkzaFDPtaj4les4Szfeq/w9ehc6DlA==
+X-Received: by 2002:a17:906:3b84:: with SMTP id
+ u4mr37328012ejf.431.1616019690891; 
  Wed, 17 Mar 2021 15:21:30 -0700 (PDT)
 Received: from gimli.home (93-48-145-141.ip257.fastwebnet.it. [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id
- cf4sm104304edb.19.2021.03.17.15.21.29
+ cf4sm104304edb.19.2021.03.17.15.21.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Wed, 17 Mar 2021 15:21:30 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 17/43] Staging: rtl8723bs: fix names in wifi.h
-Date: Wed, 17 Mar 2021 23:21:04 +0100
-Message-Id: <20210317222130.29528-18-marcocesati@gmail.com>
+Subject: [PATCH 18/43] Staging: rtl8723bs: fix names in rtl8723b_hal.h
+Date: Wed, 17 Mar 2021 23:21:05 +0100
+Message-Id: <20210317222130.29528-19-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210317222130.29528-1-marcocesati@gmail.com>
 References: <20210317222130.29528-1-marcocesati@gmail.com>
@@ -97,105 +97,79 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit converts names of structs / enums
-in include/wifi.h from ALL_CAPS format to lowercase
+in include/rtl8723b_hal.h from ALL_CAPS format to lowercase
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/rtw_mlme.h |  8 ++++----
- drivers/staging/rtl8723bs/include/wifi.h     | 14 +++++++-------
- 2 files changed, 11 insertions(+), 11 deletions(-)
+ drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 4 ++--
+ drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c    | 2 +-
+ drivers/staging/rtl8723bs/include/rtl8723b_hal.h  | 6 +++---
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-index ffcceb1fdde6..02d973a5aed2 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-@@ -230,9 +230,9 @@ struct wifidirect_info {
- 	struct group_id_info 	groupid_info;	/* 	Store the group id information when doing the group negotiation handshake. */
- 	struct scan_limit_info 	rx_invitereq_info;	/* 	Used for get the limit scan channel from the Invitation procedure */
- 	struct scan_limit_info 	p2p_info;		/* 	Used for get the limit scan channel from the P2P negotiation handshake */
--	enum P2P_ROLE			role;
--	enum P2P_STATE			pre_p2p_state;
--	enum P2P_STATE			p2p_state;
-+	enum p2p_role			role;
-+	enum p2p_state			pre_p2p_state;
-+	enum p2p_state			p2p_state;
- 	u8 				device_addr[ETH_ALEN];	/* 	The device address should be the mac address of this device. */
- 	u8 				interface_addr[ETH_ALEN];
- 	u8 				social_chan[4];
-@@ -275,7 +275,7 @@ struct wifidirect_info {
- 														/* 	In this case, the driver can issue the tdls setup request frame */
- 														/* 	even the current security is weak security. */
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+index 44bbffab0c02..f33b084011b5 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -3695,7 +3695,7 @@ s32 c2h_handler_8723b(struct adapter *padapter, u8 *buf)
+ 	return ret;
+ }
  
--	enum	P2P_WPSINFO		ui_got_wps_info;			/* 	This field will store the WPS value (PIN value or PBC) that UI had got from the user. */
-+	enum	p2p_wpsinfo		ui_got_wps_info;			/* 	This field will store the WPS value (PIN value or PBC) that UI had got from the user. */
- 	u16 					supported_wps_cm;			/* 	This field describes the WPS config method which this driver supported. */
- 														/* 	The value should be the combination of config method defined in page104 of WPS v2.0 spec. */
- 	u8 				external_uuid;				/*  UUID flag */
-diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index 4080803d9b1b..f9815411321c 100644
---- a/drivers/staging/rtl8723bs/include/wifi.h
-+++ b/drivers/staging/rtl8723bs/include/wifi.h
-@@ -43,14 +43,14 @@
- /*  This test verifies the WLAN NIC can update the NAV through sending the CTS with large duration. */
- #define	WiFiNavUpperUs				30000	/*  30 ms */
+-static void process_c2h_event(struct adapter *padapter, struct C2H_EVT_HDR *pC2hEvent, u8 *c2hBuf)
++static void process_c2h_event(struct adapter *padapter, struct c2h_evt_hdr_t *pC2hEvent, u8 *c2hBuf)
+ {
+ 	u8 index = 0;
  
--enum WIFI_FRAME_TYPE {
-+enum wifi_frame_type {
- 	WIFI_MGT_TYPE  =	(0),
- 	WIFI_CTRL_TYPE =	(BIT(2)),
- 	WIFI_DATA_TYPE =	(BIT(3)),
- 	WIFI_QOS_DATA_TYPE	= (BIT(7)|BIT(3)),	/*  QoS Data */
+@@ -3739,7 +3739,7 @@ static void process_c2h_event(struct adapter *padapter, struct C2H_EVT_HDR *pC2h
+ 
+ void C2HPacketHandler_8723B(struct adapter *padapter, u8 *pbuffer, u16 length)
+ {
+-	struct C2H_EVT_HDR	C2hEvent;
++	struct c2h_evt_hdr_t	C2hEvent;
+ 	u8 *tmpBuf = NULL;
+ 	C2hEvent.CmdID = pbuffer[0];
+ 	C2hEvent.CmdSeq = pbuffer[1];
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+index 9e1b33c71710..17a3e7bf66ef 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+@@ -349,7 +349,7 @@ static void rtl8723bs_recv_tasklet(struct tasklet_struct *t)
+ 						RT_TRACE(_module_rtl871x_recv_c_, _drv_dump_, ("%s: rtw_recv_entry(precvframe) != _SUCCESS\n", __func__));
+ 					}
+ 				} else if (pattrib->pkt_rpt_type == C2H_PACKET) {
+-					struct C2H_EVT_HDR	C2hEvent;
++					struct c2h_evt_hdr_t	C2hEvent;
+ 
+ 					u16 len_c2h = pattrib->pkt_len;
+ 					u8 *pbuf_c2h = precvframe->u.hdr.rx_data;
+diff --git a/drivers/staging/rtl8723bs/include/rtl8723b_hal.h b/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
+index fdade62bda28..95dfcb338fa8 100644
+--- a/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
++++ b/drivers/staging/rtl8723bs/include/rtl8723b_hal.h
+@@ -156,7 +156,7 @@ struct rt_firmware_hdr {
+ /* Description: Determine the types of C2H events that are the same in driver
+  * and FW; First constructed by tynli. 2009.10.09.
+  */
+-enum C2H_EVT {
++enum c2h_evt {
+ 	C2H_DBG = 0,
+ 	C2H_TSF = 1,
+ 	C2H_AP_RPT_RSP = 2,
+@@ -172,13 +172,13 @@ enum C2H_EVT {
+ 	MAX_C2HEVENT
  };
  
--enum WIFI_FRAME_SUBTYPE {
-+enum wifi_frame_subtype {
+-struct C2H_EVT_HDR {
++struct c2h_evt_hdr_t {
+ 	u8 CmdID;
+ 	u8 CmdLen;
+ 	u8 CmdSeq;
+ } __attribute__((__packed__));
  
-     /*  below is for mgt frame */
-     WIFI_ASSOCREQ       = (0 | WIFI_MGT_TYPE),
-@@ -88,7 +88,7 @@ enum WIFI_FRAME_SUBTYPE {
-     WIFI_QOS_DATA_NULL	= (BIT(6) | WIFI_QOS_DATA_TYPE),
- };
- 
--enum WIFI_REG_DOMAIN {
-+enum wifi_reg_domain {
- 	DOMAIN_FCC		= 1,
- 	DOMAIN_IC		= 2,
- 	DOMAIN_ETSI		= 3,
-@@ -751,14 +751,14 @@ struct ADDBA_request {
- #define	WPS_CM_SW_DISPLAY_PIN				0x2008
- #define	WPS_CM_LCD_DISPLAY_PIN				0x4008
- 
--enum P2P_ROLE {
-+enum p2p_role {
- 	P2P_ROLE_DISABLE = 0,
- 	P2P_ROLE_DEVICE = 1,
- 	P2P_ROLE_CLIENT = 2,
- 	P2P_ROLE_GO = 3
- };
- 
--enum P2P_STATE {
-+enum p2p_state {
- 	P2P_STATE_NONE = 0,							/* 	P2P disable */
- 	P2P_STATE_IDLE = 1,								/* 	P2P had enabled and do nothing */
- 	P2P_STATE_LISTEN = 2,							/* 	In pure listen state */
-@@ -784,7 +784,7 @@ enum P2P_STATE {
- 	P2P_STATE_TX_INFOR_NOREADY = 22,			/*  sending p2p negotiation response with information is not available */
- };
- 
--enum P2P_WPSINFO {
-+enum p2p_wpsinfo {
- 	P2P_NO_WPSINFO						= 0,
- 	P2P_GOT_WPSINFO_PEER_DISPLAY_PIN	= 1,
- 	P2P_GOT_WPSINFO_SELF_DISPLAY_PIN	= 2,
-@@ -793,7 +793,7 @@ enum P2P_WPSINFO {
- 
- #define	P2P_PRIVATE_IOCTL_SET_LEN		64
- 
--enum P2P_PROTO_WK_ID {
-+enum p2p_proto_wk_id {
- 	P2P_FIND_PHASE_WK = 0,
- 	P2P_RESTORE_STATE_WK = 1,
- 	P2P_PRE_TX_PROVDISC_PROCESS_WK = 2,
+-enum PACKAGE_TYPE_E { /* tag_Package_Definition */
++enum package_type_e { /* tag_Package_Definition */
+ 	PACKAGE_DEFAULT,
+ 	PACKAGE_QFN68,
+ 	PACKAGE_TFBGA90,
 -- 
 2.30.2
 
