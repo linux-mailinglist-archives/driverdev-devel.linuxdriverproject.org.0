@@ -2,79 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 968BC33FB1A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:27:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 901DC33FB1B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 23:27:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3F7594EDD7;
-	Wed, 17 Mar 2021 22:27:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2F6614EDF1;
+	Wed, 17 Mar 2021 22:27:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mRkeHIr-v_UE; Wed, 17 Mar 2021 22:27:16 +0000 (UTC)
+	with ESMTP id 1MI8lWoQ2ZHk; Wed, 17 Mar 2021 22:27:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1CB294EDD8;
-	Wed, 17 Mar 2021 22:27:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 27CAF4EDDA;
+	Wed, 17 Mar 2021 22:27:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8BC9C1BF21A
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 531CE1BF21A
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8849B84150
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 504E56F998
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 22:21:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id urhsQrzIv7TR for <devel@linuxdriverproject.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wmssHmsnYk9W for <devel@linuxdriverproject.org>;
  Wed, 17 Mar 2021 22:21:44 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com
- [IPv6:2a00:1450:4864:20::52b])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C69A9840FE
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:43 +0000 (UTC)
-Received: by mail-ed1-x52b.google.com with SMTP id e7so4187660edu.10
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:43 -0700 (PDT)
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com
+ [IPv6:2a00:1450:4864:20::52a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 92F1060636
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 22:21:44 +0000 (UTC)
+Received: by mail-ed1-x52a.google.com with SMTP id bx7so4179409edb.12
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 15:21:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=iY1KsgvT9ti0qC8M/J7/38b4tewX9CmfaH6dkYFH6ls=;
- b=ES8UKb7LN7Et++XPhLB7okKgZhKq/46jlWyvpMox3obNdSPqwubCKzRfTsWokOYaHj
- TrMyAQVde19GQOZqcWjy6/kL4+opQgQtYgpk0BPXOAGx2K4+5qh+6/NcxrG5cTo1cdOr
- soNybSkIThAWmC6eSxgjhq3xxHQKrxIdWDUeacyTiYxhdJ5sp6S3BPGtcs/R6OtQE5ft
- cGADR9NIYfFwu2H5/SrAe/MqTKA4aSEwaVqI7G1kiKWPMfoMr2XOUs0sGPX9xENuV/6s
- mbkZTpxCN6dfvBacl4p79ja2xDYiWIap5HiMNyjlzqiUB9RIJh/MS7NWFHj8PeuCqr8T
- +hJA==
+ bh=4IJ1oEe5HNAu2Il/1sfaQyoH4jtZOPAA2ZWtllAGIwQ=;
+ b=W18n0TSAypKC3NDBlWP74BTWTyjQCnMZ/jx1Xa73iW2ojycXYK7J45gQoUmQ1mBqUR
+ 8TDQCVaWa32EOKMjnNCdz4tpHtpeX8zucGYX3ovYajYIPvGJBY4R/XlXEYhBpvq+OP+o
+ 4W0gEDr+GIv55G+zUjFAOGWzwq52rZJflzBdV11u3nDA6WY1GTwM/dFyikTqxz9bdW8o
+ iToaTIGUiq64UgbJkox3HxQMJC5o2h2OxK1SksipBAmtHLlOUKbz/ogD4aoAMjf6+rNd
+ lUpqm/M+hRiQOLBdxvriQGnHG58gDGu7uRUG8RNQjlZyIK4x+JU4AAHPHwUGEm22D4L4
+ pEyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=iY1KsgvT9ti0qC8M/J7/38b4tewX9CmfaH6dkYFH6ls=;
- b=hhYvbI4iKXJfx67F4Aq9LnpMbpH7+rNtJIOv8PqYVN8sSdTcY61I2CSbHTCH4jAn7t
- y89whFSmTtrY3+Aji5pvrJi4uOf4hvTBlHl321901qULasxVIGYkV1kvnABB/zL3ubrM
- K2NQUm5yB8dZ7KxS+nJCpO2yFyKBr2sVN2zU9fcozNzMo8AP4vujzR0fCCLRh5JeFfMa
- suq13HTkFpL5HePL4MExTCBF1982MUid3dG8t7SHAihrcqf3aRk2po/ff07swT0olhhl
- y/IcV+NsiPnbxYA4e+9kl4hrmx6Vo9pcl9n9O0TP86yfZFFrACNS8siKjpg/tCEz3+I+
- HTlA==
-X-Gm-Message-State: AOAM5300D7c+3S3RVXjnsbmVCf0nyj67Nxng7K4I1Rrzld3C0tm3pqq7
- /UuRRvQM1U81SN/Uqmak+L8=
-X-Google-Smtp-Source: ABdhPJwX4Cznhor/iEC4dYZll6W1MTnB+N+DiKF/oHvLIrWyrsEo0bhdgstPvqOPRojT4m0qaxP7jQ==
-X-Received: by 2002:a05:6402:3096:: with SMTP id
- de22mr44703115edb.141.1616019702150; 
+ bh=4IJ1oEe5HNAu2Il/1sfaQyoH4jtZOPAA2ZWtllAGIwQ=;
+ b=CayFIe5lkPffjTUv/8E/JhueqKzJBctE+4aaxbpofGtrFgeITvkxqOqNgqF29oDPrv
+ 6cedmzhGkZEiv40vxBtfV9RRKEwxzAYXo1s6nOLJYpWcVVibBC1W6SjlH+4u+Babx1gu
+ t6m34Ul7j3yU9jQl2BVFHN4pxmkLMrF8Ad0WLbu8WTcVITAg6s/NdO4iFofzXWQqAvxE
+ eT0BFU09zFay+6+DV2ZNviLF3+xQ7BXZIMKX82f89J3ffOOYjIab4HEFCDBvArWResb/
+ RPjNy08SJlA5S2dpaCBY6be7tEXHKjqOBaKloUjhpt9vp1cXzGjwjWA6BRJwj3nU0lFR
+ cTJA==
+X-Gm-Message-State: AOAM531hw6AgciRPiRndBRMCFR0FDhokHNIV62Qzdj40l/x2W7Tk3r3g
+ xIlPaMJy8Jr0keqWvTb3OOw=
+X-Google-Smtp-Source: ABdhPJw7V1oo3yUievFSqgvs93Je1BuwD8OKDCB96kJ6f9Z/McBJwLzcPOu1a74KhqvRfjIAdyIgtQ==
+X-Received: by 2002:a05:6402:d07:: with SMTP id
+ eb7mr43561487edb.242.1616019702875; 
  Wed, 17 Mar 2021 15:21:42 -0700 (PDT)
 Received: from gimli.home (93-48-145-141.ip257.fastwebnet.it. [93.48.145.141])
  by smtp.gmail.com with ESMTPSA id
- cf4sm104304edb.19.2021.03.17.15.21.41
+ cf4sm104304edb.19.2021.03.17.15.21.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Mar 2021 15:21:41 -0700 (PDT)
+ Wed, 17 Mar 2021 15:21:42 -0700 (PDT)
 From: Marco Cesati <marcocesati@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Hans de Goede <hdegoede@redhat.com>,
  Larry Finger <Larry.Finger@lwfinger.net>, devel@driverdev.osuosl.org
-Subject: [PATCH 32/43] Staging: rtl8723bs: fix names in odm_EdcaTurboCheck.h
-Date: Wed, 17 Mar 2021 23:21:19 +0100
-Message-Id: <20210317222130.29528-33-marcocesati@gmail.com>
+Subject: [PATCH 33/43] Staging: rtl8723bs: fix names in odm_HWConfig.h
+Date: Wed, 17 Mar 2021 23:21:20 +0100
+Message-Id: <20210317222130.29528-34-marcocesati@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210317222130.29528-1-marcocesati@gmail.com>
 References: <20210317222130.29528-1-marcocesati@gmail.com>
@@ -97,40 +97,60 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This commit converts names of structs / enums
-in hal/odm_EdcaTurboCheck.h from ALL_CAPS format to lowercase
+in hal/odm_HWConfig.h from ALL_CAPS format to lowercase
 
 Signed-off-by: Marco Cesati <marcocesati@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/odm.h                | 2 +-
- drivers/staging/rtl8723bs/hal/odm_EdcaTurboCheck.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 2 +-
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.h | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
-index 8f457b0ea70d..80683d3fb80f 100644
---- a/drivers/staging/rtl8723bs/hal/odm.h
-+++ b/drivers/staging/rtl8723bs/hal/odm.h
-@@ -1121,7 +1121,7 @@ struct DM_ODM_T { /* DM_Out_Source_Dynamic_Mechanism_Structure */
- 	bool RSSI_test;
- 	struct CFO_TRACKING DM_CfoTrack;
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+index 56fd583eb283..47237cd636cf 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+@@ -90,7 +90,7 @@ static void odm_RxPhyStatus92CSeries_Parsing(
+ 	bool isCCKrate = false;
+ 	u8 rf_rx_num = 0;
+ 	u8 LNA_idx, VGA_idx;
+-	struct PHY_STATUS_RPT_8192CD_T *pPhyStaRpt = (struct PHY_STATUS_RPT_8192CD_T *)pPhyStatus;
++	struct phy_status_rpt_8192cd_t *pPhyStaRpt = (struct phy_status_rpt_8192cd_t *)pPhyStatus;
  
--	struct EDCA_T DM_EDCA_Table;
-+	struct edca_t DM_EDCA_Table;
- 	u32 WMMEDCA_BE;
- 	struct PATHDIV_T DM_PathDiv;
- 	/*  Copy from SD4 structure */
-diff --git a/drivers/staging/rtl8723bs/hal/odm_EdcaTurboCheck.h b/drivers/staging/rtl8723bs/hal/odm_EdcaTurboCheck.h
-index 09764431c4d6..e9f9f07221f2 100644
---- a/drivers/staging/rtl8723bs/hal/odm_EdcaTurboCheck.h
-+++ b/drivers/staging/rtl8723bs/hal/odm_EdcaTurboCheck.h
-@@ -8,7 +8,7 @@
- #ifndef __ODMEDCATURBOCHECK_H__
- #define __ODMEDCATURBOCHECK_H__
+ 	isCCKrate = pPktinfo->data_rate <= DESC_RATE11M;
+ 	pPhyInfo->rx_mimo_signal_quality[ODM_RF_PATH_A] = -1;
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.h b/drivers/staging/rtl8723bs/hal/odm_HWConfig.h
+index deec2e71bd49..10cd4e8b1c9d 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.h
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.h
+@@ -30,7 +30,7 @@
+ /*  structure and define */
+ /*  */
  
--struct EDCA_T { /* _EDCA_TURBO_ */
-+struct edca_t { /* _EDCA_TURBO_ */
- 	bool bCurrentTurboEDCA;
- 	bool bIsCurRDLState;
+-struct PHY_RX_AGC_INFO_T {
++struct phy_rx_agc_info_t {
+ 	#if (ODM_ENDIAN_TYPE == ODM_ENDIAN_LITTLE)
+ 		u8 gain:7, trsw:1;
+ 	#else
+@@ -38,8 +38,8 @@ struct PHY_RX_AGC_INFO_T {
+ 	#endif
+ };
  
+-struct PHY_STATUS_RPT_8192CD_T {
+-	struct PHY_RX_AGC_INFO_T path_agc[2];
++struct phy_status_rpt_8192cd_t {
++	struct phy_rx_agc_info_t path_agc[2];
+ 	u8 ch_corr[2];
+ 	u8 cck_sig_qual_ofdm_pwdb_all;
+ 	u8 cck_agc_rpt_ofdm_cfosho_a;
+@@ -77,7 +77,7 @@ struct PHY_STATUS_RPT_8192CD_T {
+ };
+ 
+ 
+-struct PHY_STATUS_RPT_8812_T {
++struct phy_status_rpt_8812_t {
+ 	/* 2012.05.24 LukeLee: This structure should take big/little endian in consideration later..... */
+ 
+ 	/* DWORD 0 */
 -- 
 2.30.2
 
