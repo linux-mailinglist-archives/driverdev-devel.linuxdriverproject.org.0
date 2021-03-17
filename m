@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B66A33EDA6
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 10:58:31 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3F3633EDD6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 10:59:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E97B483F5E;
-	Wed, 17 Mar 2021 09:58:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C4B806F837;
+	Wed, 17 Mar 2021 09:59:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lQ_Dr40_oKkD; Wed, 17 Mar 2021 09:58:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id d7W98-hN--RS; Wed, 17 Mar 2021 09:59:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 224C68385D;
-	Wed, 17 Mar 2021 09:58:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2AA296F732;
+	Wed, 17 Mar 2021 09:59:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C240B1BF831
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:58:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C0AB51BF20B
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:59:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B15078385D
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:58:16 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BD17583C38
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 09:59:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XAxra9XeVCXx for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 09:58:16 +0000 (UTC)
+ with ESMTP id FXR-aqcX8nBb for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 09:59:36 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com
- [IPv6:2a00:1450:4864:20::42a])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F10F08354B
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 09:58:15 +0000 (UTC)
-Received: by mail-wr1-x42a.google.com with SMTP id z2so1142435wrl.5
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 02:58:15 -0700 (PDT)
+Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com
+ [IPv6:2a00:1450:4864:20::32e])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2A73283870
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 09:59:36 +0000 (UTC)
+Received: by mail-wm1-x32e.google.com with SMTP id g8so1092006wmd.4
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 02:59:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:mime-version:content-disposition
  :user-agent; bh=x4zh4SNUmcfd2PXUC3KyCVi6qa14IVpwvMxxZz19GaU=;
- b=a+fxMkr21025v8KyzUdXrHu0dkOQedksKKsOdtCdbozifiP7HUxsiq8WwUYFv5yXqY
- Dq9Ix4ayo29vQ81Q6uxaSlkUyLq/luxJaaceVjuNNHz1qpfUlE6+BvZRRAX0j81RDM+y
- N88dn11gu8L5l0nNkQRK+fAxX09ViWrAF5FKriIM0WlOQjBqgB8hcYzHLH0KL0sVIzHZ
- vU/0tkGnMMUd7n1G4V5hJHim0LuWHBTJI2gQsk0vTHELkPG5xBKeEeIWiUaqmnTzUxBy
- CaQXIYKXWV0mH4M3HAkMPpQGpw7XqSWp7YvT1aI7B149oHdm0knz+JypbLgtIFRn7qsB
- sdDA==
+ b=RAU5np/eftqddHmvUd91pRF2x7OmGchGIUni9qiz3ZnusMkPHtr0CvDP1FwU9RApkL
+ KsroEVk6BBPu/UswmQ5Nqw6VhEPU63JprUGSeJIHJQXujyz7WUB4V/Sou0HTpaaMWlGD
+ AGeTO+UxUZipbqqBIY9K8pjJRoBeL11QTo6pzcJ7QgHH3pUXdvQuUxPuwgSBzMrBTclH
+ Ba9NblP63vMUpRlmFZA6qp1fXSdaNlsdDGkEuu99DbZZpKTtD8ueUjf16kJIdxJXTtuQ
+ aKqL4g98M0rmQ7G3y2uMsfYJrd4vMRsiVpwa6vqxUZ93c2WFU6fVZQzvQ6i3LfGxBaFx
+ 5rsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
  bh=x4zh4SNUmcfd2PXUC3KyCVi6qa14IVpwvMxxZz19GaU=;
- b=UXWgTf5I3cyVa+Spxd3LC0i5Rv2I44abKNiMPGYlbF6XaFnT+VWVww6D7IhoiWxWlT
- Z1ZkdKiXSHOfzG11F7ZCDYBiNPtVoN/hlZY13HXlJmE2l4XcCYHyaiBPWm29xNt4acSu
- qwttNXzpHucK7JiWl0M62y6NJHwufuOVgYTIaMGQ7bbcbMlNrn7WLW8wSO14xAIYjntQ
- P88Up/lMdTAZe64epw7EbR8MbFj9DPZ6h8nOhr1xw4IFm8JrTpI+KLFOGYhx0FE72CD9
- rNBnsRW03zwY/vdyUy+S7T4Ss0EteU6Ww/3LGybmlbNr/VGo8v/O9BTTAPtnpg2E8Cuk
- t1rQ==
-X-Gm-Message-State: AOAM530+/IZXdPWlsbDA7jaDBbKtPm8TQmmHFlzGkJpzmebj8TnD1fqk
- CZUSg2ebvi3lE+rzpx4EhuA=
-X-Google-Smtp-Source: ABdhPJwTcvpEVOYb4EuzFW/uyLjNVrrSMdeNkMba8xfez82DYHzbAp0Qpw68j/p/jevJnjVKztXRww==
-X-Received: by 2002:a05:6000:1803:: with SMTP id
- m3mr3610739wrh.50.1615975094162; 
- Wed, 17 Mar 2021 02:58:14 -0700 (PDT)
+ b=QyHeigubSE/OOZ4qcSYg7Qi8RjWv6DGUIskkVz78ssHzE1DoE4984K8QFMwxfyDQV5
+ QiUxwAVyD/38ThqjnjJprLxvGdUU1Dj/UkCVVgvS0c9XrDALUIBnJRMofcVS37059CVn
+ dnNN9h5aS/pHTwEvfesJizSFJsIQL01eF3pkvPebtqHvGiNlNMIOg/vqoMjPacZAdnQx
+ F3G5Uf/hSles+btbRNQbtwnyXzJAS8zwJrhgWS3/Ljld2Y2GJYI4QKhqDefmKqWvAQUr
+ wnRIF2rbFwirUJKOF/S5vHCW8ddJuDdkZyLzvHXqUksY5UKvGVLV9pPbZrGv+DDbPM9Q
+ jS8w==
+X-Gm-Message-State: AOAM5320CzICZPN99qG6Pd8wefCPbjfPbE5qL2KlT4eJhlG7eKvSGWX2
+ cVEqo7xifufVIK4wcoLyy/w=
+X-Google-Smtp-Source: ABdhPJzCQwaBGCPMvrYnw1j6e8gM0U97jtKMOwk/M4YQMboeaJWQoljMeroxG5VLAON/dIK83WIoJQ==
+X-Received: by 2002:a1c:a74b:: with SMTP id q72mr2837753wme.158.1615975174384; 
+ Wed, 17 Mar 2021 02:59:34 -0700 (PDT)
 Received: from agape.jhs ([5.171.81.191])
- by smtp.gmail.com with ESMTPSA id w131sm1998871wmb.8.2021.03.17.02.58.13
+ by smtp.gmail.com with ESMTPSA id u4sm26518413wrm.24.2021.03.17.02.59.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Mar 2021 02:58:13 -0700 (PDT)
-Date: Wed, 17 Mar 2021 10:58:12 +0100
+ Wed, 17 Mar 2021 02:59:34 -0700 (PDT)
+Date: Wed, 17 Mar 2021 10:59:32 +0100
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
-To: gregkh@linuxfounddation.org
+To: gregkh@linuxfoundation.org
 Subject: staging: rtl8723bs: remove unused code blocks completed?
-Message-ID: <20210317095812.GA2270@agape.jhs>
+Message-ID: <20210317095932.GA2308@agape.jhs>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
