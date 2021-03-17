@@ -1,77 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07E1333F822
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 19:30:22 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D12B33F83A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Mar 2021 19:39:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 31CB343257;
-	Wed, 17 Mar 2021 18:30:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BB0F543258;
+	Wed, 17 Mar 2021 18:39:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rUM7zL6NS3tH; Wed, 17 Mar 2021 18:30:19 +0000 (UTC)
+	with ESMTP id e1EJEQC9Q2v5; Wed, 17 Mar 2021 18:39:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 49E8E4324F;
-	Wed, 17 Mar 2021 18:30:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D0B9E4305A;
+	Wed, 17 Mar 2021 18:39:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1487F1BF330
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:30:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DD9E91BF330
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:38:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0385883126
- for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:30:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CA0404AAB4
+ for <devel@linuxdriverproject.org>; Wed, 17 Mar 2021 18:38:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VBYVWl2_5VP6 for <devel@linuxdriverproject.org>;
- Wed, 17 Mar 2021 18:30:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ULC87_C9mFQf for <devel@linuxdriverproject.org>;
+ Wed, 17 Mar 2021 18:38:53 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
- [IPv6:2607:f8b0:4864:20::62d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CE17482F6C
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 18:30:06 +0000 (UTC)
-Received: by mail-pl1-x62d.google.com with SMTP id 30so1203777ple.4
- for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 11:30:06 -0700 (PDT)
+Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
+ [IPv6:2607:f8b0:4864:20::52c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CDC124935C
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 18:38:53 +0000 (UTC)
+Received: by mail-pg1-x52c.google.com with SMTP id x29so138301pgk.6
+ for <devel@driverdev.osuosl.org>; Wed, 17 Mar 2021 11:38:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
  bh=UAxYgTJ8xiP4XZVnDR92h/oyODoJt823YPaFX/5CcQk=;
- b=O7R9c2WVL3DtF3LatZ0VWcRSvZ+xM1Rz3Dg7NnRZYkAn5yXENuAgwo/e78WXjJXpnd
- boo7rzIZNH/Fw5uc5hmEX9ZiXXufDm/o/B9wna3Hed952P21HPXdWWPrAGIh/ZGtLRrM
- t39nfxeMwTg0r1DxDgUQX9yFgZ5vEsQj2eGUEkyN4oP3a1uKMhdljlyiQ8hI8azsm+Bi
- B6QOQE4x8/xrB0mxwUpq1FV6VybbvHy7Vqz9iLCwLwli1upK6YasSDdRgqqBQJTQQ2r2
- K0wJyod0B1aG3ImtCzz3I+v9iKWY2QhyZwvAB8EV71UPBq48llT2zOwEU/wrwuJFL1Ji
- QfGw==
+ b=ioW0Mn1xhNkhgHjp4pzr50k54/EF8Enwpqtp1cEWvgnrcC+lNBwFe7qVqcWSFL4P2X
+ 0hSHDw2yhwOMJfPjbnV9lit2wJ7ErPE/NVEfJz4g48Nt6dlm3ysihHbMgb511ntN6IG6
+ kaThXQ6XinIP4vjMjzxJ2U4zZRpVTJeJQXYcnFS44VbaLMZjNrp3ohehc4fzCYe0wYX/
+ Q1xKoCqU3dFz1ackTjkeeDuaOOzQj4CjKffRJ7BLNmNfwG+y+dL8Lkc2f/c+aaqpyaS3
+ xtiinmJUURQBQw2b3vN3UKEM26sXml87ar+bpiZw3+/GtG7zE4b3BkPl6MNwk6Eev3P6
+ RNhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
  bh=UAxYgTJ8xiP4XZVnDR92h/oyODoJt823YPaFX/5CcQk=;
- b=fteWYBL0EGxldvq0oMB7fOlmWenO0vb3amrA51lzC882VNer8rMishddpUZViejiDR
- UN5iPjvIZKvXBfO2uigZJcbYk4H0xV+F77fU3IScYA1KadV64n5gQzUelxXdqA+6CaLo
- fUTBNZ1nG5158UGoaOFSyLe7L5cZaCFfXsJNd59vKB/Kyb02Y+sm6KrkGVI6Jq9JVuJp
- di/Wt02mNhcN/kea3wxzVttJYDzLYH48potQB9bZSZ+hyzMewxFIPYDjoNcfifNu7nfb
- 4wFPHwuoaMlc6o5cqb3IeYIQ17zknn/v7LVvUzjZs4voresDMRlTHo5cW9DCkM0Q038b
- 34YQ==
-X-Gm-Message-State: AOAM533rovTcwOiIBVmEvlZOOtonTPRS8xcCUyG/pQ9Ca2BHeqpNXPrW
- kshuuUcANsPjMrrsGuBK1oc=
-X-Google-Smtp-Source: ABdhPJwHjwyxoeJUs9eLxkM9BwJnJs7cNI7fX+NEBcl44ZW+0XKKWRWkwqLi+BOGCAmF4vdXaYuIkg==
-X-Received: by 2002:a17:90b:e95:: with SMTP id
- fv21mr130236pjb.217.1616005806178; 
- Wed, 17 Mar 2021 11:30:06 -0700 (PDT)
+ b=ubbDPEZI/iwVfy4z8RLWcaSe3wvA1Is/Lsc+UV1FvS0rFjoGxPuTNl2rETSUG9y51c
+ +flFwPejkEndzIM6AeyBt3XHIitP6+JaoxdgfGn96Sd9ab0iQqpWVs+cyCvPSRO63Kwb
+ wFAUlUqYNfBdD4OvxGyQj7+D1ifCA6jf9H13UKJTkItjc1BO4kW0ID62+eyjMNv876LF
+ XBDkucsIewo/pzhoX68ywUTGmdR3TwkGVVwwUi2jDx7vxLFzbS7if791rUk1HSu1B/m7
+ WFHr2s+PuI7cGtcKE6L7JF0Pq+f+RM7UBQuFQIRyvXwIuQwt2EBQg62gBptX0BBAKzSG
+ P+lw==
+X-Gm-Message-State: AOAM530FuvQIHWGYbZN+PgEROI4FAMwKq6OryAXvWzZjAxUhMj45si5b
+ dkcGFBF+Vpz9irSdevnks8E=
+X-Google-Smtp-Source: ABdhPJzoGLR/WnU8lAmQ5r8+4xzJPxLgSGecJIUOMByK2tLMna5pTLk9ejyjl55HqpKPqiFJo8G1iw==
+X-Received: by 2002:a63:e42:: with SMTP id 2mr3782293pgo.100.1616006333176;
+ Wed, 17 Mar 2021 11:38:53 -0700 (PDT)
 Received: from mahak-Inspiron-7570 ([103.37.201.168])
- by smtp.gmail.com with ESMTPSA id w22sm19741366pfi.133.2021.03.17.11.30.04
+ by smtp.gmail.com with ESMTPSA id z8sm3369883pjr.57.2021.03.17.11.38.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Mar 2021 11:30:05 -0700 (PDT)
+ Wed, 17 Mar 2021 11:38:52 -0700 (PDT)
 From: Mahak Gupta <gmahak1@gmail.com>
-To: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
- Richard Yeh <rcy@google.com>, benchan@chromium.org, toddpoynor@google.com,
- Rob Springer <rspringer@google.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
 Subject: [PATCH] staging: octeon-usb: Match alignment with open parenthesis
-Date: Wed, 17 Mar 2021 23:59:53 +0530
-Message-Id: <20210317182953.3826-1-gmahak1@gmail.com>
+Date: Thu, 18 Mar 2021 00:08:46 +0530
+Message-Id: <20210317183846.4867-1-gmahak1@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
