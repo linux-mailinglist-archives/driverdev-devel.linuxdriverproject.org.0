@@ -2,52 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 277E73400FF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 09:23:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27669340193
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 10:14:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BCD3C43192;
-	Thu, 18 Mar 2021 08:23:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A4F324325A;
+	Thu, 18 Mar 2021 09:14:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gYVQ8jRfkypi; Thu, 18 Mar 2021 08:23:40 +0000 (UTC)
+	with ESMTP id 3KS9WY9jw6vM; Thu, 18 Mar 2021 09:14:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 45F11430A2;
-	Thu, 18 Mar 2021 08:23:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0F5BB4309F;
+	Thu, 18 Mar 2021 09:14:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 146651BF376
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 08:21:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1784D1BF471
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 09:14:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 028364EBCA
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 08:21:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 07108430A0
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 09:14:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IOxszJkE6qL3 for <devel@linuxdriverproject.org>;
- Thu, 18 Mar 2021 08:21:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
- [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 12C064E545
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 08:21:20 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 9ABD41F456D3
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@siol.net, hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com
-Subject: [PATCH v6 13/13] arm64: dts: imx8mq: Add node to G2 hardware
-Date: Thu, 18 Mar 2021 09:20:46 +0100
-Message-Id: <20210318082046.51546-14-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
-References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FFVv00CFnD2q for <devel@linuxdriverproject.org>;
+ Thu, 18 Mar 2021 09:14:19 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com
+ [IPv6:2a00:1450:4864:20::435])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5CD5341566
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 09:14:19 +0000 (UTC)
+Received: by mail-wr1-x435.google.com with SMTP id x13so4677531wrs.9
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 02:14:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=BKucLzdro3KHbFXy/FZ0+97pPZlyAwExs7eXjsBI+0M=;
+ b=jsIfdlOWe6yjpjtK2O4L9O9y/+jDQ5vhw0UEJTuOi1LrA1yD3L+r+wT5rl0SfdYTVa
+ UVrfyoG/gJO4Yz1ho4uZRPGWQV4SEwLGtahmaRcaJj6yxKDKqgDaVl/GA2PXulmWiC6I
+ J2V3MRKV7uGVku3FYl0JjlB8jpawo9mi06W4NQo7sS7LcnMhW2PTsXJAcyZODLWOKdiz
+ TQSylPyx9aI4zV/IAozsWOZhKdQgNBzbR1Ti5T6ceuLTm8qLckeoiD1njwxiYA15O7DG
+ UgTiCOV5SdyhhajkJpgSe9ZfE+742P3FAmvEN/QA+MPnwTC3yQu3fqb06ZIqcLgZHM+L
+ OVBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=BKucLzdro3KHbFXy/FZ0+97pPZlyAwExs7eXjsBI+0M=;
+ b=PCse29Twg+7d/Q2EXXEl926UQRp1j4Ry9w5Ae3cUGJO92x60LEIT9AczvLsLEZBpis
+ oMDPJj4q4M/e5yTYgyK80EOGbi+cN2M1gNVFh6gXTDmTT7fkYKOFE1mnmVnOjLpqLaQW
+ Qz/cJVOqh7mdYNYwy4Xs9+awkEFdviC5b91iuO0cTeowdg0B2oX71/IXR/mZdOrcm2ez
+ bMeb+BUMpqXeQrOLCD6hQcxEcdYJc+nu9muD7nzb/jiyiw1ZmevXAuVZaCnCBE8zNAif
+ 9KJuHM4qWr4rvrVvDLFwiDUWQLB/EOsaa1v2+B8ZqBNs/aN/uNDyltiunc3Nl7ZaWS9v
+ oGWw==
+X-Gm-Message-State: AOAM533M17isGDcrFDnNJNIlQyY4kC0XCjcnmgNZJPlmbmTRc/ong8RZ
+ DzbEKmYA5z1OeOu06uUuyVY=
+X-Google-Smtp-Source: ABdhPJyBMte5nwgCGcw2rV3ofIP3ipWMWxzKktmx8s9ZDjEIl/Q+tTSFTDyhmTbNVgV5R8Fv9QYYCg==
+X-Received: by 2002:a05:6000:1363:: with SMTP id
+ q3mr8641660wrz.74.1616058857576; 
+ Thu, 18 Mar 2021 02:14:17 -0700 (PDT)
+Received: from agape.jhs ([5.171.80.211])
+ by smtp.gmail.com with ESMTPSA id x23sm1540116wmi.33.2021.03.18.02.14.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Mar 2021 02:14:17 -0700 (PDT)
+Date: Thu, 18 Mar 2021 10:14:15 +0100
+From: Fabio Aiuto <fabioaiuto83@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: staging: rtl8723bs: prefer ftrace
+Message-ID: <20210318091415.GA3683@agape.jhs>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,96 +84,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Split VPU node in two: one for G1 and one for G2 since they are
-different hardware blocks.
-Add syscon for hardware control block.
-Remove reg-names property that is useless.
-Each VPU node only need one interrupt.
+Hi,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-version 5:
- - use syscon instead of VPU reset
+some suggestions before diving in a new task.
+The following checkpatch issue:
 
- arch/arm64/boot/dts/freescale/imx8mq.dtsi | 43 ++++++++++++++++++-----
- 1 file changed, 34 insertions(+), 9 deletions(-)
+--
+WARNING: Unnecessary ftrace-like logging - prefer using ftrace
+#559: FILE: drivers/staging/rtl8723bs/core/rtw_ap.c:559:
++	DBG_871X("%s\n", __func__);
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-index 17c449e12c2e..b537d153ebbd 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-@@ -1329,15 +1329,16 @@ usb3_phy1: usb-phy@382f0040 {
- 			status = "disabled";
- 		};
+simply says to remove the line, due to the existence of the more
+appealing ftrace facility, right?
+
+@@ -556,8 +554,6 @@ void update_sta_info_apmode(struct adapter *padapter, struct sta_info *psta)
+ 	/* set intf_tag to if1 */
+ 	/* psta->intf_tag = 0; */
  
--		vpu: video-codec@38300000 {
-+		vpu_ctrl: syscon@38320000 {
-+			compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
-+			reg = <0x38320000 0x10000>;
-+		};
-+
-+		vpu_g1: video-codec@38300000 {
- 			compatible = "nxp,imx8mq-vpu";
--			reg = <0x38300000 0x10000>,
--			      <0x38310000 0x10000>,
--			      <0x38320000 0x10000>;
--			reg-names = "g1", "g2", "ctrl";
--			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
--			interrupt-names = "g1", "g2";
-+			reg = <0x38300000 0x10000>;
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g1";
- 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
- 				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
- 				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-@@ -1350,9 +1351,33 @@ vpu: video-codec@38300000 {
- 						 <&clk IMX8MQ_VPU_PLL_OUT>,
- 						 <&clk IMX8MQ_SYS1_PLL_800M>,
- 						 <&clk IMX8MQ_VPU_PLL>;
--			assigned-clock-rates = <600000000>, <600000000>,
-+			assigned-clock-rates = <600000000>, <300000000>,
-+					       <800000000>, <0>;
-+			power-domains = <&pgc_vpu>;
-+			nxp,imx8mq-vpu-ctrl = <&vpu_ctrl>;
-+		};
-+
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mq-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g2";
-+			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+			clock-names = "g1", "g2",  "bus";
-+			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
-+					  <&clk IMX8MQ_CLK_VPU_G2>,
-+					  <&clk IMX8MQ_CLK_VPU_BUS>,
-+					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_SYS1_PLL_800M>,
-+						 <&clk IMX8MQ_VPU_PLL>;
-+			assigned-clock-rates = <600000000>, <300000000>,
- 					       <800000000>, <0>;
- 			power-domains = <&pgc_vpu>;
-+			nxp,imx8mq-vpu-ctrl = <&vpu_ctrl>;
- 		};
- 
- 		pcie0: pcie@33800000 {
--- 
-2.25.1
+-	DBG_871X("%s\n", __func__);
+-
+ 	/* psta->mac_id = psta->aid+4; */
+ 	/* psta->mac_id = psta->aid+1;//alloc macid when call rtw_alloc_stainfo(), */
+ 	/* release macid when call rtw_free_stainfo() */
+
+thank you,
+
+fabio
 
 _______________________________________________
 devel mailing list
