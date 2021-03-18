@@ -1,79 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC26F3408CD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 16:27:43 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B613B3408CE
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 16:27:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6D72C432AF;
-	Thu, 18 Mar 2021 15:27:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B01E4EE3A;
+	Thu, 18 Mar 2021 15:27:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2duAOKLtY7-x; Thu, 18 Mar 2021 15:27:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C3k7glccuAtS; Thu, 18 Mar 2021 15:27:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A1DCA4328B;
-	Thu, 18 Mar 2021 15:27:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 642804EE06;
+	Thu, 18 Mar 2021 15:27:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 257761BF341
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:26:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B2F8F1BF341
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:27:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 147CA4EE16
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:26:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A2C5D4328B
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:27:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AzcB0FsixCL3 for <devel@linuxdriverproject.org>;
- Thu, 18 Mar 2021 15:26:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tUIFhsk7Kw9t for <devel@linuxdriverproject.org>;
+ Thu, 18 Mar 2021 15:27:01 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
- [IPv6:2a00:1450:4864:20::32b])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 29EF34EE06
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 15:26:58 +0000 (UTC)
-Received: by mail-wm1-x32b.google.com with SMTP id
- m20-20020a7bcb940000b029010cab7e5a9fso5657515wmi.3
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 08:26:58 -0700 (PDT)
+Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com
+ [IPv6:2a00:1450:4864:20::435])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EEC77400B5
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 15:27:00 +0000 (UTC)
+Received: by mail-wr1-x435.google.com with SMTP id o16so5988676wrn.0
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 08:27:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0qS9Nz47GTA8hTM4G9C1C/c06jObHEFBEpZEFEihqQM=;
- b=GHvqEhNZPk7En0bu8SNS4PHj7+qaRQIKk/GyeuFTF7DBSKZIVYJTS+0OeGN8PKdZsK
- hWv3avjboz6t+nLbeMZGu8BRrwQ5VTF8a4GPJytJ7aaOWXUQSaaOahvquWOgYXgLdH5P
- FDUNPbnimEMnOQyz3B2pp/sePtX0Do325iCaPbm4yBzTRryM5ExXQC74fv4wjrzosaMP
- jPJ/BRWREWLuhW06cqH2yvAPZMwqxtdeD6zwfj/8dxTYSSAXkp+BC+aOj418E3jlGRDH
- YDEdptLM3lTBLnNjJOA/c9JoOYWM8U8GCYP37FrheUcn/BGgSKGtMXFp+OC6tEmvMhW1
- YDPg==
+ bh=V6RdrbDpubj6J5vihjKmeNa/I/cW+KIcqKlP2w3YSfo=;
+ b=lvF9CcQ+nh1eANtGR5piZmX0xhis2WOD6zBSg9SKnsI7XBn6LgdobHwd0l4QC7lkoh
+ c/QFA4xOXQubE/HFiK0EbWTigASycwilxjnM12ZGC8LAPEbK8Xh1z4UE0UFsFsY6mtvU
+ 26UngOeNhrq0LLc2lXEO/AhlokAW52hXaIDdweaLS1C1qG5Osxo6q4/ghvt1l4kfynBe
+ eo1NCz5Hw0gFKm/Jn3o0yg+QMR2JNlMNwnrDO2NBfIrM4RWDuUT2v4rPlNSBsPFQlTZs
+ ywaA0dN4XTFJayEjmZtc7XeGCjkX/ry/LYKaoGIVy93bkGKhYQXawbW/TqYDMfPqmCTA
+ hBSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0qS9Nz47GTA8hTM4G9C1C/c06jObHEFBEpZEFEihqQM=;
- b=lgn+GL578CWSD182c6+Gk0a9QitaBBmdCALVRftN1DkXslmR/MxX0WDHNWKyaOY3IM
- 5xW+qvO5M0sLfqPki53Ts44ZymgGQwR+sSKPCiM4+lJ7SkcRY7xDbYEFXMIyFT42bBJX
- IIT2tKw3LMsSQcFrF4fghfT0msyshEtTx5qnEtMv7o74JVsgcbqYJhh3lvd5/hHurN3o
- U/b4GdqxjfCC+DNDCVtFOzSY2hRDaXN7Sv3JMzk1m6KV8uIMTucbnrLa3wjhzWRtYR20
- eCVquLuYD+T1woXHxRIdbTgElY50VLnz7fRM4P9wTx0IzzlXGqf58FrRXct4fVGZDb92
- BIGg==
-X-Gm-Message-State: AOAM531+VNYXBkqoR3j6nwd9O7KypHdN2z/z1KK95MeLH++E4DWiuBBt
- 3u19u3NYKhraQCeipUisaI4=
-X-Google-Smtp-Source: ABdhPJwiZkQjE8LoYd0zm415v3NGd4TK/aoNr2cdHbGBz7nBN+bhrv8Hfn+BheuvQNPal/gZ8+M7UA==
-X-Received: by 2002:a05:600c:2053:: with SMTP id
- p19mr4143861wmg.87.1616081216478; 
- Thu, 18 Mar 2021 08:26:56 -0700 (PDT)
+ bh=V6RdrbDpubj6J5vihjKmeNa/I/cW+KIcqKlP2w3YSfo=;
+ b=cU/qT6sW8IkqXCALmnKIRlyx2i2sxePn1DGzACVUUoHfyOl8fBBgx2xHzLyGWcPrhw
+ d7wkGLjPchAuDVKp94crOSeVUEMhIMbYv3GIw1FCtSHRTjRIqjV5SSFE3P9zc9CLOWYA
+ eml0i2Dg64bLcmy0bRlYiG1YCP0LBI3evVoLq97fGjqzYr7YdyLepaOEFU9RerFTrL0i
+ in7Hgx3ZfkwLd9DBmMXpl34IRzM7BUPOjOjZg7FJ0cuzxrFgd0ZKk8BJY8GEFPMEo9OF
+ cElE8VHVWwM+TwJClGaJlFbhPZHXTNP+RbeVEDMVyGAgXA1uqq6q06QyQTk+J7Y4um8U
+ +U0A==
+X-Gm-Message-State: AOAM530b333veEfKmTbt2J7xqns1AWMN2ULclGHfmYkAbs2Qds6JWe7F
+ O/qx38l4TBMjhy/k1XqA6o4=
+X-Google-Smtp-Source: ABdhPJyPvjHE8/FdBrvCRu7ytikvoXLXmpU6f0uCgm+JB7WnjzrhdQaBNKASegFTO95V108U7HaD5g==
+X-Received: by 2002:adf:84e6:: with SMTP id 93mr9793845wrg.376.1616081219262; 
+ Thu, 18 Mar 2021 08:26:59 -0700 (PDT)
 Received: from agape ([151.46.162.59])
- by smtp.gmail.com with ESMTPSA id e17sm4202947wra.65.2021.03.18.08.26.55
+ by smtp.gmail.com with ESMTPSA id s83sm2626320wms.16.2021.03.18.08.26.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Mar 2021 08:26:56 -0700 (PDT)
+ Thu, 18 Mar 2021 08:26:58 -0700 (PDT)
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 05/15] staging: rtl8723bs: remove unnecessary logging in
- core/rtw_wlan_util.c
-Date: Thu, 18 Mar 2021 16:26:00 +0100
-Message-Id: <20210318152610.16758-6-fabioaiuto83@gmail.com>
+Subject: [PATCH 06/15] staging: rtl8723bs: remove unnecessary logging in
+ hal/HalBtcOutSrc.h
+Date: Thu, 18 Mar 2021 16:26:01 +0100
+Message-Id: <20210318152610.16758-7-fabioaiuto83@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210318152610.16758-1-fabioaiuto83@gmail.com>
 References: <YFMb+7jjmj7Oty8B@kroah.com>
@@ -101,27 +99,35 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 fix the following checkpatch.pl issues:
 
 WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-1140: FILE: drivers/staging/rtl8723bs/core/rtw_wlan_util.c:1140:
-+	DBG_871X("%s\n", __func__);
+126: FILE: drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h:126:
++		DbgPrint("%s(): ", __func__);\
+
+and remove the whole unused containing macro BTC_PRINT_F
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-index 355e43c4cf9a..c267f1b546a4 100644
---- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
-@@ -1137,8 +1137,6 @@ void HTOnAssocRsp(struct adapter *padapter)
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+diff --git a/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h b/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
+index c38baf2bc412..aac8e8ed080d 100644
+--- a/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
++++ b/drivers/staging/rtl8723bs/hal/HalBtcOutSrc.h
+@@ -120,14 +120,6 @@ extern u32 		GLBtcDbgType[];
+ 		DbgPrint printstr;\
+ }
  
--	DBG_871X("%s\n", __func__);
+-#define BTC_PRINT_F(dbgtype, dbgflag, printstr)\
+-{\
+-	if (GLBtcDbgType[dbgtype] & dbgflag) {\
+-		DbgPrint("%s(): ", __func__);\
+-		DbgPrint printstr;\
+-	} \
+-}
 -
- 	if ((pmlmeinfo->HT_info_enable) && (pmlmeinfo->HT_caps_enable)) {
- 		pmlmeinfo->HT_enable = 1;
- 	} else {
+ #define BTC_PRINT_ADDR(dbgtype, dbgflag, printstr, _Ptr)\
+ {\
+ 	if (GLBtcDbgType[dbgtype] & dbgflag) {\
 -- 
 2.20.1
 
