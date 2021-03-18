@@ -1,75 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D8E6340B13
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 18:11:26 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31A9A340C06
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 18:43:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 001DC6FAE2;
-	Thu, 18 Mar 2021 17:11:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9398A4DC1A;
+	Thu, 18 Mar 2021 17:43:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aPBAnIWEVq5k; Thu, 18 Mar 2021 17:11:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Yrn0j6pVC41b; Thu, 18 Mar 2021 17:43:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 01CFE6FA27;
-	Thu, 18 Mar 2021 17:11:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 895454C4BF;
+	Thu, 18 Mar 2021 17:43:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 153C21BF3D0
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 17:11:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 165E41BF3D0
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 17:43:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 03BC0400B5
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 17:11:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0F328400B5
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 17:43:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=chromium.org
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jsvPaR5OOe2C for <devel@linuxdriverproject.org>;
- Thu, 18 Mar 2021 17:11:10 +0000 (UTC)
+ with ESMTP id KOv8ng7BHb6n for <devel@linuxdriverproject.org>;
+ Thu, 18 Mar 2021 17:43:26 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x533.google.com (mail-ed1-x533.google.com
- [IPv6:2a00:1450:4864:20::533])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8D1CA400B9
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 17:11:10 +0000 (UTC)
-Received: by mail-ed1-x533.google.com with SMTP id bf3so7616894edb.6
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 10:11:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BLCs8dK09TUMHOT2NYCns3wokmbDEYXTL43a3XAzuZU=;
- b=Q7xL/lATpE/URL2l6+hU4FoepAXrnehK1BqwYobVfpw+kD5QEnC56VCUzVH2SV85B3
- Wdj+AKu1ZDb4tExOWTj+6t9XUorKu5N6LkMzezFm0PtbWDnU8cqQw6EPHl6PFqouf6O9
- fnqVmRmQqK6Wvg6huVjTPkFXDUrWub33YCflY=
+Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com
+ [IPv6:2a00:1450:4864:20::435])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 51307400A4
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 17:43:26 +0000 (UTC)
+Received: by mail-wr1-x435.google.com with SMTP id v4so6434327wrp.13
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 10:43:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=fJ7yn16GOXYvzOvHv/S6FiEQye9fBshmq9fDqn5U6oA=;
+ b=rkbSkxfasoAHyohebT2UzNNpTc9o2GBqg/X5ddquXlNFaNm5H/XnNYGhiCiJ+Oiq6J
+ Cw/BlZsA4vrqiIrNnNbh6VvXMiqP6CkW1HkJtH0SD0nYuW4noxo9c6kyysM4OH/3Nh/y
+ gfp4Rgabao3wO3A9B7N11r3ithByfh/KsL1cK6tdpJOuqukcH4ypumHzPKfwLnV82Q/I
+ qnIKK1PK6B+4ug3ZE4J8YdI8QusCnn913GEyGZJL0uw8jAAZMrICPcZnFMQCAEl+CUSE
+ 0l4wNFPZJWmg/PUGMJFA6UrXFPC1pYaR7cfUJCxdoMoKeXm/cDuowfF8YpYvnQyoARIx
+ Gjdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BLCs8dK09TUMHOT2NYCns3wokmbDEYXTL43a3XAzuZU=;
- b=X9HrAH2jGy4zLOZf+GjF/hCunHVsRVAItaSrnzLgMrF5EgX4k33SxRb1K+Wf6A+uTM
- EvR1/HxyuDYqMhXk5aRHmV8V6WouA8UD8sy1zzE39Q1R7YjF8yILMwj8IOYUM1idjD3j
- mOVg3up+LrYZhPwONOtbR9QX2vdP9EkrQ+/y7d7NCWFpR0e3sldEIZYUnqd0nIe8wdml
- tb+msdgSwl6cRFAivIdI0CjnFq4JSeLx99W9DPHaUAUb3SohDTxpyDZVtqtnNbg+YKFq
- wBYVJijIw8EFLE797AcrDArb+QJ+IvjdpBk6jN1CPsN8nQFHB2sSX+NUeQc8aEQSvaad
- AYwA==
-X-Gm-Message-State: AOAM533GMhPJcR7B7IcJ84LnwRog/psJEcON8REfW5nUBenjI/mRC2U9
- 30ZCkHMccQjRvTA0bU8txXodaaY+vIeeXjSQMPvD2g==
-X-Google-Smtp-Source: ABdhPJzZgCdBknX1FiGte14A7JikvzUMkanYdZTRn6D/9Vu4fp44jr53LMMpsl/dQZAW8lXtgjoXPykteRmCn8Y5fuM=
-X-Received: by 2002:a05:6402:549:: with SMTP id
- i9mr5024153edx.379.1616087468724; 
- Thu, 18 Mar 2021 10:11:08 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=fJ7yn16GOXYvzOvHv/S6FiEQye9fBshmq9fDqn5U6oA=;
+ b=TSThjdssw1ez9kPscIL66EsiyD9Thlr2cZ6xicoYoGeZg7rGCzEVDTON4Ga45E6khV
+ Sz3mbZali/m2WAI33AgozZUBlwGb823MaSXguDV1FIWtVz/UQYnJw3ZhssUQfq4lHShX
+ 6bO2GAwuU2Z4FsNrLsUpj1yJfA8I0vc1y7lttzxut/OJJMKWHGBNANtKys/2mJ7XAo8D
+ zR2R9D1zlEC/TMjG+PqP58t82UujoAudkgAhf777U/nGguVxMKRzKiJ6+dGP6d88ZjN6
+ /s1M3ruBcWNr7784TC29qmV9UjjXS4CKy4MN3c8N0NQiaU8yOO+UZ2H0xdnEb2AfY4XL
+ Jcxg==
+X-Gm-Message-State: AOAM531zTM0sWhDtLfqqplzPtd39ygtKAfM6bDr4yfLn94cjLXl2KqwV
+ ghkZ8p8Pxz1paH9q9MZYx/s4NCzKokc=
+X-Google-Smtp-Source: ABdhPJz4YDtBa8Qx4TOmy0FlWap9PAywE8QqdjEuiyy4rWDjYAj/FqpYntdDgg4DLFATTV7BVGWygA==
+X-Received: by 2002:a5d:58c9:: with SMTP id o9mr410773wrf.181.1616089404641;
+ Thu, 18 Mar 2021 10:43:24 -0700 (PDT)
+Received: from cesati.gmail.com (93-48-145-141.ip257.fastwebnet.it.
+ [93.48.145.141])
+ by smtp.gmail.com with ESMTPSA id y10sm3915908wrl.19.2021.03.18.10.43.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Mar 2021 10:43:24 -0700 (PDT)
+Date: Thu, 18 Mar 2021 18:43:35 +0100
+From: Marco Cesati <marcocesati@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH 01/43] Staging: rtl8723bs: fix names in rtw_mlme.h
+Message-ID: <20210318174335.tjmulpy4q43qfpte@cesati.gmail.com>
+References: <20210317222130.29528-1-marcocesati@gmail.com>
+ <20210317222130.29528-2-marcocesati@gmail.com>
+ <20210318121604.GE2087@kadam>
 MIME-Version: 1.0
-References: <20210316011630.1121213-1-dualli@chromium.org>
- <20210317180048.inzdursqmnvxkgwp@wittgenstein>
- <CAG48ez2ATadfuBjZDqjLa-Mzh669F-yDuBzV62aH=OHRt5g4Pg@mail.gmail.com>
- <CAHRSSEy2UdHHquSGjTYisGyXSVergopxBLh-64j9Nbc9FNie7w@mail.gmail.com>
-In-Reply-To: <CAHRSSEy2UdHHquSGjTYisGyXSVergopxBLh-64j9Nbc9FNie7w@mail.gmail.com>
-From: Li Li <dualli@chromium.org>
-Date: Thu, 18 Mar 2021 10:10:57 -0700
-Message-ID: <CANBPYPi2b9tr6NAvZKTC138PgPY=WHcAJsRKf++ANiAQck8Www@mail.gmail.com>
-Subject: Re: [PATCH v3 0/3] Binder: Enable App Freezing Capability
-To: Todd Kjos <tkjos@google.com>
+Content-Disposition: inline
+In-Reply-To: <20210318121604.GE2087@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,104 +90,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Li Li <dualli@google.com>,
- "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- kernel-team <kernel-team@android.com>, Jann Horn <jannh@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel list <linux-kernel@vger.kernel.org>,
- "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Martijn Coenen <maco@google.com>, Hridya Valsaraju <hridya@google.com>,
- Christian Brauner <christian.brauner@ubuntu.com>,
- Suren Baghdasaryan <surenb@google.com>,
- Christian Brauner <christian@brauner.io>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>, Hans de Goede <hdegoede@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 18, 2021 at 9:20 AM Todd Kjos <tkjos@google.com> wrote:
->
-> On Wed, Mar 17, 2021 at 1:17 PM Jann Horn <jannh@google.com> wrote:
-> >
-> > On Wed, Mar 17, 2021 at 7:00 PM Christian Brauner
-> > <christian.brauner@ubuntu.com> wrote:
-> > > On Mon, Mar 15, 2021 at 06:16:27PM -0700, Li Li wrote:
-> > > > To improve the user experience when switching between recently used
-> > > > applications, the background applications which are not currently needed
-> > > > are cached in the memory. Normally, a well designed application will not
-> > > > consume valuable CPU resources in the background. However, it's possible
-> > > > some applications are not able or willing to behave as expected, wasting
-> > > > energy even after being cached.
-> > > >
-> > > > It is a good idea to freeze those applications when they're only being
-> > > > kept alive for the sake of faster startup and energy saving. These kernel
-> > > > patches will provide the necessary infrastructure for user space framework
-> > > > to freeze and thaw a cached process, check the current freezing status and
-> > > > correctly deal with outstanding binder transactions to frozen processes.
-> >
-> > I just have some comments on the overall design:
-> >
-> > This seems a bit convoluted to me; and I'm not sure whether this is
-> > really something the kernel should get involved in, or whether this
-> > patchset is operating at the right layer.
->
-> The issue is that there is lot's of per-process state in the binder
-> driver that needs to be quiesced prior to freezing the process (using
-> the standard freeze mechanism of
-> Documentation/admin-guide/cgroup-v1/freezer-subsystem.rst). That's all
-> this series does... quiesces binder state prior to freeze and then
-> re-enable transactions when the process is thawed.
->
-> >
-> > If there are non-binder threads that are misbehaving, could you
-> > instead stop all those threads in pure userspace code (e.g. by sending
-> > a thread-directed signal to all of them and letting the signal handler
-> > sleep on a futex); and if the binder thread receives a transaction
-> > that should be handled, wake up those threads again?
->
-> It is not an issue of stopping threads. It's an issue of quiescing
-> binder for a process so clients aren't blocked waiting for a response
-> from a frozen process that may never handle the transaction. This
-> series causes the soon-to-be-frozen process to reject new transactions
-> and allows user-space to detect when the transactions have drained
-> from the queues prior to freezing the process.
->
-> >
-> > Or alternatively you could detect that the application is being woken
-> > up frequently even though it's supposed to be idle (e.g. using
-> > information from procfs), and kill it since you consider it to be
-> > misbehaving?
-> >
-> > Or if there are specific usage patterns you see frequently that you
-> > consider to be wasting CPU resources (e.g. setting an interval timer
-> > that fires in short intervals), you could try to delay such timers.
-> >
-> >
-> > With your current approach, you're baking the assumption that all IPC
-> > goes through binder into the kernel API; things like passing a file
-> > descriptor to a pipe through binder or using shared futexes are no
->
-> No, we're dealing with an issue that is particular to binder IPC when
-> freezing a process. I suspect that other IPC mechanisms do not have
-> this issue -- and if any do for Android, then they would need
-> equivalent pre-freeze/post-freeze mechanisms. So far in the testing of
-> freezing in Android R, there haven't been issues with pipes or futexes
-> that required this kind of explicit quiescing (at least none that I
-> know of -- dualli@, please comment if there have been these kinds of
-> issues).
-Correct, currently there's no evidence the similar things should be applied
-to other IPC mechanisms. But we'll keep an eye on this.
+On Thu, Mar 18, 2021 at 03:16:04PM +0300, Dan Carpenter wrote:
+> On Wed, Mar 17, 2021 at 11:20:48PM +0100, Marco Cesati wrote:
+> > diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+> > index 1ebc1e183381..ffcceb1fdde6 100644
+> > --- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
+> > +++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+> > @@ -81,13 +81,13 @@ enum dot11AuthAlgrthmNum {
+> >  };
+> >  
+> >  /*  Scan type including active and passive scan. */
+> > -enum RT_SCAN_TYPE {
+> > +enum rt_scan_type {
+> >  	SCAN_PASSIVE,
+> >  	SCAN_ACTIVE,
+> >  	SCAN_MIX,
+> >  };
+> >  
+> > -enum  _BAND {
+> > +enum  _band {
+> 
+> _band is a bad name.
 
->
-> > longer usable for cross-process communication without making more
-> > kernel changes. I'm not sure whether that's a good idea. On top of
-> > that, if you freeze a process while it is in the middle of some
-> > operation, resources associated with the operation will probably stay
-> > in use for quite some time; for example, if an app is in the middle of
-> > downloading some data over HTTP, and you freeze it, this may cause the
-> > TCP connection to remain active and consume resources for send/receive
-> > buffers on both the device and the server.
+OK, I'll fix it.
+
+Marco
+
+> 
+> >  	GHZ24_50 = 0,
+> >  	GHZ_50,
+> >  	GHZ_24,
+> 
+> regards,
+> dan carpenter
+
+-- 
+
+---- 
+Marco Cesati, PhD
+Dept. of Civil Engineering and Computer Science Engineering
+Univ. of Rome Tor Vergata
+via del Politecnico 1, I-00133 Rome, Italy
+Tel. +39 06 7259 7389
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
