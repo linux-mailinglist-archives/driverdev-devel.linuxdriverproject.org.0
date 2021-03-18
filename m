@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 074D234100B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 22:49:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6737A341015
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 22:57:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6228E432BE;
-	Thu, 18 Mar 2021 21:49:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8C69D6FB0C;
+	Thu, 18 Mar 2021 21:57:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qIWd3lbVROtX; Thu, 18 Mar 2021 21:49:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C0Ctc0nY6n8o; Thu, 18 Mar 2021 21:57:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A095A400E3;
-	Thu, 18 Mar 2021 21:49:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C1A3D6FAD7;
+	Thu, 18 Mar 2021 21:57:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5E8E01BF33C
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 21:48:59 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4FE0B1BF33C
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 21:56:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5B6D1400E3
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 21:48:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4C6C76FAD7
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 21:56:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MA4J0VfcKM_a for <devel@linuxdriverproject.org>;
- Thu, 18 Mar 2021 21:48:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4SnWRoGrCcrv for <devel@linuxdriverproject.org>;
+ Thu, 18 Mar 2021 21:56:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3581A400E0
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 21:48:57 +0000 (UTC)
-IronPort-SDR: W+h3CTcxpH/o6fc3axpAktshwSp4+qahBaeQveLqU7Wfr5zUH2v1IA6RD6b+HEr9lc+bivtpEM
- 0uChoD0PjF3g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9927"; a="177367012"
-X-IronPort-AV: E=Sophos;i="5.81,259,1610438400"; d="scan'208";a="177367012"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2021 14:48:56 -0700
-IronPort-SDR: X2IZ3/OXnGoohit3bY0CfUcXTz7qbUubdk2o0ZQA7Lj6CTeGi4B9c4oWEZ6Tdk50/buMv9sHXB
- cwlzFraBO19Q==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 63857606D4
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 21:56:57 +0000 (UTC)
+IronPort-SDR: sGHvnSc/mJhjSUQWTe4yNgQc0HxDGoT8Lj9EFykqMQwVmoLcWQo05OjbV/FgUbncBA5FHAnH1j
+ bBLnvcu85csw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9927"; a="274836571"
+X-IronPort-AV: E=Sophos;i="5.81,259,1610438400"; d="scan'208";a="274836571"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2021 14:56:56 -0700
+IronPort-SDR: +HHdcKKPEZCjWYSW56um9DP33JXppw7i2I40SZ5PRa5jC+DeIKToGxfbk5wCzReIk/jz9ikR7S
+ o25M33QhxpiQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,259,1610438400"; d="scan'208";a="523411499"
+X-IronPort-AV: E=Sophos;i="5.81,259,1610438400"; d="scan'208";a="602895508"
 Received: from lkp-server02.sh.intel.com (HELO 1c294c63cb86) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 18 Mar 2021 14:48:55 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 18 Mar 2021 14:56:55 -0700
 Received: from kbuild by 1c294c63cb86 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lN0Vi-0001R3-ON; Thu, 18 Mar 2021 21:48:54 +0000
-Date: Fri, 19 Mar 2021 05:48:25 +0800
+ id 1lN0dT-0001Ra-2Y; Thu, 18 Mar 2021 21:56:55 +0000
+Date: Fri, 19 Mar 2021 05:56:47 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- 2cafd46a714af1e55354bc6dcea9dcc13f9475b5
-Message-ID: <6053caa9.JbwVKMU5lt72H2M4%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 20ad01363a72c8378bd382a026d17c0eef2793cc
+Message-ID: <6053cc9f.TqQIdJahEAd0psk9%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,12 +73,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-linus
-branch HEAD: 2cafd46a714af1e55354bc6dcea9dcc13f9475b5  staging: vt665x: fix alignment constraints
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 20ad01363a72c8378bd382a026d17c0eef2793cc  staging: octeon-usb: Match alignment with open parenthesis
 
-elapsed time: 720m
+elapsed time: 728m
 
-configs tested: 126
+configs tested: 134
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -109,6 +109,10 @@ arm                       cns3420vb_defconfig
 powerpc                     sbc8548_defconfig
 arm                        magician_defconfig
 mips                         tb0226_defconfig
+arm                       imx_v4_v5_defconfig
+powerpc                     tqm8541_defconfig
+sh                   sh7724_generic_defconfig
+sh                   sh7770_generic_defconfig
 arm                     davinci_all_defconfig
 sh                           se7750_defconfig
 mips                  maltasmvp_eva_defconfig
@@ -118,6 +122,11 @@ mips                     decstation_defconfig
 arm                          exynos_defconfig
 mips                            gpr_defconfig
 arm                       multi_v4t_defconfig
+arm                          moxart_defconfig
+powerpc                    klondike_defconfig
+sh                            migor_defconfig
+riscv                          rv32_defconfig
+sh                     magicpanelr2_defconfig
 powerpc                      chrp32_defconfig
 powerpc                 mpc8560_ads_defconfig
 powerpc                   lite5200b_defconfig
@@ -199,7 +208,6 @@ riscv                    nommu_k210_defconfig
 riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
 riscv                               defconfig
-riscv                          rv32_defconfig
 x86_64                    rhel-7.6-kselftests
 x86_64                              defconfig
 x86_64                               rhel-8.3
