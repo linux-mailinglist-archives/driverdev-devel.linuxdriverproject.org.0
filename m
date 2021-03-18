@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E68823401EB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 10:23:26 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F33033404DA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 12:42:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 138544EDED;
-	Thu, 18 Mar 2021 09:23:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7CA986F998;
+	Thu, 18 Mar 2021 11:42:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jtmcVL_AslFd; Thu, 18 Mar 2021 09:23:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tCBfs9wGmNf8; Thu, 18 Mar 2021 11:42:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0B62D4ED86;
-	Thu, 18 Mar 2021 09:23:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DDD156F69C;
+	Thu, 18 Mar 2021 11:42:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 937671BF471
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 09:23:12 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 857A71BF3BC
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 11:42:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 82B0B4309A
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 09:23:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7C3E54ED79
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 11:42:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 01ZpDtfYN7nf for <devel@linuxdriverproject.org>;
- Thu, 18 Mar 2021 09:23:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZC1M5Mx5N0fy for <devel@linuxdriverproject.org>;
+ Thu, 18 Mar 2021 11:42:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F111B41566
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 09:23:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6A8B164E3F;
- Thu, 18 Mar 2021 09:23:09 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C667C4ED60
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 11:42:43 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A7B4764EED;
+ Thu, 18 Mar 2021 11:42:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1616059389;
- bh=lG0HowW4e+FPMkk0A+FYgGzD8QLpys03bXXWgi/QB4M=;
+ s=korg; t=1616067763;
+ bh=JdbMm1LEjA2X1g3r/0S0B9vIr+0C0DiN2yJCF4v4p6k=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=xvle20FiBO7Ol9vp6zjTQ4LcHBvTK5OIyn/fq/CtiW86hSDVlFv8+sdGSM9FstFMy
- Oemkq/KDu6dN/6zmhC9WJ0SGAtWd3phGMWGtGk3PHNN+aXZs59bDfUSs9UEnY3CPkF
- BgGGsm5Gv+orlgzUaf4CLQyqIcDhtOsJ1McmRzqk=
-Date: Thu, 18 Mar 2021 10:23:07 +0100
+ b=NlYjzAuv0AeF9gjm7NP/okbYWQjX3haFTp0fnjXnnd8D66+cP7FB0ByY43HmtlGCs
+ woVCemMAxp44lK65gEvpvlEIrFqnbI2PVxFOwJh7KaCgAGhj4dAle2FJHKNpPkr+6i
+ N+nf2CmdIxakZH+B5TtwnP02HwFgfgMioCxPF74I=
+Date: Thu, 18 Mar 2021 12:42:40 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Fabio Aiuto <fabioaiuto83@gmail.com>
-Subject: Re: staging: rtl8723bs: prefer ftrace
-Message-ID: <YFMb+7jjmj7Oty8B@kroah.com>
-References: <20210318091415.GA3683@agape.jhs>
+To: Akshith A V <akshith6384@gmail.com>
+Subject: Re: [PATCH] rtsx_chip.c:Fix usleep_range is preferred over udelay
+Message-ID: <YFM8sAW2KJfPNMNI@kroah.com>
+References: <20210318110837.kxzojquwkdp7rgcy@akshith-VirtualBox>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210318091415.GA3683@agape.jhs>
+In-Reply-To: <20210318110837.kxzojquwkdp7rgcy@akshith-VirtualBox>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,42 +63,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: , devel@driverdev.osuosl.org, vkor@vkten.in, bmw7804@gmail.com,
+ gustavoars@kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 18, 2021 at 10:14:15AM +0100, Fabio Aiuto wrote:
-> Hi,
+On Thu, Mar 18, 2021 at 04:38:37PM +0530, Akshith A V wrote:
+> changed udelay to usleep_range 
+
+Trailing whitespace and odd line wrap :(
+
+> because usleep_range is preferred over udelay by checkpatch.pl
 > 
-> some suggestions before diving in a new task.
-> The following checkpatch issue:
+> Signed-off-by: Akshith A V <akshith6384@gmail.com>
+> ---
+>  drivers/staging/rts5208/rtsx_chip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> --
-> WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-> #559: FILE: drivers/staging/rtl8723bs/core/rtw_ap.c:559:
-> +	DBG_871X("%s\n", __func__);
-> 
-> simply says to remove the line, due to the existence of the more
-> appealing ftrace facility, right?
-> 
-> @@ -556,8 +554,6 @@ void update_sta_info_apmode(struct adapter *padapter, struct sta_info *psta)
->  	/* set intf_tag to if1 */
->  	/* psta->intf_tag = 0; */
+> diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
+> index ee9ddc4eb94d..41ee334a4e6c 100644
+> --- a/drivers/staging/rts5208/rtsx_chip.c
+> +++ b/drivers/staging/rts5208/rtsx_chip.c
+> @@ -1804,7 +1804,7 @@ void rtsx_exit_ss(struct rtsx_chip *chip)
 >  
-> -	DBG_871X("%s\n", __func__);
-> -
->  	/* psta->mac_id = psta->aid+4; */
->  	/* psta->mac_id = psta->aid+1;//alloc macid when call rtw_alloc_stainfo(), */
->  	/* release macid when call rtw_free_stainfo() */
+>  	if (chip->power_down_in_ss) {
+>  		rtsx_force_power_on(chip, SSC_PDCTL | OC_PDCTL);
+> -		udelay(1000);
+> +		usleep_range(1000, 1010);
+
+Does this really do anything different?
+
+Did you test this?
+
+>  	}
+>  
+>  	if (RTSX_TST_DELINK(chip)) {
+> -- 
+> 2.25.1
 > 
-
-Yes, stuff like this can be deleted.
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
