@@ -1,77 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E3303408E8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 16:29:10 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF8983408E9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Mar 2021 16:29:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1C7E143291;
-	Thu, 18 Mar 2021 15:29:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 535184EE39;
+	Thu, 18 Mar 2021 15:29:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 461IfLntvtQ1; Thu, 18 Mar 2021 15:29:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id as-POR4VqVwC; Thu, 18 Mar 2021 15:29:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 59AC14328B;
-	Thu, 18 Mar 2021 15:29:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 37EBA4EE2F;
+	Thu, 18 Mar 2021 15:29:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6AE651BF341
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:27:19 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 85B691BF341
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:27:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D34E1400B5
- for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:27:18 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6F5654EE35
+ for <devel@linuxdriverproject.org>; Thu, 18 Mar 2021 15:27:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Av73e5ORRWtN for <devel@linuxdriverproject.org>;
- Thu, 18 Mar 2021 15:27:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ySfSoZ4p8pi3 for <devel@linuxdriverproject.org>;
+ Thu, 18 Mar 2021 15:27:21 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
- [IPv6:2a00:1450:4864:20::32c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1F5994328B
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 15:27:18 +0000 (UTC)
-Received: by mail-wm1-x32c.google.com with SMTP id
- t5-20020a1c77050000b029010e62cea9deso3645766wmi.0
- for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 08:27:17 -0700 (PDT)
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E14004EE06
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 15:27:19 +0000 (UTC)
+Received: by mail-wm1-x334.google.com with SMTP id
+ r15-20020a05600c35cfb029010e639ca09eso5676095wmq.1
+ for <devel@driverdev.osuosl.org>; Thu, 18 Mar 2021 08:27:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qLUU1s8kRWxcJ8qSEAxAw8lK0hzJa5M0nSsIsfK6i4Q=;
- b=rYNAA/V3Afy04iivf60eNGzlRgIcMtegewrD7WrKf3Z6Aag3x04fraob0bxYfXXXA8
- HA+xVSPW2RE9vboeVcWxbWhba0esjgoELFi+1+LzMnjso+Z3HiOdqLYU2cJDwezxGad9
- 5iDDfAIOKEGC5617ytomAKDuZcE0EvgQdO7SUtIz4jNKJI7MMTOZ4vWR/ZENvO5FrwcU
- o0K+BQFt4COovLK2QWzcLttc961ceg2UWjzGkNub5XS5j5x3HUad5YHppAXgZzwMcQ8q
- dPobLq3vx2VAxlF33Z9X2ruJ03cxMfwGxHn1uSnFcknwL8ulsj4oBfKFsK6kHCHiKNly
- j0sA==
+ bh=FSkk9Yd2ayS87h/bRiWToyBS4V09sFZorEnhiQpsGRc=;
+ b=Grk8droE1GZjSXxCNuGL6Xo+lCutqeR1djAql5Z7DtzoHIRq+/T/M7X4KIM/IUC6Hx
+ GaZZoMe8f4BVavyBArjGy01FRAPoGqtQ5/fAeAxnB+ED1yPEu6D/12uqaMhWnYO11Ugt
+ j6lYFEE9mNx8bU/SDF8vZQ4rfuM1unc4BWf9hGYjstTyFb9YFLkQyToQTmeGwi+U6roj
+ DHbFg85RO8tQws4hkzPTk2doXg+PC4MnTR3e3JznhUWRFpH2Z4ZmkMXbP0zBYBkpNkDZ
+ IZ5nGpm8Quomb7f1RSxkPE0bQm3Il7fOmwueSsL65gToqlDnd7b0owqGjS+6g78tGTbM
+ bPaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qLUU1s8kRWxcJ8qSEAxAw8lK0hzJa5M0nSsIsfK6i4Q=;
- b=Ix82LlRcQW2nlV/CA6IQcJ1OpiK/aSV/hDiKSV5Xy/xEZ+ZapCrnf1SDeqOJmBshd1
- C8mdpv46IEWsqJ2M+Ks2fsydbDKzCUGU9z4EcP5Xe01WEUCf40FLz9NaXBJm18iCB9mE
- 2p3XNBcilVkq+NSywNv1JsazeyVGgDmk7FnkRugix2KunroA+wVih8NDRALDBWYFqINj
- kc7VlsI7r6jaDr604EwDMIs+YF6zbJjh+RWeIT718Oef49oSrWCyBC22OZdBYPg0fd5k
- bFDUVrbcPnp2Dy7LHHVztEdYgd7+at8u+h9lvorp2lIyRvdBEW34RY/1DvNhI0jfWT7U
- tvmw==
-X-Gm-Message-State: AOAM533NvBKGWodXbui+DGjxn5hH+ST5Tvv0R8CddeGCMEhXY/uLrWCx
- 0+Rbfof+mUpeXzT+KrIgLpU=
-X-Google-Smtp-Source: ABdhPJzUu0235LltzmzUgpzF+krQtLvZN9FARDVjYF0jMCc1/9SkQUCURGIp38+xRw04HcfoH2TXUw==
-X-Received: by 2002:a05:600c:4ba2:: with SMTP id
- e34mr4198375wmp.121.1616081236223; 
- Thu, 18 Mar 2021 08:27:16 -0700 (PDT)
+ bh=FSkk9Yd2ayS87h/bRiWToyBS4V09sFZorEnhiQpsGRc=;
+ b=pTps7r++H8oZLE68GztvrViPtnU5CrehDjlsApzXotR/ZDHg+cSCTnErZ3YLrCfSgQ
+ SDsT2mry6wYw4sOViSdbPIYQ7TH/LusC/eoxgpx+sCl14cISXXKzAG2CRGR1feY0fp8y
+ lsCwbJC5yicz4JYID9TKmjZXr67IB2LlvMRByhjs66J+ecbGkDr3uCw508/9dc0aczJZ
+ eStmdpMUYkgEdh3thWKE2LkxmiLRIZG3YeS+ONM7IQB2JAzLG/ccr5E/WGUHam3U0JRd
+ gtbRkCuKFd5UQkJUlDskprYQX938OEwYcFvKJxjAoq40QMJigad+DL1ecesa6HqbqElf
+ GZIQ==
+X-Gm-Message-State: AOAM5336RrSYNPgJ3fqVfEgRMDITXo596Az6szuM0qwfxYThzP5yYlJj
+ PTUckz1UXLdewwL+BFi/E/g=
+X-Google-Smtp-Source: ABdhPJz1Q820o1C9Pj4vK3uFfR0PIWMJMJ7oCtDWXXc8yaKCX2B+Wz576xCvzUnCHJVYT4hUPgUqww==
+X-Received: by 2002:a7b:c214:: with SMTP id x20mr4216172wmi.186.1616081238268; 
+ Thu, 18 Mar 2021 08:27:18 -0700 (PDT)
 Received: from agape ([151.46.162.59])
- by smtp.gmail.com with ESMTPSA id i8sm2392173wmi.6.2021.03.18.08.27.15
+ by smtp.gmail.com with ESMTPSA id c16sm4180431wrs.81.2021.03.18.08.27.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Mar 2021 08:27:15 -0700 (PDT)
+ Thu, 18 Mar 2021 08:27:17 -0700 (PDT)
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 13/15] staging: rtl8723bs: remove unnecessary logging in
- os_dep/ioctl_linux.c
-Date: Thu, 18 Mar 2021 16:26:08 +0100
-Message-Id: <20210318152610.16758-14-fabioaiuto83@gmail.com>
+Subject: [PATCH 14/15] staging: rtl8723bs: remove unnecessary logging in
+ os_dep/os_intfs.c
+Date: Thu, 18 Mar 2021 16:26:09 +0100
+Message-Id: <20210318152610.16758-15-fabioaiuto83@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210318152610.16758-1-fabioaiuto83@gmail.com>
 References: <YFMb+7jjmj7Oty8B@kroah.com>
@@ -99,78 +98,65 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 fix the following checkpatch.pl issues:
 
 WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-1207: FILE: drivers/staging/rtl8723bs/os_dep/ioctl_linux.c:1207:
-+	DBG_871X("%s\n", __func__);
+977: FILE: drivers/staging/rtl8723bs/os_dep/os_intfs.c:977:
++	DBG_871X("===> %s.........\n", __func__);
 --
 WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-1507: FILE: drivers/staging/rtl8723bs/os_dep/ioctl_linux.c:1507:
-+	DBG_871X("=>%s\n", __func__);
+1030: FILE: drivers/staging/rtl8723bs/os_dep/os_intfs.c:1030:
++	DBG_871X("====> %s...\n", __func__);
 --
 WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-3390: FILE: drivers/staging/rtl8723bs/os_dep/ioctl_linux.c:3390:
-+	DBG_871X("%s\n", __func__);
+1127: FILE: drivers/staging/rtl8723bs/os_dep/os_intfs.c:1127:
++		DBG_871X("===> %s\n", __func__);
 --
 WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-3687: FILE: drivers/staging/rtl8723bs/os_dep/ioctl_linux.c:3687:
-+	DBG_871X("%s\n", __func__);
---
-WARNING: Unnecessary ftrace-like logging - prefer using ftrace
-4143: FILE: drivers/staging/rtl8723bs/os_dep/ioctl_linux.c:4143:
-+	/* DBG_871X("%s\n", __func__); */
+1177: FILE: drivers/staging/rtl8723bs/os_dep/os_intfs.c:1177:
++		DBG_871X("<=== %s\n", __func__);
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 9 ---------
- 1 file changed, 9 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index aac1391bdbf1..590da76e9e8e 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -1204,8 +1204,6 @@ static int rtw_wx_set_mlme(struct net_device *dev,
- 	if (mlme == NULL)
- 		return -1;
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 3909f149de47..93d696d5cf19 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -974,9 +974,6 @@ static int  ips_netdrv_open(struct adapter *padapter)
  
--	DBG_871X("%s\n", __func__);
+ 	padapter->net_closed = false;
+ 
+-	DBG_871X("===> %s.........\n", __func__);
 -
- 	reason = mlme->reason_code;
- 
- 	DBG_871X("%s, cmd =%d, reason =%d\n", __func__, mlme->cmd, reason);
-@@ -1504,7 +1502,6 @@ static int rtw_wx_set_essid(struct net_device *dev,
- 	}
- 
- 	authmode = padapter->securitypriv.ndisauthtype;
--	DBG_871X("=>%s\n", __func__);
- 	if (wrqu->essid.flags && wrqu->essid.length) {
- 		len = (wrqu->essid.length < IW_ESSID_MAX_SIZE) ? wrqu->essid.length : IW_ESSID_MAX_SIZE;
- 
-@@ -3387,8 +3384,6 @@ static int rtw_set_encryption(struct net_device *dev, struct ieee_param *param,
- 	struct security_priv *psecuritypriv = &(padapter->securitypriv);
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 
--	DBG_871X("%s\n", __func__);
 -
- 	param->u.crypt.err = 0;
- 	param->u.crypt.alg[IEEE_CRYPT_ALG_NAME_LEN - 1] = '\0';
+ 	padapter->bDriverStopped = false;
+ 	padapter->bCardDisableWOHSM = false;
+ 	/* padapter->bup = true; */
+@@ -1027,8 +1024,6 @@ void rtw_ips_pwr_down(struct adapter *padapter)
  
-@@ -3684,8 +3679,6 @@ static void rtw_hostapd_sta_flush(struct net_device *dev)
- 	struct adapter *padapter = rtw_netdev_priv(dev);
- 	/* struct sta_priv *pstapriv = &padapter->stapriv; */
- 
--	DBG_871X("%s\n", __func__);
+ void rtw_ips_dev_unload(struct adapter *padapter)
+ {
+-	DBG_871X("====> %s...\n", __func__);
 -
- 	flush_all_cam_entry(padapter);	/* clear CAM */
  
- 	rtw_sta_flush(padapter);
-@@ -4140,8 +4133,6 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
- 	int ret = 0;
- 	struct adapter *padapter = rtw_netdev_priv(dev);
+ 	if (!padapter->bSurpriseRemoved)
+ 		rtw_hal_deinit(padapter);
+@@ -1124,7 +1119,6 @@ void rtw_dev_unload(struct adapter *padapter)
+ 	RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("+%s\n", __func__));
  
--	/* DBG_871X("%s\n", __func__); */
--
- 	/*
- 	* this function is expect to call in master mode, which allows no power saving
- 	* so, we just check hw_init_completed
+ 	if (padapter->bup) {
+-		DBG_871X("===> %s\n", __func__);
+ 
+ 		padapter->bDriverStopped = true;
+ 		if (padapter->xmitpriv.ack_tx)
+@@ -1174,7 +1168,6 @@ void rtw_dev_unload(struct adapter *padapter)
+ 
+ 		padapter->bup = false;
+ 
+-		DBG_871X("<=== %s\n", __func__);
+ 	} else {
+ 		RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("%s: bup ==false\n", __func__));
+ 		DBG_871X("%s: bup ==false\n", __func__);
 -- 
 2.20.1
 
