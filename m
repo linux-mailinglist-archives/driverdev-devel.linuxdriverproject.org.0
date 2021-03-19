@@ -1,66 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5DD83425B1
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Mar 2021 20:05:54 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 89DC6342652
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Mar 2021 20:36:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E37EA83AA1;
-	Fri, 19 Mar 2021 19:05:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9E2A6430A5;
+	Fri, 19 Mar 2021 19:36:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fa_n9bqWIyCZ; Fri, 19 Mar 2021 19:05:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id B2HNWeraooq0; Fri, 19 Mar 2021 19:36:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 359F382FD5;
-	Fri, 19 Mar 2021 19:05:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0940E4015F;
+	Fri, 19 Mar 2021 19:36:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C71AF1BF3F6
- for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 19:05:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D7AA61BF3F6
+ for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 19:36:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C34096F69C
- for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 19:05:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C6D324015F
+ for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 19:36:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Improper folded header field made up
- entirely of whitespace (char 20 hex): X-Spam-Report: ...that system
- for details.  Content previ[...]
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=infradead.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BfZ1J8G60ViR for <devel@linuxdriverproject.org>;
- Fri, 19 Mar 2021 19:05:37 +0000 (UTC)
-X-Greylist: delayed 01:04:53 by SQLgrey-1.8.0
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [IPv6:2607:7c80:54:e::133])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6FACF6F4C1
- for <devel@driverdev.osuosl.org>; Fri, 19 Mar 2021 19:05:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Sender:Content-Type:MIME-Version:
- References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=LSQXGOox+uWbTS3r6xWtG4JVC4Hz7vay5Ab5pG8xqOU=; b=zvxadFyayw6l2oXHmu4p3HXkmV
- 2wFsSJ4g9o0TXw1xpXnOAq/4wnCm5hxuKaNpKKAogvCvZCUQogvEK9OWy5Of/BboO4nzbbljs3Jai
- OpJZNZKjvQd4L/YDKeGxvszIBYLGpJCAVE3VD9zUqD6iVO6Vi2LkPPOjKUSzg+dMjssowTQUiWbhM
- D2x6mzx4Cg7W++kDb6K+DhPTPsiKk+HD/SV2W46nTpu6i2gQYkKyuYBnXgLNzHiwSGIIK4qXeyd+a
- YwKg+dXgpgCTQ8trZDBajTwpphJqEzGvQyydgL+AcDJsIIbjRdrpwe2os+FIL43IAHNqr0BO/SaRA
- m4Y11RAA==;
-Received: from rdunlap (helo=localhost)
- by bombadil.infradead.org with local-esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lNJQ9-001RKl-Dh; Fri, 19 Mar 2021 18:00:26 +0000
-Date: Fri, 19 Mar 2021 11:00:25 -0700 (PDT)
-From: Randy Dunlap <rdunlap@bombadil.infradead.org>
-To: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-Subject: Re: [PATCH] staging: rtl8188eu: Fix a typo
-In-Reply-To: <20210319014120.6474-1-unixbhaskar@gmail.com>
-Message-ID: <27d89fb-d14-df64-eeb2-f5b788ff294@bombadil.infradead.org>
-References: <20210319014120.6474-1-unixbhaskar@gmail.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IzZCSztnw35t for <devel@linuxdriverproject.org>;
+ Fri, 19 Mar 2021 19:36:40 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-qv1-xf31.google.com (mail-qv1-xf31.google.com
+ [IPv6:2607:f8b0:4864:20::f31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2BE954012F
+ for <devel@driverdev.osuosl.org>; Fri, 19 Mar 2021 19:36:40 +0000 (UTC)
+Received: by mail-qv1-xf31.google.com with SMTP id d10so5621916qve.7
+ for <devel@driverdev.osuosl.org>; Fri, 19 Mar 2021 12:36:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lfIIG363a9greQETBbL5KuvjZaQwrTTY2HzKwrfTXhQ=;
+ b=h6YjDbAdHtnMbaNTzDNBQaJTm49gL8a+aROrZ+/jMyaO3SHT2b5DVS7mAzMlEji7bb
+ 3LlhxjuzEbGtd98pV1ZeMXUP/lRE7aBBTlmW1XXMEPxteyx830VixF+yMOzQiKbpm9PZ
+ eWA/I5gE82PN+6j9gPRwc+MDDEiwvmV2qGyUksJbvFtIVUS1r/QhTOL3Q9SOQegHygxa
+ mUChaBClh3mlbhyEojNXw5mZyKyy2npkUfYEaU9RZa6TSHhKhPexwnyOI7KfwkKrBzGK
+ M8HMrQHptlr4zJ7NaMkSXb9Pt2SIFqkktbMw4ReNS4N3/eVHy1vxQoJYHmXr5OWDgR2F
+ uX7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lfIIG363a9greQETBbL5KuvjZaQwrTTY2HzKwrfTXhQ=;
+ b=RejjEFsFIRK9Y+69ySGusFzMpEEBQB480li11eNOyxgepjVVsiaDGm3lRC1V993+gd
+ j5RG/t1+kWfwLw9J78H2h2wQ0qu/ihig92u81A7JB2nNacnVOCavnkkPxZ4AvtSlPb4u
+ zqFPyTBpPzesGuMV3/Dax08/+SxdbgpDHcL/4jY/suZd+MKd/H2Tf2YjTtZO4rmogaOo
+ oBBzYEVQVOBqDKd2bk1O44m9as74mDmq4Nfm6tcOsa33GzcH1l/TPG9hzY/LTDO9MzSc
+ XoJsn7nE4MIvH23ccpt+veZ7KoHklvR+2hhD1LFJ8ErNBylIfSIspQPp8Ut2x8zyjAL+
+ WQGg==
+X-Gm-Message-State: AOAM531biUGaDGQ9GGMwCx6f3/Pm41vh3yljVlTNbiut5DPECAIyvz3X
+ yLi1STgvYrM5f56K18LtFTI=
+X-Google-Smtp-Source: ABdhPJwaJEhjQuNSnl5UQ/yu8LAxjDUNoX6fWEQUAA0HaA9ltv4J3bgjIzPYuFsm+J5E48ijbwO/PA==
+X-Received: by 2002:a0c:9b88:: with SMTP id o8mr11033766qve.28.1616182599056; 
+ Fri, 19 Mar 2021 12:36:39 -0700 (PDT)
+Received: from localhost.localdomain ([37.19.198.27])
+ by smtp.gmail.com with ESMTPSA id j12sm4455999qtn.36.2021.03.19.12.36.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Mar 2021 12:36:38 -0700 (PDT)
+From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
+ straube.linux@gmail.com, insafonov@gmail.com, dan.carpenter@oracle.com,
+ unixbhaskar@gmail.com, yepeilin.cs@gmail.com, dinghao.liu@zju.edu.cn,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH V2] staging: rtl8188eu: Fix couple of typos
+Date: Sat, 20 Mar 2021 01:04:14 +0530
+Message-Id: <20210319193414.10393-1-unixbhaskar@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_110025_480629_988CFBCC 
-X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,47 +86,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, insafonov@gmail.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, dinghao.liu@zju.edu.cn, yepeilin.cs@gmail.com,
- dan.carpenter@oracle.com, Larry.Finger@lwfinger.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
+s/pasive/passive/
+s/varable/variable/
 
-On Fri, 19 Mar 2021, Bhaskar Chowdhury wrote:
+Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+---
+ Changes from V1:
+  Randy's suggestion incorporated.
 
->
-> s/pasive/passive/
+ drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also need to s/varable/variable/
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+index f87dd71934c3..b6ac5b8915b1 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+@@ -37,7 +37,7 @@ int rtw_init_mlme_priv(struct adapter *padapter)
+ 	pmlmepriv->pscanned = NULL;
+ 	pmlmepriv->fw_state = 0;
+ 	pmlmepriv->cur_network.network.InfrastructureMode = Ndis802_11AutoUnknown;
+-	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: pasive. Maybe someday we should rename this varable to "active_mode" (Jeff) */
++	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: passive. Maybe someday we should rename this variable to "active_mode" (Jeff) */
 
+ 	spin_lock_init(&pmlmepriv->lock);
+ 	_rtw_init_queue(&pmlmepriv->free_bss_pool);
+--
+2.26.2
 
->
-> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-> ---
-> drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> index f87dd71934c3..96d15fca48b0 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> @@ -37,7 +37,7 @@ int rtw_init_mlme_priv(struct adapter *padapter)
-> 	pmlmepriv->pscanned = NULL;
-> 	pmlmepriv->fw_state = 0;
-> 	pmlmepriv->cur_network.network.InfrastructureMode = Ndis802_11AutoUnknown;
-> -	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: pasive. Maybe someday we should rename this varable to "active_mode" (Jeff) */
-> +	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: passive. Maybe someday we should rename this varable to "active_mode" (Jeff) */
->
-> 	spin_lock_init(&pmlmepriv->lock);
-> 	_rtw_init_queue(&pmlmepriv->free_bss_pool);
-> --
-> 2.26.2
->
->
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
