@@ -1,79 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C40A341FDD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Mar 2021 15:42:36 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E5DD83425B1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Mar 2021 20:05:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 204FC83C59;
-	Fri, 19 Mar 2021 14:42:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E37EA83AA1;
+	Fri, 19 Mar 2021 19:05:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uvjAjoE0m8hX; Fri, 19 Mar 2021 14:42:33 +0000 (UTC)
+	with ESMTP id fa_n9bqWIyCZ; Fri, 19 Mar 2021 19:05:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5770483CC3;
-	Fri, 19 Mar 2021 14:42:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 359F382FD5;
+	Fri, 19 Mar 2021 19:05:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9DA0B1BF29F
- for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 14:42:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C71AF1BF3F6
+ for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 19:05:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 84E674EE2F
- for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 14:42:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C34096F69C
+ for <devel@linuxdriverproject.org>; Fri, 19 Mar 2021 19:05:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hmPiQkBysyMC for <devel@linuxdriverproject.org>;
- Fri, 19 Mar 2021 14:42:21 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
- [IPv6:2a00:1450:4864:20::333])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 269014EE2C
- for <devel@driverdev.osuosl.org>; Fri, 19 Mar 2021 14:42:21 +0000 (UTC)
-Received: by mail-wm1-x333.google.com with SMTP id
- r15-20020a05600c35cfb029010e639ca09eso7456802wmq.1
- for <devel@driverdev.osuosl.org>; Fri, 19 Mar 2021 07:42:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+XTbSIMvQ+/BtlwbF+Ev/3WZAC0rKFSDShYJoFzNVMk=;
- b=JW8Chhximx98r8yKuBtPj2rXc/iY2gKNGzzGyBm1faUdhtOCgCZRy0b+8ctz08dcYY
- LeYBh+3EURfQKWtgp5MN9bY2gvNOcwIFXW8JBq20TsQB11kUPVuvurHkclYoKGN69zeQ
- 9+hHSrbZEN+t6yOBptSGds4xvI5MpJ1mEdC4PTTRT3avgmk0e4SYKVXGmPk3LgQj9ggK
- yG7inUpjoZszWjFoxrJf6YkKGbB9HVxe83u58hr8RXzlLW9cnLODxOqC9In5xz20A+ZP
- t2KkNDWbI5Gje/swr2b5hNZXLi4U9h0m/7jYqRwuMT6jDkRLLtWYKDKbxIxpXK7nCnYe
- qc6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+XTbSIMvQ+/BtlwbF+Ev/3WZAC0rKFSDShYJoFzNVMk=;
- b=BMwV+Nkb+uq3s48xY/wMCFVj69XoKxqwnpEuC/ELNuCe/bFK3mIVDS5FMEKIuPzON2
- 1dSEbBUG6e4V+0VllRl/SoKUYeW6diU5quWRf2+oFkWsYwN04d22z2o11F5lM6BsNzyk
- LqZdNEXe8slHuLc9FM8fI3COnnlZU8qRkfpi+rink3v9Vwwj9ybl9EBsnxaig6FGY5uM
- f0icxcYZVjuh3qsnIiRrxBQC096IeKJGjEGSdLGIkO5cpiXVS/Z4Nq1DUmlEMCB5bZ0h
- hoxxmjVkxulOkA7o+/XodvmcoaMNyPWmk3Mz6tLK8WXUtMK89BpeJXSPLnYomkCzJDgj
- fw6g==
-X-Gm-Message-State: AOAM532joylgr5ly5dL/4HSX9alGi+6evRkZuNGm8dm9zMsGsleLghFl
- EVz5tuJfQXhBnq3MxY4ypRU=
-X-Google-Smtp-Source: ABdhPJwjGKxUSx+L6k/HH7ynujRJcepef0U/wIStL7Sy6ahIZZMV+895+W4JC2P3QTiqFtRCbvUkRQ==
-X-Received: by 2002:a1c:b0c4:: with SMTP id z187mr3951369wme.81.1616164939365; 
- Fri, 19 Mar 2021 07:42:19 -0700 (PDT)
-Received: from gamer-pc.Home ([78.17.243.211])
- by smtp.gmail.com with ESMTPSA id j123sm6669281wmb.1.2021.03.19.07.42.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Mar 2021 07:42:18 -0700 (PDT)
-From: Paul McQuade <paulmcquad@gmail.com>
-To: Larry.Finger@lwfinger.net
-Subject: [PATCH v2] staging: rtl8188eu: Removed Unnecessary logging
-Date: Fri, 19 Mar 2021 14:42:06 +0000
-Message-Id: <20210319144206.23439-1-paulmcquad@gmail.com>
-X-Mailer: git-send-email 2.30.1
+X-Amavis-Alert: BAD HEADER SECTION, Improper folded header field made up
+ entirely of whitespace (char 20 hex): X-Spam-Report: ...that system
+ for details.  Content previ[...]
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=infradead.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BfZ1J8G60ViR for <devel@linuxdriverproject.org>;
+ Fri, 19 Mar 2021 19:05:37 +0000 (UTC)
+X-Greylist: delayed 01:04:53 by SQLgrey-1.8.0
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:e::133])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6FACF6F4C1
+ for <devel@driverdev.osuosl.org>; Fri, 19 Mar 2021 19:05:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Sender:Content-Type:MIME-Version:
+ References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=LSQXGOox+uWbTS3r6xWtG4JVC4Hz7vay5Ab5pG8xqOU=; b=zvxadFyayw6l2oXHmu4p3HXkmV
+ 2wFsSJ4g9o0TXw1xpXnOAq/4wnCm5hxuKaNpKKAogvCvZCUQogvEK9OWy5Of/BboO4nzbbljs3Jai
+ OpJZNZKjvQd4L/YDKeGxvszIBYLGpJCAVE3VD9zUqD6iVO6Vi2LkPPOjKUSzg+dMjssowTQUiWbhM
+ D2x6mzx4Cg7W++kDb6K+DhPTPsiKk+HD/SV2W46nTpu6i2gQYkKyuYBnXgLNzHiwSGIIK4qXeyd+a
+ YwKg+dXgpgCTQ8trZDBajTwpphJqEzGvQyydgL+AcDJsIIbjRdrpwe2os+FIL43IAHNqr0BO/SaRA
+ m4Y11RAA==;
+Received: from rdunlap (helo=localhost)
+ by bombadil.infradead.org with local-esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lNJQ9-001RKl-Dh; Fri, 19 Mar 2021 18:00:26 +0000
+Date: Fri, 19 Mar 2021 11:00:25 -0700 (PDT)
+From: Randy Dunlap <rdunlap@bombadil.infradead.org>
+To: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+Subject: Re: [PATCH] staging: rtl8188eu: Fix a typo
+In-Reply-To: <20210319014120.6474-1-unixbhaskar@gmail.com>
+Message-ID: <27d89fb-d14-df64-eeb2-f5b788ff294@bombadil.infradead.org>
+References: <20210319014120.6474-1-unixbhaskar@gmail.com>
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20210319_110025_480629_988CFBCC 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,63 +73,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Paul McQuade <paulmcquad@gmail.com>,
- debsoumyajit100@gmail.com
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, insafonov@gmail.com, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, dinghao.liu@zju.edu.cn, yepeilin.cs@gmail.com,
+ dan.carpenter@oracle.com, Larry.Finger@lwfinger.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix the following checkpatch.pl issues:
-WARNING: Unnecessary ftrace-like logging - prefer using ftrace
 
-Signed-off-by: Paul McQuade <paulmcquad@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ap.c | 6 ------
- 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index 182bb944c9b3..008b60e72758 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ap.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -507,7 +507,6 @@ void update_sta_info_apmode(struct adapter *padapter, struct sta_info *psta)
- 	struct ht_priv	*phtpriv_sta = &psta->htpriv;
- 
- 	psta->mac_id = psta->aid + 1;
--	DBG_88E("%s\n", __func__);
- 
- 	/* ap mode */
- 	rtw_hal_set_odm_var(padapter, HAL_ODM_STA_INFO, psta, true);
-@@ -571,8 +570,6 @@ static void update_hw_ht_param(struct adapter *padapter)
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
- 
--	DBG_88E("%s\n", __func__);
--
- 	/* handle A-MPDU parameter field
- 	 * ampdu_params_info [1:0]:Max AMPDU Len => 0:8k , 1:16k, 2:32k, 3:64k
- 	 * ampdu_params_info [4:2]:Min MPDU Start Spacing
-@@ -1166,8 +1163,6 @@ static void update_bcn_wps_ie(struct adapter *padapter)
- 	unsigned char *ie = pnetwork->ies;
- 	u32 ielen = pnetwork->ie_length;
- 
--	DBG_88E("%s\n", __func__);
--
- 	pwps_ie_src = pmlmepriv->wps_beacon_ie;
- 	if (!pwps_ie_src)
- 		return;
-@@ -1207,7 +1202,6 @@ static void update_bcn_wps_ie(struct adapter *padapter)
- 
- static void update_bcn_vendor_spec_ie(struct adapter *padapter, u8 *oui)
- {
--	DBG_88E("%s\n", __func__);
- 
- 	if (!memcmp(WPS_OUI, oui, 4))
- 		update_bcn_wps_ie(padapter);
--- 
-2.30.1
+On Fri, 19 Mar 2021, Bhaskar Chowdhury wrote:
 
+>
+> s/pasive/passive/
+
+Also need to s/varable/variable/
+
+
+>
+> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+> ---
+> drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> index f87dd71934c3..96d15fca48b0 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> @@ -37,7 +37,7 @@ int rtw_init_mlme_priv(struct adapter *padapter)
+> 	pmlmepriv->pscanned = NULL;
+> 	pmlmepriv->fw_state = 0;
+> 	pmlmepriv->cur_network.network.InfrastructureMode = Ndis802_11AutoUnknown;
+> -	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: pasive. Maybe someday we should rename this varable to "active_mode" (Jeff) */
+> +	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: passive. Maybe someday we should rename this varable to "active_mode" (Jeff) */
+>
+> 	spin_lock_init(&pmlmepriv->lock);
+> 	_rtw_init_queue(&pmlmepriv->free_bss_pool);
+> --
+> 2.26.2
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
