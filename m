@@ -2,80 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8DBC34369E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 03:25:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E25D83436F5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 04:02:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 712F48257D;
-	Mon, 22 Mar 2021 02:24:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2C379830C5;
+	Mon, 22 Mar 2021 03:02:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U5y1WHo2Jbxu; Mon, 22 Mar 2021 02:24:57 +0000 (UTC)
+	with ESMTP id ikq6bZQh-w7g; Mon, 22 Mar 2021 03:02:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CD270824EF;
-	Mon, 22 Mar 2021 02:24:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8700F83033;
+	Mon, 22 Mar 2021 03:01:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EC9801BF299
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 02:24:46 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 562AF1BF299
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 03:01:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DB656402E7
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 02:24:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5271A4029B
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 03:01:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HIdafU-FnyET for <devel@linuxdriverproject.org>;
- Mon, 22 Mar 2021 02:24:46 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qk1-x733.google.com (mail-qk1-x733.google.com
- [IPv6:2607:f8b0:4864:20::733])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DC28040296
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 02:24:45 +0000 (UTC)
-Received: by mail-qk1-x733.google.com with SMTP id y18so9163450qky.11
- for <devel@driverdev.osuosl.org>; Sun, 21 Mar 2021 19:24:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SJ2V/Q+KOn3+lwPvdbc2L1zP9G0R/ZBcdA6MYszXVhI=;
- b=pUR/ZwbH17+AY+um1I25B3IohxTQ0UZ6S9yXyZ9lQ3yuozceN7JcISBJ5b0Cvaxer9
- qmb3TMitQLIZ8gxi9/rY/qy8l2iX/zaUf9L/M36O2l5/1o6H1PUJ4MBIQxmlB3sz9fSK
- 2WDkMCRP1z/Ivgr4ebBWpX/icpAqe0epoSlz23tH+w1iP/2oFyVKxWSAbYqnb3E7OODy
- 2vhdNiXc2B/KLvK2MXlMDTR084Sf2uBv3u5pI2Pl0AgXKAjeTPG1fBpQ9eByusQEkg3M
- h3jftyeXoRWIuFlkx0VLdkViAu9n7J//+xzQ055RdKDfkn2oe8efqVF1JEdYQIH73i8w
- woJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SJ2V/Q+KOn3+lwPvdbc2L1zP9G0R/ZBcdA6MYszXVhI=;
- b=pPeYbgp4VaPuDGKz2GBI92Mgx/jjFMIh/xDjnUEvTijqL39D0q1KKGUC2Xtz/ltMEy
- 3IUOOyVTUufPSIS27Zh0qiEypgfkMUdb9rddLlyr5RTCkQ/kpBp6lQVhBz1pIeJmlF4Z
- z9tGJeh7cmBn+vcwR36j3tZ7guCkOcBDN29Uhq3r6Je2MjmUMdOuVyInoXaOGUjtWCRu
- fpa+oY8sXGs6QYIifz7tNknRkcEbzX5DQnloiuMOy6f2dmN3860mmd70XtYFuV/LhGhn
- +GsBr8prirkNlFiBAR8aihmlCOMVOUaVsLcUADv0X5+J/+MfjLRukwsS0ybIKWxVbeX3
- E16g==
-X-Gm-Message-State: AOAM530OfsFGuVV9Cx7DhPQrRqYR6FDKnm7Md5tmqKvEGmsqOihJ15vB
- cNa085Xf7TLbMxWX71a4DLk=
-X-Google-Smtp-Source: ABdhPJzj+lXWCdrxzmCdoSw8TuIGwfcIvrcQCWxg/g3Iqc3IShmCTDTb8GQw7/Go9mW4eKJspzvhbg==
-X-Received: by 2002:a37:7745:: with SMTP id s66mr8794763qkc.18.1616379884725; 
- Sun, 21 Mar 2021 19:24:44 -0700 (PDT)
-Received: from localhost.localdomain ([156.146.54.190])
- by smtp.gmail.com with ESMTPSA id s6sm9917482qke.44.2021.03.21.19.24.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Mar 2021 19:24:44 -0700 (PDT)
-From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-To: mchehab@kernel.org, sakari.ailus@linux.intel.com,
- gregkh@linuxfoundation.org, unixbhaskar@gmail.com,
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=infradead.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sv8dTOSQ6w46 for <devel@linuxdriverproject.org>;
+ Mon, 22 Mar 2021 03:01:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from desiato.infradead.org (desiato.infradead.org
+ [IPv6:2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7C4DC40299
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 03:01:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+ :In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
+ Reply-To:Cc:Content-ID:Content-Description;
+ bh=AbUtbbw+++6dvKZRwYZxzd/vcNNKSLCJwxvZNKR2U74=; b=fjcPpKY3kVLV8XG8xhpuH1l5Ut
+ PobnVEpAd9gENsqJHY9hP1v2vwzP67y7Fyp0DOfUfqsIgJrBuD3j17ohl5xaI1ehGbK8n0mJ3dn0I
+ hK3rAq/cnlvFr2KTFfYt535gAHR/47jAuJbdF4CPMaMmxEuEdF9P2ozXeiOsKwEW0AKoxsTzAu/Ei
+ DZFSUa5vvEZdRevc8bVXHelAirpbauCrGZszeWktGOQucWZUNMNd5ef487vu9tJhHQ0TEbW1ozP7Y
+ su8Q8theLQbgiHySN+i0AJt9Sy4mv8AAev5Y3FdA84zRIL1d1ZVnmtLs1RYVF6f8euN0pRijnvdOr
+ wpbqaung==;
+Received: from [2601:1c0:6280:3f0::3ba4]
+ by desiato.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
+ id 1lOAp3-00AjrX-DI; Mon, 22 Mar 2021 03:01:42 +0000
+Subject: Re: [PATCH] media: Fix a typo
+To: Bhaskar Chowdhury <unixbhaskar@gmail.com>, mchehab@kernel.org,
+ sakari.ailus@linux.intel.com, gregkh@linuxfoundation.org,
  linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] media: Fix a typo
-Date: Mon, 22 Mar 2021 07:54:31 +0530
-Message-Id: <20210322022431.3992890-1-unixbhaskar@gmail.com>
-X-Mailer: git-send-email 2.31.0
+References: <20210322022431.3992890-1-unixbhaskar@gmail.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <0124fc9c-6d96-e9ce-8c69-7362871fdecf@infradead.org>
+Date: Sun, 21 Mar 2021 20:01:38 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
+In-Reply-To: <20210322022431.3992890-1-unixbhaskar@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,29 +78,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On 3/21/21 7:24 PM, Bhaskar Chowdhury wrote:
+> 
+> s/Sysytem/System/
+> 
+> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 
-s/Sysytem/System/
+Acked-by: Randy Dunlap <rdunlap@infradead.org>
 
-Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
----
- drivers/staging/media/atomisp/i2c/gc2235.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> ---
+>  drivers/staging/media/atomisp/i2c/gc2235.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/atomisp/i2c/gc2235.h b/drivers/staging/media/atomisp/i2c/gc2235.h
+> index 68252b8f516d..ba5db1230033 100644
+> --- a/drivers/staging/media/atomisp/i2c/gc2235.h
+> +++ b/drivers/staging/media/atomisp/i2c/gc2235.h
+> @@ -218,7 +218,7 @@ static struct gc2235_reg const gc2235_stream_off[] = {
+>  };
+> 
+>  static struct gc2235_reg const gc2235_init_settings[] = {
+> -	/* Sysytem */
+> +	/* System */
+>  	{ GC2235_8BIT, 0xfe, 0x80 },
+>  	{ GC2235_8BIT, 0xfe, 0x80 },
+>  	{ GC2235_8BIT, 0xfe, 0x80 },
+> --
 
-diff --git a/drivers/staging/media/atomisp/i2c/gc2235.h b/drivers/staging/media/atomisp/i2c/gc2235.h
-index 68252b8f516d..ba5db1230033 100644
---- a/drivers/staging/media/atomisp/i2c/gc2235.h
-+++ b/drivers/staging/media/atomisp/i2c/gc2235.h
-@@ -218,7 +218,7 @@ static struct gc2235_reg const gc2235_stream_off[] = {
- };
 
- static struct gc2235_reg const gc2235_init_settings[] = {
--	/* Sysytem */
-+	/* System */
- 	{ GC2235_8BIT, 0xfe, 0x80 },
- 	{ GC2235_8BIT, 0xfe, 0x80 },
- 	{ GC2235_8BIT, 0xfe, 0x80 },
---
-2.31.0
+-- 
+~Randy
 
 _______________________________________________
 devel mailing list
