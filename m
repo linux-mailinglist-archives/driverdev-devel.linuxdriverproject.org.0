@@ -1,76 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E7FD344743
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 15:33:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB028344752
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 15:33:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E9E566079D;
-	Mon, 22 Mar 2021 14:33:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 216DA60793;
+	Mon, 22 Mar 2021 14:33:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gnYPFj6_KfsW; Mon, 22 Mar 2021 14:33:10 +0000 (UTC)
+	with ESMTP id 4-stpnDTNb7A; Mon, 22 Mar 2021 14:33:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9077260796;
-	Mon, 22 Mar 2021 14:33:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3334E60705;
+	Mon, 22 Mar 2021 14:33:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4289F1BF35E
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EF9671BF35E
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3242C60659
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DAB1D402C9
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mNV1xh-JqaYW for <devel@linuxdriverproject.org>;
- Mon, 22 Mar 2021 14:32:24 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6PcMuxTx28DU for <devel@linuxdriverproject.org>;
+ Mon, 22 Mar 2021 14:32:27 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x634.google.com (mail-ej1-x634.google.com
- [IPv6:2a00:1450:4864:20::634])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7D243605C6
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 14:32:24 +0000 (UTC)
-Received: by mail-ej1-x634.google.com with SMTP id u5so21648587ejn.8
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 07:32:24 -0700 (PDT)
+Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
+ [IPv6:2a00:1450:4864:20::636])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 050EF402B7
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 14:32:26 +0000 (UTC)
+Received: by mail-ej1-x636.google.com with SMTP id l4so21613904ejc.10
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 07:32:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vl2FsywndoDnCnLH3CW1FLc/KJ2b1bAQO/tsFwQMyPo=;
- b=axF+ER92RNJmNtZBC+An9lXZbIXMIiHZhz8Ro6Ngm8Gi8OpYxlN8UJMiR2WAdF5PoT
- JGZxpwrywx02tEwbFabSoFLWUORZ04uiqhWCjX//HVc84sp2XlRjsOAteY724etntnlJ
- THu8JQ9k4dTIZ65ruxylB0+fZ7dJYnBc+ASjmts81p7ii6YdogQE+EPo75YBtEwllFky
- uTXd6pHyrHJeUIjH2OjfRtxV8w6IYXsu5rPa15FKBo7PkOTvS4+0UkHxlh42oOi6RQ5C
- cpRNRgU008Q0VPm6o5vZ2rRH37B57bgx0L7OOYjBLPod1MuglebwCD+bylaoKXDzGG49
- 620A==
+ bh=8GZqqzXcPg3L3CgG7FuoqmOVUMjqsIVs1/BV+o/Qvck=;
+ b=AeqP5Yd5RBdhxqWl0EV+LzgwtmZsQu1cz50n6Ypo4QEDEcLVbXdf/QgY4SQPKnOhNQ
+ Dv3Aa4Xs0I8+FplXTyBuS/IXJ5ZegXQW3TGQJmslg14yJmDceksggVvRZHN/GszlYjD0
+ AR/FQdZeN6ZLcSMgtws3GMVY0qpoUj4CiqfTWqDSLR4ocOjfGdTjKQsyQQ/PRxOv8tca
+ RGMmWyBMVNRzyECy3NjDeroJQFlKvJ+ZIQ54s14LCcaDYGHV1yXEXsX76BHWqBwTbjpg
+ /H5L8Fvu7rLZYSO3d0tzTuXYXCFXNb2vnf+VataobO9EowaYRt4v5g5zmUVI7OM/nwDe
+ aBkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vl2FsywndoDnCnLH3CW1FLc/KJ2b1bAQO/tsFwQMyPo=;
- b=OIXOqZdU1QZmbrRCZ6Cwmo2avgAt0rtNBct/LW+r9tKcG+SNXqfmt1lntfrjdYZ/u8
- S23S+YKOtjITgpq4Dw+QE+QbXCzYak0KsBFeJ4M6PT/rBCEM2B6T93JGmc+2w3vJoCK9
- CeXtqTFGZRyPnBVRX2qYuhhXf3FUMcbc7K6jbNO7PHDzBFOTzv8xlV29EkeWNJbbVSW/
- BTo/Frk88yyMBcKcQVTOgx+gnTpzgEMQOHzXwu96cYlvsWZ0JC0IJXbL5VXLjPMasTJ1
- wcQaouI9JnE9urQOcqMnVY2C8tp+H18jUd4lPOm52KLLJdhMaYjkxejdr3sE1cke/fpr
- PQHw==
-X-Gm-Message-State: AOAM532YU96mvI+VlN5cb1dsZHcfl0ZLTfiKfzqsFUV89Dcc1Xa4Ogrr
- /O/0g5LB2IBDZ6fuN38Hmi4=
-X-Google-Smtp-Source: ABdhPJwyeFrrYH9ApBmKlRX9XQb2UiUm/ygyF8KOcpWcfpUiKs7yEjBDIIVE444K70c5UctR/J7Syg==
-X-Received: by 2002:a17:906:8447:: with SMTP id
- e7mr20017497ejy.523.1616423542801; 
- Mon, 22 Mar 2021 07:32:22 -0700 (PDT)
+ bh=8GZqqzXcPg3L3CgG7FuoqmOVUMjqsIVs1/BV+o/Qvck=;
+ b=VJrgPSK6OY79QiFvKsf4bl+nOEYmdHoMBGy+jqA1ri1R/RiTFJ8QyQhHl4pGtJUdO0
+ zSopTKXvR8MY1Sgs29qTGIXBtQqY8tboO9CogjS1XS0AKBhg/ykuMYY4BdwNZj+SU6xh
+ 9X8ZJBuBoSLIL3vtc7WzVYMY54Wm5KINBDgmDTOCJ4vMqKAFZSqwiwv4+1Gk3bx5cJgT
+ DkMdUth0x/dKnO0KC8XwC1w2ILKHur7TveycmJ/y8f2AMe+oADpp5/OiULGeLsn8tHZM
+ miuT7aSdmMqHETE8N3AUP/olgCDwujHdJXtFSSZMtnWEVDhlT4Z8sE15BKkwzSYkn5C4
+ d8hw==
+X-Gm-Message-State: AOAM530Bso+EaDjOBkp6dGejA9zcwHoe4XfMGwdX9ZhtuQRgEJiN2jPv
+ 5JJup6K4n7C6wkcApT1kX/M=
+X-Google-Smtp-Source: ABdhPJxECZtWl29aG8aEIRw0IcVueeekaMMQB0xv4Xwc9HWGrw1ISHiMb3LUdEB+jF2xpsB2e5UMbg==
+X-Received: by 2002:a17:906:7150:: with SMTP id
+ z16mr17667ejj.103.1616423545331; 
+ Mon, 22 Mar 2021 07:32:25 -0700 (PDT)
 Received: from agape ([151.57.176.11])
- by smtp.gmail.com with ESMTPSA id l18sm9793114ejk.86.2021.03.22.07.32.22
+ by smtp.gmail.com with ESMTPSA id f9sm11534700eds.41.2021.03.22.07.32.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Mar 2021 07:32:22 -0700 (PDT)
+ Mon, 22 Mar 2021 07:32:25 -0700 (PDT)
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 05/11] staging: rtl8723bs: remove argument in
- recv_indicatepkts_pkt_loss_cnt
-Date: Mon, 22 Mar 2021 15:31:43 +0100
-Message-Id: <fb3d6e0ae858738e3213b60d87e70c2f1697f051.1616422773.git.fabioaiuto83@gmail.com>
+Subject: [PATCH 06/11] staging: rtl8723bs: move function prototype out of
+ core/rtw_recv.c
+Date: Mon, 22 Mar 2021 15:31:44 +0100
+Message-Id: <570305618da6d5560b97ce06d585d70f4906b4e2.1616422773.git.fabioaiuto83@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1616422773.git.fabioaiuto83@gmail.com>
 References: <cover.1616422773.git.fabioaiuto83@gmail.com>
@@ -94,46 +96,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-remove debug_priv argument so function prototype can be
-easily moved away
+move function prototype in include/rtw_recv.h
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_recv.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_recv.c    | 1 -
+ drivers/staging/rtl8723bs/include/rtw_recv.h | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index 9ef2408ded57..e2a6afed723c 100644
+index e2a6afed723c..99dede774b7a 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -1983,13 +1983,13 @@ int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl, union rec
+@@ -1983,7 +1983,6 @@ int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl, union rec
  
  }
  
--void recv_indicatepkts_pkt_loss_cnt(struct debug_priv *pdbgpriv, u64 prev_seq, u64 current_seq);
--void recv_indicatepkts_pkt_loss_cnt(struct debug_priv *pdbgpriv, u64 prev_seq, u64 current_seq)
-+u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq);
-+u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq)
+-u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq);
+ u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq)
  {
  	if (current_seq < prev_seq)
--		pdbgpriv->dbg_rx_ampdu_loss_count += (4096 + current_seq - prev_seq);
-+		return 4096 + current_seq - prev_seq;
- 	else
--		pdbgpriv->dbg_rx_ampdu_loss_count += (current_seq - prev_seq);
-+		return current_seq - prev_seq;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
+index 248e098726fd..1dca18040b98 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_recv.h
++++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
+@@ -553,6 +553,8 @@ int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num);
  
- }
+ int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl, union recv_frame *prframe);
  
-@@ -2029,7 +2029,8 @@ int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reorder_ctr
- 		DBG_871X("DBG_RX_SEQ %s:%d IndicateSeq: %d, NewSeq: %d\n", __func__, __LINE__,
- 			preorder_ctrl->indicate_seq, pattrib->seq_num);
- 		#endif
--		recv_indicatepkts_pkt_loss_cnt(pdbgpriv, preorder_ctrl->indicate_seq, pattrib->seq_num);
-+		pdbgpriv->dbg_rx_ampdu_loss_count += recv_indicatepkts_pkt_loss_cnt(
-+				preorder_ctrl->indicate_seq, pattrib->seq_num);
- 		preorder_ctrl->indicate_seq = pattrib->seq_num;
++u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq);
++
+ int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reorder_ctrl *preorder_ctrl,
+ 			       int bforced);
  
- 	}
 -- 
 2.20.1
 
