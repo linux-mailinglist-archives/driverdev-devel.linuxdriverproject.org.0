@@ -1,78 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76EF2344756
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 15:33:46 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3744344759
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 15:33:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 22CB682F13;
-	Mon, 22 Mar 2021 14:33:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 480D7402B9;
+	Mon, 22 Mar 2021 14:33:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kn-ZiL9wUYC0; Mon, 22 Mar 2021 14:33:44 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tEvOzjGUxbTt; Mon, 22 Mar 2021 14:33:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E8BD282EB6;
-	Mon, 22 Mar 2021 14:33:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8DD1F40288;
+	Mon, 22 Mar 2021 14:33:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BD0A81BF35E
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C52B61BF35E
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B954860659
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:32 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C17E940288
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ao5-9i5v71DW for <devel@linuxdriverproject.org>;
- Mon, 22 Mar 2021 14:32:32 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n2hFB7krwNGW for <devel@linuxdriverproject.org>;
+ Mon, 22 Mar 2021 14:32:35 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x634.google.com (mail-ej1-x634.google.com
- [IPv6:2a00:1450:4864:20::634])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DA4B0605C6
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 14:32:31 +0000 (UTC)
-Received: by mail-ej1-x634.google.com with SMTP id w3so21638753ejc.4
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 07:32:31 -0700 (PDT)
+Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com
+ [IPv6:2a00:1450:4864:20::630])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 86A2A4026B
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 14:32:34 +0000 (UTC)
+Received: by mail-ej1-x630.google.com with SMTP id a7so21636785ejs.3
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 07:32:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=YLMtNnT3e6GvAIhoidxNIb4VuJXw+DLUdbOqSYM6/t4=;
- b=CdJjWq4UHDY/vooDiXd3hFEy31e3/ROZp3MoFcNi03Eyf5GJ0nWXjqytWJc528i1CM
- p4jtdaiCg/w0yRuoqDhlvjf/nA1Imtxx99FGj2l2lTJXsVbhcxA0wzthMhX5F6jbTyNU
- wz+PQ05nDXfnP3i1nM9eqM6AuLRn3xQwd0giLDq+FGkTEvvJZye12sYHXvfMT8YEtGVe
- 8WhKmr6lH0I/8p+88JLoxzEEddHcq32sZbjToHVHcJpfm4gYdK35FTiXBgq/IjlE5HQg
- 0kQTla/kYMIa0WkfRKW2kCGekaP/QNXB5Nt9+VZukPH0wYkxZujDLzXDmTwovCqwtBL8
- V60A==
+ bh=L10f41YFPSYuLZ2Qn/bqjPBEJJpbB3QUZrKXGhgQjLM=;
+ b=SsH5PpjaNiAR5wZ3sW4D3h0vSMAIljyr4ysm68wvsC74YowdUhSMbM3b9l+F0HvmBc
+ 7HqaBPFNF/khVg/luG3nn4rxKj8tkTwy7frZw/qAnWO8jcxz9oZSEScuWGZGYREn4bqI
+ ZW5M28IQ6jygp14eBvbIQOt2d4U5sEg8XJuA+H0qqvtu/+t1ETuzqAaSk+oph4NAnxS8
+ mZGjE7CUwVYyRlzjEjRdZooxA0A6duEQsvbDTZs4LZCB4hLUXtB99QTf4f1tm0+Jx/c0
+ kqxfu+w0Hk08OqjB+8iIty9iYAJdkksC+tdGwtm4Hzm3cxD9Ki0/NM1W44CBRG1r9uyK
+ 0LJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=YLMtNnT3e6GvAIhoidxNIb4VuJXw+DLUdbOqSYM6/t4=;
- b=HDDeOJU/Q7KcdTnhQGCG46yRQyKZgkNYIYZBl2wJFDG4gF82kAx2R1T34TGKddfh63
- KH4J9QE7fMfRzhF76H9IQAKBWTV/xZ0y5Bmk5Zk+5bwHKasK35LNCzcG4zB8iLOU9hpE
- AkbYAJ0IzLMdzbxOa1lkbSvsDaFhFDw3D815XncT9TrISr6g+wes4KYqDvlLS7/wsXjU
- VYmZYw7i+/IM1nDKaNMzAqlBe8d67xxu2TFNYFLeZfNQq7KZ6NQ7gE+dQuaexjDqWYZe
- P4F7Ya8JNRpQE5Tcwf89yfwYycuubFI83mUhhFn/E5v+5MylsordiGOslSnqKKOGkpo/
- bfvw==
-X-Gm-Message-State: AOAM533rM9iRQ6ajm68s7JN9rGoAIIls5mqMXT6RXRrY9l5c43LRFXPe
- rQY7BP1vl5TGYWmeTTD4DLs=
-X-Google-Smtp-Source: ABdhPJyG7iox4/GiXK1ZM8ksBlVtJuSVh1flw51HprQRcyqEwjZUN1sZ/2NucObxgHvhX4lMuwb0DQ==
-X-Received: by 2002:a17:907:9152:: with SMTP id
- l18mr39979ejs.376.1616423550188; 
- Mon, 22 Mar 2021 07:32:30 -0700 (PDT)
+ bh=L10f41YFPSYuLZ2Qn/bqjPBEJJpbB3QUZrKXGhgQjLM=;
+ b=shEr9HoHjR97RkuFzlWnBrbwgc4lh6OA5reMMhm/XI1TYa1C7XPZA/qYAqlyrRjtLu
+ cOCN3TufDdy5MxXIMHb0rmncpYyNStF/n7kVQXyO//DNO9PKmnXY3rRM5Vpr3+VI5A5Y
+ XHWhvw2B/+25edPfqnvGhrckBA02b4Xpl+y+SsnVTgJqU/5IMauV/rBVLzxHUlc3jKFY
+ mySdMBB0aOZoG+KVuKeG3fT4KKYby1XDSRFmVRaSAw1wKQKqSPBDp70MnEshkMs9v9C6
+ poG4GbvxvA/xVUdqpsl3trGKDYd5tEtRvt3dftgh15OczFc9qwbIUp2iub2CBpiNd3Jn
+ X42g==
+X-Gm-Message-State: AOAM530SaDDS4EYz+FyD8upEIKY8+dfmVOqZ5tn0ex1W0cNdxYx4A5+H
+ 4q9phtuKHXJ2Ry+OZj7eauQ=
+X-Google-Smtp-Source: ABdhPJwLX9eIrea6pppO4av3ofC1dO2zQ7JoOEF9bqD+/3Kzuv7hlpqINE1FQI2rGzomfOxXzTHmmQ==
+X-Received: by 2002:a17:906:d94:: with SMTP id
+ m20mr19171558eji.511.1616423552688; 
+ Mon, 22 Mar 2021 07:32:32 -0700 (PDT)
 Received: from agape ([151.57.176.11])
- by smtp.gmail.com with ESMTPSA id k12sm11564768edr.60.2021.03.22.07.32.29
+ by smtp.gmail.com with ESMTPSA id bx2sm11728567edb.80.2021.03.22.07.32.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Mar 2021 07:32:29 -0700 (PDT)
+ Mon, 22 Mar 2021 07:32:32 -0700 (PDT)
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 08/11] staging: rtl8723bs: move function prototypes out of
- hal/odm.c
-Date: Mon, 22 Mar 2021 15:31:46 +0100
-Message-Id: <efbd319bc6199fbb06d6c4996ae2d9b81d2f6922.1616422773.git.fabioaiuto83@gmail.com>
+Subject: [PATCH 09/11] staging: rtl8723bs: move function prototypes out of
+ os_dep/int_fs.c
+Date: Mon, 22 Mar 2021 15:31:47 +0100
+Message-Id: <9e1a40b86fb716d89bb12e5e3dfbe567a21fda6c.1616422773.git.fabioaiuto83@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1616422773.git.fabioaiuto83@gmail.com>
 References: <cover.1616422773.git.fabioaiuto83@gmail.com>
@@ -99,245 +97,46 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 fix the following checkpatch issues:
 
 WARNING: externs should be avoided in .c files
-285: FILE: drivers/staging/rtl8723bs/hal/odm.c:285:
-+void odm_CommonInfoSelfInit(struct dm_odm_t *pDM_Odm);
+196: FILE: drivers/staging/rtl8723bs/os_dep/os_intfs.c:196:
++int _netdev_open(struct net_device *pnetdev);
 --
 WARNING: externs should be avoided in .c files
-287: FILE: drivers/staging/rtl8723bs/hal/odm.c:287:
-+void odm_CommonInfoSelfUpdate(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-289: FILE: drivers/staging/rtl8723bs/hal/odm.c:289:
-+void odm_CmnInfoInit_Debug(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-291: FILE: drivers/staging/rtl8723bs/hal/odm.c:291:
-+void odm_BasicDbgMessage(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-305: FILE: drivers/staging/rtl8723bs/hal/odm.c:305:
-+void odm_RefreshRateAdaptiveMaskCE(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-309: FILE: drivers/staging/rtl8723bs/hal/odm.c:309:
-+void odm_RSSIMonitorInit(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-311: FILE: drivers/staging/rtl8723bs/hal/odm.c:311:
-+void odm_RSSIMonitorCheckCE(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-313: FILE: drivers/staging/rtl8723bs/hal/odm.c:313:
-+void odm_RSSIMonitorCheck(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-315: FILE: drivers/staging/rtl8723bs/hal/odm.c:315:
-+void odm_SwAntDetectInit(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-317: FILE: drivers/staging/rtl8723bs/hal/odm.c:317:
-+void odm_SwAntDivChkAntSwitchCallback(void *FunctionContext);
---
-WARNING: externs should be avoided in .c files
-321: FILE: drivers/staging/rtl8723bs/hal/odm.c:321:
-+void odm_GlobalAdapterCheck(void);
---
-WARNING: externs should be avoided in .c files
-323: FILE: drivers/staging/rtl8723bs/hal/odm.c:323:
-+void odm_RefreshRateAdaptiveMask(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-325: FILE: drivers/staging/rtl8723bs/hal/odm.c:325:
-+void ODM_TXPowerTrackingCheck(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-327: FILE: drivers/staging/rtl8723bs/hal/odm.c:327:
-+void odm_RateAdaptiveMaskInit(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-330: FILE: drivers/staging/rtl8723bs/hal/odm.c:330:
-+void odm_TXPowerTrackingInit(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-338: FILE: drivers/staging/rtl8723bs/hal/odm.c:338:
-+void odm_InitHybridAntDiv(struct dm_odm_t *pDM_Odm);
---
-WARNING: externs should be avoided in .c files
-340: FILE: drivers/staging/rtl8723bs/hal/odm.c:340:
-+bool odm_StaDefAntSel(
---
-WARNING: externs should be avoided in .c files
-349: FILE: drivers/staging/rtl8723bs/hal/odm.c:349:
-+void odm_SetRxIdleAnt(struct dm_odm_t *pDM_Odm, u8 Ant, bool bDualPath);
---
-WARNING: externs should be avoided in .c files
-353: FILE: drivers/staging/rtl8723bs/hal/odm.c:353:
-+void odm_HwAntDiv(struct dm_odm_t *pDM_Odm);
+197: FILE: drivers/staging/rtl8723bs/os_dep/os_intfs.c:197:
++int netdev_open(struct net_device *pnetdev);
 
-moved function prototypes in hal/odm.h
+moved function prototypes in include/osdep_intf.h
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/odm.c | 68 -----------------------------
- drivers/staging/rtl8723bs/hal/odm.h | 62 ++++++++++++++++++++++++++
- 2 files changed, 62 insertions(+), 68 deletions(-)
+ drivers/staging/rtl8723bs/include/osdep_intf.h | 3 +++
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c    | 2 --
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.c b/drivers/staging/rtl8723bs/hal/odm.c
-index 49d552105a65..1ede10f0b9da 100644
---- a/drivers/staging/rtl8723bs/hal/odm.c
-+++ b/drivers/staging/rtl8723bs/hal/odm.c
-@@ -279,80 +279,12 @@ u32 TxScalingTable_Jaguar[TXSCALE_TABLE_SIZE] = {
- 	0x3FE  /*  36, +6.0dB */
- };
+diff --git a/drivers/staging/rtl8723bs/include/osdep_intf.h b/drivers/staging/rtl8723bs/include/osdep_intf.h
+index 5ad85416c598..dc279ceb1469 100644
+--- a/drivers/staging/rtl8723bs/include/osdep_intf.h
++++ b/drivers/staging/rtl8723bs/include/osdep_intf.h
+@@ -69,4 +69,7 @@ void rtw_ndev_destructor(struct net_device *ndev);
+ int rtw_suspend_common(struct adapter *padapter);
+ int rtw_resume_common(struct adapter *padapter);
  
--/*  Local Function predefine. */
--
--/* START------------COMMON INFO RELATED--------------- */
--void odm_CommonInfoSelfInit(struct dm_odm_t *pDM_Odm);
--
--void odm_CommonInfoSelfUpdate(struct dm_odm_t *pDM_Odm);
--
--void odm_CmnInfoInit_Debug(struct dm_odm_t *pDM_Odm);
--
--void odm_BasicDbgMessage(struct dm_odm_t *pDM_Odm);
--
--/* END------------COMMON INFO RELATED--------------- */
--
--/* START---------------DIG--------------------------- */
--
--/* Remove by Yuchen */
--
--/* END---------------DIG--------------------------- */
--
--/* START-------BB POWER SAVE----------------------- */
--/* Remove BB power Saving by YuChen */
--/* END---------BB POWER SAVE----------------------- */
--
--void odm_RefreshRateAdaptiveMaskCE(struct dm_odm_t *pDM_Odm);
--
--/* Remove by YuChen */
--
--void odm_RSSIMonitorInit(struct dm_odm_t *pDM_Odm);
--
--void odm_RSSIMonitorCheckCE(struct dm_odm_t *pDM_Odm);
--
--void odm_RSSIMonitorCheck(struct dm_odm_t *pDM_Odm);
--
--void odm_SwAntDetectInit(struct dm_odm_t *pDM_Odm);
--
--void odm_SwAntDivChkAntSwitchCallback(void *FunctionContext);
--
--
--
--void odm_GlobalAdapterCheck(void);
--
--void odm_RefreshRateAdaptiveMask(struct dm_odm_t *pDM_Odm);
--
--void ODM_TXPowerTrackingCheck(struct dm_odm_t *pDM_Odm);
--
--void odm_RateAdaptiveMaskInit(struct dm_odm_t *pDM_Odm);
--
--
--void odm_TXPowerTrackingInit(struct dm_odm_t *pDM_Odm);
--
- /* Remove Edca by Yu Chen */
++int _netdev_open(struct net_device *pnetdev);
++int netdev_open(struct net_device *pnetdev);
++
+ #endif	/* _OSDEP_INTF_H_ */
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 9ae7d46fb501..3713c62a477c 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -193,8 +193,6 @@ MODULE_PARM_DESC(rtw_tx_pwr_lmt_enable, "0:Disable, 1:Enable, 2: Depend on efuse
+ module_param(rtw_tx_pwr_by_rate, int, 0644);
+ MODULE_PARM_DESC(rtw_tx_pwr_by_rate, "0:Disable, 1:Enable, 2: Depend on efuse");
  
+-int _netdev_open(struct net_device *pnetdev);
+-int netdev_open(struct net_device *pnetdev);
+ static int netdev_close(struct net_device *pnetdev);
  
- #define RxDefaultAnt1		0x65a9
- #define RxDefaultAnt2		0x569a
- 
--void odm_InitHybridAntDiv(struct dm_odm_t *pDM_Odm);
--
--bool odm_StaDefAntSel(
--	struct dm_odm_t *pDM_Odm,
--	u32 OFDM_Ant1_Cnt,
--	u32 OFDM_Ant2_Cnt,
--	u32 CCK_Ant1_Cnt,
--	u32 CCK_Ant2_Cnt,
--	u8 *pDefAnt
--);
--
--void odm_SetRxIdleAnt(struct dm_odm_t *pDM_Odm, u8 Ant, bool bDualPath);
--
--
--
--void odm_HwAntDiv(struct dm_odm_t *pDM_Odm);
--
--
- /*  */
- /* 3 Export Interface */
- /*  */
-diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
-index 3c8d76e42c99..42fb01aa15cd 100644
---- a/drivers/staging/rtl8723bs/hal/odm.h
-+++ b/drivers/staging/rtl8723bs/hal/odm.h
-@@ -1429,4 +1429,66 @@ void ODM_AntselStatistics_88C(
- 
- void ODM_DynamicARFBSelect(struct dm_odm_t *pDM_Odm, u8 rate, bool Collision_State);
- 
-+/*  Local Function predefine. */
-+
-+/* START------------COMMON INFO RELATED--------------- */
-+void odm_CommonInfoSelfInit(struct dm_odm_t *pDM_Odm);
-+
-+void odm_CommonInfoSelfUpdate(struct dm_odm_t *pDM_Odm);
-+
-+void odm_CmnInfoInit_Debug(struct dm_odm_t *pDM_Odm);
-+
-+void odm_BasicDbgMessage(struct dm_odm_t *pDM_Odm);
-+
-+/* END------------COMMON INFO RELATED--------------- */
-+
-+/* START---------------DIG--------------------------- */
-+
-+/* Remove by Yuchen */
-+
-+/* END---------------DIG--------------------------- */
-+
-+/* START-------BB POWER SAVE----------------------- */
-+/* Remove BB power Saving by YuChen */
-+/* END---------BB POWER SAVE----------------------- */
-+
-+void odm_RefreshRateAdaptiveMaskCE(struct dm_odm_t *pDM_Odm);
-+
-+/* Remove by YuChen */
-+
-+void odm_RSSIMonitorInit(struct dm_odm_t *pDM_Odm);
-+
-+void odm_RSSIMonitorCheckCE(struct dm_odm_t *pDM_Odm);
-+
-+void odm_RSSIMonitorCheck(struct dm_odm_t *pDM_Odm);
-+
-+void odm_SwAntDetectInit(struct dm_odm_t *pDM_Odm);
-+
-+void odm_SwAntDivChkAntSwitchCallback(void *FunctionContext);
-+
-+void odm_GlobalAdapterCheck(void);
-+
-+void odm_RefreshRateAdaptiveMask(struct dm_odm_t *pDM_Odm);
-+
-+void ODM_TXPowerTrackingCheck(struct dm_odm_t *pDM_Odm);
-+
-+void odm_RateAdaptiveMaskInit(struct dm_odm_t *pDM_Odm);
-+
-+void odm_TXPowerTrackingInit(struct dm_odm_t *pDM_Odm);
-+
-+void odm_InitHybridAntDiv(struct dm_odm_t *pDM_Odm);
-+
-+bool odm_StaDefAntSel(
-+	struct dm_odm_t *pDM_Odm,
-+	u32 OFDM_Ant1_Cnt,
-+	u32 OFDM_Ant2_Cnt,
-+	u32 CCK_Ant1_Cnt,
-+	u32 CCK_Ant2_Cnt,
-+	u8 *pDefAnt
-+);
-+
-+void odm_SetRxIdleAnt(struct dm_odm_t *pDM_Odm, u8 Ant, bool bDualPath);
-+
-+void odm_HwAntDiv(struct dm_odm_t *pDM_Odm);
-+
- #endif
+ static void loadparam(struct adapter *padapter, struct net_device *pnetdev)
 -- 
 2.20.1
 
