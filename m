@@ -1,60 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B0903450BA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 21:28:00 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 730B9345133
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 21:55:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A5401838F0;
-	Mon, 22 Mar 2021 20:27:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5A62D607E2;
+	Mon, 22 Mar 2021 20:55:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id opSz-0wyyMDH; Mon, 22 Mar 2021 20:27:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id J7KJvE8GgmRu; Mon, 22 Mar 2021 20:55:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E0ABC83863;
-	Mon, 22 Mar 2021 20:27:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9CB6E607D4;
+	Mon, 22 Mar 2021 20:55:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1B01C1BF2B5
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 20:27:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EB7C1BF2B5
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 20:55:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F2351402FE
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 20:27:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 86C75607D7
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 20:55:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R-T-i1iQmgM4 for <devel@linuxdriverproject.org>;
- Mon, 22 Mar 2021 20:27:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bSK3D6uQ1I7m for <devel@linuxdriverproject.org>;
+ Mon, 22 Mar 2021 20:55:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A6F2C402DA
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 20:27:45 +0000 (UTC)
-IronPort-SDR: C4ttL8XfzwmtROqPwCLDF7Za5s87auS6ftWlRADhRei4wi6jTCAZn9vZVYaj5cg60CR2c0ubA+
- v37U4tC6pV/Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9931"; a="251696589"
-X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="251696589"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2021 13:27:44 -0700
-IronPort-SDR: bf2uffKVpX+QSV+v87Y+MFDdL6RweusSs2+n2TWs7smVj3xHI1W4oPde6nrpvtLEr6js8k9a7z
- izNYdz3ujvqg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="390612773"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 22 Mar 2021 13:27:43 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lOR9K-0000Es-JM; Mon, 22 Mar 2021 20:27:42 +0000
-Date: Tue, 23 Mar 2021 04:27:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- c7f57fd6b7f0a889b0f847611c9075c37dd31810
-Message-ID: <6058fd9d.V+9/w1IlZC+WWhe2%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B143F607D4
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 20:55:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
+ Reply-To:Cc:Content-ID:Content-Description;
+ bh=b3Ab64gMwLXEjOKWzRYzhgtkfQ7yGZ0iEhUU73fIUU8=; b=ELAKB/0n1zibeXStmS+wwJQt9x
+ Ixo0pWMKt+9VlcCYoCCeJ3Rc6c5t+sUBRmeKPHLEjZZoFvrFDy0ww5l+S9cj8YZQ/pGAonAL8fxdm
+ ht9K8VzKy5NnhBoG/rBwGljCySo23xjMIMM/qzE9NVY0Dufbwbsh7I9I6krQGQmTppuljG5KpKSSN
+ QfsE2UHL+NoKWQqUgV2ueUYP9Tyej2hCNVO5aIShW5/x3mvDYYWtvzvRHixLaBemXCBIQbiIN3G0G
+ NcUAtZEZiA2c9WXzlPiKG62fPr/xMAruv7CtJxa1/N5KbY3CpxSU1BkIH+LfoYEP54TF/LVSR18yF
+ roeGZsSw==;
+Received: from [2601:1c0:6280:3f0::3ba4]
+ by casper.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
+ id 1lORZr-0094Ia-Hb; Mon, 22 Mar 2021 20:55:09 +0000
+Subject: Re: [PATCH V2] staging: rtl8723bs: Mundane typo fixes
+To: Bhaskar Chowdhury <unixbhaskar@gmail.com>, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+References: <20210322201648.137317-1-unixbhaskar@gmail.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <af9c4139-80f4-1003-d484-ee984232869c@infradead.org>
+Date: Mon, 22 Mar 2021 13:55:04 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
+In-Reply-To: <20210322201648.137317-1-unixbhaskar@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,153 +68,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: c7f57fd6b7f0a889b0f847611c9075c37dd31810  Merge v5.12-rc4 into staging-next
+On 3/22/21 1:16 PM, Bhaskar Chowdhury wrote:
+> s/stoping/stopping/
+> s/arragement/arrangement/
+> s/eralier/earlier/
+> 
+> Plus one extra word in the sentence "the" removed.
+> 
+> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 
-elapsed time: 724m
+Acked-by: Randy Dunlap <rdunlap@infradead.org>
 
-configs tested: 123
-configs skipped: 3
+> ---
+>   Changes from V1:
+>   Greg,pointed out my mistake of introducing typo to typo , corrected.
+> 
+>  drivers/staging/rtl8723bs/include/hal_com_reg.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/include/hal_com_reg.h b/drivers/staging/rtl8723bs/include/hal_com_reg.h
+> index 37fa59a352d6..b555826760d0 100644
+> --- a/drivers/staging/rtl8723bs/include/hal_com_reg.h
+> +++ b/drivers/staging/rtl8723bs/include/hal_com_reg.h
+> @@ -1002,9 +1002,9 @@ Current IOREG MAP
+>  	/* 		 8192C (TXPAUSE) transmission pause	(Offset 0x522, 8 bits) */
+>  	/*  */
+>  /*  Note: */
+> -/* 	The the bits of stoping AC(VO/VI/BE/BK) queue in datasheet RTL8192S/RTL8192C are wrong, */
+> -/* 	the correct arragement is VO - Bit0, VI - Bit1, BE - Bit2, and BK - Bit3. */
+> -/* 	8723 and 88E may be not correct either in the eralier version. Confirmed with DD Tim. */
+> +/* 	The  bits of stopping AC(VO/VI/BE/BK) queue in datasheet RTL8192S/RTL8192C are wrong, */
+> +/* 	the correct arrangement is VO - Bit0, VI - Bit1, BE - Bit2, and BK - Bit3. */
+> +/* 	8723 and 88E may be not correct either in the earlier version. Confirmed with DD Tim. */
+>  /*  By Bruce, 2011-09-22. */
+>  #define StopBecon		BIT6
+>  #define StopHigh			BIT5
+> --
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-i386                             allyesconfig
-riscv                            allyesconfig
-mips                     decstation_defconfig
-mips                         db1xxx_defconfig
-xtensa                  audio_kc705_defconfig
-arm                             ezx_defconfig
-powerpc                     ppa8548_defconfig
-sh                        edosk7705_defconfig
-arm                         socfpga_defconfig
-m68k                         apollo_defconfig
-m68k                        m5407c3_defconfig
-parisc                generic-64bit_defconfig
-xtensa                       common_defconfig
-powerpc                 mpc837x_mds_defconfig
-sh                                  defconfig
-sh                          urquell_defconfig
-xtensa                    xip_kc705_defconfig
-sh                        sh7757lcr_defconfig
-sh                          polaris_defconfig
-powerpc                      mgcoge_defconfig
-mips                      pic32mzda_defconfig
-powerpc                      arches_defconfig
-arm                            zeus_defconfig
-arc                                 defconfig
-arm                        mvebu_v7_defconfig
-arm                          lpd270_defconfig
-s390                                defconfig
-arm                     eseries_pxa_defconfig
-arm                      tct_hammer_defconfig
-powerpc                      walnut_defconfig
-arm                      footbridge_defconfig
-mips                   sb1250_swarm_defconfig
-powerpc                    klondike_defconfig
-sh                        dreamcast_defconfig
-powerpc                     kilauea_defconfig
-arm                            mmp2_defconfig
-i386                                defconfig
-sh                          rsk7201_defconfig
-powerpc                  iss476-smp_defconfig
-arm                       versatile_defconfig
-arm                            dove_defconfig
-mips                        vocore2_defconfig
-mips                           ip28_defconfig
-arm                          simpad_defconfig
-s390                       zfcpdump_defconfig
-sh                        apsh4ad0a_defconfig
-mips                      loongson3_defconfig
-arc                          axs103_defconfig
-powerpc                 mpc8272_ads_defconfig
-mips                            gpr_defconfig
-sh                           se7619_defconfig
-powerpc                      ppc44x_defconfig
-powerpc                 mpc8315_rdb_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                              defconfig
-parisc                           allyesconfig
-s390                             allyesconfig
-s390                             allmodconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20210322
-i386                 randconfig-a003-20210322
-i386                 randconfig-a001-20210322
-i386                 randconfig-a002-20210322
-i386                 randconfig-a006-20210322
-i386                 randconfig-a005-20210322
-x86_64               randconfig-a012-20210322
-x86_64               randconfig-a015-20210322
-x86_64               randconfig-a013-20210322
-x86_64               randconfig-a014-20210322
-x86_64               randconfig-a016-20210322
-x86_64               randconfig-a011-20210322
-i386                 randconfig-a014-20210322
-i386                 randconfig-a011-20210322
-i386                 randconfig-a015-20210322
-i386                 randconfig-a016-20210322
-i386                 randconfig-a012-20210322
-i386                 randconfig-a013-20210322
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-x86_64                              defconfig
-x86_64                                  kexec
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
+-- 
+~Randy
 
-clang tested configs:
-x86_64               randconfig-a002-20210322
-x86_64               randconfig-a003-20210322
-x86_64               randconfig-a001-20210322
-x86_64               randconfig-a006-20210322
-x86_64               randconfig-a004-20210322
-x86_64               randconfig-a005-20210322
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
