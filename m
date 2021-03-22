@@ -1,78 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB028344752
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 15:33:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2893A344753
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 15:33:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 216DA60793;
-	Mon, 22 Mar 2021 14:33:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C1E1C607A7;
+	Mon, 22 Mar 2021 14:33:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4-stpnDTNb7A; Mon, 22 Mar 2021 14:33:20 +0000 (UTC)
+	with ESMTP id 7B09lSywasO9; Mon, 22 Mar 2021 14:33:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3334E60705;
-	Mon, 22 Mar 2021 14:33:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0EFA66078D;
+	Mon, 22 Mar 2021 14:33:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EF9671BF35E
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:27 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3407A1BF35E
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DAB1D402C9
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 306D660659
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 14:32:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6PcMuxTx28DU for <devel@linuxdriverproject.org>;
- Mon, 22 Mar 2021 14:32:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vUVLdgF8Ltoj for <devel@linuxdriverproject.org>;
+ Mon, 22 Mar 2021 14:32:29 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
- [IPv6:2a00:1450:4864:20::636])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 050EF402B7
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 14:32:26 +0000 (UTC)
-Received: by mail-ej1-x636.google.com with SMTP id l4so21613904ejc.10
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 07:32:26 -0700 (PDT)
+Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com
+ [IPv6:2a00:1450:4864:20::52e])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 84B6E605C6
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 14:32:29 +0000 (UTC)
+Received: by mail-ed1-x52e.google.com with SMTP id h10so19584479edt.13
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 07:32:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8GZqqzXcPg3L3CgG7FuoqmOVUMjqsIVs1/BV+o/Qvck=;
- b=AeqP5Yd5RBdhxqWl0EV+LzgwtmZsQu1cz50n6Ypo4QEDEcLVbXdf/QgY4SQPKnOhNQ
- Dv3Aa4Xs0I8+FplXTyBuS/IXJ5ZegXQW3TGQJmslg14yJmDceksggVvRZHN/GszlYjD0
- AR/FQdZeN6ZLcSMgtws3GMVY0qpoUj4CiqfTWqDSLR4ocOjfGdTjKQsyQQ/PRxOv8tca
- RGMmWyBMVNRzyECy3NjDeroJQFlKvJ+ZIQ54s14LCcaDYGHV1yXEXsX76BHWqBwTbjpg
- /H5L8Fvu7rLZYSO3d0tzTuXYXCFXNb2vnf+VataobO9EowaYRt4v5g5zmUVI7OM/nwDe
- aBkA==
+ bh=4BEr+U22XVWAeunLqffU23P7ZmiKVWme3aB7fB0BhsU=;
+ b=vRgM409JQtnaRPNCwgrkhaPbRUwTSPN7dO4zkE0qRY7n4AVs4z/J05XI3BUQCIJmM/
+ mGJTKIqdpDgogPfs6603CGeQgY0E1HV69uMBNkPAKfgbjYiYkZaZfXQUFzNzNMBHrqPm
+ oe2jZGqRxVebAp/b6Q9F45Fd4mz2nATSnHJUq/yaLUysOAH/FmWGaHJZjRdOnWdoQ6Wv
+ LciAueRc7O52PqBAFxfqjC/Nz3papznAA0+Qb8VHouGFGwwLuz9XAiE5U4LnV3X9swDT
+ IIkdKNQ1uPR398m2nlqhakxKbrc9LppnqfErieu6SfJ2tajNYUdOMm+s63w145DlIC5h
+ wK6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8GZqqzXcPg3L3CgG7FuoqmOVUMjqsIVs1/BV+o/Qvck=;
- b=VJrgPSK6OY79QiFvKsf4bl+nOEYmdHoMBGy+jqA1ri1R/RiTFJ8QyQhHl4pGtJUdO0
- zSopTKXvR8MY1Sgs29qTGIXBtQqY8tboO9CogjS1XS0AKBhg/ykuMYY4BdwNZj+SU6xh
- 9X8ZJBuBoSLIL3vtc7WzVYMY54Wm5KINBDgmDTOCJ4vMqKAFZSqwiwv4+1Gk3bx5cJgT
- DkMdUth0x/dKnO0KC8XwC1w2ILKHur7TveycmJ/y8f2AMe+oADpp5/OiULGeLsn8tHZM
- miuT7aSdmMqHETE8N3AUP/olgCDwujHdJXtFSSZMtnWEVDhlT4Z8sE15BKkwzSYkn5C4
- d8hw==
-X-Gm-Message-State: AOAM530Bso+EaDjOBkp6dGejA9zcwHoe4XfMGwdX9ZhtuQRgEJiN2jPv
- 5JJup6K4n7C6wkcApT1kX/M=
-X-Google-Smtp-Source: ABdhPJxECZtWl29aG8aEIRw0IcVueeekaMMQB0xv4Xwc9HWGrw1ISHiMb3LUdEB+jF2xpsB2e5UMbg==
-X-Received: by 2002:a17:906:7150:: with SMTP id
- z16mr17667ejj.103.1616423545331; 
- Mon, 22 Mar 2021 07:32:25 -0700 (PDT)
+ bh=4BEr+U22XVWAeunLqffU23P7ZmiKVWme3aB7fB0BhsU=;
+ b=c1vymX26Z99FXbb5LMJicJLS+POMt9l845TPLAIdlNYEJ1jeIymc9C7qfPlHuA+ViF
+ mDJtmebA+GMTJkIabPrW6+Fv1MfYNC10U/3QISRUQ8ggw0offmRetrFHDCRCaJeJ8hrG
+ A9MLjAKuPN7j0s+EE6LXWsg4EaflsX9xwtPyYFbiIyV4FsI7GFmVPY50Wde1rJSJYNak
+ u94aTwawVKOI54cRgiRkjhCzm2J0AFWyBir05uv9ZRxJYyQNcXOl4KF59MyMYZMvBO98
+ 1CcfVkpkUXxAEcs870X2B5xrJw+xY2fYX2oQa74d/xkV3MmjVjD5B6yP96zM9LW10qwt
+ mrCg==
+X-Gm-Message-State: AOAM532QPQDmfHIDsVF42IA/CM5CBKJw4ScTil0FGOqZFLTXLoyuIk24
+ osKPW0qYMztMq3zX3Qny7Bg=
+X-Google-Smtp-Source: ABdhPJyPBriehihrYHP4J6IqMkH+J388wKRJBSIJkfPlD/9VgyKvBz8dBo5mY6zis1Ypdk35A021RA==
+X-Received: by 2002:a05:6402:438f:: with SMTP id
+ o15mr26161782edc.123.1616423547888; 
+ Mon, 22 Mar 2021 07:32:27 -0700 (PDT)
 Received: from agape ([151.57.176.11])
- by smtp.gmail.com with ESMTPSA id f9sm11534700eds.41.2021.03.22.07.32.24
+ by smtp.gmail.com with ESMTPSA id t12sm11828460edy.56.2021.03.22.07.32.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Mar 2021 07:32:25 -0700 (PDT)
+ Mon, 22 Mar 2021 07:32:27 -0700 (PDT)
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 06/11] staging: rtl8723bs: move function prototype out of
- core/rtw_recv.c
-Date: Mon, 22 Mar 2021 15:31:44 +0100
-Message-Id: <570305618da6d5560b97ce06d585d70f4906b4e2.1616422773.git.fabioaiuto83@gmail.com>
+Subject: [PATCH 07/11] staging: rtl8723bs: delete extern declarations in
+ core/rtw_wlan_util.c
+Date: Mon, 22 Mar 2021 15:31:45 +0100
+Message-Id: <8dcec67cedad47b2e7d54ad90507658b1c5747ce.1616422773.git.fabioaiuto83@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1616422773.git.fabioaiuto83@gmail.com>
 References: <cover.1616422773.git.fabioaiuto83@gmail.com>
@@ -96,39 +94,35 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-move function prototype in include/rtw_recv.h
+fix the following checkpatch issues:
+
+WARNING: externs should be avoided in .c files
+28: FILE: drivers/staging/rtl8723bs/core/rtw_wlan_util.c:28:
++extern unsigned char RTW_WPA_OUI[];
+--
+WARNING: externs should be avoided in .c files
+29: FILE: drivers/staging/rtl8723bs/core/rtw_wlan_util.c:29:
++extern unsigned char WPA_TKIP_CIPHER[4];
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_recv.c    | 1 -
- drivers/staging/rtl8723bs/include/rtw_recv.h | 2 ++
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index e2a6afed723c..99dede774b7a 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -1983,7 +1983,6 @@ int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl, union rec
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index bfd55a0356f5..760b0ea4e9bd 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -25,9 +25,6 @@ static unsigned char AIRGOCAP_OUI[] = {0x00, 0x0a, 0xf5};
+ static unsigned char RSN_TKIP_CIPHER[4] = {0x00, 0x0f, 0xac, 0x02};
+ static unsigned char WPA_TKIP_CIPHER[4] = {0x00, 0x50, 0xf2, 0x02};
  
- }
+-extern unsigned char RTW_WPA_OUI[];
+-extern unsigned char WPA_TKIP_CIPHER[4];
+-
+ #define R2T_PHY_DELAY	(0)
  
--u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq);
- u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq)
- {
- 	if (current_seq < prev_seq)
-diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
-index 248e098726fd..1dca18040b98 100644
---- a/drivers/staging/rtl8723bs/include/rtw_recv.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
-@@ -553,6 +553,8 @@ int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num);
- 
- int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl, union recv_frame *prframe);
- 
-+u64 recv_indicatepkts_pkt_loss_cnt(u64 prev_seq, u64 current_seq);
-+
- int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reorder_ctrl *preorder_ctrl,
- 			       int bforced);
- 
+ /* define WAIT_FOR_BCN_TO_MIN	(3000) */
 -- 
 2.20.1
 
