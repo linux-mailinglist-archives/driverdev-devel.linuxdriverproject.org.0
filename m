@@ -2,81 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B319734403D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 12:56:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C039D3440C0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Mar 2021 13:21:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EC05640209;
-	Mon, 22 Mar 2021 11:56:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 42D0B40278;
+	Mon, 22 Mar 2021 12:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rzo6im1guDHt; Mon, 22 Mar 2021 11:56:36 +0000 (UTC)
+	with ESMTP id vJAra20NRugx; Mon, 22 Mar 2021 12:21:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 57BC240122;
-	Mon, 22 Mar 2021 11:56:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 704C640221;
+	Mon, 22 Mar 2021 12:21:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D1EDA1BF398
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 11:56:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7346C1BF37F
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 12:21:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CD43760659
- for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 11:56:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 623A640221
+ for <devel@linuxdriverproject.org>; Mon, 22 Mar 2021 12:21:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XXi-5dvh4g6n for <devel@linuxdriverproject.org>;
- Mon, 22 Mar 2021 11:56:24 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Jr-TJuPNBiIo for <devel@linuxdriverproject.org>;
+ Mon, 22 Mar 2021 12:21:13 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com
- [IPv6:2a00:1450:4864:20::52d])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F078B605A5
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 11:56:23 +0000 (UTC)
-Received: by mail-ed1-x52d.google.com with SMTP id o19so18943970edc.3
- for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 04:56:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=KS85IVDzb0H7K1jO3EiwO+5LR6In+7iTE4xtTzUGrfM=;
- b=MkK0DLI4jGhh0jNi8U1dH8B8/03b5UgOs80kYlp9lhL8YYeqwK/NpJrXn2Nud2lFQB
- tFOy/KwpjyBQWrPJTXgiFKOp8BcuSOsBTmpJ3VNWo3zyv71feWRS9GLna7FtAH7JxC78
- ZYy7XltspQfW2m980z/ZdVvZABkTxsylmnqRlWFnSONUdkAz+g6+idd8uQ0uYc/EG2bi
- pGBfrKbXdT9sXFbwJ8ZT0kG5MgfV0AmrscReIwZ6IIVIDsAh6V2FqvvvNsUzIwuV+hal
- K4uJa9lHcDNL2R4gOlnXVobKc7miHnyG9TSicOHpmnbr3ZcQ+qaL6vOkop/WuWVk7M8Z
- EQGg==
+Received: from mail-vs1-xe31.google.com (mail-vs1-xe31.google.com
+ [IPv6:2607:f8b0:4864:20::e31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 42FA840172
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 12:21:13 +0000 (UTC)
+Received: by mail-vs1-xe31.google.com with SMTP id z68so7324744vsb.10
+ for <devel@driverdev.osuosl.org>; Mon, 22 Mar 2021 05:21:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=XGgimpglaRwteb/Bgl+pO/u/VHpnAlSvFxg2F0n2KCo=;
+ b=p6ePlsePjZxtZiq6dspm5RqfO23b/cRwiaAUzyGDHXFYH5sx1t4bJGWn0FOttl90Fl
+ 9l+Pfmy1A5eZFy/TSoAvoVzQdfoD2qAan4ZvPA6wRfZWyReRLg4ebDoHO03QxuwMUSbG
+ Xw/8chYtadgBTlSZOweb9p+3rtNCRRcjugB/lnaBMco22zR1SkNQM6lzIQNj8EexBez6
+ v7JH/YONvbt8dLTbvqGS0sAH1lBuk1leff10dNlL9TDI1CpIRaVwIzuXwq2+NNyRsGqx
+ z1w0fgf4bGexsX5E3k40FkRmO1RTFVZAOD6tpBLRoVWKOKlZDiXK9Zj5nr2RvdtstoJq
+ nujA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=KS85IVDzb0H7K1jO3EiwO+5LR6In+7iTE4xtTzUGrfM=;
- b=OsxRAMohZQ79k9g2ijibDT2zt2tnuK6OxPTRafqT5BRVgH0JFTRoC58FHzXPd7fE3w
- /KLPpSj7giDzgeemPYo4q4NdX7ADDB9a7r3BWcmRIcxIQI0D99MMC7Lu5eceq4esDlEm
- JEz2YCM9uDpm6l3xnIjCx/JwXOotIk2+2m5ax789qyPKCB24M7TQguOAD4IbREKnETue
- d5MWyH7o5RDso4dZcrDVA4f33voHODcVX27Gv4kW7MO1PhSCPmDx1OtJdGrFkVOX36ao
- QxGdqfjgxw/NSdG4+7Tnb0pf3pOaSjoIpwtcARjlXk3M9FhF7P4rlHoKW0R2p9UDAaCH
- hBEA==
-X-Gm-Message-State: AOAM53275lHns+IFnQ1/tbvXYhgbKrAXtJy3W6bzW1dEADestyD/EPmf
- P8zRkwr9Rw67NyT72Vuah3w=
-X-Google-Smtp-Source: ABdhPJwpVsrotPvmpeBqtoqp7lZGoCpny93lpHIapXgAftlRQ4tIEGo2ymIkhjPc4BiaflFrE0JryQ==
-X-Received: by 2002:a05:6402:4245:: with SMTP id
- g5mr25409909edb.306.1616414182220; 
- Mon, 22 Mar 2021 04:56:22 -0700 (PDT)
-Received: from localhost ([62.96.65.119])
- by smtp.gmail.com with ESMTPSA id n26sm11201580eds.22.2021.03.22.04.56.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Mar 2021 04:56:21 -0700 (PDT)
-Date: Mon, 22 Mar 2021 12:56:39 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v8 11/11] pwm: Add Raspberry Pi Firmware based PWM bus
-Message-ID: <YFiF94ZDi2xdy8yx@orome.fritz.box>
-References: <20210312122454.24480-1-nsaenzjulienne@suse.de>
- <20210312122454.24480-12-nsaenzjulienne@suse.de>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=XGgimpglaRwteb/Bgl+pO/u/VHpnAlSvFxg2F0n2KCo=;
+ b=kZu/DWZEfOtRRE33NuGbgewKYI8n6ukmZtQeF/kqbz+4WNwcoKeb1IgCO3dw8hCnMZ
+ 2gX9ypiIVYTCqfNaLRpFK+ReRjbhRu6RlpQldfVMqrVMS99s0zQo1yqfikSuBGZsefjo
+ CaJjktxFxTkxF3wZSLP7i5EWQ1YHz6Q9SGEUdnAgh6OC7KOoLOZ1YM0yqK17wIVcV9H9
+ CWarssBaexUf2CuAI9VIevfEegu28fBtjx8+RfXS+gG0qKaERz9OBlBLM5dJ1IKd/99B
+ x3Gzq7JJlmAVlTGa00hCDtk2/jIxZWzVkUeJqfFbByi9u0D8cMek9QW+sxc4Pjlqgcqo
+ 2ZKg==
+X-Gm-Message-State: AOAM5321uKqWUbpStoxxnJbKmZW9SF468VWBYvzeb7P2YdTQ/89yoXB8
+ oU+hrKDiFOfdb2IwJMrQUcykZhwxo39WZghVpvAS7g==
+X-Google-Smtp-Source: ABdhPJxi1HPq3PGcbuB9unHpIbKlJszyykT5Ik5ywDW/5koSttdd0dNdIDei/RcqxPZPwkzSrOy7RcSt9jXbJOzDcy4=
+X-Received: by 2002:a67:2a85:: with SMTP id q127mr8477457vsq.19.1616415672109; 
+ Mon, 22 Mar 2021 05:21:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210312122454.24480-12-nsaenzjulienne@suse.de>
-User-Agent: Mutt/2.0.6 (98f8cb83) (2021-03-06)
+References: <20210315132501.441681-1-Jerome.Pouiller@silabs.com>
+ <20210315132501.441681-9-Jerome.Pouiller@silabs.com>
+In-Reply-To: <20210315132501.441681-9-Jerome.Pouiller@silabs.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 22 Mar 2021 13:20:35 +0100
+Message-ID: <CAPDyKFqJf=vUqpQg3suDCadKrFTkQWFTY_qp=+yDK=_Lu9gJGg@mail.gmail.com>
+Subject: Re: [PATCH v5 08/24] wfx: add bus_sdio.c
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,104 +81,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-pwm@vger.kernel.org, f.fainelli@gmail.com,
- devicetree@vger.kernel.org, sboyd@kernel.org, gregkh@linuxfoundation.org,
- linus.walleij@linaro.org, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- andy.shevchenko@gmail.com, bcm-kernel-feedback-list@broadcom.com,
- wahrenst@gmx.net, p.zabel@pengutronix.de, u.kleine-koenig@pengutronix.de,
- bgolaszewski@baylibre.com, dmitry.torokhov@gmail.com,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8690530869723894074=="
+Cc: driverdevel <devel@driverdev.osuosl.org>, DTML <devicetree@vger.kernel.org>,
+ netdev <netdev@vger.kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-mmc <linux-mmc@vger.kernel.org>,
+ =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============8690530869723894074==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="WsDiv438+NmnlX5u"
-Content-Disposition: inline
-
-
---WsDiv438+NmnlX5u
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Mar 12, 2021 at 01:24:54PM +0100, Nicolas Saenz Julienne wrote:
-> Adds support to control the PWM bus available in official Raspberry Pi
-> PoE HAT. Only RPi's co-processor has access to it, so commands have to
-> be sent through RPi's firmware mailbox interface.
->=20
-> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
->=20
-> ---
->=20
-> Changes since v7:
->  - Remove unwarranted RPI_PWM_DEF_DUTY_REG usage
->=20
->  Changes since v6:
-> - Use %pe
-> - Round divisions properly
-> - Use dev_err_probe()
-> - Pass check_patch
->=20
-> Changes since v3:
->  - Rename compatible string to be more explicit WRT to bus's limitations
->=20
-> Changes since v2:
->  - Use devm_rpi_firmware_get()
->  - Rename driver
->  - Small cleanups
->=20
-> Changes since v1:
->  - Use default pwm bindings and get rid of xlate() function
->  - Correct spelling errors
->  - Correct apply() function
->  - Round values
->  - Fix divisions in arm32 mode
->  - Small cleanups
->=20
->  drivers/pwm/Kconfig               |   9 ++
->  drivers/pwm/Makefile              |   1 +
->  drivers/pwm/pwm-raspberrypi-poe.c | 206 ++++++++++++++++++++++++++++++
->  3 files changed, 216 insertions(+)
->  create mode 100644 drivers/pwm/pwm-raspberrypi-poe.c
-
-Acked-by: Thierry Reding <thierry.reding@gmail.com>
-
---WsDiv438+NmnlX5u
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmBYhfQACgkQ3SOs138+
-s6EnXRAAjnwdU3G0KN2XyFF2cU6Hmif3eeSfiKIfBkONfEQKpjd5lXaJQ5NhViG3
-keYEFiM/eOnuhXWshnMGzwjq/G22ufO/owlbwlEsZo8Rf9SMkDkK0EgBSvM/9p6A
-NshCjKRNEYqd0ajXxY5Pzo6ma/o9Qb6bbYAXzcFP4d3vMPYbA6M1utYAltUQrUBR
-GvDmt1K93Jeuk6jbDXkNbi4x+pn3gUDEH4f+/jJfLT0gzAD/JNvD2uR5YDj58f9T
-EqA9KHm/yk/6IsYBseBOHFbx1EZ8zO0HLl145Bg19GMfaab2FLEiL4s/3DUZ4U3m
-admNIIPzr81WKtXvHPN7gNmzpLu5NEcUavkSKRVviKNXVSXA3geNsY1XCNTJkfk/
-ijme2kA3fEkomnyB8KcVz2X96iqE6vAqySeddmBkfM0/HJcfdA93XyRIiDMU6IlJ
-JXuuYKDwXthz/kioxs44h8cK04pW8MfJMqf5KESQfwQF57kFH2J3n0pseLtbHySV
-w7LZ7rd/BT8zr9WBC5BCVWA43Xfx4kj2wOWEsMjp/6r6iLoPcPUPztEj1OLdskoN
-xaGcQFozx6y9PsSLIFd6yn4HmMXMekgGQiuwMYpsiqDWfWMJpgIwMMhszu6F6Twx
-OOx8TIiCBT1WQG2hMZY/13Pl1c5HoAxjDd6fPV2ixPH5lz4bjcI=
-=2cN9
------END PGP SIGNATURE-----
-
---WsDiv438+NmnlX5u--
-
---===============8690530869723894074==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============8690530869723894074==--
+T24gTW9uLCAxNSBNYXIgMjAyMSBhdCAxNDoyNSwgSmVyb21lIFBvdWlsbGVyCjxKZXJvbWUuUG91
+aWxsZXJAc2lsYWJzLmNvbT4gd3JvdGU6Cj4KPiBGcm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVy
+b21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBTaWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3Vp
+bGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbmV0L3dp
+cmVsZXNzL3NpbGFicy93ZngvYnVzX3NkaW8uYyB8IDI1OSArKysrKysrKysrKysrKysrKysrKysK
+PiAgMSBmaWxlIGNoYW5nZWQsIDI1OSBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBkcml2ZXJzL25ldC93aXJlbGVzcy9zaWxhYnMvd2Z4L2J1c19zZGlvLmMKClsuLi5dCgo+ICtz
+dGF0aWMgY29uc3Qgc3RydWN0IHNkaW9fZGV2aWNlX2lkIHdmeF9zZGlvX2lkc1tdID0gewo+ICsg
+ICAgICAgeyBTRElPX0RFVklDRShTRElPX1ZFTkRPUl9JRF9TSUxBQlMsIFNESU9fREVWSUNFX0lE
+X1NJTEFCU19XRjIwMCkgfSwKPiArICAgICAgIHsgfSwKPiArfTsKPiArTU9EVUxFX0RFVklDRV9U
+QUJMRShzZGlvLCB3Znhfc2Rpb19pZHMpOwo+ICsKPiArc3RydWN0IHNkaW9fZHJpdmVyIHdmeF9z
+ZGlvX2RyaXZlciA9IHsKPiArICAgICAgIC5uYW1lID0gIndmeC1zZGlvIiwKPiArICAgICAgIC5p
+ZF90YWJsZSA9IHdmeF9zZGlvX2lkcywKPiArICAgICAgIC5wcm9iZSA9IHdmeF9zZGlvX3Byb2Jl
+LAo+ICsgICAgICAgLnJlbW92ZSA9IHdmeF9zZGlvX3JlbW92ZSwKPiArICAgICAgIC5kcnYgPSB7
+Cj4gKyAgICAgICAgICAgICAgIC5vd25lciA9IFRISVNfTU9EVUxFLAo+ICsgICAgICAgICAgICAg
+ICAub2ZfbWF0Y2hfdGFibGUgPSB3Znhfc2Rpb19vZl9tYXRjaCwKCkl0J3Mgbm90IG1hbmRhdG9y
+eSB0byBzdXBwb3J0IHBvd2VyIG1hbmFnZW1lbnQsIGxpa2Ugc3lzdGVtCnN1c3BlbmQvcmVzdW1l
+LiBIb3dldmVyLCBhcyB0aGlzIGxvb2tzIGxpa2UgdGhpcyBpcyBhIGRyaXZlciBmb3IgYW4KZW1i
+ZWRkZWQgU0RJTyBkZXZpY2UsIHlvdSBwcm9iYWJseSB3YW50IHRoaXMuCgpJZiB0aGF0IGlzIHRo
+ZSBjYXNlLCBwbGVhc2UgYXNzaWduIHRoZSBkZXZfcG1fb3BzIGhlcmUgYW5kIGltcGxlbWVudAp0
+aGUgLT5zdXNwZW5kfHJlc3VtZSgpIGNhbGxiYWNrcy4KClsuLi5dCgpLaW5kIHJlZ2FyZHMKVWZm
+ZQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
+YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
+LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
