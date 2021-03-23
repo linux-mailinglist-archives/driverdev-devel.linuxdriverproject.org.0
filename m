@@ -1,58 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E2FA345A4D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Mar 2021 10:04:35 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FE69345A53
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Mar 2021 10:05:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 244084037F;
-	Tue, 23 Mar 2021 09:04:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B0CA183E67;
+	Tue, 23 Mar 2021 09:05:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DBtESwFI2Siu; Tue, 23 Mar 2021 09:04:32 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ruByW282NfAW; Tue, 23 Mar 2021 09:05:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 466A84037E;
-	Tue, 23 Mar 2021 09:04:31 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2A3BA83E02;
+	Tue, 23 Mar 2021 09:05:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D00461BF319
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Mar 2021 09:04:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 144B51BF2AE
+ for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 09:05:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BEEC54037E
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Mar 2021 09:04:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0342283E02
+ for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 09:05:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n0qfvUzY248w
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Mar 2021 09:04:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dicFJb6dBtac for <devel@linuxdriverproject.org>;
+ Tue, 23 Mar 2021 09:05:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3B8974036D
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Mar 2021 09:04:20 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 99E8361879;
- Tue, 23 Mar 2021 09:04:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8777F83342
+ for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 09:05:34 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6314F619B1;
+ Tue, 23 Mar 2021 09:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1616490258;
- bh=EUl/v0iffJBU2WtPHHnlxTZrCzvNxJZP1g5ojT/BG8c=;
+ s=korg; t=1616490334;
+ bh=sOzjyAwHyRoht8QLAT7g78gd11n/MSMJneGdpUF80Ro=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=S10jimcRP8IHCkeX7z2kd73vhXg11unBK+dF/c68f2POE2Ofippr4Q1UGeSVABffn
- /T5xqJ5AlmFghW9rdLAbVQiKmCQz/FIQhRBLgWY3C2WlYJ+iNA8p1sjP2eLvrmzzDr
- SIZOJOMe+4MOsp4hT6R7R3pgtO0Fn2OKLiy/dNhI=
-Date: Tue, 23 Mar 2021 10:04:15 +0100
+ b=lGcOg+mKoWZbV5c4hIZ0V2UTHcfXnKckhZpFcFXAqI1baT/qpXoTjC3iYJgs8470E
+ Wrmm+4njRbXNTYmsN9E8IH9dn7mVIWuU30Ow9BRPlW0kToclm3nYq655OOjd0bl+Zi
+ dzWzgwqyUUJwUcpoKcCelN9fO/9c7KZDsBYvFlaU=
+Date: Tue, 23 Mar 2021 10:05:31 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian Gromm <christian.gromm@microchip.com>
-Subject: Re: [PATCH v3] drivers: most: add ALSA sound driver
-Message-ID: <YFmvD/oYW8ihe+ez@kroah.com>
-References: <1612865627-29950-1-git-send-email-christian.gromm@microchip.com>
+To: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: Trivial typo fix
+Message-ID: <YFmvWzGZ0hHJbx6d@kroah.com>
+References: <20210323010835.4061779-1-unixbhaskar@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1612865627-29950-1-git-send-email-christian.gromm@microchip.com>
+In-Reply-To: <20210323010835.4061779-1-unixbhaskar@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,36 +61,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org, linux-sound@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, izabela.bakollari@gmail.com,
+ yanaijie@huawei.com, linux-kernel@vger.kernel.org,
+ matthew.v.deangelis@gmail.com, amarjargal16@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 09, 2021 at 11:13:47AM +0100, Christian Gromm wrote:
-> This patch moves the ALSA sound driver out of the staging area and adds it
-> to the stable part of the MOST driver. Modifications to the Makefiles and
-> Kconfigs are done accordingly to not break the build.
+On Tue, Mar 23, 2021 at 06:38:35AM +0530, Bhaskar Chowdhury wrote:
 > 
-> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+> s/netowrk/network/
+> 
+> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 > ---
-> v2:
-> Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
->         
->         submitted patch that fixes issue found during code audit
->         to staging version first to be able to resend single patch that
->         adds the driver. The patch series included:
+>  drivers/staging/rtl8723bs/core/rtw_mlme.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
->         - use swabXX functions of kernel
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> index 2c9425e2a1e9..3888d3984ec0 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> @@ -599,7 +599,7 @@ void rtw_update_scanned_network(struct adapter *adapter, struct wlan_bssid_ex *t
+>  		}
 > 
-> v3:
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
-> 	- use non-safe list iteration
-> 	- add sanity check for function argument
+>  		if (rtw_roam_flags(adapter)) {
+> -			/* TODO: don't  select netowrk in the same ess as oldest if it's new enough*/
+> +			/* TODO: don't  select network in the same ess as oldest if it's new enough*/
 
-Given a lack of complaints about this, I've now queued this up in my
-staging tree for the next -rc1 merge window, thanks!
+Any reason you did not remove the two spaces at the same time?
+
+thanks,
 
 greg k-h
 _______________________________________________
