@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCCD5345EC8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Mar 2021 13:59:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B35C3345EC9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Mar 2021 13:59:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6527E83ED8;
-	Tue, 23 Mar 2021 12:59:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2BF8260835;
+	Tue, 23 Mar 2021 12:59:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YGOvAYRHZ9la; Tue, 23 Mar 2021 12:59:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yYDomywLRKcW; Tue, 23 Mar 2021 12:59:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B3EAB83EAE;
-	Tue, 23 Mar 2021 12:59:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 678B360820;
+	Tue, 23 Mar 2021 12:59:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DE4491BF371
- for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 12:58:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D29161BF371
+ for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 12:58:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DAA5C404BE
- for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 12:58:29 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C1E19404BE
+ for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 12:58:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QbaFhZBhv15V for <devel@linuxdriverproject.org>;
- Tue, 23 Mar 2021 12:58:29 +0000 (UTC)
+ with ESMTP id tATAN3KYL0Ev for <devel@linuxdriverproject.org>;
+ Tue, 23 Mar 2021 12:58:31 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com
- [IPv6:2a00:1450:4864:20::633])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 08F5D404BD
- for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 12:58:28 +0000 (UTC)
-Received: by mail-ej1-x633.google.com with SMTP id hq27so26929802ejc.9
- for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 05:58:28 -0700 (PDT)
+Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com
+ [IPv6:2a00:1450:4864:20::631])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 151C2404BD
+ for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 12:58:31 +0000 (UTC)
+Received: by mail-ej1-x631.google.com with SMTP id w3so26933688ejc.4
+ for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 05:58:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Mb74xJj4X7Fk0W46aIpOMrmEyQd8S7cZr54o50UVkWo=;
- b=EgPlfl3kVTpXpdHgw82Om8tWnkPoO0pPCshmHxSh/61ZqhiRTsf8Sm7NwXFH1cK3Eq
- /7Kfih1nJjyuaA4nXumtUB2OPo6XJlsgo6NcrQ2+QdaOjtN2uwcPSlVDRBOw9PYnMapq
- NZQdkSdFpEO42btf6/Miw2mF5nsuNK0qquo/FgbMOiSmWSbeGkElun7fV7PbVuA2va1P
- n0p6/1Pd0/PnFblodytQFniseNGPq4xqQdBX5ETGHO+egmu13zN58jzpLjHLH8azo2dF
- u5CghaSMa+ftl5/ov321wpEQVb5TB4W3rdvM9ZPQotl2votyaVb/8f5XyRIpxQI0gsih
- fpDQ==
+ bh=1EvpZd2FnLxsx+lWGO7RiIZtf6USM4O3+dzW0c58O1o=;
+ b=M/+P+XShenwQFFcw1zlMmN01Dk3fvZvLzKqkK5ekLivuhPCGf7y7oMksvlpWfGQRGZ
+ ya2i1l2N/sIteOQgwkDPN7GU0ShefFpIym4+DrNcgRmZCXFSLCFd8szBZzGn4jQb+DHb
+ vx94kBfDR2DA4Zca+1Ym4vDD/jKShdXjEseuCrZMlO8HXEpcY2RwmFiVogkJS7YBtFwB
+ QAzBWmPqnhQWOUT4USj3XLXtE1g/tQudaAX1ZQPEhAEHnqHbd/iqKw+hB/zl5b+eGAz5
+ yEb+YFAW+RQfOOGtLKmRaXC5iNJbftci1NuQTVI3MkEzGC5W2H7FhEPMmZ3DD6NEnoG9
+ wVKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Mb74xJj4X7Fk0W46aIpOMrmEyQd8S7cZr54o50UVkWo=;
- b=ECSTnuWJo/tbSfJrWLvHhP2VFDHBZRxDXxM6I/HUmnrEtR2eMhFkO2qNtqPFDvGIvk
- CdKbM92TN9uFmjNcbeeRqwiY8ZzL42F8cjxMSlLoTrtcHxDKpUYm7keFgh5NyORLxy5D
- gIU2ZiR7sn9VAcotrtOHLOFcy5P8un6hLRLH5SBp1dyyH7zhSTdu5GwkUGPqFrjI78Vp
- tYflxJSqG6XyptgjknJBgfoVLFSpvfQWvDukrfNEnF4L1fDKgP+9EOlgd+H0GF7xKBP4
- UlQVW5g9ITSJlwyfb5CSgv2r6MD8LifXbVHdUOfKukskbQCFZOaIFXMrEpAhsEf/URse
- uPWA==
-X-Gm-Message-State: AOAM533Fth3GlBF8Ytwe+xW9mspmb6sZNT3TK3A1HLWNF++JKUPDNymp
- GmBpla/yTsBJROAgEtXGkb2dt0Z1XbxrXQ==
-X-Google-Smtp-Source: ABdhPJzMWu/kpH8U1YbDFjLTVKSjkii4IqojKYpx81UFyj41WFUzuSXtrHDZ2LQoGtxaZ1hlNn+9Yw==
-X-Received: by 2002:a17:906:a896:: with SMTP id
- ha22mr4700972ejb.503.1616504307276; 
- Tue, 23 Mar 2021 05:58:27 -0700 (PDT)
+ bh=1EvpZd2FnLxsx+lWGO7RiIZtf6USM4O3+dzW0c58O1o=;
+ b=KoUTpGUXYJXPXjkZPBo4Gp+M7btd+XQ3ugrgkAs34PshkFa5ajMT+2xFAjHYBhzhzY
+ vk+a6gsMxGsDKHDvccoREZp/4Ov76kUeTg/MGVEs8Q3QkVQeoMbYWWuTmT4uRwmNx5Wr
+ RzzWetIrhNhLB7MeKWk1VIotVu//ydMYXARUEZBEnlbJQHNt+jdQXw5G9FwGQ8ritxvp
+ vCEQdqyhfXpP/Mib9oleJJVqV5Cxx3kAmWxFf2CXFpuj75PWvNQQKW3ERBPjLRCd2HFJ
+ ST8IKKIINOq63O9MuXK3HPJinJoe/NZw0T9sLYt1gX5gGDWIOw2lsjVLWV0qO4egPjoZ
+ lJag==
+X-Gm-Message-State: AOAM530CSecCqW3+pwOWF5145nymt08+x56JtfhMLOyAmpE09x+McWJL
+ fQiw5GDUjKNiMXHCJZMXqYU=
+X-Google-Smtp-Source: ABdhPJxRS+OmG/cVq/1NjtqzXYc1B4kQbHm7cxAjvlMsgBbNUXSQW87vE+0zfDN/VdLBTQYAs1Ppgw==
+X-Received: by 2002:a17:907:971a:: with SMTP id
+ jg26mr4917755ejc.317.1616504309328; 
+ Tue, 23 Mar 2021 05:58:29 -0700 (PDT)
 Received: from agape ([151.57.211.10])
- by smtp.gmail.com with ESMTPSA id t12sm13278578edy.56.2021.03.23.05.58.26
+ by smtp.gmail.com with ESMTPSA id a2sm11090334ejy.108.2021.03.23.05.58.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Mar 2021 05:58:26 -0700 (PDT)
+ Tue, 23 Mar 2021 05:58:29 -0700 (PDT)
 From: Fabio Aiuto <fabioaiuto83@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 7/9] staging: rtl8723bs: remove undefined function
- prototype in of os_dep/sdio_intf.c
-Date: Tue, 23 Mar 2021 13:56:34 +0100
-Message-Id: <06d61465fd33b6cf6d9428ac983e55f50afd448b.1616503354.git.fabioaiuto83@gmail.com>
+Subject: [PATCH v2 8/9] staging: rtl8723bs: remove unnecessary extern in
+ os_dep/sdio_intf.c
+Date: Tue, 23 Mar 2021 13:56:35 +0100
+Message-Id: <f3a7b2c00221aa09ed782fb30ce55936f443a12d.1616503354.git.fabioaiuto83@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1616503354.git.fabioaiuto83@gmail.com>
 References: <cover.1616503354.git.fabioaiuto83@gmail.com>
@@ -96,29 +96,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-fix the following checkpatch issue:
+remove unnecessary extern.
 
-WARNING: externs should be avoided in .c files
-486: FILE: drivers/staging/rtl8723bs/os_dep/sdio_intf.c:486:
-+extern int pm_netdev_close(struct net_device *pnetdev, u8 bnormal);
+The function is defined static in os_dep/os_intfs.c and used only once
+in the same file
 
 Signed-off-by: Fabio Aiuto <fabioaiuto83@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/rtl8723bs/os_dep/sdio_intf.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-index 8f8549eee23e..185919b6963f 100644
+index 185919b6963f..156ad91d33ee 100644
 --- a/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
 +++ b/drivers/staging/rtl8723bs/os_dep/sdio_intf.c
-@@ -483,7 +483,6 @@ static void rtw_dev_remove(struct sdio_func *func)
+@@ -482,8 +482,6 @@ static void rtw_dev_remove(struct sdio_func *func)
+ 	RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("-rtw_dev_remove\n"));
  }
  
- extern int pm_netdev_open(struct net_device *pnetdev, u8 bnormal);
--extern int pm_netdev_close(struct net_device *pnetdev, u8 bnormal);
- 
+-extern int pm_netdev_open(struct net_device *pnetdev, u8 bnormal);
+-
  static int rtw_sdio_suspend(struct device *dev)
  {
+ 	struct sdio_func *func = dev_to_sdio_func(dev);
 -- 
 2.20.1
 
