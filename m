@@ -1,56 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E541A345F19
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Mar 2021 14:12:31 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A1FA345F50
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Mar 2021 14:16:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0BB9360667;
-	Tue, 23 Mar 2021 13:12:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3831E404D4;
+	Tue, 23 Mar 2021 13:16:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QkfDPK21XB6f; Tue, 23 Mar 2021 13:12:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RgR-K9ZrRtSK; Tue, 23 Mar 2021 13:16:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 47D5660820;
-	Tue, 23 Mar 2021 13:12:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DE417404C0;
+	Tue, 23 Mar 2021 13:16:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A7C261BF331
- for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 13:12:17 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 91B141BF331
+ for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 13:16:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7306D60820
- for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 13:12:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8025C83EB3
+ for <devel@linuxdriverproject.org>; Tue, 23 Mar 2021 13:16:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YAwT-AcTP6Yc for <devel@linuxdriverproject.org>;
- Tue, 23 Mar 2021 13:12:14 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QfIGJuNgx-Ev for <devel@linuxdriverproject.org>;
+ Tue, 23 Mar 2021 13:16:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7A72F605D8
- for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 13:12:13 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BF939619B8;
- Tue, 23 Mar 2021 13:12:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D7C7683EAE
+ for <devel@driverdev.osuosl.org>; Tue, 23 Mar 2021 13:16:19 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CD84561990;
+ Tue, 23 Mar 2021 13:16:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1616505133;
- bh=vCYR3ZBZvyax7SeVVHE9u9H/gK+P9HuMDSSUVInEa3k=;
+ s=k20201202; t=1616505379;
+ bh=Cj5IOH7chrcZeUM/Ve74t3Qs1c93JnmkzNVeGi2sh6c=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=NqunR2LCqbRdIrWeRH4B/w/oeXwFFoAMUYyiluOZ/KAlbO9qURC8kLON+PQr0Gyl6
- ZS8k9UJxqIhWQ4EkV9hyMhAxKS/4g1G/kvV0947eefBXpL3pv+Wxg0sI1PBduGOToM
- fZL2JbVdrZd0wt7vBFDH7lJQUG5Pkh6wP8k1udBPn0+oYknLDmZYeipSGdrUuWgT6I
- NetmbwcsJWGTEbJ75lAhmMoH+RcJeF/U1mZj2aAWs+W+0aFxIC7PsF9NdqB8eUXQPz
- /QSF8YKhlstgZzg3sw5QNKNauIamAwE069/OBvfP2VVVPzTB4DRcaNy5oHr+K5Z+SS
- 1RFunG2xTgGoQ==
-Date: Tue, 23 Mar 2021 14:12:07 +0100
+ b=QQcBRhqvQgRA28Ir5zzpvQCz+MxRHBDR0+75BeeUG+lae6YjrXQAB9WZgn5t0lV0m
+ h/QBfXOkDbrlaveBAIo2aCz//Jvhq3tautTV5ymZV9IeCNxLECYlUQ4VcCbhJyVb0B
+ G9v03RwNQ+A1ixuHl3ThUlbF5Tf5tfGeN2wDgvhM3iXP7LqiITZmWxInn5rP3EJ3xL
+ hMdyGi1UanMpl7qJ2PSweVR6PpYkqdDJ6qhAbd3aHWJNIODeYMarsUgWgCMHipHcHo
+ LwYAjp0f5uvJZH7phycufFOdVYhGE4VLzylVgbezym8NpYUkIU299j/6B1ghgP0pI3
+ wqY2qMDq89S2w==
+Date: Tue, 23 Mar 2021 14:16:14 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
-Subject: Re: [PATCH v2 06/12] media: atomisp: Remove defines
-Message-ID: <20210323141207.2185a4b8@coco.lan>
-In-Reply-To: <20201214110156.6152-7-Philipp.Gerlesberger@fau.de>
+Subject: Re: [PATCH v2 12/12] media: atomisp: Fix LOGICAL_CONTINUATIONS
+Message-ID: <20210323141614.6fcb195b@coco.lan>
+In-Reply-To: <20201214110156.6152-13-Philipp.Gerlesberger@fau.de>
 References: <20201214110156.6152-1-Philipp.Gerlesberger@fau.de>
- <20201214110156.6152-7-Philipp.Gerlesberger@fau.de>
+ <20201214110156.6152-13-Philipp.Gerlesberger@fau.de>
 X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -74,38 +76,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Mon, 14 Dec 2020 12:01:50 +0100
+Em Mon, 14 Dec 2020 12:01:56 +0100
 Philipp Gerlesberger <Philipp.Gerlesberger@fau.de> escreveu:
 
-> Remov defines, they don't make sense.
-> The programmer should know what things need to be static and what not.
-> Also leave "inline" out and let the compiler decide
+> Logical continuations should be on the previous line
 > 
 > Co-developed-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 > Signed-off-by: Andrey Khlopkov <ij72uhux@stud.informatik.uni-erlangen.de>
 > Signed-off-by: Philipp Gerlesberger <Philipp.Gerlesberger@fau.de>
 > ---
->  .../media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h   | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h b/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h
-> index 9cd3d92b34c9..45b72e98bc9f 100644
-> --- a/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h
-> +++ b/drivers/staging/media/atomisp/pci/runtime/rmgr/interface/ia_css_rmgr.h
-> @@ -21,10 +21,7 @@
->  #ifndef __INLINE_RMGR__
->  #define STORAGE_CLASS_RMGR_H extern
->  #define STORAGE_CLASS_RMGR_C
-> -#else				/* __INLINE_RMGR__ */
-> -#define STORAGE_CLASS_RMGR_H static inline
-> -#define STORAGE_CLASS_RMGR_C static inline
-> -#endif				/* __INLINE_RMGR__ */
-> +#endif
+> diff --git a/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c b/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
+> index 2f1c2df59f71..7d44070c7114 100644
+> --- a/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
+> +++ b/drivers/staging/media/atomisp/pci/runtime/queue/src/queue.c
+> @@ -24,8 +24,8 @@
+>   *****************************************************************************/
+>  int ia_css_queue_local_init(ia_css_queue_t *qhandle, ia_css_queue_local_t *desc)
+>  {
+> -	if (NULL == qhandle || NULL == desc
+> -	    || NULL == desc->cb_elems || NULL == desc->cb_desc) {
+> +	if (NULL == qhandle || NULL == desc ||
+> +	    NULL == desc->cb_elems || NULL == desc->cb_desc) {
+
+Nah, there are coding style issues here... we usually do:
+
+	if (foo == CONSTANT)
+
+instead of:
+
+	if (CONSTANT == foo)
+
+Also, we usually simplify checks for null. So, the above should
+be, instead, just:
+
+	if (!qhandle || !desc || !desc->cb_elements || !desc->cb_desc)
 
 
-No, that's not the right way to address it. Instead, you should
-replace the occurrences of those macros at the code and get rid
-of them.
+>  		/* Invalid parameters, return error*/
+>  		return -EINVAL;
+>  	}
+
 
 
 Thanks,
