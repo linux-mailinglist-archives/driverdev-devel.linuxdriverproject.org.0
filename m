@@ -2,51 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67A1834AB7A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Mar 2021 16:29:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 205D934B16D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Mar 2021 22:41:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 76ED484BE4;
-	Fri, 26 Mar 2021 15:29:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 32FA484CFE;
+	Fri, 26 Mar 2021 21:41:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XX3XS_lBJkV7; Fri, 26 Mar 2021 15:29:20 +0000 (UTC)
+	with ESMTP id 7vx3C3SWm1pt; Fri, 26 Mar 2021 21:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 975B883EC6;
-	Fri, 26 Mar 2021 15:29:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 80D1E84CFD;
+	Fri, 26 Mar 2021 21:41:31 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CF9931BF36A
- for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 15:29:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 320D91BF3A4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Mar 2021 21:41:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BE8F6405BD
- for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 15:29:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 20DA86062C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Mar 2021 21:41:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r45JRmrrL382 for <devel@linuxdriverproject.org>;
- Fri, 26 Mar 2021 15:29:08 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 61FE640252
- for <devel@driverdev.osuosl.org>; Fri, 26 Mar 2021 15:28:39 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 80C151F470A1
-Message-ID: <986ee841d0c512a6f0ffe9dfa2e0803980b02aa0.camel@collabora.com>
-Subject: Re: [PATCH v6 13/13] arm64: dts: imx8mq: Add node to G2 hardware
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel
- <pza@pengutronix.de>
-Date: Fri, 26 Mar 2021 12:28:25 -0300
-In-Reply-To: <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
-References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
- <20210318082046.51546-14-benjamin.gaignard@collabora.com>
- <20210326142440.GD8441@pengutronix.de>
- <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=apaari.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OWz5jK9dxeDo
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Mar 2021 21:41:21 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from dadi999.hostingmantra.com (dadi999.hostingmantra.com
+ [5.77.36.38]) by smtp3.osuosl.org (Postfix) with ESMTPS id 7FBEF605EF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 26 Mar 2021 21:41:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=apaari.org; 
+ s=default;
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:
+ Subject:From:Reply-To:Sender:Message-ID:To:Cc:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=xUnZqY2kHrmb0qwAIVtRqYTo3bbusfwTBrJ+A0wC1h0=; b=Gg9qJ0mbdBRPDqe8pfmUX1w3Ux
+ M6FLI3t14+EDZaZWigokqScxJMsITdYY7ovSPdgqwZOacNkWV7EG0itjANv5f1fQIDGH5QrfP+de8
+ N27yX7rAbVTkr1Ypek1cicP7Ya1LSST5dRAJXSV7kV8kw5NBrvtWYldK804mvBUXXZmfF+KNhN3Gk
+ M+4mhcwvnnP4DoFGBbEvVIUapu4I5pgHdoHjOi07Sc3xksGbnp1zIOoPYeJqLXg7JXrlz7YRIhptV
+ j1iPy3tUI/Nlv6EcLJwJXzxO3mJPjUho9BUNy1rxDoxx6sYFR3/4/Zje35x+wVaEZoBbTVM0EtugY
+ 8OoschcQ==;
+Received: from [157.55.86.197] (port=56043 helo=User)
+ by dadi999.hostingmantra.com with esmtpa (Exim 4.94)
+ (envelope-from <apaari@apaari.org>)
+ id 1lPuCd-00058W-QZ; Sat, 27 Mar 2021 03:11:12 +0530
+From: "Ms. Reem Al-Hashimi"<apaari@apaari.org>
+Subject: Partnership
+Date: Fri, 26 Mar 2021 21:41:11 -0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - dadi999.hostingmantra.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - apaari.org
+X-Get-Message-Sender-Via: dadi999.hostingmantra.com: authenticated_id:
+ apaari@apaari.org
+X-Authenticated-Sender: dadi999.hostingmantra.com: apaari@apaari.org
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+Message-Id: <20210326214122.20DA86062C@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,112 +87,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel@collabora.com, lee.jones@linaro.org, devel@driverdev.osuosl.org,
- linux-rockchip@lists.infradead.org, wens@csie.org, linux-imx@nxp.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- s.hauer@pengutronix.de, mripard@kernel.org, robh+dt@kernel.org,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- jernej.skrabec@siol.net, gregkh@linuxfoundation.org, emil.l.velikov@gmail.com,
- linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com,
- kernel@pengutronix.de, hverkuil-cisco@xs4all.nl, shawnguo@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: reem.alhashimi@daum.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gRnJpLCAyMDIxLTAzLTI2IGF0IDE1OjMzICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90
-ZToKPiAKPiBMZSAyNi8wMy8yMDIxIMOgIDE1OjI0LCBQaGlsaXBwIFphYmVsIGEgw6ljcml0wqA6
-Cj4gPiBPbiBUaHUsIE1hciAxOCwgMjAyMSBhdCAwOToyMDo0NkFNICswMTAwLCBCZW5qYW1pbiBH
-YWlnbmFyZCB3cm90ZToKPiA+ID4gU3BsaXQgVlBVIG5vZGUgaW4gdHdvOiBvbmUgZm9yIEcxIGFu
-ZCBvbmUgZm9yIEcyIHNpbmNlIHRoZXkgYXJlCj4gPiA+IGRpZmZlcmVudCBoYXJkd2FyZSBibG9j
-a3MuCj4gPiA+IEFkZCBzeXNjb24gZm9yIGhhcmR3YXJlIGNvbnRyb2wgYmxvY2suCj4gPiA+IFJl
-bW92ZSByZWctbmFtZXMgcHJvcGVydHkgdGhhdCBpcyB1c2VsZXNzLgo+ID4gPiBFYWNoIFZQVSBu
-b2RlIG9ubHkgbmVlZCBvbmUgaW50ZXJydXB0Lgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTog
-QmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4gPiA+
-IC0tLQo+ID4gPiB2ZXJzaW9uIDU6Cj4gPiA+IMKgIC0gdXNlIHN5c2NvbiBpbnN0ZWFkIG9mIFZQ
-VSByZXNldAo+ID4gPiAKPiA+ID4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14
-OG1xLmR0c2kgfCA0MyArKysrKysrKysrKysrKysrKystLS0tLQo+ID4gPiDCoCAxIGZpbGUgY2hh
-bmdlZCwgMzQgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYg
-LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEuZHRzaSBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4gPiA+IGluZGV4IDE3YzQ0OWUx
-MmMyZS4uYjUzN2QxNTNlYmJkIDEwMDY0NAo+ID4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L2ZyZWVzY2FsZS9pbXg4bXEuZHRzaQo+ID4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2Zy
-ZWVzY2FsZS9pbXg4bXEuZHRzaQo+ID4gPiBAQCAtMTMyOSwxNSArMTMyOSwxNiBAQCB1c2IzX3Bo
-eTE6IHVzYi1waHlAMzgyZjAwNDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4gPiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+IMKgIAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgdnB1OiB2aWRlby1jb2RlY0AzODMwMDAwMCB7Cj4gPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfY3RybDogc3lzY29uQDM4MzIwMDAwIHsKPiA+ID4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjb21wYXRpYmxl
-ID0gIm54cCxpbXg4bXEtdnB1LWN0cmwiLCAic3lzY29uIjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMyMDAwMCAweDEwMDAw
-PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+ICsKPiA+ID4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZwdV9nMTogdmlkZW8tY29kZWNAMzgzMDAw
-MDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBjb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1IjsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMwMDAwMCAweDEwMDAwPiwK
-PiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIDwweDM4MzEwMDAwIDB4MTAwMDA+LAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDB4MzgzMjAwMDAgMHgxMDAwMD47
-Cj4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVn
-LW5hbWVzID0gImcxIiwgImcyIiwgImN0cmwiOwo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGludGVycnVwdHMgPSA8R0lDX1NQSSA3IElSUV9UWVBF
-X0xFVkVMX0hJR0g+LAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8R0lDX1NQSSA4IElSUV9UWVBFX0xF
-VkVMX0hJR0g+Owo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoGludGVycnVwdC1uYW1lcyA9ICJnMSIsICJnMiI7Cj4gPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnID0gPDB4MzgzMDAwMDAgMHgxMDAw
-MD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-aW50ZXJydXB0cyA9IDxHSUNfU1BJIDcgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gPiA+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50ZXJydXB0LW5hbWVz
-ID0gImcxIjsKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzFfUk9PVD4sCj4gPiA+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+IMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZjbGsgSU1Y
-OE1RX0NMS19WUFVfREVDX1JPT1Q+Owo+ID4gPiBAQCAtMTM1MCw5ICsxMzUxLDMzIEBAIHZwdTog
-dmlkZW8tY29kZWNAMzgzMDAwMDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgPCZjbGsgSU1YOE1RX1ZQVV9QTExfT1VUPiwKPiA+ID4gwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9TWVMxX1BMTF84MDBNPiwK
-PiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhN
-UV9WUFVfUExMPjsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8NjAwMDAwMDAwPiwK
-PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBhc3Np
-Z25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8MzAwMDAwMDAwPiwKPiA+IEknZCBsaWtl
-IHRvIHNlZSB0aGlzIG1lbnRpb25lZCBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCj4gCj4gWWVzIEkg
-d291bGQgZG8gdGhhdC4KPiBUaGUgdmFsdWUgY29tZXMgZnJvbSB0aGUgZGF0YXNoZWV0Lgo+IAo+
-ID4gCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDgwMDAwMDAwMD4s
-IDwwPjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBwb3dlci1kb21haW5zID0gPCZwZ2NfdnB1PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBueHAsaW14OG1xLXZwdS1jdHJsID0gPCZ2cHVfY3Ry
-bD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+ID4gPiArCj4gPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfZzI6IHZpZGVvLWNvZGVjQDM4MzEw
-MDAwIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBjb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1LWcyIjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMxMDAwMCAweDEwMDAw
-PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBp
-bnRlcnJ1cHRzID0gPEdJQ19TUEkgOCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiA+ID4gK8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHQtbmFtZXMg
-PSAiZzIiOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoGNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+ID4gPiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-PCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsayBJTVg4TVFf
-Q0xLX1ZQVV9ERUNfUk9PVD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiLMKgICJidXMiOwo+ID4gPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzc2lnbmVkLWNs
-b2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxPiwKPiA+IENhbiB0aGUgRzEgY2xvY2sgY29u
-ZmlndXJhdGlvbiBiZSBkcm9wcGVkIGZyb20gdGhlIEcyIGRldmljZSBub2RlIGFuZAo+ID4gdGhl
-IEcyIGNsb2NrIGNvbmZpZ3VyYXRpb24gZnJvbSB0aGUgRzEgZGV2aWNlIG5vZGU/IEl0IGxvb2tz
-IHdlaXJkIHRoYXQKPiA+IHRoZXNlIGRldmljZXMgY29uZmlndXJlIGVhY2ggb3RoZXIncyBjbG9j
-a3MuCj4gCj4gTm8gYmVjYXVzZSBpZiBvbmx5IG9uZSBkZXZpY2Ugbm9kZSBpcyBlbmFibGVkIHdl
-IG5lZWQgdG8gY29uZmlndXJlIHRoZSBib3RoCj4gY2xvY2tzIGFueXdheS4KPiAKClNpbmNlIHRo
-aXMgaXMgYWt3YXJkLCBob3cgYWJvdXQgYWRkaW5nIGEgY29tbWVudCBoZXJlIGluIHRoZSBkdHNp
-IHRvIGNsYXJpZnkgaXQ/CgpUaGFua3MsCkV6ZXF1aWVsCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE. I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" from a Financial Home in Turkey on their behalf and for our "Mutual Benefits".
+
+The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas deal with Turkey/Greece Government within 2015/2017, however, we don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
+
+We will compensate you with 20% of the total amount involved as gratification for being our partner in this transaction. Reply to: hashimireem@yandex.com
+
+Regards,
+Ms. Reem.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
