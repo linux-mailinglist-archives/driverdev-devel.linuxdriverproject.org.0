@@ -1,53 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4A6A34A9C3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Mar 2021 15:33:42 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF8D034AA19
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Mar 2021 15:37:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E4011405D8;
-	Fri, 26 Mar 2021 14:33:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4EC2D405D8;
+	Fri, 26 Mar 2021 14:37:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U_ub4rjSl8-S; Fri, 26 Mar 2021 14:33:39 +0000 (UTC)
+	with ESMTP id LuL0uzo0O6UX; Fri, 26 Mar 2021 14:37:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE226405DF;
-	Fri, 26 Mar 2021 14:33:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4E003405BD;
+	Fri, 26 Mar 2021 14:37:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AF4CD1BF59E
- for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 14:33:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2949B1BF59E
+ for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 14:37:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A59C44183B
- for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 14:33:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 25C3C84C46
+ for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 14:37:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VKNu2ndRxKiO for <devel@linuxdriverproject.org>;
- Fri, 26 Mar 2021 14:33:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
- [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C72E141839
- for <devel@driverdev.osuosl.org>; Fri, 26 Mar 2021 14:33:27 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 41A5E1F40DAB
-Subject: Re: [PATCH v6 13/13] arm64: dts: imx8mq: Add node to G2 hardware
-To: Philipp Zabel <pza@pengutronix.de>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id K_5Co3Y5XEXR for <devel@linuxdriverproject.org>;
+ Fri, 26 Mar 2021 14:37:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CABFC84C47
+ for <devel@driverdev.osuosl.org>; Fri, 26 Mar 2021 14:37:33 +0000 (UTC)
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <pza@pengutronix.de>)
+ id 1lPnaQ-0001Ln-5z; Fri, 26 Mar 2021 15:37:18 +0100
+Received: from pza by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <pza@pengutronix.de>)
+ id 1lPnaO-0007mU-JM; Fri, 26 Mar 2021 15:37:16 +0100
+Date: Fri, 26 Mar 2021 15:37:16 +0100
+From: Philipp Zabel <pza@pengutronix.de>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v6 02/13] dt-bindings: media: nxp,imx8mq-vpu: Update the
+ bindings for G2 support
+Message-ID: <20210326143716.GA27823@pengutronix.de>
 References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
- <20210318082046.51546-14-benjamin.gaignard@collabora.com>
- <20210326142440.GD8441@pengutronix.de>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
-Date: Fri, 26 Mar 2021 15:33:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ <20210318082046.51546-3-benjamin.gaignard@collabora.com>
+ <20210326141156.GA8441@pengutronix.de>
+ <3c23bfb0-eed4-63ad-be70-58aa129b0e35@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20210326142440.GD8441@pengutronix.de>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <3c23bfb0-eed4-63ad-be70-58aa129b0e35@collabora.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 15:29:00 up 36 days, 17:52, 99 users,  load average: 0.78, 0.37, 0.20
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: pza@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: devel@driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,64 +86,140 @@ Cc: kernel@collabora.com, devel@driverdev.osuosl.org, lee.jones@linaro.org,
  gregkh@linuxfoundation.org, emil.l.velikov@gmail.com,
  linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com,
  kernel@pengutronix.de, hverkuil-cisco@xs4all.nl, shawnguo@kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkxlIDI2LzAzLzIwMjEgw6AgMTU6MjQsIFBoaWxpcHAgWmFiZWwgYSDDqWNyaXTCoDoKPiBPbiBU
-aHUsIE1hciAxOCwgMjAyMSBhdCAwOToyMDo0NkFNICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3
-cm90ZToKPj4gU3BsaXQgVlBVIG5vZGUgaW4gdHdvOiBvbmUgZm9yIEcxIGFuZCBvbmUgZm9yIEcy
-IHNpbmNlIHRoZXkgYXJlCj4+IGRpZmZlcmVudCBoYXJkd2FyZSBibG9ja3MuCj4+IEFkZCBzeXNj
-b24gZm9yIGhhcmR3YXJlIGNvbnRyb2wgYmxvY2suCj4+IFJlbW92ZSByZWctbmFtZXMgcHJvcGVy
-dHkgdGhhdCBpcyB1c2VsZXNzLgo+PiBFYWNoIFZQVSBub2RlIG9ubHkgbmVlZCBvbmUgaW50ZXJy
-dXB0Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2Fp
-Z25hcmRAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+IHZlcnNpb24gNToKPj4gICAtIHVzZSBzeXNj
-b24gaW5zdGVhZCBvZiBWUFUgcmVzZXQKPj4KPj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVz
-Y2FsZS9pbXg4bXEuZHRzaSB8IDQzICsrKysrKysrKysrKysrKysrKy0tLS0tCj4+ICAgMSBmaWxl
-IGNoYW5nZWQsIDM0IGluc2VydGlvbnMoKyksIDkgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEuZHRzaSBiL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4+IGluZGV4IDE3YzQ0OWUxMmMyZS4u
-YjUzN2QxNTNlYmJkIDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2Fs
-ZS9pbXg4bXEuZHRzaQo+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4
-bXEuZHRzaQo+PiBAQCAtMTMyOSwxNSArMTMyOSwxNiBAQCB1c2IzX3BoeTE6IHVzYi1waHlAMzgy
-ZjAwNDAgewo+PiAgIAkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4+ICAgCQl9Owo+PiAgIAo+PiAt
-CQl2cHU6IHZpZGVvLWNvZGVjQDM4MzAwMDAwIHsKPj4gKwkJdnB1X2N0cmw6IHN5c2NvbkAzODMy
-MDAwMCB7Cj4+ICsJCQljb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1LWN0cmwiLCAic3lzY29u
-IjsKPj4gKwkJCXJlZyA9IDwweDM4MzIwMDAwIDB4MTAwMDA+Owo+PiArCQl9Owo+PiArCj4+ICsJ
-CXZwdV9nMTogdmlkZW8tY29kZWNAMzgzMDAwMDAgewo+PiAgIAkJCWNvbXBhdGlibGUgPSAibnhw
-LGlteDhtcS12cHUiOwo+PiAtCQkJcmVnID0gPDB4MzgzMDAwMDAgMHgxMDAwMD4sCj4+IC0JCQkg
-ICAgICA8MHgzODMxMDAwMCAweDEwMDAwPiwKPj4gLQkJCSAgICAgIDwweDM4MzIwMDAwIDB4MTAw
-MDA+Owo+PiAtCQkJcmVnLW5hbWVzID0gImcxIiwgImcyIiwgImN0cmwiOwo+PiAtCQkJaW50ZXJy
-dXB0cyA9IDxHSUNfU1BJIDcgSVJRX1RZUEVfTEVWRUxfSElHSD4sCj4+IC0JCQkJICAgICA8R0lD
-X1NQSSA4IElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+PiAtCQkJaW50ZXJydXB0LW5hbWVzID0gImcx
-IiwgImcyIjsKPj4gKwkJCXJlZyA9IDwweDM4MzAwMDAwIDB4MTAwMDA+Owo+PiArCQkJaW50ZXJy
-dXB0cyA9IDxHSUNfU1BJIDcgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4+ICsJCQlpbnRlcnJ1cHQt
-bmFtZXMgPSAiZzEiOwo+PiAgIAkJCWNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JP
-T1Q+LAo+PiAgIAkJCQkgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4+ICAgCQkJCSA8
-JmNsayBJTVg4TVFfQ0xLX1ZQVV9ERUNfUk9PVD47Cj4+IEBAIC0xMzUwLDkgKzEzNTEsMzMgQEAg
-dnB1OiB2aWRlby1jb2RlY0AzODMwMDAwMCB7Cj4+ICAgCQkJCQkJIDwmY2xrIElNWDhNUV9WUFVf
-UExMX09VVD4sCj4+ICAgCQkJCQkJIDwmY2xrIElNWDhNUV9TWVMxX1BMTF84MDBNPiwKPj4gICAJ
-CQkJCQkgPCZjbGsgSU1YOE1RX1ZQVV9QTEw+Owo+PiAtCQkJYXNzaWduZWQtY2xvY2stcmF0ZXMg
-PSA8NjAwMDAwMDAwPiwgPDYwMDAwMDAwMD4sCj4+ICsJCQlhc3NpZ25lZC1jbG9jay1yYXRlcyA9
-IDw2MDAwMDAwMDA+LCA8MzAwMDAwMDAwPiwKPiBJJ2QgbGlrZSB0byBzZWUgdGhpcyBtZW50aW9u
-ZWQgaW4gdGhlIGNvbW1pdCBtZXNzYWdlLgoKWWVzIEkgd291bGQgZG8gdGhhdC4KVGhlIHZhbHVl
-IGNvbWVzIGZyb20gdGhlIGRhdGFzaGVldC4KCj4KPj4gKwkJCQkJICAgICAgIDw4MDAwMDAwMDA+
-LCA8MD47Cj4+ICsJCQlwb3dlci1kb21haW5zID0gPCZwZ2NfdnB1PjsKPj4gKwkJCW54cCxpbXg4
-bXEtdnB1LWN0cmwgPSA8JnZwdV9jdHJsPjsKPj4gKwkJfTsKPj4gKwo+PiArCQl2cHVfZzI6IHZp
-ZGVvLWNvZGVjQDM4MzEwMDAwIHsKPj4gKwkJCWNvbXBhdGlibGUgPSAibnhwLGlteDhtcS12cHUt
-ZzIiOwo+PiArCQkJcmVnID0gPDB4MzgzMTAwMDAgMHgxMDAwMD47Cj4+ICsJCQlpbnRlcnJ1cHRz
-ID0gPEdJQ19TUEkgOCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPj4gKwkJCWludGVycnVwdC1uYW1l
-cyA9ICJnMiI7Cj4+ICsJCQljbG9ja3MgPSA8JmNsayBJTVg4TVFfQ0xLX1ZQVV9HMV9ST09UPiwK
-Pj4gKwkJCQkgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4+ICsJCQkJIDwmY2xrIElN
-WDhNUV9DTEtfVlBVX0RFQ19ST09UPjsKPj4gKwkJCWNsb2NrLW5hbWVzID0gImcxIiwgImcyIiwg
-ICJidXMiOwo+PiArCQkJYXNzaWduZWQtY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzE+
-LAo+IENhbiB0aGUgRzEgY2xvY2sgY29uZmlndXJhdGlvbiBiZSBkcm9wcGVkIGZyb20gdGhlIEcy
-IGRldmljZSBub2RlIGFuZAo+IHRoZSBHMiBjbG9jayBjb25maWd1cmF0aW9uIGZyb20gdGhlIEcx
-IGRldmljZSBub2RlPyBJdCBsb29rcyB3ZWlyZCB0aGF0Cj4gdGhlc2UgZGV2aWNlcyBjb25maWd1
-cmUgZWFjaCBvdGhlcidzIGNsb2Nrcy4KCk5vIGJlY2F1c2UgaWYgb25seSBvbmUgZGV2aWNlIG5v
-ZGUgaXMgZW5hYmxlZCB3ZSBuZWVkIHRvIGNvbmZpZ3VyZSB0aGUgYm90aApjbG9ja3MgYW55d2F5
-LgoKQmVuamFtaW4KCj4KPiByZWdhcmRzCj4gUGhpbGlwcAo+Cl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
-eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Fri, Mar 26, 2021 at 03:26:15PM +0100, Benjamin Gaignard wrote:
+> =
+
+> Le 26/03/2021 =E0 15:11, Philipp Zabel a =E9crit=A0:
+> > On Thu, Mar 18, 2021 at 09:20:35AM +0100, Benjamin Gaignard wrote:
+> > > Introducing G2 hevc video decoder lead to modify the bindings to allow
+> > > to get one node per VPUs.
+> > > VPUs share one hardware control block which is provided as a phandle =
+on
+> > > an syscon.
+> > > Each node got now one reg and one interrupt.
+> > > Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
+> > > =
+
+> > > To be compatible with older DT the driver is still capable to use 'ct=
+rl'
+> > > reg-name even if it is deprecated now.
+> > > =
+
+> > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > ---
+> > > version 5:
+> > > - This version doesn't break the backward compatibilty between kernel
+> > >    and DT.
+> > > =
+
+> > >   .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++----=
+---
+> > >   1 file changed, 34 insertions(+), 19 deletions(-)
+> > > =
+
+> > > diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.y=
+aml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> > > index 762be3f96ce9..79502fc8bde5 100644
+> > > --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> > > +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> > > @@ -15,22 +15,18 @@ description:
+> > >   properties:
+> > >     compatible:
+> > > -    const: nxp,imx8mq-vpu
+> > > +    oneOf:
+> > > +      - const: nxp,imx8mq-vpu
+> > > +      - const: nxp,imx8mq-vpu-g2
+> > >     reg:
+> > > -    maxItems: 3
+> > > -
+> > > -  reg-names:
+> > > -    items:
+> > > -      - const: g1
+> > > -      - const: g2
+> > > -      - const: ctrl
+> > > +    maxItems: 1
+> > >     interrupts:
+> > > -    maxItems: 2
+> > > +    maxItems: 1
+> > >     interrupt-names:
+> > > -    items:
+> > > +    oneOf:
+> > >         - const: g1
+> > >         - const: g2
+> > > @@ -46,14 +42,18 @@ properties:
+> > >     power-domains:
+> > >       maxItems: 1
+> > > +  nxp,imx8mq-vpu-ctrl:
+> > > +    description: Specifies a phandle to syscon VPU hardware control =
+block
+> > > +    $ref: "/schemas/types.yaml#/definitions/phandle"
+> > > +
+> > Should we drop the 'q' here, i.e. nxp,imx8m-vpu-ctrl so we can use the =
+same
+> > binding for i.MX8MM later?
+> =
+
+> I don't know if the control block is the same or not on IMX8MM, so I have=
+ only
+> put a compatible targeting IMX8MQ.
+
+Oh, the compatible property of the control handle node can be different.
+I'm just suggesting that this phandle property be called the same.
+Otherwise we'd have to add another nxp,imx8mm-vpu-ctrl property and then
+mark either of the two as required, depending on the compatible.
+
+> > =
+
+> > >   required:
+> > >     - compatible
+> > >     - reg
+> > > -  - reg-names
+> > >     - interrupts
+> > >     - interrupt-names
+> > >     - clocks
+> > >     - clock-names
+> > > +  - nxp,imx8mq-vpu-ctrl
+> > >   additionalProperties: false
+> > > @@ -62,18 +62,33 @@ examples:
+> > >           #include <dt-bindings/clock/imx8mq-clock.h>
+> > >           #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > > -        vpu: video-codec@38300000 {
+> > > +        vpu_ctrl: syscon@38320000 {
+> > > +                 compatible =3D "nxp,imx8mq-vpu-ctrl", "syscon";
+> > > +                 reg =3D <0x38320000 0x10000>;
+> > > +        };
+> > > +
+> > > +        vpu_g1: video-codec@38300000 {
+> > >                   compatible =3D "nxp,imx8mq-vpu";
+> > > -                reg =3D <0x38300000 0x10000>,
+> > > -                      <0x38310000 0x10000>,
+> > > -                      <0x38320000 0x10000>;
+> > > -                reg-names =3D "g1", "g2", "ctrl";
+> > > -                interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+> > > -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> > > -                interrupt-names =3D "g1", "g2";
+> > > +                reg =3D <0x38300000 0x10000>;
+> > > +                interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
+> > > +                interrupt-names =3D "g1";
+> > > +                clocks =3D <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+> > > +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+> > Does the G1 VPU require the G2 clock and vice versa?
+> =
+
+> Yes either the control hardware block won't work.
+
+Ok.
+
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+
+regards
+Philipp
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
