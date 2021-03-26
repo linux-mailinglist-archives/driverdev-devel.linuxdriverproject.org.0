@@ -1,70 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF8D034AA19
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Mar 2021 15:37:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67A1834AB7A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Mar 2021 16:29:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4EC2D405D8;
-	Fri, 26 Mar 2021 14:37:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LuL0uzo0O6UX; Fri, 26 Mar 2021 14:37:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4E003405BD;
-	Fri, 26 Mar 2021 14:37:44 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2949B1BF59E
- for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 14:37:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 25C3C84C46
- for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 14:37:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 76ED484BE4;
+	Fri, 26 Mar 2021 15:29:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K_5Co3Y5XEXR for <devel@linuxdriverproject.org>;
- Fri, 26 Mar 2021 14:37:34 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XX3XS_lBJkV7; Fri, 26 Mar 2021 15:29:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 975B883EC6;
+	Fri, 26 Mar 2021 15:29:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CF9931BF36A
+ for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 15:29:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id BE8F6405BD
+ for <devel@linuxdriverproject.org>; Fri, 26 Mar 2021 15:29:09 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id r45JRmrrL382 for <devel@linuxdriverproject.org>;
+ Fri, 26 Mar 2021 15:29:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CABFC84C47
- for <devel@driverdev.osuosl.org>; Fri, 26 Mar 2021 14:37:33 +0000 (UTC)
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <pza@pengutronix.de>)
- id 1lPnaQ-0001Ln-5z; Fri, 26 Mar 2021 15:37:18 +0100
-Received: from pza by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <pza@pengutronix.de>)
- id 1lPnaO-0007mU-JM; Fri, 26 Mar 2021 15:37:16 +0100
-Date: Fri, 26 Mar 2021 15:37:16 +0100
-From: Philipp Zabel <pza@pengutronix.de>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v6 02/13] dt-bindings: media: nxp,imx8mq-vpu: Update the
- bindings for G2 support
-Message-ID: <20210326143716.GA27823@pengutronix.de>
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 61FE640252
+ for <devel@driverdev.osuosl.org>; Fri, 26 Mar 2021 15:28:39 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id 80C151F470A1
+Message-ID: <986ee841d0c512a6f0ffe9dfa2e0803980b02aa0.camel@collabora.com>
+Subject: Re: [PATCH v6 13/13] arm64: dts: imx8mq: Add node to G2 hardware
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel
+ <pza@pengutronix.de>
+Date: Fri, 26 Mar 2021 12:28:25 -0300
+In-Reply-To: <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
 References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
- <20210318082046.51546-3-benjamin.gaignard@collabora.com>
- <20210326141156.GA8441@pengutronix.de>
- <3c23bfb0-eed4-63ad-be70-58aa129b0e35@collabora.com>
+ <20210318082046.51546-14-benjamin.gaignard@collabora.com>
+ <20210326142440.GD8441@pengutronix.de>
+ <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3c23bfb0-eed4-63ad-be70-58aa129b0e35@collabora.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 15:29:00 up 36 days, 17:52, 99 users,  load average: 0.78, 0.37, 0.20
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: pza@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: devel@driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,149 +59,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel@collabora.com, devel@driverdev.osuosl.org, lee.jones@linaro.org,
+Cc: kernel@collabora.com, lee.jones@linaro.org, devel@driverdev.osuosl.org,
  linux-rockchip@lists.infradead.org, wens@csie.org, linux-imx@nxp.com,
  linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  s.hauer@pengutronix.de, mripard@kernel.org, robh+dt@kernel.org,
- mchehab@kernel.org, ezequiel@collabora.com,
- linux-arm-kernel@lists.infradead.org, jernej.skrabec@siol.net,
- gregkh@linuxfoundation.org, emil.l.velikov@gmail.com,
+ mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ jernej.skrabec@siol.net, gregkh@linuxfoundation.org, emil.l.velikov@gmail.com,
  linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com,
  kernel@pengutronix.de, hverkuil-cisco@xs4all.nl, shawnguo@kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Mar 26, 2021 at 03:26:15PM +0100, Benjamin Gaignard wrote:
-> =
-
-> Le 26/03/2021 =E0 15:11, Philipp Zabel a =E9crit=A0:
-> > On Thu, Mar 18, 2021 at 09:20:35AM +0100, Benjamin Gaignard wrote:
-> > > Introducing G2 hevc video decoder lead to modify the bindings to allow
-> > > to get one node per VPUs.
-> > > VPUs share one hardware control block which is provided as a phandle =
-on
-> > > an syscon.
-> > > Each node got now one reg and one interrupt.
-> > > Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
-> > > =
-
-> > > To be compatible with older DT the driver is still capable to use 'ct=
-rl'
-> > > reg-name even if it is deprecated now.
-> > > =
-
-> > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > > ---
-> > > version 5:
-> > > - This version doesn't break the backward compatibilty between kernel
-> > >    and DT.
-> > > =
-
-> > >   .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++----=
----
-> > >   1 file changed, 34 insertions(+), 19 deletions(-)
-> > > =
-
-> > > diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.y=
-aml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > > index 762be3f96ce9..79502fc8bde5 100644
-> > > --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > > +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > > @@ -15,22 +15,18 @@ description:
-> > >   properties:
-> > >     compatible:
-> > > -    const: nxp,imx8mq-vpu
-> > > +    oneOf:
-> > > +      - const: nxp,imx8mq-vpu
-> > > +      - const: nxp,imx8mq-vpu-g2
-> > >     reg:
-> > > -    maxItems: 3
-> > > -
-> > > -  reg-names:
-> > > -    items:
-> > > -      - const: g1
-> > > -      - const: g2
-> > > -      - const: ctrl
-> > > +    maxItems: 1
-> > >     interrupts:
-> > > -    maxItems: 2
-> > > +    maxItems: 1
-> > >     interrupt-names:
-> > > -    items:
-> > > +    oneOf:
-> > >         - const: g1
-> > >         - const: g2
-> > > @@ -46,14 +42,18 @@ properties:
-> > >     power-domains:
-> > >       maxItems: 1
-> > > +  nxp,imx8mq-vpu-ctrl:
-> > > +    description: Specifies a phandle to syscon VPU hardware control =
-block
-> > > +    $ref: "/schemas/types.yaml#/definitions/phandle"
-> > > +
-> > Should we drop the 'q' here, i.e. nxp,imx8m-vpu-ctrl so we can use the =
-same
-> > binding for i.MX8MM later?
-> =
-
-> I don't know if the control block is the same or not on IMX8MM, so I have=
- only
-> put a compatible targeting IMX8MQ.
-
-Oh, the compatible property of the control handle node can be different.
-I'm just suggesting that this phandle property be called the same.
-Otherwise we'd have to add another nxp,imx8mm-vpu-ctrl property and then
-mark either of the two as required, depending on the compatible.
-
-> > =
-
-> > >   required:
-> > >     - compatible
-> > >     - reg
-> > > -  - reg-names
-> > >     - interrupts
-> > >     - interrupt-names
-> > >     - clocks
-> > >     - clock-names
-> > > +  - nxp,imx8mq-vpu-ctrl
-> > >   additionalProperties: false
-> > > @@ -62,18 +62,33 @@ examples:
-> > >           #include <dt-bindings/clock/imx8mq-clock.h>
-> > >           #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > -        vpu: video-codec@38300000 {
-> > > +        vpu_ctrl: syscon@38320000 {
-> > > +                 compatible =3D "nxp,imx8mq-vpu-ctrl", "syscon";
-> > > +                 reg =3D <0x38320000 0x10000>;
-> > > +        };
-> > > +
-> > > +        vpu_g1: video-codec@38300000 {
-> > >                   compatible =3D "nxp,imx8mq-vpu";
-> > > -                reg =3D <0x38300000 0x10000>,
-> > > -                      <0x38310000 0x10000>,
-> > > -                      <0x38320000 0x10000>;
-> > > -                reg-names =3D "g1", "g2", "ctrl";
-> > > -                interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> > > -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> > > -                interrupt-names =3D "g1", "g2";
-> > > +                reg =3D <0x38300000 0x10000>;
-> > > +                interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> > > +                interrupt-names =3D "g1";
-> > > +                clocks =3D <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-> > > +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-> > Does the G1 VPU require the G2 clock and vice versa?
-> =
-
-> Yes either the control hardware block won't work.
-
-Ok.
-
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-
-regards
-Philipp
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gRnJpLCAyMDIxLTAzLTI2IGF0IDE1OjMzICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90
+ZToKPiAKPiBMZSAyNi8wMy8yMDIxIMOgIDE1OjI0LCBQaGlsaXBwIFphYmVsIGEgw6ljcml0wqA6
+Cj4gPiBPbiBUaHUsIE1hciAxOCwgMjAyMSBhdCAwOToyMDo0NkFNICswMTAwLCBCZW5qYW1pbiBH
+YWlnbmFyZCB3cm90ZToKPiA+ID4gU3BsaXQgVlBVIG5vZGUgaW4gdHdvOiBvbmUgZm9yIEcxIGFu
+ZCBvbmUgZm9yIEcyIHNpbmNlIHRoZXkgYXJlCj4gPiA+IGRpZmZlcmVudCBoYXJkd2FyZSBibG9j
+a3MuCj4gPiA+IEFkZCBzeXNjb24gZm9yIGhhcmR3YXJlIGNvbnRyb2wgYmxvY2suCj4gPiA+IFJl
+bW92ZSByZWctbmFtZXMgcHJvcGVydHkgdGhhdCBpcyB1c2VsZXNzLgo+ID4gPiBFYWNoIFZQVSBu
+b2RlIG9ubHkgbmVlZCBvbmUgaW50ZXJydXB0Lgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTog
+QmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4gPiA+
+IC0tLQo+ID4gPiB2ZXJzaW9uIDU6Cj4gPiA+IMKgIC0gdXNlIHN5c2NvbiBpbnN0ZWFkIG9mIFZQ
+VSByZXNldAo+ID4gPiAKPiA+ID4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14
+OG1xLmR0c2kgfCA0MyArKysrKysrKysrKysrKysrKystLS0tLQo+ID4gPiDCoCAxIGZpbGUgY2hh
+bmdlZCwgMzQgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYg
+LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEuZHRzaSBiL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4gPiA+IGluZGV4IDE3YzQ0OWUx
+MmMyZS4uYjUzN2QxNTNlYmJkIDEwMDY0NAo+ID4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
+L2ZyZWVzY2FsZS9pbXg4bXEuZHRzaQo+ID4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2Zy
+ZWVzY2FsZS9pbXg4bXEuZHRzaQo+ID4gPiBAQCAtMTMyOSwxNSArMTMyOSwxNiBAQCB1c2IzX3Bo
+eTE6IHVzYi1waHlAMzgyZjAwNDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4gPiDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+IMKgIAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgdnB1OiB2aWRlby1jb2RlY0AzODMwMDAwMCB7Cj4gPiA+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfY3RybDogc3lzY29uQDM4MzIwMDAwIHsKPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjb21wYXRpYmxl
+ID0gIm54cCxpbXg4bXEtdnB1LWN0cmwiLCAic3lzY29uIjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMyMDAwMCAweDEwMDAw
+PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+ICsKPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZwdV9nMTogdmlkZW8tY29kZWNAMzgzMDAw
+MDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBjb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1IjsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMwMDAwMCAweDEwMDAwPiwK
+PiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIDwweDM4MzEwMDAwIDB4MTAwMDA+LAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDB4MzgzMjAwMDAgMHgxMDAwMD47
+Cj4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVn
+LW5hbWVzID0gImcxIiwgImcyIiwgImN0cmwiOwo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGludGVycnVwdHMgPSA8R0lDX1NQSSA3IElSUV9UWVBF
+X0xFVkVMX0hJR0g+LAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8R0lDX1NQSSA4IElSUV9UWVBFX0xF
+VkVMX0hJR0g+Owo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoGludGVycnVwdC1uYW1lcyA9ICJnMSIsICJnMiI7Cj4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnID0gPDB4MzgzMDAwMDAgMHgxMDAw
+MD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+aW50ZXJydXB0cyA9IDxHSUNfU1BJIDcgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50ZXJydXB0LW5hbWVz
+ID0gImcxIjsKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzFfUk9PVD4sCj4gPiA+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+IMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZjbGsgSU1Y
+OE1RX0NMS19WUFVfREVDX1JPT1Q+Owo+ID4gPiBAQCAtMTM1MCw5ICsxMzUxLDMzIEBAIHZwdTog
+dmlkZW8tY29kZWNAMzgzMDAwMDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgPCZjbGsgSU1YOE1RX1ZQVV9QTExfT1VUPiwKPiA+ID4gwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9TWVMxX1BMTF84MDBNPiwK
+PiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhN
+UV9WUFVfUExMPjsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8NjAwMDAwMDAwPiwK
+PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBhc3Np
+Z25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8MzAwMDAwMDAwPiwKPiA+IEknZCBsaWtl
+IHRvIHNlZSB0aGlzIG1lbnRpb25lZCBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCj4gCj4gWWVzIEkg
+d291bGQgZG8gdGhhdC4KPiBUaGUgdmFsdWUgY29tZXMgZnJvbSB0aGUgZGF0YXNoZWV0Lgo+IAo+
+ID4gCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDgwMDAwMDAwMD4s
+IDwwPjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBwb3dlci1kb21haW5zID0gPCZwZ2NfdnB1PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBueHAsaW14OG1xLXZwdS1jdHJsID0gPCZ2cHVfY3Ry
+bD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+ID4gPiArCj4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfZzI6IHZpZGVvLWNvZGVjQDM4MzEw
+MDAwIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBjb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1LWcyIjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMxMDAwMCAweDEwMDAw
+PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBp
+bnRlcnJ1cHRzID0gPEdJQ19TUEkgOCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiA+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHQtbmFtZXMg
+PSAiZzIiOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoGNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+ID4gPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
+PCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsayBJTVg4TVFf
+Q0xLX1ZQVV9ERUNfUk9PVD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiLMKgICJidXMiOwo+ID4gPiAr
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzc2lnbmVkLWNs
+b2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxPiwKPiA+IENhbiB0aGUgRzEgY2xvY2sgY29u
+ZmlndXJhdGlvbiBiZSBkcm9wcGVkIGZyb20gdGhlIEcyIGRldmljZSBub2RlIGFuZAo+ID4gdGhl
+IEcyIGNsb2NrIGNvbmZpZ3VyYXRpb24gZnJvbSB0aGUgRzEgZGV2aWNlIG5vZGU/IEl0IGxvb2tz
+IHdlaXJkIHRoYXQKPiA+IHRoZXNlIGRldmljZXMgY29uZmlndXJlIGVhY2ggb3RoZXIncyBjbG9j
+a3MuCj4gCj4gTm8gYmVjYXVzZSBpZiBvbmx5IG9uZSBkZXZpY2Ugbm9kZSBpcyBlbmFibGVkIHdl
+IG5lZWQgdG8gY29uZmlndXJlIHRoZSBib3RoCj4gY2xvY2tzIGFueXdheS4KPiAKClNpbmNlIHRo
+aXMgaXMgYWt3YXJkLCBob3cgYWJvdXQgYWRkaW5nIGEgY29tbWVudCBoZXJlIGluIHRoZSBkdHNp
+IHRvIGNsYXJpZnkgaXQ/CgpUaGFua3MsCkV6ZXF1aWVsCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
+cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
