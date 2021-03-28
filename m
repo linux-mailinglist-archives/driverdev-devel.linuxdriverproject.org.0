@@ -1,76 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 155C334B60C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Mar 2021 11:19:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C38E34BA55
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Mar 2021 03:18:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 799D460DA3;
-	Sat, 27 Mar 2021 10:19:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A6E4040205;
+	Sun, 28 Mar 2021 01:18:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pu7cp2ceeulD; Sat, 27 Mar 2021 10:19:56 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kT29O4wHvb3u; Sun, 28 Mar 2021 01:18:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C973C606E1;
-	Sat, 27 Mar 2021 10:19:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F00F640184;
+	Sun, 28 Mar 2021 01:18:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4AEFF1BF4D7
- for <devel@linuxdriverproject.org>; Sat, 27 Mar 2021 10:19:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 05E801BF982
+ for <devel@linuxdriverproject.org>; Sun, 28 Mar 2021 01:18:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3A2D040109
- for <devel@linuxdriverproject.org>; Sat, 27 Mar 2021 10:19:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0129B83942
+ for <devel@linuxdriverproject.org>; Sun, 28 Mar 2021 01:18:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=apaari.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ja6RULGqzR9M for <devel@linuxdriverproject.org>;
- Sat, 27 Mar 2021 10:19:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from dadi999.hostingmantra.com (dadi999.hostingmantra.com
- [5.77.36.38]) by smtp2.osuosl.org (Postfix) with ESMTPS id B6CFF400A9
- for <devel@driverdev.osuosl.org>; Sat, 27 Mar 2021 10:19:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=apaari.org; 
- s=default;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:
- Subject:From:Reply-To:Sender:Message-ID:To:Cc:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=9ZjZRI9qYKH6UcE6nr+w49/UKRE3l+UQyMZpVN9g1GM=; b=A5re0HUK5rte/LJlsX6wE/w8py
- y0DHrSqKtrQr38da/oBidTlVcYxUSi6oSNJSgJzxOgAGC+SjqNS5wQC61IUDJ1UaVDZ9dw7vMtjrP
- hA7aMLrA8Ok+bwX6Jr+0PkvFcMoZ33zfkIJHGgHNvFL0L0aoBqZjgX5tkdp0spTe87SyxXFYmcBxb
- SHpSutpK8hOAj9iZIPtlLhCLyY64H0xk9ByEcWIuWEcHa9vabeXw2c5mg1Z4m6XW9qia9L3zo6Zwc
- XxA4cxXRBqNQIeyXIHKz/uiamY74eEVZj30sCsH6Kw0eAwA1zrI/iAo3iS1zWQ73o4o/UjP1AANaz
- wMUXS5+w==;
-Received: from [157.55.86.197] (port=56099 helo=User)
- by dadi999.hostingmantra.com with esmtpa (Exim 4.94)
- (envelope-from <apaari@apaari.org>)
- id 1lQ62N-000zbZ-HK; Sat, 27 Mar 2021 15:49:23 +0530
-From: "Ms. Reem Al-Hashimi"<apaari@apaari.org>
-Subject: Partner with me
-Date: Sat, 27 Mar 2021 10:19:23 -0000
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - dadi999.hostingmantra.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - apaari.org
-X-Get-Message-Sender-Via: dadi999.hostingmantra.com: authenticated_id:
- apaari@apaari.org
-X-Authenticated-Sender: dadi999.hostingmantra.com: apaari@apaari.org
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-Message-Id: <20210327101946.3A2D040109@smtp2.osuosl.org>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pLhjCSyNWavH for <devel@linuxdriverproject.org>;
+ Sun, 28 Mar 2021 01:18:09 +0000 (UTC)
+X-Greylist: delayed 00:28:16 by SQLgrey-1.8.0
+Received: from mail001.nap.gsic.titech.ac.jp (mail001.nap.gsic.titech.ac.jp
+ [131.112.13.101])
+ by smtp1.osuosl.org (Postfix) with SMTP id 6D0C483938
+ for <devel@driverdev.osuosl.org>; Sun, 28 Mar 2021 01:18:09 +0000 (UTC)
+Received: from 172.22.40.203
+ by mail001.nap.gsic.titech.ac.jp with Mail2000 ESMTP Server
+ V7.00(21086:0:AUTH_RELAY)
+ (envelope-from <matsumoto.r.aa@m.titech.ac.jp>);
+ Sun, 28 Mar 2021 09:49:00 +0900 (JST)
+Received: from mail003.nap.gsic.titech.ac.jp (mail003.nap.gsic.titech.ac.jp
+ [131.112.13.103])
+ by drweb06.nap.gsic.titech.ac.jp (Postfix) with SMTP id 0D5B2EF;
+ Sun, 28 Mar 2021 09:49:00 +0900 (JST)
+Received: from 153.240.174.134
+ by mail003.nap.gsic.titech.ac.jp with Mail2000 ESMTPA Server
+ V7.00(2588:0:AUTH_LOGIN)
+ (envelope-from <matsumoto.r.aa@m.titech.ac.jp>);
+ Sun, 28 Mar 2021 09:48:59 +0900 (JST)
+Date: Sun, 28 Mar 2021 09:48:59 +0900 (JST)
+Message-Id: <20210328.094859.1841483083721098229.ryutaroh@ict.e.titech.ac.jp>
+To: stefan.wahren@i2se.com
+Subject: Re: Sound issues with the 5.10.x kernel (alsa)
+From: Ryutaroh Matsumoto <ryutaroh@ict.e.titech.ac.jp>
+In-Reply-To: <b0be09a0-5ec3-b716-4b77-1dde43719273@i2se.com>
+References: <3165951.nLcn7dHqa8@bagend>
+ <b0be09a0-5ec3-b716-4b77-1dde43719273@i2se.com>
+X-Mailer: Mew version 6.8 on Emacs 26.3
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,25 +68,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reem.alhashimi@daum.net
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ 978025@bugs.debian.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, didi.debian@cknow.org,
+ 985928@bugs.debian.org, maxime@cerno.tech
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Sir,
+Hi all,
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Subject: Re: Sound issues with the 5.10.x kernel (alsa)
+Date: Mon, 8 Feb 2021 13:22:56 +0100
+>> This is basically me forwarding the bug I reported on Debian's BTS:
+>> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=978025
+>> TL;DR: I have a RPi 3B+ running pure Debian Bullseye arm64 (~from 
+>> raspi.debian.net), named rpi-mpd, connected via HDMI cable to my AV Receiver.
+> can you please confirm that the bcm2835-audio driver causing the issues?
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+I think the root cause of this issue is that both vc4.ko and snd_bcm2835.ko
+try to provide ALSA sinks to HDMI audio outputs from RPi.
+Why do the two drivers provide the same functionality for the same device?
+It seems nonsense.
+There must be some coordination between vc4.ko and snd_bcm2835.ko
+on who provides ALSA sinks of RPi HDMI output.
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+The non-coordination that both drivers provide different ALSA sinks of the same
+device already causes another symptom as
+http://lists.infradead.org/pipermail/linux-rpi-kernel/2021-March/008077.html
 
-If you can handle the fund in a good investment.Reply to: rrrmhashimi2021@naver.com
-
-
-Regards,
-Ms. Reem 
+Best regards, Ryutaroh Matsumoto
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
