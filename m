@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DAE1352BD0
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Apr 2021 17:34:24 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8C0235316C
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Apr 2021 01:16:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4038C84C62;
-	Fri,  2 Apr 2021 15:34:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 75013419DD;
+	Fri,  2 Apr 2021 23:16:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3na1AC4jXLTC; Fri,  2 Apr 2021 15:34:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wAkPMLl28L2G; Fri,  2 Apr 2021 23:16:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 80459848FB;
-	Fri,  2 Apr 2021 15:34:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 17827419C2;
+	Fri,  2 Apr 2021 23:16:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F410A1BF23B
- for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 15:34:10 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 945641BF5DF
+ for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 23:16:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E3BF54066C
- for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 15:34:10 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8367E60628
+ for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 23:16:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GaZbrRhEGqL0 for <devel@linuxdriverproject.org>;
- Fri,  2 Apr 2021 15:34:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ef0VFqwvhQ3X for <devel@linuxdriverproject.org>;
+ Fri,  2 Apr 2021 23:16:16 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from asphost85.asphostserver.info (unknown [5.153.41.195])
- by smtp2.osuosl.org (Postfix) with ESMTP id 05A684066A
- for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 15:34:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9AA126061B
+ for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 23:16:15 +0000 (UTC)
 Received: from User (UnknownHost [37.49.225.165]) by
  asphost85.asphostserver.info with SMTP; 
- Fri, 2 Apr 2021 10:51:27 +0200
+ Thu, 1 Apr 2021 18:57:02 +0200
 From: "Mrs E Schroeder"<kontakt@bambinosi.rs>
-Subject: An Appeal
-Date: Fri, 2 Apr 2021 10:51:30 +0200
+Subject: APPEAL
+Date: Thu, 1 Apr 2021 18:57:04 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210402153410.E3BF54066C@smtp2.osuosl.org>
+Message-Id: <20210402231616.8367E60628@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,7 +61,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Beloved in the lord
+  Beloved in the lord
 
 Greetings in the name of our lord Jesus Christ. I am Mrs Elizabeth Schroder  from Germany, a widow to late Dr. A. Schroder  l am 51 years old and a converted born again Christian, suffering from long time cancer of the breast, from all indication my condition is really deteriorating and it is quite obvious that I might not live more than two (2) months, according to my doctor because the cancer has gotten to a very worst / dangerous stage.
 
