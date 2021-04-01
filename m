@@ -1,64 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E5D435158E
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 16:10:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C180351647
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 17:42:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B862384A9A;
-	Thu,  1 Apr 2021 14:10:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6B29E40588;
+	Thu,  1 Apr 2021 15:42:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IQGVGH4wnMjD; Thu,  1 Apr 2021 14:10:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vW84GDCPzRym; Thu,  1 Apr 2021 15:42:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 16A6F84A6B;
-	Thu,  1 Apr 2021 14:10:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7343D4058C;
+	Thu,  1 Apr 2021 15:42:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 079841BF46A
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 14:10:01 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 99DDB1BF3F9
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 15:42:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F3F7240E9D
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 14:10:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 86FC440585
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 15:42:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2cZLSAANbWRU for <devel@linuxdriverproject.org>;
- Thu,  1 Apr 2021 14:10:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZZlSJUI7W707 for <devel@linuxdriverproject.org>;
+ Thu,  1 Apr 2021 15:42:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 36E6540E65
- for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 14:10:00 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 20FED61288;
- Thu,  1 Apr 2021 14:09:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1617286199;
- bh=TDLUzw4MMzO7aDwvC0yr2aYJe8IBkudM8ks/SAnPVIc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MAvctnmQJ8sDD1P6uOlOyiAJUW9AvADDffHo+VPZb/uxh1DjdwcnfKEUSNLlHhUMi
- RgQZTeyhmQTAfSzZIpphgOwA34new/QxvN1BkuNTAN09X/4+p0e+OV8giLPwou3M2Q
- h8gONp/2xpYqb9vsrm0I+5LXw0N32mujvOzuOQ3Y=
-Date: Thu, 1 Apr 2021 16:09:57 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Yongji Xie <xieyongji@bytedance.com>
-Subject: Re: Re: Re: Re: [PATCH 2/2] binder: Use receive_fd() to receive file
- from another process
-Message-ID: <YGXUNfsExs6tZD0c@kroah.com>
-References: <20210401090932.121-1-xieyongji@bytedance.com>
- <20210401090932.121-3-xieyongji@bytedance.com>
- <YGWYZYbBzglUCxB2@kroah.com>
- <CACycT3ux9NVu_L=Vse7v-xbwE-K0-HT-e-Ei=yHOQmF66nGjeQ@mail.gmail.com>
- <YGWjh7qCJ8HJpFxv@kroah.com>
- <CACycT3uEGRiDuOj2XBwF2PmnGXsQgrLDemJDFRytsJiJMyRWDw@mail.gmail.com>
- <YGWvbAXQO2Vsiupo@kroah.com>
- <CACycT3vNaDg5twEpKtnZTjbyD=0FhZKJLzH+uBNQuyCmxFaeww@mail.gmail.com>
+Received: from mail.elfin.net (mail.elfin.net [166.84.7.59])
+ by smtp2.osuosl.org (Postfix) with ESMTP id D336A40584
+ for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 15:42:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.elfin.net (Postfix) with ESMTP id C291A52E73;
+ Thu,  1 Apr 2021 09:25:15 -0400 (EDT)
+X-Virus-Scanned: amavisd-new at elfin.net
+Received: from mail.elfin.net ([127.0.0.1])
+ by localhost (mail.elfin.net [127.0.0.1]) (amavisd-new, port 10025)
+ with ESMTP id 0AjfLsVBaqDC; Thu,  1 Apr 2021 09:25:15 -0400 (EDT)
+Received: from [137.74.152.234] (ip234.ip-137-74-152.eu [137.74.152.234])
+ by mail.elfin.net (Postfix) with ESMTPSA id 8FE7C518D6;
+ Thu,  1 Apr 2021 09:05:20 -0400 (EDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CACycT3vNaDg5twEpKtnZTjbyD=0FhZKJLzH+uBNQuyCmxFaeww@mail.gmail.com>
+Content-Description: Mail message body
+Subject: Hallo lieber Freund
+To: Recipients <>
+From: Hallo <""@art2part.com>
+Date: Thu, 01 Apr 2021 06:05:18 -0700
+Message-Id: <20210401154232.86FC440585@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,61 +60,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com,
- Kees Cook <keescook@chromium.org>, Suren Baghdasaryan <surenb@google.com>,
- Jason Wang <jasowang@redhat.com>, Sargun Dhillon <sargun@sargun.me>,
- Christoph Hellwig <hch@infradead.org>, Hridya Valsaraju <hridya@google.com>,
- arve@android.com, viro@zeniv.linux.org.uk, joel@joelfernandes.org,
- linux-fsdevel@vger.kernel.org,
- Christian Brauner <christian.brauner@ubuntu.com>, maco@android.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: allstateinc@yeah.net
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 01, 2021 at 08:28:02PM +0800, Yongji Xie wrote:
-> On Thu, Apr 1, 2021 at 7:33 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Thu, Apr 01, 2021 at 07:29:45PM +0800, Yongji Xie wrote:
-> > > On Thu, Apr 1, 2021 at 6:42 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> > > >
-> > > > On Thu, Apr 01, 2021 at 06:12:51PM +0800, Yongji Xie wrote:
-> > > > > On Thu, Apr 1, 2021 at 5:54 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> > > > > >
-> > > > > > On Thu, Apr 01, 2021 at 05:09:32PM +0800, Xie Yongji wrote:
-> > > > > > > Use receive_fd() to receive file from another process instead of
-> > > > > > > combination of get_unused_fd_flags() and fd_install(). This simplifies
-> > > > > > > the logic and also makes sure we don't miss any security stuff.
-> > > > > >
-> > > > > > But no logic is simplified here, and nothing is "missed", so I do not
-> > > > > > understand this change at all.
-> > > > > >
-> > > > >
-> > > > > I noticed that we have security_binder_transfer_file() when we
-> > > > > transfer some fds. I'm not sure whether we need something like
-> > > > > security_file_receive() here?
-> > > >
-> > > > Why would you?  And where is "here"?
-> > > >
-> > > > still confused,
-> > > >
-> > >
-> > > I mean do we need to go through the file_receive seccomp notifier when
-> > > we receive fd (use get_unused_fd_flags() + fd_install now) from
-> > > another process in binder_apply_fd_fixups().
-> >
-> > Why?  this is internal things, why does seccomp come into play here?
-> >
-> 
-> We already have security_binder_transfer_file() to control the sender
-> process. So for the receiver process, do we need the seccomp too? Or
-> do I miss something here?
+Meine Namen sind Herr Yi Huiman, ehemaliger Pr=E4sident der Agricultural Ba=
+nk of China und derzeitige China Securities Regulatory Commission (CSRC). I=
+ch melde mich bei Ihnen bez=FCglich des Nachlasses eines verstorbenen Kunde=
+n, der vor 12 Jahren eine Investition unter die Leitung unserer Bank gestel=
+lt hat. In Bezug auf das oben genannte Thema hat der verstorbene Einleger n=
+ur in meiner Filiale eine Einzahlung von f=FCnfundvierzig Millionen, zweihu=
+ndertf=FCnfundsiebzigtausend Dollar (45.275.000,00 USD) get=E4tigt. Vor ein=
+igen Monaten wurde ihm eine Reihe von Mitteilungen zugesandt, weil er nicht=
+ in Betrieb war das Konto und wir entdeckten sp=E4ter, dass der verstorbene=
+ Einleger an COVID-19-Komplikationen starb. Vor seinem Tod erw=E4hnte er in=
+ unseren Unterlagen weder einen Angeh=F6rigen noch einen Nutznie=DFer. Als =
+sein pers=F6nlicher Kundenbetreuer und Finanzberater war die Sicherheitsfir=
+ma sowie das Management meiner Bank bis heute bei mir, um einen Angeh=F6rig=
+en oder Beg=FCnstigten seines Nachlasses zur Verf=FCgung zu stellen
 
-I do not know, is this something that is a requirement that seccomp
-handle all filesystem handles sent to a process?  I do not know the
-seccomp "guarantee" that well, sorry.
+In dieser Angelegenheit besteht kein Risiko, da ich den Schl=FCssel zu den =
+Fonds besitze und wir eine legitime Methode anwenden werden, da ich alle Pa=
+pierarbeiten haben werde, um Sie zum n=E4chsten Angeh=F6rigen der Fonds zu =
+machen, sobald ich eine Antwort von erhalte Sie. Ich werde Ihnen mehr =FCbe=
+r diesen Vorschlag erz=E4hlen, den Sie unter meiner E-Mail-Adresse allstate=
+inc@yeah.net erreichen k=F6nnen
 
-greg k-h
+Herr Yi Huiman
+Vorsitzender der China Securities Regulatory Commission (CSRC)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
