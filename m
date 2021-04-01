@@ -1,54 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFD1A35285F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Apr 2021 11:17:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C538352A7C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Apr 2021 14:14:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4C39984C68;
-	Fri,  2 Apr 2021 09:17:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 801576066B;
+	Fri,  2 Apr 2021 12:14:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TF7ZGYUk1_-f; Fri,  2 Apr 2021 09:17:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XdWKeSYq6IZF; Fri,  2 Apr 2021 12:14:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7CEA684BC4;
-	Fri,  2 Apr 2021 09:17:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id B2C2C60676;
+	Fri,  2 Apr 2021 12:14:20 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6D3A91BF309
- for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 09:17:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 58C501BF2B4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Apr 2021 12:14:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5D53B84BC4
- for <devel@linuxdriverproject.org>; Fri,  2 Apr 2021 09:17:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4EFF884B9D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Apr 2021 12:14:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OACXNjvsar2S for <devel@linuxdriverproject.org>;
- Fri,  2 Apr 2021 09:17:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E0A0984BC1
- for <devel@driverdev.osuosl.org>; Fri,  2 Apr 2021 09:17:39 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 577A861008;
- Fri,  2 Apr 2021 09:17:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1617355057;
- bh=nNXmKyTHRFu5FEX84hqP3eIGOZ1pmAYpxndQn7fgYQ4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=1bVRMjgYnmVMwuln9bkOhNMTJOytmbdU1QgJ5Dtjpb2LfVD+hbNtkvBbBZw8IA7w3
- M/xh4gd+1KECR2HoShaNrE8pvZHCJ1wIkkdioSG/TrpGKy2E6tLztD7laPSepvqlaq
- XqclZkejDnGUS8hOPj7hLv9X/OQIboeIhOwxWN18=
-Date: Fri, 2 Apr 2021 11:17:35 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Carlis <zhangxuezhi3@gmail.com>
-Subject: Re: [PATCH] staging: fbtft: change snprintf() to scnprintf()
-Message-ID: <YGbhLxwZO9k/330J@kroah.com>
-References: <20210402090501.152561-1-zhangxuezhi3@gmail.com>
+ with ESMTP id OzavZQ2ckAtN
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Apr 2021 12:14:09 +0000 (UTC)
+X-Greylist: delayed 12:43:18 by SQLgrey-1.8.0
+Received: from asphost85.asphostserver.info (unknown [5.153.41.195])
+ by smtp1.osuosl.org (Postfix) with ESMTP id A9FA684B82
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Apr 2021 12:14:08 +0000 (UTC)
+Received: from User (UnknownHost [37.49.225.165]) by
+ asphost85.asphostserver.info with SMTP; 
+ Thu, 1 Apr 2021 19:00:16 +0200
+From: "Mrs E Schroeder"<kontakt@bambinosi.rs>
+Subject: APPEAL
+Date: Thu, 1 Apr 2021 19:00:19 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210402090501.152561-1-zhangxuezhi3@gmail.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20210402121410.4EFF884B9D@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,45 +59,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, zhangxuezhi1@yulong.com,
- linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
+Reply-To: zbthschroder2@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Apr 02, 2021 at 09:05:01AM +0000, Carlis wrote:
-> From: Xuezhi Zhang <zhangxuezhi1@yulong.com>
-> 
-> show() must not use snprintf() when formatting the value to
-> be returned to user space.
+  Beloved in the lord
 
-Why not?  The code is just fine as-is.
+Greetings in the name of our lord Jesus Christ. I am Mrs Elizabeth Schroder  from Germany, a widow to late Dr. A. Schroder  l am 51 years old and a converted born again Christian, suffering from long time cancer of the breast, from all indication my condition is really deteriorating and it is quite obvious that I might not live more than two (2) months, according to my doctor because the cancer has gotten to a very worst / dangerous stage.
 
-> 
-> Signed-off-by: Xuezhi Zhang <zhangxuezhi1@yulong.com>
-> ---
->  drivers/staging/fbtft/fbtft-sysfs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/fbtft/fbtft-sysfs.c b/drivers/staging/fbtft/fbtft-sysfs.c
-> index 26e52cc2de64..7df92db648d6 100644
-> --- a/drivers/staging/fbtft/fbtft-sysfs.c
-> +++ b/drivers/staging/fbtft/fbtft-sysfs.c
-> @@ -199,7 +199,7 @@ static ssize_t show_debug(struct device *device,
->  	struct fb_info *fb_info = dev_get_drvdata(device);
->  	struct fbtft_par *par = fb_info->par;
->  
-> -	return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
-> +	return scnprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
+My late husband and my only child died last five years ago, his death was politically motivated. My late husband was a very rich and wealthy oil business man who was running his oil,Gold/Diamond Business here in West Africa Nigeria. After his death, I inherited all his business and wealth.
 
-If you really want to "fix" this, please just use sysfs_emit().  This
-change as-is, does nothing.
+My doctors has advised me that I may not live for more than two (2) months, so I now decided to divide the part of this wealth, to contribute to the development of the church in Africa, America, Asia, and Europe. I collected your email address during my desperate search on the internet and I prayed over it. I decided to donate the sum of $17,500,000.00 USD (Seventeen  Million Five hundred thousand United States dollars) to the less privileged because I cannot take this money to the grave.
 
-thanks,
+Please I want you to note that this fund is lodged in a private bank here in Africa(Standard Trust Bank Africa). Once I hear from you, I will forward to you all the information's you will use to get this fund released from the bank and to be transferred to your bank account. I honestly pray that this money when transferred to you will be used for the said purpose because l have come to find out that wealth acquisition without Christ is vanity. May the grace of our lord Jesus the love of God and the fellowship of God be with you and your family.
 
-greg k-h
+Reply me on my private email address zbthschroder1@gmail.com Thanks and God bless you.
+
+Your beloved sister in Christ.
+
+Mrs. Elizabeth Schroder
+Donor
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
