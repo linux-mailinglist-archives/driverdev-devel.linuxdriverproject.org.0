@@ -1,83 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91D1335117B
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 11:10:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0221C35117D
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 11:10:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C394D60BAC;
-	Thu,  1 Apr 2021 09:10:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A14DD40547;
+	Thu,  1 Apr 2021 09:10:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0R6g324FvRxx; Thu,  1 Apr 2021 09:10:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kIfOk4nJXeKR; Thu,  1 Apr 2021 09:10:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 371BD60B96;
-	Thu,  1 Apr 2021 09:09:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BCFD34029B;
+	Thu,  1 Apr 2021 09:10:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 53C6A1BF38E
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 09:09:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 72A4A1BF38E
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 09:09:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4DD9B40520
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 09:09:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5E80584A10
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 09:09:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=bytedance-com.20150623.gappssmtp.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pFmhlO1akQka for <devel@linuxdriverproject.org>;
- Thu,  1 Apr 2021 09:09:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Tb4EzFKofh3e for <devel@linuxdriverproject.org>;
+ Thu,  1 Apr 2021 09:09:50 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com
- [IPv6:2607:f8b0:4864:20::42a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 13D7C400C2
- for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 09:09:45 +0000 (UTC)
-Received: by mail-pf1-x42a.google.com with SMTP id m11so944447pfc.11
- for <devel@driverdev.osuosl.org>; Thu, 01 Apr 2021 02:09:45 -0700 (PDT)
+Received: from mail-pf1-x434.google.com (mail-pf1-x434.google.com
+ [IPv6:2607:f8b0:4864:20::434])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B96CB848EC
+ for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 09:09:49 +0000 (UTC)
+Received: by mail-pf1-x434.google.com with SMTP id h3so941138pfr.12
+ for <devel@driverdev.osuosl.org>; Thu, 01 Apr 2021 02:09:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bytedance-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3E3WfnmsRcCOXraj/CRRvpeiE4ZMxFvi1kpPttSBTBA=;
- b=puPf+QorSmvJ1a/xime3aehCman5i+p9Lm7CKq+fv0mD/WjUCeqzkHhdlT6TfXNLxQ
- UTQaHRFebT+gfT8MGV3i2WjUHDZLTw9TI4dUFEQLdaYxKql7K3LJuhWd0RMy44GlRBkt
- U/ZxYrd7DuQUvV9n/NJ44kR10AuYxjkWP6wOQtjEWtqDzdaDpI8316E7G5INo3sS64J8
- ayn6udEIArfT6Dv867fv08JMzCGXhdWB13T0lN7GzBoUuLJi+6ZPsxmQ5NGsfJcrfuSd
- kBRE84DzeHRvYxqvaEzwL+zqm+EZXqFmnTN7V1S0C0dikMFsuRyYX9evG1FTNEemrnUO
- /nNQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=TcFW2882TDAB0Szg+grt3QNSfA4PwJpJAwOH20WQc3U=;
+ b=fqr736cKPoNsBHMb7WyFTgrU6fRrMvpOOsOByzUKP4cZh5dOqtzEVp+rAvVVFi90cK
+ hR/OTVJbXJMRiZJjYfIEPtHdj8DHn+v5moAuKMuYj1nwRUBfXBsHIjGNitslymjxfWa+
+ QEpPpnaBpZnj5M71DlPERV2FggpXB6HvhTlwrhQV2PsVXFp5X+bxsPwn5tRLDFSELFTA
+ BfO1LaoEDdB95RXDFWQnDiRIqHNHUZPwPVznCpB0BQKQEIJNhVVm95gyKftGfOhGlWdl
+ WZ4HsLfCtjlvHWUOnvzTq616lvhjUWNy9Jt6UDQJDaQFGy17UgxmGBtafhTWSFXyUhs+
+ J0Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3E3WfnmsRcCOXraj/CRRvpeiE4ZMxFvi1kpPttSBTBA=;
- b=JnC0gxTD+0wuBP61S1dpr0GO+PvbJOl40LnhgQFAJIVWE2GMCfmHgcBS/SIB22SNMC
- 6TFVWs9csyNzSo1IeeXj1og4m9sz1TM3DZ1qSBYpOHm0IQBICgK6o9QSybcrf9mu4kNx
- 2zxECeanXOzxO07IZmO8SWeD0iHklPn1q8sr+TQi3F7g5FgEgRUE8LPEhOjW6MRoG7Kt
- 3oUSP54LTEsz4W+j/TNaJQas7xCnI5oki+x7tHzyQzZXLr3S2KZobe7HdSMxt0bqKWQa
- HWe7gqoHB21MEo0uCOReaJryxY+VlD+BeCpgZJfs3sgiAve1kKYLc2Hg1cn+W6K05xse
- Pv9g==
-X-Gm-Message-State: AOAM530+BN6z56+GyB4aEJL/qNZzdc+wSt/AOU1Km3BiLzKyU+KYUf0c
- qQViDvD5zeXS/OmKBuz27VZw
-X-Google-Smtp-Source: ABdhPJz66+Gm1zWC1Zd92jqOvzeWFOnIeQysdpnWAYf11POOjdzKuJBDPIP8yDBlp2RQKwQFJgXUJA==
-X-Received: by 2002:a05:6a00:cc8:b029:217:4606:5952 with SMTP id
- b8-20020a056a000cc8b029021746065952mr6748921pfv.50.1617268185082; 
- Thu, 01 Apr 2021 02:09:45 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=TcFW2882TDAB0Szg+grt3QNSfA4PwJpJAwOH20WQc3U=;
+ b=PKJXJ0bqbhI/dwxMDmGkf5tABSujTj0q7oe2OK0QyTzeI8qa+2uRR63H6WlqVCn0ZW
+ CZOQqFGc39dKCB6p9yNOwhS9f6s6juPA2xQeWx8SAZjBb91/+sjig0qcUK/zRD2kX+h0
+ 8u5B3pZyniPoO37LMXQB9E1UIlWBu8pjsljLf9r6uaOsb4sVojoeyDdMu2bb2orwXK1W
+ MUZsU5/jCJRw25BQ/lJLqZFtQt0D1ttKNk+pvyJ5a90qCUy+0VHy0NkS+gAYYCk7E/5O
+ Oqiyw/2UvRVRtc3Bm9sZkQVBH4CH8PAt9KToVp988oNKpkFkslSTLMm52qorh6qU4FqY
+ 4mwA==
+X-Gm-Message-State: AOAM530spO3Uc2ui2N9EIRLvsjj81oGHnlt2EEkzkRa49wZXFULrMZR2
+ /xvr9FfS5Ik/VNx/d/KAtYfe
+X-Google-Smtp-Source: ABdhPJye1+QSmRDrJtotpPX35xPqPCPC9yfHjqxgCyLsQO2U3Q/jaWMwQ0mXFN6YqGYZgUHLaGEIYQ==
+X-Received: by 2002:a65:6414:: with SMTP id a20mr6613866pgv.424.1617268188789; 
+ Thu, 01 Apr 2021 02:09:48 -0700 (PDT)
 Received: from localhost ([139.177.225.243])
- by smtp.gmail.com with ESMTPSA id a26sm4910686pff.149.2021.04.01.02.09.43
+ by smtp.gmail.com with ESMTPSA id i10sm13946337pjm.1.2021.04.01.02.09.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Apr 2021 02:09:44 -0700 (PDT)
+ Thu, 01 Apr 2021 02:09:48 -0700 (PDT)
 From: Xie Yongji <xieyongji@bytedance.com>
 To: christian.brauner@ubuntu.com, hch@infradead.org,
  gregkh@linuxfoundation.org, arve@android.com, tkjos@android.com,
  maco@android.com, joel@joelfernandes.org, hridya@google.com,
  surenb@google.com, viro@zeniv.linux.org.uk, sargun@sargun.me,
  keescook@chromium.org, jasowang@redhat.com
-Subject: [PATCH 0/2] Export receive_fd() to modules and do some cleanups
-Date: Thu,  1 Apr 2021 17:09:30 +0800
-Message-Id: <20210401090932.121-1-xieyongji@bytedance.com>
+Subject: [PATCH 1/2] file: Export receive_fd() to modules
+Date: Thu,  1 Apr 2021 17:09:31 +0800
+Message-Id: <20210401090932.121-2-xieyongji@bytedance.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210401090932.121-1-xieyongji@bytedance.com>
+References: <20210401090932.121-1-xieyongji@bytedance.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -97,25 +98,58 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This series starts from Christian's comments on the series[1].
-We'd like to export receive_fd() which can not only be used by
-our module in the series[1] but also allow further cleanups
-like patch 2 does.
+Export receive_fd() so that some modules can use
+it to pass file descriptor across processes without
+missing any security stuffs.
 
-Now this series is based on Christoph's patch[2].
+Signed-off-by: Xie Yongji <xieyongji@bytedance.com>
+---
+ fs/file.c            | 6 ++++++
+ include/linux/file.h | 7 +++----
+ 2 files changed, 9 insertions(+), 4 deletions(-)
 
-[1] https://lore.kernel.org/linux-fsdevel/20210331080519.172-1-xieyongji@bytedance.com/
-[2] https://lore.kernel.org/linux-fsdevel/20210325082209.1067987-2-hch@lst.de
-
-Xie Yongji (2):
-  file: Export receive_fd() to modules
-  binder: Use receive_fd() to receive file from another process
-
- drivers/android/binder.c | 4 ++--
- fs/file.c                | 6 ++++++
- include/linux/file.h     | 7 +++----
- 3 files changed, 11 insertions(+), 6 deletions(-)
-
+diff --git a/fs/file.c b/fs/file.c
+index 56986e55befa..2a80c6c3e147 100644
+--- a/fs/file.c
++++ b/fs/file.c
+@@ -1107,6 +1107,12 @@ int receive_fd_replace(int new_fd, struct file *file, unsigned int o_flags)
+ 	return new_fd;
+ }
+ 
++int receive_fd(struct file *file, unsigned int o_flags)
++{
++	return __receive_fd(file, NULL, o_flags);
++}
++EXPORT_SYMBOL(receive_fd);
++
+ static int ksys_dup3(unsigned int oldfd, unsigned int newfd, int flags)
+ {
+ 	int err = -EBADF;
+diff --git a/include/linux/file.h b/include/linux/file.h
+index 2de2e4613d7b..51e830b4fe3a 100644
+--- a/include/linux/file.h
++++ b/include/linux/file.h
+@@ -94,6 +94,9 @@ extern void fd_install(unsigned int fd, struct file *file);
+ 
+ extern int __receive_fd(struct file *file, int __user *ufd,
+ 			unsigned int o_flags);
++
++extern int receive_fd(struct file *file, unsigned int o_flags);
++
+ static inline int receive_fd_user(struct file *file, int __user *ufd,
+ 				  unsigned int o_flags)
+ {
+@@ -101,10 +104,6 @@ static inline int receive_fd_user(struct file *file, int __user *ufd,
+ 		return -EFAULT;
+ 	return __receive_fd(file, ufd, o_flags);
+ }
+-static inline int receive_fd(struct file *file, unsigned int o_flags)
+-{
+-	return __receive_fd(file, NULL, o_flags);
+-}
+ int receive_fd_replace(int new_fd, struct file *file, unsigned int o_flags);
+ 
+ extern void flush_delayed_fput(void);
 -- 
 2.11.0
 
