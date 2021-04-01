@@ -1,78 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88032351364
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 12:25:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3ED93513C5
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 12:40:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E1E2440560;
-	Thu,  1 Apr 2021 10:25:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D6CAE414EC;
+	Thu,  1 Apr 2021 10:40:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YFwO4hHIfCgE; Thu,  1 Apr 2021 10:25:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TcN-voFojqFz; Thu,  1 Apr 2021 10:40:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1E5934054D;
-	Thu,  1 Apr 2021 10:25:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7282D4146B;
+	Thu,  1 Apr 2021 10:40:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 94AC71BF3C9
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 10:24:51 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8324E1BF38B
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 10:40:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 90619605DB
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 10:24:51 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7042E40EEF
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 10:40:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=bytedance-com.20150623.gappssmtp.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8bmdmw6Nggvi for <devel@linuxdriverproject.org>;
- Thu,  1 Apr 2021 10:24:50 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3E00A60585
- for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 10:24:49 +0000 (UTC)
-Received: by mail-ej1-x632.google.com with SMTP id hq27so2083111ejc.9
- for <devel@driverdev.osuosl.org>; Thu, 01 Apr 2021 03:24:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=J7YrrrhPr6H4+aJ1lkG34rMuFAOACvVaQCsE3shxThk=;
- b=RwfJgvCkIljryl8uo0Vmwy2NZSGlqehWXjl1ezB3NnMbhUVMtz7Imp6cJmjHiV4c4u
- MOCSZbF5KXM0BPkLoo8ln+fo9T/lLzR9fzRy6KS8Q9OZ5ddViqvPoqp/FlqF29SEobts
- xvEBdEfRoyqb1GShptdxvCBIr5dG45kwTRF0enf0UE66rXgR0yEqI7Ijd22l0QnFpOGN
- 6B2abN4aaqhtSo4CJwJtTL84Va2BROJEi7VJg3gaQRP1rr3BjpaJK547ghRrBwijc8bl
- lE16Qfqg/02+MSmoLwK7r+yDtF98UhWQ7qLtgbsXr4fCCdxmDBZeKulHdOUR1//IF5sz
- K8Lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=J7YrrrhPr6H4+aJ1lkG34rMuFAOACvVaQCsE3shxThk=;
- b=ZtcIXe4Z6AZ1Bfjs+ikeZJ95oYQ9B7kjwLGntR5elk9wSaMZLnI7O92v8om/5iaxxJ
- n+Tj7SsxWlfGq219TKzwAFnpgh7fKQsKhwF743qvZjgwe0uKhTuNFyy8e6JfY3TE8ujI
- IXLrYfbkAgoreAXpMgLq6yinQLGkxtcRUxc2TgaDZJTYLzi4jKUdrtTxRLbJ0i/yJ6fJ
- ng8Z6lcizW/+/Kzz/L64HpvMrKOwOb3RVXzyREQ8z0hyAX2jed1/n4GG8X9U3IrDgyMh
- VCuk0CTQHYvZVtMCgY4/ipGnYtZ3TpVZ704bFvEpfDGFl1eXZZwFZp28fGjkYU/jVlIP
- RXiQ==
-X-Gm-Message-State: AOAM531JW7pMqsNWwviyLwqDqgEkWi6ueQW77t9oVnKIA6lroc2a1uQQ
- pO6fFcSO5APa7PWPWL0EMTFDH1JdkkfcELe9+DwX
-X-Google-Smtp-Source: ABdhPJy9oPfEuG5lV875yMF7Gj8RMK+uoG/+oS6kYgJYXI10oZOQ1GgD81mnM9ZocBNO5F2BWGpmbruurhnPMXIWJWE=
-X-Received: by 2002:a17:906:311a:: with SMTP id
- 26mr8276109ejx.395.1617272688184; 
- Thu, 01 Apr 2021 03:24:48 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210401090932.121-1-xieyongji@bytedance.com>
- <20210401090932.121-2-xieyongji@bytedance.com>
- <YGWX4aIE5QNxsJQ9@kroah.com>
-In-Reply-To: <YGWX4aIE5QNxsJQ9@kroah.com>
-From: Yongji Xie <xieyongji@bytedance.com>
-Date: Thu, 1 Apr 2021 18:24:37 +0800
-Message-ID: <CACycT3tESHmWUS6qrBpoOHGQKrJt7Qb8Xh1aawhDBHMPBb0Eag@mail.gmail.com>
-Subject: Re: Re: [PATCH 1/2] file: Export receive_fd() to modules
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kkJyzNns1Mm9 for <devel@linuxdriverproject.org>;
+ Thu,  1 Apr 2021 10:40:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6E03740E9B
+ for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 10:40:42 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D1E1260FEA;
+ Thu,  1 Apr 2021 10:40:37 +0000 (UTC)
+Date: Thu, 1 Apr 2021 12:40:34 +0200
+From: Christian Brauner <christian.brauner@ubuntu.com>
 To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 2/2] binder: Use receive_fd() to receive file from
+ another process
+Message-ID: <20210401104034.52qaaoea27htkpbh@wittgenstein>
+References: <20210401090932.121-1-xieyongji@bytedance.com>
+ <20210401090932.121-3-xieyongji@bytedance.com>
+ <YGWYZYbBzglUCxB2@kroah.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YGWYZYbBzglUCxB2@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,59 +57,105 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com,
- Kees Cook <keescook@chromium.org>, Suren Baghdasaryan <surenb@google.com>,
- Jason Wang <jasowang@redhat.com>, Sargun Dhillon <sargun@sargun.me>,
- Christoph Hellwig <hch@infradead.org>, Hridya Valsaraju <hridya@google.com>,
+Cc: devel@driverdev.osuosl.org, tkjos@android.com, keescook@chromium.org,
+ surenb@google.com, jasowang@redhat.com, linux-fsdevel@vger.kernel.org,
+ sargun@sargun.me, hch@infradead.org, Xie Yongji <xieyongji@bytedance.com>,
  arve@android.com, viro@zeniv.linux.org.uk, joel@joelfernandes.org,
- linux-fsdevel@vger.kernel.org,
- Christian Brauner <christian.brauner@ubuntu.com>, maco@android.com
+ hridya@google.com, maco@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 1, 2021 at 5:52 PM Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> On Thu, Apr 01, 2021 at 05:09:31PM +0800, Xie Yongji wrote:
-> > Export receive_fd() so that some modules can use
-> > it to pass file descriptor across processes without
-> > missing any security stuffs.
-> >
+On Thu, Apr 01, 2021 at 11:54:45AM +0200, Greg KH wrote:
+> On Thu, Apr 01, 2021 at 05:09:32PM +0800, Xie Yongji wrote:
+> > Use receive_fd() to receive file from another process instead of
+> > combination of get_unused_fd_flags() and fd_install(). This simplifies
+> > the logic and also makes sure we don't miss any security stuff.
+> 
+> But no logic is simplified here, and nothing is "missed", so I do not
+> understand this change at all.
+> 
+> > 
 > > Signed-off-by: Xie Yongji <xieyongji@bytedance.com>
 > > ---
-> >  fs/file.c            | 6 ++++++
-> >  include/linux/file.h | 7 +++----
-> >  2 files changed, 9 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/fs/file.c b/fs/file.c
-> > index 56986e55befa..2a80c6c3e147 100644
-> > --- a/fs/file.c
-> > +++ b/fs/file.c
-> > @@ -1107,6 +1107,12 @@ int receive_fd_replace(int new_fd, struct file *file, unsigned int o_flags)
-> >       return new_fd;
-> >  }
-> >
-> > +int receive_fd(struct file *file, unsigned int o_flags)
-> > +{
-> > +     return __receive_fd(file, NULL, o_flags);
-> > +}
-> > +EXPORT_SYMBOL(receive_fd);
->
-> What module uses this?
->
+> >  drivers/android/binder.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> > index c119736ca56a..080bcab7d632 100644
+> > --- a/drivers/android/binder.c
+> > +++ b/drivers/android/binder.c
+> > @@ -3728,7 +3728,7 @@ static int binder_apply_fd_fixups(struct binder_proc *proc,
+> >  	int ret = 0;
+> >  
+> >  	list_for_each_entry(fixup, &t->fd_fixups, fixup_entry) {
+> > -		int fd = get_unused_fd_flags(O_CLOEXEC);
+> > +		int fd  = receive_fd(fixup->file, O_CLOEXEC);
+> 
+> Why 2 spaces?
+> 
+> >  
+> >  		if (fd < 0) {
+> >  			binder_debug(BINDER_DEBUG_TRANSACTION,
+> > @@ -3741,7 +3741,7 @@ static int binder_apply_fd_fixups(struct binder_proc *proc,
+> >  			     "fd fixup txn %d fd %d\n",
+> >  			     t->debug_id, fd);
+> >  		trace_binder_transaction_fd_recv(t, fd, fixup->offset);
+> > -		fd_install(fd, fixup->file);
+> > +		fput(fixup->file);
+> 
+> Are you sure this is the same???
+> 
+> I d onot understand the need for this change at all, what is wrong with
+> the existing code here?
 
-Looks like now it will be only used by the module in my proposal:
+I suggested something like this.
+Some time back we added receive_fd() for seccomp and SCM_RIGHTS to have
+a unified way of installing file descriptors including taking care of
+handling sockets and running security hooks. The helper also encompasses
+the whole get_unused_fd() + fd_install dance.
+My suggestion was to look at all the places were we currently open-code
+this in drivers/:
 
-https://lore.kernel.org/linux-fsdevel/20210331080519.172-1-xieyongji@bytedance.com/
+drivers/android/binder.c:               int fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/char/tpm/tpm_vtpm_proxy.c:      fd = get_unused_fd_flags(O_RDWR);
+drivers/dma-buf/dma-buf.c:      fd = get_unused_fd_flags(flags);
+drivers/dma-buf/sw_sync.c:      int fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/dma-buf/sync_file.c:    int fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpio/gpiolib-cdev.c:    fd = get_unused_fd_flags(O_RDONLY | O_CLOEXEC);
+drivers/gpio/gpiolib-cdev.c:    fd = get_unused_fd_flags(O_RDONLY | O_CLOEXEC);
+drivers/gpio/gpiolib-cdev.c:    fd = get_unused_fd_flags(O_RDONLY | O_CLOEXEC);
+drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c:         fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/drm_atomic_uapi.c:      fence_state->fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/drm_lease.c:    fd = get_unused_fd_flags(cl->flags & (O_CLOEXEC | O_NONBLOCK));
+drivers/gpu/drm/drm_syncobj.c:  fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/drm_syncobj.c:  int fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/etnaviv/etnaviv_gem_submit.c:           out_fence_fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c:         out_fence_fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/msm/msm_gem_submit.c:           out_fence_fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/virtio/virtgpu_ioctl.c:         out_fence_fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/gpu/drm/vmwgfx/vmwgfx_execbuf.c:                out_fence_fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/infiniband/core/rdma_core.c:    new_fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/media/mc/mc-request.c:  fd = get_unused_fd_flags(O_CLOEXEC);
+drivers/misc/cxl/api.c: rc = get_unused_fd_flags(flags);
+drivers/scsi/cxlflash/ocxl_hw.c:        rc = get_unused_fd_flags(flags);
+drivers/scsi/cxlflash/ocxl_hw.c:                dev_err(dev, "%s: get_unused_fd_flags failed rc=%d\n",
+drivers/tty/pty.c:      fd = get_unused_fd_flags(flags);
+drivers/vfio/vfio.c:    ret = get_unused_fd_flags(O_CLOEXEC);
+drivers/virt/nitro_enclaves/ne_misc_dev.c:      enclave_fd = get_unused_fd_flags(O_CLOEXEC);
 
-> And why not EXPORT_SYMBOL_GPL()?
->
+and see whether all of them can be switched to simply using
+receive_fd(). I did a completely untested rough sketch to illustrate
+what I meant by using binder and devpts Xie seems to have just picked
+those two. But the change is obviously only worth it if all or nearly
+all callers can be switched over without risk of regression.
+It would most likely simplify quite a few codepaths though especially in
+the error paths since we can get rid of put_unused_fd() cleanup.
 
-My fault, sorry.
+But it requires buy in from others obviously.
 
-Thanks,
-Yongji
+Christian
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
