@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C770351564
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 15:54:07 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BFE8351571
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Apr 2021 15:59:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A4B8F84A38;
-	Thu,  1 Apr 2021 13:54:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 046E8848DE;
+	Thu,  1 Apr 2021 13:59:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HoXAeZ2QyJxp; Thu,  1 Apr 2021 13:54:02 +0000 (UTC)
+	with ESMTP id 2XUcWz0L5UI4; Thu,  1 Apr 2021 13:59:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5608184A87;
-	Thu,  1 Apr 2021 13:54:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B668384AD9;
+	Thu,  1 Apr 2021 13:58:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BC8811BF421
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 13:53:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7AA631BF421
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 13:58:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AB6936062B
- for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 13:53:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 60E1460BD7
+ for <devel@linuxdriverproject.org>; Thu,  1 Apr 2021 13:58:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=linaro.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iAq89vavEVnl for <devel@linuxdriverproject.org>;
- Thu,  1 Apr 2021 13:53:49 +0000 (UTC)
+ with ESMTP id dzKunQlwbH9J for <devel@linuxdriverproject.org>;
+ Thu,  1 Apr 2021 13:58:42 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
- [IPv6:2607:f8b0:4864:20::52c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4EBF96061F
- for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 13:53:49 +0000 (UTC)
-Received: by mail-pg1-x52c.google.com with SMTP id v10so1541496pgs.12
- for <devel@driverdev.osuosl.org>; Thu, 01 Apr 2021 06:53:49 -0700 (PDT)
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D1C1D60BCA
+ for <devel@driverdev.osuosl.org>; Thu,  1 Apr 2021 13:58:42 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id t18so1194908pjs.3
+ for <devel@driverdev.osuosl.org>; Thu, 01 Apr 2021 06:58:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yD5b/gzLfWxFprD6vkCUufgtg2euX6KlqW93zfrVx5U=;
- b=UjU4CBW9ynxiOtzRKTacMyLjU9ADrMWJ08Kvf5VBMhosAqV5BksTrv88PzwDEQ9+wt
- /3MjXN1s4o+4txzeTou50dTwf/DB6AtH02VQc3/RSTxcSKiFvF0nXmMnTAcmMKtCorGT
- iKMlGgMXRaRTlghAw8oIzMdtzqRC0eMiYrUMTGA84RINgqGxzhEqSPVmTkw1XTXeK8gh
- KK/YH81iiwfj8DFkjuG+wlZjnbJOqutOTWd0Jf/LyGqv8AarBIQ9rDv3/iz7CDK5zYCs
- 65AqRKAJ632pgvwGasbVuPF5iTEHcUlICPvzEAbiaszqe8u1Vdouxtrwt+5blClwGpSE
- AbCw==
+ :cc; bh=CNpE2gp8qLbgXvartbLlAR/NP/W7kT+8WOqLZfb4q+I=;
+ b=bTQOz07KyyMH0Xc7tcYG+lkUlWhuIlY1pOJGSjzN1yFczJNlIyJr5WyBdBY4e0t0lh
+ 53vrg6JGk/PqmqE6I4km2Z2Enfrxz5GTEv9TM1W6/UxGT4EedeQ1J0PDNZU0gBqUGXC5
+ Bjdy+Z9JaenqG7Llw/PxC54ftX8zBeTaUMp5ylfIGnAi8fqkN1cHMLRUZvkMQCD9aKFb
+ 6iEzJJLVuhsM5OcKOtq6Yqcg1s1lxzLKUj0ZRg14lBhdfSrVRVXY+iMbbc7MOJkEZRM4
+ oIU30ICfh02QexkAexH0zGkuUq50NZ0eYw7v8qcmq2H+lZO3DI9LMauhuCyGAJjdnAp9
+ BvmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yD5b/gzLfWxFprD6vkCUufgtg2euX6KlqW93zfrVx5U=;
- b=YdQyGNlPKQfcQ2RfCb3D3j5CUyiWiurOifCBaKxPgbMRuEekLuLZ4t+PUIAVP6PMBj
- PRemrbl+SfCYM3enSw8dTrTWSOilO/eLd9rpBSK4hmxqN66j6sw/0reLIw1xx0++eZSN
- FMFZRY8wtiyYS2fXdmNIOgPlml0JKvh8Y61+D7CFIJnusUg2cixv/FlTgZ+z7YWqRiaa
- MF/1OuHzqPmHIK+0sOTEE6QSwMEOAPQ8IwzplMU1hGcEcSOScFEmkFWGghc0ltB0JQNY
- p4D4Ky32fqSMFqPV7Susa49JtTELvvYP2HRn/tH+SZz5EBLDlyfM7o34to/LCkYqIJnS
- ELIA==
-X-Gm-Message-State: AOAM532PI6rVSlxREZ6puJlKQLeiou56+rwIE8LvGq/nfk2NmCt6Af0Q
- jBNjVWH+EIeSnEXoRZI02Q15J3VKdVsDgks3trGAMw==
-X-Google-Smtp-Source: ABdhPJy5DYOPKKnRX114DQl0YHOOuo+r3HgpopfnEbz9F1iol7spMs9Is0Zt6IXeGUVhI52/sDE8h3+deu5556yN03A=
-X-Received: by 2002:aa7:980a:0:b029:20c:5402:5de9 with SMTP id
- e10-20020aa7980a0000b029020c54025de9mr7703266pfl.18.1617285228504; Thu, 01
- Apr 2021 06:53:48 -0700 (PDT)
+ bh=CNpE2gp8qLbgXvartbLlAR/NP/W7kT+8WOqLZfb4q+I=;
+ b=BwGNulwC0gcB3yivhVI8hOBn3+x06j5AO00QDroLTLYG8XwLA95aG1ddrdANGsDZA3
+ BhGKvJfjX9SX65Q5IX9Nfu56um2n+tX96mUqxBodB2yqCAhh8Xxzkl36HcvbvPYybd9R
+ zudu+5E7GtgR3eil6/eyrnM8hBV1ASyE1e8VYg/dq+TGt5r03A3BICSWe1vWTUM/uOp2
+ 5rcy34TDNqxyIWVLb/qzg7lizx9v5uy24ijwJV9T9LTTXuWsOFn9mmEhgT6yR2tAYHWl
+ 65uK4nsR60p61Jnne2mhCDD+LSZcrUfnXrRzCsWU5fLND2aJ2SEpOY0B/XSOpBP6fz+d
+ ziqQ==
+X-Gm-Message-State: AOAM531LE+ArvVF1H7EF2lFzvUyqKvVrSfS4S4MkVTTDJGgbLw/hdpIj
+ Rlo2y/zuffaq0AXoYR8P2QIeqS7y+m9zJ5VhqQKf3g==
+X-Google-Smtp-Source: ABdhPJzGyb3TH1bcQokPZmz0z0bEO1ztrmO4yv2tG/p2LjILvX0nFDYD4lsZ77eb8hx+H9Cq4rddOCByHhsHQ1Zke8A=
+X-Received: by 2002:a17:90a:4a8f:: with SMTP id
+ f15mr9209197pjh.19.1617285522145; 
+ Thu, 01 Apr 2021 06:58:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1616135353.git.xji@analogixsemi.com>
- <3e47928977e1386d78de7eb05be6a73d9ffaa616.1616135353.git.xji@analogixsemi.com>
-In-Reply-To: <3e47928977e1386d78de7eb05be6a73d9ffaa616.1616135353.git.xji@analogixsemi.com>
+ <f5d689c6ad6fd585292550950e9c69c31e551e61.1616135353.git.xji@analogixsemi.com>
+In-Reply-To: <f5d689c6ad6fd585292550950e9c69c31e551e61.1616135353.git.xji@analogixsemi.com>
 From: Robert Foss <robert.foss@linaro.org>
-Date: Thu, 1 Apr 2021 15:53:37 +0200
-Message-ID: <CAG3jFysh_Pg0pBaSN-mHNO01wMG5APkH9iJ63q_1tRgbtXUH-g@mail.gmail.com>
-Subject: Re: [PATCH v6 3/5] drm/bridge: anx7625: add MIPI DPI input feature
- support
+Date: Thu, 1 Apr 2021 15:58:30 +0200
+Message-ID: <CAG3jFytYMC80bJgtjfPzD1NL0wdYrk7PuYR3V5tXYyN-hceo5w@mail.gmail.com>
+Subject: Re: [PATCH v6 5/5] drm/bridge: anx7625: add HDMI audio function
 To: Xin Ji <xji@analogixsemi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -104,446 +103,332 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hey Xin,
 
-This patch looks good to me, feel free to add my r-b.
+This patch looks good to me.
 
 Reviewed-by: Robert Foss <robert.foss@linaro.org>
 
-On Fri, 19 Mar 2021 at 07:34, Xin Ji <xji@analogixsemi.com> wrote:
+On Fri, 19 Mar 2021 at 07:35, Xin Ji <xji@analogixsemi.com> wrote:
 >
-> Add MIPI rx DPI input support.
+> Add audio HDMI codec function support, enable it through device true flag
+> "analogix,audio-enable".
 >
 > Reported-by: kernel test robot <lkp@intel.com>
 > Signed-off-by: Xin Ji <xji@analogixsemi.com>
 > ---
->  drivers/gpu/drm/bridge/analogix/anx7625.c | 245 ++++++++++++++++------
->  drivers/gpu/drm/bridge/analogix/anx7625.h |  18 +-
->  2 files changed, 203 insertions(+), 60 deletions(-)
+>  drivers/gpu/drm/bridge/analogix/anx7625.c | 227 ++++++++++++++++++++++
+>  drivers/gpu/drm/bridge/analogix/anx7625.h |   5 +
+>  2 files changed, 232 insertions(+)
 >
 > diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> index 04536cc7afe7..8c514b46d361 100644
+> index b424a570effa..02bb169d9c57 100644
 > --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
 > +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> @@ -150,18 +150,18 @@ static int anx7625_write_and(struct anx7625_data *ctx,
+> @@ -30,6 +30,8 @@
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>
+> +#include <sound/hdmi-codec.h>
+> +
+>  #include <video/display_timing.h>
+>
+>  #include "anx7625.h"
+> @@ -150,6 +152,20 @@ static int anx7625_write_and(struct anx7625_data *ctx,
 >         return anx7625_reg_write(ctx, client, offset, (val & (mask)));
 >  }
 >
-> -static int anx7625_write_and_or(struct anx7625_data *ctx,
-> -                               struct i2c_client *client,
-> -                               u8 offset, u8 and_mask, u8 or_mask)
-> +static int anx7625_config_bit_matrix(struct anx7625_data *ctx)
->  {
-> -       int val;
-> +       int i, ret;
->
-> -       val = anx7625_reg_read(ctx, client, offset);
-> -       if (val < 0)
-> -               return val;
-> +       ret = anx7625_write_or(ctx, ctx->i2c.tx_p2_client,
-> +                              AUDIO_CONTROL_REGISTER, 0x80);
-> +       for (i = 0; i < 13; i++)
-> +               ret |= anx7625_reg_write(ctx, ctx->i2c.tx_p2_client,
-> +                                        VIDEO_BIT_MATRIX_12 + i,
-> +                                        0x18 + i);
->
-> -       return anx7625_reg_write(ctx, client,
-> -                                offset, (val & and_mask) | (or_mask));
-> +       return ret;
->  }
->
->  static int anx7625_read_ctrl_status_p0(struct anx7625_data *ctx)
-> @@ -219,38 +219,6 @@ static int anx7625_video_mute_control(struct anx7625_data *ctx,
->         return ret;
->  }
->
-> -static int anx7625_config_audio_input(struct anx7625_data *ctx)
-> -{
-> -       struct device *dev = &ctx->client->dev;
-> -       int ret;
-> -
-> -       /* Channel num */
-> -       ret = anx7625_reg_write(ctx, ctx->i2c.tx_p2_client,
-> -                               AUDIO_CHANNEL_STATUS_6, I2S_CH_2 << 5);
-> -
-> -       /* FS */
-> -       ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
-> -                                   AUDIO_CHANNEL_STATUS_4,
-> -                                   0xf0, AUDIO_FS_48K);
-> -       /* Word length */
-> -       ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
-> -                                   AUDIO_CHANNEL_STATUS_5,
-> -                                   0xf0, AUDIO_W_LEN_24_24MAX);
-> -       /* I2S */
-> -       ret |= anx7625_write_or(ctx, ctx->i2c.tx_p2_client,
-> -                               AUDIO_CHANNEL_STATUS_6, I2S_SLAVE_MODE);
-> -       ret |= anx7625_write_and(ctx, ctx->i2c.tx_p2_client,
-> -                                AUDIO_CONTROL_REGISTER, ~TDM_TIMING_MODE);
-> -       /* Audio change flag */
-> -       ret |= anx7625_write_or(ctx, ctx->i2c.rx_p0_client,
-> -                               AP_AV_STATUS, AP_AUDIO_CHG);
-> -
-> -       if (ret < 0)
-> -               DRM_DEV_ERROR(dev, "fail to config audio.\n");
-> -
-> -       return ret;
-> -}
-> -
->  /* Reduction of fraction a/b */
->  static void anx7625_reduction_of_a_fraction(unsigned long *a, unsigned long *b)
->  {
-> @@ -410,7 +378,7 @@ static int anx7625_dsi_video_timing_config(struct anx7625_data *ctx)
->         ret |= anx7625_write_and(ctx, ctx->i2c.rx_p1_client,
->                         MIPI_LANE_CTRL_0, 0xfc);
->         ret |= anx7625_write_or(ctx, ctx->i2c.rx_p1_client,
-> -                               MIPI_LANE_CTRL_0, 3);
-> +                               MIPI_LANE_CTRL_0, ctx->pdata.mipi_lanes - 1);
->
->         /* Htotal */
->         htotal = ctx->dt.hactive.min + ctx->dt.hfront_porch.min +
-> @@ -595,6 +563,76 @@ static int anx7625_dsi_config(struct anx7625_data *ctx)
->         return ret;
->  }
->
-> +static int anx7625_api_dpi_config(struct anx7625_data *ctx)
+> +static int anx7625_write_and_or(struct anx7625_data *ctx,
+> +                               struct i2c_client *client,
+> +                               u8 offset, u8 and_mask, u8 or_mask)
 > +{
-> +       struct device *dev = &ctx->client->dev;
-> +       u16 freq = ctx->dt.pixelclock.min / 1000;
-> +       int ret;
+> +       int val;
 > +
-> +       /* configure pixel clock */
-> +       ret = anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
-> +                               PIXEL_CLOCK_L, freq & 0xFF);
-> +       ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
-> +                                PIXEL_CLOCK_H, (freq >> 8));
+> +       val = anx7625_reg_read(ctx, client, offset);
+> +       if (val < 0)
+> +               return val;
 > +
-> +       /* set DPI mode */
-> +       /* set to DPI PLL module sel */
-> +       ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
-> +                                MIPI_DIGITAL_PLL_9, 0x20);
-> +       /* power down MIPI */
-> +       ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
-> +                                MIPI_LANE_CTRL_10, 0x08);
-> +       /* enable DPI mode */
-> +       ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
-> +                                MIPI_DIGITAL_PLL_18, 0x1C);
-> +       /* set first edge */
-> +       ret |= anx7625_reg_write(ctx, ctx->i2c.tx_p2_client,
-> +                                VIDEO_CONTROL_0, 0x06);
-> +       if (ret < 0)
-> +               DRM_DEV_ERROR(dev, "IO error : dpi phy set failed.\n");
-> +
-> +       return ret;
+> +       return anx7625_reg_write(ctx, client,
+> +                                offset, (val & and_mask) | (or_mask));
 > +}
 > +
-> +static int anx7625_dpi_config(struct anx7625_data *ctx)
-> +{
-> +       struct device *dev = &ctx->client->dev;
-> +       int ret;
-> +
-> +       DRM_DEV_DEBUG_DRIVER(dev, "config dpi\n");
-> +
-> +       /* DSC disable */
-> +       ret = anx7625_write_and(ctx, ctx->i2c.rx_p0_client,
-> +                               R_DSC_CTRL_0, ~DSC_EN);
-> +       if (ret < 0) {
-> +               DRM_DEV_ERROR(dev, "IO error : disable dsc failed.\n");
-> +               return ret;
-> +       }
-> +
-> +       ret = anx7625_config_bit_matrix(ctx);
-> +       if (ret < 0) {
-> +               DRM_DEV_ERROR(dev, "config bit matrix failed.\n");
-> +               return ret;
-> +       }
-> +
-> +       ret = anx7625_api_dpi_config(ctx);
-> +       if (ret < 0) {
-> +               DRM_DEV_ERROR(dev, "mipi phy(dpi) setup failed.\n");
-> +               return ret;
-> +       }
-> +
-> +       /* set MIPI RX EN */
-> +       ret = anx7625_write_or(ctx, ctx->i2c.rx_p0_client,
-> +                              AP_AV_STATUS, AP_MIPI_RX_EN);
-> +       /* clear mute flag */
-> +       ret |= anx7625_write_and(ctx, ctx->i2c.rx_p0_client,
-> +                                AP_AV_STATUS, (u8)~AP_MIPI_MUTE);
-> +       if (ret < 0)
-> +               DRM_DEV_ERROR(dev, "IO error : enable mipi rx failed.\n");
-> +
-> +       return ret;
-> +}
-> +
->  static void anx7625_dp_start(struct anx7625_data *ctx)
+>  static int anx7625_config_bit_matrix(struct anx7625_data *ctx)
 >  {
->         int ret;
-> @@ -605,9 +643,10 @@ static void anx7625_dp_start(struct anx7625_data *ctx)
->                 return;
->         }
+>         int i, ret;
+> @@ -1498,6 +1514,9 @@ static int anx7625_parse_dt(struct device *dev,
+>         else
+>                 DRM_DEV_DEBUG_DRIVER(dev, "found MIPI DSI host node.\n");
 >
-> -       anx7625_config_audio_input(ctx);
-> -
-> -       ret = anx7625_dsi_config(ctx);
-> +       if (ctx->pdata.is_dpi)
-> +               ret = anx7625_dpi_config(ctx);
+> +       if (of_property_read_bool(np, "analogix,audio-enable"))
+> +               pdata->audio_en = 1;
+> +
+>         ret = drm_of_find_panel_or_bridge(np, 1, 0, &panel, NULL);
+>         if (ret < 0) {
+>                 if (ret == -ENODEV)
+> @@ -1568,6 +1587,208 @@ static enum drm_connector_status anx7625_sink_detect(struct anx7625_data *ctx)
+>                                      connector_status_disconnected;
+>  }
+>
+> +static int anx7625_audio_hw_params(struct device *dev, void *data,
+> +                                  struct hdmi_codec_daifmt *fmt,
+> +                                  struct hdmi_codec_params *params)
+> +{
+> +       struct anx7625_data *ctx = dev_get_drvdata(dev);
+> +       int wl, ch, rate;
+> +       int ret = 0;
+> +
+> +       if (fmt->fmt != HDMI_DSP_A) {
+> +               DRM_DEV_ERROR(dev, "only supports DSP_A\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       DRM_DEV_DEBUG_DRIVER(dev, "setting %d Hz, %d bit, %d channels\n",
+> +                            params->sample_rate, params->sample_width,
+> +                            params->cea.channels);
+> +
+> +       ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
+> +                                   AUDIO_CHANNEL_STATUS_6,
+> +                                   ~I2S_SLAVE_MODE,
+> +                                   TDM_SLAVE_MODE);
+> +
+> +       /* Word length */
+> +       switch (params->sample_width) {
+> +       case 16:
+> +               wl = AUDIO_W_LEN_16_20MAX;
+> +               break;
+> +       case 18:
+> +               wl = AUDIO_W_LEN_18_20MAX;
+> +               break;
+> +       case 20:
+> +               wl = AUDIO_W_LEN_20_20MAX;
+> +               break;
+> +       case 24:
+> +               wl = AUDIO_W_LEN_24_24MAX;
+> +               break;
+> +       default:
+> +               DRM_DEV_DEBUG_DRIVER(dev, "wordlength: %d bit not support",
+> +                                    params->sample_width);
+> +               return -EINVAL;
+> +       }
+> +       ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
+> +                                   AUDIO_CHANNEL_STATUS_5,
+> +                                   0xf0, wl);
+> +
+> +       /* Channel num */
+> +       switch (params->cea.channels) {
+> +       case 2:
+> +               ch = I2S_CH_2;
+> +               break;
+> +       case 4:
+> +               ch = TDM_CH_4;
+> +               break;
+> +       case 6:
+> +               ch = TDM_CH_6;
+> +               break;
+> +       case 8:
+> +               ch = TDM_CH_8;
+> +               break;
+> +       default:
+> +               DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
+> +                                    params->cea.channels);
+> +               return -EINVAL;
+> +       }
+> +       ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
+> +                              AUDIO_CHANNEL_STATUS_6, 0x1f, ch << 5);
+> +       if (ch > I2S_CH_2)
+> +               ret |= anx7625_write_or(ctx, ctx->i2c.tx_p2_client,
+> +                               AUDIO_CHANNEL_STATUS_6, AUDIO_LAYOUT);
 > +       else
-> +               ret = anx7625_dsi_config(ctx);
->
->         if (ret < 0)
->                 DRM_DEV_ERROR(dev, "MIPI phy setup error.\n");
-> @@ -1051,6 +1090,7 @@ static void anx7625_start_dp_work(struct anx7625_data *ctx)
->                 return;
->         }
->
-> +       ctx->hpd_status = 1;
->         ctx->hpd_high_cnt++;
->
->         /* Not support HDCP */
-> @@ -1060,8 +1100,10 @@ static void anx7625_start_dp_work(struct anx7625_data *ctx)
->         ret |= anx7625_write_or(ctx, ctx->i2c.rx_p1_client, 0xec, 0x10);
->         /* Interrupt for DRM */
->         ret |= anx7625_write_or(ctx, ctx->i2c.rx_p1_client, 0xff, 0x01);
-> -       if (ret < 0)
+> +               ret |= anx7625_write_and(ctx, ctx->i2c.tx_p2_client,
+> +                               AUDIO_CHANNEL_STATUS_6, ~AUDIO_LAYOUT);
+> +
+> +       /* FS */
+> +       switch (params->sample_rate) {
+> +       case 32000:
+> +               rate = AUDIO_FS_32K;
+> +               break;
+> +       case 44100:
+> +               rate = AUDIO_FS_441K;
+> +               break;
+> +       case 48000:
+> +               rate = AUDIO_FS_48K;
+> +               break;
+> +       case 88200:
+> +               rate = AUDIO_FS_882K;
+> +               break;
+> +       case 96000:
+> +               rate = AUDIO_FS_96K;
+> +               break;
+> +       case 176400:
+> +               rate = AUDIO_FS_1764K;
+> +               break;
+> +       case 192000:
+> +               rate = AUDIO_FS_192K;
+> +               break;
+> +       default:
+> +               DRM_DEV_DEBUG_DRIVER(dev, "sample rate: %d not support",
+> +                                    params->sample_rate);
+> +               return -EINVAL;
+> +       }
+> +       ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
+> +                                   AUDIO_CHANNEL_STATUS_4,
+> +                                   0xf0, rate);
+> +       ret |= anx7625_write_or(ctx, ctx->i2c.rx_p0_client,
+> +                               AP_AV_STATUS, AP_AUDIO_CHG);
 > +       if (ret < 0) {
-> +               DRM_DEV_ERROR(dev, "fail to setting HDCP/auth\n");
->                 return;
-> +       }
->
->         ret = anx7625_reg_read(ctx, ctx->i2c.rx_p1_client, 0x86);
->         if (ret < 0)
-> @@ -1080,6 +1122,10 @@ static void anx7625_hpd_polling(struct anx7625_data *ctx)
->         int ret, val;
->         struct device *dev = &ctx->client->dev;
->
-> +       /* Interrupt mode, no need poll HPD status, just return */
-> +       if (ctx->pdata.intp_irq)
-> +               return;
-> +
->         if (atomic_read(&ctx->power_status) != 1) {
->                 DRM_DEV_DEBUG_DRIVER(dev, "No need to poling HPD status.\n");
->                 return;
-> @@ -1130,6 +1176,21 @@ static void anx7625_remove_edid(struct anx7625_data *ctx)
->         ctx->slimport_edid_p.edid_block_num = -1;
->  }
->
-> +static void anx7625_dp_adjust_swing(struct anx7625_data *ctx)
-> +{
-> +       int i;
-> +
-> +       for (i = 0; i < ctx->pdata.dp_lane0_swing_reg_cnt; i++)
-> +               anx7625_reg_write(ctx, ctx->i2c.tx_p1_client,
-> +                                 DP_TX_LANE0_SWING_REG0 + i,
-> +                                 ctx->pdata.lane0_reg_data[i] & 0xFF);
-> +
-> +       for (i = 0; i < ctx->pdata.dp_lane1_swing_reg_cnt; i++)
-> +               anx7625_reg_write(ctx, ctx->i2c.tx_p1_client,
-> +                                 DP_TX_LANE1_SWING_REG0 + i,
-> +                                 ctx->pdata.lane1_reg_data[i] & 0xFF);
-> +}
-> +
->  static void dp_hpd_change_handler(struct anx7625_data *ctx, bool on)
->  {
->         struct device *dev = &ctx->client->dev;
-> @@ -1145,9 +1206,8 @@ static void dp_hpd_change_handler(struct anx7625_data *ctx, bool on)
->         } else {
->                 DRM_DEV_DEBUG_DRIVER(dev, " HPD high\n");
->                 anx7625_start_dp_work(ctx);
-> +               anx7625_dp_adjust_swing(ctx);
->         }
-> -
-> -       ctx->hpd_status = 1;
->  }
->
->  static int anx7625_hpd_change_detect(struct anx7625_data *ctx)
-> @@ -1224,20 +1284,72 @@ static irqreturn_t anx7625_intr_hpd_isr(int irq, void *data)
->         return IRQ_HANDLED;
->  }
->
-> +static int anx7625_get_swing_setting(struct device *dev,
-> +                                    struct anx7625_platform_data *pdata)
-> +{
-> +       int num_regs;
-> +
-> +       if (of_get_property(dev->of_node,
-> +                           "analogix,lane0-swing", &num_regs)) {
-> +               if (num_regs > DP_TX_SWING_REG_CNT)
-> +                       num_regs = DP_TX_SWING_REG_CNT;
-> +
-> +               pdata->dp_lane0_swing_reg_cnt = num_regs;
-> +               of_property_read_u32_array(dev->of_node, "analogix,lane0-swing",
-> +                                          pdata->lane0_reg_data, num_regs);
-> +       }
-> +
-> +       if (of_get_property(dev->of_node,
-> +                           "analogix,lane1-swing", &num_regs)) {
-> +               if (num_regs > DP_TX_SWING_REG_CNT)
-> +                       num_regs = DP_TX_SWING_REG_CNT;
-> +
-> +               pdata->dp_lane1_swing_reg_cnt = num_regs;
-> +               of_property_read_u32_array(dev->of_node, "analogix,lane1-swing",
-> +                                          pdata->lane1_reg_data, num_regs);
+> +               DRM_DEV_ERROR(dev, "IO error : config audio.\n");
+> +               return -EIO;
 > +       }
 > +
 > +       return 0;
 > +}
 > +
->  static int anx7625_parse_dt(struct device *dev,
->                             struct anx7625_platform_data *pdata)
->  {
-> -       struct device_node *np = dev->of_node;
-> +       struct device_node *np = dev->of_node, *ep0;
->         struct drm_panel *panel;
->         int ret;
-> +       int bus_type, mipi_lanes;
->
-> +       anx7625_get_swing_setting(dev, pdata);
+> +static void anx7625_audio_shutdown(struct device *dev, void *data)
+> +{
+> +       DRM_DEV_DEBUG_DRIVER(dev, "stop audio\n");
+> +}
 > +
-> +       pdata->is_dpi = 1; /* default dpi mode */
->         pdata->mipi_host_node = of_graph_get_remote_node(np, 0, 0);
->         if (!pdata->mipi_host_node) {
->                 DRM_DEV_ERROR(dev, "fail to get internal panel.\n");
->                 return -ENODEV;
->         }
->
-> -       DRM_DEV_DEBUG_DRIVER(dev, "found dsi host node.\n");
-> +       bus_type = 5;
-> +       mipi_lanes = MAX_LANES_SUPPORT;
-> +       ep0 = of_graph_get_endpoint_by_regs(np, 0, 0);
-> +       if (ep0) {
-> +               if (of_property_read_u32(ep0, "bus-type", &bus_type))
-> +                       bus_type = 0;
+> +static int anx7625_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+> +                                      struct device_node *endpoint)
+> +{
+> +       struct of_endpoint of_ep;
+> +       int ret;
 > +
-> +               mipi_lanes = of_property_count_u32_elems(ep0, "data-lanes");
+> +       ret = of_graph_parse_endpoint(endpoint, &of_ep);
+> +       if (ret < 0)
+> +               return ret;
+> +
+> +       /*
+> +        * HDMI sound should be located at external DPI port
+> +        * Didn't have good way to check where is internal(DSI)
+> +        * or external(DPI) bridge
+> +        */
+> +       return 0;
+> +}
+> +
+> +static void
+> +anx7625_audio_update_connector_status(struct anx7625_data *ctx,
+> +                                     enum drm_connector_status status)
+> +{
+> +       if (ctx->plugged_cb && ctx->codec_dev) {
+> +               ctx->plugged_cb(ctx->codec_dev,
+> +                               status == connector_status_connected);
+> +       }
+> +}
+> +
+> +static int anx7625_audio_hook_plugged_cb(struct device *dev, void *data,
+> +                                        hdmi_codec_plugged_cb fn,
+> +                                        struct device *codec_dev)
+> +{
+> +       struct anx7625_data *ctx = data;
+> +
+> +       ctx->plugged_cb = fn;
+> +       ctx->codec_dev = codec_dev;
+> +       anx7625_audio_update_connector_status(ctx, anx7625_sink_detect(ctx));
+> +
+> +       return 0;
+> +}
+> +
+> +static const struct hdmi_codec_ops anx7625_codec_ops = {
+> +       .hw_params      = anx7625_audio_hw_params,
+> +       .audio_shutdown = anx7625_audio_shutdown,
+> +       .get_dai_id     = anx7625_hdmi_i2s_get_dai_id,
+> +       .hook_plugged_cb = anx7625_audio_hook_plugged_cb,
+> +};
+> +
+> +static void anx7625_unregister_audio(struct anx7625_data *ctx)
+> +{
+> +       struct device *dev = &ctx->client->dev;
+> +
+> +       if (ctx->audio_pdev) {
+> +               platform_device_unregister(ctx->audio_pdev);
+> +               ctx->audio_pdev = NULL;
 > +       }
 > +
-> +       if (bus_type == 5) /* bus type is Parallel(DSI) */
-> +               pdata->is_dpi = 0;
+> +       DRM_DEV_DEBUG_DRIVER(dev, "unbound to %s", HDMI_CODEC_DRV_NAME);
+> +}
 > +
-> +       pdata->mipi_lanes = mipi_lanes;
-> +       if (pdata->mipi_lanes > MAX_LANES_SUPPORT || pdata->mipi_lanes <= 0)
-> +               pdata->mipi_lanes = MAX_LANES_SUPPORT;
+> +static int anx7625_register_audio(struct device *dev, struct anx7625_data *ctx)
+> +{
+> +       struct hdmi_codec_pdata codec_data = {
+> +               .ops = &anx7625_codec_ops,
+> +               .max_i2s_channels = 8,
+> +               .i2s = 1,
+> +               .data = ctx,
+> +       };
 > +
-> +       if (pdata->is_dpi)
-> +               DRM_DEV_DEBUG_DRIVER(dev, "found MIPI DPI host node.\n");
-> +       else
-> +               DRM_DEV_DEBUG_DRIVER(dev, "found MIPI DSI host node.\n");
->
->         ret = drm_of_find_panel_or_bridge(np, 1, 0, &panel, NULL);
->         if (ret < 0) {
-> @@ -1300,9 +1412,13 @@ static enum drm_connector_status anx7625_sink_detect(struct anx7625_data *ctx)
->  {
->         struct device *dev = &ctx->client->dev;
->
-> -       DRM_DEV_DEBUG_DRIVER(dev, "sink detect, return connected\n");
-> +       DRM_DEV_DEBUG_DRIVER(dev, "sink detect\n");
+> +       ctx->audio_pdev = platform_device_register_data(dev,
+> +                                                       HDMI_CODEC_DRV_NAME,
+> +                                                       PLATFORM_DEVID_AUTO,
+> +                                                       &codec_data,
+> +                                                       sizeof(codec_data));
 > +
-> +       if (ctx->pdata.panel_bridge)
-> +               return connector_status_connected;
->
-> -       return connector_status_connected;
-> +       return ctx->hpd_status ? connector_status_connected :
-> +                                    connector_status_disconnected;
->  }
->
+> +       if (IS_ERR(ctx->audio_pdev))
+> +               return IS_ERR(ctx->audio_pdev);
+> +
+> +       DRM_DEV_DEBUG_DRIVER(dev, "bound to %s", HDMI_CODEC_DRV_NAME);
+> +
+> +       return 0;
+> +}
+> +
 >  static int anx7625_attach_dsi(struct anx7625_data *ctx)
-> @@ -1330,7 +1446,7 @@ static int anx7625_attach_dsi(struct anx7625_data *ctx)
->                 return -EINVAL;
->         }
->
-> -       dsi->lanes = 4;
-> +       dsi->lanes = ctx->pdata.mipi_lanes;
->         dsi->format = MIPI_DSI_FMT_RGB888;
->         dsi->mode_flags = MIPI_DSI_MODE_VIDEO   |
->                 MIPI_DSI_MODE_VIDEO_SYNC_PULSE  |
-> @@ -1376,10 +1492,12 @@ static int anx7625_bridge_attach(struct drm_bridge *bridge,
->                 return -ENODEV;
->         }
->
-> -       err = anx7625_attach_dsi(ctx);
-> -       if (err) {
-> -               DRM_DEV_ERROR(dev, "Fail to attach to dsi : %d\n", err);
-> -               return err;
-> +       if (!ctx->pdata.is_dpi) {
-> +               err = anx7625_attach_dsi(ctx);
-> +               if (err) {
-> +                       DRM_DEV_ERROR(dev, "Fail to attach to dsi : %d\n", err);
-> +                       return err;
-> +               }
->         }
->
->         if (ctx->pdata.panel_bridge) {
-> @@ -1478,6 +1596,10 @@ static bool anx7625_bridge_mode_fixup(struct drm_bridge *bridge,
->
->         DRM_DEV_DEBUG_DRIVER(dev, "drm mode fixup set\n");
->
-> +       /* No need fixup for external monitor */
-> +       if (!ctx->pdata.panel_bridge)
-> +               return true;
-> +
->         hsync = mode->hsync_end - mode->hsync_start;
->         hfp = mode->hsync_start - mode->hdisplay;
->         hbp = mode->htotal - mode->hsync_end;
-> @@ -1786,8 +1908,13 @@ static int anx7625_i2c_probe(struct i2c_client *client,
->
->         platform->bridge.funcs = &anx7625_bridge_funcs;
->         platform->bridge.of_node = client->dev.of_node;
-> -       platform->bridge.ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
-> -       platform->bridge.type = DRM_MODE_CONNECTOR_eDP;
-> +       platform->bridge.ops = DRM_BRIDGE_OP_EDID;
-> +       if (!platform->pdata.panel_bridge)
-> +               platform->bridge.ops |= DRM_BRIDGE_OP_HPD |
-> +                                       DRM_BRIDGE_OP_DETECT;
-> +       platform->bridge.type = platform->pdata.panel_bridge ?
-> +                                   DRM_MODE_CONNECTOR_eDP :
-> +                                   DRM_MODE_CONNECTOR_DisplayPort;
+>  {
+>         struct mipi_dsi_device *dsi;
+> @@ -2064,6 +2285,9 @@ static int anx7625_i2c_probe(struct i2c_client *client,
+>                                     DRM_MODE_CONNECTOR_DisplayPort;
 >         drm_bridge_add(&platform->bridge);
 >
+> +       if (platform->pdata.audio_en)
+> +               anx7625_register_audio(dev, platform);
+> +
 >         DRM_DEV_DEBUG_DRIVER(dev, "probe done\n");
+>
+>         return 0;
+> @@ -2089,6 +2313,9 @@ static int anx7625_i2c_remove(struct i2c_client *client)
+>
+>         anx7625_unregister_i2c_dummy_clients(platform);
+>
+> +       if (platform->pdata.audio_en)
+> +               anx7625_unregister_audio(platform);
+> +
+>         kfree(platform);
+>         return 0;
+>  }
 > diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.h b/drivers/gpu/drm/bridge/analogix/anx7625.h
-> index 193ad86c5450..beee95da2155 100644
+> index c6f93e4df0ed..d6be2a83fad9 100644
 > --- a/drivers/gpu/drm/bridge/analogix/anx7625.h
 > +++ b/drivers/gpu/drm/bridge/analogix/anx7625.h
-> @@ -141,12 +141,20 @@
->  #define  HORIZONTAL_BACK_PORCH_H      0x22  /* Bit[7:4] are reserved */
+> @@ -111,6 +111,7 @@
+>  #define AUDIO_CHANNEL_STATUS_6 0xd5
+>  #define TDM_SLAVE_MODE 0x10
+>  #define I2S_SLAVE_MODE 0x08
+> +#define AUDIO_LAYOUT   0x01
 >
->  /******** END of I2C Address 0x72 *********/
-> +
-> +/***************************************************************/
-> +/* Register definition of device address 0x7a */
-> +#define DP_TX_SWING_REG_CNT            0x14
-> +#define DP_TX_LANE0_SWING_REG0         0x00
-> +#define DP_TX_LANE1_SWING_REG0         0x14
-> +/******** END of I2C Address 0x7a *********/
-> +
->  /***************************************************************/
->  /* Register definition of device address 0x7e */
->devm_drm_panel_bridge_add
->  #define  I2C_ADDR_7E_FLASH_CONTROLLER  0x7E
->
-> -#define FLASH_LOAD_STA 0x05
-> +#define FLASH_LOAD_STA          0x05
->  #define FLASH_LOAD_STA_CHK     BIT(7)
->
->  #define  XTAL_FRQ_SEL    0x3F
-> @@ -347,11 +355,19 @@ struct s_edid_data {
->
->  /***************** Display End *****************/
->
-> +#define MAX_LANES_SUPPORT      4
-> +
->  struct anx7625_platform_data {
->         struct gpio_desc *gpio_p_on;
->         struct gpio_desc *gpio_reset;
->         struct drm_bridge *panel_bridge;
+>  #define AUDIO_CONTROL_REGISTER 0xe6
+>  #define TDM_TIMING_MODE 0x08
+> @@ -400,6 +401,7 @@ struct anx7625_platform_data {
 >         int intp_irq;
-> +       int is_dpi;
-> +       int mipi_lanes;
-> +       int dp_lane0_swing_reg_cnt;
-> +       int lane0_reg_data[DP_TX_SWING_REG_CNT];
-> +       int dp_lane1_swing_reg_cnt;
-> +       int lane1_reg_data[DP_TX_SWING_REG_CNT];
->         u32 low_power_mode;
->         struct device_node *mipi_host_node;
->  };
+>         int is_dpi;
+>         int mipi_lanes;
+> +       int audio_en;
+>         int dp_lane0_swing_reg_cnt;
+>         int lane0_reg_data[DP_TX_SWING_REG_CNT];
+>         int dp_lane1_swing_reg_cnt;
+> @@ -420,6 +422,7 @@ struct anx7625_i2c_client {
+>
+>  struct anx7625_data {
+>         struct anx7625_platform_data pdata;
+> +       struct platform_device *audio_pdev;
+>         atomic_t power_status;
+>         int hpd_status;
+>         int hpd_high_cnt;
+> @@ -429,6 +432,8 @@ struct anx7625_data {
+>         struct anx7625_i2c_client i2c;
+>         struct i2c_client *last_client;
+>         struct s_edid_data slimport_edid_p;
+> +       struct device *codec_dev;
+> +       hdmi_codec_plugged_cb plugged_cb;
+>         struct work_struct work;
+>         struct workqueue_struct *workqueue;
+>         char edid_block;
 > --
 > 2.25.1
 >
