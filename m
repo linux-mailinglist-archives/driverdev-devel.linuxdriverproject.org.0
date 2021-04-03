@@ -1,60 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A297935323C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Apr 2021 05:40:17 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F05A35337C
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Apr 2021 12:51:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A31B140E85;
-	Sat,  3 Apr 2021 03:40:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VLNF0QQb0v-y; Sat,  3 Apr 2021 03:40:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E7F90400DB;
-	Sat,  3 Apr 2021 03:40:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6FADA1C1189
- for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 03:40:01 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 587314183A
- for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 03:40:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9829B419CD;
+	Sat,  3 Apr 2021 10:51:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 62auiz9hqCjI for <devel@linuxdriverproject.org>;
- Sat,  3 Apr 2021 03:40:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 219F241986
- for <devel@driverdev.osuosl.org>; Sat,  3 Apr 2021 03:40:00 +0000 (UTC)
-IronPort-SDR: OVB6/Bf5idwQUFJlISBQHFxPEweLWTafX8GwwYWlVOGsdgoMbT/+MXNAFBQpd8M9nJGpNS985n
- OurLf+kwmPcA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9942"; a="192674370"
-X-IronPort-AV: E=Sophos;i="5.81,301,1610438400"; d="scan'208";a="192674370"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2021 20:39:57 -0700
-IronPort-SDR: eG8qBe9ltcJ5S1esCAqqgbDrSHFVK9bQ43YsoJqsVwii8IH5akAnTpS80dtA9PU/9cotcX0Tf3
- YHbBgFwb9bpA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,301,1610438400"; d="scan'208";a="378297663"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 02 Apr 2021 20:39:56 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lSX8d-0007Vt-NC; Sat, 03 Apr 2021 03:39:55 +0000
-Date: Sat, 03 Apr 2021 11:39:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- f7514a6630166a7b566dee9b1af2e87e431959be
-Message-ID: <6067e36b.BesKpn/bA3AVw6Gk%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BVL6GuVrgcHq; Sat,  3 Apr 2021 10:51:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4CAB84196B;
+	Sat,  3 Apr 2021 10:51:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4778B1BF310
+ for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 10:51:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3185484D6A
+ for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 10:51:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yUF_Ejmu_tIe for <devel@linuxdriverproject.org>;
+ Sat,  3 Apr 2021 10:51:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B62F184D67
+ for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 10:51:33 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BCFA461006;
+ Sat,  3 Apr 2021 10:51:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1617447092;
+ bh=11fo+56dWWE978yMT6knzohG9xQgkQgPOTSHpycPBKg=;
+ h=Date:From:To:Cc:Subject:From;
+ b=iODyNnDoc2XLXNx0IK2AAKuUjgENp0UBjT8GWq45PbsiCOCG3zxZ1gYeYYIOS7g0S
+ VJa8P+i0OEXD73AODyePGGP/eUdFMX87d3hIh74iBwO6Uf+71nczu308F2/DUqSDI9
+ GAOZeeiSOcugHR5CtxhoJohl+aWi6w1kJ6vKN2Bg=
+Date: Sat, 3 Apr 2021 12:51:29 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging driver fix for 5.12-rc6
+Message-ID: <YGhIsWHsP474a+dE@kroah.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,128 +63,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@linuxdriverproject.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: f7514a6630166a7b566dee9b1af2e87e431959be  of: property: fw_devlink: Add support for remote-endpoint
+The following changes since commit 0d02ec6b3136c73c09e7859f0d0e4e2c4c07b49b:
 
-elapsed time: 722m
+  Linux 5.12-rc4 (2021-03-21 14:56:43 -0700)
 
-configs tested: 98
-configs skipped: 2
+are available in the Git repository at:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.12-rc6
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-ia64                             allmodconfig
-m68k                         amcore_defconfig
-m68k                       bvme6000_defconfig
-arm                       spear13xx_defconfig
-powerpc                     ppa8548_defconfig
-s390                       zfcpdump_defconfig
-ia64                          tiger_defconfig
-powerpc                  storcenter_defconfig
-arm                         s5pv210_defconfig
-arm                          ep93xx_defconfig
-m68k                         apollo_defconfig
-powerpc                   lite5200b_defconfig
-arm                            hisi_defconfig
-powerpc                        icon_defconfig
-xtensa                  nommu_kc705_defconfig
-arm                    vt8500_v6_v7_defconfig
-xtensa                         virt_defconfig
-arc                        nsim_700_defconfig
-powerpc                         wii_defconfig
-arm                          ixp4xx_defconfig
-xtensa                              defconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a006-20210402
-i386                 randconfig-a003-20210402
-i386                 randconfig-a001-20210402
-i386                 randconfig-a004-20210402
-i386                 randconfig-a005-20210402
-i386                 randconfig-a002-20210402
-x86_64               randconfig-a004-20210402
-x86_64               randconfig-a005-20210402
-x86_64               randconfig-a003-20210402
-x86_64               randconfig-a001-20210402
-x86_64               randconfig-a002-20210402
-x86_64               randconfig-a006-20210402
-i386                 randconfig-a014-20210401
-i386                 randconfig-a011-20210401
-i386                 randconfig-a016-20210401
-i386                 randconfig-a012-20210401
-i386                 randconfig-a013-20210401
-i386                 randconfig-a015-20210401
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+for you to fetch changes up to e78836ae76d20f38eed8c8c67f21db97529949da:
 
-clang tested configs:
-x86_64               randconfig-a014-20210402
-x86_64               randconfig-a015-20210402
-x86_64               randconfig-a011-20210402
-x86_64               randconfig-a013-20210402
-x86_64               randconfig-a012-20210402
-x86_64               randconfig-a016-20210402
+  staging: rtl8192e: Change state information from u16 to u8 (2021-03-23 13:32:40 +0100)
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+----------------------------------------------------------------
+Staging driver fixes for 5.12-rc6
+
+Here are 2 rtl8192e staging driver fixes for reported problems.  Both of
+these have been in linux-next for a while with no reported issues.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Atul Gopinathan (2):
+      staging: rtl8192e: Fix incorrect source in memcpy()
+      staging: rtl8192e: Change state information from u16 to u8
+
+ drivers/staging/rtl8192e/rtllib.h    | 2 +-
+ drivers/staging/rtl8192e/rtllib_rx.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
