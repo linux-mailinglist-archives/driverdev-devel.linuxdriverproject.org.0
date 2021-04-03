@@ -1,62 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 428E4353444
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Apr 2021 16:08:15 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95DAF353530
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Apr 2021 20:18:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B3C1341AA6;
-	Sat,  3 Apr 2021 14:08:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9FB3141878;
+	Sat,  3 Apr 2021 18:18:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DYeUEVDgFAvI; Sat,  3 Apr 2021 14:08:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n0lcM3QN4W96; Sat,  3 Apr 2021 18:18:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A395A41A9C;
-	Sat,  3 Apr 2021 14:08:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 186E44186D;
+	Sat,  3 Apr 2021 18:18:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 60F6B1BF2C3
- for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 14:07:59 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EE7881BF42C
+ for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 18:18:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5058241842
- for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 14:07:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DC7DE41AC1
+ for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 18:18:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=163.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E8dXqpwO0CwN for <devel@linuxdriverproject.org>;
- Sat,  3 Apr 2021 14:07:56 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QdZDi-7Btx7W for <devel@linuxdriverproject.org>;
+ Sat,  3 Apr 2021 18:18:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from m12-17.163.com (m12-17.163.com [220.181.12.17])
- by smtp2.osuosl.org (Postfix) with SMTP id 0E5B4401BD
- for <devel@driverdev.osuosl.org>; Sat,  3 Apr 2021 14:07:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=0qy/X
- xSv0LvNeE6/iJrXLwqgtsytvrqCk+LelXNA+8A=; b=juQBfyb6LR0uiWeYhXg9X
- eeQkYhDLjxSAGy9ydw4poGmUUwQOvgt8s43/ypWzR2qlPip6TJmmHBKzZOSUwEgc
- xhNRtxOHsmqWfKqjcP3fxBxtMiVG35QU9CdUEXn1FfRAK96Rst9T2Yx447S6tE18
- axN1W0NhTmkNPszFMkb+a8=
-Received: from localhost.localdomain (unknown [120.229.64.251])
- by smtp13 (Coremail) with SMTP id EcCowAA31Hihdmhgd8zhtQ--.8258S2;
- Sat, 03 Apr 2021 22:07:30 +0800 (CST)
-From: Carlis <llyz108@163.com>
-To: gregkh@linuxfoundation.org,
-	zhangxuezhi1@yulong.com
-Subject: [PATCH] staging: fbtft: convert sysfs snprintf to sysfs_emit
-Date: Sat,  3 Apr 2021 14:07:22 +0000
-Message-Id: <20210403140722.169623-1-llyz108@163.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
-X-CM-TRANSID: EcCowAA31Hihdmhgd8zhtQ--.8258S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JrWUKr1DJFyDCF4xCF4Uurg_yoWfZrb_Ar
- 10vr1Sg3y0kryIyryFkF1Sva4IvF4fZF4vg3y3t393Za15uw4rJrWUuw1ktrZIgF4xZFyf
- Ars7XryrKr1UGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8NVy7UUUUU==
-X-Originating-IP: [120.229.64.251]
-X-CM-SenderInfo: xoo16iiqy6il2tof0z/1tbiWwJphVSIpiU-DgAAsb
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E9C8141AC0
+ for <devel@linuxdriverproject.org>; Sat,  3 Apr 2021 18:18:41 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPS id B7DEC61286;
+ Sat,  3 Apr 2021 18:18:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1617473920;
+ bh=FywnJxMdr1k3pQ1HeIhFN0gSdsokC74HndvCOCCRrQ4=;
+ h=Subject:From:In-Reply-To:References:Date:To:Cc:From;
+ b=kS1YbHDeqm7mpXNvzjM0THgRxSvgNcPonBg/hmHU3F4MYhMkX0f0uVuDA2fFN23Vz
+ UmBpViOq6oJlY5ni7vv+YvtmS11T1pBUMj/U8saA6+VzvF7Y7D1eyvZhcu8NkPaJTC
+ HB8j38h7FkETdcrDZhqqNHLfC54xcDWAaZGCO6MOqEhKHAHRO1LyewUeaAYUjLHmWd
+ aUMDk/ezA1SQ/buH4LnJPyfdOBKlZAt5/nwpob2utZ/IIeyKUnNHqr+Hk6fJVktAOb
+ cBBxYRlnB9phKJ4IpvG+jvozXZuZ33kkV75iGUeTJOpEsdr2eUSkaI/szAEJoGdvFQ
+ BC0glAq0uB+eA==
+Received: from pdx-korg-docbuild-2.ci.codeaurora.org (localhost.localdomain
+ [127.0.0.1])
+ by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id B201B600DF;
+ Sat,  3 Apr 2021 18:18:40 +0000 (UTC)
+Subject: Re: [GIT PULL] Staging driver fix for 5.12-rc6
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <YGhIsWHsP474a+dE@kroah.com>
+References: <YGhIsWHsP474a+dE@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <YGhIsWHsP474a+dE@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.12-rc6
+X-PR-Tracked-Commit-Id: e78836ae76d20f38eed8c8c67f21db97529949da
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 3e707eb6b8aa715847c17279f9c17c8dca2d639b
+Message-Id: <161747392072.13474.11297671042251072132.pr-tracker-bot@kernel.org>
+Date: Sat, 03 Apr 2021 18:18:40 +0000
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,41 +76,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, devel@linuxdriverproject.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Xuezhi Zhang <zhangxuezhi1@yulong.com>
+The pull request you sent on Sat, 3 Apr 2021 12:51:29 +0200:
 
-Fix the following coccicheck warning:
-drivers/staging/fbtft//fbtft-sysfs.c:202:8-16: 
-WARNING: use scnprintf or sprintf
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.12-rc6
 
-Signed-off-by: Xuezhi Zhang <zhangxuezhi1@yulong.com>
----
- drivers/staging/fbtft/fbtft-sysfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/3e707eb6b8aa715847c17279f9c17c8dca2d639b
 
-diff --git a/drivers/staging/fbtft/fbtft-sysfs.c b/drivers/staging/fbtft/fbtft-sysfs.c
-index 26e52cc2d..39e8d2806 100644
---- a/drivers/staging/fbtft/fbtft-sysfs.c
-+++ b/drivers/staging/fbtft/fbtft-sysfs.c
-@@ -199,7 +199,7 @@ static ssize_t show_debug(struct device *device,
- 	struct fb_info *fb_info = dev_get_drvdata(device);
- 	struct fbtft_par *par = fb_info->par;
- 
--	return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
-+	return sysfs_emit(buf, "%lu\n", par->debug);
- }
- 
- static struct device_attribute debug_device_attr =
+Thank you!
+
 -- 
-2.25.1
-
-
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/prtracker.html
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
