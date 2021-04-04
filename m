@@ -1,60 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 790A53536B2
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Apr 2021 06:35:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79F7C353818
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Apr 2021 14:44:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C395B607F7;
-	Sun,  4 Apr 2021 04:35:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 92F3A40EEF;
+	Sun,  4 Apr 2021 12:44:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QqhVzdvTanl5; Sun,  4 Apr 2021 12:44:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id AE963405F4;
+	Sun,  4 Apr 2021 12:44:39 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A50A1BF3DC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Apr 2021 12:44:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 398C8606DA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Apr 2021 12:44:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UsstbYOZxf2r; Sun,  4 Apr 2021 04:35:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ED744607E0;
-	Sun,  4 Apr 2021 04:35:11 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7B8061BF47D
- for <devel@linuxdriverproject.org>; Sun,  4 Apr 2021 04:35:02 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6529F40171
- for <devel@linuxdriverproject.org>; Sun,  4 Apr 2021 04:35:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q6MAridp01Vp for <devel@linuxdriverproject.org>;
- Sun,  4 Apr 2021 04:35:00 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.07d02.mspz7.gob.ec (mail.07d02.mspz7.gob.ec
- [181.196.137.211])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 677B740166
- for <devel@driverdev.osuosl.org>; Sun,  4 Apr 2021 04:35:00 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.07d02.mspz7.gob.ec (Postfix) with ESMTP id D73032927D4;
- Sat,  3 Apr 2021 13:09:23 -0500 (-05)
-Received: from mail.07d02.mspz7.gob.ec ([127.0.0.1])
- by localhost (mail.07d02.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id Yt0deDONW6O7; Sat,  3 Apr 2021 13:09:23 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.07d02.mspz7.gob.ec (Postfix) with ESMTP id 1A7F8292B2A;
- Sat,  3 Apr 2021 01:34:37 -0500 (-05)
-X-Virus-Scanned: amavisd-new at 07d02.mspz7.gob.ec
-Received: from mail.07d02.mspz7.gob.ec ([127.0.0.1])
- by localhost (mail.07d02.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id n_9oep5oBYMA; Sat,  3 Apr 2021 01:34:37 -0500 (-05)
-Received: from [192.168.2.102] (unknown [41.80.230.117])
- by mail.07d02.mspz7.gob.ec (Postfix) with ESMTPSA id 5D94C2AA6BB;
- Fri,  2 Apr 2021 15:41:37 -0500 (-05)
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AOVJ0wGALRlQ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Apr 2021 12:44:29 +0000 (UTC)
+X-Greylist: delayed 00:11:07 by SQLgrey-1.8.0
+Received: from mail.bengiamein.tk (unknown [5.8.93.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 87B8A606C6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Apr 2021 12:44:29 +0000 (UTC)
+Received: by mail.bengiamein.tk (Postfix, from userid 48)
+ id 07B0DCCCDD2; Sun,  4 Apr 2021 12:31:32 +0000 (UTC)
+To: driverdev-devel@linuxdriverproject.org
+Subject: Request for your catalog or price list
+X-PHP-Originating-Script: 0:nawqkjfasd.php
+From: Richard Martin <matins133294@hotmail.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re:Mrs Ella Golan 
-To: Recipients <>
-From: "Mrs. Ella Golan" <""@07d02.mspz7.gob.ec>
-Date: Fri, 02 Apr 2021 13:41:28 -0700
-Message-Id: <20210402204137.5D94C2AA6BB@mail.07d02.mspz7.gob.ec>
+Message-Id: <20210404123133.07B0DCCCDD2@mail.bengiamein.tk>
+Date: Sun,  4 Apr 2021 12:31:32 +0000 (UTC)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,17 +56,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ellagolanbankdetails0@gmail.com
+Reply-To: martins12290@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Please work with me.
+Hi,Friend,
 
+This is Richard Martins and I am purchasing manager from E-cloth Limited in the United Kingdom.
+We are glad to know about your company from the web and we are interested in your products.
+Could you kindly send us your Latest catalog and price list for our trial order.
 
+Thanks and Best Regards,
 
-
+Mr. Richard Martins
+Purchasing Manager
+E-cloth Limited
+Add:1 Ashley Road,Altrincham, Cheshire, 
+United Kingdom
+Tel:+44-7451-246988
 
 
 _______________________________________________
