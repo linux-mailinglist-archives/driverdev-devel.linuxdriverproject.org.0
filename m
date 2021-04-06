@@ -1,89 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49EBC355139
-	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Apr 2021 12:51:44 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A287C35514E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Apr 2021 12:55:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD69A849B2;
-	Tue,  6 Apr 2021 10:51:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2613140F19;
+	Tue,  6 Apr 2021 10:55:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s-XykzUqa_Ws; Tue,  6 Apr 2021 10:51:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id X99UnvlPEsMw; Tue,  6 Apr 2021 10:55:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0C24284876;
-	Tue,  6 Apr 2021 10:51:41 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id BD93B40F05;
+	Tue,  6 Apr 2021 10:55:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 682011BF28E
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  6 Apr 2021 10:51:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9BDC81BF28E
+ for <devel@linuxdriverproject.org>; Tue,  6 Apr 2021 10:55:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 633614029A
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  6 Apr 2021 10:51:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 91BC18487F
+ for <devel@linuxdriverproject.org>; Tue,  6 Apr 2021 10:55:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qzSnxGu0j52f
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  6 Apr 2021 10:51:28 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com
- [IPv6:2a00:1450:4864:20::336])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 69E11400C2
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  6 Apr 2021 10:51:28 +0000 (UTC)
-Received: by mail-wm1-x336.google.com with SMTP id
- j4-20020a05600c4104b029010c62bc1e20so7065043wmi.3
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 06 Apr 2021 03:51:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=a9jWO01eQCvaSALTaYkYaRpgTZuO0r7x7rAnN4myhxg=;
- b=B3Ep+wExrgNMtKa8EakKLL7kSl/7DSbnkWpxxMYEK/oxjgbZMOvAqWvKpIsing3zxu
- s/npRS1/OSQ7QHLFmo9WBHjnBYyR/bDsGAhqJl7QNr/Sud+rYToJarxr5T8+Hc4ryr/0
- 9AZsOP/HlHrK2zB4vfvN7ZYFmAWuYqdBNrlh6aXuefzF/G1/qxOorPfPT0Oq2TDETgKZ
- D5iWK4t92EXRlKNVBANM6GuCqsNBiHgKYIjxXaWt72JFg7Zn/OMDc8608cOa2JzREgMb
- k8+6Aa09jjGL/mcik6of57bEFbKnArDko3tnTriMdAtAsHG9HFcSqdrOh7j2md/tvXQe
- GoTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=a9jWO01eQCvaSALTaYkYaRpgTZuO0r7x7rAnN4myhxg=;
- b=PQCSoEz/BTKinTuQW1IJfwNFzPclFXh7GBQafMvOo58xIstf7Phj7JzzfqJXPegCmB
- IRyBFrpdQiPwpHenmfnIEil988EfvRAEZZNPlEnT03Kw8lRi5W9W+Bqzf79YI3Xm+ebo
- cKV6Dtk+GOX667cXpmhY1sY9h0GjqLm2BnojcsbmqJk3HdCXKawloA+wO09+jsKbTcJN
- jMwGHk56N/Ni1QCsTN/2GWRxAZCWF0Zbpf1TKdJ2n9RkuXCtpEdt6OUfml7/mFVo3zB+
- SDWzKpL+Y+yRmgun4ZZ1b1jLF9llopNJjqXp1DyPOPo9e9cIGzo/99Xtb3gi6bLKwZ6e
- EVHQ==
-X-Gm-Message-State: AOAM531cEyPV+syA785GDFwArq9JhTiHIKr4zwERuaNeNtkT/5Rc/QdO
- MpcgW1sUOmKlGn2rMt+hmwY=
-X-Google-Smtp-Source: ABdhPJxQOjyaK8Qd7dD5gHn2A2Ngxdpd7HfM815L2u2CG0SAVMPtVYJI53J97KTVwnSCHf9CetMUcQ==
-X-Received: by 2002:a1c:4686:: with SMTP id t128mr3467097wma.156.1617706286497; 
- Tue, 06 Apr 2021 03:51:26 -0700 (PDT)
-Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:9a5b:98e6:2174:bf29])
- by smtp.gmail.com with ESMTPSA id
- c18sm5044229wrp.33.2021.04.06.03.51.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Apr 2021 03:51:26 -0700 (PDT)
-From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
- florian.c.schilhabel@googlemail.com,
- driverdev-devel@linuxdriverproject.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] drivers: staging: rtl8712: align arguments with open
- parenthesis
-Date: Tue,  6 Apr 2021 11:51:24 +0100
-Message-Id: <20210406105124.78498-1-martinsdecarvalhobeatriz@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=xs4all.nl
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id B_y0JpN25FkZ for <devel@linuxdriverproject.org>;
+ Tue,  6 Apr 2021 10:54:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from lb3-smtp-cloud9.xs4all.net (lb3-smtp-cloud9.xs4all.net
+ [194.109.24.30])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1FE5884876
+ for <devel@driverdev.osuosl.org>; Tue,  6 Apr 2021 10:54:58 +0000 (UTC)
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id TjMBl4T2r43ycTjMElNcue; Tue, 06 Apr 2021 12:54:56 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1617706496; bh=KGNqE7vtP9+apsVEQYS3HwyvXAaxHklSuPGEUI1hzkQ=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=LYdeDXQeL/YsRcoQOgNGrpvRBN20u1hq4XiQFUszeYziYxHO0c4NkZ4k0tamDh6Ec
+ bCFrNmZ5OAUqW858uwUMB9ebAIQLBrhaAI4WVFTL9fvuMUDxXdzuC1rCTVJA/CmgFA
+ DSNW0VJAIuAX4Yj76V/KywFh0ik88bWKggyDlnu/++MGMNZ94id3BwQ9V9kVSW/Fit
+ 4mMHIdAbCaGaUMcskiGL1nPi9hO/RbThkAiC0PTH+O63o3Q3ltERt9TwZbDQDh2fkT
+ lzJWRX03q6ZylNvmQsND/9gBaJYTqq3Ulx89yQ+t5gki3BzcyzEpGCVory3SH855Xq
+ aMl6BOdHm3F+g==
+Subject: Re: [PATCH v8 01/13] dt-bindings: mfd: Add 'nxp,imx8mq-vpu-ctrl' to
+ syscon list
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@siol.net, emil.l.velikov@gmail.com
+References: <20210401160003.88803-1-benjamin.gaignard@collabora.com>
+ <20210401160003.88803-2-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <430b380d-a437-dfdc-5fe7-c5cfe2a44935@xs4all.nl>
+Date: Tue, 6 Apr 2021 12:54:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
+In-Reply-To: <20210401160003.88803-2-benjamin.gaignard@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfNUlMbdwNq3v4AT78E7WX19Tqn0ScOtvTMR8PCQm+vYaaalzuFAzpeW+uB2V06rsoPQims10Rzebi13I8RHuqiXt9oWnHoZIYvyVbTfW1xD7azqfQp5c
+ iOyxlx6fz9UrHgY63yuJl/Lgk28DiSLwqC1cr3J0KA0UM58ynYIUo6RehsTEKopyStCLRsL4ClIsecG4mZfZ7yAG20nTrjE4+f8rJnUXxwGyFIeTYY88C8WC
+ kZxbvQRj/MaKFw/8R9jnFhLJGl6MGhL6FvYGkpG4Ed3IAVN8vkTR6LxnwdKHxrgtf1ol+izQwb1PUn7pYiIsUNQ+9+DJPdj3SZmuKqPGRj1tCu1E8XvwjIKP
+ /e0nYfaXyI9EKStq7GUCuteTqchAWihH1iMuQ2VjRKlI0PR9qlpHrs/9CfcbIBZt9CLcCTrFT/iNVrMV8f2lxk2XWGawrF9Cj7K+PSQHWg2js3Sxm1x6DWU9
+ 3s7AobvTnc1/fcUZFs8G0hYqSer4oWCE9PzyyBQ4iaWTHfUowzEzdL34eHpGm2KiWuMknDRd4BYbVnU15qUx7IC/aPgfzX1pEg7T9vaY4Amg7Ko5s6syoz5i
+ oGH9gbZdkpjpeSpbt62iY/KOiuoeenqFD2jVEuGU+AbyF272+/hFkW04Rf2qIaLpDbtn/dnlDshDCgux1cepO6Sydh8zigIWTngD3FGTgyJQQUafKn5czBca
+ dGjH3GY3f1ZT6V5uXFoVRM25JJjPawa7kmfLba1XHs2bGnVLJuoF8LiIfGX6T+aVN1zhpHEk63IQHRuQElyPFQnLsbBi8W1YPQuQgWaRXRNSU0qbOGNuC/mr
+ bHWdSpsF5j+eKlAVbS+6+vvpTDHyGtlc+7b932u08S3cpK8QX+ZYVt1j0DizwGN9yzE0NsBcFsNz5IvF5ZPs6yQGkx2/p3D2dsVQZycerAYqNNUzmdfYedlw
+ PP0leHqZpMSMW3rOpnKvdkn7nN/GW4knsg6G80nVFO73qwS/YX94MAAOY9HXat35ZzLbx0eslDm1lHQGMUgEeY+ll/ol6Qyos1GFWE7THMuFPq0T
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,36 +86,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
+ kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Clean up checks of "Alignment should match open parenthesis"
-in file mlme_osdep.h
+Hi Benjamin,
 
-Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
----
- drivers/staging/rtl8712/mlme_osdep.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+The commit logs in this series have a few too many grammatical
+mistakes. And since I want some other changes as well, I'll just
+review the text so it can be fixed in v9.
 
-diff --git a/drivers/staging/rtl8712/mlme_osdep.h b/drivers/staging/rtl8712/mlme_osdep.h
-index 9eaf94f072ff..a02c782588dd 100644
---- a/drivers/staging/rtl8712/mlme_osdep.h
-+++ b/drivers/staging/rtl8712/mlme_osdep.h
-@@ -22,8 +22,8 @@ void r8712_os_indicate_disconnect(struct _adapter *adapter);
- void r8712_os_indicate_connect(struct _adapter *adapter);
- void r8712_report_sec_ie(struct _adapter *adapter, u8 authmode, u8 *sec_ie);
- int r8712_recv_indicatepkts_in_order(struct _adapter *adapter,
--				struct recv_reorder_ctrl *precvreorder_ctrl,
--				int bforced);
-+				     struct recv_reorder_ctrl *precvreorder_ctrl,
-+				     int bforced);
- void r8712_indicate_wx_assoc_event(struct _adapter *padapter);
- void r8712_indicate_wx_disassoc_event(struct _adapter *padapter);
- 
--- 
-2.25.1
+On 01/04/2021 17:59, Benjamin Gaignard wrote:
+> Add 'nxp,imx8mq-vpu-ctrl' in the list of possible syscon.
+
+in -> to
+
+> It will used to access to the VPU control registers.
+
+to the -> the
+
+Regards,
+
+	Hans
+
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Acked-by: Rob Herring <robh@kernel.org>
+> Acked-by: Lee Jones <lee.jones@linaro.org>
+> ---
+> version 8:
+>  - Add Lee ack
+> 
+> version 7:
+>  - Add Rob ack
+> 
+>  Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+> index f14ae6da0068..ae22c4730613 100644
+> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+> @@ -44,6 +44,7 @@ properties:
+>                - hisilicon,peri-subctrl
+>                - microchip,sparx5-cpu-syscon
+>                - mstar,msc313-pmsleep
+> +              - nxp,imx8mq-vpu-ctrl
+>                - rockchip,px30-qos
+>                - rockchip,rk3066-qos
+>                - rockchip,rk3288-qos
+> 
 
 _______________________________________________
 devel mailing list
