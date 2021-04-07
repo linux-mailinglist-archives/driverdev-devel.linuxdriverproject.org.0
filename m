@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DEC4356587
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Apr 2021 09:37:52 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46FB4356586
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Apr 2021 09:37:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D3E276066F;
-	Wed,  7 Apr 2021 07:37:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E9089849F6;
+	Wed,  7 Apr 2021 07:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UOFEycxqrbIV; Wed,  7 Apr 2021 07:37:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 62KmlCIl114Q; Wed,  7 Apr 2021 07:37:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F3ABF60649;
-	Wed,  7 Apr 2021 07:37:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4A93F84946;
+	Wed,  7 Apr 2021 07:37:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CBD251C1187
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B4CAD1BF4E6
  for <devel@linuxdriverproject.org>; Wed,  7 Apr 2021 07:36:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BA4C740F59
+ by smtp2.osuosl.org (Postfix) with ESMTP id A41AF40206
  for <devel@linuxdriverproject.org>; Wed,  7 Apr 2021 07:36:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8bDjhP6G4igM for <devel@linuxdriverproject.org>;
- Wed,  7 Apr 2021 07:35:59 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AgGV_0sjBm-A for <devel@linuxdriverproject.org>;
+ Wed,  7 Apr 2021 07:36:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
  [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9D5D34025C
- for <devel@driverdev.osuosl.org>; Wed,  7 Apr 2021 07:35:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ED5D1400BF
+ for <devel@driverdev.osuosl.org>; Wed,  7 Apr 2021 07:36:00 +0000 (UTC)
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 395FD1F44FED
+ with ESMTPSA id 7854C1F44F88
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
  festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
  mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
  jernej.skrabec@siol.net, hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com
-Subject: [PATCH v9 09/13] media: uapi: Add a control for HANTRO driver
-Date: Wed,  7 Apr 2021 09:35:30 +0200
-Message-Id: <20210407073534.376722-10-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 10/13] media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+Date: Wed,  7 Apr 2021 09:35:31 +0200
+Message-Id: <20210407073534.376722-11-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
 References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
@@ -71,93 +71,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The HEVC HANTRO driver needs to know the number of bits to skip at
-the beginning of the slice header.
-That is a hardware specific requirement so create a dedicated control
-for this purpose.
+Make sure that V4L2_PIX_FMT_HEVC_SLICE is correctly handled by the driver.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
 version 9:
- - Corrections in commit message.
- - Move control definition in hevc-ctrls.h
- - Add note in documentation to explain that this control
-   may change in the futur
+ - Corrections in commit message
 
-version 5:
- - Be even more verbose in control documentation.
- - Do not create class for the control.
-version 4:
-- The control is now an integer which is enough to provide the numbers
-  of bits to skip.
-version 3:
-- Fix typo in field name
+version 8:
+ - Add Ezequiel review tag
 
- .../userspace-api/media/drivers/hantro.rst    | 19 +++++++++++++++++++
- .../userspace-api/media/drivers/index.rst     |  1 +
- include/media/hevc-ctrls.h                    | 13 +++++++++++++
- 3 files changed, 33 insertions(+)
- create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
+ drivers/staging/media/hantro/hantro_v4l2.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/userspace-api/media/drivers/hantro.rst b/Documentation/userspace-api/media/drivers/hantro.rst
-new file mode 100644
-index 000000000000..cd9754b4e005
---- /dev/null
-+++ b/Documentation/userspace-api/media/drivers/hantro.rst
-@@ -0,0 +1,19 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+Hantro video decoder driver
-+===========================
-+
-+The Hantro video decoder driver implements the following driver-specific controls:
-+
-+``V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP (integer)``
-+    Specifies to Hantro HEVC video decoder driver the number of data (in bits) to
-+    skip in the slice segment header.
-+    If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-+    to before syntax element "slice_temporal_mvp_enabled_flag".
-+    If IDR, the skipped bits are just "pic_output_flag"
-+    (separate_colour_plane_flag is not supported).
-+
-+.. note::
-+
-+        This control is not yet part of the public kernel API and
-+        it is expected to change.
-diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
-index 1a9038f5f9fa..12e3c512d718 100644
---- a/Documentation/userspace-api/media/drivers/index.rst
-+++ b/Documentation/userspace-api/media/drivers/index.rst
-@@ -33,6 +33,7 @@ For more details see the file COPYING in the source distribution of Linux.
- 
- 	ccs
- 	cx2341x-uapi
-+        hantro
- 	imx-uapi
- 	max2175
- 	meye-uapi
-diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 8e0109eea454..b713eeed1915 100644
---- a/include/media/hevc-ctrls.h
-+++ b/include/media/hevc-ctrls.h
-@@ -224,4 +224,17 @@ struct v4l2_ctrl_hevc_decode_params {
- 	__u64	flags;
- };
- 
-+/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
-+#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
-+/*
-+ * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
-+ * the number of data (in bits) to skip in the
-+ * slice segment header.
-+ * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-+ * to before syntax element "slice_temporal_mvp_enabled_flag".
-+ * If IDR, the skipped bits are just "pic_output_flag"
-+ * (separate_colour_plane_flag is not supported).
-+ */
-+#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
-+
- #endif
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 77d7fe62ce81..0655324fd0d4 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -392,6 +392,7 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
+ 	case V4L2_PIX_FMT_MPEG2_SLICE:
+ 	case V4L2_PIX_FMT_VP8_FRAME:
+ 	case V4L2_PIX_FMT_H264_SLICE:
++	case V4L2_PIX_FMT_HEVC_SLICE:
+ 		ctx->fh.m2m_ctx->out_q_ctx.q.requires_requests = true;
+ 		break;
+ 	default:
 -- 
 2.25.1
 
