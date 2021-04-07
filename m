@@ -1,80 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0854F356BAA
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Apr 2021 14:00:50 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0239A357337
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Apr 2021 19:31:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9E99F60011;
-	Wed,  7 Apr 2021 12:00:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 34A2760D72;
+	Wed,  7 Apr 2021 17:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AxHoqbox0joW; Wed,  7 Apr 2021 12:00:47 +0000 (UTC)
+	with ESMTP id HhDxVWxUSg4l; Wed,  7 Apr 2021 17:31:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DCB9960C12;
-	Wed,  7 Apr 2021 12:00:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CC29605AE;
+	Wed,  7 Apr 2021 17:31:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 678B11BF280
- for <devel@linuxdriverproject.org>; Wed,  7 Apr 2021 12:00:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 834961BF3D1
+ for <devel@linuxdriverproject.org>; Wed,  7 Apr 2021 17:31:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with UTF8SMTP id 63720405F1
- for <devel@linuxdriverproject.org>; Wed,  7 Apr 2021 12:00:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 73455418A0
+ for <devel@linuxdriverproject.org>; Wed,  7 Apr 2021 17:31:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=mg.codeaurora.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with UTF8SMTP id pnsVeW38QTcB for <devel@linuxdriverproject.org>;
- Wed,  7 Apr 2021 12:00:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from so254-9.mailgun.net (so254-9.mailgun.net [198.61.254.9])
- by smtp4.osuosl.org (Postfix) with UTF8SMTPS id 78E99405DE
- for <devel@driverdev.osuosl.org>; Wed,  7 Apr 2021 12:00:33 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1617796836; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=dRkaKojvnawlYO3e1C9wxx79COw07pLsiCqaSEnReIk=;
- b=vFUXFoI28aCcjyRXa6L8ZA0CSx3fiFcDidXafbGCtYU/JVH3DLescdDMQAZHRgYgkOy/Pi/l
- OeT2Tk9P7x3pi7BoHbjeebUexoyDOeYiEkzZkoqtHTMR9l41/RghJzWq5RKhAeo7W1jffTPL
- BX1o/WRNRlrotsO9zlCPWlXEjC0=
-X-Mailgun-Sending-Ip: 198.61.254.9
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 606d9ed7c06dd10a2dbceb84 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 07 Apr 2021 12:00:23
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id EA6BBC433ED; Wed,  7 Apr 2021 12:00:22 +0000 (UTC)
-Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
- [88.114.240.156])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 53876C433CA;
- Wed,  7 Apr 2021 12:00:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 53876C433CA
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v5 08/24] wfx: add bus_sdio.c
-References: <20210315132501.441681-1-Jerome.Pouiller@silabs.com>
- <4503971.bAhddQ8uqO@pc-42>
- <CAPDyKFoXgV3m-rMKfjqRj91PNjOGaWg6odWG-EGdFKkL+dGWoA@mail.gmail.com>
- <5713463.b6Cmjs1FeV@pc-42>
- <CAPDyKFrONrUvbVVVF9iy4P17jZ_Fq+1pGMmsqM6C1hOXOWQnBw@mail.gmail.com>
-Date: Wed, 07 Apr 2021 15:00:17 +0300
-In-Reply-To: <CAPDyKFrONrUvbVVVF9iy4P17jZ_Fq+1pGMmsqM6C1hOXOWQnBw@mail.gmail.com>
- (Ulf Hansson's message of "Tue, 23 Mar 2021 20:12:06 +0100")
-Message-ID: <87pmz6mhim.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+ with ESMTP id qME_MBqUx14y for <devel@linuxdriverproject.org>;
+ Wed,  7 Apr 2021 17:31:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3C9D84185D
+ for <devel@driverdev.osuosl.org>; Wed,  7 Apr 2021 17:31:08 +0000 (UTC)
+IronPort-SDR: Fb6186xdUImum+Sj639gdct12MNqSfPtTvpZWgERJ4lniXEhp7p7SJtt9iNSQ6015qI6n9jrqY
+ QBsQAEhnAbpQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9947"; a="278625481"
+X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; d="scan'208";a="278625481"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2021 10:31:07 -0700
+IronPort-SDR: +q0VByl7gm1fgx98mJhvebfayYPMmGECI88JqzyDo3hTK7kHF2TrTRKbQ7WrX4+tlTseZVt0nt
+ 0g27BRAfouyg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; d="scan'208";a="396743505"
+Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 07 Apr 2021 10:31:05 -0700
+Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lUC1A-000DYR-Vz; Wed, 07 Apr 2021 17:31:04 +0000
+Date: Thu, 08 Apr 2021 01:30:27 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:kbuild] BUILD SUCCESS
+ 9cbec1316ea288b5ba3e1bf0ada7dfc2e5b6bf45
+Message-ID: <606dec33.9i057I2347uNCcbc%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -88,53 +67,141 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, DTML <devicetree@vger.kernel.org>,
- netdev <netdev@vger.kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-mmc <linux-mmc@vger.kernel.org>,
- Pali =?utf-8?Q?Roh=C3=A1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Ulf Hansson <ulf.hansson@linaro.org> writes:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kbuild
+branch HEAD: 9cbec1316ea288b5ba3e1bf0ada7dfc2e5b6bf45  kbuild: scripts/install.sh: update documentation
 
->> If I follow what has been done in other drivers I would write something
->> like:
->>
->>   static int wfx_sdio_suspend(struct device *dev)
->>   {
->>           struct sdio_func *func = dev_to_sdio_func(dev);
->>           struct wfx_sdio_priv *bus = sdio_get_drvdata(func);
->>
->>           config_reg_write_bits(bus->core, CFG_IRQ_ENABLE_DATA, 0);
->>           // Necessary to keep device firmware in RAM
->>           return sdio_set_host_pm_flags(func, MMC_PM_KEEP_POWER);
->
-> This will tell the mmc/sdio core to keep the SDIO card powered on
-> during system suspend. Thus, it doesn't need to re-initialize it at
-> system resume - and the firmware should not need to be re-programmed.
->
-> On the other hand, if you don't plan to support system wakeups, it
-> would probably be better to power off the card, to avoid wasting
-> energy while the system is suspended. I assume that means you need to
-> re-program the firmware as well. Normally, it's these kinds of things
-> that need to be managed from a ->resume() callback.
+elapsed time: 725m
 
-Many mac80211 drivers do so that the device is powered off during
-interface down (ifconfig wlan0 down), and as mac80211 does interface
-down automatically during suspend, suspend then works without extra
-handlers.
+configs tested: 113
+configs skipped: 3
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+i386                             allyesconfig
+riscv                            allyesconfig
+nios2                               defconfig
+arc                          axs101_defconfig
+alpha                            alldefconfig
+mips                        nlm_xlp_defconfig
+m68k                                defconfig
+powerpc                   motionpro_defconfig
+arm                             pxa_defconfig
+mips                           ip27_defconfig
+arm                          iop32x_defconfig
+sh                           sh2007_defconfig
+sh                          sdk7780_defconfig
+powerpc                      arches_defconfig
+csky                             alldefconfig
+arc                     nsimosci_hs_defconfig
+powerpc                           allnoconfig
+arm                         shannon_defconfig
+mips                        jmr3927_defconfig
+arm                          ep93xx_defconfig
+mips                        nlm_xlr_defconfig
+sh                        sh7757lcr_defconfig
+arc                      axs103_smp_defconfig
+sh                               j2_defconfig
+sh                            titan_defconfig
+arm                           omap1_defconfig
+powerpc                      ppc44x_defconfig
+powerpc                     powernv_defconfig
+powerpc                 mpc8313_rdb_defconfig
+ia64                        generic_defconfig
+sh                              ul2_defconfig
+powerpc                    adder875_defconfig
+arm                       aspeed_g5_defconfig
+arm                            hisi_defconfig
+arm                          ixp4xx_defconfig
+sh                          rsk7203_defconfig
+powerpc                      pcm030_defconfig
+arm                       multi_v4t_defconfig
+arm                       spear13xx_defconfig
+riscv                          rv32_defconfig
+arc                                 defconfig
+sh                          kfr2r09_defconfig
+powerpc                      walnut_defconfig
+mips                            gpr_defconfig
+arm                          simpad_defconfig
+parisc                              defconfig
+um                             i386_defconfig
+arm                        mini2440_defconfig
+powerpc                     ksi8560_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+sh                               allmodconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+i386                 randconfig-a006-20210407
+i386                 randconfig-a003-20210407
+i386                 randconfig-a001-20210407
+i386                 randconfig-a004-20210407
+i386                 randconfig-a002-20210407
+i386                 randconfig-a005-20210407
+x86_64               randconfig-a014-20210407
+x86_64               randconfig-a015-20210407
+x86_64               randconfig-a013-20210407
+x86_64               randconfig-a011-20210407
+x86_64               randconfig-a012-20210407
+x86_64               randconfig-a016-20210407
+i386                 randconfig-a014-20210407
+i386                 randconfig-a011-20210407
+i386                 randconfig-a016-20210407
+i386                 randconfig-a012-20210407
+i386                 randconfig-a015-20210407
+i386                 randconfig-a013-20210407
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
