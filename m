@@ -2,57 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81CC535A58D
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Apr 2021 20:15:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B3AC435A591
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Apr 2021 20:15:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C8B5A83FC5;
-	Fri,  9 Apr 2021 18:15:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5915683FF6;
+	Fri,  9 Apr 2021 18:15:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 40XQjjMt3aZa; Fri,  9 Apr 2021 18:15:32 +0000 (UTC)
+	with ESMTP id mzxCn5EGe9RA; Fri,  9 Apr 2021 18:15:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 46F0483F95;
-	Fri,  9 Apr 2021 18:15:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C015C83FA2;
+	Fri,  9 Apr 2021 18:15:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AFD051BF371
- for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 18:15:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C2A61BF371
+ for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 18:15:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AC67E83F95
- for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 18:15:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 98827401C8
+ for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 18:15:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FHhu5YnQ71o8 for <devel@linuxdriverproject.org>;
- Fri,  9 Apr 2021 18:15:21 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PPh2k_OYBUqf for <devel@linuxdriverproject.org>;
+ Fri,  9 Apr 2021 18:15:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4737783F66
- for <devel@driverdev.osuosl.org>; Fri,  9 Apr 2021 18:15:21 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D80366115B;
- Fri,  9 Apr 2021 18:15:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3615A400E4
+ for <devel@driverdev.osuosl.org>; Fri,  9 Apr 2021 18:15:27 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C30736100B;
+ Fri,  9 Apr 2021 18:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1617992120;
- bh=+ujI/MPJ6ZQ5E1B/DUb1I7zwyG59eiq8HKHFW2iT6ag=;
+ s=k20201202; t=1617992126;
+ bh=fQ2JN9dNxhKXdKovF2jMBNkmKRO7y4Cs/zqv1a8yX2I=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=LZwVmvxRUJoPiLq0E0naPKbbH0plygrBLxnPh6uNLTje75q2/Pk5tEZrPNcrkMJFX
- 2T7mmAQ5sAayVQEqUec/L+uHNEElOAj0CjJVWyG3dtpg6Vb/GsdmQjZrHLcKnWzFVD
- bnxn0ALWkTAg+/i/wP4bA2lsWTvFVkr3BvFpkQkhyPjLe+GLrCqIEahQKbOyGxG2UJ
- OYZvhSQ0s2XOtetIeWiZiBb8jsYAabHX+OiKlqEb1tD4R5KZRewLFpzLq3+eAJbnGR
- yE242O2bZq/KqvdtU0zDNK3l3ufr4cHRRi39duYvQ1SUQ6VAocYDVavi0jBYEqTUgu
- vf2weMvs8yfgA==
+ b=hd3UIy8gNPv/EEgiIEnFhsQaQ2m3pwWZH9HvWfRdvJjeCYra6dhr1lmrYgHLzS/TZ
+ LhhPS4ssNi2JY7c5N3f3gvqvuA3ZkHPD9VI4rAeMSZ47poj1+oGlKLo6D/wuwSSRt1
+ GFFNvUtyk5zlsheEH1x48O3xACUxIpIOwwy57r8GgJmHBDMlNjsUEQKBQsqIyaaKnN
+ O9PXD4rzR6+qb+guImpX8fWRHN5bDjGRvWtXWdMOCJTb1OeSIgrCHYkZCL7PTPHLem
+ oepQwGLdNyBTtvln+lcObEAyync0Iu9iMPjg/n39+HRI11jNqSDMk4ns3WX1nqg3yA
+ pawXa7N0Hkrxg==
 MIME-Version: 1.0
-In-Reply-To: <20210309052226.29531-2-sergio.paracuellos@gmail.com>
+In-Reply-To: <20210309052226.29531-3-sergio.paracuellos@gmail.com>
 References: <20210309052226.29531-1-sergio.paracuellos@gmail.com>
- <20210309052226.29531-2-sergio.paracuellos@gmail.com>
-Subject: Re: [PATCH v11 1/6] dt-bindings: clock: add dt binding header for
- mt7621 clocks
+ <20210309052226.29531-3-sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH v11 2/6] dt: bindings: add mt7621-sysc device tree binding
+ documentation
 From: Stephen Boyd <sboyd@kernel.org>
 To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 09 Apr 2021 11:15:19 -0700
-Message-ID: <161799211963.3790633.17291129306926041019@swboyd.mtv.corp.google.com>
+Date: Fri, 09 Apr 2021 11:15:25 -0700
+Message-ID: <161799212554.3790633.13295684894366579803@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,10 +78,11 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Quoting Sergio Paracuellos (2021-03-08 21:22:21)
-> Adds dt binding header for 'mediatek,mt7621-clk' clocks.
+Quoting Sergio Paracuellos (2021-03-08 21:22:22)
+> Adds device tree binding documentation for clocks in the
+> MT7621 SOC.
 > 
-> Acked-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 > ---
 
