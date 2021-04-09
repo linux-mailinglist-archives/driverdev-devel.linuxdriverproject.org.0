@@ -2,128 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDCAF3594B6
-	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Apr 2021 07:36:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EA1A35951C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  9 Apr 2021 08:05:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5C4F5419A3;
-	Fri,  9 Apr 2021 05:35:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BD551419F3;
+	Fri,  9 Apr 2021 06:05:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id trshcCWQMFEn; Fri,  9 Apr 2021 05:35:58 +0000 (UTC)
+	with ESMTP id A-cdr5NrB-Vv; Fri,  9 Apr 2021 06:05:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E5D524196D;
-	Fri,  9 Apr 2021 05:35:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E7ED841915;
+	Fri,  9 Apr 2021 06:05:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EC6DD1BF34C
- for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 05:35:46 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 125C51BF349
+ for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 06:04:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D082140168
- for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 05:35:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 01BAA60E52
+ for <devel@linuxdriverproject.org>; Fri,  9 Apr 2021 06:04:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=analogixsemi.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bx7Wm2qnZQWG for <devel@linuxdriverproject.org>;
- Fri,  9 Apr 2021 05:35:45 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2098.outbound.protection.outlook.com [40.107.94.98])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 60BB940167
- for <devel@driverdev.osuosl.org>; Fri,  9 Apr 2021 05:35:45 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mbJLBIr8vwfQgf0sSZGm4WNBe5lbEIztLZ7LmIRFoSk7JujyKxQd8kU5zliJx9AYaPf9/vMYZKp/xNjyQdVaelP7jRDdn/ASkYQsp9cSEBHUpoyZ6WvQQ6uWj89SzU3eXzCKxoE60DItHX/pIRFnRBA6qOXCxmKZRzq04Dg1REEz91hwjKnI6ZX9AwlCmxGKf47FuTV7v9zfZFDb2TH83JcWQZOLcsqDse5k9Ngwm2C6uaveTbnCRBJOym1EbQWcbuwsjqA5QXVIjy6nWWmPvLUwshA8+yJf8w+f/Lib0cP0hXoORhbXtamxmc9iB7U2RVpc8fJjhG6PY20TsQtTJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d196IQimGvo54x1HxYSeRfx060vkZGWuf+GZc0JnAQ8=;
- b=nziG3bYUQpT+jiNfrWAif/kzN6UkARtCjegaxuftMIUQqP6sNT1+2/m9vmW4K+E1K7P2tzIXvUnqR51EUuL5S1m9KhKm0TvQSgNwGZdieKSvTzAn/b9Wfdt57QGtDh1gVoQMFP23S/3gROgW32aTBVH3bfgttvtWvDT/1VBHHUqA0laCixfWmXf7+8pW9w80y9nrQHIkTd9WJSQ5mAQYr5IF1fOUDdbaS1uN5BoHoFXSMCEqTkr78lqW12kKXRPPto7gW1bXNhNXWsMU9zkjLeg0NPZ8gJNwEgmSKDcd+g5M0Tr8UQBSQ98EC6TN7tA2FOWgTipnP3b9aYxYoBaylw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d196IQimGvo54x1HxYSeRfx060vkZGWuf+GZc0JnAQ8=;
- b=hWtTdgSnwiqXZVm2RrQKyXp/ruNLVX2Sns7eVmiAmLf7aQzsjP/7in5hNhQb0TRVPtaruuhk5zPbv+JwzJFD81UKvxer2QaJeIonH9p5eNBULxZAyZBVMuwoyVk0bNFOFhcNMAl1GDKzBjiTLng2vsO6JPtJf0QVnCEGfXfampM=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BYAPR04MB3928.namprd04.prod.outlook.com (2603:10b6:a02:aa::26)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4020.21; Fri, 9 Apr
- 2021 05:35:41 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::8d56:f2c5:7beb:2bf3]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::8d56:f2c5:7beb:2bf3%7]) with mapi id 15.20.4020.018; Fri, 9 Apr 2021
- 05:35:41 +0000
-Date: Fri, 9 Apr 2021 13:35:32 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Robert Foss <robert.foss@linaro.org>,
- Nicolas Boichat <drinkcat@google.com>, Andrzej Hajda <a.hajda@samsung.com>
-Subject: [PATCH 1/1] drm/bridge: anx7625: send DPCD command to downstream
-Message-ID: <18ec1a440eb71e4f91c0932cd0fadddd2e9a4c0f.1617937551.git.xji@analogixsemi.com>
-Content-Disposition: inline
-X-Originating-IP: [60.251.58.79]
-X-ClientProxiedBy: HK2PR02CA0201.apcprd02.prod.outlook.com
- (2603:1096:201:20::13) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rUBxTpYSPUtb for <devel@linuxdriverproject.org>;
+ Fri,  9 Apr 2021 06:04:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CB66360E53
+ for <devel@driverdev.osuosl.org>; Fri,  9 Apr 2021 06:04:56 +0000 (UTC)
+IronPort-SDR: FmL+grhktP1UEwkPxlQrNxCQepgn5cnHoA4ZexOTX25SYwucMXlzC+m0uJOCNPoYPgf6VfViPh
+ jdssEmhYIiHA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9948"; a="181232841"
+X-IronPort-AV: E=Sophos;i="5.82,208,1613462400"; d="scan'208";a="181232841"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2021 23:04:55 -0700
+IronPort-SDR: J6628NRKLtzysGayKtQIhj/nEEDmK335BCMP8akHPhmbPyZptLMZMVTYTdW/iDwLY/4Cy21OYc
+ Y9EbdFVaBCAA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,208,1613462400"; d="scan'208";a="419414757"
+Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 08 Apr 2021 23:04:54 -0700
+Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lUkGD-000GHZ-Nr; Fri, 09 Apr 2021 06:04:53 +0000
+Date: Fri, 09 Apr 2021 14:04:42 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:tty-test] BUILD SUCCESS
+ b01048f3d4ffec7ece16d4250d8eb2e13a5ce06a
+Message-ID: <606fee7a.Khg5kxTWFU0GsVW+%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from anxtwsw-Precision-3640-Tower (60.251.58.79) by
- HK2PR02CA0201.apcprd02.prod.outlook.com (2603:1096:201:20::13) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4020.16 via Frontend Transport; Fri, 9 Apr 2021 05:35:40 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 2df1cc92-17de-425f-ef25-08d8fb194fc8
-X-MS-TrafficTypeDiagnostic: BYAPR04MB3928:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BYAPR04MB3928EF88C9114F4E6596C451C7739@BYAPR04MB3928.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:254;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: qpbGogYtteLYPWbdd0KCvTGsmkSejHWmjotXR3sXXwcgvMzbKB3Wa6j+oaqwW9SnZ65L6+aQFU7+2kz9SUjek7eVdvag139H30eXKQpDADtFIJsOIzKq3E6N6sFpIDc2KMnsoxq/8y82eqKPYtOAQUN1FatwoPLRhz76/hn4ow+j2fqhyXGgWkZttbaqEi8r/b3vu5+kDSr5YFrRmks9kfXUfhNYxZsSJo49u/kD+XP2OX1eNq/n6+qd5qts3xBSK2pQaej9u0SkbzyrP5PLWY0EisGa6P6n0GrqmshqWJ63qhJIV02KLsp67nNSmnZ9z72bWp1aWpNFfKIknYL/OhG+N8cBmfndMzlBLSHx1ByQTVfFCx6CE8BR85bNOU9/OxBKB8utt1Pei4dIC4b6lXncQRJLOVlFbzp7VK/c+DcVHvf5Jsb1kGkCIPZSKc8RSyIt5th6dD86wtNMNS5rXCw5eP/iuCbEnpwb7c1MRLD7hjgYE6mWAvvVL4YbSDj9qUWD1/hLQv1faQ7vWoUCPsCqbE9m8chhwawWoS46e0PYWIANwMjEDyybXzXsXxoVa2+vOzC0LnVoyxy6NYi6pwus0wpF8B879hUj9x6EXodb3SLjApF2/wqTUH53owO/32HoRW0xIYlbdZJ2wGBALsx6ntx51V/zf1tuhYwVkTXknsLjW9tEYbtj2cveGY/L
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(136003)(39840400004)(346002)(396003)(366004)(376002)(6486002)(478600001)(36756003)(2616005)(86362001)(38350700001)(83380400001)(956004)(54906003)(66556008)(66476007)(186003)(110136005)(16526019)(55236004)(8676002)(66946007)(38100700001)(52116002)(8936002)(6496006)(7416002)(5660300002)(4326008)(316002)(2906002)(26005)(6666004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?xQiXC9gJV/NQSKkNBDwcz9O9Evd5ln8aSnBbw2LLBh5H4fm7SoPD1u+WBNvy?=
- =?us-ascii?Q?LDwtAemihbzYFPeoq1y6WgnIXI5Io+NgWUyYt0LYHzksVmxSqw/+SPXy7DZF?=
- =?us-ascii?Q?q0eUSz4NKSAaGLj2PjspfdAVO3lginaeZRf9WEKz9611fPahrqNDRvzl7Ug/?=
- =?us-ascii?Q?ACkCH66dXault3svtxg5RWz+DXgmc2R+uZRxbY1q93Z4rJIA3TBol26F8ZqB?=
- =?us-ascii?Q?YWIoBHPdyx8H5tPmYHvjmJzVRmq+AdM4BYyh77Iw0YtFDuNdZERnDruqJC1H?=
- =?us-ascii?Q?MtNHaMKVinVhbIhgvktOum3L8rsig3TMiNC2bago+fZo2mEdzB2rcfKrmpij?=
- =?us-ascii?Q?KoPGHBMy4QsW7697r/QqehuelNWi/2tjpIDnqwYtNTboo1rLmPahVNLcZDK1?=
- =?us-ascii?Q?WK4EwHh8uaFhpYBUF4IogFTFVwec2b02EYcPTRAn+QC9GmByAIyQwLhokiLI?=
- =?us-ascii?Q?fL+X0kRKNy1P1rO4jEOUtfgt/7iZqjzkQPllu21Ek1KEBlbCzE0/ytdeuijj?=
- =?us-ascii?Q?cWQfBSzO+XH4ZE2JwfsTqzwbn6sssNx6i7kPY7YvoHzIdMGdTHQlU18E++0K?=
- =?us-ascii?Q?e8y2AYY+h1d2bmwmJA2FWCEyJOm23gOfrDmAwU3iP/zwpLSNM9bMmdSo9Gak?=
- =?us-ascii?Q?BkNhPWArRuuljZX5UjBbohYxge3xWIKyZUUv/zOv7z8Cf1P2FTOq3D90S5WO?=
- =?us-ascii?Q?UfgFXqLJDo5C+Fs33KA2na/YNrIXCGWLLttJsfGY5+KUK3HGW0yjXeFZENa3?=
- =?us-ascii?Q?7A7N8eNN01XYF95ohARIu8QFpz/WB74BdzXK9ai4ilt5a8xB3g9Lt65PWq9C?=
- =?us-ascii?Q?DLtXmwlUMxiBiE2Dcg44bZGEuqlNr/DmL2AmFuK5cjU4L3w4T6OjI8nl5aD4?=
- =?us-ascii?Q?xKkyGHeQPOIpKKfV8B6c9LjTLrASXdlIhzConLSGpqEz/vRfYu2gefnwgPh6?=
- =?us-ascii?Q?9aPPKdljri9yLi3kLTZizJT2wo+smBPeTweLs14UdoQ//Rn882G0De5tHmf1?=
- =?us-ascii?Q?QIbkaxexNfNUAiJiT2KjgiBVw05Sn4FLMOfyOwNaSH6ckMUb79dyC1i2MhnL?=
- =?us-ascii?Q?cogwr79fWc1PF+C6T323pHyfpVJVo3csA5ZfmMn6HCu/QEjzEdLJBgFtdjw6?=
- =?us-ascii?Q?IWMo/dIADEAg17zT3LC6vNO1/LcqpRSVdVP9PgP9NjHJxQ7vyMUSxe7abWKc?=
- =?us-ascii?Q?yQtl/fQBiQ3Kb5/o9+0yP1ADQuZeFORLbWwEMhouVhp1wgjF2KnwC1mObxzj?=
- =?us-ascii?Q?e0P7fWfdXxeIo8C9YA7eX0TeQVTgGV2z9sM1TnM2Q6jub1cWgAVDDh1U9i1y?=
- =?us-ascii?Q?FBb5NtUtlhElukTRxF5oPTLX?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2df1cc92-17de-425f-ef25-08d8fb194fc8
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Apr 2021 05:35:40.6796 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PhaIDDgxSGxTR2hQ6JQ2uCaJ44l8L8H2V3mCJIVQUBOsyTS/2kdpXDY9l/WXYsYPUkyjdLbG7Qy169OoHtj/vg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3928
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,142 +67,177 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Sheng Pan <span@analogixsemi.com>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Bernie Liang <bliang@analogixsemi.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Zhen Li <zhenli@analogixsemi.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Send DPCD command to downstream before anx7625 power down,
-tell downstream into standby mode.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git tty-test
+branch HEAD: b01048f3d4ffec7ece16d4250d8eb2e13a5ce06a  tty: clean include/linux/tty.h up
 
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
+elapsed time: 725m
+
+configs tested: 147
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+i386                             allyesconfig
+riscv                            allyesconfig
+mips                         rt305x_defconfig
+um                                allnoconfig
+sh                          urquell_defconfig
+sh                            titan_defconfig
+arm                             ezx_defconfig
+arm                        oxnas_v6_defconfig
+powerpc                      mgcoge_defconfig
+powerpc                 linkstation_defconfig
+arm                            pleb_defconfig
+sh                            migor_defconfig
+mips                       lemote2f_defconfig
+m68k                        m5407c3_defconfig
+arm                            lart_defconfig
+arm                           spitz_defconfig
+arm                         palmz72_defconfig
+arm                         lpc32xx_defconfig
+ia64                             alldefconfig
+powerpc                 mpc832x_mds_defconfig
+powerpc                      ppc6xx_defconfig
+sh                   sh7770_generic_defconfig
+sh                           sh2007_defconfig
+xtensa                  cadence_csp_defconfig
+mips                           ip28_defconfig
+sh                          r7780mp_defconfig
+m68k                        mvme16x_defconfig
+arm                        multi_v5_defconfig
+powerpc                     kmeter1_defconfig
+arc                     nsimosci_hs_defconfig
+arm                        clps711x_defconfig
+xtensa                    xip_kc705_defconfig
+m68k                       bvme6000_defconfig
+h8300                            alldefconfig
+powerpc                 mpc836x_rdk_defconfig
+powerpc                  storcenter_defconfig
+arm                         s5pv210_defconfig
+ia64                         bigsur_defconfig
+arm                         orion5x_defconfig
+m68k                        stmark2_defconfig
+mips                     loongson1b_defconfig
+mips                  decstation_64_defconfig
+sh                          landisk_defconfig
+powerpc                      arches_defconfig
+mips                          rb532_defconfig
+um                           x86_64_defconfig
+arc                    vdk_hs38_smp_defconfig
+arm                           u8500_defconfig
+arm                          ixp4xx_defconfig
+sh                  sh7785lcr_32bit_defconfig
+s390                          debug_defconfig
+arm                          pxa3xx_defconfig
+powerpc                           allnoconfig
+arm                            zeus_defconfig
+arm                      footbridge_defconfig
+powerpc                        warp_defconfig
+mips                           ip22_defconfig
+m68k                          multi_defconfig
+sh                          lboxre2_defconfig
+arm                     eseries_pxa_defconfig
+arm64                            alldefconfig
+arc                        vdk_hs38_defconfig
+sh                           se7751_defconfig
+mips                      pic32mzda_defconfig
+arm                   milbeaut_m10v_defconfig
+arm                           h5000_defconfig
+arm                        realview_defconfig
+x86_64                           alldefconfig
+arm                        mvebu_v7_defconfig
+arm                          collie_defconfig
+powerpc                         ps3_defconfig
+arm                          gemini_defconfig
+arm                          iop32x_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+x86_64               randconfig-a004-20210408
+x86_64               randconfig-a005-20210408
+x86_64               randconfig-a003-20210408
+x86_64               randconfig-a001-20210408
+x86_64               randconfig-a002-20210408
+x86_64               randconfig-a006-20210408
+i386                 randconfig-a006-20210408
+i386                 randconfig-a003-20210408
+i386                 randconfig-a001-20210408
+i386                 randconfig-a004-20210408
+i386                 randconfig-a005-20210408
+i386                 randconfig-a002-20210408
+i386                 randconfig-a014-20210408
+i386                 randconfig-a016-20210408
+i386                 randconfig-a011-20210408
+i386                 randconfig-a012-20210408
+i386                 randconfig-a013-20210408
+i386                 randconfig-a015-20210408
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+um                               allmodconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a014-20210408
+x86_64               randconfig-a015-20210408
+x86_64               randconfig-a012-20210408
+x86_64               randconfig-a011-20210408
+x86_64               randconfig-a013-20210408
+x86_64               randconfig-a016-20210408
+
 ---
- drivers/gpu/drm/bridge/analogix/anx7625.c | 75 +++++++++++++++++++++++
- 1 file changed, 75 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-index 65cc05982f82..53d2f0d0ee30 100644
---- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-+++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-@@ -124,6 +124,23 @@ static int anx7625_reg_write(struct anx7625_data *ctx,
- 	return ret;
- }
- 
-+static int anx7625_reg_block_write(struct anx7625_data *ctx,
-+				   struct i2c_client *client,
-+				   u8 reg_addr, u8 len, u8 *buf)
-+{
-+	int ret;
-+	struct device *dev = &client->dev;
-+
-+	i2c_access_workaround(ctx, client);
-+
-+	ret = i2c_smbus_write_i2c_block_data(client, reg_addr, len, buf);
-+	if (ret < 0)
-+		DRM_DEV_ERROR(dev, "write i2c block failed id=%x\n:%x",
-+			      client->addr, reg_addr);
-+
-+	return ret;
-+}
-+
- static int anx7625_write_or(struct anx7625_data *ctx,
- 			    struct i2c_client *client,
- 			    u8 offset, u8 mask)
-@@ -195,6 +212,55 @@ static int wait_aux_op_finish(struct anx7625_data *ctx)
- 	return val;
- }
- 
-+static int anx7625_aux_dpcd_write(struct anx7625_data *ctx,
-+				  u8 addrh, u8 addrm, u8 addrl,
-+				  u8 len, u8 *buf)
-+{
-+	struct device *dev = &ctx->client->dev;
-+	int ret;
-+	u8 cmd;
-+
-+	if (len > MAX_DPCD_BUFFER_SIZE) {
-+		DRM_DEV_ERROR(dev, "exceed aux buffer len.\n");
-+		return -EINVAL;
-+	}
-+
-+	cmd = ((len - 1) << 4) | 0x08;
-+
-+	/* Set command and length */
-+	ret = anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
-+				AP_AUX_COMMAND, cmd);
-+
-+	/* Set aux access address */
-+	ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
-+				 AP_AUX_ADDR_7_0, addrl);
-+	ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
-+				 AP_AUX_ADDR_15_8, addrm);
-+	ret |= anx7625_write_and(ctx, ctx->i2c.rx_p0_client,
-+				 AP_AUX_ADDR_19_16, addrh);
-+
-+	/* Set write data */
-+	ret |= anx7625_reg_block_write(ctx, ctx->i2c.rx_p0_client,
-+				       AP_AUX_BUFF_START, len, buf);
-+	/* Enable aux access */
-+	ret |= anx7625_write_or(ctx, ctx->i2c.rx_p0_client,
-+				AP_AUX_CTRL_STATUS, AP_AUX_CTRL_OP_EN);
-+	if (ret < 0) {
-+		DRM_DEV_ERROR(dev, "cannot access aux related register.\n");
-+		return -EIO;
-+	}
-+
-+	usleep_range(2000, 2100);
-+
-+	ret = wait_aux_op_finish(ctx);
-+	if (ret) {
-+		DRM_DEV_ERROR(dev, "aux IO error: wait aux op finish.\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
- static int anx7625_video_mute_control(struct anx7625_data *ctx,
- 				      u8 status)
- {
-@@ -617,6 +683,7 @@ static void anx7625_dp_stop(struct anx7625_data *ctx)
- {
- 	struct device *dev = &ctx->client->dev;
- 	int ret;
-+	u8 data;
- 
- 	DRM_DEV_DEBUG_DRIVER(dev, "stop dp output\n");
- 
-@@ -628,8 +695,16 @@ static void anx7625_dp_stop(struct anx7625_data *ctx)
- 	ret |= anx7625_write_and(ctx, ctx->i2c.tx_p2_client, 0x08, 0x7f);
- 
- 	ret |= anx7625_video_mute_control(ctx, 1);
-+
-+	DRM_DEV_DEBUG_DRIVER(dev, "notify downstream enter into standby\n");
-+
-+	/* Downstream monitor enter into standby mode */
-+	data = 2;
-+	ret |= anx7625_aux_dpcd_write(ctx, 0x00, 0x06, 0x00, 1, &data);
- 	if (ret < 0)
- 		DRM_DEV_ERROR(dev, "IO error : mute video fail\n");
-+
-+	return;
- }
- 
- static int sp_tx_rst_aux(struct anx7625_data *ctx)
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
