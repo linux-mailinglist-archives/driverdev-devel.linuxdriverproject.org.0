@@ -1,49 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AA2935B0A5
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Apr 2021 23:58:07 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D18A835B09D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Apr 2021 23:40:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3749C4039E;
-	Sat, 10 Apr 2021 21:58:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3UrW51nSaW1q; Sat, 10 Apr 2021 21:58:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6AF8F40396;
-	Sat, 10 Apr 2021 21:58:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 26E5E1BF357
- for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 21:57:52 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1225640365
- for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 21:57:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 817A2403DA;
+	Sat, 10 Apr 2021 21:40:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c9v_C7gMRTfn for <devel@linuxdriverproject.org>;
- Sat, 10 Apr 2021 21:57:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.sonneshizennou.jp (ik1-339-29974.vs.sakura.ne.jp
- [153.126.207.228])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D764840363
- for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 21:57:47 +0000 (UTC)
-Received: from User (unknown [203.159.80.22])
- by mail.sonneshizennou.jp (Postfix) with SMTP id BB31A32D252;
- Sat, 10 Apr 2021 20:39:42 +0900 (JST)
-From: "Hsbc Bank London"<info@bank.org>
-Subject: Your Approved Payment
-Date: Sat, 10 Apr 2021 04:39:55 -0700
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uNCoC9Ezs0Tr; Sat, 10 Apr 2021 21:40:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7BF4A40359;
+	Sat, 10 Apr 2021 21:40:27 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A9DC01BF357
+ for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 21:40:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id A64104038E
+ for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 21:40:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QHG6Hxk_alnj for <devel@linuxdriverproject.org>;
+ Sat, 10 Apr 2021 21:40:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B2FAD4027E
+ for <devel@driverdev.osuosl.org>; Sat, 10 Apr 2021 21:40:16 +0000 (UTC)
+IronPort-SDR: qfqwJAws0ILd007bN8XitRhDb5hZ+7F37R8uI/LW1k4DJYIDK4GrzS4knb23kK+EqWW33e6VlW
+ 8kovheqN+Qnw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9950"; a="194068006"
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="194068006"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2021 14:40:15 -0700
+IronPort-SDR: wYOGpwftOtc2DxpkDolHZ9dUKIQ7G03Xtei2Wz4oKtGGCooQyVupnylzPl7sMmsNqM7saNm9Al
+ nhzlG3VnRQgA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="423229188"
+Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 10 Apr 2021 14:40:14 -0700
+Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lVLKv-000If1-ND; Sat, 10 Apr 2021 21:40:13 +0000
+Date: Sun, 11 Apr 2021 05:39:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ 4ce535ec0084f0d712317cb99d383cad3288e713
+Message-ID: <60721b18.U8tELxjYh+ufencG%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210410215752.1225640365@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,44 +67,134 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sarb_bnk086@meta.ua
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-THE WORLDS LOCAL BANK
-International Banking
-FOREIGN EXCHANGE UNIT
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: 4ce535ec0084f0d712317cb99d383cad3288e713  node: fix device cleanups in error handling code
 
-RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
+elapsed time: 720m
 
-Dear Valued Beneficiary:
+configs tested: 104
+configs skipped: 2
 
-We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+arm                          gemini_defconfig
+powerpc                     ep8248e_defconfig
+powerpc                      tqm8xx_defconfig
+openrisc                         alldefconfig
+arm                            mmp2_defconfig
+um                             i386_defconfig
+powerpc64                           defconfig
+sh                             espt_defconfig
+arm                         vf610m4_defconfig
+mips                          rb532_defconfig
+mips                            gpr_defconfig
+arm                             rpc_defconfig
+powerpc                   currituck_defconfig
+sh                        dreamcast_defconfig
+powerpc                 mpc837x_mds_defconfig
+microblaze                      mmu_defconfig
+mips                         tb0287_defconfig
+mips                         tb0219_defconfig
+sh                          urquell_defconfig
+arm                        spear6xx_defconfig
+sh                            titan_defconfig
+powerpc                 mpc8315_rdb_defconfig
+arc                          axs101_defconfig
+sh                          sdk7780_defconfig
+s390                             allyesconfig
+arm                          badge4_defconfig
+openrisc                 simple_smp_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20210409
+i386                 randconfig-a003-20210409
+i386                 randconfig-a001-20210409
+i386                 randconfig-a004-20210409
+i386                 randconfig-a002-20210409
+i386                 randconfig-a005-20210409
+x86_64               randconfig-a014-20210409
+x86_64               randconfig-a015-20210409
+x86_64               randconfig-a012-20210409
+x86_64               randconfig-a011-20210409
+x86_64               randconfig-a013-20210409
+x86_64               randconfig-a016-20210409
+i386                 randconfig-a014-20210409
+i386                 randconfig-a011-20210409
+i386                 randconfig-a016-20210409
+i386                 randconfig-a012-20210409
+i386                 randconfig-a013-20210409
+i386                 randconfig-a015-20210409
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
+clang tested configs:
+x86_64               randconfig-a004-20210409
+x86_64               randconfig-a005-20210409
+x86_64               randconfig-a003-20210409
+x86_64               randconfig-a001-20210409
+x86_64               randconfig-a002-20210409
+x86_64               randconfig-a006-20210409
 
-The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
-
-Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
-
-Provide below details to Dr Rashad Cassim for his clarification:
-
-Full Name....... Tel.................
-
-Address......... Amount..............
-
-City............ Country.............
-
-Copies of documents pertaining to the fund.
-
-Best Regards,
-Mr.James Emmett.
-Chief Executive Officer, HSBC Bank plc.
-United Kingdom 
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
