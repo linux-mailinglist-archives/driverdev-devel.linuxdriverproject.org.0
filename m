@@ -1,59 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEE9835AA77
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Apr 2021 05:13:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2007135AB20
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Apr 2021 07:51:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D9F3B83F74;
-	Sat, 10 Apr 2021 03:13:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 51C1960672;
+	Sat, 10 Apr 2021 05:51:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zre79NmNTVRA; Sat, 10 Apr 2021 03:13:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id itSUywezTG_h; Sat, 10 Apr 2021 05:51:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 36D5183F12;
-	Sat, 10 Apr 2021 03:13:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E06406066C;
+	Sat, 10 Apr 2021 05:51:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ECA6C1C1148
- for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 03:13:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F0511BF5B5
+ for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 05:51:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DAB1783F12
- for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 03:13:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 34D364057A
+ for <devel@linuxdriverproject.org>; Sat, 10 Apr 2021 05:51:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L2V-b6NZPv4t for <devel@linuxdriverproject.org>;
- Sat, 10 Apr 2021 03:13:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E0F4983F00
- for <devel@driverdev.osuosl.org>; Sat, 10 Apr 2021 03:13:42 +0000 (UTC)
-IronPort-SDR: PKKDItcosmx8KFDC0BBfgtmjV+WpSN4qaAV0I31OHugzPFd9Upj/1DkEdNJG3K+52yokkzY/g/
- 3jKlSQd5ceSA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9949"; a="255208186"
-X-IronPort-AV: E=Sophos;i="5.82,210,1613462400"; d="scan'208";a="255208186"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2021 20:13:41 -0700
-IronPort-SDR: KhDO7MHDYiilW6EwSP3ukL4akJnadv/PvxGwmMTrqsJ8/uVltpV8avSnJl7tHbKpd3Ql5zQ4E1
- xvWyRnVtyeqA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,210,1613462400"; d="scan'208";a="450529325"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 09 Apr 2021 20:13:40 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lV443-000HkJ-8c; Sat, 10 Apr 2021 03:13:39 +0000
-Date: Sat, 10 Apr 2021 11:13:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 312723a0b34d6d110aa4427a982536bb36ab8471
-Message-ID: <607117d7.rPAuO6F2sASfZ7FM%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eNBPr-rQ8IcN for <devel@linuxdriverproject.org>;
+ Sat, 10 Apr 2021 05:51:04 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
+ [IPv6:2a00:1450:4864:20::32f])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F345340579
+ for <devel@driverdev.osuosl.org>; Sat, 10 Apr 2021 05:51:03 +0000 (UTC)
+Received: by mail-wm1-x32f.google.com with SMTP id
+ u5-20020a7bcb050000b029010e9316b9d5so4004028wmj.2
+ for <devel@driverdev.osuosl.org>; Fri, 09 Apr 2021 22:51:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WG4c3kFZGTXb2b9XRpJ+e4Jg5g9CZjseSY/m/koDWOM=;
+ b=jzxMmyaehvzKhjXYEDAIptjRZxIF1FieA68vaerPJsHLdaUv6Sd4v9CXTRA+kWyPmp
+ WS49ooy2jA6buMji4tOu7MNNXnwVgitRLWTp/OSTPqN7X/BhGT4DCUaQc9GPx7X7/0dq
+ LZXU9Pz90hiIxhgpbNEJsy9f7KC6jbCEzzkwK53zCx3X+mvsmPfXBWyDKOwDUlXU54ry
+ U4wHOI/cjUA8tq61uW+P/6BX3GY/0hiJuM3b4Oud+8DeMzowoLgjN2FZJdCOGpVkdIB/
+ qcL+8Mwcijn5tc3Cy0+4d3PfsulZ26SK37kESvdLB9nht6J64iUDI3O7CFDfq7l7+wBW
+ 7SXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WG4c3kFZGTXb2b9XRpJ+e4Jg5g9CZjseSY/m/koDWOM=;
+ b=qm71cgplTO9vuhsxaU7a9c2K1MKKhfBxMgQh4izuMx9bfDrWz2VzBCzT2r5AhVZWJn
+ +KXnqKmCCL0LiL1LPsyXcG55EebA7WzLwk0IMl7lmak9Q/aQ/gadfpwC0RIjJqW9+kL7
+ WjuhWmzZ4mULEhoofhxZPvPQagMcmA5pM7Azhs/fYR7mEBdR/mOEeYnZPtGSM7Mh3GG0
+ JCJlv3skJg9NaKDce3gkeGfhYILz8aLR4T+QJpkU0SZI73oEYF93QzPwrEM9DURz8fFU
+ PZ7LT2+LRn/8PtU6Slh8MF1APzGzkuXZWj+TCc5APf+oRW33zEq3ied6z/g/HfSfJgn6
+ AHOw==
+X-Gm-Message-State: AOAM530QgqZdNqTpeKrN867iHyB+osZ1e0g4rsf5X5usvw+tB8AWpOIV
+ tB2+kptEPmqgpwp4CLWppvY=
+X-Google-Smtp-Source: ABdhPJwme5cm5bTZCj01PSHD0oXiOweoaqWkRn0GrdlKpsid/LYa18ZRsGILQiBK9f4HMUBvhM6ENw==
+X-Received: by 2002:a1c:2781:: with SMTP id n123mr17221991wmn.64.1618033862006; 
+ Fri, 09 Apr 2021 22:51:02 -0700 (PDT)
+Received: from localhost.localdomain
+ (225.red-83-57-119.dynamicip.rima-tde.net. [83.57.119.225])
+ by smtp.gmail.com with ESMTPSA id o2sm6376518wmc.23.2021.04.09.22.51.01
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 09 Apr 2021 22:51:01 -0700 (PDT)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: sboyd@kernel.org
+Subject: [PATCH v13 0/4] MIPS: ralink: add CPU clock detection and clock
+ driver for MT7621
+Date: Sat, 10 Apr 2021 07:50:55 +0200
+Message-Id: <20210410055059.13518-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,149 +88,282 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ tsbogend@alpha.franken.de, gregkh@linuxfoundation.org,
+ linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ john@phrozen.org, neil@brown.name, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: 312723a0b34d6d110aa4427a982536bb36ab8471  debugfs: Make debugfs_allow RO after init
+This patchset ports CPU clock detection for MT7621 from OpenWrt
+and adds a complete clock plan for the mt7621 SOC.
 
-elapsed time: 726m
+The documentation for this SOC only talks about two registers
+regarding to the clocks:
+* SYSC_REG_CPLL_CLKCFG0 - provides some information about boostrapped
+refclock. PLL and dividers used for CPU and some sort of BUS (AHB?).
+* SYSC_REG_CPLL_CLKCFG1 - a banch of gates to enable/disable clocks for
+all or some ip cores.
 
-configs tested: 119
-configs skipped: 2
+Registers needed for this driver to work are in two already mapped areas
+in its platform's device tree. These are 'sysc' and 'memc' nodes. Most
+of other drivers just make use of platform operations defined in
+'asm/mach-ralink/ralink_regs.h' but this can be avoided declaring this
+two nodes to be accesible through syscon. Main registers for the clocks
+are in the sysc control node so this node is merged with clock properties
+and will also be the clock provider for the SoC.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+No documentation about a probably existent set of dividers for each ip
+core is included in the datasheets. So we cannot make anything better,
+AFAICT.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-i386                             allyesconfig
-powerpc                  mpc885_ads_defconfig
-powerpc                    socrates_defconfig
-sh                           se7751_defconfig
-arm                         s3c6400_defconfig
-sh                         apsh4a3a_defconfig
-mips                        bcm63xx_defconfig
-powerpc                      tqm8xx_defconfig
-openrisc                         alldefconfig
-arm                            mmp2_defconfig
-um                             i386_defconfig
-powerpc64                           defconfig
-sh                             espt_defconfig
-arm                         vf610m4_defconfig
-mips                          rb532_defconfig
-mips                            gpr_defconfig
-arm                             rpc_defconfig
-powerpc                   currituck_defconfig
-sh                        dreamcast_defconfig
-powerpc                 mpc837x_mds_defconfig
-microblaze                      mmu_defconfig
-mips                         tb0287_defconfig
-mips                         tb0219_defconfig
-sh                          urquell_defconfig
-arm                        spear6xx_defconfig
-sh                            titan_defconfig
-powerpc                 mpc8315_rdb_defconfig
-powerpc                 mpc836x_rdk_defconfig
-m68k                       m5249evb_defconfig
-ia64                            zx1_defconfig
-arm                          ixp4xx_defconfig
-arc                          axs101_defconfig
-sh                          sdk7780_defconfig
-s390                             allyesconfig
-arm                          badge4_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                  audio_kc705_defconfig
-arm                      jornada720_defconfig
-sh                           se7780_defconfig
-sh                          lboxre2_defconfig
-powerpc                      mgcoge_defconfig
-m68k                        m5407c3_defconfig
-csky                                defconfig
-i386                                defconfig
-arm                        vexpress_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-arc                                 defconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                           allyesconfig
-parisc                              defconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                               defconfig
-sparc                            allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a006-20210409
-i386                 randconfig-a003-20210409
-i386                 randconfig-a001-20210409
-i386                 randconfig-a004-20210409
-i386                 randconfig-a002-20210409
-i386                 randconfig-a005-20210409
-x86_64               randconfig-a014-20210409
-x86_64               randconfig-a015-20210409
-x86_64               randconfig-a012-20210409
-x86_64               randconfig-a011-20210409
-x86_64               randconfig-a013-20210409
-x86_64               randconfig-a016-20210409
-i386                 randconfig-a014-20210409
-i386                 randconfig-a011-20210409
-i386                 randconfig-a016-20210409
-i386                 randconfig-a012-20210409
-i386                 randconfig-a013-20210409
-i386                 randconfig-a015-20210409
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Looking into driver code, and some openWRT patched there are
+another frequences which are used in some drivers (uart, sd...).
+According to all of this information the clock plan for this
+SoC is set as follows:
+ - Main top clock "xtal" from where all the rest of the world is
+   derived.
+ - CPU clock "cpu" derived from "xtal" frequencies and a bunch of
+   register reads and predividers.
+ - BUS clock "bus" derived from "cpu" and with (cpu / 4) MHz.
+ - Fixed clocks from "xtal":
+    * "50m": 50 MHz.
+    * "125m": 125 MHz.
+    * "150m": 150 MHz.
+    * "250m": 250 MHz.
+    * "270m": 270 MHz.
 
-clang tested configs:
-x86_64               randconfig-a004-20210409
-x86_64               randconfig-a005-20210409
-x86_64               randconfig-a003-20210409
-x86_64               randconfig-a001-20210409
-x86_64               randconfig-a002-20210409
-x86_64               randconfig-a006-20210409
+We also have a buch of gate clocks with their parents:
+ - "hsdma": "150m"
+ - "fe": "250m"
+ - "sp_divtx": "270m"
+ - "timer": "50m"
+ - "pcm": "270m"
+ - "pio": "50m"
+ - "gdma": "bus"
+ - "nand": "125m"
+ - "i2c": "50m"
+ - "i2s": "270m"
+ - "spi": "bus"
+ - "uart1": "50m"
+ - "uart2": "50m"
+ - "uart3": "50m"
+ - "eth": "50m"
+ - "pcie0": "125m"
+ - "pcie1": "125m"
+ - "pcie2": "125m"
+ - "crypto": "250m"
+ - "shxc": "50m"
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+There was a previous attempt of doing this here[0] but the author
+(Chuanhong Guo) did not wanted to make assumptions of a clock plan
+for the platform that time. It seems that now he has a better idea of
+how the clocks are dispossed for this SoC so he share code[1] where
+some frequencies and clock parents for the gates are coded from a
+real mediatek private clock plan.
+                                                
+I do really want this to be upstreamed so according to the comments
+in previous attempt[0] from Oleksij Rempel and the frequencies in
+code[1] I have tried to do this by myself.
+
+All of this patches have been tested in a GNUBee PC1 resulting in a
+working platform.
+
+Changes in v13:
+ - Rebase this series on top of linux-next 'next-20210409'.
+ - Drop empty line in Kconfig.
+ - Directly return -ENOMEM 'mt7621_clk_probe' instead of assign to
+   ret and return ret when devm_kzalloc fails.
+ - Review functions and move all remaining 'sclk' declarations to the
+   top to avoid to declare it twice for success and error paths.
+
+Changes in v12:
+ - First to patches of previous v11 series has already merged so this
+   new seres only have remaining four patches.
+ - Add Acked-by from Thomas Bogendoerfer for patch 3/4.
+ - Drop menu from Kconfig and only maintain CLK_MT7621 option.
+ - Remove comma from sentinel so it's a compile error if
+   another element is added after.
+ - Use CLK_IS_CRITICAL with a comment when gates are registered and
+   drop 'mt7621_prepare_enable_clocks' function.
+ - Move 'sclk' declaration to the top of the mt7621_register_early_clocks
+   function to avoid to declare it twice for success and error paths.
+ - Use devm_* APIs instead of directly use kzalloc and simplify error
+   path.
+
+Changes in v11:
+ - Collect Rob's Reviewed-by in bindings documentation patch.
+ - Fix MAINTAINERS patch using file 'mediatek,mt7621-sysc.yaml'
+   for documentation bindings.
+
+Changes in v10:
+ - Merge clock properties into 'sysc' system control node making
+   this node a clock provider.
+ - Update driver to use 'mediatek,mt7621-sysc' as compatible string.
+ - Update documentation bindings and its related filename to 
+   'mediatek,mt7621-sysc.yaml'.
+ - Make use of 'linux/bitfields.h' header to avoid some preprocesor
+   shift definitions and just use bit masks decreasing a bit LOC.
+
+Changes in v9:
+ - Set two missing ret values to its related PTR_ERR in function
+   'mt7621_clk_probe' (also related with [3]).
+ - Select MFC_SYSCON in Kconfig.
+
+Changes in v8:
+ - Fix kernel test robot complain about the use of 'ret' variable
+   initialized: see [3]
+
+Changes in v7:
+ - Make use of CLK_OF_DECLARE_DRIVER instead of CLK_OF_DECLARE and
+   register there only the top clocks that are needed in 'of_clk_init'.
+   The rest of the clocks (fixed and gates) are now registered using
+   a platform driver. Because we have avoid architecture dependent stuff
+   now this has sense because we can enable this driver for COMPILE_TEST.
+ - Convert fixed clocks and gates related function to receive a 'struct
+   device' pointer instead of 'struct device_node' one.
+ - Make use of dev_ APIS in stuff related with platform driver instead
+   of use device_node related stuff. 
+ - Add new static global 'mt7621_clk_early' to store pointers to clk_hw
+   registered at 'of_clk_init' stage. Make use of this in platform device
+   probe function to properly copy this into the new required 'clk_data'
+   to provide a properly hierarchy clock structure.
+ - Rename 'mt7621_register_top_clocks' function into a more accurate 
+   name now which is 'mt7621_register_early_clocks'.
+ - Enable driver for COMPILE_TEST.
+
+Changes in v6:
+ - Rewrite bindings to properly access the registers needed for the driver
+   making use of syscon for two different areas: 'sysc' and 'memc'. With
+   this changes architecture dependent include 'asm/mach-ralink/ralink_regs.h'
+   is not needed anymore because we access this two syscons using a phandle
+   through kernel's regmap APIs. Explanation of this two areas is in [2].
+ - Add new 'mt7621_clk_priv' struct to store there pointers to regmap handlers
+   to be able to use regmap operations from normal clock api functions. Add
+   this pointer in 'mt7621_clk' and 'mt7621_clk_gate' before register its
+   related clocks to make things work.
+ - Add Greg's Acked-by in patches 4 and 5.
+ - Rebase this series on the top of linux-next tag 'next-20210215'.
+
+v5 RESEND notes:
+ - I am resending this as I was told to do that.
+ - Please, take into account Rob's comments to DT node patch and my
+   reply with explanation about how are the current device tree nodes
+   for this architecture being used in [2].
+
+Changes in v5:
+ - Avoid the use of syscon. All drivers of this platform are just using
+   platform operations defined in 'asm/mach-ralink/ralink_regs.h'. We also
+   need them for some PLL registers that are not in the sys control area.
+   Hence, since we must use this dependency avoid to define clock driver
+   as a child of the sysc node in the device tree and follow current
+   platform code style.
+ - Update bindings documentation to don't refer the syscon and make
+   remove 'clock-output-names' property from required ones.
+ - Use 'asm/mach-ralink/ralink_regs.h' platform read and write operations
+   instead of regmap from the syscon node.
+ - Remove 'mt7621_clk_provider' and directly declare 'clk_hw_onecell_data'
+   pointer in 'mt7621_clk_init' and pass from there into different register
+   functions. Remove pointers to 'mt7621_clk_provider' in the rest fo structs
+   used in this driver.
+ - Remove MHZ macro and just pass values directly in hertzs.
+ - Avoid 'CLK_IGNORE_UNUSED' flag for gates and add a new function called
+   'mt7621_prepare_enable_clocks' to prepare all of them to make clocks
+   referenced and don't affect current driver code.
+ - Remove COMPILE_TEST from Kconfig because of the use of especific arch
+   stuff.
+ - Fix commit message where a typo for "frequencies" word was present.
+ - Make use of parent_clk_data in 'CLK_BASE' macro.
+ - Remove MODULE_* macros from code since this is not a module.
+ - Remove not needed includes.
+ - Hardcode "xtal" as parent in FIXED macro.
+ - Change 'else if' clause into 'if' clause since a return statement was
+   being used in 'mt7621_xtal_recalc_rate'.
+
+ NOTES:
+   - Driver is still being declared using 'CLK_OF_DECLARE' for all the  
+     clocks. I have explored the possibility to make some of them available
+     afterwards using 'CLK_OF_DECLARE_DRIVER' for top clocks and the rest
+     using a platform driver. The resulting code was uglier since we only want
+     to use the same device tree node and the top clocks must be copied again
+     for the new platform register stuff to properly have a good hierarchy.
+     New globals needs to be introduced and in this particular case I don't
+     really see the benefits of doing in this way. I am totally ok to have all
+     the clocks registered at early stage since from other drivers perspective
+     we only really need to enable gates. So, I prefer to have them in that
+     way if it is not a real problem, of course.
+
+Changes in v4:
+ - Add Acked-by from Rob Herring for binding headers (PATCH 1/6).
+ - Convert bindings to not use syscon phandle and declare clock as
+   a child of the syscon node. Update device tree and binding doc
+   accordly.
+ - Make use of 'syscon_node_to_regmap' in driver code instead of
+   get this using the phandle function.
+ - Properly unregister clocks for the error path of the function
+   'mt7621_clk_init'.
+ - Include ARRAY_SIZE of fixed clocks in the 'count' to kzalloc
+   of 'clk_data'.
+ - Add new patch changing invalid vendor 'mtk' in favour of 'mediatek'
+   which is the one listed in 'vendor-prefixes.yaml'. Update mt7621 code
+   accordly. I have added this patch inside this series because clk
+   binding is referring syscon node and the string for that node was
+   with not listed vendor. Hence update and have all of this correct
+   in the same series.
+
+Changes in v3:
+ - Fix compilation warnings reported by kernel test robot because of
+   ignoring return values of 'of_clk_hw_register' in functions
+   'mt7621_register_top_clocks' and 'mt7621_gate_ops_init'.
+ - Fix dts file and binding documentation 'clock-output-names'.
+
+Changes in v2:
+ - Remove the following patches:
+   * dt: bindings: add mt7621-pll device tree binding documentation.
+   * MIPS: ralink: add clock device providing cpu/ahb/apb clock for mt7621.
+ - Move all relevant clock code to 'drivers/clk/ralink/clk-mt7621.c' and
+   unify there previous 'mt7621-pll' and 'mt7621-clk' into a unique driver
+   and binding 'mt7621-clk'.
+ - Driver is not a platform driver anymore and now make use of 'CLK_OF_DECLARE'
+   because we need clocks available in 'plat_time_init' before setting up
+   the timer for the GIC.
+ - Use new fixed clocks as parents for different gates and deriving from 'xtal'
+   using frequencies in[1].
+ - Adapt dts file and bindings header and documentation for new changes.
+ - Change MAINTAINERS file to only contains clk-mt7621.c code and
+   mediatek,mt7621-clk.yaml file.
+
+[0]: https://www.lkml.org/lkml/2019/7/23/1044
+[1]: https://github.com/981213/linux/commit/2eca1f045e4c3db18c941135464c0d7422ad8133
+[2]: https://lkml.org/lkml/2020/12/20/47
+[3]: http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2021-February/150772.html
+
+Sergio Paracuellos (4):
+  clk: ralink: add clock driver for mt7621 SoC
+  staging: mt7621-dts: make use of new 'mt7621-clk'
+  staging: mt7621-dts: use valid vendor 'mediatek' instead of invalid
+    'mtk'
+  MAINTAINERS: add MT7621 CLOCK maintainer
+
+ MAINTAINERS                            |   6 +
+ arch/mips/ralink/mt7621.c              |   6 +-
+ drivers/clk/Kconfig                    |   1 +
+ drivers/clk/Makefile                   |   1 +
+ drivers/clk/ralink/Kconfig             |  11 +
+ drivers/clk/ralink/Makefile            |   2 +
+ drivers/clk/ralink/clk-mt7621.c        | 495 +++++++++++++++++++++++++
+ drivers/staging/mt7621-dts/gbpc1.dts   |  11 -
+ drivers/staging/mt7621-dts/mt7621.dtsi |  82 ++--
+ 9 files changed, 556 insertions(+), 59 deletions(-)
+ create mode 100644 drivers/clk/ralink/Kconfig
+ create mode 100644 drivers/clk/ralink/Makefile
+ create mode 100644 drivers/clk/ralink/clk-mt7621.c
+
+-- 
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
