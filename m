@@ -2,59 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EAED935B6B5
-	for <lists+driverdev-devel@lfdr.de>; Sun, 11 Apr 2021 21:15:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 638AF35B6DE
+	for <lists+driverdev-devel@lfdr.de>; Sun, 11 Apr 2021 22:35:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 36A0A606E8;
-	Sun, 11 Apr 2021 19:15:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A82B36062E;
+	Sun, 11 Apr 2021 20:35:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hXd889ouLLbq; Sun, 11 Apr 2021 19:15:54 +0000 (UTC)
+	with ESMTP id 0pteOOPb3EkR; Sun, 11 Apr 2021 20:35:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 48131605DC;
-	Sun, 11 Apr 2021 19:15:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 49CCC605C6;
+	Sun, 11 Apr 2021 20:35:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2F80A1BF2BC
- for <devel@linuxdriverproject.org>; Sun, 11 Apr 2021 19:15:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4255F1BF41B
+ for <devel@linuxdriverproject.org>; Sun, 11 Apr 2021 20:35:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1DA4640352
- for <devel@linuxdriverproject.org>; Sun, 11 Apr 2021 19:15:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2E02D605D4
+ for <devel@linuxdriverproject.org>; Sun, 11 Apr 2021 20:35:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DHyjOM2rNNFa for <devel@linuxdriverproject.org>;
- Sun, 11 Apr 2021 19:15:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8NezCiw5PNRX for <devel@linuxdriverproject.org>;
+ Sun, 11 Apr 2021 20:35:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B465340348
- for <devel@driverdev.osuosl.org>; Sun, 11 Apr 2021 19:15:41 +0000 (UTC)
-IronPort-SDR: ji1MkM3nNXI060LT9P6Ithy+ISzfpHvrBjS6pnWu2JssI6+TrOaxBEMulAI+aFAbdBfNVWkLTu
- 5LMZ7t5SAMag==
-X-IronPort-AV: E=McAfee;i="6000,8403,9951"; a="181585656"
-X-IronPort-AV: E=Sophos;i="5.82,214,1613462400"; d="scan'208";a="181585656"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Apr 2021 12:15:39 -0700
-IronPort-SDR: Joc3Bd9+ZD35c146Z/eBMCNddXgYESGQCfEMX2pxauLECTBKy8aZQspMG68Y6au8V5PiV+laom
- /HgbQrh7umHw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,214,1613462400"; d="scan'208";a="382717282"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 11 Apr 2021 12:15:38 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lVfYY-000J51-1Z; Sun, 11 Apr 2021 19:15:38 +0000
-Date: Mon, 12 Apr 2021 03:14:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 1b9e18de8d43bf798622cc365f99b41f180b446f
-Message-ID: <60734aac.yU1pMnii9neCNE2C%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from cpvds521.sideink.com (cpvds521.sideink.com [209.95.54.60])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0E1C0605C6
+ for <devel@linuxdriverproject.org>; Sun, 11 Apr 2021 20:35:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cartrackgps.net; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=o+/W7q1WSm3lezguBs8Hubsh1heRHWnbhEWv9lUC9qg=; b=LMTeetdy3Rw0uRqMzYxIUWlbg+
+ FkZ63ENAJBGJyviOWxbiUUwBOFkmE7PDFiiDBNpGNX5s16wu+6w0HcCwNLhWYz5yBY7SUF3OQAV2B
+ l3yeGQwFmrIUVP3QcNCiNwQIDRzS1t8hViBcRPmQFsTB8eJ2pUjcNRcYwk7ryQ5yn9/1d5q5mW53Y
+ YFgNQZf0aEpZTISmvqpQJYPfbpOkjIJlgiRLOb2XPvc1xsZYNnhZ07ncEkjmf+vfPLABlz33fKPdP
+ W0Sbayw8EmImDGCUDLPAvnH8wN06FBRbhj5CmBX/5OSdi9aauK0I9noLiWcN2tq1gvLhgpR96IJXO
+ MLTfS1XQ==;
+Received: from r167-61-136-212.dialup.adsl.anteldata.net.uy
+ ([167.61.136.212]:32886 helo=cartrackgps.net)
+ by cpvds521.sideink.com with esmtpsa (TLS1) tls
+ TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (Exim 4.94)
+ (envelope-from <salesctg@cartrackgps.net>) id 1lVgnb-00046k-UW
+ for devel@linuxdriverproject.org; Sun, 11 Apr 2021 22:35:16 +0200
+From: =?ISO-8859-1?B?U21hcnQgR1BT?=<salesctg@cartrackgps.net>
+To: devel@linuxdriverproject.org
+Subject: =?ISO-8859-1?B?RGlzdHJpYnV0b3IgZm9yIGRldmVs?=
+Date: 11 Apr 2021 17:35:28 -0300
+Message-ID: <20210411173528.C1B35D4D532F279A@cartrackgps.net>
 MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - cpvds521.sideink.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - cartrackgps.net
+X-Get-Message-Sender-Via: cpvds521.sideink.com: authenticated_id:
+ infoctg@cartrackgps.net
+X-Authenticated-Sender: cpvds521.sideink.com: infoctg@cartrackgps.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,136 +79,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: =?ISO-8859-1?B?U21hcnQgR1BT?= <salesctg@cartrackgps.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 1b9e18de8d43bf798622cc365f99b41f180b446f  staging: rtl8723bs: remove more empty if blocks after DBG_8192C deletion
+Hello devel,
 
-elapsed time: 720m
+My name is Pablo and we're looking for distributors for our vehicle tracking products.
+We design innovative GPS technologies and are looking for distributors in your country.
 
-configs tested: 106
-configs skipped: 2
+Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps. If a vehicle is stolen you can stop the engine and recover it.
+With our professional kit you can start your own tracking business or just resell the software to others for up to fifty percent commission.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Our product is ideal  for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
+This could be a good choice If you want to start a new business or diversify your investment.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm64                               defconfig
-x86_64                           allyesconfig
-riscv                            allyesconfig
-sh                   sh7724_generic_defconfig
-xtensa                    xip_kc705_defconfig
-powerpc                      ppc64e_defconfig
-arm                            hisi_defconfig
-xtensa                          iss_defconfig
-sh                           se7705_defconfig
-mips                     loongson1b_defconfig
-sh                        sh7763rdp_defconfig
-sh                           se7712_defconfig
-mips                     loongson1c_defconfig
-mips                            e55_defconfig
-mips                  cavium_octeon_defconfig
-m68k                        m5307c3_defconfig
-mips                        omega2p_defconfig
-parisc                generic-64bit_defconfig
-powerpc                      katmai_defconfig
-mips                          ath79_defconfig
-sparc                               defconfig
-sh                            titan_defconfig
-alpha                               defconfig
-arm                         cm_x300_defconfig
-sh                        edosk7760_defconfig
-sparc                       sparc64_defconfig
-sh                           se7343_defconfig
-mips                         tb0219_defconfig
-powerpc                    klondike_defconfig
-m68k                          atari_defconfig
-arm                             mxs_defconfig
-mips                           jazz_defconfig
-openrisc                            defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20210411
-i386                 randconfig-a001-20210411
-i386                 randconfig-a006-20210411
-i386                 randconfig-a005-20210411
-i386                 randconfig-a004-20210411
-i386                 randconfig-a002-20210411
-x86_64               randconfig-a003-20210411
-x86_64               randconfig-a002-20210411
-x86_64               randconfig-a001-20210411
-x86_64               randconfig-a005-20210411
-x86_64               randconfig-a006-20210411
-x86_64               randconfig-a004-20210411
-i386                 randconfig-a015-20210411
-i386                 randconfig-a014-20210411
-i386                 randconfig-a013-20210411
-i386                 randconfig-a012-20210411
-i386                 randconfig-a016-20210411
-i386                 randconfig-a011-20210411
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+The business consists in offering location services to end customers through a web site. This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
 
-clang tested configs:
-x86_64               randconfig-a014-20210411
-x86_64               randconfig-a015-20210411
-x86_64               randconfig-a011-20210411
-x86_64               randconfig-a013-20210411
-x86_64               randconfig-a012-20210411
-x86_64               randconfig-a016-20210411
+This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
+We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+If you're interested I can send you the proposal for your consideration.
+
+Best regards,
+Car Track GPS
+Phone: +1 786 352 8766
+
+We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
+
+ID: 17419
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
