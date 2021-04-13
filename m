@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B53435D2BF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Apr 2021 23:54:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0302035E6D0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 13 Apr 2021 21:05:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6430E83DBD;
-	Mon, 12 Apr 2021 21:54:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DD80B40604;
+	Tue, 13 Apr 2021 19:05:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vsmcQGbgHRcH; Mon, 12 Apr 2021 21:54:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HSoXVc2GUkLp; Tue, 13 Apr 2021 19:05:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A903383DB5;
-	Mon, 12 Apr 2021 21:54:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 48C1B4012E;
+	Tue, 13 Apr 2021 19:05:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5FC1D1BF33E
- for <devel@linuxdriverproject.org>; Mon, 12 Apr 2021 21:53:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 073471BF8A8
+ for <devel@linuxdriverproject.org>; Tue, 13 Apr 2021 19:05:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4B22060613
- for <devel@linuxdriverproject.org>; Mon, 12 Apr 2021 21:53:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E9F2C606DD
+ for <devel@linuxdriverproject.org>; Tue, 13 Apr 2021 19:05:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dHUosITwdi6f for <devel@linuxdriverproject.org>;
- Mon, 12 Apr 2021 21:53:50 +0000 (UTC)
+ with ESMTP id rnITRptGlYQt for <devel@linuxdriverproject.org>;
+ Tue, 13 Apr 2021 19:05:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7E6D8605BF
- for <devel@driverdev.osuosl.org>; Mon, 12 Apr 2021 21:53:50 +0000 (UTC)
-IronPort-SDR: 6aeZHQPZb+eJDBQulO+t5UlAU0DI3sTdPP5TsMxl8GKtPVWzwJ5HzlsUIeCkUSCcRh4e2FsVSq
- O/Npv9RQM+yQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="214756706"
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="214756706"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2021 14:53:49 -0700
-IronPort-SDR: ndPJTH3ZSPJg0pXgTlK1DSQhQtSCG78l/zvKFWXRt0etHtOiM3DtFHK0wVZTfLDfAGF7co3pFJ
- Uz6hBvnR6msA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="460335150"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 12 Apr 2021 14:53:47 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lW4V9-0000f1-4z; Mon, 12 Apr 2021 21:53:47 +0000
-Date: Tue, 13 Apr 2021 05:53:42 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- f2f560e1bdc055a6a306e6b7823ba589794e6564
-Message-ID: <6074c166.e+Q1Epq1RNBw3xWn%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 609CD6068A
+ for <devel@driverdev.osuosl.org>; Tue, 13 Apr 2021 19:05:06 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A7AFD613CA;
+ Tue, 13 Apr 2021 19:05:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1618340705;
+ bh=adPubgfpOrI6A9TuJBDs8NDXHEvW3E+ZI2frnmYzgaM=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=gUREuKWiLE9Bq+o/j58E6XCRWi5cFvHI0oGGS5LjGmUsAtF6mR6lFZXwkpJpVNdcC
+ HRCsQVs8ovmUhm9rVONpaoBV9xk2UfMC6zAHhtrSC6ylO+yMQuFvLn+LVwArG314bk
+ FYveLJw6UeDOthVe/Dy3NRNdtC9KfuNeQ5z+f+Uj+kaVT5m+zg36b/1ik5W2YixD5g
+ oW0j32qRPtoCOVoYTFlno8VAVMFBCHjflBROwJWUBukPn7/BUHjMy1NALWSaVmEPiH
+ ZYt5MEZ2EBzGV8Fyiub/ODlmZqrXKsMqoGBQt96bpGKUVwVddDGF8kt0vIuzQQLORV
+ HRqsp9Sr1JNfQ==
 MIME-Version: 1.0
+In-Reply-To: <20210410055059.13518-2-sergio.paracuellos@gmail.com>
+References: <20210410055059.13518-1-sergio.paracuellos@gmail.com>
+ <20210410055059.13518-2-sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH v13 1/4] clk: ralink: add clock driver for mt7621 SoC
+From: Stephen Boyd <sboyd@kernel.org>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Tue, 13 Apr 2021 12:05:03 -0700
+Message-ID: <161834070385.3764895.8150982536236653732@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,135 +67,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ tsbogend@alpha.franken.de, gregkh@linuxfoundation.org,
+ linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ john@phrozen.org, neil@brown.name, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: f2f560e1bdc055a6a306e6b7823ba589794e6564  staging: vchiq_core: split exit conditions
+Quoting Sergio Paracuellos (2021-04-09 22:50:56)
+> The documentation for this SOC only talks about two
+> registers regarding to the clocks:
+> * SYSC_REG_CPLL_CLKCFG0 - provides some information about
+> boostrapped refclock. PLL and dividers used for CPU and some
+> sort of BUS.
+> * SYSC_REG_CPLL_CLKCFG1 - a banch of gates to enable/disable
+> clocks for all or some ip cores.
+> 
+> Looking into driver code, and some openWRT patched there are
+> another frequencies which are used in some drivers (uart, sd...).
+> According to all of this information the clock plan for this
+> SoC is set as follows:
+> - Main top clock "xtal" from where all the rest of the world is
+> derived.
+> - CPU clock "cpu" derived from "xtal" frequencies and a bunch of
+> register reads and predividers.
+> - BUS clock "bus" derived from "cpu" and with (cpu / 4) MHz.
+> - Fixed clocks from "xtal":
+>     * "50m": 50 MHz.
+>     * "125m": 125 MHz.
+>     * "150m": 150 MHz.
+>     * "250m": 250 MHz.
+>     * "270m": 270 MHz.
+> 
+> We also have a buch of gate clocks with their parents:
+>   * "hsdma": "150m"
+>   * "fe": "250m"
+>   * "sp_divtx": "270m"
+>   * "timer": "50m"
+>   * "pcm": "270m"
+>   * "pio": "50m"
+>   * "gdma": "bus"
+>   * "nand": "125m"
+>   * "i2c": "50m"
+>   * "i2s": "270m"
+>   * "spi": "bus"
+>   * "uart1": "50m"
+>   * "uart2": "50m"
+>   * "uart3": "50m"
+>   * "eth": "50m"
+>   * "pcie0": "125m"
+>   * "pcie1": "125m"
+>   * "pcie2": "125m"
+>   * "crypto": "250m"
+>   * "shxc": "50m"
+> 
+> With this information the clk driver will provide clock and gates
+> functionality from a a set of hardcoded clocks allowing to define
+> a nice device tree without fixed clocks.
+> 
+> Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> ---
 
-elapsed time: 723m
-
-configs tested: 105
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-i386                             allyesconfig
-riscv                            allyesconfig
-nds32                            alldefconfig
-powerpc                 mpc834x_itx_defconfig
-arc                                 defconfig
-sh                         apsh4a3a_defconfig
-arm                   milbeaut_m10v_defconfig
-arm                         nhk8815_defconfig
-arm                         shannon_defconfig
-powerpc                     powernv_defconfig
-arm                        realview_defconfig
-alpha                               defconfig
-arm                       omap2plus_defconfig
-mips                           ip27_defconfig
-arm                            lart_defconfig
-m68k                        mvme16x_defconfig
-s390                             allyesconfig
-arm                          ixp4xx_defconfig
-h8300                       h8s-sim_defconfig
-m68k                          hp300_defconfig
-sh                          polaris_defconfig
-powerpc                 mpc8313_rdb_defconfig
-arm                       spear13xx_defconfig
-arm                         hackkit_defconfig
-sh                          rsk7264_defconfig
-powerpc                        warp_defconfig
-arm                             ezx_defconfig
-arm                          imote2_defconfig
-mips                         rt305x_defconfig
-nios2                         10m50_defconfig
-mips                           rs90_defconfig
-xtensa                  cadence_csp_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20210412
-i386                 randconfig-a001-20210412
-i386                 randconfig-a006-20210412
-i386                 randconfig-a005-20210412
-i386                 randconfig-a004-20210412
-i386                 randconfig-a002-20210412
-x86_64               randconfig-a014-20210412
-x86_64               randconfig-a015-20210412
-x86_64               randconfig-a011-20210412
-x86_64               randconfig-a013-20210412
-x86_64               randconfig-a012-20210412
-x86_64               randconfig-a016-20210412
-i386                 randconfig-a015-20210412
-i386                 randconfig-a014-20210412
-i386                 randconfig-a013-20210412
-i386                 randconfig-a012-20210412
-i386                 randconfig-a016-20210412
-i386                 randconfig-a011-20210412
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a003-20210412
-x86_64               randconfig-a002-20210412
-x86_64               randconfig-a001-20210412
-x86_64               randconfig-a005-20210412
-x86_64               randconfig-a006-20210412
-x86_64               randconfig-a004-20210412
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Applied to clk-next
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
