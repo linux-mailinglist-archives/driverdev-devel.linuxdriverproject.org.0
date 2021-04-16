@@ -1,60 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4725A36208C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Apr 2021 15:09:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC5C0362148
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Apr 2021 15:43:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8E7F74045C;
-	Fri, 16 Apr 2021 13:09:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A21AD60E00;
+	Fri, 16 Apr 2021 13:43:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xpeCf7Pu7LCH; Fri, 16 Apr 2021 13:09:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jRrqIcmOeeaN; Fri, 16 Apr 2021 13:43:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4485A403AE;
-	Fri, 16 Apr 2021 13:09:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D19F460678;
+	Fri, 16 Apr 2021 13:43:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B39351BF335
- for <devel@linuxdriverproject.org>; Fri, 16 Apr 2021 13:08:55 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7AA901BF335
+ for <devel@linuxdriverproject.org>; Fri, 16 Apr 2021 13:43:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AF933847D6
- for <devel@linuxdriverproject.org>; Fri, 16 Apr 2021 13:08:55 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 75D774029A
+ for <devel@linuxdriverproject.org>; Fri, 16 Apr 2021 13:43:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KgFsYNggsgfe for <devel@linuxdriverproject.org>;
- Fri, 16 Apr 2021 13:08:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
- [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8B00F847D3
- for <devel@driverdev.osuosl.org>; Fri, 16 Apr 2021 13:08:51 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 96C7C1F4367F
-Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
- register
-To: Lucas Stach <l.stach@pengutronix.de>, ezequiel@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, robh+dt@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
- lee.jones@linaro.org, gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com,
- "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Jacky Bai <ping.bai@nxp.com>
-References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
- <20210407073534.376722-4-benjamin.gaignard@collabora.com>
- <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <ffe9b3f5-94f5-453e-73f0-4b42d0454b63@collabora.com>
-Date: Fri, 16 Apr 2021 15:08:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AbB4hq0XeILO for <devel@linuxdriverproject.org>;
+ Fri, 16 Apr 2021 13:43:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BB982400C2
+ for <devel@driverdev.osuosl.org>; Fri, 16 Apr 2021 13:43:01 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 64BE361152;
+ Fri, 16 Apr 2021 13:42:56 +0000 (UTC)
+Date: Fri, 16 Apr 2021 15:42:52 +0200
+From: Christian Brauner <christian.brauner@ubuntu.com>
+To: Al Viro <viro@zeniv.linux.org.uk>
+Subject: Re: [PATCH 2/2] binder: Use receive_fd() to receive file from
+ another process
+Message-ID: <20210416134252.v3zfjp36tpk33tqz@wittgenstein>
+References: <20210401090932.121-1-xieyongji@bytedance.com>
+ <20210401090932.121-3-xieyongji@bytedance.com>
+ <YGWYZYbBzglUCxB2@kroah.com>
+ <20210401104034.52qaaoea27htkpbh@wittgenstein>
+ <YHkedhnn1wdVFTV3@zeniv-ca.linux.org.uk>
+ <YHkmxCyJ8yekgGKl@zeniv-ca.linux.org.uk>
 MIME-Version: 1.0
-In-Reply-To: <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <YHkmxCyJ8yekgGKl@zeniv-ca.linux.org.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,144 +60,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
- kernel@collabora.com, cphealy@gmail.com, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, tkjos@android.com, keescook@chromium.org,
+ Greg KH <gregkh@linuxfoundation.org>, jasowang@redhat.com,
+ linux-fsdevel@vger.kernel.org, sargun@sargun.me, hch@infradead.org,
+ Xie Yongji <xieyongji@bytedance.com>, arve@android.com, joel@joelfernandes.org,
+ hridya@google.com, maco@android.com, surenb@google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkxlIDE2LzA0LzIwMjEgw6AgMTI6NTQsIEx1Y2FzIFN0YWNoIGEgw6ljcml0wqA6Cj4gQW0gTWl0
-dHdvY2gsIGRlbSAwNy4wNC4yMDIxIHVtIDA5OjM1ICswMjAwIHNjaHJpZWIgQmVuamFtaW4gR2Fp
-Z25hcmQ6Cj4+IEluIG9yZGVyIHRvIGJlIGFibGUgdG8gc2hhcmUgdGhlIGNvbnRyb2wgaGFyZHdh
-cmUgYmxvY2sgYmV0d2Vlbgo+PiBWUFVzIHVzZSBhIHN5c2NvbiBpbnN0ZWFkIGEgaW9yZW1hcCBp
-dCBpbiB0aGUgZHJpdmVyLgo+PiBUbyBrZWVwIHRoZSBjb21wYXRpYmlsaXR5IHdpdGggb2xkZXIg
-RFQgaWYgJ254cCxpbXg4bXEtdnB1LWN0cmwnCj4+IHBoYW5kbGUgaXMgbm90IGZvdW5kIGxvb2sg
-YXQgJ2N0cmwnIHJlZy1uYW1lLgo+PiBXaXRoIHRoZSBtZXRob2QgaXQgYmVjb21lcyB1c2VsZXNz
-IHRvIHByb3ZpZGUgYSBsaXN0IG9mIHJlZ2lzdGVyCj4+IG5hbWVzIHNvIHJlbW92ZSBpdC4KPiBT
-b3JyeSBmb3IgcHV0dGluZyBhIHNwb2tlIGluIHRoZSB3aGVlbCBhZnRlciBtYW55IGl0ZXJhdGlv
-bnMgb2YgdGhlCj4gc2VyaWVzLgo+Cj4gV2UganVzdCBkaXNjdXNzZWQgYSB3YXkgZm9yd2FyZCBv
-biBob3cgdG8gaGFuZGxlIHRoZSBjbG9ja3MgYW5kIHJlc2V0cwo+IHByb3ZpZGVkIGJ5IHRoZSBi
-bGtjdGwgYmxvY2sgb24gaS5NWDhNTSBhbmQgbGF0ZXIgYW5kIGl0IHNlZW1zIHRoZXJlIGlzCj4g
-YSBjb25zZW5zdXMgb24gdHJ5aW5nIHRvIHByb3ZpZGUgdmlydHVhbCBwb3dlciBkb21haW5zIGZy
-b20gYSBibGtjdGwKPiBkcml2ZXIsIGNvbnRyb2xsaW5nIGNsb2NrcyBhbmQgcmVzZXRzIGZvciB0
-aGUgZGV2aWNlcyBpbiB0aGUgcG93ZXIKPiBkb21haW4uIEkgd291bGQgbGlrZSB0byBhdm9pZCBp
-bnRyb2R1Y2luZyB5ZXQgYW5vdGhlciB3YXkgb2YgaGFuZGxpbmcKPiB0aGUgYmxrY3RsIGFuZCB0
-aHVzIHdvdWxkIGxpa2UgdG8gYWxpZ24gdGhlIGkuTVg4TVEgVlBVIGJsa2N0bCB3aXRoCj4gd2hh
-dCB3ZSBhcmUgcGxhbm5pbmcgdG8gZG8gb24gdGhlIGxhdGVyIGNoaXAgZ2VuZXJhdGlvbnMuCj4K
-PiBDQydpbmcgSmFja3kgQmFpIGFuZCBQZW5nIEZhbiBmcm9tIE5YUCwgYXMgdGhleSB3ZXJlIGdv
-aW5nIHRvIGdpdmUgdGhpcwo+IHZpcnR1YWwgcG93ZXIgZG9tYWluIHRoaW5nIGEgc2hvdC4KClRo
-YXQgY291bGQgcmVwbGFjZSB0aGUgMyBmaXJzdCBwYXRjaGVzIGFuZCBEdCBwYXRjaGUgb2YgdGhp
-cyBzZXJpZXMKYnV0IHRoYXQgd2lsbCBub3QgaW1wYWN0IHRoZSBoZXZjIHBhcnQsIHNvIEkgd29u
-ZGVyIGlmIHB1cmUgaGV2YyBwYXRjaGVzCmNvdWxkIGJlIG1lcmdlZCBhbnl3YXkgPwpUaGV5IGFy
-ZSByZXZpZXdlZCBhbmQgZG9uJ3QgZGVwZW5kIG9mIGhvdyB0aGUgY3RybCBibG9jayBpcyBtYW5h
-Z2VkLgoKUmVnYXJkcywKQmVuamFtaW4KCj4KPiBSZWdhcmRzLAo+IEx1Y2FzCj4KPj4gU2lnbmVk
-LW9mZi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5j
-b20+Cj4+IFJldmlld2VkLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRl
-Pgo+PiAtLS0KPj4gdmVyc2lvbiA5Ogo+PiAgwqAtIENvcnJlY3Rpb25zIGluIGNvbW1pdCBtZXNz
-YWdlCj4+Cj4+IHZlcnNpb24gNzoKPj4gIMKgLSBBZGQgUGhpbGlwcCByZXZpZXdlZC1ieSB0YWcu
-Cj4+ICDCoC0gQ2hhbmdlIHN5c2NvbiBwaGFuZGxlIG5hbWUuCj4+ICAgCj4+Cj4+Cj4+Cj4+IHZl
-cnNpb24gNToKPj4gIMKgLSB1c2Ugc3lzY29uIGluc3RlYWQgb2YgVlBVIHJlc2V0IGRyaXZlci4K
-Pj4gIMKgLSBpZiBEVCBkb2Vzbid0IHByb3ZpZGUgc3lzY29uIGtlZXAgYmFja3dhcmQgY29tcGF0
-aWJpbHR5IGJ5IHVzaW5nCj4+ICDCoMKgwqAnY3RybCcgcmVnLW5hbWUuCj4+Cj4+ICDCoGRyaXZl
-cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvLmggICAgICAgfCAgNSArLQo+PiAgwqBkcml2
-ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jIHwgNTIgKysrKysrKysrKysr
-LS0tLS0tLS0tCj4+ICDCoDIgZmlsZXMgY2hhbmdlZCwgMzQgaW5zZXJ0aW9ucygrKSwgMjMgZGVs
-ZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJv
-L2hhbnRyby5oIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm8uaAo+PiBpbmRl
-eCA2YzFiODg4YWJlNzUuLjM3YjljZTA0YmQ0ZSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9zdGFn
-aW5nL21lZGlhL2hhbnRyby9oYW50cm8uaAo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-aGFudHJvL2hhbnRyby5oCj4+IEBAIC0xMyw2ICsxMyw3IEBACj4+ICDCoCNkZWZpbmUgSEFOVFJP
-X0hfCj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoCNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
-aD4KPj4gKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPj4gIMKgI2luY2x1ZGUgPGxpbnV4L3Zp
-ZGVvZGV2Mi5oPgo+PiAgwqAjaW5jbHVkZSA8bGludXgvd2FpdC5oPgo+PiAgwqAjaW5jbHVkZSA8
-bGludXgvY2xrLmg+Cj4+IEBAIC0xNjcsNyArMTY4LDcgQEAgaGFudHJvX3ZkZXZfdG9fZnVuYyhz
-dHJ1Y3QgdmlkZW9fZGV2aWNlICp2ZGV2KQo+PiAgwqDCoCogQHJlZ19iYXNlczoJCU1hcHBlZCBh
-ZGRyZXNzZXMgb2YgVlBVIHJlZ2lzdGVycy4KPj4gIMKgwqAqIEBlbmNfYmFzZToJCU1hcHBlZCBh
-ZGRyZXNzIG9mIFZQVSBlbmNvZGVyIHJlZ2lzdGVyIGZvciBjb252ZW5pZW5jZS4KPj4gIMKgwqAq
-IEBkZWNfYmFzZToJCU1hcHBlZCBhZGRyZXNzIG9mIFZQVSBkZWNvZGVyIHJlZ2lzdGVyIGZvciBj
-b252ZW5pZW5jZS4KPj4gLSAqIEBjdHJsX2Jhc2U6CQlNYXBwZWQgYWRkcmVzcyBvZiBWUFUgY29u
-dHJvbCBibG9jay4KPj4gKyAqIEBjdHJsX2Jhc2U6CQlSZWdtYXAgb2YgVlBVIGNvbnRyb2wgYmxv
-Y2suCj4+ICDCoMKgKiBAdnB1X211dGV4OgkJTXV0ZXggdG8gc3luY2hyb25pemUgVjRMMiBjYWxs
-cy4KPj4gIMKgwqAqIEBpcnFsb2NrOgkJU3BpbmxvY2sgdG8gc3luY2hyb25pemUgYWNjZXNzIHRv
-IGRhdGEgc3RydWN0dXJlcwo+PiAgwqDCoCoJCQlzaGFyZWQgd2l0aCBpbnRlcnJ1cHQgaGFuZGxl
-cnMuCj4+IEBAIC0xODYsNyArMTg3LDcgQEAgc3RydWN0IGhhbnRyb19kZXYgewo+PiAgwqAJdm9p
-ZCBfX2lvbWVtICoqcmVnX2Jhc2VzOwo+PiAgwqAJdm9pZCBfX2lvbWVtICplbmNfYmFzZTsKPj4g
-IMKgCXZvaWQgX19pb21lbSAqZGVjX2Jhc2U7Cj4+IC0Jdm9pZCBfX2lvbWVtICpjdHJsX2Jhc2U7
-Cj4+ICsJc3RydWN0IHJlZ21hcCAqY3RybF9iYXNlOwo+PiAgIAo+Pgo+Pgo+Pgo+PiAgwqAJc3Ry
-dWN0IG11dGV4IHZwdV9tdXRleDsJLyogdmlkZW9fZGV2aWNlIGxvY2sgKi8KPj4gIMKgCXNwaW5s
-b2NrX3QgaXJxbG9jazsKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
-cm8vaW14OG1fdnB1X2h3LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3Zw
-dV9ody5jCj4+IGluZGV4IGMyMjJkZTA3NWVmNC4uOGQwYzM0MjUyMzRiIDEwMDY0NAo+PiAtLS0g
-YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jCj4+ICsrKyBiL2Ry
-aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaW14OG1fdnB1X2h3LmMKPj4gQEAgLTcsNiArNyw3
-IEBACj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoCNpbmNsdWRlIDxsaW51eC9jbGsuaD4KPj4gIMKgI2lu
-Y2x1ZGUgPGxpbnV4L2RlbGF5Lmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvbWZkL3N5c2Nvbi5oPgo+
-PiAgIAo+Pgo+Pgo+Pgo+PiAgwqAjaW5jbHVkZSAiaGFudHJvLmgiCj4+ICDCoCNpbmNsdWRlICJo
-YW50cm9fanBlZy5oIgo+PiBAQCAtMjQsMzAgKzI1LDI4IEBACj4+ICDCoCNkZWZpbmUgQ1RSTF9H
-MV9QUF9GVVNFCQkweDBjCj4+ICDCoCNkZWZpbmUgQ1RSTF9HMl9ERUNfRlVTRQkweDEwCj4+ICAg
-Cj4+Cj4+Cj4+Cj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9jb25maWcgY3RybF9yZWdt
-YXBfY3RybCA9IHsKPj4gKwkucmVnX2JpdHMgPSAzMiwKPj4gKwkudmFsX2JpdHMgPSAzMiwKPj4g
-KwkucmVnX3N0cmlkZSA9IDB4MTQsCj4+ICt9Owo+PiArCj4+ICDCoHN0YXRpYyB2b2lkIGlteDht
-X3NvZnRfcmVzZXQoc3RydWN0IGhhbnRyb19kZXYgKnZwdSwgdTMyIHJlc2V0X2JpdHMpCj4+ICDC
-oHsKPj4gLQl1MzIgdmFsOwo+PiAtCj4+ICDCoAkvKiBBc3NlcnQgKi8KPj4gLQl2YWwgPSByZWFk
-bCh2cHUtPmN0cmxfYmFzZSArIENUUkxfU09GVF9SRVNFVCk7Cj4+IC0JdmFsICY9IH5yZXNldF9i
-aXRzOwo+PiAtCXdyaXRlbCh2YWwsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9TT0ZUX1JFU0VUKTsK
-Pj4gKwlyZWdtYXBfdXBkYXRlX2JpdHModnB1LT5jdHJsX2Jhc2UsIENUUkxfU09GVF9SRVNFVCwg
-cmVzZXRfYml0cywgMCk7Cj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoAl1ZGVsYXkoMik7Cj4+ICAgCj4+
-Cj4+Cj4+Cj4+ICDCoAkvKiBSZWxlYXNlICovCj4+IC0JdmFsID0gcmVhZGwodnB1LT5jdHJsX2Jh
-c2UgKyBDVFJMX1NPRlRfUkVTRVQpOwo+PiAtCXZhbCB8PSByZXNldF9iaXRzOwo+PiAtCXdyaXRl
-bCh2YWwsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9TT0ZUX1JFU0VUKTsKPj4gKwlyZWdtYXBfdXBk
-YXRlX2JpdHModnB1LT5jdHJsX2Jhc2UsIENUUkxfU09GVF9SRVNFVCwKPj4gKwkJCSAgIHJlc2V0
-X2JpdHMsIHJlc2V0X2JpdHMpOwo+PiAgwqB9Cj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoHN0YXRpYyB2
-b2lkIGlteDhtX2Nsa19lbmFibGUoc3RydWN0IGhhbnRyb19kZXYgKnZwdSwgdTMyIGNsb2NrX2Jp
-dHMpCj4+ICDCoHsKPj4gLQl1MzIgdmFsOwo+PiAtCj4+IC0JdmFsID0gcmVhZGwodnB1LT5jdHJs
-X2Jhc2UgKyBDVFJMX0NMT0NLX0VOQUJMRSk7Cj4+IC0JdmFsIHw9IGNsb2NrX2JpdHM7Cj4+IC0J
-d3JpdGVsKHZhbCwgdnB1LT5jdHJsX2Jhc2UgKyBDVFJMX0NMT0NLX0VOQUJMRSk7Cj4+ICsJcmVn
-bWFwX3VwZGF0ZV9iaXRzKHZwdS0+Y3RybF9iYXNlLCBDVFJMX0NMT0NLX0VOQUJMRSwKPj4gKwkJ
-CSAgIGNsb2NrX2JpdHMsIGNsb2NrX2JpdHMpOwo+PiAgwqB9Cj4+ICAgCj4+Cj4+Cj4+Cj4+ICDC
-oHN0YXRpYyBpbnQgaW14OG1xX3J1bnRpbWVfcmVzdW1lKHN0cnVjdCBoYW50cm9fZGV2ICp2cHUp
-Cj4+IEBAIC02NCw5ICs2Myw5IEBAIHN0YXRpYyBpbnQgaW14OG1xX3J1bnRpbWVfcmVzdW1lKHN0
-cnVjdCBoYW50cm9fZGV2ICp2cHUpCj4+ICDCoAlpbXg4bV9jbGtfZW5hYmxlKHZwdSwgQ0xPQ0tf
-RzEgfCBDTE9DS19HMik7Cj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoAkvKiBTZXQgdmFsdWVzIG9mIHRo
-ZSBmdXNlIHJlZ2lzdGVycyAqLwo+PiAtCXdyaXRlbCgweGZmZmZmZmZmLCB2cHUtPmN0cmxfYmFz
-ZSArIENUUkxfRzFfREVDX0ZVU0UpOwo+PiAtCXdyaXRlbCgweGZmZmZmZmZmLCB2cHUtPmN0cmxf
-YmFzZSArIENUUkxfRzFfUFBfRlVTRSk7Cj4+IC0Jd3JpdGVsKDB4ZmZmZmZmZmYsIHZwdS0+Y3Ry
-bF9iYXNlICsgQ1RSTF9HMl9ERUNfRlVTRSk7Cj4+ICsJcmVnbWFwX3dyaXRlKHZwdS0+Y3RybF9i
-YXNlLCBDVFJMX0cxX0RFQ19GVVNFLCAweGZmZmZmZmZmKTsKPj4gKwlyZWdtYXBfd3JpdGUodnB1
-LT5jdHJsX2Jhc2UsIENUUkxfRzFfUFBfRlVTRSwgMHhmZmZmZmZmZik7Cj4+ICsJcmVnbWFwX3dy
-aXRlKHZwdS0+Y3RybF9iYXNlLCBDVFJMX0cyX0RFQ19GVVNFLCAweGZmZmZmZmZmKTsKPj4gICAK
-Pj4KPj4KPj4KPj4gIMKgCWNsa19idWxrX2Rpc2FibGVfdW5wcmVwYXJlKHZwdS0+dmFyaWFudC0+
-bnVtX2Nsb2NrcywgdnB1LT5jbG9ja3MpOwo+PiAgIAo+Pgo+Pgo+Pgo+PiBAQCAtMTUwLDggKzE0
-OSwyMiBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgaW14OG1fdnB1X2cxX2lycShpbnQgaXJxLCB2b2lk
-ICpkZXZfaWQpCj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoHN0YXRpYyBpbnQgaW14OG1xX3ZwdV9od19p
-bml0KHN0cnVjdCBoYW50cm9fZGV2ICp2cHUpCj4+ICDCoHsKPj4gLQl2cHUtPmRlY19iYXNlID0g
-dnB1LT5yZWdfYmFzZXNbMF07Cj4+IC0JdnB1LT5jdHJsX2Jhc2UgPSB2cHUtPnJlZ19iYXNlc1t2
-cHUtPnZhcmlhbnQtPm51bV9yZWdzIC0gMV07Cj4+ICsJc3RydWN0IGRldmljZV9ub2RlICpucCA9
-IHZwdS0+ZGV2LT5vZl9ub2RlOwo+PiArCj4+ICsJdnB1LT5jdHJsX2Jhc2UgPSBzeXNjb25fcmVn
-bWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAibnhwLGlteDhtLXZwdS1jdHJsIik7Cj4+ICsJaWYg
-KElTX0VSUih2cHUtPmN0cmxfYmFzZSkpIHsKPj4gKwkJc3RydWN0IHJlc291cmNlICpyZXM7Cj4+
-ICsJCXZvaWQgX19pb21lbSAqY3RybDsKPj4gKwo+PiArCQlyZXMgPSBwbGF0Zm9ybV9nZXRfcmVz
-b3VyY2VfYnluYW1lKHZwdS0+cGRldiwgSU9SRVNPVVJDRV9NRU0sICJjdHJsIik7Cj4+ICsJCWN0
-cmwgPSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UodnB1LT5kZXYsIHJlcyk7Cj4+ICsJCWlmIChJU19F
-UlIoY3RybCkpCj4+ICsJCQlyZXR1cm4gUFRSX0VSUihjdHJsKTsKPj4gKwo+PiArCQl2cHUtPmN0
-cmxfYmFzZSA9IGRldm1fcmVnbWFwX2luaXRfbW1pbyh2cHUtPmRldiwgY3RybCwgJmN0cmxfcmVn
-bWFwX2N0cmwpOwo+PiArCQlpZiAoSVNfRVJSKHZwdS0+Y3RybF9iYXNlKSkKPj4gKwkJCXJldHVy
-biBQVFJfRVJSKHZwdS0+Y3RybF9iYXNlKTsKPj4gKwl9Cj4+ICAgCj4+Cj4+Cj4+Cj4+ICDCoAly
-ZXR1cm4gMDsKPj4gIMKgfQo+PiBAQCAtMTk4LDcgKzIxMSw2IEBAIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgaGFudHJvX2lycSBpbXg4bXFfaXJxc1tdID0gewo+PiAgwqB9Owo+PiAgIAo+Pgo+Pgo+Pgo+
-PiAgwqBzdGF0aWMgY29uc3QgY2hhciAqIGNvbnN0IGlteDhtcV9jbGtfbmFtZXNbXSA9IHsgImcx
-IiwgImcyIiwgImJ1cyIgfTsKPj4gLXN0YXRpYyBjb25zdCBjaGFyICogY29uc3QgaW14OG1xX3Jl
-Z19uYW1lc1tdID0geyAiZzEiLCAiZzIiLCAiY3RybCIgfTsKPj4gICAKPj4KPj4KPj4KPj4gIMKg
-Y29uc3Qgc3RydWN0IGhhbnRyb192YXJpYW50IGlteDhtcV92cHVfdmFyaWFudCA9IHsKPj4gIMKg
-CS5kZWNfZm10cyA9IGlteDhtX3ZwdV9kZWNfZm10cywKPj4gQEAgLTIxNSw2ICsyMjcsNCBAQCBj
-b25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQgaW14OG1xX3ZwdV92YXJpYW50ID0gewo+PiAgwqAJ
-Lm51bV9pcnFzID0gQVJSQVlfU0laRShpbXg4bXFfaXJxcyksCj4+ICDCoAkuY2xrX25hbWVzID0g
-aW14OG1xX2Nsa19uYW1lcywKPj4gIMKgCS5udW1fY2xvY2tzID0gQVJSQVlfU0laRShpbXg4bXFf
-Y2xrX25hbWVzKSwKPj4gLQkucmVnX25hbWVzID0gaW14OG1xX3JlZ19uYW1lcywKPj4gLQkubnVt
-X3JlZ3MgPSBBUlJBWV9TSVpFKGlteDhtcV9yZWdfbmFtZXMpCj4+ICDCoH07Cj4KPgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxp
-c3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJp
-dmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On Fri, Apr 16, 2021 at 05:55:16AM +0000, Al Viro wrote:
+> On Fri, Apr 16, 2021 at 05:19:50AM +0000, Al Viro wrote:
+> > On Thu, Apr 01, 2021 at 12:40:34PM +0200, Christian Brauner wrote:
+> 
+> > > and see whether all of them can be switched to simply using
+> > > receive_fd(). I did a completely untested rough sketch to illustrate
+> > > what I meant by using binder and devpts Xie seems to have just picked
+> > > those two. But the change is obviously only worth it if all or nearly
+> > > all callers can be switched over without risk of regression.
+> > > It would most likely simplify quite a few codepaths though especially in
+> > > the error paths since we can get rid of put_unused_fd() cleanup.
+> > > 
+> > > But it requires buy in from others obviously.
+> > 
+> > Opening a file can have non-trivial side effects; reserving a descriptor
+> > can't.  Moreover, if you look at the second hit in your list, you'll see
+> > that we do *NOT* want that combined thing there - fd_install() is
+> > completely irreversible, so we can't do that until we made sure the
+> > reply (struct vtpm_proxy_new_dev) has been successfully copied to
+> > userland.  No, your receive_fd_user() does not cover that.
+> > 
+> > There's a bunch of other cases like that - the next ones on your list
+> > are drivers/dma-buf/sw_sync.c and drivers/dma-buf/sync_file.c, etc.
+> 
+> FWIW, pretty much all ioctls that return descriptor as part of a structure
+> stored to user-supplied address tend to be that way; some don't have any
+> other output fields (in which case they probably would've been better off
+> with just passing the descriptor as return value of ioctl(2)).  Those
+> might be served by that receive_fd_user() helper; anything that has several
+> outputs won't be.  The same goes for anything that has hard-to-undo
+> operations as part of what they need to do:
+> 	reserve fd
+> 	set file up
+> 	do hard-to-undo stuff
+> 	install into descriptor table
+> is the only feasible order of operations - reservation can fail, so
+> it must go before the hard-to-undo part and install into descriptor
+> table can't be undone at all, so it must come last.  Looks like
+> e.g. drivers/virt/nitro_enclaves/ne_misc_dev.c case might be of
+> that sort...
+
+If receive_fd() or your receive_fd_user() proposal can replace a chunk
+of open-coded places in modules where the split between reserving the
+file descriptor and installing it is pointless it's probably already
+worth it. Random example from io_uring where the file is already opened
+way before (which yes, isn't a module afaik but another place where we
+have that pattern):
+
+static int io_uring_install_fd(struct io_ring_ctx *ctx, struct file *file)
+{
+	int ret, fd;
+
+	fd = get_unused_fd_flags(O_RDWR | O_CLOEXEC);
+	if (fd < 0)
+		return fd;
+
+	ret = io_uring_add_task_file(ctx);
+	if (ret) {
+		put_unused_fd(fd);
+		return ret;
+	}
+	fd_install(fd, file);
+	return fd;
+}
+
+A practical question also is whether the security receive hook thing
+actually belongs into the receive_fd() and receive_fd_user() helpers for
+the general case or whether that's just something that very few callers
+would want. But in any case I'm unlikely to have time on my hands to
+play with sm like this any time soon.
+
+Christian
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
