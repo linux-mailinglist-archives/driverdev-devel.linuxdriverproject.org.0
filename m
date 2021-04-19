@@ -1,55 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42C8F363933
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Apr 2021 03:56:04 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9BE4363934
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Apr 2021 03:56:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 588B66070C;
-	Mon, 19 Apr 2021 01:56:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 33E8E40382;
+	Mon, 19 Apr 2021 01:56:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F2_sSls3DPrH; Mon, 19 Apr 2021 01:56:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZIcK8sHBNueZ; Mon, 19 Apr 2021 01:56:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 75DE36072A;
-	Mon, 19 Apr 2021 01:56:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0ABD640377;
+	Mon, 19 Apr 2021 01:56:15 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4F0111BF384
- for <devel@linuxdriverproject.org>; Mon, 19 Apr 2021 01:55:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DDFBE1BF384
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Apr 2021 01:56:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3E7B3606EA
- for <devel@linuxdriverproject.org>; Mon, 19 Apr 2021 01:55:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CD53C6072A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Apr 2021 01:56:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2t4lF5Uvut38 for <devel@linuxdriverproject.org>;
- Mon, 19 Apr 2021 01:55:45 +0000 (UTC)
+ with ESMTP id MCjBzDt3sbcq
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Apr 2021 01:56:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from bdjsh.com (unknown [221.123.163.87])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2DF74606D6
- for <devel@linuxdriverproject.org>; Mon, 19 Apr 2021 01:55:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4AF85606EA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 19 Apr 2021 01:56:03 +0000 (UTC)
 Received: from User (unknown [192.168.0.1])
  by localhost.localdomain (Coremail) with SMTP id
- AQAAfwBnMnhr4nxga_4JAA--.7002S3; 
- Mon, 19 Apr 2021 09:53:16 +0800 (CST)
+ AQAAfwCHUni44nxghP4JAA--.11575S3; 
+ Mon, 19 Apr 2021 09:54:33 +0800 (CST)
 From: "Asia Pacific Endowment Foundation"<mariagwen849@gmail.com>
 Subject: UN Covid-19 Winning Notification       na
-Date: Sun, 18 Apr 2021 18:52:59 -0700
+Date: Sun, 18 Apr 2021 18:54:16 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-CM-TRANSID: AQAAfwBnMnhr4nxga_4JAA--.7002S3
-Message-Id: <607CE28D.52B014.23373@bdjsh.com>
+X-CM-TRANSID: AQAAfwCHUni44nxghP4JAA--.11575S3
+Message-Id: <607CE2DA.52B227.23373@bdjsh.com>
 Authentication-Results: localhost.localdomain; spf=neutral smtp.mail=m
  ariagwen849@gmail.com;
 X-Coremail-Antispam: 1UD129KBjvJXoW7Ar15JrW3ury8trWkZF43KFg_yoW8WryDpF
  WktrWxKasrX3y5ta1vqws5WF1kJrZ5Ga13Gr9xGr1jqFn8Zr92gws8Kr4SvFyv934IyF4F
- vr1jyaySgF1kZaDanT9S1TB71UUUUAUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ vr1jyaySgF1kZaDanT9S1TB71UUUUZJqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
  9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
