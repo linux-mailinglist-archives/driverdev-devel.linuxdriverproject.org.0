@@ -1,65 +1,89 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 904D436556D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Apr 2021 11:31:40 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A01AC3656F2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Apr 2021 12:57:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AC94240215;
-	Tue, 20 Apr 2021 09:31:38 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LbyeAjEHVr4B; Tue, 20 Apr 2021 09:31:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E03DE4020D;
-	Tue, 20 Apr 2021 09:31:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D13191BF2C0
- for <devel@linuxdriverproject.org>; Tue, 20 Apr 2021 09:31:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CDFC583A6A
- for <devel@linuxdriverproject.org>; Tue, 20 Apr 2021 09:31:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DB10583AFA;
+	Tue, 20 Apr 2021 10:57:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ky7ql74NXWEl for <devel@linuxdriverproject.org>;
- Tue, 20 Apr 2021 09:31:22 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
- [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F3B0483A5F
- for <devel@driverdev.osuosl.org>; Tue, 20 Apr 2021 09:31:21 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 906181F4277A
-Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
- register
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Lucas Stach <l.stach@pengutronix.de>, ezequiel@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, robh+dt@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
- lee.jones@linaro.org, gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- emil.l.velikov@gmail.com, "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
- Jacky Bai <ping.bai@nxp.com>
-References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
- <20210407073534.376722-4-benjamin.gaignard@collabora.com>
- <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
- <ffe9b3f5-94f5-453e-73f0-4b42d0454b63@collabora.com>
- <529b61b1b1e6030c92a7944c4864246521b2ccdd.camel@pengutronix.de>
- <36008691-d075-203d-0cac-2a012773ea34@collabora.com>
- <43a767f8-77f5-7937-c484-753a3123f6a2@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <e7064bb1-69e6-4214-380d-c464b7832da5@collabora.com>
-Date: Tue, 20 Apr 2021 11:31:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kf1oNB6HZIsc; Tue, 20 Apr 2021 10:57:27 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F9B483AD2;
+	Tue, 20 Apr 2021 10:57:26 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E4FB1BF2A9
+ for <devel@linuxdriverproject.org>; Tue, 20 Apr 2021 10:57:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 036334022C
+ for <devel@linuxdriverproject.org>; Tue, 20 Apr 2021 10:57:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=oracle.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 51EjDgJ66iFf for <devel@linuxdriverproject.org>;
+ Tue, 20 Apr 2021 10:57:16 +0000 (UTC)
+X-Greylist: delayed 00:29:10 by SQLgrey-1.8.0
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com
+ [205.220.165.32])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id F03FA40214
+ for <devel@driverdev.osuosl.org>; Tue, 20 Apr 2021 10:57:15 +0000 (UTC)
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13KARIRk031344; Tue, 20 Apr 2021 10:28:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=CBC0ziPweSVN+s576SbWo6o6RPOr+hWP6QgYWwVJdhc=;
+ b=m42z1RaUhhvl+HnWHNt/YeF7dHLlr9NgCJSFcLpVEY/Lvi9yNq7luAIX5OEvc8Q7onvh
+ WftN37mj6rbCfkMskYdz8kc/Jn/OG0abTEMvuMHJZBW5mhiDYeCRpuxPBrsoDHH6TJNN
+ x0LsF635NNDIBcXRbukPIGbxIsA+WnrHou1lHiW4kWN0lqq+0NCTwAucKbhZNXmuXAOY
+ dJRvQKomFbHq9G5DjhLwR/DJIfcI6G9DIL2mYwWgFTFiuBdjW+6r6a68GYHmW/GUSDE1
+ Jb4YfCZ4mraXTDhAnOsHyP/pc0D2NCcxEAZd55qpB14LNRQNOWE7FWP8b17TyiyQw0KE yQ== 
+Received: from oracle.com (userp3020.oracle.com [156.151.31.79])
+ by mx0b-00069f02.pphosted.com with ESMTP id 381tw0g0u9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Apr 2021 10:28:00 +0000
+Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
+ by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 13KARxA3009216;
+ Tue, 20 Apr 2021 10:27:59 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by userp3020.oracle.com with ESMTP id 3809esdbpt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Apr 2021 10:27:59 +0000
+Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 13KARxL0009161;
+ Tue, 20 Apr 2021 10:27:59 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3020.oracle.com with ESMTP id 3809esdbns-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Apr 2021 10:27:59 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 13KARtpk017675;
+ Tue, 20 Apr 2021 10:27:56 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 20 Apr 2021 10:27:55 +0000
+Date: Tue, 20 Apr 2021 13:27:47 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: David Laight <David.Laight@ACULAB.COM>
+Subject: Re: [PATCH] media: atomisp: silence "dubious: !x | !y" warning
+Message-ID: <20210420102747.GB1981@kadam>
+References: <20210417153627.GA50228@ashish-NUC8i5BEH>
+ <20210417205613.5c1aac74@coco.lan>
+ <509f019decae433cab6cb367cdfa6fa9@AcuMS.aculab.com>
 MIME-Version: 1.0
-In-Reply-To: <43a767f8-77f5-7937-c484-753a3123f6a2@xs4all.nl>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <509f019decae433cab6cb367cdfa6fa9@AcuMS.aculab.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-GUID: ajAyLqlxgs9JqJzgjE3NUwOO8J1tKu7X
+X-Proofpoint-ORIG-GUID: ajAyLqlxgs9JqJzgjE3NUwOO8J1tKu7X
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,58 +96,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
- kernel@collabora.com, cphealy@gmail.com, linux-media@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Ashish Kalra <eashishkalra@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ 'Mauro Carvalho Chehab' <mchehab@kernel.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkxlIDIwLzA0LzIwMjEgw6AgMTE6MTYsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDIw
-LzA0LzIwMjEgMTE6MTAsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+PiBMZSAxNi8wNC8yMDIx
-IMOgIDE3OjE0LCBMdWNhcyBTdGFjaCBhIMOpY3JpdMKgOgo+Pj4gQW0gRnJlaXRhZywgZGVtIDE2
-LjA0LjIwMjEgdW0gMTU6MDggKzAyMDAgc2NocmllYiBCZW5qYW1pbiBHYWlnbmFyZDoKPj4+PiBM
-ZSAxNi8wNC8yMDIxIMOgIDEyOjU0LCBMdWNhcyBTdGFjaCBhIMOpY3JpdMKgOgo+Pj4+PiBBbSBN
-aXR0d29jaCwgZGVtIDA3LjA0LjIwMjEgdW0gMDk6MzUgKzAyMDAgc2NocmllYiBCZW5qYW1pbiBH
-YWlnbmFyZDoKPj4+Pj4+IEluIG9yZGVyIHRvIGJlIGFibGUgdG8gc2hhcmUgdGhlIGNvbnRyb2wg
-aGFyZHdhcmUgYmxvY2sgYmV0d2Vlbgo+Pj4+Pj4gVlBVcyB1c2UgYSBzeXNjb24gaW5zdGVhZCBh
-IGlvcmVtYXAgaXQgaW4gdGhlIGRyaXZlci4KPj4+Pj4+IFRvIGtlZXAgdGhlIGNvbXBhdGliaWxp
-dHkgd2l0aCBvbGRlciBEVCBpZiAnbnhwLGlteDhtcS12cHUtY3RybCcKPj4+Pj4+IHBoYW5kbGUg
-aXMgbm90IGZvdW5kIGxvb2sgYXQgJ2N0cmwnIHJlZy1uYW1lLgo+Pj4+Pj4gV2l0aCB0aGUgbWV0
-aG9kIGl0IGJlY29tZXMgdXNlbGVzcyB0byBwcm92aWRlIGEgbGlzdCBvZiByZWdpc3Rlcgo+Pj4+
-Pj4gbmFtZXMgc28gcmVtb3ZlIGl0Lgo+Pj4+PiBTb3JyeSBmb3IgcHV0dGluZyBhIHNwb2tlIGlu
-IHRoZSB3aGVlbCBhZnRlciBtYW55IGl0ZXJhdGlvbnMgb2YgdGhlCj4+Pj4+IHNlcmllcy4KPj4+
-Pj4KPj4+Pj4gV2UganVzdCBkaXNjdXNzZWQgYSB3YXkgZm9yd2FyZCBvbiBob3cgdG8gaGFuZGxl
-IHRoZSBjbG9ja3MgYW5kIHJlc2V0cwo+Pj4+PiBwcm92aWRlZCBieSB0aGUgYmxrY3RsIGJsb2Nr
-IG9uIGkuTVg4TU0gYW5kIGxhdGVyIGFuZCBpdCBzZWVtcyB0aGVyZSBpcwo+Pj4+PiBhIGNvbnNl
-bnN1cyBvbiB0cnlpbmcgdG8gcHJvdmlkZSB2aXJ0dWFsIHBvd2VyIGRvbWFpbnMgZnJvbSBhIGJs
-a2N0bAo+Pj4+PiBkcml2ZXIsIGNvbnRyb2xsaW5nIGNsb2NrcyBhbmQgcmVzZXRzIGZvciB0aGUg
-ZGV2aWNlcyBpbiB0aGUgcG93ZXIKPj4+Pj4gZG9tYWluLiBJIHdvdWxkIGxpa2UgdG8gYXZvaWQg
-aW50cm9kdWNpbmcgeWV0IGFub3RoZXIgd2F5IG9mIGhhbmRsaW5nCj4+Pj4+IHRoZSBibGtjdGwg
-YW5kIHRodXMgd291bGQgbGlrZSB0byBhbGlnbiB0aGUgaS5NWDhNUSBWUFUgYmxrY3RsIHdpdGgK
-Pj4+Pj4gd2hhdCB3ZSBhcmUgcGxhbm5pbmcgdG8gZG8gb24gdGhlIGxhdGVyIGNoaXAgZ2VuZXJh
-dGlvbnMuCj4+Pj4+Cj4+Pj4+IENDJ2luZyBKYWNreSBCYWkgYW5kIFBlbmcgRmFuIGZyb20gTlhQ
-LCBhcyB0aGV5IHdlcmUgZ29pbmcgdG8gZ2l2ZSB0aGlzCj4+Pj4+IHZpcnR1YWwgcG93ZXIgZG9t
-YWluIHRoaW5nIGEgc2hvdC4KPj4+PiBUaGF0IGNvdWxkIHJlcGxhY2UgdGhlIDMgZmlyc3QgcGF0
-Y2hlcyBhbmQgRHQgcGF0Y2hlIG9mIHRoaXMgc2VyaWVzCj4+Pj4gYnV0IHRoYXQgd2lsbCBub3Qg
-aW1wYWN0IHRoZSBoZXZjIHBhcnQsIHNvIEkgd29uZGVyIGlmIHB1cmUgaGV2YyBwYXRjaGVzCj4+
-Pj4gY291bGQgYmUgbWVyZ2VkIGFueXdheSA/Cj4+Pj4gVGhleSBhcmUgcmV2aWV3ZWQgYW5kIGRv
-bid0IGRlcGVuZCBvZiBob3cgdGhlIGN0cmwgYmxvY2sgaXMgbWFuYWdlZC4KPj4+IEknbSBub3Qg
-cmVhbGx5IGluIGEgcG9zaXRpb24gdG8gZ2l2ZSBhbnkgaW5mb3JtZWQgb3BpbmlvbiBhYm91dCB0
-aGF0Cj4+PiBodmVjIHBhdGNoZXMsIGFzIEkgb25seSBza2ltbWVkIHRoZW0sIGJ1dCBJIGRvbid0
-IHNlZSBhbnkgcmVhc29uIHRvCj4+PiBkZWxheSBwYXRjaGVzIDA0LTExIGZyb20gdGhpcyBzZXJp
-ZXMgdW50aWwgdGhlIGkuTVg4TSBwbGF0Zm9ybSBpc3N1ZXMKPj4+IGFyZSBzb3J0ZWQuIEFGQUlD
-UyB0aG9zZSB0aGluZ3MgYXJlIHRvdGFsbHkgb3J0aG9nb25hbC4KPj4gSGkgSGFucywKPj4gV2hh
-dCBkbyB5b3UgdGhpbmsgYWJvdXQgdGhpcyBwcm9wb3NhbCB0byBzcGxpdCB0aGlzIHNlcmllcyA/
-Cj4+IEdldCBoZXZjIHBhcnQgbWVyZ2VkIGNvdWxkIGFsbG93IG1lIHRvIGNvbnRpbnVlIHRvIGFk
-ZCBmZWF0dXJlcwo+PiBsaWtlIHNjYWxpbmcgbGlzdHMsIGNvbXByZXNzZWQgcmVmZXJlbmNlIGJ1
-ZmZlcnMgYW5kIDEwLWJpdCBzdXBwb3J0cy4KPiBNYWtlcyBzZW5zZSB0byBtZSEKCkdyZWF0ICEK
-SWYgdGhlIGxhdGVzdCB2ZXJzaW9uIG1hdGNoIHlvdXIgZXhwZWN0YXRpb25zIGhvdyB3b3VsZCB5
-b3UgbGlrZSB0byBwcm9jZXNzZWQgPwpDYW4geW91IG1lcmdlZCBwYXRjaGVzIDQgdG8gMTIgPyBv
-ciBzaG91bGQgSSByZXNlbmQgdGhlbSBpbiBhIG5ldyBzaG9ydGVkIHNlcmllcyA/CgpSZWdhcmRz
-LApCZW5qYW1pbgoKPgo+IFJlZ2FyZHMsCj4KPiAJSGFucwo+Cl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
-eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Sat, Apr 17, 2021 at 09:31:32PM +0000, David Laight wrote:
+> From: Mauro Carvalho Chehab
+> > Sent: 17 April 2021 19:56
+> > 
+> > Em Sat, 17 Apr 2021 21:06:27 +0530
+> > Ashish Kalra <eashishkalra@gmail.com> escreveu:
+> > 
+> > > Upon running sparse, "warning: dubious: !x | !y" is brought to notice
+> > > for this file.  Logical and bitwise OR are basically the same in this
+> > > context so it doesn't cause a runtime bug.  But let's change it to
+> > > logical OR to make it cleaner and silence the Sparse warning.
+> 
+> The old code is very likely to by slightly more efficient.
+> 
+> It may not matter here, but it might in a really hot path.
+> 
+> Since !x | !y and !x || !y always have the same value
+> why is sparse complaining at all.
+> 
+
+Smatch doesn't warn about | vs || if both sides are true/false.  But
+I've occasionally asked people if they were trying to do a fast path
+optimization but it's always just a typo.
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
