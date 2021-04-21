@@ -1,44 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B7733668BB
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Apr 2021 12:01:01 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7E763668C0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Apr 2021 12:01:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AADEE404DF;
-	Wed, 21 Apr 2021 10:00:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id ECB2F83D0B;
+	Wed, 21 Apr 2021 10:01:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q9sqAUtLXUb5; Wed, 21 Apr 2021 10:00:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id koHANjP2WEAe; Wed, 21 Apr 2021 10:01:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D37FA4027E;
-	Wed, 21 Apr 2021 10:00:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5B70C83C69;
+	Wed, 21 Apr 2021 10:01:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B169E1BF57B
- for <devel@linuxdriverproject.org>; Wed, 21 Apr 2021 10:00:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 809021BF57B
+ for <devel@linuxdriverproject.org>; Wed, 21 Apr 2021 10:00:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A0F2683D1F
- for <devel@linuxdriverproject.org>; Wed, 21 Apr 2021 10:00:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7006C83B37
+ for <devel@linuxdriverproject.org>; Wed, 21 Apr 2021 10:00:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l4z1MACrLnun for <devel@linuxdriverproject.org>;
- Wed, 21 Apr 2021 10:00:43 +0000 (UTC)
+ with ESMTP id wHmyA3igzJA1 for <devel@linuxdriverproject.org>;
+ Wed, 21 Apr 2021 10:00:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8A82E83B37
- for <devel@driverdev.osuosl.org>; Wed, 21 Apr 2021 10:00:43 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2DE7D83CF9
+ for <devel@driverdev.osuosl.org>; Wed, 21 Apr 2021 10:00:44 +0000 (UTC)
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id B6AD01F42D49
+ (Authenticated sender: andrzej.p) with ESMTPSA id 68C6E1F42D4A
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [RFC RESEND 0/3] vp9 v4l2 stateless uapi
-Date: Wed, 21 Apr 2021 12:00:32 +0200
-Message-Id: <20210421100035.13571-1-andrzej.p@collabora.com>
+Subject: [RFC RESEND 1/3] media: rkvdec: Fix .buf_prepare
+Date: Wed, 21 Apr 2021 12:00:33 +0200
+Message-Id: <20210421100035.13571-2-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210421100035.13571-1-andrzej.p@collabora.com>
+References: <20210421100035.13571-1-andrzej.p@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,6 +55,7 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, kernel@collabora.com,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Adrian Ratiu <adrian.ratiu@collabora.com>,
  Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  linux-rockchip@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
  Ezequiel Garcia <ezequiel@collabora.com>
@@ -62,63 +65,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear All,
+From: Ezequiel Garcia <ezequiel@collabora.com>
 
-This is an RFC on stateless uapi for vp9 decoding with v4l2. This work is based on https://lkml.org/lkml/2020/11/2/1043, but has been substantially reworked. The important change is that the v4l2 control used to pass boolean decoder probabilities has been made unidirectional, and is now called V4L2_CID_STATELESS_VP9_COMPRESSED_HDR_PROBS.
+The driver should only set the payload on .buf_prepare if the
+buffer is CAPTURE type. If an OUTPUT buffer has a zero bytesused
+set by userspace then v4l2-core will set it to buffer length.
 
-In the previous proposal, to queue a frame the userspace must fully dequeue the previous one, which effectively results in a forced lockstep behavior and defeats vb2's capability to enqueue multiple buffers. Such a design was a consequence of backward probability updates being performed by the kernel driver (which has direct access to appropriate counter values) but forward probability updates being coupled with compressed header parsing performed by the userspace.
+Fixes: cd33c830448ba ("media: rkvdec: Add the rkvdec driver")
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-In vp9 the boolean decoder used to decode the bitstream needs certain parameters to work. Those are probabilities, which change with each frame. After each frame is decoded it is known how many times a given symbol occured in the frame, so the probabilities can be adapted. This process is known as backward probabilities update. A next frame header can also contain information which modifies probabilities resulting from backward update. The said modification is called forward probabilities update. The data for backward update is generated by the decoder hardware, while the data for forward update is prepared by reading the compressed frame header. The natural place to parse something is userspace, while the natural place to access hardware-provided counters is the kernel. Such responsibilties assignment was used in the original work.
-
-To overcome the lockstep, we moved forward probability updates to the kernel, while leaving parsing them in userspace. This way the v4l2 control which is used to pass the probs becomes unidirectional (user->kernel) and the userspace can keep parsing and enqueueing succeeding frames.
-
-If a particular driver parses the compressed header and does backward probability updates on its own then V4L2_CID_STATELESS_VP9_COMPRESSED_HDR_PROBS does not need to be used.
-
-This series adds vp9 uapi in proper locations, which means it is a proper, "official" uapi, as opposed to staging uapi which was proposed in the above mentioned lkml thread.
-
-The series adds vp9 support to rkvdec driver.
-
-Rebased onto media_tree.
-
-I kindly ask for your comments.
-
-TODO:
-
-- potentially fine-tune the uAPI (add/remove fields, move between structs)
-- write another driver (intended g2 @ iMX8)
-- verify the added documentation
-
-Regards,
-
-Andrzej
-
-Andrzej Pietrasiewicz (1):
-  media: uapi: Add VP9 stateless decoder controls
-
-Boris Brezillon (1):
-  media: rkvdec: Add the VP9 backend
-
-Ezequiel Garcia (1):
-  media: rkvdec: Fix .buf_prepare
-
- .../userspace-api/media/v4l/biblio.rst        |   10 +
- .../media/v4l/ext-ctrls-codec-stateless.rst   |  523 +++
- .../media/v4l/pixfmt-compressed.rst           |   15 +
- .../media/v4l/vidioc-g-ext-ctrls.rst          |    8 +
- .../media/v4l/vidioc-queryctrl.rst            |   12 +
- .../media/videodev2.h.rst.exceptions          |    2 +
- drivers/media/v4l2-core/v4l2-ctrls.c          |  244 ++
- drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
- drivers/staging/media/rkvdec/Makefile         |    2 +-
- drivers/staging/media/rkvdec/rkvdec-vp9.c     | 2846 +++++++++++++++++
- drivers/staging/media/rkvdec/rkvdec.c         |   62 +-
- drivers/staging/media/rkvdec/rkvdec.h         |    6 +
- include/media/v4l2-ctrls.h                    |    4 +
- include/uapi/linux/v4l2-controls.h            |  455 +++
- include/uapi/linux/videodev2.h                |    6 +
- 15 files changed, 4190 insertions(+), 6 deletions(-)
- create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
-
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index d821661d30f3..ef2166043127 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -481,7 +481,15 @@ static int rkvdec_buf_prepare(struct vb2_buffer *vb)
+ 		if (vb2_plane_size(vb, i) < sizeimage)
+ 			return -EINVAL;
+ 	}
+-	vb2_set_plane_payload(vb, 0, f->fmt.pix_mp.plane_fmt[0].sizeimage);
++
++	/*
++	 * Buffer bytesused is written by driver for CAPTURE buffers.
++	 * (if userspace passes 0 bytesused for OUTPUT buffers, v4l2-core sets
++	 * it to buffer length).
++	 */
++	if (!V4L2_TYPE_IS_OUTPUT(vq->type))
++		vb2_set_plane_payload(vb, 0, f->fmt.pix_mp.plane_fmt[0].sizeimage);
++
+ 	return 0;
+ }
+ 
 -- 
 2.17.1
 
