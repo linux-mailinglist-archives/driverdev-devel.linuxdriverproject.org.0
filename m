@@ -1,50 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4B4036A392
-	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Apr 2021 01:24:19 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 464FA401B8;
-	Sat, 24 Apr 2021 23:24:18 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PNP-skNPf2EL; Sat, 24 Apr 2021 23:24:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B24EC401B5;
-	Sat, 24 Apr 2021 23:24:16 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B3DBE1BF3D1
- for <devel@linuxdriverproject.org>; Sat, 24 Apr 2021 23:24:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8DBB836A7DF
+	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Apr 2021 17:01:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AFE1183CCD
- for <devel@linuxdriverproject.org>; Sat, 24 Apr 2021 23:24:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E690984236;
+	Sun, 25 Apr 2021 15:01:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1LLCTuMe35gJ for <devel@linuxdriverproject.org>;
- Sat, 24 Apr 2021 23:24:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2497983CCC
- for <devel@driverdev.osuosl.org>; Sat, 24 Apr 2021 23:24:06 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 65D6B1F40EE6
-Message-ID: <780afdc9b263928ed378dfbd3eaa8a5509a59a35.camel@collabora.com>
-Subject: Re: [PATCH 13/78] staging: media: hantro_drv: use
- pm_runtime_resume_and_get()
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Date: Sat, 24 Apr 2021 20:23:53 -0300
-In-Reply-To: <0021158fb27035a56089683ee712fb3ed6f6032d.1619191723.git.mchehab+huawei@kernel.org>
-References: <cover.1619191723.git.mchehab+huawei@kernel.org>
- <0021158fb27035a56089683ee712fb3ed6f6032d.1619191723.git.mchehab+huawei@kernel.org>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n43oY8HFGf7H; Sun, 25 Apr 2021 15:01:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id F2F6F842A9;
+	Sun, 25 Apr 2021 15:01:52 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 79B0D1BF977
+ for <devel@linuxdriverproject.org>; Sun, 25 Apr 2021 15:01:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6706B404DE
+ for <devel@linuxdriverproject.org>; Sun, 25 Apr 2021 15:01:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2e9izpNZJItp for <devel@linuxdriverproject.org>;
+ Sun, 25 Apr 2021 15:01:42 +0000 (UTC)
+X-Greylist: delayed 00:15:09 by SQLgrey-1.8.0
+Received: from srv-imv-exch01.masvida.cl (srv-imv-exch01.masvida.cl
+ [200.54.233.239])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0E12340508
+ for <devel@driverdev.osuosl.org>; Sun, 25 Apr 2021 15:01:40 +0000 (UTC)
+Received: from SRV-NMV-EXCH01.masvida.cl (2002:960a:b78::960a:b78) by
+ srv-imv-exch01.masvida.cl (2002:960a:b7a::960a:b7a) with Microsoft SMTP
+ Server (TLS) id 15.0.1497.2; Sun, 25 Apr 2021 10:46:32 -0400
+Received: from User (203.159.80.22) by SRV-NMV-EXCH01.masvida.cl
+ (150.10.11.120) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 25 Apr 2021 10:46:10 -0400
+From: Hsbc Bank London <info@masvida.cl>
+Subject: Your Approved Payment Notification
+Date: Sun, 25 Apr 2021 07:46:26 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <c41ba317fba94998afc203caeb1b19a6@SRV-NMV-EXCH01.masvida.cl>
+To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,40 +60,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linuxarm@huawei.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: sarb_bnk086@meta.ua
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgTWF1cm8sCgpPbiBTYXQsIDIwMjEtMDQtMjQgYXQgMDg6NDQgKzAyMDAsIE1hdXJvIENhcnZh
-bGhvIENoZWhhYiB3cm90ZToKPiBDb21taXQgZGQ4MDg4ZDVhODk2ICgiUE06IHJ1bnRpbWU6IEFk
-ZCBwbV9ydW50aW1lX3Jlc3VtZV9hbmRfZ2V0IHRvIGRlYWwgd2l0aCB1c2FnZSBjb3VudGVyIikK
-PiBhZGRlZCBwbV9ydW50aW1lX3Jlc3VtZV9hbmRfZ2V0KCkgaW4gb3JkZXIgdG8gYXV0b21hdGlj
-YWxseSBoYW5kbGUKPiBkZXYtPnBvd2VyLnVzYWdlX2NvdW50IGRlY3JlbWVudCBvbiBlcnJvcnMu
-Cj4gCj4gVXNlIHRoZSBuZXcgQVBJLCBpbiBvcmRlciB0byBjbGVhbnVwIHRoZSBlcnJvciBjaGVj
-ayBsb2dpYy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXVybyBDYXJ2YWxobyBDaGVoYWIgPG1jaGVo
-YWIraHVhd2VpQGtlcm5lbC5vcmc+Cj4gLS0tCj4gwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL2hhbnRyb19kcnYuYyB8IDIgKy0KPiDCoDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
-KSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-aGFudHJvL2hhbnRyb19kcnYuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJv
-X2Rydi5jCj4gaW5kZXggNTk1ZTgyYTgyNzI4Li4zMTQ3ZGNiZWJlYjkgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiArKysgYi9kcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwo+IEBAIC0xNTUsNyArMTU1LDcgQEAg
-c3RhdGljIHZvaWQgZGV2aWNlX3J1bih2b2lkICpwcml2KQo+IMKgwqDCoMKgwqDCoMKgwqByZXQg
-PSBjbGtfYnVsa19lbmFibGUoY3R4LT5kZXYtPnZhcmlhbnQtPm51bV9jbG9ja3MsIGN0eC0+ZGV2
-LT5jbG9ja3MpOwo+IMKgwqDCoMKgwqDCoMKgwqBpZiAocmV0KQo+IMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgZ290byBlcnJfY2FuY2VsX2pvYjsKPiAtwqDCoMKgwqDCoMKgwqByZXQg
-PSBwbV9ydW50aW1lX2dldF9zeW5jKGN0eC0+ZGV2LT5kZXYpOwo+ICvCoMKgwqDCoMKgwqDCoHJl
-dCA9IHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQoY3R4LT5kZXYtPmRldik7Cj4gwqDCoMKgwqDC
-oMKgwqDCoGlmIChyZXQgPCAwKQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZ290
-byBlcnJfY2FuY2VsX2pvYjsKPiDCoAoKU2VlbXMgdGhpcyBvbmUgbmVlZHMgYSBkaWZmZXJlbnQg
-Zml4OiBlcnJfY2FuY2VsX2pvYgp3aWxsIGNhbGwgaGFudHJvX2pvYl9maW5pc2ggd2hpY2ggaGFz
-IGEgcG1fcnVudGltZSBwdXQuCgpUaGFua3MsCkV6ZXF1aWVsIAoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+THE WORLDS LOCAL BANK
+International Banking
+FOREIGN EXCHANGE UNIT
+
+RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
+
+Dear Valued Beneficiary:
+
+We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
+
+Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
+
+We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
+
+The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
+
+Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
+
+Provide below details to Dr Rashad Cassim for his clarification:
+
+Full Name....... Tel.................
+
+Address......... Amount..............
+
+City............ Country.............
+
+Copies of documents pertaining to the fund.
+
+Best Regards,
+Mr.James Emmett.
+Chief Executive Officer, HSBC Bank plc.
+United Kingdom
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
