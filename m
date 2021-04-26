@@ -1,81 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D20D36B158
-	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Apr 2021 12:11:31 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A96E836B31D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 26 Apr 2021 14:33:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 946EE402B1;
-	Mon, 26 Apr 2021 10:11:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 16539608CA;
+	Mon, 26 Apr 2021 12:33:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UBKaLTsYSZee; Mon, 26 Apr 2021 10:11:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CeqhwNG-Nq9p; Mon, 26 Apr 2021 12:33:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C3B9440264;
-	Mon, 26 Apr 2021 10:11:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 32237600BB;
+	Mon, 26 Apr 2021 12:33:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F41321BF403
- for <devel@linuxdriverproject.org>; Mon, 26 Apr 2021 10:11:16 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 712801BF34C
+ for <devel@linuxdriverproject.org>; Mon, 26 Apr 2021 12:33:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E0F75830C1
- for <devel@linuxdriverproject.org>; Mon, 26 Apr 2021 10:11:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5F805402C1
+ for <devel@linuxdriverproject.org>; Mon, 26 Apr 2021 12:33:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6QsOdctKQ0KN for <devel@linuxdriverproject.org>;
- Mon, 26 Apr 2021 10:11:16 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com
- [IPv6:2a00:1450:4864:20::435])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3200E82E19
- for <devel@driverdev.osuosl.org>; Mon, 26 Apr 2021 10:11:16 +0000 (UTC)
-Received: by mail-wr1-x435.google.com with SMTP id c4so16329063wrt.8
- for <devel@driverdev.osuosl.org>; Mon, 26 Apr 2021 03:11:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:content-transfer-encoding:date:message-id:cc:subject
- :from:to:references:in-reply-to;
- bh=6QJuBXRzJn2AF9buhoiLcgCgPyLx4ghe04B214br8tk=;
- b=bmowWUwJPdLle6EVB+jkPN3+4gi1p99iRZVN9vq7P3avoRZQRJ3TsIdOegV46+FQkh
- go+MXbeLjk2E2rncmkHnArovf1hnt2sn8/pknG4+WXCqX3l0Dv7KR1wqjdpCOJPzfYaA
- /DtY+4zkL0gDI5tUKgNwjuL921ejoi7/5R5WPzYXvt829R5JWqwXoKQhyKW8y1oCwzAX
- 4EvueEoFP1U3bEPBXdZvMMJiGavh718lBxN37vrUoVFQF802sZFnxrRYPfs9pcbK2poJ
- wFiM9cbT1sFp/w2uFyfeFdc4aCqyXcBjXJb0vp+GmM9bcas88qdNY9bWzCLHbW8L12wd
- wZ0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:content-transfer-encoding:date
- :message-id:cc:subject:from:to:references:in-reply-to;
- bh=6QJuBXRzJn2AF9buhoiLcgCgPyLx4ghe04B214br8tk=;
- b=RA2sVvyU2nwymHYHqKMTRm6bZ8cGMjhSzjxmwP5fJjECrXw5KFyHDoOWj3JMLcZje/
- sZMreqaZOKhdPE5p9yXqlXDAtGSXdsLRg+b3AEY9oQL4dGizm7vcA2wrQWdQJGzugJul
- K0AnEoUlRR3bHcrqob7YriWz2EiOiqQsSiCz8I4xFSzMkq/8Nly9nEUmCs9TdNokTY7J
- LMG/Tc7Z6jVT6WG5JuDGYohgV8TV3ErnAYc3n7bfKeu0tDJk0q1RIO5ow1/AsbzO7Psg
- k90TnUE3x6T+ZhapIBMDe+1l06GTNd1BM+ASqMzRyGKHwM9JVquIEeKbbzW+7r0PMDbi
- g6Fg==
-X-Gm-Message-State: AOAM530GBPm4C0PwXwY2fL1tPVkxxDcdZg8PyDx0Jkv34B/AO0m4g4i1
- kt+FRmBiYbH0Ve/KxjiCrSb/tIxEPjCf+w==
-X-Google-Smtp-Source: ABdhPJzDZ3attoVnXeyn+fChhpBJF1lVz+ag12kYIzWsOz4Xclar1aHxa9Q2LuDCRIipxhRncod7dw==
-X-Received: by 2002:a5d:47cc:: with SMTP id o12mr21898459wrc.227.1619431874480; 
- Mon, 26 Apr 2021 03:11:14 -0700 (PDT)
-Received: from localhost (a109-49-46-234.cpe.netcabo.pt. [109.49.46.234])
- by smtp.gmail.com with ESMTPSA id g6sm7391184wrr.63.2021.04.26.03.11.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Apr 2021 03:11:13 -0700 (PDT)
-Mime-Version: 1.0
-Date: Mon, 26 Apr 2021 11:11:13 +0100
-Message-Id: <CAXKOS5IEQ7O.393TTUPR42AWE@arch-thunder>
-Subject: Re: [PATCH 14/78] staging: media: imx7-mipi-csis: use
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KFiMq-w7q_CC for <devel@linuxdriverproject.org>;
+ Mon, 26 Apr 2021 12:33:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 78D0740290
+ for <devel@driverdev.osuosl.org>; Mon, 26 Apr 2021 12:33:34 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 396B260233;
+ Mon, 26 Apr 2021 12:33:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1619440413;
+ bh=WvMI72dlNKXKfzflyxeqjv661v4Ptuau37HZFZ2JpCU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=TwtJeLFjpMVq02zL6f76cEVapcwXwg7F7oL6Au9/efbENNz9p487RjgC1K0+H/hPo
+ njAjp5XPzRdiWqJB3KjMHZ/pBMGQwXe2vc9UsIKhZUSyhqJVfLb3KRmK/hrLAEM3tl
+ KdhfMDJeUg8F1bLvq8z6O9bIqDR80gquSkyrikymYcZ8xkeP2YyNU1JXsypS86Jcih
+ ybCZ/T3GpFu2sn3SM17EynT+MeDqoYbcILLbJ7tCZfPhIr6hN7w/wgrK7uNr04medK
+ e+qCIOm52KmIHG08YIF2jfq/uBi+jQRpYPsynW6sQOENwi1koIZgSWhV2ACv63YX00
+ veVJuoVy/KvMg==
+Date: Mon, 26 Apr 2021 14:33:27 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 13/78] staging: media: hantro_drv: use
  pm_runtime_resume_and_get()
-From: "Rui Miguel Silva" <rmfrfs@gmail.com>
-To: "Mauro Carvalho Chehab" <mchehab+huawei@kernel.org>
+Message-ID: <20210426143327.4f9fb6ea@coco.lan>
+In-Reply-To: <780afdc9b263928ed378dfbd3eaa8a5509a59a35.camel@collabora.com>
 References: <cover.1619191723.git.mchehab+huawei@kernel.org>
- <d5f5cb75e48ef7386f83ed023ec3dc1f5be5d08f.1619191723.git.mchehab+huawei@kernel.org>
-In-Reply-To: <d5f5cb75e48ef7386f83ed023ec3dc1f5be5d08f.1619191723.git.mchehab+huawei@kernel.org>
+ <0021158fb27035a56089683ee712fb3ed6f6032d.1619191723.git.mchehab+huawei@kernel.org>
+ <780afdc9b263928ed378dfbd3eaa8a5509a59a35.camel@collabora.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,64 +69,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Steve
- Longerbeam <slongerbeam@gmail.com>, mauro.chehab@huawei.com,
- Shawn Guo <shawnguo@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linuxarm@huawei.com, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Mauro,
-On Sat Apr 24, 2021 at 7:44 AM WEST, Mauro Carvalho Chehab wrote:
-> Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-> added pm_runtime_resume_and_get() in order to automatically handle
-> dev->power.usage_count decrement on errors.
->
-> Use the new API, in order to cleanup the error check logic.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-Thanks, looks good.
-
-Acked-by: Rui Miguel Silva <rmfrfs@gmail.com>
-
-------
-Cheers,
-	 Rui
-> ---
->  drivers/staging/media/imx/imx7-mipi-csis.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-> index 025fdc488bd6..1dc680d94a46 100644
-> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
-> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-> @@ -695,11 +695,10 @@ static int mipi_csis_s_stream(struct v4l2_subdev *mipi_sd, int enable)
->  
->  		mipi_csis_clear_counters(state);
->  
-> -		ret = pm_runtime_get_sync(&state->pdev->dev);
-> -		if (ret < 0) {
-> -			pm_runtime_put_noidle(&state->pdev->dev);
-> +		ret = pm_runtime_resume_and_get(&state->pdev->dev);
-> +		if (ret < 0)
->  			return ret;
-> -		}
-> +
->  		ret = v4l2_subdev_call(state->src_sd, core, s_power, 1);
->  		if (ret < 0 && ret != -ENOIOCTLCMD)
->  			goto done;
-> -- 
-> 2.30.2
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RW0gU2F0LCAyNCBBcHIgMjAyMSAyMDoyMzo1MyAtMDMwMApFemVxdWllbCBHYXJjaWEgPGV6ZXF1
+aWVsQGNvbGxhYm9yYS5jb20+IGVzY3JldmV1OgoKPiBIaSBNYXVybywKPiAKPiBPbiBTYXQsIDIw
+MjEtMDQtMjQgYXQgMDg6NDQgKzAyMDAsIE1hdXJvIENhcnZhbGhvIENoZWhhYiB3cm90ZToKPiA+
+IENvbW1pdCBkZDgwODhkNWE4OTYgKCJQTTogcnVudGltZTogQWRkIHBtX3J1bnRpbWVfcmVzdW1l
+X2FuZF9nZXQgdG8gZGVhbCB3aXRoIHVzYWdlIGNvdW50ZXIiKQo+ID4gYWRkZWQgcG1fcnVudGlt
+ZV9yZXN1bWVfYW5kX2dldCgpIGluIG9yZGVyIHRvIGF1dG9tYXRpY2FsbHkgaGFuZGxlCj4gPiBk
+ZXYtPnBvd2VyLnVzYWdlX2NvdW50IGRlY3JlbWVudCBvbiBlcnJvcnMuCj4gPiAKPiA+IFVzZSB0
+aGUgbmV3IEFQSSwgaW4gb3JkZXIgdG8gY2xlYW51cCB0aGUgZXJyb3IgY2hlY2sgbG9naWMuCj4g
+PiAKPiA+IFNpZ25lZC1vZmYtYnk6IE1hdXJvIENhcnZhbGhvIENoZWhhYiA8bWNoZWhhYitodWF3
+ZWlAa2VybmVsLm9yZz4KPiA+IC0tLQo+ID4gwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJv
+L2hhbnRyb19kcnYuYyB8IDIgKy0KPiA+IMKgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
+LCAxIGRlbGV0aW9uKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL2hhbnRyb19kcnYuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
+dHJvX2Rydi5jCj4gPiBpbmRleCA1OTVlODJhODI3MjguLjMxNDdkY2JlYmViOSAxMDA2NDQKPiA+
+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4gPiArKysg
+Yi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwo+ID4gQEAgLTE1NSw3
+ICsxNTUsNyBAQCBzdGF0aWMgdm9pZCBkZXZpY2VfcnVuKHZvaWQgKnByaXYpCj4gPiDCoMKgwqDC
+oMKgwqDCoMKgcmV0ID0gY2xrX2J1bGtfZW5hYmxlKGN0eC0+ZGV2LT52YXJpYW50LT5udW1fY2xv
+Y2tzLCBjdHgtPmRldi0+Y2xvY2tzKTsKPiA+IMKgwqDCoMKgwqDCoMKgwqBpZiAocmV0KQo+ID4g
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBnb3RvIGVycl9jYW5jZWxfam9iOwo+ID4g
+LcKgwqDCoMKgwqDCoMKgcmV0ID0gcG1fcnVudGltZV9nZXRfc3luYyhjdHgtPmRldi0+ZGV2KTsK
+PiA+ICvCoMKgwqDCoMKgwqDCoHJldCA9IHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQoY3R4LT5k
+ZXYtPmRldik7Cj4gPiDCoMKgwqDCoMKgwqDCoMKgaWYgKHJldCA8IDApCj4gPiDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoGdvdG8gZXJyX2NhbmNlbF9qb2I7Cj4gPiDCoCAgCj4gCj4g
+U2VlbXMgdGhpcyBvbmUgbmVlZHMgYSBkaWZmZXJlbnQgZml4OiBlcnJfY2FuY2VsX2pvYgo+IHdp
+bGwgY2FsbCBoYW50cm9fam9iX2ZpbmlzaCB3aGljaCBoYXMgYSBwbV9ydW50aW1lIHB1dC4KCkdv
+b2QgcG9pbnQuIFRoYW5rcyBmb3IgcmV2aWV3aW5nIGl0IQoKSXQgc291bmRzIHRoYXQgdGhpcyBp
+cyBhIHBsYWNlIHdoZXJlIHRoZSBiZXN0IHNlZW1zCnRvIGtlZXAgdXNpbmcgcG1fcnVudGltZV9n
+ZXRfc3luYygpLCBidXQgbGV0J3MgYXQgbGVhc3QgYWRkIGEKY29tbWVudCBleHBsYWluaW5nIHdo
+eSBpdCBzaG91bGQgYmUga2VwdCBoZXJlLiBUaGlzIHNob3VsZApoZWxwIHRvIGF2b2lkIHBlb3Bs
+ZSB0byBjb3B5LWFuZC1wYXN0ZSB0aGUgY29kZSBvbiBzaXR1YXRpb25zCndoZXJlIHBtX3J1bnRp
+bWVfcmVzdW1lX2FuZF9nZXQoKSBzaG91bGQgYmUgdXNlZCBpbnN0ZWFkLgoKU2VlIGVuY2xvc2Vk
+IHBhdGNoLgoKVGhhbmtzLApNYXVybwoKW1BBVENIXSBtZWRpYTogaGFudHJvOiBkb2N1bWVudCB0
+aGUgdXNhZ2Ugb2YgcG1fcnVudGltZV9nZXRfc3luYygpCgpEZXNwaXRlIG90aGVyICpfZ2V0KCkv
+Kl9wdXQoKSBmdW5jdGlvbnMsIHdoZXJlIHVzYWdlIGNvdW50IGlzCmluY3JlbWVudGVkIG9ubHkg
+aWYgbm90IGVycm9ycywgdGhlIHBtX3J1bnRpbWVfZ2V0X3N5bmMoKSBoYXMKYSBkaWZmZXJlbnQg
+YmVoYXZpb3IsIGluY3JlbWVudGluZyB0aGUgY291bnRlciAqZXZlbiogb24KZXJyb3JzLgoKVGhh
+dCdzIGFuIGVycm9yIHByb25lIGJlaGF2aW9yLCBhcyBwZW9wbGUgb2Z0ZW4gZm9yZ2V0IHRvCmRl
+Y3JlbWVudCB0aGUgdXNhZ2UgY291bnRlci4KCkhvd2V2ZXIsIHRoZSBoYW50cm8gZHJpdmVyIGRl
+cGVuZHMgb24gdGhpcyBiZWhhdmlvciwgYXMgaXQKd2lsbCBkZWNyZW1lbnQgdGhlIHVzYWdlX2Nv
+dW50IHVuY29uZGl0aW9uYWxseSBhdCB0aGUgbTJtCmpvYiBmaW5pc2ggdGltZSwgd2hpY2ggbWFr
+ZXMgc2Vuc2UuCgpTbywgaW50ZWFkIG9mIHVzaW5nIHRoZSBwbV9ydW50aW1lX3Jlc3VtZV9hbmRf
+Z2V0KCkgdGhhdAp3b3VsZCBkZWNyZW1lbnQgdGhlIGNvdW50ZXIgb24gZXJyb3IsIGtlZXAgdGhl
+IGN1cnJlbnQKQVBJLCBidXQgYWRkIGEgZG9jdW1lbnRhdGlvbiBleHBsYWluaW5nIHRoZSByYXRp
+b25hbGUgZm9yCmtlZXAgdXNpbmcgcG1fcnVudGltZV9nZXRfc3luYygpLgoKU2lnbmVkLW9mZi1i
+eTogTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIDxtY2hlaGFiK2h1YXdlaUBrZXJuZWwub3JnPgoKZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jIGIvZHJp
+dmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKaW5kZXggNTk1ZTgyYTgyNzI4
+Li45NmY5NDBjMWM4NWMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8v
+aGFudHJvX2Rydi5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Ry
+di5jCkBAIC0xNTUsNiArMTU1LDEzIEBAIHN0YXRpYyB2b2lkIGRldmljZV9ydW4odm9pZCAqcHJp
+dikKIAlyZXQgPSBjbGtfYnVsa19lbmFibGUoY3R4LT5kZXYtPnZhcmlhbnQtPm51bV9jbG9ja3Ms
+IGN0eC0+ZGV2LT5jbG9ja3MpOwogCWlmIChyZXQpCiAJCWdvdG8gZXJyX2NhbmNlbF9qb2I7CisK
+KwkvKgorCSAqIFRoZSBwbV9ydW50aW1lX2dldF9zeW5jKCkgd2lsbCBpbmNyZW1lbnQgZGV2LT5w
+b3dlci51c2FnZV9jb3VudCwKKwkgKiBldmVuIG9uIGVycm9ycy4gVGhhdCdzIHRoZSBleHBlY3Rl
+ZCBiZWhhdmlvciBoZXJlLCBzaW5jZSB0aGUKKwkgKiBoYW50cm9fam9iX2ZpbmlzaCgpIGZ1bmN0
+aW9uIGF0IHRoZSBlcnJvciBoYW5kbGluZyBjb2RlCisJICogd2lsbCBpbnRlcm5hbGx5IGNhbGwg
+cG1fcnVudGltZV9wdXRfYXV0b3N1c3BlbmQoKS4KKwkgKi8KIAlyZXQgPSBwbV9ydW50aW1lX2dl
+dF9zeW5jKGN0eC0+ZGV2LT5kZXYpOwogCWlmIChyZXQgPCAwKQogCQlnb3RvIGVycl9jYW5jZWxf
+am9iOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
