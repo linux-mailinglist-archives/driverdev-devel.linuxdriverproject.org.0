@@ -1,57 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FCFF36C285
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Apr 2021 12:15:19 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5557E36C280
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Apr 2021 12:14:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 158AE4058C;
-	Tue, 27 Apr 2021 10:15:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C4E1D83A42;
+	Tue, 27 Apr 2021 10:14:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8dSmzPyac0TA; Tue, 27 Apr 2021 10:15:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1NHRoih_VeSo; Tue, 27 Apr 2021 10:14:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7C8CB4057F;
-	Tue, 27 Apr 2021 10:15:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 248D483083;
+	Tue, 27 Apr 2021 10:14:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1CEF71BF2BA
- for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 65E4C1BF2BA
+ for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D25AE40246
- for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 59DF94039F
+ for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G0glza0xlq_w for <devel@linuxdriverproject.org>;
+ with ESMTP id sBMUs6ldMwok for <devel@linuxdriverproject.org>;
  Tue, 27 Apr 2021 10:13:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9786B401FD
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AF06040246
  for <devel@driverdev.osuosl.org>; Tue, 27 Apr 2021 10:13:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2DE0E613DE;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 45F64613F3;
  Tue, 27 Apr 2021 10:13:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1619518431;
- bh=LvHrsFJn6JLbIexuKZaI+hIEIjqhrM13uG8Z/t+ytHI=;
+ bh=ZOYDC8nizVOemN97ng0w67F2uxMXkIsqLhOdGgCw1ys=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MVqLR7mFtMTLO0mK1TyVv9e+yTmOBkTKp+10OaJB+E8GKGvWzwvNELM5c29euVRTA
- USlnGTJVTJc1qUs5eiLRzGraPsUzUVxRBRdZb3dj2QYodiUjT21ZyJ3XdxD0sYvdb5
- R8n08vJvzfzrjwR87IG9TYbo7F4hAXUTNwwiFTlSYLHGpPGL5JMt9a5XVt+otKb7Fk
- Qh8UHDBRVwMqDuoD7fHrAIuahwrZK7Ok4dbmXenwn7JQ3KIOyRWLDB3g8TBY9UOjrV
- XfCHLr0ZmqO/JJOaR4g8tbEZIoDPZc/cz4Ha+yXKWAuRKkaY4AHE5VXNYUixFP0vK3
- +74rLo8FW28lQ==
+ b=Ltbs4haX77wUTaNgOEPnkCkZ5mFTCSyn0QYu8/7qqZBV13a09lu4T5A0rYj/ZEpEP
+ uzX25/iWkZqaoIM3h6qfKibVdPRayUV6uk5aeUCYsa65+azmLIb/8nxuGqFF3rzlKL
+ eTMBve+MVtSJ+HMcNJgxZA+LAgeV0Zya1jy9xtyxvmbBl7QVUP8zsgG4cgo+PbJ0Mh
+ CSZIR0SdezMrSGvkzVTicfJGFnYJklNBN2DBgnYFk+I02MSYtoLfUqDboUaQ/7iR5t
+ RigO9HTjK+mSMEKIt/M1CCMj6czpg92eFlYHoIsip98CwhCrwcctX+KoUPRKeJJmNe
+ 5xnxUBEEGSTRg==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lbKiy-000j5Y-Uq; Tue, 27 Apr 2021 12:13:48 +0200
+ id 1lbKiz-000j5b-0M; Tue, 27 Apr 2021 12:13:49 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH v2 20/79] staging: media: rkvdec: fix pm_runtime_get_sync()
- usage count
-Date: Tue, 27 Apr 2021 12:12:47 +0200
-Message-Id: <8990782e13de0f4b91fa6675bc5fdaeda2fd038a.1619518193.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v2 21/79] staging: media: atomisp_fops: use
+ pm_runtime_resume_and_get()
+Date: Tue, 27 Apr 2021 12:12:48 +0200
+Message-Id: <6db5624e2d137349965451f66bc47bbde357c60c.1619518193.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619518193.git.mchehab+huawei@kernel.org>
 References: <cover.1619518193.git.mchehab+huawei@kernel.org>
@@ -71,40 +73,50 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
  mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pm_runtime_get_sync() internally increments the
-dev->power.usage_count without decrementing it, even on errors.
-Replace it by the new pm_runtime_resume_and_get(), introduced by:
-commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-in order to properly decrement the usage counter and avoid memory
-leaks.
+Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+added pm_runtime_resume_and_get() in order to automatically handle
+dev->power.usage_count decrement on errors.
 
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Use the new API, in order to cleanup the error check logic.
+
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/atomisp/pci/atomisp_fops.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index d821661d30f3..8c17615f3a7a 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -658,7 +658,7 @@ static void rkvdec_device_run(void *priv)
- 	if (WARN_ON(!desc))
- 		return;
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_fops.c b/drivers/staging/media/atomisp/pci/atomisp_fops.c
+index f1e6b2597853..26d05474a035 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_fops.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_fops.c
+@@ -837,7 +837,7 @@ static int atomisp_open(struct file *file)
+ 	}
  
--	ret = pm_runtime_get_sync(rkvdec->dev);
-+	ret = pm_runtime_resume_and_get(rkvdec->dev);
+ 	/* runtime power management, turn on ISP */
+-	ret = pm_runtime_get_sync(vdev->v4l2_dev->dev);
++	ret = pm_runtime_resume_and_get(vdev->v4l2_dev->dev);
  	if (ret < 0) {
- 		rkvdec_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
- 		return;
+ 		dev_err(isp->dev, "Failed to power on device\n");
+ 		goto error;
+@@ -881,9 +881,9 @@ static int atomisp_open(struct file *file)
+ 
+ css_error:
+ 	atomisp_css_uninit(isp);
+-error:
+-	hmm_pool_unregister(HMM_POOL_TYPE_DYNAMIC);
+ 	pm_runtime_put(vdev->v4l2_dev->dev);
++error:
++	hmm_pool_unregister(HMM_POOL_TYPE_DYNAMIC);
+ 	rt_mutex_unlock(&isp->mutex);
+ 	return ret;
+ }
 -- 
 2.30.2
 
