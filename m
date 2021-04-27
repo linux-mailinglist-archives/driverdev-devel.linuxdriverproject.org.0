@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5557E36C280
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Apr 2021 12:14:28 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24A8136C283
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Apr 2021 12:14:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C4E1D83A42;
-	Tue, 27 Apr 2021 10:14:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A2ED083C16;
+	Tue, 27 Apr 2021 10:14:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1NHRoih_VeSo; Tue, 27 Apr 2021 10:14:25 +0000 (UTC)
+	with ESMTP id DEzc-S39UOVi; Tue, 27 Apr 2021 10:14:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 248D483083;
-	Tue, 27 Apr 2021 10:14:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E6D4C83133;
+	Tue, 27 Apr 2021 10:14:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 65E4C1BF2BA
- for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C4A51BF2BA
+ for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 59DF94039F
+ by smtp4.osuosl.org (Postfix) with ESMTP id B875D402BB
  for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:13:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sBMUs6ldMwok for <devel@linuxdriverproject.org>;
- Tue, 27 Apr 2021 10:13:52 +0000 (UTC)
+ with ESMTP id pQBKIHDv5j66 for <devel@linuxdriverproject.org>;
+ Tue, 27 Apr 2021 10:13:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AF06040246
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 128C040289
  for <devel@driverdev.osuosl.org>; Tue, 27 Apr 2021 10:13:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 45F64613F3;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6276C61404;
  Tue, 27 Apr 2021 10:13:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1619518431;
- bh=ZOYDC8nizVOemN97ng0w67F2uxMXkIsqLhOdGgCw1ys=;
+ bh=WwdunTEPlspSuJNcgiz5VlTq6QqTmYyotSIBFOxVREY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Ltbs4haX77wUTaNgOEPnkCkZ5mFTCSyn0QYu8/7qqZBV13a09lu4T5A0rYj/ZEpEP
- uzX25/iWkZqaoIM3h6qfKibVdPRayUV6uk5aeUCYsa65+azmLIb/8nxuGqFF3rzlKL
- eTMBve+MVtSJ+HMcNJgxZA+LAgeV0Zya1jy9xtyxvmbBl7QVUP8zsgG4cgo+PbJ0Mh
- CSZIR0SdezMrSGvkzVTicfJGFnYJklNBN2DBgnYFk+I02MSYtoLfUqDboUaQ/7iR5t
- RigO9HTjK+mSMEKIt/M1CCMj6czpg92eFlYHoIsip98CwhCrwcctX+KoUPRKeJJmNe
- 5xnxUBEEGSTRg==
+ b=RtG8MWksBzzoyJ8f1T9mM9i2iWpOVxFMvdgZaznoqwOeoaF1BGLfN6hdQkAjTBmXG
+ gb2wIhkMmOHaazVy75eeYno7XXgjTuDTo4qPz5ka6axbr96x+nj53BWjICe1um51TZ
+ Ab2SEYW4bxlYb/EMBtKfknyNbdcyMBUMtn5cwqNvF53cmJ5coNHnmf55kcZuBwLfMK
+ mdDcHBUCnS+i68sJTKVTgsL5OowpThLKgObLrRLqqp+Cgl4+UL2N7VTRjneXXG7SGn
+ lbHNJ4HV7xV5mgvyn2gVH0+z2vWQ74G6QvtkK+B9ULi1pNuLp56InWHUaMNVebMj97
+ HV5QK/JmPrKRw==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lbKiz-000j5b-0M; Tue, 27 Apr 2021 12:13:49 +0200
+ id 1lbKiz-000j5e-1q; Tue, 27 Apr 2021 12:13:49 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH v2 21/79] staging: media: atomisp_fops: use
+Subject: [PATCH v2 22/79] staging: media: imx7-mipi-csis: use
  pm_runtime_resume_and_get()
-Date: Tue, 27 Apr 2021 12:12:48 +0200
-Message-Id: <6db5624e2d137349965451f66bc47bbde357c60c.1619518193.git.mchehab+huawei@kernel.org>
+Date: Tue, 27 Apr 2021 12:12:49 +0200
+Message-Id: <9b52f8d9709e32ac129563f508beaec8ab321409.1619518193.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619518193.git.mchehab+huawei@kernel.org>
 References: <cover.1619518193.git.mchehab+huawei@kernel.org>
@@ -70,12 +70,15 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
+Cc: devel@driverdev.osuosl.org, Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, linuxarm@huawei.com,
+ linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>, mauro.chehab@huawei.com,
+ Shawn Guo <shawnguo@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -87,36 +90,31 @@ dev->power.usage_count decrement on errors.
 
 Use the new API, in order to cleanup the error check logic.
 
+Acked-by: Rui Miguel Silva <rmfrfs@gmail.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/atomisp/pci/atomisp_fops.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/media/imx/imx7-mipi-csis.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_fops.c b/drivers/staging/media/atomisp/pci/atomisp_fops.c
-index f1e6b2597853..26d05474a035 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_fops.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_fops.c
-@@ -837,7 +837,7 @@ static int atomisp_open(struct file *file)
- 	}
+diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
+index 025fdc488bd6..1dc680d94a46 100644
+--- a/drivers/staging/media/imx/imx7-mipi-csis.c
++++ b/drivers/staging/media/imx/imx7-mipi-csis.c
+@@ -695,11 +695,10 @@ static int mipi_csis_s_stream(struct v4l2_subdev *mipi_sd, int enable)
  
- 	/* runtime power management, turn on ISP */
--	ret = pm_runtime_get_sync(vdev->v4l2_dev->dev);
-+	ret = pm_runtime_resume_and_get(vdev->v4l2_dev->dev);
- 	if (ret < 0) {
- 		dev_err(isp->dev, "Failed to power on device\n");
- 		goto error;
-@@ -881,9 +881,9 @@ static int atomisp_open(struct file *file)
+ 		mipi_csis_clear_counters(state);
  
- css_error:
- 	atomisp_css_uninit(isp);
--error:
--	hmm_pool_unregister(HMM_POOL_TYPE_DYNAMIC);
- 	pm_runtime_put(vdev->v4l2_dev->dev);
-+error:
-+	hmm_pool_unregister(HMM_POOL_TYPE_DYNAMIC);
- 	rt_mutex_unlock(&isp->mutex);
- 	return ret;
- }
+-		ret = pm_runtime_get_sync(&state->pdev->dev);
+-		if (ret < 0) {
+-			pm_runtime_put_noidle(&state->pdev->dev);
++		ret = pm_runtime_resume_and_get(&state->pdev->dev);
++		if (ret < 0)
+ 			return ret;
+-		}
++
+ 		ret = v4l2_subdev_call(state->src_sd, core, s_power, 1);
+ 		if (ret < 0 && ret != -ENOIOCTLCMD)
+ 			goto done;
 -- 
 2.30.2
 
