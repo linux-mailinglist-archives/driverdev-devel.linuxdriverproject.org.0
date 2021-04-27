@@ -1,58 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54FD236C384
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Apr 2021 12:28:55 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42D2D36C35B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Apr 2021 12:28:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E3C4883C88;
-	Tue, 27 Apr 2021 10:28:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C13B3405C6;
+	Tue, 27 Apr 2021 10:28:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id au4Pv_BHTbLE; Tue, 27 Apr 2021 10:28:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AG3gUlF3N-k5; Tue, 27 Apr 2021 10:28:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6086483A5D;
-	Tue, 27 Apr 2021 10:28:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EED06405BC;
+	Tue, 27 Apr 2021 10:28:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 020C31BF2BA
- for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:27:22 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 057EE405BD
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C31B1C116E
  for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:27:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id E68D840466
+ for <devel@linuxdriverproject.org>; Tue, 27 Apr 2021 10:27:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VLvTGCewhOax for <devel@linuxdriverproject.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id neVORBjCH0sK for <devel@linuxdriverproject.org>;
  Tue, 27 Apr 2021 10:27:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 70879405AD
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7045D40468
  for <devel@driverdev.osuosl.org>; Tue, 27 Apr 2021 10:27:18 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C1E1B61445;
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 735A06140E;
  Tue, 27 Apr 2021 10:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1619519236;
- bh=ilbYi39Wp/s1IHEjQb8NZRh7PLiRnT42XXdFX8lFSpw=;
+ bh=9XhzsT7qorzb0O8m+AZfDrHyIqnxWFrm1sswMUzcdRI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=E1V4ib0zbZH+kCUd5H/K3zfdYxnn6eIkc1o8FSQsvNaEok8VvLUUH3V9QiLL7DUEQ
- dN9W7MRaY2i3s+ixNN13NayXIcIBJcsrxVQQRqyUc36hl2fIR0pxBuN0XmkLsXUnCE
- R2Z1r0hX+Tfy1uGelCFiFXxgFeQFrYyf2NuxURXOX37gzThSFqOlSJdoazXrYdstXu
- 6CCdBuM2PC1AIti1Hg/1pJXrtHFtG3etjGFzlHWSamm/J3Z7yrWfdgCytXqIxDc31k
- zeDVLsgxC4qnAUxhELuCUJU6AAt9nCNSo4MS1RQT1jxHOCWBioubSk9uZC0BbweNuV
- Gc3epVSD6SYYQ==
+ b=tf914diWBrl8TDvXMl5MLXGnXhoS7XUaWw5QGfh55jhiWLbSpRdpvTzlw8J5UysaU
+ jBsXLJJNXnvdzEzd5UuC4JNMdgz4Apn3uggzXUulqA7iTvZjqMwLrpDUy+UTJpIQhv
+ CJat0sLmS/XVxjPR6B8gwIlB9aLieQI8PheQt35mTD0a1cGmLmk4t8ULtrwmgoC5IM
+ L2Kld2gSrXRUa4stHtOpUh71/ja/dRGVRGLemrB7h8mI4q9pGNcLH5eAlrasCDTiqe
+ h6f3S7+apWzvZimwh2HHitnK1E4i7y2E1fPmelY7kH7j9cnMhxgMb1CmXxl63Q928Q
+ l8vs9Z0HYh9ig==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lbKvw-000o0W-Cu; Tue, 27 Apr 2021 12:27:12 +0200
+ id 1lbKvz-000o32-Tr; Tue, 27 Apr 2021 12:27:15 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH v3 27/79] staging: media: vi: use pm_runtime_resume_and_get()
-Date: Tue, 27 Apr 2021 12:26:17 +0200
-Message-Id: <4ee32d7287e0839f23f18e8b9bf1829328411a67.1619519080.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 79/79] media: hantro: document the usage of
+ pm_runtime_get_sync()
+Date: Tue, 27 Apr 2021 12:27:09 +0200
+Message-Id: <230f22170db7fa57b49cff4570cef15bf11b2ad5.1619519080.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619519080.git.mchehab+huawei@kernel.org>
 References: <cover.1619519080.git.mchehab+huawei@kernel.org>
@@ -72,43 +73,55 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>, mauro.chehab@huawei.com,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, mauro.chehab@huawei.com,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-added pm_runtime_resume_and_get() in order to automatically handle
-dev->power.usage_count decrement on errors.
+Despite other *_get()/*_put() functions, where usage count is
+incremented only if not errors, the pm_runtime_get_sync() has
+a different behavior, incrementing the counter *even* on
+errors.
 
-Use the new API, in order to cleanup the error check logic.
+That's an error prone behavior, as people often forget to
+decrement the usage counter.
+
+However, the hantro driver depends on this behavior, as it
+will decrement the usage_count unconditionally at the m2m
+job finish time, which makes sense.
+
+So, intead of using the pm_runtime_resume_and_get() that
+would decrement the counter on error, keep the current
+API, but add a documentation explaining the rationale for
+keep using pm_runtime_get_sync().
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/tegra-video/vi.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/media/hantro/hantro_drv.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/staging/media/tegra-video/vi.c b/drivers/staging/media/tegra-video/vi.c
-index 7a09061cda57..1298740a9c6c 100644
---- a/drivers/staging/media/tegra-video/vi.c
-+++ b/drivers/staging/media/tegra-video/vi.c
-@@ -297,10 +297,9 @@ static int tegra_channel_start_streaming(struct vb2_queue *vq, u32 count)
- 	struct tegra_vi_channel *chan = vb2_get_drv_priv(vq);
- 	int ret;
- 
--	ret = pm_runtime_get_sync(chan->vi->dev);
-+	ret = pm_runtime_resume_and_get(chan->vi->dev);
- 	if (ret < 0) {
- 		dev_err(chan->vi->dev, "failed to get runtime PM: %d\n", ret);
--		pm_runtime_put_noidle(chan->vi->dev);
- 		return ret;
- 	}
- 
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 595e82a82728..96f940c1c85c 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -155,6 +155,13 @@ static void device_run(void *priv)
+ 	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
+ 	if (ret)
+ 		goto err_cancel_job;
++
++	/*
++	 * The pm_runtime_get_sync() will increment dev->power.usage_count,
++	 * even on errors. That's the expected behavior here, since the
++	 * hantro_job_finish() function at the error handling code
++	 * will internally call pm_runtime_put_autosuspend().
++	 */
+ 	ret = pm_runtime_get_sync(ctx->dev->dev);
+ 	if (ret < 0)
+ 		goto err_cancel_job;
 -- 
 2.30.2
 
