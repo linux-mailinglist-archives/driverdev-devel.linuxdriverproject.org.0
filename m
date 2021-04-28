@@ -1,89 +1,88 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D63136D3A0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Apr 2021 10:05:23 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD72236D586
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Apr 2021 12:15:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AA2BB40554;
-	Wed, 28 Apr 2021 08:05:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 38B1640EE7;
+	Wed, 28 Apr 2021 10:15:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id es-m_Ake3umI; Wed, 28 Apr 2021 08:05:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id knz07GPv2xYY; Wed, 28 Apr 2021 10:15:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2C46040551;
-	Wed, 28 Apr 2021 08:05:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 19D39406A4;
+	Wed, 28 Apr 2021 10:15:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 236621BF3C5
- for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 08:05:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 30D1F1BF5E0
+ for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 10:14:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1125C82B1B
- for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 08:05:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2C5CC83D96
+ for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 10:14:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
+ dkim=pass (2048-bit key) header.d=oracle.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1xc7owjZENwY for <devel@linuxdriverproject.org>;
- Wed, 28 Apr 2021 08:05:08 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lj1-x236.google.com (mail-lj1-x236.google.com
- [IPv6:2a00:1450:4864:20::236])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 20165829BB
- for <devel@driverdev.osuosl.org>; Wed, 28 Apr 2021 08:05:07 +0000 (UTC)
-Received: by mail-lj1-x236.google.com with SMTP id u25so32914061ljg.7
- for <devel@driverdev.osuosl.org>; Wed, 28 Apr 2021 01:05:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Nps3nttZguJ8BCD0NvcBimYy31g7NyHD2WV72x2rWLs=;
- b=scSO1JI2a1WTmBO2H/Tv1tlocFWHO1F1qZLoPwpZbG2D7xUkdpbBZrcN+R9+dNVG3d
- lx+Gvzn8Z1G/A6pg9rnrjis1Bh+m7iFL2BLoQsJI3JQBnBW1+9QURc7oK6pwP86UQ+4I
- bv/9z8+yk5GYeIObu6e4WXOdwdJ1nPbX9LNB8BuXqK7SVZTVnpOibFdZWaSJQ77JkKkf
- FVKzw2j9pCmFA7Ufk66d5GcyzMeBSLFmqeOPWR3MlmT7Mb8KUiyvJOaytc4tboFfrAWy
- g57cQG+k/ihpkB3mxhHFMyWl414dNqsBmYR4vUoO1qh+PATE3DM5DEI4XBZIUZIXHkWY
- bqQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Nps3nttZguJ8BCD0NvcBimYy31g7NyHD2WV72x2rWLs=;
- b=PooO1/Tp8MfDRZCuWmz+do1eLMPX6Wred+ACcUszCChyi7u/bMBs5tzTPtMlhmdjvT
- 9MXabBNxsb2755kOWg8OT/kyyRGBpqJUAAytJX7kerntKPKBDLzg89KiAkDNeio07G+Y
- L3WKwcOvFo+g+SS1jzCPBsKfQ3UprLAvwy196TBgRdNZBvJfvuYE+e4il5Vy0IKexVlC
- J1D1EPf0pKO/qXfrs/RGw5M6h5IaFsH4wz+GSnM1cWOLI2+pOJaJjBoczgI4jabN4TBv
- jC0QVjXmRK771d4Su6vQ16OyAc75zgwKtow94at4qcT/1AkRKubFYILzxqBhLfQpOWc0
- 386w==
-X-Gm-Message-State: AOAM533Q6Zv2dsDdigwVO5jtvHVpnY45tzIrB7jUyiErrvXlzCgpX36T
- S96SU/SdOpmDKeO6YzGLzgo=
-X-Google-Smtp-Source: ABdhPJzdMSR2iHItWodo7Bu1HRxq1zEW2JmCm7rT5HXh8mlSNUuxgSjlcM8R1zaHbOgEbpqbC0RWdA==
-X-Received: by 2002:a05:651c:550:: with SMTP id
- q16mr20156382ljp.70.1619597105514; 
- Wed, 28 Apr 2021 01:05:05 -0700 (PDT)
-Received: from [192.168.2.145] (109-252-193-102.dynamic.spd-mgts.ru.
- [109.252.193.102])
- by smtp.googlemail.com with ESMTPSA id q9sm522412lfc.201.2021.04.28.01.05.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Apr 2021 01:05:05 -0700 (PDT)
-Subject: Re: [PATCH v3 25/79] staging: media: vde: use
- pm_runtime_resume_and_get()
+ with ESMTP id tXInCrZM01yl for <devel@linuxdriverproject.org>;
+ Wed, 28 Apr 2021 10:14:23 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
+ [205.220.177.32])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 499E18305C
+ for <devel@driverdev.osuosl.org>; Wed, 28 Apr 2021 10:14:23 +0000 (UTC)
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13SACeBX007948; Wed, 28 Apr 2021 10:14:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=I+MVSz17rMFhUANJ9vAyQofowEWDVcDjmcFL0J5BcrE=;
+ b=uaOHEwiNVwraQynnCPG2JzUVkXn9TRJB98bwFw0nuDEWf2bDE8FmmhWwy27Gv5J3VgGA
+ uewrbjmbZEziXm8mvrKV3ViaWtSgLiYoaaF42HTk3qioV7dpMwQvSgxqhLbQCkVd/3Fw
+ LVJdAJMwZzS019v20hv+Fmbni5XnEu+n0Zh32LH6VtypyYkOVAkTHzHoCZo9BAHC59iD
+ 2k+gys9jMuwtzx/BQy+ly/lwxGeCA/WDfXiZIQN9VANI6J5sGWPFV0QM9JmSbGHuQcE6
+ i6y9ZOrDpCpOAddMtZl/IOGGZmYnYPEWSyqoK+WyRvAh0cOfYCsePDN3Gw1Qw/s/HJKR fg== 
+Received: from oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 385p7j97m9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 28 Apr 2021 10:14:17 +0000
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
+ by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 13SAEHeS049706;
+ Wed, 28 Apr 2021 10:14:17 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by aserp3020.oracle.com with ESMTP id 384b5884gd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 28 Apr 2021 10:14:17 +0000
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 13SAA2xH035177;
+ Wed, 28 Apr 2021 10:14:15 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 384b5884e6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 28 Apr 2021 10:14:15 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 13SADmYk022121;
+ Wed, 28 Apr 2021 10:13:48 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 28 Apr 2021 03:13:47 -0700
+Date: Wed, 28 Apr 2021 13:13:25 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-References: <cover.1619519080.git.mchehab+huawei@kernel.org>
- <d7fb2d00224d37ba1c6c6e9b73609af95c886844.1619519080.git.mchehab+huawei@kernel.org>
- <2e8bdea5-b2a7-df95-9d93-7c1f2df6158d@gmail.com>
- <20210428092043.380c9d4c@coco.lan>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <433bd38c-aec9-a17e-35ca-8a6fca5fa5ef@gmail.com>
-Date: Wed, 28 Apr 2021 11:05:04 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+Subject: Re: [PATCH 00/78] media: use pm_runtime_resume_and_get() instead of
+ pm_runtime_get_sync()
+Message-ID: <20210428101325.GS1981@kadam>
+References: <cover.1619191723.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20210428092043.380c9d4c@coco.lan>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <cover.1619191723.git.mchehab+huawei@kernel.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-GUID: Wh3TJZZgxDghGm9XGzqkDIkdKaJ9t1UU
+X-Proofpoint-ORIG-GUID: Wh3TJZZgxDghGm9XGzqkDIkdKaJ9t1UU
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,45 +95,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linuxarm@huawei.com, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
- mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Ricardo Ribalda <ribalda@kernel.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, mauro.chehab@huawei.com, linuxarm@huawei.com,
+ Todor Tomov <todor.too@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Andrzej Hajda <a.hajda@samsung.com>, "Lad,
+ Prabhakar" <prabhakar.csengg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Robert Foss <robert.foss@linaro.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Dmitry Osipenko <digetx@gmail.com>, linux-stm32@st-md-mailman.stormreply.com,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Leon Luo <leonl@leopardimaging.com>, Dan Scally <djrscally@gmail.com>,
+ linux-samsung-soc@vger.kernel.org,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Matt Ranostay <matt.ranostay@konsulko.com>,
+ Andy Gross <agross@kernel.org>, Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Steve Longerbeam <slongerbeam@gmail.com>, Bingbu Cao <bingbu.cao@intel.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>, Tianshu Qiu <tian.shu.qiu@intel.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Shawn Tu <shawnx.tu@intel.com>,
+ devel@driverdev.osuosl.org, Jacopo Mondi <jacopo@jmondi.org>,
+ linux-tegra@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Wenyou Yang <wenyou.yang@microchip.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, linux-arm-msm@vger.kernel.org,
+ Sascha Hauer <s.hauer@pengutronix.de>, linux-renesas-soc@vger.kernel.org,
+ Maxime Ripard <mripard@kernel.org>,
+ Stanimir Varbanov <stanimir.varbanov@linaro.org>,
+ Benoit Parrot <bparrot@ti.com>, Helen Koike <helen.koike@collabora.com>,
+ Yong Zhi <yong.zhi@intel.com>, linux-mediatek@lists.infradead.org,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
+ Chiranjeevi Rapolu <chiranjeevi.rapolu@intel.com>,
+ linux-arm-kernel@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Hyungwoo Yang <hyungwoo.yang@intel.com>, linux-kernel@vger.kernel.org,
+ "Paul J. Murphy" <paul.j.murphy@intel.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Sowjanya Komatineni <skomatineni@nvidia.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, linux-media@vger.kernel.org,
+ Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MjguMDQuMjAyMSAxMDoyMCwgTWF1cm8gQ2FydmFsaG8gQ2hlaGFiINC/0LjRiNC10YI6Cj4gRW0g
-VHVlLCAyNyBBcHIgMjAyMSAxNDo0NzowMSArMDMwMAo+IERtaXRyeSBPc2lwZW5rbyA8ZGlnZXR4
-QGdtYWlsLmNvbT4gZXNjcmV2ZXU6Cj4gCj4+IDI3LjA0LjIwMjEgMTM6MjYsIE1hdXJvIENhcnZh
-bGhvIENoZWhhYiDQv9C40YjQtdGCOgo+Pj4gQEAgLTEwODgsOCArMTA5MCw5IEBAIHN0YXRpYyBp
-bnQgdGVncmFfdmRlX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+Pj4gIHsK
-Pj4+ICAJc3RydWN0IHRlZ3JhX3ZkZSAqdmRlID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7
-Cj4+PiAgCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4+PiArCWludCByZXQ7Cj4+
-PiAgCj4+PiAtCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZGV2KTsKPj4+ICsJcmV0ID0gcG1fcnVudGlt
-ZV9yZXN1bWVfYW5kX2dldChkZXYpOyAgCj4+Cj4+IFNob3VsZCBiZSBjbGVhbmVyIHRvIHJldHVy
-biBlcnJvciBkaXJlY3RseSBoZXJlLCBJTU8uCj4gCj4gSSBkb3VibGUtY2hlY2tlZCBob3cgZHJp
-dmVycy9iYXNlL3BsYXRmb3JtLmMgZGVhbHMgd2l0aCBub24temVybwo+IHJldHVybnMgYXQgdGhl
-IC5yZW1vdmUgbWV0aG9kOgo+IAo+IAlzdGF0aWMgaW50IHBsYXRmb3JtX3JlbW92ZShzdHJ1Y3Qg
-ZGV2aWNlICpfZGV2KQo+IAl7Cj4gCSAgICAgICAgc3RydWN0IHBsYXRmb3JtX2RyaXZlciAqZHJ2
-ID0gdG9fcGxhdGZvcm1fZHJpdmVyKF9kZXYtPmRyaXZlcik7Cj4gCSAgICAgICAgc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKF9kZXYpOwo+IAkKPiAJICAg
-ICAgICBpZiAoZHJ2LT5yZW1vdmUpIHsKPiAJICAgICAgICAgICAgICAgIGludCByZXQgPSBkcnYt
-PnJlbW92ZShkZXYpOwo+IAkKPiAJICAgICAgICAgICAgICAgIGlmIChyZXQpCj4gCSAgICAgICAg
-ICAgICAgICAgICAgICAgIGRldl93YXJuKF9kZXYsICJyZW1vdmUgY2FsbGJhY2sgcmV0dXJuZWQg
-YSBub24temVybyB2YWx1ZS4gVGhpcyB3aWxsIGJlIGlnbm9yZWQuXG4iKTsKPiAJICAgICAgICB9
-Cj4gCSAgICAgICAgZGV2X3BtX2RvbWFpbl9kZXRhY2goX2RldiwgdHJ1ZSk7Cj4gCQo+IAkgICAg
-ICAgIHJldHVybiAwOwo+IAl9Cj4gCj4gQmFzaWNhbGx5LCBpdCB3aWxsIHByaW50IGEgbWVzc2Fn
-ZSBidXQgd2lsbCBpZ25vcmUgd2hhdGV2ZXIgaGFwcGVucwo+IGFmdGVyd2FyZHMuCj4gCj4gU28s
-IGlmIHRoZSBkcml2ZXIgaXMgY2hhbmdlZCB0byByZXR1cm4gYW4gZXJyb3IgdGhlcmUsIGl0IHdp
-bGwgbGVhawo+IHJlc291cmNlcy4KCkluZGVlZCwgdGhhbmsgeW91LiBCdXQgdGhlbiB0aGUgcG1f
-cnVudGltZV9nZXRfc3luYygpIHNob3VsZCBiZSBtb3JlCmFwcHJvcHJpYXRlIHNpbmNlIHRoaXMg
-ZnVuY3Rpb24gaXMgc3BlY2lmaWNhbGx5IG1hZGUgZm9yIHN1Y2ggY2FzZXMKd2hlcmUgcmV0dXJu
-ZWQgdmFsdWUgaXMgaWdub3JlZC4KCkEgYmV0dGVyIG9wdGlvbiBjb3VsZCBiZSBiZXR0ZXIgdG8g
-YWRkIGEgY2xhcmlmeWluZyBjb21tZW50IHRvIHRoZSBjb2RlCnJhdGhlciB0aGFuIHRvIGNoYW5n
-ZSBpdCB0byBhIHZhcmlhbnQgd2hpY2ggaW50cm9kdWNlcyBjb25mdXNpb24sIElNTy4KCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
-bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
-cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+There was a Smatch check for these bugs.  This was a good source of
+recurring Reported-by tags for me.  ;)  Thanks for doing this.
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
