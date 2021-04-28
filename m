@@ -1,52 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DECAB36D95C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Apr 2021 16:15:11 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19FAC36D9E9
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Apr 2021 16:53:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D9DD9405C1;
-	Wed, 28 Apr 2021 14:15:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AEE008442A;
+	Wed, 28 Apr 2021 14:53:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dzjy8ZCYSa0T; Wed, 28 Apr 2021 14:15:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AhkHFIY8ldVI; Wed, 28 Apr 2021 14:53:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D192E40518;
-	Wed, 28 Apr 2021 14:15:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EADB9843D1;
+	Wed, 28 Apr 2021 14:53:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AB7FF1BF3A0
- for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 14:14:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 408221BF3A0
+ for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 14:52:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A6A9540E6C
- for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 14:14:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E3051400C1
+ for <devel@linuxdriverproject.org>; Wed, 28 Apr 2021 14:52:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6w85bMo2FN4T for <devel@linuxdriverproject.org>;
- Wed, 28 Apr 2021 14:14:55 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jEfPn23oKS8N for <devel@linuxdriverproject.org>;
+ Wed, 28 Apr 2021 14:52:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BAF7540E71
- for <devel@driverdev.osuosl.org>; Wed, 28 Apr 2021 14:14:54 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id B54DD1F42AFA
-Message-ID: <b92eb32b84dd7a69a47bf78b17f49d4ba500739c.camel@collabora.com>
-Subject: Re: [PATCH v3 79/79] media: hantro: document the usage of
- pm_runtime_get_sync()
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Date: Wed, 28 Apr 2021 11:14:44 -0300
-In-Reply-To: <20210428084431.0c2d505b@coco.lan>
-References: <cover.1619519080.git.mchehab+huawei@kernel.org>
- <230f22170db7fa57b49cff4570cef15bf11b2ad5.1619519080.git.mchehab+huawei@kernel.org>
- <02948673-9572-a570-d28e-03a7208f39e1@arm.com>
- <95ea572e201545b27ff9f48313f7aaea157d4764.camel@collabora.com>
- <20210428082742.20d54db1@coco.lan> <20210428084431.0c2d505b@coco.lan>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EBF54404DD
+ for <devel@driverdev.osuosl.org>; Wed, 28 Apr 2021 14:52:46 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C229161448;
+ Wed, 28 Apr 2021 14:52:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1619621564;
+ bh=ng2dKUVAN//CcGRaqNlPwb37YT/BiEuzdFhAtVtHvMM=;
+ h=From:To:Cc:Subject:Date:From;
+ b=HVhVnMzHNp3W/c5vm1TcCHFIgz42JpWpbR5vgFVKyh++Cc0eWHDQpWqqZukgv5Ax2
+ 4kF3t5ZKPuW4pT9MkS4w0RMjdrWx5jBbm3yBxniXC4JNMggczAbBte7+hwc2MM0C9t
+ mL2S7hpRg0h89iVjSzWMCQNyT67F08KkbrhPzx/9DTeaeLs2x/p6oiEnIFdf0uepKw
+ ac9OSz3Z6Glhuk3HM2j49yKRrq5tdnyCRULN0cjbnQhoCUnVAZM8QC5rIRUOUqInV4
+ L/eDgALs+49L2PQL/XCqcFlJuk0OEal01HLkN5ItwWFwVHpjsgvQtax+EupZhP4zsA
+ uCQEMDituhZ2Q==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1lblYP-001Dpb-HN; Wed, 28 Apr 2021 16:52:41 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: 
+Subject: [PATCH v4 00/79] Address some issues with PM runtime at media
+ subsystem
+Date: Wed, 28 Apr 2021 16:51:21 +0200
+Message-Id: <cover.1619621413.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -60,157 +68,319 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linuxarm@huawei.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Shawn Tu <shawnx.tu@intel.com>, Ricardo Ribalda <ribalda@kernel.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, linuxarm@huawei.com,
+ Todor Tomov <todor.too@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Andrzej Hajda <a.hajda@samsung.com>, "Lad,
+ Prabhakar" <prabhakar.csengg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Dmitry Osipenko <digetx@gmail.com>, linux-stm32@st-md-mailman.stormreply.com,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Leon Luo <leonl@leopardimaging.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Matt Ranostay <matt.ranostay@konsulko.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
+ Andy Gross <agross@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>, Tianshu Qiu <tian.shu.qiu@intel.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ devel@driverdev.osuosl.org, Jacopo Mondi <jacopo@jmondi.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-tegra@vger.kernel.org,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Wenyou Yang <wenyou.yang@microchip.com>,
+ Manivannan Sadhasivam <mani@kernel.org>, linux-arm-msm@vger.kernel.org,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>, linux-media@vger.kernel.org,
+ Maxime Ripard <mripard@kernel.org>,
+ Stanimir Varbanov <stanimir.varbanov@linaro.org>,
+ Benoit Parrot <bparrot@ti.com>, Helen Koike <helen.koike@collabora.com>,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, mauro.chehab@huawei.com,
+ Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
+ "Paul J. Murphy" <paul.j.murphy@intel.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
+ Chiranjeevi Rapolu <chiranjeevi.rapolu@intel.com>,
+ linux-arm-kernel@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Hyungwoo Yang <hyungwoo.yang@intel.com>, linux-kernel@vger.kernel.org,
+ Robert Foss <robert.foss@linaro.org>, Dan Scally <djrscally@gmail.com>,
+ Sowjanya Komatineni <skomatineni@nvidia.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, linux-renesas-soc@vger.kernel.org,
+ Yong Zhi <yong.zhi@intel.com>, Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgTWF1cm8sCgpPbiBXZWQsIDIwMjEtMDQtMjggYXQgMDg6NDQgKzAyMDAsIE1hdXJvIENhcnZh
-bGhvIENoZWhhYiB3cm90ZToKPiBFbSBXZWQsIDI4IEFwciAyMDIxIDA4OjI3OjQyICswMjAwCj4g
-TWF1cm8gQ2FydmFsaG8gQ2hlaGFiIDxtY2hlaGFiK2h1YXdlaUBrZXJuZWwub3JnPiBlc2NyZXZl
-dToKPiAKPiA+IEVtIFR1ZSwgMjcgQXByIDIwMjEgMTI6MTg6MzIgLTAzMDAKPiA+IEV6ZXF1aWVs
-IEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4gZXNjcmV2ZXU6Cj4gPiAKPiA+ID4gT24g
-VHVlLCAyMDIxLTA0LTI3IGF0IDE2OjA4ICswMTAwLCBSb2JpbiBNdXJwaHkgd3JvdGU6wqAgCj4g
-PiA+ID4gT24gMjAyMS0wNC0yNyAxMToyNywgTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIHdyb3RlOsKg
-wqDCoCAKPiA+ID4gPiA+IERlc3BpdGUgb3RoZXIgKl9nZXQoKS8qX3B1dCgpIGZ1bmN0aW9ucywg
-d2hlcmUgdXNhZ2UgY291bnQgaXMKPiA+ID4gPiA+IGluY3JlbWVudGVkIG9ubHkgaWYgbm90IGVy
-cm9ycywgdGhlIHBtX3J1bnRpbWVfZ2V0X3N5bmMoKSBoYXMKPiA+ID4gPiA+IGEgZGlmZmVyZW50
-IGJlaGF2aW9yLCBpbmNyZW1lbnRpbmcgdGhlIGNvdW50ZXIgKmV2ZW4qIG9uCj4gPiA+ID4gPiBl
-cnJvcnMuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IFRoYXQncyBhbiBlcnJvciBwcm9uZSBiZWhhdmlv
-ciwgYXMgcGVvcGxlIG9mdGVuIGZvcmdldCB0bwo+ID4gPiA+ID4gZGVjcmVtZW50IHRoZSB1c2Fn
-ZSBjb3VudGVyLgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBIb3dldmVyLCB0aGUgaGFudHJvIGRyaXZl
-ciBkZXBlbmRzIG9uIHRoaXMgYmVoYXZpb3IsIGFzIGl0Cj4gPiA+ID4gPiB3aWxsIGRlY3JlbWVu
-dCB0aGUgdXNhZ2VfY291bnQgdW5jb25kaXRpb25hbGx5IGF0IHRoZSBtMm0KPiA+ID4gPiA+IGpv
-YiBmaW5pc2ggdGltZSwgd2hpY2ggbWFrZXMgc2Vuc2UuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IFNv
-LCBpbnRlYWQgb2YgdXNpbmcgdGhlIHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQoKSB0aGF0Cj4g
-PiA+ID4gPiB3b3VsZCBkZWNyZW1lbnQgdGhlIGNvdW50ZXIgb24gZXJyb3IsIGtlZXAgdGhlIGN1
-cnJlbnQKPiA+ID4gPiA+IEFQSSwgYnV0IGFkZCBhIGRvY3VtZW50YXRpb24gZXhwbGFpbmluZyB0
-aGUgcmF0aW9uYWxlIGZvcgo+ID4gPiA+ID4ga2VlcCB1c2luZyBwbV9ydW50aW1lX2dldF9zeW5j
-KCkuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE1hdXJvIENhcnZhbGhvIENo
-ZWhhYiA8bWNoZWhhYitodWF3ZWlAa2VybmVsLm9yZz4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4g
-wqAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgfCA3ICsrKysrKysK
-PiA+ID4gPiA+IMKgIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKykKPiA+ID4gPiA+IAo+
-ID4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJv
-X2Rydi5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiA+ID4g
-PiA+IGluZGV4IDU5NWU4MmE4MjcyOC4uOTZmOTQwYzFjODVjIDEwMDY0NAo+ID4gPiA+ID4gLS0t
-IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiA+ID4gPiA+ICsr
-KyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4gPiA+ID4gPiBA
-QCAtMTU1LDYgKzE1NSwxMyBAQCBzdGF0aWMgdm9pZCBkZXZpY2VfcnVuKHZvaWQgKnByaXYpCj4g
-PiA+ID4gPiDCoMKgwqDCoMKgwqDCoMKgcmV0ID0gY2xrX2J1bGtfZW5hYmxlKGN0eC0+ZGV2LT52
-YXJpYW50LT5udW1fY2xvY2tzLCBjdHgtPmRldi0+Y2xvY2tzKTsKPiA+ID4gPiA+IMKgwqDCoMKg
-wqDCoMKgwqBpZiAocmV0KQo+ID4gPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBnb3RvIGVycl9jYW5jZWxfam9iO8KgwqDCoCAKPiA+ID4gPiAKPiA+ID4gPiAuLmV4Y2VwdCB0
-aGlzIGNhbiBhbHNvIGNhdXNlIHRoZSBzYW1lIHBtX3J1bnRpbWVfcHV0X2F1dG9zdXNwZW5kKCkg
-Y2FsbCAKPiA+ID4gPiB3aXRob3V0IGV2ZW4gcmVhY2hpbmcgdGhlICJtYXRjaGluZyIgZ2V0IGJl
-bG93LCBzbyByYXRoZXIgdGhhbiBzb21lIGtpbmQgCj4gPiA+ID4gb2YgY2xldmVybmVzcyBpdCBz
-ZWVtcyBtb3JlIGxpa2UgaXQncyBqdXN0IGJyb2tlbiA6Lwo+ID4gPiA+IMKgwqDCoCAKPiA+ID4g
-Cj4gPiA+IEluZGVlZCwgSSB3YXMgdHJ5aW5nIHRvIGZpbmQgdGltZSB0byBjb29rIGEgcXVpY2sg
-cGF0Y2gsIGJ1dCBrZXB0Cj4gPiA+IGdldHRpbmcgcHJlZW1wdGVkLgo+ID4gPiAKPiA+ID4gRmVl
-bCBmcmVlIHRvIHN1Ym1pdCBhIGZpeCBmb3IgdGhpcywgb3RoZXJ3aXNlLCBJJ2xsIHRyeSB0byBm
-aW5kCj4gPiA+IHRpbWUgbGF0ZXIgdGhpcyB3ZWVrLsKgIAo+ID4gCj4gPiBXaGF0IGFib3V0IGRv
-aW5nIHRoaXMgaW5zdGVhZDoKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
-YW50cm9fZHJ2LmMKPiA+IGluZGV4IDU5NWU4MmE4MjcyOC4uNjdkZTZiMTUyMzZkIDEwMDY0NAo+
-ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiA+ICsr
-KyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4gPiBAQCAtNTYs
-MTQgKzU2LDEyIEBAIGRtYV9hZGRyX3QgaGFudHJvX2dldF9yZWYoc3RydWN0IGhhbnRyb19jdHgg
-KmN0eCwgdTY0IHRzKQo+ID4gwqDCoMKgwqDCoMKgwqDCoHJldHVybiBoYW50cm9fZ2V0X2RlY19i
-dWZfYWRkcihjdHgsIGJ1Zik7Cj4gPiDCoH0KPiA+IMKgCj4gPiAtc3RhdGljIHZvaWQgaGFudHJv
-X2pvYl9maW5pc2goc3RydWN0IGhhbnRyb19kZXYgKnZwdSwKPiA+IC3CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaGFudHJvX2N0
-eCAqY3R4LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIGVudW0gdmIyX2J1ZmZlcl9zdGF0ZSByZXN1bHQpCj4gPiArc3RhdGljIHZv
-aWQgaGFudHJvX2pvYl9maW5pc2hfbm9fcG0oc3RydWN0IGhhbnRyb19kZXYgKnZwdSwKPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGVudW0g
-dmIyX2J1ZmZlcl9zdGF0ZSByZXN1bHQpCj4gPiDCoHsKPiA+IMKgwqDCoMKgwqDCoMKgwqBzdHJ1
-Y3QgdmIyX3Y0bDJfYnVmZmVyICpzcmMsICpkc3Q7Cj4gPiDCoAo+ID4gLcKgwqDCoMKgwqDCoMKg
-cG1fcnVudGltZV9tYXJrX2xhc3RfYnVzeSh2cHUtPmRldik7Cj4gPiAtwqDCoMKgwqDCoMKgwqBw
-bV9ydW50aW1lX3B1dF9hdXRvc3VzcGVuZCh2cHUtPmRldik7Cj4gPiDCoMKgwqDCoMKgwqDCoMKg
-Y2xrX2J1bGtfZGlzYWJsZSh2cHUtPnZhcmlhbnQtPm51bV9jbG9ja3MsIHZwdS0+Y2xvY2tzKTsK
-PiA+IMKgCj4gPiDCoMKgwqDCoMKgwqDCoMKgc3JjID0gdjRsMl9tMm1fbmV4dF9zcmNfYnVmKGN0
-eC0+ZmgubTJtX2N0eCk7Cj4gPiBAQCAtODEsNiArNzksMTYgQEAgc3RhdGljIHZvaWQgaGFudHJv
-X2pvYl9maW5pc2goc3RydWN0IGhhbnRyb19kZXYgKnZwdSwKPiA+IMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIHJlc3VsdCk7Cj4gPiDCoH0KPiA+IMKgCj4gPiArc3RhdGljIHZvaWQgaGFudHJvX2pv
-Yl9maW5pc2goc3RydWN0IGhhbnRyb19kZXYgKnZwdSwKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaGFudHJvX2N0eCAq
-Y3R4LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGVudW0gdmIyX2J1ZmZlcl9zdGF0ZSByZXN1bHQpCj4gPiArewo+ID4gK8KgwqDC
-oMKgwqDCoMKgcG1fcnVudGltZV9tYXJrX2xhc3RfYnVzeSh2cHUtPmRldik7Cj4gPiArwqDCoMKg
-wqDCoMKgwqBwbV9ydW50aW1lX3B1dF9hdXRvc3VzcGVuZCh2cHUtPmRldik7Cj4gPiArCj4gPiAr
-wqDCoMKgwqDCoMKgwqBoYW50cm9fam9iX2ZpbmlzaF9ub19wbSh2cHUsIGN0eCwgcmVzdWx0KTsK
-PiA+ICt9Cj4gPiArCj4gPiDCoHZvaWQgaGFudHJvX2lycV9kb25lKHN0cnVjdCBoYW50cm9fZGV2
-ICp2cHUsCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGVudW0g
-dmIyX2J1ZmZlcl9zdGF0ZSByZXN1bHQpCj4gPiDCoHsKPiA+IEBAIC0xNTIsMTIgKzE2MCwxMyBA
-QCBzdGF0aWMgdm9pZCBkZXZpY2VfcnVuKHZvaWQgKnByaXYpCj4gPiDCoMKgwqDCoMKgwqDCoMKg
-c3JjID0gaGFudHJvX2dldF9zcmNfYnVmKGN0eCk7Cj4gPiDCoMKgwqDCoMKgwqDCoMKgZHN0ID0g
-aGFudHJvX2dldF9kc3RfYnVmKGN0eCk7Cj4gPiDCoAo+ID4gK8KgwqDCoMKgwqDCoMKgcmV0ID0g
-cG1fcnVudGltZV9yZXN1bWVfYW5kX2dldChjdHgtPmRldi0+ZGV2KTsKPiA+ICvCoMKgwqDCoMKg
-wqDCoGlmIChyZXQgPCAwKQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGdvdG8g
-ZXJyX2NhbmNlbF9qb2I7Cj4gPiArCj4gPiDCoMKgwqDCoMKgwqDCoMKgcmV0ID0gY2xrX2J1bGtf
-ZW5hYmxlKGN0eC0+ZGV2LT52YXJpYW50LT5udW1fY2xvY2tzLCBjdHgtPmRldi0+Y2xvY2tzKTsK
-PiA+IMKgwqDCoMKgwqDCoMKgwqBpZiAocmV0KQo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBnb3RvIGVycl9jYW5jZWxfam9iOwo+ID4gLcKgwqDCoMKgwqDCoMKgcmV0ID0gcG1f
-cnVudGltZV9nZXRfc3luYyhjdHgtPmRldi0+ZGV2KTsKPiA+IC3CoMKgwqDCoMKgwqDCoGlmIChy
-ZXQgPCAwKQo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGdvdG8gZXJyX2NhbmNl
-bF9qb2I7Cj4gPiDCoAo+ID4gwqDCoMKgwqDCoMKgwqDCoHY0bDJfbTJtX2J1Zl9jb3B5X21ldGFk
-YXRhKHNyYywgZHN0LCB0cnVlKTsKPiA+IMKgCj4gPiBAQCAtMTY1LDcgKzE3NCw3IEBAIHN0YXRp
-YyB2b2lkIGRldmljZV9ydW4odm9pZCAqcHJpdikKPiA+IMKgwqDCoMKgwqDCoMKgwqByZXR1cm47
-Cj4gPiDCoAo+ID4gwqBlcnJfY2FuY2VsX2pvYjoKPiA+IC3CoMKgwqDCoMKgwqDCoGhhbnRyb19q
-b2JfZmluaXNoKGN0eC0+ZGV2LCBjdHgsIFZCMl9CVUZfU1RBVEVfRVJST1IpOwo+ID4gK8KgwqDC
-oMKgwqDCoMKgaGFudHJvX2pvYl9maW5pc2hfbm9fcG0oY3R4LT5kZXYsIGN0eCwgVkIyX0JVRl9T
-VEFURV9FUlJPUik7Cj4gPiDCoH0KPiA+IMKgCj4gPiDCoHN0YXRpYyBzdHJ1Y3QgdjRsMl9tMm1f
-b3BzIHZwdV9tMm1fb3BzID0gewo+ID4gCj4gPiBUaGFua3MsCj4gPiBNYXVybwo+IAo+IEFjdHVh
-bGx5LCB0aGUgb3JkZXIgYXQgdGhlIGZpbmlzaCBsb2dpYyBzaG91bGQgY2hhbmdlIGFzIHdlbGwu
-Cj4gTWF5YmUgbGlrZSB0aGlzOgo+IAoKVGhpcyBvbmUgbG9va3MgZ29vZC4KClRoYW5rcyEKRXpl
-cXVpZWwKCj4gPHNuaXA+Cj4gc3RhdGljIHZvaWQgaGFudHJvX2pvYl9maW5pc2hfbm9fcG0oc3Ry
-dWN0IGhhbnRyb19kZXYgKnZwdSwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBoYW50cm9fY3R4ICpj
-dHgsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBlbnVtIHZiMl9idWZmZXJfc3RhdGUgcmVzdWx0KQo+IHsKPiDC
-oMKgwqDCoMKgwqDCoMKgc3RydWN0IHZiMl92NGwyX2J1ZmZlciAqc3JjLCAqZHN0Owo+IAo+IMKg
-wqDCoMKgwqDCoMKgwqBzcmMgPSB2NGwyX20ybV9uZXh0X3NyY19idWYoY3R4LT5maC5tMm1fY3R4
-KTsKPiDCoMKgwqDCoMKgwqDCoMKgZHN0ID0gdjRsMl9tMm1fbmV4dF9kc3RfYnVmKGN0eC0+Zmgu
-bTJtX2N0eCk7Cj4gCj4gwqDCoMKgwqDCoMKgwqDCoGlmIChXQVJOX09OKCFzcmMpKQo+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuOwo+IMKgwqDCoMKgwqDCoMKgwqBpZiAo
-V0FSTl9PTighZHN0KSkKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJldHVybjsK
-PiAKPiDCoMKgwqDCoMKgwqDCoMKgc3JjLT5zZXF1ZW5jZSA9IGN0eC0+c2VxdWVuY2Vfb3V0Kys7
-Cj4gwqDCoMKgwqDCoMKgwqDCoGRzdC0+c2VxdWVuY2UgPSBjdHgtPnNlcXVlbmNlX2NhcCsrOwo+
-IAo+IMKgwqDCoMKgwqDCoMKgwqB2NGwyX20ybV9idWZfZG9uZV9hbmRfam9iX2ZpbmlzaChjdHgt
-PmRldi0+bTJtX2RldiwgY3R4LT5maC5tMm1fY3R4LAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHJlc3VsdCk7Cj4gfQo+IAo+IHN0YXRpYyB2b2lkIGhhbnRyb19qb2JfZmluaXNoKHN0cnVjdCBo
-YW50cm9fZGV2ICp2cHUsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+IMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZW51bSB2YjJf
-YnVmZmVyX3N0YXRlIHJlc3VsdCkKPiB7Cj4gCj4gwqDCoMKgwqDCoMKgwqDCoGhhbnRyb19qb2Jf
-ZmluaXNoX25vX3BtKHZwdSwgY3R4LCByZXN1bHQpOwo+IAo+IMKgwqDCoMKgwqDCoMKgwqBjbGtf
-YnVsa19kaXNhYmxlKHZwdS0+dmFyaWFudC0+bnVtX2Nsb2NrcywgdnB1LT5jbG9ja3MpOwo+IAo+
-IMKgwqDCoMKgwqDCoMKgwqBwbV9ydW50aW1lX21hcmtfbGFzdF9idXN5KHZwdS0+ZGV2KTsKPiDC
-oMKgwqDCoMKgwqDCoMKgcG1fcnVudGltZV9wdXRfYXV0b3N1c3BlbmQodnB1LT5kZXYpOwo+IH0K
-PiAKPiBzdGF0aWMgdm9pZCBkZXZpY2VfcnVuKHZvaWQgKnByaXYpCj4gewo+IMKgwqDCoMKgwqDC
-oMKgwqBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4ID0gcHJpdjsKPiDCoMKgwqDCoMKgwqDCoMKgc3Ry
-dWN0IHZiMl92NGwyX2J1ZmZlciAqc3JjLCAqZHN0Owo+IMKgwqDCoMKgwqDCoMKgwqBpbnQgcmV0
-Owo+IAo+IMKgwqDCoMKgwqDCoMKgwqBzcmMgPSBoYW50cm9fZ2V0X3NyY19idWYoY3R4KTsKPiDC
-oMKgwqDCoMKgwqDCoMKgZHN0ID0gaGFudHJvX2dldF9kc3RfYnVmKGN0eCk7Cj4gCj4gwqDCoMKg
-wqDCoMKgwqDCoHJldCA9IHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQoY3R4LT5kZXYtPmRldik7
-Cj4gwqDCoMKgwqDCoMKgwqDCoGlmIChyZXQgPCAwKQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgZ290byBlcnJfY2FuY2VsX2pvYjsKPiAKPiDCoMKgwqDCoMKgwqDCoMKgcmV0ID0g
-Y2xrX2J1bGtfZW5hYmxlKGN0eC0+ZGV2LT52YXJpYW50LT5udW1fY2xvY2tzLCBjdHgtPmRldi0+
-Y2xvY2tzKTsKPiDCoMKgwqDCoMKgwqDCoMKgaWYgKHJldCkKPiDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoGdvdG8gZXJyX2NhbmNlbF9qb2I7Cj4gCj4gwqDCoMKgwqDCoMKgwqDCoHY0
-bDJfbTJtX2J1Zl9jb3B5X21ldGFkYXRhKHNyYywgZHN0LCB0cnVlKTsKPiAKPiDCoMKgwqDCoMKg
-wqDCoMKgY3R4LT5jb2RlY19vcHMtPnJ1bihjdHgpOwo+IMKgwqDCoMKgwqDCoMKgwqByZXR1cm47
-Cj4gCj4gZXJyX2NhbmNlbF9qb2I6Cj4gwqDCoMKgwqDCoMKgwqDCoGhhbnRyb19qb2JfZmluaXNo
-X25vX3BtKGN0eC0+ZGV2LCBjdHgsIFZCMl9CVUZfU1RBVEVfRVJST1IpOwo+IH0KPiA8L3NuaXA+
-Cj4gCj4gCj4gVGhhbmtzLAo+IE1hdXJvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+During the review of the patches from unm.edu, one of the patterns
+I noticed is the amount of patches trying to fix pm_runtime_get_sync()
+calls.
+
+After analyzing the feedback from version 1 of this series, I noticed
+a few other weird behaviors at the PM runtime resume code. So, this
+series start addressing some bugs and issues at the current code.
+Then, it gets rid of pm_runtime_get_sync() at the media subsystem
+(with 2 exceptions).
+
+It should be noticed that
+Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+added a new method to does a pm_runtime get, which increments
+the usage count only on success.
+
+The rationale of getting rid of pm_runtime_get_sync() is:
+
+1. despite its name, this is actually a PM runtime resume call,
+   but some developers didn't seem to realize that, as I got this
+   pattern on some drivers:
+
+        pm_runtime_get_sync(&client->dev);
+        pm_runtime_disable(&client->dev);
+        pm_runtime_set_suspended(&client->dev);
+        pm_runtime_put_noidle(&client->dev);
+
+   It makes no sense to resume PM just to suspend it again ;-)
+
+2. Usual *_get() methods only increment their use count on success,
+   but pm_runtime_get_sync() increments it unconditionally. Due to
+   that, several drivers were mistakenly not calling
+   pm_runtime_put_noidle() when it fails;
+
+3. The name of the new variant is a lot clearer:
+	pm_runtime_resume_and_get()
+    As its same clearly says that this is a PM runtime resume function,
+    that also increments the usage counter on success;
+
+4. Consistency: we did similar changes subsystem wide with
+   for instance strlcpy() and strcpy() that got replaced by
+   strscpy(). Having all drivers using the same known-to-be-safe
+   methods is a good thing;
+
+5. Prevent newer drivers to copy-and-paste a code that it would
+   be easier to break if they don't truly understand what's behind
+   the scenes.
+
+This series replace places  pm_runtime_get_sync(), by calling
+pm_runtime_resume_and_get() instead.
+
+This should help to avoid future mistakes like that, as people
+tend to use the existing drivers as examples for newer ones.
+
+compile-tested only.
+
+Patches 1 to 7 fix some issues that already exists at the current
+PM runtime code;
+
+patches 8 to 20 fix some usage_count problems that still exists
+at the media subsystem;
+
+patches 21 to 78 repaces pm_runtime_get_sync() by 
+pm_runtime_resume_and_get();
+
+Patch 79 (and a hunk on patch 78) documents the two exceptions
+where pm_runtime_get_sync() will still be used for now.
+
+---
+
+v4:
+    - Added a couple of additional fixes at existing PM runtime code;
+    - Some patches are now more conservative in order to avoid causing
+     regressions.
+v3:
+    - fix a compilation error;
+v2:
+    - addressed pointed issues and fixed a few other PM issues.
+
+
+Mauro Carvalho Chehab (79):
+  media: venus: fix PM runtime logic at venus_sys_error_handler()
+  media: s6p_cec: decrement usage count if disabled
+  media: i2c: ccs-core: return the right error code at suspend
+  media: i2c: ov7740: don't resume at remove time
+  media: i2c: video-i2c: don't resume at remove time
+  media: i2c: imx334: fix the pm runtime get logic
+  media: exynos-gsc: don't resume at remove time
+  media: atmel: properly get pm_runtime
+  media: marvel-ccic: fix some issues when getting pm_runtime
+  media: mdk-mdp: fix pm_runtime_get_sync() usage count
+  media: rcar_fdp1: fix pm_runtime_get_sync() usage count
+  media: renesas-ceu: Properly check for PM errors
+  media: s5p: fix pm_runtime_get_sync() usage count
+  media: am437x: fix pm_runtime_get_sync() usage count
+  media: sh_vou: fix pm_runtime_get_sync() usage count
+  media: mtk-vcodec: fix pm_runtime_get_sync() usage count
+  media: s5p-jpeg: fix pm_runtime_get_sync() usage count
+  media: sti/delta: fix pm_runtime_get_sync() usage count
+  media: sunxi: fix pm_runtime_get_sync() usage count
+  staging: media: rkvdec: fix pm_runtime_get_sync() usage count
+  staging: media: atomisp: use pm_runtime_resume_and_get()
+  staging: media: imx7-mipi-csis: use pm_runtime_resume_and_get()
+  staging: media: ipu3: use pm_runtime_resume_and_get()
+  staging: media: cedrus_video: use pm_runtime_resume_and_get()
+  staging: media: tegra-vde: use pm_runtime_resume_and_get()
+  staging: media: tegra-video: use pm_runtime_resume_and_get()
+  media: i2c: ak7375: use pm_runtime_resume_and_get()
+  media: i2c: ccs-core: use pm_runtime_resume_and_get()
+  media: i2c: dw9714: use pm_runtime_resume_and_get()
+  media: i2c: dw9768: use pm_runtime_resume_and_get()
+  media: i2c: dw9807-vcm: use pm_runtime_resume_and_get()
+  media: i2c: hi556: use pm_runtime_resume_and_get()
+  media: i2c: imx214: use pm_runtime_resume_and_get()
+  media: i2c: imx219: use pm_runtime_resume_and_get()
+  media: i2c: imx258: use pm_runtime_resume_and_get()
+  media: i2c: imx274: use pm_runtime_resume_and_get()
+  media: i2c: imx290: use pm_runtime_resume_and_get()
+  media: i2c: imx319: use pm_runtime_resume_and_get()
+  media: i2c: imx355: use pm_runtime_resume_and_get()
+  media: i2c: mt9m001: use pm_runtime_resume_and_get()
+  media: i2c: ov02a10: use pm_runtime_resume_and_get()
+  media: i2c: ov13858: use pm_runtime_resume_and_get()
+  media: i2c: ov2659: use pm_runtime_resume_and_get()
+  media: i2c: ov2685: use pm_runtime_resume_and_get()
+  media: i2c: ov2740: use pm_runtime_resume_and_get()
+  media: i2c: ov5647: use pm_runtime_resume_and_get()
+  media: i2c: ov5648: use pm_runtime_resume_and_get()
+  media: i2c: ov5670: use pm_runtime_resume_and_get()
+  media: i2c: ov5675: use pm_runtime_resume_and_get()
+  media: i2c: ov5695: use pm_runtime_resume_and_get()
+  media: i2c: ov7740: use pm_runtime_resume_and_get()
+  media: i2c: ov8856: use pm_runtime_resume_and_get()
+  media: i2c: ov8865: use pm_runtime_resume_and_get()
+  media: i2c: ov9734: use pm_runtime_resume_and_get()
+  media: i2c: tvp5150: use pm_runtime_resume_and_get()
+  media: i2c: video-i2c: use pm_runtime_resume_and_get()
+  media: rockchip/rga: use pm_runtime_resume_and_get()
+  media: sti/hva: use pm_runtime_resume_and_get()
+  media: sti/bdisp: use pm_runtime_resume_and_get()
+  media: ipu3: use pm_runtime_resume_and_get()
+  media: coda: use pm_runtime_resume_and_get()
+  media: exynos4-is: use pm_runtime_resume_and_get()
+  media: exynos-gsc: use pm_runtime_resume_and_get()
+  media: mtk-jpeg: use pm_runtime_resume_and_get()
+  media: camss: use pm_runtime_resume_and_get()
+  media: venus: use pm_runtime_resume_and_get()
+  media: venus: vdec: use pm_runtime_resume_and_get()
+  media: venus: venc: use pm_runtime_resume_and_get()
+  media: rcar-fcp: use pm_runtime_resume_and_get()
+  media: rkisp1: use pm_runtime_resume_and_get()
+  media: s3c-camif: use pm_runtime_resume_and_get()
+  media: s5p-mfc: use pm_runtime_resume_and_get()
+  media: stm32: use pm_runtime_resume_and_get()
+  media: sunxi: use pm_runtime_resume_and_get()
+  media: ti-vpe: use pm_runtime_resume_and_get()
+  media: vsp1: use pm_runtime_resume_and_get()
+  media: rcar-vin: use pm_runtime_resume_and_get()
+  media: hantro: use pm_runtime_resume_and_get()
+  media: hantro: do a PM resume earlier
+
+ drivers/media/cec/platform/s5p/s5p_cec.c      |  7 +++--
+ drivers/media/i2c/ak7375.c                    | 10 +------
+ drivers/media/i2c/ccs/ccs-core.c              | 18 +++++-------
+ drivers/media/i2c/dw9714.c                    | 10 +------
+ drivers/media/i2c/dw9768.c                    | 10 +------
+ drivers/media/i2c/dw9807-vcm.c                | 10 +------
+ drivers/media/i2c/hi556.c                     |  3 +-
+ drivers/media/i2c/imx214.c                    |  6 ++--
+ drivers/media/i2c/imx219.c                    |  6 ++--
+ drivers/media/i2c/imx258.c                    |  6 ++--
+ drivers/media/i2c/imx274.c                    |  3 +-
+ drivers/media/i2c/imx290.c                    |  6 ++--
+ drivers/media/i2c/imx319.c                    |  6 ++--
+ drivers/media/i2c/imx334.c                    |  7 +++--
+ drivers/media/i2c/imx355.c                    |  6 ++--
+ drivers/media/i2c/mt9m001.c                   |  9 ++++--
+ drivers/media/i2c/ov02a10.c                   |  6 ++--
+ drivers/media/i2c/ov13858.c                   |  6 ++--
+ drivers/media/i2c/ov2659.c                    |  6 ++--
+ drivers/media/i2c/ov2685.c                    |  7 ++---
+ drivers/media/i2c/ov2740.c                    |  6 ++--
+ drivers/media/i2c/ov5647.c                    |  9 +++---
+ drivers/media/i2c/ov5648.c                    |  6 ++--
+ drivers/media/i2c/ov5670.c                    |  6 ++--
+ drivers/media/i2c/ov5675.c                    |  3 +-
+ drivers/media/i2c/ov5695.c                    |  6 ++--
+ drivers/media/i2c/ov7740.c                    |  8 ++---
+ drivers/media/i2c/ov8856.c                    |  3 +-
+ drivers/media/i2c/ov8865.c                    |  6 ++--
+ drivers/media/i2c/ov9734.c                    |  3 +-
+ drivers/media/i2c/tvp5150.c                   | 16 ++--------
+ drivers/media/i2c/video-i2c.c                 | 14 +++------
+ drivers/media/pci/intel/ipu3/ipu3-cio2-main.c |  3 +-
+ drivers/media/platform/am437x/am437x-vpfe.c   | 22 ++++++++++----
+ drivers/media/platform/atmel/atmel-isc-base.c | 27 ++++++++++++-----
+ drivers/media/platform/atmel/atmel-isi.c      | 19 +++++++++---
+ drivers/media/platform/coda/coda-common.c     |  7 +++--
+ drivers/media/platform/exynos-gsc/gsc-core.c  | 11 +++----
+ drivers/media/platform/exynos-gsc/gsc-m2m.c   |  2 +-
+ .../media/platform/exynos4-is/fimc-capture.c  |  6 ++--
+ drivers/media/platform/exynos4-is/fimc-is.c   |  4 +--
+ .../platform/exynos4-is/fimc-isp-video.c      |  3 +-
+ drivers/media/platform/exynos4-is/fimc-isp.c  |  7 ++---
+ drivers/media/platform/exynos4-is/fimc-lite.c |  5 ++--
+ drivers/media/platform/exynos4-is/fimc-m2m.c  |  2 +-
+ drivers/media/platform/exynos4-is/media-dev.c |  8 ++---
+ drivers/media/platform/exynos4-is/mipi-csis.c |  8 ++---
+ .../media/platform/marvell-ccic/mcam-core.c   |  9 ++++--
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   |  4 +--
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |  6 ++--
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  4 +--
+ .../media/platform/qcom/camss/camss-csid.c    |  6 ++--
+ .../media/platform/qcom/camss/camss-csiphy.c  |  6 ++--
+ .../media/platform/qcom/camss/camss-ispif.c   |  6 ++--
+ drivers/media/platform/qcom/camss/camss-vfe.c |  5 ++--
+ drivers/media/platform/qcom/venus/core.c      | 28 +++++++++++-------
+ .../media/platform/qcom/venus/pm_helpers.c    | 10 +++----
+ drivers/media/platform/qcom/venus/vdec.c      |  4 +--
+ drivers/media/platform/qcom/venus/venc.c      |  5 ++--
+ drivers/media/platform/rcar-fcp.c             |  6 ++--
+ drivers/media/platform/rcar-vin/rcar-csi2.c   | 15 ++++++++--
+ drivers/media/platform/rcar-vin/rcar-dma.c    |  6 ++--
+ drivers/media/platform/rcar-vin/rcar-v4l2.c   |  6 ++--
+ drivers/media/platform/rcar_fdp1.c            | 12 ++++++--
+ drivers/media/platform/renesas-ceu.c          |  4 +--
+ drivers/media/platform/rockchip/rga/rga-buf.c |  3 +-
+ drivers/media/platform/rockchip/rga/rga.c     |  4 ++-
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |  3 +-
+ .../media/platform/s3c-camif/camif-capture.c  |  2 +-
+ drivers/media/platform/s3c-camif/camif-core.c |  5 ++--
+ drivers/media/platform/s5p-jpeg/jpeg-core.c   |  2 +-
+ drivers/media/platform/s5p-mfc/s5p_mfc_pm.c   |  6 ++--
+ drivers/media/platform/sh_vou.c               |  6 +++-
+ drivers/media/platform/sti/bdisp/bdisp-v4l2.c |  7 +++--
+ drivers/media/platform/sti/delta/delta-v4l2.c |  4 +--
+ drivers/media/platform/sti/hva/hva-hw.c       | 17 ++++++-----
+ drivers/media/platform/stm32/stm32-dcmi.c     |  5 ++--
+ .../platform/sunxi/sun4i-csi/sun4i_v4l2.c     |  6 ++--
+ .../sunxi/sun8i-rotate/sun8i_rotate.c         |  2 +-
+ drivers/media/platform/ti-vpe/cal-video.c     |  4 ++-
+ drivers/media/platform/ti-vpe/cal.c           |  8 +++--
+ drivers/media/platform/ti-vpe/vpe.c           |  4 +--
+ drivers/media/platform/vsp1/vsp1_drv.c        |  6 ++--
+ .../staging/media/atomisp/pci/atomisp_fops.c  |  6 ++--
+ drivers/staging/media/hantro/hantro_drv.c     | 29 ++++++++++++-------
+ drivers/staging/media/imx/imx7-mipi-csis.c    |  7 ++---
+ drivers/staging/media/ipu3/ipu3.c             |  3 +-
+ drivers/staging/media/rkvdec/rkvdec.c         |  2 +-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |  6 ++--
+ drivers/staging/media/tegra-vde/vde.c         | 19 ++++++++++--
+ drivers/staging/media/tegra-video/csi.c       |  3 +-
+ drivers/staging/media/tegra-video/vi.c        |  3 +-
+ 92 files changed, 335 insertions(+), 347 deletions(-)
+
+-- 
+2.30.2
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
