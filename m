@@ -1,65 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B334636ED3A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Apr 2021 17:17:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71BF436F086
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Apr 2021 21:39:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CEBEA419D2;
-	Thu, 29 Apr 2021 15:17:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 67A65846EB;
+	Thu, 29 Apr 2021 19:39:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JusXhLj58mMr; Thu, 29 Apr 2021 15:17:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GY3smzRzVefO; Thu, 29 Apr 2021 19:39:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B1D14187D;
-	Thu, 29 Apr 2021 15:17:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DF765846DF;
+	Thu, 29 Apr 2021 19:39:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DB21C1BF39C
- for <devel@linuxdriverproject.org>; Thu, 29 Apr 2021 15:17:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 467E81BF841
+ for <devel@linuxdriverproject.org>; Thu, 29 Apr 2021 19:38:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C9507400F3
- for <devel@linuxdriverproject.org>; Thu, 29 Apr 2021 15:17:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 35B73846DF
+ for <devel@linuxdriverproject.org>; Thu, 29 Apr 2021 19:38:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VTZJxXhE31J9 for <devel@linuxdriverproject.org>;
- Thu, 29 Apr 2021 15:17:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DC219400CC
- for <devel@driverdev.osuosl.org>; Thu, 29 Apr 2021 15:17:01 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id DADC8613F8;
- Thu, 29 Apr 2021 15:17:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619709421;
- bh=0TF/rgI+kIrUM4ucLgyoRQVNDZwjwMCttPCbdF1J2ts=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TNblwH+As0w11JRNen3DEa/sKtquJO7N/ed+Wi2cPt5DPo/pzApjHeB4CYlT9czKN
- RFJnIUjSlU/iXNkujkJ9GfUIBpZYvUPaxBLDLGXBQdVlv5qb6mSpE1DcETxlBJLjdH
- 3g63qgtE3JXAaoo4Aq3ZJQdiRo/RBYWmOp0+Glxzsc1YjsicyiOaSi7GIhQYDFx0Ss
- xxX7tIodOuoDf+uK3PdOkr9EHdavuGSGLxTjoqehEjaUHaupkr1YkvsH7C4pSmGQvt
- kJLY88R3n7qjm+eBETbZXRLROLJk7BZhgXtoeO/pKC8+dHkhcGgjRgK0xEL1TOs1c0
- knRtXQpP0PexA==
-Received: from johan by xi.lan with local (Exim 4.93.0.4)
- (envelope-from <johan@kernel.org>)
- id 1lc8Ph-0006kM-4M; Thu, 29 Apr 2021 17:17:13 +0200
-Date: Thu, 29 Apr 2021 17:17:13 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH v4 00/79] Address some issues with PM runtime at media
- subsystem
-Message-ID: <YIrN+VEY9Sf+eztR@hovoldconsulting.com>
-References: <cover.1619621413.git.mchehab+huawei@kernel.org>
- <YImEMN/POW5C8lG7@hovoldconsulting.com>
- <20210429121215.64a7cbdb@coco.lan>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VXDXnZxQGR9P for <devel@linuxdriverproject.org>;
+ Thu, 29 Apr 2021 19:38:51 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-qv1-xf29.google.com (mail-qv1-xf29.google.com
+ [IPv6:2607:f8b0:4864:20::f29])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 21E93846DE
+ for <devel@driverdev.osuosl.org>; Thu, 29 Apr 2021 19:38:50 +0000 (UTC)
+Received: by mail-qv1-xf29.google.com with SMTP id t14so3131698qvl.10
+ for <devel@driverdev.osuosl.org>; Thu, 29 Apr 2021 12:38:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=+FxQsplSTwtsTS7MiBXRvoge0MGveknHu2H/BzgPM38=;
+ b=sCSy8GBrf3NahZO0PVFAaX7QXylbiOLkGTjhcWJfzmVsA3wTTv24cjkKnt9kWRMbMB
+ XQpmC/QQvoSFcUKPIaWSWYzUar3vpWfN4GYffRJghJMF3U5j9evmrCNtqiXbgnlDL4aK
+ HzQphFdrluHfSmHyvGHa0FUalsilsw+PLVWo3u64juRKbjWuBLt+XFVIYnGDM0UOtvIk
+ 8a5ob9xyuM2urJtLOcanKBDBkpkUOzeE5Duem4r/auLqlKDJNUwboO4zDTy89KojbICS
+ BdZ4ICLm2sgea6pTsAkSFM0MZbQSCttcNvFWFnQ2+kHmH2cD6ZjiZbKNBw2hUc7NLrib
+ 1UsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=+FxQsplSTwtsTS7MiBXRvoge0MGveknHu2H/BzgPM38=;
+ b=UMkNGNR94BCUN2bBvQZ70LiXZDWtKWUuvoNvV6sPxhPuOrgRUmiRCy1CnXL4WXNikz
+ ph398kQBY1djFieVvOmnBb8dA4pQXrsLRyToLAMu06/8SLQLVwe+9TaPFCZ6uYJrQ4AF
+ LpXie47/jTejsD5QA7MhxqGCpkEG2+JLxoD+oYYLb9zIHNGOZkApS4c9E2JBAqGu04oH
+ sMiW7sqdrgbSjEjw0LIsbUt1l3dOElz64Cysh0EJyZEdnQppAAXRBpYmB0eWocETlRCG
+ g2T2MDtLc0PybpeTzTC/MK6a+hW1EJ4e3UKuJTyLdgYDq084q3avM8zilWmmKjrzzoag
+ +r5A==
+X-Gm-Message-State: AOAM533vQrr/ARxfQvNvDUdVgyFMGnzCV3G+Kq29bNqbGj1W0ydKAy3L
+ BQyjtO9uXhxLOHkSmPdv8XkoPg==
+X-Google-Smtp-Source: ABdhPJzLcTus3KFflLF/PC6lmGIOKgmEB7VpeUYOFU5nSaAEjsEhWRk4wQ2V90ZmO11z7SBSgxOYSw==
+X-Received: by 2002:a0c:9e0f:: with SMTP id p15mr1417313qve.27.1619725129787; 
+ Thu, 29 Apr 2021 12:38:49 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
+ [173.246.12.168])
+ by smtp.gmail.com with ESMTPSA id 67sm637872qtf.54.2021.04.29.12.38.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Apr 2021 12:38:49 -0700 (PDT)
+Message-ID: <369fe341c13486eff10c7edbe23fb84c8287786e.camel@ndufresne.ca>
+Subject: Re: [RFC RESEND 0/3] vp9 v4l2 stateless uapi
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>
+Date: Thu, 29 Apr 2021 15:38:47 -0400
+In-Reply-To: <463d2636-6de9-112b-3536-5cef38ef6093@xs4all.nl>
+References: <20210421100035.13571-1-andrzej.p@collabora.com>
+ <23a4ed00-0993-3567-2664-1fcc643915ab@xs4all.nl>
+ <e7b55d3f58a6067ccd68d0e1d772e70bb3c92c93.camel@ndufresne.ca>
+ <CAAEAJfB_UdGKnfMRdwu=LRaW+Ujv5pShHYm9i=KO5KaB08JSuA@mail.gmail.com>
+ <463d2636-6de9-112b-3536-5cef38ef6093@xs4all.nl>
+User-Agent: Evolution 3.40.0 (3.40.0-1.fc34) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210429121215.64a7cbdb@coco.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,208 +92,203 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Ricardo Ribalda <ribalda@kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, mauro.chehab@huawei.com, linuxarm@huawei.com,
- Todor Tomov <todor.too@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Andrzej Hajda <a.hajda@samsung.com>, "Lad,
- Prabhakar" <prabhakar.csengg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Robert Foss <robert.foss@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Dmitry Osipenko <digetx@gmail.com>, linux-stm32@st-md-mailman.stormreply.com,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Leon Luo <leonl@leopardimaging.com>, Dan Scally <djrscally@gmail.com>,
- linux-samsung-soc@vger.kernel.org,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Matt Ranostay <matt.ranostay@konsulko.com>,
- Andy Gross <agross@kernel.org>, Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Steve Longerbeam <slongerbeam@gmail.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Shunqian Zheng <zhengsq@rock-chips.com>, Tianshu Qiu <tian.shu.qiu@intel.com>,
- NXP Linux Team <linux-imx@nxp.com>, Shawn Tu <shawnx.tu@intel.com>,
- devel@driverdev.osuosl.org, Jacopo Mondi <jacopo@jmondi.org>,
- linux-tegra@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Wenyou Yang <wenyou.yang@microchip.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, linux-arm-msm@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-renesas-soc@vger.kernel.org,
- Maxime Ripard <mripard@kernel.org>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Benoit Parrot <bparrot@ti.com>, Helen Koike <helen.koike@collabora.com>,
- Yong Zhi <yong.zhi@intel.com>, linux-mediatek@lists.infradead.org,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
+Cc: devel@driverdev.osuosl.org, kernel@collabora.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ linux-rockchip@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
  Ezequiel Garcia <ezequiel@collabora.com>,
- Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
- Chiranjeevi Rapolu <chiranjeevi.rapolu@intel.com>,
- linux-arm-kernel@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Hyungwoo Yang <hyungwoo.yang@intel.com>, linux-kernel@vger.kernel.org,
- "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, linux-media@vger.kernel.org,
- Shawn Guo <shawnguo@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-media <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 29, 2021 at 12:18:16PM +0200, Mauro Carvalho Chehab wrote:
-> Em Wed, 28 Apr 2021 17:50:08 +0200
-> Johan Hovold <johan@kernel.org> escreveu:
-> 
-> > On Wed, Apr 28, 2021 at 04:51:21PM +0200, Mauro Carvalho Chehab wrote:
-> 
-> > > 1. despite its name, this is actually a PM runtime resume call,
-> > >    but some developers didn't seem to realize that, as I got this
-> > >    pattern on some drivers:
-> > > 
-> > >         pm_runtime_get_sync(&client->dev);
-> > >         pm_runtime_disable(&client->dev);
-> > >         pm_runtime_set_suspended(&client->dev);
-> > >         pm_runtime_put_noidle(&client->dev);
-> > > 
-> > >    It makes no sense to resume PM just to suspend it again ;-)  
-> > 
-> > This is perfectly alright. Take a look at ov7740_remove() for example:
-> > 
-> > 	pm_runtime_get_sync(&client->dev);
-> > 	pm_runtime_disable(&client->dev);
-> > 	pm_runtime_set_suspended(&client->dev);
-> > 	pm_runtime_put_noidle(&client->dev);
-> > 	
-> > 	ov7740_set_power(ov7740, 0);
-> > 
-> > There's an explicit power-off after balancing the PM count and this will
-> > work regardless of the power state when entering this function.
-> 
-> Ok, but this should equally work:
-> 
->  	pm_runtime_disable(&client->dev);
->  	pm_runtime_set_suspended(&client->dev);
->  	
->  	ov7740_set_power(ov7740, 0);
-> 
-> as there's no additional cleanup made on this particular driver
-> between pm_runtime_get_sync() and pm_runtime_put_noidle().
-
-No, that would break the driver as I pointed out to you yesterday:
-
-	https://lore.kernel.org/r/YImG1klSPkFSaS3a@hovoldconsulting.com
-
-If the device is already suspended when remove is called then you'll
-end up with an unbalanced call to ov7740_set_power() that will try to
-disable an already disabled clock.
-
-> > So this has nothing to do with pm_runtime_get_sync() per se.
-> 
-> Yes, but some patches on this series are cleaning up the driver release
-> logic.
-
-You mentioned this example as an argument against using
-pm_runtime_get_sync(), which I don't think makes sense.
-
-> > > 2. Usual *_get() methods only increment their use count on success,
-> > >    but pm_runtime_get_sync() increments it unconditionally. Due to
-> > >    that, several drivers were mistakenly not calling
-> > >    pm_runtime_put_noidle() when it fails;  
-> > 
-> > Sure, but pm_runtime_get_async() also works this way. You just won't be
-> > notified if the async resume fails.
-> 
-> Granted, it makes sense along the pm_runtime kAPI.
-> 
-> It is inconsistent with the behavior of kobject_get*() and other
-> *_get*() methods that are based or inspired on it, as, on those, the
-> operations are atomic: either everything succeeds and it doesn't return
-> an error, or the usage counter is not incremented and the object
-> state doesn't change after the call.
-
-Right, and I'm aware that some people have overlooked this. But its not
-the end of the world since hardly any driver can handle resume failures
-properly anyway. 
-
-This is mostly just an exercise to shut up static checkers.
-
-> > > 3. The name of the new variant is a lot clearer:
-> > > 	pm_runtime_resume_and_get()
-> > >     As its same clearly says that this is a PM runtime resume function,
-> > >     that also increments the usage counter on success;  
-> > 
-> > It also introduced an inconsistency in the API and does not pair as well
-> > with the pm_runtime_put variants.
-> 
-> Agreed. A name that would be more consistent with PM runtime would
-> probably be:
-> 
-> 	pm_runtime_resume_if_get()
-
-Naw, since the get part always succeeds.
-
-It should start with pm_runtime_get, but pm_runtime_get_sync() is
-unfortunately taken.
-
-> as there are already:
-> 
-> 	pm_runtime_get_if_in_use()
-> 	pm_runtime_get_if_active()
-> 
-> But any such discussions are out of the scope of this patchset ;-)
-
-Right.
-
-> > > 4. Consistency: we did similar changes subsystem wide with
-> > >    for instance strlcpy() and strcpy() that got replaced by
-> > >    strscpy(). Having all drivers using the same known-to-be-safe
-> > >    methods is a good thing;  
-> > 
-> > It's not known to be safe; there are ways to get also this interface
-> > wrong as for example this series has shown.
-> 
-> Very true. Yet, it is a lot simpler to use functions that won't change
-> the state of the objects when returning an error, as this is by far
-> the most common pattern within the Kernel.
-
-A resume failure does change the state (and needs to be recovered from),
-but I get what you're saying.
-
-> Human brains are trained to identify certain patterns. When there's
-> something using a similar pattern, but with a different behavior, 
-> our brains are more subject to fail identifying problems.
-
-Sure. But I'm not sure that having two interfaces with different
-semantics to do the job is doing us any favours here. But again, that
-discussion has already been had.
-
-And I realise that this is partly also your motive here (even if the old
-interface isn't going to go away).
-
-> > > compile-tested only.
-> > > Patches 1 to 7 fix some issues that already exists at the current
-> > > PM runtime code;
-> > > 
-> > > patches 8 to 20 fix some usage_count problems that still exists
-> > > at the media subsystem;
-> > > 
-> > > patches 21 to 78 repaces pm_runtime_get_sync() by 
-> > > pm_runtime_resume_and_get();
-> > > 
-> > > Patch 79 (and a hunk on patch 78) documents the two exceptions
-> > > where pm_runtime_get_sync() will still be used for now.
-
-80 patches in one series (posted to lkml) is a bit excessive. Perhaps
-you can break it up in a fixes part and one or more cleanups parts?
-
-Johan
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TGUgamV1ZGkgMjkgYXZyaWwgMjAyMSDDoCAxMToyMyArMDIwMCwgSGFucyBWZXJrdWlsIGEgw6lj
+cml0wqA6Cj4gT24gMjcvMDQvMjAyMSAwMTozNCwgRXplcXVpZWwgR2FyY2lhIHdyb3RlOgo+ID4g
+T24gTW9uLCAyNiBBcHIgMjAyMSBhdCAxNDozOCwgTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0Bu
+ZHVmcmVzbmUuY2E+IHdyb3RlOgo+ID4gPiAKPiA+ID4gTGUgbHVuZGkgMjYgYXZyaWwgMjAyMSDD
+oCAwOTozOCArMDIwMCwgSGFucyBWZXJrdWlsIGEgw6ljcml0IDoKPiA+ID4gPiBIaSBBbmRyemVq
+LAo+ID4gPiA+IAo+ID4gPiA+IFRoYW5rIHlvdSBmb3Igd29ya2luZyBvbiB0aGlzIQo+ID4gPiA+
+IAo+ID4gPiA+IE9uIDIxLzA0LzIwMjEgMTI6MDAsIEFuZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90
+ZToKPiA+ID4gPiA+IERlYXIgQWxsLAo+ID4gPiA+ID4gCj4gPiA+ID4gPiBUaGlzIGlzIGFuIFJG
+QyBvbiBzdGF0ZWxlc3MgdWFwaSBmb3IgdnA5IGRlY29kaW5nIHdpdGggdjRsMi4gVGhpcyB3b3Jr
+IGlzIGJhc2VkIG9uIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDIwLzExLzIvMTA0MywgYnV0IGhh
+cyBiZWVuIHN1YnN0YW50aWFsbHkgcmV3b3JrZWQuIFRoZSBpbXBvcnRhbnQgY2hhbmdlIGlzIHRo
+YXQgdGhlIHY0bDIgY29udHJvbCB1c2VkIHRvIHBhc3MgYm9vbGVhbiBkZWNvZGVyIHByb2JhYmls
+aXRpZXMgaGFzIGJlZW4gbWFkZSB1bmlkaXJlY3Rpb25hbCwgYW5kIGlzIG5vdyBjYWxsZWQgVjRM
+Ml9DSURfU1RBVEVMRVNTX1ZQOV9DT01QUkVTU0VEX0hEUl9QUk9CUy4KPiA+ID4gPiA+IAo+ID4g
+PiA+ID4gSW4gdGhlIHByZXZpb3VzIHByb3Bvc2FsLCB0byBxdWV1ZSBhIGZyYW1lIHRoZSB1c2Vy
+c3BhY2UgbXVzdCBmdWxseSBkZXF1ZXVlIHRoZSBwcmV2aW91cyBvbmUsIHdoaWNoIGVmZmVjdGl2
+ZWx5IHJlc3VsdHMgaW4gYSBmb3JjZWQgbG9ja3N0ZXAgYmVoYXZpb3IgYW5kIGRlZmVhdHMgdmIy
+J3MgY2FwYWJpbGl0eSB0byBlbnF1ZXVlIG11bHRpcGxlIGJ1ZmZlcnMuIFN1Y2ggYSBkZXNpZ24g
+d2FzIGEgY29uc2VxdWVuY2Ugb2YgYmFja3dhcmQgcHJvYmFiaWxpdHkgdXBkYXRlcyBiZWluZyBw
+ZXJmb3JtZWQgYnkgdGhlIGtlcm5lbCBkcml2ZXIgKHdoaWNoIGhhcyBkaXJlY3QgYWNjZXNzIHRv
+IGFwcHJvcHJpYXRlIGNvdW50ZXIgdmFsdWVzKSBidXQgZm9yd2FyZCBwcm9iYWJpbGl0eSB1cGRh
+dGVzIGJlaW5nIGNvdXBsZWQgd2l0aCBjb21wcmVzc2VkIGhlYWRlciBwYXJzaW5nIHBlcmZvcm1l
+ZCBieSB0aGUgdXNlcnNwYWNlLgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBJbiB2cDkgdGhlIGJvb2xl
+YW4gZGVjb2RlciB1c2VkIHRvIGRlY29kZSB0aGUgYml0c3RyZWFtIG5lZWRzIGNlcnRhaW4gcGFy
+YW1ldGVycyB0byB3b3JrLiBUaG9zZSBhcmUgcHJvYmFiaWxpdGllcywgd2hpY2ggY2hhbmdlIHdp
+dGggZWFjaCBmcmFtZS4gQWZ0ZXIgZWFjaCBmcmFtZSBpcyBkZWNvZGVkIGl0IGlzIGtub3duIGhv
+dyBtYW55IHRpbWVzIGEgZ2l2ZW4gc3ltYm9sIG9jY3VyZWQgaW4gdGhlIGZyYW1lLCBzbyB0aGUg
+cHJvYmFiaWxpdGllcyBjYW4gYmUgYWRhcHRlZC4gVGhpcyBwcm9jZXNzIGlzIGtub3duIGFzIGJh
+Y2t3YXJkIHByb2JhYmlsaXRpZXMgdXBkYXRlLiBBIG5leHQgZnJhbWUgaGVhZGVyIGNhbiBhbHNv
+IGNvbnRhaW4gaW5mb3JtYXRpb24gd2hpY2ggbW9kaWZpZXMgcHJvYmFiaWxpdGllcyByZXN1bHRp
+bmcgZnJvbSBiYWNrd2FyZCB1cGRhdGUuIFRoZSBzYWlkIG1vZGlmaWNhdGlvbiBpcyBjYWxsZWQg
+Zm9yd2FyZCBwcm9iYWJpbGl0aWVzIHVwZGF0ZS4gVGhlIGRhdGEgZm9yIGJhY2t3YXJkIHVwZGF0
+ZSBpcyBnZW5lcmF0ZWQgYnkgdGhlIGRlY29kZXIgaGFyZHdhcmUsIHdoaWxlIHRoZSBkYXRhIGZv
+ciBmb3J3YXJkIHVwZGF0ZSBpcyBwcmVwYXJlZCBieSByZWFkaW5nIHRoZSBjb21wcmVzc2VkIGZy
+YW1lIGhlYWRlci4gVGhlIG5hdHVyYWwgcGxhY2UgdG8gcGFyc2Ugc29tZXRoaW5nIGlzIHVzZXJz
+cGFjZSwgd2hpbGUgdGhlIG5hdHVyYWwgcGxhY2UgdG8gYWNjZXNzIGhhcmR3YXJlLXByb3ZpZGVk
+IGNvdW50ZXJzIGlzIHRoZSBrZXJuZWwuIFN1Y2ggcmVzcG9uc2liaWx0aWVzIGFzc2lnbm1lbnQg
+d2FzIHVzZWQgaW4gdGhlIG9yaWdpbmFsIHdvcmsuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IFRvIG92
+ZXJjb21lIHRoZSBsb2Nrc3RlcCwgd2UgbW92ZWQgZm9yd2FyZCBwcm9iYWJpbGl0eSB1cGRhdGVz
+IHRvIHRoZSBrZXJuZWwsIHdoaWxlIGxlYXZpbmcgcGFyc2luZyB0aGVtIGluIHVzZXJzcGFjZS4g
+VGhpcyB3YXkgdGhlIHY0bDIgY29udHJvbCB3aGljaCBpcyB1c2VkIHRvIHBhc3MgdGhlIHByb2Jz
+IGJlY29tZXMgdW5pZGlyZWN0aW9uYWwgKHVzZXItPmtlcm5lbCkgYW5kIHRoZSB1c2Vyc3BhY2Ug
+Y2FuIGtlZXAgcGFyc2luZyBhbmQgZW5xdWV1ZWluZyBzdWNjZWVkaW5nIGZyYW1lcy4KPiA+ID4g
+PiA+IAo+ID4gPiA+ID4gSWYgYSBwYXJ0aWN1bGFyIGRyaXZlciBwYXJzZXMgdGhlIGNvbXByZXNz
+ZWQgaGVhZGVyIGFuZCBkb2VzIGJhY2t3YXJkIHByb2JhYmlsaXR5IHVwZGF0ZXMgb24gaXRzIG93
+biB0aGVuIFY0TDJfQ0lEX1NUQVRFTEVTU19WUDlfQ09NUFJFU1NFRF9IRFJfUFJPQlMgZG9lcyBu
+b3QgbmVlZCB0byBiZSB1c2VkLgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBUaGlzIHNlcmllcyBhZGRz
+IHZwOSB1YXBpIGluIHByb3BlciBsb2NhdGlvbnMsIHdoaWNoIG1lYW5zIGl0IGlzIGEgcHJvcGVy
+LCAib2ZmaWNpYWwiIHVhcGksIGFzIG9wcG9zZWQgdG8gc3RhZ2luZyB1YXBpIHdoaWNoIHdhcyBw
+cm9wb3NlZCBpbiB0aGUgYWJvdmUgbWVudGlvbmVkIGxrbWwgdGhyZWFkLgo+ID4gPiA+IAo+ID4g
+PiA+IFdoeT8gSSByYXRoZXIgbGlrZWQgdGhlIHdheSB0aGF0IHRoZSBvdGhlciBjb2RlYyBBUElz
+IHN0YXJ0ZWQgbGlmZSBpbiBhIHByaXZhdGUgaGVhZGVyCj4gPiA+ID4gKGxpa2UgaW5jbHVkZS9t
+ZWRpYS92cDgtY3RybHMuaCkgYW5kIHdlcmUgZ2l2ZW4gdGltZSB0byBtYXR1cmUgYmVmb3JlIG1v
+dmluZyB0aGVtIHRvCj4gPiA+ID4gdGhlIHVBUEkuIElzIHRoZXJlIGEgcmVhc29uIHdoeSB5b3Ug
+dGhpbmsgdGhhdCBWUDkgZG9lc24ndCBuZWVkIHRoYXQ/Cj4gPiA+IAo+ID4gPiBJJ2xsIGJlIGhv
+bmVzdCwgSSBhY2NlcHRlZCBlYXJseSBjb2RlIGludG8gR1N0cmVhbWVyIGZvciBIMjY0LCBhbmQg
+aXQgZW5kZWQgdXAKPiA+ID4gaW4gYSBuaWdodG1hcmUgZm9yIHRoZSB1c2Vycy4gV2Ugbm93IGhh
+dmUgYSByZWxlYXNlZCBHU3RyZWFtZXIgdGhhdCBzdXBwb3J0cwo+ID4gPiBrZXJuZWwgQVBJIHVw
+IHRvIDUuOSwgYSBibGFja3dob2xlIGF0IDUuMTAgYW5kIGZpbmFsbHkgbWFzdGVyIGNhdGNoZWQg
+dXAgYW5kIGNhbgo+ID4gPiBzdXBwb3J0IDUuMTErLiBJdCBpcyBzbyBjb21wbGljYXRlZCBmb3Ig
+cGFja2FnZXJzIHRvIHVuZGVyc3RhbmQgd2hhdCBpcyBnb2luZwo+ID4gPiBvbiwgdGhhdCB0aGV5
+IGVuZHVwIHdhc3RpbmcgYSBsb3Qgb2YgdGhlaXIgdGltZSBmb3IgYSBzaW5nbGUgZmVhdHVyZSBp
+biB0aGVpcgo+ID4gPiBPUy4gU2FtZSBicmVha2FnZSBpcyBoYXBwZW5pbmcgZm9yIFZQOCBpbiA1
+LjEzLCBldmVuIHRob3VnaCBWUDggaGFzIGJlZW4gd29ya2luZwo+ID4gPiBncmVhdCBhbGwgdGhp
+cyB0aW1lLiBJIHdpbGwgZm9yIHN1cmUgZm9yIG5vdyBvbiBpZ25vcmUgYW55IGNvbnRyaWJ1dGlv
+biB0aGF0Cj4gPiA+IGRlcGVuZHMgb24gc3RhZ2VkIHVBUEkuCj4gPiA+IAo+ID4gPiBBcyBmb3Ig
+RkZNUEVHLCBldmVuIHRob3VnaCBub3cgSDI2NCBBUEkgaXMgdGFibGUsIHRoZSBtYWludGFpbmVy
+cyBqdXN0IHNpbXBseQo+ID4gPiBpZ25vcmUgdGhlIHBhdGNoZXMgYXMgdGhleSBoYXZlIGJlZW4g
+Yml0dGVuIGJ5IHRoZSByZXZpZXdpbmcgc3R1ZmYgYmFzZWQgb24KPiA+ID4gdW5zdGFibGUgQVBJ
+cyBhbmQgZG93bnN0cmVhbSB3b3JrLgo+ID4gPiAKPiA+ID4gSSBiZWxpZXZlIHRoZSBzdGFnZWQg
+dUFQSSBoYXMgYmVlbiB1c2VkIHdyb25nbHkgaW4gdGhlIHBhc3QuIFN0dWZmIGhhcyBiZWVuCj4g
+PiA+IHN0YWdlZCBxdWlja3kgcmlnaHQgYmVmb3JlIGFzc29jaWF0ZWQgcHJvamVjdCBidWRnZXQg
+Zm9yIGl0IHdhcyBleGhhdXN0ZWQsIHNvIGl0Cj4gPiA+IHdhcyBpbiB0aGUgZW5kIGEgd2F5IHRv
+IGxvb2sgZ29vZCwgYW5kIHNvbWVvbmUgZWxzZSBoYWQgdG8gcGljayBpdCB1cCBhbmQgZmluaXNo
+Cj4gPiA+IGl0LiBHb2luZyBzdHJhaWdodCBmb3IgZmluYWwgQVBJIHB1dCBtb3JlIHByZXNzdXJl
+IG9uIG1ha2luZyBnb29kIHJlc2VhcmNoIGZyb20KPiA+ID4gdGhlIHN0YXJ0LCBkb2luZyBtb3Jl
+IGluLWRlcHRoIHJldmlld3MgYW5kIGF2b2lkaW5nIGRlbGF5aW5nIGZvciBtdWx0aXBsZSB5ZWFy
+cwo+ID4gPiB0aGUgc3VwcG9ydC4gSSBiZWxpZXZlIHRoZSBzdGFnaW5nIEFQSSBhcmUgY29uZnVz
+aW5nIGV2ZW4gZm9yIHRoZSBMaW51eAo+ID4gPiBwcm9qZWN0cy4gR29pbmcgc3RyYWlnaHQgdG8g
+c3RhYmxlIGhlcmUgaXMgYSBjb21taXRtZW50IHRvIGZpbmlzaCB0aGlzIHdvcmsgYW5kCj4gPiA+
+IGRvaW5nIGl0IGNvcnJlY3RseS4KPiA+ID4gCj4gPiA+IFRoaXMgc3BlY2lhbGx5IG1ha2Ugc2Vu
+c2UgZm9yIFZQOSwgd2hpY2ggaXMgYSB2ZXJ5IE9wZW4gQ09ERUMgYW5kIHdlcmUgYWxsIEhXCj4g
+PiA+IGltcGxlbWVudGF0aW9uIGFyZSBHb29nbGUvSGFudHJvIGRlcml2YXRpdmVzLiBBbHNvLCB1
+bmxpa2Ugd2hlbiB0aGlzIHdvcmsgYWxsCj4gPiA+IHN0YXJ0ZWQsIHdlIGRvIGhhdmUgbXVsdGlw
+bGUgSFcgd2UgY2FuIGxvb2sgYXQgdG8gdmFsaWRhdGUgdGhlIEFQSSwgd2l0aCBtb3JlCj4gPiA+
+IHRoZW4gZW5vdWdoIGluLWRlcHRoIGluZm9ybWF0aW9uIHRvIG1ha2UgdGhlIHJpZ2h0IGRlY2lz
+aW9ucy4KPiA+ID4gCj4gPiAKPiA+ICsxCj4gPiAKPiA+IEFsdGhvdWdoIEkgY2FuIHVuZGVyc3Rh
+bmQgaG93LCBmcm9tIHRoZSBrZXJuZWwgcG9pbnQgb2YgdmlldywgaXQncwo+ID4gdGVtcHRpbmcg
+dG8gbWVyZ2UKPiA+IHRoZSB1QVBJIGFzIHN0YWdpbmcgZmlyc3QgYW5kIHRoZW4gZGUtc3RhZ2Ug
+aXQsIEkgaGF2ZSB0byBzYXkgdGhhdCBJCj4gPiBhZ3JlZSBmdWxseSB3aXRoCj4gPiBOaWNvbGFz
+LCB0aGUgZXhwZXJpZW5jZSB3YXNuJ3QgcmVhbGx5IGdvb2QgZm9yIHRoZSB1c2Vyc3BhY2UuCj4g
+Cj4gSXQgd2FzIGEgY29tcGxldGVseSBuZXcgQVBJIGFuZCBpdCB0b29rIHF1aXRlIGEgbG9uZyB0
+aW1lIHRvIHJlYWxseSB1bmRlcnN0YW5kCj4gd2hhdCB3YXMgbmVlZGVkIGFuZCBob3cgdG8gZ2V0
+IGl0IHJpZ2h0LiBOb3QgdG8gbWVudGlvbiBpbXBsZW1lbnQgaXQgZm9yCj4gZGlmZmVyZW50IHBs
+YXRmb3Jtcy4gQm90aCBIMjY0IGFuZCBNUEVHLTIgc2F3IG1ham9yIGNoYW5nZXMuIFZQOCB3YXMg
+dGhlIGV4Y2VwdGlvbiwKPiBzbyBpdCBtaWdodCB3ZWxsIGJlIHRoYXQgVlA5IGlzIGVxdWFsbHkg
+Z29vZCBhdCB0aGUgZmlyc3QgYXR0ZW1wdC4KPiAKPiA+IAo+ID4gSSByZWFsbHkgaG9wZSB3ZSBj
+YW4gZG8gYmV0dGVyIHRoYW4gdGhpcyBmb3IgYXQgbGVhc3QgVlA5LiBTbywgbGV0J3MgbWFrZSBz
+dXJlCj4gPiB0aGUgaGFyZHdhcmUgZGVjb2RlcnMgdGhhdCBhcmUgY3VycmVudGx5IGF2YWlsYWJs
+ZSAoUm9ja2NoaXAsCj4gPiBWZXJpc2lsaWNvbiwgTWVkaWF0ZWspCj4gPiBhcmUgY292ZXJlZCwg
+YXMgd2VsbCBhcyBhbnkgZnV0dXJlIGZlYXR1cmVzIChkeW5hbWljIGZyYW1lIHJlc2l6ZSkuCj4g
+Cj4gU3VyZSwgaWYgd2UgY2FuIGhhdmUgdGhpcyBzdXBwb3J0ZWQgb24gc2V2ZXJhbCBwbGF0Zm9y
+bXMgYW5kIGl0IGlzIHdlbGwgcmV2aWV3ZWQsCj4gdGhlbiBJIGFtIG5vdCBvcHBvc2VkIHRvIG1l
+cmdpbmcgaXQgYXMgYSBwdWJsaWMgQVBJIHdpdGhvdXQgZ29pbmcgdGhyb3VnaAo+IHN0YWdpbmcu
+IFdlIGhhdmUgYnVpbGQgdXAgYSBsb3Qgb2YgZXhwZXJpZW5jZSBieSBub3cuCj4gCj4gPiAKPiA+
+IEEgd2VsbC10aG91Z2h0LCBob25lc3QgZWZmb3J0IGZvciBhIHNhbmUgdUFQSSBpcyBJTU8gdGhl
+IHJpZ2h0IHdheSwKPiA+IGFuZCBpZiB3ZSBmaW5kIG91dAo+ID4gc29tZXRoaW5nIGlzIG1pc3Np
+bmcgKHdoaWNoIG1heSBoYXBwZW4sIGFzIHdlIGFyZSBhbGwgaHVtYW5zKSwgd2UgY2FuIHN0aWxs
+Cj4gPiBpbnRyb2R1Y2UgYW5vdGhlciBBUEkgY29udHJvbCAoVjRMMl9DSURfU1RBVEVMRVNTX1ZQ
+OV9WMikgYW5kIHVzZSBpdAo+ID4gdG8gc3VwZXJzZWRlIHRoZSBjdXJyZW50IEFQSS4gSWYgSSB1
+bmRlcnN0YW5kIGNvcnJlY3RseSwgdGhpcyBzaG91bGQgd29yaywKPiA+IGFuZCBhbGxvdyBiYWNr
+d2FyZCBjb21wYXRpYmlsaXR5IHdpdGhvdXQgaXNzdWVzLgo+IAo+IFllcywgYnV0IGl0IGlzIHNv
+bWV0aGluZyB3ZSdkIGxpa2UgdG8gYXZvaWQuIFlvdSBuZWVkIHRvIGhhdmUgc3VmZmljaWVudAo+
+IGNvbmZpZGVuY2UgdGhhdCB0aGUgdUFQSSBoYXMgYmVlbiB3ZWxsIHRlc3RlZCBhbmQgaXMgaW4g
+Z29vZCBzaGFwZS4gSWYgeW91Cj4gaGF2ZSB0aGF0LCB0aGVuIGdyZWF0LCB3ZSBjYW4gbWVyZ2Ug
+aXQgd2l0aG91dCBnb2luZyB0aHJvdWdoIHN0YWdpbmcuCj4gCj4gSW4gcGFydGljdWxhciwgaWYg
+MSkgd2Ugc3VwcG9ydCBhdCBsZWFzdCB0d28gSFcgcGxhdGZvcm1zLCBhbmQgMikgdGVzdGluZwo+
+IHdpdGggdGVzdCBzdWl0ZXMgKEkgYXNzdW1lIHRob3NlIGFyZSBhdmFpbGFibGUgZm9yIFZQOSkg
+cGFzc2VkIG9uIHRob3NlCj4gcGxhdGZvcm1zLCB0aGVuIEknZCBiZSBoYXBweSB0byBtZXJnZS4K
+PiAKPiBSZWdhcmRpbmcgdGhlICd1c2Vyc3BhY2UgbWVzcyc6IHdoeSBkaWQgc3VwcG9ydCBmb3Ig
+c3RhZ2luZyBBUElzIGVuZCB1cAo+IGluIHJlbGVhc2VkIGdzdHJlYW1lci9mZm1wZWcgaW1wbGVt
+ZW50YXRpb25zIGF0IGFsbD8gV2hhdCBkaWQgeW91IGV4cGVjdAo+IHdvdWxkIGhhcHBlbj8gUmVs
+ZWFzZWQgdmVyc2lvbnMgb2YgdGhvc2UgYXBwbGljYXRpb25zIHNob3VsZCBvbmx5IHN1cHBvcnQK
+PiBwdWJsaWMgQVBJcywgbm90IHN0YWdpbmcgQVBJcy4gVW5sZXNzIHBlcmhhcHMgaWYgeW91IGV4
+cGxpY2l0bHkgZW5hYmxlIGl0Cj4gd2l0aCBzb21lIHRlc3QgY29uZmlnIG9wdGlvbiB0aGF0IGlz
+IGJ5IGRlZmF1bHQgb2ZmLiBBbmQgb25jZSBhIGNvZGVjIEFQSQo+IGJlY29tZXMgcHVibGljLCBy
+aXAgb3V0IHRoZSBvbGQgY29kZS4KPiAKPiBJIGRvbid0IHVzZSBnc3RyZWFtZXIvZmZtcGVnIG15
+c2VsZiwgc28gSSBoYWRuJ3Qgbm90aWNlZC4gSSB0aG91Z2h0IHBlb3BsZQo+IHdlcmUgdGVzdGlu
+ZyB1c2luZyB0ZXN0IGJyYW5jaGVzIG9mIHRob3NlIGFwcHMuIEl0J3Mgc3RhZ2luZyBmb3IgYSBy
+ZWFzb24sCj4geW91IGFyZSBjb21wbGV0ZWx5IG9uIHlvdXIgb3duIGlmIHlvdSB1c2UgaXQuCgpJ
+dCdzIHRoZSBleGFjdCBzYW1lIHJlYXNvbiBLZXJuZWwgZm9sa3Mgc3RhZ2Ugc3R1ZmYgYW5kIHJl
+bGVhc2VzIGtlcm5lbCB3aXRoCnN0YWdlZCBkcml2ZXIgKGFuZCBub3cgQVBJcykuIFRoZXJlIGlz
+IG5vIG1vcmUgdG8gYWRkLCBpZiB5b3UgZG8gaXQgaW4gdGhlCmtlcm5lbCwgYW5kIGNhbid0IGhh
+bmRsZSBoYXZpbmcgc2lkZSBrZXJuZWwgYnJhbmNoZXMgZHVlIHRvIGNvbXBsZXhpdHkgd2hlbgpj
+b21lcyB0byBleGNoYW5nZSwgY29sbGFib3JhdGUgYW5kIHRlc3QsIGl0J3MgaWRlbnRpY2FsIGZv
+ciBHU3RyZWFtZXIuCgpUaGUgc3VwcG9ydCB3YXMgbGFuZGVkIGluIEdTdHJlYW1lciBvd24gc3Rh
+Z2luZyBhcmVhLCBjYWxsZWQgZ3N0LXBsdWdpbnMtYmFkCihmcm9tIHRoZSBtb3ZpZSB0aGUgYmFk
+IHRoZSBnb29kIGFuZCB0aGUgdWdseSkuIEJ1dCBHU3RyZWFtZXIgcmVsZWFzZSBjeWNsZSBpcwp3
+YXkgc2xvd2VyIHRoZW4ga2VybmVsIHJlbGVhc2UgY3ljbGUsIGFuZCB0aGF0J3Mgd2hhdCBjcmVh
+dGVkIGEgbG90IG9mIGhlYWRhY2hlCnRvIHRoZSBpbnRlZ3JhdG9ycywgd2hpY2ggaW4gZmFjdCBo
+YXZlIG5vIG90aGVyIGNob2ljZSB0aGVuIHVzaW5nIHRoaXMgc3RhZ2luZwpzdHVmZi4KCnAucy4g
+bm90aGluZyBvZiB0aGF0IGlzIG1lcmdlZCBpbiBmZm1wZWcsIHVwc3RyZWFtIGZmbXBlZyBpbiBm
+YWN0IHNlZW1zIHRvIGJlCmlnbm9yaW5nIHRoZSBwYXRjaGVzIChldmVuIHRoZSBsYXRlc3Qgb25l
+IGJhc2VkIG9uIHN0YWJsZSBBUEkpLgoKPiAKPiBJIHdvbmRlciBpZiBJIHNob3VsZCBtYWtlIGEg
+cGF0Y2ggdGhhdCBpc3N1ZXMgc29tZSByZWFsbHkgc2VyaW91cyBtZXNzYWdlcwo+IGluIHRoZSBr
+ZXJuZWwgbG9nIGlmIHNvbWVvbmUgYXR0ZW1wdHMgdG8gdXNlIHRoZXNlIHN0YWdpbmcgQVBJcy4K
+CldlIGNvdWxkIG9mIGNvdXJzZSwgSSB0aGluayB1c2VycyAodGhlIGRldmVsb3BlcnMvaW50ZWdy
+YXRvcikgYXJlIHdlbGwgYXdhcmUsCmJ1dCB0aGV5IGhhdmUgbm8gb3RoZXIgY2hvaWNlcyBidXQg
+dG8gZGVhbCB3aXRoIGl0LiBXaGF0IEkgdGhpbmsgSSB3b3VsZCByYXRoZXIKcHJlZmVyIHdvdWxk
+IGJlIHRvIHZlcnNpb24gdGhlIHNwZWNpZmljIHN0YWdpbmcgQVBJLCBzbyB3ZSBjYW4gZXhwbGlj
+aXRseSBhc3NlcnQKdGhhdCB3ZSBoYXZlIGEgbWF0Y2hpbmcga2VybmVsIGluIHN0YWdpbmcgZW5h
+YmxlZCBidWlsZHMgb2YgdXNlcnNwYWNlCmFwcGxpY2F0aW9uLiAoSW4gb3VyIG1lYWN1bHBhLCB3
+ZSBhZGRlZCBrZXJuZWwgdmVyc2lvbiBjaGVjayBub3csIHRoYXQgd2FzIG91cgptaXN0YWtlLCBi
+dXQgYXMga2VybmVsIHN0dWZmIGdldCBiYWNrcG9ydGVkIGFsbCB0aGUgdGltZSwgdGhpcyBjaGVj
+ayBjYW4gYmUKcXVpdGUgaW4gdGhlIHdheSkuCgpDb25zaWRlciB0aGF0IEgyNjQgYnJlYWthZ2Ug
+aW4gMyBjb25zZWN1dGl2ZSBMaW51eCBrZXJuZWwgd2FzIHRoZSBtb3N0IGFncmVzc2l2ZQp1c2Fn
+ZSBvZiBzdGF0aW5nIHVBUEkgd2UgaGF2ZSBjb21lIGFjcm9zcyBzbyBmYXIuIDMgTGludXgga2Vy
+bmVsIGlzIGEgcmVsYXRpdmVseQpzaG9ydCBkZWxheSwgc28gb25lIG1heSB3b25kZXIgaWYgd2Ug
+c2hvdWxkIG5vdCBoYXZlIGp1c3Qgc2tpcHBlZCBzb21lIG1pZGRsZQpicmVha2FnZSBhbmQgYWlt
+ZWQgYXQgcHVibGljIEFQSSBzb29uZXIuCgpJIHRoaW5rIHRoZSBvdGhlciB0aGluZyB0aGF0IGJ1
+Z3MgbWUsIGlzIHRoYXQgd2hlbiB0aGUgc3RhZ2luZyBpcyBmaW5hbCwgZXZlbiBpZgp5b3UgbWFk
+ZSBubyBjaGFuZ2VzLCBtb3ZpbmcgZnJvbSBzdGFnaW5nIHRvIHB1YmxpYyBjYXVzZSBhbiBBUEkg
+YnJlYWsuIElmIHRoYXQKYnJlYWsgY291bGQgYmUgcmVtb3ZlZCwgaXQgd291bGQgYWxzbyBiZSBl
+YXNpZXIuIEluIEdTdHJlYW1lciBhcyBhbiBleGFtcGxlLCB3ZQpoYXZlIHNvbWUgc3RhZ2luZyBs
+aWJzIGluIC1iYWQsIGJ1dCB0aGUgZGF5IHdlIG1vdmUgdGhlIGxpYnMgdG8gLWJhc2UgKG91cgpz
+dGFibGUpLCB0aGVyZSB3aWxsIGJlIG5vdGhpbmcgZWxzZSBuZWVkZWQgYnV0IHRvIHJlYnVpbGQg
+dG8gZml4IHRoZSBsaW5raW5nCihhbmQgdGhlcmUgaXMgbm90IGxpbmtpbmcgd2l0aCB0aGUgbGlu
+dXgga2VybmVsKS4gT3IgcGVyaGFwcyB0aGF0IGhvdyB0aGUKdHJhbnNpdGlvbiBzaG91bGQgaGF2
+ZSBnb25lIGFuZCB3ZSBqdXN0IGRpZG4ndCBkbyB0aGF0IHByb3Blcmx5ID8KCj4gCj4gT2YgY291
+cnNlLCBpZGVhbGx5IHlvdSB3b3VsZCBoYXZlIGEgcGVyZmVjdCBBUEkgZnJvbSB0aGUgYmVnaW5u
+aW5nLCBidXQgdGhhdAo+IHdhc24ndCBhbiBvcHRpb24gaGVyZSwgYW5kIGtlZXBpbmcgZXZlcnl0
+aGluZyBvdXQgb2YgdGhlIGtlcm5lbCBlbnRpcmVseSB1bnRpbAo+IHdlJ3JlIGhhcHB5IHdpdGgg
+dGhlIHVBUEkgd291bGQgYmUgYWxtb3N0IGltcG9zc2libGUgdG8gbWFpbnRhaW4uCgpJIHVuZGVy
+c3RhbmQsIGFyZ3VhYmx5IEknbSBzaW1wbHkgbG9va2luZyBmb3IgYXZvaWRpbmcgd2hhdCBtYXkg
+b3IgbWF5IG5vdCBiZSBhbgphYnVzZSBvZiB0aGUgc3RhZ2luZyBhcmVhLiBXaGljaCBpcyB0byB1
+c2UgaXQgYXMgYSBzaG9ydGN1dCBpbnRvIGJlaW5nCiJtYWlubGluZSIgYW5kIGJyYWdnaW5nIGlu
+IHRoZSBzb2NpYWwgbWVkaWEgd2l0aCBob3BlIHNvbWVvbmUgd2lsbCBwYXkgdG8gZmluaXNoCnRo
+ZSB3b3JrLiBXaGlsZSB0aGUgc3RhZ2luZyBzaG91bGQgYmUgdXNlZCB3aGVuIG11bHRpcGxlIHVu
+cmVsYXRlZCBpbmRpdmlkdWFsCmFuZCBjb21wYW5pZXMgbmVlZCB0byBjb2xsYWJvcmF0ZSBpbnRv
+IGEgc3BlY2lmaWMgY29tcG9uZW50LCB3aXRoIGEgZW5nYWdlbWVudAp0byBkbyBzbyAoY2FuIGJl
+IHdlYWsgZW5nYWdlbWVudCwgYnV0IHRoZXJlIG11c3QgYmUgc29tZXRoaW5nKS4KCkxldCdzIGF0
+IGxlYXN0IHN0YXJ0IFZQOSBhcyBmaW5hbCwgd2UgaGF2ZSBtb3JlIGV4cGVyaWVuY2UsIG1vcmUg
+SFcgdG8gbG9vayBhdCwKYW5kIHRvIGhlbHAgZXZlbiBmdXJ0aGVyLCBtb3N0IG9mIHRoZSBIVyBp
+cyBkZXJpdmVkIGZyb20gSGFudHJvIChHb29nbGUpIGRlc2lnbiwKYXMgdGhhdCBkZXNpZ24gd2Fz
+IGdpdmVuIGZvciBmcmVlIHRvIGludGVyZXN0ZWQgSFcgdmVuZG9ycy4KCj4gCj4gUmVnYXJkcywK
+PiAKPiAJSGFucwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
+Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
+cmRldi1kZXZlbAo=
