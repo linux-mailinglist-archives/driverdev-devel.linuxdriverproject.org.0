@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9710136F559
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Apr 2021 07:32:09 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54E7F36F557
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Apr 2021 07:31:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 33B9C41B4D;
-	Fri, 30 Apr 2021 05:32:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CO4K2yqMnsGV; Fri, 30 Apr 2021 05:32:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CDEDD41B47;
-	Fri, 30 Apr 2021 05:32:04 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1206B1BF429
- for <devel@linuxdriverproject.org>; Fri, 30 Apr 2021 05:31:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0B91E85028
- for <devel@linuxdriverproject.org>; Fri, 30 Apr 2021 05:31:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 519F585034;
+	Fri, 30 Apr 2021 05:31:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NKTRHSzusXqp for <devel@linuxdriverproject.org>;
- Fri, 30 Apr 2021 05:31:34 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id E2-h1k3sFAMp; Fri, 30 Apr 2021 05:31:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 717DC85028;
+	Fri, 30 Apr 2021 05:31:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 928FA1BF429
+ for <devel@linuxdriverproject.org>; Fri, 30 Apr 2021 05:31:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 82B34430F5
+ for <devel@linuxdriverproject.org>; Fri, 30 Apr 2021 05:31:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ei0pVu5TxLx3 for <devel@linuxdriverproject.org>;
+ Fri, 30 Apr 2021 05:31:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1031A85027
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 75FD4401D3
  for <devel@driverdev.osuosl.org>; Fri, 30 Apr 2021 05:31:33 +0000 (UTC)
-IronPort-SDR: IWeqIwHhCSg7z3ITsR+tHaGcyfo3MaSWPSpzemiVxw9yUbChOPmJ+gOssWHxfwFwv3QwY9A9X+
- T9meFRooYR5A==
-X-IronPort-AV: E=McAfee;i="6200,9189,9969"; a="184677882"
-X-IronPort-AV: E=Sophos;i="5.82,260,1613462400"; d="scan'208";a="184677882"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+IronPort-SDR: jWFsNzJhVGQBwsiWKBr3Sfw3I4St8gq0y063mkaWMxx2+ViQJeUrMOGN5YUTMBTt0v6MZ6E9Ab
+ mOCoBblGnNbw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9969"; a="282544564"
+X-IronPort-AV: E=Sophos;i="5.82,260,1613462400"; d="scan'208";a="282544564"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  29 Apr 2021 22:31:31 -0700
-IronPort-SDR: g4Ri1sJTrBNUH4MmQICWMXE3lXicsCAH48wD7uv6yqMZ+tlsMFZLeiRxPsogrcwc6i2NZwa5kz
- vXTKRMqoVGrg==
+IronPort-SDR: 0yjsj4ptLb5YTeZ3SIzDPMyWDC0Ly2nwhAXFFl1Pnri9zHYDA2LzBuMG3IuFOZY1GI9L8PAsSf
+ RGMhYWrBEfZA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,260,1613462400"; d="scan'208";a="424694311"
+X-IronPort-AV: E=Sophos;i="5.82,260,1613462400"; d="scan'208";a="616749711"
 Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 29 Apr 2021 22:31:30 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 29 Apr 2021 22:31:30 -0700
 Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lcLkP-0007zx-Kv; Fri, 30 Apr 2021 05:31:29 +0000
-Date: Fri, 30 Apr 2021 13:30:48 +0800
+ id 1lcLkP-0007zv-KL; Fri, 30 Apr 2021 05:31:29 +0000
+Date: Fri, 30 Apr 2021 13:30:52 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:readfile] BUILD SUCCESS
- 065560a1b25f997121f2c83bd19172d798bb4f3c
-Message-ID: <608b9608.NWvx5sbdOt/Ii6H7%lkp@intel.com>
+Subject: [driver-core:umn.edu-reverts-round1] BUILD SUCCESS
+ 11089d72b270bb621149bc8e1aa7b9173273790a
+Message-ID: <608b960c.ooDp7W4dTmXJRO5T%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,12 +73,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git readfile
-branch HEAD: 065560a1b25f997121f2c83bd19172d798bb4f3c  readfile.2: new page describing readfile(2)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git umn.edu-reverts-round1
+branch HEAD: 11089d72b270bb621149bc8e1aa7b9173273790a  Revert "crypto: cavium/nitrox - add an error message to explain the failure of pci_request_mem_regions"
 
 elapsed time: 725m
 
-configs tested: 112
+configs tested: 101
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -92,56 +92,45 @@ arm                              allyesconfig
 arm                              allmodconfig
 x86_64                           allyesconfig
 riscv                            allmodconfig
-i386                             allyesconfig
 riscv                            allyesconfig
-powerpc                         ps3_defconfig
-arm                           h3600_defconfig
+i386                             allyesconfig
+arm                         socfpga_defconfig
 mips                         db1xxx_defconfig
-powerpc                      pmac32_defconfig
-arm                      integrator_defconfig
+sh                         microdev_defconfig
+m68k                       bvme6000_defconfig
+arm                           tegra_defconfig
+powerpc                        icon_defconfig
 nds32                            alldefconfig
 powerpc                     redwood_defconfig
 powerpc                 linkstation_defconfig
 powerpc                     tqm8560_defconfig
-i386                             alldefconfig
-arm                        spear6xx_defconfig
-powerpc                          g5_defconfig
-arm                           omap1_defconfig
-sh                  sh7785lcr_32bit_defconfig
-mips                malta_kvm_guest_defconfig
-mips                         rt305x_defconfig
-powerpc                   motionpro_defconfig
-arm                     eseries_pxa_defconfig
-sh                           se7619_defconfig
-arm                          collie_defconfig
+arm                             mxs_defconfig
+arm                      pxa255-idp_defconfig
+sh                        edosk7705_defconfig
 arc                    vdk_hs38_smp_defconfig
 x86_64                           alldefconfig
 sh                             shx3_defconfig
 mips                        vocore2_defconfig
-mips                           gcw0_defconfig
-sh                          kfr2r09_defconfig
-ia64                             allyesconfig
-arm                          pxa168_defconfig
-sh                   rts7751r2dplus_defconfig
-m68k                            q40_defconfig
-sh                           se7724_defconfig
-mips                           rs90_defconfig
-powerpc                      acadia_defconfig
-powerpc                      ppc44x_defconfig
-arc                        nsimosci_defconfig
+powerpc                 mpc8272_ads_defconfig
+sh                        edosk7760_defconfig
+sh                   sh7770_generic_defconfig
+sh                            hp6xx_defconfig
+arm                          lpd270_defconfig
+openrisc                    or1ksim_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
+ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
 m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
 nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
 alpha                               defconfig
 alpha                            allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
 xtensa                           allyesconfig
 h8300                            allyesconfig
 arc                                 defconfig
@@ -159,18 +148,18 @@ mips                             allmodconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
-x86_64               randconfig-a004-20210429
-x86_64               randconfig-a002-20210429
-x86_64               randconfig-a005-20210429
-x86_64               randconfig-a006-20210429
-x86_64               randconfig-a001-20210429
-x86_64               randconfig-a003-20210429
 i386                 randconfig-a005-20210429
 i386                 randconfig-a002-20210429
 i386                 randconfig-a001-20210429
 i386                 randconfig-a006-20210429
 i386                 randconfig-a003-20210429
 i386                 randconfig-a004-20210429
+x86_64               randconfig-a004-20210429
+x86_64               randconfig-a002-20210429
+x86_64               randconfig-a005-20210429
+x86_64               randconfig-a006-20210429
+x86_64               randconfig-a001-20210429
+x86_64               randconfig-a003-20210429
 i386                 randconfig-a012-20210429
 i386                 randconfig-a014-20210429
 i386                 randconfig-a013-20210429
