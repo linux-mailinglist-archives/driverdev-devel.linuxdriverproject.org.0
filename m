@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5AB01370922
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 May 2021 00:05:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BC15370923
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 May 2021 00:06:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1E61460A79;
-	Sat,  1 May 2021 22:05:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6240460A3B;
+	Sat,  1 May 2021 22:06:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OEbYY_-T86CM; Sat,  1 May 2021 22:05:49 +0000 (UTC)
+	with ESMTP id 7gAiTQlwRq-n; Sat,  1 May 2021 22:06:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 556D36090B;
-	Sat,  1 May 2021 22:05:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 33E6E6090B;
+	Sat,  1 May 2021 22:06:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 12FB21BF4D8
- for <devel@linuxdriverproject.org>; Sat,  1 May 2021 22:05:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 45B731BF4D8
+ for <devel@linuxdriverproject.org>; Sat,  1 May 2021 22:06:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0284585138
- for <devel@linuxdriverproject.org>; Sat,  1 May 2021 22:05:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 424DA608E7
+ for <devel@linuxdriverproject.org>; Sat,  1 May 2021 22:06:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d62VM9lSjjod for <devel@linuxdriverproject.org>;
- Sat,  1 May 2021 22:05:37 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3mcq2he0GPHV for <devel@linuxdriverproject.org>;
+ Sat,  1 May 2021 22:06:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0B86185137
- for <devel@driverdev.osuosl.org>; Sat,  1 May 2021 22:05:36 +0000 (UTC)
-IronPort-SDR: Uzp5wCegIWzn2nHYOBc55e6v6IXfkoiqKRIEj4PIeJZrtJ2RfjWUCfGu5orr1sWcmCVOPysFyI
- 2UAYxWHSmKTw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9971"; a="184650356"
-X-IronPort-AV: E=Sophos;i="5.82,266,1613462400"; d="scan'208";a="184650356"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 May 2021 15:05:35 -0700
-IronPort-SDR: v7lNJuXlAed+hJHdaBBqegoPhmW48VhqhvgQzX+fLMuKQ2dytFrtWgZnyZjkykWPn2HUKLW5Iu
- bvT0FTm41L+g==
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 605046090B
+ for <devel@driverdev.osuosl.org>; Sat,  1 May 2021 22:06:35 +0000 (UTC)
+IronPort-SDR: LRbN2lU8p5UZH3wxVadt+WjQKA14AlB11IBbXy8k5eWEvxom4mRR1jpzwF2Z3qIz3qAxyaDHul
+ LrILKTw5rT+g==
+X-IronPort-AV: E=McAfee;i="6200,9189,9971"; a="197616308"
+X-IronPort-AV: E=Sophos;i="5.82,266,1613462400"; d="scan'208";a="197616308"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 May 2021 15:06:34 -0700
+IronPort-SDR: I13GQd5LIA9OzBIIETtYJrPMruVA4hesni4U8b5olrmEgx/qYsECzFsz79JSa85cCtKEZ6dv60
+ GuUdviaV32Wg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,266,1613462400"; d="scan'208";a="529121301"
+X-IronPort-AV: E=Sophos;i="5.82,266,1613462400"; d="scan'208";a="538191476"
 Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 01 May 2021 15:05:33 -0700
+ by orsmga004.jf.intel.com with ESMTP; 01 May 2021 15:06:33 -0700
 Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lcxjw-0008ij-8e; Sat, 01 May 2021 22:05:32 +0000
-Date: Sun, 02 May 2021 06:05:31 +0800
+ id 1lcxku-0008im-B4; Sat, 01 May 2021 22:06:32 +0000
+Date: Sun, 02 May 2021 06:05:32 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:kbuild] BUILD SUCCESS
- 73b4764c52dadc088f6a48c3058254252a6eec94
-Message-ID: <608dd0ab.Fj42rCBESqwGGteh%lkp@intel.com>
+Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
+ a3dd125ce4331ce3b4756ba01be4b0acf9886a97
+Message-ID: <608dd0ac.M54GcYBYoJvexZ2t%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,8 +73,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kbuild
-branch HEAD: 73b4764c52dadc088f6a48c3058254252a6eec94  kbuild: allow arches to have their own "bootloader.sh"
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
+branch HEAD: a3dd125ce4331ce3b4756ba01be4b0acf9886a97  serial: pch_uart: fix build error with !CONFIG_DEBUG_FS
 
 elapsed time: 723m
 
