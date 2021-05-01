@@ -1,61 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF623370606
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 May 2021 08:48:33 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32D7E37073C
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 May 2021 14:44:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4FD7541D2B;
-	Sat,  1 May 2021 06:48:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B1483402F4;
+	Sat,  1 May 2021 12:44:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1-qlqTSclHbR; Sat,  1 May 2021 06:48:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id edzkR8NA5Rh0; Sat,  1 May 2021 12:44:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3386F41D24;
-	Sat,  1 May 2021 06:48:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F27D5402DA;
+	Sat,  1 May 2021 12:44:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DBA061BF59A
- for <devel@linuxdriverproject.org>; Sat,  1 May 2021 06:48:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DC9ED1BF2B8
+ for <devel@linuxdriverproject.org>; Sat,  1 May 2021 12:43:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CAAEE84EE7
- for <devel@linuxdriverproject.org>; Sat,  1 May 2021 06:48:18 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C8D864029E
+ for <devel@linuxdriverproject.org>; Sat,  1 May 2021 12:43:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=mailo.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lcQiUa9rf103 for <devel@linuxdriverproject.org>;
- Sat,  1 May 2021 06:48:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QiXbf9tWKvAa for <devel@linuxdriverproject.org>;
+ Sat,  1 May 2021 12:43:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B021184718
- for <devel@driverdev.osuosl.org>; Sat,  1 May 2021 06:48:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
- t=1619851688; bh=JiLdHkQqAQdc8HOZA+v+ql7U6+cmn/TOeYkHlqETiOQ=;
- h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
- MIME-Version:Content-Type:In-Reply-To;
- b=DgcJeBX8vSjU3hBYIx8CBkvur28Q0iVgR9EDOQguqVoW82teqfKzrStx28HqejO2y
- ZS9sDCvyaAfXzs/uFYQmaTGlNmZNuBctlad81AvPpzOqfReKh6ytvMcMa4tQAcAz+O
- rQDaPgFCgv5Md/gQCvhJwUs5Aq8GrCGNy4T3YFyc=
-Received: by 192.168.90.14 [192.168.90.14] with ESMTP
- via ip-206.mailobj.net [213.182.55.206]
- Sat,  1 May 2021 08:48:08 +0200 (CEST)
-X-EA-Auth: n+oL2fKM0AQBfDrBS9XLL0Vt7txlZtHfAc/hUXjx2E3Qcp1WT7Al30IERw8UERm0pYKUsHiyGjrPzX7YkpNi3QwbhVt6yQ7j
-Date: Sat, 1 May 2021 12:18:03 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 5/5] staging: media: atomisp: code formatting changes
- sh_css_version.c
-Message-ID: <2e2756e00db48165a42b38deaace7edf4feb1450.1619850663.git.drv@mailo.com>
-References: <cover.1619850663.git.drv@mailo.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1619850663.git.drv@mailo.com>
+Received: from host.sesurercures.online (sesurercures.online [62.173.138.37])
+ by smtp2.osuosl.org (Postfix) with ESMTP id E7DD64028C
+ for <devel@driverdev.osuosl.org>; Sat,  1 May 2021 12:43:56 +0000 (UTC)
+Received: from sesurercures.online
+ (ec2-18-116-165-14.us-east-2.compute.amazonaws.com [18.116.165.14])
+ by host.sesurercures.online (Postfix) with ESMTPA id E1EA511A5D68
+ for <devel@driverdev.osuosl.org>; Sat,  1 May 2021 11:49:22 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.sesurercures.online E1EA511A5D68
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sesurercures.online;
+ s=default; t=1619858964;
+ bh=qnFsBms4d2N776kWxN0JyD7wWyyDjNJ9M8FqOPjWkvU=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=Yt8iJa3NhgZCpZcKl19LnqGhZmVE+mR4aVGRTjS31QXMb5SOm0edrkCZnYNSR8AN9
+ 1kniZiD3SoFpxks48eoh7bEwS8v4sfGnxF4kOq6siL2wyNIbaiHC6BVfx/ERhzzwjP
+ o6Z/u7/XI+3AJZPsT2RVXkAZQEmSJpHXicnpPsKI=
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.sesurercures.online E1EA511A5D68
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sesurercures.online;
+ s=default; t=1619858964;
+ bh=qnFsBms4d2N776kWxN0JyD7wWyyDjNJ9M8FqOPjWkvU=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=Yt8iJa3NhgZCpZcKl19LnqGhZmVE+mR4aVGRTjS31QXMb5SOm0edrkCZnYNSR8AN9
+ 1kniZiD3SoFpxks48eoh7bEwS8v4sfGnxF4kOq6siL2wyNIbaiHC6BVfx/ERhzzwjP
+ o6Z/u7/XI+3AJZPsT2RVXkAZQEmSJpHXicnpPsKI=
+From: Madudu <mmushokoro18@sesurercures.online>
+To: devel@driverdev.osuosl.org
+Subject: Get Back To Me
+Date: 01 May 2021 08:49:22 +0000
+Message-ID: <20210501084922.3569F1177921465E@sesurercures.online>
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +69,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, drv@mailo.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
+Reply-To: mmushokoro18@secsuremail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Trivial code reformatting changes done according to the coding
-style guidelines. These code changes overall improve code readability
-and also address chackpatch complaints.
+Good day to you. My name is Madudu Mushokoro. from Democratic 
+Republic of the Congo (DRC) Africa, may you permit me to inform 
+you of my desire to go into a business relationship with you 
+personally or with your company, for a lucrative offshore 
+investment partnership. We have available huge sum of fund made 
+through Diamonds trade in my country.
 
-Signed-off-by: Deepak R Varma <drv@mailo.com>
----
- drivers/staging/media/atomisp/pci/sh_css_version.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I will like you to front to invest the huge fund into an offshore 
+investment project that is viable and I would like you to co-
+ordinate this investment project on our behalf, we are looking 
+towards offshore investment due to political and economic 
+instability in our region (Central Africa). The fund available 
+for investment is in cash.
 
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_version.c b/drivers/staging/media/atomisp/pci/sh_css_version.c
-index fa6de61e4995..f038c61a8499 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_version.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css_version.c
-@@ -20,8 +20,8 @@
- #include "ia_css_err.h"
- #include "sh_css_firmware.h"
- 
--int
--ia_css_get_version(char *version, int max_size) {
-+int ia_css_get_version(char *version, int max_size)
-+{
- 	char *css_version;
- 
- 	if (!IS_ISP2401)
--- 
-2.30.2
+Your position in this arrangement will be as follows:
+{1} To front and accommodate the cash into your nominated bank 
+account.
+{2} To travel for the process of lodging the cash into your 
+nominated bank account.
+{3} To decide on lucrative projects in your country for the 
+investment and co-ordinate the investments project.
+{4} The compensation (percentage of the fund ) for accommodating 
+the fund into your account is negotiable before the remaining 
+percentage is invested.
 
+If the proposal meets your consideration and approval, you are 
+hereby required to make a proper arrangement by sending me a 
+letter of Acknowledgement to facilitate a successful business
+relationship.
 
+Warm Regards,
 
+Madudu.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
