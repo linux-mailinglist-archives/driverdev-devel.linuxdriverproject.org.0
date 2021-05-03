@@ -1,60 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12AD33710B5
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 May 2021 05:55:20 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED2A4371346
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 May 2021 11:57:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 48549843AE;
-	Mon,  3 May 2021 03:55:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CECB160B17;
+	Mon,  3 May 2021 09:57:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7tVuGOIR9YR8; Mon,  3 May 2021 03:55:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eSbe4bABwvMz; Mon,  3 May 2021 09:57:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8283D8438B;
-	Mon,  3 May 2021 03:55:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 08B436059C;
+	Mon,  3 May 2021 09:57:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 12E4D1BF370
- for <devel@linuxdriverproject.org>; Mon,  3 May 2021 03:55:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 88D621BF373
+ for <devel@linuxdriverproject.org>; Mon,  3 May 2021 09:57:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 01AFD4065E
- for <devel@linuxdriverproject.org>; Mon,  3 May 2021 03:55:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 77A314020F
+ for <devel@linuxdriverproject.org>; Mon,  3 May 2021 09:57:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OhkhcDEh0y37 for <devel@linuxdriverproject.org>;
- Mon,  3 May 2021 03:55:06 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id U0VfH3J4PgaA for <devel@linuxdriverproject.org>;
+ Mon,  3 May 2021 09:57:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EB5354065B
- for <devel@driverdev.osuosl.org>; Mon,  3 May 2021 03:55:05 +0000 (UTC)
-IronPort-SDR: NLz+uCwIlRIEgw6IbiXlJ9hWrRh3xrkquAWaOsCs3Bi/kZTV21oCPclvKgJTiMuhrGLO0qHzXJ
- ielW1E4L0pcg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9972"; a="194515519"
-X-IronPort-AV: E=Sophos;i="5.82,268,1613462400"; d="scan'208";a="194515519"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 May 2021 20:55:01 -0700
-IronPort-SDR: azVxMpDbdOIvGRhX9CZnfXhhjaJJQlUxDfrYYH2tqUY/noUoDhADRAJKPichQaFjIceJui8j0e
- 3daa/xp9b6Gg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,268,1613462400"; d="scan'208";a="617781324"
-Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 02 May 2021 20:55:00 -0700
-Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1ldPff-00098D-Ki; Mon, 03 May 2021 03:54:59 +0000
-Date: Mon, 03 May 2021 11:54:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:umn.edu-reverts] BUILD SUCCESS
- 2c913b8ec4971f82c26a5828d2b887849258df93
-Message-ID: <608f73f6.IX5JlksPe1O/iN44%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C593B400DC
+ for <devel@driverdev.osuosl.org>; Mon,  3 May 2021 09:57:05 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 33A7C61157;
+ Mon,  3 May 2021 09:57:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620035825;
+ bh=NHIRO3+PyDbLugh6/AIoA+3M25be2L4BL+5JpSuPWs4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=EjghMvyXqe4C3XAQOdQia+TDQPIrOeHVFc+Q8X7DOrmSK4v4CVpXxkKoHSt4i+OxA
+ o6vf8bsPmcxMwvqfFuQzJJy4nwlSA90T91Fx6JjKGRni3jtd0SX22V1uAuB43pVMHu
+ ychRh+6P1rKtZH2ZJR9WDO2fWcKNwZBDwyHPFPcf1VkcPHefgBs2B4x+dD/6ZEfJW2
+ 3MTLbyvu+eaMmTQ/uNeF5R9+MKJc74sJqS5ByyHTg87xi77mt+gJVRHt/tXcXIVyfz
+ 7fB/ePUP/53JgxCA49zUXF9JmYbnEG7S3feP3l3RYMUK/petVGjhQ6sUEFWN2nYYOf
+ 9Jalo8ZkqSzsA==
+Received: from johan by xi.lan with local (Exim 4.93.0.4)
+ (envelope-from <johan@kernel.org>)
+ id 1ldVKF-0004I6-Nv; Mon, 03 May 2021 11:57:16 +0200
+Date: Mon, 3 May 2021 11:57:15 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Subject: Re: [PATCH v4 23/79] staging: media: ipu3: use
+ pm_runtime_resume_and_get()
+Message-ID: <YI/I+ztnoNUr+u1T@hovoldconsulting.com>
+References: <cover.1619621413.git.mchehab+huawei@kernel.org>
+ <ab2332b27d0043574a72a42ec8d757fd06279cc6.1619621413.git.mchehab+huawei@kernel.org>
+ <20210430180338.00006e62@Huawei.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210430180338.00006e62@Huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,131 +72,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ mauro.chehab@huawei.com, Bingbu Cao <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tianshu Qiu <tian.shu.qiu@intel.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git umn.edu-reverts
-branch HEAD: 2c913b8ec4971f82c26a5828d2b887849258df93  ALSA: sb8: Add a comment note regarding an unused pointer
+On Fri, Apr 30, 2021 at 06:03:38PM +0100, Jonathan Cameron wrote:
+> On Wed, 28 Apr 2021 16:51:44 +0200
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+> > added pm_runtime_resume_and_get() in order to automatically handle
+> > dev->power.usage_count decrement on errors.
+> > 
+> > Use the new API, in order to cleanup the error check logic.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Could add that pm_runtime_put() should have been pm_runtime_put_noidle()
+> inorder to not potentially result in a call to runtime suspend when
+> we never resumed in the first place.
 
-elapsed time: 721m
+No, that would never happen anyway and any pm_runtime_put() will do
+even if pm_runtime_put_noidle() is the natural choice in this case to
+balance the counter.
 
-configs tested: 101
-configs skipped: 2
+> Otherwise reasonable cleanup.
+> 
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> 
+> > ---
+> >  drivers/staging/media/ipu3/ipu3.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/media/ipu3/ipu3.c b/drivers/staging/media/ipu3/ipu3.c
+> > index ee1bba6bdcac..8e1e9e46e604 100644
+> > --- a/drivers/staging/media/ipu3/ipu3.c
+> > +++ b/drivers/staging/media/ipu3/ipu3.c
+> > @@ -392,10 +392,9 @@ int imgu_s_stream(struct imgu_device *imgu, int enable)
+> >  	}
+> >  
+> >  	/* Set Power */
+> > -	r = pm_runtime_get_sync(dev);
+> > +	r = pm_runtime_resume_and_get(dev);
+> >  	if (r < 0) {
+> >  		dev_err(dev, "failed to set imgu power\n");
+> > -		pm_runtime_put(dev);
+> >  		return r;
+> >  	}
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-powerpc                     mpc5200_defconfig
-sh                           se7750_defconfig
-i386                             alldefconfig
-mips                         tb0219_defconfig
-mips                      bmips_stb_defconfig
-openrisc                    or1ksim_defconfig
-xtensa                    xip_kc705_defconfig
-powerpc                 linkstation_defconfig
-mips                          rm200_defconfig
-arc                            hsdk_defconfig
-arm                             ezx_defconfig
-m68k                        mvme16x_defconfig
-arm64                            alldefconfig
-mips                     cu1000-neo_defconfig
-arm                        mvebu_v5_defconfig
-m68k                       bvme6000_defconfig
-arm                        mini2440_defconfig
-riscv                            alldefconfig
-arm                        realview_defconfig
-arm                       netwinder_defconfig
-arm                          badge4_defconfig
-powerpc                     tqm8560_defconfig
-sh                          rsk7201_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20210502
-i386                 randconfig-a006-20210502
-i386                 randconfig-a001-20210502
-i386                 randconfig-a005-20210502
-i386                 randconfig-a004-20210502
-i386                 randconfig-a002-20210502
-x86_64               randconfig-a014-20210502
-x86_64               randconfig-a015-20210502
-x86_64               randconfig-a012-20210502
-x86_64               randconfig-a011-20210502
-x86_64               randconfig-a013-20210502
-x86_64               randconfig-a016-20210502
-i386                 randconfig-a013-20210502
-i386                 randconfig-a015-20210502
-i386                 randconfig-a016-20210502
-i386                 randconfig-a014-20210502
-i386                 randconfig-a011-20210502
-i386                 randconfig-a012-20210502
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a001-20210502
-x86_64               randconfig-a005-20210502
-x86_64               randconfig-a003-20210502
-x86_64               randconfig-a002-20210502
-x86_64               randconfig-a006-20210502
-x86_64               randconfig-a004-20210502
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Johan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
