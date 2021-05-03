@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEC17370F5A
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 May 2021 23:28:05 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5F6A260A3E;
-	Sun,  2 May 2021 21:28:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bdUEiNr0Pwz1; Sun,  2 May 2021 21:28:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 798E460604;
-	Sun,  2 May 2021 21:28:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 10CE21BF389
- for <devel@linuxdriverproject.org>; Sun,  2 May 2021 21:27:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 12AD33710B5
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 May 2021 05:55:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0D70B84563
- for <devel@linuxdriverproject.org>; Sun,  2 May 2021 21:27:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 48549843AE;
+	Mon,  3 May 2021 03:55:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y2dYtSWA9n_U for <devel@linuxdriverproject.org>;
- Sun,  2 May 2021 21:27:42 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7tVuGOIR9YR8; Mon,  3 May 2021 03:55:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8283D8438B;
+	Mon,  3 May 2021 03:55:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 12E4D1BF370
+ for <devel@linuxdriverproject.org>; Mon,  3 May 2021 03:55:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 01AFD4065E
+ for <devel@linuxdriverproject.org>; Mon,  3 May 2021 03:55:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OhkhcDEh0y37 for <devel@linuxdriverproject.org>;
+ Mon,  3 May 2021 03:55:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3023984577
- for <devel@driverdev.osuosl.org>; Sun,  2 May 2021 21:27:42 +0000 (UTC)
-IronPort-SDR: VXwJy5Lo/Fjf7i1JpiF6S0awcXRb+PqTW4PMQCGeQUvAsBRpiamGM+vWu9TlGrkA3TGHe4nMz9
- VAgVhO7kdyEA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9972"; a="261577116"
-X-IronPort-AV: E=Sophos;i="5.82,268,1613462400"; d="scan'208";a="261577116"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 May 2021 14:27:41 -0700
-IronPort-SDR: giwWSIqopGAyDfYsSjKHU+2/+0OXFwPr0nesLfv/kVLThvjFTyAwFPbGdpKHVkA8RrPfvVCdHy
- jJMjFotujk9Q==
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EB5354065B
+ for <devel@driverdev.osuosl.org>; Mon,  3 May 2021 03:55:05 +0000 (UTC)
+IronPort-SDR: NLz+uCwIlRIEgw6IbiXlJ9hWrRh3xrkquAWaOsCs3Bi/kZTV21oCPclvKgJTiMuhrGLO0qHzXJ
+ ielW1E4L0pcg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9972"; a="194515519"
+X-IronPort-AV: E=Sophos;i="5.82,268,1613462400"; d="scan'208";a="194515519"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 May 2021 20:55:01 -0700
+IronPort-SDR: azVxMpDbdOIvGRhX9CZnfXhhjaJJQlUxDfrYYH2tqUY/noUoDhADRAJKPichQaFjIceJui8j0e
+ 3daa/xp9b6Gg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,268,1613462400"; d="scan'208";a="426902764"
+X-IronPort-AV: E=Sophos;i="5.82,268,1613462400"; d="scan'208";a="617781324"
 Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 02 May 2021 14:27:40 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 02 May 2021 20:55:00 -0700
 Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1ldJcp-00092I-DE; Sun, 02 May 2021 21:27:39 +0000
-Date: Mon, 03 May 2021 05:27:10 +0800
+ id 1ldPff-00098D-Ki; Mon, 03 May 2021 03:54:59 +0000
+Date: Mon, 03 May 2021 11:54:30 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- 7ab9c2b89422e03ba56b3ce58b96dd1b4c46a854
-Message-ID: <608f192e.2PMBGR1m2FOQw43x%lkp@intel.com>
+Subject: [driver-core:umn.edu-reverts] BUILD SUCCESS
+ 2c913b8ec4971f82c26a5828d2b887849258df93
+Message-ID: <608f73f6.IX5JlksPe1O/iN44%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,12 +73,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: 7ab9c2b89422e03ba56b3ce58b96dd1b4c46a854  debugfs: remove return value of debugfs_create_bool()
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git umn.edu-reverts
+branch HEAD: 2c913b8ec4971f82c26a5828d2b887849258df93  ALSA: sb8: Add a comment note regarding an unused pointer
 
 elapsed time: 721m
 
-configs tested: 95
+configs tested: 101
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -90,33 +90,36 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-riscv                            allmodconfig
-openrisc                         alldefconfig
-powerpc                      walnut_defconfig
-sh                   secureedge5410_defconfig
+x86_64                           allyesconfig
+powerpc                     mpc5200_defconfig
+sh                           se7750_defconfig
+i386                             alldefconfig
+mips                         tb0219_defconfig
+mips                      bmips_stb_defconfig
+openrisc                    or1ksim_defconfig
+xtensa                    xip_kc705_defconfig
+powerpc                 linkstation_defconfig
+mips                          rm200_defconfig
+arc                            hsdk_defconfig
 arm                             ezx_defconfig
-powerpc                    socrates_defconfig
-sh                            titan_defconfig
-powerpc                   lite5200b_defconfig
-mips                        jmr3927_defconfig
-powerpc                      cm5200_defconfig
-sparc64                          alldefconfig
-powerpc                mpc7448_hpc2_defconfig
-powerpc                     kmeter1_defconfig
-sh                          polaris_defconfig
-sh                   sh7724_generic_defconfig
-arc                    vdk_hs38_smp_defconfig
-sh                           se7343_defconfig
-arm                  colibri_pxa270_defconfig
+m68k                        mvme16x_defconfig
+arm64                            alldefconfig
+mips                     cu1000-neo_defconfig
+arm                        mvebu_v5_defconfig
+m68k                       bvme6000_defconfig
+arm                        mini2440_defconfig
+riscv                            alldefconfig
+arm                        realview_defconfig
+arm                       netwinder_defconfig
+arm                          badge4_defconfig
+powerpc                     tqm8560_defconfig
+sh                          rsk7201_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
 m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
 nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
@@ -135,6 +138,9 @@ i386                             allyesconfig
 sparc                            allyesconfig
 sparc                               defconfig
 i386                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
 mips                             allyesconfig
 mips                             allmodconfig
 powerpc                          allyesconfig
@@ -164,11 +170,11 @@ riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
 riscv                               defconfig
 riscv                          rv32_defconfig
+riscv                            allmodconfig
 um                               allmodconfig
 um                                allnoconfig
 um                               allyesconfig
 um                                  defconfig
-x86_64                           allyesconfig
 x86_64                    rhel-8.3-kselftests
 x86_64                              defconfig
 x86_64                               rhel-8.3
