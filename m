@@ -1,47 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E01DA373B8E
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 May 2021 14:39:33 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 361A6373DDC
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 May 2021 16:43:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7F35C40638;
-	Wed,  5 May 2021 12:39:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D4B9083EDF;
+	Wed,  5 May 2021 14:43:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MYsZmqmZS00V; Wed,  5 May 2021 12:39:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gMGacI2xhlIa; Wed,  5 May 2021 14:43:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 16BEB40240;
-	Wed,  5 May 2021 12:39:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BD67B83DF9;
+	Wed,  5 May 2021 14:43:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 739A51BF852
- for <devel@linuxdriverproject.org>; Wed,  5 May 2021 12:38:48 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C47CC1BF30C
+ for <devel@linuxdriverproject.org>; Wed,  5 May 2021 14:42:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3456F40EA1
- for <devel@linuxdriverproject.org>; Wed,  5 May 2021 12:38:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C11BC402AB
+ for <devel@linuxdriverproject.org>; Wed,  5 May 2021 14:42:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aR-_qjUB3FH3 for <devel@linuxdriverproject.org>;
- Wed,  5 May 2021 12:38:45 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=xs4all.nl
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rXl9OCaSOsCU for <devel@linuxdriverproject.org>;
+ Wed,  5 May 2021 14:42:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
- [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 60A9C40E77
- for <devel@driverdev.osuosl.org>; Wed,  5 May 2021 12:38:45 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id ACD071F42E7B
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [RFCv2 3/3] media: rkvdec: Add the VP9 backend
-Date: Wed,  5 May 2021 14:38:36 +0200
-Message-Id: <20210505123836.9573-4-andrzej.p@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210505123836.9573-1-andrzej.p@collabora.com>
-References: <20210505123836.9573-1-andrzej.p@collabora.com>
+Received: from lb1-smtp-cloud9.xs4all.net (lb1-smtp-cloud9.xs4all.net
+ [194.109.24.22])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 897AE40638
+ for <devel@driverdev.osuosl.org>; Wed,  5 May 2021 14:42:50 +0000 (UTC)
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id eIjalNZWvWztCeIjdlLk0I; Wed, 05 May 2021 16:42:48 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1620225768; bh=Av024PgQCGoQzBKEgJiqT3Qmm3Jj8dv5DOFxbUBHbUU=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=TtTvHAwCOBdXfYzb/VCYG+SZ9TdOVUHaGThOIQud5Ho8RqTZE+5fJ0bdFt8gscW4K
+ JNQQRomYfZ1OdUGi5PNaE7BaOZKbLoWgRnaeCeNRdnXoMyzi6nmpq4k8h/C0sqBGat
+ cAZm+wgn0BrfNPZPoa6y4/DFHq5lC98GcNDMB+OGIn7zXN0Rd5lw1GrLKnBIqpUmwM
+ KWHVj8mgzqiXpAk25pcxnfhKayHwNZfelkOU6Uzom/WbLQ14WXtKud6k7wT/0u8dT7
+ qtiQs9js9bcU5CMHIGUcC20W0Op3OwhpLjOajV05Gcq9zpWfXBMTP3F1lyJm3gHb1F
+ 0qxVsGRlOxS9g==
+Subject: Re: [PATCH v10 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@siol.net, emil.l.velikov@gmail.com
+References: <20210420121046.181889-1-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <57dd758d-07b6-abbe-ab0d-2cc165b650db@xs4all.nl>
+Date: Wed, 5 May 2021 16:42:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
+MIME-Version: 1.0
+In-Reply-To: <20210420121046.181889-1-benjamin.gaignard@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfB4xz84t/9tJk8Tsh/SHVh+F0gHNN/2hzLMgvPRnsZgWg9cigkHp23SpfIv5EOdIN/yMbL89V4s59xpPZ/wWPxrM9vGxHd5aIHSQxy4PKciu/3fogBgX
+ fuBsPFvSEK8/rkzvxVee/IXpvPHVM8hs91BJmLIVR2slEN30lh+At2QjCWeQ2PvVrGL8wuQpW93357c1iq+erPLg+1If30hxDafSuqR1VE4Ilt8nRKqzITFa
+ DmWJrAUzwIoExjcYZ7zt0ROb/CzrnyxpLEc/C2SMM1o7JZDjbt0i2KD/PyZ/OQgWLXVIDgnWTSaoRCYlL6HsTdggUs1ieb1qy00XQ3eCH+lVTIHy2wROlfPp
+ N17PLlTWcUG4v/yLzTrizqYFMYJLljYVIQEIjuhfnuqnqko0cAhYFnx/GOmvQBxn7xO3YFo7MQX+kw3jciWJ97WXbmidNoomK8S9vnqNhorqwZk0ze+9T5J4
+ //nHlCxr/pIuL/YYmoROWposjCM5bRTvbqTr30fB1JGcS9NJ8j0auP7S+IBOqlg5XyxOE90t6lzSjtQYBYOKp3B2D49F9mU5F9XMO161Si8qzzmiIBXI7att
+ h+L2pKrGQmJuoiAo6AGrjTaa+uqAUkRiz16+00zWxiX83CbgoEYuGbaW7jBUGFS8eXAO1y2Rcp5veo+5yDsctpTcCEBFqRR5QVZhVYJkZ7VcaaDs9rdzQXAx
+ SrHGWyitHtWTsbyEgDIPmMMg0bAR9Tv3ZkMr/YhDxBHsFwWWv7zhy8jcAD/STjQKw/sh6t51G3jXj18BylIshyZuzeolozPih3ylR3lNFm2auUdR4EEfvnp7
+ vrAs9yc9w7ffcqTM9FE+EOdklQdfFawdg1edG8hbwLlW9635P8zIqCWnXRyOjE6SNQbIuUd48GZ77avb+JHJ7TnDuyZUXfTbtzmHik9mMnx1EXCc9gZc6p1t
+ 3uISmyZyEs/9CaV21lCaLCEHi5DMBhvdqYI97ue9idK1ZRC9pO11iiTfRHFHwPazWaoeUR5rFG/vO6pYHehKgfg9LZ9j5JeYQv7N1FkAN+QlIT2u
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,1265 +84,164 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel@collabora.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Adrian Ratiu <adrian.ratiu@collabora.com>,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- linux-rockchip@lists.infradead.org,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
+ cphealy@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Boris Brezillon <boris.brezillon@collabora.com>
+Hi Benjamin,
 
-The Rockchip VDEC supports VP9 profile 0 up to 4096x2304@30fps. Add
-a backend for this new format.
+On 20/04/2021 14:10, Benjamin Gaignard wrote:
+> The IMX8MQ got two VPUs but until now only G1 has been enabled.
+> This series aim to add the second VPU (aka G2) and provide basic 
+> HEVC decoding support.
+> 
+> To be able to decode HEVC it is needed to add/update some of the
+> structures in the uapi. In addition of them one HANTRO dedicated
+> control is required to inform the driver of the number of bits to skip
+> at the beginning of the slice header.
+> The hardware require to allocate few auxiliary buffers to store the
+> references frame or tile size data.
 
-Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
-Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
----
- drivers/staging/media/rkvdec/Kconfig      |    1 +
- drivers/staging/media/rkvdec/Makefile     |    2 +-
- drivers/staging/media/rkvdec/rkvdec-vp9.c | 1084 +++++++++++++++++++++
- drivers/staging/media/rkvdec/rkvdec.c     |   52 +-
- drivers/staging/media/rkvdec/rkvdec.h     |    6 +
- 5 files changed, 1140 insertions(+), 5 deletions(-)
- create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
+This series clashes with this patch:
 
-diff --git a/drivers/staging/media/rkvdec/Kconfig b/drivers/staging/media/rkvdec/Kconfig
-index c02199b5e0fd..dc7292f346fa 100644
---- a/drivers/staging/media/rkvdec/Kconfig
-+++ b/drivers/staging/media/rkvdec/Kconfig
-@@ -9,6 +9,7 @@ config VIDEO_ROCKCHIP_VDEC
- 	select VIDEOBUF2_VMALLOC
- 	select V4L2_MEM2MEM_DEV
- 	select V4L2_H264
-+	select V4L2_VP9
- 	help
- 	  Support for the Rockchip Video Decoder IP present on Rockchip SoCs,
- 	  which accelerates video decoding.
-diff --git a/drivers/staging/media/rkvdec/Makefile b/drivers/staging/media/rkvdec/Makefile
-index c08fed0a39f9..cb86b429cfaa 100644
---- a/drivers/staging/media/rkvdec/Makefile
-+++ b/drivers/staging/media/rkvdec/Makefile
-@@ -1,3 +1,3 @@
- obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) += rockchip-vdec.o
- 
--rockchip-vdec-y += rkvdec.o rkvdec-h264.o
-+rockchip-vdec-y += rkvdec.o rkvdec-h264.o rkvdec-vp9.o
-diff --git a/drivers/staging/media/rkvdec/rkvdec-vp9.c b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-new file mode 100644
-index 000000000000..d40e4ff7e3f6
---- /dev/null
-+++ b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-@@ -0,0 +1,1084 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Rockchip Video Decoder VP9 backend
-+ *
-+ * Copyright (C) 2019 Collabora, Ltd.
-+ *	Boris Brezillon <boris.brezillon@collabora.com>
-+ * Copyright (C) 2021 Collabora, Ltd.
-+ *	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-+ *
-+ * Copyright (C) 2016 Rockchip Electronics Co., Ltd.
-+ *	Alpha Lin <Alpha.Lin@rock-chips.com>
-+ */
-+
-+/*
-+ * For following the vp9 spec please start reading this driver
-+ * code from rkvdec_vp9_run() followed by rkvdec_vp9_done().
-+ */
-+
-+#include <linux/kernel.h>
-+#include <linux/vmalloc.h>
-+#include <media/v4l2-mem2mem.h>
-+#include <media/v4l2-vp9.h>
-+
-+#include "rkvdec.h"
-+#include "rkvdec-regs.h"
-+
-+#define RKVDEC_VP9_PROBE_SIZE		4864
-+#define RKVDEC_VP9_COUNT_SIZE		13232
-+#define RKVDEC_VP9_MAX_SEGMAP_SIZE	73728
-+
-+struct rkvdec_vp9_intra_mode_probs {
-+	u8 y_mode[105];
-+	u8 uv_mode[23];
-+};
-+
-+struct rkvdec_vp9_intra_only_frame_probs {
-+	u8 coef_intra[4][2][128];
-+	struct rkvdec_vp9_intra_mode_probs intra_mode[10];
-+};
-+
-+struct rkvdec_vp9_inter_frame_probs {
-+	u8 y_mode[4][9];
-+	u8 comp_mode[5];
-+	u8 comp_ref[5];
-+	u8 single_ref[5][2];
-+	u8 inter_mode[7][3];
-+	u8 interp_filter[4][2];
-+	u8 padding0[11];
-+	u8 coef[2][4][2][128];
-+	u8 uv_mode_0_2[3][9];
-+	u8 padding1[5];
-+	u8 uv_mode_3_5[3][9];
-+	u8 padding2[5];
-+	u8 uv_mode_6_8[3][9];
-+	u8 padding3[5];
-+	u8 uv_mode_9[9];
-+	u8 padding4[7];
-+	u8 padding5[16];
-+	struct {
-+		u8 joint[3];
-+		u8 sign[2];
-+		u8 class[2][10];
-+		u8 class0_bit[2];
-+		u8 bits[2][10];
-+		u8 class0_fr[2][2][3];
-+		u8 fr[2][3];
-+		u8 class0_hp[2];
-+		u8 hp[2];
-+	} mv;
-+};
-+
-+struct rkvdec_vp9_probs {
-+	u8 partition[16][3];
-+	u8 pred[3];
-+	u8 tree[7];
-+	u8 skip[3];
-+	u8 tx32[2][3];
-+	u8 tx16[2][2];
-+	u8 tx8[2][1];
-+	u8 is_inter[4];
-+	/* 128 bit alignment */
-+	u8 padding0[3];
-+	union {
-+		struct rkvdec_vp9_inter_frame_probs inter;
-+		struct rkvdec_vp9_intra_only_frame_probs intra_only;
-+	};
-+};
-+
-+/* Data structure describing auxiliary buffer format. */
-+struct rkvdec_vp9_priv_tbl {
-+	struct rkvdec_vp9_probs probs;
-+	u8 segmap[2][RKVDEC_VP9_MAX_SEGMAP_SIZE];
-+};
-+
-+struct rkvdec_vp9_refs_counts {
-+	u32 eob[2];
-+	u32 coeff[3];
-+};
-+
-+struct rkvdec_vp9_inter_frame_symbol_counts {
-+	u32 partition[16][4];
-+	u32 skip[3][2];
-+	u32 inter[4][2];
-+	u32 tx32p[2][4];
-+	u32 tx16p[2][4];
-+	u32 tx8p[2][2];
-+	u32 y_mode[4][10];
-+	u32 uv_mode[10][10];
-+	u32 comp[5][2];
-+	u32 comp_ref[5][2];
-+	u32 single_ref[5][2][2];
-+	u32 mv_mode[7][4];
-+	u32 filter[4][3];
-+	u32 mv_joint[4];
-+	u32 sign[2][2];
-+	/* add 1 element for align */
-+	u32 classes[2][11 + 1];
-+	u32 class0[2][2];
-+	u32 bits[2][10][2];
-+	u32 class0_fp[2][2][4];
-+	u32 fp[2][4];
-+	u32 class0_hp[2][2];
-+	u32 hp[2][2];
-+	struct rkvdec_vp9_refs_counts ref_cnt[2][4][2][6][6];
-+};
-+
-+struct rkvdec_vp9_intra_frame_symbol_counts {
-+	u32 partition[4][4][4];
-+	u32 skip[3][2];
-+	u32 intra[4][2];
-+	u32 tx32p[2][4];
-+	u32 tx16p[2][4];
-+	u32 tx8p[2][2];
-+	struct rkvdec_vp9_refs_counts ref_cnt[2][4][2][6][6];
-+};
-+
-+struct rkvdec_vp9_run {
-+	struct rkvdec_run base;
-+	const struct v4l2_ctrl_vp9_frame *decode_params;
-+};
-+
-+struct rkvdec_vp9_frame_info {
-+	u32 valid : 1;
-+	u32 segmapid : 1;
-+	u32 frame_context_idx : 2;
-+	u32 reference_mode : 2;
-+	u32 tx_mode : 3;
-+	u32 interpolation_filter : 3;
-+	u32 flags;
-+	u64 timestamp;
-+	struct v4l2_vp9_segmentation seg;
-+	struct v4l2_vp9_loop_filter lf;
-+};
-+
-+struct rkvdec_vp9_ctx {
-+	struct rkvdec_aux_buf priv_tbl;
-+	struct rkvdec_aux_buf count_tbl;
-+	struct v4l2_vp9_frame_symbol_counts inter_cnts;
-+	struct v4l2_vp9_frame_symbol_counts intra_cnts;
-+	struct v4l2_vp9_frame_context probability_tables;
-+	struct v4l2_vp9_frame_context frame_context[4];
-+	struct rkvdec_vp9_frame_info cur;
-+	struct rkvdec_vp9_frame_info last;
-+};
-+
-+static void write_coeff_plane(const u8 coef[6][6][3], u8 *coeff_plane)
-+{
-+	unsigned int idx = 0;
-+	u8 byte_count = 0, p;
-+	s32 k, m, n;
-+
-+	for (k = 0; k < 6; k++) {
-+		for (m = 0; m < 6; m++) {
-+			for (n = 0; n < 3; n++) {
-+				p = coef[k][m][n];
-+				coeff_plane[idx++] = p;
-+				byte_count++;
-+				if (byte_count == 27) {
-+					idx += 5;
-+					byte_count = 0;
-+				}
-+			}
-+		}
-+	}
-+}
-+
-+static void init_intra_only_probs(struct rkvdec_ctx *ctx,
-+				  const struct rkvdec_vp9_run *run)
-+{
-+	const struct v4l2_ctrl_vp9_frame *dec_params;
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
-+	struct rkvdec_vp9_intra_only_frame_probs *rkprobs;
-+	const struct v4l2_vp9_frame_context *probs;
-+	unsigned int i, j, k, m;
-+
-+	rkprobs = &tbl->probs.intra_only;
-+	dec_params = run->decode_params;
-+	probs = &vp9_ctx->probability_tables;
-+
-+	/*
-+	 * intra only 149 x 128 bits ,aligned to 152 x 128 bits coeff related
-+	 * prob 64 x 128 bits
-+	 */
-+	for (i = 0; i < ARRAY_SIZE(probs->coef); i++) {
-+		for (j = 0; j < ARRAY_SIZE(probs->coef[0]); j++)
-+			write_coeff_plane(probs->coef[i][j][0],
-+					  rkprobs->coef_intra[i][j]);
-+	}
-+
-+	/* intra mode prob  80 x 128 bits */
-+	for (i = 0; i < ARRAY_SIZE(v4l2_vp9_kf_y_mode_prob); i++) {
-+		u32 byte_count = 0;
-+		int idx = 0;
-+
-+		/* vp9_kf_y_mode_prob */
-+		for (j = 0; j < ARRAY_SIZE(v4l2_vp9_kf_y_mode_prob[0]); j++) {
-+			for (k = 0; k < ARRAY_SIZE(v4l2_vp9_kf_y_mode_prob[0][0]);
-+			     k++) {
-+				u8 val = v4l2_vp9_kf_y_mode_prob[i][j][k];
-+
-+				rkprobs->intra_mode[i].y_mode[idx++] = val;
-+				byte_count++;
-+				if (byte_count == 27) {
-+					byte_count = 0;
-+					idx += 5;
-+				}
-+			}
-+		}
-+
-+		idx = 0;
-+		if (i < 4) {
-+			for (m = 0; m < (i < 3 ? 23 : 21); m++) {
-+				const u8 *ptr = (const u8 *)v4l2_vp9_kf_uv_mode_prob;
-+
-+				rkprobs->intra_mode[i].uv_mode[idx++] = ptr[i * 23 + m];
-+			}
-+		}
-+	}
-+}
-+
-+static void init_inter_probs(struct rkvdec_ctx *ctx,
-+			     const struct rkvdec_vp9_run *run)
-+{
-+	const struct v4l2_ctrl_vp9_frame *dec_params;
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
-+	struct rkvdec_vp9_inter_frame_probs *rkprobs;
-+	const struct v4l2_vp9_frame_context *probs;
-+	unsigned int i, j, k;
-+
-+	rkprobs = &tbl->probs.inter;
-+	dec_params = run->decode_params;
-+	probs = &vp9_ctx->probability_tables;
-+
-+	/*
-+	 * inter probs
-+	 * 151 x 128 bits, aligned to 152 x 128 bits
-+	 * inter only
-+	 * intra_y_mode & inter_block info 6 x 128 bits
-+	 */
-+
-+	memcpy(rkprobs->y_mode, probs->y_mode, sizeof(rkprobs->y_mode));
-+	memcpy(rkprobs->comp_mode, probs->comp_mode,
-+	       sizeof(rkprobs->comp_mode));
-+	memcpy(rkprobs->comp_ref, probs->comp_ref,
-+	       sizeof(rkprobs->comp_ref));
-+	memcpy(rkprobs->single_ref, probs->single_ref,
-+	       sizeof(rkprobs->single_ref));
-+	memcpy(rkprobs->inter_mode, probs->inter_mode,
-+	       sizeof(rkprobs->inter_mode));
-+	memcpy(rkprobs->interp_filter, probs->interp_filter,
-+	       sizeof(rkprobs->interp_filter));
-+
-+	/* 128 x 128 bits coeff related */
-+	for (i = 0; i < ARRAY_SIZE(probs->coef); i++) {
-+		for (j = 0; j < ARRAY_SIZE(probs->coef[0]); j++) {
-+			for (k = 0; k < ARRAY_SIZE(probs->coef[0][0]); k++)
-+				write_coeff_plane(probs->coef[i][j][k],
-+						  rkprobs->coef[k][i][j]);
-+		}
-+	}
-+
-+	/* intra uv mode 6 x 128 */
-+	memcpy(rkprobs->uv_mode_0_2, &probs->uv_mode[0],
-+	       sizeof(rkprobs->uv_mode_0_2));
-+	memcpy(rkprobs->uv_mode_3_5, &probs->uv_mode[3],
-+	       sizeof(rkprobs->uv_mode_3_5));
-+	memcpy(rkprobs->uv_mode_6_8, &probs->uv_mode[6],
-+	       sizeof(rkprobs->uv_mode_6_8));
-+	memcpy(rkprobs->uv_mode_9, &probs->uv_mode[9],
-+	       sizeof(rkprobs->uv_mode_9));
-+
-+	/* mv related 6 x 128 */
-+	memcpy(rkprobs->mv.joint, probs->mv.joint,
-+	       sizeof(rkprobs->mv.joint));
-+	memcpy(rkprobs->mv.sign, probs->mv.sign,
-+	       sizeof(rkprobs->mv.sign));
-+	memcpy(rkprobs->mv.class, probs->mv.class,
-+	       sizeof(rkprobs->mv.class));
-+	memcpy(rkprobs->mv.class0_bit, probs->mv.class0_bit,
-+	       sizeof(rkprobs->mv.class0_bit));
-+	memcpy(rkprobs->mv.bits, probs->mv.bits,
-+	       sizeof(rkprobs->mv.bits));
-+	memcpy(rkprobs->mv.class0_fr, probs->mv.class0_fr,
-+	       sizeof(rkprobs->mv.class0_fr));
-+	memcpy(rkprobs->mv.fr, probs->mv.fr,
-+	       sizeof(rkprobs->mv.fr));
-+	memcpy(rkprobs->mv.class0_hp, probs->mv.class0_hp,
-+	       sizeof(rkprobs->mv.class0_hp));
-+	memcpy(rkprobs->mv.hp, probs->mv.hp,
-+	       sizeof(rkprobs->mv.hp));
-+}
-+
-+static void init_probs(struct rkvdec_ctx *ctx,
-+		       const struct rkvdec_vp9_run *run)
-+{
-+	const struct v4l2_ctrl_vp9_frame *dec_params;
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
-+	struct rkvdec_vp9_probs *rkprobs = &tbl->probs;
-+	const struct v4l2_vp9_segmentation *seg;
-+	const struct v4l2_vp9_frame_context *probs;
-+	bool intra_only;
-+
-+	dec_params = run->decode_params;
-+	probs = &vp9_ctx->probability_tables;
-+	seg = &dec_params->seg;
-+
-+	memset(rkprobs, 0, sizeof(*rkprobs));
-+
-+	intra_only = !!(dec_params->flags &
-+			(V4L2_VP9_FRAME_FLAG_KEY_FRAME |
-+			 V4L2_VP9_FRAME_FLAG_INTRA_ONLY));
-+
-+	/* sb info  5 x 128 bit */
-+	memcpy(rkprobs->partition,
-+	       intra_only ? v4l2_vp9_kf_partition_probs : probs->partition,
-+	       sizeof(rkprobs->partition));
-+
-+	memcpy(rkprobs->pred, seg->pred_probs, sizeof(rkprobs->pred));
-+	memcpy(rkprobs->tree, seg->tree_probs, sizeof(rkprobs->tree));
-+	memcpy(rkprobs->skip, probs->skip, sizeof(rkprobs->skip));
-+	memcpy(rkprobs->tx32, probs->tx32, sizeof(rkprobs->tx32));
-+	memcpy(rkprobs->tx16, probs->tx16, sizeof(rkprobs->tx16));
-+	memcpy(rkprobs->tx8, probs->tx8, sizeof(rkprobs->tx8));
-+	memcpy(rkprobs->is_inter, probs->is_inter, sizeof(rkprobs->is_inter));
-+
-+	if (intra_only)
-+		init_intra_only_probs(ctx, run);
-+	else
-+		init_inter_probs(ctx, run);
-+}
-+
-+struct vp9d_ref_config {
-+	u32 reg_frm_size;
-+	u32 reg_hor_stride;
-+	u32 reg_y_stride;
-+	u32 reg_yuv_stride;
-+	u32 reg_ref_base;
-+};
-+
-+static struct vp9d_ref_config ref_config[3] = {
-+	{
-+		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(0),
-+		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(0),
-+		.reg_y_stride = RKVDEC_VP9_LAST_FRAME_YSTRIDE,
-+		.reg_yuv_stride = RKVDEC_VP9_LAST_FRAME_YUVSTRIDE,
-+		.reg_ref_base = RKVDEC_REG_VP9_LAST_FRAME_BASE,
-+	},
-+	{
-+		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(1),
-+		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(1),
-+		.reg_y_stride = RKVDEC_VP9_GOLDEN_FRAME_YSTRIDE,
-+		.reg_yuv_stride = 0,
-+		.reg_ref_base = RKVDEC_REG_VP9_GOLDEN_FRAME_BASE,
-+	},
-+	{
-+		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(2),
-+		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(2),
-+		.reg_y_stride = RKVDEC_VP9_ALTREF_FRAME_YSTRIDE,
-+		.reg_yuv_stride = 0,
-+		.reg_ref_base = RKVDEC_REG_VP9_ALTREF_FRAME_BASE,
-+	}
-+};
-+
-+static struct rkvdec_decoded_buffer *
-+get_ref_buf(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
-+{
-+	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-+	struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
-+	int buf_idx;
-+
-+	/*
-+	 * If a ref is unused or invalid, address of current destination
-+	 * buffer is returned.
-+	 */
-+	buf_idx = vb2_find_timestamp(cap_q, timestamp, 0);
-+	if (buf_idx < 0)
-+		return vb2_to_rkvdec_decoded_buf(&dst->vb2_buf);
-+
-+	return vb2_to_rkvdec_decoded_buf(vb2_get_buffer(cap_q, buf_idx));
-+}
-+
-+static dma_addr_t get_mv_base_addr(struct rkvdec_decoded_buffer *buf)
-+{
-+	u32 aligned_pitch, aligned_height, yuv_len;
-+
-+	aligned_height = round_up(buf->vp9.height, 64);
-+	aligned_pitch = round_up(buf->vp9.width * buf->vp9.bit_depth, 512) / 8;
-+	yuv_len = (aligned_height * aligned_pitch * 3) / 2;
-+
-+	return vb2_dma_contig_plane_dma_addr(&buf->base.vb.vb2_buf, 0) +
-+	       yuv_len;
-+}
-+
-+static void config_ref_registers(struct rkvdec_ctx *ctx,
-+				 const struct rkvdec_vp9_run *run,
-+				 struct rkvdec_decoded_buffer **ref_bufs,
-+				 enum v4l2_vp9_ref_id id)
-+{
-+	u32 aligned_pitch, aligned_height, y_len, yuv_len;
-+	struct rkvdec_decoded_buffer *buf = ref_bufs[id];
-+	struct rkvdec_dev *rkvdec = ctx->dev;
-+
-+	aligned_height = round_up(buf->vp9.height, 64);
-+	writel_relaxed(RKVDEC_VP9_FRAMEWIDTH(buf->vp9.width) |
-+		       RKVDEC_VP9_FRAMEHEIGHT(buf->vp9.height),
-+		       rkvdec->regs + ref_config[id].reg_frm_size);
-+
-+	writel_relaxed(vb2_dma_contig_plane_dma_addr(&buf->base.vb.vb2_buf, 0),
-+		       rkvdec->regs + ref_config[id].reg_ref_base);
-+
-+	if (&buf->base.vb == run->base.bufs.dst)
-+		return;
-+
-+	aligned_pitch = round_up(buf->vp9.width * buf->vp9.bit_depth, 512) / 8;
-+	y_len = aligned_height * aligned_pitch;
-+	yuv_len = (y_len * 3) / 2;
-+
-+	writel_relaxed(RKVDEC_HOR_Y_VIRSTRIDE(aligned_pitch / 16) |
-+		       RKVDEC_HOR_UV_VIRSTRIDE(aligned_pitch / 16),
-+		       rkvdec->regs + ref_config[id].reg_hor_stride);
-+	writel_relaxed(RKVDEC_VP9_REF_YSTRIDE(y_len / 16),
-+		       rkvdec->regs + ref_config[id].reg_y_stride);
-+
-+	if (!ref_config[id].reg_yuv_stride)
-+		return;
-+
-+	writel_relaxed(RKVDEC_VP9_REF_YUVSTRIDE(yuv_len / 16),
-+		       rkvdec->regs + ref_config[id].reg_yuv_stride);
-+}
-+
-+static bool seg_featured_enabled(const struct v4l2_vp9_segmentation *seg,
-+				 enum v4l2_vp9_segment_feature feature,
-+				 unsigned int segid)
-+{
-+	u8 mask = V4L2_VP9_SEGMENT_FEATURE_ENABLED(feature);
-+
-+	return !!(seg->feature_enabled[segid] & mask);
-+}
-+
-+static void config_seg_registers(struct rkvdec_ctx *ctx, unsigned int segid)
-+{
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	const struct v4l2_vp9_segmentation *seg;
-+	struct rkvdec_dev *rkvdec = ctx->dev;
-+	s16 feature_val;
-+	u8 feature_id;
-+	u32 val = 0;
-+
-+	seg = vp9_ctx->last.valid ? &vp9_ctx->last.seg : &vp9_ctx->cur.seg;
-+	feature_id = V4L2_VP9_SEGMENT_FEATURE_QP_DELTA;
-+	if (seg_featured_enabled(seg, feature_id, segid)) {
-+		feature_val = seg->feature_data[segid][feature_id];
-+		val |= RKVDEC_SEGID_FRAME_QP_DELTA_EN(1) |
-+		       RKVDEC_SEGID_FRAME_QP_DELTA(feature_val);
-+	}
-+
-+	feature_id = V4L2_VP9_SEGMENT_FEATURE_LF;
-+	if (seg_featured_enabled(seg, feature_id, segid)) {
-+		feature_val = seg->feature_data[segid][feature_id];
-+		val |= RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE_EN(1) |
-+		       RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE(feature_val);
-+	}
-+
-+	feature_id = V4L2_VP9_SEGMENT_FEATURE_REF_FRAME;
-+	if (seg_featured_enabled(seg, feature_id, segid)) {
-+		feature_val = seg->feature_data[segid][feature_id];
-+		val |= RKVDEC_SEGID_REFERINFO_EN(1) |
-+		       RKVDEC_SEGID_REFERINFO(feature_val);
-+	}
-+
-+	feature_id = V4L2_VP9_SEGMENT_FEATURE_SKIP;
-+	if (seg_featured_enabled(seg, feature_id, segid))
-+		val |= RKVDEC_SEGID_FRAME_SKIP_EN(1);
-+
-+	if (!segid &&
-+	    (seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ABS_OR_DELTA_UPDATE))
-+		val |= RKVDEC_SEGID_ABS_DELTA(1);
-+
-+	writel_relaxed(val, rkvdec->regs + RKVDEC_VP9_SEGID_GRP(segid));
-+}
-+
-+static void update_dec_buf_info(struct rkvdec_decoded_buffer *buf,
-+				const struct v4l2_ctrl_vp9_frame *dec_params)
-+{
-+	buf->vp9.width = dec_params->frame_width_minus_1 + 1;
-+	buf->vp9.height = dec_params->frame_height_minus_1 + 1;
-+	buf->vp9.bit_depth = dec_params->bit_depth;
-+}
-+
-+static void update_ctx_cur_info(struct rkvdec_vp9_ctx *vp9_ctx,
-+				struct rkvdec_decoded_buffer *buf,
-+				const struct v4l2_ctrl_vp9_frame *dec_params)
-+{
-+	vp9_ctx->cur.valid = true;
-+	vp9_ctx->cur.reference_mode = dec_params->reference_mode;
-+	vp9_ctx->cur.tx_mode = dec_params->tx_mode;
-+	vp9_ctx->cur.interpolation_filter = dec_params->interpolation_filter;
-+	vp9_ctx->cur.flags = dec_params->flags;
-+	vp9_ctx->cur.timestamp = buf->base.vb.vb2_buf.timestamp;
-+	vp9_ctx->cur.seg = dec_params->seg;
-+	vp9_ctx->cur.lf = dec_params->lf;
-+}
-+
-+static void update_ctx_last_info(struct rkvdec_vp9_ctx *vp9_ctx)
-+{
-+	vp9_ctx->last = vp9_ctx->cur;
-+}
-+
-+static void config_registers(struct rkvdec_ctx *ctx,
-+			     const struct rkvdec_vp9_run *run)
-+{
-+	u32 y_len, uv_len, yuv_len, bit_depth, aligned_height, aligned_pitch;
-+	const struct v4l2_ctrl_vp9_frame *dec_params;
-+	struct rkvdec_decoded_buffer *ref_bufs[V4L2_REF_ID_CNT];
-+	struct rkvdec_decoded_buffer *dst, *last, *mv_ref;
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	u32 val, stream_len, last_frame_info = 0;
-+	const struct v4l2_vp9_segmentation *seg;
-+	struct rkvdec_dev *rkvdec = ctx->dev;
-+	dma_addr_t addr;
-+	bool intra_only;
-+	unsigned int i;
-+
-+	dec_params = run->decode_params;
-+	dst = vb2_to_rkvdec_decoded_buf(&run->base.bufs.dst->vb2_buf);
-+	for (i = 0; i < ARRAY_SIZE(ref_bufs); i++)
-+		ref_bufs[i] = get_ref_buf(ctx, &dst->base.vb,
-+					  dec_params->refs[i]);
-+
-+	if (vp9_ctx->last.valid)
-+		last = get_ref_buf(ctx, &dst->base.vb, vp9_ctx->last.timestamp);
-+	else
-+		last = dst;
-+
-+	update_dec_buf_info(dst, dec_params);
-+	update_ctx_cur_info(vp9_ctx, dst, dec_params);
-+	seg = &dec_params->seg;
-+
-+	intra_only = !!(dec_params->flags &
-+			(V4L2_VP9_FRAME_FLAG_KEY_FRAME |
-+			 V4L2_VP9_FRAME_FLAG_INTRA_ONLY));
-+
-+	writel_relaxed(RKVDEC_MODE(RKVDEC_MODE_VP9),
-+		       rkvdec->regs + RKVDEC_REG_SYSCTRL);
-+
-+	bit_depth = dec_params->bit_depth;
-+	aligned_height = round_up(ctx->decoded_fmt.fmt.pix_mp.height, 64);
-+
-+	aligned_pitch = round_up(ctx->decoded_fmt.fmt.pix_mp.width *
-+				 bit_depth,
-+				 512) / 8;
-+	y_len = aligned_height * aligned_pitch;
-+	uv_len = y_len / 2;
-+	yuv_len = y_len + uv_len;
-+
-+	writel_relaxed(RKVDEC_Y_HOR_VIRSTRIDE(aligned_pitch / 16) |
-+		       RKVDEC_UV_HOR_VIRSTRIDE(aligned_pitch / 16),
-+		       rkvdec->regs + RKVDEC_REG_PICPAR);
-+	writel_relaxed(RKVDEC_Y_VIRSTRIDE(y_len / 16),
-+		       rkvdec->regs + RKVDEC_REG_Y_VIRSTRIDE);
-+	writel_relaxed(RKVDEC_YUV_VIRSTRIDE(yuv_len / 16),
-+		       rkvdec->regs + RKVDEC_REG_YUV_VIRSTRIDE);
-+
-+	stream_len = vb2_get_plane_payload(&run->base.bufs.src->vb2_buf, 0);
-+	writel_relaxed(RKVDEC_STRM_LEN(stream_len),
-+		       rkvdec->regs + RKVDEC_REG_STRM_LEN);
-+
-+	/*
-+	 * Reset count buffer, because decoder only output intra related syntax
-+	 * counts when decoding intra frame, but update entropy need to update
-+	 * all the probabilities.
-+	 */
-+	if (intra_only)
-+		memset(vp9_ctx->count_tbl.cpu, 0, vp9_ctx->count_tbl.size);
-+
-+	vp9_ctx->cur.segmapid = vp9_ctx->last.segmapid;
-+	if (!intra_only &&
-+	    !(dec_params->flags & V4L2_VP9_FRAME_FLAG_ERROR_RESILIENT) &&
-+	    (!(seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ENABLED) ||
-+	     (seg->flags & V4L2_VP9_SEGMENTATION_FLAG_UPDATE_MAP)))
-+		vp9_ctx->cur.segmapid++;
-+
-+	for (i = 0; i < ARRAY_SIZE(ref_bufs); i++)
-+		config_ref_registers(ctx, run, ref_bufs, i);
-+
-+	for (i = 0; i < 8; i++)
-+		config_seg_registers(ctx, i);
-+
-+	writel_relaxed(RKVDEC_VP9_TX_MODE(dec_params->tx_mode) |
-+		       RKVDEC_VP9_FRAME_REF_MODE(dec_params->reference_mode),
-+		       rkvdec->regs + RKVDEC_VP9_CPRHEADER_CONFIG);
-+
-+	if (!intra_only) {
-+		const struct v4l2_vp9_loop_filter *lf;
-+		s8 delta;
-+
-+		if (vp9_ctx->last.valid)
-+			lf = &vp9_ctx->last.lf;
-+		else
-+			lf = &vp9_ctx->cur.lf;
-+
-+		val = 0;
-+		for (i = 0; i < ARRAY_SIZE(lf->ref_deltas); i++) {
-+			delta = lf->ref_deltas[i];
-+			val |= RKVDEC_REF_DELTAS_LASTFRAME(i, delta);
-+		}
-+
-+		writel_relaxed(val,
-+			       rkvdec->regs + RKVDEC_VP9_REF_DELTAS_LASTFRAME);
-+
-+		for (i = 0; i < ARRAY_SIZE(lf->mode_deltas); i++) {
-+			delta = lf->mode_deltas[i];
-+			last_frame_info |= RKVDEC_MODE_DELTAS_LASTFRAME(i,
-+									delta);
-+		}
-+	}
-+
-+	if (vp9_ctx->last.valid && !intra_only &&
-+	    vp9_ctx->last.seg.flags & V4L2_VP9_SEGMENTATION_FLAG_ENABLED)
-+		last_frame_info |= RKVDEC_SEG_EN_LASTFRAME;
-+
-+	if (vp9_ctx->last.valid &&
-+	    vp9_ctx->last.flags & V4L2_VP9_FRAME_FLAG_SHOW_FRAME)
-+		last_frame_info |= RKVDEC_LAST_SHOW_FRAME;
-+
-+	if (vp9_ctx->last.valid &&
-+	    vp9_ctx->last.flags &
-+	    (V4L2_VP9_FRAME_FLAG_KEY_FRAME | V4L2_VP9_FRAME_FLAG_INTRA_ONLY))
-+		last_frame_info |= RKVDEC_LAST_INTRA_ONLY;
-+
-+	if (vp9_ctx->last.valid &&
-+	    last->vp9.width == dst->vp9.width &&
-+	    last->vp9.height == dst->vp9.height)
-+		last_frame_info |= RKVDEC_LAST_WIDHHEIGHT_EQCUR;
-+
-+	writel_relaxed(last_frame_info,
-+		       rkvdec->regs + RKVDEC_VP9_INFO_LASTFRAME);
-+
-+	writel_relaxed(stream_len - dec_params->compressed_header_size -
-+		       dec_params->uncompressed_header_size,
-+		       rkvdec->regs + RKVDEC_VP9_LASTTILE_SIZE);
-+
-+	for (i = 0; !intra_only && i < ARRAY_SIZE(ref_bufs); i++) {
-+		u32 refw = ref_bufs[i]->vp9.width;
-+		u32 refh = ref_bufs[i]->vp9.height;
-+		u32 hscale, vscale;
-+
-+		hscale = (refw << 14) /	dst->vp9.width;
-+		vscale = (refh << 14) / dst->vp9.height;
-+		writel_relaxed(RKVDEC_VP9_REF_HOR_SCALE(hscale) |
-+			       RKVDEC_VP9_REF_VER_SCALE(vscale),
-+			       rkvdec->regs + RKVDEC_VP9_REF_SCALE(i));
-+	}
-+
-+	addr = vb2_dma_contig_plane_dma_addr(&dst->base.vb.vb2_buf, 0);
-+	writel_relaxed(addr, rkvdec->regs + RKVDEC_REG_DECOUT_BASE);
-+	addr = vb2_dma_contig_plane_dma_addr(&run->base.bufs.src->vb2_buf, 0);
-+	writel_relaxed(addr, rkvdec->regs + RKVDEC_REG_STRM_RLC_BASE);
-+	writel_relaxed(vp9_ctx->priv_tbl.dma +
-+		       offsetof(struct rkvdec_vp9_priv_tbl, probs),
-+		       rkvdec->regs + RKVDEC_REG_CABACTBL_PROB_BASE);
-+	writel_relaxed(vp9_ctx->count_tbl.dma,
-+		       rkvdec->regs + RKVDEC_REG_VP9COUNT_BASE);
-+
-+	writel_relaxed(vp9_ctx->priv_tbl.dma +
-+		       offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
-+		       (RKVDEC_VP9_MAX_SEGMAP_SIZE * vp9_ctx->cur.segmapid),
-+		       rkvdec->regs + RKVDEC_REG_VP9_SEGIDCUR_BASE);
-+	writel_relaxed(vp9_ctx->priv_tbl.dma +
-+		       offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
-+		       (RKVDEC_VP9_MAX_SEGMAP_SIZE * (!vp9_ctx->cur.segmapid)),
-+		       rkvdec->regs + RKVDEC_REG_VP9_SEGIDLAST_BASE);
-+
-+	if (!intra_only &&
-+	    !(dec_params->flags & V4L2_VP9_FRAME_FLAG_ERROR_RESILIENT) &&
-+	    vp9_ctx->last.valid)
-+		mv_ref = last;
-+	else
-+		mv_ref = dst;
-+
-+	writel_relaxed(get_mv_base_addr(mv_ref),
-+		       rkvdec->regs + RKVDEC_VP9_REF_COLMV_BASE);
-+
-+	writel_relaxed(ctx->decoded_fmt.fmt.pix_mp.width |
-+		       (ctx->decoded_fmt.fmt.pix_mp.height << 16),
-+		       rkvdec->regs + RKVDEC_REG_PERFORMANCE_CYCLE);
-+}
-+
-+static int validate_dec_params(struct rkvdec_ctx *ctx,
-+			       const struct v4l2_ctrl_vp9_frame *dec_params)
-+{
-+	unsigned int aligned_width, aligned_height;
-+
-+	/* We only support profile 0. */
-+	if (dec_params->profile != 0) {
-+		dev_err(ctx->dev->dev, "unsupported profile %d\n",
-+			dec_params->profile);
-+		return -EINVAL;
-+	}
-+
-+	aligned_width = round_up(dec_params->frame_width_minus_1 + 1, 64);
-+	aligned_height = round_up(dec_params->frame_height_minus_1 + 1, 64);
-+
-+	/*
-+	 * Userspace should update the capture/decoded format when the
-+	 * resolution changes.
-+	 */
-+	if (aligned_width != ctx->decoded_fmt.fmt.pix_mp.width ||
-+	    aligned_height != ctx->decoded_fmt.fmt.pix_mp.height) {
-+		dev_err(ctx->dev->dev,
-+			"unexpected bitstream resolution %dx%d\n",
-+			dec_params->frame_width_minus_1 + 1,
-+			dec_params->frame_height_minus_1 + 1);
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rkvdec_vp9_run_preamble(struct rkvdec_ctx *ctx,
-+				   struct rkvdec_vp9_run *run)
-+{
-+	const struct v4l2_ctrl_vp9_frame *dec_params;
-+	const struct v4l2_ctrl_vp9_compressed_hdr_probs *prob_updates;
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct v4l2_ctrl *ctrl;
-+	u8 fctx_idx;
-+	int ret;
-+
-+	/* v4l2-specific stuff */
-+	rkvdec_run_preamble(ctx, &run->base);
-+
-+	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
-+			      V4L2_CID_STATELESS_VP9_FRAME);
-+	if (WARN_ON(!ctrl))
-+		return -EINVAL;
-+	dec_params = ctrl->p_cur.p;
-+
-+	ret = validate_dec_params(ctx, dec_params);
-+	if (ret)
-+		return ret;
-+
-+	run->decode_params = dec_params;
-+
-+	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl, V4L2_CID_STATELESS_VP9_COMPRESSED_HDR_PROBS);
-+	if (WARN_ON(!ctrl))
-+		return -EINVAL;
-+	prob_updates = ctrl->p_cur.p;
-+
-+	/*
-+	 * vp9 stuff
-+	 *
-+	 * by this point the userspace has done all parts of 6.2 uncompressed_header()
-+	 * except this fragment:
-+	 * if ( FrameIsIntra || error_resilient_mode ) {
-+	 *	setup_past_independence ( )
-+	 *	if ( frame_type == KEY_FRAME || error_resilient_mode == 1 ||
-+	 *	     reset_frame_context == 3 ) {
-+	 *		for ( i = 0; i < 4; i ++ ) {
-+	 *			save_probs( i )
-+	 *		}
-+	 *	} else if ( reset_frame_context == 2 ) {
-+	 *		save_probs( frame_context_idx )
-+	 *	}
-+	 *	frame_context_idx = 0
-+	 * }
-+	 */
-+	fctx_idx = v4l2_vp9_reset_frame_ctx(dec_params, vp9_ctx->frame_context);
-+	vp9_ctx->cur.frame_context_idx = fctx_idx;
-+
-+	/* 6.1 frame(sz): load_probs() and load_probs2() */
-+	vp9_ctx->probability_tables = vp9_ctx->frame_context[fctx_idx];
-+
-+	/*
-+	 * The userspace has also performed 6.3 compressed_header(), but handling the
-+	 * probs in a special way. All probs which need updating, except MV-related,
-+	 * have been read from the bitstream and translated through inv_map_table[],
-+	 * but no 6.3.6 inv_recenter_nonneg(v, m) has been performed. The values passed
-+	 * by userspace are either translated values (there are no 0 values in
-+	 * inv_map_table[]), or zero to indicate no update. All MV-related probs which need
-+	 * updating have been read from the bitstream and (mv_prob << 1) | 1 has been
-+	 * performed. The values passed by userspace are either new values
-+	 * to replace old ones (the above mentioned shift and bitwise or never result in
-+	 * a zero) or zero to indicate no update.
-+	 * fw_update_probs() performs actual probs updates or leaves probs as-is
-+	 * for values for which a zero was passed from userspace.
-+	 */
-+	v4l2_vp9_fw_update_probs(&vp9_ctx->probability_tables, prob_updates, dec_params);
-+
-+	return 0;
-+}
-+
-+static int rkvdec_vp9_run(struct rkvdec_ctx *ctx)
-+{
-+	struct rkvdec_dev *rkvdec = ctx->dev;
-+	struct rkvdec_vp9_run run = { };
-+	int ret;
-+
-+	ret = rkvdec_vp9_run_preamble(ctx, &run);
-+	if (ret) {
-+		rkvdec_run_postamble(ctx, &run.base);
-+		return ret;
-+	}
-+
-+	/* Prepare probs. */
-+	init_probs(ctx, &run);
-+
-+	/* Configure hardware registers. */
-+	config_registers(ctx, &run);
-+
-+	rkvdec_run_postamble(ctx, &run.base);
-+
-+	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(2000));
-+
-+	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
-+	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
-+
-+	writel(0xe, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
-+	/* Start decoding! */
-+	writel(RKVDEC_INTERRUPT_DEC_E | RKVDEC_CONFIG_DEC_CLK_GATE_E |
-+	       RKVDEC_TIMEOUT_E | RKVDEC_BUF_EMPTY_E,
-+	       rkvdec->regs + RKVDEC_REG_INTERRUPT);
-+
-+	return 0;
-+}
-+
-+#define copy_tx_and_skip(p1, p2)				\
-+do {								\
-+	memcpy((p1)->tx8, (p2)->tx8, sizeof((p1)->tx8));	\
-+	memcpy((p1)->tx16, (p2)->tx16, sizeof((p1)->tx16));	\
-+	memcpy((p1)->tx32, (p2)->tx32, sizeof((p1)->tx32));	\
-+	memcpy((p1)->skip, (p2)->skip, sizeof((p1)->skip));	\
-+} while (0)
-+
-+static void rkvdec_vp9_done(struct rkvdec_ctx *ctx,
-+			    struct vb2_v4l2_buffer *src_buf,
-+			    struct vb2_v4l2_buffer *dst_buf,
-+			    enum vb2_buffer_state result)
-+{
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	unsigned int fctx_idx;
-+
-+	/* v4l2-specific stuff */
-+	if (result == VB2_BUF_STATE_ERROR)
-+		goto out_update_last;
-+
-+	/*
-+	 * vp9 stuff
-+	 *
-+	 * 6.1.2 refresh_probs()
-+	 *
-+	 * In the spec a complementary condition goes last in 6.1.2 refresh_probs(),
-+	 * but it makes no sense to perform all the activities from the first "if"
-+	 * there if we actually are not refreshing the frame context. On top of that,
-+	 * because of 6.2 uncompressed_header() whenever error_resilient_mode == 1,
-+	 * refresh_frame_context == 0. Consequently, if we don't jump to out_update_last
-+	 * it means error_resilient_mode must be 0.
-+	 */
-+	if (!(vp9_ctx->cur.flags & V4L2_VP9_FRAME_FLAG_REFRESH_FRAME_CTX))
-+		goto out_update_last;
-+
-+	fctx_idx = vp9_ctx->cur.frame_context_idx;
-+
-+	if (!(vp9_ctx->cur.flags & V4L2_VP9_FRAME_FLAG_PARALLEL_DEC_MODE)) {
-+		/* error_resilient_mode == 0 && frame_parallel_decoding_mode == 0 */
-+		struct v4l2_vp9_frame_context *probs = &vp9_ctx->probability_tables;
-+		bool frame_is_intra = vp9_ctx->cur.flags &
-+		    (V4L2_VP9_FRAME_FLAG_KEY_FRAME | V4L2_VP9_FRAME_FLAG_INTRA_ONLY);
-+		struct tx_and_skip {
-+			u8 tx8[2][1];
-+			u8 tx16[2][2];
-+			u8 tx32[2][3];
-+			u8 skip[3];
-+		} _tx_skip, *tx_skip = &_tx_skip;
-+		struct v4l2_vp9_frame_symbol_counts *counts;
-+
-+		/* buffer the forward-updated TX and skip probs */
-+		if (frame_is_intra)
-+			copy_tx_and_skip(tx_skip, probs);
-+
-+		/* 6.1.2 refresh_probs(): load_probs() and load_probs2() */
-+		*probs = vp9_ctx->frame_context[fctx_idx];
-+
-+		/* if FrameIsIntra then undo the effect of load_probs2() */
-+		if (frame_is_intra)
-+			copy_tx_and_skip(probs, tx_skip);
-+
-+		counts = frame_is_intra ? &vp9_ctx->intra_cnts : &vp9_ctx->inter_cnts;
-+		v4l2_vp9_adapt_coef_probs(probs, counts,
-+					  !vp9_ctx->last.valid ||
-+					  vp9_ctx->last.flags & V4L2_VP9_FRAME_FLAG_KEY_FRAME,
-+					  frame_is_intra);
-+		if (!frame_is_intra) {
-+			const struct rkvdec_vp9_inter_frame_symbol_counts *inter_cnts;
-+			u32 classes[2][11];
-+			int i;
-+
-+			inter_cnts = vp9_ctx->count_tbl.cpu;
-+			for (i = 0; i < ARRAY_SIZE(classes); ++i)
-+				memcpy(classes[i], inter_cnts->classes[i], sizeof(classes[0]));
-+			counts->classes = &classes;
-+
-+			/* load_probs2() already done */
-+			v4l2_vp9_adapt_noncoef_probs(&vp9_ctx->probability_tables, counts,
-+						     vp9_ctx->cur.reference_mode,
-+						     vp9_ctx->cur.interpolation_filter,
-+						     vp9_ctx->cur.tx_mode, vp9_ctx->cur.flags);
-+		}
-+	}
-+
-+	/* 6.1.2 refresh_probs(): save_probs(fctx_idx) */
-+	vp9_ctx->frame_context[fctx_idx] = vp9_ctx->probability_tables;
-+
-+out_update_last:
-+	update_ctx_last_info(vp9_ctx);
-+}
-+
-+static void rkvdec_init_v4l2_vp9_count_tbl(struct rkvdec_ctx *ctx)
-+{
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_vp9_intra_frame_symbol_counts *intra_cnts = vp9_ctx->count_tbl.cpu;
-+	struct rkvdec_vp9_inter_frame_symbol_counts *inter_cnts = vp9_ctx->count_tbl.cpu;
-+	int i, j, k, l, m;
-+
-+	vp9_ctx->inter_cnts.partition = &inter_cnts->partition;
-+	vp9_ctx->inter_cnts.skip = &inter_cnts->skip;
-+	vp9_ctx->inter_cnts.intra_inter = &inter_cnts->inter;
-+	vp9_ctx->inter_cnts.tx32p = &inter_cnts->tx32p;
-+	vp9_ctx->inter_cnts.tx16p = &inter_cnts->tx16p;
-+	vp9_ctx->inter_cnts.tx8p = &inter_cnts->tx8p;
-+
-+	vp9_ctx->intra_cnts.partition = (u32 (*)[16][4])&intra_cnts->partition;
-+	vp9_ctx->intra_cnts.skip = &intra_cnts->skip;
-+	vp9_ctx->intra_cnts.intra_inter = &intra_cnts->intra;
-+	vp9_ctx->intra_cnts.tx32p = &intra_cnts->tx32p;
-+	vp9_ctx->intra_cnts.tx16p = &intra_cnts->tx16p;
-+	vp9_ctx->intra_cnts.tx8p = &intra_cnts->tx8p;
-+
-+	vp9_ctx->inter_cnts.y_mode = &inter_cnts->y_mode;
-+	vp9_ctx->inter_cnts.uv_mode = &inter_cnts->uv_mode;
-+	vp9_ctx->inter_cnts.comp = &inter_cnts->comp;
-+	vp9_ctx->inter_cnts.comp_ref = &inter_cnts->comp_ref;
-+	vp9_ctx->inter_cnts.single_ref = &inter_cnts->single_ref;
-+	vp9_ctx->inter_cnts.mv_mode = &inter_cnts->mv_mode;
-+	vp9_ctx->inter_cnts.filter = &inter_cnts->filter;
-+	vp9_ctx->inter_cnts.mv_joint = &inter_cnts->mv_joint;
-+	vp9_ctx->inter_cnts.sign = &inter_cnts->sign;
-+	/*
-+	 * rk hardware actually uses "u32 classes[2][11 + 1];"
-+	 * instead of "u32 classes[2][11];", so this must be explicitly
-+	 * copied into vp9_ctx->classes when passing the data to the
-+	 * vp9 library function
-+	 */
-+	vp9_ctx->inter_cnts.class0 = &inter_cnts->class0;
-+	vp9_ctx->inter_cnts.bits = &inter_cnts->bits;
-+	vp9_ctx->inter_cnts.class0_fp = &inter_cnts->class0_fp;
-+	vp9_ctx->inter_cnts.fp = &inter_cnts->fp;
-+	vp9_ctx->inter_cnts.class0_hp = &inter_cnts->class0_hp;
-+	vp9_ctx->inter_cnts.hp = &inter_cnts->hp;
-+
-+#define INNERMOST_LOOP \
-+	do {										\
-+		for (m = 0; m < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0][0]); ++m) {\
-+			vp9_ctx->inter_cnts.coeff[i][j][k][l][m] =			\
-+				&inter_cnts->ref_cnt[k][i][j][l][m].coeff;		\
-+			vp9_ctx->inter_cnts.eob[i][j][k][l][m] =			\
-+				&inter_cnts->ref_cnt[k][i][j][l][m].eob;		\
-+											\
-+			vp9_ctx->intra_cnts.coeff[i][j][k][l][m] =			\
-+				&intra_cnts->ref_cnt[k][i][j][l][m].coeff;		\
-+			vp9_ctx->intra_cnts.eob[i][j][k][l][m] =			\
-+				&intra_cnts->ref_cnt[k][i][j][l][m].eob;		\
-+		}									\
-+	} while (0)
-+
-+	for (i = 0; i < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff); ++i)
-+		for (j = 0; j < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0]); ++j)
-+			for (k = 0; k < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0]); ++k)
-+				for (l = 0; l < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0]); ++l)
-+					INNERMOST_LOOP;
-+#undef INNERMOST_LOOP
-+}
-+
-+static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
-+{
-+	struct rkvdec_dev *rkvdec = ctx->dev;
-+	struct rkvdec_vp9_priv_tbl *priv_tbl;
-+	struct rkvdec_vp9_ctx *vp9_ctx;
-+	u8 *count_tbl;
-+	int ret;
-+
-+	vp9_ctx = kzalloc(sizeof(*vp9_ctx), GFP_KERNEL);
-+	if (!vp9_ctx)
-+		return -ENOMEM;
-+
-+	ctx->priv = vp9_ctx;
-+
-+	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
-+				      &vp9_ctx->priv_tbl.dma, GFP_KERNEL);
-+	if (!priv_tbl) {
-+		ret = -ENOMEM;
-+		goto err_free_ctx;
-+	}
-+
-+	vp9_ctx->priv_tbl.size = sizeof(*priv_tbl);
-+	vp9_ctx->priv_tbl.cpu = priv_tbl;
-+	memset(priv_tbl, 0, sizeof(*priv_tbl));
-+
-+	count_tbl = dma_alloc_coherent(rkvdec->dev, RKVDEC_VP9_COUNT_SIZE,
-+				       &vp9_ctx->count_tbl.dma, GFP_KERNEL);
-+	if (!count_tbl) {
-+		ret = -ENOMEM;
-+		goto err_free_priv_tbl;
-+	}
-+
-+	vp9_ctx->count_tbl.size = RKVDEC_VP9_COUNT_SIZE;
-+	vp9_ctx->count_tbl.cpu = count_tbl;
-+	memset(count_tbl, 0, sizeof(*count_tbl));
-+	rkvdec_init_v4l2_vp9_count_tbl(ctx);
-+
-+	return 0;
-+
-+err_free_priv_tbl:
-+	dma_free_coherent(rkvdec->dev, vp9_ctx->priv_tbl.size,
-+			  vp9_ctx->priv_tbl.cpu, vp9_ctx->priv_tbl.dma);
-+
-+err_free_ctx:
-+	kfree(vp9_ctx);
-+	return ret;
-+}
-+
-+static void rkvdec_vp9_stop(struct rkvdec_ctx *ctx)
-+{
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_dev *rkvdec = ctx->dev;
-+
-+	dma_free_coherent(rkvdec->dev, vp9_ctx->count_tbl.size,
-+			  vp9_ctx->count_tbl.cpu, vp9_ctx->count_tbl.dma);
-+	dma_free_coherent(rkvdec->dev, vp9_ctx->priv_tbl.size,
-+			  vp9_ctx->priv_tbl.cpu, vp9_ctx->priv_tbl.dma);
-+	kfree(vp9_ctx);
-+}
-+
-+static int rkvdec_vp9_adjust_fmt(struct rkvdec_ctx *ctx,
-+				 struct v4l2_format *f)
-+{
-+	struct v4l2_pix_format_mplane *fmt = &f->fmt.pix_mp;
-+
-+	fmt->num_planes = 1;
-+	if (!fmt->plane_fmt[0].sizeimage)
-+		fmt->plane_fmt[0].sizeimage = fmt->width * fmt->height * 2;
-+	return 0;
-+}
-+
-+const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops = {
-+	.adjust_fmt = rkvdec_vp9_adjust_fmt,
-+	.start = rkvdec_vp9_start,
-+	.stop = rkvdec_vp9_stop,
-+	.run = rkvdec_vp9_run,
-+	.done = rkvdec_vp9_done,
-+};
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index cd65ad2af8d4..09289eec8279 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -99,10 +99,30 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
- };
- 
--static const u32 rkvdec_h264_decoded_fmts[] = {
-+static const u32 rkvdec_h264_vp9_decoded_fmts[] = {
- 	V4L2_PIX_FMT_NV12,
- };
- 
-+static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_VP9_FRAME,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_VP9_COMPRESSED_HDR_PROBS,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
-+		.cfg.min = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
-+		.cfg.max = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
-+		.cfg.def = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
-+	},
-+};
-+
-+static const struct rkvdec_ctrls rkvdec_vp9_ctrls = {
-+	.ctrls = rkvdec_vp9_ctrl_descs,
-+	.num_ctrls = ARRAY_SIZE(rkvdec_vp9_ctrl_descs),
-+};
-+
- static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-@@ -116,8 +136,23 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		},
- 		.ctrls = &rkvdec_h264_ctrls,
- 		.ops = &rkvdec_h264_fmt_ops,
--		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
--		.decoded_fmts = rkvdec_h264_decoded_fmts,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
-+		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
-+		.frmsize = {
-+			.min_width = 64,
-+			.max_width = 4096,
-+			.step_width = 64,
-+			.min_height = 64,
-+			.max_height = 2304,
-+			.step_height = 64,
-+		},
-+		.ctrls = &rkvdec_vp9_ctrls,
-+		.ops = &rkvdec_vp9_fmt_ops,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
-+		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
- 	}
- };
- 
-@@ -319,7 +354,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
- 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
- 	const struct rkvdec_coded_fmt_desc *desc;
- 	struct v4l2_format *cap_fmt;
--	struct vb2_queue *peer_vq;
-+	struct vb2_queue *peer_vq, *vq;
- 	int ret;
- 
- 	/*
-@@ -331,6 +366,15 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
- 	if (vb2_is_busy(peer_vq))
- 		return -EBUSY;
- 
-+	/*
-+	 * Some codecs like VP9 can contain dynamic resolution changes which
-+	 * are currently not supported by the V4L2 API or driver, so return
-+	 * an error if userspace tries to reconfigure the output format.
-+	 */
-+	vq = v4l2_m2m_get_vq(m2m_ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-+	if (vb2_is_busy(vq))
-+		return -EINVAL;
-+
- 	ret = rkvdec_s_fmt(file, priv, f, rkvdec_try_output_fmt);
- 	if (ret)
- 		return ret;
-diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-index 52ac3874c5e5..8f534743eaf1 100644
---- a/drivers/staging/media/rkvdec/rkvdec.h
-+++ b/drivers/staging/media/rkvdec/rkvdec.h
-@@ -50,6 +50,10 @@ struct rkvdec_vp9_decoded_buffer_info {
- struct rkvdec_decoded_buffer {
- 	/* Must be the first field in this struct. */
- 	struct v4l2_m2m_buffer base;
-+
-+	union {
-+		struct rkvdec_vp9_decoded_buffer_info vp9;
-+	};
- };
- 
- static inline struct rkvdec_decoded_buffer *
-@@ -116,4 +120,6 @@ void rkvdec_run_preamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
- void rkvdec_run_postamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
- 
- extern const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops;
-+extern const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops;
-+
- #endif /* RKVDEC_H_ */
--- 
-2.17.1
+https://patchwork.linuxtv.org/project/linux-media/patch/20210427071554.2222625-1-jernej.skrabec@siol.net/
 
+and this patch series:
+
+https://patchwork.linuxtv.org/project/linux-media/cover/20210401144336.2495479-1-emil.l.velikov@gmail.com/
+
+For both PRs are pending.
+
+It's probably better to wait until this is merged before rebasing this series.
+
+And if drivers are going to be moved out of staging, leaving only HEVC support
+in staging, then I'd wait until that is done as well.
+
+Regards,
+
+	Hans
+
+> 
+> The driver has been tested with fluster test suite stream.
+> For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
+> 
+> version 10:
+>  - Shorter version of the previous series without ctrl block patches
+>    and no DT modifications.
+>    The scope of this series is limited to HEVC support.
+> 
+> version 9:
+>  - Corrections in commits messages.
+>  - Define the dedicated control in hevc-controls.h
+>  - Add note in documentation.
+>  - Change max value of the dedicated control.
+>  - Rebased on media_tree/master branch.
+> 
+> version 8:
+>  - Add reviewed-by and ack-by tags 
+>  - Fix the warnings reported by kernel test robot
+>  - Only patch 9 (adding dedicated control), patch 11 (HEVC support) and
+>    patch 13 (DT changes) are still missing of review/ack tag.
+> 
+> version 7:
+>  - Remove 'q' from syscon phandle name to make usable for iMX8MM too.
+>    Update the bindings documentation.
+>  - Add review/ack tags.
+>  - Rebase on top of media_tree/master
+>  - Be more accurate when computing the size of the memory needed motion
+>    vectors.
+>  - Explain why the all clocks need to set in the both DT node.
+> 
+> version 6:
+>  - fix the errors reported by kernel test robot
+> 
+> version 5:
+>  - use syscon instead of VPU reset driver.
+>  - Do not break kernel/DT backward compatibility.
+>  - Add documentation for dedicated Hantro control.
+>  - Fix the remarks done by Ezequeil (typo, comments, unused function)
+>  - Run v4l2-compliance without errors (see below).
+>  - Do not add field to distinguish version, check postproc reg instead
+> 
+> version 4:
+> - Split the changes in hevc controls in 2 commits to make them easier to
+>   review.
+> - Change hantro_codec_ops run() prototype to return errors   
+> - Hantro v4l2 dedicated control is now only an integer
+> - rebase on top of VPU reset changes posted here:
+>   https://www.spinics.net/lists/arm-kernel/msg878440.html
+> - Various fix from previous remarks
+> - Limit the modifications in API to what the driver needs
+> 
+> version 3:
+> - Fix typo in Hantro v4l2 dedicated control
+> - Add documentation for the new structures and fields
+> - Rebased on top of media_tree for-linus-5.12-rc1 tag
+> 
+> version 2:
+> - remove all change related to scaling
+> - squash commits to a coherent split
+> - be more verbose about the added fields
+> - fix the comments done by Ezequiel about dma_alloc_coherent usage
+> - fix Dan's comments about control copy, reverse the test logic
+> in tile_buffer_reallocate, rework some goto and return cases.
+> - be more verbose about why I change the bindings
+> - remove all sign-off expect mime since it is confusing
+> - remove useless clocks in VPUs nodes
+> 
+> Benjamin Gaignard (9):
+>   media: hevc: Add fields and flags for hevc PPS
+>   media: hevc: Add decode params control
+>   media: hantro: change hantro_codec_ops run prototype to return errors
+>   media: hantro: Define HEVC codec profiles and supported features
+>   media: hantro: Only use postproc when post processed formats are
+>     defined
+>   media: uapi: Add a control for HANTRO driver
+>   media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+>   media: hantro: Introduce G2/HEVC decoder
+>   media: hantro: IMX8M: add variant for G2/HEVC codec
+> 
+>  .../userspace-api/media/drivers/hantro.rst    |  19 +
+>  .../userspace-api/media/drivers/index.rst     |   1 +
+>  .../media/v4l/ext-ctrls-codec.rst             | 108 +++-
+>  .../media/v4l/vidioc-queryctrl.rst            |   6 +
+>  drivers/media/v4l2-core/v4l2-ctrls.c          |  28 +-
+>  drivers/staging/media/hantro/Makefile         |   2 +
+>  drivers/staging/media/hantro/hantro.h         |  13 +-
+>  drivers/staging/media/hantro/hantro_drv.c     |  99 ++-
+>  .../staging/media/hantro/hantro_g1_h264_dec.c |  10 +-
+>  .../media/hantro/hantro_g1_mpeg2_dec.c        |   4 +-
+>  .../staging/media/hantro/hantro_g1_vp8_dec.c  |   6 +-
+>  .../staging/media/hantro/hantro_g2_hevc_dec.c | 587 ++++++++++++++++++
+>  drivers/staging/media/hantro/hantro_g2_regs.h | 198 ++++++
+>  .../staging/media/hantro/hantro_h1_jpeg_enc.c |   4 +-
+>  drivers/staging/media/hantro/hantro_hevc.c    | 327 ++++++++++
+>  drivers/staging/media/hantro/hantro_hw.h      |  69 +-
+>  .../staging/media/hantro/hantro_postproc.c    |  14 +
+>  drivers/staging/media/hantro/hantro_v4l2.c    |   5 +-
+>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  74 ++-
+>  .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |   4 +-
+>  .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |   4 +-
+>  .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |   6 +-
+>  drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
+>  drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
+>  .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
+>  .../staging/media/sunxi/cedrus/cedrus_h265.c  |  12 +-
+>  include/media/hevc-ctrls.h                    |  46 +-
+>  27 files changed, 1586 insertions(+), 69 deletions(-)
+>  create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
+>  create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+>  create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
+>  create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
+> 
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
