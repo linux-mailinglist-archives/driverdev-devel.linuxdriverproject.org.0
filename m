@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91C3237747F
-	for <lists+driverdev-devel@lfdr.de>; Sun,  9 May 2021 01:01:27 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53E67377480
+	for <lists+driverdev-devel@lfdr.de>; Sun,  9 May 2021 01:01:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C14340EB5;
-	Sat,  8 May 2021 23:01:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B35AE60665;
+	Sat,  8 May 2021 23:01:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MEpZwaWuWyjv; Sat,  8 May 2021 23:01:23 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I0u9-nHrnQ_M; Sat,  8 May 2021 23:01:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8836040EB6;
-	Sat,  8 May 2021 23:01:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 55784605FB;
+	Sat,  8 May 2021 23:01:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 06B5B1BF34E
- for <devel@linuxdriverproject.org>; Sat,  8 May 2021 23:01:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 05BD11BF97D
+ for <devel@linuxdriverproject.org>; Sat,  8 May 2021 23:01:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E9EB840EB4
- for <devel@linuxdriverproject.org>; Sat,  8 May 2021 23:01:02 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E9B814045B
+ for <devel@linuxdriverproject.org>; Sat,  8 May 2021 23:01:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cn5Z7tBweuF4 for <devel@linuxdriverproject.org>;
- Sat,  8 May 2021 23:01:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RyrqQ0ZrPkRV for <devel@linuxdriverproject.org>;
+ Sat,  8 May 2021 23:01:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7310440EB2
- for <devel@driverdev.osuosl.org>; Sat,  8 May 2021 23:01:01 +0000 (UTC)
-IronPort-SDR: b/TLZviUBWzOtboKg8pY2s5lntLXXb7pq1t8AvtvJbQe0TgDpxJmfKLwRuVyMzfXVVTYizo+5w
- lcj5QOIyU+jA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9978"; a="178536701"
-X-IronPort-AV: E=Sophos;i="5.82,284,1613462400"; d="scan'208";a="178536701"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0DAE3400B5
+ for <devel@driverdev.osuosl.org>; Sat,  8 May 2021 23:01:12 +0000 (UTC)
+IronPort-SDR: dDmL9dQ8GpzB95BtIOGCHQAHz6Rt23D1bMUE2Uox5abvTuyP0tMS9MxI9Hy3g61OqBXnpSX2No
+ bzs9NqS44/5g==
+X-IronPort-AV: E=McAfee;i="6200,9189,9978"; a="198622183"
+X-IronPort-AV: E=Sophos;i="5.82,284,1613462400"; d="scan'208";a="198622183"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  08 May 2021 16:01:00 -0700
-IronPort-SDR: CNX2huTmTdWfWz9DGdkE0McMpEnNTvvVrDspFwq61/P8df+uXj1m30UzWmR4qO43LwA3TKMsx2
- bsKQus9sCA/A==
+IronPort-SDR: qblQ0eCWc8IlzH04p3ItkzB2n/6xSmoHxbhX38hWFhGkz9Q1OhOe1fvE0LvP6kgkQc/U1YGEvd
+ zojLBalKdGNg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,284,1613462400"; d="scan'208";a="540748573"
+X-IronPort-AV: E=Sophos;i="5.82,284,1613462400"; d="scan'208";a="608648569"
 Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 08 May 2021 16:00:58 -0700
+ by orsmga005.jf.intel.com with ESMTP; 08 May 2021 16:00:58 -0700
 Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lfVwP-000Bpt-QF; Sat, 08 May 2021 23:00:57 +0000
-Date: Sun, 09 May 2021 07:00:44 +0800
+ id 1lfVwP-000Bpw-Qq; Sat, 08 May 2021 23:00:57 +0000
+Date: Sun, 09 May 2021 07:00:46 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS WITH WARNING
- 5f99d1b7925435aae0afaadb435bbb7d01339b19
-Message-ID: <6097181c.iUt1GsIiwNv/yH8x%lkp@intel.com>
+Subject: [driver-core:kbuild] BUILD SUCCESS
+ f43569680242dd923b5352759457552c0cd71cdd
+Message-ID: <6097181e.jJA7vhvFnI6c6g5U%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,64 +73,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 5f99d1b7925435aae0afaadb435bbb7d01339b19  staging: rtl8188eu: remove padapter from struct mlme_ext_priv
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kbuild
+branch HEAD: f43569680242dd923b5352759457552c0cd71cdd  kbuild: allow arches to have their own "bootloader.sh"
 
-Warning in current branch:
+elapsed time: 721m
 
-drivers/comedi/drivers/jr3_pci.c:507:22: warning: variable 'min_full_scale' set but not used [-Wunused-but-set-variable]
-
-possible Warning in current branch:
-
-drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:2134:6: warning: variable 'u4Tmp' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:2135:17: warning: variable 'u1Tmpb' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:2135:5: warning: variable 'u1Tmpa' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalPhyRf.c:79:41: warning: variable 'delta_IQK' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c:1632:30: warning: variable 'RegEAC' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c:1632:62: warning: variable 'RegECC' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c:1649:8: warning: variable 'ProgressingTime' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:3895:18: warning: variable 'ra_info2' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:3895:8: warning: variable 'ra_info1' set but not used [-Wunused-but-set-variable]
-
-Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- nds32-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf.c:warning:variable-delta_IQK-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-ProgressingTime-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-RegEAC-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-RegECC-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- openrisc-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf.c:warning:variable-delta_IQK-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-ProgressingTime-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-RegEAC-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-RegECC-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-`-- riscv-allyesconfig
-    |-- drivers-comedi-drivers-jr3_pci.c:warning:variable-min_full_scale-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalPhyRf.c:warning:variable-delta_IQK-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-ProgressingTime-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-RegEAC-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalPhyRf_8723B.c:warning:variable-RegECC-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-    `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-
-elapsed time: 723m
-
-configs tested: 176
+configs tested: 170
 configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
 gcc tested configs:
 arm                                 defconfig
@@ -152,11 +104,6 @@ m68k                             alldefconfig
 powerpc                    adder875_defconfig
 xtensa                              defconfig
 sh                              ul2_defconfig
-arc                      axs103_smp_defconfig
-arm                           h3600_defconfig
-powerpc                       holly_defconfig
-powerpc                 canyonlands_defconfig
-sh                          lboxre2_defconfig
 m68k                       m5475evb_defconfig
 powerpc                    mvme5100_defconfig
 powerpc                     taishan_defconfig
@@ -180,6 +127,7 @@ powerpc                 xes_mpc85xx_defconfig
 arm                           sama5_defconfig
 powerpc                     ep8248e_defconfig
 mips                         tb0226_defconfig
+sh                          lboxre2_defconfig
 powerpc                         ps3_defconfig
 m68k                          hp300_defconfig
 parisc                              defconfig
@@ -218,9 +166,6 @@ arm                         s3c6400_defconfig
 sh                             espt_defconfig
 mips                          rb532_defconfig
 arm                         nhk8815_defconfig
-nios2                               defconfig
-powerpc                      ppc64e_defconfig
-powerpc                 mpc85xx_cds_defconfig
 x86_64                            allnoconfig
 ia64                             allmodconfig
 ia64                                defconfig
@@ -228,6 +173,7 @@ ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
 m68k                             allyesconfig
+nios2                               defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
 nds32                               defconfig
