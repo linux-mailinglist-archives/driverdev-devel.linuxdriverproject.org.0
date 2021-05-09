@@ -1,48 +1,42 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CDEC377581
-	for <lists+driverdev-devel@lfdr.de>; Sun,  9 May 2021 06:49:01 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76A5E3775E8
+	for <lists+driverdev-devel@lfdr.de>; Sun,  9 May 2021 10:33:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2667B83CAE;
-	Sun,  9 May 2021 04:48:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6CCA84048F;
+	Sun,  9 May 2021 08:33:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oVgtdJ7TlttS; Sun,  9 May 2021 04:48:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Nz3O2GUGOVZm; Sun,  9 May 2021 08:33:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8397E83CB6;
-	Sun,  9 May 2021 04:48:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C115E4011B;
+	Sun,  9 May 2021 08:32:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 728A51BF5A6
- for <devel@linuxdriverproject.org>; Sun,  9 May 2021 04:48:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5E8541BF35C
+ for <devel@linuxdriverproject.org>; Sun,  9 May 2021 08:32:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6064B404CA
- for <devel@linuxdriverproject.org>; Sun,  9 May 2021 04:48:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4D68E4047E
+ for <devel@linuxdriverproject.org>; Sun,  9 May 2021 08:32:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HpOg-_qTV1Lt for <devel@linuxdriverproject.org>;
- Sun,  9 May 2021 04:48:46 +0000 (UTC)
+ with ESMTP id 9F_monKwvLVM for <devel@linuxdriverproject.org>;
+ Sun,  9 May 2021 08:32:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.c919ima.cn (unknown [118.25.151.189])
- by smtp4.osuosl.org (Postfix) with ESMTP id 91F31404C4
- for <devel@driverdev.osuosl.org>; Sun,  9 May 2021 04:48:46 +0000 (UTC)
-Received: from User (unknown [66.154.113.242])
- by mail.c919ima.cn (Postfix) with SMTP id 4AC20142C26;
- Sun,  9 May 2021 06:31:15 +0800 (CST)
-From: "verenich ekaterina"<verenichekaterinae@gmail.com>
-Subject: Dear Beloved
-Date: Sat, 8 May 2021 15:31:39 -0700
-MIME-Version: 1.0
+Received: from acumq2f.com (usa-3.svrip.com [205.185.115.64])
+ by smtp4.osuosl.org (Postfix) with SMTP id AA1154047C
+ for <devel@driverdev.osuosl.org>; Sun,  9 May 2021 08:32:48 +0000 (UTC)
+From: "Hussein" <rajwai445@gmail.com>
+Subject: political crisis still in my country
+To: devel@driverdev.osuosl.org
+Date: Sun, 9 May 2021 15:32:49 +0700
 X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210509044847.6064B404CA@smtp4.osuosl.org>
+Message-Id: <20210509083250.4D68E4047E@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,43 +49,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: verenichekaterina34@yahoo.com
+Reply-To: Hussein <rajwai445@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Assalam Alikum.
+Assist me purchase a living home, .I have huge sum in
+financial institution .Should there be a need for an evidence, or a
+prove of my seriousness and genuineness. I have a Certificate of Deposit as
+a prove of fund. am from Syria, (where I can
+invest to sustain my living until the political crisis in my country is
+over).Could you please send me an email on
 
+( rajwai445@gmail.com ) to enable me know you
+have received my email.
 
-
-Dear Beloved
-
-    Life is gradually passing away from me as a result of my present medical
-condition and my personal doctor confided in me yesterday that I have only
-but few more weeks to live.
-
-    In view of this setback, I want to donate my estate for humanitarian
-assistance, since this has always been the plan of my late husband and
-besides I have no child.
-
-    In an effort to compliment the good work of God almighty and the wish of
-my late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred
-Thousand United States Dollars) to you.
-
-    On your acknowledgment of this mail and informing me of your nationality
-and current place of resident, my Bank will facilitate due processes for
-transfer of this legacy to you.
-
-    May God bless you as you use this money judiciously for the work of
-charity.
-
-    Sincere regards,
-
-    Mrs.verenich ekaterina
-
-
-
-
+Ahmed Hussein
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
