@@ -2,43 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65D4A379976
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 May 2021 23:56:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9397D3799B4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 May 2021 00:08:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A8A724024F;
-	Mon, 10 May 2021 21:56:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 29A3840536;
+	Mon, 10 May 2021 22:08:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yIJZdK3-w956; Mon, 10 May 2021 21:56:42 +0000 (UTC)
+	with ESMTP id e9Z0L1kNgh7V; Mon, 10 May 2021 22:08:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 21F7840253;
-	Mon, 10 May 2021 21:56:41 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7BC66402C9;
+	Mon, 10 May 2021 22:08:35 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 85CC81BF9C6
- for <devel@linuxdriverproject.org>; Mon, 10 May 2021 21:56:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 22EB31BF3CD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 10 May 2021 22:08:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 74291404E5
- for <devel@linuxdriverproject.org>; Mon, 10 May 2021 21:56:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1F95A402C9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 10 May 2021 22:08:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uPFAk-xl2T9D for <devel@linuxdriverproject.org>;
- Mon, 10 May 2021 21:56:21 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MazLiEm6JQpn
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 10 May 2021 22:08:25 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from snhve01-ext-001.mktdns.com (unknown [125.7.54.12])
- by smtp4.osuosl.org (Postfix) with ESMTP id AAFDF404DF
- for <devel@linuxdriverproject.org>; Mon, 10 May 2021 21:56:20 +0000 (UTC)
-X-MSFBL: EosRI4VWdamYp8gcDBTkbz78INxPFgQfgkxzeA/42Ag=|eyJnIjoiYmctc25odmU
- wMWQtMDEiLCJ1IjoiJXZjdHhfbWVzc3tta3RvTWFpbGluZ0lEfSIsInIiOiJkZXZ
- lbEBsaW51eGRyaXZlcnByb2plY3Qub3JnIiwiYiI6InNuaHZlMDEtbXRhMDItMTI
- 1LTctNTQtMTIifQ==
-Message-ID: <04.31.07387.8FBA9906@snhve01-mta02.marketo.org>
+ by smtp2.osuosl.org (Postfix) with ESMTP id 60F2840134
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 10 May 2021 22:08:25 +0000 (UTC)
+X-MSFBL: 5p3POBB4bYoST73aUZv9VZw1t/2NXXOcGY+mhlXKbso=|eyJyIjoiZHJpdmVyZGV
+ 2LWRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmciLCJ1IjoiJXZjdHhfbWVzc3t
+ ta3RvTWFpbGluZ0lEfSIsImciOiJiZy1zbmh2ZTAxZC0wMSIsImIiOiJzbmh2ZTA
+ xLW10YTA0LTEyNS03LTU0LTEyIn0=
+Message-ID: <0C.E6.13762.DCEA9906@snhve01-mta04.marketo.org>
 From: "COMPANY"<marieaviss@gmail.com>
 Subject: Re: Business inquiries 05:11:2021
-Date: Mon, 10 May 2021 14:55:54 -0700
+Date: Mon, 10 May 2021 15:07:59 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
