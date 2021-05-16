@@ -1,56 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0D79381D82
-	for <lists+driverdev-devel@lfdr.de>; Sun, 16 May 2021 11:00:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 25908381E4C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 16 May 2021 12:54:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 23FB183B4F;
-	Sun, 16 May 2021 09:00:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 464D240413;
+	Sun, 16 May 2021 10:54:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CfDS4gI-Iep8; Sun, 16 May 2021 09:00:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9lHPab8smkAz; Sun, 16 May 2021 10:54:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7600D82969;
-	Sun, 16 May 2021 09:00:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 75D78403CB;
+	Sun, 16 May 2021 10:54:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 643251BF5A0
- for <devel@linuxdriverproject.org>; Sun, 16 May 2021 09:00:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B3591BF97D
+ for <devel@linuxdriverproject.org>; Sun, 16 May 2021 10:53:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2E9F8401E4
- for <devel@linuxdriverproject.org>; Sun, 16 May 2021 09:00:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9E6314021C
+ for <devel@linuxdriverproject.org>; Sun, 16 May 2021 10:53:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jbLVh04aUIEG for <devel@linuxdriverproject.org>;
- Sun, 16 May 2021 09:00:22 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+ with ESMTP id d3-A2loSz4vo for <devel@linuxdriverproject.org>;
+ Sun, 16 May 2021 10:53:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 740EE4014E
- for <devel@linuxdriverproject.org>; Sun, 16 May 2021 09:00:22 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 855546103E;
- Sun, 16 May 2021 09:00:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1621155622;
- bh=mBgTPkPp+wYI8t3PytcJ+CDiGxCy70thfYMLvJ2fTYg=;
- h=Date:From:To:Cc:Subject:From;
- b=0TFUEu1X6CzkF+cGAqu1uwtb5VQdZYjoIln5GBZ63X6R5w2jzIEwyqIIfRrbZXX/f
- W+ILq7tAOl5aPpIaGunwGsSZCFC/Uy+nFMS1gPqXr+pUz2GzNU6UsQPBzV8k+s1U9V
- +0Myh8d+R2+neN3LgZpnE54Ehi4Un3Lb7ErKh184=
-Date: Sun, 16 May 2021 11:00:19 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>
-Subject: [GIT PULL] Staging/IIO driver fixes for 5.13-rc2
-Message-ID: <YKDfI+xY2SCpC4Ot@kroah.com>
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B04BF40131
+ for <devel@driverdev.osuosl.org>; Sun, 16 May 2021 10:53:53 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D6C5F611B0;
+ Sun, 16 May 2021 10:53:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1621162433;
+ bh=o26owUkPzbznUNvf/j3gzXChdDLd5dBQkyI4OqYODuI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=QFHKbB86hlLT6YE/Y5p2Xq6owAKd3NAKrqIxLKOeio5VQLDOtyRcjooYAVbZ8VEvy
+ Hpcmj0GU5Vor56djP1oyKIrL622tkwCKQ56UOH2BCzq/aMeavv7uMNdkTaI+UG1vHl
+ O4wZl8v2wNjzbOoMRclbQ5GozJrfm+qslbRw9VDAR/5aisGNQGt2mSbCNLtscqsaCm
+ w2Z64kzMVZLuPz/x72wfGqzDd+gqMa5YOJZ6L+38vdG2NZqIZMvnpbnzKJRU6G6XKC
+ WNGuXcLtqWi7chr/AAPBDKjlLvwRlMT5s4D26XS2nOCmBXKZGyW+L+kobDu7tmE0WT
+ /30wQz7LGUojQ==
+Received: by mail.kernel.org with local (Exim 4.94.2)
+ (envelope-from <mchehab@kernel.org>)
+ id 1liEP8-003s7x-J9; Sun, 16 May 2021 12:53:50 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 00/17] Add an experimental driver for Intel NUC leds
+Date: Sun, 16 May 2021 12:53:28 +0200
+Message-Id: <cover.1621161037.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,81 +67,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@linuxdriverproject.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-staging@lists.linux.dev, linuxarm@huawei.com,
+ linux-kernel@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
+ mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-leds@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The following changes since commit 6efb943b8616ec53a5e444193dccf1af9ad627b5:
+Hi Greg,
 
-  Linux 5.13-rc1 (2021-05-09 14:17:44 -0700)
+This series add support for the LEDs found at Intel NUCs since
+NUC version 6.
 
-are available in the Git repository at:
+On several NUC models, the function of the LEDs are programmable,
+which allow them to indicate several different hardware events.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.13-rc2
+They can even be programmed to represent an userspace-driven event.
 
-for you to fetch changes up to ba9c25d94dea1a57492a606a1f5dde70d2432583:
+Some models come with single colored or dual-colored LEDs, but
+high end models have RGB LEDs.
 
-  Merge tag 'iio-fixes-5.13a' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus (2021-05-11 15:17:55 +0200)
+Programming them can ether be done via BIOS or by the OS.
 
-----------------------------------------------------------------
-Staging/IIO driver fixes for 5.13-rc2
+There are 3 different API types, and there is already some OOT
+drivers that were written to support them, using procfs, each
+one using a different (and IMO confusing) API.
 
-Here are some small IIO driver fixes and one Staging driver fix for
-5.13-rc2.
+After looking at the existing drivers and not liking the uAPI
+interfaces there, I opted to write a new driver from scratch,
+unifying support for all different versions and using sysfs
+via the leds class.
 
-Nothing major, just some resolutions for reported problems:
-	- gcc11 bogus warning fix for rtl8723bs
-	- iio driver tiny fixes
+It should be noticed that those devices use the Windows Management
+Interface (WMI). There are actually 3 different implementations for it:
 
-All of these have been in linux-next for many days with no reported
-issues.
+- one for NUC6/NUC7, which has limited support for programming just
+  two LEDs;
+- a complely re-written interface for NUC8, which can program up to
+  seven LEDs, named version 0.64;
+- an extended version of the NUC8 API, added for NUC10, called version 
+  1.0, with has a few differences from version 0.64.
 
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Such WMI APIs are documented at:
+  - https://www.intel.com/content/www/us/en/support/articles/000023426/intel-nuc/intel-nuc-kits.html
+  - https://raw.githubusercontent.com/nomego/intel_nuc_led/master/specs/INTEL_WMI_LED_0.64.pdf
+  - https://www.intel.com/content/dam/support/us/en/documents/intel-nuc/WMI-Spec-Intel-NUC-NUC10ixFNx.pdf
 
-----------------------------------------------------------------
-Alexandru Ardelean (2):
-      iio: hid-sensors: select IIO_TRIGGERED_BUFFER under HID_SENSOR_IIO_TRIGGER
-      iio: core: return ENODEV if ioctl is unknown
+I wrote this driver mainly for my NUC8 (NUC8i7HNK), but I used a NUC6
+in order to double-check if NUC6 support was not crashing.  Yet, while
+the NUC6 model I have accepts the WMI LED API, it doesn't work, as it
+seems that the BIOS of my NUC6 doesn't let userspace to program the LEDs.
 
-Arnd Bergmann (1):
-      staging: rtl8723bs: avoid bogus gcc warning
+I don't have any devices using NUC10 API.
 
-Colin Ian King (1):
-      iio: tsl2583: Fix division by a zero lux_val
+Due to the lack of full tests on NUC6 and NUC10, and because I
+wrote a new uAPI that's different than the procfs-based ones found
+at the OOT drivers, I'm opting to submit this first to staging.
 
-Dinghao Liu (2):
-      iio: light: gp2ap002: Fix rumtime PM imbalance on error
-      iio: proximity: pulsedlight: Fix rumtime PM imbalance on error
+This should allow adjusting the uAPI if needed, and to get feedback from
+people using it on NUC6, NUC10 and on other NUC models that would be
+compatible with it.
 
-Dmitry Osipenko (1):
-      iio: gyro: mpu3050: Fix reported temperature value
+Mauro Carvalho Chehab (17):
+  staging: add support for NUC WMI LEDs
+  staging: nuc-wmi: detect WMI API detection
+  staging: nuc-wmi: add support for changing S0 brightness
+  staging: nuc-wmi: add all types of brightness
+  staging: nuc-wmi: allow changing the LED colors
+  staging: nuc-wmi: add support for WMI API version 1.0
+  staging: nuc-wmi: add basic support for NUC6 WMI
+  staging: muc-wmi: add brightness and color for NUC6 API
+  staging: nuc-wmi: Add support to blink behavior for NUC8/10
+  staging: nuc-wmi: get rid of an unused variable
+  staging: nuc-wmi: implement blink control for NUC6
+  staging: nuc-wmi: better detect NUC6/NUC7 devices
+  staging: nuc-led: add support for HDD activity default
+  staging: nuc-wmi: fix software blink behavior logic
+  staging: nuc-wmi: add support for changing the ethernet type indicator
+  staging: nuc-wmi: add support for changing the power limit scheme
+  staging: nuc-led: update the TODOs
 
-Greg Kroah-Hartman (1):
-      Merge tag 'iio-fixes-5.13a' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
+ MAINTAINERS                       |    6 +
+ drivers/staging/Kconfig           |    2 +
+ drivers/staging/Makefile          |    1 +
+ drivers/staging/nuc-led/Kconfig   |   11 +
+ drivers/staging/nuc-led/Makefile  |    3 +
+ drivers/staging/nuc-led/TODO      |    8 +
+ drivers/staging/nuc-led/nuc-wmi.c | 2100 +++++++++++++++++++++++++++++
+ 7 files changed, 2131 insertions(+)
+ create mode 100644 drivers/staging/nuc-led/Kconfig
+ create mode 100644 drivers/staging/nuc-led/Makefile
+ create mode 100644 drivers/staging/nuc-led/TODO
+ create mode 100644 drivers/staging/nuc-led/nuc-wmi.c
 
-Tomasz Duszynski (1):
-      iio: core: fix ioctl handlers removal
+-- 
+2.31.1
 
- drivers/iio/accel/Kconfig                         |  1 -
- drivers/iio/common/hid-sensors/Kconfig            |  1 +
- drivers/iio/gyro/Kconfig                          |  1 -
- drivers/iio/gyro/mpu3050-core.c                   | 13 +++++++++++--
- drivers/iio/humidity/Kconfig                      |  1 -
- drivers/iio/industrialio-core.c                   |  9 +--------
- drivers/iio/light/Kconfig                         |  2 --
- drivers/iio/light/gp2ap002.c                      |  5 +++--
- drivers/iio/light/tsl2583.c                       |  8 ++++++++
- drivers/iio/magnetometer/Kconfig                  |  1 -
- drivers/iio/orientation/Kconfig                   |  2 --
- drivers/iio/pressure/Kconfig                      |  1 -
- drivers/iio/proximity/pulsedlight-lidar-lite-v2.c |  1 +
- drivers/iio/temperature/Kconfig                   |  1 -
- drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 23 +++++++++++++----------
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c    | 21 ++++++++++++---------
- 16 files changed, 50 insertions(+), 41 deletions(-)
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
