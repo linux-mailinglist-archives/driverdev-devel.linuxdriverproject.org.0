@@ -1,61 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE22A382BF5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 May 2021 14:20:02 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3FA79382D5E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 May 2021 15:23:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 812A3404D9;
-	Mon, 17 May 2021 12:20:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8D1DF83C99;
+	Mon, 17 May 2021 13:23:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VYEsfxFMxkwI; Mon, 17 May 2021 12:19:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 806bBk_XKwJ6; Mon, 17 May 2021 13:23:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABA7D404CB;
-	Mon, 17 May 2021 12:19:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BBEE983A85;
+	Mon, 17 May 2021 13:23:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C4BE31BF2A5
- for <devel@linuxdriverproject.org>; Mon, 17 May 2021 12:19:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C08BF1BF34C
+ for <devel@linuxdriverproject.org>; Mon, 17 May 2021 13:23:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B3875402D9
- for <devel@linuxdriverproject.org>; Mon, 17 May 2021 12:19:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BC04060A4C
+ for <devel@linuxdriverproject.org>; Mon, 17 May 2021 13:23:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AfSuLNVc-U1k for <devel@linuxdriverproject.org>;
- Mon, 17 May 2021 12:19:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Cd9m_1xoPIfN for <devel@linuxdriverproject.org>;
+ Mon, 17 May 2021 13:23:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 274894016B
- for <devel@driverdev.osuosl.org>; Mon, 17 May 2021 12:19:41 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3EBF361241;
- Mon, 17 May 2021 12:19:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621253980;
- bh=+dtwhtQMQDTNx7oQDH89iXtYmlwmei6zujh7Rnhnlww=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=glbVOIuOGEeefXMAjIxA0s9l6qVnSHjwjIFaA5Hmv1TS8mJ4gdrDAirnESwKap/+A
- AzgRttFn7Blas6mKyrhs/PMy0triHIIOh0lU83HeLhUXQYGGl+6QPqAAZLTho4UNgc
- TsQgm5lzz7du2534Ozvis2KhRlvMtLNQ+E0z99shujZbH7AEUms3Mo2+IjU7JBvXMi
- eGh+vRuPqb146yhtedL9QxT9LZw+M2VN2/VmpJfu4DxSCXEbfqroXf7S6fFkbPjdUl
- /up/HF5NOin+jOs63/s3Fo7IZy5PlAbWmLq69A/Ado8GF23L/TpD3MLcXYvnI2PbiI
- 51pobsdjDX3hQ==
-Date: Mon, 17 May 2021 14:19:35 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH 17/17] staging: nuc-led: update the TODOs
-Message-ID: <20210517141935.4a7cb905@coco.lan>
-In-Reply-To: <20210517080527.GA18642@amd>
-References: <cover.1621161037.git.mchehab+huawei@kernel.org>
- <f23fed6a89f66564f5af52f241016a4b9823ce04.1621161037.git.mchehab+huawei@kernel.org>
- <20210516182149.GA3666@localhost>
- <20210517083001.7688acd7@coco.lan> <20210517080527.GA18642@amd>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 10F4360A66
+ for <devel@driverdev.osuosl.org>; Mon, 17 May 2021 13:23:29 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id 8FFC11F41DE7
+Message-ID: <5aa5700b862234895a7a6eb251ca3c80fdc1a6d3.camel@collabora.com>
+Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
+ register
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Lucas Stach <l.stach@pengutronix.de>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, p.zabel@pengutronix.de,
+ mchehab@kernel.org,  robh+dt@kernel.org, shawnguo@kernel.org,
+ s.hauer@pengutronix.de,  festevam@gmail.com, lee.jones@linaro.org,
+ gregkh@linuxfoundation.org,  mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org,  jernej.skrabec@siol.net,
+ hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com,  "Peng Fan (OSS)"
+ <peng.fan@oss.nxp.com>, Jacky Bai <ping.bai@nxp.com>
+Date: Mon, 17 May 2021 10:23:14 -0300
+In-Reply-To: <72fef3d9f79194876f2035e996bb83f9f8b12902.camel@pengutronix.de>
+References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
+ <20210407073534.376722-4-benjamin.gaignard@collabora.com>
+ <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
+ <831a59b052df02e9860b9766e631a7ab6a37c46a.camel@collabora.com>
+ <72fef3d9f79194876f2035e996bb83f9f8b12902.camel@pengutronix.de>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -69,103 +67,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-staging@lists.linux.dev, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, mauro.chehab@huawei.com,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-leds@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
+ kernel@collabora.com, cphealy@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Mon, 17 May 2021 10:05:27 +0200
-Pavel Machek <pavel@ucw.cz> escreveu:
+On Mon, 2021-05-17 at 12:52 +0200, Lucas Stach wrote:
+> Hi Ezequiel,
+> 
+> Am Sonntag, dem 16.05.2021 um 19:40 -0300 schrieb Ezequiel Garcia:
+> > Hi Lucas,
+> > 
+> > On Fri, 2021-04-16 at 12:54 +0200, Lucas Stach wrote:
+> > > Am Mittwoch, dem 07.04.2021 um 09:35 +0200 schrieb Benjamin Gaignard:
+> > > > In order to be able to share the control hardware block between
+> > > > VPUs use a syscon instead a ioremap it in the driver.
+> > > > To keep the compatibility with older DT if 'nxp,imx8mq-vpu-ctrl'
+> > > > phandle is not found look at 'ctrl' reg-name.
+> > > > With the method it becomes useless to provide a list of register
+> > > > names so remove it.
+> > > 
+> > > Sorry for putting a spoke in the wheel after many iterations of the
+> > > series.
+> > > 
+> > > We just discussed a way forward on how to handle the clocks and resets
+> > > provided by the blkctl block on i.MX8MM and later and it seems there is
+> > > a consensus on trying to provide virtual power domains from a blkctl
+> > > driver, controlling clocks and resets for the devices in the power
+> > > domain. I would like to avoid introducing yet another way of handling
+> > > the blkctl and thus would like to align the i.MX8MQ VPU blkctl with
+> > > what we are planning to do on the later chip generations.
+> > > 
+> > > CC'ing Jacky Bai and Peng Fan from NXP, as they were going to give this
+> > > virtual power domain thing a shot.
+> > > 
+> > 
+> > It seems the i.MX8MM BLK-CTL series are moving forward:
+> > 
+> > https://patchwork.kernel.org/project/linux-arm-kernel/list/?series=479175
+> > 
+> > ... but I'm unable to wrap my head around how this affects the
+> > devicetree VPU modelling for i.MX8MQ (and also i.MX8MM, i.MX8MP, ...).
+> > 
+> > 
+> For the i.MX8MQ we want to have the same virtual power-domains provided
+> by a BLK-CTRL driver for the VPUs, as on i.MX8MM. This way we should be
+> able to use the same DT bindings for the VPUs on i.MX8MQ and i.MX8MM,
+> even though the SoC integration with the blk-ctrl is a little
+> different.
+> 
 
-> No. Take a look at triggers; for example hdd monitor should look very
-> much like existing disk trigger.
+AFAICS, there's not support for i.MX8MP VPU power domains. I suppose
+we should make sure we'll be able to cover those as well.
 
-Hmm... after looking at triggers, I'm not sure if this is the right
-interface, nor if we're talking about the same thing.
+Will i.MX8MP need its own driver as well?
 
-See, at least the way ledtrig-disk.c uses it, two drivers are triggering 
-the LED based on software events:
+> > Can you clarify that?
+> > 
+> I'm planning on sending some patches adding i.MX8MQ VPU support to the
+> BLK-CTRL driver in the next few days. I guess that should clarify
+> things. :)
+> 
 
-	drivers/ata/libata-core.c:      ledtrig_disk_activity(!!(qc->tf.flags & ATA_TFLAG_WRITE));
-	drivers/ide/ide-disk.c: ledtrig_disk_activity(rq_data_dir(rq) == WRITE);
+Great.
 
-This is not how the NUC LEDs are work. On NUC, the hardware itself 
-triggers the event and/or blinks the LED(*).
+Thanks a lot,
+Ezequiel
 
-(*) By default, blink is enabled only when the device is suspended
-    or it is hibernating.
-
-There's no need to do any software emulation.
-
-The API is meant to just program the hardware (and/or the firmware) 
-for it to do the behavior expected by the user.
-
-So, for instance, setting the indicator event that will trigger the
-LED is done by sending a WMI message for this GUID object:
-8C5DA44C-CDC3-46b3-8619-4E26D34390B7 (somewhat similar to using
-the way ACPI works, but WMI is a different firmware interface).
-
-The method at the WMI API which sets the LED indicator is this one:
-
-	0x05 message (Set an Indicator option for the LED type)
-
-Such method receives two parameters. The first one is the LED 
-number, which can be:
-
-	0 - Power button LED
-	1 - HDD LED
-	2 - Skull LED
-	3 - Eyes LED
-	4 - Front LED 1
-	5 - Front LED 1
-	6 - Front LED 1
-
-The second one tells which hardware event will trigger the LED:
-
-=====	==============	=======================================================
-Value	Indicator type	Meaning
-=====	==============	=======================================================
-0	Power State	Shows if the device is powered and what power level
-			it is (e. g. if the device is suspended or not, and
-			on which kind of suspended level).
-1	HDD Activity	Indicates if the LED is measuring the hard disk (or
-			SDD) activity.
-2	Ethernet	Indicates the activity Ethernet adapter(s)
-3	WiFi		Indicates if WiFi is enabled
-4	Software	Doesn't indicate any hardware level. Instead, the LED
-			status is controlled via software.
-5	Power Limit	Changes the LED color when the computer is throttling
-			its power limits.
-6	Disable		The LED was disabled (either by BIOS or via WMI).
-=====	==============	=======================================================
-
-There is an example at page 7 of the datasheet:
-
-	https://raw.githubusercontent.com/nomego/intel_nuc_led/master/specs/INTEL_WMI_LED_0.64.pdf
-
-Where it shows what happens if the WMI message is filled with:
-
-	<0x05>  <0x00>  <0x01>
-
-On such example, it changes the behavior of the button named "Power button" 
-to change it to monitor the disk activity, instead of monitoring if the
-device is powered on or not.
-
-Such setting is even persistent after rebooting, and the event is
-hardware/firmware triggered.
-
-So, IMO, it would only makes sense to use something else from the LED
-class if are there a way for the sysfs nodes to dynamically be shown/hidden
-when the indicator changes.
-
-At least on my eyes, that doesn't seem to be what triggers do.
-
-Thanks,
-Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
