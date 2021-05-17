@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA86E386B0F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 May 2021 22:13:37 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23A9C386B10
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 May 2021 22:13:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 33E0460B24;
-	Mon, 17 May 2021 20:13:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 52AC140516;
+	Mon, 17 May 2021 20:13:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UmF1AS16WJIG; Mon, 17 May 2021 20:13:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8EIOVI5pO3sV; Mon, 17 May 2021 20:13:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 380AF60B0E;
-	Mon, 17 May 2021 20:13:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7952D401F0;
+	Mon, 17 May 2021 20:13:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 34AA01BF348
- for <devel@linuxdriverproject.org>; Mon, 17 May 2021 20:13:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4DB8F1BF348
+ for <devel@linuxdriverproject.org>; Mon, 17 May 2021 20:13:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 30F1A83EEB
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3C7C183ED0
  for <devel@linuxdriverproject.org>; Mon, 17 May 2021 20:13:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bGDvb8i_6zC4 for <devel@linuxdriverproject.org>;
+ with ESMTP id oJhOdIdcYGsH for <devel@linuxdriverproject.org>;
  Mon, 17 May 2021 20:13:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EAACD83ED0
- for <devel@driverdev.osuosl.org>; Mon, 17 May 2021 20:13:12 +0000 (UTC)
-IronPort-SDR: KYmEbN8f9J81Hd3FF0DaAyQ3I9oNeFHHMzN+AuZ5hwEMTYjVrsyWhstm3XggoMMULItmW2XYC0
- FC5pIJiPLMYA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9987"; a="198608743"
-X-IronPort-AV: E=Sophos;i="5.82,307,1613462400"; d="scan'208";a="198608743"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2ECD983EE0
+ for <devel@driverdev.osuosl.org>; Mon, 17 May 2021 20:13:13 +0000 (UTC)
+IronPort-SDR: FVgjfp594M84lm8pQIS9frQsuvPDPyyyXhaWxibzmUkx+BVR5B9Xi1qx59DOZW8DK9iR86T4Ti
+ YludgxaWLq5A==
+X-IronPort-AV: E=McAfee;i="6200,9189,9987"; a="200609250"
+X-IronPort-AV: E=Sophos;i="5.82,307,1613462400"; d="scan'208";a="200609250"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  17 May 2021 13:13:12 -0700
-IronPort-SDR: MGBITUS6At8YhKdF8TGNclZUDnuoMLkp61xey0tlRtHQAOJ+0HUne8b3/3nmgnJWVdryGtfawV
- nmlTHfSN3+4g==
+IronPort-SDR: 8wcNYA71unToydfbABaguSB7a4/Xi/cood1YUTHjgHVLQEL/yplL5IYHYaGh8gLtImptlU+7Dr
+ Ztd0O5hCzhIw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,307,1613462400"; d="scan'208";a="626788431"
+X-IronPort-AV: E=Sophos;i="5.82,307,1613462400"; d="scan'208";a="466035029"
 Received: from lkp-server01.sh.intel.com (HELO ddd90b05c979) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 17 May 2021 13:13:10 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 17 May 2021 13:13:10 -0700
 Received: from kbuild by ddd90b05c979 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lijby-0001se-AP; Mon, 17 May 2021 20:13:10 +0000
-Date: Tue, 18 May 2021 04:12:56 +0800
+ id 1lijby-0001sY-8x; Mon, 17 May 2021 20:13:10 +0000
+Date: Tue, 18 May 2021 04:13:01 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS WITH WARNING
- d8218b0de51f36f01ed67731ccf174059a33bb1e
-Message-ID: <60a2ce48.G47zkbFzjEdyhHmw%lkp@intel.com>
+Subject: [driver-core:kbuild] BUILD SUCCESS
+ a09f3f9e3536c80bc02dbfb7883d91cc2a5c4621
+Message-ID: <60a2ce4d.Mx4iySPTANywEsZr%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,133 +73,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: d8218b0de51f36f01ed67731ccf174059a33bb1e  Merge 5.13-rc2 into staging-next
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kbuild
+branch HEAD: a09f3f9e3536c80bc02dbfb7883d91cc2a5c4621  kbuild: allow arches to have their own "bootloader.sh"
 
-possible Warning in current branch:
+elapsed time: 723m
 
-drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:2134:6: warning: variable 'u4Tmp' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:2135:17: warning: variable 'u1Tmpb' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c:2135:5: warning: variable 'u1Tmpa' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:3895:18: warning: variable 'ra_info2' set but not used [-Wunused-but-set-variable]
-drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:3895:8: warning: variable 'ra_info1' set but not used [-Wunused-but-set-variable]
-
-Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- alpha-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- alpha-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- arc-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- arm-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- arm-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- h8300-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- i386-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- ia64-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- ia64-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- mips-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- mips-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- nds32-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- parisc-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- powerpc-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- powerpc-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- sh-allmodconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-|-- sparc-allyesconfig
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-|   |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-|   `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-`-- xtensa-allyesconfig
-    |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpa-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u1Tmpb-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-HalBtc8723b1Ant.c:warning:variable-u4Tmp-set-but-not-used
-    |-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info1-set-but-not-used
-    `-- drivers-staging-rtl8723bs-hal-rtl8723b_hal_init.c:warning:variable-ra_info2-set-but-not-used
-
-elapsed time: 722m
-
-configs tested: 109
+configs tested: 152
 configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
 gcc tested configs:
 arm                                 defconfig
@@ -207,61 +90,105 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-arm                          moxart_defconfig
-openrisc                         alldefconfig
-m68k                          multi_defconfig
+arm                           stm32_defconfig
+mips                        nlm_xlr_defconfig
+mips                      loongson3_defconfig
 sh                        edosk7705_defconfig
+m68k                                defconfig
+sh                        edosk7760_defconfig
+m68k                       m5249evb_defconfig
+x86_64                           alldefconfig
+powerpc                    ge_imp3a_defconfig
+mips                     cu1000-neo_defconfig
+mips                           ip22_defconfig
+sh                          rsk7201_defconfig
+arm                       aspeed_g5_defconfig
+mips                           rs90_defconfig
+mips                          rb532_defconfig
+s390                             alldefconfig
 nds32                             allnoconfig
 arm                       cns3420vb_defconfig
 powerpc                        warp_defconfig
 arm                          badge4_defconfig
+arc                    vdk_hs38_smp_defconfig
+m68k                         amcore_defconfig
+arm                        keystone_defconfig
+um                                  defconfig
+sh                      rts7751r2d1_defconfig
+powerpc                      pasemi_defconfig
+nios2                         10m50_defconfig
+arm                      pxa255-idp_defconfig
+sh                           se7619_defconfig
 arm                         cm_x300_defconfig
 sh                           se7750_defconfig
-powerpc                    ge_imp3a_defconfig
 sh                                  defconfig
 sh                           se7712_defconfig
 mips                           ip32_defconfig
+arm                           u8500_defconfig
+arm                          iop32x_defconfig
+powerpc                 mpc85xx_cds_defconfig
+nios2                         3c120_defconfig
+arm                         socfpga_defconfig
+powerpc                 mpc8560_ads_defconfig
+ia64                        generic_defconfig
+xtensa                              defconfig
 mips                         rt305x_defconfig
 arc                          axs101_defconfig
-nios2                         3c120_defconfig
 arm                         lpc18xx_defconfig
 sh                         apsh4a3a_defconfig
 sh                           sh2007_defconfig
+i386                             allyesconfig
+m68k                       bvme6000_defconfig
+arm                          ixp4xx_defconfig
+arm                          collie_defconfig
+powerpc                    amigaone_defconfig
+arc                      axs103_smp_defconfig
+riscv                            alldefconfig
+ia64                      gensparse_defconfig
+mips                     decstation_defconfig
+mips                       lemote2f_defconfig
 s390                       zfcpdump_defconfig
 arm                            zeus_defconfig
 ia64                          tiger_defconfig
 csky                             alldefconfig
 xtensa                       common_defconfig
+arc                         haps_hs_defconfig
+alpha                               defconfig
+openrisc                    or1ksim_defconfig
+arc                                 defconfig
+arm                            qcom_defconfig
+arc                 nsimosci_hs_smp_defconfig
+sparc64                             defconfig
 m68k                          amiga_defconfig
-m68k                       m5249evb_defconfig
 sh                            titan_defconfig
 m68k                            mac_defconfig
 arm                            mps2_defconfig
 mips                         cobalt_defconfig
+arm                            lart_defconfig
+mips                          malta_defconfig
+m68k                       m5275evb_defconfig
+powerpc                     tqm8548_defconfig
+sh                          lboxre2_defconfig
 x86_64                            allnoconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
 m68k                             allmodconfig
-m68k                                defconfig
 m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
 nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
-alpha                               defconfig
 alpha                            allyesconfig
 xtensa                           allyesconfig
 h8300                            allyesconfig
-arc                                 defconfig
 sh                               allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
 parisc                              defconfig
 s390                             allyesconfig
 s390                             allmodconfig
 parisc                           allyesconfig
 s390                                defconfig
-i386                             allyesconfig
 sparc                            allyesconfig
 sparc                               defconfig
 i386                                defconfig
@@ -298,7 +225,6 @@ riscv                            allmodconfig
 um                               allmodconfig
 um                                allnoconfig
 um                               allyesconfig
-um                                  defconfig
 x86_64                           allyesconfig
 x86_64                    rhel-8.3-kselftests
 x86_64                              defconfig
