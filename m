@@ -1,53 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C91A9387F26
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 May 2021 19:59:41 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DDD9F3884F4
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 May 2021 04:52:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B8E6260B7B;
-	Tue, 18 May 2021 17:59:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E86F483EE1;
+	Wed, 19 May 2021 02:52:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k2ys86rChy4t; Tue, 18 May 2021 17:59:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kNb4bdHSP1XQ; Wed, 19 May 2021 02:52:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2F66060B69;
-	Tue, 18 May 2021 17:59:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6601183DC3;
+	Wed, 19 May 2021 02:52:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EAFDF1BF282
- for <devel@linuxdriverproject.org>; Tue, 18 May 2021 17:59:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EB5291BF966
+ for <devel@linuxdriverproject.org>; Wed, 19 May 2021 02:52:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DA28060A42
- for <devel@linuxdriverproject.org>; Tue, 18 May 2021 17:59:28 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DA5D9400A7
+ for <devel@linuxdriverproject.org>; Wed, 19 May 2021 02:52:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tTX9uNRVRLDe for <devel@linuxdriverproject.org>;
- Tue, 18 May 2021 17:59:28 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uJ1p_Jnps4DY for <devel@linuxdriverproject.org>;
+ Wed, 19 May 2021 02:52:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6A61E60907
- for <devel@driverdev.osuosl.org>; Tue, 18 May 2021 17:59:28 +0000 (UTC)
-Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
- [81.101.6.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C6404601FE;
- Tue, 18 May 2021 17:59:24 +0000 (UTC)
-Date: Tue, 18 May 2021 19:00:42 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] staging: iio: cdc: ad7746: Remove unnecessary
- assignment in ad7746_probe()
-Message-ID: <20210518190042.1666ca00@jic23-huawei>
-In-Reply-To: <20210518101626.GO1955@kadam>
-References: <20210518095647.3008-1-tangbin@cmss.chinamobile.com>
- <20210518101626.GO1955@kadam>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Received: from mk.mickynuh.top (unknown [43.226.73.90])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1D534400A8
+ for <devel@linuxdriverproject.org>; Wed, 19 May 2021 02:52:28 +0000 (UTC)
+Received: from DESKTOP-BKSKR2J (183.198.37.136) by mk.mickynuh.top id
+ hkhumq0e97ca for <devel@linuxdriverproject.org>;
+ Wed, 19 May 2021 10:52:23 +0800 (envelope-from <mk5@mk.mickynuh.top>)
+From: "Ms.Chris" <sales@dc-graphite.com>
+Subject: Differnt grades different size graphite block 1.78/1.80/1.85/1.91
+To: devel@linuxdriverproject.org
 MIME-Version: 1.0
+Date: Wed, 19 May 2021 10:52:23 +0800
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+Content-Disposition: inline
+Message-Id: <20210519025231.DA5D9400A7@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,36 +56,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, lars@metafoo.de, Michael.Hennerich@analog.com,
- Tang Bin <tangbin@cmss.chinamobile.com>, linux-iio@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, pmeerw@pmeerw.net,
- knaack.h@gmx.de, Lucas Stankus <lucas.p.stankus@gmail.com>
+Reply-To: sales@dc-graphite.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 18 May 2021 13:16:26 +0300
-Dan Carpenter <dan.carpenter@oracle.com> wrote:
-
-> On Tue, May 18, 2021 at 05:56:47PM +0800, Tang Bin wrote:
-> > In the function ad7746_probe(), the initialized value of 'ret' is unused,
-> > because it will be assigned by the function i2c_smbus_write_byte_data(),
-> > thus remove it.
-> > 
-> > Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>  
-> 
-> Thanks!
-> 
-> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
-> regards,
-> dan carpenter
-> 
-As this doesn't (I think) overlap with Lucas' series I've applied this
-one to the togreg branch of iio.git and pushed it out as testing for the
-autobuilders to see if we missed anything.
-
+Dear Sirs,
+We are the professional manufacturer of graphite block,graphite rod, graphite plate,and graphite mold.
+make it according to your drawing and sizes. We can make different grades,Such as:density for 1.78g,1.80g,1.85g,1.91g/cm3. Block size:500*300*200mm,510*310*250mm,540*310*250mm,910*310*310mm.
+Do you have any requirements for our products?
+Welcome to your enquiry.
+Thanks
+Chris
+Wechat/Whatsapp: 15010322402
+Website: Http://www.chinagraphitefactory.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
