@@ -1,84 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0162638C931
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 May 2021 16:27:23 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5335338CE11
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 May 2021 21:20:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 36114844E8;
-	Fri, 21 May 2021 14:27:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 25D494047F;
+	Fri, 21 May 2021 19:20:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0rcrTHskuJCp; Fri, 21 May 2021 14:27:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nzPgNWWI_vS3; Fri, 21 May 2021 19:19:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A0286844DC;
-	Fri, 21 May 2021 14:27:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7245540461;
+	Fri, 21 May 2021 19:19:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BCA511BF292
- for <devel@linuxdriverproject.org>; Fri, 21 May 2021 14:27:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C0741BF35E
+ for <devel@linuxdriverproject.org>; Fri, 21 May 2021 19:19:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AB4D960AE5
- for <devel@linuxdriverproject.org>; Fri, 21 May 2021 14:27:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 017B54043D
+ for <devel@linuxdriverproject.org>; Fri, 21 May 2021 19:19:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A5a3RTdLe793 for <devel@linuxdriverproject.org>;
- Fri, 21 May 2021 14:27:02 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
- [IPv6:2a00:1450:4864:20::636])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 55E0B60AC7
- for <devel@driverdev.osuosl.org>; Fri, 21 May 2021 14:27:02 +0000 (UTC)
-Received: by mail-ej1-x636.google.com with SMTP id l1so30776869ejb.6
- for <devel@driverdev.osuosl.org>; Fri, 21 May 2021 07:27:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=bC+BVk3asPi+ZUSMC7dnd7LCiXtnDQzjMHToiE60iIU=;
- b=Q+e4cetFdem0uXv+wJ4p3ocTcJZemU9N1cNx0HpMmdTfOuf33wJTBLumfOhp0ckd21
- V4riwBbT/3XZiyOWCKkMecMEV6sqs+THmqHGaT9kUndyyoTZJGoZ5tnT+mrg7bF2vpgL
- 0QKd+4MnXcnb6rRu5JwMbAvREYaQx+DqGhEZy5jm3kzVbVwzJ5KWK2bxy06pKH3hD3yD
- 0DwywQsDBtoBnyr/0Tb8oi2J5CnqD0aNHam1L5q3jWucXC/GhXMPk3nn1kXa5LvzGSHN
- rq4mgVLF1qF93NepNwPdOkuGFL3z4DZ5t/dNMcRu45gW/xxEMmmK+bpdNMxhaXLzXmzV
- epFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=bC+BVk3asPi+ZUSMC7dnd7LCiXtnDQzjMHToiE60iIU=;
- b=RKrPxGaBlg2WNJgFdznSBHYMBTUWCA4NnqYLwkO4k/qb/VJDoBoDQVpjlfcqTPsZPd
- hpBgzA5iohEchWGDkms2Xs7dhpOYbIilhq9jS2FlOZNz4Xj9sB+hiPraxThyMeDv2Nqo
- IBA90X46C8HQNesg74wGDZNAiubD/zBQyogX23ZT5LlOzTGpNxWwWeyE+gF0m8f3q4Ua
- 6Hvpj7kIDkkLuL+ldT2JSPZ65vvNpCf4rAi3NrGmZ0Y3e5AchwXO/OwXZT9+ILX+5Mns
- 6cFeoeVP7aWcakxbadeeoI63jiFCrKHPIV1ywSw8uNnYx15zbWdC8uUevieplTFc+01r
- c4pw==
-X-Gm-Message-State: AOAM530cgbz7qOJxix5ndvZio711DVjWBV6SPjsWsYnkeBYoA5D051oM
- KMW/px3VTw8Yb15+emR8vnc=
-X-Google-Smtp-Source: ABdhPJy5pt4u5Ggi5ifHIcrGgvD1bsNH4yCoax/nIn2y3JTf5wBm9rHRnHUoLSAUDayKjr0hjXS9zQ==
-X-Received: by 2002:a17:906:7c9:: with SMTP id
- m9mr10446393ejc.98.1621607220367; 
- Fri, 21 May 2021 07:27:00 -0700 (PDT)
-Received: from agape.jhs ([109.52.244.91])
- by smtp.gmail.com with ESMTPSA id bh3sm3564556ejb.19.2021.05.21.07.26.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 May 2021 07:27:00 -0700 (PDT)
-Date: Fri, 21 May 2021 16:26:57 +0200
-From: Fabio Aiuto <fabioaiuto83@gmail.com>
-To: kernel test robot <lkp@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UqKD3TZC3EXF for <devel@linuxdriverproject.org>;
+ Fri, 21 May 2021 19:19:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C0E5140411
+ for <devel@driverdev.osuosl.org>; Fri, 21 May 2021 19:19:44 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EFBE5613B6;
+ Fri, 21 May 2021 19:19:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1621624784;
+ bh=2jgPuCMh6DNVb+v5KoJAWpJIS0hI+x4QzG/m9B4y6nI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=KShRBID3uIMaLnqx4Y2mUYZm6aHeny+LLF5oHh1qtOiAhu5HUbvdPSRDw/CnNOiz8
+ 6WiHoRYRvkncpIfgMPTfNDaqDZHo3ALIwMJyr3FytbdVjq4/5BM3Y1/ohpa8mPcLVj
+ tC3PAS6T6Fp/KQMwA9dTXRZ8oyq1+gGKRoU6RzukjoyHpRgkDjZxlMlrNUFzQWwB8b
+ DfrFJVo10clqI9dkmhNR8iJ7hWRwu7cZAzXnUIbut7W68CyXemb442RUQwzFUyKj3b
+ iXBxaPmmj1VKo5vADHf2/0oHpRJbNXXewG3Fo6oBjubGdlOmnAsyUGBytffysyGplY
+ xTQ5eurVJ16ww==
+Date: Fri, 21 May 2021 12:19:39 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Fabio Aiuto <fabioaiuto83@gmail.com>
 Subject: Re: [staging:staging-next 201/268]
  drivers/staging/rtl8723bs/core/rtw_security.c:89:6: warning: stack frame
  size of 1120 bytes in function 'rtw_wep_encrypt'
-Message-ID: <20210521142656.GA1409@agape.jhs>
+Message-ID: <YKgHy7ZNNxv/KMl8@archlinux-ax161>
 References: <202105201711.QuzeTqRK-lkp@intel.com>
+ <20210521142656.GA1409@agape.jhs>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <202105201711.QuzeTqRK-lkp@intel.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20210521142656.GA1409@agape.jhs>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,48 +69,85 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, clang-built-linux@googlegroups.com,
  kbuild-all@lists.01.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi robot,
-
-On Thu, May 20, 2021 at 05:03:14PM +0800, kernel test robot wrote:
-> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-> head:   b9f38e913a926b455e5048a95f53a993b515509f
-> commit: 1b11e893eda0907fc9b28696271e2d9c4337e42d [201/268] staging: rtl8723bs: replace private arc4 encryption with in-kernel one
-> config: powerpc64-randconfig-r011-20210520 (attached as .config)
-> compiler: clang version 13.0.0 (https://github.com/llvm/llvm-project bf9ef3efaa99c02e7bfc4c57207301b8de39a278)
-> reproduce (this is a W=1 build):
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # install powerpc64 cross compiling tool for clang build
->         # apt-get install binutils-powerpc64-linux-gnu
->         # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=1b11e893eda0907fc9b28696271e2d9c4337e42d
->         git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
->         git fetch --no-tags staging staging-next
->         git checkout 1b11e893eda0907fc9b28696271e2d9c4337e42d
->         # save the attached .config to linux build tree
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross ARCH=powerpc64 
-
-can't compile this, I get the following error:
-
-make CONFIG_OF_ALL_DTBS=y CONFIG_DTC=y HOSTCC=/home/fabio/0day/clang/bin/clang CC=/home/fabio/0day/clang/bin/clang LD=/home/fabio/0day/clang/bin/ld.lld HOSTLD=/home/fabio/0day/clang/bin/ld.lld AR=/home/fabio/0day/clang/bin/llvm-ar NM=/home/fabio/0day/clang/bin/llvm-nm STRIP=/home/fabio/0day/clang/bin/llvm-strip OBJDUMP=/home/fabio/0day/clang/bin/llvm-objdump OBJSIZE=/home/fabio/0day/clang/bin/llvm-size READELF=/home/fabio/0day/clang/bin/llvm-readelf HOSTCXX=/home/fabio/0day/clang/bin/clang++ HOSTAR=/home/fabio/0day/clang/bin/llvm-ar CROSS_COMPILE=powerpc-linux-gnu- --jobs=8 LLVM_IAS=1 ARCH=powerpc drivers/staging/rtl8723bs/
-  CC      scripts/mod/empty.o
-clang: error: unsupported argument '-me500' to option 'Wa,'
-make[1]: *** [scripts/Makefile.build:272: scripts/mod/empty.o] Error 1
-make[1]: *** Attesa per i processi non terminati....
-make: *** [Makefile:1226: prepare0] Error 2
-
-moreover I had to add LLVM_IAS=1, and ARCH=powerpc64 is not a valid architecture (used powerpc instead).
-
-Could you help me?
-
-thank you,
-
-fabio
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGkgRmFiaW8sCgpPbiBGcmksIE1heSAyMSwgMjAyMSBhdCAwNDoyNjo1N1BNICswMjAwLCBGYWJp
+byBBaXV0byB3cm90ZToKPiBIaSByb2JvdCwKPiAKPiBPbiBUaHUsIE1heSAyMCwgMjAyMSBhdCAw
+NTowMzoxNFBNICswODAwLCBrZXJuZWwgdGVzdCByb2JvdCB3cm90ZToKPiA+IHRyZWU6ICAgaHR0
+cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvZ3JlZ2toL3N0YWdp
+bmcuZ2l0IHN0YWdpbmctbmV4dAo+ID4gaGVhZDogICBiOWYzOGU5MTNhOTI2YjQ1NWU1MDQ4YTk1
+ZjUzYTk5M2I1MTU1MDlmCj4gPiBjb21taXQ6IDFiMTFlODkzZWRhMDkwN2ZjOWIyODY5NjI3MWUy
+ZDljNDMzN2U0MmQgWzIwMS8yNjhdIHN0YWdpbmc6IHJ0bDg3MjNiczogcmVwbGFjZSBwcml2YXRl
+IGFyYzQgZW5jcnlwdGlvbiB3aXRoIGluLWtlcm5lbCBvbmUKPiA+IGNvbmZpZzogcG93ZXJwYzY0
+LXJhbmRjb25maWctcjAxMS0yMDIxMDUyMCAoYXR0YWNoZWQgYXMgLmNvbmZpZykKPiA+IGNvbXBp
+bGVyOiBjbGFuZyB2ZXJzaW9uIDEzLjAuMCAoaHR0cHM6Ly9naXRodWIuY29tL2xsdm0vbGx2bS1w
+cm9qZWN0IGJmOWVmM2VmYWE5OWMwMmU3YmZjNGM1NzIwNzMwMWI4ZGUzOWEyNzgpCj4gPiByZXBy
+b2R1Y2UgKHRoaXMgaXMgYSBXPTEgYnVpbGQpOgo+ID4gICAgICAgICB3Z2V0IGh0dHBzOi8vcmF3
+LmdpdGh1YnVzZXJjb250ZW50LmNvbS9pbnRlbC9sa3AtdGVzdHMvbWFzdGVyL3NiaW4vbWFrZS5j
+cm9zcyAtTyB+L2Jpbi9tYWtlLmNyb3NzCj4gPiAgICAgICAgIGNobW9kICt4IH4vYmluL21ha2Uu
+Y3Jvc3MKPiA+ICAgICAgICAgIyBpbnN0YWxsIHBvd2VycGM2NCBjcm9zcyBjb21waWxpbmcgdG9v
+bCBmb3IgY2xhbmcgYnVpbGQKPiA+ICAgICAgICAgIyBhcHQtZ2V0IGluc3RhbGwgYmludXRpbHMt
+cG93ZXJwYzY0LWxpbnV4LWdudQo+ID4gICAgICAgICAjIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcv
+cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2dyZWdraC9zdGFnaW5nLmdpdC9jb21taXQvP2lkPTFi
+MTFlODkzZWRhMDkwN2ZjOWIyODY5NjI3MWUyZDljNDMzN2U0MmQKPiA+ICAgICAgICAgZ2l0IHJl
+bW90ZSBhZGQgc3RhZ2luZyBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2Vy
+bmVsL2dpdC9ncmVna2gvc3RhZ2luZy5naXQKPiA+ICAgICAgICAgZ2l0IGZldGNoIC0tbm8tdGFn
+cyBzdGFnaW5nIHN0YWdpbmctbmV4dAo+ID4gICAgICAgICBnaXQgY2hlY2tvdXQgMWIxMWU4OTNl
+ZGEwOTA3ZmM5YjI4Njk2MjcxZTJkOWM0MzM3ZTQyZAo+ID4gICAgICAgICAjIHNhdmUgdGhlIGF0
+dGFjaGVkIC5jb25maWcgdG8gbGludXggYnVpbGQgdHJlZQo+ID4gICAgICAgICBDT01QSUxFUl9J
+TlNUQUxMX1BBVEg9JEhPTUUvMGRheSBDT01QSUxFUj1jbGFuZyBtYWtlLmNyb3NzIEFSQ0g9cG93
+ZXJwYzY0IAo+IAo+IGNhbid0IGNvbXBpbGUgdGhpcywgSSBnZXQgdGhlIGZvbGxvd2luZyBlcnJv
+cjoKPiAKPiBtYWtlIENPTkZJR19PRl9BTExfRFRCUz15IENPTkZJR19EVEM9eSBIT1NUQ0M9L2hv
+bWUvZmFiaW8vMGRheS9jbGFuZy9iaW4vY2xhbmcgQ0M9L2hvbWUvZmFiaW8vMGRheS9jbGFuZy9i
+aW4vY2xhbmcgTEQ9L2hvbWUvZmFiaW8vMGRheS9jbGFuZy9iaW4vbGQubGxkIEhPU1RMRD0vaG9t
+ZS9mYWJpby8wZGF5L2NsYW5nL2Jpbi9sZC5sbGQgQVI9L2hvbWUvZmFiaW8vMGRheS9jbGFuZy9i
+aW4vbGx2bS1hciBOTT0vaG9tZS9mYWJpby8wZGF5L2NsYW5nL2Jpbi9sbHZtLW5tIFNUUklQPS9o
+b21lL2ZhYmlvLzBkYXkvY2xhbmcvYmluL2xsdm0tc3RyaXAgT0JKRFVNUD0vaG9tZS9mYWJpby8w
+ZGF5L2NsYW5nL2Jpbi9sbHZtLW9iamR1bXAgT0JKU0laRT0vaG9tZS9mYWJpby8wZGF5L2NsYW5n
+L2Jpbi9sbHZtLXNpemUgUkVBREVMRj0vaG9tZS9mYWJpby8wZGF5L2NsYW5nL2Jpbi9sbHZtLXJl
+YWRlbGYgSE9TVENYWD0vaG9tZS9mYWJpby8wZGF5L2NsYW5nL2Jpbi9jbGFuZysrIEhPU1RBUj0v
+aG9tZS9mYWJpby8wZGF5L2NsYW5nL2Jpbi9sbHZtLWFyIENST1NTX0NPTVBJTEU9cG93ZXJwYy1s
+aW51eC1nbnUtIC0tam9icz04IExMVk1fSUFTPTEgQVJDSD1wb3dlcnBjIGRyaXZlcnMvc3RhZ2lu
+Zy9ydGw4NzIzYnMvCj4gICBDQyAgICAgIHNjcmlwdHMvbW9kL2VtcHR5Lm8KPiBjbGFuZzogZXJy
+b3I6IHVuc3VwcG9ydGVkIGFyZ3VtZW50ICctbWU1MDAnIHRvIG9wdGlvbiAnV2EsJwo+IG1ha2Vb
+MV06ICoqKiBbc2NyaXB0cy9NYWtlZmlsZS5idWlsZDoyNzI6IHNjcmlwdHMvbW9kL2VtcHR5Lm9d
+IEVycm9yIDEKPiBtYWtlWzFdOiAqKiogQXR0ZXNhIHBlciBpIHByb2Nlc3NpIG5vbiB0ZXJtaW5h
+dGkuLi4uCj4gbWFrZTogKioqIFtNYWtlZmlsZToxMjI2OiBwcmVwYXJlMF0gRXJyb3IgMgo+IAo+
+IG1vcmVvdmVyIEkgaGFkIHRvIGFkZCBMTFZNX0lBUz0xLCBhbmQgQVJDSD1wb3dlcnBjNjQgaXMg
+bm90IGEgdmFsaWQgYXJjaGl0ZWN0dXJlICh1c2VkIHBvd2VycGMgaW5zdGVhZCkuCj4gCj4gQ291
+bGQgeW91IGhlbHAgbWU/Cj4gCgpUaGlzIGlzIG5vdCBhIGNsYW5nIHNwZWNpZmljIGlzc3VlLCBJ
+IHdvdWxkIG5vdCBib3RoZXIgd2l0aCB0cnlpbmcgdG8KdXNlIHRoZSBib3QncyByZXByb2R1Y2Vy
+IHN0ZXBzLgoKSSBjYW4gcmVwcm9kdWNlIGl0IHdpdGggR0NDIDExLjEuMCB1c2luZyB0aGUgZm9s
+bG93aW5nIGNvbW1hbmRzOgoKJCBtYWtlIC1za2oiJChucHJvYykiIEFSQ0g9aTM4NiBkZWZjb25m
+aWcKCiQgc2NyaXB0cy9jb25maWcgLWUgTU1DIC1lIFNUQUdJTkcgLW0gUlRMODcyM0JTCgokIG1h
+a2UgLXNraiIkKG5wcm9jKSIgQVJDSD1pMzg2IG9sZGRlZmNvbmZpZyBkcml2ZXJzL3N0YWdpbmcv
+cnRsODcyM2JzLwpkcml2ZXJzL3N0YWdpbmcvcnRsODcyM2JzL2NvcmUvcnR3X3NlY3VyaXR5LmM6
+IEluIGZ1bmN0aW9uIOKAmHJ0d193ZXBfZW5jcnlwdOKAmToKZHJpdmVycy9zdGFnaW5nL3J0bDg3
+MjNicy9jb3JlL3J0d19zZWN1cml0eS5jOjkxOjE6IHdhcm5pbmc6IHRoZSBmcmFtZSBzaXplIG9m
+IDEwODQgYnl0ZXMgaXMgbGFyZ2VyIHRoYW4gMTAyNCBieXRlcyBbLVdmcmFtZS1sYXJnZXItdGhh
+bj1dCiAgIDkxIHwgfQogICAgICB8IF4KZHJpdmVycy9zdGFnaW5nL3J0bDg3MjNicy9jb3JlL3J0
+d19zZWN1cml0eS5jOiBJbiBmdW5jdGlvbiDigJhydHdfd2VwX2RlY3J5cHTigJk6CmRyaXZlcnMv
+c3RhZ2luZy9ydGw4NzIzYnMvY29yZS9ydHdfc2VjdXJpdHkuYzoxMjg6MTogd2FybmluZzogdGhl
+IGZyYW1lIHNpemUgb2YgMTA2MCBieXRlcyBpcyBsYXJnZXIgdGhhbiAxMDI0IGJ5dGVzIFstV2Zy
+YW1lLWxhcmdlci10aGFuPV0KICAxMjggfCB9CiAgICAgIHwgXgpkcml2ZXJzL3N0YWdpbmcvcnRs
+ODcyM2JzL2NvcmUvcnR3X3NlY3VyaXR5LmM6IEluIGZ1bmN0aW9uIOKAmHJ0d190a2lwX2VuY3J5
+cHTigJk6CmRyaXZlcnMvc3RhZ2luZy9ydGw4NzIzYnMvY29yZS9ydHdfc2VjdXJpdHkuYzo1MzE6
+MTogd2FybmluZzogdGhlIGZyYW1lIHNpemUgb2YgMTExMiBieXRlcyBpcyBsYXJnZXIgdGhhbiAx
+MDI0IGJ5dGVzIFstV2ZyYW1lLWxhcmdlci10aGFuPV0KICA1MzEgfCB9CiAgICAgIHwgXgpkcml2
+ZXJzL3N0YWdpbmcvcnRsODcyM2JzL2NvcmUvcnR3X3NlY3VyaXR5LmM6IEluIGZ1bmN0aW9uIOKA
+mHJ0d190a2lwX2RlY3J5cHTigJk6CmRyaXZlcnMvc3RhZ2luZy9ydGw4NzIzYnMvY29yZS9ydHdf
+c2VjdXJpdHkuYzo2MzM6MTogd2FybmluZzogdGhlIGZyYW1lIHNpemUgb2YgMTA4NCBieXRlcyBp
+cyBsYXJnZXIgdGhhbiAxMDI0IGJ5dGVzIFstV2ZyYW1lLWxhcmdlci10aGFuPV0KICA2MzMgfCB9
+CiAgICAgIHwgXgoKWW91ciBjb21taXQgaW50cm9kdWNlZCB0aGlzIGJlY2F1c2UgdGhlIHNpemUg
+b2YgdGhlIGFyYzRfY3R4IHN0cnVjdHVyZQppcyAxMDMyIGJ5dGVzIHNvIGFsbG9jYXRpbmcgaXQg
+b24gdGhlIHN0YWNrIHdpbGwgY2F1c2UgaXQgdG8gZ28gb3ZlciB0aGUKMzItYml0IGxpbWl0IG9m
+IDEwMjQgYnl0ZXMuIFRoZSBwcmV2aW91cyBhcmM0Y29udGV4dCB3YXMgb25seSAyNjQgYnl0ZXMu
+CkZvciB0aGF0IGxhcmdlIG9mIHN0cnVjdHVyZSwgSSB3b3VsZCByZWNvbW1lbmQgYWxsb2NhdGlu
+ZyBpdCBvbiB0aGUgaGVhcAp3aXRoIGt6YWxsb2MoKSBhbmQgZnJlZWluZyB3aXRoIGtmcmVlX3Nl
+bnNpdGl2ZSgpLgoKQ2hlZXJzLApOYXRoYW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
