@@ -1,94 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85F3438C544
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 May 2021 12:52:49 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0162638C931
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 May 2021 16:27:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DC38C60DE9;
-	Fri, 21 May 2021 10:52:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 36114844E8;
+	Fri, 21 May 2021 14:27:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Soz8h2TCF9qD; Fri, 21 May 2021 10:52:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0rcrTHskuJCp; Fri, 21 May 2021 14:27:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3444860DDA;
-	Fri, 21 May 2021 10:52:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A0286844DC;
+	Fri, 21 May 2021 14:27:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 11ABC1BF302
- for <devel@linuxdriverproject.org>; Fri, 21 May 2021 10:52:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BCA511BF292
+ for <devel@linuxdriverproject.org>; Fri, 21 May 2021 14:27:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0E10360DDA
- for <devel@linuxdriverproject.org>; Fri, 21 May 2021 10:52:37 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AB4D960AE5
+ for <devel@linuxdriverproject.org>; Fri, 21 May 2021 14:27:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pQLjGTmzU5X2 for <devel@linuxdriverproject.org>;
- Fri, 21 May 2021 10:52:35 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BA6D160DCF
- for <devel@driverdev.osuosl.org>; Fri, 21 May 2021 10:52:35 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 14LAnODi086105;
- Fri, 21 May 2021 10:52:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=0Jjud9746+KvN80q/qs8axWUfdliXQL13Z5+q/QBesE=;
- b=fMAYwqkTld88VUACoDCt6CAe1Mo1goQIN5DkESnWtCNNBwe9cLh5/iTD7n6GpBBWmcqn
- iO1rxeEiHVHP9U+OnWnmPQJh9m91rzkW8kvdZvswtYFUSxi7yoBqv5xDnJx0Vifj/kUC
- VWv46yTBt4zDipp5JTi/qE9ls8Ds9/gY1j+mxyblo0QHKiIt81AlvMFg8miLXUCeVp4e
- heBdQdkYwb4VWUXcM4Wz0wX6O+a1MnPhyy5nFDQt19g0hM1y5F3bme2c10N3EQbVFju1
- JreHY5RCMRUaSbR31xVExoMeLVuFj45DMeNwk+Z5ZhKpF4q6yE7gCfgv+pcFV2WyKuUe ZQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 38j6xnq9mm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 21 May 2021 10:52:34 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 14LAoYF0188999;
- Fri, 21 May 2021 10:52:33 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by userp3030.oracle.com with ESMTP id 38megnes9r-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 21 May 2021 10:52:33 +0000
-Received: from userp3030.oracle.com (userp3030.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 14LAqXH8191697;
- Fri, 21 May 2021 10:52:33 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 38megnes9b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 21 May 2021 10:52:33 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 14LAqTus029316;
- Fri, 21 May 2021 10:52:30 GMT
-Received: from kadam (/41.212.42.34) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 21 May 2021 03:52:29 -0700
-Date: Fri, 21 May 2021 13:52:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Deepak R Varma <drv@mailo.com>
-Subject: Re: [PATCH 3/5] staging: media: atomisp: code formatting changes
- sh_css_params.c
-Message-ID: <20210521105222.GJ1955@kadam>
-References: <cover.1619850663.git.drv@mailo.com>
- <6bc123d66150ccaa6dc6fdf2f11c8669e2f493e2.1619850663.git.drv@mailo.com>
+ with ESMTP id A5a3RTdLe793 for <devel@linuxdriverproject.org>;
+ Fri, 21 May 2021 14:27:02 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
+ [IPv6:2a00:1450:4864:20::636])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 55E0B60AC7
+ for <devel@driverdev.osuosl.org>; Fri, 21 May 2021 14:27:02 +0000 (UTC)
+Received: by mail-ej1-x636.google.com with SMTP id l1so30776869ejb.6
+ for <devel@driverdev.osuosl.org>; Fri, 21 May 2021 07:27:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=bC+BVk3asPi+ZUSMC7dnd7LCiXtnDQzjMHToiE60iIU=;
+ b=Q+e4cetFdem0uXv+wJ4p3ocTcJZemU9N1cNx0HpMmdTfOuf33wJTBLumfOhp0ckd21
+ V4riwBbT/3XZiyOWCKkMecMEV6sqs+THmqHGaT9kUndyyoTZJGoZ5tnT+mrg7bF2vpgL
+ 0QKd+4MnXcnb6rRu5JwMbAvREYaQx+DqGhEZy5jm3kzVbVwzJ5KWK2bxy06pKH3hD3yD
+ 0DwywQsDBtoBnyr/0Tb8oi2J5CnqD0aNHam1L5q3jWucXC/GhXMPk3nn1kXa5LvzGSHN
+ rq4mgVLF1qF93NepNwPdOkuGFL3z4DZ5t/dNMcRu45gW/xxEMmmK+bpdNMxhaXLzXmzV
+ epFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=bC+BVk3asPi+ZUSMC7dnd7LCiXtnDQzjMHToiE60iIU=;
+ b=RKrPxGaBlg2WNJgFdznSBHYMBTUWCA4NnqYLwkO4k/qb/VJDoBoDQVpjlfcqTPsZPd
+ hpBgzA5iohEchWGDkms2Xs7dhpOYbIilhq9jS2FlOZNz4Xj9sB+hiPraxThyMeDv2Nqo
+ IBA90X46C8HQNesg74wGDZNAiubD/zBQyogX23ZT5LlOzTGpNxWwWeyE+gF0m8f3q4Ua
+ 6Hvpj7kIDkkLuL+ldT2JSPZ65vvNpCf4rAi3NrGmZ0Y3e5AchwXO/OwXZT9+ILX+5Mns
+ 6cFeoeVP7aWcakxbadeeoI63jiFCrKHPIV1ywSw8uNnYx15zbWdC8uUevieplTFc+01r
+ c4pw==
+X-Gm-Message-State: AOAM530cgbz7qOJxix5ndvZio711DVjWBV6SPjsWsYnkeBYoA5D051oM
+ KMW/px3VTw8Yb15+emR8vnc=
+X-Google-Smtp-Source: ABdhPJy5pt4u5Ggi5ifHIcrGgvD1bsNH4yCoax/nIn2y3JTf5wBm9rHRnHUoLSAUDayKjr0hjXS9zQ==
+X-Received: by 2002:a17:906:7c9:: with SMTP id
+ m9mr10446393ejc.98.1621607220367; 
+ Fri, 21 May 2021 07:27:00 -0700 (PDT)
+Received: from agape.jhs ([109.52.244.91])
+ by smtp.gmail.com with ESMTPSA id bh3sm3564556ejb.19.2021.05.21.07.26.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 May 2021 07:27:00 -0700 (PDT)
+Date: Fri, 21 May 2021 16:26:57 +0200
+From: Fabio Aiuto <fabioaiuto83@gmail.com>
+To: kernel test robot <lkp@intel.com>
+Subject: Re: [staging:staging-next 201/268]
+ drivers/staging/rtl8723bs/core/rtw_security.c:89:6: warning: stack frame
+ size of 1120 bytes in function 'rtw_wep_encrypt'
+Message-ID: <20210521142656.GA1409@agape.jhs>
+References: <202105201711.QuzeTqRK-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6bc123d66150ccaa6dc6fdf2f11c8669e2f493e2.1619850663.git.drv@mailo.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-GUID: uZkRzXC1QhBSiVaXVRV9daKOqDwUwBoP
-X-Proofpoint-ORIG-GUID: uZkRzXC1QhBSiVaXVRV9daKOqDwUwBoP
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9990
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 impostorscore=0
- mlxscore=0
- mlxlogscore=999 adultscore=0 malwarescore=0 priorityscore=1501
- phishscore=0 suspectscore=0 lowpriorityscore=0 bulkscore=0 clxscore=1015
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104190000 definitions=main-2105210067
+In-Reply-To: <202105201711.QuzeTqRK-lkp@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,37 +91,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, clang-built-linux@googlegroups.com,
+ kbuild-all@lists.01.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 01, 2021 at 12:16:07PM +0530, Deepak R Varma wrote:
-> @@ -1562,8 +1544,10 @@ ia_css_isp_3a_statistics_map_allocate(
->  	base_ptr = me->data_ptr;
->  
->  	me->size = isp_stats->size;
-> -	/* GCC complains when we assign a char * to a void *, so these
-> -	 * casts are necessary unfortunately. */
-> +	/*
-> +	 * GCC complains when we assign a char * to a void *, so these
-> +	 * casts are necessary unfortunately.
-> +	 */
+Hi robot,
 
-Not related to your patch, but assigning a char pointer to a void
-pointer is fine and GCC will not complain.  The problem is that
-me->dmem_stats is not a void pointer.  Someone should delete that
-nonsense comment.
+On Thu, May 20, 2021 at 05:03:14PM +0800, kernel test robot wrote:
+> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
+> head:   b9f38e913a926b455e5048a95f53a993b515509f
+> commit: 1b11e893eda0907fc9b28696271e2d9c4337e42d [201/268] staging: rtl8723bs: replace private arc4 encryption with in-kernel one
+> config: powerpc64-randconfig-r011-20210520 (attached as .config)
+> compiler: clang version 13.0.0 (https://github.com/llvm/llvm-project bf9ef3efaa99c02e7bfc4c57207301b8de39a278)
+> reproduce (this is a W=1 build):
+>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # install powerpc64 cross compiling tool for clang build
+>         # apt-get install binutils-powerpc64-linux-gnu
+>         # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=1b11e893eda0907fc9b28696271e2d9c4337e42d
+>         git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+>         git fetch --no-tags staging staging-next
+>         git checkout 1b11e893eda0907fc9b28696271e2d9c4337e42d
+>         # save the attached .config to linux build tree
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross ARCH=powerpc64 
 
->  	me->dmem_stats    = (void *)base_ptr;
->  	me->vmem_stats_hi = (void *)(base_ptr + isp_stats->dmem_size);
->  	me->vmem_stats_lo = (void *)(base_ptr + isp_stats->dmem_size +
+can't compile this, I get the following error:
 
-regards,
-dan carpenter
+make CONFIG_OF_ALL_DTBS=y CONFIG_DTC=y HOSTCC=/home/fabio/0day/clang/bin/clang CC=/home/fabio/0day/clang/bin/clang LD=/home/fabio/0day/clang/bin/ld.lld HOSTLD=/home/fabio/0day/clang/bin/ld.lld AR=/home/fabio/0day/clang/bin/llvm-ar NM=/home/fabio/0day/clang/bin/llvm-nm STRIP=/home/fabio/0day/clang/bin/llvm-strip OBJDUMP=/home/fabio/0day/clang/bin/llvm-objdump OBJSIZE=/home/fabio/0day/clang/bin/llvm-size READELF=/home/fabio/0day/clang/bin/llvm-readelf HOSTCXX=/home/fabio/0day/clang/bin/clang++ HOSTAR=/home/fabio/0day/clang/bin/llvm-ar CROSS_COMPILE=powerpc-linux-gnu- --jobs=8 LLVM_IAS=1 ARCH=powerpc drivers/staging/rtl8723bs/
+  CC      scripts/mod/empty.o
+clang: error: unsupported argument '-me500' to option 'Wa,'
+make[1]: *** [scripts/Makefile.build:272: scripts/mod/empty.o] Error 1
+make[1]: *** Attesa per i processi non terminati....
+make: *** [Makefile:1226: prepare0] Error 2
+
+moreover I had to add LLVM_IAS=1, and ARCH=powerpc64 is not a valid architecture (used powerpc instead).
+
+Could you help me?
+
+thank you,
+
+fabio
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
