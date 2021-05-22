@@ -1,52 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB75C38D4C9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 May 2021 11:34:09 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52A8438D51D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 May 2021 12:27:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8B56283CB1;
-	Sat, 22 May 2021 09:34:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 67EE740387;
+	Sat, 22 May 2021 10:27:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2SZE_bkaRmCG; Sat, 22 May 2021 09:34:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WUI3g7qhDDET; Sat, 22 May 2021 10:27:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CBC3B83C9A;
-	Sat, 22 May 2021 09:34:05 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id B4AED402B9;
+	Sat, 22 May 2021 10:27:28 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1AA171BF831
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 May 2021 09:33:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 217AB1BF873
+ for <devel@linuxdriverproject.org>; Sat, 22 May 2021 10:27:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0EE5C402BB
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 May 2021 09:33:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1DF9C83C27
+ for <devel@linuxdriverproject.org>; Sat, 22 May 2021 10:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gC4lg2f0nMC0
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 May 2021 09:33:55 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=mailo.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CVWfAPOmKnsB for <devel@linuxdriverproject.org>;
+ Sat, 22 May 2021 10:27:18 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from amznoutlets.com (unknown [47.88.102.53])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0C82C402A5
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 22 May 2021 09:33:54 +0000 (UTC)
-Received: from User (unknown [203.159.80.22])
- by amznoutlets.com (Postfix) with SMTP id 10DB018DC491;
- Tue,  4 May 2021 00:51:13 +0800 (CST)
-From: "Hsbc Bank London"<info@amznoutlets.com>
-Subject: Your Approved Fund
-Date: Mon, 3 May 2021 09:51:23 -0700
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 181B383C26
+ for <devel@driverdev.osuosl.org>; Sat, 22 May 2021 10:27:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+ t=1621679054; bh=pntNiNl8/Dy7MmFkZk90RCYekpUw7OpnE3Bh9rZfsrs=;
+ h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+ MIME-Version:Content-Type:In-Reply-To;
+ b=Ntbz0bvETVPb0AyKaKgAeslcMbFFk96gBIBfjhpZnBmFyJJNVTMXpIU5moLBCHuXU
+ DrHgo9EtIoxtYOIEA6RlCgHHHA5EFefYnZkImM9Awpq2EYxffbHK9kRYTXLq4xZfNR
+ e9AReyCIhZwK9Fv/sOURTwlcKlLniHkj1Hfs892w=
+Received: by 192.168.90.16 [192.168.90.16] with ESMTP
+ via ip-206.mailobj.net [213.182.55.206]
+ Sat, 22 May 2021 12:24:14 +0200 (CEST)
+X-EA-Auth: Tbm0ZmgWJ2lRn83pNiRISkvsn2jiX5I1Pm4oL+z5hTnUI1vLy1APkXX+TLRcfHhthKDWrWBPIwpyshC0UipINY1FVWqqdgXh
+Date: Sat, 22 May 2021 15:54:06 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH 3/5] staging: media: atomisp: code formatting changes
+ sh_css_params.c
+Message-ID: <YKjbxhzD/yKQ6B2R@dU2104>
+References: <cover.1619850663.git.drv@mailo.com>
+ <6bc123d66150ccaa6dc6fdf2f11c8669e2f493e2.1619850663.git.drv@mailo.com>
+ <20210521105222.GJ1955@kadam>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210522093356.0EE5C402BB@smtp4.osuosl.org>
+Content-Disposition: inline
+In-Reply-To: <20210521105222.GJ1955@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,45 +68,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sarb_bnk099@meta.ua
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-THE WORLDS LOCAL BANK
-International Banking
-FOREIGN EXCHANGE UNIT
+On Fri, May 21, 2021 at 01:52:22PM +0300, Dan Carpenter wrote:
+> On Sat, May 01, 2021 at 12:16:07PM +0530, Deepak R Varma wrote:
+> > @@ -1562,8 +1544,10 @@ ia_css_isp_3a_statistics_map_allocate(
+> >  	base_ptr = me->data_ptr;
+> >  
+> >  	me->size = isp_stats->size;
+> > -	/* GCC complains when we assign a char * to a void *, so these
+> > -	 * casts are necessary unfortunately. */
+> > +	/*
+> > +	 * GCC complains when we assign a char * to a void *, so these
+> > +	 * casts are necessary unfortunately.
+> > +	 */
+> 
+> Not related to your patch, but assigning a char pointer to a void
+> pointer is fine and GCC will not complain.  The problem is that
+> me->dmem_stats is not a void pointer.  Someone should delete that
+> nonsense comment.
+
+I agree. Well caught. I will remove these comments and send v2. Waiting for feedback
+on other patches of this series.
+
+deepak.
+
+> 
+> >  	me->dmem_stats    = (void *)base_ptr;
+> >  	me->vmem_stats_hi = (void *)(base_ptr + isp_stats->dmem_size);
+> >  	me->vmem_stats_lo = (void *)(base_ptr + isp_stats->dmem_size +
+> 
+> regards,
+> dan carpenter
 
 
-RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
-
-Dear Valued Beneficiary:
-
-We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
-
-Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
-
-We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
-
-The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
-
-Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
-
-Provide below details to Dr Rashad Cassim for his clarification:
-
-Full Name....... Tel.................
-
-Address......... Amount..............
-
-City............ Country.............
-
-Copies of documents pertaining to the fund.
-
-Best Regards,
-Mr.James Emmett.
-Chief Executive Officer, HSBC Bank plc.
-United Kingdom
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
