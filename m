@@ -1,78 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91DA03905AC
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 May 2021 17:39:53 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C36FE39065E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 May 2021 18:14:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1477E60B16;
-	Tue, 25 May 2021 15:39:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B259940278;
+	Tue, 25 May 2021 16:14:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C2GMHa1CBq2x; Tue, 25 May 2021 15:39:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LZnAkRJdR-fp; Tue, 25 May 2021 16:14:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E682860B08;
-	Tue, 25 May 2021 15:39:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ADFCE4053F;
+	Tue, 25 May 2021 16:14:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 196C61BF990
- for <devel@linuxdriverproject.org>; Tue, 25 May 2021 15:39:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B35C1BF9B9
+ for <devel@linuxdriverproject.org>; Tue, 25 May 2021 16:14:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 158C8401C2
- for <devel@linuxdriverproject.org>; Tue, 25 May 2021 15:39:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1A5C5828DE
+ for <devel@linuxdriverproject.org>; Tue, 25 May 2021 16:14:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=xs4all.nl
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Mp-R9-aTz62 for <devel@linuxdriverproject.org>;
- Tue, 25 May 2021 15:39:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ML0m0T5UWHkL for <devel@linuxdriverproject.org>;
+ Tue, 25 May 2021 16:14:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from lb1-smtp-cloud9.xs4all.net (lb1-smtp-cloud9.xs4all.net
- [194.109.24.22])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EF2AA40106
- for <devel@driverdev.osuosl.org>; Tue, 25 May 2021 15:39:35 +0000 (UTC)
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id lZ9PlOkMIVN4klZ9SlJuZq; Tue, 25 May 2021 17:39:33 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1621957173; bh=Hfe8o8742VlQkvN1GSgK9eez5ya6FGRo6vix5hRSezo=;
- h=Subject:From:To:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=WmRk/iwGtXebwaIV1/t363hxuW27CsgDN0D5zw8m6mcS8po4uwG5NlW6rP/zD3SGN
- H3Lv5bwoK6HUhnj84Y49P7e5SJX89FI4Ii8HKXbqz2E2+33lwNCbPiD8REcP4JmeEG
- JYucL/vwvEiJdw3AJYEzFQWTPBx/+1+ZGi3ZISiPAS+aKuP9Q1jjf2RQ0u6EPAZb13
- gXQ0X6PQIf+hNllt+CVVnqIZGigqoVOl4v8zpsHE2P+WILVF8TxjIazawZp3ZUi24C
- DFhQ2vehpdKitkEMNskhVhb8ATFQuprix6nV5Kmialu9QQrq4utsjcIdv9JOWGgUkN
- 7EyMGv9zcwhXg==
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk
+ [IPv6:2a00:1098:0:82:1000:25:2eeb:e3e3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CFD2D81CC3
+ for <devel@driverdev.osuosl.org>; Tue, 25 May 2021 16:14:20 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id 5514B1F41539
 Subject: Re: [PATCH v10 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@siol.net, emil.l.velikov@gmail.com
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, ezequiel@collabora.com,
+ p.zabel@pengutronix.de, mchehab@kernel.org, robh+dt@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+ lee.jones@linaro.org, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com
 References: <20210420121046.181889-1-benjamin.gaignard@collabora.com>
  <57dd758d-07b6-abbe-ab0d-2cc165b650db@xs4all.nl>
-Message-ID: <7ce18309-fcb2-b7cd-0b22-5a8efb237f6a@xs4all.nl>
-Date: Tue, 25 May 2021 17:39:23 +0200
+ <7ce18309-fcb2-b7cd-0b22-5a8efb237f6a@xs4all.nl>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <c4546e0e-730c-3c73-be98-bc5041da352f@collabora.com>
+Date: Tue, 25 May 2021 18:14:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.10.0
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <57dd758d-07b6-abbe-ab0d-2cc165b650db@xs4all.nl>
+In-Reply-To: <7ce18309-fcb2-b7cd-0b22-5a8efb237f6a@xs4all.nl>
 Content-Language: en-US
-X-CMAE-Envelope: MS4xfHTJs18f/1CiuX+5c2cwFFafk/vIVKat97cWIgT5yj6ziM2I4I4lSTjFN+L/upUObo2l444X40X9ILjR1lYTckgIB+ZNwLz18lLpkijk5bsbQhL6POOb
- diEtkuq09gM8q3YedjIKKPrefKXzqkF5EDk0Aqepuh7bjXhSUQbucZpbOm6LfNjk81UOwyD+JXxtgf4OD+4yCeyDdvj2R0dJ5iy+8axb139PYP8dJ23y+8La
- iy6Qsz9cAKgIDu7KZ0f1bafNM8k7OMJP1FBPRL4WNl1n8sd+b8cLgcFnvBo92ZZMzbddkzeZdBmpGaFJngSOuqMyFN6LEUDUR+0gvkn5l5EbXkfcyKQHAed6
- t42ak/3e5HFOEcm6KDqowHCdtHOKGX7M2fkvEv6Fkq3++dzQUSo4+0JPwv2iSi02MMzQuz3SXRXtrNjjFqIQINkpLqdLjgv71tUC4d2hkeCKjNWnHLhvitx5
- hi/fsMV2MKqVOlBZqvaozbxkmjDWMMjPAHh/9x9bCnDtjGFgL9sNyxMdndfOKh+CHMltRTvr8hDwQoaEzwW6s1f2KortUwDO3SB0emd+DUTW2+WJWJnT2Mpj
- +ZtiTiHbjncU08aFmwIgd1kjDvPh5r3FaAJoxodiPOYXKyLARGIRLyG4rFaUlS0D8VQL2Y2j0dstjDrPmN2Kg/Z7Ua4DAc3hglPXDprA4KmOkv/M8SPrQFQv
- yg9JlFBcTxOVMTAquw2uocuK9HRCDIC5HsvZDVbas4wBnaQl123umg84muPrDKzhBLqOjUy4u416swzx1+em/LxrLTVKYXNqrGBV960E7PI7N+jvr/v8TBwq
- 4jZclZZNjEd3K2KnOn03CIWjXV8VuIDUCUWG5i08ZC36ZZssF6a6TwE96yzSgbdn2SPR4K1zYO7QURcmBxzwiP4cOS1v/6M79yee2DdQM6x9W4jNmoDDIYZL
- MSXC83moaupN6VJWq6xTh1VnKOjQB9XYJ7MoPsIL/KLYZMql+10DjsQpR937Z7vEG0ltxjR0Qpysf4j8lyDpbmqebS9BXLvm8CuhjJNtsKA8/etY
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,174 +70,137 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
  cphealy@gmail.com, linux-arm-kernel@lists.infradead.org,
  linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 05/05/2021 16:42, Hans Verkuil wrote:
-> Hi Benjamin,
-> 
-> On 20/04/2021 14:10, Benjamin Gaignard wrote:
->> The IMX8MQ got two VPUs but until now only G1 has been enabled.
->> This series aim to add the second VPU (aka G2) and provide basic 
->> HEVC decoding support.
->>
->> To be able to decode HEVC it is needed to add/update some of the
->> structures in the uapi. In addition of them one HANTRO dedicated
->> control is required to inform the driver of the number of bits to skip
->> at the beginning of the slice header.
->> The hardware require to allocate few auxiliary buffers to store the
->> references frame or tile size data.
-> 
-> This series clashes with this patch:
-> 
-> https://patchwork.linuxtv.org/project/linux-media/patch/20210427071554.2222625-1-jernej.skrabec@siol.net/
-> 
-> and this patch series:
-> 
-> https://patchwork.linuxtv.org/project/linux-media/cover/20210401144336.2495479-1-emil.l.velikov@gmail.com/
-> 
-> For both PRs are pending.
-> 
-> It's probably better to wait until this is merged before rebasing this series.
-
-These two have been merged today.
-
-You find them in the master branch of https://git.linuxtv.org/media_stage.git/
-
-In a few days they should be merged as well into our main media tree master, but
-if you don't want to wait for that you can base your work on top of the media_stage
-git repo, that should be perfectly fine.
-
-Regards,
-
-	Hans
-
-> 
-> And if drivers are going to be moved out of staging, leaving only HEVC support
-> in staging, then I'd wait until that is done as well.
-> 
-> Regards,
-> 
-> 	Hans
-> 
->>
->> The driver has been tested with fluster test suite stream.
->> For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
->>
->> version 10:
->>  - Shorter version of the previous series without ctrl block patches
->>    and no DT modifications.
->>    The scope of this series is limited to HEVC support.
->>
->> version 9:
->>  - Corrections in commits messages.
->>  - Define the dedicated control in hevc-controls.h
->>  - Add note in documentation.
->>  - Change max value of the dedicated control.
->>  - Rebased on media_tree/master branch.
->>
->> version 8:
->>  - Add reviewed-by and ack-by tags 
->>  - Fix the warnings reported by kernel test robot
->>  - Only patch 9 (adding dedicated control), patch 11 (HEVC support) and
->>    patch 13 (DT changes) are still missing of review/ack tag.
->>
->> version 7:
->>  - Remove 'q' from syscon phandle name to make usable for iMX8MM too.
->>    Update the bindings documentation.
->>  - Add review/ack tags.
->>  - Rebase on top of media_tree/master
->>  - Be more accurate when computing the size of the memory needed motion
->>    vectors.
->>  - Explain why the all clocks need to set in the both DT node.
->>
->> version 6:
->>  - fix the errors reported by kernel test robot
->>
->> version 5:
->>  - use syscon instead of VPU reset driver.
->>  - Do not break kernel/DT backward compatibility.
->>  - Add documentation for dedicated Hantro control.
->>  - Fix the remarks done by Ezequeil (typo, comments, unused function)
->>  - Run v4l2-compliance without errors (see below).
->>  - Do not add field to distinguish version, check postproc reg instead
->>
->> version 4:
->> - Split the changes in hevc controls in 2 commits to make them easier to
->>   review.
->> - Change hantro_codec_ops run() prototype to return errors   
->> - Hantro v4l2 dedicated control is now only an integer
->> - rebase on top of VPU reset changes posted here:
->>   https://www.spinics.net/lists/arm-kernel/msg878440.html
->> - Various fix from previous remarks
->> - Limit the modifications in API to what the driver needs
->>
->> version 3:
->> - Fix typo in Hantro v4l2 dedicated control
->> - Add documentation for the new structures and fields
->> - Rebased on top of media_tree for-linus-5.12-rc1 tag
->>
->> version 2:
->> - remove all change related to scaling
->> - squash commits to a coherent split
->> - be more verbose about the added fields
->> - fix the comments done by Ezequiel about dma_alloc_coherent usage
->> - fix Dan's comments about control copy, reverse the test logic
->> in tile_buffer_reallocate, rework some goto and return cases.
->> - be more verbose about why I change the bindings
->> - remove all sign-off expect mime since it is confusing
->> - remove useless clocks in VPUs nodes
->>
->> Benjamin Gaignard (9):
->>   media: hevc: Add fields and flags for hevc PPS
->>   media: hevc: Add decode params control
->>   media: hantro: change hantro_codec_ops run prototype to return errors
->>   media: hantro: Define HEVC codec profiles and supported features
->>   media: hantro: Only use postproc when post processed formats are
->>     defined
->>   media: uapi: Add a control for HANTRO driver
->>   media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
->>   media: hantro: Introduce G2/HEVC decoder
->>   media: hantro: IMX8M: add variant for G2/HEVC codec
->>
->>  .../userspace-api/media/drivers/hantro.rst    |  19 +
->>  .../userspace-api/media/drivers/index.rst     |   1 +
->>  .../media/v4l/ext-ctrls-codec.rst             | 108 +++-
->>  .../media/v4l/vidioc-queryctrl.rst            |   6 +
->>  drivers/media/v4l2-core/v4l2-ctrls.c          |  28 +-
->>  drivers/staging/media/hantro/Makefile         |   2 +
->>  drivers/staging/media/hantro/hantro.h         |  13 +-
->>  drivers/staging/media/hantro/hantro_drv.c     |  99 ++-
->>  .../staging/media/hantro/hantro_g1_h264_dec.c |  10 +-
->>  .../media/hantro/hantro_g1_mpeg2_dec.c        |   4 +-
->>  .../staging/media/hantro/hantro_g1_vp8_dec.c  |   6 +-
->>  .../staging/media/hantro/hantro_g2_hevc_dec.c | 587 ++++++++++++++++++
->>  drivers/staging/media/hantro/hantro_g2_regs.h | 198 ++++++
->>  .../staging/media/hantro/hantro_h1_jpeg_enc.c |   4 +-
->>  drivers/staging/media/hantro/hantro_hevc.c    | 327 ++++++++++
->>  drivers/staging/media/hantro/hantro_hw.h      |  69 +-
->>  .../staging/media/hantro/hantro_postproc.c    |  14 +
->>  drivers/staging/media/hantro/hantro_v4l2.c    |   5 +-
->>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  74 ++-
->>  .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |   4 +-
->>  .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |   4 +-
->>  .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |   6 +-
->>  drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
->>  drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
->>  .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
->>  .../staging/media/sunxi/cedrus/cedrus_h265.c  |  12 +-
->>  include/media/hevc-ctrls.h                    |  46 +-
->>  27 files changed, 1586 insertions(+), 69 deletions(-)
->>  create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
->>  create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->>  create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
->>  create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
->>
-> 
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CkxlIDI1LzA1LzIwMjEgw6AgMTc6MzksIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDA1
+LzA1LzIwMjEgMTY6NDIsIEhhbnMgVmVya3VpbCB3cm90ZToKPj4gSGkgQmVuamFtaW4sCj4+Cj4+
+IE9uIDIwLzA0LzIwMjEgMTQ6MTAsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+Pj4gVGhlIElN
+WDhNUSBnb3QgdHdvIFZQVXMgYnV0IHVudGlsIG5vdyBvbmx5IEcxIGhhcyBiZWVuIGVuYWJsZWQu
+Cj4+PiBUaGlzIHNlcmllcyBhaW0gdG8gYWRkIHRoZSBzZWNvbmQgVlBVIChha2EgRzIpIGFuZCBw
+cm92aWRlIGJhc2ljCj4+PiBIRVZDIGRlY29kaW5nIHN1cHBvcnQuCj4+Pgo+Pj4gVG8gYmUgYWJs
+ZSB0byBkZWNvZGUgSEVWQyBpdCBpcyBuZWVkZWQgdG8gYWRkL3VwZGF0ZSBzb21lIG9mIHRoZQo+
+Pj4gc3RydWN0dXJlcyBpbiB0aGUgdWFwaS4gSW4gYWRkaXRpb24gb2YgdGhlbSBvbmUgSEFOVFJP
+IGRlZGljYXRlZAo+Pj4gY29udHJvbCBpcyByZXF1aXJlZCB0byBpbmZvcm0gdGhlIGRyaXZlciBv
+ZiB0aGUgbnVtYmVyIG9mIGJpdHMgdG8gc2tpcAo+Pj4gYXQgdGhlIGJlZ2lubmluZyBvZiB0aGUg
+c2xpY2UgaGVhZGVyLgo+Pj4gVGhlIGhhcmR3YXJlIHJlcXVpcmUgdG8gYWxsb2NhdGUgZmV3IGF1
+eGlsaWFyeSBidWZmZXJzIHRvIHN0b3JlIHRoZQo+Pj4gcmVmZXJlbmNlcyBmcmFtZSBvciB0aWxl
+IHNpemUgZGF0YS4KPj4gVGhpcyBzZXJpZXMgY2xhc2hlcyB3aXRoIHRoaXMgcGF0Y2g6Cj4+Cj4+
+IGh0dHBzOi8vcGF0Y2h3b3JrLmxpbnV4dHYub3JnL3Byb2plY3QvbGludXgtbWVkaWEvcGF0Y2gv
+MjAyMTA0MjcwNzE1NTQuMjIyMjYyNS0xLWplcm5lai5za3JhYmVjQHNpb2wubmV0Lwo+Pgo+PiBh
+bmQgdGhpcyBwYXRjaCBzZXJpZXM6Cj4+Cj4+IGh0dHBzOi8vcGF0Y2h3b3JrLmxpbnV4dHYub3Jn
+L3Byb2plY3QvbGludXgtbWVkaWEvY292ZXIvMjAyMTA0MDExNDQzMzYuMjQ5NTQ3OS0xLWVtaWwu
+bC52ZWxpa292QGdtYWlsLmNvbS8KPj4KPj4gRm9yIGJvdGggUFJzIGFyZSBwZW5kaW5nLgo+Pgo+
+PiBJdCdzIHByb2JhYmx5IGJldHRlciB0byB3YWl0IHVudGlsIHRoaXMgaXMgbWVyZ2VkIGJlZm9y
+ZSByZWJhc2luZyB0aGlzIHNlcmllcy4KPiBUaGVzZSB0d28gaGF2ZSBiZWVuIG1lcmdlZCB0b2Rh
+eS4KPgo+IFlvdSBmaW5kIHRoZW0gaW4gdGhlIG1hc3RlciBicmFuY2ggb2YgaHR0cHM6Ly9naXQu
+bGludXh0di5vcmcvbWVkaWFfc3RhZ2UuZ2l0Lwo+Cj4gSW4gYSBmZXcgZGF5cyB0aGV5IHNob3Vs
+ZCBiZSBtZXJnZWQgYXMgd2VsbCBpbnRvIG91ciBtYWluIG1lZGlhIHRyZWUgbWFzdGVyLCBidXQK
+PiBpZiB5b3UgZG9uJ3Qgd2FudCB0byB3YWl0IGZvciB0aGF0IHlvdSBjYW4gYmFzZSB5b3VyIHdv
+cmsgb24gdG9wIG9mIHRoZSBtZWRpYV9zdGFnZQo+IGdpdCByZXBvLCB0aGF0IHNob3VsZCBiZSBw
+ZXJmZWN0bHkgZmluZS4KSSBoYXZlIHJlYmFzZWQgbXkgd29yayBvbiB0b3Agb2YgbWVkaWFfc3Rh
+Z2UgYW5kIHNlbmQgdjExLgpUaGFua3MgYSBsb3QuCgpCZW5qYW1pbgoKPgo+IFJlZ2FyZHMsCj4K
+PiAJSGFucwo+Cj4+IEFuZCBpZiBkcml2ZXJzIGFyZSBnb2luZyB0byBiZSBtb3ZlZCBvdXQgb2Yg
+c3RhZ2luZywgbGVhdmluZyBvbmx5IEhFVkMgc3VwcG9ydAo+PiBpbiBzdGFnaW5nLCB0aGVuIEkn
+ZCB3YWl0IHVudGlsIHRoYXQgaXMgZG9uZSBhcyB3ZWxsLgo+Pgo+PiBSZWdhcmRzLAo+Pgo+PiAJ
+SGFucwo+Pgo+Pj4gVGhlIGRyaXZlciBoYXMgYmVlbiB0ZXN0ZWQgd2l0aCBmbHVzdGVyIHRlc3Qg
+c3VpdGUgc3RyZWFtLgo+Pj4gRm9yIGV4YW1wbGUgd2l0aCB0aGlzIGNvbW1hbmQ6IC4vZmx1c3Rl
+ci5weSBydW4gLXRzIEpDVC1WQy1IRVZDX1YxIC1kIEdTdHJlYW1lci1ILjI2NS1WNEwyU0wtR3N0
+MS4wCj4+Pgo+Pj4gdmVyc2lvbiAxMDoKPj4+ICAgLSBTaG9ydGVyIHZlcnNpb24gb2YgdGhlIHBy
+ZXZpb3VzIHNlcmllcyB3aXRob3V0IGN0cmwgYmxvY2sgcGF0Y2hlcwo+Pj4gICAgIGFuZCBubyBE
+VCBtb2RpZmljYXRpb25zLgo+Pj4gICAgIFRoZSBzY29wZSBvZiB0aGlzIHNlcmllcyBpcyBsaW1p
+dGVkIHRvIEhFVkMgc3VwcG9ydC4KPj4+Cj4+PiB2ZXJzaW9uIDk6Cj4+PiAgIC0gQ29ycmVjdGlv
+bnMgaW4gY29tbWl0cyBtZXNzYWdlcy4KPj4+ICAgLSBEZWZpbmUgdGhlIGRlZGljYXRlZCBjb250
+cm9sIGluIGhldmMtY29udHJvbHMuaAo+Pj4gICAtIEFkZCBub3RlIGluIGRvY3VtZW50YXRpb24u
+Cj4+PiAgIC0gQ2hhbmdlIG1heCB2YWx1ZSBvZiB0aGUgZGVkaWNhdGVkIGNvbnRyb2wuCj4+PiAg
+IC0gUmViYXNlZCBvbiBtZWRpYV90cmVlL21hc3RlciBicmFuY2guCj4+Pgo+Pj4gdmVyc2lvbiA4
+Ogo+Pj4gICAtIEFkZCByZXZpZXdlZC1ieSBhbmQgYWNrLWJ5IHRhZ3MKPj4+ICAgLSBGaXggdGhl
+IHdhcm5pbmdzIHJlcG9ydGVkIGJ5IGtlcm5lbCB0ZXN0IHJvYm90Cj4+PiAgIC0gT25seSBwYXRj
+aCA5IChhZGRpbmcgZGVkaWNhdGVkIGNvbnRyb2wpLCBwYXRjaCAxMSAoSEVWQyBzdXBwb3J0KSBh
+bmQKPj4+ICAgICBwYXRjaCAxMyAoRFQgY2hhbmdlcykgYXJlIHN0aWxsIG1pc3Npbmcgb2YgcmV2
+aWV3L2FjayB0YWcuCj4+Pgo+Pj4gdmVyc2lvbiA3Ogo+Pj4gICAtIFJlbW92ZSAncScgZnJvbSBz
+eXNjb24gcGhhbmRsZSBuYW1lIHRvIG1ha2UgdXNhYmxlIGZvciBpTVg4TU0gdG9vLgo+Pj4gICAg
+IFVwZGF0ZSB0aGUgYmluZGluZ3MgZG9jdW1lbnRhdGlvbi4KPj4+ICAgLSBBZGQgcmV2aWV3L2Fj
+ayB0YWdzLgo+Pj4gICAtIFJlYmFzZSBvbiB0b3Agb2YgbWVkaWFfdHJlZS9tYXN0ZXIKPj4+ICAg
+LSBCZSBtb3JlIGFjY3VyYXRlIHdoZW4gY29tcHV0aW5nIHRoZSBzaXplIG9mIHRoZSBtZW1vcnkg
+bmVlZGVkIG1vdGlvbgo+Pj4gICAgIHZlY3RvcnMuCj4+PiAgIC0gRXhwbGFpbiB3aHkgdGhlIGFs
+bCBjbG9ja3MgbmVlZCB0byBzZXQgaW4gdGhlIGJvdGggRFQgbm9kZS4KPj4+Cj4+PiB2ZXJzaW9u
+IDY6Cj4+PiAgIC0gZml4IHRoZSBlcnJvcnMgcmVwb3J0ZWQgYnkga2VybmVsIHRlc3Qgcm9ib3QK
+Pj4+Cj4+PiB2ZXJzaW9uIDU6Cj4+PiAgIC0gdXNlIHN5c2NvbiBpbnN0ZWFkIG9mIFZQVSByZXNl
+dCBkcml2ZXIuCj4+PiAgIC0gRG8gbm90IGJyZWFrIGtlcm5lbC9EVCBiYWNrd2FyZCBjb21wYXRp
+YmlsaXR5Lgo+Pj4gICAtIEFkZCBkb2N1bWVudGF0aW9uIGZvciBkZWRpY2F0ZWQgSGFudHJvIGNv
+bnRyb2wuCj4+PiAgIC0gRml4IHRoZSByZW1hcmtzIGRvbmUgYnkgRXplcXVlaWwgKHR5cG8sIGNv
+bW1lbnRzLCB1bnVzZWQgZnVuY3Rpb24pCj4+PiAgIC0gUnVuIHY0bDItY29tcGxpYW5jZSB3aXRo
+b3V0IGVycm9ycyAoc2VlIGJlbG93KS4KPj4+ICAgLSBEbyBub3QgYWRkIGZpZWxkIHRvIGRpc3Rp
+bmd1aXNoIHZlcnNpb24sIGNoZWNrIHBvc3Rwcm9jIHJlZyBpbnN0ZWFkCj4+Pgo+Pj4gdmVyc2lv
+biA0Ogo+Pj4gLSBTcGxpdCB0aGUgY2hhbmdlcyBpbiBoZXZjIGNvbnRyb2xzIGluIDIgY29tbWl0
+cyB0byBtYWtlIHRoZW0gZWFzaWVyIHRvCj4+PiAgICByZXZpZXcuCj4+PiAtIENoYW5nZSBoYW50
+cm9fY29kZWNfb3BzIHJ1bigpIHByb3RvdHlwZSB0byByZXR1cm4gZXJyb3JzCj4+PiAtIEhhbnRy
+byB2NGwyIGRlZGljYXRlZCBjb250cm9sIGlzIG5vdyBvbmx5IGFuIGludGVnZXIKPj4+IC0gcmVi
+YXNlIG9uIHRvcCBvZiBWUFUgcmVzZXQgY2hhbmdlcyBwb3N0ZWQgaGVyZToKPj4+ICAgIGh0dHBz
+Oi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2FybS1rZXJuZWwvbXNnODc4NDQwLmh0bWwKPj4+IC0g
+VmFyaW91cyBmaXggZnJvbSBwcmV2aW91cyByZW1hcmtzCj4+PiAtIExpbWl0IHRoZSBtb2RpZmlj
+YXRpb25zIGluIEFQSSB0byB3aGF0IHRoZSBkcml2ZXIgbmVlZHMKPj4+Cj4+PiB2ZXJzaW9uIDM6
+Cj4+PiAtIEZpeCB0eXBvIGluIEhhbnRybyB2NGwyIGRlZGljYXRlZCBjb250cm9sCj4+PiAtIEFk
+ZCBkb2N1bWVudGF0aW9uIGZvciB0aGUgbmV3IHN0cnVjdHVyZXMgYW5kIGZpZWxkcwo+Pj4gLSBS
+ZWJhc2VkIG9uIHRvcCBvZiBtZWRpYV90cmVlIGZvci1saW51cy01LjEyLXJjMSB0YWcKPj4+Cj4+
+PiB2ZXJzaW9uIDI6Cj4+PiAtIHJlbW92ZSBhbGwgY2hhbmdlIHJlbGF0ZWQgdG8gc2NhbGluZwo+
+Pj4gLSBzcXVhc2ggY29tbWl0cyB0byBhIGNvaGVyZW50IHNwbGl0Cj4+PiAtIGJlIG1vcmUgdmVy
+Ym9zZSBhYm91dCB0aGUgYWRkZWQgZmllbGRzCj4+PiAtIGZpeCB0aGUgY29tbWVudHMgZG9uZSBi
+eSBFemVxdWllbCBhYm91dCBkbWFfYWxsb2NfY29oZXJlbnQgdXNhZ2UKPj4+IC0gZml4IERhbidz
+IGNvbW1lbnRzIGFib3V0IGNvbnRyb2wgY29weSwgcmV2ZXJzZSB0aGUgdGVzdCBsb2dpYwo+Pj4g
+aW4gdGlsZV9idWZmZXJfcmVhbGxvY2F0ZSwgcmV3b3JrIHNvbWUgZ290byBhbmQgcmV0dXJuIGNh
+c2VzLgo+Pj4gLSBiZSBtb3JlIHZlcmJvc2UgYWJvdXQgd2h5IEkgY2hhbmdlIHRoZSBiaW5kaW5n
+cwo+Pj4gLSByZW1vdmUgYWxsIHNpZ24tb2ZmIGV4cGVjdCBtaW1lIHNpbmNlIGl0IGlzIGNvbmZ1
+c2luZwo+Pj4gLSByZW1vdmUgdXNlbGVzcyBjbG9ja3MgaW4gVlBVcyBub2Rlcwo+Pj4KPj4+IEJl
+bmphbWluIEdhaWduYXJkICg5KToKPj4+ICAgIG1lZGlhOiBoZXZjOiBBZGQgZmllbGRzIGFuZCBm
+bGFncyBmb3IgaGV2YyBQUFMKPj4+ICAgIG1lZGlhOiBoZXZjOiBBZGQgZGVjb2RlIHBhcmFtcyBj
+b250cm9sCj4+PiAgICBtZWRpYTogaGFudHJvOiBjaGFuZ2UgaGFudHJvX2NvZGVjX29wcyBydW4g
+cHJvdG90eXBlIHRvIHJldHVybiBlcnJvcnMKPj4+ICAgIG1lZGlhOiBoYW50cm86IERlZmluZSBI
+RVZDIGNvZGVjIHByb2ZpbGVzIGFuZCBzdXBwb3J0ZWQgZmVhdHVyZXMKPj4+ICAgIG1lZGlhOiBo
+YW50cm86IE9ubHkgdXNlIHBvc3Rwcm9jIHdoZW4gcG9zdCBwcm9jZXNzZWQgZm9ybWF0cyBhcmUK
+Pj4+ICAgICAgZGVmaW5lZAo+Pj4gICAgbWVkaWE6IHVhcGk6IEFkZCBhIGNvbnRyb2wgZm9yIEhB
+TlRSTyBkcml2ZXIKPj4+ICAgIG1lZGlhOiBoYW50cm86IGhhbmRsZSBWNEwyX1BJWF9GTVRfSEVW
+Q19TTElDRSBjb250cm9sCj4+PiAgICBtZWRpYTogaGFudHJvOiBJbnRyb2R1Y2UgRzIvSEVWQyBk
+ZWNvZGVyCj4+PiAgICBtZWRpYTogaGFudHJvOiBJTVg4TTogYWRkIHZhcmlhbnQgZm9yIEcyL0hF
+VkMgY29kZWMKPj4+Cj4+PiAgIC4uLi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZlcnMvaGFudHJv
+LnJzdCAgICB8ICAxOSArCj4+PiAgIC4uLi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZlcnMvaW5k
+ZXgucnN0ICAgICB8ICAgMSArCj4+PiAgIC4uLi9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJz
+dCAgICAgICAgICAgICB8IDEwOCArKystCj4+PiAgIC4uLi9tZWRpYS92NGwvdmlkaW9jLXF1ZXJ5
+Y3RybC5yc3QgICAgICAgICAgICB8ICAgNiArCj4+PiAgIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3Jl
+L3Y0bDItY3RybHMuYyAgICAgICAgICB8ICAyOCArLQo+Pj4gICBkcml2ZXJzL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL01ha2VmaWxlICAgICAgICAgfCAgIDIgKwo+Pj4gICBkcml2ZXJzL3N0YWdpbmcv
+bWVkaWEvaGFudHJvL2hhbnRyby5oICAgICAgICAgfCAgMTMgKy0KPj4+ICAgZHJpdmVycy9zdGFn
+aW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgICAgIHwgIDk5ICsrLQo+Pj4gICAuLi4vc3Rh
+Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cxX2gyNjRfZGVjLmMgfCAgMTAgKy0KPj4+ICAgLi4u
+L21lZGlhL2hhbnRyby9oYW50cm9fZzFfbXBlZzJfZGVjLmMgICAgICAgIHwgICA0ICstCj4+PiAg
+IC4uLi9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfdnA4X2RlYy5jICB8ICAgNiArLQo+
+Pj4gICAuLi4vc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMgfCA1ODcg
+KysrKysrKysrKysrKysrKysrCj4+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
+dHJvX2cyX3JlZ3MuaCB8IDE5OCArKysrKysKPj4+ICAgLi4uL3N0YWdpbmcvbWVkaWEvaGFudHJv
+L2hhbnRyb19oMV9qcGVnX2VuYy5jIHwgICA0ICstCj4+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRp
+YS9oYW50cm8vaGFudHJvX2hldmMuYyAgICB8IDMyNyArKysrKysrKysrCj4+PiAgIGRyaXZlcnMv
+c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmggICAgICB8ICA2OSArLQo+Pj4gICAuLi4v
+c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Bvc3Rwcm9jLmMgICAgfCAgMTQgKwo+Pj4gICBk
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMgICAgfCAgIDUgKy0KPj4+
+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9pbXg4bV92cHVfaHcuYyAgIHwgIDc0ICsr
+LQo+Pj4gICAuLi4vbWVkaWEvaGFudHJvL3JrMzM5OV92cHVfaHdfanBlZ19lbmMuYyAgICAgfCAg
+IDQgKy0KPj4+ICAgLi4uL21lZGlhL2hhbnRyby9yazMzOTlfdnB1X2h3X21wZWcyX2RlYy5jICAg
+IHwgICA0ICstCj4+PiAgIC4uLi9tZWRpYS9oYW50cm8vcmszMzk5X3ZwdV9od192cDhfZGVjLmMg
+ICAgICB8ICAgNiArLQo+Pj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2Nl
+ZHJ1cy5jICAgfCAgIDYgKwo+Pj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVz
+L2NlZHJ1cy5oICAgfCAgIDEgKwo+Pj4gICAuLi4vc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMv
+Y2VkcnVzX2RlYy5jICAgfCAgIDIgKwo+Pj4gICAuLi4vc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRy
+dXMvY2VkcnVzX2gyNjUuYyAgfCAgMTIgKy0KPj4+ICAgaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxz
+LmggICAgICAgICAgICAgICAgICAgIHwgIDQ2ICstCj4+PiAgIDI3IGZpbGVzIGNoYW5nZWQsIDE1
+ODYgaW5zZXJ0aW9ucygrKSwgNjkgZGVsZXRpb25zKC0pCj4+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBEb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvZHJpdmVycy9oYW50cm8ucnN0Cj4+
+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRy
+b19nMl9oZXZjX2RlYy5jCj4+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcv
+bWVkaWEvaGFudHJvL2hhbnRyb19nMl9yZWdzLmgKPj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2hldmMuYwo+Pj4KPgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
+ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
