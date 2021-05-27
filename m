@@ -2,51 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCEFD3936CA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 May 2021 22:03:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DDF8E3937D0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 May 2021 23:14:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 87C0660C13;
-	Thu, 27 May 2021 20:03:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 17A2E6063A;
+	Thu, 27 May 2021 21:14:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bQyTpxtkGkdm; Thu, 27 May 2021 20:03:11 +0000 (UTC)
+	with ESMTP id 8PBNBGonBgm3; Thu, 27 May 2021 21:14:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B4F9F60C1A;
-	Thu, 27 May 2021 20:03:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 61399607DA;
+	Thu, 27 May 2021 21:14:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 74A4C1BF330
- for <devel@linuxdriverproject.org>; Thu, 27 May 2021 20:03:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DB9791BF2FC
+ for <devel@linuxdriverproject.org>; Thu, 27 May 2021 21:14:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6E8154067C
- for <devel@linuxdriverproject.org>; Thu, 27 May 2021 20:03:01 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D689340273
+ for <devel@linuxdriverproject.org>; Thu, 27 May 2021 21:14:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xPGNkPtBSziL for <devel@linuxdriverproject.org>;
- Thu, 27 May 2021 20:03:00 +0000 (UTC)
+ with ESMTP id AjoTlrapymue for <devel@linuxdriverproject.org>;
+ Thu, 27 May 2021 21:14:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from server.finestcontentwriting.com
  (server.finestcontentwriting.com [69.16.230.249])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4DE03404C8
- for <devel@linuxdriverproject.org>; Thu, 27 May 2021 20:03:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 466B74024E
+ for <devel@driverdev.osuosl.org>; Thu, 27 May 2021 21:14:03 +0000 (UTC)
 Received: from daslco by server.finestcontentwriting.com with local (Exim
- 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEFw-000k7p-SC
- for devel@linuxdriverproject.org; Thu, 27 May 2021 07:32:52 -0400
-To: devel@linuxdriverproject.org
+ 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEIW-0005M2-7S
+ for devel@driverdev.osuosl.org; Thu, 27 May 2021 07:35:32 -0400
+To: devel@driverdev.osuosl.org
 Subject: TRANSACTION
 X-PHP-Script: www.d-asl.co.uk/wp-zuprize.php for 185.183.106.107
 X-PHP-Originating-Script: 1137:wp-zuprize.php(1) : eval()'d code
-Date: Thu, 27 May 2021 11:32:52 +0000
+Date: Thu, 27 May 2021 11:35:32 +0000
 From: VINCENT VITALAS <support@d-asl.co.uk>
-Message-ID: <dc0bdb24d77bc1dfdc9716cf17099c06@www.d-asl.co.uk>
+Message-ID: <70f05f5c912d4e2e6554da6b53f682ae@www.d-asl.co.uk>
 MIME-Version: 1.0
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - server.finestcontentwriting.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
 X-AntiAbuse: Originator/Caller UID/GID - [1137 992] / [47 12]
 X-AntiAbuse: Sender Address Domain - d-asl.co.uk
 X-Get-Message-Sender-Via: server.finestcontentwriting.com: authenticated_id:
