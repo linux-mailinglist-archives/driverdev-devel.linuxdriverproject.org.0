@@ -1,49 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A0AE391EF1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 May 2021 20:23:01 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCEFD3936CA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 May 2021 22:03:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ACF2C83DE7;
-	Wed, 26 May 2021 18:22:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 87C0660C13;
+	Thu, 27 May 2021 20:03:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ivcG1DdxzzPa; Wed, 26 May 2021 18:22:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bQyTpxtkGkdm; Thu, 27 May 2021 20:03:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3189583DE8;
-	Wed, 26 May 2021 18:22:58 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id B4F9F60C1A;
+	Thu, 27 May 2021 20:03:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A2F741BF276
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 26 May 2021 18:22:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 74A4C1BF330
+ for <devel@linuxdriverproject.org>; Thu, 27 May 2021 20:03:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9A1DC40573
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 26 May 2021 18:22:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6E8154067C
+ for <devel@linuxdriverproject.org>; Thu, 27 May 2021 20:03:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jR2Vm3kBbyTb
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 26 May 2021 18:22:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from edm.eslite.com (edm.eslite.com [202.39.245.247])
- by smtp4.osuosl.org (Postfix) with ESMTP id D004340520
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 26 May 2021 18:22:46 +0000 (UTC)
-From: "verenich ekaterina"<vverenichekaterina43@gmail.com>
-Subject: Dear Beloved
-Date: Thu, 27 May 2021 02:22:27 +0800
+ with ESMTP id xPGNkPtBSziL for <devel@linuxdriverproject.org>;
+ Thu, 27 May 2021 20:03:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from server.finestcontentwriting.com
+ (server.finestcontentwriting.com [69.16.230.249])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4DE03404C8
+ for <devel@linuxdriverproject.org>; Thu, 27 May 2021 20:03:00 +0000 (UTC)
+Received: from daslco by server.finestcontentwriting.com with local (Exim
+ 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEFw-000k7p-SC
+ for devel@linuxdriverproject.org; Thu, 27 May 2021 07:32:52 -0400
+To: devel@linuxdriverproject.org
+Subject: TRANSACTION
+X-PHP-Script: www.d-asl.co.uk/wp-zuprize.php for 185.183.106.107
+X-PHP-Originating-Script: 1137:wp-zuprize.php(1) : eval()'d code
+Date: Thu, 27 May 2021 11:32:52 +0000
+From: VINCENT VITALAS <support@d-asl.co.uk>
+Message-ID: <dc0bdb24d77bc1dfdc9716cf17099c06@www.d-asl.co.uk>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210526182247.9A1DC40573@smtp4.osuosl.org>
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server.finestcontentwriting.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [1137 992] / [47 12]
+X-AntiAbuse: Sender Address Domain - d-asl.co.uk
+X-Get-Message-Sender-Via: server.finestcontentwriting.com: authenticated_id:
+ daslco/from_h
+X-Authenticated-Sender: server.finestcontentwriting.com: support@d-asl.co.uk
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,42 +67,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: verenichekaterina35@yahoo.com
+Reply-To: vincentvitalas77@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Dear Sir,
+
+May I humbly solicit your confidence Over This Transaction,    My Name is Mr. Vincent Vitalas, I am the Regional Bank Manager of BOA CI , I came to know about you in my Private Search for a Reliable and Reputable foreigner to handle this Confidential Transaction.
+
+On the course of 2015/2016 Year Report, we discovered an excess profit of Seventeen Million One Hundred Thousand Us Dollars , [ $ 17,100,000.00 ] ; We have Since placed this fund on SUSPENSE ACCOUNT without any Beneficiary.
+
+As an officer of the bank,  I can't be directly Connected to this Fund for Security Reasons, that is why I am contacting you for us to work together as Partners to Receive the said Fund into your Account for INVESTMENT in your Country.
+
+The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
 
 
-
-Dear Beloved
-
-    Life is gradually passing away from me as a result of my present medical
-condition and my personal doctor confided in me yesterday that I have only
-but few more weeks to live.
-
-    In view of this setback, I want to donate my estate for humanitarian
-assistance, since this has always been the plan of my late husband and
-besides I have no child.
-
-    In an effort to compliment the good work of God almighty and the wish of
-my late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred
-Thousand United States Dollars) to you.
-
-    On your acknowledgment of this mail and informing me of your nationality
-and current place of resident, my Bank will facilitate due processes for
-transfer of this legacy to you.
-
-    May God bless you as you use this money judiciously for the work of
-charity.
-
-    Sincere regards,
-
-    Mrs.verenich ekaterina
+Note: There is Practically No Risks Involved in this Transaction ,  it is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit for a Proper Wire to Your Account .If you Find this Proposal Suitable For you, get back For Full Details and Procedures .
 
 
+Best regards,
 
+Mr. Vincent Vitalas
 
 _______________________________________________
 devel mailing list
