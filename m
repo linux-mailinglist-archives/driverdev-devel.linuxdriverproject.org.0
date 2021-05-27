@@ -2,51 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDF8E3937D0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 May 2021 23:14:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67F26393EE0
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 May 2021 10:37:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 17A2E6063A;
-	Thu, 27 May 2021 21:14:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6BDDD60883;
+	Fri, 28 May 2021 08:37:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8PBNBGonBgm3; Thu, 27 May 2021 21:14:16 +0000 (UTC)
+	with ESMTP id MTx4kCkqIql0; Fri, 28 May 2021 08:36:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61399607DA;
-	Thu, 27 May 2021 21:14:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9D067605F8;
+	Fri, 28 May 2021 08:36:58 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DB9791BF2FC
- for <devel@linuxdriverproject.org>; Thu, 27 May 2021 21:14:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B1ADB1BF423
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 May 2021 08:36:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D689340273
- for <devel@linuxdriverproject.org>; Thu, 27 May 2021 21:14:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A09C8843FD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 May 2021 08:36:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AjoTlrapymue for <devel@linuxdriverproject.org>;
- Thu, 27 May 2021 21:14:03 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qIkw44RIRIYI
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 May 2021 08:36:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from server.finestcontentwriting.com
  (server.finestcontentwriting.com [69.16.230.249])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 466B74024E
- for <devel@driverdev.osuosl.org>; Thu, 27 May 2021 21:14:03 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1A51C843F7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 May 2021 08:36:48 +0000 (UTC)
 Received: from daslco by server.finestcontentwriting.com with local (Exim
- 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEIW-0005M2-7S
- for devel@driverdev.osuosl.org; Thu, 27 May 2021 07:35:32 -0400
-To: devel@driverdev.osuosl.org
+ 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEIy-0006TZ-Dc
+ for driverdev-devel@linuxdriverproject.org; Thu, 27 May 2021 07:36:00 -0400
+To: driverdev-devel@linuxdriverproject.org
 Subject: TRANSACTION
 X-PHP-Script: www.d-asl.co.uk/wp-zuprize.php for 185.183.106.107
 X-PHP-Originating-Script: 1137:wp-zuprize.php(1) : eval()'d code
-Date: Thu, 27 May 2021 11:35:32 +0000
+Date: Thu, 27 May 2021 11:36:00 +0000
 From: VINCENT VITALAS <support@d-asl.co.uk>
-Message-ID: <70f05f5c912d4e2e6554da6b53f682ae@www.d-asl.co.uk>
+Message-ID: <1bfbe8dfac586725372ab849600a13c8@www.d-asl.co.uk>
 MIME-Version: 1.0
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - server.finestcontentwriting.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [1137 992] / [47 12]
 X-AntiAbuse: Sender Address Domain - d-asl.co.uk
 X-Get-Message-Sender-Via: server.finestcontentwriting.com: authenticated_id:
