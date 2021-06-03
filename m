@@ -2,59 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E27DC39C530
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Jun 2021 04:35:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0822B39C694
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Jun 2021 09:22:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8684941592;
-	Sat,  5 Jun 2021 02:35:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 84D62406A7;
+	Sat,  5 Jun 2021 07:22:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NGxVzFrADwMW; Sat,  5 Jun 2021 02:35:53 +0000 (UTC)
+	with ESMTP id RfmUMn98w4uV; Sat,  5 Jun 2021 07:22:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4522840575;
-	Sat,  5 Jun 2021 02:35:49 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5523C406A9;
+	Sat,  5 Jun 2021 07:22:46 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 28B2C1BF5F8
- for <devel@linuxdriverproject.org>; Sat,  5 Jun 2021 02:35:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4597B1BF34B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  5 Jun 2021 07:22:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 185394039D
- for <devel@linuxdriverproject.org>; Sat,  5 Jun 2021 02:35:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 33F39406A2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  5 Jun 2021 07:22:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nFKswMW2WOj6 for <devel@linuxdriverproject.org>;
- Sat,  5 Jun 2021 02:35:35 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0D2EC40388
- for <devel@driverdev.osuosl.org>; Sat,  5 Jun 2021 02:35:34 +0000 (UTC)
-IronPort-SDR: eeYY2qYnQEoJRkok49pBdhEzDPjNidJpK9V9ZYwGj/26I6Yj5nm+WaPHJClcdLZ8yB6hioTR4g
- ZeTHaJWbttZw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="268265173"
-X-IronPort-AV: E=Sophos;i="5.83,249,1616482800"; d="scan'208";a="268265173"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2021 19:35:33 -0700
-IronPort-SDR: CsQvrm2dwwnR8kZVJAn2/dfVld9OXfQW3fLdBxTI1skjEFOlJ+GBTNoCoZvoi+MRN6ykQxk7Qn
- pKQLN9mdVfbA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,249,1616482800"; d="scan'208";a="468506173"
-Received: from lkp-server02.sh.intel.com (HELO 1ec8406c5392) ([10.239.97.151])
- by fmsmga004.fm.intel.com with ESMTP; 04 Jun 2021 19:35:31 -0700
-Received: from kbuild by 1ec8406c5392 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lpM9r-0007Dw-8f; Sat, 05 Jun 2021 02:35:31 +0000
-Date: Sat, 05 Jun 2021 10:34:40 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 33e82ff2a05517c1380f7d765dee9a18b867cea0
-Message-ID: <60bae2c0.a7TgEOiSeLwC/NZD%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sfaBx0OfC6SA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  5 Jun 2021 07:22:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx100.cts.co.il (unknown [130.61.227.96])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 35355406A1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  5 Jun 2021 07:22:32 +0000 (UTC)
+Received: from User (unknown [77.247.110.65])
+ by mx100.cts.co.il (Postfix) with SMTP id 433D691CFC;
+ Thu,  3 Jun 2021 02:01:08 +0000 (UTC)
+From: "Hsbc Bank London"<info@cts.co.il>
+Subject: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
+Date: Thu, 3 Jun 2021 04:00:45 +0200
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20210605072236.33F39406A2@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,221 +59,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: sarb_bnk086@meta.ua
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 33e82ff2a05517c1380f7d765dee9a18b867cea0  staging: vchiq_core: introduce handle_poll
+THE WORLDS LOCAL BANK
+International Banking
+FOREIGN EXCHANGE UNIT
 
-elapsed time: 731m
+RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
 
-configs tested: 191
-configs skipped: 2
+Dear Valued Beneficiary:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-mips                     cu1830-neo_defconfig
-arm                        clps711x_defconfig
-arc                         haps_hs_defconfig
-mips                          rb532_defconfig
-arm                          collie_defconfig
-powerpc                 mpc8540_ads_defconfig
-arc                            hsdk_defconfig
-riscv             nommu_k210_sdcard_defconfig
-arm                  colibri_pxa270_defconfig
-powerpc                    adder875_defconfig
-powerpc                       ebony_defconfig
-sh                        apsh4ad0a_defconfig
-arm                        keystone_defconfig
-powerpc                    gamecube_defconfig
-mips                      maltasmvp_defconfig
-powerpc                 mpc836x_rdk_defconfig
-mips                           gcw0_defconfig
-powerpc                      obs600_defconfig
-arm                           sama5_defconfig
-mips                    maltaup_xpa_defconfig
-powerpc                       eiger_defconfig
-powerpc                      chrp32_defconfig
-arm                           corgi_defconfig
-um                               alldefconfig
-powerpc                  iss476-smp_defconfig
-xtensa                generic_kc705_defconfig
-mips                     loongson2k_defconfig
-mips                  maltasmvp_eva_defconfig
-m68k                         apollo_defconfig
-m68k                        mvme16x_defconfig
-mips                      maltaaprp_defconfig
-nios2                               defconfig
-mips                           xway_defconfig
-powerpc                          allmodconfig
-riscv                    nommu_virt_defconfig
-arm                           tegra_defconfig
-sh                           sh2007_defconfig
-mips                         tb0287_defconfig
-arm                            mmp2_defconfig
-sparc                            alldefconfig
-mips                           rs90_defconfig
-i386                                defconfig
-sh                        edosk7705_defconfig
-arm                         shannon_defconfig
-arm                       omap2plus_defconfig
-mips                        qi_lb60_defconfig
-powerpc                        warp_defconfig
-mips                 decstation_r4k_defconfig
-sparc64                             defconfig
-arm                       versatile_defconfig
-arm                        multi_v5_defconfig
-m68k                           sun3_defconfig
-powerpc                           allnoconfig
-arm                         hackkit_defconfig
-ia64                                defconfig
-powerpc                     taishan_defconfig
-sh                          urquell_defconfig
-sh                           se7724_defconfig
-mips                        maltaup_defconfig
-arm                         lpc32xx_defconfig
-m68k                          multi_defconfig
-powerpc                 xes_mpc85xx_defconfig
-sh                         apsh4a3a_defconfig
-powerpc                      ppc40x_defconfig
-h8300                    h8300h-sim_defconfig
-powerpc                 canyonlands_defconfig
-arm                          pxa168_defconfig
-arm                         at91_dt_defconfig
-mips                           jazz_defconfig
-sh                           se7619_defconfig
-powerpc                 mpc832x_rdb_defconfig
-sh                        dreamcast_defconfig
-arm                      integrator_defconfig
-arm                            mps2_defconfig
-arm                          simpad_defconfig
-powerpc                       maple_defconfig
-nds32                             allnoconfig
-sh                          r7780mp_defconfig
-mips                           mtx1_defconfig
-arm                            xcep_defconfig
-sh                         ap325rxa_defconfig
-sh                            titan_defconfig
-powerpc                     stx_gp3_defconfig
-sh                          rsk7201_defconfig
-powerpc                    klondike_defconfig
-arm                       imx_v6_v7_defconfig
-powerpc                     sbc8548_defconfig
-arm                   milbeaut_m10v_defconfig
-mips                           ip28_defconfig
-powerpc                       holly_defconfig
-xtensa                              defconfig
-powerpc                     kmeter1_defconfig
-mips                         cobalt_defconfig
-powerpc                   motionpro_defconfig
-m68k                            q40_defconfig
-powerpc                     ppa8548_defconfig
-powerpc                     kilauea_defconfig
-mips                           ip22_defconfig
-alpha                            alldefconfig
-arm                         mv78xx0_defconfig
-xtensa                          iss_defconfig
-mips                       lemote2f_defconfig
-nios2                         3c120_defconfig
-powerpc                        fsp2_defconfig
-sparc                       sparc32_defconfig
-sh                        sh7785lcr_defconfig
-arm                        multi_v7_defconfig
-m68k                                defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-arc                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-x86_64               randconfig-a002-20210604
-x86_64               randconfig-a004-20210604
-x86_64               randconfig-a003-20210604
-x86_64               randconfig-a006-20210604
-x86_64               randconfig-a005-20210604
-x86_64               randconfig-a001-20210604
-i386                 randconfig-a003-20210604
-i386                 randconfig-a006-20210604
-i386                 randconfig-a004-20210604
-i386                 randconfig-a001-20210604
-i386                 randconfig-a005-20210604
-i386                 randconfig-a002-20210604
-i386                 randconfig-a003-20210603
-i386                 randconfig-a006-20210603
-i386                 randconfig-a004-20210603
-i386                 randconfig-a001-20210603
-i386                 randconfig-a002-20210603
-i386                 randconfig-a005-20210603
-x86_64               randconfig-a015-20210603
-x86_64               randconfig-a011-20210603
-x86_64               randconfig-a012-20210603
-x86_64               randconfig-a014-20210603
-x86_64               randconfig-a016-20210603
-x86_64               randconfig-a013-20210603
-i386                 randconfig-a015-20210604
-i386                 randconfig-a013-20210604
-i386                 randconfig-a016-20210604
-i386                 randconfig-a011-20210604
-i386                 randconfig-a014-20210604
-i386                 randconfig-a012-20210604
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
 
-clang tested configs:
-x86_64               randconfig-b001-20210604
-x86_64               randconfig-a015-20210604
-x86_64               randconfig-a011-20210604
-x86_64               randconfig-a014-20210604
-x86_64               randconfig-a012-20210604
-x86_64               randconfig-a016-20210604
-x86_64               randconfig-a013-20210604
+We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
+
+Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
+
+Provide below details to Dr Rashad Cassim for his clarification:
+
+Full Name....... Tel.................
+
+Address......... Amount..............
+
+City............ Country.............
+
+Copies of documents pertaining to the fund.
+
+Best Regards,
+Mr.James Emmett.
+Chief Executive Officer, HSBC Bank plc.
+United Kingdom 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
