@@ -1,53 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C070F398D16
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Jun 2021 16:35:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE2AA39AB10
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Jun 2021 21:49:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 79C8340349;
-	Wed,  2 Jun 2021 14:35:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 347FF842F7;
+	Thu,  3 Jun 2021 19:49:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pHkegG1JZEbU; Wed,  2 Jun 2021 14:35:32 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LLKoSvnnhg_Y; Thu,  3 Jun 2021 19:49:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 14B0940307;
-	Wed,  2 Jun 2021 14:35:28 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id DBA7A83E06;
+	Thu,  3 Jun 2021 19:49:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 49E521BF23F
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  2 Jun 2021 14:35:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 88F7F1BF308
+ for <devel@linuxdriverproject.org>; Thu,  3 Jun 2021 19:48:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 335D940343
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  2 Jun 2021 14:35:18 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7774F40234
+ for <devel@linuxdriverproject.org>; Thu,  3 Jun 2021 19:48:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1tf1CKM1FxtH
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  2 Jun 2021 14:35:14 +0000 (UTC)
-X-Greylist: delayed 02:20:24 by SQLgrey-1.8.0
-Received: from uggdl.club (unknown [82.156.72.102])
- by smtp4.osuosl.org (Postfix) with SMTP id B724B402C7
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  2 Jun 2021 14:35:13 +0000 (UTC)
-Received: from User ([154.118.12.47])
- (envelope-sender <drrosemarythompson@gmail.com>)
- by 172.21.0.13 with ESMTP
- for <drhalley@msn.com>; Wed, 02 Jun 2021 20:12:38 +0800
-From: "Dr. Rosemary  Thompson"<drrosemarythompson@gmail.com>
-Subject: Congratulation your Winner
-Date: Wed, 2 Jun 2021 20:12:37 +0800
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210602143518.335D940343@smtp4.osuosl.org>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=flippie-beckerswealthser.xyz
+ header.b="twHzdSsn"; dkim=pass (1024-bit key)
+ header.d=flippie-beckerswealthser.xyz header.b="twHzdSsn"
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zlzL0vxpVa2Z for <devel@linuxdriverproject.org>;
+ Thu,  3 Jun 2021 19:48:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from host.flippie-beckerswealthser.xyz (flippie-beckerswealthser.xyz
+ [185.31.160.145])
+ by smtp2.osuosl.org (Postfix) with ESMTP id DB53540211
+ for <devel@driverdev.osuosl.org>; Thu,  3 Jun 2021 19:48:52 +0000 (UTC)
+Received: from flippie-beckerswealthser.xyz
+ (ec2-3-143-115-148.us-east-2.compute.amazonaws.com [3.143.115.148])
+ by host.flippie-beckerswealthser.xyz (Postfix) with ESMTPA id 3481C24907A
+ for <devel@driverdev.osuosl.org>; Thu,  3 Jun 2021 19:34:13 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.flippie-beckerswealthser.xyz
+ 3481C24907A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=flippie-beckerswealthser.xyz; s=default; t=1622738054;
+ bh=h0ivQLrZuUWuyEKz/TWb+FP9AASpHhVqOsJtRcwKQV4=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=twHzdSsnqDQoFtiZuptgwzasm72asyHwz6grvw2Yrb7yeHYAQNVdajEhIet1kZNWL
+ LNRjs5eZJECAufWYOVY2pwPIYyJ/+Kkg+KjtrxDDk2Q1GoRCGm8egF7Ip2kT1y4Ivt
+ yCKVnxaF+zlJk8Gd4af+pNC8UmkhSFA/fjm++yjM=
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.flippie-beckerswealthser.xyz
+ 3481C24907A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=flippie-beckerswealthser.xyz; s=default; t=1622738054;
+ bh=h0ivQLrZuUWuyEKz/TWb+FP9AASpHhVqOsJtRcwKQV4=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=twHzdSsnqDQoFtiZuptgwzasm72asyHwz6grvw2Yrb7yeHYAQNVdajEhIet1kZNWL
+ LNRjs5eZJECAufWYOVY2pwPIYyJ/+Kkg+KjtrxDDk2Q1GoRCGm8egF7Ip2kT1y4Ivt
+ yCKVnxaF+zlJk8Gd4af+pNC8UmkhSFA/fjm++yjM=
+From: Jotham Masuku <jothammasuku39@flippie-beckerswealthser.xyz>
+To: devel@driverdev.osuosl.org
+Subject: Projects
+Date: 03 Jun 2021 16:34:12 +0000
+Message-ID: <20210603163412.9C8EB26A12410029@flippie-beckerswealthser.xyz>
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,35 +76,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: infomegaml7@gmail.com
+Reply-To: jothammasuku39@flippiebeckerwealthservices.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Global Internet Network/Mega Millions Lottery
-New York 10911, United States of America
+Hello there,
 
-Attn : Winner
+I hope this message finds you in good spirits especially during 
+this challenging time of coronavirus pandemic. I hope you and 
+your family are well and keeping safe. Anyway, I am Jotham 
+Masuku, a broker working with Flippiebecker Wealth. I got your 
+contact (along with few other contacts) through an online 
+business directory and I thought I should contact you to see if 
+you are interested in this opportunity. I am contacting you 
+because one of my high profile clients is interested in investing 
+abroad and has asked me to look for individuals and companies 
+with interesting business ideas and projects that he can invest 
+in. He wants to invest a substantial amount of asset abroad.
 
-Global Internet Network in collaboration with Mega Millions Lottery hereby announces to you as one of the 100 lucky winners in the ongoing 12 Years Global Internet Network Award which took place on the  Jun 01, 2021. This Lottery is Free Online Global Internet Network/Mega Millions Lottery organized by United States Agency for International Development.
+Please kindly respond back to this email if you are interested in 
+this opportunity. Once I receive your response, I will give you 
+more details and we can plan a strategy that will be beneficial 
+to all parties.
 
-All 100 winning Global Internet Network/ Mega Millions Lottery accounts were randomly selected from a batch of 50,000 Microsoft email accounts you have approve to receive your winning prize of $34 Million.
+Best regards
 
-These are your identification numbers.
-
-Ticket number...................... 101420477015
-Payment Ref number....................N.EGS/3662367114/21
-
-Your fund is now deposited with our paying Center in ,Spain  so you are advice to contact Mr. David Mark the President, Of Global Internet Network with the following email:info_megamillionslottery@vipmail.hu  to enable him to direct you on how you will receive your winning price. You can track your winning number on https://www.lotteryusa.com/mega-millions/
-
-Congratulation in advance..
-
-Thanks
-
-Dr. Rosemary Thompson
-Secretary
-
+J Masuku
+Flippiebecker Wealth
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
