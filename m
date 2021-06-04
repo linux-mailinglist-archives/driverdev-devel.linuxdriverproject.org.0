@@ -1,48 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5C6C39B8F5
-	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Jun 2021 14:24:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9156039BEF1
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Jun 2021 19:37:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2CFD1415D9;
-	Fri,  4 Jun 2021 12:24:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 45999415F0;
+	Fri,  4 Jun 2021 17:37:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HSJmfa1oBUTr; Fri,  4 Jun 2021 12:24:32 +0000 (UTC)
+	with ESMTP id z2ayWtJ8i_xN; Fri,  4 Jun 2021 17:37:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 95EF3404E2;
-	Fri,  4 Jun 2021 12:24:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 32396415DB;
+	Fri,  4 Jun 2021 17:37:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 440B31C116E
- for <devel@linuxdriverproject.org>; Fri,  4 Jun 2021 12:24:08 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B2C491BF287
+ for <devel@linuxdriverproject.org>; Fri,  4 Jun 2021 17:37:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 31AB282F4F
- for <devel@linuxdriverproject.org>; Fri,  4 Jun 2021 12:24:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A0BA2606F5
+ for <devel@linuxdriverproject.org>; Fri,  4 Jun 2021 17:37:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id taiH8waeK8Wi for <devel@linuxdriverproject.org>;
- Fri,  4 Jun 2021 12:24:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx100.cts.co.il (unknown [130.61.227.96])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 33F3882E49
- for <devel@linuxdriverproject.org>; Fri,  4 Jun 2021 12:24:04 +0000 (UTC)
-Received: from User (unknown [77.247.110.65])
- by mx100.cts.co.il (Postfix) with SMTP id 3764E9155A;
- Thu,  3 Jun 2021 01:47:07 +0000 (UTC)
-From: "Hsbc Bank London"<info@cts.co.il>
-Subject: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
-Date: Thu, 3 Jun 2021 03:46:45 +0200
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TrbAM29qYihV for <devel@linuxdriverproject.org>;
+ Fri,  4 Jun 2021 17:37:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8F3296066F
+ for <devel@driverdev.osuosl.org>; Fri,  4 Jun 2021 17:37:17 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id 65E551F439E4
+Message-ID: <943276000b13f51e0e746b4f29f2a28d7e435622.camel@collabora.com>
+Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
+ register
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Lucas Stach <l.stach@pengutronix.de>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, p.zabel@pengutronix.de,
+ mchehab@kernel.org,  robh+dt@kernel.org, shawnguo@kernel.org,
+ s.hauer@pengutronix.de,  festevam@gmail.com, lee.jones@linaro.org,
+ gregkh@linuxfoundation.org,  mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org,  jernej.skrabec@siol.net,
+ hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com,  "Peng Fan (OSS)"
+ <peng.fan@oss.nxp.com>, Jacky Bai <ping.bai@nxp.com>
+Date: Fri, 04 Jun 2021 14:37:02 -0300
+In-Reply-To: <72fef3d9f79194876f2035e996bb83f9f8b12902.camel@pengutronix.de>
+References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
+ <20210407073534.376722-4-benjamin.gaignard@collabora.com>
+ <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
+ <831a59b052df02e9860b9766e631a7ab6a37c46a.camel@collabora.com>
+ <72fef3d9f79194876f2035e996bb83f9f8b12902.camel@pengutronix.de>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210604122408.31AB282F4F@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,44 +67,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sarb_bnk086@meta.ua
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
+ kernel@collabora.com, cphealy@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-THE WORLDS LOCAL BANK
-International Banking
-FOREIGN EXCHANGE UNIT
+Hi Lucas,
 
-RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
+On Mon, 2021-05-17 at 12:52 +0200, Lucas Stach wrote:
+> Hi Ezequiel,
+> 
+> Am Sonntag, dem 16.05.2021 um 19:40 -0300 schrieb Ezequiel Garcia:
+> > Hi Lucas,
+> > 
+> > On Fri, 2021-04-16 at 12:54 +0200, Lucas Stach wrote:
+> > > Am Mittwoch, dem 07.04.2021 um 09:35 +0200 schrieb Benjamin Gaignard:
+> > > > In order to be able to share the control hardware block between
+> > > > VPUs use a syscon instead a ioremap it in the driver.
+> > > > To keep the compatibility with older DT if 'nxp,imx8mq-vpu-ctrl'
+> > > > phandle is not found look at 'ctrl' reg-name.
+> > > > With the method it becomes useless to provide a list of register
+> > > > names so remove it.
+> > > 
+> > > Sorry for putting a spoke in the wheel after many iterations of the
+> > > series.
+> > > 
+> > > We just discussed a way forward on how to handle the clocks and resets
+> > > provided by the blkctl block on i.MX8MM and later and it seems there is
+> > > a consensus on trying to provide virtual power domains from a blkctl
+> > > driver, controlling clocks and resets for the devices in the power
+> > > domain. I would like to avoid introducing yet another way of handling
+> > > the blkctl and thus would like to align the i.MX8MQ VPU blkctl with
+> > > what we are planning to do on the later chip generations.
+> > > 
+> > > CC'ing Jacky Bai and Peng Fan from NXP, as they were going to give this
+> > > virtual power domain thing a shot.
+> > > 
+> > 
+> > It seems the i.MX8MM BLK-CTL series are moving forward:
+> > 
+> > https://patchwork.kernel.org/project/linux-arm-kernel/list/?series=479175
+> > 
+> > ... but I'm unable to wrap my head around how this affects the
+> > devicetree VPU modelling for i.MX8MQ (and also i.MX8MM, i.MX8MP, ...).
+> > 
+> > 
+> For the i.MX8MQ we want to have the same virtual power-domains provided
+> by a BLK-CTRL driver for the VPUs, as on i.MX8MM. This way we should be
+> able to use the same DT bindings for the VPUs on i.MX8MQ and i.MX8MM,
+> even though the SoC integration with the blk-ctrl is a little
+> different.
+> 
+> > Can you clarify that?
+> > 
+> I'm planning on sending some patches adding i.MX8MQ VPU support to the
+> BLK-CTRL driver in the next few days. I guess that should clarify
+> things. :)
+> 
 
-Dear Valued Beneficiary:
+As a gentle reminder, Hans sent the i.MX8MQ G2 HEVC support pull request
+and Benjamin just posted a series adding support for more features.
 
-We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
+Do you think we could have the blk-ctrl support landing in v5.14?
 
-Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
+If you work on the patches, and you happen to test the G1 and G2 on
+i.MX8MM it would be great to add that too.
 
-We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
+Meanwhile, our next steps would be to improve the HEVC V4L2 uAPI itself.
 
-The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
+Thanks a lot!
+Ezequiel 
 
-Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
-
-Provide below details to Dr Rashad Cassim for his clarification:
-
-Full Name....... Tel.................
-
-Address......... Amount..............
-
-City............ Country.............
-
-Copies of documents pertaining to the fund.
-
-Best Regards,
-Mr.James Emmett.
-Chief Executive Officer, HSBC Bank plc.
-United Kingdom 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
