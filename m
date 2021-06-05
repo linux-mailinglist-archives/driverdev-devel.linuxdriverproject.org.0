@@ -1,52 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0822B39C694
-	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Jun 2021 09:22:57 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 674F439CA21
+	for <lists+driverdev-devel@lfdr.de>; Sat,  5 Jun 2021 19:10:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 84D62406A7;
-	Sat,  5 Jun 2021 07:22:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9B621403AF;
+	Sat,  5 Jun 2021 17:10:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RfmUMn98w4uV; Sat,  5 Jun 2021 07:22:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LfHn-CJBIQ_W; Sat,  5 Jun 2021 17:10:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5523C406A9;
-	Sat,  5 Jun 2021 07:22:46 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0C3AA4017A;
+	Sat,  5 Jun 2021 17:10:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4597B1BF34B
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Jun 2021 07:22:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4067F1BF5AE
+ for <devel@linuxdriverproject.org>; Sat,  5 Jun 2021 17:10:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 33F39406A2
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Jun 2021 07:22:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3D21D4017A
+ for <devel@linuxdriverproject.org>; Sat,  5 Jun 2021 17:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sfaBx0OfC6SA
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Jun 2021 07:22:32 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx100.cts.co.il (unknown [130.61.227.96])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 35355406A1
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  5 Jun 2021 07:22:32 +0000 (UTC)
-Received: from User (unknown [77.247.110.65])
- by mx100.cts.co.il (Postfix) with SMTP id 433D691CFC;
- Thu,  3 Jun 2021 02:01:08 +0000 (UTC)
-From: "Hsbc Bank London"<info@cts.co.il>
-Subject: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
-Date: Thu, 3 Jun 2021 04:00:45 +0200
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XI7wID2ABErZ for <devel@linuxdriverproject.org>;
+ Sat,  5 Jun 2021 17:10:22 +0000 (UTC)
+X-Greylist: delayed 00:10:06 by SQLgrey-1.8.0
+Received: from info.kiio.top (unknown [43.226.73.215])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3848B40118
+ for <devel@linuxdriverproject.org>; Sat,  5 Jun 2021 17:10:21 +0000 (UTC)
+Received: from admini-PC (116.21.30.138) by info.kiio.top id hnenvs0e97cg for
+ <devel@linuxdriverproject.org>;
+ Sun, 6 Jun 2021 00:59:44 +0800 (envelope-from <mk2@info.kiio.top>)
+From: "Joy Cheu" <sales@domilink.com>
+Subject: FW:Wire and portable 4G 2G GPS trackers-one must meet your needs
+To: devel@linuxdriverproject.org
 MIME-Version: 1.0
+Date: Sun, 6 Jun 2021 00:59:39 +0800
 X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210605072236.33F39406A2@smtp4.osuosl.org>
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+Content-Disposition: inline
+Message-Id: <20210605171023.3D21D4017A@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,45 +56,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sarb_bnk086@meta.ua
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: sales@domilink.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-THE WORLDS LOCAL BANK
-International Banking
-FOREIGN EXCHANGE UNIT
-
-RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
-
-Dear Valued Beneficiary:
-
-We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
-
-Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
-
-We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
-
-The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
-
-Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
-
-Provide below details to Dr Rashad Cassim for his clarification:
-
-Full Name....... Tel.................
-
-Address......... Amount..............
-
-City............ Country.............
-
-Copies of documents pertaining to the fund.
-
-Best Regards,
-Mr.James Emmett.
-Chief Executive Officer, HSBC Bank plc.
-United Kingdom 
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBDdXN0b21lciwNCiANCkhvcGUgeW91IGFyZSB3ZWxsLg0KIA0KSSBhbSBKb3kgb2YgR3Vh
+bmd6aG91IFpUSU5GTyAsIGEgbGVhZGluZyBDaGluYeKAmXMgR1BTIFRSQUNLRVIgZGV2aWNlIGFu
+ZCBzb2x1dGlvbnMgcHJvdmlkZXIuIA0KICANCkFwcGxpY2F0aW9uIG9mIHBlcnNvbnMsIG1vdG9j
+eWNsZSwgYXNzZXRzLCBmbGVldCBtYW5lZ2VtZW50LCBjYXIgcmVudGFsIGV0Yy4gICANCiANCkFy
+ZSB5b3UgaW50ZXJlc3RlZCBpbiB0YWxraW5nIGZvciBtb3JlIG9uIG91ciBoaWdoIGNvc3QgcGVy
+Zm9ybWFuY2UgMkcmNEcgZ3BzIHRyYWNrZXJzPyBVc3VhbGx5IHdlIGNhbiBzYXZlIGN1c3RvbWVy
+IGNvc3QgYnkgYXQgbGVhc3QgMTUtMjUlLg0KIA0KSWYgeW91IGhhdmUgbm93IHVzZWQgR1BTIGJ1
+dCBub3Qgc3RhYmxlLCBzaG9ydCBvZiBzdXBwbHkgb3Igbm90IGNvbXBldGl0aXZlIGluIHlvdXIg
+bG9jYWwgbWFya2V0LCBqdXN0IGZlZWwgZnJlZSB0byBjb250YWN0IHVzLCB3ZSBoYXZlIGN1cnJl
+bnQgR1BTIHRyYWNrZXJzIGJhY2sgeW91IHVwIGZyb20gdGVzdGluZyB0byBsYW5kIHNvZnRseSB0
+byBtZWV0IHlvdXIgbmVlZHMuDQogIA0KDQoNCg0KDQoNCk91ciBhZHZhbnRhZ2U6DQogDQoxIFRo
+ZSB3b3JsZCBzbWFsbGVzdCAgNEcgZ3BzIHRyYWNrZXINCjIgUmVsaWFibGUgR1BTIGNoaXBzZXQg
+c3VwcGx5IHRvIHNlY3VyZSB0aGUgcHJvZHVjdGlvbiBhbmQgc2hpcHBpbmcgdGVybQ0KMyBDaGVh
+cCBDaGluYSBVbmljb20gU2ltIENhcmQgZmVlcyANCjQgUGxhdGZvcm0gc2VydmljZSBmZWVzIGZy
+ZWUgZm9yIHRoZSBmaXJzdCB5ZWFyDQo1IEhpZ2ggY29zdCBwZXJmb3JtYW5jZSBHUFMgdHJhY2tl
+cnMoMkcmNEcpDQo2IE5vIE1PUQ0KNyBTcGVjaWFsIGFnZW50IGFuZCBPRU0gY3VzdG9tZXJzIHdl
+bGNvbWUNCjggUGVyZmVjdCBwbGF0Zm9ybSB0cmFja2luZyBzZXJ2aWNlKGRldGFpbHMgaW1wcm92
+ZW1lbnQpDQogDQpCZXN0IHJlZ2FyZHMsDQogDQpKb3kgQ2hldSANCk1hcmtldGluZyBNYW5hZ2Vy
+DQogDQpEdW9taSBUZWNobm9sb2d5IENvLixMdGQgDQpHdWFuZ3pob3UgWlRJTkZPIFRlY2hub2xv
+Z3kgQ28uLEx0ZCANCk1vYjorODYgMTMyIDg2ODc1NzIxDQp3aGF0c2FwcDorODYgMTUyNTgzNjgx
+NjINCndlY2hhdDogdml2aWRfam95DQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
+Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcml2ZXJkZXYtZGV2ZWwK
