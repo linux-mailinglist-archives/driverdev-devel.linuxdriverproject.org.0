@@ -1,55 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BE5A3A3EC0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Jun 2021 11:11:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B7263A3ED1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Jun 2021 11:13:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3BC1D60753;
-	Fri, 11 Jun 2021 09:11:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0816460753;
+	Fri, 11 Jun 2021 09:13:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id em8kYYzJbvfP; Fri, 11 Jun 2021 09:11:31 +0000 (UTC)
+	with ESMTP id XW1jw2wrr7tM; Fri, 11 Jun 2021 09:13:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C7E0606D6;
-	Fri, 11 Jun 2021 09:11:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6D00B6062E;
+	Fri, 11 Jun 2021 09:13:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A6C4E1BF83C
- for <devel@linuxdriverproject.org>; Fri, 11 Jun 2021 09:11:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 56EBA1BF83C
+ for <devel@linuxdriverproject.org>; Fri, 11 Jun 2021 09:12:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9527940459
- for <devel@linuxdriverproject.org>; Fri, 11 Jun 2021 09:11:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 52F9583BED
+ for <devel@linuxdriverproject.org>; Fri, 11 Jun 2021 09:12:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=analogixsemi.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xBbqSdM_QLbd for <devel@linuxdriverproject.org>;
- Fri, 11 Jun 2021 09:11:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cdNsIhgaXEb3 for <devel@linuxdriverproject.org>;
+ Fri, 11 Jun 2021 09:12:57 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
 Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2072e.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:fe59::72e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6407940205
- for <devel@driverdev.osuosl.org>; Fri, 11 Jun 2021 09:11:19 +0000 (UTC)
+ (mail-dm6nam12on2136.outbound.protection.outlook.com [40.107.243.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1C45583B9D
+ for <devel@driverdev.osuosl.org>; Fri, 11 Jun 2021 09:12:57 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mtJ4YKTyACicou9DbqumEh0OWEnqZGcOhyyJVzNchE/NTi1SVsfiiGNWxnMp4QPQGisGZXJ8oSjfaz99VhqP6w8IslUlh2DhmK9OQ4j+g/uySlsnJd5ZiwdmdVebyD2KFMJ195BaclBlHYX959xG1bJh6LjoVFP9egHU53i7F/6te7VXTXMkKSYs5R66DdhD4EA8/9upy/hJDZJaV6vz0dHd/GNZqZlh8WYqXCZHlDo/zVJJs5w2OU4ErV2ydD4y+vwCwQMIFGJ5b3w/s7U3+ItJiSUAyA0D0gpxVUy0r0lkBmmdXdgubm2HBUnwrJW4s0pIctINwpvg3nn4klNQ/g==
+ b=n5e6X9Zz8ztVLVzmB6xnspn5Ht1peHEb5t+7UfnHuReJ2zF1QF4BAjACRb9kBMGnL54XLx2pKGdKE8iiySKd1QBjLKFNb9J49ZNlI7bVTrXfaGjjY1l/kxdTBfi8gKLeHv16E+x4zQCDpmO7eUqC709mdBCV8ZjOv5hUWqhEm2+kB2wFVhaf39vfA0fgO+wQp8dQ8wqHVH0NPmJFz5wCsnNzkedgr5V1Wim+EAqN9oLyq4cgLThSJX0ZszXi4Y8Hwz62PWZJW0ndmPObO3XyaRGhFpZVZ3kzGNEQODYcnZ/KAeot2DXGhCfhygc4EKmMqVz0kvOJO/O56AHpYURvlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E5trHoRkPiCciy0johaWgOqwC9rb3pjv/iDveIgtzbo=;
- b=GGmJOwuwbxHUZ22KcqsDLreR8AZJ2SiW1xIyqAkWH1LI81NSzeFckVIEaial8u0s0Iz0Ici+cbJYXVD5ZeAUFZNGYQa4Gg21dQ49kF09f8X2FK4cKZ1B72E9hYZUh6l+NxemFUQyuqJj2OBXvD/znhYX/1+YVdg1mT5Fgr8WhbYPTccNq8yS+k0RCEUdAPRhTQNSeBbtgSJ34+uyxnQTSSFPEEHsMCNAn/qiJUIP9t8phMUZxUNAwlz/SWeRKoAdhMPAY2jzxLTuWSUjIE83YpUaNw5YZbOfyXt+aigOgPigSMgv8ejTLuIcsycXSYHJDYtIlkWcQoqE74UIxReD/Q==
+ bh=Ng+LBj0ddO9omGc64akNdzLD4clbX9FARvyE/dX2Z30=;
+ b=hOcaAySV53VaSQrnCDzTdDDTHCSCyK9NoQFo+W1P1FRVn2Ai5BLTQx83Swtsy24UqzPZuYhTuYOYxSmfn9Y26hJlnVVVA16Qf0Vhhj3WIHxPzAJr/dHFTP7NAK1RArE9L1K5ywbOTJsyWyhq0wz0oRW3qhmKT+q3arJeD11PK4YNz+PBkLiecy97X886+AC3sepUC5X+omAomWtWhO2dZT3LUWFgDwVQaApHlX62mq6UrB7vP1gk9eBwybUQILwoUhOqRdEHCl6nm+3q/cCqRzduykHEyuQnsVKTuNpohZfaWDfLpMARKIUCSHB1SZ8LR02sGSicpWn6/nDdhfo3mQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
  header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E5trHoRkPiCciy0johaWgOqwC9rb3pjv/iDveIgtzbo=;
- b=cF9kT46CjRFU5G6jcMAJoeHM6cLZ1YRtAaMcn5QQFB0wlazULLC2PwEBvDyZRepJ/zc2k6mwNSlNOWGs621lNFPhrfELei1NJFlDxNo6Iw8uYH4n9AelUXqGp7LuC6Z8PGp2fXH36eglb9dk/JKlIxv8vGjW0XCvn7G94ulBH9A=
+ bh=Ng+LBj0ddO9omGc64akNdzLD4clbX9FARvyE/dX2Z30=;
+ b=nYmtZ3QEjSU/4HxPW2YyhKv536Ed/nKB/+kMEhXW/G1lwiac79nmPyZX6saqqWP3UA9qhbdoDamw1xaFKxmkR3dW6iV8N/2sx1qFwJ8+V/gexoQ/xFtFRu6vu12Mx2oUCf9XlEbMIFgDPZhbtxT+tKkq7GDVrdHb9wq0D3bgz7Y=
 Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
  header.d=none;driverdev.osuosl.org; dmarc=none action=none
  header.from=analogixsemi.com;
@@ -57,74 +56,76 @@ Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
  by BY5PR04MB6615.namprd04.prod.outlook.com (2603:10b6:a03:1db::16)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4219.22; Fri, 11 Jun
- 2021 09:11:15 +0000
+ 2021 09:12:55 +0000
 Received: from BY5PR04MB6739.namprd04.prod.outlook.com
  ([fe80::8d56:f2c5:7beb:2bf3]) by BY5PR04MB6739.namprd04.prod.outlook.com
  ([fe80::8d56:f2c5:7beb:2bf3%9]) with mapi id 15.20.4195.030; Fri, 11 Jun 2021
- 09:11:15 +0000
-Date: Fri, 11 Jun 2021 17:11:10 +0800
+ 09:12:55 +0000
+Date: Fri, 11 Jun 2021 17:12:49 +0800
 From: Xin Ji <xji@analogixsemi.com>
 To: Robert Foss <robert.foss@linaro.org>,
  Nicolas Boichat <drinkcat@google.com>, Andrzej Hajda <a.hajda@samsung.com>
-Subject: [PATCH v7 0/4] Add MIPI rx DPI support
-Message-ID: <cover.1623402115.git.xji@analogixsemi.com>
+Subject: [PATCH v7 2/4] drm/bridge: anx7625: fix not correct return value
+Message-ID: <9c71344ad8036869231993585475c86b110ca3eb.1623402115.git.xji@analogixsemi.com>
+References: <cover.1623402115.git.xji@analogixsemi.com>
 Content-Disposition: inline
+In-Reply-To: <cover.1623402115.git.xji@analogixsemi.com>
 X-Originating-IP: [60.251.58.79]
-X-ClientProxiedBy: HK2PR04CA0079.apcprd04.prod.outlook.com
- (2603:1096:202:15::23) To BY5PR04MB6739.namprd04.prod.outlook.com
+X-ClientProxiedBy: HK2PR06CA0013.apcprd06.prod.outlook.com
+ (2603:1096:202:2e::25) To BY5PR04MB6739.namprd04.prod.outlook.com
  (2603:10b6:a03:229::8)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from anxtwsw-Precision-3640-Tower (60.251.58.79) by
- HK2PR04CA0079.apcprd04.prod.outlook.com (2603:1096:202:15::23) with Microsoft
+ HK2PR06CA0013.apcprd06.prod.outlook.com (2603:1096:202:2e::25) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4219.21 via Frontend Transport; Fri, 11 Jun 2021 09:11:14 +0000
+ 15.20.4219.21 via Frontend Transport; Fri, 11 Jun 2021 09:12:54 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: aa9ae8fd-43ae-40ac-400a-08d92cb8dd87
+X-MS-Office365-Filtering-Correlation-Id: 955a5746-1cc6-4af5-5ea6-08d92cb918ec
 X-MS-TrafficTypeDiagnostic: BY5PR04MB6615:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BY5PR04MB6615DF8044B1CFCFBE1123CDC7349@BY5PR04MB6615.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Microsoft-Antispam-PRVS: <BY5PR04MB6615DC5E318BACA39FCF9249C7349@BY5PR04MB6615.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:813;
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: mIuWp2jc4JbM1e9Kc5APbFzL7d7tENglj9xX59zlJKwuKC03tL209cofFt2cB6LsEWfVq8qK9moTLapnFz024JE4CATXPOOcFRV7xubstewhQ85ZA8PcJv5v7lgTdiNy4RyEDobAGYEGoQv73T/5z7BNwK5h8eNqM/NzWmzMiHMZYWtLWxtw9rGQYVKrra/YK8bNvbIIK7Uz+6cpcZvOOrYoDZFbPGUofgETLMPWY8TUAFSf40M9qcmT8x/+wL51C7PvBFKw2VzBGJe6eUp2p0iZNgmkhMuofai4iRLI5Wnr3M6rYRAxCMQfM6TP/Pq5LMSA5ZqH/U3X6mSZEQRP8/e5UciirwJXpW0qoL1VGj9IExpi3+HL1GmRq577LFrhLrVH2t44xZmycRb85qTo/jPI6+5grAqiVh16W3hiddYcNNIocGPcfk7T61NpxshcyH4/FNYN7wTOSTDBet4T/hV3y4wAizknGELiQVkvDKJpfLPHeZmRTjhgC1Cio7LcZfkLb9DNIno7YJztYOD0RJI7TCchDG2jBwwPYYz3Bq9fp9MLr7hdfxz7A9zsNOGOA65wrudupej67Blwb56+9nsC0dvwrwgyf6YhA/fKNWoXpa2oRObpSmVhQswEhC4tyG08uJ/sfJ6A+OAImIrztg==
+X-Microsoft-Antispam-Message-Info: uELQeHKCOy+hc5DfBa819GxY05z9mehgOssuCPzkTkvFW2pdxi1pPKhvQ46m/gQN0jY+ljVocL4Ej/s2OXfMBtdPpb8OjjgsiFJwSmtMf13+7QPpImZcoRTXGA5mKbZusr9dNSv/psTkkCbA+jJnYS5TvJ21SpuCMddYQbS9vi8HGh8Qn1rILV9nvEulqnJR5E7qZACmzRcE+YWl/yCOfGUZobjaG0+RoM+JqOVwC0hrP6E+cCdy3qJ61cDnN5Fx4SHr+qFKiDWlrz1IM7blQalQIk2YPc3Fuz0Gf9khgf4Njn/ye5TPd/66SQ9ZcRTz+B5h6YDsGOfxcDbp1PnZYmqoPXwrjwBFBzAtYV40Wk8ERluUyxdlmqX4pgZXa+YUmAcjeaHrOcqEZHGALqa67VX9zfk8XoUwyhNQPpczDejbL6h2vaYTqO2Rq4J9EDN4M+SuYjYb2BaatxjOubbSeWunerX/STr5t+A4h1KDi4BSKJSCL+vz92GC3y6RT81UHL3YCwwvO5ppJA/BkmA1+RUBeG8l74Ci5tt0ZnWyb4/yCc4zi14DiXbaVJblBBWZviIIpRNw3864V0jyp1sYSndb7IEZDFWCDfYkpiHMSyJNMm9vanANosZRxyasOUTCzCR3iq4BRSBgIKTrQFq25RvKPDRTF+nVo05OLNAW7gM=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(39840400004)(376002)(366004)(136003)(346002)(396003)(55236004)(26005)(5660300002)(52116002)(86362001)(6496006)(6666004)(66476007)(6486002)(66556008)(66946007)(16526019)(186003)(316002)(7416002)(36756003)(83380400001)(956004)(8676002)(2616005)(4326008)(110136005)(8936002)(478600001)(38350700002)(38100700002)(54906003)(2906002);
+ SFS:(39840400004)(376002)(366004)(136003)(346002)(396003)(55236004)(26005)(5660300002)(52116002)(86362001)(6496006)(6666004)(66476007)(6486002)(66556008)(66946007)(16526019)(186003)(316002)(7416002)(36756003)(83380400001)(956004)(8676002)(2616005)(4326008)(110136005)(4744005)(8936002)(478600001)(38350700002)(38100700002)(54906003)(2906002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XJ4Ay+eeLRIHqkVf01d2ajLZAS3wXAe1EKXuuWd2R/zhzCSVd6m/wtta5EC5?=
- =?us-ascii?Q?rk9AfQ5Td3JZ68PbrqHhVXoxUy5YTGtuUxXq6JA5LKFzSNO04AZV05JXGpl4?=
- =?us-ascii?Q?pdtidOHw7yWse1K3yMy/gIQv0qw2s3CBFFy1vQh1EZyCZfoXG5OfVB/W8PxV?=
- =?us-ascii?Q?fm6PZhnIaBuzEFKlfAkPZukWu4aN0H+EEd3o/45gwvP3F0uwmZvAC5qtYZ3l?=
- =?us-ascii?Q?QSpxwPWuyTPt20ciJsvTfv/txFGNvAqHiOnc2Gy22swAR40LcBpbCtQSmxGj?=
- =?us-ascii?Q?ewxHS60eqWo2zMv6RZ6Xr9JLSpAyIOH2fAZriVDw+ct4g7eQJLSN2EhhLrtM?=
- =?us-ascii?Q?tp61jqvntevs+4FT58iMbca2CD4K2tnU9b9/0pl3U3BqYM38plSazJ5SMDbv?=
- =?us-ascii?Q?PFiuz6A2TVP4XMivoO7i/0Iz6O/f4sytLmaKFH5ytuwtGYZMRqYesMykBtfC?=
- =?us-ascii?Q?IC/uSdT9qVHhkZ2qFFy4HrLSlPCHWTh591KwxQ/VGCSk6UYkWB0KLfx/65IL?=
- =?us-ascii?Q?DL7pdWqj6sdth8kG2tWwhsAQ1XD0PaSILWWJqg7ZJkyRE9GJCeM2wLUmTuDA?=
- =?us-ascii?Q?raeT2+3ZZkvBKS9LyUVmBJuRM2bHLSHws09gdsHMZrE07OYCjHseZmHARJBS?=
- =?us-ascii?Q?pl2OdCMNvMTFVDB3KhdsJcEtrIa7EJIVCmwjDtLQb8q3fNWwYPzgOgdsLFtj?=
- =?us-ascii?Q?ZuqZbOr7iYn72mW8Tkgw5zhyKVYAvyzWO1omcslSwJMEBN4asOvvJPm/B85E?=
- =?us-ascii?Q?VY1oLwJoDVV11FRlzmMq/97ec+N4k4vshTIpSircFuu6TLlzvPLTtU6zTail?=
- =?us-ascii?Q?knj+cD3HIGeiznNmEYU0eQeG6+zYgAROVXRk05GtSvjKZxdjdgHi88DmUThX?=
- =?us-ascii?Q?bHkP+HP8iRcbLUrvsMsjHC/V5OQCoxqqBemqR4+qyZHw6CzEi1+xbhosAQE+?=
- =?us-ascii?Q?0PMNqDTo/X2DwZLeTMvro+O1QK6lzRevng+Du9qpRuqm9DFNdcHbxTvV9vyn?=
- =?us-ascii?Q?cjPBugIbg3LEeIcy0NBqBjtVkqmMOW2gA2TUCeDaatTPTFxs8yH5hFSWVi7T?=
- =?us-ascii?Q?6UQvbpDIaKJYtXfMuCZRYzfPB7DEsUQh5mrj/VQDgD6YHVmfS3RtewenZQf2?=
- =?us-ascii?Q?Hrz0mO66xBo+P3j9BaBSYiwxq8OANTCwiLD3irDnNqyYT4xlnieUSbe8naab?=
- =?us-ascii?Q?GFOSBwHiWKkPvBEKoYy5QXqa26ii23PNSquUivx2MaEDZLueKGzItsRy5GRx?=
- =?us-ascii?Q?+SfkRdyOSV7gUQFDN2knwjIPtSWXpTlzpFDmBQ+2c/0IxLnM5x7/HiM69Wbz?=
- =?us-ascii?Q?+//qsAxwEialtr7QRGC9MrST?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4RhPNM5s/T+bfafg7aEBBLFwajhzlf4WePqO4C9woUf8JZdNgE+3QRP8zBJL?=
+ =?us-ascii?Q?vcC1bXbUtR+2p33VX1JtktctvbqzUPUA3HCaFq7r55ZckLIY6bMPEeNIExms?=
+ =?us-ascii?Q?Sillo2zExJDAJHPBxHMPz2FJq3QyarDbVMHeqjHD+QzEkCcz4zJUiylDFJae?=
+ =?us-ascii?Q?DimiJsxM86y/nHrFl96XeGWw1lS5b2Yqx4Z3UpNkeqCce5hMaqnFCqww3SUe?=
+ =?us-ascii?Q?zhRNgYvBFUfK/Z1vWUcGJ0i6X46OcfnztahtHMx00Lrz6vRPFLLa1VDAdWWF?=
+ =?us-ascii?Q?pZdB5IIlHQZAuQByb+BeOKMj/13kLIxtzvLchw8BaCwixEaNhnrQZ4SGUZsM?=
+ =?us-ascii?Q?hz/fS2gxMf+KiuhFPdljrpYyJRm6YbOP4bfx1WfC/w4SwGu8dq2ezLf4Ktji?=
+ =?us-ascii?Q?QvIYC51SJdNp8VNsOJ58WOeiZWh0u82RwdjqAcThzZMsosWQdsX16Jg4pZXl?=
+ =?us-ascii?Q?GU/ws9ymr9HrHYtezJ0o6S1EA3e6oXkbqsi5SisJuZ6xFMjruLGeCVHgutn+?=
+ =?us-ascii?Q?Ty57SfT+FVSRiChXSuLj+YIaDa+zQP1W4Sqmg1K4L3PN4svpxjMlkuHbKvxq?=
+ =?us-ascii?Q?9KSTwC9kMblTjl18JK71RqVm09SDgcMLjZs7ljL+jdmo99tibZCXGK8ypNnr?=
+ =?us-ascii?Q?AeRKCmxofKnaxyaTcKyalsDuXzoYdgyi+dKCXeGh1zR5BZMuE/KgSAK+YVzH?=
+ =?us-ascii?Q?W6i+vfUbRFiCbeKAJX2hvHtCgYu+DgY5oQ3kRLBSsUTuRhdrGuy48SCImX8/?=
+ =?us-ascii?Q?1LdJnZsZI6O0SmNDHN3H6vBAIuFLUHmdaQ+V+swK97GDckUrW7M9oKk81TrK?=
+ =?us-ascii?Q?U30bE0eHy/KqOMwPWyelnRJYM3RU/z67pNXvClHxty19Li5Jnfeaf8yYeDpA?=
+ =?us-ascii?Q?fG6YCx3tSUhUxJKowzB1dHMPcDu89u3prvA1B3WUh+bb2ogUA491IGa3HrHV?=
+ =?us-ascii?Q?Px+a2EP0J/rq9zlZaHNRkrRtKQ6NesT/t2fgYISyn9zffKKg29HypcNmXzfg?=
+ =?us-ascii?Q?4la4O/N189LW04E4qGh8wSGjrAzzbMRHCXK/JlQptT4T0epqopcgQvF/W752?=
+ =?us-ascii?Q?RuyNkgWnYbPO+JkIYFcfzygKNTbhJJqXDBU2tpinYB5QSd1FJqHFb4CuE9Zi?=
+ =?us-ascii?Q?IMV9fGMe5X/k5RuNiosRd0d04mhzjMjXRsxkUapbxjG4rVfTP6qbwlaeEscn?=
+ =?us-ascii?Q?etAH+XVuw6KRaP+TjiaRLl3gMDnVpHW0oda+xzzD2tjO8jrXp+abL6CBx4wK?=
+ =?us-ascii?Q?MGuvX/of0yZtePnC0ZYRHDcnc0f0su5pa9DfrQOJsKNR9OAAlobgLbhdqxCG?=
+ =?us-ascii?Q?bVXpjLl3msPeK8G4x5QS7Atd?=
 X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aa9ae8fd-43ae-40ac-400a-08d92cb8dd87
+X-MS-Exchange-CrossTenant-Network-Message-Id: 955a5746-1cc6-4af5-5ea6-08d92cb918ec
 X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jun 2021 09:11:15.4796 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jun 2021 09:12:55.2742 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: F6okYoah1OR258JRmOSSElABEXb5RtxMIq8xFNUS7zoLKphPbXHJgGWtqmBwhR8ZrBPdpoZJ2o8NxFlzAKrY+g==
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZXwFC9+fy+gglxLgPIo2zo962EuOht/QVeoBMMGePVrser2ETJpSQ5L8iepwL9E2HX5U+8Trrp/WI+GDfh28cw==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6615
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -154,56 +155,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all, this patch series implement MIPI rx DPI feature. Please help to review.
+At some time, the original code may return non zero value, force return 0
+if operation finished.
 
-This is the v7 version, rebase DT on the latest code,
-removed HDCP patch(I'll upload HDCP feature by a new patch).
-Any mistakes, please let me know, I'll fix it in the next series.
+Reviewed-by: Robert Foss <robert.foss@linaro.org>
+Signed-off-by: Xin Ji <xji@analogixsemi.com>
+---
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Change history:
-v7:
- - Rebase DT on the latest branch 'drm-misc-next'.
- - Remove HDCP patch.
-
-
-v6: Fix kernel robot compile warning
-
-v5: Fix Rob Herring, Hsin-Yi, Robert Foss comments
- - Rebase code on the branch 'drm-misc-next', refer video-interfaces.yaml
- - Seprate HDCP function to a new patch
- - Fix driver not correctly get 'bus-type' 'data-lanes'
- - Add audio HDMI codec function support
-
-v4: Fix Rob Herring comment
- - Rebase code on the branch 'drm-misc-next'
- - Change 'analogix,hdcp-support' type to boolean
-
-v3: Fix Rob Herring, Dan Carpenter, Nicolas comment
- - Split the patch, fix not correct return data
- - Fix several coding format
- - Split DP tx swing register setting to two property
- - Add HDCP support vender flag
- - remove 'analogix,swing-setting' and 'analogix,mipi-dpi-in' property
-
-v2: Fix Rob Herring comment
- - Fix yamllint warnings/errors in analogix,anx7625.yaml
- - Fix kernel robot compile warning
-
-v1: initial MIPI rx DPI feature support
-
-
-
-Xin Ji (4):
-  dt-bindings:drm/bridge:anx7625:add vendor define flags
-  drm/bridge: anx7625: fix not correct return value
-  drm/bridge: anx7625: add MIPI DPI input feature
-  drm/bridge: anx7625: add HDMI audio function
-
- .../display/bridge/analogix,anx7625.yaml      |  57 ++-
- drivers/gpu/drm/bridge/analogix/anx7625.c     | 458 ++++++++++++++++--
- drivers/gpu/drm/bridge/analogix/anx7625.h     |  23 +-
- 3 files changed, 484 insertions(+), 54 deletions(-)
-
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index 7519b7a0f29d..048080e75016 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -191,10 +191,10 @@ static int wait_aux_op_finish(struct anx7625_data *ctx)
+ 			       AP_AUX_CTRL_STATUS);
+ 	if (val < 0 || (val & 0x0F)) {
+ 		DRM_DEV_ERROR(dev, "aux status %02x\n", val);
+-		val = -EIO;
++		return -EIO;
+ 	}
+ 
+-	return val;
++	return 0;
+ }
+ 
+ static int anx7625_video_mute_control(struct anx7625_data *ctx,
 -- 
 2.25.1
 
