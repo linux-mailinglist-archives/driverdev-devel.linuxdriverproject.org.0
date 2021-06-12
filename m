@@ -1,56 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D207C3A4F96
-	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Jun 2021 17:54:48 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07DA13A4FDA
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Jun 2021 19:04:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B07C940542;
-	Sat, 12 Jun 2021 15:54:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F156D404CD;
+	Sat, 12 Jun 2021 17:04:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 88bnyUYedU2W; Sat, 12 Jun 2021 15:54:45 +0000 (UTC)
+	with ESMTP id BFyHK57cLe4h; Sat, 12 Jun 2021 17:04:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F312740296;
-	Sat, 12 Jun 2021 15:54:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C3CA840388;
+	Sat, 12 Jun 2021 17:04:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 57E7E1BF573
- for <devel@linuxdriverproject.org>; Sat, 12 Jun 2021 15:54:34 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B67DB1BF2B6
+ for <devel@linuxdriverproject.org>; Sat, 12 Jun 2021 17:04:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4522F400E8
- for <devel@linuxdriverproject.org>; Sat, 12 Jun 2021 15:54:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A5ACA83440
+ for <devel@linuxdriverproject.org>; Sat, 12 Jun 2021 17:04:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V7usv2RKzzVe for <devel@linuxdriverproject.org>;
- Sat, 12 Jun 2021 15:54:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C2F2D400AF
- for <devel@linuxdriverproject.org>; Sat, 12 Jun 2021 15:54:33 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id DFC34610FC;
- Sat, 12 Jun 2021 15:54:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1623513273;
- bh=SvDSe+71i4/sQt3EFhqr44mKrhHMTl790UTWD9pT+08=;
- h=Date:From:To:Cc:Subject:From;
- b=CXTy3l1nRm5xq5oJGNOttyXaz9c3cA2U2coEbk5Aid5AFfbC2+tKN2sJrj93U8Ls7
- FIWo+GEeo/DJLO1kXW3E9Vs2dC1cbe8cBUZVdpkH1MqLQ+P0scs81yun4Az5gYkrQ8
- 9gDWPCUtk86QD9aJGBEJPa0exfy4btZos8xTiRv0=
-Date: Sat, 12 Jun 2021 17:54:31 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>
-Subject: [GIT PULL] Staging driver fixes for 5.13-rc6
-Message-ID: <YMTYtya0Sn/JVtz2@kroah.com>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=mailo.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IgCIunQbj7vp for <devel@linuxdriverproject.org>;
+ Sat, 12 Jun 2021 17:04:05 +0000 (UTC)
+X-Greylist: delayed 00:20:34 by SQLgrey-1.8.0
+Received: from msg-3.mailo.com (ip-8.mailobj.net [213.182.54.8])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 722F581D5C
+ for <devel@driverdev.osuosl.org>; Sat, 12 Jun 2021 17:04:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+ t=1623516197; bh=d6LIR7S6jjI4mXqkbA62IUweHEQazYbPtmR/339Qqy8=;
+ h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+ MIME-Version:Content-Type:In-Reply-To;
+ b=ccEujJsiJmKalL+PkWprn1KGuUE/5JjZJ517oFOLXJiXUN/oQD0RcqqDouJIiocel
+ TIHm1JxZnX+502pwnbekcy8ixg/f8IfNiLHh43JHb3RAkBOxKs1/yXwDf1gTfwH3Fq
+ mgas4guf7lFQ5CHaHr/pmZdfYnoE/eWJLOJVDVAY=
+Received: by b-4.in.mailobj.net [192.168.90.14] with ESMTP
+ via ip-206.mailobj.net [213.182.55.206]
+ Sat, 12 Jun 2021 18:43:17 +0200 (CEST)
+X-EA-Auth: A6puxyQLIT2Pr7uBw7qahIRUTGef5g/z72HejE2fnSHmsiJrz0fX37wzQ+FL86Yar2uMGMtCAwVuC8VYABDaFcJSXxb0nJyX
+Date: Sat, 12 Jun 2021 22:13:12 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH RESEND 0/5] staging: media: atomisp: code formatting
+ changes
+Message-ID: <YMTkIFIDHPdzrPcl@dU2104>
+References: <cover.1619850663.git.drv@mailo.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <cover.1619850663.git.drv@mailo.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,46 +68,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@linuxdriverproject.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The following changes since commit 8124c8a6b35386f73523d27eacb71b5364a68c4c:
+On Fri, May 21, 2021 at 12:30:41AM +0530, Deepak R Varma wrote:
+> This patch set overall improves the code organisation and readability of
+> the files of atomisp drivers. There are several complaints reported by
+> checkpatch including ERROR and WARNING types on the files under atomisp/pci
+> directory.
+> 
+> The changes are proposed on a per file basis since there are many
+> issues to be addressed in each individual file. The patches are built
+> on the media_tree/for-v5.14-out1 tree/branch.
 
-  Linux 5.13-rc4 (2021-05-30 11:58:25 -1000)
+Hi All,
+I have only received one comment on one of the patch of this patch set. I
+have not seen any comment or ack on the other patches.
 
-are available in the Git repository at:
+Will you review and share feedback on the patches please.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.13-rc6
+Thank you,
+deepak.
 
-for you to fetch changes up to e9de1ecadeab5fbffd873b9110e969c869554a56:
+> 
+> 
+> Deepak R Varma (5):
+>   staging: media: atomisp: code formatting changes atomisp_csi2.c
+>   staging: media: atomisp: code formatting changes sh_css_mipi.c
+>   staging: media: atomisp: code formatting changes sh_css_params.c
+>   staging: media: atomisp: code formatting changes sh_css_sp.c
+>   staging: media: atomisp: code formatting changes sh_css_version.c
+> 
+>  .../staging/media/atomisp/pci/atomisp_csi2.c  |  72 +-
+>  .../staging/media/atomisp/pci/sh_css_mipi.c   | 170 ++--
+>  .../staging/media/atomisp/pci/sh_css_params.c | 929 +++++++++---------
+>  drivers/staging/media/atomisp/pci/sh_css_sp.c | 471 ++++-----
+>  .../media/atomisp/pci/sh_css_version.c        |   4 +-
+>  5 files changed, 754 insertions(+), 892 deletions(-)
+> 
+> -- 
+> 2.30.2
+> 
 
-  staging: ralink-gdma: Remove incorrect author information (2021-06-09 12:07:52 +0200)
 
-----------------------------------------------------------------
-Staging driver fixes for 5.13-rc6
-
-Here are two tiny staging driver fixes for 5.13-rc6
-	- ralink-gdma driver authorship information fixed up
-	- rtl8723bs driver fix for reported regression
-
-Both have been in linux-next for a while with no reported problems.
-
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-----------------------------------------------------------------
-Lars-Peter Clausen (1):
-      staging: ralink-gdma: Remove incorrect author information
-
-Wenli Looi (1):
-      staging: rtl8723bs: Fix uninitialized variables
-
- drivers/staging/ralink-gdma/ralink-gdma.c         | 2 --
- drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 2 +-
- 2 files changed, 1 insertion(+), 3 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
