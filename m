@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C658D3A79F7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 11:18:00 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFF203A7A97
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 11:29:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F29D9403D9;
-	Tue, 15 Jun 2021 09:17:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0368783AAF;
+	Tue, 15 Jun 2021 09:29:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5g0NkrtfXt9I; Tue, 15 Jun 2021 09:17:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KGBjKFJ7SSBP; Tue, 15 Jun 2021 09:29:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 23AAA4026E;
-	Tue, 15 Jun 2021 09:17:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 13BD8835C8;
+	Tue, 15 Jun 2021 09:29:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EC1F61BF44C
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 09:17:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 03D6E1BF44C
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 09:29:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DA8D240025
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 09:17:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E5E69401C2
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 09:29:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tNcX4Ozvb9Ti for <devel@linuxdriverproject.org>;
- Tue, 15 Jun 2021 09:17:43 +0000 (UTC)
+ with ESMTP id 3_RYrW2_YD8V for <devel@linuxdriverproject.org>;
+ Tue, 15 Jun 2021 09:29:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 81B414026E
- for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 09:17:43 +0000 (UTC)
-IronPort-SDR: VYoQi3ajuMF8c8yR61+LCLS+MsKxoi3x5skQ8ISMj6GmU0ifV05uz94zuOC4iqLcmXqo//i+0T
- U58wU/PWblQw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10015"; a="205986565"
-X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; d="scan'208";a="205986565"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2021 02:17:41 -0700
-IronPort-SDR: fNaLui2TE8AKepDg9scxZagZkGavW8/qCFB6qZ8KvFzd3CKxeABaVfxtjb9kp3qrJZdIQpKzz2
- 3V8CsQhcq/aQ==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E4D92400C9
+ for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 09:29:42 +0000 (UTC)
+IronPort-SDR: 8L+ZWMEr1NVn3GF1D+kW/x4PmhY9vPU1fWaIxaYlnNPIoFwXWLlHyzedZw0GICKKQY/aT1P4QZ
+ sFGeWMUtS9wg==
+X-IronPort-AV: E=McAfee;i="6200,9189,10015"; a="205773939"
+X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; d="scan'208";a="205773939"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2021 02:29:41 -0700
+IronPort-SDR: bcg6rFyGQ3OgAgKD06+pYJLDr7j/b7Psv2g9HIMRcPlM3feBGAJaUJbMb9W4NOkHJUmMVug428
+ hBuC3jDScz2A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; d="scan'208";a="403920105"
+X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; d="scan'208";a="478669662"
 Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 15 Jun 2021 02:17:40 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 15 Jun 2021 02:29:40 -0700
 Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lt5CV-0000J5-TA; Tue, 15 Jun 2021 09:17:39 +0000
-Date: Tue, 15 Jun 2021 17:17:18 +0800
+ id 1lt5O8-0000Jc-4Z; Tue, 15 Jun 2021 09:29:40 +0000
+Date: Tue, 15 Jun 2021 17:29:25 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:kbuild] BUILD SUCCESS
- 2cd0d0c76b8d8db67d92e4da476f7d3c60f258c1
-Message-ID: <60c8701e.EANwMwqimR/Xv4lN%lkp@intel.com>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ 68afbd8459e9c8a86544b5e884041981b837e162
+Message-ID: <60c872f5.jeyyIGHGS/Dlj2/6%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,12 +73,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kbuild
-branch HEAD: 2cd0d0c76b8d8db67d92e4da476f7d3c60f258c1  kbuild: allow arches to have their own "bootloader.sh"
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: 68afbd8459e9c8a86544b5e884041981b837e162  Merge tag 'v5.13-rc6' into driver-core-next
 
-elapsed time: 1550m
+elapsed time: 1562m
 
-configs tested: 129
+configs tested: 125
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -120,10 +120,6 @@ sh                             sh03_defconfig
 powerpc                     taishan_defconfig
 arm                          ixp4xx_defconfig
 mips                        nlm_xlp_defconfig
-arm                          pcm027_defconfig
-powerpc                      ppc40x_defconfig
-arm                          simpad_defconfig
-sh                          rsk7201_defconfig
 powerpc                 mpc8272_ads_defconfig
 powerpc                      walnut_defconfig
 m68k                        mvme16x_defconfig
