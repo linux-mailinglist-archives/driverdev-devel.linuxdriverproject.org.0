@@ -1,44 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D8E13A8853
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 20:14:17 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 298553A887E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 20:24:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0732583C0E;
-	Tue, 15 Jun 2021 18:14:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eM7BAAh5J4l7; Tue, 15 Jun 2021 18:14:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E331683BF6;
-	Tue, 15 Jun 2021 18:14:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 280A81BF575
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 18:14:03 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 041FE40393
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 18:14:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E524340358;
+	Tue, 15 Jun 2021 18:24:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jLqcp_FXcwTV for <devel@linuxdriverproject.org>;
- Tue, 15 Jun 2021 18:14:01 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9jMtC93vr1j6; Tue, 15 Jun 2021 18:24:11 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6E04A4035C;
+	Tue, 15 Jun 2021 18:24:09 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B406B1BF575
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 18:23:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 94E1F83955
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 18:23:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id t6dTc8zk4KMU for <devel@linuxdriverproject.org>;
+ Tue, 15 Jun 2021 18:23:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mta0.halliburton.com (unknown [159.89.192.73])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C4BEA40383
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 18:13:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 304AC8379C
+ for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 18:23:50 +0000 (UTC)
 From: Heyward Wong' <Callalin@t3ex-thi.com>
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: Re: Payment Status for Invoice 67674-900
-Date: 15 Jun 2021 11:13:53 -0700
-Message-ID: <20210615111353.800993A10AD14AD2@t3ex-thi.com>
+Date: 15 Jun 2021 11:23:44 -0700
+Message-ID: <20210615112343.9F71EEEF856D8BF5@t3ex-thi.com>
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="----=_NextPart_000_0012_497D289D.9223116C"
+ boundary="----=_NextPart_000_0012_25405B5E.C75471D9"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +56,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_0012_497D289D.9223116C
+------=_NextPart_000_0012_25405B5E.C75471D9
 Content-Type: text/plain;
 	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
@@ -79,7 +79,7 @@ Heyward Wong
 Accounts Dept
 
 Linmac Machinery Inc.
-------=_NextPart_000_0012_497D289D.9223116C
+------=_NextPart_000_0012_25405B5E.C75471D9
 Content-Type: application/octet-stream; name="Siwft_Afex_USD43000.img"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="Siwft_Afex_USD43000.img"
@@ -29213,7 +29213,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAA
 
-------=_NextPart_000_0012_497D289D.9223116C
+------=_NextPart_000_0012_25405B5E.C75471D9
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -29224,5 +29224,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_NextPart_000_0012_497D289D.9223116C--
+------=_NextPart_000_0012_25405B5E.C75471D9--
 
