@@ -1,63 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FEC13A844B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 17:47:11 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C9773A85F3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 18:02:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 477F4403FC;
-	Tue, 15 Jun 2021 15:47:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6C62C40226;
+	Tue, 15 Jun 2021 16:02:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jrGcrGNssraO; Tue, 15 Jun 2021 15:47:08 +0000 (UTC)
+	with ESMTP id pj59Be3qJJBK; Tue, 15 Jun 2021 16:02:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 18F9A40389;
-	Tue, 15 Jun 2021 15:47:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E5D3040206;
+	Tue, 15 Jun 2021 16:02:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 882B01BF2C2
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 15:46:57 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E7E1D1BF2C2
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 16:01:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6DDB7834C7
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 15:46:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CC4BD404B9
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 16:01:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FSd4kG-7RwV0 for <devel@linuxdriverproject.org>;
- Tue, 15 Jun 2021 15:46:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xOw8m5xbBcZy for <devel@linuxdriverproject.org>;
+ Tue, 15 Jun 2021 16:01:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8D94E83486
- for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 15:46:53 +0000 (UTC)
-IronPort-SDR: PeHckk4YQtOJn9POJTm6XoDzi0KSxpj62jPey7fBoxLLK7asQN5P1ko098HQ09r+Ee7nWOv4eS
- +vqsQxcEBrjw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10016"; a="267165030"
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5B7D24026B
+ for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 16:01:57 +0000 (UTC)
+IronPort-SDR: Y9B/+20d39BsCFDOMg95gzM8cuo78FBGR5FZbZMMVbNEYAycJbf2dnZsQF8TW75L6jPf77hw0U
+ rbIjfgnw0jmA==
+X-IronPort-AV: E=McAfee;i="6200,9189,10016"; a="227493941"
 X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; 
- d="gz'50?scan'50,208,50";a="267165030"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2021 08:46:50 -0700
-IronPort-SDR: P5uZ4LxsNAVJAimt5yHCL+xIp6pyW0jlxE3OhgHPqfapwfD9+KElYZye/ZUF8fBkfEfuUbGjNr
- 4Eksbwa661IQ==
+ d="gz'50?scan'50,208,50";a="227493941"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2021 09:01:54 -0700
+IronPort-SDR: 7MNmXtzYlviF0qKbw0cAdAYWrrhbNiwSJQTocAw94qJ0IlhhQz8fOJHFHkX4qK1tZjGdcxZkbc
+ rn1RrkQzcMZQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; 
- d="gz'50?scan'50,208,50";a="554487213"
+ d="gz'50?scan'50,208,50";a="621394148"
 Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 15 Jun 2021 08:46:48 -0700
+ by orsmga005.jf.intel.com with ESMTP; 15 Jun 2021 09:01:50 -0700
 Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1ltBH5-0000WP-KQ; Tue, 15 Jun 2021 15:46:47 +0000
-Date: Tue, 15 Jun 2021 23:46:04 +0800
+ id 1ltBVd-0000Wz-J8; Tue, 15 Jun 2021 16:01:49 +0000
+Date: Wed, 16 Jun 2021 00:01:39 +0800
 From: kernel test robot <lkp@intel.com>
 To: Phillip Potter <phil@philpotter.co.uk>
-Subject: [staging:staging-testing 381/409]
- drivers/staging/rtl8188eu/os_dep/ioctl_linux.c:981:6: warning: variable
- 'reason' set but not used
-Message-ID: <202106152354.hflSY2WP-lkp@intel.com>
+Subject: [staging:staging-testing 388/409]
+ drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c:180:13: warning: variable
+ 'macid' set but not used
+Message-ID: <202106160031.2wzPYrV9-lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="0OAP2g/MAC+5xKAE"
+Content-Type: multipart/mixed; boundary="BOKacYhQ+x31HxR3"
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -78,22 +78,22 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---0OAP2g/MAC+5xKAE
+--BOKacYhQ+x31HxR3
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   5b4f167ef3555ec4c334a8dc89c1b44bb2c6bff5
-commit: f4a0ab46339c8cab92c38c652e387c0afa1cd435 [381/409] staging: rtl8188eu: remove all DBG_88E calls from os_dep/ioctl_linux.c
+commit: 9a5ad3a2a4e6f948efbc5f4ddde8190dc25d2058 [388/409] staging: rtl8188eu: remove all DBG_88E calls from hal/rtl8188e_cmd.c
 config: mips-allyesconfig (attached as .config)
 compiler: mips-linux-gcc (GCC) 9.3.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=f4a0ab46339c8cab92c38c652e387c0afa1cd435
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=9a5ad3a2a4e6f948efbc5f4ddde8190dc25d2058
         git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
         git fetch --no-tags staging staging-testing
-        git checkout f4a0ab46339c8cab92c38c652e387c0afa1cd435
+        git checkout 9a5ad3a2a4e6f948efbc5f4ddde8190dc25d2058
         # save the attached .config to linux build tree
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross ARCH=mips 
 
@@ -102,47 +102,32 @@ Reported-by: kernel test robot <lkp@intel.com>
 
 All warnings (new ones prefixed by >>):
 
-   drivers/staging/rtl8188eu/os_dep/ioctl_linux.c: In function 'rtw_wx_set_mlme':
->> drivers/staging/rtl8188eu/os_dep/ioctl_linux.c:981:6: warning: variable 'reason' set but not used [-Wunused-but-set-variable]
-     981 |  u16 reason;
-         |      ^~~~~~
+   drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c: In function 'rtl8188e_set_FwMediaStatus_cmd':
+>> drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c:180:13: warning: variable 'macid' set but not used [-Wunused-but-set-variable]
+     180 |  u8 opmode, macid;
+         |             ^~~~~
+>> drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c:180:5: warning: variable 'opmode' set but not used [-Wunused-but-set-variable]
+     180 |  u8 opmode, macid;
+         |     ^~~~~~
 
 
-vim +/reason +981 drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
+vim +/macid +180 drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
 
-a2c60d42d97cdb Larry Finger  2013-08-21   975  
-a2c60d42d97cdb Larry Finger  2013-08-21   976  static int rtw_wx_set_mlme(struct net_device *dev,
-a2c60d42d97cdb Larry Finger  2013-08-21   977  			   struct iw_request_info *info,
-a2c60d42d97cdb Larry Finger  2013-08-21   978  			   union iwreq_data *wrqu, char *extra)
-a2c60d42d97cdb Larry Finger  2013-08-21   979  {
-a2c60d42d97cdb Larry Finger  2013-08-21   980  	int ret = 0;
-a2c60d42d97cdb Larry Finger  2013-08-21  @981  	u16 reason;
-1665c8fdffbb8a Martin Kaiser 2021-03-21   982  	struct adapter *padapter = netdev_priv(dev);
-a2c60d42d97cdb Larry Finger  2013-08-21   983  	struct iw_mlme *mlme = (struct iw_mlme *)extra;
-a2c60d42d97cdb Larry Finger  2013-08-21   984  
-4fe514dc2049b0 Amit Ghadge   2016-09-04   985  	if (!mlme)
-a2c60d42d97cdb Larry Finger  2013-08-21   986  		return -1;
-a2c60d42d97cdb Larry Finger  2013-08-21   987  
-a2c60d42d97cdb Larry Finger  2013-08-21   988  	reason = mlme->reason_code;
-a2c60d42d97cdb Larry Finger  2013-08-21   989  
-a2c60d42d97cdb Larry Finger  2013-08-21   990  	switch (mlme->cmd) {
-a2c60d42d97cdb Larry Finger  2013-08-21   991  	case IW_MLME_DEAUTH:
-a2c60d42d97cdb Larry Finger  2013-08-21   992  		if (!rtw_set_802_11_disassociate(padapter))
-a2c60d42d97cdb Larry Finger  2013-08-21   993  			ret = -1;
-a2c60d42d97cdb Larry Finger  2013-08-21   994  		break;
-a2c60d42d97cdb Larry Finger  2013-08-21   995  	case IW_MLME_DISASSOC:
-a2c60d42d97cdb Larry Finger  2013-08-21   996  		if (!rtw_set_802_11_disassociate(padapter))
-a2c60d42d97cdb Larry Finger  2013-08-21   997  			ret = -1;
-a2c60d42d97cdb Larry Finger  2013-08-21   998  		break;
-a2c60d42d97cdb Larry Finger  2013-08-21   999  	default:
-a2c60d42d97cdb Larry Finger  2013-08-21  1000  		return -EOPNOTSUPP;
-a2c60d42d97cdb Larry Finger  2013-08-21  1001  	}
-a2c60d42d97cdb Larry Finger  2013-08-21  1002  	return ret;
-a2c60d42d97cdb Larry Finger  2013-08-21  1003  }
-a2c60d42d97cdb Larry Finger  2013-08-21  1004  
+7ef8ded0cfdb69 Larry Finger         2013-08-21  177  
+7ef8ded0cfdb69 Larry Finger         2013-08-21  178  void rtl8188e_set_FwMediaStatus_cmd(struct adapter *adapt, __le16 mstatus_rpt)
+7ef8ded0cfdb69 Larry Finger         2013-08-21  179  {
+7ef8ded0cfdb69 Larry Finger         2013-08-21 @180  	u8 opmode, macid;
+7ef8ded0cfdb69 Larry Finger         2013-08-21  181  	u16 mst_rpt = le16_to_cpu(mstatus_rpt);
+fc988e144cca2a Yamanappagouda Patil 2017-02-21  182  
+7ef8ded0cfdb69 Larry Finger         2013-08-21  183  	opmode = (u8)mst_rpt;
+7ef8ded0cfdb69 Larry Finger         2013-08-21  184  	macid = (u8)(mst_rpt >> 8);
+7ef8ded0cfdb69 Larry Finger         2013-08-21  185  
+7ef8ded0cfdb69 Larry Finger         2013-08-21  186  	FillH2CCmd_88E(adapt, H2C_COM_MEDIA_STATUS_RPT, sizeof(mst_rpt), (u8 *)&mst_rpt);
+7ef8ded0cfdb69 Larry Finger         2013-08-21  187  }
+7ef8ded0cfdb69 Larry Finger         2013-08-21  188  
 
-:::::: The code at line 981 was first introduced by commit
-:::::: a2c60d42d97cdbeee3c7371cd3502fca77f07d39 staging: r8188eu: Add files for new driver - part 16
+:::::: The code at line 180 was first introduced by commit
+:::::: 7ef8ded0cfdb690e37581af85eea35fa67cdb38d staging: r8188eu: Add files for new driver - part 13
 
 :::::: TO: Larry Finger <Larry.Finger@lwfinger.net>
 :::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
@@ -151,12 +136,12 @@ a2c60d42d97cdb Larry Finger  2013-08-21  1004
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---0OAP2g/MAC+5xKAE
+--BOKacYhQ+x31HxR3
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICM/IyGAAAy5jb25maWcAjDxbc9w2r+/9FTvpw2lnmsa3OMmc8QNFUbvMSqJCUuu1XzSO
+H4sICPPMyGAAAy5jb25maWcAjDxbc9w2r+/9FTvpw2lnmsa3OMmc8QNFUbvMSqJCUuu1XzSO
 s0k9dewcX742368/AHUDKWqTzrSuABAkQRAEQHB//eXXBXt+uv969XRzfXV7+33xZXe3e7h6
 2n1afL653f3vIlWLUtmFSKX9E4jzm7vnf199vfn2uHj95+HxnwcvH65PF+vdw93udsHv7z7f
 fHmG5jf3d7/8+gtXZSaXDefNRmgjVdlYsbVnL7D5y1vk9PLL9fXityXnvy/e/QncXpA20jSA
@@ -1473,7 +1458,7 @@ ut4Pmts7Tuw/yAIEYha58r+OjTdW3YcjZaKSzLsJlcBeErjuTOySrKXDo0ZtZG4cgxY79sgl
 LL2nkM24zsvIgSbujowUiPMQdo7uKHQNovqP4ilm6kmSOFdQctBUSc+ZJGJxZwRJZFVHwPXT
 pK7mfTI6bqRIt+i7pwxJprIPmuPIRWrWwUbJvrd9+n8QmO5fs5sEAA==
 
---0OAP2g/MAC+5xKAE
+--BOKacYhQ+x31HxR3
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1484,4 +1469,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---0OAP2g/MAC+5xKAE--
+--BOKacYhQ+x31HxR3--
