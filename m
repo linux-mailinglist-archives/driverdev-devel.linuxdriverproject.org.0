@@ -1,63 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 058D03A8310
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 16:40:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 155713A83EC
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Jun 2021 17:26:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 93873405F4;
-	Tue, 15 Jun 2021 14:40:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3BC483ACA;
+	Tue, 15 Jun 2021 15:26:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XYttumL78l2x; Tue, 15 Jun 2021 14:40:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id K-CtfhdEm2gQ; Tue, 15 Jun 2021 15:26:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 44B6F40388;
-	Tue, 15 Jun 2021 14:40:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AE7CE83AFD;
+	Tue, 15 Jun 2021 15:26:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 48A531BF409
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 14:39:54 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F1461BF2C2
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 15:25:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3A2CF40383
- for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 14:39:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 43B28401FD
+ for <devel@linuxdriverproject.org>; Tue, 15 Jun 2021 15:25:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wGpK7gwPflT1 for <devel@linuxdriverproject.org>;
- Tue, 15 Jun 2021 14:39:51 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XMUsL9WqsuFJ for <devel@linuxdriverproject.org>;
+ Tue, 15 Jun 2021 15:25:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 39754400E9
- for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 14:39:51 +0000 (UTC)
-IronPort-SDR: XcSgPzWBzmToml+UuQ7qbru7vsCg7Gq5nqxdhgKc8H2wNl9LLYJUUeBWLgLW7btbRlwLhFYDQC
- XFnYAxXBBGxw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10015"; a="193119836"
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 19C62400C9
+ for <devel@driverdev.osuosl.org>; Tue, 15 Jun 2021 15:25:51 +0000 (UTC)
+IronPort-SDR: Ox1vVTT2i5huojr9OJ8zkRsGS1jSLoSOeM98ckmPazAqi75LKPopkiI6Cv0g2ARsVu8fHsD2f5
+ fEjvmxtFVR9w==
+X-IronPort-AV: E=McAfee;i="6200,9189,10016"; a="205829377"
 X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; 
- d="gz'50?scan'50,208,50";a="193119836"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2021 07:39:49 -0700
-IronPort-SDR: /LlEHBOoRvvS2RgaAcwanMJD4aIeNYqTopjUEor2X31c2oKkOrR4AleH3dI0OTDPwld48LRgFK
- waupBp4ccTOg==
+ d="gz'50?scan'50,208,50";a="205829377"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2021 08:25:50 -0700
+IronPort-SDR: YIpx2ZukfcftA+QN2ZpdsDt3YLGQHmZ1BTyh/h4m6Fbtrgj/HtamaavrKi/IEK9bUgnuQ2dWDl
+ 55zxKc5NxwDw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.83,275,1616482800"; 
- d="gz'50?scan'50,208,50";a="450270231"
+ d="gz'50?scan'50,208,50";a="452003581"
 Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 15 Jun 2021 07:39:47 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 15 Jun 2021 08:25:48 -0700
 Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1ltAEE-0000V9-Ss; Tue, 15 Jun 2021 14:39:46 +0000
-Date: Tue, 15 Jun 2021 22:39:22 +0800
+ id 1ltAwl-0000WA-G5; Tue, 15 Jun 2021 15:25:47 +0000
+Date: Tue, 15 Jun 2021 23:25:22 +0800
 From: kernel test robot <lkp@intel.com>
 To: Phillip Potter <phil@philpotter.co.uk>
-Subject: [staging:staging-testing 371/409]
- drivers/staging/rtl8188eu/core/rtw_efuse.c:239:8: warning: variable 'aaa'
- set but not used
-Message-ID: <202106152218.X9kSeARr-lkp@intel.com>
+Subject: [staging:staging-testing 373/409]
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c:1771:6: warning: variable
+ 'passing_time' set but not used
+Message-ID: <202106152315.gYdGiYTX-lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3V7upXqbjpZ4EhLz"
+Content-Type: multipart/mixed; boundary="LZvS9be/3tNcYl/X"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 User-Agent: Mutt/1.10.1 (2018-07-13)
@@ -79,23 +79,23 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---3V7upXqbjpZ4EhLz
+--LZvS9be/3tNcYl/X
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   5b4f167ef3555ec4c334a8dc89c1b44bb2c6bff5
-commit: 9a6780227ece18b6ad1ae6514a46a6850dfa9971 [371/409] staging: rtl8188eu: remove all DBG_88E calls from core/rtw_efuse.c
+commit: e83e5dbbf4b79255cbda59522f8bcbda50d26f56 [373/409] staging: rtl8188eu: remove all DBG_88E calls from core/rtw_mlme_ext.c
 config: mips-allyesconfig (attached as .config)
 compiler: mips-linux-gcc (GCC) 9.3.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=9a6780227ece18b6ad1ae6514a46a6850dfa9971
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=e83e5dbbf4b79255cbda59522f8bcbda50d26f56
         git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
         git fetch --no-tags staging staging-testing
-        git checkout 9a6780227ece18b6ad1ae6514a46a6850dfa9971
+        git checkout e83e5dbbf4b79255cbda59522f8bcbda50d26f56
         # save the attached .config to linux build tree
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross ARCH=mips 
 
@@ -104,113 +104,68 @@ Reported-by: kernel test robot <lkp@intel.com>
 
 All warnings (new ones prefixed by >>):
 
-   drivers/staging/rtl8188eu/core/rtw_efuse.c: In function 'efuse_read_phymap_from_txpktbuf':
->> drivers/staging/rtl8188eu/core/rtw_efuse.c:239:8: warning: variable 'aaa' set but not used [-Wunused-but-set-variable]
-     239 |    u16 aaa;
-         |        ^~~
->> drivers/staging/rtl8188eu/core/rtw_efuse.c:238:16: warning: variable 'aaabak' set but not used [-Wunused-but-set-variable]
-     238 |    u16 lenbak, aaabak;
-         |                ^~~~~~
->> drivers/staging/rtl8188eu/core/rtw_efuse.c:238:8: warning: variable 'lenbak' set but not used [-Wunused-but-set-variable]
-     238 |    u16 lenbak, aaabak;
-         |        ^~~~~~
+   drivers/staging/rtl8188eu/core/rtw_mlme_ext.c: In function 'send_beacon':
+>> drivers/staging/rtl8188eu/core/rtw_mlme_ext.c:1771:6: warning: variable 'passing_time' set but not used [-Wunused-but-set-variable]
+    1771 |  u32 passing_time;
+         |      ^~~~~~~~~~~~
+   drivers/staging/rtl8188eu/core/rtw_mlme_ext.c: In function 'OnAssocReq':
+>> drivers/staging/rtl8188eu/core/rtw_mlme_ext.c:2759:16: warning: variable 'reassoc' set but not used [-Wunused-but-set-variable]
+    2759 |  unsigned char reassoc, *p, *pos, *wpa_ie;
+         |                ^~~~~~~
+   drivers/staging/rtl8188eu/core/rtw_mlme_ext.c: In function 'OnAction_back':
+>> drivers/staging/rtl8188eu/core/rtw_mlme_ext.c:3400:30: warning: variable 'reason_code' set but not used [-Wunused-but-set-variable]
+    3400 |  unsigned short tid, status, reason_code = 0;
+         |                              ^~~~~~~~~~~
 
 
-vim +/aaa +239 drivers/staging/rtl8188eu/core/rtw_efuse.c
+vim +/passing_time +1771 drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
 
-ee5f8a431ead8f3 navin patidar        2014-06-20  199  
-ee5f8a431ead8f3 navin patidar        2014-06-20  200  static void efuse_read_phymap_from_txpktbuf(
-ee5f8a431ead8f3 navin patidar        2014-06-20  201  	struct adapter  *adapter,
-ee5f8a431ead8f3 navin patidar        2014-06-20  202  	int bcnhead,	/* beacon head, where FW store len(2-byte) and efuse physical map. */
-ee5f8a431ead8f3 navin patidar        2014-06-20  203  	u8 *content,	/* buffer to store efuse physical map */
-ee5f8a431ead8f3 navin patidar        2014-06-20  204  	u16 *size	/* for efuse content: the max byte to read. will update to byte read */
-ee5f8a431ead8f3 navin patidar        2014-06-20  205  	)
-ee5f8a431ead8f3 navin patidar        2014-06-20  206  {
-ee5f8a431ead8f3 navin patidar        2014-06-20  207  	u16 dbg_addr = 0;
-ed73749426deb28 Rémy Oudompheng      2015-11-02  208  	unsigned long start = 0;
-ee5f8a431ead8f3 navin patidar        2014-06-20  209  	u8 reg_0x143 = 0;
-ee5f8a431ead8f3 navin patidar        2014-06-20  210  	u32 lo32 = 0, hi32 = 0;
-ee5f8a431ead8f3 navin patidar        2014-06-20  211  	u16 len = 0, count = 0;
-ee5f8a431ead8f3 navin patidar        2014-06-20  212  	int i = 0;
-ee5f8a431ead8f3 navin patidar        2014-06-20  213  	u16 limit = *size;
-ee5f8a431ead8f3 navin patidar        2014-06-20  214  
-ee5f8a431ead8f3 navin patidar        2014-06-20  215  	u8 *pos = content;
-ee5f8a431ead8f3 navin patidar        2014-06-20  216  
-ee5f8a431ead8f3 navin patidar        2014-06-20  217  	if (bcnhead < 0) /* if not valid */
-ee5f8a431ead8f3 navin patidar        2014-06-20  218  		bcnhead = usb_read8(adapter, REG_TDECTRL + 1);
-ee5f8a431ead8f3 navin patidar        2014-06-20  219  
-ee5f8a431ead8f3 navin patidar        2014-06-20  220  	usb_write8(adapter, REG_PKT_BUFF_ACCESS_CTRL, TXPKT_BUF_SELECT);
-ee5f8a431ead8f3 navin patidar        2014-06-20  221  
-ee5f8a431ead8f3 navin patidar        2014-06-20  222  	dbg_addr = bcnhead * 128 / 8; /* 8-bytes addressing */
-ee5f8a431ead8f3 navin patidar        2014-06-20  223  
-ee5f8a431ead8f3 navin patidar        2014-06-20  224  	while (1) {
-ee5f8a431ead8f3 navin patidar        2014-06-20  225  		usb_write16(adapter, REG_PKTBUF_DBG_ADDR, dbg_addr + i);
-ee5f8a431ead8f3 navin patidar        2014-06-20  226  
-ee5f8a431ead8f3 navin patidar        2014-06-20  227  		usb_write8(adapter, REG_TXPKTBUF_DBG, 0);
-ee5f8a431ead8f3 navin patidar        2014-06-20  228  		start = jiffies;
-ee5f8a431ead8f3 navin patidar        2014-06-20  229  		while (!(reg_0x143 = usb_read8(adapter, REG_TXPKTBUF_DBG)) &&
-9a6780227ece18b Phillip Potter       2021-06-15  230  		       jiffies_to_msecs(jiffies - start) < 1000)
-c8cb5f2c780a600 Jiayi Ye             2014-10-20  231  			usleep_range(1000, 2000);
-ee5f8a431ead8f3 navin patidar        2014-06-20  232  
-ee5f8a431ead8f3 navin patidar        2014-06-20  233  		lo32 = usb_read32(adapter, REG_PKTBUF_DBG_DATA_L);
-ee5f8a431ead8f3 navin patidar        2014-06-20  234  		hi32 = usb_read32(adapter, REG_PKTBUF_DBG_DATA_H);
-ee5f8a431ead8f3 navin patidar        2014-06-20  235  
-ee5f8a431ead8f3 navin patidar        2014-06-20  236  		if (i == 0) {
-ee5f8a431ead8f3 navin patidar        2014-06-20  237  			u8 lenc[2];
-ee5f8a431ead8f3 navin patidar        2014-06-20 @238  			u16 lenbak, aaabak;
-ee5f8a431ead8f3 navin patidar        2014-06-20 @239  			u16 aaa;
-7d2af82cc5f5713 Yamanappagouda Patil 2016-12-22  240  
-ee5f8a431ead8f3 navin patidar        2014-06-20  241  			lenc[0] = usb_read8(adapter, REG_PKTBUF_DBG_DATA_L);
-ee5f8a431ead8f3 navin patidar        2014-06-20  242  			lenc[1] = usb_read8(adapter, REG_PKTBUF_DBG_DATA_L + 1);
-ee5f8a431ead8f3 navin patidar        2014-06-20  243  
-ee5f8a431ead8f3 navin patidar        2014-06-20  244  			aaabak = le16_to_cpup((__le16 *)lenc);
-ee5f8a431ead8f3 navin patidar        2014-06-20  245  			lenbak = le16_to_cpu(*((__le16 *)lenc));
-ee5f8a431ead8f3 navin patidar        2014-06-20  246  			aaa = le16_to_cpup((__le16 *)&lo32);
-ee5f8a431ead8f3 navin patidar        2014-06-20  247  			len = le16_to_cpu(*((__le16 *)&lo32));
-ee5f8a431ead8f3 navin patidar        2014-06-20  248  
-530c9b1b21fc41f Ivan Safonov         2015-10-27  249  			limit = min_t(u16, len - 2, limit);
-ee5f8a431ead8f3 navin patidar        2014-06-20  250  
-ee5f8a431ead8f3 navin patidar        2014-06-20  251  			memcpy(pos, ((u8 *)&lo32) + 2, (limit >= count + 2) ? 2 : limit - count);
-ee5f8a431ead8f3 navin patidar        2014-06-20  252  			count += (limit >= count + 2) ? 2 : limit - count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  253  			pos = content + count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  254  
-ee5f8a431ead8f3 navin patidar        2014-06-20  255  		} else {
-ee5f8a431ead8f3 navin patidar        2014-06-20  256  			memcpy(pos, ((u8 *)&lo32), (limit >= count + 4) ? 4 : limit - count);
-ee5f8a431ead8f3 navin patidar        2014-06-20  257  			count += (limit >= count + 4) ? 4 : limit - count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  258  			pos = content + count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  259  		}
-ee5f8a431ead8f3 navin patidar        2014-06-20  260  
-ee5f8a431ead8f3 navin patidar        2014-06-20  261  		if (limit > count && len - 2 > count) {
-ee5f8a431ead8f3 navin patidar        2014-06-20  262  			memcpy(pos, (u8 *)&hi32, (limit >= count + 4) ? 4 : limit - count);
-ee5f8a431ead8f3 navin patidar        2014-06-20  263  			count += (limit >= count + 4) ? 4 : limit - count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  264  			pos = content + count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  265  		}
-ee5f8a431ead8f3 navin patidar        2014-06-20  266  
-ee5f8a431ead8f3 navin patidar        2014-06-20  267  		if (limit <= count || len - 2 <= count)
-ee5f8a431ead8f3 navin patidar        2014-06-20  268  			break;
-ee5f8a431ead8f3 navin patidar        2014-06-20  269  		i++;
-ee5f8a431ead8f3 navin patidar        2014-06-20  270  	}
-ee5f8a431ead8f3 navin patidar        2014-06-20  271  	usb_write8(adapter, REG_PKT_BUFF_ACCESS_CTRL, DISABLE_TRXPKT_BUF_ACCESS);
-ee5f8a431ead8f3 navin patidar        2014-06-20  272  	*size = count;
-ee5f8a431ead8f3 navin patidar        2014-06-20  273  }
-ee5f8a431ead8f3 navin patidar        2014-06-20  274  
+7b464c9fa5cc27 Larry Finger    2013-08-21  1764  
+4e102344534354 Luca Ceresoli   2015-06-12  1765  unsigned int send_beacon(struct adapter *padapter)
+4e102344534354 Luca Ceresoli   2015-06-12  1766  {
+4e102344534354 Luca Ceresoli   2015-06-12  1767  	u8 bxmitok = false;
+4e102344534354 Luca Ceresoli   2015-06-12  1768  	int issue = 0;
+4e102344534354 Luca Ceresoli   2015-06-12  1769  	int poll = 0;
+ed73749426deb2 Rémy Oudompheng 2015-11-02  1770  	unsigned long start = jiffies;
+0b4d1d0da7e16f Michael Straube 2020-01-18 @1771  	u32 passing_time;
+4e102344534354 Luca Ceresoli   2015-06-12  1772  
+4e102344534354 Luca Ceresoli   2015-06-12  1773  	rtw_hal_set_hwreg(padapter, HW_VAR_BCN_VALID, NULL);
+4e102344534354 Luca Ceresoli   2015-06-12  1774  	do {
+4e102344534354 Luca Ceresoli   2015-06-12  1775  		issue_beacon(padapter, 100);
+4e102344534354 Luca Ceresoli   2015-06-12  1776  		issue++;
+4e102344534354 Luca Ceresoli   2015-06-12  1777  		do {
+4e102344534354 Luca Ceresoli   2015-06-12  1778  			yield();
+4e102344534354 Luca Ceresoli   2015-06-12  1779  			rtw_hal_get_hwreg(padapter, HW_VAR_BCN_VALID, (u8 *)(&bxmitok));
+4e102344534354 Luca Ceresoli   2015-06-12  1780  			poll++;
+4e102344534354 Luca Ceresoli   2015-06-12  1781  		} while ((poll % 10) != 0 && !bxmitok && !padapter->bSurpriseRemoved && !padapter->bDriverStopped);
+4e102344534354 Luca Ceresoli   2015-06-12  1782  	} while (!bxmitok && issue < 100 && !padapter->bSurpriseRemoved && !padapter->bDriverStopped);
+4e102344534354 Luca Ceresoli   2015-06-12  1783  
+4e102344534354 Luca Ceresoli   2015-06-12  1784  	if (padapter->bSurpriseRemoved || padapter->bDriverStopped)
+4e102344534354 Luca Ceresoli   2015-06-12  1785  		return _FAIL;
+e83e5dbbf4b792 Phillip Potter  2021-06-15  1786  	if (!bxmitok)
+4e102344534354 Luca Ceresoli   2015-06-12  1787  		return _FAIL;
+0b4d1d0da7e16f Michael Straube 2020-01-18  1788  	passing_time = jiffies_to_msecs(jiffies - start);
+7b464c9fa5cc27 Larry Finger    2013-08-21  1789  
+4e102344534354 Luca Ceresoli   2015-06-12  1790  	return _SUCCESS;
+4e102344534354 Luca Ceresoli   2015-06-12  1791  }
+7b464c9fa5cc27 Larry Finger    2013-08-21  1792  
 
-:::::: The code at line 239 was first introduced by commit
-:::::: ee5f8a431ead8f334f4c04f91ecafa34cb9d52ca staging: rtl8188eu: Move all efuse related code to rtw_efuse.c
+:::::: The code at line 1771 was first introduced by commit
+:::::: 0b4d1d0da7e16f6faa572a8c7f865ff82e097819 staging: rtl8188eu: remove else after break or return
 
-:::::: TO: navin patidar <navin.patidar@gmail.com>
+:::::: TO: Michael Straube <straube.linux@gmail.com>
 :::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---3V7upXqbjpZ4EhLz
+--LZvS9be/3tNcYl/X
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICMm3yGAAAy5jb25maWcAjDxbc9w2r+/9FTvpw2lnmsa3OMmc8QNFUbvMSqJCUuu1XzSO
+H4sICAzCyGAAAy5jb25maWcAjDxbc9w2r+/9FTvpw2lnmsa3OMmc8QNFUbvMSqJCUuu1XzSO
 s0k9dewcX742368/AHUDKWqTzrSuABAkQRAEQHB//eXXBXt+uv969XRzfXV7+33xZXe3e7h6
 2n1afL653f3vIlWLUtmFSKX9E4jzm7vnf199vfn2uHj95+HxnwcvH65PF+vdw93udsHv7z7f
 fHmG5jf3d7/8+gtXZSaXDefNRmgjVdlYsbVnL7D5y1vk9PLL9fXityXnvy/e/QncXpA20jSA
@@ -1527,7 +1482,7 @@ ut4Pmts7Tuw/yAIEYha58r+OjTdW3YcjZaKSzLsJlcBeErjuTOySrKXDo0ZtZG4cgxY79sgl
 LL2nkM24zsvIgSbujowUiPMQdo7uKHQNovqP4ilm6kmSOFdQctBUSc+ZJGJxZwRJZFVHwPXT
 pK7mfTI6bqRIt+i7pwxJprIPmuPIRWrWwUbJvrd9+n8QmO5fs5sEAA==
 
---3V7upXqbjpZ4EhLz
+--LZvS9be/3tNcYl/X
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1538,4 +1493,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---3V7upXqbjpZ4EhLz--
+--LZvS9be/3tNcYl/X--
