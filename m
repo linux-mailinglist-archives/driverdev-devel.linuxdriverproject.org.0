@@ -1,83 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FE373A9A2A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Jun 2021 14:27:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8C513A9B64
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Jun 2021 15:02:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8A6CB4149A;
-	Wed, 16 Jun 2021 12:27:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D788483C47;
+	Wed, 16 Jun 2021 13:02:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MK0PstwcCSGB; Wed, 16 Jun 2021 12:27:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id r4gjTqpQYSKE; Wed, 16 Jun 2021 13:02:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5C4BD41490;
-	Wed, 16 Jun 2021 12:27:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 52C6C8376B;
+	Wed, 16 Jun 2021 13:02:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5D95D1BF2FA
- for <devel@linuxdriverproject.org>; Wed, 16 Jun 2021 12:26:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D615F1BF2FA
+ for <devel@linuxdriverproject.org>; Wed, 16 Jun 2021 13:02:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4CC0583BDF
- for <devel@linuxdriverproject.org>; Wed, 16 Jun 2021 12:26:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D2D60401FC
+ for <devel@linuxdriverproject.org>; Wed, 16 Jun 2021 13:02:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=culturacusco.gob.pe
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MetaTHGgxLJC for <devel@linuxdriverproject.org>;
- Wed, 16 Jun 2021 12:26:57 +0000 (UTC)
-X-Greylist: delayed 00:49:23 by SQLgrey-1.8.0
-Received: from mail.culturacusco.gob.pe (mail3.culturacusco.gob.pe
- [181.176.220.90])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0E6BE83BD1
- for <devel@driverdev.osuosl.org>; Wed, 16 Jun 2021 12:26:56 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.culturacusco.gob.pe (Postfix) with ESMTP id C165F114B86150;
- Wed, 16 Jun 2021 06:11:31 -0500 (-05)
-Received: from mail.culturacusco.gob.pe ([127.0.0.1])
- by localhost (mail.culturacusco.gob.pe [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id SnzWl3hf59Nt; Wed, 16 Jun 2021 06:11:27 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.culturacusco.gob.pe (Postfix) with ESMTP id A62C4114C34952;
- Wed, 16 Jun 2021 06:11:24 -0500 (-05)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.culturacusco.gob.pe A62C4114C34952
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=culturacusco.gob.pe;
- s=C8533470-F1F2-11EA-9109-16785B91DAB8; t=1623841884;
- bh=ndaHGGsW0xDBhymLoaDf36xe7x4eqOnX9BOBFTGPtv0=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=mb6kkNq4x4jCp6kvqe0zCQhUUIS+H5/TAuKgluZC1HoEd/SpyDMVbKAdSmDmBHsCp
- kde+zFo7CJnPrnqU+OiNWJXURx6Bh9qJIky1wacWKI4NO4xwobzCAXw+SErjgtmp2q
- v5E9PyPHhnfJu8qAZQf5Y4QPgig5VNVtNXHPSyM9hn4J95BW+UPoQ9WCxolA18H4ne
- n7+18C820tajPLIuTuWkNz+rDaKm2DTRARA0H0rPcmi+3hTgeUO5H7nDgj1isl2otq
- yl/703HJMmzVNmdd61WhjBUCUiM96wQVGPCaclljBWhgUW4KqaJzm2V0paYUT4QWQf
- FRa+ynbTGLmCQ==
-Received: from mail.culturacusco.gob.pe ([127.0.0.1])
- by localhost (mail.culturacusco.gob.pe [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id Fkad5oQF5k-m; Wed, 16 Jun 2021 06:11:24 -0500 (-05)
-Received: from [192.168.8.110] (unknown [197.185.99.144])
- by mail.culturacusco.gob.pe (Postfix) with ESMTPSA id DDF2C114C342C0;
- Wed, 16 Jun 2021 06:11:10 -0500 (-05)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ex3Schn0zoVr for <devel@linuxdriverproject.org>;
+ Wed, 16 Jun 2021 13:02:05 +0000 (UTC)
+X-Greylist: delayed 00:08:12 by SQLgrey-1.8.0
+Received: from lucky1.263xmail.com (lucky1.263xmail.com [211.157.147.133])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7A4C34045B
+ for <devel@driverdev.osuosl.org>; Wed, 16 Jun 2021 13:02:05 +0000 (UTC)
+Received: from localhost (unknown [192.168.167.70])
+ by lucky1.263xmail.com (Postfix) with ESMTP id CE363CD8BD;
+ Wed, 16 Jun 2021 20:53:40 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [111.207.172.18])
+ by smtp.263.net (postfix) whith ESMTP id
+ P4789T140158491260672S1623848013965153_; 
+ Wed, 16 Jun 2021 20:53:40 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <97f3434abaad5f566b0711ee2b3c6bfd>
+X-RL-SENDER: maqianga@uniontech.com
+X-SENDER: maqianga@uniontech.com
+X-LOGIN-NAME: maqianga@uniontech.com
+X-FST-TO: larry.finger@lwfinger.net
+X-RCPT-COUNT: 8
+X-SENDER-IP: 111.207.172.18
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Qiang Ma <maqianga@uniontech.com>
+To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, insafonov@gmail.com,
+ yepeilin.cs@gmail.com, ffclaire1224@gmail.com
+Subject: [PATCH] staging: r8188eu/core: remove the check for NULL pointer in
+ _rtw_enqueue_cmd()
+Date: Wed, 16 Jun 2021 20:53:32 +0800
+Message-Id: <20210616125332.31674-1-maqianga@uniontech.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re:
-To: Recipients <imolinan@culturacusco.gob.pe>
-From: imolinan@culturacusco.gob.pe
-Date: Wed, 16 Jun 2021 04:11:00 -0700
-Message-Id: <20210616111110.DDF2C114C342C0@mail.culturacusco.gob.pe>
-X-CULTURACUSCO-MailScanner: Not scanned: please contact your Internet E-Mail
- Service Provider for details,
- Not scanned: please contact your Internet E-Mail Service Provider for details
-X-CULTURACUSCO-MailScanner-MCPCheck: MCP-Clean, MCP-Checker (puntaje=0,
- requerido 1), MCP-Clean (MCP-Whitelisted),
- MCP-Checker (puntaje=0, requerido 1)
-X-CULTURACUSCO-MailScanner-SpamScore: s
-X-CULTURACUSCO-MailScanner-Information: Please contact the ISP for more
- information
-X-CULTURACUSCO-MailScanner-ID: A62C4114C34952.A3859
-X-CULTURACUSCO-MailScanner-From: imolinan@culturacusco.gob.pe
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,17 +74,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: infottcuckk@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Qiang Ma <maqianga@uniontech.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sie haben eine Spende, ich habe die Amerika-Lotterie im Wert von 40 Million=
-en US-Dollar in Amerika gewonnen und beschlossen, einen Teil davon an f=FCn=
-f gl=FCckliche Menschen und Wohlt=E4tigkeitsorganisationen zum Gedenken an =
-meine verstorbene Frau zu spenden, die an Krebs gestorben ist. Kontaktieren=
- Sie mich f=FCr weitere Details unter: infottcuckk@gmail.com
+Remove the check for _rtw_enqueue_cmd(), because
+rtw_enqueue_cmd() already has a check of NULL pointer,
+so this condition is not possible.
+
+Signed-off-by: Qiang Ma <maqianga@uniontech.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_cmd.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_cmd.c b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+index 1724dfd7edbc..513c0f95b4bf 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_cmd.c
++++ b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+@@ -39,17 +39,12 @@ static int _rtw_enqueue_cmd(struct __queue *queue, struct cmd_obj *obj)
+ {
+ 	unsigned long irqL;
+ 
+-	if (!obj)
+-		goto exit;
+-
+ 	spin_lock_irqsave(&queue->lock, irqL);
+ 
+ 	list_add_tail(&obj->list, &queue->queue);
+ 
+ 	spin_unlock_irqrestore(&queue->lock, irqL);
+ 
+-exit:
+-
+ 	return _SUCCESS;
+ }
+ 
+-- 
+2.20.1
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
