@@ -1,59 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53A5B3AA9AE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Jun 2021 05:41:30 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 992DA3AA9B0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Jun 2021 05:41:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5038A83DBE;
-	Thu, 17 Jun 2021 03:41:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1F45041604;
+	Thu, 17 Jun 2021 03:41:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tSpdAjhZYNhu; Thu, 17 Jun 2021 03:41:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id H4cXYPz2rpNz; Thu, 17 Jun 2021 03:41:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B602F83D15;
-	Thu, 17 Jun 2021 03:41:23 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 75A574156D;
+	Thu, 17 Jun 2021 03:41:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 65C131BF283
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 17 Jun 2021 03:41:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 734C91C115D
+ for <devel@linuxdriverproject.org>; Thu, 17 Jun 2021 03:41:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5776960658
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 17 Jun 2021 03:41:13 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6427240264
+ for <devel@linuxdriverproject.org>; Thu, 17 Jun 2021 03:41:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wNge5EWHF8bo
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 17 Jun 2021 03:41:10 +0000 (UTC)
-X-Greylist: delayed 00:05:16 by SQLgrey-1.8.0
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EqLRCUBrkJcp for <devel@linuxdriverproject.org>;
+ Thu, 17 Jun 2021 03:41:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.mbpp.gov.my (mail.mppp.gov.my [211.25.226.35])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3D93A60639
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 17 Jun 2021 03:41:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 44E7A400E9
+ for <devel@linuxdriverproject.org>; Thu, 17 Jun 2021 03:41:07 +0000 (UTC)
 Received: from mail.mbpp.gov.my (localhost.localdomain [127.0.0.1])
- by localhost (Email Security Appliance) with SMTP id 7295A3EAAB3F_CAC314B;
- Thu, 17 Jun 2021 03:35:48 +0000 (GMT)
+ by localhost (Email Security Appliance) with SMTP id CDDA23EAAB49_CAC327B;
+ Thu, 17 Jun 2021 03:36:07 +0000 (GMT)
 Received: from Exchange01.mppp.gov.my (unknown [172.16.0.157])
  by mail.mbpp.gov.my (Sophos Email Appliance) with ESMTP id
- 9B8323EA673A_CAC312F; Thu, 17 Jun 2021 03:35:46 +0000 (GMT)
+ E95963EA8762_CAC325F; Thu, 17 Jun 2021 03:36:05 +0000 (GMT)
 Received: from [192.168.8.102] (172.16.0.170) by Exchange01.mppp.gov.my
  (172.16.0.157) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1415.2; Thu, 17 Jun
- 2021 11:36:52 +0800
-Content-Type: multipart/mixed; boundary="===============1842701594=="
+ 2021 11:37:17 +0800
+Content-Type: multipart/mixed; boundary="===============0412499878=="
 MIME-Version: 1.0
 Subject: Loan offer @ 5% inerest rates
 To: Recipients <bangunan@mppp.gov.my>
 From: <bangunan@mppp.gov.my>
-Date: Thu, 17 Jun 2021 05:35:22 +0200
+Date: Thu, 17 Jun 2021 05:35:44 +0200
 X-Antivirus: avast! (VPS 210616-4, 06/16/2021), Outbound message
 X-Antivirus-Status: Clean
-Message-ID: <75e2bc96-edee-4619-aff5-ca2d52e92f35@Exchange01.mppp.gov.my>
+Message-ID: <acd64fd2-3782-459d-93d2-47f0e1e2e0c9@Exchange01.mppp.gov.my>
 X-Originating-IP: [172.16.0.170]
 X-ClientProxiedBy: Exchange01.mppp.gov.my (172.16.0.157) To
  Exchange01.mppp.gov.my (172.16.0.157)
@@ -74,7 +70,7 @@ Reply-To: rapidloansfinance@gmail.com
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============1842701594==
+--===============0412499878==
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -100,7 +96,7 @@ This email is free from viruses and malware because avast! Antivirus protec=
 tion is active.
 https://www.avast.com/antivirus
 
---===============1842701594==
+--===============0412499878==
 Content-Type: image/jpeg
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -5164,7 +5160,7 @@ oAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiig
 AooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAC
 iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKK
 KKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==
---===============1842701594==
+--===============0412499878==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -5175,6 +5171,6 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============1842701594==--
+--===============0412499878==--
 
 
