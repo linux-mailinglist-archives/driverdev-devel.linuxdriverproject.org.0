@@ -1,20 +1,20 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C25E3AB221
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Jun 2021 13:15:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BCDE3AB21E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Jun 2021 13:15:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A146460761;
-	Thu, 17 Jun 2021 11:15:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF06141620;
+	Thu, 17 Jun 2021 11:15:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oQFRjQQ0m003; Thu, 17 Jun 2021 11:15:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Mr8ZEPlwj7ZJ; Thu, 17 Jun 2021 11:15:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F140C606E6;
-	Thu, 17 Jun 2021 11:15:48 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 56A5F415AE;
+	Thu, 17 Jun 2021 11:15:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
  by ash.osuosl.org (Postfix) with ESMTP id 750741BF599;
@@ -23,6 +23,8 @@ Received: from localhost (localhost [127.0.0.1])
  by smtp3.osuosl.org (Postfix) with ESMTP id 632B660761;
  Thu, 17 Jun 2021 11:15:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=ilahui.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
  with ESMTP id HITonVzU9tFI; Thu, 17 Jun 2021 11:15:27 +0000 (UTC)
