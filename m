@@ -1,53 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB9243AB21C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Jun 2021 13:14:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C25E3AB221
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Jun 2021 13:15:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1439E83DE9;
-	Thu, 17 Jun 2021 11:14:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A146460761;
+	Thu, 17 Jun 2021 11:15:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JSprxNhnrNw4; Thu, 17 Jun 2021 11:14:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oQFRjQQ0m003; Thu, 17 Jun 2021 11:15:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5E0C483DD8;
-	Thu, 17 Jun 2021 11:14:56 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id F140C606E6;
+	Thu, 17 Jun 2021 11:15:48 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 436941BF599
- for <devel@linuxdriverproject.org>; Thu, 17 Jun 2021 11:14:46 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 750741BF599;
+ Thu, 17 Jun 2021 11:15:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 39D8F40307
- for <devel@linuxdriverproject.org>; Thu, 17 Jun 2021 11:14:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 632B660761;
+ Thu, 17 Jun 2021 11:15:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=ilahui.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id piG2o7Tw5jF8 for <devel@linuxdriverproject.org>;
- Thu, 17 Jun 2021 11:14:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HITonVzU9tFI; Thu, 17 Jun 2021 11:15:27 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.ilahui.com (unknown [122.227.2.202])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 91FE44023C
- for <devel@driverdev.osuosl.org>; Thu, 17 Jun 2021 11:14:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E470360602;
+ Thu, 17 Jun 2021 11:15:26 +0000 (UTC)
 Received: from mail.ilahui.com (mail.ilahui.com [127.0.0.1])
- by mail.ilahui.com (Postfix - by xvp.cn) with ESMTPSA id C56EC163902;
- Thu, 17 Jun 2021 19:13:32 +0800 (CST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ilahui.com C56EC163902
+ by mail.ilahui.com (Postfix - by xvp.cn) with ESMTPSA id AA5451638FB;
+ Thu, 17 Jun 2021 19:13:42 +0800 (CST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ilahui.com AA5451638FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ilahui.com;
- s=default; t=1623928414;
- bh=s6gh6QqLiUcjvQPUjf6xt5digsC0HVeiYKxCEaDusNU=;
+ s=default; t=1623928423;
+ bh=ZhkP3gfeZQeCcj+nX3x/05Q0GEv9eFVhVdjzOZPzb80=;
  h=Date:From:To:Subject:Reply-To:In-Reply-To:References:From;
- b=qUOejnFWlzQpwwhM49hId6v3ygKDcbGDyG7VQr3AkcMOq3ZOVjAbomNhqgehBYqzl
- WhQ4f4FKmItut6IVRH/m8ZLkyYuARejOWXjIgYwbzJPflnB0SYXxir/7KKjE6MvTha
- L/quQl4h4jycCvy4mVcySL9Mi7zd/UI2b1RDD5ZY=
+ b=J0T44Lu/yPliZRzk3+obNEK/4MZ0cby5yJCIA8Kq5jtrcYR8mspj4zU7pLHmerPpy
+ D/6QjZb9OwIYPS7ndsiw7GwCVUJ9JoGT/dnU4YI6CD2G95Tzv5QeicE3bAOWFVebV7
+ w3wOFVMRWggV8oKISDp9vCHhASlXZY6vnuDa0+sQ=
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="=_87ff0090f9166994210926c9661c6789"
-Date: Thu, 17 Jun 2021 13:13:32 +0200
+ boundary="=_db17393f0452bfe57a0bf19768dd4d9e"
+Date: Thu, 17 Jun 2021 13:13:42 +0200
 From: "Dr. Wiz Patrick" <xiangaq@ilahui.com>
 To: undisclosed-recipients:;
 Subject: You have been awarded the sum of US$2,000,000 (Two Million US Dollars)
@@ -68,7 +66,7 @@ References: <4ebfc816629f7688cc9b187b5c1dffb0@ilahui.com>
  <f2332d6f6a4885f87aeb160d8ece8f13@ilahui.com>
  <f07069f13d658df23ce6c926c596bb02@ilahui.com>
  <943d9212fb182c1ab774a414319bf0d8@ilahui.com>
-Message-ID: <c8329920a1487c98779849acf28ec8a0@ilahui.com>
+Message-ID: <3b702ace1e539ba596d24c27118f49d7@ilahui.com>
 X-Sender: xiangaq@ilahui.com
 User-Agent: BoxMail
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -87,7 +85,7 @@ Reply-To: jabufk@highveldmail.co.za
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---=_87ff0090f9166994210926c9661c6789
+--=_db17393f0452bfe57a0bf19768dd4d9e
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset=US-ASCII;
  format=flowed
@@ -109,7 +107,7 @@ accordingly.
 Yours sincerely,
 
 Dr. Wiz Patrick.
---=_87ff0090f9166994210926c9661c6789
+--=_db17393f0452bfe57a0bf19768dd4d9e
 Content-Transfer-Encoding: base64
 Content-Type: application/pdf;
  name="Coronavirus Economic Impact Relief Award Notification.pdf"
@@ -1841,7 +1839,7 @@ MDAwMCBuIAowMDAwMDQ1MzI5IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNTMgL1Jvb3QgMSAw
 IFIgL0luZm8gMiAwIFIKL0lEIFs8RDIyNjNFQkQ4ODkyMEFERThENzY2RTIzMzBGNUVGNjc+PEQy
 MjYzRUJEODg5MjBBREU4RDc2NkUyMzMwRjVFRjY3Pl0KPj4Kc3RhcnR4cmVmCjk2OTk4CiUlRU9G
 Cg==
---=_87ff0090f9166994210926c9661c6789
+--=_db17393f0452bfe57a0bf19768dd4d9e
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1852,4 +1850,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---=_87ff0090f9166994210926c9661c6789--
+--=_db17393f0452bfe57a0bf19768dd4d9e--
