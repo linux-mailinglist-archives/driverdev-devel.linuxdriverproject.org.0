@@ -1,60 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B00583AD60A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Jun 2021 01:39:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCB843AD8D6
+	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Jun 2021 11:13:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D76F583F0D;
-	Fri, 18 Jun 2021 23:39:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5D04F401C7;
+	Sat, 19 Jun 2021 09:13:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NBEMtBTBP8cL; Fri, 18 Jun 2021 23:39:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qL4yXbp-1WjK; Sat, 19 Jun 2021 09:13:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2B66383E18;
-	Fri, 18 Jun 2021 23:39:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 85BAD401AE;
+	Sat, 19 Jun 2021 09:13:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F318E1BF5A8
- for <devel@linuxdriverproject.org>; Fri, 18 Jun 2021 23:38:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C23951BF31B
+ for <devel@linuxdriverproject.org>; Sat, 19 Jun 2021 09:13:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EFC7660B50
- for <devel@linuxdriverproject.org>; Fri, 18 Jun 2021 23:38:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BF22F606A5
+ for <devel@linuxdriverproject.org>; Sat, 19 Jun 2021 09:13:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nggj9cYzvPqw for <devel@linuxdriverproject.org>;
- Fri, 18 Jun 2021 23:38:46 +0000 (UTC)
+ with ESMTP id oomBjVgo8jHx for <devel@linuxdriverproject.org>;
+ Sat, 19 Jun 2021 09:13:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7C59C605D8
- for <devel@driverdev.osuosl.org>; Fri, 18 Jun 2021 23:38:44 +0000 (UTC)
-IronPort-SDR: qa+xyz4GD2rgmdtgl/vCmjoT19dwm6ow0S4BxbxdiZO58Z1OkU3L2HNMCRg9f4vO6ir/xnrkVw
- LxAUzHFAhx9Q==
-X-IronPort-AV: E=McAfee;i="6200,9189,10019"; a="204809674"
-X-IronPort-AV: E=Sophos;i="5.83,284,1616482800"; d="scan'208";a="204809674"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2021 16:38:42 -0700
-IronPort-SDR: OjBcppYfesLjxU1KSuwJYRkSKpi6K3tDMcCs16uuJ+S/PH3V73Om/PGCqHY7yvOFLaTb269oSW
- dJ3mxy5aEyAw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,284,1616482800"; d="scan'208";a="622543886"
-Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 18 Jun 2021 16:38:41 -0700
-Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1luO4O-0003CG-Va; Fri, 18 Jun 2021 23:38:40 +0000
-Date: Sat, 19 Jun 2021 07:37:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 6cbb3aa0f9d5d23221df787cf36f74d3866fdb78
-Message-ID: <60cd2e48.UtfyH6qGuPrAZ8V/%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mk.micky-xt.top (unknown [213.176.36.20])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 31AF460692
+ for <devel@linuxdriverproject.org>; Sat, 19 Jun 2021 09:13:27 +0000 (UTC)
+Received: from AUTOBVT-25C779E (14.114.27.62) by mk.micky-xt.top id
+ hpmqfg0e97cn for <devel@linuxdriverproject.org>;
+ Sat, 19 Jun 2021 09:12:22 +0000 (envelope-from <mk2@mk.micky-xt.top>)
+From: "manager@bllighting.com.cn" <manager@bllighting.com.cn>
+Subject: professional lighting manufacturers
+To: devel@linuxdriverproject.org
 MIME-Version: 1.0
+Date: Sat, 19 Jun 2021 17:13:25 +0800
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+Content-Disposition: inline
+Message-Id: <20210619091329.BF22F606A5@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,114 +56,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: manager@bllighting.com.cn
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 6cbb3aa0f9d5d23221df787cf36f74d3866fdb78  staging: rtl8723bs: rtw_efuse: Fix coding style
-
-elapsed time: 723m
-
-configs tested: 83
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                     tqm8555_defconfig
-arm                     am200epdkit_defconfig
-arm                         orion5x_defconfig
-sh                        edosk7705_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-x86_64                            allnoconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a002-20210618
-i386                 randconfig-a006-20210618
-i386                 randconfig-a004-20210618
-i386                 randconfig-a001-20210618
-i386                 randconfig-a005-20210618
-i386                 randconfig-a003-20210618
-x86_64               randconfig-a015-20210618
-x86_64               randconfig-a011-20210618
-x86_64               randconfig-a012-20210618
-x86_64               randconfig-a014-20210618
-x86_64               randconfig-a016-20210618
-x86_64               randconfig-a013-20210618
-i386                 randconfig-a015-20210618
-i386                 randconfig-a016-20210618
-i386                 randconfig-a013-20210618
-i386                 randconfig-a014-20210618
-i386                 randconfig-a012-20210618
-i386                 randconfig-a011-20210618
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-b001-20210618
-x86_64               randconfig-a002-20210618
-x86_64               randconfig-a001-20210618
-x86_64               randconfig-a004-20210618
-x86_64               randconfig-a003-20210618
-x86_64               randconfig-a006-20210618
-x86_64               randconfig-a005-20210618
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBTaXIvTWFkYW06DQoNCiAgTmljZSBkYXkhDQoNCiAgICBDaGluYSBCcmlsbGlhbnQgTGln
+aHRpbmcgQ28uLEx0ZC4gaGVyZSwgZXhwb3J0aW5nICBhbGwga2luZHMgZGVjb3JhdGl2ZSBsaWdo
+dGluZyBjaGFuZGVsaWVy77yMSG90ZWwsQ2h1cmNoLGV0YyxBbHNvIGFjY2VwdCBjdXN0b20gb25l
+IHdpdGggZ29vZCBxdWFsaXR5IGFuZCBsb3cgcHJpY2UuDQoNCg0KICAgUmVzcG9uc2UgdG8gbWUs
+IGxldCdzIHRhbGsgZGV0YWlscy4NCg0KDQogICBSZ2RzLA0KDQogIERhbm55IA0KDQoNCk1vYmls
+ZS9XaGF0YUFwcDogKzg2IDE1MjIwOTE3OTQ4DQpXZWI6d3d3LmJyaWxsaWFudGNoYW5kZWxpZXIu
+Y29tDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZl
+bCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVy
+ZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2
+ZWwK
