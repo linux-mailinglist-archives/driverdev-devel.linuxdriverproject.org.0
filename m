@@ -1,74 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB0E93ADEC5
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Jun 2021 15:36:31 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DA3F3ADFF0
+	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Jun 2021 21:31:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7772660796;
-	Sun, 20 Jun 2021 13:36:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 095E740207;
+	Sun, 20 Jun 2021 19:31:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lFxjkq-8HbKz; Sun, 20 Jun 2021 13:36:28 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SFFYNbSrWhnK; Sun, 20 Jun 2021 19:31:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B5FF460764;
-	Sun, 20 Jun 2021 13:36:27 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 807024010B;
+	Sun, 20 Jun 2021 19:31:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CB0051BF2B4
- for <devel@linuxdriverproject.org>; Sun, 20 Jun 2021 13:36:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8699C1BF34C
+ for <devel@linuxdriverproject.org>; Sun, 20 Jun 2021 19:31:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B9BED40328
- for <devel@linuxdriverproject.org>; Sun, 20 Jun 2021 13:36:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8286960780
+ for <devel@linuxdriverproject.org>; Sun, 20 Jun 2021 19:31:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YBAxpTh53T-C for <devel@linuxdriverproject.org>;
- Sun, 20 Jun 2021 13:36:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N_YcxBybohDr for <devel@linuxdriverproject.org>;
+ Sun, 20 Jun 2021 19:31:15 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-io1-xd43.google.com (mail-io1-xd43.google.com
- [IPv6:2607:f8b0:4864:20::d43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8E9CB402A8
- for <devel@driverdev.osuosl.org>; Sun, 20 Jun 2021 13:36:16 +0000 (UTC)
-Received: by mail-io1-xd43.google.com with SMTP id p66so12604771iod.8
- for <devel@driverdev.osuosl.org>; Sun, 20 Jun 2021 06:36:16 -0700 (PDT)
+Received: from mail-lf1-x12b.google.com (mail-lf1-x12b.google.com
+ [IPv6:2a00:1450:4864:20::12b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 10F356063D
+ for <devel@driverdev.osuosl.org>; Sun, 20 Jun 2021 19:31:15 +0000 (UTC)
+Received: by mail-lf1-x12b.google.com with SMTP id r5so26461223lfr.5
+ for <devel@driverdev.osuosl.org>; Sun, 20 Jun 2021 12:31:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=D7l/Y2nU4ivOXB3kYNarWKNDy1SUWuawPt7q4q/Bhv4=;
- b=uDIEtWfgl91FDet7ZYX1u1ozW0abpKvg4acx3thqXBCDoYcWKg7eyNZSXNk+51VeuJ
- sYbwx77CCJt/Xl1UBy7P++4/uHOQjQcptGzc4BiJd5A/7x+FLCtsFr6R08yAScCPxE/G
- ycRitdP5UZQCPHBcljPWiYz9qooX9+o9VlIcE1iBIKjgWFsG58IfpnIZmKh5Mer/et0Q
- Wvv2McVtUA6rn+iTugaAQulni5t+7gIBWkpgi42U+JEUmcEEUifIxcViVFyKhDEEgfNV
- A33afccbptAYxVMQ3XRd6cg8QS8Vl2AEYQyihFbFLRpIaiCXlHMQE4BSfPfytvzUMqcd
- FXMw==
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=a2zlJLb2cHVJ/vhYiwd0h6Ss03bH4wa1SiOeNNr1qqA=;
+ b=sGNxSEzTe3lM18ghhBrYte1cyID3zgB/+zcBJ1qkOjj6nENXnw6gczAwH9pGc27/IP
+ AYmB9Vfsm7CU4mFnkv3Pc0Mhk5fhJ+7y21dSGdYCrU16IkKdItmkVFZuaqIyGZGVK8Ip
+ cSfiwscB18hUwstZEHQ/uOyfNKzCjTDh/9pYwz0W/4MCkz4GT8Vo+plZzTD9RrFx4qI1
+ EJ0Nc82GBzCc7mb3VEaLFAigTgpPYj10mphmlS8yVMLKAhOhByUFCnPybO8XDdnAtIxc
+ cMIFll5v6r8SM8KesUBMrzEzcOV7icIdhWuOke0YPVG7IYNf+Frc8fNuQpUWUS2kUWzD
+ BCaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=D7l/Y2nU4ivOXB3kYNarWKNDy1SUWuawPt7q4q/Bhv4=;
- b=miBaeqRLRe0no5pu9APTKXg14BMCQhPEzMBfxjOipWWYROVZxIf6u709hidlrbtLUu
- 6QehhL+f1CVZgXf1dziT8f9PcR2Pj1iIkkheEk7gy5fvoRR0zzEyYl5xiFyf1WkDwPpc
- ss2KizRkcmj64/iF57jMUlvQsKuQ1VCgN9FnO4vdWSR4mpOzx4vKFVX//SqF3TviugXA
- EFgBiOptxpsAnNSBdamjopfK+KYwn3lmRoRUj32vRZh2w2su3t/EaOyQwdzF4FTFoH94
- opmF92ETb+o/HazSW8awkpkcmDOxjoWsyzgpQyGe3QErpLYbk+qOCHy5UL5I3RwxvMh4
- xUMw==
-X-Gm-Message-State: AOAM530/jnNv3z1+fPVhFY/abTg950xnf7D/kJNxIhqIT0cbjVYn6kej
- 1m7b1OOjrPitatHSk7HP+oBW6w54F4e4qD0n9Uw=
-X-Google-Smtp-Source: ABdhPJwOQ5lA8oaPxit1UXNypL8Kah2QWj0jtAWNuj5/Z8/Rl7T8YsfxHtOIriCZuXo1tXOWzxp5d5YlbnVjDFRsY5Q=
-X-Received: by 2002:a02:a810:: with SMTP id f16mr12630337jaj.64.1624196175568; 
- Sun, 20 Jun 2021 06:36:15 -0700 (PDT)
+ :subject:to:content-transfer-encoding;
+ bh=a2zlJLb2cHVJ/vhYiwd0h6Ss03bH4wa1SiOeNNr1qqA=;
+ b=fxDraw9RUy/RwYOMWa2HFkh6lgbf8HlOkV0Ze1lqDKsMF3jWjpZDBKqa7tGK8jq9bb
+ uS03jo2xYjKGbPvuIvmZSkmINSerB9t8BzUdZr9M1I/ybQ38phzF/tzMCldgytxjUHLI
+ cAM9+7t9VM5RAPygnXer8SN9MmJJPx74ZuLJrLCztS9yb44qPeXU1V8n0wkL1buO3s5M
+ 1SsRH3e/GJBAXHrkpCnC1gX/2Ytj4x6X6UlXbeok8YLfLz3ftMCpTFskcRAl3Y1ofcZK
+ qthIA+yCpyr7wsJ/TCnTk8Ms4YMgzG6PyJ+0OtptXkHmgGuq3P9NEUJisc/fGxVKJ0/a
+ mIzw==
+X-Gm-Message-State: AOAM5317+YunDl2zh96aoeDfIxLGLeGP1iqtZErQtTuwJWv+/JVTnJq5
+ KJco5DW1XgoTBhuHsoq2m+JctZf+sORmYeLZKP0=
+X-Google-Smtp-Source: ABdhPJydiXAjiWRRfRKkE6cjZ22caaoTAUIaiMw8gatLOa/mlsGUwqR9psDlbY3dZ0D9qCd+QTz7eYk5yP4HuE0WRP4=
+X-Received: by 2002:a05:6512:30b:: with SMTP id
+ t11mr11942418lfp.661.1624217472769; 
+ Sun, 20 Jun 2021 12:31:12 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:6e02:1baf:0:0:0:0 with HTTP; Sun, 20 Jun 2021 06:36:14
- -0700 (PDT)
-From: Sarah Koffi <sarah.koffi101@gmail.com>
-Date: Sun, 20 Jun 2021 15:36:14 +0200
-Message-ID: <CA+ifgLE1g7jgi567M2HhZfvRSUF63Hu6stsW+ysX=3U-=qnn6Q@mail.gmail.com>
-Subject: Greetings From Mrs. Sarah Koffi
-To: sarahkoffi389@yahoo.co.jp
+Received: by 2002:aa6:da47:0:b029:fa:6d7d:24c with HTTP; Sun, 20 Jun 2021
+ 12:31:12 -0700 (PDT)
+From: Gnb Investors Bank <sandraquntoo@gmail.com>
+Date: Sun, 20 Jun 2021 22:31:12 +0300
+Message-ID: <CAPu=tC6LghNW-EG0_b_zTZNRwF=O9d28K9+F0+-DCZ5EqNPj8A@mail.gmail.com>
+Subject: Brauchen Sie einen Kredit?
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,59 +83,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sarahkoffi389@yahoo.co.jp
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: contactcenter@gnbinvestorsb.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings From Mrs. Sarah Koffi
-
-I'm contacting you based on your good profiles I read and for a good
-reasons, I am in search of a property to buy in your country as I
-intended to come over to your
-country for investment, Though I have not meet with you before but I
-believe that one has to risk confiding in someone to succeed sometimes
-in life.
-
-My name is Mrs. Sarah Koffi. My late husband deals on Crude Oil with
-Federal Government of Sudan and he has a personal Oil firm in Bentiu
-Oil zone town and Upper
-Nile city. What I have experience physically, I don't wish to
-experience it again in my life due to the recent civil Ethnic war
-cause by our President Mr. Salva Kiir
-and the rebel leader Mr Riek Machar, I have been Under United Nation
-refuge camp in chad to save my life and that of my little daughter.
-
-Though, I do not know how you will feel to my proposal, but the truth
-is that I sneaked into Chad our neighboring country where I am living
-now as a refugee.
-I escaped with my little daughter when the rebels bust into our house
-and killed my husband as one of the big oil dealers in the country,
-ever since then, I have being on the run.
-
-I left my country and move to Chad our neighboring country with the
-little ceasefire we had, due to the face to face peace meeting accord
-coordinated by the US Secretary of State, Mr John Kerry and United
-Nations in Ethiopia (Addis Ababa) between our President Mr Salva Kiir
-and the rebel leader Mr Riek Machar to stop this war.
-
-I want to solicit for your partnership with trust to invest the $8
-million dollars deposited by my late husband in Bank because my life
-is no longer safe in our country, since the rebels are looking for the
-families of all the oil business men in the country to kill, saying
-that they are they one that is milking the country dry.
-
-I will offer you 20% of the total fund for your help while I will
-partner with you for the investment in your country.
-If I get your reply.
-
-I will wait to hear from you so as to give you details.With love from
-
- i need you to contact me here sarahkoffi389@yahoo.co.jp
-
-Mrs. Sarah Koffi
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+LS0gCkJyYXVjaGVuIFNpZSBlaW5lbiBLcmVkaXQ/IFVuc2VyZSBCYW5rIHZlcmdpYnQgS3JlZGl0
+ZSB6dSBlaW5lbSBaaW5zc2F0eiB2b24gMiUKCk1lbGRlbiBTaWUgc2ljaCBmw7xyIHdlaXRlcmUg
+SW5mb3JtYXRpb25lbiBiZWkgdW5zLgoKRS1NYWlsOiBjb250YWN0Y2VudGVyQGduYmludmVzdG9y
+c2IuY29tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
