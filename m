@@ -1,46 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C443B3B7208
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Jun 2021 14:25:50 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A8B33B726D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Jun 2021 14:51:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5644A837A1;
-	Tue, 29 Jun 2021 12:25:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 99CCF40482;
+	Tue, 29 Jun 2021 12:51:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Tx0lLAmJwSeR; Tue, 29 Jun 2021 12:25:47 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7QBo6j7nPVG9; Tue, 29 Jun 2021 12:51:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9CA49835C4;
-	Tue, 29 Jun 2021 12:25:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8111B40419;
+	Tue, 29 Jun 2021 12:51:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B78F41BF2C0
- for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 12:25:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F36771BF2C0
+ for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 12:51:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B13AA60839
- for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 12:25:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F051140130
+ for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 12:51:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QhpQ40BoeZ_h for <devel@linuxdriverproject.org>;
- Tue, 29 Jun 2021 12:25:35 +0000 (UTC)
-X-Greylist: delayed 05:10:17 by SQLgrey-1.8.0
-Received: from smtpdua.matrix.net.id (smtpdua.matrix.net.id [202.59.163.98])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8C3F2607CF
- for <devel@driverdev.osuosl.org>; Tue, 29 Jun 2021 12:25:34 +0000 (UTC)
-Received: from dsl-189-151-171-34-dyn.prod-infinitum.com.mx (unknown
- [10.19.53.1])
- by smtpdua.matrix.net.id (Postfix) with ESMTP id 30F2DB6DC
- for <devel@driverdev.osuosl.org>; Tue, 29 Jun 2021 13:48:14 +0700 (WIB)
-From: Bases MX<devel@driverdev.osuosl.org>
-To: devel@driverdev.osuosl.org
-Subject: Dese a conocer con clientes de todo Mexico.
-Date: 29 Jun 2021 01:48:13 -0500
-Message-ID: <20210629014813.B5DB2467F1B8C1A7@driverdev.osuosl.org>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1tASPKzHP8wY for <devel@linuxdriverproject.org>;
+ Tue, 29 Jun 2021 12:51:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from WIN-VTPUBHNS72V (unknown [218.75.92.58])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 76F8A40124
+ for <devel@driverdev.osuosl.org>; Tue, 29 Jun 2021 12:51:15 +0000 (UTC)
+Received: from [192.168.43.47] (Unknown [197.210.84.10])
+ by WIN-VTPUBHNS72V with ESMTPA ; Thu, 24 Jun 2021 20:46:27 +0800
+Message-ID: <4DEF5548-6F69-454B-8921-ABA89F7B047D@WIN-VTPUBHNS72V>
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: URGENT ATTENTION
+To: Recipients <wjjt@wjjt.cn>
+From: "Andres Auchincloss" <wjjt@wjjt.cn>
+Date: Thu, 24 Jun 2021 14:45:55 +0200
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,76 +52,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: andresauchincloss926@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkRJUkVDVE9SSU8gRU1QUkVTQVJJQUwgTUVYSUNBTk8gMjAyMQoKU0UgSU5DTFVZRU4gSU5DTFVZ
-RSAyIERJUkVDVE9SSU9TIENPTVBMRVRPUzoKCkEpIERpcmVjdG9yaW8gRW1wcmVzYXJpYWwgZGUg
-bWFzIGRlIDIgbWlsbG9uZXMgZGUgZW1wcmVzYXMgYSAKbml2ZWwgbmFjaW9uYWwgZW4gZm9ybWF0
-byBFeGNlbCBjb24gREFUT1MgQ09NUExFVE9TLiAKKE5vbWJyZSBFbXByZXNhLCBDb250YWN0bywg
-RS1tYWlsLCBUZWxlZm9ubywgRGlyZWNjaW9uLCBQdWVzdG8sIApHaXJvLCBQYWdpbmEgV2ViLCBU
-YW1hw7FvIGRlIEVtcHJlc2EsIEVUQy4pIAoKQikgIERpcmVjdG9yaW8gRW1wcmVzYXJpYWwgZGUg
-MTggbWlsbG9uZXMgZGUgbWFpbHMgZW1wcmVzYXJpYWxlcyAKZGl2aWRpZG9zIHBvciBFU1RBRE86
-CjkwMCwwMDAgZW1wcmVzYXMgZGVsIEQuRi4geSBFZG8uIGRlIE1leGljbyAKNiwwMDAgVGVxdWls
-ZXJhcyBhIE5pdmVsIG5hY2lvbmFsCjMwMCwwMDAgZW1wcmVzYXMgZW4gR3VhZGFsYWphcmEKNTAw
-LDAwMCBlbXByZXNhcyBhIG5pdmVsIG5hY2lvbmFsIChncmFuZGUsIG1lZGlhbmEgeSBwZXF1ZcOx
-YSkgCjE0MCwwMDAgZW1wcmVzYXMgZW4gTW9udGVycmV5CjEzMCwwMDAgUHltZXMgYSBuaXZlbCBu
-YWNpb25hbAo0MCwwMDAgZW1wcmVzYXMgZGUgbGEgaW5kdXN0cmlhIHR1cmlzdGljYSBhIG5pdmVs
-IG5hY2lvbmFsIAo1NywwMDAgZW1wcmVzYXMgZGUgbGEgaW5kdXN0cmlhIG1hbnVmYWN0dXJlcmEg
-YSBuaXZlbCBuYWNpb25hbAozNiwwMDAgZW1wcmVzYXMgY29uIG9yZ2FuaWdyYW1hIGEgbml2ZWwg
-bmFjaW9uYWwKNjAsMDAwIGVtcHJlc2FzIGRlbCBzZWN0b3IgZGUgbGEgY29uc3RydWNjaW9uIGEg
-bml2ZWwgbmFjaW9uYWwgCjMsMDAwIGVtcHJlc2FzIGVuIHNpc3RlbWFzCjIsMDAwIERhdG9zIGRl
-IHVuaXZlcnNpZGFkZXMgYSBuaXZlbCBuYWNpb25hbAoxNSwwMDAgZW1wcmVzYXMgbWVkaWFuYXMg
-Y29uIG51bWVybyBkZSBlbXBsZWFkb3MgCjExLDAwMCBlbXByZXNhcyBpbXBvcnRhbnRlcyBlbiBN
-ZXhpY28gKGdvYmllcm5vLCBpbnN0aXR1Y2lvbmVzIApiYW5jYXJpYXMsIGV0Yy4pCjIwLDAwMCBh
-cmVhcyBzYWx1ZCBhIG5pdmVsIG5hY2lvbmFsIAoxMCwwMDAgZW1wcmVzYXMgZGVsIHNlY3RvciBk
-ZSBhZ3JpY3VsdHVyYSBlbiBNZXhpY28KNDUsMDAwIGVtcHJlc2FzIG1lZGlhbmFzIGVuIGVsIEVk
-by4gRGUgTWV4aWNvCjgsMDAwIGZyYW5xdWljaWFzIGVuIE1leGljbwoxLjUgTWlsbG9uZXMgZGUg
-ZWplY3V0aXZvcyBkaXZpZGlkb3MgZW4gMyBzZWN0b3JlcyBlbXByZXNhcmlhbGVzIAooVU5JQ0FN
-RU5URSBDT1JSRU9TKQoyIG1pbGxvbmVzIGRlIG1haWxzIGRlIGRpZmVyZW50ZXMgZXhwb3MgZW4g
-TWV4aWNvIChVTklDQU1FTlRFIApDT1JSRU9TKSAKMy41IG1pbGxvbmVzIGRlIG1haWxzIHZhcmlh
-cyBpbmR1c3RyaWFzIGVuIHRvZG8gTWV4aWNvIAooVU5JQ0FNRU5URSBDT1JSRU9TKSAKNTAsMDAw
-IEluZHVzdHJpYSBGYXJtYWNldXRpY2EgKFVOSUNBTUVOVEUgQ09SUkVPUykgCjE3NSwwMDAgTW9u
-dGVycmV5IChVTklDQU1FTlRFIENPUlJFT1MpCjM1LDAwMCBRdWVyZXRhcm8gKFVOSUNBTUVOVEUg
-Q09SUkVPUykgCjU1LDAwMCBHdWFkYWxhamFyYSAgKFVOSUNBTUVOVEUgQ09SUkVPUykKMTUsMDAw
-IEFyZWEgQmFuY2FyaWEgKFVOSUNBTUVOVEUgQ09SUkVPUykgCjEzMCwwMDAgbWFpbHMgZW1wcmVz
-YXJpYWxlcyBkaXZpZGlkb3MgcG9yIGVzdGFkbyAoVU5JQ0FNRU5URSAKQ09SUkVPUykKMTIsMDAw
-IG1haWxzIENhbWFyYXMgZGUgQ29tZXJjaW8gKFVOSUNBTUVOVEUgQ09SUkVPUykgCjMwLDAwMCBt
-YWlscyBkaXZpZGlkb3MgcG9yIHJ1YnJvcyAoVU5JQ0FNRU5URSBDT1JSRU9TKQo0NSwwMDAgbWFp
-bHMgSW5kdXN0cmlhIENvbnN0cnVjdG9yYSAoVU5JQ0FNRU5URSBDT1JSRU9TKQoyMywwMDAgbWFp
-bHMgSW5kdXN0cmlhIFRlY25vbG9naWNhIChVTklDQU1FTlRFIENPUlJFT1MpIAo5MCwwMDAgcHlt
-ZXMgRC5GLiB5IEVkby4gTWV4aWNvIChVTklDQU1FTlRFIENPUlJFT1MpIAoyNSwwMDAgVmlzaXRh
-bnRlcyBhIEV4cG9zIGVuIEZyYW5xdWljaWFzIChVTklDQU1FTlRFIENPUlJFT1MpClkgTVVDSEFT
-IEJBU0VTIE1BU+KApgoKU29sbyBWYWxpZG8gSEFTVEEgZWwgVmllcm5lcyAyIGRlIEp1bGlvIDIw
-MjEgCgpQcmVjaW8gcG9yIHByb21vY2lvbjogNiw5MDAuMDAgKyBJVkEgCgpQcmVjaW8gbm9ybWFs
-OiAxOSw1MDAuMDAgKyBJVkEKCjEwMCUgRGlyZWN0b3Jpb3MgRW1wcmVzYXJpYWxlcy4gQ29udGFt
-b3MgY29uIHJlZmVyZW5jaWFzIApjb21lcmNpYWxlcy4gICAKCk5vIGxvIHBpZW5zZSBtYXMsIHNv
-bG8gcG9yIHVub3MgZGlhcyBtYXMgcG9kcmEgYWRxdWlyaXIgbGEgYmFzZSAKbWFzIGNvbXBsZXRh
-IGVuIE1leGljbyBhIHVuIHByZWNpbyBiYXN0YW50ZSBiYWpvIHF1ZSBubyBzZSAKdm9sdmVyYSBh
-IHJlcGV0aXIuICAKCgoKUGFyYSBhZHF1aXJpcmxhOgoKLS0tIEZhdm9yIGRlIHJlc3BvbmRlciBh
-bCBjb3JyZW86IApiYXNlcy5zZWdtZW50YWRhcy5tZXhpY29AZ21haWwuY29tIC0tLQoKTk9UQSBJ
-TVBPUlRBTlRFOiBTb2xvIHNlIHJlc3BldGFyYSBlbCBwcmVjaW8gYSBsYXMgcGVyc29uYXMgcXVl
-IAplbnZpZW4gc3VzIGRhdG9zIHkgcmVhbGljZW4gZWwgZGVwb3NpdG8gbWF4aW1vIGVsIFZpZXJu
-ZXMgMiBkZSAKSnVsaW8gZGVsIDIwMjEuICAKCgoKUFJFR1VOVEFTIEZSRUNVRU5URVM6CgpFbiBx
-dWUgZm9ybWF0byB2aWVuZSBsYSBiYXNlPyAKUj0gRXhjZWwgeSBUeHQKCkhhc3RhIHF1ZSBmZWNo
-YSBlc3RhbiBhY3R1YWxpemFkYXMgbGFzIGJhc2VzPyAKUj0gQSBNYXlvIDIwMjEKCkVudmlhbiBi
-YXNlcyBtdWVzdHJhIHBhcmEgc3UgZXZhbHVhY2lvbj8gClI9IFNpLCBzb2xvIGVzIG5lY2VzYXJp
-byBub3MgaW5kaXF1ZSBhIHF1ZSBjdWVudGEgZGUgY29ycmVvIHNlIGxvIApoYWNlbW9zIGxsZWdh
-ci4gCgpDdWVudGFuIGNvbiByZWZlcmVuY2lhcyBjb21lcmNpYWxlcz8gClI9IFNpLCBlbnRyZSBu
-dWVzdHJvcyBjbGllbnRlcyBzZSBlbmN1ZW50cmFuIEVNUFJFU0FTIElNUE9SVEFOVEVTIAplbiBN
-ZXhpY28uIAoKQ3VlbnRhbiBjb24gYWxndW5hIGdhcmFudGlhPyAKUj0gU2ksIGVudmlhbW9zIEdB
-UkFOVElBIERFIEVOVklPIFkgRUZFQ1RJVklEQUQgREVMIERJUkVDVE9SSU8uIAoKRG9uZGUgb2J0
-dXZpZXJvbiBsb3MgZGF0b3M/IApSPSBTb21vcyB1bmEgZW1wcmVzYSBxdWUgdGFtYmllbiBpbXBh
-cnRlIGN1cnNvcyB5IHNlbWluYXJpb3MgZGUgCmNpZXJyZSBkZSB2ZW50YXMgeSBzZXJ2aWNpbyBh
-bCBjbGllbnRlLCBjb250aW51YW1lbnRlIGVzdGFtb3MgCnByZXNlbnRlcyBlbiBldmVudG9zIGVt
-cHJlc2FyaWFsZXMgZW4gZG9uZGUgQURRVUlSSU1PUyBOVUVWQVMgCkJBU0VTLCBhc2kgY29tbyB0
-YW1iaWVuIGludGVyY2FtYmlhbW9zIGJhc2VzIGNvbiBvdHJhcyBlbXByZXNhcy4gCgpFbiBxdWUg
-dGllbXBvIG1lIGxsZWdhIGVsIERpcmVjdG9yaW8gdW5hIHZleiBwYWdhZG8/IApSPSBJbm1lZGlh
-dGFtZW50ZSBtZWRpYW50ZSB1biBsaW5rIGRlIGRlc2NhcmdhIHBhcmEgc3UgUEMuIAogCgpGQVZP
-UiBERSBJTkRJQ0FSIEVOIEFTVU5UTyBTSSBERVNFQSBTRVIgUkVNT1ZJRE8uCgpPZmVydGEgdmFs
-aWRhIHBhcmEgZGV2ZWxAZHJpdmVyZGV2Lm9zdW9zbC5vcmcuCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
-eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hi,
+
+I will like to use this opportunity to wish you a productive time in 2021 a=
+nd also confide in you to finalize this transaction of mutual benefits. It =
+may seem strange to you, but it is real. This is a transaction that has no =
+risk at all, due process shall be followed and it shall be carried out unde=
+r the ambit of the financial laws. Being the Chief Financial Officer, BP Pl=
+c. I want to trust and put in your care Eighteen Million British Pounds Ste=
+rling, The funds were acquired from an over-invoiced payment from a past co=
+ntract executed in one of my departments.
+
+I can't successfully achieve this transaction without presenting you as for=
+eign contractor who will provide a bank account to receive the funds.
+
+Documentation for the claim of the funds will be legally processed and docu=
+mented, so I will need your full cooperation on this matter for our mutual =
+benefits. We will discuss details if you are interested to work with me to =
+secure this funds. I will appreciate your prompt response in every bit of o=
+ur communication. Stay Blessed and Stay Safe.
+
+
+
+Best Regards
+
+
+
+
+Tel: +1 (587) 770-0485
+Andres .B. Auchincloss
+Chief financial officerBP Petroleum p.l.c.
+
+
+
+
+                                  Copyright =A9? 1996-2021
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
