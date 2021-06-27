@@ -1,45 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 200313B553C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Jun 2021 23:19:49 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BD5C3B5669
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Jun 2021 02:45:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D5DE440317;
-	Sun, 27 Jun 2021 21:19:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5EBA982CF9;
+	Mon, 28 Jun 2021 00:45:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dMM2cXjZnrbY; Sun, 27 Jun 2021 21:19:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id P2QS98lFuvwh; Mon, 28 Jun 2021 00:45:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D9BA540306;
-	Sun, 27 Jun 2021 21:19:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AB58A82EC7;
+	Mon, 28 Jun 2021 00:45:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 98FDF1BF576
- for <devel@linuxdriverproject.org>; Sun, 27 Jun 2021 21:19:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 97A671BF35E
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 00:45:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 958306059A
- for <devel@linuxdriverproject.org>; Sun, 27 Jun 2021 21:19:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8657640179
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 00:45:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nBTsRsR1V0L3 for <devel@linuxdriverproject.org>;
- Sun, 27 Jun 2021 21:19:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mmmYxCr3sEGK for <devel@linuxdriverproject.org>;
+ Mon, 28 Jun 2021 00:45:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from WIN-VTPUBHNS72V (unknown [218.75.92.58])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 208B1600CD
- for <devel@linuxdriverproject.org>; Sun, 27 Jun 2021 21:19:33 +0000 (UTC)
-Received: from [192.168.43.47] (Unknown [197.210.79.43])
- by WIN-VTPUBHNS72V with ESMTPA ; Thu, 24 Jun 2021 17:34:38 +0800
-Message-ID: <64436B30-0959-4885-9E3D-5F6ECC85E7A4@WIN-VTPUBHNS72V>
+Received: from mail.mfc-samara.ru (unknown [185.33.203.190])
+ by smtp2.osuosl.org (Postfix) with ESMTP id C17F0400AF
+ for <devel@driverdev.osuosl.org>; Mon, 28 Jun 2021 00:45:39 +0000 (UTC)
+Received: from User (154.118.6.61) by mail.mfc-samara.ru (10.2.8.225) with
+ Microsoft SMTP Server id 14.2.347.0; Sun, 27 Jun 2021 23:01:45 +0400
+From: Mr.James Comey <drrosemarythompson@gmail.com>
+Subject: IRREVOCABLE RELEASE OF YOUR PAYMENT
+Date: Mon, 28 Jun 2021 03:01:45 +0800
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: URGENT ATTENTION
-To: Recipients <wjjt@wjjt.cn>
-From: "Andres Auchincloss" <wjjt@wjjt.cn>
-Date: Thu, 24 Jun 2021 11:34:21 +0200
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <3880d429-0ff4-475c-b82c-2555acb18953@SRV1.office.mfc-samara.ru>
+To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,48 +55,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: andresauchincloss926@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: afbank@vipmail.hu
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+Monetary Crimes Division and Counterterrorism.
+Federal Bureau of Investigation. J. Edgar.
+1600 Pennsylvania Ave NW Washington, DC
 
-I will like to use this opportunity to wish you a productive time in 2021 a=
-nd also confide in you to finalize this transaction of mutual benefits. It =
-may seem strange to you, but it is real. This is a transaction that has no =
-risk at all, due process shall be followed and it shall be carried out unde=
-r the ambit of the financial laws. Being the Chief Financial Officer, BP Pl=
-c. I want to trust and put in your care Eighteen Million British Pounds Ste=
-rling, The funds were acquired from an over-invoiced payment from a past co=
-ntract executed in one of my departments.
+Attn: 
 
-I can't successfully achieve this transaction without presenting you as for=
-eign contractor who will provide a bank account to receive the funds.
+Base on the information's reaching us from IRS and our Monitoring Network System (MNS) some illegal officers, in the Apex Bank whose names you find listed below, have been apprehended by the legal authorities, for not releasing your Inheritance/ Contract payment. Prof. Charles Chukwuma Soludo , Dr. Patrick Aziza, Mr. Tunde Lemo ,MR.CISSE ADIN,MRANDY MISRA,  Mr. Ernest Obi, Mr. Tony Wood, Mr Oliver Alawuba in collaboration with  , Zenith Bank, Oceanic bank , First Bank, SKYE BANK LOME TOGO UBA BANK EKO BANK and Western Union. Billions of dollars was recovered from their accounts.
 
-Documentation for the claim of the funds will be legally processed and docu=
-mented, so I will need your full cooperation on this matter for our mutual =
-benefits. We will discuss details if you are interested to work with me to =
-secure this funds. I will appreciate your prompt response in every bit of o=
-ur communication. Stay Blessed and Stay Safe.
+The new united nation new york, Rev. Wilson P KLERK, has approved the payment of $10.5m (ten million, five hundred thousand U.S. dollars) through its bank to bank transfer we also agreed with the World Bank and the Fund International Monetary Fund (IMF) will be handled payment ourselves to avoid the hopeless situation created by these corrupt officials.
 
+We obtained an irrevocable payment guarantee your payment, by the World Bank and the International Monetary Fund (IMF) We are pleased to inform you that based on our recommendation / instructions;. The fund contract / inheritance claim Everything has been credited in your favor through our paying bank.
 
+You are therefore advice to contact: Mr. Daniel Lopez Afed Bank UN payiny BANK USA, EMAIL: afbank@vipmail.hu, Tel: +1 (213) 421-1754  collect the receipt of original payment with your pin and transfer access code. As soon as you submit these codes and your payment slip to your bank, they will credit your account without delay.
 
-Best Regards
+NOTE: YOU ARE ADVICED TO RE COMFIRM YOUR INFORMATION TO AVOID TRANSFER OF THIS FUND INTO A WRONG ACCOUNT
 
+Your Name Bank:
+Your Bank address:
+Your bank account number:
+Routing No:
+Swift Code No:
+Account name:
+Age and occupation:Q
+Your driving liecnse:
+Full Name:
+Home Address:
+Your Direct telephone, mobile and fax number:
 
+Mr.James Comey
+HEAD OF RESEARCH
+FEDERAL BUREAU OF
+RESEARCH WASHINGTON DC
 
-
-Tel: +1 (587) 770-0485
-Andres .B. Auchincloss
-Chief financial officerBP Petroleum p.l.c.
-
-
-
-
-                                 Copyright =A9? 1996-2021
-
+N / B: The afbank  has assured the FBI that your payment will be released within 72 hours of work at most and an additional $ 20,000 will be paid to you if they fail to deliver within know that the bank will open online account for you to make the transfer by your sife
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
