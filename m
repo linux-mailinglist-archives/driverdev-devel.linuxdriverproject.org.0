@@ -1,72 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 503253B4EB6
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Jun 2021 15:20:32 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 41FC73B5414
+	for <lists+driverdev-devel@lfdr.de>; Sun, 27 Jun 2021 17:41:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AB28B40473;
-	Sat, 26 Jun 2021 13:20:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 56807830C0;
+	Sun, 27 Jun 2021 15:41:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TENWeDVSZpOj; Sat, 26 Jun 2021 13:20:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YHrd-zwuaIkR; Sun, 27 Jun 2021 15:40:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 742634043D;
-	Sat, 26 Jun 2021 13:20:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AD65883103;
+	Sun, 27 Jun 2021 15:40:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7F4061BF47F
- for <devel@linuxdriverproject.org>; Sat, 26 Jun 2021 13:20:17 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 961A21BF2E4
+ for <devel@linuxdriverproject.org>; Sun, 27 Jun 2021 15:40:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6CDD7403D9
- for <devel@linuxdriverproject.org>; Sat, 26 Jun 2021 13:20:17 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 92E154017E
+ for <devel@linuxdriverproject.org>; Sun, 27 Jun 2021 15:40:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rObI-9D-b8wv for <devel@linuxdriverproject.org>;
- Sat, 26 Jun 2021 13:20:16 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DwZ_IXc_Wri2 for <devel@linuxdriverproject.org>;
+ Sun, 27 Jun 2021 15:40:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from cpvds521.sideink.com (cpvds521.sideink.com [209.95.54.60])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 93BDD4039C
- for <devel@linuxdriverproject.org>; Sat, 26 Jun 2021 13:20:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cartrackgps.net; s=default; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=w9sK+Ym/RAfBFP3G/1SzwUp86a4NJP3vlp3iGswH7yw=; b=Cd/1XTOKIHLvsI+nfio2/h7N6x
- sNTRAlm/V9jCFobn0tuG0vVR3XsxIkWqdfO0WXqp1SvR5FTJzkYQ68awi8Q5KcS4zflfO5CjrO+bv
- OnFv0Cjawlg5YaBUXGLHN9kE36T/lJMy66sK0TIXHk5wIFHJrCSekN0LqIGScF4KqbJ6Rg+hflVrB
- Qt95BJKFzjBzYIh1b6IVNkk57EwoP8jywTKUi5ye/7LHx3C3z87bdsET33C3SeCgY1Zs+fDWwOqh7
- bVhXwyWyTM0hinsGDFiIiNydKt/s3H1WqcQRy6B8tsjv2DECnVqvUaIFCLrkVKwYNCg4NmT71EZx/
- 4rDcMutg==;
-Received: from r167-61-104-34.dialup.adsl.anteldata.net.uy
- ([167.61.104.34]:50512 helo=cartrackgps.net)
- by cpvds521.sideink.com with esmtpsa (TLS1) tls
- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (Exim 4.94.2)
- (envelope-from <salesctg@cartrackgps.net>) id 1lx8EJ-0001RH-0V
- for devel@linuxdriverproject.org; Sat, 26 Jun 2021 15:20:15 +0200
-From: =?ISO-8859-1?B?UGF1bCBOb3Zhaw==?=<salesctg@cartrackgps.net>
-To: devel@linuxdriverproject.org
-Subject: =?ISO-8859-1?B?RGlzdHJpYnV0b3IgZm9yIGRldmVs?=
-Date: 26 Jun 2021 10:20:19 -0300
-Message-ID: <20210626102018.4F036F6A21EC3075@cartrackgps.net>
+Received: from senwd.co.kr (unknown [220.95.209.146])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B1F2C400FB
+ for <devel@linuxdriverproject.org>; Sun, 27 Jun 2021 15:40:47 +0000 (UTC)
+Received: from IP-134-53.dataclub.eu (unknown [84.38.134.53])
+ (Authenticated sender: rainbow@senwd.co.kr)
+ by senwd.co.kr (Postfix) with ESMTPA id 03167D87ACE
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 00:17:56 +0900 (KST)
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - cpvds521.sideink.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - cartrackgps.net
-X-Get-Message-Sender-Via: cpvds521.sideink.com: authenticated_id:
- infoctg@cartrackgps.net
-X-Authenticated-Sender: cpvds521.sideink.com: infoctg@cartrackgps.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Description: Mail message body
+Subject: Your Urgent Atttention is Required.
+To: devel@linuxdriverproject.org
+From: "Aisha Al-Gaddafi" <aishaalgaddafi14944@citromail.hu>
+Date: Sun, 27 Jun 2021 18:17:53 +0300
+Message-Id: <20210627154048.92E154017E@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,38 +54,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: =?ISO-8859-1?B?UGF1bCBOb3Zhaw==?= <salesctg@cartrackgps.net>
+Reply-To: aishaalgaddafi14944@citromail.hu
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello devel,
+Hello Dear,
 
-My name is Paul Novak and we're looking for distributors for our vehicle tracking products.
-We design innovative GPS technologies and are looking for distributors in your country.
+May I use this medium to open a mutual communication with you seeking your acceptance towards investing in your country under your management as my partner, My name is Aisha Gaddafi and presently living in Oman, i am a Widow and single Mother with two survived Children, I am only biological Daughter of late Libyan President (Late Colonel Muammar Gaddafi) and presently i am under political asylum protection by the Omani Government.
 
-Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps. If a vehicle is stolen you can stop the engine and recover it.
-With our professional kit you can start your own tracking business or just resell the software to others for up to fifty percent commission.
+I have funds worth "Sixty Million United State Dollars Only" $60,000,000.00 USD which i want to entrust on you for investment project in your country, if you are willing to handle this project on my behalf, please for your kind assistance I will offer you 30% of the total sum, all the legal documentation concerning the deposit are with me, I will only write power of attorney making you the new beneficiary of the deposit so that the security company can release the consignment to you.
 
-Our product is ideal  for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
-This could be a good choice If you want to start a new business or diversify your investment.
+Bear in mind that the funds was deposited with the security and deposit firm as household effect, therefore they do not know the real content, so you are going to collect the consignment as house effect from the security company where as only you and me know the real content Please kindly reply urgently to enable me provides you more detail to start the transfer process. 
+In case you want to know more about me and my family you can read through this BBC News links below:
 
-The business consists in offering location services to end customers through a web site. This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
+https://u4954002.ct.sendgrid.net/ls/click?upn=H4e5Ugh-2Bdj-2Bg-2FJ6TTf24SHIw99WGUVmuWkPOJyRQafvKGAe7lSqJGuMjI82c4nH2vGnOgGtQQ9DhzytCe5N2vA-3D-3DFtwR_c-2B0VxYOXcQI15wZCXXrH9IUzMutLhqQaAiAj4LBwUuezYPxBLHqGjZjKHp-2BCWa1-2F2iU6qywCwaZpPmKG1xBGEwA1viwCvKMcp-2FkDdisx6mD8lqmuGXiIzQInzOgAD9eEPT8eBCZ0y6Esp-2FxChaqcO2Da-2B1EA-2BaGiRA9biP7iHftAybjcJUwhXe9xqEjNFBtcTNtC1S4kYvOeFnbDm-2FB0Z7SRsoQWQRcE-2BXcb8G5TqCU-3D
 
-This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
-We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
+I shall appreciate your urgent response.
 
-If you're interested I can send you the proposal for your consideration.
-
-Best regards,
-Car Track GPS
-
-We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
-ID: 139955
-
-If you would like to opt-out please reply to this email with the subject REMOVE.
-
+Mrs. Aisha Al-Gaddafi 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
