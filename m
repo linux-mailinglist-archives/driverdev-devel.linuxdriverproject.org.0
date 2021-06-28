@@ -1,48 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1595D3B5AC8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Jun 2021 10:59:14 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 660E83B5BCD
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Jun 2021 11:55:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9052C40389;
-	Mon, 28 Jun 2021 08:59:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C76C607C2;
+	Mon, 28 Jun 2021 09:55:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TwJUgWvJI6-2; Mon, 28 Jun 2021 08:59:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Xb-mECD_3Go2; Mon, 28 Jun 2021 09:55:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4722A40375;
-	Mon, 28 Jun 2021 08:59:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 70AD66072A;
+	Mon, 28 Jun 2021 09:55:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D9F121BF31C
- for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 371F91BF47E
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 09:55:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D6E988316A
- for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3213B832E6
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 09:55:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=flippiebeckerwmanagers.xyz
+ header.b="Mpqje9gD"; dkim=pass (1024-bit key)
+ header.d=flippiebeckerwmanagers.xyz header.b="Mpqje9gD"
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e7Ef_L4SwNOJ for <devel@linuxdriverproject.org>;
- Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
+ with ESMTP id 8-uQVq3dAcIX for <devel@linuxdriverproject.org>;
+ Mon, 28 Jun 2021 09:55:12 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from T19Remote.local (unknown [91.206.119.3])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3BAD183103
- for <devel@driverdev.osuosl.org>; Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
-Received: from User (37.0.11.136) by T19Remote.local id hr67lc16tt0l for
- <devel@driverdev.osuosl.org>;
- Mon, 28 Jun 2021 09:59:00 +0100 (envelope-from <SRVNATTOOL@natpol.com>)
-From: "Hsbc Bank London"<SRVNATTOOL@natpol.com>
-Subject: Your Approved Payment 
-Date: Mon, 28 Jun 2021 01:58:57 -0700
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210628085859.D6E988316A@smtp1.osuosl.org>
+Received: from host.flippiebeckerwmanagers.xyz (flippiebeckerwmanagers.xyz
+ [62.173.138.237])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 873548331B
+ for <devel@driverdev.osuosl.org>; Mon, 28 Jun 2021 09:55:12 +0000 (UTC)
+Received: from flippiebeckerwmanagers.xyz
+ (ec2-3-236-100-111.compute-1.amazonaws.com [3.236.100.111])
+ by host.flippiebeckerwmanagers.xyz (Postfix) with ESMTPA id AADBA1141269
+ for <devel@driverdev.osuosl.org>; Mon, 28 Jun 2021 12:19:51 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.flippiebeckerwmanagers.xyz
+ AADBA1141269
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=flippiebeckerwmanagers.xyz; s=default; t=1624871992;
+ bh=G3PrS2ssLE6xKmHDCm5hvScMpvbJPlyTw8R1AuPMkGc=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=Mpqje9gDzUDsG7xvrqUTdTf4q7w9R8JMVhcjx8/mhdY+Br+TXu+2SR3gMB8ympNJ/
+ fsXn4cKf/raYp8b4FrquVVFBXGADTCuxQ12h5M35sGG++NGVNyylwr5t2ajvZ7vCV5
+ tuwY6D+KFX7PWODEGJLxDDXazYvFhZ60eEI5qAlU=
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.flippiebeckerwmanagers.xyz
+ AADBA1141269
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=flippiebeckerwmanagers.xyz; s=default; t=1624871992;
+ bh=G3PrS2ssLE6xKmHDCm5hvScMpvbJPlyTw8R1AuPMkGc=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=Mpqje9gDzUDsG7xvrqUTdTf4q7w9R8JMVhcjx8/mhdY+Br+TXu+2SR3gMB8ympNJ/
+ fsXn4cKf/raYp8b4FrquVVFBXGADTCuxQ12h5M35sGG++NGVNyylwr5t2ajvZ7vCV5
+ tuwY6D+KFX7PWODEGJLxDDXazYvFhZ60eEI5qAlU=
+From: Jotham Masuku <jmasuku08@flippiebeckerwmanagers.xyz>
+To: devel@driverdev.osuosl.org
+Subject: Projects
+Date: 28 Jun 2021 09:19:51 +0000
+Message-ID: <20210628091951.D4DC07FCD108D907@flippiebeckerwmanagers.xyz>
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,44 +76,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sarb_bnk086@meta.ua
+Reply-To: jmasuku08@flippiebecker.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-THE WORLDS LOCAL BANK
-International Banking
-FOREIGN EXCHANGE UNIT
+Hello there,
 
-RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
+I hope this message finds you in good spirits especially during 
+this challenging time of coronavirus pandemic. I hope you and 
+your family are well and keeping safe. Anyway, I am Jotham 
+Masuku, a broker working with Flippiebecker Wealth. I got your 
+contact through an online business directory and I thought I 
+should contact you to see if you are interested in this 
+opportunity. I am contacting you because one of my high profile 
+clients is interested in investing abroad and has asked me to 
+look for individuals and companies in your country with 
+interesting business ideas and projects that he can invest in. He 
+wants to invest a substantial amount of asset abroad.
 
-Dear Valued Beneficiary:
+I have decided to keep this brief for now but please kindly 
+respond back to this email if you are interested in this 
+opportunity. Once I receive your response, I will give you more 
+details and we can plan a strategy that will be beneficial to all 
+parties.
 
-We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
+Best regards
 
-Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
-
-We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
-
-The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
-
-Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
-
-Provide below details to Dr Rashad Cassim for his clarification:
-
-Full Name....... Tel.................
-
-Address......... Amount..............
-
-City............ Country.............
-
-Copies of documents pertaining to the fund.
-
-Best Regards,
-Mr.James Emmett.
-Chief Executive Officer, HSBC Bank plc.
-United Kingdom
+J Masuku
+Flippiebecker Wealth
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
