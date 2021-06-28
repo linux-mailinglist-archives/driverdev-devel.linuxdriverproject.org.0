@@ -1,52 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 718F43B5699
-	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Jun 2021 03:24:50 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1595D3B5AC8
+	for <lists+driverdev-devel@lfdr.de>; Mon, 28 Jun 2021 10:59:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2042D6077C;
-	Mon, 28 Jun 2021 01:24:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9052C40389;
+	Mon, 28 Jun 2021 08:59:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nOwE1a9-7_BT; Mon, 28 Jun 2021 01:24:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TwJUgWvJI6-2; Mon, 28 Jun 2021 08:59:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 669A260662;
-	Mon, 28 Jun 2021 01:24:47 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4722A40375;
+	Mon, 28 Jun 2021 08:59:09 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 56B701BF869
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Jun 2021 01:24:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D9F121BF31C
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5348D605BA
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Jun 2021 01:24:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D6E988316A
+ for <devel@linuxdriverproject.org>; Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V3HasSE-Cu4n
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Jun 2021 01:24:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id e7Ef_L4SwNOJ for <devel@linuxdriverproject.org>;
+ Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.mfc-samara.ru (unknown [185.33.203.190])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6535160662
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 28 Jun 2021 01:24:27 +0000 (UTC)
-Received: from User (154.118.6.61) by mail.mfc-samara.ru (10.2.8.225) with
- Microsoft SMTP Server id 14.2.347.0; Sun, 27 Jun 2021 23:02:36 +0400
-From: Mr.James Comey <drrosemarythompson@gmail.com>
-Subject: IRREVOCABLE RELEASE OF YOUR PAYMENT
-Date: Mon, 28 Jun 2021 03:02:36 +0800
+Received: from T19Remote.local (unknown [91.206.119.3])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3BAD183103
+ for <devel@driverdev.osuosl.org>; Mon, 28 Jun 2021 08:58:59 +0000 (UTC)
+Received: from User (37.0.11.136) by T19Remote.local id hr67lc16tt0l for
+ <devel@driverdev.osuosl.org>;
+ Mon, 28 Jun 2021 09:59:00 +0100 (envelope-from <SRVNATTOOL@natpol.com>)
+From: "Hsbc Bank London"<SRVNATTOOL@natpol.com>
+Subject: Your Approved Payment 
+Date: Mon, 28 Jun 2021 01:58:57 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <b39ed35c-ac8b-45bd-b7f1-833a0189eee5@SRV1.office.mfc-samara.ru>
-To: Undisclosed recipients:;
+Message-Id: <20210628085859.D6E988316A@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,46 +55,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: afbank@vipmail.hu
+Reply-To: sarb_bnk086@meta.ua
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Monetary Crimes Division and Counterterrorism.
-Federal Bureau of Investigation. J. Edgar.
-1600 Pennsylvania Ave NW Washington, DC
+THE WORLDS LOCAL BANK
+International Banking
+FOREIGN EXCHANGE UNIT
 
-Attn: 
+RE: MANDATORY RELEASE ORDER OF YOUR OVERDUE FUND
 
-Base on the information's reaching us from IRS and our Monitoring Network System (MNS) some illegal officers, in the Apex Bank whose names you find listed below, have been apprehended by the legal authorities, for not releasing your Inheritance/ Contract payment. Prof. Charles Chukwuma Soludo , Dr. Patrick Aziza, Mr. Tunde Lemo ,MR.CISSE ADIN,MRANDY MISRA,  Mr. Ernest Obi, Mr. Tony Wood, Mr Oliver Alawuba in collaboration with  , Zenith Bank, Oceanic bank , First Bank, SKYE BANK LOME TOGO UBA BANK EKO BANK and Western Union. Billions of dollars was recovered from their accounts.
+Dear Valued Beneficiary:
 
-The new united nation new york, Rev. Wilson P KLERK, has approved the payment of $10.5m (ten million, five hundred thousand U.S. dollars) through its bank to bank transfer we also agreed with the World Bank and the Fund International Monetary Fund (IMF) will be handled payment ourselves to avoid the hopeless situation created by these corrupt officials.
+We are pleased to inform you that we have finally concluded arrangement towards your refund/lottery pay out which has been delayed for a Long Period of time because of your Cooperation and Dealings with Wrong Officials and importers of banks as your fund returned back to us on the 4th of Jan 2021 when we confirmed the rate of delays and questionable activities that has been related by the previous administrative banks alongside with others that collaborated in delaying the release of your fund after all charges and payments demanded were paid.
 
-We obtained an irrevocable payment guarantee your payment, by the World Bank and the International Monetary Fund (IMF) We are pleased to inform you that based on our recommendation / instructions;. The fund contract / inheritance claim Everything has been credited in your favor through our paying bank.
+Recently, the Ministry of Finance of United Kingdom, Bank of England, HSBC Bank Plc UK and United Kingdom Inland Revenue Services held a meeting on how this fund will be released to the beneficiaries to their designated bank accounts in their country without further delay since we are in the first half of the economic year 2021 and it is now overdue to be released as the said funds belongs to them.
 
-You are therefore advice to contact: Mr. Daniel Lopez Afed Bank UN payiny BANK USA, EMAIL: afbank@vipmail.hu, Tel: +1 (213) 421-1754  collect the receipt of original payment with your pin and transfer access code. As soon as you submit these codes and your payment slip to your bank, they will credit your account without delay.
+We apologize for the delay of the payment and all the inconveniences that this might have caused you during this period of time. However we have instructed all the banks in the globe which we previously asked to help us pay out this fund to the general public to STOP the process of the release of the fund due to their incompetence and negligence of duty towards the release of this fund. After our findings, some were arrested and charged for theft according to Section 1 of the Theft Act 1978, as amended by the Theft (Amendment) Act 1996 law of the United Kingdom.
 
-NOTE: YOU ARE ADVICED TO RE COMFIRM YOUR INFORMATION TO AVOID TRANSFER OF THIS FUND INTO A WRONG ACCOUNT
+The Bank of England Governor (Mr Andrew Bailey) has given serious warning and Instructions and ordered the Inland Revenue Services Department of England to quickly release all on hold funds which are in their escrow account to the sole beneficiaries which you are among those who will receive their Inheritance funds.
 
-Your Name Bank:
-Your Bank address:
-Your bank account number:
-Routing No:
-Swift Code No:
-Account name:
-Age and occupation:Q
-Your driving liecnse:
-Full Name:
-Home Address:
-Your Direct telephone, mobile and fax number:
+Please contact ONLY the Executive member of the Monetary Policy Committee of South African Reserve Bank (Dr Rashad Cassim) on his email: sarb_bnk086@meta.ua to advise you on how to procure the certificate of claim as the law of South Africa demands that without it there will not be any payment whether pending loan amount, lottery fund, inheritance funds or whatsoever fund locally or internationally perhaps you have not yet received it.
 
-Mr.James Comey
-HEAD OF RESEARCH
-FEDERAL BUREAU OF
-RESEARCH WASHINGTON DC
+Provide below details to Dr Rashad Cassim for his clarification:
 
-N / B: The afbank  has assured the FBI that your payment will be released within 72 hours of work at most and an additional $ 20,000 will be paid to you if they fail to deliver within know that the bank will open online account for you to make the transfer by your sife
+Full Name....... Tel.................
+
+Address......... Amount..............
+
+City............ Country.............
+
+Copies of documents pertaining to the fund.
+
+Best Regards,
+Mr.James Emmett.
+Chief Executive Officer, HSBC Bank plc.
+United Kingdom
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
