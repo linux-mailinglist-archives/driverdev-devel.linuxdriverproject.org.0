@@ -1,76 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 904073B6E07
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Jun 2021 07:57:31 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A80E3B6E92
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Jun 2021 09:13:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B552882548;
-	Tue, 29 Jun 2021 05:57:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DB235403A4;
+	Tue, 29 Jun 2021 07:13:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jc0plHcaGpkh; Tue, 29 Jun 2021 05:57:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id r-4BxehOMQJm; Tue, 29 Jun 2021 07:13:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 25F8181BD9;
-	Tue, 29 Jun 2021 05:57:28 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 43A4340272;
+	Tue, 29 Jun 2021 07:13:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF1131BF3D2
- for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 05:57:18 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 12BDC1BF9AC
+ for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 07:13:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9DE21607B7
- for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 05:57:18 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 012E1403E6
+ for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 07:13:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oFYnld7MLpaQ for <devel@linuxdriverproject.org>;
- Tue, 29 Jun 2021 05:57:16 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1029.google.com (mail-pj1-x1029.google.com
- [IPv6:2607:f8b0:4864:20::1029])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C526E607B4
- for <devel@driverdev.osuosl.org>; Tue, 29 Jun 2021 05:57:16 +0000 (UTC)
-Received: by mail-pj1-x1029.google.com with SMTP id kt19so3805493pjb.2
- for <devel@driverdev.osuosl.org>; Mon, 28 Jun 2021 22:57:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=mrGNIXYlkF5K/oGK2d2isVBgqRmzvCLsBVQfr88Rjr8=;
- b=Igs3KbHBNtUsamWOv/RYVH1iCHFLSH0at+VxmTTUJ42ICFRxDTMlP3hKZpzUHCZTvj
- EytljYggIjw+AQVWBa2I6c8ygH9wYVUEKpva49n59HhoY9QJgDJ4FwA+3N77fXB7O+cl
- ZUmmOr8B2gBXLL39c7N4L2JMNDvKL2UOZjeigtjgINXB+UROhBnlfuDeEPlD1xCyd9Vs
- JBjQ6he04dF4QU6fxOPKMeQgxLQIRtc5F/AgYx9Mrq33aAELrFCWVYgua40NJpEddm0B
- yF6T/2FHWPbXsxzmGZhOGFiwLBpxsUMNTmC60A28kbLA6mZD35hZWK8Wm7EZK8J5dnt8
- vi/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=mrGNIXYlkF5K/oGK2d2isVBgqRmzvCLsBVQfr88Rjr8=;
- b=gYCq64gD52Wc7BbsfYk2ywNGjSQsS9FM6FckyChsCOzL2H6SQyC/Aoq6DISrEKm/M5
- Boob+YY9FpO8u3WRN5qGUzLG5XAcmNZYZK3v6rLiMfRHfyRHirXDsb+Zw8Ok9tGtz8/R
- W6eMrJhhuAOA2LqO5LWq/NOqoPZ/jr0ed1YYhzMMHQFA9Je6PIk+Nzs9kUm6rpup61x6
- ebS154cBV5NeY1/hQDYHUXkCS/kBoaeRwOZUbxejkcVngiKD3F2ArlYAR5WuFjwVVywa
- +A9Q5qctsna1MBxBppKc8Uttw+dWN2yxVb+92Bf/DLn9+NpSDki5Be4O39ploKO9hDmw
- MieA==
-X-Gm-Message-State: AOAM531F9nDPM0x/MUPOvQCgVBV9uodOfTCYjHD1I/z59LR8irRZyHx1
- Nj3gbsI1gzjv0v3BZAw8FHVathC+suAwgTi+OU4=
-X-Google-Smtp-Source: ABdhPJw3gbu2L8qbdopAMPSgmMIDQ1CY+JZXEoADypcITEdXARsCUxtQ0fq1RmF6k2zqsRkOJx87FIBs92ds36ZG4aU=
-X-Received: by 2002:a17:90a:3d0d:: with SMTP id
- h13mr32608697pjc.20.1624946236113; 
- Mon, 28 Jun 2021 22:57:16 -0700 (PDT)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=6nene.xyz
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sMbzPb9Im93L for <devel@linuxdriverproject.org>;
+ Tue, 29 Jun 2021 07:13:23 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from 6nene.xyz (6nene.xyz [106.75.134.229])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 797614028F
+ for <devel@linuxdriverproject.org>; Tue, 29 Jun 2021 07:13:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=6nene.xyz;
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=nami@6nene.xyz; bh=rUZ9bqCGr1PXL/2snDKOCIoFqAo=;
+ b=TvVxTUEttVGSFUdx/9yg4NFPZta5xCzvBAlw0zaYW3nW7R325/QCWUkU8/AaPel6SAWjRmgaPU+5
+ 6+5zyG5qQdDDajPNytlM+PAFqwTAZmAPDKCA/0qvBIUT2wL2hoDnUmnsOzO77pqJ4ScmeFL3EHTx
+ ur8zlFf9sNBBBvQtw+o=
+From: "Ms. Melvida Bullock"<nami@6nene.xyz>
+Subject: Greetings Dear Beloved:
+Date: Tue, 29 Jun 2021 00:12:36 -0700
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:6d1b:0:0:0:0 with HTTP; Mon, 28 Jun 2021 22:57:15
- -0700 (PDT)
-From: Aisha Gaddafi <bunny2320123@gmail.com>
-Date: Mon, 28 Jun 2021 22:57:15 -0700
-Message-ID: <CA+z0umFQaJz6iBxh8bf6FCJV9cDVPQRYkYMyUdYHvFPbqkUH-w@mail.gmail.com>
-Subject: Dearest Friend,
-To: undisclosed-recipients:;
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20210629071325.012E1403E6@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,35 +58,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ayishagddafio@mail.ru
-Content-Type: text/plain; charset="utf-8"
+Reply-To: melvbullockzone123@gmail.com
+Content-Type: text/plain; charset="cp1251"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-TGllYnN0ZXIgRnJldW5kLAoKSW0gTmFtZW4gR290dGVzLCBkZXMgZ27DpGRpZ3N0ZW4sIGJhcm1o
-ZXJ6aWdzdGVuLgoKRnJpZWRlIHNlaSBtaXQgZGlyIHVuZCBCYXJtaGVyemlna2VpdCBzZWkgbWl0
-IGRpciB1bmQgU2VnZW4gc2VpIG1pdCBkaXIuCkljaCBoYWJlIGRpZSBTdW1tZSB2b24gMjcsNSBN
-aWxsaW9uZW4gVVNEIGbDvHIgSW52ZXN0aXRpb25lbiwgaWNoCmludGVyZXNzaWVyZSBtaWNoIGbD
-vHIgU2llIGbDvHIgZGllIFVudGVyc3TDvHR6dW5nIHZvbgpJbnZlc3RpdGlvbnNwcm9qZWt0ZW4g
-aW4gSWhyZW0gTGFuZC4gTWVpbiBOYW1lIGlzdCBBaXNoYSBHYWRkYWZpIHVuZApsZWJlIGRlcnpl
-aXQgaW0gT21hbiwgaWNoIGJpbiBlaW5lIFdpdHdlIHVuZCBhbGxlaW5lcnppZWhlbmRlIE11dHRl
-cgptaXQgZHJlaSBLaW5kZXJuLCBkaWUgZWluemlnZSBsZWlibGljaGUgVG9jaHRlciBkZXMgdmVy
-c3RvcmJlbmVuCmxpYnlzY2hlbiBQcsOkc2lkZW50ZW4gKGRlbSB2ZXJzdG9yYmVuZW4gT2JlcnN0
-IE11YW1tYXIgR2FkZGFmaSkgdW5kCnN0ZWhlIGRlcnplaXQgdW50ZXIgcG9saXRpc2NoZW0gQXN5
-bHNjaHV0eiBkZXIgb21hbmlzY2hlbiBSZWdpZXJ1bmcuCgpCaXR0ZSBhbnR3b3J0ZW4gU2llIGRy
-aW5nZW5kIGbDvHIgd2VpdGVyZSBEZXRhaWxzLgoKVmllbGVuIERhbmsKTWl0IGZyZXVuZGxpY2hl
-biBHcsO8w59lbiBBaXNoYQoKCkRlYXJlc3QgRnJpZW5kLAoKSW4gdGhlIG5hbWUgb2YgR29kLCBN
-b3N0IEdyYWNpb3VzLCBNb3N0IE1lcmNpZnVsLgoKUGVhY2UgYmUgdXBvbiB5b3UgYW5kIG1lcmN5
-IGJlIHVwb24geW91IGFuZCBibGVzc2luZ3MgYmUgdXBvbiB5b3UuCkkgaGF2ZSB0aGUgc3VtIG9m
-ICQyNy41IG1pbGxpb24gVVNEIGZvciBpbnZlc3RtZW50LCBJIGFtIGludGVyZXN0ZWQgaW4KeW91
-IGZvciBpbnZlc3RtZW50IHByb2plY3QgYXNzaXN0YW5jZSBpbiB5b3VyIGNvdW50cnkuIE15IG5h
-bWUgaXMKQWlzaGEgIEdhZGRhZmkgYW5kIHByZXNlbnRseSBsaXZpbmcgaW4gT21hbiwgSSBhbSBh
-IFdpZG93IGFuZCBzaW5nbGUKTW90aGVyIHdpdGggdGhyZWUgQ2hpbGRyZW4sIHRoZSBvbmx5IGJp
-b2xvZ2ljYWwgRGF1Z2h0ZXIgb2YgbGF0ZQpMaWJ5YW4gUHJlc2lkZW50IChMYXRlIENvbG9uZWwg
-TXVhbW1hciBHYWRkYWZpKSBhbmQgcHJlc2VudGx5IEkgYW0KdW5kZXIgcG9saXRpY2FsIGFzeWx1
-bSBwcm90ZWN0aW9uIGJ5IHRoZSBPbWFuaSBHb3Zlcm5tZW50LgoKS2luZGx5IHJlcGx5IHVyZ2Vu
-dGx5IGZvciBtb3JlIGRldGFpbHMuCgpUaGFua3MKWW91cnMgVHJ1bHkgQWlzaGEKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
-CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
-cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+cGxlYXNlIGtpbmRseSBhbGxvdyBtZSBzaGFyZSB0aGlzIGluZm9ybWF0aW9uIHdpdGggeW91LCAK
+CkRlYXIgQmVsb3ZlZAoKTGlmZSBpcyBncmFkdWFsbHkgcGFzc2luZyBhd2F5IGZyb20gbWUgYXMg
+YSByZXN1bHQgb2YgbXkgcHJlc2VudCBtZWRpY2FsIGNvbmRpdGlvbiBhbmQgbXkgcGVyc29uYWwg
+ZG9jdG9yIGNvbmZpZGVkIGluIG1lIHllc3RlcmRheSB0aGF0IEkgaGF2ZSBvbmx5IGJ1dCBmZXcg
+bW9yZSB3ZWVrcyB0byBsaXZlLgpJbiB2aWV3IG9mIHRoaXMgc2V0YmFjaywgSaB3YW50IHRvIGRv
+bmF0ZSBteSBlc3RhdGUgZm9yIGh1bWFuaXRhcmlhbiBhc3Npc3RhbmNlLCBzaW5jZSB0aGlzIGhh
+cyBhbHdheXMgYmVlbiB0aGUgcGxhbiBvZiBteSBsYXRlIGh1c2JhbmQgYW5kIGJlc2lkZXMgSSBo
+YXZlIG5vIGNoaWxkLgpJbiBhbiBlZmZvcnQgdG8gY29tcGxpbWVudCB0aGUgZ29vZCB3b3JrIG9m
+IG91ciBjcmVhdG9yIGZvciBodW1hbml0eSBhbmQgdGhlIHdpc2ggb2YgbXkgbGF0ZSBIdXNiYW5k
+IEkgZG9uYXRlIHRoZSBzdW0gb2YggDEwLDAwMCwwMDAuMDAgRXVybyAoVGVuIE1pbGxpb24gRVVS
+KSB0byB5b3UuCk9uIHlvdXIgYWNrbm93bGVkZ21lbnQgb2YgdGhpcyBtYWlsIGFuZCBpbmZvcm1p
+bmcgbWUgb2YgeW91ciBuYXRpb25hbGl0eSBhbmQgY3VycmVudCBwbGFjZSBvZiByZXNpZGVudCwg
+bXkgQmFuayB3aWxsIGZhY2lsaXRhdGUgZHVlIHByb2Nlc3NlcyBmb3IgdHJhbnNmZXIgb2YgdGhp
+cyBsZWdhY3kgdG8geW91LgpNYXkgR29kIGJsZXNzIHlvdSBhcyB5b3UgdXNlIHRoaXMgbW9uZXkg
+anVkaWNpb3VzbHkgZm9yIHRoZSB3b3JrIG9mIGNoYXJpdHkuClNpbmNlcmUgcmVnYXJkcywKCk1z
+LiBNZWx2aWRhIEJ1bGxvY2sKRW1haWw6oG1lbHZidWxsb2Nrem9uZTEyM0BnbWFpbC5jb20KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxp
+bmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGlu
+dXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
