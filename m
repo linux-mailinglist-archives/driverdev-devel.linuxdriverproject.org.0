@@ -1,52 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B82673B8AC3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Jul 2021 01:01:43 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67B2A3B91B8
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Jul 2021 14:42:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F3AF740410;
-	Wed, 30 Jun 2021 23:01:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B60A941D22;
+	Thu,  1 Jul 2021 12:42:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U0GARdc-abqN; Wed, 30 Jun 2021 23:01:41 +0000 (UTC)
+	with ESMTP id c6ftK1kSdS7O; Thu,  1 Jul 2021 12:42:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 43EC6404C3;
-	Wed, 30 Jun 2021 23:01:40 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 40C1A4014E;
+	Thu,  1 Jul 2021 12:42:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 26E6E1BF2A6
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Jun 2021 23:01:30 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D69551BF589
+ for <devel@linuxdriverproject.org>; Thu,  1 Jul 2021 12:42:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1777583BD3
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Jun 2021 23:01:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D255260594
+ for <devel@linuxdriverproject.org>; Thu,  1 Jul 2021 12:42:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MgwXgTdq5yaP
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Jun 2021 23:01:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.mfc-samara.ru (unknown [185.33.203.190])
- by smtp1.osuosl.org (Postfix) with ESMTP id D905483BCE
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 30 Jun 2021 23:01:28 +0000 (UTC)
-Received: from User (154.120.87.49) by mail.mfc-samara.ru (10.2.8.225) with
- Microsoft SMTP Server id 14.2.347.0; Wed, 30 Jun 2021 22:52:44 +0400
-From: "Dr. Rosemary  Thompson" <drrosemarythompson@gmail.com>
-Subject: Congratulation your Winner  
-Date: Thu, 1 Jul 2021 02:52:43 +0800
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 05PtciCmA3BD for <devel@linuxdriverproject.org>;
+ Thu,  1 Jul 2021 12:42:37 +0000 (UTC)
+X-Greylist: delayed 03:27:27 by SQLgrey-1.8.0
+Received: from chacal.triadeweb.com.br (chacal.triadeweb.com.br [187.44.80.11])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6F1B76001B
+ for <devel@driverdev.osuosl.org>; Thu,  1 Jul 2021 12:42:37 +0000 (UTC)
+Received: from localhost (localhost [IPv6:::1])
+ by chacal.triadeweb.com.br (Postfix) with ESMTP id 57B3C4197B9;
+ Thu,  1 Jul 2021 05:10:36 -0300 (BRT)
+Received: from chacal.triadeweb.com.br ([IPv6:::1])
+ by localhost (chacal.triadeweb.com.br [IPv6:::1]) (amavisd-new, port 10032)
+ with ESMTP id 0cTLaZkh9Yqf; Thu,  1 Jul 2021 05:10:35 -0300 (BRT)
+Received: from localhost (localhost [IPv6:::1])
+ by chacal.triadeweb.com.br (Postfix) with ESMTP id EEAEE412995;
+ Thu,  1 Jul 2021 02:17:44 -0300 (BRT)
+X-Virus-Scanned: amavisd-new at abteletrica.com.br
+Received: from chacal.triadeweb.com.br ([IPv6:::1])
+ by localhost (chacal.triadeweb.com.br [IPv6:::1]) (amavisd-new, port 10026)
+ with ESMTP id C9khnyRIXyXf; Thu,  1 Jul 2021 02:17:44 -0300 (BRT)
+Received: from DESKTOP-CK7671A.VodafoneMobile.wifivodafonemobile.api (unknown
+ [197.185.97.10])
+ by chacal.triadeweb.com.br (Postfix) with ESMTPSA id 692094086EA;
+ Wed, 30 Jun 2021 23:38:06 -0300 (BRT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <b0c07133-f284-4b76-b4dc-94fde5bfbe6e@SRV1.office.mfc-samara.ru>
-To: Undisclosed recipients:;
+Content-Description: Mail message body
+Subject: Re:Loan
+To: Recipients <michele.alves@abteletrica.com.br>
+From: michele.alves@abteletrica.com.br
+Date: Wed, 30 Jun 2021 21:43:03 -0500
+X-Antivirus: Avast (VPS 210630-20, 6/30/2021), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20210701023807.692094086EA@chacal.triadeweb.com.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,34 +69,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: infomegaml7@gmail.com
+Reply-To: stevenjonesinvestment09@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Global Internet Network/Mega Millions Lottery
-New York 10911, United States of America
+Steven Jones Loan Company legitimate and recognized loan company all over the word, We offer all kinds of good Credit is very quick and easy Personal loan, Student loan, Business loans, Credit debt consolidation Car investor loan with a low interest rate of 3%, If you are interested, do and email us now via Email stevenjonesinvestment09@gmail.com
 
-Attn : Winner
+Full name:
+Amount Needed:
+duration:
+Phone:
+Country:
+Occupation:
+Monthly income:
+Gender:
 
-Global Internet Network in collaboration with Mega Millions Lottery hereby announces to you as one of the 100 lucky winners in the ongoing 12 Years Global Internet Network Award which took place on the  8TH June 2021. This Lottery is Free Online Global Internet Network/Mega Millions Lottery organized by United States Agency for International Development.
+Mr. Stephen Jones
 
-All 100 winning Global Internet Network/ Mega Millions Lottery accounts were randomly selected from a batch of 50,000 Microsoft email accounts you have approve to receive your winning prize of $56 Million.
+Contact us directly to urgent e-mail to the loan
+approval:stevenjonesinvestment09@gmail.com
 
-These are your identification numbers.
+-- 
+This email has been checked for viruses by Avast antivirus software.
+https://www.avast.com/antivirus
 
-Ticket number...................... 92239415419  
-Payment Ref number....................N.EGS/3662367114/21
-
-Your fund is now deposited with our paying Center in ,Spain,  so you are advice to contact Mr. David Mark the President, Of Global Internet Network with the following email: info_megamillionslottery@vipmail.hu  to enable him to direct you on how you will receive your winning price. You can track your winning number on https://www.lotteryusa.com/mega-millions/
-
-Congratulation in advance..
-
-Thanks
-
-Dr. Rosemary  Thompson
-Secretary
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
