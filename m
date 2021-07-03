@@ -1,49 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 413FE3BA80C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Jul 2021 11:24:45 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8795D3BA80D
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Jul 2021 11:27:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A04014246E;
-	Sat,  3 Jul 2021 09:24:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B11F460698;
+	Sat,  3 Jul 2021 09:27:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Abq5kJl1qMhQ; Sat,  3 Jul 2021 09:24:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id axIWphBA__vn; Sat,  3 Jul 2021 09:27:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C8489423C9;
-	Sat,  3 Jul 2021 09:24:41 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2773360636;
+	Sat,  3 Jul 2021 09:27:39 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3DCFE1BF330
- for <devel@linuxdriverproject.org>; Sat,  3 Jul 2021 09:24:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AA4341BF330
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Jul 2021 09:27:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 38FDD4239A
- for <devel@linuxdriverproject.org>; Sat,  3 Jul 2021 09:24:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 994F782CDD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Jul 2021 09:27:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0bQ6aGio9KkV for <devel@linuxdriverproject.org>;
- Sat,  3 Jul 2021 09:24:30 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=6nene.xyz
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pmR1-xrKDd-1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Jul 2021 09:27:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from 6nene.xyz (6nene.xyz [106.75.134.229])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 543B74235D
- for <devel@linuxdriverproject.org>; Sat,  3 Jul 2021 09:24:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DB8AB82BC0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Jul 2021 09:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=6nene.xyz;
  h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
  i=nami@6nene.xyz; bh=XnY9LSQZyvvDMqdLYbzKngXHbPk=;
- b=jR9I2Qc0zWAx57Mlx28wG6xAmHJpzO7Ur7TPHd3zX4sXrx0RTcypCkoUJAE3rCO3wY6Y+vX8xqh9
- 2vlpyP7EiKiRzSL7Y/MwWIequhCr9zxGzI8YOIJ3tJGQElPIYhFJ05yRFpt6ODeH+7AkwQBpedgE
- cYFk/cNkZW17HPxdops=
+ b=SZ/89qlib1AYRyHhbpr3zCfe471NzQ0/YPqmWfRySR4jvqn+HW5bE5BMDXwmj2NCgp8xnlmPe6i3
+ VJKRcSwbAdBT98B64kvuoEUdN1rbgrxitMwSrzkUoS45eYPkD+1Pf26BYETpUghTnP9RWTU9xCAM
+ RRkBJwBdxLHJ8N8xPZQ=
 From: "Ms. Marylyne Vantelli"<nami@6nene.xyz>
 Subject: INVESTMENT FUNDING:
-Date: Sat, 3 Jul 2021 02:23:42 -0700
+Date: Sat, 3 Jul 2021 02:27:27 -0700
 MIME-Version: 1.0
 X-MSMail-Priority: Normal
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210703092431.38FDD4239A@smtp4.osuosl.org>
+Message-Id: <20210703092729.994F782CDD@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
