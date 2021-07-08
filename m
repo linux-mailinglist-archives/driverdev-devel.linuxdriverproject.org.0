@@ -1,63 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 031633BF486
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Jul 2021 06:19:15 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACAF63BF50D
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Jul 2021 07:26:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 91C9F83750;
-	Thu,  8 Jul 2021 04:19:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A55A860A92;
+	Thu,  8 Jul 2021 05:26:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iDPn2j99ya7G; Thu,  8 Jul 2021 04:19:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wq1buirRXcLU; Thu,  8 Jul 2021 05:26:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0133A8350A;
-	Thu,  8 Jul 2021 04:19:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 14B1F60906;
+	Thu,  8 Jul 2021 05:26:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8CB061BF329
- for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 04:19:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0970D1BF870
+ for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 05:26:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 88C768350A
- for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 04:19:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EAD2A60906
+ for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 05:25:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Sthp92OekbPG for <devel@linuxdriverproject.org>;
- Thu,  8 Jul 2021 04:19:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from zmail.officesharedfiles.org (zmail.officesharedfiles.org
- [216.117.129.234])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E8FC583474
- for <devel@driverdev.osuosl.org>; Thu,  8 Jul 2021 04:19:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id acV9yig6_Ghg for <devel@linuxdriverproject.org>;
+ Thu,  8 Jul 2021 05:25:59 +0000 (UTC)
+X-Greylist: delayed 00:09:22 by SQLgrey-1.8.0
+Received: from debian.turbodal.cl (mail8.turbodal.cl [200.27.120.195])
+ by smtp3.osuosl.org (Postfix) with ESMTP id C7476608F6
+ for <devel@driverdev.osuosl.org>; Thu,  8 Jul 2021 05:25:58 +0000 (UTC)
+Received: from mail4.turbodal.cl (unknown [192.100.110.128])
+ by debian.turbodal.cl (Postfix) with ESMTPS id 21FA2162814;
+ Thu,  8 Jul 2021 01:15:30 -0400 (-04)
+Received: from mail4.turbodal.cl (localhost [127.0.0.1])
+ by mail4.turbodal.cl (Postfix) with ESMTPS id CFEF262E02DF;
+ Thu,  8 Jul 2021 01:15:55 -0400 (-04)
 Received: from localhost (localhost [127.0.0.1])
- by zmail.officesharedfiles.org (Postfix) with ESMTP id 56F5B3D0248;
- Wed,  7 Jul 2021 14:29:37 -0400 (EDT)
-Received: from zmail.officesharedfiles.org ([127.0.0.1])
- by localhost (zmail.officesharedfiles.org [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id ofJj0oC8SAtq; Wed,  7 Jul 2021 14:29:37 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by zmail.officesharedfiles.org (Postfix) with ESMTP id 7AB8E3D025C;
- Wed,  7 Jul 2021 04:58:35 -0400 (EDT)
-X-Virus-Scanned: amavisd-new at zmail.officesharedfiles.org
-Received: from zmail.officesharedfiles.org ([127.0.0.1])
- by localhost (zmail.officesharedfiles.org [127.0.0.1]) (amavisd-new,
- port 10026)
- with ESMTP id xskD5l5IJhws; Wed,  7 Jul 2021 04:58:35 -0400 (EDT)
-Received: from EC2AMAZ-VL6CSNB.ec2.internal
- (ec2-100-25-201-164.compute-1.amazonaws.com [100.25.201.164])
- by zmail.officesharedfiles.org (Postfix) with ESMTPSA id 07C5B25FC9D;
- Wed,  7 Jul 2021 04:16:01 -0400 (EDT)
+ by mail4.turbodal.cl (Postfix) with ESMTP id BD26462E0616;
+ Thu,  8 Jul 2021 01:15:55 -0400 (-04)
+Received: from mail4.turbodal.cl ([127.0.0.1])
+ by localhost (mail4.turbodal.cl [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id t_XtQA5ShY8w; Thu,  8 Jul 2021 01:15:55 -0400 (-04)
+Received: from cris-PC.wifi (unknown [105.9.19.190])
+ by mail4.turbodal.cl (Postfix) with ESMTPSA id 3DD4A62E041A;
+ Thu,  8 Jul 2021 01:15:46 -0400 (-04)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Re:
-To: Recipients <dohs@zmail.officesharedfiles.org>
-From: dohs@zmail.officesharedfiles.org
-Date: Wed, 07 Jul 2021 08:16:00 +0000
-Message-Id: <20210707081602.07C5B25FC9D@zmail.officesharedfiles.org>
+Subject: =?utf-8?q?Wohlt=C3=A4tigkeitsfonds_von_2=2C000=2C000_euro?=
+To: Recipients <fae.eva@ptt.cl>
+From: ''Charles jackson'' <fae.eva@ptt.cl>
+Date: Thu, 08 Jul 2021 07:15:31 +0200
+Message-Id: <20210708051547.3DD4A62E041A@mail4.turbodal.cl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,17 +65,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: infottcuckk@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: charlesjacksonjr001@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sie haben eine Spende, ich habe die Amerika-Lotterie im Wert von 40 Million=
-en US-Dollar in Amerika gewonnen und beschlossen, einen Teil davon an f=FCn=
-f gl=FCckliche Menschen und Wohlt=E4tigkeitsorganisationen zum Gedenken an =
-meine verstorbene Frau zu spenden, die an Krebs gestorben ist. Kontaktieren=
- Sie mich f=FCr weitere Details unter: infottcuckk@gmail.com
+Lieber Freund,
+
+
+
+ Ich bin Herr Charles W Jackson, North Carolina, Vereinigte Staaten von
+Amerika, der Mega-Gewinner von 344 Millionen US-Dollar. Beim
+Mega-Millions-Jackpot spende ich an 5 zuf&auml;llige Personen. Wenn
+Sie diese E-Mail erhalten, wurde Ihre E-Mail zu einem Spinball, den ich
+am h&auml;ufigsten verteilt habe von meinem Verm&ouml;gen an
+eine Reihe von Wohlt&auml;tigkeitsorganisationen. Ich habe mich
+ freiwillig entschlossen, Ihnen als einer der ausgew&auml;hlten 5
+einen Betrag von &euro; 2.000.000,00 zu spenden, um meine Gewinne zu
+ &uuml;berpr&uuml;fen.
+
+ Dies ist Ihr Spendencode: [CJ530342019]
+
+
+
+ www.youtube.com/watch?v=BSr8myiLPMQ
+
+
+
+Antworten Sie auf diese E-Mail mit dem SPENDER-CODE:
+
+charlesjacksonjr001@gmail.com
+
+ Ich hoffe, Sie und Ihre Familie gl&uuml;cklich zu machen
+
+ Sch&ouml;ne Gr&uuml;&szlig;e
+
+ Mr. Charles Jackson 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
