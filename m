@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 495713C1419
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Jul 2021 15:17:43 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5248F3C141A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Jul 2021 15:17:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A6B0882AED;
-	Thu,  8 Jul 2021 13:17:41 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AMEvcJ3ZQ4SJ; Thu,  8 Jul 2021 13:17:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 131E2829DC;
-	Thu,  8 Jul 2021 13:17:40 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CF3651BF59F
- for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 13:17:29 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BDAB540248
- for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 13:17:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 82CF940560;
+	Thu,  8 Jul 2021 13:17:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FLxyslwRpjwz for <devel@linuxdriverproject.org>;
- Thu,  8 Jul 2021 13:17:29 +0000 (UTC)
-X-Greylist: delayed 00:05:05 by SQLgrey-1.8.0
-Received: from mx-n06.wc2.phx1.stabletransit.com
- (mx-n06.wc2.phx1.stabletransit.com [207.246.242.252])
- by smtp4.osuosl.org (Postfix) with SMTP id EC19640241
- for <devel@driverdev.osuosl.org>; Thu,  8 Jul 2021 13:17:28 +0000 (UTC)
-Received: by mx-n06.wc2.phx1.stabletransit.com (Postfix, from userid 114)
- id 7821D2D88; Thu,  8 Jul 2021 08:12:22 -0500 (CDT)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id D6wDCFM6WjEv; Thu,  8 Jul 2021 13:17:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id A8D9140248;
+	Thu,  8 Jul 2021 13:17:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FA191BF59F
+ for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 13:17:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8C1A7826B4
+ for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 13:17:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DqX8WkCIWkFV for <devel@linuxdriverproject.org>;
+ Thu,  8 Jul 2021 13:17:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx-n05.wc2.phx1.stabletransit.com
+ (mx-n05.wc2.phx1.stabletransit.com [207.246.242.251])
+ by smtp1.osuosl.org (Postfix) with SMTP id 1ADB38275A
+ for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 13:17:31 +0000 (UTC)
+Received: by mx-n05.wc2.phx1.stabletransit.com (Postfix, from userid 114)
+ id 692C9D1301; Thu,  8 Jul 2021 08:12:22 -0500 (CDT)
 X-Spam-Virus: No
 Received: from php-v027.wc2.phx1.stabletransit.com (unknown [10.40.206.156])
- by mx-n06.wc2.phx1.stabletransit.com (Postfix) with ESMTP id 3C1592D82
- for <devel@driverdev.osuosl.org>; Thu,  8 Jul 2021 08:12:21 -0500 (CDT)
+ by mx-n05.wc2.phx1.stabletransit.com (Postfix) with ESMTP id 40F00D12F2
+ for <devel@linuxdriverproject.org>; Thu,  8 Jul 2021 08:12:21 -0500 (CDT)
 Received: from digilu (uid 2914979) (envelope-from noticedhl@citromail.hu)
- id 20156
+ id 2017e
  by php-v027.wc2.phx1.stabletransit.com (DragonFly Mail Agent v0.11);
  Thu, 08 Jul 2021 08:12:21 -0500
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 Subject: WORK OF GOD.
 X-PHP-Originating-Script: 2914979:class.engine.php(12) : runtime-created
  function
 Date: Thu, 8 Jul 2021 08:12:21 -0500
 From: MARY JOHNSON <noticedhl@citromail.hu>
-Message-ID: <b562ce8a793ddfcc2aeb6701dfb42320@jackieleestudio.com>
+Message-ID: <69879be891564cf7f96a62265487ea9d@jackieleestudio.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
