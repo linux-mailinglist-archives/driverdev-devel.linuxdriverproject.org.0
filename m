@@ -1,60 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3AB903C3D3D
-	for <lists+driverdev-devel@lfdr.de>; Sun, 11 Jul 2021 16:09:44 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 335313C6056
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Jul 2021 18:19:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7064260687;
-	Sun, 11 Jul 2021 14:09:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 64D41400E9;
+	Mon, 12 Jul 2021 16:19:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DYPacJd-_Gw7; Sun, 11 Jul 2021 14:09:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HDCzbsCd6-00; Mon, 12 Jul 2021 16:19:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BFD646066C;
-	Sun, 11 Jul 2021 14:09:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B72124038F;
+	Mon, 12 Jul 2021 16:19:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 684FF1BF2AF
- for <devel@linuxdriverproject.org>; Sun, 11 Jul 2021 14:09:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 50A051BF2A4
+ for <devel@linuxdriverproject.org>; Mon, 12 Jul 2021 16:19:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 572988284B
- for <devel@linuxdriverproject.org>; Sun, 11 Jul 2021 14:09:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3FD5C6062D
+ for <devel@linuxdriverproject.org>; Mon, 12 Jul 2021 16:19:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SwHsTXZbL145 for <devel@linuxdriverproject.org>;
- Sun, 11 Jul 2021 14:09:30 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.07d05.mspz7.gob.ec (mail.07d05.mspz7.gob.ec
- [186.46.59.139])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9EA21827AF
- for <devel@driverdev.osuosl.org>; Sun, 11 Jul 2021 14:09:30 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id B91C518460C2;
- Sun, 11 Jul 2021 08:51:33 -0500 (-05)
-Received: from mail.07d05.mspz7.gob.ec ([127.0.0.1])
- by localhost (mail.07d05.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id enANmLrd_Dd6; Sun, 11 Jul 2021 08:51:33 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id 7979B18460D3;
- Sun, 11 Jul 2021 08:51:33 -0500 (-05)
-X-Virus-Scanned: amavisd-new at 07d05.mspz7.gob.ec
-Received: from mail.07d05.mspz7.gob.ec ([127.0.0.1])
- by localhost (mail.07d05.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id I7VYlwhiHcjp; Sun, 11 Jul 2021 08:51:33 -0500 (-05)
-Received: from cris-PC.wifi (unknown [105.9.79.139])
- by mail.07d05.mspz7.gob.ec (Postfix) with ESMTPSA id 76E2318460BE;
- Sun, 11 Jul 2021 08:51:25 -0500 (-05)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id I0w-kbC2dE9v for <devel@linuxdriverproject.org>;
+ Mon, 12 Jul 2021 16:19:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from info.vvvic.top (unknown [113.31.124.174])
+ by smtp3.osuosl.org (Postfix) with ESMTP id F141860604
+ for <devel@linuxdriverproject.org>; Mon, 12 Jul 2021 16:19:15 +0000 (UTC)
+Received: from admini-PC (113.66.35.254) by info.vvvic.top id hthloa0e97cm for
+ <devel@linuxdriverproject.org>;
+ Tue, 13 Jul 2021 00:18:13 +0800 (envelope-from <mk12@info.vvvic.top>)
+From: "Joy Cheu" <sales@domilink.com>
+Subject: RE:our 2G 4G Trackers and solutions can substitute your trackers
+To: devel@linuxdriverproject.org
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: spende von 2,000,000 euro
-To: Recipients <maria.coronel@07d05.mspz7.gob.ec>
-From: ''Tayeb souami'' <maria.coronel@07d05.mspz7.gob.ec>
-Date: Sun, 11 Jul 2021 15:51:14 +0200
-Message-Id: <20210711135125.76E2318460BE@mail.07d05.mspz7.gob.ec>
+Date: Tue, 13 Jul 2021 00:18:12 +0800
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+Content-Disposition: inline
+Message-Id: <20210712161918.3FD5C6062D@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,30 +56,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Tayebsouam.spende@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: sales@domilink.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hallo mein lieber Freund
-Mein Name ist Tayeb Souami aus New Jersey in Amerika und ich habe den Ameri=
-ca Lottery Jackpot von 315 Millionen Euro gewonnen. Ich habe mich entschlos=
-sen, die Summe von 2.000.000 Euro an f=FCnf gl=FCckliche Personen zu spende=
-n, und Sie wurden als einer der Beg=FCnstigten ausgew=E4hlt. Bitte klicken =
-Sie auf diesen Link, um mehr =FCber meinen Gewinn zu erfahren.
-
-
-UHR MICH HIER: https://www.youtube.com/watch?v=3DZ6ui8ZDQ6Ks
-
-Bitte kontaktieren Sie mich =FCber diese E-Mail:Tayebsouam.spende@gmail.com
-
-
-Ich hoffe, Sie und Ihre Familie gl=FCcklich zu machen.
-
-Gr=FC=DFe
-Herr Tayeb Souami
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8gRGlyZWN0b3IhDQoNCkhlcmUgSm95IENoZXUgb2YgR3Vhbmd6aG91IFpUSU5GTywgYSBy
+ZWxpYWJsZSBDaGluYeKAmXMgR1BTIFRSQUNLRVIgYW5kIHNvbHV0aW9ucyBwcm92aWRlci4gDQog
+ICAgDQpBcmUgeW91IG5vdyBsb29raW5nIGZvciBoaWdoIGNvc3QgcGVyZm9ybWFuY2UgMkcmNEcg
+R1BTIFRSQUNLRVJTIHRvIHJlZHVjZSB5b3VyIG9wZXJhdGluZyBjb3N0PyANCg0KICANCg0KDQoN
+Cg0KDQpIb25vcnM6DQpIaWdoIHRlY2ggRW50ZXJwcmlzZSBDZXJ0aWZpY2F0ZQ0KRGlyZWN0b3Ig
+dW5pdCBvZiBHdWFuZ2RvbmcgSU9UIGF1dGhvcml0eSANCk9mZiBjYW1wdXMgcHJhY3RpY2UgYmFz
+ZSBvZiBHdWFuZ2RvbmcgVW5pdmVyc2l0eSBvZiBUZWNobm9sb2d5DQogDQogDQogDQogDQpCZXN0
+IHJlZ2FyZHMsDQogDQpKb3kgQ2hldSANCk1hcmtldGluZyBNYW5hZ2VyDQoNCkR1b21pIFRlY2hu
+b2xvZ3kgQ28uLEx0ZCANCkd1YW5nemhvdSBaVElORk8gVGVjaG5vbG9neSBDby4sTHRkIA0KTW9i
+Ois4NiAxMzIgODY4NzU3MjENCndoYXRzYXBwOis4NiAxNTI1ODM2ODE2Mg0Kd2VjaGF0OiB2aXZp
+ZF9qb3kNCnNhbGVzIEAgZG9taWxpbmsgLmNvbQ0Kd3d3IC4gYmFzZWdwcyAuIGNvbQ0KX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBs
+aXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRy
+aXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
