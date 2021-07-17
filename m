@@ -2,45 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AB6E3CB203
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Jul 2021 07:43:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 747093CC50F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Jul 2021 19:51:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4FE39607C3;
-	Fri, 16 Jul 2021 05:43:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C42BC60690;
+	Sat, 17 Jul 2021 17:51:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qJd32v6k7foW; Fri, 16 Jul 2021 05:43:31 +0000 (UTC)
+	with ESMTP id 6KdDaUETlzpb; Sat, 17 Jul 2021 17:51:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9C8B7606E5;
-	Fri, 16 Jul 2021 05:43:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3CE6860643;
+	Sat, 17 Jul 2021 17:51:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B6DD11BF86D
- for <devel@linuxdriverproject.org>; Fri, 16 Jul 2021 05:43:20 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 26A8D1BF3A0
+ for <devel@linuxdriverproject.org>; Sat, 17 Jul 2021 17:51:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A0EE240138
- for <devel@linuxdriverproject.org>; Fri, 16 Jul 2021 05:43:20 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0CDB84148E
+ for <devel@linuxdriverproject.org>; Sat, 17 Jul 2021 17:51:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mVeca1AehJxy for <devel@linuxdriverproject.org>;
- Fri, 16 Jul 2021 05:43:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.liuheqinqiang.com (unknown [116.236.202.158])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7E753400D7
- for <devel@linuxdriverproject.org>; Fri, 16 Jul 2021 05:43:18 +0000 (UTC)
-Received: from [192.168.0.106] (unknown [109.87.38.218])
- by mail.liuheqinqiang.com (Postfix) with ESMTPA id 5A8952945E41;
- Thu, 15 Jul 2021 18:28:14 +0800 (CST)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ArV7rzL8YRVR for <devel@linuxdriverproject.org>;
+ Sat, 17 Jul 2021 17:51:07 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd42.google.com (mail-io1-xd42.google.com
+ [IPv6:2607:f8b0:4864:20::d42])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 58F7A4147F
+ for <devel@driverdev.osuosl.org>; Sat, 17 Jul 2021 17:51:07 +0000 (UTC)
+Received: by mail-io1-xd42.google.com with SMTP id x10so14578998ion.9
+ for <devel@driverdev.osuosl.org>; Sat, 17 Jul 2021 10:51:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=jHMLZcMzsGmvH2VdfTqNz4UIwl5qhpPJebMRd8Dl7+U=;
+ b=o1Jw3TEA3pugJNHqdhIif66f2WfIMKdpTCH5d6KzemjokqCe4aEerveVoUtpVwYJcD
+ wNzmmsVsQPmlXk2uraIvuNLcabMoGnCX8jeJJBaj54p/tEWWSbapCpirF9bWQmZOBg6k
+ tlIJU4kSSF+VhtAoPUWTjQL4gPtGlY6xZJIdtsT2+2dfxzaEoOZWgRwUCNGxgMzQCixX
+ hvV7lQYwqhE5T5QriD40l3lFL9AL15cDgjGw/OcrqcOnl5i1CsK3kc1eOPqXm66BGdkC
+ gPcZUWJCWzk4yauXdU3iEIbwyht38K8O300UqNsu5auxSa+c2DZ1AjfJJGqBXgTgDsb4
+ VVKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=jHMLZcMzsGmvH2VdfTqNz4UIwl5qhpPJebMRd8Dl7+U=;
+ b=SdgV38T6aqeG1uK4WVd22b3ggPXVlV2jx/ZjPpOiSuflBylYH5uRZ4jAtS/0h1lHAC
+ 3ZaX5jnrHb0IstIxhMJIoz6H6RWlUkAVCR9VPfyXSc0z3YBR4aYNgSxEs7wkhL+s9NiH
+ wOEhjDME0Diuepi1qcSwt1t24FKLII7LyjmJwjAfeZVqrvKksbfQfE22Oczv5Ur+yXkh
+ ZJRy6+ADVS8fed4zN49OtOkcS2/6j8o72KHGpC91AxJ0PfK3qQQWEJz0IM/oof39DDld
+ te8bnrEQo5ToPWzRQ3B6yH1KweKHe0ACWKdPIztKTcSdGk67+3h5jyfLktu036sChhDl
+ aBFA==
+X-Gm-Message-State: AOAM53144rPs5TBLGfruXjnTB9oR9Kuw4Z4rYfbe7SBbxotJNMIPUt2Z
+ jPdiwn7YRT8e835z8/is/Ce/molN5fEGJdWJFRg=
+X-Google-Smtp-Source: ABdhPJzEErk4+EzPB4HuEGK7fwaVK8oQ/ul1tqNQ21zB0ZfwVBsUCycyU8W2+x4z+NldUA7Qz0pyO/AumXu2PxeB+vY=
+X-Received: by 2002:a6b:6f11:: with SMTP id k17mr11892941ioc.114.1626544266461; 
+ Sat, 17 Jul 2021 10:51:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Lesen Sie Ihre EMail.
-To: Recipients <Test1@faircomp.hu>
-From: Test1@faircomp.hu
-Date: Thu, 15 Jul 2021 13:27:53 +0300
-Message-Id: <20210716054320.A0EE240138@smtp2.osuosl.org>
+Received: by 2002:a92:6e03:0:0:0:0:0 with HTTP; Sat, 17 Jul 2021 10:51:06
+ -0700 (PDT)
+From: "Mrs. bill Chantal" <dorisashong685@gmail.com>
+Date: Sat, 17 Jul 2021 17:51:06 +0000
+Message-ID: <CAPUGxUoiEZ4Fb5OstWbgErAzZdjD1cm3yVZL7Qzhic7GFozV2w@mail.gmail.com>
+Subject: ATM VISA CARD COMPENSATED
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,41 +81,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: rinatkhmetov@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: Bill.Chantal.Lawrence20@europe.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hallo Herr / Frau,
+Dear Friend
 
-Bitte akzeptieren Sie meine Entschuldigung, wenn meine Post Ihre pers=F6nli=
-che Ethik verletzt. Sie wurden von Rinat Akhmetov, einem ukrainischen milli=
-ardenschweren Gesch=E4ftsmann und Oligarchen sowie Gr=FCnder und Pr=E4siden=
-t von System Capital Management in der Ukraine (Europa), f=FCr eine Spenden=
-summe von 500,000.00 Euro ausgew=E4hlt. Sie k=F6nnen unten =FCber mich lese=
-n.
+You have been compensated with the sum of 4.4 million dollars in this
+united nation the payment will be Issue into ATM visa card and send to
+you from the Santander bank in Spain we need your address passport and
+your whatsapp number
+Thanks
 
-https://en.wikipedia.org/wiki/Rinat_Akhmetov
-
-Er beabsichtigt, Ihnen im Rahmen unseres Charity-Projekts einen Teil (Viert=
-el) meines Nettoverm=F6gens von jeweils 500,000.00 EURO an 4 Personen weltw=
-eit zu geben. Wenn Sie meine E-Mail erhalten haben, senden Sie uns bitte Ih=
-re Daten
-
-Dein Name:
-Dein Land:
-Telefonnummer:
-Adresse:
-Staatsangeh=F6rigkeit:
-Alter:
-Geschlecht:
-
-Wenn ich die oben genannten Angaben erhalte, werde ich Sie an meine Bank we=
-iterleiten, um die =DCberweisung des Geldes in H=F6he von EURO 500,000.00 z=
-u veranlassen, in der Hoffnung, dass dies auch Ihnen und anderen hilft.
-
-Rinat Akhmetov.
+Mrs. bill Chantal
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
