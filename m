@@ -1,133 +1,179 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 928AC3CD1A0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Jul 2021 12:12:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0861A3CD593
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Jul 2021 15:14:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2985B826BB;
-	Mon, 19 Jul 2021 10:12:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B1559403F2;
+	Mon, 19 Jul 2021 13:14:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id twuroyDAJcI3; Mon, 19 Jul 2021 10:12:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EIwpZJ_EiVMC; Mon, 19 Jul 2021 13:14:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F143982566;
-	Mon, 19 Jul 2021 10:12:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9473F40324;
+	Mon, 19 Jul 2021 13:14:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 492051BF290
- for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 10:12:23 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C195C1BF2BB
+ for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 13:14:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 44B274032A
- for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 10:12:23 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B09A26068C
+ for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 13:14:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=analogixsemi.onmicrosoft.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IwfmPi8HnUeP for <devel@linuxdriverproject.org>;
- Mon, 19 Jul 2021 10:12:21 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2105.outbound.protection.outlook.com [40.107.94.105])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CEBF440312
- for <devel@driverdev.osuosl.org>; Mon, 19 Jul 2021 10:12:21 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=oracle.com header.b="ag2mZQZ/";
+ dkim=pass (2048-bit key) header.d=oracle.com header.b="ARCSmvUM";
+ dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com
+ header.b="NmT6t8gn"
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DQ8J3Sd8O8q8 for <devel@linuxdriverproject.org>;
+ Mon, 19 Jul 2021 13:14:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
+ [205.220.177.32])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9A9636062D
+ for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 13:14:20 +0000 (UTC)
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 16JDCQvL012123; Mon, 19 Jul 2021 13:14:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2021-07-09;
+ bh=mXMDrnBwgb+MUdEOGNzwfYmUZGro/UjwwVlwHG+TNCc=;
+ b=ag2mZQZ/zBbasic9hPT4yAwGVuC3X09slSUjCW8DORiqsMGkkpLdgvSyNg40LaKGcJaB
+ AxJjLhI5zg0i3KeHlsMOxBsWYnvebgwvrfxqkrrZKU8J9GNhuaEqu60uk51IVRWS4vHC
+ LCVOOtf3FZ87P2GvuB7bRDb9zsQ3/5gQf7C1D0AVP5uL95NkIKAS5YV9Sl15cpCYSRTS
+ J+/EJlnMx4Oc5vmkG6yS5N9wMRcyaWTubfIIX4eIQD0BpHaEpWWIYp1Jc/Bg+hVctSpn
+ IPoiFu4DFOxCyRmffkKbk9SuevS/h5ktw3l8a/Q8C3KlNbnzKiJt63Kd1w4lW5xQwqCx sQ== 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2020-01-29;
+ bh=mXMDrnBwgb+MUdEOGNzwfYmUZGro/UjwwVlwHG+TNCc=;
+ b=ARCSmvUMSSZL16rbqDpXTGepP69y14e3Ei5hOL8jziA/KtbjeRY9DTuXNKmsoizHIFVH
+ 8fkyv+FhRnvoK2UKUk/dJN3wW9TI/acfotVggf6hQlK1jMOIe7lkwyE/Ks2SugKrEfPe
+ ZiwC79ModkuUsFg8FQNjMk9RS1uHTlsNGtB+IVQHyoHOudoBhOkgeZcnZ565h6T6tDE0
+ +//msYy5LWS0VzslBInQxVEScN3xOuLyXPwB6quoU8y1hx9U7rROYojw7HgTGTlgFzTn
+ a22HCegHzhpT4YWVHjODcINwXYchV5E/NPPCMNNpVyBrI5pFWs2w+iknUkx+weo1XeAu gQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by mx0b-00069f02.pphosted.com with ESMTP id 39vpkwsfqy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 19 Jul 2021 13:14:17 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 16JD6DGA031683;
+ Mon, 19 Jul 2021 13:14:16 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11lp2173.outbound.protection.outlook.com [104.47.57.173])
+ by userp3020.oracle.com with ESMTP id 39v8ysq4jy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 19 Jul 2021 13:14:16 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ha+AWfZHJ9fAZ0m0qFc7vug3dmUy4/f0yfRDySKBQL/J9AYVkHiVpKyWmE/mZzKWWN+IY+ha6y684WN57Z77hxYTjFR8VMjrqitVGvr90uyvpWwBosGl9tIFvnR4ZZPof04IIYb1efEK565JwgXdnLUdhoVdB7vses3r+E2ezE63WzDH5IqfRUvSRHECp7QWEKYLhc1k1Hgn968uLaj1wnLPkV8WjGm29spl59HW7E6wjiubTlG6ESZIPZBPExf4+wZJHPwyw5PXdG4omOaoaO7H4P1P2DU8k106BDTTgaanEF3sJiIJk07ITfhsQTpV92bY9iIVjYvHcMb8QFpDUw==
+ b=Xa9XthMoQRGUk6iQIGALNqiIFGiRAX5HNYx0rxGwWEzOSD9Wy+B78g5ZoHGbUfx1nJm5/r5xahykubdOrLjWlOxjdsY0Hwj6i6VDid0DRyltndzPQDUiPuBuCrCpSXXBclT3MrnQQRlNgN0Pm+rDP4/QsHd7Y4Fqrl/qSTnaITGGxhzM1PgHeYzzNRV9hJSAxaTOLpfsgCuNIawo8t6milo0kIzfQ+8zSjOpkxndUE1MjcWg9Yt0n66cL/7DET93LEMmvwvAx7xTyX4K+cPA8Gj+mvyBR5e2Dw10OVIKMWsK9c1CZPZ885qyLysqYFo4mWSlD7GwyKrAhENYsr6b5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OzAKmazeTdRPPEd+gIWSZKEAL5bDvhh4oRnNWRugv6c=;
- b=nSA917FqCoQYbU75zV7ikAXk/119z7AmDmJHJYEj43BZbDnhBa0kC2NKiAnusk/zexhU5Qq3BEquyhI170qnRnm+GB+5516kUO/aSyfpdfeyl+RV0gTV28PJoFWBfkpFwZoSl8gqMbR5KBxw3NBmbolt68YBMQZNdH/yjmqUcwtBf9yVBzOVaj4bRJGcM629cO96ls9uCXpCwKGSwsfXl04gp/yb1dlNQZt/pz8gi+sr5R0NY4Sgfa+y8syOZ0XK+sRp9I8dtZh5SotUymW6iGFW/D0WZN8EyARm+702xUU0nEqwY3Y1zD1p9GFFGlr/1A2DCnC3rbSqzIdyQxdukQ==
+ bh=mXMDrnBwgb+MUdEOGNzwfYmUZGro/UjwwVlwHG+TNCc=;
+ b=M5d2a0t6teJ4VESAWAc+eRvhdBQVJaDVo9202Yp2Lk84uzmf/8NOHNL+ja0nqGG3LyZxJ9oPbeA9TcjWsYEHGJkS2XumHbybrP/9qRc6oROm9CuG6Ui+ywQedJ9mQKuVkZKwuHtTt716bi3NzN9v4poQ+shXqfkUs6CcjACkzUSEuObWCS8uWx2LZI6KLemJUv9ociu1Ap5noy4k25LquXbmLp+KezHV+DKKhhscUiAopvUiiy1DlCOiBKq3shilS2W6fKn49KyDosZ2Vh2TxpfUFQv7EFbJ7UyhKD2wXNrD7KaqDp4nvRjnH+1GGIaa0/lM61CzFEZa7LpjJnQd7g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OzAKmazeTdRPPEd+gIWSZKEAL5bDvhh4oRnNWRugv6c=;
- b=Srt/Agvyqrvl3fjmepOCAQtkxRk7wlnJWnZwiYCmIxTR9laQfzLO2uu37G/9jed4OXQR5XDPKYrh/plK3Z844DK+7MnDq9K/QTZh3x4hm5Y8jHZuGZa1GpJDaKP0nF65fDT2uwIhi8vXaigE6E5UjKy4HTs76WV6334LU8FAFRU=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BYAPR04MB4742.namprd04.prod.outlook.com (2603:10b6:a03:5f::18)
- with Microsoft SMTP Server (version=TLS1_2,
+ bh=mXMDrnBwgb+MUdEOGNzwfYmUZGro/UjwwVlwHG+TNCc=;
+ b=NmT6t8gntFIRrEtJL49r+YFbM6RUkoDWyt0Ew9UYTVW5nFhhk52gvmluW7aZl8+5VtRdv03K7t41yGPduDYqYSM389QXm3UgAzgvD4F1AAhUJEF2n5d/8jp3DUoCL9YLAFihAg7MaaEYaulfKYRaypGfurjurwCEr+d73lfiUoc=
+Authentication-Results: loongson.cn; dkim=none (message not signed)
+ header.d=none;loongson.cn; dmarc=none action=none header.from=oracle.com;
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by CO1PR10MB4738.namprd10.prod.outlook.com
+ (2603:10b6:303:93::14) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.21; Mon, 19 Jul
- 2021 10:12:17 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::5c0e:fbe5:2bd6:ec6]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::5c0e:fbe5:2bd6:ec6%4]) with mapi id 15.20.4331.033; Mon, 19 Jul 2021
- 10:12:17 +0000
-Date: Mon, 19 Jul 2021 18:12:11 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Robert Foss <robert.foss@linaro.org>,
- Nicolas Boichat <drinkcat@google.com>, Andrzej Hajda <a.hajda@samsung.com>
-Subject: [PATCH v10 4/4] drm/bridge: anx7625: add HDMI audio function
-Message-ID: <c89c7116c672fd1d7301fc652738a3f815bdc3cd.1626685856.git.xji@analogixsemi.com>
-References: <cover.1626685856.git.xji@analogixsemi.com>
+ 2021 13:14:14 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5820:e42b:73d7:4268]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5820:e42b:73d7:4268%7]) with mapi id 15.20.4331.033; Mon, 19 Jul 2021
+ 13:14:14 +0000
+Date: Mon, 19 Jul 2021 16:13:52 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: lichenyang <lichenyang@loongson.cn>
+Subject: Re: [PATCH v2 1/3] drm/loongson: Add DRM Driver for Loongson 7A1000
+ bridge chip
+Message-ID: <20210719131352.GU1931@kadam>
+References: <20210715015809.107821-1-lichenyang@loongson.cn>
 Content-Disposition: inline
-In-Reply-To: <cover.1626685856.git.xji@analogixsemi.com>
-X-ClientProxiedBy: TYAP286CA0012.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:404:8015::17) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+In-Reply-To: <20210715015809.107821-1-lichenyang@loongson.cn>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JN2P275CA0040.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:2::28)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from anxtwsw-Precision-3640-Tower (60.251.58.79) by
- TYAP286CA0012.JPNP286.PROD.OUTLOOK.COM (2603:1096:404:8015::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.21 via Frontend
- Transport; Mon, 19 Jul 2021 10:12:16 +0000
+Received: from kadam (102.222.70.252) by
+ JN2P275CA0040.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:2::28) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4331.21 via Frontend Transport; Mon, 19 Jul 2021 13:14:08 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 683e1af8-e655-4f4a-e4d2-08d94a9dafc8
-X-MS-TrafficTypeDiagnostic: BYAPR04MB4742:
+X-MS-Office365-Filtering-Correlation-Id: 8d823f2a-822e-48bc-872f-08d94ab71aed
+X-MS-TrafficTypeDiagnostic: CO1PR10MB4738:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BYAPR04MB47427DEC71F651BFFD3FC5DFC7E19@BYAPR04MB4742.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:162;
+X-Microsoft-Antispam-PRVS: <CO1PR10MB473863E23F6A064D863517438EE19@CO1PR10MB4738.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1122;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: mFl8bZrcVGXGC7NDZ4b4SS7qQcM+igLXHaQ/ImZR0cDO7zT4OGMiDdjZL1+lDbsrL4rthm4v5cslX8JJUOfEewdZJvvQ9kwaBPrvlHhlHfAnMEC7kEUdG6P1K5Ew8o4q1aP/eLc8nPfuex8FB2R4HD8EbeYH+uLKfzgMHKflTaACl77hkn5KJVbzLn8jn1LNUbsTTDY3XnZIA0VuE6R7meVgVBD9tDjHO/klc03UXfiN3GQs7bJg5yg0rO28Y0DYzVvRlGuFVprPnntQ/axQ9ceMT+/uNCS3zV3RmzwnUAzdc0M0J0VBCQjX7R5G6OEGeVM8nqRyUl9B8K/vYHkAeqw8CeRtLLoVXDuoqnvEed8BxSk92KO2fRQTVJNMwrgY67WmXCeZynSGuW3KNH2e9kkf+0VU84OBK6HVwMTKL+FtJI38s4pD+/SgIT8nwHjhGz4LrwO/3kF/l61SudHEbky1RYUbFBifEPyNKh3grMeu+6zEt3GLJMe+nBIOp+YnPzY1WhqBHPvVHo2wTrQwlW7EUycCqyZ9kwvExTLXa0EqjD0e4B/cG31AoNi6M912BYEcnw+H8eAL9EqdO0Es3PWjcXasEu/5LzGOxc1Mc00lQ0cHRtDJWX9RVF+jOnYtVLqIXPADLyocvDfuq1vSIycsKG74QsTJbgMPqqOp3sydQThijwE3Z6ud1ohpFLhBEQoFavoY3kDUK1TTXe2UDQ==
+X-Microsoft-Antispam-Message-Info: TdyKJBHKC1rENB8mWBy1RzorMRLU2tEPsku+7QFP+RnYqKurLms1mDweQmnrfPMhODTqfXpb6MhwQC9+XCjNUlsoKr1nqw58CVNtzAFYOZc0NhZgW1AXkEd4QLGEKg9Qv7PrGEWvxgsghdMBEn9vRyFJj0rYxnZCDI0Y+a/XNwW9uNebA+Z3c2AsUCThjhfT4hTyISA4Q1SRxm7IlwbhfeL8/2EvJWJ4LLXFCLvwyZX93QfCz3/RmhbHBtr3A8wHJd9UPtlXGg7jdhN89oPs52Xhs9BIZge+JaIl1BwowQ9aNi5ihSgu8OGwdxHUrLvPpPJ6It37jxjZyocNUBTZSw4Gwph+kbUhWOi2t1uuEoxB9qO2lu0HOimj4tFStXqTqfJIHThZ8FYsdftQmEGVAjBA6hpf5cX/vBIw1f3vE78THkoJNd9AYQx/VdHa2tSB/kghgY2g6cJxCf4nV8kmudCnPfkWKsU2WFvrk/mNgvhzEM5J1dOPr99u3Ptp3kxFHC1K6G+wx81G3O/Ulh1TK2DeidSqLHPecvVA15m/UewCW3+vpB8t/cMY3B61vN1RcUvcHl430za9lKHhpzJQeJOVF1qQG1SP+JkitefdsEwe9b7UunAP+HYCDEK/tm3qOlCx99jwpMfbcZH90EvaQ3/Qs0r9GCEji85zzLKLnD/sMtHiwL0Bh0ZTzxwwCSRkdgie06Zscz4uYg06ujiBmw==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(376002)(39840400004)(366004)(346002)(136003)(6666004)(54906003)(38100700002)(38350700002)(110136005)(316002)(478600001)(36756003)(8676002)(26005)(2616005)(86362001)(186003)(956004)(8936002)(83380400001)(2906002)(55236004)(66946007)(4326008)(66476007)(5660300002)(66556008)(52116002)(6496006)(7416002)(6486002);
- DIR:OUT; SFP:1102; 
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(136003)(39860400002)(366004)(396003)(346002)(376002)(186003)(4326008)(55016002)(44832011)(478600001)(86362001)(26005)(38350700002)(38100700002)(33656002)(6496006)(6916009)(6666004)(54906003)(8676002)(956004)(316002)(8936002)(5660300002)(9576002)(9686003)(52116002)(1076003)(2906002)(66476007)(66946007)(33716001)(66556008);
+ DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?i33n4Q+V5iwyM5yEOco7pNRGkWmqxKv2W0fXdMOIM/J2WiNaZMqKT5V/E3OU?=
- =?us-ascii?Q?+g37Xo5H1KdV0euCVhq1wBjdNc+vfHK4QJGyzlYF5Jv/8VLIkYvd2Bpoa3Jz?=
- =?us-ascii?Q?0sI+YgHp7o1uQpGaTA0TkoWRgWXHsVneY+GlnsVtJ9LnzZkD+Gwd8Q5662dj?=
- =?us-ascii?Q?ck3QbseA2eQcI8w93PWEHznuKj0LEDFVAUVvJW5j7ZkvyBBr704SA4tgXXXa?=
- =?us-ascii?Q?ZiJhfx22e95ZKPqIwNVZZzjMrjihS8Xi//DBx4EDc3uo+q0aj1VVmJHb3E3A?=
- =?us-ascii?Q?GDNPitxOYS6WiR4Zf6PcFumgfV/6oSy5ulXlsCYcQWo7tHXftUnwnPI2XPAW?=
- =?us-ascii?Q?b7XtEfQIC8bGiiyT6ZfVxnnbqqwGWfRyavyjA2stft+wy6bhhF0xjccGtCuU?=
- =?us-ascii?Q?J23cDxSGvrkinOVAwSnRM7BWf2DWQPwfnly8Qcj1efEPcA1q2hN08UXKVK3o?=
- =?us-ascii?Q?pnVOqKVGnlvxDIeWTu8AYVHzEhZnKTAGEoa3WA58P4KV8ZkW18a0ijsFvaer?=
- =?us-ascii?Q?ChKH8+3VqZkzsVAD7aHGHBc6/pKOFRuxaBBEhXUMdt2kJLIjklDxIAJFQUsZ?=
- =?us-ascii?Q?MTMLMg01BRoUlLdqnBaj59WcsTFY1g4JGIlxsQQ4qa7rPhO3l09u5Tp9NoJI?=
- =?us-ascii?Q?5JitzN18NkZy9RhReC4UjioYX0xLiDcAEiFOqXSfIkLBT2R6c/Wu/LY09abm?=
- =?us-ascii?Q?u6JBsaiPP0lQFYNVTvd59sOt28erYFitpGO7XvKgMXTs6BIh0LaI6qAyEn1R?=
- =?us-ascii?Q?mSsd18uW5x038Z7A6NYizbNZAr1r373F4YIX2Oqn5hY0oDHPw121h5/XwXt9?=
- =?us-ascii?Q?NseX8dDd9r5/CBvbzycuyhmUGrPctM/9McpSND+dBLsXQmkKxXrDfWFyCnqn?=
- =?us-ascii?Q?V1iW11fq9wh5enuQJhKO+8VOUFlJD0Wqx48ABxZxwPIAtWAlN+kHBYDrOjsi?=
- =?us-ascii?Q?VSg04x/Xyk56oI6U37xEkYTyQXPvLL0HZMK97B4YyfnYSVyvf8X8eEnzry8Q?=
- =?us-ascii?Q?sKVADaiE9scNVI2rz6QZ2OzO7hMfu+bTJ+5KEZUXpehLTebrNiTR+CZokanD?=
- =?us-ascii?Q?ML1ikWCFjOmKI0vgNzccCh5Wi2tCQbhtEyMrjcOduiXzpROSAGjLJ9iS27CK?=
- =?us-ascii?Q?YRUg9zI3OX0Zc5AEFGRHV7ridHB4ZOQtANwuqD1sOSNkEUoRR+DiS0CJ2UZz?=
- =?us-ascii?Q?FVnadHQ1tEcC+EVxIzQlVjZpUeS0vFv584sTWPleCqYCbcY4uiLpcgrRL3lK?=
- =?us-ascii?Q?GyEKEUltjsBACs0ZOMN/F6LgC7VBSTEMFlaBZI/7XjbF8qFVffxtZA3hw9vV?=
- =?us-ascii?Q?dO+ZDPYRWS5zHd0b+bVKnXqb?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 683e1af8-e655-4f4a-e4d2-08d94a9dafc8
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?83mBOpWhPqspklr6cj0092HkjEjTNSG48cuiMgErLMx31o3zdDWgEHJ/Pd55?=
+ =?us-ascii?Q?DiW7wkj9zvY0cxeCShnxD5L2KyeGbEVCUJiotbamrwFg9Fkzr4voQOyTDQ9s?=
+ =?us-ascii?Q?ruHOkdqHPDw412cHd3coIw2vNTDSbNagSloe0pFJ2aMogV0+a+ik5wwJDlrX?=
+ =?us-ascii?Q?xycg8TkkGPst6o1OFcIs8pYKTKSsCoxsuphV4LNwBBkXopCIDcg23YZKs0Ye?=
+ =?us-ascii?Q?WtoGAGCAvfaYhhOMPT+c59gMs96W+cJmzm00LvUfQlb3CFuAq/h4mvSiHyjI?=
+ =?us-ascii?Q?uvyXrEmWZtjuhS+NUyvp130FjRMzYSBmCc/XkhMkX4CNkQkEgYMLpRO2SmH/?=
+ =?us-ascii?Q?ADbRTz2IJVHsK8w7Lwq+epT000T1j85extyfte7+l3alHRyESQUvxlpn38Er?=
+ =?us-ascii?Q?du7rg+fhHdAOInDVCxxkx5gsrcrXypEFqrBvWCUrwKwHn3fgb+1kDQO6uWnw?=
+ =?us-ascii?Q?pUMjalgocxXCZjswJPnS11rfQYA0HMse8bcEAZyq0ze3TZGSEccp+trkb2n2?=
+ =?us-ascii?Q?fphD2DooUjZ2kuJJo/mce76G1c0hVTf+jm8bVLnq2LnWuRpBcQfBJOfUqsLh?=
+ =?us-ascii?Q?Azwr+Ax7ZV7JQpbwQeRJ7LDrykNkZl37aNH1ryWTBetHNF4NoXfAqGwUhR0K?=
+ =?us-ascii?Q?VlhRdfWWuebweVvNtlSznOnZBTfan+Bw05gE9joFDLaZ0R7vqC+DfZXgGnW5?=
+ =?us-ascii?Q?pGx8aNKrossstj27c3MUP4gaSE4df8vOyKXrvGNRjtozhORU8+jblNRhNaDJ?=
+ =?us-ascii?Q?vO6jxUwu3ltlHp2kFTpX4Jdacwc9HbZb4e0B1uNGht1guzwULVWNFXJq0SIS?=
+ =?us-ascii?Q?MwUqq2+zGDHhWfX6j7YHYeqIS20KcgMDTdBsIAse0r18Yndzfcp2w8gauJnp?=
+ =?us-ascii?Q?wI1o+CbYKBIM0yQhtcRiXDKxMJDk/tjnghoJdMx1l9E5NO2qaBQ0t1ONO+VP?=
+ =?us-ascii?Q?MXQTCx1c3Q9PSKLa41BFjdTZjkoVCj4H/ysp6IwWYymJF10lvCFgaUHoOzuE?=
+ =?us-ascii?Q?cOJPZ41FQXZtaTWw6YndBpdSF/oJxmqkcT0jLWXnXik+lca5wCa46qQInEbw?=
+ =?us-ascii?Q?T344fQN2LZtpERURRTirlGbvmrXqJwZ13aYGtW66I9IwepBdEmL6HneJj8wV?=
+ =?us-ascii?Q?K5bm9NFLKnHxUW6dbkSeIiCz10RZxMnNDewAy0cKhRgq/WGKyunqwLwOfTRP?=
+ =?us-ascii?Q?oaU//dW+wRwvSY5/xD2bU64EB3qVhpvHW81DRhUqsDlulK/q043DGKHEScTY?=
+ =?us-ascii?Q?Oj7rwrQF3wbbrRjZ00g6XxGj0zo6pY3ht5clLW3EX/jBkAsAmuPYC7grbxKo?=
+ =?us-ascii?Q?zZlq3mYiOKtPtxgqDnbe8acn?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8d823f2a-822e-48bc-872f-08d94ab71aed
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jul 2021 10:12:17.1156 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jul 2021 13:14:14.6787 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4qR3Kh5DI3fJxjeFIJMSnwJK7GgXDIUlVgn0MO1HyIodAVrrryHRaYv/yGUQE8O3couH0OiBd3KlmGEKiiPrNw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4742
+X-MS-Exchange-CrossTenant-UserPrincipalName: M6sBADYX+UbJz9FO/dbbuCUt9MdfTDHeqpxz2FdRs+ooHzPZf8pWuJJJUNRdwkBEQueNkxxQJ1WKL+0Gp5HNS0COL+5yi3ImzPIIvqhYQ5E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR10MB4738
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10049
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxscore=0 malwarescore=0
+ adultscore=0 phishscore=0 suspectscore=0 mlxlogscore=999 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
+ definitions=main-2107190076
+X-Proofpoint-ORIG-GUID: cgTw4jc3YBFVSKz5_6tEUC3_kRMNqu8l
+X-Proofpoint-GUID: cgTw4jc3YBFVSKz5_6tEUC3_kRMNqu8l
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,344 +186,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Sheng Pan <span@analogixsemi.com>,
- Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
- Bernie Liang <bliang@analogixsemi.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Zhen Li <zhenli@analogixsemi.com>,
+Cc: David Airlie <airlied@linux.ie>, Huacai Chen <chenhuacai@kernel.org>,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>
+ Daniel Vetter <daniel@ffwll.ch>, devel@linuxdriverproject.org,
+ Tiezhu Yang <yangtiezhu@loongson.cn>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add audio HDMI codec function support, enable it through device true
-flag "analogix,audio-enable".
+On Thu, Jul 15, 2021 at 09:58:07AM +0800, lichenyang wrote:
+> +int loongson_crtc_init(struct loongson_device *ldev, int index)
+> +{
+> +	struct loongson_crtc *lcrtc;
+> +	u32 ret;
 
-Reviewed-by: Robert Foss <robert.foss@linaro.org>
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
----
- drivers/gpu/drm/bridge/analogix/anx7625.c | 226 ++++++++++++++++++++++
- drivers/gpu/drm/bridge/analogix/anx7625.h |   5 +
- 2 files changed, 231 insertions(+)
+This should be "int ret;"
 
-diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-index a5a20cc0f3e0..44ab0893f600 100644
---- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-+++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-@@ -33,6 +33,7 @@
- #include <drm/drm_probe_helper.h>
- 
- #include <media/v4l2-fwnode.h>
-+#include <sound/hdmi-codec.h>
- #include <video/display_timing.h>
- 
- #include "anx7625.h"
-@@ -153,6 +154,20 @@ static int anx7625_write_and(struct anx7625_data *ctx,
- 	return anx7625_reg_write(ctx, client, offset, (val & (mask)));
- }
- 
-+static int anx7625_write_and_or(struct anx7625_data *ctx,
-+				struct i2c_client *client,
-+				u8 offset, u8 and_mask, u8 or_mask)
-+{
-+	int val;
-+
-+	val = anx7625_reg_read(ctx, client, offset);
-+	if (val < 0)
-+		return val;
-+
-+	return anx7625_reg_write(ctx, client,
-+				 offset, (val & and_mask) | (or_mask));
-+}
-+
- static int anx7625_config_bit_matrix(struct anx7625_data *ctx)
- {
- 	int i, ret;
-@@ -1325,6 +1340,9 @@ static int anx7625_parse_dt(struct device *dev,
- 	else
- 		DRM_DEV_DEBUG_DRIVER(dev, "found MIPI DSI host node.\n");
- 
-+	if (of_property_read_bool(np, "analogix,audio-enable"))
-+		pdata->audio_en = 1;
-+
- 	ret = drm_of_find_panel_or_bridge(np, 1, 0, &panel, NULL);
- 	if (ret < 0) {
- 		if (ret == -ENODEV)
-@@ -1395,6 +1413,208 @@ static enum drm_connector_status anx7625_sink_detect(struct anx7625_data *ctx)
- 				     connector_status_disconnected;
- }
- 
-+static int anx7625_audio_hw_params(struct device *dev, void *data,
-+				   struct hdmi_codec_daifmt *fmt,
-+				   struct hdmi_codec_params *params)
-+{
-+	struct anx7625_data *ctx = dev_get_drvdata(dev);
-+	int wl, ch, rate;
-+	int ret = 0;
-+
-+	if (fmt->fmt != HDMI_DSP_A) {
-+		DRM_DEV_ERROR(dev, "only supports DSP_A\n");
-+		return -EINVAL;
-+	}
-+
-+	DRM_DEV_DEBUG_DRIVER(dev, "setting %d Hz, %d bit, %d channels\n",
-+			     params->sample_rate, params->sample_width,
-+			     params->cea.channels);
-+
-+	ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
-+				    AUDIO_CHANNEL_STATUS_6,
-+				    ~I2S_SLAVE_MODE,
-+				    TDM_SLAVE_MODE);
-+
-+	/* Word length */
-+	switch (params->sample_width) {
-+	case 16:
-+		wl = AUDIO_W_LEN_16_20MAX;
-+		break;
-+	case 18:
-+		wl = AUDIO_W_LEN_18_20MAX;
-+		break;
-+	case 20:
-+		wl = AUDIO_W_LEN_20_20MAX;
-+		break;
-+	case 24:
-+		wl = AUDIO_W_LEN_24_24MAX;
-+		break;
-+	default:
-+		DRM_DEV_DEBUG_DRIVER(dev, "wordlength: %d bit not support",
-+				     params->sample_width);
-+		return -EINVAL;
-+	}
-+	ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
-+				    AUDIO_CHANNEL_STATUS_5,
-+				    0xf0, wl);
-+
-+	/* Channel num */
-+	switch (params->cea.channels) {
-+	case 2:
-+		ch = I2S_CH_2;
-+		break;
-+	case 4:
-+		ch = TDM_CH_4;
-+		break;
-+	case 6:
-+		ch = TDM_CH_6;
-+		break;
-+	case 8:
-+		ch = TDM_CH_8;
-+		break;
-+	default:
-+		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
-+				     params->cea.channels);
-+		return -EINVAL;
-+	}
-+	ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
-+			       AUDIO_CHANNEL_STATUS_6, 0x1f, ch << 5);
-+	if (ch > I2S_CH_2)
-+		ret |= anx7625_write_or(ctx, ctx->i2c.tx_p2_client,
-+				AUDIO_CHANNEL_STATUS_6, AUDIO_LAYOUT);
-+	else
-+		ret |= anx7625_write_and(ctx, ctx->i2c.tx_p2_client,
-+				AUDIO_CHANNEL_STATUS_6, ~AUDIO_LAYOUT);
-+
-+	/* FS */
-+	switch (params->sample_rate) {
-+	case 32000:
-+		rate = AUDIO_FS_32K;
-+		break;
-+	case 44100:
-+		rate = AUDIO_FS_441K;
-+		break;
-+	case 48000:
-+		rate = AUDIO_FS_48K;
-+		break;
-+	case 88200:
-+		rate = AUDIO_FS_882K;
-+		break;
-+	case 96000:
-+		rate = AUDIO_FS_96K;
-+		break;
-+	case 176400:
-+		rate = AUDIO_FS_1764K;
-+		break;
-+	case 192000:
-+		rate = AUDIO_FS_192K;
-+		break;
-+	default:
-+		DRM_DEV_DEBUG_DRIVER(dev, "sample rate: %d not support",
-+				     params->sample_rate);
-+		return -EINVAL;
-+	}
-+	ret |= anx7625_write_and_or(ctx, ctx->i2c.tx_p2_client,
-+				    AUDIO_CHANNEL_STATUS_4,
-+				    0xf0, rate);
-+	ret |= anx7625_write_or(ctx, ctx->i2c.rx_p0_client,
-+				AP_AV_STATUS, AP_AUDIO_CHG);
-+	if (ret < 0) {
-+		DRM_DEV_ERROR(dev, "IO error : config audio.\n");
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
-+static void anx7625_audio_shutdown(struct device *dev, void *data)
-+{
-+	DRM_DEV_DEBUG_DRIVER(dev, "stop audio\n");
-+}
-+
-+static int anx7625_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
-+				       struct device_node *endpoint)
-+{
-+	struct of_endpoint of_ep;
-+	int ret;
-+
-+	ret = of_graph_parse_endpoint(endpoint, &of_ep);
-+	if (ret < 0)
-+		return ret;
-+
-+	/*
-+	 * HDMI sound should be located at external DPI port
-+	 * Didn't have good way to check where is internal(DSI)
-+	 * or external(DPI) bridge
-+	 */
-+	return 0;
-+}
-+
-+static void
-+anx7625_audio_update_connector_status(struct anx7625_data *ctx,
-+				      enum drm_connector_status status)
-+{
-+	if (ctx->plugged_cb && ctx->codec_dev) {
-+		ctx->plugged_cb(ctx->codec_dev,
-+				status == connector_status_connected);
-+	}
-+}
-+
-+static int anx7625_audio_hook_plugged_cb(struct device *dev, void *data,
-+					 hdmi_codec_plugged_cb fn,
-+					 struct device *codec_dev)
-+{
-+	struct anx7625_data *ctx = data;
-+
-+	ctx->plugged_cb = fn;
-+	ctx->codec_dev = codec_dev;
-+	anx7625_audio_update_connector_status(ctx, anx7625_sink_detect(ctx));
-+
-+	return 0;
-+}
-+
-+static const struct hdmi_codec_ops anx7625_codec_ops = {
-+	.hw_params	= anx7625_audio_hw_params,
-+	.audio_shutdown = anx7625_audio_shutdown,
-+	.get_dai_id	= anx7625_hdmi_i2s_get_dai_id,
-+	.hook_plugged_cb = anx7625_audio_hook_plugged_cb,
-+};
-+
-+static void anx7625_unregister_audio(struct anx7625_data *ctx)
-+{
-+	struct device *dev = &ctx->client->dev;
-+
-+	if (ctx->audio_pdev) {
-+		platform_device_unregister(ctx->audio_pdev);
-+		ctx->audio_pdev = NULL;
-+	}
-+
-+	DRM_DEV_DEBUG_DRIVER(dev, "unbound to %s", HDMI_CODEC_DRV_NAME);
-+}
-+
-+static int anx7625_register_audio(struct device *dev, struct anx7625_data *ctx)
-+{
-+	struct hdmi_codec_pdata codec_data = {
-+		.ops = &anx7625_codec_ops,
-+		.max_i2s_channels = 8,
-+		.i2s = 1,
-+		.data = ctx,
-+	};
-+
-+	ctx->audio_pdev = platform_device_register_data(dev,
-+							HDMI_CODEC_DRV_NAME,
-+							PLATFORM_DEVID_AUTO,
-+							&codec_data,
-+							sizeof(codec_data));
-+
-+	if (IS_ERR(ctx->audio_pdev))
-+		return IS_ERR(ctx->audio_pdev);
-+
-+	DRM_DEV_DEBUG_DRIVER(dev, "bound to %s", HDMI_CODEC_DRV_NAME);
-+
-+	return 0;
-+}
-+
- static int anx7625_attach_dsi(struct anx7625_data *ctx)
- {
- 	struct mipi_dsi_device *dsi;
-@@ -1959,6 +2179,9 @@ static int anx7625_i2c_probe(struct i2c_client *client,
- 				    DRM_MODE_CONNECTOR_DisplayPort;
- 	drm_bridge_add(&platform->bridge);
- 
-+	if (platform->pdata.audio_en)
-+		anx7625_register_audio(dev, platform);
-+
- 	DRM_DEV_DEBUG_DRIVER(dev, "probe done\n");
- 
- 	return 0;
-@@ -1987,6 +2210,9 @@ static int anx7625_i2c_remove(struct i2c_client *client)
- 
- 	anx7625_unregister_i2c_dummy_clients(platform);
- 
-+	if (platform->pdata.audio_en)
-+		anx7625_unregister_audio(platform);
-+
- 	kfree(platform);
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.h b/drivers/gpu/drm/bridge/analogix/anx7625.h
-index 65db38e5da9a..a9bdf05a1f66 100644
---- a/drivers/gpu/drm/bridge/analogix/anx7625.h
-+++ b/drivers/gpu/drm/bridge/analogix/anx7625.h
-@@ -111,6 +111,7 @@
- #define AUDIO_CHANNEL_STATUS_6 0xd5
- #define TDM_SLAVE_MODE 0x10
- #define I2S_SLAVE_MODE 0x08
-+#define AUDIO_LAYOUT   0x01
- 
- #define AUDIO_CONTROL_REGISTER 0xe6
- #define TDM_TIMING_MODE 0x08
-@@ -365,6 +366,7 @@ struct anx7625_platform_data {
- 	int intp_irq;
- 	int is_dpi;
- 	int mipi_lanes;
-+	int audio_en;
- 	int dp_lane0_swing_reg_cnt;
- 	int lane0_reg_data[DP_TX_SWING_REG_CNT];
- 	int dp_lane1_swing_reg_cnt;
-@@ -385,6 +387,7 @@ struct anx7625_i2c_client {
- 
- struct anx7625_data {
- 	struct anx7625_platform_data pdata;
-+	struct platform_device *audio_pdev;
- 	int hpd_status;
- 	int hpd_high_cnt;
- 	/* Lock for work queue */
-@@ -393,6 +396,8 @@ struct anx7625_data {
- 	struct anx7625_i2c_client i2c;
- 	struct i2c_client *last_client;
- 	struct s_edid_data slimport_edid_p;
-+	struct device *codec_dev;
-+	hdmi_codec_plugged_cb plugged_cb;
- 	struct work_struct work;
- 	struct workqueue_struct *workqueue;
- 	char edid_block;
--- 
-2.25.1
+> +
+> +	lcrtc = kzalloc(sizeof(struct loongson_crtc), GFP_KERNEL);
+> +	if (lcrtc == NULL)
+> +		return -1;
+> +
+> +	lcrtc->ldev = ldev;
+> +	lcrtc->reg_offset = index * REG_OFFSET;
+> +	lcrtc->cfg_reg = CFG_RESET;
+> +	lcrtc->crtc_id = index;
+> +
+> +	ret = loongson_plane_init(lcrtc);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = drm_crtc_init_with_planes(ldev->dev, &lcrtc->base, lcrtc->plane,
+> +					NULL, &loongson_crtc_funcs, NULL);
+> +	if (ret) {
+> +		DRM_ERROR("failed to init crtc %d\n", index);
+> +		drm_plane_cleanup(lcrtc->plane);
+> +		return ret;
+> +	}
+> +
+> +	drm_crtc_helper_add(&lcrtc->base, &loongson_crtc_helper_funcs);
+> +
+> +	ldev->mode_info[index].crtc = lcrtc;
+> +
+> +	return 0;
+> +}
 
+[ snip ]
+
+> +int loongson_modeset_init(struct loongson_device *ldev)
+> +{
+> +	struct drm_encoder *encoder;
+> +	struct drm_connector *connector;
+> +	int i;
+> +	u32 ret;
+
+
+Same.
+
+
+> +
+> +	ldev->dev->mode_config.allow_fb_modifiers = true;
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
