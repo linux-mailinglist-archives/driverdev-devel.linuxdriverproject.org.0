@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50C4F3CDB90
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Jul 2021 17:30:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B046F3CEE2F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Jul 2021 23:40:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9AA7A4036C;
-	Mon, 19 Jul 2021 15:30:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B262A40455;
+	Mon, 19 Jul 2021 21:40:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LLzg-7BR95WU; Mon, 19 Jul 2021 15:30:03 +0000 (UTC)
+	with ESMTP id RrpN9wugw-v2; Mon, 19 Jul 2021 21:40:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9428E4037A;
-	Mon, 19 Jul 2021 15:30:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8FA6540394;
+	Mon, 19 Jul 2021 21:40:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 63DA51BF3ED
- for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 15:29:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9909F1BF409
+ for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 21:40:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6125482A87
- for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 15:29:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 888BB60673
+ for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 21:40:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xq_0nmr9O2aW for <devel@linuxdriverproject.org>;
- Mon, 19 Jul 2021 15:29:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N4EATDxCJ_XT for <devel@linuxdriverproject.org>;
+ Mon, 19 Jul 2021 21:40:15 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from web.localdomain (unknown [45.55.74.62])
- by smtp1.osuosl.org (Postfix) with ESMTP id CD9DD82A3B
- for <devel@linuxdriverproject.org>; Mon, 19 Jul 2021 15:29:42 +0000 (UTC)
-Received: from User (unknown [45.55.75.215])
- by web.localdomain (Postfix) with SMTP id F03A843B9A;
- Mon, 19 Jul 2021 14:46:08 +0000 (UTC)
-From: "Your Withheld Consignment"<info@san.org>
-Subject: Re: Your Package For Delivery
-Date: Mon, 19 Jul 2021 14:46:18 -0000
+Received: from mail.ahylz.com.cn (unknown [220.248.243.245])
+ by smtp3.osuosl.org (Postfix) with ESMTP id A415A60625
+ for <devel@driverdev.osuosl.org>; Mon, 19 Jul 2021 21:40:14 +0000 (UTC)
+Received: from User (unknown [83.137.2.193])
+ by mail.ahylz.com.cn (Postfix - by ahylz.com.cn) with ESMTPA id ADBFB1313D00; 
+ Tue, 20 Jul 2021 05:39:17 +0800 (HKT)
+From: "Jan Franssen"<myyang@ahylz.com.cn>
+Subject: GREETHINGS
+Date: Mon, 19 Jul 2021 23:39:53 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210719152943.6125482A87@smtp1.osuosl.org>
+Message-Id: <20210719214018.888BB60673@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,45 +55,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: marketing@galileuconcursos.com.br
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: janfranssen@counsellor.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Assistant Inspection Director
-San Diego International Airport
-3225N Harbor Dr, San Diego
-CA92101, United States California
-marketing@galileuconcursos.com.br
-
-
-
-Good morning,
-
-
-
-I am Mr.Kenneth Edward, head of luggage / baggage storage facilities here at the San Diego International Airport, California USA. During my recent withheld package routine check at the Airport Storage Vault, I discovered an abandoned shipment from a Diplomat from London and when scanned it revealed an undisclosed sum of money in a metal trunk box. The consignment was abandoned because the Contents of the consignment was not properly declared by the consignee as "MONEY" rather it was declared as personal effect to avoid interrogation and also the inability of the diplomat to pay for the United States Non Inspection Charges which is $ 3,700USD. On my assumption the consignment is still left in our Storage House here at the San Diego International Airport till date. The details of the consignment including your email address and the official documents from the United Nations office in Geneva are tagged on the Trunk box.
-
-
-However, to enable me confirm if you are the actual recipient of this consignment as the assistant director of the Inspection Unit, I will advise you provide your current Phone Number and Full Address, to enable me cross check if it corresponds with the address on the official documents including the name of nearest Airport around your city. Please note that this consignment is supposed to have been returned to the United States Treasury Department as unclaimed delivery due to the delays in concluding the clearance processes so as a result of this, I will not be able to receive your details on my official email account. So in order words to enable me cross check your details, I will advise you send the required details to my private email address for quick processing and response. Once I confirm you as the actual recipient of the trunk box, I can get everything concluded within 48hours upon your acceptance and proceed to your address for delivery.
-
-
-Lastly, be informed that the reason I have taken it upon myself to contact you personally about this abandoned consignment is because I want us to transact this business and share the money 80% for you and 20% for me since the consignment has not yet been returned to the United States Treasury Department after being abandoned by the diplomat so immediately the confirmation is made, I will go ahead and pay for the United States Non Inspection Fee of $ 3,700 dollars and arrange for the box to be delivered to your doorstep Or I can bring it by myself to avoid any more trouble but you have to assure me of my 20% share.
-
-I wait to hear from you urgently, and I will appreciate if we can keep this deal confidential.
-
-
-
-Thank you.
-
-Kenneth Edward
-Assistant Inspection Director
-San Diego International Airport
-California 3225 N Harbor Dr, San Diego
-CA92101, United States
-marketing@galileuconcursos.com.br
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBTaXIsCgpNeSBuYW1lIGlzIE1yLiBKYW4gRnJhbnNzZW4sIENoaWVmIEZpbmFuY2lhbCBP
+ZmZpY2VyLApBTUUgQ2FwaXRhbCBBc3NldCBNYW5hZ2VtZW50IExpbWl0ZWQgaGVyZSBpbiBMb25k
+b24sIFVuaXRlZCBLaW5nZG9tOyBJCmhhdmUgVVJHRU5UIGFuZCBkaXNjcmVldCBidXNpbmVzcyBw
+cm9wb3NhbCBmb3IgeW91IHRoYXQgc2hhbGwgYmVuZWZpdAp1cyBpbW1lbnNlbHkgc2hvdWxkIHlv
+dSBjaG9vc2UgdG8gcGFydGljaXBhdGUgb3IgcGFydG5lciB3aXRoIG1lLgoKQmVmb3JlIEkgcmV2
+ZWFsIGFueSBzZW5zaXRpdmUgaW5mb3JtYXRpb24gaXQgaXMgaW1wb3J0YW50IEkgc3RhdGUKY2F0
+ZWdvcmljYWxseSB0aGF0LCBhbGwgcHJpdmlsZWdlIGluZm9ybWF0aW9uIGNvbmNlcm5pbmcgbXkg
+cHJvcG9zYWwKYW5kIHRoaXMgYnVzaW5lc3MgdHJhbnNhY3Rpb24gaXMgdHJlYXRlZCB3aXRoIHV0
+bW9zdCBjb25maWRlbnRpYWxpdHkKZHVlIHRvIHRoZSBzb3VyY2Ugb2YgZnVuZHMuCgpUaGVzZSBm
+dW5kcyB3aGljaCBzdW1zIHVwIHRvIChHQlCjMTUuNSkgTWlsbGlvbiBCcml0aXNoIFBvdW5kcyBh
+cmUKY3VycmVudGx5IGluIG91ciBjbGllbnQgc2VncmVnYXRlZCBhY2NvdW50IGluIHJlbGF0aW9u
+IHRvIG9uZSBvZiBvdXIKcHJpdmF0ZSBjbGllbnRzIGxhdGUgKERlY2Vhc2VkKSB3aG8gcGFzc2Vk
+IGF3YXkgNSB5ZWFycyBhZ28uIEhlbmNlLCB0aGUKcmVhc29uIHdoeSBJIGhhdmUgY29udGFjdGVk
+IHlvdSBpcyBiZWNhdXNlIHlvdSBzaGFyZSB0aGUgc2FtZSBuYW1lCndpdGggdGhlIGRlY2Vhc2Vk
+IHdoaWNoIGlzIHZlcnkgaW1wb3J0YW50IGluIHNlY3VyaW5nIHRoZSBhYm92ZQptZW50aW9uZWQg
+ZnVuZHMuCgpUaGVzZSBmdW5kcyBhcmUgaGVsZCB3aXRoIG91ciBwcmltZSBicm9rZXJzIHdoaWNo
+IGlzIGFuIG9mZnNob3JlIGJhbmsKaGVyZSBpbiB0aGUgVUsuIFdpdGggeW91ciBwZXJtaXNzaW9u
+LCBJIHNoYWxsIGdpdmUgc3RlcCBieSBzdGVwCmV4cGxhbmF0aW9uIG9uIHdoeSBJIG5lZWQgeW91
+ciBhc3Npc3RhbmNlIGFuZCBhbHNvIHRoZSBzb3VyY2Ugb2YKZnVuZHMuIEZ1cnRoZXIgaW5mb3Jt
+YXRpb24gb24gaG93IHdlIHNoYWxsIHByb2NlZWQgbGVnYWxseSB0byBvYnRhaW4KVGhlc2UgZnVu
+ZHMgd2lsbCBiZSBwcm92aWRlZCBpbiBkdWUgY291cnNlIG9uY2UgSSBhc2NlcnRhaW4geW91cgpn
+ZW51aW5lIGludGVudGlvbnMgYW5kIHdpbGxpbmduZXNzIHRvIGFzc2lzdC4KClNob3VsZCB5b3Ug
+YmUgaW50ZXJlc3RlZCwgdGhlbiBJIHdvdWxkIGxpa2UgdG8gaGVhciBmcm9tIHlvdSBhcwpzb29u
+IGFzIHBvc3NpYmxlIHZpYSBteSBFbWFpbDpqYW5mcmFuc3NlbkBjb3Vuc2VsbG9yLmNvbSB0byBl
+bmFibGUgbWUKcHJvdmlkZSB5b3Ugd2l0aCBtb3JlIGRldGFpbHMgb24gaG93IHdlIGFyZSB0byBw
+cm9jZWVkLiBJIGFudGljaXBhdGUKYW5kIGxvb2sgZm9yd2FyZCB0byBhIHN1Y2Nlc3NmdWwgYnVz
+aW5lc3MgcmVsYXRpb25zaGlwIHdpdGggeW91LgoKWW91cnMgZmFpdGhmdWxseQpNci5KYW4gRnJh
+bnNzZW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2
+ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZl
+cmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRl
+dmVsCg==
