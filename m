@@ -1,48 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BF753D1999
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 00:15:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0B153D1990
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 00:09:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 68C8C82C8E;
-	Wed, 21 Jul 2021 22:15:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1991240151;
+	Wed, 21 Jul 2021 22:08:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7-QUfyCEkWNS; Wed, 21 Jul 2021 22:15:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cwOgnbpUpHMX; Wed, 21 Jul 2021 22:08:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CDFA582C8F;
-	Wed, 21 Jul 2021 22:15:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A8B9840185;
+	Wed, 21 Jul 2021 22:08:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C439B1BF859
- for <devel@linuxdriverproject.org>; Wed, 21 Jul 2021 22:15:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 952B81BF3D4
+ for <devel@linuxdriverproject.org>; Wed, 21 Jul 2021 22:08:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C0E726062A
- for <devel@linuxdriverproject.org>; Wed, 21 Jul 2021 22:15:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 84B38400F3
+ for <devel@linuxdriverproject.org>; Wed, 21 Jul 2021 22:08:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DjgVUD_js_VX for <devel@linuxdriverproject.org>;
- Wed, 21 Jul 2021 22:15:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.ahylz.com.cn (unknown [220.248.243.245])
- by smtp3.osuosl.org (Postfix) with ESMTP id CE907605CB
- for <devel@driverdev.osuosl.org>; Wed, 21 Jul 2021 22:15:21 +0000 (UTC)
-Received: from User (unknown [83.137.2.201])
- by mail.ahylz.com.cn (Postfix - by ahylz.com.cn) with ESMTPA id 217CD13134F7; 
- Thu, 22 Jul 2021 05:13:16 +0800 (HKT)
-From: "Jan Franssen"<myyang@ahylz.com.cn>
-Subject: GREETHINGS
-Date: Wed, 21 Jul 2021 23:13:53 +0200
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xMPlOI24kCyy for <devel@linuxdriverproject.org>;
+ Wed, 21 Jul 2021 22:08:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B3140400E1
+ for <devel@driverdev.osuosl.org>; Wed, 21 Jul 2021 22:08:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10052"; a="208408557"
+X-IronPort-AV: E=Sophos;i="5.84,258,1620716400"; d="scan'208";a="208408557"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jul 2021 15:08:40 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,258,1620716400"; d="scan'208";a="662266921"
+Received: from lkp-server01.sh.intel.com (HELO b8b92b2878b0) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 21 Jul 2021 15:08:38 -0700
+Received: from kbuild by b8b92b2878b0 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1m6KOM-0000dx-8X; Wed, 21 Jul 2021 22:08:38 +0000
+Date: Thu, 22 Jul 2021 06:07:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:greybus] BUILD REGRESSION
+ 4b5f28cff45f83ee9e8b851f0e7ff5852ca13878
+Message-ID: <60f89ab6.AsQyhiMKnhLsrsLk%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210721221524.C0E726062A@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,40 +63,211 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: janfranssen@counsellor.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBTaXIsCgpNeSBuYW1lIGlzIE1yLiBKYW4gRnJhbnNzZW4sIENoaWVmIEZpbmFuY2lhbCBP
-ZmZpY2VyLApBTUUgQ2FwaXRhbCBBc3NldCBNYW5hZ2VtZW50IExpbWl0ZWQgaGVyZSBpbiBMb25k
-b24sIFVuaXRlZCBLaW5nZG9tOyBJCmhhdmUgVVJHRU5UIGFuZCBkaXNjcmVldCBidXNpbmVzcyBw
-cm9wb3NhbCBmb3IgeW91IHRoYXQgc2hhbGwgYmVuZWZpdAp1cyBpbW1lbnNlbHkgc2hvdWxkIHlv
-dSBjaG9vc2UgdG8gcGFydGljaXBhdGUgb3IgcGFydG5lciB3aXRoIG1lLgoKQmVmb3JlIEkgcmV2
-ZWFsIGFueSBzZW5zaXRpdmUgaW5mb3JtYXRpb24gaXQgaXMgaW1wb3J0YW50IEkgc3RhdGUKY2F0
-ZWdvcmljYWxseSB0aGF0LCBhbGwgcHJpdmlsZWdlIGluZm9ybWF0aW9uIGNvbmNlcm5pbmcgbXkg
-cHJvcG9zYWwKYW5kIHRoaXMgYnVzaW5lc3MgdHJhbnNhY3Rpb24gaXMgdHJlYXRlZCB3aXRoIHV0
-bW9zdCBjb25maWRlbnRpYWxpdHkKZHVlIHRvIHRoZSBzb3VyY2Ugb2YgZnVuZHMuCgpUaGVzZSBm
-dW5kcyB3aGljaCBzdW1zIHVwIHRvIChHQlCjMTUuNSkgTWlsbGlvbiBCcml0aXNoIFBvdW5kcyBh
-cmUKY3VycmVudGx5IGluIG91ciBjbGllbnQgc2VncmVnYXRlZCBhY2NvdW50IGluIHJlbGF0aW9u
-IHRvIG9uZSBvZiBvdXIKcHJpdmF0ZSBjbGllbnRzIGxhdGUgKERlY2Vhc2VkKSB3aG8gcGFzc2Vk
-IGF3YXkgNSB5ZWFycyBhZ28uIEhlbmNlLCB0aGUKcmVhc29uIHdoeSBJIGhhdmUgY29udGFjdGVk
-IHlvdSBpcyBiZWNhdXNlIHlvdSBzaGFyZSB0aGUgc2FtZSBuYW1lCndpdGggdGhlIGRlY2Vhc2Vk
-IHdoaWNoIGlzIHZlcnkgaW1wb3J0YW50IGluIHNlY3VyaW5nIHRoZSBhYm92ZQptZW50aW9uZWQg
-ZnVuZHMuCgpUaGVzZSBmdW5kcyBhcmUgaGVsZCB3aXRoIG91ciBwcmltZSBicm9rZXJzIHdoaWNo
-IGlzIGFuIG9mZnNob3JlIGJhbmsKaGVyZSBpbiB0aGUgVUsuIFdpdGggeW91ciBwZXJtaXNzaW9u
-LCBJIHNoYWxsIGdpdmUgc3RlcCBieSBzdGVwCmV4cGxhbmF0aW9uIG9uIHdoeSBJIG5lZWQgeW91
-ciBhc3Npc3RhbmNlIGFuZCBhbHNvIHRoZSBzb3VyY2Ugb2YKZnVuZHMuIEZ1cnRoZXIgaW5mb3Jt
-YXRpb24gb24gaG93IHdlIHNoYWxsIHByb2NlZWQgbGVnYWxseSB0byBvYnRhaW4KVGhlc2UgZnVu
-ZHMgd2lsbCBiZSBwcm92aWRlZCBpbiBkdWUgY291cnNlIG9uY2UgSSBhc2NlcnRhaW4geW91cgpn
-ZW51aW5lIGludGVudGlvbnMgYW5kIHdpbGxpbmduZXNzIHRvIGFzc2lzdC4KClNob3VsZCB5b3Ug
-YmUgaW50ZXJlc3RlZCwgdGhlbiBJIHdvdWxkIGxpa2UgdG8gaGVhciBmcm9tIHlvdSBhcwpzb29u
-IGFzIHBvc3NpYmxlIHZpYSBteSBFbWFpbDpqYW5mcmFuc3NlbkBjb3Vuc2VsbG9yLmNvbSB0byBl
-bmFibGUgbWUKcHJvdmlkZSB5b3Ugd2l0aCBtb3JlIGRldGFpbHMgb24gaG93IHdlIGFyZSB0byBw
-cm9jZWVkLiBJIGFudGljaXBhdGUKYW5kIGxvb2sgZm9yd2FyZCB0byBhIHN1Y2Nlc3NmdWwgYnVz
-aW5lc3MgcmVsYXRpb25zaGlwIHdpdGggeW91LgoKWW91cnMgZmFpdGhmdWxseQpNci5KYW4gRnJh
-bnNzZW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2
-ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZl
-cmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRl
-dmVsCg==
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git greybus
+branch HEAD: 4b5f28cff45f83ee9e8b851f0e7ff5852ca13878  staging: greybus: vibrator: rip out custom sysfs api
+
+Error/Warning reports:
+
+https://lore.kernel.org/lkml/202107210115.dvGDuUgI-lkp@intel.com
+https://lore.kernel.org/lkml/202107210327.RX2PxgNC-lkp@intel.com
+
+Error/Warning in current branch:
+
+ERROR: modpost: "input_ff_create_memless" [drivers/staging/greybus/gb-vibrator.ko] undefined!
+ERROR: modpost: "input_set_capability" [drivers/staging/greybus/gb-vibrator.ko] undefined!
+vibrator.c:(.text+0x44b): undefined reference to `input_ff_create_memless'
+
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- csky-randconfig-r011-20210720
+|   |-- ERROR:input_ff_create_memless-drivers-staging-greybus-gb-vibrator.ko-undefined
+|   `-- ERROR:input_set_capability-drivers-staging-greybus-gb-vibrator.ko-undefined
+`-- i386-randconfig-a013-20210720
+    `-- vibrator.c:(.text):undefined-reference-to-input_ff_create_memless
+
+clang_recent_errors
+`-- x86_64-randconfig-b001-20210720
+
+elapsed time: 2070m
+
+configs tested: 160
+configs skipped: 3
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+sh                           se7750_defconfig
+sh                          rsk7269_defconfig
+mips                      bmips_stb_defconfig
+arm                           h5000_defconfig
+arm                         lpc18xx_defconfig
+x86_64                           allyesconfig
+sh                           se7724_defconfig
+powerpc                      acadia_defconfig
+mips                      pistachio_defconfig
+mips                         tb0287_defconfig
+arm                         hackkit_defconfig
+powerpc                     powernv_defconfig
+sh                        sh7763rdp_defconfig
+powerpc                     tqm8560_defconfig
+powerpc                     skiroot_defconfig
+arm                             pxa_defconfig
+powerpc                 mpc8272_ads_defconfig
+powerpc                     tqm8555_defconfig
+arm                        keystone_defconfig
+riscv                             allnoconfig
+m68k                        stmark2_defconfig
+powerpc                  storcenter_defconfig
+powerpc                     tqm8548_defconfig
+arm                        multi_v5_defconfig
+mips                          ath25_defconfig
+sh                           se7721_defconfig
+ia64                             allmodconfig
+arm                           corgi_defconfig
+powerpc                 linkstation_defconfig
+m68k                        m5407c3_defconfig
+sh                   secureedge5410_defconfig
+powerpc                     sequoia_defconfig
+m68k                       m5208evb_defconfig
+arm                           sama5_defconfig
+mips                       rbtx49xx_defconfig
+powerpc                     mpc5200_defconfig
+powerpc               mpc834x_itxgp_defconfig
+sh                         apsh4a3a_defconfig
+arm                             mxs_defconfig
+arm                          pcm027_defconfig
+arm                           tegra_defconfig
+arm                         bcm2835_defconfig
+powerpc                      mgcoge_defconfig
+ia64                                defconfig
+riscv                            alldefconfig
+microblaze                          defconfig
+m68k                                defconfig
+parisc                generic-64bit_defconfig
+arm                           stm32_defconfig
+arm                         vf610m4_defconfig
+x86_64                            allnoconfig
+mips                  cavium_octeon_defconfig
+powerpc                      chrp32_defconfig
+m68k                        mvme16x_defconfig
+powerpc                       holly_defconfig
+powerpc                      katmai_defconfig
+mips                         mpc30x_defconfig
+m68k                             alldefconfig
+sh                          urquell_defconfig
+sh                   sh7724_generic_defconfig
+sh                           se7343_defconfig
+xtensa                generic_kc705_defconfig
+sh                   sh7770_generic_defconfig
+arm                        multi_v7_defconfig
+powerpc                     rainier_defconfig
+xtensa                    smp_lx200_defconfig
+riscv                          rv32_defconfig
+mips                           ip22_defconfig
+arm                           spitz_defconfig
+powerpc                        warp_defconfig
+powerpc                     tqm8540_defconfig
+arm                          simpad_defconfig
+sh                          landisk_defconfig
+arm                         socfpga_defconfig
+powerpc64                           defconfig
+powerpc                      cm5200_defconfig
+arm                         palmz72_defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a003-20210720
+x86_64               randconfig-a006-20210720
+x86_64               randconfig-a001-20210720
+x86_64               randconfig-a005-20210720
+x86_64               randconfig-a004-20210720
+x86_64               randconfig-a002-20210720
+i386                 randconfig-a005-20210720
+i386                 randconfig-a003-20210720
+i386                 randconfig-a004-20210720
+i386                 randconfig-a002-20210720
+i386                 randconfig-a001-20210720
+i386                 randconfig-a006-20210720
+i386                 randconfig-a004-20210719
+i386                 randconfig-a006-20210719
+i386                 randconfig-a003-20210719
+i386                 randconfig-a002-20210719
+i386                 randconfig-a001-20210719
+i386                 randconfig-a005-20210719
+i386                 randconfig-a016-20210720
+i386                 randconfig-a013-20210720
+i386                 randconfig-a012-20210720
+i386                 randconfig-a014-20210720
+i386                 randconfig-a011-20210720
+i386                 randconfig-a015-20210720
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-b001-20210720
+x86_64               randconfig-a003-20210721
+x86_64               randconfig-a006-20210721
+x86_64               randconfig-a001-20210721
+x86_64               randconfig-a005-20210721
+x86_64               randconfig-a004-20210721
+x86_64               randconfig-a002-20210721
+x86_64               randconfig-a011-20210720
+x86_64               randconfig-a016-20210720
+x86_64               randconfig-a013-20210720
+x86_64               randconfig-a014-20210720
+x86_64               randconfig-a012-20210720
+x86_64               randconfig-a015-20210720
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
