@@ -1,48 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C431C3D2673
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 17:20:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE8093D2724
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 17:58:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1FB27833A3;
-	Thu, 22 Jul 2021 15:20:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D0E646063D;
+	Thu, 22 Jul 2021 15:58:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t0X7-npD4uUH; Thu, 22 Jul 2021 15:20:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zBimjXRXvrnu; Thu, 22 Jul 2021 15:58:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 283358343B;
-	Thu, 22 Jul 2021 15:20:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A310260585;
+	Thu, 22 Jul 2021 15:58:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4C0A01BF3F4
- for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 15:19:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CEB911BF3F4
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 15:57:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4868940140
- for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 15:19:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BB003405D5
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 15:57:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LXE6cOvUzmLH for <devel@linuxdriverproject.org>;
- Thu, 22 Jul 2021 15:19:55 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.ahylz.com.cn (unknown [220.248.243.245])
- by smtp2.osuosl.org (Postfix) with ESMTP id F3339400DF
- for <devel@driverdev.osuosl.org>; Thu, 22 Jul 2021 15:19:54 +0000 (UTC)
-Received: from User (unknown [83.137.2.201])
- by mail.ahylz.com.cn (Postfix - by ahylz.com.cn) with ESMTPA id 7DEF71314BA6; 
- Thu, 22 Jul 2021 22:41:23 +0800 (HKT)
-From: "Jan Franssen"<myyang@ahylz.com.cn>
-Subject: GREETHINGS!!!
-Date: Thu, 22 Jul 2021 16:42:00 +0200
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IFkFzp8MG40i for <devel@linuxdriverproject.org>;
+ Thu, 22 Jul 2021 15:57:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4403B405D4
+ for <devel@driverdev.osuosl.org>; Thu, 22 Jul 2021 15:57:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10053"; a="211737739"
+X-IronPort-AV: E=Sophos;i="5.84,261,1620716400"; d="scan'208";a="211737739"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jul 2021 08:57:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,261,1620716400"; d="scan'208";a="433175056"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 22 Jul 2021 08:57:55 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1m6b58-0000TW-DS; Thu, 22 Jul 2021 15:57:54 +0000
+Date: Thu, 22 Jul 2021 23:57:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ cb7abd1db6e5f99a05f1a00b65be29029a6a152a
+Message-ID: <60f9957d.K0EKihr4qT1nb2Yd%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210722151956.4868940140@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,45 +63,191 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: janfranssen@counsellor.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ear Sir,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-linus
+branch HEAD: cb7abd1db6e5f99a05f1a00b65be29029a6a152a  staging: rtl8723bs: select CONFIG_CRYPTO_LIB_ARC4
 
-My name is Mr. Jan Franssen, Chief Financial Officer,
-AME Capital Asset Management Limited here in London, United Kingdom; I
-have URGENT and discreet business proposal for you that shall benefit
-us immensely should you choose to participate or partner with me.
+elapsed time: 1394m
 
-Before I reveal any sensitive information it is important I state
-categorically that, all privilege information concerning my proposal
-and this business transaction is treated with utmost confidentiality
-due to the source of funds.
+configs tested: 161
+configs skipped: 3
 
-These funds which sums up to (GBP?15.5) Million British Pounds are
-currently in our client segregated account in relation to one of our
-private clients late (Deceased) who passed away 5 years ago. Hence, the
-reason why I have contacted you is because you share the same name
-with the deceased which is very important in securing the above
-mentioned funds.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-These funds are held with our prime brokers which is an offshore bank
-here in the UK. With your permission, I shall give step by step
-explanation on why I need your assistance and also the source of
-funds. Further information on how we shall proceed legally to obtain
-These funds will be provided in due course once I ascertain your
-genuine intentions and willingness to assist.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210720
+i386                 randconfig-c001-20210722
+um                           x86_64_defconfig
+riscv                            allyesconfig
+mips                             allyesconfig
+um                             i386_defconfig
+mips                             allmodconfig
+riscv                            allmodconfig
+arc                              allyesconfig
+nios2                            allyesconfig
+alpha                            allyesconfig
+powerpc                       ebony_defconfig
+powerpc                      bamboo_defconfig
+arm                      integrator_defconfig
+arm                        multi_v7_defconfig
+mips                           jazz_defconfig
+sh                          sdk7786_defconfig
+arm                           stm32_defconfig
+arm                           viper_defconfig
+mips                        vocore2_defconfig
+sh                          rsk7201_defconfig
+powerpc                         ps3_defconfig
+m68k                         apollo_defconfig
+sparc                            alldefconfig
+mips                           ci20_defconfig
+sh                          lboxre2_defconfig
+arm                           sama5_defconfig
+arm                             mxs_defconfig
+arm                       aspeed_g5_defconfig
+powerpc                      ppc64e_defconfig
+arm                            xcep_defconfig
+powerpc                 mpc834x_mds_defconfig
+mips                         tb0287_defconfig
+sh                            titan_defconfig
+arc                        nsim_700_defconfig
+riscv                          rv32_defconfig
+m68k                        m5407c3_defconfig
+arm                        realview_defconfig
+arm                            dove_defconfig
+arm                  colibri_pxa270_defconfig
+openrisc                 simple_smp_defconfig
+arm                           u8500_defconfig
+arm                         vf610m4_defconfig
+h8300                               defconfig
+arm                              alldefconfig
+powerpc                  mpc866_ads_defconfig
+nds32                               defconfig
+m68k                       m5475evb_defconfig
+arm                        spear6xx_defconfig
+powerpc                   currituck_defconfig
+nds32                            alldefconfig
+arm                             pxa_defconfig
+mips                           ip27_defconfig
+sh                           se7751_defconfig
+mips                           xway_defconfig
+arm                        mvebu_v7_defconfig
+arm                       omap2plus_defconfig
+arm                            qcom_defconfig
+arm                           h3600_defconfig
+arm                         lpc32xx_defconfig
+arm                       spear13xx_defconfig
+microblaze                          defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+x86_64                            allnoconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a003-20210720
+x86_64               randconfig-a006-20210720
+x86_64               randconfig-a001-20210720
+x86_64               randconfig-a005-20210720
+x86_64               randconfig-a004-20210720
+x86_64               randconfig-a002-20210720
+x86_64               randconfig-a003-20210722
+x86_64               randconfig-a006-20210722
+x86_64               randconfig-a001-20210722
+x86_64               randconfig-a005-20210722
+x86_64               randconfig-a004-20210722
+x86_64               randconfig-a002-20210722
+i386                 randconfig-a005-20210722
+i386                 randconfig-a003-20210722
+i386                 randconfig-a004-20210722
+i386                 randconfig-a002-20210722
+i386                 randconfig-a001-20210722
+i386                 randconfig-a006-20210722
+i386                 randconfig-a005-20210720
+i386                 randconfig-a003-20210720
+i386                 randconfig-a004-20210720
+i386                 randconfig-a002-20210720
+i386                 randconfig-a001-20210720
+i386                 randconfig-a006-20210720
+i386                 randconfig-a005-20210719
+i386                 randconfig-a004-20210719
+i386                 randconfig-a006-20210719
+i386                 randconfig-a001-20210719
+i386                 randconfig-a003-20210719
+i386                 randconfig-a002-20210719
+i386                 randconfig-a016-20210722
+i386                 randconfig-a013-20210722
+i386                 randconfig-a012-20210722
+i386                 randconfig-a011-20210722
+i386                 randconfig-a014-20210722
+i386                 randconfig-a015-20210722
+i386                 randconfig-a016-20210720
+i386                 randconfig-a013-20210720
+i386                 randconfig-a012-20210720
+i386                 randconfig-a014-20210720
+i386                 randconfig-a011-20210720
+i386                 randconfig-a015-20210720
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                      rhel-8.3-kbuiltin
 
-Should you be interested, then I would like to hear from you as
-soon as possible via my Email:janfranssen@counsellor.com to enable me
-provide you with more details on how we are to proceed. I anticipate
-and look forward to a successful business relationship with you.
+clang tested configs:
+x86_64               randconfig-c001-20210722
+x86_64               randconfig-b001-20210720
+x86_64               randconfig-b001-20210722
+x86_64               randconfig-a011-20210722
+x86_64               randconfig-a016-20210722
+x86_64               randconfig-a013-20210722
+x86_64               randconfig-a014-20210722
+x86_64               randconfig-a012-20210722
+x86_64               randconfig-a015-20210722
+x86_64               randconfig-a003-20210721
+x86_64               randconfig-a006-20210721
+x86_64               randconfig-a001-20210721
+x86_64               randconfig-a005-20210721
+x86_64               randconfig-a004-20210721
+x86_64               randconfig-a002-20210721
 
-Yours faithfully
-Mr.Jan Franssen
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
