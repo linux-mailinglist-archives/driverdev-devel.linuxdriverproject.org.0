@@ -1,48 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9299E3D1B91
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 03:56:21 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D5EC3D1C57
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 05:19:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 90884607A4;
-	Thu, 22 Jul 2021 01:56:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 52A754036D;
+	Thu, 22 Jul 2021 03:19:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Grq1lGNrYyb1; Thu, 22 Jul 2021 01:56:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FiycHHW6O0RV; Thu, 22 Jul 2021 03:19:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DFF0B606F3;
-	Thu, 22 Jul 2021 01:56:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5D07F402D2;
+	Thu, 22 Jul 2021 03:19:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 00F131BF309
- for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 01:56:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 367541BF990
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 03:19:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F14B4606F3
- for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 01:56:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 32180402D2
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 03:19:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lv8vxv7wUpgC for <devel@linuxdriverproject.org>;
- Thu, 22 Jul 2021 01:56:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XVR8QP2zP5pr for <devel@linuxdriverproject.org>;
+ Thu, 22 Jul 2021 03:19:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.ahylz.com.cn (unknown [220.248.243.245])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7F88560614
- for <devel@driverdev.osuosl.org>; Thu, 22 Jul 2021 01:56:01 +0000 (UTC)
-Received: from User (unknown [83.137.2.201])
- by mail.ahylz.com.cn (Postfix - by ahylz.com.cn) with ESMTPA id 26E1C1313C02; 
- Thu, 22 Jul 2021 08:42:52 +0800 (HKT)
-From: "Jan Franssen"<myyang@ahylz.com.cn>
-Subject: GREETHINGS
-Date: Thu, 22 Jul 2021 02:43:29 +0200
+Received: from j-hk.live (j-hk.live [106.75.224.197])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 602AC402B5
+ for <devel@driverdev.osuosl.org>; Thu, 22 Jul 2021 03:19:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=j-hk.live;
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To;
+ i=sales@j-hk.live; bh=Sfu7V8C9Hj2WJhW3gOLgk7xFFvY=;
+ b=ONH3D2tpCacJBD3gAc7DcTEqXzVop1FxRrqkZi3M4VkFNEp+UYpPuB34vG5Zq2bWAzrPzYVbQzKd
+ uZNa/+Ci0EZfgEH5jcGlYKpj4nPi6FcBYRIujB/M3+drdyC9ByzCuc/WHBUf2bby/v0Jb5VYKvxw
+ EEkLjmOs/bzsggx/s/8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=default; d=j-hk.live;
+ b=Z2HnJscUKPf7Km0bpVNVqjNPq5o8A71S9yz3y22oyIXV5pJRZO1QB7msJ6pk6xu+uXE9zJs57UgH
+ 1yoCzGpRMpU4iuA5XRroOU5Nk4kiEkTLxaoJtGvW7auq4mWJmQONb2E/NofbdNY6wXYCq3S84qBE
+ HQ172hffe5Ntb/dhgzg=;
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210722015607.F14B4606F3@smtp3.osuosl.org>
+Content-Description: Mail message body
+Subject: br
+To: devel@driverdev.osuosl.org
+From: sales@j-hk.live
+Date: Thu, 22 Jul 2021 11:19:34 +0800
+Message-Id: <20210722031939.32180402D2@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,40 +60,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: janfranssen@counsellor.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: cjacksonjr494@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBTaXIsCgpNeSBuYW1lIGlzIE1yLiBKYW4gRnJhbnNzZW4sIENoaWVmIEZpbmFuY2lhbCBP
-ZmZpY2VyLApBTUUgQ2FwaXRhbCBBc3NldCBNYW5hZ2VtZW50IExpbWl0ZWQgaGVyZSBpbiBMb25k
-b24sIFVuaXRlZCBLaW5nZG9tOyBJCmhhdmUgVVJHRU5UIGFuZCBkaXNjcmVldCBidXNpbmVzcyBw
-cm9wb3NhbCBmb3IgeW91IHRoYXQgc2hhbGwgYmVuZWZpdAp1cyBpbW1lbnNlbHkgc2hvdWxkIHlv
-dSBjaG9vc2UgdG8gcGFydGljaXBhdGUgb3IgcGFydG5lciB3aXRoIG1lLgoKQmVmb3JlIEkgcmV2
-ZWFsIGFueSBzZW5zaXRpdmUgaW5mb3JtYXRpb24gaXQgaXMgaW1wb3J0YW50IEkgc3RhdGUKY2F0
-ZWdvcmljYWxseSB0aGF0LCBhbGwgcHJpdmlsZWdlIGluZm9ybWF0aW9uIGNvbmNlcm5pbmcgbXkg
-cHJvcG9zYWwKYW5kIHRoaXMgYnVzaW5lc3MgdHJhbnNhY3Rpb24gaXMgdHJlYXRlZCB3aXRoIHV0
-bW9zdCBjb25maWRlbnRpYWxpdHkKZHVlIHRvIHRoZSBzb3VyY2Ugb2YgZnVuZHMuCgpUaGVzZSBm
-dW5kcyB3aGljaCBzdW1zIHVwIHRvIChHQlCjMTUuNSkgTWlsbGlvbiBCcml0aXNoIFBvdW5kcyBh
-cmUKY3VycmVudGx5IGluIG91ciBjbGllbnQgc2VncmVnYXRlZCBhY2NvdW50IGluIHJlbGF0aW9u
-IHRvIG9uZSBvZiBvdXIKcHJpdmF0ZSBjbGllbnRzIGxhdGUgKERlY2Vhc2VkKSB3aG8gcGFzc2Vk
-IGF3YXkgNSB5ZWFycyBhZ28uIEhlbmNlLCB0aGUKcmVhc29uIHdoeSBJIGhhdmUgY29udGFjdGVk
-IHlvdSBpcyBiZWNhdXNlIHlvdSBzaGFyZSB0aGUgc2FtZSBuYW1lCndpdGggdGhlIGRlY2Vhc2Vk
-IHdoaWNoIGlzIHZlcnkgaW1wb3J0YW50IGluIHNlY3VyaW5nIHRoZSBhYm92ZQptZW50aW9uZWQg
-ZnVuZHMuCgpUaGVzZSBmdW5kcyBhcmUgaGVsZCB3aXRoIG91ciBwcmltZSBicm9rZXJzIHdoaWNo
-IGlzIGFuIG9mZnNob3JlIGJhbmsKaGVyZSBpbiB0aGUgVUsuIFdpdGggeW91ciBwZXJtaXNzaW9u
-LCBJIHNoYWxsIGdpdmUgc3RlcCBieSBzdGVwCmV4cGxhbmF0aW9uIG9uIHdoeSBJIG5lZWQgeW91
-ciBhc3Npc3RhbmNlIGFuZCBhbHNvIHRoZSBzb3VyY2Ugb2YKZnVuZHMuIEZ1cnRoZXIgaW5mb3Jt
-YXRpb24gb24gaG93IHdlIHNoYWxsIHByb2NlZWQgbGVnYWxseSB0byBvYnRhaW4KVGhlc2UgZnVu
-ZHMgd2lsbCBiZSBwcm92aWRlZCBpbiBkdWUgY291cnNlIG9uY2UgSSBhc2NlcnRhaW4geW91cgpn
-ZW51aW5lIGludGVudGlvbnMgYW5kIHdpbGxpbmduZXNzIHRvIGFzc2lzdC4KClNob3VsZCB5b3Ug
-YmUgaW50ZXJlc3RlZCwgdGhlbiBJIHdvdWxkIGxpa2UgdG8gaGVhciBmcm9tIHlvdSBhcwpzb29u
-IGFzIHBvc3NpYmxlIHZpYSBteSBFbWFpbDpqYW5mcmFuc3NlbkBjb3Vuc2VsbG9yLmNvbSB0byBl
-bmFibGUgbWUKcHJvdmlkZSB5b3Ugd2l0aCBtb3JlIGRldGFpbHMgb24gaG93IHdlIGFyZSB0byBw
-cm9jZWVkLiBJIGFudGljaXBhdGUKYW5kIGxvb2sgZm9yd2FyZCB0byBhIHN1Y2Nlc3NmdWwgYnVz
-aW5lc3MgcmVsYXRpb25zaGlwIHdpdGggeW91LgoKWW91cnMgZmFpdGhmdWxseQpNci5KYW4gRnJh
-bnNzZW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2
-ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZl
-cmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRl
-dmVsCg==
+this email address active? We sent you a message earlier in regard to the c=
+laim of your donation of 2.8Millions EURO, Please confirm your email and co=
+ntact us via EMail
+----------------------------------------
+diese E-Mail-Adresse aktiv? Wir haben Ihnen zuvor eine Nachricht bez=FCglic=
+h der Inanspruchnahme Ihrer Spende von 2,8 Millionen EURO gesendet. Bitte b=
+est=E4tigen Sie Ihre E-Mail und kontaktieren Sie uns per EMail
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
