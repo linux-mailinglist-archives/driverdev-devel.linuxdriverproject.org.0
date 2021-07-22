@@ -1,55 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CAB23D1D29
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 06:54:37 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49F403D1E76
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Jul 2021 08:46:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1D8EA40218;
-	Thu, 22 Jul 2021 04:54:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C8D4A60AD1;
+	Thu, 22 Jul 2021 06:46:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zATCbZnOE2yh; Thu, 22 Jul 2021 04:54:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HbCD_89SEL7o; Thu, 22 Jul 2021 06:46:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2D7F940156;
-	Thu, 22 Jul 2021 04:54:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2C959607D1;
+	Thu, 22 Jul 2021 06:46:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8212B1BF39F
- for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 04:54:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4FCFC1BF853
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 06:45:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6FDC8401E5
- for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 04:54:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4B6D4607D1
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 06:45:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6Rc8b2J3DLcJ for <devel@linuxdriverproject.org>;
- Thu, 22 Jul 2021 04:54:20 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6D9B9401D5
- for <devel@driverdev.osuosl.org>; Thu, 22 Jul 2021 04:54:20 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10052"; a="209667024"
-X-IronPort-AV: E=Sophos;i="5.84,260,1620716400"; d="scan'208";a="209667024"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jul 2021 21:54:18 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,260,1620716400"; d="scan'208";a="658675646"
-Received: from lkp-server01.sh.intel.com (HELO b8b92b2878b0) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 21 Jul 2021 21:54:16 -0700
-Received: from kbuild by b8b92b2878b0 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1m6Qiu-0000rn-9m; Thu, 22 Jul 2021 04:54:16 +0000
-Date: Thu, 22 Jul 2021 12:53:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-linus] BUILD SUCCESS
- e64daad660a0c9ace3acdc57099fffe5ed83f977
-Message-ID: <60f8f9da.+deqbscK4tIUAxjr%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id s1b46YMC8XJW for <devel@linuxdriverproject.org>;
+ Thu, 22 Jul 2021 06:45:58 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
+ [IPv6:2607:f8b0:4864:20::634])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0AB80607A7
+ for <devel@linuxdriverproject.org>; Thu, 22 Jul 2021 06:45:57 +0000 (UTC)
+Received: by mail-pl1-x634.google.com with SMTP id b12so3350152plh.10
+ for <devel@linuxdriverproject.org>; Wed, 21 Jul 2021 23:45:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=fw3QO0Ew1JZY9jnJW7me+DwKMzS227iyDtJpX04hNio=;
+ b=GggpUqKC4Sw2Ojb8zCBwz+j86/6MTuQg6FtyKIxj8MqZqj38K0CS3jgQzzlqM9EMhr
+ 2lBKXQpCJ07xU+N8evg9ox01V/L8l3EQQL8eTxwLxw/CaW9HqmJLgZTE+GmJPaYQUhPG
+ XVI9OlbDPF6Or4g1Ffkf9n+TnahSfTu48+XsJ6Rk/0L5JwwN5wzF++cH09EFg3Y8DyQa
+ tUp24zBfoaWxuif0uevvdzCzBBQ+gmQNLxJ20BnTVv0bRW2FOvSani/oGxA/xakLwgV2
+ W7QDnPmor1qItOV0gUExVWbNtH9H+V3Ykgg+tjM7RqhFd62eooIbVREl3Oy2CjnRDs82
+ P8xQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=fw3QO0Ew1JZY9jnJW7me+DwKMzS227iyDtJpX04hNio=;
+ b=WUDjmpa0P5bZpxHvm1yuQi0evH4QyEFzlv9Uo1FNrgBBbJ0hh6lVB1IvseWYLw9QQv
+ 8tzO9ypmuHwFJD5SepQdG4dsUFNMhliN1IKIbv1bAP9fQDA4MCdGmStyihgToaQuxASn
+ rrTdalEV6/aSdXSPdAtKDoiFQYdQ/f8TKeJ+5FSBNQlLLFP37zdrZokfKmcPplVhCIuy
+ ubQ3SlJIcYRJjIplYJJjAV7VGV202abvjQaDdW+x3uL50w4kn02gY+sWmJdYNw9nfZ79
+ ChAo+/aovHK3CRgojJHFcXTFyplqhynZeRkka8ZxfVEcwpmSfgE3QKlCiU/+PHNqYDcv
+ DxQw==
+X-Gm-Message-State: AOAM531SUM+Yr7qdd2yx0Q3gp/3KhfKvcocAIjV3gVuzlMMBFFvxkGuj
+ cr7KxzsCbqWLDCNZsH6klr8=
+X-Google-Smtp-Source: ABdhPJz6jj2dk3kdEDEqnPpzBRT9KXR7wQc33gzWSnhSDJbmSnzibeMN/IKcy/Gp0OsOtrHARGyKhA==
+X-Received: by 2002:a63:358:: with SMTP id 85mr3258325pgd.258.1626936357431;
+ Wed, 21 Jul 2021 23:45:57 -0700 (PDT)
+Received: from localhost.localdomain ([2402:e280:2130:198:9b25:1cfb:9ff3:2a8f])
+ by smtp.gmail.com with ESMTPSA id 2sm33733194pgz.26.2021.07.21.23.45.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Jul 2021 23:45:56 -0700 (PDT)
+From: Benjamin Philip <benjamin.philip495@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH v2] staging: rtl8188eu: remove unnecessary blank lines in
+ core/rtw_ap.c
+Date: Thu, 22 Jul 2021 12:14:51 +0530
+Message-Id: <20210722064451.10331-1-benjamin.philip495@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -63,170 +85,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel mailing list <devel@linuxdriverproject.org>,
+ Benjamin Philip <benjamin.philip495@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-linus
-branch HEAD: e64daad660a0c9ace3acdc57099fffe5ed83f977  driver core: Prevent warning when removing a device link from unregistered consumer
+This commit fixes some checkpatch checks for blank lines before
+and after braces in drivers/staging/rtl8188eu/core/rtw_ap.c
 
-elapsed time: 730m
-
-configs tested: 140
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arc                              allyesconfig
-nios2                            allyesconfig
-alpha                            allyesconfig
-mips                      fuloong2e_defconfig
-powerpc                       ebony_defconfig
-arm                            mmp2_defconfig
-powerpc                  storcenter_defconfig
-mips                   sb1250_swarm_defconfig
-nios2                               defconfig
-csky                             alldefconfig
-arm                             ezx_defconfig
-sh                             shx3_defconfig
-sh                          rsk7201_defconfig
-arm                     davinci_all_defconfig
-mips                           gcw0_defconfig
-powerpc                 linkstation_defconfig
-sh                   sh7770_generic_defconfig
-powerpc                      bamboo_defconfig
-arm                      integrator_defconfig
-arm                        multi_v7_defconfig
-powerpc                      pasemi_defconfig
-m68k                        mvme16x_defconfig
-sh                          r7785rp_defconfig
-sparc64                             defconfig
-arc                     nsimosci_hs_defconfig
-mips                           jazz_defconfig
-sh                          sdk7786_defconfig
-arm                           stm32_defconfig
-arm                           viper_defconfig
-mips                        vocore2_defconfig
-mips                         tb0287_defconfig
-sh                            titan_defconfig
-arc                        nsim_700_defconfig
-riscv                          rv32_defconfig
-m68k                        m5407c3_defconfig
-arm                        realview_defconfig
-arm                            dove_defconfig
-arm                  colibri_pxa270_defconfig
-openrisc                 simple_smp_defconfig
-mips                           ip28_defconfig
-arm64                            alldefconfig
-mips                     cu1000-neo_defconfig
-riscv                    nommu_virt_defconfig
-mips                 decstation_r4k_defconfig
-xtensa                  nommu_kc705_defconfig
-powerpc                  mpc866_ads_defconfig
-arm                            pleb_defconfig
-arm                           omap1_defconfig
-xtensa                       common_defconfig
-h8300                               defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a003-20210720
-x86_64               randconfig-a006-20210720
-x86_64               randconfig-a001-20210720
-x86_64               randconfig-a005-20210720
-x86_64               randconfig-a004-20210720
-x86_64               randconfig-a002-20210720
-i386                 randconfig-a005-20210722
-i386                 randconfig-a003-20210722
-i386                 randconfig-a004-20210722
-i386                 randconfig-a002-20210722
-i386                 randconfig-a001-20210722
-i386                 randconfig-a006-20210722
-i386                 randconfig-a005-20210719
-i386                 randconfig-a004-20210719
-i386                 randconfig-a006-20210719
-i386                 randconfig-a001-20210719
-i386                 randconfig-a003-20210719
-i386                 randconfig-a002-20210719
-i386                 randconfig-a005-20210720
-i386                 randconfig-a003-20210720
-i386                 randconfig-a004-20210720
-i386                 randconfig-a002-20210720
-i386                 randconfig-a001-20210720
-i386                 randconfig-a006-20210720
-x86_64               randconfig-a011-20210721
-x86_64               randconfig-a016-20210721
-x86_64               randconfig-a013-20210721
-x86_64               randconfig-a014-20210721
-x86_64               randconfig-a012-20210721
-x86_64               randconfig-a015-20210721
-i386                 randconfig-a016-20210720
-i386                 randconfig-a013-20210720
-i386                 randconfig-a012-20210720
-i386                 randconfig-a014-20210720
-i386                 randconfig-a011-20210720
-i386                 randconfig-a015-20210720
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-b001-20210720
-x86_64               randconfig-a011-20210720
-x86_64               randconfig-a016-20210720
-x86_64               randconfig-a013-20210720
-x86_64               randconfig-a014-20210720
-x86_64               randconfig-a012-20210720
-x86_64               randconfig-a015-20210720
-
+Signed-off-by: Benjamin Philip <benjamin.philip495@gmail.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
+This patch fixes some checkpatch.pl CHECKs for blank lines.
+
+I have tested my changes by compiling them. I also used
+checkpatch.pl, which did not issue any checks, warnings or
+errors for my patch.
+
+This is my first patch to the kernel. If I have erred in the patch sending
+workflow in any way, I will be glad to resend it in the correct manner.
+
+I also apologize for not build-testing my patch before submiting v1 of
+the patch and for wasting your time by doing so.
+
+ drivers/staging/rtl8188eu/core/rtw_ap.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+index b817aa8b9de4..a2aeb78733d5 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ap.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+@@ -381,7 +381,6 @@ void add_RATid(struct adapter *padapter, struct sta_info *psta, u8 rssi_level)
+ 		/* set ra_id, init_rate */
+ 		psta->raid = raid;
+ 		psta->init_rate = init_rate;
+-
+ 	}
+ }
+ 
+@@ -453,7 +452,6 @@ static void update_bmc_sta(struct adapter *padapter)
+ 		spin_lock_bh(&psta->lock);
+ 		psta->state = _FW_LINKED;
+ 		spin_unlock_bh(&psta->lock);
+-
+ 	}
+ }
+ 
+@@ -1140,7 +1138,6 @@ static void update_bcn_wps_ie(struct adapter *padapter)
+ 
+ static void update_bcn_vendor_spec_ie(struct adapter *padapter, u8 *oui)
+ {
+-
+ 	if (!memcmp(WPS_OUI, oui, 4))
+ 		update_bcn_wps_ie(padapter);
+ }
+-- 
+2.31.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
