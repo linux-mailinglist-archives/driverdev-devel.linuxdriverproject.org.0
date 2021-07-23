@@ -2,75 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B154D3D38F8
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Jul 2021 12:58:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FC4A3D38F9
+	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Jul 2021 12:58:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9F40883211;
-	Fri, 23 Jul 2021 10:58:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F30138376B;
+	Fri, 23 Jul 2021 10:58:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yNnllZMkXXOT; Fri, 23 Jul 2021 10:58:26 +0000 (UTC)
+	with ESMTP id fVkVEnmD_kQv; Fri, 23 Jul 2021 10:58:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2F0E783143;
-	Fri, 23 Jul 2021 10:58:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7AFC9830AB;
+	Fri, 23 Jul 2021 10:58:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D48B31BF34A
- for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 10:58:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 216ED1BF34A
+ for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 10:58:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C381383143
- for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 10:58:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 10C8F60664
+ for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 10:58:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CFlT4LEEVA6Z for <devel@linuxdriverproject.org>;
- Fri, 23 Jul 2021 10:58:07 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id z2YAdqGvz11i for <devel@linuxdriverproject.org>;
+ Fri, 23 Jul 2021 10:58:09 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
- [IPv6:2607:f8b0:4864:20::62b])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 55A51830AB
- for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 10:58:07 +0000 (UTC)
-Received: by mail-pl1-x62b.google.com with SMTP id t21so2599517plr.13
- for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 03:58:07 -0700 (PDT)
+Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
+ [IPv6:2607:f8b0:4864:20::102a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 883226062F
+ for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 10:58:09 +0000 (UTC)
+Received: by mail-pj1-x102a.google.com with SMTP id
+ gv20-20020a17090b11d4b0290173b9578f1cso5994406pjb.0
+ for <devel@linuxdriverproject.org>; Fri, 23 Jul 2021 03:58:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=j/RMAm0ivVDJ1TdPGQI6kIVCATXT2BmfDFjyEYMhwF8=;
- b=LL+BFa3f9YZ4G8mYqCxR11HkHhShqmEkvywkhNtzgVJI1esd0TdkcJgsPcNG+PxyFP
- sMVlUCo24nLeIhE8yrb34967OJ7WLx9Ixv6Q/RykBHN4BCd66JNYVOJ0zSJ7f+VJBK+R
- ZqGZJQUcmYJxOHU06QnCro17qSVrQOfugdJqUKlxXNoYk4+TFJh60a39DUEZBWCWF9vo
- +RCUcmKvCgJO/qcmlRlHPhEnXiYAIsn2sK3vbPQarwrL/L10RIfyW9N3eX0XmAWCZ/hR
- 0Cbil9/op7PbAyJsoX5PSKPJHPguEiql016jMxFt+hbCspCvwFQOxp9fI7dM9a5KRZ5r
- cNAw==
+ bh=5/yvTojb3uRwzUItwLbp5UF1vGBVCzmyw1s/P7q8o2Y=;
+ b=QwpP31xSmllFziKucecrv/Hk1F7uIHxxj/OJ+W3HvgkvA4itMgKXftFXy5B2X6EBsG
+ oQru0Ms5okhQSAkEBvdPWgInssdBIh8joo15oik5rqo1iJAqEtEDii/HoTBdC0/g5WA2
+ AOOJwJnnLW61KbyJ9SEkFRDG30bPlPMbk1aOQXM02yI93cs4YTNnpItyjigT+h0YQNZ0
+ KNPsuxy9j1GfGcgil3/f9y3Y9v/fj5sjOpMwOvp9vokzFhnvYev5i/ZSJVTTA5gmURTn
+ vIie13IQh67Kolyf3JB8egO/5gvmTjtUcSX7XARyPg/cnVTNr/DiBmGxWnGI6KNvqAZu
+ TZ0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=j/RMAm0ivVDJ1TdPGQI6kIVCATXT2BmfDFjyEYMhwF8=;
- b=pfxrfNDpSLdc/l9PwLdGlIBCM8eDZD+k4PpHIf74tHCl0kj0H03BCG7a5pyHF0dBvR
- Z88UMuFMmFvy202evFOAeqQI1x+A3rgWr9fs4k5+LZT8VU+tZEiXqfOaqGVWCy51CLOX
- 70btXd5sQ14r1fPRhoB922ogz0yAVHaByPRqokWZONvVDjMsht2JDNkRPAr8C+g24Be9
- 41Ja2oR52syP83gzjUi/smZMkDwwJnCOQb0wxXYIATi/0DunxL/MVwDzopBV44jJpJUc
- iIjgwRYXyo3kD5uWE8gc8poEwBwkxOLcuECpPH23c3crvSPH71YiLNogkpIAz8BxBdEd
- MQ4A==
-X-Gm-Message-State: AOAM533Jky+wKPOGACKde8l7JC4HBgrywXBk2QZSmhUAndV1v+BjDGqN
- C22c3fKl+O4fmIpJVMhNQBo=
-X-Google-Smtp-Source: ABdhPJwioEDeBs/WYoptvQrRufDvxFM4a5hgvplIFV67ncQ5+MwHg2I3VOFVvH5ustIuawgpUGBxXw==
-X-Received: by 2002:a63:ce50:: with SMTP id r16mr4341845pgi.425.1627037886860; 
- Fri, 23 Jul 2021 03:58:06 -0700 (PDT)
+ bh=5/yvTojb3uRwzUItwLbp5UF1vGBVCzmyw1s/P7q8o2Y=;
+ b=mVFv2kekhr/hULqe0y1caZRoyj8WOA715SmUiuHixoloJ4tfGotrir6/r5i4qPEt6w
+ N2jiJIeSagho8k1HxFXtQr/oNkFo9esu2xNPALnKnBoho/dYVjoKMfXfS84EQjIQ/pxI
+ SPAfS4zhZp/SgnmduZqbwdgs+tasqo7+/FDhFkat8m+h973GHsAKh//sVoPTef3hSwj9
+ MLJk+8BOQtKi81BXCdaIeYuyWiX+g4sXsvy9vP2s0HhW72J/KJs0Wf/xjAKpsVkvasFJ
+ 6/vKVrP+Huqhd6V4rw23g4Zxb61CvhbTCs8654GSCKnDIEZaULovKaZBMgKmXrrtx63w
+ Npkg==
+X-Gm-Message-State: AOAM530xWf1XiQlxxxEPW8tnqSzl5qMqGNfddh1lP/fnhBwmqo+M+rZm
+ i4JE1Z7KGY7nOQikZVa5J+U=
+X-Google-Smtp-Source: ABdhPJzej78ZssnkRZc7YUrZXq7xkaKJR58jZoxSwmgQ1tQMWlLpk2OLv0G7ujg2879ZOGElIH7n+g==
+X-Received: by 2002:a17:903:89:b029:12a:ee95:42df with SMTP id
+ o9-20020a1709030089b029012aee9542dfmr3315644pld.77.1627037889058; 
+ Fri, 23 Jul 2021 03:58:09 -0700 (PDT)
 Received: from localhost.localdomain ([2402:e280:2130:198:9b25:1cfb:9ff3:2a8f])
- by smtp.gmail.com with ESMTPSA id u21sm33115559pfh.163.2021.07.23.03.58.05
+ by smtp.gmail.com with ESMTPSA id u21sm33115559pfh.163.2021.07.23.03.58.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Jul 2021 03:58:06 -0700 (PDT)
+ Fri, 23 Jul 2021 03:58:08 -0700 (PDT)
 From: Benjamin Philip <benjamin.philip495@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH v2 1/3] staging: rtl8188eu: Remove blank line at
- core/rtw_ap.c:385
-Date: Fri, 23 Jul 2021 16:27:51 +0530
-Message-Id: <362ba8456848867cc2023e40716de5da7c603abf.1627029208.git.benjamin.philip495@gmail.com>
+Subject: [PATCH v2 2/3] staging: rtl8188eu: Remove blank line at
+ core/rtw_ap.c:457
+Date: Fri, 23 Jul 2021 16:27:52 +0530
+Message-Id: <f534180f71deda4f75c5c2c7de139dc291a77318.1627029208.git.benjamin.philip495@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1627029208.git.benjamin.philip495@gmail.com>
 References: <cover.1627029208.git.benjamin.philip495@gmail.com>
@@ -97,7 +101,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 This commit fixes the following checkpatch.pl CHECK:
 
 CHECK: Blank lines aren't necessary before a close brace '}'
-385: FILE: drivers/staging/rtl8188eu/core/rtw_ap.c:385:
+457: FILE: drivers/staging/rtl8188eu/core/rtw_ap.c:457:
 +
 +	}
 
@@ -107,13 +111,13 @@ Signed-off-by: Benjamin Philip <benjamin.philip495@gmail.com>
  1 file changed, 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index b817aa8b9de4..215a0285005f 100644
+index 215a0285005f..ba3a6347976d 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -381,7 +381,6 @@ void add_RATid(struct adapter *padapter, struct sta_info *psta, u8 rssi_level)
- 		/* set ra_id, init_rate */
- 		psta->raid = raid;
- 		psta->init_rate = init_rate;
+@@ -452,7 +452,6 @@ static void update_bmc_sta(struct adapter *padapter)
+ 		spin_lock_bh(&psta->lock);
+ 		psta->state = _FW_LINKED;
+ 		spin_unlock_bh(&psta->lock);
 -
  	}
  }
