@@ -1,57 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22F133D75AD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Jul 2021 15:17:25 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3850E3D7C63
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Jul 2021 19:42:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5AED383134;
-	Tue, 27 Jul 2021 13:17:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4930B6079F;
+	Tue, 27 Jul 2021 17:42:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TKHB7C9YEqLZ; Tue, 27 Jul 2021 13:17:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bUNo5_q3_DLw; Tue, 27 Jul 2021 17:42:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C391B82EAD;
-	Tue, 27 Jul 2021 13:17:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 952AA606B3;
+	Tue, 27 Jul 2021 17:42:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A6CC11BF40F
- for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 13:17:11 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E0671BF359
+ for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 17:41:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A2A5C60679
- for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 13:17:11 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3C7B9400DF
+ for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 17:41:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SfMvLW-_X48M for <devel@linuxdriverproject.org>;
- Tue, 27 Jul 2021 13:17:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cXt_lPgJ255n for <devel@linuxdriverproject.org>;
+ Tue, 27 Jul 2021 17:41:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 36EF36062A
- for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 13:17:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7AF1D6187F;
- Tue, 27 Jul 2021 13:17:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1627391830;
- bh=YdFNH0RRyJDNOCQstjjEb7UvYayYGnJ5AFi6nXdGOc4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fvtak2ALQ7cnwQ41HdZx7jYlZ/AIRV+jgF40f5p9TTZ508JAvDqpdOSTX2fjRri/M
- x3w2B3vt71tlYj5kwz1xtVTosTzzfViqGO+tdt1CdR2Tc9WPwdX6QPq4m/SXfhSorm
- X9Z5fNVtkj4KhTZMN3XPZy95cn+32AmAj5YDfjYQ=
-Date: Tue, 27 Jul 2021 15:17:08 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Benjamin Philip <benjamin.philip495@gmail.com>
-Subject: Re: [PATCH v2 0/3] Remove blank lines at
- drivers/rtl8188eu/core/rtw_ap.c
-Message-ID: <YQAHVHGs7/vB4Ofx@kroah.com>
-References: <cover.1627029208.git.benjamin.philip495@gmail.com>
+Received: from mx2.smtp.larsendata.com (mx2.smtp.larsendata.com
+ [91.221.196.228])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E858E400BF
+ for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 17:41:37 +0000 (UTC)
+Received: from mail01.mxhotel.dk (mail01.mxhotel.dk [91.221.196.236])
+ by mx2.smtp.larsendata.com (Halon) with ESMTPS
+ id ed670ac0-ef01-11eb-8d1a-0050568cd888;
+ Tue, 27 Jul 2021 17:41:52 +0000 (UTC)
+Received: from ravnborg.org (80-162-45-141-cable.dk.customer.tdc.net
+ [80.162.45.141])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ (Authenticated sender: sam@ravnborg.org)
+ by mail01.mxhotel.dk (Postfix) with ESMTPSA id 5727B194B1A;
+ Tue, 27 Jul 2021 19:41:53 +0200 (CEST)
+Date: Tue, 27 Jul 2021 19:41:30 +0200
+X-Report-Abuse-To: abuse@mxhotel.dk
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v3 1/3] drm/loongson: Add DRM Driver for Loongson 7A1000
+ bridge chip
+Message-ID: <YQBFSsecMNXKcXCy@ravnborg.org>
+References: <20210723031251.200686-1-lichenyang@loongson.cn>
+ <YPqElHRxMSvrzzqs@phenom.ffwll.local>
+ <YPr65jnI2coEIY1j@ravnborg.org>
+ <YP/TZ2VRqYsw+jQN@phenom.ffwll.local>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <cover.1627029208.git.benjamin.philip495@gmail.com>
+In-Reply-To: <YP/TZ2VRqYsw+jQN@phenom.ffwll.local>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,41 +69,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel mailing list <devel@linuxdriverproject.org>,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: David Airlie <airlied@linux.ie>, Huacai Chen <chenhuacai@kernel.org>,
+ dri-devel@lists.freedesktop.org, lichenyang <lichenyang@loongson.cn>,
+ Thomas Zimmermann <tzimmermann@suse.de>, devel@linuxdriverproject.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, Maxime Ripard <maxime@cerno.tech>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jul 23, 2021 at 04:27:50PM +0530, Benjamin Philip wrote:
-> The following few patches remove some blank lines that before or after a brace.
-> 
-> To test my changes, I have checked if it compiles (which it does). I also have
-> checked the patch with checkpatch.pl, which does not pass any warnings of any sort.
-> 
-> Changes in v2:
-> * Tested by building (no changes code)
-> 
-> This is my first patch to the linux kernel. I apologize for all the inconveniences caused
-> by my unfamiliarity with the kernel workflow.
-> 
-> I also have split each line I removed into a patch so that it is convenient for the
-> maintainer. I hope it is so.
-> 
-> Thanks,
-> Benjamin Philip
-> 
-> Benjamin Philip (3):
->   staging: rtl8188eu: Remove blank line at core/rtw_ap.c:385
->   staging: rtl8188eu: Remove blank line at core/rtw_ap.c:457
->   staging: rtl8188eu: Remove blank line at core/rtw_ap.c:1143
+Hi Chenyang,
 
-That's just too many patches, your first one was just fine :)
+I browsed the code on lore and noticed a few things and thought it
+better to bring it to your attention now.
 
-thanks,
+The general structure of the drivers seems good and coding style is
+fine. The feedback is mostly stuff we have decided to do different over
+time, so likely because you based the driver on some older driver.
+And it can be hard to follow all the refactoring going on - something
+that you get for free (almost) when is is mainlined.
 
-greg k-h
+1) Use drm_ for logging whereever possible (need drm_device)
+2) Do not use irq mid-layer support in drm_driver, it is about to be
+   legacy only. In other words avoid using drm_irq* stuff.
+3) Look at drm_drv to see code snippet how to use the drmm*
+   infrastructure. It will save you some cleanup and in general make the
+   driver more stable
+4) Sort includes alphabetically, and split them on in blocks.
+   <linux/*> is one block
+   <newline>
+   <drm/drm_*> is next block
+5) Put entry in makefile in alphabetical order
+6) You most like can use the simple_encoder stuff we have today
+7) The *_load and *_unlod names where used in the past. Maybe be
+   inspired by some newer driver here. _load functiosn is something used
+   by legacy drivers so it confuses me a little.
+
+I look forward to see next revision of the patch-set.
+And sorry for not providing these high-level feedback issues before - I
+have not had time to look at your driver.
+
+	Sam
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
