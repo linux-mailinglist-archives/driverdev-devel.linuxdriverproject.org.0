@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1995E3D7F42
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Jul 2021 22:26:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80C953D849E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Jul 2021 02:21:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 59EB8833D3;
-	Tue, 27 Jul 2021 20:26:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B64B60855;
+	Wed, 28 Jul 2021 00:21:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UVkfUQBfBoc2; Tue, 27 Jul 2021 20:26:43 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GsNUD3KES3m3; Wed, 28 Jul 2021 00:21:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C035F834B9;
-	Tue, 27 Jul 2021 20:26:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AAA5060689;
+	Wed, 28 Jul 2021 00:21:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D0041BF860
- for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 20:26:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 815A01C1135
+ for <devel@linuxdriverproject.org>; Wed, 28 Jul 2021 00:21:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0C3D48339C
- for <devel@linuxdriverproject.org>; Tue, 27 Jul 2021 20:26:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6F562404D3
+ for <devel@linuxdriverproject.org>; Wed, 28 Jul 2021 00:21:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ft0sK3YXeAPd for <devel@linuxdriverproject.org>;
- Tue, 27 Jul 2021 20:26:32 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wz_ikRYtn07B for <devel@linuxdriverproject.org>;
+ Wed, 28 Jul 2021 00:21:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E782A81B7B
- for <devel@driverdev.osuosl.org>; Tue, 27 Jul 2021 20:26:31 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10058"; a="199704761"
-X-IronPort-AV: E=Sophos;i="5.84,274,1620716400"; d="scan'208";a="199704761"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jul 2021 13:26:29 -0700
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 459FE40185
+ for <devel@driverdev.osuosl.org>; Wed, 28 Jul 2021 00:21:39 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10058"; a="192831225"
+X-IronPort-AV: E=Sophos;i="5.84,275,1620716400"; d="scan'208";a="192831225"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jul 2021 17:21:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,274,1620716400"; d="scan'208";a="662962213"
+X-IronPort-AV: E=Sophos;i="5.84,275,1620716400"; d="scan'208";a="665677375"
 Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 27 Jul 2021 13:26:28 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 27 Jul 2021 17:21:35 -0700
 Received: from kbuild by d053b881505b with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1m8Tem-0007FO-11; Tue, 27 Jul 2021 20:26:28 +0000
-Date: Wed, 28 Jul 2021 04:25:44 +0800
+ id 1m8XKJ-0007QY-A5; Wed, 28 Jul 2021 00:21:35 +0000
+Date: Wed, 28 Jul 2021 08:20:38 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-next] BUILD SUCCESS
- bdac4d8abbfc239886103f7c6ee03abb8011a008
-Message-ID: <61006bc8.cXWWkJutwDrARq8K%lkp@intel.com>
+Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
+ 4480b40b4fa33664257936f046e207e394a49fcc
+Message-ID: <6100a2d6.DIxkqoVlwV0Co4ld%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -69,12 +69,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-next
-branch HEAD: bdac4d8abbfc239886103f7c6ee03abb8011a008  Merge 5.14-rc3 into driver-core-next
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
+branch HEAD: 4480b40b4fa33664257936f046e207e394a49fcc  fs: make d_path-like functions all have unsigned size
 
-elapsed time: 720m
+elapsed time: 722m
 
-configs tested: 82
+configs tested: 87
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -82,22 +82,28 @@ More configs may be tested in the coming days.
 
 gcc tested configs:
 arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
 arm64                            allyesconfig
 arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
 i386                 randconfig-c001-20210727
 i386                 randconfig-c001-20210726
 sh                          urquell_defconfig
 sh                           se7712_defconfig
 arm                      integrator_defconfig
+riscv                            allmodconfig
+s390                       zfcpdump_defconfig
+powerpc                 mpc832x_rdb_defconfig
+mips                  maltasmvp_eva_defconfig
+powerpc                 canyonlands_defconfig
+microblaze                      mmu_defconfig
 x86_64                            allnoconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
 m68k                             allmodconfig
-m68k                             allyesconfig
 m68k                                defconfig
+m68k                             allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
@@ -148,7 +154,6 @@ riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
 riscv                               defconfig
 riscv                          rv32_defconfig
-riscv                            allmodconfig
 um                           x86_64_defconfig
 um                             i386_defconfig
 x86_64                           allyesconfig
