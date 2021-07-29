@@ -2,55 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D26C23D9E3D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Jul 2021 09:19:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 578A13DA104
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Jul 2021 12:26:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2310F83B0A;
-	Thu, 29 Jul 2021 07:19:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A1BA683B01;
+	Thu, 29 Jul 2021 10:26:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5DO2-eLppmqv; Thu, 29 Jul 2021 07:19:22 +0000 (UTC)
+	with ESMTP id KTdNiRSyWZQC; Thu, 29 Jul 2021 10:26:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5433B83ADB;
-	Thu, 29 Jul 2021 07:19:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F6A283935;
+	Thu, 29 Jul 2021 10:26:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 498441BF35A
- for <devel@linuxdriverproject.org>; Thu, 29 Jul 2021 07:19:11 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 422091BF4D7
+ for <devel@linuxdriverproject.org>; Thu, 29 Jul 2021 10:26:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3488A40521
- for <devel@linuxdriverproject.org>; Thu, 29 Jul 2021 07:19:11 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 304C8400D8
+ for <devel@linuxdriverproject.org>; Thu, 29 Jul 2021 10:26:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rm_QtChzxqdh for <devel@linuxdriverproject.org>;
- Thu, 29 Jul 2021 07:19:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3046A40520
- for <devel@driverdev.osuosl.org>; Thu, 29 Jul 2021 07:19:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10059"; a="209708331"
-X-IronPort-AV: E=Sophos;i="5.84,278,1620716400"; d="scan'208";a="209708331"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jul 2021 00:19:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,278,1620716400"; d="scan'208";a="499651194"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 29 Jul 2021 00:19:08 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1m90Jv-0008y0-TS; Thu, 29 Jul 2021 07:19:07 +0000
-Date: Thu, 29 Jul 2021 15:18:41 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- b2c943e52705b211d1aa0633c9196150cf30be47
-Message-ID: <61025651.4hZ5E3ealzKU+Zso%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZFri0I9AYGZC for <devel@linuxdriverproject.org>;
+ Thu, 29 Jul 2021 10:26:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.fortinet.ovh (unknown [88.157.215.74])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 03BC140025
+ for <devel@driverdev.osuosl.org>; Thu, 29 Jul 2021 10:26:39 +0000 (UTC)
+Received: from User (84.127.83.253.dyn.user.ono.com [84.127.83.253])
+ (user=Administrator@fortinet.ovh mech=LOGIN bits=0)
+ by mail.fortinet.ovh  with ESMTP id 16TAPhC5005566-16TAPhC7005566;
+ Thu, 29 Jul 2021 11:25:43 +0100
+Message-Id: <202107291025.16TAPhC5005566-16TAPhC7005566@mail.fortinet.ovh>
+From: "FAB"<fab_edy@aol.com>
+Subject: INVESTMENTS FINANCING.
+Date: Thu, 29 Jul 2021 12:25:47 +0200
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-FEAS-AUTH-USER: Administrator@fortinet.ovh
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,120 +57,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: eedyfab@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: b2c943e52705b211d1aa0633c9196150cf30be47  nubus: Make struct nubus_driver::remove return void
+Attention.
 
-elapsed time: 822m
+I represent a group of company based in the Gulf Region with access to over $500 Million. We are seeking means of expanding and relocating our business interest abroad in the following sectors: Oil/Gas, Construction,Real Estate,Stock Speculation and Mining, Transportation, Health Sector and Tobacco, Communication Services,Aviation industry, Agriculture Forestry & Fishing, thus any sector.
 
-configs tested: 90
-configs skipped: 3
+If you have a solid background and idea of making good profit in any of the mentioned business sectors or any other VIABLE business in your country. Please write me for possible business co-operation. More so, we are ready to facilitate and fund any business that is capable of generating 2% annual return on investment (AROI)
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I am available to discuss this proposal with you and to answer any questions you may have in regard to this investment. As soon as you give your positive response to this proposal, I will not hesitate in sending you the details information of this great investment partnership opportunity. Kindly contact us through this address( eedyfab@gmail.com)
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210728
-mips                         tb0219_defconfig
-powerpc                    socrates_defconfig
-mips                         db1xxx_defconfig
-m68k                          atari_defconfig
-sh                             espt_defconfig
-powerpc                     asp8347_defconfig
-parisc                              defconfig
-powerpc                       ppc64_defconfig
-xtensa                              defconfig
-sh                            hp6xx_defconfig
-sh                          r7780mp_defconfig
-sh                           se7343_defconfig
-powerpc                     mpc512x_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20210728
-x86_64               randconfig-a003-20210728
-x86_64               randconfig-a001-20210728
-x86_64               randconfig-a004-20210728
-x86_64               randconfig-a005-20210728
-x86_64               randconfig-a002-20210728
-i386                 randconfig-a005-20210728
-i386                 randconfig-a003-20210728
-i386                 randconfig-a004-20210728
-i386                 randconfig-a002-20210728
-i386                 randconfig-a001-20210728
-i386                 randconfig-a006-20210728
-i386                 randconfig-a016-20210728
-i386                 randconfig-a012-20210728
-i386                 randconfig-a013-20210728
-i386                 randconfig-a014-20210728
-i386                 randconfig-a011-20210728
-i386                 randconfig-a015-20210728
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+look forward to discussing this opportunity further with you.
 
-clang tested configs:
-x86_64               randconfig-c001-20210728
-x86_64               randconfig-a016-20210728
-x86_64               randconfig-a011-20210728
-x86_64               randconfig-a014-20210728
-x86_64               randconfig-a013-20210728
-x86_64               randconfig-a012-20210728
-x86_64               randconfig-a015-20210728
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Sincerely,
+Edward Fabian
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
