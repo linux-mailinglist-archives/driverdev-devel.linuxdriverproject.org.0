@@ -1,59 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 555AB3DD4FB
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Aug 2021 13:54:27 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA3D93DCA81
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Aug 2021 09:27:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D9544403AC;
-	Mon,  2 Aug 2021 11:54:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N6pcVLMMZhKo; Mon,  2 Aug 2021 11:54:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BE3C0400BD;
-	Mon,  2 Aug 2021 11:54:22 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5D8121BF5A4
- for <devel@linuxdriverproject.org>; Mon,  2 Aug 2021 11:54:12 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 51BD483A60
- for <devel@linuxdriverproject.org>; Mon,  2 Aug 2021 11:54:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 311E283C79;
+	Sun,  1 Aug 2021 07:27:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s6-DRj_rLGPG for <devel@linuxdriverproject.org>;
- Mon,  2 Aug 2021 11:54:11 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZMjYNSDHBucv; Sun,  1 Aug 2021 07:27:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8174E83C77;
+	Sun,  1 Aug 2021 07:27:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A24E31BF287
+ for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 07:27:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 91F1B6060A
+ for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 07:27:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kDF8uHzInvjq for <devel@linuxdriverproject.org>;
+ Sun,  1 Aug 2021 07:27:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.maynitek.ru (mail.maynitek.ru [94.137.227.4])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0510083A5A
- for <devel@driverdev.osuosl.org>; Mon,  2 Aug 2021 11:54:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id A76AF157944C2;
- Sun,  1 Aug 2021 09:20:31 +0500 (+05)
-Received: from mail.maynitek.ru ([127.0.0.1])
- by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id yOHsXoE4l306; Sun,  1 Aug 2021 09:20:31 +0500 (+05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id 8B9C4157944DA;
- Sun,  1 Aug 2021 09:20:30 +0500 (+05)
-X-Virus-Scanned: amavisd-new at maynitek.ru
-Received: from mail.maynitek.ru ([127.0.0.1])
- by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id HyCpmadpPNJz; Sun,  1 Aug 2021 09:20:30 +0500 (+05)
-Received: from [192.168.1.3] (unknown [178.151.250.143])
- by mail.maynitek.ru (Postfix) with ESMTPSA id 29623157944C2;
- Sun,  1 Aug 2021 09:20:28 +0500 (+05)
+Received: from senwd.co.kr (unknown [220.95.209.146])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C8876605F9
+ for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 07:27:11 +0000 (UTC)
+Received: from IP-222-80.dataclub.eu (unknown [46.183.222.80])
+ (Authenticated sender: books@senwd.co.kr)
+ by senwd.co.kr (Postfix) with ESMTPA id EAC8118590FC
+ for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 14:25:28 +0900 (KST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Lesen Sie Ihre EMail.
-To: Recipients <deployer@maynitek.ru>
-From: deployer@maynitek.ru
-Date: Sun, 01 Aug 2021 07:20:09 +0300
-Message-Id: <20210801042028.29623157944C2@mail.maynitek.ru>
+Subject: Your Urgent Atttention is Required.
+To: devel@linuxdriverproject.org
+From: "Aisha Al-Gaddafi " <aishaalgaddafi4944@citromail.hu>
+Date: Sun, 01 Aug 2021 08:25:26 +0300
+Message-Id: <20210801072712.91F1B6060A@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,30 +54,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: rinatakhmeto@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: aishaalgaddafi14944@citromail.hu
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Ich, Rinat Akhmetov, bin ein ukrainischer Milliard=E4r, Oligarch und Gr=FCn=
-der und Pr=E4sident von System Capital Management in der Ukraine (Europa). =
-Sie k=F6nnen =FCber mich lesen auf:
+Hello Dear,
 
-https://en.wikipedia.org/wiki/Rinat_Akhmetov
+May I use this medium to open a mutual communication with you seeking your acceptance towards investing in your country under your management as my partner, My name is Aisha Gaddafi and presently living in Oman, i am a Widow and single Mother with two survived Children, I am only biological Daughter of late Libyan President (Late Colonel Muammar Gaddafi) and presently i am under political asylum protection by the Omani Government.
 
-Ich beabsichtige, Ihnen einen Teil (Viertel) meines Nettoverm=F6gens von je=
-weils 1,500.000 EURO an 4 Personen weltweit im Rahmen unseres Wohlt=E4tigke=
-itsprojekts zu geben, das ich =FCberwiesen habe. Wenn Sie meine E-Mail erha=
-lten haben, senden Sie uns bitte Ihre Daten so dass wir unsere Bank anweise=
-n, die =DCberweisung der
+I have funds worth "Sixty Million United State Dollars Only" $60,000,000.00 USD which i want to entrust on you for investment project in your country, if you are willing to handle this project on my behalf, please for your kind assistance I will offer you 30% of the total sum, all the legal documentation concerning the deposit are with me, I will only write power of attorney making you the new beneficiary of the deposit so that the security company can release the consignment to you.
 
-1,500.000 EURO zu finanzieren, in der Hoffnung, dass es auch Ihnen und ande=
-ren hilft.
+Bear in mind that the funds was deposited with the security and deposit firm as household effect, therefore they do not know the real content, so you are going to collect the consignment as house effect from the security company where as only you and me know the real content Please kindly reply urgently to enable me provides you more detail to start the transfer process.
+In case you want to know more about me and my family you can read through this BBC News links below:
 
-E-Mail zur Best=E4tigung unten.
 
-E-Mail oder Antwort an:rinatakhmeto@gmail.com
+I shall appreciate your urgent response.
+
+Mrs. Aisha Al-Gaddafi 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
