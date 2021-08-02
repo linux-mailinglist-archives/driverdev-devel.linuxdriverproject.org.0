@@ -1,60 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3449C3DCDB2
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Aug 2021 22:28:31 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5F113DCF1F
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Aug 2021 06:08:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 53ABA404A6;
-	Sun,  1 Aug 2021 20:28:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D60EE60737;
+	Mon,  2 Aug 2021 04:08:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oSmJGpNgTcpm; Sun,  1 Aug 2021 20:28:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id faWjtxF0tmTG; Mon,  2 Aug 2021 04:08:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CB1FF40490;
-	Sun,  1 Aug 2021 20:28:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5634A60697;
+	Mon,  2 Aug 2021 04:08:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 93A731BF5A2
- for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 20:28:18 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F60E1BF34B
+ for <devel@linuxdriverproject.org>; Mon,  2 Aug 2021 04:07:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 85F3040132
- for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 20:28:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4E64483032
+ for <devel@linuxdriverproject.org>; Mon,  2 Aug 2021 04:07:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rn8lhthc2KVa for <devel@linuxdriverproject.org>;
- Sun,  1 Aug 2021 20:28:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx2.smtp.larsendata.com (mx2.smtp.larsendata.com
- [91.221.196.228])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5D874400DF
- for <devel@linuxdriverproject.org>; Sun,  1 Aug 2021 20:28:16 +0000 (UTC)
-Received: from mail01.mxhotel.dk (mail01.mxhotel.dk [91.221.196.236])
- by mx2.smtp.larsendata.com (Halon) with ESMTPS
- id 09fff2bd-f307-11eb-8d1a-0050568cd888;
- Sun, 01 Aug 2021 20:28:32 +0000 (UTC)
-Received: from ravnborg.org (80-162-45-141-cable.dk.customer.tdc.net
- [80.162.45.141])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: sam@ravnborg.org)
- by mail01.mxhotel.dk (Postfix) with ESMTPSA id 0CCB5194B1A;
- Sun,  1 Aug 2021 22:28:36 +0200 (CEST)
-Date: Sun, 1 Aug 2021 22:28:10 +0200
-X-Report-Abuse-To: abuse@mxhotel.dk
-From: Sam Ravnborg <sam@ravnborg.org>
-To: lichenyang <lichenyang@loongson.cn>
-Subject: Re: [PATCH v4 2/3] drm/loongson: Add GPIO and I2C driver for
- loongson drm.
-Message-ID: <YQcD2q7+Dax65lv2@ravnborg.org>
-References: <20210730094148.620768-1-lichenyang@loongson.cn>
- <20210730094148.620768-2-lichenyang@loongson.cn>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QTtjt36dg1T3 for <devel@linuxdriverproject.org>;
+ Mon,  2 Aug 2021 04:07:50 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd44.google.com (mail-io1-xd44.google.com
+ [IPv6:2607:f8b0:4864:20::d44])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AB4518302F
+ for <devel@driverdev.osuosl.org>; Mon,  2 Aug 2021 04:07:50 +0000 (UTC)
+Received: by mail-io1-xd44.google.com with SMTP id h1so18804974iol.9
+ for <devel@driverdev.osuosl.org>; Sun, 01 Aug 2021 21:07:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=GvSEm2IhMBJ052xe9DI9VvCgaL6z88P134FZp7B8Jpk=;
+ b=UR0RiH3uIWtUqCop1tEuhAqZSYcjn4UXhXVlHdYPSzVkYAS8tmbK825WhPmzRbmoy3
+ ef/nLLSmFPYwwaaP/HBFBlToEY3aUQju4pry0wI6Uvb3R4dOAbdfiuU6GYBGqvC+bYjy
+ 6gDoysPgp8HyKG/7lPzaG/Ab7lW07owyLKFgQez6ghdVLNvOt0hbPGJAA2MXoqL18da3
+ oO/Q6FamnZkmWvxb6uSbCsy/eTlgeCgBnfY8qZZGwBivLET0sr3f1qjTlZfpVSf4nSaT
+ rNctfvy4dFL5YnQb/hI6EvInEswfxIjlGZEIgbXitCbxhTid5ltYL3G51l97uMbR3WJC
+ aLpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=GvSEm2IhMBJ052xe9DI9VvCgaL6z88P134FZp7B8Jpk=;
+ b=CEEAWFZsRJDAIRfyZu0EcLbt0HvvFz5iRa7myM8vOXf+v2ZRbJOiL7emdlaGqqu4zW
+ PO8tRcdrW4Yl8DhhnfVZ+rxkFnEfe9JANF6jNkjwEtdtd2KB555Hgo6jIndhkLUhQ/7h
+ 4EKlTzHsFO3EAcotP75LF3QJGE0gcWMtTWo9Q1c49tkEnMhWoYj3kLuF1LRtHiR1cfwG
+ rtbEcJFSUE+yShRmACME7gFb9SjpijzbreiU4b0XCUpyyMriFlRt91wbxZDIFmam0xcO
+ wsPn1I10AgG34YfRr7/OCzLtVXUMuWgE/v8TLRWpkZCvwyTNQnCmqACL6uQwkVoFbLXk
+ 0hyw==
+X-Gm-Message-State: AOAM533wjxczIs5KrtWKPVqTA7l1Cb8wgy4+MeR7lHAKEwSwaTAMG18F
+ hnVLxM91NiK0dM5+sk9AwPd5bXAN5NDc9YhMhbg9lNjXv1xULw==
+X-Google-Smtp-Source: ABdhPJzpoIZg71X/5Es/h6Zt2F/v0D4QavsAJ2/fi28bc2r51YIe/EEtaKn+TXQPk6/LX1dI2vGXk4g36jlAIWkgawo=
+X-Received: by 2002:a05:6602:2e8f:: with SMTP id
+ m15mr563816iow.80.1627877269871; 
+ Sun, 01 Aug 2021 21:07:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210730094148.620768-2-lichenyang@loongson.cn>
+Received: by 2002:a02:b157:0:0:0:0:0 with HTTP;
+ Sun, 1 Aug 2021 21:07:49 -0700 (PDT)
+From: Abdoulahi Kazim <aishagaddafi.lpw.ag@gmail.com>
+Date: Mon, 2 Aug 2021 05:07:49 +0100
+Message-ID: <CAEax+HFO_RtXV7gUXOPz2gY7axnuZZ95hmU5xoOi6K2i=gvGkA@mail.gmail.com>
+Subject: More Authentic Information
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,39 +82,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Huacai Chen <chenhuacai@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org,
- Daniel Vetter <daniel@ffwll.ch>, devel@linuxdriverproject.org,
- Dan Carpenter <dan.carpenter@oracle.com>
+Reply-To: ablahikazabl67@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi lichenyang,
+-- 
+Dear Partner,
 
-On Fri, Jul 30, 2021 at 05:41:47PM +0800, lichenyang wrote:
-> Implement use GPIO and I2C driver to detect connector
-> and fetch EDID via DDC.
-> 
-> v3:
-> - Change some driver log to the drm_ version.
-> 
-> v2:
-> - Optimize the error handling process.
-> - Delete loongson_i2c_bus_match and loongson_i2c_add function.
-> - Optimize part of the code flow.
-> 
-> Signed-off-by: lichenyang <lichenyang@loongson.cn>
+I am soliciting your partnership to relocate $12.5 Million to your
+country for investment on my behalf and you will be entitled to 30% of
+the sum once the transaction is successful made.
 
-I will return later with more detailed feedback.
+ Please indicate your genuine interest if you are capable so that i
+will send you the authentic details and documents of the transaction
+in awareness with some of my fellow Directors in the bank.
+If you are interested, here is my private Email address: (
+ablahikazabl67@gmail.com )
+For more authentic and legit information.
 
-One high-level comment is that all the i2c support would be much better
-modelled as a bridge. And then you could use the bridge_connector.
 
-	Sam
+Regards : Abdoulahi Kazim
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
