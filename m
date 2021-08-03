@@ -1,77 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03F333DDE29
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Aug 2021 18:58:55 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48E5F3DE6A7
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Aug 2021 08:27:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4520F6084A;
-	Mon,  2 Aug 2021 16:58:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9848B403C6;
+	Tue,  3 Aug 2021 06:27:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OfuzXqP8ARdQ; Mon,  2 Aug 2021 16:58:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZDobG1yupcUD; Tue,  3 Aug 2021 06:27:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A7BE7606A8;
-	Mon,  2 Aug 2021 16:58:51 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 182B4403C4;
+	Tue,  3 Aug 2021 06:27:00 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B48BF1BF867
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Aug 2021 16:58:42 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E16991BF9BD
+ for <devel@linuxdriverproject.org>; Tue,  3 Aug 2021 06:26:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A45EA606A8
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Aug 2021 16:58:42 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D138B82F37
+ for <devel@linuxdriverproject.org>; Tue,  3 Aug 2021 06:26:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TcLG5L4xMyh8
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Aug 2021 16:58:42 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
- [IPv6:2607:f8b0:4864:20::634])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 30D1B600BB
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  2 Aug 2021 16:58:42 +0000 (UTC)
-Received: by mail-pl1-x634.google.com with SMTP id z3so19028675plg.8
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 02 Aug 2021 09:58:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:sender:from:date:message-id:subject:to;
- bh=70X9SZ6F2FHAgOnoQdbJaB6JyD+EKRzTayARQg7TP0I=;
- b=X7dDzr9YCzV1VjzmMqkSYK4uhyCDokmU+UsIp+2e4P+i3Z8bWm2KZ5BVFKgD7FZNyP
- 9v98XE8a3MGN6r1MiKSvdwAMMXvbJG/MxRwksaGjDldl0z1STe2AFXr46A3GQf3jl/pH
- MENYHzIrwW/Vg22taru1DSDe70q10g8UbzC+K35LJJmsxH9QoadniuNptVgvXl/5OXAK
- wbsApq7+Ma6FUqbfY1O8H0BNALxN19V1KNqszeqJY3L6paFYYVK1zZ+YNFws9rvLttWm
- kvKV21EgiU/FsunjOj7vRuFiL0Bmx4E9rqkp2RMQ3/9/OxU3vY/1OXalXmGE306zwvCT
- rFDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=70X9SZ6F2FHAgOnoQdbJaB6JyD+EKRzTayARQg7TP0I=;
- b=g+hq7SEtwdB7Z+iPLhCe72xl6fJXKQR6AGo8dJGcauFYHk4u2O1I0CzYQTjY92n4To
- kFLY4Lpf6KDsKdkYu4UmqCePrd3uW2W3Au+GSdvCd/A96NnAEivxp8Mzypla2PZPSnkX
- /jGF7iFRk7B1wO1h5X2Z/vsokb1MljQ8I/A1gZxEUEFsPeGIap+nV0YAtO8p+NXFzae2
- 2x5ymtg3031l282X9hE1CMZ835zetY+CDYMpdSfRfZCJam71Y0kSu/hCcDq+FDOLqXwA
- RBjs+z/TVJ7cJw5aYagxmEnoR3hIJJzEYDNv+lzgHnYQq2Sjzk5IwW91htLc6Tm77vgi
- UzCQ==
-X-Gm-Message-State: AOAM530TonHbSHGkdJ/QXgGbW9JAzGfy734FQPwUS9GFuTynUA0hmIZG
- hQ1g2x9qtgx+jSffvZrlwIb7P6w3J1osAjdsl3A=
-X-Google-Smtp-Source: ABdhPJxwlbyYQqgyE6Z7emw0OusiLCKlhU3HW6KbJaIBTG7IAtsw6AH90NOiGFFXXXEE9AE1f2g0MuGBlJ4yY3mfZzI=
-X-Received: by 2002:a63:542:: with SMTP id 63mr3314081pgf.359.1627923521462;
- Mon, 02 Aug 2021 09:58:41 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HGInFUxq2HvD for <devel@linuxdriverproject.org>;
+ Tue,  3 Aug 2021 06:26:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mercurius.xidraft.com (unknown [178.62.225.47])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8821C82F19
+ for <devel@linuxdriverproject.org>; Tue,  3 Aug 2021 06:26:39 +0000 (UTC)
+Received: from User (unknown [178.62.224.197])
+ by mercurius.xidraft.com (Postfix) with SMTP id 3C1CC44CFF;
+ Tue,  3 Aug 2021 04:00:24 +0000 (UTC)
+From: "World Bank Group"<cogn_box@afdb.org>
+Subject: Your Payment-$950.000.00
+Date: Tue, 3 Aug 2021 04:00:26 -0000
 MIME-Version: 1.0
-Received: by 2002:a05:7300:80d5:b029:22:4f9c:4da3 with HTTP; Mon, 2 Aug 2021
- 09:58:40 -0700 (PDT)
-From: Maxwell Watford <klararichty222@gmail.com>
-Date: Mon, 2 Aug 2021 16:58:40 +0000
-X-Google-Sender-Auth: DjRx1imvuGiIUKdC0T-szzkd1Mk
-Message-ID: <CABm2uNSFSObe1YmOYo_5Lsq6NMNVi5SMJ8oHwt8QJRFRKu=SDg@mail.gmail.com>
-Subject: i need your reply
-To: darkoi.lare2018@gmail.com
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20210803062640.D138B82F37@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,33 +55,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: joeflowers@formail.net
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings,
-
-Let me introduce myself my name is Mr Maxwell Watford, I am writing to
-you from Westend Credit Union Office Lome Togo, because I have
-received a file from the Ministry of Finance Lome-Togo, concerning an
-Inherited Fund bearing your name on it, And after our verifications,
-we found out that the funds belong to you.
-
-As the manager of the bank, I want you to come forward for this claim
-by sending me any of your ID or your passport copy to verify if the
-same as the
-one in the file. that may confirm from your side to ensure this fund
-did not end in the wrong person's hand.
-
-
-I am looking forward to your urgent reply,
-Best regards,
-
-Mr Maxwell Watford
-Senior manager
-Westend Credit Union Togo
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBtb3JuaW5nLAoKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBSZWZlcmVuY2UgbnVtYmVyOiBDSFIgLzIwL0NvVi8yMCBVUFkyCiAgICBUaGlzIGlzIHRvIG5v
+dGlmeSB5b3UgYWdhaW4gdGhhdCB5b3VyIEVtYWlsIEFkZHJlc3MgaGFzIGJlZW4gb2ZmaWNpYWxs
+eSBzZWxlY3RlZCB0byByZWNlaXZlIGEgZmluYW5jaWFsIEdyYW50LUNvbXBlbnNhdGlvbiBhbW91
+bnQgb2YgVVMkOTUwLDAwMC4wMCBmcm9tICB0aGUgb25nb2luZyBHbG9iYWwgIENvbXBlbnNhdGlv
+biBGdW5kLiAgRm9yIGd1aWRlbGluZXMgYW5kIHRvIGltbWVkaWF0ZWx5IHJlY2VpdmUgeW91ciBV
+UyQ5NTAsMDAwLjAwLCBraW5kbHkgY29udGFjdCBvdXIgTGVnYWwgYW5kIFBheW1lbnQgRGlyZWN0
+b3IsIE1ycy5Kb2UgRmxvd2VyIHRvZGF5IGJ5IGVtYWlsICB3aXRoIHRoZSBmb2xsb3dpbmcgaW5m
+b3JtYXRpb24gYXMgc3RhdGVkIGJlbG93OgoKTmFtZTogTXJzLiBKb2UgRmxvd2VycwpFLW1haWw6
+IGpvZWZsb3dlcnNAZm9ybWFpbC5uZXQKCiAgICAgICBQTEVBU0UgTk9URTogQWxsIGNvcnJlc3Bv
+bmRlbmNlIHRvIE1yLkpvZSBGbG93ZXJzLCBzaG91bGQgaGF2ZSB0aGUgYWJvdmUgc3RhdGVkIHJl
+ZmVyZW5jZSBudW1iZXI6IENIUiAvMjAvQ29WLzIwIFVQWTIgIGluY2x1ZGluZyB5b3VyIGN1cnJl
+bnQgbWFpbGluZyBhZGRyZXNzL3Bob25lL01lYW5zIG9mIElkZW50aWZpY2F0aW9uIHNlbnQgYWxv
+bmcgZm9yIHByb21wdCBhdHRlbnRpb24uCgpZb3VycyBzaW5jZXJlbHksCgoKUmVnYXJkcywKCgoK
+TXJzLiBBbWFuZGEgTmtvc2kKUHVibGljIEluZm9ybWF0aW9uIE9mZmljZXIKRmluYW5jaWFsIElu
+dGVsbGlnZW5jZSBDZW50cmUgfEZJQ3wKaHR0cHM6Ly93d3cuYWZkYi5vcmcvZW4KqTIwMjEgQWZy
+aWNhbiBEZXZlbG9wbWVudCBCYW5rCkludGVybmF0aW9uYWwgRmluYW5jZSBDb3Jwb3JhdGlvbiAt
+CldvcmxkIEJhbmsgR3JvdXAgfCBIdW1hbiBSZXNvdXJjZSBEZXB0LgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxA
+bGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
