@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1E1D3E0A1F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Aug 2021 23:47:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69D9A3E0AE6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 01:35:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CE74B403E4;
-	Wed,  4 Aug 2021 21:47:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BEA1E402EA;
+	Wed,  4 Aug 2021 23:35:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9QFnC07uefOW; Wed,  4 Aug 2021 21:47:14 +0000 (UTC)
+	with ESMTP id JuZ6mc1wVcSj; Wed,  4 Aug 2021 23:35:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 433E5403B8;
-	Wed,  4 Aug 2021 21:47:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6249C40266;
+	Wed,  4 Aug 2021 23:35:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 134A31BF5DB
- for <devel@linuxdriverproject.org>; Wed,  4 Aug 2021 21:47:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7CC4E1BF5DA
+ for <devel@linuxdriverproject.org>; Wed,  4 Aug 2021 23:35:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 01D6540147
- for <devel@linuxdriverproject.org>; Wed,  4 Aug 2021 21:47:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6A93D400F8
+ for <devel@linuxdriverproject.org>; Wed,  4 Aug 2021 23:35:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5LjR4sbo2szP for <devel@linuxdriverproject.org>;
- Wed,  4 Aug 2021 21:47:02 +0000 (UTC)
+ with ESMTP id FvjMPTLdD0VN for <devel@linuxdriverproject.org>;
+ Wed,  4 Aug 2021 23:35:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.maynitek.ru (mail.maynitek.ru [94.137.227.4])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2B2C0400D9
- for <devel@driverdev.osuosl.org>; Wed,  4 Aug 2021 21:47:01 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7D22240292
+ for <devel@driverdev.osuosl.org>; Wed,  4 Aug 2021 23:35:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id 8CCAB30269EF;
- Wed,  4 Aug 2021 22:23:06 +0500 (+05)
+ by mail.maynitek.ru (Postfix) with ESMTP id 3B25814F1C1A7;
+ Wed,  4 Aug 2021 23:54:48 +0500 (+05)
 Received: from mail.maynitek.ru ([127.0.0.1])
  by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id HfOdFCbSuDnA; Wed,  4 Aug 2021 22:23:06 +0500 (+05)
+ with ESMTP id uGObFDpTs3Kn; Wed,  4 Aug 2021 23:54:47 +0500 (+05)
 Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id 10F3530269E1;
- Wed,  4 Aug 2021 22:23:03 +0500 (+05)
+ by mail.maynitek.ru (Postfix) with ESMTP id 546C9307EF5E;
+ Wed,  4 Aug 2021 23:54:03 +0500 (+05)
 X-Virus-Scanned: amavisd-new at maynitek.ru
 Received: from mail.maynitek.ru ([127.0.0.1])
  by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id nEMWR6tO7wtY; Wed,  4 Aug 2021 22:23:02 +0500 (+05)
+ with ESMTP id WFZ2neyNqXtJ; Wed,  4 Aug 2021 23:54:03 +0500 (+05)
 Received: from [192.168.1.3] (unknown [178.151.250.143])
- by mail.maynitek.ru (Postfix) with ESMTPSA id 8464F30250AA;
- Wed,  4 Aug 2021 22:22:59 +0500 (+05)
+ by mail.maynitek.ru (Postfix) with ESMTPSA id 743231529FD28;
+ Wed,  4 Aug 2021 23:53:23 +0500 (+05)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Lesen Sie Ihre E-Mail.
-To: Recipients <deployer@maynitek.ru>
-From: deployer@maynitek.ru
-Date: Wed, 04 Aug 2021 20:22:41 +0300
-Message-Id: <20210804172259.8464F30250AA@mail.maynitek.ru>
+Subject: Lesen Sie Ihre EMail..
+To: Recipients <vao@maynitek.ru>
+From: vao@maynitek.ru
+Date: Wed, 04 Aug 2021 21:53:04 +0300
+Message-Id: <20210804185323.743231529FD28@mail.maynitek.ru>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
