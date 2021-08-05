@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 298E33E1558
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 15:08:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BA1D3E15E4
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 15:42:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 63BE083A5D;
-	Thu,  5 Aug 2021 13:08:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8B9824049E;
+	Thu,  5 Aug 2021 13:42:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Mjr8KjzKoeUf; Thu,  5 Aug 2021 13:08:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cma3RNmYcEAQ; Thu,  5 Aug 2021 13:42:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4211283A4C;
-	Thu,  5 Aug 2021 13:08:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 61789403CE;
+	Thu,  5 Aug 2021 13:42:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1F64A1BF471
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 13:08:03 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 411BB1BF471
+ for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 13:42:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0EAC083A4E
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 13:08:03 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 26410606C0
+ for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 13:42:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fsGiAuBb2Sww for <devel@linuxdriverproject.org>;
- Thu,  5 Aug 2021 13:08:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id koLg3FF8vhy0 for <devel@linuxdriverproject.org>;
+ Thu,  5 Aug 2021 13:41:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1820183A4C
- for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 13:07:59 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10066"; a="214175183"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C7A38606B4
+ for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 13:41:59 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10067"; a="212296507"
 X-IronPort-AV: E=Sophos;i="5.84,296,1620716400"; 
- d="gz'50?scan'50,208,50";a="214175183"
+ d="gz'50?scan'50,208,50";a="212296507"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Aug 2021 06:07:57 -0700
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2021 06:41:58 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.84,296,1620716400"; 
- d="gz'50?scan'50,208,50";a="503403226"
+ d="gz'50?scan'50,208,50";a="503413610"
 Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 05 Aug 2021 06:07:55 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 05 Aug 2021 06:41:55 -0700
 Received: from kbuild by d053b881505b with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mBd6I-000Fux-C9; Thu, 05 Aug 2021 13:07:54 +0000
-Date: Thu, 5 Aug 2021 21:07:04 +0800
+ id 1mBddC-000Fvt-RU; Thu, 05 Aug 2021 13:41:54 +0000
+Date: Thu, 5 Aug 2021 21:41:13 +0800
 From: kernel test robot <lkp@intel.com>
-To: Phillip Potter <phil@philpotter.co.uk>
-Subject: [staging:staging-testing 195/223]
- drivers/staging/r8188eu/core/rtw_mp_ioctl.c:671:15: warning: variable
- 'width' set but not used
-Message-ID: <202108052157.IUqglcjX-lkp@intel.com>
+To: Michael Straube <straube.linux@gmail.com>
+Subject: [staging:staging-testing 197/223]
+ drivers/staging/r8188eu/hal/rtl8188e_dm.c:182:1: error: label at end of
+ compound statement
+Message-ID: <202108052105.99oSCXUb-lkp@intel.com>
 MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="6c2NcOVqGQ03X4Wi"
 Content-Disposition: inline
@@ -80,49 +80,29 @@ Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   a8f80c20b373bb46670643db81f043ba7da6a537
-commit: c8ec10db41e5f95237d10d00d2a41037a370a265 [195/223] staging: r8188eu: remove RT_TRACE calls from core/rtw_mp_ioctl.c
+commit: b398ff88aa362e6fb348b2f39f2bf1b9a1f42d1e [197/223] staging: r8188eu: remove return from void functions
 config: sh-allmodconfig (attached as .config)
 compiler: sh4-linux-gcc (GCC) 10.3.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=c8ec10db41e5f95237d10d00d2a41037a370a265
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=b398ff88aa362e6fb348b2f39f2bf1b9a1f42d1e
         git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
         git fetch --no-tags staging staging-testing
-        git checkout c8ec10db41e5f95237d10d00d2a41037a370a265
+        git checkout b398ff88aa362e6fb348b2f39f2bf1b9a1f42d1e
         # save the attached .config to linux build tree
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-10.3.0 make.cross ARCH=sh 
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-10.3.0 make.cross O=build_dir ARCH=sh SHELL=/bin/bash drivers/staging/r8188eu/
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   drivers/staging/r8188eu/core/rtw_mp_ioctl.c: In function 'rtl8188eu_oid_rt_pro_write_register_hdl':
->> drivers/staging/r8188eu/core/rtw_mp_ioctl.c:671:15: warning: variable 'width' set but not used [-Wunused-but-set-variable]
-     671 |  u32  offset, width, value;
-         |               ^~~~~
-   drivers/staging/r8188eu/core/rtw_mp_ioctl.c: In function 'rtl8188eu_oid_rt_set_rx_packet_type_hdl':
->> drivers/staging/r8188eu/core/rtw_mp_ioctl.c:1096:6: warning: variable 'rx_pkt_type' set but not used [-Wunused-but-set-variable]
-    1096 |  u8  rx_pkt_type;
-         |      ^~~~~~~~~~~
-   In file included from drivers/staging/r8188eu/core/rtw_mp_ioctl.c:9:
-   At top level:
-   drivers/staging/r8188eu/core/../include/rtw_mp_ioctl.h:209:34: warning: 'rtl8188eu_oid_rtl_seg_81_85' defined but not used [-Wunused-const-variable=]
-     209 | static const struct oid_obj_priv rtl8188eu_oid_rtl_seg_81_85[] = {
-         |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/r8188eu/core/../include/rtw_mp_ioctl.h:203:34: warning: 'rtl8188eu_oid_rtl_seg_81_80_80' defined but not used [-Wunused-const-variable=]
-     203 | static const struct oid_obj_priv rtl8188eu_oid_rtl_seg_81_80_80[] = {
-         |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/r8188eu/core/../include/rtw_mp_ioctl.h:194:34: warning: 'rtl8188eu_oid_rtl_seg_81_80_40' defined but not used [-Wunused-const-variable=]
-     194 | static const struct oid_obj_priv rtl8188eu_oid_rtl_seg_81_80_40[] = {
-         |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/r8188eu/core/../include/rtw_mp_ioctl.h:175:34: warning: 'rtl8188eu_oid_rtl_seg_81_80_20' defined but not used [-Wunused-const-variable=]
-     175 | static const struct oid_obj_priv rtl8188eu_oid_rtl_seg_81_80_20[] = {
-         |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/staging/r8188eu/core/../include/rtw_mp_ioctl.h:140:34: warning: 'rtl8188eu_oid_rtl_seg_81_80_00' defined but not used [-Wunused-const-variable=]
-     140 | static const struct oid_obj_priv rtl8188eu_oid_rtl_seg_81_80_00[] = {
-         |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/staging/r8188eu/hal/rtl8188e_dm.c: In function 'rtl8188e_HalDmWatchDog':
+>> drivers/staging/r8188eu/hal/rtl8188e_dm.c:182:1: error: label at end of compound statement
+     182 | skip_dm:
+         | ^~~~~~~
 
 Kconfig warnings: (for reference only)
    WARNING: unmet direct dependencies detected for SND_ATMEL_SOC_PDC
@@ -132,135 +112,62 @@ Kconfig warnings: (for reference only)
    - SND_ATMEL_SOC_SSC_PDC && SOUND && !UML && SND && SND_SOC && SND_ATMEL_SOC && ATMEL_SSC
 
 
-vim +/width +671 drivers/staging/r8188eu/core/rtw_mp_ioctl.c
+vim +182 drivers/staging/r8188eu/hal/rtl8188e_dm.c
 
-15865124feed88 Phillip Potter 2021-07-28  607  
-15865124feed88 Phillip Potter 2021-07-28  608  int rtl8188eu_oid_rt_pro_trigger_gpio_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  609  {
-15865124feed88 Phillip Potter 2021-07-28  610  	struct adapter *Adapter = (struct adapter *)(poid_par_priv->adapter_context);
-15865124feed88 Phillip Potter 2021-07-28  611  	int status = NDIS_STATUS_SUCCESS;
-15865124feed88 Phillip Potter 2021-07-28  612  
-15865124feed88 Phillip Potter 2021-07-28  613  	if (poid_par_priv->type_of_oid != SET_OID)
-15865124feed88 Phillip Potter 2021-07-28  614  		return NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  615  
-15865124feed88 Phillip Potter 2021-07-28  616  	_irqlevel_changed_(&oldirql, LOWER);
-15865124feed88 Phillip Potter 2021-07-28  617  	rtw_hal_set_hwreg(Adapter, HW_VAR_TRIGGER_GPIO_0, NULL);
-15865124feed88 Phillip Potter 2021-07-28  618  	_irqlevel_changed_(&oldirql, RAISE);
-15865124feed88 Phillip Potter 2021-07-28  619  
-15865124feed88 Phillip Potter 2021-07-28  620  	return status;
-15865124feed88 Phillip Potter 2021-07-28  621  }
-15865124feed88 Phillip Potter 2021-07-28  622  /*   rtl8188eu_oid_rtl_seg_81_80_00   section end **************** */
-15865124feed88 Phillip Potter 2021-07-28  623  /*  */
-15865124feed88 Phillip Potter 2021-07-28  624  int rtl8188eu_oid_rt_pro8711_join_bss_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  625  {
-15865124feed88 Phillip Potter 2021-07-28  626  	return 0;
-15865124feed88 Phillip Potter 2021-07-28  627  }
-15865124feed88 Phillip Potter 2021-07-28  628  /*  */
-15865124feed88 Phillip Potter 2021-07-28  629  int rtl8188eu_oid_rt_pro_read_register_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  630  {
-15865124feed88 Phillip Potter 2021-07-28  631  	struct mp_rw_reg *RegRWStruct;
-15865124feed88 Phillip Potter 2021-07-28  632  	u32		offset, width;
-15865124feed88 Phillip Potter 2021-07-28  633  	int status = NDIS_STATUS_SUCCESS;
-15865124feed88 Phillip Potter 2021-07-28  634  	struct adapter *Adapter = (struct adapter *)(poid_par_priv->adapter_context);
-15865124feed88 Phillip Potter 2021-07-28  635  
-15865124feed88 Phillip Potter 2021-07-28  636  	if (poid_par_priv->type_of_oid != QUERY_OID)
-15865124feed88 Phillip Potter 2021-07-28  637  		return NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  638  
-15865124feed88 Phillip Potter 2021-07-28  639  	RegRWStruct = (struct mp_rw_reg *)poid_par_priv->information_buf;
-15865124feed88 Phillip Potter 2021-07-28  640  	offset = RegRWStruct->offset;
-15865124feed88 Phillip Potter 2021-07-28  641  	width = RegRWStruct->width;
-15865124feed88 Phillip Potter 2021-07-28  642  
-15865124feed88 Phillip Potter 2021-07-28  643  	if (offset > 0xFFF)
-15865124feed88 Phillip Potter 2021-07-28  644  		return NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  645  
-15865124feed88 Phillip Potter 2021-07-28  646  	_irqlevel_changed_(&oldirql, LOWER);
-15865124feed88 Phillip Potter 2021-07-28  647  
-15865124feed88 Phillip Potter 2021-07-28  648  	switch (width) {
-15865124feed88 Phillip Potter 2021-07-28  649  	case 1:
-15865124feed88 Phillip Potter 2021-07-28  650  		RegRWStruct->value = rtw_read8(Adapter, offset);
-15865124feed88 Phillip Potter 2021-07-28  651  		break;
-15865124feed88 Phillip Potter 2021-07-28  652  	case 2:
-15865124feed88 Phillip Potter 2021-07-28  653  		RegRWStruct->value = rtw_read16(Adapter, offset);
-15865124feed88 Phillip Potter 2021-07-28  654  		break;
-15865124feed88 Phillip Potter 2021-07-28  655  	default:
-15865124feed88 Phillip Potter 2021-07-28  656  		width = 4;
-15865124feed88 Phillip Potter 2021-07-28  657  		RegRWStruct->value = rtw_read32(Adapter, offset);
-15865124feed88 Phillip Potter 2021-07-28  658  		break;
-15865124feed88 Phillip Potter 2021-07-28  659  	}
-15865124feed88 Phillip Potter 2021-07-28  660  
-15865124feed88 Phillip Potter 2021-07-28  661  	_irqlevel_changed_(&oldirql, RAISE);
-15865124feed88 Phillip Potter 2021-07-28  662  
-15865124feed88 Phillip Potter 2021-07-28  663  	*poid_par_priv->bytes_rw = width;
-15865124feed88 Phillip Potter 2021-07-28  664  
-15865124feed88 Phillip Potter 2021-07-28  665  	return status;
-15865124feed88 Phillip Potter 2021-07-28  666  }
-15865124feed88 Phillip Potter 2021-07-28  667  /*  */
-15865124feed88 Phillip Potter 2021-07-28  668  int rtl8188eu_oid_rt_pro_write_register_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  669  {
-15865124feed88 Phillip Potter 2021-07-28  670  	struct mp_rw_reg *RegRWStruct;
-15865124feed88 Phillip Potter 2021-07-28 @671  	u32		offset, width, value;
-15865124feed88 Phillip Potter 2021-07-28  672  	int status = NDIS_STATUS_SUCCESS;
-15865124feed88 Phillip Potter 2021-07-28  673  	struct adapter *padapter = (struct adapter *)(poid_par_priv->adapter_context);
-15865124feed88 Phillip Potter 2021-07-28  674  
-15865124feed88 Phillip Potter 2021-07-28  675  	if (poid_par_priv->type_of_oid != SET_OID)
-15865124feed88 Phillip Potter 2021-07-28  676  		return NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  677  
-15865124feed88 Phillip Potter 2021-07-28  678  	RegRWStruct = (struct mp_rw_reg *)poid_par_priv->information_buf;
-15865124feed88 Phillip Potter 2021-07-28  679  	offset = RegRWStruct->offset;
-15865124feed88 Phillip Potter 2021-07-28  680  	width = RegRWStruct->width;
-15865124feed88 Phillip Potter 2021-07-28  681  	value = RegRWStruct->value;
-15865124feed88 Phillip Potter 2021-07-28  682  
-15865124feed88 Phillip Potter 2021-07-28  683  	if (offset > 0xFFF)
-15865124feed88 Phillip Potter 2021-07-28  684  		return NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  685  
-15865124feed88 Phillip Potter 2021-07-28  686  	_irqlevel_changed_(&oldirql, LOWER);
-15865124feed88 Phillip Potter 2021-07-28  687  
-15865124feed88 Phillip Potter 2021-07-28  688  	switch (RegRWStruct->width) {
-15865124feed88 Phillip Potter 2021-07-28  689  	case 1:
-15865124feed88 Phillip Potter 2021-07-28  690  		if (value > 0xFF) {
-15865124feed88 Phillip Potter 2021-07-28  691  			status = NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  692  			break;
-15865124feed88 Phillip Potter 2021-07-28  693  		}
-15865124feed88 Phillip Potter 2021-07-28  694  		rtw_write8(padapter, offset, (u8)value);
-15865124feed88 Phillip Potter 2021-07-28  695  		break;
-15865124feed88 Phillip Potter 2021-07-28  696  	case 2:
-15865124feed88 Phillip Potter 2021-07-28  697  		if (value > 0xFFFF) {
-15865124feed88 Phillip Potter 2021-07-28  698  			status = NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  699  			break;
-15865124feed88 Phillip Potter 2021-07-28  700  		}
-15865124feed88 Phillip Potter 2021-07-28  701  		rtw_write16(padapter, offset, (u16)value);
-15865124feed88 Phillip Potter 2021-07-28  702  		break;
-15865124feed88 Phillip Potter 2021-07-28  703  	case 4:
-15865124feed88 Phillip Potter 2021-07-28  704  		rtw_write32(padapter, offset, value);
-15865124feed88 Phillip Potter 2021-07-28  705  		break;
-15865124feed88 Phillip Potter 2021-07-28  706  	default:
-15865124feed88 Phillip Potter 2021-07-28  707  		status = NDIS_STATUS_NOT_ACCEPTED;
-15865124feed88 Phillip Potter 2021-07-28  708  		break;
-15865124feed88 Phillip Potter 2021-07-28  709  	}
-15865124feed88 Phillip Potter 2021-07-28  710  
-15865124feed88 Phillip Potter 2021-07-28  711  	_irqlevel_changed_(&oldirql, RAISE);
-15865124feed88 Phillip Potter 2021-07-28  712  
-15865124feed88 Phillip Potter 2021-07-28  713  	return status;
-15865124feed88 Phillip Potter 2021-07-28  714  }
-15865124feed88 Phillip Potter 2021-07-28  715  /*  */
-15865124feed88 Phillip Potter 2021-07-28  716  int rtl8188eu_oid_rt_pro_burst_read_register_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  717  {
-15865124feed88 Phillip Potter 2021-07-28  718  	return 0;
-15865124feed88 Phillip Potter 2021-07-28  719  }
-15865124feed88 Phillip Potter 2021-07-28  720  /*  */
-15865124feed88 Phillip Potter 2021-07-28  721  int rtl8188eu_oid_rt_pro_burst_write_register_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  722  {
-15865124feed88 Phillip Potter 2021-07-28  723  	return 0;
-15865124feed88 Phillip Potter 2021-07-28  724  }
-15865124feed88 Phillip Potter 2021-07-28  725  /*  */
-15865124feed88 Phillip Potter 2021-07-28  726  int rtl8188eu_oid_rt_pro_write_txcmd_hdl(struct oid_par_priv *poid_par_priv)
-15865124feed88 Phillip Potter 2021-07-28  727  {
-15865124feed88 Phillip Potter 2021-07-28  728  	return 0;
-15865124feed88 Phillip Potter 2021-07-28  729  }
-15865124feed88 Phillip Potter 2021-07-28  730  
+8cd574e6af5463 Phillip Potter 2021-07-28  136  
+8cd574e6af5463 Phillip Potter 2021-07-28  137  void rtl8188e_HalDmWatchDog(struct adapter *Adapter)
+8cd574e6af5463 Phillip Potter 2021-07-28  138  {
+8cd574e6af5463 Phillip Potter 2021-07-28  139  	bool fw_cur_in_ps = false;
+8cd574e6af5463 Phillip Potter 2021-07-28  140  	bool fw_ps_awake = true;
+8cd574e6af5463 Phillip Potter 2021-07-28  141  	u8 hw_init_completed = false;
+8cd574e6af5463 Phillip Potter 2021-07-28  142  	struct hal_data_8188e *hal_data = GET_HAL_DATA(Adapter);
+8cd574e6af5463 Phillip Potter 2021-07-28  143  
+8cd574e6af5463 Phillip Potter 2021-07-28  144  
+8cd574e6af5463 Phillip Potter 2021-07-28  145  	hw_init_completed = Adapter->hw_init_completed;
+8cd574e6af5463 Phillip Potter 2021-07-28  146  
+8cd574e6af5463 Phillip Potter 2021-07-28  147  	if (!hw_init_completed)
+8cd574e6af5463 Phillip Potter 2021-07-28  148  		goto skip_dm;
+8cd574e6af5463 Phillip Potter 2021-07-28  149  
+8cd574e6af5463 Phillip Potter 2021-07-28  150  	fw_cur_in_ps = Adapter->pwrctrlpriv.bFwCurrentInPSMode;
+8cd574e6af5463 Phillip Potter 2021-07-28  151  	rtw_hal_get_hwreg(Adapter, HW_VAR_FWLPS_RF_ON, (u8 *)(&fw_ps_awake));
+8cd574e6af5463 Phillip Potter 2021-07-28  152  
+8cd574e6af5463 Phillip Potter 2021-07-28  153  	/*  Fw is under p2p powersaving mode, driver should stop dynamic mechanism. */
+8cd574e6af5463 Phillip Potter 2021-07-28  154  	/*  modifed by thomas. 2011.06.11. */
+8cd574e6af5463 Phillip Potter 2021-07-28  155  	if (Adapter->wdinfo.p2p_ps_mode)
+8cd574e6af5463 Phillip Potter 2021-07-28  156  		fw_ps_awake = false;
+8cd574e6af5463 Phillip Potter 2021-07-28  157  
+8cd574e6af5463 Phillip Potter 2021-07-28  158  	if (hw_init_completed && ((!fw_cur_in_ps) && fw_ps_awake)) {
+8cd574e6af5463 Phillip Potter 2021-07-28  159  		/*  Calculate Tx/Rx statistics. */
+8cd574e6af5463 Phillip Potter 2021-07-28  160  		dm_CheckStatistics(Adapter);
+8cd574e6af5463 Phillip Potter 2021-07-28  161  
+8cd574e6af5463 Phillip Potter 2021-07-28  162  
+8cd574e6af5463 Phillip Potter 2021-07-28  163  	}
+8cd574e6af5463 Phillip Potter 2021-07-28  164  
+8cd574e6af5463 Phillip Potter 2021-07-28  165  	/* ODM */
+8cd574e6af5463 Phillip Potter 2021-07-28  166  	if (hw_init_completed) {
+8cd574e6af5463 Phillip Potter 2021-07-28  167  		struct mlme_priv *pmlmepriv = &Adapter->mlmepriv;
+8cd574e6af5463 Phillip Potter 2021-07-28  168  		u8 bLinked = false;
+8cd574e6af5463 Phillip Potter 2021-07-28  169  
+8cd574e6af5463 Phillip Potter 2021-07-28  170  		if ((check_fwstate(pmlmepriv, WIFI_AP_STATE)) ||
+8cd574e6af5463 Phillip Potter 2021-07-28  171  		    (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE | WIFI_ADHOC_MASTER_STATE))) {
+8cd574e6af5463 Phillip Potter 2021-07-28  172  			if (Adapter->stapriv.asoc_sta_count > 2)
+8cd574e6af5463 Phillip Potter 2021-07-28  173  				bLinked = true;
+8cd574e6af5463 Phillip Potter 2021-07-28  174  		} else {/* Station mode */
+8cd574e6af5463 Phillip Potter 2021-07-28  175  			if (check_fwstate(pmlmepriv, _FW_LINKED))
+8cd574e6af5463 Phillip Potter 2021-07-28  176  				bLinked = true;
+8cd574e6af5463 Phillip Potter 2021-07-28  177  		}
+8cd574e6af5463 Phillip Potter 2021-07-28  178  
+8cd574e6af5463 Phillip Potter 2021-07-28  179  		ODM_CmnInfoUpdate(&hal_data->odmpriv, ODM_CMNINFO_LINK, bLinked);
+8cd574e6af5463 Phillip Potter 2021-07-28  180  		ODM_DMWatchdog(&hal_data->odmpriv);
+8cd574e6af5463 Phillip Potter 2021-07-28  181  	}
+8cd574e6af5463 Phillip Potter 2021-07-28 @182  skip_dm:
+8cd574e6af5463 Phillip Potter 2021-07-28  183  	/*  Check GPIO to determine current RF on/off and Pbc status. */
+8cd574e6af5463 Phillip Potter 2021-07-28  184  	/*  Check Hardware Radio ON/OFF or not */
+8cd574e6af5463 Phillip Potter 2021-07-28  185  }
+8cd574e6af5463 Phillip Potter 2021-07-28  186  
 
-:::::: The code at line 671 was first introduced by commit
-:::::: 15865124feed880978b79839c756ef6cbb4ec6b3 staging: r8188eu: introduce new core dir for RTL8188eu driver
+:::::: The code at line 182 was first introduced by commit
+:::::: 8cd574e6af5463af7d693d111c61212e52c44810 staging: r8188eu: introduce new hal dir for RTL8188eu driver
 
 :::::: TO: Phillip Potter <phil@philpotter.co.uk>
 :::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
@@ -274,7 +181,7 @@ Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICFzfC2EAAy5jb25maWcAjFxdc9s2s77vr+CkN+3MSSvZiZOeM74ASVBCRRIMAerDNxzF
+H4sICKnkC2EAAy5jb25maWcAjFxdc9s2s77vr+CkN+3MSSvZiZOeM74ASVBCRRIMAerDNxzF
 VhpPbcuvJPdt/v3ZBb8AEKTUm0bPs/haLBaLBeiff/rZI2+n/fP29Hi/fXr64f21e9kdtqfd
 g/ft8Wn3f17IvZRLj4ZM/gbC8ePL27+/H797H3+bfvht8v5wf+UtdoeX3ZMX7F++Pf71BoUf
 9y8//fxTwNOIzcogKJc0F4ynpaRrefvu+P3D+yes5v1f9/feL7Mg+NWbTn67/m3yTivDRAnM
