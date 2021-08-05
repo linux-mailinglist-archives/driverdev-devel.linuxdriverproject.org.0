@@ -1,48 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AED6B3E18ED
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 17:57:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 409ED405D9;
-	Thu,  5 Aug 2021 15:57:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5r0FItJkB9Qz; Thu,  5 Aug 2021 15:57:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9EF68405C5;
-	Thu,  5 Aug 2021 15:57:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 07AD11BF471
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 15:57:15 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 049583E190F
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 18:06:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EA22840489
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 15:57:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 962C4404D4;
+	Thu,  5 Aug 2021 16:06:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pVzIK0amZ8vy for <devel@linuxdriverproject.org>;
- Thu,  5 Aug 2021 15:57:12 +0000 (UTC)
-X-Greylist: delayed 00:15:38 by SQLgrey-1.8.0
-Received: from interpooldocu.xyz (hwsrv-897195.hostwindsdns.com
- [IPv6:2607:5500:3000:920::2])
- by smtp2.osuosl.org (Postfix) with ESMTP id B97F84012F
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 15:57:12 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IRn8a62Lr1jY; Thu,  5 Aug 2021 16:06:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7F975404D6;
+	Thu,  5 Aug 2021 16:05:59 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B2781BF574
+ for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 16:05:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7A3E983B15
+ for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 16:05:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+X-Amavis-Alert: BAD HEADER SECTION, Missing required header field: "Date"
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id X178ftxg2rVX for <devel@linuxdriverproject.org>;
+ Thu,  5 Aug 2021 16:05:47 +0000 (UTC)
+X-Greylist: delayed 00:34:18 by SQLgrey-1.8.0
+Received: from docisignatureso.icu (hwsrv-897194.hostwindsdns.com
+ [IPv6:2a0d:7c40:3000:791::2])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7B0FC83ADB
+ for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 16:05:47 +0000 (UTC)
 Received: from [103.156.92.249] (unknown [103.156.92.249])
  (Authenticated sender: supportusnow)
- by interpooldocu.xyz (Postfix) with ESMTPA id 19155194CAC
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 10:39:50 -0500 (CDT)
-Content-Type: multipart/mixed; boundary="===============0719382471=="
+ by docisignatureso.icu (Postfix) with ESMTPA id 8446C186FCD
+ for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 10:18:58 -0500 (CDT)
+Content-Type: multipart/mixed; boundary="===============1015741503=="
 MIME-Version: 1.0
 Subject: Estimate and Invoice
-To: devel@linuxdriverproject.org
-From: "Annie Kunza" <annie@aol.com>
-Date: Thu, 05 Aug 2021 08:39:49 -0700
-Message-Id: <20210805155714.EA22840489@smtp2.osuosl.org>
+To: devel@driverdev.osuosl.org
+From: "Annie Kunza <supportusnow"@att.net
+Message-Id: <20210805160548.7A3E983B15@smtp1.osuosl.org>
+Date: Thu,  5 Aug 2021 16:05:48 +0000 (UTC)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,8 +59,11 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+>
+Date: Thu, 05 Aug 2021 08:18:57 -0700
+
 You will not see this in a MIME-aware mail reader.
---===============0719382471==
+--===============1015741503==
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -67,7 +71,7 @@ Content-Description: Mail message body
 
 Attached is a Estimate/Invoice Reply Back with Any Changes or the Okay to P=
 roceed.
---===============0719382471==
+--===============1015741503==
 Content-Type: application/zip
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -135,7 +139,7 @@ GyFsYT7rdMJiIWtshgYWFrPYt6zVzkL+WZFuFnLM4pk9+21S3X7Uz0/Xu/MJAAAAAAAAAAAAAAAA
 AAAAALxCxsLXXFJKSn95Uro3Vvwj/TQplv4ZBwB8O/0bUEsBAh8AFAAAAAgAayoFU76VlRQODQAA
 AAATABgAJAAAAAAAAAAgAAAAAAAAAEVzdGltYXRlX2FuZF9JbnZvaWNlLmltZwoAIAAAAAAAAQAY
 AHmx/h/0idcBuDMhPPSJ1wG4MyE89InXAVBLBQYAAAAAAQABAGoAAABEDQAAAAA=
---===============0719382471==
+--===============1015741503==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -146,4 +150,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============0719382471==--
+--===============1015741503==--
