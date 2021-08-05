@@ -1,49 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 049583E190F
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 18:06:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97FEB3E1C19
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Aug 2021 21:05:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 962C4404D4;
-	Thu,  5 Aug 2021 16:06:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2A5D640517;
+	Thu,  5 Aug 2021 19:05:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IRn8a62Lr1jY; Thu,  5 Aug 2021 16:06:01 +0000 (UTC)
+	with ESMTP id TI1kIj-r0x8o; Thu,  5 Aug 2021 19:05:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7F975404D6;
-	Thu,  5 Aug 2021 16:05:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CA9E540293;
+	Thu,  5 Aug 2021 19:05:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8B2781BF574
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 16:05:48 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C7C721BF361
+ for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 19:05:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7A3E983B15
- for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 16:05:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B38DE60A46
+ for <devel@linuxdriverproject.org>; Thu,  5 Aug 2021 19:05:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Missing required header field: "Date"
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X178ftxg2rVX for <devel@linuxdriverproject.org>;
- Thu,  5 Aug 2021 16:05:47 +0000 (UTC)
-X-Greylist: delayed 00:34:18 by SQLgrey-1.8.0
-Received: from docisignatureso.icu (hwsrv-897194.hostwindsdns.com
- [IPv6:2a0d:7c40:3000:791::2])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7B0FC83ADB
- for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 16:05:47 +0000 (UTC)
-Received: from [103.156.92.249] (unknown [103.156.92.249])
- (Authenticated sender: supportusnow)
- by docisignatureso.icu (Postfix) with ESMTPA id 8446C186FCD
- for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 10:18:58 -0500 (CDT)
-Content-Type: multipart/mixed; boundary="===============1015741503=="
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=linaro.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2JSEcNI3ZcQ0 for <devel@linuxdriverproject.org>;
+ Thu,  5 Aug 2021 19:05:40 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DE14860A3B
+ for <devel@driverdev.osuosl.org>; Thu,  5 Aug 2021 19:05:40 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id
+ e2-20020a17090a4a02b029016f3020d867so11880127pjh.3
+ for <devel@driverdev.osuosl.org>; Thu, 05 Aug 2021 12:05:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2ZFFq7OM5nVkToszzdtX9QSlNl/eY89U4a4AO5gbJ0c=;
+ b=dgxIBWU0u0EHXfPQrJsNfrQ8leeNYIxMblGPZfdM3Ua7Qj+jQjx5zoz/UaSUmzqj6q
+ tIX67J0aXI+Av+ptQljjWXFQeGYLxwdbj2qhFwEWL90k+N25uxQ1rDEDrKiPb4wqRVe3
+ rT23r+cBkDJ9g8JijWw84nFgPxCSpV4PQn+iMphpfz4y04ObSCyLuI60Z07KnNlfZ+oj
+ NY/2x7Jo2MqimtJzymKazggA5aIuIkvFjUWcsmy7w2hBG3tGQFpqsSt6Hkknt5XLIM/T
+ +rW8B1o1WfkgB4tUvMQfipkFb2KUbdd/DxggqQFa/z8Ii/CpEAG2KWbvZi0Sw8VZXi/R
+ Bq0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2ZFFq7OM5nVkToszzdtX9QSlNl/eY89U4a4AO5gbJ0c=;
+ b=uUkCWf6ckAYp8QvP/cf2To/B0qrnxOjByVtdwSFNNdSeo51lawSTX4S0/rBnngB1+N
+ Hmze9Y38EI8p5WPpv3HXtqzQYIXRQLiGcHPV05cXC3DHvAbg5VlL70zlCGCT4Si7uXPz
+ gHUntKYWLYzYm9S637xa9QUcJHqnmfMDsxlbrGcyehklqVYPnf7bSvxVpLG7seqlnNfZ
+ 0y1tFDNhIA07oP8lZP/jORRS+Q73WyRJrhno3LbIHzjtkUu8CxR5/put4WQts8AtXeZt
+ k+hrGlCrz15sF/z9KGlFWc5yNpPy0Pa5cjvCv4C7uv75sOyI1DzpZY9yGVgyIPBp3FoX
+ zX2g==
+X-Gm-Message-State: AOAM531Wtr2enWMU3aY9D6J9Cfidue1bXpEBlc+yBw7ccfJIhtnbZHFL
+ +pQvdFoDQ/2Qd/3AQjLKszokk2+effYjkQ3ccK/yCA==
+X-Google-Smtp-Source: ABdhPJxKXPQWKZYVNFugMmvukgwEvPM1+RUaAfvu87Y0aIiNAm/MX3SlelYUjvZdxUxr63cktsycKHW5sNSqYYm9sU0=
+X-Received: by 2002:aa7:90c8:0:b029:32c:935f:de5f with SMTP id
+ k8-20020aa790c80000b029032c935fde5fmr6578542pfk.79.1628190340250; Thu, 05 Aug
+ 2021 12:05:40 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Estimate and Invoice
-To: devel@driverdev.osuosl.org
-From: "Annie Kunza <supportusnow"@att.net
-Message-Id: <20210805160548.7A3E983B15@smtp1.osuosl.org>
-Date: Thu,  5 Aug 2021 16:05:48 +0000 (UTC)
+References: <a565cb1662d2f8300905a369c575e19176fd8e4c.1628148418.git.xji@analogixsemi.com>
+In-Reply-To: <a565cb1662d2f8300905a369c575e19176fd8e4c.1628148418.git.xji@analogixsemi.com>
+From: Robert Foss <robert.foss@linaro.org>
+Date: Thu, 5 Aug 2021 21:05:29 +0200
+Message-ID: <CAG3jFyuGJZ4ig6nFxXJJ0d-7ob2+=po2cxSuN29wedV5xVE+gA@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] drm/bridge: anx7625: Tune K value for IVO panel
+To: Xin Ji <xji@analogixsemi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,98 +83,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Bernie Liang <bliang@analogixsemi.com>, Qilin Wen <qwen@analogixsemi.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Vasily Khoruzhick <anarsoul@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hey Xin,
+
+Thanks for submitting this.
+
+On Thu, 5 Aug 2021 at 09:31, Xin Ji <xji@analogixsemi.com> wrote:
 >
-Date: Thu, 05 Aug 2021 08:18:57 -0700
+> IVO panel require less input video clock variation than video clock
+> variation in DP CTS spec.
+>
+> This patch decreases the K value of ANX7625 which will shrink eDP Tx
+> video clock variation to meet IVO panel's requirement.
+>
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> ---
+>  drivers/gpu/drm/bridge/analogix/anx7625.c | 17 ++++++++++++++---
+>  drivers/gpu/drm/bridge/analogix/anx7625.h |  4 +++-
+>  2 files changed, 17 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> index a3d82377066b..ceed1c7f3f28 100644
+> --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
+> +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> @@ -384,6 +384,18 @@ static int anx7625_odfc_config(struct anx7625_data *ctx,
+>         return ret;
+>  }
+>
+> +static int anx7625_set_k_value(struct anx7625_data *ctx)
 
-You will not see this in a MIME-aware mail reader.
---===============1015741503==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+Pardon my ignorance, but I don't know what a K-value is. Could you add
+a comment detailing
+what the K-value does?
 
-Attached is a Estimate/Invoice Reply Back with Any Changes or the Okay to P=
-roceed.
---===============1015741503==
-Content-Type: application/zip
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="Estimate_and_Invoice.zip"
+> +{
+> +       struct edid *edid = (struct edid *)ctx->slimport_edid_p.edid_raw_data;
+> +
+> +       if (edid->mfg_id[0] == IVO_MID0 && edid->mfg_id[1] == IVO_MID1)
+> +               return anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
+> +                                        MIPI_DIGITAL_ADJ_1, 0x3B);
+> +
+> +       return anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
+> +                                MIPI_DIGITAL_ADJ_1, 0x3D);
+> +}
+> +
+>  static int anx7625_dsi_video_timing_config(struct anx7625_data *ctx)
+>  {
+>         struct device *dev = &ctx->client->dev;
+> @@ -470,9 +482,8 @@ static int anx7625_dsi_video_timing_config(struct anx7625_data *ctx)
+>                         MIPI_PLL_N_NUM_15_8, (n >> 8) & 0xff);
+>         ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client, MIPI_PLL_N_NUM_7_0,
+>                         (n & 0xff));
+> -       /* Diff */
+> -       ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
+> -                       MIPI_DIGITAL_ADJ_1, 0x3D);
+> +       /* Diff and K value */
 
-UEsDBBQAAAAIAGsqBVO+lZUUDg0AAAAAEwAYAAAARXN0aW1hdGVfYW5kX0ludm9pY2UuaW1n7N3N
-TxRnHAfw3yxvW3uQhrsOSg/VlAxLUTk0EWW1myi+8HYxMUaxIRFolJL01sS/on9CL0ab/gVN7z2Z
-/gN66G177Kl9ZmAVMfENRQqfz7Iz7DPPM8xsSL7PzCb7CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAgsrOTRTGSRf4azemZ1sWJmeb1ianJ662puUuts83N2zv7m6+Vy9r8a/9u+imfUa/H
-gfWmA1O1ztbapXJ5JC6v7+3y6nrz6g/1np6BgSe1zvjZqcnmudZUczLnY2hdPH9m9upUPtcYHhs+
-NVzkX+Yz3zTz2Qvr/yxp+8T5Zl52aV4dzP/3GkVjpDhVjBVjI+Mj40Xx5KWGYot4qSGL1tK3Z76/
-u5yvbbxpAfAx/LuR/wDAPnKmOSH/AWCfmZq+WjTkPwDsKzOu/wEAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAYLuyqMVPaXk/a2f5pvb+aMa9WI3FWIobab0Q19N6OW6ldSuWD2fVyFpZh7969sdYjEaRlo2Y
-iBMxHsWzRyO1nowPajAuTc9M5GdXlr67u3Dv3sKtfHZ58ebKrYU33cG2x2917NVl3q8detpX7+kZ
-GBi6/LxvAMDO6E4Z/ldK8PxhOxvcyPI4Njt5Lr8wl7eWb69s6lvL3k9WvmZuEWuxkrbdjIX4IL6I
-nSTbAdiFelL+H02pP/+onR0pM74zBzheFQaO3ao8xivpYHtDxgLA2+pNif9rStPuxw+yo+l1V+yB
-6/t6OSeoTqK8kVGeyJ3FG8urUd3D6Frv1f/ioN6NOcWun0uk4z5dHmuvms0AvLu+lP+/pORbOliP
-oerzAABgr6un/B+srnzb2ecBAAAAAAAAAAAAAAAAAAAAAAAAAAAAvA9lFf+f0/J+1s6KN6/hczir
-Rtaqbw7Oqv5jMRpFWjZiIk7E+LPq/0VqGYuT8UENbrdm0bbHb9WpI5SvNYbHhk8NFy9uvnboaV+9
-p2dgYOiy+oUA7LjulOH/pATPH7azkWc18MqyeRfm8tby7ZVNfWvVxj1QH3AnyXYAdqGelP+jKfXn
-H7Wzstp/rTMHOD41fbVoxG5VHuOV2nrdXhkLAG+nNyX+7ylNux8/yEbT6669cH1fL+cE1UmUNzLK
-E7mzeGN5Nap7GF3rvfpfHNS7MafY9XOJdNyny2PtzQIA3lVfyv/fUvItHazHV9XnAQDAXldP+T9S
-Xfm2s7EAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3odPohZ/RxafDq3F6S116TdXmPns1bup+g5Xv71Z
-Tb5s41nLykcAADv8/f9fb3z//0QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AEAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AADQUUuPPyKL7M92WqSGHyPyWF8XAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOwnAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD81879/MZx1QEA
-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
---===============1015741503==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+With a proper comment above, this comment is no longer needed.
 
+> +       anx7625_set_k_value(ctx);
+>
+>         ret |= anx7625_odfc_config(ctx, post_divider - 1);
+>
+> diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.h b/drivers/gpu/drm/bridge/analogix/anx7625.h
+> index 034c3840028f..6dcf64c703f9 100644
+> --- a/drivers/gpu/drm/bridge/analogix/anx7625.h
+> +++ b/drivers/gpu/drm/bridge/analogix/anx7625.h
+> @@ -210,7 +210,9 @@
+>  #define  MIPI_VIDEO_STABLE_CNT           0x0A
+>
+>  #define  MIPI_LANE_CTRL_10               0x0F
+> -#define  MIPI_DIGITAL_ADJ_1   0x1B
+> +#define  MIPI_DIGITAL_ADJ_1     0x1B
+> +#define  IVO_MID0               0x26
+> +#define  IVO_MID1               0xCF
+>
+>  #define  MIPI_PLL_M_NUM_23_16   0x1E
+>  #define  MIPI_PLL_M_NUM_15_8    0x1F
+> --
+> 2.25.1
+>
+
+LGTM with the above fix.
+
+Reviewed-by: Robert Foss <robert.foss@linaro.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1015741503==--
