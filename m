@@ -1,56 +1,134 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57BE83E24A2
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Aug 2021 10:03:11 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04BD93E2694
+	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Aug 2021 10:58:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 60DDC404FB;
-	Fri,  6 Aug 2021 08:03:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CF9BC83B64;
+	Fri,  6 Aug 2021 08:58:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bOELZbcvPBK0; Fri,  6 Aug 2021 08:03:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ukPxKxD91ufe; Fri,  6 Aug 2021 08:58:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 596FE404D6;
-	Fri,  6 Aug 2021 08:03:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 18AE783B48;
+	Fri,  6 Aug 2021 08:58:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E9D2F1BF409
- for <devel@linuxdriverproject.org>; Fri,  6 Aug 2021 08:02:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CADB21BF82F
+ for <devel@linuxdriverproject.org>; Fri,  6 Aug 2021 08:58:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D8C0A40476
- for <devel@linuxdriverproject.org>; Fri,  6 Aug 2021 08:02:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B9AB26060F
+ for <devel@linuxdriverproject.org>; Fri,  6 Aug 2021 08:58:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wOG6kRmJr64B for <devel@linuxdriverproject.org>;
- Fri,  6 Aug 2021 08:02:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0B3B740481
- for <devel@driverdev.osuosl.org>; Fri,  6 Aug 2021 08:02:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10067"; a="275373949"
-X-IronPort-AV: E=Sophos;i="5.84,300,1620716400"; d="scan'208";a="275373949"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Aug 2021 01:02:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,300,1620716400"; d="scan'208";a="503920446"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 06 Aug 2021 01:02:48 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mBuoZ-000Gfa-DB; Fri, 06 Aug 2021 08:02:47 +0000
-Date: Fri, 06 Aug 2021 16:02:11 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS WITH WARNING
- 4a956abc170acc8c096b86d6e7f2b02b024b25f7
-Message-ID: <610cec83./+LwRdFI7Xbgn0ox%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=analogixsemi.onmicrosoft.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oLYgZVnduosc for <devel@linuxdriverproject.org>;
+ Fri,  6 Aug 2021 08:58:42 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on20730.outbound.protection.outlook.com
+ [IPv6:2a01:111:f400:fe5a::730])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 055EA600C4
+ for <devel@driverdev.osuosl.org>; Fri,  6 Aug 2021 08:58:41 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PlpFK5EGlCgOjWYO4pwGPiLAdwEeZwP1ZXFLYZ6MS4AHIfNta5VyWlm+RPrbl/U6IEkQazsW+isNTpuBOiJD1zQRQD5Fth4DXOBVImYiH/6uI7iu7iXdjlPmVhZYk+80pnEtiupQvVldDy4aA1hoBvjoh58ggV7Vn8owp1Naw/KG4p11htt3VhtOqCc+syPtXIigHTJ/b4bJXTp02deOgFjRE/bstpBAwFqWWx/nK03rs9JF3hN80aTbogUWbHU9zklRqBA6NnDsMdJDIH+eRZKvXnBuSgsvVUc1kb0CRvlqZ/SJrT3slst8MA+c+12PEj62zzhaNd8hiQoGvS10TA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rnGuiuz5AyyxbGFn/TeZ/ZDl1bkOZtuEAu6nM1AzTOA=;
+ b=VBaN+ZJ2+SMi2n3J5KUQH3uP6jvTk1FxL6Y8ZRzX3r/ouww2bWwJiMRnxJv0rZ+XJa44nckxz6sS1zztmKoI9xgC8O4Dso5Fz7W+aTFCpufTdpwFIG3hfz9CtWi6JlZG5VRuCYnKjSQMhqbJReVThkbgZ08/bs8+gpyMUJDHJoqrIFvnGDuz1M6KI2Eb75CNKCWrnBIPuu+49IIxCIFTiPRmxvbepbtP4dGisP7nwLaMYd7adUUKGaEVFX96Jovi2Z/VZX0IC2J8fLU4Jn4cKNeVlC8+C+JR92w88Hqk5map9lvxx7NhWAC35wRUuHDuixmHqcZ8XlM0M0ESOGbzaw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rnGuiuz5AyyxbGFn/TeZ/ZDl1bkOZtuEAu6nM1AzTOA=;
+ b=X0ueFLbzik3N2fq6+qQXiLJoNZ+gf3Y2f2hhjEgwpn7fAfVbbvyDoBMcn56B3qHrW2H6gb3x0yuUboc8J7eky6pgfBjdRezanJiwSMvURbjvOcsW8CLtESiUKOKooYimz6zprE0CJQR679zwHn1ZZSsFqHKkqcowv7ekwJGYjys=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BY5PR04MB6568.namprd04.prod.outlook.com (2603:10b6:a03:1de::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4394.15; Fri, 6 Aug
+ 2021 08:58:37 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5c0e:fbe5:2bd6:ec6]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::5c0e:fbe5:2bd6:ec6%3]) with mapi id 15.20.4394.019; Fri, 6 Aug 2021
+ 08:58:36 +0000
+Date: Fri, 6 Aug 2021 16:58:29 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Robert Foss <robert.foss@linaro.org>
+Subject: Re: [PATCH v1 1/1] drm/bridge: anx7625: Tune K value for IVO panel
+Message-ID: <20210806085829.GA2189624@anxtwsw-Precision-3640-Tower>
+References: <a565cb1662d2f8300905a369c575e19176fd8e4c.1628148418.git.xji@analogixsemi.com>
+ <CAG3jFyuGJZ4ig6nFxXJJ0d-7ob2+=po2cxSuN29wedV5xVE+gA@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <CAG3jFyuGJZ4ig6nFxXJJ0d-7ob2+=po2cxSuN29wedV5xVE+gA@mail.gmail.com>
+X-ClientProxiedBy: HK2PR0401CA0008.apcprd04.prod.outlook.com
+ (2603:1096:202:2::18) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from anxtwsw-Precision-3640-Tower (60.251.58.79) by
+ HK2PR0401CA0008.apcprd04.prod.outlook.com (2603:1096:202:2::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4394.15 via Frontend
+ Transport; Fri, 6 Aug 2021 08:58:35 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 18e48f7d-2c9e-4567-441b-08d958b86057
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6568:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BY5PR04MB656872C52FBB40B512476FE4C7F39@BY5PR04MB6568.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: GFjV9kSnK82W5wbvIVAnL0fzu5o8uzMAUGqk9y4a2k1JTcMj11/k39xNFST8r7gDEBfOsY1lCJQzQb8isx0runqpozXX6Pcu8JhwK3v5G0U9Ryf1x7CYCui84Qo4iWD2Wof2kITwUw5P97FA5P0UhbCrI+A7VVPp2Z92CTm1VTGJmpkMmKZ199IvW4jI5QG0beMRQlvOx6YBE8Mc/PAD7DEMc9Ey0N7HXnQxUsktfBL1mqkPiC1DqdbmVHBMHvGuCr3ldu3ysn/surBj/JrBlQDlR1fn4EMjQPKNzkMl6V66BZrb180ZSaZ96SJMyt7u1NAtCzvgedEEpm8TwQHffwpl2iNQrit44smO2/kCLpne9TQKD0ZqLtgNVbejCmLMsT8e29zDv4nES6CH0zjHT1lJYmrXR2UflawC6fRXhzQphLap/XeBimq5zpYrc12afMIJ006KNLY6xL6x6+zLCUJPxTCrNcUBEnA1UECbiMTdCtqYwsDAcJ+au1HuPO9ypsAPT4uMocSdYvCgkddaG2W6eAq19xAKrCHnsQJEDbhMejQZBwBqjBqaV9Pz9CkxQEaQVPGrRpRXHL2uve+eaQOkesUUFVrf6qW6skZ+IsbWyWaSXMznKYudyFmvTdx5l4RxFB/YOikk+u2IEDzz73CziX1+Q0/cG/KsaQOpr4RJjXKr9pCBkz0Kfu9UMA4cPKS7tb3oWexu/SX1tB4OwQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(376002)(39840400004)(396003)(136003)(346002)(7416002)(2906002)(316002)(186003)(66556008)(66946007)(66476007)(83380400001)(956004)(4326008)(33656002)(55016002)(54906003)(86362001)(55236004)(33716001)(1076003)(8936002)(6666004)(8676002)(38100700002)(38350700002)(6496006)(478600001)(52116002)(6916009)(9686003)(26005)(5660300002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?EIbvWlpl34xzUoz2+buuuLQ0pWhdpgZAP/W6LRGk40+OHN1HH6fqNmwiYfHS?=
+ =?us-ascii?Q?RhDRDOsgpDlZirBrhObylsccUZnFTCjMT9On+HDi5A7/Mqox8VKV7k8JOrud?=
+ =?us-ascii?Q?9uy4jr00cFBrX1o7vZD57eVV6T7by0WImrCEnkIbHx74dN1F5WoVcb5PMYDu?=
+ =?us-ascii?Q?TZEVHV7oIT9hbvq1QdANn0AgPIBTUz4X/HixqJzCqs+Oz3yQD7xuwe0eTw/4?=
+ =?us-ascii?Q?lXUS9E6I7u/yzVWOw8pnGho0nVKcx3ASOqiDoz6HYF/L/b8u5ha4ob9/4q1v?=
+ =?us-ascii?Q?e4lwIeoIHHysyVSvaccfjvIgIrRVcb3d4aebMFsK2PcPE90cFUidM6ZtfYne?=
+ =?us-ascii?Q?BCoL7QwQumqAZBbi2RM3ZUBWpTITI6UYAFIixA2nxf1WGxTZH1EMCtlkQ5v0?=
+ =?us-ascii?Q?AHnIpztfplG5aNQru8wH4H8ci5uGCGLfmh/cHt18/9s5f2i+1qWuPYwxDK2y?=
+ =?us-ascii?Q?gEJpnIYtnSOX4zK0upnuw/04cI5ozzNb6Kj6CNEWpB4WvQL8YWCT9t0jVi99?=
+ =?us-ascii?Q?FN53q2VisqEJVD6/uoCC52l89+b1/iOVWUOG24/WgQBsnOIBnXt4bEjQulJ4?=
+ =?us-ascii?Q?Wi54qlAgoF00TdJYi0r4O3AIPR50WICXLjGV9SJJPn3NwJp5llkRp5iaRcYY?=
+ =?us-ascii?Q?pFcPuLbVMaP0oar2zCHAkZ9QOPWyR8AIOkv2zYkG/C8GFgpiB0Zr4IPjvyGc?=
+ =?us-ascii?Q?LDLFyc0E8ym6uSeUmc2jK4mhbCpitygNIRT0OO4RSc+hUW/fZtClEPf7M/YG?=
+ =?us-ascii?Q?H29rq3n0m0a4+WiIGaLW9ET1/Ei/Fz1lFSdF1nFR/pLMb8BMa0+/qjsZHFUn?=
+ =?us-ascii?Q?XJiXwFAE6G1cgc9mclRvaKcf93501jmUpf5DtehFM7hZVjsrauKc5FHy8GMe?=
+ =?us-ascii?Q?OWCW7eapkbrCoFJBmYPwUdEAewpBd2WyfrTQCrOh/H0cz5YvG+hUSSuNIPk1?=
+ =?us-ascii?Q?1za3ACNGbDmoOD5kZTKgUQrS3WYnnEVcKVcHGg+NKyQNYqU6rcZqprdhbgY9?=
+ =?us-ascii?Q?nUco1v55qvEbE6V7tcci1wqThnITgCKmgejxpEu3Dk/theuf42A21342l2Du?=
+ =?us-ascii?Q?zp+l+r32rkCuOn8U8qf0dbz2Qq8fvis5Wc0T59jUPk0n3Scnob8jQrLLYvoM?=
+ =?us-ascii?Q?/BKNF6O5ZVk2CZqHUuHeEq/xCj24kk+W7/cZQlOXZAvd2fe8Q1T1ud1xWl+b?=
+ =?us-ascii?Q?L8uYkMjYuHozXWZVoaGMNcUTK4HUPFeBU/UjYGzqs+7frV5r3vpAoZFSvfF+?=
+ =?us-ascii?Q?SOEBzEkDtwgJc4v+U+zNhYVDDreHGs//0im1QWSUS4WtHXoBOnyMDZRHqGyI?=
+ =?us-ascii?Q?oE6QV/enlCu3R7sdQqh+puLm?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 18e48f7d-2c9e-4567-441b-08d958b86057
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2021 08:58:36.6758 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8vMa0bcaj3NJC4Za5x7NruoB0Lx7V7gxxA/4laSJxRm9u/fOE7e4o4dgCN0K5Z+1t65MXPFMEepQrR2ID3PTYQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6568
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,337 +141,111 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Bernie Liang <bliang@analogixsemi.com>, Qilin Wen <qwen@analogixsemi.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Vasily Khoruzhick <anarsoul@gmail.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 4a956abc170acc8c096b86d6e7f2b02b024b25f7  staging: r8188eu: Remove wrapper rtw_sleep_schedulable()
+On Thu, Aug 05, 2021 at 09:05:29PM +0200, Robert Foss wrote:
+> Hey Xin,
+> 
+> Thanks for submitting this.
+> 
+> On Thu, 5 Aug 2021 at 09:31, Xin Ji <xji@analogixsemi.com> wrote:
+> >
+> > IVO panel require less input video clock variation than video clock
+> > variation in DP CTS spec.
+> >
+> > This patch decreases the K value of ANX7625 which will shrink eDP Tx
+> > video clock variation to meet IVO panel's requirement.
+> >
+> > Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> > ---
+> >  drivers/gpu/drm/bridge/analogix/anx7625.c | 17 ++++++++++++++---
+> >  drivers/gpu/drm/bridge/analogix/anx7625.h |  4 +++-
+> >  2 files changed, 17 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> > index a3d82377066b..ceed1c7f3f28 100644
+> > --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
+> > +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> > @@ -384,6 +384,18 @@ static int anx7625_odfc_config(struct anx7625_data *ctx,
+> >         return ret;
+> >  }
+> >
+> > +static int anx7625_set_k_value(struct anx7625_data *ctx)
+> 
+> Pardon my ignorance, but I don't know what a K-value is. Could you add
+> a comment detailing
+> what the K-value does?
 
-Warning reports:
-
-https://lore.kernel.org/lkml/202107310213.WGo8CZVI-lkp@intel.com
-https://lore.kernel.org/lkml/202108052037.8y37VEd5-lkp@intel.com
-https://lore.kernel.org/lkml/202108052157.IUqglcjX-lkp@intel.com
-
-Warning in current branch:
-
-drivers/staging/r8188eu/core/rtw_ieee80211.c:629:15: warning: variable 'sec_idx' set but not used [-Wunused-but-set-variable]
-drivers/staging/r8188eu/core/rtw_ieee80211.c:899: warning: expecting prototype for ieee802_11_parse_elems(). Prototype was for rtw_ieee802_11_parse_elems() instead
-drivers/staging/r8188eu/core/rtw_mp_ioctl.c:1096:6: warning: variable 'rx_pkt_type' set but not used [-Wunused-but-set-variable]
-drivers/staging/r8188eu/core/rtw_mp_ioctl.c:671:15: warning: variable 'width' set but not used [-Wunused-but-set-variable]
-drivers/staging/r8188eu/core/rtw_security.c:1664: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-drivers/staging/r8188eu/core/rtw_security.c:1689: warning: expecting prototype for omac1_aes_128(). Prototype was for rtw_use_tkipkey_handler() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:104: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_SetBBReg() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:144: warning: expecting prototype for Function(). Prototype was for phy_RFSerialRead() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:243: warning: expecting prototype for Function(). Prototype was for phy_RFSerialWrite() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:287: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_QueryRFReg() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:323: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_SetRFReg() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:389: warning: expecting prototype for Function(). Prototype was for phy_InitBBRFRegisterDefinition() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:46: warning: expecting prototype for Function(). Prototype was for phy_CalculateBitShift() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:76: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_QueryBBReg() instead
-drivers/staging/r8188eu/os_dep/ioctl_linux.c:110: warning: expecting prototype for hwaddr_aton(). Prototype was for hwaddr_aton_i() instead
-drivers/staging/r8188eu/os_dep/rtw_android.c:53: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-
-Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- alpha-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- arm-allmodconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- arm-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- arm64-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- i386-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- m68k-allmodconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- m68k-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- nds32-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- sh-allmodconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- sparc-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-`-- x86_64-allyesconfig
-    |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-    |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:variable-sec_idx-set-but-not-used
-    |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-rx_pkt_type-set-but-not-used
-    |-- drivers-staging-r8188eu-core-rtw_mp_ioctl.c:warning:variable-width-set-but-not-used
-    |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-    |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-    |-- drivers-staging-r8188eu-os_dep-ioctl_linux.c:warning:expecting-prototype-for-hwaddr_aton().-Prototype-was-for-hwaddr_aton_i()-instead
-    `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-
-elapsed time: 726m
-
-configs tested: 97
-configs skipped: 4
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210804
-i386                 randconfig-c001-20210805
-nios2                            alldefconfig
-powerpc                    mvme5100_defconfig
-arm                       netwinder_defconfig
-mips                         tb0226_defconfig
-ia64                      gensparse_defconfig
-powerpc                   microwatt_defconfig
-arm                        neponset_defconfig
-arm                      integrator_defconfig
-mips                        bcm63xx_defconfig
-powerpc                 mpc8315_rdb_defconfig
-i386                             alldefconfig
-sh                   sh7724_generic_defconfig
-sh                          sdk7780_defconfig
-ia64                        generic_defconfig
-arm                            hisi_defconfig
-sh                             sh03_defconfig
-powerpc                    klondike_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a002-20210805
-x86_64               randconfig-a006-20210805
-x86_64               randconfig-a004-20210805
-x86_64               randconfig-a003-20210805
-x86_64               randconfig-a001-20210805
-x86_64               randconfig-a005-20210805
-i386                 randconfig-a005-20210804
-i386                 randconfig-a004-20210804
-i386                 randconfig-a002-20210804
-i386                 randconfig-a006-20210804
-i386                 randconfig-a003-20210804
-i386                 randconfig-a001-20210804
-x86_64               randconfig-a012-20210804
-x86_64               randconfig-a016-20210804
-x86_64               randconfig-a011-20210804
-x86_64               randconfig-a013-20210804
-x86_64               randconfig-a014-20210804
-x86_64               randconfig-a015-20210804
-i386                 randconfig-a012-20210806
-i386                 randconfig-a011-20210806
-i386                 randconfig-a015-20210806
-i386                 randconfig-a013-20210806
-i386                 randconfig-a014-20210806
-i386                 randconfig-a016-20210806
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-c001-20210805
-x86_64               randconfig-c001-20210804
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Hi Robert Foss, OK, I'll add more comment.
+Thanks,
+Xin
+> 
+> > +{
+> > +       struct edid *edid = (struct edid *)ctx->slimport_edid_p.edid_raw_data;
+> > +
+> > +       if (edid->mfg_id[0] == IVO_MID0 && edid->mfg_id[1] == IVO_MID1)
+> > +               return anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
+> > +                                        MIPI_DIGITAL_ADJ_1, 0x3B);
+> > +
+> > +       return anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
+> > +                                MIPI_DIGITAL_ADJ_1, 0x3D);
+> > +}
+> > +
+> >  static int anx7625_dsi_video_timing_config(struct anx7625_data *ctx)
+> >  {
+> >         struct device *dev = &ctx->client->dev;
+> > @@ -470,9 +482,8 @@ static int anx7625_dsi_video_timing_config(struct anx7625_data *ctx)
+> >                         MIPI_PLL_N_NUM_15_8, (n >> 8) & 0xff);
+> >         ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client, MIPI_PLL_N_NUM_7_0,
+> >                         (n & 0xff));
+> > -       /* Diff */
+> > -       ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p1_client,
+> > -                       MIPI_DIGITAL_ADJ_1, 0x3D);
+> > +       /* Diff and K value */
+> 
+> With a proper comment above, this comment is no longer needed.
+OK
+> 
+> > +       anx7625_set_k_value(ctx);
+> >
+> >         ret |= anx7625_odfc_config(ctx, post_divider - 1);
+> >
+> > diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.h b/drivers/gpu/drm/bridge/analogix/anx7625.h
+> > index 034c3840028f..6dcf64c703f9 100644
+> > --- a/drivers/gpu/drm/bridge/analogix/anx7625.h
+> > +++ b/drivers/gpu/drm/bridge/analogix/anx7625.h
+> > @@ -210,7 +210,9 @@
+> >  #define  MIPI_VIDEO_STABLE_CNT           0x0A
+> >
+> >  #define  MIPI_LANE_CTRL_10               0x0F
+> > -#define  MIPI_DIGITAL_ADJ_1   0x1B
+> > +#define  MIPI_DIGITAL_ADJ_1     0x1B
+> > +#define  IVO_MID0               0x26
+> > +#define  IVO_MID1               0xCF
+> >
+> >  #define  MIPI_PLL_M_NUM_23_16   0x1E
+> >  #define  MIPI_PLL_M_NUM_15_8    0x1F
+> > --
+> > 2.25.1
+> >
+> 
+> LGTM with the above fix.
+> 
+> Reviewed-by: Robert Foss <robert.foss@linaro.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
