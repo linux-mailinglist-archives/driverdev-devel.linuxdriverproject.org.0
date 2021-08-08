@@ -1,75 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2719C3E35FA
-	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Aug 2021 16:58:16 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDA543E39FE
+	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Aug 2021 13:31:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7402D839BB;
-	Sat,  7 Aug 2021 14:58:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E5B9F6077D;
+	Sun,  8 Aug 2021 11:31:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0bbvPReXkAQM; Sat,  7 Aug 2021 14:58:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KuYfo7KLSZFS; Sun,  8 Aug 2021 11:31:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DF3CD83896;
-	Sat,  7 Aug 2021 14:58:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 575B860654;
+	Sun,  8 Aug 2021 11:31:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BACD71BF5A5
- for <devel@linuxdriverproject.org>; Sat,  7 Aug 2021 14:58:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 18F811BF5A1
+ for <devel@linuxdriverproject.org>; Sun,  8 Aug 2021 11:31:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A93B7400FA
- for <devel@linuxdriverproject.org>; Sat,  7 Aug 2021 14:58:02 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0766C40403
+ for <devel@linuxdriverproject.org>; Sun,  8 Aug 2021 11:31:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AwSQm8atByhr for <devel@linuxdriverproject.org>;
- Sat,  7 Aug 2021 14:58:02 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x133.google.com (mail-lf1-x133.google.com
- [IPv6:2a00:1450:4864:20::133])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AF0B44000B
- for <devel@driverdev.osuosl.org>; Sat,  7 Aug 2021 14:58:01 +0000 (UTC)
-Received: by mail-lf1-x133.google.com with SMTP id g30so20024504lfv.4
- for <devel@driverdev.osuosl.org>; Sat, 07 Aug 2021 07:58:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=xQrYULKok+hL+AIRGJuG9CojAZcnV9Xr+it7yxQJVlY=;
- b=ZZjmem3AsUv9i5DTaN+i7u6VVVE0vxkDFvTxJ+NK4ybit+xc8u/Ckt7zmPzueVp2fY
- bybcmfffdEPeO6fVRgHtX2PBHeaQkDbu1HJ9dmFul79OaxEiaHrkppMEEi8k4zvKEsM7
- qUhliagrLd/raDSsCwIIYf9+hq3baqqVrTz7B+cWsJ6bD0xepxZ1Wgf4oYWgX0wSSHcT
- l9907Nbc+tsvSdWKqaA0LEO0x+mvVS3qOwP/etpFC5WDNZPqdh4RIuMNC62jKOMsvdF0
- UJ54twcTPuqY072c8VGq3w3L0fJUcimTP9X+XFwGlvR/sxk8v6wctE9PYqXGedKVlarA
- mF5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=xQrYULKok+hL+AIRGJuG9CojAZcnV9Xr+it7yxQJVlY=;
- b=rJGPIcJO6wz2Uznk4vXOtHatRlIMTmhGTC5EjTU3b8cosvYdQrUOL+RAYDGjOThR2j
- NjBAvEbA5YQKriE9A/WWrd09Ny9SpJ6tCutOqUepQZbrBDzKlxdXMr8mQ35ybQCuqodC
- wmj9xEhU39M3SjWUXTFl/zSIXz8kjK0Jzl+0zI0jiqJ2xfREv/iljZTtLyoajLzHbDFq
- tEk1/s8c+jBMGMRPP0mxzsEVxA2Qxp8cs9r/eLVTw3hOMhiHc5OSSJCbIen33QRisXO0
- G6czr9WuxBMWGdABNuAFL8xwRqlJ2u2i7aSTSLTJLKM3tWr6JduUGPZgSuzqj0K7oMOA
- btDg==
-X-Gm-Message-State: AOAM531YoAxVMQSf2ylhKyYTdhrb+5dEdEvC1L8n5L7NU6Xc/IJNw0XP
- 89BTIEtZJaWWWR+WmGn7W6b9lAf64JJF42hlO14=
-X-Google-Smtp-Source: ABdhPJwirQU+5ItQ6o/3jDbGgYa1JMX4Tb1Cc3/OSc3/gpDNatxdDpU5cXwqQWanCxwsPv1V0iuJXwEbh7IzI1kKF2s=
-X-Received: by 2002:a05:6512:1096:: with SMTP id
- j22mr11099846lfg.304.1628348279188; 
- Sat, 07 Aug 2021 07:57:59 -0700 (PDT)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HG-lhDhtc1Go for <devel@linuxdriverproject.org>;
+ Sun,  8 Aug 2021 11:31:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 032FA403E5
+ for <devel@linuxdriverproject.org>; Sun,  8 Aug 2021 11:31:28 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 037ED6101D;
+ Sun,  8 Aug 2021 11:31:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1628422288;
+ bh=92qWD8sTNHhxOHQgDUsVIP6UvOBYfIM2nmUo8Ta8Ftc=;
+ h=Date:From:To:Cc:Subject:From;
+ b=2C85e8YCglK8Eevp4s86/Nx+wzJzgVXqM4xRR1+emW/fFqyhtvGjD8i8LppQ3IvKc
+ KOgB1WcYwr0cloz/S7xkxcbVWszIS613xcmnIXIre64G9cUSHv7EjyhUOlTWSn7k/q
+ EDWu1fcrV/fQTgkMGB/VnWMwtERyXyJ1V+LSJk5M=
+Date: Sun, 8 Aug 2021 13:31:26 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging driver fixes for 5.14-rc5
+Message-ID: <YQ/AjpNS3y41k/uT@kroah.com>
 MIME-Version: 1.0
-Received: by 2002:a05:6520:4401:b029:11f:2f5:612a with HTTP; Sat, 7 Aug 2021
- 07:57:58 -0700 (PDT)
-From: Mrs Aisha Al-Qaddafi <mrsaishag4@gmail.com>
-Date: Sat, 7 Aug 2021 07:57:58 -0700
-Message-ID: <CA+L6gkkThfZh1ZeFye09-Okx34nHB+-PraLzcbDxh75cpp=Hgg@mail.gmail.com>
-Subject: Dear Friend,
-To: undisclosed-recipients:;
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,37 +63,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrsaishag45@gmail.com
+Cc: devel@linuxdriverproject.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend,
+The following changes since commit 2734d6c1b1a089fb593ef6a23d4b70903526fe0c:
 
-I came across your e-mail contact prior to a private search while in
-need of your assistance. I am Aisha Al-Qaddafi, the only biological
-Daughter of Former President of Libya Col. Muammar Al-Qaddafi. Am a
-single Mother and a Widow with three Children.
+  Linux 5.14-rc2 (2021-07-18 14:13:49 -0700)
 
-I have investment funds worth Twenty Seven Million Five Hundred
-Thousand United State Dollar ($27.500.000.00 ) and i need a trusted
-investment Manager/Partner because of my current refugee status,
-however, I am interested in you for investment project assistance in
-your country, may be from there, we can build business relationship in
-the nearest future.
+are available in the Git repository at:
 
-I am willing to negotiate an investment/business profit sharing ratio
-with you based on the future investment earning profits.
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.14-rc5
 
-If you are willing to handle this project on my behalf kindly reply
-urgently to enable me to provide you more information about the
-investment funds.
+for you to fetch changes up to c7b65650c7f41d3946c4e2f0bb56dfdb92cfe127:
 
-Your Urgent Reply Will Be Appreciated
+  staging: mt7621-pci: avoid to re-disable clock for those pcies not in use (2021-07-27 15:48:43 +0200)
 
-Best Regards
-Mrs Aisha Al-Qaddafi
+----------------------------------------------------------------
+Staging driver fixes for 5.14-rc5
+
+Here are a few small staging driver fixes for 5.14-rc5 to resolve some
+reported problems.  They include:
+	- mt7621 driver fix
+	- rtl8723bs driver fixes
+	- rtl8712 driver fixes.
+Nothing major, just small problems resolved.
+
+All have been in linux-next for a while with no reported issues.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+----------------------------------------------------------------
+Arnd Bergmann (1):
+      staging: rtl8723bs: select CONFIG_CRYPTO_LIB_ARC4
+
+Pavel Skripkin (2):
+      staging: rtl8712: get rid of flush_scheduled_work
+      staging: rtl8712: error handling refactoring
+
+Sergio Paracuellos (1):
+      staging: mt7621-pci: avoid to re-disable clock for those pcies not in use
+
+Xiangyang Zhang (1):
+      staging: rtl8723bs: Fix a resource leak in sd_int_dpc
+
+ drivers/staging/mt7621-pci/pci-mt7621.c   |  1 -
+ drivers/staging/rtl8712/hal_init.c        | 30 ++++++++++++------
+ drivers/staging/rtl8712/rtl8712_led.c     |  8 +++++
+ drivers/staging/rtl8712/rtl871x_led.h     |  1 +
+ drivers/staging/rtl8712/rtl871x_pwrctrl.c |  8 +++++
+ drivers/staging/rtl8712/rtl871x_pwrctrl.h |  1 +
+ drivers/staging/rtl8712/usb_intf.c        | 51 ++++++++++++++-----------------
+ drivers/staging/rtl8723bs/Kconfig         |  1 +
+ drivers/staging/rtl8723bs/hal/sdio_ops.c  |  2 ++
+ 9 files changed, 64 insertions(+), 39 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
