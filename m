@@ -1,69 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B316B3E3C3A
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Aug 2021 20:36:10 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 134CE3E466A
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Aug 2021 15:22:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 118B04028D;
-	Sun,  8 Aug 2021 18:36:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3310040230;
+	Mon,  9 Aug 2021 13:22:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OuQAEuRBdkTs; Sun,  8 Aug 2021 18:36:08 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RZZyXWL5Q23i; Mon,  9 Aug 2021 13:22:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5417C4027F;
-	Sun,  8 Aug 2021 18:36:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1B58240116;
+	Mon,  9 Aug 2021 13:22:19 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0A30B1BF4D8
- for <devel@linuxdriverproject.org>; Sun,  8 Aug 2021 18:35:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D4BE51BF3DF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  9 Aug 2021 13:22:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id ED05D8295A
- for <devel@linuxdriverproject.org>; Sun,  8 Aug 2021 18:35:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C38DB40359
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  9 Aug 2021 13:22:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t5YItsyC44xN for <devel@linuxdriverproject.org>;
- Sun,  8 Aug 2021 18:35:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 15BD9828BA
- for <devel@linuxdriverproject.org>; Sun,  8 Aug 2021 18:35:55 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPS id 9196560F55;
- Sun,  8 Aug 2021 18:35:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628447754;
- bh=nCSnbrDLnSyAr31z4DkHY/c3Wd4a/iyIffjfbWLDSXw=;
- h=Subject:From:In-Reply-To:References:Date:To:Cc:From;
- b=vOEKVb3jthqKyMhRr0UN7ZsVieO9JwnC7nfQBLE0TKQa6bI6JGUV1Ho3kwLVtjkhw
- 3BOGBD7/pX8ysdQQkSrP9U3NTfwDWaoUCWWL1dxqGwiZdp9nf6dpz1+smKAM5l7fXR
- KgWzpSLy4xvx1cInsjudHNPTtZp+3uadAa8UXwizaSzIk+1fyKbwg099hlOsMsz7w4
- 8GdNovJJr0A08FtNxpF8iVT+sxlxNILkne4IgHRtq04jpi382AzYkxF0TI133X6nV9
- 3Hjez4phg58OBTNmFccvFbJrGcXtcteBZp0GIeDnVHVDmUe+txP9Yy91zSESu61voI
- 2P+VyKx1ecyxQ==
-Received: from pdx-korg-docbuild-2.ci.codeaurora.org (localhost.localdomain
- [127.0.0.1])
- by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id 889F86096D;
- Sun,  8 Aug 2021 18:35:54 +0000 (UTC)
-Subject: Re: [GIT PULL] Staging driver fixes for 5.14-rc5
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <YQ/AjpNS3y41k/uT@kroah.com>
-References: <YQ/AjpNS3y41k/uT@kroah.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <YQ/AjpNS3y41k/uT@kroah.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
- tags/staging-5.14-rc5
-X-PR-Tracked-Commit-Id: c7b65650c7f41d3946c4e2f0bb56dfdb92cfe127
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 911c3c5e01516a1339eb54d9ca478a789002936b
-Message-Id: <162844775455.32600.2059164090152550632.pr-tracker-bot@kernel.org>
-Date: Sun, 08 Aug 2021 18:35:54 +0000
-To: Greg KH <gregkh@linuxfoundation.org>
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aRwokcxkuQJB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  9 Aug 2021 13:22:07 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lj1-x232.google.com (mail-lj1-x232.google.com
+ [IPv6:2a00:1450:4864:20::232])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B100040346
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  9 Aug 2021 13:22:06 +0000 (UTC)
+Received: by mail-lj1-x232.google.com with SMTP id h2so11389118lji.6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 09 Aug 2021 06:22:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=Fivgg2AeCRNBcGenGR5PhhzfdPPnwT4Sdv1YBt6Vnqk=;
+ b=Zpxdcl/+k3iFf9j/taIKRcczfm+pZE8yp+5wiWY+0/NM1Zme35Uhgxduhkza91Uqfo
+ cLX4ZLvC75L1RJAboKUYiL/RQIYXblVfHtCQYjYFlSLAXNm8oArxnu+HfVcx2hPfOuNs
+ iwaH/ON/d9DVryvP03zDEzY0qswkV4yZT/1T0Yf3X+Np9UqOg7O+OQng3lX44dUI64q5
+ NYSlF3JTpPRjMlY39+FvLdAUv5YiIPuoLQ/hIfUmLavPgD1XMBZdLYAIdm0Z7AXXZLZ4
+ DHoxDlnGrreGNVJgCYuo3lhHUdj+cbGLkf1Garvk5i56fAT+FdKGUGW5VkHjfj1pqc78
+ pa6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=Fivgg2AeCRNBcGenGR5PhhzfdPPnwT4Sdv1YBt6Vnqk=;
+ b=pMVDbDs5A6wVQmIq2XqNYNO/CUnFCVSB4wwyuqGFGV2nEb7B+Uq0T5huldaTuQpU3h
+ 2PN3sepwEb7Kn4TcypvxXVDvtPAtNbt5Uw114ZQyj6mPTmtdPG3MHd++LEXBQQoJvyWI
+ 1iX0z9wNInXNI3o2QCrgSax5nber4g/1dyVailOCjaTH9VymHGG+QnuLZtuQt+NTyAAZ
+ VjH8B4iAxyVo2891nxmrrJ8N4p5uNLjGAF0KXjbdHh3R3wdu1kMWvXo+qjK7Y1HfRzyt
+ j2KziOrlAcRYdVEAhSSeRSe8rFm9YEHFngp2DkQffEsuf6fYpNoTk/lj5Nhhh+2Di1AG
+ U8ew==
+X-Gm-Message-State: AOAM530DB+YSVyVjJ/BmdfqjecN2MaTaHXQU8TwRfiPupyaw0+3aBz0L
+ 1CWcu5uADvtQrt7fNHsur0KpOjgxptRElhmepTU=
+X-Google-Smtp-Source: ABdhPJymB0vAZq509GpuLbKPzfNr1m7hOHBpoor/SUArK4bZm4n4TZcgTgmff+9zfkYqOLvFtfaqz8HiqRbIvqltCbE=
+X-Received: by 2002:a2e:22c6:: with SMTP id
+ i189mr15873337lji.378.1628515324388; 
+ Mon, 09 Aug 2021 06:22:04 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a2e:f19:0:0:0:0:0 with HTTP;
+ Mon, 9 Aug 2021 06:22:03 -0700 (PDT)
+From: George Micheal <sulemanaissakucaboni@gmail.com>
+Date: Mon, 9 Aug 2021 14:22:03 +0100
+Message-ID: <CANiS8499Kz6H3Z+xcNsi6S1xsGqf0Vgi9-2Do+52DPyL0uyEwQ@mail.gmail.com>
+Subject: Waiting for response
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,28 +87,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, devel@linuxdriverproject.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
-MIME-Version: 1.0
+Reply-To: geomic123@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pull request you sent on Sun, 8 Aug 2021 13:31:26 +0200:
-
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.14-rc5
-
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/911c3c5e01516a1339eb54d9ca478a789002936b
-
-Thank you!
-
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+Dear Sir/Madam
+
+My name is Mr George Michael,i am the Personal Aid to former
+President Baba Yahya Abdul-Aziz Jemus Jammeh of the Republic of Gambia
+in west Africa, who is currently in exile with his farmily. I have
+been trying on how to get in touch with you over an important issue
+concerning a project that will be profitable. I anticipate hearing
+from you for more details.
+
+Yours faithfully
+Mr George Michael
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
