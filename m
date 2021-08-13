@@ -2,51 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B54AF3EB165
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Aug 2021 09:27:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E5193EB184
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Aug 2021 09:30:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 97F1E41030;
-	Fri, 13 Aug 2021 07:27:15 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9864940FFE;
+	Fri, 13 Aug 2021 07:30:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jyDkMxmaFb3l; Fri, 13 Aug 2021 07:27:14 +0000 (UTC)
+	with ESMTP id ToAgKvYaX1kU; Fri, 13 Aug 2021 07:30:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3293141024;
-	Fri, 13 Aug 2021 07:27:13 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4C58B403AE;
+	Fri, 13 Aug 2021 07:30:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A35861BF8C7
- for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 07:27:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2CB041BF8C7
+ for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 07:30:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9281583B0E
- for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 07:27:02 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2742F605F2
+ for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 07:30:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2fu7L4bIKfVT for <devel@linuxdriverproject.org>;
- Fri, 13 Aug 2021 07:27:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ms.isibang.ac.in (ms.isibang.ac.in [14.139.157.212])
- by smtp1.osuosl.org (Postfix) with ESMTP id 75F5983B40
- for <devel@driverdev.osuosl.org>; Fri, 13 Aug 2021 07:26:31 +0000 (UTC)
-Received: from mail.isibang.ac.in (localhost.localdomain [127.0.0.1])
- by ms.isibang.ac.in (Postfix) with ESMTP id C882160014607;
- Fri, 13 Aug 2021 03:21:37 +0530 (IST)
-Received: from 105.0.4.129 (SquirrelMail authenticated user isil)
- by mail.isibang.ac.in with HTTP; Fri, 13 Aug 2021 03:21:38 +0530
-Message-ID: <1c3361fc2339016b5d8759f8f4b8a80c.squirrel@mail.isibang.ac.in>
-Date: Fri, 13 Aug 2021 03:21:38 +0530
-Subject: International Relief Fund (Award Notice)
-From: "Dr. Patrick Wiz" <wizpatrick00001@outlook.com>
-User-Agent: SquirrelMail/1.4.23 [SVN]-1.el7.20190710
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XtkK_NNt_MQP for <devel@linuxdriverproject.org>;
+ Fri, 13 Aug 2021 07:29:58 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-oi1-x233.google.com (mail-oi1-x233.google.com
+ [IPv6:2607:f8b0:4864:20::233])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 19C6C606EA
+ for <devel@driverdev.osuosl.org>; Fri, 13 Aug 2021 07:29:57 +0000 (UTC)
+Received: by mail-oi1-x233.google.com with SMTP id t128so14752410oig.1
+ for <devel@driverdev.osuosl.org>; Fri, 13 Aug 2021 00:29:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=+MDYu2cZk5y6qEtCDaD7IWEU7wQ5JsJjonx7gGHCu64=;
+ b=TSIflNVxc0np41hpLJnHRhyUe7aJV3Z5t8CACyMoZn9/ekZsmQqCt1sjW2mqO5Ck4Y
+ AjfRIz1QpjLXWA8eP9NvfnI4bgq4Y4iujoKQ5BeLpDYguCKXeOdiuPKalIfS0qmmiWjf
+ 2b1yUA0mHYXWOBEa1aZlraa45Q2H51WwvEnqMkQow+cdDe2hAoO5Epd5cwqOZuRyP3LC
+ 1cijC7vxtZ/h5rEyFOIdMs6OM0oArL7jih0PAUKziBRc8Eb3zDHT4X0WNmiwIFJhpsNk
+ dpqFZcqsDva7XcAO1dIpe2B8RJUEkpt5NtJCMCvYlUvfb800p7KRbiDllFt6ceEwioHm
+ N4Ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=+MDYu2cZk5y6qEtCDaD7IWEU7wQ5JsJjonx7gGHCu64=;
+ b=U9VHyaQWPaA9q3zuVPZvC65lCvNlv5G4iMyyGXvHCwthZU7f1sV3vnTgNACUU1Ge7G
+ 8mOitY7W9BX9MfvHpknuqsjUU48Lnzog51QYS9D43rZuq5nigkoYGIQUDOWrpVipjJKG
+ bm7BSvXp1SlKl+/gMmzlhiJZo0ILrfP2W4GsNVHcvjFd9/ygXXlYFPv5u1ZsFWzSF++q
+ MFINjz41Y9MMO6Jxiymy/q64t3w2RI/Qqtcvp8iGJzbAtMGvLjK/MdNCy6b/XqYQ8a34
+ tr+syOJqBkol8jMSJSoX/b0VFpU4ojaUq3ZCbjERi8jXjGxdJi2vs4dfMqq7NrdPyy3I
+ H3Iw==
+X-Gm-Message-State: AOAM531LEyI7SHONVV0U3IEkaRO5jl4ch4j8NdhltwHpUdeapkMQ1NZH
+ J+4X/1aCgZmvnOILRT6e7bLDKud7f7iHaLvhF+g=
+X-Google-Smtp-Source: ABdhPJyp7n0tYQ/IUI3AVXKGWY7nsxiwVNyq8uOgV+iasMD9CyHqFZwCz6yfHdiQ3Gf9u+T3bVrUMNtD1l09yx+WXqs=
+X-Received: by 2002:a54:489a:: with SMTP id r26mr1107455oic.168.1628839796678; 
+ Fri, 13 Aug 2021 00:29:56 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3 (Normal)
-Importance: Normal
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-Error: Unable to connect local ctasd
+Received: by 2002:a9d:868:0:0:0:0:0 with HTTP;
+ Fri, 13 Aug 2021 00:29:56 -0700 (PDT)
+From: Mr Akain Karim <aeyuhlmy739@gmail.com>
+Date: Fri, 13 Aug 2021 00:29:56 -0700
+X-Google-Sender-Auth: vAsMsLWN888YrQGCu_ERZ7iebe0
+Message-ID: <CADS+2b5po1+XsFRgKi0Le1+CSfERf_uzXWCqYi4_3AuqtkxeaA@mail.gmail.com>
+Subject: Greetings
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,120 +82,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jabufk@highveldmail.co.za
+Reply-To: mrakainkarim7@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-
-
-
-
-From: Relief International Charity Foundation Incorporated.
-Office: Post-Pandemic Economic Relief Donation.
-Address: United Nation's Office, 351 Francis Baard St, Pretoria Central,
-Pretoria, 0001. South Africa.
-Tel/Fax: +27(086) 750 3877
-
-
-
-
-Attn: Email beneficiary,
-
-
-COVID-19 RELIEF FUND DONATION.
-
-You have been awarded the sum of US$2,000,000 (Two Million US Dollars) as
-Covid-19 Economic Devastation Relief Package.
-
-The COVID-19 pandemic marks an unprecedented time in modern history that
-will require the best of humanity to overcome. Our Global Donation will
-support immediate and long-term relief and recovery to vulnerable
-individuals, businesses and communities during one of the most challenging
-times we have collectively faced. The crisis has brought so many
-businesses, companies and small scale businesses to a devastating halt. It
-has threatened everyone's way of life, but it is especially difficult for
-people who are already vulnerable. Some people around the globe,
-especially migrants, wage workers, and those with flexible jobs and small
-scale businesses have already started feeling the devastating economic
-impact.
-
-We have received Billions of Dollars from Donors to help in this poverty
-alleviation program. This money is expected to be shared to all the
-Selected Global Citizenry to help them regain the Economic Losses of
-Multiple Global Lockdowns since the beginning of this Pandemic. We have
-worked and will continue working with our partners on the ground to
-allocate funds where they're most needed. We believe that organizations
-that are deeply rooted are best positioned to lead long-term plans to stop
-the spread of COVID-19 and the devastating economic effect of the Global
-Lock-downs.
-
-Our funds have been delivered down to our distribution points and
-currently secured by the International Committee of Red Cross (ICRC) Vault
-Operations, Centurion, South Africa, as you can see on the following
-Web-video page:
-
-https://drive.google.com/file/d/1P1TUPuxFnusug3Da8MpyaFoHUbS7GVEm/view?usp=sharing
-
-Our Payment Administrator will help processing and releasing to you the
-sum of US$2, 000,000 (Two Million United States Dollars) to enable you
-boost your business, stabilize your region, help the vulnerable and
-less-privileged around you, and help stop the spread of Covid-19.
-
-Kindly contact the payment administrator to his email:
-jabufk@highveldmail.co.za (Mr. Jabu Fisani Agbanu).  Ensure to provide him
-with your following
- information:
-
-1. Your full names.
-2. Your address.
-3. Your telephone.
-4. Your age.
-5. Your occupation.
-6. Your bank account information
-
-
-We thank you, and congratulations from Relief International Post-Pandemic
-Economic Relief Fund!
-
-Yours truly,
-
-
-
-Dr.  Patrick Wiz
-(Secretary; Relief International Charity Foundation Incorporated)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- 
+*Compliment of the day,I am Mr. Akain Karim,  I Have a Business Proposal of
+$10.5million for you and I  was compelled to use this medium due to the
+nature of this project, I have access to very vital information that can be
+used to transfer this huge amount of money, which may culminate into the
+investment of the said funds into your company or any lucrative venture in
+your country. If you will like to assist me as a partner then indicate your
+interest, after which we shall both discuss the modalities and the sharing
+percentage.Upon receipt of your reply on your expression of Interest.I will
+give you full details on how the business will be executed and I am open
+for negotiation.Thanks for your anticipated cooperation.Best RegardsMr. 	
+Akain Karim*  Please feel free to reach me on my e-mail:mrakainkarim7@gmail.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
