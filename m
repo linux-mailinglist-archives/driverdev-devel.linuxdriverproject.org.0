@@ -1,75 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E5193EB184
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Aug 2021 09:30:22 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF0B23EBC4D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Aug 2021 20:57:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9864940FFE;
-	Fri, 13 Aug 2021 07:30:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2546B80F03;
+	Fri, 13 Aug 2021 18:57:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ToAgKvYaX1kU; Fri, 13 Aug 2021 07:30:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lyJ7S8znBQmL; Fri, 13 Aug 2021 18:57:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4C58B403AE;
-	Fri, 13 Aug 2021 07:30:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 347D680E58;
+	Fri, 13 Aug 2021 18:57:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2CB041BF8C7
- for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 07:30:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2AB141BF284
+ for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 18:57:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2742F605F2
- for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 07:30:02 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 19E9640756
+ for <devel@linuxdriverproject.org>; Fri, 13 Aug 2021 18:57:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XtkK_NNt_MQP for <devel@linuxdriverproject.org>;
- Fri, 13 Aug 2021 07:29:58 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oi1-x233.google.com (mail-oi1-x233.google.com
- [IPv6:2607:f8b0:4864:20::233])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 19C6C606EA
- for <devel@driverdev.osuosl.org>; Fri, 13 Aug 2021 07:29:57 +0000 (UTC)
-Received: by mail-oi1-x233.google.com with SMTP id t128so14752410oig.1
- for <devel@driverdev.osuosl.org>; Fri, 13 Aug 2021 00:29:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=+MDYu2cZk5y6qEtCDaD7IWEU7wQ5JsJjonx7gGHCu64=;
- b=TSIflNVxc0np41hpLJnHRhyUe7aJV3Z5t8CACyMoZn9/ekZsmQqCt1sjW2mqO5Ck4Y
- AjfRIz1QpjLXWA8eP9NvfnI4bgq4Y4iujoKQ5BeLpDYguCKXeOdiuPKalIfS0qmmiWjf
- 2b1yUA0mHYXWOBEa1aZlraa45Q2H51WwvEnqMkQow+cdDe2hAoO5Epd5cwqOZuRyP3LC
- 1cijC7vxtZ/h5rEyFOIdMs6OM0oArL7jih0PAUKziBRc8Eb3zDHT4X0WNmiwIFJhpsNk
- dpqFZcqsDva7XcAO1dIpe2B8RJUEkpt5NtJCMCvYlUvfb800p7KRbiDllFt6ceEwioHm
- N4Ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=+MDYu2cZk5y6qEtCDaD7IWEU7wQ5JsJjonx7gGHCu64=;
- b=U9VHyaQWPaA9q3zuVPZvC65lCvNlv5G4iMyyGXvHCwthZU7f1sV3vnTgNACUU1Ge7G
- 8mOitY7W9BX9MfvHpknuqsjUU48Lnzog51QYS9D43rZuq5nigkoYGIQUDOWrpVipjJKG
- bm7BSvXp1SlKl+/gMmzlhiJZo0ILrfP2W4GsNVHcvjFd9/ygXXlYFPv5u1ZsFWzSF++q
- MFINjz41Y9MMO6Jxiymy/q64t3w2RI/Qqtcvp8iGJzbAtMGvLjK/MdNCy6b/XqYQ8a34
- tr+syOJqBkol8jMSJSoX/b0VFpU4ojaUq3ZCbjERi8jXjGxdJi2vs4dfMqq7NrdPyy3I
- H3Iw==
-X-Gm-Message-State: AOAM531LEyI7SHONVV0U3IEkaRO5jl4ch4j8NdhltwHpUdeapkMQ1NZH
- J+4X/1aCgZmvnOILRT6e7bLDKud7f7iHaLvhF+g=
-X-Google-Smtp-Source: ABdhPJyp7n0tYQ/IUI3AVXKGWY7nsxiwVNyq8uOgV+iasMD9CyHqFZwCz6yfHdiQ3Gf9u+T3bVrUMNtD1l09yx+WXqs=
-X-Received: by 2002:a54:489a:: with SMTP id r26mr1107455oic.168.1628839796678; 
- Fri, 13 Aug 2021 00:29:56 -0700 (PDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8O3ejeRkaI_b for <devel@linuxdriverproject.org>;
+ Fri, 13 Aug 2021 18:57:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BA71D40745
+ for <devel@driverdev.osuosl.org>; Fri, 13 Aug 2021 18:57:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10075"; a="213762902"
+X-IronPort-AV: E=Sophos;i="5.84,319,1620716400"; d="scan'208";a="213762902"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2021 11:57:19 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,319,1620716400"; d="scan'208";a="528662892"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 13 Aug 2021 11:57:18 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mEcMn-000O21-Jp; Fri, 13 Aug 2021 18:57:17 +0000
+Date: Sat, 14 Aug 2021 02:57:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS WITH WARNING
+ 0bd35146642bdc56f1b87d75f047b1c92bd2bd39
+Message-ID: <6116c08a.xa51FtEf4e12+rw3%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Received: by 2002:a9d:868:0:0:0:0:0 with HTTP;
- Fri, 13 Aug 2021 00:29:56 -0700 (PDT)
-From: Mr Akain Karim <aeyuhlmy739@gmail.com>
-Date: Fri, 13 Aug 2021 00:29:56 -0700
-X-Google-Sender-Auth: vAsMsLWN888YrQGCu_ERZ7iebe0
-Message-ID: <CADS+2b5po1+XsFRgKi0Le1+CSfERf_uzXWCqYi4_3AuqtkxeaA@mail.gmail.com>
-Subject: Greetings
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,24 +63,183 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrakainkarim7@gmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-*Compliment of the day,I am Mr. Akain Karim,  I Have a Business Proposal of
-$10.5million for you and I  was compelled to use this medium due to the
-nature of this project, I have access to very vital information that can be
-used to transfer this huge amount of money, which may culminate into the
-investment of the said funds into your company or any lucrative venture in
-your country. If you will like to assist me as a partner then indicate your
-interest, after which we shall both discuss the modalities and the sharing
-percentage.Upon receipt of your reply on your expression of Interest.I will
-give you full details on how the business will be executed and I am open
-for negotiation.Thanks for your anticipated cooperation.Best RegardsMr. 	
-Akain Karim*  Please feel free to reach me on my e-mail:mrakainkarim7@gmail.com
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 0bd35146642bdc56f1b87d75f047b1c92bd2bd39  staging: r8188eu: Reorganize error handling in rtw_drv_init()
+
+Warning reports:
+
+https://lore.kernel.org/lkml/202107310213.WGo8CZVI-lkp@intel.com
+
+Warning in current branch:
+
+drivers/staging/r8188eu/core/rtw_ieee80211.c:884: warning: expecting prototype for ieee802_11_parse_elems(). Prototype was for rtw_ieee802_11_parse_elems() instead
+drivers/staging/r8188eu/core/rtw_security.c:1627: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+drivers/staging/r8188eu/core/rtw_security.c:1652: warning: expecting prototype for omac1_aes_128(). Prototype was for rtw_use_tkipkey_handler() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:104: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_SetBBReg() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:144: warning: expecting prototype for Function(). Prototype was for phy_RFSerialRead() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:243: warning: expecting prototype for Function(). Prototype was for phy_RFSerialWrite() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:287: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_QueryRFReg() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:323: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_SetRFReg() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:389: warning: expecting prototype for Function(). Prototype was for phy_InitBBRFRegisterDefinition() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:46: warning: expecting prototype for Function(). Prototype was for phy_CalculateBitShift() instead
+drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:76: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_QueryBBReg() instead
+drivers/staging/r8188eu/os_dep/rtw_android.c:53: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+
+Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+`-- sh-allmodconfig
+    |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
+    |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+    |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
+    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
+    `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+
+elapsed time: 721m
+
+configs tested: 120
+configs skipped: 3
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210812
+i386                 randconfig-c001-20210813
+arm                         lpc18xx_defconfig
+arm                           spitz_defconfig
+arm                           tegra_defconfig
+arm                          badge4_defconfig
+powerpc                 mpc836x_rdk_defconfig
+mips                  maltasmvp_eva_defconfig
+sh                            hp6xx_defconfig
+arm                         shannon_defconfig
+arm                        clps711x_defconfig
+powerpc                      ppc64e_defconfig
+sh                              ul2_defconfig
+arm                         orion5x_defconfig
+riscv                    nommu_k210_defconfig
+powerpc               mpc834x_itxgp_defconfig
+mips                        maltaup_defconfig
+mips                           ip22_defconfig
+sh                           se7721_defconfig
+arm                          ep93xx_defconfig
+arc                              alldefconfig
+powerpc                 mpc85xx_cds_defconfig
+powerpc                    amigaone_defconfig
+arm                         s5pv210_defconfig
+arm                           viper_defconfig
+sh                          lboxre2_defconfig
+sh                          urquell_defconfig
+microblaze                      mmu_defconfig
+arm                         nhk8815_defconfig
+sh                ecovec24-romimage_defconfig
+sh                   sh7770_generic_defconfig
+x86_64                            allnoconfig
+mips                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20210812
+x86_64               randconfig-a004-20210812
+x86_64               randconfig-a003-20210812
+x86_64               randconfig-a005-20210812
+x86_64               randconfig-a002-20210812
+x86_64               randconfig-a001-20210812
+i386                 randconfig-a004-20210813
+i386                 randconfig-a003-20210813
+i386                 randconfig-a001-20210813
+i386                 randconfig-a002-20210813
+i386                 randconfig-a006-20210813
+i386                 randconfig-a005-20210813
+x86_64               randconfig-a011-20210813
+x86_64               randconfig-a013-20210813
+x86_64               randconfig-a012-20210813
+x86_64               randconfig-a016-20210813
+x86_64               randconfig-a015-20210813
+x86_64               randconfig-a014-20210813
+i386                 randconfig-a011-20210812
+i386                 randconfig-a015-20210812
+i386                 randconfig-a013-20210812
+i386                 randconfig-a014-20210812
+i386                 randconfig-a016-20210812
+i386                 randconfig-a012-20210812
+i386                 randconfig-a011-20210813
+i386                 randconfig-a015-20210813
+i386                 randconfig-a014-20210813
+i386                 randconfig-a013-20210813
+i386                 randconfig-a016-20210813
+i386                 randconfig-a012-20210813
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-c001-20210812
+x86_64               randconfig-c001-20210813
+x86_64               randconfig-a011-20210812
+x86_64               randconfig-a013-20210812
+x86_64               randconfig-a012-20210812
+x86_64               randconfig-a016-20210812
+x86_64               randconfig-a015-20210812
+x86_64               randconfig-a014-20210812
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
