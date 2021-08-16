@@ -1,75 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62FBC3ECF9F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 09:44:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 907C63EDCCE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 20:06:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E921B40210;
-	Mon, 16 Aug 2021 07:44:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4A31183544;
+	Mon, 16 Aug 2021 18:06:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PO8oBNEAo_I3; Mon, 16 Aug 2021 07:44:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sVxiCzE8QM73; Mon, 16 Aug 2021 18:06:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 69B3E4017B;
-	Mon, 16 Aug 2021 07:44:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5AE9880D64;
+	Mon, 16 Aug 2021 18:06:14 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BC0131BF316
- for <devel@linuxdriverproject.org>; Mon, 16 Aug 2021 07:43:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B97F51BF3F2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 16 Aug 2021 18:06:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A93C8402F9
- for <devel@linuxdriverproject.org>; Mon, 16 Aug 2021 07:43:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A8FBA402A6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 16 Aug 2021 18:06:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tGRC72NgpCKb for <devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 07:43:55 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com
- [IPv6:2a00:1450:4864:20::42a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 608E1402F8
- for <devel@driverdev.osuosl.org>; Mon, 16 Aug 2021 07:43:55 +0000 (UTC)
-Received: by mail-wr1-x42a.google.com with SMTP id q10so22209737wro.2
- for <devel@driverdev.osuosl.org>; Mon, 16 Aug 2021 00:43:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=5JMhK9pOqseAjHRtHcU/HG4i5NuvupLcjaClPwT4ItM=;
- b=L7EDIlROEwC+2c/IsXnginaBC5yFzR8mdOZLVt6kLW9O8eCX0QHdIGAW/1u9JqMU3g
- 1ksmfXfCL/u7CZyC1sBSKmrrYX/Ti9eKrZmoWQ21XTH3NBXuDWgqM69ASBnoU7MGUvyg
- CeJbaFVc3GZ733ysi9RrgZmpcHDfWMBncUXwVj+82ssXDubaaAl6ZSy/LLadvyAqeTze
- Ct/CvDiVUPGsvpnURIpLwwQn5rvu95A2sHJzB0mDmnVr1xMBc7357Y51tJA99uaR/6b5
- 5WkKEJkD5jWdK0zc2EZkG+jJUxApKYubaBr2pykuiatU6SZVLpRP8nqQ9oBH9jTnBLLQ
- xZLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=5JMhK9pOqseAjHRtHcU/HG4i5NuvupLcjaClPwT4ItM=;
- b=IhE9kVZ+2x8kn3CGQbUG8XVsSsSQFPTMhXX7TII7zc1cuYrXHqKtQsL6LRHC+EdHar
- GYwzMCn2POhZ23dD36Z7SvOCbmZmH5tkByw7EBdZnIV/jQNd4Y5cp1poitBe2NND75ob
- Ma2wOmt562fRCwn51xRP40IEoAXfAIAiSdHaIZkXEqqXwhY22fSSEfypfEiKQXJIh1Jx
- NgOyVRAgsuO6VkdTC7wfSL2AC3Go2sFDpR5hvZpe23aKaBghEytDW6NzP8hmFg/Cw/+5
- 3tVzRqy3Ik9xesoHHH7GvYR9Q+1jVY2FMwvRTDV8JOxDVFbmT1kQ+vSB6wuRZFeYMdu/
- 6Xhg==
-X-Gm-Message-State: AOAM530QxMYArmzYYaVKeCDomuO845YG/CrbvAA15m4XapZZ3Zn9c3ZL
- pJ4PKO7HLb4SE9qUwYh3Tnc8F8mrO00h7TQHFMc=
-X-Google-Smtp-Source: ABdhPJzWfCLClyFqrCBXfvw44kbM4WkElJshlqKsrP5a7PScA/IwDEMpabdQkqPa/Kuelgz9va4OZEt/3H4u071YCDc=
-X-Received: by 2002:a5d:6ccc:: with SMTP id c12mr9363303wrc.81.1629099833119; 
- Mon, 16 Aug 2021 00:43:53 -0700 (PDT)
+ with ESMTP id 5RNyzpQpWWre
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 16 Aug 2021 18:06:03 +0000 (UTC)
+X-Greylist: delayed 00:09:31 by SQLgrey-1.8.0
+Received: from mout-p-101.mailbox.org (mout-p-101.mailbox.org
+ [IPv6:2001:67c:2050::465:101])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3E43C4028C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 16 Aug 2021 18:06:03 +0000 (UTC)
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [80.241.60.240])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4GpMKl4N8XzQk2K;
+ Mon, 16 Aug 2021 19:56:27 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at heinlein-support.de
+Received: from smtp1.mailbox.org ([80.241.60.240])
+ by spamfilter04.heinlein-hosting.de (spamfilter04.heinlein-hosting.de
+ [80.241.56.122]) (amavisd-new, port 10030)
+ with ESMTP id tC-10B9rpwAN; Mon, 16 Aug 2021 19:56:24 +0200 (CEST)
+Date: Mon, 16 Aug 2021 19:55:03 +0200
+From: Leon Krieg <info@madcow.dev>
+To: gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org
+Subject: [PATCH] staging/ks7010: Fix coding style problems
+Message-ID: <20210816175503.GA17772@mad-cln-mothership-1.local>
 MIME-Version: 1.0
-Received: by 2002:adf:fb82:0:0:0:0:0 with HTTP; Mon, 16 Aug 2021 00:43:52
- -0700 (PDT)
-From: AISHA GADDAFI <smithanderson10101@gmail.com>
-Date: Mon, 16 Aug 2021 00:43:52 -0700
-Message-ID: <CAJnE440URrDx_FZfzgoHQ8_Ado=QLx3eeRz+ANhBf8m6J92bsQ@mail.gmail.com>
-Subject: Liebster Freund,?
-To: undisclosed-recipients:;
+Content-Disposition: inline
+X-Rspamd-Queue-Id: BE56718DD
+X-Rspamd-UID: 2073f5
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,26 +68,137 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ayishagddafio@mail.ru
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCkxpZWJzdGVyIEZyZXVuZCwKCkltIE5hbWVuIEdvdHRlcywgZGVzIGduw6RkaWdzdGVuLCBi
-YXJtaGVyemlnc3Rlbi4KCkZyaWVkZSBzZWkgbWl0IGRpciB1bmQgQmFybWhlcnppZ2tlaXQgc2Vp
-IG1pdCBkaXIgdW5kIFNlZ2VuIHNlaSBtaXQgZGlyLgpJY2ggaGFiZSBkaWUgU3VtbWUgdm9uIDI3
-LDUgTWlsbGlvbmVuIFVTRCBmw7xyIEludmVzdGl0aW9uZW4sIGljaAppbnRlcmVzc2llcmUgbWlj
-aCBmw7xyIFNpZSBmw7xyIGRpZSBVbnRlcnN0w7x0enVuZyB2b24KSW52ZXN0aXRpb25zcHJvamVr
-dGVuIGluIElocmVtIExhbmQuIE1laW4gTmFtZSBpc3QgQWlzaGEgR2FkZGFmaSB1bmQKbGViZSBk
-ZXJ6ZWl0IGltIE9tYW4sIGljaCBiaW4gZWluZSBXaXR3ZSB1bmQgYWxsZWluZXJ6aWVoZW5kZSBN
-dXR0ZXIKbWl0IGRyZWkgS2luZGVybiwgZGllIGVpbnppZ2UgbGVpYmxpY2hlIFRvY2h0ZXIgZGVz
-IHZlcnN0b3JiZW5lbgpsaWJ5c2NoZW4gUHLDpHNpZGVudGVuIChkZW0gdmVyc3RvcmJlbmVuIE9i
-ZXJzdCBNdWFtbWFyIEdhZGRhZmkpIHVuZApzdGVoZSBkZXJ6ZWl0IHVudGVyIHBvbGl0aXNjaGVt
-IEFzeWxzY2h1dHogZGVyIG9tYW5pc2NoZW4gUmVnaWVydW5nLgoKQml0dGUgYW50d29ydGVuIFNp
-ZSBkcmluZ2VuZCBmw7xyIHdlaXRlcmUgRGV0YWlscy4KCm1laW5lIEUtTWFpbC1BZHJlc3NlIHVu
-dGVuOiBheWlzaGFnZGRhZmlvQG1haWwucnUKVmllbGVuIERhbmsKTWl0IGZyZXVuZGxpY2hlbiBH
-csO8w59lbiBBaXNoYQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRw
-Oi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2
-ZXJkZXYtZGV2ZWwK
+Sorry to bother you with this low-effort patch but I'd really like to get
+my feet in the water and this whole process is making me nervous. I'd
+really appreciate you taking the time to look over this diff and
+hopefully I did not screw up to badly.
+
+Signed-off-by: Leon Krieg <info@madcow.dev>
+---
+ drivers/staging/ks7010/Kconfig       |  7 ++++---
+ drivers/staging/ks7010/ks_hostif.c   |  2 +-
+ drivers/staging/ks7010/ks_wlan_net.c | 20 ++++++++++----------
+ 3 files changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/staging/ks7010/Kconfig b/drivers/staging/ks7010/Kconfig
+index 0987fdc2f70d..4bc17e50ac89 100644
+--- a/drivers/staging/ks7010/Kconfig
++++ b/drivers/staging/ks7010/Kconfig
+@@ -6,6 +6,7 @@ config KS7010
+ 	select WEXT_PRIV
+ 	select FW_LOADER
+ 	help
+-	  This is a driver for KeyStream KS7010 based SDIO WIFI cards. It is
+-	  found on at least later Spectec SDW-821 (FCC-ID "S2Y-WLAN-11G-K" only,
+-	  sadly not FCC-ID "S2Y-WLAN-11B-G") and Spectec SDW-823 microSD cards.
++	  Selecting this option enables the driver for KeyStream KS7010 SDIO
++	  hardware found in at least Spectec SDW-821 and SDW-823 microSD cards
++         (FCC-ID "S2Y-WLAN-11G-K" but not FCC-ID "S2Y-WLAN-11B-G" and Spectec
++	  SDW-823).
+
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index eaa70893224a..d2f9d0ed62c1 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -134,7 +134,7 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info *ap_info)
+ 	size = (ap_info->rsn.size <= RSN_IE_BODY_MAX) ?
+ 		ap_info->rsn.size : RSN_IE_BODY_MAX;
+ 	if ((ap_info->rsn_mode & RSN_MODE_WPA2) &&
+-	    (priv->wpa.version == IW_AUTH_WPA_VERSION_WPA2)) {
++	    priv->wpa.version == IW_AUTH_WPA_VERSION_WPA2) {
+ 		ap->rsn_ie.id = RSN_INFO_ELEM_ID;
+ 		ap->rsn_ie.size = size;
+ 		memcpy(ap->rsn_ie.body, ap_info->rsn.body, size);
+diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
+index 09e7b4cd0138..33abb6a7dbe0 100644
+--- a/drivers/staging/ks7010/ks_wlan_net.c
++++ b/drivers/staging/ks7010/ks_wlan_net.c
+@@ -181,26 +181,26 @@ static int ks_wlan_set_freq(struct net_device *dev,
+ 
+ 	/* for SLEEP MODE */
+ 	/* If setting by frequency, convert to a channel */
+-	if ((fwrq->freq.e == 1) &&
+-	    (fwrq->freq.m >= 241200000) && (fwrq->freq.m <= 248700000)) {
++	if (fwrq->freq.e == 1 &&
++	    fwrq->freq.m >= 241200000 && fwrq->freq.m <= 248700000) {
+ 		int f = fwrq->freq.m / 100000;
+ 		int c = 0;
+ 
+ 		while ((c < 14) && (f != frequency_list[c]))
+ 			c++;
+-		/* Hack to fall through... */
++		fallthrough;
+ 		fwrq->freq.e = 0;
+ 		fwrq->freq.m = c + 1;
+ 	}
+ 	/* Setting by channel number */
+-	if ((fwrq->freq.m > 1000) || (fwrq->freq.e > 0))
++	if (fwrq->freq.m > 1000 || fwrq->freq.e > 0)
+ 		return -EOPNOTSUPP;
+ 
+ 	channel = fwrq->freq.m;
+ 	/* We should do a better check than that,
+ 	 * based on the card capability !!!
+ 	 */
+-	if ((channel < 1) || (channel > 14)) {
++	if (channel < 1 || channel > 14) {
+ 		netdev_dbg(dev, "%s: New channel value of %d is invalid!\n",
+ 			   dev->name, fwrq->freq.m);
+ 		return -EINVAL;
+@@ -664,7 +664,7 @@ static int ks_wlan_set_rts(struct net_device *dev, struct iw_request_info *info,
+ 	/* for SLEEP MODE */
+ 	if (vwrq->rts.disabled)
+ 		rthr = 2347;
+-	if ((rthr < 0) || (rthr > 2347))
++	if (rthr < 0 || rthr > 2347)
+ 		return -EINVAL;
+ 
+ 	priv->reg.rts = rthr;
+@@ -702,7 +702,7 @@ static int ks_wlan_set_frag(struct net_device *dev,
+ 	/* for SLEEP MODE */
+ 	if (vwrq->frag.disabled)
+ 		fthr = 2346;
+-	if ((fthr < 256) || (fthr > 2346))
++	if (fthr < 256 || fthr > 2346)
+ 		return -EINVAL;
+ 
+ 	fthr &= ~0x1;	/* Get an even value - is it really needed ??? */
+@@ -781,7 +781,7 @@ static int ks_wlan_set_encode(struct net_device *dev,
+ 		return -EINVAL;
+ 
+ 	/* for SLEEP MODE */
+-	if ((index < 0) || (index > 4))
++	if (index < 0 || index > 4)
+ 		return -EINVAL;
+ 
+ 	index = (index == 0) ? priv->reg.wep_index : (index - 1);
+@@ -882,7 +882,7 @@ static int ks_wlan_get_encode(struct net_device *dev,
+ 	}
+ 
+ 	/* Which key do we want ? -1 -> tx index */
+-	if ((index < 0) || (index >= 4))
++	if (index < 0 || index >= 4)
+ 		index = priv->reg.wep_index;
+ 	if (priv->reg.privacy_invoked) {
+ 		enc->flags &= ~IW_ENCODE_DISABLED;
+@@ -1860,7 +1860,7 @@ static int ks_wlan_set_power_mgmt(struct net_device *dev,
+ 		return -EINVAL;
+ 
+ 	if ((*uwrq == POWER_MGMT_SAVE1 || *uwrq == POWER_MGMT_SAVE2) &&
+-	    (priv->reg.operation_mode != MODE_INFRASTRUCTURE))
++	    priv->reg.operation_mode != MODE_INFRASTRUCTURE)
+ 		return -EINVAL;
+ 
+ 	priv->reg.power_mgmt = *uwrq;
+-- 
+2.27.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
