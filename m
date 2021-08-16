@@ -1,58 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94ED93EDDC0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 21:18:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 022343EDEB8
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 22:39:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AB14483579;
-	Mon, 16 Aug 2021 19:18:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CDD15401BA;
+	Mon, 16 Aug 2021 20:39:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hYDvrO6NgCKo; Mon, 16 Aug 2021 19:18:31 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1eOwAGH6idBt; Mon, 16 Aug 2021 20:39:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C53CB8350A;
-	Mon, 16 Aug 2021 19:18:26 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 06EA640174;
+	Mon, 16 Aug 2021 20:39:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3D0B91BF3DC
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:18:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 63C6B1BF377
+ for <devel@linuxdriverproject.org>; Mon, 16 Aug 2021 20:39:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2CCDD83508
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:18:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 60E2C80B26
+ for <devel@linuxdriverproject.org>; Mon, 16 Aug 2021 20:39:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uLZoIc5s3r84
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:18:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D668B83530
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:18:12 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E1D8760F4B;
- Mon, 16 Aug 2021 19:18:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1629141492;
- bh=jAE9abmJ700Mk5ZUdqDCscF9tLfArjXKP9Jel24DQik=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GqKmnIX8GDRtAPJlLRq8J76K6UYBkG4ZO8osAZdVkCYxXR3fXT2MUS7kvTJhLgxl5
- Bpz5++PI/MnuHpTvBqyTpWIFWr8lZc+w1Z6wCIe4ITzBmbNPXt53xS0Q5YFSoKzd5P
- zw+fKDBW/OWLKSs/bZL/kKTuIyXqRal6iVrkoDZk=
-Date: Mon, 16 Aug 2021 21:18:10 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Leon Krieg <info@madcow.dev>
-Subject: Re: [PATCH] staging/ks7010: Fix coding style problems [Version 2]
-Message-ID: <YRq58ppe6obZsNbN@kroah.com>
-References: <20210816180447.GA17851@mad-cln-mothership-1.local>
+ with ESMTP id 9jko0TqscShm for <devel@linuxdriverproject.org>;
+ Mon, 16 Aug 2021 20:39:28 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ot1-x32a.google.com (mail-ot1-x32a.google.com
+ [IPv6:2607:f8b0:4864:20::32a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D3B1580B0A
+ for <devel@driverdev.osuosl.org>; Mon, 16 Aug 2021 20:39:28 +0000 (UTC)
+Received: by mail-ot1-x32a.google.com with SMTP id
+ r17-20020a0568302371b0290504f3f418fbso22417053oth.12
+ for <devel@driverdev.osuosl.org>; Mon, 16 Aug 2021 13:39:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=M7tM5QJBdMSg83mwbBHTvOqenRZLIjdFA4ElaV0sw0U=;
+ b=D6pBXW75cbx36stnVuTKmFCuCxWBypW0B4tSasAufbprXanKLTsQF/jLbq00LbSLkw
+ JPsAUrfjWCq3kTf29lZxYc/TYfMfhBpxm1JHhagsYIkblEIDtjQMHWrRdzjYmTovlVVI
+ 78eT276QJHuFzIK90RdZbzdPslUHvXBwauC/ALitsTxMkSbGBmK15TvgFVSA+bvbL/6U
+ 6jSIcPqQGokWYUq+tJRTKnFr1iyVu3m21/FIAoT2McEeF257g2F6Q9Y99bpxbGiMffbT
+ O4LMWN5FIKYaKwtw1Eeh9ppSVRkNxldK/Bd0LwfPHCx/UvPDgSKxoRqAmOH6HpebkPVa
+ 9EqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=M7tM5QJBdMSg83mwbBHTvOqenRZLIjdFA4ElaV0sw0U=;
+ b=V8kKd37OmVqLjoF/6GhGSkrWneYfG2wTK0aQe2skjkCD+DTSj29oa8IjTb3uESX/9m
+ xOPBNUSsEZPJ+6sR/rYisfzCo1RzZsG5IOuZNagueihsSYTuPoFQ3QWvQWt5a29ESWBu
+ Y6CpzBZxFHUF/1lavZ+YJyKevnhsZ2u2wO5HvVsR41pGO2e2snGsTQRSlnsgdt6DmFOn
+ ic1XWiZ/UMfVEJvVP1Yxxf+GE5t5OT4DfDjB8xM2Dj/4oWd0Mnlvnh7pTtkIB/wsPZ5b
+ fPMjiu3bPqSzBwH4+ZkNY4hZxLQOMiNvjpKPF9r0HaPy5j/kOF7l7fsSttGYcj4PYDGF
+ 43+w==
+X-Gm-Message-State: AOAM533H/WGhGJkkN41kfogBEO9K1DD7dIzPtKvAMpJw4wz1PPt3tLa3
+ RO7dpWhNvW0OaO2deXvek7AtCb+weg7yjPffOi4=
+X-Google-Smtp-Source: ABdhPJz2Ws8d7d2TmKvPhrNjUUHpFMyxjqPfUPNQx1b4j1BEg18VKFBKprUj3y7lb//rr8qFToQS4i1p0KVA2Dk8DPA=
+X-Received: by 2002:a05:6830:43a8:: with SMTP id
+ s40mr18333otv.209.1629146367679; 
+ Mon, 16 Aug 2021 13:39:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210816180447.GA17851@mad-cln-mothership-1.local>
+Received: by 2002:a05:6838:e221:0:0:0:0 with HTTP; Mon, 16 Aug 2021 13:39:27
+ -0700 (PDT)
+From: "US.BANK  PAYMENT" <usbankpaymnentofice11@gmail.com>
+Date: Mon, 16 Aug 2021 21:39:27 +0100
+Message-ID: <CAK3e99DcKE_0T8FS8vAv7ZaiwWC9N4wsRhh0YM6k19eG2Lf_Kg@mail.gmail.com>
+Subject: Attention; Fund Beneficiary,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,169 +83,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org
+Reply-To: usbankpayment79@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 16, 2021 at 08:04:47PM +0200, Leon Krieg wrote:
-> By doing some last-second wording changes directly in the diff I've
-> screwed up and managed to use spaces instead of tabs for the Kconfig file.
-> This is embarrassing!
-> 
-> Signed-off-by: Leon Krieg <info@madcow.dev>
-> ---
->  drivers/staging/ks7010/Kconfig       |  7 ++++---
->  drivers/staging/ks7010/ks_hostif.c   |  2 +-
->  drivers/staging/ks7010/ks_wlan_net.c | 20 ++++++++++----------
->  3 files changed, 15 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/staging/ks7010/Kconfig b/drivers/staging/ks7010/Kconfig
-> index 0987fdc2f70d..4bc17e50ac89 100644
-> --- a/drivers/staging/ks7010/Kconfig
-> +++ b/drivers/staging/ks7010/Kconfig
-> @@ -6,6 +6,7 @@ config KS7010
->  	select WEXT_PRIV
->  	select FW_LOADER
->  	help
-> -	  This is a driver for KeyStream KS7010 based SDIO WIFI cards. It is
-> -	  found on at least later Spectec SDW-821 (FCC-ID "S2Y-WLAN-11G-K" only,
-> -	  sadly not FCC-ID "S2Y-WLAN-11B-G") and Spectec SDW-823 microSD cards.
-> +	  Selecting this option enables the driver for KeyStream KS7010 SDIO
-> +	  hardware found in at least Spectec SDW-821 and SDW-823 microSD cards
-> +	  (FCC-ID "S2Y-WLAN-11G-K" but not FCC-ID "S2Y-WLAN-11B-G" and Spectec
-> +	  SDW-823).
-> 
-> diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-> index eaa70893224a..d2f9d0ed62c1 100644
-> --- a/drivers/staging/ks7010/ks_hostif.c
-> +++ b/drivers/staging/ks7010/ks_hostif.c
-> @@ -134,7 +134,7 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info *ap_info)
->  	size = (ap_info->rsn.size <= RSN_IE_BODY_MAX) ?
->  		ap_info->rsn.size : RSN_IE_BODY_MAX;
->  	if ((ap_info->rsn_mode & RSN_MODE_WPA2) &&
-> -	    (priv->wpa.version == IW_AUTH_WPA_VERSION_WPA2)) {
-> +	    priv->wpa.version == IW_AUTH_WPA_VERSION_WPA2) {
->  		ap->rsn_ie.id = RSN_INFO_ELEM_ID;
->  		ap->rsn_ie.size = size;
->  		memcpy(ap->rsn_ie.body, ap_info->rsn.body, size);
-> diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-> index 09e7b4cd0138..33abb6a7dbe0 100644
-> --- a/drivers/staging/ks7010/ks_wlan_net.c
-> +++ b/drivers/staging/ks7010/ks_wlan_net.c
-> @@ -181,26 +181,26 @@ static int ks_wlan_set_freq(struct net_device *dev,
->  
->  	/* for SLEEP MODE */
->  	/* If setting by frequency, convert to a channel */
-> -	if ((fwrq->freq.e == 1) &&
-> -	    (fwrq->freq.m >= 241200000) && (fwrq->freq.m <= 248700000)) {
-> +	if (fwrq->freq.e == 1 &&
-> +	    fwrq->freq.m >= 241200000 && fwrq->freq.m <= 248700000) {
->  		int f = fwrq->freq.m / 100000;
->  		int c = 0;
->  
->  		while ((c < 14) && (f != frequency_list[c]))
->  			c++;
-> -		/* Hack to fall through... */
-> +		fallthrough;
->  		fwrq->freq.e = 0;
->  		fwrq->freq.m = c + 1;
->  	}
->  	/* Setting by channel number */
-> -	if ((fwrq->freq.m > 1000) || (fwrq->freq.e > 0))
-> +	if (fwrq->freq.m > 1000 || fwrq->freq.e > 0)
->  		return -EOPNOTSUPP;
->  
->  	channel = fwrq->freq.m;
->  	/* We should do a better check than that,
->  	 * based on the card capability !!!
->  	 */
-> -	if ((channel < 1) || (channel > 14)) {
-> +	if (channel < 1 || channel > 14) {
->  		netdev_dbg(dev, "%s: New channel value of %d is invalid!\n",
->  			   dev->name, fwrq->freq.m);
->  		return -EINVAL;
-> @@ -664,7 +664,7 @@ static int ks_wlan_set_rts(struct net_device *dev, struct iw_request_info *info,
->  	/* for SLEEP MODE */
->  	if (vwrq->rts.disabled)
->  		rthr = 2347;
-> -	if ((rthr < 0) || (rthr > 2347))
-> +	if (rthr < 0 || rthr > 2347)
->  		return -EINVAL;
->  
->  	priv->reg.rts = rthr;
-> @@ -702,7 +702,7 @@ static int ks_wlan_set_frag(struct net_device *dev,
->  	/* for SLEEP MODE */
->  	if (vwrq->frag.disabled)
->  		fthr = 2346;
-> -	if ((fthr < 256) || (fthr > 2346))
-> +	if (fthr < 256 || fthr > 2346)
->  		return -EINVAL;
->  
->  	fthr &= ~0x1;	/* Get an even value - is it really needed ??? */
-> @@ -781,7 +781,7 @@ static int ks_wlan_set_encode(struct net_device *dev,
->  		return -EINVAL;
->  
->  	/* for SLEEP MODE */
-> -	if ((index < 0) || (index > 4))
-> +	if (index < 0 || index > 4)
->  		return -EINVAL;
->  
->  	index = (index == 0) ? priv->reg.wep_index : (index - 1);
-> @@ -882,7 +882,7 @@ static int ks_wlan_get_encode(struct net_device *dev,
->  	}
->  
->  	/* Which key do we want ? -1 -> tx index */
-> -	if ((index < 0) || (index >= 4))
-> +	if (index < 0 || index >= 4)
->  		index = priv->reg.wep_index;
->  	if (priv->reg.privacy_invoked) {
->  		enc->flags &= ~IW_ENCODE_DISABLED;
-> @@ -1860,7 +1860,7 @@ static int ks_wlan_set_power_mgmt(struct net_device *dev,
->  		return -EINVAL;
->  
->  	if ((*uwrq == POWER_MGMT_SAVE1 || *uwrq == POWER_MGMT_SAVE2) &&
-> -	    (priv->reg.operation_mode != MODE_INFRASTRUCTURE))
-> +	    priv->reg.operation_mode != MODE_INFRASTRUCTURE)
->  		return -EINVAL;
->  
->  	priv->reg.power_mgmt = *uwrq;
-> -- 
-> 2.27.0
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+USA Bank
+324 Royal Palm Way, Palm Beach, FL 33480,
+SWIFT (US): USBKUS44XXX
+Founded: United States of America
+Tell +1 501 303-6056
+Hours: Open 24 Hours
 
-Hi,
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+         US BANK FINAL PAYMENT NOTIFICATION
 
-You are receiving this message because of the following common error(s)
-as indicated below:
 
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version.
-  Please read the section entitled "The canonical patch format" in the
-  kernel file, Documentation/SubmittingPatches for what needs to be done
-  here to properly describe this.
+ATTENTION FUND BENEFICIARY
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
 
-thanks,
+After today's board meeting of the Treasury, the United States
+Department of the Treasury, the IRS, the Federal Reserve Bank, and the
+World Bank Directorate it was gathered That the overdue compensation
+fund worth $10.7Million has been deposited to this bank for onward
+payment. The reason for this is because of the scam victims that lost
+a lot of money to African and European Fraudsters,
 
-greg k-h's patch email bot
+
+Your name/email appeared in our payment schedule list of beneficiaries
+that will receive their funds in this second  quarter payment of the
+year because we only transfer fund twice in a year according to our
+banking regulation. We apologize for the delay of your payment and
+please stop communicating with any office now and pay attention to our
+office/bank payment accordingly.
+
+
+RE-CONFIRM YOUR BELOW DETAILS.
+
+Your Full Name__
+Your Residential Address__
+Your Sex / Age__
+Occupation_
+Telephone / Fax __
+Next of Kin__
+Your valid ID card _
+
+
+The US bank will immediately remit your payment once I reconfirm your
+information/ details.For further details and assistance on this
+Remittance Notification, kindly forward your FULL NAME AND CONTACT
+ADDRESS, TELEPHONE and FAX NUMBERS directly to this mail
+box(usbankpayment79@gmail.com)
+
+
+Your utmost response is needed to proceed with your payment.
+
+We intend to finalize this payment in a few days time...
+
+Thank you for choosing US Bank.
+
+Yours Faithfully,
+Mr Rick Ruzzi
+Executive Region Manager
+Tell +1 501 303-6056
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
