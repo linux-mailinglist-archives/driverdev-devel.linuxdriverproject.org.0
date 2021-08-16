@@ -1,60 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A35343EDDBF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 21:18:18 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94ED93EDDC0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 21:18:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4DF1240464;
-	Mon, 16 Aug 2021 19:18:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AB14483579;
+	Mon, 16 Aug 2021 19:18:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WdaQ8UzVmLB3; Mon, 16 Aug 2021 19:18:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hYDvrO6NgCKo; Mon, 16 Aug 2021 19:18:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A8D7F40458;
-	Mon, 16 Aug 2021 19:18:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C53CB8350A;
+	Mon, 16 Aug 2021 19:18:26 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0B6241BF3DC
+ by ash.osuosl.org (Postfix) with ESMTP id 3D0B91BF3DC
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:17:57 +0000 (UTC)
+ Mon, 16 Aug 2021 19:18:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 06F248350A
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2CCDD83508
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:17:57 +0000 (UTC)
+ Mon, 16 Aug 2021 19:18:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QMIECG92fsD0
+ with ESMTP id uLZoIc5s3r84
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:17:53 +0000 (UTC)
+ Mon, 16 Aug 2021 19:18:12 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0DB7183508
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D668B83530
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 19:17:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A1F2660E09;
- Mon, 16 Aug 2021 19:17:51 +0000 (UTC)
+ Mon, 16 Aug 2021 19:18:12 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E1D8760F4B;
+ Mon, 16 Aug 2021 19:18:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1629141472;
- bh=jD6AV0GugSpuwZYHFCtF3p5rUau0UmSVc5/LSN+LMZE=;
+ s=korg; t=1629141492;
+ bh=jAE9abmJ700Mk5ZUdqDCscF9tLfArjXKP9Jel24DQik=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DR8BX/WKhi85ytJIXJVJ1uHDSdRx8eVUa2utgZITAxQZk7ti32ppUcTLyb3gfMvFl
- rd9oIaXBvduyPhVuXOHvFExpu4w7xBeRwjGNYmKxWUhpOJ3DbPvTljMx17tntxOPpz
- q7j1GSpEoLgPFQzMvz2n4vFyQuhoqXPcYTM9YsRw=
-Date: Mon, 16 Aug 2021 21:17:49 +0200
+ b=GqKmnIX8GDRtAPJlLRq8J76K6UYBkG4ZO8osAZdVkCYxXR3fXT2MUS7kvTJhLgxl5
+ Bpz5++PI/MnuHpTvBqyTpWIFWr8lZc+w1Z6wCIe4ITzBmbNPXt53xS0Q5YFSoKzd5P
+ zw+fKDBW/OWLKSs/bZL/kKTuIyXqRal6iVrkoDZk=
+Date: Mon, 16 Aug 2021 21:18:10 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Leon Krieg <info@madcow.dev>
-Subject: Re: [PATCH] staging/ks7010: Fix coding style problems
-Message-ID: <YRq53Ydu25f/fzh8@kroah.com>
-References: <20210816175503.GA17772@mad-cln-mothership-1.local>
+Subject: Re: [PATCH] staging/ks7010: Fix coding style problems [Version 2]
+Message-ID: <YRq58ppe6obZsNbN@kroah.com>
+References: <20210816180447.GA17851@mad-cln-mothership-1.local>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210816175503.GA17772@mad-cln-mothership-1.local>
+In-Reply-To: <20210816180447.GA17851@mad-cln-mothership-1.local>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,11 +71,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 16, 2021 at 07:55:03PM +0200, Leon Krieg wrote:
-> Sorry to bother you with this low-effort patch but I'd really like to get
-> my feet in the water and this whole process is making me nervous. I'd
-> really appreciate you taking the time to look over this diff and
-> hopefully I did not screw up to badly.
+On Mon, Aug 16, 2021 at 08:04:47PM +0200, Leon Krieg wrote:
+> By doing some last-second wording changes directly in the diff I've
+> screwed up and managed to use spaces instead of tabs for the Kconfig file.
+> This is embarrassing!
 > 
 > Signed-off-by: Leon Krieg <info@madcow.dev>
 > ---
@@ -99,7 +96,7 @@ On Mon, Aug 16, 2021 at 07:55:03PM +0200, Leon Krieg wrote:
 > -	  sadly not FCC-ID "S2Y-WLAN-11B-G") and Spectec SDW-823 microSD cards.
 > +	  Selecting this option enables the driver for KeyStream KS7010 SDIO
 > +	  hardware found in at least Spectec SDW-821 and SDW-823 microSD cards
-> +         (FCC-ID "S2Y-WLAN-11G-K" but not FCC-ID "S2Y-WLAN-11B-G" and Spectec
+> +	  (FCC-ID "S2Y-WLAN-11G-K" but not FCC-ID "S2Y-WLAN-11B-G" and Spectec
 > +	  SDW-823).
 > 
 > diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
@@ -199,6 +196,10 @@ On Mon, Aug 16, 2021 at 07:55:03PM +0200, Leon Krieg wrote:
 > -- 
 > 2.27.0
 > 
+> _______________________________________________
+> devel mailing list
+> devel@linuxdriverproject.org
+> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
 Hi,
 
@@ -213,25 +214,11 @@ kernel tree.
 You are receiving this message because of the following common error(s)
 as indicated below:
 
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
+- This looks like a new version of a previously submitted patch, but you
+  did not list below the --- line any changes from the previous version.
+  Please read the section entitled "The canonical patch format" in the
+  kernel file, Documentation/SubmittingPatches for what needs to be done
+  here to properly describe this.
 
 If you wish to discuss this problem further, or you have questions about
 how to resolve this issue, please feel free to respond to this email and
