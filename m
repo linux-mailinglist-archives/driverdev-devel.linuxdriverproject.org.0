@@ -2,60 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 907C63EDCCE
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 20:06:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4AC93EDCCF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Aug 2021 20:06:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4A31183544;
-	Mon, 16 Aug 2021 18:06:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5DD07835A6;
+	Mon, 16 Aug 2021 18:06:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sVxiCzE8QM73; Mon, 16 Aug 2021 18:06:16 +0000 (UTC)
+	with ESMTP id 5j_rt8BBduXg; Mon, 16 Aug 2021 18:06:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5AE9880D64;
-	Mon, 16 Aug 2021 18:06:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0F8C80D58;
+	Mon, 16 Aug 2021 18:06:23 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B97F51BF3F2
+ by ash.osuosl.org (Postfix) with ESMTP id 1017F1BF3F2
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 18:06:04 +0000 (UTC)
+ Mon, 16 Aug 2021 18:06:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A8FBA402A6
+ by smtp4.osuosl.org (Postfix) with ESMTP id F3A3C402A6
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 18:06:04 +0000 (UTC)
+ Mon, 16 Aug 2021 18:06:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5RNyzpQpWWre
+ with ESMTP id RtwM4q2Ph1h4
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 18:06:03 +0000 (UTC)
-X-Greylist: delayed 00:09:31 by SQLgrey-1.8.0
-Received: from mout-p-101.mailbox.org (mout-p-101.mailbox.org
- [IPv6:2001:67c:2050::465:101])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3E43C4028C
+ Mon, 16 Aug 2021 18:06:09 +0000 (UTC)
+X-Greylist: delayed 00:09:39 by SQLgrey-1.8.0
+Received: from mout-p-102.mailbox.org (mout-p-102.mailbox.org [80.241.56.152])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C4AC24028C
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Aug 2021 18:06:03 +0000 (UTC)
-Received: from smtp1.mailbox.org (smtp1.mailbox.org [80.241.60.240])
+ Mon, 16 Aug 2021 18:06:09 +0000 (UTC)
+Received: from smtp2.mailbox.org (smtp2.mailbox.org
+ [IPv6:2001:67c:2050:105:465:1:2:0])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
  SHA256) (No client certificate requested)
- by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4GpMKl4N8XzQk2K;
- Mon, 16 Aug 2021 19:56:27 +0200 (CEST)
+ by mout-p-102.mailbox.org (Postfix) with ESMTPS id 4GpMXs4Tj1zQk2q;
+ Mon, 16 Aug 2021 20:06:05 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at heinlein-support.de
-Received: from smtp1.mailbox.org ([80.241.60.240])
- by spamfilter04.heinlein-hosting.de (spamfilter04.heinlein-hosting.de
- [80.241.56.122]) (amavisd-new, port 10030)
- with ESMTP id tC-10B9rpwAN; Mon, 16 Aug 2021 19:56:24 +0200 (CEST)
-Date: Mon, 16 Aug 2021 19:55:03 +0200
+Received: from smtp2.mailbox.org ([80.241.60.241])
+ by hefe.heinlein-support.de (hefe.heinlein-support.de [91.198.250.172])
+ (amavisd-new, port 10030)
+ with ESMTP id NpDzffPbEwkh; Mon, 16 Aug 2021 20:06:02 +0200 (CEST)
+Date: Mon, 16 Aug 2021 20:04:47 +0200
 From: Leon Krieg <info@madcow.dev>
 To: gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org
-Subject: [PATCH] staging/ks7010: Fix coding style problems
-Message-ID: <20210816175503.GA17772@mad-cln-mothership-1.local>
+Subject: [PATCH] staging/ks7010: Fix coding style problems [Version 2]
+Message-ID: <20210816180447.GA17851@mad-cln-mothership-1.local>
 MIME-Version: 1.0
 Content-Disposition: inline
-X-Rspamd-Queue-Id: BE56718DD
-X-Rspamd-UID: 2073f5
+X-Rspamd-Queue-Id: B6F4517FC
+X-Rspamd-UID: 635580
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,10 +73,9 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sorry to bother you with this low-effort patch but I'd really like to get
-my feet in the water and this whole process is making me nervous. I'd
-really appreciate you taking the time to look over this diff and
-hopefully I did not screw up to badly.
+By doing some last-second wording changes directly in the diff I've
+screwed up and managed to use spaces instead of tabs for the Kconfig file.
+This is embarrassing!
 
 Signed-off-by: Leon Krieg <info@madcow.dev>
 ---
@@ -98,7 +97,7 @@ index 0987fdc2f70d..4bc17e50ac89 100644
 -	  sadly not FCC-ID "S2Y-WLAN-11B-G") and Spectec SDW-823 microSD cards.
 +	  Selecting this option enables the driver for KeyStream KS7010 SDIO
 +	  hardware found in at least Spectec SDW-821 and SDW-823 microSD cards
-+         (FCC-ID "S2Y-WLAN-11G-K" but not FCC-ID "S2Y-WLAN-11B-G" and Spectec
++	  (FCC-ID "S2Y-WLAN-11G-K" but not FCC-ID "S2Y-WLAN-11B-G" and Spectec
 +	  SDW-823).
 
 diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
