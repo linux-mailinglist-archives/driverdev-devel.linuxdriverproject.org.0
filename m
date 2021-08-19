@@ -1,129 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 97E393F1305
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Aug 2021 08:01:40 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 92D7E3F135A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Aug 2021 08:22:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B083A407A5;
-	Thu, 19 Aug 2021 06:01:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 72C9260BB9;
+	Thu, 19 Aug 2021 06:22:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9gjme011cmq2; Thu, 19 Aug 2021 06:01:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RDoPpFGA4R1q; Thu, 19 Aug 2021 06:22:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D3BC2403FB;
-	Thu, 19 Aug 2021 06:01:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8E9396063D;
+	Thu, 19 Aug 2021 06:22:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EFAE71BF94B
- for <devel@linuxdriverproject.org>; Thu, 19 Aug 2021 06:01:25 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B0B11BF868
+ for <devel@linuxdriverproject.org>; Thu, 19 Aug 2021 06:22:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DE55E4031E
- for <devel@linuxdriverproject.org>; Thu, 19 Aug 2021 06:01:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E4E73606F2
+ for <devel@linuxdriverproject.org>; Thu, 19 Aug 2021 06:22:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gCn7pFu72b9U for <devel@linuxdriverproject.org>;
- Thu, 19 Aug 2021 06:01:25 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2105.outbound.protection.outlook.com [40.107.94.105])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EB70D40310
- for <devel@driverdev.osuosl.org>; Thu, 19 Aug 2021 06:01:24 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SCbLLGZPJVrJu22SvtE/4UjdeoayqfxaCmRo7mWaQUUNrVIr54YfJqN1bXwRaPh52wwK3Wu801p+aXmKVGWYuz71AU+uUPePFIIVSYiDIc017L6eqY3sUoUNTd3vYgoBgXZzSzwANT20hdwZ68jmNIBiLmhspM+iOxCnQWZKGcW8JFmqj1L4TFedBC3wHisElyDKGh/7OMR1V1XxstWHiqes3oJnCfdEFeVTxwrtXHcB1UuifTH7m0zywK2etoF4qNO87nNKJqixlg8F3N4IW2EJtP1VVC/t6jtaT9Wwho4dJD68Jzm2ybwQvSgOp/XuqF7V5IDowxVLo/eMB4tF3w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Hgi/8DkE57x8xY+QICSMoC2VNElbmtZyAZhN2Vyshh0=;
- b=lcyHTAKwXai/lSypNFXWnzEG+D4+tOieh4usT+8tPjwFWtByB6mPMlukk+S/tf791VBcMovdzzngnQFIblGcB26L/p3L3vjleZc90mZE2/1AKpXX5/gLX4dnSV0XCarkrCBjQmQFlH3oiRknFnFIkJ2d9mSA8FUlS//tQdndPxFLxOHcn/7NMwy8XRVwamSP2Dz6g4TP/m3XiaBTB4Sr+TKrUhtOlktjoLdzYYuA2Y4pwZH3gZ1lKcb/jJi7lmguvp3QLLyJFIc49XDUU7iUeQdjfE8R0tq9CaUna52c01lv0/iZR5GgD4xRgnqyKJkJC448GuPFlceqUgZYnyFEjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Hgi/8DkE57x8xY+QICSMoC2VNElbmtZyAZhN2Vyshh0=;
- b=HJuPardSgITvcv0hTwTuaTU1lI0FPZVS1pgzoKpKVc70+ZFFdKY7homvC2bwr3J/li0MkWCwb0rZfHWTv1x5JiIkYHSeHvKP+2CAuu5wyB6uo1xe39e/D0DUBa19+APYUVgGCDsYvaEAPhtabnu8zNURgRq3lBLDVdgbmVGaAFg=
-Authentication-Results: analogixsemi.com; dkim=none (message not signed)
- header.d=none;analogixsemi.com; dmarc=none action=none
- header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BYAPR04MB5271.namprd04.prod.outlook.com (2603:10b6:a03:c6::28)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19; Thu, 19 Aug
- 2021 06:01:22 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::51a6:9837:1d52:b16e]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::51a6:9837:1d52:b16e%8]) with mapi id 15.20.4436.019; Thu, 19 Aug 2021
- 06:01:21 +0000
-From: Xin Ji <xji@analogixsemi.com>
-To: robert.foss@linaro.org,
-	drinkcat@google.com,
-	a.hajda@samsung.com
-Subject: [PATCH v2] drm/bridge: anx7625: enable DSI EOTP
-Date: Thu, 19 Aug 2021 14:01:10 +0800
-Message-Id: <20210819060110.3427256-1-xji@analogixsemi.com>
-X-Mailer: git-send-email 2.25.1
-X-ClientProxiedBy: HKAPR03CA0034.apcprd03.prod.outlook.com
- (2603:1096:203:c9::21) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nw-SqiluHYRB for <devel@linuxdriverproject.org>;
+ Thu, 19 Aug 2021 06:22:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 374736063D
+ for <devel@driverdev.osuosl.org>; Thu, 19 Aug 2021 06:22:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10080"; a="277515168"
+X-IronPort-AV: E=Sophos;i="5.84,334,1620716400"; d="scan'208";a="277515168"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2021 23:22:18 -0700
+X-IronPort-AV: E=Sophos;i="5.84,334,1620716400"; d="scan'208";a="522196075"
+Received: from rongch2-mobl.ccr.corp.intel.com (HELO [10.249.170.111])
+ ([10.249.170.111])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2021 23:22:15 -0700
+Subject: Re: [kbuild-all] Re: [driver-core:driver-core-testing 28/31] WARNING:
+ modpost: vmlinux.o(.text.unlikely+0x156c): Section mismatch in
+ reference from
+ the function bitmap_equal() to the variable .init.data:initcall_level_names
+To: Barry Song <21cnbao@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>
+References: <202108141955.XlQXw3y4-lkp@intel.com> <YRfGfcwxFR0L/e77@kroah.com>
+ <CAHp75VdzjsqnwprykT8phofnkUit8087Tz87YuhaZ8dAuExaqQ@mail.gmail.com>
+ <CAGsJ_4wzoSLpaPzgQh5k-zwbJEBgN3ckM_MpGz-72ayCeT6aMQ@mail.gmail.com>
+From: "Chen, Rong A" <rong.a.chen@intel.com>
+Message-ID: <2f334887-5cc4-87ce-6eaa-61afc8c1265a@intel.com>
+Date: Thu, 19 Aug 2021 14:22:13 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.12.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from anxtwsw-Precision-3640-Tower (60.251.58.79) by
- HKAPR03CA0034.apcprd03.prod.outlook.com (2603:1096:203:c9::21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4457.6 via Frontend Transport; Thu, 19 Aug 2021 06:01:21 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 651bee6f-2b98-4539-f89d-08d962d6c4ef
-X-MS-TrafficTypeDiagnostic: BYAPR04MB5271:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BYAPR04MB5271F24359875BCBF68D1F1BC7C09@BYAPR04MB5271.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2000;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: FkkpYDccAZJU3V2Z12HvBZVAcKXyw1PsEwRggI0BIyZIbpBcDz8PWn9sNPTNSkVT4O+tpO6nSr3qYK2ylIuxc+M5XK4ZyJaTfDsj1WKgGbi23/hGlExhBiaVFeJOK5BtqayqN0vwgsBBS35FQSSrGqz0JI/vm+UflVrImQ9tkWwSTiPKYmIL4cyQ0yyeX10iOeimoIHP1s2y3iPXvzQ/k7ZzDInRaXYJxmpf988vK0EX8NxrauKBOjo/w8QjGOZG7Dyn3JVquOfmV+Pr2/oowgkSFr1s18JVCI1yTOWM5udjYqrdnJJWa6FToHo8WTjGwJ6bat1DWqbc9TcF2TLc6P83CDh4njpL5Nhq4rFYiTezEHXtes6CxYuHna4qJnCpFOW+h5ftwOBoGnZOxxkuAxdDtKRkUAkZxhV91efNLsgDosJvQcp2HIy6wSY1xbLhDvc8c3izyLJqwNtuie3w5mIwu8IZY3C2HIGVaaFdo/3lCNU9rY4HufaJ6AlVPe2blqmaSNthAzryJQzcDXOGUhltqRl1WegZ4PyspmhVglQ8sGrGGav0Z13+9wHs6Tg1eLTQvMFdOJCjHPFN/edFpO7EQ+ICKcMbBriSfq91NnIbko7AJ79o5AP7smtFHtGicjeWH8FWpqCIc1gbOCgXK6Cj8TII0ePrR8vbvCJ6MGABq9N1c1ziKW3QpQf3f5h2gKzaz58AXERY1O0kFrF32A==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(8676002)(8936002)(107886003)(316002)(26005)(7416002)(2906002)(83380400001)(2616005)(956004)(86362001)(38100700002)(38350700002)(6496006)(55236004)(5660300002)(4326008)(4744005)(6666004)(508600001)(66946007)(6486002)(1076003)(66556008)(66476007)(186003)(36756003)(52116002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TvpTCoISItlUAHmYpHL69FxSJf8NAfQF7cv1Wx53menWSf0GIu5k7k/9vgxg?=
- =?us-ascii?Q?0cc0bzzNbc3YZt7P6jlD7zfnBr1RyNiopH6MV3xgLD2K7KVbpzgWkQPQCemG?=
- =?us-ascii?Q?vaUT9jUCqC5/HNmvI0+xTxCSczVHKoh0kikEi6aP8dxuyIiqzkt/C1w76TbZ?=
- =?us-ascii?Q?xSuFNbRq2H1m0Ifhzp14qW3CNnKjgZELWxU7Ez9GWpepe7FdHG/YcuvtcpBA?=
- =?us-ascii?Q?gTa4W8WAGD29i6v6m2JBUMKFCkz39NuRzHY6wK/9ZaPEa1wRs1CIVFhZvIHX?=
- =?us-ascii?Q?sNLZGideMgTASIh/ILiy+/qDaYmqrRnAV/ftKakR4Tl/Gn3aAEzs0/x+1YKE?=
- =?us-ascii?Q?Cswn2ikt/i+iIy/HYesngkXEVtHf6g7tgMqL/43WTwk+y7SMHutZa+TId5vI?=
- =?us-ascii?Q?wqRrzR7Nbyl3v/Vm/sod/EC+mhrmLXguO3hm8u5UwBi5JOd9GHznLoCgbzzq?=
- =?us-ascii?Q?Nw7Uu+VJh6hqhIuggkSfGkSyzkaKqHzW0AnHQ4qUk/7RxOcc6YSaXXT/tamy?=
- =?us-ascii?Q?aJ9O9JQJFhxmZXgj8mg7CTELsQ5rdlGs1Z2AYvr0Nmt2dXgfjK7i6skql0g4?=
- =?us-ascii?Q?moStbWtRt7oRCmrucSFNvijNtOjtpwtYvDiE0fF4ccgEry5HmM1kQu69hnaH?=
- =?us-ascii?Q?rMkjjJVlHNkdun4JmQetOAgcy14PfAE3ASlb+jQw4SozgoASt8KgBQv8nCav?=
- =?us-ascii?Q?CYcyRA7f0roj1NEqK4093gzcPii6EdIFUi4VvTncCM2xV1pqY4/aw3QcX4hW?=
- =?us-ascii?Q?LfZh8ACHUrUtaNVMV83NYwTL5kOILA1pHOP9Uwshzc8rZrAhbAbyiZq+a9cc?=
- =?us-ascii?Q?O6X/UZqYPtQzlOz3k+gjyTwR7FOeKzoKgwxNKGE8nolXylsEulvH35eODSSe?=
- =?us-ascii?Q?p4KUhj/QW7YFlsgQaCST38RVfNpW7GgzHv27ECJlsIJzjFv4sV6vFqC717OM?=
- =?us-ascii?Q?7QtpXQve77SQguVJ831R8Fh/TI/80RTdIEQkyy39HRpMbgk3/BX0/FC9W+BH?=
- =?us-ascii?Q?RE0MXsHlpd93O7GHuFSHcmFAohjFnbpPBVKnnf1LXtLEmQ7LW4djt5k1CqmJ?=
- =?us-ascii?Q?FhjeAQ87YUfSzm1FZf/MNAkl/roLQO7iKNIZyWtA0Px9nd7CZrxMlRhgbCJR?=
- =?us-ascii?Q?rrwdLncyHbrm8/+MZKS6t5y78mnL+IIVhKboYmxSfEyxgwIWZ993Jj+eWs4/?=
- =?us-ascii?Q?+ccs2RLKdabUeRCfsm18PoIO8oYLz3DFN2w/YpFw0uXGhPC6VFES5ey2471R?=
- =?us-ascii?Q?PzQr6qVG635DtUeX6Ldnrqqbi/yzboUjJc0DTNzToZPl/J/V5TcHEUksKl0D?=
- =?us-ascii?Q?1M0QfAxN4TOdhHoYrLyU5o4Z?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 651bee6f-2b98-4539-f89d-08d962d6c4ef
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2021 06:01:21.7833 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: oAcLCtTziCIbk/PFstJi06MlVkCEvdat5WQcn3C0dRnRrkV1+HiOuBQE1YvwHhF7PKy917qI4zVhNkHOoHBw9w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5271
+In-Reply-To: <CAGsJ_4wzoSLpaPzgQh5k-zwbJEBgN3ckM_MpGz-72ayCeT6aMQ@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,42 +69,157 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, jonas@kwiboo.se, airlied@linux.ie,
- bliang@analogixsemi.com, qwen@analogixsemi.com, narmstrong@baylibre.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- anarsoul@gmail.com, boris.brezillon@collabora.com, duwe@lst.de,
- Laurent.pinchart@ideasonboard.com, daniel@ffwll.ch, hsinyi@chromium.org,
- sam@ravnborg.org, Xin Ji <xji@analogixsemi.com>, dan.carpenter@oracle.com,
- m.szyprowski@samsung.com
-Content-Type: text/plain; charset="us-ascii"
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ kbuild-all@lists.01.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Enable DSI EOTP feature for fixing some panel screen constant shift issue.
-Removing MIPI flag MIPI_DSI_MODE_NO_EOT_PACKET to enable DSI EOTP.
 
-Reviewed-by: Robert Foss <robert.foss@linaro.org>
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
----
- drivers/gpu/drm/bridge/analogix/anx7625.c | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-index abc8db77bfd3..1a871f6b6822 100644
---- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-+++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-@@ -1335,7 +1335,6 @@ static int anx7625_attach_dsi(struct anx7625_data *ctx)
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO	|
- 		MIPI_DSI_MODE_VIDEO_SYNC_PULSE	|
--		MIPI_DSI_MODE_NO_EOT_PACKET	|
- 		MIPI_DSI_MODE_VIDEO_HSE;
- 
- 	if (mipi_dsi_attach(dsi) < 0) {
--- 
-2.25.1
+On 8/15/2021 8:04 AM, Barry Song wrote:
+> On Sun, Aug 15, 2021 at 5:18 AM Andy Shevchenko
+> <andy.shevchenko@gmail.com> wrote:
+>>
+>> On Sat, Aug 14, 2021 at 4:36 PM Greg Kroah-Hartman
+>> <gregkh@linuxfoundation.org> wrote:
+>>> On Sat, Aug 14, 2021 at 07:03:00PM +0800, kernel test robot wrote:
+>>>> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+>>>> head:   3b35f2a6a625126c57475aa56b5357d8e80b404c
+>>>> commit: 291f93ca339f5b5e6e90ad037bb8271f0f618165 [28/31] lib: test_bitmap: add bitmap_print_bitmask/list_to_buf test cases
+>>>> config: xtensa-randconfig-r004-20210814 (attached as .config)
+>>>> compiler: xtensa-linux-gcc (GCC) 11.2.0
+>>>> reproduce (this is a W=1 build):
+>>>>          wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>>>>          chmod +x ~/bin/make.cross
+>>>>          # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=291f93ca339f5b5e6e90ad037bb8271f0f618165
+>>>>          git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
+>>>>          git fetch --no-tags driver-core driver-core-testing
+>>>>          git checkout 291f93ca339f5b5e6e90ad037bb8271f0f618165
+>>>>          # save the attached .config to linux build tree
+>>>>          mkdir build_dir
+>>>>          COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=xtensa SHELL=/bin/bash
+>>>>
+>>>> If you fix the issue, kindly add following tag as appropriate
+>>>> Reported-by: kernel test robot <lkp@intel.com>
+>>>>
+>>>> All warnings (new ones prefixed by >>, old ones prefixed by <<):
+>>>>
+>>>>>> WARNING: modpost: vmlinux.o(.text.unlikely+0x156c): Section mismatch in reference from the function bitmap_equal() to the variable .init.data:initcall_level_names
+>>>> The function bitmap_equal() references
+>>>> the variable __initdata initcall_level_names.
+>>>> This is often because bitmap_equal lacks a __initdata
+>>>> annotation or the annotation of initcall_level_names is wrong.
+>>>>
+>>>> The below error/warnings are from parent commit:
+>>>> << WARNING: modpost: vmlinux.o(.data+0x1a86d8): Section mismatch in reference from the variable qed_mfw_legacy_maps to the variable .init.rodata:__setup_str_initcall_blacklist
+>>>> << WARNING: modpost: vmlinux.o(.data+0x1a87c8): Section mismatch in reference from the variable qed_mfw_ext_maps to the variable .init.rodata:__setup_str_initcall_blacklist
+>>>> << WARNING: modpost: vmlinux.o(.data+0x1a8948): Section mismatch in reference from the variable qede_forced_speed_maps to the variable .init.rodata:__setup_str_initcall_blacklist
+>>
+>>> Barry, can I get a fix for this?
+>>
+>> Max already pointed out, but I guess you were not in Cc list, that
+>> it's a GCC bug in his opinion, but GCC people don't ack it.
+>> https://gcc.gnu.org/bugzilla/show_bug.cgi?id=92938
+> 
+> I really don't understand what is going on here. My understanding is
+> this report has nothing to do with the
+> new commit and it doesn't report any valid place where kernel code is wrong.
 
+Hi Barry,
+
+Sorry for the misunderstanding, the warning only changed a little by 
+this commit, see:
+
+ >>>> The below error/warnings are from parent commit:
+ >>>> << WARNING: modpost: vmlinux.o(.data+0x1a86d8): Section mismatch 
+in reference from the variable qed_mfw_legacy_maps to the variable 
+.init.rodata:__setup_str_initcall_blacklist
+ >>>> << WARNING: modpost: vmlinux.o(.data+0x1a87c8): Section mismatch 
+in reference from the variable qed_mfw_ext_maps to the variable 
+.init.rodata:__setup_str_initcall_blacklist
+ >>>> << WARNING: modpost: vmlinux.o(.data+0x1a8948): Section mismatch 
+in reference from the variable qede_forced_speed_maps to the variable 
+.init.rodata:__setup_str_initcall_blacklist
+
+we'll update the message to give a heavy hint.
+
+Best Regards,
+Rong Chen
+
+> 
+> with xtensa gcc 11.1 which is the one i can easily download from here
+> after google:
+> http://kernel.c3sl.ufpr.br/pub/tools/crosstool/
+> 
+> i could somehow reproduce this kind of very odd section mismatch
+> report from bitmap:
+> $ ./build-xenta.sh
+>    ...
+>    MODPOST vmlinux.symvers
+> WARNING: modpost: vmlinux.o(.text.unlikely+0x4d64): Section mismatch
+> in reference from the function bitmap_equal() to the variable
+> .init.rodata:__setup_str_initcall_blacklist
+> The function bitmap_equal() references
+> the variable __initconst __setup_str_initcall_blacklist.
+> This is often because bitmap_equal lacks a __initconst
+> annotation or the annotation of __setup_str_initcall_blacklist is wrong.
+> 
+> ...
+> WARNING: modpost: lib/find_bit_benchmark.o(.text.unlikely+0x0):
+> Section mismatch in reference from the (unknown reference) (unknown)
+> to the variable .init.data:bitmap2
+> The function (unknown)() references
+> the variable __initdata bitmap2.
+> This is often because (unknown) lacks a __initdata
+> annotation or the annotation of bitmap2 is wrong.
+> ...
+> 
+> But after reverting my commit, it is *still* there:
+> 
+> $ git revert 2069b8b9ce8b758e015ce49225b1fedac4accd9c
+> [scheduler e158c85c6ccc] Revert "lib: test_bitmap: add
+> bitmap_print_bitmask/list_to_buf test cases"
+>   1 file changed, 150 deletions(-)
+> 
+> $ ./build-xenta.sh
+> ...
+>    MODPOST vmlinux.symvers
+> WARNING: modpost: vmlinux.o(.text.unlikely+0x4d64): Section mismatch
+> in reference from the function bitmap_equal() to the variable
+> .init.rodata:__setup_str_initcall_blacklist
+> The function bitmap_equal() references
+> the variable __initconst __setup_str_initcall_blacklist.
+> This is often because bitmap_equal lacks a __initconst
+> annotation or the annotation of __setup_str_initcall_blacklist is wrong.
+> ...
+> WARNING: modpost: lib/find_bit_benchmark.o(.text.unlikely+0x0):
+> Section mismatch in reference from the (unknown reference) (unknown)
+> to the variable .init.data:bitmap2
+> The function (unknown)() references
+> the variable __initdata bitmap2.
+> This is often because (unknown) lacks a __initdata
+> annotation or the annotation of bitmap2 is wrong.
+> 
+>    Kernel: arch/xtensa/boot/boot-elf/../Image.elf is ready
+>    GEN     Module.symvers
+> 
+>>
+>> --
+>> With Best Regards,
+>> Andy Shevchenko
+> 
+> Thanks
+> Barry
+> _______________________________________________
+> kbuild-all mailing list -- kbuild-all@lists.01.org
+> To unsubscribe send an email to kbuild-all-leave@lists.01.org
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
