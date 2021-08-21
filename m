@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 435223F3C91
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Aug 2021 23:28:57 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACD7C3F3DBF
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Aug 2021 06:44:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7FB4880F16;
-	Sat, 21 Aug 2021 21:28:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 805EF40288;
+	Sun, 22 Aug 2021 04:44:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JbYdsORo6EiQ; Sat, 21 Aug 2021 21:28:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id faNAXeLSQBOj; Sun, 22 Aug 2021 04:44:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9B26880EAA;
-	Sat, 21 Aug 2021 21:28:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8594B40120;
+	Sun, 22 Aug 2021 04:44:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 631A81BF2B6
- for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 21:28:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9F4361BF573
+ for <devel@linuxdriverproject.org>; Sun, 22 Aug 2021 04:43:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 527A9402C5
- for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 21:28:43 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 860DD4030A
+ for <devel@linuxdriverproject.org>; Sun, 22 Aug 2021 04:43:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WL-sLNNpg5Eu for <devel@linuxdriverproject.org>;
- Sat, 21 Aug 2021 21:28:41 +0000 (UTC)
+ with ESMTP id QuDV0kPKWdLv for <devel@linuxdriverproject.org>;
+ Sun, 22 Aug 2021 04:43:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from server.nord-service.cz (server.nord-service.cz
  [213.155.225.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 457C2402C2
- for <devel@driverdev.osuosl.org>; Sat, 21 Aug 2021 21:28:40 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F37C340309
+ for <devel@linuxdriverproject.org>; Sun, 22 Aug 2021 04:43:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by server.nord-service.cz (Postfix) with ESMTP id 4110F346714;
- Sat, 21 Aug 2021 17:15:27 +0200 (CEST)
+ by server.nord-service.cz (Postfix) with ESMTP id 4EA1A505EE7;
+ Sat, 21 Aug 2021 19:12:38 +0200 (CEST)
 Received: from server.nord-service.cz ([127.0.0.1])
  by localhost (server.nord-service.cz [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id jJGXHbqMkydq; Sat, 21 Aug 2021 17:15:27 +0200 (CEST)
+ with ESMTP id 4OHuwlzirWvR; Sat, 21 Aug 2021 19:12:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by server.nord-service.cz (Postfix) with ESMTP id 8A136347C03;
- Sat, 21 Aug 2021 16:54:59 +0200 (CEST)
+ by server.nord-service.cz (Postfix) with ESMTP id 0DF2B503106;
+ Sat, 21 Aug 2021 17:54:23 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at server.nord-service.cz
 Received: from server.nord-service.cz ([127.0.0.1])
  by localhost (server.nord-service.cz [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id Fs7Thc98uQyw; Sat, 21 Aug 2021 16:54:59 +0200 (CEST)
+ with ESMTP id RjKcAs8XyBVp; Sat, 21 Aug 2021 17:54:23 +0200 (CEST)
 Received: from [103.114.105.26] (unknown [103.114.105.26])
- by server.nord-service.cz (Postfix) with ESMTPSA id E6353345DF5;
- Sat, 21 Aug 2021 16:49:43 +0200 (CEST)
+ by server.nord-service.cz (Postfix) with ESMTPSA id 263C73476FC;
+ Sat, 21 Aug 2021 16:58:36 +0200 (CEST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: RE: Dear Beloved in the Lord..
 To: Recipients <tisk@service.cz>
 From: "From Mrs. Favour Allison Fosgate" <tisk@service.cz>
-Date: Sat, 21 Aug 2021 07:49:32 -0700
-Message-Id: <20210821144943.E6353345DF5@server.nord-service.cz>
+Date: Sat, 21 Aug 2021 07:58:23 -0700
+Message-Id: <20210821145838.263C73476FC@server.nord-service.cz>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
