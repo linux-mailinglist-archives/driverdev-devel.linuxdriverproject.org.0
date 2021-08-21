@@ -1,43 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BA9E3F3A63
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Aug 2021 13:21:16 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DFECA3F3A62
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Aug 2021 13:18:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 70B8F403C7;
-	Sat, 21 Aug 2021 11:21:14 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hdilI5Gj3UgY; Sat, 21 Aug 2021 11:21:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B0FB9401C8;
-	Sat, 21 Aug 2021 11:21:09 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A509B1BF487
- for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 11:20:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A004F80F31
- for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 11:20:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4634881A50;
+	Sat, 21 Aug 2021 11:18:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id En9GkwYHZz4U for <devel@linuxdriverproject.org>;
- Sat, 21 Aug 2021 11:20:58 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uq_8XrJjcHhs; Sat, 21 Aug 2021 11:18:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6D033818C4;
+	Sat, 21 Aug 2021 11:18:13 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AFEFB1BF487
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 21 Aug 2021 11:18:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id AADC5403E8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 21 Aug 2021 11:18:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JIQFUxsZ9wj6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 21 Aug 2021 11:18:04 +0000 (UTC)
+X-Greylist: delayed 00:07:28 by SQLgrey-1.8.0
 Received: from IdeaWebbMain.localdomain (unknown [138.68.56.65])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4C43080B77
- for <devel@driverdev.osuosl.org>; Sat, 21 Aug 2021 11:20:58 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 462A4403DE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 21 Aug 2021 11:18:04 +0000 (UTC)
 Received: by IdeaWebbMain.localdomain (Postfix, from userid 1006)
- id 0AC023D926; Sat, 21 Aug 2021 11:06:41 +0000 (UTC)
-To: devel@driverdev.osuosl.org
+ id 93D283DE92; Sat, 21 Aug 2021 11:06:45 +0000 (UTC)
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: Hello
-Date: Sat, 21 Aug 2021 11:06:41 +0000
+Date: Sat, 21 Aug 2021 11:06:45 +0000
 From: Gang Wu <user@domain.com>
-Message-ID: <4d9a8e3d2f77202a3d546a68df7a3d11@beeculturecrafthoney.com>
+Message-ID: <6616ce633defdd17bf15515b3d512133@beeculturecrafthoney.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
