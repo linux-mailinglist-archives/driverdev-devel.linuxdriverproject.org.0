@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6325D3F3B5C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Aug 2021 18:13:40 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77D573F3C8F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Aug 2021 23:21:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 340AE402B9;
-	Sat, 21 Aug 2021 16:13:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 23518606DC;
+	Sat, 21 Aug 2021 21:21:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ORGjZcLKkwAj; Sat, 21 Aug 2021 16:13:37 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id icdrhVHebkee; Sat, 21 Aug 2021 21:21:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 79EC840228;
-	Sat, 21 Aug 2021 16:13:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 42A236062E;
+	Sat, 21 Aug 2021 21:21:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CEC001BF418
- for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 16:13:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 64B691BF2B6
+ for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 21:20:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BA934605DC
- for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 16:13:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 548846062E
+ for <devel@linuxdriverproject.org>; Sat, 21 Aug 2021 21:20:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pf1STEvDcIuN for <devel@linuxdriverproject.org>;
- Sat, 21 Aug 2021 16:13:24 +0000 (UTC)
+ with ESMTP id tUzEYA8EpVmZ for <devel@linuxdriverproject.org>;
+ Sat, 21 Aug 2021 21:20:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from htcglobal.com.vn (unknown [103.98.153.6])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AD9BE605D0
- for <devel@driverdev.osuosl.org>; Sat, 21 Aug 2021 16:13:24 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A7512605B7
+ for <devel@driverdev.osuosl.org>; Sat, 21 Aug 2021 21:20:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by htcglobal.com.vn (Postfix) with ESMTP id BC09947EFF42;
- Sat, 21 Aug 2021 16:37:19 +0700 (+07)
+ by htcglobal.com.vn (Postfix) with ESMTP id E40454872FC1;
+ Sun, 22 Aug 2021 00:10:57 +0700 (+07)
 Received: from htcglobal.com.vn ([127.0.0.1])
  by localhost (mail.htcglobal.com.vn [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 7i0bO3eMzHss; Sat, 21 Aug 2021 16:37:19 +0700 (+07)
+ with ESMTP id t-GNEei-GosA; Sun, 22 Aug 2021 00:10:57 +0700 (+07)
 Received: from localhost (localhost [127.0.0.1])
- by htcglobal.com.vn (Postfix) with ESMTP id BB06C47BB270;
- Sat, 21 Aug 2021 16:18:19 +0700 (+07)
+ by htcglobal.com.vn (Postfix) with ESMTP id 4C41B46B765F;
+ Sat, 21 Aug 2021 22:00:48 +0700 (+07)
 X-Virus-Scanned: amavisd-new at mail.htcglobal.com.vn
 Received: from htcglobal.com.vn ([127.0.0.1])
  by localhost (mail.htcglobal.com.vn [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 9m-BGaEqtsYF; Sat, 21 Aug 2021 16:18:19 +0700 (+07)
+ with ESMTP id 2VjKK4kK9UrW; Sat, 21 Aug 2021 22:00:48 +0700 (+07)
 Received: from [165.231.135.101] (gateway [192.168.1.4])
- by htcglobal.com.vn (Postfix) with ESMTPS id 572D447832DA;
- Sat, 21 Aug 2021 15:50:58 +0700 (+07)
+ by htcglobal.com.vn (Postfix) with ESMTPS id D9B194876E34;
+ Sat, 21 Aug 2021 20:18:31 +0700 (+07)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Your Parcel Is still available
 To: Recipients <test@comstar.ru>
 From: "Andrew Robert"<test@comstar.ru>
-Date: Sat, 21 Aug 2021 01:53:41 -0700
-Message-Id: <20210821085059.572D447832DA@htcglobal.com.vn>
+Date: Sat, 21 Aug 2021 06:21:16 -0700
+Message-Id: <20210821131831.D9B194876E34@htcglobal.com.vn>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
