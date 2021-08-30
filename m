@@ -2,55 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D83D73FA785
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Aug 2021 22:25:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 04E7D3FBCF7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Aug 2021 21:34:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 238E0402B4;
-	Sat, 28 Aug 2021 20:25:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 923FA402E6;
+	Mon, 30 Aug 2021 19:34:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sXbecxMg7p_a; Sat, 28 Aug 2021 20:24:57 +0000 (UTC)
+	with ESMTP id XgRej5YIo8CP; Mon, 30 Aug 2021 19:34:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9696D40258;
-	Sat, 28 Aug 2021 20:24:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8E422401D4;
+	Mon, 30 Aug 2021 19:34:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F07511BF3E5
- for <devel@linuxdriverproject.org>; Sat, 28 Aug 2021 20:24:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4051A1BF40A
+ for <devel@linuxdriverproject.org>; Mon, 30 Aug 2021 19:34:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E73B360656
- for <devel@linuxdriverproject.org>; Sat, 28 Aug 2021 20:24:43 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3A7CD80E10
+ for <devel@linuxdriverproject.org>; Mon, 30 Aug 2021 19:34:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vRGBja9NX-h3 for <devel@linuxdriverproject.org>;
- Sat, 28 Aug 2021 20:24:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CE9F96061B
- for <devel@driverdev.osuosl.org>; Sat, 28 Aug 2021 20:24:39 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10090"; a="303695927"
-X-IronPort-AV: E=Sophos;i="5.84,359,1620716400"; d="scan'208";a="303695927"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Aug 2021 13:24:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,359,1620716400"; d="scan'208";a="688078560"
-Received: from lkp-server01.sh.intel.com (HELO 4fbc2b3ce5aa) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 28 Aug 2021 13:24:37 -0700
-Received: from kbuild by 4fbc2b3ce5aa with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mK4sW-0003ih-V2; Sat, 28 Aug 2021 20:24:36 +0000
-Date: Sun, 29 Aug 2021 04:23:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS WITH WARNING
- 4adb389e08c95fdf91995271932c59250ff0d561
-Message-ID: <612a9b52.vO1PDLtbUecKrb/i%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key)
+ header.d=itfac-mrt-ac-lk.20150623.gappssmtp.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 751dm_0x89QL for <devel@linuxdriverproject.org>;
+ Mon, 30 Aug 2021 19:34:24 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
+ [IPv6:2607:f8b0:4864:20::102a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1338B80E0E
+ for <devel@driverdev.osuosl.org>; Mon, 30 Aug 2021 19:34:23 +0000 (UTC)
+Received: by mail-pj1-x102a.google.com with SMTP id fs6so10198871pjb.4
+ for <devel@driverdev.osuosl.org>; Mon, 30 Aug 2021 12:34:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=itfac-mrt-ac-lk.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id;
+ bh=38LoY1bNsBhMvANynurPzXetzfwZlkeGRm86uRmPJ4c=;
+ b=t4MEIE9WX9a6k97UOj+ET1mjDCCJeWsbCGY8KiXnRCsC6kQqjeatz45N2Jo/WsM0Bt
+ MC9WQxrrRjy2B+LzsguXI/QzPWFZ1ugO3SIPCAb0teasHtX6PPKvx1C4K9VsqlFKiUVs
+ WSbA/Tr6i214yconXi+Ksmf6oH0sjjprU/wHEbOGbZCo2wNPKVR1R62IwB/AC4KR18Ig
+ uXmdfDd29FQ+W3bWFRatsyp8XoTkPzVmfJKnFQctgdRe3GMhPeufPMV9MwMSXRegjlnj
+ aZx8zqOdt3vESfFZoucLf9ySN2u42zkbx4kdjP1unFhWXkPG4VJRrXkZwxR1x2lRL7Yc
+ os7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=38LoY1bNsBhMvANynurPzXetzfwZlkeGRm86uRmPJ4c=;
+ b=t2HYs1Sp2pDltVC4ybuOJ5+P5OlHZiK/+mGOjcxkjcrSlgSOrYFcsreR/uFQqHtaJ8
+ pIwrirQhQF2aTfOZrGsL8SPWf5uX9KNDzDnDJ4s1EsFddF3laXxPcdZry1Wq0T4FVwVo
+ Q7PGGEMtM8hKYHeADrYksGNvmX11r+0Knw+rTZfIspV41SUQeRGOsLar2oVK2S4lMU58
+ QGAipD/8+Qxh2RvL3MOZHx16iNjCNpTqyGIDT8TkbFWBRyCOllJrQuPzsiChQpx97WFm
+ Y7UHOrQ2/o1dtazZoBbbLF8sRQVAz491iMZAmMYBr3cYYkkFxiRppfZOneQLXpxqXY2C
+ dLRA==
+X-Gm-Message-State: AOAM532t1iHvMLfyKHOFNoQkL1QDnHSY0cPSLoCB1JyMgV00MKgZdcTS
+ h79BGGmlHgupFDmYObmC4qgD
+X-Google-Smtp-Source: ABdhPJzkCDJYUXlLvj44fuDgqsck3vig3BGr9sMKa38tgv/2Q4vr+TIPgf0EuOIIbQQ91iAhh+fE0g==
+X-Received: by 2002:a17:902:b193:b029:11a:a179:453a with SMTP id
+ s19-20020a170902b193b029011aa179453amr1085200plr.69.1630352063227; 
+ Mon, 30 Aug 2021 12:34:23 -0700 (PDT)
+Received: from localhost.localdomain ([123.231.122.209])
+ by smtp.gmail.com with ESMTPSA id g3sm18016990pgj.66.2021.08.30.12.34.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Aug 2021 12:34:22 -0700 (PDT)
+From: "F.A.Sulaiman" <asha.16@itfac.mrt.ac.lk>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8723bs: fix memory leak error
+Date: Tue, 31 Aug 2021 01:03:55 +0530
+Message-Id: <20210830193355.11338-1-asha.16@itfac.mrt.ac.lk>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,276 +85,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, "F.A.Sulaiman" <asha.16@itfac.mrt.ac.lk>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: 4adb389e08c95fdf91995271932c59250ff0d561  staging: vt6655: Remove filenames in files
+Smatch reported memory leak bug in rtl8723b_FirmwareDownload function. 
+The problem is pFirmware memory is not released in release_fw1. 
+Instead of redirecting to release_fw1 we can turn it into exit 
+and free the memory.
 
-Warning reports:
-
-https://lore.kernel.org/lkml/202107310213.WGo8CZVI-lkp@intel.com
-
-Warning in current branch:
-
-drivers/staging/r8188eu/core/rtw_ieee80211.c:884: warning: expecting prototype for ieee802_11_parse_elems(). Prototype was for rtw_ieee802_11_parse_elems() instead
-drivers/staging/r8188eu/core/rtw_security.c:1627: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-drivers/staging/r8188eu/core/rtw_security.c:1652: warning: expecting prototype for omac1_aes_128(). Prototype was for rtw_use_tkipkey_handler() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:104: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_SetBBReg() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:144: warning: expecting prototype for Function(). Prototype was for phy_RFSerialRead() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:243: warning: expecting prototype for Function(). Prototype was for phy_RFSerialWrite() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:287: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_QueryRFReg() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:323: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_SetRFReg() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:389: warning: expecting prototype for Function(). Prototype was for phy_InitBBRFRegisterDefinition() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:46: warning: expecting prototype for Function(). Prototype was for phy_CalculateBitShift() instead
-drivers/staging/r8188eu/hal/rtl8188e_phycfg.c:76: warning: expecting prototype for Function(). Prototype was for rtl8188e_PHY_QueryBBReg() instead
-drivers/staging/r8188eu/os_dep/rtw_android.c:52: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
-
-Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arc-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- m68k-allmodconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|-- m68k-allyesconfig
-|   |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-|   |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-|   |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-|   `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-`-- sh-allmodconfig
-    |-- drivers-staging-r8188eu-core-rtw_ieee80211.c:warning:expecting-prototype-for-ieee802_11_parse_elems().-Prototype-was-for-rtw_ieee802_11_parse_elems()-instead
-    |-- drivers-staging-r8188eu-core-rtw_security.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-    |-- drivers-staging-r8188eu-core-rtw_security.c:warning:expecting-prototype-for-omac1_aes_128().-Prototype-was-for-rtw_use_tkipkey_handler()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_CalculateBitShift()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_InitBBRFRegisterDefinition()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialRead()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-phy_RFSerialWrite()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryBBReg()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_QueryRFReg()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetBBReg()-instead
-    |-- drivers-staging-r8188eu-hal-rtl8188e_phycfg.c:warning:expecting-prototype-for-Function().-Prototype-was-for-rtl8188e_PHY_SetRFReg()-instead
-    `-- drivers-staging-r8188eu-os_dep-rtw_android.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
-
-elapsed time: 725m
-
-configs tested: 174
-configs skipped: 4
-
-gcc tested configs:
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                                 defconfig
-arc                            hsdk_defconfig
-arm                         lpc32xx_defconfig
-sh                           sh2007_defconfig
-sh                           se7705_defconfig
-mips                         tb0287_defconfig
-powerpc                 mpc8540_ads_defconfig
-powerpc                 canyonlands_defconfig
-arm                         at91_dt_defconfig
-mips                      fuloong2e_defconfig
-sh                ecovec24-romimage_defconfig
-powerpc                          g5_defconfig
-sh                         ecovec24_defconfig
-mips                           ip27_defconfig
-arc                    vdk_hs38_smp_defconfig
-arm                       netwinder_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                  nommu_kc705_defconfig
-arm                            qcom_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                      obs600_defconfig
-mips                        maltaup_defconfig
-m68k                       m5275evb_defconfig
-mips                     loongson2k_defconfig
-arc                         haps_hs_defconfig
-powerpc                     sbc8548_defconfig
-arm                         lubbock_defconfig
-powerpc                      katmai_defconfig
-m68k                        mvme147_defconfig
-sh                 kfr2r09-romimage_defconfig
-powerpc                       ebony_defconfig
-sh                             espt_defconfig
-arm                        mvebu_v7_defconfig
-sh                        sh7785lcr_defconfig
-sh                           se7722_defconfig
-sh                           se7751_defconfig
-ia64                        generic_defconfig
-sh                          rsk7201_defconfig
-sh                           se7780_defconfig
-powerpc                        warp_defconfig
-arm                          badge4_defconfig
-xtensa                       common_defconfig
-parisc                           alldefconfig
-powerpc                        fsp2_defconfig
-arm                        cerfcube_defconfig
-arm                         bcm2835_defconfig
-powerpc                      makalu_defconfig
-m68k                          multi_defconfig
-sh                         apsh4a3a_defconfig
-arm                        keystone_defconfig
-sh                        edosk7705_defconfig
-m68k                             allmodconfig
-powerpc                      bamboo_defconfig
-powerpc                      ppc64e_defconfig
-arm                  colibri_pxa270_defconfig
-powerpc                    sam440ep_defconfig
-arm                         socfpga_defconfig
-parisc                              defconfig
-powerpc                       holly_defconfig
-mips                         rt305x_defconfig
-arm                         axm55xx_defconfig
-arm                           sama5_defconfig
-sparc                       sparc32_defconfig
-mips                      loongson3_defconfig
-arm                     davinci_all_defconfig
-powerpc                   lite5200b_defconfig
-arm                         assabet_defconfig
-sh                  sh7785lcr_32bit_defconfig
-powerpc                      ppc44x_defconfig
-powerpc                  iss476-smp_defconfig
-powerpc                      chrp32_defconfig
-arc                     haps_hs_smp_defconfig
-mips                    maltaup_xpa_defconfig
-powerpc                     kilauea_defconfig
-arm                           sunxi_defconfig
-microblaze                          defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20210828
-i386                 randconfig-a006-20210828
-i386                 randconfig-a002-20210828
-i386                 randconfig-a005-20210828
-i386                 randconfig-a003-20210828
-i386                 randconfig-a004-20210828
-x86_64               randconfig-a014-20210827
-x86_64               randconfig-a015-20210827
-x86_64               randconfig-a016-20210827
-x86_64               randconfig-a013-20210827
-x86_64               randconfig-a012-20210827
-x86_64               randconfig-a011-20210827
-i386                 randconfig-a011-20210827
-i386                 randconfig-a016-20210827
-i386                 randconfig-a012-20210827
-i386                 randconfig-a014-20210827
-i386                 randconfig-a013-20210827
-i386                 randconfig-a015-20210827
-arc                  randconfig-r043-20210829
-riscv                randconfig-r042-20210829
-s390                 randconfig-r044-20210829
-arc                  randconfig-r043-20210827
-riscv                randconfig-r042-20210827
-s390                 randconfig-r044-20210827
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-i386                 randconfig-c001-20210828
-s390                 randconfig-c005-20210828
-arm                  randconfig-c002-20210828
-riscv                randconfig-c006-20210828
-x86_64               randconfig-c007-20210828
-mips                 randconfig-c004-20210828
-s390                 randconfig-c005-20210827
-i386                 randconfig-c001-20210827
-arm                  randconfig-c002-20210827
-riscv                randconfig-c006-20210827
-powerpc              randconfig-c003-20210827
-x86_64               randconfig-c007-20210827
-mips                 randconfig-c004-20210827
-x86_64               randconfig-a005-20210827
-x86_64               randconfig-a001-20210827
-x86_64               randconfig-a006-20210827
-x86_64               randconfig-a003-20210827
-x86_64               randconfig-a004-20210827
-x86_64               randconfig-a002-20210827
-i386                 randconfig-a006-20210827
-i386                 randconfig-a001-20210827
-i386                 randconfig-a002-20210827
-i386                 randconfig-a005-20210827
-i386                 randconfig-a004-20210827
-i386                 randconfig-a003-20210827
-
+Signed-off-by: F.A. SULAIMAN <asha.16@itfac.mrt.ac.lk>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+index de8caa6cd418..b59c2aa3a9d8 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -436,7 +436,7 @@ s32 rtl8723b_FirmwareDownload(struct adapter *padapter, bool  bUsedWoWLANFw)
+ 	if (pFirmware->fw_length > FW_8723B_SIZE) {
+ 		rtStatus = _FAIL;
+ 		DBG_871X_LEVEL(_drv_emerg_, "Firmware size:%u exceed %u\n", pFirmware->fw_length, FW_8723B_SIZE);
+-		goto release_fw1;
++		goto exit;
+ 	}
+ 
+ 	pFirmwareBuf = pFirmware->fw_buffer_sz;
+@@ -512,7 +512,6 @@ s32 rtl8723b_FirmwareDownload(struct adapter *padapter, bool  bUsedWoWLANFw)
+ exit:
+ 	kfree(pFirmware->fw_buffer_sz);
+ 	kfree(pFirmware);
+-release_fw1:
+ 	kfree(pBTFirmware);
+ 	DBG_871X(" <=== rtl8723b_FirmwareDownload()\n");
+ 	return rtStatus;
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
