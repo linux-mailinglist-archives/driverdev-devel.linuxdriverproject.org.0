@@ -1,78 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04E7D3FBCF7
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Aug 2021 21:34:46 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB4A23FBD2C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Aug 2021 21:52:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 923FA402E6;
-	Mon, 30 Aug 2021 19:34:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A97D640466;
+	Mon, 30 Aug 2021 19:52:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XgRej5YIo8CP; Mon, 30 Aug 2021 19:34:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ULFOcrwVZ9kk; Mon, 30 Aug 2021 19:52:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8E422401D4;
-	Mon, 30 Aug 2021 19:34:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CDB97404BA;
+	Mon, 30 Aug 2021 19:52:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4051A1BF40A
- for <devel@linuxdriverproject.org>; Mon, 30 Aug 2021 19:34:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BD91F1BF40A
+ for <devel@linuxdriverproject.org>; Mon, 30 Aug 2021 19:51:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3A7CD80E10
- for <devel@linuxdriverproject.org>; Mon, 30 Aug 2021 19:34:26 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AC928403D9
+ for <devel@linuxdriverproject.org>; Mon, 30 Aug 2021 19:51:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key)
- header.d=itfac-mrt-ac-lk.20150623.gappssmtp.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 751dm_0x89QL for <devel@linuxdriverproject.org>;
- Mon, 30 Aug 2021 19:34:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9jdLoy8cMK6D for <devel@linuxdriverproject.org>;
+ Mon, 30 Aug 2021 19:51:57 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
- [IPv6:2607:f8b0:4864:20::102a])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1338B80E0E
- for <devel@driverdev.osuosl.org>; Mon, 30 Aug 2021 19:34:23 +0000 (UTC)
-Received: by mail-pj1-x102a.google.com with SMTP id fs6so10198871pjb.4
- for <devel@driverdev.osuosl.org>; Mon, 30 Aug 2021 12:34:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=itfac-mrt-ac-lk.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id;
- bh=38LoY1bNsBhMvANynurPzXetzfwZlkeGRm86uRmPJ4c=;
- b=t4MEIE9WX9a6k97UOj+ET1mjDCCJeWsbCGY8KiXnRCsC6kQqjeatz45N2Jo/WsM0Bt
- MC9WQxrrRjy2B+LzsguXI/QzPWFZ1ugO3SIPCAb0teasHtX6PPKvx1C4K9VsqlFKiUVs
- WSbA/Tr6i214yconXi+Ksmf6oH0sjjprU/wHEbOGbZCo2wNPKVR1R62IwB/AC4KR18Ig
- uXmdfDd29FQ+W3bWFRatsyp8XoTkPzVmfJKnFQctgdRe3GMhPeufPMV9MwMSXRegjlnj
- aZx8zqOdt3vESfFZoucLf9ySN2u42zkbx4kdjP1unFhWXkPG4VJRrXkZwxR1x2lRL7Yc
- os7w==
+Received: from mail-qk1-x749.google.com (mail-qk1-x749.google.com
+ [IPv6:2607:f8b0:4864:20::749])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8BE5C402F1
+ for <devel@driverdev.osuosl.org>; Mon, 30 Aug 2021 19:51:57 +0000 (UTC)
+Received: by mail-qk1-x749.google.com with SMTP id
+ h10-20020a05620a284a00b003d30e8c8cb5so1875214qkp.11
+ for <devel@driverdev.osuosl.org>; Mon, 30 Aug 2021 12:51:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=vlmH2FPTCreu/0JhtoQw1RSxIqcHbMmpEsPhqtnkEpI=;
+ b=Hu5Qb9P9tv4nw3UP2XEOSG1qwsgzvImOwJ97Q4XzlftJCvz42sL/HihtDA1evQXqp1
+ h6mioNwzuqarhT+QBmliJrncaKOzPfFD9VpEt1Ajr+0CIFpSLS13XTsDg1fpKUWMITZc
+ O2IJrwk9UdL4PsbiqBUIMIwGcnLIbhDmiCVaJCQ0bOXykhK2OhYOTA2wNyMkRx/u0Bji
+ 7Rmi1se2ZguU7bH9XeycQ+aZBMGN/AAOwk25z4V68ObbBaQ0m/P3Ta5Rg5cqHbv8M9ql
+ 6vytI4T9+jBnG+il60fClEX3juvtWDQniUUcHrwt5vOriDipNeI5DuQ4SxL4XGXAt3Ev
+ dO+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=38LoY1bNsBhMvANynurPzXetzfwZlkeGRm86uRmPJ4c=;
- b=t2HYs1Sp2pDltVC4ybuOJ5+P5OlHZiK/+mGOjcxkjcrSlgSOrYFcsreR/uFQqHtaJ8
- pIwrirQhQF2aTfOZrGsL8SPWf5uX9KNDzDnDJ4s1EsFddF3laXxPcdZry1Wq0T4FVwVo
- Q7PGGEMtM8hKYHeADrYksGNvmX11r+0Knw+rTZfIspV41SUQeRGOsLar2oVK2S4lMU58
- QGAipD/8+Qxh2RvL3MOZHx16iNjCNpTqyGIDT8TkbFWBRyCOllJrQuPzsiChQpx97WFm
- Y7UHOrQ2/o1dtazZoBbbLF8sRQVAz491iMZAmMYBr3cYYkkFxiRppfZOneQLXpxqXY2C
- dLRA==
-X-Gm-Message-State: AOAM532t1iHvMLfyKHOFNoQkL1QDnHSY0cPSLoCB1JyMgV00MKgZdcTS
- h79BGGmlHgupFDmYObmC4qgD
-X-Google-Smtp-Source: ABdhPJzkCDJYUXlLvj44fuDgqsck3vig3BGr9sMKa38tgv/2Q4vr+TIPgf0EuOIIbQQ91iAhh+fE0g==
-X-Received: by 2002:a17:902:b193:b029:11a:a179:453a with SMTP id
- s19-20020a170902b193b029011aa179453amr1085200plr.69.1630352063227; 
- Mon, 30 Aug 2021 12:34:23 -0700 (PDT)
-Received: from localhost.localdomain ([123.231.122.209])
- by smtp.gmail.com with ESMTPSA id g3sm18016990pgj.66.2021.08.30.12.34.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Aug 2021 12:34:22 -0700 (PDT)
-From: "F.A.Sulaiman" <asha.16@itfac.mrt.ac.lk>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: fix memory leak error
-Date: Tue, 31 Aug 2021 01:03:55 +0530
-Message-Id: <20210830193355.11338-1-asha.16@itfac.mrt.ac.lk>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=vlmH2FPTCreu/0JhtoQw1RSxIqcHbMmpEsPhqtnkEpI=;
+ b=MQPm0LfYuednxvbSP8ec3TzxR2wT8XKPqfxVWMESAQTMZEqahvuZKUBluHNcphmBDq
+ G+DetUcIz9/v3jryhVzvKadTpFT/qUFAAR2G/F5ByRhGJjS9x+PYHzZ7d2JzL9+EN7CI
+ pmHKxRMiB++1eeSJbJcKcamft7uKQWH/38UzHZZfDtyZqFVGz7iCmxf8UulIUkquuCin
+ 7fHc0/41MXlly/K1UK/dn5+6mUzsqGUA8CfBzOdFBEfuzgS0gYALjzapnSqkZsb3acHB
+ b67oVPM11tr5U/RIq2y/fswQHTW0UJMll82AJ6pE+2sifSu3Mg9TJnV74rUFa+f/whws
+ sDKQ==
+X-Gm-Message-State: AOAM533WjzxHFZ4K1xp3mOAfxrXvun3A88RlgI8Y8J9OELIKypTw4zxz
+ slH2fk+1g/+b0+LmGy0SUcGy5TtiWw==
+X-Google-Smtp-Source: ABdhPJxypQStTHSuW+vYuUUGWnGVDGQv9PYEyN8B0RtmipOSC5YYG5ph1LGaqiJUYg1AwithU+Q625lwIw==
+X-Received: from ava-linux2.mtv.corp.google.com
+ ([2620:15c:211:200:371e:b5b3:7633:f5cd])
+ (user=tkjos job=sendgmr) by 2002:a0c:ff4b:: with SMTP id
+ y11mr25342076qvt.50.1630353116285; 
+ Mon, 30 Aug 2021 12:51:56 -0700 (PDT)
+Date: Mon, 30 Aug 2021 12:51:46 -0700
+Message-Id: <20210830195146.587206-1-tkjos@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.33.0.259.gc128427fd7-goog
+Subject: [PATCH] binder: make sure fd closes complete
+From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, gregkh@linuxfoundation.org, christian@brauner.io, 
+ arve@android.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+ maco@google.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,47 +83,105 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "F.A.Sulaiman" <asha.16@itfac.mrt.ac.lk>,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Smatch reported memory leak bug in rtl8723b_FirmwareDownload function. 
-The problem is pFirmware memory is not released in release_fw1. 
-Instead of redirecting to release_fw1 we can turn it into exit 
-and free the memory.
+During BC_FREE_BUFFER processing, the BINDER_TYPE_FDA object
+cleanup may close 1 or more fds. The close operations are
+completed using the task work mechanism -- which means the thread
+needs to return to userspace or the file object may never be
+dereferenced -- which can lead to hung processes.
 
-Signed-off-by: F.A. SULAIMAN <asha.16@itfac.mrt.ac.lk>
+Force the binder thread back to userspace if an fd is closed during
+BC_FREE_BUFFER handling.
+
+Signed-off-by: Todd Kjos <tkjos@google.com>
 ---
- drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/android/binder.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-index de8caa6cd418..b59c2aa3a9d8 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-@@ -436,7 +436,7 @@ s32 rtl8723b_FirmwareDownload(struct adapter *padapter, bool  bUsedWoWLANFw)
- 	if (pFirmware->fw_length > FW_8723B_SIZE) {
- 		rtStatus = _FAIL;
- 		DBG_871X_LEVEL(_drv_emerg_, "Firmware size:%u exceed %u\n", pFirmware->fw_length, FW_8723B_SIZE);
--		goto release_fw1;
-+		goto exit;
- 	}
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index bcec598b89f2..c2823f0d588f 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -1852,6 +1852,7 @@ static void binder_deferred_fd_close(int fd)
+ }
  
- 	pFirmwareBuf = pFirmware->fw_buffer_sz;
-@@ -512,7 +512,6 @@ s32 rtl8723b_FirmwareDownload(struct adapter *padapter, bool  bUsedWoWLANFw)
- exit:
- 	kfree(pFirmware->fw_buffer_sz);
- 	kfree(pFirmware);
--release_fw1:
- 	kfree(pBTFirmware);
- 	DBG_871X(" <=== rtl8723b_FirmwareDownload()\n");
- 	return rtStatus;
+ static void binder_transaction_buffer_release(struct binder_proc *proc,
++					      struct binder_thread *thread,
+ 					      struct binder_buffer *buffer,
+ 					      binder_size_t failed_at,
+ 					      bool is_failure)
+@@ -2011,8 +2012,16 @@ static void binder_transaction_buffer_release(struct binder_proc *proc,
+ 						&proc->alloc, &fd, buffer,
+ 						offset, sizeof(fd));
+ 				WARN_ON(err);
+-				if (!err)
++				if (!err) {
+ 					binder_deferred_fd_close(fd);
++					/*
++					 * Need to make sure the thread goes
++					 * back to userspace to complete the
++					 * deferred close
++					 */
++					if (thread)
++						thread->looper_need_return = true;
++				}
+ 			}
+ 		} break;
+ 		default:
+@@ -3105,7 +3114,7 @@ static void binder_transaction(struct binder_proc *proc,
+ err_copy_data_failed:
+ 	binder_free_txn_fixups(t);
+ 	trace_binder_transaction_failed_buffer_release(t->buffer);
+-	binder_transaction_buffer_release(target_proc, t->buffer,
++	binder_transaction_buffer_release(target_proc, NULL, t->buffer,
+ 					  buffer_offset, true);
+ 	if (target_node)
+ 		binder_dec_node_tmpref(target_node);
+@@ -3184,7 +3193,9 @@ static void binder_transaction(struct binder_proc *proc,
+  * Cleanup buffer and free it.
+  */
+ static void
+-binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
++binder_free_buf(struct binder_proc *proc,
++		struct binder_thread *thread,
++		struct binder_buffer *buffer)
+ {
+ 	binder_inner_proc_lock(proc);
+ 	if (buffer->transaction) {
+@@ -3212,7 +3223,7 @@ binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
+ 		binder_node_inner_unlock(buf_node);
+ 	}
+ 	trace_binder_transaction_buffer_release(buffer);
+-	binder_transaction_buffer_release(proc, buffer, 0, false);
++	binder_transaction_buffer_release(proc, thread, buffer, 0, false);
+ 	binder_alloc_free_buf(&proc->alloc, buffer);
+ }
+ 
+@@ -3414,7 +3425,7 @@ static int binder_thread_write(struct binder_proc *proc,
+ 				     proc->pid, thread->pid, (u64)data_ptr,
+ 				     buffer->debug_id,
+ 				     buffer->transaction ? "active" : "finished");
+-			binder_free_buf(proc, buffer);
++			binder_free_buf(proc, thread, buffer);
+ 			break;
+ 		}
+ 
+@@ -4107,7 +4118,7 @@ static int binder_thread_read(struct binder_proc *proc,
+ 			buffer->transaction = NULL;
+ 			binder_cleanup_transaction(t, "fd fixups failed",
+ 						   BR_FAILED_REPLY);
+-			binder_free_buf(proc, buffer);
++			binder_free_buf(proc, thread, buffer);
+ 			binder_debug(BINDER_DEBUG_FAILED_TRANSACTION,
+ 				     "%d:%d %stransaction %d fd fixups failed %d/%d, line %d\n",
+ 				     proc->pid, thread->pid,
 -- 
-2.17.1
+2.33.0.259.gc128427fd7-goog
 
 _______________________________________________
 devel mailing list
