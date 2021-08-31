@@ -1,76 +1,172 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B5743FC36C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 31 Aug 2021 09:25:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49A7B3FC441
+	for <lists+driverdev-devel@lfdr.de>; Tue, 31 Aug 2021 10:48:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5151981D70;
-	Tue, 31 Aug 2021 07:25:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4A3EB81DAB;
+	Tue, 31 Aug 2021 08:48:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zykP8nU4zx5T; Tue, 31 Aug 2021 07:25:09 +0000 (UTC)
+	with ESMTP id IGK7hTFebKUk; Tue, 31 Aug 2021 08:48:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7058481A58;
-	Tue, 31 Aug 2021 07:25:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 62A8481BD4;
+	Tue, 31 Aug 2021 08:48:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 835DD1BF348
- for <devel@linuxdriverproject.org>; Tue, 31 Aug 2021 07:24:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 224611BF82B
+ for <devel@linuxdriverproject.org>; Tue, 31 Aug 2021 08:47:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 722CE403C3
- for <devel@linuxdriverproject.org>; Tue, 31 Aug 2021 07:24:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 121B581BD4
+ for <devel@linuxdriverproject.org>; Tue, 31 Aug 2021 08:47:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=android.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DQ5kqzlSkL82 for <devel@linuxdriverproject.org>;
- Tue, 31 Aug 2021 07:24:52 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com
- [IPv6:2607:f8b0:4864:20::62f])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 89CD94030F
- for <devel@driverdev.osuosl.org>; Tue, 31 Aug 2021 07:24:52 +0000 (UTC)
-Received: by mail-pl1-x62f.google.com with SMTP id e1so10059898plt.11
- for <devel@driverdev.osuosl.org>; Tue, 31 Aug 2021 00:24:52 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kBPaR9ddPFG5 for <devel@linuxdriverproject.org>;
+ Tue, 31 Aug 2021 08:47:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com
+ [205.220.165.32])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1AAFA81B58
+ for <devel@driverdev.osuosl.org>; Tue, 31 Aug 2021 08:47:56 +0000 (UTC)
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 17V56L9t013840; 
+ Tue, 31 Aug 2021 08:47:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2021-07-09;
+ bh=jz3I7NHlq3/KJm7SzpZpGWbYyGt5TPolP4ZSooOE/mU=;
+ b=yGyaEzTJAG6Shtwqces/6Gx8z3t1JrQy15yFDrB5HIwNZMtcyKh2z7e4FRmUMdw6uC4l
+ soApgeTjZrx38j+H+vFSAIae2I/VUPewi5Ci60re7UEp1OUaIK9AjOAFwIXEo+D8WY9q
+ FMWmBo90zzMpbGiVqbw8x2wZRtDWdDSfo2MCyTPIVBBzqJ4/6DYBOfqsaN0u+jFvpMJ6
+ s6LQESBdAhHqJgwSBF4OxW+B3I7xBpknlX05Ccq83LG2Cb79pwp9bD/N5aRnQd0RT6ly
+ S5Y31JP1/KLkPXuhyZtwe9PzcHHbr/Ux+kw05St18RdJlYIHgB/JSoylZpwUxbxhPoq4 EA== 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2020-01-29;
+ bh=jz3I7NHlq3/KJm7SzpZpGWbYyGt5TPolP4ZSooOE/mU=;
+ b=bVfHsB6LtCqRe3lpbyUo86tjuR3La90TB8ST2BOIsoXYCrRYB4hdAnjdAK1nBXbxoc6M
+ WHCysfDFtmU+4WwJ+KnarZ5+H21DRMk0BxYaHwIA4WJMd8o5zkBQa/txUCQNK+0Ltd5x
+ CXOmdhts4o+R/9dEvOw6iLKLBQ6FzFMSCa/32gXlpX3du3XXcwktXycclCZ7nerwVb4H
+ 3x/c7kQTLWZIwX9m2Sqz6NcGpTvnZYUEuhDJ4tSY4ktrWF2KHST5zZQROe61kyN6W4kq
+ op9fp2leyehzn1bsC1d3yYlG99eJLCW4eNHf92V9XLNuYMBsHO90wdg+dXEPNrKVbpBV Wg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3ase028euw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 31 Aug 2021 08:47:56 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 17V8jlx6196357;
+ Tue, 31 Aug 2021 08:47:55 GMT
+Received: from nam11-co1-obe.outbound.protection.outlook.com
+ (mail-co1nam11lp2169.outbound.protection.outlook.com [104.47.56.169])
+ by aserp3030.oracle.com with ESMTP id 3aqb6dff9v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 31 Aug 2021 08:47:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GdHyyg5rZKuEqOMCjN7n+3VTZt9G2D8CRJtd4Fp0nJDJeUUlahoxGtIEctUqTm9l8ZtadWzcgzmgk0aPtDGnOvP4IXNZFAKKQg59/7gIzKUWiE8Zmv67eCI8yj1PZ691sI7mR53IxtJthruRcvfJs7ZVwfczAG43zAJxdH1LynR8XDXmu1cJW9Wyqby8hGvs+anHVfwg27b8GQpDrCWGRzZF538+9gCgdSEsI7p9NAkzE7Sw1WvdpDI98LY9fhjjCiFVYULyH3gGCfcHaFm5xgXlMnMApCGvs2xHB5e9mZzijebKrWk6ngQHi09Z0+F+sLgV7B+hTQUSIK228ln0hg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jz3I7NHlq3/KJm7SzpZpGWbYyGt5TPolP4ZSooOE/mU=;
+ b=RVVObf79i+IySGMg0kcwA4L2cNUP+wC/y7hXKTCwdQOuqQ7xSYYn4+MoiNk1cmsOaJ6UL7cwfRtTOjs0/oMNooYMatfwH003pAe4vKse7BcA35PvomNKh+a7UnAyn76buR5+m+Xf9WzZt6ZHm7mIAB0y0hI6gPySfHq65I25evBdnuztppZW7X9WmEToZDEUAaq+32FymjCwKD2oXuX3TlS0mwuYmc0gsgvQray/rgAoK7655SkBe87X+a3ylTQ9j7P9n7TUWEhafnQQfJkvCEAv5wgA8QG6+WorM414E88/rsjz29PgMA7RNkEP4kb5rlocBGcAkOkqX70Io2KJ+A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=android.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HRmn2HSjIyoyl5frN1JOdwhv1jt4tYR/jznN931pQCc=;
- b=W41bBzENunWIPZGT70XTQ00/4JnKxG7675YoBNn/BC+6i5PNbLAeodHCYDxybVjcmu
- qFgp3TB+nSH2E7rmZt0sBiBYw+Y5c4JQ36hyuDIc1JQxwAyuTZwQYlqIswJnTJYUELXD
- aZf1VLcJ+mWmrLj/QrFDipHMTaroujCrLRBKcLLJHOCPlGHWRS5cmsZ4oHgZgtMgRk54
- F7oOCW3GwlVFet1305G9xWZj5Ay6FX8oCjgyYyDJORSk5QTOsQ/53otmyUmx5Z4xyU1C
- 67+E8kKZzk7vJ9j1kKnLVZY3QpUIim4uXEZ7BN7M9JSu36TBNWiEOfFrg6RGo/phzAVu
- JgAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HRmn2HSjIyoyl5frN1JOdwhv1jt4tYR/jznN931pQCc=;
- b=tMW1OUVyIwSV74sl1uPH+Ws33Ded1ZV1b+R9dq6ylILcI25Lc0zUL6lj0caA1Xlo0w
- io+qsWWmm5xgPh7CbbS+hALZd7/5VN/azG8LpjZwHSnnhxnIOJ7ZbIjhsqes5CxMZvOp
- Mg+riZ1Dq1Ez1Dj9V7xDTEi+jjiQFw0r2e+aCAIIDTynyb/InIao/qXwFl+oJ6bQuSUL
- Vxo4erkk20oqAbkRuLLMP+gx2JMZtAjnx2kH3ncRw+H9uOzyND+YUKvjwCcMDiypx5Er
- Xs/4s/Yf0Lbt0LSonMoEgs4HcUxRfx5YRzX9JIe8LozdEP7ptjMd2phrh9tXcmaeNNfS
- rlyg==
-X-Gm-Message-State: AOAM5301/3pacotmEUbSFBhSnbb75KQMIhrtux0Hh91Fl7R4aN+1Colq
- FA0B688+mSF/4NXJYhTObzPCMIr7lqzQlPPVh8s8iw==
-X-Google-Smtp-Source: ABdhPJzoS9DdKnYQUkbtZAQSn4bnjxyR+xzpi2fokmo+9QTwxCtzqiKfpyGKOpBi7GwEiy1jX+9pldHWJo0DUuequSM=
-X-Received: by 2002:a17:90b:78f:: with SMTP id
- l15mr3754035pjz.181.1630394691968; 
- Tue, 31 Aug 2021 00:24:51 -0700 (PDT)
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jz3I7NHlq3/KJm7SzpZpGWbYyGt5TPolP4ZSooOE/mU=;
+ b=a7kQ7vJyDhbHK1FVy5N8NJ3vO7deqsE7dvm9JEdPPdNDT5EbN4d1OAZsIED4n6UeZ8t/VgJ393cPDCclGjMExpYx6260NnM+FR1vDGaLOTTgvr47hYvcaKQo9brUBcPo+27kIeONAuCiIt4wOERLyUmrVuKetVT25NQv6yVb1mQ=
+Authentication-Results: itfac.mrt.ac.lk; dkim=none (message not signed)
+ header.d=none; itfac.mrt.ac.lk; dmarc=none action=none header.from=oracle.com; 
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by CO6PR10MB5569.namprd10.prod.outlook.com
+ (2603:10b6:303:144::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.24; Tue, 31 Aug
+ 2021 08:47:53 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5820:e42b:73d7:4268]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5820:e42b:73d7:4268%7]) with mapi id 15.20.4478.019; Tue, 31 Aug 2021
+ 08:47:53 +0000
+Date: Tue, 31 Aug 2021 11:47:35 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: "F.A.Sulaiman" <asha.16@itfac.mrt.ac.lk>
+Subject: Re: [PATCH] staging: rtl8723bs: fix memory leak error
+Message-ID: <20210831084735.GL12231@kadam>
+References: <20210830193355.11338-1-asha.16@itfac.mrt.ac.lk>
+Content-Disposition: inline
+In-Reply-To: <20210830193355.11338-1-asha.16@itfac.mrt.ac.lk>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JNXP275CA0046.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:18::34)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-References: <20210830195146.587206-1-tkjos@google.com>
-In-Reply-To: <20210830195146.587206-1-tkjos@google.com>
-From: Martijn Coenen <maco@android.com>
-Date: Tue, 31 Aug 2021 09:24:40 +0200
-Message-ID: <CAB0TPYFmUgPTONABLTJAdonK7fY7oqURKCpLp1-WqHLtyen7Zw@mail.gmail.com>
-Subject: Re: [PATCH] binder: make sure fd closes complete
-To: Todd Kjos <tkjos@google.com>
+Received: from kadam (62.8.83.99) by JNXP275CA0046.ZAFP275.PROD.OUTLOOK.COM
+ (2603:1086:0:18::34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.17 via Frontend
+ Transport; Tue, 31 Aug 2021 08:47:49 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e464b425-52ab-4fd8-0428-08d96c5c04cb
+X-MS-TrafficTypeDiagnostic: CO6PR10MB5569:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <CO6PR10MB5569C5A1ECA467064167E9CC8ECC9@CO6PR10MB5569.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2043;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Not+pNh7dJVes9xYDiWCHFI59be3YpJXXBFPoj3bQgh/hBntdD5iXdpTjJKSs40/JsQVyFKkvgyo6OE7DdM2mcSB/Cro2wVPojyb4VViWzwAEi1RonRgCLxoGHN8rVa29l2HDMDWedTRGeYxQULPUl4oeJuhBAS0tEqSp7sda1ux7BbzEPwhsI5tJP4Mai+TiU0fDWYKkfOViqGh+i/86FxLVC4MK3+ys6HTtAG074duG9vBzKPTSLhWI8ksk5wwFy2q+bu0jc8ZTl6rhvMUSlmQtCR9EREhcVol1Kh8rH7Sghc0UGH3PeMScRxp4YjvLpin7QikHUAKtpicJdMzpenNZQ4UbVROZZJ0oDBcOAB5ksqF3RQBhKeStbsxKfdancKb+pY5n2A+7lAl49fBvkXw+E6+CPmrmkL4JuGoR0OeBE7BiWLFiHbg89BgtHcE1kmlGc+bmGynBWh0vD773CZ+A01q6fO/YhRgP14sjZh6N97MyYIyqUagmP63jLTYauC6ZXOb8UTwiIcznXN6LuVURzD0dS4DfgUIkErpah8hbp7OH0gD+icSm90Uu+AN034b9akbjF/1H0A0YMzGaWvXjKUyneZHOPwElnHDY8qFqfW/ttvU1S00MVYdBadFx4Re/wF2RGJrODC73wVyCOhNk0FHsiNj1B5flAEoh0WHkb7Br+Yovlr7DKoSgTgymTclhnYjnKc4fN65H4tV1A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(39860400002)(346002)(136003)(396003)(376002)(83380400001)(33716001)(38100700002)(4326008)(6666004)(6496006)(19627235002)(478600001)(186003)(44832011)(38350700002)(52116002)(8936002)(5660300002)(9576002)(2906002)(1076003)(8676002)(33656002)(66476007)(66946007)(6916009)(316002)(86362001)(956004)(26005)(9686003)(66556008)(55016002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7itHMNCxh/KVNY6SuZarRCbIIV0Cvz86eN54oeto2choGXbbU1xsDx8nrghd?=
+ =?us-ascii?Q?4QFBEDZHO80I77Dg5Q0cCmKuIBS7Gtu5mdL1e8/i73fjCesZxjdJwvwRl/p8?=
+ =?us-ascii?Q?Wf+wRLwtw09d10M5ewI67G7iT0AKaRCSxYJcq2ameE28jNdHDfi1fOmTEOod?=
+ =?us-ascii?Q?psjqROuYOQWkx36qBZUs3UMQBmArob4LzRLy0GN36aHB4DiZ+SAJ0AABHR5B?=
+ =?us-ascii?Q?s9rimR7MaygICwiYKayyrdXaUTke/GpV3cB6QESNFBXkP1R6MnlgF0C4ESM0?=
+ =?us-ascii?Q?7OoVvJpw4xNQ0UddCrWkBJytviTqRw3Pv5SAOOb+dv/rDcg0T4dtLTYQToLd?=
+ =?us-ascii?Q?v4x0jJqQG/zRmgwUzr/RJAM02H/1jGXMPEKyhITvh36Yc5PGJbMZhGGGw/8n?=
+ =?us-ascii?Q?+oIAVrSp1M2qVgFmkGnp9S3BjJ4TICrdOiEnZet3+EuNnkfXZ5jtkDJ8VB4K?=
+ =?us-ascii?Q?z9nt0q+kqCfV+F/jl732hW3/7T8Sm/Kz0Vk7/483uISjgZde5IJK6FfhbyFG?=
+ =?us-ascii?Q?zRwicNMGfCs/KsfygtfozEobwuMqJiOK8HLX39wIby1fWp56WhmJa76MB1U5?=
+ =?us-ascii?Q?bKSg8gp/5Nk9qaBirbKs02Vi8ZnL2ifqRBUP7RYLYUpwxt6RmB+Dwt+deE8u?=
+ =?us-ascii?Q?KkBC3D7Sr7a7KVgNhAtxUzcWDvMqNKzrBbcoLPcrwy/XHXBgmxhcReoGDiM8?=
+ =?us-ascii?Q?GiFHAwPOZ9VS7PqgXGPX9oiR/f4daPYeRgZDCRV/ChE0i4E1gKr3P2jUzosf?=
+ =?us-ascii?Q?gktD/zXijG93Z5I5jeSrwlCPKez3NJnrRHDVjxhPLI2s0wR3tYqBaGyA6ShH?=
+ =?us-ascii?Q?GFbsgGTTac2/OrWgsJNFgBMp7F+dZy9+YmFlrPhN6mwZW5nA/gellcPLET/K?=
+ =?us-ascii?Q?R65N1dU7GgPgVBEuZUko4qdQPdI3ebd0RzxtoO2YOvnsD/6qGisz9JTjq6qN?=
+ =?us-ascii?Q?njNDhJNvO2lr9m7dw1zabus1mZyeeLBZ44vW6jzMtIvb4Ab0PuBVykC6IQnE?=
+ =?us-ascii?Q?Y+fhFDZx+aTUyQwpX+d23XLuae+jrqE3cvn+N8NDr6kqiGo5G58UZxYrtapu?=
+ =?us-ascii?Q?05iWKDqY658WH8h+p+L2h7Taf4p57q2HMW+zZMR3XhR/CSUAbfIxI0EPVQ+8?=
+ =?us-ascii?Q?CkmPZVMmA4Ett6hxciZD4qSxDe4e4QBmj8jebl/73tURdX9Cv0ja9RMrDS8i?=
+ =?us-ascii?Q?1tYqtvdyL6kNYC6argGl10ZzleroYfJ6sCqRqq73y+duuCl5M2+gisip11FA?=
+ =?us-ascii?Q?mxF5MkuGJuSjvyVD1Ub2dNfQJHDNbJxMuFBMeV9Fuuj3hGyPSUXtaEZoPmBG?=
+ =?us-ascii?Q?VSrCWZMljXjbAKKYxpcSFZni?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e464b425-52ab-4fd8-0428-08d96c5c04cb
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2021 08:47:53.0975 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cidy6/UKY08FCqOvOOtAs4M2CSAwZUrhxpUQVXguLbZcN56RPPRMRT9XuFAwKc8Nlz7umTCW1b8YeHDBtvkPlEI0XY3EMJNNIrSqJjfRQE4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR10MB5569
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10092
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ phishscore=0 suspectscore=0
+ adultscore=0 mlxscore=0 mlxlogscore=999 malwarescore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2107140000
+ definitions=main-2108310049
+X-Proofpoint-GUID: T28Wl1t6UDfQfV4CTpKzVeZG-PF2xLlK
+X-Proofpoint-ORIG-GUID: T28Wl1t6UDfQfV4CTpKzVeZG-PF2xLlK
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,116 +179,106 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Greg KH <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Martijn Coenen <maco@google.com>, Joel Fernandes <joel@joelfernandes.org>,
- kernel-team@android.com, Christian Brauner <christian@brauner.io>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 30, 2021 at 9:51 PM 'Todd Kjos' via kernel-team
-<kernel-team@android.com> wrote:
->
-> During BC_FREE_BUFFER processing, the BINDER_TYPE_FDA object
-> cleanup may close 1 or more fds. The close operations are
-> completed using the task work mechanism -- which means the thread
-> needs to return to userspace or the file object may never be
-> dereferenced -- which can lead to hung processes.
->
-> Force the binder thread back to userspace if an fd is closed during
-> BC_FREE_BUFFER handling.
->
-> Signed-off-by: Todd Kjos <tkjos@google.com>
-Reviewed-by: Martijn Coenen <maco@android.com>
-
+On Tue, Aug 31, 2021 at 01:03:55AM +0530, F.A.Sulaiman wrote:
+> Smatch reported memory leak bug in rtl8723b_FirmwareDownload function. 
+> The problem is pFirmware memory is not released in release_fw1. 
+> Instead of redirecting to release_fw1 we can turn it into exit 
+> and free the memory.
+> 
+> Signed-off-by: F.A. SULAIMAN <asha.16@itfac.mrt.ac.lk>
 > ---
->  drivers/android/binder.c | 23 +++++++++++++++++------
->  1 file changed, 17 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index bcec598b89f2..c2823f0d588f 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -1852,6 +1852,7 @@ static void binder_deferred_fd_close(int fd)
->  }
->
->  static void binder_transaction_buffer_release(struct binder_proc *proc,
-> +                                             struct binder_thread *thread,
->                                               struct binder_buffer *buffer,
->                                               binder_size_t failed_at,
->                                               bool is_failure)
-> @@ -2011,8 +2012,16 @@ static void binder_transaction_buffer_release(struct binder_proc *proc,
->                                                 &proc->alloc, &fd, buffer,
->                                                 offset, sizeof(fd));
->                                 WARN_ON(err);
-> -                               if (!err)
-> +                               if (!err) {
->                                         binder_deferred_fd_close(fd);
-> +                                       /*
-> +                                        * Need to make sure the thread goes
-> +                                        * back to userspace to complete the
-> +                                        * deferred close
-> +                                        */
-> +                                       if (thread)
-> +                                               thread->looper_need_return = true;
-> +                               }
->                         }
->                 } break;
->                 default:
-> @@ -3105,7 +3114,7 @@ static void binder_transaction(struct binder_proc *proc,
->  err_copy_data_failed:
->         binder_free_txn_fixups(t);
->         trace_binder_transaction_failed_buffer_release(t->buffer);
-> -       binder_transaction_buffer_release(target_proc, t->buffer,
-> +       binder_transaction_buffer_release(target_proc, NULL, t->buffer,
->                                           buffer_offset, true);
->         if (target_node)
->                 binder_dec_node_tmpref(target_node);
-> @@ -3184,7 +3193,9 @@ static void binder_transaction(struct binder_proc *proc,
->   * Cleanup buffer and free it.
->   */
->  static void
-> -binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
-> +binder_free_buf(struct binder_proc *proc,
-> +               struct binder_thread *thread,
-> +               struct binder_buffer *buffer)
->  {
->         binder_inner_proc_lock(proc);
->         if (buffer->transaction) {
-> @@ -3212,7 +3223,7 @@ binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
->                 binder_node_inner_unlock(buf_node);
->         }
->         trace_binder_transaction_buffer_release(buffer);
-> -       binder_transaction_buffer_release(proc, buffer, 0, false);
-> +       binder_transaction_buffer_release(proc, thread, buffer, 0, false);
->         binder_alloc_free_buf(&proc->alloc, buffer);
->  }
->
-> @@ -3414,7 +3425,7 @@ static int binder_thread_write(struct binder_proc *proc,
->                                      proc->pid, thread->pid, (u64)data_ptr,
->                                      buffer->debug_id,
->                                      buffer->transaction ? "active" : "finished");
-> -                       binder_free_buf(proc, buffer);
-> +                       binder_free_buf(proc, thread, buffer);
->                         break;
->                 }
->
-> @@ -4107,7 +4118,7 @@ static int binder_thread_read(struct binder_proc *proc,
->                         buffer->transaction = NULL;
->                         binder_cleanup_transaction(t, "fd fixups failed",
->                                                    BR_FAILED_REPLY);
-> -                       binder_free_buf(proc, buffer);
-> +                       binder_free_buf(proc, thread, buffer);
->                         binder_debug(BINDER_DEBUG_FAILED_TRANSACTION,
->                                      "%d:%d %stransaction %d fd fixups failed %d/%d, line %d\n",
->                                      proc->pid, thread->pid,
-> --
-> 2.33.0.259.gc128427fd7-goog
->
->
+>  drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+> index de8caa6cd418..b59c2aa3a9d8 100644
+> --- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+> +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+> @@ -436,7 +436,7 @@ s32 rtl8723b_FirmwareDownload(struct adapter *padapter, bool  bUsedWoWLANFw)
+>  	if (pFirmware->fw_length > FW_8723B_SIZE) {
+>  		rtStatus = _FAIL;
+>  		DBG_871X_LEVEL(_drv_emerg_, "Firmware size:%u exceed %u\n", pFirmware->fw_length, FW_8723B_SIZE);
+> -		goto release_fw1;
+> +		goto exit;
+>  	}
+
+The current tree doesn't have DBG_871X_LEVEL() so you must be working
+against something old.  You need to work against linux-next or staging
+next.
+
+Your patch fixes a bug, but it would be better to just re-write the
+error handling for this function.  There is another bug that a bunch
+of error paths don't call release_firmware(fw).  Use the "Free the Last
+Thing" method.
+
+	pFirmware = kzalloc(sizeof(struct rt_firmware), GFP_KERNEL);
+	if (!pFirmware)
+		return _FAIL;
+
+The last thing we allocated is "pFirmware" so free that if we have an
+error.
+
+	pBTFirmware = kzalloc(sizeof(struct rt_firmware), GFP_KERNEL);
+	if (!pBTFirmware) {
+		rtStatus = _FAIL;
+		goto free_firmware;
+	}
+
+Now the last thing is pBTFirmware.
+
+	rtStatus = request_firmware(&fw, fwfilepath, device);
+	if (rtStatus) {
+		rtStatus = _FAIL;
+		goto free_bt_firmware;
+	}
+
+Now the last thing is "fw".  But this is a bit tricky because we're
+going to release it as soon as possible and not wait until the end of
+the function.  There isn't a reason for this...  We can change that or
+keep it as-is.  If we keep it as is, then the we'll just call
+release_firmware(fw); before the goto free_bt_firmware;  The current
+code leaks fw on a bunch of error paths.
+
+	pFirmware->fw_buffer_sz = kmemdup(fw->data, fw->size, GFP_KERNEL);
+	if (!pFirmware->fw_buffer_sz) {
+		rtStatus = _FAIL;
+		release_firmware(fw);
+		goto free_bt_firmware;
+	}
+
+Or:
+
+	pFirmware->fw_buffer_sz = kmemdup(fw->data, fw->size, GFP_KERNEL);
+	if (!pFirmware->fw_buffer_sz) {
+		rtStatus = _FAIL;
+		goto release_fw;
+	}
+
+Now the last thing is pFirmware->fw_buffer_sz.  Etc.
+
+Then at the end it's just:
+
+free_fw_buffer:
+        kfree(pFirmware->fw_buffer_sz);
+release_fw:
+	release_firmware(fw);
+free_bt_firmware:
+	kfree(pBTFirmware);
+free_firmware:
+        kfree(pFirmware);
+
+        return rtStatus;
+}
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
