@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BB0C3FF035
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Sep 2021 17:28:56 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8DD83FF04E
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Sep 2021 17:36:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 334D04075D;
-	Thu,  2 Sep 2021 15:28:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2B99C61527;
+	Thu,  2 Sep 2021 15:36:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t02RIOQaBpXm; Thu,  2 Sep 2021 15:28:53 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2ShjdQt2YVH1; Thu,  2 Sep 2021 15:36:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7985F403B6;
-	Thu,  2 Sep 2021 15:28:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 58C7B614CA;
+	Thu,  2 Sep 2021 15:36:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6A75A1BF4DA
- for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 15:28:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A30901BF4DA
+ for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 15:35:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 573728301F
- for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 15:28:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 916F24077F
+ for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 15:35:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lKch98UQFdkO for <devel@linuxdriverproject.org>;
- Thu,  2 Sep 2021 15:28:11 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=google.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Uu2aGRrX3eEM for <devel@linuxdriverproject.org>;
+ Thu,  2 Sep 2021 15:35:50 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qt1-x835.google.com (mail-qt1-x835.google.com
- [IPv6:2607:f8b0:4864:20::835])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AD5CE82FEA
- for <devel@driverdev.osuosl.org>; Thu,  2 Sep 2021 15:28:08 +0000 (UTC)
-Received: by mail-qt1-x835.google.com with SMTP id b4so1903295qtx.0
- for <devel@driverdev.osuosl.org>; Thu, 02 Sep 2021 08:28:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=Q+Y0vhwco500Y05ylOmEB6X3jfVg0W+7mov6++1Cqcg=;
- b=pWU0HAqknziD2GBDNj3UnSfIFAWyNmmbjt4pHvFne3MpOa6rNaMH2zCo/lX+1eXy0Y
- 4svpRhZ5+ttPC+m1zqH452Pg5MpQ3eNyQ5tQx4EiiYRW1KPQ3DZqqadpb8/u51/P9D1y
- /ptdD2EGftBtdOj4SowOCYv2C+Kr/BNEU5k96wuTTDW6wHilkd2t/8hiNiM5p/FQsBiH
- 5ZsYLxpGFZ3Fdhltgu1znqoz7hHYO/9BP3NZoI9NIxP6qnODuPD9b7kyiW8pzhNIabGn
- phGJlAuL4offlwafZT1ewvFMS9eDuULlWN3ReRM8SPpXAmpxt2E9UF29Wf+i5EJXYU14
- pjFA==
+Received: from mail-lj1-x229.google.com (mail-lj1-x229.google.com
+ [IPv6:2a00:1450:4864:20::229])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D4E1340788
+ for <devel@driverdev.osuosl.org>; Thu,  2 Sep 2021 15:35:49 +0000 (UTC)
+Received: by mail-lj1-x229.google.com with SMTP id l18so4308441lji.12
+ for <devel@driverdev.osuosl.org>; Thu, 02 Sep 2021 08:35:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gqsE0hcACBYtzOEUSRWmq502BlYXjpyMpHHF4zb++1Y=;
+ b=YvMoLhTqope6Anvbg2E/49DdR0bfBTbd3WBFEpizcH0H43hqwki7cGgzsjtRtm+AoT
+ 38FGEfBZmCZH/fn2WSrE++8YwficAwTcjLRvKO3D6bSuwFqVx5xBEgPxK9YLo7hVU5rj
+ dPqO+SLEHJoOqbsTFmWAXZ9/nLfrf980M/fNjCa6aDWHW3jRJis7MGBQyl0ZmGZ4Gnpg
+ 8LO/NCLH8ziH2DY+BmiRAIvw9INsp90XK5BE73m7OhmMpz2/99leispqO6agIGSvQtXh
+ 1qQ6+kgAfUZY0Do2zuglHu0P6NbjVln1NC3EVkF46q0Ufila1YAXVB5lZAvfabZFqDG5
+ YACg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=Q+Y0vhwco500Y05ylOmEB6X3jfVg0W+7mov6++1Cqcg=;
- b=ewKsDCQE6Mk7ffCL1kMSYhKGnjVjgAWZyCka4ZGHhxjr1pGpJ5pY6Dl4+Pv95qiEq6
- PFutk/cNSCTg4LdctQ9Z85RC0Lp6Rfgk/k247AmTEpT1emVkyeEfn/pE1vf6MxDb40r0
- kb4yuUBGTxP5EZffhOLXUxDXA42Gn6J4pTHF5jM29xZB8GmuGiPKPjR6Or57aqAKOYxi
- 0u/wGPjy8uxj2fNSzZFdvji77QRgS4aqcI5n1IFZwcgiZ4+WUgHzmJ2obphRyJGkFdVj
- 8TQFcKP4Aw4YT6NyWR6Vn4/zAN6t0nk1qOFYWHlcSo87wiUP9HphpceTqLEfdMUPrn0i
- /rkA==
-X-Gm-Message-State: AOAM530rnXR7tAzJm1C8Kc9JnYKURXLxrP81ihf8C+4I4lxsxHnMtz1I
- uyFQ9wXPYKXfQGrg9MsxeGY/m/pBZAhtXXEMAoE=
-X-Google-Smtp-Source: ABdhPJzqujTycEriZOSF3yPhq9GnMFchj7K+ekmWoD6co9mYMu2fpcPuhwKylrXyA7h/kP2IzRsZfMoMN8KFL9BfR14=
-X-Received: by 2002:a05:622a:1a8c:: with SMTP id
- s12mr3413198qtc.232.1630596487561; 
- Thu, 02 Sep 2021 08:28:07 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gqsE0hcACBYtzOEUSRWmq502BlYXjpyMpHHF4zb++1Y=;
+ b=EVtKVQYhmBPb0MMhTqnva7aTX3V4kNo6Qx4f12PIUgNGmvEU1V6TUS6r+WwkuykU4x
+ PVg6jiHCLKO8iasJ1SeIMrB+skrvlSKIXhRu97XCcn5yrAnNABvtPUff2OsI2nl/OTVA
+ wILMVZLd1TGxIGPJIlTE2iIcJ6f43sT76Wtn1MW+jkgHzHOxSk4fQTSbP3iK6LmqnMsI
+ BSJiC/yqroKKBcpQ/raSMS+KoqNLnswTzlJV2BwLTdA1wmWO8vDWgk64lxbO1jVYjyfh
+ rST6MAFPcIqCQm4d41s06vI74HXVp5AvxqwcywReZ5dtsVpGJKQWbaOY1GTYoZGJVU/B
+ WzjQ==
+X-Gm-Message-State: AOAM531Bmuv4EOmTycoD+2uJGTGGazxZSvrRBmcKDZw3OkQdGvtQlKPu
+ eLkw6LxJRrabM9kNaiwidbty7vveIvlywd05jRCLBA==
+X-Google-Smtp-Source: ABdhPJzJ2ZXLD2ye7fiTVTjas7hr69B87RP5P3F3ORamACWW63F58/LqhV8yp2vp3VXog/b65mHOHs0VwizfSYBzHlQ=
+X-Received: by 2002:a05:651c:118f:: with SMTP id
+ w15mr3130589ljo.47.1630596947384; 
+ Thu, 02 Sep 2021 08:35:47 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a37:e84:0:0:0:0:0 with HTTP;
- Thu, 2 Sep 2021 08:28:07 -0700 (PDT)
-From: "Mr.Sal kavar" <salkavar2@gmail.com>
-Date: Thu, 2 Sep 2021 16:28:07 +0100
-X-Google-Sender-Auth: 7s4URtWG93pjvyLxf2I-3WQ_06g
-Message-ID: <CA+sSZDKQspMpZ38xcBRJdG4-KcM=uErFEdUTxuWKY3Eg0Qyung@mail.gmail.com>
-Subject: Yours Faithful,
-To: undisclosed-recipients:;
+References: <20210830195146.587206-1-tkjos@google.com>
+ <CAB0TPYFmUgPTONABLTJAdonK7fY7oqURKCpLp1-WqHLtyen7Zw@mail.gmail.com>
+In-Reply-To: <CAB0TPYFmUgPTONABLTJAdonK7fY7oqURKCpLp1-WqHLtyen7Zw@mail.gmail.com>
+From: Todd Kjos <tkjos@google.com>
+Date: Thu, 2 Sep 2021 08:35:35 -0700
+Message-ID: <CAHRSSExONtUFu0Mb8uJeVKcyDYb8=1PO7a=aQ=DUEpA5kAcTQA@mail.gmail.com>
+Subject: Re: [PATCH] binder: make sure fd closes complete
+To: Martijn Coenen <maco@android.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,36 +83,122 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: salkavar2@gmail.com
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Greg KH <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.org>,
+ stable <stable@vger.kernel.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Martijn Coenen <maco@google.com>, Joel Fernandes <joel@joelfernandes.org>,
+ kernel-team@android.com, Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I assume you and your family are in good health. I am the foreign
-operations Manager.
+On Tue, Aug 31, 2021 at 12:24 AM Martijn Coenen <maco@android.com> wrote:
+>
+> On Mon, Aug 30, 2021 at 9:51 PM 'Todd Kjos' via kernel-team
+> <kernel-team@android.com> wrote:
+> >
+> > During BC_FREE_BUFFER processing, the BINDER_TYPE_FDA object
+> > cleanup may close 1 or more fds. The close operations are
+> > completed using the task work mechanism -- which means the thread
+> > needs to return to userspace or the file object may never be
+> > dereferenced -- which can lead to hung processes.
+> >
+> > Force the binder thread back to userspace if an fd is closed during
+> > BC_FREE_BUFFER handling.
+> >
+> > Signed-off-by: Todd Kjos <tkjos@google.com>
+> Reviewed-by: Martijn Coenen <maco@android.com>
 
-This being a wide world in which it can be difficult to make new
-acquaintances and because it is virtually impossible to know who is
-trustworthy and who can be believed, i have decided to repose
-confidence in you after much fasting and prayer. It is only because of
-this that I have decided to confide in you and to share with you this
-confidential business.
+Please also add to stable releases 5.4 and later.
 
-overdue and unclaimed sum of $15.5m, (Fifteen Million Five Hundred
-Thousand Dollars Only) when the account holder suddenly passed on, he
-left no beneficiary who would be entitled to the receipt of this fund.
-For this reason, I have found it expedient to transfer this fund to a
-trustworthy individual with capacity to act as foreign business
-partner.
-
-Thus i humbly request your assistance to claim this fund. Upon the
-transfer of this fund in your account, you will take 45% as your share
-from the total fund, 10% will be shared to Charity Organizations in
-both country and 45% will be for me.
-
-Yours Faithful,
-Mr.Sal Kavar.
+>
+> > ---
+> >  drivers/android/binder.c | 23 +++++++++++++++++------
+> >  1 file changed, 17 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> > index bcec598b89f2..c2823f0d588f 100644
+> > --- a/drivers/android/binder.c
+> > +++ b/drivers/android/binder.c
+> > @@ -1852,6 +1852,7 @@ static void binder_deferred_fd_close(int fd)
+> >  }
+> >
+> >  static void binder_transaction_buffer_release(struct binder_proc *proc,
+> > +                                             struct binder_thread *thread,
+> >                                               struct binder_buffer *buffer,
+> >                                               binder_size_t failed_at,
+> >                                               bool is_failure)
+> > @@ -2011,8 +2012,16 @@ static void binder_transaction_buffer_release(struct binder_proc *proc,
+> >                                                 &proc->alloc, &fd, buffer,
+> >                                                 offset, sizeof(fd));
+> >                                 WARN_ON(err);
+> > -                               if (!err)
+> > +                               if (!err) {
+> >                                         binder_deferred_fd_close(fd);
+> > +                                       /*
+> > +                                        * Need to make sure the thread goes
+> > +                                        * back to userspace to complete the
+> > +                                        * deferred close
+> > +                                        */
+> > +                                       if (thread)
+> > +                                               thread->looper_need_return = true;
+> > +                               }
+> >                         }
+> >                 } break;
+> >                 default:
+> > @@ -3105,7 +3114,7 @@ static void binder_transaction(struct binder_proc *proc,
+> >  err_copy_data_failed:
+> >         binder_free_txn_fixups(t);
+> >         trace_binder_transaction_failed_buffer_release(t->buffer);
+> > -       binder_transaction_buffer_release(target_proc, t->buffer,
+> > +       binder_transaction_buffer_release(target_proc, NULL, t->buffer,
+> >                                           buffer_offset, true);
+> >         if (target_node)
+> >                 binder_dec_node_tmpref(target_node);
+> > @@ -3184,7 +3193,9 @@ static void binder_transaction(struct binder_proc *proc,
+> >   * Cleanup buffer and free it.
+> >   */
+> >  static void
+> > -binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
+> > +binder_free_buf(struct binder_proc *proc,
+> > +               struct binder_thread *thread,
+> > +               struct binder_buffer *buffer)
+> >  {
+> >         binder_inner_proc_lock(proc);
+> >         if (buffer->transaction) {
+> > @@ -3212,7 +3223,7 @@ binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
+> >                 binder_node_inner_unlock(buf_node);
+> >         }
+> >         trace_binder_transaction_buffer_release(buffer);
+> > -       binder_transaction_buffer_release(proc, buffer, 0, false);
+> > +       binder_transaction_buffer_release(proc, thread, buffer, 0, false);
+> >         binder_alloc_free_buf(&proc->alloc, buffer);
+> >  }
+> >
+> > @@ -3414,7 +3425,7 @@ static int binder_thread_write(struct binder_proc *proc,
+> >                                      proc->pid, thread->pid, (u64)data_ptr,
+> >                                      buffer->debug_id,
+> >                                      buffer->transaction ? "active" : "finished");
+> > -                       binder_free_buf(proc, buffer);
+> > +                       binder_free_buf(proc, thread, buffer);
+> >                         break;
+> >                 }
+> >
+> > @@ -4107,7 +4118,7 @@ static int binder_thread_read(struct binder_proc *proc,
+> >                         buffer->transaction = NULL;
+> >                         binder_cleanup_transaction(t, "fd fixups failed",
+> >                                                    BR_FAILED_REPLY);
+> > -                       binder_free_buf(proc, buffer);
+> > +                       binder_free_buf(proc, thread, buffer);
+> >                         binder_debug(BINDER_DEBUG_FAILED_TRANSACTION,
+> >                                      "%d:%d %stransaction %d fd fixups failed %d/%d, line %d\n",
+> >                                      proc->pid, thread->pid,
+> > --
+> > 2.33.0.259.gc128427fd7-goog
+> >
+> >
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
