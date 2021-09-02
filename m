@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B53763FF0E0
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Sep 2021 18:13:57 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A95E3FF5C7
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Sep 2021 23:46:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BDE95402A7;
-	Thu,  2 Sep 2021 16:13:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CF5AF8367B;
+	Thu,  2 Sep 2021 21:45:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sMC3OJdXzRVY; Thu,  2 Sep 2021 16:13:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bQ7rImKg1ydg; Thu,  2 Sep 2021 21:45:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D704E40237;
-	Thu,  2 Sep 2021 16:13:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8384182965;
+	Thu,  2 Sep 2021 21:45:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AF04D1BF4E6
- for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 16:11:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 018BA1BF5DC
+ for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 21:45:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9E8C4425EB
- for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 16:11:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E4F1A80E94
+ for <devel@linuxdriverproject.org>; Thu,  2 Sep 2021 21:45:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IdDCYNwn7Cql for <devel@linuxdriverproject.org>;
- Thu,  2 Sep 2021 16:11:08 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A83ED425E5
- for <devel@driverdev.osuosl.org>; Thu,  2 Sep 2021 16:11:08 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A9F3D61211;
- Thu,  2 Sep 2021 16:11:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1630599068;
- bh=1SIgbTHl3TWh3Oz1ABpRYB4HoSLhHO7T9v0BsHWdffk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=p+A9q1wMeQDYnwBdBT1oZ62NIsS6cwi1tl6nk984SOmSA5s2MiLiSuLsG47NfV+dS
- zoUwlLbJgEDm0s3wSgh90YHacDq7j96FEIgUIr7qvhVVtccCTv4hZAxpdcjUOiNFtf
- UghD9TFbdc6uNESnX5KfF5GhwL3Wl2Giu9qDaMZY=
-Date: Thu, 2 Sep 2021 18:11:05 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Todd Kjos <tkjos@google.com>
-Subject: Re: [PATCH] binder: make sure fd closes complete
-Message-ID: <YTD3maFb22LIsh/U@kroah.com>
-References: <20210830195146.587206-1-tkjos@google.com>
- <CAB0TPYFmUgPTONABLTJAdonK7fY7oqURKCpLp1-WqHLtyen7Zw@mail.gmail.com>
- <CAHRSSExONtUFu0Mb8uJeVKcyDYb8=1PO7a=aQ=DUEpA5kAcTQA@mail.gmail.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id haxaR_MLEqLK for <devel@linuxdriverproject.org>;
+ Thu,  2 Sep 2021 21:45:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EA52280E8F
+ for <devel@driverdev.osuosl.org>; Thu,  2 Sep 2021 21:45:45 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10095"; a="241537535"
+X-IronPort-AV: E=Sophos;i="5.85,263,1624345200"; d="scan'208";a="241537535"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2021 14:45:45 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,263,1624345200"; d="scan'208";a="521363765"
+Received: from lkp-server01.sh.intel.com (HELO 4fbc2b3ce5aa) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 02 Sep 2021 14:45:44 -0700
+Received: from kbuild by 4fbc2b3ce5aa with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mLuWl-0009JX-C4; Thu, 02 Sep 2021 21:45:43 +0000
+Date: Fri, 03 Sep 2021 05:45:34 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 9b8b68ae4356029f9672c2cfba24f3674a64fcfd
+Message-ID: <613145fe.Lb382cC/qfptXDEK%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHRSSExONtUFu0Mb8uJeVKcyDYb8=1PO7a=aQ=DUEpA5kAcTQA@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,45 +63,255 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- kernel-team@android.com, LKML <linux-kernel@vger.kernel.org>,
- stable <stable@vger.kernel.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Martijn Coenen <maco@google.com>, Joel Fernandes <joel@joelfernandes.org>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Sep 02, 2021 at 08:35:35AM -0700, Todd Kjos wrote:
-> On Tue, Aug 31, 2021 at 12:24 AM Martijn Coenen <maco@android.com> wrote:
-> >
-> > On Mon, Aug 30, 2021 at 9:51 PM 'Todd Kjos' via kernel-team
-> > <kernel-team@android.com> wrote:
-> > >
-> > > During BC_FREE_BUFFER processing, the BINDER_TYPE_FDA object
-> > > cleanup may close 1 or more fds. The close operations are
-> > > completed using the task work mechanism -- which means the thread
-> > > needs to return to userspace or the file object may never be
-> > > dereferenced -- which can lead to hung processes.
-> > >
-> > > Force the binder thread back to userspace if an fd is closed during
-> > > BC_FREE_BUFFER handling.
-> > >
-> > > Signed-off-by: Todd Kjos <tkjos@google.com>
-> > Reviewed-by: Martijn Coenen <maco@android.com>
-> 
-> Please also add to stable releases 5.4 and later.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 9b8b68ae4356029f9672c2cfba24f3674a64fcfd  staging: r8188eu: remove unnecessary parentheses
 
-I'll try to remember to tag this as-such after 5.15-rc1 is out and I can
-apply it to my tree.  But in the future, it's best if you add the cc:
-stable to the patch yourself so I don't have to do it "by hand" after
-the fact.
+elapsed time: 726m
 
-thanks,
+configs tested: 224
+configs skipped: 4
 
-greg k-h
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210831
+i386                 randconfig-c001-20210903
+i386                 randconfig-c001-20210902
+h8300                            allyesconfig
+powerpc                 mpc832x_rdb_defconfig
+arc                           tb10x_defconfig
+mips                      loongson3_defconfig
+openrisc                 simple_smp_defconfig
+powerpc                     kilauea_defconfig
+arm                         shannon_defconfig
+powerpc                    mvme5100_defconfig
+powerpc                       ppc64_defconfig
+m68k                        m5272c3_defconfig
+xtensa                              defconfig
+um                                  defconfig
+m68k                         apollo_defconfig
+arm                           h3600_defconfig
+powerpc                    klondike_defconfig
+sh                            titan_defconfig
+powerpc                      ppc40x_defconfig
+riscv                    nommu_k210_defconfig
+powerpc                 mpc8540_ads_defconfig
+sh                          sdk7786_defconfig
+arm                            xcep_defconfig
+arm                          ep93xx_defconfig
+arc                          axs101_defconfig
+powerpc                   motionpro_defconfig
+mips                          malta_defconfig
+mips                          ath25_defconfig
+mips                      fuloong2e_defconfig
+s390                             alldefconfig
+powerpc                       eiger_defconfig
+sh                        dreamcast_defconfig
+arm                           viper_defconfig
+openrisc                            defconfig
+arm                     am200epdkit_defconfig
+powerpc                     ppa8548_defconfig
+powerpc                 mpc836x_mds_defconfig
+arm                         lpc18xx_defconfig
+x86_64                           alldefconfig
+arm                      integrator_defconfig
+arm                         cm_x300_defconfig
+arm                           corgi_defconfig
+mips                           jazz_defconfig
+powerpc                      acadia_defconfig
+powerpc                   microwatt_defconfig
+arm                       multi_v4t_defconfig
+sh                            hp6xx_defconfig
+arm                          moxart_defconfig
+sh                        edosk7760_defconfig
+riscv                            alldefconfig
+arm                          pxa168_defconfig
+sh                        edosk7705_defconfig
+mips                   sb1250_swarm_defconfig
+powerpc                      pasemi_defconfig
+powerpc                      obs600_defconfig
+arm                           sama7_defconfig
+h8300                            alldefconfig
+nios2                            alldefconfig
+arm                         assabet_defconfig
+arm                           tegra_defconfig
+arm                        trizeps4_defconfig
+x86_64                           allyesconfig
+arm                         at91_dt_defconfig
+m68k                       bvme6000_defconfig
+csky                                defconfig
+x86_64                            allnoconfig
+mips                      maltaaprp_defconfig
+powerpc                      tqm8xx_defconfig
+xtensa                generic_kc705_defconfig
+riscv             nommu_k210_sdcard_defconfig
+sh                        sh7785lcr_defconfig
+powerpc                      pcm030_defconfig
+sh                   sh7770_generic_defconfig
+arm                         lpc32xx_defconfig
+xtensa                       common_defconfig
+powerpc                 mpc836x_rdk_defconfig
+sh                      rts7751r2d1_defconfig
+powerpc                     kmeter1_defconfig
+mips                         cobalt_defconfig
+arm                     davinci_all_defconfig
+mips                           gcw0_defconfig
+sh                           se7724_defconfig
+arm                          pcm027_defconfig
+arm                         s3c6400_defconfig
+sh                             sh03_defconfig
+m68k                          multi_defconfig
+powerpc                     tqm5200_defconfig
+riscv                    nommu_virt_defconfig
+arm                           h5000_defconfig
+arc                              alldefconfig
+sh                              ul2_defconfig
+arc                        vdk_hs38_defconfig
+sparc                       sparc32_defconfig
+mips                       lemote2f_defconfig
+arm                     eseries_pxa_defconfig
+powerpc                     redwood_defconfig
+arm                         s3c2410_defconfig
+sh                           se7619_defconfig
+nios2                            allyesconfig
+arm                         axm55xx_defconfig
+arm                       mainstone_defconfig
+mips                          ath79_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a005-20210831
+x86_64               randconfig-a001-20210831
+x86_64               randconfig-a003-20210831
+x86_64               randconfig-a002-20210831
+x86_64               randconfig-a004-20210831
+x86_64               randconfig-a006-20210831
+i386                 randconfig-a005-20210831
+i386                 randconfig-a002-20210831
+i386                 randconfig-a003-20210831
+i386                 randconfig-a006-20210831
+i386                 randconfig-a004-20210831
+i386                 randconfig-a001-20210831
+i386                 randconfig-a005-20210902
+i386                 randconfig-a004-20210902
+i386                 randconfig-a006-20210902
+i386                 randconfig-a002-20210902
+i386                 randconfig-a001-20210902
+i386                 randconfig-a003-20210902
+x86_64               randconfig-a016-20210903
+x86_64               randconfig-a011-20210903
+x86_64               randconfig-a012-20210903
+x86_64               randconfig-a015-20210903
+x86_64               randconfig-a014-20210903
+x86_64               randconfig-a013-20210903
+i386                 randconfig-a012-20210903
+i386                 randconfig-a015-20210903
+i386                 randconfig-a011-20210903
+i386                 randconfig-a013-20210903
+i386                 randconfig-a014-20210903
+i386                 randconfig-a016-20210903
+arc                  randconfig-r043-20210902
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+s390                 randconfig-c005-20210901
+mips                 randconfig-c004-20210901
+x86_64               randconfig-c007-20210901
+powerpc              randconfig-c003-20210901
+i386                 randconfig-c001-20210901
+arm                  randconfig-c002-20210901
+riscv                randconfig-c006-20210901
+i386                 randconfig-c001-20210831
+s390                 randconfig-c005-20210831
+riscv                randconfig-c006-20210831
+powerpc              randconfig-c003-20210831
+mips                 randconfig-c004-20210831
+arm                  randconfig-c002-20210831
+x86_64               randconfig-c007-20210831
+x86_64               randconfig-a004-20210903
+x86_64               randconfig-a006-20210903
+x86_64               randconfig-a003-20210903
+x86_64               randconfig-a005-20210903
+x86_64               randconfig-a001-20210903
+x86_64               randconfig-a002-20210903
+i386                 randconfig-a005-20210903
+i386                 randconfig-a004-20210903
+i386                 randconfig-a006-20210903
+i386                 randconfig-a002-20210903
+i386                 randconfig-a001-20210903
+i386                 randconfig-a003-20210903
+x86_64               randconfig-a014-20210831
+x86_64               randconfig-a015-20210831
+x86_64               randconfig-a013-20210831
+x86_64               randconfig-a016-20210831
+x86_64               randconfig-a012-20210831
+x86_64               randconfig-a011-20210831
+i386                 randconfig-a016-20210831
+i386                 randconfig-a011-20210831
+i386                 randconfig-a015-20210831
+i386                 randconfig-a014-20210831
+i386                 randconfig-a012-20210831
+i386                 randconfig-a013-20210831
+hexagon              randconfig-r045-20210901
+hexagon              randconfig-r041-20210901
+hexagon              randconfig-r045-20210903
+hexagon              randconfig-r041-20210903
+riscv                randconfig-r042-20210902
+hexagon              randconfig-r045-20210902
+s390                 randconfig-r044-20210902
+hexagon              randconfig-r041-20210902
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
