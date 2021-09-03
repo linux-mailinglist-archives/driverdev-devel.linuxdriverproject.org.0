@@ -1,78 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E6B14005F1
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Sep 2021 21:38:54 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 20DBC4006B7
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Sep 2021 22:37:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E808A4039B;
-	Fri,  3 Sep 2021 19:38:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BDDEC40822;
+	Fri,  3 Sep 2021 20:37:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H2arnvkEkoaS; Fri,  3 Sep 2021 19:38:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6pzqbcXn3ocF; Fri,  3 Sep 2021 20:37:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 46AF8402F3;
-	Fri,  3 Sep 2021 19:38:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A8B4040146;
+	Fri,  3 Sep 2021 20:37:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7F5C11BF2F7
- for <devel@linuxdriverproject.org>; Fri,  3 Sep 2021 19:38:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 05B771BF38B
+ for <devel@linuxdriverproject.org>; Fri,  3 Sep 2021 20:36:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6DA23606E2
- for <devel@linuxdriverproject.org>; Fri,  3 Sep 2021 19:38:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F2E146072F
+ for <devel@linuxdriverproject.org>; Fri,  3 Sep 2021 20:36:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=google.com
+ dkim=pass (2048-bit key) header.d=hotel-colmena.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IP7ZIxgWoLiA for <devel@linuxdriverproject.org>;
- Fri,  3 Sep 2021 19:38:40 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x12e.google.com (mail-lf1-x12e.google.com
- [IPv6:2a00:1450:4864:20::12e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 91DA860679
- for <devel@driverdev.osuosl.org>; Fri,  3 Sep 2021 19:38:40 +0000 (UTC)
-Received: by mail-lf1-x12e.google.com with SMTP id t12so362171lfg.9
- for <devel@driverdev.osuosl.org>; Fri, 03 Sep 2021 12:38:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CpWTZXeHQgxI0FRIsXgHMKOEiigtxEoeHddO3FWKGkk=;
- b=UhpAzgv7FchR19cnMXHoZ7cPsnwbRuML2DSSZEKXlKbP9d7Uh/q51lYN6dicMfTSUV
- dMV18+ZxBaPhTEDxtpW7QeKdKnIGoeQPq4sChmtUxnlLdNqoFJI2YqFqgG0EvaVH4Khl
- cQjGnPEclgybXcLpQg8op5cyqaW6q3ph7e4SmGdI2glcrgPorTq5EcfSXhONcxrAT9EV
- SVUaIelOgjBRpSAzTjutRcpIv1HmjzTs7O/hqvPSmsGQOjEwyuWWlW6theTjv4gHo0vi
- IINnLytwUQXvyKA3KgzPZHFbroL39slzKCL2Gv5DbeUdMQTO5Hn1r6ANYcmcwc0drL1+
- RszA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CpWTZXeHQgxI0FRIsXgHMKOEiigtxEoeHddO3FWKGkk=;
- b=RUZ+pXJI//Wexp9waRVrO431S6c5C9ME8McxL4sBdkV7PpS6xuKRuODYGH+FvNexXw
- bKZFlv3vNTsFjUEPvCrcEymsU6jpI0fd8LWotTj4Y1zlhx9abqwHpYRi5XbR9ninEfbD
- I2asbXC3Fsrm2AiUTo7d34ANpVzjeKZCPI/VTky4CRE4NHhcOAYeJ4tw/0JFY46xDa8V
- kxpLQxfHs4gQbhFjkc7Y+K6T1N011BVssOMMDf8FgGztz20lDx2tmtDOaG4WcG5ynVd9
- j7onW3MHYSlzosDEPqciPIKOen9a46J0BBzdbRGpjx+EkYksrnwOtjR+G088d+SxQBLy
- h1Tw==
-X-Gm-Message-State: AOAM532piDPtCByTbhfx9GOU3EGNCYGJccdyTWV8GOZdQXPy6Orw4ZQX
- jwy0m2RjgThtlevI0FkCodfOw+K8wgrAVcIk7Z02qQ==
-X-Google-Smtp-Source: ABdhPJzkMAwSm7ZOxAvX4qFCxpAR1VwRIYhxMiWpd1Z1azE/6kQNcFOVD1E07Ac/XUYd7vyLyUM9+oeka9mxK+cVk5k=
-X-Received: by 2002:a05:6512:11e8:: with SMTP id
- p8mr386145lfs.682.1630697918128; 
- Fri, 03 Sep 2021 12:38:38 -0700 (PDT)
+ with ESMTP id OkfIUQCfFITG for <devel@linuxdriverproject.org>;
+ Fri,  3 Sep 2021 20:36:57 +0000 (UTC)
+X-Greylist: delayed 00:57:45 by SQLgrey-1.8.0
+Received: from swift.nsjet.com (swift.nsjet.com [64.37.52.109])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DCDBD6070B
+ for <devel@linuxdriverproject.org>; Fri,  3 Sep 2021 20:36:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=hotel-colmena.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+ Message-ID:Reply-To:Subject:To:From:Date:MIME-Version:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=wzHi98BlhT5wXqeXUpqVHLT1Pcv3MEtOn1daoTz+NA4=; b=jYKl1n4XCEohdAKNuiQqELbfrd
+ iErRSK++pyKgAeDsEHLK+8t8LNg17nZaj3iKsMIem3DtCrhfgVk2/t2ihWgemsRfcFcQv9cn8yXtZ
+ 06JGQAA24DTkxxLkeHDZ8Npl8DHgoBeDgGIN8p+1Ju4ICdbnXZP4D7H+iP5FziH/v47VkYQJ0XfjG
+ K4BOu08SE6E4R4j4t7q1c0dWvOu4OnzdP8oItZeCSW7kby8/xv1/SWyULYhzNr5U8IBnf+yxCQc4U
+ pIjLnPsbiPFbTSyG0I+7WBA2BhmsaoV6xMxI2lpeikgfnneYxC6fNymb9my+LiEYQdwzuUVS4Qx8Q
+ piCmYzgA==;
+Received: from [::1] (port=57756 helo=swift.nsjet.com)
+ by swift.nsjet.com with esmtpa (Exim 4.94.2)
+ (envelope-from <alimentos&bebidas@hotel-colmena.com>)
+ id 1mMF0K-0004Mr-39; Fri, 03 Sep 2021 15:37:36 -0400
 MIME-Version: 1.0
-References: <20210830195146.587206-1-tkjos@google.com>
- <CAB0TPYFmUgPTONABLTJAdonK7fY7oqURKCpLp1-WqHLtyen7Zw@mail.gmail.com>
- <CAHRSSExONtUFu0Mb8uJeVKcyDYb8=1PO7a=aQ=DUEpA5kAcTQA@mail.gmail.com>
- <20210903080617.GA1957@kadam>
-In-Reply-To: <20210903080617.GA1957@kadam>
-From: Todd Kjos <tkjos@google.com>
-Date: Fri, 3 Sep 2021 12:38:26 -0700
-Message-ID: <CAHRSSEyDDmGRrc_paxJ2-Gkx=qMhKKhTr_Mpj-DiL8L1gcm5VA@mail.gmail.com>
-Subject: Re: [PATCH] binder: make sure fd closes complete
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Date: Fri, 03 Sep 2021 15:36:47 -0400
+From: "Mr. Ibrahim Tafa" <alimentos&bebidas@hotel-colmena.com>
+To: undisclosed-recipients:;
+Subject: PROJECT SPONSORSHIP / LOANS AND INVESTMENT FINANCING
+User-Agent: Roundcube Webmail/1.4.11
+Message-ID: <4aee9c129969e182cf66e4a3dfe484dd@hotel-colmena.com>
+X-Sender: alimentos&bebidas@hotel-colmena.com
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - swift.nsjet.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - hotel-colmena.com
+X-Get-Message-Sender-Via: swift.nsjet.com: authenticated_id:
+ informes@hotel-colmena.com
+X-Authenticated-Sender: swift.nsjet.com: informes@hotel-colmena.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,63 +81,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- kernel-team@android.com, Greg KH <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, stable <stable@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Martijn Coenen <maco@google.com>, Joel Fernandes <joel@joelfernandes.org>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: ibrahim.tafa2@globalinvestments-fze.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Sep 3, 2021 at 1:06 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Thu, Sep 02, 2021 at 08:35:35AM -0700, Todd Kjos wrote:
-> > On Tue, Aug 31, 2021 at 12:24 AM Martijn Coenen <maco@android.com> wrote:
-> > >
-> > > On Mon, Aug 30, 2021 at 9:51 PM 'Todd Kjos' via kernel-team
-> > > <kernel-team@android.com> wrote:
-> > > >
-> > > > During BC_FREE_BUFFER processing, the BINDER_TYPE_FDA object
-> > > > cleanup may close 1 or more fds. The close operations are
-> > > > completed using the task work mechanism -- which means the thread
-> > > > needs to return to userspace or the file object may never be
-> > > > dereferenced -- which can lead to hung processes.
-> > > >
-> > > > Force the binder thread back to userspace if an fd is closed during
-> > > > BC_FREE_BUFFER handling.
-> > > >
-> > > > Signed-off-by: Todd Kjos <tkjos@google.com>
-> > > Reviewed-by: Martijn Coenen <maco@android.com>
-> >
-> > Please also add to stable releases 5.4 and later.
->
-> It would be better if this had a fixes tag so we knew which is the first
-> buggy commit.
->
-> There was a long Project Zero article about the Bad Binder exploit
-> because commit f5cb779ba163 ("ANDROID: binder: remove waitqueue when
-> thread exits.") was marked as # 4.14 but it didn't have a Fixes tag and
-> the actual buggy commit was in 4.9.
 
-Good point Dan. I should have included a Fixes tag. Here is the tag
-(issue introduced in 4.20):
 
-Fixes: 80cd795630d6 ("binder: fix use-after-free due to ksys_close()
-during fdget()")
 
-Greg- would you like me to send a v2 with the Fixes tag and CC'ing
-stable appropriately?
+Greetings ,
 
->
-> regards,
-> dan carpenter
->
-> --
-> To unsubscribe from this group and stop receiving emails from it, send an email to kernel-team+unsubscribe@android.com.
->
+I am contacting you to find out if you or your company need financing 
+for your project / business? We have developed a new method of financing 
+that does not take longer to receive financing from our clients.
+
+We are dedicated to project sponsorship, loan financing, project 
+financing, financing
+investment, etc. If you are looking for funds to finance your project / 
+Business or if you are willing to work as our agent in your country to 
+find clients in need of financing and earn commissions, then get back to 
+us with more details.
+
+I will share more with you once I get your response on its disposition.
+to secure our funding.
+
+
+Kind regards,
+Mr. Ibrahim Tafa
+GLOBAL INVESTMENT GROUP FZE, United Arab Emirates
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
