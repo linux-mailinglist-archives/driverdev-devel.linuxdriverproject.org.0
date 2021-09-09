@@ -1,53 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A94940442B
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Sep 2021 06:03:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D06EA405805
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Sep 2021 15:49:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E73F94018C;
-	Thu,  9 Sep 2021 04:03:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3E3181BD4;
+	Thu,  9 Sep 2021 13:49:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IUBvqqU-5FPV; Thu,  9 Sep 2021 04:03:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QMnRelI7IYla; Thu,  9 Sep 2021 13:49:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 98141404B3;
-	Thu,  9 Sep 2021 04:03:05 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id DB91381B26;
+	Thu,  9 Sep 2021 13:49:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2926C1BF2E5
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 04:02:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3999E1BF489
+ for <devel@linuxdriverproject.org>; Thu,  9 Sep 2021 13:49:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0B07A83E58
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 04:02:55 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 295AC81BD4
+ for <devel@linuxdriverproject.org>; Thu,  9 Sep 2021 13:49:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ME5PWGJzUsr
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 04:02:54 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by smtp1.osuosl.org (Postfix) with ESMTP id 22D7E83032
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 04:02:53 +0000 (UTC)
-Received: from User (8ta-229-140-86.telkomadsl.co.za [197.229.140.86])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id 6BC852A0ED7;
- Thu,  9 Sep 2021 11:42:22 +0800 (CST)
-From: "Dr. Emmanuel Ibe Kachikwu (GMD)"<nnpcexecutorintrust2020@gmail.com>
-Subject: PROJECT:From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja::
-Date: Thu, 9 Sep 2021 05:42:42 +0200
+ with ESMTP id xyaNgqsMDiw8 for <devel@linuxdriverproject.org>;
+ Thu,  9 Sep 2021 13:49:05 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd29.google.com (mail-io1-xd29.google.com
+ [IPv6:2607:f8b0:4864:20::d29])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1432581B26
+ for <devel@driverdev.osuosl.org>; Thu,  9 Sep 2021 13:49:04 +0000 (UTC)
+Received: by mail-io1-xd29.google.com with SMTP id z1so2345124ioh.7
+ for <devel@driverdev.osuosl.org>; Thu, 09 Sep 2021 06:49:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:in-reply-to:references:from:date:message-id
+ :subject:to; bh=PiIa8TqM5Mmj0hDNLeRMZNh9RbYUYnMgtvBSCi7Gs5w=;
+ b=iStALrMsaqDvQhT5JQuG7TQcnsUZ3cIVgPqnWWt44vK8GMMTqPBmEcbK9+tlHvuw4G
+ 8iNYyvF3woym8GI+iPTb4yhLsIq7N08AWA+5Vl3yz/M+uzaLzRkcpbaV8xzeIIghkwN2
+ h84Q4KiNLth8MwmFLIj8DQm5XDDsj5hlE+sXcc0qMrL2hvWSLwt2CE3C3CS8qagpAD43
+ 1XgNodVrkTUCve0tB4zxddw4+N+phcv6UcQPr3CU0sqpO5O8m80ncRpLCXHovC0O92q2
+ psOjFmMzpJ4hJGU5XeHVvd4+99cKbFtQQTAdCWWkS4Wem+fOnJls8nypSci6bF5WdSpi
+ t8kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:in-reply-to:references
+ :from:date:message-id:subject:to;
+ bh=PiIa8TqM5Mmj0hDNLeRMZNh9RbYUYnMgtvBSCi7Gs5w=;
+ b=c2275f4/J9j/pirpTnhs+SuSjVwkdEUQj0EJVLSfCKRGJMFqow1IZAJqRsHILPMjMC
+ DeNZ0QjUfGwMjFMgYibralKoTv7wR5tk81Aq/9ZllFEwC8LbomSGXM4jCruy++i4rXRr
+ 60ONDa9J3KYuDgCO1HmAWAI4BDVWUTR6g536kpZHVDZ+oIrN72YNcH/DMmU/u8n/Mm/l
+ /fAhiORnql6w2AZT+Bw/mTXQd9jWAsnHw1REzsrbZoK25g7/5nrXZkSKwG3vEo4ObgDD
+ jLK7u9RlawzzFDtgtKMagOLWNVYS4dKTjCkhkVugYqMEOvhPj2UdO5Wov8hsph6UOqPf
+ G/sg==
+X-Gm-Message-State: AOAM531rrWQILcFmuBhBQIy3t9LaEDdV6gVRxlpP7Yaj4HcRGA2k1eR+
+ vMSjePNo6z0fFjo2N2lF0cOwJoRIXsu1aDQD068=
+X-Google-Smtp-Source: ABdhPJzJJhfeBOvZ4rwFn22HFwuhSx+DmBtTXvYsYMtBlGHnzreXDPk0gilXH1WcBTbXR6SQvUQo5tM7gB2CUGdQaHA=
+X-Received: by 2002:a05:6638:1401:: with SMTP id
+ k1mr2951230jad.58.1631195344070; 
+ Thu, 09 Sep 2021 06:49:04 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210909040255.0B07A83E58@smtp1.osuosl.org>
+Received: by 2002:a6b:b553:0:0:0:0:0 with HTTP;
+ Thu, 9 Sep 2021 06:49:03 -0700 (PDT)
+In-Reply-To: <CAGCa2iJ+2-x0BvF7=rUtQQbr2w0eaU+TopZCczmKMnMdUg7K0A@mail.gmail.com>
+References: <CAGCa2iJ+2-x0BvF7=rUtQQbr2w0eaU+TopZCczmKMnMdUg7K0A@mail.gmail.com>
+From: JENET ADARA <judge.udo.ako@gmail.com>
+Date: Thu, 9 Sep 2021 15:49:03 +0200
+Message-ID: <CAGCa2i+v_TZnyFeO9bOokDRx9nbt8rXufj9EGQALXrHUX2kf6Q@mail.gmail.com>
+Subject: Fwd:
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,41 +82,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: nnpcnnpcontractor1994@contractor.net
+Reply-To: elizabeth.m2w@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
- 
-From: Dr. Emmanuel Ibe Kachikwu (GMD)
-Contract Ref No: NNPC/PED/1462/KADREF/92)                                                     
- 
-Attn: Ceo
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not meet before I got your information from your country chamber of commerce here in Nigeria.
- 
-My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
- 
-The contract has been successfully executed by the contractors and their contract sum have been paid to them, leaving us overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
- 
-We, as government officials, are not permitted to own or operate foreign bank account. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
- 
-Note that 10% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
- 
-The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
- 
-Awaiting your urgent response.
- 
-Best regards.
- 
-Dr. Emmanuel Ibe Kachikwu.
-The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
- 
+---------- Forwarded message ----------
+From: JENET ADARA <judge.udo.ako@gmail.com>
+Date: Thu, 9 Sep 2021 15:48:31 +0200
+Subject:
+To: judge.udo.ako@gmail.com
 
+HELLO, DID YOU RECEIVE MY MAIL?
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
