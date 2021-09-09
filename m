@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40FB5405F91
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 00:27:52 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35AB6405FFC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 01:22:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5BA8240674;
-	Thu,  9 Sep 2021 22:27:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 53D05849DB;
+	Thu,  9 Sep 2021 23:21:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tUzHFJ1vlY-j; Thu,  9 Sep 2021 22:27:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WBpSvM4bQOHX; Thu,  9 Sep 2021 23:21:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BA4F340660;
-	Thu,  9 Sep 2021 22:27:48 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 27296849C4;
+	Thu,  9 Sep 2021 23:21:55 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C30AD1BF27A
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 22:27:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 47D541BF27E
+ for <devel@linuxdriverproject.org>; Thu,  9 Sep 2021 23:21:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B2B72606D9
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 22:27:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 44A25849C4
+ for <devel@linuxdriverproject.org>; Thu,  9 Sep 2021 23:21:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 01b8DUV5mzfE
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 22:27:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wFGVfZWjlSMN for <devel@linuxdriverproject.org>;
+ Thu,  9 Sep 2021 23:21:45 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com
- [IPv6:2a00:1450:4864:20::62c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8D846606CB
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  9 Sep 2021 22:27:37 +0000 (UTC)
-Received: by mail-ej1-x62c.google.com with SMTP id ho42so94742ejc.9
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 09 Sep 2021 15:27:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=81AH/w+a52knA/4jhoSaUWE+0lwC6L0d+6fPTBpnHOk=;
- b=SlGxjmnPXUXBKO6HoXuzrjECHiiJQOpaSjPC6fV6lkemG4kTOHx3rCim1i3Wp1RL1E
- 0gBBYN03EcT0wt2kO91qrVQxMA9TtbwPNWPxjkGiJqV3Xez5CyLRHUn6FKQUt6U3dJr3
- C9oBDNC5vS1geUmnAsJY1DlKeRU2Wc2yYa2jHzL5uVG2QthhLqCvqMskb+lTojOWh7KZ
- xw8Z0jiVGc/BteGxFS2qr+SH9LJ5BFIZCeJrMRCFTOxz1ZV/nE/cmzSivxjpQapzTzwZ
- v1gXnJZI7EhzuFO8dXnAlsW+2eGhThNJM9DJwuroEujtw2db85s1F8LtzdyHTkwXhNLc
- Z5SA==
+Received: from mail-pg1-x530.google.com (mail-pg1-x530.google.com
+ [IPv6:2607:f8b0:4864:20::530])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C3C89849C3
+ for <devel@driverdev.osuosl.org>; Thu,  9 Sep 2021 23:21:45 +0000 (UTC)
+Received: by mail-pg1-x530.google.com with SMTP id q68so73192pga.9
+ for <devel@driverdev.osuosl.org>; Thu, 09 Sep 2021 16:21:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rm+3UVIcZMThytS7gkgrDUkDqlZpQLMy/t2rhbmsclM=;
+ b=btXHzvGxsEYzkhXLQTIS6OND1WAn42LjfqjjoQGrQJr9bkF734+K+O+QhHwkBA+tSy
+ nNumVDAeooEObqdfbCcEyCi971v3gpgUHhgCRmmhCS8QQReIVrTWrG5ioyOtIGKDgElC
+ T7T3g7sFMxAZp+goWz4cmDS7dxYk64kakL8dU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=81AH/w+a52knA/4jhoSaUWE+0lwC6L0d+6fPTBpnHOk=;
- b=YTi9Z4WNmQMxlC+9gmar+1qVpIdqBBdY4poUwUSwPaYPjvU+tYmLc2jFQFiX8TWvhB
- 5KgVpvi27opc4h0OaPxJE6JKfbhVO/4zF80AZPVtQlGRqqObt5rTmHvaLYyMBjY60pnE
- 0+N7uTS+cI4nCOFv/RvoT0N9ikaBlzta4Fwgkflo9c3AM4ZGUjW1O8oM9LRT1NZwxjr5
- GZB4AO7RK2WqoLwlezxw0htiDvlJYDpC9a+t81L6WANWkDazq17cT4MdUuSOi/pIhm46
- ZK6seZFCqZhqyWSb7Qshfmc4gVNsQKpBa1GxdbwfUodnC447TVQBoNUE9k/kKmnpxRiX
- 1fuA==
-X-Gm-Message-State: AOAM533OmZXzc9imfWHP7/6O89tu9+I6+flsb+108xtEG+vO8wLhTct2
- VmXZj3TgAmH2/eGzvFAquetDeuao/hDKXuD3Lbk=
-X-Google-Smtp-Source: ABdhPJzbiIEDx8WQKkRp5Oqipow7nTSkZLlDc6zWUrdKlSDsyMfBHUfTOvOD7vd1tyOO7hiV61gJoKoQocbSy9cbUMU=
-X-Received: by 2002:a17:906:478d:: with SMTP id
- cw13mr5597175ejc.227.1631226455554; 
- Thu, 09 Sep 2021 15:27:35 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rm+3UVIcZMThytS7gkgrDUkDqlZpQLMy/t2rhbmsclM=;
+ b=b/xu7HZFmgArTwy/E7uneV3Rudv9PXPvFFQ4ymduNIPNDQzmlNSGtwAOFD17FOQ/NI
+ HkJ5SzUAcFyqGt5k2bZTc7P+u1pKeEya4/SmBVRXkYT+rf86fb912fCHBT3vHNB1syZC
+ Mybu6oVCUEedSntmqr57Sn42d/sGp2ov7dLG6IVnXkwfznZ/ISJqUPwId27tbj7+/XDD
+ CdPSo3j02CcuW530PjL8acgVbkRIrNnVV5BKGZDaZQyX38oI26Zho8sV/JtrG5mBon6x
+ ybB0tdvebKevCmNLTVPLUZoy5bbydmsRePNv+fBcKPtKuDmyZdEkTF9a98nVZdBP9QKZ
+ mI8A==
+X-Gm-Message-State: AOAM532NyxNP54GLFGQCIrol8oA8Jc9pWXZcqrE290QbZ/XAePaGm2nk
+ jMBM+fLY7Zgy1+l7Lb+5kH4/ng==
+X-Google-Smtp-Source: ABdhPJyrj/jKsrBMRxLWEVvk/hB3cyNWALHhYtLDaeTxK+SdCxLZ2SFTQlnH9e6/+nIxcAWGSpgRyQ==
+X-Received: by 2002:a63:b046:: with SMTP id z6mr4845857pgo.106.1631229705177; 
+ Thu, 09 Sep 2021 16:21:45 -0700 (PDT)
+Received: from li-cloudtop.c.googlers.com.com
+ (254.80.82.34.bc.googleusercontent.com. [34.82.80.254])
+ by smtp.gmail.com with ESMTPSA id f16sm3178210pja.38.2021.09.09.16.21.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Sep 2021 16:21:44 -0700 (PDT)
+From: Li Li <dualli@chromium.org>
+To: dualli@google.com, tkjos@google.com, gregkh@linuxfoundation.org,
+ christian@brauner.io, arve@android.com, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, maco@google.com, hridya@google.com,
+ surenb@google.com
+Subject: [PATCH v1 0/1] binder: fix freeze race
+Date: Thu,  9 Sep 2021 16:21:40 -0700
+Message-Id: <20210909232141.2489691-1-dualli@chromium.org>
+X-Mailer: git-send-email 2.33.0.309.g3052b89438-goog
 MIME-Version: 1.0
-Received: by 2002:a54:224e:0:0:0:0:0 with HTTP;
- Thu, 9 Sep 2021 15:27:35 -0700 (PDT)
-From: "Mr. Ashley Sherlock." <hitblaze01@gmail.com>
-Date: Thu, 9 Sep 2021 17:27:35 -0500
-Message-ID: <CAHOnDzaRbC1BDcq-1jxCOJeHZGde7-oHj3vEAdCitePPt6ybFQ@mail.gmail.com>
-Subject: ATTENTION : BENEFICIARY ,
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,54 +84,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ashleysherlock009@gmail.com
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+From: Li Li <dualli@google.com>
+
+As there isn't an atomic operation to freeze the main thread and binder
+interface together, it's possible the main thread initiates a new binder
+transaction while the binder interfaces are already frozen. This race issue
+will result in failed binder transaction and unexpectedly crash the app.
+
+This patch allows a post-froze rollback mechanism by checking if there's
+any new pending binder transaction waiting for response. At the same time,
+it treats the response transaction like an oneway transaction so that the
+response can successfully reach the frozen process.
+
+Li Li (1):
+  binder: fix freeze race
+
+ drivers/android/binder.c          | 32 +++++++++++++++++++++++++++----
+ drivers/android/binder_internal.h |  2 ++
+ 2 files changed, 30 insertions(+), 4 deletions(-)
+
 -- 
--- 
-INTERNATIONAL MONETARY FUND (IMF)
-HEAD OFFICE NO: 23 ADEBOYE ST,APAPA Abuja.
+2.33.0.309.g3052b89438-goog
 
-ATTN:BENEFICIARY
-
-This is to intimate you of a very important information which will be
-of a great help to redeem you from all the difficulties you have been
-experiencing in getting your long over due payment due to excessive
-demand for money from you by both corrupt Bank officials and Courier
-Companies after which your fund remain unpaid to you.
-
-I am Ashley Sherlock. a highly placed official of the International
-Monetary Fund (IMF) It may interest you to know that reports have
-reached our office by so many correspondence on the uneasy way which
-people like you are treated by Various Banks and Courier Companies
-across Europe to Africa and Asia and we have decided to put a stop to
-that and that is why i was appointed to handle your transaction here
-in Nigeria.
-
-All Governmental and Non-Governmental parasites, NGOs, Finance
-Companies, Banks, Security Companies and Courier companies which have
-been in contact with you of late have been instructed to back off from
-your transaction and you have been advised NOT to respond to them
-anymore since the IMF is now directly in charge of your payment.
-
-You are hereby advised NOT to remit further payment to any
-institutions with respect to your transaction as your fund will be
-transfered to you directly from our source.
-
-I hope this is clear. Any action contrary to this instructions is at
-your own risk.Respond to this e-mail with immediate effect and we
-shall give you further details on how your fund will be released.
-
-Also call me as soon as you send the e-mail so that you will be given
-an immediate
-
-
-Regards,
-
-Mr. Ashley Sherlock.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
