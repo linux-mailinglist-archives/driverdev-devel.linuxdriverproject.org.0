@@ -1,132 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE09C40702E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 19:03:45 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84F84407037
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 19:05:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3691D401B6;
-	Fri, 10 Sep 2021 17:03:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1F90360718;
+	Fri, 10 Sep 2021 17:05:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dI2QBvBjtQ19; Fri, 10 Sep 2021 17:03:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VKlZlfQQk5AL; Fri, 10 Sep 2021 17:05:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1366440277;
-	Fri, 10 Sep 2021 17:03:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5E9B46065A;
+	Fri, 10 Sep 2021 17:05:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2DB351BF2C7
- for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 17:03:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F148A1BF83C
+ for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 17:05:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2A34A4019A
- for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 17:03:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E093340466
+ for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 17:05:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CnN5012Jj_fe for <devel@linuxdriverproject.org>;
- Fri, 10 Sep 2021 17:03:29 +0000 (UTC)
+ with ESMTP id n3k9zkm4SXfh for <devel@linuxdriverproject.org>;
+ Fri, 10 Sep 2021 17:05:07 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12on2083.outbound.protection.outlook.com [40.107.237.83])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1C0E340183
- for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 17:03:29 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EA3bQYM4ywtFahryXuZwPJQJ+6dEwLy78K+W1fVfVIoagX2p0O61Nx0FY7oyLNe+A69biAfnNCFprkKx3CWlmlDYIbVEpD42EW5qQqCjmhdNDWlzXCeJE+0zw7FLb7hQcwEr/BH3Q1BJGlBkaHxNkmjLeaATi+cXO7q9Y3TGwTF9ENAtqYQO73Duh7Zr/OLEWQyMS2tDfWG/zVHTYsqGn/jVBAwKIYL2YDxyhvwd240SSeS3c1sCtqcKjCftGSmYGOBdIbHXz85neiDHXWuHtUmpS6FvMC+hB9oAH8B3aYzoIDkaS7QJc608GdoTFCC678fFZMmw02UiRGSJMTLk+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=Qi4ljE1T+Q7qOsoXIFHPEdVJHZqPJT4AchhEKwhJw5w=;
- b=kbS6tg6u6tUv+R2wE3maqZDZX/j7Mi7ncONMO64me/PEKScNVUG5u4Jf4zVCVJXDXDwt8+Vw95jtbmnTUKmRvC2OWWynoA7+9r0GelAaxHzjTtnbRbQrg1F0AkY1kzQ/pAqD4sJGdTpjnBR0WcwY9CcufB2GH7AryKYQpWKjiTs2TzmEpvMMXZ6/iLwLC70LNT4ebIVB8RMRwwhuYwCK3zXac1VWDIUPvVVwGKGDQK1sm/eroUGn5iFdMV/Xzom+5icDh7k9gwFxSUr6+TDA7Wmjn85uRaLxpjMdOp0/zJ6/k88TIj0hjXy7xVJJ+xHCH1U1uiAOCHVPo5p5bGpDPw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Qi4ljE1T+Q7qOsoXIFHPEdVJHZqPJT4AchhEKwhJw5w=;
- b=PI7A/ZHZwNLJb2agfNqi3li6PPfLuBitkrzpWZjbPVAH/LDkXFFqxLoBBAiURLfIiQyKsC348bSXWXKtjYyxR7Q422+Gu0Gq897W3WmQQm9i2zrwJYpZcKYKRzYMY/UU6+/rP6XrsNVOHoKyMeiAXv3ODpI/qb2rG4uyVTr3prU=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SA0PR11MB4734.namprd11.prod.outlook.com (2603:10b6:806:99::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.15; Fri, 10 Sep
- 2021 17:03:26 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::7050:a0a:415:2ccd]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::7050:a0a:415:2ccd%7]) with mapi id 15.20.4500.017; Fri, 10 Sep 2021
- 17:03:26 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: Kari Argillander <kari.argillander@gmail.com>
-Subject: Re: [PATCH 13/31] staging: wfx: update with API 3.8
-Date: Fri, 10 Sep 2021 19:03:21 +0200
-Message-ID: <1877189.TBeQGNYS2h@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <20210910164326.ivhlbnaq6526wcso@kari-VirtualBox>
+Received: from mail-lj1-x235.google.com (mail-lj1-x235.google.com
+ [IPv6:2a00:1450:4864:20::235])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 22E4E40346
+ for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 17:05:07 +0000 (UTC)
+Received: by mail-lj1-x235.google.com with SMTP id w4so4241183ljh.13
+ for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 10:05:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=v2uHo0KL4tP8i7F5Ezn7qF1nuW399RUbWTYsco45lbE=;
+ b=Gh0rtBaEd97D+5SpIuEt2bCTCCw4UDFXm8Ymf2Sh0tn/rWqMUvhO7CDl/W/kgHOv11
+ rFotXtDOuMes+OhBWneyrv9LgUwGFNOQOFXqEN/9i/oBiyOGyM6j49ugH4Jxe6KmiUBi
+ X7naAqA/WJkuhzzVNwVncYFqkgd3CntmVdkLko3SV+KhSeX0+wBkFgvx7eXNLybM4JPh
+ 3d3u23cA/wMPZWm4I50i3yvowNK4XgK30L+MDen5iHPECFyEanEbFrsX+HIoaJhzwuYE
+ Aq7IN/rKw0gR4IX4bTLJ9vs4zdhCt7kz3Ug70o+dfQo97khbQb2GRGCu5hhNPhxGCsgF
+ r/nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=v2uHo0KL4tP8i7F5Ezn7qF1nuW399RUbWTYsco45lbE=;
+ b=ZZSHjrDKIETQkXJk42QqcWoLigYpUJ992dr/9oEboCe8ymxxku6hv19YtunafqNnGn
+ 4Wna5q0IekoJ/TY3KOpmLHsYP+R/TarTQPbIAaCtTZUJ0MiAFCxNc8mBq3ZtRAsc/pT6
+ wJpiyV69Me6TcW7lfe5wNl049ZGw3jDfL2aI8nkrJJDPUfSVEhZV8QCT5QDdu9TL6jXp
+ +zBsOl7vLdrYYgVH85Hf0esrGaX7HTxYK9g68051NDjd8PfzrDDjcCTJDkFMIuKrTbm5
+ 1qrwbJyUbvCRHfyTBYhCHANfRN3X5IBgglo6tugTB+ShHMOAn/G4dfkv9t7l/KYB5HPf
+ 5lkw==
+X-Gm-Message-State: AOAM532katZsccxEoBLcK6I+GL53sVZMDqMgZbuOrREx0H9cNDxhP8tl
+ JZJ58vCRnD5KDGfaAvpfebg=
+X-Google-Smtp-Source: ABdhPJzYw419oOrtRsYCDIM2D1Cfjgfaqc/Oq/JMFlKMR88lfrIfVzm2rVNNT/3gy32wAVZCdFMqGw==
+X-Received: by 2002:a2e:bb85:: with SMTP id y5mr5045243lje.207.1631293505129; 
+ Fri, 10 Sep 2021 10:05:05 -0700 (PDT)
+Received: from kari-VirtualBox ([31.132.12.44])
+ by smtp.gmail.com with ESMTPSA id h21sm608079lfv.273.2021.09.10.10.05.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Sep 2021 10:05:04 -0700 (PDT)
+Date: Fri, 10 Sep 2021 20:05:03 +0300
+From: Kari Argillander <kari.argillander@gmail.com>
+To: =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>
+Subject: Re: [PATCH 29/31] staging: wfx: remove useless comments after #endif
+Message-ID: <20210910170503.cnc2eri32v3bgo65@kari-VirtualBox>
 References: <20210910160504.1794332-1-Jerome.Pouiller@silabs.com>
- <20210910160504.1794332-14-Jerome.Pouiller@silabs.com>
- <20210910164326.ivhlbnaq6526wcso@kari-VirtualBox>
-X-ClientProxiedBy: SA9PR03CA0009.namprd03.prod.outlook.com
- (2603:10b6:806:20::14) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
+ <20210910160504.1794332-30-Jerome.Pouiller@silabs.com>
+ <20210910162718.tjcwwxtxbr3ugdgf@kari-VirtualBox>
+ <3556920.DX4m0svyV5@pc-42>
 MIME-Version: 1.0
-Received: from pc-42.localnet (2a01:e34:ecb5:66a0:9876:e1d7:65be:d294) by
- SA9PR03CA0009.namprd03.prod.outlook.com (2603:10b6:806:20::14) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4500.16 via Frontend Transport; Fri, 10 Sep 2021 17:03:24 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 552218db-10d8-4306-10c6-08d9747ce798
-X-MS-TrafficTypeDiagnostic: SA0PR11MB4734:
-X-Microsoft-Antispam-PRVS: <SA0PR11MB47340D497F57ACAB4B683D2293D69@SA0PR11MB4734.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: JbzppeVj0/gybMTYBKH1RTNqskkeVdQZa5rA05MQdY0haUY98bbKCHRmBzGi6y8wFheuin/upN8DeFIL08s0C7Sl/AaGA8X7B3O7IF6G1ydO/P1OUYzEz3aW/6RaPNBXcc5ohlQwg6JO4zG98aApWqtkX8fIrwqIhsuYTG5bLUF+fEK+v4x7rXdvBWXmx7bDaQRxilvQPsdovdOtfWiavmkZKwXONEMQTtrLHuIFs1RX8j5mkuB/VwFPlGFdq534YzY9txvQVIJJBuE5enS8MMNi65uX1w2gSuCQ/kYZCU7VhZIn4nvmUHJzL+7jHRPeRXDcRt0NMjPWSu6ch5vtLe7rpkWIRjtGDOsdqcqGbXVJxswuLC377ZnhQAK7WjD3Q/xLe60/4t/OKMwodzBti5tZUP2ofBiYf9XkyoNl77d2iv0Ht38pl6aPdUuTflmsGvHi9GG6PYVYx1kC/+KT6GG5r8cATq8zqhSYxx2pqfFDDe9wllX3DoygSCcuZr/68G2veYD2HT4I7n3eeQyigyI3/dkON6/NkFuwxcpUZ1/qhI2d1gA20DcpkhfBXgve+MSRnoesngQaxoByN60lmpadTaP+UfHt0WF86ouVU0/cjPd21oOPHSNBmY/cDt8gdDGd+W/5Nmdrqe9WgwI0aA9uCRVEBcWsYx5ryWPTokA+BdWvKjYfL/wnaVPq3IBBjSTGVKBfHETnrTZZUhntsjHxfeJBHxWKHcxsDeGnYoYp1N27IShn/n5I18GamyDpq66/7CfZV9nPOmvfFSkO/A==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(346002)(366004)(376002)(136003)(396003)(39850400004)(316002)(6512007)(54906003)(38100700002)(8936002)(6916009)(66556008)(66946007)(6666004)(478600001)(5660300002)(66476007)(6506007)(2906002)(966005)(4744005)(33716001)(52116002)(36916002)(9686003)(4326008)(6486002)(8676002)(86362001)(186003)(39026012);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?AeAYX1vvr89pyAPIO79idsPoKzlpKAhzJ/nEH5yEsJtYM35dpe3UdmgFX/?=
- =?iso-8859-1?Q?aKHnLbvcgwvISwxehj5lH2GptvZJq/mw/xDPULba1Jwafu2H9JxTTmGheG?=
- =?iso-8859-1?Q?10CyrIXzagmUQJCFOHVlBfXYrlAk7jOJIcZj55F9O70XyP4nh/r9Zn6qmr?=
- =?iso-8859-1?Q?8LcVDhA4+6nqsdfHc6K7lLaB3//0frci/LwkJ6tn4a6lX+W/sAerRHcFvk?=
- =?iso-8859-1?Q?Je6qvSCF7v4XhQcSwTQje3y79D+dXN/YJwTRBFO/YWoBuxyuA18vVRliJ9?=
- =?iso-8859-1?Q?E/1FKobfXAkFjHWULlHIN3uQ0mE4oQR2wJNofud2aCOWnOVj0BfXvfVSAl?=
- =?iso-8859-1?Q?yLX8UnCCESrUWcP40E3Gm/4BgVeImhAmYR/bZE1t78NeZBID8YkFIt8x4w?=
- =?iso-8859-1?Q?8oqs1VKTt/A70cTL+vRlrmWlk0Hdf5qVTbV35TRXvAi/iDSVDKuS7/k/Ya?=
- =?iso-8859-1?Q?HeR24ayPcF1SSjebLazSNyOYYbVGTid79fpZvjzF7tTE8YoJz9Ekf3gjLS?=
- =?iso-8859-1?Q?bvhLU72kNvhXbZSoZFQ+KA2rZRKLMKNilHy6Oz3h9MlYMZqB7AoQq/hCmd?=
- =?iso-8859-1?Q?qXNWBlzyAl0kAUzG6iA4X8cuK6hSJQL11NDLsvZjHJyOtmzQrqQxWoa+UW?=
- =?iso-8859-1?Q?CSzqKqTrhTLiG6g6evwyktXVLKQ2BR1lIK2Q3GYh8XnSoIs8XMvJ9t7n89?=
- =?iso-8859-1?Q?zbD0Y8ocHY4fFE/ym1rJHWOtA3BI3CLbVYLuB/Z+TKrCCw6hSrrY9ytlN+?=
- =?iso-8859-1?Q?XXS9vUP9+Y+wDn0rjFMrOIQKq9IWSnzcDfC35ySmZHNI1h5aYYoUXRumyT?=
- =?iso-8859-1?Q?3PtMJjoH3siHlKfcHdRNJhB1BRwZTU2pU9Gn/krfbxIObpltnDVcr3koIQ?=
- =?iso-8859-1?Q?n/LKCcH8uEs9P6keRxr4U9NR6S0pXm7h/IYbS4Qzxl/+32R/8bVSOuV++J?=
- =?iso-8859-1?Q?k+dfpAg5hBDoG7iTPpW3SY+fMXVroKBgDahTx1UEiD8jFDRCZEPTfD2pjh?=
- =?iso-8859-1?Q?sUTTTwS4ubefaqF6uVQRNLXhrLOc8kXNcGPsKxVP6xdYtBez+tX9TQrk0O?=
- =?iso-8859-1?Q?A9PKkP0224/CAiVCZg+oF5Y+rITEQDE27RkFxwUP4iNZw/HIGGj88NzfP0?=
- =?iso-8859-1?Q?myD53DLjfOUgstq52/xYQ+xFftXXF64s3G0IUqIySUXSdlbxjAXzEGw5Ra?=
- =?iso-8859-1?Q?q2QRuWyC57bY5yKaYts+5XexdCBFBzCx2kK1UUbwQhfNNt9VMFL3xVb7+h?=
- =?iso-8859-1?Q?VL940RdFuWDMDwlBtM90OYLDSzQEKIcWFv+gqHKQZ1MBBM7ESunoVaRBB/?=
- =?iso-8859-1?Q?nYWTrEnt7MRwSOgt8FwZR3FwD1GL3QqE79rPFsfkAk3hHeCduAS7N5h7Eh?=
- =?iso-8859-1?Q?82DvbpNTqkOJPVSbqQN3X/q4u7UhHRpjQ6qTwuaHHbmWEhEr4eXnF3xATr?=
- =?iso-8859-1?Q?FLY7dCepQ5w6NhDn?=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 552218db-10d8-4306-10c6-08d9747ce798
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Sep 2021 17:03:26.0984 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u5RQurcTgXqyfUnXbZ4emtBG4mwQ3Q5uOiMAe83aQ3UmLIlIfXo2YyHfGaWVOCsIB4xeBJYnhiX5U+r9aj/cVA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4734
+Content-Disposition: inline
+In-Reply-To: <3556920.DX4m0svyV5@pc-42>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,29 +100,60 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Friday 10 September 2021 18:43:26 CEST Kari Argillander wrote:
+On Fri, Sep 10, 2021 at 06:49:30PM +0200, J=E9r=F4me Pouiller wrote:
+> On Friday 10 September 2021 18:27:18 CEST Kari Argillander wrote:
+> > On Fri, Sep 10, 2021 at 06:05:02PM +0200, Jerome Pouiller wrote:
+> > > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > >
+> > > Comments after the last #endif of header files don't bring any
+> > > information and are redundant with the name of the file. Drop them.
+> > =
+
+> > How so? You see right away that this indeed is header guard and not some
+> > other random thing. Also kernel coding standard says:
+> > =
+
+> >         At the end of any non-trivial #if or #ifdef block (more than a
+> >         few line), place a comment after the #endif on the same line,
+> >         noting the conditional expression used.
+> > =
+
+> > There is no point dropping them imo. If you think about space saving
+> > this patch will take more space. Because it will be in version history.
+> > So nack from me unless some one can trun my head around.
 > =
 
-> On Fri, Sep 10, 2021 at 06:04:46PM +0200, Jerome Pouiller wrote:
-> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >
-> > API 3.8 introduces new statistic counters. These changes are backward
-> > compatible.
+> IMHO, the #endif on the last line of an header file terminates a trivial
+> #ifdef block.
+> Moreover, they are often out-of-sync with the #ifndef statement, like her=
+e:
+
+That one is of course true. =
+
+
 > =
 
-> It will be obvious to some what API 3.8 is. But at least me can rise my
-> hand and admit that I do not. Probably wfx api but ig there is any
-> public info but it here. If there is not just say Wfx api 3.8.
+> [...]
+> > > diff --git a/drivers/staging/wfx/key.h b/drivers/staging/wfx/key.h
+> > > index dd189788acf1..2d135eff7af2 100644
+> > > --- a/drivers/staging/wfx/key.h
+> > > +++ b/drivers/staging/wfx/key.h
+> > > @@ -17,4 +17,4 @@ int wfx_set_key(struct ieee80211_hw *hw, enum set_k=
+ey_cmd cmd,
+> > >               struct ieee80211_vif *vif, struct ieee80211_sta *sta,
+> > >               struct ieee80211_key_conf *key);
+> > >
+> > > -#endif /* WFX_STA_H */
+> > > +#endif
+> [...]
+> =
 
-Indeed. In add, it seems it is not documented in the release note of
-the firmware[1] :(. I am going to improve that.
+> -- =
 
-[1] https://github.com/SiliconLabs/wfx-firmware/blob/master/CHANGES.md
+> J=E9r=F4me Pouiller
+> =
 
--- =
-
-J=E9r=F4me Pouiller
-
+> =
 
 _______________________________________________
 devel mailing list
