@@ -1,133 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5F1E407007
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 18:54:57 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAECD407014
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 18:58:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 57F23834DB;
-	Fri, 10 Sep 2021 16:54:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB4CF4076D;
+	Fri, 10 Sep 2021 16:57:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ylG75DsCQIL9; Fri, 10 Sep 2021 16:54:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id B7zWyKbr0TdR; Fri, 10 Sep 2021 16:57:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 76F908247F;
-	Fri, 10 Sep 2021 16:54:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 02157406A1;
+	Fri, 10 Sep 2021 16:57:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 717051BF2C7
- for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 16:54:45 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 97F191BF2C7
+ for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 16:57:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 60D3E605CF
- for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 16:54:45 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 80909401D5
+ for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 16:57:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IynoRu4-lkng for <devel@linuxdriverproject.org>;
- Fri, 10 Sep 2021 16:54:44 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aAUVeqzZeVzs for <devel@linuxdriverproject.org>;
+ Fri, 10 Sep 2021 16:57:47 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2067.outbound.protection.outlook.com [40.107.244.67])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AA12F60017
- for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 16:54:44 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=c2vyxRejKzLqCIVPQlH0qD/ttEP4U2w5eZq72G2vT9TTiGCRB33G/JfwSXMOgG/o/SJq1um9wL38LBuggoDe2/+Eju9JggS+BwEnW8qoOm6ouYz9SzpOBm9D4kGnVxie8y8iwq/Y/hNvsoEXfdj1VEg5ADxvao2H9zmYkZZ8EKhkU5eavBtitV1Lcw+oT8YnYg4wmjSTO1UnQPD3QjonT5DR8EIsZhZxy0Er4LS9wpmARyU8JEc0wqTuwE392S2b0D0meGC/u75PuDd5ZYshXrz7JCQJ5UhRbPy0m1iUi4oYC9Z9qOahKuYwXlDfnQsX0TeffmavJQWKnj8NnhHmgg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=07k0m0mrlJcc3w5+dOaM5Kp4xCx7nVSsqQT2V30EGSc=;
- b=EbopO9pFUsvOVtPtApFbCTBjj78mevnB15ph4d9yQpO+HtpDoBZeSPrq9T14PxrB/ReReTfJlOW9+zxYWncbubInmKSTHTDlfrbUNKE6MzorPl5qF3Ylg/91QxlP6mjjH3hVjwzORG/zj/byS3OEAF/zm7YB7ryjXhbhwLgj8kzBqrNgrgmmW0T5yaHePU2yXlcB8/XIBvCnjVce2M+wIrJjw6zZ+oLZyRmrAmU/K3HgVM36mxWS6uBTveN+X/912pTk4eWaa2EtiG1AZJHF97qneg7Th+7gnBdKA7Xg9ZlF9YPGQi9qhB+LwXHLbX68yem2kV0DeBs7Gb6ez68EXQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=07k0m0mrlJcc3w5+dOaM5Kp4xCx7nVSsqQT2V30EGSc=;
- b=mmcpd11icSax1F1m7ii7YL+6xr1rFub+q450d3H9PqEe4wGzPigp07KI7robl41Q39aPu50HW2cynaRpNpPH1SUm1aJov2lD57aUvqsqvhO6abIlU6ZmpyZUfdBH9JgAkAqLSuw8pWGmAkpsZjBk1m+QxH6/fVtrkqy7KvPxHuQ=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SA0PR11MB4703.namprd11.prod.outlook.com (2603:10b6:806:9f::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.16; Fri, 10 Sep
- 2021 16:54:41 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::7050:a0a:415:2ccd]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::7050:a0a:415:2ccd%7]) with mapi id 15.20.4500.017; Fri, 10 Sep 2021
- 16:54:41 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: Kari Argillander <kari.argillander@gmail.com>
-Subject: Re: [PATCH 02/31] staging: wfx: do not send CAB while scanning
-Date: Fri, 10 Sep 2021 18:54:36 +0200
-Message-ID: <2897625.p8pCB6X8cM@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <20210910163100.n6ltzn543f2mnggy@kari-VirtualBox>
+Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
+ [IPv6:2a00:1450:4864:20::12c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1803F401B6
+ for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 16:57:47 +0000 (UTC)
+Received: by mail-lf1-x12c.google.com with SMTP id l11so5371998lfe.1
+ for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 09:57:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=KigKFT5R1DxFkjz0kfipXNyWumwkd21XrYlMRDlSUkg=;
+ b=azN7jo+EzudnR0M0ozgDgkVky6ElgMzVIoItARXCC+hkSpuP3/wHqtH/18Xm9k3qJC
+ Vxl9WOHu6A0S275zRvI3NPU3vRykx8D3rNnHZFHzabQ/LrCkmW27NRmeNN3t/gx+aaZd
+ fsSQsCB0Opk0bGjAhL+bhYeGkVTkkEPs/WDuGNU/T2fvClpBNSf55IwXWyTQcSLxx+XV
+ 8ff56bJv4qMcUU1zOg+v+HKqSYV76/M5ETkKgNwaRt0zpsBzPcQFES3KGNGb8P+eCKz3
+ MyEELO0Vqb6rcUCGs2hezUI2KKnfTjXkpSAj/eMasEmkitCrWft0ymEcOGqnsymnXrJb
+ Ec1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=KigKFT5R1DxFkjz0kfipXNyWumwkd21XrYlMRDlSUkg=;
+ b=kHMiUE24Yp4jPMs77wpQ8QJCqJExj9DfM9y59CzOXWs16Abw0PzadnQheAv+kVDfCq
+ pSHH4HWlLzrxa0rW8hiQH3d22Aq1q1g3G7MubGZo+sNbOC6LgjqThkTX/lirgzv1mUU3
+ rSImWHxRJYQ6eVnQJL1NrF3z2EKdynemXlt0QhiM9JHGtqGKx3IFjllaFhQWz6sFfOny
+ 3cyU4MLkd106e5unD2UP42wpyxYEW9o3ZNXtp8q9lXzGJbOKAYofW7j4fTu6syiI3K75
+ j2qaC89vb7BsJOSiBRgwJJZ2muFgjlk/WEFCLud8ybC3SRWYykHghSJfwSjx25ybgHFF
+ WeiA==
+X-Gm-Message-State: AOAM5302A1PRXotCbJF8svLhJs5EHLz9+A0zMNnqSxp/MKwJMu5GhKW9
+ +24iAwDyT9BHmydKtKfT/Hs=
+X-Google-Smtp-Source: ABdhPJzmhGvGwPHJL2r+6t2hno1TGXqNQgDOvbpHHgK5p/Z0sx/BWkHI7cZBxLOv4xoGaFhcwvsQZA==
+X-Received: by 2002:a05:6512:238b:: with SMTP id
+ c11mr4597902lfv.413.1631293065053; 
+ Fri, 10 Sep 2021 09:57:45 -0700 (PDT)
+Received: from kari-VirtualBox ([31.132.12.44])
+ by smtp.gmail.com with ESMTPSA id h4sm607074lft.184.2021.09.10.09.57.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Sep 2021 09:57:44 -0700 (PDT)
+Date: Fri, 10 Sep 2021 19:57:43 +0300
+From: Kari Argillander <kari.argillander@gmail.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 31/31] staging: wfx: indent functions arguments
+Message-ID: <20210910165743.jm7ssqak7gouyl5j@kari-VirtualBox>
 References: <20210910160504.1794332-1-Jerome.Pouiller@silabs.com>
- <20210910160504.1794332-3-Jerome.Pouiller@silabs.com>
- <20210910163100.n6ltzn543f2mnggy@kari-VirtualBox>
-X-ClientProxiedBy: SN4PR0401CA0024.namprd04.prod.outlook.com
- (2603:10b6:803:21::34) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
+ <20210910160504.1794332-32-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
-Received: from pc-42.localnet (2a01:e34:ecb5:66a0:9876:e1d7:65be:d294) by
- SN4PR0401CA0024.namprd04.prod.outlook.com (2603:10b6:803:21::34) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.14 via Frontend
- Transport; Fri, 10 Sep 2021 16:54:40 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 61433090-76cc-4dcc-227a-08d9747baee0
-X-MS-TrafficTypeDiagnostic: SA0PR11MB4703:
-X-Microsoft-Antispam-PRVS: <SA0PR11MB47031C357E91FEBD1D0DC52293D69@SA0PR11MB4703.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: +f7HXfmUE0dZ43JzCYPUbVKlBhpSmGN/vu9fUTHnwGs46AoW5jkyA4ALWMH/v5gJUYTD1srXmANNzI0xLyQI098WjAfowOdrg6+nzFSe0qB3ilLEwL93+sNw6gyEk4msPbPvGgpVI4t0anGtUzhXBb2PynXuBhGkjY/4CDtmrh3hMU349hb40GZ2sMSgDefxpEAQlKcScx7dbrKbHthk1wUAjoDZhYqQZADbWbwqo3a79LpWNrQUpKod492HD71uWcxDm+ppYjEByoNwjqC5zTUTySX/mimkj4MpSh+zjyIiufVzmqKlU03szbLy3kR2kGZma256KfwfUfUTwPx3STzDUkqpt4sbmw16zQardQ0ylaLbngX+yWCEb6mycUjN2qHwMR6FNdHPlx8nFuvlo4XtJhuQ7KTQUS5AmQ9TX7lk49Zk0t58fpMNNv5ygd3k4hN3Ki9+PmlTeCXmkw8O+wC/Q4aWNIQyqYu4VOMq6DmCmmSfBEqjFs38V6Efwuw3GeQ6nChqIRq6XR4K2HoKy1FQGOYI1b7dJTjPLl75vOXxHFzhcOQAQNivV9oSVts01U93FhEbuPfz2kbRRCl+OiBM7RlG/XrvuqTkX0ePx9jpQFN3PyMd70gz2n4i5S2gd3v9LwzD8XwgefJBwZ2bdwo/Q9CfsVEJSBsF2IbA4g1BWIonTYWCvY536fuiyyVS
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(346002)(136003)(376002)(39850400004)(396003)(6916009)(66574015)(8676002)(52116002)(2906002)(8936002)(316002)(186003)(6486002)(54906003)(6506007)(5660300002)(66556008)(66476007)(9686003)(478600001)(38100700002)(36916002)(83380400001)(4326008)(6666004)(33716001)(86362001)(6512007)(66946007)(39026012);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?c+QircM+zrkhdtrPV0ZgXjilISgTHU/PQNDKyM5x78zg/klRpDP7PYp0mt?=
- =?iso-8859-1?Q?JSu+ylYQOH086Bu7KwZcmHkExFUwAUfuMQenC9SvP86hn63tX0r8rrvN1G?=
- =?iso-8859-1?Q?QyVweq8fbjRbm1jslXfkO2WIIKqYvFJRWxU8dj655B0GNBd8M2/fAWyByo?=
- =?iso-8859-1?Q?cyaqTwOQ9Ai1myVp7pEKxF7rTm79VRNYgNBKiBOzK2eDsxICmgCfcA6MAv?=
- =?iso-8859-1?Q?SH+A7Tb1pXNM+CuWnjV7zNI3sotfEtuSo2jME6zm5TyUPPLu+PFL2Uh0ez?=
- =?iso-8859-1?Q?SSg16JiBJrue88NNlf9IZrI+VJZ25ZkIIjhKOXTZvZoD6P4oHo/3NnMx36?=
- =?iso-8859-1?Q?ehfsyxXWJ1/UE5wIYISnJzZx6A51izyQl1RBrW3K/cf3STcTxTc7tIle4y?=
- =?iso-8859-1?Q?IZAT5gvhIrkeL8TY1lAIizTADyPIRG17+hMXAtUa3ZCYoQsE/8+XmlJo6c?=
- =?iso-8859-1?Q?k3YexHbZVSV2ncDIShD4Yd/QYjRcaMjdCh3s3mkgmYuOXkdHyK2Kn2mnZz?=
- =?iso-8859-1?Q?/HWNiKq+ic2Tkad6m9Kcl8YB+zv/mj71jBFILECxj1o4TwAIsyinAT5hfh?=
- =?iso-8859-1?Q?bHI5dZMRXogS2sBxpAVhSyuu2r7wdU8xWkzO5mKUqRinU1TmgZYYamCLLZ?=
- =?iso-8859-1?Q?MwM5f7Zea6vQzbu6Qa+qV1fmSosoMaazurHZXw+PDF/MTLAXf8pFhrQUj1?=
- =?iso-8859-1?Q?CJtnjYkKGutoa9a4CII8sCqp5w+/jcaCj3EzIzsW3joA848k94k7pdzL0j?=
- =?iso-8859-1?Q?xsALgK8x9Fu9om6ml0GjYJnBTQIOVCPjbffeAnWreujMzkFsEIhK0SNc/v?=
- =?iso-8859-1?Q?TYvgoxJVWfUWRXRSZaCSAE/fs3BKDfWg1ZqInUj2m7p8UDWqJrC/gRq+Qq?=
- =?iso-8859-1?Q?m1yMM3zqlCiU189xdppdZtFGh0H+5T2FO6aqJJdPBURazBVVxFTR/4inXD?=
- =?iso-8859-1?Q?m71c9I8MXg6lVOOaZFAItsPYtan1QQsquDz7S9y6DRQAkozX6KueEOyMz8?=
- =?iso-8859-1?Q?/weFQ7P3UdNlnSDEAsq00tTARVmFK0m0uET0QfG6mCgSGOJkTyU9QrbCKw?=
- =?iso-8859-1?Q?Y/XB8rmEQz+IT+RjzOABrW55FVx60YNioaeMbTopkZ3C4VsysT8h4gDZsc?=
- =?iso-8859-1?Q?WSMC+wECKVrim8dbC7e/qhygn65hHxig9U+p6Jh24PRy1v5bPuCSsJb3p3?=
- =?iso-8859-1?Q?fdHn4fEOmK/qO2Os2oTmOnSk2J5oBfRfIUpE96eoTW+vtcaRbCz0KfcezV?=
- =?iso-8859-1?Q?y+7e7uqOYvUNB3ZT18rKvGq1DIhC+l8J6+LMXKHHjF2dHVl0kWq0ZiCrKf?=
- =?iso-8859-1?Q?tXfuhQeEMChW9/6vi2F+udFemeJKhxvXjjpVw6Hn6+7TmIah9FKPh+jXQQ?=
- =?iso-8859-1?Q?K5xSNRaE0vwbMBCyEy1KCt+t1c6Plg2MWIBZFdNooUFGalgPyFJPca/UEW?=
- =?iso-8859-1?Q?o66EamjneiinL77H?=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 61433090-76cc-4dcc-227a-08d9747baee0
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Sep 2021 16:54:41.4788 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: S11Uz6k8sUkkrMjEQHpAfqFjOjxlYd/gbZU7M9wm4oFQmYw1zWgeMu3wFZ+0HMgZksBHQylg7vfo2yWgGeNHhA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4703
+Content-Disposition: inline
+In-Reply-To: <20210910160504.1794332-32-Jerome.Pouiller@silabs.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -149,72 +99,159 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Friday 10 September 2021 18:31:00 CEST Kari Argillander wrote:
-> CAUTION: This email originated from outside of the organization. Do not c=
-lick links or open attachments unless you recognize the sender and know the=
- content is safe.
+On Fri, Sep 10, 2021 at 06:05:04PM +0200, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
 > =
 
+> Function arguments must be aligned with left parenthesis. Apply that
+> rule.
+
+To my eyes something still go wrong with this patch. Might be my email
+fault, but every other patch looks ok. Now these are too left. Also it
+should alight with first argument not left parenthesis?
+
 > =
 
-> On Fri, Sep 10, 2021 at 06:04:35PM +0200, Jerome Pouiller wrote:
-> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >
-> > During the scan requests, the Tx traffic is suspended. This lock is
-> > shared by all the network interfaces. So, a scan request on one
-> > interface will block the traffic on a second interface. This causes
-> > trouble when the queued traffic contains CAB (Content After DTIM Beacon)
-> > since this traffic cannot be delayed.
-> >
-> > It could be possible to make the lock local to each interface. But It
-> > would only push the problem further. The device won't be able to send
-> > the CAB before the end of the scan.
-> >
-> > So, this patch just ignore the DTIM indication when a scan is in
-> > progress. The firmware will send another indication on the next DTIM and
-> > this time the system will be able to send the traffic just behind the
-> > beacon.
-> >
-> > The only drawback of this solution is that the stations connected to
-> > the AP will wait for traffic after the DTIM for nothing. But since the
-> > case is really rare it is not a big deal.
-> >
-> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> > ---
-> >  drivers/staging/wfx/sta.c | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >
-> > diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-> > index a236e5bb6914..d901588237a4 100644
-> > --- a/drivers/staging/wfx/sta.c
-> > +++ b/drivers/staging/wfx/sta.c
-> > @@ -629,8 +629,18 @@ int wfx_set_tim(struct ieee80211_hw *hw, struct ie=
-ee80211_sta *sta, bool set)
-> >
-> >  void wfx_suspend_resume_mc(struct wfx_vif *wvif, enum sta_notify_cmd n=
-otify_cmd)
-> >  {
-> > +     struct wfx_vif *wvif_it;
-> > +
-> >       if (notify_cmd !=3D STA_NOTIFY_AWAKE)
-> >               return;
-> > +
-> > +     // Device won't be able to honor CAB if a scan is in progress on =
-any
-> > +     // interface. Prefer to skip this DTIM and wait for the next one.
+> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> ---
+>  drivers/staging/wfx/hif_tx_mib.c |  2 +-
+>  drivers/staging/wfx/key.c        | 26 +++++++++++++-------------
+>  2 files changed, 14 insertions(+), 14 deletions(-)
 > =
 
-> In one patch you drop // comments but you introduce some of your self.
+> diff --git a/drivers/staging/wfx/hif_tx_mib.c b/drivers/staging/wfx/hif_t=
+x_mib.c
+> index 45e531d996bd..97e961e6bcf6 100644
+> --- a/drivers/staging/wfx/hif_tx_mib.c
+> +++ b/drivers/staging/wfx/hif_tx_mib.c
+> @@ -75,7 +75,7 @@ int hif_get_counters_table(struct wfx_dev *wdev, int vi=
+f_id,
+>  	} else {
+>  		return hif_read_mib(wdev, vif_id,
+>  				    HIF_MIB_ID_EXTENDED_COUNTERS_TABLE, arg,
+> -				sizeof(struct hif_mib_extended_count_table));
+> +				    sizeof(struct hif_mib_extended_count_table));
+>  	}
+>  }
+>  =
 
-Indeed. When I wrote this patch, I didn't yet care to this issue. Is it
-a big deal since it is fixed in patch 27?
+> diff --git a/drivers/staging/wfx/key.c b/drivers/staging/wfx/key.c
+> index 51a528102016..65134a174683 100644
+> --- a/drivers/staging/wfx/key.c
+> +++ b/drivers/staging/wfx/key.c
+> @@ -31,7 +31,7 @@ static void wfx_free_key(struct wfx_dev *wdev, int idx)
+>  }
+>  =
 
+>  static u8 fill_wep_pair(struct hif_wep_pairwise_key *msg,
+> -			     struct ieee80211_key_conf *key, u8 *peer_addr)
+> +			struct ieee80211_key_conf *key, u8 *peer_addr)
+>  {
+>  	WARN(key->keylen > sizeof(msg->key_data), "inconsistent data");
+>  	msg->key_length =3D key->keylen;
+> @@ -41,7 +41,7 @@ static u8 fill_wep_pair(struct hif_wep_pairwise_key *ms=
+g,
+>  }
+>  =
 
+>  static u8 fill_wep_group(struct hif_wep_group_key *msg,
+> -			      struct ieee80211_key_conf *key)
+> +			 struct ieee80211_key_conf *key)
+>  {
+>  	WARN(key->keylen > sizeof(msg->key_data), "inconsistent data");
+>  	msg->key_id =3D key->keyidx;
+> @@ -51,7 +51,7 @@ static u8 fill_wep_group(struct hif_wep_group_key *msg,
+>  }
+>  =
 
--- =
+>  static u8 fill_tkip_pair(struct hif_tkip_pairwise_key *msg,
+> -			      struct ieee80211_key_conf *key, u8 *peer_addr)
+> +			 struct ieee80211_key_conf *key, u8 *peer_addr)
+>  {
+>  	u8 *keybuf =3D key->key;
+>  =
 
-J=E9r=F4me Pouiller
+> @@ -68,9 +68,9 @@ static u8 fill_tkip_pair(struct hif_tkip_pairwise_key *=
+msg,
+>  }
+>  =
 
+>  static u8 fill_tkip_group(struct hif_tkip_group_key *msg,
+> -			       struct ieee80211_key_conf *key,
+> -			       struct ieee80211_key_seq *seq,
+> -			       enum nl80211_iftype iftype)
+> +			  struct ieee80211_key_conf *key,
+> +			  struct ieee80211_key_seq *seq,
+> +			  enum nl80211_iftype iftype)
+>  {
+>  	u8 *keybuf =3D key->key;
+>  =
+
+> @@ -93,7 +93,7 @@ static u8 fill_tkip_group(struct hif_tkip_group_key *ms=
+g,
+>  }
+>  =
+
+>  static u8 fill_ccmp_pair(struct hif_aes_pairwise_key *msg,
+> -			      struct ieee80211_key_conf *key, u8 *peer_addr)
+> +			 struct ieee80211_key_conf *key, u8 *peer_addr)
+>  {
+>  	WARN(key->keylen !=3D sizeof(msg->aes_key_data), "inconsistent data");
+>  	ether_addr_copy(msg->peer_address, peer_addr);
+> @@ -102,8 +102,8 @@ static u8 fill_ccmp_pair(struct hif_aes_pairwise_key =
+*msg,
+>  }
+>  =
+
+>  static u8 fill_ccmp_group(struct hif_aes_group_key *msg,
+> -			       struct ieee80211_key_conf *key,
+> -			       struct ieee80211_key_seq *seq)
+> +			  struct ieee80211_key_conf *key,
+> +			  struct ieee80211_key_seq *seq)
+>  {
+>  	WARN(key->keylen !=3D sizeof(msg->aes_key_data), "inconsistent data");
+>  	memcpy(msg->aes_key_data, key->key, key->keylen);
+> @@ -114,7 +114,7 @@ static u8 fill_ccmp_group(struct hif_aes_group_key *m=
+sg,
+>  }
+>  =
+
+>  static u8 fill_sms4_pair(struct hif_wapi_pairwise_key *msg,
+> -			      struct ieee80211_key_conf *key, u8 *peer_addr)
+> +			 struct ieee80211_key_conf *key, u8 *peer_addr)
+>  {
+>  	u8 *keybuf =3D key->key;
+>  =
+
+> @@ -129,7 +129,7 @@ static u8 fill_sms4_pair(struct hif_wapi_pairwise_key=
+ *msg,
+>  }
+>  =
+
+>  static u8 fill_sms4_group(struct hif_wapi_group_key *msg,
+> -			       struct ieee80211_key_conf *key)
+> +			  struct ieee80211_key_conf *key)
+>  {
+>  	u8 *keybuf =3D key->key;
+>  =
+
+> @@ -143,8 +143,8 @@ static u8 fill_sms4_group(struct hif_wapi_group_key *=
+msg,
+>  }
+>  =
+
+>  static u8 fill_aes_cmac_group(struct hif_igtk_group_key *msg,
+> -				   struct ieee80211_key_conf *key,
+> -				   struct ieee80211_key_seq *seq)
+> +			      struct ieee80211_key_conf *key,
+> +			      struct ieee80211_key_seq *seq)
+>  {
+>  	WARN(key->keylen !=3D sizeof(msg->igtk_key_data), "inconsistent data");
+>  	memcpy(msg->igtk_key_data, key->key, key->keylen);
+> -- =
+
+> 2.33.0
+> =
 
 _______________________________________________
 devel mailing list
