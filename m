@@ -1,74 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E60E2406775
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 09:05:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83AE040678D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Sep 2021 09:15:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2547982EC7;
-	Fri, 10 Sep 2021 07:05:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8EB66401D4;
+	Fri, 10 Sep 2021 07:15:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 23qRur-EAFHo; Fri, 10 Sep 2021 07:05:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cLNr9JxoMjt3; Fri, 10 Sep 2021 07:15:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 888278275C;
-	Fri, 10 Sep 2021 07:04:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4A82B40179;
+	Fri, 10 Sep 2021 07:15:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C9D711BF2F5
- for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 07:04:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A72851BF2F5
+ for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 07:15:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C3B0260599
- for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 07:04:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A297640179
+ for <devel@linuxdriverproject.org>; Fri, 10 Sep 2021 07:15:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=chromium.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xItbifa4iPhz for <devel@linuxdriverproject.org>;
- Fri, 10 Sep 2021 07:04:48 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1BD2D6064D
- for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 07:04:48 +0000 (UTC)
-Received: by mail-ej1-x632.google.com with SMTP id bt14so2270184ejb.3
- for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 00:04:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3H4oKYSFY56M3qiNXBl+wyXrV3Q3fK7XNGLdUGoxRYk=;
- b=XEF2dNRdTYcFZ49M5pLnNkQGCRME+D2yb6K0sa6lGGehvguZSeR4VYKb/SB8dsl55o
- MlQTLsfMEN8dRH9TY0LM2p/S2GDgMWhlby19cOyAfHiNLd7xfwmOpibfUxAIpxDDSWVk
- LfuzFhM/z4WSSobVjz8ZB+zSRJ86BWQd2cxWo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3H4oKYSFY56M3qiNXBl+wyXrV3Q3fK7XNGLdUGoxRYk=;
- b=xfS1e5JV8YXo8NkP8UCGXTtcBOg3z6jG8goDjbcqet1re6SZwKWGIuzn3hQWiVURGr
- MtDO4gGcYyvs27VR1s/abThzxmuCAkHsEdQTiFHRepnAJJdQO2rkel93xFzocIpdh8Vf
- 07G+WMjQaXVJINCWS14yZXGDax88fLfB+y7bsKIA+UDI8TqPUzT1YvdzWsypphNSTCyI
- MA1tBqRj5qX084F6SnIWxUS0YBOl0Iqk9pHVxYsTlfG+188ESqLZY3dtx8PVIunhlCgL
- 3NcEiO9JEx/znNaKHVyGiOLKU1MPgoWtoa/w02Ti0Qp9PazRDfa+M+WpUQU8Cev2jgT6
- MjnA==
-X-Gm-Message-State: AOAM533gtrJ/qRQL/9zOdfwrwSpPGB6Wh85OsvDor6i7S7xni+0usJzR
- hipgsQXz+G+nMaYYAXmv2T4GTFBRge+sziUT3wp8NA==
-X-Google-Smtp-Source: ABdhPJzdvpHts5YmnwO9zUbLdQPaUX6UVtZstq71FhyxXpicJP5fSXyIB9Z/lapxzFeS24WqtJwASK/He71YVJeakGo=
-X-Received: by 2002:a17:906:180a:: with SMTP id
- v10mr8039021eje.112.1631257486397; 
- Fri, 10 Sep 2021 00:04:46 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aqe1KDnCJuk8 for <devel@linuxdriverproject.org>;
+ Fri, 10 Sep 2021 07:15:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 86DC24011C
+ for <devel@driverdev.osuosl.org>; Fri, 10 Sep 2021 07:15:25 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 91624611BD;
+ Fri, 10 Sep 2021 07:15:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1631258125;
+ bh=4L0BAh+DvGxazIMEC9AKtHADz64tMS4ZKALwhM1qvwE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=q4h89+wzGw1TquKhEONUO+vjD9M/ubpOmYuU6807islJsX/RVc/TtaDrcxaFQP4le
+ 2GjeGCwb7uHbX1+33HEk3f9V4vfEcgB3qugUdTY92Fo75ou1NObbV+aLYzxDrMPVX7
+ /WRI4NRo9tyESIgYOACbzJSmeZXYriK8jx0NpGKA=
+Date: Fri, 10 Sep 2021 09:15:00 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Li Li <dualli@chromium.org>
+Subject: Re: [PATCH v2 1/1] binder: fix freeze race
+Message-ID: <YTsF9OC4QEMl2wp7@kroah.com>
+References: <20210910035316.2873554-1-dualli@chromium.org>
+ <20210910035316.2873554-2-dualli@chromium.org>
+ <YTrvMSm2oB91IhuK@kroah.com>
+ <CANBPYPgEbFusdyrcV1EqridahQGTH7X=s8ufUA9SMR8SefAO2g@mail.gmail.com>
 MIME-Version: 1.0
-References: <20210909232141.2489691-1-dualli@chromium.org>
- <20210909232141.2489691-2-dualli@chromium.org>
- <20210910060251.GC7203@kadam>
-In-Reply-To: <20210910060251.GC7203@kadam>
-From: Li Li <dualli@chromium.org>
-Date: Fri, 10 Sep 2021 00:04:35 -0700
-Message-ID: <CANBPYPgCUgjpX38dNR+SyPVBUTF_go0saTmitO_z+Ox3AgkCdg@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] binder: fix freeze race
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Content-Disposition: inline
+In-Reply-To: <CANBPYPgEbFusdyrcV1EqridahQGTH7X=s8ufUA9SMR8SefAO2g@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,60 +66,58 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Li Li <dualli@google.com>,
  "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Android Kernel Team <kernel-team@android.com>,
- Greg KH <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.org>,
+ Suren Baghdasaryan <surenb@google.com>, LKML <linux-kernel@vger.kernel.org>,
+ Hridya Valsaraju <hridya@google.com>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Martijn Coenen <maco@google.com>,
  "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Martijn Coenen <maco@google.com>, Hridya Valsaraju <hridya@google.com>,
- Suren Baghdasaryan <surenb@google.com>,
+ Android Kernel Team <kernel-team@android.com>,
  Christian Brauner <christian@brauner.io>, Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Sep 9, 2021 at 11:03 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Thu, Sep 09, 2021 at 04:21:41PM -0700, Li Li wrote:
-> > @@ -4648,6 +4647,22 @@ static int binder_ioctl_get_node_debug_info(struct binder_proc *proc,
-> >       return 0;
-> >  }
+On Thu, Sep 09, 2021 at 11:17:42PM -0700, Li Li wrote:
+> On Thu, Sep 9, 2021 at 10:38 PM Greg KH <gregkh@linuxfoundation.org> wrote:
 > >
-> > +static int binder_txns_pending(struct binder_proc *proc)
-> > +{
-> > +     struct rb_node *n;
-> > +     struct binder_thread *thread;
-> > +
-> > +     if (proc->outstanding_txns > 0)
-> > +             return 1;
->
-> Make this function bool.
+> > On Thu, Sep 09, 2021 at 08:53:16PM -0700, Li Li wrote:
+> > >  struct binder_frozen_status_info {
+> > >       __u32            pid;
+> > > +
+> > > +     /* process received sync transactions since last frozen
+> > > +      * bit 0: received sync transaction after being frozen
+> > > +      * bit 1: new pending sync transaction during freezing
+> > > +      */
+> > >       __u32            sync_recv;
+> >
+> > You just changed a user/kernel api here, did you just break existing
+> > userspace applications?  If not, how did that not happen?
+> >
+> 
+> That's a good question. This design does keep backward compatibility.
+> 
+> The existing userspace applications call ioctl(BINDER_GET_FROZEN_INFO)
+> to check if there's sync or async binder transactions sent to a frozen
+> process.
+> 
+> If the existing userspace app runs on a new kernel, a sync binder call
+> still sets bit 1 of sync_recv (as it's a bool variable) so the ioctl
+> will return the expected value (TRUE). The app just doesn't check bit
+> 1 intentionally so it doesn't have the ability to tell if there's a
+> race - this behavior is aligned with what happens on an old kernel as
+> the old kernel doesn't have bit 1 set at all.
+> 
+> The bit 1 of sync_recv enables new userspace app the ability to tell
+> 1) there's a sync binder transaction happened when being frozen - same
+> as before; and 2) if that sync binder transaction happens exactly when
+> there's a race - a new information for rollback decision.
 
-Will include the change (as well as the extra ->outstanding_txns
-check) in the next revision.
->
-> > +
-> > +     for (n = rb_first(&proc->threads); n; n = rb_next(n)) {
-> > +             thread = rb_entry(n, struct binder_thread, rb_node);
-> > +             if (thread->transaction_stack)
-> > +                     return 1;
-> > +     }
-> > +     return 0;
-> > +}
-> > +
-> >  static int binder_ioctl_freeze(struct binder_freeze_info *info,
-> >                              struct binder_proc *target_proc)
-> >  {
-> > @@ -4682,6 +4697,14 @@ static int binder_ioctl_freeze(struct binder_freeze_info *info,
-> >       if (!ret && target_proc->outstanding_txns)
-> >               ret = -EAGAIN;
->
-> These two lines can be deleted now because binder_txns_pending() checks
-> ->outstanding_txns.
->
+Ah, can you add that to the changelog text to make it more obvious?
 
-Thanks,
-Li
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
