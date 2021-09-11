@@ -1,72 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9922B4074A0
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Sep 2021 04:32:06 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A195A4069E;
-	Sat, 11 Sep 2021 02:32:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mMz-H06XjvgC; Sat, 11 Sep 2021 02:32:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 760DD401AE;
-	Sat, 11 Sep 2021 02:32:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 279411BF84C
- for <devel@linuxdriverproject.org>; Sat, 11 Sep 2021 02:31:52 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 84E3B40763F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Sep 2021 13:21:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1F3C9415B5
- for <devel@linuxdriverproject.org>; Sat, 11 Sep 2021 02:31:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 78A664069B;
+	Sat, 11 Sep 2021 11:21:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nqg4dQuHv-Wo for <devel@linuxdriverproject.org>;
- Sat, 11 Sep 2021 02:31:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from loongson.cn (mail.loongson.cn [114.242.206.163])
- by smtp4.osuosl.org (Postfix) with ESMTP id 92B5B40466
- for <devel@linuxdriverproject.org>; Sat, 11 Sep 2021 02:31:50 +0000 (UTC)
-Received: from li-pc.loongson.cn (unknown [10.20.41.85])
- by mail.loongson.cn (Coremail) with SMTP id AQAAf9DxNeUIFTxhpBMEAA--.13012S4; 
- Sat, 11 Sep 2021 10:31:38 +0800 (CST)
-From: lichenyang <lichenyang@loongson.cn>
-To: Maxime Ripard <mripard@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Dan Carpenter <dan.carpenter@oracle.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- devel@linuxdriverproject.org
-Subject: [PATCH v5 3/3] drm/loongson: Add interrupt driver for LS7A
-Date: Sat, 11 Sep 2021 10:31:33 +0800
-Message-Id: <20210911023133.851311-3-lichenyang@loongson.cn>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20210911023133.851311-1-lichenyang@loongson.cn>
-References: <20210911023133.851311-1-lichenyang@loongson.cn>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id E1ms6UXaGWG8; Sat, 11 Sep 2021 11:21:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id CA3BD4035E;
+	Sat, 11 Sep 2021 11:21:35 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 18A551BF393
+ for <devel@linuxdriverproject.org>; Sat, 11 Sep 2021 11:21:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 07B3180DE3
+ for <devel@linuxdriverproject.org>; Sat, 11 Sep 2021 11:21:26 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id p7L8Z7Isvjkf for <devel@linuxdriverproject.org>;
+ Sat, 11 Sep 2021 11:21:25 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7BB3780DE1
+ for <devel@driverdev.osuosl.org>; Sat, 11 Sep 2021 11:21:25 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id n18so2798618plp.7
+ for <devel@driverdev.osuosl.org>; Sat, 11 Sep 2021 04:21:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kJJwtO9lB/Xezb44Hovfs3VS8ns8msbsl33JR663TRw=;
+ b=kFt+rNpsHh6vcDhYnI5L0HfAVrfZNNXVYNwKzBkga2NIwZBltLslp1Q8ZRUxh5Tn3D
+ Dz8MruNhp5KGpwwYwIsBQB/OKZ8GS6d99d2U9D0Ke5PUMkhmzMd+gm1aOwaNGBbe8HHI
+ q8d0Iou94kajVTq/N8DGYGT37jYpRHvQ9YezpX6GINO1v9MzHLoFmeetZ7r/YKaxQgVQ
+ 3rqJiQYde6GLSSL+TZriypz7s0Q0OTczKOdIkZH3Etzt7TfgLRm8pPbVarjFZV5/UAgq
+ B593h9aKOzWaF3U4xWxAmiucD3WwAXPIhwcLA119qWUiJflE+roHUyitjzu6NmSqAdkr
+ s/Nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kJJwtO9lB/Xezb44Hovfs3VS8ns8msbsl33JR663TRw=;
+ b=Q8g3OffLBqN7ZgHKUEnKcyoXxzuijXL7qM4H7vt4NDQQOHHnLCdqYagSmWqxyqWOyS
+ ts4MtHv6tdCTNoPx1DKv3fQ2DWsBIapzmAdUzdvdFqc/BYu+SFs76lT4qD22eVSJ73Ds
+ ricPhBcYQDmHjdAxlprWNYH0/SeKfqKnp0gvx6ByyqglDMbNPJbd2PyJsk9mgFacdEg2
+ Z720wGnh1NrTUA9jMjOm5YJojCEp0uIpYLIE3U2kFmpjFSLwKHtCnt5JtzLn0pTXqq+o
+ q2OyTnM8cpcpedymHwhbvn3UqYLMJ4qtntcEdC6V+sxGo1XL/aIaDWs5q36zvA/2/a1v
+ S/Dw==
+X-Gm-Message-State: AOAM530vm4yHJx/HSUTEDDMAkTWCyxKYCtYlvFWxbFJnxue9LklZLStA
+ 4OBPZaNIvprIj2YEtGTCqKA=
+X-Google-Smtp-Source: ABdhPJzVIFoi2nSdhCT/vFkJAyOitLLkhq9MHE9JCUc572licN0EMOMfUa0KbyChkJ4Gtt/IfqLpIA==
+X-Received: by 2002:a17:90a:1282:: with SMTP id
+ g2mr2490917pja.230.1631359284923; 
+ Sat, 11 Sep 2021 04:21:24 -0700 (PDT)
+Received: from localhost.localdomain ([119.8.124.150])
+ by smtp.gmail.com with ESMTPSA id g13sm1702101pfi.176.2021.09.11.04.21.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 11 Sep 2021 04:21:24 -0700 (PDT)
+From: Cheng Chao <cs.os.kernel@gmail.com>
+To: labbott@redhat.com, sumit.semwal@linaro.org, gregkh@linuxfoundation.org,
+ arve@android.com, riandrews@android.com, devel@driverdev.osuosl.org
+Subject: [PATCH] [PATCH 4.9] staging: android: ion: fix page is NULL
+Date: Sat, 11 Sep 2021 19:21:15 +0800
+Message-Id: <20210911112115.47202-1-cs.os.kernel@gmail.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-X-CM-TRANSID: AQAAf9DxNeUIFTxhpBMEAA--.13012S4
-X-Coremail-Antispam: 1UD129KBjvJXoWxKr4xXrWrJr48Ar1rJr1xAFb_yoWfGrWrpr
- 43Aa4F9r45tF47uwn3AFZ5Ar13u3y3Kas7WFZrG343Cryktw1UXa4rCFW7Jr47Zry7Ja42
- qryxGFWrCF1j93DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUPIb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26rWj6s0DM7CY07I2
- 0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28IrcIa0xkI8VA2jI
- 8067AKxVWUXwA2048vs2IY020Ec7CjxVAFwI0_Xr0E3s1l8cAvFVAK0II2c7xJM28CjxkF
- 64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW8JVW5JwA2z4x0Y4vE2Ix0cI8IcV
- CY1x0267AKxVW8JVWxJwA2z4x0Y4vEx4A2jsIE14v26F4j6r4UJwA2z4x0Y4vEx4A2jsIE
- c7CjxVAFwI0_Gr1j6F4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzV
- Aqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S
- 6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4IIrI8v6xkF7I0E8cxan2IY04v7Mx
- kIecxEwVCm-wCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02
- F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GF
- ylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7Cj
- xVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r
- 1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x07b0
- WrAUUUUU=
-X-CM-SenderInfo: xolfxvxq1d0wo6or00hjvr0hdfq/1tbiAQABA13QvN-LywAEsp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,281 +87,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Huacai Chen <chenhuacai@kernel.org>, Sam Ravnborg <sam@ravnborg.org>
+Cc: Cheng Chao <cs.os.kernel@gmail.com>, stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add LS7A DC vsync interrupt enable and close function, and
-register irq_handler function interface.
-Add vbrank event processing flow.
+kernel panic is here:
 
-v4:
-- Replace drm_irq_install with devm_request_irq.
-- Delete the irq_ hooks in drm_driver.
+Unable to handle kernel paging request at virtual address b0380000
+pgd = d9d94000
+[b0380000] *pgd=00000000
+Internal error: Oops: 2805 [#1] PREEMPT SMP ARM
+...
+task: daa2dd00 task.stack: da194000
+PC is at v7_dma_clean_range+0x1c/0x34
+LR is at arm_dma_sync_single_for_device+0x44/0x58
+pc : [<c011aa0c>]    lr : [<c011645c>]    psr: 200f0013
+sp : da195da0  ip : dc1f9000  fp : c1043dc4
+r10: 00000000  r9 : c16f1f58  r8 : 00000001
+r7 : c1621f94  r6 : c0116418  r5 : 00000000  r4 : c011aa58
+r3 : 0000003f  r2 : 00000040  r1 : b0480000  r0 : b0380000
+Flags: nzCv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment none
+Control: 10c5383d  Table: 19d9406a  DAC: 00000051
+...
+[<c011aa0c>] (v7_dma_clean_range) from [<c011645c>] (arm_dma_sync_single_for_device+0x44/0x58)
+[<c011645c>] (arm_dma_sync_single_for_device) from [<c0117088>] (arm_dma_sync_sg_for_device+0x50/0x7c)
+[<c0117088>] (arm_dma_sync_sg_for_device) from [<c0c033c4>] (ion_pages_sync_for_device+0xb0/0xec)
+[<c0c033c4>] (ion_pages_sync_for_device) from [<c0c054ac>] (ion_system_heap_allocate+0x2a0/0x2e0)
+[<c0c054ac>] (ion_system_heap_allocate) from [<c0c02c78>] (ion_alloc+0x12c/0x494)
+[<c0c02c78>] (ion_alloc) from [<c0c03eac>] (ion_ioctl+0x510/0x63c)
+[<c0c03eac>] (ion_ioctl) from [<c027c4b0>] (do_vfs_ioctl+0xa8/0x9b4)
+[<c027c4b0>] (do_vfs_ioctl) from [<c027ce28>] (SyS_ioctl+0x6c/0x7c)
+[<c027ce28>] (SyS_ioctl) from [<c0108a40>] (ret_fast_syscall+0x0/0x48)
+Code: e3a02004 e1a02312 e2423001 e1c00003 (ee070f3a)
+---[ end trace 89278304932c0e87 ]---
+Kernel panic - not syncing: Fatal exception
 
-v3:
-- Improve code readability.
-- Use the to_pci_dev function to get pci_dev.
-
-v2:
-- Added error handling in the loongson_drm_load function.
-
-Signed-off-by: lichenyang <lichenyang@loongson.cn>
+Signed-off-by: Cheng Chao <cs.os.kernel@gmail.com>
 ---
- drivers/gpu/drm/loongson/Makefile        |  1 +
- drivers/gpu/drm/loongson/loongson_crtc.c | 41 +++++++++++-
- drivers/gpu/drm/loongson/loongson_drv.c  |  6 ++
- drivers/gpu/drm/loongson/loongson_drv.h  | 10 +++
- drivers/gpu/drm/loongson/loongson_irq.c  | 82 ++++++++++++++++++++++++
- 5 files changed, 138 insertions(+), 2 deletions(-)
- create mode 100644 drivers/gpu/drm/loongson/loongson_irq.c
+ drivers/staging/android/ion/ion_system_heap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/loongson/Makefile b/drivers/gpu/drm/loongson/Makefile
-index 4a5fab7d000b..b083854d789b 100644
---- a/drivers/gpu/drm/loongson/Makefile
-+++ b/drivers/gpu/drm/loongson/Makefile
-@@ -10,5 +10,6 @@ loongson-y := loongson_connector.o \
- 	loongson_drv.o \
- 	loongson_encoder.o \
- 	loongson_i2c.o \
-+	loongson_irq.o \
- 	loongson_plane.o
- obj-$(CONFIG_DRM_LOONGSON) += loongson.o
-diff --git a/drivers/gpu/drm/loongson/loongson_crtc.c b/drivers/gpu/drm/loongson/loongson_crtc.c
-index a01ffbd8e295..e1f0085a841b 100644
---- a/drivers/gpu/drm/loongson/loongson_crtc.c
-+++ b/drivers/gpu/drm/loongson/loongson_crtc.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
+index 22c481f2ae4f..2a35b99cf628 100644
+--- a/drivers/staging/android/ion/ion_system_heap.c
++++ b/drivers/staging/android/ion/ion_system_heap.c
+@@ -75,7 +75,7 @@ static struct page *alloc_buffer_page(struct ion_system_heap *heap,
  
- #include <drm/drm_fourcc.h>
-+#include <drm/drm_vblank.h>
+ 	page = ion_page_pool_alloc(pool);
  
- #include "loongson_drv.h"
- 
-@@ -157,19 +158,25 @@ static void loongson_crtc_mode_set_nofb(struct drm_crtc *crtc)
- }
- 
- static void loongson_crtc_atomic_enable(struct drm_crtc *crtc,
--					struct drm_atomic_state *old_state)
-+					struct drm_atomic_state *old_crtc_state)
- {
- 	struct drm_device *dev = crtc->dev;
- 	struct loongson_device *ldev = to_loongson_device(dev);
- 	struct loongson_crtc *lcrtc = to_loongson_crtc(crtc);
- 	u32 reg_offset = lcrtc->reg_offset;
- 
-+	if (lcrtc->cfg_reg & CFG_ENABLE)
-+		goto vblank_on;
-+
- 	lcrtc->cfg_reg |= CFG_ENABLE;
- 	ls7a_mm_wreg(ldev, FB_CFG_REG + reg_offset, lcrtc->cfg_reg);
-+
-+vblank_on:
-+	drm_crtc_vblank_on(crtc);
- }
- 
- static void loongson_crtc_atomic_disable(struct drm_crtc *crtc,
--					 struct drm_atomic_state *old_state)
-+					 struct drm_atomic_state *old_crtc_state)
- {
- 	struct drm_device *dev = crtc->dev;
- 	struct loongson_device *ldev = to_loongson_device(dev);
-@@ -178,6 +185,33 @@ static void loongson_crtc_atomic_disable(struct drm_crtc *crtc,
- 
- 	lcrtc->cfg_reg &= ~CFG_ENABLE;
- 	ls7a_mm_wreg(ldev, FB_CFG_REG + reg_offset, lcrtc->cfg_reg);
-+
-+	spin_lock_irq(&crtc->dev->event_lock);
-+	if (crtc->state->event) {
-+		drm_crtc_send_vblank_event(crtc, crtc->state->event);
-+		crtc->state->event = NULL;
-+	}
-+	spin_unlock_irq(&crtc->dev->event_lock);
-+
-+	drm_crtc_vblank_off(crtc);
-+}
-+
-+static void loongson_crtc_atomic_flush(struct drm_crtc *crtc,
-+				       struct drm_atomic_state *state)
-+{
-+	struct drm_pending_vblank_event *event = crtc->state->event;
-+
-+	if (!event)
-+		return;
-+
-+	crtc->state->event = NULL;
-+
-+	spin_lock_irq(&crtc->dev->event_lock);
-+	if (drm_crtc_vblank_get(crtc) == 0)
-+		drm_crtc_arm_vblank_event(crtc, event);
-+	else
-+		drm_crtc_send_vblank_event(crtc, event);
-+	spin_unlock_irq(&crtc->dev->event_lock);
- }
- 
- static enum drm_mode_status loongson_mode_valid(struct drm_crtc *crtc,
-@@ -197,6 +231,7 @@ static enum drm_mode_status loongson_mode_valid(struct drm_crtc *crtc,
- 
- static const struct drm_crtc_helper_funcs loongson_crtc_helper_funcs = {
- 	.mode_valid = loongson_mode_valid,
-+	.atomic_flush = loongson_crtc_atomic_flush,
- 	.atomic_enable = loongson_crtc_atomic_enable,
- 	.atomic_disable = loongson_crtc_atomic_disable,
- 	.mode_set_nofb = loongson_crtc_mode_set_nofb,
-@@ -208,6 +243,8 @@ static const struct drm_crtc_funcs loongson_crtc_funcs = {
- 	.reset = drm_atomic_helper_crtc_reset,
- 	.atomic_duplicate_state = drm_atomic_helper_crtc_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_crtc_destroy_state,
-+	.enable_vblank = loongson_crtc_enable_vblank,
-+	.disable_vblank = loongson_crtc_disable_vblank,
- };
- 
- int loongson_crtc_init(struct loongson_device *ldev, int index)
-diff --git a/drivers/gpu/drm/loongson/loongson_drv.c b/drivers/gpu/drm/loongson/loongson_drv.c
-index a27c24b1fadf..55cb1b52e631 100644
---- a/drivers/gpu/drm/loongson/loongson_drv.c
-+++ b/drivers/gpu/drm/loongson/loongson_drv.c
-@@ -168,6 +168,12 @@ static int loongson_driver_init(struct drm_device *dev)
- 		goto err;
- 	}
- 
-+	ret = loongson_irq_init(ldev);
-+	if (ret) {
-+		dev_err(dev->dev, "Fatal error during irq init: %d\n", ret);
-+		goto err;
-+	}
-+
- 	drm_kms_helper_poll_init(dev);
- 	drm_mode_config_reset(dev);
- 
-diff --git a/drivers/gpu/drm/loongson/loongson_drv.h b/drivers/gpu/drm/loongson/loongson_drv.h
-index 4a5860814368..559bb841d47c 100644
---- a/drivers/gpu/drm/loongson/loongson_drv.h
-+++ b/drivers/gpu/drm/loongson/loongson_drv.h
-@@ -37,6 +37,7 @@
- #define FB_HSYNC_REG (0x1420)
- #define FB_VDISPLAY_REG (0x1480)
- #define FB_VSYNC_REG (0x14a0)
-+#define FB_INT_REG (0x1570)
- 
- #define CFG_FMT GENMASK(2, 0)
- #define CFG_FBSWITCH BIT(7)
-@@ -48,6 +49,10 @@
- #define FB_PANCFG_DEF 0x80001311
- #define FB_HSYNC_PULSE (1 << 30)
- #define FB_VSYNC_PULSE (1 << 30)
-+#define FB_VSYNC1_ENABLE (1 << 16)
-+#define FB_VSYNC0_ENABLE (1 << 18)
-+#define FB_VSYNC1_INT (1 << 0)
-+#define FB_VSYNC0_INT (1 << 2)
- 
- /* PIX PLL */
- #define LOOPC_MIN 24
-@@ -134,6 +139,11 @@ struct loongson_plane *loongson_plane_init(struct drm_device *dev, int index);
- /* i2c */
- int loongson_dc_gpio_init(struct loongson_device *ldev);
- 
-+/* irq */
-+int loongson_irq_init(struct loongson_device *ldev);
-+int loongson_crtc_enable_vblank(struct drm_crtc *crtc);
-+void loongson_crtc_disable_vblank(struct drm_crtc *crtc);
-+
- /* device */
- u32 loongson_gpu_offset(struct drm_plane_state *state,
- 			struct loongson_device *dev);
-diff --git a/drivers/gpu/drm/loongson/loongson_irq.c b/drivers/gpu/drm/loongson/loongson_irq.c
-new file mode 100644
-index 000000000000..ef877a701bda
---- /dev/null
-+++ b/drivers/gpu/drm/loongson/loongson_irq.c
-@@ -0,0 +1,82 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+
-+#include <linux/pci.h>
-+
-+#include <drm/drm_vblank.h>
-+
-+#include "loongson_drv.h"
-+
-+static irqreturn_t loongson_irq_handler(int irq, void *arg)
-+{
-+	struct drm_device *dev = (struct drm_device *) arg;
-+	struct loongson_device *ldev = to_loongson_device(dev);
-+	struct loongson_crtc *lcrtc;
-+	u32 val;
-+
-+	val = ls7a_mm_rreg(ldev, FB_INT_REG);
-+	ls7a_mm_wreg(ldev, FB_INT_REG, val & (0xffff << 16));
-+
-+	if (val & FB_VSYNC0_INT)
-+		lcrtc = ldev->mode_info[0].crtc;
-+	else if (val & FB_VSYNC1_INT)
-+		lcrtc = ldev->mode_info[1].crtc;
-+
-+	drm_crtc_handle_vblank(&lcrtc->base);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+int loongson_irq_init(struct loongson_device *ldev)
-+{
-+	int ret;
-+	struct drm_device *dev = &ldev->dev;
-+	int irq = to_pci_dev(dev->dev)->irq;
-+
-+	ret = drm_vblank_init(dev, ldev->num_crtc);
-+	if (ret) {
-+		dev_err(dev->dev, "Fatal error during vblank init: %d\n", ret);
-+		return ret;
-+	}
-+	DRM_INFO("drm vblank init finished\n");
-+
-+	ret = devm_request_irq(dev->dev, irq, loongson_irq_handler, 0,
-+			       "loongson-drm", dev);
-+	if (ret) {
-+		dev_err(dev->dev, "Fatal error during irq install: %d\n", ret);
-+		return ret;
-+	}
-+	DRM_INFO("loongson irq initialized\n");
-+
-+	return 0;
-+}
-+
-+int loongson_crtc_enable_vblank(struct drm_crtc *crtc)
-+{
-+	struct loongson_crtc *lcrtc = to_loongson_crtc(crtc);
-+	struct loongson_device *ldev = lcrtc->ldev;
-+	u32 reg_val = ls7a_mm_rreg(ldev, FB_INT_REG);
-+
-+	if (lcrtc->crtc_id)
-+		reg_val |= FB_VSYNC1_ENABLE;
-+	else
-+		reg_val |= FB_VSYNC0_ENABLE;
-+
-+	ls7a_mm_wreg(ldev, FB_INT_REG, reg_val);
-+
-+	return 0;
-+}
-+
-+void loongson_crtc_disable_vblank(struct drm_crtc *crtc)
-+{
-+	struct loongson_crtc *lcrtc = to_loongson_crtc(crtc);
-+	struct loongson_device *ldev = lcrtc->ldev;
-+	u32 reg_val = ls7a_mm_rreg(ldev, FB_INT_REG);
-+
-+	if (lcrtc->crtc_id)
-+		reg_val &= ~FB_VSYNC1_ENABLE;
-+	else
-+		reg_val &= ~FB_VSYNC0_ENABLE;
-+
-+	ls7a_mm_wreg(ldev, FB_INT_REG, reg_val);
-+}
-+
+-	if (cached)
++	if (page && cached)
+ 		ion_pages_sync_for_device(NULL, page, PAGE_SIZE << order,
+ 					  DMA_BIDIRECTIONAL);
+ 	return page;
 -- 
-2.33.0
+2.26.3
 
 _______________________________________________
 devel mailing list
