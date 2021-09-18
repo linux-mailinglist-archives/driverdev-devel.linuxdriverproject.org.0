@@ -2,53 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57B9C410350
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Sep 2021 06:05:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B1154106C0
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Sep 2021 15:22:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7F9114081A;
-	Sat, 18 Sep 2021 04:05:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 69FCB404BA;
+	Sat, 18 Sep 2021 13:22:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hjaOS8mbkOnJ; Sat, 18 Sep 2021 04:05:03 +0000 (UTC)
+	with ESMTP id QjJiJjgbGW4H; Sat, 18 Sep 2021 13:22:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AA08340498;
-	Sat, 18 Sep 2021 04:05:02 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 160A14024B;
+	Sat, 18 Sep 2021 13:22:54 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1A3891BF2B3
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 18 Sep 2021 04:04:51 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 566781BF3F0
+ for <devel@linuxdriverproject.org>; Sat, 18 Sep 2021 13:22:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 06C44425DD
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 18 Sep 2021 04:04:51 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5261184374
+ for <devel@linuxdriverproject.org>; Sat, 18 Sep 2021 13:22:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7qlhNu9lfFBH
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 18 Sep 2021 04:04:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ghanzafargroup.tk (650681-cv00506.tmweb.ru [94.228.123.204])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D750C42588
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 18 Sep 2021 04:04:49 +0000 (UTC)
-Received: from [79.110.52.47] (unknown [79.110.52.47])
- by ghanzafargroup.tk (Postfix) with ESMTPSA id 1B7B483D79;
- Fri, 17 Sep 2021 19:34:51 +0300 (MSK)
-Authentication-Results: ghanzafargroup.tk;
- spf=pass (sender IP is 79.110.52.47) smtp.mailfrom=ghan@ghanzafargroup.tk
- smtp.helo=[79.110.52.47]
-Received-SPF: pass (ghanzafargroup.tk: connection is authenticated)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aBgQab8PcD_l for <devel@linuxdriverproject.org>;
+ Sat, 18 Sep 2021 13:22:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6BD5E8436E
+ for <devel@driverdev.osuosl.org>; Sat, 18 Sep 2021 13:22:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10110"; a="219754200"
+X-IronPort-AV: E=Sophos;i="5.85,304,1624345200"; d="scan'208";a="219754200"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2021 06:22:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,304,1624345200"; d="scan'208";a="531486836"
+Received: from lkp-server01.sh.intel.com (HELO 285e7b116627) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 18 Sep 2021 06:22:37 -0700
+Received: from kbuild by 285e7b116627 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mRaIe-0004uT-TU; Sat, 18 Sep 2021 13:22:36 +0000
+Date: Sat, 18 Sep 2021 21:22:00 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 65e31407caea9d361a4e7d657b86ccf321eb62c7
+Message-ID: <6145e7f8.h6pEZMTtYtH3pfQr%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Kindly Help
-To: Recipients <ghan@ghanzafargroup.tk>
-From: "Engr. Ahmad" <ghan@ghanzafargroup.tk>
-Date: Fri, 17 Sep 2021 09:34:48 -0700
-Message-Id: <20210918040451.06C44425DD@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,16 +63,185 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Account@osuosl.org, Optionsengr.ahmadghanzarfar@gmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Dear,
- How are you doing? My name is Engr. Ahmad Ghanzarfar. I am one of the board of directors of Ghanzafar Group of companies which is a family business. I am married with Two kids but my wife was killed by the Taliban. My Family is Under the Threat of Talibans for Our resolute A true Support for Democratic Government in Afghanistan. Due to the Current issue  in the Country, Many Families are running for their dear lives  as Talibans are Killing civilians, women and children. My brother and family has been assasinated by the Talibans and I am the next target because they want to take over our oil company and oil wells. I really need your assistant to relocate my family to your country as soon as possible. My family is in a hideout currently in Panjshir province of Afghanistan. Kindly assist me in this my trying time. 
-Thanks
-Engr. Ahmad Ghanzarfar
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 65e31407caea9d361a4e7d657b86ccf321eb62c7  staging: r8188eu: remove struct _io_ops
+
+elapsed time: 1354m
+
+configs tested: 153
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210918
+ia64                                defconfig
+powerpc                 mpc8313_rdb_defconfig
+mips                      pic32mzda_defconfig
+sh                          r7785rp_defconfig
+powerpc                      ppc6xx_defconfig
+arm                          simpad_defconfig
+powerpc                     tqm5200_defconfig
+arm                           h3600_defconfig
+powerpc                        warp_defconfig
+arm                       multi_v4t_defconfig
+arm                          pxa910_defconfig
+mips                   sb1250_swarm_defconfig
+arm                            zeus_defconfig
+powerpc                      tqm8xx_defconfig
+arm                        mvebu_v5_defconfig
+powerpc                     sequoia_defconfig
+arm                        mini2440_defconfig
+powerpc                       maple_defconfig
+arm                             pxa_defconfig
+arc                 nsimosci_hs_smp_defconfig
+arm                           tegra_defconfig
+sh                           se7780_defconfig
+powerpc                         ps3_defconfig
+parisc                              defconfig
+powerpc                  storcenter_defconfig
+powerpc                    gamecube_defconfig
+xtensa                  audio_kc705_defconfig
+arm                  colibri_pxa270_defconfig
+powerpc                     ppa8548_defconfig
+arm                         cm_x300_defconfig
+powerpc                    socrates_defconfig
+arm                        vexpress_defconfig
+powerpc                       eiger_defconfig
+powerpc                mpc7448_hpc2_defconfig
+mips                         cobalt_defconfig
+x86_64               randconfig-c001-20210918
+arm                  randconfig-c002-20210918
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nios2                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+arc                              allyesconfig
+s390                                defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                             allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20210917
+i386                 randconfig-a005-20210917
+i386                 randconfig-a006-20210917
+i386                 randconfig-a002-20210917
+i386                 randconfig-a003-20210917
+i386                 randconfig-a001-20210917
+x86_64               randconfig-a013-20210918
+x86_64               randconfig-a016-20210918
+x86_64               randconfig-a012-20210918
+x86_64               randconfig-a011-20210918
+x86_64               randconfig-a014-20210918
+x86_64               randconfig-a015-20210918
+i386                 randconfig-a016-20210916
+i386                 randconfig-a015-20210916
+i386                 randconfig-a011-20210916
+i386                 randconfig-a012-20210916
+i386                 randconfig-a013-20210916
+i386                 randconfig-a014-20210916
+i386                 randconfig-a016-20210918
+i386                 randconfig-a012-20210918
+i386                 randconfig-a011-20210918
+i386                 randconfig-a015-20210918
+i386                 randconfig-a013-20210918
+i386                 randconfig-a014-20210918
+riscv                randconfig-r042-20210916
+s390                 randconfig-r044-20210916
+arc                  randconfig-r043-20210916
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allyesconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                           allyesconfig
+
+clang tested configs:
+riscv                randconfig-c006-20210918
+x86_64               randconfig-c007-20210918
+powerpc              randconfig-c003-20210918
+mips                 randconfig-c004-20210918
+i386                 randconfig-c001-20210918
+arm                  randconfig-c002-20210918
+s390                 randconfig-c005-20210918
+x86_64               randconfig-a002-20210916
+x86_64               randconfig-a003-20210916
+x86_64               randconfig-a006-20210916
+x86_64               randconfig-a004-20210916
+x86_64               randconfig-a005-20210916
+x86_64               randconfig-a001-20210916
+i386                 randconfig-a004-20210918
+i386                 randconfig-a005-20210918
+i386                 randconfig-a002-20210918
+i386                 randconfig-a006-20210918
+i386                 randconfig-a001-20210918
+i386                 randconfig-a003-20210918
+x86_64               randconfig-a002-20210918
+x86_64               randconfig-a004-20210918
+x86_64               randconfig-a006-20210918
+x86_64               randconfig-a003-20210918
+x86_64               randconfig-a001-20210918
+x86_64               randconfig-a005-20210918
+x86_64               randconfig-a016-20210917
+x86_64               randconfig-a013-20210917
+x86_64               randconfig-a012-20210917
+x86_64               randconfig-a011-20210917
+x86_64               randconfig-a014-20210917
+x86_64               randconfig-a015-20210917
+i386                 randconfig-a016-20210917
+i386                 randconfig-a015-20210917
+i386                 randconfig-a011-20210917
+i386                 randconfig-a012-20210917
+i386                 randconfig-a013-20210917
+i386                 randconfig-a014-20210917
+hexagon              randconfig-r045-20210918
+hexagon              randconfig-r041-20210918
+hexagon              randconfig-r045-20210916
+hexagon              randconfig-r041-20210916
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
