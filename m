@@ -1,52 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C81A541425B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Sep 2021 09:11:06 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1779340480;
-	Wed, 22 Sep 2021 07:11:05 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xRvwWOSfIwUt; Wed, 22 Sep 2021 07:11:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8018840418;
-	Wed, 22 Sep 2021 07:11:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 79C7C1BF3FD
- for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 07:10:52 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 218B14148A2
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Sep 2021 14:17:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 69E5982B97
- for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 07:10:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 822828406A;
+	Wed, 22 Sep 2021 12:17:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4-Clu4d8jZBn for <devel@linuxdriverproject.org>;
- Wed, 22 Sep 2021 07:10:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from server8.equinoxes.fr (unknown [185.61.187.140])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DF56782B34
- for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 07:10:51 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by server8.equinoxes.fr (Postfix) with ESMTP id D52874A7FCF
- for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 09:09:55 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at server8.equinoxes.fr
-Received: from server8.equinoxes.fr ([127.0.0.1])
- by localhost (server8.equinoxes.fr [127.0.0.1]) (amavisd-new, port 10024)
- with LMTP id F5DOUOsHHtTU for <devel@linuxdriverproject.org>;
- Wed, 22 Sep 2021 09:09:55 +0200 (CEST)
-Received: by server8.equinoxes.fr (Postfix, from userid 5023)
- id 31CB24A80BF; Wed, 22 Sep 2021 09:05:56 +0200 (CEST)
-To: devel@linuxdriverproject.org
-Subject: General Sales Enquiries
-Date: Wed, 22 Sep 2021 09:05:56 +0200
-From: Robert Bounds <robert.bounds@mailfence.com>
-Message-ID: <2dca16ff0860071c597fcb977a35b15c@choquenet.com>
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KjRG-T1_Qgn1; Wed, 22 Sep 2021 12:17:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F86A83192;
+	Wed, 22 Sep 2021 12:17:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 70FE51BF3B0
+ for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 12:17:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5F06940139
+ for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 12:17:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DoMSCYNKqk6c for <devel@linuxdriverproject.org>;
+ Wed, 22 Sep 2021 12:17:28 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-oi1-x22e.google.com (mail-oi1-x22e.google.com
+ [IPv6:2607:f8b0:4864:20::22e])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 08846400FA
+ for <devel@driverdev.osuosl.org>; Wed, 22 Sep 2021 12:17:27 +0000 (UTC)
+Received: by mail-oi1-x22e.google.com with SMTP id w206so4119065oiw.4
+ for <devel@driverdev.osuosl.org>; Wed, 22 Sep 2021 05:17:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=txaCaZgnU8hF6eiTgv8iBXfE/atHmjvy/RfH6H4YP9c=;
+ b=bO0E2a79zNutjl+h2NtJKB+1OxpyUQmx9rg4dg/lTm1zUwyjJnyhuoY5Z583EKRUmf
+ y6+PcWETq2urIn8Abz5JQJ0GNpgzgq0diBoPewZxr9fnN3ThGEx18oOEceFq5TJWCZxg
+ TAzbKXfFPA7XpI7oKK55eYJX5TbESZMvhfQ9hZ3OAL32J3VQF6TbNDgINQu5qEj36DC2
+ xlEvsdI8OvEO7QgtZ+zCdnABkI+2M2Y7A6ZvaExl1tzc2f467nsOukgtAhoNQyKEK7OD
+ GvEvi860Ft4b+bTmdlVOdXqZWjuJsd9uDdDblmKRhY5QDi/L70Ip4qLon2CkLvPNPQKa
+ ym5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=txaCaZgnU8hF6eiTgv8iBXfE/atHmjvy/RfH6H4YP9c=;
+ b=42HumAi6Mu6Jqy9cAFEEvL1kSB9yCu5gMobaJTPYsi3t79b+edmNurfdkWz99kyqhv
+ 540HIGuuaTMpQGTDbGzRqo9zVlDgJXQoI2dVZjUoiz5gyN/CJxNqQ4pE1Zk6ybRpk/74
+ cbE+clwqieQOZIDp1Rk7DG/YrYt2lcqZXx+uLLyfYBW2pxijpcoZo3obDEmi08d6e6mW
+ SUyzYTvpjIx96o6Md9MqzoybHooRKasvt28jUPqb0y6hP5uEYUgvJO5XqR2WQ8rgEhr7
+ c5NCuhdkT2mf9FhWjbhb6YcfZqXlRYCKeKGMxBh3MsXiLaWGZxZO1P/58gV36zsGbf7X
+ SUuQ==
+X-Gm-Message-State: AOAM530grwHivXY4nGSFafwBbO2XZ7KR+smAN3qo+nfL9yIqOM9NiN43
+ SiEMTPbSykYM0d4ViGpfy0jZZepmijWaJqoJVEU=
+X-Google-Smtp-Source: ABdhPJxXWrGXKOlvezOVbM/EBc39ASKfXe0zA1rSWoBlJd2sj8zbwnbqEYsgn3IGz00R84yaj4oYRo9nahw8iTsgIe4=
+X-Received: by 2002:aca:645:: with SMTP id 66mr7851272oig.145.1632313046630;
+ Wed, 22 Sep 2021 05:17:26 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210911112115.47202-1-cs.os.kernel@gmail.com>
+ <YTyY6ZALBhCm47T6@kroah.com>
+ <CA+1SViD_my-MPyqXcQ2T=zxF8014u6N-n2Fqcbi9BJPfo3KaTA@mail.gmail.com>
+ <CA+1SViA9PN_uoykBtjukYGd-09=peWFCB147iSNnUMwtoT7b0w@mail.gmail.com>
+In-Reply-To: <CA+1SViA9PN_uoykBtjukYGd-09=peWFCB147iSNnUMwtoT7b0w@mail.gmail.com>
+From: Cheng Chao <cs.os.kernel@gmail.com>
+Date: Wed, 22 Sep 2021 20:17:15 +0800
+Message-ID: <CA+1SViDzyAsbQu7S+qKgLR7vS3wmA+MbQWZhV2rzdbLiFnxvsg@mail.gmail.com>
+Subject: Re: [PATCH] [PATCH 4.9] staging: android: ion: fix page is NULL
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,31 +84,140 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: purchasing@tamu-edu.com
+Cc: devel@driverdev.osuosl.org, arve@android.com, stable@vger.kernel.org,
+ riandrews@android.com, labbott@redhat.com,
+ Sumit Semwal <sumit.semwal@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Sir/Madam,
- We would like to request a quote for the below products:
+I notice that v4.9.283 has released, but this patch is not merged.
+It's exactly a bug.
 
-UNITS                                DESCRIPTION
-5                                    Ubiquiti airFiber AF24HD - wireless bridge
-50                                   Seagate ST6000VXA01 Skyhawk 3.5 Hard Drive, 6TB, SATA 6Gb/s 
-50                                   Seagate ST4000VXA07 Skyhawk 3.5 Hard Drive, 4TB, SATA 6Gb/s 
-5                                    Microsoft 15" Multi-Touch Surface Book  3, Intel Core i7, 32 GB RAM - 1 TB SSD - En
-
-We would also need to know if they are all in stock and if not, please advise on when products will be available to ship to us.
-Payment per University Policy is net 30 days from date of invoice , payment terms should be clearly stated on your official quotation to know you accept our terms.
-Looking forward to hearing back from you.
-Cordially
-Robert Bounds - Director Of Purchasing
-Texas A&M University
-purchasing@tamu-edu.com
-robert.bounds@mailfence.com
-Tel/Fax:  (979) 272-5815
-
+On Sat, Sep 11, 2021 at 10:40 PM Cheng Chao <cs.os.kernel@gmail.com> wrote:
+>
+> the bug has been introduced by the patch:
+>    https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/drivers/staging/android/ion/ion_system_heap.c?h=v4.9.282&id=e7f63771b60e7802c5a9b437c5ab1a8e33a0bb35
+>
+> On Sat, Sep 11, 2021 at 10:20 PM Cheng Chao <cs.os.kernel@gmail.com> wrote:
+> >
+> > for longterm v4.4.283, the code has checked if (!page)
+> >    https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/staging/android/ion/ion_system_heap.c?h=v4.4.283
+> >
+> >
+> > static struct page *alloc_buffer_page(struct ion_system_heap *heap,
+> >      struct ion_buffer *buffer,
+> >      unsigned long order)
+> > {
+> > ...
+> > if (!cached) {
+> > page = ion_page_pool_alloc(pool);
+> > } else {
+> > ...
+> > page = alloc_pages(gfp_flags | __GFP_COMP, order);
+> > if (!page)    <---
+> >    return NULL; <---
+> >
+> > ion_pages_sync_for_device(NULL, page, PAGE_SIZE << order,
+> > ...
+> > }
+> >
+> > ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+> > for longterm v4.14.246, has no ion_pages_sync_for_device after
+> > ion_page_pool_alloc
+> > https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/staging/android/ion/ion_system_heap.c?h=v4.14.246
+> >
+> >
+> > static struct page *alloc_buffer_page(struct ion_system_heap *heap,
+> >      struct ion_buffer *buffer,
+> >      unsigned long order)
+> > {
+> > ...
+> > if (!cached)
+> > pool = heap->uncached_pools[order_to_index(order)];
+> > else
+> > pool = heap->cached_pools[order_to_index(order)];
+> >
+> > page = ion_page_pool_alloc(pool);
+> >
+> > return page;
+> > }
+> >
+> > ----------------------------------------------------------------------------------------------------------------------------------------------------------
+> > after longterm v4.19.206(include),
+> >
+> > static struct page *alloc_buffer_page(struct ion_system_heap *heap,
+> >      struct ion_buffer *buffer,
+> >      unsigned long order)
+> > {
+> > struct ion_page_pool *pool = heap->pools[order_to_index(order)];
+> >
+> > return ion_page_pool_alloc(pool);
+> > }
+> >
+> > On Sat, Sep 11, 2021 at 7:54 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+> > >
+> > > On Sat, Sep 11, 2021 at 07:21:15PM +0800, Cheng Chao wrote:
+> > > > kernel panic is here:
+> > > >
+> > > > Unable to handle kernel paging request at virtual address b0380000
+> > > > pgd = d9d94000
+> > > > [b0380000] *pgd=00000000
+> > > > Internal error: Oops: 2805 [#1] PREEMPT SMP ARM
+> > > > ...
+> > > > task: daa2dd00 task.stack: da194000
+> > > > PC is at v7_dma_clean_range+0x1c/0x34
+> > > > LR is at arm_dma_sync_single_for_device+0x44/0x58
+> > > > pc : [<c011aa0c>]    lr : [<c011645c>]    psr: 200f0013
+> > > > sp : da195da0  ip : dc1f9000  fp : c1043dc4
+> > > > r10: 00000000  r9 : c16f1f58  r8 : 00000001
+> > > > r7 : c1621f94  r6 : c0116418  r5 : 00000000  r4 : c011aa58
+> > > > r3 : 0000003f  r2 : 00000040  r1 : b0480000  r0 : b0380000
+> > > > Flags: nzCv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment none
+> > > > Control: 10c5383d  Table: 19d9406a  DAC: 00000051
+> > > > ...
+> > > > [<c011aa0c>] (v7_dma_clean_range) from [<c011645c>] (arm_dma_sync_single_for_device+0x44/0x58)
+> > > > [<c011645c>] (arm_dma_sync_single_for_device) from [<c0117088>] (arm_dma_sync_sg_for_device+0x50/0x7c)
+> > > > [<c0117088>] (arm_dma_sync_sg_for_device) from [<c0c033c4>] (ion_pages_sync_for_device+0xb0/0xec)
+> > > > [<c0c033c4>] (ion_pages_sync_for_device) from [<c0c054ac>] (ion_system_heap_allocate+0x2a0/0x2e0)
+> > > > [<c0c054ac>] (ion_system_heap_allocate) from [<c0c02c78>] (ion_alloc+0x12c/0x494)
+> > > > [<c0c02c78>] (ion_alloc) from [<c0c03eac>] (ion_ioctl+0x510/0x63c)
+> > > > [<c0c03eac>] (ion_ioctl) from [<c027c4b0>] (do_vfs_ioctl+0xa8/0x9b4)
+> > > > [<c027c4b0>] (do_vfs_ioctl) from [<c027ce28>] (SyS_ioctl+0x6c/0x7c)
+> > > > [<c027ce28>] (SyS_ioctl) from [<c0108a40>] (ret_fast_syscall+0x0/0x48)
+> > > > Code: e3a02004 e1a02312 e2423001 e1c00003 (ee070f3a)
+> > > > ---[ end trace 89278304932c0e87 ]---
+> > > > Kernel panic - not syncing: Fatal exception
+> > > >
+> > > > Signed-off-by: Cheng Chao <cs.os.kernel@gmail.com>
+> > > > ---
+> > > >  drivers/staging/android/ion/ion_system_heap.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
+> > > > index 22c481f2ae4f..2a35b99cf628 100644
+> > > > --- a/drivers/staging/android/ion/ion_system_heap.c
+> > > > +++ b/drivers/staging/android/ion/ion_system_heap.c
+> > > > @@ -75,7 +75,7 @@ static struct page *alloc_buffer_page(struct ion_system_heap *heap,
+> > > >
+> > > >       page = ion_page_pool_alloc(pool);
+> > > >
+> > > > -     if (cached)
+> > > > +     if (page && cached)
+> > > >               ion_pages_sync_for_device(NULL, page, PAGE_SIZE << order,
+> > > >                                         DMA_BIDIRECTIONAL);
+> > > >       return page;
+> > > > --
+> > > > 2.26.3
+> > > >
+> > >
+> > > Why is this just a 4.9 patch?  Ion didn't get removed until 5.11, so
+> > > wouldn't this be an issue for anything 5.10 and older?
+> > >
+> > > thanks,
+> > >
+> > > greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
