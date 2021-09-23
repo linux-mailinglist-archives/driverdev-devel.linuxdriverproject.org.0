@@ -1,74 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 185D14153EC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Sep 2021 01:32:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11ED74159C0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Sep 2021 10:05:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 40F276150B;
-	Wed, 22 Sep 2021 23:32:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3D20141600;
+	Thu, 23 Sep 2021 08:05:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eW0xXezAjlJ1; Wed, 22 Sep 2021 23:32:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Kq6k1tUpyRGw; Thu, 23 Sep 2021 08:05:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 67094614CC;
-	Wed, 22 Sep 2021 23:32:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 86F48404FE;
+	Thu, 23 Sep 2021 08:05:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 62B0D1BF38B
- for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 23:32:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C19E31BF325
+ for <devel@linuxdriverproject.org>; Thu, 23 Sep 2021 08:05:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4339060BBF
- for <devel@linuxdriverproject.org>; Wed, 22 Sep 2021 23:32:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BD3D9614D7
+ for <devel@linuxdriverproject.org>; Thu, 23 Sep 2021 08:05:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AMCOUKt63OfM for <devel@linuxdriverproject.org>;
- Wed, 22 Sep 2021 23:32:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com
- [IPv6:2a00:1450:4864:20::42a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8A0B360B90
- for <devel@driverdev.osuosl.org>; Wed, 22 Sep 2021 23:32:37 +0000 (UTC)
-Received: by mail-wr1-x42a.google.com with SMTP id u18so11749365wrg.5
- for <devel@driverdev.osuosl.org>; Wed, 22 Sep 2021 16:32:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=/oaUPZNu78Mtn0od8873S9rsmSItTVGj8iF52jAOkLQ=;
- b=Y8JX3+VHIGWdeTHHIBgh9H7G9TIN11znk9MXgj4Wmz4ZzUoEhv9BS5GjQje+bgNQOL
- WlNQOV9ZE9afVYL2l0WnsHcMNcL1iXY+j7SS2dU5Z/OyfjsLzSJmCoQGF0d1X6EotCk+
- pMEba2S7sSqk6XSJJOXeq+30etdFaMfx/5y+4bkmF1jUPwRgbUYmVBkD4atP2CG6C/sb
- +QcciTPhVrB2f3MfyS1Epx3uyzzj+NdesVYgu7E9uiKLZKBbp0a3tvMe0yCR1PtmhTJm
- ioalMILBBpbT2TUcu9oTWlUJ3jvTg3CLy+jc1HjvCyvGZKG1ramAuhPafCVw2zCRtxij
- jTWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to:content-transfer-encoding;
- bh=/oaUPZNu78Mtn0od8873S9rsmSItTVGj8iF52jAOkLQ=;
- b=vhovuRrhGqYigvrZy9Lg+y32BRgxISyyuQC1EOUbFdmfCwqTCjBNjCK9rFyCsPI0OS
- PQl8yIbi9KXecDypeI3DprC7iPBzdKLDUjzl+CjMl9/tWR6YM+HZavj+SjUbNL7fInpz
- 4EEZbPcsEdc/1o+uCH+QXwc0y6uFYikLJxiUoiOyqhwJoNcLaH0mKF8mNicmLlIPrnhj
- 8RHMuqY7EKDoZsVaGeQZGgx6/xHLCgNr6n/naQxjP762sdwf8KUXvx83Zhzg4d0XRS3O
- 9Qd1PeFxlE++HkM5bWf4sgtZT+HXUERto3dwe0fGdmhjZOv5DjXE7ONLXSkizpXvVcdQ
- eZhw==
-X-Gm-Message-State: AOAM532e+u1W5H9spx1pgJwkCePaR7BIH38qjIyvD4xKlDlMuL8Tt7hd
- qsiv/zHd5AONwahnIt6L66RYFXloCTlxeUteZYE=
-X-Google-Smtp-Source: ABdhPJxCX3RvETq13kAOiSChVUP8l16H8T4ZRHcbsv52PmKEZ3u45ndadDsAOx/yA3/EejOJ3TPg5sA3zNfPfg+LInU=
-X-Received: by 2002:a7b:cd15:: with SMTP id f21mr1425787wmj.16.1632353555686; 
- Wed, 22 Sep 2021 16:32:35 -0700 (PDT)
+ with ESMTP id 2AG42Bsx2dCg for <devel@linuxdriverproject.org>;
+ Thu, 23 Sep 2021 08:05:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5B8B2608A2
+ for <devel@driverdev.osuosl.org>; Thu, 23 Sep 2021 08:05:03 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 753936109E;
+ Thu, 23 Sep 2021 08:05:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1632384303;
+ bh=+MUcDaRauyoZr0zXBCwHzF9N6GWx8r0/z+wnSzjd1nY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=gYNos9wn7K206ij9GbNi5JAKjJ9HsM9x4OcuLbORT3a4AQicvliAxs+/LJGYc8t7s
+ 3hcnS7Bekw6jFIpI3CUnujf0hTzy91pHcqxlu6A4c2KjVDo+SU1/sJl8cN8YspLbI2
+ Ri22mCDUnBR81Jdnnagi6zkGi7KJtC/829dpbWMI=
+Date: Thu, 23 Sep 2021 10:05:00 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Cheng Chao <cs.os.kernel@gmail.com>
+Subject: Re: [PATCH] [PATCH 4.9] staging: android: ion: fix page is NULL
+Message-ID: <YUw1LFGXYUcZIlJZ@kroah.com>
+References: <20210911112115.47202-1-cs.os.kernel@gmail.com>
+ <YTyY6ZALBhCm47T6@kroah.com>
+ <CA+1SViD_my-MPyqXcQ2T=zxF8014u6N-n2Fqcbi9BJPfo3KaTA@mail.gmail.com>
+ <CA+1SViA9PN_uoykBtjukYGd-09=peWFCB147iSNnUMwtoT7b0w@mail.gmail.com>
+ <CA+1SViDzyAsbQu7S+qKgLR7vS3wmA+MbQWZhV2rzdbLiFnxvsg@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a7b:c052:0:0:0:0:0 with HTTP; Wed, 22 Sep 2021 16:32:35
- -0700 (PDT)
-From: Jackie Fowler <jackiefowler597@gmail.com>
-Date: Wed, 22 Sep 2021 23:32:35 +0000
-X-Google-Sender-Auth: nI3EbtUQh1v9ibD-r8hMlHmqfBA
-Message-ID: <CAK+X-7XO66VzoA_AEOqug02HR2B3S=sC=7Xw-FbLp_5EjGkwRg@mail.gmail.com>
-Subject: Good Day My beloved,
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <CA+1SViDzyAsbQu7S+qKgLR7vS3wmA+MbQWZhV2rzdbLiFnxvsg@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,56 +67,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, arve@android.com, stable@vger.kernel.org,
+ riandrews@android.com, labbott@redhat.com,
+ Sumit Semwal <sumit.semwal@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8sCgogICBJIHNlbnQgdGhpcyBtYWlsIHByYXlpbmcgaXQgd2lsbCBnZXQgdG8geW91IGlu
-IGEgZ29vZCBjb25kaXRpb24gb2YKaGVhbHRoLCBzaW5jZSBJIG15c2VsZiBhcmUgaW4gYSB2ZXJ5
-IGNyaXRpY2FsIGhlYWx0aCBjb25kaXRpb24gaW4Kd2hpY2ggSSBzbGVlcCBldmVyeSBuaWdodCB3
-aXRob3V0IGtub3dpbmcgaWYgSSBtYXkgYmUgYWxpdmUgdG8gc2VlIHRoZQpuZXh0IGRheS4gSSBi
-cmluZyBwZWFjZSBhbmQgbG92ZSB0byB5b3UuIEl0IGlzIGJ5IHRoZSBncmFjZSBvZiBHb2QsIEkK
-aGFkIG5vIGNob2ljZSB0aGFuIHRvIGRvIHdoYXQgaXMgbGF3ZnVsIGFuZCByaWdodCBpbiB0aGUg
-c2lnaHQgb2YgR29kCmZvciBldGVybmFsIGxpZmUgYW5kIGluIHRoZSBzaWdodCBvZiBtYW4sIGZv
-ciB3aXRuZXNzIG9mIEdvZOKAmXMgbWVyY3kKYW5kIGdsb3J5IHVwb24gbXkgbGlmZS4gSSBhbSBN
-cnMuRm93bGVyLkphY2tpZSxhIHdpZG93IGFuZCBjaXRpemVuIG9mCkNhbmFkYS4gSSBhbSBzdWZm
-ZXJpbmcgZnJvbSBhIGxvbmcgdGltZSBicmFpbiB0dW1vciwgSXQgaGFzIGRlZmlsZWQKYWxsIGZv
-cm1zIG9mIG1lZGljYWwgdHJlYXRtZW50LCBhbmQgcmlnaHQgbm93IEkgaGF2ZSBhYm91dCBhIGZl
-dwptb250aHMgdG8gbGVhdmUsIGFjY29yZGluZyB0byBtZWRpY2FsIGV4cGVydHMuIFRoZSBzaXR1
-YXRpb24gaGFzCmdvdHRlbiBjb21wbGljYXRlZCByZWNlbnRseSB3aXRoIG15IGluYWJpbGl0eSB0
-byBoZWFyIHByb3BlciwgYW0KY29tbXVuaWNhdGluZyB3aXRoIHlvdSB3aXRoIHRoZSBoZWxwIG9m
-IHRoZSBjaGllZiBudXJzZSBoZXJlaW4gdGhlCmhvc3BpdGFsLCBmcm9tIGFsbCBpbmRpY2F0aW9u
-IG15IGNvbmRpdGlvbnMgaXMgcmVhbGx5IGRldGVyaW9yYXRpbmcKYW5kIGl0IGlzIHF1aXRlIG9i
-dmlvdXMgdGhhdCwgYWNjb3JkaW5nIHRvIG15IGRvY3RvcnMgdGhleSBoYXZlCmFkdmlzZWQgbWUg
-dGhhdCBJIG1heSBub3QgbGl2ZSB0b28gbG9uZywgQmVjYXVzZSB0aGlzIGlsbG5lc3MgaGFzCmdv
-dHRlbiB0byBhIHZlcnkgYmFkIHN0YWdlLiBJIHBsZWFkIHRoYXQgeW91IHdpbGwgbm90IGV4cG9z
-ZSBvciBiZXRyYXkKdGhpcyB0cnVzdCBhbmQgY29uZmlkZW5jZSB0aGF0IEkgYW0gYWJvdXQgdG8g
-cmVwb3NlIG9uIHlvdSBmb3IgdGhlCm11dHVhbCBiZW5lZml0IG9mIHRoZSBvcnBoYW5zIGFuZCB0
-aGUgbGVzcyBwcml2aWxlZ2UuIEkgaGF2ZSBzb21lCmZ1bmRzIEkgaW5oZXJpdGVkIGZyb20gbXkg
-bGF0ZSBodXNiYW5kLCB0aGUgc3VtIG9mICgkIDEyLDUwMCwwMDAuMDAKRG9sbGFycykuSGF2aW5n
-IGtub3duIG15IGNvbmRpdGlvbiwgSSBkZWNpZGVkIHRvIGRvbmF0ZSB0aGlzIGZ1bmQgdG8KeW91
-IGJlbGlldmluZyB0aGF0IHlvdSB3aWxsIHV0aWxpemUgaXQgdGhlIHdheSBpIGFtIGdvaW5nIHRv
-IGluc3RydWN0CmhlcmVpbi4gSSBuZWVkIHlvdSB0byBhc3Npc3QgbWUgYW5kIHJlY2xhaW0gdGhp
-cyBtb25leSBhbmQgdXNlIGl0IGZvcgpDaGFyaXR5IHdvcmtzLCBmb3Igb3JwaGFuYWdlcyBhbmQg
-Z2l2ZXMganVzdGljZSBhbmQgaGVscCB0byB0aGUgcG9vciwKbmVlZHkgYW5kIHdpZG93cyBzYXlz
-IFRoZSBMb3JkLiIgSmVyZW1pYWggMjI6MTUtMTYu4oCcIGFuZCBhbHNvIGJ1aWxkCnNjaG9vbHMg
-Zm9yIGxlc3MgcHJpdmlsZWdlIHRoYXQgd2lsbCBiZSBuYW1lZCBhZnRlciBteSBsYXRlIGh1c2Jh
-bmQgaWYKcG9zc2libGUgYW5kIHRvIHByb21vdGUgdGhlIHdvcmQgb2YgR29kIGFuZCB0aGUgZWZm
-b3J0IHRoYXQgdGhlIGhvdXNlCm9mIEdvZCBpcyBtYWludGFpbmVkLiBJIGRvIG5vdCB3YW50IGEg
-c2l0dWF0aW9uIHdoZXJlIHRoaXMgbW9uZXkgd2lsbApiZSB1c2VkIGluIGFuIHVuZ29kbHkgbWFu
-bmVyLiBUaGF0J3Mgd2h5IEknbSB0YWtpbmcgdGhpcyBkZWNpc2lvbi4gSSdtCm5vdCBhZnJhaWQg
-b2YgZGVhdGgsIHNvIEkga25vdyB3aGVyZSBJJ20gZ29pbmcuIEkgYWNjZXB0IHRoaXMgZGVjaXNp
-b24KYmVjYXVzZSBJIGRvIG5vdCBoYXZlIGFueSBjaGlsZCB3aG8gd2lsbCBpbmhlcml0IHRoaXMg
-bW9uZXkgYWZ0ZXIgSQpkaWUuIFBsZWFzZSBJIHdhbnQgeW91ciBzaW5jZXJlbHkgYW5kIHVyZ2Vu
-dCBhbnN3ZXIgdG8ga25vdyBpZiB5b3UKd2lsbCBiZSBhYmxlIHRvIGV4ZWN1dGUgdGhpcyBwcm9q
-ZWN0IGZvciB0aGUgZ2xvcnkgb2YgR29kLCBhbmQgSSB3aWxsCmdpdmUgeW91IG1vcmUgaW5mb3Jt
-YXRpb24gb24gaG93IHRoZSBmdW5kIHdpbGwgYmUgdHJhbnNmZXJyZWQgdG8geW91cgpiYW5rIGFj
-Y291bnQuIE1heSB0aGUgZ3JhY2UsIHBlYWNlLCBsb3ZlIGFuZCB0aGUgdHJ1dGggaW4gdGhlIFdv
-cmQgb2YKR29kIGJlIHdpdGggeW91IGFuZCBhbGwgdGhvc2UgdGhhdCB5b3UgbG92ZSBhbmQgY2Fy
-ZSBmb3IuCkknbSB3YWl0aW5nIGZvciB5b3VyIGltbWVkaWF0ZSByZXBseS4KQmVzdCBSZWdhcmQn
-cyAuCk1ycy5Gb3dsZXIuSmFja2llLgpXcml0dGluZyBGcm9tIHRoZSBob3NwaXRhbC4KTWF5IEdv
-ZCBCbGVzcyB5b3UsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+On Wed, Sep 22, 2021 at 08:17:15PM +0800, Cheng Chao wrote:
+> I notice that v4.9.283 has released, but this patch is not merged.
+> It's exactly a bug.
+
+Can you please resend this and include all of the information in this
+thread in the changelog comment explaining why this is only needed for
+this one branch?  Trying to piece it all together on my own doesn't work
+well :)
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
