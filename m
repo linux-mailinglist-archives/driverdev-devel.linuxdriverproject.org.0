@@ -1,55 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E8A64184D3
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Sep 2021 00:03:57 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DDCE4185CA
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Sep 2021 05:06:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1A13040397;
-	Sat, 25 Sep 2021 22:03:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 704F440288;
+	Sun, 26 Sep 2021 03:06:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9tXw3U31vhnE; Sat, 25 Sep 2021 22:03:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LyTrAZs1-Lw7; Sun, 26 Sep 2021 03:06:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 48E3A402AA;
-	Sat, 25 Sep 2021 22:03:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A986D40218;
+	Sun, 26 Sep 2021 03:06:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EAC5E1BF29E
- for <devel@linuxdriverproject.org>; Sat, 25 Sep 2021 22:03:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4B6071BF3E5
+ for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 03:06:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D82DB82496
- for <devel@linuxdriverproject.org>; Sat, 25 Sep 2021 22:03:43 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4486782456
+ for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 03:06:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=amazonson.tk
+ dkim=pass (2048-bit key) header.d=chcc.health
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DJ0w2v7EQoOJ for <devel@linuxdriverproject.org>;
- Sat, 25 Sep 2021 22:03:43 +0000 (UTC)
+ with ESMTP id IDo0k5DrjtIl for <devel@linuxdriverproject.org>;
+ Sun, 26 Sep 2021 03:06:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from amazonson.tk (amazonson.tk [209.141.36.200])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5A00882444
- for <devel@driverdev.osuosl.org>; Sat, 25 Sep 2021 22:03:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=key; d=amazonson.tk;
- h=Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To:Message-ID;
- bh=lgpWq+LnggODgemzGEUm7PMbxqE=;
- b=VD+Pu1emAP1eGwX+B9Wpb6sja3EWFxABw/N1grWxGTRMwf/FjqVritECrThieqMGOx70nAoDpuh4
- tngyU48yMP3rnmMYrVDxSN3NvlsBLdeOTASj4vspD1CFoQRjtXxDgZk89FNwMOL55FLRd3QvDP3h
- 2cakgw2/F5mRMY5rn3k=
-Received: from info.14p54xjy1kgu5m1lxoc4mq0acd.mx.internal.cloudapp.net
- (40.74.71.179) by amazonson.tk id h9uebu0001gc for
- <devel@driverdev.osuosl.org>;
- Sat, 25 Sep 2021 15:03:42 -0700 (envelope-from <server@amazonson.tk>)
+Received: from mail.chcc.health (202-128-26-74.saipan.com [202.128.26.74])
+ by smtp1.osuosl.org (Postfix) with SMTP id 865F282446
+ for <devel@driverdev.osuosl.org>; Sun, 26 Sep 2021 03:06:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.chcc.health (Postfix) with ESMTP id CE3581009D0C;
+ Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
+Received: from mail.chcc.health ([127.0.0.1])
+ by localhost (mail.chcc.health [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id t2fDuvoWAjsa; Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.chcc.health (Postfix) with ESMTP id 7DECF1009D77;
+ Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.chcc.health 7DECF1009D77
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chcc.health;
+ s=040CBB8E-0612-11EB-BEC8-E1D98334772F; t=1632603714;
+ bh=zL0K4ba0fAtyhkJSRfGjLwV1eXhcwDspLDH16HGZaTw=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=IG8ONMYDb/UIxyEssj0zc8TffGl/2veZcPjuR0IKScMncuMJZiUpTyOc+TtbNwvQM
+ Zc7DH6P8Zq58+oypXSm/ZIIGereX4PTWeYwhMvSxPvyffRQX6RuSKeBvKwBIixPq7B
+ e9dvtjoJjcphMzDTk+SEVH0UG2mg6YHjLoPf/7l59L/gQxbusm4ASXzeNb1TrY2k2Y
+ wQkVmVMoZIcQpMZrjUMHrONizTcZy9LVBiT9P2AT9qkRVXn2MRI/hU+XdLCy6xgxth
+ lraAfyj7/ltAcnJofBfktF2pKT2UffotkQfwK7LAufk+WI/vR6V2hUcUCMLO/3lSXZ
+ DNhpxcvdOd+9w==
+X-Virus-Scanned: amavisd-new at chcc.health
+Received: from mail.chcc.health ([127.0.0.1])
+ by localhost (mail.chcc.health [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id zrL4B_zs25aj; Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
+Received: from info.54xpti1o15rurlhs03whlwys2c.mx.internal.cloudapp.net
+ (unknown [40.74.137.18])
+ by mail.chcc.health (Postfix) with ESMTPSA id 9B86C1009BB4;
+ Sun, 26 Sep 2021 07:01:49 +1000 (ChST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Comfidential..
-To: Recipients <server@amazonson.tk>
-From: "Andujar Jose Ramon Jr" <server@amazonson.tk>
-Date: Sat, 25 Sep 2021 22:03:33 +0000
-Message-ID: <0.0.5.F1A.1D7B25934058534.0@amazonson.tk>
+Subject: Thanks For Understanding
+To: Recipients <immunization@chcc.health>
+From: "Ms. Reem Al-Hashimi" <immunization@chcc.health>
+Date: Sat, 25 Sep 2021 21:01:42 +0000
+Message-Id: <20210925210149.9B86C1009BB4@mail.chcc.health>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,39 +80,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: joseramonjr1@daum.net
+Reply-To: remmhashimi@kakao.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Sir/Madam,
+Hello Sir/Ma,
 
-How are you doing today? As strange as this mail may seems, I would like you to receive it in good fate even though we haven't met before now. My name is Andujar Jose Ramon Jr, a Sergeant in American Army and i served in Afghanistan from 2010 until the unfortunate takeover of the Talibans in August this year.
+My name is Reem E. A, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
 
-During my stay in Afghanistan, I and some of my colleaques found an oil vessel abandoned by oil thivies in a lake between Afghanistan and Turkey so we repaired the vessel and through the information we got in the vessel we contacted the buyers who directed us on how to get the crude oil to the them. Because of the nature of the business and our jobs we did not want to transfer the money to the US so, we decided to open a private EXCREW account in Turkey without a beneficiary details to enable us to transfer it to anyone we may choose to be the beneficiary.
+I"m serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-The total Amount in this deal is $24.7m {twenty four million, seven hondred thousand US dollars} and you stand a chance of getting %20 of the total sum as compensation while the %80 will be used for an investment that you will handle and benefit from the proceeds. This sounds like a joke right? Well, it is not a joke, so it need to be taken seriously.
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
 
-In order to start the pepper work in the bank with your name, i would like to have the following details about you if you would like to be part of this.
 
-1. FULL NAME:
-2. YOUR AGE:
-3. SEX:
-4. NATIONALITY:
-5. COUNTRY OF RESIDENCE:
-6. TELEPHONE NUMBER:
-7. YOUR MARITAL STATUS:
-8. YOUR OCCUPATION:
-9. CURRENT ADDRESS:
-10.COPY OF ID
+If you can handle the fund in a good investment.Reply to: reeninvestor111@kakao.com
 
-As soon as i receives the above requrements, i will send it to the bank and also open a communication between you and the bank for better communication. In order for us to succeed in this transaction, i would want you to handle this confidentail. No word of this should for any reason get to any ear. I want to believe that i can trust you
-
-I will be waiting for your earliest response to my private Email: andujarjoseramonjr@yandex.com
-
-Best Regards,
-Andujar Jose Ramon Jr
+Regards,
+Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
