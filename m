@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DDCE4185CA
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Sep 2021 05:06:44 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63532418817
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Sep 2021 12:24:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 704F440288;
-	Sun, 26 Sep 2021 03:06:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A998C403B5;
+	Sun, 26 Sep 2021 10:24:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LyTrAZs1-Lw7; Sun, 26 Sep 2021 03:06:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hykb3wptgyIL; Sun, 26 Sep 2021 10:24:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A986D40218;
-	Sun, 26 Sep 2021 03:06:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 13D854028E;
+	Sun, 26 Sep 2021 10:24:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4B6071BF3E5
- for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 03:06:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B29441BF48C
+ for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 10:24:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4486782456
- for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 03:06:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AF2AF4028E
+ for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 10:24:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=chcc.health
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IDo0k5DrjtIl for <devel@linuxdriverproject.org>;
- Sun, 26 Sep 2021 03:06:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.chcc.health (202-128-26-74.saipan.com [202.128.26.74])
- by smtp1.osuosl.org (Postfix) with SMTP id 865F282446
- for <devel@driverdev.osuosl.org>; Sun, 26 Sep 2021 03:06:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.chcc.health (Postfix) with ESMTP id CE3581009D0C;
- Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
-Received: from mail.chcc.health ([127.0.0.1])
- by localhost (mail.chcc.health [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id t2fDuvoWAjsa; Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.chcc.health (Postfix) with ESMTP id 7DECF1009D77;
- Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.chcc.health 7DECF1009D77
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chcc.health;
- s=040CBB8E-0612-11EB-BEC8-E1D98334772F; t=1632603714;
- bh=zL0K4ba0fAtyhkJSRfGjLwV1eXhcwDspLDH16HGZaTw=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=IG8ONMYDb/UIxyEssj0zc8TffGl/2veZcPjuR0IKScMncuMJZiUpTyOc+TtbNwvQM
- Zc7DH6P8Zq58+oypXSm/ZIIGereX4PTWeYwhMvSxPvyffRQX6RuSKeBvKwBIixPq7B
- e9dvtjoJjcphMzDTk+SEVH0UG2mg6YHjLoPf/7l59L/gQxbusm4ASXzeNb1TrY2k2Y
- wQkVmVMoZIcQpMZrjUMHrONizTcZy9LVBiT9P2AT9qkRVXn2MRI/hU+XdLCy6xgxth
- lraAfyj7/ltAcnJofBfktF2pKT2UffotkQfwK7LAufk+WI/vR6V2hUcUCMLO/3lSXZ
- DNhpxcvdOd+9w==
-X-Virus-Scanned: amavisd-new at chcc.health
-Received: from mail.chcc.health ([127.0.0.1])
- by localhost (mail.chcc.health [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id zrL4B_zs25aj; Sun, 26 Sep 2021 07:01:54 +1000 (ChST)
-Received: from info.54xpti1o15rurlhs03whlwys2c.mx.internal.cloudapp.net
- (unknown [40.74.137.18])
- by mail.chcc.health (Postfix) with ESMTPSA id 9B86C1009BB4;
- Sun, 26 Sep 2021 07:01:49 +1000 (ChST)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jfKe6T2CoMlx for <devel@linuxdriverproject.org>;
+ Sun, 26 Sep 2021 10:24:06 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x543.google.com (mail-ed1-x543.google.com
+ [IPv6:2a00:1450:4864:20::543])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 05B8740284
+ for <devel@driverdev.osuosl.org>; Sun, 26 Sep 2021 10:24:05 +0000 (UTC)
+Received: by mail-ed1-x543.google.com with SMTP id bx4so56009414edb.4
+ for <devel@driverdev.osuosl.org>; Sun, 26 Sep 2021 03:24:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:sender:from:date:message-id:subject:to;
+ bh=Qdp0SHs3xmfRjgLIyqNwEa9EGz3sQom2u8TOqtBT/Zc=;
+ b=AZ98xo9kQAkhjANdTIDtYXX7Ayr/IxZMc6qVbEXxVQEgpvRQXpX8TGuPobd325zFlf
+ MiG+fyI7BHyj1x8SgRukb1fNAsjpCgOLqv+ocHw36yS9/acBcpuxrOxKjunm13oldYuO
+ 3BndWz7JH3NoZ6Ntizd4utxOjfWUtk6VDZHpFybSrM2ty14F0b3FozmTXkyB8Ps7KoqE
+ KqxNcjAiHHRZ9kKTquoIzwGjL1FHlukfNUCiwpThxV68LlfR9UtbiH/oq3kAyVaQfZGO
+ jKUUkGihMGEJX7Yv8iTQh6PF/NVIr3LHzQta4MLWDQi8tmdrBSoI/o7ZYp4OMcB1QqLA
+ EqPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
+ :to; bh=Qdp0SHs3xmfRjgLIyqNwEa9EGz3sQom2u8TOqtBT/Zc=;
+ b=q9Uzt46wHKGeOlykpjH74XLOKBKiviCwiAgBA4Km4eWH3FCwBrwIbkEU/MI3c2syu6
+ HAFmKgGSIL1+tq9sExyyfpg6v7iEZCFgJrqYpKs3CRvnmayuN1nsmJr9J7wd8X4YuBJ8
+ MyFXvMwbLT41cU11W7/ZnNu/H3UXAoljso8FSZlUnyVjmS9T321jywbOc5E+OXpg/OZ4
+ pUS1iTBHbi+7qb4Obl4jkl9O8I8/SPJcfP2llEjP8uM+VwbI54rATS5n57pojr+3kxF/
+ Vmp/DlPGg/WNiWSzyX8HO8uu20/Yv194v781oLschbe/dzYnW5AynSVL9vAsPdqdV9fb
+ Fr3A==
+X-Gm-Message-State: AOAM5306to3CAz/RsgsUmNGMJgznBDv54NH9U03KHIONP5OkU1ii4yYI
+ tApm+U0bfnjn8G5zTr/Tqw+mMdwkq44eRJghMco=
+X-Google-Smtp-Source: ABdhPJwYL13Coq3lY0CDsAdCUG8loW71fwqSsh+yR1L9/RySFWEw76GtDUiM+9k2EQgdvU+lGmlltXNsi1sMxW61R9s=
+X-Received: by 2002:a17:906:b59:: with SMTP id
+ v25mr20600439ejg.547.1632651843885; 
+ Sun, 26 Sep 2021 03:24:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Thanks For Understanding
-To: Recipients <immunization@chcc.health>
-From: "Ms. Reem Al-Hashimi" <immunization@chcc.health>
-Date: Sat, 25 Sep 2021 21:01:42 +0000
-Message-Id: <20210925210149.9B86C1009BB4@mail.chcc.health>
+Received: by 2002:a17:907:1c1c:0:0:0:0 with HTTP; Sun, 26 Sep 2021 03:24:03
+ -0700 (PDT)
+From: "Mrs.Nicole  Marois" <nicole1563marois@gmail.com>
+Date: Sun, 26 Sep 2021 10:24:03 +0000
+X-Google-Sender-Auth: U9O88uYOZuCYBnDMARoSj66hFrY
+Message-ID: <CANiD9SKGCu+qY7QbDxKin6mHaYoiwc2CVuf3eU0vgegS-JYApQ@mail.gmail.com>
+Subject: Hello Dear,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,25 +80,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: remmhashimi@kakao.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Sir/Ma,
+Hello Dear,
 
-My name is Reem E. A, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
+Please do not feel disturbed for contacting you, based on the critical
+condition I find mine self though, it's not financial problem, but my
+health you might have know that cancer is not what to talk home about,
+I am married to Mr.Duclos Marois who worked with Tunisia embassy in
+Burkina Faso for nine years before he died in the year 2012.We were
+married for eleven years without a child. He died after a brief
+illness that lasted for five days.
 
-I"m serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+Since his death I decided not to remarry, When my late husband was
+alive he deposited the sum of US$ 9.2m (Nine million two hundred
+thousand dollars) in a bank in Burkina Faso, Presently this money is
+still in bank. And My Doctor told me that I don't have much time to
+live because of the cancer problem, Having known my condition I
+decided to hand you over this fond to take care of the less-privileged
+people, you will utilize this money the way I am going to instruct
+herein. I want you to take 30 Percent of the total money for your
+personal use While 70% of the money will go to charity" people and
+helping the orphanage.
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
-
-
-If you can handle the fund in a good investment.Reply to: reeninvestor111@kakao.com
+I don't want my husband's efforts to be used by the Government. I grew
+up as an Orphan and I don't have anybody as my family member,
 
 Regards,
-Reem
+
+Mrs.Nicole Marois.
+written from Hospital.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
