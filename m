@@ -1,73 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79844418A6E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Sep 2021 20:01:12 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A1D18418A7E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Sep 2021 20:24:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2C410606DA;
-	Sun, 26 Sep 2021 18:01:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D9506070A;
+	Sun, 26 Sep 2021 18:24:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ID-CSFN6z0GJ; Sun, 26 Sep 2021 18:01:09 +0000 (UTC)
+	with ESMTP id ryjl4suR13et; Sun, 26 Sep 2021 18:24:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6C623606BD;
-	Sun, 26 Sep 2021 18:01:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F5F760666;
+	Sun, 26 Sep 2021 18:24:00 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1C98C1BF3CD
- for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 18:00:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FE8D1BF30D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 26 Sep 2021 18:23:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0CC22402CE
- for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 18:00:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1991940226
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 26 Sep 2021 18:23:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=chcc.health
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SqrryxgnfTcB for <devel@linuxdriverproject.org>;
- Sun, 26 Sep 2021 18:00:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9YOzJIUnaNAn
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 26 Sep 2021 18:23:50 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.chcc.health (202-128-26-74.saipan.com [202.128.26.74])
- by smtp4.osuosl.org (Postfix) with SMTP id 5821B402CB
- for <devel@linuxdriverproject.org>; Sun, 26 Sep 2021 18:00:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with SMTP id 24C9E400E6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 26 Sep 2021 18:23:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.chcc.health (Postfix) with ESMTP id 8D407FCA374;
- Sun, 26 Sep 2021 18:05:50 +1000 (ChST)
+ by mail.chcc.health (Postfix) with ESMTP id 91DE2FCA6F5;
+ Sun, 26 Sep 2021 18:10:39 +1000 (ChST)
 Received: from mail.chcc.health ([127.0.0.1])
  by localhost (mail.chcc.health [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 5mwFvIAYXs-K; Sun, 26 Sep 2021 18:05:50 +1000 (ChST)
+ with ESMTP id LRENlq-WgN9I; Sun, 26 Sep 2021 18:10:39 +1000 (ChST)
 Received: from localhost (localhost [127.0.0.1])
- by mail.chcc.health (Postfix) with ESMTP id C2846FCA5D6;
- Sun, 26 Sep 2021 18:04:37 +1000 (ChST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.chcc.health C2846FCA5D6
+ by mail.chcc.health (Postfix) with ESMTP id C83DDFCA712;
+ Sun, 26 Sep 2021 18:09:54 +1000 (ChST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.chcc.health C83DDFCA712
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chcc.health;
- s=040CBB8E-0612-11EB-BEC8-E1D98334772F; t=1632643477;
+ s=040CBB8E-0612-11EB-BEC8-E1D98334772F; t=1632643794;
  bh=zL0K4ba0fAtyhkJSRfGjLwV1eXhcwDspLDH16HGZaTw=;
  h=MIME-Version:To:From:Date:Message-Id;
- b=kdUUAW1bIbGeI5fusI2goGwDwxf03G5Z0qMd80OEh88PMWrJhs5LeO7aEOOHVNnDT
- PiIsIpoW5BcC4YirRKYpCGuwKqGXxtbqW27gAM5zF6AcLhZKOpVRdWqI88vTsP7CiL
- pDPG6d8bnE6+jTsDjWNC6WnYqdwruQBeMXaiVuOhERWdo6JaTE0Z3oK9j9biTdoLk2
- RtYnAIz8JzP++MV6iYPMK6xS/GQt7GQMCsnYw0voSNocpOw4Wz6hpwe/YSZqDxGp30
- 5uyMhrA+OPJwyhasucWjwJDv6ZMymzIQG+lQOvHvZFCDGeTWNv8mvJVpm5j4+Qjcd9
- uDDzeqJLyWmDg==
+ b=qe+kfgIbvmhjH79Jwu85df0js68+TyJbRFGktZAPbs4Qz6yhl51sYy2I2T8o/VRTI
+ jn767i0riNgiDKcllc5OBaAWHHnrSBIZvfqg+zzgOTogdUP8rsf8/RTi7j7vygLaSM
+ 29a0X09meKZeWkH5VekaDPJbXqA9rYo6SeAgw+pU1nCKM5/2Gi5UvY0eEhnm6MwMWp
+ 9uGJQm5p8/AyWa+vN/AiycYfS2rLV11XTxIBdaAnjF6zcu9IWZll446Er7+H+jFMun
+ JCPRXC+nZiQrrHGNnS9t7tEdm/WhtDXo17k6HPM8SqHCoa1EnC/ioNdcZKRti/OI4q
+ KPEkbG3YbKUrA==
 X-Virus-Scanned: amavisd-new at chcc.health
 Received: from mail.chcc.health ([127.0.0.1])
  by localhost (mail.chcc.health [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id mna8ijc94lbk; Sun, 26 Sep 2021 18:04:37 +1000 (ChST)
+ with ESMTP id YYVeWZSSwHEp; Sun, 26 Sep 2021 18:09:54 +1000 (ChST)
 Received: from info.54xpti1o15rurlhs03whlwys2c.mx.internal.cloudapp.net
  (unknown [40.74.137.18])
- by mail.chcc.health (Postfix) with ESMTPSA id 3E6E9FCA47B;
- Sun, 26 Sep 2021 18:03:02 +1000 (ChST)
+ by mail.chcc.health (Postfix) with ESMTPSA id 30898FCAA73;
+ Sun, 26 Sep 2021 18:08:30 +1000 (ChST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Thanks For Understanding??
 To: Recipients <immunization@chcc.health>
 From: "Ms. Reem Al-Hashimi" <immunization@chcc.health>
-Date: Sun, 26 Sep 2021 08:02:48 +0000
-Message-Id: <20210926080302.3E6E9FCA47B@mail.chcc.health>
+Date: Sun, 26 Sep 2021 08:08:17 +0000
+Message-Id: <20210926080831.30898FCAA73@mail.chcc.health>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
