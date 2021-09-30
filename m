@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF27041E0AA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Sep 2021 20:08:58 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F96141E215
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Sep 2021 21:12:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 82AEE61441;
-	Thu, 30 Sep 2021 18:08:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 99F406144A;
+	Thu, 30 Sep 2021 19:12:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HIdaw7C2EQ0e; Thu, 30 Sep 2021 18:08:55 +0000 (UTC)
+	with ESMTP id nTQTxXSDwuS5; Thu, 30 Sep 2021 19:12:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B44A460697;
-	Thu, 30 Sep 2021 18:08:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EB0CD60676;
+	Thu, 30 Sep 2021 19:12:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 45BF01BF289
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 18:08:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 511061BF3D5
+ for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 19:11:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3D100401F0
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 18:08:45 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3C16640181
+ for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 19:11:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JZb9Zz1qhn7Z for <devel@linuxdriverproject.org>;
- Thu, 30 Sep 2021 18:08:43 +0000 (UTC)
+ with ESMTP id 6BZdJQG-d3Up for <devel@linuxdriverproject.org>;
+ Thu, 30 Sep 2021 19:11:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 32B9B40167
- for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 18:08:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10123"; a="288909552"
-X-IronPort-AV: E=Sophos;i="5.85,336,1624345200"; d="scan'208";a="288909552"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Sep 2021 11:08:42 -0700
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 02FE3400D5
+ for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 19:11:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10123"; a="224922365"
+X-IronPort-AV: E=Sophos;i="5.85,336,1624345200"; d="scan'208";a="224922365"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Sep 2021 12:11:43 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,336,1624345200"; d="scan'208";a="564327991"
+X-IronPort-AV: E=Sophos;i="5.85,336,1624345200"; d="scan'208";a="709201281"
 Received: from lkp-server01.sh.intel.com (HELO 72c3bd3cf19c) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 30 Sep 2021 11:08:41 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 30 Sep 2021 12:11:41 -0700
 Received: from kbuild by 72c3bd3cf19c with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mW0U4-0000Ik-Ga; Thu, 30 Sep 2021 18:08:40 +0000
-Date: Fri, 01 Oct 2021 02:08:22 +0800
+ id 1mW1T3-0000LS-91; Thu, 30 Sep 2021 19:11:41 +0000
+Date: Fri, 01 Oct 2021 03:10:46 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- c4535d1b074f3fdd9476e83526d4e9b53f41a7b5
-Message-ID: <6155fd16.vXQMWYa7xQPydUI0%lkp@intel.com>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ e5c044c8a9b65867369f8a4f3d5e3fee265d0487
+Message-ID: <61560bb6.SnQGGlMOoo587eJM%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -69,10 +69,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: c4535d1b074f3fdd9476e83526d4e9b53f41a7b5  dma-buf: move dma-buf symbols into the DMA_BUF module namespace
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: e5c044c8a9b65867369f8a4f3d5e3fee265d0487  scripts: get_abi.pl: make undefined search more deterministic
 
-elapsed time: 1199m
+elapsed time: 1272m
 
 configs tested: 80
 configs skipped: 3
@@ -81,11 +81,11 @@ The following configs have been built successfully.
 More configs may be tested in the coming days.
 
 gcc tested configs:
-arm                              allyesconfig
-arm                              allmodconfig
 arm                                 defconfig
 arm64                            allyesconfig
 arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
 i386                 randconfig-c001-20210929
 mips                     loongson2k_defconfig
 arc                                 defconfig
@@ -97,9 +97,9 @@ arm                  randconfig-c002-20210929
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
-m68k                                defconfig
 m68k                             allmodconfig
 m68k                             allyesconfig
+m68k                                defconfig
 nios2                               defconfig
 nds32                             allnoconfig
 nds32                               defconfig
@@ -107,35 +107,35 @@ nios2                            allyesconfig
 csky                                defconfig
 alpha                               defconfig
 alpha                            allyesconfig
+arc                              allyesconfig
+xtensa                           allyesconfig
 h8300                            allyesconfig
 sh                               allmodconfig
-xtensa                           allyesconfig
 s390                             allyesconfig
 s390                             allmodconfig
 parisc                              defconfig
 s390                                defconfig
+i386                             allyesconfig
 sparc                            allyesconfig
 sparc                               defconfig
 i386                                defconfig
-i386                             allyesconfig
-arc                              allyesconfig
 mips                             allyesconfig
 mips                             allmodconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
-x86_64               randconfig-a004-20210930
-x86_64               randconfig-a001-20210930
-x86_64               randconfig-a002-20210930
-x86_64               randconfig-a005-20210930
-x86_64               randconfig-a006-20210930
-x86_64               randconfig-a003-20210930
+x86_64               randconfig-a005-20210929
+x86_64               randconfig-a006-20210929
 i386                 randconfig-a001-20210929
 i386                 randconfig-a005-20210929
 i386                 randconfig-a002-20210929
 i386                 randconfig-a006-20210929
 i386                 randconfig-a004-20210929
 i386                 randconfig-a003-20210929
+x86_64               randconfig-a002-20210929
+x86_64               randconfig-a001-20210929
+x86_64               randconfig-a003-20210929
+x86_64               randconfig-a004-20210929
 arc                  randconfig-r043-20210929
 riscv                            allyesconfig
 riscv                            allmodconfig
