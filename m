@@ -1,76 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B10441D73D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Sep 2021 12:08:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CBCA41DF3D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Sep 2021 18:39:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4ABA4407AD;
-	Thu, 30 Sep 2021 10:08:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 20FC961419;
+	Thu, 30 Sep 2021 16:39:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pSKroiZowZWU; Thu, 30 Sep 2021 10:08:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pvhYKWjG-3B9; Thu, 30 Sep 2021 16:39:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 143E740456;
-	Thu, 30 Sep 2021 10:08:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 366DD6063B;
+	Thu, 30 Sep 2021 16:39:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0CDC21BF94B
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 10:08:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 68CA81BF285
+ for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:39:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 07DBC40170
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 10:08:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 65374421CA
+ for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:39:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=linaro.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6ioBkwacegrc for <devel@linuxdriverproject.org>;
- Thu, 30 Sep 2021 10:08:34 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6Z4jOABZU0hR for <devel@linuxdriverproject.org>;
+ Thu, 30 Sep 2021 16:39:38 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x12d.google.com (mail-lf1-x12d.google.com
- [IPv6:2a00:1450:4864:20::12d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C8173400DE
- for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 10:08:33 +0000 (UTC)
-Received: by mail-lf1-x12d.google.com with SMTP id z24so22911019lfu.13
- for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 03:08:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mwTJIBSdS6R0C6OOzQhsYG/CA9Av8xCuOU1iydIZfq8=;
- b=ivZCT+RSpG5Lr3g/DnUUf9qNfJjNYEBDbk0sXckN3US/d3v73YYcN23q0gW1WEDlCF
- 4QdzhSNaM0Lm9mjqyKiP/SvHhFGovDkoONIkjO6jEXsrqXkeuyGKcdG2dAh8vfVEmSRj
- nke3WD52VbQKrXvU5FjyYTgmtUKEHPvQpiBan+Leef4aA7HQdSVd7xVwJ67rmFFTYmIt
- zE+4gHgh7oa4RgNQvVReezvOaMgOIT+2CvBjbFAVrMr2Ej5UazkPfRl0orjBYUB0/MF5
- 4C2cUNV52DHLyVT8sMkGmEiMl7PP1Efg+OV9kaU8DlpmA6RXnUJOzKC55Om6qfkezQHS
- mQgQ==
+Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com
+ [IPv6:2607:f8b0:4864:20::941])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A9A8D41978
+ for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 16:39:38 +0000 (UTC)
+Received: by mail-ua1-x941.google.com with SMTP id r8so4740595uap.0
+ for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 09:39:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=/T9drlD1s9vO6lHEMs4LJzmDo2MKXEHBXvFYaWoQWpk=;
+ b=o3SZ3/8xgB3svMq+UXE3vgW9sKtG91px1UYnaI00T4dLP05ECFH5EVSAWUR78xdR5n
+ ebHrIeHXVPRJa791OB2s/aZJdtzWdPaX5sbadOL24EflkgZ6O2rEvsBWvojGxJeeST6T
+ eb+k8lxZZa/bWNfHNPwQHvNUM1YEFh4fUMO861Pe8Wc6pfqqL72s+8eCO53Msweav+mv
+ XfoVjVScWXWc0hGgmBVMNFkqROc3jDhXxKvwZxz1ZkBwNJLCRx7xYOcAqQ0tzz+Q5cSM
+ PuhaOVDUO2vb8ybQ6jSikOKS/AFhEN/8Lz75PuCS5qgomh+uSMNWQBtsXYMKNbf3IvW6
+ pZbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mwTJIBSdS6R0C6OOzQhsYG/CA9Av8xCuOU1iydIZfq8=;
- b=DuHn+Mko5Sk8+5FqH/yqwFdllmYivsbcFVL/HFApgk8wRaeGN/3TFjlE0MLqrmnCcf
- zVpTnuNoDXnOEp79notyrA9/AUjFLa5HyxD3UsDWgmvMKvHF0GP3ILkfaylvj86dDgWl
- 4RjhnvSQrKjTqaO2mMKDDZ3Lu79EiNsXjWDb4kGKSOTpD9sLHnmJww1W0C+dGUInttJU
- yCBb7dDdvyyXHJ+HSncfzbIJEwvHYvXrvYtbtYIjkYf0QkjKuZWCRANw55BD4HK8ujPs
- jYk7LJ2vVDHxcZsS6vfV6FEmPyA0+Sia3guwIoT4YvzDGsaQjF95ZB22R2Z7SIBEOIeu
- vihQ==
-X-Gm-Message-State: AOAM532YxPKCtMginA7WZWSdnhrUR8QhcWKXNvmggsFIKWQHydv2KiZ2
- O6l1KetTPP/0Q/TIit7MNJRA4ozGwgnnukUJ5oIR7w==
-X-Google-Smtp-Source: ABdhPJxp5GhGqokFxVNBLzc5wAxYntlHon3eHPcHlnoTTXeNni+3NFATmwx155GBOUerq63XPBnIf991pZVt2hJfQIM=
-X-Received: by 2002:a2e:898c:: with SMTP id c12mr5105509lji.16.1632996511275; 
- Thu, 30 Sep 2021 03:08:31 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=/T9drlD1s9vO6lHEMs4LJzmDo2MKXEHBXvFYaWoQWpk=;
+ b=oMZB6X6KsmoqK274NPm9DEG4t2oi2cMRjfL0Sgy1QI7CEKsY76bYdEJwjNKnNuc9FB
+ +iTt+Yt1jjWkIPdlBBft3/RmqecYzIIHS8XPETN/BlhBOGEfxAm5lVxIHgOcOwrRdXyP
+ OP5xFIh7rwh8vO59e938v7q/2wmM+p0/nAsCIKrLooZCz9xaC8oBON6lLas2AL5R9uZG
+ S4T5y1Xf3Im292DtX3JIw3DNTmfHyMw9oH2l3FujmNHdxmM1vRny9Ok/c8i8cugVgg+Z
+ WLP4+JaEeIeyv4FfOrrz1fkiZfoERDw437rnVB/couZQdiLAt1QTFwZpDaWH9bLiiHlz
+ gAmg==
+X-Gm-Message-State: AOAM530nc6NoNSkZDtto0yjE5N9V/stoC6s/UOMk4B20+DVIEyhdA6jS
+ 7UCV5mPptYNaXjPrRqjenAWkgDwZyxTibtaZGjw=
+X-Google-Smtp-Source: ABdhPJx0AmgkV9cE7YZrAYTucsDxPOj7iGMkrooBstJ2APLp74YQnUFP0J0PcWONym4DRiNtFFvbKXZFoRlaXsy60JM=
+X-Received: by 2002:ab0:5602:: with SMTP id y2mr6724983uaa.120.1633019977032; 
+ Thu, 30 Sep 2021 09:39:37 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
- <20210920161136.2398632-9-Jerome.Pouiller@silabs.com>
-In-Reply-To: <20210920161136.2398632-9-Jerome.Pouiller@silabs.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 30 Sep 2021 12:07:55 +0200
-Message-ID: <CAPDyKFp2_41mScO=-Ev+kvYD5xjShQdLugU_2FTTmvzgCxmEWA@mail.gmail.com>
-Subject: Re: [PATCH v7 08/24] wfx: add bus_sdio.c
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Received: by 2002:a59:ab2e:0:b0:22d:7f44:603a with HTTP; Thu, 30 Sep 2021
+ 09:39:36 -0700 (PDT)
+From: Irene zakari <irenezakari88@gmail.com>
+Date: Thu, 30 Sep 2021 09:39:36 -0700
+Message-ID: <CAFT8PFG_8981ivC4O1EnUpb=bxUAD3b8Ry0XqxnGDqbSoBpVzQ@mail.gmail.com>
+Subject: PLEASE I NEED YOUR HELP
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,81 +81,106 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, DTML <devicetree@vger.kernel.org>,
- netdev <netdev@vger.kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-mmc <linux-mmc@vger.kernel.org>,
- =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: irenezakari24@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gTW9uLCAyMCBTZXB0IDIwMjEgYXQgMTg6MTIsIEplcm9tZSBQb3VpbGxlcgo8SmVyb21lLlBv
-dWlsbGVyQHNpbGFicy5jb20+IHdyb3RlOgo+Cj4gRnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGpl
-cm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgo+Cj4gU2lnbmVkLW9mZi1ieTogSsOpcsO0bWUgUG91
-aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL25ldC93
-aXJlbGVzcy9zaWxhYnMvd2Z4L2J1c19zZGlvLmMgfCAyNjEgKysrKysrKysrKysrKysrKysrKysr
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAyNjEgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2
-NDQgZHJpdmVycy9uZXQvd2lyZWxlc3Mvc2lsYWJzL3dmeC9idXNfc2Rpby5jCj4KPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3Mvc2lsYWJzL3dmeC9idXNfc2Rpby5jIGIvZHJpdmVy
-cy9uZXQvd2lyZWxlc3Mvc2lsYWJzL3dmeC9idXNfc2Rpby5jCgpbLi4uXQoKPiArCj4gK3N0YXRp
-YyBpbnQgd2Z4X3NkaW9fcHJvYmUoc3RydWN0IHNkaW9fZnVuYyAqZnVuYywKPiArICAgICAgICAg
-ICAgICAgICAgICAgICAgIGNvbnN0IHN0cnVjdCBzZGlvX2RldmljZV9pZCAqaWQpCj4gK3sKPiAr
-ICAgICAgIHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBmdW5jLT5kZXYub2Zfbm9kZTsKPiArICAg
-ICAgIHN0cnVjdCB3Znhfc2Rpb19wcml2ICpidXM7Cj4gKyAgICAgICBpbnQgcmV0Owo+ICsKPiAr
-ICAgICAgIGlmIChmdW5jLT5udW0gIT0gMSkgewo+ICsgICAgICAgICAgICAgICBkZXZfZXJyKCZm
-dW5jLT5kZXYsICJTRElPIGZ1bmN0aW9uIG51bWJlciBpcyAlZCB3aGlsZSBpdCBzaG91bGQgYWx3
-YXlzIGJlIDEgKHVuc3VwcG9ydGVkIGNoaXA/KVxuIiwKPiArICAgICAgICAgICAgICAgICAgICAg
-ICBmdW5jLT5udW0pOwo+ICsgICAgICAgICAgICAgICByZXR1cm4gLUVOT0RFVjsKPiArICAgICAg
-IH0KPiArCj4gKyAgICAgICBidXMgPSBkZXZtX2t6YWxsb2MoJmZ1bmMtPmRldiwgc2l6ZW9mKCpi
-dXMpLCBHRlBfS0VSTkVMKTsKPiArICAgICAgIGlmICghYnVzKQo+ICsgICAgICAgICAgICAgICBy
-ZXR1cm4gLUVOT01FTTsKPiArCj4gKyAgICAgICBpZiAoIW5wIHx8ICFvZl9tYXRjaF9ub2RlKHdm
-eF9zZGlvX29mX21hdGNoLCBucCkpIHsKPiArICAgICAgICAgICAgICAgZGV2X3dhcm4oJmZ1bmMt
-PmRldiwgIm5vIGNvbXBhdGlibGUgZGV2aWNlIGZvdW5kIGluIERUXG4iKTsKPiArICAgICAgICAg
-ICAgICAgcmV0dXJuIC1FTk9ERVY7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgYnVzLT5mdW5j
-ID0gZnVuYzsKPiArICAgICAgIGJ1cy0+b2ZfaXJxID0gaXJxX29mX3BhcnNlX2FuZF9tYXAobnAs
-IDApOwo+ICsgICAgICAgc2Rpb19zZXRfZHJ2ZGF0YShmdW5jLCBidXMpOwo+ICsgICAgICAgZnVu
-Yy0+Y2FyZC0+cXVpcmtzIHw9IE1NQ19RVUlSS19MRU5JRU5UX0ZOMCB8Cj4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgTU1DX1FVSVJLX0JMS1NaX0ZPUl9CWVRFX01PREUgfAo+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIE1NQ19RVUlSS19CUk9LRU5fQllURV9NT0RFXzUxMjsK
-Ckkgd291bGQgcmF0aGVyIHNlZSB0aGF0IHlvdSBhZGQgYW4gU0RJT19GSVhVUCBmb3IgdGhlIFNE
-SU8gY2FyZCwgdG8KdGhlIHNkaW9fZml4dXBfbWV0aG9kc1tdLCBpbiBkcml2ZXJzL21tYy9jb3Jl
-L3F1aXJrcy5oLCBpbnN0ZWFkIG9mCnRoaXMuCgo+ICsKPiArICAgICAgIHNkaW9fY2xhaW1faG9z
-dChmdW5jKTsKPiArICAgICAgIHJldCA9IHNkaW9fZW5hYmxlX2Z1bmMoZnVuYyk7Cj4gKyAgICAg
-ICAvKiBCbG9jayBvZiA2NCBieXRlcyBpcyBtb3JlIGVmZmljaWVudCB0aGFuIDUxMkIgZm9yIGZy
-YW1lIHNpemVzIDwgNGsgKi8KPiArICAgICAgIHNkaW9fc2V0X2Jsb2NrX3NpemUoZnVuYywgNjQp
-Owo+ICsgICAgICAgc2Rpb19yZWxlYXNlX2hvc3QoZnVuYyk7Cj4gKyAgICAgICBpZiAocmV0KQo+
-ICsgICAgICAgICAgICAgICByZXR1cm4gcmV0Owo+ICsKPiArICAgICAgIGJ1cy0+Y29yZSA9IHdm
-eF9pbml0X2NvbW1vbigmZnVuYy0+ZGV2LCAmd2Z4X3NkaW9fcGRhdGEsCj4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgJndmeF9zZGlvX2h3YnVzX29wcywgYnVzKTsKPiArICAg
-ICAgIGlmICghYnVzLT5jb3JlKSB7Cj4gKyAgICAgICAgICAgICAgIHJldCA9IC1FSU87Cj4gKyAg
-ICAgICAgICAgICAgIGdvdG8gc2Rpb19yZWxlYXNlOwo+ICsgICAgICAgfQo+ICsKPiArICAgICAg
-IHJldCA9IHdmeF9wcm9iZShidXMtPmNvcmUpOwo+ICsgICAgICAgaWYgKHJldCkKPiArICAgICAg
-ICAgICAgICAgZ290byBzZGlvX3JlbGVhc2U7Cj4gKwo+ICsgICAgICAgcmV0dXJuIDA7Cj4gKwo+
-ICtzZGlvX3JlbGVhc2U6Cj4gKyAgICAgICBzZGlvX2NsYWltX2hvc3QoZnVuYyk7Cj4gKyAgICAg
-ICBzZGlvX2Rpc2FibGVfZnVuYyhmdW5jKTsKPiArICAgICAgIHNkaW9fcmVsZWFzZV9ob3N0KGZ1
-bmMpOwo+ICsgICAgICAgcmV0dXJuIHJldDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgd2Z4X3Nk
-aW9fcmVtb3ZlKHN0cnVjdCBzZGlvX2Z1bmMgKmZ1bmMpCj4gK3sKPiArICAgICAgIHN0cnVjdCB3
-Znhfc2Rpb19wcml2ICpidXMgPSBzZGlvX2dldF9kcnZkYXRhKGZ1bmMpOwo+ICsKPiArICAgICAg
-IHdmeF9yZWxlYXNlKGJ1cy0+Y29yZSk7Cj4gKyAgICAgICBzZGlvX2NsYWltX2hvc3QoZnVuYyk7
-Cj4gKyAgICAgICBzZGlvX2Rpc2FibGVfZnVuYyhmdW5jKTsKPiArICAgICAgIHNkaW9fcmVsZWFz
-ZV9ob3N0KGZ1bmMpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHNkaW9fZGV2aWNl
-X2lkIHdmeF9zZGlvX2lkc1tdID0gewo+ICsgICAgICAgeyBTRElPX0RFVklDRShTRElPX1ZFTkRP
-Ul9JRF9TSUxBQlMsIFNESU9fREVWSUNFX0lEX1NJTEFCU19XRjIwMCkgfSwKPiArICAgICAgIHsg
-fSwKPiArfTsKPiArTU9EVUxFX0RFVklDRV9UQUJMRShzZGlvLCB3Znhfc2Rpb19pZHMpOwo+ICsK
-PiArc3RydWN0IHNkaW9fZHJpdmVyIHdmeF9zZGlvX2RyaXZlciA9IHsKPiArICAgICAgIC5uYW1l
-ID0gIndmeC1zZGlvIiwKPiArICAgICAgIC5pZF90YWJsZSA9IHdmeF9zZGlvX2lkcywKPiArICAg
-ICAgIC5wcm9iZSA9IHdmeF9zZGlvX3Byb2JlLAo+ICsgICAgICAgLnJlbW92ZSA9IHdmeF9zZGlv
-X3JlbW92ZSwKPiArICAgICAgIC5kcnYgPSB7Cj4gKyAgICAgICAgICAgICAgIC5vd25lciA9IFRI
-SVNfTU9EVUxFLAo+ICsgICAgICAgICAgICAgICAub2ZfbWF0Y2hfdGFibGUgPSB3Znhfc2Rpb19v
-Zl9tYXRjaCwKCklzIHRoZXJlIG5vIHBvd2VyIG1hbmFnZW1lbnQ/IE9yIGRvIHlvdSBpbnRlbmQg
-dG8gYWRkIHRoYXQgb24gdG9wPwoKPiArICAgICAgIH0KPiArfTsKPiAtLQo+IDIuMzMuMAo+CgpL
-aW5kIHJlZ2FyZHMKVWZmZQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
-dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cml2ZXJkZXYtZGV2ZWwK
+Hello   ..
+
+How do you do over there? I hope you are doing well?
+
+My name is Irene. (24 years), i am single, from Gambia, the only child
+of late Eng. Bernard Bakary Zakaria. the Director of Bajam Enterprise
+(Building Construction Company in The Gambia) also the CEO of Bernard
+Import and Export (GAMBIA).
+
+As a matter of fact my mother died when i was barely 4 years old
+according to my late father and because of the type of love he had for
+my mother made him to remain UN-married till he left the ghost..
+
+So after the death of my father as a result of assassinate, his brother (My
+Uncle) who is the purchasing and marketing sale manager of my late
+fathers company named (Mr. James Tokunbo Oriade Zakaria) wanted to
+convert all the properties and resources of my late father into his
+which i quarreled with him and it made him to lay his anger on me to
+the extent of hiring an assassins to kill me but to God be the glory i
+succeeded by making a way to Burkina faso for my dear life.
+Honestly i do live a fearful life even here in Burkina faso because of
+those Assassins coming after me .
+
+I would want to live and study in your country for my better future.
+because my father same blood brother wanted to force me into undecided
+marriage, just for me to leave my father home and went and live with
+another man I never know as he want to occupied all my father home
+and maybe to sold it as my father no longer alive, I'm the only child
+daughter my father born, '' but he don't know that i am not
+interesting in any of my father properties or early marriage for now,
+because i still have future to think about and to focus on my studies
+first as i was doing my first year in the University before the death
+of my father.
+
+Actually what I want to discuss with you is about my personal issue
+concern funds my late father deposited in a bank outside my country,
+worth $4.5 million united state dollars. i need your assistance to
+receive and invest this funds in your country.
+
+Please help me, I am sincere to you and I want to be member of your
+family as well if you wouldn't mind to accept me and lead me to better
+future in your country.
+
+All the documents the bank issue to my father during time of deposit
+is with me now.
+I already notify the bank on phone about the death of my father and
+they are surprise for the news and accept that my father is their good
+customer.
+I will be happy if this money can be invested in any business of your
+choice and it will be under your control till i finished my education,
+also I'm assuring you good relationship and I am ready to discuss the
+amount of money to give you from this money for your help.
+
+Therefore, I shall give you the bank contact and other necessary
+information in my next email if you will only promise me that you will
+not/never betray and disclosed this matter to anybody, because, this
+money is the only hope i have for survival on earth since I have lost
+my parents.
+
+Moreover I have the FUND PLACEMENT CERTIFICATE and the DEATH
+CERTIFICATE here with me, but before I give you further information, i
+will like to know your full data
+
+1. Full Name: ........................
+2. Address: ..................
+3. Nationality: ........... Sex................
+4. Age:........... Date of Birth:................
+5. Occupation:...................
+.....
+6. Phone: ........... Fax:.........................
+7. State of Origin: .......Country:..............
+8. Occupation:...................
+................
+9. Marital status........... E-mail address's: ............
+10. Scan copy of your ID card or Driving License/Photo:............
+DECLARATION:
+
+so that i will be fully sure that i am not trusting the wrong person.
+and it will also give me the mind to send you the bank contact for you
+to communicate with them for more verification about this money. and
+to know you more better.
+
+Meanwhile, you can reach me through my pastor,his name is Pastor Paul
+any time you call, tell him that you want to speak with me because
+right now i am living in the church here in Burkina faso and i don't
+want to stay here any longer,
+send for me to speak with you his phone number is this(+226 75213646)
+
+I will stop here and i will be waiting for your reply and feel free
+ask any thing you want to know about me.
+Please help me, I would be highly appreciated
+Have nice day.
+From Irene
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
