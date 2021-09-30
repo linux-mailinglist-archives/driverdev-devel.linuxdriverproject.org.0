@@ -1,74 +1,132 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3BF741DF73
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Sep 2021 18:43:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5960E41DF96
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Sep 2021 18:51:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 46F7A61413;
-	Thu, 30 Sep 2021 16:43:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 33D86840F2;
+	Thu, 30 Sep 2021 16:51:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KlxklSd9GFWv; Thu, 30 Sep 2021 16:43:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fpPeAMhL4M7R; Thu, 30 Sep 2021 16:51:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 368AB61405;
-	Thu, 30 Sep 2021 16:43:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 585418400C;
+	Thu, 30 Sep 2021 16:51:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 949A01BF285
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:43:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 437BC1BF285
+ for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:51:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 91331421E1
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:43:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 317DC40565
+ for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:51:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qguzETjL_2-4 for <devel@linuxdriverproject.org>;
- Thu, 30 Sep 2021 16:43:25 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id c39CdDUYy041 for <devel@linuxdriverproject.org>;
+ Thu, 30 Sep 2021 16:51:17 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-vk1-xa42.google.com (mail-vk1-xa42.google.com
- [IPv6:2607:f8b0:4864:20::a42])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CA3F8421D2
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 16:43:24 +0000 (UTC)
-Received: by mail-vk1-xa42.google.com with SMTP id z202so3178045vkd.1
- for <devel@linuxdriverproject.org>; Thu, 30 Sep 2021 09:43:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=/T9drlD1s9vO6lHEMs4LJzmDo2MKXEHBXvFYaWoQWpk=;
- b=RnPczgshY6Ea9Dh20LP4wm/elvAY3qgHmWeuGG6iiDJKrmEaFgQmVmSwpcjajHStQF
- LFMLUyoBVi9UkNEuAf1f/WpH4iaDX72kVYAllqh/vCF9F3S0r3gBdSmBLK3hdT51GcEs
- 0JrvNV/ODqLNG4wdsW2RzkzeuIuPeyABBXyGedDXXzWgKNWo+BtVo5SAZtuWTO4wZhpv
- qub/KQUv46hIcAOkSjTI+k9iQu0t5gRUI7gY7g8BxRAj6hK5MHnDIboTCBJFMKcr+TLH
- nkRCLoIbcUjYWdkFrVmXxGFMmCQvwRHVuEprMDZ+uyutVQsOqcPW7tntP+Noj0GABzLu
- xHfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=/T9drlD1s9vO6lHEMs4LJzmDo2MKXEHBXvFYaWoQWpk=;
- b=HqncPlcf+Ddofp1+u3h5tUJCOhz3QW76GOnAEkavYt26zLLKyryM2Gt+1bGTTxsWCk
- tWeU+TV15I5CO6EZolw0zQLex8MXokJaJAIvoH9MsO5SI66Resqib/L0jsTPK1/72Clb
- LAo1sdn5K6lQn8LR6jir26p/xhxBdtJjXvKfxhaVRYawaSzaKu8x4ehwZm0+XtlA+OC0
- KTZqE5jz5ceVFnOn4Zci5gfMqB+fZYVajLI9+lr1hKZF3+WbfZ38euyir5u8lG4Unk4k
- tCdgud/bgom8tVFyzCdEFBmhBdqAem5OoZfrrvXAigZDN56MGsDsx8c2dJEyiQ/rDRl3
- sx5g==
-X-Gm-Message-State: AOAM530BLMyDFcbKJQHllgn2ljRec5GJlIBRjEcGhkhpn/Ldv9Wj8ipr
- 5t2MtC4nTKqfkFsWkrLNk1+ipfJh1VBct9rElPU=
-X-Google-Smtp-Source: ABdhPJwK18N5x0ZSKRCnZM8P+anMPjW8DLudkyLRzL8mw04/ZcjZ1bzLrV4qDHhaGiZQYpZPZj0oWIK2xMf2ef+KS3M=
-X-Received: by 2002:a1f:ee0b:: with SMTP id m11mr4330134vkh.19.1633020203604; 
- Thu, 30 Sep 2021 09:43:23 -0700 (PDT)
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2080.outbound.protection.outlook.com [40.107.220.80])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AF78040217
+ for <devel@driverdev.osuosl.org>; Thu, 30 Sep 2021 16:51:17 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MXz92w6UhK6Ux1zyGm84HC3mdO9VYjs98B20v1TyR2zxUFCFAaDB0B2Hup+1SF6OOLuLiGNILwb0PP7qv9qGRJ/eP/cVVlEixEmWrPCIu2M4hwF1TT2/9Dmu2PR85d1fhk5/DE0mQa2oYUa0ytnHeU79qGuc3u0j4Q4nO2V38juUXWYaFEzuLSzknQqrFOAXBWDeYyMMDvWQ8pOUyVKu34gZ81gdMZ3zs940kg2srWBF8eVKzZqcicWte5ATzmK0p2tIXFE2cm0VqX7w4+67B2chN7oToMy/6AYU+DQCz2AEx1fHMBbTFgMi62bxHTHybDN0lX7jx2kLeXDIDDKGDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=1Brt1fDPPt4N5kVu9ctsplROTbl64V512WvAliRfKaQ=;
+ b=RDTyXvpmxT3iSyxt+G+DSVfGPnZENx7QyvJGmvKkkO+UbtmD71APNbqMmWD5zPHt0AwtiMuL76n6NTp+/GlmVQwMFQp+o7hx3CXg/JXgNkWmJ4MsbHiCL4TGW/NqbXKh8hwYsVJOqeW/OI3Al4lMJf6qFJSmDlRdacqnz+FAFLQU+qcpUxzKjUDZk6oJGBgU5VK6q6o7vXnvEW1/Oc9WQ97Ny3k/m6KYvSf2sKuA41gaVOzrfHP5zDPflVEHC/5ku5Hw0XdPgWsvDNVuG1P9rr/q4uGWvWLL7jJwGf0ClLh7qT07UcJSpHnhF0/oB5+TP1Ai88fjcHxZ9cYhpysEkw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1Brt1fDPPt4N5kVu9ctsplROTbl64V512WvAliRfKaQ=;
+ b=KPfjET3UyGrnhSV54aGZeNLFeCWqm/39IcAfHP8kElyNypYWQd68mbcGQK8NPohXj2iSniTlDMEtEbF3abi0+U6naN0IbRDhGWQRwlSY1JI4QL0K54MFpy42uxMsfzMCpOLWYYuLpDmy7WygrrMX5WqFW833rtHpSgGz5arMzgI=
+Authentication-Results: linaro.org; dkim=none (message not signed)
+ header.d=none;linaro.org; dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by PH0PR11MB5644.namprd11.prod.outlook.com (2603:10b6:510:ef::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.14; Thu, 30 Sep
+ 2021 16:51:15 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::31cb:3b13:b0e8:d8f4]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::31cb:3b13:b0e8:d8f4%9]) with mapi id 15.20.4544.021; Thu, 30 Sep 2021
+ 16:51:15 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v7 08/24] wfx: add bus_sdio.c
+Date: Thu, 30 Sep 2021 18:51:09 +0200
+Message-ID: <19731906.ZuIkq4dnIL@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <CAPDyKFp2_41mScO=-Ev+kvYD5xjShQdLugU_2FTTmvzgCxmEWA@mail.gmail.com>
+References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
+ <20210920161136.2398632-9-Jerome.Pouiller@silabs.com>
+ <CAPDyKFp2_41mScO=-Ev+kvYD5xjShQdLugU_2FTTmvzgCxmEWA@mail.gmail.com>
+X-ClientProxiedBy: SA9P221CA0010.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:806:25::15) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
-Received: by 2002:a59:ab2e:0:b0:22d:7f44:603a with HTTP; Thu, 30 Sep 2021
- 09:43:23 -0700 (PDT)
-From: Irene zakari <irenezakari88@gmail.com>
-Date: Thu, 30 Sep 2021 09:43:23 -0700
-Message-ID: <CAFT8PFFC1wYhu_V1nvdCu7SCx+WmhojOsdD9Ss5nWW_vtvA+kQ@mail.gmail.com>
-Subject: PLEASE I NEED YOUR HELP
-To: undisclosed-recipients:;
+Received: from pc-42.localnet (2a01:e34:ecb5:66a0:9876:e1d7:65be:d294) by
+ SA9P221CA0010.NAMP221.PROD.OUTLOOK.COM (2603:10b6:806:25::15) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4566.17 via Frontend Transport; Thu, 30 Sep 2021 16:51:12 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 5049ece1-9f55-44cf-5c67-08d9843283e1
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5644:
+X-Microsoft-Antispam-PRVS: <PH0PR11MB5644589A68C4F30F318CFF9393AA9@PH0PR11MB5644.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: EKb5yy/7IZibqKPno8ZshaLkDTQF/vZFQ4ZMC0N5ZaiD6+LH+UD8WEuW99x5CYyndhWTYU3MHD6w7aUTBhNH+svHQjmY5kLf7VOlVr9y+Onklma088prO85Wpf2tX+WqiRy4OJGCoSlRkb2epRTrU5I8+VJ7hsJsQWlEBYA/ZUrPmP99tYMx36FFLIjbi9J8MB5sFZVUvghM4CWpQiUrf1p2eWZ5mzRFysln/cYO/byO7F22kGb2XGc7NStg4WIwcaLSxrJInPIirOslp4hLUaEQ2cN9VzeQqFivHPP/d71DX2+IBNzK9L/KTOcQzB8YZ1NROeL0bGfrHe+9yuL4JZo/8XYeth7e5nL9vMxQMJjaF5rjMnrjdadDAwUpc8yKpg2/ZgeOxUzFjrt4iKCFwGbXxrMVt5ty5sQmSgf4Nwjp5196HUOAraK40KoXooLVJY0SmDm8IBOC3aV75jTccVTE+yWOSzBmYRIzesguFxz4lX53RU3V2kxJfsZarRUeWrzjFtZjJgK6KNX/hxPfIQPkySzM/yOpw4HgefgzqTdYZcgx8DBlZG7ikpM/CeqamGf1dA+v+9p7uUjoWxhBTxBTnQBaKCe4QNSt2NjUZXDbuQAwEXrwRAzkieBP1VXV3+tkD1XAChG/o+KIM6+9HzqmjkFO07MVvpUFCLQ6c3LZBjcHwBnBQRnRD1aDp3s9NPaTw7b2E3I3VwlO6b7/W801Giu5L+ejW8sy3mzhabDJKtThn2XyfXwkqurFzSWoRoGTJL/0LhiQT7ectpwHgw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(36916002)(52116002)(6486002)(6512007)(54906003)(6506007)(5660300002)(508600001)(316002)(66574015)(9686003)(6666004)(33716001)(966005)(2906002)(66556008)(186003)(86362001)(38100700002)(4326008)(8936002)(66946007)(8676002)(66476007)(83380400001)(6916009)(7416002)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?YyP6Sz9l84Oa32OmYnsqa0W3jNawHWlroCcNKBmvQ6lkRQWo7qOko0f4Jy?=
+ =?iso-8859-1?Q?+BCTvg+V81vFIQk8LgEVys7J5MGp3GuqGMUvGV7iOdvs6q7OdGHCDLnZ/W?=
+ =?iso-8859-1?Q?NHbjJiPy98XA2LKHwzpZ0hh1hh+ZZpNZR7AQUY+9wjVGaCPJ5WZRH9s4Hb?=
+ =?iso-8859-1?Q?+986lXLNBjcqP08VIsjH94RMiQxXfk21es+SqCp7W2xOlLfcQuslJ2gw7k?=
+ =?iso-8859-1?Q?fkpb8AqdHYiJqHNvSFj+7jlEny0FGHxSzvxvXUK632ZZ1ofSx5ud6eFNbN?=
+ =?iso-8859-1?Q?/1iDliW9qQyfNsu/YfQGNdJfa70pqyNt5gGpsjLeQAwu1SktBHtoVnQA0V?=
+ =?iso-8859-1?Q?aau8kr4O4An8u1pITUy8ZFpP0JHyHFu+EhWQ6cX3PXMQvIGXVcHel4ha/I?=
+ =?iso-8859-1?Q?ZsuxXx/g6D/b3R12TiLH3TkC4wKN6THSve4fOieHO+BFac4M4Q8b8E7fqH?=
+ =?iso-8859-1?Q?ThP+80jByFzscBrzIJJdiN9B6Mr6SOBP+I4XxSAlC01Htns4jaZJtizKsG?=
+ =?iso-8859-1?Q?OPS0bUotZEKBbH836CcNs849qcZnWKDjfr6P1TmPaUuj8yjkXkGDdYMA2G?=
+ =?iso-8859-1?Q?yJ0pfvWwGf30aQJqrnuUyI8Zw9qPbZG0pnq7OI+qnPMrm2INZc4IxoTolD?=
+ =?iso-8859-1?Q?BLBKz+VNYP6CoMYlmaWHCeITunc7DqbVntR1dXtOM7nAnsTRuAsYhqMDvo?=
+ =?iso-8859-1?Q?JEESUPNEJpudCR2PmhYlGNQsJGD9v2yZ+AkiNmWIBDg+5eZ8339eeWl+30?=
+ =?iso-8859-1?Q?Fplpys5d8u40gTHzapl1GJdaj30qSA/wqcJbYYTbv13q7+7etJMvT+h7no?=
+ =?iso-8859-1?Q?JGGGFS371zXcgAP7uxkcXQ0w/3t53aRz//xNh4vrExbRcf360LPJhXKUl+?=
+ =?iso-8859-1?Q?UgKlssyrv2IEHPSSfHWRGUw5lo3CVUw24p34UWaARduvOoxXNY6TsfidlD?=
+ =?iso-8859-1?Q?OS1alsSbymnfV9Verc/7HKwvuwaIkKnpWx121fDzzrS2aZCIaZoy38at7z?=
+ =?iso-8859-1?Q?9GhY92lm1f1Pcj377H6DvzKDGhkgXpnofc2O8xHvi7pwlCEBKffVsjrAhQ?=
+ =?iso-8859-1?Q?dkNlZfX+elCxDxAGGfue0zMemXDXIubeODXmg5RF3xsoRPXbGyh1PpF8Oc?=
+ =?iso-8859-1?Q?jlwkcl7sRoNmoYjNeH5BjWPOyQLe9Ik1YyQ7Ngqs/cGrB4k51cztLq38Bv?=
+ =?iso-8859-1?Q?TZV9Hd2iHbr5uebh5o8uyBajwHXjyQI03sgHE1uYhFMUXu6UQ0EjddqC9u?=
+ =?iso-8859-1?Q?M8G3E1gb3gNS6yqucf8UM62D119EfnIxIa7eiTbVzbSuPzhyCZ+rjeNfSG?=
+ =?iso-8859-1?Q?9+4TVDZ6V+lm5YJKZ3zDYg/1ZZ4yjjVy/MKBuhBs5CXt5fJ10D9zSPx8dv?=
+ =?iso-8859-1?Q?33Av1EF5rTW6NBoNN161U390s18AqosU5spOSJHmwjV4qzuE6UlfzCu3QL?=
+ =?iso-8859-1?Q?ztTHBAYmB/C4P1qO?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5049ece1-9f55-44cf-5c67-08d9843283e1
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2021 16:51:15.0285 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: pzoP39Ei89GQb2qx93Y2ZzIatZ2aJMgtSF6Dx/shDjdkzaCtwy5RvRziT708ocDieyVs9iwAY3Ad+psoHSYcJA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5644
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,105 +139,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: irenezakari24@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: driverdevel <devel@driverdev.osuosl.org>, DTML <devicetree@vger.kernel.org>,
+ netdev <netdev@vger.kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-mmc <linux-mmc@vger.kernel.org>,
+ Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello   ..
+Hello Ulf,
 
-How do you do over there? I hope you are doing well?
+On Thursday 30 September 2021 12:07:55 CEST Ulf Hansson wrote:
+> On Mon, 20 Sept 2021 at 18:12, Jerome Pouiller
+> <Jerome.Pouiller@silabs.com> wrote:
+> >
+> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >
+> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > ---
+> >  drivers/net/wireless/silabs/wfx/bus_sdio.c | 261 +++++++++++++++++++++
+> >  1 file changed, 261 insertions(+)
+> >  create mode 100644 drivers/net/wireless/silabs/wfx/bus_sdio.c
+> >
+> > diff --git a/drivers/net/wireless/silabs/wfx/bus_sdio.c b/drivers/net/w=
+ireless/silabs/wfx/bus_sdio.c
+> =
 
-My name is Irene. (24 years), i am single, from Gambia, the only child
-of late Eng. Bernard Bakary Zakaria. the Director of Bajam Enterprise
-(Building Construction Company in The Gambia) also the CEO of Bernard
-Import and Export (GAMBIA).
+> [...]
+> =
 
-As a matter of fact my mother died when i was barely 4 years old
-according to my late father and because of the type of love he had for
-my mother made him to remain UN-married till he left the ghost..
+> > +
+> > +static int wfx_sdio_probe(struct sdio_func *func,
+> > +                         const struct sdio_device_id *id)
+> > +{
+> > +       struct device_node *np =3D func->dev.of_node;
+> > +       struct wfx_sdio_priv *bus;
+> > +       int ret;
+> > +
+> > +       if (func->num !=3D 1) {
+> > +               dev_err(&func->dev, "SDIO function number is %d while i=
+t should always be 1 (unsupported chip?)\n",
+> > +                       func->num);
+> > +               return -ENODEV;
+> > +       }
+> > +
+> > +       bus =3D devm_kzalloc(&func->dev, sizeof(*bus), GFP_KERNEL);
+> > +       if (!bus)
+> > +               return -ENOMEM;
+> > +
+> > +       if (!np || !of_match_node(wfx_sdio_of_match, np)) {
+> > +               dev_warn(&func->dev, "no compatible device found in DT\=
+n");
+> > +               return -ENODEV;
+> > +       }
+> > +
+> > +       bus->func =3D func;
+> > +       bus->of_irq =3D irq_of_parse_and_map(np, 0);
+> > +       sdio_set_drvdata(func, bus);
+> > +       func->card->quirks |=3D MMC_QUIRK_LENIENT_FN0 |
+> > +                             MMC_QUIRK_BLKSZ_FOR_BYTE_MODE |
+> > +                             MMC_QUIRK_BROKEN_BYTE_MODE_512;
+> =
 
-So after the death of my father as a result of assassinate, his brother (My
-Uncle) who is the purchasing and marketing sale manager of my late
-fathers company named (Mr. James Tokunbo Oriade Zakaria) wanted to
-convert all the properties and resources of my late father into his
-which i quarreled with him and it made him to lay his anger on me to
-the extent of hiring an assassins to kill me but to God be the glory i
-succeeded by making a way to Burkina faso for my dear life.
-Honestly i do live a fearful life even here in Burkina faso because of
-those Assassins coming after me .
+> I would rather see that you add an SDIO_FIXUP for the SDIO card, to
+> the sdio_fixup_methods[], in drivers/mmc/core/quirks.h, instead of
+> this.
 
-I would want to live and study in your country for my better future.
-because my father same blood brother wanted to force me into undecided
-marriage, just for me to leave my father home and went and live with
-another man I never know as he want to occupied all my father home
-and maybe to sold it as my father no longer alive, I'm the only child
-daughter my father born, '' but he don't know that i am not
-interesting in any of my father properties or early marriage for now,
-because i still have future to think about and to focus on my studies
-first as i was doing my first year in the University before the death
-of my father.
+In the current patch, these quirks are applied only if the device appears
+in the device tree (see the condition above). If I implement them in
+drivers/mmc/core/quirks.h they will be applied as soon as the device is
+detected. Is it what we want?
 
-Actually what I want to discuss with you is about my personal issue
-concern funds my late father deposited in a bank outside my country,
-worth $4.5 million united state dollars. i need your assistance to
-receive and invest this funds in your country.
+Note: we already have had a discussion about the strange VID/PID declared
+by this device:
+  https://www.spinics.net/lists/netdev/msg692577.html
 
-Please help me, I am sincere to you and I want to be member of your
-family as well if you wouldn't mind to accept me and lead me to better
-future in your country.
 
-All the documents the bank issue to my father during time of deposit
-is with me now.
-I already notify the bank on phone about the death of my father and
-they are surprise for the news and accept that my father is their good
-customer.
-I will be happy if this money can be invested in any business of your
-choice and it will be under your control till i finished my education,
-also I'm assuring you good relationship and I am ready to discuss the
-amount of money to give you from this money for your help.
+[...]
+> > +
+> > +static const struct sdio_device_id wfx_sdio_ids[] =3D {
+> > +       { SDIO_DEVICE(SDIO_VENDOR_ID_SILABS, SDIO_DEVICE_ID_SILABS_WF20=
+0) },
+> > +       { },
+> > +};
+> > +MODULE_DEVICE_TABLE(sdio, wfx_sdio_ids);
+> > +
+> > +struct sdio_driver wfx_sdio_driver =3D {
+> > +       .name =3D "wfx-sdio",
+> > +       .id_table =3D wfx_sdio_ids,
+> > +       .probe =3D wfx_sdio_probe,
+> > +       .remove =3D wfx_sdio_remove,
+> > +       .drv =3D {
+> > +               .owner =3D THIS_MODULE,
+> > +               .of_match_table =3D wfx_sdio_of_match,
+> =
 
-Therefore, I shall give you the bank contact and other necessary
-information in my next email if you will only promise me that you will
-not/never betray and disclosed this matter to anybody, because, this
-money is the only hope i have for survival on earth since I have lost
-my parents.
+> Is there no power management? Or do you intend to add that on top?
 
-Moreover I have the FUND PLACEMENT CERTIFICATE and the DEATH
-CERTIFICATE here with me, but before I give you further information, i
-will like to know your full data
+It seems we already have had this discussion:
 
-1. Full Name: ........................
-2. Address: ..................
-3. Nationality: ........... Sex................
-4. Age:........... Date of Birth:................
-5. Occupation:...................
-.....
-6. Phone: ........... Fax:.........................
-7. State of Origin: .......Country:..............
-8. Occupation:...................
-................
-9. Marital status........... E-mail address's: ............
-10. Scan copy of your ID card or Driving License/Photo:............
-DECLARATION:
+  https://lore.kernel.org/netdev/CAPDyKFqJf=3DvUqpQg3suDCadKrFTkQWFTY_qp=3D=
++yDK=3D_Lu9gJGg@mail.gmail.com/#r
 
-so that i will be fully sure that i am not trusting the wrong person.
-and it will also give me the mind to send you the bank contact for you
-to communicate with them for more verification about this money. and
-to know you more better.
+In this thread, Kalle said:
+> Many mac80211 drivers do so that the device is powered off during
+> interface down (ifconfig wlan0 down), and as mac80211 does interface
+> down automatically during suspend, suspend then works without extra
+> handlers.
 
-Meanwhile, you can reach me through my pastor,his name is Pastor Paul
-any time you call, tell him that you want to speak with me because
-right now i am living in the church here in Burkina faso and i don't
-want to stay here any longer,
-send for me to speak with you his phone number is this(+226 75213646)
 
-I will stop here and i will be waiting for your reply and feel free
-ask any thing you want to know about me.
-Please help me, I would be highly appreciated
-Have nice day.
-From Irene
+-- =
+
+J=E9r=F4me Pouiller
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
