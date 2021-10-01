@@ -2,75 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD9E641ED3D
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Oct 2021 14:19:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DE6641ED86
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Oct 2021 14:32:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0B130406A8;
-	Fri,  1 Oct 2021 12:19:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC870407C7;
+	Fri,  1 Oct 2021 12:32:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A18F7msjNsa5; Fri,  1 Oct 2021 12:19:38 +0000 (UTC)
+	with ESMTP id FtOU9F4Lc9hI; Fri,  1 Oct 2021 12:32:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 12B5A40599;
-	Fri,  1 Oct 2021 12:19:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1741D40799;
+	Fri,  1 Oct 2021 12:32:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 657B21BF2B6
- for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 12:19:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D5FA1BF2B6
+ for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 12:32:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with UTF8SMTP id 545E2607F1
- for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 12:19:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with UTF8SMTP id 6A4938435C
+ for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 12:32:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=mg.codeaurora.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with UTF8SMTP id OnuiEkU5am1r for <devel@linuxdriverproject.org>;
- Fri,  1 Oct 2021 12:19:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with UTF8SMTP id 252z0Zlyolgl for <devel@linuxdriverproject.org>;
+ Fri,  1 Oct 2021 12:32:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from so254-9.mailgun.net (so254-9.mailgun.net [198.61.254.9])
- by smtp3.osuosl.org (Postfix) with UTF8SMTPS id 6998960625
- for <devel@driverdev.osuosl.org>; Fri,  1 Oct 2021 12:19:24 +0000 (UTC)
+Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
+ by smtp1.osuosl.org (Postfix) with UTF8SMTPS id 3A52D84360
+ for <devel@driverdev.osuosl.org>; Fri,  1 Oct 2021 12:32:05 +0000 (UTC)
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1633090766; h=Content-Transfer-Encoding: Content-Type:
- MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=f/2eL919u3xkJmcRONnoLnVQIj2Az0TQ9zKpjUlTIQM=;
- b=NvG7X4xR80uUnqVqFJuRIKU0F6w8GqDpMsscx+/2w5dZBxGJXn4AtELfsiJkKx1jlQ/gGTKq
- 2vWhtTv/NIIZpa/Dpi56gDZuHcdBx52ADRyR52C7Dsdz9fdUBEEfX/Or7b4uB2aTGhLF2dFu
- 8RuJF7MQErvq2WMy7rxBQuIOXaw=
-X-Mailgun-Sending-Ip: 198.61.254.9
+ s=smtp; t=1633091527; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=LxFT6+tXElMzzp7TNF5EckiX/nUtD1va2LinP/kg8SE=;
+ b=TLDUMK36PBfA+WhFPea+Z2rJOHg6vH82b9mBzRwa2Xez8o0BTYhnaCVmtq1Dy4d3FhU7rb5b
+ TS3mm9b3Png84CCc25M4oRQ6/J4+ewu5kvaJVrHS967Ja0CFkVUPTGkys3+BHSbZM66JRs4I
+ AVdrBQU3ubmdUTqaUsUdI7vyrB0=
+X-Mailgun-Sending-Ip: 69.72.43.7
 X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n01.prod.us-east-1.postgun.com with SMTP id
- 6156fc84a3e8d3c640fa6bb0 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 01 Oct 2021 12:18:12
+ smtp-out-n05.prod.us-west-2.postgun.com with SMTP id
+ 6156ffbea5a9bab6e87dc2e8 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 01 Oct 2021 12:31:58
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 83348C43618; Fri,  1 Oct 2021 12:18:11 +0000 (UTC)
+ id 85242C43618; Fri,  1 Oct 2021 12:31:58 +0000 (UTC)
 Received: from tykki (tynnyri.adurom.net [51.15.11.48])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id B0C26C43460;
- Fri,  1 Oct 2021 12:18:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org B0C26C43460
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 7484DC43616;
+ Fri,  1 Oct 2021 12:31:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org 7484DC43616
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=fail smtp.mailfrom=codeaurora.org
 From: Kalle Valo <kvalo@codeaurora.org>
-To: =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>
-Subject: Re: [PATCH v7 05/24] wfx: add main.c/main.h
-References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
- <20210920161136.2398632-6-Jerome.Pouiller@silabs.com>
- <87y27dkslb.fsf@codeaurora.org> <2723787.uDASXpoAWK@pc-42>
-Date: Fri, 01 Oct 2021 15:18:04 +0300
-In-Reply-To: <2723787.uDASXpoAWK@pc-42> (=?utf-8?B?IkrDqXLDtG1l?=
- Pouiller"'s message of "Fri, 01 Oct 2021 11:44:17 +0200")
-Message-ID: <87k0ixj5vn.fsf@codeaurora.org>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v5 08/24] wfx: add bus_sdio.c
+References: <20210315132501.441681-1-Jerome.Pouiller@silabs.com>
+ <4503971.bAhddQ8uqO@pc-42>
+ <CAPDyKFoXgV3m-rMKfjqRj91PNjOGaWg6odWG-EGdFKkL+dGWoA@mail.gmail.com>
+ <5713463.b6Cmjs1FeV@pc-42>
+ <CAPDyKFrONrUvbVVVF9iy4P17jZ_Fq+1pGMmsqM6C1hOXOWQnBw@mail.gmail.com>
+ <87pmz6mhim.fsf@codeaurora.org>
+ <CAPDyKFrgrSAz-B7wqNNPKk3kB8UqhGs=+bZ8RRhmqh8HuvhcEQ@mail.gmail.com>
+Date: Fri, 01 Oct 2021 15:31:49 +0300
+In-Reply-To: <CAPDyKFrgrSAz-B7wqNNPKk3kB8UqhGs=+bZ8RRhmqh8HuvhcEQ@mail.gmail.com>
+ (Ulf Hansson's message of "Mon, 12 Apr 2021 10:22:47 +0200")
+Message-ID: <87fstlj58q.fsf@codeaurora.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -85,106 +89,130 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+Cc: driverdevel <devel@driverdev.osuosl.org>, DTML <devicetree@vger.kernel.org>,
+ netdev <netdev@vger.kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-mmc <linux-mmc@vger.kernel.org>,
+ Pali =?utf-8?Q?Roh=C3=A1r?= <pali@kernel.org>,
  "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6Cgo+
-IE9uIEZyaWRheSAxIE9jdG9iZXIgMjAyMSAxMToyMjowOCBDRVNUIEthbGxlIFZhbG8gd3JvdGU6
-Cj4+IEplcm9tZSBQb3VpbGxlciA8SmVyb21lLlBvdWlsbGVyQHNpbGFicy5jb20+IHdyaXRlczoK
-Pj4gCj4+ID4gRnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMu
-Y29tPgo+PiA+Cj4+ID4gU2lnbmVkLW9mZi1ieTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5w
-b3VpbGxlckBzaWxhYnMuY29tPgo+PiAKPj4gWy4uLl0KPj4gCj4+ID4gKy8qIFRoZSBkZXZpY2Ug
-bmVlZHMgZGF0YSBhYm91dCB0aGUgYW50ZW5uYSBjb25maWd1cmF0aW9uLiBUaGlzIGluZm9ybWF0
-aW9uIGluCj4+ID4gKyAqIHByb3ZpZGVkIGJ5IFBEUyAoUGxhdGZvcm0gRGF0YSBTZXQsIHRoaXMg
-aXMgdGhlIHdvcmRpbmcgdXNlZCBpbiBXRjIwMAo+PiA+ICsgKiBkb2N1bWVudGF0aW9uKSBmaWxl
-cy4gRm9yIGhhcmR3YXJlIGludGVncmF0b3JzLCB0aGUgZnVsbCBwcm9jZXNzIHRvIGNyZWF0ZQo+
-PiA+ICsgKiBQRFMgZmlsZXMgaXMgZGVzY3JpYmVkIGhlcmU6Cj4+ID4gKyAqICAgaHR0cHM6Z2l0
-aHViLmNvbS9TaWxpY29uTGFicy93ZngtZmlybXdhcmUvYmxvYi9tYXN0ZXIvUERTL1JFQURNRS5t
-ZAo+PiA+ICsgKgo+PiA+ICsgKiBTbyB0aGlzIGZ1bmN0aW9uIGFpbXMgdG8gc2VuZCBQRFMgdG8g
-dGhlIGRldmljZS4gSG93ZXZlciwgdGhlIFBEUyBmaWxlIGlzCj4+ID4gKyAqIG9mdGVuIGJpZ2dl
-ciB0aGFuIFJ4IGJ1ZmZlcnMgb2YgdGhlIGNoaXAsIHNvIGl0IGhhcyB0byBiZSBzZW50IGluIG11
-bHRpcGxlCj4+ID4gKyAqIHBhcnRzLgo+PiA+ICsgKgo+PiA+ICsgKiBJbiBhZGQsIHRoZSBQRFMg
-ZGF0YSBjYW5ub3QgYmUgc3BsaXQgYW55d2hlcmUuIFRoZSBQRFMgZmlsZXMgY29udGFpbnMgdHJl
-ZQo+PiA+ICsgKiBzdHJ1Y3R1cmVzLiBCcmFjZXMgYXJlIHVzZWQgdG8gZW50ZXIvbGVhdmUgYSBs
-ZXZlbCBvZiB0aGUgdHJlZSAoaW4gYSBKU09OCj4+ID4gKyAqIGZhc2hpb24pLiBQRFMgZmlsZXMg
-Y2FuIG9ubHkgYmVlbiBzcGxpdCBiZXR3ZWVuIHJvb3Qgbm9kZXMuCj4+ID4gKyAqLwo+PiA+ICtp
-bnQgd2Z4X3NlbmRfcGRzKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1OCAqYnVmLCBzaXplX3QgbGVu
-KQo+PiA+ICt7Cj4+ID4gKyAgICAgaW50IHJldDsKPj4gPiArICAgICBpbnQgc3RhcnQsIGJyYWNl
-X2xldmVsLCBpOwo+PiA+ICsKPj4gPiArICAgICBzdGFydCA9IDA7Cj4+ID4gKyAgICAgYnJhY2Vf
-bGV2ZWwgPSAwOwo+PiA+ICsgICAgIGlmIChidWZbMF0gIT0gJ3snKSB7Cj4+ID4gKyBkZXZfZXJy
-KHdkZXYtPmRldiwgInZhbGlkIFBEUyBzdGFydCB3aXRoICd7Jy4gRGlkIHlvdSBmb3JnZXQgdG8K
-Pj4gPiBjb21wcmVzcyBpdD9cbiIpOwo+PiA+ICsgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7
-Cj4+ID4gKyAgICAgfQo+PiA+ICsgICAgIGZvciAoaSA9IDE7IGkgPCBsZW4gLSAxOyBpKyspIHsK
-Pj4gPiArICAgICAgICAgICAgIGlmIChidWZbaV0gPT0gJ3snKQo+PiA+ICsgICAgICAgICAgICAg
-ICAgICAgICBicmFjZV9sZXZlbCsrOwo+PiA+ICsgICAgICAgICAgICAgaWYgKGJ1ZltpXSA9PSAn
-fScpCj4+ID4gKyAgICAgICAgICAgICAgICAgICAgIGJyYWNlX2xldmVsLS07Cj4+ID4gKyAgICAg
-ICAgICAgICBpZiAoYnVmW2ldID09ICd9JyAmJiAhYnJhY2VfbGV2ZWwpIHsKPj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgaSsrOwo+PiA+ICsgICAgICAgICAgICAgICAgICAgICBpZiAoaSAtIHN0
-YXJ0ICsgMSA+IFdGWF9QRFNfTUFYX1NJWkUpCj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgcmV0dXJuIC1FRkJJRzsKPj4gPiArICAgICAgICAgICAgICAgICAgICAgYnVmW3N0YXJ0
-XSA9ICd7JzsKPj4gPiArICAgICAgICAgICAgICAgICAgICAgYnVmW2ldID0gMDsKPj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgZGV2X2RiZyh3ZGV2LT5kZXYsICJzZW5kIFBEUyAnJXN9J1xuIiwg
-YnVmICsgc3RhcnQpOwo+PiA+ICsgICAgICAgICAgICAgICAgICAgICBidWZbaV0gPSAnfSc7Cj4+
-ID4gKyAgICAgICAgICAgICAgICAgICAgIHJldCA9IGhpZl9jb25maWd1cmF0aW9uKHdkZXYsIGJ1
-ZiArIHN0YXJ0LAo+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBpIC0gc3RhcnQgKyAxKTsKPj4gPiArICAgICAgICAgICAgICAgICAgICAgaWYgKHJldCA+
-IDApIHsKPj4gPiArIGRldl9lcnIod2Rldi0+ZGV2LCAiUERTIGJ5dGVzICVkIHRvICVkOiBpbnZh
-bGlkIGRhdGEgKHVuc3VwcG9ydGVkCj4+ID4gb3B0aW9ucz8pXG4iLAo+PiA+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RhcnQsIGkpOwo+PiA+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+PiA+ICsgICAgICAgICAgICAgICAgICAg
-ICB9Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgIGlmIChyZXQgPT0gLUVUSU1FRE9VVCkgewo+
-PiA+ICsgZGV2X2Vycih3ZGV2LT5kZXYsICJQRFMgYnl0ZXMgJWQgdG8gJWQ6IGNoaXAgZGlkbid0
-IHJlcGx5IChjb3JydXB0ZWQKPj4gPiBmaWxlPylcbiIsCj4+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBzdGFydCwgaSk7Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgcmV0dXJuIHJldDsKPj4gPiArICAgICAgICAgICAgICAgICAgICAgfQo+PiA+ICsg
-ICAgICAgICAgICAgICAgICAgICBpZiAocmV0KSB7Cj4+ID4gKyBkZXZfZXJyKHdkZXYtPmRldiwg
-IlBEUyBieXRlcyAlZCB0byAlZDogY2hpcCByZXR1cm5lZCBhbiB1bmtub3duCj4+ID4gZXJyb3Jc
-biIsCj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdGFydCwgaSk7
-Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIC1FSU87Cj4+ID4gKyAg
-ICAgICAgICAgICAgICAgICAgIH0KPj4gPiArICAgICAgICAgICAgICAgICAgICAgYnVmW2ldID0g
-JywnOwo+PiA+ICsgICAgICAgICAgICAgICAgICAgICBzdGFydCA9IGk7Cj4+ID4gKyAgICAgICAg
-ICAgICB9Cj4+ID4gKyAgICAgfQo+PiA+ICsgICAgIHJldHVybiAwOwo+PiA+ICt9Cj4+IAo+PiBJ
-J20gbm90IHJlYWxseSBmb25kIG9mIGhhdmluZyB0aGlzIGtpbmQgb2YgQVNDSUkgYmFzZWQgcGFy
-c2VyIGluIHRoZQo+PiBrZXJuZWwuIERvIHlvdSBoYXZlIGFuIGV4YW1wbGUgY29tcHJlc3NlZCBm
-aWxlIHNvbWV3aGVyZT8KPgo+IEFuIGV4YW1wbGUgb2YgdW5jb21wcmVzc2VkIGNvbmZpZ3VyYXRp
-b24gZmlsZSBjYW4gYmUgZm91bmQgaGVyZVsxXS4gT25jZQo+IGNvbXByZXNzZWQgd2l0aCBbMl0s
-IHlvdSBnZXQ6Cj4KPiAgICAge2E6e2E6NCxiOjF9LGI6e2E6e2E6NCxiOjAsYzowLGQ6MCxlOkF9
-LGI6e2E6NCxiOjAsYzowLGQ6MCxlOkJ9LGM6e2E6NCxiOjAsYzowLGQ6MCxlOkN9LGQ6e2E6NCxi
-OjAsYzowLGQ6MCxlOkR9LGU6e2E6NCxiOjAsYzowLGQ6MCxlOkV9LGY6e2E6NCxiOjAsYzowLGQ6
-MCxlOkZ9LGc6e2E6NCxiOjAsYzowLGQ6MCxlOkd9LGg6e2E6NCxiOjAsYzowLGQ6MCxlOkh9LGk6
-e2E6NCxiOjAsYzowLGQ6MCxlOkl9LGo6e2E6NCxiOjAsYzowLGQ6MCxlOkp9LGs6e2E6NCxiOjAs
-YzowLGQ6MCxlOkt9LGw6e2E6NCxiOjAsYzowLGQ6MSxlOkx9LG06e2E6NCxiOjAsYzowLGQ6MSxl
-Ok19fSxjOnthOnthOjR9LGI6e2E6Nn0sYzp7YTo2LGM6MH0sZDp7YTo2fSxlOnthOjZ9LGY6e2E6
-Nn19LGU6e2I6MCxjOjF9LGg6e2U6MCxhOjUwLGI6MCxkOjAsYzpbe2E6MSxiOlswLDAsMCwwLDAs
-MF19LHthOjIsYjpbMCwwLDAsMCwwLDBdfSx7YTpbMyw5XSxiOlswLDAsMCwwLDAsMF19LHthOkEs
-YjpbMCwwLDAsMCwwLDBdfSx7YTpCLGI6WzAsMCwwLDAsMCwwXX0se2E6W0MsRF0sYjpbMCwwLDAs
-MCwwLDBdfSx7YTpFLGI6WzAsMCwwLDAsMCwwXX1dfSxqOnthOjAsYjowfX0KClNvIHdoYXQncyB0
-aGUgZ3JhbmQgaWRlYSB3aXRoIHRoaXMgYnJhY2VzIGZvcm1hdD8gSSdtIG5vdCBnZXR0aW5nIGl0
-LgoKVXN1YWxseSB0aGUgZHJpdmVycyBqdXN0IGNvbnNpZGVyIHRoaXMga2luZCBvZiBmaXJtd2Fy
-ZSBjb25maWd1cmF0aW9uCmRhdGEgYXMgYSBiaW5hcnkgYmxvYiBhbmQgZHVtcCBpdCB0byB0aGUg
-ZmlybXdhcmUsIHdpdGhvdXQga25vd2luZyB3aGF0CnRoZSBkYXRhIGNvbnRhaW5zLiBDYW4ndCB5
-b3UgZG8gdGhlIHNhbWU/Cgo+PiBEb2VzIHRoZSBkZXZpY2Ugc3RpbGwgd29yayB3aXRob3V0IHRo
-ZXNlIFBEUyBmaWxlcz8gSSBhc2sgYmVjYXVzZSBteQo+PiBzdWdnZXN0aW9uIGlzIHRvIHJlbW92
-ZSB0aGlzIHBhcnQgYWx0b2dldGhlciBhbmQgcmV2aXNpdCBhZnRlciB0aGUKPj4gaW5pdGlhbCBk
-cml2ZXIgaXMgbW92ZWQgdG8gZHJpdmVycy9uZXQvd2lyZWxlc3MuIEEgbG90IHNpbXBsZXIgdG8g
-cmV2aWV3Cj4+IGNvbXBsZXggZmVhdHVyZXMgc2VwYXJhdGVseS4KPgo+IEkgdGhpbmsgd2Ugd2ls
-bCBiZSBhYmxlIHRvIGNvbW11bmljYXRlIHdpdGggdGhlIGNoaXAuIEhvd2V2ZXIsIHRoZSBjaGlw
-IHdvbid0Cj4gaGF2ZSBhbnkgYW50ZW5uYSBwYXJhbWV0ZXJzLiBUaHVzLCBJIHRoaW5rIHRoZSBS
-RiB3b24ndCB3b3JrIHByb3Blcmx5LgoKUkYgbm90IHdvcmtpbmcgcHJvcGVybHkgaXMgYmFkLCBz
-byB3ZSBjYW4ndCBkcm9wIFBEUyBmaWxlcyBmb3Igbm93LiBUb28KYmFkLCBpdCB3b3VsZCBoYXZl
-IGJlZW4gc28gbXVjaCBmYXN0ZXIgaWYgd2Ugd291bGQgbm90IG5lZWQgdG8gd29ycnkKYWJvdXQg
-UERTIGZpbGVzIGR1cmluZyByZXZpZXcuCgotLSAKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
-Zy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3QvCgpodHRwczovL3dpcmVsZXNzLndpa2kua2Vy
-bmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3VibWl0dGluZ3BhdGNoZXMKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51
-eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Ulf,
+
+sorry for the late reply, my Gnus tells me it took me 24 weeks to reply :)
+
+Ulf Hansson <ulf.hansson@linaro.org> writes:
+
+> On Wed, 7 Apr 2021 at 14:00, Kalle Valo <kvalo@codeaurora.org> wrote:
+>>
+>> Ulf Hansson <ulf.hansson@linaro.org> writes:
+>>
+>> >> If I follow what has been done in other drivers I would write something
+>> >> like:
+>> >>
+>> >>   static int wfx_sdio_suspend(struct device *dev)
+>> >>   {
+>> >>           struct sdio_func *func = dev_to_sdio_func(dev);
+>> >>           struct wfx_sdio_priv *bus = sdio_get_drvdata(func);
+>> >>
+>> >>           config_reg_write_bits(bus->core, CFG_IRQ_ENABLE_DATA, 0);
+>> >>           // Necessary to keep device firmware in RAM
+>> >>           return sdio_set_host_pm_flags(func, MMC_PM_KEEP_POWER);
+>> >
+>> > This will tell the mmc/sdio core to keep the SDIO card powered on
+>> > during system suspend. Thus, it doesn't need to re-initialize it at
+>> > system resume - and the firmware should not need to be re-programmed.
+>> >
+>> > On the other hand, if you don't plan to support system wakeups, it
+>> > would probably be better to power off the card, to avoid wasting
+>> > energy while the system is suspended. I assume that means you need to
+>> > re-program the firmware as well. Normally, it's these kinds of things
+>> > that need to be managed from a ->resume() callback.
+>>
+>> Many mac80211 drivers do so that the device is powered off during
+>> interface down (ifconfig wlan0 down), and as mac80211 does interface
+>> down automatically during suspend, suspend then works without extra
+>> handlers.
+>
+> That sounds simple. :-)
+
+Indeed, I was omitting a lot of details :) My comment was more like a
+general remark to all different bus techonologies, not just about SDIO.
+And I'm not saying that all wireless drivers do that, but some of them
+do. Though I don't have any numbers how many.
+
+> Would you mind elaborating on what is actually being powered off at
+> interface down - and thus also I am curious what happens at a typical
+> interface up?
+
+In general in the drivers that do we this the firmware is completely
+turned off and all memory is reset during interface down. And firmware
+is started from the scratch during interface up. Also one benefit from
+this is that firmware state is reset, the wireless firmwares are
+notarious being buggy.
+
+> Even if we don't want to use system wakeups (wake-on-lan), the SDIO
+> core and the SDIO func driver still need to somewhat agree on how to
+> manage the power for the card during system suspend, I think.
+>
+> For example, for a non-removable SDIO card, the SDIO/MMC core may
+> decide to power off the card in system suspend. Then it needs to
+> restore power to the card and re-initialize it at system resume, of
+> course. This doesn't mean that the actual corresponding struct device
+> for it, gets removed/re-added, thus the SDIO func driver isn't being
+> re-probed after the system has resumed. Although, since the SDIO card
+> was re-initialized, it's likely that the FW may need to be
+> re-programmed after the system has been resumed.
+>
+> Are you saying that re-programming the FW is always happening at
+> interface up, when there are none system suspend/resume callbacks
+> assigned for the SDIO func driver?
+
+Yes, that's what I was trying to say. But take all this with grain of
+salt, I'm not very familiar with SDIO! And funnily enough, I checked
+what we do in ath10k_sdio driver during suspend has conflicting code and
+documentation:
+
+/* Empty handlers so that mmc subsystem doesn't remove us entirely during
+ * suspend. We instead follow cfg80211 suspend/resume handlers.
+ */
+static int ath10k_sdio_pm_suspend(struct device *device)
+{
+	struct sdio_func *func = dev_to_sdio_func(device);
+	struct ath10k_sdio *ar_sdio = sdio_get_drvdata(func);
+	struct ath10k *ar = ar_sdio->ar;
+	mmc_pm_flag_t pm_flag, pm_caps;
+	int ret;
+
+	if (!device_may_wakeup(ar->dev))
+		return 0;
+
+	ath10k_sdio_set_mbox_sleep(ar, true);
+
+	pm_flag = MMC_PM_KEEP_POWER;
+
+	ret = sdio_set_host_pm_flags(func, pm_flag);
+	if (ret) {
+		pm_caps = sdio_get_host_pm_caps(func);
+		ath10k_warn(ar, "failed to set sdio host pm flags (0x%x, 0x%x): %d\n",
+			    pm_flag, pm_caps, ret);
+		return ret;
+	}
+
+	return ret;
+}
+
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
