@@ -1,131 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2112F41EA00
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Oct 2021 11:44:42 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E81041EA21
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Oct 2021 11:52:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B8378614B4;
-	Fri,  1 Oct 2021 09:44:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CFB608444F;
+	Fri,  1 Oct 2021 09:52:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y9iqzzo9Hnms; Fri,  1 Oct 2021 09:44:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pmA9zg7hYkne; Fri,  1 Oct 2021 09:52:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C8B05614AC;
-	Fri,  1 Oct 2021 09:44:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 25ACC843E3;
+	Fri,  1 Oct 2021 09:52:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3877D1BF473
- for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 09:44:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BBB481BF473
+ for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 09:52:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 26F1640414
- for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 09:44:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with UTF8SMTP id B5679614AC
+ for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 09:52:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lF5U133ybsRQ for <devel@linuxdriverproject.org>;
- Fri,  1 Oct 2021 09:44:27 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2047.outbound.protection.outlook.com [40.107.243.47])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 95ECB4016B
- for <devel@driverdev.osuosl.org>; Fri,  1 Oct 2021 09:44:27 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iHAsDsIUEvL0MI56CgjPrUJ4lPmLT3zW8JIiM2ooW4/571e2jci9WAVAzcpBGRDk7i7k1d6Yquo+vQOipWTqoX1gUWOZ0oceSCgCJjMzpVhwrcB1ivUvI2q/nhne43KVtzpNYuGp8G3qnhKqG/rtS9xiP/09WtypdsmU29CG7GvwvdhW6ksnB/hRLXhvk2JBwqgAWvGswMwvQn5LbDXlNevDomtZuKrhCMZqK/MWszfRu2VZFiZzOb5uKdbCNDYzhT+rSp0Xai6vJosNHL1oXdB23wjkuq2pU4OuU5ilZRFBQM7uJaiRgoOKLxZKhZ7xfvy8McrORyKPHcxvJRsn4A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5iDsuN2tDbU0jGG+21A9YWZIq2CkKxMBl4KD6/+wTRg=;
- b=FCmmEOFyFdm/iGdZAXmN9F9LEq2Q+V1Vae7gX/IYQgzMTgmeNZF1e4qWj6DRvePTfO2SJ/p9qIHeJqUZKgqqGw97IamCrS3ntoI11jmrT2wVeGQJTWCIHW8O2TAU4L/wIUK7nTEzCTMlTqf0peb3J7k/sOXZDZaWhtgKX6a+3mOm7otwIYamDo/U/mN2hSfo1G2lRu2T/vbXBxOPBw5rcaYrCjl5wXyG1Y84cYG93Y1cX8ggt2YW8/mnanrpkBsWNSSOjcsIG0d6VvSg3+02yEL1tZ8hESD2XUZp+CpGufQUjAdd4STUmlFVko3szQjV6WTlOAe14Yh65yA0EvH83w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5iDsuN2tDbU0jGG+21A9YWZIq2CkKxMBl4KD6/+wTRg=;
- b=Yn4WCGjWSZ42QfK//SMEyKJ0VhKmQJBcJjxTou7tX6E2TFxTksa+oWAxveE33oUtRZwjJCZKo4cnDkPjU92IvbtrQNaza+J7oBj5W2g9hszYbzlD14k649kFMXTxu3BNH4Lc+5DYl1zjI6OIhSISOF7V33+xEayaB6aM3Z+iBgc=
-Authentication-Results: codeaurora.org; dkim=none (message not signed)
- header.d=none;codeaurora.org; dmarc=none action=none header.from=silabs.com;
-Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
- by PH0PR11MB5676.namprd11.prod.outlook.com (2603:10b6:510:ea::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.14; Fri, 1 Oct
- 2021 09:44:25 +0000
-Received: from PH0PR11MB5657.namprd11.prod.outlook.com
- ([fe80::31cb:3b13:b0e8:d8f4]) by PH0PR11MB5657.namprd11.prod.outlook.com
- ([fe80::31cb:3b13:b0e8:d8f4%9]) with mapi id 15.20.4544.025; Fri, 1 Oct 2021
- 09:44:25 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH v7 05/24] wfx: add main.c/main.h
-Date: Fri, 01 Oct 2021 11:44:17 +0200
-Message-ID: <2723787.uDASXpoAWK@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <87y27dkslb.fsf@codeaurora.org>
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=mg.codeaurora.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with UTF8SMTP id SjXcTNgn4B24 for <devel@linuxdriverproject.org>;
+ Fri,  1 Oct 2021 09:52:44 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
+ by smtp3.osuosl.org (Postfix) with UTF8SMTPS id 7828E614A0
+ for <devel@driverdev.osuosl.org>; Fri,  1 Oct 2021 09:52:43 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1633081964; h=Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
+ To: From: Sender; bh=2bttLv42HrO8OSNS4BdRIDDtX+8/+9g8pCv8FTqYHyI=;
+ b=qbUJzNiTAdXb7WyX0ldevPGcosngS8lRtkqa5y76+cb8z1i8+35w4WkFaSMzLBGeo+n98V2p
+ IlDpAv1xTiTeR7r1NJh6MIa7lIQWgMtXMMATnDcwXDz3yCklRXC+/3icpYTWm+IDknieqfJG
+ zo3MFQy/0SP5fkb6CEc2sa4x89w=
+X-Mailgun-Sending-Ip: 69.72.43.7
+X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n03.prod.us-east-1.postgun.com with SMTP id
+ 6156da5e713d5d6f96711c2a (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 01 Oct 2021 09:52:30
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 356EFC4360D; Fri,  1 Oct 2021 09:52:29 +0000 (UTC)
+Received: from tykki (tynnyri.adurom.net [51.15.11.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id CDC00C4338F;
+ Fri,  1 Oct 2021 09:52:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org CDC00C4338F
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH v7 09/24] wfx: add hwio.c/hwio.h
 References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
- <20210920161136.2398632-6-Jerome.Pouiller@silabs.com>
- <87y27dkslb.fsf@codeaurora.org>
-X-ClientProxiedBy: PAZP264CA0070.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:102:1fd::13) To PH0PR11MB5657.namprd11.prod.outlook.com
- (2603:10b6:510:ee::19)
+ <20210920161136.2398632-10-Jerome.Pouiller@silabs.com>
+Date: Fri, 01 Oct 2021 12:52:20 +0300
+In-Reply-To: <20210920161136.2398632-10-Jerome.Pouiller@silabs.com> (Jerome
+ Pouiller's message of "Mon, 20 Sep 2021 18:11:21 +0200")
+Message-ID: <87k0ixkr6z.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Received: from pc-42.localnet (37.71.187.125) by
- PAZP264CA0070.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:1fd::13) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4566.19 via Frontend Transport; Fri, 1 Oct 2021 09:44:23 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: feddbc41-e046-4d54-c4a8-08d984c00ded
-X-MS-TrafficTypeDiagnostic: PH0PR11MB5676:
-X-Microsoft-Antispam-PRVS: <PH0PR11MB5676FDA385DAA3113147B05293AB9@PH0PR11MB5676.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: HlbFQZ8WMzJ/8yK7uPFtZk2GDo+SdOB6AU1r9aId5DFdMRJJ654eUEq02H4beHkvZ9lWc+Af86QhaKWIzWZNN4GkrWv12yzkJiJQmFjeVV/o/LrbLkGn3GvQbb/hFO+mR54CoLPBP/HAOxJRHW8WS18UA8Mm9c48YCd6ZupxHkBLZSimEIsE6n2Cfn9jqblGz6WDVeWtiRx4hUPc4xZQdtStmCJ8x7F2xqowJG4n+Qy2P9MG6ZxlHoC5tassLUVpsUS1EVLj2XTRiMV1Jki+yNE6Jx43Fs416MzeA5idvomC6CTdda8T4hF9CW6v1hnBaXKwWvaK/fbNtPJ2yPBeshSijEm+v0trcycP6W4+CLRPARYBQP+B+fZwlLMSilZ9uj8JIjn/fjWXXXQG7xqBeGZFowuYoeGaPaFyL/Y3DQCehEm62lIADaI4CMOiYN03ZHOsmHHvAesvNen3NlAIvQ/S3kkYkqAQXwXCvTU295sWROvk4R3YiKYhBzgbnhEiIVKFbgaWZJlhWpuFrhncsI2pbW4s8ZHziyIE5dGA0go1Yplnp8eACCOarefg5VXhSwblrnltgCE1Xs+WX18Yd7lI3s41uoeK5XZRAQfN2mVFMY6rs8YoSxw9Y/lxzUd28M7AujlQUIPSpMzs5p+kcNPGo9NrFYzEzktErh1MfHIWA1woMlkGsvLWnb6TTtYO3ZF31q0w4CKi08ur7mhYDsAdrtBYK9Y+nHO6nJUNzvtCb+CmV06g6ZhLyXHNjnn41v42MB4e7axUknAg+NtYof869XB5cUm3IF1O0/kbjweOYsoSMlssb0Zvcx4DeAhHN7s4wmPJAGm54mW68DpXzA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(26005)(66946007)(33716001)(86362001)(508600001)(2906002)(8676002)(316002)(8936002)(6486002)(966005)(66476007)(54906003)(7416002)(956004)(66556008)(186003)(6506007)(6666004)(6916009)(4326008)(5660300002)(36916002)(38350700002)(52116002)(66574015)(6512007)(9686003)(38100700002)(83380400001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?N7++VQnNlUsB7PQRWG12eEI85sGOTyvEPcCGBzsZptLza8EjFP1yMycRxq?=
- =?iso-8859-1?Q?Zw5Ua3mUDZJF8gRs4ZkaKTl4v4Te0BkemKN2cv6cNzvCepEs11lY0M3SRY?=
- =?iso-8859-1?Q?jdzBonTWs4PpGeaPAKtE/yd+OHNjQ162KWmurzp6vfkudYnAfbu4QuUyZ+?=
- =?iso-8859-1?Q?hpdMwsjLpPKimcDz7UIlNCsRa+jcg6KVWPK6tVYupsoPRw/AF2ZFGutjlm?=
- =?iso-8859-1?Q?YAaas+GZs/hriFgSjCFkZFmFuzEznXG5bOwylCARZgMmBvoTWAueYEqVOQ?=
- =?iso-8859-1?Q?nTH8CysmH5NYZ6TfJi5moM8UotOq2Qq6CD8LLWFpGFOySiMCEBgd6MXIQ9?=
- =?iso-8859-1?Q?WPc0HxSjK1pOqvlZ1ay3unnVcKrjBKPeB8qxK+y3KESvfrXTVNaxtn8NJy?=
- =?iso-8859-1?Q?jLz2cZsnadVHuS7mYD6FApXi/t9ngywFR3WFhvVrctlBYJuZSbMt3ntnr4?=
- =?iso-8859-1?Q?2UxynlfFXNWKFrSCjkqX+8tyVB6Q95m2Qlxee7XzQnJMvkuWhEpdccZHDe?=
- =?iso-8859-1?Q?Ze+vazccbauaSQMRUBFFQaAJ87+zt2iJ/Y6aFtqkbvdmo+n7Y6h5XgEWrX?=
- =?iso-8859-1?Q?lGvNJUVC9C+3oi4QoVG6ogc8PPM4Uqx6EdNsSD5zppTXStokk4d+UlbtEy?=
- =?iso-8859-1?Q?xlNvYTTsrmOWnai/ICW0HAtfLG6I8308rvsAIs2AQySNKtllv8Pl+S9tGP?=
- =?iso-8859-1?Q?UgFS59/m0lWbQ7hdhe0RRgDmemgewfWxS13dLqp9NRD5SUJMrLd0JdAUHP?=
- =?iso-8859-1?Q?wn43S1ohHxpPkcyYsTVMz6YGzMnLWDeP8booan2Q6qcTTq46Kt0FfBy78e?=
- =?iso-8859-1?Q?3BhdugRZ77m2R7wTVZO6JSxMODvtG7ICGK3kWSrqM2odg7iyGkaBESxuVl?=
- =?iso-8859-1?Q?ut0u3u6xwTlCGjb8ZoZRRRljVn3CeVKrVVfVpflxcio7Om4+8p9q88tTJe?=
- =?iso-8859-1?Q?iIRvht0AB5OeuZlKMwLtUtOfpS/7BiNTDlM4ZWsXMooayJ7QWd9h7BiXiS?=
- =?iso-8859-1?Q?OxWuhYLB/hcrWpGTnBPo5LfDg7WyqEpUilo/nw/Tsx44YzZKj71DJsZZAK?=
- =?iso-8859-1?Q?RUasON9+hRwUlqXBHs0mTFLSl1GiiX/K4qfmswDOB8Y1yL7fZWOWgkH1KN?=
- =?iso-8859-1?Q?2vg+mRho6IEu/4KLuUbouFHQPkPjYeZ00wYb3JgGGKqd9cHdVCzH7GmOlI?=
- =?iso-8859-1?Q?s0m4MetdQeFmOrCZ4R+q5HNP6sWsI3fMGlkSRAWMeDp1kZKL1Iwxpk/oIo?=
- =?iso-8859-1?Q?B5Wl6I5ZFbzvgokxIIBK+L698EuA1cPAOqBdProJa0xvO61ada8tifold+?=
- =?iso-8859-1?Q?n5Kviy7jJoY3FNRSwKMRFcIak8Jw9dpXhE4eAQGLLq3vbTg9OUrj0HEKCa?=
- =?iso-8859-1?Q?V+UxUoWiMG?=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: feddbc41-e046-4d54-c4a8-08d984c00ded
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Oct 2021 09:44:25.3880 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 5Bj2LFeh2rQ2oZ+zAsful4aoD1IntmRcUWMZriHTy+dVV5ZziwnQuKAxb0nkPitXozJ9SXJgDUY1qBqc0Io+6Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5676
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,137 +89,85 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  Rob Herring <robh+dt@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
  "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Friday 1 October 2021 11:22:08 CEST Kalle Valo wrote:
-> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
-> =
-
-> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >
-> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> =
-
-> [...]
-> =
-
-> > +/* The device needs data about the antenna configuration. This informa=
-tion in
-> > + * provided by PDS (Platform Data Set, this is the wording used in WF2=
-00
-> > + * documentation) files. For hardware integrators, the full process to=
- create
-> > + * PDS files is described here:
-> > + *   https:github.com/SiliconLabs/wfx-firmware/blob/master/PDS/README.=
-md
-> > + *
-> > + * So this function aims to send PDS to the device. However, the PDS f=
-ile is
-> > + * often bigger than Rx buffers of the chip, so it has to be sent in m=
-ultiple
-> > + * parts.
-> > + *
-> > + * In add, the PDS data cannot be split anywhere. The PDS files contai=
-ns tree
-> > + * structures. Braces are used to enter/leave a level of the tree (in =
-a JSON
-> > + * fashion). PDS files can only been split between root nodes.
-> > + */
-> > +int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
-> > +{
-> > +     int ret;
-> > +     int start, brace_level, i;
-> > +
-> > +     start =3D 0;
-> > +     brace_level =3D 0;
-> > +     if (buf[0] !=3D '{') {
-> > + dev_err(wdev->dev, "valid PDS start with '{'. Did you forget to
-> > compress it?\n");
-> > +             return -EINVAL;
-> > +     }
-> > +     for (i =3D 1; i < len - 1; i++) {
-> > +             if (buf[i] =3D=3D '{')
-> > +                     brace_level++;
-> > +             if (buf[i] =3D=3D '}')
-> > +                     brace_level--;
-> > +             if (buf[i] =3D=3D '}' && !brace_level) {
-> > +                     i++;
-> > +                     if (i - start + 1 > WFX_PDS_MAX_SIZE)
-> > +                             return -EFBIG;
-> > +                     buf[start] =3D '{';
-> > +                     buf[i] =3D 0;
-> > +                     dev_dbg(wdev->dev, "send PDS '%s}'\n", buf + star=
-t);
-> > +                     buf[i] =3D '}';
-> > +                     ret =3D hif_configuration(wdev, buf + start,
-> > +                                             i - start + 1);
-> > +                     if (ret > 0) {
-> > + dev_err(wdev->dev, "PDS bytes %d to %d: invalid data (unsupported
-> > options?)\n",
-> > +                                     start, i);
-> > +                             return -EINVAL;
-> > +                     }
-> > +                     if (ret =3D=3D -ETIMEDOUT) {
-> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip didn't reply (corrupted
-> > file?)\n",
-> > +                                     start, i);
-> > +                             return ret;
-> > +                     }
-> > +                     if (ret) {
-> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip returned an unknown
-> > error\n",
-> > +                                     start, i);
-> > +                             return -EIO;
-> > +                     }
-> > +                     buf[i] =3D ',';
-> > +                     start =3D i;
-> > +             }
-> > +     }
-> > +     return 0;
-> > +}
-> =
-
-> I'm not really fond of having this kind of ASCII based parser in the
-> kernel. Do you have an example compressed file somewhere?
-
-An example of uncompressed configuration file can be found here[1]. Once
-compressed with [2], you get:
-
-    {a:{a:4,b:1},b:{a:{a:4,b:0,c:0,d:0,e:A},b:{a:4,b:0,c:0,d:0,e:B},c:{a:4,=
-b:0,c:0,d:0,e:C},d:{a:4,b:0,c:0,d:0,e:D},e:{a:4,b:0,c:0,d:0,e:E},f:{a:4,b:0=
-,c:0,d:0,e:F},g:{a:4,b:0,c:0,d:0,e:G},h:{a:4,b:0,c:0,d:0,e:H},i:{a:4,b:0,c:=
-0,d:0,e:I},j:{a:4,b:0,c:0,d:0,e:J},k:{a:4,b:0,c:0,d:0,e:K},l:{a:4,b:0,c:0,d=
-:1,e:L},m:{a:4,b:0,c:0,d:1,e:M}},c:{a:{a:4},b:{a:6},c:{a:6,c:0},d:{a:6},e:{=
-a:6},f:{a:6}},e:{b:0,c:1},h:{e:0,a:50,b:0,d:0,c:[{a:1,b:[0,0,0,0,0,0]},{a:2=
-,b:[0,0,0,0,0,0]},{a:[3,9],b:[0,0,0,0,0,0]},{a:A,b:[0,0,0,0,0,0]},{a:B,b:[0=
-,0,0,0,0,0]},{a:[C,D],b:[0,0,0,0,0,0]},{a:E,b:[0,0,0,0,0,0]}]},j:{a:0,b:0}}
-
-
-[1]: https://github.com/SiliconLabs/wfx-pds/blob/API4.1/BRD4001A_Rev_A01.pd=
-s.in
-[2]: https://github.com/SiliconLabs/wfx-linux-tools/blob/SD4/pds_compress
-
-> Does the device still work without these PDS files? I ask because my
-> suggestion is to remove this part altogether and revisit after the
-> initial driver is moved to drivers/net/wireless. A lot simpler to review
-> complex features separately.
-
-I think we will be able to communicate with the chip. However, the chip won=
-'t
-have any antenna parameters. Thus, I think the RF won't work properly.
-
-
--- =
-
-J=E9r=F4me Pouiller
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SmVyb21lIFBvdWlsbGVyIDxKZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbT4gd3JpdGVzOgoKPiBG
+cm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBT
+aWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5j
+b20+Cj4gLS0tCj4gIGRyaXZlcnMvbmV0L3dpcmVsZXNzL3NpbGFicy93ZngvaHdpby5jIHwgMzQw
+ICsrKysrKysrKysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9uZXQvd2lyZWxlc3Mvc2lsYWJz
+L3dmeC9od2lvLmggfCAgNzkgKysrKysrCgpbLi4uXQoKPiArc3RhdGljIGludCBpbmRpcmVjdF9y
+ZWFkKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCBpbnQgcmVnLCB1MzIgYWRkciwKPiArCQkJIHZvaWQg
+KmJ1Ziwgc2l6ZV90IGxlbikKPiArewo+ICsJaW50IHJldDsKPiArCWludCBpOwo+ICsJdTMyIGNm
+ZzsKPiArCXUzMiBwcmVmZXRjaDsKPiArCj4gKwlXQVJOX09OKGxlbiA+PSAweDIwMDApOwoKQSBk
+ZWZpbmUgZm9yIHRoZSBtYWdpYyB2YWx1ZSwgcGxlYXNlLiBJIHNlZSB0aGlzIDB4MjAwMCBsaW1p
+dCBtdWx0aXBsZQp0aW1lcy4KCj4gKwlXQVJOX09OKHJlZyAhPSBXRlhfUkVHX0FIQl9EUE9SVCAm
+JiByZWcgIT0gV0ZYX1JFR19TUkFNX0RQT1JUKTsKCkkgc2VlIHF1aXRlIGEgbG90IG9mIFdBUk4o
+KSBhbmQgV0FSTl9PTigpIGluIHRoZSBkcml2ZXIuIERvIG5vdGUgdGhhdApXQVJOKCkgYW5kIFdB
+Uk5fT04oKSBhcmUgYSBiaXQgZGFuZ2Vyb3VzIHRvIHVzZSBpbiB0aGUgZGF0YSBwYXRoIGFzIGFu
+CmF0dGFja2VyLCBvciBldmVuIGp1c3QgYSBidWcsIG1pZ2h0IGVhc2lseSBzcGFtIHRoZSBrZXJu
+ZWwgbG9nIHdoaWNoCm1pZ2h0IHJlc3VsdCB0byBob3N0IHJlYm9vdHMgZHVlIHRvIHdhdGNoZG9n
+IHRyaWdnZXJpbmcgb3Igb3RoZXIKcmVzb3VyY2Ugc3RhcnZhdGlvbi4gSSByZWNvbW1lbmQgdXNp
+bmcgc29tZSByYXRlbGltaXRlZCB2ZXJzaW9ucyBvZgpwcmludGsoKSBtYWNyb3MsIGZvciBleGFt
+cGxlIGRldl8qKCkgaWYgdGhleSBoYXZlIHJhdGVsaW1pdHMuIE5vdCBhCmJsb2NrZXIsIGJ1dCB3
+YW50ZWQgdG8gcG9pbnQgb3V0IGFueXdheS4KCj4gK2ludCB3ZnhfZGF0YV9yZWFkKHN0cnVjdCB3
+ZnhfZGV2ICp3ZGV2LCB2b2lkICpidWYsIHNpemVfdCBsZW4pCj4gK3sKPiArCWludCByZXQ7Cj4g
+Kwo+ICsJV0FSTigobG9uZylidWYgJiAzLCAiJXM6IHVuYWxpZ25lZCBidWZmZXIiLCBfX2Z1bmNf
+Xyk7CgpJU19BTElHTkVEKCk/Cgo+ICsJd2Rldi0+aHdidXNfb3BzLT5sb2NrKHdkZXYtPmh3YnVz
+X3ByaXYpOwo+ICsJcmV0ID0gd2Rldi0+aHdidXNfb3BzLT5jb3B5X2Zyb21faW8od2Rldi0+aHdi
+dXNfcHJpdiwKPiArCQkJCQkgICAgV0ZYX1JFR19JTl9PVVRfUVVFVUUsIGJ1ZiwgbGVuKTsKPiAr
+CV90cmFjZV9pb19yZWFkKFdGWF9SRUdfSU5fT1VUX1FVRVVFLCBidWYsIGxlbik7Cj4gKwl3ZGV2
+LT5od2J1c19vcHMtPnVubG9jayh3ZGV2LT5od2J1c19wcml2KTsKPiArCWlmIChyZXQpCj4gKwkJ
+ZGV2X2Vycih3ZGV2LT5kZXYsICIlczogYnVzIGNvbW11bmljYXRpb24gZXJyb3I6ICVkXG4iLAo+
+ICsJCQlfX2Z1bmNfXywgcmV0KTsKPiArCXJldHVybiByZXQ7Cj4gK30KPiArCj4gK2ludCB3Znhf
+ZGF0YV93cml0ZShzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgY29uc3Qgdm9pZCAqYnVmLCBzaXplX3Qg
+bGVuKQo+ICt7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCVdBUk4oKGxvbmcpYnVmICYgMywgIiVzOiB1
+bmFsaWduZWQgYnVmZmVyIiwgX19mdW5jX18pOwoKSVNfQUxJR05FRCgpPwoKPiAtLS0gL2Rldi9u
+dWxsCj4gKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3Mvc2lsYWJzL3dmeC9od2lvLmgKPiBAQCAt
+MCwwICsxLDc5IEBACj4gKy8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkg
+Ki8KPiArLyoKPiArICogTG93LWxldmVsIEkvTyBmdW5jdGlvbnMuCj4gKyAqCj4gKyAqIENvcHly
+aWdodCAoYykgMjAxNy0yMDIwLCBTaWxpY29uIExhYm9yYXRvcmllcywgSW5jLgo+ICsgKiBDb3B5
+cmlnaHQgKGMpIDIwMTAsIFNULUVyaWNzc29uCj4gKyAqLwo+ICsjaWZuZGVmIFdGWF9IV0lPX0gK
+PiArI2RlZmluZSBXRlhfSFdJT19ICj4gKwo+ICsjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KPiAr
+Cj4gK3N0cnVjdCB3ZnhfZGV2Owo+ICsKPiArLyogQ2F1dGlvbjogaW4gdGhlIGZ1bmN0aW9ucyBi
+ZWxvdywgJ2J1Zicgd2lsbCB1c2VkIHdpdGggYSBETUEuIFNvLCBpdCBtdXN0IGJlCj4gKyAqIGtt
+YWxsb2MnZCAoZG8gbm90IHVzZSBzdGFjayBhbGxvY2F0ZWQgYnVmZmVycykuIEluIGRvdWJ0LCBl
+bmFibGUKPiArICogQ09ORklHX0RFQlVHX1NHIHRvIGRldGVjdCBiYWRseSBsb2NhdGVkIGJ1ZmZl
+ci4KPiArICovCj4gK2ludCB3ZnhfZGF0YV9yZWFkKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB2b2lk
+ICpidWYsIHNpemVfdCBidWZfbGVuKTsKPiAraW50IHdmeF9kYXRhX3dyaXRlKHN0cnVjdCB3Znhf
+ZGV2ICp3ZGV2LCBjb25zdCB2b2lkICpidWYsIHNpemVfdCBidWZfbGVuKTsKPiArCj4gK2ludCBz
+cmFtX2J1Zl9yZWFkKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1MzIgYWRkciwgdm9pZCAqYnVmLCBz
+aXplX3QgbGVuKTsKPiAraW50IHNyYW1fYnVmX3dyaXRlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1
+MzIgYWRkciwgY29uc3Qgdm9pZCAqYnVmLCBzaXplX3QgbGVuKTsKPiArCj4gK2ludCBhaGJfYnVm
+X3JlYWQoc3RydWN0IHdmeF9kZXYgKndkZXYsIHUzMiBhZGRyLCB2b2lkICpidWYsIHNpemVfdCBs
+ZW4pOwo+ICtpbnQgYWhiX2J1Zl93cml0ZShzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgdTMyIGFkZHIs
+IGNvbnN0IHZvaWQgKmJ1Ziwgc2l6ZV90IGxlbik7Cj4gKwo+ICtpbnQgc3JhbV9yZWdfcmVhZChz
+dHJ1Y3Qgd2Z4X2RldiAqd2RldiwgdTMyIGFkZHIsIHUzMiAqdmFsKTsKPiAraW50IHNyYW1fcmVn
+X3dyaXRlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1MzIgYWRkciwgdTMyIHZhbCk7Cj4gKwo+ICtp
+bnQgYWhiX3JlZ19yZWFkKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1MzIgYWRkciwgdTMyICp2YWwp
+Owo+ICtpbnQgYWhiX3JlZ193cml0ZShzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgdTMyIGFkZHIsIHUz
+MiB2YWwpOwoKIndmeF8iIHByZWZpeCBtaXNzaW5nIGZyb20gdGhlc2UgZnVuY3Rpb25zLgoKPiAr
+aW50IGNvbmZpZ19yZWdfcmVhZChzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgdTMyICp2YWwpOwo+ICtp
+bnQgY29uZmlnX3JlZ193cml0ZShzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgdTMyIHZhbCk7Cj4gK2lu
+dCBjb25maWdfcmVnX3dyaXRlX2JpdHMoc3RydWN0IHdmeF9kZXYgKndkZXYsIHUzMiBtYXNrLCB1
+MzIgdmFsKTsKPiArCj4gKyNkZWZpbmUgQ1RSTF9ORVhUX0xFTl9NQVNLICAgMHgwMDAwMEZGRgo+
+ICsjZGVmaW5lIENUUkxfV0xBTl9XQUtFVVAgICAgIDB4MDAwMDEwMDAKPiArI2RlZmluZSBDVFJM
+X1dMQU5fUkVBRFkgICAgICAweDAwMDAyMDAwCj4gK2ludCBjb250cm9sX3JlZ19yZWFkKHN0cnVj
+dCB3ZnhfZGV2ICp3ZGV2LCB1MzIgKnZhbCk7Cj4gK2ludCBjb250cm9sX3JlZ193cml0ZShzdHJ1
+Y3Qgd2Z4X2RldiAqd2RldiwgdTMyIHZhbCk7Cj4gK2ludCBjb250cm9sX3JlZ193cml0ZV9iaXRz
+KHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1MzIgbWFzaywgdTMyIHZhbCk7Cj4gKwo+ICsjZGVmaW5l
+IElHUFJfUlcgICAgICAgICAgMHg4MDAwMDAwMAo+ICsjZGVmaW5lIElHUFJfSU5ERVggICAgICAg
+MHg3RjAwMDAwMAo+ICsjZGVmaW5lIElHUFJfVkFMVUUgICAgICAgMHgwMEZGRkZGRgo+ICtpbnQg
+aWdwcl9yZWdfcmVhZChzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgaW50IGluZGV4LCB1MzIgKnZhbCk7
+Cj4gK2ludCBpZ3ByX3JlZ193cml0ZShzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgaW50IGluZGV4LCB1
+MzIgdmFsKTsKCkFuZCB0aGVzZSB0b28uCgotLSAKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
+Zy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3QvCgpodHRwczovL3dpcmVsZXNzLndpa2kua2Vy
+bmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3VibWl0dGluZ3BhdGNoZXMKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51
+eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
