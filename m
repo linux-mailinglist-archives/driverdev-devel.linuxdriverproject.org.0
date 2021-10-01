@@ -1,78 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24DC141EDC2
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Oct 2021 14:45:39 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9908F41EFB2
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 Oct 2021 16:38:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 846524074D;
-	Fri,  1 Oct 2021 12:45:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9B499614EA;
+	Fri,  1 Oct 2021 14:38:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Q25tj1PH4tuW; Fri,  1 Oct 2021 12:45:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FP-eXbXCA_uc; Fri,  1 Oct 2021 14:38:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BA63240699;
-	Fri,  1 Oct 2021 12:45:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A2F02614DC;
+	Fri,  1 Oct 2021 14:38:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DDE7D1BF2B6
- for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 12:45:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 17FF51BF424
+ for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 14:38:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with UTF8SMTP id DB49184429
- for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 12:45:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1237240130
+ for <devel@linuxdriverproject.org>; Fri,  1 Oct 2021 14:38:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=mg.codeaurora.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with UTF8SMTP id QFwXgRdC1JuQ for <devel@linuxdriverproject.org>;
- Fri,  1 Oct 2021 12:45:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from so254-9.mailgun.net (so254-9.mailgun.net [198.61.254.9])
- by smtp1.osuosl.org (Postfix) with UTF8SMTPS id 1B59F84426
- for <devel@driverdev.osuosl.org>; Fri,  1 Oct 2021 12:45:20 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1633092324; h=Content-Transfer-Encoding: Content-Type:
- MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=DxUzotX+Y7gO/nEKkP180xLqp5Xbdp3BDVDGIp9TVHI=;
- b=go1MPaYD65sSnmSfspBNxzWX40EGVVlagHXtxUj96iu4l9zovRwR0+hYAM6D0aPSE4Xra2v1
- PDqpe88sHb9SWMKvtoGcIC9Mz5HNKt8Az0N2aTF5sQhK9LJjRZrx/pH9AtRExpE49JhimWQG
- gCHyAfA415u0IkH5MLORoLDI/sY=
-X-Mailgun-Sending-Ip: 198.61.254.9
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n05.prod.us-west-2.postgun.com with SMTP id
- 615702dba5a9bab6e886931d (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 01 Oct 2021 12:45:15
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 19B50C4360D; Fri,  1 Oct 2021 12:45:15 +0000 (UTC)
-Received: from tykki (tynnyri.adurom.net [51.15.11.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id A3539C4338F;
- Fri,  1 Oct 2021 12:45:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org A3539C4338F
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>
-Subject: Re: [PATCH v7 12/24] wfx: add hif_api_*.h
-References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
- <20210920161136.2398632-13-Jerome.Pouiller@silabs.com>
- <875yuhkm4c.fsf@codeaurora.org> <2600267.GQK6fj20dd@pc-42>
-Date: Fri, 01 Oct 2021 15:45:05 +0300
-In-Reply-To: <2600267.GQK6fj20dd@pc-42> (=?utf-8?B?IkrDqXLDtG1l?=
- Pouiller"'s message of "Fri, 01 Oct 2021 13:52:52 +0200")
-Message-ID: <877dewkj72.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key)
+ header.d=paul-moore-com.20210112.gappssmtp.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uWpXLbn9hkin for <devel@linuxdriverproject.org>;
+ Fri,  1 Oct 2021 14:38:26 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x529.google.com (mail-ed1-x529.google.com
+ [IPv6:2a00:1450:4864:20::529])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 822A0400C1
+ for <devel@driverdev.osuosl.org>; Fri,  1 Oct 2021 14:38:26 +0000 (UTC)
+Received: by mail-ed1-x529.google.com with SMTP id r18so35494610edv.12
+ for <devel@driverdev.osuosl.org>; Fri, 01 Oct 2021 07:38:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=paul-moore-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zmf5bHycEslzhJrqEtvPO4rl26bvdDHLmu6FXit3K00=;
+ b=xSdLcHEHstBCW0XwCmCZHKI0LmErqmy4xzApHOoeQsw9Ey/RmGbMEUcvrYLBJmxIqr
+ +sX+IWQ5cOZkLVs+KNItg5upOeDdti488Vl/k1xkmttk1DRFva0zM0lC5Hh+xh/yczpJ
+ jUy7qYVjme9Ox+2jkewzjKZJkU1jAelUPfvslZt9E1wqDJNt0UCXDJs1pNHt6vFyOy+S
+ tQNe7nB3aq67/gq6wluF6im3q/0Bt6lbl/IXfVa4Dke5YyrDcJoD9Ocz0vsNevuYs6qW
+ mMAHBqaACuTXEdXWpErZAxa3THQTzgyuqbq1KbD5Os1u6da1oh2zQy2SYrJ2trQ7x1Oo
+ YaxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zmf5bHycEslzhJrqEtvPO4rl26bvdDHLmu6FXit3K00=;
+ b=u8jy786k4acyX14P9UEoF/aj6QSsOt28MGBeNMpruWYVTdz7MDEhRb90TFjVMj1KDB
+ AT2JfSvCrOcPzr2aQS/Sb4T4+O7UeqwJLNgml1YRL38w8mhIRCbZ5xTwVpHY4b4occYR
+ SCdyX7Gy2Itd+VSQQ9GJy/eiSOqWBu2BbwXF64Z0CdhYQr/F7iUNAIu6d2fBglo48S7y
+ EjZLIDgRgXAmN0oKaxYfAg86A6WWCYKOORZOwMcDPOI8GmPDxfgOTkzzB7WczpzyjARw
+ /fWYs3VOTMG7NfwM8e8VuC6UU3W51JQbofmYih6EkoUAFzV5aXgymD6cPpBHcic2CZHD
+ 3pbA==
+X-Gm-Message-State: AOAM5314gKseFtlafLRFTv0JdzStglGxVo6r/S1Ilbj6n6SQ9EG/wCD5
+ TyGLI04mmBtCipAvVCjkt2/JdFbwSmk57yuuT6m4
+X-Google-Smtp-Source: ABdhPJzEvVvODu1yaZFSdK5tpYcIveXlY8zeFTPk2iUCD75467RBT4GINnz2yu22lrjdtA9Z7q7ifInwZsLH6/h5uac=
+X-Received: by 2002:a05:6402:142e:: with SMTP id
+ c14mr14718759edx.209.1633099103840; 
+ Fri, 01 Oct 2021 07:38:23 -0700 (PDT)
 MIME-Version: 1.0
+References: <20211001024506.3762647-1-tkjos@google.com>
+In-Reply-To: <20211001024506.3762647-1-tkjos@google.com>
+From: Paul Moore <paul@paul-moore.com>
+Date: Fri, 1 Oct 2021 10:38:12 -0400
+Message-ID: <CAHC9VhQ-uziaYRYWaah=RMmz7HUVvxGs+4F=g2sizVXR0ZSWVw@mail.gmail.com>
+Subject: Re: [PATCH] binder: use cred instead of task for selinux checks
+To: Todd Kjos <tkjos@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,36 +84,122 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-security-module@vger.kernel.org,
+ kernel-team@android.com, tkjos@android.com, keescook@chromium.org,
+ jannh@google.com, selinux@vger.kernel.org, gregkh@linuxfoundation.org,
+ Stephen Smalley <stephen.smalley.work@gmail.com>,
+ James Morris <jmorris@namei.org>, zohar@linux.ibm.com,
+ linux-kernel@vger.kernel.org, arve@android.com, stable@vger.kernel.org,
+ Jeffrey Vander Stoep <jeffv@google.com>, joel@joelfernandes.org,
+ Eric Paris <eparis@parisplace.org>, maco@android.com, christian@brauner.io
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6Cgo+
-IE9uIEZyaWRheSAxIE9jdG9iZXIgMjAyMSAxMzo0MTo1NSBDRVNUIEthbGxlIFZhbG8gd3JvdGU6
-Cj4+IEplcm9tZSBQb3VpbGxlciA8SmVyb21lLlBvdWlsbGVyQHNpbGFicy5jb20+IHdyaXRlczoK
-Pj4gCj4+ID4gRnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMu
-Y29tPgo+PiA+Cj4+ID4gU2lnbmVkLW9mZi1ieTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5w
-b3VpbGxlckBzaWxhYnMuY29tPgo+PiAKPj4gWy4uLl0KPj4gCj4+ID4gLS0tIC9kZXYvbnVsbAo+
-PiA+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL3NpbGFicy93ZngvaGlmX2FwaV9jbWQuaAo+
-PiA+IEBAIC0wLDAgKzEsNTU1IEBACj4+ID4gKy8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBB
-cGFjaGUtMi4wICovCj4+IAo+PiBJIGRvbid0IGhvdyBJIG1pc3NlZCB0aGlzIGVhcmxpZXI6Cj4+
-IAo+PiBoaWZfYXBpX2NtZC5oOi8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBBcGFjaGUtMi4w
-ICovCj4+IGhpZl9hcGlfZ2VuZXJhbC5oOi8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBBcGFj
-aGUtMi4wICovCj4+IGhpZl9hcGlfbWliLmg6LyogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFw
-YWNoZS0yLjAgKi8KPj4gCj4+IEFwYWNoZS0yLjAgbGljZW5zZSBpcyBhIGJsb2NrZXIgZm9yIG1l
-LCBzZWUgTElDRU5TRVMvZHVhbC9BcGFjaGUtMi4wLgo+Cj4gT2suIEl0IGlzIG5vdCBhIHByb2Js
-ZW0gaGVyZS4gSSBoYXZlIHRoZSBhdXRob3Jpc2F0aW9uIHRvIGNoYW5nZSBpdCBpbgo+IEdQTHYy
-LW9ubHkuCgpHcmVhdCwgdGhhbmtzIQoKLS0gCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcv
-cHJvamVjdC9saW51eC13aXJlbGVzcy9saXN0LwoKaHR0cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5l
-bC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1bWVudGF0aW9uL3N1Ym1pdHRpbmdwYXRjaGVzCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcg
-bGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhk
-cml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Thu, Sep 30, 2021 at 10:45 PM Todd Kjos <tkjos@google.com> wrote:
+>
+> Save the struct cred associated with a binder process
+> at initial open to avoid potential race conditions
+> when converting to a security ID.
+>
+> Since binder was integrated with selinux, it has passed
+> 'struct task_struct' associated with the binder_proc
+> to represent the source and target of transactions.
+> The conversion of task to SID was then done in the hook
+> implementations. It turns out that there are race conditions
+> which can result in an incorrect security context being used.
+>
+> Fix by saving the 'struct cred' during binder_open and pass
+> it to the selinux subsystem.
+>
+> Fixes: 79af73079d75 ("Add security hooks to binder and implement the
+> hooks for SELinux.")
+> Signed-off-by: Todd Kjos <tkjos@google.com>
+> Cc: stable@vger.kernel.org # 5.14 (need backport for earlier stables)
+> ---
+>  drivers/android/binder.c          | 14 +++++----
+>  drivers/android/binder_internal.h |  3 ++
+>  include/linux/lsm_hook_defs.h     | 14 ++++-----
+>  include/linux/security.h          | 28 +++++++++---------
+>  security/security.c               | 14 ++++-----
+>  security/selinux/hooks.c          | 48 +++++++++----------------------
+>  6 files changed, 52 insertions(+), 69 deletions(-)
+
+Thanks Todd, I'm happy to see someone with a better understanding of
+binder than me pitch in to clean this up :)  A couple of quick
+comments/questions below ...
+
+> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> index 9edacc8b9768..ca599ebdea4a 100644
+> --- a/drivers/android/binder.c
+> +++ b/drivers/android/binder.c
+> @@ -5055,6 +5056,7 @@ static int binder_open(struct inode *nodp, struct file *filp)
+>         spin_lock_init(&proc->outer_lock);
+>         get_task_struct(current->group_leader);
+>         proc->tsk = current->group_leader;
+> +       proc->cred = get_cred(filp->f_cred);
+
+Is it *always* true that filp->f_cred is going to be the same as
+current->group_leader->cred?  Or rather does this help resolve the
+issue of wanting the subjective creds but not being able to access
+them mentioned in the task_sid_binder() comment?  If the latter, it
+might be nice to add something to the related comment in struct
+binder_ref (below).
+
+>         INIT_LIST_HEAD(&proc->todo);
+>         init_waitqueue_head(&proc->freeze_wait);
+>         proc->default_priority = task_nice(current);
+> diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
+> index 402c4d4362a8..886fc327a534 100644
+> --- a/drivers/android/binder_internal.h
+> +++ b/drivers/android/binder_internal.h
+> @@ -364,6 +364,8 @@ struct binder_ref {
+>   *                        (invariant after initialized)
+>   * @tsk                   task_struct for group_leader of process
+>   *                        (invariant after initialized)
+> + * @cred                  struct cred for group_leader of process
+> + *                        (invariant after initialized)
+
+Related to the question above.  At the very least the comment should
+probably be changed to indicate to make it clear the creds are coming
+directly from the binder file/device and not always the group_leader.
+
+> diff --git a/security/selinux/hooks.c b/security/selinux/hooks.c
+> index e7ebd45ca345..c8bf3db90c8b 100644
+> --- a/security/selinux/hooks.c
+> +++ b/security/selinux/hooks.c
+> @@ -255,29 +255,6 @@ static inline u32 task_sid_obj(const struct task_struct *task)
+>         return sid;
+>  }
+>
+> -/*
+> - * get the security ID of a task for use with binder
+> - */
+> -static inline u32 task_sid_binder(const struct task_struct *task)
+> -{
+> -       /*
+> -        * In many case where this function is used we should be using the
+> -        * task's subjective SID, but we can't reliably access the subjective
+> -        * creds of a task other than our own so we must use the objective
+> -        * creds/SID, which are safe to access.  The downside is that if a task
+> -        * is temporarily overriding it's creds it will not be reflected here;
+> -        * however, it isn't clear that binder would handle that case well
+> -        * anyway.
+> -        *
+> -        * If this ever changes and we can safely reference the subjective
+> -        * creds/SID of another task, this function will make it easier to
+> -        * identify the various places where we make use of the task SIDs in
+> -        * the binder code.  It is also likely that we will need to adjust
+> -        * the main drivers/android binder code as well.
+> -        */
+> -       return task_sid_obj(task);
+> -}
+
+-- 
+paul moore
+www.paul-moore.com
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
