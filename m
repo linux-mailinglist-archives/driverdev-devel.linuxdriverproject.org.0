@@ -1,78 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D791841FB84
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 Oct 2021 14:04:27 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AC3F41FCBB
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 Oct 2021 17:26:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AC75640865;
-	Sat,  2 Oct 2021 12:04:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 80C29607C3;
+	Sat,  2 Oct 2021 15:26:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GYqcljQa_1Wk; Sat,  2 Oct 2021 12:04:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QHZPK3LLfabA; Sat,  2 Oct 2021 15:26:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A2890404A1;
-	Sat,  2 Oct 2021 12:04:22 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id E67C96063F;
+	Sat,  2 Oct 2021 15:25:59 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BE8E01BF23C
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  2 Oct 2021 12:04:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ED5201BF38B
+ for <devel@linuxdriverproject.org>; Sat,  2 Oct 2021 15:25:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BA8854086A
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  2 Oct 2021 12:04:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DAED3401CF
+ for <devel@linuxdriverproject.org>; Sat,  2 Oct 2021 15:25:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kGed4Toq24dh
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  2 Oct 2021 12:04:12 +0000 (UTC)
+ with ESMTP id BHeUL2WkdLUz for <devel@linuxdriverproject.org>;
+ Sat,  2 Oct 2021 15:25:48 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-io1-xd29.google.com (mail-io1-xd29.google.com
- [IPv6:2607:f8b0:4864:20::d29])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 26C4A4085E
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  2 Oct 2021 12:04:12 +0000 (UTC)
-Received: by mail-io1-xd29.google.com with SMTP id d18so14677660iof.13
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 02 Oct 2021 05:04:12 -0700 (PDT)
+Received: from mail-io1-xd31.google.com (mail-io1-xd31.google.com
+ [IPv6:2607:f8b0:4864:20::d31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 99DC8401C3
+ for <devel@driverdev.osuosl.org>; Sat,  2 Oct 2021 15:25:48 +0000 (UTC)
+Received: by mail-io1-xd31.google.com with SMTP id d18so15115230iof.13
+ for <devel@driverdev.osuosl.org>; Sat, 02 Oct 2021 08:25:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=nsZbpm1YBoHMpWTnzHLuE/zYZ0yg4jBiKD5Q7oCTPBE=;
- b=LepwbRJcqbW2e5l0WGGM4PEj/FtCwnWLJTdy6DKWRiVWVQPBEvILwfwRnTFUPFt2WD
- gQWF4IcusHSB60szF/Za9kqAIXOYf54xwo71UEKgqkv5GlB8VWA6jTkfKTH4M/hUqFYs
- L0Vyhrigf/tiBII3Ta+hYV7vKDNuVzU7rwrraKMkqn0CBEaFbjVGZGhfuoaj9rH5GOc0
- iHGQ7t8BnvrBJ/49kw+lwqdOfZJmijaEeHDWIBQO3jwzogttVVWJ0FyrKFi60+P3E7F6
- uRiXXiE3/FgsshuOXCYZM2QliNg9KDHM/CdCjCDx4H/xsCIQj554z7W0hi3jRHkBtyyf
- kbKw==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=xQrYULKok+hL+AIRGJuG9CojAZcnV9Xr+it7yxQJVlY=;
+ b=j3ZiwowMBBmRzvBmVCH3XKamqcVre6o456+AvAA1h4qZYRB3WuHo31G+M4sr4+/RIL
+ 6Juyoy2a0pcZHTveUzZBOaQxYgdGduSvLOQoMKpnlXyO6vGF90n0J5AKAWX3gxkxdLJX
+ bXHT3USXMUVnYGfKIZU62MxUCDlxBGspokcP8oaWBftwjlAjt8QCIBP97+qryu6GtRDZ
+ Hd0KRvBdSSWPIWe+1SNSqBCqEnDEr8KkGwIAYSub2eH2kB/4Mb4ParH1v20NDu0zrNUX
+ B6JBdlUurmOjcqxRcSkKkAnZxTSZ7lQfzs7WPRIHvZwV/2ZHEVvfelCGPHwQCxVAaYjB
+ n5kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=nsZbpm1YBoHMpWTnzHLuE/zYZ0yg4jBiKD5Q7oCTPBE=;
- b=ix8t0Zpo3qpO39cIbUVIOkLwtshoFAAst2IFEi4b+gXjZjMuT9ci1zBvFEY3odI56z
- 6Yq4Pa3vvFKXRc5OfVd+ZzzcgoQGm8jr+zIHI6+q+AMxqgHW9+ylMblUlnlscFcFNI3u
- zMhlTd+dOV/fOEFryIBn0f6AZ1QkkL/asruqK4omcdHfdpTChN2ivgFqW5CWG9GGfiHU
- PGUefScyQYvrmAswcRdM0pVmWXkMRKUWi+WV+GTIKRdsyudBr5k9blD4ClKbMpESJ1XK
- tKlmYh8wdzhdT1us5b396dCRKUnTdSNUgC1ngUrcmO3wR2SGB13fpR/9wen+0LxJMfnc
- S70g==
-X-Gm-Message-State: AOAM530r0OVcRk2sXJtNlwUnXN+TxQI4u/TEQ93D/0yh7I/EMD0HuFKJ
- TiqNxrM0oY0LleEOkmflde3D7jUjIKTUcmnLFVs=
-X-Google-Smtp-Source: ABdhPJwpjd1vVslj31SWuiBXzwEmqndfAK9alwKWil0kAKniMD0dwQlXpI4aJYKNVnWxgLyaCMsyKDPED/de85feaKg=
-X-Received: by 2002:a02:23c3:: with SMTP id u186mr2567562jau.34.1633176251322; 
- Sat, 02 Oct 2021 05:04:11 -0700 (PDT)
+ :subject:to;
+ bh=xQrYULKok+hL+AIRGJuG9CojAZcnV9Xr+it7yxQJVlY=;
+ b=EQiEMU0s0qI2GiIDh/NmfNu66tA7I/dGfKIdDLS4NDQXkLSImYvgBKgeOBiEkzJn/v
+ YfJCK4YiIGA2K8onYfXwNLmhetP5uVGRlj4WFWIb0hWAmOEZ/pm2DMs4q5Jemym3DQ1q
+ ZltTVtopQy5fLCxJz5nomDQSdRti26y3gSIwdOLtXi6ZpCwvk4rP8ZPnL6xYj8eHLqLG
+ i3/Fi3Lua7wCVNw6zS12uaPWZYIFX7tW+0OxRUGvfZ0dXDSxeVRVYNzlNt//RnMKmHyx
+ Ib9YpqK/xL0yBQ5C2E7bQMPtw3QSyEb0o017hiiWjrWuDGfp6lFXijOujFCXsJfuzjam
+ p11w==
+X-Gm-Message-State: AOAM532dF8WFqXRf+rqm/en0GWSU3/cHxtpddWwrRUPDevGdd78GW48h
+ WAJuvP+99v/xbkHYH4ht03S1d4jZV7N27MX/UoE=
+X-Google-Smtp-Source: ABdhPJyphnR2E16Y8GoebKs/1bd9l2xnNCJ0aNGdB1eFTqmoTC0JryF7tJ4Ap3lerDQnXVcR16D+0rpgKAKZAUp/lxs=
+X-Received: by 2002:a5d:87d2:: with SMTP id q18mr2794341ios.78.1633188347654; 
+ Sat, 02 Oct 2021 08:25:47 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a4f:f90d:0:0:0:0:0 with HTTP;
- Sat, 2 Oct 2021 05:04:11 -0700 (PDT)
-From: "U.n" <wadebaye33@gmail.com>
-Date: Sat, 2 Oct 2021 00:04:11 -1200
-Message-ID: <CACE0T5U1u5jLa=hqYqzU3PjP13ar=3b4qh+t5J9qeg-Vu_8w4Q@mail.gmail.com>
-Subject: Attention
-To: unitednnation0@gmail.com
+Received: by 2002:ad5:5fb4:0:0:0:0:0 with HTTP;
+ Sat, 2 Oct 2021 08:25:47 -0700 (PDT)
+From: Mrs Aisha Al-Qaddafi <gaddafia487@gmail.com>
+Date: Sat, 2 Oct 2021 08:25:47 -0700
+Message-ID: <CAJbXPF1=CuBvZ8iZL8S==O5-13oWkLd+9VBgMKMqP1TDSdyQVw@mail.gmail.com>
+Subject: Dear Friend,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,25 +81,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: unitednnation0@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: mrsaishag45@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCgoKQXR0ZW50aW9uIFNpci9NYWRhbQpUaGlzIGlzIHRoZSBVbml0ZWQgTmF0aW9uIChVTiku
-IFdlIHRoZSBVbml0ZWQgTmF0aW9ucyAoVU4pIEdsb2JhbGx5CmhhcyBhcHByb3ZlZCAoVVMkMi41
-MDAsMDAwKSggdHdvIE1pbGxpb24gRml2ZSBodW5kcmVkIHRob3VzYW5kCmRvbGxhcnMpIGNvbXBl
-bnNhdGlvbiBhcyBwYXJ0IG9mIG91ciByZXNwb25zaWJpbGl0aWVzIGZvciBodW1hbml0YXJpYW4K
-QWlkIGZvciBmaWdodGluZyBhZ2FpbnN0IENvcm9uYVZpcnVzIGFuZCB5b3UgYXJlIGFtb25nIHRo
-ZSBsdWNreSBvbmVzLgoKClRoaXMgY29tcGVuc2F0aW9uIGlzIGZvciB0aGUgbW9zdCBhZmZlY3Rl
-ZCBjb3VudHJpZXMsIGNvbW11bml0aWVzIGFuZApmYW1pbGllcyBhY3Jvc3MgdGhlIGdsb2JhbC4g
-WW91ciBmdW5kcyB3ZXJlIGRlcG9zaXRlZCB3aXRoIEJhbmsgaW4gVVNBCnRvIHRyYW5zZmVyIHlv
-dXIgZnVuZHMgdG8geW91IHZpYSBJbnRlcm5ldCBCYW5raW5nLiBZb3UgaGF2ZSB0byBzZW5kCnlv
-dXIgZnVsbCBkZXRhaWxzIGFzIHN0YXRlIGJlbG93OndpdGggdGhpcyBlbWFpbCBBZGRyZXNzCiAg
-KCB1bml0ZWRubmF0aW9uMEBnbWFpbC5jb20gKQpZb3VyIGZ1bGwgbmFtZXM6CkFkZHJlc3M6ClRl
-bGVwaG9uZToKT2NjdXBhdGlvbjoKCgoKWW91cnMgU2luY2VyZWx5Ck1yLiBBbnTDs25pbyBHdXRl
-cnJlcwpVbml0ZWQgTmF0aW9ucyAoVU4pLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Dear Friend,
+
+I came across your e-mail contact prior to a private search while in
+need of your assistance. I am Aisha Al-Qaddafi, the only biological
+Daughter of Former President of Libya Col. Muammar Al-Qaddafi. Am a
+single Mother and a Widow with three Children.
+
+I have investment funds worth Twenty Seven Million Five Hundred
+Thousand United State Dollar ($27.500.000.00 ) and i need a trusted
+investment Manager/Partner because of my current refugee status,
+however, I am interested in you for investment project assistance in
+your country, may be from there, we can build business relationship in
+the nearest future.
+
+I am willing to negotiate an investment/business profit sharing ratio
+with you based on the future investment earning profits.
+
+If you are willing to handle this project on my behalf kindly reply
+urgently to enable me to provide you more information about the
+investment funds.
+
+Your Urgent Reply Will Be Appreciated
+
+Best Regards
+Mrs Aisha Al-Qaddafi
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
