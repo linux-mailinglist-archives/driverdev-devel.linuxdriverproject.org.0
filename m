@@ -1,62 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DDA3422AD7
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 16:19:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13702422AEC
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 16:21:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7107160B7B;
-	Tue,  5 Oct 2021 14:19:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 876764085E;
+	Tue,  5 Oct 2021 14:21:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NJtqyMbgvrzx; Tue,  5 Oct 2021 14:19:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6GOXB3KS7MS6; Tue,  5 Oct 2021 14:21:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 88F0E608F2;
-	Tue,  5 Oct 2021 14:19:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B62294060C;
+	Tue,  5 Oct 2021 14:21:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0C2411BF33C
- for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 14:19:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F21B81BF33C
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 14:20:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with UTF8SMTP id ED9BA4078F
- for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 14:19:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with UTF8SMTP id E04BB4014B
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 14:20:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=mg.codeaurora.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with UTF8SMTP id P1HgnVJNuudf for <devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 14:19:21 +0000 (UTC)
+ with UTF8SMTP id kZ7xJkc4GFej for <devel@linuxdriverproject.org>;
+ Tue,  5 Oct 2021 14:20:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
- by smtp2.osuosl.org (Postfix) with UTF8SMTPS id 6AD0D40781
- for <devel@driverdev.osuosl.org>; Tue,  5 Oct 2021 14:19:21 +0000 (UTC)
+Received: from so254-9.mailgun.net (so254-9.mailgun.net [198.61.254.9])
+ by smtp2.osuosl.org (Postfix) with UTF8SMTPS id 808A3400EF
+ for <devel@driverdev.osuosl.org>; Tue,  5 Oct 2021 14:20:48 +0000 (UTC)
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1633443561; h=Content-Transfer-Encoding: Content-Type:
+ s=smtp; t=1633443655; h=Content-Transfer-Encoding: Content-Type:
  MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=wbRlR3S9un/VrDX7Y3W0hcFvNCAKaY9PkJGHjSDPKeo=;
- b=wqMeKfFyZ0k9x/iCrlJqJ3sLaamFf/DynqpuJn5d2VfaMBpE4yGlICEAPgQ2xHHYY5k30Rmu
- Ab37cRRk7KngVxKrEuW34oPmsbumKH1wWmdBFBRrNCX0CRHCYCdE6qoge9pixzT1pqRr4yqS
- CdJS91ceNijJLsvLOfYMgsDgTzY=
-X-Mailgun-Sending-Ip: 69.72.43.7
+ To: From: Sender; bh=iXaHQCDcTat4B7XjXBM6ERGc8OaY+eIv7u8gl6/j0qg=;
+ b=ri/AqSwjW6V2NhP3QsQziKkiDEGLBRVKSvy6rGSF56pkS6kuo89XziYezJmRxBoSqAeZ1T88
+ Yvi56bse3Een92EKE0NLsKPoWLmDH5j4E/SJBY+PL1f1/5SniGQ2ilXsDEPeR+ChbDrk5lFC
+ BexyWGBzgzqJ7leGAPvSmIfHS9A=
+X-Mailgun-Sending-Ip: 198.61.254.9
 X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n01.prod.us-east-1.postgun.com with SMTP id
- 615c5e054ccdf4fe5744cc33 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 05 Oct 2021 14:15:33
+ smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
+ 615c5f2bb8ab9916b3aef48f (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 05 Oct 2021 14:20:27
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 91478C447B5; Tue,  5 Oct 2021 14:15:32 +0000 (UTC)
+ id 58449C43637; Tue,  5 Oct 2021 14:20:26 +0000 (UTC)
 Received: from tykki (tynnyri.adurom.net [51.15.11.48])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 0FB13C43164;
- Tue,  5 Oct 2021 14:15:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org 0FB13C43164
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id EF3B7C4338F;
+ Tue,  5 Oct 2021 14:20:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org EF3B7C4338F
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
@@ -65,10 +65,10 @@ From: Kalle Valo <kvalo@codeaurora.org>
 To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
 Subject: Re: [PATCH v8 00/24] wfx: get out from the staging area
 References: <20211005135400.788058-1-Jerome.Pouiller@silabs.com>
-Date: Tue, 05 Oct 2021 17:15:22 +0300
+Date: Tue, 05 Oct 2021 17:20:19 +0300
 In-Reply-To: <20211005135400.788058-1-Jerome.Pouiller@silabs.com> (Jerome
  Pouiller's message of "Tue, 5 Oct 2021 15:53:36 +0200")
-Message-ID: <875yubfthh.fsf@codeaurora.org>
+Message-ID: <871r4zft98.fsf@codeaurora.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -150,13 +150,15 @@ RCgpIGRvZXMgbm90IGV4aXN0PykgKEthbGxlKQo+ICAgLSBJIGhhdmUgYWxzbyBub3RpY2VkIHRo
 YXQgc29tZSBoZWFkZXJzIGZpbGVzIGRpZCBub3QgZGVjbGFyZSBhbGwgdGhlCj4gICAgIHN0cnVj
 dCB0aGV5IHVzZWQuCj4KPiAgIFRoZXNlIGlzc3VlcyByZW1haW4gKEkgaG9wZSB0aGV5IGFyZSBu
 b3QgYmxvY2tlcnMpOgo+ICAgLSBJIGhhdmUgY3VycmVudGx5IG5vIGlkZWFzIGhvdyB0byBpbXBy
-b3ZlL3NpbXBsaWZ5IHRoZSBwYXJzaW5nIFBEUyBmaWxlLgo+ICAgICAoS2FsbGUpCgpGb3IgdGhl
-IFBEUyBmaWxlIHByb2JsZW0gaXQgd291bGQgaGVscCBpZiB5b3UgY291bGQgYWN0dWFsbHkgZGVz
-Y3JpYmUKd2hhdCB0aGUgZmlybXdhcmUgcmVxdWlyZXMvbmVlZHMgYW5kIHRoZW4gd2UgY2FuIHN0
-YXJ0IGZyb20gdGhhdC4gSSBoYWQKc29tZSBxdWVzdGlvbnMgYWJvdXQgdGhpcyBpbiB2NyBidXQg
-YXBwYXJlbnRseSB5b3UgbWlzc2VkIHRob3NlLgoKLS0gCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5l
-bC5vcmcvcHJvamVjdC9saW51eC13aXJlbGVzcy9saXN0LwoKaHR0cHM6Ly93aXJlbGVzcy53aWtp
-Lmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1bWVudGF0aW9uL3N1Ym1pdHRpbmdwYXRjaGVz
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1h
-aWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYu
-bGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+b3ZlL3NpbXBsaWZ5IHRoZSBwYXJzaW5nIFBEUyBmaWxlLgo+ICAgICAoS2FsbGUpCj4gICAtIFdl
+IHdvdWxkIGxpa2UgdG8gcmVsYXRlIHRoZSBTRElPIHF1aXJrcyBpbnRvIG1tYy9jb3JlL3F1aXJr
+cy5oLCBidXQgdGhlCj4gICAgIEFQSSB0byBkbyB0aGF0IGRvZXMgbm90IHlldCBleGlzdC4gKFVs
+ZiwgUGFsaSkKClNvIGlzIHRoaXMgYSBkaXJlY3QgdmVyc2lvbiBmcm9tIHN0YWdpbmctbmV4dD8g
+SWYgeWVzLCB3aGF0IGNvbW1pdCBpZCBkaWQKeW91IHVzZT8gT3IgZG8geW91IGhhdmUgeW91ciBv
+d24gc2V0IG9mIHBhdGNoZXMgb24gdG9wIG9mIHN0YWdpbmctbmV4dD8KCi0tIApodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtd2lyZWxlc3MvbGlzdC8KCmh0dHBzOi8v
+d2lyZWxlc3Mud2lraS5rZXJuZWwub3JnL2VuL2RldmVsb3BlcnMvZG9jdW1lbnRhdGlvbi9zdWJt
+aXR0aW5ncGF0Y2hlcwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRw
+Oi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2
+ZXJkZXYtZGV2ZWwK
