@@ -2,76 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6EEF1422F67
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 19:50:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B98BA423305
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 23:47:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C357683E20;
-	Tue,  5 Oct 2021 17:50:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BAA2983EC9;
+	Tue,  5 Oct 2021 21:47:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HmQ0b5A-pX5o; Tue,  5 Oct 2021 17:50:09 +0000 (UTC)
+	with ESMTP id 04fit6jaNDju; Tue,  5 Oct 2021 21:47:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EEED083D2F;
-	Tue,  5 Oct 2021 17:50:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3B9C83E47;
+	Tue,  5 Oct 2021 21:47:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3CA6A1BF34A
- for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 17:50:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A636A1BF32B
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 21:47:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with UTF8SMTP id 2BC1F60C20
- for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 17:50:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A25AB60D6F
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 21:47:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=mg.codeaurora.org
+ dkim=pass (2048-bit key) header.d=cartrackgps.net
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with UTF8SMTP id oj3ToTRFTqHu for <devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 17:49:59 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
- by smtp3.osuosl.org (Postfix) with UTF8SMTPS id C7101606E2
- for <devel@driverdev.osuosl.org>; Tue,  5 Oct 2021 17:49:58 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1633456199; h=Content-Transfer-Encoding: Content-Type:
- MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
- To: From: Sender; bh=umNYz8pA01LGfst/ZDKb/BGeTkpsTgzCMazCvgWWhM4=;
- b=Jr2VJ0kV0x1lL7FPVd7Ao0qjwOgRClqrGlmmFF4o6qajMh7cIjTFXwfid7R7Oc0g8RK1+ecR
- wWTP1q38Ykl8hAK69Zb7ih3gw8noOzQaVHt5BxNfW858RcEqL00Dm1NcgUETslFrkBX6mNLK
- iNFH1SCSEffjMh/EirZo/UcKTUw=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n02.prod.us-west-2.postgun.com with SMTP id
- 615c903930ce13d2b403d1b5 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 05 Oct 2021 17:49:45
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 3D3FBC4360C; Tue,  5 Oct 2021 17:49:45 +0000 (UTC)
-Received: from tykki (tynnyri.adurom.net [51.15.11.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id E2E1DC4338F;
- Tue,  5 Oct 2021 17:49:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org E2E1DC4338F
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: =?utf-8?B?SsOpcsO0bWU=?= Pouiller <jerome.pouiller@silabs.com>
-Subject: Re: [PATCH v8 00/24] wfx: get out from the staging area
-References: <20211005135400.788058-1-Jerome.Pouiller@silabs.com>
- <875yubfthh.fsf@codeaurora.org> <2810333.gDgIz5hftg@pc-42>
-Date: Tue, 05 Oct 2021 20:49:37 +0300
-In-Reply-To: <2810333.gDgIz5hftg@pc-42> (=?utf-8?B?IkrDqXLDtG1l?=
- Pouiller"'s message of "Tue, 05 Oct 2021 18:22:31 +0200")
-Message-ID: <87o883e4zy.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ with ESMTP id Xqgj3OMAcX2e for <devel@linuxdriverproject.org>;
+ Tue,  5 Oct 2021 21:47:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from cpvds521.sideink.com (cpvds521.sideink.com [209.95.54.60])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0D86360D6D
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 21:47:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cartrackgps.net; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=TjGQKY8SJ03oNEwHxMV2cWqdrlQ3D9JDSnAtOxH7owA=; b=Hgygtrb0HTLpRMi1bpS8jSYiI2
+ droB8WdM+MKvAa6bXIEgBv1RWPi8TWm8XyikUjfVzCjuYGaPKKtaf0JPVd9Ktb2m+R6TfdyZxJDUa
+ otYHF3/23Dh2Qqy4TpHWuygsuRqUZFzbX68hMtob8ig7NiovLfETho6omLr2F4zbVs+p9Qe+WfBwo
+ r0WRa0wbjH3gFrqVChrBytypwF3q1RI9WePgmtriNrbWf06q6jtfG+M18klftFBAbSCp4r/7eS0YY
+ nvF1OQ3nEJ6NHOyireGKPzWceWR33XKNc+vekC7ercxK1/IrEwKAsWwKUB1yrFG5kgAbm3b2/UNaB
+ I6BozFxw==;
+Received: from r167-61-19-90.dialup.adsl.anteldata.net.uy
+ ([167.61.19.90]:57568 helo=cartrackgps.net)
+ by cpvds521.sideink.com with esmtpsa (TLS1) tls
+ TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (Exim 4.94.2)
+ (envelope-from <salesctg@cartrackgps.net>) id 1mXsHQ-0003nk-O3
+ for devel@linuxdriverproject.org; Tue, 05 Oct 2021 23:47:21 +0200
+From: =?ISO-8859-1?B?UGFibG8=?=<salesctg@cartrackgps.net>
+To: devel@linuxdriverproject.org
+Subject: =?ISO-8859-1?B?RGlzdHJpYnV0b3IgZm9yIGRldmVs?=
+Date: 05 Oct 2021 18:48:05 -0300
+Message-ID: <20211005184804.01F804540741DA64@cartrackgps.net>
 MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - cpvds521.sideink.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - cartrackgps.net
+X-Get-Message-Sender-Via: cpvds521.sideink.com: authenticated_id:
+ infoctg@cartrackgps.net
+X-Authenticated-Sender: cpvds521.sideink.com: infoctg@cartrackgps.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,54 +81,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: =?ISO-8859-1?B?UGFibG8=?= <salesctg@cartrackgps.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6Cgo+
-IE9uIFR1ZXNkYXkgNSBPY3RvYmVyIDIwMjEgMTY6MTU6MjIgQ0VTVCBLYWxsZSBWYWxvIHdyb3Rl
-Ogo+PiBKZXJvbWUgUG91aWxsZXIgPEplcm9tZS5Qb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6
-Cj4+IAo+PiA+IEZyb206IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJz
-LmNvbT4KPiBbLi4uXQo+PiA+IHY4Ogo+PiA+ICAgLSBDaGFuZ2UgdGhlIHdheSB0aGUgRFQgaXMg
-aGFuZGxlZC4gVGhlIHVzZXIgY2FuIG5vdyBzcGVjaWZ5IHRoZSBuYW1lIG9mCj4+ID4gICAgIHRo
-ZSBib2FyZCAoPSBjaGlwICsgYW50ZW5uYSkgaGUgdXNlLiBJdCBlYXNpZXIgZm9yIGJvYXJkIGRl
-c2lnbmVycyB0bwo+PiA+ICAgICBhZGQgbmV3IGVudHJpZXMuIEkgcGxhbiB0byBzZW5kIGEgUFIg
-dG8gbGludXgtZmlybXdhcmUgdG8gaW5jbHVkZSBQRFMKPj4gPiAgICAgZmlsZXMgb2YgdGhlIGRl
-dmVsb3BwZW1lbnQgYm9hcmRzIGJlbG9uZyB0aGUgZmlybXdhcmUgKEkgYWxzbyBwbGFuIHRvCj4+
-ID4gICAgIHJlbG9jYXRlIHRoZXNlIGZpbGUgaW50byB3ZngvIGluc3RlYWQgb2Ygc2lsYWJzLyku
-IChLYWxsZSwgUGFsaSkKPj4gPiAgIC0gUHJlZml4IHZpc2libGUgZnVuY3Rpb25zIGFuZCBzdHJ1
-Y3RzIHdpdGggIndmeF8iLiBJIG1vc3RseSBrZXB0IHRoZQo+PiA+ICAgICBjb2RlIHVuZGVyIDgw
-IGNvbHVtbnMuIChLYWxsZSwgUGFsaSwgR3JlZykKPj4gPiAgIC0gUmVtb3ZlIHN1cHBvcnQgZm9y
-IGZvcmNlX3BzX3RpbWVvdXQgZm9yIG5vdy4gKEthbGxlKQo+PiA+ICAgLSBGaXggbGljZW5zZXMg
-b2YgTWFrZWZpbGUsIEtjb25maWcgYW5kIGhpZl9hcGkqLmguIChLYWxsZSkKPj4gPiAgIC0gRG8g
-bm90IG1peCBhbmQgbWF0Y2ggZW5kaWFuZXNzIGluIHN0cnVjdCBoaWZfaW5kX3N0YXJ0dXAuIChL
-YWxsZSkKPj4gPiAgIC0gUmVtb3ZlIG1hZ2ljIHZhbHVlcy4gKEthbGxlKQo+PiA+ICAgLSBVc2Ug
-SVNfQUxJR05FRCgpLiAoQlRXLCBQVFJfSVNfQUxJR05FRCgpIGRvZXMgbm90IGV4aXN0PykgKEth
-bGxlKQo+PiA+ICAgLSBJIGhhdmUgYWxzbyBub3RpY2VkIHRoYXQgc29tZSBoZWFkZXJzIGZpbGVz
-IGRpZCBub3QgZGVjbGFyZSBhbGwgdGhlCj4+ID4gICAgIHN0cnVjdCB0aGV5IHVzZWQuCj4+ID4K
-Pj4gPiAgIFRoZXNlIGlzc3VlcyByZW1haW4gKEkgaG9wZSB0aGV5IGFyZSBub3QgYmxvY2tlcnMp
-Ogo+PiA+ICAgLSBJIGhhdmUgY3VycmVudGx5IG5vIGlkZWFzIGhvdyB0byBpbXByb3ZlL3NpbXBs
-aWZ5IHRoZSBwYXJzaW5nIFBEUyBmaWxlLgo+PiA+ICAgICAoS2FsbGUpCj4+IAo+PiBGb3IgdGhl
-IFBEUyBmaWxlIHByb2JsZW0gaXQgd291bGQgaGVscCBpZiB5b3UgY291bGQgYWN0dWFsbHkgZGVz
-Y3JpYmUKPj4gd2hhdCB0aGUgZmlybXdhcmUgcmVxdWlyZXMvbmVlZHMgYW5kIHRoZW4gd2UgY2Fu
-IHN0YXJ0IGZyb20gdGhhdC4gSSBoYWQKPj4gc29tZSBxdWVzdGlvbnMgYWJvdXQgdGhpcyBpbiB2
-NyBidXQgYXBwYXJlbnRseSB5b3UgbWlzc2VkIHRob3NlLgo+Cj4gRGlkIHlvdSByZWNlaXZlZCB0
-aGlzIHJlcGx5WzFdPwo+Cj4gWzFdOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjcyMzc4
-Ny51REFTWHBvQVdLQHBjLTQyLwoKSSBkaWQgYW5kIEkgZXZlbiBtYWRlIGZ1cnRoZXIgcXVlc3Rp
-b25zOgoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzg3azBpeGo1dm4uZnNmQGNvZGVhdXJv
-cmEub3JnLwoKQ2FuIHdlIHBsZWFzZSBjb250aW51ZSB0aGUgZGlzY3Vzc2lvbiBvbiB0aGF0IHRo
-cmVhZCBpbnN0ZWFkIG9mIHBhc3NpbmcKb3V0IGxvcmUgbGlua3MgdG8gZWFjaCBvdGhlciA6KQoK
-LS0gCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC13aXJlbGVzcy9s
-aXN0LwoKaHR0cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1
-bWVudGF0aW9uL3N1Ym1pdHRpbmdwYXRjaGVzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
-b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hello,
+
+I trust you're doing fine. My name is Pablo from Car Track GPS and we're looking for distributors for our tracking products.
+We design innovative software and hardware location technologies.
+
+Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
+If a vehicle is stolen you can stop the engine and recover it.
+
+With our Professional Kit you can start your own tracking business or just resell the software and hardware.
+
+Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
+This could be a good choice If you want to start a new business or diversify your investment.
+
+The business consists in offering location services to end customers through a web site.
+This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
+
+This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
+We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
+
+If you're interested I can send you the proposal for your consideration.
+
+Best regards,
+Pablo Zacheo
+CEO Car Track GPS
+Miami: +1 786 352 8766
+=> Search "Car Track GPS" in Google for our official  website
+
+We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
+ID: 59713
+
+If you would like to opt-out please reply to this email with the subject REMOVE.
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
