@@ -1,52 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26D7C4227A5
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 15:20:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C3EEA4227DF
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 15:31:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 425AE40783;
-	Tue,  5 Oct 2021 13:20:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 25B8060B76;
+	Tue,  5 Oct 2021 13:31:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EDkjBC-XY-Wj; Tue,  5 Oct 2021 13:20:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dGON3JJZ1XTy; Tue,  5 Oct 2021 13:31:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D6BD340762;
-	Tue,  5 Oct 2021 13:20:03 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 76A4360B74;
+	Tue,  5 Oct 2021 13:31:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4A2101BF2A5
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 13:19:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9E5F91BF2A5
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 13:31:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3A13383C22
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 13:19:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8DBF383CBC
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 13:31:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CPTRx94RK1l5
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 13:19:52 +0000 (UTC)
+ with ESMTP id m3ASFuheiUix for <devel@linuxdriverproject.org>;
+ Tue,  5 Oct 2021 13:31:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from yakyndar.com.tm (unknown [95.85.125.67])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5EDE283C1B
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 13:19:52 +0000 (UTC)
-Received: from User (unknown [37.0.8.2])
- by yakyndar.com.tm (Postfix) with SMTP id 647C94AA6A;
- Tue,  5 Oct 2021 17:29:44 +0500 (+05)
-From: "Ambassador Mary Beth Leonard"<info@usa.org>
-Subject: U.S. AMBASSADOR FUND NOTIFICATION 04/10/2021
-Date: Tue, 5 Oct 2021 05:29:49 -0700
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 86B3583C36
+ for <devel@driverdev.osuosl.org>; Tue,  5 Oct 2021 13:31:03 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A1BBA61401;
+ Tue,  5 Oct 2021 13:31:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1633440663;
+ bh=fGNf6lFeNsKzE8dzg3ltef34M0dC0Pd10/yR6RlZFFU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=C4p+2jhEnb9QTBRus6fMLknmLkI38NEKt2yByvrsNiCUNH08YlVW5pstXr8CFLe/v
+ qMAE/705Qs9RDN0P5G5BxbUt+dYHQF+FsSixW1Da/0AFM0ndmFjVF0+zf/tuMa3OMz
+ JcE6MJgWVJma8Orz7xXBkgzJLuzmxs84Ps8xyWuc=
+Date: Tue, 5 Oct 2021 15:31:00 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Todd Kjos <tkjos@google.com>
+Subject: Re: [PATCH v2] binder: use cred instead of task for selinux checks
+Message-ID: <YVxTlBMSWBkLgSi9@kroah.com>
+References: <20211001175521.3853257-1-tkjos@google.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20211005131953.3A13383C22@smtp1.osuosl.org>
+Content-Disposition: inline
+In-Reply-To: <20211001175521.3853257-1-tkjos@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,41 +63,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ambassadormarybethleonardl4@gmail.com
+Cc: devel@driverdev.osuosl.org, linux-security-module@vger.kernel.org,
+ kernel-team@android.com, tkjos@android.com, paul@paul-moore.com,
+ keescook@chromium.org, jannh@google.com, selinux@vger.kernel.org,
+ jeffv@google.com, stephen.smalley.work@gmail.com, jmorris@namei.org,
+ zohar@linux.ibm.com, linux-kernel@vger.kernel.org, arve@android.com,
+ stable@vger.kernel.org, joel@joelfernandes.org, eparis@parisplace.org,
+ maco@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-U.S. AMBASSADOR TO NIGERIA
-OFFICE OF THE U.S AMBASSADOR TO NIGERIA
-1075 Diplomatic Dr, Area, Abuja
-U.S. AMBASSADOR FUND NOTIFICATION
-Contact My Private Email (ambassadormarybethleonardl4@gmail.com)
+On Fri, Oct 01, 2021 at 10:55:21AM -0700, Todd Kjos wrote:
+> Save the struct cred associated with a binder process
+> at initial open to avoid potential race conditions
+> when converting to a security ID.
+> 
+> Since binder was integrated with selinux, it has passed
+> 'struct task_struct' associated with the binder_proc
+> to represent the source and target of transactions.
+> The conversion of task to SID was then done in the hook
+> implementations. It turns out that there are race conditions
+> which can result in an incorrect security context being used.
+> 
+> Fix by saving the 'struct cred' during binder_open and pass
+> it to the selinux subsystem.
+> 
+> Fixes: 79af73079d75 ("Add security hooks to binder and implement the
+> hooks for SELinux.")
+> Signed-off-by: Todd Kjos <tkjos@google.com>
+> Cc: stable@vger.kernel.org # 5.14+ (need backport for earlier stables)
+> ---
+> v2: updated comments as suggested by Paul Moore
+> 
+>  drivers/android/binder.c          | 14 +++++----
+>  drivers/android/binder_internal.h |  4 +++
+>  include/linux/lsm_hook_defs.h     | 14 ++++-----
+>  include/linux/lsm_hooks.h         | 14 ++++-----
+>  include/linux/security.h          | 28 +++++++++---------
+>  security/security.c               | 14 ++++-----
+>  security/selinux/hooks.c          | 48 +++++++++----------------------
+>  7 files changed, 60 insertions(+), 76 deletions(-)
 
-Attn : Beneficiary,
+Ideally I could get an ack from the security developers before taking
+this in my tree...
 
-Am The New Ambassador Mary Beth Leonard United State Of America to Nigeria I Re-sum office on December 24th, 2019 as the New Ambassador I have to go Through every Document in my office and notice that your name is involved in scam list, which the United Nation has decided to compensate you with the sum of $15.5m through Nigeria Government and it will be through ATM Master Card for Easy use.
+thanks,
 
-I shall be coming to your country for an official meeting on October 28th,2021 and I shall be bringing your ATM Master Card that contains $15.5m along with me, but this time I will not go through Custom because as an Ambassador to FEDERAL REPUBLIC OF NIGERIA, I am a US GOVERNMENT AGENT and I have the veto power to go through Custom. As soon as I am through with my meeting I shall then proceed to your registered house address with your ATM Master Card Fund.
-
-Without missing words, I am convinced 100% that you have had bitter experience with various scams claiming to be high government officials and thereby defrauding you of your 'hard-earned money' The activities of these scammers have changed your perspective about conducting business on the internet, and you now believed there is no genuine business that can be conducted on the internet. Well, I am an American and the internet was created by Americans for the purpose of creating awareness of your products/services and conducting genuine business with ease. I am fully committed to deliver the your master card to you.
-
-I am a full citizen of the United States Of America, but I was on a Foreign Mission here in NIGERIA as a US Ambassador. Hence, I am making every effort to ensure that no citizen of the United States Of America and other part of the world is cheated by Nigeria, Benin Republic. Therefore, I need your utmost support and understanding to actualize this dream. I also want you to understand that I do trust you and I expect you to show me the same trust and respect in return since trust is a 2-way street. On the other hand, trust is a relationship of reliance. Trust also means being able to predict what other people believe.
-
-Trust is both an emotional and logical act. Emotionally, it is where you expose your vulnerabilities to people, but believing they will not take advantage of your openness. Logically, it is where you have assessed the probabilities of gain and loss, calculating expected utility based on hard performance data, and concluded that the person in question will behave in a predictable manner. In practice, trust is a bit of both. I trust you because I have experienced your trustworthiness by merely believing in what I have said, even when you have not seen me, and because I have faith in humanity.
-
-Frankly speaking, I understand that anyone in your shoes will feel betrayed, but I still want you to show me your trust by giving me the benefit of doubt on this delivery arrangement. My identity and personality is verifiable, and I promise to deliver the consignment to you safely without any hitch. Your ATM Master Card ($15.5m) MUST BE REGISTERED AS AN AMBASSADORIAL PACKAGE as planned. Do not allow this mission to die off because of $455 US Dollars for the registration fee of your ATM Master Card, I meant so well for you and I believe you will appreciate me more when you have finally Receive Your Card.
-
-I will use my position and personality to deposit the ATM Master Card worth $15.5m USD into your bank account without questioning from the financial monitoring authorities, since all documentations proving the legitimacy of the funds have been processed. Please don't see me as one of the numerous dubious Benin Republic or Nigeria you have dealt with in the past. I am a different person entirely and I come from a different continent. I have the American spirit in me and I hate cheaters. I promise to always uphold the national unity of the United State. Please reply back ASAP.
-
-
-I hope you will understand and follow my instruction to enable me serve you better.Contact my private email{ambassadormarybethleonardl4@gmail.com)
-
-Signed.
-Ambassador Mary Beth Leonard.
-US AMBASSADOR TO FEDERAL REPUBLIC OF NIGERIA
-EMAIL :ambassadormarybethleonardl4@gmail.com
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
